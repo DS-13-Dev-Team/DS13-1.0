@@ -25,7 +25,7 @@
 
 	required_technologies = list("sec_eq")
 	required_tech_levels = list()
-	cost = 0
+	cost = 250
 
 	unlocks_designs = list("prisonmanage")
 
@@ -40,7 +40,7 @@
 
 	required_technologies = list("sec_eq")
 	required_tech_levels = list()
-	cost = 0
+	cost = 500
 
 	unlocks_designs = list("security_hud", "megaphone")
 
@@ -55,7 +55,7 @@
 
 	required_technologies = list("add_eq")
 	required_tech_levels = list()
-	cost = 0
+	cost = 750
 
 	unlocks_designs = list("rig_flash", "rig_taser")
 
@@ -70,13 +70,13 @@
 
 	required_technologies = list("nleth_eq", "sup_power")
 	required_tech_levels = list()
-	cost = 0
+	cost = 1250
 
 	unlocks_designs = list("recharger", "force_energy")
 
 /datum/technology/combat/shield
-	name = "Advanced Combat Shield"
-	desc = "Advanced Combat Shield"
+	name = "Advanced Combat"
+	desc = "Advanced Combat"
 	id = "shield"
 
 	x = 0.4
@@ -85,9 +85,9 @@
 
 	required_technologies = list("recharger")
 	required_tech_levels = list()
-	cost = 0
+	cost = 1000
 
-	unlocks_designs = list("advancedcombatshield")
+	unlocks_designs = list("advancedcombatshield", "tactical_goggles")
 
 /datum/technology/combat/divet
 	name = "Winchester NK Divet Pistol"
@@ -100,7 +100,7 @@
 
 	required_technologies = list("recharger")
 	required_tech_levels = list()
-	cost = 0
+	cost = 1500
 
 	unlocks_designs = list("divet", "divetslug")
 
@@ -115,7 +115,7 @@
 
 	required_technologies = list("divet")
 	required_tech_levels = list()
-	cost = 0
+	cost = 750
 
 	unlocks_designs = list("44cal")
 
@@ -130,7 +130,7 @@
 
 	required_technologies = list("divet")
 	required_tech_levels = list()
-	cost = 0
+	cost = 2500
 
 	unlocks_designs = list("pulserifle", "pulseslug")
 
@@ -145,7 +145,7 @@
 
 	required_technologies = list("pulse")
 	required_tech_levels = list()
-	cost = 0
+	cost = 1500
 
 	unlocks_designs = list("pulsehighvel")
 
@@ -160,9 +160,24 @@
 
 	required_technologies = list("pulse")
 	required_tech_levels = list()
-	cost = 0
+	cost = 1500
 
-	unlocks_designs = list("ripper", "ripper_blades", "diamond_blades")
+	unlocks_designs = list("ripper", "ripper_blades")
+
+/datum/technology/combat/dblades
+	name = "Diamond Blades"
+	desc = "Diamond Blades"
+	id = "dblades"
+
+	x = 0.7
+	y = 0.4
+	icon = "dblades"
+
+	required_technologies = list("ripper")
+	required_tech_levels = list()
+	cost = 750
+
+	unlocks_designs = list("diamond_blades")
 
 /datum/technology/combat/javeline
 	name = "T15 Javelin Gun"
@@ -175,7 +190,7 @@
 
 	required_technologies = list("pulse")
 	required_tech_levels = list()
-	cost = 0
+	cost = 2000
 
 	unlocks_designs = list("javgun")
 
@@ -190,6 +205,6 @@
 
 	required_technologies = list("pulse")
 	required_tech_levels = list()
-	cost = 0
+	cost = 3500
 
 	unlocks_designs = list("seeker", "seeker_ammo")

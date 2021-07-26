@@ -18,11 +18,17 @@ Guns:
 +	Seeker Rifle
 Ammo:
 +	divet magazine
++	Incendiary Divet Magazine
++	Hollow Point Divet Magazine
++	Armor Piercing Divet Magazine
 +	speed loader (.44 magnum)
 +	plasma energy
 +	rivet bolts
 +	pulse rounds
 +	high velocity pulse rounds
++	seeker shell
+S	fuel tank (gasoline)
+S	fuel tank (hydrazine)
 +	ripper blades (steel)
 +	ripper blades (diamond)
 +	line racks
@@ -34,19 +40,6 @@ Ammo:
 	build_type = PROTOLATHE | STORE
 	price = 7000
 	materials = list(MATERIAL_STEEL = 30000, MATERIAL_GLASS = 2000, MATERIAL_SILVER = 4000, MATERIAL_URANIUM = 4000)
-
-
-/datum/design/item/weapon/AssembleDesignName()
-	..()
-	name = "Weapon prototype ([item_name])"
-
-/datum/design/item/weapon/AssembleDesignDesc()
-	if(!desc)
-		if(build_path)
-			var/obj/item/I = build_path
-			desc = initial(I.desc)
-		..()
-
 
 /datum/design/item/weapon/chemsprayer
 	name = "chemsprayer"
@@ -77,21 +70,6 @@ Ammo:
 	build_path = /obj/item/device/flash/advanced
 	sort_string = "TADAA"
 */
-/datum/design/item/weapon/stunbaton
-	name = "stunbaton"
-	desc = "A stun baton for incapacitating people with."
-	id = "stunbaton"
-	materials = list(MATERIAL_STEEL = 3000, MATERIAL_GLASS = 500)
-	build_path = /obj/item/weapon/melee/baton/loaded
-	sort_string = "TABAA"
-
-/datum/design/item/weapon/handcuffs
-	name = "handcuffs"
-	desc = "Use this to keep prisoners in line."
-	id = "handcuffs"
-	materials = list(MATERIAL_STEEL = 1000)
-	build_path = /obj/item/weapon/handcuffs
-	sort_string = "TABAA"
 
 /datum/design/item/weapon/contactbeam
 	name = "C99 Supercollider Contact Beam"
@@ -130,16 +108,21 @@ Ammo:
 	materials = list(MATERIAL_STEEL = 10000, MATERIAL_PLASTEEL = 4000)
 	build_path = /obj/item/weapon/gun/projectile/divet
 	sort_string = "TACEA"
-
 	price = 4000
 
+/datum/design/item/weapon/divet/silenced
+	name = "Silenced Divet Pistol"
+	id = "sdivet"
+	materials = list(MATERIAL_STEEL = 10000, MATERIAL_PLASTEEL = 4000, MATERIAL_PLASTIC = 1500)
+	build_path = /obj/item/weapon/gun/projectile/divet/silenced
+	build_type = PROTOLATHE		//Earth Gov Agent gun
+	sort_string = "TACEA"
 
 /datum/design/item/weapon/pulserifle
 	name = "SWS Motorized Pulse Rifle"
 	id = "pulserifle"
 	build_path = /obj/item/weapon/gun/projectile/automatic/pulse_rifle
 	sort_string = "TBECF"
-
 	price = 7000
 
 
@@ -200,6 +183,30 @@ Ammo:
 	build_path = /obj/item/ammo_magazine/divet
 	sort_string = "TBECG"
 	price = 1200
+
+/datum/design/item/ammo/icds
+	name = "Incendiary Divet Magazine"
+	id = "icds"
+	materials = list(MATERIAL_STEEL = 4000)
+	build_path = /obj/item/ammo_magazine/divet/incendiary
+	build_type = PROTOLATHE
+	sort_string = "TBECG"
+
+/datum/design/item/ammo/hpds
+	name = "Hollow Point Divet Magazine"
+	id = "hpds"
+	materials = list(MATERIAL_STEEL = 4000)
+	build_path = /obj/item/ammo_magazine/divet/hollow_point
+	build_type = PROTOLATHE
+	sort_string = "TBECG"
+
+/datum/design/item/ammo/apds
+	name = "Armor Piercing Divet Magazine"
+	id = "apds"
+	materials = list(MATERIAL_STEEL = 4000)
+	build_path = /obj/item/ammo_magazine/divet/ap
+	build_type = PROTOLATHE
+	sort_string = "TBECG"
 
 /datum/design/item/ammo/fiftycal/ammo
 	name = "speed loader (.44 magnum)"

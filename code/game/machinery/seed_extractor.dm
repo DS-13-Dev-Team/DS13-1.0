@@ -17,6 +17,14 @@
 	component_parts += new /obj/item/weapon/stock_parts/manipulator(src)
 
 obj/machinery/seed_extractor/attackby(var/obj/item/O as obj, var/mob/user as mob)
+	if(default_deconstruction_screwdriver(user, O))
+		return
+
+	if(default_deconstruction_crowbar(user, O))
+		return
+
+	if(default_part_replacement(user, O))
+		return
 
 	// Fruits and vegetables.
 	if(istype(O, /obj/item/weapon/reagent_containers/food/snacks/grown) || istype(O, /obj/item/weapon/grown))
@@ -59,3 +67,8 @@ obj/machinery/seed_extractor/attackby(var/obj/item/O as obj, var/mob/user as mob
 		qdel(O)
 
 	return
+
+/obj/machinery/seed_extractor/dismantle()
+	for(var/atom/movable/M in contents)
+		M.forceMove(loc)
+	..()

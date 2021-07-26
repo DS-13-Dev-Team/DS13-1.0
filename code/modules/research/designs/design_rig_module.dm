@@ -7,10 +7,6 @@
 	build_type = STORE
 	store_transfer = TRUE
 
-/datum/design/item/rig_module/AssembleDesignName()
-	..()
-	name = "RIG module ([item_name])"
-
 /datum/design/item/rig_module/meson
 	name = "Meson Scanner"
 	desc = "A layered, translucent visor system for a RIG."

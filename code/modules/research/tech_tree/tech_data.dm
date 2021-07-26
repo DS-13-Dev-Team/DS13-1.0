@@ -25,7 +25,7 @@
 
 	required_technologies = list("basic_modular")
 	required_tech_levels = list()
-	cost = 0
+	cost = 750
 
 	unlocks_designs = list("pda_frame", "tablet_frame", "laptop_frame", "telescreen_frame")
 
@@ -40,7 +40,7 @@
 
 	required_technologies = list("basic_modular")
 	required_tech_levels = list()
-	cost = 0
+	cost = 250
 
 	unlocks_designs = list("hdd_micro", "hdd_small")
 
@@ -55,7 +55,7 @@
 
 	required_technologies = list("ms_hdd")
 	required_tech_levels = list()
-	cost = 0
+	cost = 500
 
 	unlocks_designs = list("hdd_advanced", "portadrive_advanced")
 
@@ -70,7 +70,7 @@
 
 	required_technologies = list("adv_hdd")
 	required_tech_levels = list()
-	cost = 0
+	cost = 750
 
 	unlocks_designs = list("hdd_super", "portadrive_super")
 
@@ -85,7 +85,7 @@
 
 	required_technologies = list("sup_hdd")
 	required_tech_levels = list()
-	cost = 0
+	cost = 1250
 
 	unlocks_designs = list("hdd_cluster")
 
@@ -100,7 +100,7 @@
 
 	required_technologies = list("basic_modular")
 	required_tech_levels = list()
-	cost = 0
+	cost = 500
 
 	unlocks_designs = list("netcard_wired")
 
@@ -115,7 +115,7 @@
 
 	required_technologies = list("netcard_w", "solnet_relay")
 	required_tech_levels = list()
-	cost = 0
+	cost = 1250
 
 	unlocks_designs = list("netcard_advanced")
 
@@ -130,7 +130,7 @@
 
 	required_technologies = list("basic_modular")
 	required_tech_levels = list()
-	cost = 0
+	cost = 250
 
 	unlocks_designs = list("cpu_small")
 
@@ -145,7 +145,7 @@
 
 	required_technologies = list("cpu_small")
 	required_tech_levels = list()
-	cost = 0
+	cost = 500
 
 	unlocks_designs = list("pcpu_small")
 
@@ -160,7 +160,7 @@
 
 	required_technologies = list("pcpu_small")
 	required_tech_levels = list()
-	cost = 0
+	cost = 100
 
 	unlocks_designs = list("pcpu_normal")
 
@@ -175,7 +175,7 @@
 
 	required_technologies = list("basic_modular")
 	required_tech_levels = list()
-	cost = 0
+	cost = 250
 
 	unlocks_designs = list("bat_nano", "bat_micro")
 
@@ -190,7 +190,7 @@
 
 	required_technologies = list("modular_bat_micro", "adv_power")
 	required_tech_levels = list()
-	cost = 0
+	cost = 500
 
 	unlocks_designs = list("bat_advanced")
 
@@ -205,7 +205,7 @@
 
 	required_technologies = list("modular_bat_advanced", "sup_power")
 	required_tech_levels = list()
-	cost = 0
+	cost = 750
 
 	unlocks_designs = list("bat_super")
 
@@ -220,7 +220,7 @@
 
 	required_technologies = list("modular_bat_super", "hyp_power")
 	required_tech_levels = list()
-	cost = 0
+	cost = 1250
 
 	unlocks_designs = list("bat_ultra")
 
@@ -235,7 +235,7 @@
 
 	required_technologies = list("basic_modular")
 	required_tech_levels = list()
-	cost = 0
+	cost = 500
 
 	unlocks_designs = list("teslalink")
 
@@ -250,7 +250,7 @@
 
 	required_technologies = list("basic_modular")
 	required_tech_levels = list()
-	cost = 0
+	cost = 500
 
 	unlocks_designs = list("nanoprinter", "scan_paper")
 
@@ -265,7 +265,7 @@
 
 	required_technologies = list("basic_modular")
 	required_tech_levels = list()
-	cost = 0
+	cost = 750
 
 	unlocks_designs = list("cardslot")
 
@@ -278,9 +278,9 @@
 	y = 0.3
 	icon = "nanoprinter"
 
-	required_technologies = list("basic_modular")
-	required_tech_levels = list(TECH_BIO = 5)
-	cost = 0
+	required_technologies = list("basic_modular", "add_med_tools")
+	required_tech_levels = list()
+	cost = 750
 
 	unlocks_designs = list("scan_reagent", "scan_medical")
 
@@ -293,8 +293,8 @@
 	y = 0.3
 	icon = "nanoprinter"
 
-	required_technologies = list("basic_modular")
-	required_tech_levels = list(TECH_ENGINEERING = 6)
-	cost = 0
+	required_technologies = list("basic_modular", "gas_heat")
+	required_tech_levels = list()
+	cost = 750
 
 	unlocks_designs = list("scan_atmos")

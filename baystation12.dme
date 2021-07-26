@@ -2807,7 +2807,7 @@
 #include "code\modules\research\tech_tree\tech_data.dm"
 #include "code\modules\research\tech_tree\tech_engineering.dm"
 #include "code\modules\research\tech_tree\tech_illegal.dm"
-#include "code\modules\research\tech_tree\tech_powerstorage.dm"
+#include "code\modules\research\tech_tree\tech_power.dm"
 #include "code\modules\research\tech_tree\tech_telecom.dm"
 #include "code\modules\scripting\Errors.dm"
 #include "code\modules\scripting\IDE.dm"

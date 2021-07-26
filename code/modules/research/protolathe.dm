@@ -107,6 +107,8 @@
 		return TRUE
 	if(is_robot_module(O))
 		return FALSE
+	if(stat)
+		return TRUE
 	if(!istype(O, /obj/item/stack/material))
 		to_chat(user, "<span class='notice'>You cannot insert this item into \the [src]!</span>")
 		return FALSE
@@ -115,8 +117,6 @@
 		if(!(stack.default_type in allowed_mats))
 			to_chat(user, "<span class='notice'>You cannot insert this material into the [src]!</span>")
 			return
-	if(stat)
-		return TRUE
 
 	if(TotalMaterials() + SHEET_MATERIAL_AMOUNT > max_material_storage)
 		to_chat(user, "<span class='notice'>\The [src]'s material bin is full. Please remove material before adding more.</span>")

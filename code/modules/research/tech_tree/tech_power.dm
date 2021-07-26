@@ -25,7 +25,7 @@
 
 	required_technologies = list("basic_power")
 	required_tech_levels = list()
-	cost = 0
+	cost = 500
 
 	unlocks_designs = list("high_cell", "device_cell_high", "adv_capacitor")
 
@@ -40,7 +40,7 @@
 
 	required_technologies = list("adv_power")
 	required_tech_levels = list()
-	cost = 0
+	cost = 1000
 
 	unlocks_designs = list("super_cell", "super_capacitor")
 
@@ -55,7 +55,7 @@
 
 	required_technologies = list("sup_power")
 	required_tech_levels = list()
-	cost = 0
+	cost = 1500
 
 	unlocks_designs = list("hyper_cell")
 
@@ -70,7 +70,7 @@
 
 	required_technologies = list("adv_power")
 	required_tech_levels = list()
-	cost = 0
+	cost = 750
 
 	unlocks_designs = list("solarcontrol")
 
@@ -85,24 +85,9 @@
 
 	required_technologies = list("adv_power")
 	required_tech_levels = list()
-	cost = 0
+	cost = 1250
 
 	unlocks_designs = list("superpacman")
-
-/datum/technology/power/adv_power_storage
-	name = "Advanced Power Storage"
-	desc = "Advanced Power Storage"
-	id = "adv_power_storage"
-
-	x = 0.2
-	y = 0.5
-	icon = "smes"
-
-	required_technologies = list("power_storage")
-	required_tech_levels = list()
-	cost = 0
-
-	unlocks_designs = list("smes_cell", "smes_coil_standard", "smes_coil_super_capacity", "smes_coil_super_io")
 
 /datum/technology/power/power_storage
 	name = "Power Storage"
@@ -115,9 +100,24 @@
 
 	required_technologies = list("adv_power_gen")
 	required_tech_levels = list()
-	cost = 0
+	cost = 1750
 
 	unlocks_designs = list("batteryrack")
+
+/datum/technology/power/adv_power_storage
+	name = "Advanced Power Storage"
+	desc = "Advanced Power Storage"
+	id = "adv_power_storage"
+
+	x = 0.2
+	y = 0.5
+	icon = "smes"
+
+	required_technologies = list("power_storage")
+	required_tech_levels = list()
+	cost = 2500
+
+	unlocks_designs = list("smes_cell", "smes_coil_standard", "smes_coil_super_capacity", "smes_coil_super_io")
 
 /datum/technology/power/sup_power_gen
 	name = "Super Power Generation"
@@ -130,7 +130,7 @@
 
 	required_technologies = list("adv_power_gen", "sup_power")
 	required_tech_levels = list()
-	cost = 0
+	cost = 2000
 
 	unlocks_designs = list("mrspacman")
 
@@ -145,6 +145,6 @@
 
 	required_technologies = list("sup_power_gen")
 	required_tech_levels = list()
-	cost = 0
+	cost = 2500
 
 	unlocks_designs = list("fusion_core_control", "fusion_fuel_compressor", "fusion_fuel_control", "gyrotron_control", "fusion_core", "fusion_injector")

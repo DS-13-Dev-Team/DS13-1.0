@@ -1,75 +1,127 @@
-/datum/technology/illegal
-	name = "Binary Encrpytion Key"
-	desc = "Binary Encrpytion Key"
-	id = "binary_encryption_key"
+/datum/technology/sdivet
+	name = "Silenced Divet Pistol"
+	desc = "Silenced Divet Pistol"
+	id = "sdivet"
 	tech_type = TECH_ILLEGAL
-
-	x = 0.1
-	y = 0.5
-	icon = "headset"
-
-	required_technologies = list()
-	required_tech_levels = list(TECH_BLUESPACE = 5)
-	cost = 2000
-
-	unlocks_designs = list()
-
-/datum/technology/illegal/chameleon_kit
-	name = "Chameleon Kit"
-	desc = "Chameleon Kit"
-	id = "chameleon_kit"
-
-	x = 0.3
-	y = 0.5
-	icon = "chamelion"
-
-	required_technologies = list("binary_encryption_key")
-	required_tech_levels = list(TECH_ENGINEERING = 10)
-	cost = 3000
-
-	unlocks_designs = list()
-
-/datum/technology/illegal/freedom_implant
-	name = "Glass Case- 'Freedom'"
-	desc = "Glass Case- 'Freedom'"
-	id = "freedom_implant"
 
 	x = 0.5
 	y = 0.5
-	icon = "freedom"
+	icon = "sdivet"
 
-	required_technologies = list("chameleon_kit")
-	required_tech_levels = list(TECH_BIO = 5)
-	cost = 3000
+	required_technologies = list("divet")
+	required_tech_levels = list()
+	cost = 1250
 
-	unlocks_designs = list()
+	unlocks_designs = list("sdivet")
 
-/datum/technology/illegal/tyrant_aimodule
-	name = "AI Core Module (T.Y.R.A.N.T.)"
-	desc = "AI Core Module (T.Y.R.A.N.T.)"
-	id = "tyrant_aimodule"
+/datum/technology/icds
+	name = " Incendiary Divet Magazine"
+	desc = "Incendiary Divet Magazine"
+	id = "icds"
+	tech_type = TECH_ILLEGAL
 
-	x = 0.7
+	x = 0.5
+	y = 0.6
+	icon = "icds"
+
+	required_technologies = list("divet")
+	required_tech_levels = list()
+	cost = 1500
+
+	unlocks_designs = list("icds")
+
+/datum/technology/hpds
+	name = "Hollow Point Divet Magazine"
+	desc = "Hollow Point Divet Magazine"
+	id = "hpds"
+	tech_type = TECH_ILLEGAL
+
+	x = 0.6
 	y = 0.5
-	icon = "module"
+	icon = "hpds"
 
-	required_technologies = list("freedom_implant")
-	required_tech_levels = list(TECH_ROBOT = 5)
-	cost = 3000
+	required_technologies = list("divet")
+	required_tech_levels = list()
+	cost = 1500
 
-	unlocks_designs = list()
+	unlocks_designs = list("hpds")
 
-/datum/technology/illegal/borg_syndicate_module
-	name = "Borg Illegal Weapons Upgrade"
-	desc = "Borg Illegal Weapons Upgrade"
-	id = "borg_syndicate_module"
+/datum/technology/apds
+	name = "Armor Piercing Divet Magazine"
+	desc = "Armor Piercing Divet Magazine"
+	id = "apds"
+	tech_type = TECH_ILLEGAL
 
-	x = 0.9
+	x = 0.4
 	y = 0.5
-	icon = "borgmodule"
+	icon = "apds"
 
-	required_technologies = list("tyrant_aimodule")
-	required_tech_levels = list(TECH_ROBOT = 10)
-	cost = 5000
+	required_technologies = list("divet")
+	required_tech_levels = list()
+	cost = 1500
 
-	unlocks_designs = list()
+	unlocks_designs = list("apds")
+
+/datum/technology/freedom_implant
+	name = "Freedom Implant"
+	desc = "Freedom Implant"
+	id = "freedom_implant"
+	tech_type = TECH_ILLEGAL
+
+	x = 0.5
+	y = 0.4
+	icon = "implant"
+
+	required_technologies = list("implants")
+	required_tech_levels = list()
+	cost = 1250
+
+	unlocks_designs = list("implant_free")
+
+/datum/technology/imprinting_implant
+	name = "Imprinting Implant"
+	desc = "Imprinting Implant"
+	id = "imprinting_implant"
+	tech_type = TECH_ILLEGAL
+
+	x = 0.4
+	y = 0.4
+	icon = "implant"
+
+	required_technologies = list("implants")
+	required_tech_levels = list()
+	cost = 1250
+
+	unlocks_designs = list("implant_imprinting")
+
+/datum/technology/explosive_implant
+	name = "Explosive Implant"
+	desc = "Explosive Implant"
+	id = "explosive_implant"
+	tech_type = TECH_ILLEGAL
+
+	x = 0.6
+	y = 0.4
+	icon = "implant"
+
+	required_technologies = list("implants")
+	required_tech_levels = list()
+	cost = 1250
+
+	unlocks_designs = list("implant_explosive")
+
+/datum/technology/chem_implant
+	name = "Chemical Implant"
+	desc = "Chemical Implant"
+	id = "chem_implant"
+	tech_type = TECH_ILLEGAL
+
+	x = 0.5
+	y = 0.3
+	icon = "implant"
+
+	required_technologies = list("implants")
+	required_tech_levels = list()
+	cost = 1250
+
+	unlocks_designs = list("implant_chem")

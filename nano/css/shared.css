@@ -885,10 +885,17 @@ th.bot {
 .sciTechTreeIcon.icon-fusion { background-position: -32px -288px; }
 .sciTechTreeIcon.icon-chemdisp { background-position: -64px -288px; }
 .sciTechTreeIcon.icon-cloning { background-position: -96px -288px; }
-.sciTechTreeIcon.icon-chamelion { background-position: -128px -288px; }
+.sciTechTreeIcon.icon-furnace { background-position: -128px -288px; }
 .sciTechTreeIcon.icon-hdd2048 { background-position: -160px -288px; }
 .sciTechTreeIcon.icon-hdd256 { background-position: -192px -288px; }
 .sciTechTreeIcon.icon-hdd64 { background-position: -224px -288px; }
+
+.sciTechTreeIcon.icon-dblades { background-position: 0px -320px; }
+.sciTechTreeIcon.icon-apds { background-position: -32px -320px; }
+.sciTechTreeIcon.icon-icds { background-position: -64px -320px; }
+.sciTechTreeIcon.icon-hpds { background-position: -96px -320px; }
+.sciTechTreeIcon.icon-gene { background-position: -128px -320px; }
+.sciTechTreeIcon.icon-sdivet { background-position: -160px -320px; }
 
 .sciMenuButton {
     width: 300px;

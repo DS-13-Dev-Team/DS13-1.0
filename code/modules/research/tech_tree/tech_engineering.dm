@@ -25,7 +25,7 @@
 
 	required_technologies = list("monitoring")
 	required_tech_levels = list()
-	cost = 0
+	cost = 500
 
 	unlocks_designs = list("gasheater", "gascooler", "stasis_clamp")
 
@@ -38,9 +38,9 @@
 	y = 0.7
 	icon = "flamethrower"
 
-	required_technologies = list("gas_heat")
+	required_technologies = list("gas_heat", "divet")
 	required_tech_levels = list()
-	cost = 0
+	cost = 1500
 
 	unlocks_designs = list("flamethrower")
 
@@ -100,7 +100,7 @@
 
 	required_technologies = list("monitoring")
 	required_tech_levels = list()
-	cost = 1000
+	cost = 750
 
 	unlocks_designs = list("destructive_analyzer", "protolathe", "circuit_imprinter", "rdservercontrol", "rdserver", "rdconsole")
 
@@ -115,7 +115,7 @@
 
 	required_technologies = list("res_tech")
 	required_tech_levels = list()
-	cost = 1000
+	cost = 500
 
 	unlocks_designs = list("depth_scanner", "ano_scanner")
 
@@ -145,7 +145,7 @@
 
 	required_technologies = list("excavation_drill")
 	required_tech_levels = list()
-	cost = 1000
+	cost = 1500
 
 	unlocks_designs = list("excavation_drill_diamond")
 
@@ -171,11 +171,11 @@
 
 	x = 0.3
 	y = 0.3
-	icon = "pickaxe"	//add unique icon
+	icon = "furnace"
 
 	required_technologies = list("basic_mining")
 	required_tech_levels = list()
-	cost = 0
+	cost = 1000
 
 	unlocks_designs = list()	Add ore smelting machines here. They should be connected to consoles so I decided to left this tech undone*/
 
@@ -205,7 +205,7 @@
 
 	required_technologies = list("adv_mining")
 	required_tech_levels = list()
-	cost = 2000
+	cost = 1250
 
 	unlocks_designs = list("line_rack", "contact_energy")
 
@@ -250,7 +250,7 @@
 
 	required_technologies = list("res_tech")
 	required_tech_levels = list()
-	cost = 2000
+	cost = 500
 
 	unlocks_designs = list("brace", "bracejack")
 
@@ -265,7 +265,7 @@
 
 	required_technologies = list("adv_eng")
 	required_tech_levels = list()
-	cost = 2000
+	cost = 750
 
 	unlocks_designs = list("icprinter")
 
@@ -280,7 +280,7 @@
 
 	required_technologies = list("icprinter")
 	required_tech_levels = list()
-	cost = 2000
+	cost = 1500
 
 	unlocks_designs = list("icprinter")
 
@@ -295,7 +295,7 @@
 
 	required_technologies = list("icprinter")
 	required_tech_levels = list()
-	cost = 2000
+	cost = 1000
 
 	unlocks_designs = list("icupclo")
 
@@ -311,6 +311,6 @@
 
 	required_technologies = list("adv_tools", "adv_power_storage", "hyp_power")
 	required_tech_levels = list()
-	cost = 2000
+	cost = 4000
 
 	unlocks_designs = list("powernode")

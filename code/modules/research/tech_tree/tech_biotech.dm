@@ -25,7 +25,7 @@
 
 	required_technologies = list("basic_biotech")
 	required_tech_levels = list()
-	cost = 0
+	cost = 250
 
 	unlocks_designs = list("operating", "crewconsole")
 
@@ -40,7 +40,7 @@
 
 	required_technologies = list("basic_biotech")
 	required_tech_levels = list()
-	cost = 0
+	cost = 250
 
 	unlocks_designs = list("biogenerator", "hydro_tray", "seed_extractor", "smartfridge")
 
@@ -51,13 +51,13 @@
 
 	x = 0.1
 	y = 0.3
-	icon = "hydroponics"
+	icon = "gene"
 
 	required_technologies = list("hydroponics")
 	required_tech_levels = list()
-	cost = 0
+	cost = 750
 
-	unlocks_designs = list()		//Everything for gene work
+	unlocks_designs = list("disk_botany", "extractor", "editor")
 
 /datum/technology/bio/food_process
 	name = "Food Processing"
@@ -70,7 +70,7 @@
 
 	required_technologies = list("hydroponics")
 	required_tech_levels = list()
-	cost = 0
+	cost = 500
 
 	unlocks_designs = list("deepfryer", "microwave", "oven", "grill", "candymaker", "cereal", "gibber")
 
@@ -85,7 +85,7 @@
 
 	required_technologies = list("basic_medical_machines")
 	required_tech_levels = list()
-	cost = 0
+	cost = 1500
 
 	unlocks_designs = list("implanter", "implant_death", "implant_tracking")
 
@@ -100,7 +100,7 @@
 
 	required_technologies = list("basic_medical_machines")
 	required_tech_levels = list()
-	cost = 0
+	cost = 1500
 
 	unlocks_designs = list("cryo_cell", "sleeper")
 
@@ -115,7 +115,7 @@
 
 	required_technologies = list("adv_med_machines")
 	required_tech_levels = list()
-	cost = 0
+	cost = 750
 
 	unlocks_designs = list("mass_spectrometer", "reagent_scanner", "scalpel_laser1", "health_hud", "oxycandle", "defibrillators_back")
 
@@ -130,7 +130,7 @@
 
 	required_technologies = list("add_med_tools")
 	required_tech_levels = list()
-	cost = 0
+	cost = 1250
 
 	unlocks_designs = list("scalpel_laser2", "adv_reagent_scanner", "adv_mass_spectrometer", "defibrillators_compact")
 
@@ -145,7 +145,7 @@
 
 	required_technologies = list("add_med_tools")
 	required_tech_levels = list()
-	cost = 0
+	cost = 500
 
 	unlocks_designs = list("beacon", "gps", "beacon_locator")
 
@@ -160,24 +160,39 @@
 
 	required_technologies = list("adv_add_med_tools")
 	required_tech_levels = list()
-	cost = 0
+	cost = 2000
 
 	unlocks_designs = list("chemical_dispenser", "chem_master", "scalpel_laser3")
+
+/datum/technology/bio/hypospray
+	name = "Hypospray"
+	desc = "Hypospray"
+	id = "hypospray"
+
+	x = 0.6
+	y = 0.4
+	icon = "hypo"
+
+	required_technologies = list("chemicals")
+	required_tech_levels = list()
+	cost = 2000
+
+	unlocks_designs = list("hypospray")
 
 /datum/technology/bio/chemical_guns
 	name = "Fast Chemicals Delivery"
 	desc = "Fast Chemicals Delivery"
 	id = "chemical_guns"
 
-	x = 0.6
+	x = 0.7
 	y = 0.4
 	icon = "rapidsyringegun"
 
-	required_technologies = list("chemicals")
+	required_technologies = list("hypospray")
 	required_tech_levels = list()
-	cost = 0
+	cost = 1500
 
-	unlocks_designs = list("hypospray", "chemsprayer", "rapidsyringe", "large_grenade")
+	unlocks_designs = list("chemsprayer", "rapidsyringe", "large_grenade")
 
 /datum/technology/bio/scalpelmanager
 	name = "Incision Management System"
@@ -190,7 +205,7 @@
 
 	required_technologies = list("chemicals")
 	required_tech_levels = list()
-	cost = 0
+	cost = 2000
 
 	unlocks_designs = list("scalpel_manager")
 
@@ -205,6 +220,6 @@
 
 	required_technologies = list("chemicals")
 	required_tech_levels = list()
-	cost = 0
+	cost = 1500
 
 	unlocks_designs = list("splitbeaker", "bluespacebeaker")

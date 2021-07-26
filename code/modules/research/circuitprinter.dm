@@ -6,7 +6,7 @@ using metal and glass, it uses glass and reagents (usually sulfuric acid).
 /obj/machinery/r_n_d/circuit_imprinter
 	name = "Circuit Imprinter"
 	icon_state = "circuit_imprinter"
-	obj_flags = ATOM_FLAG_OPEN_CONTAINER
+	atom_flags = ATOM_FLAG_OPEN_CONTAINER
 
 	var/max_material_storage = 75000
 	var/efficiency_coeff
@@ -66,24 +66,24 @@ using metal and glass, it uses glass and reagents (usually sulfuric acid).
 		return
 	if(panel_open)
 		to_chat(user, "<span class='notice'>You can't load \the [src] while it's opened.</span>")
-		return 1
+		return TRUE
 	if(!linked_console)
 		to_chat(user, "\The [src] must be linked to an R&D console first.")
-		return 1
+		return TRUE
 	if(O.is_open_container())
-		return 1
+		return FALSE
 	if(is_robot_module(O))
-		return 0
+		return FALSE
 	if(!istype(O, /obj/item/stack/material))
 		to_chat(user, "<span class='notice'>You cannot insert this item into \the [src]!</span>")
-		return 0
+		return FALSE
+	if(stat)
+		return
 	var/obj/item/stack/material/stack = O
 	if(istype(O, /obj/item/stack/material))
 		if(!(stack.default_type in allowed_mats))
 			to_chat(user, "<span class='notice'>You cannot insert this material into the [src]!</span>")
 			return
-	if(stat)
-		return
 	if(busy)
 		to_chat(user, "The [src] is busy. Please wait for completion of previous operation.")
 		return

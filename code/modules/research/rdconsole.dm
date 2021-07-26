@@ -315,13 +315,14 @@ cause a ton of data to be lost, an admin can go send it back.
 	)
 	var/list/material_list = list()
 	for(var/M in linked_lathe.materials)
-		material_list += list(list(
-			"id" =             M,
-			"name" =           linked_lathe.materials[M].name,
-			"ammount" =        linked_lathe.materials[M].amount,
-			"can_eject_one" =  linked_lathe.materials[M].amount >= linked_lathe.materials[M].sheet_size,
-			"can_eject_five" = linked_lathe.materials[M].amount >= (linked_lathe.materials[M].sheet_size * 5),
-		))
+		if(linked_lathe.materials[M].amount)
+			material_list += list(list(
+				"id" =             M,
+				"name" =           linked_lathe.materials[M].name,
+				"ammount" =        linked_lathe.materials[M].amount,
+				"can_eject_one" =  linked_lathe.materials[M].amount >= linked_lathe.materials[M].sheet_size,
+				"can_eject_five" = linked_lathe.materials[M].amount >= (linked_lathe.materials[M].sheet_size * 5),
+			))
 	protolathe_list["materials"] = material_list
 	return protolathe_list
 
@@ -341,13 +342,14 @@ cause a ton of data to be lost, an admin can go send it back.
 	imprinter_list["reagents"] = printer_reagent_list
 	var/list/material_list = list()
 	for(var/M in linked_imprinter.materials)
-		material_list += list(list(
-			"id" =             M,
-			"name" =           linked_imprinter.materials[M].name,
-			"ammount" =        linked_imprinter.materials[M].amount,
-			"can_eject_one" =  linked_imprinter.materials[M].amount >= linked_imprinter.materials[M].sheet_size,
-			"can_eject_five" = linked_imprinter.materials[M].amount >= (linked_imprinter.materials[M].sheet_size * 5),
-		))
+		if(linked_imprinter.materials[M].amount)
+			material_list += list(list(
+				"id" =             M,
+				"name" =           linked_imprinter.materials[M].name,
+				"ammount" =        linked_imprinter.materials[M].amount,
+				"can_eject_one" =  linked_imprinter.materials[M].amount >= linked_imprinter.materials[M].sheet_size,
+				"can_eject_five" = linked_imprinter.materials[M].amount >= (linked_imprinter.materials[M].sheet_size * 5),
+			))
 	imprinter_list["materials"] = material_list
 	return imprinter_list
 
