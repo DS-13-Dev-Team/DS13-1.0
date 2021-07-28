@@ -43,7 +43,7 @@
 //Method called when the user exits the vent. Wall vents hook in and override this for their unique behaviour.
 /obj/machinery/atmospherics/proc/ventcrawl_exit(mob/living/user, atom/movable/target_move)
 	if(istype(target_move, /obj/machinery/atmospherics/unary/vent_pump/wall))
-		//Jumpscare time!
+		//Jumpscare time...
 		to_chat(user, "<span class='warning'>You are now lurking inside of [target_move]. Use the break-out verb to burst out of it... </span>")
 		user.forceMove(target_move)
 		return FALSE
