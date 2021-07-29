@@ -6,10 +6,11 @@
 	var/list/emote_soundf
 
 /decl/emote/audible/do_extra(var/atom/user)
-	if(user.gender == MALE)
-		playsound(user.loc, pick(emote_sound), 50, 0)
-	if(user.gender == FEMALE)
-		playsound(user.loc, pick(emote_soundf), 50, 0)
+	if(emote_sound || emote_soundf)
+		if(user.gender == MALE)
+			playsound(user.loc, pick(emote_sound), 50, 0)
+		if(user.gender == FEMALE)
+			playsound(user.loc, pick(emote_soundf), 50, 0)
 
 
 /decl/emote/audible/deathgasp_alien
