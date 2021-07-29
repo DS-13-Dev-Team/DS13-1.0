@@ -3,10 +3,14 @@
 	emote_message_3p = "USER burps."
 	message_type = AUDIBLE_MESSAGE
 	var/emote_sound
+	var/emote_soundf
 
 /decl/emote/audible/do_extra(var/atom/user)
 	if(emote_sound)
 		playsound(user.loc, emote_sound, 50, 0)
+	if(user.gender == FEMALE)
+		playsound(user.loc, emote_soundf, 50, 0)
+
 
 /decl/emote/audible/deathgasp_alien
 	key = "deathgasp"
@@ -20,6 +24,14 @@
 	key ="gasp"
 	emote_message_3p = "USER gasps."
 	conscious = 0
+	emote_sound = pick('sound/voice/human/male_gasp_1.ogg',
+	'sound/voice/human/male_gasp_2.ogg',
+	'sound/voice/human/male_gasp_3.ogg',
+	'sound/voice/human/male_gasp_4.ogg')
+	emote_soundf = pick('sound/voice/human/female_gasp_1.ogg',
+	'sound/voice/human/female_gasp_2.ogg',
+	'sound/voice/human/female_gasp_3.ogg',
+	'sound/voice/human/female_gasp_4.ogg')
 
 /decl/emote/audible/scretch
 	key ="scretch"
@@ -97,6 +109,10 @@
 	key = "cough"
 	emote_message_3p = "USER coughs!"
 	conscious = 0
+	emote_sound = pick('sound/voice/human/male_cough_1.ogg',
+	'sound/voice/human/male_cough_2.ogg')
+	emote_soundf = pick('sound/voice/human/female_cough_1.ogg',
+	'sound/voice/human/female_cough_2.ogg')
 
 /decl/emote/audible/cry
 	key = "cry"
@@ -109,6 +125,12 @@
 /decl/emote/audible/laugh
 	key = "laugh"
 	emote_message_3p = "USER laughs."
+	emote_sound = pick('sound/voice/human/male_laugh_1.ogg',
+	'sound/voice/human/male_laugh_2.ogg',
+	'sound/voice/human/male_laugh_3.ogg')
+	emote_soundf = pick('sound/voice/human/female_laugh_1.ogg',
+	'sound/voice/human/female_laugh_2.ogg',
+	'sound/voice/human/female_laugh_3.ogg')
 
 /decl/emote/audible/mumble
 	key = "mumble"
@@ -135,6 +157,40 @@
 /decl/emote/audible/scream
 	key = "scream"
 	emote_message_3p = "USER screams!"
+	emote_sound = pick('sound/voice/human/male_scream_1.ogg',
+	'sound/voice/human/male_scream_2.ogg',
+	'sound/voice/human/male_scream_3.ogg',
+	'sound/voice/human/male_scream_4.ogg',
+	'sound/voice/human/male_scream_5.ogg',
+	'sound/voice/human/male_scream_6.ogg',
+	'sound/voice/human/male_scream_7.ogg')
+	emote_soundf = pick('sound/voice/human/female_scream_1.ogg',
+	'sound/voice/human/female_scream_2.ogg',
+	'sound/voice/human/female_scream_3.ogg',
+	'sound/voice/human/female_scream_4.ogg',
+	'sound/voice/human/female_scream_5.ogg',
+	'sound/voice/human/female_scream_6.ogg',
+	'sound/voice/human/female_scream_7.ogg')
+
+decl/emote/audible/pain
+	key = "pain"
+	emote_message_3p = "USER cries out in pain!"
+	emote_sound = pick('sound/voice/human/male_pain_1.ogg',
+	'sound/voice/human/male_pain_2.ogg',
+	'sound/voice/human/male_pain_3.ogg',
+	'sound/voice/human/male_pain_4.ogg',
+	'sound/voice/human/male_pain_5.ogg',
+	'sound/voice/human/male_pain_6.ogg',
+	'sound/voice/human/male_pain_7.ogg',
+	'sound/voice/human/male_pain_8.ogg')
+	emote_soundf = pick('sound/voice/human/female_pain_1.ogg',
+	'sound/voice/human/female_pain_2.ogg',
+	'sound/voice/human/female_pain_3.ogg',
+	'sound/voice/human/female_pain_4.ogg',
+	'sound/voice/human/female_pain_5.ogg',
+	'sound/voice/human/female_pain_6.ogg',
+	'sound/voice/human/female_pain_7.ogg',
+	'sound/voice/human/female_pain_8.ogg')
 
 /decl/emote/audible/grunt
 	key = "grunt"
