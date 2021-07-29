@@ -433,7 +433,8 @@
 			malfunction()
 
 		for(var/obj/item/rig_module/module in processing_modules)
-			cell.use(module.Process() * CELLRATE)
+			if(!cell.use(module.Process() * CELLRATE))
+				module.deactivate()
 
 //offline should not change outside this proc
 /obj/item/weapon/rig/proc/update_offline()
@@ -444,7 +445,7 @@
 		return TRUE
 	return FALSE
 
-/obj/item/weapon/rig/proc/check_power_cost(var/mob/living/user, var/cost, var/use_unconcious, var/obj/item/rig_module/mod, var/user_is_ai)
+/obj/item/weapon/rig/proc/check_power_cost(var/mob/living/user, var/cost, var/active_cost, var/use_unconcious, var/obj/item/rig_module/mod, var/user_is_ai)
 
 	if(!istype(user))
 		return FALSE
@@ -461,7 +462,7 @@
 		fail_msg = "<span class='warning'>You are in no fit state to do that.</span>"
 	else if(!cell)
 		fail_msg = "<span class='warning'>There is no cell installed in the suit.</span>"
-	else if(cost && !cell.check_charge(cost * CELLRATE))
+	else if(cost && !cell.check_charge(cost * CELLRATE) || active_cost && !cell.check_charge(active_cost * CELLRATE))
 		fail_msg = "<span class='warning'>Not enough stored power.</span>"
 
 	if(fail_msg)

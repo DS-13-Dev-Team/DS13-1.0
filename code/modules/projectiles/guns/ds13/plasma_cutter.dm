@@ -22,7 +22,7 @@
 	mag_remove_sound = 'sound/weapons/guns/interaction/force_magout.ogg'
 	removeable_cell = TRUE
 
-	has_safety = FALSE	//Safety switches are for military/police weapons, not for tools
+	has_safety = TRUE	//This thing is too dangerous to lack safety
 
 /obj/item/weapon/gun/energy/cutter/empty
 	cell_type = null

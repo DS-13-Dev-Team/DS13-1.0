@@ -48,6 +48,7 @@
 	var/damage_type = BRUTE //BRUTE, BURN, TOX, OXY, CLONE, PAIN are the only things that should be in here
 	structure_damage_factor = 1
 	var/nodamage = 0 //Determines if the projectile will skip any damage inflictions
+	var/nofire = 0
 	var/check_armour = "bullet" //Defines what armor to use when it hits things.  Must be set to bullet, laser, energy,or bomb	//Cael - bio and rad are also valid
 	var/projectile_type = /obj/item/projectile
 	var/penetrating = 0 //If greater than zero, the projectile will pass through dense objects as specified by on_penetrate()
@@ -177,7 +178,7 @@
 /obj/item/projectile/proc/on_impact(var/atom/A)
 	if (effect_transform)	//May be null when shooting something in the same tile
 		impact_effect(effect_transform)		// generate impact effect
-	if(damage && damage_type == BURN)
+	if(damage && damage_type == BURN && !nofire)
 		var/turf/T = get_turf(A)
 		if(T)
 			T.hotspot_expose(700, 5)

@@ -20,7 +20,7 @@
 		to_chat(usr, "<span class='warning'>The RIG is not being worn.</span>")
 		return
 
-	if(!check_power_cost(usr))
+	if(!check_power_cost(usr, visor.use_power_cost, visor.active_power_cost, 0, visor))
 		return
 
 	if(canremove)
@@ -161,7 +161,7 @@
 	if(malfunction_check(usr))
 		return
 
-	if(!check_power_cost(usr, 0, 0, 0, 0))
+	if(!check_power_cost(usr, visor.use_power_cost, visor.active_power_cost, 0, visor, 0))
 		return
 
 	if(canremove)
@@ -215,9 +215,6 @@
 	if(malfunction_check(usr))
 		return
 
-	if(!check_power_cost(usr, 0, 0, 0, 0))
-		return
-
 	if(canremove)
 		to_chat(usr, "<span class='warning'>The suit is not active.</span>")
 		return
@@ -238,6 +235,9 @@
 		to_chat(usr, "<font color='blue'><b>Primary system is now: deselected.</b></font>")
 		return
 
+	if(!check_power_cost(usr, module.use_power_cost, module.active_power_cost, 0, module, 0))
+		return
+
 	selected_module = module
 	to_chat(usr, "<font color='blue'><b>Primary system is now: [selected_module.interface_name].</b></font>")
 
@@ -249,9 +249,6 @@
 	set src = usr.contents
 
 	if(malfunction_check(usr))
-		return
-
-	if(!check_power_cost(usr, 0, 0, 0, 0))
 		return
 
 	if(canremove)
@@ -276,8 +273,9 @@
 		to_chat(usr, "<font color='blue'><b>You attempt to deactivate \the [module.interface_name].</b></font>")
 		module.deactivate()
 	else
-		to_chat(usr, "<font color='blue'><b>You attempt to activate \the [module.interface_name].</b></font>")
-		module.activate()
+		if(check_power_cost(usr, module.use_power_cost, module.active_power_cost, 0, module, 0))
+			to_chat(usr, "<font color='blue'><b>You attempt to activate \the [module.interface_name].</b></font>")
+			module.activate()
 
 /obj/item/weapon/rig/verb/engage_module()
 
@@ -297,9 +295,6 @@
 		to_chat(usr, "<span class='warning'>The RIG is not being worn.</span>")
 		return
 
-	if(!check_power_cost(usr, 0, 0, 0, 0))
-		return
-
 	var/list/selectable = list()
 	for(var/obj/item/rig_module/module in installed_modules)
 		if(module.usable)
@@ -308,6 +303,9 @@
 	var/obj/item/rig_module/module = input("Which module do you wish to engage?") as null|anything in selectable
 
 	if(!istype(module))
+		return
+
+	if(!check_power_cost(usr, module.use_power_cost, module.active_power_cost, 0, module, 0))
 		return
 
 	to_chat(usr, "<font color='blue'><b>You attempt to engage the [module.interface_name].</b></font>")
