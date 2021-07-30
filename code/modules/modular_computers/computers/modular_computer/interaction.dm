@@ -191,10 +191,13 @@
 
 // On-click handling. Turns on the computer if it's off and opens the GUI.
 /obj/item/modular_computer/attack_self(var/mob/user)
-	if(enabled && screen_on)
-		ui_interact(user)
-	else if(!enabled && screen_on)
-		turn_on(user)
+	if(user.is_necromorph())
+		to_chat(user, SPAN_NOTICE("You don't know how to use this thing"))
+	else
+		if(enabled && screen_on)
+			ui_interact(user)
+		else if(!enabled && screen_on)
+			turn_on(user)
 
 /obj/item/modular_computer/attackby(var/obj/item/weapon/W as obj, var/mob/user as mob)
 	if(istype(W, /obj/item/weapon/card/id)) // ID Card, try to insert it.

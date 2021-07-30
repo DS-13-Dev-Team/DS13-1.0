@@ -176,6 +176,8 @@
 	holder.visor = src
 
 /obj/item/rig_module/vision/engage()
+	if(!..())
+		return 0
 
 	var/starting_up = !active
 

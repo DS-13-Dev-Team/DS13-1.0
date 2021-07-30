@@ -1094,7 +1094,7 @@ About the new airlock wires panel:
 				src.p_open = 1
 			src.update_icon()
 			return
-		else if(isWirecutter(C))
+		else if(isWirecutter(C) && p_open)
 			return src.attack_hand(user)
 		else if(isMultitool(C))
 			if ((atom_flags & ATOM_FLAG_INDESTRUCTIBLE))

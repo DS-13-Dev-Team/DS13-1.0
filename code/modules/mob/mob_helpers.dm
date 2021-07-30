@@ -33,11 +33,6 @@
 		return FALSE //M is too small to wield this
 	return TRUE
 
-/mob/living/carbon/human/proc/isNecro()
-	if(istype(src, /mob/living/carbon/human/necromorph))
-		return TRUE
-	return FALSE
-
 /mob/living/proc/isSynthetic()
 	return 0
 

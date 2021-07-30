@@ -236,6 +236,7 @@
 
 	var/damage = get_weighted_total_limb_damage(H)
 	if (damage >= H.max_health)
+		SSnecromorph.all_necros -= H
 		return TRUE
 
 	return FALSE
@@ -319,3 +320,11 @@
 	.=..()
 	//Apply customisation with a null preference, this applies default settings
 	H.apply_customisation(null)
+
+/mob/living/carbon/human/necromorph/New()
+	. = ..()
+	SSnecromorph.all_necros += src
+
+/mob/living/carbon/human/necromorph/Destroy()
+	. = ..()
+	SSnecromorph.all_necros -= src

@@ -314,8 +314,10 @@ Called when attempting to install this module into the target rig
 		to_chat(usr, "<span class='danger'>Access denied.</span>")
 		return 0
 
-	if(!holder.check_power_cost(usr, use_power_cost, active_power_cost, 0, src, (istype(usr,/mob/living/silicon ? 1 : 0) ) ) )
+	if(!holder.check_power_cost(usr, use_power_cost, active_power_cost, 0, src, 0))
 		return 0
+
+	holder.cell.use(use_power_cost * CELLRATE)
 
 	next_use = world.time + module_cooldown
 
