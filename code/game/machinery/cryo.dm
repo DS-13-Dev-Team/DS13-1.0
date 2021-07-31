@@ -15,6 +15,7 @@
 	active_power_usage = 200
 	clicksound = 'sound/machines/buttonbeep.ogg'
 	clickvol = 30
+	circuit = /obj/item/weapon/circuitboard/cryo_cell
 
 	var/temperature_archived
 	var/mob/living/carbon/human/occupant = null
@@ -27,16 +28,6 @@
 	icon = 'icons/obj/cryogenics_split.dmi'
 	update_icon()
 	initialize_directions = dir
-
-	component_parts = list()
-	component_parts += new /obj/item/weapon/circuitboard/cryo_cell(null)
-	component_parts += new /obj/item/weapon/stock_parts/matter_bin(null)
-	component_parts += new /obj/item/weapon/stock_parts/console_screen(null)
-	component_parts += new /obj/item/weapon/stock_parts/console_screen(null)
-	component_parts += new /obj/item/weapon/stock_parts/console_screen(null)
-	component_parts += new /obj/item/weapon/stock_parts/console_screen(null)
-	component_parts += new /obj/item/stack/cable_coil(null, 1)
-	RefreshParts()
 
 /obj/machinery/atmospherics/unary/cryo_cell/RefreshParts()
 	var/C

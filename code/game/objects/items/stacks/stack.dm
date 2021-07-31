@@ -268,6 +268,7 @@
 
 /obj/item/stack/proc/set_amount(_amount)
 	amount = _amount
+	update_icon()
 
 /obj/item/stack/proc/get_amount()
 	if(uses_charge)

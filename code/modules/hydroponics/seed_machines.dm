@@ -129,17 +129,10 @@
 	name = "lysis-isolation centrifuge"
 	icon_state = "traitcopier"
 	clicksound = "button2"
+	circuit = /obj/item/weapon/circuitboard/extractor
 
 	var/datum/seed/genetics // Currently scanned seed genetic structure.
 	var/degradation = 0     // Increments with each scan, stops allowing gene mods after a certain point.
-
-/obj/machinery/botany/extractor/Initialize()
-	. = ..()
-	component_parts = list()
-	component_parts += new /obj/item/weapon/circuitboard/extractor(null)
-	component_parts += new /obj/item/weapon/stock_parts/matter_bin(null)
-	component_parts += new /obj/item/weapon/stock_parts/manipulator(null)
-	component_parts += new /obj/item/weapon/stock_parts/console_screen(null)
 
 /obj/machinery/botany/extractor/dismantle()
 	for(var/atom/movable/A in contents)
@@ -282,14 +275,7 @@
 	icon_state = "traitgun"
 	disk_needs_genes = 1
 	clicksound = "button2"
-
-/obj/machinery/botany/editor/Initialize()
-	. = ..()
-	component_parts = list()
-	component_parts += new /obj/item/weapon/circuitboard/editor(null)
-	component_parts += new /obj/item/weapon/stock_parts/matter_bin(null)
-	component_parts += new /obj/item/weapon/stock_parts/manipulator(null)
-	component_parts += new /obj/item/weapon/stock_parts/console_screen(null)
+	circuit = /obj/item/weapon/circuitboard/editor
 
 /obj/machinery/botany/editor/dismantle()
 	for(var/atom/movable/A in contents)

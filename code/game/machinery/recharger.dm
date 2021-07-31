@@ -9,6 +9,7 @@ obj/machinery/recharger
 	use_power = 1
 	idle_power_usage = 4
 	active_power_usage = 50 KILOWATTS
+	circuit = /obj/item/weapon/circuitboard/recharger
 	var/obj/item/charging = null
 	var/recharge_coeff = 1
 	var/list/allowed_devices = list(/obj/item/weapon/gun/energy, /obj/item/weapon/gun/magnetic/railgun, /obj/item/weapon/melee/baton, /obj/item/weapon/cell, /obj/item/modular_computer/, /obj/item/device/suit_sensor_jammer, /obj/item/weapon/computer_hardware/battery_module, /obj/item/weapon/shield_diffuser, /obj/item/clothing/mask/smokable/ecig, /obj/item/device/radio)
@@ -16,13 +17,6 @@ obj/machinery/recharger
 	var/icon_state_charging = "recharger1"
 	var/icon_state_idle = "recharger0" //also when unpowered
 	var/portable = 1
-
-/obj/machinery/recharger/Initialize()
-	. = ..()
-	component_parts = list()
-	component_parts += new /obj/item/weapon/circuitboard/recharger(null)
-	component_parts += new /obj/item/weapon/stock_parts/capacitor(null, 2)
-	RefreshParts()
 
 /obj/machinery/recharger/RefreshParts()
 	for(var/obj/item/weapon/stock_parts/capacitor/C in component_parts)

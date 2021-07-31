@@ -5,6 +5,7 @@
 	off_icon = "mixer_off"
 	on_icon = "mixer_on"
 	cook_type = "candied"
+	circuit = /obj/item/weapon/circuitboard/candymaker
 
 	output_options = list(
 		"Jawbreaker" = /obj/item/weapon/reagent_containers/food/snacks/variable/jawbreaker,
@@ -12,14 +13,6 @@
 		"Sucker" = /obj/item/weapon/reagent_containers/food/snacks/variable/sucker,
 		"Jelly" = /obj/item/weapon/reagent_containers/food/snacks/variable/jelly
 		)
-
-/obj/machinery/cooker/candy/Initialize()
-	. = ..()
-	component_parts = list()
-	component_parts += new /obj/item/weapon/circuitboard/candymaker(null)
-	component_parts += new /obj/item/weapon/stock_parts/micro_laser(null)
-	component_parts += new /obj/item/weapon/stock_parts/matter_bin(null)
-	component_parts += new /obj/item/weapon/stock_parts/console_screen(null)
 
 /obj/machinery/cooker/candy/change_product_appearance(obj/item/weapon/reagent_containers/food/snacks/product)
 	food_color = get_random_colour(1)

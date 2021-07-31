@@ -3,15 +3,7 @@
 	icon_state = "d_analyzer"
 	var/obj/item/weapon/loaded_item = null
 	var/decon_mod = 0
-
-/obj/machinery/r_n_d/destructive_analyzer/Initialize()
-	. = ..()
-	component_parts = list()
-	component_parts += new /obj/item/weapon/circuitboard/destructive_analyzer(null)
-	component_parts += new /obj/item/weapon/stock_parts/scanning_module(null)
-	component_parts += new /obj/item/weapon/stock_parts/manipulator(null)
-	component_parts += new /obj/item/weapon/stock_parts/micro_laser(null)
-	RefreshParts()
+	circuit = /obj/item/weapon/circuitboard/destructive_analyzer
 
 /obj/machinery/r_n_d/destructive_analyzer/RefreshParts()
 	var/T = 0

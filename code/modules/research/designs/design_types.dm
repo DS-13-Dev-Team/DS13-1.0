@@ -737,7 +737,8 @@ Botany:
 	name = "oxycandle"
 	desc = "a device which, via a chemical reaction, can pressurise small areas."
 	id = "oxycandle"
-	materials = list(MATERIAL_STEEL = 3000, MATERIAL_PLASTIC = 500)
+	materials = list(MATERIAL_STEEL = 3000)
+	chemicals = list(/datum/reagent/sodiumchloride = 20, /datum/reagent/acetone = 20)
 	build_path = /obj/item/device/oxycandle
 	price = 500
 

@@ -26,6 +26,8 @@
 /obj/machinery/r_n_d/protolathe
 	name = "Protolathe"
 	icon_state = "protolathe"
+	atom_flags = ATOM_FLAG_OPEN_CONTAINER
+	circuit = /obj/item/weapon/circuitboard/protolathe
 
 	var/max_material_storage = 100000
 	var/efficiency_coeff
@@ -43,13 +45,6 @@
 /obj/machinery/r_n_d/protolathe/Initialize()
 	materials = default_material_composition.Copy()
 	..()
-	component_parts = list()
-	component_parts += new /obj/item/weapon/circuitboard/protolathe(src)
-	component_parts += new /obj/item/weapon/stock_parts/matter_bin(src)
-	component_parts += new /obj/item/weapon/stock_parts/matter_bin(src)
-	component_parts += new /obj/item/weapon/stock_parts/manipulator(src)
-	component_parts += new /obj/item/weapon/stock_parts/manipulator(src)
-	RefreshParts()
 
 	materials[MATERIAL_STEEL]	= new /datum/rnd_material("Steel",    /obj/item/stack/material/steel)
 	materials[MATERIAL_GLASS]	= new /datum/rnd_material("Glass",    /obj/item/stack/material/glass)
@@ -69,6 +64,10 @@
 
 /obj/machinery/r_n_d/protolathe/RefreshParts()
 	var/T = 0
+	for(var/obj/item/weapon/reagent_containers/glass/G in component_parts)
+		T += G.reagents.maximum_volume
+	create_reagents(T)
+	T = 0
 	for(var/obj/item/weapon/stock_parts/matter_bin/M in component_parts)
 		T += M.rating
 	max_material_storage = T * 100000
@@ -86,11 +85,10 @@
 		icon_state = "protolathe"
 
 /obj/machinery/r_n_d/protolathe/proc/check_mat(datum/design/being_built, M)
-	var/A = 0
 	if(materials[M])
-		A = materials[M].amount
-	A = A / max(1 , (being_built.materials[M]/efficiency_coeff))
-	return A
+		return (materials[M].amount - (being_built.materials[M]/efficiency_coeff) >= 0) ? 1 : 0
+	else
+		return (reagents.has_reagent(M, (being_built.materials[M]/efficiency_coeff)) != 0) ? 1 : 0
 
 /obj/machinery/r_n_d/protolathe/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(busy)
@@ -107,7 +105,7 @@
 	if(default_part_replacement(user, O))
 		return
 	if(O.is_open_container())
-		return TRUE
+		return FALSE
 	if(panel_open)
 		to_chat(user, "<span class='notice'>You can't load \the [src] while it's opened.</span>")
 		return TRUE
@@ -194,7 +192,10 @@
 			update_icon()
 			return
 	for(var/M in D.materials)
-		materials[M].amount = max(0, (materials[M].amount - (D.materials[M] / efficiency_coeff * amount)))
+		if(materials[M])
+			materials[M].amount = max(0, (materials[M].amount - (D.materials[M] / efficiency_coeff)))
+		else
+			reagents.remove_reagent(M, D.materials[M]/efficiency_coeff)
 	addtimer(CALLBACK(src, .proc/create_design, RNDD), D.time * amount / efficiency_coeff)
 
 /obj/machinery/r_n_d/protolathe/proc/create_design(datum/rnd_queue_design/RNDD)

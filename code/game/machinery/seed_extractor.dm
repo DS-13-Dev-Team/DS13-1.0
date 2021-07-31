@@ -8,13 +8,7 @@
 	use_power = 2
 	idle_power_usage = 10
 	active_power_usage = 2000
-
-/obj/machinery/seed_extractor/Initialize()
-	. = ..()
-	component_parts = list()
-	component_parts += new /obj/item/weapon/circuitboard/seed_extractor(src)
-	component_parts += new /obj/item/weapon/stock_parts/matter_bin(src)
-	component_parts += new /obj/item/weapon/stock_parts/manipulator(src)
+	circuit = /obj/item/weapon/circuitboard/seed_extractor
 
 obj/machinery/seed_extractor/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(default_deconstruction_screwdriver(user, O))

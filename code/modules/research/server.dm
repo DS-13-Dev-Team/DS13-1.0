@@ -13,16 +13,11 @@
 	idle_power_usage = 800
 	var/delay = 10
 	req_access = list(access_cscio) //Only the R&D can change server settings.
+	circuit = /obj/item/weapon/circuitboard/rdserver
 
 /obj/machinery/r_n_d/server/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	GLOB.rnd_server_list += src
-	component_parts = list()
-	component_parts += new /obj/item/weapon/circuitboard/rdserver(src)
-	component_parts += new /obj/item/weapon/stock_parts/scanning_module(src)
-	component_parts += new /obj/item/stack/cable_coil(src)
-	component_parts += new /obj/item/stack/cable_coil(src)
-	RefreshParts()
 
 /obj/machinery/r_n_d/server/Destroy()
 	GLOB.rnd_server_list -= src

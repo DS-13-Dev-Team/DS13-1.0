@@ -249,6 +249,10 @@ cause a ton of data to be lost, an admin can go send it back.
 	if(href_list["eject_item"])
 		if(linked_destroy)
 			linked_destroy.eject_item()
+	if(href_list["protolathe_purgeall"] && linked_lathe)
+		linked_lathe.reagents.clear_reagents()
+	if(href_list["protolathe_purge"] && linked_lathe)
+		linked_lathe.reagents.del_reagent(href_list["protolathe_purge"])
 	if(href_list["imprinter_purgeall"] && linked_imprinter)
 		linked_imprinter.reagents.clear_reagents()
 	if(href_list["imprinter_purge"] && linked_imprinter)
@@ -312,7 +316,16 @@ cause a ton of data to be lost, an admin can go send it back.
 	var/list/protolathe_list = list(
 		"max_material_storage" =             linked_lathe.max_material_storage,
 		"total_materials" =                  linked_lathe.TotalMaterials(),
+		"total_volume" =                     linked_lathe.reagents.total_volume,
+		"maximum_volume" =                   linked_lathe.reagents.maximum_volume,
 	)
+	var/list/protolathe_reagent_list = list()
+	for(var/datum/reagent/R in linked_lathe.reagents.reagent_list)
+		protolathe_reagent_list += list(list(
+			"name" =           R.name,
+			"volume" =         R.volume,
+		))
+	protolathe_list["reagents"] = protolathe_reagent_list
 	var/list/material_list = list()
 	for(var/M in linked_lathe.materials)
 		if(linked_lathe.materials[M].amount)
@@ -385,6 +398,8 @@ cause a ton of data to be lost, an admin can go send it back.
 
 				if(D.chemicals.len)
 					for(var/R in D.chemicals)
+						if(build_type == PROTOLATHE)
+							t = linked_lathe.check_mat(D, R)
 						if(build_type == IMPRINTER)
 							t = linked_imprinter.check_mat(D, R)
 

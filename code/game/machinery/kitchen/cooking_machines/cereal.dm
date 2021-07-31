@@ -6,14 +6,7 @@
 	cook_type = "cerealized"
 	on_icon = "cereal_on"
 	off_icon = "cereal_off"
-
-/obj/machinery/cooker/cereal/Initialize()
-	. = ..()
-	component_parts = list()
-	component_parts += new /obj/item/weapon/circuitboard/cereal(null)
-	component_parts += new /obj/item/weapon/stock_parts/micro_laser(null)
-	component_parts += new /obj/item/weapon/stock_parts/matter_bin(null)
-	component_parts += new /obj/item/weapon/stock_parts/console_screen(null)
+	circuit = /obj/item/weapon/circuitboard/cereal
 
 /obj/machinery/cooker/cereal/change_product_strings(var/obj/item/weapon/reagent_containers/food/snacks/product)
 	. = ..()

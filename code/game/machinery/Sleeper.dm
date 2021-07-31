@@ -14,7 +14,7 @@
 	var/pump
 	var/list/stasis_settings = list(1, 2, 5)
 	var/stasis = 1
-
+	circuit = /obj/item/weapon/circuitboard/sleeper
 	var/mapload = FALSE
 
 	use_power = 1
@@ -26,13 +26,6 @@
 
 /obj/machinery/sleeper/Initialize()
 	. = ..()
-	component_parts = list()
-	component_parts += new /obj/item/weapon/circuitboard/sleeper(null)
-	component_parts += new /obj/item/weapon/stock_parts/matter_bin(null)
-	component_parts += new /obj/item/weapon/stock_parts/manipulator(null)
-	component_parts += new /obj/item/weapon/stock_parts/console_screen(null)
-	component_parts += new /obj/item/weapon/stock_parts/console_screen(null)
-	component_parts += new /obj/item/stack/cable_coil(null, 1)
 	if(mapload)
 		beaker = new /obj/item/weapon/reagent_containers/glass/beaker/large(src)
 	update_icon()

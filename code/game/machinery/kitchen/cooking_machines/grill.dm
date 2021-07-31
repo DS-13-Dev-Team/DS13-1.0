@@ -8,11 +8,4 @@
 	on_icon = "grill_on"
 	off_icon = "grill_off"
 	can_burn_food = 1
-
-/obj/machinery/cooker/grill/Initialize()
-	. = ..()
-	component_parts = list()
-	component_parts += new /obj/item/weapon/circuitboard/grill(null)
-	component_parts += new /obj/item/weapon/stock_parts/micro_laser(null)
-	component_parts += new /obj/item/weapon/stock_parts/matter_bin(null)
-	component_parts += new /obj/item/weapon/stock_parts/console_screen(null)
+	circuit = /obj/item/weapon/circuitboard/grill

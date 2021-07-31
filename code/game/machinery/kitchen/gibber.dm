@@ -16,6 +16,7 @@
 	use_power = 1
 	idle_power_usage = 2
 	active_power_usage = 500
+	circuit = /obj/item/weapon/circuitboard/gibber
 
 /obj/machinery/gibber/can_harvest_biomass()
 	return MASS_READY
@@ -54,14 +55,8 @@
 			M.forceMove(src)
 			M.gib()
 
-
 /obj/machinery/gibber/Initialize()
 	. = ..()
-	component_parts = list()
-	component_parts += new /obj/item/weapon/circuitboard/gibber(null)
-	component_parts += new /obj/item/weapon/stock_parts/manipulator(null)
-	component_parts += new /obj/item/weapon/stock_parts/matter_bin(null)
-	component_parts += new /obj/item/weapon/stock_parts/matter_bin(null)
 	update_icon()
 
 /obj/machinery/gibber/update_icon()

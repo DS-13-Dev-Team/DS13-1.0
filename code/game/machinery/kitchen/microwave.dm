@@ -18,6 +18,7 @@
 	var/global/list/acceptable_items // List of the items you can put in
 	var/global/list/acceptable_reagents // List of the reagents you can put in
 	var/global/max_n_of_items = 0
+	circuit = /obj/item/weapon/circuitboard/microwave
 
 /obj/machinery/microwave/can_harvest_biomass()
 	return MASS_READY
@@ -33,11 +34,6 @@
 
 /obj/machinery/microwave/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
-	component_parts = list()
-	component_parts += new /obj/item/weapon/circuitboard/microwave(null)
-	component_parts += new /obj/item/weapon/stock_parts/micro_laser(null)
-	component_parts += new /obj/item/weapon/stock_parts/matter_bin(null)
-	component_parts += new /obj/item/weapon/stock_parts/console_screen(null)
 	create_reagents(100)
 	if (!available_recipes)
 		available_recipes = new

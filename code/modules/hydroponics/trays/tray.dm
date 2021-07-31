@@ -6,6 +6,7 @@
 	anchored = 1
 	atom_flags = ATOM_FLAG_OPEN_CONTAINER
 	volume = 100
+	circuit = /obj/item/weapon/circuitboard/hydro_tray
 
 	var/mechanical = 1         // Set to 0 to stop it from drawing the alert lights.
 	var/base_name = "tray"
@@ -146,13 +147,6 @@
 	temp_chem_holder = new()
 	temp_chem_holder.create_reagents(10)
 	temp_chem_holder.atom_flags |= ATOM_FLAG_OPEN_CONTAINER
-
-	component_parts = list()
-	component_parts += new /obj/item/weapon/circuitboard/hydro_tray(src)
-	component_parts += new /obj/item/weapon/stock_parts/matter_bin(src)
-	component_parts += new /obj/item/weapon/stock_parts/matter_bin(src)
-	component_parts += new /obj/item/weapon/stock_parts/manipulator(src)
-	component_parts += new /obj/item/weapon/stock_parts/console_screen(src)
 
 	create_reagents(200)
 	if(mechanical)

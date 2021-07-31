@@ -12,17 +12,10 @@ using metal and glass, it uses glass and reagents (usually sulfuric acid).
 	var/efficiency_coeff
 	var/list/queue = list()
 	var/list/allowed_mats = list(MATERIAL_GLASS, MATERIAL_GOLD, MATERIAL_DIAMOND)
+	circuit = /obj/item/weapon/circuitboard/circuit_imprinter
 
 /obj/machinery/r_n_d/circuit_imprinter/Initialize()
 	. = ..()
-	component_parts = list()
-	component_parts += new /obj/item/weapon/circuitboard/circuit_imprinter(src)
-	component_parts += new /obj/item/weapon/stock_parts/matter_bin(src)
-	component_parts += new /obj/item/weapon/stock_parts/manipulator(src)
-	component_parts += new /obj/item/weapon/reagent_containers/glass/beaker(src)
-	component_parts += new /obj/item/weapon/reagent_containers/glass/beaker(src)
-	RefreshParts()
-
 	materials[MATERIAL_GLASS]    = new /datum/rnd_material("Glass",    /obj/item/stack/material/glass)
 	materials[MATERIAL_GOLD]     = new /datum/rnd_material("Gold",     /obj/item/stack/material/gold)
 	materials[MATERIAL_DIAMOND]  = new /datum/rnd_material("Diamond",  /obj/item/stack/material/diamond)

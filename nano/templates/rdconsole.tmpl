@@ -122,6 +122,19 @@
 								<tr>
 									<td><span class="average">Total capacity</span></td><td colspan="2">{{:helper.displayBar(data.protolathe_data.total_materials, 0, data.protolathe_data.max_material_storage, 'good', data.protolathe_data.total_materials+"/"+data.protolathe_data.max_material_storage)}}</td>
 								</tr>
+								<tr>
+									<td><span class="average">Reagent capacity</span></td><td colspan="2">{{:helper.displayBar(data.protolathe_data.total_volume, 0, data.protolathe_data.maximum_volume, 'good', data.protolathe_data.total_volume+"/"+data.protolathe_data.maximum_volume)}}{{:helper.link("Purge", '', {'protolathe_purgeall' : 1})}}</td>
+								</tr>
+								{{for data.protolathe_data.reagents}}
+								<tr>
+									<td><span class="average">{{:value.name}}</span></td><td>{{:value.volume}}</td>
+									<td>
+									{{if value.volume > 0}}
+										{{:helper.link("Purge", '', {'protolathe_purge' : value.id})}}
+									{{/if}}
+									</td>
+								</tr>
+								{{/for}}
 								{{for data.protolathe_data.materials}}
 								<tr>
 									<td><span class="average">{{:value.name}}</span></td><td>{{:value.ammount}}</td>
@@ -263,6 +276,19 @@
 							<tr>
 								<td><span class="average">Total capacity</span></td><td colspan="2">{{:helper.displayBar(data.protolathe_data.total_materials, 0, data.protolathe_data.max_material_storage, 'good', data.protolathe_data.total_materials+"/"+data.protolathe_data.max_material_storage)}}</td>
 							</tr>
+							<tr>
+								<td><span class="average">Reagent capacity</span></td><td colspan="2">{{:helper.displayBar(data.protolathe_data.total_volume, 0, data.protolathe_data.maximum_volume, 'good', data.protolathe_data.total_volume+"/"+data.protolathe_data.maximum_volume)}}{{:helper.link("Purge", '', {'protolatheprotolathe_purge_purgeall' : 1})}}</td>
+							</tr>
+							{{for data.protolathe_data.reagents}}
+							<tr>
+								<td><span class="average">{{:value.name}}</span></td><td>{{:value.volume}}</td>
+								<td>
+								{{if value.volume > 0}}
+									{{:helper.link("Purge", '', {'protolathe_purge' : value.id})}}
+								{{/if}}
+								</td>
+							</tr>
+							{{/for}}
 							{{for data.protolathe_data.materials}}
 							<tr>
 								<td><span class="average">{{:value.name}}</span></td><td>{{:value.ammount}}</td>

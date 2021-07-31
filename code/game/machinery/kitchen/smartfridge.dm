@@ -13,6 +13,7 @@ GLOBAL_LIST_EMPTY(smartfridge_types)
 	idle_power_usage = 5
 	active_power_usage = 100
 	atom_flags = ATOM_FLAG_NO_REACT
+	circuit = /obj/item/weapon/circuitboard/smartfridge
 	var/global/max_n_of_items = 999 // Sorry but the BYOND infinite loop detector doesn't look things over 1000.
 	var/icon_on = "smartfridge"
 	var/icon_off = "smartfridge-off"
@@ -31,9 +32,6 @@ GLOBAL_LIST_EMPTY(smartfridge_types)
 
 /obj/machinery/smartfridge/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
-	component_parts = list()
-	component_parts += new /obj/item/weapon/circuitboard/deepfryer(null)
-	component_parts += new /obj/item/weapon/stock_parts/matter_bin(null)
 	if(is_secure)
 		wires = new/datum/wires/smartfridge/secure(src)
 	else

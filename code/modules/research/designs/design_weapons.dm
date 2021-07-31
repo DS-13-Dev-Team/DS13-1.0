@@ -147,8 +147,8 @@ S	fuel tank (hydrazine)
 	name = "Seeker Rifle"
 	id = "seeker"
 	build_path = /obj/item/weapon/gun/projectile/seeker
-	build_type = PROTOLATHE		//Temp. Add to store once proper price specifide
 	materials = list(MATERIAL_STEEL = 2500, MATERIAL_PLASTEEL = 7500, MATERIAL_GLASS = 100, MATERIAL_DIAMOND = 800, MATERIAL_PLASTIC = 2000)
+	price = 12000
 
 /datum/design/item/ammo
 	category = "Ammunition"
@@ -227,7 +227,7 @@ S	fuel tank (hydrazine)
 	id = "seeker_ammo"
 	materials = list(MATERIAL_PLASTEEL = 5000, MATERIAL_DIAMOND = 1250, MATERIAL_URANIUM = 500)
 	build_path = /obj/item/projectile/bullet/seeker
-	build_type = PROTOLATHE //Temp. Add to the store once proper price will be specified
+	price = 1750
 
 
 

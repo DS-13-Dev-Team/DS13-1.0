@@ -19,18 +19,13 @@
 	idle_power_usage = 100
 	density = 1
 	anchored = 1
+	circuit = /obj/item/weapon/circuitboard/chemical_dispenser
 	obj_flags = OBJ_FLAG_ANCHORABLE
 	core_skill = SKILL_MEDICAL
 	var/can_contaminate = TRUE
 
 /obj/machinery/chemical_dispenser/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
-	component_parts = list()
-	component_parts += new /obj/item/weapon/circuitboard/chemical_dispenser(src)
-	component_parts += new /obj/item/weapon/stock_parts/matter_bin(src)
-	component_parts += new /obj/item/weapon/stock_parts/matter_bin(src)
-	component_parts += new /obj/item/weapon/stock_parts/manipulator(src)
-	component_parts += new /obj/item/weapon/stock_parts/console_screen(src)
 
 	if(spawn_cartridges)
 		for(var/type in spawn_cartridges)
