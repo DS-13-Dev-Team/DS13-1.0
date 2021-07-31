@@ -33,7 +33,7 @@ delete-after: True
 # Also, all entries are changed into a single [] after a master changelog generation. Just remove the brackets when you add new entries.
 # Please surround your changes in  double quotes ("), as certain characters otherwise screws up compiling. The quotes will not show up in the changelog.
 changes: 
-  - tweal: "Changed a lot of prices in the store."
+  - tweak: "Changed a lot of prices in the store."
   - tweak: "Brought back ammunition and rig modules printing to protolathe."
   - tweak: "Changed required resources to print weapons."
   - tweak: "Pulse rounds now require diamonds."
