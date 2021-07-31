@@ -433,7 +433,8 @@
 			malfunction()
 
 		for(var/obj/item/rig_module/module in processing_modules)
-			if(!cell.use(module.Process() * CELLRATE))
+			var/cost = module.Process()
+			if(!cell.use(cost * CELLRATE) && module.active && cost)
 				module.deactivate()
 
 //offline should not change outside this proc
