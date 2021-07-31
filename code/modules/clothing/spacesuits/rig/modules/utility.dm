@@ -292,7 +292,7 @@
 /obj/item/rig_module/voice/engage()
 
 	if(!..())
-		return 0
+		return
 
 	var/choice= input("Would you like to toggle the synthesiser or set the name?") as null|anything in list("Enable","Disable","Set Name")
 
@@ -345,13 +345,13 @@
 
 /obj/item/rig_module/maneuvering_jets/engage()
 	if(!..())
-		return 0
+		return
 	jets.toggle_rockets()
 	return 1
 
 /obj/item/rig_module/maneuvering_jets/activate()
 	if(!..())
-		return 0
+		return
 
 	if(active)
 		return 0

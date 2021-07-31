@@ -33,7 +33,7 @@
 /obj/item/rig_module/stealth_field/activate()
 
 	if(!..())
-		return 0
+		return
 
 	var/mob/living/carbon/human/H = holder.wearer
 
@@ -188,7 +188,7 @@
 /obj/item/rig_module/self_destruct/activate()
 	activation_check = 1
 	if(!..())
-		return 0
+		return
 
 /obj/item/rig_module/self_destruct/engage(var/skip_check = FALSE)
 	set waitfor = 0

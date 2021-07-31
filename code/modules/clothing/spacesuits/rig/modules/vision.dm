@@ -177,7 +177,7 @@
 
 /obj/item/rig_module/vision/engage()
 	if(!..())
-		return 0
+		return
 
 	var/starting_up = !active
 

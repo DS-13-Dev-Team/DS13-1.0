@@ -11,8 +11,6 @@
 
 
 /obj/item/rig_module/extension/activate()
-	if(!..())
-		return 0
 	//Remove any stale version first
 	remove_extension()
 	.=..()
