@@ -324,6 +324,7 @@ cause a ton of data to be lost, an admin can go send it back.
 		protolathe_reagent_list += list(list(
 			"name" =           R.name,
 			"volume" =         R.volume,
+			"type" = R
 		))
 	protolathe_list["reagents"] = protolathe_reagent_list
 	var/list/material_list = list()
@@ -351,6 +352,7 @@ cause a ton of data to be lost, an admin can go send it back.
 		printer_reagent_list += list(list(
 			"name" =           R.name,
 			"volume" =         R.volume,
+			"type" = R,
 		))
 	imprinter_list["reagents"] = printer_reagent_list
 	var/list/material_list = list()

@@ -130,7 +130,7 @@
 									<td><span class="average">{{:value.name}}</span></td><td>{{:value.volume}}</td>
 									<td>
 									{{if value.volume > 0}}
-										{{:helper.link("Purge", '', {'protolathe_purge' : value.id})}}
+										{{:helper.link("Purge", '', {'protolathe_purge' : value.type})}}
 									{{/if}}
 									</td>
 								</tr>
@@ -175,7 +175,7 @@
 									<td><span class="average">{{:value.name}}</span></td><td>{{:value.volume}}</td>
 									<td>
 									{{if value.volume > 0}}
-										{{:helper.link("Purge", '', {'imprinter_purge' : value.id})}}
+										{{:helper.link("Purge", '', {'imprinter_purge' : value.type})}}
 									{{/if}}
 									</td>
 								</tr>
@@ -284,7 +284,7 @@
 								<td><span class="average">{{:value.name}}</span></td><td>{{:value.volume}}</td>
 								<td>
 								{{if value.volume > 0}}
-									{{:helper.link("Purge", '', {'protolathe_purge' : value.id})}}
+									{{:helper.link("Purge", '', {'protolathe_purge' : value.type})}}
 								{{/if}}
 								</td>
 							</tr>
@@ -327,7 +327,7 @@
 								<td><span class="average">{{:value.name}}</span></td><td>{{:value.volume}}</td>
 								<td>
 								{{if value.volume > 0}}
-									{{:helper.link("Purge", '', {'imprinter_purge' : value.id})}}
+									{{:helper.link("Purge", '', {'imprinter_purge' : value.type})}}
 								{{/if}}
 								</td>
 							</tr>
