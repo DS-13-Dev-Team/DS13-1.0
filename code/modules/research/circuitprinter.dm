@@ -153,10 +153,9 @@ using metal and glass, it uses glass and reagents (usually sulfuric acid).
 			return
 
 	for(var/M in D.materials)
-		if(materials[M])
-			materials[M].amount = max(0, (materials[M].amount - (D.materials[M] / efficiency_coeff)))
-		else
-			reagents.remove_reagent(M, D.materials[M]/efficiency_coeff)
+		materials[M].amount = max(0, (materials[M].amount - (D.materials[M] / efficiency_coeff)))
+	for(var/C in D.chemicals)
+		reagents.remove_reagent(C, D.chemicals[C]/efficiency_coeff)
 
 	addtimer(CALLBACK(src, .proc/create_design, RNDD), D.time)
 

@@ -192,10 +192,9 @@
 			update_icon()
 			return
 	for(var/M in D.materials)
-		if(materials[M])
-			materials[M].amount = max(0, (materials[M].amount - (D.materials[M] / efficiency_coeff)))
-		else
-			reagents.remove_reagent(M, D.materials[M]/efficiency_coeff)
+		materials[M].amount = max(0, (materials[M].amount - (D.materials[M] / efficiency_coeff)))
+	for(var/C in D.chemicals)
+		reagents.remove_reagent(C, D.chemicals[C]/efficiency_coeff)
 	addtimer(CALLBACK(src, .proc/create_design, RNDD), D.time * amount / efficiency_coeff)
 
 /obj/machinery/r_n_d/protolathe/proc/create_design(datum/rnd_queue_design/RNDD)
