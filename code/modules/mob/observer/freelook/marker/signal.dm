@@ -265,11 +265,11 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 	set name = "Jump to Necromorph"
 	set category = SPECIES_NECROMORPH
 
-	if(SSnecromorph.all_necros.len <= 0)
+	if(SSnecromorph.major_vessels.len <= 0)
 		to_chat(src, SPAN_DANGER("No living necromorphs found!"))
 		return
 
-	var/necro = input(src, "Choose necromorph to jump", "Jumping menu") as null|anything in SSnecromorph.all_necros
+	var/necro = input(src, "Choose necromorph to jump", "Jumping menu") as null|anything in SSnecromorph.major_vessels
 	if(necro)
 		forceMove(get_turf(necro))
 		return

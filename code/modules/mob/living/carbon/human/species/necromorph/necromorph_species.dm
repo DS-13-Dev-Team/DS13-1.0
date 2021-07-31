@@ -205,6 +205,7 @@
 	.=..()
 	H.a_intent = I_HURT	//Don't start in help intent, we want to kill things
 	H.faction = FACTION_NECROMORPH
+	SSnecromorph.major_vessels += H
 
 //Add this necro as a vision node for the marker and signals
 /datum/species/necromorph/setup_interaction(var/mob/living/carbon/human/H)
@@ -237,7 +238,6 @@
 
 	var/damage = get_weighted_total_limb_damage(H)
 	if (damage >= H.max_health)
-		SSnecromorph.all_necros -= H
 		return TRUE
 
 	return FALSE
@@ -251,6 +251,7 @@
 		SSnecromorph.marker.add_biomass_source(H, H.biomass*biomass_reclamation, biomass_reclamation_time, /datum/biomass_source/reclaim)
 		remove_massive_atom(H)
 	GLOB.necrovision.remove_source(H)
+	SSnecromorph.major_vessels -= H
 
 //How much damage has this necromorph taken?
 //We'll loop through each organ tag in the species' initial health values list, which should definitely be populated already, and try to get the organ for each
@@ -322,10 +323,6 @@
 	//Apply customisation with a null preference, this applies default settings
 	H.apply_customisation(null)
 
-/mob/living/carbon/human/necromorph/New()
-	. = ..()
-	SSnecromorph.all_necros += src
-
 /mob/living/carbon/human/necromorph/Destroy()
-	. = ..()
-	SSnecromorph.all_necros -= src
+	SSnecromorph -= src
+	return ..()

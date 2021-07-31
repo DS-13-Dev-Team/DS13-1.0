@@ -6,7 +6,6 @@ SUBSYSTEM_DEF(necromorph)
 	//Necromorph Lists
 	var/list/major_vessels = list()	//Necromorphs that need a player to control them. they are inert husks without one.
 	var/list/minor_vessels	=	list()	//Necromorphs that have AI and don't need a player, but can be possessed anyway if someone wants to do manual control
-	var/list/all_necros		= list()	//List of all alive necromorphs
 	var/list/shards = list()	//Marker shards in the world
 	var/list/spawned_necromorph_types = list() //Assoc list of typepath = quantity, tracks the number of necromorphs ever spawned this round
 

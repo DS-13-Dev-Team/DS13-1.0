@@ -39,6 +39,5 @@ changes:
   - bugfix: "Fixed RIG modules power draw."
   - bugfix: "Scry eyes and signals cant be pulled now."
   - bugfix: "Necromorphs no longer speak Galactic Common"
-  - tweak: "Removed dead chat from signals. 100% safer to discuss the round!"
   - tweak: "Added science channel to miners headset and supply channel to science headset."
   - rscadd: "Signals can jump to living necromorphs."

@@ -259,7 +259,7 @@ Class Procs:
 	if(!interact_offline && (stat & NOPOWER))
 		return STATUS_CLOSE
 
-	if(user.is_necromorph())
+	if(!user.is_advanced_tool_user(TRUE))
 		to_chat(user, SPAN_NOTICE("You don't know how to use this thing."))
 		return STATUS_CLOSE
 
