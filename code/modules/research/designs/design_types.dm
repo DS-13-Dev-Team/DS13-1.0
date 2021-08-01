@@ -1036,3 +1036,13 @@ Botany:
 	materials = list(MATERIAL_PLASTIC = 750, MATERIAL_GLASS = 250)
 	build_type = PROTOLATHE
 	build_path = /obj/item/weapon/disk/botany
+
+/datum/design/item/misc
+	category = "Misc"
+
+/datum/design/item/misc/boombox
+	name = "Boombox"
+	id = "boombox"
+	materials = list(MATERIAL_PLASTIC = 1500, MATERIAL_GLASS = 250)
+	build_type = PROTOLATHE
+	build_path = /obj/item/device/boombox

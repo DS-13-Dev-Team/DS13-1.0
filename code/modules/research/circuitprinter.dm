@@ -35,7 +35,6 @@ using metal and glass, it uses glass and reagents (usually sulfuric acid).
 	T = 0
 	for(var/obj/item/weapon/stock_parts/matter_bin/M in component_parts)
 		T += M.rating
-	world << T
 	max_material_storage = T * 75000
 	T = 0
 	for(var/obj/item/weapon/stock_parts/manipulator/M in component_parts)

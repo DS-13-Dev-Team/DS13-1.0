@@ -39,3 +39,4 @@ changes:
   - tweak: "Chemical Dispenser, Chem Master, Cryo Cell, Sleeper, Recharger, Hydroponic Tray, Seed Extractor, Smartfridge, Deep Fryer, Microwave, Oven, Grill, Candy Machine, Cereal, Gibber, Recharger, Lysis-Isolation Centrifuge and Bioballistic Delivery System can now be constructed."
   - tweak: "Seeker, seeker shells, rig mounted taser, rig mounted flash, silenced divet, and special divet ammo can be constructed on protolathe."
   - tweak: "Gibber ignores safety check when you try to place necromorph inside of it."
+  - tweak: "Boombox is now portable jukebox and can be printed on Protolathe."
