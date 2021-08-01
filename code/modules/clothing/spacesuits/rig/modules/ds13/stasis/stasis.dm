@@ -22,6 +22,10 @@
 /datum/proc/update_stas_charge()
 	return
 
+/obj/item/rig_module/mounted/stasis/installed()
+	..()
+	holder.stasis = src
+
 /obj/item/rig_module/mounted/stasis/update_stas_charge()
 	var/percentage
 
@@ -47,17 +51,14 @@
 	interface_desc = "Stasis module is capable of producing a temporary time dilation, making objects move at an extremely slow rate for a period of time. This version is capable of self recharging."
 	gun = /obj/item/weapon/gun/energy/stasis/military
 
-/obj/item/rig_module/mounted/stasis/proc/try_use_pack(obj/item/I as obj, mob/user as mob)
-	for(var/obj/item/weapon/gun/energy/stasis/G in contents)
-		for(var/obj/item/weapon/cell/C in G.contents)
-			if(C.percent() != 100)
-				var/obj/item/stack/stasis_pack/pack = I
-				pack.use(1)
-				C.insta_recharge()
-				to_chat(user, "Stasis Module was recharged")
-				return TRUE
-			else
-				to_chat(user, "Stasis Module is already fully charged")
-				return
-
-	to_chat(user, "Something wen't wrong. Please report to your local Blue Space Techincan")
+/obj/item/rig_module/mounted/stasis/proc/try_use_pack(var/obj/item/stack/stasis_pack/pack, var/mob/user)
+	var/obj/item/weapon/gun/energy/E = gun
+	if(E.power_supply.percent() != 100)
+		pack.use(1)
+		E.power_supply.insta_recharge()
+		to_chat(user, "Stasis Module was recharged")
+		update_stas_charge()
+		return TRUE
+	else
+		to_chat(user, "Stasis Module is already fully charged")
+		return

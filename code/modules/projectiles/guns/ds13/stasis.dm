@@ -38,8 +38,8 @@
 	var/impact_zone = trange(2, A)
 	for(var/t in impact_zone)
 		var/turf/T = t
-		for(var/mob/living/L in T)
-			L.stasis_act()
+		for(var/atom/M in T)
+			M.stasis_act()
 
 /datum/extension/stasis_effect
 	name = "Stasis Effect"
@@ -51,7 +51,7 @@
 
 	var/attack_slowdown = -0.5
 	var/slowdown = 0.5
-	var/mob/M
+	var/mob/living/carbon/M
 	var/stasis_duration = 5 //1 = 1 second
 	statmods = list(STATMOD_MOVESPEED_MULTIPLICATIVE = 0.5, STATMOD_ATTACK_SPEED = -0.5)
 
@@ -94,9 +94,8 @@
 	return PROCESS_KILL
 
 /datum/extension/stasis_effect/Destroy()
-	if(M)
-		M.filters.Remove(ripple)
-		M.filters.Remove(outline)
+	M.filters.Remove(ripple)
+	M.filters.Remove(outline)
 	.=..()
 
 /datum/proc/stasis_act()

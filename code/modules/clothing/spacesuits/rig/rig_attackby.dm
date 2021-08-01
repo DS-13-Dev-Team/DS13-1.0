@@ -6,10 +6,10 @@
 		if(shock(user)) //Handles removing charge from the cell, as well. No need to do that here.
 			return
 
+	// Try to use stasis pack
 	if(istype(W, /obj/item/stack/stasis_pack))
-		for(var/obj/item/rig_module/mounted/stasis/S in installed_modules)
-			var/use_pack = S.try_use_pack(W, user)
-			if(use_pack)
+		if(stasis)
+			if(stasis.try_use_pack(W, user))
 				return
 
 	// Pass repair items on to the chestpiece.
