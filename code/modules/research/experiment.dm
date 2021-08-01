@@ -46,7 +46,7 @@
 			if(ignoreRepeat)
 				item_tech_points += I.origin_tech[T] * tech_points[T]
 			else
-				if(T in saved_tech_levels) // You only get a fraction of points if you researched items with this level already
+				if(saved_tech_levels[T] && (I.origin_tech[T] in saved_tech_levels[T])) // You only get a fraction of points if you researched items with this level already
 					if(!is_board) // Boards are cheap to make so we don't give any points for repeats
 						item_tech_points += I.origin_tech[T] * tech_points[T] * 0.1
 				else
@@ -64,7 +64,7 @@
 			saved_tech_levels[T] = list()
 
 		if(!(I.origin_tech in saved_tech_levels[T]))
-			saved_tech_levels[T] += I.origin_tech[T]
+			saved_tech_levels[T] |= I.origin_tech[T]
 
 // Returns ammount of research points received
 /*/datum/experiment_data/proc/read_science_tool(obj/item/device/science_tool/I)
