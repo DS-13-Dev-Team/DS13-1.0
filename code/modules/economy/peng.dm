@@ -31,7 +31,7 @@ GLOBAL_DATUM(peng, /obj/item/weapon/peng)
 	if (GLOB.peng && !GLOB.peng.claimed)
 		//Replace with normal loot
 		new /obj/random/rare_loot/pengless(loc)
-		return
+		return INITIALIZE_HINT_QDEL
 
 	GLOB.peng = src
 	desc = pick(GLOB.peng_slogans)
