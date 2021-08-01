@@ -56,6 +56,13 @@
 	materials[MATERIAL_URANIUM]	= new /datum/rnd_material("Uranium",  /obj/item/stack/material/uranium)
 	materials[MATERIAL_PHORON]	= new /datum/rnd_material("Phoron",   /obj/item/stack/material/phoron)
 
+/obj/machinery/r_n_d/protolathe/Destroy()
+	. = ..()
+	if(linked_console)
+		linked_console.linked_lathe = null
+		linked_console.update_open_uis()
+		linked_console = null
+
 /obj/machinery/r_n_d/protolathe/TotalMaterials() //returns the total of all the stored materials. Makes code neater.
 	var/am = 0
 	for(var/M in materials)
@@ -98,6 +105,7 @@
 		update_icon()
 		if(linked_console)
 			linked_console.linked_lathe = null
+			linked_console.update_open_uis()
 			linked_console = null
 		return
 	if(default_deconstruction_crowbar(user, O))

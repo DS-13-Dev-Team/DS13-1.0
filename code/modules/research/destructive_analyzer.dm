@@ -5,6 +5,13 @@
 	var/decon_mod = 0
 	circuit = /obj/item/weapon/circuitboard/destructive_analyzer
 
+/obj/machinery/r_n_d/destructive_analyzer/Destroy()
+	. = ..()
+	if(linked_console)
+		linked_console.linked_destroy = null
+		linked_console.update_open_uis()
+		linked_console = null
+
 /obj/machinery/r_n_d/destructive_analyzer/RefreshParts()
 	var/T = 0
 	for(var/obj/item/weapon/stock_parts/S in component_parts)
@@ -31,10 +38,12 @@
 	if (shocked)
 		shock(user,50)
 
-	if (default_deconstruction_screwdriver(user, O))
+	if (user.a_intent == I_HURT && istype(O, /obj/item/weapon/tool/screwdriver))
+		default_deconstruction_screwdriver(user, O)
 		update_icon()
 		if(linked_console)
 			linked_console.linked_destroy = null
+			linked_console.update_open_uis()
 			linked_console = null
 		return
 

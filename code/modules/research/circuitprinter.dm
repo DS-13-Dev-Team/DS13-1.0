@@ -20,6 +20,13 @@ using metal and glass, it uses glass and reagents (usually sulfuric acid).
 	materials[MATERIAL_GOLD]     = new /datum/rnd_material("Gold",     /obj/item/stack/material/gold)
 	materials[MATERIAL_DIAMOND]  = new /datum/rnd_material("Diamond",  /obj/item/stack/material/diamond)
 
+/obj/machinery/r_n_d/circuit_imprinter/Destroy()
+	. = ..()
+	if(linked_console)
+		linked_console.linked_imprinter = null
+		linked_console.update_open_uis()
+		linked_console = null
+
 /obj/machinery/r_n_d/circuit_imprinter/RefreshParts()
 	var/T = 0
 	for(var/obj/item/weapon/reagent_containers/glass/G in component_parts)
@@ -60,6 +67,7 @@ using metal and glass, it uses glass and reagents (usually sulfuric acid).
 		update_icon()
 		if(linked_console)
 			linked_console.linked_imprinter = null
+			linked_console.update_open_uis()
 			linked_console = null
 		return
 	if(default_deconstruction_crowbar(user, O))
