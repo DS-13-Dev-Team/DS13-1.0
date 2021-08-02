@@ -6,16 +6,14 @@
 	icon_state = "healthbar"
 	use_power_cost = 0
 	origin_tech = list(TECH_MAGNET = 3, TECH_BIO = 3, TECH_ENGINEERING = 5)
-	suit_overlay_inactive = "healthbar_100"
-	suit_overlay_active = "healthbar_100"
-	suit_overlay_used = "healthbar_100"
-	suit_overlay = "healthbar_100"
+	suit_overlay = "healthbar"
+	second_overlay =  "healthbar_100"
 	var/mob/living/carbon/human/user
 	process_with_rig = FALSE
 
-	suit_overlay_layer = EYE_GLOW_LAYER
-	suit_overlay_plane = EFFECTS_ABOVE_LIGHTING_PLANE
-	suit_overlay_flags = KEEP_APART
+	second_overlay_layer = EYE_GLOW_LAYER
+	second_overlay_plane = EFFECTS_ABOVE_LIGHTING_PLANE
+	second_overlay_flags = KEEP_APART
 
 	module_tags = list(LOADOUT_TAG_RIG_HEALTHBAR = 1)
 
@@ -58,10 +56,7 @@
 	else
 		percentage = round(percentage, 10)
 
-	suit_overlay = "healthbar_[percentage]"
-	suit_overlay_inactive = "healthbar_[percentage]"
-	suit_overlay_active = "healthbar_[percentage]"
-	suit_overlay_used = "healthbar_[percentage]"
+	second_overlay = "healthbar_[percentage]"
 	holder.update_wear_icon()
 
 

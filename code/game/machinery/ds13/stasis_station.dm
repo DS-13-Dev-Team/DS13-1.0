@@ -1,61 +1,54 @@
 /obj/machinery/stasis_station
-	name = "stasis recharge"
+	name = "stasis recharge station"
 	desc = "This station is used to recharge stasis module."
 	icon = 'icons/obj/machines/ds13/stasis.dmi'
 	icon_state = "stasis_station"
 	anchored = 1
 	use_power = 0
 
+	var/busy = FALSE
+	var/recharging = FALSE
+
 /obj/machinery/stasis_station/Initialize()
 	. = ..()
 	update_icon()
 
 /obj/machinery/stasis_station/update_icon()
-	overlays.Cut()
-
-	pixel_x = 0
-	pixel_y = 0
-	var/walldir = (dir & (NORTH|SOUTH)) ? GLOB.reverse_dir[dir] : dir
-	var/turf/T = get_step(get_turf(src), walldir)
-	if(istype(T) && T.density)
-		if(dir == SOUTH)
-			pixel_y = 29
-		else if(dir == NORTH)
-			pixel_y = -29
-		else if(dir == EAST)
-			pixel_x = 29
-		else if(dir == WEST)
-			pixel_x = -29
+//	if(busy)
+//		icon_state = "stasis_station_busy"
+//	else if(recharging)
+//		icon_state = "stasis_station_recharging"
+//	else
+//		icon_state = "stasis_station"
+	. = ..()
 
 /obj/machinery/stasis_station/attack_hand(var/mob/user)
-	for(var/obj/item/weapon/rig/R in user.contents)
-		for(var/obj/item/rig_module/mounted/stasis/S in R.installed_modules)
-			for(var/obj/item/weapon/gun/energy/stasis/G in S.contents)
-				for(var/obj/item/weapon/cell/C in G.contents)
-					if(C.percent() != 100)
-						if(user.do_skilled(1 SECOND, SKILL_DEVICES, src))
-							C.insta_recharge()
-							to_chat(user, "Stasis Module was recharged")
-							return
+	if(busy)
+		to_chat(user, SPAN_NOTICE("Someone is already using [src]"))
+	else if(recharging)
+		to_chat(user, SPAN_NOTICE("[src] is recharging!"))
+	else
+		if(istype(user.back, /obj/item/weapon/rig))
+			var/obj/item/weapon/rig/R = user.back
+			if(R.stasis)
+				var/obj/item/weapon/gun/energy/E = R.stasis.gun
+				if(E.power_supply.percent() != 100)
+					busy = TRUE
+					if(user.do_skilled(1 SECOND, SKILL_DEVICES, src))
+						E.power_supply.insta_recharge()
+						to_chat(user, SPAN_NOTICE("Stasis Module was recharged"))
+						update_icon()
+						busy = FALSE
+						recharging = TRUE
+						spawn(180)
+							recharging = FALSE
+							update_icon()
 					else
-						to_chat(user, "Stasis Module is already fully charged")
-						return
-
-	to_chat(user, "You don't have stasis module installed.")
-	return
+						busy = FALSE
+				else
+					to_chat(user, SPAN_NOTICE("Stasis Module is already fully charged"))
+			else
+				to_chat(user, SPAN_NOTICE("You don't have stasis module installed."))
 
 /obj/machinery/stasis_station/attackby(var/obj/item/I, var/mob/user)
-	for(var/obj/item/weapon/rig/R in user.contents)
-		for(var/obj/item/rig_module/mounted/stasis/S in R.installed_modules)
-			for(var/obj/item/weapon/gun/energy/stasis/G in S.contents)
-				for(var/obj/item/weapon/cell/C in G.contents)
-					if(C.percent() != 100)
-						C.insta_recharge()
-						to_chat(user, "Stasis Module was recharged")
-						return
-					else
-						to_chat(user, "Stasis Module is already fully charged")
-						return
-
-	to_chat(user, "You don't have stasis module installed.")
-	return
+	return attack_hand(user)

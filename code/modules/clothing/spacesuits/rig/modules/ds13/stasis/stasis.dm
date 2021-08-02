@@ -10,14 +10,16 @@
 
 	selectable = 1
 	usable = 0
+	process_with_rig = FALSE
 
 	module_cooldown = 0
 
 	gun = /obj/item/weapon/gun/energy/stasis
-	suit_overlay_inactive = "stasisbar_100"
-	suit_overlay_active = "stasisbar_100"
-	suit_overlay_used = "stasisbar_100"
-	suit_overlay = "stasisbar_100"
+	suit_overlay = "stasismodule"
+	second_overlay = "stasisbar_100"
+	second_overlay_layer = EYE_GLOW_LAYER
+	second_overlay_plane = EFFECTS_ABOVE_LIGHTING_PLANE
+	second_overlay_flags = KEEP_APART
 
 /datum/proc/update_stas_charge()
 	return
@@ -28,17 +30,14 @@
 
 /obj/item/rig_module/mounted/stasis/update_stas_charge()
 	var/percentage
+	var/obj/item/weapon/gun/energy/E = gun
 
-	for(var/obj/item/weapon/gun/energy/stasis/S in contents)
-		percentage = S.get_remaining_percent()
+	percentage = E.get_remaining_percent()
 
 	//Just in case
 	percentage = clamp(percentage, 0, 100)
 
-	suit_overlay = "stasisbar_[percentage]"
-	suit_overlay_inactive = "stasisbar_[percentage]"
-	suit_overlay_active = "stasisbar_[percentage]"
-	suit_overlay_used = "stasisbar_[percentage]"
+	second_overlay = "stasisbar_[percentage]"
 	holder.update_wear_icon()
 
 /obj/item/rig_module/mounted/stasis/on_shot()
