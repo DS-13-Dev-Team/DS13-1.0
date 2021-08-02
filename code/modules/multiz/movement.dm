@@ -276,6 +276,48 @@
 			visible_message("<span class='warning'>[src] gives up on trying to climb onto \the [A]!</span>", "<span class='warning'>You give up on trying to climb onto \the [A]!</span>")
 		return TRUE
 
+/mob/living/verb/lookup()
+	set name = "Look Up"
+	set desc = "If you want to know what's above."
+	set category = "IC"
+
+	if(client && !is_physically_disabled())
+		if(z_eye)
+			reset_view(null)
+			qdel(z_eye)
+			z_eye = null
+			return
+		var/turf/above = GetAbove(src)
+		if(istype(above) && above.z_flags & ZM_MIMIC_BELOW)
+			z_eye = new /atom/movable/z_observer/z_up(src, src)
+			to_chat(src, "<span class='notice'>You look up.</span>")
+			reset_view(z_eye)
+			return
+		to_chat(src, "<span class='notice'>You can see \the [above ? above : "ceiling"].</span>")
+	else
+		to_chat(src, "<span class='notice'>You can't look up right now.</span>")
+
+/mob/living/verb/lookdown()
+	set name = "Look Down"
+	set desc = "If you want to know what's below."
+	set category = "IC"
+
+	if(client && !is_physically_disabled())
+		if(z_eye)
+			reset_view(null)
+			qdel(z_eye)
+			z_eye = null
+			return
+		var/turf/T = get_turf(src)
+		if(T && (T.z_flags & ZM_MIMIC_BELOW) && HasBelow(T.z) && !istype(T, /turf/simulated/wall) && !istype(T, /turf/simulated/wall))
+			z_eye = new /atom/movable/z_observer/z_down(src, src)
+			to_chat(src, "<span class='notice'>You look down.</span>")
+			reset_view(z_eye)
+			return
+		to_chat(src, "<span class='notice'>You can see \the [T ? T : "floor"].</span>")
+	else
+		to_chat(src, "<span class='notice'>You can't look below right now.</span>")
+
 /mob/living
 	var/atom/movable/z_observer/z_eye
 
