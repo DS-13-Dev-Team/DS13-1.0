@@ -309,7 +309,7 @@
 			z_eye = null
 			return
 		var/turf/T = get_turf(src)
-		if(T && (T.z_flags & ZM_MIMIC_BELOW) && HasBelow(T.z) && !istype(T, /turf/simulated/wall) && !istype(T, /turf/simulated/wall))
+		if(T && (T.z_flags & ZM_MIMIC_BELOW) && HasBelow(T.z))
 			z_eye = new /atom/movable/z_observer/z_down(src, src)
 			to_chat(src, "<span class='notice'>You look down.</span>")
 			reset_view(z_eye)
