@@ -289,6 +289,10 @@
 	..()
 	holder.speech = src
 
+/obj/item/rig_module/voice/uninstalled(obj/item/weapon/rig/former)
+	..()
+	former.speech = null
+
 /obj/item/rig_module/voice/engage()
 
 	if(!..())

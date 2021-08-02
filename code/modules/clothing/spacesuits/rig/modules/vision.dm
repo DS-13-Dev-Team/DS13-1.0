@@ -175,6 +175,10 @@
 	..()
 	holder.visor = src
 
+/obj/item/rig_module/vision/uninstalled(obj/item/weapon/rig/former)
+	..()
+	former.visor = null
+
 /obj/item/rig_module/vision/engage()
 	if(!..())
 		return
