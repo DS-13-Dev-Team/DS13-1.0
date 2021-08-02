@@ -41,3 +41,4 @@ changes:
   - bugfix: "Necromorphs no longer speak Galactic Common"
   - tweak: "Added science channel to miners headset and supply channel to science headset."
   - rscadd: "Signals can jump to living necromorphs."
+  - bugfix: "Putting items in RIG no longer places them inside of previous storage module."
