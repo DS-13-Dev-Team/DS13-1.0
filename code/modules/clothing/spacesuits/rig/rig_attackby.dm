@@ -141,7 +141,6 @@
 					to_chat(user, "You detach \the [removed] from \the [src].")
 					removed.forceMove(get_turf(src))
 					removed.uninstalled(src, user)
-					installed_modules -= removed
 					processing_modules -= removed
 					update_icon()
 
@@ -254,7 +253,6 @@
 
 
 /obj/item/weapon/rig/proc/uninstall(var/obj/item/rig_module/RM, var/delete = FALSE)
-	installed_modules -= RM
 	processing_modules -= RM
 
 	RM.uninstalled(src)

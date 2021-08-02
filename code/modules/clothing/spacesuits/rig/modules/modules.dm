@@ -364,7 +364,7 @@ Called when attempting to install this module into the target rig
 // Called when the module is uninstalled from a suit.
 /obj/item/rig_module/proc/uninstalled(var/obj/item/weapon/rig/former, var/mob/living/user)
 	deactivate()
-	holder.installed_modules -= src
+	former.installed_modules -= src
 	holder = null
 	return
 
