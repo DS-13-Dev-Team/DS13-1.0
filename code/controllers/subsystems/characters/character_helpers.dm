@@ -18,7 +18,7 @@
 */
 /proc/get_character_id(var/data)
 
-	if(!dbcon || !dbcon.IsConnected())
+	if(!dbcon || !(dbcon?.IsConnected()))
 		return null
 
 	//Data used for registering, if we need to
@@ -39,6 +39,14 @@
 
 		if (M.character_id)
 			return M.character_id
+
+		//Lets see if there's an id on associated preferences
+		var/datum/preferences/P = get_preferences(M.current)
+		if (P?.character_id)
+			//There is and we don't have it? oops!
+			M.character_id = P.character_id
+			return M.character_id
+
 		name = M.name
 		ckey = ckey(M.key)
 	else
@@ -75,7 +83,12 @@
 			query.Execute()
 
 
-
+			//If this was a mind and not preferences, then we need to save it on prefs immediately
+			if (istype(output, /datum/mind))
+				var/datum/mind/M = output
+				var/datum/preferences/P = get_preferences(M.current)
+				P.character_id = id
+				P.save_preferences()
 
 
 /*
@@ -88,7 +101,7 @@
 //TODO: Insert in preferences menu
 /proc/get_character_credits(var/character_data)
 	var/id = get_character_id(character_data)
-	if (!id)
+	if (!id || !(dbcon?.IsConnected()))
 		return 0
 
 	//Get the number of credits from the database record associated with our ID
@@ -111,7 +124,8 @@
 	var/id = get_character_id(M)
 
 
-	if (!id)
+
+	if (!id || !(dbcon?.IsConnected()))
 		return
 
 
@@ -140,7 +154,7 @@
 
 	var/id = get_character_id(M)
 
-	if (!id)
+	if (!id || !(dbcon?.IsConnected()))
 		return 0
 
 	var/credits_stored = credits["stored"]

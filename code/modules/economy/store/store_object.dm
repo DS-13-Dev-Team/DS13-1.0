@@ -113,6 +113,9 @@ GLOBAL_VAR_INIT(number_of_store_kiosks, 0)
 		if (istype(I, /obj/item/store_schematic))
 			return handle_schematic(I, user)
 
+		if (istype(I, /obj/item/weapon/peng))
+			return handle_peng(I, user)
+
 		//Items used on the store go into the deposit box
 
 		deposit_box.store_item(I, user)
