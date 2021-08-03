@@ -8,7 +8,7 @@
 	fire_sound_text = "stasis blast"
 	w_class = ITEM_SIZE_HUGE
 	charge_cost = 5
-	cell_type = /obj/item/weapon/cell/potato //20 charge, joke time
+	cell_type = /obj/item/weapon/cell/potato //Potato cell is underrated
 	projectile_type = /obj/item/projectile/bullet/stasis
 	removeable_cell = FALSE
 	safety_state = FALSE
@@ -35,57 +35,62 @@
 	muzzle_type = ""
 
 /obj/item/projectile/bullet/stasis/on_impact(var/atom/A)
-	var/impact_zone = trange(2, A)
+	var/impact_zone = trange(1, A)
 	for(var/t in impact_zone)
 		var/turf/T = t
 		for(var/atom/M in T)
 			M.stasis_act()
 
+/datum/proc/stasis_act()
+	return
+
 /datum/extension/stasis_effect
+	var/ripple
+	var/outline
+	var/base_stasis_duration = 4 //1 = 1 second
+	var/stasis_duration
+
+/datum/extension/stasis_effect/mob
 	name = "Stasis Effect"
 	expected_type = /mob/living
 	flags = EXTENSION_FLAG_IMMEDIATE
 
-	var/dm_filter/ripple
-	var/dm_filter/outline
-
-	var/attack_slowdown = -0.5
-	var/slowdown = 0.5
+	var/attack_slowdown = -0.60
+	var/slowdown = 0.40
 	var/mob/living/carbon/M
-	var/stasis_duration = 5 //1 = 1 second
-	statmods = list(STATMOD_MOVESPEED_MULTIPLICATIVE = 0.5, STATMOD_ATTACK_SPEED = -0.5)
+	statmods = list(STATMOD_MOVESPEED_MULTIPLICATIVE = 0.40, STATMOD_ATTACK_SPEED = -0.60)
 
-/datum/extension/stasis_effect/New(var/datum/holder)
+/datum/extension/stasis_effect/mob/New()
 	.=..()
 	M = holder
-	stasis_duration = 5
-	var/twitcher = get_extension(M, /datum/extension/twitch)
-	var/stasis = get_extension(M, /datum/extension/stasis_effect)
-	if(twitcher)
+	stasis_duration = base_stasis_duration
+	var/stasis = get_extension(M, /datum/extension/stasis_effect/mob)
+	if(get_extension(M, /datum/extension/twitch))
 		if(!stasis)
 			to_chat(M, SPAN_DANGER("You feel like an easy target!"))
 	else if(!stasis)
 		to_chat(M, SPAN_DANGER("It feels like something prevents you from moving fast!"))
 	statmods[STATMOD_ATTACK_SPEED] = attack_slowdown
 
-	ripple = filter(type = "ripple", radius = 0, size = 8)
-	M.filters.Add(ripple)
-	ripple = M.filters[M.filters.len]
-	animate(ripple, radius = 16, size = 1, time = 5, loop = -1, flags = ANIMATION_PARALLEL)
+	add_stasis_visual(M)
 
-	outline = filter(type = "outline", size = 2, color = "#cdfdff", alpha = 128)
-	M.filters.Add(outline)
-	outline = M.filters[M.filters.len]
+	for(var/obj/item/I in M.contents)
+		I.stasis_act()
+
+	var/obj/item/weapon/rig/R = M.back
+	for(var/obj/item/weapon/storage/S in R.storage)
+		for(var/obj/item/K in S.return_inv())
+			K.stasis_act()
 
 	START_PROCESSING(SSprocessing, src)
 
-/datum/extension/stasis_effect/get_statmod(var/modtype)
+/datum/extension/stasis_effect/mob/get_statmod(var/modtype)
 	if(modtype == STATMOD_MOVESPEED_MULTIPLICATIVE)
 		return slowdown
 	if(modtype == STATMOD_ATTACK_SPEED)
 		return attack_slowdown
 
-/datum/extension/stasis_effect/Process()
+/datum/extension/stasis_effect/mob/Process()
 	while(stasis_duration)
 		stasis_duration--
 		return
@@ -93,10 +98,45 @@
 	remove_extension(holder, type)
 	return PROCESS_KILL
 
-/datum/extension/stasis_effect/Destroy()
-	M.filters.Remove(ripple)
-	M.filters.Remove(outline)
+/datum/extension/stasis_effect/mob/Destroy()
+	remove_stasis_visual(M)
 	.=..()
 
-/datum/proc/stasis_act()
-	return
+/datum/extension/stasis_effect/proc/add_stasis_visual(var/atom/thing)
+	ripple = filter(type = "ripple", radius = 0, size = 8)
+	thing.filters.Add(ripple)
+	ripple = thing.filters[thing.filters.len]
+	animate(ripple, radius = 16, size = 1, time = 5, loop = -1, flags = ANIMATION_PARALLEL)
+
+	outline = filter(type = "outline", size = 2, color = "#cdfdff", alpha = 128)
+	thing.filters.Add(outline)
+	outline = thing.filters[thing.filters.len]
+
+/datum/extension/stasis_effect/proc/remove_stasis_visual(var/atom/thing)
+	thing.filters.Remove(ripple)
+	thing.filters.Remove(outline)
+
+/datum/extension/stasis_effect/item
+	name = "Stasis Effect"
+	expected_type = /obj/item
+	flags = EXTENSION_FLAG_IMMEDIATE
+
+	var/throw_mod = 0.25
+
+/datum/extension/stasis_effect/item/New()
+	.=..()
+	stasis_duration = base_stasis_duration
+	add_stasis_visual(holder)
+	START_PROCESSING(SSprocessing, src)
+
+/datum/extension/stasis_effect/item/Process()
+	while(stasis_duration)
+		stasis_duration--
+		return
+
+	remove_extension(holder, type)
+	return PROCESS_KILL
+
+/datum/extension/stasis_effect/item/Destroy()
+	remove_stasis_visual(holder)
+	.=..()

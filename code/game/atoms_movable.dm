@@ -11,6 +11,7 @@
 	var/move_speed = 1
 	var/l_move_time = 1
 	var/m_flag = 1
+	var/base_speed
 	var/throwing = 0
 	var/thrower
 	var/turf/throw_source = null

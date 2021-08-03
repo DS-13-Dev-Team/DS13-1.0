@@ -1003,3 +1003,6 @@ THIS SCOPE CODE IS DEPRECATED, USE AIM MODES INSTEAD.
 
 /obj/item/repair_needed()
 	return max_health - health
+
+/obj/item/stasis_act()
+	set_extension(src, /datum/extension/stasis_effect/item)

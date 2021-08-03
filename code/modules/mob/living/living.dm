@@ -596,4 +596,4 @@ default behaviour is:
 	return TRUE
 
 /mob/living/stasis_act()
-	set_extension(src, /datum/extension/stasis_effect)
+	set_extension(src, /datum/extension/stasis_effect/mob)

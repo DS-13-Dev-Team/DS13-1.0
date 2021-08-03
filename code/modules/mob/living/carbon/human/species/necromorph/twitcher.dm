@@ -194,8 +194,7 @@ All of these properties combined make Step Strike tricky and disorienting to use
 /datum/species/necromorph/slasher/twitcher/handle_organ_external_damage(var/obj/item/organ/external/organ, brute, burn, damage_flags, used_weapon)
 	var/mob/living/L = organ.owner
 	var/datum/extension/twitch/T = get_extension(L, /datum/extension/twitch)
-	var/stasis = get_extension(L, /datum/extension/stasis_effect)
-	if(stasis)
+	if(get_extension(L, /datum/extension/stasis_effect))
 		return
 	if (T && T.displace(TRUE))
 		//Displace will return false if its on cooldown

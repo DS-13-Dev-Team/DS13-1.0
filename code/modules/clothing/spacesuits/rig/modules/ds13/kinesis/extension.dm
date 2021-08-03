@@ -13,8 +13,8 @@
 	var/cached_plane
 
 	//The graphical filter we assigned to the held item
-	var/dm_filter/ripple
-	var/dm_filter/outline
+	var/ripple
+	var/outline
 
 
 	var/atom/movable/subject

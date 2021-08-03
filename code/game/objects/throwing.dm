@@ -129,6 +129,7 @@
 	var/interval = 10 / speed
 	var/sleep_debt = 0
 	//use a modified version of Bresenham's algorithm to get from the atom's current position to that of the target
+	src.base_speed = speed
 	src.throwing = speed
 	src.thrower = thrower
 	src.throw_source = get_turf(src)	//store the origin turf
@@ -141,6 +142,11 @@
 	while(src && target && src.throwing && istype(src.loc, /turf) \
 		 && loc != target_turf && dist_travelled < range)
 		// only stop when we've gone the whole distance (or max throw range) and are on a non-space tile, or hit something, or hit the end of the map, or someone picks it up
+		var/datum/extension/stasis_effect/item/I = has_extension(src, /datum/extension/stasis_effect/item)
+		if(I)
+			interval = 10 / (base_speed * I.throw_mod)
+		else
+			interval = 10 / base_speed
 		var/atom/step
 		step = get_step_towards(src, target_turf)
 		if(!step) // going off the edge of the map makes get_step return null, don't let things go off the edge
