@@ -15,16 +15,12 @@
 	var/list/stasis_settings = list(1, 2, 5)
 	var/stasis = 1
 	circuit = /obj/item/weapon/circuitboard/sleeper
-	var/mapload = FALSE
 
 	use_power = 1
 	idle_power_usage = 15
 	active_power_usage = 200 //builtin health analyzer, dialysis machine, injectors.
 
-/obj/machinery/sleeper/mapload
-	mapload = TRUE
-
-/obj/machinery/sleeper/Initialize()
+/obj/machinery/sleeper/Initialize(mapload)
 	. = ..()
 	if(mapload)
 		beaker = new /obj/item/weapon/reagent_containers/glass/beaker/large(src)

@@ -11634,7 +11634,7 @@
 "axx" = (
 /obj/effect/floor_decal/corner/grey/mono,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/sleeper/mapload{
+/obj/machinery/sleeper{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white/monotile,
@@ -12597,7 +12597,7 @@
 	name = "Clinic Exit Button";
 	pixel_x = -24
 	},
-/obj/machinery/sleeper/mapload{
+/obj/machinery/sleeper{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white/monotile,
