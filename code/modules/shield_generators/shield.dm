@@ -7,6 +7,7 @@
 	layer = ABOVE_HUMAN_LAYER
 	density = 1
 	invisibility = 0
+	can_block_movement = TRUE
 	var/obj/machinery/power/shield_generator/gen = null
 	var/disabled_for = 0
 	var/diffused_for = 0
