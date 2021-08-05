@@ -48,7 +48,7 @@
 	var/damage_type = BRUTE //BRUTE, BURN, TOX, OXY, CLONE, PAIN are the only things that should be in here
 	structure_damage_factor = 1
 	var/nodamage = 0 //Determines if the projectile will skip any damage inflictions
-	var/fire_temp = 700
+	var/temperature = 700
 	var/fire_volume = 5
 	var/check_armour = "bullet" //Defines what armor to use when it hits things.  Must be set to bullet, laser, energy,or bomb	//Cael - bio and rad are also valid
 	var/projectile_type = /obj/item/projectile
@@ -182,7 +182,7 @@
 	if(damage && damage_type == BURN)
 		var/turf/T = get_turf(A)
 		if(T)
-			T.hotspot_expose(fire_temp, fire_volume)
+			T.hotspot_expose(temperature, fire_volume)
 
 //Checks if the projectile is eligible for embedding. Not that it necessarily will.
 /obj/item/projectile/proc/can_embed()
