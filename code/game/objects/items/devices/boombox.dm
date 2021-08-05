@@ -16,12 +16,9 @@
 	var/list/datum/track/tracks
 	var/sound_id
 
-/obj/item/device/boombox/New()
-	..()
-	sound_id = "[/obj/item/device/boombox]_[sequential_id(/obj/item/device/boombox)]"
-
 /obj/item/device/boombox/Initialize()
 	. = ..()
+	sound_id = "[/obj/item/device/boombox]_[sequential_id(/obj/item/device/boombox)]"
 	tracks = setup_music_tracks(tracks)
 
 /obj/item/device/boombox/Destroy()
