@@ -10907,11 +10907,11 @@
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/upper/security/brig)
 "axx" = (
+/obj/effect/floor_decal/corner/grey/mono,
+/obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/sleeper{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/grey/mono,
-/obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/medical)
 "axy" = (
@@ -11864,9 +11864,6 @@
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/medical)
 "azg" = (
-/obj/machinery/sleeper{
-	dir = 4
-	},
 /obj/effect/floor_decal/corner/grey/mono,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/button/remote/airlock{
@@ -11874,6 +11871,9 @@
 	id = "med_exit";
 	name = "Clinic Exit Button";
 	pixel_x = -24
+	},
+/obj/machinery/sleeper{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/medical)
@@ -12549,7 +12549,6 @@
 	pixel_y = 3
 	},
 /obj/item/weapon/disk/tech_disk,
-/obj/item/weapon/disk/design_disk,
 /obj/item/weapon/computer_hardware/hard_drive/portable/design/circuits,
 /obj/item/weapon/computer_hardware/hard_drive/portable/design/components,
 /obj/item/weapon/computer_hardware/hard_drive/portable/design/computer,

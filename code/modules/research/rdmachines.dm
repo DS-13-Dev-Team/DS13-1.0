@@ -10,9 +10,16 @@ var/list/default_material_composition = list("steel" = 0, MATERIAL_GLASS = 0, MA
 	anchored = 1
 	use_power = 1
 	var/busy = 0
+	var/hacked = 0
+	var/disabled = 0
+	var/shocked = 0
+	var/datum/wires/rnd/wires = null
 	var/obj/machinery/computer/rdconsole/linked_console
-
+	var/working = 0
 	var/list/materials = list()
+
+/obj/machinery/r_n_d/proc/eject_sheet()
+	return
 
 /obj/machinery/r_n_d/attack_hand(mob/user as mob)
 	return
@@ -22,13 +29,13 @@ var/list/default_material_composition = list("steel" = 0, MATERIAL_GLASS = 0, MA
 		if(istype(I, /obj/item/weapon/reagent_containers/glass/beaker))
 			reagents.trans_to_obj(I, reagents.total_volume)
 	for(var/f in materials)
-		if(materials[f] >= SHEET_MATERIAL_AMOUNT)
-			var/path = get_material_by_name(f)
-			if(path)
-				var/obj/item/stack/S = new f(loc)
-				S.amount = round(materials[f] / SHEET_MATERIAL_AMOUNT)
+		eject_sheet(f, INFINITY)
 	..()
 
+/obj/machinery/r_n_d/protolathe/dismantle()
+	for(var/f in materials)
+		eject_sheet(f, INFINITY)
+	..()
 
 /obj/machinery/r_n_d/proc/eject(var/material, var/amount)
 	if(!(material in materials))
@@ -46,13 +53,3 @@ var/list/default_material_composition = list("steel" = 0, MATERIAL_GLASS = 0, MA
 /obj/machinery/r_n_d/proc/TotalMaterials()
 	for(var/f in materials)
 		. += materials[f]
-
-/obj/machinery/r_n_d/proc/getLackingMaterials(var/datum/design/D)
-	var/list/ret = list()
-	for(var/M in D.materials)
-		if(materials[M] < D.materials[M])
-			ret += "[D.materials[M] - materials[M]] [M]"
-	for(var/C in D.chemicals)
-		if(!reagents.has_reagent(C, D.chemicals[C]))
-			ret += C
-	return english_list(ret)

@@ -47,3 +47,80 @@
 		smallest.loc = src
 		picksToSort -= smallest
 	prepare_ui()
+
+/obj/item/weapon/tool/pickaxe/xeno/excavationdrill
+	name = "excavation drill"
+	icon = 'icons/obj/xenoarchaeology.dmi'
+	icon_state = "excavationdrill0"
+	item_state = "excavationdrill"
+	var/depth = 5
+	tool_qualities = list(QUALITY_DIGGING = 5)
+	desc = "Basic archaeological drill combining ultrasonic excitation and bluespace manipulation to provide extreme precision. The tip is adjustable from 1 to 30 cms."
+	worksound = 'sound/weapons/thudswoosh.ogg'
+	hitsound = 'sound/weapons/circsawhit.ogg'
+	force = 15.0
+	w_class = ITEM_SIZE_NORMAL
+	attack_verb = list("drills")
+
+/obj/item/weapon/tool/pickaxe/xeno/excavationdrill/attack_self(mob/user)
+	var/excavation_amount = input("Put the desired depth (1-30 centimeters).", "Set Depth", depth)
+	if(excavation_amount > 30 || excavation_amount < 1)
+		to_chat(user, "<span class='notice'>Invalid depth.</span>")
+		return
+	depth = excavation_amount
+	tool_qualities[1] = depth
+
+	to_chat(user, "<span class='notice'>You set the depth to [depth]cm.</span>")
+	if (depth < 4)
+		icon_state = "excavationdrill0"
+	else if (depth >= 4 && depth < 8)
+		icon_state = "excavationdrill1"
+	else if (depth >= 8 && depth < 12)
+		icon_state = "excavationdrill2"
+	else if (depth >= 12 && depth < 16)
+		icon_state = "excavationdrill3"
+	else if (depth >= 16 && depth < 20)
+		icon_state = "excavationdrill4"
+	else if (depth >= 20 && depth < 24)
+		icon_state = "excavationdrill5"
+	else if (depth >= 24 && depth < 28)
+		icon_state = "excavationdrill6"
+	else
+		icon_state = "excavationdrill7"
+
+/obj/item/weapon/tool/pickaxe/xeno/excavationdrill/examine(mob/user)
+	..()
+	to_chat(user, "<span class='info'>It is currently set at [depth]cm.</span>")
+
+/obj/item/weapon/tool/pickaxe/xeno/excavationdrill/adv
+	name = "diamond excavation drill"
+	icon_state = "Dexcavationdrill0"
+	item_state = "Dexcavationdrill"
+	depth = 3
+	desc = "Advanced archaeological drill combining ultrasonic excitation and bluespace manipulation to provide extreme precision. The diamond tip is adjustable from 1 to 100 cms."
+
+/obj/item/weapon/tool/pickaxe/xeno/excavationdrill/adv/attack_self(mob/user)
+	var/excavation_amount = input("Put the desired depth (1-100 centimeters).", "Set Depth", depth)
+	if(excavation_amount > 100 || excavation_amount < 1)
+		to_chat(user, "<span class='notice'>Invalid depth.</span>")
+		return
+	depth = excavation_amount
+	tool_qualities[1] = depth
+
+	to_chat(user, "<span class='notice'>You set the depth to [depth]cm.</span>")
+	if (depth < 12)
+		icon_state = "Dexcavationdrill0"
+	else if (depth >= 12 && depth < 24)
+		icon_state = "Dexcavationdrill1"
+	else if (depth >= 24 && depth < 36)
+		icon_state = "Dexcavationdrill2"
+	else if (depth >= 36 && depth < 48)
+		icon_state = "Dexcavationdrill3"
+	else if (depth >= 48 && depth < 60)
+		icon_state = "Dexcavationdrill4"
+	else if (depth >= 60 && depth < 72)
+		icon_state = "Dexcavationdrill5"
+	else if (depth >= 72 && depth < 84)
+		icon_state = "Dexcavationdrill6"
+	else
+		icon_state = "Dexcavationdrill7"

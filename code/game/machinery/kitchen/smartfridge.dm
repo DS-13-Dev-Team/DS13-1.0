@@ -1,3 +1,4 @@
+GLOBAL_LIST_EMPTY(smartfridge_types)
 
 /* SmartFridge.  Much todo
 */
@@ -12,6 +13,7 @@
 	idle_power_usage = 5
 	active_power_usage = 100
 	atom_flags = ATOM_FLAG_NO_REACT
+	circuit = /obj/item/weapon/circuitboard/smartfridge
 	var/global/max_n_of_items = 999 // Sorry but the BYOND infinite loop detector doesn't look things over 1000.
 	var/icon_on = "smartfridge"
 	var/icon_off = "smartfridge-off"
@@ -35,11 +37,14 @@
 	else
 		wires = new/datum/wires/smartfridge(src)
 
+/obj/machinery/smartfridge/dismantle()
+	for(var/atom/movable/A in contents)
+		A.forceMove(loc)
+	..()
+
 /obj/machinery/smartfridge/Destroy()
 	qdel(wires)
 	wires = null
-	for(var/datum/stored_items/S in item_records)
-		qdel(S)
 	item_records = null
 	return ..()
 
@@ -222,6 +227,12 @@
 		if(panel_open)
 			overlays += image(icon, icon_panel)
 		SSnano.update_uis(src)
+		return
+
+	if(default_deconstruction_crowbar(user, O))
+		return
+
+	if(default_part_replacement(user, O))
 		return
 
 	if(isMultitool(O) || isWirecutter(O))

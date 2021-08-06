@@ -25,10 +25,11 @@
 	atom_flags = ATOM_FLAG_OPEN_CONTAINER
 	core_skill = SKILL_MEDICAL
 	var/sloppy = 1 //Whether reagents will not be fully purified (sloppy = 1) or there will be reagent loss (sloppy = 0) on reagent add.
+	circuit = /obj/item/weapon/circuitboard/chem_master
 
 /obj/machinery/chem_master/New(var/atom/location, var/direction, var/nocircuit = FALSE)
+	. = ..()
 	create_reagents(1000)
-	..()
 
 /obj/machinery/chem_master/ex_act(severity)
 	switch(severity)
@@ -40,7 +41,18 @@
 				qdel(src)
 				return
 
+/obj/machinery/chem_master/dismantle()
+	if(beaker)
+		beaker.forceMove(loc)
+	..()
+
 /obj/machinery/chem_master/attackby(var/obj/item/weapon/B as obj, var/mob/user as mob)
+	if(default_deconstruction_screwdriver(user, B))
+		return
+	if(default_deconstruction_crowbar(user, B))
+		return
+	if(default_part_replacement(user, B))
+		return
 
 	if(istype(B, /obj/item/weapon/reagent_containers/glass))
 

@@ -9,12 +9,18 @@ obj/machinery/recharger
 	use_power = 1
 	idle_power_usage = 4
 	active_power_usage = 50 KILOWATTS
+	circuit = /obj/item/weapon/circuitboard/recharger
 	var/obj/item/charging = null
+	var/recharge_coeff = 1
 	var/list/allowed_devices = list(/obj/item/weapon/gun/energy, /obj/item/weapon/gun/magnetic/railgun, /obj/item/weapon/melee/baton, /obj/item/weapon/cell, /obj/item/modular_computer/, /obj/item/device/suit_sensor_jammer, /obj/item/weapon/computer_hardware/battery_module, /obj/item/weapon/shield_diffuser, /obj/item/clothing/mask/smokable/ecig, /obj/item/device/radio)
 	var/icon_state_charged = "recharger2"
 	var/icon_state_charging = "recharger1"
 	var/icon_state_idle = "recharger0" //also when unpowered
 	var/portable = 1
+
+/obj/machinery/recharger/RefreshParts()
+	for(var/obj/item/weapon/stock_parts/capacitor/C in component_parts)
+		recharge_coeff = C.rating/2
 
 obj/machinery/recharger/attackby(obj/item/weapon/G as obj, mob/user as mob)
 	if(istype(user,/mob/living/silicon))
@@ -79,7 +85,7 @@ obj/machinery/recharger/Process()
 		if(istype(C))
 			if(!C.fully_charged())
 				icon_state = icon_state_charging
-				C.give(active_power_usage*CELLRATE)
+				C.give(active_power_usage*recharge_coeff*CELLRATE)
 				update_use_power(2)
 			else
 				icon_state = icon_state_charged

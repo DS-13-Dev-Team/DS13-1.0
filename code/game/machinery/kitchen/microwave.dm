@@ -18,7 +18,7 @@
 	var/global/list/acceptable_items // List of the items you can put in
 	var/global/list/acceptable_reagents // List of the reagents you can put in
 	var/global/max_n_of_items = 0
-
+	circuit = /obj/item/weapon/circuitboard/microwave
 
 /obj/machinery/microwave/can_harvest_biomass()
 	return MASS_READY
@@ -59,6 +59,16 @@
 ********************/
 
 /obj/machinery/microwave/attackby(var/obj/item/O as obj, var/mob/user as mob)
+	if(operating)
+		return
+	if(!broken && dirty<100)
+		if(default_deconstruction_screwdriver(user, O))
+			return
+		if(default_part_replacement(user, O))
+			return
+
+	default_deconstruction_crowbar(user, O)
+
 	if(src.broken > 0)
 		if(src.broken == 2 && isScrewdriver(O)) // If it's broken and they're using a screwdriver
 			user.visible_message( \
@@ -106,6 +116,7 @@
 		else //Otherwise bad luck!!
 			to_chat(user, "<span class='warning'>It's dirty!</span>")
 			return 1
+
 	else if(is_type_in_list(O,acceptable_items))
 		if (contents.len >= max_n_of_items)
 			to_chat(user, "<span class='warning'>This [src] is full of ingredients, you cannot put more.</span>")
@@ -141,7 +152,7 @@
 		var/obj/item/grab/G = O
 		to_chat(user, "<span class='warning'>This is ridiculous. You can not fit \the [G.affecting] in this [src].</span>")
 		return 1
-	else if(isCrowbar(O))
+	else if(isWrench(O))
 		user.visible_message( \
 			"<span class='notice'>\The [user] begins [src.anchored ? "securing" : "unsecuring"] the microwave.</span>", \
 			"<span class='notice'>You attempt to [src.anchored ? "secure" : "unsecure"] the microwave.</span>"
@@ -399,3 +410,8 @@
 
 		if ("dispose")
 			dispose()
+
+/obj/machinery/microwave/dismantle()
+	for(var/obj/O in contents)
+		O.forceMove(loc)
+	..()

@@ -109,7 +109,7 @@ var/list/worths = list(
 					/obj/item/weapon/slimepotion2 = 300,
 					/obj/item/weapon/slimesteroid = 150,
 					/obj/item/weapon/slimesteroid2 = 250,
-					/obj/item/weapon/portable_destructive_analyzer = 780,
+//					/obj/item/weapon/portable_destructive_analyzer = 780,
 					/obj/item/weapon/inflatable_dispenser = 300,
 					/obj/item/weapon/matter_decompiler = 400,
 //COMPUTER HARDWARE,

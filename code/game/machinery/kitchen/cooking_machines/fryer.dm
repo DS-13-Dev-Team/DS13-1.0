@@ -8,6 +8,7 @@
 	off_icon = "fryer_off"
 	food_color = "#ffad33"
 	cooked_sound = 'sound/machines/ding.ogg'
+	circuit = /obj/item/weapon/circuitboard/deepfryer
 
 /obj/machinery/cooker/fryer/cook_mob(var/mob/living/victim, var/mob/user)
 

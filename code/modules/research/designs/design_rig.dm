@@ -20,7 +20,6 @@
 /datum/design/item/rig/sec
 	build_path = /obj/item/weapon/rig/security
 
-
 /datum/design/item/rig/eng
 	build_path = /obj/item/weapon/rig/engineering
 
