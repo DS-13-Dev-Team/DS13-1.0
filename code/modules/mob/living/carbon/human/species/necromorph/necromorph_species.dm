@@ -129,6 +129,7 @@
 	appearance_flags = 0      // Appearance/display related features.
 	spawn_flags = SPECIES_IS_RESTRICTED | SPECIES_NO_FBP_CONSTRUCTION | SPECIES_NO_FBP_CHARGEN           // Flags that specify who can spawn as this specie
 	language = LANGUAGE_NECROCHAT
+	default_language = LANGUAGE_NECROCHAT
 
 	//Audio
 	step_volume = 60 //Necromorphs can't wear shoes, so their base footstep volumes are louder
@@ -182,6 +183,8 @@
 	breathing_organ = null //This is autoset to lungs in the parent if they exist.
 	//We want it to be unset but we stil want to have our useless lungs
 
+/datum/species/necromorph/onDestroy(var/mob/living/carbon/human/H)
+	SSnecromorph.major_vessels -= H
 
 /datum/species/necromorph/get_blood_name()
 	return "ichor"
@@ -204,6 +207,7 @@
 	.=..()
 	H.a_intent = I_HURT	//Don't start in help intent, we want to kill things
 	H.faction = FACTION_NECROMORPH
+	SSnecromorph.major_vessels += H
 
 //Add this necro as a vision node for the marker and signals
 /datum/species/necromorph/setup_interaction(var/mob/living/carbon/human/H)
@@ -249,6 +253,7 @@
 		SSnecromorph.marker.add_biomass_source(H, H.biomass*biomass_reclamation, biomass_reclamation_time, /datum/biomass_source/reclaim)
 		remove_massive_atom(H)
 	GLOB.necrovision.remove_source(H)
+	SSnecromorph.major_vessels -= H
 
 //How much damage has this necromorph taken?
 //We'll loop through each organ tag in the species' initial health values list, which should definitely be populated already, and try to get the organ for each

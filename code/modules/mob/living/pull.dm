@@ -77,15 +77,15 @@
 		var/atom/movable/AM = pulling
 		if(incapacitated(INCAPACITATION_NOINTERACT))
 			stop_pulling()
-			return
+			return FALSE
 
 		else if (!istype(AM.loc, /turf))
 			stop_pulling()
-			return
+			return FALSE
 
 		if (get_dist(src, pulling) > reach)
 			stop_pulling()
-			return
+			return FALSE
 
 	return TRUE
 
@@ -110,26 +110,30 @@
 /mob/proc/can_pull(var/atom/movable/AM)
 	.=FALSE
 	if ( !AM || src==AM || !isturf(src.loc) )	//if there's no person pulling OR the person is pulling themself OR the object being pulled is inside something: abort!
-		return
+		return FALSE
+
+	if(AM.atom_flags & ATOM_FLAG_INTANGIBLE)
+		to_chat(src, "<span class='warning'>Your hand goes through [AM]!</span>")
+		return FALSE
 
 	if (AM.anchored)
 		to_chat(src, "<span class='warning'>It won't budge!</span>")
-		return
+		return FALSE
 
 	var/mob/M = AM
 	if(ismob(AM))
 
 		if(!can_pull_mobs || !can_pull_size)
 			to_chat(src, "<span class='warning'>It won't budge!</span>")
-			return
+			return FALSE
 
 		if((mob_size < M.mob_size) && (can_pull_mobs != MOB_PULL_LARGER))
 			to_chat(src, "<span class='warning'>It won't budge!</span>")
-			return
+			return FALSE
 
 		if((mob_size == M.mob_size) && (can_pull_mobs == MOB_PULL_SMALLER))
 			to_chat(src, "<span class='warning'>It won't budge!</span>")
-			return
+			return FALSE
 
 		// If your size is larger than theirs and you have some
 		// kind of mob pull value AT ALL, you will be able to pull
@@ -144,10 +148,10 @@
 		var/obj/I = AM
 		if(!can_pull_size || can_pull_size < I.w_class)
 			to_chat(src, "<span class='warning'>It won't budge!</span>")
-			return
+			return FALSE
 		else if (min_pull_size() > I.w_class)
 			to_chat(src, "<span class='warning'>That's too small to drag while walking around, you need to pick it up!</span>")
-			return
+			return FALSE
 
 	return TRUE
 
