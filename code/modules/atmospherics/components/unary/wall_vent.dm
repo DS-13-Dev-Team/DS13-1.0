@@ -4,6 +4,28 @@
 	name = "Wall mounted vent pump"
 	var/cover = TRUE //Is the wall-vent covered?
 	layer = ABOVE_HUMAN_LAYER //So that the vents stack on top of the necromorphs.
+	icon = 'icons/atmos/wallvent.dmi'
+
+/obj/machinery/atmospherics/unary/vent_pump/wall/examine(mob/user)
+	. = ..()
+	if(!cover && locate(/mob) in contents)
+		to_chat(user, "<span class='warning'>There's something lurking inside it...</span>")
+
+/obj/machinery/atmospherics/unary/vent_pump/wall/north
+	pixel_y = 26
+	dir = NORTH
+
+/obj/machinery/atmospherics/unary/vent_pump/wall/south
+	pixel_y = -26
+	dir = SOUTH
+
+/obj/machinery/atmospherics/unary/vent_pump/wall/east
+	pixel_x = 26
+	dir = EAST
+
+/obj/machinery/atmospherics/unary/vent_pump/wall/west
+	pixel_x = -26
+	dir = WEST
 
 /mob/living/proc/necro_burst_vent()
 	set name = "Burst Through Vent"
