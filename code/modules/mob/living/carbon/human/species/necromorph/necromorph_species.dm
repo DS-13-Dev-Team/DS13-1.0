@@ -22,6 +22,8 @@
 	var/spawner_spawnable = FALSE	//If true, a nest can be upgraded to autospawn this unit
 	var/necroshop_item_type = /datum/necroshop_item //Give this a subtype if you want to have special behaviour for when this necromorph is spawned from the necroshop
 	var/global_limit = 0	//0 = no limit
+	var/ventcrawl = FALSE //Can this necromorph type ventcrawl?
+	var/ventcrawl_time = 4.5 SECONDS
 	lasting_damage_factor = 0.2	//Necromorphs take lasting damage based on incoming hits
 
 	strength    = STR_MEDIUM
@@ -197,6 +199,12 @@
 	H.verbs |= /mob/proc/necro_evacuate	//Add the verb to vacate the body. its really just a copy of ghost
 	H.verbs |= /mob/proc/prey_sightings //Verb to see the sighting information on humans
 	H.verbs |= /datum/proc/help //Verb to see your own abilities
+	//Ventcrawling necromorphs are handled here. Don't give this to non living mobs...
+	if(ventcrawl && isliving(H))
+		H.verbs |= /mob/living/proc/ventcrawl
+		//And if we want to set a custom ventcrawl delay....
+		H.ventcrawl_time = (src.ventcrawl_time) ? src.ventcrawl_time : H.ventcrawl_time
+		H.verbs |= /mob/living/proc/necro_burst_vent
 	//H.verbs |= /mob/proc/message_unitologists
 	make_scary(H)
 
