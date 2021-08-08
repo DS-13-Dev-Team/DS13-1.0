@@ -135,8 +135,8 @@
 	remove_extension(holder, base_type)
 
 /datum/extension/psychic_tracer/Destroy()
+	GLOB.necrovision.remove_source(object, TRUE, TRUE)
 	QDEL_NULL(object)
-	GLOB.necrovision.remove_source(src, TRUE, TRUE)
 	.=..()
 
 //Find out how many crew can see our source
