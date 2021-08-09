@@ -21,7 +21,7 @@
 	reclamation_time = 5 MINUTES
 
 	var/max_range = 6
-	var/recharge_delay = 5 SECONDS
+	var/recharge_delay = 8 SECONDS
 	var/cone_angle = 90
 
 	var/atom/attached = null	//What is this cyst attached to, if anything
