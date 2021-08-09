@@ -79,6 +79,7 @@
 #include "code\__defines\tgs.config.dm"
 #include "code\__defines\tgs.dm"
 #include "code\__defines\tgui.dm"
+#include "code\__defines\themes.dm"
 #include "code\__defines\time.dm"
 #include "code\__defines\tools_and_qualities.dm"
 #include "code\__defines\topic.dm"
