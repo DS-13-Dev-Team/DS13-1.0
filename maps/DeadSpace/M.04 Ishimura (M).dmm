@@ -31217,11 +31217,6 @@
 	},
 /turf/simulated/floor/dank/grille_spare_4,
 /area/ishimura/upper/engineering/engine_room)
-"tfU" = (
-/obj/structure/disposalpipe/segment,
-/mob/living/carbon/human/necromorph/slasher,
-/turf/simulated/floor/tiled/dark/monotile,
-/area/ishimura/upper/command/bridge)
 "uGx" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/structure/cable/cyan{
@@ -71325,7 +71320,7 @@ aPE
 aJi
 abe
 big
-tfU
+aaO
 wZe
 aaO
 bdK
