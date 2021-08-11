@@ -166,6 +166,8 @@
 
 // Converts a rights bitfield into a string
 /proc/rights2text(rights,seperator="")
+	if (rights & R_DEFAULT)		. += "[seperator]+DEFAULT"
+	if (rights & R_RUNTIMES)	. += "[seperator]+RUNTIMES"
 	if (rights & R_BUILDMODE)   . += "[seperator]+BUILDMODE"
 	if (rights & R_ADMIN)       . += "[seperator]+ADMIN"
 	if (rights & R_BAN)         . += "[seperator]+BAN"
