@@ -14,12 +14,12 @@
 	update_icon()
 
 /obj/machinery/stasis_station/update_icon()
-//	if(busy)
-//		icon_state = "stasis_station_busy"
-//	else if(recharging)
-//		icon_state = "stasis_station_recharging"
-//	else
-//		icon_state = "stasis_station"
+	if(busy)
+		icon_state = "stasis_station_discharging"
+	else if(recharging)
+		icon_state = "stasis_recharging"
+	else
+		icon_state = "stasis_station"
 	. = ..()
 
 /obj/machinery/stasis_station/attack_hand(var/mob/user)
@@ -34,17 +34,19 @@
 				var/obj/item/weapon/gun/energy/E = R.stasis.gun
 				if(E.power_supply.percent() != 100)
 					busy = TRUE
-					if(user.do_skilled(1 SECOND, SKILL_DEVICES, src))
+					update_icon()
+					if(user.do_skilled(10, SKILL_DEVICES, src))
 						E.power_supply.insta_recharge()
 						to_chat(user, SPAN_NOTICE("Stasis Module was recharged"))
-						update_icon()
 						busy = FALSE
 						recharging = TRUE
-						spawn(180)
+						update_icon()
+						spawn(150)
 							recharging = FALSE
 							update_icon()
 					else
 						busy = FALSE
+						update_icon()
 				else
 					to_chat(user, SPAN_NOTICE("Stasis Module is already fully charged"))
 			else
