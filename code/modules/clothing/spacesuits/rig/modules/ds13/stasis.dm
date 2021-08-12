@@ -28,6 +28,10 @@
 	..()
 	holder.stasis = src
 
+/obj/item/rig_module/mounted/stasis/uninstalled()
+	..()
+	holder.stasis = null
+
 /obj/item/rig_module/mounted/stasis/update_stas_charge()
 	var/percentage
 	var/obj/item/weapon/gun/energy/E = gun

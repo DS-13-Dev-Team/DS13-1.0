@@ -20,7 +20,6 @@
 		icon_state = "stasis_recharging"
 	else
 		icon_state = "stasis_station"
-	. = ..()
 
 /obj/machinery/stasis_station/attack_hand(var/mob/user)
 	if(busy)
