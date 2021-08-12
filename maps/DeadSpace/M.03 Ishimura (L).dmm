@@ -2793,6 +2793,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/machinery/stasis_station{
+	pixel_y = 30
+	},
 /turf/simulated/floor/plating,
 /area/ishimura/lower/engineering/bay)
 "ago" = (
@@ -5114,6 +5117,9 @@
 	d1 = 2;
 	d2 = 8;
 	icon_state = "2-8"
+	},
+/obj/machinery/stasis_station{
+	pixel_y = 30
 	},
 /turf/simulated/floor/tiled,
 /area/ishimura/lower/cargo/bay)
@@ -11940,6 +11946,9 @@
 "axG" = (
 /obj/effect/floor_decal/industrial/loading{
 	dir = 4
+	},
+/obj/structure/closet/medical_wall/filled{
+	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/lower/security/escape/lounge)
@@ -25734,8 +25743,8 @@
 /area/ishimura/lower/security/escape/lounge)
 "aZa" = (
 /obj/structure/flora/pottedplant/minitree,
-/obj/structure/closet/medical_wall/filled{
-	pixel_y = 32
+/obj/machinery/stasis_station{
+	pixel_y = 30
 	},
 /turf/simulated/floor/tiled,
 /area/ishimura/lower/security/escape/lounge)
@@ -27783,6 +27792,12 @@
 "gHS" = (
 /turf/simulated/wall/r_wall,
 /area/ishimura/lower/misc/storagesmall)
+"hho" = (
+/obj/machinery/stasis_station{
+	pixel_y = 30
+	},
+/turf/simulated/floor/tiled,
+/area/ishimura/lower/security/escape)
 "hhy" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/light{
@@ -27822,6 +27837,12 @@
 /obj/random/tool,
 /turf/simulated/floor/dank,
 /area/ishimura/lower/misc/storagesmall)
+"klV" = (
+/obj/machinery/stasis_station{
+	pixel_y = 30
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/ishimura/lower/mining/locker_room)
 "los" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/effect/catwalk_plated,
@@ -27859,6 +27880,12 @@
 /obj/random/loot/usually/many,
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/lower/misc/storagesmall)
+"nyn" = (
+/obj/machinery/stasis_station{
+	pixel_y = 30
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/ishimura/lower/mining/processing_room)
 "nQg" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 8
@@ -27895,6 +27922,12 @@
 /obj/machinery/suit_storage_unit/standard_unit,
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/lower/misc/storagesmall)
+"rQw" = (
+/obj/machinery/stasis_station{
+	pixel_y = 30
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/ishimura/lower/mining/mining_bay)
 "rZW" = (
 /obj/machinery/door/airlock/civilian{
 	name = "Small Storage Room"
@@ -27945,6 +27978,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/plating,
 /area/ishimura/lower/misc/storagesmall)
+"xsv" = (
+/obj/machinery/stasis_station{
+	pixel_y = 30
+	},
+/turf/simulated/floor/tiled,
+/area/ishimura/lower/crew/sleepblock/executive)
 "xzP" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/light{
@@ -45616,7 +45655,7 @@ bcs
 awx
 bct
 ahT
-abI
+nyn
 abI
 abI
 bdx
@@ -47833,7 +47872,7 @@ abl
 abl
 abl
 abl
-ahP
+rQw
 avS
 ahP
 aLR
@@ -50459,7 +50498,7 @@ uDR
 uDR
 uDR
 gHS
-aiN
+klV
 aAW
 aiN
 aiK
@@ -63196,7 +63235,7 @@ aKE
 aSu
 aKX
 akN
-asQ
+xsv
 aFr
 aGV
 asQ
@@ -68242,7 +68281,7 @@ aVs
 aaI
 aFE
 aFj
-aER
+hho
 aAc
 aAc
 aAc

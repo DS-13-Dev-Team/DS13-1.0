@@ -525,6 +525,9 @@
 	dir = 4;
 	pixel_x = -22
 	},
+/obj/machinery/stasis_station{
+	pixel_y = 30
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/upper/security/checkpoint/bridge)
 "abt" = (
@@ -4450,6 +4453,9 @@
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/upper/engineering/hub)
 "akR" = (
+/obj/machinery/stasis_station{
+	pixel_y = 30
+	},
 /turf/simulated/floor/tiled,
 /area/ishimura/upper/engineering/atmospherics/storage)
 "akS" = (
@@ -6289,6 +6295,9 @@
 /area/ishimura/upper/engineering/hub)
 "aoB" = (
 /obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/stasis_station{
+	pixel_y = 30
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/ishimura/upper/engineering/machining_room)
 "aoC" = (
@@ -7574,8 +7583,11 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
+/obj/machinery/stasis_station{
+	pixel_y = 30
+	},
 /turf/simulated/floor/tiled/monotile,
-/area/ishimura/upper/engineering/engine_room/airlock_two)
+/area/space)
 "arg" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/firedoor/border_only{
@@ -9302,6 +9314,9 @@
 	dir = 8
 	},
 /obj/item/weapon/storage/box/droppers,
+/obj/machinery/stasis_station{
+	pixel_y = 30
+	},
 /turf/simulated/floor/tiled/white,
 /area/ishimura/upper/medical)
 "auF" = (
@@ -15445,6 +15460,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 2;
 	icon_state = "pipe-c"
+	},
+/obj/machinery/stasis_station{
+	pixel_y = 30
 	},
 /turf/simulated/floor/tiled,
 /area/ishimura/upper/engineering/lobby)
@@ -31155,6 +31173,15 @@
 /obj/machinery/light,
 /turf/simulated/floor/dank/rivets,
 /area/ishimura/upper/engineering/engine_room)
+"ecr" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/machinery/stasis_station{
+	pixel_y = 30
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/ishimura/upper/engineering/monitoring_room)
 "idD" = (
 /obj/machinery/fusion_fuel_injector/mapped{
 	dir = 1;
@@ -31202,6 +31229,12 @@
 	},
 /turf/simulated/floor/dank/grille_spare_4,
 /area/ishimura/upper/engineering/engine_room)
+"mfG" = (
+/obj/machinery/stasis_station{
+	pixel_y = 30
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/ishimura/upper/engineering/hub)
 "oMI" = (
 /obj/structure/table/standard,
 /obj/machinery/recharger,
@@ -38588,7 +38621,7 @@ ajH
 akm
 atF
 agD
-apD
+ecr
 aoE
 bha
 bhd
@@ -38993,7 +39026,7 @@ ajA
 agD
 agD
 alc
-agm
+mfG
 agm
 bhf
 bhh

@@ -4467,6 +4467,13 @@
 /obj/machinery/vending/wallmed1,
 /turf/simulated/wall/titanium,
 /area/ERT/escapebase)
+"pD" = (
+/obj/machinery/stasis_station{
+	pixel_x = -1;
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled/dark,
+/area/ERT/valor/shuttle)
 "qk" = (
 /obj/item/device/flashlight/floodlamp{
 	pixel_x = 8;
@@ -4574,9 +4581,21 @@
 /obj/item/weapon/storage/firstaid/surgery,
 /turf/simulated/floor/reinforced,
 /area/space)
+"yJ" = (
+/obj/machinery/stasis_station{
+	pixel_y = 30
+	},
+/turf/simulated/floor/tiled,
+/area/ERT/valor/armory)
 "yR" = (
 /turf/simulated/floor/reinforced,
 /area/space)
+"zv" = (
+/obj/machinery/stasis_station{
+	pixel_y = 30
+	},
+/turf/unsimulated/floor/rescue_base,
+/area/ERT/escapebase)
 "Af" = (
 /obj/item/weapon/stool/bar/padded,
 /turf/simulated/floor/reinforced,
@@ -14032,7 +14051,7 @@ dU
 cG
 bE
 aO
-bi
+yJ
 eP
 dV
 ha
@@ -16060,7 +16079,7 @@ gr
 cq
 gr
 cb
-cq
+pD
 dM
 cb
 fy
@@ -31269,7 +31288,7 @@ ia
 MM
 MM
 hR
-MM
+zv
 MM
 MM
 MM

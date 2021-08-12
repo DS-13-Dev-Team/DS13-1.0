@@ -3877,6 +3877,15 @@
 "Lz" = (
 /turf/simulated/wall,
 /area/ishimura/eva/airlock/ADS)
+"Ot" = (
+/obj/structure/railing/mapped{
+	dir = 8
+	},
+/obj/machinery/stasis_station{
+	pixel_y = 30
+	},
+/turf/simulated/floor/dank/mono,
+/area/ishimura/eva/ADS)
 "OQ" = (
 /turf/simulated/wall/r_wall/hull,
 /area/ishimura/external/channel/first)
@@ -42851,7 +42860,7 @@ UC
 UC
 UC
 kY
-sB
+Ot
 sB
 oi
 gI

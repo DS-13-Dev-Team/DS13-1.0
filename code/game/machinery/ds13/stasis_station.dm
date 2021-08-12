@@ -46,15 +46,17 @@
 						spawn(162)
 							recharging = FALSE
 							update_icon()
+							return
 					else
 						busy = FALSE
 						update_icon()
+						return
 				else
 					to_chat(user, SPAN_NOTICE("Stasis Module is already fully charged"))
 					playsound(loc, 'sound/machines/buzz-two.ogg', VOLUME_MID, 0)
-			else
-				to_chat(user, SPAN_NOTICE("You don't have stasis module installed."))
-				playsound(loc, 'sound/machines/buzz-two.ogg', VOLUME_MID, 0)
+					return
+		to_chat(user, SPAN_NOTICE("You don't have stasis modules installed."))
+		playsound(loc, 'sound/machines/buzz-two.ogg', VOLUME_MID, 0)
 
 /obj/machinery/stasis_station/attackby(var/obj/item/I, var/mob/user)
 	return attack_hand(user)

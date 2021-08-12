@@ -214,7 +214,9 @@
 	frequency = 1380;
 	id_tag = "aegis_airlock_pump"
 	},
-/obj/structure/closet/walllocker/emerglocker/north,
+/obj/machinery/stasis_station{
+	pixel_y = 30
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/aegis/colony)
 "aQ" = (
@@ -4738,6 +4740,9 @@
 /area/aegis/colony/research/atmos)
 "jD" = (
 /obj/structure/bed/chair/shuttle/white,
+/obj/machinery/stasis_station{
+	pixel_y = 30
+	},
 /turf/simulated/floor,
 /area/aegis/colony/research/airlock)
 "jE" = (
@@ -6845,6 +6850,12 @@
 /obj/random/tool/modded,
 /turf/simulated/floor/tiled/monotile,
 /area/aegis/colony/spare_storage)
+"ok" = (
+/obj/machinery/stasis_station{
+	pixel_y = 30
+	},
+/turf/simulated/floor/tiled,
+/area/aegis/colony/hangar)
 "rX" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -6871,6 +6882,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/aegis/colony/spare_storage)
+"TG" = (
+/obj/machinery/stasis_station{
+	pixel_y = 30
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/aegis/colony/hangar)
 
 (1,1,1) = {"
 aa
@@ -36272,7 +36289,7 @@ gj
 gl
 gl
 bP
-ar
+TG
 fG
 ai
 bC
@@ -36665,7 +36682,7 @@ fA
 hV
 aI
 ae
-ai
+ok
 ij
 ai
 bP
