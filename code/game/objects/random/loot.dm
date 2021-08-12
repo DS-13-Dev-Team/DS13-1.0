@@ -118,7 +118,8 @@ GLOBAL_LIST_EMPTY(loot_locations)
 	/obj/random/pouch = 2,
 	/obj/random/tool/advanced = 1,
 	/obj/random/toolbox = 1,
-	/obj/random/rig_module = 0.5)
+	/obj/random/rig_module = 0.5,
+	/obj/item/stack/stasis_pack = 1)
 
 /obj/random/rare_loot
 	icon_state = "rareloot"
@@ -126,7 +127,7 @@ GLOBAL_LIST_EMPTY(loot_locations)
 
 /obj/random/rare_loot
 	possible_spawns = list( /obj/item/stack/power_node = 3,
-	/obj/item/store_schematic = 0.75,
+	/obj/item/store_schematic = 1.5,
 	/obj/random/material/rare = 1,
 	/obj/random/tool/modded = 1,
 	/obj/random/material/rare = 1,
