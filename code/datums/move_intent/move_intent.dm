@@ -23,7 +23,7 @@
 		return TRUE
 
 /decl/move_intent/run/can_be_used_by(var/mob/user)
-	if(user.incapacitated(INCAPACITATION_ALL) || get_extension(user, /datum/extension/stasis_effect))
+	if(user.incapacitated(INCAPACITATION_ALL) || user.get_extension(user, /datum/extension/stasis_effect))
 		return FALSE
 	else
 		return user.can_sprint()
