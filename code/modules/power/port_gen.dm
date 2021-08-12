@@ -122,7 +122,7 @@
 	if(anchored)
 		connect_to_network()
 
-/obj/machinery/power/port_gen/pacman/New()
+/obj/machinery/power/port_gen/pacman/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	component_parts = list()
 	component_parts += new /obj/item/weapon/stock_parts/matter_bin(src)
@@ -455,7 +455,7 @@
 	board_path = /obj/item/weapon/circuitboard/pacman/super/potato
 	anchored = 1
 
-/obj/machinery/power/port_gen/pacman/super/potato/New()
+/obj/machinery/power/port_gen/pacman/super/potato/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	create_reagents(120)
 	..()
 

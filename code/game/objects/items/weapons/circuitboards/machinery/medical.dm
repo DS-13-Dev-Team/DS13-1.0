@@ -12,6 +12,7 @@
 							/obj/item/weapon/stock_parts/scanning_module = 1,
 							/obj/item/weapon/stock_parts/manipulator = 3,
 							/obj/item/weapon/stock_parts/console_screen = 1)
+
 /obj/item/weapon/circuitboard/bioprinter
 	name = T_BOARD("bioprinter")
 	build_path = /obj/machinery/organ_printer/flesh
@@ -20,8 +21,7 @@
 	req_components = list(
 							/obj/item/device/healthanalyzer = 1,
 							/obj/item/weapon/stock_parts/matter_bin = 2,
-							/obj/item/weapon/stock_parts/manipulator = 2,
-							)
+							/obj/item/weapon/stock_parts/manipulator = 2)
 
 /obj/item/weapon/circuitboard/roboprinter
 	name = T_BOARD("prosthetic organ fabricator")
@@ -30,5 +30,25 @@
 	origin_tech = list(TECH_ENGINEERING = 3, TECH_DATA = 3)
 	req_components = list(
 							/obj/item/weapon/stock_parts/matter_bin = 2,
-							/obj/item/weapon/stock_parts/manipulator = 2,
-							)
+							/obj/item/weapon/stock_parts/manipulator = 2)
+
+/obj/item/weapon/circuitboard/cryo_cell
+	name = T_BOARD("Cryo Cell")
+	build_path = /obj/machinery/atmospherics/unary/cryo_cell
+	board_type = "machine"
+	origin_tech = list(TECH_DATA = 4, TECH_BIO = 3, TECH_ENGINEERING = 4)
+	req_components = list(
+							/obj/item/weapon/stock_parts/matter_bin = 1,
+							/obj/item/stack/cable_coil = 1,
+							/obj/item/weapon/stock_parts/console_screen = 4)
+
+/obj/item/weapon/circuitboard/sleeper
+	name = T_BOARD("Sleeper")
+	build_path = /obj/machinery/sleeper
+	board_type = "machine"
+	origin_tech = list(TECH_DATA = 3, TECH_BIO = 2, TECH_ENGINEERING = 3, TECH_MATERIALS = 3)
+	req_components = list(
+							/obj/item/weapon/stock_parts/matter_bin = 1,
+							/obj/item/weapon/stock_parts/manipulator = 1,
+							/obj/item/stack/cable_coil = 1,
+							/obj/item/weapon/stock_parts/console_screen = 2)

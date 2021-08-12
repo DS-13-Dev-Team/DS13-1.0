@@ -5,7 +5,8 @@
 
 	For conserving memory the account is only made when necessary
 */
-#define RIG_ACCOUNT_CREATE	if (!account)	account = create_account(new_owner_name = (wearer ? wearer.name : "Generic"))
+#define RIG_ACCOUNT_CREATE	if (!account)create_rig_account()
+
 /obj/item/weapon/rig
 	var/datum/money_account/account
 
@@ -14,6 +15,19 @@
 	RIG_ACCOUNT_CREATE
 	return account
 
+/obj/item/weapon/rig/proc/create_rig_account()
+
+	account = create_account((wearer ? wearer.name : "Generic"))
+
+	GLOB.item_equipped_event.register(src, src, /obj/item/weapon/rig/proc/on_equip)
+	GLOB.item_unequipped_event.register(src, src, /obj/item/weapon/rig/proc/on_unequip)
+
+/obj/item/weapon/rig/proc/on_equip(var/mob/equipper, var/obj/item/item)
+	credits_changed()
+
+/obj/item/weapon/rig/proc/on_unequip(var/mob/equipper, var/obj/item/item)
+	equipper.credits_changed()
+
 /obj/item/weapon/rig/proc/get_account_balance()
 	//We don't need to create the account for this if it doesn't exist yet
 	if (!account)
@@ -21,11 +35,11 @@
 	return account.money
 
 /obj/item/weapon/rig/proc/charge_to_rig_account(var/source, var/purpose, var/terminal_id, var/amount)
-
-
+	RIG_ACCOUNT_CREATE
 
 	charge_to_account(get_account().account_number, source, purpose, terminal_id, amount)
-	//TODO: Inform the reciever it recieved money
+	if (wearer)
+		wearer.credits_changed()
 	return TRUE
 
 
@@ -69,6 +83,7 @@
 		//Cant take more than the RIG has
 		amount = clamp(amount, 0, get_account_balance())
 
+
 	//Alright we are ready to do this
 	charge_to_rig_account(chip, (cashflow_direction == 1 ? "Deposit" : "Withdrawal"), chip, amount*cashflow_direction)
 	chip.modify_worth((-amount)*cashflow_direction)
@@ -86,3 +101,16 @@
 		return wearing_rig.get_account_balance()
 
 	return 0
+
+
+
+
+/mob/proc/get_rig_account()
+	return null
+
+
+/mob/living/carbon/human/get_rig_account()
+	if (wearing_rig)
+		return wearing_rig.get_account()
+
+	return null

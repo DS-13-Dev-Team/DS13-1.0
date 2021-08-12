@@ -38,7 +38,7 @@
 	if(printing)
 		overlays += "bioprinter_working"
 
-/obj/machinery/organ_printer/New()
+/obj/machinery/organ_printer/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	component_parts = list()
 	component_parts += new /obj/item/weapon/stock_parts/matter_bin(src)
@@ -139,7 +139,7 @@
 		new /obj/item/stack/material/steel(get_turf(src), Floor(stored_matter/matter_amount_per_sheet))
 	return ..()
 
-/obj/machinery/organ_printer/robot/New()
+/obj/machinery/organ_printer/robot/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	component_parts += new /obj/item/weapon/circuitboard/roboprinter
 
@@ -192,7 +192,7 @@
 			new /obj/item/weapon/reagent_containers/food/snacks/meat(T)
 	return ..()
 
-/obj/machinery/organ_printer/flesh/New()
+/obj/machinery/organ_printer/flesh/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	component_parts += new /obj/item/device/healthanalyzer
 	component_parts += new /obj/item/weapon/circuitboard/bioprinter

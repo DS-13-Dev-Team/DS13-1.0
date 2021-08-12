@@ -9,11 +9,7 @@
 
 	tally += species.handle_movement_delay_special(src)
 
-	var/area/a = get_area(src)
-	if(a && !a.has_gravity())
-		if(skill_check(SKILL_EVA, SKILL_PROF))
-			return -2
-		return -1
+
 
 	if(legcuffed)
 		tally += legcuffed.get_onmob_delay()
@@ -28,6 +24,10 @@
 
 	if(can_feel_pain())
 		if(get_shock() >= 10) tally += (get_shock() / 10) //pain shouldn't slow you down if you can't even feel it
+
+
+
+
 
 	if(istype(buckled, /obj/structure/bed/chair/wheelchair))
 		for(var/organ_name in list(BP_L_HAND, BP_R_HAND, BP_L_ARM, BP_R_ARM))
@@ -87,6 +87,15 @@
 	tally /= get_move_speed_factor()
 	if(lying) //Crawling, it's slower
 		tally /= species.lying_speed_factor
+
+	var/area/a = get_area(src)
+	if(a && !a.has_gravity())
+		//Future todo: Make this more granular with varying skill values and not based on being in this proc
+		if(skill_check(SKILL_EVA, SKILL_PROF))
+			tally *= 0.65
+		else
+			tally *= 0.75
+
 	return tally
 
 /mob/living/carbon/human/size_strength_mod()

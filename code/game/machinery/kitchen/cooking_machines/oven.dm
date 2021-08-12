@@ -9,6 +9,7 @@
 	cook_time = 300
 	food_color = "#a34719"
 	can_burn_food = 1
+	circuit = /obj/item/weapon/circuitboard/oven
 
 	output_options = list(
 		"Personal Pizza" = /obj/item/weapon/reagent_containers/food/snacks/variable/pizza,

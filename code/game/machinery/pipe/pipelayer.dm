@@ -15,7 +15,7 @@
 	var/obj/item/weapon/tool/wrench/W
 	var/list/Pipes = list("regular pipes"=0,"scrubbers pipes"=31,"supply pipes"=29,"heat exchange pipes"=2, "fuel pipes"=45)
 
-/obj/machinery/pipelayer/New()
+/obj/machinery/pipelayer/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	W = new(src)
 	..()
 

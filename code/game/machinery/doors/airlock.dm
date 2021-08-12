@@ -1094,7 +1094,7 @@ About the new airlock wires panel:
 				src.p_open = 1
 			src.update_icon()
 			return
-		else if(isWirecutter(C))
+		else if(isWirecutter(C) && p_open)
 			return src.attack_hand(user)
 		else if(isMultitool(C))
 			if ((atom_flags & ATOM_FLAG_INDESTRUCTIBLE))
@@ -1449,7 +1449,7 @@ About the new airlock wires panel:
 
 /obj/machinery/door/airlock/autoname
 
-/obj/machinery/door/airlock/autoname/New()
+/obj/machinery/door/airlock/autoname/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	var/area/A = get_area(src)
 	name = A.name
 	..()

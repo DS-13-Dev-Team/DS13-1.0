@@ -16,6 +16,7 @@
 	use_power = 1
 	idle_power_usage = 2
 	active_power_usage = 500
+	circuit = /obj/item/weapon/circuitboard/gibber
 
 /obj/machinery/gibber/can_harvest_biomass()
 	return MASS_READY
@@ -28,7 +29,7 @@
 /obj/machinery/gibber/autogibber
 	var/turf/input_plate
 
-/obj/machinery/gibber/autogibber/New()
+/obj/machinery/gibber/autogibber/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	spawn(5)
 		for(var/i in GLOB.cardinal)
@@ -53,7 +54,6 @@
 		if(M.loc == input_plate)
 			M.forceMove(src)
 			M.gib()
-
 
 /obj/machinery/gibber/Initialize()
 	. = ..()
@@ -94,7 +94,22 @@
 	to_chat(user, "<span class='danger'>You [emagged ? "disable" : "enable"] \the [src]'s safety guard.</span>")
 	return 1
 
+/obj/machinery/gibber/dismantle()
+	for(var/atom/movable/M in contents)
+		M.forceMove(loc)
+	..()
+
 /obj/machinery/gibber/attackby(var/obj/item/W, var/mob/user)
+	if(!operating)
+		if(default_deconstruction_screwdriver(user, W))
+			return
+
+		if(default_deconstruction_crowbar(user, W))
+			return
+
+		if(default_part_replacement(user, W))
+			return
+
 	if(istype(W, /obj/item/grab))
 		var/obj/item/grab/G = W
 		if(!G.force_danger())
@@ -130,7 +145,7 @@
 		to_chat(user, "<span class='danger'>This is not suitable for \the [src]!</span>")
 		return
 
-	if(istype(victim,/mob/living/carbon/human) && !emagged)
+	if(istype(victim,/mob/living/carbon/human) && !emagged && !istype(victim,/mob/living/carbon/human/necromorph))
 		to_chat(user, "<span class='danger'>\The [src] safety guard is engaged!</span>")
 		return
 

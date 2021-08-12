@@ -14,7 +14,7 @@
 	anchored = 1
 
 
-/obj/machinery/power/terminal/New()
+/obj/machinery/power/terminal/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	var/turf/T = src.loc
 	if(level==1) hide(!T.is_plating())

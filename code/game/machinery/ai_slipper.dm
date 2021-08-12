@@ -15,7 +15,7 @@
 	req_access = list(access_bridge)
 
 
-/obj/machinery/ai_slipper/New()
+/obj/machinery/ai_slipper/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	update_icon()
 

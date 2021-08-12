@@ -149,7 +149,6 @@
 					to_chat(user, "You detach \the [removed] from \the [src].")
 					removed.forceMove(get_turf(src))
 					removed.uninstalled(src, user)
-					installed_modules -= removed
 					processing_modules -= removed
 					update_icon()
 					return
@@ -230,12 +229,11 @@
 
 	var/list/replaced
 	if (!RM.can_install(src, user, TRUE))
-		RM.resolve_installation_upgrade(src, do_install = FALSE, force = force)
+		RM.resolve_installation_upgrade(src, FALSE, force)
 
 		//If force is enabled, we check again with conflict detection turned off
-		if (!RM.can_install(src, user, FALSE, FALSE))
-			if (RM.get_conflicting(src))
-				to_chat(user, "The RIG already has a module of that class installed.")
+		if (!RM.can_install(src, user, FALSE))
+			to_chat(user, "The RIG already has a module of that class installed.")
 			return FALSE
 
 	if (user)
@@ -264,7 +262,6 @@
 
 
 /obj/item/weapon/rig/proc/uninstall(var/obj/item/rig_module/RM, var/delete = FALSE)
-	installed_modules -= RM
 	processing_modules -= RM
 
 	RM.uninstalled(src)

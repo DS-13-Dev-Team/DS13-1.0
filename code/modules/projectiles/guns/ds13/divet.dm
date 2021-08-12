@@ -1,7 +1,8 @@
 /**
 Divet pistol typedef & logic
 */
-
+#define DIVET_DAMAGE	17.5
+#define DIVET_DELAY	1
 /obj/item/weapon/gun/projectile/divet
 	name = "divet pistol"
 	desc = "A Winchester Arms NK-series pistol capable of fully automatic fire."
@@ -27,6 +28,10 @@ Divet pistol typedef & logic
 
 		)
 
+/obj/item/weapon/gun/projectile/divet/incendiary
+	magazine_type = /obj/item/ammo_magazine/divet/incendiary
+
+
 /obj/item/weapon/gun/projectile/divet/update_icon()
 	..()
 	if(ammo_magazine && ammo_magazine.stored_ammo.len)
@@ -39,8 +44,10 @@ Divet pistol typedef & logic
 
 /obj/item/weapon/gun/projectile/divet/silenced
 	name = "special ops divet pistol"
+	desc = "A modified version of the Winchester Arms NK-series pistol. An integrated suppressor lowers the audio profile, although this has a detrimental effect on power."
 	icon_state = "divet_spec"
 	silenced = TRUE
+	damage_factor = 0.85	//Silencers reduce bullet speed, and hence damage output
 
 /obj/item/weapon/gun/projectile/divet/silenced/update_icon()
 	..()
@@ -75,7 +82,7 @@ Magazine type definitions
 	ammo_type = /obj/item/ammo_casing/ls_slug/ap
 
 /obj/item/ammo_magazine/divet/incendiary
-	name = "divet magazine (dragon's breath)"
+	name = "divet magazine (incendiary)"
 	icon_state = "icds"
 	ammo_type = /obj/item/ammo_casing/ls_slug/incendiary
 
@@ -103,37 +110,48 @@ Projectile logic
 */
 
 /obj/item/projectile/bullet/ls_slug
-	damage = 17.5
+	damage = DIVET_DAMAGE
 	expiry_method = EXPIRY_FADEOUT
 	muzzle_type = /obj/effect/projectile/pulse/muzzle/light
 	fire_sound='sound/weapons/guns/fire/divet_fire.ogg'
-	armor_penetration = 5
+	armor_penetration = 7.5
 	structure_damage_factor = 1.5
 	penetration_modifier = 1.1
 	icon_state = "divet"
 
+//More damage and shrapnel, less AP, structure damage and penetration
 /obj/item/projectile/bullet/ls_slug/hollow_point
 	structure_damage_factor = 0.5
 	penetration_modifier = 0
+	damage = DIVET_DAMAGE *	1.15
+	step_delay = DIVET_DELAY * 1.25
 	embed = TRUE
-	armor_penetration = -50
+	armor_penetration = 0
 	icon_state = "divet_hp"
 
+//Opposite of hollowpoint
 /obj/item/projectile/bullet/ls_slug/ap
+	damage = DIVET_DAMAGE *	0.85
+	step_delay = DIVET_DELAY * 0.75
 	structure_damage_factor = 1.75
 	penetration_modifier = 1.5
 	armor_penetration = 15
 	icon_state = "divet_ap"
 
 /obj/item/projectile/bullet/ls_slug/incendiary
+	damage_type = BURN
 	icon_state = "divet_incend"
 	fire_sound = list('sound/weapons/guns/fire/torch_altfire_1.ogg',
 	'sound/weapons/guns/fire/torch_altfire_2.ogg',
 	'sound/weapons/guns/fire/torch_altfire_3.ogg')
 
 
-/obj/item/projectile/bullet/ls_slug/incendiary/on_hit(atom/target, blocked)
+/obj/item/projectile/bullet/ls_slug/incendiary/on_impact(atom/target)
 	//Yoinked from hydrazine torch. Spreads the flames on the turf because this bullet is about to be GC'd
-	var/turf/T = get_turf(target)
-	T.spray_ability(subtype = /datum/extension/spray/flame/radial,  target = target, angle = 360, length = 3, duration = 3 SECONDS, extra_data = list("temperature" = (T0C + 2600)))
+	var/turf/T = get_turf(src)
+	if (istype(target, /mob))
+		T = get_turf(target)
+	spawn()
+
+		T.spray_ability(subtype = /datum/extension/spray/flame/radial,  target = target, angle = 360, length = 2, duration = 1.2 SECONDS, extra_data = list("temperature" = (T0C + 2600)))
 	. = ..()

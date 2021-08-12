@@ -32,7 +32,7 @@ Pipelines + Other Objects -> Pipe network
 
 	var/atmos_initalized = FALSE
 
-/obj/machinery/atmospherics/New()
+/obj/machinery/atmospherics/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	if(!icon_manager)
 		icon_manager = new()
 

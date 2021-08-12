@@ -92,15 +92,14 @@
 			to_chat(user, "You load [W] into [src].")
 		return
 
-	if(isScrewdriver(W))
-		open = !open
-		to_chat(user, "<span class='notice'>You [open ? "open" : "close"] the maintenance panel.</span>")
+	if(default_deconstruction_screwdriver(user, W))
 		return
 
-	if(open)
-		if(isCrowbar(W))
-			dismantle()
-			return
+	if(default_deconstruction_crowbar(user, W))
+		return
+
+	if(default_part_replacement(user, W))
+		return
 
 	if(istype(W,/obj/item/weapon/disk/botany))
 		if(loaded_disk)
@@ -130,9 +129,15 @@
 	name = "lysis-isolation centrifuge"
 	icon_state = "traitcopier"
 	clicksound = "button2"
+	circuit = /obj/item/weapon/circuitboard/extractor
 
 	var/datum/seed/genetics // Currently scanned seed genetic structure.
 	var/degradation = 0     // Increments with each scan, stops allowing gene mods after a certain point.
+
+/obj/machinery/botany/extractor/dismantle()
+	for(var/atom/movable/A in contents)
+		A.forceMove(loc)
+	..()
 
 /obj/machinery/botany/extractor/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 
@@ -270,6 +275,12 @@
 	icon_state = "traitgun"
 	disk_needs_genes = 1
 	clicksound = "button2"
+	circuit = /obj/item/weapon/circuitboard/editor
+
+/obj/machinery/botany/editor/dismantle()
+	for(var/atom/movable/A in contents)
+		A.forceMove(loc)
+	..()
 
 /obj/machinery/botany/editor/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 

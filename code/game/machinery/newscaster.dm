@@ -157,7 +157,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 	name = "\improper security news terminal"
 	securityCaster = 1
 
-/obj/machinery/newscaster/New()         //Constructor, ho~
+/obj/machinery/newscaster/New(var/atom/location, var/direction, var/nocircuit = FALSE)         //Constructor, ho~
 	allCasters += src
 	src.paper_remaining = 15            // Will probably change this to something better
 	for(var/obj/machinery/newscaster/NEWSCASTER in allCasters) // Let's give it an appropriate unit number

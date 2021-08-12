@@ -106,10 +106,10 @@
 	//add the account
 	M.transaction_log.Add(T)
 	all_money_accounts.Add(M)
-
 	return M
 
 /proc/charge_to_account(var/attempt_account_number, var/source_name, var/purpose, var/terminal_id, var/amount)
+
 	var/datum/money_account/D = get_account(attempt_account_number)
 	if(!D || D.suspended)
 		return 0

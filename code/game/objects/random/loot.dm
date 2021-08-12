@@ -8,6 +8,8 @@
 #define FEW	4
 #define SOME	8
 #define MANY	15
+
+GLOBAL_LIST_EMPTY(loot_locations)
 /*
 	Main loot table.
 	Most random items are distributed using this entry point
@@ -18,6 +20,9 @@
 				/obj/random/uncommon_loot = 20,
 				/obj/random/rare_loot = 6)
 
+/obj/random/loot/Initialize()
+	GLOB.loot_locations |= get_turf(src)
+	.=..()
 
 /obj/random/loot/usually
 	spawn_nothing_percentage = USUALLY
@@ -121,15 +126,21 @@
 
 /obj/random/rare_loot
 	possible_spawns = list( /obj/item/stack/power_node = 3,
+	/obj/item/store_schematic = 0.75,
 	/obj/random/material/rare = 1,
 	/obj/random/tool/modded = 1,
 	/obj/random/material/rare = 1,
 	/obj/random/hardsuit = 0.5,
-	/obj/random/rig_module/rare = 1)
+	/obj/random/rig_module/rare = 1,
+	/obj/item/weapon/peng = 1)
 
 //Subtype that cannot spawn power nodes
 /obj/random/rare_loot/nodeless
 	exclusions = list(/obj/item/stack/power_node)
+
+
+/obj/random/rare_loot/pengless
+	exclusions = list(/obj/item/weapon/peng)
 
 /obj/random/rare_loot/usually
 	spawn_nothing_percentage = USUALLY

@@ -29,6 +29,7 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 	name = "Signal"
 	icon = 'icons/mob/eye.dmi'
 	icon_state = "markersignal"
+	atom_flags = ATOM_FLAG_INTANGIBLE
 	plane = ABOVE_OBSCURITY_PLANE
 	var/energy_extension_type = /datum/extension/psi_energy/signal
 	var/datum/extension/psi_energy/psi_energy
@@ -259,6 +260,21 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 		return
 
 	to_chat(src, SPAN_DANGER("Error: No marker found!"))
+
+/mob/observer/eye/signal/verb/jump_to_alive_necro()
+	set name = "Jump to Necromorph"
+	set category = SPECIES_NECROMORPH
+
+	if(SSnecromorph.major_vessels.len <= 0)
+		to_chat(src, SPAN_DANGER("No living necromorphs found!"))
+		return
+
+	var/necro = input(src, "Choose necromorph to jump", "Jumping menu") as null|anything in SSnecromorph.major_vessels
+	if(necro)
+		forceMove(get_turf(necro))
+		return
+
+	to_chat(src, SPAN_DANGER("You didn't choose a necromorph to jump!"))
 
 
 

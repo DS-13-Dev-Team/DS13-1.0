@@ -185,6 +185,7 @@ Best used for harassment, skirmishing and initiating fights from afar against un
 	damage = 15
 	damage_type = BURN
 	nodamage = 0
+	temperature = null
 	check_armour = "laser"
 	embed = FALSE
 	sharp = FALSE

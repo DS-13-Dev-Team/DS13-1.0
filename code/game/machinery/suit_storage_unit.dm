@@ -638,7 +638,7 @@
 
 	var/datum/wires/suit_storage_unit/wires = null
 
-/obj/machinery/suit_cycler/New()
+/obj/machinery/suit_cycler/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 
 	wires = new(src)

@@ -1110,7 +1110,7 @@
 /client/verb/body_groin()
 	set name = "body-groin"
 	set hidden = 1
-	toggle_zone_sel(list(BP_GROIN))
+	toggle_zone_sel(list(BP_GROIN,BP_TAIL))
 
 /client/verb/body_r_leg()
 	set name = "body-r-leg"

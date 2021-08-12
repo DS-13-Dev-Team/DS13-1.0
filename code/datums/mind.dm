@@ -2,6 +2,9 @@
 		The way datum/mind stuff works has been changed a lot.
 		Minds now represent IC characters rather than following a client around constantly.
 
+		Note that a mind only represents a character who has been brought into physical existence this round.
+		Minds do not exist for characters in savefiles until they are spawned
+
 	Guidelines for using minds properly:
 
 	-	Never mind.transfer_to(ghost). The var/current and var/original of a mind must always be of type mob/living!
@@ -33,9 +36,11 @@
 	var/key
 	var/name				//replaces mob/var/original_name
 	var/mob/living/current
-	var/mob/living/original	//TODO: remove.not used in any meaningful way ~Carn. First I'll need to tweak the way silicon-mobs handle minds.
+	var/mob/living/original	//Edit by Nanako, this value is now used and should not be removed
 	var/mob/observer/ghost	//When this mob is dead and floating around, this var holds the ghost mob who used to be its body
 	var/active = 0
+
+	var/character_id	//The database ID of the associated character records for this mind. Used to fetch and store persistent data
 
 	var/memory
 	var/list/known_connections //list of known (RNG) relations between people
@@ -64,6 +69,16 @@
 	//put this here for easier tracking ingame
 	var/datum/money_account/initial_account
 
+	/*
+		This value is set once, on death, during the call stack
+		It checks and caches how many credits our original mob was carrying when they died.
+
+		The main purpose of this is to have a record in case the body is gibbed, dusted, or otherwise annihilated
+	*/
+	var/list/final_credits = null
+
+	var/cached_crew_persistence	=	null
+
 	var/list/initial_email_login = list("login" = "", "password" = "")
 
 	//used for optional self-objectives that antagonists can give themselves, which are displayed at the end of the round.
@@ -73,6 +88,8 @@
 /datum/mind/New(var/key)
 	src.key = key
 	..()
+
+
 
 /datum/mind/proc/transfer_to(mob/living/new_character)
 	if(!istype(new_character))
@@ -482,14 +499,14 @@
 	assigned_role =   null
 	set_special_role(null)
 	role_alt_title =  null
-	assigned_job =    null
-	//faction =       null //Uncommenting this causes a compile error due to 'undefined type', fucked if I know.
-	changeling =      null
+	assigned_job =	null
+	//faction =	   null //Uncommenting this causes a compile error due to 'undefined type', fucked if I know.
+	changeling =	  null
 	initial_account = null
-	objectives =      list()
+	objectives =	  list()
 	special_verbs =   list()
-	has_been_rev =    0
-	rev_cooldown =    0
+	has_been_rev =	0
+	rev_cooldown =	0
 	brigged_since =   -1
 
 //Antagonist role check
@@ -642,3 +659,102 @@
 	mind.set_special_role("Cultist")
 
 
+/*
+	Called when we are in a human mob who dies
+*/
+/datum/mind/proc/on_death()
+	//Database handling, only do this if we have a registered character ID
+	if (has_crew_persistence())
+		//Antags don't get death penalties
+		if (special_role)
+			return
+
+		character_died(src)
+
+
+/*
+	How is this character doing this round? Returns one of the three STATUS_XXX defines from defines/characters.dm
+*/
+/datum/mind/proc/get_round_status()
+
+
+
+	if (current?.stat == DEAD || isghostmind(src))
+		return STATUS_DEAD
+
+	//TODO: Check if they're on a shuttle or an escape area
+	var/area/A = get_area(current)
+	if(A)
+		if (is_type_in_list(A, GLOB.using_map.post_round_safe_areas))
+			return STATUS_ESCAPED
+
+		//Shuttle handling
+		if (istype(A, /area/shuttle))
+			var/area/shuttle/AS = A
+			if (AS.has_escaped())
+				return STATUS_ESCAPED
+
+
+
+	return STATUS_LIVING
+
+
+
+/*
+	Get the total credits that this character "owns", divided into two categories:
+	Stored: The contents of their checking account
+	Carried: The contents of their rig account, and of any credit chips on their person
+*/
+/datum/mind/proc/get_owned_credits()
+
+	//Indicates this mind is not properly setup yet
+	if (!initial_account)
+		return null
+
+	//If they're dead, we don't check credits again as we don't want to know about any postmortem changes
+	if (is_dead())
+		return final_credits
+
+	var/list/values =list()
+	values["stored"] = initial_account.money
+	values["carried"] = current.get_carried_credits()
+
+	return values
+
+
+/*
+	Called exactly once on death, caches the value of credits we were carrying at the moment we died
+	This happens just before our body is gibbed, if that's going to happen
+*/
+/datum/mind/proc/get_final_credits()
+	//Don't do it again if its been done
+	if (!isnull(final_credits))
+		return
+
+	final_credits = list()
+	final_credits["carried"] = original.get_carried_credits()
+	if (initial_account)
+		final_credits["stored"] = initial_account.money
+	//TODO: Delete excess carried credits from the mob to avoid looting?
+
+	//Lets drop a credit chip for the loot we have
+	if (final_credits["carried"] > 1)
+		var/obj/item/weapon/spacecash/ewallet/E = new (get_turf(original))
+		E.set_worth(final_credits["carried"]*FEE_DEATH)
+
+	if (initial_account)
+		initial_account.money += final_credits["carried"] * (1 - FEE_DEATH)
+
+
+//Returns true if this mind is for a character who is dead.
+/datum/mind/proc/is_dead()
+	if (current?.stat == DEAD || isghostmind(src))
+		return TRUE
+
+	return FALSE
+
+
+//A wrapper that puts us in a global list
+/datum/mind/proc/set_id(var/new_id)
+	character_id = new_id
+	GLOB.characters["character_id"] = src

@@ -29,9 +29,13 @@
 	var/selected_option
 	var/list/output_options = list()
 
+/obj/machinery/cooker/dismantle()
+	if(cooking_obj)
+		cooking_obj.forceMove(loc)
+	..()
+
 /obj/machinery/cooker/Destroy()
 	if(cooking_obj)
-		qdel(cooking_obj)
 		cooking_obj = null
 	return ..()
 
@@ -42,6 +46,15 @@
 
 /obj/machinery/cooker/attackby(var/obj/item/I, var/mob/user)
 	set waitfor = 0  //So that any remaining parts of calling proc don't have to wait for the long cooking time ahead.
+
+	if(!cooking)
+		if(default_deconstruction_screwdriver(user, I))
+			return
+
+		if(default_part_replacement(user, I))
+			return
+
+		default_deconstruction_crowbar(user, I)
 
 	if(!cook_type || (stat & (NOPOWER|BROKEN)))
 		to_chat(user, "<span class='warning'>\The [src] is not working.</span>")

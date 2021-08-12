@@ -397,6 +397,9 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 
 
 
+/datum/species/proc/onDestroy(var/mob/living/carbon/human/H)
+	return
+
 /*
 	Setup Procs:
 	Copying over vars to the mob, and doing any initial calculations

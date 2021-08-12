@@ -25,7 +25,7 @@ var/bomb_set
 	var/datum/wires/nuclearbomb/wires = null
 	var/decl/security_level/original_level
 
-/obj/machinery/nuclearbomb/New()
+/obj/machinery/nuclearbomb/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	r_code = "[rand(10000, 99999.0)]"//Creates a random code upon object spawn.
 	wires = new/datum/wires/nuclearbomb(src)

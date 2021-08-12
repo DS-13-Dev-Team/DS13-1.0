@@ -96,7 +96,7 @@
 	report_danger_level = 0
 	breach_detection = 0
 
-/obj/machinery/alarm/server/New()
+/obj/machinery/alarm/server/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	req_access = list(access_cscio, access_engineering)
 	TLV["temperature"] =	list(T0C-26, T0C, T0C+30, T0C+40) // K

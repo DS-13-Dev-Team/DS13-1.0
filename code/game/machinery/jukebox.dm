@@ -51,7 +51,7 @@ datum/track/proc/GetTrack()
 	state_base = "jukebox2"
 	pixel_x = 0
 
-/obj/machinery/media/jukebox/New()
+/obj/machinery/media/jukebox/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	update_icon()
 	sound_id = "[/obj/machinery/media/jukebox]_[sequential_id(/obj/machinery/media/jukebox)]"

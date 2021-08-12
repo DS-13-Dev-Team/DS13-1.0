@@ -69,7 +69,7 @@ GLOBAL_LIST_INIT(skin_buttons, list("infob","discordb", "textb", "wikib", "forum
 
 /decl/theme/light
 	name = "Flashbang"
-	id = "light"
+	id = THEME_LIGHT
 	panel_color = "#FFFFFF"	//The flat, inner portions of panels
 	border_color = "#FFFFFF"	//The outer portions of panels around the inner
 	text_color = "#000000"
@@ -77,7 +77,7 @@ GLOBAL_LIST_INIT(skin_buttons, list("infob","discordb", "textb", "wikib", "forum
 
 /decl/theme/dark
 	name = "Half-light"
-	id = "dark"
+	id = THEME_DARK
 	text_color = "#99aab5"
 	panel_color = "#272727"	//The flat, inner portions of panels
 	border_color = "#2c2f33"	//The outer portions of panels around the inner
@@ -85,7 +85,7 @@ GLOBAL_LIST_INIT(skin_buttons, list("infob","discordb", "textb", "wikib", "forum
 
 /decl/theme/dark/perfect
 	name = "Perfect Dark"
-	id = "realdark"
+	id = THEME_REALDARK
 	fullscreen	=	TRUE
 
 
@@ -94,6 +94,8 @@ GLOBAL_LIST_INIT(skin_buttons, list("infob","discordb", "textb", "wikib", "forum
 	Helpers
 */
 /client/proc/set_theme(var/theme_id, var/save = TRUE)
+	if(!theme_id)
+		theme_id = THEME_DARK
 	var/decl/theme/T = GLOB.client_themes[theme_id]
 	T.apply(src)
 	if (prefs && save)

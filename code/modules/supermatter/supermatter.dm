@@ -104,7 +104,7 @@
 	var/aw_delam = FALSE
 	var/aw_EPR = FALSE
 
-/obj/machinery/power/supermatter/New()
+/obj/machinery/power/supermatter/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	uid = gl_uid++
 

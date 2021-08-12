@@ -90,7 +90,7 @@
 	var/is_washing = 0
 	var/list/temperature_settings = list("normal" = 310, "boiling" = T0C+100, "freezing" = T0C)
 
-/obj/machinery/shower/New()
+/obj/machinery/shower/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	create_reagents(50)
 

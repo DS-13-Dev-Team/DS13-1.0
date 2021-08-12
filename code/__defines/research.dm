@@ -9,8 +9,8 @@
 #define TECH_COMBAT "combat"
 #define TECH_MAGNET "magnets"
 #define TECH_DATA "programming"
-#define TECH_ILLEGAL "syndicate"
-#define TECH_ARCANE "arcane"
+#define TECH_ILLEGAL "earth gov"
+#define TECH_NECRO "marker"
 
 #define NONE		0
 #define IMPRINTER	1	//For circuits. Uses glass/chemicals.

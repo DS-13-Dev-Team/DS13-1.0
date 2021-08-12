@@ -16,7 +16,7 @@ var/global/list/navbeacons = list()
 
 	req_access = list(access_engineering)
 
-/obj/machinery/navbeacon/New()
+/obj/machinery/navbeacon/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 
 	var/turf/T = loc

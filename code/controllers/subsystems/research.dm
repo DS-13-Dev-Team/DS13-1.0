@@ -93,4 +93,7 @@ SUBSYSTEM_DEF(research)
 		design_files_to_init += design_file
 
 
+
+
+
 /atom/research_design_initializer

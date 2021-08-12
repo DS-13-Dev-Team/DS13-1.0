@@ -74,7 +74,7 @@
 		visible_message("<span class='notice'>\The [user] bonks \the [src] harmlessly.</span>")
 	attack_animation(user)
 
-/obj/machinery/door/New()
+/obj/machinery/door/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	. = ..()
 	if(density)
 		layer = closed_layer

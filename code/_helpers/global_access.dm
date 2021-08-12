@@ -327,8 +327,8 @@
 			return global.damage_icon_parts;
 		if("dbcon")
 			return global.dbcon;
-		if("dbcon_old")
-			return global.dbcon_old;
+		if("dbcon")
+			return global.dbcon;
 		if("debug_verbs")
 			return global.debug_verbs;
 		if("decls_repository")
@@ -1284,8 +1284,8 @@
 			global.damage_icon_parts=newval;
 		if("dbcon")
 			global.dbcon=newval;
-		if("dbcon_old")
-			global.dbcon_old=newval;
+		if("dbcon")
+			global.dbcon=newval;
 		if("debug_verbs")
 			global.debug_verbs=newval;
 		if("decls_repository")
@@ -2078,7 +2078,7 @@
 	"custom_items",
 	"damage_icon_parts",
 	"dbcon",
-	"dbcon_old",
+	"dbcon",
 	"debug_verbs",
 	"decls_repository",
 	"default_material_composition",

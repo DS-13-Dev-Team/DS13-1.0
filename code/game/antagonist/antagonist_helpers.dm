@@ -79,10 +79,6 @@
 			antag_candidates -= antag
 	return antag_candidates
 
-/proc/get_antagonist(var/id)
-
-
-
 
 
 
