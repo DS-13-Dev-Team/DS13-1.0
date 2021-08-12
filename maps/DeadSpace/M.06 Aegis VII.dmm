@@ -2820,7 +2820,15 @@
 "fP" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/weapon/gun/energy/cutter,
+/obj/item/rig_module/mounted/stasis{
+	pixel_x = -3;
+	pixel_y = -3
+	},
+/obj/item/rig_module/mounted/stasis,
+/obj/item/rig_module/mounted/stasis{
+	pixel_x = 3;
+	pixel_y = 3
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/aegis/colony/spare_storage)
 "fQ" = (
@@ -6836,6 +6844,32 @@
 /obj/structure/table/rack,
 /obj/random/tool/modded,
 /turf/simulated/floor/tiled/monotile,
+/area/aegis/colony/spare_storage)
+"rX" = (
+/obj/structure/table/rack,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/item/weapon/gun/energy/cutter{
+	pixel_y = 5
+	},
+/obj/item/weapon/gun/energy/cutter,
+/turf/simulated/floor/tiled/monotile,
+/area/aegis/colony/spare_storage)
+"tw" = (
+/obj/structure/table/rack,
+/obj/item/stack/stasis_pack{
+	pixel_x = -4;
+	pixel_y = -4
+	},
+/obj/item/stack/stasis_pack{
+	pixel_x = -2;
+	pixel_y = -2
+	},
+/obj/item/stack/stasis_pack,
+/obj/item/stack/stasis_pack{
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/turf/simulated/floor/tiled,
 /area/aegis/colony/spare_storage)
 
 (1,1,1) = {"
@@ -31377,7 +31411,7 @@ mH
 lu
 cg
 aX
-aJ
+tw
 dR
 aS
 cN
@@ -31579,7 +31613,7 @@ mI
 lu
 aK
 aX
-fP
+rX
 dR
 aS
 cP

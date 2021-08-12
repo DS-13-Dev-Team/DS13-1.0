@@ -27,6 +27,7 @@
 		to_chat(user, SPAN_NOTICE("Someone is already using [src]"))
 	else if(recharging)
 		to_chat(user, SPAN_NOTICE("[src] is recharging!"))
+		playsound(loc, 'sound/machines/buzz-two.ogg', VOLUME_MID, 0)
 	else
 		if(istype(user.back, /obj/item/weapon/rig))
 			var/obj/item/weapon/rig/R = user.back
@@ -35,13 +36,14 @@
 				if(E.power_supply.percent() != 100)
 					busy = TRUE
 					update_icon()
-					if(user.do_skilled(10, SKILL_DEVICES, src))
+					if(user.do_skilled(27, SKILL_DEVICES, src))
 						E.power_supply.insta_recharge()
+						E.update_stas_charge()
 						to_chat(user, SPAN_NOTICE("Stasis Module was recharged"))
 						busy = FALSE
 						recharging = TRUE
 						update_icon()
-						spawn(150)
+						spawn(162)
 							recharging = FALSE
 							update_icon()
 					else
@@ -49,8 +51,10 @@
 						update_icon()
 				else
 					to_chat(user, SPAN_NOTICE("Stasis Module is already fully charged"))
+					playsound(loc, 'sound/machines/buzz-two.ogg', VOLUME_MID, 0)
 			else
 				to_chat(user, SPAN_NOTICE("You don't have stasis module installed."))
+				playsound(loc, 'sound/machines/buzz-two.ogg', VOLUME_MID, 0)
 
 /obj/machinery/stasis_station/attackby(var/obj/item/I, var/mob/user)
 	return attack_hand(user)
