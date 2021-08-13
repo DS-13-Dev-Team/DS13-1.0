@@ -21,7 +21,6 @@ var/list/spells = typesof(/spell) //needed for the badmin verb for now
 	var/still_recharging_msg = "<span class='notice'>The spell is still recharging.</span>"
 
 	var/silenced = 0 //not a binary - the length of time we can't cast this for
-	var/processing = 0 //are we processing already? Mainly used so that silencing a spell doesn't call process() again. (and inadvertedly making it run twice as fast)
 
 	var/holder_var_type = "bruteloss" //only used if charge_type equals to "holder_var"
 	var/holder_var_amount = 20 //same. The amount adjusted with the mob's var when the spell is used
@@ -76,9 +75,9 @@ var/list/spells = typesof(/spell) //needed for the badmin verb for now
 	charge_counter = charge_max
 
 /spell/proc/process()
-	if(processing)
+	if(is_processing)
 		return
-	processing = 1
+	is_processing = 1
 	spawn(0)
 		while(charge_counter < charge_max || silenced > 0)
 			charge_counter = min(charge_max,charge_counter+1)
@@ -89,7 +88,7 @@ var/list/spells = typesof(/spell) //needed for the badmin verb for now
 			if(!istype(S))
 				return
 			S.update_charge(1)
-		processing = 0
+		is_processing = 0
 	return
 
 /////////////////

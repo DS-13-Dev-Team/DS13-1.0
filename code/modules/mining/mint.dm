@@ -16,7 +16,6 @@
 	var/amt_phoron = 0
 	var/amt_uranium = 0
 	var/newCoins = 0   //how many coins the machine made in it's last load
-	var/processing = 0
 	var/chosen //which material will be used to make coins
 	var/coinsToProduce = 10
 
@@ -114,7 +113,7 @@
 		return 1
 	usr.set_machine(src)
 	src.add_fingerprint(usr)
-	if(processing==1)
+	if(is_processing)
 		to_chat(usr, "<span class='notice'>The machine is processing.</span>")
 		return
 	if(href_list["choose"])
@@ -124,7 +123,7 @@
 	if(href_list["makeCoins"])
 		var/temp_coins = coinsToProduce
 		if (src.output)
-			processing = 1;
+			is_processing = 1;
 			icon_state = "coinpress1"
 			var/M = output.loc
 			switch(chosen)
@@ -177,7 +176,7 @@
 						src.updateUsrDialog()
 						sleep(5)
 			icon_state = "coinpress0"
-			processing = 0;
+			is_processing = 0;
 			coinsToProduce = temp_coins
 	src.updateUsrDialog()
 	return

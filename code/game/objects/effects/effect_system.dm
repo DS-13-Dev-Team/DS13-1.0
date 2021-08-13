@@ -363,7 +363,7 @@ steam.start() -- spawns the effect
 /////////////////////////////////////////////
 /datum/effect/effect/system/trail
 	var/turf/oldposition
-	var/processing = 1
+	is_processing = 1
 	var/on = 1
 	var/max_number = 0
 	number = 0
@@ -379,9 +379,9 @@ steam.start() -- spawns the effect
 /datum/effect/effect/system/trail/start()
 	if(!src.on)
 		src.on = 1
-		src.processing = 1
-	if(src.processing)
-		src.processing = 0
+		src.is_processing = 1
+	if(src.is_processing)
+		src.is_processing = 0
 		spawn(0)
 			var/turf/T = get_turf(src.holder)
 			if(T != src.oldposition)
@@ -395,16 +395,16 @@ steam.start() -- spawns the effect
 						qdel(trail)
 				spawn(2)
 					if(src.on)
-						src.processing = 1
+						src.is_processing = 1
 						src.start()
 			else
 				spawn(2)
 					if(src.on)
-						src.processing = 1
+						src.is_processing = 1
 						src.start()
 
 /datum/effect/effect/system/trail/proc/stop()
-	src.processing = 0
+	src.is_processing = 0
 	src.on = 0
 
 /datum/effect/effect/system/trail/proc/effect(var/obj/effect/effect/T)

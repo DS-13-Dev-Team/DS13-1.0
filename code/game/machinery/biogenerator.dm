@@ -13,7 +13,6 @@
 	anchored = 1
 	use_power = 1
 	idle_power_usage = 40
-	var/processing = 0
 	var/obj/item/weapon/reagent_containers/glass/beaker = null
 	var/points = 0
 	var/state = BG_READY
@@ -82,7 +81,7 @@
 			beaker = O
 			state = BG_READY
 			updateUsrDialog()
-	else if(processing)
+	else if(is_processing)
 		to_chat(user, "<span class='notice'>\The [src] is currently processing.</span>")
 	else if(ingredients >= capacity)
 		to_chat(user, "<span class='notice'>\The [src] is already full! Activate it.</span>")

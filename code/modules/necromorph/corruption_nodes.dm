@@ -22,8 +22,6 @@
 
 	var/randpixel = 0
 
-	var/processing = FALSE
-
 	can_block_movement = FALSE
 	implements_dummy = TRUE
 
@@ -97,7 +95,7 @@
 	if (turf_corrupted(src, TRUE))
 		regenerate()
 		if (can_stop_processing())
-			processing = FALSE
+			is_processing = FALSE
 			return PROCESS_KILL
 	else
 		degenerate()
@@ -120,8 +118,8 @@
 	Process Handling
 */
 /obj/structure/corruption_node/proc/start_processing()
-	if (!processing)
-		processing = TRUE
+	if(!is_processing)
+		is_processing = TRUE
 		START_PROCESSING(SSobj, src)
 
 /obj/structure/corruption_node/can_stop_processing()
