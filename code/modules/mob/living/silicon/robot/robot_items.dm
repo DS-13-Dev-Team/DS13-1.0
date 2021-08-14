@@ -1,4 +1,4 @@
-//A portable analyzer, for research borgs.  This is better then giving them a gripper which can hold anything and letting them use the normal analyzer.
+/*//A portable analyzer, for research borgs.  This is better then giving them a gripper which can hold anything and letting them use the normal analyzer.
 /obj/item/weapon/portable_destructive_analyzer
 	name = "Portable Destructive Analyzer"
 	icon = 'icons/obj/items.dmi'
@@ -7,14 +7,14 @@
 
 	var/min_reliability = 90 //Can't upgrade, call it laziness or a drawback
 
-	var/datum/research/techonly/files 	//The device uses the same datum structure as the R&D computer/server.
+	var/datum/research/files	//The device uses the same datum structure as the R&D computer/server.
 										//This analyzer can only store tech levels, however.
 
 	var/obj/item/weapon/loaded_item	//What is currently inside the analyzer.
 
 /obj/item/weapon/portable_destructive_analyzer/New()
 	..()
-	files = new /datum/research/techonly(src) //Setup the research data holder.
+	files = new /datum/research(src) //Setup the research data holder.
 
 /obj/item/weapon/portable_destructive_analyzer/attack_self(user as mob)
 	var/response = alert(user, 	"Analyzing the item inside will *DESTROY* the item for good.\n\
@@ -55,10 +55,10 @@
 	if(response == "Sync")
 		var/success = 0
 		for(var/obj/machinery/r_n_d/server/S in SSmachines.machinery)
-			for(var/datum/tech/T in files.known_tech) //Uploading
-				S.files.AddTech2Known(T)
-			for(var/datum/tech/T in S.files.known_tech) //Downloading
-				files.AddTech2Known(T)
+			for(var/datum/tech/T in files.known_designs) //Uploading
+				S.files.AddDesign2Known(T)
+			for(var/datum/tech/T in S.files.known_designs) //Downloading
+				files.AddDesign2Known(T)
 			success = 1
 			files.RefreshResearch()
 		if(success)
@@ -95,7 +95,7 @@
 			M.show_message(text("<span class='notice'>[user] adds the [I] to the [src].</span>"), 1)
 		desc = initial(desc) + "<br>It is holding \the [loaded_item]."
 		flick("portable_analyzer_load", src)
-		icon_state = "portable_analyzer_full"
+		icon_state = "portable_analyzer_full"*/
 
 /obj/item/weapon/party_light
 	name = "party light"

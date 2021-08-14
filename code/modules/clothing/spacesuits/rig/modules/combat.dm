@@ -180,7 +180,7 @@
 
 	if(!target)
 		gun.attack_self(holder.wearer)
-		return
+		return 0
 
 	gun.Fire(target,holder.wearer)
 	return 1
@@ -246,7 +246,8 @@
 
 /obj/item/rig_module/mounted/energy_blade/activate()
 
-	..()
+	if(!..())
+		return
 
 	var/mob/living/M = holder.wearer
 

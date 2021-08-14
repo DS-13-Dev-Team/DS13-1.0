@@ -37,7 +37,7 @@
 	//The linegun opens when you enter ironsights mode
 	require_aiming = TRUE
 
-	has_safety = FALSE	//Safety switches are for military/police weapons, not for tools
+	has_safety = TRUE	//This thing is too dangerous to lack safety
 
 /*
 	Ironsight Handling

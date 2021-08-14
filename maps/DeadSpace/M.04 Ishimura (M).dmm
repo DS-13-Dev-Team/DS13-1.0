@@ -10907,11 +10907,11 @@
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/upper/security/brig)
 "axx" = (
+/obj/effect/floor_decal/corner/grey/mono,
+/obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/sleeper{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/grey/mono,
-/obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/medical)
 "axy" = (
@@ -11864,9 +11864,6 @@
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/medical)
 "azg" = (
-/obj/machinery/sleeper{
-	dir = 4
-	},
 /obj/effect/floor_decal/corner/grey/mono,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/button/remote/airlock{
@@ -11874,6 +11871,9 @@
 	id = "med_exit";
 	name = "Clinic Exit Button";
 	pixel_x = -24
+	},
+/obj/machinery/sleeper{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/medical)
@@ -12549,7 +12549,6 @@
 	pixel_y = 3
 	},
 /obj/item/weapon/disk/tech_disk,
-/obj/item/weapon/disk/design_disk,
 /obj/item/weapon/computer_hardware/hard_drive/portable/design/circuits,
 /obj/item/weapon/computer_hardware/hard_drive/portable/design/components,
 /obj/item/weapon/computer_hardware/hard_drive/portable/design/computer,
@@ -18599,6 +18598,9 @@
 "aKM" = (
 /obj/machinery/light{
 	dir = 8
+	},
+/obj/machinery/atmospherics/unary/vent_pump/wall{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/command/bridge)
@@ -31231,6 +31233,19 @@
 /obj/effect/wallframe_spawn/reinforced_phoron,
 /turf/simulated/floor/reinforced/airless,
 /area/ishimura/upper/engineering/engine_room)
+"wZe" = (
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark/monotile,
+/area/ishimura/upper/command/bridge)
+"xvK" = (
+/obj/machinery/atmospherics/unary/vent_pump/wall{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/ishimura/upper/command/bridge)
 
 (1,1,1) = {"
 aaa
@@ -71306,7 +71321,7 @@ aJi
 abe
 big
 aaO
-aaO
+wZe
 aaO
 bdK
 aav
@@ -71508,7 +71523,7 @@ aGF
 aZa
 aZa
 aZa
-aZa
+xvK
 aZa
 aZa
 aJh
