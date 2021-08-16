@@ -38,10 +38,10 @@
 	update_icon()
 
 /obj/item/weapon/card/data/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	var/image/detail_overlay = image('icons/obj/card.dmi', src,"[icon_state]-color")
 	detail_overlay.color = detail_color
-	overlays += detail_overlay
+	add_overlay(detail_overlay)
 
 /obj/item/weapon/card/data/attackby(obj/item/I, mob/living/user)
 	if(istype(I, /obj/item/device/integrated_electronics/detailer))

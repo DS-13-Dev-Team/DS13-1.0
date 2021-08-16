@@ -85,11 +85,11 @@ obj/structure/closet/crate
 /obj/structure/closet/crate/secure/update_icon()
 	..()
 	if(broken)
-		overlays += emag
+		add_overlay(emag)
 	else if(locked)
-		overlays += redlight
+		add_overlay(redlight)
 	else
-		overlays += greenlight
+		add_overlay(greenlight)
 
 /obj/structure/closet/crate/plastic
 	name = "plastic crate"

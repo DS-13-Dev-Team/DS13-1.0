@@ -219,7 +219,7 @@
 
 	var/obj/item/weapon/secbot_assembly/Sa = new /obj/item/weapon/secbot_assembly(Tsec)
 	Sa.build_step = 1
-	Sa.overlays += image('icons/mob/bot/secbot.dmi', "hs_hole")
+	Sa.add_overlay(image('icons/mob/bot/secbot.dmi', "hs_hole"))
 	Sa.created_name = name
 	new /obj/item/device/assembly/prox_sensor(Tsec)
 	new /obj/item/weapon/melee/baton(Tsec)
@@ -282,13 +282,13 @@
 	if(isWelder(O) && !build_step)
 		if(O.use_tool(user, src, WORKTIME_NORMAL, QUALITY_WELDING, FAILCHANCE_NORMAL))
 			build_step = 1
-			overlays += image('icons/mob/bot/secbot.dmi', "hs_hole")
+			add_overlay(image('icons/mob/bot/secbot.dmi', "hs_hole"))
 			to_chat(user, "You weld a hole in \the [src].")
 
 	else if(isprox(O) && (build_step == 1))
 		build_step = 2
 		to_chat(user, "You add \the [O] to [src].")
-		overlays += image('icons/mob/bot/secbot.dmi', "hs_eye")
+		add_overlay(image('icons/mob/bot/secbot.dmi', "hs_eye"))
 		SetName("helmet/signaler/prox sensor assembly")
 		qdel(O)
 
@@ -296,7 +296,7 @@
 		build_step = 3
 		to_chat(user, "You add \the [O] to [src].")
 		SetName("helmet/signaler/prox sensor/robot arm assembly")
-		overlays += image('icons/mob/bot/secbot.dmi', "hs_arm")
+		add_overlay(image('icons/mob/bot/secbot.dmi', "hs_arm"))
 		qdel(O)
 
 	else if(istype(O, /obj/item/weapon/melee/baton) && build_step == 3)

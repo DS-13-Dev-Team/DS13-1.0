@@ -86,9 +86,9 @@
 	update_icons()
 
 /mob/living/bot/medbot/update_icons()
-	overlays.Cut()
+	cut_overlays()
 	if(skin)
-		overlays += image('icons/mob/bot/medibot_skins.dmi', "medskin_[skin]")
+		add_overlay(image('icons/mob/bot/medibot_skins.dmi', "medskin_[skin]"))
 	if(busy)
 		icon_state = "medibots"
 	else
@@ -286,7 +286,7 @@
 /obj/item/weapon/firstaid_arm_assembly/Initialize()
 	. = ..()
 	if(skin != "firstaid")//Let's not add any unnecessary overlays.
-		overlays += image('icons/mob/bot/medibot_skins.dmi', "kit_skin_[src.skin]")
+		add_overlay(image('icons/mob/bot/medibot_skins.dmi', "kit_skin_[src.skin]"))
 
 /obj/item/weapon/firstaid_arm_assembly/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	..()
@@ -305,7 +305,7 @@
 					build_step++
 					to_chat(user, "<span class='notice'>You add the health sensor to [src].</span>")
 					SetName("First aid/robot arm/health analyzer assembly")
-					overlays += image('icons/mob/bot/medibot.dmi', "na_scanner")
+					add_overlay(image('icons/mob/bot/medibot.dmi', "na_scanner"))
 
 			if(1)
 				if(isprox(W))

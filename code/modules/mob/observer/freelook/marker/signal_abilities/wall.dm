@@ -42,18 +42,18 @@
 
 
 /obj/structure/corruption_node/wall/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	.=..()
 	var/image/I = image(icon, src, icon_state)
 	var/matrix/M = matrix()
 	I.transform = turn(M, rand_between(-35, 35))
 	I.pixel_x = -12
-	overlays.Add(I)
+	add_overlay(I)
 
 	I = image(icon, icon_state)
 	I.transform = turn(M, rand_between(-35, 35))
 	I.pixel_x = 12
-	overlays.Add(I)
+	add_overlay(I)
 
 /obj/structure/corruption_node/wall/get_blurb()
 	. = "This node acts as a defensive wall, blocking movement and vision on the tile it's placed. The hardened growth can stall attackers for a few seconds, but it is not very durable, and easily overcome with hand tools.<br>\

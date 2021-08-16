@@ -94,10 +94,8 @@
 		if("kill") return "nucgun-kill"
 
 /obj/item/weapon/gun/energy/gun/nuclear/update_icon()
-	var/list/new_overlays = list()
+	cut_overlays()
 
-	new_overlays += get_charge_overlay()
-	new_overlays += get_reactor_overlay()
-	new_overlays += get_mode_overlay()
-
-	overlays = new_overlays
+	add_overlay(get_charge_overlay())
+	add_overlay(get_reactor_overlay())
+	add_overlay(get_mode_overlay())

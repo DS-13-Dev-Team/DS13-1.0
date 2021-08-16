@@ -182,11 +182,11 @@
 	matter = list(MATERIAL_STEEL = 700, MATERIAL_SILVER = 80)
 
 /obj/item/weapon/cell/force/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	var/overlay_state
 	var/percentage = percent()
 	if (percentage >= 20)
 		overlay_state = "fb-[round(percentage, 20)]"
 	if(overlay_state)
-		overlays += image('icons/obj/ammo.dmi', overlay_state)
+		add_overlay(image('icons/obj/ammo.dmi', overlay_state))
 

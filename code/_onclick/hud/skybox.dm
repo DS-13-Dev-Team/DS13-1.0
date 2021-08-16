@@ -31,8 +31,8 @@
 	var/turf/T = get_turf(eye)
 	if(T)
 		if(rebuild)
-			skybox.overlays.Cut()
-			skybox.overlays += SSskybox.get_skybox(T.z, max(world.view, temp_view))
+			skybox.cut_overlays()
+			skybox.add_overlay(SSskybox.get_skybox(T.z, max(world.view, temp_view)))
 			screen |= skybox
 			skybox.scalar = view_scalar(temp_view)
 

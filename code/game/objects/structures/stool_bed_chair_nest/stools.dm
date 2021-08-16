@@ -47,6 +47,7 @@ var/global/list/stool_cache = list() //haha stool
 	..(newloc, "steel", "carpet")
 
 /obj/item/weapon/stool/update_icon()
+	cut_overlays()
 	// Prep icon.
 	icon_state = ""
 	// Base icon.
@@ -65,7 +66,7 @@ var/global/list/stool_cache = list() //haha stool
 			I.color = padding_material.icon_colour
 			stool_cache[padding_cache_key] = I
 		noverlays |= stool_cache[padding_cache_key]
-	overlays = noverlays
+	add_overlay(noverlays)
 	// Strings.
 	if(padding_material)
 		SetName("[padding_material.display_name] [initial(name)]") //this is not perfect but it will do for now.

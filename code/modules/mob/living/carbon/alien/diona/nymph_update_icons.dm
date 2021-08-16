@@ -1,4 +1,5 @@
 /mob/living/carbon/alien/diona/update_icons()
+	cut_overlays()
 	var/list/adding = list()
 	if(stat == DEAD)
 		icon_state = "[initial(icon_state)]_dead"
@@ -12,4 +13,4 @@
 			adding += flower
 		if(hat)
 			adding += get_hat_icon(hat, 0, -8)
-	overlays = adding
+	add_overlay(adding)
