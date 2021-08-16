@@ -73,15 +73,12 @@
 	.=..()
 	M = holder
 	stasis_duration = base_stasis_duration
-	var/stasis = get_extension(M, /datum/extension/stasis_effect/mob)
 	statmods[STATMOD_ATTACK_SPEED] = attack_slowdown
 
 	add_stasis_visual(M)
 
 	for(var/obj/item/I in M.contents)
 		I.stasis_act()
-
-	var/obj/item/weapon/rig/R = M.back
 
 	START_PROCESSING(SSprocessing, src)
 

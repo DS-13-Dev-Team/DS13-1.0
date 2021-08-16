@@ -10,8 +10,8 @@
 
 /obj/item/stack/stasis_pack/attack_self(mob/living/carbon/human/user)
 	if(user.wearing_rig)
-		for(var/obj/item/rig_module/mounted/stasis/S in R.installed_modules)
-			S.try_use_pack(src, user)
+		if(user.wearing_rig.stasis)
+			user.wearing_rig.stasis.try_use_pack(src, user)
 			return
 
 	to_chat(user, "You don't have Stasis Module installed")

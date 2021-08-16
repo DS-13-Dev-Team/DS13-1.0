@@ -43,7 +43,7 @@
 						recharging = TRUE
 						update_icon()
 						addtimer(CALLBACK(src, /obj/machinery/stasis_station/proc/stop_recharging), 162)
-							return
+						return
 					else
 						busy = FALSE
 						update_icon()
