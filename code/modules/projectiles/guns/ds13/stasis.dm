@@ -15,7 +15,7 @@
 	shot_volume = VOLUME_QUIET
 
 /obj/item/weapon/gun/energy/stasis/military
-	recharge_time = 12
+	recharge_time = 120
 	self_recharge = 1
 
 /obj/item/weapon/gun/energy/stasis/on_shot_recharged()
@@ -50,6 +50,15 @@
 	var/base_stasis_duration = 4 //1 = 1 second
 	var/stasis_duration
 
+
+/datum/extension/stasis_effect/Process()
+	while(stasis_duration)
+		stasis_duration--
+		return
+
+	remove_extension(holder, type)
+	return PROCESS_KILL
+
 /datum/extension/stasis_effect/mob
 	name = "Stasis Effect"
 	expected_type = /mob/living
@@ -65,11 +74,6 @@
 	M = holder
 	stasis_duration = base_stasis_duration
 	var/stasis = get_extension(M, /datum/extension/stasis_effect/mob)
-	if(get_extension(M, /datum/extension/twitch))
-		if(!stasis)
-			to_chat(M, SPAN_DANGER("You feel like an easy target!"))
-	else if(!stasis)
-		to_chat(M, SPAN_DANGER("It feels like something prevents you from moving fast!"))
 	statmods[STATMOD_ATTACK_SPEED] = attack_slowdown
 
 	add_stasis_visual(M)
@@ -78,9 +82,6 @@
 		I.stasis_act()
 
 	var/obj/item/weapon/rig/R = M.back
-	for(var/obj/item/weapon/storage/S in R.storage)
-		for(var/obj/item/K in S.return_inv())
-			K.stasis_act()
 
 	START_PROCESSING(SSprocessing, src)
 
@@ -89,14 +90,6 @@
 		return slowdown
 	if(modtype == STATMOD_ATTACK_SPEED)
 		return attack_slowdown
-
-/datum/extension/stasis_effect/mob/Process()
-	while(stasis_duration)
-		stasis_duration--
-		return
-
-	remove_extension(holder, type)
-	return PROCESS_KILL
 
 /datum/extension/stasis_effect/mob/Destroy()
 	remove_stasis_visual(M)
@@ -128,14 +121,6 @@
 	stasis_duration = base_stasis_duration
 	add_stasis_visual(holder)
 	START_PROCESSING(SSprocessing, src)
-
-/datum/extension/stasis_effect/item/Process()
-	while(stasis_duration)
-		stasis_duration--
-		return
-
-	remove_extension(holder, type)
-	return PROCESS_KILL
 
 /datum/extension/stasis_effect/item/Destroy()
 	remove_stasis_visual(holder)

@@ -8,8 +8,8 @@
 	max_amount = 3
 	item_flags = ITEM_FLAG_NO_BLUDGEON
 
-/obj/item/stack/stasis_pack/attack_self(mob/user)
-	for(var/obj/item/weapon/rig/R in user.contents)
+/obj/item/stack/stasis_pack/attack_self(mob/living/carbon/human/user)
+	if(user.wearing_rig)
 		for(var/obj/item/rig_module/mounted/stasis/S in R.installed_modules)
 			S.try_use_pack(src, user)
 			return

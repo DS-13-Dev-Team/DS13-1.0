@@ -32,19 +32,17 @@
 			var/obj/item/weapon/rig/R = user.back
 			if(R.stasis)
 				var/obj/item/weapon/gun/energy/E = R.stasis.gun
-				if(E.power_supply.percent() != 100)
+				if(E.power_supply.percent() < 100)
 					busy = TRUE
 					update_icon()
-					if(user.do_skilled(27, SKILL_DEVICES, src))
-						E.power_supply.insta_recharge()
+					if(do_after(user, 27, src))
+						E.power_supply.full_recharge()
 						E.update_stas_charge()
 						to_chat(user, SPAN_NOTICE("Stasis Module was recharged"))
 						busy = FALSE
 						recharging = TRUE
 						update_icon()
-						spawn(162)
-							recharging = FALSE
-							update_icon()
+						addtimer(CALLBACK(src, /obj/machinery/stasis_station/proc/stop_recharging), 162)
 							return
 					else
 						busy = FALSE
@@ -56,6 +54,10 @@
 					return
 		to_chat(user, SPAN_NOTICE("You don't have stasis modules installed."))
 		playsound(loc, 'sound/machines/buzz-two.ogg', VOLUME_MID, 0)
+
+/obj/machinery/stasis_station/proc/stop_recharging()
+	recharging = FALSE
+	update_icon()
 
 /obj/machinery/stasis_station/attackby(var/obj/item/I, var/mob/user)
 	return attack_hand(user)

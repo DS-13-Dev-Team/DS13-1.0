@@ -195,7 +195,7 @@ All of these properties combined make Step Strike tricky and disorienting to use
 	var/mob/living/L = organ.owner
 	var/datum/extension/twitch/T = get_extension(L, /datum/extension/twitch)
 	if(get_extension(L, /datum/extension/stasis_effect))
-		return
+		return ..()
 	if (T && T.displace(TRUE))
 		//Displace will return false if its on cooldown
 		brute *= blink_damage_mult

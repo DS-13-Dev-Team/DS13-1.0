@@ -58,7 +58,7 @@
 	var/obj/item/weapon/gun/energy/E = gun
 	if(E.power_supply.percent() != 100)
 		pack.use(1)
-		E.power_supply.insta_recharge()
+		E.power_supply.full_recharge()
 		to_chat(user, "Stasis Module was recharged")
 		update_stas_charge()
 		return TRUE

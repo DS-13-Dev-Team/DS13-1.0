@@ -151,7 +151,7 @@
 
 	qdel(src)
 
-/obj/item/weapon/cell/proc/insta_recharge()
+/obj/item/weapon/cell/proc/full_recharge()
 	charge = maxcharge
 	return
 
