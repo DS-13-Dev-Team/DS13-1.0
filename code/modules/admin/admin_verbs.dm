@@ -212,7 +212,6 @@ var/list/admin_verbs_debug = list(
 	/client/proc/view_chunk,
 	/client/proc/update_chunk,
 	/datum/admins/proc/capture_map,
-	/datum/admins/proc/view_runtimes,
 	/client/proc/cmd_analyse_health_context,
 	/client/proc/cmd_analyse_health_panel,
 	/client/proc/visualpower,
@@ -447,7 +446,8 @@ var/list/admin_verbs_mentor = list(
 
 /client/proc/add_admin_verbs()
 	if(holder)
-		verbs += admin_verbs_default
+		if(holder.rights & R_DEFAULT)		verbs += admin_verbs_default
+		if(holder.rights & R_RUNTIMES)		verbs += /datum/admins/proc/view_runtimes
 		if(holder.rights & R_BUILDMODE)		verbs += /client/proc/togglebuildmodeself
 		if(holder.rights & R_ADMIN)			verbs += admin_verbs_admin
 		if(holder.rights & R_BAN)			verbs += admin_verbs_ban
@@ -469,6 +469,7 @@ var/list/admin_verbs_mentor = list(
 /client/proc/remove_admin_verbs()
 	verbs.Remove(
 		admin_verbs_default,
+		/datum/admins/proc/view_runtimes,
 		/client/proc/togglebuildmodeself,
 		admin_verbs_admin,
 		admin_verbs_ban,
@@ -481,6 +482,7 @@ var/list/admin_verbs_mentor = list(
 		admin_verbs_rejuv,
 		admin_verbs_sounds,
 		admin_verbs_spawn,
+		admin_verbs_mod,
 		debug_verbs
 		)
 

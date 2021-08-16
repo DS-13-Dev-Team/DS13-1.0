@@ -502,7 +502,7 @@
 	set name = "View Runtimes"
 	set desc = "Open the Runtime Viewer"
 
-	if(!check_rights(R_DEBUG))
+	if(!check_rights(R_RUNTIMES))
 		return
 
 	GLOB.error_cache.show_to(usr.client)
