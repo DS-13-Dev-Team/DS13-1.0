@@ -146,6 +146,7 @@
 #include "code\_helpers\plot_vector.dm"
 #include "code\_helpers\sanitize_values.dm"
 #include "code\_helpers\spawn_sync.dm"
+#include "code\_helpers\stat_tracking.dm"
 #include "code\_helpers\storage.dm"
 #include "code\_helpers\text.dm"
 #include "code\_helpers\time.dm"
