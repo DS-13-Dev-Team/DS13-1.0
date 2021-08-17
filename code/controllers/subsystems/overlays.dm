@@ -42,12 +42,12 @@ SUBSYSTEM_DEF(overlays)
 				log_debug("Too many overlays on [A.type] - [A.overlays.len], refusing to update and cutting")
 				A.overlays.Cut()
 				continue
-			STAT_START_STOPWATCH
+//			STAT_START_STOPWATCH
 			COMPILE_OVERLAYS(A)
 			UNSETEMPTY(A.add_overlays)
 			UNSETEMPTY(A.remove_overlays)
-			STAT_STOP_STOPWATCH
-			STAT_LOG_ENTRY(stats, A.type)
+//			STAT_STOP_STOPWATCH
+//			STAT_LOG_ENTRY(stats, A.type)
 
 	if (count)
 		queue.Cut(1,count+1)
