@@ -325,9 +325,12 @@
 		query_insert.Execute()
 
 	//Logging player access
+	//Deleted by nanako, the target table does not exist. This seems to be a vestigial feature
+	/*
 	var/serverip = "[world.internet_address]:[world.port]"
 	var/DBQuery/query_accesslog = dbcon.NewQuery("INSERT INTO `erro_connection_log`(`id`,`datetime`,`serverip`,`ckey`,`ip`,`computerid`) VALUES(null,Now(),'[serverip]','[sql_ckey]','[sql_ip]','[sql_computerid]');")
 	query_accesslog.Execute()
+	*/
 
 
 #undef UPLOAD_LIMIT

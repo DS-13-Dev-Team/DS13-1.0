@@ -24,6 +24,7 @@
 	name = "Docking Bay"
 	landmark_tag = "nav_executive_out"
 	//docking_controller = "executive_dock_airlock"
+	escape = TRUE
 
 /area/shuttle/executive_shuttle
 	name = "\improper Executive Shuttle"

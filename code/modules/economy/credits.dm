@@ -5,6 +5,16 @@
 	icon_state = "grey"
 	var/owner_name = "" //So the ATM can set it so the EFTPOS can put a valid name on transactions.
 
+//When a credit chip is picked up or dropped, we need to flag the holding mob as having possibly changed their wealth
+/obj/item/weapon/spacecash/ewallet/Initialize()
+	.=..()
+	//Note that these are imperfect, if people start putting chips into containers then passing those around things might get out of sync
+	GLOB.item_equipped_event.register(src, src, /obj/item/weapon/spacecash/ewallet/proc/on_equip)
+	GLOB.item_unequipped_event.register(src, src, /obj/item/weapon/spacecash/ewallet/proc/on_equip)
+
+/obj/item/weapon/spacecash/ewallet/proc/on_equip()
+	credits_changed()
+
 /obj/item/weapon/spacecash/ewallet/examine(mob/user)
 	. = ..(user)
 	if (!(user in view(2)) && user!=src.loc) return
@@ -66,3 +76,50 @@
 //Helpers
 /datum/proc/credits_recieved(var/balance, var/datum/source)
 	return TRUE
+
+
+/mob/proc/get_carried_credits()
+	. = 0
+
+
+
+	for (var/obj/item/weapon/spacecash/ewallet/C as anything in get_carried_credit_chips())
+		. += C.worth
+
+/mob/living/carbon/human/get_carried_credits()
+	.=..()
+	if (wearing_rig)
+		. += wearing_rig.get_account_balance()
+
+/mob/proc/get_carried_credit_chips()
+	//Get everything we're carrying recursively
+	var/list/things = src.get_contents()
+	. = list()
+	for (var/obj/item/weapon/spacecash/ewallet/C in things)
+		. += C
+
+
+//Giving credits to a mob
+/mob/proc/recieve_credits(var/amount, var/sender, var/origin_account, var/reason)
+	var/datum/money_account/ECA = get_account()
+	if (ECA)
+		charge_to_account(ECA.account_number, sender, reason, sender, amount)
+		return
+
+	var/datum/money_account/rig_account = get_rig_account()
+	if (rig_account)
+		charge_to_account(rig_account.account_number, sender, reason, sender, amount)
+		return
+
+
+	var/list/chips = get_carried_credit_chips()
+	for (var/obj/item/weapon/spacecash/ewallet/C in chips)
+		C.modify_worth(amount)
+		return
+
+
+	//Last fallback, create a new chip and give it to the mob
+	var/obj/item/weapon/spacecash/ewallet/C = new /obj/item/weapon/spacecash/ewallet
+	C.set_worth(amount)
+
+	equip_to_storage_or_hands(C)

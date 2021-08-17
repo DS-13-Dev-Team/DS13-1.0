@@ -57,7 +57,7 @@
 /obj/machinery/atmospherics/trinary/mixer/hide(var/i)
 	update_underlays()
 
-/obj/machinery/atmospherics/trinary/mixer/New()
+/obj/machinery/atmospherics/trinary/mixer/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	air1.volume = ATMOS_DEFAULT_VOLUME_MIXER
 	air2.volume = ATMOS_DEFAULT_VOLUME_MIXER
@@ -223,7 +223,7 @@ obj/machinery/atmospherics/trinary/mixer/m_mixer
 
 	//node 3 is the outlet, nodes 1 & 2 are intakes
 
-obj/machinery/atmospherics/trinary/mixer/m_mixer/New()
+obj/machinery/atmospherics/trinary/mixer/m_mixer/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	switch(dir)
 		if(NORTH)

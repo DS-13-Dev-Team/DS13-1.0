@@ -26,7 +26,7 @@
 		list(mode_name = "blast", mode_type = /datum/firemode/forcegun/blast, fire_sound = 'sound/weapons/guns/fire/force_shot.ogg', fire_delay = 1.5 SECONDS),
 		list(mode_name = "focus", mode_type = /datum/firemode/forcegun/focus, windup_time = 1.5 SECONDS, windup_sound = 'sound/weapons/guns/fire/force_windup.ogg', fire_sound = 'sound/weapons/guns/fire/force_focus.ogg',fire_delay = 1.5 SECONDS)
 		)
-	has_safety = FALSE	//Safety switches are for military/police weapons, not for tools
+	has_safety = TRUE	//This thing is too dangerous to lack safety
 
 	aiming_modes = list(/datum/extension/aim_mode/heavy)
 
@@ -174,7 +174,7 @@
 /obj/item/weapon/cell/force
 	name = "force energy"
 	desc = "A heavy power pack designed for use with the handheld graviton accelerator"
-	origin_tech = list(TECH_POWER = 6)
+	origin_tech = list(TECH_POWER = 4)
 	icon = 'icons/obj/ammo.dmi'
 	icon_state = "forcebattery"
 	w_class = ITEM_SIZE_LARGE

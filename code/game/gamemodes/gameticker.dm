@@ -5,7 +5,8 @@ var/global/datum/controller/gameticker/ticker
 	var/current_state = GAME_STATE_PREGAME
 	var/force_ending = FALSE
 
-	var/start_ASAP = FALSE          //the game will start as soon as possible, bypassing all pre-game nonsense
+	var/start_ASAP = FALSE		  //the game will start as soon as possible, bypassing all pre-game nonsense
+
 
 	var/hide_mode = 0
 	var/datum/game_mode/mode = null
@@ -221,7 +222,7 @@ var/global/datum/controller/gameticker/ticker
 				switch(M.z)
 					if(0)	//inside a crate or something
 						var/turf/T = get_turf(M)
-						if(T && T.z in GLOB.using_map.station_levels)				//we don't use M.death(0) because it calls a for(/mob) loop and
+						if(T && (T.z in GLOB.using_map.station_levels))				//we don't use M.death(0) because it calls a for(/mob) loop and
 							M.health = 0
 							M.set_stat(DEAD)
 					if(1)	//on a z-level 1 turf.
@@ -335,6 +336,7 @@ var/global/datum/controller/gameticker/ticker
 
 		var/game_finished = 0
 		var/mode_finished = 0
+
 		if (CONFIG_GET(flag/continous_rounds))
 			game_finished = (evacuation_controller.round_over() || mode.station_was_nuked)
 			mode_finished = (!post_game && mode.check_finished())

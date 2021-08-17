@@ -5,18 +5,23 @@ datum/preferences
 	var/age = 30						//age of character
 	var/spawnpoint = SPAWNPOINT_CRYO 			//where this character will spawn (0-2).
 	var/metadata = ""
+	var/character_id
 
 /datum/category_item/player_setup_item/general/basic
 	name = "Basic"
 	sort_order = 1
 
 /datum/category_item/player_setup_item/general/basic/load_character(var/savefile/S)
+
 	S["real_name"]				>> pref.real_name
 	S["name_is_always_random"]	>> pref.be_random_name
 	S["gender"]					>> pref.gender
 	S["age"]					>> pref.age
 	S["spawnpoint"]				>> pref.spawnpoint
 	S["OOC_Notes"]				>> pref.metadata
+	S["character_id"]			>> pref.character_id
+
+
 
 /datum/category_item/player_setup_item/general/basic/save_character(var/savefile/S)
 	S["real_name"]				<< pref.real_name
@@ -25,6 +30,7 @@ datum/preferences
 	S["age"]					<< pref.age
 	S["spawnpoint"]				<< pref.spawnpoint
 	S["OOC_Notes"]				<< pref.metadata
+	S["character_id"]			<< pref.character_id
 
 /datum/category_item/player_setup_item/general/basic/sanitize_character()
 	var/datum/species/S = all_species[pref.species ? pref.species : SPECIES_HUMAN]
@@ -36,6 +42,33 @@ datum/preferences
 		pref.real_name      = random_name(pref.gender, pref.species)
 	pref.spawnpoint         = sanitize_inlist(pref.spawnpoint, spawntypes(), initial(pref.spawnpoint))
 	pref.be_random_name     = sanitize_integer(pref.be_random_name, 0, 1, initial(pref.be_random_name))
+
+
+//Called from load and update character, through several layers of propagation
+/datum/category_item/player_setup_item/general/basic/update_setup()
+
+	var/ID_needed = FALSE
+	if (!isnull(pref.character_id) && (dbcon?.IsConnected()))
+		//Here we will account for an edge case
+		//If we have an ID, but the database has been wiped and no longer contains our information....
+		var/DBQuery/query = dbcon.NewQuery("SELECT * FROM characters	WHERE	 (character_id = [pref.character_id]);")
+		query.Execute()
+		if(!query.NextRow())
+			//We're not in the database!
+			ID_needed = TRUE
+
+	else
+		ID_needed = TRUE
+
+
+	//If there is no character ID or the one we have is invalid, re/register one in the database
+	if (ID_needed)
+		pref.character_id = null
+		if (get_character_id(pref))
+			return TRUE	//Returning true tells it to save preferences back to disk. This will ensure this is only done once, and not every round
+
+		//TODO: Figure out why character switching isnt working
+		//TODO: Delete character from database if deleted ingame?
 
 /datum/category_item/player_setup_item/general/basic/content()
 	. = list()

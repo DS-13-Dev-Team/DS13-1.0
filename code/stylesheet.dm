@@ -18,7 +18,7 @@ em						{font-style: normal;font-weight: bold;}
 .ooc					{font-weight: bold;}
 .ooc img.text_tag		{width: 32px; height: 10px;}
 
-.ooc .everyone			{color: #002eb8;}
+.ooc .everyone			{color: #386aff;}
 .ooc .looc				{color: #3a9696;}
 .ooc .elevated			{color: #2e78d9;}
 .ooc .moderator			{color: #184880;}
@@ -75,13 +75,13 @@ h1.alert, h2.alert		{color: #000000;}
 .passive				{color: #660000;}
 
 .critical				{color: #ff0000; font-weight: bold; font-size: 14px}
-.danger					{color: #ff0000; font-weight: bold;}
-.warning				{color: #ff0000; font-style: italic;}
+.danger					{color: #ff2222; font-weight: bold;}
+.warning				{color: #ff2222; font-style: italic;}
 .minorwarning			{color: #ff0000; font-style: italic;font-size: 8px;}
 .boldannounce			{color: #ff0000; font-weight: bold;}
 .rose					{color: #ff5050;}
 .info					{color: #0000cc;}
-.notice					{color: #000099;}
+.notice					{color: #2759ff;}
 .alium					{color: #00ff00;}
 .cult					{color: #800080; font-weight: bold; font-style: italic;}
 .execution				{color: #CC0033; font-weight: bold; font-size: 14px; font-family: "Cambria";}

@@ -35,7 +35,7 @@
 	use_power = 1
 	icon_state = "map_scrubber_on"
 
-/obj/machinery/atmospherics/unary/vent_scrubber/New()
+/obj/machinery/atmospherics/unary/vent_scrubber/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	air_contents.volume = ATMOS_DEFAULT_VOLUME_FILTER
 	icon = null

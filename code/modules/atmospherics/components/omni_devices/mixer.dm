@@ -24,7 +24,7 @@
 
 	var/list/mixing_inputs = list()
 
-/obj/machinery/atmospherics/omni/mixer/New()
+/obj/machinery/atmospherics/omni/mixer/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	if(mapper_set())
 		var/con = 0

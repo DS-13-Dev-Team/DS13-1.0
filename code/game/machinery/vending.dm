@@ -72,7 +72,7 @@
 	var/datum/wires/vending/wires = null
 	var/shot_down = FALSE
 
-/obj/machinery/vending/New()
+/obj/machinery/vending/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	wires = new(src)
 

@@ -105,7 +105,7 @@
 
 /obj/machinery/door/airlock/hatch/autoname
 
-/obj/machinery/door/airlock/hatch/autoname/New()
+/obj/machinery/door/airlock/hatch/autoname/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	var/area/A = get_area(src)
 	name = A.name
 	..()

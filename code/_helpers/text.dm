@@ -553,6 +553,14 @@ proc/TextPreview(var/string,var/len=40)
 	var/whereLink = "<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>[where]</a>"
 	return whereLink
 
+//Like jumplink but without an actual link
+/proc/loctext(var/atom/target)
+	if (QDELETED(target))
+		return ""
+	var/turf/T = get_turf(target)
+	var/area/A = get_area(target)
+	var/where = "[A? A.name : "Unknown Location"] | [T.x], [T.y], [T.z]"
+	return where
 
 /proc/jumplink_public(var/mob/user, var/atom/target)
 	if (QDELETED(target))

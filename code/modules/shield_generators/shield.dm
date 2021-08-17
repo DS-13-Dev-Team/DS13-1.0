@@ -7,9 +7,11 @@
 	layer = ABOVE_HUMAN_LAYER
 	density = 1
 	invisibility = 0
+	can_block_movement = TRUE
 	var/obj/machinery/power/shield_generator/gen = null
 	var/disabled_for = 0
 	var/diffused_for = 0
+	atmos_canpass = CANPASS_PROC
 
 
 /obj/effect/shield/update_icon()
@@ -168,7 +170,7 @@
 
 
 /obj/effect/shield/c_airblock(turf/other)
-	return gen.check_flag(MODEFLAG_ATMOSPHERIC)
+	return gen.check_flag(MODEFLAG_ATMOSPHERIC) ? BLOCKED : 0
 
 
 // EMP. It may seem weak but keep in mind that multiple shield segments are likely to be affected.

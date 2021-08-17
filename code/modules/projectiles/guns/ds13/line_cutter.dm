@@ -37,7 +37,7 @@
 	//The linegun opens when you enter ironsights mode
 	require_aiming = TRUE
 
-	has_safety = FALSE	//Safety switches are for military/police weapons, not for tools
+	has_safety = TRUE	//This thing is too dangerous to lack safety
 
 /*
 	Ironsight Handling
@@ -128,7 +128,7 @@
 
 
 
-/obj/item/projectile/wave/linecutter/Bump(var/atom/A)
+/obj/item/projectile/wave/linecutter/Bump(var/atom/A, forced = 0)
 	if(istype(A, /turf/simulated/mineral))
 		var/turf/simulated/mineral/M = A
 		if (dig_power)

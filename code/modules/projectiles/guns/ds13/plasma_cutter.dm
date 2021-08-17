@@ -22,7 +22,7 @@
 	mag_remove_sound = 'sound/weapons/guns/interaction/force_magout.ogg'
 	removeable_cell = TRUE
 
-	has_safety = FALSE	//Safety switches are for military/police weapons, not for tools
+	has_safety = TRUE	//This thing is too dangerous to lack safety
 
 /obj/item/weapon/gun/energy/cutter/empty
 	cell_type = null
@@ -57,7 +57,7 @@
 	impact_type = /obj/effect/projectile/trilaser/impact
 	fire_sound = 'sound/weapons/plasma_cutter.ogg'
 
-/obj/item/projectile/beam/cutter/Bump(var/atom/A)
+/obj/item/projectile/beam/cutter/Bump(var/atom/A, forced = 0)
 	if(istype(A, /turf/simulated/mineral))
 		var/turf/simulated/mineral/M = A
 		if (dig_power)
@@ -96,7 +96,7 @@
 /obj/item/weapon/cell/plasmacutter
 	name = "plasma energy"
 	desc = "A light power pack designed for use with high energy cutting tools"
-	origin_tech = list(TECH_POWER = 6)
+	origin_tech = list(TECH_POWER = 4)
 	icon = 'icons/obj/ammo.dmi'
 	icon_state = "darts"
 	w_class = ITEM_SIZE_SMALL

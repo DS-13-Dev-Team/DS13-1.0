@@ -16,7 +16,7 @@
 	var/repair_power_usage = 10 KILOWATTS		// Per 1 HP of health.
 	var/repair = 0
 
-/obj/machinery/mech_recharger/New()
+/obj/machinery/mech_recharger/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	component_parts = list()
 

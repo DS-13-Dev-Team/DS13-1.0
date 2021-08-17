@@ -6,6 +6,7 @@
 	cook_type = "cerealized"
 	on_icon = "cereal_on"
 	off_icon = "cereal_off"
+	circuit = /obj/item/weapon/circuitboard/cereal
 
 /obj/machinery/cooker/cereal/change_product_strings(var/obj/item/weapon/reagent_containers/food/snacks/product)
 	. = ..()

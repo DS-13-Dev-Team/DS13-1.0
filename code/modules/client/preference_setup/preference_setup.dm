@@ -82,6 +82,14 @@ var/const/CHARACTER_PREFERENCE_INPUT_TITLE = "Character Preference"
 	for(var/datum/category_group/player_setup_category/PS in categories)
 		PS.save_preferences(S)
 
+
+/*
+	This is run for changes that need to be made after loading a character
+	
+	This calls update_setup on every /datum/category_group/player_setup_category
+	And THAT calls the same thing on every /datum/category_item/player_setup_item
+	If anything anywhere in that propagated hierarchy returns true, the preferences will be saved back to disk after its all done
+*/
 /datum/category_collection/player_setup_collection/proc/update_setup(var/savefile/preferences, var/savefile/character)
 	for(var/datum/category_group/player_setup_category/PS in categories)
 		. = PS.update_setup(preferences, character) || .

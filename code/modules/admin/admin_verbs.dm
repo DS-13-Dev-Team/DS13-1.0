@@ -9,6 +9,7 @@ var/list/admin_verbs_default = list(
 	/client/proc/debug_variables,		//allows us to -see- the variables of any instance in the game. +VAREDIT needed to modify,
 	/client/proc/watched_variables,
 	/client/proc/debug_global_variables,//as above but for global variables,
+	/client/proc/debug_managed_variables,
 //	/client/proc/check_antagonists,		//shows all antags,
 	/client/proc/cmd_mentor_check_new_players,
 //	/client/proc/deadchat				//toggles deadchat on/off,
@@ -211,7 +212,6 @@ var/list/admin_verbs_debug = list(
 	/client/proc/view_chunk,
 	/client/proc/update_chunk,
 	/datum/admins/proc/capture_map,
-	/datum/admins/proc/view_runtimes,
 	/client/proc/cmd_analyse_health_context,
 	/client/proc/cmd_analyse_health_panel,
 	/client/proc/visualpower,
@@ -260,6 +260,7 @@ var/list/admin_verbs_hideable = list(
 	/client/proc/togglebuildmodeself,
 	/client/proc/watched_variables,
 	/client/proc/debug_global_variables,
+	/client/proc/debug_managed_variables,
 	/client/proc/fixatmos,
 	/client/proc/list_traders,
 	/client/proc/add_trader,
@@ -415,6 +416,7 @@ var/list/admin_verbs_mod = list(
 	/client/proc/debug_variables,		// allows us to -see- the variables of any instance in the game.,
 	/client/proc/watched_variables,
 	/client/proc/debug_global_variables,// as above but for global variables,
+	/client/proc/debug_managed_variables,
 	/datum/admins/proc/PlayerNotes,
 	/client/proc/admin_ghost,			// allows us to ghost/reenter body at will,
 	/client/proc/cmd_mod_say,
@@ -444,7 +446,8 @@ var/list/admin_verbs_mentor = list(
 
 /client/proc/add_admin_verbs()
 	if(holder)
-		verbs += admin_verbs_default
+		if(holder.rights & R_DEFAULT)		verbs += admin_verbs_default
+		if(holder.rights & R_RUNTIMES)		verbs += /datum/admins/proc/view_runtimes
 		if(holder.rights & R_BUILDMODE)		verbs += /client/proc/togglebuildmodeself
 		if(holder.rights & R_ADMIN)			verbs += admin_verbs_admin
 		if(holder.rights & R_BAN)			verbs += admin_verbs_ban
@@ -466,6 +469,7 @@ var/list/admin_verbs_mentor = list(
 /client/proc/remove_admin_verbs()
 	verbs.Remove(
 		admin_verbs_default,
+		/datum/admins/proc/view_runtimes,
 		/client/proc/togglebuildmodeself,
 		admin_verbs_admin,
 		admin_verbs_ban,
@@ -478,6 +482,7 @@ var/list/admin_verbs_mentor = list(
 		admin_verbs_rejuv,
 		admin_verbs_sounds,
 		admin_verbs_spawn,
+		admin_verbs_mod,
 		debug_verbs
 		)
 

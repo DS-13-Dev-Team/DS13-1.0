@@ -44,7 +44,7 @@
 	var/t_left_radspike = 0
 	var/rad_shield = 0
 
-/obj/machinery/radiocarbon_spectrometer/New()
+/obj/machinery/radiocarbon_spectrometer/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	create_reagents(500)
 	coolant_reagents_purity[/datum/reagent/water] = 0.5

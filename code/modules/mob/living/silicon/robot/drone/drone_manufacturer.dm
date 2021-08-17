@@ -30,7 +30,7 @@
 	fabricator_tag = "Derelict"
 	drone_type = /mob/living/silicon/robot/drone/construction
 
-/obj/machinery/drone_fabricator/New()
+/obj/machinery/drone_fabricator/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 
 /obj/machinery/drone_fabricator/power_change()

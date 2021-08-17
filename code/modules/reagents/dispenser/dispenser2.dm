@@ -19,11 +19,12 @@
 	idle_power_usage = 100
 	density = 1
 	anchored = 1
+	circuit = /obj/item/weapon/circuitboard/chemical_dispenser
 	obj_flags = OBJ_FLAG_ANCHORABLE
 	core_skill = SKILL_MEDICAL
 	var/can_contaminate = TRUE
 
-/obj/machinery/chemical_dispenser/New()
+/obj/machinery/chemical_dispenser/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 
 	if(spawn_cartridges)
@@ -33,6 +34,13 @@
 /obj/machinery/chemical_dispenser/examine(mob/user)
 	. = ..()
 	to_chat(user, "It has [cartridges.len] cartridges installed, and has space for [DISPENSER_MAX_CARTRIDGES - cartridges.len] more.")
+
+/obj/machinery/chemical_dispenser/dismantle()
+	for(var/obj/item/weapon/reagent_containers/chem_disp_cartridge/X in contents)
+		X.forceMove(loc)
+	if(container)
+		container.forceMove(loc)
+	..()
 
 /obj/machinery/chemical_dispenser/proc/add_cartridge(obj/item/weapon/reagent_containers/chem_disp_cartridge/C, mob/user)
 	if(!istype(C))
@@ -76,12 +84,19 @@
 		add_cartridge(W, user)
 
 	else if(isScrewdriver(W))
-		var/label = input(user, "Which cartridge would you like to remove?", "Chemical Dispenser") as null|anything in cartridges
+		var/label = input(user, "Which cartridge would you like to remove?", "Chemical Dispenser") as null|anything in cartridges + "Deconstruct"
 		if(!label) return
+		if(label == "Deconstruct")
+			default_deconstruction_screwdriver(user, W)
+			return
 		var/obj/item/weapon/reagent_containers/chem_disp_cartridge/C = remove_cartridge(label)
 		if(C)
 			to_chat(user, "<span class='notice'>You remove \the [C] from \the [src].</span>")
 			C.loc = loc
+	else if(default_deconstruction_crowbar(user, W))
+		return
+	else if(default_part_replacement(user, W))
+		return
 
 	else if(istype(W, /obj/item/weapon/reagent_containers/glass) || istype(W, /obj/item/weapon/reagent_containers/food))
 		if(container)

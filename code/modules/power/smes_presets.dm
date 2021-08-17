@@ -6,7 +6,7 @@
 	var/_output_on = FALSE
 	cur_coils = 0
 
-/obj/machinery/power/smes/buildable/preset/New()
+/obj/machinery/power/smes/buildable/preset/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	configure_and_install_coils()
 	recalc_coils()

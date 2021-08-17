@@ -38,13 +38,13 @@
 	damage_type = BURN
 	nodamage = 1
 	check_armour = "energy"
-	var/temperature = 300
+	var/body_temperature = 300
 
 
 	on_hit(var/atom/target, var/blocked = 0)//These two could likely check temp protection on the mob
 		if(istype(target, /mob/living))
 			var/mob/M = target
-			M.bodytemperature = temperature
+			M.bodytemperature = body_temperature
 		return 1
 
 /obj/item/projectile/meteor
@@ -57,7 +57,7 @@
 	check_armour = "bullet"
 	grippable = TRUE
 
-	Bump(atom/A as mob|obj|turf|area)
+	Bump(atom/A as mob|obj|turf|area, forced = 0)
 		if(A == firer)
 			loc = A.loc
 			return

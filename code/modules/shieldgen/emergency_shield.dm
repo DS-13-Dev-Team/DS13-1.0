@@ -28,7 +28,7 @@
 		qdel(src)
 		return
 
-/obj/machinery/shield/New()
+/obj/machinery/shield/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	src.set_dir(pick(1,2,3,4))
 	..()
 	update_nearby_tiles(need_rebuild=1)

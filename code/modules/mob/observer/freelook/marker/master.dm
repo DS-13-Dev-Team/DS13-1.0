@@ -5,6 +5,7 @@
 	name = "Marker"
 	icon = 'icons/mob/necromorph/mastersignal.dmi'
 	icon_state = "mastersignal"
+	atom_flags = ATOM_FLAG_INTANGIBLE
 	pixel_x = -7
 	pixel_y = -7
 	energy_extension_type = /datum/extension/psi_energy/marker	//Stores and accumulates energy for abilities

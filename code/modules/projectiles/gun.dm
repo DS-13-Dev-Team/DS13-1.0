@@ -561,7 +561,7 @@
 	if (islist(shot_sound))
 		shot_sound = pick(shot_sound)
 	if(silenced)
-		playsound(user, shot_sound, VOLUME_QUIET, 1)
+		playsound(user, shot_sound, VOLUME_QUIET, 1, -2)
 	else
 		playsound(user, shot_sound, shot_volume, 1)
 
@@ -754,7 +754,7 @@
 		return ..()
 
 //Ammo handling, used by most types of weapons
-/obj/item/weapon/gun/proc/unload_ammo(mob/user)
+/obj/item/weapon/gun/proc/unload_ammo(mob/user, var/allow_dump)
 	playsound(loc, mag_remove_sound, 50, 1)
 
 

@@ -73,7 +73,7 @@ GLOBAL_VAR_INIT(number_of_store_kiosks, 0)
 	if (air_group)
 		return TRUE
 
-	if (occupant && mover != occupant && occupant.loc == get_turf(src))
+	if (occupant && isliving(mover) && mover != occupant && occupant.loc == get_turf(src))
 		return FALSE
 
 	.=..()
@@ -105,13 +105,24 @@ GLOBAL_VAR_INIT(number_of_store_kiosks, 0)
 
 
 /obj/machinery/store/attackby(var/obj/item/I, var/mob/user)
-	if (istype(I, /obj/item/weapon/spacecash/ewallet))
-		return insert_chip(I, user)
+	if (user == occupant)
+		playsound(src, 'sound/machines/deadspace/menu_neutral.ogg', VOLUME_MID, TRUE)
+		if (istype(I, /obj/item/weapon/spacecash/ewallet))
+			return insert_chip(I, user)
 
+		if (istype(I, /obj/item/store_schematic))
+			return handle_schematic(I, user)
 
-	//Items used on the store go into the deposit box
-	playsound(src, 'sound/machines/deadspace/menu_neutral.ogg', VOLUME_MID, TRUE)
-	deposit_box.store_item(I, user)
+		if (istype(I, /obj/item/weapon/peng))
+			return handle_peng(I, user)
+
+		//Items used on the store go into the deposit box
+
+		deposit_box.store_item(I, user)
+		return TRUE
+	else
+		playsound(src, 'sound/machines/deadspace/menu_negative.ogg', VOLUME_MID, TRUE)
+		.=..()
 
 
 /obj/machinery/store/proc/insert_chip(var/obj/item/weapon/spacecash/ewallet/newchip, var/mob/user)

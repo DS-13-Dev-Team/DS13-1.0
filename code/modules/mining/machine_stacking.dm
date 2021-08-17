@@ -9,7 +9,7 @@
 	var/obj/machinery/mineral/stacking_machine/machine = null
 	var/machinedir = SOUTH
 
-/obj/machinery/mineral/stacking_unit_console/New()
+/obj/machinery/mineral/stacking_unit_console/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 
 	..()
 
@@ -78,7 +78,7 @@
 	var/list/stack_paths[0]
 	var/stack_amt = 50; // Amount to stack before releassing
 
-/obj/machinery/mineral/stacking_machine/New()
+/obj/machinery/mineral/stacking_machine/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 
 	for(var/stacktype in subtypesof(/obj/item/stack/material))

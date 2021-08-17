@@ -21,7 +21,7 @@
 /obj/machinery/portable_atmospherics/powered/pump/filled
 	start_pressure = 90 * ONE_ATMOSPHERE
 
-/obj/machinery/portable_atmospherics/powered/pump/New()
+/obj/machinery/portable_atmospherics/powered/pump/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	cell = new/obj/item/weapon/cell/apc(src)
 

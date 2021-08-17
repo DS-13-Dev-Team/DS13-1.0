@@ -42,13 +42,14 @@
 //Science biosuits Uniform
 /decl/hierarchy/outfit/necromorph/biosuit
 	name = "Bioslashard"
+	uniform = /obj/item/clothing/under/deadspace/doctor
 	suit = /obj/item/clothing/suit/bio_suit/ds/black
 	id_type = /obj/item/weapon/card/id/holo/science
 
 
 /decl/hierarchy/outfit/necromorph/biosuit/earthgov
 	name = "G-Man"
-	//uniform = /obj/item/clothing/under/ds_bio_suit
+	uniform = /obj/item/clothing/under/deadspace/doctor
 	suit = /obj/item/clothing/suit/bio_suit/ds/black
 	id_type = /obj/item/weapon/card/id/holo/science
 

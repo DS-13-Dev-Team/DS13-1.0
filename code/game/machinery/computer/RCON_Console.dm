@@ -15,7 +15,7 @@
 	var/current_tag = null
 	var/datum/nano_module/rcon/rcon
 
-/obj/machinery/computer/rcon/New()
+/obj/machinery/computer/rcon/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	rcon = new(src)
 

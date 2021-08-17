@@ -33,3 +33,10 @@
 	name = "Disguised Syringe Gun"
 	item_cost = 10
 	path = /obj/item/weapon/storage/box/syndie_kit/syringegun
+
+/datum/uplink_item/item/stealthy_weapons/divet
+	name = "Silenced Divet pistol"
+	item_cost = 7
+	path = /obj/item/weapon/gun/projectile/divet/silenced
+	is_special = TRUE
+	antag_roles = list(MODE_EARTHGOV_AGENT)

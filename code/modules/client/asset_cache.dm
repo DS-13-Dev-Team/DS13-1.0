@@ -354,7 +354,7 @@ var/decl/asset_cache/asset_cache = new()
 		SSresearch.initialize_design_file(file)
 	SSresearch.design_files_to_init = list()
 
-	load_store_database()
+	SSdatabase.update_store_designs()
 
 
 
