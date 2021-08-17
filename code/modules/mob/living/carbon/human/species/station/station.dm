@@ -23,6 +23,25 @@
 
 	slowdown = 1.5
 
+	pain_audio_threshold = 20//humans can take a bit before something starts to hurt terribly
+	species_audio = list(SOUND_PAIN_MALE = list(
+	'sound/voice/human/male_pain_1.ogg',
+	'sound/voice/human/male_pain_2.ogg',
+	'sound/voice/human/male_pain_3.ogg',
+	'sound/voice/human/male_pain_4.ogg',
+	'sound/voice/human/male_pain_5.ogg',
+	'sound/voice/human/male_pain_6.ogg',
+	'sound/voice/human/male_pain_7.ogg',
+	'sound/voice/human/male_pain_8.ogg'),
+	 SOUND_PAIN_FEMALE = list('sound/voice/human/female_pain_1.ogg',
+	'sound/voice/human/female_pain_2.ogg',
+	'sound/voice/human/female_pain_3.ogg',
+	'sound/voice/human/female_pain_4.ogg',
+	'sound/voice/human/female_pain_5.ogg',
+	'sound/voice/human/female_pain_6.ogg',
+	'sound/voice/human/female_pain_7.ogg',
+	'sound/voice/human/female_pain_8.ogg'))
+
 /datum/species/human/get_bodytype(var/mob/living/carbon/human/H)
 	return SPECIES_HUMAN
 
@@ -74,6 +93,24 @@
 	if(H.stat == CONSCIOUS)
 		return "staring blankly, not reacting to your presence"
 	return ..()
+
+/datum/species/human/handle_organ_external_damage(var/obj/item/organ/external/organ, brute, burn, damage_flags, used_weapon)
+	GLOB.damage_hit_event.raise_event(organ.owner, organ, brute, burn, damage_flags, used_weapon)
+
+	var/mob/living/L = organ.owner
+	//Here we'll handle pain audio
+	if (pain_audio_threshold)
+		var/total_damage = brute+burn
+		if (total_damage >= (total_health * pain_audio_threshold))
+			if (!L.incapacitated(INCAPACITATION_KNOCKOUT) && L.check_audio_cooldown(SOUND_PAIN)) //Must be conscious to scream
+				if(MALE)
+					play_species_audio(L, SOUND_PAIN_MALE, 60, 1)
+					L.set_audio_cooldown(SOUND_PAIN_MALE, 3 SECONDS)
+				if(FEMALE)
+					play_species_audio(L, SOUND_PAIN_FEMALE, 60, 1)
+					L.set_audio_cooldown(SOUND_PAIN_FEMALE, 3 SECONDS)
+			L.custom_emote("screams in pain!")
+	return args.Copy(2)
 
 /datum/species/tajaran
 	name = SPECIES_TAJARA
