@@ -21,17 +21,16 @@
 	else
 		icon_state = "stasis_station"
 
-/obj/machinery/stasis_station/attack_hand(var/mob/user)
+/obj/machinery/stasis_station/attack_hand(var/mob/living/carbon/human/user)
 	if(busy)
 		to_chat(user, SPAN_NOTICE("Someone is already using [src]"))
 	else if(recharging)
 		to_chat(user, SPAN_NOTICE("[src] is recharging!"))
 		playsound(loc, 'sound/machines/buzz-two.ogg', VOLUME_MID, 0)
 	else
-		if(istype(user.back, /obj/item/weapon/rig))
-			var/obj/item/weapon/rig/R = user.back
-			if(R.stasis)
-				var/obj/item/weapon/gun/energy/E = R.stasis.gun
+		if(user.wearing_rig)
+			if(user.wearing_rig.stasis)
+				var/obj/item/weapon/gun/energy/E = user.wearing_rig.stasis.gun
 				if(E.power_supply.percent() < 100)
 					busy = TRUE
 					update_icon()

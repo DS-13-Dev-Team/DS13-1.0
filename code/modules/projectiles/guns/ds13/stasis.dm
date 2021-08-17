@@ -47,17 +47,19 @@
 /datum/extension/stasis_effect
 	var/ripple
 	var/outline
-	var/base_stasis_duration = 4 //1 = 1 second
-	var/stasis_duration
+	var/stasis_duration = 40
 
+/datum/extension/stasis_effect/New()
+	. = ..()
+	add_stasis_visual(holder)
+	addtimer(CALLBACK(src, /datum/extension/stasis_effect/proc/end_stasis), stasis_duration, TIMER_OVERRIDE)
 
-/datum/extension/stasis_effect/Process()
-	while(stasis_duration)
-		stasis_duration--
-		return
-
+/datum/extension/stasis_effect/proc/end_stasis()
 	remove_extension(holder, type)
-	return PROCESS_KILL
+
+/datum/extension/stasis_effect/Destroy()
+	remove_stasis_visual(holder)
+	.=..()
 
 /datum/extension/stasis_effect/mob
 	name = "Stasis Effect"
@@ -72,25 +74,15 @@
 /datum/extension/stasis_effect/mob/New()
 	.=..()
 	M = holder
-	stasis_duration = base_stasis_duration
-	statmods[STATMOD_ATTACK_SPEED] = attack_slowdown
-
-	add_stasis_visual(M)
 
 	for(var/obj/item/I in M.contents)
 		I.stasis_act()
-
-	START_PROCESSING(SSprocessing, src)
 
 /datum/extension/stasis_effect/mob/get_statmod(var/modtype)
 	if(modtype == STATMOD_MOVESPEED_MULTIPLICATIVE)
 		return slowdown
 	if(modtype == STATMOD_ATTACK_SPEED)
 		return attack_slowdown
-
-/datum/extension/stasis_effect/mob/Destroy()
-	remove_stasis_visual(M)
-	.=..()
 
 /datum/extension/stasis_effect/proc/add_stasis_visual(var/atom/thing)
 	ripple = filter(type = "ripple", radius = 0, size = 8)
@@ -112,13 +104,3 @@
 	flags = EXTENSION_FLAG_IMMEDIATE
 
 	var/throw_mod = 0.25
-
-/datum/extension/stasis_effect/item/New()
-	.=..()
-	stasis_duration = base_stasis_duration
-	add_stasis_visual(holder)
-	START_PROCESSING(SSprocessing, src)
-
-/datum/extension/stasis_effect/item/Destroy()
-	remove_stasis_visual(holder)
-	.=..()

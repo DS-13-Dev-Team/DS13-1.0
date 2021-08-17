@@ -127,7 +127,7 @@ GLOBAL_LIST_EMPTY(loot_locations)
 
 /obj/random/rare_loot
 	possible_spawns = list( /obj/item/stack/power_node = 3,
-	/obj/item/store_schematic = 1,
+	/obj/item/store_schematic = 0.75,
 	/obj/random/material/rare = 1,
 	/obj/random/tool/modded = 1,
 	/obj/random/material/rare = 1,
