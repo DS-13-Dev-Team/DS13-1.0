@@ -104,15 +104,11 @@
 // |= on overlays is not actually guaranteed to not add same appearances but we're optimistically using it anyway.
 #define COMPILE_OVERLAYS(A) \
 	do {\
-		var/list/ad = A.add_overlays;\
-		var/list/rm = A.remove_overlays;\
-		if(LAZYLEN(rm)){\
-			A.overlays -= rm;\
-			rm.Cut();\
+		if(LAZYLEN(A.remove_overlays)){\
+			A.overlays -= A.remove_overlays;\
 		}\
-		if(LAZYLEN(ad)){\
-			A.overlays |= ad;\
-			ad.Cut();\
+		if(LAZYLEN(A.add_overlays)){\
+			A.overlays |= A.add_overlays;\
 		}\
 		A.atom_flags &= ~ATOM_FLAG_OVERLAY_QUEUED;\
 	} while (FALSE)
