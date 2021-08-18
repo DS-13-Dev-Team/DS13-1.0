@@ -20,6 +20,9 @@
 //In most cases you want a subsystem instead
 #define TIMER_LOOP			0x20
 
+///Delete the timer on parent datum Destroy() and when deltimer'd
+#define TIMER_DELETE_ME			(1<<6)
+
 #define TIMER_NO_INVOKE_WARNING 600 //number of byond ticks that are allowed to pass before the timer subsystem thinks it hung on something
 
 #define TIMER_ID_NULL -1
