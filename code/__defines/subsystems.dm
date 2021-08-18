@@ -16,6 +16,9 @@
 //To be used with TIMER_UNIQUE
 //prevents distinguishing identical timers with the wait variable
 #define TIMER_NO_HASH_WAIT 0x10
+//Loops the timer repeatedly until qdeleted
+//In most cases you want a subsystem instead
+#define TIMER_LOOP			0x20
 
 #define TIMER_NO_INVOKE_WARNING 600 //number of byond ticks that are allowed to pass before the timer subsystem thinks it hung on something
 
@@ -42,6 +45,15 @@
 		SSatoms.InitAtom(src, args);\
 	}\
 }
+
+/**
+	Create a new timer and add it to the queue.
+	* Arguments:
+	* * callback the callback to call on timer finish
+	* * wait deciseconds to run the timer for
+	* * flags flags for this timer, see: code\__DEFINES\subsystems.dm
+*/
+#define addtimer(args...) _addtimer(args, file = __FILE__, line = __LINE__)
 
 // Subsystem init_order, from highest priority to lowest priority
 // Subsystems shutdown in the reverse of the order they initialize in
