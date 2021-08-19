@@ -5,7 +5,7 @@
 	slot_flags = SLOT_BELT
 	item_state = "electronic"
 	throwforce = 5.0
-	
+
 	throw_range = 5
 	w_class = ITEM_SIZE_SMALL
 	origin_tech = list(TECH_ILLEGAL = 4, TECH_MAGNET = 4)
@@ -96,7 +96,8 @@
 	desc = O.desc
 	icon = new_icon
 	icon_state = new_iconstate
-	overlays = new_overlays
+	cut_overlays()
+	add_overlay(new_overlays)
 	set_dir(O.dir)
 	M.forceMove(src)
 	master = C

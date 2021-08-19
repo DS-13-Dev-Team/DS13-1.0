@@ -46,14 +46,14 @@
 		var/mob/living/carbon/human/user_human = user_mob
 		if(blood_DNA && user_human.species.blood_mask)
 			var/image/bloodsies	= overlay_image(user_human.species.blood_mask, blood_overlay_type, blood_color, RESET_COLOR)
-			ret.overlays	+= bloodsies
+			ret.add_overlay(bloodsies)
 
 		if (user_human.missing_limbs & body_parts_covered)
 			ret.filters += user_human.limb_mask
 
 	if(accessories.len)
 		for(var/obj/item/clothing/accessory/A in accessories)
-			ret.overlays |= A.get_mob_overlay(user_mob, slot)
+			ret.add_overlay(A.get_mob_overlay(user_mob, slot))
 	return ret
 
 // Aurora forensics port.
@@ -427,7 +427,7 @@ BLIND     // can't see anything
 		bodytype = user_human.species.get_bodytype(user_human)
 	var/cache_key = "[light_overlay]_[bodytype]"
 	if(on && light_overlay_cache[cache_key] && slot == slot_head_str)
-		ret.overlays |= light_overlay_cache[cache_key]
+		ret.add_overlay(light_overlay_cache[cache_key])
 	return ret
 
 /obj/item/clothing/head/attack_self(mob/user)
@@ -488,7 +488,7 @@ BLIND     // can't see anything
 
 /obj/item/clothing/head/update_icon(var/mob/user)
 
-	overlays.Cut()
+	cut_overlays()
 	var/mob/living/carbon/human/H
 	if(istype(user,/mob/living/carbon/human))
 		H = user
@@ -498,7 +498,7 @@ BLIND     // can't see anything
 		// Generate object icon.
 		if(!light_overlay_cache["[light_overlay]_icon"])
 			light_overlay_cache["[light_overlay]_icon"] = image("icon" = 'icons/obj/light_overlays.dmi', "icon_state" = "[light_overlay]")
-		overlays |= light_overlay_cache["[light_overlay]_icon"]
+		add_overlay(light_overlay_cache["[light_overlay]_icon"])
 
 		// Generate and cache the on-mob icon, which is used in update_inv_head().
 		var/cache_key = "[light_overlay][H ? "_[H.species.get_bodytype(H)]" : ""]"
@@ -652,9 +652,9 @@ BLIND     // can't see anything
 		return ..()
 
 /obj/item/clothing/shoes/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	if(holding)
-		overlays += image(icon, "[icon_state]_knife")
+		add_overlay(image(icon, "[icon_state]_knife"))
 	return ..()
 
 /obj/item/clothing/shoes/proc/handle_movement(var/turf/walking, var/running)

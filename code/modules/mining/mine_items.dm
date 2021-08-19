@@ -98,7 +98,7 @@
 		var/image/addon = image(icon = src.icon, icon_state = fringe) // Bright fringe
 		addon.layer = ABOVE_LIGHTING_LAYER
 		addon.plane = EFFECTS_ABOVE_LIGHTING_PLANE
-		overlays += addon
+		add_overlay(addon)
 
 /obj/item/stack/flag/proc/knock_down()
 	pixel_x = rand(-randpixel, randpixel)
@@ -106,5 +106,5 @@
 	upright = 0
 	anchored = 0
 	icon_state = initial(icon_state)
-	overlays.Cut()
+	cut_overlays()
 	set_light(0)

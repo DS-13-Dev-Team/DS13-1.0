@@ -130,19 +130,20 @@
 		if (normal_eyes)
 			var/icon/I = get_eyes()
 			if(I)
-				overlays |= I
+				add_overlay(I)
 				mob_icon.Blend(I, ICON_OVERLAY)
 
 		// Floating eyes or other effects.
 		var/image/eye_glow = get_eye_overlay()
-		if(eye_glow) overlays |= eye_glow
+		if(eye_glow)
+			add_overlay(eye_glow)
 
 		if(owner.lip_style && !BP_IS_ROBOTIC(src) && (species && (species.appearance_flags & HAS_LIPS)))
 			var/icon/lip_icon = new/icon('icons/mob/human_races/species/human/lips.dmi', "lips_[owner.lip_style]_s")
-			overlays |= lip_icon
+			add_overlay(lip_icon)
 			mob_icon.Blend(lip_icon, ICON_OVERLAY)
 
-		overlays |= get_hair_icon()
+		add_overlay(get_hair_icon())
 
 	return mob_icon
 
@@ -156,7 +157,7 @@
 				var/icon/facial_s = new/icon("icon" = facial_hair_style.icon, "icon_state" = "[facial_hair_style.icon_state]_s")
 				if(facial_hair_style.do_colouration)
 					facial_s.Blend(rgb(owner.r_facial, owner.g_facial, owner.b_facial), facial_hair_style.blend)
-				res.overlays |= facial_s
+				res.add_overlay(facial_s)
 
 		if(owner.h_style)
 			var/style = owner.h_style
@@ -168,7 +169,7 @@
 				var/icon/hair_s = new/icon("icon" = hair_style.icon, "icon_state" = "[hair_style.icon_state]_s")
 				if(hair_style.do_colouration && islist(h_col) && h_col.len >= 3)
 					hair_s.Blend(rgb(h_col[1], h_col[2], h_col[3]), hair_style.blend)
-				res.overlays |= hair_s
+				res.add_overlay(hair_s)
 	return res
 
 /obj/item/organ/external/head/no_eyes

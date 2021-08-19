@@ -127,17 +127,17 @@
 
 /obj/structure/railing/update_icon(var/update_neighbors = TRUE)
 	NeighborsCheck(update_neighbors)
-	overlays.Cut()
+	cut_overlays()
 	if (!neighbor_status || !anchored)
 		icon_state = "railing0"
 	else
 		icon_state = "railing1"
 		if (neighbor_status & 32)
-			overlays += image(icon, "corneroverlay")
+			add_overlay(image(icon, "corneroverlay"))
 		if ((neighbor_status & 16) || !(neighbor_status & 32) || (neighbor_status & 64))
-			overlays += image(icon, "frontoverlay_l")
+			add_overlay(image(icon, "frontoverlay_l"))
 		if (!(neighbor_status & 2) || (neighbor_status & 1) || (neighbor_status & 4))
-			overlays += image(icon, "frontoverlay_r")
+			add_overlay(image(icon, "frontoverlay_r"))
 			if(neighbor_status & 4)
 				var/pix_offset_x = 0
 				var/pix_offset_y = 0
@@ -150,7 +150,7 @@
 						pix_offset_y = -32
 					if(WEST)
 						pix_offset_y = 32
-				overlays += image(icon, "mcorneroverlay", pixel_x = pix_offset_x, pixel_y = pix_offset_y)
+				add_overlay(image(icon, "mcorneroverlay", pixel_x = pix_offset_x, pixel_y = pix_offset_y))
 
 /obj/structure/railing/verb/rotate()
 	set name = "Rotate Railing Counter-Clockwise"

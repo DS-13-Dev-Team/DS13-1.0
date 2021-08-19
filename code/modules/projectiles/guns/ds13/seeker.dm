@@ -70,9 +70,9 @@
 	mag_type = MAGAZINE
 
 /obj/item/ammo_magazine/seeker/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	if (stored_ammo.len)
-		overlays += image('icons/obj/ammo.dmi', "sc-[stored_ammo.len]")
+		add_overlay(image('icons/obj/ammo.dmi', "sc-[stored_ammo.len]"))
 
 
 

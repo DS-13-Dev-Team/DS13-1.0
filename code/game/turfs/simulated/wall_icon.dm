@@ -40,14 +40,14 @@
 	if(!damage_overlays[1]) //list hasn't been populated
 		generate_overlays()
 
-	overlays.Cut()
+	cut_overlays()
 	var/image/I
 
 	var/base_color = paint_color ? paint_color : material.icon_colour
 	if(!density)
 		I = image('icons/turf/wall_masks.dmi', "[material.icon_base]fwall_open")
 		I.color = base_color
-		overlays += I
+		add_overlay(I)
 		return
 
 	for(var/i = 1 to 4)
@@ -56,25 +56,25 @@
 		else
 			I = image('icons/turf/wall_masks.dmi', "[material.icon_base][wall_connections[i]]", dir = 1<<(i-1))
 		I.color = base_color
-		overlays += I
+		add_overlay(I)
 
 	if(reinf_material)
 		var/reinf_color = paint_color ? paint_color : reinf_material.icon_colour
 		if(construction_stage != null && construction_stage < 6)
 			I = image('icons/turf/wall_masks.dmi', "reinf_construct-[construction_stage]")
 			I.color = reinf_color
-			overlays += I
+			add_overlay(I)
 		else
 			if("[reinf_material.icon_reinf]0" in icon_states('icons/turf/wall_masks.dmi'))
 				// Directional icon
 				for(var/i = 1 to 4)
 					I = image('icons/turf/wall_masks.dmi', "[reinf_material.icon_reinf][wall_connections[i]]", dir = 1<<(i-1))
 					I.color = reinf_color
-					overlays += I
+					add_overlay(I)
 			else
 				I = image('icons/turf/wall_masks.dmi', reinf_material.icon_reinf)
 				I.color = reinf_color
-				overlays += I
+				add_overlay(I)
 
 	if(stripe_color)
 		for(var/i = 1 to 4)
@@ -83,7 +83,7 @@
 			else
 				I = image('icons/turf/wall_masks.dmi', "stripe[wall_connections[i]]", dir = 1<<(i-1))
 			I.color = stripe_color
-			overlays += I
+			add_overlay(I)
 
 	if(damage != 0)
 		var/integrity = material.integrity
@@ -94,7 +94,7 @@
 		if(overlay > damage_overlays.len)
 			overlay = damage_overlays.len
 
-		overlays += damage_overlays[overlay]
+		add_overlay(damage_overlays[overlay])
 	return
 
 /turf/simulated/wall/proc/generate_overlays()

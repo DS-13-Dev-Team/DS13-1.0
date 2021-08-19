@@ -84,7 +84,7 @@
 	update_icon(1)
 
 /turf/simulated/floor/exoplanet/volcanic/update_icon(var/update_neighbors)
-	overlays.Cut()
+	cut_overlays()
 	for(var/direction in GLOB.cardinal)
 		var/turf/turf_to_check = get_step(src,direction)
 		if(!istype(turf_to_check, type))
@@ -99,7 +99,7 @@
 					rock_side.pixel_x += world.icon_size
 				if(WEST)
 					rock_side.pixel_x -= world.icon_size
-			overlays += rock_side
+			add_overlay(rock_side)
 		else if(update_neighbors)
 			turf_to_check.update_icon()
 

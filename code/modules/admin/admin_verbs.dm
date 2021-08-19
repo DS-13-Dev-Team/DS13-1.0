@@ -218,6 +218,8 @@ var/list/admin_verbs_debug = list(
 	/client/proc/visualpower_remove,
 	/client/proc/debug_vectorpool,
 	/client/proc/check_timer_sources,
+	/client/proc/check_timer_sources,
+//	/client/proc/cmd_display_overlay_log,
 	/client/proc/activate_marker,
 	/client/proc/dummy_crowd
 	)
