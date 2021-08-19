@@ -8,7 +8,7 @@
 	desc = "A metal tray to lay food on."
 	throwforce = 12.0
 	throwforce = 10.0
-	
+
 	throw_range = 5
 	w_class = ITEM_SIZE_NORMAL
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
@@ -26,7 +26,7 @@
 /obj/item/weapon/tray/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
 	user.set_click_cooldown(DEFAULT_ATTACK_COOLDOWN)
 	// Drop all the things. All of them.
-	overlays.Cut()
+	cut_overlays()
 	for(var/obj/item/I in carrying)
 		I.loc = M.loc
 		carrying.Remove(I)
@@ -178,7 +178,7 @@
 
 			I.loc = src
 			carrying.Add(I)
-			overlays += image("icon" = I.icon, "icon_state" = I.icon_state, "layer" = 30 + I.layer, "pixel_x" = I.pixel_x, "pixel_y" = I.pixel_y)
+			add_overlay(image("icon" = I.icon, "icon_state" = I.icon_state, "layer" = 30 + I.layer, "pixel_x" = I.pixel_x, "pixel_y" = I.pixel_y))
 
 /obj/item/weapon/tray/dropped(mob/user)
 	..()
@@ -191,7 +191,7 @@
 			foundtable = 1
 			break
 
-		overlays.Cut()
+		cut_overlays()
 
 		for(var/obj/item/I in carrying)
 			I.loc = loc

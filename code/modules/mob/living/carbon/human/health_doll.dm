@@ -76,7 +76,7 @@
 
 
 	if (H.stat == DEAD)
-		overlays.Cut()
+		cut_overlays()
 		if("health7" in icon_states(icon))
 			icon_state = "health7"
 		else
@@ -84,12 +84,12 @@
 		return
 
 	if (H.chem_effects[CE_PAINKILLER] > 100)
-		overlays.Cut()
+		cut_overlays()
 		icon_state = "health_numb"
 	else
 		// Generate a by-limb health display.
 		icon_state = "blank"
-		overlays = null
+		cut_overlays()
 
 		var/no_damage = 1
 		var/trauma_val = 0 // Used in calculating softcrit/hardcrit indicators.
@@ -118,7 +118,7 @@
 		else if(no_damage)
 			health_images += image('icons/mob/screen1_health.dmi',"fullhealth")
 
-		overlays += health_images
+		add_overlay(health_images)
 
 	last_updated = world.time
 	updating = FALSE

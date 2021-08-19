@@ -156,7 +156,7 @@
 
 /obj/item/weapon/gun/update_icon()
 	var/mob/living/M = loc
-	overlays.Cut()
+	cut_overlays()
 	if(istype(M))
 		if(wielded_item_state)
 			if(M.can_wield_item(src) && src.is_held_twohanded(M))
@@ -167,7 +167,7 @@
 				item_state_slots[slot_r_hand_str] = initial(item_state)
 			update_wear_icon()
 		if(M.skill_check(SKILL_WEAPONS,SKILL_BASIC))
-			overlays += image(icon,"safety[safety()]")
+			add_overlay(image(icon,"safety[safety()]"))
 
 
 //Returns a number that represents the remaining quantity of whatever resource we use to fire.

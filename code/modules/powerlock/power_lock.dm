@@ -32,9 +32,9 @@
 /obj/power_lock/update_icon()
 	icon_state = "powerlock[NR ? NR.difficulty : "1"]"
 	if (nodes_collected)
-		overlays = list()
+		cut_overlays()
 		for (var/i in 1 to nodes_collected)
-			overlays += "powerlock[i]_on"
+			add_overlay("powerlock[i]_on")
 
 
 /obj/power_lock/proc/already_completed(var/mob/user)

@@ -16,10 +16,10 @@
 
 /obj/structure/bed/chair/wheelchair/set_dir()
 	..()
-	overlays = null
+	cut_overlays()
 	var/image/O = image(icon = 'icons/obj/furniture.dmi', icon_state = "w_overlay", dir = src.dir)
 	O.layer = ABOVE_HUMAN_LAYER
-	overlays += O
+	add_overlay(O)
 	if(buckled_mob)
 		buckled_mob.set_dir(dir)
 
