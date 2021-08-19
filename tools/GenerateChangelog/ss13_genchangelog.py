@@ -1,6 +1,6 @@
 '''
 Usage:
-    $ python ss13_genchangelog.py [--dry-run] html/changelog.html html/changelogs/
+    $ python ss13_genchangelog.py [--dry-run] html/changelogs/changelog.html html/changelogs/
 
 ss13_genchangelog.py - Generate changelog from YAML.
 
