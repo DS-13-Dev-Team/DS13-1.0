@@ -30,7 +30,7 @@
 	has_safety = FALSE	//Safety switches are for military/police weapons, not for tools
 
 /obj/item/weapon/gun/projectile/ripper/update_icon()
-	cut_overlays()
+	overlays.Cut()
 	var/ammonum = get_remaining_ammo()
 	if(ammonum > max_shells)
 		ammonum = max_shells
@@ -39,7 +39,7 @@
 	progress = CLAMP(progress, 0, goal)
 	progress = round(((progress / goal) * 100), 25)//Round it down to 25s.
 	var/state = "ripper_[progress]"
-	add_overlay(image(icon,state))
+	overlays += image(icon,state)
 
 /obj/item/weapon/gun/projectile/ripper/loaded
 	ammo_type = /obj/item/ammo_casing/sawblade

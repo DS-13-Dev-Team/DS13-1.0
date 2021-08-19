@@ -62,7 +62,7 @@
 		else
 			log_and_message_admins("planted \a [src] with a [timer] second fuse on \the [target].")
 
-		target.add_overlay(image_overlay)
+		target.overlays += image_overlay
 		to_chat(user, "Bomb has been planted. Timer counting down from [timer].")
 		run_timer()
 
@@ -81,7 +81,7 @@
 		else
 			target.ex_act(1, src)
 	if(target)
-		target.cut_overlay(image_overlay)
+		target.overlays -= image_overlay
 
 	if(location)
 		var/turf/T = location

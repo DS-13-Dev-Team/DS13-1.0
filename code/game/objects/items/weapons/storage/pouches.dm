@@ -200,9 +200,9 @@
 
 /obj/item/weapon/storage/pouch/tubular/update_icon()
 	..()
-	cut_overlays()
+	overlays.Cut()
 	if(contents.len)
-		add_overlay(image('icons/inventory/pockets/icon.dmi', "flare_[contents.len]"))
+		overlays += image('icons/inventory/pockets/icon.dmi', "flare_[contents.len]")
 
 /obj/item/weapon/storage/pouch/pistol_holster
 	name = "pistol holster"
@@ -224,9 +224,9 @@
 
 /obj/item/weapon/storage/pouch/pistol_holster/update_icon()
 	..()
-	cut_overlays()
+	overlays.Cut()
 	if(contents.len)
-		add_overlay(image('icons/inventory/pockets/icon.dmi', "pistol_layer"))
+		overlays += image('icons/inventory/pockets/icon.dmi', "pistol_layer")
 
 /obj/item/weapon/storage/pouch/baton_holster
 	name = "baton sheath"
@@ -247,6 +247,6 @@
 
 /obj/item/weapon/storage/pouch/baton_holster/update_icon()
 	..()
-	cut_overlays()
+	overlays.Cut()
 	if(contents.len)
-		add_overlay(image('icons/inventory/pockets/icon.dmi', "baton_layer"))
+		overlays += image('icons/inventory/pockets/icon.dmi', "baton_layer")

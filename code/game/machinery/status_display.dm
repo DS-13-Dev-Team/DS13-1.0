@@ -169,14 +169,14 @@
 
 	var/image/alert = image(sl.icon, sl.overlay_status_display)
 	set_light(sl.light_max_bright, sl.light_inner_range, sl.light_outer_range, 2, sl.light_color_alarm)
-	add_overlay(alert)
+	overlays |= alert
 
 /obj/machinery/status_display/proc/set_picture(state)
 	remove_display()
 	if(!picture || picture_state != state)
 		picture_state = state
 		picture = image('icons/obj/status_display.dmi', icon_state=picture_state)
-	add_overlay(picture)
+	overlays |= picture
 	set_light(0.5, 0.1, 1, 2, COLOR_WHITE)
 
 /obj/machinery/status_display/proc/update_display(line1, line2)
@@ -204,7 +204,8 @@
 	return ""
 
 /obj/machinery/status_display/proc/remove_display()
-	cut_overlays()
+	if(overlays.len)
+		overlays.Cut()
 	if(maptext)
 		maptext = ""
 	set_light(0)

@@ -753,7 +753,7 @@
 	return 0
 
 /mob/living/silicon/robot/update_icon()
-	cut_overlays()
+	overlays.Cut()
 	if(stat == CONSCIOUS)
 		var/eye_icon_state = "eyes-[module_sprites[icontype]]"
 		if(eye_icon_state in icon_states(icon))
@@ -765,19 +765,19 @@
 				eye_overlay.plane = EFFECTS_ABOVE_LIGHTING_PLANE
 				eye_overlay.layer = EYE_GLOW_LAYER
 				eye_overlays[eye_icon_state] = eye_overlay
-			add_overlay(eye_overlay)
+			overlays += eye_overlay
 
 	if(opened)
 		var/panelprefix = custom_sprite ? src.ckey : "ov"
 		if(wiresexposed)
-			add_overlay("[panelprefix]-openpanel +w")
+			overlays += "[panelprefix]-openpanel +w"
 		else if(cell)
-			add_overlay("[panelprefix]-openpanel +c")
+			overlays += "[panelprefix]-openpanel +c"
 		else
-			add_overlay("[panelprefix]-openpanel -c")
+			overlays += "[panelprefix]-openpanel -c"
 
 	if(module_active && istype(module_active,/obj/item/borg/combat/shield))
-		add_overlay("[module_sprites[icontype]]-shield")
+		overlays += "[module_sprites[icontype]]-shield"
 
 	if(modtype == "Combat")
 		if(module_active && istype(module_active,/obj/item/borg/combat/mobility))

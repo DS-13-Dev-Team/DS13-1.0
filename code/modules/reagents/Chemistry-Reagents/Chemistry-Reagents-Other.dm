@@ -132,7 +132,7 @@
 	M.confused = 0
 	M.sleeping = 0
 	M.jitteriness = 0
-
+	
 /datum/reagent/ds_medicalgelreagent //dead space medical gel chemical
 	name = "Medi-gel"
 	description = "An advanced gel solution that binds damaged tissue and causes rapid repair and regrowth of lost tissue and bone."
@@ -142,10 +142,10 @@
 	scannable = 1
 	metabolism = 1.5
 	overdose = 50
-
+	
 	glass_name = "medi-gel"
 	glass_desc = "An advanced gel solution that binds damaged tissue and causes rapid repair and regrowth of lost tissue and bone."
-
+	
 /datum/reagent/ds_medicalgelreagent/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
 	affect_blood(M, alien, removed)
 
@@ -279,7 +279,7 @@
 		if(istype(T, /turf/simulated/wall))
 			var/turf/simulated/wall/W = T
 			W.thermite = 1
-			W.add_overlay(image('icons/effects/effects.dmi',icon_state = "#673910"))
+			W.overlays += image('icons/effects/effects.dmi',icon_state = "#673910")
 			remove_self(5)
 	return
 

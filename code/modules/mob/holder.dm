@@ -90,14 +90,14 @@ var/list/holder_mob_icon_cache = list()
 
 /obj/item/weapon/holder/proc/sync(var/mob/living/M)
 	dir = 2
-	cut_overlays()
+	overlays.Cut()
 	icon = M.icon
 	icon_state = M.icon_state
 	item_state = M.item_state
 	color = M.color
 	name = M.name
 	desc = M.desc
-	copy_overlays(M)
+	overlays |= M.overlays
 	var/mob/living/carbon/human/H = loc
 	last_holder = H
 	register_all_movement(H, M)

@@ -79,7 +79,7 @@
 	. = ..()
 
 /obj/structure/skele_stand/update_icon()
-	cut_overlays()
+	overlays.Cut()
 	for(var/slot in swag)
 		var/obj/item/I = swag[slot]
-		add_overlay(I.get_mob_overlay(null, slot))
+		overlays += I.get_mob_overlay(null, slot)

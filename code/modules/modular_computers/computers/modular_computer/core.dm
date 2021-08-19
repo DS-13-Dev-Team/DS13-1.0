@@ -103,22 +103,22 @@
 /obj/item/modular_computer/update_icon()
 	icon_state = icon_state_unpowered
 
-	cut_overlays()
+	overlays.Cut()
 	if(bsod)
-		add_overlay("bsod")
+		overlays.Add("bsod")
 		return
 	if(!enabled)
 		if(icon_state_screensaver)
-			add_overlay(icon_state_screensaver)
+			overlays.Add(icon_state_screensaver)
 		set_light(0)
 		return
 	set_light(0.2, 0.1, light_strength)
 	if(active_program)
-		add_overlay(active_program.program_icon_state ? active_program.program_icon_state : icon_state_menu)
+		overlays.Add(active_program.program_icon_state ? active_program.program_icon_state : icon_state_menu)
 		if(active_program.program_key_state)
-			add_overlay(active_program.program_key_state)
+			overlays.Add(active_program.program_key_state)
 	else
-		add_overlay(icon_state_menu)
+		overlays.Add(icon_state_menu)
 
 /obj/item/modular_computer/proc/turn_on(var/mob/user)
 	if(bsod)

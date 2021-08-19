@@ -71,7 +71,7 @@
 		flower = image(icon = icon, icon_state = "flower_back")
 		var/image/I = image(icon = icon, icon_state = "flower_fore")
 		I.color = get_random_colour(1)
-		flower.add_overlay(I)
+		flower.overlays += I
 
 	update_icons()
 

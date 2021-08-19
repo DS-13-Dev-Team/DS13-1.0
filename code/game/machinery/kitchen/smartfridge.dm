@@ -176,15 +176,15 @@ GLOBAL_LIST_EMPTY(smartfridge_types)
 		update_icon()
 
 /obj/machinery/smartfridge/drying_rack/update_icon()
-	cut_overlays()
+	overlays.Cut()
 	if(inoperable())
 		icon_state = icon_off
 	else
 		icon_state = icon_on
 	if(contents.len)
-		add_overlay("drying_rack_filled")
+		overlays += "drying_rack_filled"
 		if(!inoperable())
-			add_overlay("drying_rack_drying")
+			overlays += "drying_rack_drying"
 
 /obj/machinery/smartfridge/drying_rack/proc/dry()
 	for(var/datum/stored_items/I in item_records)
@@ -223,9 +223,9 @@ GLOBAL_LIST_EMPTY(smartfridge_types)
 	if(isScrewdriver(O))
 		panel_open = !panel_open
 		user.visible_message("[user] [panel_open ? "opens" : "closes"] the maintenance panel of \the [src].", "You [panel_open ? "open" : "close"] the maintenance panel of \the [src].")
-		cut_overlays()
+		overlays.Cut()
 		if(panel_open)
-			add_overlay(image(icon, icon_panel))
+			overlays += image(icon, icon_panel)
 		SSnano.update_uis(src)
 		return
 

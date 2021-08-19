@@ -31,9 +31,9 @@
 		icon_state = "sheater-standby"
 
 	if(rebuild_overlay)
-		cut_overlays()
+		overlays.Cut()
 		if(panel_open)
-			add_overlay("sheater-open")
+			overlays  += "sheater-open"
 
 /obj/machinery/space_heater/examine(mob/user)
 	. = ..(user)

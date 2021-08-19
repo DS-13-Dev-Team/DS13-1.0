@@ -99,7 +99,7 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 	transform = turn(M, rotation)
 
 	//Lets add the edge sprites
-	cut_overlays()
+	overlays.Cut()
 	for(var/turf/simulated/floor/floor in get_neighbors(FALSE, FALSE))
 		var/direction = get_dir(src, floor)
 		var/vector2/offset = Vector2.NewFromDir(direction)
@@ -110,7 +110,7 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 		I.appearance_flags = RESET_TRANSFORM	//We use reset transform to not carry over the rotation
 
 		I.transform = I.transform.Scale(vine_scale)	//We must reapply the scale
-		add_overlay(I)
+		overlays.Add(I)
 
 
 //Corruption gradually fades in/out as its health goes up/down

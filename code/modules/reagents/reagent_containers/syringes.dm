@@ -83,7 +83,7 @@
 	handleTarget(target, user)
 
 /obj/item/weapon/reagent_containers/syringe/update_icon()
-	cut_overlays()
+	overlays.Cut()
 
 	if(mode == SYRINGE_BROKEN)
 		icon_state = "broken"
@@ -97,7 +97,7 @@
 				injoverlay = "draw"
 			if (SYRINGE_INJECT)
 				injoverlay = "inject"
-		add_overlay(injoverlay)
+		overlays += injoverlay
 	icon_state = "[rounded_vol]"
 	item_state = "syringe_[rounded_vol]"
 
@@ -107,7 +107,7 @@
 		filling.icon_state = "syringe[rounded_vol]"
 
 		filling.color = reagents.get_color()
-		add_overlay(filling)
+		overlays += filling
 
 /obj/item/weapon/reagent_containers/syringe/proc/handleTarget(var/atom/target, var/mob/user)
 	switch(mode)

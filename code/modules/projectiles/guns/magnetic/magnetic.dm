@@ -51,7 +51,6 @@
 	update_icon()
 
 /obj/item/weapon/gun/magnetic/update_icon()
-	cut_overlays()
 	var/list/overlays_to_add = list()
 	if(removable_components)
 		if(cell)
@@ -67,7 +66,7 @@
 	if(loaded)
 		overlays_to_add += image(icon, "[icon_state]_loaded")
 
-	add_overlay(overlays_to_add)
+	overlays = overlays_to_add
 	..()
 
 /obj/item/weapon/gun/magnetic/proc/show_ammo(var/mob/user)

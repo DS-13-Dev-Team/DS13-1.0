@@ -126,7 +126,7 @@
 	possible_children = seed.get_trait(TRAIT_POTENCY)
 
 /obj/effect/vine/update_icon()
-	cut_overlays()
+	overlays.Cut()
 	var/growth = growth_threshold ? min(max_growth, round(health/growth_threshold)) : 1
 	var/at_fringe = get_dist_3D(src,parent)
 	if(spread_distance > 5)
@@ -140,7 +140,7 @@
 	var/ikey = "\ref[seed]-plant-[growth]"
 	if(!SSplants.plant_icon_cache[ikey])
 		SSplants.plant_icon_cache[ikey] = seed.get_icon(growth)
-	add_overlay(SSplants.plant_icon_cache[ikey])
+	overlays += SSplants.plant_icon_cache[ikey]
 
 	if(growth > 2 && growth == max_growth)
 		layer = (seed && seed.force_layer) ? seed.force_layer : ABOVE_OBJ_LAYER

@@ -58,10 +58,10 @@
 
 
 /obj/item/device/assembly/timer/update_icon()
-	cut_overlays()
+	overlays.Cut()
 	attached_overlays = list()
 	if(timing)
-		add_overlay("timer_timing")
+		overlays += "timer_timing"
 		attached_overlays += "timer_timing"
 	if(holder)
 		holder.update_icon()

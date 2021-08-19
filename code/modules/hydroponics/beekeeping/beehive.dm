@@ -18,26 +18,26 @@
 	update_icon()
 
 /obj/machinery/beehive/update_icon()
-	cut_overlays()
+	overlays.Cut()
 	icon_state = "beehive-[closed]"
 	if(closed)
-		add_overlay("lid")
+		overlays += "lid"
 	if(frames)
-		add_overlay("empty[frames]")
+		overlays += "empty[frames]"
 	if(honeycombs >= 100)
-		add_overlay("full[round(honeycombs / 100)]")
+		overlays += "full[round(honeycombs / 100)]"
 	if(!smoked)
 		switch(bee_count)
 			if(1 to 20)
-				add_overlay("bees1")
+				overlays += "bees1"
 			if(21 to 40)
-				add_overlay("bees2")
+				overlays += "bees2"
 			if(41 to 60)
-				add_overlay("bees3")
+				overlays += "bees3"
 			if(61 to 80)
-				add_overlay("bees4")
+				overlays += "bees4"
 			if(81 to 100)
-				add_overlay("bees5")
+				overlays += "bees5"
 
 /obj/machinery/beehive/examine(var/mob/user)
 	. = ..()
@@ -226,7 +226,7 @@
 
 /obj/item/honey_frame/filled/New()
 	..()
-	add_overlay("honeycomb")
+	overlays += "honeycomb"
 
 /obj/item/beehive_assembly
 	name = "beehive assembly"
@@ -265,21 +265,21 @@ var/global/list/datum/stack_recipe/wax_recipes = list(
 
 /obj/item/bee_pack/New()
 	..()
-	add_overlay("beepack-full")
+	overlays += "beepack-full"
 
 /obj/item/bee_pack/proc/empty()
 	full = 0
 	name = "empty bee pack"
 	desc = "A stasis pack for moving bees. It's empty."
-	cut_overlays()
-	add_overlay("beepack-empty")
+	overlays.Cut()
+	overlays += "beepack-empty"
 
 /obj/item/bee_pack/proc/fill()
 	full = initial(full)
 	SetName(initial(name))
 	desc = initial(desc)
-	cut_overlays()
-	add_overlay("beepack-full")
+	overlays.Cut()
+	overlays += "beepack-full"
 
 /obj/structure/closet/crate/hydroponics/beekeeping
 	name = "beekeeping crate"

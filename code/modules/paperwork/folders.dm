@@ -26,9 +26,9 @@
 	icon_state = "folder_nt"
 
 /obj/item/weapon/folder/update_icon()
-	cut_overlays()
+	overlays.Cut()
 	if(contents.len)
-		add_overlay("folder_paper")
+		overlays += "folder_paper"
 	return
 
 /obj/item/weapon/folder/attackby(obj/item/weapon/W as obj, mob/user as mob)

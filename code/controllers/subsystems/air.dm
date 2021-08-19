@@ -198,7 +198,7 @@ SUBSYSTEM_DEF(air)
 		T.post_update_air_properties()
 		T.needs_air_update = 0
 		#ifdef ZASDBG
-		T.cut_overlay(mark)
+		T.overlays -= mark
 		updated++
 		#endif
 
@@ -215,7 +215,7 @@ SUBSYSTEM_DEF(air)
 		T.post_update_air_properties()
 		T.needs_air_update = 0
 		#ifdef ZASDBG
-		T.cut_overlay(mark)
+		T.overlays -= mark
 		updated++
 		#endif
 
@@ -364,7 +364,7 @@ SUBSYSTEM_DEF(air)
 		return
 	tiles_to_update += T
 	#ifdef ZASDBG
-	T.add_overlay(mark)
+	T.overlays += mark
 	#endif
 	T.needs_air_update = 1
 

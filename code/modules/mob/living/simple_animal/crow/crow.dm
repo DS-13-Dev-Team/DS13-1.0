@@ -127,13 +127,13 @@
 
 /mob/living/simple_animal/crow/update_icon()
 	..()
-	cut_overlays("s")
-	cut_overlay("bag_dead")
+	overlays -= "bag"
+	overlays -= "bag_dead"
 	if(messenger_bag)
 		if(icon_state != icon_dead)
-			add_overlay("bag")
+			overlays |= "bag"
 		else
-			add_overlay("bag_dead")
+			overlays |= "bag_dead"
 
 /mob/living/simple_animal/crow/cyber
 	name = "cybercrow"
@@ -142,10 +142,10 @@
 
 /mob/living/simple_animal/crow/cyber/update_icon()
 	..()
-	cut_overlay("cyber")
-	cut_overlay("cyber_dead")
+	overlays -= "cyber"
+	overlays -= "cyber_dead"
 	if(icon_state != icon_dead)
-		add_overlay("cyber")
+		overlays |= "cyber"
 	else
-		add_overlay("cyber_dead")
+		overlays |= "cyber_dead"
 

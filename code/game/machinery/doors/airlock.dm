@@ -756,21 +756,22 @@ About the new airlock wires panel:
 		brace.update_icon()
 		brace_overlay += image(brace.icon, brace.icon_state)
 
-	cut_overlays()
+	overlays.Cut()
 
-	add_overlay(color_overlay)
-	add_overlay(filling_overlay)
-	add_overlay(stripe_overlay)
-	add_overlay(stripe_filling_overlay)
-	add_overlay(panel_overlay)
-	add_overlay(weld_overlay)
-	add_overlay(brace_overlay)
-	add_overlay(lights_overlay)
-	add_overlay(sparks_overlay)
-	add_overlay(damage_overlay)
+	overlays += color_overlay
+	overlays += filling_overlay
+	overlays += stripe_overlay
+	overlays += stripe_filling_overlay
+	overlays += panel_overlay
+	overlays += weld_overlay
+	overlays += brace_overlay
+	overlays += lights_overlay
+	overlays += sparks_overlay
+	overlays += damage_overlay
 
 /obj/machinery/door/airlock/do_animate(animation)
-	cut_overlays()
+	if(overlays)
+		overlays.Cut()
 
 	switch(animation)
 		if("opening")

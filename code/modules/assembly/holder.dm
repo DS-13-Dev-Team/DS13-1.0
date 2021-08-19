@@ -7,7 +7,7 @@
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
 	throwforce = 5
 	w_class = ITEM_SIZE_SMALL
-
+	
 	throw_range = 10
 
 	var/secured = 0
@@ -68,24 +68,24 @@
 
 
 	update_icon()
-		cut_overlays()
+		overlays.Cut()
 		if(a_left)
-			add_overlay("[a_left.icon_state]_left")
+			overlays += "[a_left.icon_state]_left"
 			for(var/O in a_left.attached_overlays)
-				add_overlay("[O]_l")
+				overlays += "[O]_l"
 		if(a_right)
-			src.add_overlay("[a_right.icon_state]_right")
+			src.overlays += "[a_right.icon_state]_right"
 			for(var/O in a_right.attached_overlays)
-				add_overlay("[O]_r")
+				overlays += "[O]_r"
 		if(master)
 			master.update_icon()
 
 /*		if(special_assembly)
 			special_assembly.update_icon()
 			if(special_assembly:small_icon_state)
-				src.add_overlay(special_assembly:small_icon_state)
+				src.overlays += special_assembly:small_icon_state
 				for(var/O in special_assembly:small_icon_state_overlays)
-					src.add_overlay(O)
+					src.overlays += O
 */
 
 	examine(mob/user)

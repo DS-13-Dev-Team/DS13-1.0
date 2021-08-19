@@ -111,10 +111,10 @@
 		)
 
 /obj/item/weapon/storage/fancy/crayons/update_icon()
-	cut_overlays() //resets list
-	add_overlay(image('icons/obj/crayons.dmi',"crayonbox"))
+	overlays = list() //resets list
+	overlays += image('icons/obj/crayons.dmi',"crayonbox")
 	for(var/obj/item/weapon/pen/crayon/crayon in contents)
-		add_overlay(image('icons/obj/crayons.dmi',crayon.colourName))
+		overlays += image('icons/obj/crayons.dmi',crayon.colourName)
 
 ////////////
 //CIG PACK//
@@ -325,13 +325,13 @@
 /obj/item/weapon/storage/lockbox/vials/update_icon()
 	var/total_contents = count_by_type(contents, /obj/item/weapon/reagent_containers/glass/beaker/vial)
 	src.icon_state = "vialbox[Floor(total_contents/2)]"
-	src.cut_overlays()
+	src.overlays.Cut()
 	if (!broken)
-		add_overlay(image(icon, src, "led[locked]"))
+		overlays += image(icon, src, "led[locked]")
 		if(locked)
-			add_overlay(image(icon, src, "cover"))
+			overlays += image(icon, src, "cover")
 	else
-		add_overlay(image(icon, src, "ledb"))
+		overlays += image(icon, src, "ledb")
 	return
 
 /obj/item/weapon/storage/lockbox/vials/attackby(obj/item/weapon/W as obj, mob/user as mob)

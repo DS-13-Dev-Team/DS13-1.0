@@ -42,7 +42,7 @@
 	to_chat(user, "<span class='notice'>Printing findings now...</span>")
 	var/obj/item/weapon/paper/report = new(get_turf(src))
 	report.stamped = list(/obj/item/weapon/stamp)
-	report.add_overlay("paper_stamped")
+	report.overlays = list("paper_stamped")
 	report_num++
 
 	if(istype(sample, /obj/item/weapon/forensics/swab))

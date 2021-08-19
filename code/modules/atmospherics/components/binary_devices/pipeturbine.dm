@@ -73,15 +73,15 @@
 			network2.update = 1
 
 	update_icon()
-		cut_overlays()
+		overlays.Cut()
 		if (dP > 10)
-			add_overlay(image('icons/obj/pipeturbine.dmi', "moto-turb"))
+			overlays += image('icons/obj/pipeturbine.dmi', "moto-turb")
 		if (kin_energy > 100000)
-			add_overlay(image('icons/obj/pipeturbine.dmi', "low-turb"))
+			overlays += image('icons/obj/pipeturbine.dmi', "low-turb")
 		if (kin_energy > 500000)
-			add_overlay(image('icons/obj/pipeturbine.dmi', "med-turb"))
+			overlays += image('icons/obj/pipeturbine.dmi', "med-turb")
 		if (kin_energy > 1000000)
-			add_overlay(image('icons/obj/pipeturbine.dmi', "hi-turb"))
+			overlays += image('icons/obj/pipeturbine.dmi', "hi-turb")
 
 	attackby(obj/item/weapon/W as obj, mob/user as mob)
 		if(isWrench(W))

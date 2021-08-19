@@ -61,22 +61,22 @@
 	return ..()
 
 /obj/machinery/power/smes/batteryrack/update_icon()
-	cut_overlays()
+	overlays.Cut()
 	icon_update = 0
 
 	var/cellcount = 0
 	var/charge_level = between(0, round(Percentage() / 12), 7)
 
 
-	add_overlay("charge[charge_level]")
+	overlays += "charge[charge_level]"
 
 	for(var/obj/item/weapon/cell/C in internal_cells)
 		cellcount++
-		add_overlay("cell[cellcount]")
+		overlays += "cell[cellcount]"
 		if(C.fully_charged())
-			add_overlay("cell[cellcount]f")
+			overlays += "cell[cellcount]f"
 		else if(!C.charge)
-			add_overlay("cell[cellcount]e")
+			overlays += "cell[cellcount]e"
 
 // Recalculate maxcharge and similar variables.
 /obj/machinery/power/smes/batteryrack/proc/update_maxcharge()

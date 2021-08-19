@@ -183,7 +183,7 @@
 			img = image('icons/obj/bureaucracy.dmi', "paper_stamp-dots")
 		img.pixel_x = copy.offset_x[j]
 		img.pixel_y = copy.offset_y[j]
-		c.add_overlay(img)
+		c.overlays += img
 	c.updateinfolinks()
 	if(need_toner)
 		toner--

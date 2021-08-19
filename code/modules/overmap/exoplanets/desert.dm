@@ -138,12 +138,12 @@
 	if(!exposed)
 		return
 	icon_state = "open"
-	cut_overlays()
+	overlays.Cut()
 	if(buckled_mob)
-		add_overlay(buckled_mob)
+		overlays += buckled_mob
 		var/image/I = image(icon,icon_state="overlay")
 		I.layer = ABOVE_HUMAN_LAYER
-		add_overlay(I)
+		overlays += I
 
 /obj/structure/quicksand/proc/expose()
 	if(exposed)

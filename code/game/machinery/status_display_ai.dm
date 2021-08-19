@@ -79,12 +79,12 @@ var/list/ai_status_emotions = list(
 
 /obj/machinery/ai_status_display/update_icon()
 	if(stat & (NOPOWER|BROKEN))
-		cut_overlays()
+		overlays.Cut()
 		return
 
 	switch(mode)
 		if(0) //Blank
-			cut_overlays()
+			overlays.Cut()
 		if(1) // AI emoticon
 			var/datum/ai_emotion/ai_emotion = ai_status_emotions[emotion]
 			set_picture(ai_emotion.overlay)
@@ -93,5 +93,6 @@ var/list/ai_status_emotions = list(
 
 /obj/machinery/ai_status_display/proc/set_picture(var/state)
 	picture_state = state
-	cut_overlays()
-	add_overlay(image('icons/obj/status_display.dmi', icon_state=picture_state))
+	if(overlays.len)
+		overlays.Cut()
+	overlays += image('icons/obj/status_display.dmi', icon_state=picture_state)

@@ -83,7 +83,7 @@
 		update_icon()
 
 /obj/item/weapon/evidencebag/update_icon()
-	cut_overlays()
+	overlays.Cut()
 	if(stored_item)
 		icon_state = "evidence"
 		var/xx = stored_item.pixel_x	//save the offset of the item
@@ -93,8 +93,8 @@
 		var/image/img = image("icon"=stored_item, "layer"=FLOAT_LAYER)	//take a snapshot. (necessary to stop the underlays appearing under our inventory-HUD slots ~Carn
 		stored_item.pixel_x = xx		//and then return it
 		stored_item.pixel_y = yy
-		add_overlay(img)
-		add_overlay("evidence")	//should look nicer for transparent stuff. not really that important, but hey.
+		overlays += img
+		overlays += "evidence"	//should look nicer for transparent stuff. not really that important, but hey.
 
 		desc = "An evidence bag containing [stored_item]."
 	else

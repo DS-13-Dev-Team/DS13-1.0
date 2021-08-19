@@ -41,15 +41,15 @@
 	. = ..()
 
 /obj/item/weapon/reagent_containers/ivbag/update_icon()
-	cut_overlays()
+	overlays.Cut()
 	var/percent = round(reagents.total_volume / volume * 100)
 	if(reagents.total_volume)
 		var/image/filling = image('icons/obj/bloodpack.dmi', "[round(percent,25)]")
 		filling.color = reagents.get_color()
-		add_overlay(filling)
-	add_overlay(image('icons/obj/bloodpack.dmi', "top"))
+		overlays += filling
+	overlays += image('icons/obj/bloodpack.dmi', "top")
 	if(attached)
-		add_overlay(image('icons/obj/bloodpack.dmi', "dongle"))
+		overlays += image('icons/obj/bloodpack.dmi', "dongle")
 
 /obj/item/weapon/reagent_containers/ivbag/MouseDrop(over_object, src_location, over_location)
 	if(!CanMouseDrop(over_object))

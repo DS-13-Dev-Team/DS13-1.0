@@ -35,13 +35,13 @@
 			return
 
 /obj/item/weapon/clipboard/update_icon()
-	cut_overlays()
+	overlays.Cut()
 	if(toppaper)
-		add_overlay(toppaper.icon_state)
-		copy_overlays(toppaper)
+		overlays += toppaper.icon_state
+		overlays += toppaper.overlays
 	if(haspen)
-		add_overlay("clipboard_pen")
-	add_overlay("clipboard_over")
+		overlays += "clipboard_pen"
+	overlays += "clipboard_over"
 	return
 
 /obj/item/weapon/clipboard/attackby(obj/item/weapon/W as obj, mob/user as mob)

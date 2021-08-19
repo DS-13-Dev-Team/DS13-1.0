@@ -228,7 +228,7 @@
 	else .=..()
 
 /obj/machinery/light/update_icon(var/trigger = 1)
-	cut_overlays()
+	overlays = overlays.Cut()
 	icon_state = "[base_state]_empty" //Never use the initial state. That'll just reset it to the mapping icon.
 	pixel_y = 0
 	pixel_x = 0
@@ -257,7 +257,7 @@
 	if(istype(lightbulb, /obj/item/weapon/light/))
 		var/image/I = image(icon, src, _state)
 		I.color = lightbulb.b_colour
-		add_overlay(I)
+		overlays += I
 
 	if(on)
 
@@ -695,7 +695,7 @@
 			broken = TRUE
 	var/image/I = image(icon, src, "[base_state]_attachment[broken ? "_broken" : ""]")
 	I.color = null
-	add_overlay(I)
+	overlays += I
 
 /obj/item/weapon/light/New(atom/newloc, obj/machinery/light/fixture = null)
 	..()

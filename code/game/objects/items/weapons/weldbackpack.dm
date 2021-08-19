@@ -78,11 +78,11 @@
 /obj/item/weapon/weldpack/update_icon()
 	..()
 
-	cut_overlays()
+	overlays.Cut()
 	if(welder)
 		var/image/welder_image = image(welder.icon, icon_state = welder.icon_state)
 		welder_image.pixel_x = 16
-		add_overlay(welder_image)
+		overlays += welder_image
 
 /obj/item/weapon/weldpack/examine(mob/user)
 	. = ..(user)

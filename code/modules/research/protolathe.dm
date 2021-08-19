@@ -140,7 +140,7 @@
 	var/amount = min(stack.get_amount(), round((max_material_storage - TotalMaterials()) / SHEET_MATERIAL_AMOUNT))
 
 	var/t = stack.material.name
-	add_overlay("protolathe_[t]")
+	overlays += "protolathe_[t]"
 
 	busy = TRUE
 	update_icon()
@@ -152,7 +152,7 @@
 					if(stack.use(amount))
 						materials[M].amount += amount * stack.perunit
 						break
-	cut_overlay("protolathe_[t]")
+	overlays -= "protolathe_[t]"
 	busy = FALSE
 	update_icon()
 	if(linked_console)
