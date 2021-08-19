@@ -25,6 +25,8 @@
 
 #define INFINITY	1.#INF
 
+#define SHORT_REAL_LIMIT 16777216
+
 #define TICKS_IN_DAY 		24*60*60*10
 #define TICKS_IN_SECOND 	10
 

@@ -217,6 +217,9 @@ var/list/admin_verbs_debug = list(
 	/client/proc/visualpower,
 	/client/proc/visualpower_remove,
 	/client/proc/debug_vectorpool,
+	/client/proc/start_line_profiling,
+	/client/proc/stop_line_profiling,
+	/client/proc/show_line_profiling,
 	/client/proc/activate_marker,
 	/client/proc/dummy_crowd
 	)
