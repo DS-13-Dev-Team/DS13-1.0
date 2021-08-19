@@ -16,7 +16,7 @@
 	var/deform =       'icons/mob/human_races/species/human/deformed_body.dmi' // Mutated icon set.
 	var/preview_icon = 'icons/mob/human_races/species/human/preview.dmi'
 	var/husk_icon =    'icons/mob/human_races/species/default_husk.dmi'
-	var/lying_rotation = 90 //How much to rotate the icon when lying down
+
 	var/mob_type = /mob/living/carbon/human	//The mob we spawn in order to create a member of this species instantly
 	var/health_doll_offset	= WORLD_ICON_SIZE+8	//For this species, the hud health doll is offset this many pixels to the right.
 	//This default value is fine for humans and anything roughly the same width as a human, larger creatures will require different numbers
@@ -29,7 +29,8 @@
 	//Secondly, it is the string suffix added to organ iconstates
 	//Thirdly, in single icon mode, it is the icon state for lying down
 	var/icon_lying = null
-
+	var/lying_rotation = 90 //How much to rotate the icon when lying down
+	var/layer_lying	=	LYING_HUMAN_LAYER
 
 	// Damage overlay and masks.
 	var/damage_overlays = 'icons/mob/human_races/species/human/damage_overlay.dmi'
@@ -71,7 +72,7 @@
 	var/mass = 80	//Actual mass of the resulting mob
 
 	var/layer = BASE_HUMAN_LAYER
-	var/layer_lying	=	LYING_HUMAN_LAYER
+
 
 	var/light_sensitive                       // Ditto, but requires sunglasses to fix
 	var/blood_volume = SPECIES_BLOOD_DEFAULT  // Initial blood volume.
@@ -206,6 +207,8 @@
 	//Interaction
 	var/limited_click_arc = 0	  //If nonzero, the mob is limited to clicking on things in X degrees arc infront of it. Best combined with slow turning. Recommended values, 45 or 90
 	var/list/grasping_limbs = list(BP_R_HAND, BP_L_HAND)	//What limbs does this mob use for interacting with objects?
+	var/bodytype	=	null	//Used in get_bodytype which determines what clothes the mob can wear. If null, the species name is used instead
+
 
 	//Vision
 	var/view_offset = 0			  //How far forward the mob's view is offset, in pixels.

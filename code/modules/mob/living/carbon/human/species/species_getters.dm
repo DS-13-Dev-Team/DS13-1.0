@@ -36,6 +36,8 @@
 	return race_key
 
 /datum/species/proc/get_bodytype(var/mob/living/carbon/human/H)
+	if (bodytype)	
+		return bodytype
 	return name
 
 /datum/species/proc/get_knockout_message(var/mob/living/carbon/human/H)
