@@ -21,12 +21,12 @@
 	animate(src, alpha = 255, time = 1 SECOND, flags = ANIMATION_PARALLEL)	//Cool fade in effect
 
 /obj/effect/rune/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	if(GLOB.cult.rune_strokes[type])
 		var/list/f = GLOB.cult.rune_strokes[type]
 		for(var/i in f)
 			var/image/t = image('icons/effects/uristrunes.dmi', "rune-[i]")
-			overlays += t
+			add_overlay(t)
 	else
 		var/list/q = list(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 		var/list/f = list()
@@ -35,7 +35,7 @@
 			f += j
 			q -= f
 			var/image/t = image('icons/effects/uristrunes.dmi', "rune-[j]")
-			overlays += t
+			add_overlay(t)
 		GLOB.cult.rune_strokes[type] = f.Copy()
 	color = bcolor
 	desc = "A strange collection of symbols drawn in [blood]."

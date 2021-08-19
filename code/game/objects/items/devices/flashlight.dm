@@ -317,14 +317,14 @@
 
 /obj/item/device/flashlight/flare/glowstick/update_icon()
 	item_state = "glowstick"
-	overlays.Cut()
+	cut_overlays()
 	if(!fuel)
 		icon_state = "glowstick-empty"
 		set_light(0)
 	else if (on)
 		var/image/I = overlay_image(icon,"glowstick-on",color)
 		I.blend_mode = BLEND_ADD
-		overlays += I
+		add_overlay(I)
 		item_state = "glowstick-on"
 		set_light(flashlight_max_bright, flashlight_inner_range, flashlight_outer_range, 2, light_color)
 	else

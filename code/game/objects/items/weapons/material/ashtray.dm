@@ -18,11 +18,11 @@
 		to_chat(user, "It has [contents.len] cig butts in it.")
 
 /obj/item/weapon/material/ashtray/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	if (contents.len == max_butts)
-		overlays |= image('icons/obj/objects.dmi',"ashtray_full")
+		add_overlay(image('icons/obj/objects.dmi',"ashtray_full"))
 	else if (contents.len >= max_butts/2)
-		overlays |= image('icons/obj/objects.dmi',"ashtray_half")
+		add_overlay(image('icons/obj/objects.dmi',"ashtray_half"))
 
 /obj/item/weapon/material/ashtray/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if (health <= 0)

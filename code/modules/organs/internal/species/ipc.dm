@@ -9,7 +9,7 @@
 	force = 1.0
 	w_class = ITEM_SIZE_NORMAL
 	throwforce = 1.0
-	
+
 	throw_range = 5
 	origin_tech = list(TECH_ENGINEERING = 4, TECH_MATERIAL = 4, TECH_BLUESPACE = 2, TECH_DATA = 4)
 	attack_verb = list("attacked", "slapped", "whacked")
@@ -140,9 +140,9 @@
 	else
 		icon_state = "posibrain"
 
-	overlays.Cut()
+	cut_overlays()
 	if(shackle)
-		overlays |= image('icons/obj/assemblies.dmi', "posibrain-shackles")
+		add_overlay(image('icons/obj/assemblies.dmi', "posibrain-shackles"))
 
 /obj/item/organ/internal/posibrain/proc/transfer_identity(var/mob/living/carbon/H)
 	if(H && H.mind)

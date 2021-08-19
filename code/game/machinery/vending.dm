@@ -186,9 +186,9 @@
 	else if(istype(W, /obj/item/weapon/tool/screwdriver))
 		src.panel_open = !src.panel_open
 		to_chat(user, "You [src.panel_open ? "open" : "close"] the maintenance panel.")
-		src.overlays.Cut()
+		src.cut_overlays()
 		if(src.panel_open)
-			src.overlays += image(src.icon, "[initial(icon_state)]-panel")
+			src.add_overlay(image(src.icon, "[initial(icon_state)]-panel"))
 
 		SSnano.update_uis(src)  // Speaker switch is on the main UI, not wires UI
 		return

@@ -214,7 +214,7 @@
 	update_state()
 
 /obj/structure/door_assembly/proc/update_state()
-	overlays.Cut()
+	cut_overlays()
 	var/image/filling_overlay
 	var/image/panel_overlay
 	var/final_name = ""
@@ -234,5 +234,5 @@
 			panel_overlay = image(panel_icon, "construction1")
 	final_name += "[glass == 1 ? "Window " : ""][istext(glass) ? "[glass] Airlock" : base_name] Assembly"
 	SetName(final_name)
-	overlays += filling_overlay
-	overlays += panel_overlay
+	add_overlay(filling_overlay)
+	add_overlay(panel_overlay)

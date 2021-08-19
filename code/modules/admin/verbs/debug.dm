@@ -539,6 +539,13 @@
 	cmd_analyse_health(H)
 	feedback_add_details("admin_verb","ANLS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
+/*/client/proc/cmd_display_overlay_log()		//Uncomment if you want to see how much it takes to render overlay
+	set category = "Debug"
+	set name = "Display overlay Log"
+	set desc = "Display SSoverlays log of everything that's passed through it."
+
+	render_stats(SSoverlays.stats, src)*/
+
 /obj/effect/debugmarker
 	icon = 'icons/effects/lighting_overlay.dmi'
 	icon_state = "transparent"

@@ -44,9 +44,9 @@ SUBSYSTEM_DEF(skybox)
 
 	if(use_stars)
 		var/image/stars = overlay_image(I, star_state, flags = RESET_COLOR)
-		base.overlays += stars
+		base.add_overlay(stars)
 
-	res.overlays += base
+	res.add_overlay(base)
 
 	//Lets create and place foreground objects
 	if(GLOB.using_map.skybox_foreground_objects)
@@ -61,7 +61,7 @@ SUBSYSTEM_DEF(skybox)
 				foreground_image.pixel_x = offset.x * DEFAULT_SKYBOX_SIZE
 				foreground_image.pixel_y = offset.y * DEFAULT_SKYBOX_SIZE
 
-			res.overlays += foreground_image
+			res.add_overlay(foreground_image)
 
 
 

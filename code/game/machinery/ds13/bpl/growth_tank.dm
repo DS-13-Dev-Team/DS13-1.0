@@ -170,7 +170,7 @@
 
 /obj/machinery/growth_tank/update_icon()
 
-	overlays.Cut()
+	cut_overlays()
 	underlays.Cut()
 
 	var/biomass_percent = get_stored_biomass() / max_biomass
@@ -197,24 +197,24 @@
 		//First of all, biomass warning lights
 		if (biomass_percent <= 0.6)
 			if (biomass_percent > 0.3)
-				overlays += image(icon, src, "light_yellow")
+				add_overlay(image(icon, src, "light_yellow"))
 			else if (biomass_percent > 0)
-				overlays += image(icon, src, "light_orange")
+				add_overlay(image(icon, src, "light_orange"))
 			else
 				//The blinking red light appears when biomass has completely run out. At this point, the contained atom takes damage until it starves to death
-				overlays += image(icon, src, "light_red")
+				add_overlay(image(icon, src, "light_red"))
 				playsound(src, 'sound/machines/tankdanger.ogg', VOLUME_MID)
 		else
 			//If biomass is fine, then lets show some other lights
 			if (istype(current_growth_atom, /obj/item/organ/forming))
 				//If the current growth thing is not done growing, then lets display a non-attention-grabbing still green light
-				overlays += image(icon, src, "light_green")
+				add_overlay(image(icon, src, "light_green"))
 			else
 				//Its finished growing, lets have a flashy light to attract attention
-				overlays += image(icon, src, "light_green_flashing")
+				add_overlay(image(icon, src, "light_green_flashing"))
 	else
 		//Nothing currently growing, the light turns off
-		overlays += image(icon, src, "light_off")
+		add_overlay(image(icon, src, "light_off"))
 
 	//The liquid becomes more sickly pale as biomass depletes
 	I = image(icon, src, "pod_liquid_grayscale")
@@ -223,13 +223,13 @@
 
 	I = image(icon, src, "bubbles")
 	I.color = liquid_color
-	overlays += I
+	add_overlay(I)
 
 	I = image(icon, src, "gradient_grayscale")
 	I.color = liquid_color
-	overlays += I
+	add_overlay(I)
 
-	//overlays += image(icon, src, "shine")
+	//add_overlay(image(icon, src, "shine"))
 
 
 /obj/machinery/growth_tank/proc/get_stored_biomass()

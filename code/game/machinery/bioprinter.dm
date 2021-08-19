@@ -32,11 +32,11 @@
 	return ..()
 
 /obj/machinery/organ_printer/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	if(panel_open)
-		overlays += "bioprinter_panel_open"
+		add_overlay("bioprinter_panel_open")
 	if(printing)
-		overlays += "bioprinter_working"
+		add_overlay("bioprinter_working")
 
 /obj/machinery/organ_printer/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()

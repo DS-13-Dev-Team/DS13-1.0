@@ -18,7 +18,7 @@
 /obj/item/target/attackby(var/obj/item/W, var/mob/user)
 	if(isWelder(W))
 		if(W.use_tool(user, src, WORKTIME_SLOW, QUALITY_WELDING, FAILCHANCE_NORMAL))
-			overlays.Cut()
+			cut_overlays()
 			bulletholes.Cut()
 			hp = initial(hp)
 			to_chat(usr, "<span class='notice'>You slice off [src]'s uneven chunks of aluminum and scorch marks.</span>")
@@ -101,7 +101,7 @@
 			virtualIcon.DrawBox(null, B.b1x1, B.b1y,  B.b1x2, B.b1y) // horizontal line, left to right
 			virtualIcon.DrawBox(null, B.b2x, B.b2y1,  B.b2x, B.b2y2) // vertical line, top to bottom
 
-		overlays += bmark // add the decal
+		add_overlay(bmark) // add the decal
 
 		icon = virtualIcon // apply bulletholes over decals
 
