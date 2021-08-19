@@ -466,10 +466,10 @@
 		'html/images/scales.png',
 		'html/images/spell-check.png',
 		'html/images/wrench-screwdriver.png',
-		'html/changelogs/changelog.css',
-		'html/changelogs/changelog.html'
+		'html/changelog.css',
+		'html/changelog.html'
 		)
-	src << browse('html/changelogs/changelog.html', "window=changes;size=675x650")
+	src << browse('html/changelog.html', "window=changes;size=675x650")
 	if(prefs.lastchangelog != changelog_hash)
 		prefs.lastchangelog = changelog_hash
 		prefs.save_preferences()

@@ -75,7 +75,7 @@ GLOBAL_VAR(restart_counter)
 	href_logfile = file("data/logs/[date_string] hrefs.htm")
 	diary = file("data/logs/[date_string].log")
 	diary << "[log_end]\n[log_end]\nStarting up. (ID: [game_id]) [time2text(world.timeofday, "hh:mm.ss")][log_end]\n---------------------[log_end]"
-	changelog_hash = md5('html/changelogs/changelog.html')					//used for telling if the changelog has changed recently
+	changelog_hash = md5('html/changelog.html')					//used for telling if the changelog has changed recently
 
 	TgsNew(minimum_required_security_level = TGS_SECURITY_TRUSTED)
 
