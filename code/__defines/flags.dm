@@ -19,16 +19,15 @@ GLOBAL_LIST_INIT(bitflags, list(1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 204
 
 // Flags bitmasks.
 
-#define ATOM_FLAG_CHECKS_BORDER			(1<<0) // If a dense atom (potentially) only blocks movements from a given direction, i.e. window panes
-#define ATOM_FLAG_CLIMBABLE				(1<<1) // This object can be climbed on
-#define ATOM_FLAG_NO_BLOOD				(1<<2) // Used for items if they don't want to get a blood overlay.
-#define ATOM_FLAG_NO_REACT				(1<<3) // Reagents don't react inside this container.
-#define ATOM_FLAG_OPEN_CONTAINER		(1<<4) // Is an open container for chemistry purposes.
-#define ATOM_FLAG_INITIALIZED			(1<<5) // Has this atom been initialized
-#define ATOM_FLAG_INTANGIBLE			(1<<6) // This atom does not physically exist, and can't be subjected to physical forces
-#define ATOM_FLAG_UNTARGETABLE			(1<<7) // The atom cannot be targetted by a gun
-#define ATOM_FLAG_INDESTRUCTIBLE		(1<<8) // The atom is immune to all damage mechanics
-#define ATOM_FLAG_OVERLAY_QUEUED		(1<<9)
+#define ATOM_FLAG_CHECKS_BORDER          0x0001 // If a dense atom (potentially) only blocks movements from a given direction, i.e. window panes
+#define ATOM_FLAG_CLIMBABLE              0x0002 // This object can be climbed on
+#define ATOM_FLAG_NO_BLOOD               0x0004 // Used for items if they don't want to get a blood overlay.
+#define ATOM_FLAG_NO_REACT               0x0008 // Reagents don't react inside this container.
+#define ATOM_FLAG_OPEN_CONTAINER         0x0010 // Is an open container for chemistry purposes.
+#define ATOM_FLAG_INITIALIZED            0x0020 // Has this atom been initialized
+#define ATOM_FLAG_INTANGIBLE			 0x0040 // This atom does not physically exist, and can't be subjected to physical forces
+#define ATOM_FLAG_UNTARGETABLE           0x0080 // The atom cannot be targetted by a gun
+#define ATOM_FLAG_INDESTRUCTIBLE		 0x0100	// The atom is immune to all damage mechanics
 
 #define MOVABLE_FLAG_PROXMOVE            0x0001 // Does this object require proximity checking in Enter()?
 #define MOVABLE_FLAG_Z_INTERACT			 0x0002 // Should attackby and attack_hand be relayed through ladders and open spaces?
@@ -65,5 +64,3 @@ GLOBAL_LIST_INIT(bitflags, list(1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 204
 #define DF_USE_TAG		(1<<0)
 #define DF_VAR_EDITED	(1<<1)
 #define DF_ISPROCESSING (1<<2)
-
-#define OVERLAY_QUEUED_2   (1<<1)

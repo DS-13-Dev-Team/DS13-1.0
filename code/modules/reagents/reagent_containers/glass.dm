@@ -132,7 +132,7 @@
 	update_icon()
 
 /obj/item/weapon/reagent_containers/glass/beaker/update_icon()
-	cut_overlays()
+	overlays.Cut()
 
 	if(reagents.total_volume)
 		var/image/filling = image('icons/obj/reagentfillings.dmi', src, "[icon_state]10")
@@ -148,11 +148,11 @@
 			if(91 to INFINITY)	filling.icon_state = "[icon_state]100"
 
 		filling.color = reagents.get_color()
-		add_overlay(filling)
+		overlays += filling
 
 	if (!is_open_container())
 		var/image/lid = image(icon, src, "lid_[initial(icon_state)]")
-		add_overlay(lid)
+		overlays += lid
 
 /obj/item/weapon/reagent_containers/glass/beaker/large
 	name = "large beaker"
@@ -258,10 +258,10 @@
 		return ..()
 
 /obj/item/weapon/reagent_containers/glass/bucket/update_icon()
-	cut_overlays()
+	overlays.Cut()
 	if (!is_open_container())
 		var/image/lid = image(icon, src, "lid_[initial(icon_state)]")
-		add_overlay(lid)
+		overlays += lid
 
 /*
 /obj/item/weapon/reagent_containers/glass/blender_jug

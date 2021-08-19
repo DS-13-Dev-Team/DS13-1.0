@@ -152,7 +152,7 @@ Please contact me on #coderbus IRC. ~Carn x
 /mob/living/carbon/human/update_icons()
 
 	update_hud()		//TODO: remove the need for this
-	cut_overlays()
+	overlays.Cut()
 
 	var/list/overlays_to_apply = list()
 	if (icon_update)
@@ -191,7 +191,7 @@ Please contact me on #coderbus IRC. ~Carn x
 	if(auras)
 		overlays_to_apply += auras
 
-	add_overlay(overlays_to_apply)
+	overlays = overlays_to_apply
 
 	var/matrix/M = get_default_transform()
 	if(lying)
@@ -245,7 +245,7 @@ var/global/list/damage_icon_parts = list()
 		else
 			DI = damage_icon_parts[cache_index]
 
-		standing_image.add_overlay(DI)
+		standing_image.overlays += DI
 
 	overlays_standing[DAMAGE_LAYER]	= standing_image
 
@@ -454,7 +454,7 @@ var/global/list/damage_icon_parts = list()
 	for(var/mut in mutations)
 		switch(mut)
 			if(LASER)
-				standing.add_overlay("lasereyes_s")
+				standing.overlays	+= "lasereyes_s"
 				add_image = 1
 	if(add_image)
 		overlays_standing[MUTATIONS_LAYER]	= standing
@@ -563,9 +563,9 @@ var/global/list/damage_icon_parts = list()
 		// Blank image upon which to layer left & right overlays.
 		var/image/both = image("icon" = 'icons/effects/effects.dmi', "icon_state" = "nothing")
 		if(l_ear)
-			both.add_overlay(l_ear.get_mob_overlay(src,slot_l_ear_str))
+			both.overlays += l_ear.get_mob_overlay(src,slot_l_ear_str)
 		if(r_ear)
-			both.add_overlay(r_ear.get_mob_overlay(src,slot_r_ear_str))
+			both.overlays += r_ear.get_mob_overlay(src,slot_r_ear_str)
 		overlays_standing[EARS_LAYER] = both
 
 	else
@@ -816,7 +816,7 @@ var/global/list/damage_icon_parts = list()
 	for(var/obj/item/organ/external/E in organs)
 		if(!BP_IS_ROBOTIC(E) && E.how_open())
 			var/image/I = image("icon"='icons/mob/surgery.dmi', "icon_state"="[E.icon_name][round(E.how_open())]", "layer"=-SURGERY_LEVEL)
-			total.add_overlay(I)
+			total.overlays += I
 	total.appearance_flags = RESET_COLOR
 	overlays_standing[SURGERY_LEVEL] = total
 	if(update_icons)

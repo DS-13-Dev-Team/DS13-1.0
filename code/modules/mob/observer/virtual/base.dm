@@ -42,12 +42,12 @@ var/list/all_virtual_listeners = list()
 		overlay_icons = list()
 		for(var/i_state in icon_states(icon))
 			overlay_icons[i_state] = image(icon = icon, icon_state = i_state)
-	cut_overlays()
+	overlays.Cut()
 
 	if(abilities & VIRTUAL_ABILITY_HEAR)
-		add_overlay(overlay_icons["hear"])
+		overlays += overlay_icons["hear"]
 	if(abilities & VIRTUAL_ABILITY_SEE)
-		add_overlay(overlay_icons["see"])
+		overlays += overlay_icons["see"]
 
 /***********************
 * Virtual Mob Creation *

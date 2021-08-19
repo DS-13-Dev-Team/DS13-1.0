@@ -50,7 +50,7 @@
 	qdel(src)
 
 /mob/living/simple_animal/construct/update_icon()
-	cut_overlays()
+	overlays.Cut()
 	..()
 	add_glow()
 
@@ -249,7 +249,7 @@
 	var/image/eye_glow = image(icon,"glow-[icon_state]")
 	eye_glow.plane = EFFECTS_ABOVE_LIGHTING_PLANE
 	eye_glow.layer = EYE_GLOW_LAYER
-	add_overlay(eye_glow)
+	overlays += eye_glow
 	set_light(-10, 0.1, 3, l_color = "#ffffff")
 
 ////////////////HUD//////////////////////

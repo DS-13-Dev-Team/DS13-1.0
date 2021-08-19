@@ -283,7 +283,7 @@
 	if(C.layer < layer)
 		C.layer = layer + 0.1
 	C.plane = plane
-	add_overlay(C)
+	overlays += C
 
 	if(ismob(C))
 		var/mob/M = C
@@ -298,7 +298,7 @@
 		return
 
 	busy = 1
-	cut_overlays()
+	overlays.Cut()
 
 	load.forceMove(loc)
 	load.pixel_y -= 9

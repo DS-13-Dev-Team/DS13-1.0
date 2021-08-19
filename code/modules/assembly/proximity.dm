@@ -93,13 +93,13 @@
 
 
 /obj/item/device/assembly/prox_sensor/update_icon()
-	cut_overlays()
+	overlays.Cut()
 	attached_overlays = list()
 	if(timing)
-		add_overlay("prox_timing")
+		overlays += "prox_timing"
 		attached_overlays += "prox_timing"
 	if(scanning)
-		add_overlay("prox_scanning")
+		overlays += "prox_scanning"
 		attached_overlays += "prox_scanning"
 	if(holder)
 		holder.update_icon()

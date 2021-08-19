@@ -186,9 +186,9 @@
 	ui_interact(user)
 
 /obj/machinery/chemical_dispenser/update_icon()
-	cut_overlays()
+	overlays.Cut()
 	if(container)
 		var/mutable_appearance/beaker_overlay
 		beaker_overlay = image('icons/obj/chemical.dmi', src, "lil_beaker")
 		beaker_overlay.pixel_x = rand(-10, 5)
-		add_overlay(beaker_overlay)
+		overlays += beaker_overlay

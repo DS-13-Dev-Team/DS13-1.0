@@ -27,7 +27,7 @@
 			I.pixel_x = 16
 		if(WEST)
 			I.pixel_x = -16
-	add_overlay(I)
+	overlays += I
 
 /obj/structure/platform/CheckExit(atom/movable/O, turf/target)
 	. = ..()

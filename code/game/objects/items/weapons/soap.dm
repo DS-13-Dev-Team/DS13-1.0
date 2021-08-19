@@ -67,9 +67,9 @@
 	..()
 
 /obj/item/weapon/soap/update_icon()
-	cut_overlays()
+	overlays.Cut()
 	if(key_data)
-		add_overlay(image('icons/obj/items.dmi', icon_state = "soap_key_overlay"))
+		overlays += image('icons/obj/items.dmi', icon_state = "soap_key_overlay")
 
 /obj/item/weapon/soap/nanotrasen
 	desc = "A NanoTrasen-brand bar of soap. Smells of phoron."

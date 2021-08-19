@@ -23,7 +23,7 @@
 		mainOverlay.Blend(main,ICON_ADD)
 		shadeOverlay.Blend(shade,ICON_ADD)
 
-		add_overlay(mainOverlay)
-		add_overlay(shadeOverlay)
+		overlays += mainOverlay
+		overlays += shadeOverlay
 
 		add_hiddenprint(usr)

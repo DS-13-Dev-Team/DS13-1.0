@@ -149,17 +149,17 @@
 
 
 /obj/structure/janitorialcart/update_icon()
-	cut_overlays()
+	overlays = null
 	if(mybag)
-		add_overlay("cart_garbage")
+		overlays += "cart_garbage"
 	if(mymop)
-		add_overlay("cart_mop")
+		overlays += "cart_mop"
 	if(myspray)
-		add_overlay("cart_spray")
+		overlays += "cart_spray"
 	if(myreplacer)
-		add_overlay("cart_replacer")
+		overlays += "cart_replacer"
 	if(signs)
-		add_overlay("cart_sign[signs]")
+		overlays += "cart_sign[signs]"
 
 
 //old style retardo-cart

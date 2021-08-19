@@ -19,8 +19,8 @@
 
 	var/image/food_image = image(cooking_obj.icon, cooking_obj.icon_state)
 	food_image.color = cooking_obj.color
-	food_image.copy_overlays(cooking_obj)
+	food_image.overlays += cooking_obj.overlays
 	food_image.transform *= 0.7
 
-	product.add_overlay(food_image)
+	product.overlays += food_image
 

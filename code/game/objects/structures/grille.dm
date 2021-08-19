@@ -24,7 +24,7 @@
 /obj/structure/grille/update_icon()
 	update_onframe()
 
-	cut_overlays()
+	overlays.Cut()
 	if(destroyed)
 		if(on_frame)
 			icon_state = "broke_onframe"
@@ -39,14 +39,14 @@
 					I = image(icon, "grille_other_onframe[connections[i]]", dir = 1<<(i-1))
 				else
 					I = image(icon, "grille_onframe[connections[i]]", dir = 1<<(i-1))
-				add_overlay(I)
+				overlays += I
 		else
 			for(var/i = 1 to 4)
 				if(other_connections[i] != "0")
 					I = image(icon, "grille_other[connections[i]]", dir = 1<<(i-1))
 				else
 					I = image(icon, "grille[connections[i]]", dir = 1<<(i-1))
-				add_overlay(I)
+				overlays += I
 
 /obj/structure/grille/Bumped(atom/user)
 	if(ismob(user)) shock(user, 70)

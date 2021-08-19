@@ -68,10 +68,10 @@
 	.=..()
 
 	underlays.Cut()
-	cut_overlays()
+	overlays.Cut()
 
 	if (deployed)
-		add_overlay(image(icon, src, "beak"))
+		overlays += image(icon, src, "beak")
 		underlays += image(icon, src, "tentacle_1")
 		sleep(1)
 		underlays += image(icon, src, "tentacle_2")
@@ -80,7 +80,7 @@
 		sleep(1)
 		underlays += image(icon, src, "tentacle_4")
 	else
-		add_overlay(image(icon, src, "beak_closed"))
+		overlays += image(icon, src, "beak_closed")
 
 
 /obj/structure/corruption_node/harvester/Initialize()

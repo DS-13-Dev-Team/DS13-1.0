@@ -63,26 +63,26 @@
 			to_chat(user, "<span class='warning'>You're unable to insert the battery.</span>")
 
 /obj/item/device/suit_sensor_jammer/update_icon()
-	cut_overlays()
+	overlays.Cut()
 	if(bcell)
 		var/percent = bcell.percent()
 		switch(percent)
 			if(0 to 25)
-				add_overlay("forth_quarter")
+				overlays += "forth_quarter"
 			if(25 to 50)
-				add_overlay("one_quarter")
-				add_overlay("third_quarter")
+				overlays += "one_quarter"
+				overlays += "third_quarter"
 			if(50 to 75)
-				add_overlay("two_quarters")
-				add_overlay("second_quarter")
+				overlays += "two_quarters"
+				overlays += "second_quarter"
 			if(75 to 99)
-				add_overlay("three_quarters")
-				add_overlay("first_quarter")
+				overlays += "three_quarters"
+				overlays += "first_quarter"
 			else
-				add_overlay("four_quarters")
+				overlays += "four_quarters"
 
 		if(active)
-			add_overlay("active")
+			overlays += "active"
 
 /obj/item/device/suit_sensor_jammer/emp_act(var/severity)
 	..()

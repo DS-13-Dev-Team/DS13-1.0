@@ -5,13 +5,13 @@ var/list/limb_icon_cache = list()
 	return
 
 /obj/item/organ/external/proc/compile_icon()
-	cut_overlays()
+	overlays.Cut()
 	 // This is a kludge, only one icon has more than one generation of children though.
 	for(var/obj/item/organ/external/organ in contents)
 		if(organ.children && organ.children.len)
 			for(var/obj/item/organ/external/child in organ.children)
-				add_overlay(child.mob_icon)
-		add_overlay(organ.mob_icon)
+				overlays += child.mob_icon
+		overlays += organ.mob_icon
 
 /obj/item/organ/external/proc/sync_colour_to_human(var/mob/living/carbon/human/human)
 	s_tone = null
@@ -61,7 +61,7 @@ var/list/limb_icon_cache = list()
 		var/datum/sprite_accessory/marking/mark_style = markings[M]["datum"]
 		var/icon/mark_s = new/icon("icon" = mark_style.icon, "icon_state" = "[mark_style.icon_state]-[organ_tag]")
 		mark_s.Blend(markings[M]["color"], mark_style.blend)
-		add_overlay(mark_s) //So when it's not on your body, it has icons
+		overlays |= mark_s //So when it's not on your body, it has icons
 		mob_icon.Blend(mark_s, mark_style.layer_blend) //So when it's on your body, it has icons
 		icon_cache_key += "[M][markings[M]["color"]]"
 
@@ -106,7 +106,7 @@ var/list/limb_icon_cache = list()
 		var/datum/sprite_accessory/marking/mark_style = markings[M]["datum"]
 		var/icon/mark_s = new/icon("icon" = mark_style.icon, "icon_state" = "[mark_style.icon_state]-[organ_tag]")
 		mark_s.Blend(markings[M]["color"], ICON_ADD)
-		add_overlay(mark_s) //So when it's not on your body, it has icons
+		overlays |= mark_s //So when it's not on your body, it has icons
 		mob_icon.Blend(mark_s, ICON_OVERLAY) //So when it's on your body, it has icons
 		icon_cache_key += "[M][markings[M]["color"]]"
 
@@ -166,7 +166,7 @@ var/list/robot_hud_colours = list("#ffffff","#cccccc","#aaaaaa","#888888","#6666
 			var/b = 0.11 * species.health_hud_intensity
 			temp.color = list(r, r, r, g, g, g, b, b, b)
 		hud_damage_image = image(null)
-		hud_damage_image.add_overlay(temp)
+		hud_damage_image.overlays += temp
 
 		owner.lying = prev_lying
 

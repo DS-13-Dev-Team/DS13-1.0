@@ -9,7 +9,7 @@
 	else
 		SetName(initial(name))
 
-	cut_overlays()
+	overlays.Cut()
 	if (seed && seed.no_icon)
 		return
 	var/new_overlays = list()
@@ -69,7 +69,7 @@
 			set_density(0)
 		set_opacity(0)
 
-	add_overlay(new_overlays)
+	overlays |= new_overlays
 
 	// Update bioluminescence.
 	if(seed && seed.get_trait(TRAIT_BIOLUM))
