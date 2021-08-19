@@ -28,7 +28,7 @@
 	active_timers = null
 	for(var/thing in timers)
 		var/datum/timedevent/timer = thing
-		if (timer.spent && !(timer.flags & TIMER_DELETE_ME))
+		if (timer.spent)
 			continue
 		qdel(timer)
 	return QDEL_HINT_QUEUE

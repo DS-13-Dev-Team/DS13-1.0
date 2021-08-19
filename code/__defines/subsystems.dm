@@ -20,9 +20,6 @@
 //In most cases you want a subsystem instead
 #define TIMER_LOOP			0x20
 
-///Delete the timer on parent datum Destroy() and when deltimer'd
-#define TIMER_DELETE_ME			(1<<6)
-
 #define TIMER_ID_NULL -1
 
 //For servers that can't do with any additional lag, set this to none in flightpacks.dm in subsystem/processing.
