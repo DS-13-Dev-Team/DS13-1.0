@@ -1,37 +1,26 @@
 //DEFINITIONS FOR ASSET DATUMS START HERE.
 
-/datum/asset/nanoui
-	var/list/common = list()
+/datum/asset/simple/nanoui
+	keep_local_name = TRUE
 
-	var/list/common_dirs = list(
+	var/list/asset_dirs = list(
 		"nano/css/",
 		"nano/images/",
 		"nano/images/modular_computers/",
-		"nano/js/"
-	)
-	var/list/uncommon_dirs = list(
+		"nano/js/",
 		"nano/templates/"
 	)
 
-/datum/asset/nanoui/register()
-	// Crawl the directories to find files.
-	for(var/path in common_dirs)
-		var/list/filenames = flist(path)
+/datum/asset/simple/nanoui/register()
+	var/list/filenames = null
+	for (var/path in asset_dirs)
+		filenames = flist(path)
 		for(var/filename in filenames)
-			if(copytext(filename, length(filename)) != "/") // Ignore directories.
-				if(fexists(path + filename))
-					common[filename] = fcopy_rsc(path + filename)
-					register_asset(filename, common[filename])
-	for(var/path in uncommon_dirs)
-		var/list/filenames = flist(path)
-		for(var/filename in filenames)
-			if(copytext(filename, length(filename)) != "/") // Ignore directories.
-				if(fexists(path + filename))
-					register_asset(filename, fcopy_rsc(path + filename))
-
-/datum/asset/nanoui/send(client)
-	send_asset_list(client, common)
-
+			if(copytext(filename, length(filename)) == "/") // filenames which end in "/" are actually directories, which we want to ignore
+				continue
+			if(fexists(path + filename))
+				assets[filename] = file(path + filename)
+	. = ..()
 
 /datum/asset/simple/jquery
 	legacy = TRUE
