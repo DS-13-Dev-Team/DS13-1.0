@@ -62,6 +62,16 @@ Note: If your code uses output() with assets you will need to call asset_flush o
 		return TRUE
 	return FALSE
 
+// will return filename for cached atom icon or null if not cached
+// can accept atom objects or types
+/proc/getAtomCacheFilename(atom/A)
+	if(!A || (!istype(A) && !ispath(A)))
+		return
+	var/filename = "[ispath(A) ? A : A.type].png"
+	filename = sanitizeFileName(filename)
+	if(SSassets.cache[filename])
+		return filename
+
 //This proc will download the files without clogging up the browse() queue, used for passively sending files on connection start.
 //The proc calls procs that sleep for long times.
 /proc/getFilesSlow(client/client, list/files, register_asset = TRUE, filerate = 3)
