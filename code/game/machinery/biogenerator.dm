@@ -81,8 +81,8 @@
 			beaker = O
 			state = BG_READY
 			updateUsrDialog()
-	else if(is_processing)
-		to_chat(user, "<span class='notice'>\The [src] is currently processing.</span>")
+	else if(state == BG_PROCESSING)
+		to_chat(user, "<span class='notice'>\The [src] is currently processing .</span>")
 	else if(ingredients >= capacity)
 		to_chat(user, "<span class='notice'>\The [src] is already full! Activate it.</span>")
 	else if(istype(O, /obj/item/weapon/storage/plants))

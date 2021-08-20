@@ -44,7 +44,7 @@
 	if (!dummy)
 		animate_fade_in()
 
-	start_processing()
+	START_PROCESSING(SSobj, src)
 
 
 /obj/structure/corruption_node/get_biomass(var/who_is_asking)
@@ -95,8 +95,7 @@
 	if (turf_corrupted(src, TRUE))
 		regenerate()
 		if (can_stop_processing())
-			is_processing = FALSE
-			return PROCESS_KILL
+			STOP_PROCESSING(SSobj, src)
 	else
 		degenerate()
 
@@ -111,16 +110,12 @@
 		return
 	.=..()
 	if (.)
-		start_processing()
+		START_PROCESSING(SSobj, src)
 
 
 /*
 	Process Handling
 */
-/obj/structure/corruption_node/proc/start_processing()
-	if(!is_processing)
-		is_processing = TRUE
-		START_PROCESSING(SSobj, src)
 
 /obj/structure/corruption_node/can_stop_processing()
 	if (health < max_health)

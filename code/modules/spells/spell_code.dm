@@ -7,6 +7,8 @@ var/list/spells = typesof(/spell) //needed for the badmin verb for now
 	parent_type = /datum
 	var/panel = "Spells"//What panel the proc holder needs to go on.
 
+	var/busy // Used to check if spell is already proccesing. Thiis system calls it's own process() proc because it shouldn't be called every X ticks, only when you need to process one of spells.
+
 	var/school = "evocation" //not relevant at now, but may be important later if there are changes to how spells work. the ones I used for now will probably be changed... maybe spell presets? lacking flexibility but with some other benefit?
 	/*Spell schools as follows:
 	Racial - Only tagged to spells gained for being a certain race
@@ -75,9 +77,9 @@ var/list/spells = typesof(/spell) //needed for the badmin verb for now
 	charge_counter = charge_max
 
 /spell/proc/process()
-	if(is_processing)
+	if(busy)
 		return
-	is_processing = 1
+	busy = 1
 	spawn(0)
 		while(charge_counter < charge_max || silenced > 0)
 			charge_counter = min(charge_max,charge_counter+1)
@@ -88,7 +90,7 @@ var/list/spells = typesof(/spell) //needed for the badmin verb for now
 			if(!istype(S))
 				return
 			S.update_charge(1)
-		is_processing = 0
+		busy = 0
 	return
 
 /////////////////

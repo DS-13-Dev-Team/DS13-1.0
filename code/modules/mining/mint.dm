@@ -18,6 +18,7 @@
 	var/newCoins = 0   //how many coins the machine made in it's last load
 	var/chosen //which material will be used to make coins
 	var/coinsToProduce = 10
+	var/busy = FALSE
 
 
 /obj/machinery/mineral/mint/Initialize()
@@ -113,8 +114,8 @@
 		return 1
 	usr.set_machine(src)
 	src.add_fingerprint(usr)
-	if(is_processing)
-		to_chat(usr, "<span class='notice'>The machine is processing.</span>")
+	if(busy)
+		to_chat(usr, "<span class='notice'>The machine is busy.</span>")
 		return
 	if(href_list["choose"])
 		chosen = href_list["choose"]
@@ -123,7 +124,7 @@
 	if(href_list["makeCoins"])
 		var/temp_coins = coinsToProduce
 		if (src.output)
-			is_processing = 1;
+			busy = TRUE
 			icon_state = "coinpress1"
 			var/M = output.loc
 			switch(chosen)
@@ -176,7 +177,7 @@
 						src.updateUsrDialog()
 						sleep(5)
 			icon_state = "coinpress0"
-			is_processing = 0;
+			busy = FALSE
 			coinsToProduce = temp_coins
 	src.updateUsrDialog()
 	return

@@ -170,7 +170,7 @@
 	anchored = 1
 	density = 1
 
-	var/curently_processing = 0	//Used to track what is inside. Don't replace with "is_processing" to prevent bugs in future
+	var/curently_processing = 0	//Used to track what is inside, not to check if it's processing
 	var/honey = 0
 
 /obj/machinery/honey_extractor/attackby(var/obj/item/I, var/mob/user)
