@@ -81,6 +81,9 @@
 	if (CONFIG_GET(flag/log_access))
 		game_log("ACCESS", text)
 
+/proc/log_asset(text)
+	WRITE_LOG(GLOB.world_asset_log, "ASSET: [text]")
+
 /proc/log_say(text)
 	if (CONFIG_GET(flag/log_say))
 		game_log("SAY", text)
