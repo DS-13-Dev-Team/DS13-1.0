@@ -170,11 +170,11 @@
 	anchored = 1
 	density = 1
 
-	var/curently_processing = 0	//Used to track what is inside, not to check if it's processing
+	var/honey_frame = 0
 	var/honey = 0
 
 /obj/machinery/honey_extractor/attackby(var/obj/item/I, var/mob/user)
-	if(curently_processing)
+	if(honey_frame)
 		to_chat(user, "<span class='notice'>\The [src] is currently spinning, wait until it's finished.</span>")
 		return
 	else if(istype(I, /obj/item/honey_frame))
@@ -183,14 +183,14 @@
 			to_chat(user, "<span class='notice'>\The [H] is empty, put it into a beehive.</span>")
 			return
 		user.visible_message("<span class='notice'>\The [user] loads \the [H] into \the [src] and turns it on.</span>", "<span class='notice'>You load \the [H] into \the [src] and turn it on.</span>")
-		curently_processing = H.honey
+		honey_frame = H.honey
 		icon_state = "centrifuge_moving"
 		qdel(H)
 		spawn(50)
 			new /obj/item/honey_frame(loc)
 			new /obj/item/stack/wax(loc)
-			honey += curently_processing
-			curently_processing = 0
+			honey += honey_frame
+			honey_frame = 0
 			icon_state = "centrifuge"
 	else if(istype(I, /obj/item/weapon/reagent_containers/glass))
 		if(!honey)
