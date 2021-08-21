@@ -12,7 +12,8 @@
 	var/obj/machinery/recycling_tank/recycle
 
 /obj/structure/reagent_dispensers/biomass/Destroy()
-	recycle.storage = null
+	if(recycle.storage == src)
+		recycle.storage = null
 	recycle = null
 	. = ..()
 

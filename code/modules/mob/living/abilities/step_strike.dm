@@ -77,6 +77,9 @@
 
 		target_loc = pick(candidates)
 
+		if(!check_trajectory(target_loc, user, user.pass_flags))
+			return	//An obstacle prevents you from step striking. There is no reason to check the closest possible place to teleport since step strike can be used only if target is 2 tiles away or closer
+
 		animate_movement(user, target_loc, 6, client_lag = 0.4)
 		user.face_atom(target)
 

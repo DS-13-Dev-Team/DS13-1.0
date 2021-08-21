@@ -6,7 +6,7 @@
 	set category = "RIG"
 	set src = usr.contents
 
-	if(wearer && wearer.back == src)
+	if(!wearer.wearing_rig == src)
 		ui_interact(usr)
 
 /obj/item/weapon/rig/verb/toggle_vision()
@@ -24,7 +24,7 @@
 		to_chat(usr, "<span class='warning'>The suit is not active.</span>")
 		return
 
-	if(!istype(wearer) || !wearer.back == src)
+	if(!wearer.wearing_rig == src)
 		to_chat(usr, "<span class='warning'>The RIG is not being worn.</span>")
 		return
 
@@ -59,7 +59,7 @@
 	set category = "RIG"
 	set src = usr.contents
 
-	if(!istype(wearer) || !wearer.back == src)
+	if(!wearer.wearing_rig == src)
 		to_chat(usr, "<span class='warning'>The RIG is not being worn.</span>")
 		return
 
@@ -91,7 +91,7 @@
 	set category = "RIG"
 	set src = usr.contents
 
-	if(!istype(wearer) || !wearer.back == src)
+	if(!wearer.wearing_rig == src)
 		to_chat(usr, "<span class='warning'>The RIG is not being worn.</span>")
 		return
 
@@ -107,7 +107,7 @@
 	set category = "RIG"
 	set src = usr.contents
 
-	if(!istype(wearer) || !wearer.back == src)
+	if(!wearer.wearing_rig == src)
 		to_chat(usr, "<span class='warning'>The RIG is not being worn.</span>")
 		return
 
@@ -123,7 +123,7 @@
 	set category = "RIG"
 	set src = usr.contents
 
-	if(!istype(wearer) || !wearer.back == src)
+	if(!wearer.wearing_rig == src)
 		to_chat(usr, "<span class='warning'>The RIG is not being worn.</span>")
 		return
 
@@ -142,7 +142,7 @@
 	set category = "RIG"
 	set src = usr.contents
 
-	if(!istype(wearer) || !wearer.back == src)
+	if(!wearer.wearing_rig == src)
 		to_chat(usr, "<span class='warning'>The RIG is not being worn.</span>")
 		return
 
@@ -195,7 +195,7 @@
 		to_chat(usr, "<span class='warning'>The suit is not active.</span>")
 		return
 
-	if(!istype(wearer) || !wearer.back == src)
+	if(!wearer.wearing_rig == src)
 		to_chat(usr, "<span class='warning'>The RIG is not being worn.</span>")
 		return
 
@@ -219,7 +219,7 @@
 		to_chat(usr, "<span class='warning'>The suit is not active.</span>")
 		return
 
-	if(!istype(wearer) || !wearer.back == src)
+	if(!wearer.wearing_rig == src)
 		to_chat(usr, "<span class='warning'>The RIG is not being worn.</span>")
 		return
 
@@ -255,7 +255,7 @@
 		to_chat(usr, "<span class='warning'>The suit is not active.</span>")
 		return
 
-	if(!istype(wearer) || !wearer.back == src)
+	if(!wearer.wearing_rig == src)
 		to_chat(usr, "<span class='warning'>The RIG is not being worn.</span>")
 		return
 
@@ -291,7 +291,7 @@
 		to_chat(usr, "<span class='warning'>The suit is not active.</span>")
 		return
 
-	if(!istype(wearer) || !wearer.back == src)
+	if(!wearer.wearing_rig == src)
 		to_chat(usr, "<span class='warning'>The RIG is not being worn.</span>")
 		return
 

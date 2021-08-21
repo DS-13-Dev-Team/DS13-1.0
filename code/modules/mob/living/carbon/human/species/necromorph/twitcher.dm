@@ -170,9 +170,23 @@ All of these properties combined make Step Strike tricky and disorienting to use
 			var/vector2/delta = get_new_vector(A.x - x, A.y - y)
 			delta = delta.ToMagnitude(3)
 			var/turf/blink_target = locate(x+delta.x, y+delta.y, z)
-			if(!check_trajectory(blink_target, src, pass_flags))
-				release_vector(delta)
-				return	//Can't blink because something blocks your way
+			while(blink_target)
+				if(!check_trajectory(blink_target, src, pass_flags))
+					if(delta.x != 0 || delta.y != 0)
+						if(delta.x > 0)
+							delta.x -= 1
+						else if(delta.x < 0)
+							delta.x += 1
+						if(delta.y > 0)
+							delta.y -= 1
+						else if(delta.y < 0)
+							delta.y += 1
+						blink_target = locate(x+delta.x, y+delta.y, z)
+					else
+						release_vector(delta)
+						return
+				else
+					break
 			if (blink_target)
 				var/datum/extension/twitch/T = get_extension(src, /datum/extension/twitch)
 				T.move_to(blink_target, speed = 12)
