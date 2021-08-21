@@ -21,7 +21,12 @@
 	anchored = TRUE
 
 /obj/machinery/recycling_tank/Initialize()
-	storage = (locate(/obj/structure/reagent_dispensers/biomass) in orange(1, src))
+	var/obj/structure/reagent_dispensers/biomass/temp = (locate(/obj/structure/reagent_dispensers/biomass) in orange(1, src))
+	if(temp.recycle)
+		storage = null
+	else
+		storage = temp
+		storage.recycle = src
 	create_reagents(1000)
 	.=..()
 

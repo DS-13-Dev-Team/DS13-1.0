@@ -9,6 +9,13 @@
 	density = TRUE
 	anchored = TRUE
 
+	var/obj/machinery/recycling_tank/recycle
+
+/obj/structure/reagent_dispensers/biomass/Destroy()
+	recycle.storage = null
+	recycle = null
+	. = ..()
+
 //Can only absorb what biomass is within it
 /obj/structure/reagent_dispensers/biomass/can_harvest_biomass()
 	if (reagents.get_reagent_amount(/datum/reagent/nutriment/biomass) > 0)

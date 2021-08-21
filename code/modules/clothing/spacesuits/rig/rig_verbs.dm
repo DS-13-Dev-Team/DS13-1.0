@@ -16,22 +16,22 @@
 	set category = "RIG"
 	set src = usr.contents
 
-	if(!istype(wearer) || !wearer.back == src)
-		to_chat(usr, "<span class='warning'>The RIG is not being worn.</span>")
-		return
-
-	if(!check_power_cost(usr, visor.use_power_cost, visor.active_power_cost, 0, visor))
+	if(!visor)
+		to_chat(usr, "<span class='warning'>The RIG does not have a configurable visor.</span>")
 		return
 
 	if(canremove)
 		to_chat(usr, "<span class='warning'>The suit is not active.</span>")
 		return
 
+	if(!istype(wearer) || !wearer.back == src)
+		to_chat(usr, "<span class='warning'>The RIG is not being worn.</span>")
+		return
+
 	if(!check_suit_access(usr))
 		return
 
-	if(!visor)
-		to_chat(usr, "<span class='warning'>The RIG does not have a configurable visor.</span>")
+	if(!check_power_cost(usr, visor.use_power_cost, visor.active_power_cost, 0, visor))
 		return
 
 	if(!visor.active)
@@ -158,18 +158,18 @@
 	set category = "RIG"
 	set src = usr.contents
 
-	if(malfunction_check(usr))
+	if(!visor)
+		to_chat(usr, "<span class='warning'>The RIG does not have a configurable visor.</span>")
 		return
 
-	if(!check_power_cost(usr, visor.use_power_cost, visor.active_power_cost, 0, visor, 0))
+	if(malfunction_check(usr))
 		return
 
 	if(canremove)
 		to_chat(usr, "<span class='warning'>The suit is not active.</span>")
 		return
 
-	if(!visor)
-		to_chat(usr, "<span class='warning'>The RIG does not have a configurable visor.</span>")
+	if(!check_power_cost(usr, visor.use_power_cost, visor.active_power_cost, 0, visor, 0))
 		return
 
 	if(!visor.active)
