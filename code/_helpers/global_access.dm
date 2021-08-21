@@ -411,8 +411,6 @@
 			return global.fusion_cores;
 		if("fusion_reactions")
 			return global.fusion_reactions;
-		if("GLOB.round_id")
-			return global.GLOB.round_id;
 		if("game_version")
 			return global.game_version;
 		if("game_year")
@@ -1348,8 +1346,6 @@
 			global.fusion_cores=newval;
 		if("fusion_reactions")
 			global.fusion_reactions=newval;
-		if("GLOB.round_id")
-			global.GLOB.round_id=newval;
 		if("game_version")
 			global.game_version=newval;
 		if("game_year")
@@ -2083,7 +2079,6 @@
 	"fuel_injectors",
 	"fusion_cores",
 	"fusion_reactions",
-	"GLOB.round_id",
 	"game_version",
 	"game_year",
 	"gamemode_cache",

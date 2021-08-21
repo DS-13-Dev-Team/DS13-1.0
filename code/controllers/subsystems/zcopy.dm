@@ -96,12 +96,12 @@ SUBSYSTEM_DEF(zcopy)
 			for (var/member_zlev in start_zlev to z)
 				zlev_maximums[member_zlev] = z
 			if (z - start_zlev > OPENTURF_MAX_DEPTH)
-				log_world("zcopy", "WARNING: Z-levels [start_zlev] through [z] exceed maximum depth of [OPENTURF_MAX_DEPTH]; layering may behave strangely in this Z-stack.")
+				log_world("WARNING: Z-levels [start_zlev] through [z] exceed maximum depth of [OPENTURF_MAX_DEPTH]; layering may behave strangely in this Z-stack.")
 			else if (z - start_zlev > 1)
-				log_world("zcopy", "Found Z-Stack: [start_zlev] -> [z] = [z - start_zlev] zl")
+				log_world("Found Z-Stack: [start_zlev] -> [z] = [z - start_zlev] zl")
 			start_zlev = z + 1
 
-	log_world("zcopy", "Z-Level maximums: [json_encode(zlev_maximums)]")
+	log_world("Z-Level maximums: [json_encode(zlev_maximums)]")
 
 /datum/controller/subsystem/zcopy/StartLoadingMap()
 	suspend()
