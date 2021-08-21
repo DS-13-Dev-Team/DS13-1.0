@@ -91,7 +91,7 @@
 			var/combined_dir = "[C.d1]-[C.d2]"
 			if(combined_dir in dirs_checked)
 				bad_tests++
-				log_unit_test("[bad_msg] Contains multiple wires with same direction on top of each other.")
+				log_test("[bad_msg] Contains multiple wires with same direction on top of each other.")
 			dirs_checked.Add(combined_dir)
 
 	if(bad_tests)
@@ -209,7 +209,7 @@
 		var/file_path = MAP_IMAGE_PATH + file_name
 		if(!fexists(file_path))
 			failed = TRUE
-			log_unit_test("[GLOB.using_map.path]-[z] is missing its map image [file_name].")
+			log_test("[GLOB.using_map.path]-[z] is missing its map image [file_name].")
 
 	if(failed)
 		fail("One or more map levels were missing a corresponding map image.")
@@ -229,19 +229,19 @@ datum/unit_test/correct_allowed_spawn_test/start_test()
 	for(var/spawn_name in GLOB.using_map.allowed_spawns)
 		var/datum/spawnpoint/spawnpoint = spawntypes()[spawn_name]
 		if(!spawnpoint)
-			log_unit_test("Map allows spawning in [spawn_name], but [spawn_name] is null!")
+			log_test("Map allows spawning in [spawn_name], but [spawn_name] is null!")
 			failed = TRUE
 		else if(!spawnpoint.turfs.len)
-			log_unit_test("Map allows spawning in [spawn_name], but [spawn_name] has no associated spawn turfs.")
+			log_test("Map allows spawning in [spawn_name], but [spawn_name] has no associated spawn turfs.")
 			failed = TRUE
 
 	if(failed)
-		log_unit_test("Following spawn points exist:")
+		log_test("Following spawn points exist:")
 		for(var/spawnpoint in spawntypes())
-			log_unit_test("\t[spawnpoint] ([any2ref(spawnpoint)])")
-		log_unit_test("Following spawn points are allowed:")
+			log_test("\t[spawnpoint] ([any2ref(spawnpoint)])")
+		log_test("Following spawn points are allowed:")
 		for(var/spawnpoint in GLOB.using_map.allowed_spawns)
-			log_unit_test("\t[spawnpoint] ([any2ref(spawnpoint)])")
+			log_test("\t[spawnpoint] ([any2ref(spawnpoint)])")
 		fail("Some of the entries in allowed_spawns have no spawnpoint turfs.")
 	else
 		pass("All entries in allowed_spawns have spawnpoints.")
@@ -270,7 +270,7 @@ datum/unit_test/ladder_check/start_test()
 		if(L.allowed_directions & UP)
 			succeeded = check_direction(L, GetAbove(L), UP, DOWN) && succeeded
 		if(L.allowed_directions & DOWN)
-			succeeded = check_direction(L, GetBelow(L), DOWN, UP) && succeeded 
+			succeeded = check_direction(L, GetBelow(L), DOWN, UP) && succeeded
 			succeeded = check_open_space(L) && succeeded
 	if(succeeded)
 		pass("All ladders are correctly setup.")

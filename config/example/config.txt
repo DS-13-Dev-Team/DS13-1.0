@@ -37,6 +37,9 @@ JOBS_HAVE_MINIMAL_ACCESS
 ## log OOC channel
 LOG_OOC
 
+## log LOOC channel
+LOG_LOOC
+
 ## log necrochat
 LOG_NECRO
 
@@ -48,6 +51,9 @@ LOG_ADMIN
 
 ## log client access (logon/logoff)
 LOG_ACCESS
+
+## log config
+LOG_CONFIG
 
 ## log game actions (start of round, results, etc.)
 LOG_GAME

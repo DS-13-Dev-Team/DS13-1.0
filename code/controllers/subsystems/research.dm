@@ -87,7 +87,7 @@ SUBSYSTEM_DEF(research)
 			design_file.design = design
 			design_file.on_design_set()
 		else
-			error("Incorrect design ID or path: [design_file.design]")
+			log_debug("Incorrect design ID or path: [design_file.design]")
 
 	else
 		design_files_to_init += design_file

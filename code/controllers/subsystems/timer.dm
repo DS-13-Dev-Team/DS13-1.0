@@ -51,24 +51,27 @@ SUBSYSTEM_DEF(timer)
 		if(bucket_auto_reset)
 			bucket_resolution = 0
 
-		log_ss(name, "Timer bucket reset. world.time: [world.time], head_offset: [head_offset], practical_offset: [practical_offset], times_flushed: [times_flushed], length(spent): [length(spent)]")
+		var/list/to_log = list("Timer bucket reset. world.time: [world.time], head_offset: [head_offset], practical_offset: [practical_offset], times_flushed: [times_flushed], length(spent): [length(spent)]")
 		for (var/i in 1 to length(bucket_list))
 			var/datum/timedevent/bucket_head = bucket_list[i]
 			if (!bucket_head)
 				continue
 
-			log_ss(name, "Active timers at index [i]:")
+			to_log += "Active timers at index [i]:"
 
 			var/datum/timedevent/bucket_node = bucket_head
 			var/anti_loop_check = 1000
 			do
-				log_ss(name, get_timer_debug_string(bucket_node))
+				to_log += get_timer_debug_string(bucket_node)
 				bucket_node = bucket_node.next
 				anti_loop_check--
 			while(bucket_node && bucket_node != bucket_head && anti_loop_check)
-		log_ss(name, "Active timers in the processing queue:")
+		to_log += "Active timers in the second_queue queue:"
 		for(var/I in processing)
-			log_ss(name, get_timer_debug_string(I))
+			to_log += get_timer_debug_string(I)
+
+		// Dump all the logged data to the world log
+		log_world(to_log.Join("\n"))
 
 	while(length(clienttime_timers))
 		var/datum/timedevent/ctime_timer = clienttime_timers[clienttime_timers.len]

@@ -71,7 +71,7 @@ GLOBAL_LIST_INIT(fleshtear_sound, list('sound/effects/organic/flesh_tear_1.ogg',
 		soundin = get_sfx(soundin) // same sound for everyone
 
 	if(isarea(source))
-		error("[source] is an area and is trying to make the sound: [soundin]")
+		log_debug("[source] is an area and is trying to make the sound: [soundin]")
 		return
 	frequency = vary && isnull(frequency) ? get_rand_frequency() : frequency // Same frequency for everybody
 	var/turf/turf_source = get_turf(source)

@@ -12,27 +12,27 @@
 	var/number_of_failures = 0
 	for(var/extension in expansion_obj)
 		if(ispath(extension))
-			log_unit_test("[extension] was uninitalized.")
+			log_test("[extension] was uninitalized.")
 			number_of_failures++
 
 	var/datum/extension/exp = get_extension(expansion_obj, /datum/extension)
 	if(exp.type != /datum/extension)
-		log_unit_test("[exp]/([exp.type]) was not strictly of the type /datum/extension.")
+		log_test("[exp]/([exp.type]) was not strictly of the type /datum/extension.")
 		number_of_failures++
 
 	var/datum/extension/interactive/multitool/multi = get_extension(expansion_obj, /datum/extension/interactive/multitool)
 	if(multi.type != /datum/extension/interactive/multitool/items/cable)
-		log_unit_test("[exp]/([exp.type]) was not strictly of the type /datum/extension/interactive/multitool/items/cable.")
+		log_test("[exp]/([exp.type]) was not strictly of the type /datum/extension/interactive/multitool/items/cable.")
 		number_of_failures++
 	else
 		if(multi.host_predicates.len != 2)
-			log_unit_test("Unexpected interaction predicate length. Was [multi.host_predicates.len], expected 2.")
+			log_test("Unexpected interaction predicate length. Was [multi.host_predicates.len], expected 2.")
 			number_of_failures++
 		else if(multi.host_predicates[1] != /proc/is_operable)
-			log_unit_test("Unexpected interaction predicate at index 1. Was [multi.host_predicates[1]], expected /proc/is_operable.")
+			log_test("Unexpected interaction predicate at index 1. Was [multi.host_predicates[1]], expected /proc/is_operable.")
 			number_of_failures++
 		else if(multi.host_predicates[2] != /proc/is_operable)
-			log_unit_test("Unexpected interaction predicate at index 2. Was [multi.host_predicates[2]], expected /proc/is_operable.")
+			log_test("Unexpected interaction predicate at index 2. Was [multi.host_predicates[2]], expected /proc/is_operable.")
 			number_of_failures++
 
 	if(number_of_failures)
