@@ -109,9 +109,9 @@
 
 	M.visible_message("<span class='notice'>\The [M] begins climbing [direction] \the [src]!</span>",
 	"You begin climbing [direction] \the [src]!",
-	"You hear the grunting and clanging of a metal ladder being used.", 5)
+	"You hear the grunting and clanging of a metal ladder being used.")
 
-	target_ladder.audible_message("<span class='notice'>You hear something coming [direction] \the [src]</span>", "<span class='notice'>You hear something coming [direction] \the [src]</span>", 5)
+	target_ladder.audible_message("<span class='notice'>You hear something coming [direction] \the [src]</span>")
 
 	if(do_after(M, climb_time, src))
 		climbLadder(M, target_ladder, I)
