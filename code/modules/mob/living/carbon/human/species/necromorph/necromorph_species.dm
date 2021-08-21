@@ -29,7 +29,7 @@
 	strength    = STR_MEDIUM
 	show_ssd = "dead" //If its not moving, it looks like a corpse
 	hunger_factor = 0 // Necros don't eat
-	taste_sensitivity = 0      // no eat
+	taste_sensitivity = TASTE_NUMB // Shouldn't be 0 even if you are necromorph, will result in 0 division runtime
 	virus_immune = 1 // immune to viruses
 
 
