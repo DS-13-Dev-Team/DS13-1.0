@@ -46,12 +46,11 @@ datum/preferences
 
 //Called from load and update character, through several layers of propagation
 /datum/category_item/player_setup_item/general/basic/update_setup()
-
 	var/ID_needed = FALSE
 	if (!isnull(pref.character_id) && (dbcon?.IsConnected()))
 		//Here we will account for an edge case
 		//If we have an ID, but the database has been wiped and no longer contains our information....
-		var/DBQuery/query = dbcon.NewQuery("SELECT * FROM characters	WHERE	 (character_id = [pref.character_id]);")
+		var/DBQuery/query = dbcon.NewQuery("SELECT * FROM characters	WHERE	 (character_id = [pref.character_id] AND slot = [pref.default_slot] AND ckey = '[pref.client_ckey]');")
 		query.Execute()
 		if(!query.NextRow())
 			//We're not in the database!
@@ -67,7 +66,7 @@ datum/preferences
 		if (get_character_id(pref))
 			return TRUE	//Returning true tells it to save preferences back to disk. This will ensure this is only done once, and not every round
 
-		//TODO: Figure out why character switching isnt working
+
 		//TODO: Delete character from database if deleted ingame?
 
 /datum/category_item/player_setup_item/general/basic/content()

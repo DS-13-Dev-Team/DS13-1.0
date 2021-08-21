@@ -125,7 +125,7 @@ datum/preferences
 			open_load_dialog(usr)
 			return 1
 	else if(href_list["changeslot"])
-		load_character(text2num(href_list["changeslot"]))
+		load_and_update_character(text2num(href_list["changeslot"]))
 		sanitize_preferences()
 		close_load_dialog(usr)
 	else if(href_list["resetslot"])
@@ -322,7 +322,7 @@ datum/preferences
 	panel = new(user, "Character Slots", "Character Slots", 300, 390, src)
 	panel.set_content(jointext(dat,null))
 	panel.open()
-	
+
 //Called during character creation, a step AFTER copy_to above, for the same mob.
 //This is run after the mob's mind datum is created and that is passed in here
 //Use for applying any vars which belong on the mind rather than the body
