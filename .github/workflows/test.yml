@@ -29,8 +29,6 @@ jobs:
         run: |
           bash tools/ci/check_filedirs.sh baystation12.dme
           bash tools/ci/check_changelogs.sh
-          tgui/bin/tgui --lint
-          tgui/bin/tgui --test
           bash tools/ci/check_grep.sh
   compile_all_maps:
     if: "!contains(github.event.head_commit.message, '[ci skip]')"
@@ -48,8 +46,6 @@ jobs:
           bash tools/ci/install_byond.sh
           source $HOME/BYOND/byond/bin/byondsetup
           python3 tools/ci/template_dm_generator.py
-          tgui/bin/tgui --lint
-          tgui/bin/tgui --test
           tools/build/build
           
         env:
