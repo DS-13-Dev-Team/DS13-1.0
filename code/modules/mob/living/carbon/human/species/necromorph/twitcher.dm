@@ -168,20 +168,15 @@ All of these properties combined make Step Strike tricky and disorienting to use
 				return	//Can't do this if we're too close
 
 			var/vector2/delta = get_new_vector(A.x - x, A.y - y)
-			delta = delta.ToMagnitude(3)
+			var/magnitude = 3
+			delta.SelfToMagnitude(magnitude)
 			var/turf/blink_target = locate(x+delta.x, y+delta.y, z)
 			while(blink_target)
-				if(!check_trajectory(blink_target, src, pass_flags))
-					if(delta.x != 0 || delta.y != 0)
-						if(delta.x > 0)
-							delta.x -= 1
-						else if(delta.x < 0)
-							delta.x += 1
-						if(delta.y > 0)
-							delta.y -= 1
-						else if(delta.y < 0)
-							delta.y += 1
+				if(!check_trajectory(blink_target, src, pass_flags|PASS_FLAG_TABLE|PASS_FLAG_NOMOB))
+					if(magnitude)
+						delta.SelfToMagnitude(magnitude)
 						blink_target = locate(x+delta.x, y+delta.y, z)
+						--magnitude
 					else
 						release_vector(delta)
 						return
