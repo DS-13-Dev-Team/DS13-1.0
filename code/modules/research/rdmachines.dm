@@ -2,7 +2,6 @@
 
 //All devices that link into the R&D console fall into thise type for easy identification and some shared procs.
 
-var/list/default_material_composition = list("steel" = 0, MATERIAL_GLASS = 0, MATERIAL_GOLD = 0, MATERIAL_SILVER = 0, MATERIAL_PHORON = 0, "uranium" = 0, MATERIAL_DIAMOND = 0)
 /obj/machinery/r_n_d
 	name = "R&D Device"
 	icon = 'icons/obj/machines/research.dmi'
