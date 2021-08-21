@@ -225,6 +225,12 @@ var/global/list/string_slot_flags = list(
 		SA = new subtype()
 		GLOB.targeting_profiles[SA.id] = SA
 
+	//Gradients - Initialise all /datum/sprite_accessory/hair_gradients into an list indexed by hairgradient-style name
+	for(var/grad in subtypesof(/datum/sprite_accessory/hair_gradients))
+		var/datum/sprite_accessory/hair_gradients/H = new grad()
+		GLOB.hair_gradient_styles_list[H.name] = H
+
+	sortTim(GLOB.hair_gradient_styles_list, /proc/cmp_text_asc)
 
 	for (var/subtype in subtypesof(/datum/antagonist))
 		var/datum/antagonist/SA = subtype
