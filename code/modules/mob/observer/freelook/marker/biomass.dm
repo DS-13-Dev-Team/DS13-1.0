@@ -214,7 +214,8 @@
 /proc/get_biomass_sources()
 	var/list/sources = list()
 	var/obj/machinery/marker/M	= get_marker()
-	sources += M.biomass_sources
+	if (M)
+		sources += M.biomass_sources
 
 	//Possible future todo here: Support for multiple markers or biomass holders
 

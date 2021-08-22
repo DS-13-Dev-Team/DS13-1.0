@@ -1,6 +1,7 @@
 #define PUKER_SNAPSHOT_RANGE	6
 /datum/species/necromorph/puker
 	name = SPECIES_NECROMORPH_PUKER
+	bodytype = SPECIES_NECROMORPH_PUKER
 	name_plural = "pukers"
 	total_health = 160
 	biomass = 130
@@ -8,8 +9,9 @@
 	mass = 120
 	view_range = 9
 	limb_health_factor = 1.15
-	icon_template = 'icons/mob/necromorph/puker.dmi'
-	icon_lying = "_lying"
+	icon_template = 'icons/mob/necromorph/puker/puker.dmi'
+	icon_lying = null
+	lying_rotation = 90
 	pixel_offset_x = -8
 	single_icon = FALSE
 	blurb = "A tough and flexible elite who fights by dousing enemies in acid, and is effective at all ranges. Good for crowd control and direct firefights"
@@ -35,6 +37,9 @@
 
 	//Slightly slow than a slasher
 	slowdown = 3.75
+
+	//This actually determines what clothing we can wear
+	hud_type = /datum/hud_data/necromorph/slasher
 
 	species_audio = list(
 	SOUND_ATTACK = list('sound/effects/creatures/necromorph/puker/puker_attack_1.ogg',
@@ -75,6 +80,40 @@
 	'sound/effects/creatures/necromorph/puker/puker_speech_2.ogg',
 	'sound/effects/creatures/necromorph/puker/puker_speech_3.ogg')
 	)
+
+
+	variants = list(SPECIES_NECROMORPH_PUKER = list(WEIGHT = 2),
+	SPECIES_NECROMORPH_PUKER_FLAYED = list(WEIGHT = 1),
+	SPECIES_NECROMORPH_PUKER_CLASSIC = list(WEIGHT = 0.5))
+
+	outfits = list(/decl/hierarchy/outfit/necromorph/puker_biosuit = list(PATRON = TRUE),
+	/decl/hierarchy/outfit/naked = list())
+
+
+
+
+//Ancient version, formerly default, now uncommon
+/datum/species/necromorph/puker/flayed
+	name = SPECIES_NECROMORPH_PUKER_FLAYED
+	icon_template = 'icons/mob/necromorph/puker/puker_flayed.dmi'
+	marker_spawnable = FALSE
+	preference_settable = FALSE
+
+
+/datum/species/necromorph/puker/classic
+	name = SPECIES_NECROMORPH_PUKER_CLASSIC
+	icon_template = 'icons/mob/necromorph/puker/puker_classic.dmi'
+	marker_spawnable = FALSE
+	preference_settable = FALSE
+	icon_lying = "_lying"
+
+	outfits = list()	//This thing has a different shape and can't wear clothing
+	bodytype = SPECIES_NECROMORPH_PUKER_CLASSIC	//Does NOT share the same base bodytype, cannot wear puker outfits
+	hud_type = /datum/hud_data/necromorph
+
+
+
+
 
 
 #define PUKER_PASSIVE	"<h2>PASSIVE: Corrosive Vengeance:</h2><br>\

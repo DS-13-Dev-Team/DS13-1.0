@@ -44,12 +44,30 @@
 		var/list/possible_variants = our_data[VARIANT]
 		var/selected = pickweight(possible_variants)
 		set_species(selected)
-
+		N = species	//update the species
 
 	//Now outfits
-	if (our_data[OUTFIT])
-		var/list/possible_outfits = our_data[OUTFIT]
-		var/selected_type = pickweight(possible_outfits)
-		//Selected type is a string so we convert it to a path in this process
-		var/decl/hierarchy/outfit/O = outfit_by_type(text2path(selected_type))
-		O.equip(src, equip_adjustments = OUTFIT_ADJUSTMENT_SKIP_SURVIVAL_GEAR)
+	world << "Picking outfits 1"
+	if (islist(our_data[OUTFIT]))
+		world << "Picking outfits 2	[dump_list(our_data[OUTFIT])]"
+		var/list/temp = our_data[OUTFIT]
+		var/list/possible_outfits = list()
+
+		//We must convert strings to paths
+		for (var/stringpath in temp)
+			possible_outfits[text2path(stringpath)] = temp[stringpath]
+
+		world << "Picking outfits 3	[dump_list(possible_outfits)]"
+
+		//Lets filter this to the outfits that are actually available on this species
+		possible_outfits = possible_outfits & N.outfits
+
+		world << "Picking outfits 4	[dump_list(possible_outfits)]		N: [dump_list(N.outfits)]"
+
+		if (LAZYLEN(possible_outfits))
+
+			var/selected_type = pickweight(possible_outfits)
+			world << "Picked [selected_type]"
+			//Selected type is a string so we convert it to a path in this process
+			var/decl/hierarchy/outfit/O = outfit_by_type(selected_type)
+			O.equip(src, equip_adjustments = OUTFIT_ADJUSTMENT_SKIP_SURVIVAL_GEAR)
