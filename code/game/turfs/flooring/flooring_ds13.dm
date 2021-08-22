@@ -110,68 +110,71 @@
 
 // FLOOR UPDATE 2 ELECTRIC BOOGALO.
 
+/decl/flooring/complex/tiling_ds
+	footstep_sound = "hull"
+
 /decl/flooring/complex/tiling_ds/tech
 	name = "tech plating"
 	desc = "Ingenius plating that can supposedly withstand more tension stress."
 	icon_base = "tech"
 	build_type = null
-	has_base_range = 5
+	has_base_range = 6
 
 /decl/flooring/complex/tiling_ds/slides
 	name = "sliding plating"
 	desc = "Layered plating that expands when subjected to heat, keeping ship pressure limited near heavy machinery."
 	icon_base = "slides"
 	build_type = null
-	has_base_range = 5
+	has_base_range = 6
 
 /decl/flooring/complex/tiling_ds/slides/end
 	name = "sliding plating"
 	desc = "Layered plating that expands when subjected to heat, keeping ship pressure limited near heavy machinery."
 	icon_base = "slides_end"
 	build_type = null
-	has_base_range = 5
+	has_base_range = 6
 
 /decl/flooring/complex/tiling_ds/golf_gray
 	name = " gray golf plating"
 	desc = "Rickety, noisy plating that dents relatively easy despite being made by a dense alloy."
 	icon_base = "golf_gray"
 	build_type = null
-	has_base_range = 5
+	has_base_range = 6
 
 /decl/flooring/complex/tiling_ds/golf_brown
 	name = " brown golf plating"
 	desc = "Rickety, noisy plating that dents relatively easy despite being made by a dense alloy."
 	icon_base = "golf_brown"
 	build_type = null
-	has_base_range = 5
+	has_base_range = 6
 
 /decl/flooring/complex/tiling_ds/rectangles
 	name = "rectangle plating"
 	desc = "Sturdy, simple, just what you need to keep the ship together."
 	icon_base = "rectangles"
 	build_type = null
-	has_base_range = 5
+	has_base_range = 6
 
 /decl/flooring/complex/tiling_ds/maint
 	name = "path plating"
 	desc = "Designed with extra grip in mind, this plating pads the way."
 	icon_base = "maint_center"
 	build_type = null
-	has_base_range = 3
+	has_base_range = 4
 
 /decl/flooring/complex/tiling_ds/maint/left
 	name = "path plating"
 	desc = "Designed with extra grip in mind, this plating pads the way."
 	icon_base = "maint_left"
 	build_type = null
-	has_base_range = 3
+	has_base_range = 4
 
 /decl/flooring/complex/tiling_ds/maint/right
 	name = "path plating"
 	desc = "Designed with extra grip in mind, this plating pads the way."
 	icon_base = "maint_right"
 	build_type = null
-	has_base_range = 3
+	has_base_range = 4
 
 /decl/flooring/complex/tiling_ds/hardwood
 	name = "hardwood"
