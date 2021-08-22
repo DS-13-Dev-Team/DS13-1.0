@@ -27,7 +27,7 @@
 
 
 
-	has_safety = FALSE	//Safety switches are for military/police weapons, not for tools
+	has_safety = TRUE	//This thing is too dangerous to lack safety
 
 /obj/item/weapon/gun/projectile/ripper/update_icon()
 	overlays.Cut()

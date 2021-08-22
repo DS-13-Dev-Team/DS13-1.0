@@ -23,6 +23,13 @@ obj/machinery/recharger
 		recharge_coeff = C.rating/2
 
 obj/machinery/recharger/attackby(obj/item/weapon/G as obj, mob/user as mob)
+	if(default_deconstruction_screwdriver(user, G))
+		return
+	if(default_deconstruction_crowbar(user, G))
+		return
+	if(default_part_replacement(user, G))
+		return
+
 	if(istype(user,/mob/living/silicon))
 		return
 
