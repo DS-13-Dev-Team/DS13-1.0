@@ -125,7 +125,7 @@ datum/preferences
 			open_load_dialog(usr)
 			return 1
 	else if(href_list["changeslot"])
-		load_character(text2num(href_list["changeslot"]))
+		load_and_update_character(text2num(href_list["changeslot"]))
 		sanitize_preferences()
 		close_load_dialog(usr)
 	else if(href_list["resetslot"])
