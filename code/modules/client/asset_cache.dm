@@ -221,7 +221,7 @@ You can set verify to TRUE if you want send() to sleep until the client has the 
 	)
 	var/list/uncommon_dirs = list(
 		"nano/templates/",
-		"news_articles/images/"
+		"nano/images/news_articles"
 	)
 
 /datum/asset/nanoui/register()
