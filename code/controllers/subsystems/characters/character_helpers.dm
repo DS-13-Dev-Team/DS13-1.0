@@ -17,7 +17,7 @@
 	That ID will be stored in the data, and also returned
 */
 /proc/get_character_id(var/data)
-
+	var/slot = 0
 	if(!dbcon || !(dbcon?.IsConnected()))
 		return null
 
@@ -31,6 +31,7 @@
 			return P.character_id
 		name = P.real_name
 		ckey = P.client_ckey
+		slot = P.default_slot
 	else if (istype(data, /datum/mind))
 		var/datum/mind/M = data
 		if (!M.has_crew_persistence())
@@ -47,6 +48,12 @@
 			M.character_id = P.character_id
 			return M.character_id
 
+		if (P)
+			slot = P.default_slot
+		else
+			//If this mind doesnt already have a character id, we aren't able to create one without attached preferences, abort
+			return null
+
 		name = M.name
 		ckey = ckey(M.key)
 	else
@@ -54,9 +61,38 @@
 		return null
 
 
+	//If we get here, we have no id, but there might be one in the database
+	var/found_id = find_character(ckey, name, slot, data)
+	if (found_id)
+		return found_id
 
 	//If we get here, the character isn't registered, do so
-	return register_character(ckey, name, data)
+	return register_character(ckey, name, slot, data)
+
+
+
+/*
+	This attempts to locate an existing key in the database which is a match for us
+*/
+/proc/find_character(var/ckey, var/name, var/slot, var/output)
+
+	var/DBQuery/query = dbcon.NewQuery("SELECT * FROM (characters)	WHERE (slot = [slot] AND ckey = '[ckey]');")
+	query.Execute()
+
+	if(query.NextRow())
+		var/id = query.item[1]
+		.=id
+		if (output)
+
+			output:character_id = id
+
+			//If this was a mind and not preferences, then we need to save it on prefs immediately
+			if (istype(output, /datum/mind))
+				var/datum/mind/M = output
+				var/datum/preferences/P = get_preferences(M.current)
+				if (P)
+					P.character_id = id
+					P.save_preferences()
 
 /*
 	This creates a record for a character with this name, use sparingly
@@ -65,9 +101,9 @@
 	Name is the real name of the character
 	Output is an optional datum with a character_id var which we'll populate with our result
 */
-/proc/register_character(var/ckey, var/name, var/output)
+/proc/register_character(var/ckey, var/name, var/slot, var/output)
 
-	var/DBQuery/query = dbcon.NewQuery("INSERT INTO characters (ckey, character_name) VALUES('[ckey]','[name]');")
+	var/DBQuery/query = dbcon.NewQuery("INSERT INTO characters (ckey, character_name, slot) VALUES('[ckey]','[name]',[slot]);")
 	query.Execute()
 
 	query = dbcon.NewQuery("SELECT LAST_INSERT_ID();")
@@ -77,6 +113,7 @@
 	if(query.NextRow())
 		if (output)
 			var/id = query.item[1]
+			.=id
 			output:character_id = id
 			query = dbcon.NewQuery("INSERT INTO credit_records (character_id)\
 			VALUES('[id]');")
@@ -131,7 +168,7 @@
 
 	//Now lets update the characters table first
 	//Update the last seen var
-	var/DBQuery/query = dbcon.NewQuery("UPDATE characters	 SET	last_seen = CURRENT_TIMESTAMP()	 WHERE	 (character_id = [id]);")
+	var/DBQuery/query = dbcon.NewQuery("UPDATE characters	 SET	last_seen = CURRENT_TIMESTAMP(), character_name = '[M.name]'	 WHERE	 (character_id = [id]);")
 	query.Execute()
 
 	//Force living status on spawning.

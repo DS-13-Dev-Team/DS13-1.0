@@ -208,6 +208,7 @@ var/list/admin_verbs_debug = list(
 	/client/proc/jumptomob,
 	/client/proc/jumptocoord,
 	/client/proc/dsay,
+	/client/proc/check_timer_sources,
 	/datum/admins/proc/run_unit_test,
 	/client/proc/view_chunk,
 	/client/proc/update_chunk,

@@ -362,9 +362,9 @@
 //send resources to the client. It's here in its own proc so we can move it around easiliy if need be
 /client/proc/send_resources()
 	getFiles(
-		'html/search.js',
-		'html/panels.css',
-		'html/spacemag.css',
+		'html/browser/search.js',
+		'html/browser/panels.css',
+		'html/browser/spacemag.css',
 		'html/images/loading.gif',
 		'html/images/ceclogo.png',
 		'html/images/ntlogo.png',
