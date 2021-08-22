@@ -401,7 +401,7 @@
 	var/icon/panel_overlay
 	var/icon/weld_overlay
 
-	cut_overlays()
+	overlays.Cut()
 	set_light(0)
 	var/do_set_light = FALSE
 
@@ -416,7 +416,7 @@
 	if(density)
 		icon_state = "closed"
 		if(hatch_open)
-			add_overlay(panel_overlay)
+			overlays = panel_overlay
 		if(pdiff_alert)
 			lights_overlay += "palert"
 			do_set_light = TRUE
@@ -425,7 +425,7 @@
 				var/cdir = GLOB.cardinal[d]
 				for(var/i=1;i<=ALERT_STATES.len;i++)
 					if(dir_alerts[d] & (1<<(i-1)))
-						add_overlay(new/icon(icon,"alert_[ALERT_STATES[i]]", dir=cdir))
+						overlays += new/icon(icon,"alert_[ALERT_STATES[i]]", dir=cdir)
 						do_set_light = TRUE
 	else
 		icon_state = "open"
@@ -436,9 +436,9 @@
 	if(do_set_light)
 		set_light(0.25, 0.1, 1, 2, COLOR_SUN)
 
-	add_overlay(panel_overlay)
-	add_overlay(weld_overlay)
-	add_overlay(lights_overlay)
+	overlays += panel_overlay
+	overlays += weld_overlay
+	overlays += lights_overlay
 
 //These are playing merry hell on ZAS.  Sorry fellas :(
 

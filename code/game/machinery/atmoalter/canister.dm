@@ -147,7 +147,7 @@ update_flag
 */
 
 	if (src.destroyed)
-		src.cut_overlays()
+		src.overlays = 0
 		src.icon_state = text("[]-1", src.canister_color)
 		return
 
@@ -157,20 +157,20 @@ update_flag
 	if(check_change()) //Returns 1 if no change needed to icons.
 		return
 
-	src.cut_overlays()
+	src.overlays = 0
 
 	if(update_flag & 1)
-		add_overlay("can-open")
+		overlays += "can-open"
 	if(update_flag & 2)
-		add_overlay("can-connector")
+		overlays += "can-connector"
 	if(update_flag & 4)
-		add_overlay("can-o0")
+		overlays += "can-o0"
 	if(update_flag & 8)
-		add_overlay("can-o1")
+		overlays += "can-o1"
 	else if(update_flag & 16)
-		add_overlay("can-o2")
+		overlays += "can-o2"
 	else if(update_flag & 32)
-		add_overlay("can-o3")
+		overlays += "can-o3"
 	return
 
 /obj/machinery/portable_atmospherics/canister/fire_act(var/datum/gas_mixture/air, var/exposed_temperature, var/exposed_volume, var/multiplier = 1)

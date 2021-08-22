@@ -368,18 +368,18 @@
 		to_chat(usr, "<span class='warning'>This mob type can't use this verb.</span>")
 
 /obj/structure/closet/update_icon()//Putting the welded stuff in update_icon() so it's easy to overwrite for special cases (Fridges, cabinets, and whatnot)
-	cut_overlays()
+	overlays.Cut()
 
 	if(!opened)
 		if(broken && icon_off)
 			icon_state = icon_off
-			add_overlay(icon_broken)
+			overlays += icon_broken
 		else if((setup & CLOSET_HAS_LOCK) && locked && icon_locked)
 			icon_state = icon_locked
 		else
 			icon_state = icon_closed
 		if(welded)
-			add_overlay("welded")
+			overlays += "welded"
 	else
 		icon_state = icon_opened
 

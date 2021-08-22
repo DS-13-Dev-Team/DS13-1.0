@@ -10,7 +10,7 @@
 	for(var/path in accepts)
 		if(I.type in typesof(path))
 			qdel(I)
-			add_overlay(image('icons/obj/pipes/disposal.dmi', "dispover-handle"))
+			overlays += image('icons/obj/pipes/disposal.dmi', "dispover-handle")
 			return
 	if(!user.unEquip(I, get_turf(src)))
 		return

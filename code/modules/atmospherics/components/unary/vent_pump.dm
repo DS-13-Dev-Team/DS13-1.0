@@ -107,7 +107,7 @@
 	if (!node)
 		use_power = 0
 
-	cut_overlays()
+	overlays.Cut()
 
 	var/vent_icon = "vent"
 
@@ -125,7 +125,7 @@
 	else
 		vent_icon += "[use_power ? "[pump_direction ? "out" : "in"]" : "off"]"
 
-	add_overlay(icon_manager.get_atmos_icon("device", , , vent_icon))
+	overlays += icon_manager.get_atmos_icon("device", , , vent_icon)
 
 /obj/machinery/atmospherics/unary/vent_pump/update_underlays()
 	if(..())

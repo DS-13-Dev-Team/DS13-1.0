@@ -38,7 +38,6 @@
 	bcell = /obj/item/weapon/cell/apc
 
 /obj/item/weapon/defibrillator/update_icon()
-	cut_overlays()
 	var/list/new_overlays = list()
 
 	if(paddles) //in case paddles got destroyed somehow.
@@ -56,7 +55,7 @@
 	else
 		new_overlays += "[initial(icon_state)]-nocell"
 
-	add_overlay(new_overlays)
+	overlays = new_overlays
 
 /obj/item/weapon/defibrillator/ui_action_click()
 	toggle_paddles()

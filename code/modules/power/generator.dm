@@ -57,12 +57,12 @@
 
 /obj/machinery/power/generator/update_icon()
 	if(stat & (NOPOWER|BROKEN))
-		cut_overlays()
+		overlays.Cut()
 	else
-		cut_overlays()
+		overlays.Cut()
 
 		if(lastgenlev != 0)
-			add_overlay(image('icons/obj/power.dmi', "teg-op[lastgenlev]"))
+			overlays += image('icons/obj/power.dmi', "teg-op[lastgenlev]")
 
 /obj/machinery/power/generator/Process()
 	if(!circ1 || !circ2 || !anchored || stat & (BROKEN|NOPOWER))

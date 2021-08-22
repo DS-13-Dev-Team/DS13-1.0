@@ -43,13 +43,13 @@
 
 
 /obj/item/weapon/flamethrower/update_icon()
-	cut_overlays()
+	overlays.Cut()
 	if(igniter)
-		add_overlay("+igniter[status]")
+		overlays += "+igniter[status]"
 	if(ptank)
-		add_overlay("+ptank")
+		overlays += "+ptank"
 	if(lit)
-		add_overlay("+lit")
+		overlays += "+lit"
 		item_state = "flamethrower_1"
 	else
 		item_state = "flamethrower_0"

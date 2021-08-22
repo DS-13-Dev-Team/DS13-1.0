@@ -1,3 +1,5 @@
+GLOBAL_LIST_EMPTY(hair_gradient_styles_list)
+
 // Used by robots and robot preferences.
 GLOBAL_LIST_INIT(robot_module_types, list(
 	"Standard", "Engineering", "Surgeon",  "Crisis",

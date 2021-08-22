@@ -49,11 +49,6 @@
 /proc/cmp_text_dsc(a,b)
 	return sorttext(a, b)
 
-/proc/cmp_generic_stat_item_time(list/A, list/B)
-	. = B[STAT_ENTRY_TIME] - A[STAT_ENTRY_TIME]
-	if (!.)
-		. = B[STAT_ENTRY_COUNT] - A[STAT_ENTRY_COUNT]
-
 /proc/cmp_qdel_item_time(datum/qdel_item/A, datum/qdel_item/B)
 	. = B.hard_delete_time - A.hard_delete_time
 	if (!.)

@@ -111,19 +111,19 @@
 	src.update_icon()
 
 /obj/item/robot_parts/robot_suit/update_icon()
-	src.cut_overlays()
+	src.overlays.Cut()
 	if(src.parts[BP_L_ARM])
-		src.add_overlay("l_arm+o")
+		src.overlays += "l_arm+o"
 	if(src.parts[BP_R_ARM])
-		src.add_overlay("r_arm+o")
+		src.overlays += "r_arm+o"
 	if(src.parts[BP_CHEST])
-		src.add_overlay("chest+o")
+		src.overlays += "chest+o"
 	if(src.parts[BP_L_LEG])
-		src.add_overlay("l_leg+o")
+		src.overlays += "l_leg+o"
 	if(src.parts[BP_R_LEG])
-		src.add_overlay("r_leg+o")
+		src.overlays += "r_leg+o"
 	if(src.parts[BP_HEAD])
-		src.add_overlay("head+o")
+		src.overlays += "head+o"
 
 /obj/item/robot_parts/robot_suit/proc/check_completion()
 	if(src.parts[BP_L_ARM] && src.parts[BP_R_ARM] && src.parts[BP_L_LEG] && src.parts[BP_R_LEG] && src.parts[BP_CHEST] && src.parts[BP_HEAD])

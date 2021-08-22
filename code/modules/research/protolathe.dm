@@ -92,10 +92,15 @@
 		icon_state = "protolathe"
 
 /obj/machinery/r_n_d/protolathe/proc/check_mat(datum/design/being_built, M)
+	var/A = 0
 	if(materials[M])
-		return (materials[M].amount - (being_built.materials[M]/efficiency_coeff) >= 0) ? 1 : 0
+		A = materials[M].amount
+		A /= max(1 , (being_built.materials[M]/efficiency_coeff))
+		return A
 	else
-		return (reagents.has_reagent(M, (being_built.materials[M]/efficiency_coeff)) != 0) ? 1 : 0
+		A = reagents[M].volume
+		A /= max(1, (being_built.chemicals[M]/efficiency_coeff))
+		return A
 
 /obj/machinery/r_n_d/protolathe/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(busy)
@@ -140,7 +145,7 @@
 	var/amount = min(stack.get_amount(), round((max_material_storage - TotalMaterials()) / SHEET_MATERIAL_AMOUNT))
 
 	var/t = stack.material.name
-	add_overlay("protolathe_[t]")
+	overlays += "protolathe_[t]"
 
 	busy = TRUE
 	update_icon()
@@ -152,7 +157,7 @@
 					if(stack.use(amount))
 						materials[M].amount += amount * stack.perunit
 						break
-	cut_overlay("protolathe_[t]")
+	overlays -= "protolathe_[t]"
 	busy = FALSE
 	update_icon()
 	if(linked_console)

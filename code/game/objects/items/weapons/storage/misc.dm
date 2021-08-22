@@ -39,10 +39,10 @@
 	startswith = list(/obj/item/weapon/reagent_containers/food/snacks/donut/normal = 6)
 
 /obj/item/weapon/storage/box/donut/update_icon()
-	cut_overlays()
+	overlays.Cut()
 	var/i = 0
 	for(var/obj/item/weapon/reagent_containers/food/snacks/donut/D in contents)
-		add_overlay(image('icons/obj/food.dmi', "[i][D.overlay_state]"))
+		overlays += image('icons/obj/food.dmi', "[i][D.overlay_state]")
 		i++
 
 /obj/item/weapon/storage/box/donut/empty

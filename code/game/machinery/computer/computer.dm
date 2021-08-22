@@ -8,7 +8,6 @@
 	idle_power_usage = 300
 	active_power_usage = 300
 	//var/circuit = null //The path to the circuit board type. If circuit==null, the computer can't be disassembled.
-	var/processing = 0
 
 	var/icon_keyboard = "generic_key"
 	var/icon_screen = "generic"
@@ -73,22 +72,22 @@
 	..()
 
 /obj/machinery/computer/update_icon()
-	cut_overlays()
+	overlays.Cut()
 	if(stat & NOPOWER)
 		set_light(0)
 		if(icon_keyboard)
-			add_overlay(image(icon,"[icon_keyboard]_off", overlay_layer))
+			overlays += image(icon,"[icon_keyboard]_off", overlay_layer)
 		return
 	else
 		set_light(light_max_bright_on, light_inner_range_on, light_outer_range_on, 2, light_color)
 
 	if(stat & BROKEN)
-		add_overlay(image(icon,"[icon_state]_broken", overlay_layer))
+		overlays += image(icon,"[icon_state]_broken", overlay_layer)
 	else
-		add_overlay(image(icon,icon_screen, overlay_layer))
+		overlays += image(icon,icon_screen, overlay_layer)
 
 	if(icon_keyboard)
-		add_overlay(image(icon, icon_keyboard, overlay_layer))
+		overlays += image(icon, icon_keyboard, overlay_layer)
 
 /obj/machinery/computer/proc/set_broken()
 	stat |= BROKEN

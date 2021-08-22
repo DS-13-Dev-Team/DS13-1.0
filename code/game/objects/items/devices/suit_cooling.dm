@@ -16,7 +16,7 @@
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
 	force = 5.0
 	throwforce = 10.0
-
+	
 	throw_range = 4
 	action_button_name = "Toggle Heatsink"
 
@@ -140,7 +140,7 @@
 	return ..()
 
 /obj/item/device/suit_cooling_unit/update_icon()
-	cut_overlays()
+	overlays.Cut()
 	if (cover_open)
 		if (cell)
 			icon_state = "suitcooler1"
@@ -155,17 +155,17 @@
 
 	switch(round(cell.percent()))
 		if(86 to INFINITY)
-			add_overlay("battery-0")
+			overlays.Add("battery-0")
 		if(69 to 85)
-			add_overlay("battery-1")
+			overlays.Add("battery-1")
 		if(52 to 68)
-			add_overlay("battery-2")
+			overlays.Add("battery-2")
 		if(35 to 51)
-			add_overlay("battery-3")
+			overlays.Add("battery-3")
 		if(18 to 34)
-			add_overlay("battery-4")
+			overlays.Add("battery-4")
 		if(-INFINITY to 17)
-			add_overlay("battery-5")
+			overlays.Add("battery-5")
 
 
 /obj/item/device/suit_cooling_unit/examine(mob/user)

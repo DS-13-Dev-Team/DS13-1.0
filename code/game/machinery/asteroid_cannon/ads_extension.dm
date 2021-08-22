@@ -84,7 +84,7 @@
 	gunner.plane = gun.plane
 
 	//The gunner must be an overlay, not in vis contents, in order to smoothly rotate with the gun
-	gun.add_overlay(gunner)
+	gun.overlays += gunner
 	//gunner.vis_flags |= VIS_INHERIT_ID
 	//gun.vis_contents += gunner
 	gun.lead_distance = 1 //Gunners don't get hitscan...
@@ -109,7 +109,7 @@
 		gunner.verbs -= /mob/living/carbon/human/proc/stop_gunning
 		gunner.verbs -= /mob/living/carbon/human/proc/recenter_gunning
 		gunner.eyeobj = null
-		gun.cut_overlays()
+		gun.overlays.Cut()
 		gunner.plane = gun.cached_plane
 		gunner.forceMove(get_turf(gun))
 		gunner.animate_to_default()

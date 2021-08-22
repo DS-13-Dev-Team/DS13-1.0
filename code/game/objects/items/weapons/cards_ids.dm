@@ -24,6 +24,7 @@
 
 	unacidable = TRUE	//These melt too easily
 
+
 /obj/item/weapon/card/data
 	name = "data card"
 	desc = "A plastic magstripe card for simple and speedy data storage and transfer. This one has a stripe running down the middle."
@@ -38,10 +39,10 @@
 	update_icon()
 
 /obj/item/weapon/card/data/update_icon()
-	cut_overlays()
+	overlays.Cut()
 	var/image/detail_overlay = image('icons/obj/card.dmi', src,"[icon_state]-color")
 	detail_overlay.color = detail_color
-	add_overlay(detail_overlay)
+	overlays += detail_overlay
 
 /obj/item/weapon/card/data/attackby(obj/item/I, mob/living/user)
 	if(istype(I, /obj/item/device/integrated_electronics/detailer))

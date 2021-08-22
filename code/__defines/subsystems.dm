@@ -16,8 +16,9 @@
 //To be used with TIMER_UNIQUE
 //prevents distinguishing identical timers with the wait variable
 #define TIMER_NO_HASH_WAIT 0x10
-
-#define TIMER_NO_INVOKE_WARNING 600 //number of byond ticks that are allowed to pass before the timer subsystem thinks it hung on something
+//Loops the timer repeatedly until qdeleted
+//In most cases you want a subsystem instead
+#define TIMER_LOOP			0x20
 
 #define TIMER_ID_NULL -1
 
@@ -42,6 +43,15 @@
 		SSatoms.InitAtom(src, args);\
 	}\
 }
+
+/**
+	Create a new timer and add it to the queue.
+	* Arguments:
+	* * callback the callback to call on timer finish
+	* * wait deciseconds to run the timer for
+	* * flags flags for this timer, see: code\__DEFINES\subsystems.dm
+*/
+#define addtimer(args...) _addtimer(args, file = __FILE__, line = __LINE__)
 
 // Subsystem init_order, from highest priority to lowest priority
 // Subsystems shutdown in the reverse of the order they initialize in
@@ -68,7 +78,6 @@
 #define SS_INIT_MISC_CODEX      -3
 #define SS_INIT_SHUTTLE         -4
 #define SS_INIT_LIGHTING        -5
-#define SS_INIT_OVERLAYS        -6
 #define SS_INIT_ZCOPY			-7
 #define SS_INIT_XENOARCH       -50
 #define SS_INIT_OPEN_SPACE    -150
@@ -97,18 +106,3 @@
 #define SLOW_PROCESS_INTERVAL	1 MINUTE
 #define MACHINE_PROCESS_INTERVAL	2 SECONDS
 #define EVENT_PROCESS_INTERVAL	2 SECONDS
-
-//! ## Overlays subsystem
-
-///Compile all the overlays for an atom from the cache lists
-// |= on overlays is not actually guaranteed to not add same appearances but we're optimistically using it anyway.
-#define COMPILE_OVERLAYS(A) \
-	do {\
-		if(LAZYLEN(A.remove_overlays)){\
-			A.overlays -= A.remove_overlays;\
-		}\
-		if(LAZYLEN(A.add_overlays)){\
-			A.overlays |= A.add_overlays;\
-		}\
-		A.atom_flags &= ~ATOM_FLAG_OVERLAY_QUEUED;\
-	} while (FALSE)

@@ -79,7 +79,7 @@
 		. += "credits1"
 
 /obj/item/weapon/spacecash/bundle/update_icon()
-	cut_overlays()
+	overlays.Cut()
 	var/list/images = src.getMoneyImages()
 
 	for(var/A in images)
@@ -88,7 +88,7 @@
 		M.Translate(rand(-6, 6), rand(-4, 8))
 		M.Turn(pick(-45, -27.5, 0, 0, 0, 0, 0, 0, 0, 27.5, 45))
 		banknote.transform = M
-		src.add_overlay(banknote)
+		src.overlays += banknote
 
 	src.desc = "They are worth [worth] Credits."
 	if(worth in denominations)

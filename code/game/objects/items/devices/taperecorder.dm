@@ -370,9 +370,9 @@
 
 
 /obj/item/device/tape/update_icon()
-	cut_overlays()
+	overlays.Cut()
 	if(ruined)
-		add_overlay("ribbonoverlay")
+		overlays += "ribbonoverlay"
 
 
 /obj/item/device/tape/fire_act()

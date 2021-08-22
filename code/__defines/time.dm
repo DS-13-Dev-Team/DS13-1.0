@@ -83,7 +83,11 @@ GLOBAL_LIST_INIT(month_seconds_cumulative_leap, list(
 ))
 
 
+#define TICKS *world.tick_lag
 
+#define DS2TICKS(DS) ((DS)/world.tick_lag)
+
+#define TICKS2DS(T) ((T) TICKS)
 
 /*
 	Future TODO

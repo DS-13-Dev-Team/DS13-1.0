@@ -571,11 +571,11 @@
 
 
 /obj/machinery/autolathe/update_icon()
-	cut_overlays()
+	overlays.Cut()
 
 	icon_state = "autolathe"
 	if(panel_open)
-		add_overlay(image(icon, "autolathe_p"))
+		overlays.Add(image(icon, "autolathe_p"))
 
 	if(working && !error) // if error, work animation looks awkward.
 		icon_state = "autolathe_n"

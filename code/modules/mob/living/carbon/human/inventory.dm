@@ -128,7 +128,8 @@ This saves us from having to call add_fingerprint() any time something is put in
 		if (l_store)
 			drop_from_inventory(l_store)
 		if (wear_id)
-			drop_from_inventory(wear_id)
+			spawn()
+				update_inv_wear_id()
 		if (belt)
 			drop_from_inventory(belt)
 		w_uniform = null

@@ -338,15 +338,15 @@ var/list/global/tank_gauge_cache = list()
 /obj/item/weapon/tank/update_icon(var/override)
 	if((atom_flags & ATOM_FLAG_INITIALIZED) && istype(loc, /obj/) && !istype(loc, /obj/item/clothing/suit/) && !override) //So we don't eat up our tick. Every tick, when we're not actually in play.
 		return
-	cut_overlays()
+	overlays.Cut()
 	if(proxyassembly.assembly || wired)
-		add_overlay(image(icon,"bomb_assembly"))
+		overlays += image(icon,"bomb_assembly")
 		if(proxyassembly.assembly)
 			var/image/bombthing = image(proxyassembly.assembly.icon, proxyassembly.assembly.icon_state)
-			bombthing.copy_overlays(proxyassembly.assembly)
+			bombthing.overlays |= proxyassembly.assembly.overlays
 			bombthing.pixel_y = -1
 			bombthing.pixel_x = -3
-			add_overlay(bombthing)
+			overlays += bombthing
 
 	if(!gauge_icon)
 		return
@@ -362,7 +362,7 @@ var/list/global/tank_gauge_cache = list()
 	var/indicator = "[gauge_icon][(gauge_pressure == -1) ? "overload" : gauge_pressure]"
 	if(!tank_gauge_cache[indicator])
 		tank_gauge_cache[indicator] = image(icon, indicator)
-	add_overlay(tank_gauge_cache[indicator])
+	overlays += tank_gauge_cache[indicator]
 
 //Handle exploding, leaking, and rupturing of the tank
 /obj/item/weapon/tank/proc/check_status()

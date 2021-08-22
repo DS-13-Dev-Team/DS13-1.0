@@ -556,7 +556,7 @@
 /obj/item/weapon/rig/update_icon(var/update_mob_icon)
 
 	//TODO: Maybe consider a cache for this (use mob_icon as blank canvas, use suit icon overlay).
-	cut_overlays()
+	overlays.Cut()
 	if(!mob_icon || update_mob_icon)
 		var/species_icon = 'icons/mob/onmob/rig_back.dmi'
 		// Since setting mob_icon will override the species checks in
@@ -575,9 +575,9 @@
 					overlay.appearance_flags = module.suit_overlay_flags
 					if (chest)
 						//Some rigs dont have a chestpiece
-						chest.add_overlay(overlay)
+						chest.overlays += overlay
 					else
-						src.add_overlay(overlay)
+						src.overlays += overlay
 		wearer.update_inv_shoes()
 		wearer.update_inv_gloves()
 		wearer.update_inv_head()
@@ -598,7 +598,7 @@
 				var/image/overlay = image("icon" = equipment_overlay_icon, "icon_state" = "[module.suit_overlay]", layer = module.suit_overlay_layer)
 				overlay.plane = module.suit_overlay_plane
 				overlay.appearance_flags = module.suit_overlay_flags
-				ret.add_overlay(overlay)
+				ret.overlays += overlay
 	return ret
 
 /obj/item/weapon/rig/proc/check_suit_access(var/mob/living/carbon/human/user)

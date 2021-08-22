@@ -206,11 +206,11 @@
 	update_icon()
 
 /obj/item/weapon/storage/pill_bottle/update_icon()
-	cut_overlays()
+	overlays.Cut()
 	if(wrapper_color)
 		var/image/I = image(icon, "pillbottle_wrap")
 		I.color = wrapper_color
-		add_overlay(I)
+		overlays += I
 
 /obj/item/weapon/storage/pill_bottle/antitox
 	name = "pill bottle (Dylovene)"

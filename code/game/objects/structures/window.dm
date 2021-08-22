@@ -73,12 +73,13 @@
 		updateSilicate()
 
 /obj/structure/window/proc/updateSilicate()
-	cut_overlays()
+	if (overlays)
+		overlays.Cut()
 
 	var/image/img = image(src.icon, src.icon_state)
 	img.color = "#ffffff"
 	img.alpha = silicate * 255 / 100
-	add_overlay(img)
+	overlays += img
 
 /obj/structure/window/zero_health()
 	shatter()
@@ -370,7 +371,7 @@
 /obj/structure/window/update_icon()
 	//A little cludge here, since I don't know how it will work with slim windows. Most likely VERY wrong.
 	//this way it will only update full-tile ones
-	cut_overlays()
+	overlays.Cut()
 	update_onframe()
 	layer = FULL_WINDOW_LAYER
 	if(!is_fulltile())
@@ -386,14 +387,14 @@
 				I = image(icon, "[basestate]_other_onframe[connections[i]]", dir = 1<<(i-1))
 			else
 				I = image(icon, "[basestate]_onframe[connections[i]]", dir = 1<<(i-1))
-			add_overlay(I)
+			overlays += I
 	else
 		for(var/i = 1 to 4)
 			if(other_connections[i] != "0")
 				I = image(icon, "[basestate]_other[connections[i]]", dir = 1<<(i-1))
 			else
 				I = image(icon, "[basestate][connections[i]]", dir = 1<<(i-1))
-			add_overlay(I)
+			overlays += I
 
 /obj/structure/window/fire_act(var/datum/gas_mixture/air, var/exposed_temperature, var/exposed_volume, var/multiplier = 1)
 	if(exposed_temperature > maximal_heat)

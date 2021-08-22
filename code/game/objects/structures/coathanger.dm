@@ -42,10 +42,10 @@
 		return 1
 
 /obj/structure/coatrack/update_icon()
-	cut_overlays()
+	overlays.Cut()
 	if (istype(coat, /obj/item/clothing/suit/storage/toggle/labcoat))
-		add_overlay(image(icon, icon_state = "coat_lab"))
+		overlays += image(icon, icon_state = "coat_lab")
 	if (istype(coat, /obj/item/clothing/suit/storage/toggle/labcoat/cmo))
-		add_overlay(image(icon, icon_state = "coat_cmo"))
+		overlays += image(icon, icon_state = "coat_cmo")
 	if (istype(coat, /obj/item/clothing/suit/storage/det_trench))
-		add_overlay(image(icon, icon_state = "coat_det"))
+		overlays += image(icon, icon_state = "coat_det")

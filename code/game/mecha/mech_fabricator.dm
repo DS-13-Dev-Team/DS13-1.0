@@ -58,13 +58,13 @@
 	update_icon()
 
 /obj/machinery/mecha_part_fabricator/update_icon()
-	cut_overlays()
+	overlays.Cut()
 	if(panel_open)
 		icon_state = "fab-o"
 	else
 		icon_state = "fab-idle"
 	if(busy)
-		add_overlay("fab-active")
+		overlays += "fab-active"
 
 /obj/machinery/mecha_part_fabricator/dismantle()
 	for(var/f in materials)
@@ -180,9 +180,9 @@
 	if(materials[material] + amnt <= res_max_amount)
 		if(stack && stack.amount >= 1)
 			var/count = 0
-			add_overlay("fab-load-metal")
+			overlays += "fab-load-metal"
 			spawn(10)
-				cut_overlay("fab-load-metal")
+				overlays -= "fab-load-metal"
 			while(materials[material] + amnt <= res_max_amount && stack.amount >= 1)
 				materials[material] += amnt
 				stack.use(1)

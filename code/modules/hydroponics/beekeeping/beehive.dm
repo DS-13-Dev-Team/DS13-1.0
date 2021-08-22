@@ -18,26 +18,26 @@
 	update_icon()
 
 /obj/machinery/beehive/update_icon()
-	cut_overlays()
+	overlays.Cut()
 	icon_state = "beehive-[closed]"
 	if(closed)
-		add_overlay("lid")
+		overlays += "lid"
 	if(frames)
-		add_overlay("empty[frames]")
+		overlays += "empty[frames]"
 	if(honeycombs >= 100)
-		add_overlay("full[round(honeycombs / 100)]")
+		overlays += "full[round(honeycombs / 100)]"
 	if(!smoked)
 		switch(bee_count)
 			if(1 to 20)
-				add_overlay("bees1")
+				overlays += "bees1"
 			if(21 to 40)
-				add_overlay("bees2")
+				overlays += "bees2"
 			if(41 to 60)
-				add_overlay("bees3")
+				overlays += "bees3"
 			if(61 to 80)
-				add_overlay("bees4")
+				overlays += "bees4"
 			if(81 to 100)
-				add_overlay("bees5")
+				overlays += "bees5"
 
 /obj/machinery/beehive/examine(var/mob/user)
 	. = ..()
@@ -170,11 +170,11 @@
 	anchored = 1
 	density = 1
 
-	var/processing = 0
+	var/honey_frame = 0
 	var/honey = 0
 
 /obj/machinery/honey_extractor/attackby(var/obj/item/I, var/mob/user)
-	if(processing)
+	if(honey_frame)
 		to_chat(user, "<span class='notice'>\The [src] is currently spinning, wait until it's finished.</span>")
 		return
 	else if(istype(I, /obj/item/honey_frame))
@@ -183,14 +183,14 @@
 			to_chat(user, "<span class='notice'>\The [H] is empty, put it into a beehive.</span>")
 			return
 		user.visible_message("<span class='notice'>\The [user] loads \the [H] into \the [src] and turns it on.</span>", "<span class='notice'>You load \the [H] into \the [src] and turn it on.</span>")
-		processing = H.honey
+		honey_frame = H.honey
 		icon_state = "centrifuge_moving"
 		qdel(H)
 		spawn(50)
 			new /obj/item/honey_frame(loc)
 			new /obj/item/stack/wax(loc)
-			honey += processing
-			processing = 0
+			honey += honey_frame
+			honey_frame = 0
 			icon_state = "centrifuge"
 	else if(istype(I, /obj/item/weapon/reagent_containers/glass))
 		if(!honey)
@@ -226,7 +226,7 @@
 
 /obj/item/honey_frame/filled/New()
 	..()
-	add_overlay("honeycomb")
+	overlays += "honeycomb"
 
 /obj/item/beehive_assembly
 	name = "beehive assembly"
@@ -265,21 +265,21 @@ var/global/list/datum/stack_recipe/wax_recipes = list(
 
 /obj/item/bee_pack/New()
 	..()
-	add_overlay("beepack-full")
+	overlays += "beepack-full"
 
 /obj/item/bee_pack/proc/empty()
 	full = 0
 	name = "empty bee pack"
 	desc = "A stasis pack for moving bees. It's empty."
-	cut_overlays()
-	add_overlay("beepack-empty")
+	overlays.Cut()
+	overlays += "beepack-empty"
 
 /obj/item/bee_pack/proc/fill()
 	full = initial(full)
 	SetName(initial(name))
 	desc = initial(desc)
-	cut_overlays()
-	add_overlay("beepack-full")
+	overlays.Cut()
+	overlays += "beepack-full"
 
 /obj/structure/closet/crate/hydroponics/beekeeping
 	name = "beekeeping crate"

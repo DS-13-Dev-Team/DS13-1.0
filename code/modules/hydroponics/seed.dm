@@ -817,6 +817,6 @@
 		var/image/I = image(res.icon, "[plant_icon]-[growth_stage]-leaves")
 		I.color = leaves
 		I.appearance_flags = RESET_COLOR
-		res.add_overlay(I)
+		res.overlays += I
 
 	return res

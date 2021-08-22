@@ -111,7 +111,7 @@
 // icon related
 
 /obj/structure/wall_frame/update_icon()
-	cut_overlays()
+	overlays.Cut()
 	var/image/I
 
 
@@ -120,7 +120,7 @@
 			I = image('icons/obj/wall_frame.dmi', "frame_other[connections[i]]", dir = 1<<(i-1))
 		else
 			I = image('icons/obj/wall_frame.dmi', "frame[connections[i]]", dir = 1<<(i-1))
-		add_overlay(I)
+		overlays += I
 
 	if(stripe_color)
 		for(var/i = 1 to 4)
@@ -129,7 +129,7 @@
 			else
 				I = image('icons/obj/wall_frame.dmi', "stripe[connections[i]]", dir = 1<<(i-1))
 			I.color = stripe_color
-			add_overlay(I)
+			overlays += I
 
 /obj/structure/wall_frame/indestructible
 	name = "heavily fortified wall frame"

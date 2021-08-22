@@ -130,20 +130,19 @@
 		if (normal_eyes)
 			var/icon/I = get_eyes()
 			if(I)
-				add_overlay(I)
+				overlays |= I
 				mob_icon.Blend(I, ICON_OVERLAY)
 
 		// Floating eyes or other effects.
 		var/image/eye_glow = get_eye_overlay()
-		if(eye_glow)
-			add_overlay(eye_glow)
+		if(eye_glow) overlays |= eye_glow
 
 		if(owner.lip_style && !BP_IS_ROBOTIC(src) && (species && (species.appearance_flags & HAS_LIPS)))
 			var/icon/lip_icon = new/icon('icons/mob/human_races/species/human/lips.dmi', "lips_[owner.lip_style]_s")
-			add_overlay(lip_icon)
+			overlays |= lip_icon
 			mob_icon.Blend(lip_icon, ICON_OVERLAY)
 
-		add_overlay(get_hair_icon())
+		overlays |= get_hair_icon()
 
 	return mob_icon
 
@@ -157,9 +156,10 @@
 				var/icon/facial_s = new/icon("icon" = facial_hair_style.icon, "icon_state" = "[facial_hair_style.icon_state]_s")
 				if(facial_hair_style.do_colouration)
 					facial_s.Blend(rgb(owner.r_facial, owner.g_facial, owner.b_facial), facial_hair_style.blend)
-				res.add_overlay(facial_s)
+				res.overlays |= facial_s
 
 		if(owner.h_style)
+			var/icon/grad_s = null
 			var/style = owner.h_style
 			var/datum/sprite_accessory/hair/hair_style = GLOB.hair_styles_list[style]
 			if(owner.head && (owner.head.flags_inv & BLOCKHEADHAIR))
@@ -168,8 +168,16 @@
 			if(hair_style && (species.get_bodytype(owner) in hair_style.species_allowed))
 				var/icon/hair_s = new/icon("icon" = hair_style.icon, "icon_state" = "[hair_style.icon_state]_s")
 				if(hair_style.do_colouration && islist(h_col) && h_col.len >= 3)
+					if(owner.g_style)
+						var/datum/sprite_accessory/gradient_style = GLOB.hair_gradient_styles_list[owner.g_style]
+						grad_s = new/icon("icon" = gradient_style.icon, "icon_state" = gradient_style.icon_state)
+						grad_s.Blend(hair_s, ICON_AND)
+						grad_s.Blend(rgb(owner.r_grad, owner.g_grad, owner.b_grad), ICON_MULTIPLY)
 					hair_s.Blend(rgb(h_col[1], h_col[2], h_col[3]), hair_style.blend)
-				res.add_overlay(hair_s)
+					if(!isnull(grad_s))
+						hair_s.Blend(grad_s, ICON_OVERLAY)
+				res.overlays |= hair_s
+
 	return res
 
 /obj/item/organ/external/head/no_eyes

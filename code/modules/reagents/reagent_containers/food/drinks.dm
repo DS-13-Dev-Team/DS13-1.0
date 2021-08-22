@@ -89,7 +89,7 @@
 			return k
 
 /obj/item/weapon/reagent_containers/food/drinks/update_icon()
-	cut_overlays()
+	overlays.Cut()
 	if(reagents.reagent_list.len > 0)
 		if(base_name)
 			var/datum/reagent/R = reagents.get_master_reagent()
@@ -98,7 +98,7 @@
 		if(filling_states)
 			var/image/filling = image(icon, src, "[base_icon][get_filling_state()]")
 			filling.color = reagents.get_color()
-			add_overlay(filling)
+			overlays += filling
 	else
 		SetName(initial(name))
 		desc = initial(desc)
