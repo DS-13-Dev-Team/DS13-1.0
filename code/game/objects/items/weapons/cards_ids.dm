@@ -24,6 +24,7 @@
 
 	unacidable = TRUE	//These melt too easily
 
+
 /obj/item/weapon/card/data
 	name = "data card"
 	desc = "A plastic magstripe card for simple and speedy data storage and transfer. This one has a stripe running down the middle."

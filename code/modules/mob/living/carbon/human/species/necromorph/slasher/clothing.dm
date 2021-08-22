@@ -43,7 +43,7 @@
 /decl/hierarchy/outfit/necromorph/biosuit
 	name = "Bioslashard"
 	uniform = /obj/item/clothing/under/deadspace/doctor
-	suit = /obj/item/clothing/suit/bio_suit/ds/black
+	suit = /obj/item/clothing/suit/bio_suit/ds
 	id_type = /obj/item/weapon/card/id/holo/science
 
 
