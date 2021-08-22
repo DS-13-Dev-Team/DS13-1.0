@@ -99,7 +99,7 @@ SUBSYSTEM_DEF(timer)
 				anti_loop_check--
 			while(bucket_node && bucket_node != bucket_head && anti_loop_check)
 		to_log += "Active timers in the second_queue queue:"
-		for(var/I in processing)
+		for(var/I in second_queue)
 			to_log += get_timer_debug_string(I)
 
 		// Dump all the logged data to the world log
@@ -158,7 +158,7 @@ SUBSYSTEM_DEF(timer)
 		while ((timer = bucket_list[practical_offset]))
 			var/datum/callback/callBack = timer.callBack
 			if (!callBack)
-				log_ss("Invalid timer: [get_timer_debug_string(timer)] world.time: [world.time], \
+				log_world("Invalid timer: [get_timer_debug_string(timer)] world.time: [world.time], \
 					head_offset: [head_offset], practical_offset: [practical_offset], bucket_joined: [timer.bucket_joined]")
 				if (!timer.spent)
 					bucket_resolution = null // force bucket recreation
@@ -196,14 +196,14 @@ SUBSYSTEM_DEF(timer)
 				// Check for timers that are scheduled to run in the past
 				if (timer.timeToRun < head_offset)
 					bucket_resolution = null // force bucket recreation
-					log_ss("[i] Invalid timer state: Timer in long run queue with a time to run less then head_offset. \
+					log_world("[i] Invalid timer state: Timer in long run queue with a time to run less then head_offset. \
 						[get_timer_debug_string(timer)] world.time: [world.time], head_offset: [head_offset], practical_offset: [practical_offset]")
 					break
 
 				// Check for timers that are not capable of being scheduled to run without rebuilding buckets
 				if (timer.timeToRun < head_offset + TICKS2DS(practical_offset - 1))
 					bucket_resolution = null // force bucket recreation
-					log_ss("[i] Invalid timer state: Timer in long run queue that would require a backtrack to transfer to \
+					log_world("[i] Invalid timer state: Timer in long run queue that would require a backtrack to transfer to \
 						short run queue. [get_timer_debug_string(timer)] world.time: [world.time], head_offset: [head_offset], practical_offset: [practical_offset]")
 					break
 
@@ -484,7 +484,7 @@ SUBSYSTEM_DEF(timer)
 		callBack.delegate:[callBack.delegate]([callBack.arguments ? callBack.arguments.Join(", ") : ""]), source: [source]"
 
 	if (bucket_joined)
-		log_ss("Bucket already joined! [name]")
+		log_world("Bucket already joined! [name]")
 
 	// Check if this timed event should be diverted to the client time bucket, or the secondary queue
 	var/list/L
@@ -549,10 +549,10 @@ SUBSYSTEM_DEF(timer)
 		CRASH("addtimer called without a callback")
 
 	if (wait < 0)
-		log_ss("addtimer called with a negative wait. Converting to [world.tick_lag]")
+		log_world("addtimer called with a negative wait. Converting to [world.tick_lag]")
 
 	if (callback.object != GLOBAL_PROC && QDELETED(callback.object) && !QDESTROYING(callback.object))
-		log_ss("addtimer called with a callback assigned to a qdeleted object. In the future such timers will not \
+		log_world("addtimer called with a callback assigned to a qdeleted object. In the future such timers will not \
 			be supported and may refuse to run or run with a 0 wait")
 
 	wait = max(CEILING(wait, world.tick_lag), world.tick_lag)
@@ -580,7 +580,7 @@ SUBSYSTEM_DEF(timer)
 						. = hash_timer.id
 					return
 	else if(flags & TIMER_OVERRIDE)
-		log_ss("TIMER_OVERRIDE used without TIMER_UNIQUE")
+		log_world("TIMER_OVERRIDE used without TIMER_UNIQUE")
 
 	var/datum/timedevent/timer = new(callback, wait, flags, hash, file && "[file]:[line]")
 	return timer.id
