@@ -37,8 +37,7 @@
 		set_popdown_timer()
 
 /obj/machinery/turret/covered/proc/set_popdown_timer()
-	deltimer(popdown_timer)
-	popdown_timer = addtimer(CALLBACK(src, /obj/machinery/turret/covered/proc/pop_down), popdown_time, TIMER_STOPPABLE)
+	popdown_timer = addtimer(CALLBACK(src, /obj/machinery/turret/covered/proc/pop_down), popdown_time, TIMER_UNIQUE|TIMER_OVERRIDE)
 
 
 /obj/machinery/turret/covered/proc/pop_up()	//pops the turret up

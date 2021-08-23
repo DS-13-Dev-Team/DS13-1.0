@@ -112,7 +112,8 @@
 
 
 	//Queue up the next song
-	deltimer(lobby_trackchange_timer)
+	if(lobby_trackchange_timer)	// Used in first itteration to prevent runtimes because timer doesn't exist
+		deltimer(lobby_trackchange_timer)
 	var/delay = MT.get_duration(src) + MUSIC_INTERVAL_DURATION
 	lobby_trackchange_timer = addtimer(CALLBACK(src, /client/proc/playtitlemusic), delay, TIMER_STOPPABLE)
 
