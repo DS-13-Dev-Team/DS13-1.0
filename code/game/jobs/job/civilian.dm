@@ -10,7 +10,7 @@
 	ideal_character_age = 30
 	starting_credits = 943
 
-	access = list(access_service, access_bartender)
+	access = list(access_service, access_bartender, access_maint_tunnels)
 	outfit_type = /decl/hierarchy/outfit/job/service/bar
 
 	min_skill = list(   SKILL_COOKING     = SKILL_ADEPT)
@@ -38,7 +38,7 @@ datum/job/bar/get_description_blurb()
 	starting_credits = 1240
 
 	salary	= 500	//Miners and civilians are underpaid plebs
-	access = list(access_service, access_cook)
+	access = list(access_service, access_cook, access_maint_tunnels)
 	outfit_type = /decl/hierarchy/outfit/job/service/line_cook
 
 	min_skill = list(   SKILL_COOKING     = SKILL_EXPERT,
@@ -125,7 +125,7 @@ datum/job/serviceman/get_description_blurb()
 	ideal_character_age = 30
 	starting_credits = 943
 
-	access = list(access_service)
+	access = list(access_service, access_maint_tunnels)
 	outfit_type = /decl/hierarchy/outfit/job/service/botanist
 
 	min_skill = list(   SKILL_BOTANY 	  = SKILL_EXPERT)

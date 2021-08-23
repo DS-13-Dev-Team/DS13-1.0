@@ -1,0 +1,52 @@
+################################
+# Example Changelog File
+#
+# Note: This file, and files beginning with ".", and files that don't end in ".yml" will not be read. If you change this file, you will look really dumb.
+#
+# Your changelog will be merged with a master changelog. (New stuff added only, and only on the date entry for the day it was merged.)
+# When it is, any changes listed below will disappear.
+#
+# Valid Prefixes: 
+#   bugfix
+#   wip (For works in progress)
+#   tweak
+#   soundadd
+#   sounddel
+#   rscadd (general adding of nice things)
+#   rscdel (general deleting of nice things)
+#   imageadd
+#   imagedel
+#   maptweak
+#   spellcheck (typo fixes)
+#   experiment
+#################################
+
+# Your name.  
+author: Snypehunter007
+
+# Optional: Remove this file after generating master changelog.  Useful for PR changelogs that won't get used again.
+delete-after: True
+
+# Any changes you've made.  See valid prefix list above.
+# INDENT WITH TWO SPACES.  NOT TABS.  SPACES.
+# SCREW THIS UP AND IT WON'T WORK.
+# Also, all entries are changed into a single [] after a master changelog generation. Just remove the brackets when you add new entries.
+# Please surround your changes in  double quotes ("), as certain characters otherwise screws up compiling. The quotes will not show up in the changelog.
+changes: 
+  - bugfix: "Fixed stores having no power-draw."
+  - bugfix: "Fixed the Cryo room missing an air alarm."
+  - bugfix: "Fixed the Solar Control Room not working properly."
+  - bugfix: "Fixed the Bridge having two APCs."
+  - bugfix: "Fixed the Upper Deck Bathroom not having the new bathroom floor tiles."
+  - bugfix: "Fixed Lower Deck Fore-Central Maintenance not having an APC."
+  - bugfix: "Fixed Lower Deck Fore-Central Maintenance not having an air alarm."
+  - rscadd: "All jobs now have maintenance access."
+  - rscadd: "Added research access to the Aegis Colony Medical Bay."
+  - rscadd: "Added a store to the Aegis Colony."
+  - rscadd: "Added a charging station outside of the Aegis Colony Airlock."
+  - rscadd: "Added an ore refinery to the Aegis Colony."
+  - rscadd: "Added an ATM to the Messhall and Engineering Lobby."
+  - rscadd: "Added webbing to security lockers."
+  - rscdel: "Removed one of the stores in the Messhall."
+  - rscdel: "Removed the store in the Cryo room."
+  - rscdel: "Removed the second mining cutter from the Spare Mining Supplies room."
