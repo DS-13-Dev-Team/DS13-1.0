@@ -29,7 +29,7 @@
 	spawner_spawnable = TRUE
 	virus_immune = 1
 	pixel_offset_x = -16
-	ventcrawl = TRUE
+	ventcrawl = FALSE //temporarily disabled until rebalanced.
 
 	evasion = 20	//Harder to hit than usual
 
