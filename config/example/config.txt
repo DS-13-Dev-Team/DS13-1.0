@@ -388,3 +388,6 @@ RADIATION_LOWER_LIMIT 0.15
 #ALWAYS_ADMIT_PATRONS
 
 ABANDON_ALLOWED
+
+## Enable automatic profiling - Byond 513.1506 and newer only.
+#AUTO_PROFILE
