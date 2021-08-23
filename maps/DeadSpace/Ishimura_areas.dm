@@ -63,6 +63,21 @@
 /area/ishimura/eva/prep/ADS
 	name = "\improper ADS Airlock Tank Bay"
 
+/area/ishimura/eva/solar
+	name = "\improper Solar Control"
+	area_flags = AREA_FLAG_EXTERNAL
+	requires_power = 1
+	has_gravity = FALSE
+	icon_state = "solar"
+
+/area/ishimura/eva/solar/port
+	name = "\improper Port Solar Array"
+	always_unpowered = 1
+
+/area/ishimura/eva/solar/starboard
+	name = "\improper Starboard Solar Array"
+	always_unpowered = 1
+
 /area/ishimura/eva/substation
 	name = "\improper EVA Deck Substation"
 	sound_env = SMALL_ENCLOSED
@@ -80,7 +95,7 @@
 	Areas of ishimura that are outdoors
 */
 /area/ishimura/external
-	icon_state = "hull"
+	icon_state = "external hull"
 	requires_power = 1
 	always_unpowered = 1
 	dynamic_lighting = 1
@@ -90,16 +105,6 @@
 	has_gravity = 0
 	area_flags = AREA_FLAG_EXTERNAL
 	ambience = list('sound/ambience/ambispace.ogg','sound/music/title2.ogg','sound/music/space.ogg','sound/music/main.ogg','sound/music/traitor.ogg')
-
-/area/ishimura/external/solar
-	name = "\improper Solar Control"
-	icon_state = "solar"
-
-/area/ishimura/external/solar/port
-	name = "\improper Port Solar Array"
-
-/area/ishimura/external/solar/starboard
-	name = "\improper Starboard Solar Array"
 
 //The channel area is cut in two for objective tracking purposes
 /area/ishimura/external/channel
@@ -113,9 +118,6 @@
 /area/ishimura/external/channel/second
 	name = "\improper Ishimura Spine, fore"
 	icon_state = "channel"
-
-/area/ishimura/external/hull
-	name = "\improper External Hull"
 
 //---------------------------------------------------MID DECK--AREAS---------------------------------------------------//
 /area/ishimura/upper
@@ -260,6 +262,9 @@
 
 /area/ishimura/upper/maintenance/central
 	name = "\improper Upper Deck Central Maintenance"
+
+/area/ishimura/upper/maintenance/fore
+	name = "\improper Upper Deck Fore Maintenance"
 
 /area/ishimura/upper/maintenance/fore_central
 	name = "\improper Upper Deck Fore-Central Maintenance"
@@ -683,11 +688,6 @@ area/ishimura/upper/medical/bpc
 	area_flags = AREA_FLAG_RAD_SHIELDED
 	sound_env = SMALL_ENCLOSED
 
-/area/shuttle/escape_pod10/station
-	name = "Escape Pod Nine"
-	area_flags = AREA_FLAG_RAD_SHIELDED
-	sound_env = SMALL_ENCLOSED
-
 //------------------Maintenance------------------//
 /area/ishimura/lower/maintenance
 	area_flags = AREA_FLAG_RAD_SHIELDED
@@ -711,7 +711,11 @@ area/ishimura/upper/medical/bpc
 	name = "\improper Lower Deck Aft-Starboard Maintenance"
 	turf_initializer = /decl/turf_initializer/maintenance
 
-/area/ishimura/lower/maintenance/engineering
+/area/ishimura/lower/maintenance/engineering_port
+	name = "\improper Lower Deck Engineering-Port Maintenance"
+	turf_initializer = /decl/turf_initializer/maintenance
+
+/area/ishimura/lower/maintenance/engineering_starboard
 	name = "\improper Lower Deck Engineering-Port Maintenance"
 	turf_initializer = /decl/turf_initializer/maintenance
 

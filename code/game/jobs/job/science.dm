@@ -15,7 +15,7 @@
 
 	salary = SALARY_COMMAND
 
-	access = list(access_cscio, access_bridge, access_research, access_medical, access_keycard_auth)
+	access = list(access_cscio, access_bridge, access_research, access_medical, access_maint_tunnels, access_keycard_auth)
 	outfit_type = /decl/hierarchy/outfit/job/science/cscio
 
 	min_skill = list(   SKILL_ANATOMY     = SKILL_BASIC,
@@ -48,7 +48,7 @@ datum/job/cscio/get_description_blurb()
 
 	salary = SALARY_EDUCATED
 
-	access = list(access_research, access_medical)
+	access = list(access_research, access_medical, access_maint_tunnels)
 	outfit_type = /decl/hierarchy/outfit/job/science/ra
 
 	min_skill = list(   SKILL_ANATOMY     = SKILL_BASIC,
