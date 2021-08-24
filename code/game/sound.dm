@@ -67,7 +67,7 @@ GLOBAL_LIST_INIT(fleshtear_sound, list('sound/effects/organic/flesh_tear_1.ogg',
 
 /proc/playsound(var/atom/source, soundin, vol as num, vary, extrarange as num, falloff, var/is_global, var/frequency, var/is_ambiance = 0)
 
-	var/stext = soundin
+
 
 
 	if(istext(soundin))
@@ -92,7 +92,6 @@ GLOBAL_LIST_INIT(fleshtear_sound, list('sound/effects/organic/flesh_tear_1.ogg',
 var/const/FALLOFF_SOUNDS = 0.5
 
 /mob/proc/playsound_local(var/turf/turf_source, soundin, vol as num, vary, frequency, falloff, is_global, extrarange)
-	var/stext = soundin
 
 
 
