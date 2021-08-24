@@ -17,7 +17,7 @@
 	view_range = 6
 	darksight_tint = DARKTINT_POOR
 
-	icon_template = 'icons/mob/necromorph/exploder.dmi'
+	icon_template = 'icons/mob/necromorph/exploder/exploder.dmi'
 	icon_lying = "_lying"
 	pixel_offset_x = -8
 	single_icon = FALSE
@@ -36,11 +36,14 @@
 	BP_CHEST =  list("path" = /obj/item/organ/external/chest/simple, "height" = new /vector2(1,1.65)),
 	BP_HEAD =   list("path" = /obj/item/organ/external/head/simple, "height" = new /vector2(1.65,1.85)),
 	BP_R_ARM =  list("path" = /obj/item/organ/external/arm/right/simple, "height" = new /vector2(0,1.60)),	//The exploder's right arm reaches the floor
-	BP_L_ARM =  list("path" = /obj/item/organ/external/arm/simple/exploder, "height" = new /vector2(0.8,1.60)),
-	BP_L_HAND = list("path" = /obj/item/organ/external/hand/exploder_pustule, "height" = new /vector2(0,0.8)),
+	BP_L_ARM = 	list("path" = /obj/item/organ/external/exploder_pustule, "height" = new /vector2(0,0.8)),
 	BP_L_LEG =  list("path" = /obj/item/organ/external/leg/simple, "height" = new /vector2(0,1))
 	)
 
+
+	variants = list(SPECIES_NECROMORPH_EXPLODER = list(WEIGHT = 1),
+	SPECIES_NECROMORPH_EXPLODER_RIGHT = list(WEIGHT = 1),
+	SPECIES_NECROMORPH_EXPLODER_CLASSIC = list(WEIGHT = 0.5))
 
 
 	has_organ = list(    // which required-organ checks are conducted.
@@ -115,6 +118,47 @@
 	modifier_verbs = list(KEY_CTRLALT = list(/atom/movable/proc/exploder_charge),
 	KEY_CTRLSHIFT = list(/mob/living/carbon/human/proc/exploder_explode))
 
+/datum/species/necromorph/exploder/classic
+	name = SPECIES_NECROMORPH_EXPLODER_CLASSIC
+	marker_spawnable = FALSE
+
+	icon_template = 'icons/mob/necromorph/exploder/exploder_classic.dmi'
+
+	has_limbs = list(
+	BP_CHEST =  list("path" = /obj/item/organ/external/chest/simple, "height" = new /vector2(1,1.65)),
+	BP_HEAD =   list("path" = /obj/item/organ/external/head/simple, "height" = new /vector2(1.65,1.85)),
+	BP_R_ARM =  list("path" = /obj/item/organ/external/arm/right/simple, "height" = new /vector2(0,1.60)),	//The exploder's right arm reaches the floor
+	BP_L_ARM =  list("path" = /obj/item/organ/external/arm/simple/exploder, "height" = new /vector2(0.8,1.60)),
+	BP_L_HAND = list("path" = /obj/item/organ/external/exploder_pustule/hand, "height" = new /vector2(0,0.8)),
+	BP_L_LEG =  list("path" = /obj/item/organ/external/leg/simple, "height" = new /vector2(0,1))
+	)
+
+
+/datum/species/necromorph/exploder/right
+	name = SPECIES_NECROMORPH_EXPLODER_RIGHT
+	marker_spawnable = FALSE
+	icon_template = 'icons/mob/necromorph/exploder/exploder_right.dmi'
+
+	has_limbs = list(
+	BP_CHEST =  list("path" = /obj/item/organ/external/chest/simple, "height" = new /vector2(1,1.65)),
+	BP_HEAD =   list("path" = /obj/item/organ/external/head/simple, "height" = new /vector2(1.65,1.85)),
+	BP_L_ARM =  list("path" = /obj/item/organ/external/arm/simple, "height" = new /vector2(0,1.60)),	//The exploder's right arm reaches the floor
+	BP_R_ARM = 	list("path" = /obj/item/organ/external/exploder_pustule/right, "height" = new /vector2(0,0.8)),
+	BP_L_LEG =  list("path" = /obj/item/organ/external/leg/simple, "height" = new /vector2(0,1))
+	)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #define EXPLODER_PASSIVE	"<h2>PASSIVE: Explosive Pustule:</h2><br>\
 The Exploder's left hand is a massive pustule full of flammable chemicals, which can create a devastating explosion when triggered.<br>\
@@ -123,7 +167,7 @@ The pustule is very fragile, and can be detonated by a fairly minor quantity of 
 The pustule does NOT automatically detonate on death, and if the exploder's left arm is severed, the pustule can fall off without exploding."
 
 #define EXPLODER_PASSIVE_2	"<h2>PASSIVE: Lightbearer:</h2><br>\
-The Exploder pustule grows brightly, providing a source of light all around him.<br>\
+The Exploder pustule glows brightly, providing a source of light all around him.<br>\
 If the exploder successfully detonates its pustule, the area around where he died is revealed to necrovision for 30 seconds post-death."
 
 #define EXPLODER_CHARGE_DESC	"<h2>Charge:</h2><br>\
@@ -140,6 +184,10 @@ The last resort. The exploder screams and shakes violently for 3 seconds, before
 
 /datum/species/necromorph/exploder/get_ability_descriptions()
 	.= ""
+	. += EXPLODER_PASSIVE
+	. += "<hr>"
+	. += EXPLODER_PASSIVE_2
+	. += "<hr>"
 	. += EXPLODER_CHARGE_DESC
 	. += "<hr>"
 	. += EXPLODER_EXPLODE_DESC
@@ -164,34 +212,57 @@ The last resort. The exploder screams and shakes violently for 3 seconds, before
 	The exploder's left hand is a giant organic bomb
 */
 
-/obj/item/organ/external/hand/exploder_pustule
-	organ_tag = BP_L_HAND
+/obj/item/organ/external/exploder_pustule
 	name = "pustule"
-	icon_name = "l_hand"
-	max_damage = 15
+	organ_tag = BP_L_ARM
+	icon_name = "l_arm"
+	max_damage = 30
 	min_broken_damage = 15
 	w_class = ITEM_SIZE_HUGE
+	body_part = ARM_LEFT
+	parent_organ = BP_CHEST
+	joint = "left elbow"
+	amputation_point = "left shoulder"
+	tendon_name = "palmaris longus tendon"
+	artery_name = "basilic vein"
+	arterial_bleed_severity = 0.75
+	limb_flags = ORGAN_FLAG_CAN_AMPUTATE
+	base_miss_chance = 12
+	best_direction	=	WEST
+	defensive_group = null
+	light_color = COLOR_NECRO_YELLOW
+	var/exploded = FALSE
+
+/obj/item/organ/external/exploder_pustule/hand
+	organ_tag = BP_L_HAND
+	icon_name = "l_hand"
 	body_part = HAND_LEFT
 	parent_organ = BP_L_ARM
 	joint = "left wrist"
 	amputation_point = "left wrist"
 	tendon_name = "carpal ligament"
-	arterial_bleed_severity = 0.5
-	limb_flags = ORGAN_FLAG_CAN_AMPUTATE
-	base_miss_chance = -5	//Big  target
-	var/exploded = FALSE
-	can_regrow = FALSE	//This is once only
+	light_color = COLOR_NECRO_YELLOW
 
 //The pustule casts soft yellow light in a broad area
-/obj/item/organ/external/hand/exploder_pustule/Initialize()
-	set_light(1, 1, 9, 2, COLOR_NECRO_YELLOW)
+/obj/item/organ/external/exploder_pustule/Initialize()
+	set_light(1, 1, 9, 2, light_color)
 	.=..()
+
+
+/obj/item/organ/external/exploder_pustule/right
+	organ_tag = BP_R_ARM
+	icon_name = "r_arm"
+	body_part = ARM_RIGHT
+	parent_organ = BP_CHEST
+	joint = "right elbow"
+	amputation_point = "right shoulder"
+	best_direction	=	EAST
 
 /*
 	The actual explosion!
 */
 //A multi-level explosion using a broad variety of cool mechanics
-/obj/item/organ/external/hand/exploder_pustule/proc/explode()
+/obj/item/organ/external/exploder_pustule/proc/explode()
 	if (exploded)
 		return
 
@@ -227,14 +298,14 @@ The last resort. The exploder screams and shakes violently for 3 seconds, before
 	return TRUE
 
 //When severed, the pustule always explodes, no clean cutting off
-/obj/item/organ/external/hand/exploder_pustule/droplimb(var/clean, var/disintegrate = DROPLIMB_EDGE, var/ignore_children, var/silent, var/atom/cutter)
+/obj/item/organ/external/exploder_pustule/droplimb(var/clean, var/disintegrate = DROPLIMB_EDGE, var/ignore_children, var/silent, var/atom/cutter)
 	if (!explode())
 		.=..(FALSE, DROPLIMB_BLUNT, ignore_children, silent)	//We pass false to clean, and droplimb blunt to make sure its detonated
 
 
 
 //Once severed, the pustule can be picked up and thrown as a grenade, detonation on impact
-/obj/item/organ/external/hand/exploder_pustule/throw_impact(atom/hit_atom, var/speed)
+/obj/item/organ/external/exploder_pustule/throw_impact(atom/hit_atom, var/speed)
 	explode()
 
 
@@ -244,7 +315,7 @@ The last resort. The exploder screams and shakes violently for 3 seconds, before
 */
 /datum/species/necromorph/exploder/proc/can_explode(var/mob/living/carbon/human/H)
 	.=FALSE
-	var/obj/item/organ/external/hand/exploder_pustule/E = H.get_organ(BP_L_HAND)
+	var/obj/item/organ/external/exploder_pustule/E = H.get_organ_by_type(/obj/item/organ/external/exploder_pustule)
 	if (QDELETED(E) || !istype(E) || E.is_stump() || E.exploded || E.owner != H)
 		return
 
@@ -292,7 +363,7 @@ The last resort. The exploder screams and shakes violently for 3 seconds, before
 	if (!ES.can_explode(src))
 		return
 
-	var/obj/item/organ/external/hand/exploder_pustule/E = get_organ(BP_L_HAND)
+	var/obj/item/organ/external/exploder_pustule/E = get_organ_by_type(/obj/item/organ/external/exploder_pustule)
 	E.explode()	//Kaboom!
 
 
@@ -316,7 +387,7 @@ The last resort. The exploder screams and shakes violently for 3 seconds, before
 
 //When severed, the arm is a seperate object with the pustule in its contents. We pass along events to it
 /obj/item/organ/external/arm/simple/exploder/throw_impact(atom/hit_atom, var/speed)
-	for (var/obj/item/organ/external/hand/exploder_pustule/EP in contents)
+	for (var/obj/item/organ/external/exploder_pustule/EP in contents)
 		EP.throw_impact(hit_atom, speed)
 
 	.=..()
@@ -324,11 +395,19 @@ The last resort. The exploder screams and shakes violently for 3 seconds, before
 
 
 /obj/item/organ/external/arm/simple/exploder/bullet_act(var/obj/item/projectile/P, var/def_zone)
-	for (var/obj/item/organ/external/hand/exploder_pustule/EP in contents)
+	for (var/obj/item/organ/external/exploder_pustule/EP in contents)
 		EP.bullet_act(P, def_zone)
 
 	.=..()
 
+
+/obj/item/organ/external/arm/simple/exploder/right
+	organ_tag = BP_R_ARM
+	icon_name = "r_arm"
+	body_part = ARM_RIGHT
+	joint = "right elbow"
+	amputation_point = "right shoulder"
+	best_direction	=	EAST
 
 
 /*
@@ -376,7 +455,7 @@ The last resort. The exploder screams and shakes violently for 3 seconds, before
 			charger.forceMove(get_turf(charge.last_obstacle))	//Move ontop of them for maximum damage
 
 
-		var/obj/item/organ/external/hand/exploder_pustule/E = charger.get_organ(BP_L_HAND)
+		var/obj/item/organ/external/exploder_pustule/E = charger.get_organ(BP_L_HAND)
 		if (istype(E))
 
 			E.explode()	//Kaboom!
