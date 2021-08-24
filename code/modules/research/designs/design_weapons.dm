@@ -133,7 +133,7 @@ S	fuel tank (hydrazine)
 	name = "T15 Javelin Gun"
 	id = "javgun"
 	build_path = /obj/item/weapon/gun/projectile/javelin_gun
-	materials = list(MATERIAL_PLASTEEL = 4000, MATERIAL_STEEL = 35000, MATERIAL_TRITIUM = 4000, MATERIAL_PHORON = 4000)
+	materials = list(MATERIAL_PLASTEEL = 4000, MATERIAL_STEEL = 35000, MATERIAL_PHORON = 4000)
 	price = 11000
 
 /datum/design/item/weapon/flamethrower
@@ -150,7 +150,7 @@ S	fuel tank (hydrazine)
 	materials = list(MATERIAL_STEEL = 12500, MATERIAL_PLASTEEL = 10000, MATERIAL_GLASS = 350, MATERIAL_DIAMOND = 800, MATERIAL_PLASTIC = 2000)
 	price = 15000
 
-/datum/design/item/weapon/seeker
+/datum/design/item/weapon/forcegun
 	name = "Handheld Graviton Accelerator"
 	id = "forcegun"
 	build_path = /obj/item/weapon/gun/energy/forcegun
@@ -174,7 +174,7 @@ S	fuel tank (hydrazine)
 	name = "Incendiary Divet Magazine"
 	id = "icds"
 	materials = list(MATERIAL_STEEL = 4000, MATERIAL_PHORON = 750)
-	chemicals = list(/datum/reagent/oxygen = 50)
+	chemicals = list(/datum/reagent/water = 50)	// From lore perspective oxyphoron will be inside of bullets
 	build_path = /obj/item/ammo_magazine/divet/incendiary
 	build_type = PROTOLATHE
 
@@ -234,7 +234,7 @@ S	fuel tank (hydrazine)
 	name = "seeker shell"
 	id = "seeker_ammo"
 	materials = list(MATERIAL_PLASTEEL = 5000, MATERIAL_DIAMOND = 1250, MATERIAL_URANIUM = 500)
-	build_path = /obj/item/ammo_casing/seeker
+	build_path = /obj/item/ammo_magazine/seeker
 	price = 1750
 
 

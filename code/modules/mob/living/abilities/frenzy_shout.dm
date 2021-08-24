@@ -33,7 +33,8 @@
 /datum/extension/frenzy_buff/proc/set_timer(var/newduration)
 	if (newduration)
 		duration = newduration
-	lifetimer = addtimer(CALLBACK(src, /datum/extension/frenzy_buff/proc/finish), duration, TIMER_UNIQUE|TIMER_OVERRIDE)
+	deltimer(lifetimer)
+	lifetimer = addtimer(CALLBACK(src, /datum/extension/frenzy_buff/proc/finish), duration, TIMER_STOPPABLE)
 
 /datum/extension/frenzy_buff/proc/finish()
 	to_chat(user, SPAN_NOTICE("You feel your body slowing down as your muscles relax"))
