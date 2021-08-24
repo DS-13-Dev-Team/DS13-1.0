@@ -31,8 +31,7 @@
 	return
 
 /obj/screen/movable/tracker/proc/set_lifetime(var/lifetime)
-	if(lifetimer)	// Used when proc is called for the first time to prevent runtimes
-		deltimer(lifetimer)
+	deltimer(lifetimer)
 	lifetimer = addtimer(CALLBACK(src, /obj/screen/movable/tracker/proc/end), lifetime,  TIMER_STOPPABLE)
 
 /obj/screen/movable/tracker/proc/end()

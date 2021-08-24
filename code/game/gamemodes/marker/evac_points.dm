@@ -16,8 +16,7 @@
 	var/show_admin_warning_5 = TRUE
 
 /datum/game_mode/marker/proc/charge_evac_points()
-	if(pointgain_timer)	// Used to prevent runtimes when proc is called for the first time
-		deltimer(pointgain_timer) //Recursive function that will slowly tick down the clock until the valour comes to rescue the ishimura's crew.
+	deltimer(pointgain_timer) //Recursive function that will slowly tick down the clock until the valour comes to rescue the ishimura's crew.
 
 	//We get a basic pointgain based on ship systems
 	var/pointgain = GLOB.shipsystem.get_point_gen()

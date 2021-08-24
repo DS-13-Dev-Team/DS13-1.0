@@ -118,8 +118,7 @@
 	update_icon()
 
 /obj/item/marker_shard/proc/set_deploy_timer()
-	if(deploy_timer)	// Used to prevent runtimes if there is no timer
-		deltimer(deploy_timer)
+	deltimer(deploy_timer)
 	if (active)
 		deploy_timer = addtimer(CALLBACK(src, /obj/item/marker_shard/proc/attempt_deploy),  deploy_time, TIMER_STOPPABLE)
 
