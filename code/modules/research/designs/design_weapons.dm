@@ -238,6 +238,14 @@ S	fuel tank (hydrazine)
 	price = 1750
 
 
+/datum/design/item/ammo/jav_ammo
+	name = "javelin rack"
+	desc = "A set of javelins for the launcher"
+	id = "javelin_rack"
+	materials = list(MATERIAL_PLASTEEL = 4000, MATERIAL_PHORON = 2500)
+	build_path = /obj/item/ammo_magazine/javelin
+	price = 1200	// 400 per 2 spears, same as in DS2
+
 
 /datum/design/item/ammo/fuel_tank
 	name = "fuel tank (gasoline)"
