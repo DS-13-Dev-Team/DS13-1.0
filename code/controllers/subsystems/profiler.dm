@@ -27,7 +27,7 @@ SUBSYSTEM_DEF(profiler)
 
 /datum/controller/subsystem/profiler/proc/StartProfiling()
 #if DM_BUILD < 1506 || DM_VERSION < 513
-	log_ss("Auto profiling unsupported on this byond version")
+	log_world("Auto profiling unsupported on this byond version")
 	CONFIG_SET(flag/auto_profile, FALSE)
 #else
 	world.Profile(PROFILE_START)
@@ -40,12 +40,12 @@ SUBSYSTEM_DEF(profiler)
 
 /datum/controller/subsystem/profiler/proc/DumpFile()
 #if DM_BUILD < 1506 || DM_VERSION < 513
-	log_ss("Auto profiling unsupported on this byond version")
+	log_world("Auto profiling unsupported on this byond version")
 	CONFIG_SET(flag/auto_profile, FALSE)
 #else
 	var/current_profile_data = world.Profile(PROFILE_REFRESH,format="json")
 	if(!length(current_profile_data)) //Would be nice to have explicit proc to check this
-		log_ss("Warning, profiling stopped manually before dump.")
+		log_world("Warning, profiling stopped manually before dump.")
 	var/json_file = file("[GLOB.log_directory]/[PROFILER_FILENAME]")
 	if(fexists(json_file))
 		fdel(json_file)
