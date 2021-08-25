@@ -297,7 +297,7 @@ datum/projectile_data
 * around us, then checks the difference.
 */
 /proc/getOPressureDifferential(var/turf/loc)
-	var/minp=16777216;
+	var/minp=SHORT_REAL_LIMIT;
 	var/maxp=0;
 	for(var/dir in GLOB.cardinal)
 		var/turf/simulated/T=get_turf(get_step(loc,dir))

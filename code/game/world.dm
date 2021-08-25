@@ -71,6 +71,12 @@ GLOBAL_VAR(restart_counter)
 /world/New()
 	//logs
 	SetupLogs()
+
+	//Early profile for auto-profiler - will be stopped on profiler init if necessary.
+#if DM_VERSION >= 513 && DM_BUILD >= 1506
+	world.Profile(PROFILE_START)
+#endif
+
 	var/date_string = time2text(world.realtime, "YYYY/MM-Month/DD-Day")
 	href_logfile = file("data/logs/[date_string] hrefs.htm")
 	diary = file("data/logs/[date_string].log")

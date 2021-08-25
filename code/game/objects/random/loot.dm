@@ -18,7 +18,7 @@ GLOBAL_LIST_EMPTY(loot_locations)
 	icon_state = "randomloot"
 	possible_spawns = list(/obj/random/common_loot = 74,
 				/obj/random/uncommon_loot = 20,
-				/obj/random/rare_loot = 6)
+				/obj/random/rare_loot = 6.2)
 
 /obj/random/loot/Initialize()
 	GLOB.loot_locations |= get_turf(src)
@@ -126,7 +126,7 @@ GLOBAL_LIST_EMPTY(loot_locations)
 
 /obj/random/rare_loot
 	possible_spawns = list( /obj/item/stack/power_node = 3,
-	/obj/item/store_schematic = 0.75,
+	/obj/item/store_schematic = 0.8,
 	/obj/random/material/rare = 1,
 	/obj/random/tool/modded = 1,
 	/obj/random/material/rare = 1,

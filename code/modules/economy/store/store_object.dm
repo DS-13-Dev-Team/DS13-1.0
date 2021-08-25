@@ -13,6 +13,11 @@ GLOBAL_VAR_INIT(number_of_store_kiosks, 0)
 	layer = ABOVE_WINDOW_LAYER	//Above windows but below humans
 	anchored = TRUE
 
+	// Power
+	use_power = 1
+	idle_power_usage = 50
+	var/vend_power_usage = 450 //actuators and stuff
+
 	var/door_state = STORE_OPEN
 
 	//Only one person can step into the store at once

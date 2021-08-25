@@ -33,8 +33,9 @@
 	var/list/custom
 	if (prefs)
 		custom = prefs.get_necro_custom_list()
-	else
-		//With blank prefs, we use the global default
+
+	if (!prefs || !custom || !custom[species_tag])
+		//With blank prefs, or no data for current, we use the global default
 		custom = get_default_necro_custom()
 
 	var/list/our_data = custom[species_tag]

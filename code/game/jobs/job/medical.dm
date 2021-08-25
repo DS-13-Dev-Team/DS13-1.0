@@ -44,7 +44,7 @@ datum/job/smo/get_description_blurb()
 	minimal_player_age = 18
 	starting_credits = 3500
 
-	access = list(access_medical, access_chemistry, access_research)
+	access = list(access_medical, access_chemistry, access_research, access_maint_tunnels)
 	outfit_type = /decl/hierarchy/outfit/job/medical/md
 
 	salary = SALARY_EDUCATED
@@ -76,7 +76,7 @@ datum/job/md/get_description_blurb()
 
 	salary = SALARY_EDUCATED
 
-	access = list(access_medical, access_surgery, access_research)
+	access = list(access_medical, access_surgery, access_research, access_maint_tunnels)
 	outfit_type = /decl/hierarchy/outfit/job/medical/surg
 
 	min_skill = list(	SKILL_ANATOMY     = SKILL_EXPERT,
