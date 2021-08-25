@@ -67,6 +67,9 @@ GLOBAL_LIST_INIT(fleshtear_sound, list('sound/effects/organic/flesh_tear_1.ogg',
 
 /proc/playsound(var/atom/source, soundin, vol as num, vary, extrarange as num, falloff, var/is_global, var/frequency, var/is_ambiance = 0)
 
+
+
+
 	if(istext(soundin))
 		soundin = get_sfx(soundin) // same sound for everyone
 
@@ -89,6 +92,9 @@ GLOBAL_LIST_INIT(fleshtear_sound, list('sound/effects/organic/flesh_tear_1.ogg',
 var/const/FALLOFF_SOUNDS = 0.5
 
 /mob/proc/playsound_local(var/turf/turf_source, soundin, vol as num, vary, frequency, falloff, is_global, extrarange)
+
+
+
 	if(!src.client || ear_deaf > 0)	return
 	var/sound/S = soundin
 	if(!istype(S))
@@ -113,7 +119,10 @@ var/const/FALLOFF_SOUNDS = 0.5
 		//sound volume falloff with distance
 		var/distance = get_dist(T, turf_source)
 
+
+
 		S.volume -= max(distance - (world.view + extrarange), 0) * 2 //multiplicative falloff to add on top of natural audio falloff.
+
 
 		var/datum/gas_mixture/hearer_env = T.return_air()
 		var/datum/gas_mixture/source_env = turf_source.return_air()
@@ -130,6 +139,7 @@ var/const/FALLOFF_SOUNDS = 0.5
 			pressure_factor = max(pressure_factor, 0.15)	//hearing through contact
 
 		S.volume *= pressure_factor
+
 
 		if (S.volume <= 0)
 			return	//no volume means no sound
@@ -167,6 +177,8 @@ var/const/FALLOFF_SOUNDS = 0.5
 		else
 			var/area/A = get_area(src)
 			S.environment = A.sound_env
+
+
 
 	src << S
 

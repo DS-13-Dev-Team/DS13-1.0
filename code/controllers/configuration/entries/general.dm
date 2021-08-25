@@ -245,3 +245,5 @@ Basics, the most important.
 /datum/config_entry/string/discord_url
 
 /datum/config_entry/flag/forbid_singulo_possession
+
+/datum/config_entry/flag/auto_profile
