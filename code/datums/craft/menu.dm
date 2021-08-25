@@ -53,7 +53,7 @@
 	if(CR)
 		data["cur_item"] = list(
 			"name" = CR.name,
-			"icon" = null,
+			"icon" = getAtomCacheFilename(CR.result),
 			"ref"  = "\ref[CR]",
 			"desc" = CR.get_description(),
 			"steps" = CR.get_step_descriptions()

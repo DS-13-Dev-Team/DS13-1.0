@@ -43,3 +43,12 @@
 		t++
 	if (t < timeout_time)
 		return TRUE
+
+// will return filename for cached atom icon or null if not cached
+// can accept atom objects or types
+/proc/getAtomCacheFilename(atom/A)
+	if(!A || (!istype(A) && !ispath(A)))
+		return
+	var/filename = "[ispath(A) ? A : A.type].png"
+	filename = sanitizeFileName(filename)
+	return filename
