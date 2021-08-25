@@ -19,9 +19,13 @@ SUBSYSTEM_DEF(database)
 	init_order = SS_INIT_DATABASE	//Initializes before atoms
 
 
+
 	//Design caches
 	var/list/known_designs
 	var/list/unknown_designs
+
+
+	var/list/pending_schematics = list()
 
 	//A list of mind datums whose credit amounts have changed recently, and are queued for updates
 	//These are batched into one per mind per minute, as needed, to reduce database load.
@@ -37,8 +41,8 @@ SUBSYSTEM_DEF(database)
 /datum/controller/subsystem/database/Initialize()
 
 
-
-	update_store_designs()
+	log_world("Database initializing")
+	//update_store_designs()	//No point doing this here, its called from the asset system after designs are initialised
 
 
 
@@ -204,6 +208,12 @@ SUBSYSTEM_DEF(database)
 
 	//And now reload the database for individual stores
 	load_store_database()
+
+
+	//Now all thats done, if there were any schematics waiting on this moment, lets allow them to do their thing now
+	for (var/obj/item/store_schematic/SS in pending_schematics)
+		SS.get_design()
+	pending_schematics.Cut()
 
 
 

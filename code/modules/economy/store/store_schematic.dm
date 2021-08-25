@@ -60,9 +60,10 @@
 
 /obj/item/store_schematic/proc/get_design()
 
-	//If the designs aren't populated, do so
+	//If the designs aren't populated, add ourself to a pending list, we'll be back!
 	if (!SSdatabase.unknown_designs)
-		SSdatabase.update_store_designs()
+		SSdatabase.pending_schematics |= src
+		return
 
 	if (!length(SSdatabase.unknown_designs))
 		//There are no unknown designs left? We'll just have to delete ourselves
