@@ -36,6 +36,9 @@
 		"tgui.js"	= 'tgui/assets/tgui.js'
 	)
 
+/datum/asset/simple/craft
+	keep_local_name = TRUE
+
 /datum/asset/simple/craft/register()
 	for(var/name in SScraft.categories)
 		for(var/datum/craft_recipe/CR in SScraft.categories[name])
@@ -54,7 +57,8 @@
 
 	. = ..()
 
-
+/datum/asset/simple/research_designs
+	keep_local_name = TRUE
 
 /datum/asset/simple/research_designs/register()
 	for(var/R in subtypesof(/datum/design))
