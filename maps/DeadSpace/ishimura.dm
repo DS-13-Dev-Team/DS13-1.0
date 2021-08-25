@@ -86,7 +86,7 @@
 						/datum/job/sso, /datum/job/security_officer, /datum/job/smo,
 						/datum/job/md, /datum/job/surg, /datum/job/cscio, /datum/job/ra,
 						/datum/job/ce, /datum/job/tech_engineer, /datum/job/so,
-						/datum/job/serviceman, /datum/job/dom, /datum/job/foreman,
+						/datum/job/serviceman, /datum/job/salvage, /datum/job/dom, /datum/job/foreman,
 						/datum/job/planet_cracker, /datum/job/line_cook, /datum/job/bar, /datum/job/botanist
 						)
 /turf/simulated/wall
