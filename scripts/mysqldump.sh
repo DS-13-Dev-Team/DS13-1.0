@@ -17,7 +17,7 @@ DATE=$(/bin/date +%Y-%m-%d)
 BAK="/home/ss13/mysql-backups/MySQLdump-$DATE"
 
 #The name of the schema (database)
-SCHEMA="tgstation"
+SCHEMA="ds13"
 
 #You don't need to change this \/
 
