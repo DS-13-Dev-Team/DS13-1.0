@@ -44,16 +44,13 @@ export const WarningParameter = new Juke.Parameter({
 export const DmMapsIncludeTarget = new Juke.Target({
   executes: async () => {
     const folders = [
-      ...Juke.glob('_maps/RandomRuins/**/*.dmm'),
-      ...Juke.glob('_maps/RandomZLevels/**/*.dmm'),
-      ...Juke.glob('_maps/shuttles/**/*.dmm'),
-      ...Juke.glob('_maps/templates/**/*.dmm'),
+      ...Juke.glob('maps/DeadSpace/**/*.dmm')
     ];
     const content = folders
-      .map((file) => file.replace('_maps/', ''))
+      .map((file) => file.replace('maps/', ''))
       .map((file) => `#include "${file}"`)
       .join('\n') + '\n';
-    fs.writeFileSync('_maps/templates.dm', content);
+    fs.writeFileSync('maps/_map_include.dm', content);
   },
 });
 
