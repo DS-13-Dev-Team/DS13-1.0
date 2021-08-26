@@ -27,7 +27,7 @@ var/global/datum/controller/occupations/job_master
 		occupations_by_title = list()
 		var/list/all_jobs = list(/datum/job/assistant) | GLOB.using_map.allowed_jobs
 		if(!all_jobs.len)
-			log_error("<span class='warning'>Error setting up jobs, no job datums found!</span>")
+			log_debug("<span class='warning'>Error setting up jobs, no job datums found!</span>")
 			return FALSE
 		for(var/J in all_jobs)
 			var/datum/job/job = decls_repository.get_decl(J)
@@ -65,7 +65,7 @@ var/global/datum/controller/occupations/job_master
 		if(!GLOB.skills.len)
 			decls_repository.get_decl(/decl/hierarchy/skill)
 		if(!GLOB.skills.len)
-			log_error("<span class='warning'>Error setting up job skill requirements, no skill datums found!</span>")
+			log_debug("<span class='warning'>Error setting up job skill requirements, no skill datums found!</span>")
 			return FALSE
 		return TRUE
 

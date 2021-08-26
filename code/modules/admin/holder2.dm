@@ -24,7 +24,7 @@ var/list/admin_datums = list()
 
 /datum/admins/New(initial_rank = "Temporary Admin", initial_rights = 0, ckey)
 	if(!ckey)
-		error("Admin datum created without a ckey argument. Datum has been deleted")
+		log_debug("Admin datum created without a ckey argument. Datum has been deleted")
 		qdel(src)
 		return
 	admincaster_signature = "[GLOB.using_map.company_name] Officer #[rand(0,9)][rand(0,9)][rand(0,9)]"

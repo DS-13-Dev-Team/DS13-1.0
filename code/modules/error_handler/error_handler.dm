@@ -62,7 +62,7 @@ GLOBAL_VAR_INIT(total_runtimes_skipped, 0)
 			error_cooldown[erroruid] = 0
 			if(skipcount > 0)
 				to_world_log("\[[time_stamp()]] Skipped [skipcount] runtimes in [E.file],[E.line].")
-				GLOB.error_cache.log_error(E, skip_count = skipcount)
+				GLOB.error_cache.log_debug(E, skip_count = skipcount)
 
 	error_last_seen[erroruid] = world.time
 	error_cooldown[erroruid] = cooldown
@@ -96,7 +96,7 @@ GLOBAL_VAR_INIT(total_runtimes_skipped, 0)
 	if(silencing)
 		desclines += "  (This error will now be silenced for [configured_error_silence_time / 600] minutes)"
 	if(GLOB.error_cache)
-		GLOB.error_cache.log_error(E, desclines)
+		GLOB.error_cache.log_debug(E, desclines)
 
 	to_world_log("\[[time_stamp()]] Runtime in [E.file],[E.line]: [E]")
 	for(var/line in desclines)

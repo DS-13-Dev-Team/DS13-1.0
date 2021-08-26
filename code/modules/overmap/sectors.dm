@@ -39,7 +39,10 @@
 	start_y = start_y || rand(OVERMAP_EDGE, GLOB.using_map.overmap_size - OVERMAP_EDGE)
 
 	forceMove(locate(start_x, start_y, GLOB.using_map.overmap_z))
-	testing("Located sector \"[name]\" at [start_x],[start_y], containing Z [english_list(map_z)]")
+#ifdef TESTING
+	var/message = "Located sector \"[name]\" at [start_x],[start_y], containing Z [english_list(map_z)]"
+	testing(message)
+#endif
 
 	GLOB.using_map.player_levels |= map_z
 

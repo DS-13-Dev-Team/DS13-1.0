@@ -13,7 +13,7 @@ var/const/MAP_HAS_RANK = 2		//Rank system, also togglable
 		else
 			M = new type
 		if(!M.path)
-			log_error("Map '[M]' does not have a defined path, not adding to map list!")
+			log_debug("Map '[M]' does not have a defined path, not adding to map list!")
 		else
 			GLOB.all_maps[M.path] = M
 	return 1

@@ -32,7 +32,7 @@ datum/unit_test/vision_glasses/start_test()
 datum/unit_test/vision_glasses/check_result()
 
 	if(isnull(H) || H.life_tick < 2)
-		return 0       
+		return 0
 
 	if(isnull(H.glasses))
 		fail("Mob doesn't have glasses on")
@@ -84,21 +84,21 @@ datum/unit_test/storage_capacity_test/start_test()
 	var/bad_tests = 0
 
 	if(!isnull(S.storage_slots) && S.contents.len > S.storage_slots)
-		log_unit_test("[bad_msg] Contains more items than it has slots for ([S.contents.len] / [S.storage_slots]). [ascii_reset]")
+		log_test("[bad_msg] Contains more items than it has slots for ([S.contents.len] / [S.storage_slots]). [ascii_reset]")
 		bad_tests++
 
 	var/total_storage_space = 0
 	for(var/obj/item/I in S.contents)
 		if(I.w_class > S.max_w_class)
-			log_unit_test("[bad_msg] Contains an item \[[I.type]\] that is too big to be held ([I.w_class] / [S.max_w_class]). [ascii_reset]")
+			log_test("[bad_msg] Contains an item \[[I.type]\] that is too big to be held ([I.w_class] / [S.max_w_class]). [ascii_reset]")
 			bad_tests++
 		if(istype(I, /obj/item/weapon/storage) && I.w_class >= S.w_class)
-			log_unit_test("[bad_msg] Contains a storage item \[[I.type]\] the same size or larger than its container ([I.w_class] / [S.w_class]). [ascii_reset]")
+			log_test("[bad_msg] Contains a storage item \[[I.type]\] the same size or larger than its container ([I.w_class] / [S.w_class]). [ascii_reset]")
 			bad_tests++
 		total_storage_space += I.get_storage_cost()
 
 	if(total_storage_space > S.max_storage_space)
-		log_unit_test("[bad_msg] Contains more items than it has storage space for ([total_storage_space] / [S.max_storage_space]). [ascii_reset]")
+		log_test("[bad_msg] Contains more items than it has storage space for ([total_storage_space] / [S.max_storage_space]). [ascii_reset]")
 		bad_tests++
 
 	return bad_tests

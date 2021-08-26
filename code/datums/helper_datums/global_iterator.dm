@@ -18,7 +18,7 @@ Control functions:
 	stop() - stops the loop. Returns null if datum is already inactive and 1 on success.
 
 	set_delay(new_delay) - sets the delay between iterations. Pretty selfexplanatory.
-	Returns 0 on error(new_delay is not numerical), 1 otherwise.
+	Returns 0 on log_debug(new_delay is not numerical), 1 otherwise.
 
 	set_process_args(list/arguments) - passes the supplied arguments to the process() proc.
 
@@ -139,7 +139,7 @@ Data storage vars:
 			arg_list = arguments
 			return 1
 		else
-//			log_error("<span class='danger'>Invalid arguments supplied for [src.type], ref = \ref[src]</span>")
+//			log_debug("<span class='danger'>Invalid arguments supplied for [src.type], ref = \ref[src]</span>")
 
 			return 0
 

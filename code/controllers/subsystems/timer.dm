@@ -98,7 +98,6 @@ SUBSYSTEM_DEF(timer)
 				bucket_node = bucket_node.next
 				anti_loop_check--
 			while(bucket_node && bucket_node != bucket_head && anti_loop_check)
-
 		to_log += "Active timers in the second_queue queue:"
 		for(var/I in second_queue)
 			to_log += get_timer_debug_string(I)

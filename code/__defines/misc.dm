@@ -1,3 +1,7 @@
+
+//Force the log directory to be something specific in the data/logs folder
+#define OVERRIDE_LOG_DIRECTORY_PARAMETER "log-directory"
+
 #define DEBUG
 // Turf-only flags.
 #define TURF_FLAG_NOJAUNT 1 // This is used in literally one place, turf.dm, to block ethereal jaunt.

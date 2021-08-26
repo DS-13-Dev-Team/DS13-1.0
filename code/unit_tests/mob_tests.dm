@@ -521,7 +521,7 @@ datum/unit_test/robot_module_icons/start_test()
 	for(var/i=1, i<=robot_modules.len, i++)
 		var/bad_msg = "[ascii_red]--------------- [robot_modules[i]]"
 		if(!(lowertext(robot_modules[i]) in valid_states))
-			log_unit_test("[bad_msg] does not contain a valid icon state in [icon_file][ascii_reset]")
+			log_test("[bad_msg] does not contain a valid icon state in [icon_file][ascii_reset]")
 			failed=1
 
 	if(failed)
@@ -545,11 +545,11 @@ datum/unit_test/species_base_skin/start_test()
 		var/datum/species/S = all_species[species_name]
 		if(S.base_skin_colours)
 			if(!(S.appearance_flags & HAS_BASE_SKIN_COLOURS))
-				log_unit_test("[S.name] has a skin colour list but no HAS_BASE_SKIN_COLOURS flag.")
+				log_test("[S.name] has a skin colour list but no HAS_BASE_SKIN_COLOURS flag.")
 				failcount++
 				continue
 			if(!(S.base_skin_colours.len >= 2))
-				log_unit_test("[S.name] needs at least two items in the base_skin_colour list.")
+				log_test("[S.name] needs at least two items in the base_skin_colour list.")
 				failcount++
 				continue
 			var/to_fail = FALSE
@@ -567,12 +567,12 @@ datum/unit_test/species_base_skin/start_test()
 							to_fail = TRUE
 							log_debug("[S.name] has missing icon: [icon_name][gen][S.base_skin_colours[base]] for base [base] and limb tag [tag].")
 			if(to_fail)
-				log_unit_test("[S.name] is missing one or more base icons.")
+				log_test("[S.name] is missing one or more base icons.")
 				failcount++
 				continue
 
 		else if(S.appearance_flags & HAS_BASE_SKIN_COLOURS)
-			log_unit_test("[S.name] has a HAS_BASE_SKIN_COLOURS flag but no skin colour list.")
+			log_test("[S.name] has a HAS_BASE_SKIN_COLOURS flag but no skin colour list.")
 			failcount++
 			continue
 
