@@ -46,3 +46,7 @@ Session.vim
 
 # auto-generated tag files
 tags
+
+#extra map stuff
+/maps/**/backup/
+/maps/templates.dm

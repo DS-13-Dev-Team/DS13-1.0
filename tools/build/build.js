@@ -50,7 +50,7 @@ export const DmMapsIncludeTarget = new Juke.Target({
       .map((file) => file.replace('maps/', ''))
       .map((file) => `#include "${file}"`)
       .join('\n') + '\n';
-    fs.writeFileSync('maps/_map_include.dm', content);
+    fs.writeFileSync('maps/templates.dm', content);
   },
 });
 
@@ -232,7 +232,7 @@ export const CleanTarget = new Juke.Target({
     Juke.rm('*.{dmb,rsc}');
     Juke.rm('*.mdme*');
     Juke.rm('*.m.*');
-    Juke.rm('_maps/templates.dm');
+    Juke.rm('maps/templates.dm');
   },
 });
 
