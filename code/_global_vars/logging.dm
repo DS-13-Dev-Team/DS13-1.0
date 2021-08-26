@@ -1,3 +1,5 @@
+GLOBAL_VAR(world_asset_log)
+GLOBAL_PROTECT(world_asset_log)
 GLOBAL_VAR(log_directory)
 GLOBAL_PROTECT(log_directory)
 GLOBAL_VAR(world_game_log)
