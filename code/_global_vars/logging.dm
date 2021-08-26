@@ -1,6 +1,8 @@
 var/runtime_diary = null
 
 
+GLOBAL_VAR(world_asset_log)
+GLOBAL_PROTECT(world_asset_log)
 var/list/combatlog = list()
 var/list/IClog     = list()
 var/list/OOClog    = list()

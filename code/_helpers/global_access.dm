@@ -41,8 +41,6 @@
 			return global.SSalarm;
 		if("SSantags")
 			return global.SSantags;
-		if("SSasset")
-			return global.SSasset;
 		if("SSatoms")
 			return global.SSatoms;
 		if("SScircuit_components")
@@ -231,10 +229,6 @@
 			return global.ascii_reset;
 		if("ascii_yellow")
 			return global.ascii_yellow;
-		if("asset_cache")
-			return global.asset_cache;
-		if("asset_datums")
-			return global.asset_datums;
 		if("assigned")
 			return global.assigned;
 		if("assigned_blocks")
@@ -998,8 +992,6 @@
 			global.SSalarm=newval;
 		if("SSantags")
 			global.SSantags=newval;
-		if("SSasset")
-			global.SSasset=newval;
 		if("SSatoms")
 			global.SSatoms=newval;
 		if("SScircuit_components")
@@ -1188,10 +1180,6 @@
 			global.ascii_reset=newval;
 		if("ascii_yellow")
 			global.ascii_yellow=newval;
-		if("asset_cache")
-			global.asset_cache=newval;
-		if("asset_datums")
-			global.asset_datums=newval;
 		if("assigned")
 			global.assigned=newval;
 		if("assigned_blocks")
@@ -1934,7 +1922,6 @@
 	"SSairflow",
 	"SSalarm",
 	"SSantags",
-	"SSasset",
 	"SSatoms",
 	"SScircuit_components",
 	"SScraft",
@@ -2029,8 +2016,6 @@
 	"ascii_red",
 	"ascii_reset",
 	"ascii_yellow",
-	"asset_cache",
-	"asset_datums",
 	"assigned",
 	"assigned_blocks",
 	"atmosphere_alarm",

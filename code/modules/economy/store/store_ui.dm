@@ -52,6 +52,8 @@
 	var/list/data = ui_data(user, ui_key)
 	ui = SSnano.try_update_ui(user, src, ui_key, ui, data)
 	if (!ui)
+		var/datum/asset/assets = get_asset_datum(/datum/asset/simple/research_designs)
+		assets.send(user)
 		// the ui does not exist, so we'll create a new() one
 		// for a list of parameters and their descriptions see the code docs in \code\modules\nano\nanoui.dm
 		ui = new(user, src, ui_key, "store.tmpl", "Store", 900, 600)

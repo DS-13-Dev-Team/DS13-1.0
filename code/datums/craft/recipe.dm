@@ -66,12 +66,12 @@
 /datum/craft_recipe/proc/get_step_descriptions(var/skip = 0)
 	var/list/data = list()
 	for(var/datum/craft_step/CS in passive_steps)
-		data += list(list("icon" = getAtomCacheFilename(CS.icon_type), "desc" = CS.desc))
+		data += list(list("icon" = sanitizeFileName("[CS.icon_type].png"), "desc" = CS.desc))
 	for(var/datum/craft_step/CS in steps)
 		if (skip > 0)
 			skip--
 			continue
-		data += list(list("icon" = getAtomCacheFilename(CS.icon_type), "desc" = CS.desc))
+		data += list(list("icon" = sanitizeFileName("[CS.icon_type].png"), "desc" = CS.desc))
 	return data
 
 
