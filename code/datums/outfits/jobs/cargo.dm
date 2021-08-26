@@ -16,3 +16,8 @@
 	name = OUTFIT_JOB_NAME("Cargo Serviceman")
 	id_type = /obj/item/weapon/card/id/holo/cargo
 	pda_type = /obj/item/modular_computer/pda/cargo
+
+/decl/hierarchy/outfit/job/cargo/salvage
+	name = OUTFIT_JOB_NAME("Salvage Technician")
+	id_type = /obj/item/weapon/card/id/holo/cargo
+	pda_type = /obj/item/modular_computer/pda/cargo

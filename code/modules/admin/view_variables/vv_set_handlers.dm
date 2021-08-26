@@ -9,7 +9,7 @@
 	if(!(variable in handled_vars))
 		return FALSE
 	if(istype(O) && !(variable in O.vars))
-		log_error("Did not find the variable '[variable]' for the instance [log_info_line(O)].")
+		log_debug("Did not find the variable '[variable]' for the instance [log_info_line(O)].")
 		return FALSE
 	if(predicates)
 		for(var/predicate in predicates)

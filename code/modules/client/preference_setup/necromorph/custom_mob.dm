@@ -33,8 +33,9 @@
 	var/list/custom
 	if (prefs)
 		custom = prefs.get_necro_custom_list()
-	else
-		//With blank prefs, we use the global default
+
+	if (!prefs || !custom || !custom[species_tag])
+		//With blank prefs, or no data for current, we use the global default
 		custom = get_default_necro_custom()
 
 	var/list/our_data = custom[species_tag]
@@ -44,12 +45,25 @@
 		var/list/possible_variants = our_data[VARIANT]
 		var/selected = pickweight(possible_variants)
 		set_species(selected)
-
+		N = species	//update the species
 
 	//Now outfits
-	if (our_data[OUTFIT])
-		var/list/possible_outfits = our_data[OUTFIT]
-		var/selected_type = pickweight(possible_outfits)
-		//Selected type is a string so we convert it to a path in this process
-		var/decl/hierarchy/outfit/O = outfit_by_type(text2path(selected_type))
-		O.equip(src, equip_adjustments = OUTFIT_ADJUSTMENT_SKIP_SURVIVAL_GEAR)
+	if (islist(our_data[OUTFIT]))
+		var/list/temp = our_data[OUTFIT]
+		var/list/possible_outfits = list()
+
+		//We must convert strings to paths
+		for (var/stringpath in temp)
+			possible_outfits[text2path(stringpath)] = temp[stringpath]
+
+
+		//Lets filter this to the outfits that are actually available on this species
+		possible_outfits = possible_outfits & N.outfits
+
+
+		if (LAZYLEN(possible_outfits))
+
+			var/selected_type = pickweight(possible_outfits)
+			//Selected type is a string so we convert it to a path in this process
+			var/decl/hierarchy/outfit/O = outfit_by_type(selected_type)
+			O.equip(src, equip_adjustments = OUTFIT_ADJUSTMENT_SKIP_SURVIVAL_GEAR)

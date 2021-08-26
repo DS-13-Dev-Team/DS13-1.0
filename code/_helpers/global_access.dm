@@ -25,14 +25,10 @@
 			return global.GLOB;
 		if("Holiday")
 			return global.Holiday;
-		if("IClog")
-			return global.IClog;
 		if("LIGHTING_CORNER_DIAGONAL")
 			return global.LIGHTING_CORNER_DIAGONAL;
 		if("Master")
 			return global.Master;
-		if("OOClog")
-			return global.OOClog;
 		if("SSair")
 			return global.SSair;
 		if("SSairflow")
@@ -41,8 +37,6 @@
 			return global.SSalarm;
 		if("SSantags")
 			return global.SSantags;
-		if("SSasset")
-			return global.SSasset;
 		if("SSatoms")
 			return global.SSatoms;
 		if("SScircuit_components")
@@ -169,8 +163,6 @@
 			return global.admin_verbs_spawn;
 		if("adminhelp_ignored_words")
 			return GLOB.adminhelp_ignored_words;
-		if("adminlog")
-			return global.adminlog;
 		if("ai_list")
 			return global.ai_list;
 		if("ai_status_emotions")
@@ -231,10 +223,6 @@
 			return global.ascii_reset;
 		if("ascii_yellow")
 			return global.ascii_yellow;
-		if("asset_cache")
-			return global.asset_cache;
-		if("asset_datums")
-			return global.asset_datums;
 		if("assigned")
 			return global.assigned;
 		if("assigned_blocks")
@@ -271,8 +259,6 @@
 			return global.cargo_supply_pack_root;
 		if("cargo_supply_packs")
 			return global.cargo_supply_packs;
-		if("changelog_hash")
-			return global.changelog_hash;
 		if("channel_color_presets")
 			return global.channel_color_presets;
 		if("channel_to_radio_key")
@@ -293,8 +279,6 @@
 			return global.client_preference_stats_;
 		if("client_repository")
 			return global.client_repository;
-		if("combatlog")
-			return global.combatlog;
 		if("comm_message_listeners")
 			return global.comm_message_listeners;
 		if("command_announcement")
@@ -351,8 +335,6 @@
 			return global.department_radio_keys;
 		if("description_icons")
 			return global.description_icons;
-		if("diary")
-			return global.diary;
 		if("dna_activity_bounds")
 			return global.dna_activity_bounds;
 		if("dna_genes")
@@ -423,8 +405,6 @@
 			return global.fusion_cores;
 		if("fusion_reactions")
 			return global.fusion_reactions;
-		if("game_id")
-			return global.game_id;
 		if("game_version")
 			return global.game_version;
 		if("game_year")
@@ -485,8 +465,6 @@
 			return global.intercom_range_display_status;
 		if("invalid_zone")
 			return global.invalid_zone;
-		if("jobMax")
-			return global.jobMax;
 		if("job_master")
 			return global.job_master;
 		if("jobban_keylist")
@@ -517,8 +495,6 @@
 			return global.limb_icon_cache;
 		if("lobby_image")
 			return global.lobby_image;
-		if("log_end")
-			return global.log_end;
 		if("lunchables_drink_reagents_")
 			return global.lunchables_drink_reagents_;
 		if("lunchables_drinks_")
@@ -735,8 +711,6 @@
 			return global.responsive_carriers;
 		if("restricted_camera_networks")
 			return global.restricted_camera_networks;
-		if("revdata")
-			return global.revdata;
 		if("robot_custom_icons")
 			return global.robot_custom_icons;
 		if("robot_hud_colours")
@@ -753,8 +727,6 @@
 			return global.roundstart_hour;
 		if("rune_list")
 			return global.rune_list;
-		if("runtime_diary")
-			return global.runtime_diary;
 		if("same_wires")
 			return global.same_wires;
 		if("secondary_mode")
@@ -982,14 +954,10 @@
 			global.GLOB=newval;
 		if("Holiday")
 			global.Holiday=newval;
-		if("IClog")
-			global.IClog=newval;
 		if("LIGHTING_CORNER_DIAGONAL")
 			global.LIGHTING_CORNER_DIAGONAL=newval;
 		if("Master")
 			global.Master=newval;
-		if("OOClog")
-			global.OOClog=newval;
 		if("SSair")
 			global.SSair=newval;
 		if("SSairflow")
@@ -998,8 +966,6 @@
 			global.SSalarm=newval;
 		if("SSantags")
 			global.SSantags=newval;
-		if("SSasset")
-			global.SSasset=newval;
 		if("SSatoms")
 			global.SSatoms=newval;
 		if("SScircuit_components")
@@ -1126,8 +1092,6 @@
 			global.admin_verbs_spawn=newval;
 		if("adminhelp_ignored_words")
 			GLOB.adminhelp_ignored_words=newval;
-		if("adminlog")
-			global.adminlog=newval;
 		if("ai_list")
 			global.ai_list=newval;
 		if("ai_status_emotions")
@@ -1188,10 +1152,6 @@
 			global.ascii_reset=newval;
 		if("ascii_yellow")
 			global.ascii_yellow=newval;
-		if("asset_cache")
-			global.asset_cache=newval;
-		if("asset_datums")
-			global.asset_datums=newval;
 		if("assigned")
 			global.assigned=newval;
 		if("assigned_blocks")
@@ -1228,8 +1188,6 @@
 			global.cargo_supply_pack_root=newval;
 		if("cargo_supply_packs")
 			global.cargo_supply_packs=newval;
-		if("changelog_hash")
-			global.changelog_hash=newval;
 		if("channel_color_presets")
 			global.channel_color_presets=newval;
 		if("channel_to_radio_key")
@@ -1250,8 +1208,6 @@
 			global.client_preference_stats_=newval;
 		if("client_repository")
 			global.client_repository=newval;
-		if("combatlog")
-			global.combatlog=newval;
 		if("comm_message_listeners")
 			global.comm_message_listeners=newval;
 		if("command_announcement")
@@ -1308,8 +1264,6 @@
 			global.department_radio_keys=newval;
 		if("description_icons")
 			global.description_icons=newval;
-		if("diary")
-			global.diary=newval;
 		if("dna_activity_bounds")
 			global.dna_activity_bounds=newval;
 		if("dna_genes")
@@ -1380,8 +1334,6 @@
 			global.fusion_cores=newval;
 		if("fusion_reactions")
 			global.fusion_reactions=newval;
-		if("game_id")
-			global.game_id=newval;
 		if("game_version")
 			global.game_version=newval;
 		if("game_year")
@@ -1442,8 +1394,6 @@
 			global.intercom_range_display_status=newval;
 		if("invalid_zone")
 			global.invalid_zone=newval;
-		if("jobMax")
-			global.jobMax=newval;
 		if("job_master")
 			global.job_master=newval;
 		if("jobban_keylist")
@@ -1474,8 +1424,6 @@
 			global.limb_icon_cache=newval;
 		if("lobby_image")
 			global.lobby_image=newval;
-		if("log_end")
-			global.log_end=newval;
 		if("lunchables_drink_reagents_")
 			global.lunchables_drink_reagents_=newval;
 		if("lunchables_drinks_")
@@ -1692,8 +1640,6 @@
 			global.responsive_carriers=newval;
 		if("restricted_camera_networks")
 			global.restricted_camera_networks=newval;
-		if("revdata")
-			global.revdata=newval;
 		if("robot_custom_icons")
 			global.robot_custom_icons=newval;
 		if("robot_hud_colours")
@@ -1710,8 +1656,6 @@
 			global.roundstart_hour=newval;
 		if("rune_list")
 			global.rune_list=newval;
-		if("runtime_diary")
-			global.runtime_diary=newval;
 		if("same_wires")
 			global.same_wires=newval;
 		if("secondary_mode")
@@ -1926,15 +1870,12 @@
 	"Failsafe",
 	"GLOB",
 	"Holiday",
-	"IClog",
 	"LIGHTING_CORNER_DIAGONAL",
 	"Master",
-	"OOClog",
 	"SSair",
 	"SSairflow",
 	"SSalarm",
 	"SSantags",
-	"SSasset",
 	"SSatoms",
 	"SScircuit_components",
 	"SScraft",
@@ -1998,7 +1939,6 @@
 	"admin_verbs_sounds",
 	"admin_verbs_spawn",
 	"adminhelp_ignored_words",
-	"adminlog",
 	"ai_list",
 	"ai_status_emotions",
 	"ai_verbs_default",
@@ -2029,8 +1969,6 @@
 	"ascii_red",
 	"ascii_reset",
 	"ascii_yellow",
-	"asset_cache",
-	"asset_datums",
 	"assigned",
 	"assigned_blocks",
 	"atmosphere_alarm",
@@ -2050,7 +1988,6 @@
 	"captain_announcement",
 	"cargo_supply_pack_root",
 	"cargo_supply_packs",
-	"changelog_hash",
 	"channel_color_presets",
 	"channel_to_radio_key",
 	"chargen_robolimbs",
@@ -2061,7 +1998,6 @@
 	"church_name",
 	"client_preference_stats_",
 	"client_repository",
-	"combatlog",
 	"comm_message_listeners",
 	"command_announcement",
 	"command_name",
@@ -2090,7 +2026,6 @@
 	"department_accounts",
 	"department_radio_keys",
 	"description_icons",
-	"diary",
 	"dna_activity_bounds",
 	"dna_genes",
 	"doppler_arrays",
@@ -2129,7 +2064,6 @@
 	"fuel_injectors",
 	"fusion_cores",
 	"fusion_reactions",
-	"game_id",
 	"game_version",
 	"game_year",
 	"gamemode_cache",
@@ -2161,7 +2095,6 @@
 	"intents",
 	"intercom_range_display_status",
 	"invalid_zone",
-	"jobMax",
 	"job_master",
 	"jobban_keylist",
 	"jobban_runonce",
@@ -2178,7 +2111,6 @@
 	"limb_icon_cache",
 	"loadout_categories",
 	"lobby_image",
-	"log_end",
 	"lunchables_drink_reagents_",
 	"lunchables_drinks_",
 	"lunchables_ethanol_reagents_",
@@ -2287,7 +2219,6 @@
 	"req_console_supplies",
 	"responsive_carriers",
 	"restricted_camera_networks",
-	"revdata",
 	"robot_custom_icons",
 	"robot_hud_colours",
 	"robot_inventory",
@@ -2296,7 +2227,6 @@
 	"round_start_time",
 	"roundstart_hour",
 	"rune_list",
-	"runtime_diary",
 	"same_wires",
 	"secondary_mode",
 	"secret_force_mode",

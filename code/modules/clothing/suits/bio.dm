@@ -104,7 +104,8 @@
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|HANDS|FEET
 	flags_inv = HIDEJUMPSUIT|HIDETAIL|HIDEGLOVES|HIDESHOES
 	sprite_sheets = list(
-		SPECIES_NECROMORPH_SLASHER = 'icons/mob/necromorph/slasher/clothing.dmi'
+		SPECIES_NECROMORPH_SLASHER = 'icons/mob/necromorph/slasher/clothing.dmi',
+		SPECIES_NECROMORPH_PUKER = 'icons/mob/necromorph/puker/suit.dmi'
 		)
 
 /obj/item/clothing/head/bio_hood/ds
@@ -117,7 +118,8 @@
 	permeability_coefficient = 0
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 100, rad = 20)
 	sprite_sheets = list(
-		SPECIES_NECROMORPH_SLASHER = 'icons/mob/necromorph/slasher/head.dmi'
+		SPECIES_NECROMORPH_SLASHER = 'icons/mob/necromorph/slasher/head.dmi',
+		SPECIES_NECROMORPH_PUKER = 'icons/mob/necromorph/puker/head.dmi'
 		)
 
 /obj/item/clothing/suit/bio_suit/ds/black

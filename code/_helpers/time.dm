@@ -139,4 +139,9 @@ GLOBAL_VAR_INIT(rollovercheck_last_timeofday, 0)
 /proc/gameTimestamp(format = "hh:mm:ss", wtime = null)
 	if(!wtime)
 		wtime = world.time
-	return time2text(wtime - GLOB.timezoneOffset, format) 
+	return time2text(wtime - GLOB.timezoneOffset, format)
+
+/proc/stationTimestamp(format = "hh:mm:ss", wtime = null)
+	if(!wtime)
+		wtime = world.time
+	return time2text(wtime - GLOB.timezoneOffset + (12 * 36000), format)

@@ -507,6 +507,45 @@
 
 	GLOB.error_cache.show_to(usr.client)
 
+
+/*/client/proc/start_line_profiling()
+	set category = "Profile"
+	set name = "Start line profiling"
+	set desc = "Starts tracking line by line profiling for code lines that support it"
+
+	LINE_PROFILE_START
+
+	message_admins("<span class='adminnotice'>[key_name_admin(src)] started line by line profiling.</span>")
+	feedback_add_details("admin_verb","Start line profiling")
+	log_admin("[key_name(src)] started line by line profiling.")
+
+/client/proc/stop_line_profiling()
+	set category = "Profile"
+	set name = "Stop line profiling"
+	set desc = "Stops tracking line by line profiling for code lines that support it"
+
+	LINE_PROFILE_STOP
+
+	message_admins("<span class='adminnotice'>[key_name_admin(src)] stopped line by line profiling.</span>")
+	feedback_add_details("admin_verb","Stop line profiling")
+	log_admin("[key_name(src)] stopped line by line profiling.")
+
+/client/proc/show_line_profiling()
+	set category = "Profile"
+	set name = "Show line profiling"
+	set desc = "Shows tracked profiling info from code lines that support it"
+
+	var/sortlist = list(
+		"Avg time"		=	/proc/cmp_profile_avg_time_dsc,
+		"Total Time"	=	/proc/cmp_profile_time_dsc,
+		"Call Count"	=	/proc/cmp_profile_count_dsc
+	)
+	var/sort = input(src, "Sort type?", "Sort Type", "Avg time") as null|anything in sortlist
+	if (!sort)
+		return
+	sort = sortlist[sort]
+	profile_show(src, sort)*/
+
 /client/proc/cmd_analyse_health_panel()
 	set category = "Debug"
 	set name = "Analyse Health"
@@ -591,3 +630,62 @@
 
 	for (var/turf/T in trange(1, mob))
 		new /mob/living/carbon/human/dummy(T)
+
+/// A debug verb to check the sources of currently running timers
+/client/proc/check_timer_sources()
+	set category = "Debug"
+	set name = "Check Timer Sources"
+	set desc = "Checks the sources of the running timers"
+	if (!check_rights(R_DEBUG))
+		return
+
+	var/bucket_list_output = generate_timer_source_output(SStimer.bucket_list)
+	var/second_queue = generate_timer_source_output(SStimer.second_queue)
+
+	usr << browse({"
+		<h3>bucket_list</h3>
+		[bucket_list_output]
+		<h3>second_queue</h3>
+		[second_queue]
+	"}, "window=check_timer_sources;size=700x700")
+
+/proc/generate_timer_source_output(list/datum/timedevent/events)
+	var/list/per_source = list()
+
+	// Collate all events and figure out what sources are creating the most
+	for (var/_event in events)
+		if (!_event)
+			continue
+		var/datum/timedevent/event = _event
+
+		do
+			if (event.source)
+				if (per_source[event.source] == null)
+					per_source[event.source] = 1
+				else
+					per_source[event.source] += 1
+			event = event.next
+		while (event && event != _event)
+
+	// Now, sort them in order
+	var/list/sorted = list()
+	for (var/source in per_source)
+		sorted += list(list("source" = source, "count" = per_source[source]))
+	sorted = sortTim(sorted, .proc/cmp_timer_data)
+
+	// Now that everything is sorted, compile them into an HTML output
+	var/output = "<table border='1'>"
+
+	for (var/_timer_data in sorted)
+		var/list/timer_data = _timer_data
+		output += {"<tr>
+			<td><b>[timer_data["source"]]</b></td>
+			<td>[timer_data["count"]]</td>
+		</tr>"}
+
+	output += "</table>"
+
+	return output
+
+/proc/cmp_timer_data(list/a, list/b)
+	return b["count"] - a["count"]

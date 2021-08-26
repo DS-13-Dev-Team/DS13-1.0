@@ -155,7 +155,7 @@ other types of metals and chemistry for reagents).
 	ui_data = list("id" = "[id]", "name" = name, "item_name" = (item_name ? item_name : name), "desc" = desc, "time" = time, "category" = category, "price" = price)
 
 	// ui_data["icon"] is set in asset code.
-	//"icon" = getAtomCacheFilename(CR.result),
+	//"icon" = sanitizeFileName("[CR.result].png"),
 
 	if(length(materials))
 		var/list/RS = list()

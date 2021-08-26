@@ -17,6 +17,8 @@ Basics, the most important.
 
 /datum/config_entry/flag/log_ooc    //log OOC channel
 
+/datum/config_entry/flag/log_looc	//log LOOC channel
+
 /datum/config_entry/flag/log_necro  //log necrochat
 
 /datum/config_entry/flag/log_access //log login/logout
@@ -243,3 +245,5 @@ Basics, the most important.
 /datum/config_entry/string/discord_url
 
 /datum/config_entry/flag/forbid_singulo_possession
+
+/datum/config_entry/flag/auto_profile

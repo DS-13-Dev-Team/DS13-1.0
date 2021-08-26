@@ -31,7 +31,7 @@ GLOBAL_LIST_EMPTY(skills)
 			for(var/decl/hierarchy/skill/C in children)
 				GLOB.skills += C.children
 		else
-			log_error("<span class='warning'>Warning: multiple instances of /decl/hierarchy/skill have been created!</span>")
+			log_debug("<span class='warning'>Warning: multiple instances of /decl/hierarchy/skill have been created!</span>")
 
 /decl/hierarchy/skill/dd_SortValue()
 	return ID

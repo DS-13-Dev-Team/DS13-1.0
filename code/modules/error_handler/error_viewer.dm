@@ -107,7 +107,7 @@ GLOBAL_DATUM(error_cache, /datum/error_viewer/error_cache)
 
 	browse_to(user, html)
 
-/datum/error_viewer/error_cache/proc/log_error(exception/e, list/desclines, skip_count)
+/datum/error_viewer/error_cache/proc/log_debug(exception/e, list/desclines, skip_count)
 	if (!istype(e))
 		return // Abnormal exception, don't even bother
 

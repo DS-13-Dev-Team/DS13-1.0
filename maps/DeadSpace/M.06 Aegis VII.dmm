@@ -181,10 +181,9 @@
 /turf/simulated/floor/plating,
 /area/aegis/colony/maintenance/north)
 "aJ" = (
-/turf/simulated/floor/tiled,
-/area/aegis/colony/spare_storage)
-"aK" = (
-/obj/structure/ore_box,
+/obj/machinery/light,
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/monotile,
 /area/aegis/colony/spare_storage)
 "aL" = (
@@ -216,30 +215,7 @@
 	},
 /obj/structure/closet/walllocker/emerglocker/north,
 /turf/simulated/floor/tiled/techfloor,
-/area/aegis/colony)
-"aQ" = (
-/obj/machinery/door/firedoor/border_only{
-	dir = 4;
-	icon_state = "open"
-	},
-/obj/structure/catwalk,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/door/airlock/research{
-	name = "Science Outpost";
-	req_access = list()
-	},
-/turf/simulated/floor/plating,
-/area/aegis/colony/research)
+/area/aegis/colony/airlock)
 "aR" = (
 /turf/simulated/wall/r_wall,
 /area/aegis/colony/hangar/entrance/one)
@@ -280,8 +256,8 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled,
-/area/aegis/colony/spare_storage)
+/turf/simulated/floor/tiled/monotile,
+/area/aegis/colony/refinery)
 "aY" = (
 /obj/random/loot/often,
 /turf/simulated/floor/plating,
@@ -312,12 +288,6 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/aegis/colony/hangar/entrance/one)
-"bc" = (
-/obj/structure/table/standard,
-/obj/item/weapon/storage/toolbox/electrical,
-/obj/random/loot/often,
-/turf/simulated/floor/tiled,
-/area/aegis/colony/spare_storage)
 "bd" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
@@ -333,32 +303,23 @@
 /turf/simulated/floor/tiled/monotile,
 /area/aegis/colony/breakroom)
 "be" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 1
-	},
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24
-	},
 /obj/structure/cable/green{
-	d2 = 2;
-	icon_state = "0-2"
-	},
-/obj/structure/cable/green{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
-/obj/structure/cable/green{
-	d1 = 2;
+	d1 = 4;
 	d2 = 8;
-	icon_state = "2-8"
+	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 10;
+	icon_state = "intact-scrubbers"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
+	},
+/obj/machinery/light{
+	dir = 1;
+	icon_state = "tube_map"
+	},
+/turf/simulated/floor/tiled/steel_grid,
 /area/aegis/colony/spare_storage)
 "bf" = (
 /obj/machinery/suit_storage_unit/security,
@@ -463,25 +424,12 @@
 /obj/effect/catwalk_plated,
 /turf/simulated/floor/plating,
 /area/aegis/colony/hangar/entrance/one)
-"bl" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled,
-/area/aegis/colony/spare_storage)
 "bm" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
 	},
-/turf/simulated/floor/tiled,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/tiled/steel_grid,
 /area/aegis/colony/spare_storage)
 "bn" = (
 /obj/structure/cable/green{
@@ -530,21 +478,16 @@
 /turf/simulated/floor/plating,
 /area/aegis/colony/maintenance/north)
 "br" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
+/obj/machinery/power/apc{
+	dir = 1;
+	name = "north bump";
+	pixel_y = 24
 	},
 /obj/structure/cable/green{
-	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8"
+	icon_state = "0-8"
 	},
-/obj/structure/closet/medical_wall/filled{
-	pixel_y = 32
-	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/steel_grid,
 /area/aegis/colony/spare_storage)
 "bs" = (
 /obj/machinery/door/firedoor/border_only{
@@ -562,29 +505,13 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/aegis/colony/hangar/entrance/one)
-"bt" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 4;
-	layer = 2.4;
-	level = 2
-	},
-/turf/simulated/floor/tiled,
-/area/aegis/colony/spare_storage)
 "bu" = (
 /turf/simulated/floor/tiled/monotile,
 /area/aegis/colony)
 "bv" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled,
-/area/aegis/colony/spare_storage)
+/obj/machinery/mineral/stacking_unit_console,
+/turf/simulated/wall/r_wall,
+/area/aegis/colony/refinery)
 "bw" = (
 /turf/simulated/wall/r_wall,
 /area/aegis/colony/engineering)
@@ -636,13 +563,6 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/aegis/colony)
-"bB" = (
-/obj/structure/table/standard,
-/obj/item/weapon/storage/box/glowsticks,
-/obj/item/weapon/storage/box/glowsticks,
-/obj/random/loot/often,
-/turf/simulated/floor/tiled,
-/area/aegis/colony/spare_storage)
 "bC" = (
 /turf/simulated/wall/r_wall,
 /area/aegis/colony/engineering/maintenance)
@@ -680,19 +600,6 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/monotile,
 /area/aegis/colony/security)
-"bJ" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 8;
-	icon_state = "map-scrubbers"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled,
-/area/aegis/colony/spare_storage)
 "bK" = (
 /obj/structure/closet/medical_wall/filled{
 	pixel_y = -32
@@ -734,7 +641,7 @@
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/aegis/colony)
+/area/aegis/colony/airlock)
 "bP" = (
 /turf/simulated/wall/r_wall,
 /area/aegis/colony/security)
@@ -776,27 +683,6 @@
 "bV" = (
 /turf/simulated/floor/tiled,
 /area/aegis/colony/security)
-"bW" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 6;
-	icon_state = "intact-supply"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 6
-	},
-/obj/structure/cable/green{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
-/obj/structure/table/standard,
-/obj/item/weapon/storage/box/snappops,
-/obj/machinery/alarm{
-	pixel_y = 23
-	},
-/obj/random/loot/often,
-/turf/simulated/floor/tiled,
-/area/aegis/colony/spare_storage)
 "bX" = (
 /obj/machinery/photocopier,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -808,13 +694,13 @@
 /area/aegis/colony/security)
 "bY" = (
 /turf/simulated/floor/tiled/techfloor,
-/area/aegis/colony)
+/area/aegis/colony/airlock)
 "bZ" = (
 /obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/aegis/colony)
+/area/aegis/colony/airlock)
 "ca" = (
 /obj/machinery/portable_atmospherics/canister/empty,
 /obj/machinery/atmospherics/portables_connector,
@@ -829,12 +715,6 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/monotile,
 /area/aegis/colony/engineering)
-"cc" = (
-/obj/machinery/firealarm{
-	pixel_y = 24
-	},
-/turf/simulated/floor/tiled,
-/area/aegis/colony)
 "cd" = (
 /turf/simulated/floor/tiled/techfloor,
 /area/aegis/colony/engineering/maintenance)
@@ -861,12 +741,11 @@
 /area/aegis/colony/engineering)
 "cg" = (
 /obj/machinery/light{
-	dir = 1
+	dir = 1;
+	icon_state = "tube_map"
 	},
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/portable_atmospherics/canister/oxygen,
-/turf/simulated/floor/tiled/monotile,
-/area/aegis/colony/spare_storage)
+/turf/simulated/floor/tiled,
+/area/aegis/colony)
 "ch" = (
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	frequency = 1380;
@@ -884,7 +763,7 @@
 	tag_interior_door = "aegis_airlock_inner"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/aegis/colony)
+/area/aegis/colony/airlock)
 "ci" = (
 /obj/structure/closet/walllocker/emerglocker/north,
 /obj/effect/floor_decal/industrial/warning/full,
@@ -893,7 +772,7 @@
 	id_tag = "aegis_airlock_pump"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/aegis/colony)
+/area/aegis/colony/airlock)
 "cj" = (
 /obj/machinery/door/airlock/external/glass{
 	dir = 4;
@@ -902,8 +781,13 @@
 	id_tag = "aegis_airlock_outer";
 	locked = 1
 	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/aegis/colony)
+/area/aegis/colony/airlock)
 "ck" = (
 /obj/machinery/door/firedoor/border_only{
 	dir = 4;
@@ -988,20 +872,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/aegis/colony/maintenance/east)
-"cr" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/dank/mono,
-/area/aegis/colony/research)
 "cs" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
@@ -1030,7 +900,7 @@
 	locked = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/aegis/colony)
+/area/aegis/colony/airlock)
 "cv" = (
 /obj/machinery/door/firedoor/border_only{
 	dir = 4;
@@ -1086,10 +956,9 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/aegis/colony/engineering)
 "cB" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
-	dir = 8
-	},
-/turf/simulated/floor/tiled,
+/obj/item/weapon/stool/padded,
+/obj/effect/floor_decal/industrial/outline,
+/turf/simulated/floor/tiled/monotile,
 /area/aegis/colony/spare_storage)
 "cC" = (
 /obj/structure/cable/green{
@@ -1098,7 +967,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/aegis/colony)
+/area/aegis/colony/airlock)
 "cD" = (
 /obj/item/modular_computer/console/preset/security,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -1123,8 +992,13 @@
 	dir = 4;
 	icon_state = "intact"
 	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/techfloor,
-/area/aegis/colony)
+/area/aegis/colony/airlock)
 "cH" = (
 /obj/machinery/light{
 	dir = 4;
@@ -1138,19 +1012,10 @@
 /turf/simulated/floor/tiled/monotile,
 /area/aegis/colony/engineering)
 "cI" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 5
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5
-	},
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/turf/simulated/floor/tiled,
-/area/aegis/colony/spare_storage)
+/obj/machinery/mineral/stacking_machine,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/plating,
+/area/aegis/colony/refinery)
 "cJ" = (
 /obj/machinery/door/airlock/highsecurity{
 	dir = 8;
@@ -1182,11 +1047,6 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
-/obj/structure/cable/green{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
 /obj/effect/floor_decal/corner/grey{
 	dir = 10;
 	icon_state = "corner_white"
@@ -1200,19 +1060,14 @@
 /turf/simulated/floor/tiled/white,
 /area/aegis/colony/medical)
 "cM" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
+/obj/machinery/mineral/output,
+/obj/machinery/conveyor{
+	dir = 1;
+	icon_state = "conveyor0";
+	id = "aegis"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/aegis/colony/spare_storage)
+/turf/simulated/floor/plating,
+/area/aegis/colony/refinery)
 "cN" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
@@ -1252,31 +1107,6 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/aegis/colony)
-"cQ" = (
-/obj/machinery/door/firedoor/border_only{
-	dir = 4;
-	icon_state = "open"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/door/airlock/mining{
-	dir = 8;
-	icon_state = "closed";
-	name = "Spare Mining Supplies";
-	req_access = list();
-	req_one_access = list(46,4)
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/aegis/colony/spare_storage)
 "cR" = (
 /turf/simulated/wall/r_wall,
 /area/aegis/colony/research/airlock/breakroom)
@@ -1324,18 +1154,11 @@
 /turf/simulated/floor/tiled/monotile,
 /area/aegis/colony/security)
 "cX" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
+/obj/machinery/alarm{
+	dir = 4;
+	pixel_x = -21
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/steel_grid,
 /area/aegis/colony/spare_storage)
 "cY" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -1416,7 +1239,7 @@
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/aegis/colony)
+/area/aegis/colony/airlock)
 "dd" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -1451,8 +1274,13 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/techfloor,
-/area/aegis/colony)
+/area/aegis/colony/airlock)
 "dg" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -1483,15 +1311,6 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/aegis/colony/maintenance/east)
-"di" = (
-/obj/machinery/atmospherics/pipe/manifold4w/hidden,
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/aegis/colony)
 "dj" = (
 /turf/simulated/floor/tiled/monotile,
 /area/aegis/colony/security)
@@ -1539,12 +1358,10 @@
 "dr" = (
 /obj/machinery/light,
 /turf/simulated/floor/tiled/techfloor,
-/area/aegis/colony)
+/area/aegis/colony/airlock)
 "ds" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 4;
-	layer = 2.4;
-	level = 2
+	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/aegis/colony/security)
@@ -1576,7 +1393,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/aegis/colony)
+/area/aegis/colony/airlock)
 "dw" = (
 /obj/machinery/power/apc{
 	dir = 8;
@@ -1623,12 +1440,11 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 1;
-	icon_state = "map-scrubbers"
-	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
 	},
 /turf/simulated/floor/dank/mono,
 /area/aegis/colony/research)
@@ -1638,11 +1454,6 @@
 "dB" = (
 /turf/simulated/wall/r_wall,
 /area/aegis/colony/breakroom)
-"dC" = (
-/obj/structure/closet/crate,
-/obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/tiled/monotile,
-/area/aegis/colony/spare_storage)
 "dD" = (
 /turf/simulated/wall/r_wall,
 /area/aegis/colony/medical)
@@ -1727,24 +1538,6 @@
 /obj/structure/iv_drip,
 /turf/simulated/floor/tiled/white,
 /area/aegis/colony/medical)
-"dN" = (
-/obj/structure/table/rack,
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/weapon/storage/ore{
-	pixel_x = 4;
-	pixel_y = 4
-	},
-/obj/item/weapon/storage/ore,
-/obj/item/weapon/storage/ore{
-	pixel_x = -4;
-	pixel_y = -4
-	},
-/obj/machinery/light{
-	dir = 8
-	},
-/obj/random/loot/often,
-/turf/simulated/floor/tiled/monotile,
-/area/aegis/colony/spare_storage)
 "dO" = (
 /turf/simulated/floor/tiled/dark,
 /area/aegis/colony/engineering/maintenance)
@@ -1761,11 +1554,6 @@
 /obj/machinery/light,
 /turf/simulated/floor/tiled/white/monotile,
 /area/aegis/colony/medical)
-"dR" = (
-/obj/machinery/door/firedoor/border_only,
-/obj/effect/wallframe_spawn/reinforced,
-/turf/simulated/floor/plating,
-/area/aegis/colony/spare_storage)
 "dS" = (
 /obj/effect/wingrille_spawn/reinforced,
 /turf/simulated/floor/plating,
@@ -1778,21 +1566,6 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled,
 /area/aegis/colony/hangar/entrance/two)
-"dV" = (
-/obj/structure/table/rack,
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/weapon/storage/ore{
-	pixel_x = 4;
-	pixel_y = 4
-	},
-/obj/item/weapon/storage/ore,
-/obj/item/weapon/storage/ore{
-	pixel_x = -4;
-	pixel_y = -4
-	},
-/obj/random/loot/often,
-/turf/simulated/floor/tiled/monotile,
-/area/aegis/colony/spare_storage)
 "dW" = (
 /turf/simulated/floor/tiled,
 /area/aegis/colony/breakroom)
@@ -2042,10 +1815,9 @@
 /obj/machinery/door/airlock/medical{
 	dir = 8;
 	icon_state = "closed";
-	id_tag = null;
+	id_tag = "med_exit";
 	name = "Colony Medbay";
-	req_access = list();
-	req_one_access = list(3,46)
+	req_access = list(3,4,46)
 	},
 /turf/simulated/floor/tiled/white/monotile,
 /area/aegis/colony/medical)
@@ -2058,18 +1830,8 @@
 /turf/simulated/floor/holofloor/concrete,
 /area/aegis)
 "ey" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 9
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9
-	},
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/turf/simulated/floor/tiled,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/tiled/steel_grid,
 /area/aegis/colony/spare_storage)
 "ez" = (
 /obj/structure/table/standard,
@@ -2091,9 +1853,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
@@ -2102,6 +1861,9 @@
 /obj/structure/sign/warning/detailed{
 	name = "STERILE LABORATORY AHEAD";
 	pixel_y = 24
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 1
 	},
 /turf/simulated/floor/dank/mono,
 /area/aegis/colony/research)
@@ -2412,12 +2174,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/aegis/colony/maintenance/south)
-"fj" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/structure/table/rack,
-/obj/random/tool/low_chance,
-/turf/simulated/floor/tiled/monotile,
-/area/aegis/colony/spare_storage)
 "fk" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
@@ -2798,12 +2554,6 @@
 /obj/effect/catwalk_plated,
 /turf/simulated/floor/plating,
 /area/aegis/colony/hangar/entrance/two)
-"fN" = (
-/obj/structure/bed/chair{
-	dir = 1
-	},
-/turf/simulated/floor/dank/mono,
-/area/aegis/colony/research)
 "fO" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -2817,12 +2567,6 @@
 /obj/effect/catwalk_plated,
 /turf/simulated/floor/plating,
 /area/aegis/colony/hangar/entrance/two)
-"fP" = (
-/obj/structure/table/rack,
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/weapon/gun/energy/cutter,
-/turf/simulated/floor/tiled/monotile,
-/area/aegis/colony/spare_storage)
 "fQ" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -2869,16 +2613,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/steel_grid,
 /area/aegis/colony/engineering)
-"fV" = (
-/obj/machinery/light{
-	dir = 4;
-	icon_state = "tube_map"
-	},
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/structure/table/rack,
-/obj/random/uncommon_loot,
-/turf/simulated/floor/tiled/monotile,
-/area/aegis/colony/spare_storage)
 "fW" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
@@ -2991,38 +2725,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/aegis/colony/security)
-"gh" = (
-/obj/structure/table/rack,
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/weapon/cell/plasmacutter{
-	pixel_x = 8;
-	pixel_y = 8
-	},
-/obj/item/weapon/cell/plasmacutter{
-	pixel_x = 6;
-	pixel_y = 6
-	},
-/obj/item/weapon/cell/plasmacutter{
-	pixel_x = 4;
-	pixel_y = 4
-	},
-/obj/item/weapon/cell/plasmacutter{
-	pixel_x = 2;
-	pixel_y = 2
-	},
-/obj/item/weapon/cell/plasmacutter,
-/obj/item/weapon/cell/plasmacutter{
-	pixel_x = -2;
-	pixel_y = -2
-	},
-/obj/item/weapon/cell/plasmacutter{
-	pixel_x = -4;
-	pixel_y = -4
-	},
-/obj/machinery/light,
-/obj/random/loot/often,
-/turf/simulated/floor/tiled/monotile,
-/area/aegis/colony/spare_storage)
 "gi" = (
 /obj/machinery/light{
 	dir = 8
@@ -3084,37 +2786,6 @@
 	},
 /turf/simulated/floor/tiled/dark/monotile,
 /area/aegis/colony/security)
-"gq" = (
-/obj/structure/table/rack,
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/weapon/cell/plasmacutter{
-	pixel_x = 8;
-	pixel_y = 8
-	},
-/obj/item/weapon/cell/plasmacutter{
-	pixel_x = 6;
-	pixel_y = 6
-	},
-/obj/item/weapon/cell/plasmacutter{
-	pixel_x = 4;
-	pixel_y = 4
-	},
-/obj/item/weapon/cell/plasmacutter{
-	pixel_x = 2;
-	pixel_y = 2
-	},
-/obj/item/weapon/cell/plasmacutter,
-/obj/item/weapon/cell/plasmacutter{
-	pixel_x = -2;
-	pixel_y = -2
-	},
-/obj/item/weapon/cell/plasmacutter{
-	pixel_x = -4;
-	pixel_y = -4
-	},
-/obj/random/loot/often,
-/turf/simulated/floor/tiled/monotile,
-/area/aegis/colony/spare_storage)
 "gr" = (
 /obj/effect/floor_decal/industrial/outline/grey,
 /obj/machinery/deployable/barrier,
@@ -3433,14 +3104,19 @@
 "gU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled/techfloor,
-/area/aegis/colony)
+/area/aegis/colony/airlock)
 "gV" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8;
 	icon_state = "map"
 	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/techfloor,
-/area/aegis/colony)
+/area/aegis/colony/airlock)
 "gW" = (
 /obj/structure/reagent_dispensers/water_cooler,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -3462,8 +3138,13 @@
 /turf/simulated/floor/plating,
 /area/aegis/colony/maintenance/north)
 "gZ" = (
-/obj/machinery/light,
-/turf/simulated/floor/tiled,
+/obj/structure/table/rack,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/item/weapon/gun/energy/cutter,
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monotile,
 /area/aegis/colony/spare_storage)
 "ha" = (
 /obj/effect/floor_decal/industrial/loading{
@@ -3505,8 +3186,13 @@
 /area/aegis/colony/medical)
 "hf" = (
 /obj/machinery/atmospherics/pipe/manifold4w/hidden,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/techfloor,
-/area/aegis/colony)
+/area/aegis/colony/airlock)
 "hg" = (
 /obj/effect/wallframe_spawn/reinforced,
 /obj/machinery/door/firedoor/border_only{
@@ -3537,7 +3223,7 @@
 	icon_state = "closed";
 	id_tag = "med_exit";
 	name = "Colony Medbay";
-	req_access = list(3,46)
+	req_access = list(3,4,46)
 	},
 /turf/simulated/floor/tiled/white/monotile,
 /area/aegis/colony/medical)
@@ -3602,7 +3288,7 @@
 	id_tag = "aegis_airlock_pump"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/aegis/colony)
+/area/aegis/colony/airlock)
 "ho" = (
 /obj/effect/floor_decal/industrial/outline/grey,
 /obj/machinery/light{
@@ -3619,6 +3305,7 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/table/standard,
 /obj/random/loot/usually,
+/obj/item/weapon/storage/box/glowsticks,
 /turf/simulated/floor/holofloor/concrete,
 /area/aegis)
 "hr" = (
@@ -3788,7 +3475,6 @@
 /turf/simulated/floor/plating,
 /area/aegis/colony)
 "hI" = (
-/obj/effect/catwalk_plated,
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
@@ -3802,13 +3488,13 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
-/turf/simulated/floor/plating,
+/obj/structure/table/standard,
+/obj/random/loot/often,
+/turf/simulated/floor/tiled/monotile,
 /area/aegis/colony)
 "hJ" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 1;
-	layer = 2.4;
-	level = 2
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/aegis/colony)
@@ -4413,13 +4099,6 @@
 /obj/machinery/portable_atmospherics/canister/air/airlock,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/aegis/colony/engineering/maintenance)
-"iO" = (
-/obj/structure/table/standard,
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/weapon/storage/box/glowsticks,
-/obj/random/loot/usually,
-/turf/simulated/floor/holofloor/concrete,
-/area/aegis)
 "iP" = (
 /obj/effect/floor_decal/corner/grey{
 	dir = 5;
@@ -5424,12 +5103,10 @@
 /turf/simulated/floor,
 /area/aegis/colony/research/airlock/hallway)
 "lc" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 1;
-	layer = 2.4;
-	level = 2
-	},
 /obj/effect/catwalk_plated/dank,
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 1
+	},
 /turf/simulated/floor,
 /area/aegis/colony/research)
 "ld" = (
@@ -5655,15 +5332,15 @@
 /turf/simulated/floor/dank/medical,
 /area/aegis/colony/research/lab)
 "lC" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 8
-	},
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/wood,
 /area/aegis/colony/research/airlock/breakroom)
 "lD" = (
@@ -5817,12 +5494,6 @@
 /turf/simulated/floor,
 /area/aegis/colony/research/locker)
 "lQ" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 10
-	},
 /obj/machinery/vending/dinnerware,
 /turf/simulated/floor/wood,
 /area/aegis/colony/research/airlock/breakroom)
@@ -5837,21 +5508,20 @@
 	pixel_x = -21
 	},
 /obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 4;
-	layer = 2.4;
-	level = 2
+	dir = 4
 	},
 /turf/simulated/floor/wood,
 /area/aegis/colony/research/airlock/breakroom)
 "lS" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9
-	},
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/carpet/purple,
 /area/aegis/colony/research/airlock/breakroom)
 "lT" = (
@@ -5863,21 +5533,6 @@
 /obj/effect/wallframe_spawn/reinforced,
 /turf/simulated/floor/plating,
 /area/aegis/colony/research/lab)
-"lV" = (
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/turf/simulated/floor/tiled/monotile,
-/area/aegis/colony/spare_storage)
 "lW" = (
 /obj/machinery/light{
 	dir = 8
@@ -5978,9 +5633,6 @@
 /turf/simulated/floor/dank/heavy,
 /area/aegis/colony/research/locker)
 "mh" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 10
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -5989,32 +5641,37 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 1
+	},
 /turf/simulated/floor/dank/heavy,
 /area/aegis/colony/research/locker)
 "mi" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
 /obj/structure/cable/green{
 	d1 = 2;
 	d2 = 8;
 	icon_state = "2-8"
 	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 10;
+	icon_state = "intact-scrubbers"
+	},
 /turf/simulated/floor/dank/heavy,
 /area/aegis/colony/research/locker)
 "mj" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9
-	},
 /obj/machinery/light{
 	dir = 4;
 	icon_state = "tube_map"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
 /turf/simulated/floor/dank/heavy,
 /area/aegis/colony/research/locker)
 "mk" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
 	d1 = 2;
 	d2 = 4;
@@ -6049,7 +5706,11 @@
 /area/aegis/colony/research/airlock/breakroom)
 "mn" = (
 /obj/structure/closet/l3closet/scientist/multi,
-/turf/simulated/floor/dank/mono,
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 1
+	},
+/obj/effect/catwalk_plated/dank,
+/turf/simulated/floor,
 /area/aegis/colony/research)
 "mo" = (
 /obj/structure/table/steel,
@@ -6111,7 +5772,7 @@
 "mw" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/door/airlock/engineering{
-	dir = 8;
+	dir = 2;
 	icon_state = "closed";
 	name = "Auxiliary Airlock Atmospherics";
 	req_access = list();
@@ -6245,6 +5906,12 @@
 	dir = 1;
 	pixel_y = -24
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 5
+	},
 /turf/simulated/floor/dank/heavy,
 /area/aegis/colony/research/locker)
 "mJ" = (
@@ -6252,6 +5919,12 @@
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
 	},
 /turf/simulated/floor/dank/heavy,
 /area/aegis/colony/research/locker)
@@ -6267,6 +5940,12 @@
 /obj/machinery/door/firedoor/border_only{
 	dir = 4;
 	icon_state = "open"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
 	},
 /turf/simulated/floor/dank/heavy,
 /area/aegis/colony/research/airlock/breakroom)
@@ -6285,31 +5964,6 @@
 /obj/random/loot/rarely/few,
 /turf/simulated/floor/holofloor/concrete,
 /area/aegis)
-"mO" = (
-/obj/machinery/door/firedoor/border_only{
-	dir = 4;
-	icon_state = "open"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/door/airlock/mining{
-	dir = 8;
-	icon_state = "closed";
-	name = "Spare Mining Supplies";
-	req_access = list();
-	req_one_access = list(46,4)
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/aegis/colony/spare_storage)
 "mP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -6354,12 +6008,10 @@
 /turf/simulated/floor/dank/mono,
 /area/aegis/colony/research)
 "mT" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 4;
-	layer = 2.4;
-	level = 2
-	},
 /obj/effect/catwalk_plated/dank,
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 4
+	},
 /turf/simulated/floor,
 /area/aegis/colony/research/lab)
 "mU" = (
@@ -6415,16 +6067,14 @@
 /turf/simulated/floor,
 /area/aegis/colony/research/iso2)
 "mZ" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 1;
-	layer = 2.4;
-	level = 2
-	},
 /obj/effect/catwalk_plated/dank,
 /obj/machinery/light,
 /obj/machinery/firealarm{
 	dir = 1;
 	pixel_y = -24
+	},
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 1
 	},
 /turf/simulated/floor,
 /area/aegis/colony/research/iso2)
@@ -6465,6 +6115,12 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
 /turf/simulated/floor/wood,
 /area/aegis/colony/research/airlock/breakroom)
 "ne" = (
@@ -6483,17 +6139,6 @@
 /turf/simulated/floor/dank/mono,
 /area/aegis/colony/research)
 "nf" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
 /obj/structure/cable/green{
 	d1 = 2;
 	d2 = 4;
@@ -6515,11 +6160,7 @@
 /turf/simulated/floor/dank/mono,
 /area/aegis/colony/research)
 "nh" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
-	dir = 1
-	},
-/obj/effect/catwalk_plated/dank,
-/turf/simulated/floor,
+/turf/simulated/floor/dank/mono,
 /area/aegis/colony/research)
 "ni" = (
 /obj/structure/reagent_dispensers/watertank,
@@ -6532,16 +6173,13 @@
 /turf/simulated/floor/dank/mono,
 /area/aegis/colony/research/lab)
 "nk" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 1
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
 	},
 /turf/simulated/floor/dank/mono,
 /area/aegis/colony/research)
@@ -6556,16 +6194,15 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
 /turf/simulated/floor/carpet/purple,
 /area/aegis/colony/research/airlock/breakroom)
 "nm" = (
-/obj/structure/cable/green{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 8;
@@ -6639,6 +6276,7 @@
 	},
 /obj/structure/catwalk,
 /obj/machinery/door/airlock/maintenance{
+	dir = 4;
 	name = "Colony Maintenance";
 	req_access = list();
 	req_one_access = list(1,46)
@@ -6653,9 +6291,6 @@
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 1
 	},
 /turf/simulated/floor/dank/mono,
 /area/aegis/colony/research)
@@ -6672,16 +6307,6 @@
 /obj/structure/table/woodentable,
 /obj/machinery/chemical_dispenser/bar_soft/full,
 /obj/item/weapon/storage/box/cups,
-/turf/simulated/floor/wood,
-/area/aegis/colony/research/airlock/breakroom)
-"ny" = (
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/wood,
 /area/aegis/colony/research/airlock/breakroom)
 "nz" = (
@@ -6747,20 +6372,6 @@
 /obj/effect/wallframe_spawn/reinforced,
 /turf/simulated/floor/plating,
 /area/aegis/colony/research/lab)
-"nE" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/machinery/door/firedoor/border_only,
-/obj/machinery/door/airlock/research{
-	name = "Science Break Room"
-	},
-/turf/simulated/floor/dank,
-/area/aegis/colony/research/airlock/breakroom)
 "nF" = (
 /obj/effect/wallframe_spawn/reinforced,
 /obj/machinery/door/firedoor/border_only{
@@ -6814,29 +6425,684 @@
 /turf/simulated/floor/dank/mono,
 /area/aegis/colony/research/lab)
 "nM" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/table/rack,
-/obj/random/common_loot,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/item/weapon/cell/plasmacutter{
+	pixel_x = 8;
+	pixel_y = 8
+	},
+/obj/item/weapon/cell/plasmacutter{
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/obj/item/weapon/cell/plasmacutter{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/item/weapon/cell/plasmacutter{
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/obj/item/weapon/cell/plasmacutter,
+/obj/item/weapon/cell/plasmacutter{
+	pixel_x = -2;
+	pixel_y = -2
+	},
+/obj/item/weapon/cell/plasmacutter{
+	pixel_x = -4;
+	pixel_y = -4
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/aegis/colony/spare_storage)
 "nN" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/structure/table/rack,
-/obj/random/uncommon_loot,
+/obj/structure/table/standard,
+/obj/item/weapon/storage/toolbox/electrical,
 /turf/simulated/floor/tiled/monotile,
 /area/aegis/colony/spare_storage)
-"nO" = (
+"ok" = (
+/obj/machinery/door/airlock/mining{
+	dir = 4;
+	name = "Charging Station"
+	},
+/turf/simulated/floor/dank/mono,
+/area/aegis/colony/charging_station)
+"on" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/aegis/colony/refinery)
+"oC" = (
+/obj/machinery/conveyor{
+	dir = 1;
+	icon_state = "conveyor0";
+	id = "aegis"
+	},
+/turf/simulated/floor/plating,
+/area/aegis/colony/refinery)
+"pc" = (
+/obj/machinery/mineral/input,
+/obj/effect/floor_decal/industrial/loading{
+	dir = 4
+	},
+/obj/machinery/light,
+/turf/simulated/floor/tiled/monotile,
+/area/aegis/colony/refinery)
+"po" = (
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "aegis_in"
+	},
+/turf/simulated/floor/plating,
+/area/aegis/colony/refinery)
+"pX" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/aegis/colony/refinery)
+"qG" = (
+/obj/machinery/conveyor{
+	dir = 1;
+	icon_state = "conveyor0";
+	id = "aegis_in"
+	},
+/obj/structure/plasticflaps/mining,
+/turf/simulated/floor/plating,
+/area/aegis/colony/refinery)
+"qW" = (
+/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/machinery/conveyor_switch/oneway{
+	id = "aegis"
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/aegis/colony/refinery)
+"rn" = (
+/obj/structure/cable/green,
+/obj/machinery/power/apc{
+	dir = 4;
+	name = "east bump";
+	pixel_x = 24
+	},
+/turf/simulated/floor/airless,
+/area/aegis/colony/charging_station)
+"rA" = (
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "aegis"
+	},
+/obj/machinery/light,
+/turf/simulated/floor/plating,
+/area/aegis/colony/refinery)
+"tW" = (
+/obj/machinery/mineral/input,
+/obj/effect/floor_decal/industrial/hatch/yellow,
+/turf/simulated/floor/plating,
+/area/aegis/colony/refinery)
+"ui" = (
+/obj/machinery/conveyor{
+	dir = 1;
+	icon_state = "conveyor0";
+	id = "aegis_in"
+	},
+/turf/simulated/floor/plating,
+/area/aegis/colony/refinery)
+"uO" = (
+/obj/machinery/alarm{
+	pixel_y = 23
+	},
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/structure/ore_box,
+/turf/simulated/floor/tiled/monotile,
+/area/aegis/colony/refinery)
+"vs" = (
+/obj/effect/floor_decal/industrial/loading{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/aegis/colony/refinery)
+"vz" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/loading{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/aegis/colony/refinery)
+"wz" = (
+/turf/simulated/wall/r_wall,
+/area/aegis/colony/charging_station)
+"xU" = (
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 8;
+	icon_state = "map_scrubber_on"
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/aegis/colony/spare_storage)
+"yu" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/aegis/colony/spare_storage)
+"zE" = (
+/obj/machinery/mineral/unloading_machine,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/tiled/monotile,
+/area/aegis/colony/refinery)
+"Af" = (
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/aegis/colony/refinery)
+"Ax" = (
+/obj/machinery/light{
+	dir = 1;
+	icon_state = "tube_map"
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/aegis/colony/refinery)
+"Bb" = (
+/obj/machinery/mineral/output,
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "aegis"
+	},
+/turf/simulated/floor/plating,
+/area/aegis/colony/refinery)
+"BC" = (
+/turf/simulated/floor/tiled/steel_grid,
+/area/aegis/colony/refinery)
+"Cg" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4;
+	icon_state = "intact"
+	},
+/obj/machinery/store,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/tiled/monotile,
+/area/aegis/colony)
+"CB" = (
+/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/structure/ore_box,
+/obj/machinery/light{
+	dir = 1;
+	icon_state = "tube_map"
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/aegis/colony/refinery)
+"CC" = (
+/turf/simulated/wall/r_wall,
+/area/aegis/colony/refinery)
+"CT" = (
+/obj/structure/plasticflaps/mining,
+/obj/machinery/conveyor{
+	dir = 2;
+	id = "aegis_in"
+	},
+/turf/simulated/floor/plating,
+/area/aegis/colony/refinery)
+"Do" = (
+/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/machinery/conveyor_switch/oneway{
+	id = "aegis_in"
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/aegis/colony/refinery)
+"Dx" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/tiled/monotile,
+/area/aegis/colony)
+"Dy" = (
+/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/machinery/conveyor_switch/oneway{
+	id = "aegis_in"
+	},
+/obj/machinery/light{
+	dir = 1;
+	icon_state = "tube_map"
+	},
+/turf/simulated/floor/plating,
+/area/aegis/colony/refinery)
+"DL" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/door/airlock/mining{
+	dir = 4;
+	name = "Charging Station"
+	},
+/turf/simulated/floor/dank/mono,
+/area/aegis/colony/charging_station)
+"Em" = (
+/obj/structure/table/standard,
+/obj/machinery/recharger,
+/turf/simulated/floor/airless,
+/area/aegis/colony/charging_station)
+"EB" = (
+/obj/machinery/conveyor{
+	dir = 8;
+	id = "aegis_in"
+	},
+/turf/simulated/floor/plating,
+/area/aegis/colony/refinery)
+"EO" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/tiled/steel_grid,
+/area/aegis/colony/refinery)
+"Fk" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/mining/brace{
+	dir = 4
+	},
+/turf/simulated/floor/holofloor/concrete,
+/area/aegis)
+"Gg" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/aegis/colony)
+"Gm" = (
+/turf/simulated/floor/tiled/steel_grid,
+/area/aegis/colony/spare_storage)
+"Gn" = (
+/obj/machinery/light,
+/turf/simulated/floor/tiled/steel_grid,
+/area/aegis/colony/refinery)
+"Gq" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/airless,
+/area/aegis/colony/charging_station)
+"HQ" = (
+/obj/structure/plasticflaps/mining,
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "aegis_in"
+	},
+/turf/simulated/floor/plating,
+/area/aegis/colony/refinery)
+"Ii" = (
+/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/machinery/mineral/input,
+/turf/simulated/floor/plating,
+/area/aegis/colony/refinery)
+"IT" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/structure/closet/crate,
+/turf/simulated/floor/tiled/monotile,
+/area/aegis/colony/refinery)
+"Jf" = (
+/obj/effect/wallframe_spawn/reinforced,
+/turf/simulated/floor/plating,
+/area/aegis/colony/charging_station)
+"Jw" = (
+/obj/machinery/door/airlock/external/glass{
+	dir = 4;
+	frequency = 1380;
+	icon_state = "closed";
+	id_tag = "aegis_airlock_outer";
+	locked = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/aegis/colony/airlock)
+"JG" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/holofloor/concrete,
+/area/aegis)
+"KH" = (
+/turf/simulated/floor/airless,
+/area/aegis/colony/charging_station)
+"LH" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6;
+	icon_state = "intact-supply"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/aegis/colony/refinery)
+"LW" = (
+/obj/effect/wallframe_spawn/reinforced,
+/turf/simulated/floor/plating,
+/area/aegis/colony/refinery)
+"Mq" = (
+/obj/effect/floor_decal/industrial/loading{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/aegis)
+"Nv" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/aegis/colony/refinery)
+"NV" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled/monotile,
+/area/aegis/colony)
+"Ob" = (
+/obj/machinery/light,
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/aegis/colony)
+"Oh" = (
+/turf/simulated/wall/r_wall,
+/area/aegis/colony/airlock)
+"Om" = (
+/obj/machinery/mineral/processing_unit,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/plating,
+/area/aegis/colony/refinery)
+"OD" = (
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "aegis"
+	},
+/obj/machinery/mineral/output,
+/turf/simulated/floor/plating,
+/area/aegis/colony/refinery)
+"OW" = (
+/obj/machinery/door/firedoor/border_only{
+	dir = 4;
+	icon_state = "open"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/door/airlock/mining{
+	dir = 8;
+	name = "Refinery Room"
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/aegis/colony/refinery)
+"Pz" = (
 /obj/structure/table/rack,
-/obj/random/tool/advanced,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/item/weapon/storage/ore{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/item/weapon/storage/ore,
+/obj/item/weapon/storage/ore{
+	pixel_x = -4;
+	pixel_y = -4
+	},
+/obj/item/weapon/storage/box/glowsticks,
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/aegis/colony/spare_storage)
-"nP" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
+"PA" = (
 /obj/structure/table/rack,
-/obj/random/tool/modded,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/item/weapon/storage/ore{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/item/weapon/storage/ore,
+/obj/item/weapon/storage/ore{
+	pixel_x = -4;
+	pixel_y = -4
+	},
+/obj/item/weapon/storage/box/glowsticks,
 /turf/simulated/floor/tiled/monotile,
 /area/aegis/colony/spare_storage)
+"PK" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/light_switch{
+	on = 1;
+	pixel_x = -8;
+	pixel_y = 32
+	},
+/obj/machinery/firealarm{
+	pixel_x = 4;
+	pixel_y = 24
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/aegis/colony/spare_storage)
+"Qk" = (
+/obj/machinery/firealarm{
+	pixel_y = 24
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/aegis/colony/refinery)
+"Qz" = (
+/obj/machinery/conveyor{
+	dir = 2;
+	id = "aegis_in"
+	},
+/turf/simulated/floor/plating,
+/area/aegis/colony/refinery)
+"RP" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/airless,
+/area/aegis/colony/charging_station)
+"RX" = (
+/obj/structure/plasticflaps/mining,
+/obj/machinery/conveyor{
+	dir = 8;
+	id = "aegis_in"
+	},
+/turf/simulated/floor/plating,
+/area/aegis/colony/refinery)
+"Sw" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/aegis/colony)
+"SF" = (
+/obj/structure/extinguisher_cabinet{
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/aegis/colony/refinery)
+"Th" = (
+/obj/structure/closet/medical_wall/filled{
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/aegis/colony/refinery)
+"Tu" = (
+/obj/machinery/door/airlock/mining{
+	dir = 8;
+	icon_state = "closed";
+	name = "Spare Mining Supplies"
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 4;
+	icon_state = "open"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/aegis/colony/spare_storage)
+"Tz" = (
+/obj/structure/table/standard,
+/obj/machinery/recharger,
+/obj/machinery/firealarm{
+	pixel_y = 24
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/aegis/colony)
+"TD" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/aegis/colony/refinery)
+"UC" = (
+/obj/machinery/conveyor{
+	dir = 1;
+	icon_state = "conveyor0";
+	id = "aegis"
+	},
+/obj/structure/plasticflaps,
+/turf/simulated/floor/plating,
+/area/aegis/colony/refinery)
+"UO" = (
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/airless,
+/area/aegis/colony/charging_station)
+"Vz" = (
+/obj/effect/floor_decal/industrial/loading,
+/turf/simulated/floor/plating,
+/area/aegis)
+"VA" = (
+/obj/machinery/power/apc{
+	dir = 1;
+	name = "north bump";
+	pixel_y = 24
+	},
+/obj/structure/cable/green{
+	d2 = 2;
+	icon_state = "0-2"
+	},
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/structure/ore_box,
+/turf/simulated/floor/tiled/monotile,
+/area/aegis/colony/refinery)
+"WB" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/tiled/monotile,
+/area/aegis/colony/refinery)
+"WG" = (
+/obj/machinery/door/firedoor/border_only{
+	dir = 4;
+	icon_state = "open"
+	},
+/obj/effect/wallframe_spawn/reinforced,
+/turf/simulated/floor/plating,
+/area/aegis/colony/refinery)
+"Xf" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/mining/brace{
+	dir = 8
+	},
+/turf/simulated/floor/holofloor/concrete,
+/area/aegis)
+"XP" = (
+/obj/machinery/mineral/processing_unit_console,
+/turf/simulated/wall/r_wall,
+/area/aegis/colony/refinery)
+"XR" = (
+/obj/machinery/conveyor{
+	dir = 10;
+	icon_state = "conveyor0";
+	id = "aegis_in"
+	},
+/turf/simulated/floor/plating,
+/area/aegis/colony/refinery)
+"Za" = (
+/turf/simulated/floor/plating,
+/area/aegis)
+"Zg" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4;
+	icon_state = "intact"
+	},
+/obj/structure/table/standard,
+/obj/random/loot/often,
+/turf/simulated/floor/tiled/monotile,
+/area/aegis/colony)
 
 (1,1,1) = {"
 aa
@@ -22495,12 +22761,12 @@ ag
 ag
 dS
 dk
-eu
+ei
 eu
 jk
 hq
 eu
-eu
+ei
 dk
 dS
 ag
@@ -22897,7 +23163,6 @@ ag
 ag
 dS
 dS
-ei
 dZ
 dZ
 dZ
@@ -22906,7 +23171,8 @@ dZ
 dZ
 dZ
 dZ
-ei
+dZ
+dZ
 dS
 dS
 ag
@@ -23098,6 +23364,7 @@ ag
 ag
 dk
 dk
+ei
 dZ
 dZ
 dZ
@@ -23108,8 +23375,7 @@ dZ
 dZ
 dZ
 dZ
-dZ
-dZ
+ei
 dk
 dk
 ag
@@ -23299,16 +23565,16 @@ ag
 ag
 ag
 dS
+ek
+ev
 dZ
 dZ
-dZ
-dZ
-dZ
-dZ
-dZ
-dZ
-dZ
-dZ
+wz
+wz
+ok
+ok
+wz
+wz
 dZ
 dZ
 dZ
@@ -23501,16 +23767,16 @@ ag
 ag
 ag
 dS
+Xf
 dZ
 dZ
 dZ
-dZ
-dZ
-dZ
-dZ
-dZ
-dZ
-dZ
+Jf
+KH
+KH
+KH
+RP
+Jf
 dZ
 dZ
 dZ
@@ -23706,13 +23972,13 @@ dZ
 dZ
 dZ
 dZ
-ek
-ev
-ev
 dZ
-dZ
-hd
-hs
+Jf
+Em
+KH
+KH
+Em
+Jf
 hv
 dZ
 dZ
@@ -23908,14 +24174,14 @@ dZ
 dZ
 dZ
 dZ
-ek
-ev
-ev
 dZ
-dZ
-hA
-iC
-iO
+Jf
+Em
+KH
+KH
+Em
+Jf
+hd
 dZ
 dZ
 dZ
@@ -24107,20 +24373,20 @@ ag
 ag
 ag
 dS
+Fk
 dZ
 dZ
 dZ
+Jf
+Gq
+KH
+UO
+rn
+Jf
+hs
 dZ
 dZ
-dZ
-dZ
-dZ
-dZ
-dZ
-dZ
-dZ
-dZ
-dZ
+iC
 dS
 ag
 ag
@@ -24309,20 +24575,20 @@ ag
 ag
 ag
 dS
+ek
+ev
+dZ
+dZ
+wz
+wz
+ok
+DL
+wz
+wz
 dZ
 dZ
 dZ
-dZ
-dZ
-dZ
-dZ
-dZ
-dZ
-dZ
-dZ
-dZ
-dZ
-dZ
+hA
 dS
 ag
 ag
@@ -24512,18 +24778,18 @@ ag
 ag
 dk
 dk
+ei
 dZ
 dZ
 dZ
 dZ
 dZ
+JG
 dZ
 dZ
 dZ
 dZ
-dZ
-dZ
-dZ
+ei
 dk
 dk
 ag
@@ -24715,16 +24981,16 @@ ag
 ag
 dS
 dS
-ei
 dZ
 dZ
 dZ
 dZ
 dZ
+JG
 dZ
 dZ
 dZ
-ei
+dZ
 dS
 dS
 ag
@@ -24922,7 +25188,7 @@ dZ
 dZ
 dZ
 dZ
-dZ
+JG
 dZ
 dZ
 dZ
@@ -25124,7 +25390,7 @@ dk
 dZ
 dZ
 dZ
-dZ
+JG
 dZ
 dZ
 dk
@@ -25326,7 +25592,7 @@ dS
 dZ
 dZ
 dZ
-dZ
+JG
 dZ
 dZ
 dS
@@ -25525,12 +25791,12 @@ ag
 ag
 ag
 dS
-dS
-dk
+ei
 dZ
 dZ
-dk
-dS
+JG
+dZ
+ei
 dS
 ag
 ag
@@ -25726,14 +25992,14 @@ ag
 ag
 ag
 ag
-ag
-ag
+dk
+dS
 dk
 dZ
-dZ
+JG
 dk
-ag
-ag
+dS
+dk
 ag
 ag
 ag
@@ -25922,17 +26188,17 @@ ad
 ag
 ag
 ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
 dS
+dS
+dS
+dS
+dS
+dS
+dk
+Za
+Za
 dZ
-dZ
+JG
 dS
 ag
 ag
@@ -26124,17 +26390,17 @@ ad
 ag
 ag
 ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
 dS
+Qz
+Qz
+Qz
+Qz
+Qz
+CT
+Vz
+Za
 dZ
-dZ
+JG
 dS
 ag
 ag
@@ -26323,20 +26589,20 @@ ad
 ad
 ad
 ad
-ad
-ag
-ag
-ag
-ag
-ag
-ag
-ag
 ag
 ag
 ag
 dS
+EB
+dS
+dS
+dS
+dS
+dk
+Dy
+Za
 dZ
-dZ
+JG
 dS
 ag
 ag
@@ -26526,19 +26792,19 @@ ad
 ad
 ad
 ad
-ad
-ag
-ag
-ag
-ag
-ag
-ag
-ag
 ag
 ag
 dS
+EB
+dS
+XR
+ui
+ui
+qG
+Mq
+Za
 dZ
-dZ
+JG
 dS
 ag
 ag
@@ -26728,19 +26994,19 @@ ad
 ad
 ad
 ad
-ad
-ag
-ag
-ag
-ag
-ag
-ag
-ag
 ag
 ag
 dS
+EB
+dS
+po
+dS
+dk
+dk
+dk
+dk
 dZ
-dZ
+JG
 dS
 ag
 ag
@@ -26930,19 +27196,19 @@ ad
 ad
 ad
 ad
-ad
 ag
-ag
-ag
-ag
-ag
-ag
+dZ
+dS
+EB
+dS
+po
+dS
 ag
 ag
 dS
 dk
 dZ
-dZ
+JG
 dk
 dS
 ag
@@ -27130,21 +27396,21 @@ kg
 dk
 ad
 ad
-ad
 dk
 ag
 ag
 ag
-ag
-ag
-ag
-ag
+dS
+EB
+dS
+po
+dS
 ag
 ag
 dS
 eT
 dZ
-dZ
+JG
 eT
 dS
 ag
@@ -27331,22 +27597,22 @@ ag
 dZ
 kf
 ad
-ad
 dk
 ke
 ag
 ag
-dZ
 ag
-ag
-ag
-ag
+dS
+EB
+dS
+po
+dS
 ag
 ag
 dS
 dk
 dZ
-dZ
+JG
 dk
 dS
 ag
@@ -27538,17 +27804,17 @@ ag
 ag
 ag
 ag
-ag
-ag
-ag
-ag
-ag
+dS
+EB
+dS
+po
+dS
 ag
 ag
 ag
 dS
 dZ
-dZ
+JG
 dS
 ag
 ag
@@ -27740,17 +28006,17 @@ ag
 ag
 dZ
 ag
-ag
-ag
-ag
-ag
-ag
+dS
+EB
+dS
+po
+dS
 ag
 ag
 ag
 dS
 dZ
-dZ
+JG
 dS
 ag
 ag
@@ -27942,17 +28208,17 @@ ag
 ag
 ag
 ag
-ag
-ag
-ag
-ag
-ag
+dS
+EB
+dS
+po
+dS
 ag
 ag
 ag
 dS
 dZ
-dZ
+JG
 dS
 ag
 ag
@@ -28144,17 +28410,17 @@ dZ
 ag
 ag
 ag
-ag
-ag
-ag
-ag
-ag
+dS
+EB
+dS
+po
+dS
 ag
 ag
 ag
 dS
 dZ
-dZ
+JG
 dS
 ag
 ag
@@ -28346,17 +28612,17 @@ ag
 dZ
 ag
 dZ
-ag
-ag
-ag
-ag
-ag
+dS
+EB
+dS
+po
+dS
 dZ
 dZ
 ag
 dS
 dZ
-dZ
+JG
 dS
 ag
 dZ
@@ -28546,19 +28812,19 @@ kj
 dZ
 ag
 ag
-ag
-ag
-ag
-ad
-ad
-ad
 dZ
-dZ
-dk
+CC
+CC
+RX
+CC
+HQ
+CC
+CC
+CC
 eT
 dk
 ex
-dZ
+JG
 dk
 eT
 dk
@@ -28748,21 +29014,21 @@ dZ
 dZ
 ag
 ag
-ag
-ag
-dk
 ad
-ad
-ad
-ad
-ad
-dk
-bR
-bR
+CC
+Ax
+vs
+Do
+WB
+pX
+BC
+CC
+Oh
+Oh
+Jw
 cj
-cj
-bR
-bR
+Oh
+Oh
 dk
 dZ
 ag
@@ -28949,22 +29215,22 @@ dZ
 ad
 dk
 ag
-ag
 ad
 ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-bR
+CC
+Th
+BC
+BC
+BC
+BC
+BC
+BC
+Oh
 aP
 gU
 gV
 hn
-bR
+Oh
 eT
 dZ
 ag
@@ -29152,21 +29418,21 @@ kf
 ad
 ad
 ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-bR
+CC
+CC
+BC
+BC
+BC
+BC
+BC
+qW
+pc
+Oh
 bZ
 bY
 cG
 bY
-bR
+Oh
 dZ
 ag
 ag
@@ -29354,21 +29620,21 @@ kf
 ad
 ad
 ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-bR
+CC
+CB
+on
+BC
+BC
+BC
+BC
+LW
+zE
+Oh
 ch
 gU
 hf
 dc
-bR
+Oh
 dZ
 ag
 ag
@@ -29556,21 +29822,21 @@ js
 ad
 ad
 ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-bR
+CC
+VA
+Nv
+BC
+Gn
+CC
+XP
+CC
+OD
+Oh
 bO
 cC
 df
 dr
-bR
+Oh
 dZ
 ag
 ag
@@ -29758,21 +30024,21 @@ js
 ad
 ad
 ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-bR
+CC
+uO
+LH
+EO
+Af
+LW
+Om
+tW
+oC
+Oh
 ci
 gU
-di
+hf
 hn
-bR
+Oh
 dZ
 dZ
 ag
@@ -29960,21 +30226,21 @@ js
 ad
 ad
 ad
-ad
-ay
-ay
-ay
-ay
-ay
-ay
-ay
-ay
-bR
-bR
+CC
+BC
+TD
+BC
+IT
+LW
+Bb
+CC
+CC
+Oh
+Oh
 cu
 dv
-bR
-bR
+Oh
+Oh
 dB
 dZ
 dZ
@@ -30162,15 +30428,15 @@ js
 ad
 ad
 ad
-ad
-ay
-bc
-aJ
-dN
-dV
-gc
-iR
-ay
+CC
+BC
+TD
+BC
+IT
+LW
+rA
+CC
+bR
 hk
 dn
 ha
@@ -30364,15 +30630,15 @@ js
 ad
 ad
 ad
-ad
-ay
-bB
-aJ
-aJ
-bt
-aJ
-aJ
-ay
+CC
+Ax
+TD
+BC
+IT
+CC
+Ii
+CC
+bR
 ej
 aS
 aS
@@ -30567,14 +30833,14 @@ lu
 lu
 lu
 lu
-ay
-bW
-bl
-bl
+SF
+TD
+BC
+BC
 bv
 cI
-gh
-ay
+CC
+bR
 iU
 aS
 aS
@@ -30769,15 +31035,15 @@ lL
 mf
 mE
 lu
-ay
+Qk
 aX
-aJ
-aJ
-aJ
+BC
+vz
+UC
 cM
-gq
-ay
-ej
+CC
+bR
+Tz
 aS
 aS
 dE
@@ -30971,14 +31237,14 @@ lM
 mg
 mF
 lu
-bp
-aX
-aJ
-ay
-gT
-cQ
-gT
-ay
+WG
+OW
+WG
+CC
+CC
+CC
+CC
+bR
 jf
 aS
 aS
@@ -31173,12 +31439,12 @@ lN
 mg
 mG
 lu
-aK
-aX
-fP
-dR
 aS
 cK
+aS
+bS
+aS
+aS
 aS
 aS
 aS
@@ -31186,7 +31452,7 @@ aS
 aS
 dE
 aS
-aS
+eE
 dB
 dB
 cv
@@ -31376,11 +31642,11 @@ mh
 mH
 lu
 cg
-aX
-aJ
-dR
-aS
 cN
+et
+et
+et
+et
 et
 et
 et
@@ -31577,13 +31843,13 @@ lO
 mi
 mI
 lu
-aK
-aX
-fP
-dR
 aS
-cP
+Gg
 aS
+aS
+aS
+aS
+Sw
 aS
 aS
 aS
@@ -31779,13 +32045,13 @@ lP
 mj
 mJ
 lu
-bp
-aX
-dC
 ay
+Tu
 gT
-mO
 gT
+gT
+ay
+ay
 ay
 jg
 aS
@@ -31797,7 +32063,7 @@ aS
 bT
 bu
 cP
-aS
+eE
 bR
 eU
 fw
@@ -31981,20 +32247,20 @@ nF
 cR
 mK
 cR
-cR
-aX
-aJ
-nM
-fj
+ay
+PK
+Gm
+bp
+bp
 cX
 nN
 ay
-cc
+aS
 dG
 hF
 hH
 hK
-hJ
+Ob
 dD
 dD
 ew
@@ -32183,11 +32449,11 @@ lx
 lR
 nd
 nw
-cR
+ay
 be
 bm
-bm
-bJ
+ey
+ey
 ey
 gZ
 ay
@@ -32385,12 +32651,12 @@ lC
 lS
 nl
 nx
-cR
+ay
 br
-aJ
-aJ
+yu
 cB
-aJ
+cB
+Gm
 aJ
 ay
 gW
@@ -32586,13 +32852,13 @@ cR
 lQ
 mk
 nm
-ny
-nE
-lV
-aJ
-fV
-nO
-nP
+nr
+ay
+iR
+yu
+Gm
+Gm
+Gm
 nM
 ay
 hB
@@ -32789,13 +33055,13 @@ cR
 mm
 nr
 nz
-cR
-aQ
 ay
-ay
-ay
-ay
-ay
+gc
+xU
+PA
+Pz
+Gm
+nM
 ay
 ic
 aS
@@ -32992,13 +33258,13 @@ cR
 nt
 cR
 cR
-cr
-eD
 lw
-bR
-bR
-bR
-bR
+lw
+lw
+ay
+ay
+ay
+ay
 bR
 ck
 ck
@@ -33194,8 +33460,8 @@ mA
 lE
 mR
 mo
-cr
-fN
+nh
+eD
 lw
 aT
 ez
@@ -33809,9 +34075,9 @@ aS
 aS
 dG
 hF
-hF
+NV
 hI
-hK
+Dx
 hK
 hJ
 aS
@@ -34011,9 +34277,9 @@ aS
 aS
 aS
 aS
-aS
-ep
-aS
+bu
+Cg
+bu
 aS
 aS
 aS
@@ -34213,9 +34479,9 @@ aS
 aS
 aS
 aS
-aS
-ep
-aS
+bu
+Zg
+bu
 aS
 aS
 aS

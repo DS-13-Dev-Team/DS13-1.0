@@ -36,7 +36,7 @@
 			if (CELL_ALIVE(map[tmp_cell]))
 				ore_turfs += tmp_cell
 
-	game_log("ASGEN", "Found [ore_turfs.len] ore turfs.")
+	log_misc("Found [ore_turfs.len] ore turfs.")
 	var/ore_count = round(map.len/20)
 	var/door_count = 0
 	var/empty_count = 0
@@ -55,8 +55,8 @@
 			empty_count += 1
 		ore_count--
 
-	game_log("ASGEN", "Set [door_count] turfs to random minerals.")
-	game_log("ASGEN", "Set [empty_count] turfs to high-chance random minerals.")
+	log_misc("Set [door_count] turfs to random minerals.")
+	log_misc("Set [empty_count] turfs to high-chance random minerals.")
 	return 1
 
 /datum/random_map/automata/cave_system/apply_to_map()
@@ -93,4 +93,4 @@
 
 		CHECK_TICK
 
-	game_log("ASGEN", "Applied [num_applied] turfs.")
+	log_misc("Applied [num_applied] turfs.")

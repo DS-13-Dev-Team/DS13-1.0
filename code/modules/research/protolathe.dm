@@ -92,10 +92,15 @@
 		icon_state = "protolathe"
 
 /obj/machinery/r_n_d/protolathe/proc/check_mat(datum/design/being_built, M)
+	var/A = 0
 	if(materials[M])
-		return (materials[M].amount - (being_built.materials[M]/efficiency_coeff) >= 0) ? 1 : 0
+		A = materials[M].amount
+		A /= max(1 , (being_built.materials[M]/efficiency_coeff))
+		return A
 	else
-		return (reagents.has_reagent(M, (being_built.materials[M]/efficiency_coeff)) != 0) ? 1 : 0
+		A = reagents.get_reagent_amount(M)
+		A /= max(1, (being_built.chemicals[M]/efficiency_coeff))
+		return A
 
 /obj/machinery/r_n_d/protolathe/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(busy)

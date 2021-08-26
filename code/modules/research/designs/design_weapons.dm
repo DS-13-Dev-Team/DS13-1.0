@@ -133,7 +133,7 @@ S	fuel tank (hydrazine)
 	name = "T15 Javelin Gun"
 	id = "javgun"
 	build_path = /obj/item/weapon/gun/projectile/javelin_gun
-	materials = list(MATERIAL_PLASTEEL = 4000, MATERIAL_STEEL = 35000, MATERIAL_TRITIUM = 4000, MATERIAL_PHORON = 4000)
+	materials = list(MATERIAL_PLASTEEL = 4000, MATERIAL_STEEL = 35000, MATERIAL_PHORON = 4000)
 	price = 11000
 
 /datum/design/item/weapon/flamethrower
@@ -147,8 +147,15 @@ S	fuel tank (hydrazine)
 	name = "Seeker Rifle"
 	id = "seeker"
 	build_path = /obj/item/weapon/gun/projectile/seeker
-	materials = list(MATERIAL_STEEL = 2500, MATERIAL_PLASTEEL = 7500, MATERIAL_GLASS = 100, MATERIAL_DIAMOND = 800, MATERIAL_PLASTIC = 2000)
-	price = 12000
+	materials = list(MATERIAL_STEEL = 12500, MATERIAL_PLASTEEL = 10000, MATERIAL_GLASS = 350, MATERIAL_DIAMOND = 800, MATERIAL_PLASTIC = 2000)
+	price = 15000
+
+/datum/design/item/weapon/forcegun
+	name = "Handheld Graviton Accelerator"
+	id = "forcegun"
+	build_path = /obj/item/weapon/gun/energy/forcegun
+	materials = list(MATERIAL_STEEL = 5000, MATERIAL_PLASTIC = 3500, MATERIAL_GLASS = 500, MATERIAL_SILVER = 500)
+	price = 11000
 
 /datum/design/item/ammo
 	category = "Ammunition"
@@ -166,7 +173,8 @@ S	fuel tank (hydrazine)
 /datum/design/item/ammo/icds
 	name = "Incendiary Divet Magazine"
 	id = "icds"
-	materials = list(MATERIAL_STEEL = 4000)
+	materials = list(MATERIAL_STEEL = 4000, MATERIAL_PHORON = 750)
+	chemicals = list(/datum/reagent/water = 50)	// From lore perspective oxyphoron will be inside of bullets
 	build_path = /obj/item/ammo_magazine/divet/incendiary
 	build_type = PROTOLATHE
 
@@ -226,9 +234,17 @@ S	fuel tank (hydrazine)
 	name = "seeker shell"
 	id = "seeker_ammo"
 	materials = list(MATERIAL_PLASTEEL = 5000, MATERIAL_DIAMOND = 1250, MATERIAL_URANIUM = 500)
-	build_path = /obj/item/projectile/bullet/seeker
+	build_path = /obj/item/ammo_magazine/seeker
 	price = 1750
 
+
+/datum/design/item/ammo/jav_ammo
+	name = "javelin rack"
+	desc = "A set of javelins for the launcher"
+	id = "javelin_rack"
+	materials = list(MATERIAL_PLASTEEL = 4000, MATERIAL_PHORON = 2500)
+	build_path = /obj/item/ammo_magazine/javelin
+	price = 1200	// 400 per 2 spears, same as in DS2
 
 
 /datum/design/item/ammo/fuel_tank

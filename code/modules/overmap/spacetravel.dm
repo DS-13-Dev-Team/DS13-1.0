@@ -14,11 +14,17 @@ var/list/cached_space = list()
 	y = ny
 	map_z += nz
 	map_sectors["[nz]"] = src
-	testing("Temporary sector at [x],[y] was created, corresponding zlevel is [nz].")
+#ifdef TESTING
+	var/message = "Temporary sector at [x],[y] was created, corresponding zlevel is [nz]."
+	testing(message)
+#endif
 
 /obj/effect/overmap/sector/temporary/Destroy()
 	map_sectors["[map_z]"] = null
-	testing("Temporary sector at [x],[y] was deleted.")
+#ifdef TESTING
+	var/message = "Temporary sector at [x],[y] was deleted."
+	testing(message)
+#endif
 
 /obj/effect/overmap/sector/temporary/proc/can_die(var/mob/observer)
 	testing("Checking if sector at [map_z[1]] can die.")

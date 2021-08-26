@@ -125,7 +125,7 @@ datum/preferences
 			open_load_dialog(usr)
 			return 1
 	else if(href_list["changeslot"])
-		load_character(text2num(href_list["changeslot"]))
+		load_and_update_character(text2num(href_list["changeslot"]))
 		sanitize_preferences()
 		close_load_dialog(usr)
 	else if(href_list["resetslot"])
@@ -174,15 +174,17 @@ datum/preferences
 	character.g_facial = g_facial
 	character.b_facial = b_facial
 
+	character.g_style = g_style
+	character.r_grad = r_grad
+	character.g_grad = g_grad
+	character.b_grad = b_grad
+
 	character.r_skin = r_skin
 	character.g_skin = g_skin
 	character.b_skin = b_skin
 
 	character.s_tone = s_tone
 	character.s_base = s_base
-
-	character.h_style = h_style
-	character.f_style = f_style
 
 	// Replace any missing limbs.
 	for(var/name in BP_ALL_LIMBS)
@@ -322,7 +324,7 @@ datum/preferences
 	panel = new(user, "Character Slots", "Character Slots", 300, 390, src)
 	panel.set_content(jointext(dat,null))
 	panel.open()
-	
+
 //Called during character creation, a step AFTER copy_to above, for the same mob.
 //This is run after the mob's mind datum is created and that is passed in here
 //Use for applying any vars which belong on the mind rather than the body

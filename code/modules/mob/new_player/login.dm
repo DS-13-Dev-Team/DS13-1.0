@@ -13,7 +13,7 @@
 	var/known_icon_states = icon_states(icon)
 	for(var/lobby_screen in GLOB.using_map.lobby_screens)
 		if(!(lobby_screen in known_icon_states))
-			error("Lobby screen '[lobby_screen]' did not exist in the icon set [icon].")
+			log_debug("Lobby screen '[lobby_screen]' did not exist in the icon set [icon].")
 			GLOB.using_map.lobby_screens -= lobby_screen
 
 	change_image()
@@ -66,7 +66,7 @@
 
 	if(join_motd)
 		to_chat(src, "<div class=\"motd\">[join_motd]</div>")
-	to_chat(src, "<div class='info'>Game ID: <div class='danger'>[game_id]</div></div>")
+	to_chat(src, "<div class='info'>Round ID: <div class='danger'>[GLOB.round_id]</div></div>")
 
 	if(!mind)
 		mind = new /datum/mind(key)

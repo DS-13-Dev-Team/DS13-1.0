@@ -192,7 +192,7 @@
 	required_tech_levels = list()
 	cost = 2000
 
-	unlocks_designs = list("mining drill head", "mining drill brace", "plasmacutter", "linecutter", "contactbeam")
+	unlocks_designs = list("mining drill head", "mining drill brace", "plasmacutter", "linecutter", "contactbeam", "forcegun")
 
 /datum/technology/engineering/mining_ammo
 	name = "Mining Ammuntion"
@@ -207,7 +207,7 @@
 	required_tech_levels = list()
 	cost = 1250
 
-	unlocks_designs = list("line_rack", "contact_energy")
+	unlocks_designs = list("line_rack", "contact_energy", "force_energy")
 
 /datum/technology/engineering/adv_mining
 	name = "Advanced Engineering"

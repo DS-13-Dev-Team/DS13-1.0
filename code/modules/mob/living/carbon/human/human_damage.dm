@@ -439,6 +439,13 @@ This function restores all organs.
 /mob/living/carbon/human/get_organ(var/zone)
 	return organs_by_name[check_zone(zone)]
 
+/mob/proc/get_organ_by_type(var/type)
+
+/mob/living/carbon/human/get_organ_by_type(var/type)
+	for (var/tag in organs_by_name)
+		var/obj/O = organs_by_name[tag]
+		if (istype(O, type))
+			return O
 
 /mob/living/carbon/human/apply_effect(var/effect = 0,var/effecttype = STUN, var/blocked = 0)
 	if(effecttype == IRRADIATE && (effect * blocked_mult(blocked) <= RAD_LEVEL_LOW))

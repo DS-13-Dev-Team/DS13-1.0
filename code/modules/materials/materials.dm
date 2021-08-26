@@ -55,7 +55,7 @@ var/list/name_to_material
 		populate_material_list()
 	. = name_to_material[name]
 	if(!.)
-		log_error("Unable to acquire material by name '[name]'")
+		log_debug("Unable to acquire material by name '[name]'")
 
 /proc/material_display_name(name)
 	var/material/material = get_material_by_name(name)

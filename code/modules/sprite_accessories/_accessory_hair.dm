@@ -715,3 +715,66 @@
 /datum/sprite_accessory/hair/bighawk
 	name = "Big Mohawk"
 	icon_state = "hair_bighawk"
+
+/*
+/////////////////////////////////////
+/  =-----------------------------=  /
+/  == Hair Gradient Definitions ==  /
+/  =-----------------------------=  /
+/////////////////////////////////////
+*/
+
+/datum/sprite_accessory/hair_gradients
+	icon = 'icons/mob/hair_gradients.dmi'
+
+/datum/sprite_accessory/hair_gradients/none
+	name = "None"
+	icon_state = "none"
+
+/datum/sprite_accessory/hair_gradients/fadeup
+	name = "Fade Up"
+	icon_state = "fadeup"
+
+/datum/sprite_accessory/hair_gradients/fadedown
+	name = "Fade Down"
+	icon_state = "fadedown"
+
+/datum/sprite_accessory/hair_gradients/vertical_split
+	name = "Vertical Split"
+	icon_state = "vsplit"
+
+/datum/sprite_accessory/hair_gradients/_split
+	name = "Horizontal Split"
+	icon_state = "bottomflat"
+
+/datum/sprite_accessory/hair_gradients/reflected
+	name = "Reflected"
+	icon_state = "reflected_high"
+
+/datum/sprite_accessory/hair_gradients/reflected_inverse
+	name = "Reflected Inverse"
+	icon_state = "reflected_inverse_high"
+
+/datum/sprite_accessory/hair_gradients/wavy
+	name = "Wavy"
+	icon_state = "wavy"
+
+/datum/sprite_accessory/hair_gradients/long_fade_up
+	name = "Long Fade Up"
+	icon_state = "long_fade_up"
+
+/datum/sprite_accessory/hair_gradients/long_fade_down
+	name = "Long Fade Down"
+	icon_state = "long_fade_down"
+
+/datum/sprite_accessory/hair_gradients/short_fade_up
+	name = "Short Fade Up"
+	icon_state = "short_fade_up"
+
+/datum/sprite_accessory/hair_gradients/short_fade_down
+	name = "Short Fade Down"
+	icon_state = "short_fade_down"
+
+/datum/sprite_accessory/hair_gradients/wavy_spike
+	name = "Spiked Wavy"
+	icon_state = "wavy_spiked"

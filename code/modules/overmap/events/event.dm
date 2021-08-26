@@ -129,7 +129,7 @@
 
 /datum/overmap_event/proc/enter(var/obj/effect/overmap/ship/victim)
 	if(victim in victims)
-		log_error("Multiple attempts to trigger the same event by [victim] detected.")
+		log_debug("Multiple attempts to trigger the same event by [victim] detected.")
 		return
 	LAZYADD(victims, victim)
 	var/datum/event_meta/EM = new(difficulty, "Overmap event - [name]", event, add_to_queue = FALSE, is_one_shot = TRUE)

@@ -21,6 +21,10 @@
 	icon_state = "crewbase"
 	sound_env = SMALL_ENCLOSED
 
+/area/aegis/colony/charging_station
+	name = "\improper Charging Station"
+	icon_state = "miningbase"
+
 /area/aegis/colony/engineering
 	name = "\improper Aegis Colony Engineering"
 	icon_state = "engibase"
@@ -51,7 +55,6 @@
 	icon_state = "maintbase"
 	sound_env = TUNNEL_ENCLOSED
 
-
 /area/aegis/colony/maintenance/north
 	name = "\improper Aegis Colony Maintenance - North"
 
@@ -66,6 +69,11 @@
 	icon_state = "medicalbase"
 	sound_env = SMALL_ENCLOSED
 
+/area/aegis/colony/refinery
+	name = "\improper Aegis Colony Refinery"
+	icon_state = "miningbase"
+	sound_env = SMALL_ENCLOSED
+
 /area/aegis/colony/security
 	name = "\improper Aegis Colony Security"
 	icon_state = "brig"
@@ -74,7 +82,7 @@
 /area/aegis/colony/spare_storage
 	name = "\improper Aegis Colony Spare Miner Supply"
 	icon_state = "miningbase"
-	sound_env = LARGE_ENCLOSED
+	sound_env = SMALL_ENCLOSED
 
 /* Sci outpost. */
 

@@ -4,7 +4,7 @@
 	set name = "Open RIG Interface"
 	set desc = "Open the RIG system interface."
 	set category = "RIG"
-	set src = usr.contents
+	set src in usr.contents
 
 	if(wearer && wearer.back == src)
 		ui_interact(usr)
