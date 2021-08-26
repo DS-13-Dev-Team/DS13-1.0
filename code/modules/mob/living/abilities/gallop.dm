@@ -42,7 +42,7 @@
 /datum/extension/gallop/proc/start()
 	if (!started_at)
 		started_at = world.time
-		ongoing_timer = addtimer(CALLBACK(src, /datum/extension/gallop/proc/stop), duration)
+		ongoing_timer = addtimer(CALLBACK(src, /datum/extension/gallop/proc/stop), duration, TIMER_STOPPABLE)
 
 		user.reset_move_cooldown()//Allow nextmove immediately
 		GLOB.damage_hit_event.register(user, src, /datum/extension/gallop/proc/user_hit)
@@ -60,7 +60,7 @@
 	if (!stopped_at)
 		deltimer(ongoing_timer)
 		stopped_at = world.time
-		ongoing_timer = addtimer(CALLBACK(src, /datum/extension/gallop/proc/finish_cooldown), cooldown)
+		ongoing_timer = addtimer(CALLBACK(src, /datum/extension/gallop/proc/finish_cooldown), cooldown, TIMER_STOPPABLE)
 		GLOB.damage_hit_event.unregister(user, src, /datum/extension/gallop/proc/user_hit)
 		GLOB.bump_event.unregister(user, src, /datum/extension/gallop/proc/user_bumped)
 		GLOB.moved_event.unregister(user, src, /datum/extension/gallop/proc/user_moved)

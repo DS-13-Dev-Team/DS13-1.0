@@ -40,7 +40,7 @@
 	.=..()
 
 /datum/extension/delete_unseen/proc/start()
-	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/delete_unseen/proc/tick), interval)
+	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/delete_unseen/proc/tick), interval, TIMER_STOPPABLE)
 
 
 /datum/extension/delete_unseen/proc/tick()
@@ -55,7 +55,7 @@
 		qdel(subject)
 		stop()
 	else
-		ongoing_timer = addtimer(CALLBACK(src, /datum/extension/delete_unseen/proc/tick), interval)
+		ongoing_timer = addtimer(CALLBACK(src, /datum/extension/delete_unseen/proc/tick), interval, TIMER_STOPPABLE)
 
 
 

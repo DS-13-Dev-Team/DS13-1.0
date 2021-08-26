@@ -171,7 +171,7 @@
 	status = SHOOT_STATUS_COOLING
 	deltimer(ongoing_timer)
 	stopped_at = world.time
-	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/shoot/proc/finish_cooldown), cooldown)
+	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/shoot/proc/finish_cooldown), cooldown, TIMER_STOPPABLE)
 
 
 /datum/extension/shoot/proc/finish_cooldown()
