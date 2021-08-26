@@ -13,8 +13,6 @@
 	var/started_at
 	var/stopped_at
 
-	var/ongoing_timer
-
 
 	//The maximum evasion bonus the user can gain
 	var/max_evasion_buff = TRIPOD_PERSONAL_SPACE_MAX_EVASION
@@ -79,7 +77,7 @@
 
 	else
 		//Not quite long enough, schedule another update for when the time comes
-		addtimer(CALLBACK(src, /datum/extension/tripod_evasion/proc/update_space_evasion), check_cooldown, TIMER_STOPPABLE)
+		addtimer(CALLBACK(src, /datum/extension/tripod_evasion/proc/update_space_evasion), check_cooldown)
 
 
 //Increase or decrease the speed by a number of steps

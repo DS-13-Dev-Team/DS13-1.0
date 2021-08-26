@@ -60,7 +60,7 @@
 
 /datum/extension/step_strike/proc/start()
 	started_at	=	world.time
-	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/step_strike/proc/stop), duration)
+	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/step_strike/proc/stop), duration, TIMER_STOPPABLE)
 
 	//First of all, lets pick a target location.
 	//This must be a tile adjacent to the target mob, which is within distance tiles of the user
@@ -93,7 +93,7 @@
 /datum/extension/step_strike/proc/stop()
 	deltimer(ongoing_timer)
 	stopped_at = world.time
-	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/step_strike/proc/finish_cooldown), cooldown)
+	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/step_strike/proc/finish_cooldown), cooldown, TIMER_STOPPABLE)
 
 
 /datum/extension/step_strike/proc/finish_cooldown()

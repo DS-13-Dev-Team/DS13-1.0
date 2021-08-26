@@ -47,7 +47,7 @@
 /datum/extension/auto_sound/New(var/mob/living/carbon/human/_user)
 	.=..()
 	user = _user
-	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/auto_sound/proc/start), 0)
+	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/auto_sound/proc/start), 0, TIMER_STOPPABLE)
 	start()
 
 
@@ -83,7 +83,7 @@
 	if (!stopped_at)
 
 		var/delay = (interval * (1+ (rand_between(-variation, variation))))
-		ongoing_timer = addtimer(CALLBACK(src, /datum/extension/auto_sound/proc/try_play_sound), delay)
+		ongoing_timer = addtimer(CALLBACK(src, /datum/extension/auto_sound/proc/try_play_sound), delay, TIMER_STOPPABLE)
 
 /datum/extension/auto_sound/proc/stop()
 	deltimer(ongoing_timer)
