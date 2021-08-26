@@ -655,6 +655,7 @@ var/world_topic_spam_protect_time = world.timeofday
 	GLOB.world_game_log = "[GLOB.log_directory]/game.log"
 	GLOB.world_attack_log = "[GLOB.log_directory]/attack.log"
 	GLOB.world_href_log = "[GLOB.log_directory]/hrefs.log"
+	GLOB.world_asset_log = "[GLOB.log_directory]/asset.log"
 	GLOB.sql_error_log = "[GLOB.log_directory]/sql.log"
 	GLOB.world_telecomms_log = "[GLOB.log_directory]/telecomms.log"
 	GLOB.world_qdel_log = "[GLOB.log_directory]/qdel.log"
@@ -668,6 +669,7 @@ var/world_topic_spam_protect_time = world.timeofday
 	start_log(GLOB.world_game_log)
 	start_log(GLOB.world_attack_log)
 	start_log(GLOB.world_href_log)
+	start_log(GLOB.world_asset_log)
 	start_log(GLOB.sql_error_log)
 	start_log(GLOB.world_telecomms_log)
 	start_log(GLOB.world_qdel_log)
