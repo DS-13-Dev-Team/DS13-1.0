@@ -1,9 +1,8 @@
 #!/bin/bash
 set -euo pipefail
 
-sh tools/deploy.sh ci_test
-rm ci_test/*.dll
-mkdir -p ci_test/config
+tools/deploy.sh ci_test
+mkdir ci_test/config
 
 #test config
 cp tools/ci/ci_config.txt ci_test/config/config.txt
