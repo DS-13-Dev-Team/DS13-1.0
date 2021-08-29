@@ -36,5 +36,5 @@ changes:
   - tweak: "Changed seeker price in the store and protolathe."
   - tweak: "Changed incendiary divet ammo price in the store."
   - tweak: "Added force gun to the protolathe."
-  - bugfix: "Fixed RnD machinery not showing "Print x5" and "Print x10" buttons."
+  - bugfix: "Fixed RnD machinery not showing 'Print x5' and 'Print x10' buttons."
   - bugfix: "Fixed spy bugs monitor not having an icon."
