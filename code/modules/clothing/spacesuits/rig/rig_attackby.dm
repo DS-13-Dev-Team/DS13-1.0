@@ -6,12 +6,6 @@
 		if(shock(user)) //Handles removing charge from the cell, as well. No need to do that here.
 			return
 
-	// Try to use stasis pack
-	if(istype(W, /obj/item/stack/stasis_pack))
-		if(stasis)
-			if(stasis.try_use_pack(W, user))
-				return
-
 	// Pass repair items on to the chestpiece.
 	if(chest && (istype(W,/obj/item/stack/material) || isWelder(W)))
 		return chest.attackby(W,user)

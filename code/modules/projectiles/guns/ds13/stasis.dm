@@ -66,8 +66,6 @@
 	expected_type = /mob/living
 	flags = EXTENSION_FLAG_IMMEDIATE
 
-	var/attack_slowdown = -0.60
-	var/slowdown = 0.40
 	var/mob/living/carbon/M
 	statmods = list(STATMOD_MOVESPEED_MULTIPLICATIVE = 0.40, STATMOD_ATTACK_SPEED = -0.60)
 
@@ -75,14 +73,11 @@
 	.=..()
 	M = holder
 
+	addtimer(CALLBACK(src, /datum/extension/stasis_effect/mob/proc/Initialize), 0)
+
+/datum/extension/stasis_effect/mob/proc/Initialize()
 	for(var/obj/item/I in M.contents)
 		I.stasis_act()
-
-/datum/extension/stasis_effect/mob/get_statmod(var/modtype)
-	if(modtype == STATMOD_MOVESPEED_MULTIPLICATIVE)
-		return slowdown
-	if(modtype == STATMOD_ATTACK_SPEED)
-		return attack_slowdown
 
 /datum/extension/stasis_effect/proc/add_stasis_visual(var/atom/thing)
 	ripple = filter(type = "ripple", radius = 0, size = 8)

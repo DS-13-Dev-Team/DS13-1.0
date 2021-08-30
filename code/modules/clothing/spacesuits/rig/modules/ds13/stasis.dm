@@ -21,6 +21,12 @@
 	second_overlay_plane = EFFECTS_ABOVE_LIGHTING_PLANE
 	second_overlay_flags = KEEP_APART
 
+/obj/item/rig_module/mounted/stasis/accepts_item(obj/item/input_item, mob/user)
+	if(istype(input_item, /obj/item/stack/stasis_pack))
+		if(try_use_pack(input_item, user))
+			return 1
+	return 0
+
 /datum/proc/update_stas_charge()
 	return
 
