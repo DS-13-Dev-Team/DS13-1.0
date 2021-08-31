@@ -35,8 +35,8 @@ SUBSYSTEM_DEF(database)
 	var/free_schematics	=	20	//The first X are considered free and won't be counted when determining how many to remove
 	var/schematic_loss	=	0.05
 
-/datum/controller/subsystem/database/stat_entry()
-	..("Click to debug!")
+/datum/controller/subsystem/database/stat_entry(msg)
+	return "Click to debug!"
 
 /datum/controller/subsystem/database/Initialize()
 

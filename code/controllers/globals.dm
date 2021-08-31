@@ -46,11 +46,9 @@ GLOBAL_REAL(GLOB, /datum/controller/global_vars)
 
 	return ..()
 
-/datum/controller/global_vars/stat_entry()
-	if(!statclick)
-		statclick = new/obj/effect/statclick/debug(null, "Initializing...", src)
-
-	stat("Globals:", statclick.update("Edit"))
+/datum/controller/global_vars/stat_entry(msg)
+	msg = "Edit"
+	return msg
 
 /datum/controller/global_vars/VV_hidden()
 	return ..() + gvars_datum_protected_varlist

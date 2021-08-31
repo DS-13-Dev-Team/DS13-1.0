@@ -1,3 +1,4 @@
+
 /// When sending mutiple assets, how many before we give the client a quaint little sending resources message
 #define ASSET_CACHE_TELL_CLIENT_AMOUNT 8
 
@@ -114,7 +115,7 @@
 
 	if (unreceived.len)
 		if (unreceived.len >= ASSET_CACHE_TELL_CLIENT_AMOUNT)
-			to_chat(client, "Sending Resources...")
+			to_chat(client, "<span class='infoplain'>Sending Resources...</span>")
 
 		for (var/asset_name in unreceived)
 			var/new_asset_name = asset_name

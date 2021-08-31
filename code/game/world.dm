@@ -533,9 +533,10 @@ var/world_topic_spam_protect_time = world.timeofday
 			rustg_log_close_all() // Past this point, no logging procs can be used, at risk of data loss.
 			TgsEndProcess()
 
-	if(CONFIG_GET(string/server))	//if you set a server location in config.txt, it sends you there instead of trying to reconnect to the same world address. -- NeoFite
-		for(var/client/C in GLOB.clients)
-			to_chat(C, link("byond://[CONFIG_GET(string/server)]"))
+	var/linkylink = CONFIG_GET(string/server)
+	if(linkylink)
+		for(var/cli in GLOB.clients)
+			cli << link("byond://[linkylink]")
 
 	if(CONFIG_GET(flag/wait_for_sigusr1_reboot) && reason != 3)
 		text2file("foo", "reboot_called")
@@ -661,6 +662,7 @@ var/world_topic_spam_protect_time = world.timeofday
 	GLOB.world_qdel_log = "[GLOB.log_directory]/qdel.log"
 	GLOB.world_runtime_log = "[GLOB.log_directory]/runtime.log"
 	GLOB.world_debug_log = "[GLOB.log_directory]/debug.log"
+	GLOB.tgui_log = "[GLOB.log_directory]/tgui.log"
 
 #ifdef UNIT_TESTS
 	GLOB.test_log = "[GLOB.log_directory]/tests.log"
@@ -675,6 +677,7 @@ var/world_topic_spam_protect_time = world.timeofday
 	start_log(GLOB.world_qdel_log)
 	start_log(GLOB.world_runtime_log)
 	start_log(GLOB.world_debug_log)
+	start_log(GLOB.tgui_log)
 
 	var/latest_changelog = file("[global.config.directory]/../html/changelogs/archive/" + time2text(world.timeofday, "YYYY-MM") + ".yml")
 	GLOB.changelog_hash = fexists(latest_changelog) ? md5(latest_changelog) : 0 //for telling if the changelog has changed recently

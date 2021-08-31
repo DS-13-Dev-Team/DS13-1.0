@@ -98,20 +98,20 @@ NOTE: It checks usr by default. Supply the "user" argument if you wish to check 
 		to_chat(usr, "<font color='red'>Error: Cannot proceed. They have more or equal rights to us.</font>")
 	return 0
 
+/proc/IsAdminGhost(mob/user)
+	if(!isobserver(user))
+		return FALSE
+	if(!user.client)
+		return FALSE
+	if(!check_rights(R_ADMIN, user.client)) // Are they allowed?
+		return FALSE
+	return TRUE
+
 /client/proc/deadmin()
 	if(holder)
 		holder.disassociate()
 		//qdel(holder)
 	return 1
-
-/mob/Stat()
-	. = ..()
-	if(!client)
-		return
-
-	var/stealth_status = client.is_stealthed()
-	if(stealth_status && statpanel("Status"))
-		stat("Stealth", "Engaged [client.holder.stealthy_ == STEALTH_AUTO ? "(Auto)" : "(Manual)"]")
 
 /client/proc/is_stealthed()
 	if(!holder)

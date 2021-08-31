@@ -207,6 +207,7 @@
 	if (!isliving(M))
 		qdel(M)
 	update_icon()
+	S.client?.init_verbs()
 	//GLOB.unitologists.add_antagonist(playermob.mind)
 	return S
 

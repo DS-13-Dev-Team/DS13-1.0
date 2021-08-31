@@ -110,9 +110,6 @@
 	walk(src,0)
 	..(gibbed, deathmessage, show_dead_message)
 
-/mob/living/simple_animal/parrot/Stat()
-	. = ..()
-	stat("Held Item", held_item)
 
 /*
  * Inventory

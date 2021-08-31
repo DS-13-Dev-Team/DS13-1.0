@@ -39,6 +39,8 @@ var/global/datum/controller/gameticker/ticker
 	var/looking_for_antags = 0
 	var/bypass_gamemode_vote = FALSE
 
+	var/round_start_time = 0
+
 /datum/controller/gameticker/proc/pregame()
 	do
 		if(!gamemode_voted)
@@ -149,6 +151,8 @@ var/global/datum/controller/gameticker/ticker
 		CreateModularRecord(H)
 
 	callHook("roundstart")
+
+	round_start_time = world.time
 
 	//Here we will trigger the auto-observe and auto bst debug things
 	if (CONFIG_GET(flag/auto_observe))
@@ -301,6 +305,7 @@ var/global/datum/controller/gameticker/ticker
 					continue
 				else
 					if(player.create_character())
+						player.client?.init_verbs()
 						qdel(player)
 
 

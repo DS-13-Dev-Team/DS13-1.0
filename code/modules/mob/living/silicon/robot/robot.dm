@@ -459,16 +459,6 @@
 		stat(null, text("No Cell Inserted!"))
 
 
-// update the status screen display
-/mob/living/silicon/robot/Stat()
-	. = ..()
-	if (statpanel("Status"))
-		show_cell_power()
-		show_jetpack_pressure()
-		stat(null, text("Lights: [lights_on ? "ON" : "OFF"]"))
-		if(module)
-			for(var/datum/matter_synth/ms in module.synths)
-				stat("[ms.name]: [ms.energy]/[ms.max_energy_multiplied]")
 
 /mob/living/silicon/robot/restrained()
 	return 0

@@ -4,36 +4,45 @@ var/global/floorIsLava = 0
 
 
 ////////////////////////////////
-/proc/message_admins(var/msg)
+/proc/message_admins(msg)
 	msg = "<span class=\"log_message\"><span class=\"prefix\">ADMIN LOG:</span> <span class=\"message\">[msg]</span></span>"
 	log_admin(msg)
 	for(var/client/C in GLOB.admins)
 		if(R_ADMIN & C.holder.rights)
-			to_chat(C, msg)
-/proc/message_mods(var/msg)
+			to_chat(C,
+					type = MESSAGE_TYPE_ADMINCHAT,
+					html = msg)
+/proc/message_mods(msg)
 	msg = "<span class=\"log_message\"><span class=\"prefix\">MOD LOG:</span> <span class=\"message\">[msg]</span></span>"
 	log_admin(msg)
 	for(var/client/C in GLOB.admins)
 		if(R_MOD & C.holder.rights)
-			to_chat(C, msg)
-/proc/message_staff(var/msg)
+			to_chat(C,
+					type = MESSAGE_TYPE_MENTORCHAT,
+					html = msg)
+/proc/message_staff(msg)
 	msg = "<span class=\"log_message\"><span class=\"prefix\">STAFF LOG:</span> <span class=\"message\">[msg]</span></span>"
 	log_admin(msg)
 	for(var/client/C in GLOB.admins)
 		if(C && C.holder && (R_INVESTIGATE & C.holder.rights))
-			to_chat(C, msg)
-/proc/msg_admin_attack(var/text) //Toggleable Attack Messages
+			to_chat(C,
+					type = MESSAGE_TYPE_STAFFLOG,
+					html = msg)
+/proc/msg_admin_attack(text) //Toggleable Attack Messages
 	log_attack(text)
 	var/rendered = "<span class=\"log_message\"><span class=\"prefix\">ATTACK:</span> <span class=\"message\">[text]</span></span>"
 	for(var/client/C in GLOB.admins)
 		if(check_rights(R_MOD, 0, C))
 			if(C.get_preference_value(/datum/client_preference/staff/show_attack_logs) == GLOB.PREF_SHOW)
 				var/msg = rendered
-				to_chat(C, msg)
-/proc/admin_notice(var/message, var/rights)
+				to_chat(C,
+					type = MESSAGE_TYPE_ADMINCHAT,
+					html = msg)
+/proc/admin_notice(message, rights)
 	for(var/mob/M in SSmobs.mob_list)
 		if(check_rights(rights, 0, M))
-			to_chat(M, message)
+			to_chat(M,
+					html = message)
 ///////////////////////////////////////////////////////////////////////////////////////////////Panels
 
 /datum/admins/proc/show_player_panel(var/mob/M in SSmobs.mob_list)
@@ -1205,12 +1214,16 @@ datum/admins/var/obj/item/weapon/paper/admin/faxreply // var to hold fax replies
 			log_admin("[key_name(src.owner)] replied to a fax message from [key_name(P.sender)]")
 			for(var/client/C in GLOB.admins)
 				if((R_ADMIN | R_MOD) & C.holder.rights)
-					to_chat(C, "<span class='log_message'><span class='prefix'>FAX LOG:</span>[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(P.sender)] (<a href='?_src_=holder;AdminFaxView=\ref[rcvdcopy]'>VIEW</a>)</span>")
+					to_chat(C,
+							type = MESSAGE_TYPE_ADMINCHAT,
+							html = "<span class='log_message'><span class='prefix'>FAX LOG:</span>[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(P.sender)] (<a href='?_src_=holder;AdminFaxView=\ref[rcvdcopy]'>VIEW</a>)</span>")
 		else
 			log_admin("[key_name(src.owner)] has sent a fax message to [destination.department]")
 			for(var/client/C in GLOB.admins)
 				if((R_ADMIN | R_MOD) & C.holder.rights)
-					to_chat(C, "<span class='log_message'><span class='prefix'>FAX LOG:</span>[key_name_admin(src.owner)] has sent a fax message to [destination.department] (<a href='?_src_=holder;AdminFaxView=\ref[rcvdcopy]'>VIEW</a>)</span>")
+					to_chat(C,
+							type = MESSAGE_TYPE_ADMINCHAT,
+							html = "<span class='log_message'><span class='prefix'>FAX LOG:</span>[key_name_admin(src.owner)] has sent a fax message to [destination.department] (<a href='?_src_=holder;AdminFaxView=\ref[rcvdcopy]'>VIEW</a>)</span>")
 
 	else
 		to_chat(src.owner, "<span class='warning'>Message reply failed.</span>")

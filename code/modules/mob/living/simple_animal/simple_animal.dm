@@ -305,11 +305,6 @@
 	return tally
 
 
-/mob/living/simple_animal/Stat()
-	. = ..()
-
-	if(statpanel("Status") && show_stat_health)
-		stat(null, "Health: [round((health / max_health) * 100)]%")
 
 /mob/living/simple_animal/update_icon()
 	icon_state = icon_living

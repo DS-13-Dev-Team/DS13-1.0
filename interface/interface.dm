@@ -12,7 +12,7 @@
 		to_chat(src, "<span class='warning'>The wiki URL is not set in the server configuration.</span>")
 	return
 
-client/verb/discord()
+/client/verb/discord()
 	set name ="Join the Discord"
 	set desc = "Join our Discord server."
 	set hidden = 1
@@ -34,6 +34,64 @@ client/verb/discord()
 		src << link(CONFIG_GET(string/forumurl))
 	else
 		to_chat(src, "<span class='warning'>The forum URL is not set in the server configuration.</span>")
+	return
+
+/client/verb/github()
+	set name = "github"
+	set desc = "Visit Github"
+	set hidden = TRUE
+	var/githuburl = CONFIG_GET(string/githuburl)
+	if(githuburl)
+		if(alert("This will open the Github repository in your browser. Are you sure?",,"Yes","No")!="Yes")
+			return
+		src << link(githuburl)
+	else
+		to_chat(src, "<span class='danger'>The Github URL is not set in the server configuration.</span>")
+	return
+
+/client/verb/reportissue()
+	set name = "report-issue"
+	set desc = "Report an issue"
+	set hidden = TRUE
+	var/githuburl = CONFIG_GET(string/githuburl)
+	if(githuburl)
+		var/message = "This will open the Github issue reporter in your browser. Are you sure?"
+		if(GLOB.revdata.testmerge.len)
+			message += "<br>The following experimental changes are active and are probably the cause of any new or sudden issues you may experience. If possible, please try to find a specific thread for your issue instead of posting to the general issue tracker:<br>"
+			message += GLOB.revdata.GetTestMergeInfo(FALSE)
+		// We still use tgalert here because some people were concerned that if someone wanted to report that tgui wasn't working
+		// then the report issue button being tgui-based would be problematic.
+		if(tgalert(src, message, "Report Issue","Yes","No")!="Yes")
+			return
+
+		// Keep a static version of the template to avoid reading file
+		var/static/issue_template = file2text(".github/ISSUE_TEMPLATE/bug_report.md")
+
+		// Get a local copy of the template for modification
+		var/local_template = issue_template
+
+		// Remove comment header
+		var/content_start = findtext(local_template, "<")
+		if(content_start)
+			local_template = copytext(local_template, content_start)
+
+		// Insert round
+		if(GLOB.round_id)
+			local_template = replacetext(local_template, "## Round ID:\n", "## Round ID:\n[GLOB.round_id]")
+
+		// Insert testmerges
+		if(GLOB.revdata.testmerge.len)
+			var/list/all_tms = list()
+			for(var/entry in GLOB.revdata.testmerge)
+				var/datum/tgs_revision_information/test_merge/tm = entry
+				all_tms += "- \[[tm.title]\]([githuburl]/pull/[tm.number])"
+			var/all_tms_joined = all_tms.Join("\n") // for some reason this can't go in the []
+			local_template = replacetext(local_template, "## Testmerges:\n", "## Testmerges:\n[all_tms_joined]")
+
+		var/url_params = "Reporting client version: [byond_version].[byond_build]\n\n[local_template]"
+		DIRECT_OUTPUT(src, link("[githuburl]/issues/new?body=[url_encode(url_params)]"))
+	else
+		to_chat(src, "<span class='danger'>The Github URL is not set in the server configuration.</span>")
 	return
 
 #define RULES_FILE "config/rules.html"

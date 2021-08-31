@@ -162,6 +162,7 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 	//Seems clear
 	message_necromorphs(SPAN_NOTICE("[key] has taken control of [L]."))
 	L.key = key
+	L.client.init_verbs()
 	qdel(src)
 
 /mob/proc/necro_evacuate()
@@ -180,7 +181,9 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 			marker.become_master_signal(src)
 		return
 	else
-		.=new /mob/observer/eye/signal(src)
+		var/mob/signal = new /mob/observer/eye/signal(src)
+		signal.client?.init_verbs()
+		return signal
 
 	//If we're in some kind of observer body, delete it
 	if (!isliving(src))
@@ -309,11 +312,6 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 
 
 
-/mob/observer/eye/signal/Stat()
-	.=..()
-	if(.)
-		if(statpanel("Status"))
-			stat("Psi Energy", "[psi_energy.energy]/[psi_energy.max_energy]")
 
 
 /mob/observer/eye/signal/verb/ability_menu()

@@ -125,8 +125,7 @@ if(current_step == this_step || (check_resumed && !resumed)) {\
 
 
 
-/datum/controller/subsystem/machines/stat_entry()
-	var/msg = list()
+/datum/controller/subsystem/machines/stat_entry(msg)
 	msg += "C:{"
 	msg += "PI:[round(cost_pipenets,1)]|"
 	msg += "MC:[round(cost_machinery,1)]|"
@@ -138,7 +137,7 @@ if(current_step == this_step || (check_resumed && !resumed)) {\
 	msg += "PN:[powernets.len]|"
 	msg += "PO:[power_objects.len]|"
 	msg += "MC/MS:[round((cost ? processing.len/cost : 0),0.1)]"
-	..(jointext(msg, null))
+	return msg
 
 /datum/controller/subsystem/machines/proc/process_pipenets(resumed = 0)
 	if (!resumed)

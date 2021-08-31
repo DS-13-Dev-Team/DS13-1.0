@@ -107,97 +107,97 @@ export const DmTestTarget = new Juke.Target({
   },
 });
 
-//export const YarnTarget = new Juke.Target({
-//  parameters: [CiParameter],
-//  inputs: [
-//    'tgui/.yarn/+(cache|releases|plugins|sdks)/**/*',
-//    'tgui/**/package.json',
-//    'tgui/yarn.lock',
-//  ],
-//  outputs: [
-//    'tgui/.yarn/install-target',
-//  ],
-//  executes: ({ get }) => yarn('install', get(CiParameter) && '--immutable'),
-//});
+export const YarnTarget = new Juke.Target({
+  parameters: [CiParameter],
+  inputs: [
+    'tgui/.yarn/+(cache|releases|plugins|sdks)/**/*',
+    'tgui/**/package.json',
+    'tgui/yarn.lock',
+  ],
+  outputs: [
+    'tgui/.yarn/install-target',
+  ],
+  executes: ({ get }) => yarn('install', get(CiParameter) && '--immutable'),
+});
 
-//export const TgFontTarget = new Juke.Target({
-//  dependsOn: [YarnTarget],
-//  inputs: [
-//    'tgui/.yarn/install-target',
-//    'tgui/packages/tgfont/**/*.+(js|cjs|svg)',
-//    'tgui/packages/tgfont/package.json',
-//  ],
-//  outputs: [
-//    'tgui/packages/tgfont/dist/tgfont.css',
-//    'tgui/packages/tgfont/dist/tgfont.eot',
-//    'tgui/packages/tgfont/dist/tgfont.woff2',
-//  ],
-//  executes: () => yarn('tgfont:build'),
-//});
+export const TgFontTarget = new Juke.Target({
+  dependsOn: [YarnTarget],
+  inputs: [
+    'tgui/.yarn/install-target',
+    'tgui/packages/tgfont/**/*.+(js|cjs|svg)',
+    'tgui/packages/tgfont/package.json',
+  ],
+  outputs: [
+    'tgui/packages/tgfont/dist/tgfont.css',
+    'tgui/packages/tgfont/dist/tgfont.eot',
+    'tgui/packages/tgfont/dist/tgfont.woff2',
+  ],
+  executes: () => yarn('tgfont:build'),
+});
 
-//export const TguiTarget = new Juke.Target({
-//  dependsOn: [YarnTarget],
-//  inputs: [
-//    'tgui/.yarn/install-target',
-//    'tgui/webpack.config.js',
-//    'tgui/**/package.json',
-//    'tgui/packages/**/*.+(js|cjs|ts|tsx|scss)',
-//  ],
-//  outputs: [
-//    'tgui/public/tgui.bundle.css',
-//    'tgui/public/tgui.bundle.js',
-//    'tgui/public/tgui-panel.bundle.css',
-//    'tgui/public/tgui-panel.bundle.js',
-//  ],
-//  executes: () => yarn('tgui:build'),
-//});
+export const TguiTarget = new Juke.Target({
+  dependsOn: [YarnTarget],
+  inputs: [
+    'tgui/.yarn/install-target',
+    'tgui/webpack.config.js',
+    'tgui/**/package.json',
+    'tgui/packages/**/*.+(js|cjs|ts|tsx|scss)',
+  ],
+  outputs: [
+    'tgui/public/tgui.bundle.css',
+    'tgui/public/tgui.bundle.js',
+    'tgui/public/tgui-panel.bundle.css',
+    'tgui/public/tgui-panel.bundle.js',
+  ],
+  executes: () => yarn('tgui:build'),
+});
 
-//export const TguiEslintTarget = new Juke.Target({
-//  parameters: [CiParameter],
-//  dependsOn: [YarnTarget],
-//  executes: ({ get }) => yarn('tgui:lint', !get(CiParameter) && '--fix'),
-//});
+export const TguiEslintTarget = new Juke.Target({
+  parameters: [CiParameter],
+  dependsOn: [YarnTarget],
+  executes: ({ get }) => yarn('tgui:lint', !get(CiParameter) && '--fix'),
+});
 
-//export const TguiSonarTarget = new Juke.Target({
-//  dependsOn: [YarnTarget],
-//  executes: () => yarn('tgui:sonar'),
-//});
+export const TguiSonarTarget = new Juke.Target({
+  dependsOn: [YarnTarget],
+  executes: () => yarn('tgui:sonar'),
+});
 
-//export const TguiTscTarget = new Juke.Target({
-//  dependsOn: [YarnTarget],
-//  executes: () => yarn('tgui:tsc'),
-//});
+export const TguiTscTarget = new Juke.Target({
+  dependsOn: [YarnTarget],
+  executes: () => yarn('tgui:tsc'),
+});
 
-//export const TguiTestTarget = new Juke.Target({
-//  parameters: [CiParameter],
-//  dependsOn: [YarnTarget],
-//  executes: ({ get }) => yarn(`tgui:test-${get(CiParameter) ? 'ci' : 'simple'}`),
-//});
+export const TguiTestTarget = new Juke.Target({
+  parameters: [CiParameter],
+  dependsOn: [YarnTarget],
+  executes: ({ get }) => yarn(`tgui:test-${get(CiParameter) ? 'ci' : 'simple'}`),
+});
 
-//export const TguiLintTarget = new Juke.Target({
-//  dependsOn: [YarnTarget, TguiEslintTarget, TguiTscTarget],
-//});
+export const TguiLintTarget = new Juke.Target({
+  dependsOn: [YarnTarget, TguiEslintTarget, TguiTscTarget],
+});
 
-//export const TguiDevTarget = new Juke.Target({
-//  dependsOn: [YarnTarget],
-//  executes: ({ args }) => yarn('tgui:dev', ...args),
-//});
+export const TguiDevTarget = new Juke.Target({
+  dependsOn: [YarnTarget],
+  executes: ({ args }) => yarn('tgui:dev', ...args),
+});
 
-//export const TguiAnalyzeTarget = new Juke.Target({
-//  dependsOn: [YarnTarget],
-//  executes: () => yarn('tgui:analyze'),
-//});
+export const TguiAnalyzeTarget = new Juke.Target({
+  dependsOn: [YarnTarget],
+  executes: () => yarn('tgui:analyze'),
+});
 
 export const TestTarget = new Juke.Target({
-  dependsOn: [DmTestTarget/*, TguiTestTarget*/],
+  dependsOn: [DmTestTarget, TguiTestTarget],
 });
 
 export const LintTarget = new Juke.Target({
-  dependsOn: [/*TguiLintTarget*/],
+  dependsOn: [TguiLintTarget],
 });
 
 export const BuildTarget = new Juke.Target({
-  dependsOn: [/*TguiTarget, TgFontTarget,*/ DmTarget],
+  dependsOn: [TguiTarget, TgFontTarget, DmTarget],
 });
 
 export const ServerTarget = new Juke.Target({
@@ -211,7 +211,7 @@ export const ServerTarget = new Juke.Target({
 export const AllTarget = new Juke.Target({
   dependsOn: [TestTarget, LintTarget, BuildTarget],
 });
-/*
+
 export const TguiCleanTarget = new Juke.Target({
   executes: async () => {
     Juke.rm('tgui/public/.tmp', { recursive: true });
@@ -225,9 +225,9 @@ export const TguiCleanTarget = new Juke.Target({
     Juke.rm('tgui/.pnp.*');
   },
 });
-*/
+
 export const CleanTarget = new Juke.Target({
-  dependsOn: [/*TguiCleanTarget*/],
+  dependsOn: [TguiCleanTarget],
   executes: async () => {
     Juke.rm('*.{dmb,rsc}');
     Juke.rm('*.mdme*');
@@ -261,7 +261,7 @@ const prependDefines = (...defines) => {
 };
 
 export const TgsTarget = new Juke.Target({
-  dependsOn: [/*TguiTarget, TgFontTarget*/],
+  dependsOn: [TguiTarget, TgFontTarget],
   executes: async () => {
     Juke.logger.info('Prepending TGS define');
     prependDefines('TGS');

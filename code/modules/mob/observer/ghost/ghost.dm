@@ -148,23 +148,25 @@ Works together with spawning an observer, noted above.
 		add_hudlist(C.images, target,SPECIALROLE_HUD)
 	return 1
 
-/mob/proc/ghostize(var/can_reenter_corpse = CORPSE_CAN_REENTER)
+/mob/proc/ghostize(can_reenter_corpse = CORPSE_CAN_REENTER)
 	if (is_necromorph() && !istype(src, /mob/observer/eye/signal))	//Signals can use ghostize to leave the necromorph team
 		return necro_ghost()
 
 	// Are we the body of an aghosted admin? If so, don't make a ghost.
-	if(teleop && istype(teleop, /mob/observer/ghost))
+	if (teleop && istype(teleop, /mob/observer/ghost))
 		var/mob/observer/ghost/G = teleop
 		if(G.admin_ghosted)
 			return
-	if(key)
+	if (key)
 		hide_fullscreens()
 		var/mob/observer/ghost/ghost = new(src)	//Transfer safety to observer spawning proc.
 		ghost.can_reenter_corpse = can_reenter_corpse
 		ghost.timeofdeath = src.stat == DEAD ? src.timeofdeath : world.time
 		ghost.key = key
-		if(ghost.client && !ghost.client.holder && !CONFIG_GET(flag/antag_hud_allowed))		// For new ghosts we remove the verb from even showing up if it's not allowed.
-			ghost.verbs -= /mob/observer/ghost/verb/toggle_antagHUD	// Poor guys, don't know what they are missing!
+		if (ghost.client)		// For new ghosts we remove the verb from even showing up if it's not allowed.
+			if (!ghost.client.holder && !CONFIG_GET(flag/antag_hud_allowed))
+				ghost.verbs -= /mob/observer/ghost/verb/toggle_antagHUD	// Poor guys, don't know what they are missing!
+			ghost.client.init_verbs()
 		return ghost
 
 /*
@@ -206,13 +208,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 /mob/observer/ghost/can_use_hands()	return 0
 /mob/observer/ghost/is_active()		return 0
 
-/mob/observer/ghost/Stat()
-	. = ..()
-	if(statpanel("Status"))
-		if(evacuation_controller)
-			var/eta_status = evacuation_controller.get_status_panel_eta()
-			if(eta_status)
-				stat(null, eta_status)
 
 /mob/observer/ghost/verb/reenter_corpse()
 	set category = "Ghost"

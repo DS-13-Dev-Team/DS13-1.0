@@ -70,30 +70,6 @@
 	panel.open()
 	return
 
-/mob/new_player/Stat()
-	. = ..()
-
-	if(statpanel("Lobby") && ticker)
-		if(check_rights(R_INVESTIGATE, 0, src))
-			stat("Game Mode:", "[ticker.mode || master_mode][ticker.hide_mode ? " (Secret)" : ""]")
-		else
-			stat("Game Mode:", PUBLIC_GAME_MODE)
-		var/extra_antags = list2params(additional_antag_types)
-		stat("Added Antagonists:", extra_antags ? extra_antags : "None")
-
-		if(ticker.current_state == GAME_STATE_PREGAME)
-			stat("Time To Start:", "[ticker.pregame_timeleft][round_progressing ? "" : " (DELAYED)"]")
-			stat("Players: [totalPlayers]", "Players Ready: [totalPlayersReady]")
-			totalPlayers = 0
-			totalPlayersReady = 0
-			for(var/mob/new_player/player in GLOB.player_list)
-				var/highjob
-				if(player.client && player.client.prefs && player.client.prefs.job_high)
-					highjob = " as [player.client.prefs.job_high]"
-				stat("[player.key]", (player.ready)?("(Playing[highjob])"):(null))
-				totalPlayers++
-				if(player.ready)totalPlayersReady++
-
 /mob/new_player/Topic(href, href_list[])
 	if(!client)	return FALSE
 
@@ -480,7 +456,7 @@
 		GLOB.living_crew |= mind
 
 		mind.transfer_to(new_character)					//won't transfer key since the mind is not active
-		
+
 		client.prefs.copy_to_mind(new_character.mind)
 
 	new_character.SetName(real_name)
@@ -502,10 +478,10 @@
 	new_character.regenerate_icons()
 
 	new_character.key = key		//Manually transfer the key to log them in
-	
+
 	//Register that they've joined the round
 	character_spawned(new_character.mind)
-	
+
 	return new_character
 
 /mob/new_player/proc/ViewManifest()

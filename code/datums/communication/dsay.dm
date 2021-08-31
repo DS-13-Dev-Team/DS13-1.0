@@ -8,6 +8,7 @@
 	flags = COMMUNICATION_LOG_CHANNEL_NAME
 	log_proc = /proc/log_say
 	mute_setting = MUTE_DEADCHAT
+	message_type = MESSAGE_TYPE_DEADCHAT
 	show_preference_setting = /datum/client_preference/show_dsay
 
 /decl/communication_channel/dsay/communicate(communicator, message, var/sender_override = null, speech_method = /decl/dsay_communication/say)

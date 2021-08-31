@@ -22,6 +22,8 @@ GLOBAL_VAR(sql_error_log)
 GLOBAL_PROTECT(sql_error_log)
 GLOBAL_VAR(world_telecomms_log)
 GLOBAL_PROTECT(world_telecomms_log)
+GLOBAL_VAR(tgui_log)
+GLOBAL_PROTECT(tgui_log)
 
 GLOBAL_LIST_EMPTY(admin_log)
 GLOBAL_PROTECT(admin_log)

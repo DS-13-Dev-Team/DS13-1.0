@@ -16,3 +16,6 @@
 #define	ADJECTIVE_TYPE_ORIGIN	6
 #define	ADJECTIVE_TYPE_MATERIAL	7
 #define	ADJECTIVE_TYPE_PURPOSE	8
+
+/// Removes characters incompatible with file names.
+#define SANITIZE_FILENAME(text) (GLOB.filename_forbidden_chars.Replace(text, ""))

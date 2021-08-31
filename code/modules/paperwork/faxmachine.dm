@@ -240,5 +240,7 @@ GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
 
 	for(var/client/C in GLOB.admins)
 		if(check_rights((R_ADMIN|R_MOD),0,C))
-			to_chat(C, msg)
+			to_chat(C,
+					type = MESSAGE_TYPE_ADMINCHAT,
+					html = msg)
 			sound_to(C, 'sound/machines/dotprinter.ogg')

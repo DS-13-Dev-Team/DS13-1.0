@@ -650,3 +650,14 @@ its easier to just keep the beam vertical.
 //Return false if we fail to remove the item
 /atom/proc/remove_item(var/obj/item/output)
 	return TRUE
+
+///Where atoms should drop if taken from this atom
+/atom/proc/drop_location()
+	var/atom/L = loc
+	if(!L)
+		return null
+	return L.AllowDrop() ? L : L.drop_location()
+
+/// Are you allowed to drop this atom
+/atom/proc/AllowDrop()
+	return FALSE

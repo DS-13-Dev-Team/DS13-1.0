@@ -595,8 +595,6 @@
 			return global.next_station_date_change;
 		if("ninjastart")
 			return global.ninjastart;
-		if("not_incapacitated_turf_state")
-			return global.not_incapacitated_turf_state;
 		if("ntnet_card_uid")
 			return global.ntnet_card_uid;
 		if("ntnet_global")
@@ -751,8 +749,6 @@
 			return global.solar_gen_rate;
 		if("solars_list")
 			return global.solars_list;
-		if("sortInstance")
-			return global.sortInstance;
 		if("sounds_cache")
 			return global.sounds_cache;
 		if("spacevines_spawned")
@@ -819,34 +815,6 @@
 			return global.tertiary_mode;
 		if("text_tag_icons")
 			return global.text_tag_icons;
-		if("tg_admin_state")
-			return global.tg_admin_state;
-		if("tg_always_state")
-			return global.tg_always_state;
-		if("tg_conscious_state")
-			return global.tg_conscious_state;
-		if("tg_contained_state")
-			return global.tg_contained_state;
-		if("tg_deep_inventory_state")
-			return global.tg_deep_inventory_state;
-		if("tg_default_state")
-			return global.tg_default_state;
-		if("tg_hands_state")
-			return global.tg_hands_state;
-		if("tg_human_adjacent_state")
-			return global.tg_human_adjacent_state;
-		if("tg_inventory_state")
-			return global.tg_inventory_state;
-		if("tg_not_contained_state")
-			return global.tg_not_contained_state;
-		if("tg_not_incapacitated_state")
-			return global.tg_not_incapacitated_state;
-		if("tg_physical_state")
-			return global.tg_physical_state;
-		if("tg_self_state")
-			return global.tg_self_state;
-		if("tg_z_state")
-			return global.tg_z_state;
 		if("ticker")
 			return global.ticker;
 		if("tickerProcess")
@@ -1522,8 +1490,6 @@
 			global.next_station_date_change=newval;
 		if("ninjastart")
 			global.ninjastart=newval;
-		if("not_incapacitated_turf_state")
-			global.not_incapacitated_turf_state=newval;
 		if("ntnet_card_uid")
 			global.ntnet_card_uid=newval;
 		if("ntnet_global")
@@ -1678,8 +1644,6 @@
 			global.solar_gen_rate=newval;
 		if("solars_list")
 			global.solars_list=newval;
-		if("sortInstance")
-			global.sortInstance=newval;
 		if("sounds_cache")
 			global.sounds_cache=newval;
 		if("spacevines_spawned")
@@ -1746,34 +1710,6 @@
 			global.tertiary_mode=newval;
 		if("text_tag_icons")
 			global.text_tag_icons=newval;
-		if("tg_admin_state")
-			global.tg_admin_state=newval;
-		if("tg_always_state")
-			global.tg_always_state=newval;
-		if("tg_conscious_state")
-			global.tg_conscious_state=newval;
-		if("tg_contained_state")
-			global.tg_contained_state=newval;
-		if("tg_deep_inventory_state")
-			global.tg_deep_inventory_state=newval;
-		if("tg_default_state")
-			global.tg_default_state=newval;
-		if("tg_hands_state")
-			global.tg_hands_state=newval;
-		if("tg_human_adjacent_state")
-			global.tg_human_adjacent_state=newval;
-		if("tg_inventory_state")
-			global.tg_inventory_state=newval;
-		if("tg_not_contained_state")
-			global.tg_not_contained_state=newval;
-		if("tg_not_incapacitated_state")
-			global.tg_not_incapacitated_state=newval;
-		if("tg_physical_state")
-			global.tg_physical_state=newval;
-		if("tg_self_state")
-			global.tg_self_state=newval;
-		if("tg_z_state")
-			global.tg_z_state=newval;
 		if("ticker")
 			global.ticker=newval;
 		if("tickerProcess")
@@ -2157,7 +2093,6 @@
 	"next_duration_update",
 	"next_station_date_change",
 	"ninjastart",
-	"not_incapacitated_turf_state",
 	"ntnet_card_uid",
 	"ntnet_global",
 	"ntnrc_uid",
@@ -2236,7 +2171,6 @@
 	"slot_flags_enumeration",
 	"solar_gen_rate",
 	"solars_list",
-	"sortInstance",
 	"sounds_cache",
 	"spacevines_spawned",
 	"sparring_attack_cache",
@@ -2270,20 +2204,6 @@
 	"telecomms_list",
 	"tertiary_mode",
 	"text_tag_icons",
-	"tg_admin_state",
-	"tg_always_state",
-	"tg_conscious_state",
-	"tg_contained_state",
-	"tg_deep_inventory_state",
-	"tg_default_state",
-	"tg_hands_state",
-	"tg_human_adjacent_state",
-	"tg_inventory_state",
-	"tg_not_contained_state",
-	"tg_not_incapacitated_state",
-	"tg_physical_state",
-	"tg_self_state",
-	"tg_z_state",
 	"ticker",
 	"tickerProcess",
 	"ticket_panels",

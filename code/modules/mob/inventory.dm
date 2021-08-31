@@ -375,3 +375,8 @@ var/list/slot_equipment_priority = list( \
 
 /mob/remove_item(var/obj/item/output)
 	return unEquip(output, get_turf(src))
+
+//placeholder until tg inventory system
+/mob/proc/is_holding(obj/item/I)
+	return ((I == l_hand) || (I == r_hand))
+z

@@ -22,13 +22,13 @@
 	if (!ishuman(user) && !istype(user,/mob/living/silicon/robot))
 		return ..(user)
 
-	tg_ui_interact(user)
+	tgui_interact(user)
 
 
 
 //tgui interact code generously lifted from tgstation.
-/obj/item/weapon/airlock_electronics/tg_ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = 0, \
-	datum/tgui/master_ui = null, datum/ui_state/state = tg_hands_state)
+/obj/item/weapon/airlock_electronics/tgui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = 0, \
+	datum/tgui/master_ui = null, datum/ui_state/state = GLOB.tgui_hands_state)
 
 	SStgui.try_update_ui(user, src, ui_key, ui, force_open)
 	if(!ui)
@@ -113,7 +113,7 @@
 	locked = 0
 	lockable = 0
 
-/obj/item/weapon/airlock_electronics/brace/tg_ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = 0, datum/tgui/master_ui = null, datum/ui_state/state = tg_deep_inventory_state)
+/obj/item/weapon/airlock_electronics/brace/tgui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = 0, datum/tgui/master_ui = null, datum/ui_state/state = GLOB.tgui_deep_inventory_state)
 	SStgui.try_update_ui(user, src, ui_key, ui, force_open)
 	if(!ui)
 		ui = new(user, src, ui_key, "airlock_electronics", src.name, 1000, 500, master_ui, state)

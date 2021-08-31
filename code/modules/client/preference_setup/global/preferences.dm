@@ -94,6 +94,11 @@ var/list/_client_preferences_by_type
 	description ="Play lobby music"
 	key = "SOUND_LOBBY"
 
+/datum/client_preference/split_admins_tabs
+	description = "Split admins tabs"
+	key = "SPLIT_ADMINS_TABS"
+	options = list(GLOB.PREF_YES, GLOB.PREF_NO)
+
 /datum/client_preference/play_lobby_music/changed(var/mob/preference_mob, var/new_value)
 	if (preference_mob && preference_mob.client)
 		deltimer(preference_mob.client.lobby_trackchange_timer)

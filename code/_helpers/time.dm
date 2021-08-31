@@ -1,4 +1,20 @@
+//Returns the world time in english
+/proc/worldtime2text()
+	return gameTimestamp("hh:mm:ss", world.time)
 
+/proc/time_stamp(format = "hh:mm:ss", show_ds)
+	var/time_string = time2text(world.timeofday, format)
+	return show_ds ? "[time_string]:[world.timeofday % 10]" : time_string
+
+/proc/gameTimestamp(format = "hh:mm:ss", wtime=null)
+	if(!wtime)
+		wtime = world.time
+	return time2text(wtime - GLOB.timezoneOffset, format)
+
+/proc/stationTimestamp(format = "hh:mm:ss", wtime = null)
+	if(!wtime)
+		wtime = world.time
+	return time2text(wtime - GLOB.timezoneOffset + (12 * 36000), format)
 
 #define TimeOfGame (get_game_time())
 #define TimeOfTick (world.tick_usage*0.01*world.tick_lag)
@@ -41,8 +57,6 @@ var/next_station_date_change = 1 DAY
 		station_date = num2text((text2num(time2text(timeofday, "YYYY"))+544)) + "-" + time2text(timeofday, "MM-DD")
 	return station_date
 
-/proc/time_stamp()
-	return time2text(station_time_in_ticks, "hh:mm:ss")
 
 /* Returns 1 if it is the selected month and day */
 proc/isDay(var/month, var/day)
@@ -136,12 +150,31 @@ GLOBAL_VAR_INIT(rollovercheck_last_timeofday, 0)
 
 	return finalstring
 
-/proc/gameTimestamp(format = "hh:mm:ss", wtime = null)
-	if(!wtime)
-		wtime = world.time
-	return time2text(wtime - GLOB.timezoneOffset, format)
-
-/proc/stationTimestamp(format = "hh:mm:ss", wtime = null)
-	if(!wtime)
-		wtime = world.time
-	return time2text(wtime - GLOB.timezoneOffset + (12 * 36000), format)
+//Takes a value of time in deciseconds.
+//Returns a text value of that number in hours, minutes, or seconds.
+/proc/DisplayTimeText(time_value, round_seconds_to = 0.1)
+	var/second = FLOOR(time_value * 0.1, round_seconds_to)
+	if(!second)
+		return "right now"
+	if(second < 60)
+		return "[second] second[(second != 1)? "s":""]"
+	var/minute = FLOOR(second / 60, 1)
+	second = FLOOR(MODULUS(second, 60), round_seconds_to)
+	var/secondT
+	if(second)
+		secondT = " and [second] second[(second != 1)? "s":""]"
+	if(minute < 60)
+		return "[minute] minute[(minute != 1)? "s":""][secondT]"
+	var/hour = FLOOR(minute / 60, 1)
+	minute = MODULUS(minute, 60)
+	var/minuteT
+	if(minute)
+		minuteT = " and [minute] minute[(minute != 1)? "s":""]"
+	if(hour < 24)
+		return "[hour] hour[(hour != 1)? "s":""][minuteT][secondT]"
+	var/day = FLOOR(hour / 24, 1)
+	hour = MODULUS(hour, 24)
+	var/hourT
+	if(hour)
+		hourT = " and [hour] hour[(hour != 1)? "s":""]"
+	return "[day] day[(day != 1)? "s":""][hourT][minuteT][secondT]"
