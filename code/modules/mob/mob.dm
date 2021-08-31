@@ -473,7 +473,7 @@
 	if(prefs.lastchangelog != GLOB.changelog_hash)
 		prefs.lastchangelog = GLOB.changelog_hash
 		prefs.save_preferences()
-		winset(src, "rpane.changelog", "background-color=none;font-style=;")
+		winset(src, "infowindow.changelog", "background-color=none;font-style=;")
 
 /mob/new_player/verb/observe()
 	set name = "Observe"

@@ -221,7 +221,7 @@
 
 	if(prefs.lastchangelog != GLOB.changelog_hash) //bolds the changelog button on the interface so we know there are updates.
 		to_chat(src, "<span class='info'>You have unread updates in the changelog.</span>")
-		winset(src, "rpane.changelog", "background-color=#f55b5b;font-style=bold")
+		winset(src, "infowindow.changelog", "background-color=#f55b5b;font-style=bold")
 		if(CONFIG_GET(flag/aggressive_changelog))
 			src.changes()
 
