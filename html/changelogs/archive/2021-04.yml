@@ -1,0 +1,79 @@
+2021-04-04:
+  Nanako:
+  - rscadd: Added a new feature for patrons, Necrocustomisation! Allowing you to tweak
+      the random pool for variants and necro outfits. More content will be added to
+      it in time.
+  - tweak: Instead of being a seperate item, hazmat suits now have their hood built
+      in, it can be toggled with a verb.
+  - tweak: Hazmat suits now give minor levels of armor. Doesn't compare to a real
+      armored suit, but it's a lot thicker than normal uniforms.
+  - imageadd: Added new sprites for hazmat suits, thanks to Cre77
+  - imageadd: Added several new slasher outfits. thanks to Cre77
+2021-04-07:
+  Nanako:
+  - bugfix: The divider's tongue can now be attacked and cut with melee weapons, to
+      free its victim. This was always intended, it was just bugged until now.
+  - tweak: Divider components now deal less damage with their basic melee attacks,
+      generally about 25% less.
+  - tweak: Divider components now deal more damage with their special leap attacks.
+  - tweak: Divider health and limb health increased.
+  - tweak: Divider arm swing now has a faster windup animation.
+  - tweak: Divider Tongue projectile now flies faster.
+  - bugfix: Fixed signals not having sprites
+2021-04-10:
+  Nanako:
+  - rscadd: Added the Asteroid Defense System, located on the top deck, above the
+      bridge. It is only accessible via spacewalk along the spine of the ship. The
+      ADS will automatically shoot down incoming asteroids, and it can also be manually
+      controlled. There is currently no need for the manual control, but maybe someday
+      soon it will start breaking down....
+  - tweak: Majorly revamped meteors. They now come in varying sizes, speeds, and rotation
+      speeds, and they explode when destroyed in flight. Meteors will now always approach
+      on the top deck, but will hit a random deck of the ship when they make contact
+  - rscadd: Meteor events are now enabled and can occur randomly. Meteors will generally
+      come from the front of the ship, and will be shot down by the ADS as long as
+      it's working.
+  - maptweak: Added toggleable blast doors to all the windows on the bridge, and a
+      switch to control them. The outer wall of the bridge can now be turned into
+      a metal shell at a moment's notice.
+  - tweak: All doors and airlocks now take less damage from explosions.
+  - maptweak: Added more hull plating to the front of the ship on several decks, allowing
+      a few meteor hits to be sustained before hull breaches start to occur.
+  - tweak: Blast doors are significantly buffed, especially against explosions and
+      meteors.
+2021-04-15:
+  REsident55:
+  - soundadd: Interaction sounds for airlock controllers, bioballistic delivery systems,
+      DNA analyzers, fax machines, file cabinets, freezers, heaters, lysis-isolation
+      centrifuges, photocopiers, keycard authentication devices, newscasters, secure
+      safes & seed extractors.
+  - soundadd: Vending machines now have a denied sound for no access or bad payments.
+  - bugfix: Fixed fire doors not playing any sounds due to faulty code.
+  - bugfix: Fixed vendors playing the purchase sound at different volumes depending
+      on context.
+  - bugfix: Minor grammar fixes for some item names and descriptions, mainly tool
+      mods.
+  Snypehunter007:
+  - bugfix: Fixed the ADS room and airlock not getting power.
+  - bugfix: Fixed pipe meters on the Aegis Colony being the wrong type.
+  - rscdel: Removed the Service department access requirement for freezer lockers.
+  - maptweak: Added a Condimaster to the Messhall Kitchen.
+  - maptweak: Slightly re-arranged the ADS room and added a few extra supplies.
+2021-04-18:
+  Snypehunter007:
+  - bugfix: Fixed the SO not having keycard authorization access.
+  - bugfix: Fixed the Services jobs (Botanist, Line Cook, Bartender) having the wrong
+      colors on the Occupation screen in the Character Setup.
+  - bugfix: Fixed the Mining Department sharing the same color as the Supply Department
+      on the Occupation screen in the Character Setup.
+  - tweak: MDs starting Medical skill has been bumped up to Experienced.
+  - tweak: The SMO and MD's starting Athletics skill has been bumped up to Basic.
+  - tweak: The SMO's starting Medical and Anatomy skill has been bumped up to Master.
+  - tweak: Surgeon's starting Anatomy skill has been downgraded to Experienced.
+  - tweak: Surgeon's starting Medical skill has been bumped up to Experienced.
+  - tweak: The Forensics skill has been capped at Trained for most of the crew except
+      for Medical personnel, who have it capped as Experienced, and Security personnel.
+  - tweak: The Cooking, Botany, and Medical skills have been capped at Experienced
+      for roles who don't use those skills for their job.
+  - tweak: The Anatomy skill has been capped at Trained for roles who don't use that
+      skill for their job.

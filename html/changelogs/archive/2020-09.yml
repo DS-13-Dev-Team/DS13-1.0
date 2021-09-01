@@ -1,0 +1,222 @@
+2020-09-05:
+  Nanako:
+  - rscadd: Acid now deals damage to RIG suits, and will eventually melt through and
+      damage the wearer. The suit or frame will never be completely destroyed.
+  - bugfix: Puker vomit no longer goes through windows.
+  - tweak: Slightly buffed accuracy of pulse rifle
+  - tweak: Significantly buffed damage of rivet gun
+  - tweak: Reduced damage and projectile speed of cysts.
+  - tweak: Slightly Reduced accuracy and range of line cutter.
+  - rscadd: Necromorphs now have healthbars in their hud, displaying remaining health,
+      as well as permanant losses from severed limbs.
+  - tweak: Increased brute health from 400 to 450
+  - tweak: Reduced tripod health from 500 to 450
+  - tweak: Slightly reduced necromorph severed limb damage multiplier, from 1.3 to
+      1.2
+  - bugfix: Fixed a major bug where blood oxygenation was calculated incorrectly,
+      resulting in it being impossible for humans to suffocate and be stuck in crit
+      status forever.
+  - imageadd: Added new shutter sprites, created by Marshal Red!
+  Terror4000rus:
+  - bugfix: Fixed wheelchair speed abuse.
+  TheLion1675:
+  - rscdel: Removed the Boombox spawn on the map. Time to hum tunes in your mind.
+  - rscdel: Removed bandana and overalls/aprons from the Botanist lockers.
+  - rscdel: Removed the chance of slipping on underplating(s) until such time where
+      it is re-enabled.
+  - rscadd: A spiffy new uniform for the Botanists!
+  - maptweak: Adds emergency O2 lockers in all of the escape pods.
+  - maptweak: Fixed an improperly placed fire wallcloset in the escape lounge.
+  - maptweak: Fixed and added several signs intended to direct towards escape pods.
+  - maptweak: Added emergency medical wallclosets to upper pods and the Brig.
+  - maptweak: Fixed several internal windoors not having appropriate access set.
+  - maptweak: Added Shuttle consoles to the Ishimura for the Mining Shuttles. No more
+      asking for it to be sent up!
+  - maptweak: Fixed incorrect naming of airlocks in the USM Valor.
+  - maptweak: Significantly increased medical item quantity in the medical bay of
+      the USM Valor.
+  - imageadd: New sprites for the floors in bathrooms. Provided by Starless Horizon!
+  - bugfix: Fixed a rare bug where players could automagically teleport into the colony
+      level if reaching edge of space maps.
+  - bugfix: Fixed the outer South brig reception door having access when it shouldn't.
+  - spellcheck: Fixed Stun Revolver being misspelled in the design categories.
+2020-09-06:
+  TheLion1675:
+  - bugfix: Fixed Director of Mining not getting command comms.
+  - bugfix: Fixed Surgeon's locker spawning with nothing.
+  - bugfix: Fixed an issue in the medical lockers losing their stripe when in the
+      opened state.
+  - maptweak: Added a spare surgery kit to the medical storage.
+  - imageadd: Newer sprites for vents. These are just placeholders until we get wall
+      vents.
+  - imageadd: Newer sprites for scrubbers. These are just placeholders until we get
+      wall scrubbers/vents.
+  aguyiguess:
+  - tweak: Using the chemical dispenser without sufficient device skill no longer
+      adds random chemicals.
+2020-09-07:
+  Jeser:
+  - bugfix: Fixed evacuation called by admins not being forced.
+  - rscdel: Disabled evacuation cancelling code due to being outdated and not doing
+      anything.
+  - rscadd: Added admin verb Delay Evacuation that allows to increase or decrease
+      time until evacuation is allowed.
+  - rscadd: Added admin warnings that trigger at approximately 10 and 5 minutes until
+      evacuation will be allowed normally.
+  Terror4000rus:
+  - tweak: If you click (or activate) a magazine, firstly, you get a warning before
+      unloading it.
+  TheLion1675:
+  - tweak: Significantly increased the amount and types of medication available in
+      the NanoMed Plus. This is a temporary fix to account for overburdening of Chemistry
+      and their general dislocation in relation to the Cargo department.
+2020-09-12:
+  Nanako:
+  - rscadd: The crew quarters are now available as an alternate spawnpoint.
+  - rscadd: Maintenance tunnels are now available as a fallback spawnpoint. You can't
+      select it, and will only be sent there if no other options are available.
+  - tweak: Spawnpoints now take into account the presence of corruption and necromorphs
+      when determining if a spawnpoint is safe.
+  - tweak: When spawning in cryostorage or dorms, you now start off asleep in a cryo/bed
+  Snypehunter007:
+  - rscdel: Removed the ability for Roboprinter and Bioprinter circuits to be researched,
+      essentially removing the two from the game.
+  Terror4000rus:
+  - bugfix: Fixed color of some wall frames.
+  - bugfix: Fixed being able to stab yourself with mining pickaxe on percentage failure.
+  TheLion1675:
+  - experiment: CAUTION! This changelog is EXPERIMENTAL! This means these values are
+      NOT permanent and CAN CHANGE in the future without notice.
+  - rscadd: Added the Line Cutter to the exports list with a value of 70 credits.
+  - rscadd: Added the Seeker Rifle to the exports list with a value of 60 credits.
+  - rscadd: Added the Disc Ripper to the exports list with a value of 60 credits.
+  - rscadd: Added the Divet pistol to the exports list with a value of 40 credits.
+  - rscadd: Added the Mining Cutter to the exports list with a value of 40 credits.
+  - rscadd: Addded the Graviton Accelerator to the exports list with a value of 60
+      credits.
+  - rscadd: Added the Contact Beam to the exports list with a value of 60 credits.
+  - rscadd: New mechanic! End of round now calculates to which side the victory goes.
+      Goes minor/major. Also plays songs depending on the round outcome!
+  - rscadd: Adds regular and compact defibrillators to the medical vendors. This was
+      added because the charges run out REALLY quick.
+  - wip: Added Mining Cutter and Plasma Cutter to the research designs. More to come
+      at a later date.
+  - tweak: Significantly decreased the export worth of Tasers.
+  - tweak: Significantly decreased the export worth of smelted materials.
+  - tweak: Moderately increased the Contact Beam's accuracy.
+  - tweak: Polytrinic Acid rennamed into Triflic Acid.
+  - tweak: Metal Foam, Iron Foam and Plastic chemistry recipes now no longer require
+      Triflic Acid / Former Polyacid. It now takes Hydrochloric instead.
+  - tweak: Minorly increased the maximum amount of damage the brain can sustain before
+      becoming a literal Hydro plant.
+  - tweak: Significantly reduced damage of Triflic Acid / Former Polyacid.
+  - tweak: 'Altered recipe for Triflic Acid / Former Polyacid: 1u Lexorin, 1u Potassium
+      Chlorophoride, 1u Hydrochloric Acid makes for 3u Triflic Acid.'
+  - tweak: Moderately reduced the metabolism rate of Tricordrazine. It is still a
+      fix-all, but has the same metabolic stats as Kelotane and Bicaridine.
+  - tweak: Removed uranium requirement for protolathe Contact Beam construction, and
+      replaced it with Diamond. Don't spam your weapons, use your materials wisely!
+  - tweak: Increased the weapons technology requirement from 3 to 5 for the Contact
+      Beam.
+  - tweak: Reworked end of round credits. Now 50 percent more accurate towards how
+      the round goes. LORE FRIENDLY!
+  - tweak: Significantly reduced the damage received from a toolbox.
+  - tweak: Minorly increased the damage received from a thrown toolbox.
+  - tweak: Minorly increased cooldown attacks for toolboxes.
+  - rscdel: Removed the Corgi Crate from Cargo. This is nonsensical. Farm animals
+      is where it's at, boys.
+  - rscdel: Removed a lot of redundant worth list items of items we don't use. Back-end
+      organizing.
+  - rscdel: Removed bluespace tomato as a valid mutation.
+  - bugfix: Fixed inability to make assembly items such as the igniter because it
+      required an item that did not exist.
+  - bugfix: Fixed an uncommon instance of diona nymphs spawning in vending machines.
+      No more leeches!
+  - bugfix: Fixed Botanist uniform displaying the wrong icon. Honk!
+  - bugfix: Fixed Botanists not spawning with their new uniform.
+  aguyiguess:
+  - tweak: NTNet has been rebranded to SolNet.
+2020-09-13:
+  TheLion1675:
+  - bugfix: Fixed the Lysis Centrifuge not working based on needing an entirely unrelated
+      skill.
+  - bugfix: Fixed vendors not dispensing items.
+  - bugfix: Fixed vendors sometimes spawning diona nymphs.
+2020-09-17:
+  Mynameajeff:
+  - rscadd: Research and Development can now manufacture divet pistols and pulse rifles,
+      along with their accomodating ammo with enough material supply and technology.
+  - rscdel: Most illegal technology designs were removed due to not meeting our lore
+      standards.
+  - rscdel: The food replicator has been removed from the circuit list in research,
+      not only did it fail to function, it was privy to exploits with biomass gain.
+  Nanako:
+  - rscadd: EDF Marines now get high velocity pulse rounds, which are more powerful
+      all around and look pretty cool too! HV magazines can very rarely be found in
+      random loot aboard the ishimura.
+  - rscadd: EDF Marines now get either a seeker rifle or heavy pulse rifle, in addition
+      to their normal rifle, in their lockers aboard the USM valor
+  - tweak: Fixed a bug where gun cabinets would not have the correct icon at roundstart.
+  TheLion1675:
+  - tweak: Moderately increased the maximum amount of shots the Taser can fire off
+      before going click click.
+  - tweak: Add round-end statistics counting surving humans (including necromorphs
+      unfortunately), and escaped humans.
+  - tweak: Significantly reduced damage given from Triflic acid.
+  - tweak: Moderately decreased damage given from Hydrochloric acid.
+  - tweak: Significantly increased the amount of Triflic Acid needed to completely
+      remove limbs.
+  - tweak: Significantly increased the amount of Hydrochloric Acid needed to completely
+      remove limbs.
+  - tweak: Significantly reduced damage given from Suplhuric Acid.
+  - tweak: Significantly increased the amount of Sulphuric Acid needed to completely
+      remove limbs.
+  - tweak: Triflic Acid no longer requires Lexorin. It now just requires Sulphuric
+      Acid, Chlorophoride and Phosphorus, resulting in 3u still.
+  - tweak: The Paralyze Mob ability is now available to Moderators and up.
+  - tweak: Made Activate Marker verb available to Moderators and up.
+  - tweak: Made the Delay shuttle verb available to mods.
+  - bugfix: Fixed incorrect math being applied on round-end.
+2020-09-20:
+  Jeser:
+  - bugfix: Fixed cyst's bombs and pulse rifle's impact grenades embedding on direct
+      hit.
+  - bugfix: Fixed necromorph nest's Upgrade Spawner verb appearing in verb tabs and
+      lagging players in view. Verb is still accessible via right clicking nest.
+  Nanako:
+  - rscadd: Added the divider, a durable new carrier necromorph who excels at overwhelming
+      a single victim.
+  - rscadd: Humans now stomp when attacking small mobs on the floor.
+  - soundadd: Added new audio for limb breaking.
+  - tweak: When in harm intent, firing guns at a turf now autotargets mobs in the
+      same turf, this makes it much easier to aim at small things like divider components.
+  Snypehunter007:
+  - rscadd: Added two wrenches to the Aegis drill area on the outside, so miners don't
+      have to scavenge for them.
+  - rscadd: Added another button to control the blast doors on the Kellion to the
+      side of the ship that didn't have it.
+  - rscadd: Added an interrogation room to the Brig.
+  - bugfix: Fixed several disposal pipes being in the wrong spot or the wrong type.
+  - bugfix: Fixed the button controlling the Kellion blast doors not having the correct
+      name.
+  - bugfix: Fixed the incorrect type of window being used in areas that led to space
+      on the Ishimura.
+  - maptweak: Changed access on maintenance doors in departments. If you have a door
+      in your department, you can now enter into maintenance through that door. However,
+      if you're not a job that has access to maintenance normally, those departmental
+      doors are the only ones you can open. Technical Engineers cannot wander into
+      departments through these doors anymore either.
+  - maptweak: Gave Planet Crackers access to most doors on the Aegis Colony.
+  - maptweak: Gave Security access to most doors in the Clinic and Cargo.
+  - maptweak: Slightly redesigned the Escape Wing.
+  - maptweak: Redesigned the front part of the Brig.
+  - maptweak: Changed the inside of Hydroponics to provide a few more lights.
+  - maptweak: Changed Supply Officer's office windows.
+  - maptweak: Removed the watertank from the Bioprosthetics Lab.
+  - maptweak: The morgue blast door now starts in the 'up' position.
+  - bugfix: Fixed the light RIG randomly spawning.
+  - bugfix: Fixed a few problems with the firesuit RIG's boot and glove sprites.
+  - bugfix: Fixed the security uniform's east and west sprites missing two pixels
+      and showing your stomach.
+  - bugfix: Fixed the Chief Security Officer's jacket not having armor values, the
+      name, and description.

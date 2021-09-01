@@ -1,0 +1,157 @@
+2021-01-02:
+  Jeser:
+  - bugfix: Fixed Spawn Menu bugging out and refusing to open.
+  - rscadd: In case of destruction of current spawn point, Marker will be set as one
+      and a warning will be shown in necrochat.
+  - bugfix: Fixed being able to unsecure buildable turrets.
+  Nanako:
+  - rscadd: Added the Meddle spell, a way for signals to interact with the environment
+      in a variety of minor mischievous ways. Try it out on everything you see!
+  - rscadd: Added the RIG retraction device, which allows powering down and retracting
+      someone else's rig, as long as they don't object. Intended for medical use,
+      and found in medical, surgery and emergency closets
+  - tweak: Powering down a RIG now takes half as much time as sealing
+  - rscadd: Added the Riot RIG, a tough and heavy suit with extra melee protection.
+  - tweak: RIG chest and boots can no longer be removed while the RIG is active
+  - rscadd: Reworked and standardised suit storage slots, to allow a much wider variety
+      of things, including pouches, guns, tools, tanks, et al.
+  - bugfix: Fixed kinesis tether not visually attaching to the target
+  - bugfix: Fixed punishment not working correctly when using kinesis to throw a marker
+      shard into disposals.
+  REsident55:
+  - soundadd: External doors (the red ones!) as well as high security and vault doors
+      have new Dead Space heavy door sounds.
+  - soundadd: Lightswitches and buttons have new Dead Space beep sounds.
+  - soundadd: All vending machines have new Dead Space browsing and purchase sounds.
+  - soundadd: A variety of Dead Space sounds for biotanks, and one for recycler interactions
+      too.
+  - bugfix: Fixed bad punctuation in recycling tank interactions.
+  - bugfix: Removed some unused duplicate .oggs from the files, every little helps.
+  TheLion1675:
+  - bugfix: Fixed a present bug where pulse rifles would not accept HV magazines.
+  - bugfix: Fixed an issue in piping and power which caused issues in medical isolation.
+  - bugfix: Fixed an issue in the CSCIO's office where two consoles weren't able to
+      be interacted with.
+  - bugfix: Increased SMO's office to fix a similar issue as above.
+  - bugfix: Fixed the missing taser from the CSECO's locker.
+  - bugfix: Fixed an accidental duplication of RIG spawns in the CSECO locker.
+  - rscdel: Removed the flash from base locker spawns. Will be re-added when they
+      are fixed.
+  - spellcheck: Fixed the door names of the Forensics Lab and Cryogenic Isolation
+      in the Brig.
+  - maptweak: Minor adjustments to SMO and CSCIO's office to make them feel a little
+      more fancy.
+  - tweak: Moderately increased the Heavy Pulse Rifle's accuracy, minorly increased
+      the damage factor, heat capacity and overheat cooldown.
+2021-01-10:
+  Jeser:
+  - bugfix: Fixed being able to load pulse rifle magazines into Heavy Pulse Rifle.
+  Nanako:
+  - rscadd: Significantly rebalanced the Contact Beam. Main firemode now has higher
+      damage and armor pentration, but lower accuracy and longer charging time
+  - tweak: Contact beam altfire now deals 50 burn damage to mobs around the user.
+      Affects own tile as well, but not the user themselves
+  - imageadd: The contact beam now has a visual effect for charging up
+  - soundadd: Added new audio FX for contact beam.
+  - tweak: Brute armor is now affected by the armor penetration of bullets and weapons.
+      Seeker and contact beam both have very high AP
+  - bugfix: Fixed aiming mode on the contact beam being nonfunctional, and it now
+      requires aiming to fire
+  - tweak: Moderately reduced tripod's evasion, making it more vulnerable to heavy
+      weapons.
+  - tweak: Slightly reduced brute evasion.
+  - tweak: Significantly increased cargo costs for contact beam.
+  - tweak: Slightly reduced the armor penetration of plasma saw and laserpick.
+  - tweak: Increased the biomass cost of T3 Necromorphs from 350 to 400
+  - tweak: Reduced hunter's max health from 250 to 225.
+  - tweak: When health hits 0, hunter is now downed for 30 seconds, previously 20.
+  - tweak: Meddle signal ability no longer affects airlocks, doors, or shutters.
+  - experiment: Tier II and III necromorphs now have minimum requirements of total
+      biomass, meaning they can't be spawned at the beginning of the outbreak.
+  - tweak: Hunter regeneration nerfed. It now heals burn damage much more slowly.
+      Regeneration abilities heal smaller quantities of lasting damage.
+  - tweak: Slightly Reduced melee damage of hunter and enhanced slasher
+  - tweak: Increased delay of necromorph slash attacks. Affects slasher, enhanced
+      slasher, twitcher, hunter.
+  - tweak: Hunter max health set back to 250, in light of other balance changes.
+  - tweak: Increased damage and stun time of tripod's high leap, in the red frontal
+      cone
+  - tweak: Tripod now recieves a brief but powerful defensive buff when it lands a
+      perfect leap.
+  - tweak: Tripod arm swing is now a little faster.
+  - tweak: Tripod tongue lash now deals more damage, and the tongue stays exposed
+      for a shorter time afterwards.
+  - tweak: Slightly reduced the damage of all crew melee weapons.
+  - tweak: Mobs now have their reach reduced by 1 while lying down, to a minimum of
+      1. Only affects large necromorphs currently.
+  - tweak: Slightly reduced the biomass cost of exploder.
+  - bugfix: Fixed the hacker rig having no frame sprite.
+  - bugfix: Fixed various issues with the hydrazine torch, it should work much better
+      now
+  - bugfix: Fixed high velocity magazines not working in pulse rifles
+  - bugfix: Fixed ripper sawblades being invisible
+  - tweak: Slightly increased the damage of pulse rounds. This affects pulse rifles,
+      heavy pulse rifles, and pulse turrets
+  Terror4000rus:
+  - bugfix: DOM has proper channels in headset now.
+  - tweak: DOM's cabinet now has DOM's access restriction.
+  - rscadd: Mining Foreman recieves vintage RIG from DOM's cabinet in closet.
+  - tweak: Mining Foreman now has unique access for the closet.
+  - bugfix: If no message given in the signal's whispering, it cancels and refunds.
+  - rscadd: Signals now have three toggleable levels of night vision.
+  - bugfix: Guns with automatic firing shouldn't shoot after examing, pulling or checking
+      a tile's content via hotkeys.
+  - tweak: All vents now cycle air a lot faster, especially one in colony's airlocks.
+2021-01-11:
+  Jeser:
+  - bugfix: Fixed airlock welding message.
+  Terror4000rus:
+  - tweak: If a gun is firing at catwalks, its projectiles will not count it as target.
+2021-01-13:
+  Nanako:
+  - tweak: Necromorphs which are missing legs or laying down, will now charge at a
+      much slower speed to reflect their mobility
+  - tweak: Necromorphs which are charging or leaping can now be knocked out of it
+      by anything that would launch them. Such as force gun.
+  - tweak: Slightly increased leaper's max health, but reduced the health of its tail.
+2021-01-15:
+  DeadLineSS13:
+  - rscadd: Added a pop-up text on mob.
+2021-01-16:
+  Jeser:
+  - bugfix: Fixed feeding pills being prevented by riot helmet with raised visor.
+2021-01-18:
+  TheLion1675:
+  - rscdel: Removed RCD's from the RobCo toolmaker contraband list.
+  - tweak: Significantly reduced health on root and branch nodes.
+  - tweak: Moderately reduced health on hardened growth node.
+  - tweak: Minorly reduced health on Nests.
+2021-01-20:
+  Nanako:
+  - rscadd: Added our newest patron item, the Unitology Ritual Blade
+  - rscadd: Other people's rig helmets can now be toggled through the strip menu.
+      Takes some time.
+  - tweak: Buffed the boot knife to have same damage as other knives
+2021-01-24:
+  Nanako:
+  - bugfix: Fixed harvester not drawing biomass from things
+2021-01-25:
+  Nanako:
+  - experiment: Re-enabled Enemy Within gamemode, with several balance tweaks.
+  - rscadd: Crew visibility blocking is now ignored on tiles which are in sight of
+      the marker, or a marker shard. This applies to signal abilities and corruption
+      node spawning
+  - tweak: Marker shards now embed in corruption, and will need to be slowly cut free
+      with a bladed tool.
+  - tweak: Carrying a marker shard on your person is now extremely taxing, and bad
+      for your health.
+  - tweak: Marker shards will no longer behave when dragged around in lockers or storages.
+  - rscdel: Items smaller than Large size can no longer be dragged by humans. If you
+      want to move a small item, pick it up and carry it.
+  - tweak: Enemy Within gamemode will now spawn an additional shardbearer if all existing
+      shards have been neutralised.
+2021-01-27:
+  Unknown:
+  - tweak: Rebalanced a few rigs. Buffed security rig, nerfed mining one
+  - bugfix: Fixed positioning and facing issues with sacrifice execution
+  - bugfix: Fixed helmet toggle not working
