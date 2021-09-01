@@ -35,7 +35,7 @@
 		ui.open()
 
 /obj/item/weapon/airlock_electronics/ui_state(mob/user)
-	return GLOB.hands_state
+	return GLOB.tgui_hands_state
 
 /obj/item/weapon/airlock_electronics/ui_static_data(mob/user)
 	var/list/data = list()
