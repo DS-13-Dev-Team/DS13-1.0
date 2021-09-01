@@ -3,14 +3,10 @@
 /datum/track
 	var/title
 	var/track
-	var/length
-	var/beat
 
-/datum/track/New(title, track, length, beat)
+/datum/track/New(title, track)
 	src.title = title
 	src.track = track
-	src.length = length
-	src.beat = beat
 
 datum/track/proc/GetTrack()
 	if(ispath(track, /music_track))
@@ -130,8 +126,6 @@ datum/track/proc/GetTrack()
 	data["track_beat"] = null
 	if(current_track)
 		data["track_selected"] = current_track.title
-		data["track_length"] = DisplayTimeText(current_track.length)
-		data["track_beat"] = current_track.beat
 	data["volume"] = volume
 
 	return data
