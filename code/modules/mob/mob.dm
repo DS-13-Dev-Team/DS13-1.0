@@ -446,35 +446,6 @@
 	return
 */
 
-/client/verb/changes()
-	set name = "Changelog"
-	set category = "OOC"
-	getFiles(
-		'html/images/88x31.png',
-		'html/images/bug-minus.png',
-		'html/images/burn-exclamation.png',
-		'html/images/chevron.png',
-		'html/images/chevron-expand.png',
-		'html/images/cross-circle.png',
-		'html/images/hard-hat-exclamation.png',
-		'html/images/image-minus.png',
-		'html/images/image-plus.png',
-		'html/images/map-pencil.png',
-		'html/images/music-minus.png',
-		'html/images/music-plus.png',
-		'html/images/tick-circle.png',
-		'html/images/scales.png',
-		'html/images/spell-check.png',
-		'html/images/wrench-screwdriver.png',
-		'html/changelog.css',
-		'html/changelog.html'
-		)
-	src << browse('html/changelog.html', "window=changes;size=675x650")
-	if(prefs.lastchangelog != GLOB.changelog_hash)
-		prefs.lastchangelog = GLOB.changelog_hash
-		prefs.save_preferences()
-		winset(src, "infowindow.changelog", "background-color=none;font-style=;")
-
 /mob/new_player/verb/observe()
 	set name = "Observe"
 	set category = "OOC"

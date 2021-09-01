@@ -176,30 +176,46 @@ export class Changelog extends Component {
 
     const header = (
       <Section>
-        <h1>TerraGov Marine Corps</h1>
+        <h1>DS13 Changelog</h1>
         <p>
-          <b>Thanks to:</b> The CM-SS13 devs, The Russian CM, Baystation 12,
-          /tg/Station, /vg/station, NTstation, CDK Station devs,
-          FacepunchStation, GoonStation devs
-          and the original SpaceStation 13 developers.
+          <b>Thanks to:</b> The developers of Baystation 12,
+          /tg/station 13, the original Space Station 13
+          and Visceral Games.
+        </p>
+        <h3>DS13 Development Team</h3>
+        <p>
+          <b>Hosts:</b>
+          Westhybrid (founder), Snypehunter007
         </p>
         <p>
-          {'Current project maintainers can be found '}
-          <a href="https://github.com/tgstation?tab=members">
-            here
-          </a>
-          {', Current Staff team can be found '}
-          <a href="https://tgstation13.org/phpBB/viewtopic.php?f=69&t=19855">
-            Here
-          </a>
-          {', recent GitHub contributors can be found '}
-          <a href="https://github.com/tgstation/TerraGov-Marine-Corps/pulse/monthly">
+          <b>Coders: </b>
+          Nanako, KMC2000, TheLion1675
+        </p>
+        <p>
+          <b>Mappers:</b>
+          Snypehunter007, TheLion1675
+        </p>
+        <p>
+          <b>Spriters:</b>
+          Ketrai, Xeirla, Snypehunter007, Don1155,
+          Meyhazah, Triiodine, Spicy Fly
+        </p>
+        <p>
+          {'Recent GitHub contributors can be found '}
+          <a href="https://github.com/DeadLineSS13/DS13/pulse/monthly">
             here
           </a>.
         </p>
         <p>
+          <b>Sound Provider:</b>
+          TheLion1675, REsident55,
+          <a href='https://www.youtube.com/channel/UCd9iHQmcR93LguEv_xkpBTg'>
+            Jacob Danik
+          </a>
+        </p>
+        <p>
           {'You can also join our discord '}
-          <a href="https://discord.gg/2dFpfNE">
+          <a href="https://discord.gg/T6YfAfu">
             here
           </a>.
         </p>
