@@ -209,7 +209,7 @@ export class ChangeLog extends Component {
         <p>
           <b>Sound Provider: </b>
           TheLion1675, REsident55,
-          <a href='https://www.youtube.com/channel/UCd9iHQmcR93LguEv_xkpBTg'>
+          <a href="https://www.youtube.com/channel/UCd9iHQmcR93LguEv_xkpBTg">
             Jacob Danik
           </a>
         </p>
