@@ -20,7 +20,7 @@ export const airlock_electronics = (props, context) => {
       <Window.Content>
         <Section title="Main">
           <LabeledList>
-            {!! data.lockable && (
+            {!!data.lockable && (
               <LabeledList.Item
                 label="Lock system">
                 <Button
@@ -29,7 +29,7 @@ export const airlock_electronics = (props, context) => {
                   onClick={() => act(locked ? 'unlock' : 'lock')} />
               </LabeledList.Item>
             )}
-            {!! !data.locked && (
+            {!data.locked && (
               <LabeledList.Item
                 label="Access Required">
                 <Button
@@ -40,7 +40,7 @@ export const airlock_electronics = (props, context) => {
             )}
           </LabeledList>
         </Section>
-        {!! !data.locked && (
+        {!data.locked && (
           <AirlockAccessList
             accesses={regions}
             selectedList={accesses}

@@ -208,7 +208,7 @@ export class ChangeLog extends Component {
         </p>
         <p>
           <b>Sound Provider: </b>
-          TheLion1675, REsident55, 
+          TheLion1675, REsident55,
           <a href='https://www.youtube.com/channel/UCd9iHQmcR93LguEv_xkpBTg'>
             Jacob Danik
           </a>
@@ -248,7 +248,7 @@ export class ChangeLog extends Component {
         </p>
         <h3>DS13 License</h3>
         <p>
-          {'This is a fork based off the July-2018 version of Baystation12. To see the original, GPL repo, go'}
+          {'This is a fork based off the 2018 version of Baystation12. To see the original, GPL repo, go'}
           <a href={'https://github.com/Baystation12/Baystation12'}>
             here
           </a>
