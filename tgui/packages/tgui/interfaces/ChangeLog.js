@@ -40,7 +40,7 @@ const icons = {
   unknown: { icon: 'info-circle', color: 'label' },
 };
 
-export class Changelog extends Component {
+export class ChangeLog extends Component {
   constructor() {
     super();
     this.state = {
@@ -184,7 +184,7 @@ export class Changelog extends Component {
         </p>
         <h3>DS13 Development Team</h3>
         <p>
-          <b>Hosts:</b>
+          <b>Hosts: </b>
           Westhybrid (founder), Snypehunter007
         </p>
         <p>
@@ -192,11 +192,11 @@ export class Changelog extends Component {
           Nanako, KMC2000, TheLion1675
         </p>
         <p>
-          <b>Mappers:</b>
+          <b>Mappers: </b>
           Snypehunter007, TheLion1675
         </p>
         <p>
-          <b>Spriters:</b>
+          <b>Spriters: </b>
           Ketrai, Xeirla, Snypehunter007, Don1155,
           Meyhazah, Triiodine, Spicy Fly
         </p>
@@ -207,8 +207,8 @@ export class Changelog extends Component {
           </a>.
         </p>
         <p>
-          <b>Sound Provider:</b>
-          TheLion1675, REsident55,
+          <b>Sound Provider: </b>
+          TheLion1675, REsident55, 
           <a href='https://www.youtube.com/channel/UCd9iHQmcR93LguEv_xkpBTg'>
             Jacob Danik
           </a>
@@ -246,34 +246,13 @@ export class Changelog extends Component {
           <a href="http://forums.somethingawful.com/">SomethingAwful Goons</a>
           {' only.'}
         </p>
-        <h3>TerraGov Marine Corps License</h3>
+        <h3>DS13 License</h3>
         <p>
-          {'This is a fork based off the July-2018 version of ColonialMarines. To see the original, GPL repo, go'}
-          <a href={'https://github.com/MrStonedOne/cmhistory'}>
+          {'This is a fork based off the July-2018 version of Baystation12. To see the original, GPL repo, go'}
+          <a href={'https://github.com/Baystation12/Baystation12'}>
             here
           </a>
           {'Code and other contributions are licensed under AGPL unless otherwise specified below'}
-        </p>
-        <p>
-          The TGS DMAPI API is licensed as a subproject under the MIT license.
-          {' See the footer of '}
-          <a href={'https://github.com/tgstation/TerraGov-Marine-Corps/blob/master'
-            + '/code/__DEFINES/tgs.dm'}>
-            code/__DEFINES/tgs.dm
-          </a>
-          {' and '}
-          <a href={'https://github.com/tgstation/TerraGov-Marine-Corps/blob/master'
-            + '/code/modules/tgs/LICENSE'}>
-            code/modules/tgs/LICENSE
-          </a>
-          {' for the MIT license.'}
-        </p>
-        <p>
-          {'Artwork added after'}
-          <a href={'https://github.com/tgstation/TerraGov-Marine-Corps/commit/92ee94da6e144d4420c1ec4f83a4ee785d61dc9b'}>
-            -this commit-
-          </a>
-          {'is CC-BY-NC 3.0, unless specified.'}
         </p>
       </Section>
     );
