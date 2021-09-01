@@ -27,31 +27,39 @@
 
 
 //tgui interact code generously lifted from tgstation.
-/obj/item/weapon/airlock_electronics/tgui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = 0, \
-	datum/tgui/master_ui = null, datum/ui_state/state = GLOB.tgui_hands_state)
+/obj/item/weapon/airlock_electronics/tgui_interact(mob/user, datum/tgui/ui = null)
 
-	SStgui.try_update_ui(user, src, ui_key, ui, force_open)
+	SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, ui_key, "airlock_electronics", src.name, 1000, 500, master_ui, state)
+		ui = new(user, src, "airlock_electronics", src.name)
 		ui.open()
 
-/obj/item/weapon/airlock_electronics/ui_data(mob/user)
-	var/list/data = list()
-	var/list/regions = list()
+/obj/item/weapon/airlock_electronics/ui_state(mob/user)
+	return GLOB.hands_state
 
+/obj/item/weapon/airlock_electronics/ui_static_data(mob/user)
+	var/list/data = list()
+
+	var/list/regions = list()
 	for(var/i in ACCESS_REGION_SECURITY to ACCESS_REGION_SUPPLY) //code/game/jobs/_access_defs.dm
 		var/list/region = list()
 		var/list/accesses = list()
 		for(var/j in get_region_accesses(i))
 			var/list/access = list()
-			access["name"] = get_access_desc(j)
-			access["id"] = j
-			access["req"] = (j in src.conf_access)
+			access["desc"] = get_access_desc(j)
+			access["ref"] = j
 			accesses[++accesses.len] = access
 		region["name"] = get_region_accesses_name(i)
 		region["accesses"] = accesses
 		regions[++regions.len] = region
+
 	data["regions"] = regions
+	return data
+
+/obj/item/weapon/airlock_electronics/ui_data(mob/user)
+	var/list/data = list()
+
+	data["accesses"] = conf_access
 	data["oneAccess"] = one_access
 	data["locked"] = locked
 	data["lockable"] = lockable
@@ -59,30 +67,47 @@
 	return data
 
 /obj/item/weapon/airlock_electronics/ui_act(action, params)
-	if(..())
-		return TRUE
+	. = ..()
+	if(.)
+		return
+
 	switch(action)
-		if("clear")
+		if("clear_all")
 			conf_access = list()
 			one_access = 0
-			return TRUE
+			. = TRUE
+		if("grant_all")
+			conf_access = get_region_accesses(ACCESS_REGION_ALL)
+			. = TRUE
 		if("one_access")
 			one_access = !one_access
-			return TRUE
+			. = TRUE
 		if("set")
 			var/access = text2num(params["access"])
 			if (!(access in conf_access))
 				conf_access += access
 			else
 				conf_access -= access
-			return TRUE
+			. = TRUE
+		if("grant_region")
+			var/region = params["region"]
+			if(isnull(region))
+				return
+			conf_access |= get_region_accesses(region)
+			. = TRUE
+		if("deny_region")
+			var/region = params["region"]
+			if(isnull(region))
+				return
+			conf_access -= get_region_accesses(region)
+			. = TRUE
 		if("unlock")
 			if(!lockable)
-				return TRUE
+				return
 			if(!req_access || istype(usr,/mob/living/silicon))
 				locked = 0
 				last_configurator = usr.name
-				return TRUE
+				. = TRUE
 			else
 				var/obj/item/weapon/card/id/I = usr.get_active_hand()
 				I = I ? I.GetIdCard() : null
@@ -94,10 +119,10 @@
 					last_configurator = I.registered_name
 				else
 					to_chat(usr, "<span class='warning'>[\src] flashes a red LED near the ID scanner, indicating your access has been denied.</span>")
-					return TRUE
+					. = TRUE
 		if("lock")
 			if(!lockable)
-				return TRUE
+				return
 			locked = 1
 			. = TRUE
 
@@ -113,8 +138,11 @@
 	locked = 0
 	lockable = 0
 
-/obj/item/weapon/airlock_electronics/brace/tgui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = 0, datum/tgui/master_ui = null, datum/ui_state/state = GLOB.tgui_deep_inventory_state)
-	SStgui.try_update_ui(user, src, ui_key, ui, force_open)
+/obj/item/weapon/airlock_electronics/brace/tgui_interact(mob/user, datum/tgui/ui = null)
+	SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, ui_key, "airlock_electronics", src.name, 1000, 500, master_ui, state)
+		ui = new(user, src, "airlock_electronics", src.name)
 		ui.open()
+
+/obj/item/weapon/airlock_electronics/brace/ui_state(mob/user)
+	return GLOB.tgui_deep_inventory_state

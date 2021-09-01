@@ -115,7 +115,7 @@
 	return priv_syndicate_access.Copy()
 
 /var/list/priv_region_access
-/proc/get_region_accesses(var/code)
+/proc/get_region_accesses(code)
 	if(code == ACCESS_REGION_ALL)
 		return get_all_station_access()
 
@@ -129,7 +129,7 @@
 	var/list/region = priv_region_access["[code]"]
 	return region.Copy()
 
-/proc/get_region_accesses_name(var/code)
+/proc/get_region_accesses_name(code)
 	switch(code)
 		if(ACCESS_REGION_ALL)
 			return "All"
