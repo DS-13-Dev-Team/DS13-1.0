@@ -1566,6 +1566,8 @@
 		P.destination = fax
 		P.sender = sender
 
+		P.tgui_interact(sender)
+
 	else if(href_list["jumpto"])
 		if(!check_rights(R_ADMIN))	return
 
