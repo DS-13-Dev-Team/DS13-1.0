@@ -131,10 +131,10 @@ GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 
 	for(var/datum/reagent/current as anything in reagent_list)
 		if(current.type == reagent_type)
-			current.volume += amount
+			current.modify_volume(amount, data)
 			last_added_quantity = amount
-			if(!isnull(data)) // For all we know, it could be zero or empty string and meaningful
-				current.mix_data(data, amount)
+			//if(!isnull(data)) // For all we know, it could be zero or empty string and meaningful
+				//current.mix_data(data, amount)
 			update_total()
 			if(!safety)
 				process_reactions()

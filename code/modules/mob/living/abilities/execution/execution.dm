@@ -143,6 +143,9 @@ if (result == EXECUTION_CANCEL && can_interrupt){\
 	var/obj/item/grab/grab	//The grab object we're using to hold the victim
 
 
+	//If set, this is a proc which is called as part of safety checks
+	//It should be one of the /datum/extension/execution/proc/weapon_check_XXXXX procs
+	var/weapon_check
 
 
 /datum/extension/execution/New(var/atom/user, var/mob/living/victim, var/atom/movable/weapon)
@@ -162,6 +165,12 @@ if (result == EXECUTION_CANCEL && can_interrupt){\
 	//ongoing_timer = addtimer(CALLBACK(src, /datum/extension/execution/proc/start), 0, TIMER_STOPPABLE)
 
 
+
+
+
+/*
+	Starting
+*/
 /datum/extension/execution/proc/start()
 	if (!can_start())
 		stop()
@@ -196,6 +205,19 @@ if (result == EXECUTION_CANCEL && can_interrupt){\
 
 
 	try_advance_stage()
+
+
+/datum/extension/execution/proc/can_start()
+	if (require_alive)
+		if (victim.stat == DEAD)
+			return EXECUTION_CANCEL
+	return EXECUTION_CONTINUE
+
+
+//Called when this execution is created but fails the can_start conditions. In most cases you just want to remove self
+//This is a proc so it can be overridden for special cases, like refunding resource costs
+/datum/extension/execution/proc/failed_start()
+	remove_self()
 
 /datum/extension/execution/Destroy()
 	current_stage = null
@@ -391,19 +413,23 @@ if (result == EXECUTION_CANCEL && can_interrupt){\
 	//If we needed a grab, check that we have it and its valid
 	if (require_grab && require_grab <= current_stage_index)
 		if (!grab || !grab.safety_check())
+			world << "No grab"
 			return EXECUTION_CANCEL
 
 	//Gotta be close enough
 	if (get_dist(user, victim) > get_range())
+		world << "Dist: [get_dist(user, victim)] > Range: [get_range()]"
 		return EXECUTION_CANCEL
 
 	//If user has ceased to exist, we're finished
 	if (QDELETED(user))
+		world << "User deleted"
 		return EXECUTION_CANCEL
 
 	for (var/datum/execution_stage/ES as anything in entered_stages)
 		var/result = ES.safety()
 		if (result != EXECUTION_CONTINUE)
+			world << "A stage [ES] returned fail"
 			return result
 
 
@@ -414,11 +440,7 @@ if (result == EXECUTION_CANCEL && can_interrupt){\
 		to_chat(user, SPAN_WARNING("You took too much damage, execution interrupted! [hit_damage_taken] >= [interrupt_damage_threshold]"))
 		interrupt()
 
-/datum/extension/execution/proc/can_start()
-	if (require_alive)
-		if (victim.stat == DEAD)
-			return FALSE
-	return TRUE
+
 
 
 
@@ -430,42 +452,4 @@ if (result == EXECUTION_CANCEL && can_interrupt){\
 		//If no current stage, we havent started yet
 		return start_range
 	return range
-
-//Access Proc
-/atom/proc/can_execute(var/execution_type = /datum/extension/execution)
-
-	var/datum/extension/execution/E = get_extension(src, execution_type)
-	if(istype(E))
-		if (E.stopped_at)
-			to_chat(src, SPAN_NOTICE("[E.name] is cooling down. You can use it again in [E.get_cooldown_time() /10] seconds"))
-		else
-			to_chat(src, SPAN_NOTICE("You're already performing an execution"))
-		return FALSE
-
-	return TRUE
-
-
-/mob/living/can_execute(var/error_messages = TRUE)
-	if (incapacitated())
-		return FALSE
-	.=..()
-
-
-/atom/proc/perform_execution(var/execution_type = /datum/extension/execution, var/atom/target)
-	if (!can_execute(execution_type))
-		return FALSE
-	var/list/arguments = list(src, execution_type, target)
-	if (args.len > 2)
-		arguments += args.Copy(3)
-
-
-	//Here we bootstrap the execution datum
-	var/datum/extension/execution/E = set_extension(arglist(arguments))
-	if (!E.can_start())
-		.=FALSE
-	E.ongoing_timer = addtimer(CALLBACK(E, /datum/extension/execution/proc/start), 0, TIMER_STOPPABLE)
-
-	.= TRUE
-
-
 

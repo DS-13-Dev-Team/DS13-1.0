@@ -12,6 +12,10 @@
 	Ranged Accuracy						STATMOD_RANGED_ACCURACY					A flat number of percentage points
 	Vision Range						STATMOD_VIEW_RANGE					An integer number of tiles to add/remove from vision range
 	Evasion								STATMOD_EVASION							An number of percentage points which will be additively added to evasion, negative allowed
+	Scale								STATMOD_SCALE							A percentage value, 0=no change, 1 = +100%, etc. Negative allowed
+	Max Health							STATMOD_HEALTH							A flat value which is added or removed
+	Conversion Compatibility			STATMOD_CONVERSION_COMPATIBILITY			A flat value which is added or removed
+	Layer								STATMOD_LAYER							A flat value, the highest one is used and all others are ignored. Note that any specified value, even if lower, will override the base layer
 */
 
 
@@ -25,16 +29,20 @@ STATMOD_INCOMING_DAMAGE_MULTIPLICATIVE = list(/datum/proc/update_incoming_damage
 STATMOD_RANGED_ACCURACY = list(/datum/proc/update_ranged_accuracy_factor),
 STATMOD_ATTACK_SPEED = list(/datum/proc/update_attack_speed),
 STATMOD_EVASION = list(/datum/proc/update_evasion),
-STATMOD_VIEW_RANGE = list(/datum/proc/update_vision_range)
+STATMOD_VIEW_RANGE = list(/datum/proc/update_vision_range),
+STATMOD_SCALE	=	list(/datum/proc/update_scale),
+STATMOD_HEALTH	=	list(/datum/proc/update_max_health),
+STATMOD_LAYER	=	list(/datum/proc/reset_layer)
+//Conversion compatibility doesn't get an entry here, its only used by infector conversions
 ))
 
 /datum/extension
 	var/auto_register_statmods = TRUE
 	var/list/statmods = null
 
-/datum/extension/proc/register_statmods()
+/datum/extension/proc/register_statmods(var/update = TRUE)
 	for (var/modtype in statmods)
-		register_statmod(modtype)
+		register_statmod(modtype, update)
 
 /datum/extension/proc/unregister_statmods()
 	for (var/modtype in statmods)
@@ -50,7 +58,7 @@ STATMOD_VIEW_RANGE = list(/datum/proc/update_vision_range)
 		var/update_proc = data[1]
 		call(M, update_proc)()
 
-/datum/extension/proc/register_statmod(var/modtype)
+/datum/extension/proc/register_statmod(var/modtype, var/update = TRUE)
 	//Currently only supported for mobs
 	var/mob/M = holder
 	if (!istype(M))
@@ -65,9 +73,10 @@ STATMOD_VIEW_RANGE = list(/datum/proc/update_vision_range)
 	LAZYDISTINCTADD(M.statmods[modtype], src)
 
 	//Now lets make them update
-	var/list/data = GLOB.statmods[modtype]
-	var/update_proc = data[1]
-	call(M, update_proc)()//And call it
+	if (update)
+		var/list/data = GLOB.statmods[modtype]
+		var/update_proc = data[1]
+		call(M, update_proc)()//And call it
 
 /datum/extension/proc/unregister_statmod(var/modtype)
 	//Currently only supported for mobs
@@ -218,3 +227,130 @@ STATMOD_VIEW_RANGE = list(/datum/proc/update_vision_range)
 
 
 
+
+/*
+	Scale
+
+	Controls the visible sprite size of the thing.
+*/
+
+/datum/proc/update_scale()
+	return
+
+//The speed var controls how fast we visibly transition scale, it is in cubic volume units per second
+/atom/update_scale(var/speed = 0.3)
+	world << "Updating scale 1"
+	var/old_scale = default_scale
+	default_scale = get_base_scale()
+	for (var/datum/extension/E as anything in LAZYACCESS(statmods, STATMOD_SCALE))
+		default_scale += E.get_statmod(STATMOD_SCALE)
+		world << "Updating scale 1A [E.get_statmod(STATMOD_SCALE)]"
+
+
+	world << "Updating scale 2 [default_scale]"
+	//We're going to do a smooth transition to the new scale
+
+	//Lets get the difference in the volume between these shapes
+	var/volume_difference = abs(default_scale**3 - old_scale**3)
+	var/time_required	=	(volume_difference / speed)	SECONDS	//This define converts it to deciseconds
+
+	//Do the animation
+	animate_to_default(time_required)
+
+	if (ishuman(src))
+		var/mob/living/carbon/human/H = src
+		spawn(time_required)
+			H.update_icons()	//This will adjust pixel offsets to fit our new size
+
+/datum/proc/get_base_scale()
+
+/atom/get_base_scale()
+	return 1.0
+
+
+
+
+/*
+	Health:
+	The max health of this mob, how much damage it can take before dying
+
+	Currently only meaningful for necromorphs and animals. Won't do much for non-necro humans because brainmed
+*/
+
+/datum/proc/update_max_health()
+	return
+
+/mob/living/update_max_health()
+	max_health = get_base_health()
+	for (var/datum/extension/E as anything in LAZYACCESS(statmods, STATMOD_HEALTH))
+		max_health += E.get_statmod(STATMOD_HEALTH)
+
+	updatehealth()
+
+/datum/proc/get_base_health()
+
+/mob/living/get_base_health()
+	return max(initial(health), initial(max_health))
+
+/mob/living/carbon/human/get_base_health()
+	return species.total_health
+
+
+
+//Layer
+
+//Layer is an atomic property so the datum procs are stubs
+/datum/proc/reset_layer()
+
+/atom/reset_layer()
+	var/newlayer = get_base_layer()
+	var/modified_layer
+	for (var/datum/extension/E as anything in LAZYACCESS(statmods, STATMOD_LAYER))
+		var/value = E.get_statmod(STATMOD_LAYER)
+		if (isnull(modified_layer) || value > modified_layer)
+			modified_layer = value
+
+	layer = (modified_layer ? modified_layer : newlayer)
+
+
+/mob/reset_layer()
+	var/newlayer
+	if(lying)
+		newlayer = get_base_lying_layer()
+	else
+		newlayer = get_base_layer()
+
+	var/modified_layer
+	for (var/datum/extension/E as anything in LAZYACCESS(statmods, STATMOD_LAYER))
+		var/value = E.get_statmod(STATMOD_LAYER)
+		if (isnull(modified_layer) || value > modified_layer)
+			modified_layer = value
+
+	layer = (modified_layer ? modified_layer : newlayer)
+
+
+
+
+
+/datum/proc/get_base_layer()
+
+/atom/get_base_layer()
+	return initial(layer)
+
+
+/mob/proc/get_base_lying_layer()
+	return LYING_MOB_LAYER
+
+
+
+/mob/living/carbon/human/get_base_layer()
+	return species.layer
+
+/mob/living/carbon/human/get_base_lying_layer()
+	return species.layer_lying
+
+
+//Legacy use, maybe needs refactoring, although we don't usually change planes on atoms anymore
+/atom/proc/reset_plane_and_layer()
+	plane = initial(plane)
+	reset_layer()

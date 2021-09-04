@@ -1,16 +1,18 @@
-/*
-	The healthbar is displayed along the top of the client's screen
-*/
-/mob/living/var/obj/screen/healthbar/hud_healthbar
 
-/obj/screen/healthbar
-	name = "healthbar"
+
+#define DEFAULT_METER_DATA	list("current"	=	null, "max"	=	null, 	"regen"	=	null, "blocked"	=	null)
+#define METER_HEIGHT	"16"
+/obj/screen/meter
+	name = "meter"
 	var/client/C
 	var/mob/living/L
-	var/obj/screen/healthbar_component/health/remaining_health_meter	//The actual remaining health, in red or green
-	var/obj/screen/healthbar_component/delta/delta_meter	//A yellow section indicating recent loss
-	var/obj/screen/healthbar_component/limit/limit_meter	//A solid grey block at the end, representing reduced maximum
-	var/obj/screen/healthbar_component/text/textholder
+	var/obj/screen/meter_component/current/remaining_meter	//The actual remaining health, in red or green
+	var/obj/screen/meter_component/delta/delta_meter	//A yellow section indicating recent loss
+	var/obj/screen/meter_component/limit/limit_meter	//A solid grey block at the end, representing reduced maximum
+	var/obj/screen/meter_component/text/textholder
+
+	var/remaining_color = COLOR_NT_RED
+	var/delta_color	=	COLOR_AMBER
 
 	alpha = 200
 	color = COLOR_DARK_GRAY
@@ -21,10 +23,11 @@
 	icon = 'icons/mob/screen_health.dmi'
 	icon_state = "white"
 
-	var/total_health = 0
-	var/current_health = 0
+	var/total_value = 1
+	var/current_value = 0
+	var/change_per_second	=	null	//Displayed in the text if non null and nonzero, this is the amount up or down that this value is changing each second
 
-
+	var/rounding = 1	//How precisely do we round displayed numbers?
 
 	//The healthbar size is dynamic and scales with diminishing returns based on the user's health.
 	//From 0 to 100, it is 2 pixels wide per health point, then from 100 to 200, 1 pixel for each additional health, and so on. The list below holds the data
@@ -40,17 +43,25 @@
 	//Measured in pixels
 	var/length
 
+	//This is an authortime value, it should match sprite size
+	var/height = METER_HEIGHT
+
 	var/base_length = 50	//Minimum size which is added to with calculated sizes
 
 	var/margin = 8//Extra length that isn't counted as part of our length for the purpose of components
 
+/obj/screen/meter/New(var/atom/holder)
 
-/obj/screen/healthbar/Destroy()
-	if (L)
-		if (L.hud_healthbar == src)
-			L.hud_healthbar = null
-		L = null
-	QDEL_NULL(remaining_health_meter)
+	cache_data(arglist(args))
+	.=..()
+
+
+//Override this and change the parameters in subtypes
+/obj/screen/meter/proc/cache_data(var/atom/holder)
+
+
+/obj/screen/meter/Destroy()
+	QDEL_NULL(remaining_meter)
 	QDEL_NULL(delta_meter)
 	QDEL_NULL(limit_meter)
 	QDEL_NULL(textholder)
@@ -59,58 +70,65 @@
 		C = null
 	.=..()
 
-/obj/screen/healthbar/added_to_screen(var/client/newclient)
-	if (newclient != C)
-		if (C)
-			C.screen -= remaining_health_meter
-			C.screen -= delta_meter
-			C.screen -= limit_meter
-			C.screen -= textholder
+/obj/screen/meter/added_to_screen(var/client/newclient)
+	recreate_components(newclient)
 
+
+
+
+/obj/screen/meter/proc/recreate_components(var/client/newclient)
+	if (C)
+		C.screen -= remaining_meter
+		C.screen -= delta_meter
+		C.screen -= limit_meter
+		C.screen -= textholder
+
+	if (newclient && newclient != C)
 		C = newclient
-
 		set_mob(C.mob)
 
-		QDEL_NULL(remaining_health_meter)
-		QDEL_NULL(delta_meter)
-		QDEL_NULL(limit_meter)
-		QDEL_NULL(textholder)
-		remaining_health_meter = new(src)
-		delta_meter = new(src)
-		limit_meter = new(src)
-		textholder = new(src)
-		update(TRUE)
+
+	QDEL_NULL(remaining_meter)
+	QDEL_NULL(delta_meter)
+	QDEL_NULL(limit_meter)
+	QDEL_NULL(textholder)
+
+	remaining_meter = new(src)
+	remaining_meter.color = remaining_color
+	remaining_meter.screen_loc = src.screen_loc
+
+	delta_meter = new(src)
+	delta_meter.color = delta_color
+	delta_meter.screen_loc = src.screen_loc
 
 
-/obj/screen/healthbar/proc/set_mob(var/mob/living/newmob)
+	limit_meter = new(src)
+	limit_meter.screen_loc = src.screen_loc
+
+
+	textholder = new(src)
+	textholder.screen_loc = src.screen_loc
+
+	update(TRUE)
+
+
+/obj/screen/meter/proc/set_mob(var/mob/living/newmob)
 	L = newmob
-	GLOB.updatehealth_event.register(L, src, /obj/screen/healthbar/proc/update)
-	L.hud_healthbar = src
-	set_health()
 
-/obj/screen/healthbar/proc/set_health()
 
-	if (total_health != L.max_health)
-		total_health = L.max_health
-		if (!total_health && ishuman(L))
-			var/mob/living/carbon/human/H = L
-			if (H.species)
-				total_health = H.species.total_health
 
-		set_size()
-
-/obj/screen/healthbar/proc/set_size(var/update = TRUE)
+/obj/screen/meter/proc/set_size(var/update = TRUE)
 	//Lets set the size
 
 
 	length = base_length
 
 
-	var/working_health = total_health
+	var/working_value = total_value
 	var/index = 1
 	var/current_key = size_pixels[1]
 	var/current_multiplier = size_pixels[current_key]
-	while (working_health > 0)
+	while (working_value > 0)
 		//How much health we convert into pixels this step
 		var/delta
 
@@ -126,14 +144,14 @@
 
 			//Figure out how much health we'll convert this step
 			delta = text2num(next_key) - text2num(current_key)
-			delta = min(working_health, delta)
+			delta = min(working_value, delta)
 			//Subtract it from the working health
-			working_health -= delta
+			working_value -= delta
 
 		//If not, then we're at the final tier, convert all remaining health to pixels
 		else
-			delta = working_health
-			working_health = 0
+			delta = working_value
+			working_value = 0
 
 
 		//Add to our pixel length, and increment things for the next cycle, if there's gonna be one
@@ -157,8 +175,8 @@
 	var/matrix/M = matrix()
 	M.Scale(x_scale, 1)
 	animate(src, transform = M, time = 2 SECONDS)
-	if (remaining_health_meter)
-		remaining_health_meter.update_total()
+	if (remaining_meter)
+		remaining_meter.update_total()
 	if (delta_meter)
 		delta_meter.update_total()
 	if (textholder)
@@ -168,65 +186,74 @@
 
 
 
-/obj/screen/healthbar/proc/update(var/force_update = FALSE)
-	var/list/data = L.get_health_report()
+/obj/screen/meter/proc/update(var/force_update = FALSE)
+	var/list/data = get_data()
+
+
 	var/max = data["max"]
+	if (isnull(max))
+		max = total_value	//A null value means "no change from previous"
 
 	//Uh oh, the max health has changed, this doesnt happen often. We gotta recalculate the size
-	if (max != total_health)
-		total_health = max
+	if (max != total_value)
+		total_value = max
 		set_size(FALSE)//Prevent infinite loop
 
-	var/health_changed = 0	//1 for positive, -1 for negative
-	var/new_health = total_health - data["damage"]
-	new_health = max(new_health, 0)
+	var/value_changed = 0	//1 for positive, -1 for negative
+	var/new_value = data["current"]
+	if (isnull(new_value))
+		//A null value means "no change from previous"
+		new_value = current_value
+
+	new_value = max(new_value, 0)
 
 
-	if (new_health > current_health)
-		health_changed = 1
-	if (new_health < current_health)
-		health_changed = -1
+	if (new_value > current_value)
+		value_changed = 1
+	if (new_value < current_value)
+		value_changed = -1
 
 
-	current_health = new_health
+	current_value = new_value
 
-	if (!health_changed && force_update)
+	if (!value_changed && force_update)
 
-		health_changed = TRUE
+		value_changed = TRUE
 
 	if (textholder)
-		textholder.maptext = "[Ceiling(current_health)]/[total_health]"
+		textholder.maptext = "[Ceiling(current_value)]/[total_value]"
 	var/blocked = data["blocked"]
 
-	//Lets update the health display first
-	if (remaining_health_meter && health_changed != 0)
-		var/remaining_health_meter_pixels = (current_health / max) * length
-		remaining_health_meter.set_size(remaining_health_meter_pixels)
+
+	//Lets update the current display first
+	if (remaining_meter && value_changed != 0)
+		var/remaining_meter_pixels = (current_value / max) * length
+		remaining_meter.set_size(remaining_meter_pixels)
 
 
 	//And blocked
-	if (limit_meter)
+	if (limit_meter && !isnull(blocked))
 		limit_meter.set_size((blocked / max) * length)
 
 
 	//Delta works differently, and only updates if health goes down, not up
-	if (delta_meter && health_changed == -1)
+	if (delta_meter && value_changed == -1)
 		delta_meter.update()
 
 
 
 
 
-
-
+/obj/screen/meter/proc/get_data()
+	return DEFAULT_METER_DATA
 
 
 /*
 	The components
 	Core:
 */
-/obj/screen/healthbar_component
-	var/obj/screen/healthbar/parent
+/obj/screen/meter_component
+	var/obj/screen/meter/parent
 	alpha = 200
 
 	screen_loc = "CENTER,TOP"
@@ -242,20 +269,22 @@
 
 	mouse_opacity = 2
 
-/obj/screen/healthbar_component/New(var/obj/screen/healthbar/newparent)
+/obj/screen/meter_component/New(var/obj/screen/meter/newparent)
 	parent = newparent
 	parent.C.screen += src
 	update_total()
 	.=..()
 
-/obj/screen/healthbar_component/Destroy()
+/obj/screen/meter_component/Destroy()
 	if (parent && parent.C)
 		parent.C.screen -= src
 	.=..()
 
 
+/obj/screen/meter_component/proc/update()
+
 //Sets a new size in pixels
-/obj/screen/healthbar_component/proc/set_size(var/newsize)
+/obj/screen/meter_component/proc/set_size(var/newsize)
 	if (!newsize)
 		alpha = 0
 		return
@@ -271,7 +300,7 @@
 	animate(src, transform = M,  time = animate_time)
 
 
-/obj/screen/healthbar_component/proc/update_total()
+/obj/screen/meter_component/proc/update_total()
 	if (parent)
 		set_size(parent.length)
 
@@ -279,8 +308,7 @@
 /*
 	Health
 */
-
-/obj/screen/healthbar_component/health
+/obj/screen/meter_component/current
 	layer = HUD_ABOVE_ITEM_LAYER	//This must draw above the delta
 	color = COLOR_NT_RED
 	animate_time = 0.3 SECOND
@@ -289,7 +317,7 @@
 /*
 	Limit
 */
-/obj/screen/healthbar_component/limit
+/obj/screen/meter_component/limit
 	color = COLOR_GRAY40
 	side = 1
 
@@ -297,7 +325,7 @@
 /*
 	Delta
 */
-/obj/screen/healthbar_component/delta
+/obj/screen/meter_component/delta
 	color = COLOR_AMBER
 	var/head_health = 0	//What health value is the tip of the delta meter currently showing
 	var/ticks_per_second = 2
@@ -316,27 +344,27 @@
 
 	var/health_per_tick = 10
 
-/obj/screen/healthbar_component/delta/New(var/obj/screen/healthbar/newparent)
+/obj/screen/meter_component/delta/New(var/obj/screen/meternewparent)
 	.=..()
-	head_health = parent.total_health
+	head_health = parent.total_value
 	animate_time = (1 SECOND / ticks_per_second)
-	health_per_tick = (parent.total_health * 0.065)/ticks_per_second
+	health_per_tick = (parent.total_value * 0.065)/ticks_per_second
 
 
-/obj/screen/healthbar_component/delta/update_total()
-	head_health = parent.current_health
+/obj/screen/meter_component/delta/update_total()
+	head_health = parent.current_value
 	animate_time = (1 SECOND / ticks_per_second)
 	alpha = 0
-	health_per_tick = (parent.total_health * 0.1)/ticks_per_second
+	health_per_tick = (parent.total_value * 0.1)/ticks_per_second
 
 //Delta works very differently
-/obj/screen/healthbar_component/delta/proc/update()
+/obj/screen/meter_component/delta/update()
 	if (!parent)
 		return
 
 
 	//If the necromorph has suddenly been healed exactly to, or above the damage we're trying to show, we just abort all animation
-	if (parent.current_health >= head_health)
+	if (parent.current_value >= head_health)
 		stop_animation()
 		return
 
@@ -346,7 +374,7 @@
 	if (animation_state == 0)
 		start_animation()
 
-/obj/screen/healthbar_component/delta/proc/start_animation()
+/obj/screen/meter_component/delta/proc/start_animation()
 	set waitfor = FALSE
 	alpha = initial(alpha)
 	//Gotta do this in the right order
@@ -357,7 +385,7 @@
 	animation_state = 1
 
 	//Immediately update the bar to the current head
-	set_size((head_health / parent.total_health) * parent.length)
+	set_size((head_health / parent.total_value) * parent.length)
 
 
 
@@ -378,7 +406,7 @@
 	ongoing_animation()
 
 //Here we animate and move each tick until we
-/obj/screen/healthbar_component/delta/proc/ongoing_animation()
+/obj/screen/meter_component/delta/proc/ongoing_animation()
 	set waitfor = FALSE
 
 	//Gotta do this in the right order
@@ -389,21 +417,21 @@
 	animation_state = 2
 
 	//Here we will animate periodically towards a target value
-	while (parent && head_health > parent.current_health && animation_state == 2)
-		var/delta = min(health_per_tick, head_health - parent.current_health)
+	while (parent && head_health > parent.current_value && animation_state == 2)
+		var/delta = min(health_per_tick, head_health - parent.current_value)
 		head_health -= delta
-		set_size((head_health / parent.total_health) * parent.length)
+		set_size((head_health / parent.total_value) * parent.length)
 		sleep(animate_time)
 
 	//Once we're done, reset animation state
 	stop_animation()
 
 //Terminates any ongoing animation
-/obj/screen/healthbar_component/delta/proc/stop_animation()
+/obj/screen/meter_component/delta/proc/stop_animation()
 	animation_state = 0
-	head_health = parent.current_health
+	head_health = parent.current_value
 
-	set_size((head_health / parent.total_health) * parent.length)
+	set_size((head_health / parent.total_value) * parent.length)
 
 	alpha = 0
 
@@ -413,53 +441,35 @@
 /*
 	Text
 */
-/obj/screen/healthbar_component/text
+/obj/screen/meter_component/text
 	icon_state = ""
 	layer = HUD_TEXT_LAYER
 
-/obj/screen/healthbar_component/text/update_total()
+/obj/screen/meter_component/text/update_total()
 	if (parent)
 		set_size(parent.length)
 		maptext_width = parent.length
 		maptext_height = 16
 		maptext_y = 17
-		maptext = "[Ceiling(parent.current_health)]/[parent.total_health]"
+		maptext = "[round(parent.current_value, parent.rounding)]/[parent.total_value]"
 
-/obj/screen/healthbar_component/text/set_size()
+/obj/screen/meter_component/text/set_size()
 	return
 
 
 
+//Helpers
+/mob/proc/add_meter(var/meter_type)
+	var/obj/screen/meter/M = new meter_type()
+	/*
+	if (hud_used)
+		var/datum/hud/H = hud_used
+		H.hud_elements += M
+	*/
 
+	if (client)
+		client.add_to_screen(M)
 
-
-
-
-/*
-	This examines the mob and returns a report in this format:
-	list("key" = numbervalue)
-
-	The keys:
-	"max": The mob's maximum health
-	"damage": The total of damage taken
-	"blocked": The total of health which is unrecoverable, limiting the max
-*/
-/mob/living/proc/get_health_report()
-	return list ("max" = max_health, "damage" = 0, "blocked" = lasting_damage)
-
-/mob/living/simple_animal/get_health_report()
-	return list ("max" = max_health, "damage" = max_health - health, "blocked" = lasting_damage)
-
-/mob/living/carbon/human/get_health_report()
-	return species.get_health_report(src)
-
-
-/datum/species/proc/get_health_report(var/mob/living/carbon/human/H)
-	return list ("max" = total_health, "damage" = 0, "blocked" = H.lasting_damage)
-
-/datum/species/necromorph/get_health_report(var/mob/living/carbon/human/H)
-	var/list/things = get_weighted_total_limb_damage(H, TRUE)
-	things["max"] = total_health
-	return things
+	return M
 
 

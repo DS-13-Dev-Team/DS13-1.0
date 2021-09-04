@@ -18,6 +18,12 @@
 	var/biomass = 0	//How much biomass one unit of this reagent is worth.
 	//Since biomass is measured in kg, and one reagent unit is 10ml, this value should usually not be above 0.01
 
+	/*
+		The higher the volume of a chemical in the body, the faster it metabolises.
+		Each volume unit adds this percent bonus to the metabolism rate.
+	*/
+	var/volume_metabolism_mult	=	0.05
+
 	var/glass_icon = DRINK_ICON_DEFAULT
 	var/glass_name = "something"
 	var/glass_desc = "It's a glass of... what, exactly?"
@@ -32,6 +38,12 @@
 	var/gas_overlay = "generic"
 	// END GAS DATA
 
+
+	//If true, this extension is applied to the mob while they have any quantity of this reagent in their system
+	var/extension_type
+	var/datum/extension/reagent/effect_extension
+
+
 /datum/reagent/New(var/datum/reagents/holder)
 	if(!istype(holder) && holder != TRUE)
 		CRASH("Invalid reagents holder: [log_info_line(holder)]")
@@ -40,6 +52,16 @@
 
 /datum/reagent/get_biomass()
 	return biomass*volume
+
+//Called to change (generally adding to) the volume of this reagent. It is called FROM a reagent holder so it doesn't need to callback to that
+/datum/reagent/proc/modify_volume(var/amount, var/newdata)
+
+	if (newdata)
+		mix_data(newdata, amount)
+	volume += amount
+	if (effect_extension && amount > 0)
+		effect_extension.volume_increased()
+
 
 /datum/reagent/proc/remove_self(var/amount) // Shortcut
 	holder.remove_reagent(type, amount)
@@ -72,10 +94,15 @@
 		removed = touch_met
 	removed = M.get_adjusted_metabolism(removed)
 
+	//Adjust for volume, large volumes infuse faster into the patient
+	removed *= 1 + (volume * volume_metabolism_mult)
+
 	//adjust effective amounts - removed, dose, and max_dose - for mob size
 	var/effective = removed
 	if(!(flags & IGNORE_MOB_SIZE) && location != CHEM_TOUCH)
 		effective *= (MOB_MEDIUM/M.mob_size)
+
+
 
 	M.chem_doses[type] = M.chem_doses[type] + effective
 	if(effective >= (metabolism * 0.1) || effective >= 0.1) // If there's too little chemical, don't affect the mob, just remove it
@@ -104,12 +131,28 @@
 /datum/reagent/proc/overdose(var/mob/living/carbon/M, var/alien) // Overdose effect. Doesn't happen instantly.
 	M.add_chemical_effect(CE_TOXIN, 0.5)
 	M.adjustToxLoss(REM)
+	if (effect_extension)
+		effect_extension.overdose()
 	return
 
 /datum/reagent/proc/initialize_data(var/newdata) // Called when the reagent is created.
+
 	if(!isnull(newdata))
 		data = newdata
+	if (extension_type)
+		//Mobs only
+		var/mob/living/carbon/C = holder.my_atom
+		if (istype(C))
+			apply_extension(C)
+
 	return
+
+//This can be overridden if you want to do fancy things like applying a different effect to a crewman or a necro
+//Since this is called once when creating, you should only base such code on unchangeable factors like species
+/datum/reagent/proc/apply_extension(var/atom/target)
+
+	effect_extension = set_extension(target, extension_type, holder)
+	effect_extension.Initialize()
 
 /datum/reagent/proc/mix_data(var/newdata, var/newamount) // You have a reagent with data, and new reagent with its own data get added, how do you deal with that?
 	return
@@ -123,6 +166,10 @@
 
 /datum/reagent/Destroy() // This should only be called by the holder, so it's already handled clearing its references
 	holder = null
+	if (effect_extension)
+		effect_extension.reagent_expired()
+		effect_extension = null	//The extension will continue to exist if it wants to, but its not our responsibility anymore.
+		//It is set free to clean itself up. we just null our reference to it to conclude our business
 	. = ..()
 
 /* DEPRECATED - TODO: REMOVE EVERYWHERE */

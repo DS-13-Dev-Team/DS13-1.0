@@ -47,11 +47,11 @@
 	var/gen_relations_info
 
 	var/assigned_role
+	var/datum/job/assigned_job
 	var/special_role
 
 	var/role_alt_title
 
-	var/datum/job/assigned_job
 
 	var/list/datum/objective/objectives = list()
 	var/list/datum/objective/special_verbs = list()
@@ -214,6 +214,7 @@
 		var/datum/job/job = job_master.occupations_by_title[new_role]
 		if(job)
 			assigned_role = job.title
+			assigned_job = job
 			role_alt_title = new_role
 			if(current)
 				current.skillset.obtain_from_client(job, current.client)

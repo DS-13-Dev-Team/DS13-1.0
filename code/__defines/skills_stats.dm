@@ -35,3 +35,10 @@
 #define STATMOD_ATTACK_SPEED "attack speed"
 #define STATMOD_EVASION "evasion"
 #define STATMOD_VIEW_RANGE "vision range"
+#define STATMOD_HEALTH "health"
+#define STATMOD_SCALE "scale"
+#define STATMOD_CONVERSION_COMPATIBILITY	"conversion compatibility"
+#define STATMOD_LAYER	"layer"
+
+//Resource Defines
+#define RESOURCE_ESSENCE	/datum/extension/resource/essence

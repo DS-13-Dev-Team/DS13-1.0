@@ -230,6 +230,9 @@ var/const/FALLOFF_SOUNDS = 0.5
 	to stop
 	mysound.stop()
 	mysound = null (It will qdel itself)
+
+	Pass in a list of soundfiles and one of them will be randomly picked in each iteration.
+	They should probably all be around the same length, or at least all <= the smallest interval
 */
 /datum/repeating_sound
 	//The atom we play the sound from, but we'll use a weak reference instead of holding it in memory
@@ -246,6 +249,7 @@ var/const/FALLOFF_SOUNDS = 0.5
 	var/variance
 
 	var/soundin
+	var/list/soundlist
 	var/vol
 	var/vary
 	var/extrarange
@@ -263,6 +267,8 @@ var/const/FALLOFF_SOUNDS = 0.5
 	interval = _interval
 	variance = interval_variance
 	soundin = _soundin
+	if (islist(_soundin))
+		soundlist = _soundin
 	vol = _vol
 	vary = _vary
 	extrarange = _extrarange
@@ -291,7 +297,13 @@ var/const/FALLOFF_SOUNDS = 0.5
 		return
 
 	//Actually play the sound
-	playsound(playfrom, soundin, vol, vary, null, falloff, is_global, extrarange)
+	var/spath = soundin
+	world << "Picking spath [spath] 1"
+	if (soundlist)
+
+		spath = pick(soundlist)
+		world << "Picking spath [spath] 2"
+	playsound(playfrom, spath, vol, vary, extrarange, falloff, is_global)
 
 	//Setup the next sound
 	var/nextinterval = interval

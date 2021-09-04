@@ -102,7 +102,10 @@
 
 	return opposites
 
-
+/proc/unmount(var/thing)
+	var/datum/extension/mount/M = get_extension(thing, /datum/extension/mount)
+	if (M)
+		M.dismount()
 
 
 
