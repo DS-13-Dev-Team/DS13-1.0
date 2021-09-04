@@ -287,7 +287,7 @@ Ccomp's first proc.
 	var/list/ghosts = list()
 	var/list/sortmob = sortAtom(SSmobs.mob_list)                           // get the mob list.
 	var/any=0
-	for(var/mob/observer/ghost/M in sortmob)
+	for(var/mob/dead/observer/ghost/M in sortmob)
 		mobs.Add(M)                                             //filter it where it's only ghosts
 		any = 1                                                 //if no ghosts show up, any will just be 0
 	if(!any)
@@ -305,7 +305,7 @@ Ccomp's first proc.
 
 /client/proc/get_ghosts_by_key()
 	. = list()
-	for(var/mob/observer/ghost/M in SSmobs.mob_list)
+	for(var/mob/dead/observer/ghost/M in SSmobs.mob_list)
 		.[M.ckey] = M
 	. = sortAssoc(.)
 
@@ -318,7 +318,7 @@ Ccomp's first proc.
 		return
 
 	var/list/ghosts = get_ghosts_by_key()
-	var/mob/observer/ghost/G = ghosts[selection]
+	var/mob/dead/observer/ghost/G = ghosts[selection]
 	if(!istype(G))
 		to_chat(src, "<span class='warning'>[selection] no longer has an associated ghost.</span>")
 		return
@@ -358,8 +358,8 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 	var/client/targetclient
 
-	var/mob/observer/ghost/G_found
-	for(var/mob/observer/ghost/G in GLOB.player_list)
+	var/mob/dead/observer/ghost/G_found
+	for(var/mob/dead/observer/ghost/G in GLOB.player_list)
 		if(G.ckey == input)
 			G_found = G
 			targetclient = G.client

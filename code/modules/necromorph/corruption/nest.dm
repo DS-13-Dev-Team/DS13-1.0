@@ -229,7 +229,7 @@
 	L.biomass = 0	//This won't give anything when slain
 	return L
 
-/obj/structure/corruption_node/nest/attack_signal(var/mob/observer/eye/signal/user)
+/obj/structure/corruption_node/nest/attack_signal(var/mob/dead/observer/eye/signal/user)
 	if (is_marker_master(user))
 		upgrade_spawner(user)
 	else

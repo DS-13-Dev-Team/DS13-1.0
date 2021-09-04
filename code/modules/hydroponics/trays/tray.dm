@@ -131,7 +131,7 @@
 		return 1
 	return ..()
 
-/obj/machinery/portable_atmospherics/hydroponics/attack_ghost(var/mob/observer/ghost/user)
+/obj/machinery/portable_atmospherics/hydroponics/attack_ghost(var/mob/dead/observer/ghost/user)
 	if(!(harvest && seed && seed.has_mob_product))
 		return
 

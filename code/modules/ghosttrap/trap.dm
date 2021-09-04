@@ -36,7 +36,7 @@ var/list/ghost_traps
 	..()
 
 // Check for bans, proper atom types, etc.
-/datum/ghosttrap/proc/assess_candidate(var/mob/observer/ghost/candidate, var/mob/target, var/feedback = TRUE)
+/datum/ghosttrap/proc/assess_candidate(var/mob/dead/observer/ghost/candidate, var/mob/target, var/feedback = TRUE)
 	if(!candidate.MayRespawn(1, minutes_since_death))
 		return 0
 	if(islist(ban_checks))
@@ -55,7 +55,7 @@ var/list/ghost_traps
 	else
 		unregister_target(target)
 
-	for(var/mob/observer/ghost/O in GLOB.player_list)
+	for(var/mob/dead/observer/ghost/O in GLOB.player_list)
 		if(!assess_candidate(O, target, FALSE))
 			return
 		if(pref_check && !O.client.wishes_to_be_role(pref_check))
@@ -72,7 +72,7 @@ var/list/ghost_traps
 	if(..())
 		return 1
 	if(href_list["candidate"] && href_list["target"])
-		var/mob/observer/ghost/candidate = locate(href_list["candidate"]) // BYOND magic.
+		var/mob/dead/observer/ghost/candidate = locate(href_list["candidate"]) // BYOND magic.
 		var/mob/target = locate(href_list["target"])                     // So much BYOND magic.
 		if(!target || !candidate)
 			return
@@ -173,7 +173,7 @@ var/list/ghost_traps
 	minutes_since_death = DRONE_SPAWN_DELAY
 	..()
 
-datum/ghosttrap/drone/assess_candidate(var/mob/observer/ghost/candidate, var/mob/target)
+datum/ghosttrap/drone/assess_candidate(var/mob/dead/observer/ghost/candidate, var/mob/target)
 	. = ..()
 	if(. && !target.can_be_possessed_by(candidate))
 		return 0
@@ -192,7 +192,7 @@ datum/ghosttrap/drone/transfer_personality(var/mob/candidate, var/mob/living/sil
 	ghost_trap_message = "They are occupying a pAI now."
 	ghost_trap_role = "pAI"
 
-datum/ghosttrap/pai/assess_candidate(var/mob/observer/ghost/candidate, var/mob/target)
+datum/ghosttrap/pai/assess_candidate(var/mob/dead/observer/ghost/candidate, var/mob/target)
 	return 0
 
 datum/ghosttrap/pai/transfer_personality(var/mob/candidate, var/mob/living/silicon/robot/drone/drone)

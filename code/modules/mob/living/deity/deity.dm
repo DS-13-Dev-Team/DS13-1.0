@@ -8,7 +8,7 @@
 	health = 100
 	max_health = 100 //I dunno what to do with health at this point.
 	universal_understand = 1
-	var/eye_type = /mob/observer/eye/cult
+	var/eye_type = /mob/dead/observer/eye/cult
 	var/list/minions = list() //Minds of those who follow him
 	var/list/structures = list() //The objs that this dude controls.
 	var/list/feats = list()

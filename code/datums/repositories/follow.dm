@@ -140,7 +140,7 @@
 
 /datum/follow_holder/eye
 	sort_order = 0
-	followed_type = /mob/observer/eye
+	followed_type = /mob/dead/observer/eye
 	suffix = "Eye"
 
 /datum/follow_holder/ai
@@ -185,7 +185,7 @@
 
 /datum/follow_holder/ghost
 	sort_order = 5
-	followed_type = /mob/observer/ghost
+	followed_type = /mob/dead/observer/ghost
 	suffix = "Ghost"
 
 /datum/follow_holder/simple_animal

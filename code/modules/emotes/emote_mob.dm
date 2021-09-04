@@ -146,6 +146,6 @@
 /mob/living/captive_brain/emote(var/message)
 	return
 
-/mob/observer/ghost/emote(var/act, var/type, var/message)
+/mob/dead/observer/ghost/emote(var/act, var/type, var/message)
 	if(message && act == "me")
 		communicate(/decl/communication_channel/dsay, client, message, null, /decl/dsay_communication/emote)

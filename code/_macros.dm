@@ -31,7 +31,7 @@
 
 #define is_drone(A) istype(A, /mob/living/silicon/robot/drone)
 
-#define isEye(A) istype(A, /mob/observer/eye)
+#define isEye(A) istype(A, /mob/dead/observer/eye)
 
 #define ishuman(A) istype(A, /mob/living/carbon/human)
 
@@ -45,13 +45,13 @@
 
 #define ismovable(A) istype(A, /atom/movable)
 
-#define isnewplayer(A) istype(A, /mob/new_player)
+#define isnewplayer(A) istype(A, /mob/dead/new_player)
 
 #define isobj(A) istype(A, /obj)
 
-#define isghost(A) istype(A, /mob/observer/ghost)
+#define isghost(A) istype(A, /mob/dead/observer/ghost)
 
-#define isobserver(A) istype(A, /mob/observer)
+#define isobserver(A) istype(A, /mob/dead/observer)
 
 #define isorgan(A) istype(A, /obj/item/organ/external)
 
@@ -59,7 +59,7 @@
 
 #define isrig(A)	istype(A, /obj/item/weapon/rig)
 
-#define issignal(A) istype(A, /mob/observer/eye/signal)
+#define issignal(A) istype(A, /mob/dead/observer/eye/signal)
 
 #define isstack(A) istype(A, /obj/item/stack)
 
@@ -79,7 +79,7 @@
 
 #define isunderwear(A) istype(A, /obj/item/underwear)
 
-#define isvirtualmob(A) istype(A, /mob/observer/virtual)
+#define isvirtualmob(A) istype(A, /mob/dead/observer/virtual)
 
 #define isweakref(A) istype(A, /weakref)
 

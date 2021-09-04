@@ -241,7 +241,7 @@
 			type = MESSAGE_TYPE_RADIO,
 			html = "[part_a][speaker_name][part_b][formatted][part_c]")
 
-/mob/observer/ghost/on_hear_radio(part_a, speaker_name, track, part_b, part_c, formatted)
+/mob/dead/observer/ghost/on_hear_radio(part_a, speaker_name, track, part_b, part_c, formatted)
 	to_chat(src,
 			type = MESSAGE_TYPE_RADIO,
 			html = "[part_a][track][part_b][formatted][part_c]")

@@ -165,7 +165,7 @@ var/global/list/additional_antag_types = list()
 // Returns 0 if the mode can start and a message explaining the reason why it can't otherwise.
 /datum/game_mode/proc/startRequirements()
 	var/playerC = 0
-	for(var/mob/new_player/player in GLOB.player_list)
+	for(var/mob/dead/new_player/player in GLOB.player_list)
 		if((player.client)&&(player.ready))
 			playerC++
 
@@ -474,7 +474,7 @@ var/global/list/additional_antag_types = list()
 		for(var/mob/player in GLOB.player_list)
 			if(!player.client)
 				continue
-			if(istype(player, /mob/new_player))
+			if(istype(player, /mob/dead/new_player))
 				continue
 			if(!antag_id || (antag_id in player.client.prefs.be_special_role))
 				log_debug("[player.key] had [antag_id] enabled, so we are drafting them.")
@@ -482,12 +482,12 @@ var/global/list/additional_antag_types = list()
 
 	else
 		// Assemble a list of active players without jobbans.
-		for(var/mob/new_player/player in GLOB.player_list)
+		for(var/mob/dead/new_player/player in GLOB.player_list)
 			if( player.client && player.ready )
 				players += player
 
 		// Get a list of all the people who want to be the antagonist for this round
-		for(var/mob/new_player/player in players)
+		for(var/mob/dead/new_player/player in players)
 			if(!antag_id || (antag_id in player.client.prefs.be_special_role))
 				log_debug("[player.key] had [antag_id] enabled, so we are drafting them.")
 				candidates += player.mind
@@ -495,7 +495,7 @@ var/global/list/additional_antag_types = list()
 
 		// If we don't have enough antags, draft people who voted for the round.
 		if(candidates.len < max(required_enemies, antag_template.initial_spawn_target))
-			for(var/mob/new_player/player in players)
+			for(var/mob/dead/new_player/player in players)
 				if(!antag_id || (antag_id in player.client.prefs.be_special_role))
 					log_debug("[player.key] has not selected never for this role, so we are drafting them.")
 					candidates += player.mind
@@ -509,7 +509,7 @@ var/global/list/additional_antag_types = list()
 
 /datum/game_mode/proc/num_players()
 	. = 0
-	for(var/mob/new_player/P in GLOB.player_list)
+	for(var/mob/dead/new_player/P in GLOB.player_list)
 		if(P.client && P.ready)
 			. ++
 
@@ -572,7 +572,7 @@ proc/display_roundstart_logout_report()
 					continue //Dead
 
 			continue //Happy connected client
-		for(var/mob/observer/ghost/D in SSmobs.mob_list)
+		for(var/mob/dead/observer/ghost/D in SSmobs.mob_list)
 			if(D.mind && (D.mind.original == L || D.mind.current == L))
 				if(L.stat == DEAD)
 					msg += "<b>[L.name]</b> ([ckey(D.mind.key)]), the [L.job] (Dead)\n"

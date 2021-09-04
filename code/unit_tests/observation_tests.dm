@@ -101,7 +101,7 @@
 /datum/unit_test/observation/moved_observer_shall_register_on_follow/conduct_test()
 	var/turf/T = get_safe_turf()
 	var/mob/living/carbon/human/H = get_named_instance(/mob/living/carbon/human, T, SPECIES_HUMAN)
-	var/mob/observer/ghost/O = get_named_instance(/mob/observer/ghost, T, "Ghost")
+	var/mob/dead/observer/ghost/O = get_named_instance(/mob/dead/observer/ghost, T, "Ghost")
 
 	O.ManualFollow(H)
 	if(is_listening_to_movement(H, O))
@@ -119,7 +119,7 @@
 /datum/unit_test/observation/moved_observer_shall_unregister_on_nofollow/conduct_test()
 	var/turf/T = get_safe_turf()
 	var/mob/living/carbon/human/H = get_named_instance(/mob/living/carbon/human, T, SPECIES_HUMAN)
-	var/mob/observer/ghost/O = get_named_instance(/mob/observer/ghost, T, "Ghost")
+	var/mob/dead/observer/ghost/O = get_named_instance(/mob/dead/observer/ghost, T, "Ghost")
 
 	O.ManualFollow(H)
 	O.stop_following()
@@ -160,7 +160,7 @@
 	var/turf/T = get_safe_turf()
 	var/mob/living/carbon/human/H = get_named_instance(/mob/living/carbon/human, T, SPECIES_HUMAN)
 	var/obj/structure/closet/C = get_named_instance(/obj/structure/closet, T, "Closet")
-	var/mob/observer/ghost/O = get_named_instance(/mob/observer/ghost, T, "Ghost")
+	var/mob/dead/observer/ghost/O = get_named_instance(/mob/dead/observer/ghost, T, "Ghost")
 
 	H.forceMove(C)
 	O.ManualFollow(H)
@@ -183,7 +183,7 @@
 	var/turf/T = get_safe_turf()
 	var/mob/living/carbon/human/H = get_named_instance(/mob/living/carbon/human, T, SPECIES_HUMAN)
 	var/obj/structure/closet/C = get_named_instance(/obj/structure/closet, T, "Closet")
-	var/mob/observer/ghost/O = get_named_instance(/mob/observer/ghost, T, "Ghost")
+	var/mob/dead/observer/ghost/O = get_named_instance(/mob/dead/observer/ghost, T, "Ghost")
 
 	O.ManualFollow(H)
 	H.forceMove(C)
@@ -247,9 +247,9 @@
 
 /datum/unit_test/observation/moved_shall_not_unregister_recursively_one/conduct_test()
 	var/turf/T = get_safe_turf()
-	var/mob/observer/ghost/one = get_named_instance(/mob/observer/ghost, T, "Ghost One")
-	var/mob/observer/ghost/two = get_named_instance(/mob/observer/ghost, T, "Ghost Two")
-	var/mob/observer/ghost/three = get_named_instance(/mob/observer/ghost, T, "Ghost Three")
+	var/mob/dead/observer/ghost/one = get_named_instance(/mob/dead/observer/ghost, T, "Ghost One")
+	var/mob/dead/observer/ghost/two = get_named_instance(/mob/dead/observer/ghost, T, "Ghost Two")
+	var/mob/dead/observer/ghost/three = get_named_instance(/mob/dead/observer/ghost, T, "Ghost Three")
 
 	two.ManualFollow(one)
 	three.ManualFollow(two)
@@ -271,9 +271,9 @@
 
 /datum/unit_test/observation/moved_shall_not_unregister_recursively_two/conduct_test()
 	var/turf/T = get_safe_turf()
-	var/mob/observer/ghost/one = get_named_instance(/mob/observer/ghost, T, "Ghost One")
-	var/mob/observer/ghost/two = get_named_instance(/mob/observer/ghost, T, "Ghost Two")
-	var/mob/observer/ghost/three = get_named_instance(/mob/observer/ghost, T, "Ghost Three")
+	var/mob/dead/observer/ghost/one = get_named_instance(/mob/dead/observer/ghost, T, "Ghost One")
+	var/mob/dead/observer/ghost/two = get_named_instance(/mob/dead/observer/ghost, T, "Ghost Two")
+	var/mob/dead/observer/ghost/three = get_named_instance(/mob/dead/observer/ghost, T, "Ghost Three")
 
 	two.ManualFollow(one)
 	three.ManualFollow(two)

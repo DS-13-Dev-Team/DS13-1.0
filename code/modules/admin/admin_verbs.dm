@@ -548,7 +548,7 @@ var/list/admin_verbs_mentor = list(
 	if(!holder)	return
 	if(isghost(mob))
 		//re-enter
-		var/mob/observer/ghost/ghost = mob
+		var/mob/dead/observer/ghost/ghost = mob
 		if(!is_mentor(usr.client))
 			ghost.can_reenter_corpse = 1
 		if(ghost.can_reenter_corpse)
@@ -559,12 +559,12 @@ var/list/admin_verbs_mentor = list(
 
 		feedback_add_details("admin_verb","P") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-	else if(istype(mob,/mob/new_player))
+	else if(istype(mob,/mob/dead/new_player))
 		to_chat(src, "<font color='red'>Error: Aghost: Can't admin-ghost whilst in the lobby. Join or Observe first.</font>")
 	else
 		//ghostize
 		var/mob/body = mob
-		var/mob/observer/ghost/ghost = body.ghostize(1)
+		var/mob/dead/observer/ghost/ghost = body.ghostize(1)
 		if (istype(ghost))
 			ghost.admin_ghosted = 1
 		if(body)

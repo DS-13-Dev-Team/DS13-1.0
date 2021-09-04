@@ -296,7 +296,7 @@ var/global/datum/controller/gameticker/ticker
 
 
 	proc/create_characters()
-		for(var/mob/new_player/player in GLOB.player_list)
+		for(var/mob/dead/new_player/player in GLOB.player_list)
 			if(player && player.ready && player.mind)
 				if(player.mind.assigned_role=="AI")
 					player.close_spawn_windows()
@@ -327,7 +327,7 @@ var/global/datum/controller/gameticker/ticker
 					equip_loadout(player, player.mind.assigned_role, player.client.prefs)
 		if(captainless)
 			for(var/mob/M in GLOB.player_list)
-				if(!istype(M,/mob/new_player))
+				if(!istype(M,/mob/dead/new_player))
 					to_chat(M, "Captainship not forced on anyone.")
 
 
@@ -443,7 +443,7 @@ var/global/datum/controller/gameticker/ticker
 					to_chat(Player, "<font color='blue'><b>You got through just another workday on [station_name()] as [Player.real_name].</b></font>")
 			else
 				if(isghost(Player))
-					var/mob/observer/ghost/O = Player
+					var/mob/dead/observer/ghost/O = Player
 					if(!O.started_as_observer)
 						to_chat(Player, "<font color='red'><b>You did not survive the events on [station_name()]...</b></font>")
 				else

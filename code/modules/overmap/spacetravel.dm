@@ -26,7 +26,7 @@ var/list/cached_space = list()
 	testing(message)
 #endif
 
-/obj/effect/overmap/sector/temporary/proc/can_die(var/mob/observer)
+/obj/effect/overmap/sector/temporary/proc/can_die(var/mob/dead/observer)
 	testing("Checking if sector at [map_z[1]] can die.")
 	for(var/mob/M in GLOB.player_list)
 		if(M != observer && (M.z in map_z))

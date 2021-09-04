@@ -266,7 +266,7 @@
 		log_and_message_admins("has used rudimentary transformation on [key_name_admin(M)]. Transforming to [href_list["simplemake"]]; deletemob=[delmob]")
 
 		switch(href_list["simplemake"])
-			if("observer")			M.change_mob_type( /mob/observer/ghost , null, null, delmob )
+			if("observer")			M.change_mob_type( /mob/dead/observer/ghost , null, null, delmob )
 			if("larva")				M.change_mob_type( /mob/living/carbon/alien/larva , null, null, delmob )
 			if("nymph")				M.change_mob_type( /mob/living/carbon/alien/diona , null, null, delmob )
 			if("human")				M.change_mob_type( /mob/living/carbon/human , null, null, delmob, href_list["species"])
@@ -1116,7 +1116,7 @@
 		log_admin("[key_name(usr)] has sent [key_name(M)] back to the Lobby.")
 		message_admins("[key_name(usr)] has sent [key_name(M)] back to the Lobby.")
 
-		var/mob/new_player/NP = new /mob/new_player()
+		var/mob/dead/new_player/NP = new /mob/dead/new_player()
 		NP.key = M.ckey
 		qdel(M)
 
@@ -1270,8 +1270,8 @@
 		if(!check_rights(R_SPAWN))	return
 
 		var/mob/M = locate(href_list["makeanimal"])
-		if(istype(M, /mob/new_player))
-			to_chat(usr, "This cannot be used on instances of type /mob/new_player")
+		if(istype(M, /mob/dead/new_player))
+			to_chat(usr, "This cannot be used on instances of type /mob/dead/new_player")
 			return
 
 		usr.client.cmd_admin_animalize(M)
@@ -1317,7 +1317,7 @@
 			return
 
 		if(!isobserver(usr))	C.admin_ghost()
-		var/mob/observer/ghost/G = C.mob
+		var/mob/dead/observer/ghost/G = C.mob
 		if(istype(G))
 			sleep(2)
 			G.ManualFollow(M)
@@ -2073,7 +2073,7 @@ mob/living/silicon/ai/can_centcom_reply()
 	if(client && eyeobj)
 		. += "<A HREF='?[source];adminplayerobservefollow=\ref[eyeobj]'>[prefix][short_links ? "E" : "EYE"][sufix]</A>"
 
-/mob/observer/ghost/extra_admin_link(var/source, var/prefix, var/sufix, var/short_links)
+/mob/dead/observer/ghost/extra_admin_link(var/source, var/prefix, var/sufix, var/short_links)
 	. = ..()
 	if(mind && (mind.current && !isghost(mind.current)))
 		. += "<A HREF='?[source];adminplayerobservefollow=\ref[mind.current]'>[prefix][short_links ? "B" : "BDY"][sufix]</A>"

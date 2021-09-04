@@ -256,7 +256,7 @@
 	if(player.special_role && !isghostmind(player))
 		log_debug("[player.key] was selected for [role_text] by lottery, but they already have a special role.")
 		return 0
-	if(!(flags & ANTAG_OVERRIDE_JOB) && (!player.current || istype(player.current, /mob/new_player)))
+	if(!(flags & ANTAG_OVERRIDE_JOB) && (!player.current || istype(player.current, /mob/dead/new_player)))
 		log_debug("[player.key] was selected for [role_text] by lottery, but they have not joined the game.")
 		return 0
 	if(ticker.current_state >= GAME_STATE_PLAYING && (isghostmind(player) || isnewplayer(player.current)) && !(player.ghost_role_valid()))

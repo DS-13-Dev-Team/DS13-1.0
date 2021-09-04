@@ -65,7 +65,7 @@ var/global/floorIsLava = 0
 		body += " played by <b>[M.client]</b> "
 		body += "\[<A href='?src=\ref[src];editrights=show'>[M.client.holder ? M.client.holder.rank : "Player"]</A>\]"
 
-	if(istype(M, /mob/new_player))
+	if(istype(M, /mob/dead/new_player))
 		body += " <B>Hasn't Entered Game</B> "
 	else
 		body += " \[<A href='?src=\ref[src];revive=\ref[M]'>Heal</A>\] "
@@ -117,7 +117,7 @@ var/global/floorIsLava = 0
 	"}
 
 	if (M.client)
-		if(!istype(M, /mob/new_player))
+		if(!istype(M, /mob/dead/new_player))
 			body += "<br><br>"
 			body += "<b>Transformation:</b>"
 			body += "<br>"
@@ -1050,7 +1050,7 @@ var/global/floorIsLava = 0
 
 //Returns 1 to let the dragdrop code know we are trapping this event
 //Returns 0 if we don't plan to trap the event
-/datum/admins/proc/cmd_ghost_drag(var/mob/observer/ghost/frommob, var/mob/living/tomob)
+/datum/admins/proc/cmd_ghost_drag(var/mob/dead/observer/ghost/frommob, var/mob/living/tomob)
 	if(!istype(frommob))
 		return //Extra sanity check to make sure only observers are shoved into things
 

@@ -37,7 +37,7 @@
 	var/name				//replaces mob/var/original_name
 	var/mob/living/current
 	var/mob/living/original	//Edit by Nanako, this value is now used and should not be removed
-	var/mob/observer/ghost	//When this mob is dead and floating around, this var holds the ghost mob who used to be its body
+	var/mob/dead/observer/ghost	//When this mob is dead and floating around, this var holds the ghost mob who used to be its body
 	var/active = 0
 
 	var/character_id	//The database ID of the associated character records for this mind. Used to fetch and store persistent data

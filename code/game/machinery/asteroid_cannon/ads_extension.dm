@@ -2,7 +2,7 @@
 /datum/extension/asteroidcannon
 	var/obj/structure/asteroidcannon/gun = null
 	var/mob/living/carbon/human/gunner = null
-	var/mob/observer/eye/turret/eyeobj = null
+	var/mob/dead/observer/eye/turret/eyeobj = null
 	var/datum/click_handler/gun/tracked/TCH
 	flags = EXTENSION_FLAG_IMMEDIATE
 
@@ -87,7 +87,7 @@
 	//gunner.vis_flags |= VIS_INHERIT_ID
 	//gun.vis_contents += gunner
 	gun.lead_distance = 1 //Gunners don't get hitscan...
-	eyeobj = new /mob/observer/eye/turret(get_turf(gun))
+	eyeobj = new /mob/dead/observer/eye/turret(get_turf(gun))
 	eyeobj.acceleration = FALSE
 	eyeobj.possess(gunner, gun)	//Pass in the gun with possess
 

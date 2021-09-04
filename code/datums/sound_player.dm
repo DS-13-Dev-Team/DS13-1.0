@@ -217,7 +217,7 @@ datum/sound_token/proc/Mute()
 
 /datum/sound_token/proc/PrivAddListener(var/atom/listener)
 	if(isvirtualmob(listener))
-		var/mob/observer/virtual/v = listener
+		var/mob/dead/observer/virtual/v = listener
 		if(!(v.abilities & VIRTUAL_ABILITY_HEAR))
 			return
 		listener = v.host

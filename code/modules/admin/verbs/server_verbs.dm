@@ -36,9 +36,9 @@
 		to_chat(src, "Only administrators may use this command.")
 	var/action=""
 	if(CONFIG_GET(flag/antag_hud_allowed))
-		for(var/mob/observer/ghost/g in get_ghosts())
+		for(var/mob/dead/observer/ghost/g in get_ghosts())
 			if(!g.client.holder)						//Remove the verb from non-admin ghosts
-				remove_verb(g, /mob/observer/ghost/verb/toggle_antagHUD)
+				remove_verb(g, /mob/dead/observer/ghost/verb/toggle_antagHUD)
 			if(g.antagHUD)
 				g.antagHUD = 0						// Disable it on those that have it enabled
 				g.has_enabled_antagHUD = 2				// We'll allow them to respawn
@@ -47,9 +47,9 @@
 		to_chat(src, "<span class='danger'>AntagHUD usage has been disabled</span>")
 		action = "disabled"
 	else
-		for(var/mob/observer/ghost/g in get_ghosts())
+		for(var/mob/dead/observer/ghost/g in get_ghosts())
 			if(!g.client.holder)						// Add the verb back for all non-admin ghosts
-				add_verb(g, /mob/observer/ghost/verb/toggle_antagHUD)
+				add_verb(g, /mob/dead/observer/ghost/verb/toggle_antagHUD)
 				to_chat(g, "<span class='notice'><B>The Administrator has enabled AntagHUD </B></span>")// Notify all observers they can now use AntagHUD
 
 		CONFIG_SET(flag/antag_hud_allowed, TRUE)
@@ -70,13 +70,13 @@
 		to_chat(src, "Only administrators may use this command.")
 	var/action=""
 	if(CONFIG_GET(flag/antag_hud_restricted))
-		for(var/mob/observer/ghost/g in get_ghosts())
+		for(var/mob/dead/observer/ghost/g in get_ghosts())
 			to_chat(g, "<span class='notice'><B>The administrator has lifted restrictions on joining the round if you use AntagHUD</B></span>")
 		action = "lifted restrictions"
 		CONFIG_SET(flag/antag_hud_restricted, FALSE)
 		to_chat(src, "<span class='notice'><B>AntagHUD restrictions have been lifted</B></span>")
 	else
-		for(var/mob/observer/ghost/g in get_ghosts())
+		for(var/mob/dead/observer/ghost/g in get_ghosts())
 			to_chat(g, "<span class='danger'>The administrator has placed restrictions on joining the round if you use AntagHUD</span>")
 			to_chat(g, "<span class='danger'>Your AntagHUD has been disabled, you may choose to re-enabled it but will be under restrictions</span>")
 			g.antagHUD = 0

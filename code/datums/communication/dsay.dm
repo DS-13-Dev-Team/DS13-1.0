@@ -74,7 +74,7 @@
 			name = realname
 
 	var/lname
-	var/mob/observer/ghost/DM
+	var/mob/dead/observer/ghost/DM
 	if(isghost(C.mob))
 		DM = C.mob
 	if(M.client.holder) 							// What admins see

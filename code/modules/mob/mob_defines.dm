@@ -7,7 +7,7 @@
 	animate_movement = 2
 	movable_flags = MOVABLE_FLAG_PROXMOVE
 
-	virtual_mob = /mob/observer/virtual/mob
+	virtual_mob = /mob/dead/observer/virtual/mob
 
 	movement_handlers = list(
 		/datum/movement_handler/mob/relayed_movement,

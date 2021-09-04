@@ -21,7 +21,7 @@
 	var/intercept = 0 //can intercept other channels
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
 	slot_flags = SLOT_BELT
-	
+
 	throw_range = 9
 	w_class = ITEM_SIZE_SMALL
 
@@ -188,7 +188,7 @@
 	var/obj/item/weapon/card/id/I = GetIdCard()
 	return has_access(list(), req_one_accesses, I ? I.GetAccess() : list())
 
-/mob/observer/ghost/has_internal_radio_channel_access(var/list/req_one_accesses)
+/mob/dead/observer/ghost/has_internal_radio_channel_access(var/list/req_one_accesses)
 	return can_admin_interact()
 
 /obj/item/device/radio/proc/text_wires()

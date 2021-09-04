@@ -1,14 +1,14 @@
-/mob/observer/ghost/var/ghost_magic_cd = 0
+/mob/dead/observer/ghost/var/ghost_magic_cd = 0
 
-/datum/antagonist/cultist/proc/add_ghost_magic(mob/observer/ghost/M)
+/datum/antagonist/cultist/proc/add_ghost_magic(mob/dead/observer/ghost/M)
 	if(max_cult_rating >= CULT_GHOSTS_1)
-		add_verb(M, list(/mob/observer/ghost/proc/flick_lights, /mob/observer/ghost/proc/bloody_doodle, /mob/observer/ghost/proc/shatter_glass, /mob/observer/ghost/proc/slice))
+		add_verb(M, list(/mob/dead/observer/ghost/proc/flick_lights, /mob/dead/observer/ghost/proc/bloody_doodle, /mob/dead/observer/ghost/proc/shatter_glass, /mob/dead/observer/ghost/proc/slice))
 		if(max_cult_rating >= CULT_GHOSTS_2)
-			add_verb(M, list(/mob/observer/ghost/proc/move_item,/mob/observer/ghost/proc/whisper_to_cultist,/mob/observer/ghost/proc/bite_someone,/mob/observer/ghost/proc/chill_someone))
+			add_verb(M, list(/mob/dead/observer/ghost/proc/move_item,/mob/dead/observer/ghost/proc/whisper_to_cultist,/mob/dead/observer/ghost/proc/bite_someone,/mob/dead/observer/ghost/proc/chill_someone))
 			if(max_cult_rating >= CULT_GHOSTS_3)
-				add_verb(M, list(/mob/observer/ghost/proc/whisper_to_anyone, /mob/observer/ghost/proc/bloodless_doodle, /mob/observer/ghost/proc/toggle_visiblity))
+				add_verb(M, list(/mob/dead/observer/ghost/proc/whisper_to_anyone, /mob/dead/observer/ghost/proc/bloodless_doodle, /mob/dead/observer/ghost/proc/toggle_visiblity))
 
-/mob/observer/ghost/proc/ghost_ability_check()
+/mob/dead/observer/ghost/proc/ghost_ability_check()
 	var/turf/T = get_turf(src)
 	if(T.holy)
 		to_chat(src, "<span class='notice'>You may not use your abilities on the blessed ground.</span>")
@@ -18,7 +18,7 @@
 		return 0
 	return 1
 
-/mob/observer/ghost/proc/flick_lights()
+/mob/dead/observer/ghost/proc/flick_lights()
 	set category = "Cult"
 	set name = "Flick lights"
 	set desc = "Flick some lights around you."
@@ -31,14 +31,14 @@
 
 	ghost_magic_cd = world.time + 30 SECONDS
 
-/mob/observer/ghost/proc/bloody_doodle()
+/mob/dead/observer/ghost/proc/bloody_doodle()
 	set category = "Cult"
 	set name = "Write in blood"
 	set desc = "Write a short message in blood on the floor or a wall. Remember, no IC in OOC or OOC in IC."
 
 	bloody_doodle_proc(0)
 
-/mob/observer/ghost/proc/bloody_doodle_proc(var/bloodless = 0)
+/mob/dead/observer/ghost/proc/bloody_doodle_proc(var/bloodless = 0)
 	if(!ghost_ability_check())
 		return
 
@@ -100,7 +100,7 @@
 
 	ghost_magic_cd = world.time + 30 SECONDS
 
-/mob/observer/ghost/proc/shatter_glass()
+/mob/dead/observer/ghost/proc/shatter_glass()
 	set category = "Cult"
 	set name = "Noise: glass shatter"
 	set desc = "Make a sound of glass being shattered."
@@ -112,7 +112,7 @@
 
 	ghost_magic_cd = world.time + 5 SECONDS
 
-/mob/observer/ghost/proc/slice()
+/mob/dead/observer/ghost/proc/slice()
 	set category = "Cult"
 	set name = "Noise: slice"
 	set desc = "Make a sound of a sword hit."
@@ -124,7 +124,7 @@
 
 	ghost_magic_cd = world.time + 5 SECONDS
 
-/mob/observer/ghost/proc/move_item()
+/mob/dead/observer/ghost/proc/move_item()
 	set category = "Cult"
 	set name = "Move item"
 	set desc = "Move a small item to where you are."
@@ -155,14 +155,14 @@
 
 	ghost_magic_cd = world.time + 60 SECONDS
 
-/mob/observer/ghost/proc/whisper_to_cultist()
+/mob/dead/observer/ghost/proc/whisper_to_cultist()
 	set category = "Cult"
 	set name = "Whisper to cultist"
 	set desc = "Whisper to a human of your choice. They won't understand you unless they're a cultist though."
 
 	whisper_proc()
 
-/mob/observer/ghost/proc/whisper_proc(var/anyone = 0)
+/mob/dead/observer/ghost/proc/whisper_proc(var/anyone = 0)
 	if(!ghost_ability_check())
 		return
 
@@ -190,7 +190,7 @@
 
 	ghost_magic_cd = world.time + 100 SECONDS
 
-/mob/observer/ghost/proc/bite_someone()
+/mob/dead/observer/ghost/proc/bite_someone()
 	set category = "Cult"
 	set name = "Bite"
 	set desc = "Bite or scratch someone."
@@ -218,7 +218,7 @@
 
 	ghost_magic_cd = world.time + 60 SECONDS
 
-/mob/observer/ghost/proc/chill_someone()
+/mob/dead/observer/ghost/proc/chill_someone()
 	set category = "Cult"
 	set name = "Chill"
 	set desc = "Pass through someone, making them feel the chill of afterlife for a moment."
@@ -246,21 +246,21 @@
 
 	ghost_magic_cd = world.time + 60 SECONDS
 
-/mob/observer/ghost/proc/whisper_to_anyone()
+/mob/dead/observer/ghost/proc/whisper_to_anyone()
 	set category = "Cult"
 	set name = "Whisper to mind"
 	set desc = "Whisper to a human of your choice."
 
 	whisper_proc(1)
 
-/mob/observer/ghost/proc/bloodless_doodle()
+/mob/dead/observer/ghost/proc/bloodless_doodle()
 	set category = "Cult"
 	set name = "Write in own blood"
 	set desc = "Write a short message in blood on the floor or a wall. You don't need blood nearby to use this."
 
 	bloody_doodle_proc(1)
 
-/mob/observer/ghost/proc/toggle_visiblity()
+/mob/dead/observer/ghost/proc/toggle_visiblity()
 	set category = "Cult"
 	set name = "Toggle Visibility"
 	set desc = "Allows you to become visible or invisible at will."

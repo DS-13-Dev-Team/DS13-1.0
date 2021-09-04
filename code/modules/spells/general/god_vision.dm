@@ -7,7 +7,7 @@
 	invocation = "none"
 	invocation_type = SpI_NONE
 
-	eye_type = /mob/observer/eye
+	eye_type = /mob/dead/observer/eye
 
 	hud_state = "gen_mind"
 

@@ -153,7 +153,7 @@
 		var/obj/O = o
 		O.show_message(message, AUDIBLE_MESSAGE, deaf_message, VISIBLE_MESSAGE)
 
-/mob/proc/add_ghost_track(var/message, var/mob/observer/ghost/M)
+/mob/proc/add_ghost_track(var/message, var/mob/dead/observer/ghost/M)
 	ASSERT(istype(M))
 
 	var/remote = ""
@@ -171,7 +171,7 @@
 	message = track + remote + " " + speaker_name  + message
 	return message
 
-/mob/proc/ghost_skip_message(var/mob/observer/ghost/M)
+/mob/proc/ghost_skip_message(var/mob/dead/observer/ghost/M)
 	ASSERT(istype(M))
 	if(M.get_preference_value(/datum/client_preference/ghost_sight) == GLOB.PREF_ALL_EMOTES && !(src in view(M)))
 		if(!client)
@@ -446,7 +446,7 @@
 	return
 */
 
-/mob/new_player/verb/observe()
+/mob/dead/new_player/verb/observe()
 	set name = "Observe"
 	set category = "OOC"
 
