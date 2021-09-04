@@ -1955,6 +1955,7 @@
 #include "code\modules\mob\transform_procs.dm"
 #include "code\modules\mob\typing_indicator.dm"
 #include "code\modules\mob\update_icons.dm"
+#include "code\modules\mob\dead\dead.dm"
 #include "code\modules\mob\dead\new_player\login.dm"
 #include "code\modules\mob\dead\new_player\logout.dm"
 #include "code\modules\mob\dead\new_player\new_player.dm"
