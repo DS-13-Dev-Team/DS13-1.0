@@ -239,15 +239,11 @@ STATMOD_LAYER	=	list(/datum/proc/reset_layer)
 
 //The speed var controls how fast we visibly transition scale, it is in cubic volume units per second
 /atom/update_scale(var/speed = 0.3)
-	world << "Updating scale 1"
 	var/old_scale = default_scale
 	default_scale = get_base_scale()
 	for (var/datum/extension/E as anything in LAZYACCESS(statmods, STATMOD_SCALE))
 		default_scale += E.get_statmod(STATMOD_SCALE)
-		world << "Updating scale 1A [E.get_statmod(STATMOD_SCALE)]"
 
-
-	world << "Updating scale 2 [default_scale]"
 	//We're going to do a smooth transition to the new scale
 
 	//Lets get the difference in the volume between these shapes

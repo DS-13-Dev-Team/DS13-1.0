@@ -3,23 +3,19 @@
 	The corpse starts shaking and twitching, notifying everyone nearby what's about to happen
 */
 /mob/living/proc/start_necromorph_conversion(var/duration = 12)
-	world << "Conversion 1"
 	ADD_TRANSFORMATION_MOVEMENT_HANDLER(src)
 	var/intensity_step = 1 / duration
 	var/intensity = 0
 	for (var/i in 1 to duration)
 		//If the mob has become invalid, stop this
-		world << "Conversion 2"
 		if (!is_necromorph_conversion_valid())
 			return
 
-		world << "Conversion 3"
 		//The movement handler can be deleted from outside as a way to stop the process
 		//This is used if the infector's reanimate ability gets interrupted
 		if (!HAS_TRANSFORMATION_MOVEMENT_HANDLER(src))
 			return
 
-		world << "Conversion 4"
 		intensity += intensity_step
 
 		if (prob(80))
@@ -35,7 +31,6 @@
 
 		sleep(1 SECOND)
 
-	world << "Conversion 5"
 	DEL_TRANSFORMATION_MOVEMENT_HANDLER(src)
 
 	//Actually do it
@@ -172,11 +167,9 @@
 /mob/living/proc/is_necromorph_conversion_valid()
 	.= TRUE
 	if (stat != DEAD)
-		world << "Mob is not dead"
 		return FALSE
 
 	if (QDELETED(src))
-		world << "Src is deleted"
 		return FALSE
 
 

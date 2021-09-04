@@ -55,6 +55,5 @@
 
 
 /datum/extension/ability/domob/proc/interrupt()
-	world << "Interrupting, applying doafter extension to [user]"
 	set_extension(user, /datum/extension/interrupt_doafter)
 	stop()

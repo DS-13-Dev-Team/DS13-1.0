@@ -55,7 +55,6 @@
 	src.attack = attack
 	name = pick(attack.attack_noun)
 
-	world << "Target zone 1 is [target_zone], param: [_target_zone]"
 
 	src.damage = attack.get_unarmed_damage(user)
 	if (attack.rand_damage)
@@ -64,13 +63,10 @@
 	if (!_target_zone)
 		if (istype(user, /mob/living))
 			target_zone = get_zone_sel(user)
-			world << "Target zone 1a is [target_zone]"
 	else
 		src.target_zone = _target_zone
-		world << "Target zone 1b is [target_zone]"
 
 
-	world << "Target zone 2 is [target_zone]"
 
 	CACHE_USER
 
