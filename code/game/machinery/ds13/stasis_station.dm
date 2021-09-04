@@ -36,7 +36,7 @@
 					update_icon()
 					if(do_after(user, 27, src))
 						E.power_supply.full_recharge()
-						E.update_stas_charge()
+						user.wearing_rig.stasis.update_stasis_charge()
 						to_chat(user, SPAN_NOTICE("Stasis Module was recharged"))
 						busy = FALSE
 						recharging = TRUE

@@ -19,7 +19,9 @@
 	self_recharge = 1
 
 /obj/item/weapon/gun/energy/stasis/on_shot_recharged()
-	loc.update_stas_charge()
+	if(istype(loc, /obj/item/rig_module/mounted/stasis))
+		var/obj/item/rig_module/mounted/stasis/S = loc
+		S.update_stasis_charge()
 
 /obj/item/projectile/bullet/stasis
 	name = "stasis blast"
@@ -52,7 +54,7 @@
 /datum/extension/stasis_effect/New()
 	. = ..()
 	add_stasis_visual(holder)
-	addtimer(CALLBACK(src, /datum/extension/stasis_effect/proc/end_stasis), stasis_duration, TIMER_OVERRIDE)
+	addtimer(CALLBACK(src, /datum/extension/stasis_effect/proc/end_stasis), stasis_duration, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
 
 /datum/extension/stasis_effect/proc/end_stasis()
 	remove_extension(holder, type)
@@ -71,11 +73,10 @@
 
 /datum/extension/stasis_effect/mob/New()
 	.=..()
-	M = holder
-
 	addtimer(CALLBACK(src, /datum/extension/stasis_effect/mob/proc/Initialize), 0)
 
 /datum/extension/stasis_effect/mob/proc/Initialize()
+	M = holder
 	for(var/obj/item/I in M.contents)
 		I.stasis_act()
 

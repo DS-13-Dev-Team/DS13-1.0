@@ -27,9 +27,6 @@
 			return 1
 	return 0
 
-/datum/proc/update_stas_charge()
-	return
-
 /obj/item/rig_module/mounted/stasis/installed()
 	..()
 	holder.stasis = src
@@ -38,7 +35,7 @@
 	..()
 	holder.stasis = null
 
-/obj/item/rig_module/mounted/stasis/update_stas_charge()
+/obj/item/rig_module/mounted/stasis/proc/update_stasis_charge()
 	var/percentage
 	var/obj/item/weapon/gun/energy/E = gun
 
@@ -51,7 +48,7 @@
 	holder.update_wear_icon()
 
 /obj/item/rig_module/mounted/stasis/on_shot()
-	update_stas_charge()
+	update_stasis_charge()
 
 /obj/item/rig_module/mounted/stasis/military
 	name = "Regenerative Stasis Module"
@@ -66,7 +63,7 @@
 		pack.use(1)
 		E.power_supply.full_recharge()
 		to_chat(user, "Stasis Module was recharged")
-		update_stas_charge()
+		update_stasis_charge()
 		return TRUE
 	else
 		to_chat(user, "Stasis Module is already fully charged")
