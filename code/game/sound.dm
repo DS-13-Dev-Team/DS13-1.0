@@ -298,11 +298,9 @@ var/const/FALLOFF_SOUNDS = 0.5
 
 	//Actually play the sound
 	var/spath = soundin
-	world << "Picking spath [spath] 1"
 	if (soundlist)
 
 		spath = pick(soundlist)
-		world << "Picking spath [spath] 2"
 	playsound(playfrom, spath, vol, vary, extrarange, falloff, is_global)
 
 	//Setup the next sound

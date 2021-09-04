@@ -413,23 +413,19 @@ if (result == EXECUTION_CANCEL && can_interrupt){\
 	//If we needed a grab, check that we have it and its valid
 	if (require_grab && require_grab <= current_stage_index)
 		if (!grab || !grab.safety_check())
-			world << "No grab"
 			return EXECUTION_CANCEL
 
 	//Gotta be close enough
 	if (get_dist(user, victim) > get_range())
-		world << "Dist: [get_dist(user, victim)] > Range: [get_range()]"
 		return EXECUTION_CANCEL
 
 	//If user has ceased to exist, we're finished
 	if (QDELETED(user))
-		world << "User deleted"
 		return EXECUTION_CANCEL
 
 	for (var/datum/execution_stage/ES as anything in entered_stages)
 		var/result = ES.safety()
 		if (result != EXECUTION_CONTINUE)
-			world << "A stage [ES] returned fail"
 			return result
 
 
