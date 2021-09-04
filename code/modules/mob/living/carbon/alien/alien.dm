@@ -17,8 +17,7 @@
 
 /mob/living/carbon/alien/New()
 
-	verbs += /mob/living/proc/ventcrawl
-	verbs += /mob/living/proc/hide
+	add_verb(src, list(/mob/living/proc/ventcrawl, /mob/living/proc/hide))
 
 	instance_num = rand(1, 1000)
 	name = "[initial(name)] ([instance_num])"

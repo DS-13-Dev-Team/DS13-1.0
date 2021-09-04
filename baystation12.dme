@@ -156,6 +156,7 @@
 #include "code\_helpers\turfs.dm"
 #include "code\_helpers\type2type.dm"
 #include "code\_helpers\unsorted.dm"
+#include "code\_helpers\verbs.dm"
 #include "code\_helpers\view.dm"
 #include "code\_helpers\geometry\angle.dm"
 #include "code\_helpers\geometry\cone.dm"

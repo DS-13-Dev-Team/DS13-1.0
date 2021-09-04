@@ -834,7 +834,7 @@
 
 
 
-/mob/proc/yank_out_object(var/obj/item/selection, var/mob/user)
+/mob/proc/yank_out_object(obj/item/selection, mob/user)
 	var/mob/S = src
 	if(user == S)
 		to_chat(src, "<span class='warning'>You attempt to get a good grip on [selection] in your body.</span>")
@@ -891,7 +891,7 @@
 
 	var/list/valid_objects = get_visible_implants(0, TRUE)
 	if(length(valid_objects.len == 0)) //Yanking out last object - removing verb.
-		src.verbs -= /mob/proc/yank_out_object_verb
+		remove_verb(src, /mob/proc/yank_out_object_verb)
 
 	user.put_in_hands(selection)
 

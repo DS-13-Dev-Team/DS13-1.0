@@ -116,7 +116,7 @@
 
 	//Transfer our player
 	mind.transfer_to(H)
-	H.verbs +=/mob/living/carbon/human/proc/abandon_vessel
+	add_verb(H, /mob/living/carbon/human/proc/abandon_vessel)
 
 	//Fix up comms
 	H.remove_all_languages()

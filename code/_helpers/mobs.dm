@@ -382,11 +382,11 @@ var/datum/callback/proc_to_call, var/proc_interval = 10)
 
 
 //Adds verb path to our verbs if condition is true, removes it if false
-/mob/proc/update_verb(var/verb_path, var/condition)
+/mob/proc/update_verb(verb_path, condition)
 	if (condition)
-		verbs |= verb_path
+		add_verb(src, verb_path)
 	else
-		verbs -= verb_path
+		remove_verb(src, verb_path)
 
 
 /mob/proc/enemy_in_view(var/require_standing = FALSE)

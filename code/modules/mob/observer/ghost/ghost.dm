@@ -34,7 +34,7 @@ var/global/list/image/ghost_sightless_images = list() //this is a list of images
 	var/list/hud_images // A list of hud images
 
 /mob/observer/ghost/New(mob/body)
-	verbs += /mob/proc/toggle_antag_pool
+	add_verb(src, /mob/proc/toggle_antag_pool)
 
 	var/turf/T
 	if(ismob(body))
@@ -165,7 +165,7 @@ Works together with spawning an observer, noted above.
 		ghost.key = key
 		if (ghost.client)		// For new ghosts we remove the verb from even showing up if it's not allowed.
 			if (!ghost.client.holder && !CONFIG_GET(flag/antag_hud_allowed))
-				ghost.verbs -= /mob/observer/ghost/verb/toggle_antagHUD	// Poor guys, don't know what they are missing!
+				remove_verb(ghost, /mob/observer/ghost/verb/toggle_antagHUD)// Poor guys, don't know what they are missing!
 			ghost.client.init_verbs()
 		return ghost
 
@@ -225,6 +225,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	mind.current.reload_fullscreen()
 	if(!admin_ghosted)
 		announce_ghost_joinleave(mind, 0, "They now occupy their body again.")
+	src.client.init_verbs()
 	return 1
 
 /mob/observer/ghost/verb/toggle_medHUD()

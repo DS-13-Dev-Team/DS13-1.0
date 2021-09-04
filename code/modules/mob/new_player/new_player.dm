@@ -21,7 +21,7 @@
 
 /mob/new_player/New()
 	..()
-	verbs += /mob/proc/toggle_antag_pool
+	add_verb(src, /mob/proc/toggle_antag_pool)
 
 /mob/new_player/verb/new_player_panel()
 	set src = usr

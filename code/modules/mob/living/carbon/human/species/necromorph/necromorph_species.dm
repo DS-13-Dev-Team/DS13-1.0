@@ -194,17 +194,14 @@
 /datum/species/necromorph/get_icobase(var/mob/living/carbon/human/H)
 	return icon_template //We don't need to duplicate the same dmi path twice
 
-/datum/species/necromorph/add_inherent_verbs(var/mob/living/carbon/human/H)
+/datum/species/necromorph/add_inherent_verbs(mob/living/carbon/human/H)
 	.=..()
-	H.verbs |= /mob/proc/necro_evacuate	//Add the verb to vacate the body. its really just a copy of ghost
-	H.verbs |= /mob/proc/prey_sightings //Verb to see the sighting information on humans
-	H.verbs |= /datum/proc/help //Verb to see your own abilities
+	add_verb(H, list(/mob/proc/necro_evacuate, /mob/proc/prey_sightings, /datum/proc/help))
 	//Ventcrawling necromorphs are handled here. Don't give this to non living mobs...
 	if(ventcrawl && isliving(H))
-		H.verbs |= /mob/living/proc/ventcrawl
+		add_verb(H, list(/mob/living/proc/ventcrawl, /mob/living/proc/necro_burst_vent))
 		//And if we want to set a custom ventcrawl delay....
 		H.ventcrawl_time = (src.ventcrawl_time) ? src.ventcrawl_time : H.ventcrawl_time
-		H.verbs |= /mob/living/proc/necro_burst_vent
 	//H.verbs |= /mob/proc/message_unitologists
 	make_scary(H)
 

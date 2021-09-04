@@ -6,7 +6,7 @@
 	set category = "RIG"
 	set src in usr.contents
 
-	if(!wearer?.wearing_rig == src)
+	if(wearer?.wearing_rig == src)
 		ui_interact(usr)
 
 /obj/item/weapon/rig/verb/toggle_vision()

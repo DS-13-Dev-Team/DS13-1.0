@@ -25,7 +25,7 @@ client
 
 	sleep(50)
 	var/list/_credits = credits
-	verbs += /client/proc/ClearCredits
+	add_verb(src, /client/proc/ClearCredits)
 	for(var/I in GLOB.end_titles)
 		if(!credits)
 			return
@@ -36,12 +36,12 @@ client
 	sleep(CREDIT_ROLL_SPEED - CREDIT_SPAWN_SPEED)
 
 	ClearCredits()
-	verbs -= /client/proc/ClearCredits
+	remove_verb(src, /client/proc/ClearCredits)
 
 /client/proc/ClearCredits()
 	set name = "Stop End Titles"
 	set category = "OOC"
-	verbs -= /client/proc/ClearCredits
+	remove_verb(src, /client/proc/ClearCredits)
 	QDEL_NULL_LIST(credits)
 	mob.clear_fullscreen("fishbed")
 	mob.clear_fullscreen("fadeout")

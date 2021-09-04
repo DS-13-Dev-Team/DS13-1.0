@@ -70,8 +70,7 @@
 	if(src.gunner)
 		remove_gunner()
 	src.gunner = gunner
-	gunner.verbs |= /mob/living/carbon/human/proc/stop_gunning
-	gunner.verbs |= /mob/living/carbon/human/proc/recenter_gunning
+	add_verb(gunner, list(/mob/living/carbon/human/proc/stop_gunning, /mob/living/carbon/human/proc/recenter_gunning))
 	gunner.forceMove(gun)
 	gunner.pixel_x = (-gun.pixel_x)+4
 	gunner.pixel_y = (-gun.pixel_y)+12
@@ -106,8 +105,7 @@
 		qdel(TCH)
 	gun.lead_distance = initial(gun.lead_distance) //Gunners don't get hitscan...
 	if (gunner)
-		gunner.verbs -= /mob/living/carbon/human/proc/stop_gunning
-		gunner.verbs -= /mob/living/carbon/human/proc/recenter_gunning
+		remove_verb(gunner, list(/mob/living/carbon/human/proc/stop_gunning, /mob/living/carbon/human/proc/recenter_gunning))
 		gunner.eyeobj = null
 		gun.overlays.Cut()
 		gunner.plane = gun.cached_plane

@@ -83,7 +83,7 @@
 	dat += "</table>"
 	show_browser(src, JOINTEXT(dat), "window=godform;can_close=0")
 
-/mob/living/deity/proc/set_form(var/type)
+/mob/living/deity/proc/set_form(type)
 	form = new type(src)
 	to_chat(src, "<span class='notice'>You undergo a transformation into your new form!</span>")
 	spawn(1)
@@ -91,7 +91,7 @@
 		var/newname = sanitize(input(src, "Choose a name for your new form.", "Name change", form.name) as text, MAX_NAME_LEN)
 		if(newname)
 			fully_replace_character_name(newname)
-	src.verbs -= /mob/living/deity/verb/choose_form
+	remove_verb(src, /mob/living/deity/verb/choose_form)
 	show_browser(src, null, "window=godform")
 	for(var/m in minions)
 		var/datum/mind/mind = m

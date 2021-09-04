@@ -324,6 +324,5 @@
 			organ.rejuvenate(1)
 			organ.max_damage *= 3
 			organ.min_broken_damage = Floor(organ.max_damage * 0.75)
-	verbs += /mob/living/proc/breath_death
-	verbs += /mob/living/proc/consume
+	add_verb(src, list(/mob/living/proc/breath_death, /mob/living/proc/consume))
 	playsound(get_turf(src), 'sound/hallucinations/wail.ogg', 20, 1)

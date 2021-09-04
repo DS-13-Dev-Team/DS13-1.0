@@ -64,7 +64,7 @@
 			created[src] = argument_list
 
 	if(atom_flags & ATOM_FLAG_CLIMBABLE)
-		verbs += /atom/proc/climb_on
+		verbs |= /atom/proc/climb_on
 
 
 

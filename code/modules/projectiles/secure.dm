@@ -36,7 +36,7 @@
 	else
 		..()
 
-/obj/item/weapon/gun/emag_act(var/charges, var/mob/user)
+/obj/item/weapon/gun/emag_act(charges, mob/user)
 	if(!charges)
 		return NO_EMAG_ACT
 	else if (is_secure_gun())

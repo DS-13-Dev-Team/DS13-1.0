@@ -341,13 +341,10 @@
 /obj/item/weapon/storage/Initialize()
 	. = ..()
 	if(allow_quick_empty)
-		verbs += /obj/item/weapon/storage/verb/quick_empty
+		verbs |= /obj/item/weapon/storage/verb/quick_empty
+		verbs |= /obj/item/weapon/storage/verb/toggle_gathering_mode
 	else
 		verbs -= /obj/item/weapon/storage/verb/quick_empty
-
-	if(allow_quick_gather)
-		verbs += /obj/item/weapon/storage/verb/toggle_gathering_mode
-	else
 		verbs -= /obj/item/weapon/storage/verb/toggle_gathering_mode
 
 	if(isnull(max_storage_space) && !isnull(storage_slots))

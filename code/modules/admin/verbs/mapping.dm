@@ -162,7 +162,7 @@ var/list/debug_verbs = list (
 	if(!skip_check && !check_rights(R_DEBUG))
 		to_chat(mob, "You don't have the rights to use this command")
 		return
-	verbs += debug_verbs
+	add_verb(src, debug_verbs)
 	to_chat(mob, "Debug verbs activated")
 
 	feedback_add_details("admin_verb","mDV") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
@@ -171,9 +171,10 @@ var/list/debug_verbs = list (
 	set category = "Debug"
 	set name = "Hide Debug verbs"
 
-	if(!check_rights(R_DEBUG)) return
+	if(!check_rights(R_DEBUG))
+		return
 
-	verbs -= debug_verbs
+	remove_verb(src, debug_verbs)
 
 	feedback_add_details("admin_verb","hDV") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 

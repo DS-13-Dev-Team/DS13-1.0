@@ -9,7 +9,7 @@
 	force = 1.0
 	w_class = ITEM_SIZE_NORMAL
 	throwforce = 1.0
-	
+
 	throw_range = 5
 	origin_tech = list(TECH_ENGINEERING = 4, TECH_MATERIAL = 4, TECH_BLUESPACE = 2, TECH_DATA = 4)
 	attack_verb = list("attacked", "slapped", "whacked")
@@ -121,7 +121,7 @@
 	src.brainmob.SetName("[pick(list("PBU","HIU","SINA","ARMA","OSI"))]-[random_id(type,100,999)]")
 	src.brainmob.real_name = src.brainmob.name
 
-/obj/item/organ/internal/posibrain/proc/shackle(var/given_lawset)
+/obj/item/organ/internal/posibrain/proc/shackle(given_lawset)
 	if(given_lawset)
 		brainmob.laws = given_lawset
 	shackle = 1

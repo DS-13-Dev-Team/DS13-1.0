@@ -65,7 +65,7 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 		icon_state = pick(GLOB.signal_sprites)
 
 //This will have a mob passed in that we were created from
-/mob/observer/eye/signal/New(var/mob/body)
+/mob/observer/eye/signal/New(mob/body)
 	..()
 	visualnet = GLOB.necrovision	//Set the visualnet of course
 
@@ -79,7 +79,7 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 
 		mind = body.mind	//we don't transfer the mind but we keep a reference to it.
 
-	verbs |= /mob/proc/prey_sightings
+	add_verb(src, /mob/proc/prey_sightings)
 
 	forceMove(T)
 
@@ -218,7 +218,7 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 		if (!istype(src, /mob/observer/eye/signal/master))	//The master doesn't queue
 
 
-			verbs += /mob/observer/eye/signal/proc/join_necroqueue
+			add_verb(src, /mob/observer/eye/signal/proc/join_necroqueue)
 			if (client && client.prefs && client.prefs.auto_necroqueue)
 				SSnecromorph.join_necroqueue(src)
 

@@ -16,13 +16,13 @@
 	if(health < -35 || emagged)
 		to_chat(user, "<span class='notice'><b>WARNING:</b> connection timed out.</span>")
 		return
-	
+
 	assume_control(user)
 
 /mob/living/silicon/robot/drone/proc/assume_control(var/mob/living/silicon/ai/user)
 	user.controlling_drone = src
 	controlling_ai = user
-	verbs += /mob/living/silicon/robot/drone/proc/release_ai_control_verb
+	add_verb(src, /mob/living/silicon/robot/drone/proc/release_ai_control_verb)
 	local_transmit = FALSE
 	languages = controlling_ai.languages.Copy()
 
@@ -84,7 +84,7 @@
 
 	release_ai_control("Remote session terminated.")
 
-/mob/living/silicon/robot/drone/proc/release_ai_control(var/message = "Connection terminated.")
+/mob/living/silicon/robot/drone/proc/release_ai_control(message = "Connection terminated.")
 
 	if(controlling_ai)
 		if(mind)
@@ -95,7 +95,7 @@
 		controlling_ai.controlling_drone = null
 		controlling_ai = null
 
-	verbs -= /mob/living/silicon/robot/drone/proc/release_ai_control_verb
+	remove_verb(src, /mob/living/silicon/robot/drone/proc/release_ai_control_verb)
 	full_law_reset()
 	updatename()
 	death()

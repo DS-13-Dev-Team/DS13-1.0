@@ -241,17 +241,17 @@
 		return null
 	return list(holder)
 
-/spell/camera_connection/cast(var/list/targets, mob/user)
+/spell/camera_connection/cast(list/targets, mob/user)
 	var/mob/living/L = targets[1]
 
 	vision.possess(L)
 	GLOB.destroyed_event.register(L, src, /spell/camera_connection/proc/release)
 	GLOB.logged_out_event.register(L, src, /spell/camera_connection/proc/release)
-	L.verbs += /mob/living/proc/release_eye
+	add_verb(L, /mob/living/proc/release_eye)
 
 /spell/camera_connection/proc/release(var/mob/living/L)
 	vision.release(L)
-	L.verbs -= /mob/living/proc/release_eye
+	remove_verb(L, /mob/living/proc/release_eye)
 	GLOB.destroyed_event.unregister(L, src)
 	GLOB.logged_out_event.unregister(L, src)
 
@@ -267,7 +267,7 @@
 	set desc = "Return your sight to your body."
 	set category = "Abilities"
 
-	verbs -= /mob/living/proc/release_eye //regardless of if we have an eye or not we want to get rid of this verb.
+	remove_verb(src, /mob/living/proc/release_eye)//regardless of if we have an eye or not we want to get rid of this verb.
 
 	if(!eyeobj)
 		return

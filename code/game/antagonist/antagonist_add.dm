@@ -48,18 +48,18 @@
 	current_antagonists |= player
 
 	if(faction_verb && player.current)
-		player.current.verbs |= faction_verb
+		add_verb(player.current, faction_verb)
 
 	if(CONFIG_GET(flag/objectives_disabled) == CONFIG_OBJECTIVE_VERB)
-		player.current.verbs += /mob/proc/add_objectives
+		add_verb(player.current, /mob/proc/add_objectives)
 
-	player.current.client.verbs += /client/proc/aooc
+	add_verb(player.current, /client/proc/aooc)
 
 	spawn(1 SECOND) //Added a delay so that this should pop up at the bottom and not the top of the text flood the new antag gets.
 		to_chat(player.current, "<span class='notice'>Once you decide on a goal to pursue, you can optionally display it to \
 			everyone at the end of the shift with the <b>Set Ambition</b> verb, located in the IC tab.  You can change this at any time, \
 			and it otherwise has no bearing on your round.</span>")
-	player.current.verbs += /mob/living/proc/write_ambition
+	add_verb(player.current, /mob/living/proc/write_ambition)
 
 	// Handle only adding a mind and not bothering with gear etc.
 	if(nonstandard_role_type)
@@ -71,11 +71,11 @@
 		update_icons_added(player)
 	return 1
 
-/datum/antagonist/proc/remove_antagonist(var/datum/mind/player, var/show_message, var/implanted)
+/datum/antagonist/proc/remove_antagonist(datum/mind/player, show_message,implanted)
 	if(!istype(player))
 		return 0
 	if(player.current && faction_verb)
-		player.current.verbs -= faction_verb
+		remove_verb(player.current, faction_verb)
 	if(player in current_antagonists)
 		to_chat(player.current, "<span class='danger'><font size = 3>You are no longer a [role_text]!</font></span>")
 		current_antagonists -= player
@@ -89,8 +89,7 @@
 			player.current.reset_skillset()
 
 		if(!is_special_character(player))
-			player.current.verbs -= /mob/living/proc/write_ambition
-			player.current.client.verbs -= /client/proc/aooc
+			remove_verb(player.current, list(/mob/living/proc/write_ambition, /client/proc/aooc))
 			player.ambitions = ""
 		return 1
 	return 0
