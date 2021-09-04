@@ -59,9 +59,10 @@
 
 
 
-#define SS_INIT_PROFILER		 10
-#define SS_INIT_GARBAGE          9
-#define SS_INIT_DATABASE         8
+#define SS_INIT_PROFILER			101
+#define SS_INIT_GARBAGE				99
+#define SS_INIT_DATABASE			95
+#define SS_INIT_SERVER_MAINT		93
 #define SS_INIT_MATERIALS        8
 #define SS_INIT_ANTAGS           7
 #define SS_INIT_PLANTS           7

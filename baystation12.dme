@@ -263,6 +263,7 @@
 #include "code\controllers\subsystems\profiler.dm"
 #include "code\controllers\subsystems\radiation.dm"
 #include "code\controllers\subsystems\research.dm"
+#include "code\controllers\subsystems\server_maint.dm"
 #include "code\controllers\subsystems\shuttle.dm"
 #include "code\controllers\subsystems\skybox.dm"
 #include "code\controllers\subsystems\slow.dm"
