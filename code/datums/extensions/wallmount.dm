@@ -191,7 +191,7 @@
 
 /datum/extension/mount/proc/dismount()
 	on_dismount()
-	remove_extension(holder, src)
+	remove_self()
 
 //Called when the atom we are mounted to moves
 /datum/extension/mount/proc/on_mountpoint_move(var/atom/mover, var/oldloc, var/newloc)

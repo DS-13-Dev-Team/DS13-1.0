@@ -40,7 +40,7 @@
 	R = null //So we don't interfere with garbage collection. It will null out its own reference to us too
 
 	if (linger)
-		linger_handle = addtimer(CALLBACK(src, /datum/extension/proc/remove_self), time = linger, flags = TIMER_STOPPABLE)
+		linger_handle = addtimer(CALLBACK(src, /datum/extension/proc/remove_self), linger, flags = TIMER_STOPPABLE)
 
 	else
 		remove_self()

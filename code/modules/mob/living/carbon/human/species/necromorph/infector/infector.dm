@@ -356,11 +356,11 @@ All of them except New Growth require corruption to build upon\
 	verb_name = "flying"
 	name = "Flap"
 	mobile_windup = TRUE
-
+	extra_pass_flags = (PASS_FLAG_TABLE | PASS_FLAG_FLYING | PASS_FLAG_NOMOB)
 
 
 /datum/extension/charge/leap/flap/execution
-
+	extra_pass_flags = (PASS_FLAG_TABLE | PASS_FLAG_FLYING)
 
 /datum/extension/charge/leap/flap/start()
 	playsound(user, pick(list('sound/effects/creatures/necromorph/infector/infector_flap_1.ogg',

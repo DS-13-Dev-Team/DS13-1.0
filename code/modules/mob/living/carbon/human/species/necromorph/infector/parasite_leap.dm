@@ -132,24 +132,20 @@
 /datum/extension/execution/infector/safety_check()
 
 	.=..()
-	world << "Infector safety previous returned [.]"
 	if (. == EXECUTION_CANCEL)
 		return
 
 	//The target must have a head for us to penetrate
 	if (!victim.get_organ(BP_HEAD))
-		world << "target no head"
 		return EXECUTION_CANCEL
 
 
 	//If the target is dead but still has their head, mission success!
 	if (victim.stat == DEAD)
-		world << "target ded"
 		return EXECUTION_SUCCESS
 
 	//Being grappled causes us to pause our progress, we can't keep hitting the enemy until they let go
 	if (user.is_grabbed())
-		to_chat(user, "Grappled")
 		return EXECUTION_RETRY
 
 
@@ -178,20 +174,15 @@
 
 
 	.=..()
-	world << "nEW LAYER 2 [host.user.layer]"
-
 /datum/execution_stage/wingwrap/stop()
 	host.user.layer = cached_layer
-	world << "RESET layer [cached_layer]"
 	.=..()
 
 /datum/execution_stage/infector_headstab
 	duration = 2.5 SECONDS
 
 /datum/execution_stage/infector_headstab/enter()
-	world << "nEW LAYER 3 [host.user.layer]"
 	.=..()
-	world << "nEW LAYER 4 [host.user.layer]"
 	//If we've already won, skip this and just return
 	if (host.success)
 		duration =0 //Setting duration to 0 will prevent any waiting after this proc
@@ -232,7 +223,6 @@
 		//They are being strangled, can't breathe. Even if they had an eva suit, the air supply hose is constricted
 		host.victim.losebreath++
 
-		world << "nEW LAYER 5 [host.user.layer]"
 		//Do the actual damage.
 		host.user.launch_unarmed_strike(host.victim, /datum/unarmed_attack/proboscis/execution,	BP_HEAD)
 
@@ -245,16 +235,13 @@
 			done = TRUE
 			continue
 
-		world << "nEW LAYER 6 [host.user.layer]"
 		//The victim and their camera shake wildly as they struggle
 		shake_camera(host.victim, 2, 3)
 		host.victim.shake_animation(12)
 		host.user.shake_animation(12)
-		world << "nEW LAYER 7 [host.user.layer]"
 
 		//Make sure the user stays stunned during this process
 		host.user.Stun(1+(duration*0.1))
-		world << "nEW LAYER 8 [host.user.layer]"
 
 		sleep(duration)
 
@@ -296,7 +283,6 @@
 
 /datum/execution_stage/convert/enter()
 	//We are done
-	world << "Entering convert stage"
 	host.victim.start_necromorph_conversion(duration * 0.1)
 
 	.=..()
@@ -379,22 +365,22 @@
 
 
 			user.default_rotation = new_rotation
-			user.default_pixel_y -= 4
-			user.default_pixel_x -= 4
+			user.default_pixel_y += 12
+			user.default_pixel_x -= 8
 			LAZYASET(statmods, STATMOD_SCALE,	-0.45)
 			register_statmods(TRUE) //This will call animate_to_default and apply the changes we've recorded above
 
 
 /datum/extension/mount/infector/on_dismount()
-	.=..()
+
 	var/mob/living/carbon/human/user = mountee
 
 	user.default_rotation = 0
-	user.default_pixel_y += 4
-	user.default_pixel_x += 4
+	user.default_pixel_y -= 12
+	user.default_pixel_x += 8
 	user.animate_to_default(4)
 
-
+	.=..()
 
 
 
