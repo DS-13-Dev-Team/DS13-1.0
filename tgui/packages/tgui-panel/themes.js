@@ -75,6 +75,9 @@ export const setClientTheme = name => {
       'stat.prefix-color': '#000000',
       'stat.suffix-color': '#000000',
       // Say, OOC, me Buttons etc.
+      'input.background-color': 'none',
+      'input.text-color': '#000000',
+      'input.border': 'sunken',
       'saybutton.background-color': 'none',
       'saybutton.text-color': '#000000',
       'oocbutton.background-color': 'none',
@@ -134,6 +137,9 @@ export const setClientTheme = name => {
       'stat.prefix-color': COLOR_DARK_TEXT,
       'stat.suffix-color': COLOR_DARK_TEXT,
       // Say, OOC, me Buttons etc.
+      'input.background-color': COLOR_DARK_BG_DARKER,
+      'input.text-color': COLOR_DARK_TEXT,
+      'input.border': 'line',
       'saybutton.background-color': COLOR_DARK_BG,
       'saybutton.text-color': COLOR_DARK_TEXT,
       'oocbutton.background-color': COLOR_DARK_BG,
@@ -193,6 +199,9 @@ export const setClientTheme = name => {
       'stat.prefix-color': COLOR_DARK_TEXT,
       'stat.suffix-color': COLOR_DARK_TEXT,
       // Say, OOC, me Buttons etc.
+      'input.background-color': COLOR_DARK_BG_DARKER,
+      'input.text-color': COLOR_DARK_TEXT,
+      'input.border': 'line',
       'saybutton.background-color': COLOR_DARK_BG,
       'saybutton.text-color': COLOR_DARK_TEXT,
       'oocbutton.background-color': COLOR_DARK_BG,
