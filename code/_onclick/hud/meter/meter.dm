@@ -28,6 +28,7 @@
 	var/change_per_second	=	null	//Displayed in the text if non null and nonzero, this is the amount up or down that this value is changing each second
 
 	var/rounding = 1	//How precisely do we round displayed numbers?
+	var/change_rounding = 0.01
 
 	//The healthbar size is dynamic and scales with diminishing returns based on the user's health.
 	//From 0 to 100, it is 2 pixels wide per health point, then from 100 to 200, 1 pixel for each additional health, and so on. The list below holds the data
@@ -180,7 +181,7 @@
 	if (delta_meter)
 		delta_meter.update_total()
 	if (textholder)
-		textholder.update_total()
+		textholder.update_total(TRUE)
 	if (update)
 		update()
 
@@ -205,6 +206,9 @@
 		//A null value means "no change from previous"
 		new_value = current_value
 
+	if (!isnull(data["regen"]))
+		change_per_second = round(data["regen"], change_rounding)
+
 	new_value = max(new_value, 0)
 
 
@@ -220,8 +224,9 @@
 
 		value_changed = TRUE
 
+
 	if (textholder)
-		textholder.maptext = "[Ceiling(current_value)]/[total_value]"
+		textholder.update_total(FALSE)
 	var/blocked = data["blocked"]
 
 
@@ -445,13 +450,19 @@
 	icon_state = ""
 	layer = HUD_TEXT_LAYER
 
-/obj/screen/meter_component/text/update_total()
+/obj/screen/meter_component/text/update_total(var/resize = FALSE)
 	if (parent)
-		set_size(parent.length)
-		maptext_width = parent.length
-		maptext_height = 16
-		maptext_y = 17
+		if (resize)
+			set_size(parent.length)
+			maptext_width = parent.length
+			maptext_height = 16
+			maptext_y = 17
 		maptext = "[round(parent.current_value, parent.rounding)]/[parent.total_value]"
+		if (parent.change_per_second)
+			if (parent.change_per_second > 0)
+				maptext += "<span style='font-size:6px;'>+[parent.change_per_second]</span>"
+			else
+				maptext += "<span style='font-size:6px;'>-[parent.change_per_second]</span>"
 
 /obj/screen/meter_component/text/set_size()
 	return

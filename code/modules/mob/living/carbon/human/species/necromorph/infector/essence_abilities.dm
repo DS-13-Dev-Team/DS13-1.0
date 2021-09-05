@@ -46,6 +46,12 @@
 	var/list/selected_essence_ability	//Used by infector, this is a list containing the type and parameters of the essence ability we have selected
 
 
+//Regenerates faster when over half, to encourage cautious allocation
+/datum/extension/resource/essence/get_regen_amount()
+	.=..()
+	if (current_value >= max_value * 0.5)
+		.*=1.5
+
 /*
 	Entrypoints
 */
