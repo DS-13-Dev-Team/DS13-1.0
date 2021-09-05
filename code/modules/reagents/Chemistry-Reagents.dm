@@ -22,7 +22,7 @@
 		The higher the volume of a chemical in the body, the faster it metabolises.
 		Each volume unit adds this percent bonus to the metabolism rate.
 	*/
-	var/volume_metabolism_mult	=	0.05
+	var/volume_metabolism_mult	=	0.075
 
 	var/glass_icon = DRINK_ICON_DEFAULT
 	var/glass_name = "something"
