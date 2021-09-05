@@ -488,11 +488,16 @@ var/world_topic_spam_protect_time = world.timeofday
 	else
 		hub_password = "SORRYNOPASSWORD"
 
-/world/Reboot(reason, ping)
-	/*spawn(0)
-		sound_to(world, sound(pick('sound/AI/newroundsexy.ogg','sound/misc/apcdestroyed.ogg','sound/misc/bangindonk.ogg')))// random end sounds!! - LastyBatsy
+/world/Reboot(reason = 0, fast_track = FALSE, ping = FALSE)
+	if (reason || fast_track) //special reboot, do none of the normal stuff
+		if (usr)
+			log_admin("[key_name(usr)] Has requested an immediate world restart via client side debugging tools")
+			message_admins("[key_name_admin(usr)] Has requested an immediate world restart via client side debugging tools")
+		to_chat(world, "<span class='boldannounce'>Rebooting World immediately due to host request.</span>")
+	else
+		to_chat(world, "<span class='boldannounce'>Rebooting world...</span>")
+		Master.Shutdown() //run SS shutdowns
 
-		*/
 	if(ping)
 		send2chat("GAME: <@&797602501813469224>", "game") //Don't forget change id channel and id role for you server!!!!!
 		var/list/msg = list()
@@ -509,13 +514,12 @@ var/world_topic_spam_protect_time = world.timeofday
 		if(length(msg))
 			send2chat("GAME: " + msg.Join(" | "), "game") //TOO!
 
-	TgsReboot()
 	processScheduler.stop()
 
 	if(TgsAvailable())
 		var/do_hard_reboot
 		// check the hard reboot counter
-		var/ruhr = -1
+		var/ruhr = CONFIG_GET(number/rounds_until_hard_restart)
 		switch(ruhr)
 			if(-1)
 				do_hard_reboot = FALSE
@@ -529,21 +533,15 @@ var/world_topic_spam_protect_time = world.timeofday
 					do_hard_reboot = FALSE
 
 		if(do_hard_reboot)
-			log_world("World rebooted at [time_stamp()]")
-			rustg_log_close_all() // Past this point, no logging procs can be used, at risk of data loss.
+			log_world("World hard rebooted at [time_stamp()]")
+			shutdown_logging() // See comment below.
 			TgsEndProcess()
 
-	var/linkylink = CONFIG_GET(string/server)
-	if(linkylink)
-		for(var/cli in GLOB.clients)
-			cli << link("byond://[linkylink]")
+	log_world("World rebooted at [time_stamp()]")
 
-	if(CONFIG_GET(flag/wait_for_sigusr1_reboot) && reason != 3)
-		text2file("foo", "reboot_called")
-		to_world("<span class=danger>World reboot waiting for external scripts. Please be patient.</span>")
-		return
-
-	..(reason)
+	TgsReboot()
+	shutdown_logging()
+	..()
 
 /world/Del()
 	callHook("shutdown")

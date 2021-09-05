@@ -4,6 +4,7 @@ var/global/datum/controller/gameticker/ticker
 	var/const/restart_timeout = 600
 	var/current_state = GAME_STATE_PREGAME
 	var/force_ending = FALSE
+	var/delay = 50
 
 	var/start_ASAP = FALSE		  //the game will start as soon as possible, bypassing all pre-game nonsense
 
@@ -357,7 +358,10 @@ var/global/datum/controller/gameticker/ticker
 				declare_completion()
 
 
-			spawn(50)
+			spawn
+				var/start_wait = world.time
+				sleep(delay - (world.time - start_wait))
+
 				if(CONFIG_GET(flag/allow_map_switching) && CONFIG_GET(flag/auto_map_vote) && GLOB.all_maps.len > 1)
 					vote.automap()
 					while(vote.time_remaining)

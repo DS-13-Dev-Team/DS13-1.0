@@ -336,21 +336,39 @@
 	set desc="Restarts the world"
 	if (!usr.client.holder)
 		return
-	var/confirm = alert("Restart the game world?", "Restart", "Yes", "Cancel")
-	if(confirm == "Cancel")
-		return
-	if(confirm == "Yes")
-		to_world("<span class='danger'>Restarting world!</span> <span class='notice'>Initiated by [usr.key]!</span>")
-		log_admin("[key_name(usr)] initiated a reboot.")
 
-		feedback_set_details("end_error","admin reboot - by [usr.key]")
-		feedback_add_details("admin_verb","R") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	var/localhost_addresses = list("127.0.0.1", "::1")
+	var/list/options = list("Regular Restart", "Regular Restart (with delay)", "Hard Restart (No Delay/Feeback Reason)", "Hardest Restart (No actions, just reboot)")
+	if(world.TgsAvailable())
+		options += "Server Restart (Kill and restart DD)";
 
-		if(blackbox)
-			blackbox.save_all_data_to_sql()
-
-		sleep(50)
-		world.Reboot(ping=TRUE)
+	var/result = input(usr, "Select reboot method", "World Reboot", options[1]) as null|anything in options
+	if(result)
+		var/init_by = "Initiated by [usr.client.holder ? "Admin" : usr.key]."
+		switch(result)
+			if("Regular Restart")
+				if(!(isnull(usr.client.address) || (usr.client.address in localhost_addresses)))
+					if(tgui_alert(usr, "Are you sure you want to restart the server?","This server is live",list("Restart","Cancel")) != "Restart")
+						return FALSE
+				ticker.force_ending = TRUE
+			if("Regular Restart (with delay)")
+				var/delay = input("What delay should the restart have (in seconds)?", "Restart Delay", 5) as num|null
+				if(!delay)
+					return FALSE
+				if(!(isnull(usr.client.address) || (usr.client.address in localhost_addresses)))
+					if(tgui_alert(usr,"Are you sure you want to restart the server?","This server is live",list("Restart","Cancel")) != "Restart")
+						return FALSE
+				ticker.delay = delay
+				ticker.force_ending = TRUE
+			if("Hard Restart (No Delay, No Feeback Reason)")
+				to_chat(world, "World reboot - [init_by]")
+				world.Reboot()
+			if("Hardest Restart (No actions, just reboot)")
+				to_chat(world, "Hard world reboot - [init_by]")
+				world.Reboot(fast_track = TRUE)
+			if("Server Restart (Kill and restart DD)")
+				to_chat(world, "Server restart - [init_by]")
+				world.TgsEndProcess()
 
 /datum/admins/proc/toggleooc()
 	set category = "Server"
