@@ -16,6 +16,7 @@
 	name = "Leap"
 	var/cached_pass_flags
 	var/cached_plane
+	var/extra_pass_flags = (PASS_FLAG_TABLE | PASS_FLAG_FLYING)
 	continue_check = FALSE	//We're not gonna be stopped if we die mid air, the leap continues til it impacts
 	blur_filter_strength = 4
 
@@ -39,7 +40,7 @@
 
 	//The sprite moves up into the air and a bit closer to the camera
 	animate(user, transform = user.transform.Scale(1.18), pixel_y = user.pixel_y + 24, time = max_lifespan(), flags = ANIMATION_PARALLEL)
-	user.pass_flags |= (PASS_FLAG_TABLE | PASS_FLAG_FLYING)
+	user.pass_flags |= extra_pass_flags
 	..()
 
 /datum/extension/charge/leap/stop()

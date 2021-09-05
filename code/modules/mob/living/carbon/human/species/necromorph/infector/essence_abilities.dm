@@ -89,10 +89,10 @@
 	Reanimate
 */
 /datum/extension/ability/domob/reanimate
-	name = "Engorge"
-	blurb = "Makes the targeted necromorph larger, increasing its health, movespeed and view range."
+	name = "Reanimate"
+	blurb = "Resurrects a target corpse as a new necromorph."
 	duration = 13 SECONDS
-	reach = 1
+	reach = 2
 	resource_cost_type	=	RESOURCE_ESSENCE
 	resource_cost_quantity = 3
 
@@ -132,8 +132,7 @@
 	name = "Engorge"
 	blurb = "Makes the targeted necromorph larger, increasing its health, movespeed and view range."
 	resource_cost_type	=	RESOURCE_ESSENCE
-	resource_cost_quantity = 4
-	reach = 1
+	resource_cost_quantity = 3
 
 /datum/extension/ability/domob/engorge/apply_effect()
 	if (!has_extension(target, /datum/extension/engorge))
@@ -173,6 +172,11 @@
 	A heal-over-time. Ticks each second, consuming some essence and healing the target
 */
 /datum/extension/ability/domob/mend
+	name = "Mend"
+	blurb = "Heals the targeted necromorph larger, restoring its health and consuming essence over time"
+	reach = 2
+	resource_cost_type	=	RESOURCE_ESSENCE
+	resource_cost_quantity = 0
 
 /datum/extension/ability/domob/mend/pre_calculate()
 	.=..()
@@ -212,7 +216,7 @@
 		return
 
 	//Costs 0.1 essence per tick
-	if (user.consume_resource(RESOURCE_ESSENCE, MEND_COST_PER_TICK))
+	if (user.consume_resource(resource_cost_type, MEND_COST_PER_TICK))
 		//To heal 10 damage
 		L.heal_quantified_damage(MEND_HEAL_PER_TICK)
 		//TODO: Some kind of sound here?

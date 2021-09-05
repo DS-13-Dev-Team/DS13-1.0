@@ -203,9 +203,8 @@ var/datum/callback/proc_to_call, var/proc_interval = 10)
 				. = 0
 				break
 
-		if (has_extension(user, /datum/extension/interrupt_doafter))
-			remove_extension(user, /datum/extension/interrupt_doafter)
-			.=0
+		if (doafter_blocked(user))
+			. = 0
 			break
 
 		if (proc_to_call)
@@ -225,6 +224,20 @@ var/datum/callback/proc_to_call, var/proc_interval = 10)
 		qdel(progbar)
 
 
+/proc/doafter_blocked(user)
+	.=FALSE
+	if (has_extension(user, /datum/extension/interrupt_doafter))	
+		var/datum/extension/interrupt_doafter/D = get_extension(user, /datum/extension/interrupt_doafter)
+		if (D.end_time >= world.time)
+			.=TRUE
+		D.remove_self()
+	
+	
+/datum/extension/interrupt_doafter
+	var/end_time
+/datum/extension/interrupt_doafter/New(var/datum/holder, var/_end_time)
+	.=..()
+	end_time = _end_time
 /*
 	do_mob is a variant of do_after. The key difference being it requires both the user and target to be mobs, and fails if either moves away
 	Needhand can be: 0, irrelevant
@@ -260,9 +273,8 @@ var/datum/callback/proc_to_call, var/proc_interval = 10)
 		if(uninterruptible)
 			continue
 
-		if (has_extension(user, /datum/extension/interrupt_doafter))
-			remove_extension(user, /datum/extension/interrupt_doafter)
-			.=0
+		if (doafter_blocked(user))
+			. = 0
 			break
 
 		if(!user || user.incapacitated(incapacitation_flags) || user.loc != user_loc)

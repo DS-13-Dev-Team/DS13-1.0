@@ -211,7 +211,7 @@
 //Called when a specific mob aborts constructing, either due to cancelling the doafter or running out of resources
 /obj/partial_construction/proc/user_stopped_building(var/mob/user)
 	workers -= user
-	set_extension(user, /datum/extension/interrupt_doafter) //Stop the doafter
+	set_extension(user, /datum/extension/interrupt_doafter, world.time + 2 SECONDS) //Stop the doafter
 
 	if (length(workers) <= 0)
 		stop_worksound()

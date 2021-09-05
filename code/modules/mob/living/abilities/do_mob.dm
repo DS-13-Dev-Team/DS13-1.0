@@ -55,5 +55,5 @@
 
 
 /datum/extension/ability/domob/proc/interrupt()
-	set_extension(user, /datum/extension/interrupt_doafter)
+	set_extension(user, /datum/extension/interrupt_doafter, world.time + 2 SECONDS)
 	stop()
