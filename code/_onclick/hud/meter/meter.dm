@@ -460,9 +460,9 @@
 		maptext = "[round(parent.current_value, parent.rounding)]/[parent.total_value]"
 		if (parent.change_per_second)
 			if (parent.change_per_second > 0)
-				maptext += "<span style='font-size:6px;'>+[parent.change_per_second]</span>"
+				maptext += "<span style='font-size:6px; color:#CCCCCC;'>+[parent.change_per_second]</span>"
 			else
-				maptext += "<span style='font-size:6px;'>-[parent.change_per_second]</span>"
+				maptext += "<span style='font-size:6px; color:#CCCCCC;'>-[parent.change_per_second]</span>"
 
 /obj/screen/meter_component/text/set_size()
 	return

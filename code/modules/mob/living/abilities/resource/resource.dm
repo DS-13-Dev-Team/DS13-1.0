@@ -60,7 +60,7 @@
 
 
 /datum/extension/resource/proc/get_report()
-	return list("current"	=	current_value, "max"	=	max_value, 	"regen"	=	regen)
+	return list("current"	=	current_value, "max"	=	max_value, 	"regen"	=	(current_value < max_value ? get_regen_amount() : 0))
 
 //Called whenever we might want to start
 /datum/extension/resource/proc/start_processing()
