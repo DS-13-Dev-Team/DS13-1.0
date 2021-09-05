@@ -283,7 +283,7 @@ All of them except New Growth require corruption to build upon\
 	if (LS && (world.time - LS.started_at) < SHARED_COOLDOWN_SHOT)
 		return
 
-	.= shoot_ability(/datum/extension/shoot/longshot, A , /obj/item/projectile/bullet/spine/venomous, accuracy = 50, dispersion = 0, num = 1, windup_time = 0 SECONDS, fire_sound = null, cooldown = 10 SECONDS)
+	.= shoot_ability(/datum/extension/shoot/longshot/spine, A , /obj/item/projectile/bullet/spine/venomous, accuracy = 50, dispersion = 0, num = 1, windup_time = 0 SECONDS, fire_sound = null, cooldown = 10 SECONDS)
 	if (.)
 		play_species_audio(src, SOUND_ATTACK, VOLUME_MID, 1, 3)
 
@@ -293,7 +293,9 @@ All of them except New Growth require corruption to build upon\
 		inject_necrotoxin(target)
 	. = ..()
 
-
+/datum/extension/shoot/longshot/spine
+	name = "Sting"
+	base_type = /datum/extension/shoot/longshot
 
 /*--------------------------------
 	Flap
