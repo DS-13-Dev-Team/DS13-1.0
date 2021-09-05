@@ -172,6 +172,26 @@ GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 			return change
 	return 0
 
+
+//Removes a number of total units of all reagents that match the given parent type. Subtypes included
+//No meaningful return value
+/datum/reagents/proc/remove_reagents_of_type(var/reagent_type, var/amount, var/safety = 0)
+	if(!isnum(amount))
+		return
+	for(var/datum/reagent/current as anything in reagent_list)
+		if(istype(current,reagent_type))
+			var/change = min(current.volume, amount)
+			current.volume -= change // It can go negative, but it doesn't matter
+			amount -= change
+			update_total() // Because this proc will delete it then
+			if(!safety)
+				process_reactions()
+			if(my_atom)
+				my_atom.on_reagent_change(reagent_type, amount*-1)
+			if (amount <= 0)
+				return
+	return
+
 /datum/reagents/proc/del_reagent(var/reagent_type)
 	for(var/datum/reagent/current as anything in reagent_list)
 		if (current.type == reagent_type)

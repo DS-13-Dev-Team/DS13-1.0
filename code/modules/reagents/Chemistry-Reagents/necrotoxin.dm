@@ -8,9 +8,9 @@
 	taste_description = "rotting flesh"
 	reagent_state = LIQUID
 	color = "#4c3b34"
-	strength = 6
+	strength = 5
 	extension_type = /datum/extension/reagent/necrotoxin
-	metabolism = REM * 0.15	//Slow acting poison, but really strong
+	metabolism = REM * 0.125	//Slow acting poison, but really strong
 
 
 
