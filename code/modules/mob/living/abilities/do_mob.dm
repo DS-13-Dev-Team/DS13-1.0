@@ -15,6 +15,7 @@
 
 	var/datum/callback/C
 	var/proc_interval = (1 SECOND)
+	var/refund_on_interrupt = TRUE
 
 /datum/extension/ability/domob/pre_calculate()
 	assemble_callback()
@@ -56,4 +57,6 @@
 
 /datum/extension/ability/domob/proc/interrupt()
 	set_extension(user, /datum/extension/interrupt_doafter, world.time + 2 SECONDS)
+	if (refund_on_interrupt)
+		refund_resource_cost(user)
 	stop()

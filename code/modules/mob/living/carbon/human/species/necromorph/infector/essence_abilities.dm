@@ -39,7 +39,7 @@
 
 /datum/extension/resource/essence
 	name = "Essence"
-	current_value = 0
+	current_value = 5 //5 points free to start with
 	max_value = 15
 	regen = (1 SECOND) / (1 MINUTE)	//One point regenerated per minute
 	meter_type = /obj/screen/meter/resource/essence
@@ -138,7 +138,7 @@
 	name = "Engorge"
 	blurb = "Makes the targeted necromorph larger, increasing its health, movespeed and view range."
 	resource_cost_type	=	RESOURCE_ESSENCE
-	resource_cost_quantity = 3
+	resource_cost_quantity = 2
 
 /datum/extension/ability/domob/engorge/apply_effect()
 	if (!has_extension(target, /datum/extension/engorge))

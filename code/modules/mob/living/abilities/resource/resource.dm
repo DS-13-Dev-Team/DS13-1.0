@@ -96,6 +96,19 @@
 
 	return FALSE
 
+
+/datum/extension/resource/proc/modify(var/quantity)
+	var/old_value = current_value
+	current_value += quantity
+	current_value = clamp(current_value, min_value, max_value)
+	if (old_value != current_value)
+		start_processing()
+		if (meter)
+			meter.update()
+		return TRUE
+
+	return FALSE
+
 /datum/extension/resource/proc/can_afford(var/quantity)
 	return (current_value >= quantity)
 
@@ -109,6 +122,12 @@
 	if (istype(R) && R.consume(quantity))
 		return TRUE
 
+
+/datum/proc/modify_resource(var/type, var/quantity)
+	.=FALSE
+	var/datum/extension/resource/R = get_extension(src, type)
+	if (istype(R) && R.modify(quantity))
+		return TRUE
 
 /datum/proc/can_afford_resource(var/type, var/quantity, var/error_message = FALSE)
 	.=FALSE

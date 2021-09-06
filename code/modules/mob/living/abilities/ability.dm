@@ -33,6 +33,7 @@
 
 	var/resource_cost_type	=	null
 	var/resource_cost_quantity = 1
+	var/resource_cost_paid = FALSE	//Used for refunding
 
 
 	//The blurb is a long-ish bit of text that explains how this ability works
@@ -86,6 +87,7 @@
 		//We should never fail to have enough since we did safety checks, but you can never be sure
 		if (!user.consume_resource(resource_cost_type, resource_cost_quantity))
 			return FALSE
+		resource_cost_paid = TRUE
 	return TRUE
 
 /datum/extension/ability/proc/stop()
@@ -159,6 +161,18 @@
 		if (!potential_user.can_afford_resource(resource_cost_type, resource_cost_quantity, error_message = TRUE))
 			return FALSE
 	return TRUE
+
+//This has two modes
+//1. Without a specified amount, we will try to refund what this ability costs by standard, but only if resource_cost_paid is true
+//2. With a specified amount, we just pay that back to the user with no safety checks at all
+/datum/extension/ability/proc/refund_resource_cost(var/mob/potential_user, var/amount)
+	if (!amount)
+		if (!resource_cost_paid)
+			return FALSE
+		amount = resource_cost_quantity
+
+	if (amount)
+		user.modify_resource(resource_cost_type, amount)
 
 //Access Proc
 
