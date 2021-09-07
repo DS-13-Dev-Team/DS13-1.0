@@ -95,8 +95,11 @@
 	// Works similarly to worn sprite_sheets, except the alternate sprites are used when the clothing/refit_for_species() proc is called.
 	var/list/sprite_sheets_obj = list()
 
-	//Items are not dense typically
+	// Items are not dense typically
 	can_block_movement = FALSE
+
+	// Statmods list
+	var/list/statmods
 
 /obj/item/New()
 	if (!max_health)

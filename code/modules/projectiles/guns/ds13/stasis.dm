@@ -99,4 +99,4 @@
 	expected_type = /obj/item
 	flags = EXTENSION_FLAG_IMMEDIATE
 
-	var/throw_mod = 0.25
+	statmods = list(STATMOD_MOVESPEED_MULTIPLICATIVE = 0.40)
