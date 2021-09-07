@@ -9,13 +9,18 @@ var/global/list/sparring_attack_cache = list()
 	var/attack_noun = list("fist")
 	var/damage = 4				// Extra empty hand attack damage.
 	var/rand_damage = 2			//The attack can deal this much damage more or less than standard
-	var/attack_sound = "punch"
+	var/attack_sound = "punch"	//This can be a list and one will be randomly picked from it
 	var/miss_sound = 'sound/weapons/punchmiss.ogg'
 	var/shredding = 0 // Calls the old attack_alien() behavior on objects/mobs when on harm intent.
 	var/sharp = 0
 	var/edge = 0
 	var/delay = 1 SECOND	//Default delay, overrideable
-	var/required_limb = list(BP_L_ARM, BP_R_ARM)	//The mob must have any of these limbs to do this attack
+
+	//The mob must have any of these limbs to do this attack. The limbs must be attached, not stumps, and not retracted
+	var/required_limb = list(BP_L_ARM, BP_R_ARM)
+
+	//Used with required_limb. If set true, and the required limb(s) are present, but retracted, then they will be extended to perform the attack
+	var/auto_extend = FALSE
 
 	var/deal_halloss
 	var/sparring_variant_type = /datum/unarmed_attack/light_strike
@@ -40,6 +45,10 @@ var/global/list/sparring_attack_cache = list()
 	var/lying_damage_factor	=	0.75
 
 	var/armor_penetration = 0
+
+	var/difficulty = 0	//Higher values make this attack less likely to be blocked
+
+	var/allow_dismemberment = TRUE
 
 /datum/unarmed_attack/New()
 	.=..()
@@ -67,8 +76,12 @@ var/global/list/sparring_attack_cache = list()
 	var/has_required_organ = FALSE
 	for (var/organ_tag in required_limb)
 		var/obj/item/organ/external/E = user.organs_by_name[organ_tag]
-		if(E && !E.is_stump() && !E.retracted)
-			has_required_organ = TRUE
+		if(E && !E.is_stump())
+			if (!E.retracted)
+				has_required_organ = TRUE
+			else if (auto_extend)
+				E.extend_for()
+				has_required_organ = TRUE
 
 	if (!has_required_organ)
 		return FALSE

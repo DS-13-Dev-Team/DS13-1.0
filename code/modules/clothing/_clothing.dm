@@ -4,6 +4,13 @@
 	var/flash_protection = FLASH_PROTECTION_NONE	// Sets the item's level of flash protection.
 	var/tint = TINT_NONE							// Sets the item's level of visual impairment tint.
 	var/list/species_restricted = STANDARD_CLOTHING_EXCLUDE_SPECIES //Only these species can wear this kit.
+
+
+	//If set, species in this list can wear this thing, overriding the restricted list.
+	//This is applied AFTER species_restricted to alter that list.
+	//It is intended for specific subtypes to create specific exemptions to broad overarching rules set in a parent class
+	var/list/species_allowed
+
 	var/gunshot_residue //Used by forensics.
 
 	var/list/accessories = list()
@@ -94,12 +101,19 @@
 		if("exclude" in species_restricted)
 			exclusive = 1
 
+		var/list/restrictions = species_restricted.Copy()
+		if (species_allowed)
+			if(exclusive)
+				restrictions -= species_allowed
+			else
+				restrictions += species_allowed
+
 		if(H.species)
 			if(exclusive)
-				if(!(H.species.get_bodytype(H) in species_restricted))
+				if(!(H.species.get_bodytype(H) in restrictions))
 					wearable = 1
 			else
-				if(H.species.get_bodytype(H) in species_restricted)
+				if(H.species.get_bodytype(H) in restrictions)
 					wearable = 1
 
 			if(!wearable && !(slot in list(slot_l_store, slot_r_store, slot_s_store)))

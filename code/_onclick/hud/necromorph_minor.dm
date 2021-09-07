@@ -23,7 +23,7 @@
 		hud_elements |= mymob.pain
 
 
-	hud_elements |= new /obj/screen/healthbar(mymob.client)
+	hud_elements |= new /obj/screen/meter/health(mymob.client)
 
 	mymob.zone_sel = new /obj/screen/zone_sel( null )
 	mymob.zone_sel.icon = ui_style

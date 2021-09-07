@@ -222,8 +222,12 @@
 	Using
 ************************/
 /atom/movable/proc/shoot_ability(var/subtype = /datum/extension/shoot, var/atom/target, var/projectile_type, var/accuracy = 100, var/dispersion = 0, var/num = 1, var/windup_time = 0, var/fire_sound = null, var/nomove = FALSE, var/cooldown = 0, var/vector2/starting_pixel_offset)
-	//First of all, lets check if we're currently able to charge
+	//First of all, lets check if we're currently able to shoot
 	if (!can_shoot(TRUE, subtype))
+		return FALSE
+
+	//Can't shoot yourself
+	if (target == src)
 		return FALSE
 
 	//Ok we've passed all safety checks, let's commence charging!

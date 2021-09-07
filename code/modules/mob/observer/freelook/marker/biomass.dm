@@ -256,6 +256,12 @@
 			BS.initial_mass += change
 			BS.remaining_mass += change
 
+//Set biomass to a specific value
+/mob/living/proc/set_biomass(var/newtarget)
+	if (!biomass)
+		biomass = 0
+	adjust_biomass(newtarget - biomass)
+
 
 //How much biomass is this object worth?
 /datum/proc/get_biomass()

@@ -13,6 +13,10 @@
 	ideal_character_age = 45
 	starting_credits = 5349
 
+	//This applies to all command staff
+	necro_conversion_compatibility = 1
+	necro_conversion_options = list(SPECIES_NECROMORPH_DIVIDER = 3)
+
 	access = list(access_ce, access_bridge, access_engineering, access_maint_tunnels, access_external_airlocks, access_keycard_auth)
 	outfit_type = /decl/hierarchy/outfit/job/engineering/ce
 

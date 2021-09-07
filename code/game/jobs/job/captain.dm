@@ -13,6 +13,10 @@
 	ideal_character_age = 50
 	starting_credits = 9070
 
+	//This applies to all command staff
+	necro_conversion_compatibility = 1
+	necro_conversion_options = list(SPECIES_NECROMORPH_DIVIDER = 3)
+
 	access = list(access_captain, access_bridge, access_security, access_armory, access_service,
 				access_cargo, access_mining, access_engineering,
 				access_external_airlocks, access_medical, access_research,
@@ -47,6 +51,10 @@ datum/job/cap/get_description_blurb()
 	ideal_character_age = 35
 	starting_credits = 6480
 
+	//This applies to all command staff
+	necro_conversion_compatibility = 1
+	necro_conversion_options = list(SPECIES_NECROMORPH_DIVIDER = 3)
+
 	access = list(access_fl, access_bridge, access_security, access_armory, access_maint_tunnels,
 				access_keycard_auth, access_cargo)
 	outfit_type = /decl/hierarchy/outfit/job/command/fl
@@ -76,6 +84,10 @@ datum/job/fl/get_description_blurb()
 	minimal_player_age = 18
 	ideal_character_age = 27
 	starting_credits = 3400
+
+	//This applies to all command staff
+	necro_conversion_compatibility = 1
+	necro_conversion_options = list(SPECIES_NECROMORPH_DIVIDER = 3)
 
 	access = list(access_bridge, access_security, access_maint_tunnels)
 	outfit_type = /decl/hierarchy/outfit/job/command/bo

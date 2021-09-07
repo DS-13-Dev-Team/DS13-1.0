@@ -199,7 +199,7 @@ Please contact me on #coderbus IRC. ~Carn x
 		M.Translate(1,-6)
 	else
 		M.Translate(0, 16*(default_scale-1))
-	transform = M
+	animate(src, transform = M, time = 10)
 
 
 var/global/list/damage_icon_parts = list()
