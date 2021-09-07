@@ -1446,6 +1446,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/dank/mono,
 /area/aegis/colony/research)
 "dA" = (
@@ -1454,6 +1459,18 @@
 "dB" = (
 /turf/simulated/wall/r_wall,
 /area/aegis/colony/breakroom)
+"dC" = (
+/obj/machinery/door/airlock/research{
+	name = "Research Laboratory"
+	},
+/obj/machinery/door/firedoor/border_only,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/dank/mono,
+/area/aegis/colony/research/lab)
 "dD" = (
 /turf/simulated/wall/r_wall,
 /area/aegis/colony/medical)
@@ -4820,6 +4837,16 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/dank/medical,
 /area/aegis/colony/research/lab)
 "kz" = (
@@ -5204,6 +5231,11 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
 /turf/simulated/floor/dank/medical,
 /area/aegis/colony/research/lab)
 "ln" = (
@@ -5328,6 +5360,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/dank/medical,
 /area/aegis/colony/research/lab)
@@ -5548,6 +5585,11 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/dank/medical,
 /area/aegis/colony/research/lab)
 "lY" = (
@@ -5742,11 +5784,6 @@
 /obj/machinery/door/firedoor/border_only,
 /turf/simulated/floor/dank/mono,
 /area/aegis/colony/research/lab)
-"ms" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/dank/medical,
-/area/aegis/colony/research/lab)
 "mt" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -5817,6 +5854,11 @@
 	d1 = 1;
 	d2 = 4;
 	icon_state = "1-4"
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/dank/medical,
 /area/aegis/colony/research/lab)
@@ -6019,6 +6061,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
 /turf/simulated/floor/dank/medical,
 /area/aegis/colony/research/lab)
 "mV" = (
@@ -6029,6 +6076,11 @@
 	dir = 4
 	},
 /obj/machinery/light,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/dank/medical,
 /area/aegis/colony/research/lab)
 "mW" = (
@@ -6037,6 +6089,11 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
 	},
 /turf/simulated/floor/dank/medical,
 /area/aegis/colony/research/lab)
@@ -6391,6 +6448,11 @@
 	dir = 1;
 	pixel_y = -24
 	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/dank/medical,
 /area/aegis/colony/research/lab)
 "nH" = (
@@ -6740,6 +6802,14 @@
 	},
 /turf/simulated/floor/airless,
 /area/aegis/colony/charging_station)
+"Hz" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/dank/medical,
+/area/aegis/colony/research/lab)
 "HQ" = (
 /obj/structure/plasticflaps/mining,
 /obj/machinery/conveyor{
@@ -33860,7 +33930,7 @@ lz
 lm
 lB
 lX
-ms
+kG
 mU
 nD
 lU
@@ -34063,7 +34133,7 @@ ll
 no
 np
 mt
-ky
+lG
 lE
 aV
 nv
@@ -34266,8 +34336,8 @@ lD
 lY
 mt
 ky
-lE
-aV
+Hz
+dC
 dz
 ml
 ne
@@ -34467,7 +34537,7 @@ lj
 lE
 lE
 lE
-ky
+lG
 ni
 jU
 eC
@@ -34669,7 +34739,7 @@ lj
 nq
 lZ
 lE
-ky
+lG
 nj
 jU
 nb
