@@ -95,6 +95,22 @@
 		return null
 
 
+/*
+	Gets ALL matching extensions using istype on everything in a list of types
+*/
+/proc/get_extensions_of_types(var/datum/source, var/list/search_types)
+	if(!source.extensions)
+		return
+	var/list/found = list()
+	for (var/typepath in source.extensions)
+		var/datum/extension/E = source.extensions[typepath]
+		for (var/match in search_types)
+			if (istype(E, match))
+				found+=E
+				break	//We only need to match it against any single one of the types in list, so break this subloop
+	return found
+
+
 //Fast way to check if it has an extension, also doesn't trigger instantiation of lazy loaded extensions
 /proc/has_extension(var/datum/source, var/base_type)
 	return (source.extensions && source.extensions[base_type])

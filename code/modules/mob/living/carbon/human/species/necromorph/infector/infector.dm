@@ -341,13 +341,13 @@ All of them except New Growth require corruption to build upon\
 	//The time is equal to the windup time of the attack, plus 0.5 seconds to prevent a brief stop and ensure launching is a fluid motion
 	var/vector2/pixel_offset = get_new_vector(0, -6)
 	var/vector2/cached_pixels = get_new_vector(src.pixel_x, src.pixel_y)
-	animate(src, pixel_x = src.pixel_x + pixel_offset.x, pixel_y = src.pixel_y + pixel_offset.y, time = 0.2 SECONDS, easing = EASE_OUT|CUBIC_EASING, flags = ANIMATION_PARALLEL)
-	animate(pixel_x = cached_pixels.x, pixel_y = cached_pixels.y, easing = EASE_IN|CUBIC_EASING, time = 0.2 SECONDS)
+	animate(src, pixel_x = src.pixel_x + pixel_offset.x, pixel_y = src.pixel_y + pixel_offset.y, time = 0.17 SECONDS, easing = EASE_OUT|CUBIC_EASING, flags = ANIMATION_PARALLEL)
+	animate(pixel_x = cached_pixels.x, pixel_y = cached_pixels.y, easing = EASE_IN|CUBIC_EASING, time = 0.17 SECONDS)
 	release_vector(pixel_offset)
 	release_vector(cached_pixels)
 
 
-	return leap_attack(A, subtype = /datum/extension/charge/leap/flap, _cooldown = cooldown, _delay = 0.35 SECONDS, _speed = speed, _maxrange = 9,_lifespan = 3 SECONDS)
+	return leap_attack(A, subtype = /datum/extension/charge/leap/flap, _cooldown = cooldown, _delay = 0.3 SECONDS, _speed = speed, _maxrange = 9,_lifespan = 3 SECONDS)
 
 
 
@@ -357,6 +357,7 @@ All of them except New Growth require corruption to build upon\
 	name = "Flap"
 	mobile_windup = TRUE
 	extra_pass_flags = (PASS_FLAG_TABLE | PASS_FLAG_FLYING | PASS_FLAG_NOMOB)
+	wind_down_time = (0.25 SECONDS)
 
 
 /datum/extension/charge/leap/flap/execution

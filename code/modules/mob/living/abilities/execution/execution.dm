@@ -243,13 +243,12 @@ if (result == EXECUTION_CANCEL && can_interrupt){\
 
 
 
-
 	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/execution/proc/finish_cooldown), cooldown, TIMER_STOPPABLE)
 
 
 /datum/extension/execution/proc/finish_cooldown()
 	deltimer(ongoing_timer)
-	remove_extension(holder, base_type)
+	remove_self()
 
 
 

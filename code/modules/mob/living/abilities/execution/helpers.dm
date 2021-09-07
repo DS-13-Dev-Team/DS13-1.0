@@ -1,5 +1,5 @@
 //Access Proc
-/atom/proc/can_execute(var/execution_type = /datum/extension/execution)
+/atom/proc/can_execute(var/execution_type = /datum/extension/execution, var/error_messages = TRUE)
 
 	var/datum/extension/execution/E = get_extension(src, execution_type)
 	if(istype(E))
@@ -7,12 +7,13 @@
 			to_chat(src, SPAN_NOTICE("[E.name] is cooling down. You can use it again in [E.get_cooldown_time() /10] seconds"))
 		else
 			to_chat(src, SPAN_NOTICE("You're already performing an execution"))
+
 		return FALSE
 
 	return TRUE
 
 
-/mob/living/can_execute(var/error_messages = TRUE)
+/mob/living/can_execute(var/execution_type = /datum/extension/execution, var/error_messages = TRUE)
 	if (incapacitated())
 		return FALSE
 	.=..()

@@ -23,12 +23,14 @@
 /*
 	Attaches the subject to mountpoint
 */
-/proc/mount_to_atom(var/atom/movable/subject, var/atom/mountpoint, var/mount_type = /datum/extension/mount, var/datum/mount_parameters/WP = new())
+/proc/mount_to_atom(var/atom/movable/subject, var/atom/mountpoint, var/mount_type = /datum/extension/mount, var/datum/mount_parameters/WP = new(), var/override = TRUE)
 	//If we're already doing a wallrun, remove it, we are switching to something new
-	var/datum/extension/wallrun/W = get_extension(subject, /datum/extension/wallrun)
-	if (W)
-		W.unmount()
-	set_extension(subject, mount_type, mountpoint, WP)
+	//Future TODO: Refactor these to use the same system
+	if (!subject.handle_existing_mounts(override))
+		return FALSE
+	return set_extension(subject, mount_type, mountpoint, WP)
+
+
 
 
 //Checks for a valid mount point in the specified location and facing. Returns that atom if we find one, returns null/false if there's nothing to mount to
@@ -192,6 +194,10 @@
 /datum/extension/mount/proc/dismount()
 	on_dismount()
 	remove_self()
+
+//This is just a wrapper to maintain an identical name with wallrun
+/datum/extension/mount/proc/unmount()
+	dismount()
 
 //Called when the atom we are mounted to moves
 /datum/extension/mount/proc/on_mountpoint_move(var/atom/mover, var/oldloc, var/newloc)

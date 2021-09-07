@@ -25,7 +25,7 @@
 		A = autotarget_enemy_mob(A, 2, src, 999)
 
 	var/mob/living/L = A
-	if (!istype(L) || L.lying)
+	if (!istype(L) || L.lying || L.is_necromorph())
 		to_chat(src, SPAN_DANGER("This must target a living, standing human."))
 		return
 
@@ -34,6 +34,10 @@
 	var/mob/living/carbon/human/H = src
 
 	if (!can_charge(A))
+		return
+
+
+	if (!can_execute(/datum/extension/execution/infector))
 		return
 
 	var/obj/item/organ/external/arm/tentacle/proboscis/P = get_organ(BP_HEAD)
@@ -51,7 +55,7 @@
 		missing++
 
 
-	var/cooldown = 60 SECONDS
+	var/cooldown = FLAP_COOLDOWN
 	var/speed = 3.5
 
 	if (missing >= 2)
@@ -96,7 +100,8 @@
 */
 /datum/extension/execution/infector
 	name = "Parasite Leap"
-	cooldown = 60	//Cooldown isnt handled here
+	cooldown = 60 SECONDS
+	base_type	=	/datum/extension/execution/infector
 	require_grab = FALSE
 	reward_biomass = 10
 	reward_energy = 100
@@ -334,8 +339,8 @@
 		WP.attach_mob_downed		=	TRUE	//Can this be/remain attached to mobs that are lying down?
 		WP.attach_mob_dead	=	FALSE	//Can this be/remain attached to mobs that are dead?
 		charge.do_winddown_animation = FALSE
-		mount_to_atom(charge.user, charge.last_obstacle, /datum/extension/mount/infector, WP)
-		return
+		mount_to_atom(charge.user, charge.last_obstacle, /datum/extension/mount/infector, WP, override = FALSE)	//We do NOT override the existing mount, only want to do it once
+		return FALSE	//Returning false terminates the charge/leap here
 
 	else
 		.=..()
@@ -367,20 +372,21 @@
 			user.default_rotation = new_rotation
 			user.default_pixel_y += 12
 			user.default_pixel_x -= 8
-			LAZYASET(statmods, STATMOD_SCALE,	-0.45)
+			LAZYASET(statmods, STATMOD_SCALE,	-0.40)
 			register_statmods(TRUE) //This will call animate_to_default and apply the changes we've recorded above
 
 
 /datum/extension/mount/infector/on_dismount()
-
+	sleep(1)
 	var/mob/living/carbon/human/user = mountee
 
 	user.default_rotation = 0
 	user.default_pixel_y -= 12
 	user.default_pixel_x += 8
 	user.animate_to_default(4)
-
 	.=..()
+
+
 
 
 
