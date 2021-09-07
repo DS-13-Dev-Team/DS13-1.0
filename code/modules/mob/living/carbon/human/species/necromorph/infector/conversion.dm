@@ -27,7 +27,7 @@
 		if (prob(20))
 			var/list/verbs = list("twitches", "cringes", "twists", "contorts", "writhes", "snaps", "crunches", "jerks", "spasms", "convulses", "distorts")
 			var/list/adverbs	=	list("gruesomely", "uncontrollably", "violently", "awkwardly", "horribly", "pitifully", "painfully")
-			visible_message("[src] [prob(20)	?	"[pick(adverbs)] ":""][pick(verbs)] [prob(20)	?	"and [pick(verbs)], ":""] [pick(adverbs)]")
+			visible_message("[src] [prob(20)	?	"[pick(adverbs)] ":""][pick(verbs)] [prob(20)	?	"and [pick(verbs)], ":""][pick(adverbs)]")
 
 		sleep(1 SECOND)
 
@@ -62,7 +62,7 @@
 //TODO: Fix necromorphs wearing rigs
 
 /mob/living/carbon/human/necromorph_conversion(var/compatibility = 1)
-
+	var/biomass_before = biomass
 
 	//Final
 	if (!is_necromorph_conversion_valid())
@@ -78,6 +78,8 @@
 	S = all_species[S]	//Convert it to datum
 
 	set_species(S.name)
+
+
 	resurrect(200) //Revive
 	spawn(2)
 		regenerate_icons(TRUE)
@@ -90,9 +92,10 @@
 	//We do gib visual fx without actually destroying the mob
 	gibs(loc, dna)
 
-	//TODO: Check that our biomass isnt changing
+	set_biomass(biomass_before)	//Our total biomass does not change
 
-	//var/datum/outfit/O = S.get_outfit(src)	//Grab a possible outfit we could wear
+	//TODO: Check that our biomass isnt changing
+	set_extension(src, /datum/extension/customisation_applied)	//Prevent the clothes from being changed if someone posesses it
 
 	DEL_TRANSFORMATION_MOVEMENT_HANDLER(src)
 
