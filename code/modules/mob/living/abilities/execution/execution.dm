@@ -37,6 +37,8 @@ if (result == EXECUTION_CANCEL && can_interrupt){\
 	interrupt();\
 	return}
 
+#define EXECUTION_DAMAGE_VULNERABILITY	1.5
+
 //Execution status vars
 #define STATUS_NOT_STARTED	0
 #define STATUS_STARTING		1
@@ -77,8 +79,8 @@ if (result == EXECUTION_CANCEL && can_interrupt){\
 
 	//Stat modifiers
 	//---------------
-	//While performing an execution, the user has lower vision range and cannot evade attacks
-	statmods = list(STATMOD_EVASION = -100, STATMOD_VIEW_RANGE = -4)
+	//While performing an execution, the user has lower vision range, cannot evade attacks, and takes more damage from all sources
+	statmods = list(STATMOD_EVASION = -100, STATMOD_VIEW_RANGE = -4, STATMOD_INCOMING_DAMAGE_MULTIPLICATIVE	=	EXECUTION_DAMAGE_VULNERABILITY)
 
 	//Aquisition vars
 	//-----------------------
@@ -172,7 +174,7 @@ if (result == EXECUTION_CANCEL && can_interrupt){\
 	Starting
 */
 /datum/extension/execution/proc/start()
-	if (!can_start())
+	if (can_start() != EXECUTION_CONTINUE)
 		stop()
 		return
 

@@ -35,6 +35,9 @@
 /mob/living/carbon/human/proc/get_active_grasping_limb()
 	var/numtocheck = 1 + hand //This feels hacky
 
+	if (!length(species.grasping_limbs))
+		return null
+
 	var/obj/item/organ/external/E = get_organ(species.grasping_limbs[min(species.grasping_limbs.len, numtocheck)])
 	if(!E || E.retracted || E.is_stump())
 		return null

@@ -67,6 +67,8 @@
 
 	var/mob_size	= MOB_MEDIUM
 	var/strength    = STR_MEDIUM
+	var/can_pull_mobs = MOB_PULL_SAME
+	var/can_pull_size = ITEM_SIZE_NO_CONTAINER
 	var/show_ssd = "fast asleep"
 	var/virus_immune
 	var/biomass	=	80	//How much biomass does it cost to spawn this (for necros) and how much does it yield when absorbed by a marker
@@ -456,6 +458,8 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 /datum/species/proc/create_organs(var/mob/living/carbon/human/H) //Handles creation of mob organs.
 
 	H.mob_size = mob_size
+	H.can_pull_mobs = src.can_pull_mobs
+	H.can_pull_size = src.can_pull_size
 	H.mass = src.mass
 	H.biomass = src.biomass
 	for(var/obj/item/organ/organ in H.contents)

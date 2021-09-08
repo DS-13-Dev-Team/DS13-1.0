@@ -113,9 +113,10 @@
 	src.updatehealth()
 
 //Heals a total number of points of all types of damage. Not divided equally, but done in order
-/mob/living/proc/heal_quantified_damage(var/total, var/brute = TRUE, var/fire = TRUE, var/tox = FALSE)
+//Returns the unused number of points, if any
+/mob/living/proc/heal_quantified_damage(var/total, var/brute = TRUE, var/fire = TRUE, var/tox = FALSE, var/lasting = FALSE)
 	if (total <= 0)
-		return
+		return 0
 
 	if (brute)
 		var/heal_amount = min(total, getBruteLoss())
@@ -123,7 +124,7 @@
 		total -= heal_amount
 
 	if (total <= 0)
-		return
+		return 0
 
 	if (fire)
 		var/heal_amount = min(total, getFireLoss())
@@ -131,13 +132,22 @@
 		total -= heal_amount
 
 	if (total <= 0)
-		return
+		return 0
 
 	if (tox)
 		var/heal_amount = min(total, getToxLoss())
 		adjustToxLoss(-heal_amount)
 		total -= heal_amount
+		
+	if (total <= 0)
+		return 0
 
+	if (lasting)
+		var/heal_amount = min(total, getLastingDamage())
+		adjustLastingDamage(-heal_amount)
+		total -= heal_amount
+
+	return total
 
 /mob/living/proc/updatehealth()
 	if(status_flags & GODMODE)

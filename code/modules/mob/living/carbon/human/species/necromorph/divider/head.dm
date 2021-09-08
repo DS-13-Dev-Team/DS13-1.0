@@ -332,7 +332,7 @@
 
 
 
-	statmods = list(STATMOD_EVASION = -100, STATMOD_VIEW_RANGE = -4)
+	statmods = list(STATMOD_EVASION = -100, STATMOD_VIEW_RANGE = -4, STATMOD_INCOMING_DAMAGE_MULTIPLICATIVE	=	EXECUTION_DAMAGE_VULNERABILITY)
 
 
 /datum/extension/execution/divider_head/safety_check()

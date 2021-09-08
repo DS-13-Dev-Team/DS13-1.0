@@ -103,8 +103,8 @@
 	cooldown = 60 SECONDS
 	base_type	=	/datum/extension/execution/infector
 	require_grab = FALSE
-	reward_biomass = 10
-	reward_energy = 100
+	reward_biomass = 0
+	reward_energy = 80
 	reward_heal = 0
 	range = 0
 	all_stages = list(/datum/execution_stage/wingwrap,
@@ -114,7 +114,6 @@
 
 	weapon_check = /datum/extension/execution/proc/weapon_check_organ
 
-	statmods = list(STATMOD_EVASION = -100, STATMOD_VIEW_RANGE = -4)
 
 /datum/extension/execution/infector/can_start()
 	.=..()
@@ -124,6 +123,13 @@
 
 	//Now in addition
 
+	//Can't target necros
+	if (victim.is_necromorph())
+		world << "Victim is necromorph"
+		return EXECUTION_CANCEL
+	else
+		world << "Victim is not necromorph"
+
 	//The target must have a head for us to penetrate
 	if (!victim.get_organ(BP_HEAD))
 		return EXECUTION_CANCEL
@@ -132,6 +138,14 @@
 	if (victim.lying)
 		return EXECUTION_CANCEL
 
+
+	//To prevent stacking, there must be no other infectors in the victim's turf
+	for (var/mob/living/carbon/human/H in get_turf(victim))
+		if (H == victim || H == user)
+			continue
+
+		if (istype(H.species, /datum/species/necromorph/infector))
+			return EXECUTION_CANCEL
 
 
 /datum/extension/execution/infector/safety_check()
