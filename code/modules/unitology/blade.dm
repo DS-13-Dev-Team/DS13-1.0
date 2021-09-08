@@ -78,7 +78,7 @@
 	reward_heal = 0
 	start_range = 7
 
-	statmods = list(STATMOD_EVASION = -100, STATMOD_VIEW_RANGE = -2)
+	statmods = list(STATMOD_EVASION = -100, STATMOD_VIEW_RANGE = -2, STATMOD_INCOMING_DAMAGE_MULTIPLICATIVE	=	EXECUTION_DAMAGE_VULNERABILITY)
 
 	all_stages = list(/datum/execution_stage/approach,
 	/datum/execution_stage/cover_mouth,

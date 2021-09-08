@@ -200,6 +200,7 @@
 			return FALSE
 
 	var/datum/extension/shoot/E = get_extension(src, subtype)
+
 	if(istype(E))
 		if (error_messages)
 			if (E.stopped_at)
