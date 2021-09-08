@@ -125,10 +125,7 @@
 
 	//Can't target necros
 	if (victim.is_necromorph())
-		world << "Victim is necromorph"
 		return EXECUTION_CANCEL
-	else
-		world << "Victim is not necromorph"
 
 	//The target must have a head for us to penetrate
 	if (!victim.get_organ(BP_HEAD))
