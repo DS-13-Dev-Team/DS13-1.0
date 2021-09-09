@@ -7,7 +7,7 @@
 
 	var/list/hud_list[10]
 	var/list/implants	//Things that are embedded in any of our organs. Nulled out when empty
-	var/obj/item/weapon/rig/wearing_rig // This is very not good, but it's much much better than calling get_rig() every update_canmove() call.
+	var/obj/item/weapon/rig/wearing_rig // This is perfectly fine
 
 	var/list/stance_limbs
 	var/list/grasp_limbs

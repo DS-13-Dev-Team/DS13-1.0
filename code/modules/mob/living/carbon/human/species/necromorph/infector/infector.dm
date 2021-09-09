@@ -6,18 +6,19 @@
 #define FLAP_COOLDOWN	(3 SECONDS)
 #define FLAP_SINGLE_WING_IMPAIRMENT	(0.4)
 
-#define INFECTOR_STING_DAMAGE	10
+#define INFECTOR_STING_DAMAGE	9
 
 /datum/species/necromorph/infector
 	name = SPECIES_NECROMORPH_INFECTOR
 	mob_type	=	/mob/living/carbon/human/necromorph/infector
 	name_plural =  "Infectors"
 	blurb = "A high value, fragile support, the Infector works as a builder and healer"
-	total_health = 150
+	total_health = 140
 
 	//Normal necromorph flags plus no slip
 	species_flags = SPECIES_FLAG_NO_PAIN | SPECIES_FLAG_NO_MINOR_CUT | SPECIES_FLAG_NO_POISON  | SPECIES_FLAG_NO_BLOCK | SPECIES_FLAG_NO_SLIP
 	stability = 2
+
 
 	icon_template = 'icons/mob/necromorph/infector.dmi'
 	icon_lying = "_lying"
@@ -39,6 +40,8 @@
 	bump_flag 	= SIMPLE_ANIMAL	// Quadrupedal and physically weak
 	push_flags 	= ALLMOBS	// What can we push?
 	swap_flags 	= ALLMOBS	// What can we swap place with?
+	can_pull_mobs = MOB_PULL_SMALLER
+	can_pull_size = ITEM_SIZE_NORMAL
 	evasion = 10
 	reach = 2
 
@@ -60,7 +63,7 @@
 
 	unarmed_types = list(/datum/unarmed_attack/proboscis)
 
-	slowdown = 5 //Note, this is a terribly awful way to do speed, bay's entire speed code needs redesigned
+	slowdown = 5.5 //Note, this is a terribly awful way to do speed, bay's entire speed code needs redesigned
 
 	//Vision
 	view_range = 10
@@ -74,7 +77,7 @@
 
 	locomotion_limbs = list(BP_R_ARM, BP_L_ARM)
 
-	grasping_limbs = list(BP_R_ARM, BP_L_ARM)
+	grasping_limbs = list()	//It has no grasping limbs, it cannot grab or pull anything
 
 	has_organ = list(    // which required-organ checks are conducted.
 	BP_HEART =    /obj/item/organ/internal/heart/undead,
@@ -236,7 +239,7 @@ All of them except New Growth require corruption to build upon\
 	attack_sound = list('sound/effects/attacks/whip_1.ogg', 'sound/effects/attacks/whip_2.ogg','sound/effects/attacks/whip_3.ogg','sound/effects/attacks/whip_4.ogg',)
 
 	damage = INFECTOR_STING_DAMAGE
-	armor_penetration = 10
+	armor_penetration = 5
 	delay = 4 SECONDS	//Long delay makes for low DPS, this is a hit and run thing
 
 	required_limb = list(BP_HEAD)
@@ -278,11 +281,6 @@ All of them except New Growth require corruption to build upon\
 
 	face_atom(A)
 
-	//Shared cooldown
-	var/datum/extension/shoot/longshot/LS = get_extension(src, /datum/extension/shoot/longshot)
-	if (LS && (world.time - LS.started_at) < SHARED_COOLDOWN_SHOT)
-		return
-
 	.= shoot_ability(/datum/extension/shoot/longshot/spine, A , /obj/item/projectile/bullet/spine/venomous, accuracy = 50, dispersion = 0, num = 1, windup_time = 0 SECONDS, fire_sound = null, cooldown = 10 SECONDS)
 	if (.)
 		play_species_audio(src, SOUND_ATTACK, VOLUME_MID, 1, 3)
@@ -295,7 +293,7 @@ All of them except New Growth require corruption to build upon\
 
 /datum/extension/shoot/longshot/spine
 	name = "Sting"
-	base_type = /datum/extension/shoot/longshot
+	base_type = /datum/extension/shoot/longshot/spine
 
 /*--------------------------------
 	Flap

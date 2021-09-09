@@ -639,7 +639,7 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 	/datum/execution_stage/tripod_bisect)
 
 
-	statmods = 	list(STATMOD_EVASION = -100, STATMOD_VIEW_RANGE = -6)
+	statmods = 	list(STATMOD_EVASION = -100, STATMOD_VIEW_RANGE = -6, STATMOD_INCOMING_DAMAGE_MULTIPLICATIVE	=	EXECUTION_DAMAGE_VULNERABILITY)
 
 
 /datum/extension/execution/tripod_kiss/interrupt()
