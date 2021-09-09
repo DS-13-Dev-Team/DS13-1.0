@@ -56,12 +56,15 @@
 	return TRUE
 
 
+//Called on this stage when the execution is interrupted. Use this to add consequences of failure
 /datum/execution_stage/proc/interrupt()
 	return TRUE
 
+//Called on this stage when the execution is completed. NOT when this specific stage finishes, that's exit()
 /datum/execution_stage/proc/complete()
 	return TRUE
 
+//Called when the execution finishes, by both interrupt and complete. Use this to clean up assets and effects
 /datum/execution_stage/proc/stop()
 	return TRUE
 

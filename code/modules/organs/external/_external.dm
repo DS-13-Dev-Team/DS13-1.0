@@ -34,6 +34,8 @@
 	//Retraction handling
 	var/retracted	=	FALSE			//	Is this limb retracted into its parent?  If true, the limb is not rendered and all hits are passed to parent
 	var/retract_timer					//	A timer handle used for temporary retractions or extensions
+	var/default_extend_time = 10 SECONDS	//When autoextended, how long should this organ be left out for if no time is specified?
+
 
 	// A bitfield for a collection of limb behavior flags.
 	var/limb_flags = ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_CAN_BREAK
@@ -1642,11 +1644,15 @@ obj/item/organ/external/proc/remove_clamps()
 		owner.update_body(TRUE)
 
 /obj/item/organ/external/proc/extend_for(var/time)
+	if (!time)
+		time = default_extend_time
 	extend()
 
 	retract_timer = addtimer(CALLBACK(src, /obj/item/organ/external/proc/retract), time, TIMER_STOPPABLE)
 
 /obj/item/organ/external/proc/retract_for(var/time)
+	if (!time)
+		time = default_extend_time
 	retract()
 
 	retract_timer = addtimer(CALLBACK(src, /obj/item/organ/external/proc/extend), time, TIMER_STOPPABLE)

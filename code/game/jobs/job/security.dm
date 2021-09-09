@@ -14,6 +14,10 @@
 
 	salary = SALARY_COMMAND
 
+	//This applies to all command staff
+	necro_conversion_compatibility = 1
+	necro_conversion_options = list(SPECIES_NECROMORPH_DIVIDER = 3)
+
 	access = list(access_bridge, access_cseco, access_armory, access_security, access_maint_tunnels,
 					access_external_airlocks, access_keycard_auth)
 	outfit_type = /decl/hierarchy/outfit/job/security/cseco

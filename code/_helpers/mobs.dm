@@ -125,57 +125,7 @@ proc/age2agedescription(age)
 /proc/get_exposed_defense_zone(var/atom/movable/target)
 	return pick(BP_HEAD, BP_L_HAND, BP_R_HAND, BP_L_FOOT, BP_R_FOOT, BP_L_ARM, BP_R_ARM, BP_L_LEG, BP_R_LEG, BP_CHEST, BP_GROIN)
 
-/*
-	Needhand can be: 0, irrelevant
-	1: Must continue holding same thing
-	2. must have a free hand
-*/
-/proc/do_mob(mob/user , mob/target, time = 30, target_zone = 0, uninterruptible = 0, progress = 1, var/incapacitation_flags = INCAPACITATION_DEFAULT, var/needhand = 1)
-	if(!user || !target)
-		return 0
-	var/user_loc = user.loc
-	var/target_loc = target.loc
 
-	var/holding = user.get_active_hand()
-	var/datum/progressbar/progbar
-	if (progress)
-		progbar = new(user, time, target)
-
-	var/endtime = world.time+time
-	var/starttime = world.time
-	. = 1
-	while (world.time < endtime)
-		sleep(1)
-		if (progress)
-			progbar.update(world.time - starttime)
-		if(!user || !target)
-			. = 0
-			break
-		if(uninterruptible)
-			continue
-
-		if(!user || user.incapacitated(incapacitation_flags) || user.loc != user_loc)
-			. = 0
-			break
-
-		if(target.loc != target_loc)
-			. = 0
-			break
-
-		if (needhand)
-			if(needhand == 1 && user.get_active_hand() != holding)
-				. = 0
-				break
-			else if (needhand == 2 && !user.has_free_hand())
-				. = 0
-				break
-
-		if(target_zone && user.zone_sel.selecting != target_zone)
-			. = 0
-			break
-
-	if (progbar)
-		qdel(progbar)
 
 /*
 	Do after is used to let a mob do things over time, with a failure if they move, or become incapacitated.
@@ -192,6 +142,10 @@ proc/age2agedescription(age)
 		proc_to_call: A callback. While the operation is ongoing, periodically call this
 		proc_interval: how often to call the above, in deciseconds
 */
+
+//This is used to interrupt these procs from outside
+/datum/extension/interrupt_doafter
+
 /proc/do_after(mob/user, delay, atom/target = null, needhand = 1, progress = 1, var/incapacitation_flags = INCAPACITATION_DEFAULT, var/same_direction = 0, var/can_move = 0,
 var/datum/callback/proc_to_call, var/proc_interval = 10)
 
@@ -225,9 +179,12 @@ var/datum/callback/proc_to_call, var/proc_interval = 10)
 
 	var/endtime = world.time + delay
 	var/starttime = world.time
-	. = 1
+
 	//We'll use this to time when to call the proc
 	var/proc_ticker = proc_interval
+
+	. = 1
+	remove_extension(user, /datum/extension/interrupt_doafter)
 	while (world.time < endtime)
 		sleep(1)
 		if (progress)
@@ -246,6 +203,10 @@ var/datum/callback/proc_to_call, var/proc_interval = 10)
 				. = 0
 				break
 
+		if (doafter_blocked(user))
+			. = 0
+			break
+
 		if (proc_to_call)
 			//Deplete this ticker
 			proc_ticker -= 1
@@ -261,6 +222,96 @@ var/datum/callback/proc_to_call, var/proc_interval = 10)
 
 	if (progbar)
 		qdel(progbar)
+
+
+/proc/doafter_blocked(user)
+	.=FALSE
+	if (has_extension(user, /datum/extension/interrupt_doafter))	
+		var/datum/extension/interrupt_doafter/D = get_extension(user, /datum/extension/interrupt_doafter)
+		if (D.end_time >= world.time)
+			.=TRUE
+		D.remove_self()
+	
+	
+/datum/extension/interrupt_doafter
+	var/end_time
+/datum/extension/interrupt_doafter/New(var/datum/holder, var/_end_time)
+	.=..()
+	end_time = _end_time
+/*
+	do_mob is a variant of do_after. The key difference being it requires both the user and target to be mobs, and fails if either moves away
+	Needhand can be: 0, irrelevant
+	1: Must continue holding same thing
+	2. must have a free hand
+	proc_to_call: A callback. While the operation is ongoing, periodically call this
+		proc_interval: how often to call the above, in deciseconds
+*/
+/proc/do_mob(mob/user , mob/target, time = 30, target_zone = 0, uninterruptible = 0, progress = 1, var/incapacitation_flags = INCAPACITATION_DEFAULT, var/needhand = 1,
+var/datum/callback/proc_to_call, var/proc_interval = 10)
+	if(!user || !target)
+		return 0
+	var/user_loc = user.loc
+	var/target_loc = target.loc
+
+	var/holding = user.get_active_hand()
+	var/datum/progressbar/progbar
+	if (progress)
+		progbar = new(user, time, target)
+
+	var/endtime = world.time+time
+	var/starttime = world.time
+	//We'll use this to time when to call the proc
+	var/proc_ticker = proc_interval
+	. = 1
+	while (world.time < endtime)
+		sleep(1)
+		if (progress)
+			progbar.update(world.time - starttime)
+		if(!user || !target)
+			. = 0
+			break
+		if(uninterruptible)
+			continue
+
+		if (doafter_blocked(user))
+			. = 0
+			break
+
+		if(!user || user.incapacitated(incapacitation_flags) || user.loc != user_loc)
+			. = 0
+			break
+
+		if(target.loc != target_loc)
+			. = 0
+			break
+
+		if (needhand)
+			if(needhand == 1 && user.get_active_hand() != holding)
+				. = 0
+				break
+			else if (needhand == 2 && !user.has_free_hand())
+				. = 0
+				break
+
+		if (proc_to_call)
+			//Deplete this ticker
+			proc_ticker -= 1
+
+			//If it goes below zero, we ADD not set the proc interval, so that any overflow isn't lost
+			if (proc_ticker <= 0)
+				proc_ticker += proc_interval
+
+				//And we call the proc
+				//We will pass: User, Interval
+				proc_to_call.Invoke(user, target, proc_interval)
+
+		if(target_zone && user.zone_sel.selecting != target_zone)
+			. = 0
+			break
+
+	if (progbar)
+		qdel(progbar)
+
 
 
 

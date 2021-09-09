@@ -328,4 +328,5 @@
 /datum/species/necromorph/handle_post_spawn(var/mob/living/carbon/human/H)
 	.=..()
 	//Apply customisation with a null preference, this applies default settings
-	H.apply_customisation(null)
+	if (!(HAS_TRANSFORMATION_MOVEMENT_HANDLER(H)))
+		H.apply_customisation(null)

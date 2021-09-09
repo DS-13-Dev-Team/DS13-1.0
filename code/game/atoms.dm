@@ -12,6 +12,8 @@
 	var/fluorescent // Shows up under a UV light.
 	var/used_now = FALSE //For tools system, check for it should forbid to work on atom for more than one user at time
 
+	//Misc:
+	var/list/statmods	//This is a list which we don't initialise to save on object creating costs. use lazyprocs to init at runtime when needed
 
 		///Chemistry.
 	var/reagent_flags = NONE

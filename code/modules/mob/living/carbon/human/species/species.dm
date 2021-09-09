@@ -30,6 +30,7 @@
 	//Thirdly, in single icon mode, it is the icon state for lying down
 	var/icon_lying = null
 	var/lying_rotation = 90 //How much to rotate the icon when lying down
+	var/layer = BASE_HUMAN_LAYER
 	var/layer_lying	=	LYING_HUMAN_LAYER
 
 	// Damage overlay and masks.
@@ -72,7 +73,7 @@
 		//This is in kilograms, and is thus approximately the mass of an average human male adult
 	var/mass = 80	//Actual mass of the resulting mob
 
-	var/layer = BASE_HUMAN_LAYER
+
 
 
 	var/light_sensitive                       // Ditto, but requires sunglasses to fix
@@ -315,7 +316,7 @@
 	var/list/genders = list(MALE, FEMALE)
 
 	// Bump vars
-	var/bump_flag = HUMAN	// What are we considered to be when bumped?
+	var/bump_flag = HUMAN	// What are we considered to be when bumped? these flags are in defines/mobs.dm
 	var/push_flags = ~HEAVY	// What can we push?
 	var/swap_flags = ~HEAVY	// What can we swap place with?
 	var/density_lying = FALSE	//Is this mob dense while lying down?

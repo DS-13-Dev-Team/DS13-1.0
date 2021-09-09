@@ -11,6 +11,7 @@
 	icon_state = "ds_captain"
 	permeability_coefficient = 0.50
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 10, rad = 0)
+	species_allowed = list(SPECIES_NECROMORPH_SLASHER)
 	sprite_sheets = list(
 		SPECIES_NECROMORPH_SLASHER = 'icons/mob/necromorph/slasher/clothing.dmi'
 		)
@@ -60,6 +61,7 @@
 	icon_state = "ds_senior_med_officer"
 	permeability_coefficient = 0.50
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 10, rad = 0)
+	species_allowed = list(SPECIES_NECROMORPH_SLASHER)
 
 /obj/item/clothing/under/deadspace/doctor
 	name = "medical doctor's uniform"
@@ -69,6 +71,7 @@
 	icon_state = "ds_med_doctor"
 	permeability_coefficient = 0.50
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 10, rad = 0)
+	species_allowed = list(SPECIES_NECROMORPH_SLASHER)
 	sprite_sheets = list(
 		SPECIES_NECROMORPH_SLASHER = 'icons/mob/necromorph/slasher/clothing.dmi'
 		)
@@ -81,6 +84,7 @@
 	icon_state = "ds_surgeon"
 	permeability_coefficient = 0.50
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 10, rad = 0)
+	species_allowed = list(SPECIES_NECROMORPH_SLASHER)
 
 /*
  * Research
@@ -123,6 +127,7 @@
 	worn_state = "ds_miner"
 	icon_state = "ds_miner"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS
+	species_allowed = list(SPECIES_NECROMORPH_SLASHER)
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
 
 /obj/item/clothing/under/deadspace/dom
@@ -144,6 +149,7 @@
 	icon_state = "ds_securityjumpsuit"
 	permeability_coefficient = 0.25
 	armor = list(melee = 35, bullet = 55, laser = 0, energy = 20, bomb = 45, bio = 0, rad = 0)
+	species_allowed = list(SPECIES_NECROMORPH_SLASHER)
 	sprite_sheets = list(
 		SPECIES_NECROMORPH_SLASHER = 'icons/mob/necromorph/slasher/clothing.dmi'
 		)

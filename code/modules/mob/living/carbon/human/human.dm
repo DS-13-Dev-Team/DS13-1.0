@@ -967,10 +967,11 @@
 		set_next_usable_move_intent()
 
 	//recheck species-restricted clothing
-	for(var/slot in slot_first to slot_last)
-		var/obj/item/clothing/C = get_equipped_item(slot)
-		if(istype(C) && !C.mob_can_equip(src, slot, disable_warning = TRUE, force = TRUE))	//Without the force flag, nothing can remain equipped
-			unEquip(C)
+
+	for (var/obj/item/I in get_equipped_items())
+		I.species_changed(src, species)
+
+
 
 	updatehealth()
 

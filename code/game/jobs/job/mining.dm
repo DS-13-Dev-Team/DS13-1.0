@@ -16,6 +16,11 @@
 	salary = SALARY_COMMAND
 
 	access = list(access_dom, access_mf, access_bridge, access_mining, access_maint_tunnels, access_keycard_auth)
+
+	//This applies to all command staff
+	necro_conversion_compatibility = 1
+	necro_conversion_options = list(SPECIES_NECROMORPH_DIVIDER = 3)
+
 	outfit_type = /decl/hierarchy/outfit/job/mining/dom
 
 	min_skill = list(   SKILL_COMPUTER	  = SKILL_BASIC,
