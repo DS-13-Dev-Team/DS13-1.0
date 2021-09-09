@@ -13,6 +13,10 @@
 	ideal_character_age = 50
 	starting_credits = 5080
 
+	//This applies to all command staff
+	necro_conversion_compatibility = 1
+	necro_conversion_options = list(SPECIES_NECROMORPH_DIVIDER = 3)
+
 	access = list(access_smo, access_bridge, access_maint_tunnels, access_medical, access_surgery, access_research, access_chemistry,
 					access_keycard_auth)
 	outfit_type = /decl/hierarchy/outfit/job/medical/smo

@@ -191,7 +191,7 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 /obj/item/organ/external/arm/right/leaper
 	limb_flags = ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_CAN_GRASP | ORGAN_FLAG_CAN_STAND
 
-
+//TODO: Make leaper stick to walls on impact
 
 //Leap attack
 /atom/movable/proc/leaper_leap(var/mob/living/A)

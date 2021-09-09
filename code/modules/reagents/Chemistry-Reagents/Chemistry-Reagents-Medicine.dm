@@ -87,9 +87,6 @@
 	color = "#00a000"
 	scannable = 1
 	flags = IGNORE_MOB_SIZE
-	var/static/list/remove_toxins = list(
-		/datum/reagent/toxin/zombiepowder
-	)
 
 /datum/reagent/dylovene/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_DIONA)
@@ -99,14 +96,8 @@
 	M.add_up_to_chemical_effect(CE_ANTITOX, 1)
 
 	var/removing = (3 * removed)
-	for(var/datum/reagent/R in M.ingested.reagent_list)
-		if(istype(R, /datum/reagent/toxin) || (R.type in remove_toxins))
-			M.ingested.remove_reagent(R.type, removing)
-			return
-	for(var/datum/reagent/R in M.reagents.reagent_list)
-		if(istype(R, /datum/reagent/toxin) || (R.type in remove_toxins))
-			M.reagents.remove_reagent(R.type, removing)
-			return
+	M.reagents.remove_reagents_of_type(/datum/reagent/toxin, removing)
+
 
 /datum/reagent/dexalin
 	name = "Dexalin"

@@ -16,8 +16,10 @@
 	name = "Leap"
 	var/cached_pass_flags
 	var/cached_plane
+	var/extra_pass_flags = (PASS_FLAG_TABLE | PASS_FLAG_FLYING)
 	continue_check = FALSE	//We're not gonna be stopped if we die mid air, the leap continues til it impacts
 	blur_filter_strength = 4
+	var/wind_down_time = 0.5 SECONDS
 
 /datum/extension/charge/leap/New(var/datum/holder, var/atom/_target, var/_speed , var/_lifespan, var/_maxrange, var/_homing, var/_inertia = FALSE, var/_power, var/_cooldown, var/_delay)
 	.=..()
@@ -39,12 +41,12 @@
 
 	//The sprite moves up into the air and a bit closer to the camera
 	animate(user, transform = user.transform.Scale(1.18), pixel_y = user.pixel_y + 24, time = max_lifespan(), flags = ANIMATION_PARALLEL)
-	user.pass_flags |= (PASS_FLAG_TABLE | PASS_FLAG_FLYING)
+	user.pass_flags |= extra_pass_flags
 	..()
 
 /datum/extension/charge/leap/stop()
 	if (do_winddown_animation)
-		animate(user, transform = user.get_default_transform(), pixel_y = user.default_pixel_y, time = 0.5 SECONDS)
+		animate(user, transform = user.get_default_transform(), pixel_y = user.default_pixel_y, time = wind_down_time)
 	user.pass_flags = cached_pass_flags
 	user.plane = cached_plane	//Draw over most mobs and objects
 	.=..()

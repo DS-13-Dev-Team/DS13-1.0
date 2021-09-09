@@ -11,6 +11,15 @@
 
 	return FALSE
 
+
+//Returns true if anyone has a grapple on us
+/mob/living/proc/is_grabbed()
+	//Future TODO: Add some validity checks to these
+	if (LAZYLEN(grabbed_by))
+		return TRUE
+	return FALSE
+
+
 /*
 	With no target, drops all grabs
 	With a target, drops only grabs affecting that target

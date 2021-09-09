@@ -1,5 +1,5 @@
 
-/mob/living/carbon/human/apply_damage(var/damage = 0, var/damagetype = BRUTE, var/def_zone = null, var/blocked = 0, var/damage_flags = 0, var/obj/used_weapon = null, var/obj/item/organ/external/given_organ = null)
+/mob/living/carbon/human/apply_damage(var/damage = 0, var/damagetype = BRUTE, var/def_zone = null, var/blocked = 0, var/damage_flags = 0, var/obj/used_weapon = null, var/obj/item/organ/external/given_organ = null, var/allow_dismemberment = TRUE)
 	SET_ARGS(species.handle_apply_damage(arglist(list(src)+args)))
 	var/obj/item/organ/external/organ = given_organ
 	if(!organ)
@@ -33,10 +33,10 @@
 	switch(damagetype)
 		if(BRUTE)
 			damage = damage*species.brute_mod
-			organ.take_external_damage(damage, 0, damage_flags, used_weapon)	//This calls update health
+			organ.take_external_damage(damage, 0, damage_flags, used_weapon, allow_dismemberment = allow_dismemberment)	//This calls update health
 		if(BURN)
 			damage = damage*species.burn_mod
-			organ.take_external_damage(0, damage, damage_flags, used_weapon)	//This calls update health
+			organ.take_external_damage(0, damage, damage_flags, used_weapon, allow_dismemberment = allow_dismemberment)	//This calls update health
 		if(PAIN)
 			organ.add_pain(damage)	//This calls update health
 		if(CLONE)

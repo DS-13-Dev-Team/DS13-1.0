@@ -90,7 +90,7 @@
 
 	if(hud_data.has_healthbar)
 
-		using = new /obj/screen/healthbar(target.client)
+		using = new /obj/screen/meter/health(target.client)
 		src.adding += using
 		hud_elements |= using
 

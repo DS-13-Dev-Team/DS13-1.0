@@ -203,5 +203,4 @@
 	//Combat
 	var/evasion = 15	//A base percentage chance of avoiding attacks which would otherwise hit
 
-	//Misc:
-	var/list/statmods	//This is a list which we don't initialise to save on object creating costs. use lazyprocs to init at runtime when needed
+	
