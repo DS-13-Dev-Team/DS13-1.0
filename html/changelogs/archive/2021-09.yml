@@ -1,4 +1,15 @@
-2021-09-01:
+2021-09-05:
+  Nanako:
+  - experiment: Added the Infector, a complex new support necromorph with abilities
+      to convert humans, construct corruption nodes, heal and buff other necromorphs.
+  - rscadd: Added necrotoxin, a poison that converts its victims into necromorphs
+      if it kills them. Necrotoxin is applied by all infector attacks.
+  - tweak: Reworked chemical metabolism rates. The base rate is a bit slower, but
+      now chemicals metabolize faster, the larger the quantity is in a patient's system.
+2021-09-07:
+  Snypehunter007:
+  - bugfix: Fixed the Aegis Colony Research Area not having external power.
+2021-09-09:
   DeadLineSS13:
   - rscadd: Updated TGUI to last version.
   - rscadd: Added a TGChat.
