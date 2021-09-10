@@ -390,7 +390,7 @@ Botany:
 	desc = "Advanced archaeological drill combining ultrasonic excitation and bluespace manipulation to provide extreme precision."
 	id = "excavation_drill_diamond"
 	build_type = PROTOLATHE
-	materials = list(MATERIAL_METAL = 3000, MATERIAL_GLASS = 1000, MATERIAL_DIAMOND = 3750)
+	materials = list(MATERIAL_STEEL = 3000, MATERIAL_GLASS = 1000, MATERIAL_DIAMOND = 3750)
 	build_path = /obj/item/weapon/tool/pickaxe/xeno/excavationdrill/adv
 
 /datum/design/item/mining/depth_scanner
