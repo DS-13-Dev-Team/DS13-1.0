@@ -474,8 +474,8 @@ This function restores all organs.
 				//user.throw_at(target, 200, 4)
 
 		if (2.0)
-			b_loss = 60
-			f_loss = 60
+			b_loss = 70
+			f_loss = 70
 
 			if (!istype(l_ear, /obj/item/clothing/ears/earmuffs) && !istype(r_ear, /obj/item/clothing/ears/earmuffs))
 				adjust_ear_damage(30, 20)
@@ -483,7 +483,8 @@ This function restores all organs.
 				Paralyse(3)
 
 		if(3.0)
-			b_loss = 30
+			b_loss = 35
+			f_loss = 35
 			if (!istype(l_ear, /obj/item/clothing/ears/earmuffs) && !istype(r_ear, /obj/item/clothing/ears/earmuffs))
 				adjust_ear_damage(15, 15)
 			if (prob(50))
@@ -494,13 +495,13 @@ This function restores all organs.
 	b_loss *= protection
 	f_loss *= protection
 
-	// focus most of the blast on one organ
+	// focus the largest part of the blast on one organ
 	var/obj/item/organ/external/take_blast = pick(organs)
-	take_blast.take_external_damage(b_loss * 0.7, f_loss * 0.7, used_weapon = "Explosive blast")
+	take_blast.take_external_damage(b_loss * 0.6, f_loss * 0.6, used_weapon = "Explosive blast")
 
-	// distribute the remaining 30% on all limbs equally (including the one already dealt damage)
-	b_loss *= 0.3
-	f_loss *= 0.3
+	// distribute the remaining 40% on all limbs equally (including the one already dealt damage)
+	b_loss *= 0.4
+	f_loss *= 0.4
 
 	for(var/obj/item/organ/external/temp in organs)
 		var/loss_val

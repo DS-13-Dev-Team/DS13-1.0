@@ -6,7 +6,7 @@
 	color = "#db5008"
 	metabolism = REM * 2
 	touch_met = 50 // It's acid!
-	var/power = 0.7
+	var/power = 0.9
 	var/meltdose = 23 // How much is needed to melt
 
 /datum/reagent/acid/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)

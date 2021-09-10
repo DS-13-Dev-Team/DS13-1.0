@@ -153,5 +153,5 @@ Projectile logic
 		T = get_turf(target)
 	spawn()
 
-		T.spray_ability(subtype = /datum/extension/spray/flame/radial,  target = target, angle = 360, length = 2, duration = 1.2 SECONDS, extra_data = list("temperature" = (T0C + 2600)))
+		T.spray_ability(subtype = /datum/extension/spray/flame/radial,  target = target, angle = 360, length = 2, duration = 1.2 SECONDS, extra_data = list("temperature" = (T0C + 2600)), affect_origin = TRUE)
 	. = ..()
