@@ -67,8 +67,7 @@
 
 		update_tethers()
 
-	if (!is_processing)
-		START_PROCESSING(SSfastprocess, src)
+	START_PROCESSING(SSfastprocess, src)
 
 /datum/firemode/remote/proc/unregister_projectile(var/obj/item/projectile/remote/R)
 	if ((R in projectiles))

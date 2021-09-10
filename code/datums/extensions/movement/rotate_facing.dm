@@ -47,7 +47,9 @@
 
 	target = newtarget
 	GLOB.moved_event.register(target, src, target_moved())
-	start_tracking()
+
+	complete_cycles = 0
+	START_PROCESSING(SSfastprocess, src)
 
 
 /*
@@ -94,35 +96,18 @@
 	.= AM.get_turf_at_pixel_offset(rotated_forward_vector)
 	release_vector(rotated_forward_vector)
 
-
-
-/*
-	This is called when a new target is set
-	In active track mode, it is also called when the holder or target moves
-	This starts the processing
-*/
-/datum/extension/rotate_facing/proc/start_tracking()
-	complete_cycles = 0
-	if (!is_processing)
-		START_PROCESSING(SSfastprocess, src)
-
-/*
-	This is called once we are facing the target, we'll stop processing until more turning is needed
-*/
-/datum/extension/rotate_facing/proc/end_tracking()
-	if (is_processing)
-		STOP_PROCESSING(SSfastprocess, src)
-
 /datum/extension/rotate_facing/proc/target_moved()
-	start_tracking()
+	complete_cycles = 0
+	START_PROCESSING(SSfastprocess, src)
 
 /datum/extension/rotate_facing/proc/holder_moved()
-	start_tracking()
+	complete_cycles = 0
+	START_PROCESSING(SSfastprocess, src)
 
 
 /datum/extension/rotate_facing/Process()
 	if (QDELETED(target))
-		end_tracking()
+		STOP_PROCESSING(SSfastprocess, src)
 		return
 
 	//Where are we currently looking?
@@ -171,7 +156,7 @@
 		complete_cycles++
 		//If we've been at the target for two ticks in a row, we're done
 		if (complete_cycles > 1)
-			end_tracking()
+			STOP_PROCESSING(SSfastprocess, src)
 	else
 		complete_cycles = 0
 

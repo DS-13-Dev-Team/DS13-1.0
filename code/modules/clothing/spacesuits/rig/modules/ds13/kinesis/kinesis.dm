@@ -370,7 +370,7 @@
 	GLOB.destroyed_event.register(subject, src, /obj/item/rig_module/kinesis/proc/release_grip)
 	GLOB.bump_event.register(subject, src, /obj/item/rig_module/kinesis/proc/subject_collision)
 
-	start_processing()
+	START_PROCESSING(SSfastprocess, src)
 
 
 //Can this module grip live mobs? False in most circumstances
@@ -425,7 +425,7 @@
 		tether.animate_fade_out(3)
 		tether = null	//It will delete itself
 	target = null
-	stop_processing()
+	STOP_PROCESSING(SSfastprocess, src)
 	bumped_atoms = list()
 	if (CHK.firing)
 		CHK.stop_firing()
@@ -505,18 +505,6 @@
 
 	The kinesis module uses fastprocess, ticking 5 times per second
 */
-/obj/item/rig_module/kinesis/proc/start_processing()
-
-	if (is_processing)
-		return FALSE
-
-	START_PROCESSING(SSfastprocess, src)
-
-
-/obj/item/rig_module/kinesis/proc/stop_processing()
-	STOP_PROCESSING(SSfastprocess, src)
-
-
 /obj/item/rig_module/kinesis/Process(var/wait)
 
 

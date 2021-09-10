@@ -146,7 +146,7 @@ You'll need two people to do this, one to man the gun while it goes down, one to
 	operational = TRUE
 	visible_message("<span class='warning'>[src] springs to life as the autotargeting reboots!</span>")
 	stop_gunning()
-	fire_handler.wake_up()
+	START_PROCESSING(SSfastprocess, fire_handler)
 
 /obj/structure/asteroidcannon/proc/is_operational()
 	return operational

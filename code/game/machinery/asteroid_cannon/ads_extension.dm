@@ -92,12 +92,10 @@
 	eyeobj.acceleration = FALSE
 	eyeobj.possess(gunner, gun)	//Pass in the gun with possess
 
-	wake_up()
+	START_PROCESSING(SSfastprocess, src)
 
 /datum/extension/asteroidcannon/proc/recenter()
 	eyeobj?.setLoc(get_turf(gun))
-
-
 
 /datum/extension/asteroidcannon/proc/remove_gunner()
 	if (eyeobj)
@@ -119,11 +117,4 @@
 	if(!istype(holder, /obj/structure/asteroidcannon))
 		return FALSE
 	gun = holder
-	wake_up()
-
-
-
-
-/datum/extension/asteroidcannon/proc/wake_up()
-	if (!is_processing)
-		START_PROCESSING(SSfastprocess, src)
+	START_PROCESSING(SSfastprocess, src)
