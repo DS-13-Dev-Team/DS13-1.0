@@ -604,5 +604,5 @@
 		var/turf/T = get_turf(src)
 
 		//We trigger the spray on the turf, because this object is about to be deleted
-		T.spray_ability(subtype = spraytype,  target = null, angle = 360, length = 3, duration = 3 SECONDS, extra_data = list("temperature" = temperature))
+		T.spray_ability(subtype = spraytype,  target = null, angle = 360, length = 3, duration = 3 SECONDS, extra_data = list("temperature" = temperature), affect_origin = TRUE)
 		expire()

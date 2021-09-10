@@ -265,59 +265,60 @@
 /obj/machinery/door/attackby(obj/item/I as obj, mob/user as mob)
 	add_fingerprint(user, 0, I)
 
-	if(istype(I, /obj/item/stack/material) && I.get_material_name() == get_material_name())
-		if(stat & BROKEN)
-			to_chat(user, "<span class='notice'>It looks like \the [src] is pretty busted. It's going to need more than just patching up now.</span>")
-			return
-		if(health >= max_health)
-			to_chat(user, "<span class='notice'>Nothing to fix!</span>")
-			return
-		if(!density)
-			to_chat(user, "<span class='warning'>\The [src] must be closed before you can repair it.</span>")
-			return
+	if (istype(I, /obj/item))
+		if(istype(I, /obj/item/stack/material) && I.get_material_name() == get_material_name())
+			if(stat & BROKEN)
+				to_chat(user, "<span class='notice'>It looks like \the [src] is pretty busted. It's going to need more than just patching up now.</span>")
+				return
+			if(health >= max_health)
+				to_chat(user, "<span class='notice'>Nothing to fix!</span>")
+				return
+			if(!density)
+				to_chat(user, "<span class='warning'>\The [src] must be closed before you can repair it.</span>")
+				return
 
-		//figure out how much metal we need
-		var/amount_needed = (max_health - health) / DOOR_REPAIR_AMOUNT
-		amount_needed = ceil(amount_needed)
+			//figure out how much metal we need
+			var/amount_needed = (max_health - health) / DOOR_REPAIR_AMOUNT
+			amount_needed = ceil(amount_needed)
 
-		var/obj/item/stack/stack = I
-		var/transfer
-		if (repairing)
-			transfer = stack.transfer_to(repairing, amount_needed - repairing.amount)
-			if (!transfer)
-				to_chat(user, "<span class='warning'>You must weld or remove \the [repairing] from \the [src] before you can add anything else.</span>")
-		else
-			repairing = stack.split(amount_needed, force=TRUE)
+			var/obj/item/stack/stack = I
+			var/transfer
 			if (repairing)
-				repairing.loc = src
-				transfer = repairing.amount
-				repairing.uses_charge = FALSE //for clean robot door repair - stacks hint immortal if true
+				transfer = stack.transfer_to(repairing, amount_needed - repairing.amount)
+				if (!transfer)
+					to_chat(user, "<span class='warning'>You must weld or remove \the [repairing] from \the [src] before you can add anything else.</span>")
+			else
+				repairing = stack.split(amount_needed, force=TRUE)
+				if (repairing)
+					repairing.loc = src
+					transfer = repairing.amount
+					repairing.uses_charge = FALSE //for clean robot door repair - stacks hint immortal if true
 
-		if (transfer)
-			to_chat(user, "<span class='notice'>You fit [transfer] [stack.singular_name]\s to damaged and broken parts on \the [src].</span>")
+			if (transfer)
+				to_chat(user, "<span class='notice'>You fit [transfer] [stack.singular_name]\s to damaged and broken parts on \the [src].</span>")
 
-		return
-
-	if(repairing && isWelder(I))
-		if(!density)
-			to_chat(user, "<span class='warning'>\The [src] must be closed before you can repair it.</span>")
 			return
 
-		to_chat(user, "<span class='notice'>You start to fix dents and weld \the [repairing] into place.</span>")
-		if(I.use_tool(user, src, WORKTIME_NORMAL, QUALITY_WELDING, FAILCHANCE_NORMAL))
-			to_chat(user, "<span class='notice'>You finish repairing the damage to \the [src].</span>")
-			health = between(health, health + repairing.amount*DOOR_REPAIR_AMOUNT, max_health)
-			update_icon()
-			qdel(repairing)
-			repairing = null
-		return
+		if(repairing && isWelder(I))
+			if(!density)
+				to_chat(user, "<span class='warning'>\The [src] must be closed before you can repair it.</span>")
+				return
 
-	if(repairing && isCrowbar(I))
-		to_chat(user, "<span class='notice'>You remove \the [repairing].</span>")
-		playsound(loc, 'sound/items/Crowbar.ogg', 100, 1)
-		repairing.loc = user.loc
-		repairing = null
-		return
+			to_chat(user, "<span class='notice'>You start to fix dents and weld \the [repairing] into place.</span>")
+			if(I.use_tool(user, src, WORKTIME_NORMAL, QUALITY_WELDING, FAILCHANCE_NORMAL))
+				to_chat(user, "<span class='notice'>You finish repairing the damage to \the [src].</span>")
+				health = between(health, health + repairing.amount*DOOR_REPAIR_AMOUNT, max_health)
+				update_icon()
+				qdel(repairing)
+				repairing = null
+			return
+
+		if(repairing && isCrowbar(I))
+			to_chat(user, "<span class='notice'>You remove \the [repairing].</span>")
+			playsound(loc, 'sound/items/Crowbar.ogg', 100, 1)
+			repairing.loc = user.loc
+			repairing = null
+			return
 
 	if(check_force(I, user))
 		return

@@ -241,7 +241,7 @@
 	Fragmentation
 */
 /obj/item/projectile/bullet/pellet/fragment/rivet
-	damage = 2.5
+	damage = 3
 	range_step = 3 //controls damage falloff with distance. projectiles lose a "pellet" each time they travel this distance. Can be a non-integer.
 
 	base_spread = 0 //causes it to be treated as a shrapnel explosion instead of cone

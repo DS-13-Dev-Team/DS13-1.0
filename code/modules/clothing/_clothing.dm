@@ -27,7 +27,8 @@
 
 	//If not null, this piece of clothing belongs to a rig frame
 	var/obj/item/weapon/rig/rig
-
+	acid_resistance = 1.2
+	max_health = 150
 
 // Updates the icons of the mob wearing the clothing item, if any.
 /obj/item/clothing/proc/update_clothing_icon()
