@@ -832,7 +832,7 @@
 
 	src.set_invisibility(101)	// make invisible (since we won't delete the pipe immediately)
 	var/obj/structure/disposalholder/H = locate() in src
-	if(H)
+	if(!QDELETED(H))
 		// holder was present
 		H.active = 0
 		var/turf/T = src.loc
@@ -850,8 +850,7 @@
 		if(H)
 			expel(H, T, 0)
 
-	spawn(2)	// delete pipe after 2 ticks to ensure expel proc finished
-		qdel(src)
+	QDEL_IN(src, 2)
 
 
 // pipe affected by explosion
