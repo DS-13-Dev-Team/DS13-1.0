@@ -27,12 +27,12 @@
 
 #define START_PROCESSING(Processor, Datum) \
 if (Datum.is_processing) {\
-	if(Datum.is_processing != Processor)\
+	if(Datum.is_processing != #Processor)\
 	{\
 		crash_with("Failed to start processing. [log_info_line(Datum)] is already being processed by [Datum.is_processing] but queue attempt occured on [#Processor]."); \
 	}\
 } else {\
-	Datum.is_processing = Processor;\
+	Datum.is_processing = #Processor;\
 	Processor.processing += Datum;\
 }
 
