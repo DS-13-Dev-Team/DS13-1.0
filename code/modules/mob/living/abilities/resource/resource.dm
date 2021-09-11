@@ -18,7 +18,7 @@
 
 /datum/extension/resource/New(var/mob/holder)
 	.=..()
-	START_PROCESSING(SSprocessing, src)
+	start_processing()
 	if (meter_type && ismob(holder))
 		setup_meter()	//Onscreen resource meter
 
@@ -62,6 +62,13 @@
 /datum/extension/resource/proc/get_report()
 	return list("current"	=	current_value, "max"	=	max_value, 	"regen"	=	(current_value < max_value ? get_regen_amount() : 0))
 
+//Called whenever we might want to start
+/datum/extension/resource/proc/start_processing()
+	START_PROCESSING(SSprocessing, src)
+
+/datum/extension/resource/proc/stop_processing()
+	STOP_PROCESSING(SSprocessing, src)
+
 /datum/extension/resource/can_stop_processing()
 	.=TRUE
 	if (current_value < max_value)
@@ -79,7 +86,7 @@
 /datum/extension/resource/proc/consume(var/quantity)
 	if (current_value >= quantity)
 		current_value -= quantity
-		START_PROCESSING(SSprocessing, src)
+		start_processing()
 		if (meter)
 			meter.update()
 		return TRUE
@@ -92,7 +99,7 @@
 	current_value += quantity
 	current_value = clamp(current_value, min_value, max_value)
 	if (old_value != current_value)
-		START_PROCESSING(SSprocessing, src)
+		start_processing()
 		if (meter)
 			meter.update()
 		return TRUE

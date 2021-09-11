@@ -66,7 +66,7 @@ GLOBAL_LIST_EMPTY(asteroids)
 /proc/register_asteroid(var/obj/effect/meteor/M)
 	GLOB.asteroids += M
 	if (GLOB.asteroidcannon)
-		START_PROCESSING(SSfastprocess, GLOB.asteroidcannon.fire_handler)
+		GLOB.asteroidcannon.fire_handler.wake_up()
 
 /obj/effect/meteor/Destroy()
 	GLOB.asteroids -= src
