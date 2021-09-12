@@ -261,6 +261,6 @@ datum/track/proc/GetTrack()
 	update_icon()
 
 /obj/machinery/media/jukebox/proc/AdjustVolume(new_volume)
-	volume = Clamp(new_volume, 0, 50)
+	volume = Clamp(new_volume, 0, 100)
 	if(sound_token)
 		sound_token.SetVolume(volume)
