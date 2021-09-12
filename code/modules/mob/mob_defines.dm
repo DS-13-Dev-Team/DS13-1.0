@@ -1,5 +1,6 @@
 /mob
-	density = 1
+	datum_flags = DF_USE_TAG
+	density = TRUE
 	plane = DEFAULT_PLANE
 	layer = MOB_LAYER
 
@@ -203,4 +204,5 @@
 	//Combat
 	var/evasion = 15	//A base percentage chance of avoiding attacks which would otherwise hit
 
-	
+	//Seciruty
+	var/static/next_mob_id = 0

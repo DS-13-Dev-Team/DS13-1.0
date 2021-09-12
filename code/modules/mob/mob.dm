@@ -1056,3 +1056,6 @@
 /// Adds this list to the output to the stat browser
 /mob/proc/get_status_tab_items()
 	. = list()
+
+/mob/GenerateTag()
+	tag = "mob_[next_mob_id++]"

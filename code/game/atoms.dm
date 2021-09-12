@@ -51,6 +51,9 @@
 	if(GLOB.use_preloader && (src.type == GLOB._preloader.target_path))//in case the instanciated atom is creating other atoms in New()
 		GLOB._preloader.load(src)
 
+	if(datum_flags & DF_USE_TAG)
+		GenerateTag()
+
 	var/do_initialize = SSatoms.atom_init_stage
 	var/list/created = SSatoms.created_atoms
 	if(do_initialize > INITIALIZATION_INSSATOMS_LATE)
@@ -345,6 +348,8 @@ its easier to just keep the beam vertical.
 		AM.throwing = 0
 	return
 
+/atom/proc/GenerateTag()
+	return
 
 //returns 1 if made bloody, returns 0 otherwise
 /atom/proc/add_blood(mob/living/carbon/human/M as mob)
