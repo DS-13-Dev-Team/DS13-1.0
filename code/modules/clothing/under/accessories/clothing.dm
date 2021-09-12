@@ -56,7 +56,7 @@
 
 /obj/item/clothing/accessory/toggleable/on_removed(mob/user as mob)
 	if(has_suit)
-		has_suit.verbs |= /obj/item/clothing/accessory/toggleable/verb/toggle
+		has_suit.verbs -= /obj/item/clothing/accessory/toggleable/verb/toggle
 	..()
 
 /obj/item/clothing/accessory/toggleable/verb/toggle()
@@ -158,8 +158,8 @@
 	has_suit.verbs |= /obj/item/clothing/accessory/toggleable/flannel/verb/roll_up_sleeves
 
 /obj/item/clothing/accessory/toggleable/flannel/on_removed(mob/user as mob)
-	has_suit -= /obj/item/clothing/accessory/toggleable/flannel/verb/tuck
-	has_suit -= /obj/item/clothing/accessory/toggleable/flannel/verb/roll_up_sleeves
+	has_suit.verbs -= /obj/item/clothing/accessory/toggleable/flannel/verb/tuck
+	has_suit.verbs -= /obj/item/clothing/accessory/toggleable/flannel/verb/roll_up_sleeves
 	..()
 
 /obj/item/clothing/accessory/toggleable/flannel/do_toggle(user)
