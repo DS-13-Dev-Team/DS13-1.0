@@ -226,8 +226,9 @@ var/global/datum/controller/occupations/job_master
 				break
 
 	proc/ResetOccupations()
-		for(var/mob/dead/new_player/player in GLOB.player_list)
-			if((player) && (player.mind))
+		for(var/i in GLOB.new_player_list)
+			var/mob/dead/new_player/player = i
+			if(player?.mind)
 				player.mind.assigned_role = null
 				player.mind.set_special_role(null)
 		SetupOccupations()
@@ -305,7 +306,8 @@ var/global/datum/controller/occupations/job_master
 					break
 
 		//Get the players who are ready
-		for(var/mob/dead/new_player/player in GLOB.player_list)
+		for(var/i in GLOB.new_player_list)
+			var/mob/dead/new_player/player = i
 			if(player.ready && player.mind && !player.mind.assigned_role)
 				unassigned += player
 
@@ -595,7 +597,8 @@ var/global/datum/controller/occupations/job_master
 			var/level4 = 0 //never
 			var/level5 = 0 //banned
 			var/level6 = 0 //account too young
-			for(var/mob/dead/new_player/player in GLOB.player_list)
+			for(var/i in GLOB.new_player_list)
+				var/mob/dead/new_player/player = i
 				if(!(player.ready && player.mind && !player.mind.assigned_role))
 					continue //This player is not ready
 				if(jobban_isbanned(player, job.title))

@@ -21,6 +21,15 @@
 	..()
 	add_verb(src, /mob/proc/toggle_antag_pool)
 
+/mob/dead/new_player/Initialize()
+	. = ..()
+	GLOB.new_player_list += src
+
+/mob/dead/new_player/Destroy()
+	GLOB.new_player_list -= src
+
+	return ..()
+
 /mob/dead/new_player/verb/new_player_panel()
 	set src = usr
 	new_player_panel_proc()

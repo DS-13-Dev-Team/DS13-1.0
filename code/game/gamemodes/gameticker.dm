@@ -42,6 +42,9 @@ var/global/datum/controller/gameticker/ticker
 
 	var/round_start_time = 0
 
+	var/totalPlayers = 0 //used for pregame stats on statpanel
+	var/totalPlayersReady = 0 //used for pregame stats on statpanel
+
 /datum/controller/gameticker/proc/pregame()
 	do
 		if(!gamemode_voted)
@@ -81,6 +84,14 @@ var/global/datum/controller/gameticker/ticker
 						for(var/i=0, i<10, i++)
 							sleep(1)
 							vote.process()
+
+			totalPlayers = LAZYLEN(GLOB.new_player_list)
+			totalPlayersReady = 0
+			for(var/i in GLOB.new_player_list)
+				var/mob/dead/new_player/player = i
+				if(player.ready)
+					++totalPlayersReady
+
 			if(pregame_timeleft <= 0 || ((initialization_stage & INITIALIZATION_NOW_AND_COMPLETE) == INITIALIZATION_NOW_AND_COMPLETE))
 				current_state = GAME_STATE_SETTING_UP
 				Master.SetRunLevel(RUNLEVEL_SETUP)
@@ -297,8 +308,9 @@ var/global/datum/controller/gameticker/ticker
 
 
 	proc/create_characters()
-		for(var/mob/dead/new_player/player in GLOB.player_list)
-			if(player && player.ready && player.mind)
+		for(var/i in GLOB.new_player_list)
+			var/mob/dead/new_player/player = i
+			if(player?.ready && player?.mind)
 				if(player.mind.assigned_role=="AI")
 					player.close_spawn_windows()
 					player.AIize()

@@ -165,8 +165,9 @@ var/global/list/additional_antag_types = list()
 // Returns 0 if the mode can start and a message explaining the reason why it can't otherwise.
 /datum/game_mode/proc/startRequirements()
 	var/playerC = 0
-	for(var/mob/dead/new_player/player in GLOB.player_list)
-		if((player.client)&&(player.ready))
+	for(var/i in GLOB.new_player_list)
+		var/mob/dead/new_player/player = i
+		if(player.client && player.ready)
 			playerC++
 
 	if(playerC < required_players)
@@ -482,7 +483,8 @@ var/global/list/additional_antag_types = list()
 
 	else
 		// Assemble a list of active players without jobbans.
-		for(var/mob/dead/new_player/player in GLOB.player_list)
+		for(var/i in GLOB.new_player_list)
+			var/mob/dead/new_player/player = i
 			if( player.client && player.ready )
 				players += player
 

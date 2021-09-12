@@ -46,6 +46,7 @@ GLOBAL_LIST_EMPTY(human_mob_list)   //List of all human mobs and sub-types, incl
 GLOBAL_LIST_EMPTY(silicon_mob_list) //List of all silicon mobs, including clientless
 GLOBAL_LIST_EMPTY(living_mob_list) //List of all alive mobs, including clientless. Excludes /mob/dead/new_player
 GLOBAL_LIST_EMPTY(dead_mob_list)   //List of all dead mobs, including clientless. Excludes /mob/dead/new_player
+GLOBAL_LIST_EMPTY(new_player_list) //all /mob/dead/new_player, in theory all should have clients and those that don't are in the process of spawning and get deleted when done
 GLOBAL_LIST_EMPTY(ghost_mob_list)   //List of all ghosts, including clientless. Excludes /mob/dead/new_player
 
 
