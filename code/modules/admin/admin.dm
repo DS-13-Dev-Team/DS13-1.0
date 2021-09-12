@@ -688,7 +688,7 @@ var/global/floorIsLava = 0
 	message = sanitize(message, 500, extra = 0)
 	if(message)
 		message = replacetext(message, "\n", "<br>") // required since we're putting it in a <p> tag
-		to_world("<span class=notice><b>[usr.key] Announces:</b><p style='text-indent: 50px'>[message]</p></span>")
+		to_chat(world, "<span class=notice><b>[usr.key] Announces:</b><p style='text-indent: 50px'>[message]</p></span>")
 		log_admin("Announce: [key_name(usr)] : [message]")
 	feedback_add_details("admin_verb","A") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -928,9 +928,9 @@ var/global/floorIsLava = 0
 	set name="Toggle tinted welding helmets."
 	CONFIG_SET(flag/welder_vision, !CONFIG_GET(flag/welder_vision))
 	if (CONFIG_GET(flag/welder_vision))
-		to_world("<B>Reduced welder vision has been enabled!</B>")
+		to_chat(world, "<B>Reduced welder vision has been enabled!</B>")
 	else
-		to_world("<B>Reduced welder vision has been disabled!</B>")
+		to_chat(world, "<B>Reduced welder vision has been disabled!</B>")
 	log_and_message_admins("toggled welder vision.")
 	feedback_add_details("admin_verb","TTWH") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 

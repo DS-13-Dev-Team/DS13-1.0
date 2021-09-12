@@ -98,9 +98,9 @@
 
 	CONFIG_SET(flag/aooc_allowed, !CONFIG_GET(flag/aooc_allowed))
 	if (CONFIG_GET(flag/aooc_allowed))
-		to_world("<B>The AOOC channel has been globally enabled!</B>")
+		to_chat(world, "<span class='adminooc'><B>The AOOC channel has been globally enabled!</B></span>")
 	else
-		to_world("<B>The AOOC channel has been globally disabled!</B>")
+		to_chat(world, "<span class='adminooc'><B>The AOOC channel has been globally disabled!</B></span>")
 	log_and_message_admins("toggled AOOC.")
 	feedback_add_details("admin_verb","TAOOC") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -114,9 +114,9 @@
 
 	CONFIG_SET(flag/looc_allowed, !CONFIG_GET(flag/looc_allowed))
 	if(CONFIG_GET(flag/looc_allowed))
-		to_world("<B>The LOOC channel has been globally enabled!</B>")
+		to_chat(world, "<span class='oocplain'><B>The LOOC channel has been globally enabled!</B></span>")
 	else
-		to_world("<B>The LOOC channel has been globally disabled!</B>")
+		to_chat(world, "<span class='oocplain'><B>The LOOC channel has been globally disabled!</B></span>")
 	log_and_message_admins("toggled LOOC.")
 	feedback_add_details("admin_verb","TLOOC") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -131,9 +131,9 @@
 
 	CONFIG_SET(flag/dsay_allowed, !CONFIG_GET(flag/dsay_allowed))
 	if (CONFIG_GET(flag/dsay_allowed))
-		to_world("<B>Deadchat has been globally enabled!</B>")
+		to_chat(world, "<span class='oocplain'><B>Deadchat has been globally enabled!</B></span>")
 	else
-		to_world("<B>Deadchat has been globally disabled!</B>")
+		to_chat(world, "<span class='oocplain'><B>Deadchat has been globally disabled!</B></span>")
 	log_and_message_admins("toggled deadchat.")
 	feedback_add_details("admin_verb","TDSAY") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc
 
@@ -200,9 +200,9 @@
 	set name="Toggle Entering"
 	CONFIG_SET(flag/enter_allowed, !CONFIG_GET(flag/enter_allowed))
 	if (!CONFIG_GET(flag/enter_allowed))
-		to_world("<B>New players may no longer enter the game.</B>")
+		to_chat(world, "<B>New players may no longer enter the game.</B>")
 	else
-		to_world("<B>New players may now enter the game.</B>")
+		to_chat(world, "<B>New players may now enter the game.</B>")
 	log_and_message_admins("[key_name_admin(usr)] toggled new player game entering.")
 	world.update_status()
 	feedback_add_details("admin_verb","TE") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
@@ -213,9 +213,9 @@
 	set name="Toggle AI"
 	CONFIG_SET(flag/allow_ai, !CONFIG_GET(flag/allow_ai))
 	if (!CONFIG_GET(flag/allow_ai))
-		to_world("<B>The AI job is no longer chooseable.</B>")
+		to_chat(world, "<B>The AI job is no longer chooseable.</B>")
 	else
-		to_world("<B>The AI job is chooseable now.</B>")
+		to_chat(world, "<B>The AI job is chooseable now.</B>")
 	log_admin("[key_name(usr)] toggled AI allowed.")
 	world.update_status()
 	feedback_add_details("admin_verb","TAI") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
@@ -226,9 +226,9 @@
 	set name="Toggle Respawn"
 	CONFIG_SET(flag/abandon_allowed, !CONFIG_GET(flag/abandon_allowed))
 	if(CONFIG_GET(flag/abandon_allowed))
-		to_world("<B>You may now respawn.</B>")
+		to_chat(world, "<B>You may now respawn.</B>")
 	else
-		to_world("<B>You may no longer respawn :(</B>")
+		to_chat(world, "<B>You may no longer respawn :(</B>")
 	log_and_message_admins("toggled respawn to [CONFIG_GET(flag/abandon_allowed) ? "On" : "Off"].")
 	world.update_status()
 	feedback_add_details("admin_verb","TR") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
@@ -281,10 +281,10 @@
 		return //alert("Round end delayed", null, null, null, null, null)
 	round_progressing = !round_progressing
 	if (!round_progressing)
-		to_world("<b>The game start has been delayed.</b>")
+		to_chat(world, "<span class='infodisplay'><b>The game start has been delayed.</b></span>")
 		log_admin("[key_name(usr)] delayed the game.")
 	else
-		to_world("<b>The game will start soon.</b>")
+		to_chat(world, "<span class='infodisplay'><b>The game will start soon.</b></span>")
 		log_admin("[key_name(usr)] removed the delay.")
 	feedback_add_details("admin_verb","DELAY") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -319,7 +319,7 @@
 	if(!usr.client.holder)	return
 	if( alert("Reboot server?",,"Yes","No") == "No")
 		return
-	to_world("<span class='danger'>Rebooting world!</span> <span class='notice'>Initiated by [usr.key]!</span>")
+	to_chat(world, "<span class='danger'>Rebooting world!</span> <span class='notice'>Initiated by [usr.key]!</span>")
 	log_admin("[key_name(usr)] initiated an immediate reboot.")
 
 	feedback_set_details("end_error","immediate admin reboot - by [usr.key]")
@@ -361,13 +361,13 @@
 				ticker.delay = delay
 				ticker.force_ending = TRUE
 			if("Hard Restart (No Delay, No Feeback Reason)")
-				to_chat(world, "World reboot - [init_by]")
+				to_chat(world, "<span class='infoplain'>World reboot - [init_by]</span>")
 				world.Reboot()
 			if("Hardest Restart (No actions, just reboot)")
-				to_chat(world, "Hard world reboot - [init_by]")
+				to_chat(world, "<span class='infoplain'>Hard world reboot - [init_by]</span>")
 				world.Reboot(fast_track = TRUE)
 			if("Server Restart (Kill and restart DD)")
-				to_chat(world, "Server restart - [init_by]")
+				to_chat(world, "<span class='infoplain'>Server restart - [init_by]</span>")
 				world.TgsEndProcess()
 
 /datum/admins/proc/toggleooc()
@@ -380,9 +380,9 @@
 
 	CONFIG_SET(flag/ooc_allowed, !CONFIG_GET(flag/ooc_allowed))
 	if (CONFIG_GET(flag/ooc_allowed))
-		to_world("<B>The OOC channel has been globally enabled!</B>")
+		to_chat(world, "<B>The OOC channel has been globally enabled!</B>")
 	else
-		to_world("<B>The OOC channel has been globally disabled!</B>")
+		to_chat(world, "<B>The OOC channel has been globally disabled!</B>")
 	log_and_message_admins("toggled OOC.")
 	feedback_add_details("admin_verb","TOOC") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -392,9 +392,9 @@
 	set name="Toggle guests"
 	CONFIG_SET(flag/guests_allowed, !CONFIG_GET(flag/guests_allowed))
 	if (!CONFIG_GET(flag/guests_allowed))
-		to_world("<B>Guests may no longer enter the game.</B>")
+		to_chat(world, "<B>Guests may no longer enter the game.</B>")
 	else
-		to_world("<B>Guests may now enter the game.</B>")
+		to_chat(world, "<B>Guests may now enter the game.</B>")
 	log_admin("[key_name(usr)] toggled guests game entering [CONFIG_GET(flag/guests_allowed)?"":"dis"]allowed.")
 	log_and_message_admins("toggled guests game entering [CONFIG_GET(flag/guests_allowed)?"":"dis"]allowed.")
 	feedback_add_details("admin_verb","TGU") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!

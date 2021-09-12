@@ -140,9 +140,11 @@ var/global/list/additional_antag_types = list()
 				return
 
 /datum/game_mode/proc/announce() //to be called when round starts
-	to_world("<B>The current game mode is [capitalize(name)]!</B>")
-	if(round_description) to_world("[round_description]")
-	if(round_autoantag) to_world("Antagonists will be added to the round automagically as needed.")
+	to_chat(world, "<span class='infoplain'><B>The current game mode is [capitalize(name)]!</B></span>")
+	if(round_description)
+		to_chat(world, "<span class='infoplain'>[round_description]</span>")
+	if(round_autoantag)
+		to_chat(world, "<span class='infoplain'>Antagonists will be added to the round automagically as needed.</span>")
 	if(antag_templates && antag_templates.len)
 		var/antag_summary = "<b>Possible antagonist types:</b> "
 		var/i = 1
@@ -156,7 +158,7 @@ var/global/list/additional_antag_types = list()
 			i++
 		antag_summary += "."
 		if(antag_templates.len > 1 && master_mode != "secret")
-			to_world("[antag_summary]")
+			to_chat(world, "<span class='infoplain'>[antag_summary]</span>")
 		else
 			message_admins("[antag_summary]")
 
@@ -431,17 +433,17 @@ var/global/list/additional_antag_types = list()
 	else // Safety clause. Pray to god this never gets ran. Wouldn't know why it would do that, if it did.
 		text += "<br>DEBUG: You fucked up. This is not meant to happen."
 		text += "<br>Contact Lion immediately."
-	to_world(text)
+	to_chat(world, "<span class='infoplain'>[text]</span>")
 
 	var/obj/machinery/marker/M = get_marker()
 	if (M.player)
-		to_world("<b>The Marker player was: [M.player]!</b><br>")
+		to_chat(world, "<span class='infoplain'><b>The Marker player was: [M.player]!</b><br></span>")
 	else
-		to_world("<b>There was no Marker at the end.</b><br>")
+		to_chat(world, "<span class='infoplain'><b>There was no Marker at the end.</b><br></span>")
 
-	to_world("<b>The Marker accrued a total biomass of: [round(M.get_total_biomass())]kg</b><br>")
+	to_chat(world, "<span class='infoplain'><b>The Marker accrued a total biomass of: [round(M.get_total_biomass())]kg</b><br></span>")
 
-	to_world("<b>The Marker spawned [get_historic_major_vessel_total() ] total necromorphs!</b><br>")
+	to_chat(world, "<span class='infoplain'><b>The Marker spawned [get_historic_major_vessel_total() ] total necromorphs!</b><br></span>")
 
 	if(ghosts > 0)
 		feedback_set("round_end_ghosts",ghosts)
@@ -485,7 +487,7 @@ var/global/list/additional_antag_types = list()
 		// Assemble a list of active players without jobbans.
 		for(var/i in GLOB.new_player_list)
 			var/mob/dead/new_player/player = i
-			if( player.client && player.ready )
+			if(player.client && player.ready)
 				players += player
 
 		// Get a list of all the people who want to be the antagonist for this round

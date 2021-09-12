@@ -471,8 +471,6 @@
 			return global.jobban_runonce;
 		if("joblist")
 			return global.joblist;
-		if("join_motd")
-			return global.join_motd;
 		if("landmarks_list")
 			return global.landmarks_list;
 		if("language_keys")
@@ -1366,8 +1364,6 @@
 			global.jobban_runonce=newval;
 		if("joblist")
 			global.joblist=newval;
-		if("join_motd")
-			global.join_motd=newval;
 		if("landmarks_list")
 			global.landmarks_list=newval;
 		if("language_keys")
@@ -2030,7 +2026,6 @@
 	"jobban_keylist",
 	"jobban_runonce",
 	"joblist",
-	"join_motd",
 	"landmarks_list",
 	"language_keys",
 	"last_chew",

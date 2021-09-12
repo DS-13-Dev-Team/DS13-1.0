@@ -29,7 +29,7 @@
 			// No more change mode votes after the game has started.
 			// 3 is GAME_STATE_PLAYING, but that #define is undefined for some reason
 			if(mode == "gamemode" && ticker.current_state >= GAME_STATE_SETTING_UP)
-				to_world("<b>Voting aborted due to game start.</b>")
+				to_chat(world, "<span class='infoplain'><b>Voting aborted due to game start.</b>")
 
 				src.reset()
 				return
@@ -117,7 +117,7 @@
 						else
 							factor = 1.4
 					choices["Initiate Crew Transfer"] = round(choices["Initiate Crew Transfer"] * factor)
-					to_world("<font color='purple'>Crew Transfer Factor: [factor]</font>")
+					to_chat(world, "<span class='infoplain'><font color='purple'>Crew Transfer Factor: [factor]</font></span>")
 
 
 		for(var/option in choices)
@@ -193,7 +193,7 @@
 			if(mode == "add_antagonist")
 				antag_add_finished = 1
 		log_vote(text)
-		to_world("<font color='purple'>[text]</font>")
+		to_chat(world, "\n<span class='infoplain'><font color='purple'>[text]</font></span>")
 
 		return list(firstChoice, secondChoice, thirdChoice)
 
@@ -233,7 +233,7 @@
 						for(var/i = 1, i <= length(.), i++)
 							if(.[i] == "Random")
 								.[i] = pick(choices)
-								to_world("The random antag in [i]\th place is [.[i]].")
+								to_chat(world, "<span class='infoplain'>The random antag in [i]\th place is [.[i]].</span>")
 
 						var/antag_type = GLOB.antag_names_to_ids_[.[1]]
 						if(ticker.current_state < GAME_STATE_SETTING_UP)
@@ -248,7 +248,7 @@
 										// the buffer will already have half an hour added to it, so we'll give it one more
 										transfer_controller.timerbuffer = transfer_controller.timerbuffer + CONFIG_GET(number/vote_autotransfer_initial)
 								else
-									to_world("<b>No antags were added.</b>")
+									to_chat(world, "<span class='infoplain'><b>No antags were added.</b></span>")
 
 									if(auto_add_antag)
 										auto_add_antag = 0
@@ -262,11 +262,11 @@
 		if(mode == "gamemode") //fire this even if the vote fails.
 			if(!round_progressing)
 				round_progressing = 1
-				to_world("<font color='red'><b>The round will start soon.</b></font>")
+				to_chat(world, "<span class='infoplain'><font color='red'><b>The round will start soon.</b></font></span>")
 
 
 		if(restart)
-			to_world("World restarting due to vote...")
+			to_chat(world, "<span class='infoplain'>World restarting due to vote...</span>")
 
 			feedback_set_details("end_error","restart vote")
 			if(blackbox)	blackbox.save_all_data_to_sql()
@@ -323,6 +323,7 @@
 						if(players < mode.required_players)
 							continue
 						choices.Add(mode.config_tag)
+						gamemode_names[mode.config_tag] = capitalize(mode.name) //It's ugly to put this here but it works
 				if("crew_transfer")
 					if(!evacuation_controller || !evacuation_controller.should_call_autotransfer_vote())
 						return 0
@@ -346,7 +347,7 @@
 				if("add_antagonist")
 					if(!is_addantag_allowed(automatic))
 						if(!automatic)
-							to_chat(usr, "The add antagonist vote is unavailable at this time. The game may not have started yet, the game mode may disallow adding antagonists, or you don't have required permissions.")
+							to_chat(usr, "<span class='infoplain'>The add antagonist vote is unavailable at this time. The game may not have started yet, the game mode may disallow adding antagonists, or you don't have required permissions.</span>")
 						return 0
 
 					if(!CONFIG_GET(flag/allow_extra_antags))
@@ -383,13 +384,13 @@
 					text += "\n[question]"
 
 				log_vote(text)
-				to_world("<font color='purple'><b>[text]</b>\nType <b>vote</b> or click <a href='?src=\ref[src]'>here</a> to place your votes.\nYou have [CONFIG_GET(number/vote_period)/10] seconds to vote.</font>")
+				to_chat(world, "<span class='infoplain'><font color='purple'><b>[text]</b>\nType <b>vote</b> or click <a href='?src=\ref[src]'>here</a> to place your votes.\nYou have [CONFIG_GET(number/vote_period)/10] seconds to vote.</font></span>")
 
-				to_world(sound('sound/ambience/voting.ogg', repeat = 0, wait = 0, volume = 50, channel = GLOB.vote_sound_channel))
+				SEND_SOUND(world, sound('sound/ambience/voting.ogg', repeat = 0, wait = 0, volume = 50, channel = GLOB.vote_sound_channel))
 
 				if(mode == "gamemode" && round_progressing)
 					round_progressing = 0
-					to_world("<font color='red'><b>Round start has been delayed.</b></font>")
+					to_chat(world, "<span class='infoplain'><font color='red'><b>Round start has been delayed.</b></font></span>")
 
 
 				time_remaining = round(CONFIG_GET(number/vote_period)/10)

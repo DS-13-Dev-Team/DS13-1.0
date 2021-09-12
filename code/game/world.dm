@@ -114,6 +114,13 @@ GLOBAL_VAR(restart_counter)
 
 	SetupLogs()
 
+#ifndef USE_CUSTOM_ERROR_HANDLER
+	world.log = file("[GLOB.log_directory]/dd.log")
+#else
+	if (TgsAvailable())
+		world.log = file("[GLOB.log_directory]/dd.log") //not all runtimes trigger world/Error, so this is the only way to ensure we can see all of them.
+#endif
+
 	processScheduler = new
 	master_controller = new /datum/controller/game_controller()
 
@@ -565,18 +572,6 @@ var/world_topic_spam_protect_time = world.timeofday
 	var/F = file("data/mode.txt")
 	fdel(F)
 	F << the_mode
-
-/hook/startup/proc/loadMOTD()
-	world.load_motd()
-	return 1
-
-/world/proc/load_motd()
-	join_motd = file2text("config/motd.txt")
-
-/hook/startup/proc/loadMods()
-	world.load_mods()
-	world.load_mentors() // no need to write another hook.
-	return 1
 
 /world/proc/load_mods()
 	if(CONFIG_GET(flag/admin_legacy_system))

@@ -5,9 +5,9 @@
 	set desc = "Visit the wiki."
 	set hidden = 1
 	if(CONFIG_GET(string/wikiurl))
-		if(alert("This will open the wiki in your browser. Are you sure?",,"Yes","No")=="No")
+		if(tgui_alert(src, "This will open the wiki in your browser. Are you sure?",,list("Yes","No"))!="Yes")
 			return
-		src << link(CONFIG_GET(string/wikiurl))
+		DIRECT_OUTPUT(src, link(CONFIG_GET(string/wikiurl)))
 	else
 		to_chat(src, "<span class='warning'>The wiki URL is not set in the server configuration.</span>")
 	return
@@ -17,9 +17,9 @@
 	set desc = "Join our Discord server."
 	set hidden = 1
 	if(CONFIG_GET(string/discord_url))
-		if(alert("This will open the Dead Space 13 Discord invite in your Browser. Are you sure?",,"Yes","No")=="No")
+		if(tgui_alert(src, "This will open the Dead Space 13 Discord invite in your Browser. Are you sure?",,list("Yes","No"))!="Yes")
 			return
-		src << link(CONFIG_GET(string/discord_url))
+		DIRECT_OUTPUT(src, link(CONFIG_GET(string/discord_url)))
 	else
 		to_chat(src, "<span class='warning'>The Discord URL is not set in the server configuration. Please contact a developer.</span>")
 	return
@@ -29,9 +29,9 @@
 	set desc = "Visit the forum."
 	set hidden = 1
 	if(CONFIG_GET(string/forumurl))
-		if(alert("This will open the forum in your browser. Are you sure?",,"Yes","No")=="No")
+		if(tgui_alert(src, "This will open the forum in your browser. Are you sure?",,list("Yes","No"))=="No")
 			return
-		src << link(CONFIG_GET(string/forumurl))
+		DIRECT_OUTPUT(src, link(CONFIG_GET(string/forumurl)))
 	else
 		to_chat(src, "<span class='warning'>The forum URL is not set in the server configuration.</span>")
 	return
@@ -42,9 +42,9 @@
 	set hidden = TRUE
 	var/githuburl = CONFIG_GET(string/githuburl)
 	if(githuburl)
-		if(alert("This will open the Github repository in your browser. Are you sure?",,"Yes","No")!="Yes")
+		if(tgui_alert(src, "This will open the Github repository in your browser. Are you sure?",,list("Yes","No"))!="Yes")
 			return
-		src << link(githuburl)
+		DIRECT_OUTPUT(src, link(githuburl))
 	else
 		to_chat(src, "<span class='danger'>The Github URL is not set in the server configuration.</span>")
 	return

@@ -64,8 +64,8 @@
 		return
 
 
-	if(join_motd)
-		to_chat(src, "<div class=\"motd\">[join_motd]</div>")
+	if(GLOB.motd)
+		to_chat(src, "<div class='motd'>[GLOB.motd]</div>")
 	to_chat(src, "<div class='info'>Round ID: <div class='danger'>[GLOB.round_id]</div></div>")
 
 	if(!mind)

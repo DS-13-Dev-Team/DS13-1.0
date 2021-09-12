@@ -60,12 +60,12 @@ var/global/datum/controller/gameticker/ticker
 			else
 				master_mode = "extended"
 
-		to_world("<b>Trying to start [master_mode]...</b>")
+		to_chat(world, "<span class='infoplain'><b>Trying to start [master_mode]...</b></span>")
 		if (CONFIG_GET(flag/auto_start))
 			start_ASAP = TRUE
 		else
-			to_world("<B><FONT color='blue'>Welcome to the pre-game lobby!</FONT></B>")
-			to_world("Please, setup your character and select ready. Game will start in [pregame_timeleft] seconds")
+			to_chat(world, "<span class='infoplain'><B><FONT color='blue'>Welcome to the pre-game lobby!</FONT></B></span>")
+			to_chat(world, "<span class='infoplain'>Please, setup your character and select ready. Game will start in [pregame_timeleft] seconds</span>")
 
 
 		while(current_state == GAME_STATE_PREGAME)
@@ -125,7 +125,7 @@ var/global/datum/controller/gameticker/ticker
 	if(!src.mode)
 		current_state = GAME_STATE_PREGAME
 		Master.SetRunLevel(RUNLEVEL_LOBBY)
-		to_world("<span class='danger'>Serious error in mode setup!</span> Reverting to pre-game lobby.")
+		to_chat(world, "<span class='danger'>Serious error in mode setup!</span> Reverting to pre-game lobby.")
 
 		return FALSE
 
@@ -136,7 +136,7 @@ var/global/datum/controller/gameticker/ticker
 
 	var/t = src.mode.startRequirements()
 	if(t)
-		to_world("<B>Unable to start [mode.name].</B> [t] Reverting to pre-game lobby.")
+		to_chat(world, "<span class='infoplain'><B>Unable to start [mode.name].</B> [t] Reverting to pre-game lobby.</span>")
 
 		current_state = GAME_STATE_PREGAME
 		Master.SetRunLevel(RUNLEVEL_LOBBY)
@@ -146,7 +146,7 @@ var/global/datum/controller/gameticker/ticker
 		return FALSE
 
 	if(hide_mode)
-		to_world("<B>The current game mode is - Secret!</B>")
+		to_chat(world, "<span class='infoplain'><B>The current game mode is - Secret!</B></span>")
 
 	else
 		src.mode.announce()
@@ -183,7 +183,7 @@ var/global/datum/controller/gameticker/ticker
 
 	spawn(0)//Forking here so we dont have to wait for this to finish
 		mode.post_setup()
-		to_world("<FONT color='blue'><B>Enjoy the game!</B></FONT>")
+		to_chat(world, "<span class='infoplain'><FONT color='blue'><B>Enjoy the game!</B></FONT></span>")
 		sound_to(world, sound(GLOB.using_map.welcome_sound))
 
 		//Holiday Round-start stuff	~Carn
@@ -341,7 +341,7 @@ var/global/datum/controller/gameticker/ticker
 		if(captainless)
 			for(var/mob/M in GLOB.player_list)
 				if(!istype(M,/mob/dead/new_player))
-					to_chat(M, "Captainship not forced on anyone.")
+					to_chat(M, "<span class='infoplain'>Captainship not forced on anyone.</span>")
 
 
 	proc/process()
@@ -386,12 +386,12 @@ var/global/datum/controller/gameticker/ticker
 					else
 						feedback_set_details("end_proper","universe destroyed")
 					if(!delay_end)
-						to_world("<span class='notice'><b>Rebooting due to destruction of [station_name()] in [restart_timeout/10] seconds</b></span>")
+						to_chat(world, "<span class='notice'><b>Rebooting due to destruction of [station_name()] in [restart_timeout/10] seconds</b></span>")
 
 				else
 					feedback_set_details("end_proper","proper completion")
 					if(!delay_end)
-						to_world("<span class='notice'><b>Restarting in [restart_timeout/10] seconds</b></span>")
+						to_chat(world, "<span class='notice'><b>Restarting in [restart_timeout/10] seconds</b></span>")
 
 				if(blackbox)
 					blackbox.save_all_data_to_sql()
@@ -408,7 +408,7 @@ var/global/datum/controller/gameticker/ticker
 						if(!delay_notified)
 							delay_notified = 1
 							message_staff("<span class='warning'><b>Automatically delaying restart due to active tickets.</b></span>")
-							to_world("<span class='notice'><b>An admin has delayed the round end</b></span>")
+							to_chat(world, "<span class='notice'><b>An admin has delayed the round end</b></span>")
 						sleep(15 SECONDS)
 					else if(delay_notified)
 						message_staff("<span class='warning'><b>No active tickets remaining, restarting in [restart_timeout/10] seconds if an admin has not delayed the round end.</b></span>")
@@ -419,9 +419,9 @@ var/global/datum/controller/gameticker/ticker
 					if(!delay_end)
 						world.Reboot(ping=TRUE)
 					else if(!delay_notified)
-						to_world("<span class='notice'><b>An admin has delayed the round end</b></span>")
+						to_chat(world, "<span class='notice'><b>An admin has delayed the round end</b></span>")
 				else if(!delay_notified)
-					to_world("<span class='notice'><b>An admin has delayed the round end</b></span>")
+					to_chat(world, "<span class='notice'><b>An admin has delayed the round end</b></span>")
 
 
 		else if (mode_finished)
@@ -438,7 +438,7 @@ var/global/datum/controller/gameticker/ticker
 		return TRUE
 
 /datum/controller/gameticker/proc/declare_completion()
-	to_world("<br><br><br><H1>A round of [mode.name] has ended!</H1>")
+	to_chat(world, "<span class='infoplain'><br><br><br><span class='big bold'>A round of [mode.name] has ended!</span></span>")
 	for(var/client/C)
 		if(!C.credits)
 			C.RollCredits()
@@ -448,39 +448,39 @@ var/global/datum/controller/gameticker/ticker
 				var/turf/playerTurf = get_turf(Player)
 				if(evacuation_controller.round_over() && evacuation_controller.emergency_evacuation)
 					if(isNotAdminLevel(playerTurf.z))
-						to_chat(Player, "<font color='blue'><b>You managed to survive, but were marooned on [station_name()] as [Player.real_name]...</b></font>")
+						to_chat(Player, "<span class='infoplain'><font color='blue'><b>You managed to survive, but were marooned on [station_name()] as [Player.real_name]...</b></font></span>")
 					else
-						to_chat(Player, "<font color='green'><b>You managed to survive the events on [station_name()] as [Player.real_name].</b></font>")
+						to_chat(Player, "<span class='infoplain'><font color='green'><b>You managed to survive the events on [station_name()] as [Player.real_name].</b></font></span>")
 				else if(isAdminLevel(playerTurf.z))
-					to_chat(Player, "<font color='green'><b>You successfully underwent crew transfer after events on [station_name()] as [Player.real_name].</b></font>")
+					to_chat(Player, "<span class='infoplain'><font color='green'><b>You successfully underwent crew transfer after events on [station_name()] as [Player.real_name].</b></font></span>")
 				else if(issilicon(Player))
-					to_chat(Player, "<font color='green'><b>You remain operational after the events on [station_name()] as [Player.real_name].</b></font>")
+					to_chat(Player, "<span class='infoplain'><font color='green'><b>You remain operational after the events on [station_name()] as [Player.real_name].</b></font></span>")
 				else
-					to_chat(Player, "<font color='blue'><b>You got through just another workday on [station_name()] as [Player.real_name].</b></font>")
+					to_chat(Player, "<span class='infoplain'><font color='blue'><b>You got through just another workday on [station_name()] as [Player.real_name].</b></font></span>")
 			else
 				if(isghost(Player))
 					var/mob/dead/observer/ghost/O = Player
 					if(!O.started_as_observer)
-						to_chat(Player, "<font color='red'><b>You did not survive the events on [station_name()]...</b></font>")
+						to_chat(Player, "<span class='infoplain'><font color='red'><b>You did not survive the events on [station_name()]...</b></font></span>")
 				else
-					to_chat(Player, "<font color='red'><b>You did not survive the events on [station_name()]...</b></font>")
-	to_world("<br>")
+					to_chat(Player, "<span class='infoplain'><font color='red'><b>You did not survive the events on [station_name()]...</b></font></span>")
+	to_chat(world, "<br>")
 
 
 	for (var/mob/living/silicon/ai/aiPlayer in SSmobs.mob_list)
 		if (aiPlayer.stat != 2)
-			to_world("<b>[aiPlayer.name] (Played by: [aiPlayer.key])'s laws at the end of the round were:</b>")
+			to_chat(world, "<span class='infoplain'><b>[aiPlayer.name] (Played by: [aiPlayer.key])'s laws at the end of the round were:</b></span>")
 
 		else
-			to_world("<b>[aiPlayer.name] (Played by: [aiPlayer.key])'s laws when it was deactivated were:</b>")
+			to_chat(world, "<span class='infoplain'><b>[aiPlayer.name] (Played by: [aiPlayer.key])'s laws when it was deactivated were:</b></span>")
 
 		aiPlayer.show_laws(1)
 
 		if (aiPlayer.connected_robots.len)
-			var/robolist = "<b>The AI's loyal minions were:</b> "
+			var/robolist = "<span class='infoplain'><b>The AI's loyal minions were:</b></span> "
 			for(var/mob/living/silicon/robot/robo in aiPlayer.connected_robots)
 				robolist += "[robo.name][robo.stat?" (Deactivated) (Played by: [robo.key]), ":" (Played by: [robo.key]), "]"
-			to_world("[robolist]")
+			to_chat(world, "<span class='infoplain'>[robolist]</span>")
 
 
 	var/dronecount = 0
@@ -493,17 +493,17 @@ var/global/datum/controller/gameticker/ticker
 
 		if (!robo.connected_ai)
 			if (robo.stat != 2)
-				to_world("<b>[robo.name] (Played by: [robo.key]) survived as an AI-less synthetic! Its laws were:</b>")
+				to_chat(world, "<span class='infoplain'><b>[robo.name] (Played by: [robo.key]) survived as an AI-less synthetic! Its laws were:</b></span>")
 
 			else
-				to_world("<b>[robo.name] (Played by: [robo.key]) was unable to survive the rigors of being a synthetic without an AI. Its laws were:</b>")
+				to_chat(world, "<span class='infoplain'><b>[robo.name] (Played by: [robo.key]) was unable to survive the rigors of being a synthetic without an AI. Its laws were:</b></span>")
 
 
 			if(robo) //How the hell do we lose robo between here and the world messages directly above this?
 				robo.laws.show_laws(world)
 
 	if(dronecount)
-		to_world("<b>There [dronecount>1 ? "were" : "was"] [dronecount] industrious maintenance [dronecount>1 ? "drones" : "drone"] at the end of this round.</b>")
+		to_chat(world, "<span class='infoplain'><b>There [dronecount>1 ? "were" : "was"] [dronecount] industrious maintenance [dronecount>1 ? "drones" : "drone"] at the end of this round.</b></span>")
 
 	if(all_money_accounts.len)
 		var/datum/money_account/max_profit = all_money_accounts[1]
@@ -516,8 +516,8 @@ var/global/datum/controller/gameticker/ticker
 				max_profit = D
 			if(saldo <= max_loss.get_balance())
 				max_loss = D
-		to_world("<b>[max_profit.owner_name]</b> received most <font color='green'><B>PROFIT</B></font> today, with net profit of <b>T[max_profit.get_balance()]</b>.")
-		to_world("On the other hand, <b>[max_loss.owner_name]</b> had most <font color='red'><B>LOSS</B></font>, with total loss of <b>T[max_loss.get_balance()]</b>.")
+		to_chat(world, "<span class='infoplain'><b>[max_profit.owner_name]</b> received most <font color='green'><B>PROFIT</B></font> today, with net profit of <b>T[max_profit.get_balance()]</b>.")
+		to_chat(world, "<span class='infoplain'>On the other hand, <b>[max_loss.owner_name]</b> had most <font color='red'><B>LOSS</B></font>, with total loss of <b>T[max_loss.get_balance()]</b>.")
 
 	mode.declare_completion()//To declare normal completion.
 
@@ -549,7 +549,7 @@ var/global/datum/controller/gameticker/ticker
 		var/needs_ghost = antag.flags & (ANTAG_OVERRIDE_JOB | ANTAG_OVERRIDE_MOB)
 		if (needs_ghost)
 			looking_for_antags = 1
-			to_world("<b>A ghost is needed to spawn \a [antag.role_text].</b>\nGhosts may enter the antag pool by making sure their [antag.role_text] preference is set to high, then using the toggle-add-antag-candidacy verb. You have 3 minutes to enter the pool.")
+			to_chat(world, "<b>A ghost is needed to spawn \a [antag.role_text].</b>\nGhosts may enter the antag pool by making sure their [antag.role_text] preference is set to high, then using the toggle-add-antag-candidacy verb. You have 3 minutes to enter the pool.")
 
 			sleep(3 MINUTES)
 			looking_for_antags = 0
@@ -575,16 +575,16 @@ var/global/datum/controller/gameticker/ticker
 			return TRUE
 		else
 			if(antag.initial_spawn_req > 1)
-				to_world("Failed to find enough [antag.role_text_plural].")
+				to_chat(world, "Failed to find enough [antag.role_text_plural].")
 
 			else
-				to_world("Failed to find a [antag.role_text].")
+				to_chat(world, "Failed to find a [antag.role_text].")
 
 			antag_choices -= antag
 			if(length(antag_choices))
 				antag = antag_choices[1]
 				if(antag)
-					to_world("Attempting to spawn [antag.role_text_plural].")
+					to_chat(world, "Attempting to spawn [antag.role_text_plural].")
 
 	return FALSE
 

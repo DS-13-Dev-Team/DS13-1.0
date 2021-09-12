@@ -54,7 +54,7 @@
 		var/mob/living/silicon/ai/A = player.current
 		if(!istype(A))
 			log_debug("Non-AI mob designated malf AI! Report this.")
-			to_world("##ERROR: Non-AI mob designated malf AI! Report this.")
+			to_chat(world, "##ERROR: Non-AI mob designated malf AI! Report this.")
 
 			return 0
 

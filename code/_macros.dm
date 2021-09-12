@@ -113,8 +113,6 @@
 
 #define islight(A)	istype(A, /obj/machinery/light)
 
-#define to_world(message)                                   world << message
-#define to_world_log(message)                               world.log << message
 #define sound_to(target, sound)                             target << sound
 #define to_file(file_entry, source_var)                     file_entry << source_var
 #define from_file(file_entry, target_var)                   file_entry >> target_var

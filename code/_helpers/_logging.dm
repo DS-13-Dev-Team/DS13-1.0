@@ -317,7 +317,7 @@
 
 
 /proc/report_progress(progress_message)
-	to_world_log(progress_message)
+	log_world(progress_message)
 
 
 	//Checking world port here is used to prevent spamming a developer with duplicate reports when running in single user mode.
