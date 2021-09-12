@@ -17,7 +17,7 @@
 
 /decl/communication_channel/pray/receive_communication(var/mob/communicator, var/mob/receiver, var/message)
 	..()
-	sound_to(receiver, 'sound/effects/ding.ogg')
+	SEND_SOUND(receiver, 'sound/effects/ding.ogg')
 
 
 /mob/verb/pray(msg as text)
@@ -35,7 +35,7 @@
 			to_chat(C,
 					type = MESSAGE_TYPE_ADMINCHAT,
 					html = msg)
-			sound_to(C, 'sound/machines/signal.ogg')
+			SEND_SOUND(C, 'sound/machines/signal.ogg')
 
 /proc/Syndicate_announce(var/msg, var/mob/Sender)
 	var/mob/intercepted = check_for_interception()
@@ -45,4 +45,4 @@
 			to_chat(C,
 					type = MESSAGE_TYPE_ADMINCHAT,
 					html = msg)
-			sound_to(C, 'sound/machines/signal.ogg')
+			SEND_SOUND(C, 'sound/machines/signal.ogg')

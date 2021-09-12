@@ -20,7 +20,7 @@
 
 	if (license)
 		to_chat(listener, "<span class='good'>License: <a href='[license.url]'>[license.name]</a></span>")
-	sound_to(listener, sound(song, repeat = play_looped, wait = 0, volume = volume, channel = GLOB.lobby_sound_channel))
+	SEND_SOUND(listener, sound(song, repeat = play_looped, wait = 0, volume = volume, channel = GLOB.lobby_sound_channel))
 
 // No VV editing anything about music tracks
 /music_track/VV_static()

@@ -23,28 +23,28 @@
 	var/datum/browser/panel
 
 /datum/category_item/player_setup_item/occupation/load_character(var/savefile/S)
-	from_file(S["alternate_option"], 	pref.alternate_option)
-	from_file(S["job_high"],			pref.job_high)
-	from_file(S["job_medium"],			pref.job_medium)
-	from_file(S["job_low"],				pref.job_low)
-	from_file(S["player_alt_titles"],	pref.player_alt_titles)
-	from_file(S["char_branch"],			pref.char_branch)
-	from_file(S["char_rank"],			pref.char_rank)
-	from_file(S["skills_saved"],		pref.skills_saved)
+	READ_FILE(S["alternate_option"], 	pref.alternate_option)
+	READ_FILE(S["job_high"],			pref.job_high)
+	READ_FILE(S["job_medium"],			pref.job_medium)
+	READ_FILE(S["job_low"],				pref.job_low)
+	READ_FILE(S["player_alt_titles"],	pref.player_alt_titles)
+	READ_FILE(S["char_branch"],			pref.char_branch)
+	READ_FILE(S["char_rank"],			pref.char_rank)
+	READ_FILE(S["skills_saved"],		pref.skills_saved)
 
 	load_skills()
 
 /datum/category_item/player_setup_item/occupation/save_character(var/savefile/S)
 	save_skills()
 
-	to_file(S["alternate_option"],		pref.alternate_option)
-	to_file(S["job_high"],				pref.job_high)
-	to_file(S["job_medium"],			pref.job_medium)
-	to_file(S["job_low"],				pref.job_low)
-	to_file(S["player_alt_titles"],		pref.player_alt_titles)
-	to_file(S["char_branch"],			pref.char_branch)
-	to_file(S["char_rank"],				pref.char_rank)
-	to_file(S["skills_saved"],			pref.skills_saved)
+	WRITE_FILE(S["alternate_option"],		pref.alternate_option)
+	WRITE_FILE(S["job_high"],				pref.job_high)
+	WRITE_FILE(S["job_medium"],			pref.job_medium)
+	WRITE_FILE(S["job_low"],				pref.job_low)
+	WRITE_FILE(S["player_alt_titles"],		pref.player_alt_titles)
+	WRITE_FILE(S["char_branch"],			pref.char_branch)
+	WRITE_FILE(S["char_rank"],				pref.char_rank)
+	WRITE_FILE(S["skills_saved"],			pref.skills_saved)
 
 /datum/category_item/player_setup_item/occupation/sanitize_character()
 	if(!istype(pref.job_medium)) 		pref.job_medium = list()
@@ -320,7 +320,7 @@
 
 	else if(href_list["job_wiki"])
 		var/rank = href_list["job_wiki"]
-		open_link(user,"[CONFIG_GET(string/wikiurl)][rank]")
+		DIRECT_OUTPUT(user,"[CONFIG_GET(string/wikiurl)][rank]")
 
 	return ..()
 

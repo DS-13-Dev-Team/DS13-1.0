@@ -101,7 +101,7 @@
 		return
 
 	//First of all, stop any previous lobby track we were playing
-	sound_to(src, sound(null, repeat = 0, wait = 0, volume = 85, channel = GLOB.lobby_sound_channel))
+	SEND_SOUND(src, sound(null, repeat = 0, wait = 0, volume = 85, channel = GLOB.lobby_sound_channel))
 
 	var/tracktype = GLOB.using_map.get_lobby_track(played_lobby_tracks)
 	var/music_track/MT = decls_repository.get_decl(tracktype)

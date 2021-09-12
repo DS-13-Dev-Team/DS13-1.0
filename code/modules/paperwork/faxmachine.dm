@@ -243,4 +243,4 @@ GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
 			to_chat(C,
 					type = MESSAGE_TYPE_ADMINCHAT,
 					html = msg)
-			sound_to(C, 'sound/machines/dotprinter.ogg')
+			SEND_SOUND(C, 'sound/machines/dotprinter.ogg')

@@ -184,7 +184,7 @@ var/global/datum/controller/gameticker/ticker
 	spawn(0)//Forking here so we dont have to wait for this to finish
 		mode.post_setup()
 		to_chat(world, "<span class='infoplain'><FONT color='blue'><B>Enjoy the game!</B></FONT></span>")
-		sound_to(world, sound(GLOB.using_map.welcome_sound))
+		SEND_SOUND(world, sound(GLOB.using_map.welcome_sound))
 
 		//Holiday Round-start stuff	~Carn
 		Holiday_Game_Start()
@@ -254,19 +254,19 @@ var/global/datum/controller/gameticker/ticker
 					if("mercenary") //Nuke wasn't on station when it blew up
 						flick("intro_nuke",cinematic)
 						sleep(35)
-						sound_to(world, sound('sound/effects/explosionfar.ogg'))
+						SEND_SOUND(world, sound('sound/effects/explosionfar.ogg'))
 						flick("station_intact_fade_red",cinematic)
 						cinematic.icon_state = "summary_nukefail"
 					else
 						flick("intro_nuke",cinematic)
 						sleep(35)
-						sound_to(world, sound('sound/effects/explosionfar.ogg'))
+						SEND_SOUND(world, sound('sound/effects/explosionfar.ogg'))
 						//flick("end",cinematic)
 
 
 			if(2)	//nuke was nowhere nearby	//TODO: a really distant explosion animation
 				sleep(50)
-				sound_to(world, sound('sound/effects/explosionfar.ogg'))
+				SEND_SOUND(world, sound('sound/effects/explosionfar.ogg'))
 			else	//station was destroyed
 				if( mode && !override )
 					override = mode.name
@@ -275,25 +275,25 @@ var/global/datum/controller/gameticker/ticker
 						flick("intro_nuke",cinematic)
 						sleep(35)
 						flick("station_explode_fade_red",cinematic)
-						sound_to(world, sound('sound/effects/explosionfar.ogg'))
+						SEND_SOUND(world, sound('sound/effects/explosionfar.ogg'))
 						cinematic.icon_state = "summary_nukewin"
 					if("AI malfunction") //Malf (screen,explosion,summary)
 						flick("intro_malf",cinematic)
 						sleep(76)
 						flick("station_explode_fade_red",cinematic)
-						sound_to(world, sound('sound/effects/explosionfar.ogg'))
+						SEND_SOUND(world, sound('sound/effects/explosionfar.ogg'))
 						cinematic.icon_state = "summary_malf"
 					if("blob") //Station nuked (nuke,explosion,summary)
 						flick("intro_nuke",cinematic)
 						sleep(35)
 						flick("station_explode_fade_red",cinematic)
-						sound_to(world, sound('sound/effects/explosionfar.ogg'))
+						SEND_SOUND(world, sound('sound/effects/explosionfar.ogg'))
 						cinematic.icon_state = "summary_selfdes"
 					else //Station nuked (nuke,explosion,summary)
 						flick("intro_nuke",cinematic)
 						sleep(35)
 						flick("station_explode_fade_red", cinematic)
-						sound_to(world, sound('sound/effects/explosionfar.ogg'))
+						SEND_SOUND(world, sound('sound/effects/explosionfar.ogg'))
 						cinematic.icon_state = "summary_selfdes"
 				for(var/mob/living/M in GLOB.living_mob_list)
 					if(is_station_turf(get_turf(M)))

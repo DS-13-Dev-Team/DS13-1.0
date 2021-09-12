@@ -439,7 +439,7 @@
 	else
 		client.prefs.copy_to(new_character)
 
-	sound_to(src, sound(null, repeat = 0, wait = 0, volume = 85, channel = GLOB.lobby_sound_channel))// MAD JAMS cant last forever yo
+	SEND_SOUND(src, sound(null, repeat = 0, wait = 0, volume = 85, channel = GLOB.lobby_sound_channel))// MAD JAMS cant last forever yo
 	deltimer(client.lobby_trackchange_timer) //Ensures that the client doesn't attempt to start another lobby music track
 
 	if(mind)

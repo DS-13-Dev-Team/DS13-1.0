@@ -52,7 +52,7 @@
 				type = MESSAGE_TYPE_ADMINCHAT,
 				html = "<span class='staffwarn'>StaffWarn: [client.ckey] [action]</span><br><span class='notice'>[client.staffwarn]</span>")
 		if(noise && C.get_preference_value(/datum/client_preference/staff/play_adminhelp_ping) == GLOB.PREF_HEAR)
-			sound_to(C, 'sound/effects/adminhelp.ogg')
+			SEND_SOUND(C, 'sound/effects/adminhelp.ogg')
 
 /mob
 	var/client/my_client // Need to keep track of this ourselves, since by the time Logout() is called the client has already been nulled

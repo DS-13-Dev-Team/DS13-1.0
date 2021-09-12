@@ -48,7 +48,7 @@
 		if((M.z in (zlevels | GLOB.using_map.admin_levels)) && !istype(M,/mob/dead/new_player) && !isdeaf(M))
 			to_chat(M, msg)
 			if(message_sound)
-				sound_to(M, message_sound)
+				SEND_SOUND(M, message_sound)
 
 	if(do_newscast)
 		NewsCast(message, message_title)
@@ -168,7 +168,7 @@ datum/announcement/proc/NewsCast(message as text, message_title as text)
 		if((M.z in (zlevels | GLOB.using_map.admin_levels)) && !istype(M,/mob/dead/new_player) && !isdeaf(M))
 			to_chat(M, msg)
 			if(message_sound)
-				sound_to(M, message_sound)
+				SEND_SOUND(M, message_sound)
 
 	if(do_newscast)
 		NewsCast(message, message_title)

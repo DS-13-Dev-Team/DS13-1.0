@@ -111,7 +111,7 @@ var/const/GHOST_IMAGE_ALL = ~GHOST_IMAGE_NONE
 	var/mob/dead/observer/ghost/observer = new()
 
 
-	sound_to(M, sound(null, repeat = 0, wait = 0, volume = 85, channel = GLOB.lobby_sound_channel))// MAD JAMS cant last forever yo
+	SEND_SOUND(M, sound(null, repeat = 0, wait = 0, volume = 85, channel = GLOB.lobby_sound_channel))// MAD JAMS cant last forever yo
 
 
 	observer.started_as_observer = 1
