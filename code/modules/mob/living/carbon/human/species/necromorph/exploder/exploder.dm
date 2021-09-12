@@ -21,7 +21,7 @@
 	icon_lying = "_lying"
 	pixel_offset_x = -8
 	single_icon = FALSE
-	evasion = 10	//Awkward movemetn makes it a tricky target
+	evasion = 5	//Awkward movemetn makes it a tricky target
 	spawner_spawnable = TRUE
 	virus_immune = 1
 
@@ -232,6 +232,7 @@ The last resort. The exploder screams and shakes violently for 3 seconds, before
 	defensive_group = null
 	light_color = COLOR_NECRO_YELLOW
 	var/exploded = FALSE
+	base_miss_chance = -10
 
 /obj/item/organ/external/exploder_pustule/hand
 	organ_tag = BP_L_HAND
@@ -265,11 +266,16 @@ The last resort. The exploder screams and shakes violently for 3 seconds, before
 /obj/item/organ/external/exploder_pustule/proc/explode()
 	if (exploded)
 		return
-
 	exploded = TRUE
+	do_explode()
 
+
+/obj/item/organ/external/exploder_pustule/proc/do_explode()
 
 	var/turf/T = get_turf(src)
+	link_necromorphs_to(SPAN_NOTICE("Exploder Exploding at LINK"), T)
+
+
 	//A bioblast, dealing some burn and acid damage
 	spawn()
 		bioblast(epicentre = T,
@@ -442,7 +448,6 @@ The last resort. The exploder screams and shakes violently for 3 seconds, before
 */
 /datum/species/necromorph/exploder/charge_impact(var/datum/extension/charge/charge)
 	var/mob/living/carbon/human/charger = charge.user
-
 	if (isliving(charge.last_obstacle))
 		//Make sure its still there
 		var/mob/living/L = charge.last_obstacle
@@ -455,9 +460,8 @@ The last resort. The exploder screams and shakes violently for 3 seconds, before
 			charger.forceMove(get_turf(charge.last_obstacle))	//Move ontop of them for maximum damage
 
 
-		var/obj/item/organ/external/exploder_pustule/E = charger.get_organ(BP_L_HAND)
+		var/obj/item/organ/external/exploder_pustule/E = charger.get_organ_by_type(/obj/item/organ/external/exploder_pustule)
 		if (istype(E))
-
 			E.explode()	//Kaboom!
 
 		return FALSE

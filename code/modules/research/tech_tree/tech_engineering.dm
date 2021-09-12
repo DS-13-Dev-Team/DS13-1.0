@@ -282,7 +282,7 @@
 	required_tech_levels = list()
 	cost = 1500
 
-	unlocks_designs = list("icprinter")
+	unlocks_designs = list("icupgradv")
 
 /datum/technology/engineering/icupclo
 	name = "Integrated Circuit Printer Clone Disk"

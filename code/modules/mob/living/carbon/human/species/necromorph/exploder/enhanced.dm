@@ -6,6 +6,7 @@
 	unarmed_types = list(/datum/unarmed_attack/bite/weak/exploder) //Bite attack is a backup if blades are severed
 	total_health = 215	//It has high health for the sake of making it a bit harder to destroy without targeting the pustule. Exploding the pustule is always an instakill
 	limb_health_factor = 1.5
+	require_total_biomass	=	BIOMASS_REQ_T2
 	biomass = 165
 	mass = 80
 	view_range = 8
@@ -80,7 +81,7 @@ A successful charge is the most effective and reliable way to detonate. It shoul
 The last resort. The exploder screams and shakes violently for 3 seconds, before detonating the pustule.<br>\
  This is quite telegraphed and it can give your victims time to back away before the explosion. Not the most ideal way to detonate, but it can be a viable backup if you fail to hit something with charge."
 
-/datum/species/necromorph/exploder/get_ability_descriptions()
+/datum/species/necromorph/exploder/enhanced/get_ability_descriptions()
 	.= ""
 	. += EXPLODER_ENHANCED_PASSIVE
 	. += "<hr>"
@@ -124,23 +125,23 @@ The last resort. The exploder screams and shakes violently for 3 seconds, before
 	The actual explosion!
 */
 //A multi-level explosion using a broad variety of cool mechanics
-/obj/item/organ/external/exploder_pustule/enhanced/explode()
+/obj/item/organ/external/exploder_pustule/enhanced/do_explode()
 	var/turf/T = get_turf(src)
 	var/target = pick(view(1, src))	//Pick literally anything as target, it doesnt matter. We just need something to avoid runtimes
+
+	fragmentate(T, fragment_number = 50, spreading_range = 5, fragtypes=list(/obj/item/projectile/bullet/pellet/fragment/rivet))
 	.=..()
-	if (.)
+	//True return means an explosion is happening
+	spawn(1)
 
-		//True return means an explosion is happening
-		spawn(1)
+		T.spray_ability(subtype = /datum/extension/spray/flame/radial,  target = target, angle = 360, length = 4, duration = 2 SECONDS, extra_data = list("temperature" = (T0C + 2800)), affect_origin = TRUE)
 
-			T.spray_ability(subtype = /datum/extension/spray/flame/radial,  target = target, angle = 360, length = 4, duration = 2 SECONDS, extra_data = list("temperature" = (T0C + 2600)))
+	spawn(2)
 
-		spawn(2)
-
-			T.spray_ability(subtype = /datum/extension/spray/reagent,  target = target, angle = 360, length = 4, duration = 2 SECONDS, extra_data = list("reagent" = /datum/reagent/acid/necromorph, "volume" = 30))
+		T.spray_ability(subtype = /datum/extension/spray/reagent,  target = target, angle = 360, length = 4, duration = 2 SECONDS, extra_data = list("reagent" = /datum/reagent/acid/necromorph, "volume" = 30), affect_origin = TRUE)
 
 
-		fragmentate(T, fragment_number = 50, spreading_range = 5, fragtypes=list(/obj/item/projectile/bullet/pellet/fragment/rivet))
+
 
 
 

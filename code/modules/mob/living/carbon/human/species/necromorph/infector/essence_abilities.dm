@@ -122,15 +122,9 @@
 		if (HAS_TRANSFORMATION_MOVEMENT_HANDLER(L))
 			return
 
-		if (L.stat != DEAD)
-			to_chat(potential_user, "The target must be dead")
+		if (!L.is_necromorph_conversion_valid())
+			to_chat(potential_user, "Invalid Target: The target must be a dead non-necromorph lifeform which is not headless")
 			return FALSE
-
-		if (L.is_necromorph())
-			to_chat(potential_user, "Can't target necromorphs")
-			return FALSE
-
-
 /*
 	Engorge
 */
@@ -158,6 +152,15 @@
 			to_chat(potential_user, "Target must be Necromorph")
 			return FALSE
 
+		if (has_extension(L, /datum/extension/engorge))
+			to_chat(potential_user, "Target is already engorged")
+			return FALSE
+
+		if (L == potential_user)
+			to_chat(potential_user, "You can't target yourself!")
+			return FALSE
+
+
 
 /datum/extension/engorge
 	flags = EXTENSION_FLAG_IMMEDIATE
@@ -179,7 +182,7 @@
 */
 /datum/extension/ability/domob/mend
 	name = "Mend"
-	blurb = "Heals the targeted necromorph larger, restoring its health and consuming essence over time"
+	blurb = "Heals the targeted necromorph, restoring its health and consuming essence over time"
 	reach = 2
 	resource_cost_type	=	RESOURCE_ESSENCE
 	resource_cost_quantity = 0
@@ -187,7 +190,7 @@
 /datum/extension/ability/domob/mend/pre_calculate()
 	.=..()
 	var/mob/living/L = target
-	var/damage = L.getBruteLoss() + L.getFireLoss()
+	var/damage = L.getBruteLoss() + L.getFireLoss() + L.getLastingDamage()
 
 
 	//Lets figure out the duration
@@ -205,9 +208,13 @@
 			to_chat(potential_user, "Target must be alive")
 			return FALSE
 
-		var/damage = L.getBruteLoss() + L.getFireLoss()
+		var/damage = L.getBruteLoss() + L.getFireLoss() + L.getLastingDamage()
 		if (!(damage > 0))
 			to_chat(potential_user, "Target is in perfect health")
+			return FALSE
+
+		if (L == potential_user)
+			to_chat(potential_user, "You can't target yourself!")
 			return FALSE
 
 
@@ -224,7 +231,7 @@
 	//Costs 0.1 essence per tick
 	if (user.consume_resource(resource_cost_type, MEND_COST_PER_TICK))
 		//To heal 10 damage
-		L.heal_quantified_damage(MEND_HEAL_PER_TICK)
+		L.heal_quantified_damage(MEND_HEAL_PER_TICK, brute = TRUE, fire = TRUE, lasting = TRUE)
 		//TODO: Some kind of sound here?
 		user.do_attack_animation(L)
 		L.shake_animation()

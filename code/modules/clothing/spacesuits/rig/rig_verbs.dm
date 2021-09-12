@@ -8,6 +8,8 @@
 
 	if(wearer?.wearing_rig == src)
 		ui_interact(usr)
+	else
+		to_chat(usr, "<span class='warning'>The RIG is not being worn.</span>")
 
 /obj/item/weapon/rig/verb/toggle_vision()
 

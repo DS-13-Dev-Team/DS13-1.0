@@ -81,6 +81,7 @@
 #define SS_INIT_MISC_CODEX      -4
 #define SS_INIT_SHUTTLE         -5
 #define SS_INIT_LIGHTING        -6
+#define SS_INIT_OVERLAYS        -6
 #define SS_INIT_ZCOPY			-7
 #define SS_INIT_XENOARCH       -50
 #define SS_INIT_OPEN_SPACE    -150
@@ -110,3 +111,18 @@
 #define SLOW_PROCESS_INTERVAL	1 MINUTE
 #define MACHINE_PROCESS_INTERVAL	2 SECONDS
 #define EVENT_PROCESS_INTERVAL	2 SECONDS
+
+//! ## Overlays subsystem
+
+///Compile all the overlays for an atom from the cache lists
+// |= on overlays is not actually guaranteed to not add same appearances but we're optimistically using it anyway.
+#define COMPILE_OVERLAYS(A) \
+	do {\
+		if(LAZYLEN(A.remove_overlays)){\
+			A.overlays -= A.remove_overlays;\
+		}\
+		if(LAZYLEN(A.add_overlays)){\
+			A.overlays |= A.add_overlays;\
+		}\
+		A.atom_flags &= ~ATOM_FLAG_OVERLAY_QUEUED;\
+	} while (FALSE)

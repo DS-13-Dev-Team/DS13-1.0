@@ -33,7 +33,10 @@
 	var/default_alpha = 255
 	var/default_scale = 1
 
-
+	// a very temporary list of overlays to remove
+	var/list/remove_overlays
+	// a very temporary list of overlays to add
+	var/list/add_overlays
 
 	/*
 		OPTIMISATION
@@ -96,6 +99,8 @@
 
 /atom/Destroy()
 	QDEL_NULL(reagents)
+
+	LAZYCLEARLIST(overlays)
 
 	. = ..()
 

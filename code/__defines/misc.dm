@@ -246,6 +246,11 @@
 
 #define RANDOM	"random"
 
+// A reasonable number of maximum overlays an object needs
+// If you think you need more, rethink it
+#define MAX_ATOM_OVERLAYS 100
+
+
 #define CLIENT_FROM_VAR(I) (ismob(I) ? I:client : (istype(I, /client) ? I : (istype(I, /datum/mind) ? I:current?:client : null)))
 
 //https://secure.byond.com/docs/ref/info.html#/atom/var/mouse_opacity

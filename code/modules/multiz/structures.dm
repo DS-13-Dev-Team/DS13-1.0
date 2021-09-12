@@ -12,6 +12,14 @@
 	anchored = TRUE
 	obj_flags = OBJ_FLAG_NOFALL
 
+	/*
+		Planned future todo: Allow stairs and ladders to be damaged and enter a broken state,  which makes them much slower and harder to climb
+		And from which they can be repaired with materials or tools to return to normalcy
+
+		For now though, just making them indestructible because deleting stairs is no fun
+	*/
+	atom_flags = ATOM_FLAG_INDESTRUCTIBLE
+
 	var/allowed_directions = DOWN
 	var/obj/structure/ladder/target_up
 	var/obj/structure/ladder/target_down
@@ -31,6 +39,8 @@
 				T.ReplaceWithLattice()
 				return
 	update_icon()
+
+
 
 /obj/structure/ladder/Destroy()
 	if(target_down)
@@ -209,6 +219,15 @@
 	opacity = FALSE
 	anchored = TRUE
 	layer = RUNE_LAYER
+
+	/*
+		Planned future todo: Allow stairs and ladders to be damaged and enter a broken state,  which makes them much slower and harder to climb
+		And from which they can be repaired with materials or tools to return to normalcy
+
+		For now though, just making them indestructible because deleting stairs is no fun
+	*/
+	atom_flags = ATOM_FLAG_INDESTRUCTIBLE
+
 
 /obj/structure/stairs/Initialize()
 	for(var/turf/turf in locs)

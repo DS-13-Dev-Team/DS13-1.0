@@ -1,7 +1,7 @@
-/atom/proc/spray_ability(var/subtype = /datum/extension/spray,  var/atom/target, var/angle, var/length, var/stun, var/duration, var/cooldown, var/windup, var/mob/override_user = null, var/list/extra_data)
+/atom/proc/spray_ability(var/subtype = /datum/extension/spray,  var/atom/target, var/angle, var/length, var/stun, var/duration, var/cooldown, var/windup, var/mob/override_user = null, var/list/extra_data, var/affect_origin = FALSE)
 	if (!can_spray())
 		return null
-	var/list/arguments = list(src, subtype, target, angle, length, stun, duration, cooldown, override_user, extra_data)
+	var/list/arguments = list(src, subtype, target, angle, length, stun, duration, cooldown, override_user, extra_data, affect_origin)
 	var/datum/extension/spray/S = set_extension(arglist(arguments))
 	spawn(windup)
 		S.start()
@@ -36,6 +36,8 @@
 	var/list/affected_turfs = list()
 	var/vector2/direction
 
+	var/affect_origin = FALSE	//If true, the origin turf is affected as well
+
 
 	//Registry:
 	var/datum/click_handler/spray/spray_handler	//Click handler for aiming the spray
@@ -55,7 +57,7 @@ Vars/
 	Duration:	How long to spray for
 	Cooldown:	Starts after duration
 */
-/datum/extension/spray/New(var/atom/source, var/atom/target, var/angle, var/length, var/stun, var/duration, var/cooldown, var/mob/override_user = null, var/list/extra_data)
+/datum/extension/spray/New(var/atom/source, var/atom/target, var/angle, var/length, var/stun, var/duration, var/cooldown, var/mob/override_user = null, var/list/extra_data, var/affect_origin = FALSE)
 	.=..()
 	src.source = source
 
@@ -81,7 +83,7 @@ Vars/
 	set_target_loc(target.get_global_pixel_loc())
 	src.angle = angle
 	src.length = length
-
+	src.affect_origin = affect_origin
 
 	src.stun	=	stun
 	src.duration = duration
@@ -134,7 +136,10 @@ Vars/
 		release_vector(direction)
 	direction = get_direction()
 	affected_turfs = get_view_cone(source, direction, length, angle)
-	affected_turfs -= get_turf(source)
+
+	//Don't remove this if we're going to affect the origin
+	if (!affect_origin)
+		affected_turfs -= get_turf(source)
 
 	//We will do raytrace testing to see which turfs we actually have line of sight to
 	var/list/new_turfs = affected_turfs - previous_turfs
@@ -145,6 +150,11 @@ Vars/
 			//If the value is false, LOS was blockd, so we remove it from affected turfs
 			if (!new_turfs[turf])
 				affected_turfs -= turf
+
+
+	//If affecting origin, add this in, as it may or may not be already present
+	if (affect_origin)
+		affected_turfs |= get_turf(source)
 
 	if (fx)
 		fx.set_direction(direction)

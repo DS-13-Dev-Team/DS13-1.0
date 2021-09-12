@@ -3899,6 +3899,9 @@
 	pump_direction = 0;
 	use_power = 1
 	},
+/obj/machinery/air_sensor{
+	id_tag = "n2_sensor"
+	},
 /turf/simulated/floor/reinforced/nitrogen,
 /area/ishimura/upper/engineering/atmospherics)
 "ajM" = (
@@ -3908,7 +3911,9 @@
 /turf/simulated/floor/reinforced/nitrogen,
 /area/ishimura/upper/engineering/atmospherics)
 "ajN" = (
-/obj/machinery/atmospherics/unary/outlet_injector,
+/obj/machinery/atmospherics/unary/outlet_injector{
+	id = "n2_in"
+	},
 /turf/simulated/floor/reinforced/nitrogen,
 /area/ishimura/upper/engineering/atmospherics)
 "ajO" = (
@@ -3918,7 +3923,7 @@
 	external_pressure_bound_default = 0;
 	frequency = 1441;
 	icon_state = "map_vent_in";
-	id_tag = "n2_out";
+	id_tag = "o2_out";
 	initialize_directions = 1;
 	internal_pressure_bound = 4000;
 	internal_pressure_bound_default = 4000;
@@ -3926,6 +3931,9 @@
 	pressure_checks_default = 2;
 	pump_direction = 0;
 	use_power = 1
+	},
+/obj/machinery/air_sensor{
+	id_tag = "o2_sensor"
 	},
 /turf/simulated/floor/reinforced/oxygen,
 /area/ishimura/upper/engineering/atmospherics)
@@ -3936,12 +3944,15 @@
 /turf/simulated/floor/reinforced/oxygen,
 /area/ishimura/upper/engineering/atmospherics)
 "ajQ" = (
-/obj/machinery/atmospherics/unary/outlet_injector,
+/obj/machinery/atmospherics/unary/outlet_injector{
+	id = "o2_in"
+	},
 /turf/simulated/floor/reinforced/oxygen,
 /area/ishimura/upper/engineering/atmospherics)
 "ajR" = (
 /obj/effect/wallframe_spawn/reinforced_phoron,
 /obj/machinery/atmospherics/pipe/simple/visible/black,
+/obj/machinery/meter,
 /turf/simulated/floor/plating,
 /area/ishimura/upper/engineering/atmospherics)
 "ajS" = (
@@ -3984,6 +3995,7 @@
 "ajX" = (
 /obj/effect/wallframe_spawn/reinforced_phoron,
 /obj/machinery/atmospherics/pipe/simple/visible/green,
+/obj/machinery/meter,
 /turf/simulated/floor/plating,
 /area/ishimura/upper/engineering/atmospherics)
 "ajZ" = (
@@ -4593,6 +4605,7 @@
 "alh" = (
 /obj/machinery/atmospherics/unary/outlet_injector{
 	dir = 1;
+	id = "h2_in";
 	injecting = 1;
 	use_power = 1
 	},
@@ -4620,11 +4633,15 @@
 	pump_direction = 0;
 	use_power = 1
 	},
+/obj/machinery/air_sensor{
+	id_tag = "h2_sensor"
+	},
 /turf/simulated/floor/reinforced/hydrogen,
 /area/ishimura/upper/engineering/atmospherics)
 "alk" = (
 /obj/machinery/atmospherics/unary/outlet_injector{
 	dir = 1;
+	id = "co2_in";
 	injecting = 1;
 	use_power = 1
 	},
@@ -4652,11 +4669,15 @@
 	pump_direction = 0;
 	use_power = 1
 	},
+/obj/machinery/air_sensor{
+	id_tag = "co2_sensor"
+	},
 /turf/simulated/floor/reinforced/carbon_dioxide,
 /area/ishimura/upper/engineering/atmospherics)
 "aln" = (
 /obj/machinery/atmospherics/unary/outlet_injector{
 	dir = 1;
+	id = "n2o_in";
 	injecting = 1;
 	use_power = 1
 	},
@@ -4683,6 +4704,9 @@
 	pressure_checks_default = 2;
 	pump_direction = 0;
 	use_power = 1
+	},
+/obj/machinery/air_sensor{
+	id_tag = "n2o_sensor"
 	},
 /turf/simulated/floor/reinforced/n20,
 /area/ishimura/upper/engineering/atmospherics)
@@ -9057,14 +9081,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ishimura/upper/engineering/atmospherics)
-"auj" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/structure/closet/firecloset,
-/obj/machinery/light{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/ishimura/upper/engineering/hub)
 "auk" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red,
 /turf/simulated/floor/tiled/techfloor,
@@ -17073,7 +17089,7 @@
 "aIm" = (
 /obj/effect/shuttle_landmark/valor/landing,
 /turf/simulated/floor/plating,
-/area/space)
+/area/ishimura/hull)
 "aIn" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -31126,6 +31142,9 @@
 /obj/machinery/light,
 /turf/simulated/floor/dank/rivets,
 /area/ishimura/upper/engineering/engine_room)
+"ffF" = (
+/turf/simulated/floor/plating,
+/area/ishimura/hull)
 "fnE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -31135,6 +31154,15 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/ishimura/upper/engineering/atmospherics/storage)
+"hCS" = (
+/obj/effect/floor_decal/industrial/warning/corner{
+	dir = 8
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/ishimura/upper/engineering/hub)
 "idD" = (
 /obj/machinery/fusion_fuel_injector/mapped{
 	dir = 1;
@@ -39209,7 +39237,7 @@ atP
 bhi
 alc
 anN
-avi
+hCS
 awr
 aNy
 alQ
@@ -39410,7 +39438,7 @@ aoZ
 aoZ
 bhj
 alc
-auj
+anN
 agm
 ayP
 aNT
@@ -40432,7 +40460,7 @@ aLq
 aLq
 aLq
 aLq
-aLq
+ajG
 ajG
 aoh
 auY
@@ -44662,7 +44690,7 @@ aLQ
 atn
 aeD
 azK
-aoY
+aiZ
 aQL
 aPO
 arm
@@ -44864,7 +44892,7 @@ aGL
 atw
 bcL
 aZJ
-aoY
+aiZ
 aRh
 aRo
 aSe
@@ -45062,11 +45090,11 @@ aHi
 anf
 aiZ
 aiZ
-aoY
+aiZ
 aHH
 aiZ
 aiZ
-aoY
+aiZ
 aPK
 aPK
 aPK
@@ -45873,22 +45901,22 @@ axr
 aNV
 axr
 aNE
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
+ffF
+ffF
+ffF
+ffF
+ffF
+ffF
+ffF
+ffF
+ffF
+ffF
+ffF
+ffF
+ffF
+ffF
+ffF
+ffF
 aNH
 aaa
 aaa
@@ -46075,22 +46103,22 @@ aIt
 aPm
 axr
 aNE
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
+ffF
+ffF
+ffF
+ffF
+ffF
+ffF
+ffF
+ffF
+ffF
+ffF
+ffF
+ffF
+ffF
+ffF
+ffF
+ffF
 aNH
 aaa
 aaa
@@ -46277,22 +46305,22 @@ aVn
 aPm
 axr
 aNE
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
+ffF
+ffF
+ffF
+ffF
+ffF
+ffF
+ffF
+ffF
+ffF
+ffF
+ffF
+ffF
+ffF
+ffF
+ffF
+ffF
 aNH
 aaa
 aaa
@@ -46479,22 +46507,22 @@ aOd
 aPm
 axr
 aNE
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
+ffF
+ffF
+ffF
+ffF
+ffF
+ffF
+ffF
+ffF
 aIm
-aae
-aae
-aae
-aae
-aae
-aae
-aae
+ffF
+ffF
+ffF
+ffF
+ffF
+ffF
+ffF
 aNH
 aaa
 aaa
@@ -46681,22 +46709,22 @@ axr
 aPm
 axr
 aNE
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
+ffF
+ffF
+ffF
+ffF
+ffF
+ffF
+ffF
+ffF
+ffF
+ffF
+ffF
+ffF
+ffF
+ffF
+ffF
+ffF
 aNH
 aaa
 aaa
@@ -46883,22 +46911,22 @@ aOc
 aPm
 axr
 aNE
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
+ffF
+ffF
+ffF
+ffF
+ffF
+ffF
+ffF
+ffF
+ffF
+ffF
+ffF
+ffF
+ffF
+ffF
+ffF
+ffF
 aNH
 aaa
 aaa
