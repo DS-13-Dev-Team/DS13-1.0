@@ -10,10 +10,10 @@
 #define SS_PRIORITY_ICON_UPDATE    20	// Queued icon updates. Mostly used by APCs and tables.
 
 // Normal
+#define SS_PRIORITY_OVERLAYS		500 // Overlays.
 #define SS_PRIORITY_CHAT			400
 #define SS_PRIORITY_STATPANEL		390
 #define SS_PRIORITY_TGUI			110
-#define SS_PRIORITY_OVERLAYS       110 // Overlays.
 #define SS_PRIORITY_TICKER			100 // Gameticker.
 #define SS_PRIORITY_MOB				95  // Mob Life().
 #define SS_PRIORITY_MACHINERY		95  // Machinery + powernet ticks.
