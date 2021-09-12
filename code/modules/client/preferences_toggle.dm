@@ -29,7 +29,7 @@ var/list/client_preference_stats_
 	set category = "Preferences"
 	set name = "Game Preferences"
 	set desc = "Allows you to access the Setup Character screen. Changes to your character won't take effect until next round, but other changes will."
-	prefs.ShowChoices(usr)
+	prefs?.ShowChoices(usr)
 
 /stat_client_preference
 	parent_type = /atom/movable

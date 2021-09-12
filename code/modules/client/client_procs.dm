@@ -395,13 +395,6 @@ client/proc/MayRespawn()
 	// Something went wrong, client is usually kicked or transfered to a new mob at this point
 	return 0
 
-client/verb/character_setup()
-	set name = "Character Setup"
-	set category = "OOC"
-	if(prefs)
-		prefs.ShowChoices(usr)
-
-
 //Adds things to screen and tells them this was done
 /client/proc/add_to_screen(var/list/things)
 
