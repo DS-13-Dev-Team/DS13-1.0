@@ -31,7 +31,7 @@
 	if(oddbutton && prob(5)) // Make a big mess
 		visible_message("Something flies out of [src]. He seems to be acting oddly.")
 		var/obj/effect/decal/cleanable/blood/gibs/gib = new /obj/effect/decal/cleanable/blood/gibs(loc)
-		var/weakref/g = weakref(gib)
+		var/datum/weakref/g = WEAKREF(gib)
 		ignore_list += g
 		spawn(600)
 			ignore_list -= g
@@ -165,7 +165,7 @@
 	icon_state = "bucket_proxy"
 	force = 3.0
 	throwforce = 10.0
-	
+
 	throw_range = 5
 	w_class = ITEM_SIZE_NORMAL
 	var/created_name = "Cleanbot"

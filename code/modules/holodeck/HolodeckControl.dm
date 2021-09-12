@@ -171,7 +171,7 @@
 	for(var/mob/living/simple_animal/hostile/carp/holodeck/C in holographic_mobs)
 		C.set_safety(!safety_disabled)
 		if (last_to_emag)
-			C.friends = list(weakref(last_to_emag))
+			C.friends = list(WEAKREF(last_to_emag))
 
 //This could all be done better, but it works for now.
 /obj/machinery/computer/HolodeckControl/Destroy()

@@ -247,7 +247,7 @@
 			var/check_dist = get_dist(src,R)
 			if(check_dist < cur_dist)
 				cur_dist = check_dist
-				. = weakref(R)
+				. = WEAKREF(R)
 
 /obj/item/weapon/pinpointer/radio/attack_self(var/mob/user as mob)
 	interact(user)

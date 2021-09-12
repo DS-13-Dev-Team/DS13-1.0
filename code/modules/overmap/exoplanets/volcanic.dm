@@ -130,17 +130,17 @@
 	if(locate(/obj/structure/catwalk/) in src)
 		return
 	if(AM.is_burnable())
-		LAZYADD(victims, weakref(AM))
+		LAZYADD(victims, WEAKREF(AM))
 		START_PROCESSING(SSobj, src)
 
 /turf/simulated/floor/exoplanet/lava/Exited(atom/movable/AM)
-	LAZYREMOVE(victims, weakref(AM))
+	LAZYREMOVE(victims, WEAKREF(AM))
 
 /turf/simulated/floor/exoplanet/lava/Process()
 	if(locate(/obj/structure/catwalk/) in src)
 		victims = null
 		return PROCESS_KILL
-	for(var/weakref/W in victims)
+	for(var/datum/weakref/W in victims)
 		var/atom/movable/AM = W.resolve()
 		if(!(AM && AM.is_burnable()))
 			victims -= W

@@ -225,7 +225,7 @@
 // Returns true if, and only if, the human has gone from uncloaked to cloaked
 /mob/living/carbon/human/proc/add_cloaking_source(var/datum/cloaking_source)
 	var/has_uncloaked = clean_cloaking_sources()
-	LAZYDISTINCTADD(cloaking_sources, weakref(cloaking_source))
+	LAZYDISTINCTADD(cloaking_sources, WEAKREF(cloaking_source))
 
 	// We don't present the cloaking message if the human was already cloaked just before cleanup.
 	if(!has_uncloaked && LAZYLEN(cloaking_sources) == 1)
@@ -241,7 +241,7 @@
 /mob/living/carbon/human/proc/remove_cloaking_source(var/datum/cloaking_source)
 	var/was_cloaked = LAZYLEN(cloaking_sources)
 	clean_cloaking_sources()
-	LAZYREMOVE(cloaking_sources, weakref(cloaking_source))
+	LAZYREMOVE(cloaking_sources, WEAKREF(cloaking_source))
 
 	if(was_cloaked && !LAZYLEN(cloaking_sources))
 		update_icons()
@@ -261,7 +261,7 @@
 
 // Returns true if the human is cloaked by the given source
 /mob/living/carbon/human/proc/is_cloaked_by(var/cloaking_source)
-	return LAZYISIN(cloaking_sources, weakref(cloaking_source))
+	return LAZYISIN(cloaking_sources, WEAKREF(cloaking_source))
 
 // Returns true if this operation caused the mob to go from cloaked to uncloaked
 /mob/living/carbon/human/proc/clean_cloaking_sources()
@@ -270,7 +270,7 @@
 
 	var/list/rogue_entries = list()
 	for(var/entry in cloaking_sources)
-		var/weakref/W = entry
+		var/datum/weakref/W = entry
 		if(!W.resolve())
 			cloaking_sources -= W
 			rogue_entries += W

@@ -51,7 +51,7 @@
 			cooldown_per_use = 30 //If there's no defined fire delay let's put some
 		if(installed_gun.charge_cost)
 			power_draw_per_use = installed_gun.charge_cost
-		set_pin_data(IC_OUTPUT, 1, weakref(installed_gun))
+		set_pin_data(IC_OUTPUT, 1, WEAKREF(installed_gun))
 		if(installed_gun.firemodes.len)
 			var/datum/firemode/fm = installed_gun.firemodes[installed_gun.sel_mode]
 			set_pin_data(IC_OUTPUT, 2, fm.name)
@@ -66,7 +66,7 @@
 		size = initial(size)
 		playsound(src, 'sound/items/Crowbar.ogg', 50, 1)
 		installed_gun = null
-		set_pin_data(IC_OUTPUT, 1, weakref(null))
+		set_pin_data(IC_OUTPUT, 1, WEAKREF(null))
 		push_data()
 	else
 		to_chat(user, "<span class='notice'>There's no weapon to remove from the mechanism.</span>")
@@ -76,7 +76,7 @@
 		return
 	if(!isturf(assembly.loc) && !((IC_FLAG_CAN_FIRE & assembly.circuit_flags)  && ishuman(assembly.loc)))
 		return
-	set_pin_data(IC_OUTPUT, 1, weakref(installed_gun))
+	set_pin_data(IC_OUTPUT, 1, WEAKREF(installed_gun))
 	push_data()
 	switch(ord)
 		if(1)
@@ -262,7 +262,7 @@
 			if(0)
 				var/list/harvest_output = TR.harvest()
 				for(var/i in 1 to length(harvest_output))
-					harvest_output[i] = weakref(harvest_output[i])
+					harvest_output[i] = WEAKREF(harvest_output[i])
 
 				if(length(harvest_output))
 					set_pin_data(IC_OUTPUT, 1, harvest_output)
@@ -323,7 +323,7 @@
 		seeds.seed = SSplants.seeds[O.plantname]
 		seeds.seed_type = plant_controller.seeds[O.seed.name]
 		seeds.update_seed()
-		seed_output += weakref(seeds)
+		seed_output += WEAKREF(seeds)
 	qdel(O)
 
 	if(seed_output.len)
@@ -371,8 +371,8 @@
 
 /obj/item/integrated_circuit/manipulation/grabber/proc/update_outputs()
 	if(contents.len)
-		set_pin_data(IC_OUTPUT, 1, weakref(contents[1]))
-		set_pin_data(IC_OUTPUT, 2, weakref(contents[contents.len]))
+		set_pin_data(IC_OUTPUT, 1, WEAKREF(contents[1]))
+		set_pin_data(IC_OUTPUT, 2, WEAKREF(contents[contents.len]))
 	else
 		set_pin_data(IC_OUTPUT, 1, null)
 		set_pin_data(IC_OUTPUT, 2, null)

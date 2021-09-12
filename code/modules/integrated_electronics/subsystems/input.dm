@@ -389,7 +389,7 @@
 		activate_pin(3)
 		return
 	else
-		set_pin_data(IC_OUTPUT, 1, weakref(A))
+		set_pin_data(IC_OUTPUT, 1, WEAKREF(A))
 	push_data()
 	activate_pin(2)
 
@@ -426,9 +426,9 @@
 	if(scanned_turf in view(circuit_turf)) // This is a camera. It can't examine things that it can't see.
 		var/list/turf_contents = new()
 		for(var/obj/U in scanned_turf)
-			turf_contents += weakref(U)
+			turf_contents += WEAKREF(U)
 		for(var/mob/U in scanned_turf)
-			turf_contents += weakref(U)
+			turf_contents += WEAKREF(U)
 		set_pin_data(IC_OUTPUT, 1, turf_contents)
 		set_pin_data(IC_OUTPUT, 3, area_name)
 		var/list/St = new()
@@ -459,7 +459,7 @@
 	var/datum/integrated_io/O = outputs[1]
 	O.data = null
 	if(assembly)
-		O.data = weakref(assembly.loc)
+		O.data = WEAKREF(assembly.loc)
 	set_pin_data(IC_OUTPUT, 2, isturf(assembly.loc))
 	set_pin_data(IC_OUTPUT, 3, ismob(assembly.loc))
 	push_data()
@@ -498,7 +498,7 @@
 			continue
 		valid_things.Add(thing)
 	if(valid_things.len)
-		O.data = weakref(pick(valid_things))
+		O.data = WEAKREF(pick(valid_things))
 		activate_pin(2)
 	else
 		activate_pin(3)
@@ -545,7 +545,7 @@
 						if(ismob(thing) && !isliving(thing))
 							continue
 						if(findtext(addtext(thing.name," ",thing.desc), item, 1, 0) )
-							valid_things.Add(weakref(thing))
+							valid_things.Add(WEAKREF(thing))
 				else
 					var/atom/A = item
 					var/desired_type = A.type
@@ -555,7 +555,7 @@
 							continue
 						if(ismob(thing) && !isliving(thing))
 							continue
-						valid_things.Add(weakref(thing))
+						valid_things.Add(WEAKREF(thing))
 		if(valid_things.len)
 			O.data = valid_things
 			O.push_data()
@@ -615,7 +615,7 @@
 			if(findtext(addtext(thing.name," ",thing.desc), DT, 1, 0) )
 				valid_things.Add(thing)
 	if(valid_things.len)
-		O.data = weakref(pick(valid_things))
+		O.data = WEAKREF(pick(valid_things))
 		O.push_data()
 		activate_pin(2)
 	else
@@ -835,7 +835,7 @@
 	var/ignore_bags = get_pin_data(IC_INPUT, 1)
 	if(ignore_bags && istype(A, /obj/item/weapon/storage/))
 		return FALSE
-	set_pin_data(IC_OUTPUT, 1, weakref(A))
+	set_pin_data(IC_OUTPUT, 1, WEAKREF(A))
 	push_data()
 	to_chat(user, "<span class='notice'>You scan [A] with [assembly].</span>")
 	activate_pin(1)
@@ -867,7 +867,7 @@
 	var/ignore_bags = get_pin_data(IC_INPUT, 1)
 	if(ignore_bags && istype(A, /obj/item/weapon/storage))
 		return FALSE
-	set_pin_data(IC_OUTPUT, 1, weakref(A))
+	set_pin_data(IC_OUTPUT, 1, WEAKREF(A))
 	push_data()
 	to_chat(user, "<span class='notice'>You scan [A] with [assembly].</span>")
 	activate_pin(1)
@@ -894,7 +894,7 @@
 	var/pu = get_pin_data(IC_INPUT, 1)
 	if(pu && !user.unEquip(A,get_turf(src)))
 		return FALSE
-	set_pin_data(IC_OUTPUT, 1, weakref(A))
+	set_pin_data(IC_OUTPUT, 1, WEAKREF(A))
 	push_data()
 	to_chat(user, "<span class='notice'>You let [assembly] scan [A].</span>")
 	activate_pin(1)
@@ -926,12 +926,12 @@
 	set_pin_data(IC_OUTPUT, 4, null)
 	set_pin_data(IC_OUTPUT, 5, null)
 	if(assembly)
-		set_pin_data(IC_OUTPUT, 4, weakref(assembly))
+		set_pin_data(IC_OUTPUT, 4, WEAKREF(assembly))
 		if(assembly.battery)
 			set_pin_data(IC_OUTPUT, 1, assembly.battery.charge)
 			set_pin_data(IC_OUTPUT, 2, assembly.battery.maxcharge)
 			set_pin_data(IC_OUTPUT, 3, 100*assembly.battery.charge/assembly.battery.maxcharge)
-			set_pin_data(IC_OUTPUT, 5, weakref(assembly.battery))
+			set_pin_data(IC_OUTPUT, 5, WEAKREF(assembly.battery))
 	push_data()
 	activate_pin(2)
 

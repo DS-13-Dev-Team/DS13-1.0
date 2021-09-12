@@ -43,8 +43,8 @@ var/global/list/protected_objects = list(/obj/machinery,
 	faction = "mimic"
 	move_to_delay = 8
 
-	var/weakref/copy_of
-	var/weakref/creator // the creator
+	var/datum/weakref/copy_of
+	var/datum/weakref/creator // the creator
 	var/destroy_objects = 0
 	var/knockdown_people = 0
 	pass_flags = PASS_FLAG_TABLE
@@ -71,7 +71,7 @@ var/global/list/protected_objects = list(/obj/machinery,
 
 	if((istype(O, /obj/item) || istype(O, /obj/structure)) && !is_type_in_list(O, protected_objects))
 		O.forceMove(src)
-		copy_of = weakref(O)
+		copy_of = WEAKREF(O)
 		appearance = O
 		icon_living = icon_state
 
@@ -91,7 +91,7 @@ var/global/list/protected_objects = list(/obj/machinery,
 
 		max_health = health
 		if(creator)
-			src.creator = weakref(creator)
+			src.creator = WEAKREF(creator)
 			faction = "\ref[creator]" // very unique
 		return 1
 	return
