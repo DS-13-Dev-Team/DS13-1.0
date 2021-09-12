@@ -108,7 +108,8 @@
 		if (!keep_local_name)
 			new_asset_name = "asset.[ACI.hash][ACI.ext]"
 		if (client.sent_assets[new_asset_name] == asset_hash)
-			log_asset("DEBUG: Skipping send of `[asset_name]` (as `[new_asset_name]`) for `[client]` because it already exists in the client's sent_assets list")
+			//log_asset("DEBUG: Skipping send of `[asset_name]` (as `[new_asset_name]`) for `[client]` because it already exists in the client's sent_assets list")
+			//Commented out by nanako because this stuff is generating tens of MB of logs. We only need to log problems, not when everything is going fine
 			continue
 		unreceived[asset_name] = ACI
 
@@ -125,7 +126,8 @@
 				|| (ACI.namespace && !ACI.namespace_parent)
 			if (!keep_local_name)
 				new_asset_name = "asset.[ACI.hash][ACI.ext]"
-			log_asset("Sending asset `[asset_name]` to client `[client]` as `[new_asset_name]`")
+			//log_asset("Sending asset `[asset_name]` to client `[client]` as `[new_asset_name]`")	
+			//Commented out by nanako because this stuff is generating tens of MB of logs. We only need to log problems, not when everything is going fine
 			client << browse_rsc(ACI.resource, new_asset_name)
 
 			client.sent_assets[new_asset_name] = ACI.hash
