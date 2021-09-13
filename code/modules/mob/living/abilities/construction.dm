@@ -31,6 +31,7 @@
 	if (.)
 		//Create the in progress object and force the user to touch it
 		var/atom/A = new in_progress_path(target, result_path, user, resource_cost_type, resource_cost_quantity * (1 - deposit), construction_time)
+
 		spawn()
 			A.attack_hand(user)
 
@@ -113,7 +114,7 @@
 	//To give it sound, set the worksound var. this already exists from base /obj class
 	//This can be a single sound file or a list of files
 	var/worksound_interval = 4.5 SECONDS	//How long do the worksounds play
-	var/datum/repeating_sound/worksound_datum	//Internally used to hold repeating sound datum
+	var/datum/extension/repeating_sound/worksound_datum	//Internally used to hold repeating sound datum
 
 
 /obj/partial_construction/New(var/atom/location, var/atom/target_path, var/mob/initiator, var/resource_cost_type, var/resource_cost_quantity, var/work)
@@ -153,6 +154,7 @@
 	return TRUE
 
 /obj/partial_construction/proc/do_build(var/mob/user)
+	user.face_atom(src)
 	var/workrate = get_workrate(user)
 	var/remaining_work = work - work_done
 	var/time = ((remaining_work / workrate)+1) SECONDS
@@ -164,7 +166,7 @@
 
 /obj/partial_construction/proc/start_worksound()
 	if (worksound && !worksound_datum)
-		worksound_datum = new (worksound_interval, INFINITY, interval_variance = 0, _source = src, _soundin = worksound, _vol = VOLUME_MID, _vary = TRUE, _extrarange  = 3)
+		worksound_datum = play_repeating_sound(worksound_interval, INFINITY, interval_variance = 0, _soundin = worksound, _vol = VOLUME_MID, _vary = TRUE, _extrarange  = 3)
 
 /obj/partial_construction/proc/stop_worksound()
 	if (worksound_datum)
