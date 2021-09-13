@@ -9,14 +9,12 @@
 /datum/craft_step/object
 	var/list/valid_types = list()
 	var/noconsume = FALSE
+	var/list/blacklist
 
 
 /datum/craft_step/object/load_params(var/list/params)
 	//The second var either contains a list of types or a single type
-	if (istype(params[2], /list))
-		valid_types = params[2] //If its a list, replace our list with it
-	else if (ispath(params[2]))
-		valid_types = list(params[2]) //If its a type, add it to our list
+	valid_types = list(params[2]) //If its a type, add it to our list
 
 	//Todo: Show icons for everything in valid types list, rather than just the first
 	icon_type = valid_types[1]
@@ -24,10 +22,12 @@
 	//Third var is the worktime, we feed that through the load_time function
 	if (params.len >= 3)
 		load_time(params[3], params)
-
-		//Lastly, the noconsume flag
-		if (params.len >= 4 && params[4])
+		//The noconsume flag
+		if (params.len >= 4)
 			noconsume = params[4]
+
+			if (params.len >= 5)
+				blacklist = list(params[5])
 
 	//Now setting the name and desc
 	desc = "Apply "
@@ -53,7 +53,17 @@
 			return FALSE
 
 		for (var/path in valid_types)
+
 			if (istype(I, path))
+				if (blacklist)
+					var/blacklisted = FALSE
+					for (var/blacktype in blacklist)
+						if (istype(I, blacktype))
+							blacklisted = TRUE
+							break
+
+					if (blacklisted)
+						continue
 				return TRUE
 		user << "Wrong item!"
 		return FALSE

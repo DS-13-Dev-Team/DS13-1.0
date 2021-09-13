@@ -63,6 +63,7 @@
 	var/last_resource_consumption
 
 
+
 /******************************
 	/* Tool Usage */
 *******************************/
@@ -141,7 +142,7 @@
 
 	//Repeating sound code!
 	//A datum/repeating_sound is a little object we can use to make a sound repeat a few times
-	var/datum/repeating_sound/toolsound = null
+	var/datum/extension/repeating_sound/toolsound
 	if(forced_sound != NO_WORKSOUND)
 		var/volume = 70
 		var/extrarange = 0
@@ -158,7 +159,7 @@
 
 		if (sound_repeat && time_to_finish)
 			//It will repeat roughly every 2.5 seconds until our tool finishes
-			toolsound = new/datum/repeating_sound(sound_repeat,time_to_finish,0.15, src, soundfile, volume, TRUE, extrarange)
+			toolsound = src.play_repeating_sound(sound_repeat,time_to_finish,0.15, soundfile, volume, TRUE, extrarange)
 		else
 			playsound(src.loc, soundfile, volume, 1, extrarange)
 
@@ -280,6 +281,7 @@
 	QDEL_NULL_LIST(modifications)
 	QDEL_NULL(reagents)
 	STOP_PROCESSING(SSobj, src)
+
 	return ..()
 
 
