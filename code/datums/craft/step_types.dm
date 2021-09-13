@@ -22,12 +22,11 @@
 	//Third var is the worktime, we feed that through the load_time function
 	if (params.len >= 3)
 		load_time(params[3], params)
-
 		//The noconsume flag
-		if (params.len >= 4 && params[4])
+		if (params.len >= 4)
 			noconsume = params[4]
 
-			if (params.len >= 5 && params[5])
+			if (params.len >= 5)
 				blacklist = list(params[5])
 
 	//Now setting the name and desc
@@ -66,7 +65,6 @@
 					if (blacklisted)
 						continue
 				return TRUE
-
 		user << "Wrong item!"
 		return FALSE
 
