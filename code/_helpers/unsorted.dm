@@ -1089,9 +1089,9 @@ var/list/WALLITEMS = list(
 /proc/REF(input)
 	if(istype(input, /datum))
 		var/datum/thing = input
-		if(thing.datum_flags & DF_USE_TAG)
+		if(thing.datum_flags & DATUM_FLAG_WEAKREF_USE_TAG)
 			if(!thing.tag)
-				thing.datum_flags &= ~DF_USE_TAG
+				thing.datum_flags &= ~DATUM_FLAG_WEAKREF_USE_TAG
 			else
 				return "\[[url_encode(thing.tag)]\]"
 	return "\ref[input]"

@@ -1,5 +1,5 @@
 /mob
-	datum_flags = DF_USE_TAG
+	datum_flags = DATUM_FLAG_WEAKREF_USE_TAG
 	density = TRUE
 	plane = DEFAULT_PLANE
 	layer = MOB_LAYER

@@ -54,7 +54,7 @@
 	if(GLOB.use_preloader && (src.type == GLOB._preloader.target_path))//in case the instanciated atom is creating other atoms in New()
 		GLOB._preloader.load(src)
 
-	if(datum_flags & DF_USE_TAG)
+	if(datum_flags & DATUM_FLAG_WEAKREF_USE_TAG)
 		GenerateTag()
 
 	var/do_initialize = SSatoms.atom_init_stage
