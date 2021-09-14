@@ -31,5 +31,5 @@
 /mob/living/carbon/human/dummy/mannequin/fully_replace_character_name(new_name)
 	..("[new_name] (mannequin)", FALSE)
 
-/mob/living/carbon/human/dummy/mannequin/InitializeHud()
+/mob/living/carbon/human/dummy/mannequin/create_mob_hud()
 	return	// Mannequins don't get HUDs

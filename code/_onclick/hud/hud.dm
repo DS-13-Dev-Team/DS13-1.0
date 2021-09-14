@@ -5,25 +5,16 @@
 */
 
 /mob
-	var/hud_type = null
+	var/hud_type = /datum/hud
 	var/datum/hud/hud_used = null
-
-/mob/proc/InitializeHud()
-
-	if(hud_used)
-		qdel(hud_used)
-	if(hud_type)
-		hud_used = new hud_type(src)
-	else
-		hud_used = new /datum/hud
 
 /datum/hud
 	var/mob/mymob
 
-	var/hud_shown = 1			//Used for the HUD toggle (F12)
-	var/inventory_shown = 1		//the inventory
-	var/show_intent_icons = 0
-	var/hotkey_ui_hidden = 0	//This is to hide the buttons that can be used via hotkeys. (hotkeybuttons list of buttons)
+	var/hud_shown = TRUE			//Used for the HUD toggle (F12)
+	var/inventory_shown = TRUE		//the inventory
+	var/show_intent_icons = FALSE
+	var/hotkey_ui_hidden = FALSE	//This is to hide the buttons that can be used via hotkeys. (hotkeybuttons list of buttons)
 
 	var/obj/screen/lingchemdisplay
 	var/obj/screen/r_hand_hud_object
@@ -76,7 +67,11 @@
 	..()
 
 /datum/hud/Destroy()
-	. = ..()
+	if(mymob.hud_used == src)
+		mymob.hud_used = null
+
+	QDEL_NULL(hide_actions_toggle)
+
 	hands = null
 	pullin = null
 	purged = null
@@ -106,10 +101,19 @@
 	l_hand_hud_object = null
 	action_intent = null
 	move_intent = null
-	adding = null
-	other = null
-	hotkeybuttons = null
+
+	QDEL_LIST(adding)
+	QDEL_LIST(other)
+	QDEL_LIST(hotkeybuttons)
+
 	mymob = null
+
+	return ..()
+
+/mob/proc/create_mob_hud()
+	if(!client || hud_used)
+		return
+	hud_used = new hud_type(src)
 
 /datum/hud/proc/update_stamina()
 	if(mymob && stamina_bar)
