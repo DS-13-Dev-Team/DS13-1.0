@@ -17,7 +17,7 @@
 		/datum/movement_handler/move_relay,
 		/datum/movement_handler/mob/buckle_relay,
 		/datum/movement_handler/mob/delay,
-		/datum/movement_handler/mob/stop_effect,
+		//Stop effect handler entirely removed, it is trash. If you want to prevent someone from moving, use root
 		/datum/movement_handler/mob/physically_capable,
 		/datum/movement_handler/mob/physically_restrained,
 		/datum/movement_handler/mob/space,
