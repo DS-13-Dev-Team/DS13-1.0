@@ -252,7 +252,7 @@
 	// Clear hands and module icon.
 	uneq_all()
 	modtype = initial(modtype)
-	hands.icon_state = initial(hands.icon_state)
+	hud_used.hands.icon_state = initial(hud_used.hands.icon_state)
 
 	// If the robot had a module and this wasn't an uncertified change, let the AI know.
 	if (module)
@@ -289,7 +289,7 @@
 	var/module_type = robot_modules[modtype]
 	new module_type(src)
 
-	hands.icon_state = lowertext(modtype)
+	hud_used.hands.icon_state = lowertext(modtype)
 	feedback_inc("cyborg_[lowertext(modtype)]",1)
 	updatename()
 	recalculate_synth_capacities()

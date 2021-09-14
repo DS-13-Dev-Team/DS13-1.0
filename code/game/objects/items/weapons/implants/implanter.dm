@@ -3,7 +3,7 @@
 	icon = 'icons/obj/items.dmi'
 	icon_state = "implanter0"
 	item_state = "syringe_0"
-	
+
 	throw_range = 5
 	w_class = ITEM_SIZE_SMALL
 	matter = list(MATERIAL_STEEL = 1000, MATERIAL_GLASS = 1000)
@@ -73,7 +73,7 @@
 		user.set_click_cooldown(DEFAULT_QUICK_COOLDOWN)
 		user.do_attack_animation(M)
 
-		var/target_zone = user.zone_sel.selecting
+		var/target_zone = user.hud_used.zone_sel.selecting
 		if(src.imp.can_implant(M, user, target_zone))
 			var/imp_name = imp.name
 

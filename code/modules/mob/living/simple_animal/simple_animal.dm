@@ -275,7 +275,7 @@
 		if(!O.force)
 			visible_message("<span class='notice'>[user] gently taps [src] with \the [O].</span>")
 		else
-			O.attack(src, user, user.zone_sel.selecting)
+			O.attack(src, user, user.hud_used.zone_sel.selecting)
 
 /mob/living/simple_animal/standard_weapon_hit_effects(obj/item/O, mob/living/user, var/effective_force, var/blocked, var/hit_zone)
 

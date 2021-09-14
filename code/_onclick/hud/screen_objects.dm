@@ -147,8 +147,8 @@
 					if(C.internal)
 						C.internal = null
 						to_chat(C, "<span class='notice'>No longer running on internals.</span>")
-						if(C.internals)
-							C.internals.icon_state = "internal0"
+						if(C.hud_used.internals)
+							C.hud_used.internals.icon_state = "internal0"
 					else
 
 						var/no_mask
@@ -238,8 +238,8 @@
 
 
 							if(C.internal)
-								if(C.internals)
-									C.internals.icon_state = "internal1"
+								if(C.hud_used.internals)
+									C.hud_used.internals.icon_state = "internal1"
 							else
 								to_chat(C, "<span class='notice'>You don't have a[breathes=="oxygen" ? "n oxygen" : addtext(" ",breathes)] tank.</span>")
 		if("act_intent")

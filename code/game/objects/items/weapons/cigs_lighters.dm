@@ -208,7 +208,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	name = "cigarette"
 	desc = "A small paper cylinder filled with processed tobacco and various fillers."
 	icon_state = "cigoff"
-	
+
 	item_state = "cigoff"
 	w_class = ITEM_SIZE_TINY
 	slot_flags = SLOT_EARS | SLOT_MASK
@@ -408,7 +408,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_state = "cigar2off"
 	icon_on = "cigar2on"
 	type_butt = /obj/item/weapon/cigbutt/cigarbutt
-	
+
 	item_state = "cigaroff"
 	smoketime = 1500
 	chem_volume = 15
@@ -853,7 +853,7 @@ obj/item/clothing/mask/chewable/Destroy()
 /obj/item/clothing/mask/chewable/tobacco
 	name = "wad"
 	desc = "A chewy wad of terbecco. Cut in long strands and treated with syrups so it doesn't taste like a ash-tray when you stuff it into your face."
-	
+
 	icon_state = "chew"
 	type_butt = /obj/item/weapon/cigbutt/spitwad
 	w_class = ITEM_SIZE_TINY
@@ -906,7 +906,7 @@ obj/item/clothing/mask/chewable/Destroy()
 /obj/item/clothing/mask/chewable/candy
 	name = "wad"
 	desc = "A chewy wad of wadding material."
-	
+
 	icon_state = "chew"
 	type_butt = /obj/item/weapon/cigbutt/spitgum
 	w_class = ITEM_SIZE_TINY
@@ -1105,7 +1105,7 @@ obj/item/clothing/mask/chewable/Destroy()
 	if(lit)
 		M.IgniteMob()
 
-		if(istype(M.wear_mask, /obj/item/clothing/mask/smokable/cigarette) && user.zone_sel.selecting == BP_MOUTH)
+		if(istype(M.wear_mask, /obj/item/clothing/mask/smokable/cigarette) && user.hud_used.zone_sel.selecting == BP_MOUTH)
 			var/obj/item/clothing/mask/smokable/cigarette/cig = M.wear_mask
 			if(M == user)
 				cig.attackby(src, user)

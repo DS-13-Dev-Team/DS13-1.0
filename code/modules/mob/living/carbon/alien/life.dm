@@ -87,25 +87,25 @@
 
 
 	//Deprecated, but we don't use these
-	if (healths)
+	if (hud_used.healths)
 		if(stat != DEAD)
 			switch(health)
 				if(100 to INFINITY)
-					healths.icon_state = "health0"
+					hud_used.healths.icon_state = "health0"
 				if(80 to 100)
-					healths.icon_state = "health1"
+					hud_used.healths.icon_state = "health1"
 				if(60 to 80)
-					healths.icon_state = "health2"
+					hud_used.healths.icon_state = "health2"
 				if(40 to 60)
-					healths.icon_state = "health3"
+					hud_used.healths.icon_state = "health3"
 				if(20 to 40)
-					healths.icon_state = "health4"
+					hud_used.healths.icon_state = "health4"
 				if(0 to 20)
-					healths.icon_state = "health5"
+					hud_used.healths.icon_state = "health5"
 				else
-					healths.icon_state = "health6"
+					hud_used.healths.icon_state = "health6"
 		else
-			healths.icon_state = "health7"
+			hud_used.healths.icon_state = "health7"
 
 	if(stat != DEAD)
 		if(blinded)
@@ -131,11 +131,13 @@
 
 	if(environment.temperature > (T0C+66))
 		adjustFireLoss((environment.temperature - (T0C+66))/5) // Might be too high, check in testing.
-		if (fire) fire.icon_state = "fire2"
+		if (hud_used.fire)
+			hud_used.fire.icon_state = "fire2"
 		if(prob(20))
 			to_chat(src, "<span class='danger'>You feel a searing heat!</span>")
 	else
-		if (fire) fire.icon_state = "fire0"
+		if (hud_used.fire)
+			hud_used.fire.icon_state = "fire0"
 
 /mob/living/carbon/alien/handle_fire()
 	if(..())

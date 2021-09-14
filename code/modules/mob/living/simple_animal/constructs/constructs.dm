@@ -257,84 +257,130 @@
 /mob/living/simple_animal/construct/Life()
 	. = ..()
 	if(.)
-		if(fire)
-			if(fire_alert)							fire.icon_state = "fire1"
-			else									fire.icon_state = "fire0"
-		if(pullin)
-			if(pulling)								pullin.icon_state = "pull1"
-			else									pullin.icon_state = "pull0"
+		if(hud_used.fire)
+			if(fire_alert)
+				hud_used.fire.icon_state = "fire1"
+			else
+				hud_used.fire.icon_state = "fire0"
+		if(hud_used.pullin)
+			if(pulling)
+				hud_used.pullin.icon_state = "pull1"
+			else
+				hud_used.pullin.icon_state = "pull0"
 
-		if(purged)
-			if(purge > 0)							purged.icon_state = "purge1"
-			else									purged.icon_state = "purge0"
+		if(hud_used.purged)
+			if(purge > 0)
+				hud_used.purged.icon_state = "purge1"
+			else
+				hud_used.purged.icon_state = "purge0"
 
 		silence_spells(purge)
 
 /mob/living/simple_animal/construct/armoured/Life()
 	..()
-	if(healths)
+	if(hud_used.healths)
 		switch(health)
-			if(250 to INFINITY)		healths.icon_state = "juggernaut_health0"
-			if(208 to 249)			healths.icon_state = "juggernaut_health1"
-			if(167 to 207)			healths.icon_state = "juggernaut_health2"
-			if(125 to 166)			healths.icon_state = "juggernaut_health3"
-			if(84 to 124)			healths.icon_state = "juggernaut_health4"
-			if(42 to 83)			healths.icon_state = "juggernaut_health5"
-			if(1 to 41)				healths.icon_state = "juggernaut_health6"
-			else					healths.icon_state = "juggernaut_health7"
+			if(250 to INFINITY)
+				hud_used.healths.icon_state = "juggernaut_health0"
+			if(208 to 249)
+				hud_used.healths.icon_state = "juggernaut_health1"
+			if(167 to 207)
+				hud_used.healths.icon_state = "juggernaut_health2"
+			if(125 to 166)
+				hud_used.healths.icon_state = "juggernaut_health3"
+			if(84 to 124)
+				hud_used.healths.icon_state = "juggernaut_health4"
+			if(42 to 83)
+				hud_used.healths.icon_state = "juggernaut_health5"
+			if(1 to 41)
+				hud_used.healths.icon_state = "juggernaut_health6"
+			else
+				hud_used.healths.icon_state = "juggernaut_health7"
 
 
 /mob/living/simple_animal/construct/behemoth/Life()
 	..()
-	if(healths)
+	if(hud_used.healths)
 		switch(health)
-			if(750 to INFINITY)		healths.icon_state = "juggernaut_health0"
-			if(625 to 749)			healths.icon_state = "juggernaut_health1"
-			if(500 to 624)			healths.icon_state = "juggernaut_health2"
-			if(375 to 499)			healths.icon_state = "juggernaut_health3"
-			if(250 to 374)			healths.icon_state = "juggernaut_health4"
-			if(125 to 249)			healths.icon_state = "juggernaut_health5"
-			if(1 to 124)			healths.icon_state = "juggernaut_health6"
-			else					healths.icon_state = "juggernaut_health7"
+			if(750 to INFINITY)
+				hud_used.healths.icon_state = "juggernaut_health0"
+			if(625 to 749)
+				hud_used.healths.icon_state = "juggernaut_health1"
+			if(500 to 624)
+				hud_used.healths.icon_state = "juggernaut_health2"
+			if(375 to 499)
+				hud_used.healths.icon_state = "juggernaut_health3"
+			if(250 to 374)
+				hud_used.healths.icon_state = "juggernaut_health4"
+			if(125 to 249)
+				hud_used.healths.icon_state = "juggernaut_health5"
+			if(1 to 124)
+				hud_used.healths.icon_state = "juggernaut_health6"
+			else
+				hud_used.healths.icon_state = "juggernaut_health7"
 
 /mob/living/simple_animal/construct/builder/Life()
 	..()
-	if(healths)
+	if(hud_used.healths)
 		switch(health)
-			if(50 to INFINITY)		healths.icon_state = "artificer_health0"
-			if(42 to 49)			healths.icon_state = "artificer_health1"
-			if(34 to 41)			healths.icon_state = "artificer_health2"
-			if(26 to 33)			healths.icon_state = "artificer_health3"
-			if(18 to 25)			healths.icon_state = "artificer_health4"
-			if(10 to 17)			healths.icon_state = "artificer_health5"
-			if(1 to 9)				healths.icon_state = "artificer_health6"
-			else					healths.icon_state = "artificer_health7"
+			if(50 to INFINITY)
+				hud_used.healths.icon_state = "artificer_health0"
+			if(42 to 49)
+				hud_used.healths.icon_state = "artificer_health1"
+			if(34 to 41)
+				hud_used.healths.icon_state = "artificer_health2"
+			if(26 to 33)
+				hud_used.healths.icon_state = "artificer_health3"
+			if(18 to 25)
+				hud_used.healths.icon_state = "artificer_health4"
+			if(10 to 17)
+				hud_used.healths.icon_state = "artificer_health5"
+			if(1 to 9)
+				hud_used.healths.icon_state = "artificer_health6"
+			else
+				hud_used.healths.icon_state = "artificer_health7"
 
 
 
 /mob/living/simple_animal/construct/wraith/Life()
 	..()
-	if(healths)
+	if(hud_used.healths)
 		switch(health)
-			if(75 to INFINITY)		healths.icon_state = "wraith_health0"
-			if(62 to 74)			healths.icon_state = "wraith_health1"
-			if(50 to 61)			healths.icon_state = "wraith_health2"
-			if(37 to 49)			healths.icon_state = "wraith_health3"
-			if(25 to 36)			healths.icon_state = "wraith_health4"
-			if(12 to 24)			healths.icon_state = "wraith_health5"
-			if(1 to 11)				healths.icon_state = "wraith_health6"
-			else					healths.icon_state = "wraith_health7"
+			if(75 to INFINITY)
+				hud_used.healths.icon_state = "wraith_health0"
+			if(62 to 74)
+				hud_used.healths.icon_state = "wraith_health1"
+			if(50 to 61)
+				hud_used.healths.icon_state = "wraith_health2"
+			if(37 to 49)
+				hud_used.healths.icon_state = "wraith_health3"
+			if(25 to 36)
+				hud_used.healths.icon_state = "wraith_health4"
+			if(12 to 24)
+				hud_used.healths.icon_state = "wraith_health5"
+			if(1 to 11)
+				hud_used.healths.icon_state = "wraith_health6"
+			else
+				hud_used.healths.icon_state = "wraith_health7"
 
 
 /mob/living/simple_animal/construct/harvester/Life()
 	..()
-	if(healths)
+	if(hud_used.healths)
 		switch(health)
-			if(150 to INFINITY)		healths.icon_state = "harvester_health0"
-			if(125 to 149)			healths.icon_state = "harvester_health1"
-			if(100 to 124)			healths.icon_state = "harvester_health2"
-			if(75 to 99)			healths.icon_state = "harvester_health3"
-			if(50 to 74)			healths.icon_state = "harvester_health4"
-			if(25 to 49)			healths.icon_state = "harvester_health5"
-			if(1 to 24)				healths.icon_state = "harvester_health6"
-			else					healths.icon_state = "harvester_health7"
+			if(150 to INFINITY)
+				hud_used.healths.icon_state = "harvester_health0"
+			if(125 to 149)
+				hud_used.healths.icon_state = "harvester_health1"
+			if(100 to 124)
+				hud_used.healths.icon_state = "harvester_health2"
+			if(75 to 99)
+				hud_used.healths.icon_state = "harvester_health3"
+			if(50 to 74)
+				hud_used.healths.icon_state = "harvester_health4"
+			if(25 to 49)
+				hud_used.healths.icon_state = "harvester_health5"
+			if(1 to 24)
+				hud_used.healths.icon_state = "harvester_health6"
+			else
+				hud_used.healths.icon_state = "harvester_health7"

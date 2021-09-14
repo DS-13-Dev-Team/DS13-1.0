@@ -106,7 +106,7 @@
 	var/target_zone = BP_CHEST
 	if (isliving(user))
 		L = user
-		target_zone = L.zone_sel.selecting
+		target_zone = L.hud_used.zone_sel.selecting
 	else
 		target_zone = ran_zone()
 

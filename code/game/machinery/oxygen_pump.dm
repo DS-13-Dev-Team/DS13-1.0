@@ -30,8 +30,8 @@
 /obj/machinery/oxygen_pump/Destroy()
 	if(breather)
 		breather.internal = null
-		if(breather.internals)
-			breather.internals.icon_state = "internal0"
+		if(breather.hud_used.internals)
+			breather.hud_used.internals.icon_state = "internal0"
 	if(tank)
 		qdel(tank)
 	if(breather)
@@ -89,8 +89,8 @@
 	if(C && istype(C))
 		if(!C.internal && tank)
 			C.internal = tank
-			if(C.internals)
-				C.internals.icon_state = "internal1"
+			if(C.hud_used.internals)
+				C.hud_used.internals.icon_state = "internal1"
 		use_power = 2
 
 /obj/machinery/oxygen_pump/proc/detach_mask(mob/user)
@@ -101,8 +101,8 @@
 		visible_message("<span class='notice'>\The [user] detaches \the [contained] and it rapidly retracts back into \the [src]!</span>")
 	else
 		visible_message("<span class='notice'>\The [contained] rapidly retracts back into \the [src]!</span>")
-	if(breather.internals)
-		breather.internals.icon_state = "internal0"
+	if(breather.hud_used.internals)
+		breather.hud_used.internals.icon_state = "internal0"
 	breather = null
 	use_power = 1
 

@@ -161,42 +161,42 @@
 				process_med_hud(src,0)
 
 	//Deprecated, but we don't use these
-	if (src.healths)
+	if (hud_used.healths)
 		if (src.stat != 2)
 			if(istype(src,/mob/living/silicon/robot/drone))
 				switch(health)
 					if(35 to INFINITY)
-						src.healths.icon_state = "health0"
+						hud_used.healths.icon_state = "health0"
 					if(25 to 34)
-						src.healths.icon_state = "health1"
+						hud_used.healths.icon_state = "health1"
 					if(15 to 24)
-						src.healths.icon_state = "health2"
+						hud_used.healths.icon_state = "health2"
 					if(5 to 14)
-						src.healths.icon_state = "health3"
+						hud_used.healths.icon_state = "health3"
 					if(0 to 4)
-						src.healths.icon_state = "health4"
+						hud_used.healths.icon_state = "health4"
 					if(-35 to 0)
-						src.healths.icon_state = "health5"
+						hud_used.healths.icon_state = "health5"
 					else
-						src.healths.icon_state = "health6"
+						hud_used.healths.icon_state = "health6"
 			else
 				switch(health)
 					if(200 to INFINITY)
-						src.healths.icon_state = "health0"
+						hud_used.healths.icon_state = "health0"
 					if(150 to 200)
-						src.healths.icon_state = "health1"
+						hud_used.healths.icon_state = "health1"
 					if(100 to 150)
-						src.healths.icon_state = "health2"
+						hud_used.healths.icon_state = "health2"
 					if(50 to 100)
-						src.healths.icon_state = "health3"
+						hud_used.healths.icon_state = "health3"
 					if(0 to 50)
-						src.healths.icon_state = "health4"
+						hud_used.healths.icon_state = "health4"
 					if(CONFIG_GET(number/health_threshold_dead) to 0)
-						src.healths.icon_state = "health5"
+						hud_used.healths.icon_state = "health5"
 					else
-						src.healths.icon_state = "health6"
+						hud_used.healths.icon_state = "health6"
 		else
-			src.healths.icon_state = "health7"
+			hud_used.healths.icon_state = "health7"
 	/*
 	if (src.syndicate && src.client)
 		for(var/datum/mind/tra in GLOB.traitors.current_antagonists)
@@ -218,18 +218,18 @@
 		else
 			src.cells.icon_state = "charge-empty"
 
-	if(bodytemp)
-		switch(src.bodytemperature) //310.055 optimal body temp
+	if(hud_used.bodytemp)
+		switch(bodytemperature) //310.055 optimal body temp
 			if(335 to INFINITY)
-				src.bodytemp.icon_state = "temp2"
+				hud_used.bodytemp.icon_state = "temp2"
 			if(320 to 335)
-				src.bodytemp.icon_state = "temp1"
+				hud_used.bodytemp.icon_state = "temp1"
 			if(300 to 320)
-				src.bodytemp.icon_state = "temp0"
+				hud_used.bodytemp.icon_state = "temp0"
 			if(260 to 300)
-				src.bodytemp.icon_state = "temp-1"
+				hud_used.bodytemp.icon_state = "temp-1"
 			else
-				src.bodytemp.icon_state = "temp-2"
+				hud_used.bodytemp.icon_state = "temp-2"
 
 //Oxygen and fire does nothing yet!!
 //	if (src.oxygen) src.oxygen.icon_state = "oxy[src.oxygen_alert ? 1 : 0]"

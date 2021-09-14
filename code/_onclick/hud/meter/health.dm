@@ -1,7 +1,6 @@
 /*
 	The healthbar is displayed along the top of the client's screen
 */
-/mob/living/var/obj/screen/meter/health/hud_healthbar
 /obj/screen/meter/health
 	name = "healthbar"
 
@@ -21,15 +20,15 @@
 
 /obj/screen/meter/health/Destroy()
 	if (L)
-		if (L.hud_healthbar == src)
-			L.hud_healthbar = null
+		if (L.hud_used.hud_healthbar == src)
+			L.hud_used.hud_healthbar = null
 		L = null
 	.=..()
 
 /obj/screen/meter/health/set_mob(var/mob/living/newmob)
 	.=..()
 	GLOB.updatehealth_event.register(L, src, /obj/screen/meter/proc/update)
-	L.hud_healthbar = src
+	L.hud_used.hud_healthbar = src
 	set_health()
 
 

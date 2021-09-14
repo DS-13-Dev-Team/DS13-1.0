@@ -81,7 +81,7 @@
 						if(!fail)
 							to_chat(src, "<span class='notice'>You feel a breath of fresh air enter your lungs. It feels good.</span>")
 
-			else if(!(M == src && apply_pressure(M, M.zone_sel.selecting)))
+			else if(!(M == src && apply_pressure(M, M.hud_used.zone_sel.selecting)))
 				help_shake_act(M)
 			return 1
 

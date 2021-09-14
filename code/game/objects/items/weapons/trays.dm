@@ -8,7 +8,7 @@
 	desc = "A metal tray to lay food on."
 	throwforce = 12.0
 	throwforce = 10.0
-	
+
 	throw_range = 5
 	w_class = ITEM_SIZE_NORMAL
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
@@ -52,7 +52,7 @@
 	var/mob/living/carbon/human/H = M      ///////////////////////////////////// /Let's have this ready for later.
 
 
-	if(!(user.zone_sel.selecting == (BP_EYES || BP_HEAD))) //////////////hitting anything else other than the eyes
+	if(!(user.hud_used.zone_sel.selecting == (BP_EYES || BP_HEAD))) //////////////hitting anything else other than the eyes
 		if(prob(33))
 			src.add_blood(H)
 			var/turf/location = H.loc

@@ -152,8 +152,8 @@
 	alpha = 0
 
 /obj/screen/fullscreen/pain/Destroy()
-	if (owner && owner.pain == src)
-		owner.pain = null
+	if (owner && owner.hud_used.pain == src)
+		owner.hud_used.pain = null
 	.= ..()
 
 

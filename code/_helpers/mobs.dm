@@ -226,13 +226,13 @@ var/datum/callback/proc_to_call, var/proc_interval = 10)
 
 /proc/doafter_blocked(user)
 	.=FALSE
-	if (has_extension(user, /datum/extension/interrupt_doafter))	
+	if (has_extension(user, /datum/extension/interrupt_doafter))
 		var/datum/extension/interrupt_doafter/D = get_extension(user, /datum/extension/interrupt_doafter)
 		if (D.end_time >= world.time)
 			.=TRUE
 		D.remove_self()
-	
-	
+
+
 /datum/extension/interrupt_doafter
 	var/end_time
 /datum/extension/interrupt_doafter/New(var/datum/holder, var/_end_time)
@@ -305,7 +305,7 @@ var/datum/callback/proc_to_call, var/proc_interval = 10)
 				//We will pass: User, Interval
 				proc_to_call.Invoke(user, target, proc_interval)
 
-		if(target_zone && user.zone_sel.selecting != target_zone)
+		if(target_zone && user.hud_used.zone_sel.selecting != target_zone)
 			. = 0
 			break
 

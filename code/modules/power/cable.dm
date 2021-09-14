@@ -526,7 +526,7 @@ obj/structure/cable/proc/cableColor(var/colorC)
 /obj/item/stack/cable_coil/attack(var/atom/A, var/mob/living/user, var/def_zone)
 	if(ishuman(A) && user.a_intent == I_HELP)
 		var/mob/living/carbon/human/H = A
-		var/obj/item/organ/external/S = H.organs_by_name[user.zone_sel.selecting]
+		var/obj/item/organ/external/S = H.organs_by_name[user.hud_used.zone_sel.selecting]
 
 		if (!S) return
 		if(!BP_IS_ROBOTIC(S) || user.a_intent != I_HELP)

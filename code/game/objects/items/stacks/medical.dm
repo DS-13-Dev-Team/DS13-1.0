@@ -12,7 +12,7 @@
 	var/animal_heal = 3
 	var/apply_sounds
 	item_flags = ITEM_FLAG_NO_BLUDGEON
-	
+
 	var/list/rig_chestpiece_covers = list(BP_CHEST, BP_GROIN, BP_L_ARM, BP_R_ARM, BP_L_LEG, BP_R_LEG)  //dictates what organs the rig chestpiece covers to solve issue of hands not healing and whatnot
 	var/list/rig_gloves_covers = list (BP_L_HAND, BP_R_HAND)
 	var/list/rig_boots_covers = list (BP_L_FOOT, BP_R_FOOT)
@@ -30,7 +30,7 @@
 
 	if (istype(M, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
-		var/obj/item/organ/external/affecting = H.get_organ(user.zone_sel.selecting)
+		var/obj/item/organ/external/affecting = H.get_organ(user.hud_used.zone_sel.selecting)
 
 		if(!affecting)
 			to_chat(user, "<span class='warning'>\The [M] is missing that body part!</span>")
@@ -40,7 +40,7 @@
 			if(H.head && istype(H.head,/obj/item/clothing/head/helmet/space))
 				to_chat(user, "<span class='warning'>You can't apply [src] through [H.head]!</span>")
 				return 1
-				
+
 		if(affecting.organ_tag in rig_chestpiece_covers)   // also stops you healing in the same places with voidsuit
 			if(H.wear_suit && istype(H.wear_suit,/obj/item/clothing/suit/space/rig) || H.wear_suit && istype(H.wear_suit,/obj/item/clothing/suit/space/void))
 				to_chat(user, "<span class='warning'>You can't apply [src] through [H.wear_suit]!</span>")
@@ -100,7 +100,7 @@
 
 	if (istype(M, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
-		var/obj/item/organ/external/affecting = H.get_organ(user.zone_sel.selecting) //nullchecked by ..()
+		var/obj/item/organ/external/affecting = H.get_organ(user.hud_used.zone_sel.selecting) //nullchecked by ..()
 
 		if(affecting.is_bandaged())
 			to_chat(user, "<span class='warning'>The wounds on [M]'s [affecting.name] have already been bandaged.</span>")
@@ -156,7 +156,7 @@
 
 	if (istype(M, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
-		var/obj/item/organ/external/affecting = H.get_organ(user.zone_sel.selecting) //nullchecked by ..()
+		var/obj/item/organ/external/affecting = H.get_organ(user.hud_used.zone_sel.selecting) //nullchecked by ..()
 
 		if(affecting.is_salved())
 			to_chat(user, "<span class='warning'>The wounds on [M]'s [affecting.name] have already been salved.</span>")
@@ -191,7 +191,7 @@
 
 	if (istype(M, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
-		var/obj/item/organ/external/affecting = H.get_organ(user.zone_sel.selecting) //nullchecked by ..()
+		var/obj/item/organ/external/affecting = H.get_organ(user.hud_used.zone_sel.selecting) //nullchecked by ..()
 		if(affecting.is_bandaged() && affecting.is_disinfected())
 			to_chat(user, "<span class='warning'>The wounds on [M]'s [affecting.name] have already been treated.</span>")
 			return 1
@@ -246,7 +246,7 @@
 
 	if (istype(M, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
-		var/obj/item/organ/external/affecting = H.get_organ(user.zone_sel.selecting) //nullchecked by ..()
+		var/obj/item/organ/external/affecting = H.get_organ(user.hud_used.zone_sel.selecting) //nullchecked by ..()
 
 		if(affecting.is_salved())
 			to_chat(user, "<span class='warning'>The wounds on [M]'s [affecting.name] have already been salved.</span>")
@@ -281,7 +281,7 @@
 
 	if (istype(M, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
-		var/obj/item/organ/external/affecting = H.get_organ(user.zone_sel.selecting) //nullchecked by ..()
+		var/obj/item/organ/external/affecting = H.get_organ(user.hud_used.zone_sel.selecting) //nullchecked by ..()
 		var/limb = affecting.name
 		if(!(affecting.organ_tag in splintable_organs))
 			to_chat(user, "<span class='danger'>You can't use \the [src] to apply a splint there!</span>")

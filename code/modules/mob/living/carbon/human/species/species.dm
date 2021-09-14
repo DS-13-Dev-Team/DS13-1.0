@@ -740,7 +740,7 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 
 	if(target.w_uniform)
 		target.w_uniform.add_fingerprint(attacker)
-	var/obj/item/organ/external/affecting = target.get_organ(ran_zone(attacker.zone_sel.selecting))
+	var/obj/item/organ/external/affecting = target.get_organ(ran_zone(attacker.hud_used.zone_sel.selecting))
 
 	var/list/holding = list(target.get_active_hand() = 40, target.get_inactive_hand() = 20)
 

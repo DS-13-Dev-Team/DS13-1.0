@@ -27,7 +27,7 @@
 
 	assailant = attacker
 	affecting = victim
-	target_zone = attacker.zone_sel.selecting
+	target_zone = attacker.hud_used.zone_sel.selecting
 	attacker.remove_cloaking_source(attacker.species)
 	var/obj/item/O = get_targeted_organ()
 	if (O)
@@ -126,7 +126,7 @@
 	return 1
 
 /obj/item/grab/proc/init()
-	last_target = assailant.zone_sel.selecting
+	last_target = assailant.hud_used.zone_sel.selecting
 	affecting.update_lying_buckled_and_verb_status()
 	if (!adjust_position())
 		return FALSE

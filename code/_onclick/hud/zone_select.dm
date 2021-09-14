@@ -1,7 +1,7 @@
 /mob/proc/set_selected_zone(var/newzone)
-	if (zone_sel)
+	if (hud_used.zone_sel)
 		//Possible future todo: Raise an event here
-		zone_sel.set_selected_zone(newzone)
+		hud_used.zone_sel.set_selected_zone(newzone)
 
 
 
@@ -9,8 +9,8 @@
 //This is a generic proc to allow it to handle null users
 /proc/get_zone_sel(var/mob/user, var/precise = FALSE)
 	.= BP_CHEST
-	if (istype(user) && user.zone_sel && user.zone_sel.selecting)
-		.=user.zone_sel.selecting
+	if (istype(user) && user.hud_used.zone_sel && user.hud_used.zone_sel.selecting)
+		.=user.hud_used.zone_sel.selecting
 		if (!precise && (. in list(BP_MOUTH,BP_EYES)))
 			. = BP_HEAD
 
