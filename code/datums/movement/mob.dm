@@ -397,7 +397,7 @@
 // Death handling
 /datum/movement_handler/mob/death/DoMove()
 	if(mob.stat != DEAD)
-		return
+		return MOVEMENT_REMOVE
 	. = MOVEMENT_HANDLED
 	if(!mob.client)
 		return
