@@ -42,9 +42,13 @@
 */
 /mob/living/proc/necromorph_conversion(var/compatibility = 1)
 
+
 	//Final
 	if (!is_necromorph_conversion_valid())
 		return
+
+	if (client || key)
+		ghostize()	//Kick out any existing client
 
 
 	//Animal conversion doesnt use species, we just spawn a new mob and delete the old one
@@ -67,6 +71,9 @@
 	//Final
 	if (!is_necromorph_conversion_valid())
 		return
+
+	if (client || key)
+		ghostize()	//Kick out any existing client
 
 	ADD_TRANSFORMATION_MOVEMENT_HANDLER(src)
 
