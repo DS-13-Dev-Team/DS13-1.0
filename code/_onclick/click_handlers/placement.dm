@@ -42,7 +42,7 @@ GLOBAL_LIST_EMPTY(placement_previews)
 	PLACEMENT_SAFETY
 	user.client.show_popup_menus = FALSE	//We need to turn this off in order to recieve rightclicks
 	user.client.screen |= preview
-	user.verbs |= /mob/verb/placement_rotate
+	add_verb(user, /mob/verb/placement_rotate)
 	winset(user, "rotate_placement", "parent=macro;name=R;command=rotate_placement")
 	//winset(user, "rotate_placement", "parent=hotkeymode;name=R;command=rotate_placement")
 
@@ -54,7 +54,7 @@ GLOBAL_LIST_EMPTY(placement_previews)
 		if (user && user.client)
 			winset(user, "macro.rotate_placement", "parent=")
 			//winset(user, "hotkeymode.rotate_placement", "parent=")
-			user.verbs -= /mob/verb/placement_rotate
+			remove_verb(user, /mob/verb/placement_rotate)
 			user.client.show_popup_menus = TRUE
 			user.client.screen -= preview
 

@@ -26,6 +26,13 @@
 	if(!usr || usr != mob)	//stops us calling Topic for somebody else's client. Also helps prevent usr=null
 		return
 
+	// asset_cache
+	var/asset_cache_job
+	if(href_list["asset_cache_confirm_arrival"])
+		asset_cache_job = asset_cache_confirm_arrival(href_list["asset_cache_confirm_arrival"])
+		if (!asset_cache_job)
+			return
+
 	#if defined(TOPIC_DEBUGGING)
 	log_debug("[src]'s Topic: [href] destined for [hsrc].")
 
@@ -35,11 +42,20 @@
 
 	#endif
 
-	// asset_cache
-	if(href_list["asset_cache_confirm_arrival"])
-//		to_chat(src, "ASSET JOB [href_list["asset_cache_confirm_arrival"]] ARRIVED.")
-		var/job = text2num(href_list["asset_cache_confirm_arrival"])
-		completed_asset_jobs += job
+	// Tgui Topic middleware
+	if(tgui_Topic(href_list))
+		return
+	if(href_list["reload_tguipanel"])
+		nuke_chat()
+
+	//byond bug ID:2256651
+	if (asset_cache_job && (asset_cache_job in completed_asset_jobs))
+		to_chat(src, "<span class = 'warning'> An error has been detected in how your client is receiving resources. Attempting to correct.... (If you keep seeing these messages you might want to close byond and reconnect)</span>")
+		src << browse("...", "window=asset_cache_browser")
+		return
+
+	if (href_list["asset_cache_preload_data"])
+		asset_cache_preload_data(href_list["asset_cache_preload_data"])
 		return
 
 	//search the href for script injection
@@ -115,6 +131,10 @@
 
 	if(!(connection in list("seeker", "web")))					//Invalid connection type.
 		return null
+
+	// Instantiate tgui panel
+	tgui_panel = new(src)
+
 	if(byond_version < MIN_CLIENT_VERSION)		//Out of date client.
 		return null
 
@@ -137,19 +157,10 @@
 			return
 	//DS13 - Give locally logged in users host status
 	var/localhost_addresses = list("127.0.0.1", "::1")
-	var/local = FALSE
 	if(isnull(address) || (address in localhost_addresses))
-		local = TRUE
 		var/rights = admin_ranks["Host"]
 		var/datum/admins/D = new /datum/admins("Host", rights, ckey)
 		D.associate(src)
-		addtimer(CALLBACK(src, /client/proc/send_resources), 30 SECONDS)
-
-	// Change the way they should download resources.
-	var/list/resource_urls = CONFIG_GET(keyed_list/resource_urls)
-	if(resource_urls?.len)
-		src.preload_rsc = pick(resource_urls)
-	else src.preload_rsc = 1 // If resource_urls is not set, preload like normal.
 
 	if(byond_version < DM_VERSION)
 		to_chat(src, "<span class='warning'>You are running an older version of BYOND than the server and may experience issues.</span>")
@@ -177,6 +188,11 @@
 
 	GLOB.using_map.map_info(src)
 
+	// Initialize tgui panel
+	src << browse(file('html/statbrowser.html'), "window=statbrowser")
+	addtimer(CALLBACK(src, .proc/check_panel_loaded), 30 SECONDS)
+	tgui_panel.initialize()
+
 	if(custom_event_msg && custom_event_msg != "")
 		to_chat(src, "<h1 class='alert'>Custom Event</h1>")
 		to_chat(src, "<h2 class='alert'>A custom event is taking place. OOC Info:</h2>")
@@ -201,14 +217,14 @@
 
 	log_client_to_db()
 
-	if (!local)
-		send_resources()
+	send_resources()
 
 	if(prefs.lastchangelog != GLOB.changelog_hash) //bolds the changelog button on the interface so we know there are updates.
 		to_chat(src, "<span class='info'>You have unread updates in the changelog.</span>")
-		winset(src, "rpane.changelog", "background-color=#f55b5b;font-style=bold")
 		if(CONFIG_GET(flag/aggressive_changelog))
-			src.changes()
+			changelog()
+		else
+			winset(src, "infowindow.changelog", "font-style=bold")
 
 	if(isnum(player_age) && player_age < 7)
 		src.lore_splash()
@@ -349,19 +365,6 @@
 	var/seconds = inactivity/10
 	return "[round(seconds / 60)] minute\s, [seconds % 60] second\s"
 
-// Byond seemingly calls stat, each tick.
-// Calling things each tick can get expensive real quick.
-// So we slow this down a little.
-// See: http://www.byond.com/docs/ref/info.html#/client/proc/Stat
-/client/Stat()
-	if(!usr)
-		return
-	// Add always-visible stat panel calls here, to define a consistent display order.
-	statpanel("Status")
-
-	. = ..()
-	sleep(1)
-
 //send resources to the client. It's here in its own proc so we can move it around easiliy if need be
 /client/proc/send_resources()
 #if (PRELOAD_RSC == 0)
@@ -392,13 +395,6 @@ client/proc/MayRespawn()
 	// Something went wrong, client is usually kicked or transfered to a new mob at this point
 	return 0
 
-client/verb/character_setup()
-	set name = "Character Setup"
-	set category = "OOC"
-	if(prefs)
-		prefs.ShowChoices(usr)
-
-
 //Adds things to screen and tells them this was done
 /client/proc/add_to_screen(var/list/things)
 
@@ -408,3 +404,30 @@ client/verb/character_setup()
 	for (var/obj/O as anything in things)
 		screen += O
 		O.added_to_screen(src)
+
+/// compiles a full list of verbs and sends it to the browser
+/client/proc/init_verbs()
+	var/list/verblist = list()
+	var/list/verbstoprocess = verbs.Copy()
+	if(mob)
+		verbstoprocess += mob.verbs
+		for(var/AM in mob.contents)
+			var/atom/movable/thing = AM
+			verbstoprocess += thing.verbs
+	panel_tabs.Cut() // panel_tabs get reset in init_verbs on JS side anyway
+	for(var/thing in verbstoprocess)
+		var/procpath/verb_to_init = thing
+		if(!verb_to_init)
+			continue
+		if(verb_to_init.hidden)
+			continue
+		if(!istext(verb_to_init.category))
+			continue
+		panel_tabs |= verb_to_init.category
+		verblist[++verblist.len] = list(verb_to_init.category, verb_to_init.name)
+	src << output("[url_encode(json_encode(panel_tabs))];[url_encode(json_encode(verblist))]", "statbrowser:init_verbs")
+
+/client/proc/check_panel_loaded()
+	if(statbrowser_ready)
+		return
+	to_chat(src, "<span class='warning'>Statpanel failed to load, click <a href='?src=[REF(src)];reload_statbrowser=1'>here</a> to reload the panel</span>")

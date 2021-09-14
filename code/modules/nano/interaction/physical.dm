@@ -8,7 +8,7 @@ GLOBAL_DATUM_INIT(physical_state, /datum/topic_state/physical, new)
 /mob/proc/check_physical_distance(var/src_object)
 	return STATUS_CLOSE
 
-/mob/observer/ghost/check_physical_distance(var/src_object)
+/mob/dead/observer/ghost/check_physical_distance(var/src_object)
 	return default_can_use_topic(src_object)
 
 /mob/living/check_physical_distance(var/src_object)

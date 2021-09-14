@@ -162,10 +162,10 @@
 ////////////////////////
 
 /obj/mecha/proc/removeVerb(verb_path)
-	verbs -= verb_path
+	src.verbs -= verb_path
 
 /obj/mecha/proc/addVerb(verb_path)
-	verbs += verb_path
+	src.verbs |= verb_path
 
 /obj/mecha/proc/add_airtank()
 	internal_tank = new /obj/machinery/portable_atmospherics/canister/air(src)
@@ -455,7 +455,7 @@
 	internal_damage |= int_dam_flag
 	pr_internal_damage.start()
 	log_append_to_last("Internal damage of type [int_dam_flag].",1)
-	sound_to(occupant, sound('sound/machines/warning-buzzer.ogg',wait=0))
+	SEND_SOUND(occupant, sound('sound/machines/warning-buzzer.ogg',wait=0))
 	return
 
 /obj/mecha/proc/clearInternalDamage(int_dam_flag)
@@ -944,8 +944,8 @@
 	if(possible_port)
 		if(connect(possible_port))
 			src.occupant_message("<span class='notice'>\The [name] connects to the port.</span>")
-			src.verbs += /obj/mecha/verb/disconnect_from_port
-			src.verbs -= /obj/mecha/verb/connect_to_port
+			src.verbs |= /obj/mecha/verb/disconnect_from_port
+			src.verbs |= /obj/mecha/verb/connect_to_port
 			return
 		else
 			src.occupant_message("<span class='danger'>\The [name] failed to connect to the port.</span>")
@@ -964,8 +964,7 @@
 		return
 	if(disconnect())
 		src.occupant_message("<span class='notice'>[name] disconnects from the port.</span>")
-		src.verbs -= /obj/mecha/verb/disconnect_from_port
-		src.verbs += /obj/mecha/verb/connect_to_port
+		add_verb(src, list(/obj/mecha/verb/disconnect_from_port, /obj/mecha/verb/connect_to_port))
 	else
 		src.occupant_message("<span class='danger'>[name] is not connected to the port at the moment.</span>")
 
@@ -1153,7 +1152,7 @@
 			if(mmi.brainmob)
 				occupant.loc = mmi
 			mmi.mecha = null
-			src.verbs += /obj/mecha/verb/eject
+			verbs += /obj/mecha/verb/eject
 		src.occupant = null
 		src.icon_state = src.reset_icon()+"-open"
 		src.set_dir(dir_in)

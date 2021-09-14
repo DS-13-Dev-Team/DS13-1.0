@@ -33,5 +33,5 @@
 /datum/phenomena/hellscape/activate(var/mob/living/L)
 	to_chat(L, "<font size='3'><span class='cult'>[pick(creepy_notes)]</span></font>")
 	L.damageoverlaytemp = 100
-	sound_to(L, 'sound/hallucinations/far_noise.ogg')
+	SEND_SOUND(L, 'sound/hallucinations/far_noise.ogg')
 	L.Weaken(2)

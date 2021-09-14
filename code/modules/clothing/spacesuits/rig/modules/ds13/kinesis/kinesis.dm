@@ -909,7 +909,7 @@
 	if(/mob/living/carbon/human/verb/kinesis_toggle in user.verbs)
 		return
 	//user.client.show_popup_menus = FALSE
-	user.verbs |= /mob/living/carbon/human/verb/kinesis_toggle
+	add_verb(user, /mob/living/carbon/human/verb/kinesis_toggle)
 	winset(user, "kinesis_toggle", "parent=macro;name=F;command=kinesis_toggle")
 	winset(user, "kinesis_toggle", "parent=hotkeymode;name=F;command=kinesis_toggle")
 	hotkeys_set = TRUE
@@ -919,7 +919,7 @@
 		return
 	winset(user, "macro.kinesis_toggle", "parent=")
 	winset(user, "hotkeymode.kinesis_toggle", "parent=")
-	user.verbs -= /mob/living/carbon/human/verb/kinesis_toggle
+	remove_verb(user, /mob/living/carbon/human/verb/kinesis_toggle)
 	hotkeys_set = FALSE
 
 

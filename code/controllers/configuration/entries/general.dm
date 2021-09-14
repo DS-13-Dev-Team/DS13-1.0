@@ -247,3 +247,7 @@ Basics, the most important.
 /datum/config_entry/flag/forbid_singulo_possession
 
 /datum/config_entry/flag/auto_profile
+
+/datum/config_entry/number/rounds_until_hard_restart
+	default = -1
+	min_val = 0

@@ -12,12 +12,12 @@
 	atom_holder = null
 	return ..()
 
-/datum/extension/labels/proc/AttachLabel(var/mob/user, var/label)
+/datum/extension/labels/proc/AttachLabel(mob/user, label)
 	if(!CanAttachLabel(user, label))
 		return
 
 	if(!LAZYLEN(labels))
-		atom_holder.verbs += /atom/proc/RemoveLabel
+		atom_holder.verbs |= /atom/proc/RemoveLabel
 	LAZYADD(labels, label)
 
 	user.visible_message("<span class='notice'>\The [user] attaches a label to \the [atom_holder].</span>", \

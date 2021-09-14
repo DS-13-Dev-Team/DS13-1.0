@@ -38,7 +38,7 @@ var/hadevent    = 0
 
 /proc/alien_infestation(var/spawncount = 1) // -- TLE
 	//command_alert("Unidentified lifesigns detected coming aboard [station_name()]. Secure any exterior access, including ducting and ventilation.", "Lifesign Alert")
-//	sound_to(world, sound('sound/AI/aliens.ogg'))
+//	SEND_SOUND(world, sound('sound/AI/aliens.ogg'))
 
 	var/list/vents = list()
 	for(var/obj/machinery/atmospherics/unary/vent_pump/temp_vent in SSmachines.machinery)

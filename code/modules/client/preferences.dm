@@ -17,11 +17,13 @@ datum/preferences
 	//game-preferences
 	var/lastchangelog = ""				//Saved changlog filesize to detect if there was a change
 	var/ui_style = "Midnight"
+	var/tgui_fancy = TRUE
+	var/tgui_lock = FALSE
 
 	//character preferences
 	var/species_preview                 //Used for the species selection window.
 
-		//Mob preview
+	//Mob preview
 	var/icon/preview_icon = null
 
 	var/client/client = null

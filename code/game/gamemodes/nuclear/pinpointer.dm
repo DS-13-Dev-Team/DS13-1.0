@@ -7,7 +7,7 @@
 	w_class = ITEM_SIZE_SMALL
 	item_state = "electronic"
 	matter = list(MATERIAL_STEEL = 500)
-	var/weakref/target
+	var/datum/weakref/target
 	var/active = 0
 	var/beeping = 2
 
@@ -44,7 +44,7 @@
 
 /obj/item/weapon/pinpointer/proc/acquire_target()
 	var/obj/item/weapon/disk/nuclear/the_disk = locate()
-	return weakref(the_disk)
+	return WEAKREF(the_disk)
 
 /obj/item/weapon/pinpointer/Process()
 	update_icon()
@@ -133,7 +133,7 @@
 /obj/item/weapon/pinpointer/nukeop/acquire_target()
 	if(locate_shuttle)
 		var/obj/machinery/computer/shuttle_control/multi/syndicate/home = locate()
-		return weakref(home)
+		return WEAKREF(home)
 	else
 		return ..()
 
@@ -148,7 +148,7 @@
 	switch(selection)
 		if("Disk Recovery")
 			var/obj/item/weapon/disk/nuclear/the_disk = locate()
-			target = weakref(the_disk)
+			target = WEAKREF(the_disk)
 
 		if("Location")
 			var/locationx = input(usr, "Please input the x coordinate to search for.", "Location?" , "") as num
@@ -163,7 +163,7 @@
 
 			to_chat(usr, "You set the pinpointer to locate [locationx],[locationy]")
 
-			target = weakref(location)
+			target = WEAKREF(location)
 
 		if("Other Signature")
 			var/datum/objective/steal/itemlist
@@ -176,7 +176,7 @@
 				to_chat(usr, "Failed to locate [targetitem]!")
 				return
 			to_chat(usr, "You set the pinpointer to locate [targetitem]")
-			target = weakref(item)
+			target = WEAKREF(item)
 
 		if("DNA")
 			var/DNAstring = input("Input DNA string to search for." , "Please Enter String." , "")
@@ -186,5 +186,5 @@
 				if(!M.dna)
 					continue
 				if(M.dna.unique_enzymes == DNAstring)
-					target = weakref(M)
+					target = WEAKREF(M)
 					break

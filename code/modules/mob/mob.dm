@@ -153,7 +153,7 @@
 		var/obj/O = o
 		O.show_message(message, AUDIBLE_MESSAGE, deaf_message, VISIBLE_MESSAGE)
 
-/mob/proc/add_ghost_track(var/message, var/mob/observer/ghost/M)
+/mob/proc/add_ghost_track(var/message, var/mob/dead/observer/ghost/M)
 	ASSERT(istype(M))
 
 	var/remote = ""
@@ -171,7 +171,7 @@
 	message = track + remote + " " + speaker_name  + message
 	return message
 
-/mob/proc/ghost_skip_message(var/mob/observer/ghost/M)
+/mob/proc/ghost_skip_message(var/mob/dead/observer/ghost/M)
 	ASSERT(istype(M))
 	if(M.get_preference_value(/datum/client_preference/ghost_sight) == GLOB.PREF_ALL_EMOTES && !(src in view(M)))
 		if(!client)
@@ -446,36 +446,7 @@
 	return
 */
 
-/client/verb/changes()
-	set name = "Changelog"
-	set category = "OOC"
-	getFiles(
-		'html/images/88x31.png',
-		'html/images/bug-minus.png',
-		'html/images/burn-exclamation.png',
-		'html/images/chevron.png',
-		'html/images/chevron-expand.png',
-		'html/images/cross-circle.png',
-		'html/images/hard-hat-exclamation.png',
-		'html/images/image-minus.png',
-		'html/images/image-plus.png',
-		'html/images/map-pencil.png',
-		'html/images/music-minus.png',
-		'html/images/music-plus.png',
-		'html/images/tick-circle.png',
-		'html/images/scales.png',
-		'html/images/spell-check.png',
-		'html/images/wrench-screwdriver.png',
-		'html/changelog.css',
-		'html/changelog.html'
-		)
-	src << browse('html/changelog.html', "window=changes;size=675x650")
-	if(prefs.lastchangelog != GLOB.changelog_hash)
-		prefs.lastchangelog = GLOB.changelog_hash
-		prefs.save_preferences()
-		winset(src, "rpane.changelog", "background-color=none;font-style=;")
-
-/mob/new_player/verb/observe()
+/mob/dead/new_player/verb/observe()
 	set name = "Observe"
 	set category = "OOC"
 
@@ -618,56 +589,6 @@
 /mob/proc/show_viewers(message)
 	for(var/mob/M in viewers())
 		M.see(message)
-
-/mob/Stat()
-	..()
-	. = (is_client_active(10 MINUTES))
-	if(!.)
-		return
-
-	if(statpanel("Status"))
-		if(ticker && ticker.current_state != GAME_STATE_PREGAME)
-			stat("Local Time", stationtime2text())
-			stat("Local Date", stationdate2text())
-			stat("Round Duration", roundduration2text())
-		if(client.holder || isghost(client.mob))
-			stat("Location:", "([x], [y], [z]) [loc]")
-
-	if(client.holder)
-		if(statpanel("Processes") && processScheduler)
-			processScheduler.statProcesses()
-		if(statpanel("MC"))
-			stat("CPU:","[world.cpu]")
-			stat("Instances:","[world.contents.len]")
-			stat(null)
-			if(Master)
-				Master.stat_entry()
-			else
-				stat("Master Controller:", "ERROR")
-			if(Failsafe)
-				Failsafe.stat_entry()
-			else
-				stat("Failsafe Controller:", "ERROR")
-			if(Master)
-				stat(null)
-				for(var/datum/controller/subsystem/SS in Master.subsystems)
-					SS.stat_entry()
-
-	if(listed_turf && client)
-		if(!TurfAdjacent(listed_turf))
-			listed_turf = null
-		else
-			if(statpanel("Turf"))
-				stat(listed_turf)
-				for(var/atom/A in listed_turf)
-					if(!A.mouse_opacity)
-						continue
-					if(A.invisibility > see_invisible)
-						continue
-					if(is_type_in_list(A, shouldnt_see))
-						continue
-					stat(A)
-
 
 
 
@@ -907,7 +828,7 @@
 
 
 
-/mob/proc/yank_out_object(var/obj/item/selection, var/mob/user)
+/mob/proc/yank_out_object(obj/item/selection, mob/user)
 	var/mob/S = src
 	if(user == S)
 		to_chat(src, "<span class='warning'>You attempt to get a good grip on [selection] in your body.</span>")
@@ -964,7 +885,7 @@
 
 	var/list/valid_objects = get_visible_implants(0, TRUE)
 	if(length(valid_objects.len == 0)) //Yanking out last object - removing verb.
-		src.verbs -= /mob/proc/yank_out_object_verb
+		remove_verb(src, /mob/proc/yank_out_object_verb)
 
 	user.put_in_hands(selection)
 
@@ -1131,3 +1052,10 @@
 */
 /mob/proc/update_verbs()
 	return
+
+/// Adds this list to the output to the stat browser
+/mob/proc/get_status_tab_items()
+	. = list()
+
+/mob/GenerateTag()
+	tag = "mob_[next_mob_id++]"

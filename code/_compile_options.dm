@@ -1,3 +1,11 @@
+//#define TESTING //By using the testing("message") proc you can create debug-feedback for people with this
+								//uncommented, but not visible in the release version)
+
+// Comment this out if you are debugging problems that might be obscured by custom error handling in world/Error
+#ifdef DEBUG
+#define USE_CUSTOM_ERROR_HANDLER
+#endif
+
 #define BACKGROUND_ENABLED 0    // The default value for all uses of set background. Set background can cause gradual lag and is recommended you only turn this on if necessary.
 								// 1 will enable set background. 0 will disable set background.
 
@@ -19,7 +27,7 @@
 
 //Update this whenever the byond version is stable so people stop updating to hilariously broken versions
 #define MAX_COMPILER_VERSION 514
-#define MAX_COMPILER_BUILD 1554
+#define MAX_COMPILER_BUILD 1562
 #if DM_VERSION > MAX_COMPILER_VERSION || DM_BUILD > MAX_COMPILER_BUILD
 #warn WARNING! your byond version is over the recommended version(MAX_COMPILER_VERSION:MAX_COMPILER_BUILD)! There may be unexpected byond bugs!
 #endif
@@ -45,4 +53,15 @@
 
 #ifdef CITESTING
 #define TESTING
+#endif
+
+#ifdef TGS
+// TGS performs its own build of dm.exe, but includes a prepended TGS define.
+#define CBT
+#endif
+
+#if !defined(CBT) && !defined(SPACEMAN_DMM)
+#warn Building with Dream Maker is no longer supported and will result in errors.
+#warn In order to build, run BUILD.bat in the root directory.
+#warn Consider switching to VSCode editor instead, where you can press Ctrl+Shift+B to build.
 #endif

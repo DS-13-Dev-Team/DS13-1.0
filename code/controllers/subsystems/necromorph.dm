@@ -32,30 +32,30 @@ SUBSYSTEM_DEF(necromorph)
 	//Under the mostly likely assumption that two people generally won't be jumping to shards at the same time
 	var/last_shard_jumped_to = 1
 
-/datum/controller/subsystem/necromorph/stat_entry()
-	..("Click to debug!")
+/datum/controller/subsystem/necromorph/stat_entry(msg)
+	return ("Click to debug!")
 
-/datum/controller/subsystem/necromorph/proc/join_necroqueue(var/mob/observer/eye/signal/M)
+/datum/controller/subsystem/necromorph/proc/join_necroqueue(mob/dead/observer/eye/signal/M)
 	if (is_marker_master(M))
 		//The master may not queue. They can still possess things if really needed though
 		return FALSE
 	necroqueue |= M
-	M.verbs -= /mob/observer/eye/signal/proc/join_necroqueue
-	M.verbs |= /mob/observer/eye/signal/proc/leave_necroqueue
+	remove_verb(M, /mob/dead/observer/eye/signal/proc/join_necroqueue)
+	add_verb(M, /mob/dead/observer/eye/signal/proc/leave_necroqueue)
 	to_chat(M, SPAN_NOTICE("You are now in the necroqueue. When a necromorph vessel is available, you will be automatically placed in control of it. You can still manually posess necromorphs."))
 
 
 
-/datum/controller/subsystem/necromorph/proc/remove_from_necroqueue(var/mob/observer/eye/signal/M)
-	M.verbs |= /mob/observer/eye/signal/proc/join_necroqueue
-	M.verbs -= /mob/observer/eye/signal/proc/leave_necroqueue
+/datum/controller/subsystem/necromorph/proc/remove_from_necroqueue(mob/dead/observer/eye/signal/M)
+	add_verb(M, /mob/dead/observer/eye/signal/proc/join_necroqueue)
+	remove_verb(M, /mob/dead/observer/eye/signal/proc/leave_necroqueue)
 	necroqueue -= M
 
 
 
 
 /datum/controller/subsystem/necromorph/proc/fill_vessel_from_queue(var/mob/vessel, var/vessel_id)
-	for (var/mob/observer/eye/signal/M in necroqueue)
+	for (var/mob/dead/observer/eye/signal/M in necroqueue)
 		if (!M.client || !M.key)
 			continue	//Gotta be connected
 
@@ -151,7 +151,7 @@ SUBSYSTEM_DEF(necromorph)
 			PE.build_ability_list(clear)
 			to_chat(P.get_mob(), "<span class='necromarker'>The marker has awoken, new abilities are unlocked. Check your abilities menu!</span>")
 
-		var/mob/observer/eye/signal/S = P.get_mob()
+		var/mob/dead/observer/eye/signal/S = P.get_mob()
 		if (istype(S))
 			S.update_verbs()
 

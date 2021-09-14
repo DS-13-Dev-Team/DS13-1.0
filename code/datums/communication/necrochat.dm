@@ -74,7 +74,7 @@
 
 
 
-/mob/observer/eye/signal/say(var/message)
+/mob/dead/observer/eye/signal/say(var/message)
 	sanitize_and_communicate(/decl/communication_channel/necrochat, client, message)
 
 

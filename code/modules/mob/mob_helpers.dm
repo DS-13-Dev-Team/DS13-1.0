@@ -559,7 +559,7 @@ proc/is_blind(A)
 	if(istype(P))
 		return P
 
-/mob/observer/ghost/get_multitool()
+/mob/dead/observer/ghost/get_multitool()
 	return can_admin_interact() && ..(ghost_multitool)
 
 /mob/living/carbon/human/get_multitool()

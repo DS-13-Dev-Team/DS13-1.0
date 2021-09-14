@@ -37,7 +37,7 @@
 	var/name				//replaces mob/var/original_name
 	var/mob/living/current
 	var/mob/living/original	//Edit by Nanako, this value is now used and should not be removed
-	var/mob/observer/ghost	//When this mob is dead and floating around, this var holds the ghost mob who used to be its body
+	var/mob/dead/observer/ghost	//When this mob is dead and floating around, this var holds the ghost mob who used to be its body
 	var/active = 0
 
 	var/character_id	//The database ID of the associated character records for this mind. Used to fetch and store persistent data
@@ -97,7 +97,7 @@
 	if(current)					//remove ourself from our old body's mind variable
 		if(changeling)
 			current.remove_changeling_powers()
-			current.verbs -= /datum/changeling/proc/EvolutionMenu
+			remove_verb(current, /datum/changeling/proc/EvolutionMenu)
 		current.mind = null
 
 		SSnano.user_transferred(current, new_character) // transfer active NanoUI instances to new user
@@ -119,6 +119,9 @@
 
 	if(active)
 		new_character.key = key		//now transfer the key to link the client to our new body
+
+	if(new_character.client)
+		new_character.client.init_verbs()
 
 /datum/mind/proc/store_memory(new_text)
 	memory += "[new_text]<BR>"
@@ -599,7 +602,7 @@
 	if(!mind.name)	mind.name = real_name
 	mind.current = src
 	if(player_is_antag(mind))
-		src.client.verbs += /client/proc/aooc
+		add_verb(src.client, /client/proc/aooc)
 
 //HUMAN
 /mob/living/carbon/human/mind_initialize()

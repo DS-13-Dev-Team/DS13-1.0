@@ -24,5 +24,5 @@ SUBSYSTEM_DEF(inactivity)
 		if (MC_TICK_CHECK)
 			return
 
-/datum/controller/subsystem/inactivity/stat_entry()
-	..("Kicked: [number_kicked]")
+/datum/controller/subsystem/inactivity/stat_entry(msg)
+	return "Kicked: [number_kicked]"

@@ -17,7 +17,7 @@ var/list/sounds_cache = list()
 	message_admins("[key_name_admin(src)] played sound [S]", 1)
 	for(var/mob/M in GLOB.player_list)
 		if(M.get_preference_value(/datum/client_preference/play_admin_midis) == GLOB.PREF_YES)
-			sound_to(M, uploaded_sound)
+			SEND_SOUND(M, uploaded_sound)
 
 	feedback_add_details("admin_verb","PGS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 

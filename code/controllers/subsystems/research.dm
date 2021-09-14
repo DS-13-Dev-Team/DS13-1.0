@@ -31,8 +31,8 @@ SUBSYSTEM_DEF(research)
 	return ..()
 
 
-/datum/controller/subsystem/research/stat_entry()
-	..("Click to debug!")
+/datum/controller/subsystem/research/stat_entry(msg)
+	return "Click to debug!"
 
 /datum/controller/subsystem/research/proc/generate_integrated_circuit_designs()
 	/*

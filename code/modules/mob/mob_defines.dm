@@ -1,5 +1,6 @@
 /mob
-	density = 1
+	datum_flags = DATUM_FLAG_WEAKREF_USE_TAG
+	density = TRUE
 	plane = DEFAULT_PLANE
 	layer = MOB_LAYER
 
@@ -7,7 +8,7 @@
 	animate_movement = 2
 	movable_flags = MOVABLE_FLAG_PROXMOVE
 
-	virtual_mob = /mob/observer/virtual/mob
+	virtual_mob = /mob/dead/observer/virtual/mob
 
 	movement_handlers = list(
 		/datum/movement_handler/mob/relayed_movement,
@@ -203,4 +204,5 @@
 	//Combat
 	var/evasion = 15	//A base percentage chance of avoiding attacks which would otherwise hit
 
-	
+	//Seciruty
+	var/static/next_mob_id = 0

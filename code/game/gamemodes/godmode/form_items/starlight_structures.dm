@@ -2,7 +2,7 @@
 	name = "gateway"
 	desc = "A gateway into the unknown."
 	power_adjustment = 0
-	var/weakref/target_ref
+	var/datum/weakref/target_ref
 	var/start_time = 0
 	var/active_souls = 0
 	var/power_drain = 15
@@ -33,7 +33,7 @@
 		//Get new target
 		var/mob/living/carbon/human/T = locate() in get_turf(src)
 		if(T)
-			target_ref = weakref(T)
+			target_ref = WEAKREF(T)
 			start_time = world.time
 			to_chat(T, "<span class='danger'>You feel your lifeforce begin to drain into \the [src]!</span>")
 

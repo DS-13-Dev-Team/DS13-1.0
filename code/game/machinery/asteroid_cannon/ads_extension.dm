@@ -2,7 +2,7 @@
 /datum/extension/asteroidcannon
 	var/obj/structure/asteroidcannon/gun = null
 	var/mob/living/carbon/human/gunner = null
-	var/mob/observer/eye/turret/eyeobj = null
+	var/mob/dead/observer/eye/turret/eyeobj = null
 	var/datum/click_handler/gun/tracked/TCH
 	flags = EXTENSION_FLAG_IMMEDIATE
 
@@ -70,8 +70,7 @@
 	if(src.gunner)
 		remove_gunner()
 	src.gunner = gunner
-	gunner.verbs |= /mob/living/carbon/human/proc/stop_gunning
-	gunner.verbs |= /mob/living/carbon/human/proc/recenter_gunning
+	add_verb(gunner, list(/mob/living/carbon/human/proc/stop_gunning, /mob/living/carbon/human/proc/recenter_gunning))
 	gunner.forceMove(gun)
 	gunner.pixel_x = (-gun.pixel_x)+4
 	gunner.pixel_y = (-gun.pixel_y)+12
@@ -88,7 +87,7 @@
 	//gunner.vis_flags |= VIS_INHERIT_ID
 	//gun.vis_contents += gunner
 	gun.lead_distance = 1 //Gunners don't get hitscan...
-	eyeobj = new /mob/observer/eye/turret(get_turf(gun))
+	eyeobj = new /mob/dead/observer/eye/turret(get_turf(gun))
 	eyeobj.acceleration = FALSE
 	eyeobj.possess(gunner, gun)	//Pass in the gun with possess
 
@@ -106,8 +105,7 @@
 		qdel(TCH)
 	gun.lead_distance = initial(gun.lead_distance) //Gunners don't get hitscan...
 	if (gunner)
-		gunner.verbs -= /mob/living/carbon/human/proc/stop_gunning
-		gunner.verbs -= /mob/living/carbon/human/proc/recenter_gunning
+		remove_verb(gunner, list(/mob/living/carbon/human/proc/stop_gunning, /mob/living/carbon/human/proc/recenter_gunning))
 		gunner.eyeobj = null
 		gun.overlays.Cut()
 		gunner.plane = gun.cached_plane

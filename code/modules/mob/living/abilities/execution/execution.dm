@@ -299,7 +299,7 @@ if (result == EXECUTION_CANCEL && can_interrupt){\
 		reward_heal = 0
 
 	if (reward_energy)
-		for (var/mob/observer/eye/signal/S in trange(10, user))
+		for (var/mob/dead/observer/eye/signal/S in trange(10, user))
 			var/datum/extension/psi_energy/PE	= get_energy_extension()
 			if (PE)
 				to_chat(S, SPAN_EXECUTION("You are invigorated by the spectacle before you, and gain [reward_energy] energy!"))

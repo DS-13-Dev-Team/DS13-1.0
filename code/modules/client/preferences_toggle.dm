@@ -15,24 +15,21 @@ var/list/client_preference_stats_
 			scp.update_name(user)
 			.[client_pref_description] = scp
 
-/client/verb/toggle_preference_verb(var/client_pref_name in client_preference_stats_for_usr())
+/client/verb/toggle_preference_verb(client_pref_name in client_preference_stats_for_usr())
+	set category = "Preferences"
 	set name = "Toggle Preference"
 	set desc = "Toggles the selected preference."
-	set category = "OOC"
 
 	var/list/client_stats = client_preference_stats_for_usr()
 	var/stat_client_preference/scp = client_stats[client_pref_name]
 	if(istype(scp))
 		scp.Click()
 
-/mob/Stat()
-	. = ..()
-	if(!client || !statpanel("Preferences"))
-		return
-	var/list/preferences = client_preference_stats_for_usr(src)
-	for(var/client_preference_description in preferences)
-		var/stat_client_preference/scp = client_preference_stats_[client_preference_description]
-		stat(scp.client_preference.description, scp)
+/client/verb/setup_character()
+	set category = "Preferences"
+	set name = "Game Preferences"
+	set desc = "Allows you to access the Setup Character screen. Changes to your character won't take effect until next round, but other changes will."
+	prefs?.ShowChoices(usr)
 
 /stat_client_preference
 	parent_type = /atom/movable

@@ -374,14 +374,16 @@ var/global/datum/controller/processScheduler/processScheduler
 	//timeAllowance = world.tick_lag * min(1, 0.5 * ((200/max(1,cpuAverage)) - 1))
 	timeAllowance = min(timeAllowanceMax, max(0, timeAllowance + timeAllowanceDelta_))
 
-/datum/controller/processScheduler/proc/statProcesses()
+/datum/controller/processScheduler/stat_entry(msg)
 	if(!isRunning)
-		stat("Processes", "Scheduler not running")
-		return
-	stat("Processes", "[processes.len] (R [running.len] / Q [queued.len] / I [idle.len])")
-	stat(null, "[round(cpuAverage, 0.1)] CPU, [round(timeAllowance, 0.1)/10] TA")
+		msg += "Scheduler not running"
+		return msg
+
+	msg += "[processes.len] (R [running.len] / Q [queued.len] / I [idle.len]) "
+	msg += "[round(cpuAverage, 0.1)] CPU, [round(timeAllowance, 0.1)/10] TA "
 	for(var/datum/controller/process/p in processes)
-		p.statProcess()
+		msg += p.statProcess()
+	return msg
 
 /datum/controller/processScheduler/proc/getProcess(var/process_name)
 	return nameToProcessMap[process_name]

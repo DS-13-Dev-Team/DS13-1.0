@@ -1,0 +1,99 @@
+2021-08-07:
+  DTraitor:
+  - bugfix: Machines that were constructed by players now work correctly
+  - imageadd: Updated Ishimura maps that are used by NanoUI in suit monitoring and
+      camera network.
+  - rscadd: TauCeti RnD port.
+  - rscdel: Protolathe no longer supports chemicals in designs.
+  - rscadd: Ports TauCeti drills for xenoarcheology with custom depth.
+  - tweak: Chemical Dispenser, Chem Master, Cryo Cell, Sleeper, Recharger, Hydroponic
+      Tray, Seed Extractor, Smartfridge, Deep Fryer, Microwave, Oven, Grill, Candy
+      Machine, Cereal, Gibber, Recharger, Lysis-Isolation Centrifuge and Bioballistic
+      Delivery System can now be constructed.
+  - tweak: Seeker, seeker shells, rig mounted taser, rig mounted flash, silenced divet,
+      and special divet ammo can be constructed on protolathe.
+  - tweak: Gibber ignores safety check when you try to place necromorph inside of
+      it.
+  - tweak: Boombox is now portable jukebox and can be printed on Protolathe.
+  - bugfix: Fixed gun (tools) safety.
+  - bugfix: Fixed infinite module stacking.
+  - bugfix: Fixed some slashers dropping their ID because there was no available slot.
+  - bugfix: Fixed RIG modules power draw.
+  - bugfix: Scry eyes and signals cant be pulled now.
+  - bugfix: Necromorphs no longer speak Galactic Common
+  - tweak: Added science channel to miners headset and supply channel to science headset.
+  - rscadd: Signals can jump to living necromorphs.
+  - rscadd: Added Look Down verb.
+  - bugfix: Fixed bug when you used move up while looking up.
+  - tweak: Changed a lot of prices in the store.
+  - tweak: Brought back ammunition and rig modules printing to protolathe.
+  - tweak: Changed required resources to print weapons.
+  - tweak: Pulse rounds now require diamonds.
+  - tweak: Moved CPUs and network cards from circuit designs to protolathe.
+  - tweak: Changed required tech for power node.
+  - bugfix: Fixed tactical goggles not having an icon.
+  - bugfix: Fixed rock saw design having no name
+  - tweak: Added plasma saw to protolathe design.
+  - tweak: Added beaker and large beaker to designs.
+  - tweak: Removed neural lace resleever and mechfab circuits from circuit imprinter
+      designs.
+  - tweak: Removed research design and technology data from designs.
+  - tweak: Removed integrated circuit imprinter from store.
+  Nanako:
+  - tweak: Rebalanced divet special ammotypes.
+  - bugfix: Fixed several major bugs that were causing spray systems (acid, fire)
+      to miss things in their AOE.
+  - tweak: Reduced uplink telecrystal quantity from 130 to 30
+  - tweak: Increased the TC costs of various explosives.
+  - bugfix: Removed conetest
+  - tweak: Reduced the quantity of event necro spawns by 10%.
+  - bugfix: Fixed being able to move superfast in space
+  - rscadd: Added persistent finances. Your held and stored credits will now persist
+      between rounds. A 10% fee is applied to credits left in your account, and a
+      15% fee to any you're holding on death. To prevent fees, withdraw everything
+      and stay alive for the whole round.
+  - rscadd: The items in the store are now unlocked with persistent schematics, which
+      can be found in random loot. Uploading one unlocks a thing, and awards a bounty
+      to the finder. Some schematics may be lost at the end of a round.
+  - experiment: Added Peng.
+  Snypehunter007:
+  - rscadd: Replaced the old Captain's pistol with a new one.
+  - tweak: Reduced the Captain's pistol damage.
+2021-08-30:
+  DTraitor:
+  - tweak: Changed seeker price in the store and protolathe.
+  - tweak: Changed incendiary divet ammo price in the store.
+  - tweak: Added force gun to the protolathe.
+  - bugfix: Fixed RnD machinery not showing 'Print x5' and 'Print x10' buttons.
+  - bugfix: Fixed spy bugs monitor not having an icon.
+  - rscadd: Ported hair gradient system from Aurora.
+  - imageadd: Ported hair gradients from TG.
+  Nanako:
+  - imageadd: Added several new puker skins and a patron outfit. Sprites by Cre77
+  - tweak: IDs can now be attached to a suit even without a uniform underneath
+  - rscadd: Added a new Salvage Technician role, part of the supply department. Their
+      job is to explore the dark corners of the ship and procure interesting equipment.
+  - experiment: The marker now activates at approximately the 1 Hour mark. Total round
+      time is increased as well, so necromorphs arent losing any time
+  - bugfix: Fixed schematics never spawning.
+  - imageadd: Added new exploder sprites, by Ketrai.
+  - rscadd: Added the Enhanced Exploder, a terrifying new threat.
+  - bugfix: Fixed long-distance explosive sounds not working properly
+  Snypehunter007:
+  - bugfix: Fixed stores having no power-draw.
+  - bugfix: Fixed the Cryo room missing an air alarm.
+  - bugfix: Fixed the Solar Control Room not working properly.
+  - bugfix: Fixed the Bridge having two APCs.
+  - bugfix: Fixed the Upper Deck Bathroom not having the new bathroom floor tiles.
+  - bugfix: Fixed Lower Deck Fore-Central Maintenance not having an APC.
+  - bugfix: Fixed Lower Deck Fore-Central Maintenance not having an air alarm.
+  - rscadd: All jobs now have maintenance access.
+  - rscadd: Added research access to the Aegis Colony Medical Bay.
+  - rscadd: Added a store to the Aegis Colony.
+  - rscadd: Added a charging station outside of the Aegis Colony Airlock.
+  - rscadd: Added an ore refinery to the Aegis Colony.
+  - rscadd: Added an ATM to the Messhall and Engineering Lobby.
+  - rscadd: Added webbing to security lockers.
+  - rscdel: Removed one of the stores in the Messhall.
+  - rscdel: Removed the store in the Cryo room.
+  - rscdel: Removed the second mining cutter from the Spare Mining Supplies room.

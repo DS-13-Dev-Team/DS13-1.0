@@ -217,7 +217,7 @@ datum/sound_token/proc/Mute()
 
 /datum/sound_token/proc/PrivAddListener(var/atom/listener)
 	if(isvirtualmob(listener))
-		var/mob/observer/virtual/v = listener
+		var/mob/dead/observer/virtual/v = listener
 		if(!(v.abilities & VIRTUAL_ABILITY_HEAR))
 			return
 		listener = v.host
@@ -234,7 +234,7 @@ datum/sound_token/proc/Mute()
 /datum/sound_token/proc/PrivRemoveListener(var/atom/listener, var/sound/null_sound)
 	if (!QDELETED(listener))
 		null_sound = null_sound || new(channel = sound.channel)
-		sound_to(listener, null_sound)
+		SEND_SOUND(listener, null_sound)
 		GLOB.moved_event.unregister(listener, src, /datum/sound_token/proc/PrivUpdateListenerLoc)
 		GLOB.destroyed_event.unregister(listener, src, /datum/sound_token/proc/PrivRemoveListener)
 	listeners -= listener
@@ -277,7 +277,7 @@ datum/sound_token/proc/Mute()
 	sound.status = status|listener_status[listener]
 	if(update_sound)
 		sound.status |= SOUND_UPDATE
-	sound_to(listener, sound)
+	SEND_SOUND(listener, sound)
 
 /datum/sound_token/proc/PrivGetEnvironment(var/listener)
 	var/area/A = get_area(listener)

@@ -8,7 +8,7 @@
 			stance = HOSTILE_STANCE_ATTACK
 			return L
 		else
-			enemies -= weakref(L)
+			enemies -= WEAKREF(L)
 	else if(istype(A, /obj/mecha))
 		var/obj/mecha/M = A
 		if(M.occupant)
@@ -20,7 +20,7 @@
 	if(!enemies.len)
 		return
 	var/list/see = ..()
-	for(var/weakref/W in enemies) // Remove all entries that aren't in enemies
+	for(var/datum/weakref/W in enemies) // Remove all entries that aren't in enemies
 		var/mob/M = W.resolve()
 		if(M in see)
 			. += M
@@ -34,12 +34,12 @@
 		if(isliving(A))
 			var/mob/living/M = A
 			if(!attack_same && M.faction != faction)
-				enemies |= weakref(M)
+				enemies |= WEAKREF(M)
 		else if(istype(A, /obj/mecha))
 			var/obj/mecha/M = A
 			if(M.occupant)
-				enemies |= weakref(M)
-				enemies |= weakref(M.occupant)
+				enemies |= WEAKREF(M)
+				enemies |= WEAKREF(M.occupant)
 
 	for(var/mob/living/simple_animal/hostile/retaliate/H in around)
 		if(!attack_same && !H.attack_same && H.faction == faction)

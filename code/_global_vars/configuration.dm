@@ -10,7 +10,6 @@ var/href_logfile		= null
 var/game_version		= "Baystation12"
 GLOBAL_VAR_INIT(changelog_hash, "")
 var/game_year		   = (text2num(time2text(world.realtime, "YYYY")) + 544)
-var/join_motd = null
 
 var/master_mode	   = "containment" // "extended"
 var/secondary_mode	= "extended"

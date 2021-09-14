@@ -104,7 +104,7 @@
 	if(!check_data_signature(signature, dec))
 		return FALSE
 
-	set_pin_data(IC_OUTPUT, 1, weakref(locate(dec)))
+	set_pin_data(IC_OUTPUT, 1, WEAKREF(locate(dec)))
 	push_data()
 	activate_pin(2)
 

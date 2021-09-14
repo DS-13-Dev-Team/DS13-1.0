@@ -538,22 +538,20 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 				H.remove_aura(A)
 				qdel(A)
 
-/datum/species/proc/remove_inherent_verbs(var/mob/living/carbon/human/H)
+/datum/species/proc/remove_inherent_verbs(mob/living/carbon/human/H)
 	if(inherent_verbs)
-		for(var/verb_path in inherent_verbs)
-			H.verbs -= verb_path
+		remove_verb(H, inherent_verbs)
 
 	if (modifier_verbs)
 		for (var/hotkey in modifier_verbs)
 			var/list/L = modifier_verbs[hotkey]
 			H.remove_modclick_verb(hotkey, L[1])
 
-	H.verbs -= /mob/living/carbon/human/proc/toggle_darkvision
+	remove_verb(H, /mob/living/carbon/human/proc/toggle_darkvision)
 
-/datum/species/proc/add_inherent_verbs(var/mob/living/carbon/human/H)
+/datum/species/proc/add_inherent_verbs(mob/living/carbon/human/H)
 	if(inherent_verbs)
-		for(var/verb_path in inherent_verbs)
-			H.verbs |= verb_path
+		add_verb(H, inherent_verbs)
 
 	if (modifier_verbs)
 		for (var/hotkey in modifier_verbs)
@@ -569,7 +567,7 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 			H.add_modclick_verb(arglist(input_args))
 
 	if (darksight_tint != DARKTINT_NONE)
-		H.verbs.Add(/mob/living/carbon/human/proc/toggle_darkvision)
+		add_verb(H, /mob/living/carbon/human/proc/toggle_darkvision)
 
 
 

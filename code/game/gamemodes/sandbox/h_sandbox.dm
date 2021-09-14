@@ -24,7 +24,7 @@ mob
 				sandbox.owner = src.ckey
 				if(src.client.holder)
 					sandbox.admin = 1
-				verbs += new/mob/proc/sandbox_panel
+				add_verb(src, new/mob/proc/sandbox_panel)
 		sandbox_panel()
 			if(sandbox)
 				sandbox.update()
@@ -52,7 +52,7 @@ datum/hSB
 				if("hsbtobj")
 					if(!admin) return
 					if(hsboxspawn)
-						to_world("<b>Sandbox:  [usr.key] has disabled object spawning!</b>")
+						to_chat(world, "<b>Sandbox:  [usr.key] has disabled object spawning!</b>")
 						hsboxspawn = 0
 						return
 					if(!hsboxspawn)

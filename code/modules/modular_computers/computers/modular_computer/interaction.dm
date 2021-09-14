@@ -173,7 +173,7 @@
 	ai_slot.update_power_usage()
 	update_uis()
 
-/obj/item/modular_computer/attack_ghost(var/mob/observer/ghost/user)
+/obj/item/modular_computer/attack_ghost(var/mob/dead/observer/ghost/user)
 	if(enabled)
 		ui_interact(user)
 	else if(check_rights(R_ADMIN, 0, user))

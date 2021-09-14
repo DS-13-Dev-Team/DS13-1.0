@@ -43,8 +43,8 @@ var/global/list/narsie_list = list()
 /obj/singularity/narsie/large/New()
 	..()
 	if(announce)
-		to_world("<font size='15' color='red'><b>[uppertext(name)] HAS RISEN</b></font>")
-		sound_to(world, sound('sound/effects/wind/wind_5_1.ogg'))
+		to_chat(world, "<font size='15' color='red'><b>[uppertext(name)] HAS RISEN</b></font>")
+		SEND_SOUND(world, sound('sound/effects/wind/wind_5_1.ogg'))
 
 	narsie_spawn_animation()
 
@@ -295,7 +295,7 @@ var/global/list/narsie_list = list()
 		acquire(pick(cultists))
 		return
 		//no living cultists, pick a living human instead.
-	for(var/mob/observer/ghost/ghost in GLOB.player_list)
+	for(var/mob/dead/observer/ghost/ghost in GLOB.player_list)
 		if(!ghost.client)
 			continue
 		var/turf/pos = get_turf(ghost)

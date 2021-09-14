@@ -1,7 +1,7 @@
 /mob/proc/jumpTo(var/location)
 	forceMove(location)
 
-/mob/observer/ghost/jumpTo()
+/mob/dead/observer/ghost/jumpTo()
 	stop_following()
 	..()
 

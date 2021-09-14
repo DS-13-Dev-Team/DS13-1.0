@@ -199,7 +199,7 @@
 
 /obj/machinery/organ_printer/flesh/print_organ(var/choice)
 	var/obj/item/organ/O
-	var/weakref/R = loaded_dna["donor"]
+	var/datum/weakref/R = loaded_dna["donor"]
 	var/mob/living/carbon/human/H = R.resolve()
 	var/new_organ
 	if(loaded_species.has_organ[choice])
@@ -251,7 +251,7 @@
 		if(injected && injected.data)
 			loaded_dna = injected.data
 			to_chat(user, "<span class='info'>You inject the blood sample into the bioprinter.</span>")
-		var/weakref/R = loaded_dna["donor"]
+		var/datum/weakref/R = loaded_dna["donor"]
 		var/mob/living/carbon/human/H = R.resolve()
 		if(H && istype(H) && H.species)
 			loaded_species = H.species

@@ -41,7 +41,7 @@
 	..()
 	if(!stat && prob(speak_chance))
 		for(var/mob/M in view())
-			sound_to(M, 'sound/effects/mousesqueek.ogg')
+			SEND_SOUND(M, 'sound/effects/mousesqueek.ogg')
 
 	if(!ckey && stat == CONSCIOUS && prob(0.5))
 		set_stat(UNCONSCIOUS)
@@ -64,8 +64,7 @@
 /mob/living/simple_animal/mouse/New()
 	..()
 
-	verbs += /mob/living/proc/ventcrawl
-	verbs += /mob/living/proc/hide
+	add_verb(src, list(/mob/living/proc/ventcrawl, /mob/living/proc/hide))
 
 	if(name == initial(name))
 		name = "[name] ([sequential_id(/mob/living/simple_animal/mouse)])"
@@ -89,7 +88,7 @@
 		if(!stat)
 			var/mob/M = AM
 			to_chat(M, "<span class='warning'>\icon[src] Squeek!</span>")
-			sound_to(M, 'sound/effects/mousesqueek.ogg')
+			SEND_SOUND(M, 'sound/effects/mousesqueek.ogg')
 	..()
 
 /*

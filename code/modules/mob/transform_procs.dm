@@ -40,7 +40,7 @@
 
 	return src
 
-/mob/new_player/AIize()
+/mob/dead/new_player/AIize()
 	spawning = 1
 	return ..()
 
@@ -64,7 +64,7 @@
 
 /mob/proc/AIize(move=1)
 	if(client)
-		sound_to(src, sound(null, repeat = 0, wait = 0, volume = 85, channel = GLOB.lobby_sound_channel))// stop the jams for AIs
+		SEND_SOUND(src, sound(null, repeat = 0, wait = 0, volume = 85, channel = GLOB.lobby_sound_channel))// stop the jams for AIs
 
 
 	var/mob/living/silicon/ai/O = new (loc, GLOB.using_map.default_law_type,,1)//No MMI but safety is in effect.
@@ -324,6 +324,5 @@
 			organ.rejuvenate(1)
 			organ.max_damage *= 3
 			organ.min_broken_damage = Floor(organ.max_damage * 0.75)
-	verbs += /mob/living/proc/breath_death
-	verbs += /mob/living/proc/consume
+	add_verb(src, list(/mob/living/proc/breath_death, /mob/living/proc/consume))
 	playsound(get_turf(src), 'sound/hallucinations/wail.ogg', 20, 1)

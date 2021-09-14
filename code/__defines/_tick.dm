@@ -1,3 +1,6 @@
+/// Percentage of tick to leave for master controller to run
+#define MAPTICK_LAST_INTERNAL_TICK_USAGE (world.map_cpu)
+
 #define TICK_LIMIT_RUNNING 80
 #define TICK_LIMIT_TO_RUN 78
 #define TICK_LIMIT_MC 70

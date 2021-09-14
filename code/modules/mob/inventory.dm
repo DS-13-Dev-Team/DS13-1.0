@@ -267,7 +267,7 @@ var/list/slot_equipment_priority = list( \
 	return TRUE
 
 //Attemps to remove an object on a mob.
-/mob/proc/remove_from_mob(var/obj/O, var/atom/target)
+/mob/proc/remove_from_mob(obj/O, atom/target)
 	if(!O) // Nothing to remove, so we succeed.
 		return TRUE
 
@@ -375,3 +375,8 @@ var/list/slot_equipment_priority = list( \
 
 /mob/remove_item(var/obj/item/output)
 	return unEquip(output, get_turf(src))
+
+//placeholder until tg inventory system
+/mob/proc/is_holding(obj/item/I)
+	return ((I == l_hand) || (I == r_hand))
+z

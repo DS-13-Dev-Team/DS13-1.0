@@ -86,7 +86,7 @@
 			H.mutations |= SPACERES
 			familiar_type = /mob/living/simple_animal/hostile/carp/pike
 		if("Mouse")
-			H.verbs |= /mob/living/proc/ventcrawl
+			add_verb(H, /mob/living/proc/ventcrawl)
 			familiar_type = /mob/living/simple_animal/mouse
 		if("Cat")
 			H.mutations |= mRun
@@ -155,7 +155,7 @@
 		return
 	last_called = world.time + 30 SECONDS
 	var/datum/ghosttrap/G = get_ghost_trap("wizard familiar")
-	for(var/mob/observer/ghost/ghost in GLOB.player_list)
+	for(var/mob/dead/observer/ghost/ghost in GLOB.player_list)
 		if(G.assess_candidate(ghost,null,FALSE))
 			to_chat(ghost,"<span class='notice'><b>A wizard is requesting a Spell-Bound Servant!</b></span> (<a href='?src=\ref[src];master=\ref[user]'>Join</a>)")
 

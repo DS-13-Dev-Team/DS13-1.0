@@ -33,7 +33,7 @@
 			"group": "build",
 			"label": "dm: build - baystation12.dme"
 		},
-/*		{
+		{
 			"type": "shell",
 			"command": "tgui/bin/tgui",
 			"windows": {
@@ -45,7 +45,7 @@
 			],
 			"group": "build",
 			"label": "tgui: build"
-		},*/ //UNCOMMENT THIS THEN TGUIV4 will be ready
+		},
 		{
 			"command": "${command:dreammaker.reparse}",
 			"group": "build",

@@ -187,7 +187,7 @@
 		qdel(src)
 	if(key)
 
-		var/mob/observer/ghost/ghost = ghostize(TRUE)
+		var/mob/dead/observer/ghost/ghost = ghostize(TRUE)
 		ghost.name = "[ghost.key] BSTech"
 		ghost.real_name = "[ghost.key] BSTech"
 		ghost.voice_name = "[ghost.key] BSTech"

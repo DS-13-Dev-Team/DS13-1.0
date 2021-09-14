@@ -35,10 +35,10 @@
 			if(!O.completed && !O.check_completion())
 				result = 0
 		if(result && victory_text)
-			to_world("<span class='danger'><font size = 3>[victory_text]</font></span>")
+			to_chat(world, "<span class='danger'><font size = 3>[victory_text]</font></span>")
 			if(victory_feedback_tag) feedback_set_details("round_end_result","[victory_feedback_tag]")
 		else if(loss_text)
-			to_world("<span class='danger'><font size = 3>[loss_text]</font></span>")
+			to_chat(world, "<span class='danger'><font size = 3>[loss_text]</font></span>")
 			if(loss_feedback_tag) feedback_set_details("round_end_result","[loss_feedback_tag]")
 
 
@@ -47,7 +47,7 @@
 	set desc = "Recieve optional objectives."
 	set category = "OOC"
 
-	src.verbs -= /mob/proc/add_objectives
+	remove_verb(src, /mob/proc/add_objectives)
 
 	if(!src.mind)
 		return

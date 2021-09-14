@@ -88,7 +88,7 @@
 	var/mob/living/silicon/ai/ai = M
 	if(!istype(ai))
 		return
-	var/mob/observer/eye/AIeye = ai.eyeobj
+	var/mob/dead/observer/eye/AIeye = ai.eyeobj
 	if(istype(AIeye))
 		instant_climb(AIeye)
 
@@ -173,7 +173,7 @@
 
 	return TRUE
 
-/mob/observer/ghost/may_climb_ladders(ladder)
+/mob/dead/observer/ghost/may_climb_ladders(ladder)
 	return TRUE
 
 /obj/structure/ladder/proc/climbLadder(mob/user, target_ladder, obj/item/I = null)

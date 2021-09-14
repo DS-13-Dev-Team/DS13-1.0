@@ -110,7 +110,7 @@
 
 	if (!msg)
 		return
-	to_world(msg)
+	to_chat(world, msg)
 
 	log_and_message_admins(" - GlobalNarrate: [msg]")
 	feedback_add_details("admin_verb","GLN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
@@ -287,7 +287,7 @@ Ccomp's first proc.
 	var/list/ghosts = list()
 	var/list/sortmob = sortAtom(SSmobs.mob_list)                           // get the mob list.
 	var/any=0
-	for(var/mob/observer/ghost/M in sortmob)
+	for(var/mob/dead/observer/ghost/M in sortmob)
 		mobs.Add(M)                                             //filter it where it's only ghosts
 		any = 1                                                 //if no ghosts show up, any will just be 0
 	if(!any)
@@ -305,7 +305,7 @@ Ccomp's first proc.
 
 /client/proc/get_ghosts_by_key()
 	. = list()
-	for(var/mob/observer/ghost/M in SSmobs.mob_list)
+	for(var/mob/dead/observer/ghost/M in SSmobs.mob_list)
 		.[M.ckey] = M
 	. = sortAssoc(.)
 
@@ -318,7 +318,7 @@ Ccomp's first proc.
 		return
 
 	var/list/ghosts = get_ghosts_by_key()
-	var/mob/observer/ghost/G = ghosts[selection]
+	var/mob/dead/observer/ghost/G = ghosts[selection]
 	if(!istype(G))
 		to_chat(src, "<span class='warning'>[selection] no longer has an associated ghost.</span>")
 		return
@@ -358,8 +358,8 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 	var/client/targetclient
 
-	var/mob/observer/ghost/G_found
-	for(var/mob/observer/ghost/G in GLOB.player_list)
+	var/mob/dead/observer/ghost/G_found
+	for(var/mob/dead/observer/ghost/G in GLOB.player_list)
 		if(G.ckey == input)
 			G_found = G
 			targetclient = G.client
@@ -777,7 +777,7 @@ disabled while adding delay_shuttle since evac cancelling needs a complete rewor
 	message_admins("Admin [key_name_admin(usr)] has forced the players to have random appearances.", 1)
 
 	if(notifyplayers == "Yes")
-		to_world("<span class='notice'><b>Admin [usr.key] has forced the players to have completely random identities!</b></span>")
+		to_chat(world, "<span class='notice'><b>Admin [usr.key] has forced the players to have completely random identities!</b></span>")
 
 	to_chat(usr, "<i>Remember: you can always disable the randomness by using the verb again, assuming the round hasn't started yet</i>.")
 	ticker.random_players = 1

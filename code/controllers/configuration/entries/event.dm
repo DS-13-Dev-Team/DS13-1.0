@@ -68,8 +68,6 @@
 
 /datum/config_entry/flag/auto_map_vote  //Automatically call a map vote at end of round and switch to the selected map
 
-/datum/config_entry/flag/wait_for_sigusr1_reboot    // Don't allow reboot unless it was caused by SIGUSR1
-
 /datum/config_entry/number/radiation_decay_rate   //How much radiation is reduced by each tick
     config_entry_value = 1
 

@@ -39,9 +39,17 @@
 	var/irc_admin			//IRC admin that spoke with them last.
 	var/mute_irc = 0
 	var/warned_about_multikeying = 0	// Prevents people from being spammed about multikeying every time their mob changes.
-	var/connection_time //world.time they connected
-	var/connection_realtime //world.realtime they connected
-	var/connection_timeofday //world.timeofday they connected
+
+	///Last ping of the client
+	var/lastping = 0
+	///Average ping of the client
+	var/avgping = 0
+	///world.time they connected
+	var/connection_time
+	///world.realtime they connected
+	var/connection_realtime
+	///world.timeofday they connected
+	var/connection_timeofday
 
 		////////////////////////////////////
 		//things that require the database//
@@ -72,3 +80,14 @@
 
 	//Static framerate
 	fps = 40
+
+	/// our current tab
+	var/stat_tab
+
+	/// whether our browser is ready or not yet
+	var/statbrowser_ready = FALSE
+
+	/// list of all tabs
+	var/list/panel_tabs = list()
+	/// list of tabs containing spells and abilities
+	var/list/spell_tabs = list()

@@ -21,7 +21,7 @@
 	var/charge_sections = 4
 	var/charge_delay = 4
 	var/ext_next_use = 0
-	var/weakref/collw
+	var/datum/weakref/collw
 	var/allowed_circuit_action_flags = IC_ACTION_COMBAT | IC_ACTION_LONG_RANGE //which circuit flags are allowed
 	var/creator // circuit creator if any
 	var/static/next_assembly_id = 0
@@ -79,7 +79,7 @@
 		. |= o_access
 
 /obj/item/device/electronic_assembly/Bump(atom/AM)
-	collw = weakref(AM)
+	collw = WEAKREF(AM)
 	.=..()
 	if(istype(AM, /obj/machinery/door/airlock) ||  istype(AM, /obj/machinery/door/window))
 		var/obj/machinery/door/D = AM

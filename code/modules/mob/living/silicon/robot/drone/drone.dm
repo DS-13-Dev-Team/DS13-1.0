@@ -85,7 +85,7 @@ var/list/mob_hat_cache = list()
 	// None of the tests passed, good bye
 	self_destruct()
 
-/mob/living/silicon/robot/drone/can_be_possessed_by(var/mob/observer/ghost/possessor)
+/mob/living/silicon/robot/drone/can_be_possessed_by(var/mob/dead/observer/ghost/possessor)
 	if(!istype(possessor) || !possessor.client || !possessor.ckey)
 		return 0
 	if(!CONFIG_GET(flag/allow_drone_spawn))
@@ -101,7 +101,7 @@ var/list/mob_hat_cache = list()
 		return 0
 	return 1
 
-/mob/living/silicon/robot/drone/do_possession(var/mob/observer/ghost/possessor)
+/mob/living/silicon/robot/drone/do_possession(var/mob/dead/observer/ghost/possessor)
 	if(!(istype(possessor) && possessor.ckey))
 		return 0
 	if(src.ckey || src.client)
@@ -127,7 +127,7 @@ var/list/mob_hat_cache = list()
 
 	..()
 
-	verbs += /mob/living/proc/hide
+	add_verb(src, /mob/living/proc/hide)
 	remove_language("Robot Talk")
 	add_language("Robot Talk", 0)
 	add_language("Drone Talk", 1)
@@ -140,7 +140,7 @@ var/list/mob_hat_cache = list()
 		var/datum/robot_component/C = components[V]
 		C.max_damage = 10
 
-	verbs -= /mob/living/silicon/robot/verb/Namepick
+	remove_verb(src, /mob/living/silicon/robot/verb/Namepick)
 	update_icon()
 
 /mob/living/silicon/robot/drone/init()

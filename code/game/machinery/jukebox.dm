@@ -4,7 +4,7 @@
 	var/title
 	var/track
 
-/datum/track/New(var/title, var/track)
+/datum/track/New(title, track)
 	src.title = title
 	src.track = track
 
@@ -32,6 +32,7 @@ datum/track/proc/GetTrack()
 	clicksound = 'sound/machines/buttonbeep.ogg'
 	pixel_x = -8
 
+	var/active = FALSE
 	var/playing = 0
 	var/volume = 20
 
@@ -98,59 +99,85 @@ datum/track/proc/GetTrack()
 		to_chat(usr, "\The [src] doesn't appear to function.")
 		return
 
-	tg_ui_interact(user)
+	tgui_interact(user)
 
-/obj/machinery/media/jukebox/ui_status(mob/user, datum/ui_state/state)
+/obj/machinery/media/jukebox/ui_status(mob/user)
 	if(!anchored || inoperable())
 		return UI_CLOSE
 	return ..()
 
-/obj/machinery/media/jukebox/tg_ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = 0, datum/tgui/master_ui = null, datum/ui_state/state = tg_default_state)
-	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
+/obj/machinery/media/jukebox/tgui_interact(mob/user, datum/tgui/ui = null)
+	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, ui_key, "jukebox", "Your Media Library", 340, 440, master_ui, state)
+		ui = new(user, src, "jukebox", "Your Media Library")
 		ui.open()
 
 /obj/machinery/media/jukebox/ui_data()
-	var/list/juke_tracks = new
-	for(var/datum/track/T in tracks)
-		juke_tracks.Add(T.title)
-
-	var/list/data = list(
-		"current_track" = current_track != null ? current_track.title : "No track selected",
-		"playing" = playing,
-		"tracks" = juke_tracks,
-		"volume" = volume
-	)
+	var/list/data = list()
+	data["active"] = active
+	data["songs"] = list()
+	for(var/datum/track/S in tracks)
+		var/list/track_data = list(
+			name = S.title
+		)
+		data["songs"] += list(track_data)
+	data["track_selected"] = null
+	data["track_length"] = null
+	data["track_beat"] = null
+	if(current_track)
+		data["track_selected"] = current_track.title
+	data["volume"] = volume
 
 	return data
 
 /obj/machinery/media/jukebox/ui_act(action, params)
-	if(..())
-		return TRUE
-	switch(action)
-		if("change_track")
-			for(var/datum/track/T in tracks)
-				if(T.title == params["title"])
-					current_track = T
-					StartPlaying()
-					break
-			. = TRUE
-		if("stop")
-			StopPlaying()
-			. = TRUE
-		if("play")
-			if(emagged)
-				emag_play()
-			else if(!current_track)
-				to_chat(usr, "No track selected.")
-			else
-				StartPlaying()
-			. = TRUE
-		if("volume")
-			AdjustVolume(text2num(params["level"]))
-			. = TRUE
+	. = ..()
+	if(.)
+		return
 
+	switch(action)
+		if("toggle")
+			if(QDELETED(src))
+				return
+			if(!active)
+				if(emagged)
+					emag_play()
+				else if(!current_track)
+					to_chat(usr, "No track selected.")
+				else
+					StartPlaying()
+				active = TRUE
+				return TRUE
+			else
+				active = FALSE
+				StopPlaying()
+				return TRUE
+		if("select_track")
+			if(active)
+				to_chat(usr, "<span class='warning'>Error: You cannot change the song until the current one is over.</span>")
+				return
+			var/list/available = list()
+			for(var/datum/track/S in tracks)
+				available[S.title] = S
+			var/selected = params["track"]
+			if(QDELETED(src) || !selected || !istype(available[selected], /datum/track))
+				return
+			current_track = available[selected]
+			return TRUE
+		if("set_volume")
+			var/new_volume = params["volume"]
+			if(new_volume  == "reset")
+				AdjustVolume(initial(volume))
+				return TRUE
+			else if(new_volume == "min")
+				AdjustVolume(0)
+				return TRUE
+			else if(new_volume == "max")
+				AdjustVolume(100)
+				return TRUE
+			else if(text2num(new_volume) != null)
+				AdjustVolume(text2num(new_volume))
+				return TRUE
 
 /obj/machinery/media/jukebox/meddle()
 	if (prob(1))
@@ -233,7 +260,7 @@ datum/track/proc/GetTrack()
 	update_use_power(2)
 	update_icon()
 
-/obj/machinery/media/jukebox/proc/AdjustVolume(var/new_volume)
-	volume = Clamp(new_volume, 0, 50)
+/obj/machinery/media/jukebox/proc/AdjustVolume(new_volume)
+	volume = Clamp(new_volume, 0, 100)
 	if(sound_token)
 		sound_token.SetVolume(volume)

@@ -1,7 +1,7 @@
 /*
 	Eye: Used for offset view on fixed angle turrets
 */
-/mob/observer/eye/turret
+/mob/dead/observer/eye/turret
 	var/atom/gun = null
 	var/offset = 12
 	view_range = 17
@@ -9,13 +9,13 @@
 	var/vector2/direction_vector	//This uses a non-copied global vector fetched from direction.
 	//Do not edit or release it
 
-/mob/observer/eye/turret/possess(var/mob/user, var/atom/newgun)
+/mob/dead/observer/eye/turret/possess(var/mob/user, var/atom/newgun)
 	gun = newgun
 
 	.=..()
 	update_direction()
 
-/mob/observer/eye/turret/proc/update_direction()
+/mob/dead/observer/eye/turret/proc/update_direction()
 	//We do NOT release the old vector here, it is a global value
 	direction_vector = Vector2.FromDir(gun.dir)
 
@@ -27,7 +27,7 @@
 	release_vector(offset_vector)
 
 
-/mob/observer/eye/turret/EyeMove(direct)
+/mob/dead/observer/eye/turret/EyeMove(direct)
 	//Lets see if our target turf is valid
 	var/turf/target_turf = get_step(src, direct)
 
@@ -53,6 +53,6 @@
 	release_vector(difference)
 
 
-/mob/observer/eye/turret/Destroy()
+/mob/dead/observer/eye/turret/Destroy()
 	gun = null
 	. = ..()

@@ -64,8 +64,8 @@ SUBSYSTEM_DEF(event)
 		if (MC_TICK_CHECK)
 			return
 
-/datum/controller/subsystem/event/stat_entry()
-	..("E:[active_events.len]")
+/datum/controller/subsystem/event/stat_entry(msg)
+	return "E:[active_events.len]"
 
 //Actual event handling
 /datum/controller/subsystem/event/proc/event_complete(var/datum/event/E)
@@ -100,7 +100,7 @@ SUBSYSTEM_DEF(event)
 	if(!report_at_round_end)
 		return
 
-	to_world("<br><br><br><font size=3><b>Random Events This Round:</b></font>")
+	to_chat(world, "<br><br><br><font size=3><b>Random Events This Round:</b></font>")
 	for(var/datum/event/E in active_events|finished_events)
 		var/datum/event_meta/EM = E.event_meta
 		if(EM.name == "Nothing")
@@ -114,7 +114,7 @@ SUBSYSTEM_DEF(event)
 			else
 				message += "and ran to completion."
 
-		to_world(message)
+		to_chat(world, message)
 
 //Event manager UI
 /datum/controller/subsystem/event/proc/GetInteractWindow()

@@ -140,9 +140,11 @@ var/global/list/additional_antag_types = list()
 				return
 
 /datum/game_mode/proc/announce() //to be called when round starts
-	to_world("<B>The current game mode is [capitalize(name)]!</B>")
-	if(round_description) to_world("[round_description]")
-	if(round_autoantag) to_world("Antagonists will be added to the round automagically as needed.")
+	to_chat(world, "<span class='infoplain'><B>The current game mode is [capitalize(name)]!</B></span>")
+	if(round_description)
+		to_chat(world, "<span class='infoplain'>[round_description]</span>")
+	if(round_autoantag)
+		to_chat(world, "<span class='infoplain'>Antagonists will be added to the round automagically as needed.</span>")
 	if(antag_templates && antag_templates.len)
 		var/antag_summary = "<b>Possible antagonist types:</b> "
 		var/i = 1
@@ -156,7 +158,7 @@ var/global/list/additional_antag_types = list()
 			i++
 		antag_summary += "."
 		if(antag_templates.len > 1 && master_mode != "secret")
-			to_world("[antag_summary]")
+			to_chat(world, "<span class='infoplain'>[antag_summary]</span>")
 		else
 			message_admins("[antag_summary]")
 
@@ -165,8 +167,9 @@ var/global/list/additional_antag_types = list()
 // Returns 0 if the mode can start and a message explaining the reason why it can't otherwise.
 /datum/game_mode/proc/startRequirements()
 	var/playerC = 0
-	for(var/mob/new_player/player in GLOB.player_list)
-		if((player.client)&&(player.ready))
+	for(var/i in GLOB.new_player_list)
+		var/mob/dead/new_player/player = i
+		if(player.client && player.ready)
 			playerC++
 
 	if(playerC < required_players)
@@ -373,7 +376,7 @@ var/global/list/additional_antag_types = list()
 		text += "<br><center>Necromorphs have slain a majority of the crew!</center>"
 		text += "<br><b><center>And so ends the struggle on [station_name()]...</center></b>"
 		text += "<br><center>There [surviving_humans>1 ? "were <b>[surviving_humans] survivors</b>" : "was <b>one survivor</b>"], with [escaped_humans>1 ? "<b>[escaped_total] managing to evacuate</b>" : "was <b>one evacuee</b>"]</center>"
-		sound_to(world, sound('sound/music/ds13/credits_violin.ogg', wait = 0, volume = 40, channel = GLOB.lobby_sound_channel))
+		SEND_SOUND(world, sound('sound/music/ds13/credits_violin.ogg', wait = 0, volume = 40, channel = GLOB.lobby_sound_channel))
 		if(escaped_necros > 0)
 			text += "<br><center>There [alive_necros>0 ? "were <b>[alive_necros] alive Necromorphs left</b>" : ""], with [escaped_necros>0 ? "<b>[escaped_necros] having left the Ishimura for greener pastures!</b>" : "<b>was one Necromorph that left the Ishimura for greener pastures!</b>"]</center>"
 			if(escaped_necros > 0 && escaped_necros < 4) // Between 1 and 3 Necro's escaped? Marker is displeased.
@@ -388,7 +391,7 @@ var/global/list/additional_antag_types = list()
 		text += "<br><center>Some survivors managed to evacuate!</center>"
 		text += "<br><b><cennter>And so ends the struggle on [station_name()]...</center></b>"
 		text += "<br><center>There [surviving_humans>1 ? "were <b>[surviving_humans] survivors</b>" : "was <b>one survivor</b>"], with [escaped_humans>1 ? "<b>[escaped_total] managing to evacuate</b>" : "was <b>one evacuee</b>"]</center>"
-		sound_to(world, sound('sound/music/ds13/credits_violin.ogg', wait = 0, volume = 40, channel = GLOB.lobby_sound_channel))
+		SEND_SOUND(world, sound('sound/music/ds13/credits_violin.ogg', wait = 0, volume = 40, channel = GLOB.lobby_sound_channel))
 		if(escaped_necros > 0)
 			text += "<br><center>There [alive_necros>0 ? "were <b>[alive_necros] alive Necromorphs left</b>" : ""], with [escaped_necros>0 ? "<b>[escaped_necros] having left the Ishimura for greener pastures!</b>" : "<b>was one Necromorph that left the Ishimura for greener pastures!</b>"]</center>"
 			if(escaped_necros > 0 && escaped_necros < 4) // Between 1 and 3 Necro's escaped? Marker is displeased.
@@ -403,7 +406,7 @@ var/global/list/additional_antag_types = list()
 		text += "<br><center>A majority of the survivors managed to evacuate!</center>"
 		text += "<br><center><b>And so ends the struggle on [station_name()]...</center></b>"
 		text += "<br><center>There [surviving_humans>1 ? "were <b>[surviving_humans] survivors</b>" : "was <b>one survivor</b>"], with [escaped_humans>1 ? "<b>[escaped_total] managing to evacuate</b>" : "was <b>one evacuee</b>"]</center>"
-		sound_to(world, sound('sound/music/ds13/credits_rock.ogg', wait = 0, volume = 40, channel = GLOB.lobby_sound_channel))
+		SEND_SOUND(world, sound('sound/music/ds13/credits_rock.ogg', wait = 0, volume = 40, channel = GLOB.lobby_sound_channel))
 		if(escaped_necros > 0)
 			text += "<br><center>There [alive_necros>0 ? "were <b>[alive_necros] alive Necromorphs left</b>" : ""], with [escaped_necros>0 ? "<b>[escaped_necros] having left the Ishimura for greener pastures!</b>" : "<b>was one Necromorph that left the Ishimura for greener pastures!</b>"]</center>"
 			if(escaped_necros > 0 && escaped_necros < 4) // Between 1 and 3 Necro's escaped? Marker is displeased.
@@ -418,7 +421,7 @@ var/global/list/additional_antag_types = list()
 		text += "<br><center>The Necromorphs have slain the entire crew!</center>"
 		text += "<br><br><center><b>And so ends another struggle on [station_name()]...</b></center>"
 		text += "<br><center>There [surviving_humans>1 ? "were <b>[surviving_humans] survivors</b>" : "was <b>one survivor</b>"] of which <b>none</b> managed to evacuate."
-		sound_to(world, sound('sound/music/ds13/twinkle.ogg', wait = 0, volume = 40, channel = GLOB.lobby_sound_channel))
+		SEND_SOUND(world, sound('sound/music/ds13/twinkle.ogg', wait = 0, volume = 40, channel = GLOB.lobby_sound_channel))
 		if(escaped_necros > 0)
 			text += "<br><center>There [alive_necros>0 ? "were <b>[alive_necros] alive Necromorphs left</b>" : ""], with [escaped_necros>0 ? "<b>[escaped_necros] having left the Ishimura for greener pastures!</b>" : "<b>was one Necromorph that left the Ishimura for greener pastures!</b>"]</center>"
 			if(escaped_necros > 0 && escaped_necros < 4) // Between 1 and 3 Necro's escaped? Marker is displeased.
@@ -430,17 +433,17 @@ var/global/list/additional_antag_types = list()
 	else // Safety clause. Pray to god this never gets ran. Wouldn't know why it would do that, if it did.
 		text += "<br>DEBUG: You fucked up. This is not meant to happen."
 		text += "<br>Contact Lion immediately."
-	to_world(text)
+	to_chat(world, "<span class='infoplain'>[text]</span>")
 
 	var/obj/machinery/marker/M = get_marker()
 	if (M.player)
-		to_world("<b>The Marker player was: [M.player]!</b><br>")
+		to_chat(world, "<span class='infoplain'><b>The Marker player was: [M.player]!</b><br></span>")
 	else
-		to_world("<b>There was no Marker at the end.</b><br>")
+		to_chat(world, "<span class='infoplain'><b>There was no Marker at the end.</b><br></span>")
 
-	to_world("<b>The Marker accrued a total biomass of: [round(M.get_total_biomass())]kg</b><br>")
+	to_chat(world, "<span class='infoplain'><b>The Marker accrued a total biomass of: [round(M.get_total_biomass())]kg</b><br></span>")
 
-	to_world("<b>The Marker spawned [get_historic_major_vessel_total() ] total necromorphs!</b><br>")
+	to_chat(world, "<span class='infoplain'><b>The Marker spawned [get_historic_major_vessel_total() ] total necromorphs!</b><br></span>")
 
 	if(ghosts > 0)
 		feedback_set("round_end_ghosts",ghosts)
@@ -474,7 +477,7 @@ var/global/list/additional_antag_types = list()
 		for(var/mob/player in GLOB.player_list)
 			if(!player.client)
 				continue
-			if(istype(player, /mob/new_player))
+			if(istype(player, /mob/dead/new_player))
 				continue
 			if(!antag_id || (antag_id in player.client.prefs.be_special_role))
 				log_debug("[player.key] had [antag_id] enabled, so we are drafting them.")
@@ -482,12 +485,13 @@ var/global/list/additional_antag_types = list()
 
 	else
 		// Assemble a list of active players without jobbans.
-		for(var/mob/new_player/player in GLOB.player_list)
-			if( player.client && player.ready )
+		for(var/i in GLOB.new_player_list)
+			var/mob/dead/new_player/player = i
+			if(player.client && player.ready)
 				players += player
 
 		// Get a list of all the people who want to be the antagonist for this round
-		for(var/mob/new_player/player in players)
+		for(var/mob/dead/new_player/player in players)
 			if(!antag_id || (antag_id in player.client.prefs.be_special_role))
 				log_debug("[player.key] had [antag_id] enabled, so we are drafting them.")
 				candidates += player.mind
@@ -495,7 +499,7 @@ var/global/list/additional_antag_types = list()
 
 		// If we don't have enough antags, draft people who voted for the round.
 		if(candidates.len < max(required_enemies, antag_template.initial_spawn_target))
-			for(var/mob/new_player/player in players)
+			for(var/mob/dead/new_player/player in players)
 				if(!antag_id || (antag_id in player.client.prefs.be_special_role))
 					log_debug("[player.key] has not selected never for this role, so we are drafting them.")
 					candidates += player.mind
@@ -509,7 +513,7 @@ var/global/list/additional_antag_types = list()
 
 /datum/game_mode/proc/num_players()
 	. = 0
-	for(var/mob/new_player/P in GLOB.player_list)
+	for(var/mob/dead/new_player/P in GLOB.player_list)
 		if(P.client && P.ready)
 			. ++
 
@@ -572,7 +576,7 @@ proc/display_roundstart_logout_report()
 					continue //Dead
 
 			continue //Happy connected client
-		for(var/mob/observer/ghost/D in SSmobs.mob_list)
+		for(var/mob/dead/observer/ghost/D in SSmobs.mob_list)
 			if(D.mind && (D.mind.original == L || D.mind.current == L))
 				if(L.stat == DEAD)
 					msg += "<b>[L.name]</b> ([ckey(D.mind.key)]), the [L.job] (Dead)\n"

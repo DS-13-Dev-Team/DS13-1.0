@@ -23,18 +23,18 @@
 /datum/category_item/player_setup_item/general/equipment/load_character(var/savefile/S)
 	var/load_backbag
 
-	from_file(S["all_underwear"], pref.all_underwear)
-	from_file(S["all_underwear_metadata"], pref.all_underwear_metadata)
-	from_file(S["backpack"], load_backbag)
-	from_file(S["backpack_metadata"], pref.backpack_metadata)
+	READ_FILE(S["all_underwear"], pref.all_underwear)
+	READ_FILE(S["all_underwear_metadata"], pref.all_underwear_metadata)
+	READ_FILE(S["backpack"], load_backbag)
+	READ_FILE(S["backpack_metadata"], pref.backpack_metadata)
 
 	pref.backpack = backpacks_by_name[load_backbag] || get_default_outfit_backpack()
 
 /datum/category_item/player_setup_item/general/equipment/save_character(var/savefile/S)
-	to_file(S["all_underwear"], pref.all_underwear)
-	to_file(S["all_underwear_metadata"], pref.all_underwear_metadata)
-	to_file(S["backpack"], pref.backpack.name)
-	to_file(S["backpack_metadata"], pref.backpack_metadata)
+	WRITE_FILE(S["all_underwear"], pref.all_underwear)
+	WRITE_FILE(S["all_underwear_metadata"], pref.all_underwear_metadata)
+	WRITE_FILE(S["backpack"], pref.backpack.name)
+	WRITE_FILE(S["backpack_metadata"], pref.backpack_metadata)
 
 /datum/category_item/player_setup_item/general/equipment/sanitize_character()
 	if(!istype(pref.all_underwear))
@@ -186,12 +186,12 @@
 		)
 
 		var/old_index
-		from_file(character["backbag"], old_index)
+		READ_FILE(character["backbag"], old_index)
 
 		if(old_index > 0 && old_index <= old_index_to_backpack_type.len)
 			pref.backpack = decls_repository.get_decl(old_index_to_backpack_type[old_index])
 		else
 			pref.backpack = get_default_outfit_backpack()
 
-		to_file(character["backpack"], pref.backpack.name)
+		WRITE_FILE(character["backpack"], pref.backpack.name)
 		return 1

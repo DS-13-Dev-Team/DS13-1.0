@@ -23,12 +23,12 @@
 
 	var/turf/T = get_turf(explosion_source)
 	if(isStationLevel(T.z))
-		to_world("<span class='danger'>The [station_name()] was destoyed by the nuclear blast!</span>")
+		to_chat(world, "<span class='danger'>The [station_name()] was destoyed by the nuclear blast!</span>")
 
 		dust_mobs(GLOB.using_map.station_levels)
 		play_cinematic_station_destroyed()
 	else
-		to_world("<span class='danger'>A nuclear device was set off, but the explosion was out of reach of the [station_name()]!</span>")
+		to_chat(world, "<span class='danger'>A nuclear device was set off, but the explosion was out of reach of the [station_name()]!</span>")
 
 		dust_mobs(list(T.z))
 		play_cinematic_station_unaffected()
@@ -68,7 +68,7 @@
 
 /datum/universal_state/nuclear_explosion/proc/start_cinematic_intro()
 	for(var/mob/M in GLOB.player_list) //I guess so that people in the lobby only hear the explosion
-		sound_to(M, sound('sound/machines/Alarm.ogg'))
+		SEND_SOUND(M, sound('sound/machines/Alarm.ogg'))
 
 	sleep(100)
 
@@ -77,7 +77,7 @@
 	sleep(30)
 
 /datum/universal_state/nuclear_explosion/proc/play_cinematic_station_destroyed()
-	sound_to(world, sound('sound/effects/explosionfar.ogg'))//makes no sense if you're not on the station but whatever
+	SEND_SOUND(world, sound('sound/effects/explosionfar.ogg'))//makes no sense if you're not on the station but whatever
 
 	flick("station_explode_fade_red",cinematic)
 	cinematic.icon_state = "summary_selfdes"
@@ -86,7 +86,7 @@
 /datum/universal_state/nuclear_explosion/proc/play_cinematic_station_unaffected()
 	cinematic.icon_state = "station_intact"
 	sleep(5)
-	sound_to(world, sound('sound/effects/explosionfar.ogg'))//makes no sense if you are on the station but whatever
+	SEND_SOUND(world, sound('sound/effects/explosionfar.ogg'))//makes no sense if you are on the station but whatever
 
 
 	sleep(75)

@@ -48,9 +48,11 @@
 
 /mob/proc/send_staffwarn(var/client/C, var/action, var/noise = 1)
 	if(check_rights((R_ADMIN|R_MOD),0,C))
-		to_chat(C,"<span class='staffwarn'>StaffWarn: [client.ckey] [action]</span><br><span class='notice'>[client.staffwarn]</span>")
+		to_chat(C,
+				type = MESSAGE_TYPE_ADMINCHAT,
+				html = "<span class='staffwarn'>StaffWarn: [client.ckey] [action]</span><br><span class='notice'>[client.staffwarn]</span>")
 		if(noise && C.get_preference_value(/datum/client_preference/staff/play_adminhelp_ping) == GLOB.PREF_HEAR)
-			sound_to(C, 'sound/effects/adminhelp.ogg')
+			SEND_SOUND(C, 'sound/effects/adminhelp.ogg')
 
 /mob
 	var/client/my_client // Need to keep track of this ourselves, since by the time Logout() is called the client has already been nulled
@@ -94,6 +96,7 @@
 	update_action_buttons()
 	GetClickHandlers()	//Just call this to create the default handler, prevents an unpleasant edge case where it never gets created a
 	update_popup_menu()	//Update the existence of the rightclick menu, or lack thereof
+	client.init_verbs()
 	//set macro to normal incase it was overriden (like cyborg currently does)
 	winset(src, null, "mainwindow.macro=hotkeymode hotkey_toggle.is-checked=true mapwindow.map.focus=true input.background-color=#d3b5b5")
 

@@ -17,17 +17,17 @@
 /mob/get_client()
 	return client
 
-/mob/observer/eye/get_client()
+/mob/dead/observer/eye/get_client()
 	if (client)
 		return client
 
 	if (owner && owner != src)
 		return owner.get_client()
 
-/mob/observer/eye/signal/get_client()
+/mob/dead/observer/eye/signal/get_client()
 	return client
 
-/mob/observer/virtual/get_client()
+/mob/dead/observer/virtual/get_client()
 	return host.get_client()
 
 
@@ -97,11 +97,11 @@
 	if(!(get_preference_value(/datum/client_preference/play_lobby_music) == GLOB.PREF_YES))
 		return
 
-	if (!istype(mob, /mob/new_player))	//Don't play it if we aren't in the lobby
+	if (!istype(mob, /mob/dead/new_player))	//Don't play it if we aren't in the lobby
 		return
 
 	//First of all, stop any previous lobby track we were playing
-	sound_to(src, sound(null, repeat = 0, wait = 0, volume = 85, channel = GLOB.lobby_sound_channel))
+	SEND_SOUND(src, sound(null, repeat = 0, wait = 0, volume = 85, channel = GLOB.lobby_sound_channel))
 
 	var/tracktype = GLOB.using_map.get_lobby_track(played_lobby_tracks)
 	var/music_track/MT = decls_repository.get_decl(tracktype)

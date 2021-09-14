@@ -114,6 +114,13 @@ GLOBAL_VAR(restart_counter)
 
 	SetupLogs()
 
+#ifndef USE_CUSTOM_ERROR_HANDLER
+	world.log = file("[GLOB.log_directory]/dd.log")
+#else
+	if (TgsAvailable())
+		world.log = file("[GLOB.log_directory]/dd.log") //not all runtimes trigger world/Error, so this is the only way to ensure we can see all of them.
+#endif
+
 	processScheduler = new
 	master_controller = new /datum/controller/game_controller()
 
@@ -380,7 +387,7 @@ var/world_topic_spam_protect_time = world.timeofday
 		C.received_irc_pm = world.time
 		C.irc_admin = input["sender"]
 
-		sound_to(C, 'sound/effects/adminhelp.ogg')
+		SEND_SOUND(C, 'sound/effects/adminhelp.ogg')
 		to_chat(C, message)
 
 		for(var/client/A in GLOB.admins)
@@ -488,11 +495,16 @@ var/world_topic_spam_protect_time = world.timeofday
 	else
 		hub_password = "SORRYNOPASSWORD"
 
-/world/Reboot(reason, ping)
-	/*spawn(0)
-		sound_to(world, sound(pick('sound/AI/newroundsexy.ogg','sound/misc/apcdestroyed.ogg','sound/misc/bangindonk.ogg')))// random end sounds!! - LastyBatsy
+/world/Reboot(reason = 0, fast_track = FALSE, ping = FALSE)
+	if (reason || fast_track) //special reboot, do none of the normal stuff
+		if (usr)
+			log_admin("[key_name(usr)] Has requested an immediate world restart via client side debugging tools")
+			message_admins("[key_name_admin(usr)] Has requested an immediate world restart via client side debugging tools")
+		to_chat(world, "<span class='boldannounce'>Rebooting World immediately due to host request.</span>")
+	else
+		to_chat(world, "<span class='boldannounce'>Rebooting world...</span>")
+		Master.Shutdown() //run SS shutdowns
 
-		*/
 	if(ping)
 		send2chat("GAME: <@&797602501813469224>", "game") //Don't forget change id channel and id role for you server!!!!!
 		var/list/msg = list()
@@ -509,13 +521,12 @@ var/world_topic_spam_protect_time = world.timeofday
 		if(length(msg))
 			send2chat("GAME: " + msg.Join(" | "), "game") //TOO!
 
-	TgsReboot()
 	processScheduler.stop()
 
 	if(TgsAvailable())
 		var/do_hard_reboot
 		// check the hard reboot counter
-		var/ruhr = -1
+		var/ruhr = CONFIG_GET(number/rounds_until_hard_restart)
 		switch(ruhr)
 			if(-1)
 				do_hard_reboot = FALSE
@@ -529,20 +540,15 @@ var/world_topic_spam_protect_time = world.timeofday
 					do_hard_reboot = FALSE
 
 		if(do_hard_reboot)
-			log_world("World rebooted at [time_stamp()]")
-			rustg_log_close_all() // Past this point, no logging procs can be used, at risk of data loss.
+			log_world("World hard rebooted at [time_stamp()]")
+			shutdown_logging() // See comment below.
 			TgsEndProcess()
 
-	if(CONFIG_GET(string/server))	//if you set a server location in config.txt, it sends you there instead of trying to reconnect to the same world address. -- NeoFite
-		for(var/client/C in GLOB.clients)
-			to_chat(C, link("byond://[CONFIG_GET(string/server)]"))
+	log_world("World rebooted at [time_stamp()]")
 
-	if(CONFIG_GET(flag/wait_for_sigusr1_reboot) && reason != 3)
-		text2file("foo", "reboot_called")
-		to_world("<span class=danger>World reboot waiting for external scripts. Please be patient.</span>")
-		return
-
-	..(reason)
+	TgsReboot()
+	shutdown_logging()
+	..()
 
 /world/Del()
 	callHook("shutdown")
@@ -566,18 +572,6 @@ var/world_topic_spam_protect_time = world.timeofday
 	var/F = file("data/mode.txt")
 	fdel(F)
 	F << the_mode
-
-/hook/startup/proc/loadMOTD()
-	world.load_motd()
-	return 1
-
-/world/proc/load_motd()
-	join_motd = file2text("config/motd.txt")
-
-/hook/startup/proc/loadMods()
-	world.load_mods()
-	world.load_mentors() // no need to write another hook.
-	return 1
 
 /world/proc/load_mods()
 	if(CONFIG_GET(flag/admin_legacy_system))
@@ -661,6 +655,8 @@ var/world_topic_spam_protect_time = world.timeofday
 	GLOB.world_qdel_log = "[GLOB.log_directory]/qdel.log"
 	GLOB.world_runtime_log = "[GLOB.log_directory]/runtime.log"
 	GLOB.world_debug_log = "[GLOB.log_directory]/debug.log"
+	GLOB.tgui_log = "[GLOB.log_directory]/tgui.log"
+	GLOB.world_paper_log = "[GLOB.log_directory]/paper.log"
 
 #ifdef UNIT_TESTS
 	GLOB.test_log = "[GLOB.log_directory]/tests.log"
@@ -675,6 +671,7 @@ var/world_topic_spam_protect_time = world.timeofday
 	start_log(GLOB.world_qdel_log)
 	start_log(GLOB.world_runtime_log)
 	start_log(GLOB.world_debug_log)
+	start_log(GLOB.tgui_log)
 
 	var/latest_changelog = file("[global.config.directory]/../html/changelogs/archive/" + time2text(world.timeofday, "YYYY-MM") + ".yml")
 	GLOB.changelog_hash = fexists(latest_changelog) ? md5(latest_changelog) : 0 //for telling if the changelog has changed recently

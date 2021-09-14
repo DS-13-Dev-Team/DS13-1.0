@@ -1,0 +1,46 @@
+2021-09-08:
+  Nanako:
+  - experiment: Added the Infector, a complex new support necromorph with abilities
+      to convert humans, construct corruption nodes, heal and buff other necromorphs.
+  - rscadd: Added necrotoxin, a poison that converts its victims into necromorphs
+      if it kills them. Necrotoxin is applied by all infector attacks.
+  - tweak: Reworked chemical metabolism rates. The base rate is a bit slower, but
+      now chemicals metabolize faster, the larger the quantity is in a patient's system.
+  Snypehunter007:
+  - bugfix: Fixed the Aegis Colony Research Area not having external power.
+2021-09-10:
+  Nanako:
+  - experiment: All mobs now take 50% more damage from all sources while they are
+      performing an execution. Its a vulnerable time for others to get you while your
+      back is turned!
+  - tweak: Reduced the infector's movespeed, max health, and melee damage+armorpen.
+  - tweak: Infector can no longer grapple or pull humans. It has no limbs to do so!
+  - tweak: Mend can now heal Lasting Damage.
+  - bugfix: Fixed infector spine shot having no cooldown.
+  - bugfix: Parasite Leap can no longer hit other necromorphs.
+  - bugfix: Fixed being able to reanimate headless corpses.
+  - bugfix: Engorge can no longer be used again on already enlarged targets.
+2021-09-11:
+  DTraitor:
+  - bugfix: Fixed Diamond Excavation Drill design requesting MATERIAL_METAL instead
+      of steel
+  - bugfix: Fixed Integrated Circuit Printer Upgrade Disk tech doing nothing.
+  Nanako:
+  - bugfix: Exploder now detonates when charging into people again.
+  - bugfix: Spray explosions now affect their origin tile. This change affects divet
+      incendiary ammo, hydrazine torch secondary fire, and effects on enhanced exploder.
+  - bugfix: Stairs and ladders can no longer be destroyed by explosions.
+  - bugfix: Fixed enhanced exploder having incorrect ability descriptions.
+  - bugfix: Fixed enhanced exploder being spawnable before the T2 biomass threshold
+      is reached.
+  - tweak: Slightly buffed the damage of the rivet gun's shrapnel
+  - tweak: Reduced the miss chance on exploder pustules so they should be easier to
+      shoot.
+  - tweak: Biological acid is now more powerful against flesh. Clothes have been given
+      buffs to health and acid resistance to compensate so they should get melted
+      less often
+  - tweak: Increased the damage of explosions on humans, and spread that damage out
+      more across the body
+2021-09-12:
+  DTraitor:
+  - bugfix: Open RIG Interface verb.

@@ -99,6 +99,12 @@
 	var/datum/wires/rig/wires
 	var/datum/effect/effect/system/spark_spread/spark_system
 
+	var/rig_verbs = list(/obj/item/weapon/rig/verb/RIG_interface, /obj/item/weapon/rig/verb/deploy_suit,
+						/obj/item/weapon/rig/verb/toggle_vision, /obj/item/weapon/rig/verb/toggle_seals_verb,
+						/obj/item/weapon/rig/verb/switch_vision_mode, /obj/item/weapon/rig/verb/alter_voice,
+						/obj/item/weapon/rig/verb/select_module, /obj/item/weapon/rig/verb/toggle_module,
+						/obj/item/weapon/rig/verb/engage_module)
+
 /obj/item/weapon/rig/examine()
 	. = ..()
 	if(wearer)
@@ -666,7 +672,7 @@
 			to_chat(module.integrated_ai, "[message]")
 			. = 1
 
-/obj/item/weapon/rig/equipped(mob/living/carbon/human/M, var/slot)
+/obj/item/weapon/rig/equipped(mob/living/carbon/human/M, slot)
 	.=..()
 	if (!istype(M))
 		return FALSE
@@ -690,6 +696,7 @@
 
 			wearer = M
 			wearer.wearing_rig = src
+			add_verb(M, rig_verbs)
 			update_icon()
 
 		for(var/obj/item/rig_module/module in installed_modules)
@@ -816,13 +823,14 @@
 	for(var/piece in list("helmet","gauntlets","chest","boots"))
 		toggle_piece(piece, null, ONLY_RETRACT)
 
-/obj/item/weapon/rig/dropped(var/mob/user)
+/obj/item/weapon/rig/dropped(mob/user)
 	..()
 	for(var/piece in list("helmet","gauntlets","chest","boots"))
 		toggle_piece(piece, user, ONLY_RETRACT)
 	if(wearer)
 		wearer.wearing_rig = null
 		wearer = null
+		remove_verb(user, rig_verbs)
 
 //Todo
 /obj/item/weapon/rig/proc/malfunction()

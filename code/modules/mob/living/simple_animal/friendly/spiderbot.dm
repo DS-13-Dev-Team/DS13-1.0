@@ -46,8 +46,7 @@
 	..()
 	add_language(LANGUAGE_GALCOM)
 	default_language = all_languages[LANGUAGE_GALCOM]
-	verbs |= /mob/living/proc/ventcrawl
-	verbs |= /mob/living/proc/hide
+	add_verb(src, list(/mob/living/proc/ventcrawl, /mob/living/proc/hide))
 
 /mob/living/simple_animal/spiderbot/attackby(var/obj/item/O as obj, var/mob/user as mob)
 
@@ -68,7 +67,7 @@
 		if(!B.key)
 			var/ghost_can_reenter = 0
 			if(B.mind)
-				for(var/mob/observer/ghost/G in GLOB.player_list)
+				for(var/mob/dead/observer/ghost/G in GLOB.player_list)
 					if(G.can_reenter_corpse && G.mind == B.mind)
 						ghost_can_reenter = 1
 						break

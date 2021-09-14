@@ -67,7 +67,7 @@
 				B.host_brain.SetName("host brain")
 				B.host_brain.real_name = "host brain"
 
-			verbs -= /mob/living/carbon/proc/release_control
+			remove_verb(src, /mob/living/carbon/proc/release_control)
 
 	callHook("death", list(src, gibbed))
 

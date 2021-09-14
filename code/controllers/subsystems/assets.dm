@@ -9,14 +9,14 @@ SUBSYSTEM_DEF(assets)
 /datum/controller/subsystem/assets/OnConfigLoad()
 	var/newtransporttype = /datum/asset_transport
 	switch (CONFIG_GET(string/asset_transport))
-		if("webroot")
+		if ("webroot")
 			newtransporttype = /datum/asset_transport/webroot
 
-	if(newtransporttype == transport.type)
+	if (newtransporttype == transport.type)
 		return
 
 	var/datum/asset_transport/newtransport = new newtransporttype ()
-	if(newtransport.validate_config())
+	if (newtransport.validate_config())
 		transport = newtransport
 	transport.Load()
 
@@ -28,7 +28,10 @@ SUBSYSTEM_DEF(assets)
 		if (type != initial(A._abstract))
 			get_asset_datum(type)
 
-	preload = cache.Copy() //don't preload assets generated during the round
 	transport.Initialize(cache)
 
-	return ..()
+	..()
+
+/datum/controller/subsystem/assets/Recover()
+	cache = SSassets.cache
+	preload = SSassets.preload
