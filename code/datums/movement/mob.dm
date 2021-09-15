@@ -458,7 +458,7 @@ If this is needed in future, add new datum procs for adding allowed movers, and 
 	if(is_external)
 		return MOVEMENT_PROCEED
 	if(!mob.eyeobj)
-		return MOVEMENT_PROCEED
+		return MOVEMENT_REMOVE
 	return (MOVEMENT_PROCEED|MOVEMENT_HANDLED)
 
 // Space movement
@@ -554,7 +554,10 @@ If this is needed in future, add new datum procs for adding allowed movers, and 
 /datum/movement_handler/mob/transformation/MayMove()
 	return MOVEMENT_STOP
 
-// Consciousness - Is the entity trying to conduct the move conscious?
+/* Consciousness - Is the entity trying to conduct the move conscious?
+	Disabled as it is currently not useful, we have no entities which can remotely control a mob and themselves fall unconscious
+	If this is re-enabled in future, add it only when such an entity is controlling
+*/
 /datum/movement_handler/mob/conscious/MayMove(var/mob/mover)
 	return (mover ? mover.stat == CONSCIOUS : mob.stat == CONSCIOUS) ? MOVEMENT_PROCEED : MOVEMENT_STOP
 

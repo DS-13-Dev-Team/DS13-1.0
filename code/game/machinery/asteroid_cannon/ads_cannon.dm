@@ -28,7 +28,7 @@ You'll need two people to do this, one to man the gun while it goes down, one to
 	light_color="#ff0000" //Glows red when it's out of commission...
 	health = 200
 	max_health = 200 //Takes a lot of effort to take out.
-	layer = ABOVE_OBJ_LAYER
+	layer = ABOVE_WINDOW_LAYER
 	atom_flags = ATOM_FLAG_INDESTRUCTIBLE
 	var/lead_distance = 0 //How aggressively to lead each shot. If set to 0 the bullets become hitscan.
 	var/bullet_origin_offset = 3 //+/-x. Offsets the bullet so it can shoot "through the wall" to more closely mirror the source material's gun.

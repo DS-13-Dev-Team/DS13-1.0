@@ -54,7 +54,7 @@
 	if(owner && owner.eyeobj != src)
 		return
 	owner = user
-	owner.eyeobj = src
+	owner.set_eyeobj(src)
 	SetName("[owner.name] ([name_sufix])") // Update its name
 	if(owner.client)
 		owner.client.eye = src

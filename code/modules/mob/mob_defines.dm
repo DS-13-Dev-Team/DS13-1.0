@@ -11,12 +11,10 @@
 	virtual_mob = /mob/dead/observer/virtual/mob
 
 	movement_handlers = list(
-		/datum/movement_handler/mob/conscious,
-		/datum/movement_handler/mob/eye,
 		/datum/movement_handler/move_relay,
 		/datum/movement_handler/mob/delay,
 		/datum/movement_handler/mob/physically_capable,
-		/datum/movement_handler/mob/physically_restrained,
+		/datum/movement_handler/mob/physically_restrained,	//TODO: Add this from various things it checks, should be removed otherwise
 		/datum/movement_handler/mob/space,
 		/datum/movement_handler/mob/multiz,
 		/datum/movement_handler/mob/movement
