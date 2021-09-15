@@ -411,9 +411,3 @@
 	down()
 
 
-/mob/living/carbon/human/bst/verb/blur_filter(var/atom/A)
-	set name = "Blur"
-	set category = "BST"
-
-	var/newfilter = filter(type="blur", rand_between(1,6))
-	A.filters += newfilter

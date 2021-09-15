@@ -132,7 +132,7 @@
 		scoped_accuracy = accuracy
 
 /obj/item/weapon/gun/Destroy()
-	GLOB.item_equipped_event.unregister(src, src, .proc/update_all)
+	GLOB.item_equipped_event.unregister(src, src, .proc/update_equipped)
 	GLOB.item_unequipped_event.unregister(src, src, .proc/update_all_stop)
 	GLOB.swapped_to_event.unregister(src, src, .proc/update_all)
 	GLOB.swapped_from_event.unregister(src, src, .proc/update_all_stop)

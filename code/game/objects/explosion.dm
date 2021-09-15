@@ -57,8 +57,9 @@ Method to create an explosion at a given turf.
 
 /turf/explosion(radius, max_power=3, adminlog = TRUE)
 	if(adminlog)
-		message_admins("Explosion with size ([radius]) in area [get_area(src).name] ([x],[y],[z]) (<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)")
-		log_game("Explosion with size ([radius]) in area [get_area(src).name] ")
+		var/area/A = get_area(src)
+		message_admins("Explosion with size ([radius]) in area [A.name] ([x],[y],[z]) (<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)")
+		log_game("Explosion with size ([radius]) in area [A.name] ")
 	if (!QDELETED(src))
 		set_extension(src, /datum/extension/explosion, radius, max_power)
 
