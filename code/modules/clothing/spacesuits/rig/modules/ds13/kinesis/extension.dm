@@ -33,6 +33,7 @@
 	animate(ripple, radius = 16, size = 1, time = 4, loop = -1, flags = ANIMATION_PARALLEL)
 
 	outline = filter(type = "outline", size = 3, color = COLOR_KINESIS_INDIGO)
+	outline:alpha = 128
 	subject.filters.Add(outline)
 	outline = subject.filters[subject.filters.len]
 
