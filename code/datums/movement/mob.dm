@@ -480,6 +480,9 @@
 
 // Buckle movement
 /datum/movement_handler/mob/buckle_relay/DoMove(var/direction, var/mover)
+	if (!mob.buckled)
+		return MOVEMENT_REMOVE
+
 	// TODO: Datumlize buckle-handling
 	if(istype(mob.buckled, /obj/vehicle))
 		//drunk driving
@@ -542,16 +545,7 @@
 /datum/movement_handler/mob/delay/proc/ResetDelay()
 	next_move = world.time - 1
 
-// Stop effect
-/datum/movement_handler/mob/stop_effect/DoMove()
-	if(MayMove() == MOVEMENT_STOP)
-		return MOVEMENT_HANDLED
 
-/datum/movement_handler/mob/stop_effect/MayMove()
-	for(var/obj/effect/stop/S in mob.loc)
-		if(S.victim == mob)
-			return MOVEMENT_STOP
-	return MOVEMENT_PROCEED
 
 // Transformation
 /datum/movement_handler/mob/transformation/MayMove()

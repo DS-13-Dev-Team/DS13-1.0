@@ -15,9 +15,8 @@
 		/datum/movement_handler/mob/conscious,
 		/datum/movement_handler/mob/eye,
 		/datum/movement_handler/move_relay,
-		/datum/movement_handler/mob/buckle_relay,
 		/datum/movement_handler/mob/delay,
-		//Stop effect handler entirely removed, it is trash. If you want to prevent someone from moving, use root
+		//Stop effect handler entirely removed. If you want to prevent someone from moving, use root
 		/datum/movement_handler/mob/physically_capable,
 		/datum/movement_handler/mob/physically_restrained,
 		/datum/movement_handler/mob/space,

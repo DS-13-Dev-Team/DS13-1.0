@@ -37,6 +37,7 @@
 		if(M != src && C.incapacitated())
 			return 0
 
+	M.AddMovementHandler(/datum/movement_handler/mob/buckle_relay, /datum/movement_handler/mob/delay)
 	M.buckled = src
 	M.facing_dir = null
 	M.set_dir(buckle_dir ? buckle_dir : dir)
