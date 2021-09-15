@@ -231,6 +231,9 @@
 		helmet.tint = (active? vision_restriction : offline_vision_restriction)
 		helmet.update_vision()
 
+	if (wearer)
+		wearer.update_encumbrance()
+
 /obj/item/weapon/rig/proc/suit_is_deployed()
 	if(!istype(wearer) || src.loc != wearer || wearer.back != src)
 		return FALSE

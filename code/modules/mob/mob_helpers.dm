@@ -825,3 +825,6 @@ proc/is_blind(A)
 /mob/proc/set_eyeobj(var/atom/new_eye)
 	eyeobj = new_eye
 	AddMovementHandler(/datum/movement_handler/mob/eye)
+
+
+
