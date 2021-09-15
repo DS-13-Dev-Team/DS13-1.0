@@ -833,9 +833,12 @@
 	channels=list("Engineering" = 1, "Security" = 1, "Medical" = 1, "Command" = 1, "Common" = 1, "Science" = 1, "Supply" = 1, "Service" = 1, "Mining" = 1)
 	cell = null
 
-/obj/item/device/radio/announcer/Destroy()
+/obj/item/device/radio/announcer/Destroy(force = FALSE)
 	crash_with("attempt to delete a [src.type] detected, and prevented.")
-	return 1
+	if(!force)
+		return 1
+
+	return ..()
 
 /obj/item/device/radio/announcer/Initialize()
 	. = ..()

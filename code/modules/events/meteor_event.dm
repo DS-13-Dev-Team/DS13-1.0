@@ -37,7 +37,7 @@
 
 //The boss wave called when ADS repair starts
 /datum/event/meteor_wave/ishimura/final/calculate_waves()
-	waves = NEAR_INFINITY	//it goes until time expires
+	waves = INFINITY	//it goes until time expires
 
 /datum/event/meteor_wave/ishimura/final/worst_case_end()
 	return (15 MINUTES) / (EVENT_PROCESS_INTERVAL)//15 minute duration

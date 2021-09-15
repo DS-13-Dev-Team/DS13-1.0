@@ -39,7 +39,7 @@
 	statmods = list(STATMOD_MOVESPEED_ADDITIVE = 0.15,
 	STATMOD_INCOMING_DAMAGE_MULTIPLICATIVE = 0.85)
 
-	var/dm_filter/outline
+	var/outline
 
 
 

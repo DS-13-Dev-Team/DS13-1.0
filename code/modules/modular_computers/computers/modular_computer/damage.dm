@@ -16,7 +16,7 @@
 			H.take_damage(rand(10,30))
 	qdel(src)
 
-/obj/item/modular_computer/take_damage(var/amount, var/component_probability, var/damage_casing = 1, var/randomize = 1)
+/obj/item/modular_computer/take_damage(amount, damtype = BRUTE, user, used_weapon, bypass_resist = FALSE,  component_probability, damage_casing = TRUE, randomize = TRUE)
 	if(!modifiable)
 		return
 

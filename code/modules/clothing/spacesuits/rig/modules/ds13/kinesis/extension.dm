@@ -13,8 +13,8 @@
 	var/cached_plane
 
 	//The graphical filter we assigned to the held item
-	var/dm_filter/ripple
-	var/dm_filter/outline
+	var/ripple
+	var/outline
 
 
 	var/atom/movable/subject
@@ -32,7 +32,7 @@
 	ripple = subject.filters[subject.filters.len]
 	animate(ripple, radius = 16, size = 1, time = 4, loop = -1, flags = ANIMATION_PARALLEL)
 
-	outline = filter(type = "outline", size = 3, color = COLOR_KINESIS_INDIGO, alpha = 128)
+	outline = filter(type = "outline", size = 3, color = COLOR_KINESIS_INDIGO)
 	subject.filters.Add(outline)
 	outline = subject.filters[subject.filters.len]
 

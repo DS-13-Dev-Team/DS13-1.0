@@ -13,6 +13,7 @@
 #include "code\_compile_options.dm"
 #include "code\_macros.dm"
 #include "code\client_macros.dm"
+#include "code\global_init.dm"
 #include "code\stylesheet.dm"
 #include "code\world.dm"
 #include "code\__datastructures\globals.dm"
@@ -3263,5 +3264,4 @@
 #include "maps\~mapsystem\maps_jobs.dm"
 #include "maps\~mapsystem\maps_unit_testing.dm"
 #include "maps\~unit_tests\unit_testing.dm"
-#include "~code\global_init.dm"
 // END_INCLUDE

@@ -19,86 +19,10 @@
 			return global.DEPT_FREQS;
 		if("Debug2")
 			return global.Debug2;
-		if("Failsafe")
-			return global.Failsafe;
-		if("GLOB")
-			return global.GLOB;
 		if("Holiday")
 			return global.Holiday;
 		if("LIGHTING_CORNER_DIAGONAL")
 			return global.LIGHTING_CORNER_DIAGONAL;
-		if("Master")
-			return global.Master;
-		if("SSair")
-			return global.SSair;
-		if("SSairflow")
-			return global.SSairflow;
-		if("SSalarm")
-			return global.SSalarm;
-		if("SSantags")
-			return global.SSantags;
-		if("SSatoms")
-			return global.SSatoms;
-		if("SScircuit_components")
-			return global.SScircuit_components;
-		if("SScraft")
-			return global.SScraft;
-		if("SSevac")
-			return global.SSevac;
-		if("SSevent")
-			return global.SSevent;
-		if("SSfastprocess")
-			return global.SSfastprocess;
-		if("SSgarbage")
-			return global.SSgarbage;
-		if("SSicon_update")
-			return global.SSicon_update;
-		if("SSinactivity")
-			return global.SSinactivity;
-		if("SSlegacy")
-			return global.SSlegacy;
-		if("SSlighting")
-			return global.SSlighting;
-		if("SSmachines")
-			return global.SSmachines;
-		if("SSmapping")
-			return global.SSmapping;
-		if("SSmisc_late")
-			return global.SSmisc_late;
-		if("SSmobs")
-			return global.SSmobs;
-		if("SSnano")
-			return global.SSnano;
-		if("SSobj")
-			return global.SSobj;
-		if("SSprocessing")
-			return global.SSprocessing;
-		if("SSradiation")
-			return global.SSradiation;
-		if("SSresearch")
-			return global.SSresearch;
-		if("SSshuttle")
-			return global.SSshuttle;
-		if("SSskybox")
-			return global.SSskybox;
-		if("SSsun")
-			return global.SSsun;
-		if("SSsupply")
-			return global.SSsupply;
-		if("SStgui")
-			return global.SStgui;
-		if("SStimer")
-			return global.SStimer;
-		if("SStrade")
-			return global.SStrade;
-		if("SSturf")
-			return global.SSturf;
-		if("SSvines")
-			return global.SSvines;
-		if("SSwireless")
-			return global.SSwireless;
-		if("SSxenoarch")
-			return global.SSxenoarch;
 		if("Tier1Runes")
 			return global.Tier1Runes;
 		if("Tier2Runes")
@@ -107,8 +31,6 @@
 			return global.Tier3Runes;
 		if("Tier4Runes")
 			return global.Tier4Runes;
-		if("Vector2")
-			return global.Vector2;
 		if("WALLITEMS")
 			return global.WALLITEMS;
 		if("_all_globals")
@@ -161,8 +83,6 @@
 			return global.admin_verbs_sounds;
 		if("admin_verbs_spawn")
 			return global.admin_verbs_spawn;
-		if("adminhelp_ignored_words")
-			return GLOB.adminhelp_ignored_words;
 		if("ai_list")
 			return global.ai_list;
 		if("ai_status_emotions")
@@ -411,8 +331,6 @@
 			return global.gamemode_cache;
 		if("gas_data")
 			return global.gas_data;
-		if("GLOB.gear_datums")
-			return global.GLOB.gear_datums;
 		if("gear_tweak_free_color_choice_")
 			return global.gear_tweak_free_color_choice_;
 		if("gender_datums")
@@ -453,8 +371,6 @@
 			return global.image_repository;
 		if("inactive_keys")
 			return global.inactive_keys;
-		if("init")
-			return global.init;
 		if("initialization_stage")
 			return global.initialization_stage;
 		if("intents")
@@ -912,86 +828,10 @@
 			global.DEPT_FREQS=newval;
 		if("Debug2")
 			global.Debug2=newval;
-		if("Failsafe")
-			global.Failsafe=newval;
-		if("GLOB")
-			global.GLOB=newval;
 		if("Holiday")
 			global.Holiday=newval;
 		if("LIGHTING_CORNER_DIAGONAL")
 			global.LIGHTING_CORNER_DIAGONAL=newval;
-		if("Master")
-			global.Master=newval;
-		if("SSair")
-			global.SSair=newval;
-		if("SSairflow")
-			global.SSairflow=newval;
-		if("SSalarm")
-			global.SSalarm=newval;
-		if("SSantags")
-			global.SSantags=newval;
-		if("SSatoms")
-			global.SSatoms=newval;
-		if("SScircuit_components")
-			global.SScircuit_components=newval;
-		if("SScraft")
-			global.SScraft=newval;
-		if("SSevac")
-			global.SSevac=newval;
-		if("SSevent")
-			global.SSevent=newval;
-		if("SSfastprocess")
-			global.SSfastprocess=newval;
-		if("SSgarbage")
-			global.SSgarbage=newval;
-		if("SSicon_update")
-			global.SSicon_update=newval;
-		if("SSinactivity")
-			global.SSinactivity=newval;
-		if("SSlegacy")
-			global.SSlegacy=newval;
-		if("SSlighting")
-			global.SSlighting=newval;
-		if("SSmachines")
-			global.SSmachines=newval;
-		if("SSmapping")
-			global.SSmapping=newval;
-		if("SSmisc_late")
-			global.SSmisc_late=newval;
-		if("SSmobs")
-			global.SSmobs=newval;
-		if("SSnano")
-			global.SSnano=newval;
-		if("SSobj")
-			global.SSobj=newval;
-		if("SSprocessing")
-			global.SSprocessing=newval;
-		if("SSradiation")
-			global.SSradiation=newval;
-		if("SSresearch")
-			global.SSresearch=newval;
-		if("SSshuttle")
-			global.SSshuttle=newval;
-		if("SSskybox")
-			global.SSskybox=newval;
-		if("SSsun")
-			global.SSsun=newval;
-		if("SSsupply")
-			global.SSsupply=newval;
-		if("SStgui")
-			global.SStgui=newval;
-		if("SStimer")
-			global.SStimer=newval;
-		if("SStrade")
-			global.SStrade=newval;
-		if("SSturf")
-			global.SSturf=newval;
-		if("SSvines")
-			global.SSvines=newval;
-		if("SSwireless")
-			global.SSwireless=newval;
-		if("SSxenoarch")
-			global.SSxenoarch=newval;
 		if("Tier1Runes")
 			global.Tier1Runes=newval;
 		if("Tier2Runes")
@@ -1000,8 +840,6 @@
 			global.Tier3Runes=newval;
 		if("Tier4Runes")
 			global.Tier4Runes=newval;
-		if("Vector2")
-			global.Vector2=newval;
 		if("WALLITEMS")
 			global.WALLITEMS=newval;
 		if("_all_globals")
@@ -1054,8 +892,6 @@
 			global.admin_verbs_sounds=newval;
 		if("admin_verbs_spawn")
 			global.admin_verbs_spawn=newval;
-		if("adminhelp_ignored_words")
-			GLOB.adminhelp_ignored_words=newval;
 		if("ai_list")
 			global.ai_list=newval;
 		if("ai_status_emotions")
@@ -1304,8 +1140,6 @@
 			global.gamemode_cache=newval;
 		if("gas_data")
 			global.gas_data=newval;
-		if("GLOB.gear_datums")
-			global.GLOB.gear_datums=newval;
 		if("gear_tweak_free_color_choice_")
 			global.gear_tweak_free_color_choice_=newval;
 		if("gender_datums")
@@ -1346,8 +1180,6 @@
 			global.image_repository=newval;
 		if("inactive_keys")
 			global.inactive_keys=newval;
-		if("init")
-			global.init=newval;
 		if("initialization_stage")
 			global.initialization_stage=newval;
 		if("intents")
@@ -1795,51 +1627,12 @@
 	"CMinutes",
 	"DEPT_FREQS",
 	"Debug2",
-	"Failsafe",
-	"GLOB",
 	"Holiday",
 	"LIGHTING_CORNER_DIAGONAL",
-	"Master",
-	"SSair",
-	"SSairflow",
-	"SSalarm",
-	"SSantags",
-	"SSatoms",
-	"SScircuit_components",
-	"SScraft",
-	"SSevac",
-	"SSevent",
-	"SSfastprocess",
-	"SSgarbage",
-	"SSicon_update",
-	"SSinactivity",
-	"SSlegacy",
-	"SSlighting",
-	"SSmachines",
-	"SSmapping",
-	"SSmisc_late",
-	"SSmobs",
-	"SSnano",
-	"SSobj",
-	"SSprocessing",
-	"SSradiation",
-	"SSresearch",
-	"SSshuttle",
-	"SSskybox",
-	"SSsun",
-	"SSsupply",
-	"SStgui",
-	"SStimer",
-	"SStrade",
-	"SSturf",
-	"SSvines",
-	"SSwireless",
-	"SSxenoarch",
 	"Tier1Runes",
 	"Tier2Runes",
 	"Tier3Runes",
 	"Tier4Runes",
-	"Vector2",
 	"WALLITEMS",
 	"_all_globals",
 	"_client_preferences",
@@ -1866,7 +1659,6 @@
 	"admin_verbs_server",
 	"admin_verbs_sounds",
 	"admin_verbs_spawn",
-	"adminhelp_ignored_words",
 	"ai_list",
 	"ai_status_emotions",
 	"ai_verbs_default",
@@ -1995,7 +1787,6 @@
 	"game_year",
 	"gamemode_cache",
 	"gas_data",
-	"GLOB.gear_datums",
 	"gear_tweak_free_color_choice_",
 	"gender_datums",
 	"ghost_darkness_images",
@@ -2016,7 +1807,6 @@
 	"id_card_states",
 	"image_repository",
 	"inactive_keys",
-	"init",
 	"initialization_stage",
 	"integrated_circuit_blacklist",
 	"intents",

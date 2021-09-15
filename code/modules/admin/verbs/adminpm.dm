@@ -109,7 +109,7 @@
 		else
 			to_chat(src,
 					type = MESSAGE_TYPE_ADMINPM,
-					message = "<span class='notice'>You do not have an open ticket. Please use the adminhelp verb to open a ticket.</span>")
+					html = "<span class='notice'>You do not have an open ticket. Please use the adminhelp verb to open a ticket.</span>")
 			return
 	else if(ticket.status != TICKET_ASSIGNED && sender_lite.ckey == ticket.owner.ckey)
 		to_chat(src,

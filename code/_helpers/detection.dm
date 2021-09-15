@@ -28,9 +28,11 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 
 	virtual_mob = null
 
-/mob/dview/Destroy()
+/mob/dview/Destroy(force = FALSE)
 	crash_with("Prevented attempt to delete dview mob: [log_info_line(src)]")
-	return QDEL_HINT_LETMELIVE // Prevents destruction
+	if (!force)
+		return QDEL_HINT_LETMELIVE
+	return ..() // Prevents destruction
 
 
 
@@ -191,7 +193,6 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 
 
 
-#define SIGN(X) ((X<0)?-1:1)
 
 proc/isInSight(var/atom/A, var/atom/B)
 	var/turf/Aturf = get_turf(A)
@@ -236,7 +237,7 @@ proc
 				if(T.opacity)
 					return 0
 		return 1
-#undef SIGN
+
 
 
 /proc/able_mobs_in_oview(var/origin)

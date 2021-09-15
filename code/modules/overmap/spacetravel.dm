@@ -19,12 +19,16 @@ var/list/cached_space = list()
 	testing(message)
 #endif
 
-/obj/effect/overmap/sector/temporary/Destroy()
+/obj/effect/overmap/sector/temporary/Destroy(force = FALSE)
 	map_sectors["[map_z]"] = null
 #ifdef TESTING
 	var/message = "Temporary sector at [x],[y] was deleted."
 	testing(message)
 #endif
+	if(!force)
+		return
+
+	return ..()
 
 /obj/effect/overmap/sector/temporary/proc/can_die(var/mob/dead/observer)
 	testing("Checking if sector at [map_z[1]] can die.")

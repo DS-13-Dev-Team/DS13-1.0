@@ -149,9 +149,11 @@
 	//Grab some more ore to process this tick.
 	for(var/i = 0,i<sheets_per_tick,i++)
 		var/obj/item/weapon/ore/O = locate() in input.loc
-		if(!O) break
-		if(O.ore && !isnull(ores_stored[O.ore.name]))
-			ores_stored[O.ore.name]++
+		if(!O)
+			break
+		var/OS = ores_stored[O.ore.name]
+		if(O.ore && !isnull(OS))
+			OS++
 		else
 			world.log << "[src] encountered ore [O] with oretag [O.ore ? O.ore : "(no ore)"] which this machine did not have an entry for!"
 
@@ -166,7 +168,8 @@
 
 		if(sheets >= sheets_per_tick) break
 
-		if(ores_stored[metal] > 0 && ores_processing[metal] != 0)
+		var/OS = ores_stored[metal]
+		if(OS > 0 && ores_processing[metal] != 0)
 
 			var/ore/O = ore_data[metal]
 
@@ -182,7 +185,7 @@
 					tick_alloys += A.metaltag
 					var/enough_metal
 
-					if(!isnull(A.requires[metal]) && ores_stored[metal] >= A.requires[metal]) //We have enough of our first metal, we're off to a good start.
+					if(!isnull(A.requires[metal]) && OS >= A.requires[metal]) //We have enough of our first metal, we're off to a good start.
 
 						enough_metal = 1
 
@@ -207,33 +210,33 @@
 
 			else if(ores_processing[metal] == 2 && O.compresses_to) //Compressing.
 
-				var/can_make = Clamp(ores_stored[metal],0,sheets_per_tick-sheets)
+				var/can_make = Clamp(OS,0,sheets_per_tick-sheets)
 				if(can_make%2>0) can_make--
 
 				var/material/M = get_material_by_name(O.compresses_to)
 
-				if(!istype(M) || !can_make || ores_stored[metal] < 1)
+				if(!istype(M) || !can_make || OS < 1)
 					continue
 
 				for(var/i=0,i<can_make,i+=2)
-					ores_stored[metal]-=2
+					OS -=2
 					sheets+=2
 					new M.stack_type(output.loc)
 
 			else if(ores_processing[metal] == 1 && O.smelts_to) //Smelting.
 
-				var/can_make = Clamp(ores_stored[metal],0,sheets_per_tick-sheets)
+				var/can_make = Clamp(OS,0,sheets_per_tick-sheets)
 
 				var/material/M = get_material_by_name(O.smelts_to)
-				if(!istype(M) || !can_make || ores_stored[metal] < 1)
+				if(!istype(M) || !can_make || OS < 1)
 					continue
 
 				for(var/i=0,i<can_make,i++)
-					ores_stored[metal]--
+					OS--
 					sheets++
 					new M.stack_type(output.loc)
 			else
-				ores_stored[metal]--
+				OS--
 				sheets++
 				new /obj/item/weapon/ore/slag(output.loc)
 		else

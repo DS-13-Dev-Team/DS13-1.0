@@ -200,7 +200,6 @@
 
 #define DEFAULT_SPAWNPOINT_ID "Default"
 
-#define MIDNIGHT_ROLLOVER		864000	//number of deciseconds in a day
 
 //Virus badness defines
 #define VIRUS_MILD			1

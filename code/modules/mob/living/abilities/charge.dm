@@ -82,7 +82,7 @@
 	var/cached_step_interval
 
 	var/blur_filter_strength = 2
-	var/dm_filter/blur
+	var/vector2/blur
 	var/starting_locomotion_limbs = 0	//How many legs or similar appendages we had when we started. We will abort the charge if this value decreases
 
 	var/atom/last_obstacle
@@ -327,7 +327,8 @@
 				spawn(1)
 					if ((obstacle && !QDELETED(obstacle)) && !obstacle.CanPass(user, get_turf(obstacle), 1) && obstacle.loc == obstacle_oldloc)
 						stop_obstacle(obstacle)
-						return FALSE
+
+				return FALSE
 
 	//Return true if we have not stopped, and will keep going
 	return TRUE
