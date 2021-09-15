@@ -44,3 +44,10 @@
 2021-09-12:
   DTraitor:
   - bugfix: Open RIG Interface verb.
+2021-09-15:
+  DeadLineSS13:
+  - rscadd: Added a support TGUIv4.3.
+  - rscadd: Added a new StatPanel.
+  - rscadd: Added a support TGChat.
+  - bugfix: Fixed problem with null name in vote gamemodes.
+  - bugfix: Fixed problem with shutdown server.
