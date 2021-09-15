@@ -305,7 +305,7 @@ var/datum/callback/proc_to_call, var/proc_interval = 10)
 				//We will pass: User, Interval
 				proc_to_call.Invoke(user, target, proc_interval)
 
-		if(target_zone && user.hud_used.zone_sel.selecting != target_zone)
+		if(target_zone && get_zone_sel(user) != target_zone)
 			. = 0
 			break
 

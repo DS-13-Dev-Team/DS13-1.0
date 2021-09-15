@@ -186,7 +186,7 @@
 	return 1
 
 /obj/item/weapon/reagent_containers/do_surgery(mob/living/carbon/M, mob/living/user)
-	if(user.hud_used.zone_sel.selecting != BP_MOUTH) //in case it is ever used as a surgery tool
+	if(get_zone_sel(user) != BP_MOUTH) //in case it is ever used as a surgery tool
 		return ..()
 
 /obj/item/weapon/reagent_containers/AltClick(var/mob/user)

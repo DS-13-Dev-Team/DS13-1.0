@@ -73,7 +73,7 @@
 		user.set_click_cooldown(DEFAULT_QUICK_COOLDOWN)
 		user.do_attack_animation(M)
 
-		var/target_zone = user.hud_used.zone_sel.selecting
+		var/target_zone = get_zone_sel(user)
 		if(src.imp.can_implant(M, user, target_zone))
 			var/imp_name = imp.name
 

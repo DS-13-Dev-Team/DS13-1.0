@@ -121,7 +121,7 @@
 		return 0
 	if (user.a_intent == I_HURT)	//check for Hippocratic Oath
 		return 0
-	var/zone = user.hud_used.zone_sel.selecting
+	var/zone = get_zone_sel(user)
 	if(zone in M.op_stage.in_progress) //Can't operate on someone repeatedly.
 		to_chat(user, "<span class='warning'>You can't operate on this area while surgery is already in progress.</span>")
 		return 1

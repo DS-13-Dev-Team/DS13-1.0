@@ -9,8 +9,8 @@
 //This is a generic proc to allow it to handle null users
 /proc/get_zone_sel(var/mob/user, var/precise = FALSE)
 	.= BP_CHEST
-	if (istype(user) && user.hud_used.zone_sel && user.hud_used.zone_sel.selecting)
-		.=user.hud_used.zone_sel.selecting
+	if (istype(user) && user.hud_used.zone_sel && get_zone_sel(user))
+		.=get_zone_sel(user)
 		if (!precise && (. in list(BP_MOUTH,BP_EYES)))
 			. = BP_HEAD
 

@@ -253,7 +253,7 @@
 
 /obj/item/weapon/gun/attack(atom/A, mob/living/user, def_zone)
 
-	if (A == user && user.hud_used.zone_sel.selecting == BP_MOUTH && !mouthshoot && can_fire(A, user))
+	if (A == user && get_zone_sel(user) == BP_MOUTH && !mouthshoot && can_fire(A, user))
 		handle_suicide(user)
 	else if(user.a_intent == I_HURT && can_fire(A, user)) //point blank shooting
 		Fire(A, user, pointblank=1)
@@ -379,7 +379,7 @@
 			if(pointblank)
 				process_point_blank(projectile, user, target)
 
-			process_projectile(projectile, user, target, user.hud_used.zone_sel.selecting, clickparams)
+			process_projectile(projectile, user, target, get_zone_sel(user), clickparams)
 
 
 			if(i < burst)

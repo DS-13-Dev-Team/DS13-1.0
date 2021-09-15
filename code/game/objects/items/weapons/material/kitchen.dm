@@ -28,7 +28,7 @@
 		return ..()
 
 	if(user.a_intent != I_HELP)
-		if(user.hud_used.zone_sel.selecting == BP_HEAD || user.hud_used.zone_sel.selecting == BP_EYES)
+		if(get_zone_sel(user) == BP_HEAD || get_zone_sel(user) == BP_EYES)
 			if((CLUMSY in user.mutations) && prob(50))
 				M = user
 			return eyestab(M,user)

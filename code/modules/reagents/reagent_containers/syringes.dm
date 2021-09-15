@@ -143,7 +143,7 @@
 				return
 
 			var/injtime = time //Taking a blood sample through a hardsuit takes longer due to needing to find a port.
-			var/allow = T.can_inject(user, check_zone(user.hud_used.zone_sel.selecting))
+			var/allow = T.can_inject(user, check_zone(get_zone_sel(user)))
 			if(!allow)
 				return
 			if(allow == INJECTION_PORT)
@@ -154,7 +154,7 @@
 
 			if(prob(user.skill_fail_chance(SKILL_MEDICAL, 60, SKILL_BASIC)))
 				to_chat(user, "<span class='warning'>You miss the vein!</span>")
-				var/target_zone = check_zone(user.hud_used.zone_sel.selecting)
+				var/target_zone = check_zone(get_zone_sel(user))
 				T.apply_damage(3, BRUTE, target_zone, damage_flags=DAM_SHARP)
 				return
 
@@ -228,7 +228,7 @@
 
 	if(target != user)
 		var/injtime = time //Injecting through a hardsuit takes longer due to needing to find a port.
-		var/allow = target.can_inject(user, check_zone(user.hud_used.zone_sel.selecting))
+		var/allow = target.can_inject(user, check_zone(get_zone_sel(user)))
 		if(!allow)
 			return
 		if(allow == INJECTION_PORT)
@@ -263,7 +263,7 @@
 
 		var/mob/living/carbon/human/H = target
 
-		var/target_zone = check_zone(user.hud_used.zone_sel.selecting)
+		var/target_zone = check_zone(get_zone_sel(user))
 		var/obj/item/organ/external/affecting = H.get_organ(target_zone)
 
 		if (!affecting || affecting.is_stump())

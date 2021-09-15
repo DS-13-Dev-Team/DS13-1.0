@@ -26,7 +26,7 @@
 
 	if (istype(M,/mob/living/carbon/human))		//Repairing robolimbs
 		var/mob/living/carbon/human/H = M
-		var/obj/item/organ/external/S = H.get_organ(user.hud_used.zone_sel.selecting)
+		var/obj/item/organ/external/S = H.get_organ(get_zone_sel(user))
 
 		if(!S)
 			to_chat(user, "<span class='warning'>\The [M] is missing that body part.</span>")

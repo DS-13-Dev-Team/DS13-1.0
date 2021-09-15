@@ -30,7 +30,7 @@
 		icon_state = off_icon
 		return
 
-	var/target_zone = user.hud_used.zone_sel.selecting
+	var/target_zone = get_zone_sel(user)
 	if(ishuman(victim) && !(target_zone in list(BP_GROIN, BP_CHEST)))
 		var/mob/living/carbon/human/H = victim
 		var/obj/item/organ/external/E = H.get_organ(target_zone)
