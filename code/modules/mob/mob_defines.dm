@@ -11,12 +11,10 @@
 	virtual_mob = /mob/dead/observer/virtual/mob
 
 	movement_handlers = list(
-		/datum/movement_handler/mob/relayed_movement,
 		/datum/movement_handler/mob/conscious,
 		/datum/movement_handler/mob/eye,
 		/datum/movement_handler/move_relay,
 		/datum/movement_handler/mob/delay,
-		//Stop effect handler entirely removed. If you want to prevent someone from moving, use root
 		/datum/movement_handler/mob/physically_capable,
 		/datum/movement_handler/mob/physically_restrained,
 		/datum/movement_handler/mob/space,

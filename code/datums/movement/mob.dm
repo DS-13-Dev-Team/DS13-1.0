@@ -359,7 +359,10 @@
 /mob/proc/get_stamina()
 	return 100
 
-// Movement relayed to self handling
+/* Movement relayed to self handling
+Note: Removed from mobs because it is not currently used, nothing in the codebase ever adds an allowed mover
+If this is needed in future, add new datum procs for adding allowed movers, and add/remove the handler only when it actually has an allowed mover to relay to
+*/
 /datum/movement_handler/mob/relayed_movement
 	var/prevent_host_move = FALSE
 	var/list/allowed_movers
