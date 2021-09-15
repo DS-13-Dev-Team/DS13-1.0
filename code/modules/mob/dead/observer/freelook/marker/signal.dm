@@ -42,6 +42,10 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 		/datum/movement_handler/mob/incorporeal/eye
 	)
 
+/mob/dead/observer/eye/signal/set_eyeobj(var/atom/new_eye)
+	eyeobj = new_eye
+	//No messing with movement handlers here
+
 
 /mob/dead/observer/eye/signal/is_necromorph()
 	return TRUE

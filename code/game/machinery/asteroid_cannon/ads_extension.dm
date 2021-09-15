@@ -87,9 +87,9 @@
 	//gunner.vis_flags |= VIS_INHERIT_ID
 	//gun.vis_contents += gunner
 	gun.lead_distance = 1 //Gunners don't get hitscan...
-	eyeobj = new /mob/dead/observer/eye/turret(get_turf(gun))
-	eyeobj.acceleration = FALSE
-	eyeobj.possess(gunner, gun)	//Pass in the gun with possess
+	gunner.set_eyeobj(new /mob/dead/observer/eye/turret(get_turf(gun)))
+	gunner.eyeobj.acceleration = FALSE
+	gunner.eyeobj.possess(gunner, gun)	//Pass in the gun with possess
 
 	wake_up()
 

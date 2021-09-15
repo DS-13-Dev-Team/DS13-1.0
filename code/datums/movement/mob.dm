@@ -359,7 +359,10 @@
 /mob/proc/get_stamina()
 	return 100
 
-// Movement relayed to self handling
+/* Movement relayed to self handling
+Note: Removed from mobs because it is not currently used, nothing in the codebase ever adds an allowed mover
+If this is needed in future, add new datum procs for adding allowed movers, and add/remove the handler only when it actually has an allowed mover to relay to
+*/
 /datum/movement_handler/mob/relayed_movement
 	var/prevent_host_move = FALSE
 	var/list/allowed_movers
@@ -397,7 +400,7 @@
 // Death handling
 /datum/movement_handler/mob/death/DoMove()
 	if(mob.stat != DEAD)
-		return
+		return MOVEMENT_REMOVE
 	. = MOVEMENT_HANDLED
 	if(!mob.client)
 		return
@@ -455,7 +458,7 @@
 	if(is_external)
 		return MOVEMENT_PROCEED
 	if(!mob.eyeobj)
-		return MOVEMENT_PROCEED
+		return MOVEMENT_REMOVE
 	return (MOVEMENT_PROCEED|MOVEMENT_HANDLED)
 
 // Space movement
@@ -480,6 +483,9 @@
 
 // Buckle movement
 /datum/movement_handler/mob/buckle_relay/DoMove(var/direction, var/mover)
+	if (!mob.buckled)
+		return MOVEMENT_REMOVE
+
 	// TODO: Datumlize buckle-handling
 	if(istype(mob.buckled, /obj/vehicle))
 		//drunk driving
@@ -542,22 +548,16 @@
 /datum/movement_handler/mob/delay/proc/ResetDelay()
 	next_move = world.time - 1
 
-// Stop effect
-/datum/movement_handler/mob/stop_effect/DoMove()
-	if(MayMove() == MOVEMENT_STOP)
-		return MOVEMENT_HANDLED
 
-/datum/movement_handler/mob/stop_effect/MayMove()
-	for(var/obj/effect/stop/S in mob.loc)
-		if(S.victim == mob)
-			return MOVEMENT_STOP
-	return MOVEMENT_PROCEED
 
 // Transformation
 /datum/movement_handler/mob/transformation/MayMove()
 	return MOVEMENT_STOP
 
-// Consciousness - Is the entity trying to conduct the move conscious?
+/* Consciousness - Is the entity trying to conduct the move conscious?
+	Disabled as it is currently not useful, we have no entities which can remotely control a mob and themselves fall unconscious
+	If this is re-enabled in future, add it only when such an entity is controlling
+*/
 /datum/movement_handler/mob/conscious/MayMove(var/mob/mover)
 	return (mover ? mover.stat == CONSCIOUS : mob.stat == CONSCIOUS) ? MOVEMENT_PROCEED : MOVEMENT_STOP
 
