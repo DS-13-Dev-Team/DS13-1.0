@@ -71,6 +71,7 @@
 #include "code\__defines\procpath.dm"
 #include "code\__defines\profile.dm"
 #include "code\__defines\qdel.dm"
+#include "code\__defines\references.dm"
 #include "code\__defines\research.dm"
 #include "code\__defines\rig.dm"
 #include "code\__defines\rust_g.dm"

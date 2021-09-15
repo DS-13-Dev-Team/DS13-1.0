@@ -82,7 +82,7 @@
 	var/cached_step_interval
 
 	var/blur_filter_strength = 2
-	var/vector2/blur
+	var/dm_filter/blur
 	var/starting_locomotion_limbs = 0	//How many legs or similar appendages we had when we started. We will abort the charge if this value decreases
 
 	var/atom/last_obstacle
@@ -489,8 +489,8 @@
 	var/vector2/direction = Vector2.DirectionBetween(oldloc, newloc)
 	direction *= blur_filter_strength
 
-	blur.x = direction.x
-	blur.y = direction.y
+	blur:x = direction.x
+	blur:y = direction.y
 
 
 

@@ -420,7 +420,7 @@
 		GLOB.limb_masks[cache_index] = I
 
 	//Add the filter to us
-	var/newmask = filter(type="alpha", icon=I, flags = MASK_INVERSE)
+	var/dm_filter/newmask = filter(type="alpha", icon=I, flags = MASK_INVERSE)
 	filters.Add(newmask)
 	limb_mask = filters[filters.len]
 

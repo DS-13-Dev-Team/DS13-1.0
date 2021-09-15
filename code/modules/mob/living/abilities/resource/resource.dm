@@ -1,7 +1,7 @@
 /*
 	Holders for generic resources which regnerate over time, get consumed to use abilities, etc
 */
-#define RESOURCE_ESSENCE	/datum/extension/resource/essence
+
 /datum/extension/resource
 	expected_type = /mob
 	name = "Resource"
