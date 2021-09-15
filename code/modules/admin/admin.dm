@@ -38,11 +38,14 @@ var/global/floorIsLava = 0
 				to_chat(C,
 					type = MESSAGE_TYPE_ADMINCHAT,
 					html = msg)
+
 /proc/admin_notice(message, rights)
 	for(var/mob/M in SSmobs.mob_list)
 		if(check_rights(rights, 0, M))
 			to_chat(M,
+					type = MESSAGE_TYPE_DEBUG,
 					html = message)
+
 ///////////////////////////////////////////////////////////////////////////////////////////////Panels
 
 /datum/admins/proc/show_player_panel(var/mob/M in SSmobs.mob_list)
