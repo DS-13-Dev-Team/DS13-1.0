@@ -4,7 +4,7 @@
 	icon_state = "netgun"
 	item_state = "netgun"
 	fire_sound = 'sound/weapons/empty.ogg'
-	fire_sound_text = "a metallic thunk"
+	fire_sound_text = "a metallic gravity_shock"
 
 	var/obj/item/weapon/net_shell/chambered
 

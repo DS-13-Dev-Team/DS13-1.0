@@ -273,9 +273,8 @@ var/list/mob/living/forced_ambiance_list = new
 	var/area/newarea = get_area(L.loc)
 	var/area/oldarea = L.lastarea
 	if(oldarea.has_gravity != newarea.has_gravity)
-		if(newarea.has_gravity == 1 && !MOVING_DELIBERATELY(L)) // Being ready when you change areas allows you to avoid falling.
-			thunk(L)
-		L.update_floating()
+
+		L.gravity_changed(newarea.has_gravity)
 
 	play_ambience(L)
 	L.lastarea = newarea
@@ -311,31 +310,9 @@ var/list/mob/living/forced_ambiance_list = new
 				L.playsound_local(T, sound(pick(ambience), repeat = 0, wait = 0, volume = 15, channel = GLOB.lobby_sound_channel))
 				L.client.played = world.time
 
-/area/proc/gravitychange(var/gravitystate = 0)
-	has_gravity = gravitystate
 
-	for(var/mob/M in src)
-		if(has_gravity)
-			thunk(M)
-		M.update_floating()
 
-/area/proc/thunk(mob/mob)
-	if(istype(get_turf(mob), /turf/space)) // Can't fall onto nothing.
-		return
 
-	if(mob.Check_Shoegrip())
-		return
-
-	if(istype(mob,/mob/living/carbon/human/))
-		var/mob/living/carbon/human/H = mob
-		if(prob(H.skill_fail_chance(SKILL_EVA, 100, SKILL_PROF)))
-			if(!MOVING_DELIBERATELY(H))
-				H.AdjustStunned(6)
-				H.AdjustWeakened(6)
-			else
-				H.AdjustStunned(3)
-				H.AdjustWeakened(3)
-			to_chat(mob, "<span class='notice'>The sudden appearance of gravity makes you fall to the floor!</span>")
 
 /area/proc/prison_break()
 	var/obj/machinery/power/apc/theAPC = get_apc()
@@ -347,11 +324,7 @@ var/list/mob/living/forced_ambiance_list = new
 		for(var/obj/machinery/door/window/temp_windoor in src)
 			temp_windoor.open()
 
-/area/proc/has_gravity()
-	return has_gravity
 
-/area/space/has_gravity()
-	return 0
 
 /proc/has_gravity(atom/AT, turf/T)
 	if(!T)

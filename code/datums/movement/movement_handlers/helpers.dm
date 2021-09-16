@@ -11,23 +11,30 @@
 				return TRUE
 	return FALSE
 
-/atom/movable/proc/AddMovementHandler(var/handler_path, var/handler_path_to_add_before)
+/atom/movable/proc/AddMovementHandler(var/handler_path, var/handler_path_to_add_before, var/allow_duplicate = FALSE)
 	INIT_MOVEMENT_HANDLERS
 
-	. = new handler_path(src)
+
 
 	// If a handler_path_to_add_before was given, attempt to find it and insert our handler just before it
-	if(handler_path_to_add_before && LAZYLEN(movement_handlers))
+	if( LAZYLEN(movement_handlers))
 		var/index = 0
 		for(var/handler in movement_handlers)
 			index++
 			var/datum/H = handler
-			if(H.type == handler_path_to_add_before)
+			if (!allow_duplicate && H.type == handler_path)
+				//We're trying to add a duplicate, abort and return the existing one
+				return H
+
+			if(handler_path_to_add_before && H.type == handler_path_to_add_before)
+				. = new handler_path(src)
 				LAZYINSERT(movement_handlers, ., index)
 				return
 
+	. = new handler_path(src)
 	// If no handler_path_to_add_after was given or found, add first
 	LAZYINSERT(movement_handlers, ., 1)
+
 
 /atom/movable/proc/RemoveMovementHandler(var/handler_path)
 	INIT_MOVEMENT_HANDLERS

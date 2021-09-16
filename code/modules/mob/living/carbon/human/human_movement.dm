@@ -72,13 +72,6 @@
 	if(lying) //Crawling, it's slower
 		tally /= species.lying_speed_factor
 
-	var/area/a = get_area(src)
-	if(a && !a.has_gravity())
-		//Future todo: Make this more granular with varying skill values and not based on being in this proc
-		if(skill_check(SKILL_EVA, SKILL_PROF))
-			tally *= 0.65
-		else
-			tally *= 0.75
 
 	return tally
 
