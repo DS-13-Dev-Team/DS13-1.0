@@ -362,8 +362,7 @@
 */
 /datum/crew_objective/proc/fade()
 	status	=	CO_STATUS_FADING
-	if (is_processing)
-		STOP_PROCESSING(SSslowprocess, src)
+	STOP_PROCESSING(SSslowprocess, src)
 	announce_fade()
 	allocate_necromorphs(last_call = TRUE)
 	on_fade()

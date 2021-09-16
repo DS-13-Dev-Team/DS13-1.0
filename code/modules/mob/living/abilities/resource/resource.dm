@@ -64,13 +64,10 @@
 
 //Called whenever we might want to start
 /datum/extension/resource/proc/start_processing()
-	if (!is_processing)
-		START_PROCESSING(SSprocessing, src)
+	START_PROCESSING(SSprocessing, src)
 
 /datum/extension/resource/proc/stop_processing()
-	if (is_processing)
-		STOP_PROCESSING(SSprocessing, src)
-
+	STOP_PROCESSING(SSprocessing, src)
 
 /datum/extension/resource/can_stop_processing()
 	.=TRUE

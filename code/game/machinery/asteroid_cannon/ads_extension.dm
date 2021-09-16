@@ -96,8 +96,6 @@
 /datum/extension/asteroidcannon/proc/recenter()
 	eyeobj?.setLoc(get_turf(gun))
 
-
-
 /datum/extension/asteroidcannon/proc/remove_gunner()
 	if (eyeobj)
 		qdel(eyeobj)

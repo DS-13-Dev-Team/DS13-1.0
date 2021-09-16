@@ -47,6 +47,7 @@
 
 	target = newtarget
 	GLOB.moved_event.register(target, src, target_moved())
+
 	start_tracking()
 
 
@@ -94,8 +95,6 @@
 	.= AM.get_turf_at_pixel_offset(rotated_forward_vector)
 	release_vector(rotated_forward_vector)
 
-
-
 /*
 	This is called when a new target is set
 	In active track mode, it is also called when the holder or target moves
@@ -103,15 +102,13 @@
 */
 /datum/extension/rotate_facing/proc/start_tracking()
 	complete_cycles = 0
-	if (!is_processing)
-		START_PROCESSING(SSfastprocess, src)
+	START_PROCESSING(SSfastprocess, src)
 
 /*
 	This is called once we are facing the target, we'll stop processing until more turning is needed
 */
 /datum/extension/rotate_facing/proc/end_tracking()
-	if (is_processing)
-		STOP_PROCESSING(SSfastprocess, src)
+	STOP_PROCESSING(SSfastprocess, src)
 
 /datum/extension/rotate_facing/proc/target_moved()
 	start_tracking()

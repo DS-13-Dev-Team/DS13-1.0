@@ -238,9 +238,7 @@
 	if (update)
 		update_icon()
 
-	if (!is_processing)
-		START_PROCESSING(SSfastprocess, src)
-
+	START_PROCESSING(SSfastprocess, src)
 
 //The torch has no safety switch, that's routed to the pilot light instead
 /obj/item/weapon/gun/spray/hydrazine_torch/toggle_safety(var/mob/user)
@@ -524,8 +522,7 @@
 //This proc creates particles and applies effects
 /obj/item/weapon/gun/spray/started_firing()
 	firing = TRUE
-	if (!is_processing)
-		START_PROCESSING(SSfastprocess, src)
+	START_PROCESSING(SSfastprocess, src)
 
 
 /obj/item/weapon/gun/spray/stop_firing()
