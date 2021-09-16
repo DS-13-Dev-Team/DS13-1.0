@@ -393,6 +393,9 @@
 	if(M.r_hand)
 		M.r_hand.update_twohanding()
 
+	if (slowdown_general || slowdown_per_slot)
+		M.update_encumbrance()
+
 //Defines which slots correspond to which slot flags
 var/list/global/slot_flags_enumeration = list(
 	"[slot_wear_mask]" = SLOT_MASK,

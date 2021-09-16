@@ -38,33 +38,17 @@
 				tally += 0.5
 			else if(E.status & ORGAN_BROKEN)
 				tally += 1.5
-	else
-		var/total_item_slowdown = -1
-		for(var/slot = slot_first to slot_last)
-			var/obj/item/I = get_equipped_item(slot)
-			if(I)
-				var/item_slowdown = 0
-				item_slowdown += I.slowdown_general
-				item_slowdown += I.slowdown_per_slot[slot]
-				item_slowdown += I.slowdown_accessory
 
-				if(item_slowdown >= 0)
-					var/size_mod = size_strength_mod()
-					if(size_mod + 1 > 0)
-						item_slowdown = item_slowdown / (species.strength + size_mod + 1)
-					else
-						item_slowdown = item_slowdown - species.strength - size_mod
-				total_item_slowdown += max(item_slowdown, 0)
-		tally += round(total_item_slowdown)
 
-		for(var/organ_name in species.locomotion_limbs)
-			var/obj/item/organ/external/E = get_organ(organ_name)
-			if(!E || E.is_stump())
-				tally += 4
-			else if(E.splinted)
-				tally += 0.5
-			else if(E.status & ORGAN_BROKEN)
-				tally += 1.5
+
+	for(var/organ_name in species.locomotion_limbs)
+		var/obj/item/organ/external/E = get_organ(organ_name)
+		if(!E || E.is_stump())
+			tally += 4
+		else if(E.splinted)
+			tally += 0.5
+		else if(E.status & ORGAN_BROKEN)
+			tally += 1.5
 
 	if(shock_stage >= 10 || src.stamina <= 0)
 		tally += 3
