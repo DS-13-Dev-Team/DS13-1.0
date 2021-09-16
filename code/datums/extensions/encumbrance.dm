@@ -16,7 +16,6 @@
 	STATMOD_EVASION = 0)
 
 /datum/extension/encumbrance/proc/update()
-	to_chat(world, "[src] update encumbrance 4")
 	var/mob/living/L = holder
 	var/encumbrance_before = encumbrance
 	encumbrance = 0

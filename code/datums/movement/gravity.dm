@@ -31,7 +31,6 @@
 
 
 /mob/living/gravity_changed(var/new_gravity)
-	to_chat(world, "Gravity Changed")
 	if (!has_gravity())
 		AddMovementHandler(/datum/movement_handler/mob/zero_gravity, /datum/movement_handler/mob/movement)
 		set_extension(src, /datum/extension/zero_gravity_effects)
