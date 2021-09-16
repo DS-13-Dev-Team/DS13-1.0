@@ -57,3 +57,4 @@ delete-after: True
 changes:
   - refactor: "Optimised Multiz movement handler"
   - tweak: "Leapers and other mobs with some kind of jumping move can now jump across open space without falling down"
+  - tweak:  "Reduced fall damage by a moderate degree."
