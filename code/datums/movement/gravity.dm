@@ -64,10 +64,10 @@
 	var/mob/living/L = holder
 	L.update_encumbrance()
 
-	var/skill = L.get_skill_value(SKILL_EVA)	//This returns a value in the range 1-5
-	statmods[STATMOD_MOVESPEED_MULTIPLICATIVE] = 1.1 + (0.05 * skill)
-	statmods[STATMOD_EVASION]	=	3 * skill
-	statmods[STATMOD_ATTACK_SPEED] = -0.4	//Takes longer to recover from swings
+	var/skill = L.get_skill_value(SKILL_EVA)-1	//This returns a value in the range 1-5, reduced to 0-4
+	statmods[STATMOD_MOVESPEED_MULTIPLICATIVE] = 1.1 + (0.06 * skill)
+	statmods[STATMOD_EVASION]	=	4 * skill
+	statmods[STATMOD_ATTACK_SPEED] = -(0.4 - (0.05 * skill))	//Takes longer to recover from swings
 	register_statmods()
 
 /*
