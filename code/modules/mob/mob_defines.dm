@@ -15,7 +15,6 @@
 		/datum/movement_handler/mob/delay,
 		/datum/movement_handler/mob/physically_capable,
 		/datum/movement_handler/mob/physically_restrained,	//TODO: Add this from various things it checks, should be removed otherwise
-		/datum/movement_handler/mob/space,
 		/datum/movement_handler/mob/movement
 	)
 

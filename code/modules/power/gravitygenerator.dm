@@ -105,10 +105,10 @@
 					if((A in G.localareas) && (G.on))
 						break
 				if(!G)
-					A.gravitychange(0)
+					A.gravity_changed(0)
 		else
 			for(var/area/A in gravity_generator.localareas)
 				gravity_generator.on = 1
-				A.gravitychange(1)
+				A.gravity_changed(1)
 
 	src.updateUsrDialog()

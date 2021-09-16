@@ -144,7 +144,7 @@
 	icon_state = "maglight"
 	item_state = "maglight"
 	force = 10
-	attack_verb = list ("smacked", "thwacked", "thunked")
+	attack_verb = list ("smacked", "thwacked", "gravity_shocked")
 	matter = list(MATERIAL_STEEL = 200,MATERIAL_GLASS = 50)
 	hitsound = "swing_hit"
 	flashlight_max_bright = 0.5

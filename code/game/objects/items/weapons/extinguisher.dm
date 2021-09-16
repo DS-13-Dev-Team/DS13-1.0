@@ -8,11 +8,11 @@
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
 	throwforce = 10
 	w_class = ITEM_SIZE_NORMAL
-	
+
 	throw_range = 10
 	force = 10.0
 	matter = list(MATERIAL_STEEL = 90)
-	attack_verb = list("slammed", "whacked", "bashed", "thunked", "battered", "bludgeoned", "thrashed")
+	attack_verb = list("slammed", "whacked", "bashed", "gravity_shocked", "battered", "bludgeoned", "thrashed")
 
 	var/spray_particles = 3
 	var/spray_amount = 120	//units of liquid per spray - 120 -> same as splashing them with a bucket per spray

@@ -1,6 +1,6 @@
 #define ENCUMBRANCE_TO_MOVESPEED	0.1	//10% slowdown per point
 #define ENCUMBRANCE_TO_ATTACKSPEED	0.05	//5% slowdown per point
-#define ENCUMBRANCE_REDUCTION_FACTOR	0.25	//Each point of hauling skill reduces encumbrance by this much
+#define ENCUMBRANCE_REDUCTION_FACTOR	0.3	//Each point of hauling skill reduces encumbrance by this much
 
 /datum/extension/encumbrance
 	flags = EXTENSION_FLAG_IMMEDIATE
@@ -16,10 +16,12 @@
 	STATMOD_EVASION = 0)
 
 /datum/extension/encumbrance/proc/update()
+	to_chat(world, "[src] update encumbrance 4")
 	var/mob/living/L = holder
 	var/encumbrance_before = encumbrance
 	encumbrance = 0
 	deltimer(update_timer)
+	update_timer = null
 	for(var/slot = slot_first to slot_last)
 		var/obj/item/I = L.get_equipped_item(slot)
 		if(I)
@@ -37,7 +39,11 @@
 		remove_self()
 		return
 
-	encumbrance = max(0, encumbrance - (L.get_skill_value(SKILL_HAULING) * ENCUMBRANCE_REDUCTION_FACTOR))
+	//Being in 0G makes everything weightless, although mass is still a thing. Movement is still easier
+	if (!L.has_gravity())
+		encumbrance *= 0.66
+
+	encumbrance = max(0, encumbrance - ((L.get_skill_value(SKILL_HAULING)-1) * ENCUMBRANCE_REDUCTION_FACTOR))
 	if (encumbrance == encumbrance_before)
 		//If its unchanged, do nothing
 		return

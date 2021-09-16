@@ -154,7 +154,7 @@
 
 /mob/living/silicon/robot/Initialize()
 	. = ..()
-	AddMovementHandler(/datum/movement_handler/robot/use_power, /datum/movement_handler/mob/space)
+	AddMovementHandler(/datum/movement_handler/robot/use_power, /datum/movement_handler/mob/zero_gravity)
 
 /mob/living/silicon/robot/proc/recalculate_synth_capacities()
 	if(!module || !module.synths)

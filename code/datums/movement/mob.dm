@@ -462,7 +462,7 @@ If this is needed in future, add new datum procs for adding allowed movers, and 
 	return (MOVEMENT_PROCEED|MOVEMENT_HANDLED)
 
 // Space movement
-/datum/movement_handler/mob/space/DoMove(var/direction, var/mob/mover)
+/datum/movement_handler/mob/zero_gravity/DoMove(var/direction, var/mob/mover)
 	if(!mob.check_solid_ground())
 		var/allowmove = mob.Allow_Spacemove(0)
 		if(!allowmove)
@@ -472,7 +472,7 @@ If this is needed in future, add new datum procs for adding allowed movers, and 
 		else
 			mob.inertia_dir = 0 //If not then we can reset inertia and move
 
-/datum/movement_handler/mob/space/MayMove(var/mob/mover, var/is_external)
+/datum/movement_handler/mob/zero_gravity/MayMove(var/mob/mover, var/is_external)
 	if(IS_NOT_SELF(mover) && is_external)
 		return MOVEMENT_PROCEED
 
