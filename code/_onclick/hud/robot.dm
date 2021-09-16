@@ -68,18 +68,18 @@ var/obj/screen/robot_inventory
 	mymob:cells.screen_loc = ui_toxin
 
 //Health
-	mymob.healths = new /obj/screen()
-	mymob.healths.icon = 'icons/mob/screen1_robot.dmi'
-	mymob.healths.icon_state = "health0"
-	mymob.healths.SetName("health")
-	mymob.healths.screen_loc = ui_borg_health
+	healths = new /obj/screen()
+	healths.icon = 'icons/mob/screen1_robot.dmi'
+	healths.icon_state = "health0"
+	healths.SetName("health")
+	healths.screen_loc = ui_borg_health
 
 //Installed Module
-	mymob.hands = new /obj/screen()
-	mymob.hands.icon = 'icons/mob/screen1_robot.dmi'
-	mymob.hands.icon_state = "nomod"
-	mymob.hands.SetName("module")
-	mymob.hands.screen_loc = ui_borg_module
+	hands = new /obj/screen()
+	hands.icon = 'icons/mob/screen1_robot.dmi'
+	hands.icon_state = "nomod"
+	hands.SetName("module")
+	hands.screen_loc = ui_borg_module
 
 //Module Panel
 	using = new /obj/screen()
@@ -90,11 +90,11 @@ var/obj/screen/robot_inventory
 	src.adding += using
 
 //Store
-	mymob.throw_icon = new /obj/screen()
-	mymob.throw_icon.icon = 'icons/mob/screen1_robot.dmi'
-	mymob.throw_icon.icon_state = "store"
-	mymob.throw_icon.SetName("store")
-	mymob.throw_icon.screen_loc = ui_borg_store
+	throw_icon = new /obj/screen()
+	throw_icon.icon = 'icons/mob/screen1_robot.dmi'
+	throw_icon.icon_state = "store"
+	throw_icon.SetName("store")
+	throw_icon.screen_loc = ui_borg_store
 
 //Inventory
 	robot_inventory = new /obj/screen()
@@ -104,43 +104,43 @@ var/obj/screen/robot_inventory
 	robot_inventory.screen_loc = ui_borg_inventory
 
 //Temp
-	mymob.bodytemp = new /obj/screen()
-	mymob.bodytemp.icon_state = "temp0"
-	mymob.bodytemp.SetName("body temperature")
-	mymob.bodytemp.screen_loc = ui_temp
+	bodytemp = new /obj/screen()
+	bodytemp.icon_state = "temp0"
+	bodytemp.SetName("body temperature")
+	bodytemp.screen_loc = ui_temp
 
 
-	mymob.oxygen = new /obj/screen()
-	mymob.oxygen.icon = 'icons/mob/screen1_robot.dmi'
-	mymob.oxygen.icon_state = "oxy0"
-	mymob.oxygen.SetName("oxygen")
-	mymob.oxygen.screen_loc = ui_oxygen
+	oxygen = new /obj/screen()
+	oxygen.icon = 'icons/mob/screen1_robot.dmi'
+	oxygen.icon_state = "oxy0"
+	oxygen.SetName("oxygen")
+	oxygen.screen_loc = ui_oxygen
 
-	mymob.fire = new /obj/screen()
-	mymob.fire.icon = 'icons/mob/screen1_robot.dmi'
-	mymob.fire.icon_state = "fire0"
-	mymob.fire.SetName("fire")
-	mymob.fire.screen_loc = ui_fire
+	fire = new /obj/screen()
+	fire.icon = 'icons/mob/screen1_robot.dmi'
+	fire.icon_state = "fire0"
+	fire.SetName("fire")
+	fire.screen_loc = ui_fire
 
-	mymob.pullin = new /obj/screen()
-	mymob.pullin.icon = 'icons/mob/screen1_robot.dmi'
-	mymob.pullin.icon_state = "pull0"
-	mymob.pullin.SetName("pull")
-	mymob.pullin.screen_loc = ui_borg_pull
+	pullin = new /obj/screen()
+	pullin.icon = 'icons/mob/screen1_robot.dmi'
+	pullin.icon_state = "pull0"
+	pullin.SetName("pull")
+	pullin.screen_loc = ui_borg_pull
 
-	mymob.zone_sel = new /obj/screen/zone_sel()
-	mymob.zone_sel.icon = 'icons/mob/screen1_robot.dmi'
-	mymob.zone_sel.overlays.Cut()
-	mymob.zone_sel.overlays += image('icons/mob/zone_sel.dmi', "[mymob.zone_sel.selecting]")
+	zone_sel = new /obj/screen/zone_sel()
+	zone_sel.icon = 'icons/mob/screen1_robot.dmi'
+	zone_sel.overlays.Cut()
+	zone_sel.overlays += image('icons/mob/zone_sel.dmi', "[zone_sel.selecting]")
 
 	//Handle the gun settings buttons
-	mymob.gun_setting_icon = new /obj/screen/gun/mode(null)
-	mymob.item_use_icon = new /obj/screen/gun/item(null)
-	mymob.gun_move_icon = new /obj/screen/gun/move(null)
-	mymob.radio_use_icon = new /obj/screen/gun/radio(null)
+	gun_setting_icon = new /obj/screen/gun/mode(null)
+	item_use_icon = new /obj/screen/gun/item(null)
+	gun_move_icon = new /obj/screen/gun/move(null)
+	radio_use_icon = new /obj/screen/gun/radio(null)
 
 	mymob.client.screen = list()
-	mymob.client.screen += list(mymob.throw_icon, mymob.zone_sel, mymob.oxygen, mymob.fire, mymob.hands, mymob.healths, mymob:cells, mymob.pullin, robot_inventory, mymob.gun_setting_icon)
+	mymob.client.screen += list(throw_icon, zone_sel, oxygen, fire, hands, healths, mymob:cells, pullin, robot_inventory, gun_setting_icon)
 	mymob.client.screen += src.adding + src.other
 
 /datum/hud/proc/toggle_show_robot_modules()

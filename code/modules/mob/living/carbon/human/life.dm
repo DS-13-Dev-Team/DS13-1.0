@@ -318,8 +318,8 @@
 
 		if(internal)
 			return internal.remove_air_volume(volume_needed)
-		else if(internals)
-			internals.icon_state = "internal0"
+		else if(hud_used.internals)
+			hud_used.internals.icon_state = "internal0"
 	return null
 
 /mob/living/carbon/human/handle_breath(datum/gas_mixture/breath)
@@ -658,13 +658,18 @@
 			clear_fullscreen("brute")
 
 
-		if(nutrition_icon)
+		if(hud_used.nutrition_icon)
 			switch(nutrition)
-				if(450 to INFINITY)				nutrition_icon.icon_state = "nutrition0"
-				if(350 to 450)					nutrition_icon.icon_state = "nutrition1"
-				if(250 to 350)					nutrition_icon.icon_state = "nutrition2"
-				if(150 to 250)					nutrition_icon.icon_state = "nutrition3"
-				else							nutrition_icon.icon_state = "nutrition4"
+				if(450 to INFINITY)
+					hud_used.nutrition_icon.icon_state = "nutrition0"
+				if(350 to 450)
+					hud_used.nutrition_icon.icon_state = "nutrition1"
+				if(250 to 350)
+					hud_used.nutrition_icon.icon_state = "nutrition2"
+				if(150 to 250)
+					hud_used.nutrition_icon.icon_state = "nutrition3"
+				else
+					hud_used.nutrition_icon.icon_state = "nutrition4"
 
 		if(isSynthetic())
 			var/obj/item/organ/internal/cell/C = internal_organs_by_name[BP_CELL]
@@ -674,30 +679,45 @@
 			else
 				cells.icon_state = "charge-empty"
 
-		if(pressure)
-			pressure.icon_state = "pressure[pressure_alert]"
-		if(toxin)
-			if(phoron_alert)	toxin.icon_state = "tox1"
-			else									toxin.icon_state = "tox0"
-		if(oxygen)
-			if(oxygen_alert)	oxygen.icon_state = "oxy1"
-			else									oxygen.icon_state = "oxy0"
-		if(fire)
-			if(fire_alert)							fire.icon_state = "fire[fire_alert]" //fire_alert is either 0 if no alert, 1 for cold and 2 for heat.
-			else									fire.icon_state = "fire0"
+		if(hud_used.pressure)
+			hud_used.pressure.icon_state = "pressure[pressure_alert]"
+		if(hud_used.toxin)
+			if(phoron_alert)
+				hud_used.toxin.icon_state = "tox1"
+			else
+				hud_used.toxin.icon_state = "tox0"
+		if(hud_used.oxygen)
+			if(oxygen_alert)
+				hud_used.oxygen.icon_state = "oxy1"
+			else
+				hud_used.oxygen.icon_state = "oxy0"
+		if(hud_used.fire)
+			if(fire_alert)
+				hud_used.fire.icon_state = "fire[fire_alert]" //fire_alert is either 0 if no alert, 1 for cold and 2 for heat.
+			else
+				hud_used.fire.icon_state = "fire0"
 
-		if(bodytemp)
+		if(hud_used.bodytemp)
 			if (!species)
 				switch(bodytemperature) //310.055 optimal body temp
-					if(370 to INFINITY)		bodytemp.icon_state = "temp4"
-					if(350 to 370)			bodytemp.icon_state = "temp3"
-					if(335 to 350)			bodytemp.icon_state = "temp2"
-					if(320 to 335)			bodytemp.icon_state = "temp1"
-					if(300 to 320)			bodytemp.icon_state = "temp0"
-					if(295 to 300)			bodytemp.icon_state = "temp-1"
-					if(280 to 295)			bodytemp.icon_state = "temp-2"
-					if(260 to 280)			bodytemp.icon_state = "temp-3"
-					else					bodytemp.icon_state = "temp-4"
+					if(370 to INFINITY)
+						hud_used.bodytemp.icon_state = "temp4"
+					if(350 to 370)
+						hud_used.bodytemp.icon_state = "temp3"
+					if(335 to 350)
+						hud_used.bodytemp.icon_state = "temp2"
+					if(320 to 335)
+						hud_used.bodytemp.icon_state = "temp1"
+					if(300 to 320)
+						hud_used.bodytemp.icon_state = "temp0"
+					if(295 to 300)
+						hud_used.bodytemp.icon_state = "temp-1"
+					if(280 to 295)
+						hud_used.bodytemp.icon_state = "temp-2"
+					if(260 to 280)
+						hud_used.bodytemp.icon_state = "temp-3"
+					else
+						hud_used.bodytemp.icon_state = "temp-4"
 			else
 				//TODO: precalculate all of this stuff when the species datum is created
 				var/base_temperature = species.body_temperature
@@ -709,29 +729,29 @@
 					temp_step = (getSpeciesOrSynthTemp(HEAT_LEVEL_1) - base_temperature)/4
 
 					if (bodytemperature >= getSpeciesOrSynthTemp(HEAT_LEVEL_1))
-						bodytemp.icon_state = "temp4"
+						hud_used.bodytemp.icon_state = "temp4"
 					else if (bodytemperature >= base_temperature + temp_step*3)
-						bodytemp.icon_state = "temp3"
+						hud_used.bodytemp.icon_state = "temp3"
 					else if (bodytemperature >= base_temperature + temp_step*2)
-						bodytemp.icon_state = "temp2"
+						hud_used.bodytemp.icon_state = "temp2"
 					else if (bodytemperature >= base_temperature + temp_step*1)
-						bodytemp.icon_state = "temp1"
+						hud_used.bodytemp.icon_state = "temp1"
 					else
-						bodytemp.icon_state = "temp0"
+						hud_used.bodytemp.icon_state = "temp0"
 
 				else if (bodytemperature < base_temperature)
 					temp_step = (base_temperature - getSpeciesOrSynthTemp(COLD_LEVEL_1))/4
 
 					if (bodytemperature <= getSpeciesOrSynthTemp(COLD_LEVEL_1))
-						bodytemp.icon_state = "temp-4"
+						hud_used.bodytemp.icon_state = "temp-4"
 					else if (bodytemperature <= base_temperature - temp_step*3)
-						bodytemp.icon_state = "temp-3"
+						hud_used.bodytemp.icon_state = "temp-3"
 					else if (bodytemperature <= base_temperature - temp_step*2)
-						bodytemp.icon_state = "temp-2"
+						hud_used.bodytemp.icon_state = "temp-2"
 					else if (bodytemperature <= base_temperature - temp_step*1)
-						bodytemp.icon_state = "temp-1"
+						hud_used.bodytemp.icon_state = "temp-1"
 					else
-						bodytemp.icon_state = "temp0"
+						hud_used.bodytemp.icon_state = "temp0"
 	return TRUE
 
 /mob/living/carbon/human/handle_random_events()
@@ -983,7 +1003,7 @@
 
 	for(var/obj/item/organ/external/E in organs)
 		if(!(E.body_part & protected_limbs) && prob(20))
-			E.take_external_damage(burn = round(species_heat_mod * log(10, (burn_temperature + 10)), 0.1), used_weapon = fire)
+			E.take_external_damage(burn = round(species_heat_mod * log(10, (burn_temperature + 10)), 0.1), used_weapon = hud_used.fire)
 
 /mob/living/carbon/human/rejuvenate()
 

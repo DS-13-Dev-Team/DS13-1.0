@@ -5,25 +5,16 @@
 */
 
 /mob
-	var/hud_type = null
+	var/hud_type = /datum/hud
 	var/datum/hud/hud_used = null
-
-/mob/proc/InitializeHud()
-
-	if(hud_used)
-		qdel(hud_used)
-	if(hud_type)
-		hud_used = new hud_type(src)
-	else
-		hud_used = new /datum/hud
 
 /datum/hud
 	var/mob/mymob
 
-	var/hud_shown = 1			//Used for the HUD toggle (F12)
-	var/inventory_shown = 1		//the inventory
-	var/show_intent_icons = 0
-	var/hotkey_ui_hidden = 0	//This is to hide the buttons that can be used via hotkeys. (hotkeybuttons list of buttons)
+	var/hud_shown = TRUE			//Used for the HUD toggle (F12)
+	var/inventory_shown = TRUE		//the inventory
+	var/show_intent_icons = FALSE
+	var/hotkey_ui_hidden = FALSE	//This is to hide the buttons that can be used via hotkeys. (hotkeybuttons list of buttons)
 
 	var/obj/screen/lingchemdisplay
 	var/obj/screen/r_hand_hud_object
@@ -31,6 +22,37 @@
 	var/obj/screen/action_intent
 	var/obj/screen/move_intent
 	var/obj/screen/stamina/stamina_bar
+	var/obj/screen/meter/health/hud_healthbar
+	var/obj/screen/hands
+	var/obj/screen/pullin
+	var/obj/screen/purged
+	var/obj/screen/internals
+	var/obj/screen/oxygen
+	var/obj/screen/i_select
+	var/obj/screen/m_select
+	var/obj/screen/toxin
+	var/obj/screen/fire
+	var/obj/screen/bodytemp
+	var/obj/screen/healths
+	var/obj/screen/throw_icon
+	var/obj/screen/nutrition_icon
+	var/obj/screen/pressure
+	var/obj/screen/fullscreen/pain
+	var/obj/screen/gun/item/item_use_icon
+	var/obj/screen/gun/radio/radio_use_icon
+	var/obj/screen/gun/move/gun_move_icon
+	var/obj/screen/gun/run/gun_run_icon
+	var/obj/screen/gun/mode/gun_setting_icon
+
+	var/obj/screen/movable/ability_master/ability_master
+
+	/*A bunch of this stuff really needs to go under their own defines instead of being globally attached to mob.
+	A variable should only be globally attached to turfs/objects/whatever, when it is in fact needed as such.
+	The current method unnecessarily clusters up the variable list, especially for humans (although rearranging won't really clean it up a lot but the difference will be noticable for other mobs).
+	I'll make some notes on where certain variable defines should probably go.
+	Changing this around would probably require a good look-over the pre-existing code.
+	*/
+	var/obj/screen/zone_sel/zone_sel
 
 	var/list/adding
 	var/list/other
@@ -45,17 +67,53 @@
 	..()
 
 /datum/hud/Destroy()
-	. = ..()
+	if(mymob.hud_used == src)
+		mymob.hud_used = null
+
+	QDEL_NULL(hide_actions_toggle)
+
+	hands = null
+	pullin = null
+	purged = null
+	internals = null
+	oxygen = null
+	i_select = null
+	m_select = null
+	toxin = null
+	fire = null
+	bodytemp = null
+	healths = null
+	throw_icon = null
+	nutrition_icon = null
+	pressure = null
+	pain = null
+	item_use_icon = null
+	gun_move_icon = null
+	gun_setting_icon = null
+	ability_master = null
+	zone_sel = null
+	hud_healthbar = null
+	zone_sel = null
+	radio_use_icon = null
 	stamina_bar = null
 	lingchemdisplay = null
 	r_hand_hud_object = null
 	l_hand_hud_object = null
 	action_intent = null
 	move_intent = null
-	adding = null
-	other = null
-	hotkeybuttons = null
+
+	QDEL_LIST(adding)
+	QDEL_LIST(other)
+	QDEL_LIST(hotkeybuttons)
+
 	mymob = null
+
+	return ..()
+
+/mob/proc/create_mob_hud()
+	if(!client || hud_used)
+		return
+	hud_used = new hud_type(src)
 
 /datum/hud/proc/update_stamina()
 	if(mymob && stamina_bar)
@@ -197,12 +255,12 @@
 			src.client.screen += src.hud_used.action_intent		//we want the intent swticher visible
 			src.hud_used.action_intent.screen_loc = ui_acti_alt	//move this to the alternative position, where zone_select usually is.
 		else
-			src.client.screen -= src.healths
-			src.client.screen -= src.internals
-			src.client.screen -= src.gun_setting_icon
+			src.client.screen -= src.hud_used.healths
+			src.client.screen -= src.hud_used.internals
+			src.client.screen -= src.hud_used.gun_setting_icon
 
 		//These ones are not a part of 'adding', 'other' or 'hotkeybuttons' but we want them gone.
-		src.client.screen -= src.zone_sel	//zone_sel is a mob variable for some reason.
+		src.client.screen -= src.hud_used.zone_sel	//zone_sel is a mob variable for some reason.
 
 	else
 		hud_used.hud_shown = 1
@@ -212,15 +270,15 @@
 			src.client.screen += src.hud_used.other
 		if(src.hud_used.hotkeybuttons && !src.hud_used.hotkey_ui_hidden)
 			src.client.screen += src.hud_used.hotkeybuttons
-		if(src.healths)
-			src.client.screen |= src.healths
-		if(src.internals)
-			src.client.screen |= src.internals
-		if(src.gun_setting_icon)
-			src.client.screen |= src.gun_setting_icon
+		if(src.hud_used.healths)
+			src.client.screen |= src.hud_used.healths
+		if(src.hud_used.internals)
+			src.client.screen |= src.hud_used.internals
+		if(src.hud_used.gun_setting_icon)
+			src.client.screen |= src.hud_used.gun_setting_icon
 
 		src.hud_used.action_intent.screen_loc = ui_acti //Restore intent selection to the original position
-		src.client.screen += src.zone_sel				//This one is a special snowflake
+		src.client.screen += src.hud_used.zone_sel				//This one is a special snowflake
 
 	hud_used.hidden_inventory_update()
 	hud_used.persistant_inventory_update()
@@ -245,7 +303,7 @@
 			src.client.screen -= src.hud_used.other
 		if(src.hud_used.hotkeybuttons)
 			src.client.screen -= src.hud_used.hotkeybuttons
-		src.client.screen -= src.internals
+		src.client.screen -= src.hud_used.internals
 		src.client.screen += src.hud_used.action_intent		//we want the intent swticher visible
 	else
 		hud_used.hud_shown = 1
@@ -255,8 +313,8 @@
 			src.client.screen += src.hud_used.other
 		if(src.hud_used.hotkeybuttons && !src.hud_used.hotkey_ui_hidden)
 			src.client.screen += src.hud_used.hotkeybuttons
-		if(src.internals)
-			src.client.screen |= src.internals
+		if(src.hud_used.internals)
+			src.client.screen |= src.hud_used.internals
 		src.hud_used.action_intent.screen_loc = ui_acti //Restore intent selection to the original position
 
 	hud_used.hidden_inventory_update()

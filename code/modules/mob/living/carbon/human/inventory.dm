@@ -1,4 +1,4 @@
-#define REMOVE_INTERNALS if(internal){ if(internals){ internals.icon_state = "internal0" }; internal = null }
+#define REMOVE_INTERNALS if(internal){ if(hud_used.internals){ hud_used.internals.icon_state = "internal0" }; internal = null }
 /*
 Add fingerprints to items when we put them in our hands.
 This saves us from having to call add_fingerprint() any time something is put in a human's hands programmatically.

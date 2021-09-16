@@ -171,7 +171,7 @@ var/global/list/possible_changeling_IDs = list("Alpha","Beta","Gamma","Delta","E
 		to_chat(src, "<span class='warning'>We are already absorbing!</span>")
 		return
 
-	var/obj/item/organ/external/affecting = T.get_organ(src.zone_sel.selecting)
+	var/obj/item/organ/external/affecting = T.get_organ(src.hud_used.zone_sel.selecting)
 	if(!affecting)
 		to_chat(src, "<span class='warning'>They are missing that body part!</span>")
 
@@ -710,7 +710,7 @@ var/list/datum/absorbed_dna/hivemind_bank = list()
 	if(!(T in view(changeling.sting_range))) return
 	if(!sting_can_reach(T, changeling.sting_range)) return
 	if(!changeling_power(required_chems)) return
-	var/obj/item/organ/external/target_limb = T.get_organ(src.zone_sel.selecting)
+	var/obj/item/organ/external/target_limb = T.get_organ(src.hud_used.zone_sel.selecting)
 	if (!target_limb)
 		to_chat(src, "<span class='warning'>[T] is missing that limb.</span>")
 		return

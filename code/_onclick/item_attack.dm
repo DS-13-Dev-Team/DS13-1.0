@@ -43,10 +43,10 @@ avoid code duplication. This includes items that may sometimes act as a standard
 	if(can_operate(src,user))
 		if (I.do_surgery(src,user) || (user.a_intent == I_HELP && !(I.item_flags & ITEM_FLAG_NO_BLUDGEON))) //Surgery
 			return TRUE
-	return I.attack(src, user, user.zone_sel.selecting)
+	return I.attack(src, user, get_zone_sel(user))
 
 /mob/living/carbon/human/attackby(obj/item/I, mob/user)
-	if(user == src && src.a_intent == I_DISARM && src.zone_sel.selecting == "mouth")
+	if(user == src && src.a_intent == I_DISARM && src.hud_used.zone_sel.selecting == "mouth")
 		var/obj/item/blocked = src.check_mouth_coverage()
 		if(blocked)
 			to_chat(user, "<span class='warning'>\The [blocked] is in the way!</span>")

@@ -661,7 +661,7 @@ var/global/list/robot_modules = list(
 	src.modules += new /obj/item/weapon/card/emag(src)
 	var/jetpack = new/obj/item/weapon/tank/jetpack/carbondioxide(src)
 	src.modules += jetpack
-	R.internals = jetpack
+	R.hud_used.internals = jetpack
 
 	id = R.idcard
 	src.modules += id
@@ -708,8 +708,8 @@ var/global/list/robot_modules = list(
 	src.modules += new /obj/item/device/floor_painter(src)
 	src.modules += new /obj/item/weapon/reagent_containers/spray/cleaner/drone(src)
 
-	robot.internals = new/obj/item/weapon/tank/jetpack/carbondioxide(src)
-	src.modules += robot.internals
+	robot.hud_used.internals = new/obj/item/weapon/tank/jetpack/carbondioxide(src)
+	src.modules += robot.hud_used.internals
 
 
 	var/datum/matter_synth/metal = new /datum/matter_synth/metal(25000)

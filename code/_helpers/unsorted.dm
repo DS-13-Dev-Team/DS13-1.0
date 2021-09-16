@@ -963,7 +963,7 @@ var/global/list/common_tools = list(
 		. = TRUE
 
 	if(M == user)
-		var/hitzone = check_zone(user.zone_sel.selecting)
+		var/hitzone = check_zone(get_zone_sel(user))
 		var/list/badzones = list(BP_HEAD)
 		if(user.hand)
 			badzones += BP_L_ARM

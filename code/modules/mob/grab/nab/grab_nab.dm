@@ -94,7 +94,7 @@
 
 // This causes the assailant to chew on the affecting mob.
 /datum/grab/nab/proc/masticate(var/obj/item/grab/G, var/attack_damage)
-	var/hit_zone = G.assailant.zone_sel.selecting
+	var/hit_zone = G.assailant.hud_used.zone_sel.selecting
 	var/obj/item/organ/external/damaging = G.affecting.get_organ(hit_zone)
 
 	var/armor = G.affecting.run_armor_check(hit_zone, "melee")

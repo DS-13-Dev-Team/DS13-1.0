@@ -7,7 +7,7 @@
 
 /obj/item/weapon/tool/tape_roll/attack(var/mob/living/carbon/human/H, var/mob/user)
 	if(istype(H))
-		if(user.zone_sel.selecting == BP_EYES)
+		if(get_zone_sel(user) == BP_EYES)
 
 			if(!H.organs_by_name[BP_HEAD])
 				to_chat(user, "<span class='warning'>\The [H] doesn't have a head.</span>")
@@ -34,7 +34,7 @@
 			user.visible_message("<span class='danger'>\The [user] has taped up \the [H]'s eyes!</span>")
 			H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/blindfold/tape(H), slot_glasses)
 
-		else if(user.zone_sel.selecting == BP_MOUTH || user.zone_sel.selecting == BP_HEAD)
+		else if(get_zone_sel(user) == BP_MOUTH || get_zone_sel(user) == BP_HEAD)
 			if(!H.organs_by_name[BP_HEAD])
 				to_chat(user, "<span class='warning'>\The [H] doesn't have a head.</span>")
 				return
@@ -60,13 +60,13 @@
 			user.visible_message("<span class='danger'>\The [user] has taped up \the [H]'s mouth!</span>")
 			H.equip_to_slot_or_del(new /obj/item/clothing/mask/muzzle/tape(H), slot_wear_mask)
 
-		else if(user.zone_sel.selecting == BP_R_HAND || user.zone_sel.selecting == BP_L_HAND)
+		else if(get_zone_sel(user) == BP_R_HAND || get_zone_sel(user) == BP_L_HAND)
 			playsound(src, 'sound/effects/tape.ogg',25)
 			var/obj/item/weapon/handcuffs/cable/tape/T = new(user)
 			if(!T.place_handcuffs(H, user))
 				qdel(T)
 
-		else if(user.zone_sel.selecting == BP_CHEST)
+		else if(get_zone_sel(user) == BP_CHEST)
 			if(H.wear_suit && istype(H.wear_suit, /obj/item/clothing/suit/space))
 				if(H == user || do_mob(user, H, 10))	//Skip the time-check if patching your own suit, that's handled in attackby()
 					playsound(src, 'sound/effects/tape.ogg',25)

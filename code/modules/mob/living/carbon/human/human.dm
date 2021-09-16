@@ -951,7 +951,7 @@
 	// Rebuild the HUD. If they aren't logged in then login() should reinstantiate it for them.
 	if(client && client.screen)
 		client.screen.len = null
-		InitializeHud()
+		create_mob_hud()
 		refresh_lighting_overlays()
 
 	if(config && CONFIG_GET(flag/use_cortical_stacks) && client && client.prefs.has_cortical_stack)
@@ -1441,7 +1441,7 @@
 /mob/living/carbon/human/density_lying()
 	return species.density_lying
 
-/mob/living/carbon/human/InitializeHud()
+/mob/living/carbon/human/create_mob_hud()
 	..()
 	set_intent(a_intent)
 

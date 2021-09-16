@@ -90,7 +90,7 @@
 		// anti-wrinkle "massage"
 		if(buckled_mob && ishuman(buckled_mob))
 			var/mob/living/carbon/human/H = buckled_mob
-			var/zone = user.zone_sel.selecting
+			var/zone = get_zone_sel(user)
 			var/parsed = parse_zone(zone)
 
 			visible_message("<span class='danger'>[user] begins ironing [src.buckled_mob]'s [parsed]!</span>", "<span class='danger'>You begin ironing [buckled_mob]'s [parsed]!</span>")

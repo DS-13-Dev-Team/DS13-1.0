@@ -1,28 +1,6 @@
 /mob/living/carbon/human
 	hud_type = /datum/hud/human
 
-/datum/hud/human/Destroy()
-	if (mymob)
-		QDEL_NULL(mymob.throw_icon)
-		QDEL_NULL(mymob.pullin)
-		QDEL_NULL(mymob.internals)
-		QDEL_NULL(mymob.internals)
-		QDEL_NULL(mymob.oxygen)
-		QDEL_NULL(mymob.toxin)
-		QDEL_NULL(mymob.fire)
-		QDEL_NULL(mymob.healths)
-		QDEL_NULL(mymob.pressure)
-		QDEL_NULL(mymob.bodytemp)
-		QDEL_NULL(mymob.nutrition_icon)
-		QDEL_NULL(mymob.pain)
-		QDEL_NULL(mymob.zone_sel)
-		QDEL_NULL(mymob.gun_setting_icon)
-		QDEL_NULL(mymob.item_use_icon)
-		QDEL_NULL(mymob.gun_move_icon)
-		QDEL_NULL(mymob.radio_use_icon)
-
-	.=..()
-
 /datum/hud/human/FinalizeInstantiation(var/ui_style='icons/mob/screen1_White.dmi', var/ui_color = "#ffffff", var/ui_alpha = 255)
 	var/mob/living/carbon/human/target = mymob
 	var/datum/hud_data/hud_data
@@ -184,73 +162,73 @@
 
 
 	if(hud_data.has_throw)
-		mymob.throw_icon = new /obj/screen()
-		mymob.throw_icon.icon = ui_style
-		mymob.throw_icon.icon_state = "act_throw_off"
-		mymob.throw_icon.SetName("throw")
-		mymob.throw_icon.screen_loc = ui_drop_throw
-		mymob.throw_icon.color = ui_color
-		mymob.throw_icon.alpha = ui_alpha
-		src.hotkeybuttons += mymob.throw_icon
-		hud_elements |= mymob.throw_icon
+		throw_icon = new /obj/screen()
+		throw_icon.icon = ui_style
+		throw_icon.icon_state = "act_throw_off"
+		throw_icon.SetName("throw")
+		throw_icon.screen_loc = ui_drop_throw
+		throw_icon.color = ui_color
+		throw_icon.alpha = ui_alpha
+		src.hotkeybuttons += throw_icon
+		hud_elements |= throw_icon
 
-		mymob.pullin = new /obj/screen()
-		mymob.pullin.icon = ui_style
-		mymob.pullin.icon_state = "pull0"
-		mymob.pullin.SetName("pull")
-		mymob.pullin.screen_loc = ui_pull_resist
-		src.hotkeybuttons += mymob.pullin
-		hud_elements |= mymob.pullin
+		pullin = new /obj/screen()
+		pullin.icon = ui_style
+		pullin.icon_state = "pull0"
+		pullin.SetName("pull")
+		pullin.screen_loc = ui_pull_resist
+		src.hotkeybuttons += pullin
+		hud_elements |= pullin
 
 	if(hud_data.has_internals)
-		mymob.internals = new /obj/screen()
-		mymob.internals.icon = ui_style
-		mymob.internals.icon_state = "internal0"
-		mymob.internals.SetName("internal")
-		mymob.internals.screen_loc = ui_internal
-		hud_elements |= mymob.internals
+		internals = new /obj/screen()
+		internals.icon = ui_style
+		internals.icon_state = "internal0"
+		internals.SetName("internal")
+		internals.screen_loc = ui_internal
+		hud_elements |= internals
 
 	if(hud_data.has_warnings)
-		mymob.oxygen = new /obj/screen()
-		mymob.oxygen.icon = ui_style
-		mymob.oxygen.icon_state = "oxy0"
-		mymob.oxygen.SetName("oxygen")
-		mymob.oxygen.screen_loc = ui_oxygen
-		hud_elements |= mymob.oxygen
+		oxygen = new /obj/screen()
+		oxygen.icon = ui_style
+		oxygen.icon_state = "oxy0"
+		oxygen.SetName("oxygen")
+		oxygen.screen_loc = ui_oxygen
+		hud_elements |= oxygen
 
-		mymob.toxin = new /obj/screen()
-		mymob.toxin.icon = ui_style
-		mymob.toxin.icon_state = "tox0"
-		mymob.toxin.SetName("toxin")
-		mymob.toxin.screen_loc = ui_toxin
-		hud_elements |= mymob.toxin
+		toxin = new /obj/screen()
+		toxin.icon = ui_style
+		toxin.icon_state = "tox0"
+		toxin.SetName("toxin")
+		toxin.screen_loc = ui_toxin
+		hud_elements |= toxin
 
-		mymob.fire = new /obj/screen()
-		mymob.fire.icon = ui_style
-		mymob.fire.icon_state = "fire0"
-		mymob.fire.SetName("fire")
-		mymob.fire.screen_loc = ui_fire
-		hud_elements |= mymob.fire
+		fire = new /obj/screen()
+		fire.icon = ui_style
+		fire.icon_state = "fire0"
+		fire.SetName("fire")
+		fire.screen_loc = ui_fire
+		hud_elements |= fire
 
-		mymob.healths = new /obj/screen/health_doll/human(mymob)
-		mymob.healths.icon = ui_style
-		hud_elements |= mymob.healths
+		healths = new /obj/screen/health_doll/human(mymob)
+		healths.icon = ui_style
+		hud_elements |= healths
 
 	if(hud_data.has_pressure)
-		mymob.pressure = new /obj/screen()
-		mymob.pressure.icon = ui_style
-		mymob.pressure.icon_state = "pressure0"
-		mymob.pressure.SetName("pressure")
-		mymob.pressure.screen_loc = ui_pressure
-		hud_elements |= mymob.pressure
+		pressure = new /obj/screen()
+		pressure.icon = ui_style
+		pressure.icon_state = "pressure0"
+		pressure.SetName("pressure")
+		pressure.screen_loc = ui_pressure
+		hud_elements |= pressure
 
 	if(hud_data.has_bodytemp)
-		mymob.bodytemp = new /obj/screen()
-		mymob.bodytemp.icon = ui_style
-		mymob.bodytemp.icon_state = "temp1"
-		mymob.bodytemp.SetName("body temperature")
-		mymob.bodytemp.screen_loc = ui_temp
-		hud_elements |= mymob.bodytemp
+		bodytemp = new /obj/screen()
+		bodytemp.icon = ui_style
+		bodytemp.icon_state = "temp1"
+		bodytemp.SetName("body temperature")
+		bodytemp.screen_loc = ui_temp
+		hud_elements |= bodytemp
 
 	if(target.isSynthetic())
 		target.cells = new /obj/screen()
@@ -261,50 +239,50 @@
 		hud_elements |= target.cells
 
 	else if(hud_data.has_nutrition)
-		mymob.nutrition_icon = new /obj/screen()
-		mymob.nutrition_icon.icon = ui_style
-		mymob.nutrition_icon.icon_state = "nutrition0"
-		mymob.nutrition_icon.SetName("nutrition")
-		mymob.nutrition_icon.screen_loc = ui_nutrition
-		hud_elements |= mymob.nutrition_icon
+		nutrition_icon = new /obj/screen()
+		nutrition_icon.icon = ui_style
+		nutrition_icon.icon_state = "nutrition0"
+		nutrition_icon.SetName("nutrition")
+		nutrition_icon.screen_loc = ui_nutrition
+		hud_elements |= nutrition_icon
 
-	mymob.pain = mymob.overlay_fullscreen("pain", /obj/screen/fullscreen/pain, INFINITY)//new /obj/screen/fullscreen/pain( null )
-	//mymob.pain.set_size(mymob.client)
-	if (istype(mymob.pain))
-		hud_elements |= mymob.pain
+	pain = mymob.overlay_fullscreen("pain", /obj/screen/fullscreen/pain, INFINITY)//new /obj/screen/fullscreen/pain( null )
+	//pain.set_size(mymob.client)
+	if (istype(pain))
+		hud_elements |= pain
 
 
-	mymob.zone_sel = new /obj/screen/zone_sel( null )
-	mymob.zone_sel.icon = ui_style
-	mymob.zone_sel.color = ui_color
-	mymob.zone_sel.alpha = ui_alpha
-	mymob.zone_sel.overlays.Cut()
-	mymob.zone_sel.overlays += image('icons/mob/zone_sel.dmi', "[mymob.zone_sel.selecting]")
-	hud_elements |= mymob.zone_sel
+	zone_sel = new /obj/screen/zone_sel( null )
+	zone_sel.icon = ui_style
+	zone_sel.color = ui_color
+	zone_sel.alpha = ui_alpha
+	zone_sel.overlays.Cut()
+	zone_sel.overlays += image('icons/mob/zone_sel.dmi', "[zone_sel.selecting]")
+	hud_elements |= zone_sel
 
 	//Handle the gun settings buttons
 	if(hud_data.has_guns)
-		mymob.gun_setting_icon = new /obj/screen/gun/mode(null)
-		mymob.gun_setting_icon.icon = ui_style
-		mymob.gun_setting_icon.color = ui_color
-		mymob.gun_setting_icon.alpha = ui_alpha
-		hud_elements |= mymob.gun_setting_icon
+		gun_setting_icon = new /obj/screen/gun/mode(null)
+		gun_setting_icon.icon = ui_style
+		gun_setting_icon.color = ui_color
+		gun_setting_icon.alpha = ui_alpha
+		hud_elements |= gun_setting_icon
 		//FAIL POINT 1
 
-		mymob.item_use_icon = new /obj/screen/gun/item(null)
-		mymob.item_use_icon.icon = ui_style
-		mymob.item_use_icon.color = ui_color
-		mymob.item_use_icon.alpha = ui_alpha
+		item_use_icon = new /obj/screen/gun/item(null)
+		item_use_icon.icon = ui_style
+		item_use_icon.color = ui_color
+		item_use_icon.alpha = ui_alpha
 
-		mymob.gun_move_icon = new /obj/screen/gun/move(null)
-		mymob.gun_move_icon.icon = ui_style
-		mymob.gun_move_icon.color = ui_color
-		mymob.gun_move_icon.alpha = ui_alpha
+		gun_move_icon = new /obj/screen/gun/move(null)
+		gun_move_icon.icon = ui_style
+		gun_move_icon.color = ui_color
+		gun_move_icon.alpha = ui_alpha
 
-		mymob.radio_use_icon = new /obj/screen/gun/radio(null)
-		mymob.radio_use_icon.icon = ui_style
-		mymob.radio_use_icon.color = ui_color
-		mymob.radio_use_icon.alpha = ui_alpha
+		radio_use_icon = new /obj/screen/gun/radio(null)
+		radio_use_icon.icon = ui_style
+		radio_use_icon.color = ui_color
+		radio_use_icon.alpha = ui_alpha
 
 	mymob.client.screen = list()
 

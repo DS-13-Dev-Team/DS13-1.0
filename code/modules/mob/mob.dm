@@ -10,7 +10,6 @@
 		qdel(G)
 	clear_fullscreen()
 	if(client)
-		remove_screen_obj_references()
 		for(var/atom/movable/AM in client.screen)
 			var/obj/screen/screenobj = AM
 			if(!istype(screenobj) || !screenobj.globalscreen)
@@ -21,28 +20,6 @@
 	ghostize()
 	..()
 	return QDEL_HINT_HARDDEL
-
-/mob/proc/remove_screen_obj_references()
-	hands = null
-	pullin = null
-	purged = null
-	internals = null
-	oxygen = null
-	i_select = null
-	m_select = null
-	toxin = null
-	fire = null
-	bodytemp = null
-	QDEL_NULL(healths)
-	throw_icon = null
-	nutrition_icon = null
-	pressure = null
-	pain = null
-	item_use_icon = null
-	gun_move_icon = null
-	gun_setting_icon = null
-	ability_master = null
-	zone_sel = null
 
 /mob/Initialize()
 	. = ..()
@@ -973,13 +950,13 @@
 
 /mob/proc/throw_mode_off()
 	src.in_throw_mode = 0
-	if(src.throw_icon) //in case we don't have the HUD and we use the hotkey
-		src.throw_icon.icon_state = "act_throw_off"
+	if(src.hud_used.throw_icon) //in case we don't have the HUD and we use the hotkey
+		src.hud_used.throw_icon.icon_state = "act_throw_off"
 
 /mob/proc/throw_mode_on()
 	src.in_throw_mode = 1
-	if(src.throw_icon)
-		src.throw_icon.icon_state = "act_throw_on"
+	if(src.hud_used.throw_icon)
+		src.hud_used.throw_icon.icon_state = "act_throw_on"
 
 /mob/proc/toggle_antag_pool()
 	set name = "Toggle Add-Antag Candidacy"
@@ -1000,7 +977,7 @@
 	return (!alpha || !mouse_opacity || viewer.see_invisible < invisibility)
 
 /client/proc/check_has_body_select()
-	return mob && mob.hud_used && istype(mob.zone_sel, /obj/screen/zone_sel)
+	return mob && mob.hud_used && istype(mob.hud_used.zone_sel, /obj/screen/zone_sel)
 
 /client/verb/body_toggle_head()
 	set name = "body-toggle-head"
@@ -1040,8 +1017,8 @@
 /client/proc/toggle_zone_sel(list/zones)
 	if(!check_has_body_select())
 		return
-	var/obj/screen/zone_sel/selector = mob.zone_sel
-	selector.set_selected_zone(next_in_list(mob.zone_sel.selecting,zones))
+	var/obj/screen/zone_sel/selector = mob.hud_used.zone_sel
+	selector.set_selected_zone(next_in_list(mob.hud_used.zone_sel.selecting,zones))
 
 /mob/proc/has_chem_effect(chem, threshold)
 	return FALSE

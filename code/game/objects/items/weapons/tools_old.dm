@@ -54,7 +54,7 @@
 	force = 4.0
 	w_class = ITEM_SIZE_TINY
 	throwforce = 5.0
-	
+
 	throw_range = 5
 	matter = list(MATERIAL_STEEL = 75)
 	center_of_mass = "x=16;y=7"
@@ -92,7 +92,7 @@
 /obj/item/weapon/tool/screwdriver/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
 	if(!istype(M) || user.a_intent == "help")
 		return ..()
-	if(user.zone_sel.selecting != BP_EYES && user.zone_sel.selecting != BP_HEAD)
+	if(get_zone_sel(user) != BP_EYES && get_zone_sel(user) != BP_HEAD)
 		return ..()
 	if((CLUMSY in user.mutations) && prob(50))
 		M = user
@@ -113,7 +113,7 @@
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
 	slot_flags = SLOT_BELT
 	force = 3.0
-	
+
 	throw_range = 9
 	w_class = ITEM_SIZE_SMALL
 	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
@@ -161,7 +161,7 @@
 	//Amount of OUCH when it's thrown
 	force = 3.0
 	throwforce = 5.0
-	
+
 	throw_range = 5
 	w_class = ITEM_SIZE_NORMAL
 

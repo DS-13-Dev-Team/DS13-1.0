@@ -969,7 +969,7 @@
 /obj/item/weapon/tool/attack(mob/living/M, mob/living/user, var/target_zone)
 	if ((user.a_intent == I_HELP) && ishuman(M))
 		var/mob/living/carbon/human/H = M
-		var/obj/item/organ/external/S = H.organs_by_name[user.zone_sel.selecting]
+		var/obj/item/organ/external/S = H.organs_by_name[get_zone_sel(user)]
 
 		if (!istype(S) || !BP_IS_ROBOTIC(S))
 			return ..()

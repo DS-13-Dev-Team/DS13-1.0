@@ -17,18 +17,18 @@
 	src.adding += using
 	move_intent = using
 
-	mymob.healths = new /obj/screen()
-	mymob.healths.icon = 'icons/mob/screen1_alien.dmi'
-	mymob.healths.icon_state = "health0"
-	mymob.healths.SetName("health")
-	mymob.healths.screen_loc = ui_alien_health
+	healths = new /obj/screen()
+	healths.icon = 'icons/mob/screen1_alien.dmi'
+	healths.icon_state = "health0"
+	healths.SetName("health")
+	healths.screen_loc = ui_alien_health
 
-	mymob.fire = new /obj/screen()
-	mymob.fire.icon = 'icons/mob/screen1_alien.dmi'
-	mymob.fire.icon_state = "fire0"
-	mymob.fire.SetName("fire")
-	mymob.fire.screen_loc = ui_fire
+	fire = new /obj/screen()
+	fire.icon = 'icons/mob/screen1_alien.dmi'
+	fire.icon_state = "fire0"
+	fire.SetName("fire")
+	fire.screen_loc = ui_fire
 
 	mymob.client.screen = list()
-	mymob.client.screen += list( mymob.healths, mymob.fire)
+	mymob.client.screen += list( healths, fire)
 	mymob.client.screen += src.adding + src.other

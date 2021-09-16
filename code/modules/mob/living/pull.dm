@@ -104,8 +104,8 @@
 		GLOB.moved_event.unregister(pulling, src, /mob/proc/pulling_moved)
 		pulling.pulledby = null
 		pulling = null
-		if(pullin)
-			pullin.icon_state = "pull0"
+		if(hud_used.pullin)
+			hud_used.pullin.icon_state = "pull0"
 
 /mob/proc/can_pull(var/atom/movable/AM)
 	.=FALSE
@@ -170,8 +170,8 @@
 	src.pulling = AM
 	AM.pulledby = src
 
-	if(pullin)
-		pullin.icon_state = "pull1"
+	if(hud_used.pullin)
+		hud_used.pullin.icon_state = "pull1"
 
 	if(ishuman(AM))
 		var/mob/living/carbon/human/H = AM
