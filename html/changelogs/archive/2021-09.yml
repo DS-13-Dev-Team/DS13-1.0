@@ -51,3 +51,18 @@
   - rscadd: Added a support TGChat.
   - bugfix: Fixed problem with null name in vote gamemodes.
   - bugfix: Fixed problem with shutdown server.
+2021-09-17:
+  Nanako:
+  - refactor: Significantly optimised some performance of movement code for calculating
+      gear encumbrance
+  - tweak: Gear encumbrance now affects attackspeed and evasion as well as movement
+  - tweak: Gear encumbrance is now counteracted by hauling skill. Put more points
+      in it to wear heavier gear!
+  - refactor: Optimised Multiz movement handler
+  - tweak: Leapers and other mobs with some kind of jumping move can now jump across
+      open space without falling down
+  - tweak: Reduced fall damage by a moderate degree.
+  - refactor: Optimised space movement handler and zero g movement calculations
+  - tweak: Being in zero gravity now buffs movespeed and evasion, but reduces attack
+      speed. These effects are all favorably modified by EVA training skill
+  - tweak: Being in a zero gravity environment now reduces the effects of encumbrance
