@@ -485,7 +485,7 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	for (var/obj/item/organ/I in affected.implants)
 		if (I.organ_tag == target.op_stage.current_organ)
-			I.status &= ~ORGAN_CUT_AWAY
+			I.set_status(ORGAN_CUT_AWAY, FALSE)
 			affected.implants -= I
 			I.replaced(target, affected)
 			break

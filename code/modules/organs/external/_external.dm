@@ -251,7 +251,7 @@
 					current_child.implants.Remove(removing)
 					current_child.internal_organs.Remove(removing)
 
-					status |= ORGAN_CUT_AWAY
+					set_status(ORGAN_CUT_AWAY, TRUE)
 					if(istype(removing, /obj/item/organ/internal/mmi_holder))
 						var/obj/item/organ/internal/mmi_holder/O = removing
 						removing = O.transfer_and_delete()
@@ -698,7 +698,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 	if(germ_level >= INFECTION_LEVEL_THREE && antibiotics < REAGENTS_OVERDOSE)	//overdosing is necessary to stop severe infections
 		if (!(status & ORGAN_DEAD))
-			status |= ORGAN_DEAD
+			set_status(ORGAN_DEAD, TRUE)
 			to_chat(owner, "<span class='notice'>You can't feel your [name] anymore...</span>")
 			owner.update_body(1)
 
@@ -770,7 +770,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 	number_wounds = 0
 	brute_dam = 0
 	burn_dam = 0
-	status &= ~ORGAN_BLEEDING
+	set_status(ORGAN_BLEEDING, FALSE)
 	var/clamped = 0
 
 	var/mob/living/carbon/human/H
@@ -787,7 +787,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 		if(bleeds && W.bleeding() && (H && H.should_have_organ(BP_HEART)))
 			W.bleed_timer--
-			status |= ORGAN_BLEEDING
+			set_status(ORGAN_BLEEDING, TRUE)
 
 		clamped |= W.clamped
 		number_wounds += W.amount
@@ -991,6 +991,8 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 			qdel(src)
 
+	victim.update_extension(/datum/extension/updating/impaired_locomotion)
+
 /****************************************************
 			   HELPERS
 ****************************************************/
@@ -1037,7 +1039,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 /obj/item/organ/external/proc/bandage()
 	var/rval = 0
-	status &= ~ORGAN_BLEEDING
+	set_status(ORGAN_BLEEDING, FALSE)
 	for(var/datum/wound/W in wounds)
 		rval |= !W.bandaged
 		W.bandaged = 1
@@ -1062,7 +1064,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 /obj/item/organ/external/proc/clamp_wounds()
 	var/rval = 0
-	src.status &= ~ORGAN_BLEEDING
+	src.set_status(ORGAN_BLEEDING, FALSE)
 	for(var/datum/wound/W in wounds)
 		rval |= !W.clamped
 		W.clamped = 1
@@ -1112,7 +1114,7 @@ obj/item/organ/external/proc/remove_clamps()
 			owner.emote("scream")
 
 	playsound(src.loc, "fracture", 100, 1, -2)
-	status |= ORGAN_BROKEN
+	set_status(ORGAN_BROKEN, TRUE)
 	broken_description = pick("broken","fracture","hairline fracture")
 
 	// Fractures have a chance of getting you out of restraints
@@ -1132,7 +1134,7 @@ obj/item/organ/external/proc/remove_clamps()
 	if(brute_dam > min_broken_damage * CONFIG_GET(number/organ_health_multiplier))
 		return 0	//will just immediately fracture again
 
-	status &= ~ORGAN_BROKEN
+	set_status(ORGAN_BROKEN, FALSE)
 	return 1
 
 /obj/item/organ/external/proc/apply_splint(var/atom/movable/splint)

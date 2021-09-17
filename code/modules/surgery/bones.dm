@@ -172,7 +172,7 @@
 	var/bone = affected.encased ? "[target]'s [affected.encased]" : "bones in [target]'s [affected.name]"
 	user.visible_message("<span class='notice'>[user] has mended the damaged [bone] with \the [tool].</span>"  , \
 		"<span class='notice'>You have mended the damaged [bone] with \the [tool].</span>" )
-	affected.status &= ~ORGAN_BROKEN
+	affected.set_status(ORGAN_BROKEN, FALSE)
 	affected.stage = 0
 
 /datum/surgery_step/finish_bone/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)

@@ -394,7 +394,7 @@
 		M.r_hand.update_twohanding()
 
 	if (slowdown_general || slowdown_per_slot)
-		M.update_encumbrance()
+		M.update_extension(/datum/extension/updating/encumbrance)
 
 //Defines which slots correspond to which slot flags
 var/list/global/slot_flags_enumeration = list(

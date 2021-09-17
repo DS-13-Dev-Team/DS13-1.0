@@ -34,6 +34,11 @@ var/list/organ_cache = list()
 
 	var/preserved = FALSE			//Set true when this organ is inside some kind of safe storage. A growth tank, freezer, etc, which will prevent it from decaying
 
+	//Functions
+	var/locomotion = FALSE	//If true, this organ is being used for the locomotion of its owner
+
+
+
 /obj/item/organ/Destroy()
 
 	owner = null
@@ -41,6 +46,17 @@ var/list/organ_cache = list()
 	species = null
 
 	return ..()
+
+
+/obj/item/organ/proc/set_status(var/newflags, var/target_state)
+	if (!target_state)
+		status &= ~newflags
+	else
+		status |= newflags
+
+	//If any of the potential impairment flags changed, update this extension
+	if (owner && (newflags & ORGAN_IMPAIRED_LOCOMOTION))
+		owner.update_extension(/datum/extension/updating/impaired_locomotion)
 
 /obj/item/organ/proc/refresh_action_button()
 	return action
@@ -105,7 +121,7 @@ var/list/organ_cache = list()
 
 /obj/item/organ/proc/die()
 	damage = max_damage
-	status |= ORGAN_DEAD
+	set_status(ORGAN_DEAD, TRUE)
 	STOP_PROCESSING(SSobj, src)
 	death_time = world.time
 	if(owner && vital)

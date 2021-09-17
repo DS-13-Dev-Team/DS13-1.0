@@ -60,7 +60,7 @@
 			var/obj/item/organ/external/affected = owner.get_organ(parent_organ)
 			if(affected)
 				affected.internal_organs -= src
-				status |= ORGAN_CUT_AWAY
+				set_status(ORGAN_CUT_AWAY, TRUE)
 	..()
 
 /obj/item/organ/internal/replaced(var/mob/living/carbon/human/target, var/obj/item/organ/external/affected)

@@ -41,14 +41,7 @@
 
 
 
-	for(var/organ_name in species.locomotion_limbs)
-		var/obj/item/organ/external/E = get_organ(organ_name)
-		if(!E || E.is_stump())
-			tally += 4
-		else if(E.splinted)
-			tally += 0.5
-		else if(E.status & ORGAN_BROKEN)
-			tally += 1.5
+
 
 	if(shock_stage >= 10 || src.stamina <= 0)
 		tally += 3

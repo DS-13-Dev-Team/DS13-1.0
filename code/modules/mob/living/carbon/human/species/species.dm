@@ -481,6 +481,8 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 		var/limb_path = organ_data["path"]
 		var/obj/item/organ/O = new limb_path(H)
 		O.max_damage *= limb_health_factor
+		if (O.organ_tag in locomotion_limbs)
+			O.locomotion = TRUE
 
 		//The list may contain height data
 		var/vector2/organ_height = organ_data["height"]
