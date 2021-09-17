@@ -42,7 +42,7 @@
 		gravity_shock()
 
 	update_floating()
-	update_encumbrance()
+	update_extension(/datum/extension/updating/encumbrance)
 
 
 
@@ -61,7 +61,7 @@
 /datum/extension/zero_gravity_effects/New(datum/holder)
 	. = ..()
 	var/mob/living/L = holder
-	L.update_encumbrance()
+	L.update_extension(/datum/extension/updating/encumbrance)
 
 	var/skill = L.get_skill_value(SKILL_EVA)-1	//This returns a value in the range 1-5, reduced to 0-4
 	statmods[STATMOD_MOVESPEED_MULTIPLICATIVE] = 1.1 + (0.06 * skill)

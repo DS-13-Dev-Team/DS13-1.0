@@ -501,7 +501,7 @@
 	if(charges >= 15)
 		for(var/obj/item/organ/external/e in user.organs)
 			if(e && e.status & ORGAN_BROKEN)
-				e.status &= ~ORGAN_BROKEN
+				e.set_status(ORGAN_BROKEN, FALSE)
 				statuses += "bones in your [e.name] snap into place"
 				charges -= 15
 				if(charges < 15)

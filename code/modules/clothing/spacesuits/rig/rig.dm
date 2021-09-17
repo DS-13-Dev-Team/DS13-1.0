@@ -232,7 +232,7 @@
 		helmet.update_vision()
 
 	if (wearer)
-		wearer.update_encumbrance()
+		wearer.update_extension(/datum/extension/updating/encumbrance)
 
 /obj/item/weapon/rig/proc/suit_is_deployed()
 	if(!istype(wearer) || src.loc != wearer || wearer.back != src)

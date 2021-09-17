@@ -2,25 +2,24 @@
 #define ENCUMBRANCE_TO_ATTACKSPEED	0.05	//5% slowdown per point
 #define ENCUMBRANCE_REDUCTION_FACTOR	0.3	//Each point of hauling skill reduces encumbrance by this much
 
-/datum/extension/encumbrance
+/datum/extension/updating/encumbrance
 	flags = EXTENSION_FLAG_IMMEDIATE
 	expected_type = /mob/living
 
 	var/encumbrance = 0
 	var/speed_factor	=	0
 
-	var/update_timer
 
 	statmods = list(STATMOD_MOVESPEED_MULTIPLICATIVE = 1,
 	STATMOD_ATTACK_SPEED = 0,
 	STATMOD_EVASION = 0)
 
-/datum/extension/encumbrance/proc/update()
+/datum/extension/updating/encumbrance/update()
+	.=..()
 	var/mob/living/L = holder
 	var/encumbrance_before = encumbrance
 	encumbrance = 0
-	deltimer(update_timer)
-	update_timer = null
+
 	for(var/slot = slot_first to slot_last)
 		var/obj/item/I = L.get_equipped_item(slot)
 		if(I)
@@ -56,15 +55,5 @@
 
 
 
-/datum/extension/encumbrance/proc/schedule_update()
-	if (update_timer)
-		return
 
-	update_timer = addtimer(CALLBACK(src,/datum/extension/encumbrance/proc/update),1,TIMER_STOPPABLE)
 
-/datum/proc/update_encumbrance(var/instant = FALSE)
-	var/datum/extension/encumbrance/E = get_or_create_extension(src, /datum/extension/encumbrance)
-	if (instant)
-		E.update()
-	else
-		E.schedule_update()

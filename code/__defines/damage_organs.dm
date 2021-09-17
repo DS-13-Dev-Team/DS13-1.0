@@ -47,6 +47,9 @@
 #define ORGAN_BRITTLE    (1<<12) // The organ takes additional blunt damage. If robotic, cannot be repaired through normal means.
 #define ORGAN_CRYSTAL    (1<<13) // The organ does not suffer laser damage, but shatters on droplimb.
 
+//A locomotion that has any of these flags will slow down the owner
+#define ORGAN_IMPAIRED_LOCOMOTION	(ORGAN_CUT_AWAY|ORGAN_BROKEN|ORGAN_DEAD|ORGAN_TENDON_CUT)
+
 // Organ flag defines.
 #define ORGAN_FLAG_CAN_AMPUTATE   (1<<0) // The organ can be amputated.
 #define ORGAN_FLAG_CAN_BREAK      (1<<1) // The organ can be broken.
