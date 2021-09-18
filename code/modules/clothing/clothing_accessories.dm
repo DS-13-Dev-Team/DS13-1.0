@@ -79,7 +79,7 @@
 
 	if (slowdown_accessory != before)
 		var/mob/living/L = loc
-		if (L)
+		if (istype(L))
 			L.update_extension(/datum/extension/updating/encumbrance)
 /**
  *  Attach accessory A to src
