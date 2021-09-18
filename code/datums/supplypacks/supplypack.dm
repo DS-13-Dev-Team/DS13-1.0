@@ -1,5 +1,5 @@
 var/decl/hierarchy/supply_pack/cargo_supply_pack_root = new()
-var/decl/hierarchy/supply_pack/cargo_supply_packs	// Non-category supply packs
+var/list/decl/hierarchy/supply_pack/cargo_supply_packs	// Non-category supply packs
 
 /decl/hierarchy/supply_pack
 	name = "Supply Packs"
@@ -20,7 +20,8 @@ var/decl/hierarchy/supply_pack/cargo_supply_packs	// Non-category supply packs
 	if(is_hidden_category())
 		return	// Don't init the manifest for category entries
 
-	if(!cargo_supply_packs) cargo_supply_packs = list()
+	if(!cargo_supply_packs)
+		cargo_supply_packs = list()
 	dd_insertObjectList(cargo_supply_packs, src)	// Add all non-category supply packs to the list
 
 	if(!num_contained)
@@ -37,9 +38,9 @@ var/decl/hierarchy/supply_pack/cargo_supply_packs	// Non-category supply packs
 	switch(security_level)
 		if(SUPPLY_SECURITY_ELEVATED)
 			if(security_state.all_security_levels.len > 1)
-				security_level = security_state.all_security_levels[2] 
+				security_level = security_state.all_security_levels[2]
 			else
-				security_level = security_state.high_security_level 
+				security_level = security_state.high_security_level
 		if(SUPPLY_SECURITY_HIGH)
 			security_level = security_state.high_security_level
 	if(!istype(security_level))
