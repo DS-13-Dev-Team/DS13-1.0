@@ -51,7 +51,7 @@
 					to_chat(user, SPAN_NOTICE("Stasis Module is already fully charged"))
 					playsound(loc, 'sound/machines/buzz-two.ogg', VOLUME_MID, 0)
 					return
-		to_chat(user, SPAN_NOTICE("You don't have stasis modules installed."))
+		to_chat(user, SPAN_NOTICE("You don't have stasis module installed."))
 		playsound(loc, 'sound/machines/buzz-two.ogg', VOLUME_MID, 0)
 
 /obj/machinery/stasis_station/proc/stop_recharging()
