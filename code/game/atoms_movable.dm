@@ -29,6 +29,8 @@
 	//Biomass is also measured in kilograms, its the organic mass in the atom. Is often zero
 	var/biomass = 0
 
+	// Throwing speed, mob speed, etc
+	var/move_speed_factor = 1
 
 /atom/movable/Initialize(var/mapload)
 	if (can_block_movement && isturf(loc))

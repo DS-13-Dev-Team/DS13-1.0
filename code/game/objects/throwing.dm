@@ -141,8 +141,9 @@
 	while(src && target && src.throwing && istype(src.loc, /turf) \
 		 && loc != target_turf && dist_travelled < range)
 		// only stop when we've gone the whole distance (or max throw range) and are on a non-space tile, or hit something, or hit the end of the map, or someone picks it up
-		var/atom/step
-		step = get_step_towards(src, target_turf)
+		update_movespeed_factor()
+		interval = 10 / (src.throwing*move_speed_factor)
+		var/atom/step = get_step_towards(src, target_turf)
 		if(!step) // going off the edge of the map makes get_step return null, don't let things go off the edge
 			break
 		//src.Move(step)

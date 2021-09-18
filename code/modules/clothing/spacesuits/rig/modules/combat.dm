@@ -173,7 +173,9 @@
 	if(gun)
 		gun = new gun(src)
 
-/obj/item/rig_module/mounted/engage(atom/target)
+/obj/item/rig_module/mounted/engage(atom/target, skip)
+	if(skip)
+		return ..()
 
 	if(!..())
 		return 0

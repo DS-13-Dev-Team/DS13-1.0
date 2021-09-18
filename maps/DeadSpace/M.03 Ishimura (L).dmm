@@ -1894,6 +1894,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/machinery/stasis_station{
+	pixel_x = -1;
+	pixel_y = 30
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/lower/engineering/bay)
 "aev" = (
@@ -5106,6 +5110,10 @@
 	d1 = 2;
 	d2 = 8;
 	icon_state = "2-8"
+	},
+/obj/machinery/stasis_station{
+	pixel_x = -1;
+	pixel_y = 30
 	},
 /turf/simulated/floor/tiled,
 /area/ishimura/lower/cargo/bay)
@@ -11910,6 +11918,10 @@
 "axG" = (
 /obj/effect/floor_decal/industrial/loading{
 	dir = 4
+	},
+/obj/machinery/stasis_station{
+	pixel_x = -1;
+	pixel_y = 30
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/lower/security/escape/lounge)
@@ -27706,6 +27718,13 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/lower/crew/messhall)
+"bHN" = (
+/obj/machinery/stasis_station{
+	pixel_x = -1;
+	pixel_y = 30
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/ishimura/lower/mining/locker_room)
 "bPq" = (
 /obj/random/tool,
 /obj/structure/table/standard,
@@ -27782,6 +27801,13 @@
 /obj/random/tool,
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/lower/misc/storagesmall)
+"fDL" = (
+/obj/machinery/stasis_station{
+	pixel_x = -1;
+	pixel_y = 30
+	},
+/turf/simulated/floor/tiled,
+/area/ishimura/lower/crew/sleepblock/executive)
 "gqI" = (
 /obj/effect/catwalk_plated,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -27858,6 +27884,13 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plating,
 /area/ishimura/lower/mining/locker_room)
+"lCI" = (
+/obj/machinery/stasis_station{
+	pixel_x = -1;
+	pixel_y = 30
+	},
+/turf/simulated/floor/tiled,
+/area/ishimura/lower/security/escape)
 "lQQ" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/window/reinforced{
@@ -27890,6 +27923,26 @@
 	},
 /turf/simulated/floor/plating,
 /area/ishimura/lower/maintenance/engineering_starboard)
+"ncK" = (
+/obj/machinery/stasis_station{
+	pixel_x = -1;
+	pixel_y = 30
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/ishimura/lower/mining/mining_bay)
+"neh" = (
+/obj/structure/table/standard,
+/obj/item/rig_module/mounted/stasis{
+	pixel_y = -2
+	},
+/obj/item/rig_module/mounted/stasis{
+	pixel_y = 2
+	},
+/obj/item/rig_module/mounted/stasis{
+	pixel_y = 6
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/ishimura/lower/mining/locker_room)
 "nsT" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/table/rack{
@@ -28048,6 +28101,13 @@
 	},
 /turf/simulated/floor/plating,
 /area/ishimura/lower/maintenance/fore_central)
+"uLb" = (
+/obj/machinery/stasis_station{
+	pixel_x = -1;
+	pixel_y = 30
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/ishimura/lower/engineering/bay)
 "uTL" = (
 /obj/structure/closet/emcloset,
 /turf/simulated/floor/plating,
@@ -34832,7 +34892,7 @@ acx
 aBp
 aNS
 aac
-acx
+uLb
 acx
 acx
 avf
@@ -49369,7 +49429,7 @@ aTr
 adX
 aLs
 acV
-ahP
+ncK
 aiO
 ahP
 ahP
@@ -51187,7 +51247,7 @@ azE
 bPJ
 bPJ
 gHS
-aiN
+bHN
 aJg
 aiN
 bey
@@ -51392,7 +51452,7 @@ gHS
 awH
 aKe
 aYO
-awH
+neh
 bdl
 bdC
 bdL
@@ -63318,7 +63378,7 @@ aKE
 aSu
 aKX
 akN
-asQ
+fDL
 aFr
 aGV
 asQ
@@ -69565,7 +69625,7 @@ anW
 anW
 anW
 anW
-aER
+lCI
 aFj
 aFw
 aFB

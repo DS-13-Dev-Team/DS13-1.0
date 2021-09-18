@@ -4,7 +4,7 @@
 
 /datum/extension/updating/encumbrance
 	flags = EXTENSION_FLAG_IMMEDIATE
-	expected_type = /mob/living
+	expected_type = /atom
 
 	var/encumbrance = 0
 	var/speed_factor	=	0
@@ -16,36 +16,36 @@
 
 /datum/extension/updating/encumbrance/update()
 	.=..()
-	var/mob/living/L = holder
-	var/encumbrance_before = encumbrance
-	encumbrance = 0
+	if(istype(holder, /mob))
+		var/mob/living/L = holder
+		var/encumbrance_before = encumbrance
+		encumbrance = 0
 
-	for(var/slot = slot_first to slot_last)
-		var/obj/item/I = L.get_equipped_item(slot)
-		if(I)
-			var/item_slowdown = 0
-			item_slowdown += I.slowdown_general
-			item_slowdown += I.slowdown_per_slot[slot]
-			item_slowdown += I.slowdown_accessory
+		for(var/slot = slot_first to slot_last)
+			var/obj/item/I = L.get_equipped_item(slot)
+			if(I)
+				var/item_slowdown = 0
+				item_slowdown += I.slowdown_general
+				item_slowdown += I.slowdown_per_slot[slot]
+				item_slowdown += I.slowdown_accessory
 
-			encumbrance += max(item_slowdown, 0)
+				encumbrance += max(item_slowdown, 0)
 
 
 
-	//If we have no encumbrance we don't need this
-	if (encumbrance <= 0)
-		remove_self()
-		return
+		//If we have no encumbrance we don't need this
+		if (encumbrance <= 0)
+			remove_self()
+			return
 
-	//Being in 0G makes everything weightless, although mass is still a thing. Movement is still easier
-	if (!L.has_gravity())
-		encumbrance *= 0.66
+		//Being in 0G makes everything weightless, although mass is still a thing. Movement is still easier
+		if (!L.has_gravity())
+			encumbrance *= 0.66
 
-	encumbrance = max(0, encumbrance - ((L.get_skill_value(SKILL_HAULING)-1) * ENCUMBRANCE_REDUCTION_FACTOR))
-	if (encumbrance == encumbrance_before)
-		//If its unchanged, do nothing
-		return
-
+		encumbrance = max(0, encumbrance - ((L.get_skill_value(SKILL_HAULING)-1) * ENCUMBRANCE_REDUCTION_FACTOR))
+		if (encumbrance == encumbrance_before)
+			//If its unchanged, do nothing
+			return
 
 	statmods[STATMOD_MOVESPEED_MULTIPLICATIVE] = (1 / (1 + (encumbrance * ENCUMBRANCE_TO_MOVESPEED)))
 	statmods[STATMOD_ATTACK_SPEED] = (1 - (1 / (1 + (encumbrance * ENCUMBRANCE_TO_ATTACKSPEED)))) *-1

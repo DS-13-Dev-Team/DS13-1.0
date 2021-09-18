@@ -4389,6 +4389,13 @@
 "kQ" = (
 /turf/space/transit/east,
 /area/space)
+"la" = (
+/obj/machinery/stasis_station{
+	pixel_x = -1;
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled,
+/area/ERT/deliverance)
 "lo" = (
 /obj/structure/table/rack,
 /obj/item/weapon/tank/oxygen/yellow,
@@ -4627,6 +4634,13 @@
 /obj/machinery/vending/hotfood,
 /turf/unsimulated/floor/rescue_base,
 /area/ERT/escapebase)
+"DJ" = (
+/obj/machinery/stasis_station{
+	pixel_x = -1;
+	pixel_y = 30
+	},
+/turf/simulated/floor/tiled,
+/area/ERT/valor/armory)
 "DV" = (
 /obj/machinery/door/airlock/external{
 	dir = 8;
@@ -4700,6 +4714,13 @@
 /obj/machinery/vending/boozeomat,
 /turf/unsimulated/floor/rescue_base,
 /area/ERT/escapebase)
+"Ke" = (
+/obj/machinery/stasis_station{
+	pixel_x = -1;
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled/dark,
+/area/ERT/kellion)
 "Ky" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/closet/secure_closet/deliverance/deacon,
@@ -4727,6 +4748,13 @@
 "MM" = (
 /turf/unsimulated/floor/rescue_base,
 /area/ERT/escapebase)
+"MZ" = (
+/obj/machinery/stasis_station{
+	pixel_x = -1;
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled/dark,
+/area/ERT/valor/shuttle)
 "PT" = (
 /obj/structure/table/standard,
 /obj/item/weapon/storage/belt/utility/full,
@@ -4872,6 +4900,13 @@
 	icon_state = "plating"
 	},
 /area/space)
+"Wv" = (
+/obj/machinery/stasis_station{
+	pixel_x = -1;
+	pixel_y = 30
+	},
+/turf/unsimulated/floor/rescue_base,
+/area/ERT/escapebase)
 "Yb" = (
 /obj/effect/shuttle_landmark/deliverance/landing2,
 /turf/unsimulated/floor{
@@ -4904,6 +4939,13 @@
 /obj/item/weapon/rig/civilian,
 /turf/simulated/floor/reinforced,
 /area/space)
+"ZT" = (
+/obj/machinery/stasis_station{
+	pixel_x = -1;
+	pixel_y = 30
+	},
+/turf/simulated/floor/tiled/white,
+/area/ERT/valor/medical)
 
 (1,1,1) = {"
 ab
@@ -6940,7 +6982,7 @@ aj
 aj
 an
 es
-an
+Ke
 an
 ax
 es
@@ -7748,7 +7790,7 @@ aj
 aj
 an
 es
-an
+Ke
 an
 es
 es
@@ -14032,7 +14074,7 @@ dU
 cG
 bE
 aO
-bi
+DJ
 eP
 dV
 ha
@@ -16060,7 +16102,7 @@ gr
 cq
 gr
 cb
-cq
+MZ
 dM
 cb
 fy
@@ -18685,7 +18727,7 @@ fl
 hh
 is
 bH
-gF
+ZT
 fw
 gF
 fa
@@ -24310,7 +24352,7 @@ bU
 ge
 ge
 bc
-ge
+la
 ge
 gp
 ge
@@ -30470,7 +30512,7 @@ MM
 FR
 An
 hR
-MM
+Wv
 hR
 hR
 hR
@@ -31269,7 +31311,7 @@ ia
 MM
 MM
 hR
-MM
+Wv
 MM
 MM
 MM

@@ -63,6 +63,7 @@
 	var/obj/item/rig_module/vision/visor                      // Kinda shitty to have a var for a module, but saves time.
 	var/obj/item/rig_module/voice/speech                      // As above.
 	var/obj/item/rig_module/storage/storage					  // Internal storage, can only have one
+	var/obj/item/rig_module/mounted/stasis/stasis			  // Stasis module
 	var/mob/living/carbon/human/wearer                        // The person currently wearing the rig.
 	var/image/mob_icon                                        // Holder for on-mob icon.
 	var/list/installed_modules = list()                       // List of all modules, including those initialized at startup
@@ -587,6 +588,15 @@
 						chest.overlays += overlay
 					else
 						src.overlays += overlay
+				if(module.second_overlay)
+					var/image/overlay = image("icon" = equipment_overlay_icon, "icon_state" = "[module.second_overlay]", "dir" = SOUTH, layer = module.second_overlay_layer)
+					overlay.plane = module.second_overlay_plane
+					overlay.appearance_flags = module.second_overlay_flags
+					if (chest)
+						//Some rigs dont have a chestpiece
+						chest.overlays += overlay
+					else
+						src.overlays += overlay
 		wearer.update_inv_shoes()
 		wearer.update_inv_gloves()
 		wearer.update_inv_head()
@@ -607,6 +617,11 @@
 				var/image/overlay = image("icon" = equipment_overlay_icon, "icon_state" = "[module.suit_overlay]", layer = module.suit_overlay_layer)
 				overlay.plane = module.suit_overlay_plane
 				overlay.appearance_flags = module.suit_overlay_flags
+				ret.overlays += overlay
+			if(module.second_overlay)
+				var/image/overlay = image("icon" = equipment_overlay_icon, "icon_state" = "[module.second_overlay]", layer = module.second_overlay_layer)
+				overlay.plane = module.second_overlay_plane
+				overlay.appearance_flags = module.second_overlay_flags
 				ret.overlays += overlay
 	return ret
 

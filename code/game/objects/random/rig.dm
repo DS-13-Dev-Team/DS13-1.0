@@ -45,7 +45,8 @@
 	/obj/item/rig_module/hotswap = 0.5,
 	/obj/item/rig_module/power_sink = 1,
 	/obj/item/rig_module/extension/speedboost = 1,
-	/obj/item/rig_module/extension/speedboost/advanced = 0.5
+	/obj/item/rig_module/extension/speedboost/advanced = 0.5,
+	/obj/item/rig_module/mounted/stasis = 0.3
 	)
 
 /*

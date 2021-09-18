@@ -567,6 +567,7 @@
 	name = "Tunnel Lockdown";
 	pixel_y = 32
 	},
+/obj/item/rig_module/mounted/stasis,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/command/bridge)
 "abv" = (
@@ -5076,6 +5077,7 @@
 	pixel_y = 24
 	},
 /obj/item/modular_computer/tablet/lease/preset/command,
+/obj/item/rig_module/mounted/stasis,
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/upper/engineering/chief_office)
 "aml" = (
@@ -10000,6 +10002,7 @@
 	dir = 4
 	},
 /obj/item/device/measuring_tape,
+/obj/item/rig_module/mounted/stasis,
 /turf/simulated/floor/tiled/steel_grid,
 /area/ishimura/upper/engineering/hub)
 "avX" = (
@@ -10908,6 +10911,10 @@
 	},
 /obj/structure/flora/pottedplant/minitree,
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/stasis_station{
+	pixel_x = -1;
+	pixel_y = 30
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/upper/security/brig)
 "axx" = (
@@ -12425,8 +12432,12 @@
 /obj/machinery/status_display{
 	pixel_y = 32
 	},
+/obj/machinery/stasis_station{
+	pixel_x = -1;
+	pixel_y = 30
+	},
 /turf/simulated/floor/tiled/white,
-/area/ishimura/upper/medical)
+/area/space)
 "aAe" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -13806,6 +13817,7 @@
 "aCu" = (
 /obj/structure/table/standard,
 /obj/item/weapon/storage/box/evidence,
+/obj/item/rig_module/mounted/stasis,
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/upper/security/brig)
 "aCv" = (
@@ -13819,6 +13831,7 @@
 "aCw" = (
 /obj/structure/table/standard,
 /obj/item/weapon/storage/box/handcuffs,
+/obj/item/rig_module/mounted/stasis,
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/upper/security/brig)
 "aCx" = (
@@ -14987,6 +15000,7 @@
 "aEx" = (
 /obj/structure/table/steel,
 /obj/item/weapon/material/ashtray/bronze,
+/obj/item/rig_module/mounted/stasis,
 /turf/simulated/floor/carpet/red,
 /area/ishimura/upper/security/chiefsoffice)
 "aEy" = (
@@ -17246,6 +17260,7 @@
 /obj/structure/table/standard,
 /obj/machinery/atmospherics/pipe/simple/hidden/red,
 /obj/item/device/flashlight,
+/obj/item/rig_module/mounted/stasis,
 /turf/simulated/floor/tiled/steel_grid,
 /area/ishimura/upper/engineering/hub)
 "aIC" = (
@@ -25825,7 +25840,10 @@
 /turf/simulated/floor/plating,
 /area/ishimura/upper/maintenance/aft_port)
 "aYi" = (
-/obj/structure/flora/pottedplant,
+/obj/machinery/stasis_station{
+	pixel_x = -1;
+	pixel_y = 30
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/upper/engineering/breakroom)
 "aYj" = (
@@ -31040,8 +31058,9 @@
 /turf/simulated/floor/tiled,
 /area/ishimura/upper/misc/hangar/reception)
 "bij" = (
-/obj/machinery/newscaster{
-	pixel_y = 32
+/obj/machinery/stasis_station{
+	pixel_x = -1;
+	pixel_y = 30
 	},
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/command/bridge)
@@ -31138,6 +31157,13 @@
 	},
 /turf/simulated/floor/plating,
 /area/ishimura/upper/misc/hallway/fore)
+"cCr" = (
+/obj/machinery/stasis_station{
+	pixel_x = -1;
+	pixel_y = 30
+	},
+/turf/simulated/floor/tiled,
+/area/ishimura/upper/security/brig)
 "cEn" = (
 /obj/machinery/light,
 /turf/simulated/floor/dank/rivets,
@@ -31163,6 +31189,16 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/ishimura/upper/engineering/hub)
+"iat" = (
+/obj/effect/floor_decal/corner/grey{
+	dir = 5
+	},
+/obj/machinery/stasis_station{
+	pixel_x = -1;
+	pixel_y = 30
+	},
+/turf/simulated/floor/tiled/white,
+/area/ishimura/upper/medical)
 "idD" = (
 /obj/machinery/fusion_fuel_injector/mapped{
 	dir = 1;
@@ -31269,6 +31305,13 @@
 /obj/effect/wallframe_spawn/reinforced_phoron,
 /turf/simulated/floor/reinforced/airless,
 /area/ishimura/upper/engineering/engine_room)
+"wND" = (
+/obj/machinery/stasis_station{
+	pixel_x = -1;
+	pixel_y = 30
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/ishimura/upper/engineering/hub)
 "wZe" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -39029,7 +39072,7 @@ ajA
 agD
 agD
 alc
-agm
+wND
 agm
 bhf
 bhh
@@ -64874,7 +64917,7 @@ axk
 azv
 abP
 abP
-axR
+iat
 aCi
 beC
 alW
@@ -66313,7 +66356,7 @@ aCg
 aCg
 aSh
 acA
-acW
+cCr
 azQ
 aDS
 aaD

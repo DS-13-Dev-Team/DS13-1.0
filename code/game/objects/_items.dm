@@ -95,7 +95,7 @@
 	// Works similarly to worn sprite_sheets, except the alternate sprites are used when the clothing/refit_for_species() proc is called.
 	var/list/sprite_sheets_obj = list()
 
-	//Items are not dense typically
+	// Items are not dense typically
 	can_block_movement = FALSE
 
 /obj/item/New()
@@ -1006,3 +1006,6 @@ THIS SCOPE CODE IS DEPRECATED, USE AIM MODES INSTEAD.
 
 /obj/item/repair_needed()
 	return max_health - health
+
+/obj/item/stasis_act()
+	set_extension(src, /datum/extension/stasis_effect/item)

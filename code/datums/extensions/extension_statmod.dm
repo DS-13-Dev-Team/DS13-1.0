@@ -50,52 +50,84 @@ STATMOD_LAYER	=	list(/datum/proc/reset_layer)
 
 //Trigger all relevant update procs without changing registration
 /datum/extension/proc/update_statmods()
-	var/mob/M = holder
-	if (!istype(M))
-		return
-	for (var/modtype in statmods)
-		var/list/data = GLOB.statmods[modtype]
-		var/update_proc = data[1]
-		call(M, update_proc)()
+	if(istype(holder, /mob))
+		var/mob/M = holder
+
+		for (var/modtype in statmods)
+			var/list/data = GLOB.statmods[modtype]
+			var/update_proc = data[1]
+			call(M, update_proc)()
+
+	else if(istype(holder, /obj/item))
+		var/obj/item/I = holder
+
+		for (var/modtype in statmods)
+			var/list/data = GLOB.statmods[modtype]
+			var/update_proc = data[1]
+			call(I, update_proc)()
 
 /datum/extension/proc/register_statmod(var/modtype, var/update = TRUE)
-	//Currently only supported for mobs
-	var/mob/M = holder
-	if (!istype(M))
-		return
+	//Currently only supported for mobs and items
+	if(istype(holder, /mob))
+		var/mob/M = holder
 
+		//Initialize the list
+		if (!LAZYACCESS(M.statmods, modtype))
+			//This will create the statmods list AND insert a key/value pair for modtype/list()
+			LAZYASET(M.statmods, modtype, list())
 
-	//Initialize the list
-	if (!LAZYACCESS(M.statmods, modtype))
-		//This will create the statmods list AND insert a key/value pair for modtype/list()
-		LAZYASET(M.statmods, modtype, list())
+		LAZYDISTINCTADD(M.statmods[modtype], src)
 
-	LAZYDISTINCTADD(M.statmods[modtype], src)
+		//Now lets make them update
+		if (update)
+			var/list/data = GLOB.statmods[modtype]
+			var/update_proc = data[1]
+			call(M, update_proc)()//And call it
 
-	//Now lets make them update
-	if (update)
+	//Currently only supported for mobs and items
+	if(istype(holder, /obj/item))
+		var/obj/item/I = holder
+
+		//Initialize the list
+		if (!LAZYACCESS(I.statmods, modtype))
+			//This will create the statmods list AND insert a key/value pair for modtype/list()
+			LAZYASET(I.statmods, modtype, list())
+
+		LAZYDISTINCTADD(I.statmods[modtype], src)
+
+		//Now lets make them update
+		if (update)
+			var/list/data = GLOB.statmods[modtype]
+			var/update_proc = data[1]
+			call(I, update_proc)()//And call it
+
+/datum/extension/proc/unregister_statmod(var/modtype)
+	//Currently only supported for mobs and items
+	if(istype(holder, /mob))
+		var/mob/M = holder
+
+		//If it doesn't exist we dont need to do anything
+		if (!LAZYACCESS(M.statmods, modtype))
+			return
+
+		LAZYAMINUS(M.statmods,modtype, src)
+		//Now lets make them update
 		var/list/data = GLOB.statmods[modtype]
 		var/update_proc = data[1]
 		call(M, update_proc)()//And call it
 
-/datum/extension/proc/unregister_statmod(var/modtype)
-	//Currently only supported for mobs
-	var/mob/M = holder
-	if (!istype(M))
-		return
+	if(istype(holder, /obj/item))
+		var/obj/item/I = holder
 
-	//If it doesn't exist we dont need to do anything
-	if (!LAZYACCESS(M.statmods, modtype))
-		return
+		//If it doesn't exist we dont need to do anything
+		if (!LAZYACCESS(I.statmods, modtype))
+			return
 
-
-
-	LAZYAMINUS(M.statmods,modtype, src)
-	//Now lets make them update
-	var/list/data = GLOB.statmods[modtype]
-	var/update_proc = data[1]
-	call(M, update_proc)()//And call it
-
+		LAZYAMINUS(I.statmods,modtype, src)
+		//Now lets make them update
+		var/list/data = GLOB.statmods[modtype]
+		var/update_proc = data[1]
+		call(I, update_proc)()//And call it
 
 /datum/extension/proc/get_statmod(var/modtype)
 	return LAZYACCESS(statmods, modtype)
@@ -117,7 +149,16 @@ STATMOD_LAYER	=	list(/datum/proc/reset_layer)
 	for (var/datum/extension/E as anything in LAZYACCESS(statmods, STATMOD_MOVESPEED_MULTIPLICATIVE))
 		move_speed_factor *= E.get_statmod(STATMOD_MOVESPEED_MULTIPLICATIVE)
 
+/obj/item/update_movespeed_factor()
+	move_speed_factor = 1
 
+	//We add the result of each additive modifier
+	for (var/datum/extension/E as anything in LAZYACCESS(statmods, STATMOD_MOVESPEED_ADDITIVE))
+		move_speed_factor += E.get_statmod(STATMOD_MOVESPEED_ADDITIVE)
+
+	//We multiply by the result of each multiplicative modifier
+	for (var/datum/extension/E as anything in LAZYACCESS(statmods, STATMOD_MOVESPEED_MULTIPLICATIVE))
+		move_speed_factor *= E.get_statmod(STATMOD_MOVESPEED_MULTIPLICATIVE)
 
 /*
 	Incoming Damage

@@ -82,6 +82,10 @@
 	var/suit_overlay_layer	=	BASE_HUMAN_LAYER
 	var/suit_overlay_plane	=	DEFAULT_PLANE
 	var/suit_overlay_flags = 0
+	var/second_overlay
+	var/second_overlay_layer = BASE_HUMAN_LAYER
+	var/second_overlay_plane = DEFAULT_PLANE
+	var/second_overlay_flags = 0
 
 	//Display fluff
 	var/interface_name

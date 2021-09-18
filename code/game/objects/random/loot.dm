@@ -118,7 +118,8 @@ GLOBAL_LIST_EMPTY(loot_locations)
 	/obj/random/pouch = 2,
 	/obj/random/tool/advanced = 1,
 	/obj/random/toolbox = 1,
-	/obj/random/rig_module = 0.5)
+	/obj/random/rig_module = 0.5,
+	/obj/item/stack/stasis_pack = 1)
 
 /obj/random/rare_loot
 	icon_state = "rareloot"

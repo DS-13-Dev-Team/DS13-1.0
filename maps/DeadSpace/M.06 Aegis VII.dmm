@@ -213,7 +213,10 @@
 	frequency = 1380;
 	id_tag = "aegis_airlock_pump"
 	},
-/obj/structure/closet/walllocker/emerglocker/north,
+/obj/machinery/stasis_station{
+	pixel_x = -1;
+	pixel_y = 30
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/aegis/colony/airlock)
 "aR" = (
@@ -4438,6 +4441,10 @@
 	dir = 4;
 	icon_state = "bulb_map"
 	},
+/obj/machinery/stasis_station{
+	pixel_x = -1;
+	pixel_y = 30
+	},
 /turf/simulated/floor,
 /area/aegis/colony/research/airlock)
 "jF" = (
@@ -6666,6 +6673,13 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/aegis/colony/refinery)
+"AW" = (
+/obj/machinery/stasis_station{
+	pixel_x = -1;
+	pixel_y = 30
+	},
+/turf/simulated/floor/tiled,
+/area/aegis/colony)
 "Bb" = (
 /obj/machinery/mineral/output,
 /obj/machinery/conveyor{
@@ -7000,6 +7014,13 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/aegis/colony/refinery)
+"Qn" = (
+/obj/machinery/stasis_station{
+	pixel_x = -1;
+	pixel_y = 30
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/aegis/colony/hangar)
 "Qz" = (
 /obj/machinery/conveyor{
 	dir = 2;
@@ -7173,6 +7194,13 @@
 /obj/random/loot/often,
 /turf/simulated/floor/tiled/monotile,
 /area/aegis/colony)
+"Zu" = (
+/obj/machinery/stasis_station{
+	pixel_x = -1;
+	pixel_y = 30
+	},
+/turf/simulated/floor/tiled,
+/area/aegis/colony/hangar)
 
 (1,1,1) = {"
 aa
@@ -31509,7 +31537,7 @@ lN
 mg
 mG
 lu
-aS
+AW
 cK
 aS
 bS
@@ -36563,7 +36591,7 @@ al
 hC
 ih
 ae
-ai
+Zu
 fG
 ar
 bP
@@ -36574,7 +36602,7 @@ gj
 gl
 gl
 bP
-ar
+Qn
 fG
 ai
 bC

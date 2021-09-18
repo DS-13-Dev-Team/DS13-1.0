@@ -594,3 +594,6 @@ default behaviour is:
 
 /mob/living/is_organic()
 	return TRUE
+
+/mob/living/stasis_act()
+	set_extension(src, /datum/extension/stasis_effect/mob)
