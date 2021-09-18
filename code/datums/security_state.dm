@@ -190,7 +190,7 @@
 	for(var/obj/machinery/firealarm/FA in SSmachines.machinery)
 		if(FA.z in GLOB.using_map.contact_levels)
 			FA.update_icon()
-	post_status("alert")
+	post_status("alert", src)
 
 /decl/security_level/default/code_green
 	name = "code green"

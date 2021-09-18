@@ -916,7 +916,7 @@ THIS SCOPE CODE IS DEPRECATED, USE AIM MODES INSTEAD.
 
 
 //Called when a structure takes damage
-/obj/item/proc/take_damage(var/amount, var/damtype = BRUTE, var/user, var/used_weapon, var/bypass_resist = FALSE)
+/obj/item/proc/take_damage(amount, damtype = BRUTE, user, used_weapon, bypass_resist = FALSE)
 	if ((atom_flags & ATOM_FLAG_INDESTRUCTIBLE))
 		return
 	if (!bypass_resist)

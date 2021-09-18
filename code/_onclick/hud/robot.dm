@@ -62,10 +62,10 @@ var/obj/screen/robot_inventory
 
 //Cell
 	mymob:cells = new /obj/screen()
-	mymob:cells.icon = 'icons/mob/screen1_robot.dmi'
-	mymob:cells.icon_state = "charge-empty"
-	mymob:cells.SetName("cell")
-	mymob:cells.screen_loc = ui_toxin
+	mymob:cells:icon = 'icons/mob/screen1_robot.dmi'
+	mymob:cells:icon_state = "charge-empty"
+	mymob:cells:SetName("cell")
+	mymob:cells:screen_loc = ui_toxin
 
 //Health
 	healths = new /obj/screen()

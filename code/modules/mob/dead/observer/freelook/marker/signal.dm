@@ -187,11 +187,9 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 	else
 		var/mob/signal = new /mob/dead/observer/eye/signal(src)
 		signal.client?.init_verbs()
+		if(isobserver(src) && !issignal(src))
+			qdel(src)
 		return signal
-
-	//If we're in some kind of observer body, delete it
-	if (!isliving(src))
-		qdel(src)
 
 
 //Signals cant become signals, silly

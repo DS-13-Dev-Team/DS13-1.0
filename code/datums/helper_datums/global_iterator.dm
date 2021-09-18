@@ -152,9 +152,11 @@ Data storage vars:
 			start()
 		return active()
 
-/datum/global_iterator/Destroy()
+/datum/global_iterator/Destroy(force = FALSE)
 	tag = null
 	arg_list.Cut()
 	stop()
-	return QDEL_HINT_LETMELIVE
-	//Do not call ..()
+	if(!force)
+		return QDEL_HINT_LETMELIVE
+
+	return ..()

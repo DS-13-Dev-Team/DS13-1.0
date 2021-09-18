@@ -327,7 +327,8 @@
 				spawn(1)
 					if ((obstacle && !QDELETED(obstacle)) && !obstacle.CanPass(user, get_turf(obstacle), 1) && obstacle.loc == obstacle_oldloc)
 						stop_obstacle(obstacle)
-						return FALSE
+
+				return FALSE
 
 	//Return true if we have not stopped, and will keep going
 	return TRUE
@@ -488,8 +489,8 @@
 	var/vector2/direction = Vector2.DirectionBetween(oldloc, newloc)
 	direction *= blur_filter_strength
 
-	blur.x = direction.x
-	blur.y = direction.y
+	blur:x = direction.x
+	blur:y = direction.y
 
 
 

@@ -56,7 +56,7 @@
 			log_debug("Non-AI mob designated malf AI! Report this.")
 			to_chat(world, "##ERROR: Non-AI mob designated malf AI! Report this.")
 
-			return 0
+			return
 
 		A.setup_for_malf()
 		A.laws = new /datum/ai_laws/nanotrasen/malfunction

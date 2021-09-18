@@ -161,7 +161,7 @@ The generic antag version.
 	currently_selected[level] = selection
 
 /datum/nano_module/skill_ui/antag/proc/deselect(skill_type)
-	for(var/i = 1 in 1 to length(currently_selected))
+	for(var/i = 1 to length(currently_selected))
 		var/list/selection = currently_selected[i]
 		LAZYREMOVE(selection, skill_type) // Can't send list[key] into the macro.
 		currently_selected[i] = selection
@@ -170,7 +170,7 @@ The generic antag version.
 	if(!skillset || !skillset.owner)
 		return
 	var/list/buff = list()
-	for(var/i in 1 to length(currently_selected))
+	for(var/i = 1 to length(currently_selected))
 		for(var/skill_type in currently_selected[i])
 			buff[skill_type] = i - skillset.get_value(skill_type)
 	if(skillset.owner.buff_skill(buff, buff_type = buff_type))

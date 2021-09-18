@@ -73,8 +73,11 @@
 		GM.minutes_per_point = GM.minimum_evac_time / initial(GM.evac_threshold)
 	return
 
-/datum/evacuation_predicate/travel_points/Destroy()
-	return 0
+/datum/evacuation_predicate/travel_points/Destroy(force = FALSE)
+	if(!force)
+		return
+
+	return ..()
 
 /datum/evacuation_predicate/travel_points/is_valid()
 	var/datum/game_mode/marker/GM = ticker.mode
