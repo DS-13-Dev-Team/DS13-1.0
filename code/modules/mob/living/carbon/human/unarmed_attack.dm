@@ -14,8 +14,13 @@ var/global/list/sparring_attack_cache = list()
 	var/shredding = 0 // Calls the old attack_alien() behavior on objects/mobs when on harm intent.
 	var/sharp = 0
 	var/edge = 0
-	var/delay = 1 SECOND	 //Overrideable
-	var/required_limb = list(BP_L_ARM, BP_R_ARM)	//The mob must have any of these limbs to do this attack
+	var/delay = 1 SECOND	//Default delay, overrideable
+
+	//The mob must have any of these limbs to do this attack. The limbs must be attached, not stumps, and not retracted
+	var/required_limb = list(BP_L_ARM, BP_R_ARM)
+
+	//Used with required_limb. If set true, and the required limb(s) are present, but retracted, then they will be extended to perform the attack
+	var/auto_extend = FALSE
 
 	var/deal_halloss
 	var/sparring_variant_type = /datum/unarmed_attack/light_strike
