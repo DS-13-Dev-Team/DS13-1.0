@@ -9,6 +9,8 @@
 //			/atom/new_loc: The loc after the move.
 //	moved(var/atom/movable/moving_instance, var/atom/old_loc, var/atom/new_loc)
 
+//The moved event once supported global listeners but it no longer does so, due to the performance cost of these
+
 GLOBAL_DATUM_INIT(moved_event, /decl/observ/moved, new)
 
 /decl/observ/moved
