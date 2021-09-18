@@ -197,7 +197,7 @@
 /obj/random/junk,
 /obj/random/junk,
 /obj/effect/decal/cleanable/cobweb2,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/maint_right,
 /area/ishimura/lower/maintenance/port)
 "aaE" = (
 /turf/simulated/wall/r_wall,
@@ -257,8 +257,8 @@
 	},
 /area/ishimura/lower/mining/shuttle/one)
 "aaM" = (
-/turf/simulated/floor/tiled/monotile,
-/area/ishimura/lower/misc/hallway/central)
+/turf/simulated/floor/dank/maint,
+/area/ishimura/lower/maintenance/starboard)
 "aaN" = (
 /turf/simulated/wall/r_wall,
 /area/ishimura/lower/misc/hallway/aft)
@@ -1259,7 +1259,7 @@
 	dir = 8
 	},
 /obj/random/loot/sometimes/few,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/maint_left,
 /area/ishimura/lower/maintenance/port)
 "adg" = (
 /turf/simulated/floor/dank,
@@ -1360,7 +1360,7 @@
 	d2 = 4;
 	icon_state = "0-4"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/slides,
 /area/ishimura/lower/crew/messhall)
 "adq" = (
 /obj/structure/disposalpipe/segment{
@@ -1567,7 +1567,7 @@
 	},
 /obj/random/loot/often/few,
 /obj/random/loot/often/few,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/maint_right,
 /area/ishimura/lower/maintenance/port)
 "adM" = (
 /obj/structure/filingcabinet,
@@ -1805,7 +1805,7 @@
 	},
 /obj/item/weapon/storage/box/survival,
 /obj/random/loot/sometimes/few,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/maint_left,
 /area/ishimura/lower/maintenance/starboard)
 "aeo" = (
 /turf/simulated/floor/dank/mono,
@@ -2360,7 +2360,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/misc/hallway/central)
 "afA" = (
 /obj/item/device/radio/intercom{
@@ -2372,7 +2372,7 @@
 	name = "Cafetria Shutter Control";
 	pixel_x = 24
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/messhall)
 "afB" = (
 /obj/item/device/radio/intercom{
@@ -2382,7 +2382,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/ishimura/lower/cargo/storage)
 "afC" = (
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/crew/hydroponics)
 "afD" = (
 /obj/machinery/door/firedoor/border_only,
@@ -2390,7 +2390,7 @@
 /area/ishimura/lower/maintenance/starboard)
 "afE" = (
 /obj/machinery/door/firedoor/border_only,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/maint,
 /area/ishimura/lower/maintenance/port)
 "afF" = (
 /obj/effect/floor_decal/industrial/warning/corner,
@@ -2944,7 +2944,7 @@
 /obj/item/device/radio/intercom{
 	pixel_y = 21
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/messhall)
 "agF" = (
 /obj/structure/cable/green{
@@ -3472,7 +3472,7 @@
 	dir = 1;
 	pixel_y = -22
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/a)
 "ahL" = (
 /obj/structure/disposalpipe/segment{
@@ -3821,7 +3821,7 @@
 /area/ishimura/lower/misc/hallway/central)
 "air" = (
 /obj/structure/disposalpipe/segment,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/messhall)
 "ais" = (
 /obj/item/device/radio/intercom/department/security{
@@ -3994,7 +3994,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/messhall)
 "aiH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -5507,7 +5507,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/hydroponics)
 "alu" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
@@ -5544,7 +5544,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/b)
 "aly" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -5656,7 +5656,7 @@
 /obj/item/weapon/reagent_containers/food/condiment/small/sugar{
 	pixel_x = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/messhall)
 "alI" = (
 /obj/structure/disposalpipe/segment,
@@ -5781,7 +5781,7 @@
 /obj/machinery/camera/network/crew{
 	dir = 1
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/messhall)
 "alY" = (
 /turf/simulated/wall/r_wall,
@@ -5817,7 +5817,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/messhall)
 "amb" = (
 /turf/simulated/floor/tiled/kafel_full,
@@ -5849,7 +5849,7 @@
 	dir = 4
 	},
 /obj/machinery/store,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/messhall)
 "amg" = (
 /obj/machinery/chem_master/condimaster,
@@ -5860,13 +5860,13 @@
 /obj/item/device/radio/intercom{
 	pixel_y = 21
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/misc/hallway/central)
 "ami" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/messhall)
 "amj" = (
 /obj/machinery/mining/drill,
@@ -5892,10 +5892,10 @@
 /obj/effect/landmark{
 	name = "JoinLateDorm"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/a)
 "amm" = (
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/messhall)
 "amn" = (
 /obj/structure/sign/warning/radioactive{
@@ -5949,7 +5949,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/messhall)
 "ams" = (
 /obj/structure/table/standard,
@@ -5980,7 +5980,7 @@
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/lower/crew/messhall/bar)
 "amx" = (
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/slides,
 /area/ishimura/lower/crew/messhall)
 "amy" = (
 /obj/machinery/light{
@@ -6022,7 +6022,7 @@
 "amC" = (
 /obj/machinery/door/airlock/civilian,
 /obj/machinery/door/firedoor/border_only,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/messhall)
 "amD" = (
 /obj/machinery/vending/lavatory,
@@ -6084,7 +6084,7 @@
 /area/ishimura/lower/crew/messhall/kitchen)
 "amI" = (
 /obj/structure/curtain/open/bed,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/a)
 "amJ" = (
 /obj/machinery/door/airlock/civilian,
@@ -6097,7 +6097,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/messhall)
 "amK" = (
 /obj/structure/table/rack,
@@ -6233,7 +6233,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/messhall)
 "amV" = (
 /obj/machinery/light_switch{
@@ -6278,7 +6278,7 @@
 /area/ishimura/lower/crew/messhall/bar)
 "amZ" = (
 /obj/machinery/atmospherics/unary/vent_pump/on,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/security/checkpoint/executive)
 "ana" = (
 /turf/simulated/wall/r_wall,
@@ -6328,7 +6328,7 @@
 /turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/cargo/lobby)
 "ang" = (
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/a)
 "anh" = (
 /obj/structure/cable{
@@ -6342,7 +6342,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/crew/hydroponics)
 "ani" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -6367,7 +6367,7 @@
 /obj/effect/floor_decal/industrial/loading{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/messhall)
 "anl" = (
 /obj/machinery/door/firedoor/border_only,
@@ -6447,7 +6447,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/hydroponics)
 "anu" = (
 /obj/structure/bed,
@@ -6461,7 +6461,7 @@
 /obj/effect/landmark{
 	name = "JoinLateDorm"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/a)
 "anv" = (
 /obj/structure/catwalk,
@@ -6481,7 +6481,7 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/a)
 "anx" = (
 /obj/structure/disposalpipe/segment{
@@ -6610,7 +6610,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/crew/hydroponics)
 "anJ" = (
 /obj/machinery/disposal,
@@ -6651,10 +6651,10 @@
 /area/ishimura/lower/crew/messhall/kitchen)
 "anN" = (
 /obj/structure/table/standard,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/messhall)
 "anO" = (
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/tech,
 /area/ishimura/lower/misc/hallway/escape_executive)
 "anP" = (
 /obj/structure/catwalk,
@@ -6667,9 +6667,6 @@
 "anQ" = (
 /turf/simulated/wall/r_wall,
 /area/ishimura/lower/security/checkpoint/executive)
-"anR" = (
-/turf/simulated/floor/tiled,
-/area/ishimura/lower/security/checkpoint/executive)
 "anS" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -6679,7 +6676,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/messhall)
 "anT" = (
 /obj/structure/window/reinforced{
@@ -6695,13 +6692,13 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/a)
 "anU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/crew/hydroponics)
 "anV" = (
 /obj/structure/closet/secure_closet/freezer/chicken,
@@ -6723,15 +6720,15 @@
 /obj/structure/closet/secure_closet/personal,
 /obj/random/drinkbottle,
 /obj/random/loot/rarely/few,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/a)
 "anY" = (
 /obj/structure/filingcabinet,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/checkpoint/executive)
 "anZ" = (
 /obj/structure/bed/chair,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/a)
 "aoa" = (
 /obj/effect/floor_decal/corner/grey/border{
@@ -6749,7 +6746,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/crew/hydroponics)
 "aoc" = (
 /obj/structure/disposalpipe/segment,
@@ -6768,7 +6765,7 @@
 /turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/messhall/bar/quarters)
 "aod" = (
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/escape/one)
 "aoe" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
@@ -6787,8 +6784,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/grater,
 /area/ishimura/lower/security/checkpoint/executive)
 "aog" = (
 /obj/item/device/flashlight/lamp,
@@ -6812,14 +6808,13 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/grater,
 /area/ishimura/lower/security/checkpoint/executive)
 "aoi" = (
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/messhall)
 "aoj" = (
 /obj/structure/cable{
@@ -6831,8 +6826,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/grater,
 /area/ishimura/lower/security/checkpoint/executive)
 "aok" = (
 /turf/simulated/wall/r_wall,
@@ -6849,7 +6843,7 @@
 	layer = 2.4;
 	level = 2
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/a)
 "aon" = (
 /obj/structure/disposalpipe/segment,
@@ -6888,8 +6882,7 @@
 /obj/structure/disposalpipe/junction{
 	dir = 1
 	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/cable,
 /area/ishimura/lower/crew/sleepblock/commons)
 "aoq" = (
 /obj/structure/disposalpipe/segment{
@@ -6929,8 +6922,7 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/checkpoint/executive)
 "aos" = (
 /obj/machinery/alarm{
@@ -6957,7 +6949,7 @@
 /obj/effect/landmark{
 	name = "JoinLateDorm"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/b)
 "aov" = (
 /obj/random/closet,
@@ -6988,7 +6980,7 @@
 /area/ishimura/lower/crew/cryo)
 "aoz" = (
 /obj/machinery/atmospherics/unary/vent_pump/on,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/messhall)
 "aoA" = (
 /obj/structure/bed,
@@ -7002,7 +6994,7 @@
 /obj/effect/landmark{
 	name = "JoinLateDorm"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/b)
 "aoB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -7027,7 +7019,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/a)
 "aoE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -7036,11 +7028,13 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/a)
 "aoF" = (
 /obj/item/weapon/stool/bar/padded,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/slides{
+	dir = 1
+	},
 /area/ishimura/lower/crew/messhall)
 "aoG" = (
 /obj/item/weapon/storage/mirror{
@@ -7083,7 +7077,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/a)
 "aoL" = (
 /turf/simulated/wall/r_wall,
@@ -7092,7 +7086,7 @@
 /obj/effect/floor_decal/industrial/loading{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/crew/hydroponics)
 "aoN" = (
 /obj/machinery/light/small,
@@ -7113,8 +7107,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/grater,
 /area/ishimura/lower/security/checkpoint/executive)
 "aoP" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
@@ -7130,7 +7123,7 @@
 /turf/simulated/floor/dank/tech,
 /area/ishimura/lower/misc/hallway/central)
 "aoR" = (
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/misc/hallway/escape_executive)
 "aoS" = (
 /obj/effect/floor_decal/corner/grey{
@@ -7145,7 +7138,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/hydroponics)
 "aoU" = (
 /obj/structure/cable{
@@ -7156,7 +7149,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/disposalpipe/segment,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/misc/hallway/escape_executive)
 "aoV" = (
 /obj/machinery/disposal,
@@ -7186,7 +7179,7 @@
 	d2 = 2;
 	icon_state = "0-2"
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/c)
 "aoZ" = (
 /obj/structure/disposalpipe/segment{
@@ -7209,8 +7202,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/security/escape)
 "apa" = (
 /obj/item/device/radio/intercom{
@@ -7223,7 +7215,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/a)
 "apb" = (
 /obj/item/device/radio/intercom{
@@ -7366,7 +7358,7 @@
 /obj/random/drinkbottle,
 /obj/random/smokes,
 /obj/random/loot/rarely/few,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/a)
 "apq" = (
 /obj/machinery/light,
@@ -7392,7 +7384,7 @@
 /obj/structure/closet/secure_closet/personal,
 /obj/random/medical/lite,
 /obj/random/loot/rarely/few,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/a)
 "apt" = (
 /obj/structure/cable{
@@ -7404,7 +7396,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/hydroponics)
 "apu" = (
 /obj/item/device/radio/intercom{
@@ -7436,7 +7428,7 @@
 /obj/effect/landmark{
 	name = "JoinLateDorm"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/a)
 "apx" = (
 /obj/effect/floor_decal/corner/grey{
@@ -7505,7 +7497,7 @@
 "apB" = (
 /obj/structure/table/standard,
 /obj/item/weapon/storage/photo_album,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/b)
 "apC" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
@@ -7513,7 +7505,7 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/b)
 "apD" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -7566,7 +7558,7 @@
 /area/ishimura/lower/engineering/storage_closet/electronics)
 "apI" = (
 /obj/machinery/camera/network/security,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/security/checkpoint/executive)
 "apJ" = (
 /obj/random/obstruction,
@@ -7644,14 +7636,14 @@
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/closet/emcloset,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/slides,
 /area/ishimura/lower/crew/sleepblock/commons)
 "apQ" = (
 /obj/structure/table/standard,
 /obj/item/device/camera_film,
 /obj/item/device/camera_film,
 /obj/item/device/camera_film,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/b)
 "apR" = (
 /obj/machinery/light,
@@ -7750,7 +7742,7 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/a)
 "aqb" = (
 /obj/machinery/atmospherics/unary/vent_pump/on,
@@ -7810,13 +7802,13 @@
 	name = "Planet Cracker"
 	},
 /obj/machinery/light,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/b)
 "aqh" = (
 /obj/item/device/radio/intercom{
 	pixel_y = 21
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/b)
 "aqi" = (
 /obj/effect/decal/cleanable/dirt,
@@ -7824,10 +7816,12 @@
 /area/ishimura/lower/crew/hydroponics)
 "aqj" = (
 /obj/structure/curtain/open/bed,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/b)
 "aqk" = (
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/slides{
+	dir = 1
+	},
 /area/ishimura/lower/crew/sleepblock/commons)
 "aql" = (
 /obj/structure/table/standard,
@@ -7840,7 +7834,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/messhall)
 "aqm" = (
 /obj/machinery/light{
@@ -7860,7 +7854,7 @@
 /obj/item/weapon/reagent_containers/food/condiment/small/peppermill{
 	pixel_x = 3
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/messhall)
 "aqo" = (
 /obj/structure/window/reinforced{
@@ -7870,7 +7864,7 @@
 /obj/structure/closet/secure_closet/personal,
 /obj/random/smokes,
 /obj/random/loot/rarely/few,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/a)
 "aqp" = (
 /obj/structure/cable{
@@ -7888,13 +7882,13 @@
 /turf/simulated/floor/plating,
 /area/ishimura/lower/engineering/substation/crew)
 "aqq" = (
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/b)
 "aqr" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 8
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/b)
 "aqs" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
@@ -7978,17 +7972,6 @@
 	},
 /turf/simulated/floor/dank/golf_gray,
 /area/ishimura/lower/engineering/storage_closet/electronics)
-"aqy" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
-/area/ishimura/lower/crew/sleepblock/commons)
 "aqz" = (
 /turf/simulated/wall/r_wall,
 /area/ishimura/lower/crew/sleepblock/commons)
@@ -7996,13 +7979,13 @@
 /obj/machinery/vending/snack,
 /obj/machinery/computer/arcade,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/commons)
 "aqB" = (
 /obj/machinery/vending/cigarette,
 /obj/machinery/computer/arcade,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/commons)
 "aqC" = (
 /obj/structure/cable{
@@ -8016,7 +7999,7 @@
 /obj/machinery/door/airlock/security{
 	name = "Hangar Control Hallway"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/checkpoint/executive)
 "aqD" = (
 /obj/structure/table/rack,
@@ -8038,7 +8021,7 @@
 	},
 /obj/structure/table/standard,
 /obj/item/weapon/deck/cards,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/commons)
 "aqF" = (
 /obj/machinery/light{
@@ -8047,25 +8030,8 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/commons)
-"aqG" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/turf/simulated/floor/tiled,
-/area/ishimura/lower/crew/messhall)
 "aqH" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -8104,7 +8070,7 @@
 /obj/machinery/vending/cola,
 /obj/machinery/computer/arcade,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/commons)
 "aqM" = (
 /obj/structure/showcase,
@@ -8112,7 +8078,7 @@
 	dir = 8
 	},
 /obj/structure/window/reinforced,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/commons)
 "aqN" = (
 /obj/machinery/door/blast/shutters/open{
@@ -8151,7 +8117,7 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/b)
 "aqS" = (
 /obj/structure/bed/chair{
@@ -8166,7 +8132,7 @@
 	d2 = 4;
 	icon_state = "0-4"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/a)
 "aqT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -8184,7 +8150,9 @@
 /turf/simulated/floor/dank/cable,
 /area/ishimura/lower/misc/hallway/central)
 "aqU" = (
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/tech{
+	dir = 1
+	},
 /area/ishimura/lower/crew/sleepblock/commons)
 "aqV" = (
 /obj/structure/table/rack,
@@ -8194,11 +8162,8 @@
 /turf/simulated/floor/dank/golf_gray,
 /area/ishimura/lower/engineering/storage_closet/paint)
 "aqW" = (
-/obj/machinery/status_display{
-	pixel_y = 32
-	},
-/turf/simulated/floor/tiled,
-/area/ishimura/lower/misc/hallway/central)
+/turf/simulated/floor/dank/maint_right,
+/area/ishimura/lower/maintenance/starboard)
 "aqX" = (
 /obj/structure/closet/hydrant{
 	pixel_x = -32
@@ -8206,13 +8171,13 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/commons)
 "aqY" = (
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/commons)
 "aqZ" = (
 /obj/structure/toilet,
@@ -8241,7 +8206,7 @@
 /obj/effect/landmark{
 	name = "JoinLateDorm"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/a)
 "arc" = (
 /obj/item/weapon/storage/mirror{
@@ -8274,7 +8239,7 @@
 /obj/effect/landmark{
 	name = "JoinLateDorm"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/b)
 "arf" = (
 /obj/structure/bed/chair{
@@ -8285,7 +8250,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/a)
 "arg" = (
 /obj/machinery/alarm{
@@ -8355,7 +8320,7 @@
 	dir = 8;
 	name = "Hangar Control Room One"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/escape/one)
 "arm" = (
 /turf/simulated/floor/carpet/blue2,
@@ -8366,7 +8331,7 @@
 	layer = 2.4;
 	level = 2
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/checkpoint/executive)
 "aro" = (
 /obj/structure/catwalk,
@@ -8418,7 +8383,7 @@
 	dir = 2;
 	icon_state = "pipe-c"
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/b)
 "art" = (
 /turf/simulated/wall/r_wall,
@@ -8456,7 +8421,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/messhall)
 "arw" = (
 /obj/machinery/power/apc{
@@ -8468,13 +8433,13 @@
 	d2 = 2;
 	icon_state = "0-2"
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/escape/one)
 "arx" = (
 /obj/effect/floor_decal/industrial/loading{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/messhall)
 "ary" = (
 /obj/structure/bed,
@@ -8488,7 +8453,7 @@
 /obj/effect/landmark{
 	name = "JoinLateDorm"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/c)
 "arz" = (
 /obj/structure/disposalpipe/segment{
@@ -8537,7 +8502,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/messhall)
 "arE" = (
 /obj/effect/floor_decal/corner/grey{
@@ -8572,7 +8537,7 @@
 /obj/effect/landmark/start{
 	name = "Planet Cracker"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/messhall)
 "arG" = (
 /obj/structure/cable{
@@ -8580,7 +8545,7 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/checkpoint/executive)
 "arH" = (
 /obj/structure/cable{
@@ -8592,8 +8557,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/grater,
 /area/ishimura/lower/security/checkpoint/executive)
 "arI" = (
 /obj/structure/cable{
@@ -8603,8 +8567,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/grater,
 /area/ishimura/lower/security/checkpoint/executive)
 "arJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -8621,8 +8584,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/grater,
 /area/ishimura/lower/misc/hallway/escape_executive)
 "arK" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -8644,15 +8606,14 @@
 /obj/structure/disposalpipe/junction/yjunction{
 	dir = 8
 	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/grater,
 /area/ishimura/lower/misc/hallway/escape_executive)
 "arL" = (
 /obj/machinery/light{
 	dir = 1
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/commons)
 "arM" = (
 /obj/effect/floor_decal/corner/grey{
@@ -8664,14 +8625,16 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/slides{
+	dir = 1
+	},
 /area/ishimura/lower/crew/sleepblock/commons)
 "arO" = (
 /obj/structure/bed/chair,
 /obj/effect/landmark/start{
 	name = "Planet Cracker"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/messhall)
 "arP" = (
 /obj/structure/window/reinforced{
@@ -8685,7 +8648,7 @@
 /obj/structure/closet/secure_closet/personal,
 /obj/random/medical/lite,
 /obj/random/loot/rarely/few,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/a)
 "arQ" = (
 /obj/structure/bed,
@@ -8727,7 +8690,9 @@
 	dir = 8;
 	pixel_x = 25
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/slides{
+	dir = 1
+	},
 /area/ishimura/lower/crew/messhall)
 "arV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -8741,7 +8706,7 @@
 /obj/machinery/door/airlock/civilian{
 	name = "Sleep Block A"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/a)
 "arW" = (
 /obj/structure/cable{
@@ -8752,8 +8717,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/grater,
 /area/ishimura/lower/misc/hallway/escape_executive)
 "arX" = (
 /turf/simulated/wall/r_wall,
@@ -8767,7 +8731,7 @@
 	dir = 8;
 	pixel_y = 34
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/sleepblock/commons)
 "arZ" = (
 /obj/structure/disposalpipe/segment,
@@ -8836,7 +8800,7 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/crew/sleepblock/commons)
 "asf" = (
 /mob/living/simple_animal/mouse/brown,
@@ -8846,7 +8810,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/tech,
 /area/ishimura/lower/misc/hallway/escape_executive)
 "ash" = (
 /obj/structure/catwalk,
@@ -8876,7 +8840,7 @@
 /obj/structure/closet/secure_closet/personal,
 /obj/random/smokes,
 /obj/random/loot/rarely/few,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/a)
 "asj" = (
 /obj/machinery/alarm{
@@ -8957,7 +8921,9 @@
 /area/ishimura/lower/mining/mining_bay)
 "asq" = (
 /obj/machinery/vending/cigarette,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/tech{
+	dir = 1
+	},
 /area/ishimura/lower/misc/hallway/escape_executive)
 "asr" = (
 /obj/structure/cable{
@@ -8973,12 +8939,13 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/grater,
 /area/ishimura/lower/misc/hallway/escape_executive)
 "ass" = (
 /obj/machinery/vending/snack,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/tech{
+	dir = 1
+	},
 /area/ishimura/lower/misc/hallway/escape_executive)
 "ast" = (
 /obj/structure/table/standard,
@@ -8989,14 +8956,14 @@
 	},
 /obj/item/weapon/deck/cards,
 /obj/random/loot/rarely/few,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/a)
 "asu" = (
 /obj/machinery/firealarm{
 	dir = 1;
 	pixel_y = -24
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/checkpoint/executive)
 "asv" = (
 /obj/machinery/door/firedoor/border_only,
@@ -9031,10 +8998,10 @@
 /obj/machinery/status_display{
 	pixel_y = 32
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/messhall)
 "asx" = (
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/c)
 "asy" = (
 /obj/structure/catwalk,
@@ -9060,13 +9027,13 @@
 /obj/structure/closet/secure_closet/personal,
 /obj/random/snack,
 /obj/random/loot/rarely/few,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/b)
 "asA" = (
 /obj/item/device/radio/intercom{
 	pixel_y = 21
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/c)
 "asB" = (
 /obj/structure/cable/green{
@@ -9093,13 +9060,13 @@
 /obj/random/cash,
 /obj/random/cash,
 /obj/random/cash,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/tech,
 /area/ishimura/lower/misc/hallway/escape_executive)
 "asD" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/c)
 "asE" = (
 /obj/structure/table/steel_reinforced,
@@ -9128,7 +9095,7 @@
 /area/ishimura/lower/misc/hallway/central)
 "asG" = (
 /obj/structure/curtain/open/bed,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/c)
 "asH" = (
 /obj/structure/bed/chair/shuttle/black{
@@ -9155,7 +9122,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/c)
 "asK" = (
 /obj/structure/disposalpipe/segment,
@@ -9185,7 +9152,7 @@
 	dir = 4;
 	pixel_x = 20
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/c)
 "asN" = (
 /obj/structure/table/standard,
@@ -9201,7 +9168,7 @@
 /obj/structure/closet/secure_closet/personal,
 /obj/random/snack,
 /obj/random/loot/rarely/few,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/b)
 "asP" = (
 /obj/structure/closet/firecloset,
@@ -9211,9 +9178,6 @@
 	},
 /turf/simulated/floor/dank/grater,
 /area/ishimura/lower/misc/hallway/central)
-"asQ" = (
-/turf/simulated/floor/tiled,
-/area/ishimura/lower/crew/sleepblock/executive)
 "asR" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -9221,25 +9185,13 @@
 /obj/effect/landmark/start{
 	name = "Planet Cracker"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/messhall)
-"asS" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/structure/disposalpipe/segment,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
-/area/ishimura/lower/crew/sleepblock/commons)
 "asT" = (
 /obj/structure/closet/medical_wall/filled{
 	pixel_y = 32
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/sleepblock/executive)
 "asU" = (
 /obj/item/device/radio/intercom{
@@ -9265,7 +9217,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/a)
 "asX" = (
 /obj/structure/table/marble,
@@ -9303,7 +9255,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/slides,
 /area/ishimura/lower/crew/messhall)
 "atc" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -9352,7 +9304,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/tech,
 /area/ishimura/lower/crew/sleepblock/commons)
 "atf" = (
 /obj/structure/table/rack,
@@ -9402,8 +9354,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/commons)
 "atk" = (
 /obj/structure/bed/chair/wood/wings{
@@ -9449,7 +9400,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/messhall)
 "atr" = (
 /obj/structure/table/marble,
@@ -9489,7 +9440,7 @@
 	icon_state = "0-4"
 	},
 /obj/item/weapon/storage/toolbox/emergency,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/slides,
 /area/ishimura/lower/crew/sleepblock/commons)
 "atv" = (
 /obj/structure/cable{
@@ -9499,7 +9450,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/messhall)
 "atw" = (
 /obj/machinery/power/apc{
@@ -9513,7 +9464,7 @@
 	},
 /obj/machinery/papershredder,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/checkpoint/executive)
 "atx" = (
 /obj/structure/toilet{
@@ -9536,7 +9487,7 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/c)
 "atB" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -9560,7 +9511,7 @@
 /obj/structure/closet/secure_closet/personal,
 /obj/random/snack,
 /obj/random/loot/rarely/few,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/b)
 "atE" = (
 /obj/structure/sign/warning/detailed,
@@ -9574,7 +9525,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/security/checkpoint/executive)
 "atG" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -9595,7 +9546,7 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/checkpoint/executive)
 "atI" = (
 /obj/machinery/disposal/deliveryChute{
@@ -9611,7 +9562,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/slides,
 /area/ishimura/lower/crew/sleepblock/commons)
 "atL" = (
 /obj/structure/window/reinforced{
@@ -9624,7 +9575,7 @@
 /obj/random/smokes,
 /obj/random/tool/low_chance,
 /obj/random/loot/rarely/few,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/b)
 "atM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -9661,7 +9612,7 @@
 /turf/simulated/floor/dank/bathr,
 /area/ishimura/lower/misc/bathroom/fore/male)
 "atP" = (
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/security/checkpoint/executive)
 "atQ" = (
 /obj/machinery/light/small{
@@ -9693,7 +9644,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/b)
 "atV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -9704,8 +9655,7 @@
 	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/segment,
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/commons)
 "atW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -9769,7 +9719,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/tech{
+	dir = 1
+	},
 /area/ishimura/lower/crew/sleepblock/commons)
 "auc" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -9779,7 +9731,7 @@
 /area/ishimura/lower/misc/bathroom/aft)
 "aud" = (
 /obj/structure/closet/walllocker/emerglocker/south,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/commons)
 "aue" = (
 /obj/structure/fitness/weightlifter,
@@ -9839,8 +9791,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/crew/sleepblock/commons)
 "auk" = (
 /obj/machinery/alarm{
@@ -9893,8 +9844,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/grater,
 /area/ishimura/lower/security/checkpoint/executive)
 "auo" = (
 /obj/structure/cable{
@@ -9908,7 +9858,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/slides{
+	dir = 1
+	},
 /area/ishimura/lower/security/checkpoint/executive)
 "aup" = (
 /obj/structure/foamedmetal,
@@ -9936,7 +9888,7 @@
 /obj/machinery/door/firedoor/border_only{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/security/checkpoint/executive)
 "auu" = (
 /obj/machinery/power/apc{
@@ -10005,7 +9957,7 @@
 	pixel_x = -21
 	},
 /obj/random/loot/rarely/few,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/escape/one)
 "auC" = (
 /obj/machinery/power/terminal,
@@ -10053,12 +10005,12 @@
 "auH" = (
 /obj/structure/table/standard,
 /obj/machinery/light,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/messhall)
 "auI" = (
 /obj/structure/table/standard,
 /obj/random/loot/rarely/few,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/escape/one)
 "auJ" = (
 /obj/structure/table/standard,
@@ -10067,7 +10019,7 @@
 	dir = 1;
 	pixel_y = -22
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/b)
 "auK" = (
 /obj/structure/bed/chair,
@@ -10077,13 +10029,13 @@
 /obj/effect/landmark/start{
 	name = "Planet Cracker"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/b)
 "auL" = (
 /obj/structure/closet/hydrant{
 	pixel_y = 32
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/escape/one)
 "auM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -10100,7 +10052,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/commons)
 "auO" = (
 /obj/structure/cable{
@@ -10150,7 +10102,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/messhall)
 "auT" = (
 /obj/structure/cable{
@@ -10196,12 +10148,12 @@
 	dir = 8;
 	pixel_x = 25
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/tech,
 /area/ishimura/lower/misc/hallway/escape_executive)
 "ava" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/b)
 "avb" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -10286,7 +10238,7 @@
 /obj/machinery/door/firedoor/border_only{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/sleepblock/commons)
 "avh" = (
 /obj/machinery/power/apc{
@@ -10304,13 +10256,13 @@
 /obj/effect/landmark/start{
 	name = "Planet Cracker"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/b)
 "avj" = (
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/c)
 "avk" = (
 /obj/structure/cable{
@@ -10344,7 +10296,7 @@
 	icon_state = "0-4"
 	},
 /obj/item/device/camera,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/b)
 "avo" = (
 /obj/structure/catwalk,
@@ -10398,13 +10350,13 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/escape/one)
 "avu" = (
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 4
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/security/escape)
 "avv" = (
 /obj/structure/bed/chair{
@@ -10413,7 +10365,7 @@
 /obj/effect/landmark/start{
 	name = "Planet Cracker"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/b)
 "avw" = (
 /obj/structure/disposalpipe/segment,
@@ -10452,8 +10404,7 @@
 	dir = 8;
 	icon_state = "pipe-j2"
 	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/cable,
 /area/ishimura/lower/crew/sleepblock/commons)
 "avy" = (
 /obj/structure/disposalpipe/segment,
@@ -10480,7 +10431,7 @@
 /obj/effect/landmark{
 	name = "JoinLateDorm"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/c)
 "avB" = (
 /obj/structure/closet/medical_wall/filled{
@@ -10520,7 +10471,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/escape/one)
 "avE" = (
 /obj/structure/table/standard,
@@ -10537,7 +10488,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/b)
 "avG" = (
 /obj/structure/table/standard,
@@ -10613,8 +10564,7 @@
 	dir = 4;
 	icon_state = "pipe-c"
 	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/commons)
 "avL" = (
 /obj/machinery/door/airlock/civilian{
@@ -10624,7 +10574,7 @@
 /obj/machinery/door/firedoor/border_only{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/sleepblock/commons)
 "avM" = (
 /obj/structure/disposalpipe/segment{
@@ -10675,7 +10625,7 @@
 /obj/random/snack,
 /obj/random/tool/low_chance,
 /obj/random/loot/rarely/few,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/b)
 "avP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -10769,7 +10719,7 @@
 /obj/structure/closet/secure_closet/personal,
 /obj/random/snack,
 /obj/random/loot/rarely/few,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/b)
 "avX" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -11052,7 +11002,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/slides{
+	dir = 1
+	},
 /area/ishimura/lower/crew/sleepblock/commons)
 "awx" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -11250,14 +11202,14 @@
 /obj/effect/landmark/start{
 	name = "Planet Cracker"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/b)
 "awV" = (
 /obj/structure/table/standard,
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/slides,
 /area/ishimura/lower/crew/messhall)
 "awW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -11295,8 +11247,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
 	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/checkpoint/executive)
 "axa" = (
 /obj/machinery/door/firedoor/border_only,
@@ -11323,7 +11274,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/security/checkpoint/executive)
 "axd" = (
 /obj/machinery/power/apc{
@@ -11363,7 +11314,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/escape/one)
 "axh" = (
 /obj/item/weapon/storage/mirror{
@@ -11411,7 +11362,7 @@
 	dir = 10
 	},
 /obj/structure/disposalpipe/segment,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/b)
 "axl" = (
 /obj/structure/cable{
@@ -11633,13 +11584,13 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/disposalpipe/segment,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/b)
 "axG" = (
 /obj/effect/floor_decal/industrial/loading{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood/alt,
 /area/ishimura/lower/security/escape/lounge)
 "axH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -11650,7 +11601,7 @@
 	icon_state = "2-8"
 	},
 /obj/structure/disposalpipe/segment,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/b)
 "axI" = (
 /obj/structure/closet/hydrant{
@@ -11849,9 +11800,6 @@
 /obj/effect/floor_decal/industrial/outline,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/shuttle/executive_shuttle)
-"ayc" = (
-/turf/simulated/floor/tiled/monotile,
-/area/ishimura/lower/security/escape)
 "ayd" = (
 /turf/simulated/floor/tiled/monotile,
 /area/shuttle/executive_shuttle)
@@ -11911,8 +11859,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/commons)
 "ayk" = (
 /obj/structure/bed/chair/office/dark{
@@ -11956,8 +11903,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/grater,
 /area/ishimura/lower/crew/sleepblock/commons)
 "ayo" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -12014,7 +11960,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/grater,
 /area/ishimura/lower/security/checkpoint/executive)
 "ays" = (
 /obj/machinery/power/apc{
@@ -12044,7 +11990,7 @@
 	dir = 8;
 	pixel_y = 33
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/sleepblock/commons)
 "ayu" = (
 /obj/structure/table/rack,
@@ -12121,7 +12067,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/misc/hallway/central)
 "ayz" = (
 /obj/machinery/portable_atmospherics/hydroponics,
@@ -12171,7 +12117,7 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/c)
 "ayE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -12203,16 +12149,13 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/ishimura/lower/crew/cryo)
-"ayG" = (
-/turf/simulated/floor/tiled,
-/area/ishimura/lower/security/escape/lounge)
 "ayH" = (
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/c)
 "ayI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -12240,8 +12183,7 @@
 	dir = 8;
 	icon_state = "pipe-j2"
 	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/grater,
 /area/ishimura/lower/crew/sleepblock/commons)
 "ayK" = (
 /obj/machinery/door/firedoor/border_only,
@@ -12256,7 +12198,7 @@
 /obj/machinery/door/airlock/security{
 	name = "Executive Quarters Checkpoint"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/checkpoint/executive)
 "ayL" = (
 /obj/machinery/alarm{
@@ -12272,7 +12214,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/commons)
 "ayN" = (
 /obj/structure/disposalpipe/segment{
@@ -12612,7 +12554,7 @@
 /obj/machinery/door/firedoor/border_only{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/grater,
 /area/ishimura/lower/security/checkpoint/executive)
 "azo" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -12624,7 +12566,7 @@
 /obj/structure/closet/hydrant{
 	pixel_y = 32
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood/alt,
 /area/ishimura/lower/security/escape/lounge)
 "azq" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -12757,7 +12699,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/slides,
 /area/ishimura/lower/security/checkpoint/executive)
 "azI" = (
 /turf/simulated/floor/plating,
@@ -12895,7 +12837,7 @@
 /area/ishimura/lower/misc/marker)
 "azZ" = (
 /obj/structure/bed/chair,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/escape/one)
 "aAa" = (
 /obj/structure/table/rack,
@@ -12921,7 +12863,7 @@
 	},
 /obj/machinery/photocopier,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/checkpoint/executive)
 "aAe" = (
 /obj/structure/table/rack,
@@ -12932,7 +12874,7 @@
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/lower/cargo/storage)
 "aAf" = (
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/escape/two)
 "aAg" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -12951,7 +12893,7 @@
 /obj/machinery/camera/network/security{
 	dir = 8
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/escape/one)
 "aAi" = (
 /obj/machinery/disposal,
@@ -13256,7 +13198,7 @@
 /obj/structure/closet/medical_wall/filled{
 	pixel_x = -30
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/slides,
 /area/ishimura/lower/crew/sleepblock/commons)
 "aAJ" = (
 /obj/structure/table/standard,
@@ -13283,7 +13225,7 @@
 /obj/structure/sign/directions/evac{
 	pixel_x = 32
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/tech,
 /area/ishimura/lower/misc/hallway/escape_executive)
 "aAM" = (
 /obj/structure/disposalpipe/segment{
@@ -13305,7 +13247,7 @@
 /area/ishimura/lower/mining/locker_room)
 "aAN" = (
 /obj/structure/closet/walllocker/emerglocker/north,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/security/checkpoint/executive)
 "aAP" = (
 /obj/structure/catwalk,
@@ -13413,7 +13355,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/commons)
 "aBb" = (
 /obj/structure/catwalk,
@@ -13618,7 +13560,7 @@
 	dir = 4;
 	pixel_x = -21
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/c)
 "aBw" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -13772,7 +13714,7 @@
 /obj/item/device/radio/intercom/department/security{
 	pixel_y = 20
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/security/checkpoint/executive)
 "aBP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -13802,7 +13744,9 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/slides{
+	dir = 1
+	},
 /area/ishimura/lower/security/checkpoint/executive)
 "aBS" = (
 /obj/structure/cable{
@@ -13820,14 +13764,13 @@
 /obj/structure/disposalpipe/junction{
 	dir = 8
 	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/grater,
 /area/ishimura/lower/crew/sleepblock/commons)
 "aBT" = (
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/escape/one)
 "aBU" = (
 /obj/effect/decal/cleanable/dirt,
@@ -13836,7 +13779,7 @@
 "aBV" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/closet/firecloset,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/misc/hallway/central)
 "aBW" = (
 /obj/structure/table/standard,
@@ -13855,7 +13798,7 @@
 "aBY" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/structure/closet/walllocker/emerglocker/north,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/escape/one)
 "aBZ" = (
 /obj/structure/table/standard,
@@ -13867,7 +13810,7 @@
 /area/ishimura/lower/crew/sleepblock/executive/quarters/bridge_officers)
 "aCa" = (
 /obj/machinery/camera/network/command,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/security/escape)
 "aCb" = (
 /obj/structure/table/standard,
@@ -13940,7 +13883,7 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/checkpoint/executive)
 "aCj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -13957,8 +13900,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
 	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/security/escape)
 "aCk" = (
 /obj/structure/catwalk,
@@ -13971,10 +13913,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plating,
 /area/ishimura/lower/maintenance/engineering_starboard)
-"aCl" = (
-/obj/machinery/light,
-/turf/simulated/floor/tiled,
-/area/ishimura/lower/security/checkpoint/executive)
 "aCm" = (
 /obj/machinery/door/airlock/civilian{
 	name = "Cryogenic Storage"
@@ -13992,7 +13930,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/sleepblock/executive)
 "aCo" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -14009,8 +13947,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/grater,
 /area/ishimura/lower/crew/sleepblock/commons)
 "aCp" = (
 /obj/structure/disposalpipe/segment{
@@ -14055,7 +13992,7 @@
 	d2 = 4;
 	icon_state = "0-4"
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood/alt,
 /area/ishimura/lower/security/escape/lounge)
 "aCt" = (
 /obj/structure/cable{
@@ -14278,7 +14215,7 @@
 /obj/machinery/camera/network/command{
 	dir = 1
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/security/escape)
 "aCN" = (
 /obj/machinery/light/small{
@@ -14573,7 +14510,7 @@
 /obj/machinery/camera/network/command{
 	dir = 1
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/security/escape)
 "aDi" = (
 /obj/machinery/door/firedoor/border_only,
@@ -14596,7 +14533,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/c)
 "aDk" = (
 /obj/structure/bed/chair{
@@ -14605,7 +14542,7 @@
 /obj/machinery/newscaster{
 	pixel_y = 32
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/commons)
 "aDl" = (
 /obj/structure/bed/chair{
@@ -14614,7 +14551,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/c)
 "aDm" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -14629,8 +14566,7 @@
 	icon_state = "4-8"
 	},
 /obj/structure/closet/walllocker/emerglocker/north,
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/checkpoint/executive)
 "aDn" = (
 /obj/structure/cable/green{
@@ -14707,7 +14643,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/escape/one)
 "aDs" = (
 /obj/machinery/mining/brace{
@@ -14796,7 +14732,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/a)
 "aDB" = (
 /obj/machinery/door/airlock/civilian{
@@ -14811,7 +14747,7 @@
 	dir = 4;
 	pixel_y = 30
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/sleepblock/commons)
 "aDD" = (
 /obj/structure/cable{
@@ -14827,7 +14763,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/disposalpipe/segment,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood/alt,
 /area/ishimura/lower/security/escape/lounge)
 "aDE" = (
 /obj/machinery/door/airlock/civilian{
@@ -14838,7 +14774,7 @@
 /turf/simulated/floor/dank/bathr,
 /area/ishimura/lower/misc/bathroom/fore/male)
 "aDF" = (
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood/alt,
 /area/ishimura/lower/security/escape/lounge)
 "aDG" = (
 /obj/machinery/vending/fitness,
@@ -14875,7 +14811,7 @@
 /obj/machinery/status_display{
 	pixel_y = 32
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/commons)
 "aDJ" = (
 /obj/effect/floor_decal/corner/grey{
@@ -15197,7 +15133,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/checkpoint/executive)
 "aEg" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -15226,14 +15162,14 @@
 /obj/structure/table/standard,
 /obj/random/smokes,
 /obj/random/smokes,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/tech,
 /area/ishimura/lower/misc/hallway/escape_executive)
 "aEi" = (
 /obj/structure/table/standard,
 /obj/structure/closet/medical_wall/filled{
 	pixel_x = 30
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/crew/sleepblock/commons)
 "aEj" = (
 /obj/machinery/door/firedoor/border_only,
@@ -15270,8 +15206,7 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/grater,
 /area/ishimura/lower/misc/hallway/escape_executive)
 "aEl" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -15288,8 +15223,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/tech{
+	dir = 1
+	},
 /area/ishimura/lower/misc/hallway/escape_executive)
 "aEm" = (
 /obj/structure/cable{
@@ -15324,7 +15260,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/tech,
 /area/ishimura/lower/misc/hallway/escape_executive)
 "aEo" = (
 /obj/machinery/power/apc{
@@ -15336,7 +15272,7 @@
 	d2 = 2;
 	icon_state = "0-2"
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/sleepblock/executive)
 "aEp" = (
 /obj/structure/cable/green{
@@ -15376,7 +15312,7 @@
 /obj/structure/disposalpipe/junction{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/tech,
 /area/ishimura/lower/crew/sleepblock/commons)
 "aEs" = (
 /obj/machinery/shower{
@@ -15403,7 +15339,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood/alt,
 /area/ishimura/lower/security/escape/lounge)
 "aEu" = (
 /obj/machinery/door/firedoor/border_only,
@@ -15449,8 +15385,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/hardwood/alt,
 /area/ishimura/lower/security/escape/lounge)
 "aEx" = (
 /obj/effect/wallframe_spawn/reinforced,
@@ -15567,8 +15502,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/hardwood/alt,
 /area/ishimura/lower/security/escape/lounge)
 "aEG" = (
 /obj/machinery/light{
@@ -15585,8 +15519,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/checkpoint/executive)
 "aEH" = (
 /obj/machinery/door/airlock/hatch{
@@ -15624,21 +15557,6 @@
 	},
 /turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/messhall/bar/quarters)
-"aEK" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
-/area/ishimura/lower/security/checkpoint/executive)
 "aEL" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -15651,7 +15569,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/checkpoint/executive)
 "aEM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -15668,8 +15586,7 @@
 /obj/structure/closet/hydrant{
 	pixel_y = 32
 	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/checkpoint/executive)
 "aEN" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -15688,8 +15605,7 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/checkpoint/executive)
 "aEO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -15708,12 +15624,11 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/checkpoint/executive)
 "aEP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/checkpoint/executive)
 "aEQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -15723,11 +15638,10 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/checkpoint/executive)
 "aER" = (
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/security/escape)
 "aES" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -15737,15 +15651,15 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/security/escape)
 "aET" = (
 /obj/structure/disposalpipe/segment,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/security/escape)
 "aEU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/security/escape)
 "aEV" = (
 /obj/machinery/shower{
@@ -15753,28 +15667,11 @@
 	},
 /turf/simulated/floor/dank/bathr,
 /area/ishimura/lower/misc/bathroom/fore/male)
-"aEW" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/ishimura/lower/crew/sleepblock/executive)
 "aEX" = (
 /obj/structure/closet/hydrant{
 	pixel_y = 32
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/sleepblock/executive)
 "aEY" = (
 /obj/structure/cable{
@@ -15782,7 +15679,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/security/escape)
 "aEZ" = (
 /obj/structure/window/reinforced,
@@ -15800,8 +15697,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/hardwood/alt,
 /area/ishimura/lower/security/escape/lounge)
 "aFa" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -15821,8 +15717,7 @@
 /obj/structure/disposalpipe/junction/yjunction{
 	dir = 8
 	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/hardwood/alt,
 /area/ishimura/lower/security/escape/lounge)
 "aFb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -15839,14 +15734,13 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/security/escape)
 "aFc" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood/alt,
 /area/ishimura/lower/security/escape/lounge)
 "aFd" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -15864,8 +15758,7 @@
 	dir = 8;
 	icon_state = "pipe-c"
 	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/security/escape)
 "aFe" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -15877,8 +15770,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/security/escape)
 "aFf" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -15897,8 +15789,7 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/security/escape)
 "aFg" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -15912,8 +15803,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/security/escape)
 "aFh" = (
 /obj/structure/cable{
@@ -15927,7 +15817,7 @@
 	dir = 4;
 	icon_state = "pipe-c"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/checkpoint/executive)
 "aFi" = (
 /obj/structure/cable{
@@ -15938,7 +15828,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/escape/two)
 "aFj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -15952,8 +15842,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/security/escape)
 "aFk" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -15967,8 +15856,7 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/security/escape)
 "aFl" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -15980,12 +15868,11 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/effect/floor_decal/industrial/warning/corner,
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/security/escape)
 "aFm" = (
 /obj/effect/floor_decal/industrial/warning/corner,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/security/escape)
 "aFn" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -16012,11 +15899,11 @@
 /area/ishimura/lower/security/checkpoint/executive)
 "aFo" = (
 /obj/effect/floor_decal/industrial/warning,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/security/escape)
 "aFp" = (
 /obj/effect/floor_decal/industrial/loading,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/security/escape)
 "aFq" = (
 /obj/structure/cable{
@@ -16027,7 +15914,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/disposalpipe/segment,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/sleepblock/commons)
 "aFr" = (
 /obj/structure/cable{
@@ -16045,8 +15932,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/grater,
 /area/ishimura/lower/crew/sleepblock/executive)
 "aFs" = (
 /obj/structure/cable{
@@ -16063,8 +15949,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/grater,
 /area/ishimura/lower/crew/sleepblock/executive)
 "aFt" = (
 /obj/structure/cable{
@@ -16083,8 +15968,7 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/grater,
 /area/ishimura/lower/crew/sleepblock/executive)
 "aFu" = (
 /obj/structure/cable{
@@ -16128,7 +16012,7 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 8
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/security/escape)
 "aFx" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -16141,8 +16025,7 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 8
 	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/security/escape)
 "aFy" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -16153,14 +16036,13 @@
 	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/segment,
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/security/escape)
 "aFz" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/security/escape)
 "aFA" = (
 /obj/structure/bed/chair{
@@ -16171,13 +16053,13 @@
 	pixel_x = -24
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood/alt,
 /area/ishimura/lower/security/escape/lounge)
 "aFB" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/security/escape)
 "aFC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -16187,31 +16069,19 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/security/escape)
-"aFD" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
-/area/ishimura/lower/security/escape/lounge)
 "aFE" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/security/escape)
 "aFF" = (
 /obj/effect/floor_decal/industrial/loading{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/security/escape)
 "aFG" = (
 /obj/structure/showcase,
@@ -16219,7 +16089,7 @@
 	dir = 8;
 	health = 1e+006
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood/alt,
 /area/ishimura/lower/security/escape/lounge)
 "aFH" = (
 /obj/structure/cable{
@@ -16234,14 +16104,14 @@
 /obj/machinery/door/airlock/command{
 	name = "Executive Escape Hangar"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood/alt,
 /area/ishimura/lower/security/escape/lounge)
 "aFI" = (
 /obj/structure/showcase,
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood/alt,
 /area/ishimura/lower/security/escape/lounge)
 "aFJ" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -16259,8 +16129,7 @@
 	dir = 1;
 	icon_state = "pipe-c"
 	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/hardwood/alt,
 /area/ishimura/lower/security/escape/lounge)
 "aFK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -16278,7 +16147,7 @@
 	dir = 2;
 	icon_state = "pipe-c"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood/alt,
 /area/ishimura/lower/security/escape/lounge)
 "aFL" = (
 /obj/structure/cable{
@@ -16295,7 +16164,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/tech{
+	dir = 1
+	},
 /area/ishimura/lower/misc/hallway/escape_executive)
 "aFM" = (
 /obj/structure/cable{
@@ -16312,8 +16183,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/tech,
 /area/ishimura/lower/misc/hallway/escape_executive)
 "aFN" = (
 /obj/structure/cable{
@@ -16332,15 +16202,14 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/grater,
 /area/ishimura/lower/misc/hallway/escape_executive)
 "aFO" = (
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/command{
 	name = "Executive Escape Hangar"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood/alt,
 /area/ishimura/lower/security/escape/lounge)
 "aFP" = (
 /obj/structure/cable{
@@ -16354,7 +16223,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/tech{
+	dir = 1
+	},
 /area/ishimura/lower/misc/hallway/escape_executive)
 "aFQ" = (
 /obj/structure/closet/emcloset,
@@ -16420,7 +16291,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/tech,
 /area/ishimura/lower/misc/hallway/escape_executive)
 "aFX" = (
 /obj/structure/bed/chair{
@@ -16428,13 +16299,13 @@
 	},
 /obj/structure/closet/walllocker/emerglocker/west,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood/alt,
 /area/ishimura/lower/security/escape/lounge)
 "aFY" = (
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/escape/one)
 "aFZ" = (
 /obj/structure/largecrate,
@@ -16456,30 +16327,30 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/escape/two)
 "aGb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/escape/two)
 "aGc" = (
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood/alt,
 /area/ishimura/lower/security/escape/lounge)
 "aGd" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood/alt,
 /area/ishimura/lower/security/escape/lounge)
 "aGe" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/structure/closet/walllocker/emerglocker/south,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/escape/two)
 "aGf" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -16494,7 +16365,7 @@
 /obj/machinery/door/airlock/civilian{
 	name = "Sleep Block B"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/b)
 "aGg" = (
 /obj/structure/cable{
@@ -16521,15 +16392,14 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/grater,
 /area/ishimura/lower/crew/sleepblock/executive)
 "aGh" = (
 /obj/structure/bed/chair{
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood/alt,
 /area/ishimura/lower/security/escape/lounge)
 "aGi" = (
 /obj/machinery/alarm{
@@ -16540,13 +16410,13 @@
 /area/ishimura/lower/security/checkpoint/crew)
 "aGj" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/messhall)
 "aGk" = (
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 1
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/security/escape)
 "aGl" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -16564,13 +16434,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/security/escape)
 "aGm" = (
 /obj/structure/closet/firecloset,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/crew/sleepblock/commons)
 "aGn" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -16593,8 +16462,7 @@
 	dir = 2;
 	icon_state = "pipe-c"
 	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/security/escape)
 "aGo" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -16608,24 +16476,23 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/security/escape)
 "aGp" = (
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/commons)
 "aGq" = (
 /obj/machinery/light,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/commons)
 "aGr" = (
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/a)
 "aGs" = (
 /obj/machinery/light{
@@ -16642,7 +16509,7 @@
 	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/segment,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/c)
 "aGu" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -16653,7 +16520,7 @@
 	icon_state = "1-8"
 	},
 /obj/structure/disposalpipe/segment,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/c)
 "aGv" = (
 /obj/structure/window/reinforced{
@@ -16668,7 +16535,7 @@
 /obj/random/snack,
 /obj/random/smokes,
 /obj/random/loot/rarely/few,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/b)
 "aGw" = (
 /obj/structure/cable{
@@ -16685,7 +16552,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/misc/hallway/central)
 "aGx" = (
 /obj/structure/disposalpipe/segment{
@@ -16724,7 +16591,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/misc/hallway/central)
 "aGz" = (
 /obj/structure/cable{
@@ -16741,7 +16608,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/slides,
 /area/ishimura/lower/crew/sleepblock/commons)
 "aGA" = (
 /obj/structure/disposalpipe/segment{
@@ -16755,8 +16622,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/tech,
 /area/ishimura/lower/crew/sleepblock/commons)
 "aGB" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
@@ -16764,7 +16630,7 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood/alt,
 /area/ishimura/lower/security/escape/lounge)
 "aGC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -16870,7 +16736,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/executive)
 "aGN" = (
 /obj/structure/bed/chair/office/dark{
@@ -16967,7 +16833,7 @@
 	},
 /obj/machinery/vending/cola,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/commons)
 "aGV" = (
 /obj/structure/cable{
@@ -16985,8 +16851,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/grater,
 /area/ishimura/lower/crew/sleepblock/executive)
 "aGW" = (
 /obj/structure/cable{
@@ -17059,7 +16924,7 @@
 /obj/machinery/door/airlock/civilian{
 	name = "Sleep Block C"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/c)
 "aHb" = (
 /obj/machinery/door/firedoor/border_only,
@@ -17227,7 +17092,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/sleepblock/executive)
 "aHo" = (
 /obj/structure/cable{
@@ -17241,8 +17106,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/tech,
 /area/ishimura/lower/crew/sleepblock/commons)
 "aHp" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -17253,10 +17117,10 @@
 	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/segment,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/sleepblock/executive)
 "aHq" = (
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/sleepblock/executive)
 "aHr" = (
 /obj/structure/cable{
@@ -17275,13 +17139,13 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/sleepblock/executive)
 "aHt" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/grater,
 /area/ishimura/lower/crew/sleepblock/executive)
 "aHu" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -17298,8 +17162,7 @@
 /obj/structure/disposalpipe/junction{
 	dir = 4
 	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/grater,
 /area/ishimura/lower/crew/sleepblock/executive)
 "aHv" = (
 /obj/machinery/firealarm{
@@ -17317,8 +17180,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/disposalpipe/segment,
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/commons)
 "aHx" = (
 /obj/structure/cable{
@@ -17336,8 +17198,7 @@
 /obj/structure/disposalpipe/junction{
 	dir = 8
 	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/crew/sleepblock/commons)
 "aHy" = (
 /obj/structure/cable{
@@ -17352,8 +17213,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/commons)
 "aHz" = (
 /obj/structure/cable{
@@ -17361,7 +17221,9 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/tech{
+	dir = 1
+	},
 /area/ishimura/lower/crew/sleepblock/commons)
 "aHA" = (
 /obj/structure/cable{
@@ -17386,8 +17248,7 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/tech,
 /area/ishimura/lower/crew/sleepblock/commons)
 "aHB" = (
 /obj/structure/cable{
@@ -17408,20 +17269,20 @@
 	dir = 1;
 	pixel_y = -24
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/messhall)
 "aHC" = (
 /obj/machinery/computer/general_air_control{
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/escape/one)
 "aHD" = (
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/escape/two)
 "aHE" = (
 /obj/structure/window/reinforced{
@@ -17429,7 +17290,7 @@
 	},
 /obj/machinery/vending/cigarette,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/commons)
 "aHF" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
@@ -17437,7 +17298,7 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/slides,
 /area/ishimura/lower/crew/sleepblock/commons)
 "aHG" = (
 /obj/structure/closet/firecloset,
@@ -17445,14 +17306,16 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/slides,
 /area/ishimura/lower/crew/sleepblock/commons)
 "aHH" = (
 /obj/item/device/radio/intercom{
 	dir = 4;
 	pixel_x = -22
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/tech{
+	dir = 1
+	},
 /area/ishimura/lower/crew/sleepblock/commons)
 "aHI" = (
 /obj/machinery/disposal,
@@ -17463,7 +17326,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/crew/sleepblock/commons)
 "aHJ" = (
 /obj/structure/cable{
@@ -17524,7 +17387,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/messhall)
 "aHO" = (
 /obj/structure/table/rack,
@@ -17541,21 +17404,21 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/escape/one)
 "aHQ" = (
 /obj/structure/filingcabinet,
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/checkpoint/executive)
 "aHR" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /obj/machinery/light,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/checkpoint/executive)
 "aHS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -17569,13 +17432,13 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/escape/two)
 "aHT" = (
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/escape/two)
 "aHU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -17595,13 +17458,13 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/security/escape)
 "aHW" = (
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/slides,
 /area/ishimura/lower/security/escape)
 "aHX" = (
 /obj/structure/bed/chair/shuttle/blue{
@@ -17615,7 +17478,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/escape/two)
 "aHZ" = (
 /obj/structure/table/rack,
@@ -17634,31 +17497,31 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/escape/two)
 "aIb" = (
 /obj/machinery/light,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/security/escape)
 "aIc" = (
 /obj/machinery/status_display{
 	pixel_y = 32
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/sleepblock/commons)
 "aId" = (
 /obj/item/modular_computer/console/preset/security{
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/checkpoint/executive)
 "aIe" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/messhall)
 "aIf" = (
 /obj/structure/cable{
@@ -17681,14 +17544,14 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/messhall)
 "aIg" = (
 /obj/item/device/radio/intercom{
 	dir = 1;
 	pixel_y = -28
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/messhall)
 "aIh" = (
 /obj/machinery/disposal,
@@ -17699,7 +17562,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/grater,
 /area/ishimura/lower/crew/sleepblock/executive)
 "aIi" = (
 /obj/structure/bed/chair/comfy/black{
@@ -17771,18 +17634,18 @@
 "aIq" = (
 /obj/machinery/media/jukebox/old,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/executive)
 "aIr" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/machinery/door/firedoor/border_only,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/slides,
 /area/ishimura/lower/crew/sleepblock/commons)
 "aIs" = (
 /obj/structure/closet/medical_wall/filled{
 	pixel_x = -30
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/checkpoint/executive)
 "aIt" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -17801,7 +17664,7 @@
 /area/ishimura/lower/crew/sleepblock/executive/quarters/first_lieutenant)
 "aIv" = (
 /obj/machinery/light,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/security/checkpoint/executive)
 "aIw" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -17815,13 +17678,15 @@
 /area/ishimura/lower/misc/bathroom/fore/female)
 "aIx" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/messhall)
 "aIy" = (
 /obj/machinery/camera/network/command{
 	dir = 4
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/tech{
+	dir = 1
+	},
 /area/ishimura/lower/misc/hallway/escape_executive)
 "aIz" = (
 /obj/machinery/light_switch{
@@ -17854,7 +17719,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/disposalpipe/segment,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/security/escape)
 "aIC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -17899,7 +17764,7 @@
 /obj/effect/landmark{
 	name = "JoinLateDorm"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/c)
 "aIH" = (
 /obj/structure/cable{
@@ -17923,8 +17788,7 @@
 	icon_state = "pipe-j2"
 	},
 /obj/structure/closet/walllocker/emerglocker/east,
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/tech,
 /area/ishimura/lower/crew/sleepblock/commons)
 "aII" = (
 /obj/structure/disposalpipe/segment{
@@ -17958,7 +17822,7 @@
 	dir = 8;
 	name = "Escape Lounge"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood/alt,
 /area/ishimura/lower/security/escape/lounge)
 "aIL" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -18000,7 +17864,7 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/misc/hallway/central)
 "aIR" = (
 /obj/structure/cable{
@@ -18024,7 +17888,7 @@
 	},
 /obj/machinery/vending/snack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/commons)
 "aIT" = (
 /obj/machinery/door/firedoor/border_only,
@@ -18035,7 +17899,9 @@
 /area/ishimura/lower/crew/messhall/executive)
 "aIU" = (
 /obj/machinery/vending/cola,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/tech{
+	dir = 1
+	},
 /area/ishimura/lower/misc/hallway/escape_executive)
 "aIV" = (
 /obj/structure/cable{
@@ -18052,7 +17918,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/slides{
+	dir = 1
+	},
 /area/ishimura/lower/misc/hallway/central)
 "aIW" = (
 /obj/structure/cable{
@@ -18062,14 +17930,14 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/misc/hallway/central)
 "aIX" = (
 /obj/machinery/firealarm{
 	dir = 4;
 	pixel_x = 24
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/sleepblock/executive)
 "aIY" = (
 /obj/structure/table/standard,
@@ -18077,7 +17945,7 @@
 	dir = 1
 	},
 /obj/item/weapon/folder/red,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/checkpoint/executive)
 "aIZ" = (
 /obj/machinery/light{
@@ -18243,7 +18111,7 @@
 "aJr" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/closet/emcloset,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/sleepblock/executive)
 "aJs" = (
 /obj/structure/cable{
@@ -18253,14 +18121,14 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/misc/hallway/escape_executive)
 "aJt" = (
 /obj/machinery/vending/cola,
 /obj/machinery/camera/network/command{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood/alt,
 /area/ishimura/lower/security/escape/lounge)
 "aJu" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -18270,7 +18138,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood/alt,
 /area/ishimura/lower/security/escape/lounge)
 "aJv" = (
 /obj/structure/bed/chair{
@@ -18281,13 +18149,13 @@
 	pixel_y = -28
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood/alt,
 /area/ishimura/lower/security/escape/lounge)
 "aJw" = (
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood/alt,
 /area/ishimura/lower/security/escape/lounge)
 "aJx" = (
 /obj/structure/table/rack,
@@ -18308,7 +18176,7 @@
 "aJy" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/closet/firecloset,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/sleepblock/executive)
 "aJz" = (
 /turf/simulated/wall/r_wall,
@@ -18380,7 +18248,7 @@
 "aJI" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/closet/emcloset,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/misc/hallway/central)
 "aJJ" = (
 /obj/structure/cable{
@@ -18388,7 +18256,9 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/tech{
+	dir = 1
+	},
 /area/ishimura/lower/misc/hallway/escape_executive)
 "aJK" = (
 /obj/item/device/radio/intercom{
@@ -18507,7 +18377,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/misc/hallway/escape_executive)
 "aJV" = (
 /obj/machinery/disposal,
@@ -18515,18 +18385,20 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/tech{
+	dir = 1
+	},
 /area/ishimura/lower/misc/hallway/escape_executive)
 "aJW" = (
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood/alt,
 /area/ishimura/lower/security/escape/lounge)
 "aJX" = (
 /obj/structure/flora/pottedplant/minitree,
 /obj/machinery/light,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood/alt,
 /area/ishimura/lower/security/escape/lounge)
 "aJY" = (
 /obj/structure/table/rack,
@@ -19103,7 +18975,7 @@
 /obj/machinery/camera/network/command{
 	dir = 8
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/sleepblock/executive)
 "aKW" = (
 /obj/machinery/disposal,
@@ -19228,7 +19100,7 @@
 	dir = 1;
 	pixel_y = -22
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood/alt,
 /area/ishimura/lower/security/escape/lounge)
 "aLk" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -19893,7 +19765,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/maint{
+	dir = 4
+	},
 /area/ishimura/lower/maintenance/starboard)
 "aMM" = (
 /obj/item/device/radio/intercom{
@@ -19918,7 +19792,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/maint{
+	dir = 4
+	},
 /area/ishimura/lower/maintenance/starboard)
 "aMP" = (
 /obj/structure/cable{
@@ -20168,7 +20044,7 @@
 /area/ishimura/lower/mining/shuttlebay/starboard)
 "aNq" = (
 /obj/structure/disposalpipe/segment,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/misc/hallway/central)
 "aNr" = (
 /obj/structure/bed/chair/office/light,
@@ -20578,7 +20454,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/maint_right,
 /area/ishimura/lower/maintenance/port)
 "aOd" = (
 /obj/machinery/light/small{
@@ -20772,7 +20648,7 @@
 /obj/machinery/camera/network/security{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/checkpoint/executive)
 "aOx" = (
 /obj/structure/cable{
@@ -21834,7 +21710,7 @@
 	dir = 2;
 	icon_state = "pipe-c"
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/messhall)
 "aRb" = (
 /obj/effect/floor_decal/corner/grey/three_quarters{
@@ -21861,7 +21737,9 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/slides{
+	dir = 1
+	},
 /area/ishimura/lower/crew/messhall)
 "aRe" = (
 /obj/structure/bed/chair/office/light{
@@ -21879,7 +21757,7 @@
 "aRg" = (
 /obj/structure/table/standard,
 /obj/random/loot/sometimes/few,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood/alt,
 /area/ishimura/lower/security/escape/lounge)
 "aRh" = (
 /obj/structure/table/standard,
@@ -21914,7 +21792,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/crew/hydroponics)
 "aRn" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -21936,11 +21814,11 @@
 	pixel_x = -21
 	},
 /obj/random/loot/sometimes/few,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/escape/two)
 "aRq" = (
 /obj/machinery/suit_storage_unit/standard_unit,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/maint_right,
 /area/ishimura/lower/maintenance/starboard)
 "aRr" = (
 /obj/machinery/alarm{
@@ -21998,7 +21876,7 @@
 /obj/structure/table/standard,
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /obj/random/loot/sometimes/few,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/escape/two)
 "aRy" = (
 /obj/structure/cable{
@@ -22063,7 +21941,7 @@
 	dir = 8
 	},
 /obj/random/loot/sometimes/few,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/escape/two)
 "aRD" = (
 /obj/machinery/power/apc{
@@ -22088,7 +21966,7 @@
 /obj/machinery/camera/network/crew{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/crew/sleepblock/commons)
 "aRG" = (
 /obj/structure/sign/warning/pods/south,
@@ -22169,7 +22047,7 @@
 	},
 /obj/machinery/door/window/southleft,
 /obj/random/snack,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/c)
 "aRU" = (
 /obj/machinery/alarm{
@@ -22215,7 +22093,9 @@
 	dir = 1;
 	icon_state = "pipe-c"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/maint{
+	dir = 4
+	},
 /area/ishimura/lower/maintenance/starboard)
 "aRY" = (
 /obj/machinery/optable,
@@ -22227,7 +22107,7 @@
 "aRZ" = (
 /obj/structure/table/standard,
 /obj/random/snack,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/messhall)
 "aSa" = (
 /obj/structure/cable{
@@ -22284,7 +22164,7 @@
 	dir = 8
 	},
 /obj/random/smokes,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/slides,
 /area/ishimura/lower/crew/messhall)
 "aSh" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -22370,7 +22250,7 @@
 /obj/random/drinkbottle,
 /obj/random/contraband,
 /obj/random/snack,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/c)
 "aSp" = (
 /obj/structure/table/standard,
@@ -22382,7 +22262,7 @@
 	dir = 5
 	},
 /obj/structure/disposalpipe/segment,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/c)
 "aSq" = (
 /obj/structure/grille/broken,
@@ -22406,7 +22286,7 @@
 	},
 /obj/machinery/door/window/southright,
 /obj/random/snack,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/c)
 "aSt" = (
 /obj/machinery/alarm{
@@ -22524,7 +22404,7 @@
 /obj/machinery/door/window/westleft,
 /obj/random/contraband,
 /obj/random/snack,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/c)
 "aSH" = (
 /obj/structure/table/rack,
@@ -22556,7 +22436,9 @@
 "aSJ" = (
 /obj/structure/closet/firecloset,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/tech{
+	dir = 1
+	},
 /area/ishimura/lower/misc/hallway/escape_executive)
 "aSK" = (
 /obj/structure/table/rack,
@@ -22645,7 +22527,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/maint_right,
 /area/ishimura/lower/maintenance/port)
 "aSW" = (
 /obj/structure/cable{
@@ -22965,7 +22847,7 @@
 /obj/item/weapon/storage/bible/unitology,
 /obj/random/rare_loot/rarely,
 /obj/random/snack,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/c)
 "aTA" = (
 /obj/random/trash,
@@ -22996,15 +22878,14 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/junction,
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/tech,
 /area/ishimura/lower/crew/sleepblock/commons)
 "aTE" = (
 /obj/item/device/radio/intercom{
 	dir = 1;
 	pixel_y = -28
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/sleepblock/commons)
 "aTF" = (
 /obj/structure/closet/emcloset,
@@ -23017,7 +22898,9 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/tech{
+	dir = 1
+	},
 /area/ishimura/lower/misc/hallway/escape_executive)
 "aTH" = (
 /obj/machinery/power/apc{
@@ -23349,7 +23232,7 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/escape/two)
 "aUl" = (
 /obj/structure/disposalpipe/segment,
@@ -23376,7 +23259,7 @@
 	dir = 1;
 	pixel_y = -24
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/b)
 "aUo" = (
 /obj/structure/cable{
@@ -23391,7 +23274,7 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/messhall)
 "aUp" = (
 /obj/random/closet,
@@ -23409,7 +23292,7 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/hydroponics)
 "aUr" = (
 /obj/structure/cable{
@@ -23426,11 +23309,11 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/crew/hydroponics)
 "aUs" = (
 /obj/structure/table/standard,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/hydroponics)
 "aUt" = (
 /obj/machinery/light,
@@ -23458,7 +23341,7 @@
 	dir = 8;
 	name = "Escape Lounge"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood/alt,
 /area/ishimura/lower/security/escape/lounge)
 "aUv" = (
 /obj/effect/decal/cleanable/dirt,
@@ -23508,14 +23391,14 @@
 /obj/item/device/radio/intercom{
 	pixel_y = 21
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/hydroponics)
 "aUA" = (
 /obj/machinery/alarm{
 	dir = 1;
 	pixel_y = -22
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/hydroponics)
 "aUB" = (
 /obj/structure/bed/chair/shuttle,
@@ -23560,14 +23443,14 @@
 	dir = 4;
 	pixel_x = -40
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/maint_left,
 /area/ishimura/lower/maintenance/port)
 "aUH" = (
 /obj/structure/sign/warning/pods/west{
 	dir = 8;
 	pixel_x = 40
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/maint_right,
 /area/ishimura/lower/maintenance/port)
 "aUI" = (
 /obj/machinery/portable_atmospherics/powered/pump/filled,
@@ -23575,7 +23458,7 @@
 	dir = 4;
 	pixel_x = -40
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/maint_left,
 /area/ishimura/lower/maintenance/port)
 "aUJ" = (
 /obj/structure/table/rack{
@@ -23588,7 +23471,7 @@
 	dir = 8;
 	pixel_x = 40
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/maint_right,
 /area/ishimura/lower/maintenance/port)
 "aUK" = (
 /obj/machinery/smartfridge/foods,
@@ -23599,21 +23482,21 @@
 /area/ishimura/lower/crew/messhall/kitchen)
 "aUL" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/slides,
 /area/ishimura/lower/crew/messhall)
 "aUM" = (
 /obj/structure/sign/warning/pods/west{
 	dir = 4;
 	pixel_x = -40
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/maint_left,
 /area/ishimura/lower/maintenance/starboard)
 "aUN" = (
 /obj/structure/sign/warning/pods/east{
 	dir = 8;
 	pixel_x = 40
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/maint_right,
 /area/ishimura/lower/maintenance/starboard)
 "aUO" = (
 /obj/machinery/light{
@@ -23862,7 +23745,7 @@
 /area/shuttle/executive_shuttle)
 "aVm" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/misc/hallway/central)
 "aVn" = (
 /obj/machinery/door/airlock/hatch{
@@ -23905,7 +23788,7 @@
 "aVr" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/computer/shuttle_control/executive,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/escape/two)
 "aVs" = (
 /obj/structure/bed/chair/shuttle/blue{
@@ -23939,7 +23822,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/security/escape)
 "aVw" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -23958,8 +23841,7 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/security/escape)
 "aVx" = (
 /obj/structure/table/steel_reinforced,
@@ -24165,7 +24047,7 @@
 "aVP" = (
 /obj/effect/floor_decal/industrial/outline/blue,
 /obj/structure/closet/emcloset,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/misc/hallway/escape_executive)
 "aVQ" = (
 /obj/machinery/firealarm{
@@ -24241,7 +24123,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/maint{
+	dir = 4
+	},
 /area/ishimura/lower/maintenance/starboard)
 "aVW" = (
 /obj/structure/table/rack,
@@ -24285,7 +24169,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/maint{
+	dir = 4
+	},
 /area/ishimura/lower/maintenance/starboard)
 "aVZ" = (
 /obj/structure/catwalk,
@@ -24298,7 +24184,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/maint{
+	dir = 4
+	},
 /area/ishimura/lower/maintenance/starboard)
 "aWa" = (
 /obj/structure/catwalk,
@@ -24313,7 +24201,9 @@
 	dir = 8;
 	icon_state = "pipe-c"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/maint{
+	dir = 4
+	},
 /area/ishimura/lower/maintenance/starboard)
 "aWb" = (
 /obj/structure/cable{
@@ -24380,7 +24270,7 @@
 /obj/machinery/newscaster{
 	pixel_x = -32
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/slides,
 /area/ishimura/lower/crew/messhall)
 "aWi" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
@@ -24638,7 +24528,7 @@
 /obj/machinery/alarm{
 	pixel_y = 23
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/sleepblock/executive)
 "aXb" = (
 /obj/structure/disposalpipe/segment{
@@ -24705,7 +24595,7 @@
 	dir = 8;
 	name = "Hangar Control Room Two"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/escape/two)
 "aXl" = (
 /obj/structure/bed/chair/shuttle{
@@ -24732,7 +24622,7 @@
 	pixel_y = 24;
 	req_one_access = list(100,57,58)
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/security/escape)
 "aXq" = (
 /obj/structure/table/woodentable,
@@ -24744,7 +24634,7 @@
 	dir = 4;
 	pixel_x = 24
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/tech,
 /area/ishimura/lower/misc/hallway/escape_executive)
 "aXt" = (
 /obj/structure/bed/chair{
@@ -24767,20 +24657,20 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/machinery/door/firedoor/border_only,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/tech,
 /area/ishimura/lower/crew/sleepblock/commons)
 "aXv" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/machinery/door/firedoor/border_only{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/sleepblock/commons)
 "aXw" = (
 /obj/machinery/firealarm{
 	pixel_y = 24
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/sleepblock/commons)
 "aXx" = (
 /obj/structure/cable{
@@ -24801,8 +24691,7 @@
 /obj/machinery/door/firedoor/border_only{
 	dir = 4
 	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/crew/sleepblock/commons)
 "aXA" = (
 /obj/structure/closet/crate,
@@ -24819,7 +24708,7 @@
 	},
 /obj/item/weapon/storage/box/survival,
 /obj/random/loot/sometimes/some,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/maint_left,
 /area/ishimura/lower/maintenance/starboard)
 "aXD" = (
 /obj/structure/table/woodentable,
@@ -24884,7 +24773,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/messhall)
 "aXK" = (
 /obj/structure/cable{
@@ -24902,7 +24791,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/messhall)
 "aXL" = (
 /obj/machinery/alarm{
@@ -24918,7 +24807,7 @@
 /obj/random/tool,
 /obj/random/tool,
 /obj/random/tool/low_chance,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/maint,
 /area/ishimura/lower/maintenance/port)
 "aXN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -24972,7 +24861,7 @@
 /obj/machinery/status_display{
 	pixel_x = 32
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/misc/hallway/escape_executive)
 "aXW" = (
 /obj/structure/table/standard,
@@ -25028,7 +24917,7 @@
 /obj/random/drinkbottle,
 /obj/random/contraband,
 /obj/random/snack,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/c)
 "aYg" = (
 /obj/structure/table/rack,
@@ -25092,7 +24981,7 @@
 /obj/structure/closet/secure_closet/personal,
 /obj/machinery/door/window/westleft,
 /obj/random/snack,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/c)
 "aYr" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -25157,7 +25046,7 @@
 /obj/random/maintenance/clean,
 /obj/random/maintenance/clean,
 /obj/random/loot/sometimes/some,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/maint_left,
 /area/ishimura/lower/maintenance/starboard)
 "aYy" = (
 /obj/machinery/door/airlock/civilian{
@@ -25266,7 +25155,7 @@
 	pixel_y = -4
 	},
 /obj/random/loot/sometimes/some,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/maint_right,
 /area/ishimura/lower/maintenance/starboard)
 "aYJ" = (
 /obj/machinery/power/port_gen/pacman,
@@ -25357,14 +25246,14 @@
 /obj/machinery/status_display{
 	pixel_y = 32
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood/alt,
 /area/ishimura/lower/security/escape/lounge)
 "aZa" = (
 /obj/structure/flora/pottedplant/minitree,
 /obj/structure/closet/medical_wall/filled{
 	pixel_y = 32
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood/alt,
 /area/ishimura/lower/security/escape/lounge)
 "aZb" = (
 /obj/machinery/status_display{
@@ -25376,11 +25265,11 @@
 /obj/machinery/status_display{
 	pixel_y = 32
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/sleepblock/executive)
 "aZe" = (
 /obj/machinery/light,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/escape/two)
 "aZf" = (
 /obj/machinery/status_display{
@@ -25396,7 +25285,7 @@
 	pixel_y = 24;
 	tag_door = "escape_pod_4_berth_hatch"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/maint_left,
 /area/ishimura/lower/maintenance/starboard)
 "aZj" = (
 /obj/machinery/light/small{
@@ -25412,7 +25301,7 @@
 	pixel_y = 24;
 	tag_door = "escape_pod_5_berth_hatch"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/maint_left,
 /area/ishimura/lower/maintenance/port)
 "aZl" = (
 /obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod_berth{
@@ -25422,7 +25311,7 @@
 	pixel_y = 24;
 	tag_door = "escape_pod_6_berth_hatch"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/maint_right,
 /area/ishimura/lower/maintenance/port)
 "aZm" = (
 /obj/effect/floor_decal/industrial/warning/corner,
@@ -25433,22 +25322,22 @@
 	pixel_y = -24;
 	tag_door = "escape_pod_7_berth_hatch"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/maint_left,
 /area/ishimura/lower/maintenance/starboard)
 "aZn" = (
 /obj/effect/floor_decal/industrial/warning,
 /obj/effect/floor_decal/industrial/loading,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/maint,
 /area/ishimura/lower/maintenance/starboard)
 "aZo" = (
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 8
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/maint_right,
 /area/ishimura/lower/maintenance/starboard)
 "aZp" = (
 /obj/effect/floor_decal/industrial/warning/corner,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/maint_left,
 /area/ishimura/lower/maintenance/starboard)
 "aZq" = (
 /obj/effect/floor_decal/industrial/warning/corner{
@@ -25461,7 +25350,7 @@
 	pixel_y = -24;
 	tag_door = "escape_pod_8_berth_hatch"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/maint_right,
 /area/ishimura/lower/maintenance/starboard)
 "aZr" = (
 /obj/effect/floor_decal/industrial/warning/corner,
@@ -25472,7 +25361,7 @@
 	pixel_y = -24;
 	tag_door = "escape_pod_9_berth_hatch"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/maint_left,
 /area/ishimura/lower/maintenance/starboard)
 "aZs" = (
 /obj/structure/sign/directions/medical{
@@ -25585,19 +25474,19 @@
 /area/ishimura/lower/maintenance/port)
 "aZD" = (
 /obj/machinery/suit_storage_unit/standard_unit,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/maint_left,
 /area/ishimura/lower/maintenance/port)
 "aZE" = (
 /obj/structure/reagent_dispensers/watertank,
 /obj/machinery/light/small,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/maint_right,
 /area/ishimura/lower/maintenance/starboard)
 "aZF" = (
 /obj/machinery/light/small{
 	dir = 8
 	},
 /obj/machinery/suit_storage_unit/standard_unit,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/maint_left,
 /area/ishimura/lower/maintenance/port)
 "aZG" = (
 /obj/random/trash,
@@ -25608,7 +25497,7 @@
 	dir = 4
 	},
 /obj/machinery/suit_storage_unit/standard_unit,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/maint_right,
 /area/ishimura/lower/maintenance/port)
 "aZI" = (
 /obj/structure/closet/secure_closet/medical2{
@@ -25628,7 +25517,7 @@
 "aZM" = (
 /obj/machinery/door/firedoor/border_only,
 /obj/random/obstruction,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/maint_right,
 /area/ishimura/lower/maintenance/port)
 "aZN" = (
 /obj/effect/decal/cleanable/cobweb2,
@@ -25669,7 +25558,7 @@
 /area/ishimura/lower/maintenance/engineering_starboard)
 "aZR" = (
 /obj/random/obstruction,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/maint,
 /area/ishimura/lower/maintenance/port)
 "aZS" = (
 /obj/structure/table/rack,
@@ -25827,23 +25716,25 @@
 	pixel_y = 32
 	},
 /obj/machinery/camera/network/crew,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/messhall)
 "baC" = (
 /obj/machinery/camera/network/crew{
 	dir = 1
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/commons)
 "baD" = (
 /obj/machinery/camera/network/crew{
 	dir = 8
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/slides{
+	dir = 1
+	},
 /area/ishimura/lower/crew/sleepblock/commons)
 "baE" = (
 /obj/machinery/camera/network/crew,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/sleepblock/commons)
 "baF" = (
 /obj/structure/closet/firecloset,
@@ -25851,7 +25742,7 @@
 /obj/machinery/camera/network/crew{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/sleepblock/commons)
 "baG" = (
 /obj/effect/floor_decal/corner/grey{
@@ -25893,7 +25784,9 @@
 /obj/machinery/camera/network/crew{
 	dir = 8
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/slides{
+	dir = 1
+	},
 /area/ishimura/lower/misc/hallway/central)
 "baM" = (
 /obj/structure/closet/emcloset,
@@ -26028,14 +25921,14 @@
 	dir = 8
 	},
 /obj/machinery/suit_storage_unit/standard_unit,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/maint_left,
 /area/ishimura/lower/maintenance/starboard)
 "bbv" = (
 /obj/machinery/light/small{
 	dir = 4
 	},
 /obj/machinery/suit_storage_unit/standard_unit,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/maint_right,
 /area/ishimura/lower/maintenance/starboard)
 "bbw" = (
 /obj/random/closet,
@@ -26054,9 +25947,8 @@
 /turf/simulated/floor/plating,
 /area/ishimura/lower/maintenance/starboard)
 "bby" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
-/turf/simulated/floor/tiled/monotile,
-/area/ishimura/lower/misc/hallway/central)
+/turf/simulated/floor/dank/maint_left,
+/area/ishimura/lower/maintenance/starboard)
 "bbz" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1;
@@ -26074,13 +25966,8 @@
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/misc/hallway/central)
 "bbB" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 1;
-	layer = 2.4;
-	level = 2
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/ishimura/lower/misc/hallway/central)
+/turf/simulated/floor/dank/maint,
+/area/ishimura/lower/maintenance/port)
 "bbE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -26271,14 +26158,14 @@
 /area/ishimura/lower/misc/hallway/aft)
 "bcc" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/sleepblock/executive)
 "bcd" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/sleepblock/executive)
 "bce" = (
 /obj/structure/cable{
@@ -26293,20 +26180,21 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/grater,
 /area/ishimura/lower/crew/sleepblock/executive)
 "bcf" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/sleepblock/executive)
 "bcg" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/tech{
+	dir = 1
+	},
 /area/ishimura/lower/crew/sleepblock/commons)
 "bch" = (
 /obj/structure/cable{
@@ -26321,37 +26209,38 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/tech,
 /area/ishimura/lower/crew/sleepblock/commons)
 "bci" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/slides{
+	dir = 1
+	},
 /area/ishimura/lower/crew/sleepblock/commons)
 "bcj" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/commons)
 "bck" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/sleepblock/commons)
 "bcl" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/item/device/radio/intercom{
 	pixel_y = 21
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/sleepblock/commons)
 "bcm" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/tech,
 /area/ishimura/lower/misc/hallway/escape_executive)
 "bcn" = (
 /obj/structure/cable{
@@ -26366,14 +26255,15 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
-/obj/effect/catwalk_plated,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/grater,
 /area/ishimura/lower/misc/hallway/escape_executive)
 "bco" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/tech{
+	dir = 1
+	},
 /area/ishimura/lower/misc/hallway/escape_executive)
 "bcp" = (
 /obj/structure/cable{
@@ -26388,7 +26278,9 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/tech{
+	dir = 1
+	},
 /area/ishimura/lower/crew/sleepblock/commons)
 "bcq" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
@@ -26599,7 +26491,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/checkpoint/executive)
 "bcL" = (
 /obj/machinery/door/firedoor/border_only,
@@ -27379,6 +27271,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/wall/r_wall,
 /area/ishimura/lower/misc/storagesmall)
+"boq" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/turf/simulated/floor/dank/hardwood,
+/area/ishimura/lower/crew/messhall)
 "bos" = (
 /turf/simulated/floor/dank/slides{
 	dir = 8
@@ -27424,7 +27322,7 @@
 /obj/effect/landmark/start{
 	name = "Planet Cracker"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/messhall)
 "byd" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -27432,6 +27330,14 @@
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/mining/shuttlebay/port)
+"bzE" = (
+/obj/random/closet,
+/obj/random/rare_loot/rarely,
+/obj/random/maintenance/clean,
+/obj/random/maintenance,
+/obj/random/maintenance,
+/turf/simulated/floor/dank/maint_left,
+/area/ishimura/lower/maintenance/starboard)
 "bAH" = (
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/misc/hallway/aft)
@@ -27449,6 +27355,10 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/misc/hallway/central)
+"bHK" = (
+/obj/machinery/door/firedoor/border_only,
+/turf/simulated/floor/dank/maint,
+/area/ishimura/lower/maintenance/starboard)
 "bPq" = (
 /obj/random/tool,
 /obj/structure/table/standard,
@@ -27502,6 +27412,9 @@
 	dir = 4
 	},
 /area/ishimura/lower/misc/hallway/central)
+"bVr" = (
+/turf/simulated/floor/dank/rectangles,
+/area/ishimura/lower/crew/sleepblock/commons)
 "bVR" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/dank/slides{
@@ -27563,6 +27476,9 @@
 	dir = 8
 	},
 /area/ishimura/lower/misc/hallway/central)
+"cKT" = (
+/turf/simulated/floor/dank/golf_brown,
+/area/ishimura/lower/crew/sleepblock/commons)
 "cLV" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/random/loot/sometimes/few,
@@ -27571,6 +27487,16 @@
 /obj/random/tool,
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/lower/misc/storagesmall)
+"cOX" = (
+/turf/simulated/floor/dank/maint_left,
+/area/ishimura/lower/maintenance/port)
+"cPk" = (
+/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/machinery/door/firedoor/border_only,
+/turf/simulated/floor/dank/slides{
+	dir = 1
+	},
+/area/ishimura/lower/crew/sleepblock/commons)
 "cXh" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1;
@@ -27602,6 +27528,14 @@
 "dFp" = (
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/cargo/bay)
+"dHx" = (
+/obj/machinery/suit_storage_unit/standard_unit,
+/turf/simulated/floor/dank/maint_right,
+/area/ishimura/lower/maintenance/port)
+"dJz" = (
+/obj/random/trash,
+/turf/simulated/floor/dank/maint,
+/area/ishimura/lower/maintenance/starboard)
 "dKx" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1;
@@ -27618,10 +27552,31 @@
 	dir = 4
 	},
 /area/ishimura/lower/misc/hallway/central)
+"dTM" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/disposalpipe/segment,
+/turf/simulated/floor/dank/cable,
+/area/ishimura/lower/crew/sleepblock/commons)
+"efw" = (
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 1
+	},
+/turf/simulated/floor/dank/tech{
+	dir = 1
+	},
+/area/ishimura/lower/crew/sleepblock/commons)
 "eoo" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/media/jukebox/old,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/slides{
+	dir = 1
+	},
 /area/ishimura/lower/crew/messhall)
 "eqo" = (
 /turf/simulated/floor/dank/tech{
@@ -27636,6 +27591,10 @@
 	dir = 1
 	},
 /area/ishimura/lower/misc/hallway/central)
+"eEy" = (
+/obj/structure/table/standard,
+/turf/simulated/floor/dank/hardwood,
+/area/ishimura/lower/crew/messhall)
 "eGf" = (
 /obj/machinery/camera/network/common{
 	dir = 1
@@ -27663,6 +27622,9 @@
 	dir = 1
 	},
 /area/ishimura/lower/mining/mining_bay)
+"fls" = (
+/turf/simulated/floor/dank/maint_right,
+/area/ishimura/lower/maintenance/port)
 "fqc" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -27695,6 +27657,25 @@
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/misc/hallway/central)
+"fvq" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/dank/slides{
+	dir = 1
+	},
+/area/ishimura/lower/crew/messhall)
 "fvr" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -27720,6 +27701,17 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/mining/locker_room)
+"fxf" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/disposalpipe/segment,
+/turf/simulated/floor/dank/golf_brown,
+/area/ishimura/lower/crew/sleepblock/commons)
 "fDN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/dank/hardwood,
@@ -27749,6 +27741,13 @@
 /obj/structure/ore_box,
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/mining/shuttlebay/port)
+"gnj" = (
+/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
+/turf/simulated/floor/dank/golf_brown,
+/area/ishimura/lower/crew/sleepblock/commons)
 "gqI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
@@ -27782,6 +27781,13 @@
 	},
 /turf/simulated/floor/plating,
 /area/ishimura/lower/maintenance/engineering_starboard)
+"gzu" = (
+/obj/machinery/door/firedoor/border_only,
+/turf/simulated/floor/dank/maint_right,
+/area/ishimura/lower/maintenance/starboard)
+"gFl" = (
+/turf/simulated/floor/dank/cable/end,
+/area/ishimura/lower/crew/sleepblock/commons)
 "gHS" = (
 /turf/simulated/wall/r_wall,
 /area/ishimura/lower/misc/storagesmall)
@@ -27862,16 +27868,32 @@
 	dir = 1
 	},
 /area/ishimura/lower/misc/hallway/central)
+"hCQ" = (
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 1
+	},
+/turf/simulated/floor/dank/rectangles,
+/area/ishimura/lower/crew/sleepblock/commons)
 "hEA" = (
 /obj/item/weapon/stool/bar/padded,
 /obj/machinery/light,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/slides{
+	dir = 1
+	},
 /area/ishimura/lower/crew/messhall)
+"hKl" = (
+/turf/simulated/floor/dank/hardwood,
+/area/ishimura/lower/crew/sleepblock/executive)
 "hLN" = (
 /turf/simulated/floor/dank/slides{
 	dir = 8
 	},
 /area/ishimura/lower/misc/hallway/aft)
+"hVM" = (
+/turf/simulated/floor/dank/slides{
+	dir = 1
+	},
+/area/ishimura/lower/security/checkpoint/executive)
 "hYt" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -27897,6 +27919,29 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/mining/mining_bay)
+"iyr" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/catwalk,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/random/trash,
+/turf/simulated/floor/dank/maint{
+	dir = 4
+	},
+/area/ishimura/lower/maintenance/starboard)
+"iBw" = (
+/obj/machinery/door/firedoor/border_only,
+/obj/random/obstruction,
+/turf/simulated/floor/dank/maint,
+/area/ishimura/lower/maintenance/port)
 "iDn" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plating,
@@ -27978,6 +28023,9 @@
 	dir = 8
 	},
 /area/ishimura/lower/misc/hallway/central)
+"jux" = (
+/turf/simulated/floor/dank/rectangles,
+/area/ishimura/lower/crew/hydroponics)
 "juV" = (
 /obj/machinery/light{
 	dir = 1
@@ -27988,11 +28036,18 @@
 /area/ishimura/lower/misc/storagesmall)
 "jvF" = (
 /obj/structure/bed/chair,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/messhall)
 "jxb" = (
 /turf/simulated/floor/dank/slides,
 /area/ishimura/lower/mining/mining_bay)
+"jTa" = (
+/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/machinery/door/firedoor/border_only,
+/turf/simulated/floor/dank/tech{
+	dir = 1
+	},
+/area/ishimura/lower/crew/sleepblock/commons)
 "kcY" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
@@ -28005,6 +28060,10 @@
 	},
 /turf/simulated/floor/dank/cable/end,
 /area/ishimura/lower/misc/hallway/central)
+"kkl" = (
+/obj/random/trash,
+/turf/simulated/floor/dank/maint,
+/area/ishimura/lower/maintenance/port)
 "kpG" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/dank/slides,
@@ -28080,6 +28139,14 @@
 /obj/machinery/door/firedoor/border_only,
 /turf/simulated/floor/dank/slides,
 /area/ishimura/lower/misc/hallway/central)
+"lGK" = (
+/turf/simulated/floor/dank/tech{
+	dir = 1
+	},
+/area/ishimura/lower/misc/hallway/escape_executive)
+"lMR" = (
+/turf/simulated/floor/dank/hardwood,
+/area/ishimura/lower/crew/sleepblock/commons)
 "lQK" = (
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/mining/locker_room)
@@ -28107,6 +28174,10 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/ishimura/lower/maintenance/engineering_starboard)
+"mhF" = (
+/obj/machinery/suit_storage_unit/standard_unit,
+/turf/simulated/floor/dank/maint,
+/area/ishimura/lower/maintenance/starboard)
 "miC" = (
 /obj/structure/catwalk,
 /obj/structure/cable/green{
@@ -28125,6 +28196,16 @@
 "moe" = (
 /turf/simulated/floor/dank/slides,
 /area/ishimura/lower/cargo/bay)
+"mpZ" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/dank/maint_right,
+/area/ishimura/lower/maintenance/starboard)
+"mtG" = (
+/obj/machinery/light,
+/turf/simulated/floor/dank/rectangles,
+/area/ishimura/lower/crew/sleepblock/commons)
 "mxI" = (
 /turf/simulated/floor/dank/slides,
 /area/ishimura/lower/mining/shuttlebay/port)
@@ -28149,6 +28230,21 @@
 /obj/random/loot/usually/many,
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/lower/misc/storagesmall)
+"nxX" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/turf/simulated/floor/dank/grater,
+/area/ishimura/lower/crew/sleepblock/commons)
 "nAP" = (
 /obj/machinery/light,
 /turf/simulated/floor/dank/cable/start{
@@ -28229,6 +28325,18 @@
 	dir = 1
 	},
 /area/ishimura/lower/cargo/bay)
+"oaM" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/simulated/floor/dank/golf_brown,
+/area/ishimura/lower/crew/sleepblock/commons)
+"ofE" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/dank/maint_left,
+/area/ishimura/lower/maintenance/starboard)
 "oiy" = (
 /obj/structure/closet/secure_closet/planet_cracker,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -28258,12 +28366,46 @@
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/mining/locker_room)
+"owQ" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/disposalpipe/segment,
+/turf/simulated/floor/dank/tech,
+/area/ishimura/lower/crew/sleepblock/commons)
 "oAj" = (
 /obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/misc/hallway/central)
+"oBo" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/turf/simulated/floor/dank/rectangles,
+/area/ishimura/lower/crew/messhall)
+"oBR" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/catwalk,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/dank/maint{
+	dir = 4
+	},
+/area/ishimura/lower/maintenance/starboard)
 "oDI" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -28353,6 +28495,12 @@
 	dir = 4
 	},
 /area/ishimura/lower/misc/hallway/central)
+"puE" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/dank/golf_brown,
+/area/ishimura/lower/crew/sleepblock/commons)
 "pAp" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -28370,6 +28518,23 @@
 	dir = 8
 	},
 /area/ishimura/lower/misc/hallway/central)
+"pLC" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/simulated/floor/dank/grater,
+/area/ishimura/lower/crew/sleepblock/commons)
 "pTh" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -28405,12 +28570,19 @@
 	dir = 1
 	},
 /area/ishimura/lower/mining/shuttlebay/starboard)
+"qbh" = (
+/turf/simulated/floor/dank/slides,
+/area/ishimura/lower/security/escape)
 "qij" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/mining/shuttlebay/starboard)
+"qlc" = (
+/obj/structure/table/standard,
+/turf/simulated/floor/dank/golf_brown,
+/area/ishimura/lower/crew/hydroponics)
 "qlm" = (
 /obj/machinery/status_display{
 	pixel_y = 32
@@ -28423,6 +28595,9 @@
 /obj/machinery/camera/network/common,
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/misc/hallway/aft)
+"quC" = (
+/turf/simulated/floor/dank/slides,
+/area/ishimura/lower/security/checkpoint/executive)
 "qxx" = (
 /obj/machinery/light{
 	dir = 4
@@ -28437,6 +28612,9 @@
 	},
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/misc/hallway/aft)
+"qBD" = (
+/turf/simulated/floor/dank/hardwood,
+/area/ishimura/lower/security/checkpoint/executive)
 "qGV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -28461,6 +28639,11 @@
 	dir = 1
 	},
 /area/ishimura/lower/misc/hallway/central)
+"qMo" = (
+/turf/simulated/floor/dank/slides{
+	dir = 1
+	},
+/area/ishimura/lower/security/escape)
 "qVk" = (
 /turf/simulated/floor/dank/slides,
 /area/ishimura/lower/mining/shuttlebay/starboard)
@@ -28479,6 +28662,10 @@
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/misc/hallway/central)
+"rrz" = (
+/obj/random/trash,
+/turf/simulated/floor/dank/maint_left,
+/area/ishimura/lower/maintenance/starboard)
 "ryW" = (
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/misc/hallway/central)
@@ -28570,6 +28757,10 @@
 	},
 /turf/simulated/floor/dank/slides,
 /area/ishimura/lower/mining/mining_bay)
+"sxy" = (
+/obj/random/obstruction,
+/turf/simulated/floor/dank/maint_right,
+/area/ishimura/lower/maintenance/port)
 "syi" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/machinery/door/blast/shutters/open{
@@ -28655,6 +28846,24 @@
 	dir = 1
 	},
 /area/ishimura/lower/mining/mining_bay)
+"tfu" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/structure/disposalpipe/junction{
+	dir = 8
+	},
+/turf/simulated/floor/dank/grater,
+/area/ishimura/lower/crew/sleepblock/commons)
 "tfL" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
@@ -28694,6 +28903,27 @@
 	},
 /turf/simulated/floor/dank/slides,
 /area/ishimura/lower/mining/shuttlebay/port)
+"tSN" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/dank/tech,
+/area/ishimura/lower/crew/sleepblock/commons)
+"tVj" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/dank/rectangles,
+/area/ishimura/lower/crew/sleepblock/commons)
 "tZh" = (
 /obj/machinery/door/firedoor/border_only,
 /obj/effect/wallframe_spawn/reinforced,
@@ -28767,19 +28997,58 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/mining/shuttlebay/starboard)
+"uFo" = (
+/obj/random/trash,
+/turf/simulated/floor/dank/maint_right,
+/area/ishimura/lower/maintenance/port)
 "uTL" = (
 /obj/structure/closet/emcloset,
 /turf/simulated/floor/plating,
 /area/ishimura/lower/maintenance/engineering_starboard)
+"uVl" = (
+/obj/machinery/door/firedoor/border_only,
+/turf/simulated/floor/dank/maint_left,
+/area/ishimura/lower/maintenance/starboard)
+"uVL" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/simulated/floor/dank/rectangles,
+/area/ishimura/lower/crew/messhall)
+"uYX" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/disposalpipe/segment,
+/turf/simulated/floor/dank/cable/start,
+/area/ishimura/lower/crew/sleepblock/commons)
 "vbd" = (
 /obj/machinery/light,
 /turf/simulated/floor/dank/grater,
 /area/ishimura/lower/misc/hallway/central)
+"vbJ" = (
+/obj/random/trash,
+/turf/simulated/floor/dank/maint_left,
+/area/ishimura/lower/maintenance/port)
 "vkT" = (
 /turf/simulated/floor/dank/cable/end{
 	dir = 4
 	},
 /area/ishimura/lower/misc/hallway/central)
+"vqP" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/dank/hardwood,
+/area/ishimura/lower/security/checkpoint/executive)
 "vxU" = (
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/mining/shuttlebay/starboard)
@@ -28789,10 +29058,19 @@
 	},
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/misc/hallway/central)
+"vAQ" = (
+/obj/machinery/camera/network/crew{
+	dir = 1
+	},
+/turf/simulated/floor/dank/rectangles,
+/area/ishimura/lower/crew/sleepblock/commons)
 "vBT" = (
 /obj/machinery/light,
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/misc/hallway/aft)
+"vWw" = (
+/turf/simulated/floor/dank/slides,
+/area/ishimura/lower/crew/sleepblock/commons)
 "wdi" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -28800,8 +29078,12 @@
 /obj/effect/landmark/start{
 	name = "Planet Cracker"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/messhall)
+"wlX" = (
+/obj/machinery/suit_storage_unit/standard_unit,
+/turf/simulated/floor/dank/maint_left,
+/area/ishimura/lower/maintenance/starboard)
 "wmJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -28818,6 +29100,23 @@
 	dir = 4
 	},
 /area/ishimura/lower/misc/hallway/central)
+"wpb" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
+/turf/simulated/floor/dank/rectangles,
+/area/ishimura/lower/crew/sleepblock/commons)
+"wpz" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/dank/rectangles,
+/area/ishimura/lower/crew/sleepblock/commons)
 "wra" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -28883,6 +29182,17 @@
 	dir = 4
 	},
 /area/ishimura/lower/misc/hallway/aft)
+"xfB" = (
+/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/turf/simulated/floor/dank/tech{
+	dir = 1
+	},
+/area/ishimura/lower/crew/sleepblock/commons)
+"xha" = (
+/turf/simulated/floor/dank/slides{
+	dir = 1
+	},
+/area/ishimura/lower/crew/messhall)
 "xhJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -28945,6 +29255,9 @@
 /obj/structure/dispenser/oxygen,
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/lower/misc/storagesmall)
+"xMj" = (
+/turf/simulated/floor/dank/hardwood,
+/area/ishimura/lower/crew/messhall)
 "xPf" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/firealarm{
@@ -50437,13 +50750,13 @@ aMo
 aZx
 azs
 aZi
-aoH
-aoH
-aRs
-aoH
-afD
+bby
+bby
+ofE
+bby
+uVl
 aUG
-aeV
+cOX
 ahx
 aBn
 adS
@@ -50478,13 +50791,13 @@ xah
 adS
 aUp
 aVV
-aoH
+bby
 aUM
-afD
-aoH
-aRs
-aoH
-aoH
+uVl
+bby
+ofE
+bby
+bby
 aZm
 azs
 bac
@@ -50638,14 +50951,14 @@ aMp
 aXl
 aZy
 aVH
-aoH
-aoH
-aoH
-aEE
-aRq
+aaM
+aaM
+aaM
+dJz
+mhF
 azs
 aXM
-aeV
+bbB
 aOI
 ajs
 adS
@@ -50680,13 +50993,13 @@ vkT
 adS
 aRh
 aVV
-aoH
-aoH
+aaM
+aaM
 azs
-aRq
-aoH
-aoH
-aoH
+mhF
+aaM
+aaM
+aaM
 aZn
 aVI
 bad
@@ -50840,14 +51153,14 @@ aMo
 aMo
 aZx
 azs
-aoH
-aoH
-aoH
+aqW
+aqW
+aqW
 aRq
 azs
 azs
 aOc
-aeV
+fls
 aZB
 ajI
 adS
@@ -50882,13 +51195,13 @@ pWY
 adS
 aUx
 aVY
-aoH
+aqW
 aZE
 azs
 azs
 aRq
-aoH
-aoH
+aqW
+aqW
 aZo
 azs
 bac
@@ -51042,14 +51355,14 @@ axS
 axS
 axS
 azs
-aoH
-aEE
-aoH
-aRq
+bby
+rrz
+bby
+wlX
 azs
 aen
-aeV
-aeV
+cOX
+cOX
 aOI
 akl
 adS
@@ -51084,13 +51397,13 @@ aXZ
 adS
 aVo
 aVZ
-aoH
-aoH
+bby
+bby
 aXC
 azs
-aRq
-aoH
-aoH
+wlX
+bby
+bby
 aZp
 azs
 bae
@@ -51244,14 +51557,14 @@ axS
 axS
 axS
 aMn
-aoH
-aoH
-aoH
-aoH
-afD
-aoH
-aZG
-aeV
+aaM
+aaM
+aaM
+aaM
+bHK
+aaM
+kkl
+bbB
 aOI
 aeV
 adS
@@ -51286,13 +51599,13 @@ bos
 adS
 aoH
 aVZ
-aoH
-aoH
-aoH
-afD
-aoH
-aoH
-aoH
+aaM
+aaM
+aaM
+bHK
+aaM
+aaM
+aaM
 aZn
 aVM
 baf
@@ -51447,13 +51760,13 @@ axS
 axS
 aak
 aaD
-aeV
-aeV
+fls
+fls
 aSV
 aZM
-aeV
+fls
 aUH
-aeV
+fls
 aOI
 aeV
 adS
@@ -51472,7 +51785,7 @@ gHS
 aiN
 aAW
 lQK
-lQK
+aiK
 bdm
 bdm
 bdm
@@ -51488,13 +51801,13 @@ bos
 adS
 aMz
 aVZ
-aoH
+aqW
 aUN
-aoH
-afD
-aST
-aoH
-aoH
+aqW
+gzu
+mpZ
+aqW
+aqW
 aZq
 azs
 bae
@@ -51674,7 +51987,7 @@ gHS
 aiN
 aAW
 lQK
-lQK
+aiK
 bdn
 bdn
 bdn
@@ -53103,7 +53416,7 @@ eqo
 rVS
 adS
 aMz
-aNo
+oBR
 aoH
 azs
 awC
@@ -53305,7 +53618,7 @@ nTA
 aYM
 adS
 aoH
-aUm
+iyr
 aoH
 azs
 awC
@@ -53507,7 +53820,7 @@ eqo
 bos
 adS
 aoH
-aNo
+oBR
 aoH
 azs
 azs
@@ -53669,13 +53982,13 @@ aMq
 aZz
 aak
 aZk
-aeV
+cOX
 aZD
 aZF
 adf
 aak
 aUI
-aeV
+cOX
 aOI
 aeV
 adS
@@ -53709,14 +54022,14 @@ eqo
 bos
 adS
 aoH
-aNo
-aoH
+oBR
+bby
 aUM
 azs
 aYx
 bbu
-aRq
-aoH
+wlX
+bby
 aZr
 azs
 aUF
@@ -53870,14 +54183,14 @@ aMr
 aZv
 aZA
 aVK
-aeV
-aeV
-aeV
-aeV
-aeV
-aZM
+bbB
+bbB
+bbB
+bbB
+bbB
+iBw
 aZR
-aeV
+bbB
 aOI
 aZT
 adS
@@ -53911,14 +54224,14 @@ eqo
 rVS
 adS
 aVW
-aNo
-aoH
-aoH
-afD
-aoH
-aoH
-aoH
-aoH
+oBR
+aaM
+aaM
+bHK
+aaM
+aaM
+aaM
+aaM
 aZn
 aVN
 aVi
@@ -54072,14 +54385,14 @@ aMq
 aMq
 aZz
 aak
-aeV
-aeV
-aeV
-aZG
-aeV
+fls
+fls
+fls
+uFo
+fls
 aak
-aZR
-aeV
+sxy
+fls
 aOI
 aks
 adS
@@ -54113,14 +54426,14 @@ rNw
 bsp
 adS
 bbn
-aNo
-aoH
-aoH
+oBR
+aqW
+aqW
 azs
-aoH
-aoH
-aoH
-aoH
+aqW
+aqW
+aqW
+aqW
 aZo
 azs
 aUF
@@ -54274,14 +54587,14 @@ aMs
 aMs
 baa
 aak
-aZG
-aeV
-aeV
-aeV
-aeV
+vbJ
+cOX
+cOX
+cOX
+cOX
 aak
-aZG
-aeV
+vbJ
+cOX
 aOI
 akJ
 adS
@@ -54315,14 +54628,14 @@ eqo
 fHw
 adS
 aWe
-aNo
-aoH
-aoH
+oBR
+bby
+bby
 azs
-bbs
-aoH
-aoH
-aoH
+bzE
+bby
+bby
+bby
 aZp
 azs
 axS
@@ -54476,14 +54789,14 @@ aMt
 aZw
 bab
 aVL
-aeV
-aeV
-aeV
-aeV
-aeV
+bbB
+bbB
+bbB
+bbB
+bbB
 afE
-aeV
-aeV
+bbB
+bbB
 aOI
 aeV
 adS
@@ -54517,14 +54830,14 @@ eqo
 aXZ
 adS
 aWk
-aNo
-aoH
-aoH
-afD
-aoH
-aoH
-aoH
-aoH
+oBR
+aaM
+aaM
+bHK
+aaM
+aaM
+aaM
+aaM
 aZn
 aMn
 axS
@@ -54679,13 +54992,13 @@ aMs
 baa
 aak
 aZl
-aeV
-aZD
+fls
+dHx
 aZH
 adL
 aak
 aUJ
-aeV
+fls
 aOI
 aZG
 adS
@@ -54719,14 +55032,14 @@ eqo
 cFf
 adS
 aoH
-aNo
-aoH
+oBR
+aqW
 aUN
 azs
 aYI
 bbv
 aRq
-aoH
+aqW
 aZo
 azs
 axS
@@ -54921,7 +55234,7 @@ eqo
 aZs
 adS
 aoH
-aNo
+oBR
 aoH
 azs
 azs
@@ -55123,7 +55436,7 @@ eqo
 bos
 adS
 aoH
-aNo
+oBR
 aoH
 azs
 awC
@@ -55325,7 +55638,7 @@ eqo
 rVS
 adS
 aoH
-aNo
+oBR
 bbq
 azs
 awC
@@ -55527,7 +55840,7 @@ eqo
 bos
 adS
 aoH
-aNo
+oBR
 aPA
 azs
 awC
@@ -55729,7 +56042,7 @@ eqo
 bos
 adS
 aoH
-aNo
+oBR
 aYX
 azs
 awC
@@ -55931,7 +56244,7 @@ eqo
 bos
 adS
 aoH
-aNo
+oBR
 aYY
 azs
 awC
@@ -57122,10 +57435,10 @@ apw
 alY
 aqA
 aqX
-aqk
+lMR
 aqz
 amh
-adX
+rCf
 aGw
 aIW
 aIW
@@ -57324,13 +57637,13 @@ alY
 alY
 aqB
 aqY
-aqk
+lMR
 aqz
-aqW
-bby
+vzl
+pYS
 aGy
 aVm
-bbB
+dKx
 aBV
 aol
 aol
@@ -57528,8 +57841,8 @@ aqL
 aqY
 aGq
 aqz
-aJc
-adX
+oAj
+rCf
 ayy
 aNq
 aNq
@@ -57727,13 +58040,13 @@ alY
 alY
 alY
 aDk
-aqk
+lMR
 aud
 aqz
-adX
-adX
+ryW
+hBP
 aIV
-aaM
+hBP
 baK
 aJI
 aol
@@ -57930,7 +58243,7 @@ arb
 alY
 aqE
 aqY
-aqk
+lMR
 aqz
 aqz
 aqz
@@ -58131,13 +58444,13 @@ alY
 alY
 alY
 aqF
-aqk
-aqk
-aqU
+lMR
+lMR
+lMR
 aGU
 atK
 aGz
-aqU
+vWw
 atK
 aol
 aqZ
@@ -58333,14 +58646,14 @@ aqS
 aDA
 alY
 aqM
-aqk
-aqk
-aqU
+lMR
+lMR
+lMR
 aHE
-aqk
+cKT
 auj
-aqk
-aqk
+cKT
+cKT
 aol
 aol
 aol
@@ -58535,25 +58848,25 @@ ast
 aGr
 alY
 aDI
-aqk
-aqk
+lMR
+lMR
 aBa
 aIS
-aqk
+cKT
 auj
-aqk
-aqk
-aqk
-atK
-aqk
-aqk
+cKT
+cKT
+cKT
+puE
+bVr
+aqU
 aHH
-bck
+xfB
 bcp
-bcj
-aqk
+efw
+aqU
 aub
-aqk
+aqU
 aqz
 aoH
 aEE
@@ -58737,25 +59050,25 @@ arf
 ahK
 alY
 aGp
-aqk
-aqk
-aqk
-aqk
-aqk
+lMR
+lMR
+lMR
+bVr
+gFl
 avx
-aHw
+dTM
 aop
-aHw
-aHw
-aHw
-aHw
+dTM
+uYX
+aFq
+owQ
 aHo
-aHw
+owQ
 aIH
-aHw
+owQ
 aEr
 aGA
-ayM
+tSN
 aMF
 aGH
 aRy
@@ -58939,17 +59252,17 @@ aqa
 asW
 arV
 ayM
-aqy
+ayM
 avK
 aHw
-aHw
-aHw
+aFq
+fxf
 aHx
-aqk
-aub
-aqk
-aqk
-aqk
+cKT
+oaM
+cKT
+cKT
+bVr
 aoL
 aoL
 aoL
@@ -59140,14 +59453,14 @@ alY
 alY
 alY
 alY
-aqk
-aqk
+lMR
+lMR
 ayj
-aqk
-aqk
-aqk
+lMR
+bVr
+cKT
 auj
-aqk
+cKT
 ase
 aEi
 aGm
@@ -59342,14 +59655,14 @@ aeV
 aeV
 aeV
 aqz
-aqz
-aqk
+lMR
+lMR
 ayj
-aqk
+lMR
 aqz
 aXv
 aXx
-aXv
+gnj
 arr
 arr
 arr
@@ -59535,7 +59848,7 @@ afP
 aUz
 anI
 afC
-afC
+jux
 afP
 aur
 aMR
@@ -59544,14 +59857,14 @@ aeV
 aeV
 aeV
 aZC
-aqz
+lMR
 arL
 aHy
 bcj
 aqz
 arY
-auj
-aGq
+pLC
+mtG
 arr
 ary
 arr
@@ -59746,14 +60059,14 @@ abh
 abh
 abh
 abh
-aqz
-aqk
+lMR
+lMR
 ayj
-aqk
+lMR
 aqz
 ayt
-auj
-aqk
+pLC
+bVr
 arr
 asG
 arr
@@ -59937,9 +60250,9 @@ awC
 awC
 afP
 aUs
-aUs
+qlc
 aoM
-afC
+jux
 afP
 arB
 avC
@@ -59948,14 +60261,14 @@ aBM
 aGR
 aBA
 aLG
-aqU
-aqk
+lMR
+lMR
 ayj
-aqk
+lMR
 aqz
 aDC
-auj
-aqk
+pLC
+bVr
 arr
 aoY
 ayD
@@ -60156,8 +60469,8 @@ atj
 baC
 aqz
 bck
-aHy
-bcj
+nxX
+hCQ
 arr
 aRT
 ayH
@@ -60357,9 +60670,9 @@ ape
 ape
 ape
 ape
-aqk
+bVr
 ayn
-aqk
+bVr
 arr
 aSo
 ayH
@@ -60559,9 +60872,9 @@ are
 ape
 are
 ape
-aGp
+wpz
 ayJ
-auN
+wpb
 aHa
 aGt
 aGu
@@ -60761,9 +61074,9 @@ aqj
 ape
 aqj
 ape
-aqk
+bVr
 ayn
-aqk
+bVr
 arr
 aSs
 asx
@@ -60963,9 +61276,9 @@ aqq
 aGv
 aqq
 ape
-aqk
+bVr
 ayn
-aqk
+bVr
 arr
 aSs
 asx
@@ -61369,7 +61682,7 @@ awU
 ape
 aIc
 ayn
-aGq
+mtG
 arr
 asG
 arr
@@ -61569,9 +61882,9 @@ auK
 apB
 auJ
 ape
-aqk
+bVr
 ayn
-aqk
+bVr
 arr
 avA
 arr
@@ -61771,9 +62084,9 @@ auK
 apQ
 avn
 ape
-aqk
+bVr
 ayn
-aqk
+bVr
 arr
 arr
 arr
@@ -61973,9 +62286,9 @@ atU
 avv
 aqg
 ape
-aqk
+bVr
 ayn
-aqk
+bVr
 aqz
 aNA
 aNX
@@ -62176,8 +62489,8 @@ axF
 axH
 aGf
 aFq
-aHx
-aqk
+tfu
+bVr
 aqz
 ays
 aoy
@@ -62378,8 +62691,8 @@ avW
 aUn
 ape
 bck
-aHy
-bcj
+nxX
+hCQ
 aqz
 apv
 aoy
@@ -62579,7 +62892,7 @@ aqj
 ape
 aqj
 ape
-aqk
+bVr
 ayJ
 aFq
 aBs
@@ -62781,9 +63094,9 @@ aoA
 ape
 aoA
 ape
-aGp
+wpz
 ayn
-aqk
+bVr
 aBN
 arM
 ayC
@@ -62793,9 +63106,9 @@ aBy
 aBy
 aNj
 aok
-asQ
+aHq
 aHt
-asQ
+aHq
 asV
 atd
 atk
@@ -62983,9 +63296,9 @@ ape
 ape
 ape
 ape
-aqk
+bVr
 ayn
-aqk
+bVr
 aBN
 arM
 ayC
@@ -63169,25 +63482,25 @@ aaa
 aab
 adW
 amf
-amm
+xMj
 ank
-amm
+xMj
 arx
-amm
-amm
-aqG
+xMj
+xMj
+arv
 amv
 aAI
-aqk
+vWw
 apP
 aHF
 atu
 aHG
 atK
 aIr
-aqk
+bVr
 ayn
-aqU
+bVr
 aCm
 auP
 ayF
@@ -63371,25 +63684,25 @@ aaa
 aam
 alK
 ami
-amm
-amm
+xMj
+xMj
 aoz
 aHN
-amm
-amm
+xMj
+xMj
 arv
 amC
 aqU
-aqk
-aqk
+aqU
+aqU
 aub
 aHz
 bcg
-aqk
-aIr
-aqk
+aqU
+jTa
+bVr
 ayn
-aqk
+bVr
 aqz
 avz
 aBQ
@@ -63582,16 +63895,16 @@ amU
 arD
 amJ
 ate
-asS
-asS
+ate
+ate
 aTD
 aHA
 bch
-asS
+ate
 aXu
-asS
+tVj
 aBS
-aGq
+mtG
 aqz
 avB
 aAY
@@ -63603,10 +63916,10 @@ aRb
 aok
 asT
 aFs
-asQ
-asQ
-asQ
 aHq
+hKl
+hKl
+hKl
 aCG
 aIi
 aCG
@@ -63776,12 +64089,12 @@ aam
 alK
 bvE
 amr
-amm
+xMj
 aql
 alH
 ama
 amr
-amr
+uVL
 amv
 aqk
 arN
@@ -63790,10 +64103,10 @@ aqk
 aww
 bci
 baD
-aIr
-aqk
+cPk
+bVr
 aCo
-aqk
+bVr
 aqz
 aHh
 aBy
@@ -63805,10 +64118,10 @@ aBy
 aok
 aEX
 aFs
-asQ
-asQ
-asQ
 aHq
+hKl
+hKl
+hKl
 aIl
 aXD
 aIo
@@ -63977,7 +64290,7 @@ aaa
 aam
 alK
 anN
-anN
+eEy
 alX
 adW
 adW
@@ -63993,9 +64306,9 @@ ayh
 arX
 arX
 arX
-aqk
+bVr
 aCo
-aqk
+bVr
 aqz
 aok
 aok
@@ -64005,12 +64318,12 @@ aok
 aok
 aok
 aok
-asQ
-aFs
-asQ
-asQ
-asQ
 aHq
+aFs
+aHq
+hKl
+hKl
+hKl
 aCH
 aXR
 aIo
@@ -64180,11 +64493,11 @@ aam
 alK
 aoi
 wdi
-amm
+xMj
 aqn
 alH
 ama
-aoi
+boq
 aoi
 aWh
 adp
@@ -64197,7 +64510,7 @@ auO
 arX
 aXw
 aCo
-aqk
+bVr
 aqz
 aoW
 arc
@@ -64206,13 +64519,13 @@ aKE
 aSu
 aKX
 akN
-asQ
+aHq
 aFr
 aGV
-asQ
-asQ
-asQ
 aHq
+hKl
+hKl
+hKl
 aIZ
 aIk
 aCG
@@ -64381,25 +64694,25 @@ aaa
 aam
 alK
 amm
-amm
-amm
-amm
-amm
+xMj
+xMj
+xMj
+xMj
 ama
-amm
-amm
-amm
+xMj
+xMj
+xMj
 arF
 aRZ
-auS
+oBo
 arX
 aqt
 auG
 aOo
 arX
-aqk
+bVr
 aCo
-baC
+vAQ
 aqz
 aoX
 aso
@@ -64410,7 +64723,7 @@ auy
 akN
 aHs
 aFs
-asQ
+aHq
 aKV
 aGM
 aIq
@@ -64599,9 +64912,9 @@ aqH
 aBf
 avE
 arX
-aGp
+wpz
 aCo
-aqk
+bVr
 aqz
 apb
 asL
@@ -64612,7 +64925,7 @@ aCW
 aGY
 aCn
 aFt
-asQ
+aHq
 auA
 auA
 auA
@@ -64785,16 +65098,16 @@ aaa
 aab
 adW
 aiG
-amm
-amm
-amm
-amm
-amm
-amm
-amm
+xMj
+xMj
+xMj
+xMj
+xMj
+xMj
+xMj
 ama
-amm
-amm
+xMj
+xMj
 aIg
 arX
 aEm
@@ -64802,8 +65115,8 @@ arC
 aJh
 arX
 bcl
-aHy
-bcj
+nxX
+hCQ
 aqz
 apd
 atx
@@ -64812,9 +65125,9 @@ arA
 aSv
 aPr
 akN
-asQ
+aHq
 aFs
-asQ
+aHq
 auA
 auR
 ayI
@@ -64987,7 +65300,7 @@ aaa
 awC
 adW
 afA
-amm
+xha
 eoo
 aoF
 aoF
@@ -64997,15 +65310,15 @@ amm
 ama
 arO
 aRZ
-auS
+oBo
 arX
 aqp
 aHO
 awP
 arX
-aqk
+bVr
 aCo
-aqk
+bVr
 aqz
 akN
 akN
@@ -65196,7 +65509,7 @@ aiv
 aiv
 aeM
 baB
-ama
+fvq
 arU
 aRd
 asR
@@ -65205,9 +65518,9 @@ aFn
 anQ
 anQ
 atE
-aqk
+bVr
 aCo
-aqk
+bVr
 alj
 apn
 atz
@@ -65405,11 +65718,11 @@ anr
 anQ
 aEL
 aIs
-anR
+qBD
 bcL
-aqk
+bVr
 aCo
-aqk
+bVr
 alj
 apu
 atG
@@ -65420,7 +65733,7 @@ aDf
 aGZ
 aCn
 aFt
-asQ
+aHq
 auA
 aEy
 aCw
@@ -65622,7 +65935,7 @@ auz
 alj
 aHs
 aFs
-asQ
+aHq
 auA
 aPz
 aCx
@@ -65822,8 +66135,8 @@ aKG
 aIu
 aux
 alj
-asQ
-aEW
+aHq
+aFs
 aIX
 auA
 aGN
@@ -66217,8 +66530,8 @@ aIY
 bcO
 aoR
 arJ
-aoR
-aoR
+lGK
+lGK
 aIU
 asq
 ass
@@ -66413,21 +66726,21 @@ anr
 anQ
 aHQ
 anY
-aEK
-anR
+aEL
+qBD
 asu
 anQ
 aJU
 arJ
 bcm
-aoR
-aoR
-aoR
-aoR
-aoR
-aoR
-aoR
-aoR
+anO
+anO
+anO
+anO
+anO
+anO
+anO
+anO
 bcm
 aFM
 aSi
@@ -66607,13 +66920,13 @@ abg
 abg
 abg
 anQ
-anR
-anR
+atP
+quC
 azH
-anR
-anR
+quC
+atP
 apT
-anR
+qBD
 arn
 aEN
 aEQ
@@ -66809,28 +67122,28 @@ aab
 aab
 aab
 anQ
-anR
+atP
 aof
 arH
 arI
 atF
 aqC
-atF
+vqP
 awZ
 aEO
-anR
+qBD
 aHR
 anQ
 aJU
-aoR
+lGK
 bco
-aoR
-aoR
+lGK
+lGK
 aJJ
-aoR
-aoR
-aoR
-aoR
+lGK
+lGK
+lGK
+lGK
 aEl
 bco
 aFP
@@ -67011,14 +67324,14 @@ awC
 awC
 awC
 anQ
-anR
+atP
 aoh
-anR
-anR
-anR
+atP
+hVM
+atP
 apT
-anR
-anR
+qBD
+qBD
 atw
 aAd
 aOw
@@ -67030,7 +67343,7 @@ aXr
 asg
 asC
 aEh
-aoR
+anO
 asg
 anO
 aEn
@@ -67215,7 +67528,7 @@ awC
 anQ
 aAN
 aoh
-anR
+atP
 aaO
 aaO
 aaO
@@ -67417,23 +67730,23 @@ awC
 anQ
 axc
 aoh
-anR
+atP
 aaO
 alg
 atf
 avc
 aaO
 aXp
-aER
-aER
+qbh
+qbh
 aHW
-aER
-aER
-aER
-aER
+qbh
+qbh
+qbh
+qbh
 aHW
-aER
-aER
+qbh
+qbh
 aER
 atn
 axG
@@ -67619,7 +67932,7 @@ awC
 anQ
 apI
 aoh
-anR
+atP
 aaO
 alG
 awW
@@ -67640,9 +67953,9 @@ aER
 atn
 aJW
 aEw
-ayG
-ayG
-ayG
+aDF
+aDF
+aDF
 atn
 aJQ
 aJT
@@ -67821,7 +68134,7 @@ awC
 anQ
 aBO
 aoh
-anR
+atP
 aaO
 amK
 awY
@@ -67842,8 +68155,8 @@ aCM
 atn
 azp
 aEF
-aFD
-aFD
+aJu
+aJu
 aJu
 aLP
 aJC
@@ -68023,7 +68336,7 @@ awC
 anQ
 amZ
 aoj
-anR
+atP
 aaO
 aaO
 aaO
@@ -68223,12 +68536,12 @@ aaa
 aaa
 awC
 anQ
-anR
+atP
 aoO
 arI
 arI
 aun
-anR
+atP
 akX
 aBI
 aET
@@ -68425,12 +68738,12 @@ aaa
 aaa
 awC
 anQ
-anR
+atP
 aBR
-anR
-anR
+hVM
+atP
 aoh
-anR
+atP
 akX
 awG
 aEU
@@ -68630,9 +68943,9 @@ anQ
 anQ
 anQ
 anQ
-anR
+atP
 aoh
-aCl
+aIv
 akX
 axd
 aEY
@@ -68646,7 +68959,7 @@ aEI
 aVy
 aVv
 aVw
-ayc
+aER
 aFO
 aDF
 aFc
@@ -68832,9 +69145,9 @@ awC
 awC
 awC
 anQ
-anR
+atP
 aoh
-anR
+atP
 akX
 aqK
 aER
@@ -68851,7 +69164,7 @@ aFj
 aER
 atn
 aZa
-ayG
+aDF
 aEw
 aLj
 atn
@@ -69034,9 +69347,9 @@ aaa
 aaa
 awC
 anQ
-anR
+atP
 auo
-anR
+atP
 akX
 aqK
 aER
@@ -70858,16 +71171,16 @@ aaa
 awC
 akX
 aER
-aER
-aER
-aER
-aER
-aER
-aER
-aER
-aER
-aER
-aER
+qMo
+qMo
+qMo
+qMo
+qMo
+qMo
+qMo
+qMo
+qMo
+qMo
 aER
 akX
 awC
