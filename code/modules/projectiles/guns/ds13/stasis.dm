@@ -37,18 +37,17 @@
 	muzzle_type = ""
 
 /obj/item/projectile/bullet/stasis/on_impact(var/atom/A)
-	var/impact_zone = trange(1, A)
-	for(var/t in impact_zone)
-		var/turf/T = t
-		for(var/atom/M in T)
-			M.stasis_act()
+	new /obj/effect/effect/expanding_circle(A.loc, _expansion_rate = -0.9, 	_lifespan = 6, _color = "#505fff")
+	var/impact_zone = range(1, A)
+	for(var/atom/M in impact_zone)
+		M.stasis_act()
 
 /datum/proc/stasis_act()
 	return
 
 /datum/extension/stasis_effect
-	var/ripple
-	var/outline
+	var/dm_filter/ripple
+	var/dm_filter/outline
 	var/stasis_duration = 40
 
 /datum/extension/stasis_effect/New()
