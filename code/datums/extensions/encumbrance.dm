@@ -16,6 +16,8 @@
 
 /datum/extension/updating/encumbrance/update()
 	.=..()
+	if (!holder)
+		return
 	var/mob/living/L = holder
 	var/encumbrance_before = encumbrance
 	encumbrance = 0

@@ -7,7 +7,7 @@
 
 /datum/extension/New(var/datum/holder)
 	if(!istype(holder, expected_type))
-		CRASH("Invalid holder type. Expected [expected_type], was [holder.type]")
+		CRASH("Invalid holder type. [src.name] [src.type] Expected [expected_type], was [holder.type]")
 	src.holder = holder
 
 	//This extension wants to apply statmods to its holder!
