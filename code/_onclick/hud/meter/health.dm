@@ -28,8 +28,7 @@
 /obj/screen/meter/health/set_mob(var/mob/living/newmob)
 	.=..()
 	GLOB.updatehealth_event.register(L, src, /obj/screen/meter/proc/update)
-	if(L?.hud_used)
-		L.hud_used.hud_healthbar = src
+	L.hud_used.hud_healthbar = src
 	set_health()
 
 
