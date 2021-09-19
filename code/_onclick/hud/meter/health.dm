@@ -19,7 +19,7 @@
 
 
 /obj/screen/meter/health/Destroy()
-	if (L)
+	if (L && L.hud_used)
 		if (L.hud_used.hud_healthbar == src)
 			L.hud_used.hud_healthbar = null
 		L = null

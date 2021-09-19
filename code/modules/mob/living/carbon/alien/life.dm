@@ -85,6 +85,8 @@
 /mob/living/carbon/alien/handle_regular_hud_updates()
 	update_sight()
 
+	if(!client || !hud_used)
+		return
 
 	//Deprecated, but we don't use these
 	if (hud_used.healths)

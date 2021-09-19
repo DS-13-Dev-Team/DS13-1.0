@@ -110,7 +110,7 @@
 
 
 /mob/Login()
-	.=..()
+	..()
 	//Update the necromorph players list
 	if (is_necromorph())
 		set_necromorph(TRUE)

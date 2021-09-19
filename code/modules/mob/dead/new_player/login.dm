@@ -46,6 +46,9 @@
 
 
 /mob/dead/new_player/Login()
+	if(!client)
+		return
+
 	player_login()
 	update_Login_details()	//handles setting lastKnownIP and computer_id for use by the ban systems as well as checking for multikeying
 

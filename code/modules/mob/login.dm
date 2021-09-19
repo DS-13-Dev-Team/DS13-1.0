@@ -58,6 +58,8 @@
 	var/client/my_client // Need to keep track of this ourselves, since by the time Logout() is called the client has already been nulled
 
 /mob/Login()
+	if(!client)
+		return FALSE //Byond bug
 
 	player_login()
 
