@@ -506,7 +506,7 @@ var/world_topic_spam_protect_time = world.timeofday
 		Master.Shutdown() //run SS shutdowns
 
 	if(ping)
-		send2chat("GAME: <@&888618543606812732>", "game") //Don't forget change id channel and id role for you server!!!!!
+		send2chat("GAME: <@&830623957727182869>", "game") //Don't forget change id channel and id role for you server!!!!!
 		var/list/msg = list()
 
 		msg += "Current Map: [GLOB.using_map.full_name]"
