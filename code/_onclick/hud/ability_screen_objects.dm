@@ -29,7 +29,6 @@
 
 	// After that, remove ourselves from the mob seeing us, so we can qdel cleanly.
 	if(my_mob)
-		my_mob.hud_used.ability_master = null
 		if(my_mob.client && my_mob.client.screen)
 			my_mob.client.screen -= src
 		my_mob = null
