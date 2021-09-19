@@ -157,6 +157,9 @@
 /mob/living/carbon/brain/handle_regular_hud_updates()
 	update_sight()
 
+	if(!client || !hud_used)
+		return
+
 	//Deprecated, but we don't use MMIs generally
 	if (hud_used.healths)
 		if (stat != 2)

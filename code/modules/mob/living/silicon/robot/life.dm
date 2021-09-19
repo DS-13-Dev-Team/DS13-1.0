@@ -160,6 +160,9 @@
 			if (MED_HUD)
 				process_med_hud(src,0)
 
+	if(!client || !hud_used)
+		return
+
 	//Deprecated, but we don't use these
 	if (hud_used.healths)
 		if (src.stat != 2)

@@ -21,7 +21,7 @@
 	screen_loc = "EAST-1:28,CENTER:15"
 
 /obj/screen/health_doll/Destroy()
-	if (H && H.hud_used.healths == src)
+	if (H && H.hud_used && H.hud_used.healths == src)
 		H.hud_used.healths = null
 	H = null
 	.=..()

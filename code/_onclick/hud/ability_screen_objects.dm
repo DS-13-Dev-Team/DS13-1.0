@@ -158,13 +158,10 @@
 
 /mob/Login()
 	..()
-	if(hud_used.ability_master)
+	if(hud_used?.ability_master)
 		hud_used.ability_master.update_abilities(1, src)
 		hud_used.ability_master.toggle_open(1)
 
-/mob/Initialize()
-	. = ..()
-	hud_used.ability_master = new /obj/screen/movable/ability_master(null,src)
 
 ///////////ACTUAL ABILITIES////////////
 //This is what you click to do things//
@@ -353,7 +350,7 @@
 
 /mob/Life()
 	..()
-	if(hud_used.ability_master)
+	if(hud_used?.ability_master)
 		hud_used.ability_master.update_spells(0)
 
 /obj/screen/movable/ability_master/proc/update_spells(var/forced = 0)

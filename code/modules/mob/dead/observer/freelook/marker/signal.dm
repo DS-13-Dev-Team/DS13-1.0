@@ -205,7 +205,7 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 
 
 /mob/dead/observer/eye/signal/Login()
-	.=..()
+	..()
 	set_necromorph(TRUE)
 	SSnecromorph.signals |= src
 	start_energy_tick()

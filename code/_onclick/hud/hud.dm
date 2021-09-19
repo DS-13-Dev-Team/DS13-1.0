@@ -64,6 +64,7 @@
 /datum/hud/New(mob/owner)
 	mymob = owner
 	instantiate()
+	ability_master = new /obj/screen/movable/ability_master(null,mymob)
 	..()
 
 /datum/hud/Destroy()

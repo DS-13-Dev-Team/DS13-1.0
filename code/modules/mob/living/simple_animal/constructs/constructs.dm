@@ -278,6 +278,10 @@
 
 /mob/living/simple_animal/construct/armoured/Life()
 	..()
+
+	if(!client || !hud_used)
+		return
+
 	if(hud_used.healths)
 		switch(health)
 			if(250 to INFINITY)
@@ -300,6 +304,10 @@
 
 /mob/living/simple_animal/construct/behemoth/Life()
 	..()
+
+	if(!client || !hud_used)
+		return
+
 	if(hud_used.healths)
 		switch(health)
 			if(750 to INFINITY)
@@ -321,6 +329,10 @@
 
 /mob/living/simple_animal/construct/builder/Life()
 	..()
+
+	if(!client || !hud_used)
+		return
+
 	if(hud_used.healths)
 		switch(health)
 			if(50 to INFINITY)
@@ -344,6 +356,10 @@
 
 /mob/living/simple_animal/construct/wraith/Life()
 	..()
+
+	if(!client || !hud_used)
+		return
+
 	if(hud_used.healths)
 		switch(health)
 			if(75 to INFINITY)
@@ -366,6 +382,10 @@
 
 /mob/living/simple_animal/construct/harvester/Life()
 	..()
+
+	if(!client || !hud_used)
+		return
+
 	if(hud_used.healths)
 		switch(health)
 			if(150 to INFINITY)

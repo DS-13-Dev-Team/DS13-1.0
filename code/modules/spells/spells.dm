@@ -4,7 +4,7 @@
 
 //A fix for when a spell is created before a mob is created
 /mob/Login()
-	. = ..()
+	..()
 	if(mind)
 		if(!mind.learned_spells)
 			mind.learned_spells = list()
