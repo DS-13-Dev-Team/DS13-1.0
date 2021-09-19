@@ -506,10 +506,10 @@ var/world_topic_spam_protect_time = world.timeofday
 		Master.Shutdown() //run SS shutdowns
 
 	if(ping)
-		send2chat("GAME: <@&797602501813469224>", "game") //Don't forget change id channel and id role for you server!!!!!
+		send2chat("GAME: <@&888847098399846541>", "game") //Don't forget change id channel and id role for you server!!!!!
 		var/list/msg = list()
 
-		msg += "Next Map: USG Ishumura"
+		msg += "Current Map: [GLOB.using_map.full_name]"
 
 		if(ticker.mode)
 			msg += "Game Mode: [ticker.mode.name]"
