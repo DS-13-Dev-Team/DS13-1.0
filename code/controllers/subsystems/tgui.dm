@@ -34,7 +34,7 @@ SUBSYSTEM_DEF(tgui)
 
 /datum/controller/subsystem/tgui/stat_entry(msg)
 	msg = "P:[length(open_uis)]"
-	return ..()
+	return msg
 
 /datum/controller/subsystem/tgui/fire(resumed = FALSE)
 	if(!resumed)
