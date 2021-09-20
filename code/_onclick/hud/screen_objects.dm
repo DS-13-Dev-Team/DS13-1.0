@@ -108,10 +108,24 @@
 	else if(icon_y <= world.icon_size/2)
 		intent = I_GRAB
 	update_icon()
-	usr.a_intent = intent
+	usr.a_intent_change(intent)
 
 /obj/screen/intent/update_icon()
+	to_chat(world, "Intent icon update [intent]")
 	icon_state = "intent_[intent]"
+	crash_with("Intent icon update [intent]")
+
+/obj/screen/intent/added_to_screen(var/client/C)
+	to_chat(world, "Added to screen[C.mob] [C.mob.a_intent]")
+	if (C.mob)
+		intent = C.mob.a_intent
+		to_chat(world,"intent is now [intent]")
+		update_icon()
+
+
+
+
+
 
 /obj/screen/Click(location, control, params)
 	if(!usr)	return 1

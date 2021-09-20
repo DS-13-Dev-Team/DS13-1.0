@@ -153,7 +153,7 @@
 					qdel(W)
 
 		var/mob/living/new_mob = new /mob/living/simple_animal/corgi(A.loc)
-		new_mob.a_intent = I_HURT
+		new_mob.a_intent_change(I_HURT)
 		if(M.mind)
 			M.mind.transfer_to(new_mob)
 		else

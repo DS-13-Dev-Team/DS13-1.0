@@ -210,7 +210,7 @@
 
 /datum/species/necromorph/setup_interaction(var/mob/living/carbon/human/H)
 	.=..()
-	H.a_intent = I_HURT	//Don't start in help intent, we want to kill things
+	H.a_intent_change(I_HURT)	//Don't start in help intent, we want to kill things
 	H.faction = FACTION_NECROMORPH
 	SSnecromorph.major_vessels += H
 

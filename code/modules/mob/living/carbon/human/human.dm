@@ -1446,7 +1446,7 @@
 	set_intent(a_intent)
 
 /mob/living/carbon/human/proc/set_intent(new_intent = I_HELP)
-	a_intent = new_intent
+	a_intent_change(new_intent)
 	if(istype(hud_used.action_intent, /obj/screen/intent))
 		var/obj/screen/intent/I = hud_used.action_intent
 		I.intent = I_HURT
