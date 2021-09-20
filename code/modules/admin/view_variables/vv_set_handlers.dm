@@ -9,7 +9,7 @@
 	if(!(variable in handled_vars))
 		return FALSE
 	if(istype(O) && !(variable in O.vars))
-		log_error("Did not find the variable '[variable]' for the instance [log_info_line(O)].")
+		log_debug("Did not find the variable '[variable]' for the instance [log_info_line(O)].")
 		return FALSE
 	if(predicates)
 		for(var/predicate in predicates)
@@ -69,16 +69,16 @@
 	predicates = list(/proc/is_dir_predicate)
 
 /decl/vv_set_handler/ghost_appearance_handler
-	handled_type = /mob/observer/ghost
-	handled_vars = list("appearance" = /mob/observer/ghost/proc/set_appearance)
+	handled_type = /mob/dead/observer/ghost
+	handled_vars = list("appearance" = /mob/dead/observer/ghost/proc/set_appearance)
 	predicates = list(/proc/is_atom_predicate)
 
 /decl/vv_set_handler/virtual_ability_handler
-	handled_type = /mob/observer/virtual
+	handled_type = /mob/dead/observer/virtual
 	handled_vars = list("abilities")
 	predicates = list(/proc/is_num_predicate)
 
-/decl/vv_set_handler/virtual_ability_handler/handle_set_var(var/mob/observer/virtual/virtual, variable, var_value, client)
+/decl/vv_set_handler/virtual_ability_handler/handle_set_var(var/mob/dead/observer/virtual/virtual, variable, var_value, client)
 	..()
 	virtual.update_icon()
 

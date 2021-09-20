@@ -151,7 +151,7 @@ obj/item/organ/external/take_general_damage(var/amount, var/silent = FALSE)
 			brute = W.heal_damage(brute)
 
 	if(internal)
-		status &= ~ORGAN_BROKEN
+		set_status(ORGAN_BROKEN, FALSE)
 
 	//Sync the organ's damage with its wounds
 	src.update_damages()
@@ -284,7 +284,7 @@ obj/item/organ/external/take_general_damage(var/amount, var/silent = FALSE)
 
 /obj/item/organ/external/proc/sever_tendon()
 	if((limb_flags & ORGAN_FLAG_HAS_TENDON) && !BP_IS_ROBOTIC(src) && !(status & ORGAN_TENDON_CUT))
-		status |= ORGAN_TENDON_CUT
+		set_status(ORGAN_TENDON_CUT, TRUE)
 		return TRUE
 	return FALSE
 

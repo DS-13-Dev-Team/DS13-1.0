@@ -37,7 +37,7 @@ var/list/ventcrawl_machinery = list(
 	return ventcrawl_carry()
 
 /mob/living/Login()
-	. = ..()
+	..()
 	//login during ventcrawl
 	if(is_ventcrawling && istype(loc, /obj/machinery/atmospherics)) //attach us back into the pipes
 		remove_ventcrawl()

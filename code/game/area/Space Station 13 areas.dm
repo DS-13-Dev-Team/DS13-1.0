@@ -221,7 +221,7 @@ area/space/atmosalert()
 		var/mob/M = Obj
 		if(M.client)
 			mysound.status = SOUND_UPDATE
-			sound_to(M, mysound)
+			SEND_SOUND(M, mysound)
 
 /area/beach/Exited(atom/movable/Obj)
 	. = ..()
@@ -229,7 +229,7 @@ area/space/atmosalert()
 		var/mob/M = Obj
 		if(M.client)
 			mysound.status = SOUND_PAUSED | SOUND_UPDATE
-			sound_to(M, mysound)
+			SEND_SOUND(M, mysound)
 
 /area/beach/proc/process()
 	set background = 1
@@ -246,6 +246,6 @@ area/space/atmosalert()
 			to_chat(H, mysound)
 			if(S)
 				spawn(sound_delay)
-					sound_to(H, S)
+					SEND_SOUND(H, S)
 
 	spawn(60) .()

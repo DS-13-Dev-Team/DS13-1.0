@@ -8,7 +8,7 @@
 	Returns
 	standard 0 if fail
 */
-/mob/living/proc/apply_damage(var/damage = 0,var/damagetype = BRUTE, var/def_zone = null, var/blocked = 0, var/damage_flags = 0, var/used_weapon = null)
+/mob/living/proc/apply_damage(var/damage = 0,var/damagetype = BRUTE, var/def_zone = null, var/blocked = 0, var/damage_flags = 0, var/used_weapon = null, var/allow_dismemberment = TRUE)
 	if(!damage || (blocked >= 100))	return 0
 
 	//Multiply the incoming damage
@@ -90,6 +90,8 @@
 	adjustFireLoss(-burn)
 	src.updatehealth()
 
+
+
 // damage ONE external organ, organ gets randomly selected from damaged ones.
 /mob/living/proc/take_organ_damage(var/brute, var/burn, var/emp=0)
 	if(status_flags & GODMODE)	return 0	//godmode
@@ -110,7 +112,42 @@
 	adjustFireLoss(burn)
 	src.updatehealth()
 
+//Heals a total number of points of all types of damage. Not divided equally, but done in order
+//Returns the unused number of points, if any
+/mob/living/proc/heal_quantified_damage(var/total, var/brute = TRUE, var/fire = TRUE, var/tox = FALSE, var/lasting = FALSE)
+	if (total <= 0)
+		return 0
 
+	if (brute)
+		var/heal_amount = min(total, getBruteLoss())
+		adjustBruteLoss(-heal_amount)
+		total -= heal_amount
+
+	if (total <= 0)
+		return 0
+
+	if (fire)
+		var/heal_amount = min(total, getFireLoss())
+		adjustFireLoss(-heal_amount)
+		total -= heal_amount
+
+	if (total <= 0)
+		return 0
+
+	if (tox)
+		var/heal_amount = min(total, getToxLoss())
+		adjustToxLoss(-heal_amount)
+		total -= heal_amount
+		
+	if (total <= 0)
+		return 0
+
+	if (lasting)
+		var/heal_amount = min(total, getLastingDamage())
+		adjustLastingDamage(-heal_amount)
+		total -= heal_amount
+
+	return total
 
 /mob/living/proc/updatehealth()
 	if(status_flags & GODMODE)

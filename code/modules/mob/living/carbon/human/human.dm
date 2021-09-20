@@ -7,7 +7,7 @@
 
 	var/list/hud_list[10]
 	var/list/implants	//Things that are embedded in any of our organs. Nulled out when empty
-	var/obj/item/weapon/rig/wearing_rig // This is very not good, but it's much much better than calling get_rig() every update_canmove() call.
+	var/obj/item/weapon/rig/wearing_rig // This is perfectly fine
 
 	var/list/stance_limbs
 	var/list/grasp_limbs
@@ -65,44 +65,6 @@
 		qdel(organ)
 	return ..()
 
-/mob/living/carbon/human/Stat()
-	. = ..()
-	if(statpanel("Status"))
-		stat("Intent:", "[a_intent]")
-		stat("Move Mode:", "[move_intent.name]")
-
-		if(evacuation_controller)
-			var/eta_status = evacuation_controller.get_status_panel_eta()
-			if(eta_status)
-				stat(null, eta_status)
-
-		if (istype(internal))
-			if (!internal.air_contents)
-				qdel(internal)
-			else
-				stat("Internal Atmosphere Info", internal.name)
-				stat("Tank Pressure", internal.air_contents.return_pressure())
-				stat("Distribution Pressure", internal.distribute_pressure)
-
-		var/obj/item/organ/internal/xeno/plasmavessel/P = internal_organs_by_name[BP_PLASMA]
-		if(P)
-			stat(null, "Phoron Stored: [P.stored_plasma]/[P.max_plasma]")
-
-		var/obj/item/organ/internal/cell/potato = internal_organs_by_name[BP_CELL]
-		if(potato && potato.cell)
-			stat("Battery charge:", "[potato.get_charge()]/[potato.cell.maxcharge]")
-
-		if(wearing_rig)
-			var/obj/item/weapon/rig/suit = wearing_rig
-			var/cell_status = "ERROR"
-			if(suit.cell) cell_status = "[suit.cell.charge]/[suit.cell.maxcharge]"
-			stat(null, "Suit charge: [cell_status]")
-			stat(null, "Credit Balance: [wearing_rig.get_account_balance()]")
-
-		if(mind)
-			if(mind.changeling)
-				stat("Chemical Storage", mind.changeling.chem_charges)
-				stat("Genetic Damage Time", mind.changeling.geneticdamage)
 
 
 
@@ -553,7 +515,7 @@
 		return
 
 	if(!(mMorph in mutations))
-		src.verbs -= /mob/living/carbon/human/proc/morph
+		remove_verb(src, /mob/living/carbon/human/proc/morph)
 		return
 
 	var/new_facial = input("Please select facial hair color.", "Character Generation",rgb(r_facial,g_facial,b_facial)) as color
@@ -635,7 +597,7 @@
 		return
 
 	if(!(mRemotetalk in src.mutations))
-		src.verbs -= /mob/living/carbon/human/proc/remotesay
+		remove_verb(src, /mob/living/carbon/human/proc/remotesay)
 		return
 	var/list/creatures = list()
 	for(var/mob/living/carbon/h in world)
@@ -651,7 +613,7 @@
 		target.show_message("<span class='notice'>You hear a voice that seems to echo around the room: [say]</span>")
 	usr.show_message("<span class='notice'>You project your mind into [target.real_name]: [say]</span>")
 	log_say("[key_name(usr)] sent a telepathic message to [key_name(target)]: [say]")
-	for(var/mob/observer/ghost/G in world)
+	for(var/mob/dead/observer/ghost/G in world)
 		G.show_message("<i>Telepathic message from <b>[src]</b> to <b>[target]</b>: [say]</i>")
 
 /mob/living/carbon/human/proc/remoteobserve()
@@ -666,7 +628,7 @@
 	if(!(mRemote in src.mutations))
 		remoteview_target = null
 		reset_view(0)
-		src.verbs -= /mob/living/carbon/human/proc/remoteobserve
+		remove_verb(src, /mob/living/carbon/human/proc/remoteobserve)
 		return
 
 	if(client.eye != client.mob)
@@ -770,7 +732,7 @@
 			blood_DNA[M.dna.unique_enzymes] = M.dna.b_type
 	hand_blood_color = blood_color
 	src.update_inv_gloves()	//handles bloody hands overlays and updating
-	verbs += /mob/living/carbon/human/proc/bloody_doodle
+	add_verb(src, /mob/living/carbon/human/proc/bloody_doodle)
 	return TRUE //we applied blood to the item
 
 /mob/living/carbon/human/clean_blood(var/clean_feet)
@@ -835,7 +797,7 @@
 
 	organ.take_external_damage(rand(1,3), 0, 0)
 	if(!BP_IS_ROBOTIC(organ) && (should_have_organ(BP_HEART))) //There is no blood in protheses.
-		organ.status |= ORGAN_BLEEDING
+		organ.set_status(ORGAN_BLEEDING, TRUE)
 		src.adjustToxLoss(rand(1,3))
 
 /*
@@ -989,7 +951,7 @@
 	// Rebuild the HUD. If they aren't logged in then login() should reinstantiate it for them.
 	if(client && client.screen)
 		client.screen.len = null
-		InitializeHud()
+		create_mob_hud()
 		refresh_lighting_overlays()
 
 	if(config && CONFIG_GET(flag/use_cortical_stacks) && client && client.prefs.has_cortical_stack)
@@ -1005,10 +967,11 @@
 		set_next_usable_move_intent()
 
 	//recheck species-restricted clothing
-	for(var/slot in slot_first to slot_last)
-		var/obj/item/clothing/C = get_equipped_item(slot)
-		if(istype(C) && !C.mob_can_equip(src, slot, disable_warning = TRUE, force = TRUE))	//Without the force flag, nothing can remain equipped
-			unEquip(C)
+
+	for (var/obj/item/I in get_equipped_items())
+		I.species_changed(src, species)
+
+
 
 	updatehealth()
 
@@ -1026,7 +989,7 @@
 		return FALSE //something is terribly wrong
 
 	if (!bloody_hands)
-		verbs -= /mob/living/carbon/human/proc/bloody_doodle
+		remove_verb(src, /mob/living/carbon/human/proc/bloody_doodle)
 
 	if (src.gloves)
 		to_chat(src, "<span class='warning'>Your [src.gloves] are getting in the way.</span>")
@@ -1478,7 +1441,7 @@
 /mob/living/carbon/human/density_lying()
 	return species.density_lying
 
-/mob/living/carbon/human/InitializeHud()
+/mob/living/carbon/human/create_mob_hud()
 	..()
 	set_intent(a_intent)
 

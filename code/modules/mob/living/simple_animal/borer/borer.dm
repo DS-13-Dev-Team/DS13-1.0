@@ -52,8 +52,7 @@
 	..(newloc)
 
 	add_language("Cortical Link")
-	verbs += /mob/living/proc/ventcrawl
-	verbs += /mob/living/proc/hide
+	add_verb(src, list(/mob/living/proc/ventcrawl, /mob/living/proc/hide))
 
 	generation = gen
 	truename = "[borer_names[min(generation, borer_names.len)]] [random_id("borer[generation]", 1000, 9999)]"
@@ -97,17 +96,6 @@
 				if(prob(host.getBrainLoss()/20))
 					host.say("*[pick(list("blink","blink_r","choke","aflap","drool","twitch","twitch_v","gasp"))]")
 
-/mob/living/simple_animal/borer/Stat()
-	. = ..()
-	statpanel("Status")
-
-	if(evacuation_controller)
-		var/eta_status = evacuation_controller.get_status_panel_eta()
-		if(eta_status)
-			stat(null, eta_status)
-
-	if (client.statpanel == "Status")
-		stat("Chemicals", chemicals)
 
 /mob/living/simple_animal/borer/proc/detatch()
 
@@ -121,9 +109,7 @@
 	controlling = 0
 
 	host.remove_language("Cortical Link")
-	host.verbs -= /mob/living/carbon/proc/release_control
-	host.verbs -= /mob/living/carbon/proc/punish_host
-	host.verbs -= /mob/living/carbon/proc/spawn_larvae
+	remove_verb(host, list(/mob/living/carbon/proc/release_control, /mob/living/carbon/proc/punish_host, /mob/living/carbon/proc/spawn_larvae))
 
 	if(host_brain)
 

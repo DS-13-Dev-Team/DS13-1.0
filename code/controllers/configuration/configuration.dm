@@ -16,7 +16,6 @@
 	var/list/votable_modes // votable modes
 	var/list/mode_names
 
-	var/motd
 	var/policy
 
 	var/ooc_allowed 	= TRUE
@@ -189,10 +188,9 @@
 	++.
 
 
-/datum/controller/configuration/stat_entry()
-	if(!statclick)
-		statclick = new/obj/effect/statclick/debug(null, "Debug", src)
-	stat("[name]:", statclick)
+/datum/controller/configuration/stat_entry(msg)
+	msg = "Edit"
+	return msg
 
 
 /datum/controller/configuration/proc/Get(entry_type)
@@ -311,15 +309,6 @@ Example config:
 		if(ct && ct == mode_name)
 			return new T
 	return new /datum/game_mode/extended()
-
-/datum/controller/configuration/proc/get_runnable_modes()
-	var/list/runnable_modes = list()
-	for(var/game_mode in gamemode_cache)
-		var/datum/game_mode/M = gamemode_cache[game_mode]
-		var/list/probabilities = CONFIG_GET(keyed_list/probabilities)
-		if(M && !M.startRequirements() && !isnull(probabilities[M.config_tag]) && probabilities[M.config_tag] > 0)
-			runnable_modes |= M
-	return runnable_modes
 
 //Message admins when you can.
 /datum/controller/configuration/proc/DelayedMessageAdmins(text)

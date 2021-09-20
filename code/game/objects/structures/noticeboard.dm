@@ -77,7 +77,7 @@
 	if(href_list["read"])
 		var/obj/item/weapon/paper/P = locate(href_list["read"])
 		if((P && P.loc == src))
-			P.show_content(usr)
+			P.tgui_interact(usr)
 	if(href_list["look"])
 		var/obj/item/weapon/photo/P = locate(href_list["look"])
 		if((P && P.loc == src))

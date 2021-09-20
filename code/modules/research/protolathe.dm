@@ -43,9 +43,7 @@
 	MATERIAL_PHORON)
 
 /obj/machinery/r_n_d/protolathe/Initialize()
-	materials = default_material_composition.Copy()
-	..()
-
+	. = ..()
 	materials[MATERIAL_STEEL]	= new /datum/rnd_material("Steel",    /obj/item/stack/material/steel)
 	materials[MATERIAL_GLASS]	= new /datum/rnd_material("Glass",    /obj/item/stack/material/glass)
 	materials[MATERIAL_PLASTIC]	= new /datum/rnd_material("Plastic",  /obj/item/stack/material/plastic)
@@ -92,10 +90,15 @@
 		icon_state = "protolathe"
 
 /obj/machinery/r_n_d/protolathe/proc/check_mat(datum/design/being_built, M)
+	var/A = 0
 	if(materials[M])
-		return (materials[M].amount - (being_built.materials[M]/efficiency_coeff) >= 0) ? 1 : 0
+		A = materials[M].amount
+		A /= max(1 , (being_built.materials[M]/efficiency_coeff))
+		return A
 	else
-		return (reagents.has_reagent(M, (being_built.materials[M]/efficiency_coeff)) != 0) ? 1 : 0
+		A = reagents.get_reagent_amount(M)
+		A /= max(1, (being_built.chemicals[M]/efficiency_coeff))
+		return A
 
 /obj/machinery/r_n_d/protolathe/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(busy)

@@ -13,7 +13,7 @@
 	return
 
 
-/obj/item/weapon/equipped(var/mob/user, var/slot)
+/obj/item/weapon/equipped(mob/user, slot)
 	.=..()
 	if (wielded_verbs)
 		if (is_held())
@@ -22,9 +22,9 @@
 			unregister_wielded_verbs(user)
 
 
-/obj/item/weapon/proc/register_wielded_verbs(var/mob/user)
+/obj/item/weapon/proc/register_wielded_verbs(mob/user)
 	user.verbs |= wielded_verbs
 
 
-/obj/item/weapon/proc/unregister_wielded_verbs(var/mob/user)
+/obj/item/weapon/proc/unregister_wielded_verbs(mob/user)
 	user.verbs -= wielded_verbs

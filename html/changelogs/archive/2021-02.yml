@@ -1,0 +1,105 @@
+2021-02-04:
+  Nanako:
+  - bugfix: Majorly refactored code for most DS13 guns. Everything should behave just
+      about the same, but less buggy
+  - tweak: Rebalanced ripper, tweaked damage and degradation rate on sawblades
+  - tweak: Buffed the power of the hydrazine torch
+  - tweak: Swapped the controls to cycle (altclick) and toggle (ctrlaltclick) gun
+      aiming modes
+  - bugfix: Fixed various cases where weapons wouldn't stop firing in certain conditions.
+  - bugfix: Fixed detonator briefly showing a line of green tiles when a mine is deployed.
+  - tweak: Slightly buffed the damage of the rivet gun.
+  TheLion1675:
+  - experiment: Added a new type of shield. This shield is the most advanced combat
+      shield currently in the game, and can be made by Research, requiring Combat
+      5 and Materials 6. All values currently pending initial testing.
+  - imageadd: New sprite for the riot shield, and altered its contained materials
+      to match the new sprite.
+2021-02-06:
+  EvanKhell561:
+  - bugfix: Fixed a common exploit where Cargo could infinitely export materials for
+      credit gain.
+  Jeser:
+  - bugfix: Fixed plastique explosion runtiming and not producing an explosion.
+  - bugfix: Fixed Marker shards being instantly destroyed by plastique explosives.
+      Buffed shards health and resistance. Now it takes 2-3 charges to destroy it.
+  - tweak: Items now take damage to their health instead of just being deleted by
+      explosions.
+  Nanako:
+  - rscadd: Added the EDF marine RIG in two variants. The heavier, simpler, tougher
+      one for grunts, and the lighter, fancier version for specialists. Only available
+      to EDF Marine ERTs
+  - rscadd: Added the patrol RIG, currently only available as a rare drop in random
+      rig lists.
+  - rscadd: Added the Femoral Exoskeleton RIG module, in basic and advanced versions.
+      These allow the user to move more quickly, at a cost of power. Currently only
+      available as random loot.
+  - tweak: Buffed the explosion size of the Self Destruct RIG module.
+  - tweak: Rigs with a hotswap module now do not need to be opened to install new
+      modules, and thus require no tools.
+  - tweak: The power siphon module is now less spammy, and charges your battery faster.
+  - tweak: Adjusted and standardised all the slowdown values on rigs, into several
+      discrete categories.
+  TheLion1675:
+  - tweak: Moderately increased HV Pulse Round cost to create in R&D.
+  - tweak: Minorly decreased the amout of toxin damage dealt when overdosed to make
+      this more manageable.
+  - experiment: Replaced all locker sprites with the standard CEC Locker. This is
+      for lore accuracy, but not set in stone.
+  - soundadd: New locker opening and closing sounds.
+  - rscadd: Made all departmentally-related jobs now spawn automatically with their
+      RIG on their back. Despite what one has selected, if an override is present
+      for job-specific RIGs, this will now take precedence.
+  - rscadd: Jobs with specific rigtypes that differ from their subordinate counterpart,
+      will now spawn with the rig as designated.
+  - rscdel: Removed Civilian RIG from loadout options and instead added it to the
+      new RIG Type.
+  - rscdel: Removed the ability to spawn with backpacks.
+  - rscdel: Removed RIGs from lockers.
+  - tweak: Renamed Backpack Type in loadout to RIG Type.
+  - tweak: Default RIG is now the CEC Civilian RIG, which will spawn on your back
+      if you do not have a job with an override present.
+  evankhell561:
+  - bugfix: Fixed a common issue with the Suspension Field Generator that caused it
+      to go non-functional.
+2021-02-10:
+  Nanako:
+  - bugfix: Fixed evidence bag not updating when things are removed from it, falsely
+      giving the impression of duplication
+  - bugfix: Fixed being unable to insert things into rig storage by using them on
+      it
+  TheLion1675:
+  - tweak: Significantly decreased export worth of Phoron. It is a common item. To
+      compensate, almost all resources are now added to the export list, in varying
+      profit margins.
+  - bugfix: Fixed Botany erroneously running on Anatomy Skill as opposed to Botany
+      skill. This should now prevent instant plant death.
+2021-02-14:
+  Jeser:
+  - tweak: Decreased maximum level of Anatomy skill for Medical Doctor to Expert.
+  - tweak: Increased amount of skill points for Surgeon to 24.
+2021-02-16:
+  TheLion1675:
+  - bugfix: Fixed a recurring issue of mining RIGs not spawning in the Mining lockers.
+  - maptweak: Removed the spare voidsuit storage units on Aegis.
+2021-02-18:
+  Jeser:
+  - tweak: Sligthly nerfed powered crossbow damage.
+2021-02-22:
+  Hopek:
+  - rscadd: You can now Alt-click on storage containers to look inside them
+  Nanako:
+  - bugfix: Overhauled the ERT code to hopefully work great now. Thanks to deadline/imperator
+      for a significant quantity of work
+  - tweak: Unitologist ERT members spawn with a ritual blade.
+  - tweak: Belts can now hold a broader variety of items, such as knives.
+  - tweak: ERT candidacy is now decided like any other antag, no need to manually
+      opt in to each team whenever a distress call is made. You can still opt out
+      of ghost roles via an ooc option.
+2021-02-23:
+  Jeser:
+  - tweak: 'Round end check for alive crewmates changed: only alive active humans
+      onboard Ishimura count now.'
+2021-02-24:
+  Nanako:
+  - bugfix: Distress beacon now reports the time remaining, when it is on cooldown.

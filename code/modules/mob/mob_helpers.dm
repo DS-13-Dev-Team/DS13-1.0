@@ -559,7 +559,7 @@ proc/is_blind(A)
 	if(istype(P))
 		return P
 
-/mob/observer/ghost/get_multitool()
+/mob/dead/observer/ghost/get_multitool()
 	return can_admin_interact() && ..(ghost_multitool)
 
 /mob/living/carbon/human/get_multitool()
@@ -820,3 +820,11 @@ proc/is_blind(A)
 		reach_mod -= 1
 
 	return max(min(reach, 1), reach+reach_mod)
+
+
+/mob/proc/set_eyeobj(var/atom/new_eye)
+	eyeobj = new_eye
+	AddMovementHandler(/datum/movement_handler/mob/eye)
+
+
+

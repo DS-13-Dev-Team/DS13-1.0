@@ -95,7 +95,7 @@ Related Procs:
 	if (client)
 		client.remove_click_catcher()
 
-/mob/new_player/add_click_catcher()
+/mob/dead/new_player/add_click_catcher()
 	return
 
 

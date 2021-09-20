@@ -5,21 +5,21 @@
 	set desc = "Visit the wiki."
 	set hidden = 1
 	if(CONFIG_GET(string/wikiurl))
-		if(alert("This will open the wiki in your browser. Are you sure?",,"Yes","No")=="No")
+		if(tgui_alert(src, "This will open the wiki in your browser. Are you sure?",,list("Yes","No"))!="Yes")
 			return
-		src << link(CONFIG_GET(string/wikiurl))
+		DIRECT_OUTPUT(src, link(CONFIG_GET(string/wikiurl)))
 	else
 		to_chat(src, "<span class='warning'>The wiki URL is not set in the server configuration.</span>")
 	return
 
-client/verb/discord()
+/client/verb/discord()
 	set name ="Join the Discord"
 	set desc = "Join our Discord server."
 	set hidden = 1
 	if(CONFIG_GET(string/discord_url))
-		if(alert("This will open the Dead Space 13 Discord invite in your Browser. Are you sure?",,"Yes","No")=="No")
+		if(tgui_alert(src, "This will open the Dead Space 13 Discord invite in your Browser. Are you sure?",,list("Yes","No"))!="Yes")
 			return
-		src << link(CONFIG_GET(string/discord_url))
+		DIRECT_OUTPUT(src, link(CONFIG_GET(string/discord_url)))
 	else
 		to_chat(src, "<span class='warning'>The Discord URL is not set in the server configuration. Please contact a developer.</span>")
 	return
@@ -29,11 +29,69 @@ client/verb/discord()
 	set desc = "Visit the forum."
 	set hidden = 1
 	if(CONFIG_GET(string/forumurl))
-		if(alert("This will open the forum in your browser. Are you sure?",,"Yes","No")=="No")
+		if(tgui_alert(src, "This will open the forum in your browser. Are you sure?",,list("Yes","No"))=="No")
 			return
-		src << link(CONFIG_GET(string/forumurl))
+		DIRECT_OUTPUT(src, link(CONFIG_GET(string/forumurl)))
 	else
 		to_chat(src, "<span class='warning'>The forum URL is not set in the server configuration.</span>")
+	return
+
+/client/verb/github()
+	set name = "github"
+	set desc = "Visit Github"
+	set hidden = TRUE
+	var/githuburl = CONFIG_GET(string/githuburl)
+	if(githuburl)
+		if(tgui_alert(src, "This will open the Github repository in your browser. Are you sure?",,list("Yes","No"))!="Yes")
+			return
+		DIRECT_OUTPUT(src, link(githuburl))
+	else
+		to_chat(src, "<span class='danger'>The Github URL is not set in the server configuration.</span>")
+	return
+
+/client/verb/reportissue()
+	set name = "report-issue"
+	set desc = "Report an issue"
+	set hidden = TRUE
+	var/githuburl = CONFIG_GET(string/githuburl)
+	if(githuburl)
+		var/message = "This will open the Github issue reporter in your browser. Are you sure?"
+		if(GLOB.revdata.testmerge.len)
+			message += "<br>The following experimental changes are active and are probably the cause of any new or sudden issues you may experience. If possible, please try to find a specific thread for your issue instead of posting to the general issue tracker:<br>"
+			message += GLOB.revdata.GetTestMergeInfo(FALSE)
+		// We still use tgalert here because some people were concerned that if someone wanted to report that tgui wasn't working
+		// then the report issue button being tgui-based would be problematic.
+		if(tgalert(src, message, "Report Issue","Yes","No")!="Yes")
+			return
+
+		// Keep a static version of the template to avoid reading file
+		var/static/issue_template = file2text(".github/ISSUE_TEMPLATE/bug_report.md")
+
+		// Get a local copy of the template for modification
+		var/local_template = issue_template
+
+		// Remove comment header
+		var/content_start = findtext(local_template, "<")
+		if(content_start)
+			local_template = copytext(local_template, content_start)
+
+		// Insert round
+		if(GLOB.round_id)
+			local_template = replacetext(local_template, "## Round ID:\n", "## Round ID:\n[GLOB.round_id]")
+
+		// Insert testmerges
+		if(GLOB.revdata.testmerge.len)
+			var/list/all_tms = list()
+			for(var/entry in GLOB.revdata.testmerge)
+				var/datum/tgs_revision_information/test_merge/tm = entry
+				all_tms += "- \[[tm.title]\]([githuburl]/pull/[tm.number])"
+			var/all_tms_joined = all_tms.Join("\n") // for some reason this can't go in the []
+			local_template = replacetext(local_template, "## Testmerges:\n", "## Testmerges:\n[all_tms_joined]")
+
+		var/url_params = "Reporting client version: [byond_version].[byond_build]\n\n[local_template]"
+		DIRECT_OUTPUT(src, link("[githuburl]/issues/new?body=[url_encode(url_params)]"))
+	else
+		to_chat(src, "<span class='danger'>The Github URL is not set in the server configuration.</span>")
 	return
 
 #define RULES_FILE "config/rules.html"
@@ -51,6 +109,18 @@ client/verb/discord()
 	set hidden = 1
 	show_browser(src, file(LORE_FILE), "window=lore;size=480x320")
 #undef LORE_FILE
+
+/client/verb/changelog()
+	set name = "Changelog"
+	set category = "OOC"
+	if(!GLOB.changelog_tgui)
+		GLOB.changelog_tgui = new /datum/changelog()
+
+	GLOB.changelog_tgui.ui_interact(mob)
+	if(prefs.lastchangelog != GLOB.changelog_hash)
+		prefs.lastchangelog = GLOB.changelog_hash
+		prefs.save_preferences()
+		winset(src, "infowindow.changelog", "font-style=;")
 
 /client/verb/hotkeys_help()
 	set name = "Hotkeys Help"

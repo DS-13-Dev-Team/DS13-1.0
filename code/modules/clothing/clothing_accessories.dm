@@ -72,10 +72,15 @@
 			to_chat(user, "<span class='notice'>It's completely wrinkle-free!</span>")
 
 /obj/item/clothing/proc/update_accessory_slowdown()
+	var/before = slowdown_accessory
 	slowdown_accessory = 0
 	for(var/obj/item/clothing/accessory/A in accessories)
 		slowdown_accessory += A.slowdown
 
+	if (slowdown_accessory != before)
+		var/mob/living/L = loc
+		if (istype(L))
+			L.update_extension(/datum/extension/updating/encumbrance)
 /**
  *  Attach accessory A to src
  *

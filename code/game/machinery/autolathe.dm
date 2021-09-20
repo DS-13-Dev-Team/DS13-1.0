@@ -182,6 +182,8 @@
 
 	ui = SSnano.try_update_ui(user, src, ui_key, ui, data)
 	if (!ui)
+		var/datum/asset/assets = get_asset_datum(/datum/asset/simple/research_designs)
+		assets.send(user)
 		// the ui does not exist, so we'll create a new() one
 		// for a list of parameters and their descriptions see the code docs in \code\modules\nano\nanoui.dm
 		ui = new(user, src, ui_key, "autolathe.tmpl", "Autolathe", 550, 655)
@@ -641,7 +643,7 @@
 
 	//And if there's any remainder, we eject that as a shard
 	if (remainder)
-		new /obj/item/weapon/material/shard(loc, material, _amount = remainder)
+		new /obj/item/weapon/material/shard(loc, material)
 
 	//The stored material gets the amount (whole+remainder) subtracted
 	stored_material[material] -= amount * SHEET_MATERIAL_AMOUNT

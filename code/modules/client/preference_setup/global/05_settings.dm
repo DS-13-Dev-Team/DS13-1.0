@@ -6,21 +6,21 @@
 	sort_order = 5
 
 /datum/category_item/player_setup_item/player_global/settings/load_preferences(var/savefile/S)
-	from_file(S["lastchangelog"], pref.lastchangelog)
-	from_file(S["default_slot"], pref.default_slot)
-	from_file(S["preference_values"], pref.preference_values)
+	READ_FILE(S["lastchangelog"], pref.lastchangelog)
+	READ_FILE(S["default_slot"], pref.default_slot)
+	READ_FILE(S["preference_values"], pref.preference_values)
 
 /datum/category_item/player_setup_item/player_global/settings/save_preferences(var/savefile/S)
-	to_file(S["lastchangelog"], pref.lastchangelog)
-	to_file(S["default_slot"], pref.default_slot)
-	to_file(S["preference_values"], pref.preference_values)
+	WRITE_FILE(S["lastchangelog"], pref.lastchangelog)
+	WRITE_FILE(S["default_slot"], pref.default_slot)
+	WRITE_FILE(S["preference_values"], pref.preference_values)
 
 /datum/category_item/player_setup_item/player_global/settings/update_setup(var/savefile/preferences, var/savefile/character)
 	if(preferences["version"] < 16)
 		var/list/preferences_enabled
 		var/list/preferences_disabled
-		from_file(preferences["preferences"], preferences_enabled)
-		from_file(preferences["preferences_disabled"], preferences_disabled)
+		READ_FILE(preferences["preferences"], preferences_enabled)
+		READ_FILE(preferences["preferences_disabled"], preferences_disabled)
 
 		if(!istype(preferences_enabled))
 			preferences_enabled = list()
@@ -105,7 +105,7 @@
 		else
 			return null
 	else
-		log_error("Client is lacking preferences: [log_info_line(src)]")
+		log_debug("Client is lacking preferences: [log_info_line(src)]")
 
 /client/proc/set_preference(var/preference, var/set_preference)
 	var/datum/client_preference/cp = get_client_preference(preference)

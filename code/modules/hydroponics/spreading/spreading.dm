@@ -81,7 +81,7 @@
 	. = ..()
 
 	if(!SSplants)
-		log_error("<span class='danger'>Plant controller does not exist and [src] requires it. Aborting.</span>")
+		log_debug("<span class='danger'>Plant controller does not exist and [src] requires it. Aborting.</span>")
 		return INITIALIZE_HINT_QDEL
 	if(!istype(seed))
 		seed = SSplants.seeds[DEFAULT_SEED]

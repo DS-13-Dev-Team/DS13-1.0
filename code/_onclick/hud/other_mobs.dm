@@ -29,34 +29,34 @@
 		constructtype = "harvester"
 
 	if(constructtype)
-		mymob.fire = new /obj/screen()
-		mymob.fire.icon = 'icons/mob/screen1_construct.dmi'
-		mymob.fire.icon_state = "fire0"
-		mymob.fire.SetName("fire")
-		mymob.fire.screen_loc = ui_construct_fire
+		fire = new /obj/screen()
+		fire.icon = 'icons/mob/screen1_construct.dmi'
+		fire.icon_state = "fire0"
+		fire.SetName("fire")
+		fire.screen_loc = ui_construct_fire
 
-		mymob.healths = new /obj/screen()
-		mymob.healths.icon = 'icons/mob/screen1_construct.dmi'
-		mymob.healths.icon_state = "[constructtype]_health0"
-		mymob.healths.SetName("health")
-		mymob.healths.screen_loc = ui_construct_health
+		healths = new /obj/screen()
+		healths.icon = 'icons/mob/screen1_construct.dmi'
+		healths.icon_state = "[constructtype]_health0"
+		healths.SetName("health")
+		healths.screen_loc = ui_construct_health
 
-		mymob.pullin = new /obj/screen()
-		mymob.pullin.icon = 'icons/mob/screen1_construct.dmi'
-		mymob.pullin.icon_state = "pull0"
-		mymob.pullin.SetName("pull")
-		mymob.pullin.screen_loc = ui_construct_pull
+		pullin = new /obj/screen()
+		pullin.icon = 'icons/mob/screen1_construct.dmi'
+		pullin.icon_state = "pull0"
+		pullin.SetName("pull")
+		pullin.screen_loc = ui_construct_pull
 
-		mymob.zone_sel = new /obj/screen/zone_sel()
-		mymob.zone_sel.icon = 'icons/mob/screen1_construct.dmi'
-		mymob.zone_sel.overlays.len = 0
-		mymob.zone_sel.overlays += image('icons/mob/zone_sel.dmi', "[mymob.zone_sel.selecting]")
+		zone_sel = new /obj/screen/zone_sel()
+		zone_sel.icon = 'icons/mob/screen1_construct.dmi'
+		zone_sel.overlays.len = 0
+		zone_sel.overlays += image('icons/mob/zone_sel.dmi', "[zone_sel.selecting]")
 
-		mymob.purged = new /obj/screen()
-		mymob.purged.icon = 'icons/mob/screen1_construct.dmi'
-		mymob.purged.icon_state = "purge0"
-		mymob.purged.SetName("purged")
-		mymob.purged.screen_loc = ui_construct_purge
+		purged = new /obj/screen()
+		purged.icon = 'icons/mob/screen1_construct.dmi'
+		purged.icon_state = "purge0"
+		purged.SetName("purged")
+		purged.screen_loc = ui_construct_purge
 
 	mymob.client.screen = list()
-	mymob.client.screen += list(mymob.fire, mymob.healths, mymob.pullin, mymob.zone_sel, mymob.purged)
+	mymob.client.screen += list(fire, healths, pullin, zone_sel, purged)

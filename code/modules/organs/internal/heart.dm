@@ -124,7 +124,7 @@
 
 		if(heartbeat >= rate)
 			heartbeat = 0
-			sound_to(owner, sound(beat_sound,0,0,0,50))
+			SEND_SOUND(owner, sound(beat_sound,0,0,0,50))
 		else
 			heartbeat++
 

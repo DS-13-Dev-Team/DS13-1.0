@@ -1,4 +1,4 @@
-#define REMOVE_INTERNALS if(internal){ if(internals){ internals.icon_state = "internal0" }; internal = null }
+#define REMOVE_INTERNALS if(internal){ if(hud_used.internals){ hud_used.internals.icon_state = "internal0" }; internal = null }
 /*
 Add fingerprints to items when we put them in our hands.
 This saves us from having to call add_fingerprint() any time something is put in a human's hands programmatically.
@@ -128,7 +128,8 @@ This saves us from having to call add_fingerprint() any time something is put in
 		if (l_store)
 			drop_from_inventory(l_store)
 		if (wear_id)
-			drop_from_inventory(wear_id)
+			spawn()
+				update_inv_wear_id()
 		if (belt)
 			drop_from_inventory(belt)
 		w_uniform = null
@@ -425,6 +426,9 @@ This saves us from having to call add_fingerprint() any time something is put in
 		if(legcuffed)  . += legcuffed
 		if(handcuffed) . += handcuffed
 		if(s_store)	. += s_store
+
+	if (wearing_rig)
+		. |= wearing_rig
 
 /mob/living/carbon/human/proc/get_holding_hand(var/obj/item/W)
 	switch(get_inventory_slot(W))

@@ -13,7 +13,7 @@
 		ensure_ore_data_initialised()
 		ore = ores_by_type[ore]
 		if(ore.ore != type)
-			log_error("[src] ([src.type]) had ore type [ore.type] but that type does not have [src.type] set as its ore item!")
+			log_debug("[src] ([src.type]) had ore type [ore.type] but that type does not have [src.type] set as its ore item!")
 		update_ore()
 
 /obj/item/weapon/ore/proc/update_ore()
@@ -26,7 +26,7 @@
 	if(!ore)
 		return
 	var/material/M
-	if(ore.smelts_to) 
+	if(ore.smelts_to)
 		M = get_material_by_name(ore.smelts_to)
 	else if (ore.compresses_to)
 		M = get_material_by_name(ore.compresses_to)

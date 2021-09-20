@@ -55,7 +55,7 @@ var/list/name_to_material
 		populate_material_list()
 	. = name_to_material[name]
 	if(!.)
-		log_error("Unable to acquire material by name '[name]'")
+		log_debug("Unable to acquire material by name '[name]'")
 
 /proc/material_display_name(name)
 	var/material/material = get_material_by_name(name)
@@ -187,7 +187,7 @@ var/list/name_to_material
 	if(islist(composite_material))
 		for(var/material_string in composite_material)
 			temp_matter[material_string] = composite_material[material_string]
-	else if(SHEET_MATERIAL_AMOUNT)
+	else
 		temp_matter[name] = SHEET_MATERIAL_AMOUNT
 	return temp_matter
 

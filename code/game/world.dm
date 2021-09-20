@@ -3,23 +3,22 @@
 GLOBAL_VAR(restart_counter)
 
 
-/var/game_id = null
 /hook/global_init/proc/generate_gameid()
-	if(game_id != null)
+	if(GLOB.round_id != null)
 		return
-	game_id = ""
+	GLOB.round_id = ""
 
 	var/list/c = list("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0")
 	var/l = c.len
 
 	var/t = world.timeofday
 	for(var/_ = 1 to 4)
-		game_id = "[c[(t % l) + 1]][game_id]"
+		GLOB.round_id = "[c[(t % l) + 1]][GLOB.round_id]"
 		t = round(t / l)
-	game_id = "-[game_id]"
+	GLOB.round_id = "-[GLOB.round_id]"
 	t = round(world.realtime / (10 * 60 * 60 * 24))
 	for(var/_ = 1 to 3)
-		game_id = "[c[(t % l) + 1]][game_id]"
+		GLOB.round_id = "[c[(t % l) + 1]][GLOB.round_id]"
 		t = round(t / l)
 	return 1
 
@@ -67,21 +66,26 @@ GLOBAL_VAR(restart_counter)
 
 	return match
 
-#define RECOMMENDED_VERSION 511
 /world/New()
-	//logs
-	SetupLogs()
+	log_world("World loaded at [time_stamp()]!")
+
+	GLOB.config_error_log = GLOB.world_qdel_log = GLOB.sql_error_log = GLOB.world_telecomms_log = GLOB.world_href_log = GLOB.world_runtime_log = GLOB.world_attack_log = GLOB.world_game_log = "data/logs/config_error.[GUID()].log" //temporary file used to record errors with loading config, moved to log directory once logging is set
+
+	//Early profile for auto-profiler - will be stopped on profiler init if necessary.
+#if DM_VERSION >= 513 && DM_BUILD >= 1506
+	world.Profile(PROFILE_START)
+#endif
+
 	var/date_string = time2text(world.realtime, "YYYY/MM-Month/DD-Day")
 	href_logfile = file("data/logs/[date_string] hrefs.htm")
-	diary = file("data/logs/[date_string].log")
-	diary << "[log_end]\n[log_end]\nStarting up. (ID: [game_id]) [time2text(world.timeofday, "hh:mm.ss")][log_end]\n---------------------[log_end]"
-	changelog_hash = md5('html/changelog.html')					//used for telling if the changelog has changed recently
 
 	TgsNew(minimum_required_security_level = TGS_SECURITY_TRUSTED)
 
+	GLOB.revdata = new
+
 	config.Load(params[OVERRIDE_CONFIG_DIRECTORY_PARAMETER])
 
-	if(byond_version < RECOMMENDED_VERSION)
+	if(byond_version < MIN_COMPILER_VERSION)
 		world.log << "Your server's byond version does not meet the recommended requirements for this server. Please update BYOND"
 
 
@@ -93,7 +97,7 @@ GLOBAL_VAR(restart_counter)
 	. = ..()
 
 #ifdef UNIT_TEST
-	log_unit_test("Unit Tests Enabled. This will destroy the world when testing is complete.")
+	log_test("Unit Tests Enabled. This will destroy the world when testing is complete.")
 	load_unit_test_changes()
 #endif
 
@@ -108,6 +112,15 @@ GLOBAL_VAR(restart_counter)
 	// Create robolimbs for chargen.
 	populate_robolimb_list()
 
+	SetupLogs()
+
+#ifndef USE_CUSTOM_ERROR_HANDLER
+	world.log = file("[GLOB.log_directory]/dd.log")
+#else
+	if (TgsAvailable())
+		world.log = file("[GLOB.log_directory]/dd.log") //not all runtimes trigger world/Error, so this is the only way to ensure we can see all of them.
+#endif
+
 	processScheduler = new
 	master_controller = new /datum/controller/game_controller()
 
@@ -119,22 +132,21 @@ GLOBAL_VAR(restart_counter)
 		GLOB.using_map.perform_map_generation()
 
 	if(CONFIG_GET(flag/log_runtime))
-		var/runtime_log = file("data/logs/runtime/[date_string]_[time2text(world.timeofday, "hh:mm")]_[game_id].log")
-		runtime_log << "Game [game_id] starting up at [time2text(world.timeofday, "hh:mm.ss")]"
+		var/runtime_log = file("data/logs/runtime/[date_string]_[time2text(world.timeofday, "hh:mm")]_[GLOB.round_id].log")
+		runtime_log << "Game [GLOB.round_id] starting up at [time2text(world.timeofday, "hh:mm.ss")]"
 		log = runtime_log
 
 	update_status()
 
 	GLOB.timezoneOffset = text2num(time2text(0,"hh")) * 36000
 
-#undef RECOMMENDED_VERSION
-
 var/world_topic_spam_protect_ip = "0.0.0.0"
 var/world_topic_spam_protect_time = world.timeofday
 
 /world/Topic(T, addr, master, key)
 	TGS_TOPIC
-	diary << "TOPIC: \"[T]\", from:[addr], master:[master], key:[key][log_end]"
+
+	log_topic("\"[T]\", from:[addr], master:[master], key:[key]")
 
 	if (T == "ping")
 		var/x = 1
@@ -208,14 +220,14 @@ var/world_topic_spam_protect_time = world.timeofday
 
 	else if(T == "revision")
 		var/list/L = list()
-		L["gameid"] = game_id
+		L["roundid"] = GLOB.round_id
 		L["dm_version"] = DM_VERSION // DreamMaker version compiled in
 		L["dd_version"] = world.byond_version // DreamDaemon version running on
 
-		if(revdata.revision)
-			L["revision"] = revdata.revision
-			L["branch"] = revdata.branch
-			L["date"] = revdata.date
+		if(GLOB.revdata.originmastercommit)
+			L["revision"] = GLOB.revdata.get_log_message()
+			L["branch"] = GLOB.revdata.originmastercommit
+			L["date"] = GLOB.revdata.date
 		else
 			L["revision"] = "unknown"
 
@@ -228,7 +240,7 @@ var/world_topic_spam_protect_time = world.timeofday
 
 				spawn(50)
 					world_topic_spam_protect_time = world.time
-					return "Bad Key (Throttled)"
+				return "Bad Key (Throttled)"
 
 			world_topic_spam_protect_time = world.time
 			world_topic_spam_protect_ip = addr
@@ -278,7 +290,7 @@ var/world_topic_spam_protect_time = world.timeofday
 
 				spawn(50)
 					world_topic_spam_protect_time = world.time
-					return "Bad Key (Throttled)"
+				return "Bad Key (Throttled)"
 
 			world_topic_spam_protect_time = world.time
 			world_topic_spam_protect_ip = addr
@@ -346,7 +358,7 @@ var/world_topic_spam_protect_time = world.timeofday
 
 				spawn(50)
 					world_topic_spam_protect_time = world.time
-					return "Bad Key (Throttled)"
+				return "Bad Key (Throttled)"
 
 			world_topic_spam_protect_time = world.time
 			world_topic_spam_protect_ip = addr
@@ -375,7 +387,7 @@ var/world_topic_spam_protect_time = world.timeofday
 		C.received_irc_pm = world.time
 		C.irc_admin = input["sender"]
 
-		sound_to(C, 'sound/effects/adminhelp.ogg')
+		SEND_SOUND(C, 'sound/effects/adminhelp.ogg')
 		to_chat(C, message)
 
 		for(var/client/A in GLOB.admins)
@@ -396,7 +408,7 @@ var/world_topic_spam_protect_time = world.timeofday
 
 				spawn(50)
 					world_topic_spam_protect_time = world.time
-					return "Bad Key (Throttled)"
+				return "Bad Key (Throttled)"
 
 			world_topic_spam_protect_time = world.time
 			world_topic_spam_protect_ip = addr
@@ -410,7 +422,7 @@ var/world_topic_spam_protect_time = world.timeofday
 			if(world_topic_spam_protect_ip == addr && abs(world_topic_spam_protect_time - world.time) < 50)
 				spawn(50)
 					world_topic_spam_protect_time = world.time
-					return "Bad Key (Throttled)"
+				return "Bad Key (Throttled)"
 
 			world_topic_spam_protect_time = world.time
 			world_topic_spam_protect_ip = addr
@@ -433,7 +445,7 @@ var/world_topic_spam_protect_time = world.timeofday
 			if(world_topic_spam_protect_ip == addr && abs(world_topic_spam_protect_time - world.time) < 50)
 				spawn(50)
 					world_topic_spam_protect_time = world.time
-					return "Bad Key (Throttled)"
+				return "Bad Key (Throttled)"
 
 			world_topic_spam_protect_time = world.time
 			world_topic_spam_protect_ip = addr
@@ -463,7 +475,7 @@ var/world_topic_spam_protect_time = world.timeofday
 			if(world_topic_spam_protect_ip == addr && abs(world_topic_spam_protect_time - world.time) < 50)
 				spawn(50)
 					world_topic_spam_protect_time = world.time
-					return "Bad Key (Throttled)"
+				return "Bad Key (Throttled)"
 
 			world_topic_spam_protect_time = world.time
 			world_topic_spam_protect_ip = addr
@@ -483,11 +495,16 @@ var/world_topic_spam_protect_time = world.timeofday
 	else
 		hub_password = "SORRYNOPASSWORD"
 
-/world/Reboot(reason, ping)
-	/*spawn(0)
-		sound_to(world, sound(pick('sound/AI/newroundsexy.ogg','sound/misc/apcdestroyed.ogg','sound/misc/bangindonk.ogg')))// random end sounds!! - LastyBatsy
+/world/Reboot(reason = 0, fast_track = FALSE, ping = FALSE)
+	if (reason || fast_track) //special reboot, do none of the normal stuff
+		if (usr)
+			log_admin("[key_name(usr)] Has requested an immediate world restart via client side debugging tools")
+			message_admins("[key_name_admin(usr)] Has requested an immediate world restart via client side debugging tools")
+		to_chat(world, "<span class='boldannounce'>Rebooting World immediately due to host request.</span>")
+	else
+		to_chat(world, "<span class='boldannounce'>Rebooting world...</span>")
+		Master.Shutdown() //run SS shutdowns
 
-		*/
 	if(ping)
 		send2chat("GAME: <@&797602501813469224>", "game") //Don't forget change id channel and id role for you server!!!!!
 		var/list/msg = list()
@@ -504,13 +521,12 @@ var/world_topic_spam_protect_time = world.timeofday
 		if(length(msg))
 			send2chat("GAME: " + msg.Join(" | "), "game") //TOO!
 
-	TgsReboot()
 	processScheduler.stop()
 
 	if(TgsAvailable())
 		var/do_hard_reboot
 		// check the hard reboot counter
-		var/ruhr = -1
+		var/ruhr = CONFIG_GET(number/rounds_until_hard_restart)
 		switch(ruhr)
 			if(-1)
 				do_hard_reboot = FALSE
@@ -524,20 +540,15 @@ var/world_topic_spam_protect_time = world.timeofday
 					do_hard_reboot = FALSE
 
 		if(do_hard_reboot)
-			log_world("World rebooted at [time_stamp()]")
-			rustg_log_close_all() // Past this point, no logging procs can be used, at risk of data loss.
+			log_world("World hard rebooted at [time_stamp()]")
+			shutdown_logging() // See comment below.
 			TgsEndProcess()
 
-	if(CONFIG_GET(string/server))	//if you set a server location in config.txt, it sends you there instead of trying to reconnect to the same world address. -- NeoFite
-		for(var/client/C in GLOB.clients)
-			to_chat(C, link("byond://[CONFIG_GET(string/server)]"))
+	log_world("World rebooted at [time_stamp()]")
 
-	if(CONFIG_GET(flag/wait_for_sigusr1_reboot) && reason != 3)
-		text2file("foo", "reboot_called")
-		to_world("<span class=danger>World reboot waiting for external scripts. Please be patient.</span>")
-		return
-
-	..(reason)
+	TgsReboot()
+	shutdown_logging()
+	..()
 
 /world/Del()
 	callHook("shutdown")
@@ -562,23 +573,11 @@ var/world_topic_spam_protect_time = world.timeofday
 	fdel(F)
 	F << the_mode
 
-/hook/startup/proc/loadMOTD()
-	world.load_motd()
-	return 1
-
-/world/proc/load_motd()
-	join_motd = file2text("config/motd.txt")
-
-/hook/startup/proc/loadMods()
-	world.load_mods()
-	world.load_mentors() // no need to write another hook.
-	return 1
-
 /world/proc/load_mods()
 	if(CONFIG_GET(flag/admin_legacy_system))
 		var/text = file2text("config/moderators.txt")
 		if (!text)
-			error("Failed to load config/mods.txt")
+			log_debug("Failed to load config/mods.txt")
 		else
 			var/list/lines = splittext(text, "\n")
 			for(var/line in lines)
@@ -599,7 +598,7 @@ var/world_topic_spam_protect_time = world.timeofday
 	if(CONFIG_GET(flag/admin_legacy_system))
 		var/text = file2text("config/mentors.txt")
 		if (!text)
-			error("Failed to load config/mentors.txt")
+			log_debug("Failed to load config/mentors.txt")
 		else
 			var/list/lines = splittext(text, "\n")
 			for(var/line in lines)
@@ -633,18 +632,57 @@ var/world_topic_spam_protect_time = world.timeofday
 	// Finally set the new status
 	status = new_status
 
-#define WORLD_LOG_START(X) WRITE_FILE(GLOB.world_##X##_log, "\n\nStarting up round ID [game_id]. [time_stamp()]\n---------------------")
-#define WORLD_SETUP_LOG(X) GLOB.world_##X##_log = file("[GLOB.log_directory]/[#X].log") ; WORLD_LOG_START(X)
 /world/proc/SetupLogs()
-	GLOB.log_directory = "data/logs/[time2text(world.realtime, "YYYY/MM/DD")]/round-"
-	if(game_id)
-		GLOB.log_directory += "[game_id]"
+	var/override_dir = params[OVERRIDE_LOG_DIRECTORY_PARAMETER]
+	if(!override_dir)
+		var/realtime = world.realtime
+		var/texttime = time2text(realtime, "YYYY/MM/DD")
+		GLOB.log_directory = "data/logs/[texttime]/round-"
+		if(GLOB.round_id)
+			GLOB.log_directory += "[GLOB.round_id]"
+		else
+			var/timestamp = replacetext(time_stamp(), ":", ".")
+			GLOB.log_directory += "[timestamp]"
 	else
-		GLOB.log_directory += "[replacetext(time_stamp(), ":", ".")]"
+		GLOB.log_directory = "data/logs/[override_dir]"
 
-	WORLD_SETUP_LOG(runtime)
-	WORLD_SETUP_LOG(qdel)
+	GLOB.world_game_log = "[GLOB.log_directory]/game.log"
+	GLOB.world_attack_log = "[GLOB.log_directory]/attack.log"
+	GLOB.world_href_log = "[GLOB.log_directory]/hrefs.log"
+	GLOB.world_asset_log = "[GLOB.log_directory]/asset.log"
+	GLOB.sql_error_log = "[GLOB.log_directory]/sql.log"
+	GLOB.world_telecomms_log = "[GLOB.log_directory]/telecomms.log"
+	GLOB.world_qdel_log = "[GLOB.log_directory]/qdel.log"
+	GLOB.world_runtime_log = "[GLOB.log_directory]/runtime.log"
+	GLOB.world_debug_log = "[GLOB.log_directory]/debug.log"
+	GLOB.tgui_log = "[GLOB.log_directory]/tgui.log"
+	GLOB.world_paper_log = "[GLOB.log_directory]/paper.log"
 
-#undef WORLD_SETUP_LOG
-#undef WORLD_LOG_START
+#ifdef UNIT_TESTS
+	GLOB.test_log = "[GLOB.log_directory]/tests.log"
+	start_log(GLOB.test_log)
+#endif
+	start_log(GLOB.world_game_log)
+	start_log(GLOB.world_attack_log)
+	start_log(GLOB.world_href_log)
+	start_log(GLOB.world_asset_log)
+	start_log(GLOB.sql_error_log)
+	start_log(GLOB.world_telecomms_log)
+	start_log(GLOB.world_qdel_log)
+	start_log(GLOB.world_runtime_log)
+	start_log(GLOB.world_debug_log)
+	start_log(GLOB.tgui_log)
 
+	var/latest_changelog = file("[global.config.directory]/../html/changelogs/archive/" + time2text(world.timeofday, "YYYY-MM") + ".yml")
+	GLOB.changelog_hash = fexists(latest_changelog) ? md5(latest_changelog) : 0 //for telling if the changelog has changed recently
+	if(fexists(GLOB.config_error_log))
+		fcopy(GLOB.config_error_log, "[GLOB.log_directory]/config_error.log")
+		fdel(GLOB.config_error_log)
+
+	if(GLOB.round_id)
+		log_game("Round ID: [GLOB.round_id]")
+
+	// This was printed early in startup to the world log and config_error.log,
+	// but those are both private, so let's put the commit info in the runtime
+	// log which is ultimately public.
+	log_runtime(GLOB.revdata.get_log_message())

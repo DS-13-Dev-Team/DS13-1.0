@@ -55,14 +55,11 @@ GLOBAL_LIST_EMPTY(unitologists_list)
 			our_owner.mind.store_memory("<b>Fellow zealot</b>: [minion.real_name]")
 
 /datum/antagonist/unitologist/equip(var/mob/living/carbon/human/player)
-	admin_notice(SPAN_NOTICE("ENTRO AL EQUIP"))
 	if(!..())
-		admin_notice(SPAN_NOTICE("NO PASO EL CHECK"))
 		return FALSE
 
 	var/obj/item/weapon/tool/multitool/uplink/special/U = new(get_turf(player), player.mind, DEFAULT_TELECRYSTAL_AMOUNT)
 	player.put_in_hands(U)
-	admin_notice(SPAN_NOTICE("PASO EL CHECK"))
 	return TRUE
 
 GLOBAL_DATUM_INIT(shardbearers, /datum/antagonist/unitologist/shardbearer, new)
@@ -100,14 +97,11 @@ GLOBAL_DATUM_INIT(shardbearers, /datum/antagonist/unitologist/shardbearer, new)
 	marker_minion.objectives += unitologist_objective
 
 /datum/antagonist/unitologist/shardbearer/equip(var/mob/living/carbon/human/player)
-	admin_notice(SPAN_NOTICE("ENTRO AL EQUIP"))
 	if(!..())
-		admin_notice(SPAN_NOTICE("NO PASO EL CHECK"))
 		return FALSE
 
 	var/obj/item/weapon/tool/multitool/uplink/special/U = new(get_turf(player), player.mind, DEFAULT_TELECRYSTAL_AMOUNT)
 	player.put_in_hands(U)
-	admin_notice(SPAN_NOTICE("PASO EL CHECK"))
 	return TRUE
 
 /datum/objective/unitologist/shard

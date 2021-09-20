@@ -29,7 +29,7 @@
 	strength    = STR_MEDIUM
 	show_ssd = "dead" //If its not moving, it looks like a corpse
 	hunger_factor = 0 // Necros don't eat
-	taste_sensitivity = 0      // no eat
+	taste_sensitivity = TASTE_NUMB // Shouldn't be 0 even if you are necromorph, will result in 0 division runtime
 	virus_immune = 1 // immune to viruses
 
 
@@ -194,17 +194,14 @@
 /datum/species/necromorph/get_icobase(var/mob/living/carbon/human/H)
 	return icon_template //We don't need to duplicate the same dmi path twice
 
-/datum/species/necromorph/add_inherent_verbs(var/mob/living/carbon/human/H)
+/datum/species/necromorph/add_inherent_verbs(mob/living/carbon/human/H)
 	.=..()
-	H.verbs |= /mob/proc/necro_evacuate	//Add the verb to vacate the body. its really just a copy of ghost
-	H.verbs |= /mob/proc/prey_sightings //Verb to see the sighting information on humans
-	H.verbs |= /datum/proc/help //Verb to see your own abilities
+	add_verb(H, list(/mob/proc/necro_evacuate, /mob/proc/prey_sightings, /datum/proc/help))
 	//Ventcrawling necromorphs are handled here. Don't give this to non living mobs...
 	if(ventcrawl && isliving(H))
-		H.verbs |= /mob/living/proc/ventcrawl
+		add_verb(H, list(/mob/living/proc/ventcrawl, /mob/living/proc/necro_burst_vent))
 		//And if we want to set a custom ventcrawl delay....
 		H.ventcrawl_time = (src.ventcrawl_time) ? src.ventcrawl_time : H.ventcrawl_time
-		H.verbs |= /mob/living/proc/necro_burst_vent
 	//H.verbs |= /mob/proc/message_unitologists
 	make_scary(H)
 
@@ -331,4 +328,5 @@
 /datum/species/necromorph/handle_post_spawn(var/mob/living/carbon/human/H)
 	.=..()
 	//Apply customisation with a null preference, this applies default settings
-	H.apply_customisation(null)
+	if (!(HAS_TRANSFORMATION_MOVEMENT_HANDLER(H)))
+		H.apply_customisation(null)

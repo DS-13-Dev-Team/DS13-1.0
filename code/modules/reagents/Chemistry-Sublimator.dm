@@ -41,10 +41,12 @@
 	var/sublimated_units_per_tick = 20
 	var/obj/item/weapon/reagent_containers/container
 
-/obj/machinery/portable_atmospherics/reagent_sublimator/New(var/atom/location, var/direction, var/nocircuit = FALSE)
+/obj/machinery/portable_atmospherics/reagent_sublimator/New(atom/location, direction, nocircuit = FALSE)
 	. = ..()
-	if(holding)   verbs |= /obj/machinery/portable_atmospherics/reagent_sublimator/proc/remove_tank
-	if(container) verbs |= /obj/machinery/portable_atmospherics/reagent_sublimator/proc/remove_container
+	if(holding)
+		verbs |= /obj/machinery/portable_atmospherics/reagent_sublimator/proc/remove_tank
+	if(container)
+		verbs |= /obj/machinery/portable_atmospherics/reagent_sublimator/proc/remove_container
 	update_icon()
 
 // Coded this before realizing base type didn't support tank mixing, leaving it in just in case someone decides to add it.

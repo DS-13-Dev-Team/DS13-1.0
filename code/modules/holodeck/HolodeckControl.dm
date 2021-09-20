@@ -171,7 +171,7 @@
 	for(var/mob/living/simple_animal/hostile/carp/holodeck/C in holographic_mobs)
 		C.set_safety(!safety_disabled)
 		if (last_to_emag)
-			C.friends = list(weakref(last_to_emag))
+			C.friends = list(WEAKREF(last_to_emag))
 
 //This could all be done better, but it works for now.
 /obj/machinery/computer/HolodeckControl/Destroy()
@@ -246,7 +246,7 @@
 		loadProgram(GLOB.using_map.holodeck_programs["turnoff"], 0)
 
 		if(!linkedholodeck.has_gravity)
-			linkedholodeck.gravitychange(1)
+			linkedholodeck.gravity_changed(1)
 
 		active = 0
 		use_power = 1
@@ -333,16 +333,16 @@
 	use_power = 1
 
 	if(A.has_gravity)
-		A.gravitychange(0,A)
+		A.gravity_changed(0,A)
 	else
-		A.gravitychange(1,A)
+		A.gravity_changed(1,A)
 
 /obj/machinery/computer/HolodeckControl/proc/emergencyShutdown()
 	//Turn it back to the regular non-holographic room
 	loadProgram(GLOB.using_map.holodeck_programs["turnoff"], 0)
 
 	if(!linkedholodeck.has_gravity)
-		linkedholodeck.gravitychange(1,linkedholodeck)
+		linkedholodeck.gravity_changed(1,linkedholodeck)
 
 	active = 0
 	use_power = 1

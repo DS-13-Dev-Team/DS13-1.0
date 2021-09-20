@@ -107,7 +107,7 @@
 
 	spawn(10)
 		if(player.internal)
-			player.internals.icon_state = "internal1"
+			player.hud_used.internals.icon_state = "internal1"
 		else
 			to_chat(player, "<span class='danger'>You forgot to turn on your internals! Quickly, toggle the valve!</span>")
 

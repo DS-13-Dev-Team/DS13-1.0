@@ -22,6 +22,9 @@
 #define SOUND_SPEECH		"speech"
 #define SOUND_REGEN			"regenerate"
 #define SOUND_CLIMB			"climb"
+//Human specific soundtype defines
+#define SOUND_PAIN_MALE			"pain_male"
+#define SOUND_PAIN_FEMALE		"pain_female"
 
 
 

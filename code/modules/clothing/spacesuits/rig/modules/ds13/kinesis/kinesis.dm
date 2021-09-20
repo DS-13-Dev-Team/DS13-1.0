@@ -370,7 +370,7 @@
 	GLOB.destroyed_event.register(subject, src, /obj/item/rig_module/kinesis/proc/release_grip)
 	GLOB.bump_event.register(subject, src, /obj/item/rig_module/kinesis/proc/subject_collision)
 
-	start_processing()
+	START_PROCESSING(SSfastprocess, src)
 
 
 //Can this module grip live mobs? False in most circumstances
@@ -425,7 +425,7 @@
 		tether.animate_fade_out(3)
 		tether = null	//It will delete itself
 	target = null
-	stop_processing()
+	STOP_PROCESSING(SSfastprocess, src)
 	bumped_atoms = list()
 	if (CHK.firing)
 		CHK.stop_firing()
@@ -505,18 +505,6 @@
 
 	The kinesis module uses fastprocess, ticking 5 times per second
 */
-/obj/item/rig_module/kinesis/proc/start_processing()
-
-	if (is_processing)
-		return FALSE
-
-	START_PROCESSING(SSfastprocess, src)
-
-
-/obj/item/rig_module/kinesis/proc/stop_processing()
-	STOP_PROCESSING(SSfastprocess, src)
-
-
 /obj/item/rig_module/kinesis/Process(var/wait)
 
 
@@ -909,7 +897,7 @@
 	if(/mob/living/carbon/human/verb/kinesis_toggle in user.verbs)
 		return
 	//user.client.show_popup_menus = FALSE
-	user.verbs |= /mob/living/carbon/human/verb/kinesis_toggle
+	add_verb(user, /mob/living/carbon/human/verb/kinesis_toggle)
 	winset(user, "kinesis_toggle", "parent=macro;name=F;command=kinesis_toggle")
 	winset(user, "kinesis_toggle", "parent=hotkeymode;name=F;command=kinesis_toggle")
 	hotkeys_set = TRUE
@@ -919,7 +907,7 @@
 		return
 	winset(user, "macro.kinesis_toggle", "parent=")
 	winset(user, "hotkeymode.kinesis_toggle", "parent=")
-	user.verbs -= /mob/living/carbon/human/verb/kinesis_toggle
+	remove_verb(user, /mob/living/carbon/human/verb/kinesis_toggle)
 	hotkeys_set = FALSE
 
 

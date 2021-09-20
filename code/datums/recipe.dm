@@ -102,7 +102,7 @@
 // food-related
 /datum/recipe/proc/make_food(var/obj/container as obj)
 	if(!result)
-		log_error("<span class='danger'>Recipe [type] is defined without a result, please bug this.</span>")
+		log_debug("<span class='danger'>Recipe [type] is defined without a result, please bug this.</span>")
 
 		return
 	var/obj/result_obj = new result(container)

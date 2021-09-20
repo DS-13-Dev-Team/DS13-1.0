@@ -1,6 +1,6 @@
 #ifndef OVERRIDE_BAN_SYSTEM
 //Blocks an attempt to connect before even creating our client datum thing.
-world/IsBanned(key,address,computer_id)
+/world/IsBanned(key, address, computer_id)
 	if(ckey(key) in admin_datums)
 		return ..()
 
@@ -26,7 +26,7 @@ world/IsBanned(key,address,computer_id)
 		var/ckeytext = ckey(key)
 
 		if(!establish_db_connection())
-			error("Ban database connection failure. Key [ckeytext] not checked")
+			log_debug("Ban database connection failure. Key [ckeytext] not checked")
 			log_misc("Ban database connection failure. Key [ckeytext] not checked")
 			return
 

@@ -1,5 +1,5 @@
 
-/mob/living/carbon/human/apply_damage(var/damage = 0, var/damagetype = BRUTE, var/def_zone = null, var/blocked = 0, var/damage_flags = 0, var/obj/used_weapon = null, var/obj/item/organ/external/given_organ = null)
+/mob/living/carbon/human/apply_damage(var/damage = 0, var/damagetype = BRUTE, var/def_zone = null, var/blocked = 0, var/damage_flags = 0, var/obj/used_weapon = null, var/obj/item/organ/external/given_organ = null, var/allow_dismemberment = TRUE)
 	SET_ARGS(species.handle_apply_damage(arglist(list(src)+args)))
 	var/obj/item/organ/external/organ = given_organ
 	if(!organ)
@@ -33,10 +33,10 @@
 	switch(damagetype)
 		if(BRUTE)
 			damage = damage*species.brute_mod
-			organ.take_external_damage(damage, 0, damage_flags, used_weapon)	//This calls update health
+			organ.take_external_damage(damage, 0, damage_flags, used_weapon, allow_dismemberment = allow_dismemberment)	//This calls update health
 		if(BURN)
 			damage = damage*species.burn_mod
-			organ.take_external_damage(0, damage, damage_flags, used_weapon)	//This calls update health
+			organ.take_external_damage(0, damage, damage_flags, used_weapon, allow_dismemberment = allow_dismemberment)	//This calls update health
 		if(PAIN)
 			organ.add_pain(damage)	//This calls update health
 		if(CLONE)
@@ -439,6 +439,13 @@ This function restores all organs.
 /mob/living/carbon/human/get_organ(var/zone)
 	return organs_by_name[check_zone(zone)]
 
+/mob/proc/get_organ_by_type(var/type)
+
+/mob/living/carbon/human/get_organ_by_type(var/type)
+	for (var/tag in organs_by_name)
+		var/obj/O = organs_by_name[tag]
+		if (istype(O, type))
+			return O
 
 /mob/living/carbon/human/apply_effect(var/effect = 0,var/effecttype = STUN, var/blocked = 0)
 	if(effecttype == IRRADIATE && (effect * blocked_mult(blocked) <= RAD_LEVEL_LOW))
@@ -467,8 +474,8 @@ This function restores all organs.
 				//user.throw_at(target, 200, 4)
 
 		if (2.0)
-			b_loss = 60
-			f_loss = 60
+			b_loss = 70
+			f_loss = 70
 
 			if (!istype(l_ear, /obj/item/clothing/ears/earmuffs) && !istype(r_ear, /obj/item/clothing/ears/earmuffs))
 				adjust_ear_damage(30, 20)
@@ -476,7 +483,8 @@ This function restores all organs.
 				Paralyse(3)
 
 		if(3.0)
-			b_loss = 30
+			b_loss = 35
+			f_loss = 35
 			if (!istype(l_ear, /obj/item/clothing/ears/earmuffs) && !istype(r_ear, /obj/item/clothing/ears/earmuffs))
 				adjust_ear_damage(15, 15)
 			if (prob(50))
@@ -487,13 +495,13 @@ This function restores all organs.
 	b_loss *= protection
 	f_loss *= protection
 
-	// focus most of the blast on one organ
+	// focus the largest part of the blast on one organ
 	var/obj/item/organ/external/take_blast = pick(organs)
-	take_blast.take_external_damage(b_loss * 0.7, f_loss * 0.7, used_weapon = "Explosive blast")
+	take_blast.take_external_damage(b_loss * 0.6, f_loss * 0.6, used_weapon = "Explosive blast")
 
-	// distribute the remaining 30% on all limbs equally (including the one already dealt damage)
-	b_loss *= 0.3
-	f_loss *= 0.3
+	// distribute the remaining 40% on all limbs equally (including the one already dealt damage)
+	b_loss *= 0.4
+	f_loss *= 0.4
 
 	for(var/obj/item/organ/external/temp in organs)
 		var/loss_val

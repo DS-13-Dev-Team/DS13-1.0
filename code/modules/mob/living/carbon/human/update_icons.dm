@@ -199,7 +199,7 @@ Please contact me on #coderbus IRC. ~Carn x
 		M.Translate(1,-6)
 	else
 		M.Translate(0, 16*(default_scale-1))
-	transform = M
+	animate(src, transform = M, time = 10)
 
 
 var/global/list/damage_icon_parts = list()
@@ -517,10 +517,16 @@ var/global/list/damage_icon_parts = list()
 
 /mob/living/carbon/human/update_inv_wear_id(var/update_icons=1)
 	var/image/id_overlay
-	if(wear_id && istype(w_uniform, /obj/item/clothing/under))
-		var/obj/item/clothing/under/U = w_uniform
-		if(U.displays_id && !U.rolled_down)
-			id_overlay = wear_id.get_mob_overlay(src,slot_wear_id_str)
+
+	if (wear_id && !w_uniform && !wear_suit)
+		drop_from_inventory(wear_id)
+
+	else
+
+		if(wear_id && istype(w_uniform, /obj/item/clothing/under))
+			var/obj/item/clothing/under/U = w_uniform
+			if(U.displays_id && !U.rolled_down)
+				id_overlay = wear_id.get_mob_overlay(src,slot_wear_id_str)
 
 	overlays_standing[ID_LAYER]	= id_overlay
 

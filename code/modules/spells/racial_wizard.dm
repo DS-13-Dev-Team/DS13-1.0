@@ -223,8 +223,8 @@
 
 	spell_flags = Z2NOCAST
 	hud_state = "wiz_IPC"
-	var/mob/observer/eye/vision
-	var/eye_type = /mob/observer/eye/wizard_eye
+	var/mob/dead/observer/eye/vision
+	var/eye_type = /mob/dead/observer/eye/wizard_eye
 
 /spell/camera_connection/New()
 	..()
@@ -241,24 +241,24 @@
 		return null
 	return list(holder)
 
-/spell/camera_connection/cast(var/list/targets, mob/user)
+/spell/camera_connection/cast(list/targets, mob/user)
 	var/mob/living/L = targets[1]
 
 	vision.possess(L)
 	GLOB.destroyed_event.register(L, src, /spell/camera_connection/proc/release)
 	GLOB.logged_out_event.register(L, src, /spell/camera_connection/proc/release)
-	L.verbs += /mob/living/proc/release_eye
+	add_verb(L, /mob/living/proc/release_eye)
 
 /spell/camera_connection/proc/release(var/mob/living/L)
 	vision.release(L)
-	L.verbs -= /mob/living/proc/release_eye
+	remove_verb(L, /mob/living/proc/release_eye)
 	GLOB.destroyed_event.unregister(L, src)
 	GLOB.logged_out_event.unregister(L, src)
 
-/mob/observer/eye/wizard_eye
+/mob/dead/observer/eye/wizard_eye
 	name_sufix = "Wizard Eye"
 
-/mob/observer/eye/wizard_eye/New() //we dont use the Ai one because it has AI specific procs imbedded in it.
+/mob/dead/observer/eye/wizard_eye/New() //we dont use the Ai one because it has AI specific procs imbedded in it.
 	..()
 	visualnet = GLOB.cameranet
 
@@ -267,13 +267,13 @@
 	set desc = "Return your sight to your body."
 	set category = "Abilities"
 
-	verbs -= /mob/living/proc/release_eye //regardless of if we have an eye or not we want to get rid of this verb.
+	remove_verb(src, /mob/living/proc/release_eye)//regardless of if we have an eye or not we want to get rid of this verb.
 
 	if(!eyeobj)
 		return
 	eyeobj.release(src)
 
-/mob/observer/eye/wizard_eye/Destroy()
+/mob/dead/observer/eye/wizard_eye/Destroy()
 	if(istype(eyeobj.owner, /mob/living))
 		var/mob/living/L = eyeobj.owner
 		L.release_eye()

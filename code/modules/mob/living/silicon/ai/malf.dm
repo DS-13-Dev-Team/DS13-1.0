@@ -10,9 +10,7 @@
 	hacked_apcs = list()
 	recalc_cpu()
 
-	verbs += new/datum/game_mode/malfunction/verb/ai_select_hardware()
-	verbs += new/datum/game_mode/malfunction/verb/ai_select_research()
-	verbs += new/datum/game_mode/malfunction/verb/ai_help()
+	add_verb(src, list(new/datum/game_mode/malfunction/verb/ai_select_hardware(),  new/datum/game_mode/malfunction/verb/ai_select_research(), new/datum/game_mode/malfunction/verb/ai_help()))
 
 	log_ability_use(src, "became malfunctioning AI")
 	// And greet user with some OOC info.
@@ -55,7 +53,7 @@
 	if(!research)
 		if(!errored)
 			errored = 1
-			error("malf_process() called on AI without research datum. Report this.")
+			log_debug("malf_process() called on AI without research datum. Report this.")
 			message_admins("ERROR: malf_process() called on AI without research datum. If admin modified one of the AI's vars revert the change and don't modify variables directly, instead use ProcCall or admin panels.")
 			spawn(1200)
 				errored = 0

@@ -3,6 +3,8 @@
 #define EXPLOSION_LARGE explosion(5, 2)
 #define EXPLOSION_HUGE explosion(10, 2)
 
+#define EXPLOSION_FAR_RANGE	150
+
 /atom/var/explosion_resistance
 /atom/proc/get_explosion_resistance()
 	if(simulated)
@@ -55,8 +57,9 @@ Method to create an explosion at a given turf.
 
 /turf/explosion(radius, max_power=3, adminlog = TRUE)
 	if(adminlog)
-		message_admins("Explosion with size ([radius]) in area [get_area(src).name] ([x],[y],[z]) (<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)")
-		log_game("Explosion with size ([radius]) in area [get_area(src).name] ")
+		var/area/A = get_area(src)
+		message_admins("Explosion with size ([radius]) in area [A.name] ([x],[y],[z]) (<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)")
+		log_game("Explosion with size ([radius]) in area [A.name] ")
 	if (!QDELETED(src))
 		set_extension(src, /datum/extension/explosion, radius, max_power)
 
@@ -77,20 +80,24 @@ proc/explosion_FX(turf/epicenter, max_range, explosion_sound=get_sfx("explosion"
 	E.start()
 
 
+
+	//playsound(epicenter, 'sound/effects/explosionfar.ogg', VOLUME_MAX, 1, EXPLOSION_FAR_RANGE)
+
 	for(var/mob/M in GLOB.player_list)
-		if(M.z == epicenter.z)
+		if (AreConnectedZLevels(epicenter.z, M.z))
 			var/turf/M_turf = get_turf(M)
-			var/dist = get_dist(M_turf, epicenter)
+			var/dist = get_dist_3D(M_turf, epicenter)
 			// If inside the blast radius + world.view - 2
 			if(dist <= max_range)
-				M.playsound_local(epicenter, explosion_sound , VOLUME_MAX, 1) // get_sfx() is so that everyone gets the same sound
+				var/dist_percent = (dist > 0 ? dist / max_range : 1)
+				shake_camera(M, duration= 6 SECONDS*dist_percent , strength=4)
+				M.playsound_local(epicenter, explosion_sound , VOLUME_MAX, 1, max_range) // get_sfx() is so that everyone gets the same sound
+
 			else
-				var/volume = VOLUME_HIGH
-				if (dist >= max_range * 2)
-					volume = VOLUME_MID
-				if (dist >= max_range * 3)
-					volume = VOLUME_LOW
-				M.playsound_local(epicenter, 'sound/effects/explosionfar.ogg', volume, 1)
+				var/dist_percent = (dist > 0 ? dist / (EXPLOSION_FAR_RANGE) : 1)
+				var/upper_dist_percent = (dist * 0.5) + 0.5	//Percentage rescaled to be between 50-100%
+				shake_camera(M, duration= 6 SECONDS*dist_percent , strength=3*upper_dist_percent)
+				M.playsound_local(epicenter, 'sound/effects/explosionfar.ogg', VOLUME_MAX, 1, extrarange = EXPLOSION_FAR_RANGE, falloff = 20)
 		CHECK_TICK
 
 /datum/extension/explosion

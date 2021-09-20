@@ -45,6 +45,9 @@
 	var/skill_points = 16				  //The number of unassigned skill points the job comes with (on top of the minimum skills).
 	var/no_skill_buffs = FALSE			  //Whether skills can be buffed by age/species modifiers.
 
+	var/necro_conversion_compatibility = 0	//When converted to a necromorph, crewmen of this job have this amount of bonus compatibility. This influences the rarity/power of necros they convert into
+	var/list/necro_conversion_options = list()	//When converted to a necromorph, crewmen of this job have these extra possibilities added to the pool
+
 /datum/job/New()
 	..()
 	if(prob(100-availablity_chance))	//Close positions, blah blah.
@@ -85,7 +88,7 @@
 
 	//Here we load persistent credits from the database
 	var/money_amount = get_character_credits(H.mind)
-	
+
 	var/datum/money_account/M = create_account(H.real_name, money_amount, null)
 	if(H.mind)
 		var/remembered_info = ""
@@ -286,3 +289,6 @@
 
 /datum/job/proc/make_position_available()
 	total_positions++
+
+
+

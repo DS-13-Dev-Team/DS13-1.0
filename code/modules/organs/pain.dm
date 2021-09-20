@@ -1,7 +1,7 @@
 mob/proc/flash_pain(var/target)
-	if(pain)
-		animate(pain, alpha = target, time = 15, easing = ELASTIC_EASING)
-		animate(pain, alpha = 0, time = 20)
+	if(hud_used.pain)
+		animate(hud_used.pain, alpha = target, time = 15, easing = ELASTIC_EASING)
+		animate(hud_used.pain, alpha = 0, time = 20)
 
 mob/var/last_pain_message
 mob/var/next_pain_time = 0

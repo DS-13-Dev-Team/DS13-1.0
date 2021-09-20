@@ -187,7 +187,7 @@
 		qdel(src)
 	if(key)
 
-		var/mob/observer/ghost/ghost = ghostize(TRUE)
+		var/mob/dead/observer/ghost/ghost = ghostize(TRUE)
 		ghost.name = "[ghost.key] BSTech"
 		ghost.real_name = "[ghost.key] BSTech"
 		ghost.voice_name = "[ghost.key] BSTech"
@@ -411,9 +411,3 @@
 	down()
 
 
-/mob/living/carbon/human/bst/verb/blur_filter(var/atom/A)
-	set name = "Blur"
-	set category = "BST"
-
-	var/newfilter = filter(type="blur", rand_between(1,6))
-	A.filters += newfilter

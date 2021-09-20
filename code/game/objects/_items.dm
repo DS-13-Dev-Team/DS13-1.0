@@ -393,6 +393,9 @@
 	if(M.r_hand)
 		M.r_hand.update_twohanding()
 
+	if (slowdown_general || slowdown_per_slot)
+		M.update_extension(/datum/extension/updating/encumbrance)
+
 //Defines which slots correspond to which slot flags
 var/list/global/slot_flags_enumeration = list(
 	"[slot_wear_mask]" = SLOT_MASK,
@@ -913,7 +916,7 @@ THIS SCOPE CODE IS DEPRECATED, USE AIM MODES INSTEAD.
 
 
 //Called when a structure takes damage
-/obj/item/proc/take_damage(var/amount, var/damtype = BRUTE, var/user, var/used_weapon, var/bypass_resist = FALSE)
+/obj/item/proc/take_damage(amount, damtype = BRUTE, user, used_weapon, bypass_resist = FALSE)
 	if ((atom_flags & ATOM_FLAG_INDESTRUCTIBLE))
 		return
 	if (!bypass_resist)

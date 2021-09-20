@@ -409,19 +409,6 @@ Called when attempting to install this module into the target rig
 
 
 
-/mob/living/carbon/human/Stat()
-	. = ..()
-	if(. && wearing_rig && statpanel("RIG Modules"))
-
-		if(!wearing_rig.canremove && wearing_rig.installed_modules.len)
-			var/cell_status = wearing_rig.cell ? "[wearing_rig.cell.charge]/[wearing_rig.cell.maxcharge]" : "ERROR"
-			stat("Suit charge", cell_status)
-			for(var/obj/item/rig_module/module in wearing_rig.installed_modules)
-			{
-				for(var/datum/stat_rig_module/SRM as anything in module.stat_modules)
-					if(SRM.CanUse())
-						stat(SRM.module.interface_name,SRM)
-			}
 
 /datum/stat_rig_module
 	parent_type = /atom/movable

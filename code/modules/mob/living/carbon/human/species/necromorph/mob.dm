@@ -38,6 +38,9 @@
 /mob/living/carbon/human/necromorph/exploder/New(var/new_loc, var/new_species = SPECIES_NECROMORPH_EXPLODER)
 	..(new_loc, new_species)
 
+/mob/living/carbon/human/necromorph/exploder/enhanced/New(var/new_loc, var/new_species = SPECIES_NECROMORPH_EXPLODER_ENHANCED)
+	..(new_loc, new_species)
+
 /mob/living/carbon/human/necromorph/leaper/New(var/new_loc, var/new_species = SPECIES_NECROMORPH_LEAPER)
 	..(new_loc, new_species)
 
@@ -52,6 +55,10 @@
 
 
 /mob/living/carbon/human/necromorph/hunter/New(var/new_loc, var/new_species = SPECIES_NECROMORPH_HUNTER)
+	..(new_loc, new_species)
+
+
+/mob/living/carbon/human/necromorph/infector/New(var/new_loc, var/new_species = SPECIES_NECROMORPH_INFECTOR)
 	..(new_loc, new_species)
 
 /mob/living/carbon/human/necromorph/update_icons()
@@ -103,7 +110,7 @@
 
 
 /mob/Login()
-	.=..()
+	..()
 	//Update the necromorph players list
 	if (is_necromorph())
 		set_necromorph(TRUE)

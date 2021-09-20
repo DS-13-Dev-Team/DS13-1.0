@@ -21,7 +21,7 @@
 	var/intercept = 0 //can intercept other channels
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
 	slot_flags = SLOT_BELT
-	
+
 	throw_range = 9
 	w_class = ITEM_SIZE_SMALL
 
@@ -188,7 +188,7 @@
 	var/obj/item/weapon/card/id/I = GetIdCard()
 	return has_access(list(), req_one_accesses, I ? I.GetAccess() : list())
 
-/mob/observer/ghost/has_internal_radio_channel_access(var/list/req_one_accesses)
+/mob/dead/observer/ghost/has_internal_radio_channel_access(var/list/req_one_accesses)
 	return can_admin_interact()
 
 /obj/item/device/radio/proc/text_wires()
@@ -833,9 +833,12 @@
 	channels=list("Engineering" = 1, "Security" = 1, "Medical" = 1, "Command" = 1, "Common" = 1, "Science" = 1, "Supply" = 1, "Service" = 1, "Mining" = 1)
 	cell = null
 
-/obj/item/device/radio/announcer/Destroy()
+/obj/item/device/radio/announcer/Destroy(force = FALSE)
 	crash_with("attempt to delete a [src.type] detected, and prevented.")
-	return 1
+	if(!force)
+		return 1
+
+	return ..()
 
 /obj/item/device/radio/announcer/Initialize()
 	. = ..()

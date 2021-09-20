@@ -1,5 +1,7 @@
 # ignore misc BYOND files
 Thumbs.db
+*.mdme
+*.mdme.*
 *.log
 *.int
 *.rsc
@@ -23,9 +25,11 @@ config/*
 sql/test_db
 
 # vscode
-.vscode/*
-.history
-*.code-workspace
+*.vscode/*
+!/.vscode/extensions.json
+!/.vscode/settings.json
+!/.vscode/launch.json
+!/.vscode/tasks.json
 
 # swap
 [._]*.s[a-v][a-z]
@@ -42,3 +46,7 @@ Session.vim
 
 # auto-generated tag files
 tags
+
+#extra map stuff
+/maps/**/backup/
+/maps/templates.dm

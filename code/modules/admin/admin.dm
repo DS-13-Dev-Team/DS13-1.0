@@ -4,36 +4,48 @@ var/global/floorIsLava = 0
 
 
 ////////////////////////////////
-/proc/message_admins(var/msg)
+/proc/message_admins(msg)
 	msg = "<span class=\"log_message\"><span class=\"prefix\">ADMIN LOG:</span> <span class=\"message\">[msg]</span></span>"
-	log_adminwarn(msg)
+	log_admin(msg)
 	for(var/client/C in GLOB.admins)
 		if(R_ADMIN & C.holder.rights)
-			to_chat(C, msg)
-/proc/message_mods(var/msg)
+			to_chat(C,
+					type = MESSAGE_TYPE_ADMINCHAT,
+					html = msg)
+/proc/message_mods(msg)
 	msg = "<span class=\"log_message\"><span class=\"prefix\">MOD LOG:</span> <span class=\"message\">[msg]</span></span>"
-	log_adminwarn(msg)
+	log_admin(msg)
 	for(var/client/C in GLOB.admins)
 		if(R_MOD & C.holder.rights)
-			to_chat(C, msg)
-/proc/message_staff(var/msg)
+			to_chat(C,
+					type = MESSAGE_TYPE_MENTORCHAT,
+					html = msg)
+/proc/message_staff(msg)
 	msg = "<span class=\"log_message\"><span class=\"prefix\">STAFF LOG:</span> <span class=\"message\">[msg]</span></span>"
-	log_adminwarn(msg)
+	log_admin(msg)
 	for(var/client/C in GLOB.admins)
 		if(C && C.holder && (R_INVESTIGATE & C.holder.rights))
-			to_chat(C, msg)
-/proc/msg_admin_attack(var/text) //Toggleable Attack Messages
+			to_chat(C,
+					type = MESSAGE_TYPE_STAFFLOG,
+					html = msg)
+/proc/msg_admin_attack(text) //Toggleable Attack Messages
 	log_attack(text)
 	var/rendered = "<span class=\"log_message\"><span class=\"prefix\">ATTACK:</span> <span class=\"message\">[text]</span></span>"
 	for(var/client/C in GLOB.admins)
 		if(check_rights(R_MOD, 0, C))
 			if(C.get_preference_value(/datum/client_preference/staff/show_attack_logs) == GLOB.PREF_SHOW)
 				var/msg = rendered
-				to_chat(C, msg)
-/proc/admin_notice(var/message, var/rights)
+				to_chat(C,
+					type = MESSAGE_TYPE_ADMINCHAT,
+					html = msg)
+
+/proc/admin_notice(message, rights)
 	for(var/mob/M in SSmobs.mob_list)
 		if(check_rights(rights, 0, M))
-			to_chat(M, message)
+			to_chat(M,
+					type = MESSAGE_TYPE_DEBUG,
+					html = message)
+
 ///////////////////////////////////////////////////////////////////////////////////////////////Panels
 
 /datum/admins/proc/show_player_panel(var/mob/M in SSmobs.mob_list)
@@ -56,7 +68,7 @@ var/global/floorIsLava = 0
 		body += " played by <b>[M.client]</b> "
 		body += "\[<A href='?src=\ref[src];editrights=show'>[M.client.holder ? M.client.holder.rank : "Player"]</A>\]"
 
-	if(istype(M, /mob/new_player))
+	if(istype(M, /mob/dead/new_player))
 		body += " <B>Hasn't Entered Game</B> "
 	else
 		body += " \[<A href='?src=\ref[src];revive=\ref[M]'>Heal</A>\] "
@@ -108,7 +120,7 @@ var/global/floorIsLava = 0
 	"}
 
 	if (M.client)
-		if(!istype(M, /mob/new_player))
+		if(!istype(M, /mob/dead/new_player))
 			body += "<br><br>"
 			body += "<b>Transformation:</b>"
 			body += "<br>"
@@ -679,7 +691,7 @@ var/global/floorIsLava = 0
 	message = sanitize(message, 500, extra = 0)
 	if(message)
 		message = replacetext(message, "\n", "<br>") // required since we're putting it in a <p> tag
-		to_world("<span class=notice><b>[usr.key] Announces:</b><p style='text-indent: 50px'>[message]</p></span>")
+		to_chat(world, "<span class=notice><b>[usr.key] Announces:</b><p style='text-indent: 50px'>[message]</p></span>")
 		log_admin("Announce: [key_name(usr)] : [message]")
 	feedback_add_details("admin_verb","A") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -919,9 +931,9 @@ var/global/floorIsLava = 0
 	set name="Toggle tinted welding helmets."
 	CONFIG_SET(flag/welder_vision, !CONFIG_GET(flag/welder_vision))
 	if (CONFIG_GET(flag/welder_vision))
-		to_world("<B>Reduced welder vision has been enabled!</B>")
+		to_chat(world, "<B>Reduced welder vision has been enabled!</B>")
 	else
-		to_world("<B>Reduced welder vision has been disabled!</B>")
+		to_chat(world, "<B>Reduced welder vision has been disabled!</B>")
 	log_and_message_admins("toggled welder vision.")
 	feedback_add_details("admin_verb","TTWH") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -1016,15 +1028,15 @@ var/global/floorIsLava = 0
 
 		if(2)	//Admins
 			var/ref_mob = "\ref[M]"
-			return "<b>[key_name(C, link, name, highlight_special, ticket)](<A HREF='?_src_=holder;adminmoreinfo=[ref_mob]'>?</A>) (<A HREF='?_src_=holder;adminplayeropts=[ref_mob]'>PP</A>) (<A HREF='?_src_=vars;Vars=[ref_mob]'>VV</A>) (<A HREF='?_src_=holder;subtlemessage=[ref_mob]'>SM</A>) ([admin_jump_link(M, src)]) (<A HREF='?_src_=holder;check_antagonist=1'>CA</A>)</b>"
+			return "<b>[key_name(C, link, name, highlight_special, ticket)](<A HREF='?_src_=holder;adminmoreinfo=[ref_mob]'>?</A>) (<A HREF='?_src_=holder;adminplayeropts=[ref_mob]'>PP</A>) (<A HREF='?_src_=vars;Vars=[ref_mob]'>VV</A>) (<A HREF='?_src_=holder;subtlemessage=[ref_mob]'>SM</A>) ([ADMIN_JMP(M)]) (<A HREF='?_src_=holder;check_antagonist=1'>CA</A>)</b>"
 
 		if(3)	//Devs
 			var/ref_mob = "\ref[M]"
-			return "<b>[key_name(C, link, name, highlight_special, ticket)](<A HREF='?_src_=vars;Vars=[ref_mob]'>VV</A>)([admin_jump_link(M, src)])</b>"
+			return "<b>[key_name(C, link, name, highlight_special, ticket)](<A HREF='?_src_=vars;Vars=[ref_mob]'>VV</A>)([ADMIN_JMP(M)])</b>"
 
 		if(4)	//Mentors
 			var/ref_mob = "\ref[M]"
-			return "<b>[key_name(C, link, name, highlight_special, ticket)] (<A HREF='?_src_=holder;adminmoreinfo=\ref[M]'>?</A>) (<A HREF='?_src_=holder;adminplayeropts=[ref_mob]'>PP</A>) (<A HREF='?_src_=vars;Vars=[ref_mob]'>VV</A>) (<A HREF='?_src_=holder;subtlemessage=[ref_mob]'>SM</A>) ([admin_jump_link(M, src)])</b>"
+			return "<b>[key_name(C, link, name, highlight_special, ticket)] (<A HREF='?_src_=holder;adminmoreinfo=\ref[M]'>?</A>) (<A HREF='?_src_=holder;adminplayeropts=[ref_mob]'>PP</A>) (<A HREF='?_src_=vars;Vars=[ref_mob]'>VV</A>) (<A HREF='?_src_=holder;subtlemessage=[ref_mob]'>SM</A>) ([ADMIN_JMP(M)])</b>"
 
 /proc/ishost(var/client/C)
 	return check_rights(R_HOST, 0, C)
@@ -1041,7 +1053,7 @@ var/global/floorIsLava = 0
 
 //Returns 1 to let the dragdrop code know we are trapping this event
 //Returns 0 if we don't plan to trap the event
-/datum/admins/proc/cmd_ghost_drag(var/mob/observer/ghost/frommob, var/mob/living/tomob)
+/datum/admins/proc/cmd_ghost_drag(var/mob/dead/observer/ghost/frommob, var/mob/living/tomob)
 	if(!istype(frommob))
 		return //Extra sanity check to make sure only observers are shoved into things
 
@@ -1147,19 +1159,17 @@ var/global/floorIsLava = 0
 
 			var/replyorigin = input(src.owner, "Please specify who the fax is coming from", "Origin") as text|null
 
-			var/obj/item/weapon/paper/admin/P = new /obj/item/weapon/paper/admin( null ) //hopefully the null loc won't cause trouble for us
+			var/obj/item/weapon/paper/admin/P = new (null) //hopefully the null loc won't cause trouble for us
 			faxreply = P
 
 			P.admindatum = src
 			P.origin = replyorigin
 			P.destination = sendto
 
-			P.adminbrowse()
-
 
 datum/admins/var/obj/item/weapon/paper/admin/faxreply // var to hold fax replies in
 
-/datum/admins/proc/faxCallback(var/obj/item/weapon/paper/admin/P, var/obj/machinery/photocopier/faxmachine/destination)
+/datum/admins/proc/faxCallback(obj/item/weapon/paper/admin/P, var/obj/machinery/photocopier/faxmachine/destination)
 	var/customname = input(src.owner, "Pick a title for the report", "Title") as text|null
 
 	P.SetName("[P.origin] - [customname]")
@@ -1205,12 +1215,16 @@ datum/admins/var/obj/item/weapon/paper/admin/faxreply // var to hold fax replies
 			log_admin("[key_name(src.owner)] replied to a fax message from [key_name(P.sender)]")
 			for(var/client/C in GLOB.admins)
 				if((R_ADMIN | R_MOD) & C.holder.rights)
-					to_chat(C, "<span class='log_message'><span class='prefix'>FAX LOG:</span>[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(P.sender)] (<a href='?_src_=holder;AdminFaxView=\ref[rcvdcopy]'>VIEW</a>)</span>")
+					to_chat(C,
+							type = MESSAGE_TYPE_ADMINCHAT,
+							html = "<span class='log_message'><span class='prefix'>FAX LOG:</span>[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(P.sender)] (<a href='?_src_=holder;AdminFaxView=\ref[rcvdcopy]'>VIEW</a>)</span>")
 		else
 			log_admin("[key_name(src.owner)] has sent a fax message to [destination.department]")
 			for(var/client/C in GLOB.admins)
 				if((R_ADMIN | R_MOD) & C.holder.rights)
-					to_chat(C, "<span class='log_message'><span class='prefix'>FAX LOG:</span>[key_name_admin(src.owner)] has sent a fax message to [destination.department] (<a href='?_src_=holder;AdminFaxView=\ref[rcvdcopy]'>VIEW</a>)</span>")
+					to_chat(C,
+							type = MESSAGE_TYPE_ADMINCHAT,
+							html = "<span class='log_message'><span class='prefix'>FAX LOG:</span>[key_name_admin(src.owner)] has sent a fax message to [destination.department] (<a href='?_src_=holder;AdminFaxView=\ref[rcvdcopy]'>VIEW</a>)</span>")
 
 	else
 		to_chat(src.owner, "<span class='warning'>Message reply failed.</span>")
@@ -1219,3 +1233,18 @@ datum/admins/var/obj/item/weapon/paper/admin/faxreply // var to hold fax replies
 		qdel(P)
 		faxreply = null
 	return
+
+//Kicks all the clients currently in the lobby. The second parameter (kick_only_afk) determins if an is_afk() check is ran, or if all clients are kicked
+//defaults to kicking everyone (afk + non afk clients in the lobby)
+//returns a list of ckeys of the kicked clients
+/proc/kick_clients_in_lobby(message, kick_only_afk = 0)
+	var/list/kicked_client_names = list()
+	for(var/client/C in GLOB.clients)
+		if(isnewplayer(C.mob))
+			if(kick_only_afk && !C.is_afk()) //Ignore clients who are not afk
+				continue
+			if(message)
+				to_chat(C, message, confidential = TRUE)
+			kicked_client_names.Add("[C.key]")
+			qdel(C)
+	return kicked_client_names

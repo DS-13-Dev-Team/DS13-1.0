@@ -28,7 +28,7 @@
 	return
 
 /datum/reagent/blood/proc/sync_to(var/mob/living/carbon/C)
-	data["donor"] = weakref(C)
+	data["donor"] = WEAKREF(C)
 	if (!data["virus2"])
 		data["virus2"] = list()
 	data["virus2"] |= virus_copylist(C.virus2)
@@ -65,7 +65,7 @@
 /datum/reagent/blood/touch_turf(var/turf/simulated/T)
 	if(!istype(T) || volume < 3)
 		return
-	var/weakref/W = data["donor"]
+	var/datum/weakref/W = data["donor"]
 	if (!W)
 		blood_splatter(T, src, 1)
 	W = W.resolve()

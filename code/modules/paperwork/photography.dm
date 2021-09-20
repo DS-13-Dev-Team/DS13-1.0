@@ -45,13 +45,13 @@ var/global/photo_count = 0
 /obj/item/weapon/photo/update_icon()
 	overlays.Cut()
 	var/scale = 8/(photo_size*32)
-	var/image/small_img = image(img.icon)
+	var/image/small_img = image(img:icon)
 	small_img.transform *= scale
 	small_img.pixel_x = -32*(photo_size-1)/2 - 3
 	small_img.pixel_y = -32*(photo_size-1)/2
 	overlays |= small_img
 
-	tiny = image(img.icon)
+	tiny = image(img:icon)
 	tiny.transform *= 0.5*scale
 	tiny.underlays += image('icons/obj/bureaucracy.dmi',"photo")
 	tiny.pixel_x = -32*(photo_size-1)/2 - 3
@@ -220,10 +220,8 @@ var/global/photo_count = 0
 //Record evidence which earthgov agents can fax home for greentext.
 /obj/item/device/camera/proc/get_evidence(turf/T)
 	for(var/atom/movable/AM in T)
-		for(var/sustype in EARTHGOV_EVIDENCE_TYPES)
-			if(istype(AM, sustype))
-				message_admins("[AM] IS SUS!")
-				return AM
+		for(AM in EARTHGOV_EVIDENCE_TYPES)
+			return AM
 	return null
 
 /obj/item/device/camera/afterattack(atom/target as mob|obj|turf|area, mob/user as mob, flag)

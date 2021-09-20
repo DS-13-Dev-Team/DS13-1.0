@@ -275,7 +275,7 @@
 		if(!O.force)
 			visible_message("<span class='notice'>[user] gently taps [src] with \the [O].</span>")
 		else
-			O.attack(src, user, user.zone_sel.selecting)
+			O.attack(src, user, get_zone_sel(user))
 
 /mob/living/simple_animal/standard_weapon_hit_effects(obj/item/O, mob/living/user, var/effective_force, var/blocked, var/hit_zone)
 
@@ -305,11 +305,6 @@
 	return tally
 
 
-/mob/living/simple_animal/Stat()
-	. = ..()
-
-	if(statpanel("Status") && show_stat_health)
-		stat(null, "Health: [round((health / max_health) * 100)]%")
 
 /mob/living/simple_animal/update_icon()
 	icon_state = icon_living

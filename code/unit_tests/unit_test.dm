@@ -64,25 +64,25 @@ datum/unit_test
 	var/space_landmark
 
 datum/unit_test/proc/log_debug(var/message)
-	log_unit_test("[ascii_yellow]---  DEBUG  --- \[[name]\]: [message][ascii_reset]")
+	log_test("[ascii_yellow]---  DEBUG  --- \[[name]\]: [message][ascii_reset]")
 
 datum/unit_test/proc/log_bad(var/message)
-	log_unit_test("[ascii_red]\[[name]\]: [message][ascii_reset]")
+	log_test("[ascii_red]\[[name]\]: [message][ascii_reset]")
 
 datum/unit_test/proc/fail(var/message)
 	all_unit_tests_passed = 0
 	failed_unit_tests++
 	reported = 1
-	log_unit_test("[ascii_red]!!! FAILURE !!! \[[name]\]: [message][ascii_reset]")
+	log_test("[ascii_red]!!! FAILURE !!! \[[name]\]: [message][ascii_reset]")
 
 datum/unit_test/proc/pass(var/message)
 	reported = 1
-	log_unit_test("[ascii_green]*** SUCCESS *** \[[name]\]: [message][ascii_reset]")
+	log_test("[ascii_green]*** SUCCESS *** \[[name]\]: [message][ascii_reset]")
 
 datum/unit_test/proc/skip(var/message)
 	skipped_unit_tests++
 	reported = 1
-	log_unit_test("[ascii_yellow]--- SKIPPED --- \[[name]\]: [message][ascii_reset]")
+	log_test("[ascii_yellow]--- SKIPPED --- \[[name]\]: [message][ascii_reset]")
 
 datum/unit_test/proc/start_test()
 	fail("No test proc.")
@@ -111,7 +111,7 @@ proc/load_unit_test_changes()
 /*
 	//This takes about 60 seconds to run on Travis and is only used for the ZAS vacume check on The Asteroid.
 	if(!CONFIG_GET(flag/generate_map))
-		log_unit_test("Overiding Configuration option for Asteroid Generation to ENABLED")
+		log_test("Overiding Configuration option for Asteroid Generation to ENABLED")
 		CONFIG_SET(flag/generate_map, TRUE)	// The default map requires it, the example config doesn't have this enabled.
  */
 
@@ -152,9 +152,9 @@ proc/load_unit_test_changes()
 	if(skipped_unit_tests)
 		skipped_message = "| \[[skipped_unit_tests]\\[total_unit_tests]\] Unit Tests Skipped "
 	if(all_unit_tests_passed)
-		log_unit_test("[ascii_green]**** All Unit Tests Passed \[[total_unit_tests]\] [skipped_message]****[ascii_reset]")
+		log_test("[ascii_green]**** All Unit Tests Passed \[[total_unit_tests]\] [skipped_message]****[ascii_reset]")
 	else
-		log_unit_test("[ascii_red]**** \[[failed_unit_tests]\\[total_unit_tests]\] Unit Tests Failed [skipped_message]****[ascii_reset]")
+		log_test("[ascii_red]**** \[[failed_unit_tests]\\[total_unit_tests]\] Unit Tests Failed [skipped_message]****[ascii_reset]")
 
 /datum/admins/proc/run_unit_test(var/datum/unit_test/unit_test_type in get_test_datums())
 	set name = "Run Unit Test"
@@ -199,29 +199,29 @@ SUBSYSTEM_DEF(unit_tests)
 		ascii_yellow = ""
 		ascii_reset = ""
 	#endif
-	log_unit_test("Initializing Unit Testing")
+	log_test("Initializing Unit Testing")
 	//
 	//Start the Round.
 	//
 	world.save_mode("extended")
 	for(var/test_datum_type in get_test_datums())
 		queue += new test_datum_type
-	log_unit_test("[queue.len] unit tests loaded.")
+	log_test("[queue.len] unit tests loaded.")
 	. = ..()
 
 /datum/controller/subsystem/unit_tests/proc/start_game()
 	if(Master.current_runlevel < RUNLEVEL_LOBBY)
 		return //Have to wait for the old Master.
-	log_unit_test("Master process setup.")
+	log_test("Master process setup.")
 
 	if (ticker.current_state == GAME_STATE_PREGAME)
 		ticker.current_state = GAME_STATE_SETTING_UP
 		Master.SetRunLevel(RUNLEVEL_SETUP)
 		stage++
-		log_unit_test("Round has been started.  Waiting 10 seconds to start tests.")
+		log_test("Round has been started.  Waiting 10 seconds to start tests.")
 		postpone(5)
 	else
-		log_unit_test("Unable to start testing; ticker.current_state=[ticker.current_state]!")
+		log_test("Unable to start testing; ticker.current_state=[ticker.current_state]!")
 		del world
 
 /datum/controller/subsystem/unit_tests/proc/handle_tests()
@@ -256,14 +256,14 @@ SUBSYSTEM_DEF(unit_tests)
 	switch (stage)
 		if (0)
 			stage ++
-			log_unit_test("Awaiting the master process...")
+			log_test("Awaiting the master process...")
 
 		if (1)
 			start_game()
 
 		if (2)	// wait a moment
 			stage++
-			log_unit_test("Testing Started.")
+			log_test("Testing Started.")
 			end_unit_tests = world.time + MAX_UNIT_TEST_RUN_TIME
 
 		if (3)	// do normal tests

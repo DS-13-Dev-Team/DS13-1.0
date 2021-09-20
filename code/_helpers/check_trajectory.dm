@@ -21,7 +21,7 @@
 	trace.pass_flags = pass_flags
 
 	var/output = trace.launch(target) //Test it!
-	qdel(trace) //No need for it anymore
+	QDEL_NULL(trace) //No need for it anymore
 	return output //Send it back to the gun!
 
 
@@ -51,7 +51,7 @@
 		trace.result = null
 		trace.loc = origin
 		targets[A] = trace.launch(A) //Test it!
-	qdel(trace) //No need for it anymore
+	QDEL_NULL(trace) //No need for it anymore
 	return targets //Send it back to the gun!
 
 
@@ -81,7 +81,7 @@
 
 	var/output = trace.launch(target) //Test it!
 	var/list/results = list(output, get_turf(trace), trace.obstacle)
-	qdel(trace) //No need for it anymore
+	QDEL_NULL(trace) //No need for it anymore
 	return results //Send it back to the gun!
 
 
@@ -112,7 +112,7 @@
 		trace.loc = origin
 		var/output = trace.launch(A) //Test it!
 		targets[A] = list(output, get_turf(trace), trace.obstacle)
-	qdel(trace) //No need for it anymore
+	QDEL_NULL(trace) //No need for it anymore
 	return targets //Send it back to the gun!
 
 

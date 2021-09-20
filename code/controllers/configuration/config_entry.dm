@@ -74,7 +74,7 @@
 	var/temp = text2num(trim(str_val))
 	if(!isnull(temp))
 		config_entry_value = clamp(integer ? round(temp) : temp, min_val, max_val)
-		if(config_entry_value != temp && !(datum_flags & DF_VAR_EDITED))
+		if(config_entry_value != temp && !(datum_flags & DATUM_FLAG_ISPROCESSING))
 			log_config("Changing [name] from [temp] to [config_entry_value]!")
 		return TRUE
 	return FALSE

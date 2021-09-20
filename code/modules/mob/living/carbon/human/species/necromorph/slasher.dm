@@ -7,6 +7,7 @@
 
 /datum/species/necromorph/slasher
 	name = SPECIES_NECROMORPH_SLASHER
+	bodytype = SPECIES_NECROMORPH_SLASHER
 	name_plural =  "Slashers"
 	mob_type = /mob/living/carbon/human/necromorph/slasher
 	blurb = "The frontline soldier of the necromorph horde. Slow when not charging, but its blade arms make for powerful melee attacks"
@@ -24,7 +25,7 @@
 	single_icon = FALSE
 	evasion = 0	//No natural evasion
 	spawner_spawnable = TRUE
-	ventcrawl = TRUE
+	ventcrawl = FALSE //temporarily disabled until rebalanced.
 	ventcrawl_time = 10 SECONDS //They're huge....
 
 	//Slashers hold their arms up in an overhead pose, so they override height too
@@ -33,6 +34,7 @@
 	BP_R_ARM =  list("path" = /obj/item/organ/external/arm/blade/right, "height" = new /vector2(1.6,2))
 	)
 
+	//This actually determines what clothing we can wear
 	hud_type = /datum/hud_data/necromorph/slasher
 
 
@@ -74,7 +76,8 @@
 
 
 	variants = list(SPECIES_NECROMORPH_SLASHER = list(WEIGHT = 8),
-	SPECIES_NECROMORPH_SLASHER_DESICCATED = list(WEIGHT = 2))
+	SPECIES_NECROMORPH_SLASHER_DESICCATED = list(WEIGHT = 2),
+	SPECIES_NECROMORPH_SLASHER_CARRION = list(WEIGHT = 0.1))
 
 	outfits = list(/decl/hierarchy/outfit/naked = list(),
 	/decl/hierarchy/outfit/necromorph/planet_cracker = list(),
@@ -86,9 +89,6 @@
 	/decl/hierarchy/outfit/necromorph/mining = list(),
 	/decl/hierarchy/outfit/necromorph/engi = list())
 
-//slasher variants share a bodytype with the base slasher, same clothes fit all
-/datum/species/necromorph/slasher/get_bodytype()
-	return SPECIES_NECROMORPH_SLASHER
 
 
 //Ancient version, formerly default, now uncommon
@@ -97,8 +97,19 @@
 	icon_template = 'icons/mob/necromorph/slasher/desiccated.dmi'
 	marker_spawnable = FALSE
 	preference_settable = FALSE
-	//mob_type = /mob/living/carbon/human/necromorph/slasherdesiccated
 
+
+/datum/species/necromorph/slasher/carrion
+	name = SPECIES_NECROMORPH_SLASHER_CARRION
+	icon_template = 'icons/mob/necromorph/slasher/carrion.dmi'
+	marker_spawnable = FALSE
+	preference_settable = FALSE
+	icon_lying = null
+	lying_rotation = 90
+
+	outfits = list()	//This thing has a different shape and can't wear clothing
+	bodytype = SPECIES_NECROMORPH_SLASHER_CARRION	//Does NOT share the same base bodytype, cannot wear slasher outfits
+	hud_type = /datum/hud_data/necromorph
 
 
 /*

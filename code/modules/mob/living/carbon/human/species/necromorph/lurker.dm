@@ -34,7 +34,8 @@
 	health_doll_offset	= 50
 	torso_damage_mult = 0.75
 	mob_size = MOB_SMALL
-	ventcrawl = TRUE
+	bump_flag 	= SIMPLE_ANIMAL
+	ventcrawl = FALSE //temporarily disabled until rebalanced.
 	ventcrawl_time = 10 SECONDS //They're huge....
 
 	//Normal necromorph flags plus no slip
@@ -434,8 +435,8 @@ The Lurker can only fire spines while its shell is open"
 	var/obj/item/clothing/lurker_shell/LS = cover
 	LS.close()
 	.=..()
-	user.verbs -= /mob/living/carbon/human/proc/close_shell
-	user.verbs |= /mob/living/carbon/human/proc/retract_shell
+	remove_verb(user, /mob/living/carbon/human/proc/close_shell)
+	add_verb(user, /mob/living/carbon/human/proc/retract_shell)
 	user.view_range = VIEW_RANGE_CLOSED
 	user.view_offset = VIEW_OFFSET_CLOSED
 	user.reset_view()
@@ -449,8 +450,8 @@ The Lurker can only fire spines while its shell is open"
 	var/obj/item/clothing/lurker_shell/LS = cover
 	LS.open()
 	.=..()
-	user.verbs |= /mob/living/carbon/human/proc/close_shell
-	user.verbs -= /mob/living/carbon/human/proc/retract_shell
+	add_verb(user, /mob/living/carbon/human/proc/close_shell)
+	remove_verb(user, /mob/living/carbon/human/proc/retract_shell)
 	user.view_range = VIEW_RANGE_OPEN
 	user.view_offset = VIEW_OFFSET_OPEN
 	user.reset_view()

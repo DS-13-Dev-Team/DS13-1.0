@@ -16,7 +16,7 @@
 	var/deform =       'icons/mob/human_races/species/human/deformed_body.dmi' // Mutated icon set.
 	var/preview_icon = 'icons/mob/human_races/species/human/preview.dmi'
 	var/husk_icon =    'icons/mob/human_races/species/default_husk.dmi'
-	var/lying_rotation = 90 //How much to rotate the icon when lying down
+
 	var/mob_type = /mob/living/carbon/human	//The mob we spawn in order to create a member of this species instantly
 	var/health_doll_offset	= WORLD_ICON_SIZE+8	//For this species, the hud health doll is offset this many pixels to the right.
 	//This default value is fine for humans and anything roughly the same width as a human, larger creatures will require different numbers
@@ -29,7 +29,9 @@
 	//Secondly, it is the string suffix added to organ iconstates
 	//Thirdly, in single icon mode, it is the icon state for lying down
 	var/icon_lying = null
-
+	var/lying_rotation = 90 //How much to rotate the icon when lying down
+	var/layer = BASE_HUMAN_LAYER
+	var/layer_lying	=	LYING_HUMAN_LAYER
 
 	// Damage overlay and masks.
 	var/damage_overlays = 'icons/mob/human_races/species/human/damage_overlay.dmi'
@@ -54,6 +56,7 @@
 
 	var/default_h_style = "Bald"
 	var/default_f_style = "Shaved"
+	var/default_g_style = "None"
 
 	var/race_key = 0                          // Used for mob icon cache string.
 	var/icon_template = 'icons/mob/human_races/species/template.dmi' // Used for mob icon generation for non-32x32 species.
@@ -64,14 +67,16 @@
 
 	var/mob_size	= MOB_MEDIUM
 	var/strength    = STR_MEDIUM
+	var/can_pull_mobs = MOB_PULL_SAME
+	var/can_pull_size = ITEM_SIZE_NO_CONTAINER
 	var/show_ssd = "fast asleep"
 	var/virus_immune
 	var/biomass	=	80	//How much biomass does it cost to spawn this (for necros) and how much does it yield when absorbed by a marker
 		//This is in kilograms, and is thus approximately the mass of an average human male adult
 	var/mass = 80	//Actual mass of the resulting mob
 
-	var/layer = BASE_HUMAN_LAYER
-	var/layer_lying	=	LYING_HUMAN_LAYER
+
+
 
 	var/light_sensitive                       // Ditto, but requires sunglasses to fix
 	var/blood_volume = SPECIES_BLOOD_DEFAULT  // Initial blood volume.
@@ -206,6 +211,8 @@
 	//Interaction
 	var/limited_click_arc = 0	  //If nonzero, the mob is limited to clicking on things in X degrees arc infront of it. Best combined with slow turning. Recommended values, 45 or 90
 	var/list/grasping_limbs = list(BP_R_HAND, BP_L_HAND)	//What limbs does this mob use for interacting with objects?
+	var/bodytype	=	null	//Used in get_bodytype which determines what clothes the mob can wear. If null, the species name is used instead
+
 
 	//Vision
 	var/view_offset = 0			  //How far forward the mob's view is offset, in pixels.
@@ -311,7 +318,7 @@
 	var/list/genders = list(MALE, FEMALE)
 
 	// Bump vars
-	var/bump_flag = HUMAN	// What are we considered to be when bumped?
+	var/bump_flag = HUMAN	// What are we considered to be when bumped? these flags are in defines/mobs.dm
 	var/push_flags = ~HEAVY	// What can we push?
 	var/swap_flags = ~HEAVY	// What can we swap place with?
 	var/density_lying = FALSE	//Is this mob dense while lying down?
@@ -451,6 +458,8 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 /datum/species/proc/create_organs(var/mob/living/carbon/human/H) //Handles creation of mob organs.
 
 	H.mob_size = mob_size
+	H.can_pull_mobs = src.can_pull_mobs
+	H.can_pull_size = src.can_pull_size
 	H.mass = src.mass
 	H.biomass = src.biomass
 	for(var/obj/item/organ/organ in H.contents)
@@ -472,6 +481,8 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 		var/limb_path = organ_data["path"]
 		var/obj/item/organ/O = new limb_path(H)
 		O.max_damage *= limb_health_factor
+		if (O.organ_tag in locomotion_limbs)
+			O.locomotion = TRUE
 
 		//The list may contain height data
 		var/vector2/organ_height = organ_data["height"]
@@ -529,22 +540,20 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 				H.remove_aura(A)
 				qdel(A)
 
-/datum/species/proc/remove_inherent_verbs(var/mob/living/carbon/human/H)
+/datum/species/proc/remove_inherent_verbs(mob/living/carbon/human/H)
 	if(inherent_verbs)
-		for(var/verb_path in inherent_verbs)
-			H.verbs -= verb_path
+		remove_verb(H, inherent_verbs)
 
 	if (modifier_verbs)
 		for (var/hotkey in modifier_verbs)
 			var/list/L = modifier_verbs[hotkey]
 			H.remove_modclick_verb(hotkey, L[1])
 
-	H.verbs -= /mob/living/carbon/human/proc/toggle_darkvision
+	remove_verb(H, /mob/living/carbon/human/proc/toggle_darkvision)
 
-/datum/species/proc/add_inherent_verbs(var/mob/living/carbon/human/H)
+/datum/species/proc/add_inherent_verbs(mob/living/carbon/human/H)
 	if(inherent_verbs)
-		for(var/verb_path in inherent_verbs)
-			H.verbs |= verb_path
+		add_verb(H, inherent_verbs)
 
 	if (modifier_verbs)
 		for (var/hotkey in modifier_verbs)
@@ -560,7 +569,7 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 			H.add_modclick_verb(arglist(input_args))
 
 	if (darksight_tint != DARKTINT_NONE)
-		H.verbs.Add(/mob/living/carbon/human/proc/toggle_darkvision)
+		add_verb(H, /mob/living/carbon/human/proc/toggle_darkvision)
 
 
 
@@ -705,6 +714,7 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 /datum/species/proc/set_default_hair(var/mob/living/carbon/human/H)
 	H.h_style = H.species.default_h_style
 	H.f_style = H.species.default_f_style
+	H.g_style = H.species.default_g_style
 	H.update_hair()
 
 /datum/species/proc/get_blood_name()
@@ -732,7 +742,7 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 
 	if(target.w_uniform)
 		target.w_uniform.add_fingerprint(attacker)
-	var/obj/item/organ/external/affecting = target.get_organ(ran_zone(attacker.zone_sel.selecting))
+	var/obj/item/organ/external/affecting = target.get_organ(ran_zone(attacker.hud_used.zone_sel.selecting))
 
 	var/list/holding = list(target.get_active_hand() = 40, target.get_inactive_hand() = 20)
 
@@ -799,6 +809,17 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 				continue
 			ADD_SORTED(L, hairstyle, /proc/cmp_text_asc)
 			L[hairstyle] = S
+	return L
+
+/datum/species/proc/get_gradient_styles()
+	var/list/L = list()
+	L = list()
+	for(var/grad in GLOB.hair_gradient_styles_list)
+		var/datum/sprite_accessory/S = GLOB.hair_gradient_styles_list[grad]
+		if(!(get_bodytype() in S.species_allowed))
+			continue
+		ADD_SORTED(L, grad, /proc/cmp_text_asc)
+		L[grad] = S
 	return L
 
 /datum/species/proc/get_facial_hair_styles(var/gender)

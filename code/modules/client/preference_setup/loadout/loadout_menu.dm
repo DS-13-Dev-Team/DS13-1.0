@@ -41,8 +41,8 @@
 	var/hide_unavailable_gear = 0
 
 /datum/category_item/player_setup_item/loadout/load_character(var/savefile/S)
-	from_file(S["gear_list"], pref.gear_list)
-	from_file(S["gear_slot"], pref.gear_slot)
+	READ_FILE(S["gear_list"], pref.gear_list)
+	READ_FILE(S["gear_slot"], pref.gear_slot)
 	if (!pref.gear_slot)
 		pref.gear_slot = 1
 	//Rebuild the loadout
@@ -50,8 +50,8 @@
 		pref.loadout.set_prefs(pref)
 
 /datum/category_item/player_setup_item/loadout/save_character(var/savefile/S)
-	to_file(S["gear_list"], pref.gear_list)
-	to_file(S["gear_slot"], pref.gear_slot)
+	WRITE_FILE(S["gear_list"], pref.gear_list)
+	WRITE_FILE(S["gear_slot"], pref.gear_slot)
 
 /datum/category_item/player_setup_item/loadout/proc/valid_gear_choices(var/max_cost)
 	. = list()

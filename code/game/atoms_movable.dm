@@ -43,6 +43,11 @@
 		if (T)
 			LAZYREMOVE(T.movement_blocking_atoms,src)
 
+
+	if(virtual_mob && !ispath(virtual_mob))
+		qdel(virtual_mob)
+		virtual_mob = null
+
 	. = ..()
 
 
@@ -61,9 +66,7 @@
 	if (bound_overlay)
 		QDEL_NULL(bound_overlay)
 
-	if(virtual_mob && !ispath(virtual_mob))
-		qdel(virtual_mob)
-		virtual_mob = null
+
 
 /atom/movable/Bump(var/atom/A, yes)
 	if(src.throwing)

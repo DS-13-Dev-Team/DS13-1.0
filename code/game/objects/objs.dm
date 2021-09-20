@@ -29,10 +29,7 @@
 
 
 /obj/Destroy()
-	if (is_processing)
-		var/datum/controller/subsystem/processing/P = processing_subsystems_by_varname[is_processing]
-		if (P)
-			STOP_PROCESSING(P, src)
+	STOP_PROCESSING(is_processing, src)
 	.=..()
 
 /obj/item/proc/is_used_on(obj/O, mob/user)
@@ -95,7 +92,7 @@
 
 /obj/attack_ghost(mob/user)
 	ui_interact(user)
-	tg_ui_interact(user)
+	tgui_interact(user)
 	..()
 
 /obj/proc/interact(mob/user)

@@ -266,7 +266,7 @@
 		log_and_message_admins("has used rudimentary transformation on [key_name_admin(M)]. Transforming to [href_list["simplemake"]]; deletemob=[delmob]")
 
 		switch(href_list["simplemake"])
-			if("observer")			M.change_mob_type( /mob/observer/ghost , null, null, delmob )
+			if("observer")			M.change_mob_type( /mob/dead/observer/ghost , null, null, delmob )
 			if("larva")				M.change_mob_type( /mob/living/carbon/alien/larva , null, null, delmob )
 			if("nymph")				M.change_mob_type( /mob/living/carbon/alien/diona , null, null, delmob )
 			if("human")				M.change_mob_type( /mob/living/carbon/human , null, null, delmob, href_list["species"])
@@ -1004,7 +1004,7 @@
 			return alert(usr, "The game has already started.", null, null, null, null)
 		master_mode = href_list["c_mode2"]
 		log_and_message_admins("set the mode as [master_mode].")
-		to_world("<span class='notice'><b>The mode is now: [master_mode]</b></span>")
+		to_chat(world, "<span class='notice'><b>The mode is now: [master_mode]</b></span>")
 		Game() // updates the main game menu
 		world.save_mode(master_mode)
 		.(href, list("c_mode"=1))
@@ -1116,7 +1116,7 @@
 		log_admin("[key_name(usr)] has sent [key_name(M)] back to the Lobby.")
 		message_admins("[key_name(usr)] has sent [key_name(M)] back to the Lobby.")
 
-		var/mob/new_player/NP = new /mob/new_player()
+		var/mob/dead/new_player/NP = new /mob/dead/new_player()
 		NP.key = M.ckey
 		qdel(M)
 
@@ -1270,8 +1270,8 @@
 		if(!check_rights(R_SPAWN))	return
 
 		var/mob/M = locate(href_list["makeanimal"])
-		if(istype(M, /mob/new_player))
-			to_chat(usr, "This cannot be used on instances of type /mob/new_player")
+		if(istype(M, /mob/dead/new_player))
+			to_chat(usr, "This cannot be used on instances of type /mob/dead/new_player")
 			return
 
 		usr.client.cmd_admin_animalize(M)
@@ -1317,7 +1317,7 @@
 			return
 
 		if(!isobserver(usr))	C.admin_ghost()
-		var/mob/observer/ghost/G = C.mob
+		var/mob/dead/observer/ghost/G = C.mob
 		if(istype(G))
 			sleep(2)
 			G.ManualFollow(M)
@@ -1459,11 +1459,7 @@
 		log_admin("[key_name(M)] has been hit by Bluespace Artillery fired by [src.owner]")
 		message_admins("[key_name(M)] has been hit by Bluespace Artillery fired by [src.owner]")
 
-		var/obj/effect/stop/S
-		S = new /obj/effect/stop(M.loc)
-		S.victim = M
-		spawn(20)
-			qdel(S)
+
 
 		var/turf/simulated/floor/T = get_turf(M)
 		if(istype(T))
@@ -1521,7 +1517,7 @@
 		var/obj/item/fax = locate(href_list["AdminFaxView"])
 		if (istype(fax, /obj/item/weapon/paper))
 			var/obj/item/weapon/paper/P = fax
-			P.show_content(usr,1)
+			P.tgui_interact(usr)
 		else if (istype(fax, /obj/item/weapon/photo))
 			var/obj/item/weapon/photo/H = fax
 			H.show(usr)
@@ -1546,7 +1542,7 @@
 
 		if (istype(bundle.pages[page], /obj/item/weapon/paper))
 			var/obj/item/weapon/paper/P = bundle.pages[page]
-			P.show_content(src.owner, 1)
+			P.tgui_interact(src.owner, 1)
 		else if (istype(bundle.pages[page], /obj/item/weapon/photo))
 			var/obj/item/weapon/photo/H = bundle.pages[page]
 			H.show(src.owner)
@@ -1558,7 +1554,7 @@
 		var/replyorigin = href_list["replyorigin"]
 
 
-		var/obj/item/weapon/paper/admin/P = new /obj/item/weapon/paper/admin( null ) //hopefully the null loc won't cause trouble for us
+		var/obj/item/weapon/paper/admin/P = new(null) //hopefully the null loc won't cause trouble for us
 		faxreply = P
 
 		P.admindatum = src
@@ -1566,7 +1562,7 @@
 		P.destination = fax
 		P.sender = sender
 
-		P.adminbrowse()
+		P.tgui_interact(sender)
 
 	else if(href_list["jumpto"])
 		if(!check_rights(R_ADMIN))	return
@@ -2073,7 +2069,7 @@ mob/living/silicon/ai/can_centcom_reply()
 	if(client && eyeobj)
 		. += "<A HREF='?[source];adminplayerobservefollow=\ref[eyeobj]'>[prefix][short_links ? "E" : "EYE"][sufix]</A>"
 
-/mob/observer/ghost/extra_admin_link(var/source, var/prefix, var/sufix, var/short_links)
+/mob/dead/observer/ghost/extra_admin_link(var/source, var/prefix, var/sufix, var/short_links)
 	. = ..()
 	if(mind && (mind.current && !isghost(mind.current)))
 		. += "<A HREF='?[source];adminplayerobservefollow=\ref[mind.current]'>[prefix][short_links ? "B" : "BDY"][sufix]</A>"

@@ -1,12 +1,6 @@
 /*
 	The heavy pulse rifle has infinite ammo, and is cooldown based instead
 */
-#define HP_START_PROCESS	if (!processing)\
-{	START_PROCESSING(SSobj, src); processing = TRUE}
-
-#define HP_STOP_PROCESS	if (!processing)\
-{	STOP_PROCESSING(SSobj, src); processing = FALSE}
-
 #define UPDATE_DELAY	fire_delay = base_delay / (1+(heat * heat_delay_multiplier))
 
 #define HP_BASE_DELAY 1.25
@@ -74,9 +68,6 @@
 	//Firing delay is divided by 1 + (heat * this), making the gun speed up as it gets closer to max heat
 	var/heat_delay_multiplier = 2
 
-
-	var/processing = FALSE
-
 /obj/item/weapon/gun/projectile/automatic/pulse_heavy/Initialize()
 	.=..()
 	base_delay = current_firemode.settings["fire_delay"]
@@ -88,7 +79,7 @@
 
 /obj/item/weapon/gun/projectile/automatic/pulse_heavy/proc/gain_heat(var/quantity)
 	heat = clamp(heat + quantity, 0, max_heat)
-	HP_START_PROCESS
+	START_PROCESSING(SSobj, src)
 
 	//The Heavy Pulse Rifle speeds up its firing speed based on heat level, 3* speed at max heat
 	UPDATE_DELAY
@@ -112,7 +103,7 @@
 		//Ready to fire again
 
 	if (!heat)
-		HP_STOP_PROCESS
+		STOP_PROCESSING(SSobj, src)
 
 /obj/item/weapon/gun/projectile/automatic/pulse_heavy/Process()
 	var/heatloss = cooldown_per_second

@@ -1,14 +1,15 @@
 GLOBAL_REAL(config, /datum/controller/configuration)
 
+GLOBAL_DATUM(revdata, /datum/getrev)
+
 // Bomb cap!
 GLOBAL_VAR_INIT(max_explosion_range, 14)
 
 
 var/href_logfile		= null
 var/game_version		= "Baystation12"
-var/changelog_hash	  = ""
+GLOBAL_VAR_INIT(changelog_hash, "")
 var/game_year		   = (text2num(time2text(world.realtime, "YYYY")) + 544)
-var/join_motd = null
 
 var/master_mode	   = "containment" // "extended"
 var/secondary_mode	= "extended"

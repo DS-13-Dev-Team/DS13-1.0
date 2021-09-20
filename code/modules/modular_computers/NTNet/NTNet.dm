@@ -231,13 +231,13 @@ var/global/datum/ntnet/ntnet_global = new()
 		login = "[desired_name][random_id(/datum/computer_file/data/email_account/, 100, 999)]@[domain]"
 	// If even fallback login generation failed, just don't give them an email. The chance of this happening is astronomically low.
 	if(find_email_by_name(login))
-		to_chat(user, "You were not assigned an email address.")
+		to_chat(user, "<span class='infoplain'>You were not assigned an email address.</span>")
 		user.mind.store_memory("You were not assigned an email address.")
 	else
 		var/datum/computer_file/data/email_account/EA = new/datum/computer_file/data/email_account()
 		EA.password = GenerateKey()
 		EA.login = login
-		to_chat(user, "Your email account address is <b>[EA.login]</b> and the password is <b>[EA.password]</b>. This information has also been placed into your notes.")
+		to_chat(user, "<span class='infoplain'>Your email account address is <b>[EA.login]</b> and the password is <b>[EA.password]</b>. This information has also been placed into your notes.</span>")
 		if(user.mind)
 			user.mind.initial_email_login["login"] = EA.login
 			user.mind.initial_email_login["password"] = EA.password

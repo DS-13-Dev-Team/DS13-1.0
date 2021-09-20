@@ -1,6 +1,5 @@
 /obj/machinery/turret/covered
 	var/popdown_time = 1 MINUTE	//This long after our last shooting or target visibility, we will retract
-	var/popdown_timer
 
 	var/raised = 0			//if the turret cover is "open" and the turret is raised
 	var/raising= 0			//if the turret is currently opening or closing its cover
@@ -37,8 +36,7 @@
 		set_popdown_timer()
 
 /obj/machinery/turret/covered/proc/set_popdown_timer()
-	deltimer(popdown_timer)
-	popdown_timer = addtimer(CALLBACK(src, /obj/machinery/turret/covered/proc/pop_down), popdown_time, TIMER_STOPPABLE)
+	addtimer(CALLBACK(src, /obj/machinery/turret/covered/proc/pop_down), popdown_time, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 
 
 /obj/machinery/turret/covered/proc/pop_up()	//pops the turret up

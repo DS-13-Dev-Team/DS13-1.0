@@ -38,7 +38,7 @@
 	disable()
 
 /obj/item/device/suit_sensor_jammer/attack_self(var/mob/user)
-	tg_ui_interact(user)
+	tgui_interact(user)
 
 /obj/item/device/suit_sensor_jammer/get_cell()
 	return bcell
@@ -118,7 +118,7 @@ obj/item/device/suit_sensor_jammer/ui_status(mob/user, datum/ui_state/state)
 		return UI_CLOSE
 	return ..()
 
-obj/item/device/suit_sensor_jammer/tg_ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = 0, datum/tgui/master_ui = null, datum/ui_state/state = tg_default_state)
+obj/item/device/suit_sensor_jammer/tgui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = 0, datum/tgui/master_ui = null, datum/ui_state/state = GLOB.tgui_default_state)
 	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
 	if(!ui)
 		ui = new(user, src, ui_key, "suit_sensor_jammer", "Sensor Jammer", 350, 610, master_ui, state)

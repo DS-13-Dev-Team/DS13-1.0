@@ -134,18 +134,18 @@
 		var/organ = pick(list(BP_R_ARM,BP_L_ARM,BP_R_LEG,BP_L_LEG))
 		var/obj/item/organ/external/E = mob.organs_by_name[organ]
 		if (!(E.status & ORGAN_DEAD))
-			E.status |= ORGAN_DEAD
+			E.set_status(ORGAN_DEAD, TRUE)
 			to_chat(mob, "<span class='notice'>You can't feel your [E.name] anymore...</span>")
 			for (var/obj/item/organ/external/C in E.children)
-				C.status |= ORGAN_DEAD
+				C.set_status(ORGAN_DEAD, TRUE)
 		mob.update_body(1)
 		mob.adjustToxLoss(15*multiplier)
 
 	deactivate(var/mob/living/carbon/human/mob,var/multiplier)
 		for (var/obj/item/organ/external/E in mob.organs)
-			E.status &= ~ORGAN_DEAD
+			E.set_status(ORGAN_DEAD, FALSE)
 			for (var/obj/item/organ/external/C in E.children)
-				C.status &= ~ORGAN_DEAD
+				C.set_status(ORGAN_DEAD, FALSE)
 		mob.update_body(1)
 
 /datum/disease2/effect/immortal

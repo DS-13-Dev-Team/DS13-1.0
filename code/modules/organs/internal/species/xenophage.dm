@@ -11,15 +11,15 @@
 	desc = "It smells like an accident in a chemical factory."
 	var/associated_power = /mob/living/carbon/human/proc/resin
 
-/obj/item/organ/internal/xeno/replaced(var/mob/living/carbon/human/target,var/obj/item/organ/external/affected)
+/obj/item/organ/internal/xeno/replaced(mob/living/carbon/human/target, obj/item/organ/external/affected)
 	. = ..()
 	if(ishuman(owner) && associated_power)
-		owner.verbs |= associated_power
+		add_verb(owner, associated_power)
 
-/obj/item/organ/internal/xeno/removed(var/mob/living/user)
+/obj/item/organ/internal/xeno/removed(mob/living/user)
 	. = ..()
 	if(ishuman(owner) && associated_power && !(associated_power in owner.species.inherent_verbs))
-		owner.verbs -= associated_power
+		remove_verb(owner, associated_power)
 
 /obj/item/organ/internal/xeno/eggsac
 	name = "egg sac"

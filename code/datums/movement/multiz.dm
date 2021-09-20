@@ -1,6 +1,6 @@
 /datum/movement_handler/mob/multiz/DoMove(direction, mob/mover, is_external)
 	if(!(direction & (UP|DOWN)))
-		return MOVEMENT_PROCEED
+		return MOVEMENT_REMOVE
 
 	var/turf/destination = (direction == UP) ? GetAbove(mob) : GetBelow(mob)
 	if(!destination)

@@ -154,7 +154,7 @@
 
 /mob/living/silicon/robot/Initialize()
 	. = ..()
-	AddMovementHandler(/datum/movement_handler/robot/use_power, /datum/movement_handler/mob/space)
+	AddMovementHandler(/datum/movement_handler/robot/use_power, /datum/movement_handler/mob/zero_gravity)
 
 /mob/living/silicon/robot/proc/recalculate_synth_capacities()
 	if(!module || !module.synths)
@@ -252,7 +252,7 @@
 	// Clear hands and module icon.
 	uneq_all()
 	modtype = initial(modtype)
-	hands.icon_state = initial(hands.icon_state)
+	hud_used.hands.icon_state = initial(hud_used.hands.icon_state)
 
 	// If the robot had a module and this wasn't an uncertified change, let the AI know.
 	if (module)
@@ -289,7 +289,7 @@
 	var/module_type = robot_modules[modtype]
 	new module_type(src)
 
-	hands.icon_state = lowertext(modtype)
+	hud_used.hands.icon_state = lowertext(modtype)
 	feedback_inc("cyborg_[lowertext(modtype)]",1)
 	updatename()
 	recalculate_synth_capacities()
@@ -459,16 +459,6 @@
 		stat(null, text("No Cell Inserted!"))
 
 
-// update the status screen display
-/mob/living/silicon/robot/Stat()
-	. = ..()
-	if (statpanel("Status"))
-		show_cell_power()
-		show_jetpack_pressure()
-		stat(null, text("Lights: [lights_on ? "ON" : "OFF"]"))
-		if(module)
-			for(var/datum/matter_synth/ms in module.synths)
-				stat("[ms.name]: [ms.energy]/[ms.max_energy_multiplied]")
 
 /mob/living/silicon/robot/restrained()
 	return 0
@@ -962,7 +952,7 @@
 	if(R)
 		R.UnlinkSelf()
 		to_chat(R, "Buffers flushed and reset. Camera system shutdown.  All systems operational.")
-		src.verbs -= /mob/living/silicon/robot/proc/ResetSecurityCodes
+		remove_verb(R, /mob/living/silicon/robot/proc/ResetSecurityCodes)
 
 /mob/living/silicon/robot/proc/SetLockdown(var/state = 1)
 	// They stay locked down if their wire is cut.
@@ -1020,10 +1010,10 @@
 	toggle_sensor_mode()
 
 /mob/living/silicon/robot/proc/add_robot_verbs()
-	src.verbs |= robot_verbs_default
+	add_verb(src, robot_verbs_default)
 
 /mob/living/silicon/robot/proc/remove_robot_verbs()
-	src.verbs -= robot_verbs_default
+	remove_verb(src, robot_verbs_default)
 
 // Uses power from cyborg's cell. Returns 1 on success or 0 on failure.
 // Properly converts using CELLRATE now! Amount is in Joules.

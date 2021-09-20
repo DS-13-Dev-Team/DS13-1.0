@@ -325,7 +325,7 @@
 	var/averageRunTime = round(getAverageRunTime(), 0.1)/10
 	var/lastRunTime = round(getLastRunTime(), 0.1)/10
 	var/highestRunTime = round(getHighestRunTime(), 0.1)/10
-	stat("[name]", "T#[getTicks()] | AR [averageRunTime] | LR [lastRunTime] | HR [highestRunTime] | D [cpu_defer_count]")
+	return "[name] T#[getTicks()] | AR [averageRunTime] | LR [lastRunTime] | HR [highestRunTime] | D [cpu_defer_count] "
 
 /datum/controller/process/proc/catchException(var/exception/e, var/thrower)
 	if(istype(e)) // Real runtimes go to the real error handler
@@ -347,9 +347,9 @@
 		if(istype(thrower, /atom))
 			var/atom/A = thrower
 			ptext += " ([A]) ([A.x],[A.y],[A.z])"
-	log_to_dd("\[[time_stamp()]\] Process [name] caught exception[ptext]: [etext]")
+	log_world("\[[time_stamp()]\] Process [name] caught exception[ptext]: [etext]")
 	if(exceptions[eid] >= 10)
-		log_to_dd("This exception will now be ignored for ten minutes.")
+		log_world("This exception will now be ignored for ten minutes.")
 		spawn(6000)
 			exceptions[eid] = 0
 

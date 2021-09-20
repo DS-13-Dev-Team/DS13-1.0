@@ -1,31 +1,37 @@
-//This Subsystem just calls send_assets at the end of the subsystem load order
-	//This function caches icons from various things and sends them to connected clients
-SUBSYSTEM_DEF(asset)
-	name = "Asset"
+SUBSYSTEM_DEF(assets)
+	name = "Assets"
 	init_order = SS_INIT_ASSET
 	flags = SS_NO_FIRE
+	var/list/cache = list()
+	var/list/preload = list()
+	var/datum/asset_transport/transport = new()
 
-/datum/controller/subsystem/asset/Initialize(timeofday)
-	log_world("INITIALIZING ASSET SUBSYSTEM")
-	send_assets()
+/datum/controller/subsystem/assets/OnConfigLoad()
+	var/newtransporttype = /datum/asset_transport
+	switch (CONFIG_GET(string/asset_transport))
+		if ("webroot")
+			newtransporttype = /datum/asset_transport/webroot
+
+	if (newtransporttype == transport.type)
+		return
+
+	var/datum/asset_transport/newtransport = new newtransporttype ()
+	if (newtransport.validate_config())
+		transport = newtransport
+	transport.Load()
 
 
 
-/proc/send_assets()
-	var/list/datum/asset/trivialAssets = list()
-	for(var/type in typesof(/datum/asset) - list(/datum/asset, /datum/asset/simple))
-		var/datum/asset/A = new type()
-		if(A.isTrivial)
-			trivialAssets += A
-		else
-			A.register()
-	for(var/datum/asset/A in trivialAssets)
-		A.register()
+/datum/controller/subsystem/assets/Initialize(timeofday)
+	for(var/type in typesof(/datum/asset))
+		var/datum/asset/A = type
+		if (type != initial(A._abstract))
+			get_asset_datum(type)
 
-	for(var/client/C in GLOB.clients)
-		winset(C, null, "mainwindow.title='[CONFIG_GET(string/title)] - [GLOB.using_map.full_name]'")
-		// Doing this to a client too soon after they've connected can cause issues, also the proc we call sleeps.
-		spawn(10)
-			getFilesSlow(C, asset_cache.cache, FALSE)
+	transport.Initialize(cache)
 
-	return TRUE
+	..()
+
+/datum/controller/subsystem/assets/Recover()
+	cache = SSassets.cache
+	preload = SSassets.preload

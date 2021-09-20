@@ -10,7 +10,7 @@ var/list/admin_datums = list()
 	var/rights       = 0
 	var/stealthy_    = STEALTH_OFF
 
-	var/weakref/marked_datum_weak
+	var/datum/weakref/marked_datum_weak
 
 	var/admincaster_screen = 0	//See newscaster.dm under machinery for a full description
 	var/datum/feed_message/admincaster_feed_message = new /datum/feed_message   //These two will act as holders.
@@ -24,7 +24,7 @@ var/list/admin_datums = list()
 
 /datum/admins/New(initial_rank = "Temporary Admin", initial_rights = 0, ckey)
 	if(!ckey)
-		error("Admin datum created without a ckey argument. Datum has been deleted")
+		log_debug("Admin datum created without a ckey argument. Datum has been deleted")
 		qdel(src)
 		return
 	admincaster_signature = "[GLOB.using_map.company_name] Officer #[rand(0,9)][rand(0,9)][rand(0,9)]"
@@ -98,20 +98,20 @@ NOTE: It checks usr by default. Supply the "user" argument if you wish to check 
 		to_chat(usr, "<font color='red'>Error: Cannot proceed. They have more or equal rights to us.</font>")
 	return 0
 
+/proc/IsAdminGhost(mob/user)
+	if(!isobserver(user))
+		return FALSE
+	if(!user.client)
+		return FALSE
+	if(!check_rights(R_ADMIN, user.client)) // Are they allowed?
+		return FALSE
+	return TRUE
+
 /client/proc/deadmin()
 	if(holder)
 		holder.disassociate()
 		//qdel(holder)
 	return 1
-
-/mob/Stat()
-	. = ..()
-	if(!client)
-		return
-
-	var/stealth_status = client.is_stealthed()
-	if(stealth_status && statpanel("Status"))
-		stat("Stealth", "Engaged [client.holder.stealthy_ == STEALTH_AUTO ? "(Auto)" : "(Manual)"]")
 
 /client/proc/is_stealthed()
 	if(!holder)

@@ -65,7 +65,7 @@
 	if(!affected || affected.how_open() < 2)
 		return
 	for(var/obj/item/organ/internal/I in affected.internal_organs)
-		if(I && I.damage > 0 && !BP_IS_ROBOTIC(I) && (!I.status & ORGAN_DEAD || I.can_recover()) && (I.surface_accessible || affected.how_open() >= (affected.encased ? 3 : 2)))
+		if(I && I.damage > 0 && !BP_IS_ROBOTIC(I) && (!(I.status & ORGAN_DEAD) || I.can_recover()) && (I.surface_accessible || affected.how_open() >= (affected.encased ? 3 : 2)))
 			user.visible_message("[user] starts treating damage to [target]'s [I.name] with [tool_name].", \
 			"You start treating damage to [target]'s [I.name] with [tool_name]." )
 
@@ -291,7 +291,7 @@
 		return SURGERY_FAILURE
 
 	if(!target.species)
-		CRASH("Target ([target]) of surgery [type] has no species!")
+		crash_with("Target ([target]) of surgery [type] has no species!")
 		return SURGERY_FAILURE
 
 	var/o_is = (O.gender == PLURAL) ? "are" : "is"
@@ -331,7 +331,7 @@
 		affected.implants |= O //move the organ into the patient. The organ is properly reattached in the next step
 		if(!(O.status & ORGAN_CUT_AWAY))
 			log_debug("[user] ([user.ckey]) replaced organ [O], which didn't have ORGAN_CUT_AWAY set, in [target] ([target.ckey])")
-			O.status |= ORGAN_CUT_AWAY
+			O.set_status(ORGAN_CUT_AWAY, TRUE)
 
 		playsound(target.loc, 'sound/effects/squelch1.ogg', 15, 1)
 
@@ -402,7 +402,7 @@
 	var/obj/item/organ/I = target.op_stage.current_organ
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	if(istype(I) && I.parent_organ == target_zone && affected && (I in affected.implants))
-		I.status &= ~ORGAN_CUT_AWAY //apply fixovein
+		I.set_status(ORGAN_CUT_AWAY, FALSE) //apply fixovein
 		affected.implants -= I
 		I.replaced(target, affected)
 
@@ -488,7 +488,7 @@
 	if (trans > 0)
 
 		if(rejuvenate)
-			affected.status &= ~ORGAN_DEAD
+			affected.set_status(ORGAN_DEAD, FALSE)
 			affected.owner.update_body(1)
 
 		user.visible_message("<span class='notice'>[user] applies [trans] unit\s of the solution to affected tissue in [target]'s [affected.name]</span>.", \

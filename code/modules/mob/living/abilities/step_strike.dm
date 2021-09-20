@@ -60,7 +60,7 @@
 
 /datum/extension/step_strike/proc/start()
 	started_at	=	world.time
-	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/step_strike/proc/stop), duration)
+	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/step_strike/proc/stop), duration, TIMER_STOPPABLE)
 
 	//First of all, lets pick a target location.
 	//This must be a tile adjacent to the target mob, which is within distance tiles of the user
@@ -76,6 +76,17 @@
 			candidates.Remove(get_turf(user))
 
 		target_loc = pick(candidates)
+
+		var/sfat = TRUE //search_for_avalaibe_turfs
+		while(sfat)
+			if(!check_trajectory(target_loc, user, user.pass_flags|PASS_FLAG_TABLE|PASS_FLAG_NOMOB))
+				if(!candidates.len)
+					return //An obstacle prevents you from step striking. There is no reason to check the closest possible place to teleport since step strike can be used only if target is 2 tiles away or closer
+				else
+					candidates -= target_loc
+					target_loc = pick(candidates)
+			else
+				sfat = FALSE
 
 		animate_movement(user, target_loc, 6, client_lag = 0.4)
 		user.face_atom(target)
@@ -93,7 +104,7 @@
 /datum/extension/step_strike/proc/stop()
 	deltimer(ongoing_timer)
 	stopped_at = world.time
-	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/step_strike/proc/finish_cooldown), cooldown)
+	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/step_strike/proc/finish_cooldown), cooldown, TIMER_STOPPABLE)
 
 
 /datum/extension/step_strike/proc/finish_cooldown()

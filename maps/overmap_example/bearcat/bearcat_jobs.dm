@@ -27,7 +27,7 @@
 	if(B)
 		B.SetName(GLOB.using_map.station_name)
 	command_announcement.Announce("Attention all hands on [GLOB.using_map.station_name]! Thank you for your attention.", "Ship re-christened")
-	verbs -= /client/proc/rename_ship
+	remove_verb(src, /client/proc/rename_ship)
 
 /client/proc/rename_company()
 	set name = "Rename Company"
@@ -42,7 +42,7 @@
 		if(company_s)
 			GLOB.using_map.company_short = company_s
 		command_announcement.Announce("Congratulations to all employees of [capitalize(GLOB.using_map.company_name)] on the new name. Their rebranding has changed the [GLOB.using_map.company_short] market value by [0.01*rand(-10,10)]%.", "Company name change approved")
-	verbs -= /client/proc/rename_company
+	remove_verb(src, /client/proc/rename_company)
 
 /datum/job/captain/get_access()
 	return get_all_station_access()

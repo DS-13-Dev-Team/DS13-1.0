@@ -50,7 +50,7 @@
 /mob/proc/looc_prefix()
 	return eyeobj ? "Body" : ""
 
-/mob/observer/eye/looc_prefix()
+/mob/dead/observer/eye/looc_prefix()
 	return "Eye"
 
 /mob/proc/get_looc_mob()

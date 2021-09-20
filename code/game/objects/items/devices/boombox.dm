@@ -7,7 +7,7 @@
 	force = 5
 	w_class = ITEM_SIZE_LARGE
 	origin_tech = list(TECH_MAGNET = 2, TECH_COMBAT = 1)
-	var/playing = 0
+	var/active = 0
 	var/track_num = 1
 	var/volume = 40
 	var/frequency = 1
@@ -28,61 +28,84 @@
 	. = ..()
 
 /obj/item/device/boombox/update_icon()
-	icon_state = playing ? "on" : "off"
+	icon_state = active ? "on" : "off"
 
-/obj/item/device/boombox/interact(mob/user)
-	tg_ui_interact(user)
-
-/obj/item/device/boombox/tg_ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = 0, datum/tgui/master_ui = null, datum/ui_state/state = tg_default_state)
-	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
+/obj/item/device/boombox/tgui_interact(mob/user, datum/tgui/ui = null)
+	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, ui_key, "jukebox", "Your Media Library", 340, 440, master_ui, state)
+		ui = new(user, src, "jukebox", "Your Media Library")
 		ui.open()
 
 /obj/item/device/boombox/ui_data()
-	var/list/boom_tracks = new
-	for(var/datum/track/T in tracks)
-		boom_tracks.Add(T.title)
-
-	var/list/data = list(
-		"current_track" = current_track != null ? current_track.title : "No track selected",
-		"playing" = playing,
-		"tracks" = boom_tracks,
-		"volume" = volume
-	)
+	var/list/data = list()
+	data["active"] = active
+	data["songs"] = list()
+	for(var/datum/track/S in tracks)
+		var/list/track_data = list(
+			name = S.title
+		)
+		data["songs"] += list(track_data)
+	data["track_selected"] = null
+	data["track_length"] = null
+	data["track_beat"] = null
+	if(current_track)
+		data["track_selected"] = current_track.title
+	data["volume"] = volume
 
 	return data
 
 /obj/item/device/boombox/ui_act(action, params)
-	if(..())
-		return TRUE
+	. = ..()
+	if(.)
+		return
 
 	switch(action)
-		if("change_track")
-			for(var/datum/track/T in tracks)
-				if(T.title == params["title"])
-					current_track = T
+		if("toggle")
+			if(QDELETED(src))
+				return
+			if(!active)
+				if(!current_track)
+					to_chat(usr, "No track selected.")
+				else
 					StartPlaying()
-					break
-			. = TRUE
-		if("stop")
-			StopPlaying()
-			. = TRUE
-		if("play")
-			if(!current_track)
-				to_chat(usr, "No track selected.")
+				active = TRUE
+				return TRUE
 			else
-				StartPlaying()
-			. = TRUE
-		if("volume")
-			AdjustVolume(text2num(params["level"]))
-			. = TRUE
+				active = FALSE
+				StopPlaying()
+				return TRUE
+		if("select_track")
+			if(active)
+				to_chat(usr, "<span class='warning'>Error: You cannot change the song until the current one is over.</span>")
+				return
+			var/list/available = list()
+			for(var/datum/track/S in tracks)
+				available[S.title] = S
+			var/selected = params["track"]
+			if(QDELETED(src) || !selected || !istype(available[selected], /datum/track))
+				return
+			current_track = available[selected]
+			return TRUE
+		if("set_volume")
+			var/new_volume = params["volume"]
+			if(new_volume  == "reset")
+				AdjustVolume(initial(volume))
+				return TRUE
+			else if(new_volume == "min")
+				AdjustVolume(0)
+				return TRUE
+			else if(new_volume == "max")
+				AdjustVolume(100)
+				return TRUE
+			else if(text2num(new_volume) != null)
+				AdjustVolume(text2num(new_volume))
+				return TRUE
 
 /obj/item/device/boombox/attack_self(var/mob/user)
-	interact(user)
+	tgui_interact(user)
 
 /obj/item/device/boombox/proc/StopPlaying()
-	playing = 0
+	active = 0
 	update_icon()
 	QDEL_NULL(sound_token)
 
@@ -95,7 +118,7 @@
 	// Jukeboxes cheat massively and actually don't share id. This is only done because it's music rather than ambient noise.
 	sound_token = GLOB.sound_player.PlayLoopingSound(src, sound_id, current_track.GetTrack(), volume = volume, range = 7, falloff = 3, prefer_mute = TRUE)
 
-	playing = 1
+	active = 1
 	update_icon()
 
 /obj/item/device/boombox/proc/AdjustVolume(var/new_volume)

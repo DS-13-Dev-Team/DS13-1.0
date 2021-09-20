@@ -9,6 +9,46 @@
  * Misc
  */
 
+/// Passed into BINARY_INSERT to compare keys
+#define COMPARE_KEY __BIN_LIST[__BIN_MID]
+/// Passed into BINARY_INSERT to compare values
+#define COMPARE_VALUE __BIN_LIST[__BIN_LIST[__BIN_MID]]
+
+/****
+	* Binary search sorted insert
+	* INPUT: Object to be inserted
+	* LIST: List to insert object into
+	* TYPECONT: The typepath of the contents of the list
+	* COMPARE: The object to compare against, usualy the same as INPUT
+	* COMPARISON: The variable on the objects to compare
+	* COMPTYPE: How should the values be compared? Either COMPARE_KEY or COMPARE_VALUE.
+	*/
+#define BINARY_INSERT(INPUT, LIST, TYPECONT, COMPARE, COMPARISON, COMPTYPE) \
+	do {\
+		var/list/__BIN_LIST = LIST;\
+		var/__BIN_CTTL = length(__BIN_LIST);\
+		if(!__BIN_CTTL) {\
+			__BIN_LIST += INPUT;\
+		} else {\
+			var/__BIN_LEFT = 1;\
+			var/__BIN_RIGHT = __BIN_CTTL;\
+			var/__BIN_MID = (__BIN_LEFT + __BIN_RIGHT) >> 1;\
+			var ##TYPECONT/__BIN_ITEM;\
+			while(__BIN_LEFT < __BIN_RIGHT) {\
+				__BIN_ITEM = COMPTYPE;\
+				if(__BIN_ITEM.##COMPARISON <= COMPARE.##COMPARISON) {\
+					__BIN_LEFT = __BIN_MID + 1;\
+				} else {\
+					__BIN_RIGHT = __BIN_MID;\
+				};\
+				__BIN_MID = (__BIN_LEFT + __BIN_RIGHT) >> 1;\
+			};\
+			__BIN_ITEM = COMPTYPE;\
+			__BIN_MID = __BIN_ITEM.##COMPARISON > COMPARE.##COMPARISON ? __BIN_MID : __BIN_MID + 1;\
+			__BIN_LIST.Insert(__BIN_MID, INPUT);\
+		};\
+	} while(FALSE)
+
 //Returns a list in plain english as a string
 /proc/english_list(var/list/input, nothing_text = "nothing", and_text = " and ", comma_text = ", ", final_comma_text = "," )
 	if (!input)
@@ -363,12 +403,9 @@ Checks if a list has the same entries and values as an element of big.
 		return (result + L.Copy(Li, 0))
 	return (result + R.Copy(Ri, 0))
 
-//Mergesort: any value in a list
-/proc/sortList(var/list/L)
-	if(L.len < 2)
-		return L
-	var/middle = L.len / 2 + 1 // Copy is first,second-1
-	return mergeLists(sortList(L.Copy(0,middle)), sortList(L.Copy(middle))) //second parameter null = to end of list
+//any value in a list
+/proc/sortList(list/L, cmp=/proc/cmp_text_asc)
+	return sortTim(L.Copy(), cmp)
 
 //Mergsorge: uses sortList() but uses the var's name specifically. This should probably be using mergeAtom() instead
 /proc/sortNames(var/list/L)
@@ -861,7 +898,19 @@ proc/dd_sortedTextList(list/incoming)
 /*
 	Outputs the entire contents of an associative list to a string including sublists. Recursive
 */
-/proc/dump_list(var/list/L, var/depth = 0, var/assoc = TRUE)
+/proc/dump_list(var/list/L, var/depth = 0, var/assoc = null)
+
+	//Lets figure out if it is associative
+	if (isnull(assoc) && LAZYLEN(L))
+		var/key = L[1]
+		//Assoc keys cant be numerical
+		if (isnum(key))
+			assoc = FALSE
+		else if (!isnull(L[key]))
+			assoc = TRUE
+		else
+			assoc = FALSE
+
 	var/output = ""
 	var/depthstring = ""
 

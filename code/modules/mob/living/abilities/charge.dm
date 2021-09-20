@@ -89,6 +89,9 @@
 	var/last_target_type
 	var/do_winddown_animation = TRUE	//If false, we will not animate back to normal. Only set it false when something else will handle it
 
+	var/mobile_windup	=	FALSE	//If true, we'll wait until the charge actually begins before disabling the user's inputs
+	//This allows them to keep walking around during the delay/windup phase
+
 
 /datum/extension/charge/New(var/datum/holder, var/atom/_target, var/_speed , var/_lifespan, var/_maxrange, var/_homing, var/_inertia = FALSE, var/_power, var/_cooldown, var/_delay)
 	.=..()
@@ -113,8 +116,9 @@
 
 	if (isliving(user))
 		L = user
-		L.face_atom(target)
-		L.disable(max_lifespan())
+		if (!mobile_windup)
+			L.face_atom(target)
+			L.disable(max_lifespan())
 		starting_locomotion_limbs = length(L.get_locomotion_limbs(FALSE))
 
 	if (_speed)
@@ -180,6 +184,12 @@
 		H.step_interval = src.step_interval
 	if (start_timer)
 		deltimer(start_timer)
+
+	if (mobile_windup)
+		if (isliving(user))
+			L = user
+			L.face_atom(target)
+			L.disable(max_lifespan())
 
 	if (!check_limbs(TRUE))
 		stop()
@@ -317,7 +327,8 @@
 				spawn(1)
 					if ((obstacle && !QDELETED(obstacle)) && !obstacle.CanPass(user, get_turf(obstacle), 1) && obstacle.loc == obstacle_oldloc)
 						stop_obstacle(obstacle)
-						return FALSE
+
+				return FALSE
 
 	//Return true if we have not stopped, and will keep going
 	return TRUE
@@ -478,8 +489,8 @@
 	var/vector2/direction = Vector2.DirectionBetween(oldloc, newloc)
 	direction *= blur_filter_strength
 
-	blur.x = direction.x
-	blur.y = direction.y
+	blur:x = direction.x
+	blur:y = direction.y
 
 
 

@@ -6,7 +6,8 @@
 /datum/unit_test/cargo_crates_containment_test/start_test()
 	var/bad_tests = 0
 
-	for(var/decl/hierarchy/supply_pack/supply_pack in cargo_supply_packs)
+	for(var/i in cargo_supply_packs)
+		var/decl/hierarchy/supply_pack/supply_pack = i
 		if(!ispath(supply_pack.containertype, /obj/structure/closet))
 			continue
 

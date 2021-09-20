@@ -14,13 +14,23 @@ var/list/cached_space = list()
 	y = ny
 	map_z += nz
 	map_sectors["[nz]"] = src
-	testing("Temporary sector at [x],[y] was created, corresponding zlevel is [nz].")
+#ifdef TESTING
+	var/message = "Temporary sector at [x],[y] was created, corresponding zlevel is [nz]."
+	testing(message)
+#endif
 
-/obj/effect/overmap/sector/temporary/Destroy()
+/obj/effect/overmap/sector/temporary/Destroy(force = FALSE)
 	map_sectors["[map_z]"] = null
-	testing("Temporary sector at [x],[y] was deleted.")
+#ifdef TESTING
+	var/message = "Temporary sector at [x],[y] was deleted."
+	testing(message)
+#endif
+	if(!force)
+		return
 
-/obj/effect/overmap/sector/temporary/proc/can_die(var/mob/observer)
+	return ..()
+
+/obj/effect/overmap/sector/temporary/proc/can_die(var/mob/dead/observer)
 	testing("Checking if sector at [map_z[1]] can die.")
 	for(var/mob/M in GLOB.player_list)
 		if(M != observer && (M.z in map_z))

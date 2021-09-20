@@ -19,13 +19,6 @@
 	var/turf/T = get_turf(src)
 	return T ? "[T.x]:[T.y]:[T.z]" : "N/A"
 
-/mob/living/carbon/human/Stat()
-	. = ..()
-	if(statpanel("Status"))
-		var/obj/item/device/gps/L = locate() in src
-		if(L)
-			stat("Coordinates:", "[L.get_coordinates()]")
-
 /obj/item/device/measuring_tape
 	name = "measuring tape"
 	desc = "A coiled metallic tape used to check dimensions and lengths."
@@ -254,7 +247,7 @@
 			var/check_dist = get_dist(src,R)
 			if(check_dist < cur_dist)
 				cur_dist = check_dist
-				. = weakref(R)
+				. = WEAKREF(R)
 
 /obj/item/weapon/pinpointer/radio/attack_self(var/mob/user as mob)
 	interact(user)

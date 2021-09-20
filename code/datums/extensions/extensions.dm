@@ -7,7 +7,7 @@
 
 /datum/extension/New(var/datum/holder)
 	if(!istype(holder, expected_type))
-		CRASH("Invalid holder type. Expected [expected_type], was [holder.type]")
+		CRASH("Invalid holder type. [src.name] [src.type] Expected [expected_type], was [holder.type]")
 	src.holder = holder
 
 	//This extension wants to apply statmods to its holder!
@@ -23,8 +23,12 @@
 	holder = null
 	. = ..()
 
+
+
 /datum
 	var/list/datum/extension/extensions
+
+
 
 /datum/Destroy()
 	if(extensions)
@@ -93,6 +97,22 @@
 			break
 	if(!. || !istype(., /datum/extension))
 		return null
+
+
+/*
+	Gets ALL matching extensions using istype on everything in a list of types
+*/
+/proc/get_extensions_of_types(var/datum/source, var/list/search_types)
+	if(!source.extensions)
+		return
+	var/list/found = list()
+	for (var/typepath in source.extensions)
+		var/datum/extension/E = source.extensions[typepath]
+		for (var/match in search_types)
+			if (istype(E, match))
+				found+=E
+				break	//We only need to match it against any single one of the types in list, so break this subloop
+	return found
 
 
 //Fast way to check if it has an extension, also doesn't trigger instantiation of lazy loaded extensions

@@ -175,7 +175,7 @@
 		to_chat(src, "Only Hosts can use this verb.")
 		return
 
-	if (istype(mob, /mob/new_player))
+	if (istype(mob, /mob/dead/new_player))
 		to_chat(src, "This cannot be used from the lobby, please observe first.")
 		return
 

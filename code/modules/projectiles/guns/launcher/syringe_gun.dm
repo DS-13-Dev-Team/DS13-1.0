@@ -70,7 +70,7 @@
 	slot_flags = SLOT_BELT
 
 	fire_sound = 'sound/weapons/empty.ogg'
-	fire_sound_text = "a metallic thunk"
+	fire_sound_text = "a metallic gravity_shock"
 	screen_shake = 0
 	release_force = 10
 	throw_distance = 10

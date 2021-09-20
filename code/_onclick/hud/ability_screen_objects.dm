@@ -29,7 +29,6 @@
 
 	// After that, remove ourselves from the mob seeing us, so we can qdel cleanly.
 	if(my_mob)
-		my_mob.ability_master = null
 		if(my_mob.client && my_mob.client.screen)
 			my_mob.client.screen -= src
 		my_mob = null
@@ -158,13 +157,10 @@
 
 /mob/Login()
 	..()
-	if(ability_master)
-		ability_master.update_abilities(1, src)
-		ability_master.toggle_open(1)
+	if(hud_used?.ability_master)
+		hud_used.ability_master.update_abilities(1, src)
+		hud_used.ability_master.toggle_open(1)
 
-/mob/Initialize()
-	. = ..()
-	ability_master = new /obj/screen/movable/ability_master(null,src)
 
 ///////////ACTUAL ABILITIES////////////
 //This is what you click to do things//
@@ -202,7 +198,7 @@
 
 // Makes the ability be triggered.  The subclasses of this are responsible for carrying it out in whatever way it needs to.
 /obj/screen/ability/proc/activate()
-	to_world("[src] had activate() called.")
+	to_chat(world, "[src] had activate() called.")
 	return
 
 // This checks if the ability can be used.
@@ -217,11 +213,11 @@
 	if(isnull(slot) || !isnum(slot))
 		to_chat(src,"<span class='warning'>.activate_ability requires a number as input, corrisponding to the slot you wish to use.</span>")
 		return // Bad input.
-	if(!mob.ability_master)
+	if(!mob.hud_used.ability_master)
 		return // No abilities.
-	if(slot > mob.ability_master.ability_objects.len || slot <= 0)
+	if(slot > mob.hud_used.ability_master.ability_objects.len || slot <= 0)
 		return // Out of bounds.
-	var/obj/screen/ability/A = mob.ability_master.ability_objects[slot]
+	var/obj/screen/ability/A = mob.hud_used.ability_master.ability_objects[slot]
 	A.activate()
 
 //////////Verb Abilities//////////
@@ -353,8 +349,8 @@
 
 /mob/Life()
 	..()
-	if(ability_master)
-		ability_master.update_spells(0)
+	if(hud_used?.ability_master)
+		hud_used.ability_master.update_spells(0)
 
 /obj/screen/movable/ability_master/proc/update_spells(var/forced = 0)
 	for(var/obj/screen/ability/spell/spell in spell_objects)

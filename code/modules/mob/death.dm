@@ -69,6 +69,8 @@
 	drop_r_hand()
 	drop_l_hand()
 
+	AddMovementHandler(/datum/movement_handler/mob/death)
+
 	//TODO:  Change death state to health_dead for all these icon files.  This is a stop gap.
 
 

@@ -44,7 +44,7 @@
 
 
 	if(!note)
-		error("Hardware without description: [C]")
+		log_debug("Hardware without description: [C]")
 		return
 
 	var/confirmation = alert("[note] - Is this what you want?", "Hardware selection", "Yes", "No")
@@ -66,9 +66,9 @@
 	set desc = "Opens help window with overview of available hardware, software and other important information."
 	var/mob/living/silicon/ai/user = usr
 
-	var/help = file2text('ingame_manuals/malf_ai.html')
+	var/help = file2text('html/browser/malf_ai.html')
 	if(!help)
-		help = "Error loading help (file /ingame_manuals/malf_ai.html is probably missing). Please report this to server administration staff."
+		help = "Error loading help (file /html/browser/malf_ai.html is probably missing). Please report this to server administration staff."
 
 	user << browse(help, "window=malf_ai_help;size=600x500")
 

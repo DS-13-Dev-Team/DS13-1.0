@@ -109,7 +109,7 @@
 	uncurl()
 	//If this was a forced curl, we'll start a cooldown timer
 	if (automatic)
-		force_cooldown_timer = addtimer(CALLBACK(src, /datum/extension/curl/proc/finish_cooldown), forced_cooldown)
+		force_cooldown_timer = addtimer(CALLBACK(src, /datum/extension/curl/proc/finish_cooldown), forced_cooldown, TIMER_STOPPABLE)
 	else
 		//Otherwise, just immediately remove the extension
 		finish_cooldown()

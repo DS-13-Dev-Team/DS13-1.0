@@ -106,7 +106,7 @@
 	var/target_zone = BP_CHEST
 	if (isliving(user))
 		L = user
-		target_zone = L.zone_sel.selecting
+		target_zone = L.hud_used.zone_sel.selecting
 	else
 		target_zone = ran_zone()
 
@@ -171,7 +171,7 @@
 	status = SHOOT_STATUS_COOLING
 	deltimer(ongoing_timer)
 	stopped_at = world.time
-	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/shoot/proc/finish_cooldown), cooldown)
+	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/shoot/proc/finish_cooldown), cooldown, TIMER_STOPPABLE)
 
 
 /datum/extension/shoot/proc/finish_cooldown()
@@ -200,6 +200,7 @@
 			return FALSE
 
 	var/datum/extension/shoot/E = get_extension(src, subtype)
+
 	if(istype(E))
 		if (error_messages)
 			if (E.stopped_at)
@@ -222,8 +223,12 @@
 	Using
 ************************/
 /atom/movable/proc/shoot_ability(var/subtype = /datum/extension/shoot, var/atom/target, var/projectile_type, var/accuracy = 100, var/dispersion = 0, var/num = 1, var/windup_time = 0, var/fire_sound = null, var/nomove = FALSE, var/cooldown = 0, var/vector2/starting_pixel_offset)
-	//First of all, lets check if we're currently able to charge
+	//First of all, lets check if we're currently able to shoot
 	if (!can_shoot(TRUE, subtype))
+		return FALSE
+
+	//Can't shoot yourself
+	if (target == src)
 		return FALSE
 
 	//Ok we've passed all safety checks, let's commence charging!

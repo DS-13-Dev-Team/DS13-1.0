@@ -66,7 +66,7 @@
 			reagents.clear_reagents()
 			activate_pin(2)
 		if(3)
-			set_pin_data(IC_OUTPUT, 2, weakref(src))
+			set_pin_data(IC_OUTPUT, 2, WEAKREF(src))
 			push_data()
 
 /obj/item/integrated_circuit/reagent/injector
@@ -125,16 +125,16 @@
 		if(1)
 			inject()
 		if(4)
-			set_pin_data(IC_OUTPUT, 2, weakref(src))
+			set_pin_data(IC_OUTPUT, 2, WEAKREF(src))
 			push_data()
 
-/obj/item/integrated_circuit/reagent/injector/proc/target_nearby(var/weakref/target)
+/obj/item/integrated_circuit/reagent/injector/proc/target_nearby(var/datum/weakref/target)
 	var/mob/living/L = target.resolve()
 	if(!L || get_dist(src,L) > 1)
 		return
 	return L
 
-/obj/item/integrated_circuit/reagent/injector/proc/inject_after(var/weakref/target)
+/obj/item/integrated_circuit/reagent/injector/proc/inject_after(var/datum/weakref/target)
 	busy = FALSE
 	var/mob/living/L = target_nearby(target)
 	if(!L)
@@ -147,7 +147,7 @@
 	reagents.trans_to_mob(L, transfer_amount, CHEM_BLOOD)
 	activate_pin(2)
 
-/obj/item/integrated_circuit/reagent/injector/proc/draw_after(var/weakref/target, var/amount)
+/obj/item/integrated_circuit/reagent/injector/proc/draw_after(var/datum/weakref/target, var/amount)
 	busy = FALSE
 	var/mob/living/carbon/C = target_nearby(target)
 	if(!C)
@@ -192,7 +192,7 @@
 			L.visible_message("<span class='danger'>\The [acting_object] is trying to inject [L]!</span>", \
 								"<span class='danger'>\The [acting_object] is trying to inject you!</span>")
 			busy = TRUE
-			addtimer(CALLBACK(src, .proc/inject_after, weakref(L)), injection_status * 3 SECONDS)
+			addtimer(CALLBACK(src, .proc/inject_after, WEAKREF(L)), injection_status * 3 SECONDS)
 			return
 		else
 			if(!AM.is_open_container())
@@ -219,7 +219,7 @@
 			C.visible_message("<span class='danger'>\The [acting_object] is trying to take a blood sample from [C]!</span>", \
 								"<span class='danger'>\The [acting_object] is trying to take a blood sample from you!</span>")
 			busy = TRUE
-			addtimer(CALLBACK(src, .proc/draw_after, weakref(C), tramount), injection_status * 3 SECONDS)
+			addtimer(CALLBACK(src, .proc/draw_after, WEAKREF(C), tramount), injection_status * 3 SECONDS)
 			return
 
 		else
@@ -311,7 +311,7 @@
 
 
 /obj/item/integrated_circuit/reagent/storage/do_work()
-	set_pin_data(IC_OUTPUT, 2, weakref(src))
+	set_pin_data(IC_OUTPUT, 2, WEAKREF(src))
 	push_data()
 
 /obj/item/integrated_circuit/reagent/storage/on_reagent_change(changetype)
@@ -366,7 +366,7 @@
 		if(1)
 			grind()
 		if(4)
-			set_pin_data(IC_OUTPUT, 2, weakref(src))
+			set_pin_data(IC_OUTPUT, 2, WEAKREF(src))
 			push_data()
 
 /obj/item/integrated_circuit/reagent/storage/grinder/proc/grind()
@@ -418,7 +418,7 @@
 			set_pin_data(IC_OUTPUT, 3, cont)
 			push_data()
 		if(2)
-			set_pin_data(IC_OUTPUT, 2, weakref(src))
+			set_pin_data(IC_OUTPUT, 2, WEAKREF(src))
 			push_data()
 
 /obj/item/integrated_circuit/reagent/filter

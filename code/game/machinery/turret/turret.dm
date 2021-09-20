@@ -42,7 +42,6 @@
 	var/fire_delay = 15		//1.5 seconds between each shot
 	var/datum/extension/shoot/repeat/shoot_extension	//The object that handles firing
 	var/firing	 = FALSE//Briefly set true when we're in a code stack to fire
-	var/fire_timer	//Timer handle used to schedule next shot
 
 	var/dispersion = 1	//1 point of dispersion is roughly 9 degrees
 
@@ -787,11 +786,10 @@ var/list/turret_icons
 
 
 /obj/machinery/turret/proc/set_fire_timer()
-	deltimer(fire_timer)
 	//Lets setup the next fire time
 	var/fire_when = last_fired + fire_delay	//If we just fired, last_fired will be set to now. Otherwise
 	var/fire_delta = max(fire_when - world.time, 0)	//If its been longer than fire delay since our last shot, the next one will be queued up immediately
-	fire_timer = addtimer(CALLBACK(src, /obj/machinery/turret/proc/fire_at_last_target), fire_delta)
+	addtimer(CALLBACK(src, /obj/machinery/turret/proc/fire_at_last_target), fire_delta, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 
 
 

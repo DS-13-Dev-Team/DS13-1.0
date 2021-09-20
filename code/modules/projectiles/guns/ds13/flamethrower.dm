@@ -238,9 +238,7 @@
 	if (update)
 		update_icon()
 
-	if (!is_processing)
-		START_PROCESSING(SSfastprocess, src)
-
+	START_PROCESSING(SSfastprocess, src)
 
 //The torch has no safety switch, that's routed to the pilot light instead
 /obj/item/weapon/gun/spray/hydrazine_torch/toggle_safety(var/mob/user)
@@ -524,8 +522,7 @@
 //This proc creates particles and applies effects
 /obj/item/weapon/gun/spray/started_firing()
 	firing = TRUE
-	if (!is_processing)
-		START_PROCESSING(SSfastprocess, src)
+	START_PROCESSING(SSfastprocess, src)
 
 
 /obj/item/weapon/gun/spray/stop_firing()
@@ -604,5 +601,5 @@
 		var/turf/T = get_turf(src)
 
 		//We trigger the spray on the turf, because this object is about to be deleted
-		T.spray_ability(subtype = spraytype,  target = null, angle = 360, length = 3, duration = 3 SECONDS, extra_data = list("temperature" = temperature))
+		T.spray_ability(subtype = spraytype,  target = null, angle = 360, length = 3, duration = 3 SECONDS, extra_data = list("temperature" = temperature), affect_origin = TRUE)
 		expire()

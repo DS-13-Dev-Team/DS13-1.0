@@ -7,60 +7,60 @@
 	activation_messages=list("You feel no need to breathe.")
 	mutation=mNobreath
 
-	New()
-		block=GLOB.NOBREATHBLOCK
+/datum/dna/gene/basic/nobreath/New()
+	block=GLOB.NOBREATHBLOCK
 
 /datum/dna/gene/basic/remoteview
 	name="Remote Viewing"
 	activation_messages=list("Your mind expands.")
 	mutation=mRemote
 
-	New()
-		block=GLOB.REMOTEVIEWBLOCK
+/datum/dna/gene/basic/remoteview/New()
+	block=GLOB.REMOTEVIEWBLOCK
 
-	activate(var/mob/M, var/connected, var/flags)
-		..(M,connected,flags)
-		M.verbs += /mob/living/carbon/human/proc/remoteobserve
+/datum/dna/gene/basic/remoteview/activate(mob/M, connected, flags)
+	..(M,connected,flags)
+	add_verb(M, /mob/living/carbon/human/proc/remoteobserve)
 
 /datum/dna/gene/basic/regenerate
 	name="Regenerate"
 	activation_messages=list("You feel better.")
 	mutation=mRegen
 
-	New()
-		block=GLOB.REGENERATEBLOCK
+/datum/dna/gene/basic/regenerate/New()
+	block=GLOB.REGENERATEBLOCK
 
 /datum/dna/gene/basic/increaserun
 	name="Super Speed"
 	activation_messages=list("Your leg muscles pulsate.")
 	mutation=mRun
 
-	New()
-		block=GLOB.INCREASERUNBLOCK
+/datum/dna/gene/basic/increaserun/New()
+	block=GLOB.INCREASERUNBLOCK
 
 /datum/dna/gene/basic/remotetalk
 	name="Telepathy"
 	activation_messages=list("You expand your mind outwards.")
 	mutation=mRemotetalk
 
-	New()
-		block=GLOB.REMOTETALKBLOCK
+/datum/dna/gene/basic/remotetalk/New()
+	block=GLOB.REMOTETALKBLOCK
 
-	activate(var/mob/M, var/connected, var/flags)
-		..(M,connected,flags)
-		M.verbs += /mob/living/carbon/human/proc/remotesay
+/datum/dna/gene/basic/remotetalk/activate(mob/M, connected, flags)
+	..(M,connected,flags)
+	add_verb(M, /mob/living/carbon/human/proc/remotesay)
 
 /datum/dna/gene/basic/morph
 	name="Morph"
 	activation_messages=list("Your skin feels strange.")
 	mutation=mMorph
 
-	New()
-		block=GLOB.MORPHBLOCK
+/datum/dna/gene/basic/morph/New()
+	block=GLOB.MORPHBLOCK
 
-	activate(var/mob/M)
-		..(M)
-		M.verbs += /mob/living/carbon/human/proc/morph
+/datum/dna/gene/basic/morph/activate(var/mob/M)
+	..(M)
+	add_verb(M, /mob/living/carbon/human/proc/morph)
 
 /* Not used on bay
 /datum/dna/gene/basic/heat_resist

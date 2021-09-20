@@ -1,0 +1,6 @@
+2021-07-01:
+  Unknown:
+  - rscadd: Added a nice thing.
+  - rscdel: Removed a nice thing.
+  - bugfix: Fixed antag preference settings not working correctly. Note that you may
+      need to re-select your antag preferences, please check the Roles menu.

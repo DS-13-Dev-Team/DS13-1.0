@@ -11,10 +11,10 @@ GLOBAL_LIST_EMPTY(default_necro_custom)
 	var/selected = SIGNAL
 
 /datum/category_item/player_setup_item/necromorph/customisation/load_character(var/savefile/S)
-	from_file(S["necro_custom"],     pref.necro_custom)
+	READ_FILE(S["necro_custom"],     pref.necro_custom)
 
 /datum/category_item/player_setup_item/necromorph/customisation/save_character(var/savefile/S)
-	to_file(S["necro_custom"],     pref.necro_custom)
+	WRITE_FILE(S["necro_custom"],     pref.necro_custom)
 
 
 /datum/category_item/player_setup_item/necromorph/customisation/sanitize_character()

@@ -97,7 +97,7 @@ nanoui is used to open and update nano browser uis
 		ref = nref
 
 	add_common_assets()
-	var/datum/asset/assets = get_asset_datum(/datum/asset/nanoui)
+	var/datum/asset/assets = get_asset_datum(/datum/asset/simple/nanoui)
 	assets.send(user, ntemplate_filename)
 
 //Do not qdel nanouis. Use close() instead.
@@ -417,7 +417,7 @@ nanoui is used to open and update nano browser uis
   * @return nothing
   */
 /datum/nanoui/proc/open()
-	if(!user.client)
+	if(!user?.client)
 		return
 
 	if(!src_object)

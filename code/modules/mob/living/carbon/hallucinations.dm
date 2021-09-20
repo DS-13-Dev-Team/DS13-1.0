@@ -164,7 +164,7 @@
 			to_chat(holder,"<span class='game say'><span class='name'>[talker.name]</span> says something softly.</span>")
 		var/image/speech_bubble = image('icons/mob/talk.dmi',talker,"h[holder.say_test(message)]")
 		spawn(30) qdel(speech_bubble)
-		show_image(holder,speech_bubble)
+		SEND_IMAGE(holder,speech_bubble)
 		sanity-- //don't spam them in very populated rooms.
 		if(!sanity)
 			return
@@ -247,18 +247,18 @@
 
 /datum/hallucination/telepahy/start()
 	to_chat(holder,"<span class = 'notice'>You expand your mind outwards.</span>")
-	holder.verbs += /mob/living/carbon/human/proc/fakeremotesay
+	add_verb(holder, /mob/living/carbon/human/proc/fakeremotesay)
 
 /datum/hallucination/telepahy/end()
 	if(holder)
-		holder.verbs -= /mob/living/carbon/human/proc/fakeremotesay
+		remove_verb(holder, /mob/living/carbon/human/proc/fakeremotesay)
 
 /mob/living/carbon/human/proc/fakeremotesay()
 	set name = "Telepathic Message"
 	set category = "Superpower"
 
 	if(!hallucination_power)
-		src.verbs -= /mob/living/carbon/human/proc/fakeremotesay
+		remove_verb(src, /mob/living/carbon/human/proc/fakeremotesay)
 		return
 
 	if(stat)

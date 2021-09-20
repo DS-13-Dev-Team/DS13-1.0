@@ -192,7 +192,7 @@
 	required_tech_levels = list()
 	cost = 2000
 
-	unlocks_designs = list("javgun")
+	unlocks_designs = list("javgun", "javelin_rack")
 
 /datum/technology/combat/seeker
 	name = "Seeker Rifle"

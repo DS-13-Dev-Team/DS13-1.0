@@ -1,5 +1,6 @@
 /mob
-	density = 1
+	datum_flags = DATUM_FLAG_WEAKREF_USE_TAG
+	density = TRUE
 	plane = DEFAULT_PLANE
 	layer = MOB_LAYER
 
@@ -7,21 +8,13 @@
 	animate_movement = 2
 	movable_flags = MOVABLE_FLAG_PROXMOVE
 
-	virtual_mob = /mob/observer/virtual/mob
+	virtual_mob = /mob/dead/observer/virtual/mob
 
 	movement_handlers = list(
-		/datum/movement_handler/mob/relayed_movement,
-		/datum/movement_handler/mob/death,
-		/datum/movement_handler/mob/conscious,
-		/datum/movement_handler/mob/eye,
 		/datum/movement_handler/move_relay,
-		/datum/movement_handler/mob/buckle_relay,
 		/datum/movement_handler/mob/delay,
-		/datum/movement_handler/mob/stop_effect,
 		/datum/movement_handler/mob/physically_capable,
-		/datum/movement_handler/mob/physically_restrained,
-		/datum/movement_handler/mob/space,
-		/datum/movement_handler/mob/multiz,
+		/datum/movement_handler/mob/physically_restrained,	//TODO: Add this from various things it checks, should be removed otherwise
 		/datum/movement_handler/mob/movement
 	)
 
@@ -35,37 +28,6 @@
 	var/computer_id = null
 
 	var/stat = 0 //Whether a mob is alive or dead. TODO: Move this to living - Nodrak
-
-	var/obj/screen/hands = null
-	var/obj/screen/pullin = null
-	var/obj/screen/purged = null
-	var/obj/screen/internals = null
-	var/obj/screen/oxygen = null
-	var/obj/screen/i_select = null
-	var/obj/screen/m_select = null
-	var/obj/screen/toxin = null
-	var/obj/screen/fire = null
-	var/obj/screen/bodytemp = null
-	var/obj/screen/healths = null
-	var/obj/screen/throw_icon = null
-	var/obj/screen/nutrition_icon = null
-	var/obj/screen/pressure = null
-	var/obj/screen/fullscreen/pain = null
-	var/obj/screen/gun/item/item_use_icon = null
-	var/obj/screen/gun/radio/radio_use_icon = null
-	var/obj/screen/gun/move/gun_move_icon = null
-	var/obj/screen/gun/run/gun_run_icon = null
-	var/obj/screen/gun/mode/gun_setting_icon = null
-
-	var/obj/screen/movable/ability_master/ability_master = null
-
-	/*A bunch of this stuff really needs to go under their own defines instead of being globally attached to mob.
-	A variable should only be globally attached to turfs/objects/whatever, when it is in fact needed as such.
-	The current method unnecessarily clusters up the variable list, especially for humans (although rearranging won't really clean it up a lot but the difference will be noticable for other mobs).
-	I'll make some notes on where certain variable defines should probably go.
-	Changing this around would probably require a good look-over the pre-existing code.
-	*/
-	var/obj/screen/zone_sel/zone_sel = null
 
 	var/use_me = 1 //Allows all mobs to use the me verb by default, will have to manually specify they cannot
 	var/damageoverlaytemp = 0
@@ -203,5 +165,5 @@
 	//Combat
 	var/evasion = 15	//A base percentage chance of avoiding attacks which would otherwise hit
 
-	//Misc:
-	var/list/statmods	//This is a list which we don't initialise to save on object creating costs. use lazyprocs to init at runtime when needed
+	//Seciruty
+	var/static/next_mob_id = 0

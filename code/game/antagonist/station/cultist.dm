@@ -153,7 +153,7 @@
 				add_cult_magic(H.current)
 
 	if((CULT_GHOSTS_1 in to_update) || (CULT_GHOSTS_2 in to_update) || (CULT_GHOSTS_3 in to_update))
-		for(var/mob/observer/ghost/D in SSmobs.mob_list)
+		for(var/mob/dead/observer/ghost/D in SSmobs.mob_list)
 			add_ghost_magic(D)
 
 /datum/antagonist/cultist/proc/offer_uncult(var/mob/M)
@@ -169,20 +169,17 @@
 /datum/antagonist/cultist/proc/remove_cultiness(var/amount)
 	cult_rating = max(0, cult_rating - amount)
 
-/datum/antagonist/cultist/proc/add_cult_magic(var/mob/M)
-	M.verbs += Tier1Runes
+/datum/antagonist/cultist/proc/add_cult_magic(mob/M)
+	add_verb(M, Tier1Runes)
 
 	if(max_cult_rating >= CULT_RUNES_1)
-		M.verbs += Tier2Runes
+		add_verb(M, Tier2Runes)
 
 		if(max_cult_rating >= CULT_RUNES_2)
-			M.verbs += Tier3Runes
+			add_verb(M, Tier3Runes)
 
 			if(max_cult_rating >= CULT_RUNES_3)
-				M.verbs += Tier4Runes
+				add_verb(M, Tier4Runes)
 
-/datum/antagonist/cultist/proc/remove_cult_magic(var/mob/M)
-	M.verbs -= Tier1Runes
-	M.verbs -= Tier2Runes
-	M.verbs -= Tier3Runes
-	M.verbs -= Tier4Runes
+/datum/antagonist/cultist/proc/remove_cult_magic(mob/M)
+	remove_verb(M, Tier1Runes+Tier2Runes+Tier3Runes+Tier4Runes)

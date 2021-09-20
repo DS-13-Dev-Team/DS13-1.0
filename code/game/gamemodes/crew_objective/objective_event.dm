@@ -27,7 +27,7 @@
 */
 /datum/event/crew_objective
 	startWhen = 0
-	endWhen = NEAR_INFINITY	//This won't end naturally, only when crew finish the objective,
+	endWhen = INFINITY	//This won't end naturally, only when crew finish the objective,
 	// but it can be force-stopped by admins
 
 	var/datum/crew_objective/CO

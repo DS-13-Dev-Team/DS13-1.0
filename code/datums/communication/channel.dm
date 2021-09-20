@@ -9,6 +9,8 @@
 	var/mute_setting
 	var/show_preference_setting
 
+	var/message_type
+
 	//Can the admin communicate extension talk through this?
 	var/allow_admincomm = TRUE
 
@@ -95,7 +97,9 @@
 	return TRUE
 
 /decl/communication_channel/proc/do_receive_communication(var/datum/communicator, var/datum/receiver, var/message)
-	to_chat(receiver, message)
+	to_chat(receiver,
+			type = message_type,
+			html = message)
 
 // Misc. helpers
 /datum/proc/communication_identifier()

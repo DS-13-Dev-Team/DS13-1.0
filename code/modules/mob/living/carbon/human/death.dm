@@ -28,8 +28,8 @@
 		..()
 
 /mob/living/carbon/human/death(gibbed,deathmessage="seizes up and falls limp...", show_dead_message = "You have died.")
-	if(stat == DEAD) return
 
+	if(stat == DEAD) return
 
 	BITSET(hud_updateflag, HEALTH_HUD)
 	BITSET(hud_updateflag, STATUS_HUD)
@@ -47,7 +47,6 @@
 
 	//Handle species-specific deaths.
 	species.handle_death(src)
-
 	animate_tail_stop()
 
 	//Handle brain slugs.
@@ -68,7 +67,7 @@
 				B.host_brain.SetName("host brain")
 				B.host_brain.real_name = "host brain"
 
-			verbs -= /mob/living/carbon/proc/release_control
+			remove_verb(src, /mob/living/carbon/proc/release_control)
 
 	callHook("death", list(src, gibbed))
 

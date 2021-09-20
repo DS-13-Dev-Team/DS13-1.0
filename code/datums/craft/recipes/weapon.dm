@@ -131,6 +131,6 @@
 	)
 	time = 200
 	steps = list(
-	list(CRAFT_OBJECT, /obj/item/weapon/gun/energy/cutter),
+	list(CRAFT_OBJECT, /obj/item/weapon/gun/energy/cutter, WORKTIME_NORMAL, FALSE, /obj/item/weapon/gun/energy/cutter/plasma),
 	list(CRAFT_STACK, /obj/item/stack/power_node, 1)
 	)

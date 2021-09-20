@@ -112,7 +112,7 @@
 	for(var/mob/M in SSmobs.mob_list)
 		if (!M.client)
 			continue //skip monkeys and leavers
-		if (istype(M, /mob/new_player))
+		if (istype(M, /mob/dead/new_player))
 			continue
 		if(M.stat == DEAD && M.get_preference_value(/datum/client_preference/ghost_ears) == GLOB.PREF_ALL_SPEECH)
 			listening|=M

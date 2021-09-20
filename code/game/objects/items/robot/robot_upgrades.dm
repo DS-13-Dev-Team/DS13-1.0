@@ -114,7 +114,7 @@
 		return 0
 
 	if(!R.key)
-		for(var/mob/observer/ghost/ghost in GLOB.player_list)
+		for(var/mob/dead/observer/ghost/ghost in GLOB.player_list)
 			if(ghost.mind && ghost.mind.current == R)
 				R.key = ghost.key
 
@@ -188,7 +188,7 @@
 	else
 		R.module.modules += new/obj/item/weapon/tank/jetpack/carbondioxide
 		for(var/obj/item/weapon/tank/jetpack/carbondioxide in R.module.modules)
-			R.internals = src
+			R.hud_used.internals = src
 		//R.icon_state="Miner+j"
 		return 1
 

@@ -52,7 +52,7 @@
 /*
 	Toggling verbs
 */
-/mob/observer/ghost/verb/toggle_darkvision()
+/mob/dead/observer/ghost/verb/toggle_darkvision()
 	set name = "Toggle Darkvision"
 	set category = "Ghost"
 
@@ -99,7 +99,7 @@
 	set_darksight_color(newcolor)
 	to_chat(src, "Darksight is now [newstring].")
 
-/mob/observer/eye/signal/verb/toggle_darkvision()
+/mob/dead/observer/eye/signal/verb/toggle_darkvision()
 	set name = "Toggle Darkvision"
 	set category = "Necromorph"
 

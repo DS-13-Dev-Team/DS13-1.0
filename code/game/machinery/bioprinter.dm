@@ -101,7 +101,7 @@
 /obj/machinery/organ_printer/proc/print_organ(var/choice)
 	var/new_organ = products[choice][1]
 	var/obj/item/organ/O = new new_organ(get_turf(src))
-	O.status |= ORGAN_CUT_AWAY
+	O.set_status(ORGAN_CUT_AWAY, TRUE)
 	return O
 // END GENERIC PRINTER
 
@@ -146,7 +146,7 @@
 /obj/machinery/organ_printer/robot/print_organ(var/choice)
 	var/obj/item/organ/O = ..()
 	O.robotize()
-	O.status |= ORGAN_CUT_AWAY  // robotize() resets status to 0
+	O.set_status(ORGAN_CUT_AWAY, TRUE)  // robotize() resets status to 0
 	visible_message("<span class='info'>\The [src] churns for a moment, then spits out \a [O].</span>")
 	return O
 
@@ -199,7 +199,7 @@
 
 /obj/machinery/organ_printer/flesh/print_organ(var/choice)
 	var/obj/item/organ/O
-	var/weakref/R = loaded_dna["donor"]
+	var/datum/weakref/R = loaded_dna["donor"]
 	var/mob/living/carbon/human/H = R.resolve()
 	var/new_organ
 	if(loaded_species.has_organ[choice])
@@ -208,7 +208,7 @@
 		new_organ = loaded_species.has_limbs[choice]["path"]
 	if(new_organ)
 		O = new new_organ(get_turf(src), H.dna)
-		O.status |= ORGAN_CUT_AWAY
+		O.set_status(ORGAN_CUT_AWAY, TRUE)
 	else
 		O = ..()
 	if(O.species)
@@ -251,7 +251,7 @@
 		if(injected && injected.data)
 			loaded_dna = injected.data
 			to_chat(user, "<span class='info'>You inject the blood sample into the bioprinter.</span>")
-		var/weakref/R = loaded_dna["donor"]
+		var/datum/weakref/R = loaded_dna["donor"]
 		var/mob/living/carbon/human/H = R.resolve()
 		if(H && istype(H) && H.species)
 			loaded_species = H.species

@@ -45,10 +45,12 @@
 
 	var/msg = FormMessage(message, message_title)
 	for(var/mob/M in GLOB.player_list)
-		if((M.z in (zlevels | GLOB.using_map.admin_levels)) && !istype(M,/mob/new_player) && !isdeaf(M))
-			to_chat(M, msg)
+		if((M.z in (zlevels | GLOB.using_map.admin_levels)) && !istype(M,/mob/dead/new_player) && !isdeaf(M))
+			to_chat(M,
+					type = MESSAGE_TYPE_INFO,
+					html = msg)
 			if(message_sound)
-				sound_to(M, message_sound)
+				SEND_SOUND(M, message_sound)
 
 	if(do_newscast)
 		NewsCast(message, message_title)
@@ -165,10 +167,10 @@ datum/announcement/proc/NewsCast(message as text, message_title as text)
 	for(var/mob/M in GLOB.player_list)
 		if(M.is_necromorph())
 			continue
-		if((M.z in (zlevels | GLOB.using_map.admin_levels)) && !istype(M,/mob/new_player) && !isdeaf(M))
+		if((M.z in (zlevels | GLOB.using_map.admin_levels)) && !istype(M,/mob/dead/new_player) && !isdeaf(M))
 			to_chat(M, msg)
 			if(message_sound)
-				sound_to(M, message_sound)
+				SEND_SOUND(M, message_sound)
 
 	if(do_newscast)
 		NewsCast(message, message_title)

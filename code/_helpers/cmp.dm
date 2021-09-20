@@ -49,6 +49,11 @@
 /proc/cmp_text_dsc(a,b)
 	return sorttext(a, b)
 
+/proc/cmp_generic_stat_item_time(list/A, list/B)
+	. = B[STAT_ENTRY_TIME] - A[STAT_ENTRY_TIME]
+	if (!.)
+		. = B[STAT_ENTRY_COUNT] - A[STAT_ENTRY_COUNT]
+
 /proc/cmp_qdel_item_time(datum/qdel_item/A, datum/qdel_item/B)
 	. = B.hard_delete_time - A.hard_delete_time
 	if (!.)
@@ -79,3 +84,12 @@
 
 /proc/cmp_planelayer(atom/A, atom/B)
 	return (B.plane - A.plane) || (B.layer - A.layer)
+
+/proc/cmp_profile_avg_time_dsc(list/A, list/B)
+	return (B[PROFILE_ITEM_TIME]/(B[PROFILE_ITEM_COUNT] || 1)) - (A[PROFILE_ITEM_TIME]/(A[PROFILE_ITEM_COUNT] || 1))
+
+/proc/cmp_profile_time_dsc(list/A, list/B)
+	return B[PROFILE_ITEM_TIME] - A[PROFILE_ITEM_TIME]
+
+/proc/cmp_profile_count_dsc(list/A, list/B)
+	return B[PROFILE_ITEM_COUNT] - A[PROFILE_ITEM_COUNT]

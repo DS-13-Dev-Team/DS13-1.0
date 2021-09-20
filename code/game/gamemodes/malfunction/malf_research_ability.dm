@@ -12,8 +12,8 @@
 	if(invested >= price)
 		unlocked = 1
 
-/datum/malf_research_ability/proc/research_finished(var/mob/living/silicon/ai/user)
+/datum/malf_research_ability/proc/research_finished(mob/living/silicon/ai/user)
 	if(!user)
 		return
 	if(ability)
-		user.verbs.Add(ability)
+		add_verb(user, ability)

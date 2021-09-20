@@ -158,7 +158,12 @@
 	if(!vacuum_traversal && istype(loc, /turf/space/) && istype(loc.loc, /area/space))
 		qdel(src)
 
-//TODO: make it so this is called more reliably, instead of sometimes by bullet_act() and sometimes not
+/*
+	On hit is called from bullet act when this bullet actually hits a mob.
+	If it misses we won't get here, and this is never called for hitting nonmob things
+
+	If you want an effect to happen on any kind of target, use on_impact instead
+*/
 /obj/item/projectile/proc/on_hit(var/atom/target, var/blocked = 0, var/def_zone = null)
 	if(blocked >= 100)		return 0//Full block
 	if(!isliving(target))	return 0

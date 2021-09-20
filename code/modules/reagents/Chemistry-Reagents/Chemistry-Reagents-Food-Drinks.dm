@@ -10,6 +10,7 @@
 	var/injectable = 0
 	color = "#664330"
 	biomass = 0.04
+	volume_metabolism_mult = 0.02
 
 
 /datum/reagent/drink
@@ -23,6 +24,7 @@
 	var/adj_sleepy = 0
 	var/adj_temp = 0
 	biomass = 0.02	//Watered down so less than solid reagents
+	volume_metabolism_mult = 0.02
 
 
 /datum/reagent/nutriment/mix_data(var/list/newdata, var/newamount)

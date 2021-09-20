@@ -21,7 +21,7 @@
 					entry += " - <font color='darkgray'><b>Unconscious</b></font>"
 				if(DEAD)
 					if(isghost(C.mob))
-						var/mob/observer/ghost/O = C.mob
+						var/mob/dead/observer/ghost/O = C.mob
 						if(O.started_as_observer)
 							entry += " - <font color='gray'>Observing</font>"
 						else
@@ -84,7 +84,7 @@
 				extra += " (Stealthed)"
 			if(isobserver(C.mob))
 				extra += " - Observing"
-			else if(istype(C.mob,/mob/new_player))
+			else if(istype(C.mob,/mob/dead/new_player))
 				extra += " - Lobby"
 			else
 				extra += " - Playing"

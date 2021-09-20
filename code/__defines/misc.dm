@@ -1,3 +1,7 @@
+
+//Force the log directory to be something specific in the data/logs folder
+#define OVERRIDE_LOG_DIRECTORY_PARAMETER "log-directory"
+
 #define DEBUG
 // Turf-only flags.
 #define TURF_FLAG_NOJAUNT 1 // This is used in literally one place, turf.dm, to block ethereal jaunt.
@@ -196,7 +200,6 @@
 
 #define DEFAULT_SPAWNPOINT_ID "Default"
 
-#define MIDNIGHT_ROLLOVER		864000	//number of deciseconds in a day
 
 //Virus badness defines
 #define VIRUS_MILD			1
@@ -241,3 +244,27 @@
 #define EMAIL_BROADCAST "broadcast@internal-services.nt"
 
 #define RANDOM	"random"
+
+// A reasonable number of maximum overlays an object needs
+// If you think you need more, rethink it
+#define MAX_ATOM_OVERLAYS 100
+
+
+#define CLIENT_FROM_VAR(I) (ismob(I) ? I:client : (istype(I, /client) ? I : (istype(I, /datum/mind) ? I:current?:client : null)))
+
+//https://secure.byond.com/docs/ref/info.html#/atom/var/mouse_opacity
+#define MOUSE_OPACITY_TRANSPARENT 0
+#define MOUSE_OPACITY_ICON 1
+#define MOUSE_OPACITY_OPAQUE 2
+
+//FONTS:
+// Used by Paper and PhotoCopier (and PaperBin once a year).
+// Used by PDA's Notekeeper.
+// Used by NewsCaster and NewsPaper.
+// Used by Modular Computers
+#define PEN_FONT "Verdana"
+#define FOUNTAIN_PEN_FONT "Segoe Script"
+#define CRAYON_FONT "Comic Sans MS"
+#define PRINTER_FONT "Times New Roman"
+#define SIGNFONT "Times New Roman"
+#define CHARCOAL_FONT "Candara"

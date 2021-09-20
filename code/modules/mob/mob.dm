@@ -10,7 +10,6 @@
 		qdel(G)
 	clear_fullscreen()
 	if(client)
-		remove_screen_obj_references()
 		for(var/atom/movable/AM in client.screen)
 			var/obj/screen/screenobj = AM
 			if(!istype(screenobj) || !screenobj.globalscreen)
@@ -21,28 +20,6 @@
 	ghostize()
 	..()
 	return QDEL_HINT_HARDDEL
-
-/mob/proc/remove_screen_obj_references()
-	hands = null
-	pullin = null
-	purged = null
-	internals = null
-	oxygen = null
-	i_select = null
-	m_select = null
-	toxin = null
-	fire = null
-	bodytemp = null
-	QDEL_NULL(healths)
-	throw_icon = null
-	nutrition_icon = null
-	pressure = null
-	pain = null
-	item_use_icon = null
-	gun_move_icon = null
-	gun_setting_icon = null
-	ability_master = null
-	zone_sel = null
 
 /mob/Initialize()
 	. = ..()
@@ -119,7 +96,7 @@
 			continue
 	//Multiz, have shadow do same
 	if(bound_overlay)
-		bound_overlay.visible_message(message, self_message, blind_message)
+		bound_overlay.visible_message(message, blind_message, range, checkghosts)
 
 // Show a message to all mobs and objects in earshot of this one
 // This would be for audible actions by the src mob
@@ -153,7 +130,7 @@
 		var/obj/O = o
 		O.show_message(message, AUDIBLE_MESSAGE, deaf_message, VISIBLE_MESSAGE)
 
-/mob/proc/add_ghost_track(var/message, var/mob/observer/ghost/M)
+/mob/proc/add_ghost_track(var/message, var/mob/dead/observer/ghost/M)
 	ASSERT(istype(M))
 
 	var/remote = ""
@@ -171,7 +148,7 @@
 	message = track + remote + " " + speaker_name  + message
 	return message
 
-/mob/proc/ghost_skip_message(var/mob/observer/ghost/M)
+/mob/proc/ghost_skip_message(var/mob/dead/observer/ghost/M)
 	ASSERT(istype(M))
 	if(M.get_preference_value(/datum/client_preference/ghost_sight) == GLOB.PREF_ALL_EMOTES && !(src in view(M)))
 		if(!client)
@@ -446,36 +423,7 @@
 	return
 */
 
-/client/verb/changes()
-	set name = "Changelog"
-	set category = "OOC"
-	getFiles(
-		'html/88x31.png',
-		'html/bug-minus.png',
-		'html/burn-exclamation.png',
-		'html/chevron.png',
-		'html/chevron-expand.png',
-		'html/cross-circle.png',
-		'html/hard-hat-exclamation.png',
-		'html/image-minus.png',
-		'html/image-plus.png',
-		'html/map-pencil.png',
-		'html/music-minus.png',
-		'html/music-plus.png',
-		'html/tick-circle.png',
-		'html/scales.png',
-		'html/spell-check.png',
-		'html/wrench-screwdriver.png',
-		'html/changelog.css',
-		'html/changelog.html'
-		)
-	src << browse('html/changelog.html', "window=changes;size=675x650")
-	if(prefs.lastchangelog != changelog_hash)
-		prefs.lastchangelog = changelog_hash
-		prefs.save_preferences()
-		winset(src, "rpane.changelog", "background-color=none;font-style=;")
-
-/mob/new_player/verb/observe()
+/mob/dead/new_player/verb/observe()
 	set name = "Observe"
 	set category = "OOC"
 
@@ -619,56 +567,6 @@
 	for(var/mob/M in viewers())
 		M.see(message)
 
-/mob/Stat()
-	..()
-	. = (is_client_active(10 MINUTES))
-	if(!.)
-		return
-
-	if(statpanel("Status"))
-		if(ticker && ticker.current_state != GAME_STATE_PREGAME)
-			stat("Local Time", stationtime2text())
-			stat("Local Date", stationdate2text())
-			stat("Round Duration", roundduration2text())
-		if(client.holder || isghost(client.mob))
-			stat("Location:", "([x], [y], [z]) [loc]")
-
-	if(client.holder)
-		if(statpanel("Processes") && processScheduler)
-			processScheduler.statProcesses()
-		if(statpanel("MC"))
-			stat("CPU:","[world.cpu]")
-			stat("Instances:","[world.contents.len]")
-			stat(null)
-			if(Master)
-				Master.stat_entry()
-			else
-				stat("Master Controller:", "ERROR")
-			if(Failsafe)
-				Failsafe.stat_entry()
-			else
-				stat("Failsafe Controller:", "ERROR")
-			if(Master)
-				stat(null)
-				for(var/datum/controller/subsystem/SS in Master.subsystems)
-					SS.stat_entry()
-
-	if(listed_turf && client)
-		if(!TurfAdjacent(listed_turf))
-			listed_turf = null
-		else
-			if(statpanel("Turf"))
-				stat(listed_turf)
-				for(var/atom/A in listed_turf)
-					if(!A.mouse_opacity)
-						continue
-					if(A.invisibility > see_invisible)
-						continue
-					if(is_type_in_list(A, shouldnt_see))
-						continue
-					stat(A)
-
-
 
 
 // Not sure what to call this. Used to check if humans are wearing an AI-controlled exosuit and hence don't need to fall over yet.
@@ -721,12 +619,6 @@
 /mob/proc/density_lying()
 	return 0
 
-/mob/proc/reset_layer()
-	if(lying)
-		plane = DEFAULT_PLANE
-		layer = LYING_MOB_LAYER
-	else
-		reset_plane_and_layer()
 
 
 
@@ -913,7 +805,7 @@
 
 
 
-/mob/proc/yank_out_object(var/obj/item/selection, var/mob/user)
+/mob/proc/yank_out_object(obj/item/selection, mob/user)
 	var/mob/S = src
 	if(user == S)
 		to_chat(src, "<span class='warning'>You attempt to get a good grip on [selection] in your body.</span>")
@@ -970,7 +862,7 @@
 
 	var/list/valid_objects = get_visible_implants(0, TRUE)
 	if(length(valid_objects.len == 0)) //Yanking out last object - removing verb.
-		src.verbs -= /mob/proc/yank_out_object_verb
+		remove_verb(src, /mob/proc/yank_out_object_verb)
 
 	user.put_in_hands(selection)
 
@@ -1058,13 +950,13 @@
 
 /mob/proc/throw_mode_off()
 	src.in_throw_mode = 0
-	if(src.throw_icon) //in case we don't have the HUD and we use the hotkey
-		src.throw_icon.icon_state = "act_throw_off"
+	if(src.hud_used.throw_icon) //in case we don't have the HUD and we use the hotkey
+		src.hud_used.throw_icon.icon_state = "act_throw_off"
 
 /mob/proc/throw_mode_on()
 	src.in_throw_mode = 1
-	if(src.throw_icon)
-		src.throw_icon.icon_state = "act_throw_on"
+	if(src.hud_used.throw_icon)
+		src.hud_used.throw_icon.icon_state = "act_throw_on"
 
 /mob/proc/toggle_antag_pool()
 	set name = "Toggle Add-Antag Candidacy"
@@ -1085,7 +977,7 @@
 	return (!alpha || !mouse_opacity || viewer.see_invisible < invisibility)
 
 /client/proc/check_has_body_select()
-	return mob && mob.hud_used && istype(mob.zone_sel, /obj/screen/zone_sel)
+	return mob && mob.hud_used && istype(mob.hud_used.zone_sel, /obj/screen/zone_sel)
 
 /client/verb/body_toggle_head()
 	set name = "body-toggle-head"
@@ -1125,8 +1017,8 @@
 /client/proc/toggle_zone_sel(list/zones)
 	if(!check_has_body_select())
 		return
-	var/obj/screen/zone_sel/selector = mob.zone_sel
-	selector.set_selected_zone(next_in_list(mob.zone_sel.selecting,zones))
+	var/obj/screen/zone_sel/selector = mob.hud_used.zone_sel
+	selector.set_selected_zone(next_in_list(mob.hud_used.zone_sel.selecting,zones))
 
 /mob/proc/has_chem_effect(chem, threshold)
 	return FALSE
@@ -1137,3 +1029,10 @@
 */
 /mob/proc/update_verbs()
 	return
+
+/// Adds this list to the output to the stat browser
+/mob/proc/get_status_tab_items()
+	. = list()
+
+/mob/GenerateTag()
+	tag = "mob_[next_mob_id++]"

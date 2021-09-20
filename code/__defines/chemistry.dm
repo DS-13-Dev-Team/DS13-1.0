@@ -1,6 +1,7 @@
 #define DEFAULT_HUNGER_FACTOR 0.03 // Factor of how fast mob nutrition decreases
 
-#define REM 0.2 // Means 'Reagent Effect Multiplier'. This is how many units of reagent are consumed per tick
+#define REM 0.15 // Means 'Reagent Effect Multiplier'. This is how many units of reagent are consumed per tick
+//Reduced by nanako, in combination with a new volume_metabolism_mult feature
 
 #define CHEM_TOUCH 1
 #define CHEM_INGEST 2

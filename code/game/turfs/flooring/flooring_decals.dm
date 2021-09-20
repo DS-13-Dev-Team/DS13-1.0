@@ -6,7 +6,7 @@ var/list/floor_decals = list()
 /obj/effect/floor_decal
 	name = "floor decal"
 	icon = 'icons/turf/flooring/decals.dmi'
-	layer = DECAL_PLATING_LAYER
+	layer = DECAL_LAYER
 	appearance_flags = RESET_COLOR
 	var/supplied_dir
 	var/variants_amount

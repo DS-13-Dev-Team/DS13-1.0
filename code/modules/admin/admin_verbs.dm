@@ -201,6 +201,9 @@ var/list/admin_verbs_debug = list(
 	/client/proc/show_plant_genes,
 	/client/proc/enable_debug_verbs,
 	/client/proc/callproc,
+//	/client/proc/start_line_profiling,
+//	/client/proc/stop_line_profiling,
+//	/client/proc/show_line_profiling,
 	/client/proc/callproc_target,
 	/client/proc/SDQL_query,
 	/client/proc/SDQL2_query,
@@ -208,6 +211,7 @@ var/list/admin_verbs_debug = list(
 	/client/proc/jumptomob,
 	/client/proc/jumptocoord,
 	/client/proc/dsay,
+	/client/proc/check_timer_sources,
 	/datum/admins/proc/run_unit_test,
 	/client/proc/view_chunk,
 	/client/proc/update_chunk,
@@ -217,6 +221,7 @@ var/list/admin_verbs_debug = list(
 	/client/proc/visualpower,
 	/client/proc/visualpower_remove,
 	/client/proc/debug_vectorpool,
+//	/client/proc/cmd_display_overlay_log,
 	/client/proc/activate_marker,
 	/client/proc/dummy_crowd
 	)
@@ -446,28 +451,43 @@ var/list/admin_verbs_mentor = list(
 
 /client/proc/add_admin_verbs()
 	if(holder)
-		if(holder.rights & R_DEFAULT)		verbs += admin_verbs_default
-		if(holder.rights & R_RUNTIMES)		verbs += /datum/admins/proc/view_runtimes
-		if(holder.rights & R_BUILDMODE)		verbs += /client/proc/togglebuildmodeself
-		if(holder.rights & R_ADMIN)			verbs += admin_verbs_admin
-		if(holder.rights & R_BAN)			verbs += admin_verbs_ban
-		if(holder.rights & R_FUN)			verbs += admin_verbs_fun
-		if(holder.rights & R_SERVER)		verbs += admin_verbs_server
+		if(holder.rights & R_DEFAULT)
+			add_verb(src, admin_verbs_default)
+		if(holder.rights & R_RUNTIMES)
+			add_verb(src, /datum/admins/proc/view_runtimes)
+		if(holder.rights & R_BUILDMODE)
+			add_verb(src, /client/proc/togglebuildmodeself)
+		if(holder.rights & R_ADMIN)
+			add_verb(src, admin_verbs_admin)
+		if(holder.rights & R_BAN)
+			add_verb(src, admin_verbs_ban)
+		if(holder.rights & R_FUN)
+			add_verb(src, admin_verbs_fun)
+		if(holder.rights & R_SERVER)
+			add_verb(src, admin_verbs_server)
 		if(holder.rights & R_DEBUG)
-			verbs += admin_verbs_debug
+			add_verb(src, admin_verbs_debug)
 			if(CONFIG_GET(flag/debugparanoid) && !(holder.rights & R_ADMIN))
-				verbs.Remove(admin_verbs_paranoid_debug)			//Right now it's just callproc but we can easily add others later on.
-		if(holder.rights & R_POSSESS)		verbs += admin_verbs_possess
-		if(holder.rights & R_PERMISSIONS)	verbs += admin_verbs_permissions
-		if(holder.rights & R_STEALTH)		verbs += /client/proc/stealth
-		if(holder.rights & R_REJUVINATE)	verbs += admin_verbs_rejuv
-		if(holder.rights & R_SOUNDS)		verbs += admin_verbs_sounds
-		if(holder.rights & R_SPAWN)			verbs += admin_verbs_spawn
-		if(holder.rights & R_MOD)			verbs += admin_verbs_mod
-		if(holder.rights & R_MENTOR)		verbs += admin_verbs_mentor
+				remove_verb(src, admin_verbs_paranoid_debug)			//Right now it's just callproc but we can easily add others later on.
+		if(holder.rights & R_POSSESS)
+			add_verb(src, admin_verbs_possess)
+		if(holder.rights & R_PERMISSIONS)
+			add_verb(src, admin_verbs_permissions)
+		if(holder.rights & R_STEALTH)
+			add_verb(src, /client/proc/stealth)
+		if(holder.rights & R_REJUVINATE)
+			add_verb(src, admin_verbs_rejuv)
+		if(holder.rights & R_SOUNDS)
+			add_verb(src, admin_verbs_sounds)
+		if(holder.rights & R_SPAWN)
+			add_verb(src, admin_verbs_spawn)
+		if(holder.rights & R_MOD)
+			add_verb(src, admin_verbs_mod)
+		if(holder.rights & R_MENTOR)
+			add_verb(src, admin_verbs_mentor)
 
 /client/proc/remove_admin_verbs()
-	verbs.Remove(
+	remove_verb(src, list(
 		admin_verbs_default,
 		/datum/admins/proc/view_runtimes,
 		/client/proc/togglebuildmodeself,
@@ -485,13 +505,14 @@ var/list/admin_verbs_mentor = list(
 		admin_verbs_mod,
 		debug_verbs
 		)
+	)
 
 /client/proc/hide_most_verbs()//Allows you to keep some functionality while hiding some verbs
 	set name = "Adminverbs - Hide Most"
 	set category = "Admin"
 
-	verbs.Remove(/client/proc/hide_most_verbs, admin_verbs_hideable)
-	verbs += /client/proc/show_verbs
+	remove_verb(src, list(/client/proc/hide_most_verbs, admin_verbs_hideable))
+	add_verb(src, /client/proc/show_verbs)
 
 	to_chat(src, "<span class='interface'>Most of your adminverbs have been hidden.</span>")
 	feedback_add_details("admin_verb","HMV") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
@@ -502,7 +523,7 @@ var/list/admin_verbs_mentor = list(
 	set category = "Admin"
 
 	remove_admin_verbs()
-	verbs += /client/proc/show_verbs
+	add_verb(src, /client/proc/show_verbs)
 
 	to_chat(src, "<span class='interface'>Almost all of your adminverbs have been hidden.</span>")
 	feedback_add_details("admin_verb","TAVVH") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
@@ -512,7 +533,7 @@ var/list/admin_verbs_mentor = list(
 	set name = "Adminverbs - Show"
 	set category = "Admin"
 
-	verbs -= /client/proc/show_verbs
+	remove_verb(src, /client/proc/show_verbs)
 	add_admin_verbs()
 
 	to_chat(src, "<span class='interface'>All of your adminverbs are now visible.</span>")
@@ -528,7 +549,7 @@ var/list/admin_verbs_mentor = list(
 	if(!holder)	return
 	if(isghost(mob))
 		//re-enter
-		var/mob/observer/ghost/ghost = mob
+		var/mob/dead/observer/ghost/ghost = mob
 		if(!is_mentor(usr.client))
 			ghost.can_reenter_corpse = 1
 		if(ghost.can_reenter_corpse)
@@ -539,12 +560,12 @@ var/list/admin_verbs_mentor = list(
 
 		feedback_add_details("admin_verb","P") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-	else if(istype(mob,/mob/new_player))
+	else if(istype(mob,/mob/dead/new_player))
 		to_chat(src, "<font color='red'>Error: Aghost: Can't admin-ghost whilst in the lobby. Join or Observe first.</font>")
 	else
 		//ghostize
 		var/mob/body = mob
-		var/mob/observer/ghost/ghost = body.ghostize(1)
+		var/mob/dead/observer/ghost/ghost = body.ghostize(1)
 		if (istype(ghost))
 			ghost.admin_ghosted = 1
 		if(body)
@@ -797,7 +818,7 @@ var/list/admin_verbs_mentor = list(
 		log_admin("[src] re-admined themself.")
 		message_admins("[src] re-admined themself.", 1)
 		to_chat(src, "<span class='interface'>You now have the keys to control the planet, or atleast a small space station</span>")
-		verbs -= /client/proc/readmin_self
+		remove_verb(src, /client/proc/readmin_self)
 
 /client/proc/deadmin_self()
 	set name = "De-admin self"
@@ -809,7 +830,7 @@ var/list/admin_verbs_mentor = list(
 			message_admins("[src] deadmined themself.", 1)
 			deadmin()
 			to_chat(src, "<span class='interface'>You are now a normal player.</span>")
-			verbs |= /client/proc/readmin_self
+			add_verb(src, /client/proc/readmin_self)
 	feedback_add_details("admin_verb","DAS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/check_ai_laws()
@@ -1044,7 +1065,7 @@ var/list/admin_verbs_mentor = list(
 
 	for (var/mob/T as mob in SSmobs.mob_list)
 		to_chat(T, "<br><center><span class='notice'><b><font size=4>Man up.<br> Deal with it.</font></b><br>Move on.</span></center><br>")
-		sound_to(T, 'sound/voice/ManUp1.ogg')
+		SEND_SOUND(T, 'sound/voice/ManUp1.ogg')
 
 	log_and_message_admins("told everyone to man up and deal with it.")
 

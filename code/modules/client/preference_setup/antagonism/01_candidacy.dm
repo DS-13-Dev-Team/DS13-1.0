@@ -10,17 +10,17 @@ open_table = FALSE;}
 	sort_order = 1
 
 /datum/category_item/player_setup_item/antagonism/candidacy/load_character(var/savefile/S)
-	from_file(S["be_special"],           pref.be_special_role)
-	from_file(S["auto_necroqueue"],           pref.auto_necroqueue)
-	from_file(S["ghost_candidacy"], 			 pref.ghost_candidacy)
+	READ_FILE(S["be_special"],           pref.be_special_role)
+	READ_FILE(S["auto_necroqueue"],           pref.auto_necroqueue)
+	READ_FILE(S["ghost_candidacy"], 			 pref.ghost_candidacy)
 	//Safeguard to make sure it defaults to on
 	if (isnull(pref.ghost_candidacy))
 		pref.ghost_candidacy = TRUE
 
 /datum/category_item/player_setup_item/antagonism/candidacy/save_character(var/savefile/S)
-	to_file(S["be_special"],             pref.be_special_role)
-	to_file(S["auto_necroqueue"],           pref.auto_necroqueue)
-	to_file(S["ghost_candidacy"], 			 pref.ghost_candidacy)
+	WRITE_FILE(S["be_special"],             pref.be_special_role)
+	WRITE_FILE(S["auto_necroqueue"],           pref.auto_necroqueue)
+	WRITE_FILE(S["ghost_candidacy"], 			 pref.ghost_candidacy)
 
 /datum/category_item/player_setup_item/antagonism/candidacy/sanitize_character()
 	if(!istype(pref.be_special_role))

@@ -550,7 +550,7 @@
 			to_chat(H, "<span class='danger'>Your flesh rapidly mutates!</span>")
 			H.set_species(SPECIES_PROMETHEAN)
 			H.shapeshifter_set_colour("#05ff9b")
-			H.verbs -= /mob/living/carbon/human/proc/shapeshifter_select_colour
+			remove_verb(H, /mob/living/carbon/human/proc/shapeshifter_select_colour)
 		return
 	var/obj/item/organ/external/O = pick(meatchunks)
 	to_chat(H, "<span class='danger'>Your [O.name]'s flesh mutates rapidly!</span>")
@@ -562,7 +562,7 @@
 		E.s_tone = null
 		E.s_col = ReadRGB("#05ff9b")
 		E.s_col_blend = ICON_ADD
-		E.status &= ~ORGAN_BROKEN
+		E.set_status(ORGAN_BROKEN, FALSE)
 		E.status |= ORGAN_MUTATED
 		E.limb_flags &= ~ORGAN_FLAG_CAN_BREAK
 		E.dislocated = -1

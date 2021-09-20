@@ -12,6 +12,8 @@
 	var/fluorescent // Shows up under a UV light.
 	var/used_now = FALSE //For tools system, check for it should forbid to work on atom for more than one user at time
 
+	//Misc:
+	var/list/statmods	//This is a list which we don't initialise to save on object creating costs. use lazyprocs to init at runtime when needed
 
 		///Chemistry.
 	var/reagent_flags = NONE
@@ -31,7 +33,10 @@
 	var/default_alpha = 255
 	var/default_scale = 1
 
-
+	// a very temporary list of overlays to remove
+	var/list/remove_overlays
+	// a very temporary list of overlays to add
+	var/list/add_overlays
 
 	/*
 		OPTIMISATION
@@ -49,6 +54,9 @@
 	if(GLOB.use_preloader && (src.type == GLOB._preloader.target_path))//in case the instanciated atom is creating other atoms in New()
 		GLOB._preloader.load(src)
 
+	if(datum_flags & DATUM_FLAG_WEAKREF_USE_TAG)
+		GenerateTag()
+
 	var/do_initialize = SSatoms.atom_init_stage
 	var/list/created = SSatoms.created_atoms
 	if(do_initialize > INITIALIZATION_INSSATOMS_LATE)
@@ -64,7 +72,7 @@
 			created[src] = argument_list
 
 	if(atom_flags & ATOM_FLAG_CLIMBABLE)
-		verbs += /atom/proc/climb_on
+		verbs |= /atom/proc/climb_on
 
 
 
@@ -91,6 +99,8 @@
 
 /atom/Destroy()
 	QDEL_NULL(reagents)
+
+	LAZYCLEARLIST(overlays)
 
 	. = ..()
 
@@ -343,6 +353,8 @@ its easier to just keep the beam vertical.
 		AM.throwing = 0
 	return
 
+/atom/proc/GenerateTag()
+	return
 
 //returns 1 if made bloody, returns 0 otherwise
 /atom/proc/add_blood(mob/living/carbon/human/M as mob)
@@ -650,3 +662,14 @@ its easier to just keep the beam vertical.
 //Return false if we fail to remove the item
 /atom/proc/remove_item(var/obj/item/output)
 	return TRUE
+
+///Where atoms should drop if taken from this atom
+/atom/proc/drop_location()
+	var/atom/L = loc
+	if(!L)
+		return null
+	return L.AllowDrop() ? L : L.drop_location()
+
+/// Are you allowed to drop this atom
+/atom/proc/AllowDrop()
+	return FALSE

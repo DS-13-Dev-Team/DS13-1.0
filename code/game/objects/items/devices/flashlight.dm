@@ -44,7 +44,7 @@
 
 /obj/item/device/flashlight/attack(mob/living/M as mob, mob/living/user as mob)
 	add_fingerprint(user)
-	if(on && user.zone_sel.selecting == BP_EYES)
+	if(on && get_zone_sel(user) == BP_EYES)
 
 		if((CLUMSY in user.mutations) && prob(50))	//too dumb to use flashlight properly
 			return ..()	//just hit them in the head
@@ -144,7 +144,7 @@
 	icon_state = "maglight"
 	item_state = "maglight"
 	force = 10
-	attack_verb = list ("smacked", "thwacked", "thunked")
+	attack_verb = list ("smacked", "thwacked", "gravity_shocked")
 	matter = list(MATERIAL_STEEL = 200,MATERIAL_GLASS = 50)
 	hitsound = "swing_hit"
 	flashlight_max_bright = 0.5

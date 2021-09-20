@@ -13,6 +13,10 @@
 	ideal_character_age = 50
 	starting_credits = 5080
 
+	//This applies to all command staff
+	necro_conversion_compatibility = 1
+	necro_conversion_options = list(SPECIES_NECROMORPH_DIVIDER = 3)
+
 	access = list(access_smo, access_bridge, access_maint_tunnels, access_medical, access_surgery, access_research, access_chemistry,
 					access_keycard_auth)
 	outfit_type = /decl/hierarchy/outfit/job/medical/smo
@@ -44,7 +48,7 @@ datum/job/smo/get_description_blurb()
 	minimal_player_age = 18
 	starting_credits = 3500
 
-	access = list(access_medical, access_chemistry, access_research)
+	access = list(access_medical, access_chemistry, access_research, access_maint_tunnels)
 	outfit_type = /decl/hierarchy/outfit/job/medical/md
 
 	salary = SALARY_EDUCATED
@@ -76,7 +80,7 @@ datum/job/md/get_description_blurb()
 
 	salary = SALARY_EDUCATED
 
-	access = list(access_medical, access_surgery, access_research)
+	access = list(access_medical, access_surgery, access_research, access_maint_tunnels)
 	outfit_type = /decl/hierarchy/outfit/job/medical/surg
 
 	min_skill = list(	SKILL_ANATOMY     = SKILL_EXPERT,

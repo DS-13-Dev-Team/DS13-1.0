@@ -1,7 +1,14 @@
-/*
+/**
  * Paper
  * also scraps of paper
  */
+
+#define MAX_PAPER_LENGTH 5000
+#define MAX_PAPER_STAMPS 30 // Too low?
+#define MAX_PAPER_STAMPS_OVERLAYS 4
+#define MODE_READING 0
+#define MODE_WRITING 1
+#define MODE_STAMPING 2
 
 /obj/item/weapon/paper
 	name = "sheet of paper"
@@ -19,35 +26,29 @@
 	body_parts_covered = HEAD
 	attack_verb = list("bapped")
 
-	var/info		//What's actually written on the paper.
-	var/info_links	//A different version of the paper which includes html links at fields and EOF
-	var/stamps		//The (text for the) stamps on the paper.
+	/// What's actually written on the paper.
+	var/info = ""
+
+	/// The (text for the) stamps on the paper.
+	var/list/stamps /// Positioning for the stamp in tgui
+	var/list/stamped /// Overlay info
+
 	var/fields		//Amount of user created fields
 	var/free_space = MAX_PAPER_MESSAGE_LEN
-	var/list/stamped
 	var/list/ico[0]      //Icons and
 	var/list/offset_x[0] //offsets stored for later
 	var/list/offset_y[0] //usage by the photocopier
 	var/rigged = 0
 	var/spam_flag = 0
 
-	var/const/deffont = "Verdana"
-	var/const/signfont = "Times New Roman"
-	var/const/crayonfont = "Comic Sans MS"
-	var/const/fancyfont = "Segoe Script"
+	/// When the sheet can be "filled out"
+	/// This is an associated list
+	var/list/form_fields = list()
+	var/field_counter = 1
 
-/obj/item/weapon/paper/New(loc, text,title)
-	..(loc)
-	set_content(text ? text : info, title)
-
-/obj/item/weapon/paper/proc/set_content(text,title)
-	if(title)
-		SetName(title)
-	info = html_encode(text)
-	info = parsepencode(text)
-	update_icon()
-	update_space(info)
-	updateinfolinks()
+/obj/item/weapon/paper/Destroy()
+	form_fields = null
+	. = ..()
 
 /obj/item/weapon/paper/update_icon()
 	if(icon_state == "paper_talisman")
@@ -57,26 +58,21 @@
 	else
 		icon_state = "paper"
 
-/obj/item/weapon/paper/proc/update_space(var/new_text)
-	if(new_text)
-		free_space -= length(strip_html_properly(new_text))
-
 /obj/item/weapon/paper/examine(mob/user)
 	. = ..()
 	if(name != "sheet of paper")
 		to_chat(user, "It's titled '[name]'.")
 	if(in_range(user, src) || isghost(user))
-		show_content(usr)
+		tgui_interact(user)
 	else
 		to_chat(user, "<span class='notice'>You have to go closer if you want to read it.</span>")
 
-/obj/item/weapon/paper/proc/show_content(mob/user, forceshow)
-	var/can_read = (istype(user, /mob/living/carbon/human) || isghost(user) || istype(user, /mob/living/silicon)) || forceshow
-	if(!forceshow && istype(user,/mob/living/silicon/ai))
-		var/mob/living/silicon/ai/AI = user
-		can_read = get_dist(src, AI.camera) < 2
-	user << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY bgcolor='[color]'>[can_read ? info : stars(info)][stamps]</BODY></HTML>", "window=[name]")
-	onclose(user, "[name]")
+/obj/item/paper/ui_status(mob/user,/datum/ui_state/state)
+	if(!in_range(user, src) && !isobserver(user))
+		return UI_CLOSE
+	if(user.incapacitated(TRUE, TRUE) || (isobserver(user) && !IsAdminGhost(user)))
+		return UI_UPDATE
+	return ..()
 
 /obj/item/weapon/paper/verb/rename()
 	set name = "Rename paper"
@@ -112,15 +108,15 @@
 				spam_flag = 0
 
 /obj/item/weapon/paper/attack_ai(var/mob/living/silicon/ai/user)
-	show_content(user)
+	tgui_interact(user)
 
 /obj/item/weapon/paper/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
-	if(user.zone_sel.selecting == BP_EYES)
+	if(get_zone_sel(user) == BP_EYES)
 		user.visible_message("<span class='notice'>You show the paper to [M]. </span>", \
 			"<span class='notice'> [user] holds up a paper and shows it to [M]. </span>")
 		M.examinate(src)
 
-	else if(user.zone_sel.selecting == BP_MOUTH) // lipstick wiping
+	else if(get_zone_sel(user) == BP_MOUTH) // lipstick wiping
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
 			if(H == user)
@@ -136,49 +132,6 @@
 					H.lip_style = null
 					H.update_body()
 
-/obj/item/weapon/paper/proc/addtofield(var/id, var/text, var/links = 0)
-	var/locid = 0
-	var/laststart = 1
-	var/textindex = 1
-	while(1) // I know this can cause infinite loops and fuck up the whole server, but the if(istart==0) should be safe as fuck
-		var/istart = 0
-		if(links)
-			istart = findtext(info_links, "<span class=\"paper_field\">", laststart)
-		else
-			istart = findtext(info, "<span class=\"paper_field\">", laststart)
-
-		if(istart==0)
-			return // No field found with matching id
-
-		laststart = istart+1
-		locid++
-		if(locid == id)
-			var/iend = 1
-			if(links)
-				iend = findtext(info_links, "</span>", istart)
-			else
-				iend = findtext(info, "</span>", istart)
-
-			textindex = iend
-			break
-
-	if(links)
-		var/before = copytext(info_links, 1, textindex)
-		var/after = copytext(info_links, textindex)
-		info_links = before + text + after
-	else
-		var/before = copytext(info, 1, textindex)
-		var/after = copytext(info, textindex)
-		info = before + text + after
-		updateinfolinks()
-
-/obj/item/weapon/paper/proc/updateinfolinks()
-	info_links = info
-	var/i = 0
-	for(i=1,i<=fields,i++)
-		addtofield(i, "<font face=\"[deffont]\"><A href='?src=\ref[src];write=[i]'>write</A></font>", 1)
-	info_links = info_links + "<font face=\"[deffont]\"><A href='?src=\ref[src];write=end'>write</A></font>"
-
 
 /obj/item/weapon/paper/proc/clearpaper()
 	info = null
@@ -186,54 +139,12 @@
 	free_space = MAX_PAPER_MESSAGE_LEN
 	stamped = list()
 	overlays.Cut()
-	updateinfolinks()
 	update_icon()
 
 /obj/item/weapon/paper/proc/get_signature(var/obj/item/weapon/pen/P, mob/user as mob)
 	if(P && istype(P, /obj/item/weapon/pen))
 		return P.get_signature(user)
 	return (user && user.real_name) ? user.real_name : "Anonymous"
-
-/obj/item/weapon/paper/proc/parsepencode(t, obj/item/weapon/pen/P, mob/user, iscrayon, isfancy)
-	if(length(t) == 0)
-		return ""
-
-	if(findtext(t, "\[sign\]"))
-		t = replacetext(t, "\[sign\]", "<font face=\"[signfont]\"><i>[get_signature(P, user)]</i></font>")
-
-	if(iscrayon) // If it is a crayon, and he still tries to use these, make them empty!
-		t = replacetext(t, "\[*\]", "")
-		t = replacetext(t, "\[hr\]", "")
-		t = replacetext(t, "\[small\]", "")
-		t = replacetext(t, "\[/small\]", "")
-		t = replacetext(t, "\[list\]", "")
-		t = replacetext(t, "\[/list\]", "")
-		t = replacetext(t, "\[table\]", "")
-		t = replacetext(t, "\[/table\]", "")
-		t = replacetext(t, "\[row\]", "")
-		t = replacetext(t, "\[cell\]", "")
-		t = replacetext(t, "\[logo\]", "")
-
-	if(iscrayon)
-		t = "<font face=\"[crayonfont]\" color=[P ? P.colour : "black"]><b>[t]</b></font>"
-	else if(isfancy)
-		t = "<font face=\"[fancyfont]\" color=[P ? P.colour : "black"]><i>[t]</i></font>"
-	else
-		t = "<font face=\"[deffont]\" color=[P ? P.colour : "black"]>[t]</font>"
-
-	t = pencode2html(t)
-
-	//Count the fields
-	var/laststart = 1
-	while(1)
-		var/i = findtext(t, "<span class=\"paper_field\">", laststart)	//</span>
-		if(i==0)
-			break
-		laststart = i+1
-		fields++
-
-	return t
-
 
 /obj/item/weapon/paper/proc/burn_with_object(obj/item/weapon/flame/P, mob/user)
 	var/class = "warning"
@@ -264,167 +175,150 @@
 	qdel(src)
 
 
-/obj/item/weapon/paper/Topic(href, href_list)
-	..()
-	if(!usr || (usr.stat || usr.restrained()))
+/obj/item/weapon/paper/attackby(obj/item/P, mob/living/user, params)
+	// Enable picking paper up by clicking on it with the clipboard or folder
+	if(istype(P, /obj/item/weapon/clipboard) || istype(P, /obj/item/weapon/folder))
+		P.attackby(src, user)
 		return
-
-	if(href_list["write"])
-		var/id = href_list["write"]
-		//var/t = strip_html_simple(input(usr, "What text do you wish to add to " + (id=="end" ? "the end of the paper" : "field "+id) + "?", "[name]", null),8192) as message
-
-		if(free_space <= 0)
-			to_chat(usr, "<span class='info'>There isn't enough space left on \the [src] to write anything.</span>")
-			return
-
-		var/t =  sanitize(input("Enter what you want to write:", "Write", null, null) as message, free_space, extra = 0, trim = 0)
-
-		if(!t)
-			return
-
-		var/obj/item/i = usr.get_active_hand() // Check to see if he still got that darn pen, also check what type of pen
-		var/iscrayon = 0
-		var/isfancy = 0
-		if(!istype(i, /obj/item/weapon/pen))
-			if(usr.back && istype(usr.back,/obj/item/weapon/rig))
-				var/obj/item/weapon/rig/r = usr.back
-				var/obj/item/rig_module/device/pen/m = locate(/obj/item/rig_module/device/pen) in r.installed_modules
-				if(!r.offline && m)
-					i = m.device
-				else
-					return
-			else
-				return
-
-		if(istype(i, /obj/item/weapon/pen/crayon))
-			iscrayon = 1
-
-		if(istype(i, /obj/item/weapon/pen/fancy))
-			isfancy = 1
-
-
-		// if paper is not in usr, then it must be near them, or in a clipboard or folder, which must be in or near usr
-		if(src.loc != usr && !src.Adjacent(usr) && !((istype(src.loc, /obj/item/weapon/clipboard) || istype(src.loc, /obj/item/weapon/folder)) && (src.loc.loc == usr || src.loc.Adjacent(usr)) ) )
-			return
-
-		var/last_fields_value = fields
-
-		t = parsepencode(t, i, usr, iscrayon, isfancy) // Encode everything from pencode to html
-
-
-		if(fields > 50)//large amount of fields creates a heavy load on the server, see updateinfolinks() and addtofield()
-			to_chat(usr, "<span class='warning'>Too many fields. Sorry, you can't do this.</span>")
-			fields = last_fields_value
-			return
-
-		if(id!="end")
-			addtofield(text2num(id), t) // He wants to edit a field, let him.
-		else
-			info += t // Oh, he wants to edit to the end of the file, let him.
-			updateinfolinks()
-
-		update_space(t)
-
-		usr << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY bgcolor='[color]'>[info_links][stamps]</BODY></HTML>", "window=[name]") // Update the window
-
-		playsound(src, pick('sound/effects/pen1.ogg','sound/effects/pen2.ogg'), 10)
-		update_icon()
-
-
-/obj/item/weapon/paper/attackby(obj/item/weapon/P as obj, mob/user as mob)
-	..()
-	var/clown = 0
-	if(user.mind && (user.mind.assigned_role == "Clown"))
-		clown = 1
-
-	if(istype(P, /obj/item/weapon/tool/tape_roll))
-		var/obj/item/weapon/tool/tape_roll/tape = P
-		tape.stick(src, user)
-		return
-
-	if(istype(P, /obj/item/weapon/paper) || istype(P, /obj/item/weapon/photo))
-		if (istype(P, /obj/item/weapon/paper/carbon))
-			var/obj/item/weapon/paper/carbon/C = P
-			if (!C.iscopy && !C.copied)
-				to_chat(user, "<span class='notice'>Take off the carbon copy first.</span>")
-				add_fingerprint(user)
-				return
-		var/obj/item/weapon/paper_bundle/B = new(src.loc)
-		if (name != "paper")
-			B.SetName(name)
-		else if (P.name != "paper" && P.name != "photo")
-			B.SetName(P.name)
-
-		if(!user.unEquip(P, B) || !user.unEquip(src, B))
-			return
-		user.put_in_hands(B)
-
-		to_chat(user, "<span class='notice'>You clip the [P.name] to [(src.name == "paper") ? "the paper" : src.name].</span>")
-
-		B.pages.Add(src)
-		B.pages.Add(P)
-		B.update_icon()
-
 	else if(istype(P, /obj/item/weapon/pen))
-		if(icon_state == "scrap")
-			to_chat(usr, "<span class='warning'>\The [src] is too crumpled to write on.</span>")
+		if(length(info) >= MAX_PAPER_LENGTH) // Sheet must have less than 1000 charaters
+			to_chat(user, "<span class='warning'>This sheet of paper is full!</span>")
 			return
-
-		var/obj/item/weapon/pen/robopen/RP = P
-		if ( istype(RP) && RP.mode == 2 )
-			RP.RenamePaper(user,src)
-		else
-			user << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY bgcolor='[color]'>[info_links][stamps]</BODY></HTML>", "window=[name]")
+		tgui_interact(user)
 		return
+	else if(istype(P, /obj/item/weapon/stamp))
+		to_chat(user, "<span class='notice'>You ready your stamp over the paper! </span>")
+		tgui_interact(user)
+		return /// Normaly you just stamp, you don't need to read the thing
+	else
+		// cut paper?  the sky is the limit!
+		tgui_interact(user) // The other ui will be created with just read mode outside of this
 
-	else if(istype(P, /obj/item/weapon/stamp) || istype(P, /obj/item/clothing/ring/seal))
-		if((!in_range(src, usr) && loc != user && !( istype(loc, /obj/item/weapon/clipboard) ) && loc.loc != user && user.get_active_hand() != P))
-			return
+	return ..()
 
-		stamps += (stamps=="" ? "<HR>" : "<BR>") + "<i>This paper has been stamped with the [P.name].</i>"
+/obj/item/weapon/paper/ui_assets(mob/user)
+	return list(
+		get_asset_datum(/datum/asset/spritesheet/simple/paper),
+	)
 
-		var/image/stampoverlay = image('icons/obj/bureaucracy.dmi')
-		var/x
-		var/y
-		if(istype(P, /obj/item/weapon/stamp/captain) || istype(P, /obj/item/weapon/stamp/centcomm))
-			x = rand(-2, 0)
-			y = rand(-1, 2)
-		else
-			x = rand(-2, 2)
-			y = rand(-3, 2)
-		offset_x += x
-		offset_y += y
-		stampoverlay.pixel_x = x
-		stampoverlay.pixel_y = y
+/obj/item/weapon/paper/tgui_interact(mob/user, datum/tgui/ui)
+	// Update the UI
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "PaperSheet", name)
+		ui.open()
 
-		if(istype(P, /obj/item/weapon/stamp/clown))
-			if(!clown)
-				to_chat(user, "<span class='notice'>You are totally unable to use the stamp. HONK!</span>")
-				return
 
-		if(!ico)
-			ico = new
-		ico += "paper_[P.icon_state]"
-		stampoverlay.icon_state = "paper_[P.icon_state]"
+/obj/item/weapon/paper/ui_static_data(mob/user)
+	. = list()
+	.["text"] = info
+	.["max_length"] = MAX_PAPER_LENGTH
+	.["paper_color"] = !color || color == "white" ? "#FFFFFF" : color // color might not be set
+	.["paper_state"] = icon_state /// TODO: show the sheet will bloodied or crinkling?
+	.["stamps"] = stamps
 
-		if(!stamped)
-			stamped = new
-		stamped += P.type
-		overlays += stampoverlay
 
-		playsound(src, 'sound/effects/stamp.ogg', 50, 1)
-		to_chat(user, "<span class='notice'>You stamp the paper with your [P.name].</span>")
+/obj/item/weapon/paper/ui_data(mob/user)
+	var/list/data = list()
+	data["edit_usr"] = "[user]"
 
-	else if(istype(P, /obj/item/weapon/flame))
-		burn_with_object(P, user)
+	var/obj/holding = user.get_active_hand()
+	// Use a clipboard's pen, if applicable
+	if(istype(loc, /obj/item/weapon/clipboard))
+		var/obj/item/weapon/clipboard/clipboard = loc
+		// This is just so you can still use a stamp if you're holding one. Otherwise, it'll
+		// use the clipboard's pen, if applicable.
+		if(!istype(holding, /obj/item/weapon/stamp) && clipboard.haspen)
+			holding = clipboard.haspen
+	else if(istype(holding, /obj/item/weapon/pen))
+		var/obj/item/weapon/pen/PEN = holding
+		data["pen_font"] = PEN.font
+		data["pen_color"] = PEN.colour
+		data["edit_mode"] = MODE_WRITING
+		data["is_crayon"] = FALSE
+		data["stamp_class"] = "FAKE"
+		data["stamp_icon_state"] = "FAKE"
+	else if(istype(holding, /obj/item/weapon/stamp))
+		var/datum/asset/spritesheet/sheet = get_asset_datum(/datum/asset/spritesheet/simple/paper)
+		data["stamp_icon_state"] = holding.icon_state
+		data["stamp_class"] = sheet.icon_class_name(holding.icon_state)
+		data["edit_mode"] = MODE_STAMPING
+		data["pen_font"] = "FAKE"
+		data["pen_color"] = "FAKE"
+		data["is_crayon"] = FALSE
+	else
+		data["edit_mode"] = MODE_READING
+		data["pen_font"] = "FAKE"
+		data["pen_color"] = "FAKE"
+		data["is_crayon"] = FALSE
+		data["stamp_icon_state"] = "FAKE"
+		data["stamp_class"] = "FAKE"
+	if(istype(loc, /obj/structure/noticeboard))
+		var/obj/structure/noticeboard/noticeboard = loc
+		if(!noticeboard.allowed(user))
+			data["edit_mode"] = MODE_READING
+	data["field_counter"] = field_counter
+	data["form_fields"] = form_fields
 
-	else if(istype(P, /obj/item/weapon/paper_bundle))
-		var/obj/item/weapon/paper_bundle/attacking_bundle = P
-		attacking_bundle.insert_sheet_at(user, (attacking_bundle.pages.len)+1, src)
-		attacking_bundle.update_icon()
+	return data
 
-	add_fingerprint(user)
-	return
+/obj/item/weapon/paper/ui_act(action, params,datum/tgui/ui)
+	. = ..()
+	if(.)
+		return
+	switch(action)
+		if("stamp")
+			var/stamp_x = text2num(params["x"])
+			var/stamp_y = text2num(params["y"])
+			var/stamp_r = text2num(params["r"]) // rotation in degrees
+			var/stamp_icon_state = params["stamp_icon_state"]
+			var/stamp_class = params["stamp_class"]
+			if (isnull(stamps))
+				stamps = list()
+			if(stamps.len < MAX_PAPER_STAMPS)
+				// I hate byond when dealing with freaking lists
+				stamps[++stamps.len] = list(stamp_class, stamp_x, stamp_y, stamp_r) /// WHHHHY
+
+				/// This does the overlay stuff
+				if (isnull(stamped))
+					stamped = list()
+				if(stamped.len < MAX_PAPER_STAMPS_OVERLAYS)
+					var/mutable_appearance/stampoverlay = mutable_appearance('icons/obj/bureaucracy.dmi', "paper_[stamp_icon_state]")
+					stampoverlay.pixel_x = rand(-2, 2)
+					stampoverlay.pixel_y = rand(-3, 2)
+					overlays += stampoverlay
+					LAZYADD(stamped, stamp_icon_state)
+					update_icon()
+
+				update_static_data(usr,ui)
+				var/obj/O = ui.user.get_active_hand()
+				ui.user.visible_message("<span class='notice'>[ui.user] stamps [src] with \the [O.name]!</span>", "<span class='notice'>You stamp [src] with \the [O.name]!</span>")
+			else
+				to_chat(usr, pick("You try to stamp but you miss!", "There is no where else you can stamp!"))
+			. = TRUE
+
+		if("save")
+			var/in_paper = params["text"]
+			var/paper_len = length(in_paper)
+			field_counter = params["field_counter"] ? text2num(params["field_counter"]) : field_counter
+
+			if(paper_len > MAX_PAPER_LENGTH)
+				// Side note, the only way we should get here is if
+				// the javascript was modified, somehow, outside of
+				// byond.  but right now we are logging it as
+				// the generated html might get beyond this limit
+				log_paper("[key_name(ui.user)] writing to paper [name], and overwrote it by [paper_len-MAX_PAPER_LENGTH]")
+			if(paper_len == 0)
+				to_chat(ui.user, pick("Writing block strikes again!", "You forgot to write anthing!"))
+			else
+				log_paper("[key_name(ui.user)] writing to paper [name]")
+				if(info != in_paper)
+					to_chat(ui.user, "You have added to your paper masterpiece!");
+					info = in_paper
+					update_static_data(usr,ui)
+
+
+			. = TRUE
 
 //For supply.
 /obj/item/weapon/paper/manifest

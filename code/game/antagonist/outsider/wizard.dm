@@ -87,7 +87,7 @@
 		break
 	if(!survivor)
 		feedback_set_details("round_end_result","loss - wizard killed")
-		to_world("<span class='danger'><font size = 3>The [(current_antagonists.len>1)?"[role_text_plural] have":"[role_text] has"] been killed by the crew! The Space Wizards Federation has been taught a lesson they will not soon forget!</font></span>")
+		to_chat(world, "<span class='danger'><font size = 3>The [(current_antagonists.len>1)?"[role_text_plural] have":"[role_text] has"] been killed by the crew! The Space Wizards Federation has been taught a lesson they will not soon forget!</font></span>")
 
 
 /datum/antagonist/wizard/print_player_summary()
@@ -103,7 +103,7 @@
 				text += "<br><b>[spell.name]</b> - "
 				text += "Speed: [spell.spell_levels["speed"]] Power: [spell.spell_levels["power"]]"
 		text += "<br>"
-		to_world(text)
+		to_chat(world, text)
 
 
 //To batch-remove wizard spells. Linked to mind.dm.

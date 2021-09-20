@@ -38,7 +38,7 @@
 		to_chat(user, "You enable the mag-pulse traction system.")
 	user.update_inv_shoes()	//so our mob-overlays update
 	user.update_action_buttons()
-	user.update_floating()
+	user.gravity_changed()
 
 /obj/item/clothing/shoes/magboots/mob_can_equip(var/mob/M, var/slot, var/disable_warning = 0, var/force = 0)
 	var/mob/living/carbon/human/H = M

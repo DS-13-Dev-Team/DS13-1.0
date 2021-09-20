@@ -105,7 +105,7 @@ var/list/admin_ranks = list()								//list of all ranks with associated rights
 
 		establish_db_connection()
 		if(!dbcon.IsConnected())
-			error("Failed to connect to database in load_admins(). Reverting to legacy system.")
+			log_debug("Failed to connect to database in load_admins(). Reverting to legacy system.")
 			log_misc("Failed to connect to database in load_admins(). Reverting to legacy system.")
 			CONFIG_SET(flag/admin_legacy_system, TRUE)
 			load_admins()
@@ -125,7 +125,7 @@ var/list/admin_ranks = list()								//list of all ranks with associated rights
 			//find the client for a ckey if they are connected and associate them with the new admin datum
 			D.associate(GLOB.ckey_directory[ckey])
 		if(!admin_datums)
-			error("The database query in load_admins() resulted in no admins being added to the list. Reverting to legacy system.")
+			log_debug("The database query in load_admins() resulted in no admins being added to the list. Reverting to legacy system.")
 			log_misc("The database query in load_admins() resulted in no admins being added to the list. Reverting to legacy system.")
 			CONFIG_SET(flag/admin_legacy_system, TRUE)
 			load_admins()

@@ -57,7 +57,7 @@ SUBSYSTEM_DEF(garbage)
 		msg += "TGR:[round((totalgcs/(totaldels+totalgcs))*100, 0.01)]%"
 	msg += " P:[pass_counts.Join(",")]"
 	msg += "|F:[fail_counts.Join(",")]"
-	..(msg)
+	return msg
 
 /datum/controller/subsystem/garbage/Shutdown()
 	//Adds the del() log to the qdel log file
@@ -451,8 +451,10 @@ SUBSYSTEM_DEF(garbage)
 			var/variable = L[varname]
 
 			if(variable == src)
-				testing("Found [src.type] \ref[src] in [D.type]'s [varname] var. [Xname]")
-
+#ifdef TESTING
+				var/message = "Found [src.type] [any2ref(src)] in [D.type] [varname] var. [Xname]"
+				testing(message)
+#endif
 			else if(islist(variable))
 				DoSearchVar(variable, "[Xname] -> list", recursive_limit-1)
 
@@ -460,10 +462,16 @@ SUBSYSTEM_DEF(garbage)
 		var/normal = IS_NORMAL_LIST(X)
 		for(var/I in X)
 			if (I == src)
-				testing("Found [src.type] \ref[src] in list [Xname].")
+#ifdef TESTING
+				var/message = "Found [src.type] [any2ref(src)] in list [Xname]."
+				testing(message)
+#endif
 
 			else if (I && !isnum(I) && normal && X[I] == src)
-				testing("Found [src.type] \ref[src] in list [Xname]\[[I]\]")
+#ifdef TESTING
+				var/message = "Found [src.type] [any2ref(src)] in list [Xname]\[[I]\]"
+				testing(message)
+#endif
 
 			else if (islist(I))
 				DoSearchVar(I, "[Xname] -> list", recursive_limit-1)

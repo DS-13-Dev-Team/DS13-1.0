@@ -247,7 +247,7 @@ default behaviour is:
 
 /mob/living/proc/get_organ_target()
 	var/mob/shooter = src
-	var/t = shooter:zone_sel.selecting
+	var/t = shooter.hud_used.zone_sel.selecting
 	if ((t in list( BP_EYES, BP_MOUTH )))
 		t = BP_HEAD
 	var/obj/item/organ/external/def_zone = ran_zone(t)
@@ -487,7 +487,7 @@ default behaviour is:
 
 //damage/heal the mob ears and adjust the deaf amount
 /mob/living/adjust_ear_damage(var/damage, var/deaf)
-	
+
 	ear_damage = max(0, ear_damage + damage)
 	ear_deaf = max(0, ear_deaf + deaf)
 
@@ -498,10 +498,10 @@ default behaviour is:
 	if(!isnull(deaf))
 		ear_deaf = deaf
 
-/mob/proc/can_be_possessed_by(var/mob/observer/ghost/possessor)
+/mob/proc/can_be_possessed_by(var/mob/dead/observer/ghost/possessor)
 	return istype(possessor) && possessor.client
 
-/mob/living/can_be_possessed_by(var/mob/observer/ghost/possessor)
+/mob/living/can_be_possessed_by(var/mob/dead/observer/ghost/possessor)
 	if(!..())
 		return 0
 	if(!possession_candidate)
@@ -514,7 +514,7 @@ default behaviour is:
 		return 0
 	return 1
 
-/mob/living/proc/do_possession(var/mob/observer/ghost/possessor)
+/mob/living/proc/do_possession(var/mob/dead/observer/ghost/possessor)
 
 	if(!(istype(possessor) && possessor.ckey))
 		return 0

@@ -78,7 +78,7 @@
 	reward_heal = 0
 	start_range = 7
 
-	statmods = list(STATMOD_EVASION = -100, STATMOD_VIEW_RANGE = -2)
+	statmods = list(STATMOD_EVASION = -100, STATMOD_VIEW_RANGE = -2, STATMOD_INCOMING_DAMAGE_MULTIPLICATIVE	=	EXECUTION_DAMAGE_VULNERABILITY)
 
 	all_stages = list(/datum/execution_stage/approach,
 	/datum/execution_stage/cover_mouth,
@@ -203,6 +203,10 @@
 	var/datum/wound/W = H.createwound(type = PIERCE, damage = 9999, surgical = FALSE, forced_type = /datum/wound/puncture/massive/skullbore)
 	host.victim.embed(host.weapon, BP_HEAD, supplied_wound = W)//The knife embeds in the victim's skull for a few secs. We'll pull it out though!
 
+	//Create this extension, used for conversion
+	set_extension(H, /datum/extension/skullbore)
+
+
 	//Destroy the brain. This kills the man
 	var/obj/item/organ/internal/brain/B = host.victim.get_organ(BP_BRAIN)
 	if (B)
@@ -228,3 +232,9 @@
 
 	host.user.stop_grabbing(host.victim)
 	.=..()
+
+
+//Skullbore marker
+/datum/extension/skullbore
+	flags = EXTENSION_FLAG_IMMEDIATE
+	statmods = list(STATMOD_CONVERSION_COMPATIBILITY = 1)	//Adds an extra 1 point to conversion compatibility

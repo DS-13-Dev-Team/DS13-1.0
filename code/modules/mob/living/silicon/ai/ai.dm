@@ -106,12 +106,12 @@ var/list/ai_verbs_default = list(
 	var/static/list/custom_ai_icons_by_ckey_and_name
 
 /mob/living/silicon/ai/proc/add_ai_verbs()
-	src.verbs |= ai_verbs_default
-	src.verbs -= /mob/living/verb/ghost
+	add_verb(src, ai_verbs_default)
+	remove_verb(src, /mob/living/verb/ghost)
 
 /mob/living/silicon/ai/proc/remove_ai_verbs()
-	src.verbs -= ai_verbs_default
-	src.verbs += /mob/living/verb/ghost
+	remove_verb(src, ai_verbs_default)
+	add_verb(src, /mob/living/verb/ghost)
 
 /mob/living/silicon/ai/New(loc, var/datum/ai_laws/L, var/obj/item/device/mmi/B, var/safety = 0)
 	announcement = new()
@@ -337,7 +337,7 @@ var/list/ai_verbs_default = list(
 	if(confirm == "Yes")
 		call_shuttle_proc(src)
 
-	post_status("shuttle")
+	post_status("shuttle", src)
 
 /mob/living/silicon/ai/proc/ai_recall_shuttle()
 	set category = "Silicon Commands"

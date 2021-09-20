@@ -34,6 +34,8 @@
 	//Retraction handling
 	var/retracted	=	FALSE			//	Is this limb retracted into its parent?  If true, the limb is not rendered and all hits are passed to parent
 	var/retract_timer					//	A timer handle used for temporary retractions or extensions
+	var/default_extend_time = 10 SECONDS	//When autoextended, how long should this organ be left out for if no time is specified?
+
 
 	// A bitfield for a collection of limb behavior flags.
 	var/limb_flags = ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_CAN_BREAK
@@ -249,7 +251,7 @@
 					current_child.implants.Remove(removing)
 					current_child.internal_organs.Remove(removing)
 
-					status |= ORGAN_CUT_AWAY
+					set_status(ORGAN_CUT_AWAY, TRUE)
 					if(istype(removing, /obj/item/organ/internal/mmi_holder))
 						var/obj/item/organ/internal/mmi_holder/O = removing
 						removing = O.transfer_and_delete()
@@ -301,7 +303,7 @@
 
 	dislocated = 1
 	if(owner)
-		owner.verbs |= /mob/living/carbon/human/proc/undislocate
+		add_verb(owner, /mob/living/carbon/human/proc/undislocate)
 
 /obj/item/organ/external/proc/undislocate()
 	if(dislocated == -1)
@@ -315,7 +317,7 @@
 		for(var/obj/item/organ/external/limb in owner.organs)
 			if(limb.dislocated == 1)
 				return
-		owner.verbs -= /mob/living/carbon/human/proc/undislocate
+		remove_verb(owner, /mob/living/carbon/human/proc/undislocate)
 
 /obj/item/organ/external/update_health()
 	damage = min(max_damage, (brute_dam + burn_dam))
@@ -696,7 +698,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 	if(germ_level >= INFECTION_LEVEL_THREE && antibiotics < REAGENTS_OVERDOSE)	//overdosing is necessary to stop severe infections
 		if (!(status & ORGAN_DEAD))
-			status |= ORGAN_DEAD
+			set_status(ORGAN_DEAD, TRUE)
 			to_chat(owner, "<span class='notice'>You can't feel your [name] anymore...</span>")
 			owner.update_body(1)
 
@@ -768,7 +770,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 	number_wounds = 0
 	brute_dam = 0
 	burn_dam = 0
-	status &= ~ORGAN_BLEEDING
+	set_status(ORGAN_BLEEDING, FALSE)
 	var/clamped = 0
 
 	var/mob/living/carbon/human/H
@@ -785,7 +787,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 		if(bleeds && W.bleeding() && (H && H.should_have_organ(BP_HEART)))
 			W.bleed_timer--
-			status |= ORGAN_BLEEDING
+			set_status(ORGAN_BLEEDING, TRUE)
 
 		clamped |= W.clamped
 		number_wounds += W.amount
@@ -989,6 +991,8 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 			qdel(src)
 
+	victim.update_extension(/datum/extension/updating/impaired_locomotion)
+
 /****************************************************
 			   HELPERS
 ****************************************************/
@@ -1035,7 +1039,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 /obj/item/organ/external/proc/bandage()
 	var/rval = 0
-	status &= ~ORGAN_BLEEDING
+	set_status(ORGAN_BLEEDING, FALSE)
 	for(var/datum/wound/W in wounds)
 		rval |= !W.bandaged
 		W.bandaged = 1
@@ -1060,7 +1064,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 /obj/item/organ/external/proc/clamp_wounds()
 	var/rval = 0
-	src.status &= ~ORGAN_BLEEDING
+	src.set_status(ORGAN_BLEEDING, FALSE)
 	for(var/datum/wound/W in wounds)
 		rval |= !W.clamped
 		W.clamped = 1
@@ -1110,7 +1114,7 @@ obj/item/organ/external/proc/remove_clamps()
 			owner.emote("scream")
 
 	playsound(src.loc, "fracture", 100, 1, -2)
-	status |= ORGAN_BROKEN
+	set_status(ORGAN_BROKEN, TRUE)
 	broken_description = pick("broken","fracture","hairline fracture")
 
 	// Fractures have a chance of getting you out of restraints
@@ -1130,7 +1134,7 @@ obj/item/organ/external/proc/remove_clamps()
 	if(brute_dam > min_broken_damage * CONFIG_GET(number/organ_health_multiplier))
 		return 0	//will just immediately fracture again
 
-	status &= ~ORGAN_BROKEN
+	set_status(ORGAN_BROKEN, FALSE)
 	return 1
 
 /obj/item/organ/external/proc/apply_splint(var/atom/movable/splint)
@@ -1239,7 +1243,7 @@ obj/item/organ/external/proc/remove_clamps()
 	supplied_wound.embedded_objects += W
 	implants += W
 	LAZYADD(owner.implants,W)
-	owner.verbs += /mob/proc/yank_out_object_verb
+	add_verb(owner, /mob/proc/yank_out_object_verb)
 	W.add_blood(owner)
 	if(ismob(W.loc))
 		var/mob/living/H = W.loc
@@ -1642,11 +1646,15 @@ obj/item/organ/external/proc/remove_clamps()
 		owner.update_body(TRUE)
 
 /obj/item/organ/external/proc/extend_for(var/time)
+	if (!time)
+		time = default_extend_time
 	extend()
 
 	retract_timer = addtimer(CALLBACK(src, /obj/item/organ/external/proc/retract), time, TIMER_STOPPABLE)
 
 /obj/item/organ/external/proc/retract_for(var/time)
+	if (!time)
+		time = default_extend_time
 	retract()
 
 	retract_timer = addtimer(CALLBACK(src, /obj/item/organ/external/proc/extend), time, TIMER_STOPPABLE)

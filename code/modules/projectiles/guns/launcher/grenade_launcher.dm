@@ -8,7 +8,7 @@
 	force = 10
 
 	fire_sound = 'sound/weapons/empty.ogg'
-	fire_sound_text = "a metallic thunk"
+	fire_sound_text = "a metallic gravity_shock"
 	screen_shake = 0
 	throw_distance = 7
 	release_force = 5

@@ -5,26 +5,26 @@
 	return storage.ui_host()
 
 /datum/storage_ui/tgui/show_to(var/mob/user)
-	tg_ui_interact(user)
+	tgui_interact(user)
 
 /datum/storage_ui/tgui/hide_from(var/mob/user)
-	tg_ui_interact(user)
+	tgui_interact(user)
 
 /datum/storage_ui/tgui/close_all()
 	SStgui.close_uis(src)
 
 /datum/storage_ui/tgui/on_open(var/mob/user)
-	tg_ui_interact(user)
+	tgui_interact(user)
 
 /datum/storage_ui/tgui/on_insertion(var/mob/user)
 	cached_ui_data = null
-	tg_ui_interact(user)
+	tgui_interact(user)
 
 /datum/storage_ui/tgui/on_post_remove(var/mob/user, var/obj/item/W)
 	cached_ui_data = null
-	tg_ui_interact(user)
+	tgui_interact(user)
 
-/datum/storage_ui/tgui/tg_ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = 0, datum/tgui/master_ui = null, datum/ui_state/state = tg_physical_state)
+/datum/storage_ui/tgui/tgui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = 0, datum/tgui/master_ui = null, datum/ui_state/state = GLOB.tgui_physical_state)
 	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
 	if(!ui)
 		ui = new(user, src, ui_key, "storage", storage.name, 340, 440, master_ui, state)

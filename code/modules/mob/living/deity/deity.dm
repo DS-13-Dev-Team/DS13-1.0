@@ -8,7 +8,7 @@
 	health = 100
 	max_health = 100 //I dunno what to do with health at this point.
 	universal_understand = 1
-	var/eye_type = /mob/observer/eye/cult
+	var/eye_type = /mob/dead/observer/eye/cult
 	var/list/minions = list() //Minds of those who follow him
 	var/list/structures = list() //The objs that this dude controls.
 	var/list/feats = list()
@@ -30,7 +30,7 @@
 			var/datum/mind/M = m
 			remove_follower_spells(M)
 			to_chat(M.current, "<font size='3'><span class='danger'>Your connection has been severed! \The [src] is no more!</span></font>")
-			sound_to(M.current, 'sound/hallucinations/far_noise.ogg')
+			SEND_SOUND(M.current, 'sound/hallucinations/far_noise.ogg')
 			M.current.Weaken(10)
 		for(var/s in structures)
 			var/obj/structure/deity/S = s
@@ -83,7 +83,7 @@
 	dat += "</table>"
 	show_browser(src, JOINTEXT(dat), "window=godform;can_close=0")
 
-/mob/living/deity/proc/set_form(var/type)
+/mob/living/deity/proc/set_form(type)
 	form = new type(src)
 	to_chat(src, "<span class='notice'>You undergo a transformation into your new form!</span>")
 	spawn(1)
@@ -91,7 +91,7 @@
 		var/newname = sanitize(input(src, "Choose a name for your new form.", "Name change", form.name) as text, MAX_NAME_LEN)
 		if(newname)
 			fully_replace_character_name(newname)
-	src.verbs -= /mob/living/deity/verb/choose_form
+	remove_verb(src, /mob/living/deity/verb/choose_form)
 	show_browser(src, null, "window=godform")
 	for(var/m in minions)
 		var/datum/mind/mind = m

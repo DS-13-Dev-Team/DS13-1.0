@@ -41,8 +41,7 @@
 
 /obj/effect/particle_system/Destroy()
 	.=..()
-	if (is_processing)
-		STOP_PROCESSING(SSfastprocess, src)
+	STOP_PROCESSING(SSfastprocess, src)
 	if (base_offset)
 		release_vector(base_offset)
 	if (direction)

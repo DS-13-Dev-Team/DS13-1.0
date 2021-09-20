@@ -51,11 +51,11 @@
 
 	//This is deprecated, see health_doll.dm
 	//If these are ever re-activated a new version will be needed
-	mymob.healths = new /obj/screen()
-	mymob.healths.icon = 'icons/mob/gestalt.dmi'
-	mymob.healths.icon_state = "health0"
-	mymob.healths.SetName("health")
-	mymob.healths.screen_loc = DIONA_SCREEN_LOC_HEALTH
+	healths = new /obj/screen()
+	healths.icon = 'icons/mob/gestalt.dmi'
+	healths.icon_state = "health0"
+	healths.SetName("health")
+	healths.screen_loc = DIONA_SCREEN_LOC_HEALTH
 
-	mymob.client.screen = list(mymob.healths)
+	mymob.client.screen = list(healths)
 	mymob.client.screen += src.adding + src.other

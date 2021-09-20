@@ -1,0 +1,8 @@
+2020-12-06:
+  Jeser:
+  - bugfix: Fixed being unable to restock SCAF Bullpup and SWS Motorized Pulse Rifle
+      magazines with appropriate ammunition.
+  - bugfix: Removed see_in_dark value changes that resulted in necromorphs not having
+      dark vision.
+  TheLion1675:
+  - bugfix: An experimental bugfix to departmental pagers not working.

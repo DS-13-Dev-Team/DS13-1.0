@@ -15,7 +15,12 @@
 
 	salary = SALARY_COMMAND
 
-	access = list(access_dom, access_mf, access_bridge, access_mining, access_keycard_auth)
+	access = list(access_dom, access_mf, access_bridge, access_mining, access_maint_tunnels, access_keycard_auth)
+
+	//This applies to all command staff
+	necro_conversion_compatibility = 1
+	necro_conversion_options = list(SPECIES_NECROMORPH_DIVIDER = 3)
+
 	outfit_type = /decl/hierarchy/outfit/job/mining/dom
 
 	min_skill = list(   SKILL_COMPUTER	  = SKILL_BASIC,
@@ -44,7 +49,7 @@
 	starting_credits = 2400
 	salary = SALARY_SUPERVISOR
 
-	access = list(access_mining, access_mf)
+	access = list(access_mining, access_mf, access_maint_tunnels)
 	outfit_type = /decl/hierarchy/outfit/job/mining/foreman
 
 	min_skill = list(   SKILL_EVA	      = SKILL_EXPERT,
@@ -75,7 +80,7 @@
 
 	salary	= SALARY_UNSKILLED	//Miners and civilians are underpaid plebs
 
-	access = list(access_mining)
+	access = list(access_mining, access_maint_tunnels)
 	outfit_type = /decl/hierarchy/outfit/job/mining/planet_cracker
 
 	min_skill = list(   SKILL_EVA	      = SKILL_ADEPT,

@@ -1,17 +1,32 @@
+
+
+/mob/verb/down()
+	set name = "Move Down"
+	set category = "IC"
+
+	move_down()
+
 /mob/verb/up()
 	set name = "Move Upwards"
 	set category = "IC"
 
 	move_up()
 
-/mob/verb/down()
-	set name = "Move Down"
-	set category = "IC"
-
+//----------------------
+/mob/proc/move_down()
 	SelfMove(DOWN)
 
+/mob/living/move_down()
+	AddMovementHandler(/datum/movement_handler/mob/multiz, /datum/movement_handler/mob/movement)
+	.=..()
+
 /mob/proc/move_up()
+
 	SelfMove(UP)
+
+/mob/living/move_up()
+	AddMovementHandler(/datum/movement_handler/mob/multiz, /datum/movement_handler/mob/movement)
+	.=..()
 
 /mob/living/carbon/human/move_up()
 	var/turf/old_loc = loc
@@ -133,6 +148,9 @@
 	if(throwing)
 		return
 
+	if ((pass_flags & PASS_FLAG_FLYING))
+		return
+
 	if(can_fall())
 		begin_falling(lastloc, below)
 
@@ -232,8 +250,8 @@
 		return
 
 	..()
-	var/min_damage = 7
-	var/max_damage = 14
+	var/min_damage = 5
+	var/max_damage = 10
 	apply_damage(rand(min_damage, max_damage), BRUTE, BP_HEAD)
 	apply_damage(rand(min_damage, max_damage), BRUTE, BP_CHEST)
 	apply_damage(rand(min_damage, max_damage), BRUTE, BP_GROIN)

@@ -354,11 +354,9 @@
 //Updates the availabiliy of the rotation verbs
 /obj/structure/window/proc/update_verbs()
 	if(anchored)
-		verbs -= /obj/structure/window/proc/rotate
-		verbs -= /obj/structure/window/proc/revrotate
+		remove_verb(src, list(/obj/structure/window/proc/rotate, /obj/structure/window/proc/revrotate))
 	else
-		verbs += /obj/structure/window/proc/rotate
-		verbs += /obj/structure/window/proc/revrotate
+		add_verb(src, list(/obj/structure/window/proc/rotate, /obj/structure/window/proc/revrotate))
 
 // Visually connect with every type of window as long as it's full-tile.
 /obj/structure/window/can_visually_connect()

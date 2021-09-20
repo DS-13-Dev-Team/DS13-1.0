@@ -155,7 +155,7 @@ If the tripod hits a victim with the frontal cone, it gains 40% reduction on inc
 
 
 #define TRIPOD_SWING_DESC 	"<h2>Arm Swing:</h2><br>\
-<h3>Hotkey: Ctrl+Alt+Click </h3><br>\
+<h3>Hotkey: Alt+Click </h3><br>\
 <h3>Cooldown: 3 seconds</h3><br>\
 <h3>Damage: 20</h3><br>\
 The Tripod swings one of its huge arms around in a vast arc, hitting mobs and objects infront of it. Swing deals good knockback and has a 3-tile range, however it has a few downsides:<br>\
@@ -639,7 +639,7 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 	/datum/execution_stage/tripod_bisect)
 
 
-	statmods = 	list(STATMOD_EVASION = -100, STATMOD_VIEW_RANGE = -6)
+	statmods = 	list(STATMOD_EVASION = -100, STATMOD_VIEW_RANGE = -6, STATMOD_INCOMING_DAMAGE_MULTIPLICATIVE	=	EXECUTION_DAMAGE_VULNERABILITY)
 
 
 /datum/extension/execution/tripod_kiss/interrupt()
