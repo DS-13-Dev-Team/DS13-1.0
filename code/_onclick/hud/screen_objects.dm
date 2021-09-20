@@ -114,10 +114,8 @@
 	icon_state = "intent_[intent]"
 
 /obj/screen/intent/added_to_screen(var/client/C)
-	to_chat(world, "Added to screen[C.mob] [C.mob.a_intent]")
 	if (C.mob)
 		intent = C.mob.a_intent
-		to_chat(world,"intent is now [intent]")
 		update_icon()
 
 

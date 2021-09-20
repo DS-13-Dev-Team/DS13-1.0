@@ -70,7 +70,6 @@ var/global/list/sparring_attack_cache = list()
 
 /datum/unarmed_attack/proc/is_usable(var/mob/living/carbon/human/user, var/atom/target, var/zone)
 	if(user.restrained())
-		to_chat(world, "User restrained")
 		return 0
 
 	// Check if they have a functioning hand.
@@ -85,7 +84,6 @@ var/global/list/sparring_attack_cache = list()
 				has_required_organ = TRUE
 
 	if (!has_required_organ)
-		to_chat(world, "User misisng organ [dump_list(required_limb)]")
 		return FALSE
 
 	return TRUE
