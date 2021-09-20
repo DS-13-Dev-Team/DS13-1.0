@@ -87,7 +87,7 @@
 			for (var/spell/S in M.mind.learned_spells)
 				new_mob.add_spell(new S.type)
 
-			new_mob.a_intent_change(I_HURT)
+			new_mob.set_attack_intent(I_HURT)
 			if(M.mind)
 				M.mind.transfer_to(new_mob)
 			else

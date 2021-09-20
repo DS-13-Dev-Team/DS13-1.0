@@ -366,7 +366,7 @@ var/list/intents = list(I_HELP,I_DISARM,I_GRAB,I_HURT)
 
 //change a mob's act-intent. Input the intent as a string such as "help" or use "right"/"left
 //There should really be an Observation in here to detect this
-/mob/verb/a_intent_change(input as text)
+/mob/verb/set_attack_intent(input as text)
 	set name = "a-intent"
 	set hidden = 1
 

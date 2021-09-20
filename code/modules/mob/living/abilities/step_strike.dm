@@ -94,7 +94,7 @@
 		//And make the user hit the target
 		//We need to be in harm intent for this, set it if its not already
 		if (user.a_intent != I_HURT)
-			user.a_intent_change(I_HURT)
+			user.set_attack_intent(I_HURT)
 
 		//We'll set the user's last attack to some time in the past so they can attack again
 		user.last_attack = 0

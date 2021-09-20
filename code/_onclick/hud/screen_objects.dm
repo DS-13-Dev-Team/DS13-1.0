@@ -108,12 +108,10 @@
 	else if(icon_y <= world.icon_size/2)
 		intent = I_GRAB
 	update_icon()
-	usr.a_intent_change(intent)
+	usr.set_attack_intent(intent)
 
 /obj/screen/intent/update_icon()
-	to_chat(world, "Intent icon update [intent]")
 	icon_state = "intent_[intent]"
-	crash_with("Intent icon update [intent]")
 
 /obj/screen/intent/added_to_screen(var/client/C)
 	to_chat(world, "Added to screen[C.mob] [C.mob.a_intent]")
@@ -257,7 +255,7 @@
 							else
 								to_chat(C, "<span class='notice'>You don't have a[breathes=="oxygen" ? "n oxygen" : addtext(" ",breathes)] tank.</span>")
 		if("act_intent")
-			usr.a_intent_change("right")
+			usr.set_attack_intent("right")
 
 		if("pull")
 			usr.stop_pulling()
