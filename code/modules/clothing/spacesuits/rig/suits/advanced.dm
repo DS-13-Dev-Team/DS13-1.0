@@ -50,5 +50,8 @@
 /obj/item/clothing/head/helmet/space/rig/advanced
 	name = "hood"
 
-
+/obj/item/weapon/rig/advanced/maxstone
+	name = "modified advanced RIG"
+	desc = "The latest in cutting-edge RIG technology. This one is a slightly older model, still using the standard engineering suit scheme. It has `Max S.` engraved next to the monitor lights."
+	icon_state = "ds_advanced_rig_stone"
 
