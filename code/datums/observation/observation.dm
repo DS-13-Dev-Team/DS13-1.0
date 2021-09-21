@@ -144,7 +144,7 @@
 	var/list/callbacks = listeners[listener]
 
 
-	if(!callbacks.Remove(proc_call))
+	if(!callbacks?.Remove(proc_call))
 		return FALSE
 
 	if (!length(callbacks))
