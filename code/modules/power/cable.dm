@@ -34,14 +34,15 @@ By design, d1 is the smallest direction and d2 is the highest
 	var/d2 = 1
 
 
-	layer = EXPOSED_WIRE_LAYER
-
 	color = COLOR_MAROON
 	var/obj/machinery/power/breakerbox/breaker_box
 
 	//These are underfloor, stop getting involved in movement calculations
 	can_block_movement = FALSE
 
+/obj/structure/cable/Initialize()
+	. = ..()
+	layer = EXPOSED_WIRE_LAYER
 
 /obj/structure/cable/drain_power(var/drain_check, var/surge, var/amount = 0)
 
