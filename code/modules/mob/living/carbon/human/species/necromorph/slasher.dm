@@ -95,15 +95,13 @@
 /datum/species/necromorph/slasher/desiccated
 	name = SPECIES_NECROMORPH_SLASHER_DESICCATED
 	icon_template = 'icons/mob/necromorph/slasher/desiccated.dmi'
-	marker_spawnable = FALSE
-	preference_settable = FALSE
+	NECROMORPH_VISUAL_VARIANT
 
 
 /datum/species/necromorph/slasher/carrion
 	name = SPECIES_NECROMORPH_SLASHER_CARRION
 	icon_template = 'icons/mob/necromorph/slasher/carrion.dmi'
-	marker_spawnable = FALSE
-	preference_settable = FALSE
+	NECROMORPH_VISUAL_VARIANT
 	icon_lying = null
 	lying_rotation = 90
 

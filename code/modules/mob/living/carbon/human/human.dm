@@ -925,7 +925,7 @@
 
 	species.create_organs(src)
 
-	species.handle_post_spawn(src)
+
 
 
 	default_pixel_x = initial(pixel_x) + species.pixel_offset_x
@@ -971,7 +971,7 @@
 	for (var/obj/item/I in get_equipped_items())
 		I.species_changed(src, species)
 
-
+	species.handle_post_spawn(src)
 
 	updatehealth()
 

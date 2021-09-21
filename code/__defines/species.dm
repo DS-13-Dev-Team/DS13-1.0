@@ -88,6 +88,7 @@
 #define SPECIES_NECROMORPH_BRUTE_FLESH	"BruteF"
 #define SPECIES_NECROMORPH_SLASHER_DESICCATED "Ancient Slasher"
 #define SPECIES_NECROMORPH_SLASHER_CARRION	"Carrion Gestalt"
+#define	SPECIES_NECROMORPH_LURKER_MALO	"Malo"
 
 #define SPECIES_NECROMORPH_PUKER_FLAYED	"Flayed One"
 #define SPECIES_NECROMORPH_PUKER_CLASSIC	"Classic Puker"
@@ -111,6 +112,12 @@ SPECIES_NECROMORPH_LURKER,\
 SPECIES_NECROMORPH_UBERMORPH,\
 SPECIES_NECROMORPH_INFECTOR
 
+//Put this into any necromorph definition which is just a graphical change from its parent species.
+//These flags make sure that variant doesn't appear in places it shouldn't
+#define NECROMORPH_VISUAL_VARIANT	marker_spawnable = FALSE;\
+spawner_spawnable = FALSE;\
+preference_settable = FALSE;\
+variants = list();
 
 #define STANDARD_CLOTHING_EXCLUDE_SPECIES	list("exclude", SPECIES_NABBER,SPECIES_ALL_NECROMORPHS)
 #define SIGNAL	"signal"

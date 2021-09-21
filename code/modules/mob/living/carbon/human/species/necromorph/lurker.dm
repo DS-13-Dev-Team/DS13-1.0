@@ -48,6 +48,10 @@
 	single_icon = FALSE
 	spawner_spawnable = TRUE
 
+	variants = list(SPECIES_NECROMORPH_LURKER = 1, SPECIES_NECROMORPH_LURKER_MALO = 0.1)
+
+	var/shell_type = /obj/item/clothing/lurker_shell
+
 	pixel_offset_x = -16
 
 	evasion = 10	//Doesn't move much, but small target
@@ -141,6 +145,14 @@
 	)
 
 
+/datum/species/necromorph/lurker/malo
+	name = SPECIES_NECROMORPH_LURKER_MALO
+	NECROMORPH_VISUAL_VARIANT
+
+	bodytype = SPECIES_NECROMORPH_LURKER_MALO
+	icon_template = 'icons/mob/necromorph/lurker/lurker_malo.dmi'
+
+	shell_type = /obj/item/clothing/lurker_shell/malo
 
 #define LURKER_SHELL_DESC	"<h2>Retractable Shell:</h2><br>\
 <h3>Hotkey: Ctrl+Alt+Click </h3><br>\
@@ -389,14 +401,35 @@ The Lurker can only fire spines while its shell is open"
 	name = "retractible shell"
 	siemens_coefficient = 0.9
 	species_restricted = FALSE
+	canremove = FALSE
 	permeability_threshold = 0.8	//As long as health is above this proportion of max health, reagent permeability is unaffected. Below that value it increases rapidly
 	armor = list(melee = 45, bullet = 45, laser = 45, energy = 45, bomb = 45, bio = 45, rad = 45)
 	icon = 'icons/mob/necromorph/lurker.dmi'
 	icon_state = "lurker_shell"
 	item_state = "lurker_shell"
+
+	var/open_icon_state	=	""
+	var/open_item_state = ""
+
 	slot_flags = SLOT_BACK
 	sprite_sheets = list(
 		SPECIES_NECROMORPH_LURKER = 'icons/mob/necromorph/lurker.dmi'
+		)
+
+//Remove this to make way for new shell
+/obj/item/clothing/lurker_shell/species_changed(var/mob/living/carbon/human/H, var/datum/species/S)
+	canremove = TRUE
+	H.unEquip(src)
+
+/obj/item/clothing/lurker_shell/malo
+	icon = 'icons/mob/necromorph/lurker/lurker_malo.dmi'
+	open_icon_state	=	"shell"
+	open_item_state = "shell"
+	icon_state = ""
+	item_state = ""
+
+	sprite_sheets = list(
+		SPECIES_NECROMORPH_LURKER_MALO = 'icons/mob/necromorph/lurker/lurker_malo.dmi'
 		)
 
 /obj/item/clothing/lurker_shell/proc/close()
@@ -414,7 +447,8 @@ The Lurker can only fire spines while its shell is open"
 /datum/species/necromorph/lurker/handle_post_spawn(var/mob/living/carbon/human/H)
 	.=..()
 
-	var/obj/item/clothing/lurker_shell/shell = new(H)
+	var/obj/item/clothing/lurker_shell/shell = new shell_type(H)
+	world << "created shell [shell.type]"
 	H.equip_to_slot_or_del(shell, slot_back)
 
 	set_extension(H, /datum/extension/retractable_cover/lurker, shell, list(BP_HEAD, BP_L_ARM, BP_R_ARM))

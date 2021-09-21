@@ -177,8 +177,7 @@ Brute will be forced into a reflexive curl under certain circumstances, but it c
 	icon_dead = "brute-f-dead"
 	mob_type = /mob/living/carbon/human/necromorph/bruteflesh
 
-	marker_spawnable = FALSE
-	preference_settable = FALSE
+	NECROMORPH_VISUAL_VARIANT
 /*
 	Brute charge: Slower but more powerful due to mob size.
 	Shorter windup time making it deadly at close range
