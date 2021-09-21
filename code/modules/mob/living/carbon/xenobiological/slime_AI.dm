@@ -143,19 +143,19 @@
 
 		if(Target.Adjacent(src))
 			if(istype(Target, /mob/living/silicon)) // Glomp the silicons
-				a_intent = I_HURT
+				set_attack_intent(I_HURT)
 				UnarmedAttack(Target)
 				addedDelay = 10
 
 			else if(Target.client && !Target.lying && prob(60 + powerlevel * 4)) // Try to take down the target first
-				a_intent = I_DISARM
+				set_attack_intent(I_DISARM)
 				UnarmedAttack(Target)
 				addedDelay = 10
 
 			else
-				a_intent = I_GRAB
+				set_attack_intent(I_GRAB)
 				if(invalidFeedTarget(Target))
-					a_intent = I_HURT //just glomp them instead
+					set_attack_intent(I_HURT) //just glomp them instead
 					addedDelay = 10
 				UnarmedAttack(Target)
 
@@ -174,9 +174,9 @@
 				frenemy = S
 		if (frenemy && prob(1) && frenemy.Adjacent(src))
 			if (frenemy.colour == colour)
-				a_intent = I_HELP
+				set_attack_intent(I_HELP)
 			else
-				a_intent = I_HURT
+				set_attack_intent(I_HURT)
 			UnarmedAttack(frenemy)
 
 	var/sleeptime = max(movement_delay(), 5) + addedDelay // Maximum one action per half a second
@@ -186,12 +186,12 @@
 
 /mob/living/carbon/slime/proc/UpdateFace()
 	var/newmood = ""
-	a_intent = I_HELP
+	set_attack_intent(I_HELP)
 	if(confused)
 		newmood = "pout"
 	else if(rabid || attacked)
 		newmood = "angry"
-		a_intent = I_HURT
+		set_attack_intent(I_HURT)
 	else if(Target)
 		newmood = "mischevous"
 

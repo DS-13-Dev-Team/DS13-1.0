@@ -335,7 +335,7 @@ Dodge is a skill that requires careful timing, but if used correctly, it can all
 
 		//We need to be in harm intent for this, set it if its not already
 		if (H.a_intent != I_HURT)
-			H.a_intent_change(I_HURT)
+			H.set_attack_intent(I_HURT)
 
 		//This is a bit of a hack because unarmed attacks are poorly coded:
 			//We'll set the user's last attack to some time in the past so they can attack again

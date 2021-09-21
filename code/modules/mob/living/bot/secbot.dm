@@ -206,9 +206,9 @@
 		return
 
 	if(istype(M, /mob/living/simple_animal))
-		a_intent = I_HURT
+		set_attack_intent(I_HURT)
 	else
-		a_intent = I_GRAB
+		set_attack_intent(I_GRAB)
 
 	stun_baton.attack(M, src, BP_CHEST) //robots and turrets aim for center of mass
 	flick(attack_state, src)
