@@ -18,8 +18,8 @@ SUBSYSTEM_DEF(overlays)
 	return ..()
 
 
-/datum/controller/subsystem/overlays/stat_entry()
-	..("Ov:[length(queue)]")
+/datum/controller/subsystem/overlays/stat_entry(msg)
+	return "Ov:[length(queue)]"
 
 /datum/controller/subsystem/overlays/Recover()
 	queue = SSoverlays.queue

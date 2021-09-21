@@ -13,15 +13,22 @@
 	update()
 
 /datum/extension/updating/proc/update()
-	if(update_timer)
-		deltimer(update_timer)
-		update_timer = null
+
 
 /datum/extension/updating/proc/schedule_update()
 	if (update_timer)
 		return
 
-	update_timer = addtimer(CALLBACK(src, /datum/extension/updating/proc/update),1,TIMER_STOPPABLE)
+	update_timer = addtimer(CALLBACK(src, /datum/extension/updating/proc/scheduled_update),1,TIMER_STOPPABLE)
+
+//Safety check here
+/datum/extension/updating/proc/scheduled_update()
+	if(update_timer)
+		deltimer(update_timer)
+		update_timer = null
+
+	if (!QDELETED(holder) && !QDELETED(src))
+		update()
 
 //Pings an extension for update
 /datum/proc/update_extension(var/etype, var/instant = FALSE)

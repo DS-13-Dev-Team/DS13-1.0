@@ -47,11 +47,13 @@
 		return
 	if(href_list["reload_tguipanel"])
 		nuke_chat()
+	if(href_list["reload_statbrowser"])
+		DIRECT_OUTPUT(src, browse(file('html/statbrowser.html'), "window=statbrowser"))
 
 	//byond bug ID:2256651
 	if (asset_cache_job && (asset_cache_job in completed_asset_jobs))
 		to_chat(src, "<span class = 'warning'> An error has been detected in how your client is receiving resources. Attempting to correct.... (If you keep seeing these messages you might want to close byond and reconnect)</span>")
-		src << browse("...", "window=asset_cache_browser")
+		DIRECT_OUTPUT(src, browse("...", "window=asset_cache_browser"))
 		return
 
 	if (href_list["asset_cache_preload_data"])
