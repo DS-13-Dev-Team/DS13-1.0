@@ -27,12 +27,12 @@ GLOBAL_LIST_EMPTY(event_listen_count)
 		if(GLOB.event_listen_count[listener] <= 0)
 			GLOB.event_listen_count -= listener
 
-/decl/observ/register_global(var/datum/listener, var/proc_call)
+/decl/observ/global_listener/register_global(var/datum/listener, var/proc_call)
 	. = ..()
 	if(.)
 		GLOB.global_listen_count[listener] += 1
 
-/decl/observ/unregister_global(var/datum/listener, var/proc_call)
+/decl/observ/global_listener/unregister_global(var/datum/listener, var/proc_call)
 	. = ..()
 	if(.)
 		GLOB.global_listen_count[listener] -= 1
@@ -41,8 +41,7 @@ GLOBAL_LIST_EMPTY(event_listen_count)
 
 /proc/cleanup_global_listener(listener, listen_count)
 	GLOB.global_listen_count -= listener
-	for(var/entry in GLOB.all_observable_events)
-		var/decl/observ/event = entry
+	for(var/decl/observ/global_listener/event  in GLOB.all_observable_events)
 		if(event.unregister_global(listener))
 			log_debug("[event] - [listener] was deleted while still registered to global events.")
 			if(!(--listen_count))
