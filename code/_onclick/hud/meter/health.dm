@@ -19,16 +19,14 @@
 
 
 /obj/screen/meter/health/Destroy()
-	if (L && L.hud_used)
-		if (L.hud_used.hud_healthbar == src)
-			L.hud_used.hud_healthbar = null
+	if (L)
 		L = null
+	GLOB.updatehealth_event.unregister(L, src, .proc/update)
 	.=..()
 
-/obj/screen/meter/health/set_mob(var/mob/living/newmob)
+/obj/screen/meter/health/set_mob(mob/living/newmob)
 	.=..()
-	GLOB.updatehealth_event.register(L, src, /obj/screen/meter/proc/update)
-	L.hud_used.hud_healthbar = src
+	GLOB.updatehealth_event.register(L, src, .proc/update)
 	set_health()
 
 
@@ -67,10 +65,10 @@
 	return species.get_health_report(src)
 
 
-/datum/species/proc/get_health_report(var/mob/living/carbon/human/H)
+/datum/species/proc/get_health_report(mob/living/carbon/human/H)
 	return list ("max" = H.max_health, "damage" = 0, "blocked" = H.lasting_damage)
 
-/datum/species/necromorph/get_health_report(var/mob/living/carbon/human/H)
+/datum/species/necromorph/get_health_report(mob/living/carbon/human/H)
 	var/list/things = get_weighted_total_limb_damage(H, TRUE)
 	things["max"] = H.max_health
 	return things

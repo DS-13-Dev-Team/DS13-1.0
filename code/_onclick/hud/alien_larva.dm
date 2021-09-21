@@ -1,7 +1,8 @@
 /mob/living/carbon/alien
 	hud_type = /datum/hud/larva
 
-/datum/hud/larva/FinalizeInstantiation()
+/datum/hud/larva/New(mob/owner)
+	..()
 
 	src.adding = list()
 	src.other = list()

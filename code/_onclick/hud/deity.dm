@@ -1,7 +1,9 @@
 /mob/living/deity
 	hud_type = /datum/hud/deity
 
-/datum/hud/deity/FinalizeInstantiation(ui_style = 'icons/mob/screen1_Midnight.dmi')
+/datum/hud/deity/New(mob/owner)
+	..()
+
 	src.adding = list()
 	src.other = list()
 

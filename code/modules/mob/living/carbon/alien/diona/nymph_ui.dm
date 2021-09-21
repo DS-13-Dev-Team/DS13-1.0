@@ -35,7 +35,8 @@
 	var/obj/screen/diona/hat/hat
 	var/obj/screen/diona/held/held
 
-/datum/hud/diona_nymph/FinalizeInstantiation()
+/datum/hud/diona_nymph/New(mob/owner)
+	..()
 
 	src.adding = list()
 	src.other = list()

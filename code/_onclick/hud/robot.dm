@@ -3,7 +3,8 @@ var/obj/screen/robot_inventory
 /mob/living/silicon/robot
 	hud_type = /datum/hud/robot
 
-/datum/hud/robot/FinalizeInstantiation()
+/datum/hud/robot/New(mob/owner)
+	..()
 
 	src.adding = list()
 	src.other = list()

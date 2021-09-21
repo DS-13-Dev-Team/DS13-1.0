@@ -1,7 +1,9 @@
 /mob/living/carbon/slime
 	hud_type = /datum/hud/slime
 
-/datum/hud/slime/FinalizeInstantiation(ui_style = 'icons/mob/screen1_Midnight.dmi')
+/datum/hud/slime/New(mob/owner)
+	..()
+
 	src.adding = list()
 
 	var/obj/screen/using
@@ -16,7 +18,9 @@
 /mob/living/simple_animal/construct
 	hud_type = /datum/hud/construct
 
-/datum/hud/construct/FinalizeInstantiation()
+/datum/hud/construct/New(mob/owner)
+	..()
+
 	var/constructtype
 
 	if(istype(mymob,/mob/living/simple_animal/construct/armoured) || istype(mymob,/mob/living/simple_animal/construct/behemoth))

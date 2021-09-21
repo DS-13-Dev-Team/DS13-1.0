@@ -1,7 +1,9 @@
 /mob/living/carbon/human
 	hud_type = /datum/hud/human
 
-/datum/hud/human/FinalizeInstantiation(var/ui_style='icons/mob/screen1_White.dmi', var/ui_color = "#ffffff", var/ui_alpha = 255)
+/datum/hud/human/New(mob/owner)
+	..()
+
 	var/mob/living/carbon/human/target = mymob
 	var/datum/hud_data/hud_data
 	if(!istype(target))
@@ -68,9 +70,9 @@
 
 	if(hud_data.has_healthbar)
 
-		using = new /obj/screen/meter/health(target.client)
-		src.adding += using
-		hud_elements |= using
+		hud_healthbar = new /obj/screen/meter/health(target.client)
+		src.adding += hud_healthbar
+		hud_elements |= hud_healthbar
 
 	if(hud_data.has_m_intent)
 		using = new /obj/screen/movement()

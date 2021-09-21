@@ -51,14 +51,14 @@
 
 	var/margin = 8//Extra length that isn't counted as part of our length for the purpose of components
 
-/obj/screen/meter/New(var/atom/holder)
+/obj/screen/meter/New(atom/holder)
 
 	cache_data(arglist(args))
 	.=..()
 
 
 //Override this and change the parameters in subtypes
-/obj/screen/meter/proc/cache_data(var/atom/holder)
+/obj/screen/meter/proc/cache_data(atom/holder)
 
 
 /obj/screen/meter/Destroy()
@@ -71,13 +71,13 @@
 		C = null
 	.=..()
 
-/obj/screen/meter/added_to_screen(var/client/newclient)
+/obj/screen/meter/added_to_screen(client/newclient)
 	recreate_components(newclient)
 
 
 
 
-/obj/screen/meter/proc/recreate_components(var/client/newclient)
+/obj/screen/meter/proc/recreate_components(client/newclient)
 	if (C)
 		C.screen -= remaining_meter
 		C.screen -= delta_meter
@@ -113,12 +113,12 @@
 	update(TRUE)
 
 
-/obj/screen/meter/proc/set_mob(var/mob/living/newmob)
+/obj/screen/meter/proc/set_mob(mob/living/newmob)
 	L = newmob
 
 
 
-/obj/screen/meter/proc/set_size(var/update = TRUE)
+/obj/screen/meter/proc/set_size(update = TRUE)
 	//Lets set the size
 
 
@@ -187,7 +187,7 @@
 
 
 
-/obj/screen/meter/proc/update(var/force_update = FALSE)
+/obj/screen/meter/proc/update(force_update = FALSE)
 	var/list/data = get_data()
 
 
@@ -274,7 +274,7 @@
 
 	mouse_opacity = 2
 
-/obj/screen/meter_component/New(var/obj/screen/meter/newparent)
+/obj/screen/meter_component/New(obj/screen/meter/newparent)
 	parent = newparent
 	parent.C.screen += src
 	update_total()
@@ -289,7 +289,7 @@
 /obj/screen/meter_component/proc/update()
 
 //Sets a new size in pixels
-/obj/screen/meter_component/proc/set_size(var/newsize)
+/obj/screen/meter_component/proc/set_size(newsize)
 	if (!newsize)
 		alpha = 0
 		return
@@ -450,7 +450,7 @@
 	icon_state = ""
 	layer = HUD_TEXT_LAYER
 
-/obj/screen/meter_component/text/update_total(var/resize = FALSE)
+/obj/screen/meter_component/text/update_total(resize = FALSE)
 	if (parent)
 		if (resize)
 			set_size(parent.length)
@@ -470,7 +470,7 @@
 
 
 //Helpers
-/mob/proc/add_meter(var/meter_type)
+/mob/proc/add_meter(meter_type)
 	var/obj/screen/meter/M = new meter_type()
 	/*
 	if (hud_used)

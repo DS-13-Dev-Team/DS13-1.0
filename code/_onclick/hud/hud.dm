@@ -61,11 +61,23 @@
 	var/obj/screen/movable/action_button/hide_toggle/hide_actions_toggle
 	var/action_buttons_hidden = 0
 
+	// subtypes can override this to force a specific UI style
+	var/ui_style
+	var/ui_color
+	var/ui_alpha
+
 /datum/hud/New(mob/owner)
 	mymob = owner
-	instantiate()
+
+	if (!ui_style)
+		// will fall back to the default if any of these are null
+		ui_style = ui_style2icon(mymob.client?.prefs?.UI_style)
+	if (!ui_color)
+		ui_color = mymob.client?.prefs?.UI_style_color
+	if (!ui_alpha)
+		ui_alpha = mymob.client?.prefs?.UI_style_alpha
+
 	ability_master = new /obj/screen/movable/ability_master(null,mymob)
-	..()
 
 /datum/hud/Destroy()
 	if(mymob.hud_used == src)
@@ -209,19 +221,6 @@
 					if(slot_r_store)
 						if(H.r_store) H.r_store.screen_loc = null
 
-
-/datum/hud/proc/instantiate()
-	if(!ismob(mymob)) return 0
-	if(!mymob.client) return 0
-	var/ui_style = ui_style2icon(mymob.client.prefs.UI_style)
-	var/ui_color = mymob.client.prefs.UI_style_color
-	var/ui_alpha = mymob.client.prefs.UI_style_alpha
-
-
-	FinalizeInstantiation(ui_style, ui_color, ui_alpha)
-
-/datum/hud/proc/FinalizeInstantiation(var/ui_style, var/ui_color, var/ui_alpha)
-	return
 
 //Triggered when F12 is pressed (Unless someone changed something in the DMF)
 /mob/verb/button_pressed_F12(var/full = 0 as null)
