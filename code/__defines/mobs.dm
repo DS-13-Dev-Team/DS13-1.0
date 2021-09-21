@@ -303,3 +303,10 @@
 #define SPAWNPOINT_CRYO	"Cryogenic Storage"
 #define SPAWNPOINT_DORM "Crew Quarters"
 #define SPAWNPOINT_MAINT	"Maintenance Tunnels"
+
+//defins for datum/hud
+
+#define HUD_STYLE_STANDARD 1
+#define HUD_STYLE_REDUCED 2
+#define HUD_STYLE_NOHUD 3
+#define HUD_VERSIONS 3

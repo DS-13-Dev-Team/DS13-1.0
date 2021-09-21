@@ -108,6 +108,18 @@
 
 	..()	//redirect to hsrc.Topic()
 
+/client/proc/generate_clickcatcher()
+	if(void)
+		return
+	void = new()
+	screen += void
+
+
+/client/proc/apply_clickcatcher()
+	generate_clickcatcher()
+	var/list/actualview = getviewsize(view)
+	void.UpdateGreed(actualview[1], actualview[2])
+
 //This stops files larger than UPLOAD_LIMIT being sent from client to server via input(), client.Import() etc.
 /client/AllowUpload(filename, filelength)
 	if(filelength > UPLOAD_LIMIT)
@@ -218,6 +230,9 @@
 	log_client_to_db()
 
 	send_resources()
+
+	generate_clickcatcher()
+	apply_clickcatcher()
 
 	if(prefs.lastchangelog != GLOB.changelog_hash) //bolds the changelog button on the interface so we know there are updates.
 		to_chat(src, "<span class='info'>You have unread updates in the changelog.</span>")

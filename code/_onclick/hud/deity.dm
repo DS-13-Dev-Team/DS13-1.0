@@ -4,17 +4,10 @@
 /datum/hud/deity/New(mob/owner)
 	..()
 
-	src.adding = list()
-	src.other = list()
+	action_intent = new /obj/screen/intent/deity()
+	static_inventory += action_intent
 
-	var/obj/screen/intent/deity/D = new()
-
-	src.adding += D
-	action_intent = D
-
-	mymob.client.screen = list()
-	mymob.client.screen += src.adding
-	D.sync_to_mob(mymob)
+	action_intent:sync_to_mob(mymob)
 
 
 /obj/screen/intent/deity

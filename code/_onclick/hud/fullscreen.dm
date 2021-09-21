@@ -1,3 +1,4 @@
+#define SHOULD_SHOW_TO(mymob, myscreen) (!(mymob.stat == DEAD && !myscreen.show_when_dead))
 
 /mob
 	var/list/screens = list()
@@ -39,9 +40,10 @@
 		screen.set_size(client)
 
 	screens[category] = screen
-	if(client && (stat != DEAD || screen.allstate))
+	if (client && SHOULD_SHOW_TO(src, screen))
 
 		client.screen += screen
+
 	return screen
 
 /mob/proc/clear_fullscreen(category, animated = 10)
@@ -74,6 +76,17 @@
 		for(var/category in screens)
 			client.screen -= screens[category]
 
+/mob/proc/reload_fullscreens()
+	if(client)
+		var/obj/screen/fullscreen/screen
+		for(var/category in screens)
+			screen = screens[category]
+			if(SHOULD_SHOW_TO(src, screen))
+				screen.update_for_view(client.view)
+				client.screen |= screen
+			else
+				client.screen -= screen
+
 /mob/proc/reload_fullscreen()
 	if(client)
 		for(var/category in screens)
@@ -103,8 +116,9 @@
 	mouse_opacity = 0
 	var/small_icon = FALSE	//True on any that don't use screen_full.dmi
 	var/severity = 0
-	var/allstate = 0 //shows if it should show up for dead people too
 	var/mob/owner
+	var/fs_view = WORLD_VIEW
+	var/show_when_dead = FALSE
 
 /obj/screen/fullscreen/proc/set_size(var/client/C)
 	//Here we select (and if needed, generate) the icon for the right size
@@ -119,6 +133,12 @@
 	severity = 0
 	owner = null
 	return ..()
+
+/obj/screen/fullscreen/proc/update_for_view(client_view)
+	if (screen_loc == "CENTER-7,CENTER-7" && fs_view != client_view)
+		var/list/actualview = getviewsize(client_view)
+		fs_view = client_view
+		transform = matrix(actualview[1]/FULLSCREEN_OVERLAY_RESOLUTION_X, 0, 0, 0, actualview[2]/FULLSCREEN_OVERLAY_RESOLUTION_Y, 0)
 
 /obj/screen/fullscreen/brute
 	icon_state = "brutedamageoverlay"
@@ -145,7 +165,7 @@
 
 /obj/screen/fullscreen/fishbed
 	icon_state = "fishbed"
-	allstate = 1
+	show_when_dead = TRUE
 
 /obj/screen/fullscreen/pain
 	icon_state = "brutedamageoverlay6"
@@ -201,7 +221,7 @@
 	screen_loc = ui_entire_screen
 	layer = FULLSCREEN_LAYER
 	alpha = 0
-	allstate = 1
+	show_when_dead = TRUE
 	small_icon = TRUE
 
 /obj/screen/fullscreen/fadeout/Initialize()
@@ -216,4 +236,4 @@
 	layer = FULLSCREEN_LAYER
 	small_icon = TRUE
 
-
+#undef SHOULD_SHOW_TO

@@ -19,8 +19,7 @@
 
 
 /obj/screen/meter/health/Destroy()
-	if (L)
-		L = null
+	L = null
 	GLOB.updatehealth_event.unregister(L, src, .proc/update)
 	.=..()
 

@@ -4,16 +4,9 @@
 /datum/hud/slime/New(mob/owner)
 	..()
 
-	src.adding = list()
+	action_intent = new /obj/screen/intent()
+	static_inventory += action_intent
 
-	var/obj/screen/using
-
-	using = new /obj/screen/intent()
-	src.adding += using
-	action_intent = using
-
-	mymob.client.screen = list()
-	mymob.client.screen += src.adding
 
 /mob/living/simple_animal/construct
 	hud_type = /datum/hud/construct

@@ -790,10 +790,6 @@ THIS SCOPE CODE IS DEPRECATED, USE AIM MODES INSTEAD.
 	if(!user.client)
 		return
 
-	//user.client.view = world.view
-	if(!user.hud_used.hud_shown)
-		user.toggle_zoom_hud()
-
 	user.client.pixel_x = 0
 	user.client.pixel_y = 0
 	user.visible_message("[zoomdevicename ? "\The [user] looks up from [src]" : "\The [user] lowers [src]"].")

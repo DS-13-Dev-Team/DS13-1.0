@@ -32,7 +32,7 @@
 
 
 /client/var/temp_view = 7
-/client/proc/set_view_range(var/radius, var/force_update = FALSE)
+/client/proc/change_view(var/radius, var/force_update = FALSE)
 
 	if ((force_update || view != radius) && isnum(radius))
 		//If radius has changed, we'll return true
@@ -40,7 +40,7 @@
 
 		temp_view = radius
 
-		remake_click_catcher()
+		apply_clickcatcher()
 
 		update_skybox(TRUE)
 

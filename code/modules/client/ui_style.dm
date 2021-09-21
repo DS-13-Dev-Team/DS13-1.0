@@ -34,7 +34,7 @@
 	if(!UI_style_color_new) return
 
 	//update UI
-	var/list/icons = usr.hud_used.adding + usr.hud_used.other + usr.hud_used.hotkeybuttons
+	var/list/icons = usr.hud_used.static_inventory + usr.hud_used.toggleable_inventory + usr.hud_used.hotkeybuttons
 	icons.Add(usr.hud_used.zone_sel)
 	icons.Add(usr.hud_used.gun_setting_icon)
 	icons.Add(usr.hud_used.item_use_icon)

@@ -11,6 +11,7 @@
 /datum/hud
 	var/mob/mymob
 
+	var/hud_version = HUD_STYLE_STANDARD	//the hud version used (standard, reduced, none)
 	var/hud_shown = TRUE			//Used for the HUD toggle (F12)
 	var/inventory_shown = TRUE		//the inventory
 	var/show_intent_icons = FALSE
@@ -54,9 +55,10 @@
 	*/
 	var/obj/screen/zone_sel/zone_sel
 
-	var/list/adding
-	var/list/other
-	var/list/obj/screen/hotkeybuttons
+	var/list/static_inventory = list() //the screen objects which are static
+	var/list/toggleable_inventory = list() //the screen objects which can be hidden
+	var/list/obj/screen/hotkeybuttons = list() //the buttons that can be used via hotkeys
+	var/list/infodisplay = list() //the screen objects that display mob info (health, alien plasma, etc...)
 
 	var/obj/screen/movable/action_button/hide_toggle/hide_actions_toggle
 	var/action_buttons_hidden = 0
@@ -115,8 +117,8 @@
 	action_intent = null
 	move_intent = null
 
-	QDEL_LIST(adding)
-	QDEL_LIST(other)
+	QDEL_LIST(static_inventory)
+	QDEL_LIST(infodisplay)
 	QDEL_LIST(hotkeybuttons)
 
 	mymob = null
@@ -223,103 +225,15 @@
 
 
 //Triggered when F12 is pressed (Unless someone changed something in the DMF)
-/mob/verb/button_pressed_F12(var/full = 0 as null)
+/mob/verb/button_pressed_F12()
 	set name = "F12"
-	set hidden = 1
+	set hidden = TRUE
 
-	if(!hud_used)
-		to_chat(usr, "<span class='warning'>This mob type does not use a HUD.</span>")
-		return
-
-	if(!ishuman(src))
-		to_chat(usr, "<span class='warning'>Inventory hiding is currently only supported for human mobs, sorry.</span>")
-		return
-
-	if(!client) return
-	if(client.view != world.view)
-		return
-	if(hud_used.hud_shown)
-		hud_used.hud_shown = 0
-		if(src.hud_used.adding)
-			src.client.screen -= src.hud_used.adding
-		if(src.hud_used.other)
-			src.client.screen -= src.hud_used.other
-		if(src.hud_used.hotkeybuttons)
-			src.client.screen -= src.hud_used.hotkeybuttons
-
-		//Due to some poor coding some things need special treatment:
-		//These ones are a part of 'adding', 'other' or 'hotkeybuttons' but we want them to stay
-		if(!full)
-			src.client.screen += src.hud_used.l_hand_hud_object	//we want the hands to be visible
-			src.client.screen += src.hud_used.r_hand_hud_object	//we want the hands to be visible
-			src.client.screen += src.hud_used.action_intent		//we want the intent swticher visible
-			src.hud_used.action_intent.screen_loc = ui_acti_alt	//move this to the alternative position, where zone_select usually is.
-		else
-			src.client.screen -= src.hud_used.healths
-			src.client.screen -= src.hud_used.internals
-			src.client.screen -= src.hud_used.gun_setting_icon
-
-		//These ones are not a part of 'adding', 'other' or 'hotkeybuttons' but we want them gone.
-		src.client.screen -= src.hud_used.zone_sel	//zone_sel is a mob variable for some reason.
-
+	if(hud_used && client)
+		hud_used.show_hud() //Shows the next hud preset
+		to_chat(usr, "<span class='info'>Switched HUD mode. Press F12 to toggle.</span>")
 	else
-		hud_used.hud_shown = 1
-		if(src.hud_used.adding)
-			src.client.screen += src.hud_used.adding
-		if(src.hud_used.other && src.hud_used.inventory_shown)
-			src.client.screen += src.hud_used.other
-		if(src.hud_used.hotkeybuttons && !src.hud_used.hotkey_ui_hidden)
-			src.client.screen += src.hud_used.hotkeybuttons
-		if(src.hud_used.healths)
-			src.client.screen |= src.hud_used.healths
-		if(src.hud_used.internals)
-			src.client.screen |= src.hud_used.internals
-		if(src.hud_used.gun_setting_icon)
-			src.client.screen |= src.hud_used.gun_setting_icon
-
-		src.hud_used.action_intent.screen_loc = ui_acti //Restore intent selection to the original position
-		src.client.screen += src.hud_used.zone_sel				//This one is a special snowflake
-
-	hud_used.hidden_inventory_update()
-	hud_used.persistant_inventory_update()
-	update_action_buttons()
-
-//Similar to button_pressed_F12() but keeps zone_sel, gun_setting_icon, and healths.
-/mob/proc/toggle_zoom_hud()
-	if(!hud_used)
-		return
-	if(!ishuman(src))
-		return
-	if(!client)
-		return
-	if(client.view != world.view)
-		return
-
-	if(hud_used.hud_shown)
-		hud_used.hud_shown = 0
-		if(src.hud_used.adding)
-			src.client.screen -= src.hud_used.adding
-		if(src.hud_used.other)
-			src.client.screen -= src.hud_used.other
-		if(src.hud_used.hotkeybuttons)
-			src.client.screen -= src.hud_used.hotkeybuttons
-		src.client.screen -= src.hud_used.internals
-		src.client.screen += src.hud_used.action_intent		//we want the intent swticher visible
-	else
-		hud_used.hud_shown = 1
-		if(src.hud_used.adding)
-			src.client.screen += src.hud_used.adding
-		if(src.hud_used.other && src.hud_used.inventory_shown)
-			src.client.screen += src.hud_used.other
-		if(src.hud_used.hotkeybuttons && !src.hud_used.hotkey_ui_hidden)
-			src.client.screen += src.hud_used.hotkeybuttons
-		if(src.hud_used.internals)
-			src.client.screen |= src.hud_used.internals
-		src.hud_used.action_intent.screen_loc = ui_acti //Restore intent selection to the original position
-
-	hud_used.hidden_inventory_update()
-	hud_used.persistant_inventory_update()
-	update_action_buttons()
+		to_chat(usr, SPAN_WARNING("This mob type does not use a HUD."))
 
 /obj/screen/stamina
 	name = "stamina"
@@ -327,3 +241,80 @@
 	icon_state = "prog_bar_100"
 	invisibility = INVISIBILITY_MAXIMUM
 	screen_loc = ui_stamina
+
+//Version denotes which style should be displayed. blank or 0 means "next version"
+/datum/hud/proc/show_hud(version = 0, mob/viewmob)
+	if(!ismob(mymob))
+		return FALSE
+
+	var/mob/screenmob = viewmob || mymob
+	if(!screenmob.client)
+		return FALSE
+
+	screenmob.client.screen = list()
+	screenmob.client.apply_clickcatcher()
+
+	var/display_hud_version = version
+	if(!display_hud_version)	//If 0 or blank, display the next hud version
+		display_hud_version = hud_version + 1
+	if(display_hud_version > HUD_VERSIONS)	//If the requested version number is greater than the available versions, reset back to the first version
+		display_hud_version = 1
+
+	switch(display_hud_version)
+		if(HUD_STYLE_STANDARD)	//Default HUD
+			hud_shown = 1	//Governs behavior of other procs
+			if(static_inventory.len)
+				screenmob.client.screen += static_inventory
+			if(toggleable_inventory.len && inventory_shown)
+				screenmob.client.screen += toggleable_inventory
+			if(hotkeybuttons.len && !hotkey_ui_hidden)
+				screenmob.client.screen += hotkeybuttons
+			if(infodisplay.len)
+				screenmob.client.screen += infodisplay
+			if(action_intent)
+				action_intent.screen_loc = initial(action_intent.screen_loc) //Restore intent selection to the original position
+
+		if(HUD_STYLE_REDUCED)	//Reduced HUD
+			hud_shown = 0	//Governs behavior of other procs
+			if(static_inventory.len)
+				screenmob.client.screen -= static_inventory
+			if(toggleable_inventory.len)
+				screenmob.client.screen -= toggleable_inventory
+			if(hotkeybuttons.len)
+				screenmob.client.screen -= hotkeybuttons
+			if(infodisplay.len)
+				screenmob.client.screen += infodisplay
+
+			//These ones are a part of 'static_inventory', 'toggleable_inventory' or 'hotkeybuttons' but we want them to stay
+			if(l_hand_hud_object)
+				screenmob.client.screen += l_hand_hud_object	//we want the hands to be visible
+			if(r_hand_hud_object)
+				screenmob.client.screen += r_hand_hud_object	//we want the hands to be visible
+			if(action_intent)
+				screenmob.client.screen += action_intent		//we want the intent switcher visible
+				action_intent.screen_loc = ui_acti_alt	//move this to the alternative position, where zone_select usually is.
+
+		if(HUD_STYLE_NOHUD)	//No HUD
+			hud_shown = 0	//Governs behavior of other procs
+			if(static_inventory.len)
+				screenmob.client.screen -= static_inventory
+			if(toggleable_inventory.len)
+				screenmob.client.screen -= toggleable_inventory
+			if(hotkeybuttons.len)
+				screenmob.client.screen -= hotkeybuttons
+			if(infodisplay.len)
+				screenmob.client.screen -= infodisplay
+
+	hud_version = display_hud_version
+	persistant_inventory_update(screenmob)
+	mymob.update_action_buttons()
+	mymob.reload_fullscreens()
+
+	return TRUE
+
+/datum/hud/human/show_hud(version = 0,mob/viewmob)
+	. = ..()
+	if(!.)
+		return
+	var/mob/screenmob = viewmob || mymob
+	hidden_inventory_update(screenmob)

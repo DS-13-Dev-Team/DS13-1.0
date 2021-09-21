@@ -119,10 +119,10 @@
 		if("toggle")
 			if(usr.hud_used.inventory_shown)
 				usr.hud_used.inventory_shown = 0
-				usr.client.screen -= usr.hud_used.other
+				usr.client.screen -= usr.hud_used.toggleable_inventory
 			else
 				usr.hud_used.inventory_shown = 1
-				usr.client.screen += usr.hud_used.other
+				usr.client.screen += usr.hud_used.toggleable_inventory
 
 			usr.hud_used.hidden_inventory_update()
 

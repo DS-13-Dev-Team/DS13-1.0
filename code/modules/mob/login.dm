@@ -72,7 +72,10 @@
 	client.images = null				//remove the images such as AIs being unable to see runes
 	client.screen = list()				//remove hud items just in case
 
-	create_mob_hud()
+	if(!hud_used)
+		create_mob_hud()
+	if(hud_used)
+		hud_used.show_hud(hud_used.hud_version)
 
 	next_move = 1
 	set_sight(sight|SEE_SELF)
