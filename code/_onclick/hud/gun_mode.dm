@@ -1,6 +1,6 @@
 /obj/screen/gun
 	name = "gun"
-	icon = 'icons/mob/screen1.dmi'
+	icon = 'icons/hud/screen1.dmi'
 	master = null
 	dir = 2
 
@@ -8,20 +8,6 @@
 	if(!usr)
 		return
 	return 1
-
-/obj/screen/gun/move
-	name = "Allow Movement"
-	icon_state = "no_walk0"
-	screen_loc = ui_gun2
-
-/obj/screen/gun/move/Click(location, control, params)
-	if(..())
-		var/mob/living/user = usr
-		if(istype(user))
-			if(!user.aiming) user.aiming = new(user)
-			user.aiming.toggle_permission(TARGET_CAN_MOVE)
-		return 1
-	return 0
 
 /obj/screen/gun/item
 	name = "Allow Item Use"

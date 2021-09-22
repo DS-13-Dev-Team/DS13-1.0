@@ -1036,3 +1036,7 @@
 
 /mob/GenerateTag()
 	tag = "mob_[next_mob_id++]"
+
+///Get the item on the mob in the storage slot identified by the id passed in
+/mob/proc/get_item_by_slot(slot_id)
+	return null

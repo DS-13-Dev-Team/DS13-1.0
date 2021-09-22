@@ -7,7 +7,7 @@
 	var/mob/origin	//Todo: Accomodate for origin possibly changing
 	var/atom/tracked
 	alpha = 128
-	icon = 'icons/mob/screen1.dmi'
+	icon = 'icons/hud/screen1.dmi'
 	icon_state = "health6"
 	var/lifetimer
 	mouse_opacity = 0

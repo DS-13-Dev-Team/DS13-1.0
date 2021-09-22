@@ -33,9 +33,10 @@ GLOBAL_LIST_INIT(bitflags, list(1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 204
 #define MOVABLE_FLAG_PROXMOVE            0x0001 // Does this object require proximity checking in Enter()?
 #define MOVABLE_FLAG_Z_INTERACT			 0x0002 // Should attackby and attack_hand be relayed through ladders and open spaces?
 
-#define OBJ_FLAG_ANCHORABLE              0x0001 // This object can be stuck in place with a tool
-#define OBJ_FLAG_CONDUCTIBLE             0x0002 // Conducts electricity. (metal etc.)
-#define OBJ_FLAG_NOFALL					 0x0004 // Will prevent mobs from falling
+#define OBJ_FLAG_ANCHORABLE				(1<<1) // This object can be stuck in place with a tool
+#define OBJ_FLAG_CONDUCTIBLE			(1<<2) // Conducts electricity. (metal etc.)
+#define OBJ_FLAG_NOFALL					(1<<3) // Will prevent mobs from falling
+#define OBJ_FLAG_FORCE_STRING_OVERRIDE	(1<<4) // used for tooltips
 
 #define MOB_FLAG_HOLY_BAD                0x001  // If this mob is allergic to holiness
 

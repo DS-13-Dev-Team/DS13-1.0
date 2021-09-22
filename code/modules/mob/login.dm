@@ -93,10 +93,7 @@
 	if(eyeobj)
 		eyeobj.possess(src)
 
-	refresh_lighting_overlays()
-
 	refresh_client_images()
-	reload_fullscreen() // Reload any fullscreen overlays this mob has.
 
 	add_click_catcher()
 	update_action_buttons()
@@ -116,10 +113,8 @@
 		return
 
 	if (l_plane)
-		client.screen -= l_plane
 		QDEL_NULL(l_plane)
 	if (l_general)
-		client.screen -= l_general
 		QDEL_NULL(l_general)
 
 	l_plane = new(null, client)

@@ -89,4 +89,4 @@
 
 /obj/screen/zone_sel/update_icon()
 	overlays.Cut()
-	overlays += image('icons/mob/zone_sel.dmi', "[selecting]")
+	overlays += image('icons/hud/zone_sel.dmi', "[selecting]")

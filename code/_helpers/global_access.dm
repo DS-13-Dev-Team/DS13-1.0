@@ -117,8 +117,6 @@
 			return global.all_robolimbs;
 		if("all_species")
 			return global.all_species;
-		if("all_ui_styles")
-			return global.all_ui_styles;
 		if("all_unit_tests_passed")
 			return global.all_unit_tests_passed;
 		if("all_virtual_listeners")
@@ -926,8 +924,6 @@
 			global.all_robolimbs=newval;
 		if("all_species")
 			global.all_species=newval;
-		if("all_ui_styles")
-			global.all_ui_styles=newval;
 		if("all_unit_tests_passed")
 			global.all_unit_tests_passed=newval;
 		if("all_virtual_listeners")
@@ -1676,7 +1672,6 @@
 	"all_objectives",
 	"all_robolimbs",
 	"all_species",
-	"all_ui_styles",
 	"all_unit_tests_passed",
 	"all_virtual_listeners",
 	"announced_news_types",

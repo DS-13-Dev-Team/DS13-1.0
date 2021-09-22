@@ -23,8 +23,8 @@
 	GLOB.updatehealth_event.unregister(L, src, .proc/update)
 	.=..()
 
-/obj/screen/meter/health/set_mob(mob/living/newmob)
-	.=..()
+/obj/screen/meter/health/Initialize()
+	. = ..()
 	GLOB.updatehealth_event.register(L, src, .proc/update)
 	set_health()
 

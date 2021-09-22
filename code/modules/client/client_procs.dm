@@ -250,6 +250,10 @@
 	if(!winexists(src, "asset_cache_browser")) // The client is using a custom skin, tell them.
 		to_chat(src, "<span class='warning'>Unable to access asset cache browser, if you are using a custom skin file, please allow DS to download the updated version, if you are not, then make a bug report. This is not a critical issue but can cause issues with resource downloading, as it is impossible to know when extra resources arrived to you.</span>")
 
+	//This is down here because of the browse() calls in tooltip/New()
+	if(!tooltips)
+		tooltips = new /datum/tooltip(src)
+
 	if(holder)
 		src.control_freak = 0 //Devs need 0 for profiler access
 
@@ -259,6 +263,11 @@
 	//DISCONNECT//
 	//////////////
 /client/Del()
+	if(!gc_destroyed)
+		Destroy() //Clean up signals and timers.
+	return ..()
+
+/client/Destroy()
 	ticket_panels -= src
 	if(src && watched_variables_window)
 		STOP_PROCESSING(SSprocessing, watched_variables_window)
@@ -267,9 +276,10 @@
 		GLOB.admins -= src
 	GLOB.ckey_directory -= ckey
 	GLOB.clients -= src
-	return ..()
 
-/client/Destroy()
+	QDEL_NULL(void)
+	QDEL_NULL(tooltips)
+
 	..()
 	return QDEL_HINT_HARDDEL_NOW
 
@@ -448,3 +458,8 @@ client/proc/MayRespawn()
 	if(statbrowser_ready)
 		return
 	to_chat(src, "<span class='warning'>Statpanel failed to load, click <a href='?src=[REF(src)];reload_statbrowser=1'>here</a> to reload the panel</span>")
+
+//Hook, override it to run code when dir changes
+//Like for /atoms, but clients are their own snowflake FUCK
+/client/proc/setDir(newdir)
+	dir = newdir

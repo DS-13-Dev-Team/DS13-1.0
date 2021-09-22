@@ -24,6 +24,10 @@
 	var/obj/screen/move_intent
 	var/obj/screen/stamina/stamina_bar
 	var/obj/screen/meter/health/hud_healthbar
+	var/obj/screen/meter_component/current/remaining_meter	//The actual remaining health, in red or green
+	var/obj/screen/meter_component/delta/delta_meter	//A yellow section indicating recent loss
+	var/obj/screen/meter_component/limit/limit_meter	//A solid grey block at the end, representing reduced maximum
+	var/obj/screen/meter_component/text/textholder
 	var/obj/screen/hands
 	var/obj/screen/pullin
 	var/obj/screen/purged
@@ -38,11 +42,6 @@
 	var/obj/screen/throw_icon
 	var/obj/screen/nutrition_icon
 	var/obj/screen/pressure
-	var/obj/screen/fullscreen/pain
-	var/obj/screen/gun/item/item_use_icon
-	var/obj/screen/gun/radio/radio_use_icon
-	var/obj/screen/gun/move/gun_move_icon
-	var/obj/screen/gun/run/gun_run_icon
 	var/obj/screen/gun/mode/gun_setting_icon
 
 	var/obj/screen/movable/ability_master/ability_master
@@ -59,6 +58,7 @@
 	var/list/toggleable_inventory = list() //the screen objects which can be hidden
 	var/list/obj/screen/hotkeybuttons = list() //the buttons that can be used via hotkeys
 	var/list/infodisplay = list() //the screen objects that display mob info (health, alien plasma, etc...)
+	var/list/inv_slots[SLOTS_AMT] // /atom/movable/screen/inventory objects, ordered by their slot ID.
 
 	var/obj/screen/movable/action_button/hide_toggle/hide_actions_toggle
 	var/action_buttons_hidden = 0
@@ -101,15 +101,15 @@
 	throw_icon = null
 	nutrition_icon = null
 	pressure = null
-	pain = null
-	item_use_icon = null
-	gun_move_icon = null
 	gun_setting_icon = null
 	ability_master = null
 	zone_sel = null
 	hud_healthbar = null
+	remaining_meter = null
+	delta_meter = null
+	limit_meter = null
+	textholder = null
 	zone_sel = null
-	radio_use_icon = null
 	stamina_bar = null
 	lingchemdisplay = null
 	r_hand_hud_object = null
@@ -138,91 +138,11 @@
 			stamina_bar.invisibility = 0
 			stamina_bar.icon_state = "prog_bar_[Floor(stamina/5)*5]"
 
-/datum/hud/proc/hidden_inventory_update()
-	if(!mymob) return
-	if(ishuman(mymob))
-		var/mob/living/carbon/human/H = mymob
-		for(var/gear_slot in H.species.hud.gear)
-			var/list/hud_data = H.species.hud.gear[gear_slot]
-			if(inventory_shown && hud_shown)
-				switch(hud_data["slot"])
-					if(slot_head)
-						if(H.head)      H.head.screen_loc =      hud_data["loc"]
-					if(slot_shoes)
-						if(H.shoes)     H.shoes.screen_loc =     hud_data["loc"]
-					if(slot_l_ear)
-						if(H.l_ear)     H.l_ear.screen_loc =     hud_data["loc"]
-					if(slot_r_ear)
-						if(H.r_ear)     H.r_ear.screen_loc =     hud_data["loc"]
-					if(slot_gloves)
-						if(H.gloves)    H.gloves.screen_loc =    hud_data["loc"]
-					if(slot_glasses)
-						if(H.glasses)   H.glasses.screen_loc =   hud_data["loc"]
-					if(slot_w_uniform)
-						if(H.w_uniform) H.w_uniform.screen_loc = hud_data["loc"]
-					if(slot_wear_suit)
-						if(H.wear_suit) H.wear_suit.screen_loc = hud_data["loc"]
-					if(slot_wear_mask)
-						if(H.wear_mask) H.wear_mask.screen_loc = hud_data["loc"]
-			else
-				switch(hud_data["slot"])
-					if(slot_head)
-						if(H.head)      H.head.screen_loc =      null
-					if(slot_shoes)
-						if(H.shoes)     H.shoes.screen_loc =     null
-					if(slot_l_ear)
-						if(H.l_ear)     H.l_ear.screen_loc =     null
-					if(slot_r_ear)
-						if(H.r_ear)     H.r_ear.screen_loc =     null
-					if(slot_gloves)
-						if(H.gloves)    H.gloves.screen_loc =    null
-					if(slot_glasses)
-						if(H.glasses)   H.glasses.screen_loc =   null
-					if(slot_w_uniform)
-						if(H.w_uniform) H.w_uniform.screen_loc = null
-					if(slot_wear_suit)
-						if(H.wear_suit) H.wear_suit.screen_loc = null
-					if(slot_wear_mask)
-						if(H.wear_mask) H.wear_mask.screen_loc = null
+/datum/hud/proc/hidden_inventory_update(mob/viewer)
+	return
 
-
-/datum/hud/proc/persistant_inventory_update()
-	if(!mymob)
-		return
-
-	if(ishuman(mymob))
-		var/mob/living/carbon/human/H = mymob
-		for(var/gear_slot in H.species.hud.gear)
-			var/list/hud_data = H.species.hud.gear[gear_slot]
-			if(hud_shown)
-				switch(hud_data["slot"])
-					if(slot_s_store)
-						if(H.s_store) H.s_store.screen_loc = hud_data["loc"]
-					if(slot_wear_id)
-						if(H.wear_id) H.wear_id.screen_loc = hud_data["loc"]
-					if(slot_belt)
-						if(H.belt)    H.belt.screen_loc =    hud_data["loc"]
-					if(slot_back)
-						if(H.back)    H.back.screen_loc =    hud_data["loc"]
-					if(slot_l_store)
-						if(H.l_store) H.l_store.screen_loc = hud_data["loc"]
-					if(slot_r_store)
-						if(H.r_store) H.r_store.screen_loc = hud_data["loc"]
-			else
-				switch(hud_data["slot"])
-					if(slot_s_store)
-						if(H.s_store) H.s_store.screen_loc = null
-					if(slot_wear_id)
-						if(H.wear_id) H.wear_id.screen_loc = null
-					if(slot_belt)
-						if(H.belt)    H.belt.screen_loc =    null
-					if(slot_back)
-						if(H.back)    H.back.screen_loc =    null
-					if(slot_l_store)
-						if(H.l_store) H.l_store.screen_loc = null
-					if(slot_r_store)
-						if(H.r_store) H.r_store.screen_loc = null
-
+/datum/hud/proc/persistent_inventory_update(mob/viewer)
+	return
 
 //Triggered when F12 is pressed (Unless someone changed something in the DMF)
 /mob/verb/button_pressed_F12()
@@ -305,16 +225,13 @@
 			if(infodisplay.len)
 				screenmob.client.screen -= infodisplay
 
+	screenmob.refresh_lighting_overlays()
 	hud_version = display_hud_version
-	persistant_inventory_update(screenmob)
+	persistent_inventory_update(screenmob)
 	mymob.update_action_buttons()
 	mymob.reload_fullscreens()
 
 	return TRUE
 
-/datum/hud/human/show_hud(version = 0,mob/viewmob)
-	. = ..()
-	if(!.)
-		return
-	var/mob/screenmob = viewmob || mymob
-	hidden_inventory_update(screenmob)
+/datum/hud/proc/update_locked_slots()
+	return

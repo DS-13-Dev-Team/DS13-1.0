@@ -223,7 +223,7 @@ STATMOD_LAYER	=	list(/datum/proc/reset_layer)
 
 	view_range = range
 	if (client)
-		client.change_view(view_range, TRUE)
+		client.change_view(view_range)
 
 
 

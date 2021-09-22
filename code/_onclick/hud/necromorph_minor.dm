@@ -9,30 +9,40 @@
 /datum/hud/necromorph_minor/New(mob/owner)
 	..()
 
-	var/list/hud_elements = list()
-
 	fire = new /obj/screen()
 	fire.icon = ui_style
 	fire.icon_state = "fire0"
 	fire.SetName("fire")
 	fire.screen_loc = ui_fire
-	hud_elements |= fire
+	infodisplay += fire
 
-	pain = mymob.overlay_fullscreen("pain", /obj/screen/fullscreen/pain, INFINITY)//new /obj/screen/fullscreen/pain( null )
+	hud_healthbar = new /obj/screen/meter/health(owner)
+	hud_healthbar.L = owner
+	infodisplay += hud_healthbar
 
-	if (istype(pain))
-		hud_elements |= pain
+	remaining_meter = new /obj/screen/meter_component/current(hud_healthbar)
+	remaining_meter.color = hud_healthbar.remaining_color
+	infodisplay += remaining_meter
 
+	delta_meter = new /obj/screen/meter_component/delta(hud_healthbar)
+	delta_meter.color = hud_healthbar.delta_color
+	infodisplay += delta_meter
 
-	hud_elements |= new /obj/screen/meter/health(mymob.client)
+	limit_meter = new /obj/screen/meter_component/text(hud_healthbar)
+	limit_meter.screen_loc = hud_healthbar.screen_loc
+	infodisplay += limit_meter
+
+	hud_healthbar.remaining_meter = remaining_meter
+	hud_healthbar.delta_meter = delta_meter
+	hud_healthbar.limit_meter = limit_meter
 
 	zone_sel = new /obj/screen/zone_sel( null )
 	zone_sel.icon = ui_style
 	zone_sel.color = ui_color
 	zone_sel.alpha = ui_alpha
 	zone_sel.overlays.Cut()
-	zone_sel.overlays += image('icons/mob/zone_sel.dmi', "[zone_sel.selecting]")
-	hud_elements |= zone_sel
+	zone_sel.overlays += image('icons/hud/zone_sel.dmi', "[zone_sel.selecting]")
+	infodisplay += zone_sel
 
 	pullin = new /obj/screen()
 	pullin.icon = ui_style
@@ -40,8 +50,4 @@
 	pullin.SetName("pull")
 	pullin.screen_loc = ui_pull_resist
 	src.hotkeybuttons += pullin
-	hud_elements |= pullin
-
-
-	mymob.client.screen = list()
-	mymob.client.add_to_screen(hud_elements)
+	static_inventory += pullin

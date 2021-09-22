@@ -4,7 +4,6 @@
 #define METER_HEIGHT	"16"
 /obj/screen/meter
 	name = "meter"
-	var/client/C
 	var/mob/living/L
 	var/obj/screen/meter_component/current/remaining_meter	//The actual remaining health, in red or green
 	var/obj/screen/meter_component/delta/delta_meter	//A yellow section indicating recent loss
@@ -20,7 +19,7 @@
 	screen_loc = "CENTER,TOP"
 	plane = HUD_PLANE
 	layer = HUD_BASE_LAYER
-	icon = 'icons/mob/screen_health.dmi'
+	icon = 'icons/hud/screen_health.dmi'
 	icon_state = "white"
 
 	var/total_value = 1
@@ -52,10 +51,9 @@
 	var/margin = 8//Extra length that isn't counted as part of our length for the purpose of components
 
 /obj/screen/meter/New(atom/holder)
-
+	L = holder
 	cache_data(arglist(args))
 	.=..()
-
 
 //Override this and change the parameters in subtypes
 /obj/screen/meter/proc/cache_data(atom/holder)
@@ -66,55 +64,7 @@
 	QDEL_NULL(delta_meter)
 	QDEL_NULL(limit_meter)
 	QDEL_NULL(textholder)
-	if (C)
-		C.screen -= src
-		C = null
 	.=..()
-
-/obj/screen/meter/added_to_screen(client/newclient)
-	recreate_components(newclient)
-
-
-
-
-/obj/screen/meter/proc/recreate_components(client/newclient)
-	if (C)
-		C.screen -= remaining_meter
-		C.screen -= delta_meter
-		C.screen -= limit_meter
-		C.screen -= textholder
-
-	if (newclient && newclient != C)
-		C = newclient
-		set_mob(C.mob)
-
-
-	QDEL_NULL(remaining_meter)
-	QDEL_NULL(delta_meter)
-	QDEL_NULL(limit_meter)
-	QDEL_NULL(textholder)
-
-	remaining_meter = new(src)
-	remaining_meter.color = remaining_color
-	remaining_meter.screen_loc = src.screen_loc
-
-	delta_meter = new(src)
-	delta_meter.color = delta_color
-	delta_meter.screen_loc = src.screen_loc
-
-
-	limit_meter = new(src)
-	limit_meter.screen_loc = src.screen_loc
-
-
-	textholder = new(src)
-	textholder.screen_loc = src.screen_loc
-
-	update(TRUE)
-
-
-/obj/screen/meter/proc/set_mob(mob/living/newmob)
-	L = newmob
 
 
 
@@ -166,7 +116,7 @@
 	length = round(length)
 
 	//We must make sure it can fit on the client's screen
-	length = min(length, C.get_viewport_width() - margin)
+	length = min(length, L.client.get_viewport_width() - margin)
 
 
 
@@ -264,7 +214,7 @@
 	screen_loc = "CENTER,TOP"
 	plane = HUD_PLANE
 	layer = HUD_ITEM_LAYER
-	icon = 'icons/mob/screen_health.dmi'
+	icon = 'icons/hud/screen_health.dmi'
 	icon_state = "white_slim"
 	var/side = -1	//-1 = left, 1 = right
 
@@ -276,13 +226,12 @@
 
 /obj/screen/meter_component/New(obj/screen/meter/newparent)
 	parent = newparent
-	parent.C.screen += src
 	update_total()
 	.=..()
 
 /obj/screen/meter_component/Destroy()
-	if (parent && parent.C)
-		parent.C.screen -= src
+	if (parent && parent.L)
+		parent.L?.hud_used?.infodisplay -= src
 	.=..()
 
 

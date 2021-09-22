@@ -158,7 +158,7 @@
 
 	//Vision
 	var/view_offset = 0
-	var/view_range = 7
+	var/view_range = WORLD_VIEW_NUM
 	var/lock_view = FALSE	//Used in mob/mob.dm, to tell reset_view not to do certain things
 
 
