@@ -439,8 +439,8 @@ The Lurker can only fire spines while its shell is open"
 	update_wear_icon()
 
 /obj/item/clothing/lurker_shell/proc/open()
-	icon_state = ""
-	item_state = ""
+	icon_state = open_icon_state
+	item_state = open_item_state
 	armor = list()
 	update_wear_icon()
 
