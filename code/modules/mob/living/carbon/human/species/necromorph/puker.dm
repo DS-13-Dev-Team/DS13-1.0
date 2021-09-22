@@ -96,15 +96,13 @@
 /datum/species/necromorph/puker/flayed
 	name = SPECIES_NECROMORPH_PUKER_FLAYED
 	icon_template = 'icons/mob/necromorph/puker/puker_flayed.dmi'
-	marker_spawnable = FALSE
-	preference_settable = FALSE
+	NECROMORPH_VISUAL_VARIANT
 
 
 /datum/species/necromorph/puker/classic
 	name = SPECIES_NECROMORPH_PUKER_CLASSIC
 	icon_template = 'icons/mob/necromorph/puker/puker_classic.dmi'
-	marker_spawnable = FALSE
-	preference_settable = FALSE
+	NECROMORPH_VISUAL_VARIANT
 	icon_lying = "_lying"
 
 	outfits = list()	//This thing has a different shape and can't wear clothing

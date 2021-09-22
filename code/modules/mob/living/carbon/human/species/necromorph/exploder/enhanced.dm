@@ -96,7 +96,7 @@ The last resort. The exploder screams and shakes violently for 3 seconds, before
 
 	name = SPECIES_NECROMORPH_EXPLODER_ENHANCED_RIGHT
 	icon_template = 'icons/mob/necromorph/exploder/exploder_enhanced_right.dmi'
-	marker_spawnable = FALSE
+	NECROMORPH_VISUAL_VARIANT
 
 	has_limbs = list(
 	BP_CHEST =  list("path" = /obj/item/organ/external/chest/simple, "height" = new /vector2(1,1.65)),

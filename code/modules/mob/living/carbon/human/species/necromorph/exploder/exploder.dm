@@ -120,7 +120,7 @@
 
 /datum/species/necromorph/exploder/classic
 	name = SPECIES_NECROMORPH_EXPLODER_CLASSIC
-	marker_spawnable = FALSE
+	NECROMORPH_VISUAL_VARIANT
 
 	icon_template = 'icons/mob/necromorph/exploder/exploder_classic.dmi'
 
@@ -136,7 +136,7 @@
 
 /datum/species/necromorph/exploder/right
 	name = SPECIES_NECROMORPH_EXPLODER_RIGHT
-	marker_spawnable = FALSE
+	NECROMORPH_VISUAL_VARIANT
 	icon_template = 'icons/mob/necromorph/exploder/exploder_right.dmi'
 
 	has_limbs = list(

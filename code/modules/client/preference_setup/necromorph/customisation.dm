@@ -206,7 +206,7 @@ GLOBAL_LIST_EMPTY(default_necro_custom)
 	//Size of the icon in pixels
 	var/iwidth = I.Width()*NECROCUSTOM_UI_SCALE
 	var/total_width = iwidth + (2 * IMAGE_CHECK_PANEL_PADDING)
-	var/iheight = I.Width()*NECROCUSTOM_UI_SCALE
+	var/iheight = I.Height()*NECROCUSTOM_UI_SCALE
 	//We wrap everything in a link so the whole box is clickable
 	html += {"<a class='linkActive noIcon' unselectable='on' style='display:inline-block; [!ticked ? "background-color: transparent;": ""]' onclick='document.location="?src=\ref[source];[command]=[command_data ? command_data : text];category=[category];[subcategory_text]"' >"}
 
