@@ -66,3 +66,6 @@
   - tweak: Being in zero gravity now buffs movespeed and evasion, but reduces attack
       speed. These effects are all favorably modified by EVA training skill
   - tweak: Being in a zero gravity environment now reduces the effects of encumbrance
+2021-09-22:
+  Nanako:
+  - bugfix: Fixed humans spawning with the wrong attack intent selected
