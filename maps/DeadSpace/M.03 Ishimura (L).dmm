@@ -27267,7 +27267,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/ishimura/lower/mining/processing_room)
 "bdy" = (
-/obj/machinery/mineral/input,
+/obj/machinery/input,
 /obj/effect/floor_decal/industrial/loading{
 	dir = 4
 	},
@@ -27427,7 +27427,7 @@
 /area/ishimura/lower/mining/processing_room)
 "bdS" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/machinery/mineral/input,
+/obj/machinery/input,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -27661,7 +27661,7 @@
 /turf/simulated/floor/plating,
 /area/ishimura/lower/mining/processing_room)
 "bev" = (
-/obj/machinery/mineral/input,
+/obj/machinery/input,
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/machinery/light,
 /turf/simulated/floor/plating,
