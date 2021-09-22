@@ -736,7 +736,7 @@ proc/is_blind(A)
 
 
 /mob/proc/canface()
-	if (!incapacitated() && CheckMoveCooldown())
+	if (!incapacitated() && check_move_cooldown())
 		return TRUE
 	return FALSE
 

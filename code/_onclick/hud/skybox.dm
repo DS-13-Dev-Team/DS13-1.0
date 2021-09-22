@@ -70,14 +70,15 @@
 	..()
 	client.update_skybox(TRUE)
 
-/mob/Move()
+/mob/Move(NewLoc, Dir = 0, step_x = 0, step_y = 0, var/glide_size_override = 0)
 	var/old_z = get_z(src)
 	. = ..()
 	if(. && client)
 		client.update_skybox(old_z != get_z(src))
 
-/mob/forceMove()
+/mob/forceMove(atom/destination, var/special_event, glide_size_override=0)
 	var/old_z = get_z(src)
+
 	. = ..()
 	if(. && client)
 		client.update_skybox(old_z != get_z(src))

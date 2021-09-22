@@ -234,7 +234,7 @@
 	anchored = 0
 	buckle_movable = 1
 
-/obj/structure/bed/chair/office/Move()
+/obj/structure/bed/chair/office/Move(NewLoc, Dir = 0, step_x = 0, step_y = 0, var/glide_size_override = 0)
 	. = ..()
 	if(buckled_mob)
 		var/mob/living/occupant = buckled_mob

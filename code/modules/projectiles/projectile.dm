@@ -153,7 +153,7 @@
 	last_loc = loc
 	return ..()
 
-/obj/item/projectile/forceMove()
+/obj/item/projectile/forceMove(atom/destination, var/special_event, glide_size_override=0)
 	..()
 	if(!vacuum_traversal && istype(loc, /turf/space/) && istype(loc.loc, /area/space))
 		qdel(src)

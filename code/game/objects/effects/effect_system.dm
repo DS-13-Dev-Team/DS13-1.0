@@ -121,7 +121,7 @@ steam.start() -- spawns the effect
 		T.hotspot_expose(1000,100)
 	return ..()
 
-/obj/effect/sparks/Move()
+/obj/effect/sparks/Move(NewLoc, Dir = 0, step_x = 0, step_y = 0, var/glide_size_override = 0)
 	..()
 	var/turf/T = src.loc
 	if (istype(T, /turf))
@@ -223,7 +223,7 @@ steam.start() -- spawns the effect
 /obj/effect/effect/smoke/bad
 	time_to_live = 200
 
-/obj/effect/effect/smoke/bad/Move()
+/obj/effect/effect/smoke/bad/Move(NewLoc, Dir = 0, step_x = 0, step_y = 0, var/glide_size_override = 0)
 	..()
 	for(var/mob/living/carbon/M in get_turf(src))
 		affect(M)
@@ -251,7 +251,7 @@ steam.start() -- spawns the effect
 
 /obj/effect/effect/smoke/sleepy
 
-/obj/effect/effect/smoke/sleepy/Move()
+/obj/effect/effect/smoke/sleepy/Move(NewLoc, Dir = 0, step_x = 0, step_y = 0, var/glide_size_override = 0)
 	..()
 	for(var/mob/living/carbon/M in get_turf(src))
 		affect(M)
@@ -276,7 +276,7 @@ steam.start() -- spawns the effect
 	name = "mustard gas"
 	icon_state = "mustard"
 
-/obj/effect/effect/smoke/mustard/Move()
+/obj/effect/effect/smoke/mustard/Move(NewLoc, Dir = 0, step_x = 0, step_y = 0, var/glide_size_override = 0)
 	..()
 	for(var/mob/living/carbon/human/R in get_turf(src))
 		affect(R)

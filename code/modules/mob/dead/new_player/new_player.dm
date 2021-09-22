@@ -499,7 +499,7 @@
 	popup.set_content(dat)
 	popup.open()
 
-/mob/dead/new_player/Move()
+/mob/dead/new_player/Move(NewLoc, Dir = 0, step_x = 0, step_y = 0, var/glide_size_override = 0)
 	return FALSE
 
 /mob/dead/new_player/proc/close_spawn_windows()

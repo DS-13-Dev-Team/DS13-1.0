@@ -53,6 +53,7 @@
 	if(lying) //Crawling, it's slower
 		tally /= species.lying_speed_factor
 
+	set_glide_size(DELAY2GLIDESIZE(tally))
 
 	return tally
 
@@ -113,7 +114,7 @@
 		return 1
 	return 0
 
-/mob/living/carbon/human/Move()
+/mob/living/carbon/human/Move(NewLoc, Dir = 0, step_x = 0, step_y = 0, var/glide_size_override = 0)
 	. = ..()
 	if(.) //We moved
 		handle_exertion()
