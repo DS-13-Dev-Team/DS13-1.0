@@ -420,6 +420,7 @@ The Lurker can only fire spines while its shell is open"
 /obj/item/clothing/lurker_shell/species_changed(var/mob/living/carbon/human/H, var/datum/species/S)
 	canremove = TRUE
 	H.unEquip(src)
+	qdel(src)
 
 /obj/item/clothing/lurker_shell/malo
 	icon = 'icons/mob/necromorph/lurker/lurker_malo.dmi'
