@@ -6543,7 +6543,7 @@
 /turf/simulated/floor/plating,
 /area/aegis/colony/refinery)
 "pc" = (
-/obj/machinery/mineral/input,
+/obj/machinery/input,
 /obj/effect/floor_decal/industrial/loading{
 	dir = 4
 	},
@@ -6597,7 +6597,7 @@
 /turf/simulated/floor/plating,
 /area/aegis/colony/refinery)
 "tW" = (
-/obj/machinery/mineral/input,
+/obj/machinery/input,
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/plating,
 /area/aegis/colony/refinery)
@@ -6820,7 +6820,7 @@
 /area/aegis/colony/refinery)
 "Ii" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/machinery/mineral/input,
+/obj/machinery/input,
 /turf/simulated/floor/plating,
 /area/aegis/colony/refinery)
 "IT" = (

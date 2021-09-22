@@ -72,7 +72,7 @@
 	density = 1
 	anchored = 1.0
 	var/obj/machinery/mineral/stacking_unit_console/console
-	var/obj/machinery/mineral/input = null
+	var/obj/machinery/input = null
 	var/obj/machinery/mineral/output = null
 	var/list/stack_storage[0]
 	var/list/stack_paths[0]
@@ -96,7 +96,7 @@
 
 	spawn( 5 )
 		for (var/dir in GLOB.cardinal)
-			src.input = locate(/obj/machinery/mineral/input, get_step(src, dir))
+			src.input = locate(/obj/machinery/input, get_step(src, dir))
 			if(src.input) break
 		for (var/dir in GLOB.cardinal)
 			src.output = locate(/obj/machinery/mineral/output, get_step(src, dir))
