@@ -8,6 +8,13 @@ SUBSYSTEM_DEF(trade)
 	var/tmp/list/current_traders
 	var/next_salary_period	= SALARY_INTERVAL
 
+	/*
+		This briefly held list is populated with data about who the active crew members are, and how much they are owed
+	*/
+	var/list/payroll_list = list()
+	var/list/department_shares = list()
+	var/list/departmental_bonuses = list()
+
 /datum/controller/subsystem/trade/Initialize()
 	. = ..()
 	for(var/i in 1 to rand(1,3))
@@ -69,6 +76,7 @@ SUBSYSTEM_DEF(trade)
 	var/people_paid = 0
 	var/credits_paid = 0
 
+
 	next_salary_period	= world.time + SALARY_INTERVAL
 	//We cycle through the records
 	for(var/datum/computer_file/report/crew_record/CR in GLOB.all_crew_records)
@@ -115,3 +123,52 @@ SUBSYSTEM_DEF(trade)
 	//Alright we are out of the loop!
 	if (credits_paid)
 		command_announcement.Announce("CEC Employee salaries have been paid. A total of [credits_paid] was paid out to [people_paid] employees in this cycle. Please collect your wages at the nearest store kiosk","CEC Payroll System")
+
+
+/datum/controller/subsystem/trade/proc/build_payroll_crew_list()
+	payroll_list = list()
+	for(var/datum/computer_file/report/crew_record/CR in GLOB.all_crew_records)
+		//We need to check that the mob is in a condition to be paid
+		var/mob/living/carbon/human/H = CR.get_mob()
+
+		//Gotta exist and be alive
+		if (!H || H.stat == DEAD)
+			continue
+
+		//Next, filter out NPCs and people who have ghosted
+		if (!H.ckey || !H.mind)
+			continue
+
+		//Lastly, you gotta be online and active
+		//Future TODO: Find some way to catch people who just crashed or relogged at the wrong time
+			//Maybe find out when they logged out?
+		if (!H.client || (H.client.inactivity > (SALARY_INTERVAL * 0.5)))
+			continue
+
+		//Get the job datum, tells us how much to pay
+		var/rank = CR.get_job()
+		if (!rank)
+			continue
+
+		var/datum/job/job_datum = job_master.GetJob(rank)
+		if (!job_datum)
+			continue
+
+
+		var/pay_amount = job_datum.salary
+		//Future TODO: Performance bonuses
+
+		//Alright we have finally concluded that this person is eligible to be paid, and how much to pay them. Now we need to find their account
+		var/datum/money_account/MA = H.mind.initial_account
+		if (!MA)
+			continue
+
+		//Okay now we record all this data
+		department_shares[job_datum.department] += job_datum.bonus_shares
+		var/list/payee = list("mob" = H, "account" = MA, "wage" = pay_amount, "department" = job_datum.department)
+		payroll_list
+
+		var/success = charge_to_account(MA.account_number, "CEC Payroll System", "Salary", "CEC Payroll System", pay_amount)
+		if (success)
+			people_paid++
+			credits_paid += pay_amount
