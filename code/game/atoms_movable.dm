@@ -82,9 +82,13 @@
 	..()
 	return
 
-/atom/movable/proc/forceMove(atom/destination)
+/atom/movable/proc/forceMove(atom/destination, var/special_event, glide_size_override=0)
 	if(loc == destination)
 		return FALSE
+
+	if (glide_size_override)
+		set_glide_size(glide_size_override)
+
 	var/is_origin_turf = isturf(loc)
 	var/is_destination_turf = isturf(destination)
 	// It is a new area if:
@@ -114,6 +118,62 @@
 	return TRUE
 
 
+//This proc should never be overridden elsewhere at /atom/movable to keep directions sane.
+/atom/movable/Move(NewLoc, direct = 0, step_x = 0, step_y = 0, var/glide_size_override = 0)
+	if (glide_size_override > 0)
+		set_glide_size(glide_size_override)
+
+	if (direct & (direct - 1))
+		src.mid_diag_move = TRUE
+
+		var/vert_dir = SOUTH
+		if (direct & 1)
+			vert_dir = NORTH
+
+		var/hor_dir = WEST
+		if (direct & 4)
+			hor_dir = EAST
+
+		if (step(src, vert_dir))
+			src.mid_diag_move = FALSE
+			step(src, hor_dir)
+		else if (step(src, hor_dir))
+			src.mid_diag_move = FALSE
+			step(src, vert_dir)
+
+		src.mid_diag_move = FALSE // In case diagonal movement does not actually happen
+	else
+		var/atom/A = src.loc
+
+		. = ..()
+
+		if(direct != get_visual_dir())
+			set_dir(direct)
+
+		//This is an actual speed in metres per second
+		var/last_move_delta = world.time - src.l_move_time
+		if (last_move_delta)
+			src.move_speed = 10 / last_move_delta
+		else
+			move_speed = 0
+
+		src.l_move_time = world.time
+		src.m_flag = 1
+		if ((A != src.loc && A && A.z == src.z))
+			src.last_move = get_dir(A, src.loc)
+
+/atom/movable/proc/set_glide_size(glide_size_override = 0, var/min = 0.1, var/max = world.icon_size/1)
+	if (!glide_size_override || glide_size_override > max)
+		glide_size = 0
+	else
+		glide_size = max(min, glide_size_override)
+
+	for (var/atom/movable/AM in contents)
+		AM.set_glide_size(glide_size, min, max)
+
+/proc/step_glide(var/atom/movable/am, var/dir, var/glide_size_override)
+	am.set_glide_size(glide_size_override)
+	return step(am, dir)
 
 //Overlays
 /atom/movable/overlay

@@ -12,11 +12,11 @@
 	else
 		QDEL_NULL(shield)
 
-/obj/item/device/personal_shield/Move()
+/obj/item/device/personal_shield/Move(NewLoc, Dir = 0, step_x = 0, step_y = 0, var/glide_size_override = 0)
 	QDEL_NULL(shield)
 	return ..()
 
-/obj/item/device/personal_shield/forceMove()
+/obj/item/device/personal_shield/forceMove(atom/destination, var/special_event, glide_size_override=0)
 	QDEL_NULL(shield)
 	return ..()
 

@@ -16,15 +16,4 @@ GLOBAL_DATUM_INIT(pre_move_event, /decl/observ/pre_move, new)
 
 
 
-/********************
-* Movement Handling *
-********************/
-
-/atom/movable/Move(var/newloc,var/Dir=0,var/step_x=0,var/step_y=0)
-	GLOB.pre_move_event.raise_event(src, loc, newloc)
-	. = ..()
-
-
-/atom/movable/forceMove(atom/destination)
-	GLOB.pre_move_event.raise_event(src, loc, destination)
-	. = ..()
+//The overrides for this are in moved.dm to condense and save performance

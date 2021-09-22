@@ -254,7 +254,7 @@
 			if(isliving(A))
 				var/mob/living/L = A
 				if(L.pulling)
-					L.pulling.forceMove(target)
+					L.pulling.forceMove(target, null, L.glide_size)
 			if(ishuman(A))
 				var/mob/living/carbon/human/H = A
 				if(H.species.silent_steps || H.buckled || H.lying || H.throwing)

@@ -331,7 +331,7 @@ Buildable meters
 /obj/item/pipe/AltClick()
 	rotate()
 
-/obj/item/pipe/Move()
+/obj/item/pipe/Move(NewLoc, Dir = 0, step_x = 0, step_y = 0, var/glide_size_override = 0)
 	..()
 	if ((pipe_type in list (PIPE_SIMPLE_BENT, PIPE_SUPPLY_BENT, PIPE_SCRUBBERS_BENT, PIPE_HE_BENT, PIPE_FUEL_BENT)) \
 		&& (src.dir in GLOB.cardinal))

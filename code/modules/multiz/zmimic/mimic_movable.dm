@@ -2,18 +2,18 @@
 	var/tmp/atom/movable/openspace/overlay/bound_overlay	// The overlay that is directly mirroring us that we proxy movement to.
 	var/no_z_overlay	// If TRUE, this atom will not be drawn on open turfs.
 
-/atom/movable/forceMove(atom/dest)
-	. = ..(dest)
+/atom/movable/forceMove(atom/destination, var/special_event, glide_size_override=0)
+	. = ..()
 	if (. && bound_overlay)
 		// The overlay will handle cleaning itself up on non-openspace turfs.
-		if (isturf(dest))
+		if (isturf(destination))
 			bound_overlay.forceMove(get_step(src, UP))
 			if (dir != bound_overlay.dir)
 				bound_overlay.set_dir(dir)
 		else	// Not a turf, so we need to destroy immediately instead of waiting for the destruction timer to proc.
 			qdel(bound_overlay)
 
-/atom/movable/Move()
+/atom/movable/Move(NewLoc, Dir = 0, step_x = 0, step_y = 0, var/glide_size_override = 0)
 	. = ..()
 	if (. && bound_overlay)
 		bound_overlay.forceMove(get_step(src, UP))

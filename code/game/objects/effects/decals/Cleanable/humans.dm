@@ -163,7 +163,7 @@ var/global/list/image/splatter_cache=list()
 	amount = 0
 	var/message
 	biomass = 0
-	appearance_flags = PIXEL_SCALE
+	appearance_flags = PIXEL_SCALE|LONG_GLIDE
 	var/creator
 
 /obj/effect/decal/cleanable/blood/writing/New()

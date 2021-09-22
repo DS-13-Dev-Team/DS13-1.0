@@ -34,7 +34,7 @@
 			M.handle_pull_damage(src)
 
 
-	step(pulling, get_dir(pulling.loc, old_loc))
+	step_glide(pulling, get_dir(pulling.loc, old_loc), glide_size)
 
 
 

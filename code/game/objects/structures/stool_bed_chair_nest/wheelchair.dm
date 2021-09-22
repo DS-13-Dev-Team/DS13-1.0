@@ -28,8 +28,15 @@
 		return
 	..()
 
+/obj/structure/bed/chair/wheelchair/MayMove(var/mob/mover, var/is_external)
+	.=..()
+	if (.)
+		if (!mover.check_move_cooldown())
+			return FALSE
+
 /obj/structure/bed/chair/wheelchair/relaymove(mob/user, direction)
 	// Redundant check?
+	set_glide_size(user.glide_size)
 	if(user.stat || user.stunned || user.weakened || user.paralysis || user.lying || user.restrained())
 		if(user==pulling)
 			pulling = null
@@ -64,15 +71,15 @@
 	//--1---Move occupant---1--//
 	if(buckled_mob)
 		buckled_mob.buckled = null
-		step(buckled_mob, direction)
+		step_glide(buckled_mob, direction, glide_size)
 		buckled_mob.buckled = src
 	//--2----Move driver----2--//
 	if(pulling)
 		T = pulling.loc
 		if(get_dist(src, pulling) >= 1)
-			step(pulling, get_dir(pulling.loc, src.loc))
+			step_glide(pulling, get_dir(pulling.loc, src.loc), glide_size)
 	//--3--Move wheelchair--3--//
-	step(src, direction)
+	step_glide(src, direction, glide_size)
 	if(buckled_mob) // Make sure it stays beneath the occupant
 		Move(buckled_mob.loc)
 	set_dir(direction)
@@ -89,7 +96,7 @@
 		create_track()
 	driving = 0
 
-/obj/structure/bed/chair/wheelchair/Move()
+/obj/structure/bed/chair/wheelchair/Move(NewLoc, Dir = 0, step_x = 0, step_y = 0, var/glide_size_override = 0)
 	. = ..()
 	if(buckled_mob)
 		var/mob/living/occupant = buckled_mob

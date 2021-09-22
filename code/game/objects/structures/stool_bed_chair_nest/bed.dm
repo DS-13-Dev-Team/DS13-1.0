@@ -136,16 +136,16 @@
 	else
 		..()
 
-/obj/structure/bed/Move()
+/obj/structure/bed/Move(NewLoc, Dir = 0, step_x = 0, step_y = 0, var/glide_size_override = 0)
 	. = ..()
 	if(buckled_mob)
-		buckled_mob.forceMove(src.loc)
+		buckled_mob.forceMove(src.loc, null, glide_size_override = glide_size_override || glide_size)
 
-/obj/structure/bed/forceMove()
+/obj/structure/bed/forceMove(atom/destination, var/special_event, glide_size_override=0)
 	. = ..()
 	if(buckled_mob)
 		if(isturf(src.loc))
-			buckled_mob.forceMove(src.loc)
+			buckled_mob.forceMove(loc, glide_size_override=glide_size)
 		else
 			unbuckle_mob()
 

@@ -41,15 +41,18 @@ GLOBAL_DATUM_INIT(moved_event, /decl/observ/moved, new)
 	. = ..()
 	GLOB.moved_event.unregister(src, am, /atom/movable/proc/recursive_move)
 
+//TODO Here: Add a flag to check if this thing has any move listeners
 // Entered() typically lifts the moved event, but in the case of null-space we'll have to handle it.
-/atom/movable/Move()
+/atom/movable/Move(NewLoc, Dir = 0, step_x = 0, step_y = 0, var/glide_size_override = 0)
 	var/old_loc = loc
+	GLOB.pre_move_event.raise_event(src, loc, NewLoc)
 	. = ..()
 	if(. && !loc)
 		GLOB.moved_event.raise_event(src, old_loc, null)
 
-/atom/movable/forceMove(atom/destination)
+/atom/movable/forceMove(atom/destination, var/special_event, glide_size_override=0)
 	var/old_loc = loc
+	GLOB.pre_move_event.raise_event(src, loc, destination)
 	. = ..()
 	if(. && !loc)
 		GLOB.moved_event.raise_event(src, old_loc, null)

@@ -5,7 +5,7 @@
 	///Mobs with slow turning take a move to turn in place.
 	//We will attempt to turn towards the target if our movement is off cooldown
 	if (slow_turning)
-		if (CheckMoveCooldown() && facedir(direction))
+		if (check_move_cooldown() && facedir(direction))
 			return TRUE
 		else if (!(get_visual_dir() & direction))
 			return FALSE
@@ -46,7 +46,7 @@
 	if(delay)
 		delay.AddDelay(timeout)
 
-/mob/proc/CheckMoveCooldown()
+/mob/proc/check_move_cooldown()
 	var/datum/movement_handler/mob/delay/delay = GetMovementHandler(/datum/movement_handler/mob/delay)
 	if(delay)
 		return (delay.MayMove(src) == MOVEMENT_PROCEED)
@@ -127,46 +127,7 @@
 	return
 
 
-//This proc should never be overridden elsewhere at /atom/movable to keep directions sane.
-/atom/movable/Move(newloc, direct)
-	if (direct & (direct - 1))
-		src.mid_diag_move = TRUE
 
-		var/vert_dir = SOUTH
-		if (direct & 1)
-			vert_dir = NORTH
-
-		var/hor_dir = WEST
-		if (direct & 4)
-			hor_dir = EAST
-
-		if (step(src, vert_dir))
-			src.mid_diag_move = FALSE
-			step(src, hor_dir)
-		else if (step(src, hor_dir))
-			src.mid_diag_move = FALSE
-			step(src, vert_dir)
-
-		src.mid_diag_move = FALSE // In case diagonal movement does not actually happen
-	else
-		var/atom/A = src.loc
-
-		. = ..()
-
-		if(direct != get_visual_dir())
-			set_dir(direct)
-
-		//This is an actual speed in metres per second
-		var/last_move_delta = world.time - src.l_move_time
-		if (last_move_delta)
-			src.move_speed = 10 / last_move_delta
-		else
-			move_speed = 0
-
-		src.l_move_time = world.time
-		src.m_flag = 1
-		if ((A != src.loc && A && A.z == src.z))
-			src.last_move = get_dir(A, src.loc)
 
 /client/Move(n, direction)
 	if(!mob)
