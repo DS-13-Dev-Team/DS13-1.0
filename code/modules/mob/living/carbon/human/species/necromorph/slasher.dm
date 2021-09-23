@@ -95,15 +95,13 @@
 /datum/species/necromorph/slasher/desiccated
 	name = SPECIES_NECROMORPH_SLASHER_DESICCATED
 	icon_template = 'icons/mob/necromorph/slasher/desiccated.dmi'
-	marker_spawnable = FALSE
-	preference_settable = FALSE
+	NECROMORPH_VISUAL_VARIANT
 
 
 /datum/species/necromorph/slasher/carrion
 	name = SPECIES_NECROMORPH_SLASHER_CARRION
 	icon_template = 'icons/mob/necromorph/slasher/carrion.dmi'
-	marker_spawnable = FALSE
-	preference_settable = FALSE
+	NECROMORPH_VISUAL_VARIANT
 	icon_lying = null
 	lying_rotation = 90
 
@@ -335,7 +333,7 @@ Dodge is a skill that requires careful timing, but if used correctly, it can all
 
 		//We need to be in harm intent for this, set it if its not already
 		if (H.a_intent != I_HURT)
-			H.a_intent_change(I_HURT)
+			H.set_attack_intent(I_HURT)
 
 		//This is a bit of a hack because unarmed attacks are poorly coded:
 			//We'll set the user's last attack to some time in the past so they can attack again

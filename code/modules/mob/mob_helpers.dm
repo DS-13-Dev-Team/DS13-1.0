@@ -366,7 +366,7 @@ var/list/intents = list(I_HELP,I_DISARM,I_GRAB,I_HURT)
 
 //change a mob's act-intent. Input the intent as a string such as "help" or use "right"/"left
 //There should really be an Observation in here to detect this
-/mob/verb/a_intent_change(input as text)
+/mob/verb/set_attack_intent(input as text)
 	set name = "a-intent"
 	set hidden = 1
 
@@ -378,8 +378,6 @@ var/list/intents = list(I_HELP,I_DISARM,I_GRAB,I_HURT)
 				a_intent = intent_numeric((intent_numeric(a_intent)+1) % 4)
 			if("left")
 				a_intent = intent_numeric((intent_numeric(a_intent)+3) % 4)
-		if(hud_used && hud_used.action_intent)
-			hud_used.action_intent.icon_state = "intent_[a_intent]"
 
 	else if(isrobot(src))
 		switch(input)
@@ -389,11 +387,11 @@ var/list/intents = list(I_HELP,I_DISARM,I_GRAB,I_HURT)
 				a_intent = I_HURT
 			if("right","left")
 				a_intent = intent_numeric(intent_numeric(a_intent) - 3)
-		if(hud_used && hud_used.action_intent)
-			if(a_intent == I_HURT)
-				hud_used.action_intent.icon_state = I_HURT
-			else
-				hud_used.action_intent.icon_state = I_HELP
+
+	if(hud_used && hud_used.action_intent)
+		hud_used.action_intent.intent = a_intent
+		hud_used.action_intent.update_icon()
+
 
 proc/is_blind(A)
 	if(istype(A, /mob/living/carbon))
@@ -738,7 +736,7 @@ proc/is_blind(A)
 
 
 /mob/proc/canface()
-	if (!incapacitated() && CheckMoveCooldown())
+	if (!incapacitated() && check_move_cooldown())
 		return TRUE
 	return FALSE
 

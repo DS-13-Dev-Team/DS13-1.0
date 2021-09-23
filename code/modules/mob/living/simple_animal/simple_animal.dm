@@ -302,6 +302,8 @@
 	if (move_speed_factor)
 		tally /= move_speed_factor
 
+	set_glide_size(DELAY2GLIDESIZE(tally))
+
 	return tally
 
 

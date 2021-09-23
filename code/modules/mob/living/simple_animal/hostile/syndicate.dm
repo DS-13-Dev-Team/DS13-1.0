@@ -19,7 +19,6 @@
 	melee_damage_upper = 10
 	can_escape = 1
 	attacktext = "punched"
-	a_intent = I_HURT
 	var/corpse = /obj/effect/landmark/corpse/syndicate
 	var/weapon1
 	var/weapon2

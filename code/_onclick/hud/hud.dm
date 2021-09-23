@@ -20,7 +20,7 @@
 	var/obj/screen/lingchemdisplay
 	var/obj/screen/r_hand_hud_object
 	var/obj/screen/l_hand_hud_object
-	var/obj/screen/action_intent
+	var/obj/screen/intent/action_intent
 	var/obj/screen/move_intent
 	var/obj/screen/stamina/stamina_bar
 	var/obj/screen/meter/health/hud_healthbar

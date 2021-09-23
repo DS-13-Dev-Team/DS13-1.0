@@ -12,6 +12,8 @@
 //Takes a speed in metres per second, and outputs the number of ticks to wait between each step to achieve that
 #define SPEED_TO_TICKS(speed) (SPEED_TO_DELAY(speed) / world.tick_lag)
 
+#define DELAY2GLIDESIZE(delay) (world.icon_size / max(Ceiling(delay / world.tick_lag), 1))
+
 //Returned by structures which have no opinion on whether to allow/block ztransition, when asked
 #define ZTRANSITION_MAYBE	-1
 

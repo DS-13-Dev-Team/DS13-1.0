@@ -15,12 +15,12 @@
 		updateVisibility(src)
 	. = ..()
 
-/atom/movable/Move()
+/atom/movable/Move(NewLoc, Dir = 0, step_x = 0, step_y = 0, var/glide_size_override = 0)
 	. = ..()
 	if(opacity && .)
 		updateVisibility(src)
 
-/atom/movable/forceMove()
+/atom/movable/forceMove(atom/destination, var/special_event, glide_size_override=0)
 	. = ..()
 	if(opacity && .)
 		updateVisibility(src)

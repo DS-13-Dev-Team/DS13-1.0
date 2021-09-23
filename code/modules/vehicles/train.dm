@@ -26,9 +26,9 @@
 	for(var/obj/vehicle/train/T in orange(1, src))
 		latch(T)
 
-/obj/vehicle/train/Move()
+/obj/vehicle/train/Move(NewLoc, Dir = 0, step_x = 0, step_y = 0, var/glide_size_override = 0)
 	var/old_loc = get_turf(src)
-	if(..())
+	if((.=..()))
 		if(tow)
 			tow.Move(old_loc)
 		return 1
@@ -75,24 +75,24 @@
 //-------------------------------------------
 /obj/vehicle/train/relaymove(mob/user, direction)
 	if(user.incapacitated())
-		return 0
+		return MOVEMENT_HANDLED
 
 	var/turf/T = get_step_to(src, get_step(src, direction))
 	if(!T)
 		to_chat(user, "You can't find a clear area to step onto.")
-		return 0
+		return MOVEMENT_HANDLED
 
 	if(user != load)
 		if(user in src)		//for handling players stuck in src - this shouldn't happen - but just in case it does
 			user.forceMove(T)
-			return 1
-		return 0
+			return MOVEMENT_PROCEED
+		return MOVEMENT_HANDLED
 
 	unload(user, direction)
 
 	to_chat(user, "<span class='notice'>You climb down from [src].</span>")
 
-	return 1
+	return MOVEMENT_PROCEED
 
 /obj/vehicle/train/MouseDrop_T(var/atom/movable/C, mob/user as mob)
 	if(!CanPhysicallyInteract(user) || !user.Adjacent(C) || !istype(C) || (user == C))

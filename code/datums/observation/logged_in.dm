@@ -6,9 +6,9 @@
 //		Arguments that the called proc should expect:
 //			/datum/joiner: The thing that has logged in
 
-GLOBAL_DATUM_INIT(logged_in_event, /decl/observ/logged_in, new)
+GLOBAL_DATUM_INIT(logged_in_event, /decl/observ/global_listener/logged_in, new)
 
-/decl/observ/logged_in
+/decl/observ/global_listener/logged_in
 	name = "Logged In"
 	expected_type = /mob
 

@@ -422,6 +422,7 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 	H.limited_click_arc = limited_click_arc
 	H.opacity = opacity
 	H.reach = reach
+	H.set_attack_intent(H.a_intent || initial(H.a_intent) || I_HURT)
 
 /datum/species/proc/setup_movement(var/mob/living/carbon/human/H)
 	H.slow_turning = slow_turning

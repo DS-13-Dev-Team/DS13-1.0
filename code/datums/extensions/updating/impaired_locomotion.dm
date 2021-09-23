@@ -5,8 +5,12 @@
 	statmods = list(STATMOD_MOVESPEED_MULTIPLICATIVE = 1,
 	STATMOD_EVASION = 0)
 
-	var/total_max_slowdown = 0.75
-
+	/*
+		Maximum penalty when all locomotion limbs are completely gone
+		50% speed penalty may not seem like enough for missing both legs, but you'll be crawling, in pain, and in shock
+		as well, and those add their own penalties
+	*/
+	var/total_max_slowdown = 0.5
 	var/impairment	=	0
 
 /datum/extension/updating/impaired_locomotion/update()

@@ -60,7 +60,7 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 	var/list/things = custom[SIGNAL][SIGNAL_DEFAULT]
 	if (length(things))
 		variations = things.Copy()
-		update_icon()
+	update_icon()
 
 /mob/dead/observer/eye/signal/update_icon()
 	if (LAZYLEN(variations))

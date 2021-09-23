@@ -9,8 +9,6 @@
 
 	tally += species.handle_movement_delay_special(src)
 
-
-
 	if(legcuffed)
 		tally += legcuffed.get_onmob_delay()
 
@@ -20,14 +18,8 @@
 	if(CE_SLOWDOWN in chem_effects)
 		tally += chem_effects[CE_SLOWDOWN]
 
-	//Removed section about health deficiency, it basically duplicates what pain does
-
 	if(can_feel_pain())
 		if(get_shock() >= 10) tally += (get_shock() / 10) //pain shouldn't slow you down if you can't even feel it
-
-
-
-
 
 	if(istype(buckled, /obj/structure/bed/chair/wheelchair))
 		for(var/organ_name in list(BP_L_HAND, BP_R_HAND, BP_L_ARM, BP_R_ARM))
@@ -38,10 +30,6 @@
 				tally += 0.5
 			else if(E.status & ORGAN_BROKEN)
 				tally += 1.5
-
-
-
-
 
 	if(shock_stage >= 10 || src.stamina <= 0)
 		tally += 3
@@ -65,6 +53,7 @@
 	if(lying) //Crawling, it's slower
 		tally /= species.lying_speed_factor
 
+	set_glide_size(DELAY2GLIDESIZE(tally))
 
 	return tally
 
@@ -125,7 +114,7 @@
 		return 1
 	return 0
 
-/mob/living/carbon/human/Move()
+/mob/living/carbon/human/Move(NewLoc, Dir = 0, step_x = 0, step_y = 0, var/glide_size_override = 0)
 	. = ..()
 	if(.) //We moved
 		handle_exertion()

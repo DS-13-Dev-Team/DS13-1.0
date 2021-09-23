@@ -12,7 +12,6 @@
 		if(user.gender == FEMALE)
 			playsound(user.loc, pick(emote_soundf), 50, 1)
 
-
 /decl/emote/audible/deathgasp_alien
 	key = "deathgasp"
 	emote_message_3p = "USER lets out a waning guttural screech, green blood bubbling from its maw."

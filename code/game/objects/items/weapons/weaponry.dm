@@ -156,7 +156,7 @@
 		health = 0
 	healthcheck()
 
-/obj/effect/energy_net/Move()
+/obj/effect/energy_net/Move(NewLoc, Dir = 0, step_x = 0, step_y = 0, var/glide_size_override = 0)
 	..()
 
 	if(buckled_mob)

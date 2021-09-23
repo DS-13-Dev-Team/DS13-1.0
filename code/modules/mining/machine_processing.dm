@@ -11,6 +11,7 @@
 	var/machinedir = EAST
 	var/show_all_ores = 0
 
+
 /obj/machinery/mineral/processing_unit_console/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	spawn(7)
@@ -88,10 +89,14 @@
 	if(href_list["toggle_power"])
 
 		machine.active = !machine.active
+		machine.update_icon()
 
 	if(href_list["toggle_ores"])
 
 		show_all_ores = !show_all_ores
+
+	if (machine)
+		machine.wake_up()
 
 	src.updateUsrDialog()
 	return
@@ -106,14 +111,43 @@
 	density = 1
 	anchored = 1
 	light_outer_range = 3
-	var/obj/machinery/mineral/input = null
+	var/obj/machinery/input/input = null
 	var/obj/machinery/mineral/output = null
-	var/obj/machinery/mineral/console = null
+	var/obj/machinery/mineral/processing_unit_console/console = null
 	var/sheets_per_tick = 10
 	var/list/ores_processing[0]
 	var/list/ores_stored[0]
 	var/static/list/alloy_data
 	var/active = 0
+	var/alloying_ongoing = FALSE	//Set true if we made anything last tick
+
+/obj/machinery/mineral/processing_unit/Initialize()
+	update_icon()
+	.=..()
+
+
+/obj/machinery/mineral/processing_unit/update_icon()
+	if (active)
+		icon_state = "furnace"
+	else
+		icon_state = "furnace_off"
+
+/obj/machinery/mineral/processing_unit/proc/wake_up()
+	START_PROCESSING_MACHINE(src, MACHINERY_PROCESS_SELF)
+
+/obj/machinery/mineral/processing_unit/Destroy()
+	if (input)
+		if (input.master == src)
+			input.master = null
+		input = null
+	if (output)
+		output = null
+	if (console)
+		if (console.machine == src)
+			console.machine = null
+		console = null
+	. = ..()
+
 
 /obj/machinery/mineral/processing_unit/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
@@ -132,34 +166,53 @@
 	//Locate our output and input machinery.
 	spawn(5)
 		for (var/dir in GLOB.cardinal)
-			src.input = locate(/obj/machinery/mineral/input, get_step(src, dir))
-			if(src.input) break
+			src.input = locate(/obj/machinery/input, get_step(src, dir))
+			if(src.input)
+				input.master = src
+				break
 		for (var/dir in GLOB.cardinal)
 			src.output = locate(/obj/machinery/mineral/output, get_step(src, dir))
 			if(src.output) break
 		return
 	return
 
-/obj/machinery/mineral/processing_unit/Process()
 
-	if (!src.output || !src.input) return
+/obj/machinery/mineral/processing_unit/input_available(var/obj/item/weapon/ore/O)
+	if (istype(O))
+		wake_up()
+
+/obj/machinery/mineral/processing_unit/Process()
+	alloying_ongoing = FALSE
+
+	if (!src.output || !src.input)
+		if (can_stop_processing())
+			return PROCESS_KILL
+		return
 
 	var/list/tick_alloys = list()
 
 	//Grab some more ore to process this tick.
 	for(var/i = 0,i<sheets_per_tick,i++)
 		var/obj/item/weapon/ore/O = locate() in input.loc
+
 		if(!O)
 			break
+		world << "Got ore [O]"
 		var/OS = ores_stored[O.ore.name]
-		if(O.ore && !isnull(OS))
+		if(O.ore)
+			if (isnull(OS))
+				OS = 0
 			OS++
+			ores_stored[O.ore.name] = OS
+			qdel(O)
 		else
 			world.log << "[src] encountered ore [O] with oretag [O.ore ? O.ore : "(no ore)"] which this machine did not have an entry for!"
 
-		qdel(O)
+
 
 	if(!active)
+		if (can_stop_processing())
+			return PROCESS_KILL
 		return
 
 	//Process our stored ores and spit out sheets.
@@ -198,14 +251,16 @@
 					if(!enough_metal)
 						continue
 					else
+
 						var/total
 						for(var/needs_metal in A.requires)
-							ores_stored[needs_metal] -= A.requires[needs_metal]
+							OS -= A.requires[needs_metal]
 							total += A.requires[needs_metal]
 							total = max(1,round(total*A.product_mod)) //Always get at least one sheet.
 							sheets += total-1
 
 						for(var/i=0,i<total,i++)
+							alloying_ongoing = TRUE	//We have enough ore to make something
 							new A.product(output.loc)
 
 			else if(ores_processing[metal] == 2 && O.compresses_to) //Compressing.
@@ -221,6 +276,7 @@
 				for(var/i=0,i<can_make,i+=2)
 					OS -=2
 					sheets+=2
+					alloying_ongoing = TRUE	//We have enough ore to make something
 					new M.stack_type(output.loc)
 
 			else if(ores_processing[metal] == 1 && O.smelts_to) //Smelting.
@@ -234,12 +290,33 @@
 				for(var/i=0,i<can_make,i++)
 					OS--
 					sheets++
+					alloying_ongoing = TRUE	//We have enough ore to make something
 					new M.stack_type(output.loc)
 			else
 				OS--
 				sheets++
+				alloying_ongoing = TRUE	//We have enough ore to make something
 				new /obj/item/weapon/ore/slag(output.loc)
+			ores_stored[metal] = OS
 		else
 			continue
 
 	console.updateUsrDialog()
+
+	if (can_stop_processing())
+		//STOP_PROCESSING_MACHINE(src, MACHINERY_PROCESS_SELF)
+		return PROCESS_KILL
+
+/obj/machinery/mineral/processing_unit/can_stop_processing()
+	if (alloying_ongoing)
+		return FALSE
+
+	return TRUE
+/*
+	var/total = 0
+	for (var/thing in ores_stored)
+		total += ores_stored[thing]
+
+	if (total <= 0)
+		return TRUE
+*/

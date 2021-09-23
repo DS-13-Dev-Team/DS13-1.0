@@ -15,8 +15,10 @@
 		received_moves = list()
 	received_moves.Cut()
 
+	/*
 	for(var/global_listener in GLOB.moved_event.global_listeners)
 		GLOB.moved_event.unregister_global(global_listener)
+	*/
 
 	stored_global_listen_count = GLOB.global_listen_count.Copy()
 	stored_event_sources_count = GLOB.event_sources_count.Copy()
@@ -27,8 +29,7 @@
 	sanity_check_events("Post-Test")
 
 /datum/unit_test/observation/proc/sanity_check_events(var/phase)
-	for(var/entry in GLOB.all_observable_events)
-		var/decl/observ/event = entry
+	for(var/decl/observ/global_listener/event in GLOB.all_observable_events)
 		if(null in event.global_listeners)
 			fail("[phase]: [event] - The global listeners list contains a null entry.")
 
@@ -77,7 +78,7 @@
 	var/turf/target = get_step(start, NORTH)
 	var/obj/O = get_named_instance(/obj, start)
 
-	GLOB.moved_event.register_global(src, /datum/unit_test/observation/proc/receive_move)
+	//GLOB.moved_event.register_global(src, /datum/unit_test/observation/proc/receive_move)
 	O.forceMove(target)
 
 	if(received_moves.len != 1)
@@ -91,7 +92,7 @@
 	else
 		pass("Received the expected move event.")
 
-	GLOB.moved_event.unregister_global(src)
+	//GLOB.moved_event.unregister_global(src)
 	qdel(O)
 	return 1
 
@@ -297,14 +298,15 @@
 	var/turf/T = get_safe_turf()
 	var/obj/O = get_named_instance(/obj, T)
 
-	GLOB.moved_event.register_global(O, /atom/movable/proc/move_to_turf)
+	//GLOB.moved_event.register_global(O, /atom/movable/proc/move_to_turf)
 	qdel(O)
 
+	/*
 	if(null in GLOB.moved_event.global_listeners)
 		fail("The global listener list contains a null entry.")
 	else
 		pass("The global listener list does not contain a null entry.")
-
+	*/
 	return 1
 
 /datum/unit_test/observation/sanity_event_sources_shall_not_leave_null_entries_when_destroyed

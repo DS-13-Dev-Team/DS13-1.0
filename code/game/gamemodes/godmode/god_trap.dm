@@ -11,7 +11,7 @@
 	GLOB.entered_event.unregister(get_turf(src),src)
 	return ..()
 
-/obj/structure/deity/trap/Move()
+/obj/structure/deity/trap/Move(NewLoc, Dir = 0, step_x = 0, step_y = 0, var/glide_size_override = 0)
 	GLOB.entered_event.unregister(get_turf(src),src)
 	. = ..()
 	GLOB.entered_event.register(get_turf(src), src, /obj/structure/deity/trap/proc/trigger)

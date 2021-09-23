@@ -107,10 +107,10 @@ Basics, the most important.
 /datum/config_entry/flag/popup_admin_pm //adminPMs to non-admins show in a pop-up 'reply' window when set to 1.
 
 /datum/config_entry/number/fps
-	config_entry_value = 20
+	config_entry_value = 50
 	integer = FALSE
-	min_val = 1
-	max_val = 100   //byond will start crapping out at 50, so this is just ridic
+	min_val = 50
+	max_val = 50   //byond will start crapping out at 50, so this is just ridic
 	var/sync_validate = FALSE
 
 /datum/config_entry/number/fps/ValidateAndSet(str_val)

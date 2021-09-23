@@ -134,10 +134,10 @@
 
 	. = ..()
 
-/atom/movable/lighting_overlay/forceMove()
+/atom/movable/lighting_overlay/forceMove(atom/destination, var/special_event, glide_size_override=0)
 	return 0 //should never move
 
-/atom/movable/lighting_overlay/Move()
+/atom/movable/lighting_overlay/Move(NewLoc, Dir = 0, step_x = 0, step_y = 0, var/glide_size_override = 0)
 	return 0
 
 /atom/movable/lighting_overlay/throw_at()

@@ -11,7 +11,7 @@
 		T.update_connections()
 		T.update_icon()
 
-/obj/structure/window/Move()
+/obj/structure/window/Move(NewLoc, Dir = 0, step_x = 0, step_y = 0, var/glide_size_override = 0)
 	var/oldloc = loc
 	. = ..()
 	if(loc != oldloc)

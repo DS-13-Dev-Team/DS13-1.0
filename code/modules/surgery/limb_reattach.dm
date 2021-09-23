@@ -60,6 +60,7 @@
 	target.update_body()
 	target.updatehealth()
 	target.UpdateDamageIcon()
+	target.update_extension(/datum/extension/updating/impaired_locomotion)
 
 /datum/surgery_step/limb/attach/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/E = tool
@@ -101,6 +102,7 @@
 	target.update_body()
 	target.updatehealth()
 	target.UpdateDamageIcon()
+	target.update_extension(/datum/extension/updating/impaired_locomotion)
 
 /datum/surgery_step/limb/connect/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/E = target.get_organ(target_zone)

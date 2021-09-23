@@ -33,7 +33,7 @@
 	GLOB.destroyed_event.unregister(I, src, /obj/structure/bed/roller/ironingboard/remove_item)
 
 // make a screeching noise to drive people mad
-/obj/structure/bed/roller/ironingboard/Move()
+/obj/structure/bed/roller/ironingboard/Move(NewLoc, Dir = 0, step_x = 0, step_y = 0, var/glide_size_override = 0)
 	var/turf/T = get_turf(src)
 	if(isspace(T) || istype(T, /turf/simulated/floor/carpet))
 		return
