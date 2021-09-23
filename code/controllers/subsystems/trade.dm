@@ -76,49 +76,20 @@ SUBSYSTEM_DEF(trade)
 	var/people_paid = 0
 	var/credits_paid = 0
 
+	build_payroll_crew_list()
 
 	next_salary_period	= world.time + SALARY_INTERVAL
 	//We cycle through the records
-	for(var/datum/computer_file/report/crew_record/CR in GLOB.all_crew_records)
-		//We need to check that the mob is in a condition to be paid
-		var/mob/living/carbon/human/H = CR.get_mob()
+	for(var/list/payee in payroll_list)
 
-		//Gotta exist and be alive
-		if (!H || H.stat == DEAD)
-			continue
-
-		//Next, filter out NPCs and people who have ghosted
-		if (!H.ckey || !H.mind)
-			continue
-
-		//Lastly, you gotta be online and active
-		//Future TODO: Find some way to catch people who just crashed or relogged at the wrong time
-			//Maybe find out when they logged out?
-		if (!H.client || (H.client.inactivity > (SALARY_INTERVAL * 0.5)))
-			continue
-
-		//Get the job datum, tells us how much to pay
-		var/rank = CR.get_job()
-		if (!rank)
-			continue
-
-		var/datum/job/job_datum = job_master.GetJob(rank)
-		if (!job_datum)
-			continue
-
-
-		var/pay_amount = job_datum.salary
-		//Future TODO: Performance bonuses
-
-		//Alright we have finally concluded that this person is eligible to be paid, and how much to pay them. Now we need to find their account
-		var/datum/money_account/MA = H.mind.initial_account
-		if (!MA)
-			continue
+		var/datum/money_account/MA = payee["account"]
 
 		var/success = charge_to_account(MA.account_number, "CEC Payroll System", "Salary", "CEC Payroll System", pay_amount)
 		if (success)
 			people_paid++
 			credits_paid += pay_amount
+
+
 
 	//Alright we are out of the loop!
 	if (credits_paid)
@@ -127,6 +98,7 @@ SUBSYSTEM_DEF(trade)
 
 /datum/controller/subsystem/trade/proc/build_payroll_crew_list()
 	payroll_list = list()
+	department_shares = list()
 	for(var/datum/computer_file/report/crew_record/CR in GLOB.all_crew_records)
 		//We need to check that the mob is in a condition to be paid
 		var/mob/living/carbon/human/H = CR.get_mob()
@@ -164,11 +136,7 @@ SUBSYSTEM_DEF(trade)
 			continue
 
 		//Okay now we record all this data
-		department_shares[job_datum.department] += job_datum.bonus_shares
-		var/list/payee = list("mob" = H, "account" = MA, "wage" = pay_amount, "department" = job_datum.department)
-		payroll_list
-
-		var/success = charge_to_account(MA.account_number, "CEC Payroll System", "Salary", "CEC Payroll System", pay_amount)
-		if (success)
-			people_paid++
-			credits_paid += pay_amount
+		var/current_shares = isnum(department_shares[job_datum.department]) ? department_shares[job_datum.department] : 0
+		department_shares[job_datum.department] = current_shares + job_datum.bonus_shares
+		var/list/payee = list("mob" = H, "account" = MA, "wage" = pay_amount, "department" = job_datum.department, "shares" = job_datum.bonus_shares)
+		payroll_list += list(payee)
