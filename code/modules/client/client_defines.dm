@@ -79,7 +79,7 @@
 	var/view_offset_magnitude	//Cached when view offset is set
 
 	//Static framerate
-	fps = 40
+	fps = 50
 
 	/// our current tab
 	var/stat_tab

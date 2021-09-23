@@ -197,7 +197,6 @@
 
 		if(!O)
 			break
-		world << "Got ore [O]"
 		var/OS = ores_stored[O.ore.name]
 		if(O.ore)
 			if (isnull(OS))
