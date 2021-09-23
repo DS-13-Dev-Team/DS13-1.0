@@ -731,14 +731,18 @@
 	This happens just before our body is gibbed, if that's going to happen
 */
 /datum/mind/proc/get_final_credits()
+	to_chat(world, "Getting final credits")
 	//Don't do it again if its been done
 	if (!isnull(final_credits))
 		return
 
 	final_credits = list()
 	final_credits["carried"] = original.get_carried_credits()
+
 	if (initial_account)
 		final_credits["stored"] = initial_account.money
+
+	to_chat(world, "Got credits [dump_list(final_credits)]")
 	//TODO: Delete excess carried credits from the mob to avoid looting?
 
 	//Lets drop a credit chip for the loot we have

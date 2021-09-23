@@ -161,7 +161,10 @@
 
 
 /proc/log_debug(text)
-	WRITE_LOG(GLOB.world_debug_log, "DEBUG: [text]")
+	if (GLOB.world_debug_log)
+		WRITE_LOG(GLOB.world_debug_log, "DEBUG: [text]")
+	else
+		crash_with("No debug log found!")
 
 /* Log to the logfile only. */
 /proc/log_runtime(text)
