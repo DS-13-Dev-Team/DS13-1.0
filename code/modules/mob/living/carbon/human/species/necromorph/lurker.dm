@@ -449,7 +449,6 @@ The Lurker can only fire spines while its shell is open"
 	.=..()
 
 	var/obj/item/clothing/lurker_shell/shell = new shell_type(H)
-	world << "created shell [shell.type]"
 	H.equip_to_slot_or_del(shell, slot_back)
 
 	set_extension(H, /datum/extension/retractable_cover/lurker, shell, list(BP_HEAD, BP_L_ARM, BP_R_ARM))
