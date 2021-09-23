@@ -4,7 +4,7 @@
 /datum/hud/deity/New(mob/owner)
 	..()
 
-	action_intent = new /obj/screen/intent/deity()
+	action_intent = new /obj/screen/intent/deity(owner)
 	static_inventory += action_intent
 
 	action_intent:sync_to_mob(mymob)

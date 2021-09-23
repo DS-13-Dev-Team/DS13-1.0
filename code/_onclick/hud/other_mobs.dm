@@ -4,7 +4,7 @@
 /datum/hud/slime/New(mob/owner)
 	..()
 
-	action_intent = new /obj/screen/intent()
+	action_intent = new /obj/screen/intent(owner)
 	static_inventory += action_intent
 
 

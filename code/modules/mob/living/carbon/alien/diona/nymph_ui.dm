@@ -44,7 +44,7 @@
 	held = new
 	toggleable_inventory += held
 
-	action_intent = new /obj/screen/intent/diona_nymph()
+	action_intent = new /obj/screen/intent/diona_nymph(owner)
 	static_inventory += action_intent
 
 	//This is deprecated, see health_doll.dm

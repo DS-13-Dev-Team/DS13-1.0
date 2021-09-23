@@ -56,7 +56,7 @@
 	// Draw the attack intent dialogue.
 	if(hud_data.has_a_intent)
 
-		action_intent = new /obj/screen/intent()
+		action_intent = new /obj/screen/intent(owner)
 		static_inventory += action_intent
 
 	if(hud_data.has_healthbar)

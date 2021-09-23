@@ -221,7 +221,12 @@
 	screen_loc = ui_acti
 	var/intent = I_HELP
 
-/obj/screen/intent/Click(var/location, var/control, var/params)
+/obj/screen/intent/New(mob/C)
+	if (C)
+		intent = C.a_intent
+		update_icon()
+
+/obj/screen/intent/Click(location, control, params)
 	var/list/P = params2list(params)
 	var/icon_x = text2num(P["icon-x"])
 	var/icon_y = text2num(P["icon-y"])
@@ -238,15 +243,6 @@
 
 /obj/screen/intent/update_icon()
 	icon_state = "intent_[intent]"
-
-/obj/screen/intent/added_to_screen(var/client/C)
-	if (C.mob)
-		intent = C.mob.a_intent
-		update_icon()
-
-
-
-
 
 
 /obj/screen/Click(location, control, params)
