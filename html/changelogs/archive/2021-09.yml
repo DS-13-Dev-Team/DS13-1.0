@@ -69,3 +69,11 @@
 2021-09-22:
   Nanako:
   - bugfix: Fixed humans spawning with the wrong attack intent selected
+2021-09-23:
+  Nanako:
+  - imageadd: Added a new rare skin for lurker
+  - experiment: Ported Smooth Movement, now everyone slides smoothly between tiles
+      instead of moving in steps. This is more noticeable at low speeds. Smooth movement
+      is currently imperfect, but it works 90% and should serve as a significant improvement.
+  - bugfix: Fixed the mineral processor eating ores. Also optimised its processing
+  - imageadd: Mineral processor now has a seperate sprite when turned off
