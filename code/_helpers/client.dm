@@ -35,16 +35,27 @@
 	if(isnull(new_size))
 		CRASH("change_view called without argument.")
 	if(isnum(new_size))
+		if(view_radius == new_size)
+			return
+
 		view_radius = new_size
 		view = VIEW_NUM_TO_STRING(view_radius)
 	else
+		if(view == new_size)
+			return
+
 		var/list/view_size = getviewsize(new_size)
 		view_radius = min(view_size[1], view_size[2])
 		view = new_size
+
 	apply_clickcatcher()
-	mob.reload_fullscreens()
+	//This thing handles nightvision, it is set to a certain size and does not scale with the screen
+	//BUT, we can't allow it to be bigger than the screen, so we resize it here to the size it already is
+	//It will check our screen limit and cap itself to that
 	if (mob.l_general)//It may not exist during login
 		mob.l_general.resize(mob.l_general.size, src)
+	if (mob.client)
+		mob.client.update_skybox(TRUE)
 	if (isliving(mob))
 		var/mob/living/L = mob
 		L.handle_regular_hud_updates(FALSE)//Pass false here to not call update vision and avoid an infinite loop
@@ -52,6 +63,7 @@
 		//Update hud healthbar if one exists, so that its clamped to screen size
 		if (L.hud_used.hud_healthbar)
 			L.hud_used.hud_healthbar.set_size(TRUE)
+
 	if (prefs.auto_fit_viewport)
 		addtimer(CALLBACK(src,.verb/fit_viewport,10)) //Delayed to avoid wingets from Login calls.
 

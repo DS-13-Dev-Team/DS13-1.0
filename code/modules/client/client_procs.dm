@@ -422,16 +422,6 @@ client/proc/MayRespawn()
 	// Something went wrong, client is usually kicked or transfered to a new mob at this point
 	return 0
 
-//Adds things to screen and tells them this was done
-/client/proc/add_to_screen(var/list/things)
-
-	if (!islist(things))
-		things = list(things)
-
-	for (var/obj/O as anything in things)
-		screen += O
-		O.added_to_screen(src)
-
 /// compiles a full list of verbs and sends it to the browser
 /client/proc/init_verbs()
 	var/list/verblist = list()

@@ -28,6 +28,11 @@
 	var/obj/screen/meter_component/delta/delta_meter	//A yellow section indicating recent loss
 	var/obj/screen/meter_component/limit/limit_meter	//A solid grey block at the end, representing reduced maximum
 	var/obj/screen/meter_component/text/textholder
+	var/obj/screen/meter/resource/hud_resource
+	var/obj/screen/meter_component/current/r_m
+	var/obj/screen/meter_component/delta/d_m
+	var/obj/screen/meter_component/limit/l_m
+	var/obj/screen/meter_component/text/th
 	var/obj/screen/hands
 	var/obj/screen/pullin
 	var/obj/screen/purged
@@ -109,6 +114,11 @@
 	delta_meter = null
 	limit_meter = null
 	textholder = null
+	hud_resource = null
+	r_m	= null
+	d_m = null
+	l_m = null
+	th = null
 	zone_sel = null
 	stamina_bar = null
 	lingchemdisplay = null
@@ -154,13 +164,6 @@
 		to_chat(usr, "<span class='info'>Switched HUD mode. Press F12 to toggle.</span>")
 	else
 		to_chat(usr, SPAN_WARNING("This mob type does not use a HUD."))
-
-/obj/screen/stamina
-	name = "stamina"
-	icon = 'icons/effects/progessbar.dmi'
-	icon_state = "prog_bar_100"
-	invisibility = INVISIBILITY_MAXIMUM
-	screen_loc = ui_stamina
 
 //Version denotes which style should be displayed. blank or 0 means "next version"
 /datum/hud/proc/show_hud(version = 0, mob/viewmob)
@@ -226,10 +229,11 @@
 				screenmob.client.screen -= infodisplay
 
 	screenmob.refresh_lighting_overlays()
+	screenmob.set_darksight_range(screenmob.client.view_radius)
 	hud_version = display_hud_version
 	persistent_inventory_update(screenmob)
-	mymob.update_action_buttons()
-	mymob.reload_fullscreens()
+	screenmob.update_action_buttons()
+	screenmob.reload_fullscreens()
 
 	return TRUE
 

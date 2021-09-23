@@ -53,6 +53,7 @@
 /obj/screen/meter/New(atom/holder)
 	L = holder
 	cache_data(arglist(args))
+
 	.=..()
 
 //Override this and change the parameters in subtypes
@@ -415,21 +416,4 @@
 
 /obj/screen/meter_component/text/set_size()
 	return
-
-
-
-//Helpers
-/mob/proc/add_meter(meter_type)
-	var/obj/screen/meter/M = new meter_type()
-	/*
-	if (hud_used)
-		var/datum/hud/H = hud_used
-		H.hud_elements += M
-	*/
-
-	if (client)
-		client.add_to_screen(M)
-
-	return M
-
 

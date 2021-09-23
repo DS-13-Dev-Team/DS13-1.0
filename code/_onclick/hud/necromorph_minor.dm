@@ -22,19 +22,28 @@
 
 	remaining_meter = new /obj/screen/meter_component/current(hud_healthbar)
 	remaining_meter.color = hud_healthbar.remaining_color
+	remaining_meter.screen_loc = hud_healthbar.screen_loc
 	infodisplay += remaining_meter
 
 	delta_meter = new /obj/screen/meter_component/delta(hud_healthbar)
 	delta_meter.color = hud_healthbar.delta_color
+	delta_meter.screen_loc = hud_healthbar.screen_loc
 	infodisplay += delta_meter
 
-	limit_meter = new /obj/screen/meter_component/text(hud_healthbar)
+	limit_meter = new /obj/screen/meter_component/limit(hud_healthbar)
 	limit_meter.screen_loc = hud_healthbar.screen_loc
 	infodisplay += limit_meter
+
+	textholder = new /obj/screen/meter_component/text(hud_healthbar)
+	textholder.screen_loc = hud_healthbar.screen_loc
+	infodisplay += textholder
 
 	hud_healthbar.remaining_meter = remaining_meter
 	hud_healthbar.delta_meter = delta_meter
 	hud_healthbar.limit_meter = limit_meter
+	hud_healthbar.textholder = textholder
+
+	hud_healthbar.update(TRUE)
 
 	zone_sel = new /obj/screen/zone_sel( null )
 	zone_sel.icon = ui_style

@@ -147,7 +147,12 @@
 	return 1
 
 
-
+/obj/screen/stamina
+	name = "stamina"
+	icon = 'icons/effects/progessbar.dmi'
+	icon_state = "prog_bar_100"
+	invisibility = INVISIBILITY_MAXIMUM
+	screen_loc = ui_stamina
 
 /obj/screen/inventory/hand
 	name = "l_hand"
@@ -413,6 +418,3 @@
 		else
 			return 0
 	return 1
-
-/obj/proc/added_to_screen(var/client/C)
-	return
