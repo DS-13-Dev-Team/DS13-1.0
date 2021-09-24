@@ -273,7 +273,7 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 	//To be considered a success, we must leap onto a mob, and they must be the one we intended to hit
 	if (isliving(charge.last_obstacle))
 		var/mob/living/L = charge.last_obstacle
-		L.Weaken(5) //Down they go!
+		L.Weaken(3) //Down they go!
 		L.apply_damage(3*(charge.distance_travelled+1), used_weapon = charge.user) //We apply damage based on the distance. We add 1 to the distance because we're moving into their tile too
 		shake_camera(L,5,3)
 		//And lets also land ontop of them
