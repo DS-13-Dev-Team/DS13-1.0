@@ -142,6 +142,7 @@
 	force = 5
 	one_hand_penalty = 0
 	fire_delay = 20
+	one_hand_penalty = 6 //It's a shotgun, brace yourself before firing.
 	firemodes = list(
 		list(mode_name = "shotgun", fire_delay = 1 SECONDS),
 		list(mode_name = "bolas", projectile_type = /obj/item/projectile/bullet/shotgun/bola, fire_sound = 'sound/weapons/bolathrow.ogg', fire_delay = 1 SECONDS))
