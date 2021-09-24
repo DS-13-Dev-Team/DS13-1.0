@@ -600,7 +600,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 			if("Kidneys")
 				organ = BP_KIDNEYS
 
-		var/list/organ_choices = list("Normal","Assisted","Synthetic")
+		var/list/organ_choices = list("Normal")
 		if(pref.organ_data[BP_CHEST] == "cyborg")
 			organ_choices -= "Normal"
 			organ_choices += "Synthetic"
