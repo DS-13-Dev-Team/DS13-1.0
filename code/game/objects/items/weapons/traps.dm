@@ -1,6 +1,6 @@
 /obj/item/weapon/beartrap
 	name = "mechanical trap"
-	
+
 	throw_range = 1
 	gender = PLURAL
 	icon = 'icons/obj/traps.dmi'
@@ -223,7 +223,8 @@ Freeing yourself is much harder than freeing someone else. Calling for help is a
 
 	if (ishuman(L))
 		var/mob/living/carbon/human/H = L
-		visible_message(SPAN_DANGER("\The [src] snaps back, digging deeper into [buckled_mob.name]'s [H.get_organ(target_zone).name]"))
+		var/obj/item/organ/external/target_organ = H.get_organ(target_zone)
+		visible_message(SPAN_DANGER("\The [src] snaps back, digging deeper into [buckled_mob.name]'s [target_organ.name]"))
 	else
 		visible_message(SPAN_DANGER("\The [src] snaps back, digging deeper into [buckled_mob.name]"))
 
