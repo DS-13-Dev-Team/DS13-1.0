@@ -196,7 +196,6 @@
 
 	var/credits_stored = credits["stored"]
 	var/credits_carried = credits["carried"]
-	to_chat(world, "update_lastround_credits	S:[credits_stored] 	O:[credits_carried]")
 	var/character_status = status
 	//And lets set their status in the lastround table to living
 	var/DBQuery/query = dbcon.NewQuery(
