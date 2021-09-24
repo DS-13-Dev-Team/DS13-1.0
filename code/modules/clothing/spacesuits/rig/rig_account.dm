@@ -37,7 +37,8 @@
 /obj/item/weapon/rig/proc/charge_to_rig_account(var/source, var/purpose, var/terminal_id, var/amount)
 	RIG_ACCOUNT_CREATE
 
-	charge_to_account(get_account().account_number, source, purpose, terminal_id, amount)
+	var/datum/money_account/current_account = get_account()
+	charge_to_account(current_account.account_number, source, purpose, terminal_id, amount)
 	if (wearer)
 		wearer.credits_changed()
 	return TRUE

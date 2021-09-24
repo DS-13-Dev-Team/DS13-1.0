@@ -41,7 +41,6 @@
 				continue //Don't see yourself
 			var/obj/screen/movable/tracker/TR = new (S,L, duration)
 			var/mutable_appearance/ma = new /mutable_appearance(L)
-			ma.verbs.Cut()
 			TR.appearance = ma
 			trackers += TR
 

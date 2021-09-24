@@ -57,10 +57,10 @@
 /datum/necroshop_item/proc/get_spawn_params(var/datum/necroshop/caller)
 	.=null
 	if (spawn_method == SPAWN_POINT)
-		var/list/params = list()
+		var/list/params = list("name" = null, "origin" = null, "target" = null, "price" = null, "dir" = null, "path" = null, "user" = null, "queue" = null, "limited" = null, "reqtotal" = null, "item" = null, "free" = null)
 		params["name"] = name
 		params["origin"] = caller.selected_spawn.spawnpoint	//Where are we spawning from? This may be useful for visual effects
-		var/list/turfs = params["origin"].clear_turfs_in_view(10)
+		var/list/turfs = caller.selected_spawn.spawnpoint.clear_turfs_in_view(10)
 		if (!turfs.len)
 			return //Failed?
 
