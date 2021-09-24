@@ -29,7 +29,6 @@
 
 
 /obj/Destroy()
-	STOP_PROCESSING(is_processing, src)
 	.=..()
 
 /obj/item/proc/is_used_on(obj/O, mob/user)

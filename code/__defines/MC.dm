@@ -25,25 +25,8 @@
 #define MACHINERY_PROCESS_ALL        (MACHINERY_PROCESS_SELF | MACHINERY_PROCESS_COMPONENTS)
 
 
-#define START_PROCESSING(Processor, Datum) \
-if (Datum.is_processing) {\
-	if(Datum.is_processing != Processor)\
-	{\
-		crash_with("Failed to start processing. [log_info_line(Datum)] is already being processed by [Datum.is_processing] but queue attempt occured on [#Processor]."); \
-	}\
-} else {\
-	Datum.is_processing = Processor;\
-	Processor.processing += Datum;\
-}
-
-#define STOP_PROCESSING(Processor, Datum) \
-if(Datum.is_processing) {\
-	if(Processor.processing.Remove(Datum)) {\
-		Datum.is_processing = null;\
-	} else {\
-		crash_with("Failed to stop processing. [log_info_line(Datum)] is being processed by [Datum.is_processing] but de-queue attempt occured on [#Processor]."); \
-	}\
-}
+#define START_PROCESSING(Processor, Datum) if (!(Datum.datum_flags & DATUM_FLAG_ISPROCESSING)) {Datum.datum_flags |= DATUM_FLAG_ISPROCESSING;Processor.processing += Datum}
+#define STOP_PROCESSING(Processor, Datum) Datum.datum_flags &= ~DATUM_FLAG_ISPROCESSING;Processor.processing -= Datum
 
 
 // For SSmachines, use these instead

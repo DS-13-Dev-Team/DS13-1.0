@@ -121,5 +121,5 @@
 
 
 /datum/extension/asteroidcannon/proc/wake_up()
-	if (!is_processing)
+	if (!(datum_flags & DATUM_FLAG_ISPROCESSING))
 		START_PROCESSING(SSfastprocess, src)

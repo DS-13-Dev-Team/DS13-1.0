@@ -17,9 +17,9 @@ PROCESSING_SUBSYSTEM_DEF(airflow)
 
 /datum/controller/subsystem/processing/airflow/fire(resumed = FALSE)
 	if (!resumed)
-		current_run = processing.Copy()	// Defined in parent.
+		currentrun = processing.Copy()	// Defined in parent.
 
-	var/list/curr = current_run	// Defined in parent.
+	var/list/curr = currentrun	// Defined in parent.
 
 	while (curr.len)
 		var/atom/movable/target = curr[curr.len]

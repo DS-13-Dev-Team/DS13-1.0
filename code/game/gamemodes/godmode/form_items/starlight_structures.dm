@@ -70,7 +70,7 @@
 
 /obj/structure/deity/radiant_statue/proc/activate_charging()
 	var/list/followers = get_followers_nearby()
-	if(is_processing || !followers.len)
+	if((datum_flags & DATUM_FLAG_ISPROCESSING) || !followers.len)
 		return 0
 	charging = 1
 	START_PROCESSING(SSobj, src)

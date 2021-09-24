@@ -3,25 +3,8 @@
 #define SSMACHINES_POWERNETS     3
 #define SSMACHINES_POWER_OBJECTS 4
 
-#define START_PROCESSING_IN_LIST(Datum, List) \
-if (Datum.is_processing) {\
-	if(Datum.is_processing != "SSmachines.[#List]")\
-	{\
-		crash_with("Failed to start processing. [log_info_line(Datum)] is already being processed by [Datum.is_processing] but queue attempt occured on SSmachines.[#List]."); \
-	}\
-} else {\
-	Datum.is_processing = "SSmachines.[#List]";\
-	SSmachines.List += Datum;\
-}
-
-#define STOP_PROCESSING_IN_LIST(Datum, List) \
-if(Datum.is_processing) {\
-	if(SSmachines.List.Remove(Datum)) {\
-		Datum.is_processing = null;\
-	} else {\
-		crash_with("Failed to stop processing. [log_info_line(Datum)] is being processed by [is_processing] and not found in SSmachines.[#List]"); \
-	}\
-}
+#define START_PROCESSING_IN_LIST(Datum, List) if (!(Datum.datum_flags & DATUM_FLAG_ISPROCESSING)) {Datum.datum_flags |= DATUM_FLAG_ISPROCESSING;SSmachines.List += Datum}
+#define STOP_PROCESSING_IN_LIST(Datum, List) Datum.datum_flags &= ~DATUM_FLAG_ISPROCESSING;SSmachines.List -= Datum
 
 #define START_PROCESSING_PIPENET(Datum) START_PROCESSING_IN_LIST(Datum, pipenets)
 #define STOP_PROCESSING_PIPENET(Datum) STOP_PROCESSING_IN_LIST(Datum, pipenets)
@@ -151,7 +134,7 @@ if(current_step == this_step || (check_resumed && !resumed)) {\
 			PN.Process(wait)
 		else
 			pipenets.Remove(PN)
-			PN.is_processing = null
+			PN.datum_flags &= ~DATUM_FLAG_ISPROCESSING
 		if(MC_TICK_CHECK)
 			return
 
@@ -169,7 +152,7 @@ if(current_step == this_step || (check_resumed && !resumed)) {\
 				continue // Hard delete; unlikely but possible. Soft deletes are handled below and expected.
 			if(M in processing)
 				processing.Remove(M)
-				M.is_processing = null
+				M.datum_flags &= ~DATUM_FLAG_ISPROCESSING
 				crash_with("[log_info_line(M)] was found illegally queued on SSmachines.")
 				continue
 			else if(resumed)
@@ -183,7 +166,7 @@ if(current_step == this_step || (check_resumed && !resumed)) {\
 
 		if(!QDELETED(M) && (M.ProcessAll(wait) == PROCESS_KILL))
 			processing.Remove(M)
-			M.is_processing = null
+			M.datum_flags &= ~DATUM_FLAG_ISPROCESSING
 		if(MC_TICK_CHECK)
 			return
 
@@ -199,7 +182,7 @@ if(current_step == this_step || (check_resumed && !resumed)) {\
 			PN.reset(wait)
 		else
 			powernets.Remove(PN)
-			PN.is_processing = null
+			PN.datum_flags &= ~DATUM_FLAG_ISPROCESSING
 		if(MC_TICK_CHECK)
 			return
 
@@ -213,7 +196,7 @@ if(current_step == this_step || (check_resumed && !resumed)) {\
 		current_run.len--
 		if(!I.pwr_drain(wait)) // 0 = Process Kill, remove from processing list.
 			power_objects.Remove(I)
-			I.is_processing = null
+			I.datum_flags &= ~DATUM_FLAG_ISPROCESSING
 		if(MC_TICK_CHECK)
 			return
 

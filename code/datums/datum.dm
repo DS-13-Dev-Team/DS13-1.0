@@ -1,6 +1,5 @@
 /datum
 	var/tmp/gc_destroyed //Time when this object was destroyed.
-	var/tmp/datum/controller/subsystem/processing/is_processing = FALSE
 	var/list/active_timers  //for SStimer
 	var/implements_dummy = FALSE	//If true, this datum has an argument named "dummy" in its new proc
 	var/dummy = FALSE	//Set true if this datum is a dummy and should not perform its normal functions
@@ -19,7 +18,7 @@
 
 // The following vars cannot be edited by anyone
 /datum/VV_static()
-	return ..() + list("gc_destroyed", "is_processing")
+	return ..() + "gc_destroyed"
 
 // Default implementation of clean-up code.
 // This should be overridden to remove all references pointing to the object being destroyed.
@@ -39,10 +38,6 @@
 			continue
 		qdel(timer)
 	return QDEL_HINT_QUEUE
-
-/datum/proc/Process()
-	set waitfor = 0
-	return PROCESS_KILL
 
 /datum/proc/CanProcCall(procname)
 	return TRUE

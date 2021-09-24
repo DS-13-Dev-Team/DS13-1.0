@@ -176,7 +176,7 @@
 			LAZYDISTINCTADD(C.alternatives,"\ref[src]")
 
 		//Make sure its awake again, however briefly
-		if (!C.is_processing)
+		if (!(C.datum_flags & DATUM_FLAG_ISPROCESSING))
 			C.wake_up(FALSE)
 
 
