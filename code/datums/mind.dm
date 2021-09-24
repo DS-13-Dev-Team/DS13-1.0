@@ -731,7 +731,6 @@
 	This happens just before our body is gibbed, if that's going to happen
 */
 /datum/mind/proc/get_final_credits()
-	to_chat(world, "Getting final credits")
 	//Don't do it again if its been done
 	if (!isnull(final_credits))
 		return
@@ -742,7 +741,6 @@
 	if (initial_account)
 		final_credits["stored"] = initial_account.money
 
-	to_chat(world, "Got credits [dump_list(final_credits)]")
 	//TODO: Delete excess carried credits from the mob to avoid looting?
 
 	//Lets drop a credit chip for the loot we have
@@ -750,9 +748,27 @@
 		var/obj/item/weapon/spacecash/ewallet/E = new (get_turf(original))
 		E.set_worth(final_credits["carried"]*FEE_DEATH)
 
+	//Now move the rest of the carried cash back to the account
 	if (initial_account)
 		initial_account.money += final_credits["carried"] * (1 - FEE_DEATH)
 
+
+	final_credits["carried"] *= (1 - FEE_DEATH)
+
+	//Get rid of what's left
+	spawn(10)
+		zero_carried_credits()
+
+/datum/mind/proc/zero_carried_credits()
+	var/mob/living/carbon/human/H = current
+	if (!istype(H))
+		return
+	if (H.wearing_rig)
+		var/datum/money_account/MA = H.wearing_rig.get_account()
+		MA.money = 0
+
+	for (var/obj/item/weapon/spacecash/ewallet/E in H.get_contents())
+		qdel(E)
 
 //Returns true if this mind is for a character who is dead.
 /datum/mind/proc/is_dead()
