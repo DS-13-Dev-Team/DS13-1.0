@@ -133,6 +133,7 @@
 	icon = 'icons/obj/weapons/ds13guns48x32.dmi'
 	icon_state = "scl_shotgun"
 	item_state = "scl_shotgun"
+	wielded_item_state = "scl_shotgun-wielded"
 	var/icon_loaded = "scl_shotgun_loaded"
 	slot_flags = SLOT_BELT
 	magazine_type = /obj/item/ammo_magazine/shotgun
