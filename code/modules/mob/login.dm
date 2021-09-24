@@ -61,6 +61,11 @@
 	if(!client)
 		return FALSE //Byond bug
 
+	if(client.byond_version < MIN_COMPILER_VERSION || client.byond_build < MIN_COMPILER_BUILD)
+		to_chat(src, SPAN_WARNING("WARNING! Your version of BYOND is too out-of-date to play this project. Go to https://secure.byond.com/download and update. You need version [MIN_COMPILER_VERSION].[MIN_COMPILER_BUILD] to [MAX_COMPILER_VERSION].[MAX_COMPILER_BUILD]"))
+	if(client.byond_version > MAX_COMPILER_VERSION || client.byond_build > MAX_COMPILER_BUILD)
+		to_chat(src, SPAN_WARNING("WARNING! Your byond version is over the recommended [MAX_COMPILER_VERSION].[MAX_COMPILER_BUILD]! There may be unexpected byond bugs!"))
+
 	player_login()
 
 
