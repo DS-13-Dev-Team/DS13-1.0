@@ -220,7 +220,10 @@
 
 	//TODO: Check if they were already dead to prevent duplication
 	M.get_final_credits()
-	update_lastround_credits(M, STATUS_DEAD)
+
+	//Spawn off to let the stack finish executing so they get properly marked as dead
+	spawn(10)
+		update_lastround_credits(M, STATUS_DEAD)
 
 
 

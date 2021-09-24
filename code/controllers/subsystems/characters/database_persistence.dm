@@ -87,8 +87,12 @@ SUBSYSTEM_DEF(database)
 	However, in case of a crash, the endround processing may not happen, so its run at the start to cover last round's changes
 */
 /datum/controller/subsystem/database/proc/process_pending_credits()
-
+	log_debug("Updating pending credits")
+	log_debug("------------------------------------")
+	var/successes = 0
+	var/attempts = 0
 	if(!dbcon || !dbcon.IsConnected())
+		log_debug("No database connection, failed")
 		return null
 
 	var/DBQuery/query = dbcon.NewQuery("SELECT * FROM credit_lastround")
@@ -96,14 +100,18 @@ SUBSYSTEM_DEF(database)
 
 	//Lets fetch the records for each character
 	while(query.NextRow())
+		attempts++
 		var/id = text2num(query.item[1])
 		var/stored = text2num(query.item[2])
 		var/carried = text2num(query.item[3])
 		var/status = text2num(query.item[4])
 
+		log_debug("Uploading credits: id:[id] Stored: [stored]	Carried: [carried]	Status: [status]")
+
 
 
 		if (!id)
+			log_debug("No ID, cannot update")
 			continue	//Failsafe
 
 		var/total_fees = 0
@@ -126,14 +134,21 @@ SUBSYSTEM_DEF(database)
 		var/total = carried + stored
 
 		//And lets write the new value back to the database
-		query = dbcon.NewQuery("UPDATE credit_records	SET credits = [total] WHERE character_id = [id];")
-		query.Execute()
+		var/qstring = "UPDATE credit_records	SET credits = [total] WHERE character_id = [id];"
+		query = dbcon.NewQuery(qstring)
+		var/result = query.Execute()
+		log_debug("Update credit query: [qstring]\n\
+		\n\
+		result is [result]")
+		if (result == TRUE)
+			successes++
 
 		if (total_fees)
 			message_character(id, SPAN_NOTICE("CEC has charged you a total of [total_fees] credits in holding fees."))
 
 
 
+	log_debug("Finished uploading credits, [successes]/[attempts] successful")
 	//Alright we are done with the pending stuff, wipe it
 	query = dbcon.NewQuery("TRUNCATE TABLE credit_lastround;")
 	query.Execute()

@@ -88,6 +88,7 @@ GLOBAL_VAR(restart_counter)
 	if(byond_version < MIN_COMPILER_VERSION)
 		world.log << "Your server's byond version does not meet the recommended requirements for this server. Please update BYOND"
 
+	SetupLogs()
 
 	callHook("startup")
 	//Emergency Fix
@@ -112,7 +113,7 @@ GLOBAL_VAR(restart_counter)
 	// Create robolimbs for chargen.
 	populate_robolimb_list()
 
-	SetupLogs()
+
 
 #ifndef USE_CUSTOM_ERROR_HANDLER
 	world.log = file("[GLOB.log_directory]/dd.log")
