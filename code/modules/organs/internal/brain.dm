@@ -218,9 +218,9 @@
 					owner.eye_blurry = max(owner.eye_blurry,6)
 					damprob = owner.chem_effects[CE_STABLE] ? 80 : 100
 					if(prob(damprob))
-						take_internal_damage(1)
+						take_internal_damage(0.85)
 					if(prob(damprob))
-						take_internal_damage(1)
+						take_internal_damage(0.85)
 	..()
 
 /obj/item/organ/internal/brain/take_internal_damage(var/damage, var/silent)
