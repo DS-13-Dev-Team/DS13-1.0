@@ -136,7 +136,7 @@
 	var/icon_loaded = "scl_shotgun_loaded"
 	slot_flags = SLOT_BELT
 	magazine_type = /obj/item/ammo_magazine/shotgun
-	w_class = ITEM_SIZE_NORMAL
+	w_class = ITEM_SIZE_HUGE
 	load_method = MAGAZINE
 	caliber = "shotgun"
 	force = 5
