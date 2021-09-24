@@ -3,7 +3,7 @@
 GLOBAL_VAR(restart_counter)
 
 
-/hook/global_init/proc/generate_gameid()
+/proc/generate_gameid()
 	if(GLOB.round_id != null)
 		return
 	GLOB.round_id = ""
@@ -20,7 +20,7 @@ GLOBAL_VAR(restart_counter)
 	for(var/_ = 1 to 3)
 		GLOB.round_id = "[c[(t % l) + 1]][GLOB.round_id]"
 		t = round(t / l)
-	return 1
+	return
 
 // Find mobs matching a given string
 //
@@ -84,6 +84,10 @@ GLOBAL_VAR(restart_counter)
 	GLOB.revdata = new
 
 	config.Load(params[OVERRIDE_CONFIG_DIRECTORY_PARAMETER])
+
+	initialize_chemical_reactions()
+	makeDatumRefLists()
+	generate_gameid()
 
 	if(byond_version < MIN_COMPILER_VERSION)
 		world.log << "Your server's byond version does not meet the recommended requirements for this server. Please update BYOND"

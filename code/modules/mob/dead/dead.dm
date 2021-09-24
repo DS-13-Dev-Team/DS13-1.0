@@ -9,8 +9,7 @@
 		. += "Game Mode: [ticker.mode || master_mode][ticker.hide_mode ? "(Secret)" : ""]"
 	else
 		. += "Game Mode: [PUBLIC_GAME_MODE]"
-	var/extra_antags = list2params(additional_antag_types)
-	. += "Added Antagonists: [extra_antags ? extra_antags : "None"]"
+	. += "Added Antagonists: [GLOB.additional_antag_types ? GLOB.additional_antag_types : "None"]"
 
 	if(ticker.current_state == GAME_STATE_PREGAME)
 		. += "Time To Start:[ticker.pregame_timeleft][round_progressing ? "" : " (DELAYED)"]"

@@ -4,17 +4,18 @@
 // chemical_reaction_list[/datum/reagent/toxin/phoron] is a list of all reactions relating to phoron
 // Note that entries in the list are NOT duplicated. So if a reaction pertains to
 // more than one chemical it will still only appear in only one of the sublists.
+
 /proc/initialize_chemical_reactions()
 	var/paths = typesof(/datum/chemical_reaction) - /datum/chemical_reaction
-	chemical_reactions_list = list()
+	GLOB.chemical_reactions_list = list()
 
 	for(var/path in paths)
 		var/datum/chemical_reaction/D = new path()
 		if(D.required_reagents && D.required_reagents.len)
 			var/reagent_id = D.required_reagents[1]
-			if(!chemical_reactions_list[reagent_id])
-				chemical_reactions_list[reagent_id] = list()
-			chemical_reactions_list[reagent_id] += D
+			if(!GLOB.chemical_reactions_list[reagent_id])
+				GLOB.chemical_reactions_list[reagent_id] = list()
+			GLOB.chemical_reactions_list[reagent_id] += D
 
 /datum/chemical_reaction
 	var/name = null

@@ -191,7 +191,7 @@
 		else
 			text += "<b>Vote Result: Inconclusive - No Votes!</b>"
 			if(mode == "add_antagonist")
-				antag_add_finished = 1
+				GLOB.antag_add_finished = 1
 		log_vote(text)
 		to_chat(world, "\n<span class='infoplain'><font color='purple'>[text]</font></span>")
 
@@ -225,7 +225,7 @@
 							autoaddantag()
 				if("add_antagonist")
 					if(isnull(.[1]) || .[1] == "None")
-						antag_add_finished = 1
+						GLOB.antag_add_finished = 1
 					else
 						choices -= "Random"
 						if(!auto_add_antag)
@@ -237,12 +237,12 @@
 
 						var/antag_type = GLOB.antag_names_to_ids_[.[1]]
 						if(ticker.current_state < GAME_STATE_SETTING_UP)
-							additional_antag_types |= antag_type
+							GLOB.additional_antag_types |= antag_type
 						else
 							spawn(0) // break off so we don't hang the vote process
 								var/list/antag_choices = list(GLOB.all_antag_types_[antag_type], GLOB.all_antag_types_[GLOB.antag_names_to_ids_[.[2]]], GLOB.all_antag_types_[GLOB.antag_names_to_ids_[.[3]]])
 								if(ticker.attempt_late_antag_spawn(antag_choices))
-									antag_add_finished = 1
+									GLOB.antag_add_finished = 1
 									if(auto_add_antag)
 										auto_add_antag = 0
 										// the buffer will already have half an hour added to it, so we'll give it one more
@@ -330,7 +330,7 @@
 					if(check_rights(R_ADMIN|R_MOD, 0))
 						question = "End the shift?"
 						choices.Add("Initiate Crew Transfer", "Extend the Round ([CONFIG_GET(number/vote_autotransfer_initial) / 600] minutes)")
-						if (CONFIG_GET(flag/allow_extra_antags) && !antag_add_finished)
+						if (CONFIG_GET(flag/allow_extra_antags) && !GLOB.antag_add_finished)
 							choices.Add("Add Antagonist")
 					else
 						var/decl/security_state/security_state = decls_repository.get_decl(GLOB.using_map.security_state)
@@ -355,7 +355,7 @@
 					var/list/all_antag_types = GLOB.all_antag_types_
 					for(var/antag_type in all_antag_types)
 						var/datum/antagonist/antag = all_antag_types[antag_type]
-						if(!(antag.id in additional_antag_types) && antag.is_votable())
+						if(!(antag.id in GLOB.additional_antag_types) && antag.is_votable())
 							choices.Add(antag.role_text)
 					choices.Add("Random")
 					if(!auto_add_antag)
@@ -562,11 +562,11 @@
 	if(!ticker || (ticker.current_state <= 2) || !ticker.mode)
 		return 0
 	if(automatic)
-		return (ticker.mode.addantag_allowed & ADDANTAG_AUTO) && !antag_add_finished
+		return (ticker.mode.addantag_allowed & ADDANTAG_AUTO) && !GLOB.antag_add_finished
 	if(check_rights(R_ADMIN, 0))
 		return ticker.mode.addantag_allowed & (ADDANTAG_ADMIN|ADDANTAG_PLAYER)
 	else
-		return (ticker.mode.addantag_allowed & ADDANTAG_PLAYER) && !antag_add_finished
+		return (ticker.mode.addantag_allowed & ADDANTAG_PLAYER) && !GLOB.antag_add_finished
 
 
 
