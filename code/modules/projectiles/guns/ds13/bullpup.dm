@@ -3,7 +3,7 @@
 ------------------------*/
 /obj/item/weapon/gun/projectile/automatic/bullpup
 	name = "SCAF Bullpup Rifle"
-	desc = "The standard issued rifle of the Sovereign Colonies Armed Forces. "
+	desc = "The standard issued rifle of the Sovereign Colonies Armed Forces."
 	icon = 'icons/obj/weapons/ds13guns48x32.dmi'
 	icon_state = "bullpuprifle"
 	item_state = "bullpuprifle"
@@ -36,7 +36,7 @@
 
 /obj/item/ammo_casing/bullpup
 	name = "bullpup round"
-	desc = "A low caliber round designed for the SWS motorized pulse rifle"
+	desc = "A low caliber round designed for the SCAF Bullpup Rifle."
 	caliber = "bullpup"
 	icon_state = "rifle_casing"
 	spent_icon = "rifle_casing-spent"
@@ -50,7 +50,7 @@
 
 /obj/item/ammo_magazine/bullpup
 	name = "SCAF universal ammo"
-	desc = "A pack of 20 rounds to fit the SCAF bullpup rifle"
+	desc = "A pack of 20 rounds to fit the SCAF Bullpup Rifle."
 	icon = 'icons/obj/ammo.dmi'
 	icon_state = "bullpup"
 	caliber = "bullpup"
@@ -59,5 +59,3 @@
 	max_ammo = 20
 	multiple_sprites = TRUE
 	mag_type = MAGAZINE
-
-

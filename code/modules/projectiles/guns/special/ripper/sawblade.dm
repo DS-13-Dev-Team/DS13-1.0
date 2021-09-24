@@ -46,7 +46,7 @@
 	dps = 36
 	max_health = DIAMONDBLADE_HEALTH
 	name = "diamond blade"
-	desc = "glittering death approaches"
+	desc = "Glittering death approaches."
 	icon_state = "diamond_projectile"
 	ammo_type = /obj/item/ammo_casing/sawblade/diamond
 	trash_type = /obj/item/trash/broken_sawblade/diamond
@@ -78,7 +78,7 @@
 //Ammo version for picking up and loading
 /obj/item/ammo_casing/sawblade
 	name = "sawblade"
-	desc = "a steel toothed blade with hardened plasteel tips, designed as ammunition for the RC-DS Remote Control Disc Ripper"
+	desc = "A steel toothed blade with hardened plasteel tips, designed as ammunition for the RC-DS Remote Control Disc Ripper."
 	icon_state = "sawblade"
 	caliber = "saw"
 	projectile_type = /obj/item/projectile/remote/sawblade
@@ -119,7 +119,7 @@
 
 /obj/item/ammo_casing/sawblade/diamond
 	name = "sawblade"
-	desc = "a glittering blade with a diamond-coated plasteel edge. Extremely durable and designed for grinding through the toughest materials."
+	desc = "A glittering blade with a diamond-coated plasteel edge. Extremely durable and designed for grinding through the toughest materials."
 	icon_state = "diamondblade"
 	projectile_type = /obj/item/projectile/remote/sawblade/diamond
 	max_health = DIAMONDBLADE_HEALTH
@@ -132,14 +132,14 @@
 	layer = BELOW_TABLE_LAYER //Trash falls under objects
 	//icon = 'icons/obj/trash.dmi' //Just putting this here for reference, no need to duplicate it
 	icon_state = "sawblade"
-	desc = "This was once a precisely machined cutting tool. Now it is just scrap metal for recycling"
+	desc = "This was once a precisely machined cutting tool. Now it is just scrap metal for recycling."
 	matter = list(MATERIAL_STEEL = 300, MATERIAL_PLASTEEL = 40) //The broken versions contain roughly a third of the original matter when recycled
 
 
 /obj/item/trash/broken_sawblade/diamond
 	name = "shattered diamond blade"
 	icon_state = "diamondblade"
-	desc = "This glittering blade was once a durable cutting edge, it must have seen heavy use to end up like this. May still contain some valueable materials to recycle"
+	desc = "This glittering blade was once a durable cutting edge, it must have seen heavy use to end up like this. May still contain some valueable materials to recycle."
 	matter = list(MATERIAL_STEEL = 300, MATERIAL_PLASTEEL = 80, MATERIAL_DIAMOND = 40) //The broken versions contain roughly a third of the original matter when recycled
 
 /*-----------------------------------
@@ -147,7 +147,7 @@
 ------------------------------------*/
 /obj/item/ammo_magazine/sawblades
 	name = "ripper blades"
-	desc = "A pack of replacement sawblades"
+	desc = "A pack of replacement sawblades."
 	icon_state = "ripper_blades"
 	caliber = "saw"
 	ammo_type = /obj/item/ammo_casing/sawblade
@@ -160,7 +160,7 @@
 /obj/item/ammo_magazine/sawblades/diamond
 	name = "diamond blades"
 	icon_state = "diamond_blades"
-	desc = "A pack of high precision diamond-edged replacement sawblades"
+	desc = "A pack of high precision diamond-edged replacement sawblades."
 	ammo_type = /obj/item/ammo_casing/sawblade/diamond
 
 

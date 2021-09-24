@@ -24,13 +24,9 @@ Divet pistol typedef & logic
 
 	firemodes = list(
 		FULL_AUTO_300,
-		list(mode_name="3-round bursts", burst=3, fire_delay=3, move_delay=4, one_hand_penalty=0, burst_accuracy=list(0,-2,-4),       dispersion=list(0.0, 0.6, 1.0)),
+		list(mode_name="3-round bursts", burst=3, fire_delay=3, move_delay=4, one_hand_penalty=0, burst_accuracy=list(0,-2,-4), dispersion=list(0.0, 0.6, 1.0)),
 
 		)
-
-/obj/item/weapon/gun/projectile/divet/incendiary
-	magazine_type = /obj/item/ammo_magazine/divet/incendiary
-
 
 /obj/item/weapon/gun/projectile/divet/update_icon()
 	..()
@@ -121,10 +117,10 @@ Projectile logic
 
 //More damage and shrapnel, less AP, structure damage and penetration
 /obj/item/projectile/bullet/ls_slug/hollow_point
-	structure_damage_factor = 0.5
-	penetration_modifier = 0
 	damage = DIVET_DAMAGE *	1.15
 	step_delay = DIVET_DELAY * 1.25
+	structure_damage_factor = 0.5
+	penetration_modifier = 0
 	embed = TRUE
 	armor_penetration = 0
 	icon_state = "divet_hp"
@@ -138,20 +134,13 @@ Projectile logic
 	armor_penetration = 15
 	icon_state = "divet_ap"
 
+//Mostly normal rounds with a little extra armor pen, but they also set you on fire
 /obj/item/projectile/bullet/ls_slug/incendiary
-	damage_type = BURN
 	icon_state = "divet_incend"
-	fire_sound = list('sound/weapons/guns/fire/torch_altfire_1.ogg',
-	'sound/weapons/guns/fire/torch_altfire_2.ogg',
-	'sound/weapons/guns/fire/torch_altfire_3.ogg')
+	armor_penetration = 9
 
 
-/obj/item/projectile/bullet/ls_slug/incendiary/on_impact(atom/target)
-	//Yoinked from hydrazine torch. Spreads the flames on the turf because this bullet is about to be GC'd
-	var/turf/T = get_turf(src)
-	if (istype(target, /mob))
-		T = get_turf(target)
-	spawn()
-
-		T.spray_ability(subtype = /datum/extension/spray/flame/radial,  target = target, angle = 360, length = 2, duration = 1.2 SECONDS, extra_data = list("temperature" = (T0C + 2600)), affect_origin = TRUE)
-	. = ..()
+/obj/item/projectile/bullet/ls_slug/incendiary/on_impact(var/mob/living/L)
+	if (istype(L))
+		L.fire_stacks += 5
+		L.IgniteMob()

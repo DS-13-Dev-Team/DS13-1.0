@@ -81,12 +81,11 @@
 	max_modifications = 4
 	use_power_cost = 0.44
 	passive_power_cost = 0.06
-	passive_fuel_cost = 0
 	suitable_cell = /obj/item/weapon/cell
 	toggleable = TRUE
 	atom_flags = ATOM_FLAG_NO_BLOOD
 	item_flags = ITEM_FLAG_NO_EMBED
-	armor_penetration = 4
+	armor_penetration = 4.5
 
 /obj/item/weapon/tool/saw/plasma/update_icon()
 	if (switched_on)

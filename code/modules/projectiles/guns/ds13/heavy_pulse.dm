@@ -33,7 +33,7 @@
 	screen_shake = 1
 
 	firemodes = list(
-		list(mode_name="full auto",  mode_type = /datum/firemode/automatic/pulserifle, fire_delay=HP_BASE_DELAY, dispersion = list(2)),
+		list(mode_name="full auto",  mode_type = /datum/firemode/automatic/pulserifle, fire_delay=HP_BASE_DELAY, dispersion = list(1.90)),
 		)
 
 	empty_sound = 'sound/weapons/guns/misc/overheat.ogg'

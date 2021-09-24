@@ -1,11 +1,3 @@
-/*
-	Force Gun
-
-	Fires a shortrange blast of gravity that repulses things. Light damage, but stuns and knocks down
-
-	Secondary fire is a focused beam with a similar effect and marginally better damage
-*/
-
 /obj/item/weapon/gun/projectile/linecutter
 	name = "IM-822 Handheld Ore Cutter Line Gun"
 	desc = "A basic energy-based gun."
@@ -37,7 +29,7 @@
 	//The linegun opens when you enter ironsights mode
 	require_aiming = TRUE
 
-	has_safety = TRUE	//This thing is too dangerous to lack safety
+	safety_state = 1
 
 /*
 	Ironsight Handling
@@ -198,7 +190,7 @@
 
 /obj/item/ammo_magazine/lineracks
 	name = "line racks"
-	desc = "A pack of line racks for use in the IM-822 Handheld Ore Cutter Line Gun"
+	desc = "A pack of line racks for use in the IM-822 Handheld Ore Cutter Line Gun."
 	icon_state = "line_racks"
 	caliber = "linerack"
 	ammo_type = /obj/item/ammo_casing/linerack
@@ -211,7 +203,7 @@
 
 /obj/item/ammo_casing/linerack
 	name = "line rack"
-	desc = "An assemblage of metal and wires with a built in power supply"
+	desc = "An assemblage of metal and wires with a built-in power supply."
 	icon_state = "line_rack"
 	spent_icon = "line_rack"
 	caliber = "linerack"
