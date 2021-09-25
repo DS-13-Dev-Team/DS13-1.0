@@ -9,6 +9,7 @@
 	anchored = 1.0
 	var/obj/machinery/input = null
 	var/obj/machinery/mineral/output = null
+	var/max_unloads_per_tick = 1
 
 
 /obj/machinery/mineral/unloading_machine/New(var/atom/location, var/direction, var/nocircuit = FALSE)
@@ -32,7 +33,7 @@
 				BOX.contents -= O
 				O.loc = output.loc
 				i++
-				if (i>=10)
+				if (i>=max_unloads_per_tick)
 					return
 		if (locate(/obj/item, input.loc))
 			var/obj/item/O
