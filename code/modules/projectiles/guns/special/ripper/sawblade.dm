@@ -99,13 +99,12 @@
 		var/hp = health / initial(health)
 		switch (hp)
 			if (0.8 to 1.0)
-				user << "It has a few minor scuffs and scratches"
-			if (0.5 to 0.8)
-				user << SPAN_WARNING("It is worn and shows significant stress fractures")
+				to_chat(user, "It has a few minor scuffs and scratches")
+				to_chat(user, SPAN_WARNING("It is worn and shows significant stress fractures"))
 			if (0.3 to 0.5)
-				user << SPAN_WARNING("It is blunted and chipped, has clearly seen heavy use")
+				to_chat(user, SPAN_WARNING("It is blunted and chipped, has clearly seen heavy use"))
 			else
-				user << SPAN_DANGER("It is cracked and bent, likely to shatter if used again")
+				to_chat(user, SPAN_DANGER("It is cracked and bent, likely to shatter if used again"))
 
 //Damaged blades are worth less to recyle. Every 1% health lost reduces matter by 0.5%
 /obj/item/ammo_casing/sawblade/get_matter()

@@ -170,7 +170,7 @@
 	var/mob/original_body = null
 
 /mob/living/carbon/human/bst/can_inject(var/mob/user, var/error_msg, var/target_zone)
-	user << span("alert", "The [src] disarms you before you can inject them.")
+	to_chat(user, span("alert", "The [src] disarms you before you can inject them."))
 	user.drop_item()
 	return FALSE
 
@@ -270,7 +270,7 @@
 	if(!usr)
 		return
 	if(!isbst(usr))
-		usr << span("alert", "Your hand seems to go right through the [src]. It's like it doesn't exist.")
+		to_chat(usr, span("alert", "Your hand seems to go right through the [src]. It's like it doesn't exist."))
 		return
 	else
 		..()
@@ -293,7 +293,7 @@
 	if(!usr)
 		return
 	if(!isbst(usr))
-		usr << span("alert", "Your hand seems to go right through the [src]. It's like it doesn't exist.")
+		to_chat(usr, span("alert", "Your hand seems to go right through the [src]. It's like it doesn't exist."))
 		return
 	else
 		..()
@@ -308,7 +308,7 @@
 	if(!usr)
 		return
 	if(!isbst(usr))
-		usr << span("alert", "Your hand seems to go right through the [src]. It's like it doesn't exist.")
+		to_chat(usr, span("alert", "Your hand seems to go right through the [src]. It's like it doesn't exist."))
 		return
 	else
 		..()
@@ -337,13 +337,13 @@
 			vision_flags = FALSE
 			see_invisible = -1
 
-	usr << "<span class='notice'>\The [src]'s vision mode is now <b>[mode]</b>.</span>"
+	to_chat(usr, "<span class='notice'>\The [src]'s vision mode is now <b>[mode]</b>.</span>")
 
 /obj/item/clothing/glasses/sunglasses/bst/attack_hand()
 	if(!usr)
 		return
 	if(!isbst(usr))
-		usr << span("alert", "Your hand seems to go right through the [src]. It's like it doesn't exist.")
+		to_chat(usr, span("alert", "Your hand seems to go right through the [src]. It's like it doesn't exist."))
 		return
 	else
 		..()
@@ -359,7 +359,7 @@
 	if(!usr)
 		return
 	if(!isbst(usr))
-		usr << span("alert", "Your hand seems to go right through the [src]. It's like it doesn't exist.")
+		to_chat(usr, span("alert", "Your hand seems to go right through the [src]. It's like it doesn't exist."))
 		return
 	else
 		..()
@@ -377,7 +377,7 @@
 	if(!usr)
 		return
 	if(!isbst(usr))
-		usr << span("alert", "Your hand seems to go right through the [src]. It's like it doesn't exist.")
+		to_chat(usr, span("alert", "Your hand seems to go right through the [src]. It's like it doesn't exist."))
 		return
 	else
 		..()

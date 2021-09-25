@@ -135,7 +135,7 @@
 
 /obj/partial_construction/examine(var/mob/user)
 	.=..()
-	user << SPAN_NOTICE("It is [round((work_done / work)*100, 0.1)]% complete")
+	to_chat(user, SPAN_NOTICE("It is [round((work_done / work)*100, 0.1)]% complete"))
 
 /obj/partial_construction/attack_hand(var/mob/user)
 	if (is_valid_builder(user))

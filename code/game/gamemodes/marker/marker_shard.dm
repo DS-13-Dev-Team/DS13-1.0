@@ -60,7 +60,7 @@
 /obj/item/marker_shard/examine(var/mob/user)
 	.=..()
 	if (anchored)
-		user << "It's stuck fast in those growths, you'd need a bladed implement to cut it out."
+		to_chat(user, "It's stuck fast in those growths, you'd need a bladed implement to cut it out.")
 
 
 /obj/item/marker_shard/attackby(var/obj/item/C, var/mob/user)
