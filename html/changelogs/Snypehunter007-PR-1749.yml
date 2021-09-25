@@ -50,4 +50,4 @@ changes:
   - tweak: "Reduced the spread of the Heavy Pulse Rifle by 35%."
   - tweak: "Reduced the amount of shots the Contact Beam can fire from five to four."
   - rscdel: "Removed the Mining Cutter from the character loadout menu."
-  - rscdel: "Removed the fireball effect when an incendiary round hit a target."
+  - rscdel: "Removed the fireball effect when an incendiary round hits a target."
