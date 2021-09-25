@@ -86,12 +86,12 @@ GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 	var/list/datum/chemical_reaction/eligible_reactions = list()
 
 	for(var/datum/reagent/R in reagent_list)
-		eligible_reactions |= chemical_reactions_list[R.type]
+		eligible_reactions |= GLOB.chemical_reactions_list[R.type]
 
 	var/list/datum/chemical_reaction/active_reactions = list()
 
 	for(var/datum/chemical_reaction/C in eligible_reactions)
-		if(C.can_happen(src))
+		if(C?.can_happen(src))
 			active_reactions |= C
 			reaction_occured = 1
 

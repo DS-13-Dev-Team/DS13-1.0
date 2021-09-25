@@ -7,6 +7,7 @@
 	if(species.slowdown)
 		tally += species.slowdown
 
+
 	tally += species.handle_movement_delay_special(src)
 
 	if(legcuffed)
@@ -20,6 +21,7 @@
 
 	if(can_feel_pain())
 		if(get_shock() >= 10) tally += (get_shock() / 10) //pain shouldn't slow you down if you can't even feel it
+
 
 	if(istype(buckled, /obj/structure/bed/chair/wheelchair))
 		for(var/organ_name in list(BP_L_HAND, BP_R_HAND, BP_L_ARM, BP_R_ARM))
@@ -43,15 +45,20 @@
 	if (bodytemperature < 283.222)
 		tally += (283.222 - bodytemperature) / 10 * 1.75
 
+
 	tally += max(2 * stance_damage, 0) //damaged/missing feet or legs is slow
+
 
 	if(mRun in mutations)
 		tally = 0
 
 	tally += CONFIG_GET(number/human_delay)
+
+
 	tally /= get_move_speed_factor()
 	if(lying) //Crawling, it's slower
 		tally /= species.lying_speed_factor
+
 
 	set_glide_size(DELAY2GLIDESIZE(tally))
 

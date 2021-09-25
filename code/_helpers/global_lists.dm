@@ -2,7 +2,7 @@
 //This is for procs to replace all the goddamn 'in world's that are chilling around the code
 
 var/global/list/cable_list = list()					//Index for all cables, so that powernets don't have to look through the entire world all the time
-var/global/list/chemical_reactions_list				//list of all /datum/chemical_reaction datums. Used during chemical reactions
+GLOBAL_LIST(chemical_reactions_list)				//list of all /datum/chemical_reaction datums. Used during chemical reactions
 var/global/list/landmarks_list = list()				//list of all landmarks created
 var/global/list/surgery_steps = list()				//list of all surgery steps  |BS12
 var/global/list/side_effects = list()				//list of all medical sideeffects types by thier names |BS12
@@ -115,7 +115,7 @@ var/global/list/string_slot_flags = list(
 		. = new/mob/living/carbon/human/dummy/mannequin()
 		mannequins_[ckey] = .
 
-/hook/global_init/proc/makeDatumRefLists()
+/proc/makeDatumRefLists()
 	var/list/paths
 
 	//Initialize data for mining

@@ -43,8 +43,6 @@
 			return global._client_preferences_by_type;
 		if("account_hack_attempted")
 			return global.account_hack_attempted;
-		if("additional_antag_types")
-			return global.additional_antag_types;
 		if("admin_datums")
 			return global.admin_datums;
 		if("admin_pm_repository")
@@ -123,8 +121,6 @@
 			return global.all_virtual_listeners;
 		if("announced_news_types")
 			return global.announced_news_types;
-		if("antag_add_finished")
-			return global.antag_add_finished;
 		if("appearance_manager")
 			return global.appearance_manager;
 		if("area_repository")
@@ -187,8 +183,6 @@
 			return global.checked_for_inactives;
 		if("chemical_reaction_logs")
 			return global.chemical_reaction_logs;
-		if("chemical_reactions_list")
-			return global.chemical_reactions_list;
 		if("chicken_count")
 			return global.chicken_count;
 		if("church_name")
@@ -850,8 +844,6 @@
 			global._client_preferences_by_type=newval;
 		if("account_hack_attempted")
 			global.account_hack_attempted=newval;
-		if("additional_antag_types")
-			global.additional_antag_types=newval;
 		if("admin_datums")
 			global.admin_datums=newval;
 		if("admin_pm_repository")
@@ -930,8 +922,6 @@
 			global.all_virtual_listeners=newval;
 		if("announced_news_types")
 			global.announced_news_types=newval;
-		if("antag_add_finished")
-			global.antag_add_finished=newval;
 		if("appearance_manager")
 			global.appearance_manager=newval;
 		if("area_repository")
@@ -994,8 +984,6 @@
 			global.checked_for_inactives=newval;
 		if("chemical_reaction_logs")
 			global.chemical_reaction_logs=newval;
-		if("chemical_reactions_list")
-			global.chemical_reactions_list=newval;
 		if("chicken_count")
 			global.chicken_count=newval;
 		if("church_name")
@@ -1635,7 +1623,6 @@
 	"_client_preferences_by_key",
 	"_client_preferences_by_type",
 	"account_hack_attempted",
-	"additional_antag_types",
 	"admin_datums",
 	"admin_pm_repository",
 	"admin_ranks",
@@ -1675,7 +1662,6 @@
 	"all_unit_tests_passed",
 	"all_virtual_listeners",
 	"announced_news_types",
-	"antag_add_finished",
 	"appearance_manager",
 	"area_repository",
 	"artefact_feedback",
@@ -1708,7 +1694,6 @@
 	"chargen_robolimbs",
 	"checked_for_inactives",
 	"chemical_reaction_logs",
-	"chemical_reactions_list",
 	"chicken_count",
 	"church_name",
 	"client_preference_stats_",

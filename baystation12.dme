@@ -11,9 +11,9 @@
 // END_PREFERENCES
 // BEGIN_INCLUDE
 #include "code\_compile_options.dm"
+#include "code\_debugger.dm"
 #include "code\_macros.dm"
 #include "code\client_macros.dm"
-#include "code\global_init.dm"
 #include "code\stylesheet.dm"
 #include "code\world.dm"
 #include "code\__datastructures\globals.dm"

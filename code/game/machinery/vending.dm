@@ -810,7 +810,7 @@
 					/obj/item/weapon/reagent_containers/pill/diet = 25,
 					/obj/item/weapon/towel/random = 40)
 
-	contraband = list(/obj/item/weapon/reagent_containers/syringe/steroid = 4)
+	contraband = list()
 
 
 /obj/machinery/vending/cigarette

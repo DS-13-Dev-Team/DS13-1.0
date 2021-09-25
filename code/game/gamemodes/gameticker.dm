@@ -571,7 +571,7 @@ var/global/datum/controller/gameticker/ticker
 		if(length(antag.candidates) >= antag.initial_spawn_req)
 			antag.attempt_spawn()
 			antag.finalize_spawn()
-			additional_antag_types.Add(antag.id)
+			GLOB.additional_antag_types.Add(antag.id)
 			return TRUE
 		else
 			if(antag.initial_spawn_req > 1)
