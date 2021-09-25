@@ -98,7 +98,7 @@
 	//Items are not dense typically
 	can_block_movement = FALSE
 
-/obj/item/New()
+/obj/item/Initialize()
 	if (!max_health)
 		if (w_class != ITEM_SIZE_NO_CONTAINER)	//This is infinity, would cause errors
 			max_health = 30 * w_class	//Bigger items are harder to break
@@ -107,7 +107,8 @@
 	health = max_health
 
 
-	..()
+	. = ..()
+
 	if(randpixel && (!pixel_x && !pixel_y) && isturf(loc)) //hopefully this will prevent us from messing with mapper-set pixel_x/y
 		pixel_x = rand(-randpixel, randpixel)
 		pixel_y = rand(-randpixel, randpixel)

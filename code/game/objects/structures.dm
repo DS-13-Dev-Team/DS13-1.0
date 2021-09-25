@@ -42,8 +42,8 @@
 /obj/structure/proc/get_footstep_sound()
 	if(LAZYLEN(footstep_sounds)) return pick(footstep_sounds)
 
-/obj/structure/New()
-	.=..()
+/obj/structure/Initialize()
+	. = ..()
 	if (max_health) //Not everything sets both of these. either will do
 		health = max_health
 	else if (health)

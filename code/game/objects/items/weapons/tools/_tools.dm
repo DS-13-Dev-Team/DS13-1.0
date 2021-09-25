@@ -243,7 +243,8 @@
         return FALSE
     return cell.checked_use(power_usage)
 
-/obj/item/weapon/tool/New()
+/obj/item/weapon/tool/Initialize()
+	. = ..()
 
 	if(!cell && suitable_cell)
 		cell = new suitable_cell(src)
