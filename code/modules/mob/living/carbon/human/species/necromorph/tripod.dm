@@ -3,7 +3,7 @@
 #define LEAP_CONE_WEAKEN	3
 #define LEAP_REDUCED_COOLDOWN	3 SECONDS
 #define TONGUE_EXTEND_TIME 5 SECONDS	//How long the tongue stays out and visible after any tongue move
-
+#define ARM_SWING_RANGE_TRIPOD 4
 
 //These are used to position the arm sprite during swing
 #define TONGUE_OFFSETS	list(S_NORTH = new /vector2(6, 16), S_SOUTH = new /vector2(-2, 8), S_EAST = new /vector2(26, 10), S_WEST = new /vector2(-14, 10))
@@ -355,7 +355,7 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 	source = src,
 	target = target,
 	angle = 150,
-	range = 4,
+	range = ARM_SWING_RANGE_TRIPOD,
 	duration = 0.7 SECOND,
 	windup = 0.6 SECONDS,
 	cooldown = 3.5 SECONDS,
@@ -404,7 +404,7 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 
 	//To make it feel less janky, we'll only do this bumping effect if at least 30% of the swing has happened. So no being blocked right at the start
 	//In addition we won't be blocked by things at the limit of our range
-	if (timepercent > 0.3	&& range < 4)
+	if (timepercent > 0.3	&& range < ARM_SWING_RANGE_TRIPOD)
 		var/list/tocheck = list(T)
 		tocheck += T.contents
 

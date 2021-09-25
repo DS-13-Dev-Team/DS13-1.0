@@ -114,7 +114,7 @@ Please contact me on #coderbus IRC. ~Carn x
 //Human Overlays Indexes/////////
 #define MUTATIONS_LAYER			1
 #define SKIN_LAYER				2
-#define D_LAYER					3
+#define DAMAG_LAYER					3
 #define SURGERY_LEVEL			4		//bs12 specific.
 #define UNDERWEAR_LAYER         5
 #define UNIFORM_LAYER			6
@@ -247,7 +247,7 @@ var/global/list/damage_icon_parts = list()
 
 		standing_image.overlays += DI
 
-	overlays_standing[D_LAYER]	= standing_image
+	overlays_standing[DAMAG_LAYER]	= standing_image
 
 	if(update_icons)
 		queue_icon_update()
@@ -830,7 +830,7 @@ var/global/list/damage_icon_parts = list()
 
 //Human Overlays Indexes/////////
 #undef MUTATIONS_LAYER
-#undef D_LAYER
+#undef DAMAG_LAYER
 #undef SURGERY_LEVEL
 #undef UNIFORM_LAYER
 #undef ID_LAYER

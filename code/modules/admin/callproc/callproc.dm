@@ -11,7 +11,7 @@
 	var/target = null
 	var/targetselected = 0
 
-	switch(alert("Proc owned by something?",, "Yes", "No", "CANCEL_N"))
+	switch(alert("Proc owned by something?",, "Yes", "No", "CANCEL"))
 		if("Yes")
 			targetselected=1
 			switch(input("Proc owned by...", "Owner", null) as null|anything in list("Obj", "Mob", "Area or Turf", "Client"))
@@ -26,9 +26,9 @@
 				else
 					return
 			if(!target)
-				to_chat(usr, "Proc call CANCEL_Nled.")
+				to_chat(usr, "Proc call CANCEL_led.")
 				return
-		if("CANCEL_N")
+		if("CANCEL")
 			return
 		if("No")
 			; // do nothing
@@ -171,25 +171,25 @@
 				if(!M) return
 				current = get_area(M)
 				if(!current)
-					switch(alert("\The [M] appears to not have an area; do you want to pass null instead?",, "Yes", "CANCEL_N"))
+					switch(alert("\The [M] appears to not have an area; do you want to pass null instead?",, "Yes", "CANCEL"))
 						if("Yes")
 							; // do nothing
-						if("CANCEL_N")
+						if("CANCEL")
 							return CANCEL_N
 
 			if("marked datum")
 				current = C.holder.marked_datum()
 				if(!current)
-					switch(alert("You do not currently have a marked datum; do you want to pass null instead?",, "Yes", "CANCEL_N"))
+					switch(alert("You do not currently have a marked datum; do you want to pass null instead?",, "Yes", "CANCEL"))
 						if("Yes")
 							; // do nothing
-						if("CANCEL_N")
+						if("CANCEL")
 							return CANCEL_N
 
 			if("click on atom")
 				waiting_for_click = 1
-				add_verb(C, /client/proc/CANCEL_N_callproc_select)
-				to_chat(C, "Click an atom to select it. Click an atom then click 'CANCEL_N', or use the CANCEL_N-Callproc-Select verb to CANCEL_N selecting a target by click.")
+				add_verb(C, /client/proc/cancel_callproc_select)
+				to_chat(C, "Click an atom to select it. Click an atom then click 'CANCEL', or use the CANCEL-Callproc-Select verb to CANCEL selecting a target by click.")
 				return WAITING
 
 		if(!done)
@@ -197,11 +197,11 @@
 
 	return DONE
 
-/client/proc/CANCEL_N_callproc_select()
-	set name = "CANCEL_N Callproc Select"
+/client/proc/cancel_callproc_select()
+	set name = "CANCEL Callproc Select"
 	set category = "Admin"
 
-	remove_verb(src, /client/proc/CANCEL_N_callproc_select)
+	remove_verb(src, /client/proc/cancel_callproc_select)
 	if(holder && holder.callproc && holder.callproc.waiting_for_click)
 		holder.callproc.waiting_for_click = 0
 		holder.callproc.do_args()
@@ -212,7 +212,7 @@
 			holder.callproc.arguments += A
 
 		holder.callproc.waiting_for_click = 0
-		remove_verb(src, /client/proc/CANCEL_N_callproc_select)
+		remove_verb(src, /client/proc/cancel_callproc_select)
 		holder.callproc.do_args()
 	else
 		return ..()
