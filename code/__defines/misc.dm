@@ -1,8 +1,4 @@
 
-//Fullscreen overlay resolution in tiles.
-#define FULLSCREEN_OVERLAY_RESOLUTION_X 15
-#define FULLSCREEN_OVERLAY_RESOLUTION_Y 15
-
 //Force the log directory to be something specific in the data/logs folder
 #define OVERRIDE_LOG_DIRECTORY_PARAMETER "log-directory"
 

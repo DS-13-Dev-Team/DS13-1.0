@@ -24,15 +24,7 @@
 	var/obj/screen/move_intent
 	var/obj/screen/stamina/stamina_bar
 	var/obj/screen/meter/health/hud_healthbar
-	var/obj/screen/meter_component/current/remaining_meter	//The actual remaining health, in red or green
-	var/obj/screen/meter_component/delta/delta_meter	//A yellow section indicating recent loss
-	var/obj/screen/meter_component/limit/limit_meter	//A solid grey block at the end, representing reduced maximum
-	var/obj/screen/meter_component/text/textholder
 	var/obj/screen/meter/resource/hud_resource
-	var/obj/screen/meter_component/current/r_m
-	var/obj/screen/meter_component/delta/d_m
-	var/obj/screen/meter_component/limit/l_m
-	var/obj/screen/meter_component/text/th
 	var/obj/screen/hands
 	var/obj/screen/pullin
 	var/obj/screen/purged
@@ -110,15 +102,7 @@
 	ability_master = null
 	zone_sel = null
 	hud_healthbar = null
-	remaining_meter = null
-	delta_meter = null
-	limit_meter = null
-	textholder = null
 	hud_resource = null
-	r_m	= null
-	d_m = null
-	l_m = null
-	th = null
 	zone_sel = null
 	stamina_bar = null
 	lingchemdisplay = null

@@ -50,11 +50,34 @@
 
 	var/margin = 8//Extra length that isn't counted as part of our length for the purpose of components
 
-/obj/screen/meter/New(atom/holder)
+/obj/screen/meter/New(atom/holder, holder_hud)
 	L = holder
+	hud = holder_hud
 	cache_data(arglist(args))
 
 	.=..()
+
+/obj/screen/meter/Initialize()
+	. = ..()
+	remaining_meter = new(src)
+	remaining_meter.color = remaining_color
+	remaining_meter.screen_loc = src.screen_loc
+
+	delta_meter = new(src)
+	delta_meter.color = delta_color
+	delta_meter.screen_loc = src.screen_loc
+
+
+	limit_meter = new(src)
+	limit_meter.screen_loc = src.screen_loc
+
+
+	textholder = new(src)
+	textholder.screen_loc = src.screen_loc
+
+	hud.infodisplay += list(remaining_meter, delta_meter, limit_meter, textholder)
+
+	update(TRUE)
 
 //Override this and change the parameters in subtypes
 /obj/screen/meter/proc/cache_data(atom/holder)
@@ -227,12 +250,12 @@
 
 /obj/screen/meter_component/New(obj/screen/meter/newparent)
 	parent = newparent
+	hud = parent.hud
 	update_total()
 	.=..()
 
 /obj/screen/meter_component/Destroy()
-	if (parent && parent.L)
-		parent.L?.hud_used?.infodisplay -= src
+	hud.infodisplay -= src
 	.=..()
 
 

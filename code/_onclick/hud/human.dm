@@ -61,63 +61,12 @@
 
 	if(hud_data.has_healthbar)
 
-		hud_healthbar = new /obj/screen/meter/health(owner)
-		hud_healthbar.L = owner
+		hud_healthbar = new /obj/screen/meter/health(owner, src)
 		infodisplay += hud_healthbar
 
-		remaining_meter = new /obj/screen/meter_component/current(hud_healthbar)
-		remaining_meter.color = hud_healthbar.remaining_color
-		remaining_meter.screen_loc = hud_healthbar.screen_loc
-		infodisplay += remaining_meter
-
-		delta_meter = new /obj/screen/meter_component/delta(hud_healthbar)
-		delta_meter.color = hud_healthbar.delta_color
-		delta_meter.screen_loc = hud_healthbar.screen_loc
-		infodisplay += delta_meter
-
-		limit_meter = new /obj/screen/meter_component/limit(hud_healthbar)
-		limit_meter.screen_loc = hud_healthbar.screen_loc
-		infodisplay += limit_meter
-
-		textholder = new /obj/screen/meter_component/text(hud_healthbar)
-		textholder.screen_loc = hud_healthbar.screen_loc
-		infodisplay += textholder
-
-		hud_healthbar.remaining_meter = remaining_meter
-		hud_healthbar.delta_meter = delta_meter
-		hud_healthbar.limit_meter = limit_meter
-		hud_healthbar.textholder = textholder
-
-		hud_healthbar.update(TRUE)
-
 	if(hud_data.has_resources)
-		hud_resource = new /obj/screen/meter/resource/essence(owner)
+		hud_resource = new /obj/screen/meter/resource/essence(owner, src)
 		infodisplay += hud_resource
-
-		r_m = new /obj/screen/meter_component/current(hud_resource)
-		r_m.color = hud_resource.remaining_color
-		r_m.screen_loc = hud_resource.screen_loc
-		infodisplay += r_m
-
-		d_m = new /obj/screen/meter_component/delta(hud_resource)
-		d_m.color = hud_resource.delta_color
-		d_m.screen_loc = hud_resource.screen_loc
-		infodisplay += d_m
-
-		l_m = new /obj/screen/meter_component/limit(hud_resource)
-		l_m.screen_loc = hud_resource.screen_loc
-		infodisplay += l_m
-
-		th = new /obj/screen/meter_component/text(hud_resource)
-		th.screen_loc = hud_resource.screen_loc
-		infodisplay += th
-
-		hud_resource.remaining_meter = r_m
-		hud_resource.delta_meter = d_m
-		hud_resource.limit_meter = l_m
-		hud_resource.textholder = th
-
-		hud_resource.update(TRUE)
 
 	if(hud_data.has_m_intent)
 		move_intent = new /obj/screen/movement()

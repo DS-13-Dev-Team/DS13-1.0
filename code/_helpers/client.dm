@@ -45,7 +45,7 @@
 			return
 
 		var/list/view_size = getviewsize(new_size)
-		view_radius = min(view_size[1], view_size[2])
+		view_radius = round(max(view_size[1], view_size[2])/2)
 		view = new_size
 
 	apply_clickcatcher()
