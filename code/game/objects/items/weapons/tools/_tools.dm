@@ -244,8 +244,6 @@
     return cell.checked_use(power_usage)
 
 /obj/item/weapon/tool/Initialize()
-	. = ..()
-
 	if(!cell && suitable_cell)
 		cell = new suitable_cell(src)
 
@@ -256,9 +254,7 @@
 
 	if (use_stock_cost)
 		stock = max_stock
-	.=..()
 
-/obj/item/weapon/tool/Initialize()
 	base_max_modifications = max_modifications
 	for(var/modtype in preinstalled_mods)
 		var/obj/item/weapon/tool_modification/TU = new modtype(src)
@@ -272,7 +268,7 @@
 /obj/item/weapon/tool/Created()
 	QDEL_NULL(cell)
 	if(use_fuel_cost)
-		consume_fuel(get_fuel())
+		consume_fuel(max_fuel)
 
 
 

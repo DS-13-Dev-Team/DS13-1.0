@@ -1013,8 +1013,9 @@ obj/item/clothing/mask/chewable/Destroy()
 	attack_verb = list("burnt", "singed")
 	var/max_fuel = 5
 
-/obj/item/weapon/flame/lighter/New()
-	..()
+/obj/item/weapon/flame/lighter/Initialize()
+	. = ..()
+
 	create_reagents(max_fuel)
 	reagents.add_reagent(/datum/reagent/fuel, max_fuel)
 	set_extension(src, /datum/extension/base_icon_state, icon_state)
