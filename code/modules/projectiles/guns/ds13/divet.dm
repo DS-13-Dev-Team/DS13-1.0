@@ -7,6 +7,7 @@ Divet pistol typedef & logic
 	name = "divet pistol"
 	desc = "A Winchester Arms NK-series pistol capable of fully automatic fire."
 	icon_state = "divet"
+	item_state = "divet"
 	magazine_type = /obj/item/ammo_magazine/divet
 	allowed_magazines = /obj/item/ammo_magazine/divet
 	caliber = "slug"
@@ -42,6 +43,7 @@ Divet pistol typedef & logic
 	name = "special ops divet pistol"
 	desc = "A modified version of the Winchester Arms NK-series pistol. An integrated suppressor lowers the audio profile, although this has a detrimental effect on power."
 	icon_state = "divet_spec"
+	item_state = "divet_spec"
 	silenced = TRUE
 	damage_factor = 0.85	//Silencers reduce bullet speed, and hence damage output
 
