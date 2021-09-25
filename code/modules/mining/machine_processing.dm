@@ -188,9 +188,6 @@
 /obj/machinery/mineral/processing_unit/Process()
 
 
-
-	process_delay = initial(process_delay)
-
 	//This will be set back to true if we intake or process any ores this tick
 	currently_working = FALSE
 

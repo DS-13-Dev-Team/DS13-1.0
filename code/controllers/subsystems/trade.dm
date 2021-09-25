@@ -120,6 +120,8 @@ SUBSYSTEM_DEF(trade)
 
 		command_announcement.Announce(announce_string,"CEC Payroll System")
 
+	departmental_bonuses = list()
+
 
 /datum/controller/subsystem/trade/proc/build_payroll_crew_list()
 	payroll_list = list()
