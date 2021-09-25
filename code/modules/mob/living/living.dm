@@ -385,7 +385,7 @@ default behaviour is:
 		return
 
 	//unbuckling yourself
-	if(buckled)
+	if(buckled && !HAS_TRAIT(src, TRAIT_BUCKLED))
 		spawn() escape_buckle()
 		return TRUE
 

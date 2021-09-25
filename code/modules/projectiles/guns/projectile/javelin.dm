@@ -229,6 +229,7 @@
 			mount_to_atom(javelin, mount_target, extension_type)
 			javelin.anchored = TRUE
 			javelin.buckle_mob(user)
+			ADD_TRAIT(user, TRAIT_BUCKLED, javelin)
 			playsound(src, "fleshtear", VOLUME_MID, TRUE)
 
 	unregister_collision(user)
@@ -247,7 +248,7 @@
 	icon_state = javelin.icon_state
 
 /obj/item/javelin/attack_hand(mob/user)
-	if(is_mounted())
+	if(is_mounted() && buckled_mob)
 
 		//Freeing yourself is harder than freeing another
 		var/free_time = 3 SECONDS
@@ -262,6 +263,7 @@
 
 		playsound(src, "fleshtear", VOLUME_MID, TRUE)
 		anchored = FALSE
+		REMOVE_TRAIT(buckled_mob, TRAIT_BUCKLED, src)
 		unbuckle_mob()
 	return ..()
 

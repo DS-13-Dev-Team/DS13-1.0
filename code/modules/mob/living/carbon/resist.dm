@@ -19,7 +19,7 @@
 		return TRUE
 
 	//unbuckling yourself
-	if(buckled)
+	if(buckled && !HAS_TRAIT(src, TRAIT_BUCKLED))
 		if (buckled.resist_buckle(src))
 			spawn()
 				escape_buckle()

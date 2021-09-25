@@ -2,6 +2,9 @@
 	var/tmp/gc_destroyed //Time when this object was destroyed.
 	var/tmp/datum/controller/subsystem/processing/is_processing = FALSE
 	var/list/active_timers  //for SStimer
+	/// Status traits attached to this datum
+	var/list/status_traits
+
 	var/implements_dummy = FALSE	//If true, this datum has an argument named "dummy" in its new proc
 	var/dummy = FALSE	//Set true if this datum is a dummy and should not perform its normal functions
 	//Used by mob previews
