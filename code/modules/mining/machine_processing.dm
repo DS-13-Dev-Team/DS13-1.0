@@ -12,6 +12,8 @@
 	var/show_all_ores = 0
 
 
+
+
 /obj/machinery/mineral/processing_unit_console/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	spawn(7)
@@ -114,12 +116,14 @@
 	var/obj/machinery/input/input = null
 	var/obj/machinery/mineral/output = null
 	var/obj/machinery/mineral/processing_unit_console/console = null
-	var/sheets_per_tick = 10
+	var/sheets_per_tick = 1
 	var/list/ores_processing[0]
 	var/list/ores_stored[0]
 	var/static/list/alloy_data
 	var/active = 0
-	var/alloying_ongoing = FALSE	//Set true if we made anything last tick
+	var/currently_working = FALSE	//Set true if we made anything last tick
+
+
 
 /obj/machinery/mineral/processing_unit/Initialize()
 	update_icon()
@@ -182,7 +186,13 @@
 		wake_up()
 
 /obj/machinery/mineral/processing_unit/Process()
-	alloying_ongoing = FALSE
+
+
+
+	process_delay = initial(process_delay)
+
+	//This will be set back to true if we intake or process any ores this tick
+	currently_working = FALSE
 
 	if (!src.output || !src.input)
 		if (can_stop_processing())
@@ -192,7 +202,7 @@
 	var/list/tick_alloys = list()
 
 	//Grab some more ore to process this tick.
-	for(var/i = 0,i<sheets_per_tick,i++)
+	for(var/i = 0,i<3,i++)
 		var/obj/item/weapon/ore/O = locate() in input.loc
 
 		if(!O)
@@ -202,6 +212,7 @@
 			if (isnull(OS))
 				OS = 0
 			OS++
+			currently_working = TRUE
 			ores_stored[O.ore.name] = OS
 			qdel(O)
 		else
@@ -216,6 +227,10 @@
 
 	//Process our stored ores and spit out sheets.
 	var/sheets = 0
+
+	//This list holds all the ores we've consumed this tick. These will be sent to the trade subsystem to do mining bonuses
+	var/list/ores_processed = list()
+
 	for(var/metal in ores_stored)
 
 		if(sheets >= sheets_per_tick) break
@@ -227,7 +242,10 @@
 
 			if(!O) continue
 
-			if(ores_processing[metal] == 3 && O.alloy) //Alloying.
+
+			//Alloying.
+			//--------------
+			if(ores_processing[metal] == 3 && O.alloy)
 
 				for(var/datum/alloy/A in alloy_data)
 
@@ -246,7 +264,6 @@
 							if(ores_processing[needs_metal] != 3 || ores_stored[needs_metal] < A.requires[needs_metal])
 								enough_metal = 0
 								break
-
 					if(!enough_metal)
 						continue
 					else
@@ -254,12 +271,13 @@
 						var/total
 						for(var/needs_metal in A.requires)
 							OS -= A.requires[needs_metal]
+							LAZYAPLUS(ores_processed, needs_metal, A.requires[needs_metal])
 							total += A.requires[needs_metal]
 							total = max(1,round(total*A.product_mod)) //Always get at least one sheet.
 							sheets += total-1
 
 						for(var/i=0,i<total,i++)
-							alloying_ongoing = TRUE	//We have enough ore to make something
+							currently_working = TRUE	//We have enough ore to make something
 							new A.product(output.loc)
 
 			else if(ores_processing[metal] == 2 && O.compresses_to) //Compressing.
@@ -274,8 +292,9 @@
 
 				for(var/i=0,i<can_make,i+=2)
 					OS -=2
+					LAZYAPLUS(ores_processed, metal, 2)
 					sheets+=2
-					alloying_ongoing = TRUE	//We have enough ore to make something
+					currently_working = TRUE	//We have enough ore to make something
 					new M.stack_type(output.loc)
 
 			else if(ores_processing[metal] == 1 && O.smelts_to) //Smelting.
@@ -288,17 +307,21 @@
 
 				for(var/i=0,i<can_make,i++)
 					OS--
+					LAZYAPLUS(ores_processed, metal, 1)
 					sheets++
-					alloying_ongoing = TRUE	//We have enough ore to make something
+					currently_working = TRUE	//We have enough ore to make something
 					new M.stack_type(output.loc)
 			else
 				OS--
 				sheets++
-				alloying_ongoing = TRUE	//We have enough ore to make something
+				currently_working = TRUE	//We have enough ore to make something
 				new /obj/item/weapon/ore/slag(output.loc)
 			ores_stored[metal] = OS
 		else
 			continue
+
+	if (length(ores_processed))
+		SStrade.ores_processed(ores_processed)
 
 	console.updateUsrDialog()
 
@@ -307,7 +330,7 @@
 		return PROCESS_KILL
 
 /obj/machinery/mineral/processing_unit/can_stop_processing()
-	if (alloying_ongoing)
+	if (currently_working)
 		return FALSE
 
 	return TRUE

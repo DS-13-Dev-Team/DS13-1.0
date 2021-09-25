@@ -83,17 +83,42 @@ SUBSYSTEM_DEF(trade)
 	for(var/list/payee in payroll_list)
 
 		var/datum/money_account/MA = payee["account"]
+		var/pay_amount = payee["wage"]
 
 		var/success = charge_to_account(MA.account_number, "CEC Payroll System", "Salary", "CEC Payroll System", pay_amount)
 		if (success)
 			people_paid++
 			credits_paid += pay_amount
 
+		var/department = payee["department"]
+		var/bonus_total = departmental_bonuses[department]
+		if (bonus_total)
+			//The number of shares from the job divided by the total shares determines how much of the group bonus goes to this person
+			var/my_shares = payee["shares"]
+			var/total_shares = department_shares[department]
+			var/my_percentage = my_shares / total_shares
+			var/my_bonus = bonus_total * my_percentage
+			success = charge_to_account(MA.account_number, "CEC Payroll System", "Group Performance Bonus", "CEC Payroll System", my_bonus)
+			if (success)
+				credits_paid += my_bonus
 
 
 	//Alright we are out of the loop!
 	if (credits_paid)
-		command_announcement.Announce("CEC Employee salaries have been paid. A total of [credits_paid] was paid out to [people_paid] employees in this cycle. Please collect your wages at the nearest store kiosk","CEC Payroll System")
+		var/announce_string = "CEC Employee salaries have been paid. A total of [credits_paid] was paid out to [people_paid] employees in this cycle. \n"
+
+
+		if (length(departmental_bonuses))
+			var/bonus_string = ""
+			for (var/dep in departmental_bonuses)
+				bonus_string += "[dep]: [departmental_bonuses[dep]]\n"
+			announce_string += "In addition, the following shared performance bonuses have been paid out:\n\
+		[bonus_string]\n"
+
+		announce_string += "Please collect your wages at the nearest store kiosk"
+
+
+		command_announcement.Announce(announce_string,"CEC Payroll System")
 
 
 /datum/controller/subsystem/trade/proc/build_payroll_crew_list()
@@ -140,3 +165,15 @@ SUBSYSTEM_DEF(trade)
 		department_shares[job_datum.department] = current_shares + job_datum.bonus_shares
 		var/list/payee = list("mob" = H, "account" = MA, "wage" = pay_amount, "department" = job_datum.department, "shares" = job_datum.bonus_shares)
 		payroll_list += list(payee)
+
+
+/*
+	Called from the mineral processor
+	Used to put funds into the mining department performance bonus pool based on ore output
+*/
+/datum/controller/subsystem/trade/proc/ores_processed(var/list/ores)
+	for (var/orename in ores)
+		var/ore/ore_datum = ore_data[orename]
+		var/value = ore_datum.Value()
+		value *= ores[orename]
+		LAZYAPLUS(departmental_bonuses, "Mining", value)
