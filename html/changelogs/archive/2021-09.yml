@@ -77,3 +77,11 @@
       is currently imperfect, but it works 90% and should serve as a significant improvement.
   - bugfix: Fixed the mineral processor eating ores. Also optimised its processing
   - imageadd: Mineral processor now has a seperate sprite when turned off
+2021-09-25:
+  Ketrai:
+  - balance: Makes cardiac arrest 15% less punishing on your organs.
+  - balance: Removes steroids from sweatmax contraband.
+  - balance: Lowers starting biomass from 250 to 200.
+  - balance: Makes hands/feet equally hard to cut off as arms/legs as a whole. Arms/hands
+      are now slightly harder to cut off than feet/legs.
+  - balance: Humans can no longer pick artificial organs.

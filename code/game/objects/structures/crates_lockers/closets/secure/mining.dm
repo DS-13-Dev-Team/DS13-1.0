@@ -13,7 +13,6 @@
 		/obj/item/clothing/under/suit_jacket/dom,
 		/obj/item/clothing/shoes/dress,
 		/obj/item/clothing/accessory/black,
-		/obj/item/weapon/storage/secure/briefcase/money,
 		/obj/item/weapon/storage/briefcase,
 		/obj/item/weapon/clipboard,
 		/obj/item/weapon/staff/gentcane,

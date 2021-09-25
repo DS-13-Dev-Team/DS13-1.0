@@ -1,6 +1,6 @@
+#define ORE_VALUE_FACTOR	8 //Change this number to modify mining bonus outputs globally
 var/global/list/ore_data = list()
 var/global/list/ores_by_type = list()
-
 
 /proc/ensure_ore_data_initialised()
 	if(ore_data && ore_data.len) return
@@ -15,7 +15,7 @@ var/global/list/ores_by_type = list()
 	var/display_name      // Visible name of ore.
 	var/icon_tag          // Used for icon_state as "ore_[icon_tag]" and "rock_[icon_tag]"
 	var/material          // Name of associated mineral, if any
-	var/alloy             // Can alloy?
+	var/alloy             // Boolean, is this involved in any alloying recipes? Just for optimisation
 	var/smelts_to         // Smelts to material; this is the name of the result material.
 	var/compresses_to     // Compresses to material; this is the name of the result material.
 	var/result_amount     // How much ore?
@@ -30,6 +30,8 @@ var/global/list/ores_by_type = list()
 		)
 	var/xarch_source_mineral = "iron"
 	var/list/origin_tech = list(TECH_MATERIAL = 1)
+	var/value = 2.5	//Fallback value, only used if this is a non smeltable, non compressible ore
+
 
 /ore/New()
 	. = ..()
@@ -39,6 +41,18 @@ var/global/list/ores_by_type = list()
 		material = name
 	if(!icon_tag)
 		icon_tag = name
+
+/ore/proc/Value()
+	var/material/M
+	if(smelts_to)
+		M = get_material_by_name(smelts_to)
+	else if (compresses_to)
+		M = get_material_by_name(compresses_to)
+
+	if(istype(M))
+		return ORE_VALUE_FACTOR*M.value
+	else
+		return value
 
 /ore/uranium
 	name = "uranium"

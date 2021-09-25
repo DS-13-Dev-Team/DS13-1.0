@@ -23,6 +23,15 @@
 
 	update_ore_count()
 
+//A debug type that contains a bunch of randomly generated ores
+/obj/structure/ore_box/random/Initialize()
+	.=..()
+	for (var/i in 1 to 30)
+		var/ore_name = pick(ore_data)
+		var/ore/ore_datum = ore_data[ore_name]
+		new ore_datum.ore(src)
+	update_ore_count()
+
 /obj/structure/ore_box/proc/update_ore_count()
 
 	stored_ore = list()

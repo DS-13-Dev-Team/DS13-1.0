@@ -211,13 +211,13 @@
 /obj/structure/corruption_node/nest/examine(var/mob/user)
 	.=..()
 	if (user.is_necromorph() && spawner_species)
-		user << "This nest is configured to spawn [spawner_species.name_plural]"
+		to_chat(user, "This nest is configured to spawn [spawner_species.name_plural]")
 		if (spawns_ready)
-			user << SPAN_NOTICE("There are [spawns_ready] [spawner_species.name_plural] ready to spawn!")
+			to_chat(user, SPAN_NOTICE("There are [spawns_ready] [spawner_species.name_plural] ready to spawn!"))
 		if (world.time < growth_end)
-			user << "The next spawn will be ready in [time2text(growth_end - world.time, "mm:ss")]"
+			to_chat(user, "The next spawn will be ready in [time2text(growth_end - world.time, "mm:ss")]")
 		else
-			user << "It has reached its limit and is not currently growing anything"
+			to_chat(user, "It has reached its limit and is not currently growing anything")
 
 /obj/structure/corruption_node/nest/proc/spawn_creature()
 	if (spawns_ready <= 0)
