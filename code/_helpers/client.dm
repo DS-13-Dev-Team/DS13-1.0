@@ -52,8 +52,7 @@
 	//This thing handles nightvision, it is set to a certain size and does not scale with the screen
 	//BUT, we can't allow it to be bigger than the screen, so we resize it here to the size it already is
 	//It will check our screen limit and cap itself to that
-	if (mob.l_general)//It may not exist during login
-		mob.l_general.resize(mob.l_general.size, src)
+	mob.set_darksight_range(view_radius)
 	if (mob.client)
 		mob.client.update_skybox(TRUE)
 	if (isliving(mob))
