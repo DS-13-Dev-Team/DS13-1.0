@@ -11,7 +11,7 @@
 
 /datum/uplink_item/item/tools/money
 	name = "Operations Funding"
-	item_cost = 8
+	item_cost = 50
 	path = /obj/item/weapon/storage/secure/briefcase/money
 	desc = "A briefcase with 10,000 untraceable thalers for funding your sneaky activities."
 

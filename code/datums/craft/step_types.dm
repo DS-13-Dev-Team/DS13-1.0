@@ -49,7 +49,7 @@
 	.=..()
 	if (.)
 		if (!noconsume && !is_valid_to_consume(I, user))
-			user << "That item can't be used for crafting!"
+			to_chat(user, "That item can't be used for crafting!")
 			return FALSE
 
 		for (var/path in valid_types)
@@ -65,7 +65,7 @@
 					if (blacklisted)
 						continue
 				return TRUE
-		user << "Wrong item!"
+		to_chat(user, "Wrong item!")
 		return FALSE
 
 
@@ -146,11 +146,11 @@
 				if (MA.can_use(required_quantity))
 					return TRUE
 				else
-					user << SPAN_DANGER("Insufficient quantity, this crafting operation requires! [required_quantity] units of [required_material]")
+					to_chat(user, SPAN_DANGER("Insufficient quantity, this crafting operation requires! [required_quantity] units of [required_material]"))
 			else
-				user << "Wrong material, this crafting operation requires! [required_quantity] units of [required_material]"
+				to_chat(user, "Wrong material, this crafting operation requires! [required_quantity] units of [required_material]")
 		else
-			user << "Wrong item!"
+			to_chat(user, "Wrong item!")
 	return FALSE
 
 
@@ -174,7 +174,7 @@
 					return MA
 
 	if (foundmat)
-		user << SPAN_DANGER("Insufficient quantity, this crafting operation requires! [required_quantity] units of [required_material]")
+		to_chat(user, SPAN_DANGER("Insufficient quantity, this crafting operation requires! [required_quantity] units of [required_material]"))
 	return null
 
 
@@ -226,9 +226,9 @@
 			if (MA.can_use(required_quantity))
 				return TRUE
 			else
-				user << SPAN_DANGER("Insufficient quantity, this crafting operation requires! [required_quantity] units of [I.name]")
+				to_chat(user, SPAN_DANGER("Insufficient quantity, this crafting operation requires! [required_quantity] units of [I.name]"))
 		else
-			user << "Wrong item!"
+			to_chat(user, "Wrong item!")
 	return FALSE
 
 
@@ -249,7 +249,7 @@
 				return MA
 
 	if (foundstack)
-		user << SPAN_DANGER("Insufficient quantity, this crafting operation requires! [required_quantity] units")
+		to_chat(user, SPAN_DANGER("Insufficient quantity, this crafting operation requires! [required_quantity] units"))
 	return null
 
 
@@ -305,7 +305,7 @@
 		if (I.get_tool_quality(required_quality) >= required_level)
 			return TRUE
 		else
-			user << SPAN_WARNING("Wrong type of tool. You need a tool with [required_quality] quality")
+			to_chat(user, SPAN_WARNING("Wrong type of tool. You need a tool with [required_quality] quality"))
 	return FALSE
 
 
@@ -371,7 +371,7 @@
 /datum/craft_step/passive/can_apply(var/obj/I, mob/living/user, atom/target = null)
 	if (find_item(user, target))
 		return TRUE
-	user << SPAN_WARNING("You need have a [required_quality] [apply_range > 0?"within [apply_range] tiles":"in the same tile"] in order to continue crafting this!")
+	to_chat(user, SPAN_WARNING("You need have a [required_quality] [apply_range > 0?"within [apply_range] tiles":"in the same tile"] in order to continue crafting this!"))
 	return FALSE
 
 

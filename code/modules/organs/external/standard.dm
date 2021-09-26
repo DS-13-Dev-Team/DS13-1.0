@@ -61,8 +61,8 @@
 	organ_tag = BP_L_ARM
 	name = "left arm"
 	icon_name = "l_arm"
-	max_damage = 45
-	min_broken_damage = 25
+	max_damage = 50
+	min_broken_damage = 30
 	w_class = ITEM_SIZE_NORMAL
 	body_part = ARM_LEFT
 	parent_organ = BP_CHEST
@@ -152,8 +152,8 @@
 	organ_tag = BP_L_HAND
 	name = "left hand"
 	icon_name = "l_hand"
-	max_damage = 45
-	min_broken_damage = 15
+	max_damage = 50
+	min_broken_damage = 30
 	w_class = ITEM_SIZE_SMALL
 	body_part = HAND_LEFT
 	parent_organ = BP_L_ARM

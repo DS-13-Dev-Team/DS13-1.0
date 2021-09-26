@@ -47,36 +47,36 @@
 /obj/item/weapon/tool_modification/examine(var/mob/user)
 	.=..()
 	if (precision > 0)
-		user << SPAN_NOTICE("Enhances precision by [precision].")
+		to_chat(user, SPAN_NOTICE("Enhances precision by [precision]."))
 	else if (precision < 0)
-		user << SPAN_WARNING("Reduces precision by [abs(precision)].")
+		to_chat(user, SPAN_WARNING("Reduces precision by [abs(precision)]."))
 	if (workspeed)
-		user << SPAN_NOTICE("Enhances workspeed by [workspeed*100]%.")
+		to_chat(user, SPAN_NOTICE("Enhances workspeed by [workspeed*100]%."))
 
 	if (degradation_mult < 1)
-		user << SPAN_NOTICE("Reduces tool degradation by [(1-degradation_mult)*100]%.")
+		to_chat(user, SPAN_NOTICE("Reduces tool degradation by [(1-degradation_mult)*100]%."))
 	else if	(degradation_mult > 1)
-		user << SPAN_WARNING("Increases tool degradation by [(degradation_mult-1)*100]%.")
+		to_chat(user, SPAN_WARNING("Increases tool degradation by [(degradation_mult-1)*100]%."))
 
 	if (force_mult != 1)
-		user << SPAN_NOTICE("Increases tool damage by [(force_mult-1)*100]%.")
+		to_chat(user, SPAN_NOTICE("Increases tool damage by [(force_mult-1)*100]%."))
 	if (force_mod)
-		user << SPAN_NOTICE("Increases tool damage by [force_mod].")
+		to_chat(user, SPAN_NOTICE("Increases tool damage by [force_mod]."))
 	if (powercost_mult != 1)
-		user << SPAN_WARNING("Modifies power usage by [(powercost_mult-1)*100]%.")
+		to_chat(user, SPAN_WARNING("Modifies power usage by [(powercost_mult-1)*100]%."))
 	if (fuelcost_mult != 1)
-		user << SPAN_WARNING("Modifies fuel usage by [(fuelcost_mult-1)*100]%.")
+		to_chat(user, SPAN_WARNING("Modifies fuel usage by [(fuelcost_mult-1)*100]%."))
 	if (bulk_mod)
-		user << SPAN_WARNING("Increases tool size by [bulk_mod].")
+		to_chat(user, SPAN_WARNING("Increases tool size by [bulk_mod]."))
 
 	if (!removeable)
-		user << SPAN_DANGER("This modification is permanent, it can never be removed once applied!")
+		to_chat(user, SPAN_DANGER("This modification is permanent, it can never be removed once applied!"))
 	else if (!recoverable)
-		user << SPAN_WARNING("This modification cannot be recovered or re-used. It will be destroyed if you remove it from a tool.")
+		to_chat(user, SPAN_WARNING("This modification cannot be recovered or re-used. It will be destroyed if you remove it from a tool."))
 
 	if (required_qualities.len)
-		user << SPAN_WARNING("Requires a tool with one of the following qualities:")
-		user << english_list(required_qualities, and_text = " or ")
+		to_chat(user, SPAN_WARNING("Requires a tool with one of the following qualities:"))
+		to_chat(user, english_list(required_qualities, and_text = " or "))
 
 
 
@@ -102,7 +102,7 @@
 	if (isrobot(T))
 		var/mob/living/silicon/robot/R = T
 		if(!R.opened)
-			user << SPAN_WARNING("You need to open [R]'s panel to access its tools.")
+			to_chat(user, SPAN_WARNING("You need to open [R]'s panel to access its tools."))
 		var/list/robotools = list()
 		for(var/obj/item/weapon/tool/robotool in R.module.modules)
 			robotools.Add(robotool)
@@ -112,15 +112,15 @@
 				return
 			try_apply(chosen_tool,user)
 		else
-			user << SPAN_WARNING("[R] has no modifiable tools.")
+			to_chat(user, SPAN_WARNING("[R] has no modifiable tools."))
 		return
 
 	if (!istool(T))
-		user << SPAN_WARNING("This can only be applied to a tool!")
+		to_chat(user, SPAN_WARNING("This can only be applied to a tool!"))
 		return
 
 	if (T.modifications.len >= T.max_modifications)
-		user << SPAN_WARNING("This tool can't fit anymore modifications!")
+		to_chat(user, SPAN_WARNING("This tool can't fit anymore modifications!"))
 		return
 
 	if (required_qualities.len)
@@ -131,21 +131,21 @@
 				break
 
 		if (!qmatch)
-			user << SPAN_WARNING("This tool lacks the required qualities!")
+			to_chat(user, SPAN_WARNING("This tool lacks the required qualities!"))
 			return
 
 	if (req_fuel && !T.use_fuel_cost)
-		user << SPAN_WARNING("This tool doesn't use fuel!")
+		to_chat(user, SPAN_WARNING("This tool doesn't use fuel!"))
 		return
 
 	if (req_cell && !T.use_power_cost)
-		user << SPAN_WARNING("This tool doesn't use power!")
+		to_chat(user, SPAN_WARNING("This tool doesn't use power!"))
 		return
 
 	//No using multiples of the same modification
 	for (var/obj/item/weapon/tool_modification/U in T.modifications)
 		if (U.type == type)
-			user << SPAN_WARNING("A modification of this type is already installed!")
+			to_chat(user, SPAN_WARNING("A modification of this type is already installed!"))
 			return
 
 	return TRUE
@@ -158,7 +158,7 @@
 		user.visible_message(SPAN_NOTICE("[user] starts applying the [src] to [T]"), SPAN_NOTICE("You start applying the [src] to [T]"))
 		if (!use_tool(user = user, target =  T, base_time = WORKTIME_NORMAL, required_quality = null, fail_chance = FAILCHANCE_EASY+T.unreliability, required_stat = "construction", forced_sound = WORKSOUND_WRENCHING))
 			return FALSE
-		user << SPAN_NOTICE("You have successfully installed [src] in [T]")
+		to_chat(user, SPAN_NOTICE("You have successfully installed [src] in [T]"))
 		user.drop_from_inventory(src)
 	//If we get here, we succeeded in the applying
 	holder = T

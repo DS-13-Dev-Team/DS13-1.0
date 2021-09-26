@@ -69,7 +69,7 @@ Freeing yourself is much harder than freeing someone else. Calling for help is a
 		//Is there a tool involved?
 		if (istype(I))
 			//Using a crowbar helps
-			user << SPAN_NOTICE("\The [I] gives you extra leverage")
+			to_chat(user, SPAN_NOTICE("\The [I] gives you extra leverage"))
 			var/reduction = I.get_tool_quality(QUALITY_PRYING)*0.5
 			if (user == buckled_mob)
 				reduction *= 0.66 //But it helps less if you don't have good leverage
@@ -232,9 +232,9 @@ Freeing yourself is much harder than freeing someone else. Calling for help is a
 	if (!check_grip())
 		return
 	if (difficulty)
-		user << SPAN_NOTICE("You failed to release the trap. There was a [round(100 - difficulty)]% chance of success")
+		to_chat(user, SPAN_NOTICE("You failed to release the trap. There was a [round(100 - difficulty)]% chance of success"))
 		if (user == buckled_mob)
-			user << SPAN_NOTICE("Freeing yourself is very difficult. Perhaps you should call for help?")
+			to_chat(user, SPAN_NOTICE("Freeing yourself is very difficult. Perhaps you should call for help?"))
 
 
 

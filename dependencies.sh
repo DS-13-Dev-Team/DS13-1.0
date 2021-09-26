@@ -20,8 +20,5 @@ export PHP_VERSION=5.6
 # SpacemanDMM git tag
 export SPACEMAN_DMM_VERSION=suite-1.7.1
 
-# Extools git tag
-export EXTOOLS_VERSION=v0.0.7
-
 # Python version for mapmerge and other tools
 export PYTHON_VERSION=3.6.8

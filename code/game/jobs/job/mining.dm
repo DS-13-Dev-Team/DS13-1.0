@@ -13,6 +13,8 @@
 	ideal_character_age = 30
 	starting_credits = 7620
 
+	bonus_shares = 3
+
 	salary = SALARY_COMMAND
 
 	access = list(access_dom, access_mf, access_bridge, access_mining, access_maint_tunnels, access_keycard_auth)
@@ -49,6 +51,8 @@
 	starting_credits = 2400
 	salary = SALARY_SUPERVISOR
 
+	bonus_shares = 2
+
 	access = list(access_mining, access_mf, access_maint_tunnels)
 	outfit_type = /decl/hierarchy/outfit/job/mining/foreman
 
@@ -78,7 +82,7 @@
 	minimal_player_age = 18
 	starting_credits = 670
 
-	salary	= SALARY_UNSKILLED	//Miners and civilians are underpaid plebs
+	salary	= 0	//Miners are paid on commission for the ores they turn in
 
 	access = list(access_mining, access_maint_tunnels)
 	outfit_type = /decl/hierarchy/outfit/job/mining/planet_cracker

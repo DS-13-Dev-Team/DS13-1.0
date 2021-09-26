@@ -2146,7 +2146,6 @@
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/aft)
 "fw" = (
-/obj/item/organ/external/arm/blade/slasher/right,
 /obj/machinery/disposal,
 /obj/structure/disposalpipe/trunk,
 /obj/effect/floor_decal/industrial/hatch/yellow,
