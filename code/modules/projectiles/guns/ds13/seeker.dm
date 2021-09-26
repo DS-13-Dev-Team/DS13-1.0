@@ -1,6 +1,6 @@
 /obj/item/weapon/gun/projectile/seeker
 	name = "Seeker Rifle"
-	desc = "The Seeker Rifle is a riot control device that is meant for accuracy at long-range. Comes with a built in scope"
+	desc = "The Seeker Rifle is a riot control device that is meant for accuracy at long-range. Comes with a built-in scope."
 	icon = 'icons/obj/weapons/ds13guns48x32.dmi'
 	icon_state = "seeker"
 	item_state = "seeker"
@@ -34,7 +34,7 @@
 
 /obj/item/ammo_casing/seeker
 	name = "seeker shell"
-	desc = "A high caliber round designed for the Seeker marksman rifle"
+	desc = "A high caliber round designed for the Seeker Rifle."
 	icon_state = "empshell"
 	spent_icon = "empshell-spent"
 	projectile_type  = /obj/item/projectile/bullet/seeker
@@ -51,7 +51,7 @@
 	step_delay = 0.75	//Real fast
 	expiry_method = EXPIRY_FADEOUT
 	fire_sound = 'sound/weapons/gunshot/sniper.ogg'
-	stun = 3
+	stun = 1.5
 	weaken = 3
 	penetrating = 5
 	armor_penetration = 20
@@ -59,7 +59,7 @@
 
 /obj/item/ammo_magazine/seeker
 	name = "seeker shells"
-	desc = "High caliber armor piercing shells designed for use in the Seeker Rifle"
+	desc = "High caliber armor piercing shells designed for use in the Seeker Rifle."
 	icon = 'icons/obj/ammo.dmi'
 	icon_state = "seekerclip"
 	caliber = "seeker"

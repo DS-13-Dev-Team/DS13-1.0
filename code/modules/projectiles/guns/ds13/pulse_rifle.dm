@@ -51,7 +51,7 @@ The Pulse Rifle is the standard-issue service rifle of the Earth Defense Force a
 
 /obj/item/ammo_casing/pulse
 	name = "pulse round"
-	desc = "A low caliber round designed for the SWS motorized pulse rifle"
+	desc = "A low caliber round designed for the SWS Motorized Pulse Rifle."
 	caliber = "pulse"
 	icon_state = "empshell"
 	spent_icon = "empshell-spent"
@@ -99,7 +99,7 @@ The Pulse Rifle is the standard-issue service rifle of the Earth Defense Force a
 ------------------------*/
 /obj/item/ammo_casing/pulse/hv
 	name = "high velocity pulse round"
-	desc = "A low caliber hypersonic round designed for the SWS motorized pulse rifle"
+	desc = "A low caliber hypersonic round designed for the SWS Motorized Pulse Rifle."
 	caliber = "pulse"
 	projectile_type  = /obj/item/projectile/bullet/pulse/hv
 

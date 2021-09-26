@@ -12,14 +12,6 @@
 	patron_only = TRUE
 	cost = 4
 
-
-/datum/gear/tool/cutter
-	display_name = "210-V mining cutter"
-	subcategory = "Dangerous Tools"
-	path = /obj/item/weapon/gun/energy/cutter
-	cost = 4
-
-
 /datum/gear/tool/crowbar
 	display_name = "crowbar"
 	subcategory = "Dangerous Tools"
