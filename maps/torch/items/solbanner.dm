@@ -49,5 +49,5 @@
 		var/dudename = ID.registered_name
 		if(istype(ID.military_rank))
 			dudename = "[ID.military_rank.name] [dudename]"
-		E.plantedby = "Planted on [stationdate2text()] by [dudename], [user.get_assignment()] of [GLOB.using_map.full_name]."
+		E.plantedby = "Planted on [stationTimestamp()] by [dudename], [user.get_assignment()] of [GLOB.using_map.full_name]."
 		T.visible_message("<span class='notice'>[user] successfully claims this world with \the [E]!</span>")

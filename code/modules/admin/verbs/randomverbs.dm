@@ -658,14 +658,14 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	set category = "Admin"
 	set name = "Call Evacuation"
 
-	if(!ticker || !evacuation_controller)
+	if(!SSticker || !evacuation_controller)
 		return
 
 	if(!check_rights(R_ADMIN))	return
 
 	if(alert(src, "Are you sure?", "Confirm", "Yes", "No") != "Yes") return
 
-	if(ticker.mode.auto_recall_shuttle)
+	if(SSticker.mode.auto_recall_shuttle)
 		if(input("The evacuation will just be cancelled if you call it. Call anyway?") in list("Confirm", "Cancel") != "Confirm")
 			return
 
@@ -682,11 +682,11 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 	if(!check_rights(R_MOD))	return
 
-	if(!ticker || !evacuation_controller)
+	if(!SSticker || !evacuation_controller)
 		to_chat(usr, "<span class='warning'>Ticker or evacuation controller are missing.</span>")
 		return
 
-	var/datum/game_mode/marker/GM = ticker.mode
+	var/datum/game_mode/marker/GM = SSticker.mode
 	if(!GM)
 		to_chat(usr, "<span class='warning'>Marker gamemode not found.</span>")
 		return
@@ -717,7 +717,7 @@ disabled while adding delay_shuttle since evac cancelling needs a complete rewor
 
 	if(alert(src, "You sure?", "Confirm", "Yes", "No") != "Yes") return
 
-	if(!ticker || !evacuation_controller)
+	if(!SSticker || !evacuation_controller)
 		return
 
 	evacuation_controller.cancel_evacuation()
@@ -731,7 +731,7 @@ disabled while adding delay_shuttle since evac cancelling needs a complete rewor
 	set category = "Admin"
 	set name = "Toggle Deny Evac"
 
-	if (!ticker || !evacuation_controller)
+	if (!SSticker || !evacuation_controller)
 		return
 
 	if(!check_rights(R_ADMIN))	return
@@ -758,12 +758,12 @@ disabled while adding delay_shuttle since evac cancelling needs a complete rewor
 
 	if(!check_rights(R_FUN))	return
 
-	if (ticker && ticker.mode)
+	if (SSticker && SSticker.mode)
 		to_chat(usr, "Nope you can't do this, the game's already started. This only works before rounds!")
 		return
 
-	if(ticker.random_players)
-		ticker.random_players = 0
+	if(SSticker.random_players)
+		SSticker.random_players = 0
 		message_admins("Admin [key_name_admin(usr)] has disabled \"Everyone is Special\" mode.", 1)
 		to_chat(usr, "Disabled.")
 		return
@@ -780,7 +780,7 @@ disabled while adding delay_shuttle since evac cancelling needs a complete rewor
 		to_chat(world, "<span class='notice'><b>Admin [usr.key] has forced the players to have completely random identities!</b></span>")
 
 	to_chat(usr, "<i>Remember: you can always disable the randomness by using the verb again, assuming the round hasn't started yet</i>.")
-	ticker.random_players = 1
+	SSticker.random_players = 1
 	feedback_add_details("admin_verb","MER") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 

@@ -101,6 +101,10 @@
 	if(CONFIG_GET(flag/log_say))
 		WRITE_LOG(GLOB.world_game_log, "SAY: [text]")
 
+/proc/log_telecomms(text)
+	LAZYADD(GLOB.telecomms_log, "\[[stationTimestamp()]\] TCOMMS: [text]")
+	WRITE_LOG(GLOB.world_telecomms_log, "TCOMMS: [text]")
+
 /proc/log_ooc(text)
 	LAZYADD(GLOB.say_log, "\[[stationTimestamp()]\] OOC: [text]")
 	if(CONFIG_GET(flag/log_ooc))
@@ -324,3 +328,16 @@
 	//Only do this log if port is nonzero, which means we are hosting through dream daemon
 	if (world.port)
 		admin_notice(progress_message, R_DEBUG)
+
+/proc/loc_name(atom/A)
+	if(!istype(A))
+		return "(INVALID LOCATION)"
+
+	var/turf/T = A
+	if(!istype(T))
+		T = get_turf(A)
+
+	if(istype(T))
+		return "([AREACOORD(T)])"
+	else if(A.loc)
+		return "(UNKNOWN (?, ?, ?))"

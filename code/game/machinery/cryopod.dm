@@ -51,7 +51,7 @@
 
 	var/dat
 
-	if (!( ticker ))
+	if (!( SSticker ))
 		return
 
 	dat += "<hr/><br/><b>[storage_name]</b><br/>"
@@ -401,8 +401,8 @@
 			occupant.mind.set_special_role(null)
 
 	//else
-		//if(ticker.mode.name == "AutoTraitor")
-			//var/datum/game_mode/traitor/autotraitor/current_mode = ticker.mode
+		//if(SSticker.mode.name == "AutoTraitor")
+			//var/datum/game_mode/traitor/autotraitor/current_mode = SSticker.mode
 			//current_mode.possible_traitors.Remove(occupant)
 
 	// Delete them from datacore.
@@ -422,8 +422,8 @@
 	var/role_alt_title = occupant.mind ? occupant.mind.role_alt_title : "Unknown"
 
 	if(control_computer)
-		control_computer.frozen_crew += "[occupant.real_name], [role_alt_title] - [stationtime2text()]"
-		control_computer._admin_logs += "[key_name(occupant)] ([role_alt_title]) at [stationtime2text()]"
+		control_computer.frozen_crew += "[occupant.real_name], [role_alt_title] - [stationTimestamp()]"
+		control_computer._admin_logs += "[key_name(occupant)] ([role_alt_title]) at [stationTimestamp()]"
 	log_and_message_admins("[key_name(occupant)] ([role_alt_title]) entered cryostorage.")
 
 	announce.autosay("[occupant.real_name], [role_alt_title], [on_store_message]", "[on_store_name]")
@@ -434,7 +434,7 @@
 
 	// Delete the mob.
 	qdel(occupant)
-	ticker.mode.on_crew_despawn(occupant)	//Update the living mobs list
+	SSticker.mode.on_crew_despawn(occupant)	//Update the living mobs list
 	set_occupant(null)
 
 

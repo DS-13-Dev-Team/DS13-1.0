@@ -274,7 +274,7 @@
 	var/dat = list()
 	var/subdat = list()
 	dat +="<b>SCAN RESULTS FOR: [H]</b>"
-	dat +="Scan performed at [stationtime2text()]<br>"
+	dat +="Scan performed at [stationTimestamp()]<br>"
 
 	var/brain_result = "normal"
 	if(H.should_have_organ(BP_BRAIN))

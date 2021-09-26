@@ -6,13 +6,13 @@
 	if(!check_rights(R_SERVER))
 		return
 
-	if(!ticker?.mode)
+	if(!SSticker?.mode)
 		return
 
-	if(alert("Are you sure you want to end the round?", "End Round", "Yes", "No") != "Yes")
+	if(tgui_alert(src, "Are you sure you want to end the round?", "End Round", list("Yes","No")) != "Yes")
 		return
 
-	var/winstate = input(usr, "What do you want the round end state to be?", "End Round") as null|anything in list("Custom", "Admin Intervention") + ticker.mode.round_end_states //TO DO Change declare complitation
+	var/winstate = input(usr, "What do you want the round end state to be?", "End Round") as null|anything in list("Custom", "Admin Intervention") + SSticker.mode.round_end_states //TO DO Change declare complitation
 	if(!winstate)
 		return
 
@@ -21,8 +21,8 @@
 		if(!winstate)
 			return
 
-	ticker.force_ending = TRUE
-//	ticker.mode.round_finished = winstate TO DO
+	SSticker.force_ending = TRUE
+//	SSticker.mode.round_finished = winstate TO DO
 
 	log_admin("[key_name(usr)] has made the round end early - [winstate].")
 	message_admins("[key_name(usr)] has made the round end early - [winstate].")
@@ -181,10 +181,10 @@
 	set category = "Server"
 	set desc="Start the round RIGHT NOW"
 	set name="Start Now"
-	if(!ticker)
+	if(!SSticker)
 		alert("Unable to start the game as it is not set up.")
 		return
-	if(ticker.current_state == GAME_STATE_PREGAME && !(initialization_stage & INITIALIZATION_NOW))
+	if(SSticker.current_state == GAME_STATE_PREGAME && !(initialization_stage & INITIALIZATION_NOW))
 		log_admin("[usr.key] has started the game.")
 		message_admins("<font color='blue'>[usr.key] has started the game.</font>")
 		feedback_add_details("admin_verb","SN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
@@ -269,24 +269,60 @@
 	log_and_message_admins("toggled Space Ninjas [CONFIG_GET(flag/ninjas_allowed) ? "on" : "off"].")
 	feedback_add_details("admin_verb","TSN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/datum/admins/proc/delay()
+/datum/admins/proc/delay_start()
 	set category = "Server"
-	set desc="Delay the game start/end"
-	set name="Delay"
+	set name = "Delay Round Start"
 
-	if(!check_rights(R_SERVER|R_REJUVINATE))	return
-	if (!ticker || ticker.current_state != GAME_STATE_PREGAME)
-		ticker.delay_end = !ticker.delay_end
-		log_and_message_admins("[ticker.delay_end ? "delayed the round end" : "has made the round end normally"].")
-		return //alert("Round end delayed", null, null, null, null, null)
-	round_progressing = !round_progressing
-	if (!round_progressing)
-		to_chat(world, "<span class='infodisplay'><b>The game start has been delayed.</b></span>")
-		log_admin("[key_name(usr)] delayed the game.")
+	if(!check_rights(R_SERVER))
+		return
+
+	if(!SSticker)
+		return
+
+	var/newtime = input("Set a new time in seconds. Set -1 for indefinite delay.", "Set Delay", round(SSticker.GetTimeLeft())) as num|null
+	if(SSticker.current_state > GAME_STATE_PREGAME)
+		return
+	if(isnull(newtime))
+		return
+
+	newtime = newtime * 10
+	SSticker.SetTimeLeft(newtime)
+	if(newtime < 0)
+		to_chat(world, SPAN_BOLDNOTICE("The game start has been delayed."))
+		log_admin("[key_name(usr)] delayed the round start.")
+		message_admins("[ADMIN_TPMONTY(usr)] delayed the round start.")
 	else
-		to_chat(world, "<span class='infodisplay'><b>The game will start soon.</b></span>")
-		log_admin("[key_name(usr)] removed the delay.")
-	feedback_add_details("admin_verb","DELAY") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+		to_chat(world, SPAN_BOLDNOTICE("The game will start in [DisplayTimeText(newtime)]."))
+		log_admin("[key_name(usr)] set the pre-game delay to [DisplayTimeText(newtime)].")
+		message_admins("[ADMIN_TPMONTY(usr)] set the pre-game delay to [DisplayTimeText(newtime)].")
+
+/datum/admins/proc/delay_end()
+	set category = "Server"
+	set name = "Delay Round End"
+
+	if(!check_rights(R_SERVER))
+		return
+
+	if(!SSticker)
+		return
+
+	if(SSticker.admin_delay_notice)
+		if(tgui_alert(usr, "Do you want to remove the round end delay?", "Delay Round End", list("Yes","No")) != "Yes")
+			return
+		SSticker.admin_delay_notice = null
+	else
+		var/reason = input(usr, "Enter a reason for delaying the round end", "Round Delay Reason") as null|text
+		if(!reason)
+			return
+		if(SSticker.admin_delay_notice)
+			to_chat(usr, SPAN_WARNING("Someone already delayed the round end meanwhile."))
+			return
+		SSticker.admin_delay_notice = reason
+
+	SSticker.delay_end = !SSticker.delay_end
+
+	log_admin("[key_name(usr)] [SSticker.delay_end ? "delayed the round-end[SSticker.admin_delay_notice ? " for reason: [SSticker.admin_delay_notice]" : ""]" : "made the round end normally"].")
+	message_admins("<hr><h4>[ADMIN_TPMONTY(usr)] [SSticker.delay_end ? "delayed the round-end[SSticker.admin_delay_notice ? " for reason: [SSticker.admin_delay_notice]" : ""]" : "made the round end normally"].</h4><hr>")
 
 /datum/admins/proc/adjump()
 	set category = "Server"
@@ -350,7 +386,7 @@
 				if(!(isnull(usr.client.address) || (usr.client.address in localhost_addresses)))
 					if(tgui_alert(usr, "Are you sure you want to restart the server?","This server is live",list("Restart","Cancel")) != "Restart")
 						return FALSE
-				ticker.force_ending = TRUE
+				SSticker.Reboot(init_by, "admin reboot - by [usr.key]", 10)
 			if("Regular Restart (with delay)")
 				var/delay = input("What delay should the restart have (in seconds)?", "Restart Delay", 5) as num|null
 				if(!delay)
@@ -358,8 +394,7 @@
 				if(!(isnull(usr.client.address) || (usr.client.address in localhost_addresses)))
 					if(tgui_alert(usr,"Are you sure you want to restart the server?","This server is live",list("Restart","Cancel")) != "Restart")
 						return FALSE
-				ticker.delay = delay
-				ticker.force_ending = TRUE
+				SSticker.Reboot(init_by, "admin reboot - by [usr.key]", delay * 10)
 			if("Hard Restart (No Delay, No Feeback Reason)")
 				to_chat(world, "<span class='infoplain'>World reboot - [init_by]</span>")
 				world.Reboot()

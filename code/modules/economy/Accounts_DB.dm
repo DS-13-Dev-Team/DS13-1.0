@@ -24,8 +24,8 @@
 		T.target_name = target
 		T.purpose = reason
 		T.amount = amount
-		T.date = stationdate2text()
-		T.time = stationtime2text()
+		T.date = stationTimestamp()
+		T.time = stationTimestamp()
 		T.source_terminal = machine_id
 		return T
 

@@ -1,4 +1,6 @@
 
+#define ismovableatom(A) ismovable(A)
+
 #define isweakref(D) (istype(D, /datum/weakref))
 
 #define isAI(A) istype(A, /mob/living/silicon/ai)

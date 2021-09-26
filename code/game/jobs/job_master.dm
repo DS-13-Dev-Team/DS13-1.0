@@ -104,7 +104,7 @@ var/global/datum/controller/occupations/job_master
 		if(!CONFIG_GET(flag/enter_allowed))
 			to_chat(joining, "<span class='warning'>There is an administrative lock on entering the game!</span>")
 			return FALSE
-		if(ticker.mode && ticker.mode.explosion_in_progress)
+		if(SSticker.mode && SSticker.mode.explosion_in_progress)
 			to_chat(joining, "<span class='warning'>The [station_name()] is currently exploding. Joining would go poorly.</span>")
 			return FALSE
 		return TRUE
@@ -118,7 +118,7 @@ var/global/datum/controller/occupations/job_master
 		if(!job.player_old_enough(joining.client))
 			to_chat(joining, "<span class='warning'>Your player age (days since first seen on the server) is too low for this job.</span>")
 			return FALSE
-		if(!ticker || ticker.current_state != GAME_STATE_PLAYING)
+		if(!SSticker || SSticker.current_state != GAME_STATE_PLAYING)
 			to_chat(joining, "<span class='warning'>The round is either not ready, or has already finished...</span>")
 			return FALSE
 		return TRUE
@@ -298,8 +298,8 @@ var/global/datum/controller/occupations/job_master
 		Debug("Running DO")
 		SetupOccupations()
 
-		//Holder for Triumvirate is stored in the ticker, this just processes it
-		if(ticker && ticker.triai)
+		//Holder for Triumvirate is stored in the SSticker, this just processes it
+		if(SSticker && SSticker.triai)
 			for(var/datum/job/A in occupations)
 				if(A.title == "AI")
 					A.spawn_positions = 3
@@ -345,7 +345,7 @@ var/global/datum/controller/occupations/job_master
 
 		// Loop through all levels from high to low
 		var/list/shuffledoccupations = shuffle(occupations)
-		// var/list/disabled_jobs = ticker.mode.disabled_jobs  // So we can use .Find down below without a colon.
+		// var/list/disabled_jobs = SSticker.mode.disabled_jobs  // So we can use .Find down below without a colon.
 		for(var/level = 1 to 3)
 			//Check the head jobs first each level
 			CheckHeadPositions(level)
@@ -355,7 +355,7 @@ var/global/datum/controller/occupations/job_master
 
 				// Loop through all jobs
 				for(var/datum/job/job in shuffledoccupations) // SHUFFLE ME BABY
-					if(!job || ticker.mode.disabled_jobs.Find(job.title) )
+					if(!job || SSticker.mode.disabled_jobs.Find(job.title) )
 						continue
 
 					if(jobban_isbanned(player, job.title))
@@ -514,7 +514,7 @@ var/global/datum/controller/occupations/job_master
 				if("AI")
 					return H
 				if("Captain")
-					var/sound/announce_sound = (ticker.current_state <= GAME_STATE_SETTING_UP)? null : sound('sound/misc/boatswain.ogg', volume=20)
+					var/sound/announce_sound = (SSticker.current_state <= GAME_STATE_SETTING_UP)? null : sound('sound/misc/boatswain.ogg', volume=20)
 					captain_announcement.Announce("All hands, Captain [H.real_name] on deck!", new_sound=announce_sound)
 
 

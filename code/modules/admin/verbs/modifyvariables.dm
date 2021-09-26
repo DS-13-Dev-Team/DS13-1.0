@@ -3,10 +3,10 @@
 	set category = "Debug"
 	set name = "Edit Ticker Variables"
 
-	if (ticker == null)
+	if (SSticker == null)
 		to_chat(src, "Game hasn't started yet.")
 	else
-		src.modify_variables(ticker)
+		src.modify_variables(SSticker)
 		feedback_add_details("admin_verb","ETV") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/mod_list_add_ass()

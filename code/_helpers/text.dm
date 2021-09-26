@@ -398,8 +398,8 @@ proc/TextPreview(var/string,var/len=40)
 	t = replacetext(t, "\[/i\]", "</I>")
 	t = replacetext(t, "\[u\]", "<U>")
 	t = replacetext(t, "\[/u\]", "</U>")
-	t = replacetext(t, "\[time\]", "[stationtime2text()]")
-	t = replacetext(t, "\[date\]", "[stationdate2text()]")
+	t = replacetext(t, "\[time\]", "[stationTimestamp()]")
+	t = replacetext(t, "\[date\]", "[stationTimestamp()]")
 	t = replacetext(t, "\[large\]", "<font size=\"4\">")
 	t = replacetext(t, "\[/large\]", "</font>")
 	t = replacetext(t, "\[field\]", "<span class=\"paper_field\"></span>")
@@ -632,3 +632,13 @@ proc/TextPreview(var/string,var/len=40)
 
 		else
 			return "its"//Something went wrong
+
+/// Used to get a properly sanitized input, of max_length
+/// no_trim is self explanatory but it prevents the input from being trimed if you intend to parse newlines or whitespace.
+/proc/stripped_input(mob/user, message = "", title = "", default = "", max_length=MAX_MESSAGE_LEN, no_trim=FALSE)
+	var/name = input(user, message, title, default) as text|null
+
+	if(no_trim)
+		return copytext(html_encode(name), 1, max_length)
+	else
+		return trim(html_encode(name), max_length) //trim is "outside" because html_encode can expand single symbols into multiple symbols (such as turning < into &lt;)

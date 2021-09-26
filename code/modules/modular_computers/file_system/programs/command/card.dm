@@ -162,7 +162,7 @@
 									<br>
 									[html_crew_manifest()]
 									"}
-					if(!computer.nano_printer.print_text(contents,text("crew manifest ([])", stationtime2text())))
+					if(!computer.nano_printer.print_text(contents,text("crew manifest ([])", stationTimestamp())))
 						to_chat(usr, "<span class='notice'>Hardware error: Printer was unable to print the file. It may be out of paper.</span>")
 						return
 					else

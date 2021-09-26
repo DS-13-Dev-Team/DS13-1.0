@@ -1389,7 +1389,7 @@
 	var/datum/computer_file/report/crew_record/R = get_crewmember_record(real_name) //Try get a crew manifest for this mob
 	if(!R)
 		return FALSE //Not on the manifest? You don't exist.
-	ticker.mode.on_crew_revive(src) //Congrats, you're alive again.
+	SSticker.mode.on_crew_revive(src) //Congrats, you're alive again.
 
 /mob/living/carbon/human/proc/make_reagent(amount, reagent_type)
 	if(stat == CONSCIOUS)
