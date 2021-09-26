@@ -85,7 +85,7 @@ const VoteOptions = (props, context) => {
   return (
     <Stack.Item>
       <Collapsible title="Allow Votes">
-      <Stack justify="space-between">
+        <Stack justify="space-between">
           <Stack.Item>
             <Stack vertical>
               <Stack.Item>
