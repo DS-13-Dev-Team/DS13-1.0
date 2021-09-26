@@ -1,11 +1,7 @@
 /material
-	var/value = 1
+	var/value = 2
 
-/material/uranium
-	value = 75
 
-/material/diamond
-	value = 52
 
 /material/gold
 	value = 30
@@ -13,8 +9,6 @@
 /material/silver
 	value = 26
 
-/material/phoron
-	value = 150
 
 /material/stone/marble
 	value = 3
@@ -43,14 +37,10 @@
 /material/osmium
 	value = 22
 
-/material/tritium
-	value = 225
+
 
 /material/mhydrogen
 	value = 75
-
-/material/platinum
-	value = 60
 
 /material/iron
 	value = 4
