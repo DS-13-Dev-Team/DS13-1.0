@@ -40,4 +40,4 @@
 	name = "shoes"
 
 /obj/item/clothing/head/helmet/space/rig/hacker
-	name = "hood"
+	name = "helmet"

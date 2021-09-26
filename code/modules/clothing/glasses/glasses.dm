@@ -288,6 +288,13 @@
 	hud = /obj/item/clothing/glasses/hud/security
 	electric = TRUE
 
+/obj/item/clothing/glasses/sunglasses/csecohud
+	name = "chief security officer's HUD sunglasses"
+	desc = "Cool, gold-plated sunglasses with a HUD. Probably not actually plated with gold."
+	icon_state = "cseco_hud"
+	hud = /obj/item/clothing/glasses/hud/security
+	electric = TRUE
+
 /obj/item/clothing/glasses/sunglasses/sechud/toggle
 	name = "HUD aviators"
 	desc = "Modified aviator glasses that can be switched between HUD and flash protection modes."

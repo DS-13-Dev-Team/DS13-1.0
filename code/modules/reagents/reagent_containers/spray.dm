@@ -127,7 +127,7 @@
 	name = "pepperspray"
 	desc = "Manufactured by Uhang Inc., it fires a mist of condensed capsaicin to blind and down an opponent quickly."
 	icon = 'icons/obj/weapons.dmi'
-	icon_state = "pepperspray"
+	icon_state = "pepperspray0"
 	item_state = "pepperspray"
 	possible_transfer_amounts = null
 	volume = 60
@@ -143,8 +143,14 @@
 		to_chat(user, "The safety is [safety ? "on" : "off"].")
 
 /obj/item/weapon/reagent_containers/spray/pepper/attack_self(var/mob/user)
-	safety = !safety
-	to_chat(usr, "<span class = 'notice'>You switch the safety [safety ? "on" : "off"].</span>")
+	if (safety == 1)
+		icon_state = "pepperspray1"
+		safety = 0
+		to_chat(usr, "<span class = 'notice'>You switch the safety off.</span>")
+	else
+		icon_state = "pepperspray0"
+		safety = 1
+		to_chat(usr, "<span class = 'notice'>You switch the safety on.</span>")
 
 /obj/item/weapon/reagent_containers/spray/pepper/Spray_at(atom/A as mob|obj)
 	if(safety)

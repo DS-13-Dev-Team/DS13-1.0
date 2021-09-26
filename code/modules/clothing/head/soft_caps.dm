@@ -65,3 +65,8 @@
 	name = "\improper NanoTrasen security cap"
 	desc = "It's field cap in NanoTrasen colors."
 	icon_state = "ntwhitesoft"
+
+/obj/item/clothing/head/soft/pcsi
+	name = "\improper P.C.S.I officer's cap"
+	desc = "It's field cap in brown. The badge of P.C.S.I is emblazoned on the front."
+	icon_state = "pcsicap"

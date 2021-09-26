@@ -5922,8 +5922,6 @@
 /obj/effect/floor_decal/industrial/outline/grey,
 /obj/item/stack/power_node,
 /obj/item/stack/power_node,
-/obj/random/ammo/security,
-/obj/random/ammo/security,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/security/armory)
 "anW" = (
@@ -21483,17 +21481,8 @@
 	icon_state = "4-8"
 	},
 /obj/effect/floor_decal/industrial/outline/grey,
-/obj/item/weapon/plastique{
-	pixel_x = -2;
-	pixel_y = -2
-	},
-/obj/item/weapon/plastique{
-	pixel_x = 1
-	},
-/obj/item/weapon/plastique{
-	pixel_x = 4;
-	pixel_y = 2
-	},
+/obj/item/weapon/rig/security/pcsi,
+/obj/item/weapon/rig/security/pcsi,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/security/armory)
 "aQt" = (
