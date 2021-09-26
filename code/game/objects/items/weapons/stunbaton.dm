@@ -3,7 +3,7 @@
 	name = "stunbaton"
 	desc = "A stun baton for incapacitating people with."
 	icon_state = "stunbaton"
-	item_state = "baton"
+	item_state = "stunbaton"
 	slot_flags = SLOT_BELT
 	force = WEAPON_FORCE_PAINFUL
 	sharp = 0
@@ -49,10 +49,11 @@
 /obj/item/weapon/melee/baton/update_icon()
 	if(status)
 		icon_state = "[initial(name)]_active"
-	else if(!bcell)
-		icon_state = "[initial(name)]_nocell"
+		item_state = "stunbaton_active"
 	else
 		icon_state = "[initial(name)]"
+		item_state = "stunbaton"
+	update_wear_icon()
 
 	if(icon_state == "[initial(name)]_active")
 		set_light(0.4, 0.1, 1, 2, "#ff6a00")

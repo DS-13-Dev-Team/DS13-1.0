@@ -15,7 +15,8 @@
 		/obj/item/weapon/gun/projectile/shotgun/bola_lancher,
 		/obj/item/ammo_magazine/pulse = 2,
 		/obj/item/ammo_magazine/shotgun = 2,
-		/obj/item/weapon/rig/security/pcsi
+		/obj/item/clothing/suit/armor/riot,
+		/obj/item/clothing/head/helmet/riot
 	)
 
 /obj/structure/closet/secure_closet/guncabinet/sec_support
@@ -30,7 +31,9 @@
 	icon_opened = "base"
 
 /obj/structure/closet/secure_closet/guncabinet/sec_support/WillContain()
-	var/list/things = list()
+	var/list/things = list(
+		/obj/item/clothing/suit/armor/riot,
+		/obj/item/clothing/head/helmet/riot)
 	if(prob(75))
 		things += /obj/item/weapon/gun/projectile/seeker/empty
 		things[/obj/item/ammo_magazine/seeker] = 4

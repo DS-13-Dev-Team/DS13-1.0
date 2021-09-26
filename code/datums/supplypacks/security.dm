@@ -18,7 +18,7 @@
 	containertype = /obj/structure/closet/crate/secure
 	containername = "\improper Armor crate"
 	access = access_security
-
+/*
 /decl/hierarchy/supply_pack/security/tacticalarmor
 	name = "Armor - Tactical"
 	contains = list(/obj/item/clothing/under/tactical,
@@ -31,7 +31,7 @@
 	containertype = /obj/structure/closet/crate/secure
 	containername = "\improper Tactical armor crate"
 	access = access_armory
-
+*/
 /decl/hierarchy/supply_pack/security/blackguards
 	name = "Armor - Arm and leg guards, black"
 	contains = list(/obj/item/clothing/accessory/armguards = 2,
