@@ -277,7 +277,7 @@
 	desc = "A set of javelins for the T15 Javelin Gun."
 	icon_state = "javelin"
 	caliber = "javelin"
-	w_class = ITEM_SIZE_LARGE
+	w_class = ITEM_SIZE_NORMAL
 	mag_type = MAGAZINE
 	ammo_type = /obj/item/ammo_casing/javelin
 	matter = list(MATERIAL_STEEL = 600)
