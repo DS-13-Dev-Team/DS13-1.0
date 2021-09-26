@@ -85,3 +85,13 @@
   - balance: Makes hands/feet equally hard to cut off as arms/legs as a whole. Arms/hands
       are now slightly harder to cut off than feet/legs.
   - balance: Humans can no longer pick artificial organs.
+2021-09-26:
+  Nanako:
+  - rscadd: The mining department is now paid in commission based on the ores processed.
+      Each ore has value according to its rarity. All gains from this are put into
+      a pool and then shared out at payroll time, so make sure everyone pulls their
+      weight!
+  - rscdel: Planet crackers no longer recieve a regular salary
+  - balance: Removed suitcase full of money from DOM office, and made it very rare
+      in random loot.
+  - balance: Increased cost of HV pulse ammo in store.
