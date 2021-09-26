@@ -382,12 +382,29 @@ default behaviour is:
 	//Getting out of someone's inventory.
 	if(istype(src.loc, /obj/item/weapon/holder))
 		escape_inventory(src.loc)
-		return
+		return TRUE
 
 	//unbuckling yourself
-	if(buckled && !HAS_TRAIT(src, TRAIT_BUCKLED))
-		spawn() escape_buckle()
-		return TRUE
+	if(buckled)
+		if(HAS_TRAIT(src, TRAIT_BUCKLED))
+			var/list/sources = status_traits[TRAIT_BUCKLED]
+			for(var/i in sources)
+				if(istype(i, /obj/item/javelin))
+					var/obj/item/javelin/j = i
+					j.attack_hand(src)
+				else
+					if (buckled.resist_buckle(src))
+						escape_buckle()
+					else
+						continue
+			return TRUE
+		else
+			if (buckled.resist_buckle(src))
+				spawn()
+					escape_buckle()
+				return TRUE
+			else
+				return FALSE
 
 	//Breaking out of a locker?
 	if( src.loc && (istype(src.loc, /obj/structure/closet)) )

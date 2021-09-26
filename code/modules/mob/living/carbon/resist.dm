@@ -1,4 +1,7 @@
 /mob/living/carbon/process_resist()
+	. = ..()
+	if(.)
+		return TRUE
 
 	//drop && roll
 	if(on_fire && !buckled)
@@ -16,18 +19,6 @@
 				"<span class='notice'>You extinguish yourself.</span>"
 				)
 			ExtinguishMob()
-		return TRUE
-
-	//unbuckling yourself
-	if(buckled && !HAS_TRAIT(src, TRAIT_BUCKLED))
-		if (buckled.resist_buckle(src))
-			spawn()
-				escape_buckle()
-			return TRUE
-		else
-			return FALSE
-
-	if(..())
 		return TRUE
 
 	if(handcuffed)
