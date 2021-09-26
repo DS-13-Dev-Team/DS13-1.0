@@ -1,3 +1,7 @@
+//Access defines, one is applied to each distribution channel for obtaining the item. An item can have different access in different channels
+#define ACCESS_PUBLIC	"public"
+#define ACCESS_PATRONS	"patrons"
+#define ACCESS_WHITELIST	"whitelist"
 // Switch this out to use a database at some point. Each ckey is
 // associated with a list of custom item datums. When the character
 // spawns, the list is checked and all appropriate datums are spawned.
@@ -18,12 +22,12 @@
 /var/list/custom_items = list()
 
 /datum/custom_item
-	var/assoc_key
-	var/character_name
+	var/name
+	var/id	//Used to link whitelists to us
 	var/inherit_inhands = 1 //if unset, and inhands are not provided, then the inhand overlays will be invisible.
 	var/item_icon
-	var/item_desc
-	var/name
+	var/description
+
 	var/item_path = /obj/item
 	var/item_path_as_string
 	var/req_access = 0
@@ -32,6 +36,35 @@
 	var/kit_desc
 	var/kit_icon
 	var/additional_data
+
+
+	/*
+		New vars for DS13
+	*/
+	var/loadout_cost = null //If not null, this item can be purchased in the loadout for this many points
+	var/loadout_access	=	null //One of the ACCESS_XXX defines above, determines who is allowed to buy this in loadout
+
+	var/store_cost = null //If not null, this item can be purchased in the store for this many credits
+	var/store_access	=	null //One of the ACCESS_XXX defines above, determines who is allowed to buy this in store
+
+	var/loadout_modkit_cost	=	null //If not null, a modkit to transform another item into this item can be purchased in the loadout for this many points
+	var/modkit_access	=	null//One of the ACCESS_XXX defines above, determines who is allowed to buy this in store
+
+	var/list/whitelist	=	null	//A list of ckeys who can use ACCESS_WHITELIST channels with this item
+
+	/*
+		This can be one of a few things:
+			-A single typepath, or a list of typepaths, of items which the modkit can be applied to, to transform them into the desired item
+			-A modkit typepath which is the exact type the modkit will be. This allows you to override procs and make more complex rules about application
+	*/
+	var/modkit_base	= null
+
+
+/datum/custom_item/New()
+
+
+	if (!isnull(loadout_cost) && !isnull(loadout_access))
+		create_loadout_datum()
 
 /datum/custom_item/proc/is_valid(var/checker)
 	if(!item_path)
@@ -52,8 +85,8 @@
 		return
 	if(name)
 		item.SetName(name)
-	if(item_desc)
-		item.desc = item_desc
+	if(description)
+		item.desc = description
 	if(item_icon)
 		if(!istype(item))
 			item.icon = CUSTOM_ITEM_OBJ
@@ -137,6 +170,8 @@
 	return t_icon
 
 // Parses the config file into the custom_items list.
+//DEPRECATED: This proc is no longer used, kept for future reference
+/*
 /hook/startup/proc/load_custom_items()
 
 	var/datum/custom_item/current_data
@@ -179,8 +214,8 @@
 				current_data.item_icon = field_data
 			if("inherit_inhands")
 				current_data.inherit_inhands = text2num(field_data)
-			if("item_desc")
-				current_data.item_desc = field_data
+			if("description")
+				current_data.description = field_data
 			if("req_access")
 				current_data.req_access = text2num(field_data)
 			if("req_titles")
@@ -194,6 +229,10 @@
 			if("additional_data")
 				current_data.additional_data = field_data
 	return TRUE
+*/
+
+
+/hook/startup/proc/load_custom_item_whitelists()
 
 //gets the relevant list for the key from the listlist if it exists, check to make sure they are meant to have it and then calls the giving function
 /proc/equip_custom_items(mob/living/carbon/human/M)
