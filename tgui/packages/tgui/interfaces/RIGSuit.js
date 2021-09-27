@@ -130,7 +130,7 @@ const RIGSuitStatus = (props, context) => {
             nochevron
             noscroll
             disabled={!healthbar_installed}
-            icon="heart"
+            icon="map-marked-alt"
             onSelected={(value) => act("change_tracking_mode", { "new_tracking_mode": value })} />
         </LabeledList.Item>
         <LabeledList.Item label="Tracking Level">
