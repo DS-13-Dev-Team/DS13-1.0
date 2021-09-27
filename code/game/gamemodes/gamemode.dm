@@ -349,7 +349,7 @@ GLOBAL_LIST(additional_antag_types)
 /datum/game_mode/proc/collect_minds()
 	for(var/mob/living/player in GLOB.player_list)
 		if(player.mind)
-			SSticker.minds += player.mind
+			GLOB.minds += player.mind
 		CHECK_TICK
 
 

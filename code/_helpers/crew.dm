@@ -14,6 +14,6 @@
 //Option sets either to check assigned role or special role. Default to assigned.
 /proc/find_targets_by_role(role, role_type=0)
 	. = list()
-	for(var/datum/mind/possible_target in SSticker.minds)
+	for(var/datum/mind/possible_target in GLOB.minds)
 		if(((role_type ? possible_target.special_role : possible_target.assigned_role) == role) )
 			. += possible_target

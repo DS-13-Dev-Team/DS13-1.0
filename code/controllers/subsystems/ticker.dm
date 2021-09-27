@@ -14,8 +14,6 @@ SUBSYSTEM_DEF(ticker)
 	var/start_immediately = FALSE			//If true, there is no lobby phase, the game starts immediately.
 	var/setup_done = FALSE					//All game setup done including mode post setup and
 
-	var/list/datum/mind/minds = list()		//The people in the game. Used for objective tracking.
-
 	var/random_players = 0 					// if set to nonzero, ALL players who latejoin or declare-ready join will have random appearances/genders
 
 	var/hide_mode = FALSE
@@ -465,7 +463,7 @@ SUBSYSTEM_DEF(ticker)
 	//Print a list of antagonists to the server log
 	var/list/total_antagonists = list()
 	//Look into all mobs in world, dead or alive
-	for(var/datum/mind/Mind in minds)
+	for(var/datum/mind/Mind in GLOB.minds)
 		var/temprole = Mind.special_role
 		if(temprole)							//if they are an antagonist of some sort.
 			if(temprole in total_antagonists)	//If the role exists already, add the name to it

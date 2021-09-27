@@ -319,7 +319,7 @@
 			CreateModularRecord(character)
 
 
-			SSticker.minds += character.mind//Cyborgs and AIs handle this in the transform proc.	//TODO!!!!! ~Carn
+			GLOB.minds += character.mind//Cyborgs and AIs handle this in the transform proc.	//TODO!!!!! ~Carn
 			AnnounceArrival(character, job, spawnpoint.msg)
 		else
 			AnnounceCyborg(character, job, spawnpoint.msg)
