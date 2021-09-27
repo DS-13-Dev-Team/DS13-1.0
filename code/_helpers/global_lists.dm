@@ -24,6 +24,8 @@ var/global/list/playable_species = list(SPECIES_HUMAN)    // A list of ALL playa
 //A list of IC characters in the format character_id = mind
 GLOBAL_LIST_EMPTY(characters)
 
+//Datum/patron_item instances
+GLOBAL_LIST_EMPTY(patron_items)
 
 GLOBAL_LIST_EMPTY(client_themes)
 

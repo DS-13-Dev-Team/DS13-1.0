@@ -64,24 +64,7 @@
 	for(var/R in subtypesof(/datum/design))
 		var/datum/design/design = new R
 
-		design.AssembleDesignInfo()
-
-		if(!design.build_path)
-			continue
-
-		//Cache the icons
-		var/filename = sanitizeFileName("[design.build_path].png")
-		var/icon/I = getFlatTypeIcon(design.build_path)
-		assets[filename] = I
-
-		design.ui_data["icon"] = filename
-		design.ui_data["icon_width"] = I.Width()
-		design.ui_data["icon_height"] = I.Height()
-
-		SSresearch.all_designs += design
-
-		// Design ID is string
-		SSresearch.design_ids["[design.id]"] = design
+		register_design(design)
 
 	SSresearch.generate_integrated_circuit_designs()
 
@@ -103,6 +86,27 @@
 	SSdatabase.update_store_designs()
 
 	. = ..()
+
+/proc/register_design(var/datum/design/design)
+	design.AssembleDesignInfo()
+
+	if(!design.build_path)
+		continue
+
+	//Cache the icons
+	var/filename = sanitizeFileName("[design.build_path].png")
+	var/icon/I = getFlatTypeIcon(design.build_path)
+	assets[filename] = I
+
+	design.ui_data["icon"] = filename
+	design.ui_data["icon_width"] = I.Width()
+	design.ui_data["icon_height"] = I.Height()
+
+	SSresearch.all_designs += design
+
+	// Design ID is string
+	SSresearch.design_ids["[design.id]"] = design
+
 
 /datum/asset/simple/jquery
 	legacy = TRUE
@@ -150,3 +154,17 @@
 		"stamp-cent" = 'icons/stamp_icons/large_stamp-centcom.png',
 		"stamp-syndicate" = 'icons/stamp_icons/large_stamp-syndicate.png'
 	)
+
+
+
+
+/datum/asset/simple/patron_content/register()
+
+	for (var/typepath in subtypesof(/datum/patron_item))
+		var/datum/patron_item/PI = new typepath()
+
+		GLOB.patron_items += PI
+
+	//These procs update and sort various other things after the patron items have added themselves to them
+	sort_loadout_categories()
+	SSdatabase.update_store_designs()

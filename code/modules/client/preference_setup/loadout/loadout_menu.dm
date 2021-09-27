@@ -11,23 +11,29 @@
 		if(GLOB.using_map.loadout_blacklist && (geartype in GLOB.using_map.loadout_blacklist))
 			continue
 
-		var/use_name = initial(G.display_name)
-		var/use_category = initial(G.sort_category)
+		register_gear(G)
 
-		if(!GLOB.loadout_categories[use_category])
-			GLOB.loadout_categories[use_category] = new /datum/loadout_category(use_category)
-		var/datum/loadout_category/LC = GLOB.loadout_categories[use_category]
-		GLOB.gear_datums[use_name] = new geartype
-		LC.gear[use_name] = GLOB.gear_datums[use_name]
 
+	sort_loadout_categories()
+	return TRUE
+
+
+/proc/register_gear(var/datum/gear/G)
+
+	var/use_name = initial(G.display_name)
+	var/use_category = initial(G.sort_category)
+
+	if(!GLOB.loadout_categories[use_category])
+		GLOB.loadout_categories[use_category] = new /datum/loadout_category(use_category)
+	var/datum/loadout_category/LC = GLOB.loadout_categories[use_category]
+	GLOB.gear_datums[use_name] = new geartype
+	LC.gear[use_name] = GLOB.gear_datums[use_name]
+
+/proc/sort_loadout_categories()
 	GLOB.loadout_categories = sortAssoc(GLOB.loadout_categories)
 	for(var/loadout_category in GLOB.loadout_categories)
 		var/datum/loadout_category/LC = GLOB.loadout_categories[loadout_category]
 		sortTim(LC.gear, /proc/cmp_gear_subcategory, TRUE)	//Sort the loadout menu by subcategory
-		//LC.gear = sortAssoc(LC.gear)
-	return TRUE
-
-
 
 
 

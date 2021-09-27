@@ -37,6 +37,11 @@
 	var/list/required_tags = list()	//List of tags we need. The loadout must contain all tags in this list, or this cant be chosen
 
 /datum/gear/New()
+	//If path is null, this is a generic gear we're creating to populate with vars, so we'll call initialize manually later
+	if (path)
+		Initialize()
+
+/datum/gear/proc/Initialize()
 	if(FLAGS_EQUALS(flags, GEAR_HAS_TYPE_SELECTION|GEAR_HAS_SUBTYPE_SELECTION))
 		CRASH("May not have both type and subtype selection tweaks")
 	if(!description)
