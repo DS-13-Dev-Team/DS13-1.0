@@ -283,8 +283,6 @@
 /obj/item/clothing/under/assistantformal/bst
 	name = "bluespace technician's uniform"
 	desc = "A Bluespace Technician's Uniform. There is a logo on the sleeve that reads 'BST'."
-	has_sensor = FALSE
-	sensor_mode = 0
 	siemens_coefficient = 0
 	cold_protection = FULL_BODY
 	heat_protection = FULL_BODY

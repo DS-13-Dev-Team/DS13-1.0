@@ -71,19 +71,15 @@ proc/iscuffed(A)
 			return 1
 	return 0
 
-proc/hassensorlevel(A, var/level)
-	var/mob/living/carbon/human/H = A
-	if(istype(H) && istype(H.w_uniform, /obj/item/clothing/under))
-		var/obj/item/clothing/under/U = H.w_uniform
-		return U.sensor_mode >= level
+proc/hassensorlevel(mob/living/carbon/human/H, var/level)
+	if(H?.wearing_rig)
+		return H.wearing_rig.tracking_level >= level
 	return 0
 
-proc/getsensorlevel(A)
-	var/mob/living/carbon/human/H = A
-	if(istype(H) && istype(H.w_uniform, /obj/item/clothing/under))
-		var/obj/item/clothing/under/U = H.w_uniform
-		return U.sensor_mode
-	return SUIT_SENSOR_OFF
+proc/getsensorlevel(mob/living/carbon/human/H)
+	if(H?.wearing_rig)
+		return H.wearing_rig.tracking_level
+	return RIG_SENSOR_OFF
 
 
 /proc/is_admin(var/mob/user)

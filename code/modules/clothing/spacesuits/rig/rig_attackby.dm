@@ -118,6 +118,7 @@
 							module.deactivate()
 						user.put_in_hands(cell)
 						cell = null
+						return
 					else
 						to_chat(user, "There is nothing loaded in that mount.")
 
@@ -143,6 +144,7 @@
 					removed.uninstalled(src, user)
 					processing_modules -= removed
 					update_icon()
+					return
 
 		else if(istype(W,/obj/item/stack/nanopaste)) //EMP repair
 			var/obj/item/stack/S = W
@@ -163,7 +165,7 @@
 	for(var/obj/item/rig_module/module in installed_modules)
 		if(module.accepts_item(W,user)) //Item is handled in this proc
 			return
-	..()
+	.=..()
 
 
 

@@ -34,8 +34,8 @@
 	var/equipment_overlay_icon = 'icons/mob/onmob/rig_modules.dmi'
 	var/hides_uniform = 1 	//used to determinate if uniform should be visible whenever the suit is sealed or not
 
-	var/interface_path = "rig.tmpl"
-	var/ai_interface_path = "rig.tmpl"
+	var/interface_path = "RIGSuit"
+	var/ai_interface_path = "RIGSuit"
 	var/interface_title = "RIG Controller"
 	var/wearer_move_delay //Used for AI moving.
 	var/ai_controlled_move_delay = 10
@@ -104,6 +104,10 @@
 						/obj/item/weapon/rig/verb/switch_vision_mode, /obj/item/weapon/rig/verb/alter_voice,
 						/obj/item/weapon/rig/verb/select_module, /obj/item/weapon/rig/verb/toggle_module,
 						/obj/item/weapon/rig/verb/engage_module)
+
+	// Health tracking things
+	var/tracking_level = RIG_SENSOR_OFF
+	var/tracking_mode = RIG_SENSOR_MANUAL
 
 /obj/item/weapon/rig/examine()
 	. = ..()
@@ -187,6 +191,13 @@
 		piece.acid_melted = acid_melted
 		if(islist(armor)) piece.armor = armor.Copy()
 
+	tracking_level = pick(RIG_SENSOR_OFF, RIG_SENSOR_BINARY, RIG_SENSOR_VITAL, RIG_SENSOR_TRACKING)
+	tracking_mode = pick(RIG_SENSOR_MANUAL, RIG_SENSOR_AUTOMATIC)
+
+	if(tracking_mode == RIG_SENSOR_AUTOMATIC)
+		GLOB.rig_update_tracking += src
+		automatic_tracking_update()
+
 	set_slowdown_and_vision(!offline)
 	update_icon(1)
 
@@ -203,6 +214,7 @@
 	wires = null
 	qdel(spark_system)
 	spark_system = null
+	GLOB.rig_update_tracking -= src
 	return ..()
 
 /obj/item/weapon/rig/proc/get_pieces()
@@ -487,81 +499,6 @@
 
 	return TRUE
 
-/obj/item/weapon/rig/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/nano_state = GLOB.inventory_state)
-	if(!user)
-		return
-
-	var/list/data = list()
-
-	if(selected_module)
-		data["primarysystem"] = "[selected_module.interface_name]"
-
-	if(src.loc != user)
-		data["ai"] = 1
-
-	data["seals"] =     "[src.canremove]"
-	data["sealing"] =   "[src.sealing]"
-	data["helmet"] =    (helmet ? "[helmet.name]" : "None.")
-	data["gauntlets"] = (gloves ? "[gloves.name]" : "None.")
-	data["boots"] =     (boots ?  "[boots.name]" :  "None.")
-	data["chest"] =     (chest ?  "[chest.name]" :  "None.")
-
-	data["charge"] =       cell ? round(cell.charge,1) : 0
-	data["maxcharge"] =    cell ? cell.maxcharge : 0
-	data["chargestatus"] = cell ? Floor(cell.percent()/2) : 0
-
-	data["emagged"] =       subverted
-	data["coverlock"] =     locked
-	data["interfacelock"] = interface_locked
-	data["aicontrol"] =     control_overridden
-	data["aioverride"] =    ai_override_enabled
-	data["securitycheck"] = security_check_enabled
-	data["malf"] =          malfunction_delay
-
-
-	var/list/module_list = list()
-	var/i = 1
-	for(var/obj/item/rig_module/module in installed_modules)
-		var/list/module_data = list(
-			"index" =             i,
-			"name" =              "[module.interface_name]",
-			"desc" =              "[module.interface_desc]",
-			"can_use" =           "[module.usable]",
-			"can_select" =        "[module.selectable]",
-			"can_toggle" =        "[module.toggleable]",
-			"is_active" =         "[module.active]",
-			"engagecost" =        module.use_power_cost*10,
-			"activecost" =        module.active_power_cost*10,
-			"passivecost" =       module.passive_power_cost*10,
-			"engagestring" =      module.engage_string,
-			"activatestring" =    module.activate_string,
-			"deactivatestring" =  module.deactivate_string,
-			"damage" =            module.damage
-			)
-
-		if(module.charges && module.charges.len)
-
-			module_data["charges"] = list()
-			var/datum/rig_charge/selected = module.charges[module.charge_selected]
-			module_data["chargetype"] = selected ? "[selected.display_name]" : "none"
-
-			for(var/chargetype in module.charges)
-				var/datum/rig_charge/charge = module.charges[chargetype]
-				module_data["charges"] += list(list("caption" = "[chargetype] ([charge.charges])", "index" = "[chargetype]"))
-
-		module_list += list(module_data)
-		i++
-
-	if(module_list.len)
-		data["modules"] = module_list
-
-	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
-	if (!ui)
-		ui = new(user, src, ui_key, ((src.loc != user) ? ai_interface_path : interface_path), interface_title, 480, 550, state = nano_state)
-		ui.set_initial_data(data)
-		ui.open()
-		ui.set_auto_update(1)
-
 /obj/item/weapon/rig/update_icon(var/update_mob_icon)
 
 	//TODO: Maybe consider a cache for this (use mob_icon as blank canvas, use suit icon overlay).
@@ -610,7 +547,7 @@
 				ret.overlays += overlay
 	return ret
 
-/obj/item/weapon/rig/proc/check_suit_access(var/mob/living/carbon/human/user)
+/obj/item/weapon/rig/proc/check_suit_access(mob/living/carbon/human/user, do_message = TRUE)
 
 	if(!security_check_enabled)
 		return TRUE
@@ -623,51 +560,16 @@
 		if(user.back != src)
 			return FALSE
 		else if(!src.allowed(user))
-			to_chat(user, "<span class='danger'>Unauthorized user. Access denied.</span>")
+			if(do_message)
+				to_chat(user, "<span class='danger'>Unauthorized user. Access denied.</span>")
 			return FALSE
 
 	else if(!ai_override_enabled)
-		to_chat(user, "<span class='danger'>Synthetic access disabled. Please consult hardware provider.</span>")
+		if(do_message)
+			to_chat(user, "<span class='danger'>Synthetic access disabled. Please consult hardware provider.</span>")
 		return FALSE
 
 	return TRUE
-
-//TODO: Fix Topic vulnerabilities for malfunction and AI override.
-/obj/item/weapon/rig/Topic(href,href_list)
-	if(!check_suit_access(usr))
-		return FALSE
-
-	if(href_list["toggle_piece"])
-		toggle_piece(href_list["toggle_piece"], usr)
-		return TRUE
-	if(href_list["toggle_seals"])
-		toggle_seals(usr)
-		return TRUE
-	if(href_list["interact_module"])
-
-		var/module_index = text2num(href_list["interact_module"])
-
-		if(module_index > 0 && module_index <= installed_modules.len)
-			var/obj/item/rig_module/module = installed_modules[module_index]
-			switch(href_list["module_mode"])
-				if("activate")
-					module.activate()
-				if("deactivate")
-					module.deactivate()
-				if("engage")
-					module.engage()
-				if("select")
-					selected_module = module
-				if("select_charge_type")
-					module.charge_selected = href_list["charge_type"]
-		return TRUE
-	if(href_list["toggle_ai_control"])
-		ai_override_enabled = !ai_override_enabled
-		notify_ai("Synthetic suit control has been [ai_override_enabled ? "enabled" : "disabled"].")
-		return TRUE
-	if(href_list["toggle_suit_lock"])
-		locked = !locked
-		return TRUE
 
 /obj/item/weapon/rig/proc/notify_ai(var/message)
 	for(var/obj/item/rig_module/ai_container/module in installed_modules)
