@@ -256,10 +256,6 @@ SUBSYSTEM_DEF(database)
 
 
 
-//Handle end of round loss
-/hook/roundend/proc/handle_endround_schematics()
-	SSdatabase.handle_endround_schematics()
-	return TRUE
 
 /datum/controller/subsystem/database/proc/handle_endround_schematics()
 

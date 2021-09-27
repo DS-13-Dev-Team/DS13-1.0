@@ -299,7 +299,7 @@ var/global/datum/controller/occupations/job_master
 		SetupOccupations()
 
 		//Holder for Triumvirate is stored in the SSticker, this just processes it
-		if(SSticker && SSticker.triai)
+		if(GLOB.triai)
 			for(var/datum/job/A in occupations)
 				if(A.title == "AI")
 					A.spawn_positions = 3

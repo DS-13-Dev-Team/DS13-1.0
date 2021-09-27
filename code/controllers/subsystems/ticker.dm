@@ -16,11 +16,6 @@ SUBSYSTEM_DEF(ticker)
 
 	var/list/datum/mind/minds = list()		//The people in the game. Used for objective tracking.
 
-	var/Bible_icon_state					// icon_state the chaplain has chosen for his bible
-	var/Bible_item_state					// item_state the chaplain has chosen for his bible
-	var/Bible_name							// name of the bible
-	var/Bible_deity_name
-
 	var/random_players = 0 					// if set to nonzero, ALL players who latejoin or declare-ready join will have random appearances/genders
 
 	var/hide_mode = FALSE
@@ -30,12 +25,9 @@ SUBSYSTEM_DEF(ticker)
 	var/delay_end = FALSE					//If set true, the round will not restart on it's own
 	var/admin_delay_notice = ""				//A message to display to anyone who tries to restart the world after a delay
 
-	var/triai = 0							//Global holder for Triumvirate
-
 	var/time_left							//Pre-game timer
 	var/start_at
 
-	var/obj/screen/cinematic = null
 	var/roundend_check_paused = FALSE
 
 	var/round_start_time = 0
@@ -109,7 +101,7 @@ SUBSYSTEM_DEF(ticker)
 			mode.process(wait * 0.1)
 
 			if(!roundend_check_paused && mode.check_finished(force_ending) || force_ending)
-				callHook("roundend")
+				SSdatabase.handle_endround_schematics()
 				current_state = GAME_STATE_FINISHED
 				config.ooc_allowed = TRUE
 				config.dooc_allowed = TRUE
@@ -233,28 +225,25 @@ SUBSYSTEM_DEF(ticker)
 
 
 /datum/controller/subsystem/ticker/proc/station_explosion_cinematic(station_missed=0, override = null)
-	if(cinematic)
+	if(GLOB.cinematic)
 		return	//already a cinematic in progress!
 
 	//initialise our cinematic screen object
-	cinematic = new(src)
+	var/obj/screen/cinematic = new(src)
 	cinematic.icon = 'icons/effects/station_explosion.dmi'
 	cinematic.icon_state = "station_intact"
 	cinematic.plane = HUD_PLANE
 	cinematic.layer = HUD_ABOVE_ITEM_LAYER
 	cinematic.mouse_opacity = 0
 	cinematic.screen_loc = "1,0"
+	GLOB.cinematic = cinematic
 
-	var/obj/structure/bed/temp_buckle = new(src)
-	//Incredibly hackish. It creates a bed within the gameticker (lol) to stop mobs running around
 	if(station_missed)
 		for(var/mob/living/M in GLOB.living_mob_list)
-			M.buckled = temp_buckle				//buckles the mob so it can't do anything
 			if(M.client)
 				M.client.screen += cinematic	//show every client the cinematic
 	else	//nuke kills everyone on z-level 1 to prevent "hurr-durr I survived"
 		for(var/mob/living/M in GLOB.living_mob_list)
-			M.buckled = temp_buckle
 			if(M.client)
 				M.client.screen += cinematic
 
@@ -327,8 +316,6 @@ SUBSYSTEM_DEF(ticker)
 
 	if(cinematic)
 		qdel(cinematic)		//end the cinematic
-	if(temp_buckle)
-		qdel(temp_buckle)	//release everybody
 	return
 
 /datum/controller/subsystem/ticker/proc/HasRoundStarted()
