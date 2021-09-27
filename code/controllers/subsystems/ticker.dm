@@ -165,6 +165,7 @@ SUBSYSTEM_DEF(ticker)
 				make_observer(C.mob)
 
 	CHECK_TICK
+
 	if (CONFIG_GET(flag/auto_bst))
 		for(var/client/C in GLOB.clients)
 			if (C.mob)
