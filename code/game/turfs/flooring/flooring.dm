@@ -129,6 +129,26 @@ var/list/flooring_types
 	return
 
 
+/decl/flooring/concrete
+	name = "concrete"
+	descriptor = "concrete"
+	icon = 'icons/turf/flooring/plating.dmi'
+	icon_base = "plating"
+	name = "concrete"
+	desc = "Stone-like artificial material."
+	icon = 'icons/turf/flooring/misc.dmi'
+	icon_base = "concrete"
+	flags = TURF_CAN_BURN | TURF_CAN_BREAK
+	can_paint = 1
+	plating_type = /decl/flooring/reinforced/plating
+	is_plating = TRUE
+	footstep_sound = "asteroid"
+	space_smooth = FALSE
+	removal_time = 150
+	health = 100
+	resistance = 5
+	has_base_range = 18
+	smooth_nothing = TRUE
 
 /decl/flooring/reinforced/plating
 	name = "plating"

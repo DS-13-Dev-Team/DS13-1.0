@@ -131,8 +131,8 @@
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
 
 /obj/item/clothing/under/deadspace/dom
-	desc = "A dress suit and slacks worn in semi-formal environments where blue-collar and white-collar workers work together."
 	name = "director of mining's work clothes"
+	desc = "A dress suit and slacks worn in semi-formal environments where blue-collar and white-collar workers work together."
 	icon_state = "rdalt"
 	item_state = "lb_suit"
 	worn_state = "rdalt"
@@ -142,17 +142,34 @@
  * Security
  */
 /obj/item/clothing/under/deadspace/security
-	name = "armored security jumpsuit"
-	desc = "A dark brown uniform issued to security officers. It offers some light ballistic protection due to the light armor plates sewn into the chest and thighs."
+	name = "security officer's jumpsuit"
+	desc = "A tan uniform issued to P.C.S.I officers. Slightly baggy, but comfortable. It won't protect an officer without armor though."
 	item_state = "ds_securityjumpsuit"
 	worn_state = "ds_securityjumpsuit"
 	icon_state = "ds_securityjumpsuit"
 	permeability_coefficient = 0.25
-	armor = list(melee = 35, bullet = 55, laser = 0, energy = 20, bomb = 45, bio = 0, rad = 0)
+	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
 	species_allowed = list(SPECIES_NECROMORPH_SLASHER)
 	sprite_sheets = list(
 		SPECIES_NECROMORPH_SLASHER = 'icons/mob/necromorph/slasher/clothing.dmi'
 		)
+
+/obj/item/clothing/under/deadspace/security/cseco
+	name = "chief security officer's jumpsuit"
+	desc = "A dark brown uniform worn by the Chief Security Officer. Form fitting, but comfortable. It doesn't provide any protection though."
+	item_state = "ds_cseco"
+	worn_state = "ds_cseco"
+	icon_state = "ds_cseco"
+	permeability_coefficient = 0.25
+
+/obj/item/clothing/under/deadspace/security/vintage
+	name = "vintage security uniform"
+	desc = "An old, dark brown uniform that used to be issued to P.C.S.I officers. While this type of uniform used to be fitted with light armor plates sewn into the chest and thighs, this one seems to be missing them. The initials, 'A.V' have been sown above the breast."
+	item_state = "ds_securityjumpsuit_old"
+	worn_state = "ds_securityjumpsuit_old"
+	icon_state = "ds_securityjumpsuit_old"
+	permeability_coefficient = 0.25
+
 
 
 /*
@@ -165,6 +182,7 @@
 	worn_state = "ds_hydro_bot"
 	icon_state = "ds_hydro_bot"
 	permeability_coefficient = 0.50
+	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
 
 /*
  * ERT Uniforms

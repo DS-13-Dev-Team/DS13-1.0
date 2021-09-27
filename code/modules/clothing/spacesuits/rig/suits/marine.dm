@@ -1,5 +1,5 @@
 /obj/item/weapon/rig/marine
-	name = "Advanced Soldier RIG"
+	name = "advanced soldier RIG"
 	desc = "A heavily armoured rig suit, designed for military use."
 	icon_state = "adv_soldier"
 	armor = list(melee = 72.5, bullet = 75, laser = 75, energy = 40, bomb = 75, bio = 100, rad = 75)
@@ -29,7 +29,7 @@
 	name = "gloves"
 
 /obj/item/clothing/shoes/magboots/rig/marine
-	name = "shoes"
+	name = "boots"
 
 /obj/item/clothing/head/helmet/space/rig/marine
 	name = "helmet"
@@ -37,7 +37,7 @@
 
 
 /obj/item/weapon/rig/marine/specialist
-	name = "Advanced Specialist RIG"
+	name = "advanced specialist RIG"
 	desc = "A powerful yet flexible suit, designed for use by military and naval specialists or command staff."
 	icon_state = "adv_soldier_dark"
 	armor = list(melee = 67.5, bullet = 70, laser = 70, energy = 40, bomb = 70, bio = 100, rad = 75)

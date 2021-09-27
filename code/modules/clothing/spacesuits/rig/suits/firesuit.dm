@@ -1,5 +1,5 @@
 /obj/item/weapon/rig/firesuit
-	name = "firesuit rig"
+	name = "firesuit RIG"
 	desc = "A extremely lightweight suit, designed to resist high temperatures whilst reduced armor plating makes it lighter. Soft materials barely impede movement."
 	icon_state = "ds_firesuit_rig"
 	armor = list(melee = 30, bullet = 35, laser = 50, energy = 40, bomb = 60, bio = 100, rad = 60) //less protective, but a lot faster
@@ -29,7 +29,7 @@
 	name = "gloves"
 
 /obj/item/clothing/shoes/magboots/rig/firesuit
-	name = "shoes"
+	name = "boots"
 
 /obj/item/clothing/head/helmet/space/rig/firesuit
 	name = "helmet"

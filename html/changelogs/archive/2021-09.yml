@@ -85,3 +85,107 @@
   - balance: Makes hands/feet equally hard to cut off as arms/legs as a whole. Arms/hands
       are now slightly harder to cut off than feet/legs.
   - balance: Humans can no longer pick artificial organs.
+2021-09-26:
+  DeadLineSS13:
+  - bugfix: Fixed a Init runtimes with chemics items.
+  Nanako:
+  - rscadd: The mining department is now paid in commission based on the ores processed.
+      Each ore has value according to its rarity. All gains from this are put into
+      a pool and then shared out at payroll time, so make sure everyone pulls their
+      weight!
+  - rscdel: Planet crackers no longer recieve a regular salary
+  - balance: Removed suitcase full of money from DOM office, and made it very rare
+      in random loot.
+  - balance: Increased cost of HV pulse ammo in store.
+  Snypehunter007:
+  - bugfix: Fixed the Divet pistol only doing burn damage.
+  - bugfix: Fixed metallic hydrogen's name being 'mhydrogen'.
+  - bugfix: Fixed the Javelin Racks being able to fit in pockets.
+  - bugfix: Fixed the Force Gun not having its safety on by default.
+  - bugfix: Fixed the Rivet Gun not having its safety on by default.
+  - bugfix: Fixed the Line Cutter not having its safety on by default.
+  - bugfix: Fixed the Javelin Gun not having its safety on by default.
+  - bugfix: Fixed the incendiary rounds for the Divet not using the correct muzzle
+      flash or sounds.
+  - bugfix: Fixed the Javelin Gun's in-inventory sprite not showing itself as out
+      of ammo when all projectiles were fired.
+  - balance: Buffed the Plasma Cutter's damage by 5%.
+  - balance: Buffed the Plasma Saws' armor penetration by 5%.
+  - balance: Buffed the Rivet Gun's primary fire mode damage by 10%.
+  - balance: Halved the Seeker Rifle's stun.
+  - balance: Reduced the spread of the Heavy Pulse Rifle by 35%.
+  - balance: Reduced the amount of shots the Contact Beam can fire from five to four.
+  - rscdel: Removed the Mining Cutter from the character loadout menu.
+  - rscdel: Removed the fireball effect when an incendiary round hits a target.
+  - spellcheck: Fixed a bunch of spelling errors in various weapon descriptions.
+  - bugfix: Fixed the Vintage RIG gloves being the wrong sprite.
+  - bugfix: Fixed the Security RIG gloves being the wrong sprite.
+  - bugfix: Fixed the breath mask not having a pulled down sprite.
+  - bugfix: Fixed the Zealot RIG having the wrong bio protection stat.
+  - bugfix: Fixed the Divet not appearing in a character's hand when wielded.
+  - bugfix: Fixed the Chief Security Officer's jacket being unable to zip up.
+  - bugfix: Fixed the silenced Divet not appearing in a character's hand when wielded.
+  - bugfix: Fixed the Captain's revolver not appearing in a character's hand when
+      wielded.
+  - rscadd: Added flashes to security lockers.
+  - rscadd: Added a PCSI softcap, courtesy of Cre.
+  - rscadd: Added security webbing, courtesy of Cre.
+  - rscadd: Added new security jumpsuits, courtesy of Cre.
+  - rscadd: Added a Chief Security Officer beret, courtesy of Cre.
+  - rscadd: Added a new pair of HUD sunglasses for the Chief Security Officer, courtesy
+      of Cre.
+  - imageadd: Added a new sprite for the flash, courtesy of Cre.
+  - imageadd: Added a new sprite for flashbangs, courtesy of Cre.
+  - imageadd: Added a new sprite for pepperspray, courtesy of Cre.
+  - imageadd: Added a new sprite for riot shields, courtesy of Cre.
+  - imageadd: Added a new sprite for halfgas masks, courtesy of Cre.
+  - imageadd: Added a new sprite for the stun baton, courtesy of Cre.
+  - imageadd: Added a new sprite for security belts, courtesy of Cre.
+  - imageadd: Added a new sprite for gun cabinets, courtesy of Cre.
+  - imageadd: Added a new sprite for security closets, courtesy of Cre.
+  - imageadd: Added a new sprite for Botany clippers, courtesy of Ketrai.
+  - imageadd: Added a new sprite for deployable barriers, courtesy of Cre.
+  - imageadd: Added a new sprite for the Chief Security Officer's jacket, courtesy
+      of Cre.
+  - imageadd: Added new sprites for the riot helmet, vest, legguards, and armguards
+      courtesy of Cre.
+  - imageadd: Added new sprites for the ballistic helmet, vest, legguards, and armguards
+      courtesy of Cre.
+  - imageadd: Added new sprites for the PCSI helmet, vest, gloves, boots, legguards,
+      and armguards courtesy of Cre.
+  - imageadd: Added a new sprite for the Hacker RIG in-inventory back piece, courtesy
+      of Cre.
+  - imageadd: Added a new sprite for the Mining RIG in-inventory back piece, courtesy
+      of Cre.
+  - imageadd: Added a new sprite for the Vintage RIG in-inventory back piece, courtesy
+      of Cre.
+  - imageadd: Added a new sprite for the Firesuit RIG in-inventory back piece, courtesy
+      of Cre.
+  - imageadd: Added a new sprite for the Civilian RIG in-inventory back piece, courtesy
+      of Cre.
+  - imageadd: Added a new sprite for the Advanced RIG in-inventory back piece, courtesy
+      of Cre.
+  - imageadd: Added a new sprite for the Sprawl Riot RIG in-inventory back piece,
+      courtesy of Cre.
+  - imageadd: Added a new sprite for the Engineering RIG in-inventory back piece,
+      courtesy of Cre.
+  - imageadd: Added a new sprite for the Advanced Soldier RIG in-inventory back piece,
+      courtesy of Cre.
+  - imageadd: Added a new sprite for the Sprawl Security RIG in-inventory back piece,
+      courtesy of Cre.
+  - imageadd: Added a new sprite for the Advanced Specialist RIG in-inventory back
+      piece, courtesy of Cre.
+  - balance: Security jumpsuits no longer have any damage resistance.
+  - balance: The existing PCSI armor has been converted into a RIG suit.
+  - balance: The amount of PCSI RIG suits in the Primary Armory has been reduced to
+      two.
+  - balance: The RIG Retraction Device no longer requires permission. It now requires
+      the target to be still for a certain amount of time.
+  - balance: Replaced the PCSI riot RIG in the armory with the PCSI RIG.
+  - balance: Replaced the PSCI RIG suits in gun cabinets with riot armor.
+  - rscdel: Removed the tactical crate.
+  - rscdel: Removed the C4 in the Primary Armory.
+  - rscdel: Removed security belts from spawning with security jobs.
+  - bugfix: Fixed the plasma saw turning off immediately after activating it.
+  - bugfix: Fixed the Aegis Colony Medical doors being unopenable.
+  - bugfix: Fixed the vendors in Aegis Colony Medical having the wrong access.

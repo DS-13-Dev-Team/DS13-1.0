@@ -20,26 +20,6 @@
 	heat_protection = UPPER_TORSO|LOWER_TORSO
 	armor = list(melee = 45, bullet = 40, laser = 50, energy = 20, bomb = 25, bio = 0, rad = 0)
 
-/obj/item/clothing/suit/armor/vest/pcsi
-	name = "P.C.S.I officer's vest"
-	desc = "The Concordance Extraction Corporation's standard issue security armor, used on its larger vessels and colonial interests, outfitted with protective polymer plating and a lightweight kevlar web beneath those plates. Deployed in high-risk situations where CEC property and personnel are at risk, usually from piracy or looters."
-	icon_state = "pcsi_armor"
-	item_state = "pcsi_armor"
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
-	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
-	heat_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
-	armor = list(melee = 55, bullet = 60, laser = 0, energy = 0, bomb = 25, bio = 0, rad = 0)
-
-/obj/item/clothing/suit/armor/vest/ds_jacket
-	name = "armored security jacket"
-	desc = "An armored jacket often worn by the Chief Security Officer that combines style and protection."
-	icon_state = "ds_securityjacket"
-	item_state = "ds_securityjacket"
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
-	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS
-	heat_protection = UPPER_TORSO|LOWER_TORSO|ARMS
-	armor = list(melee = 35, bullet = 35, laser = 0, energy = 0, bomb = 20, bio = 10, rad = 0)
-
 /obj/item/clothing/suit/armor/vest/warden
 	name = "warden's jacket"
 	desc = "An armoured jacket with silver rank pips and livery."
@@ -234,17 +214,11 @@
 /obj/item/clothing/suit/armor/pcarrier/light
 	starting_accessories = list(/obj/item/clothing/accessory/armorplate)
 
-/obj/item/clothing/suit/armor/pcarrier/light/pcsisec
-	starting_accessories = list(/obj/item/clothing/accessory/armorplate, /obj/item/clothing/accessory/armor/tag/pcsisec)
-
 /obj/item/clothing/suit/armor/pcarrier/light/press
 	starting_accessories = list(/obj/item/clothing/accessory/armorplate)
 
 /obj/item/clothing/suit/armor/pcarrier/medium
 	starting_accessories = list(/obj/item/clothing/accessory/armorplate/medium, /obj/item/clothing/accessory/storage/pouches)
-
-/obj/item/clothing/suit/armor/pcarrier/medium/pcsisec
-	starting_accessories = list(/obj/item/clothing/accessory/armorplate/medium, /obj/item/clothing/accessory/storage/pouches, /obj/item/clothing/accessory/armor/tag/pcsisec)
 
 /obj/item/clothing/suit/armor/pcarrier/blue
 	name = "blue plate carrier"
@@ -266,10 +240,6 @@
 	desc = "A lightweight tan plate carrier vest. It can be equipped with armor plates, but provides no protection of its own."
 	icon_state = "pcarrier_tan"
 
-/obj/item/clothing/suit/armor/pcarrier/tan/tactical
-	name = "tactical plate carrier"
-	starting_accessories = list(/obj/item/clothing/accessory/armorplate/tactical, /obj/item/clothing/accessory/storage/pouches/large/tan)
-
 /obj/item/clothing/suit/armor/pcarrier/merc
 	starting_accessories = list(/obj/item/clothing/accessory/armorplate/merc, /obj/item/clothing/accessory/armguards/merc, /obj/item/clothing/accessory/legguards/merc, /obj/item/clothing/accessory/storage/pouches/large)
 
@@ -279,19 +249,18 @@
 	desc = "An armored vest with heavy padding to protect against melee attacks."
 	icon = 'icons/obj/clothing/modular_armor.dmi'
 	item_icons = list(slot_wear_suit_str = 'icons/mob/onmob/modular_armor.dmi')
-	icon_state = "riot"
+	icon_state = "riot_armor"
 	valid_accessory_slots = list(ACCESSORY_SLOT_INSIGNIA, ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L)
 	restricted_accessory_slots = list(ACCESSORY_SLOT_INSIGNIA, ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L)
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
-	armor = list(melee = 60, bullet = 33, laser = 50, energy = 10, bomb = 25, bio = 0, rad = 0)
+	armor = list(melee = 75, bullet = 33, laser = 50, energy = 0, bomb = 35, bio = 0, rad = 0)
 	siemens_coefficient = 0.5
 	starting_accessories = list(/obj/item/clothing/accessory/armguards/riot, /obj/item/clothing/accessory/legguards/riot)
-
 
 /obj/item/clothing/suit/armor/riot/vest
 	starting_accessories = list()
 
-/obj/item/clothing/suit/armor/bulletproof
+/obj/item/clothing/suit/armor/ballistic
 	name = "ballistic vest"
 	desc = "An armored vest with heavy plates to protect against ballistic projectiles."
 	icon = 'icons/obj/clothing/modular_armor.dmi'
@@ -300,7 +269,7 @@
 	valid_accessory_slots = list(ACCESSORY_SLOT_INSIGNIA, ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L)
 	restricted_accessory_slots = list(ACCESSORY_SLOT_INSIGNIA, ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L)
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
-	armor = list(melee = 42, bullet = 65, laser = 42, energy = 10, bomb = 25, bio = 0, rad = 0)
+	armor = list(melee = 42, bullet = 75, laser = 42, energy = 0, bomb = 25, bio = 0, rad = 0)
 	siemens_coefficient = 0.7
 	starting_accessories = list(/obj/item/clothing/accessory/armguards/ballistic, /obj/item/clothing/accessory/legguards/ballistic)
 
@@ -341,7 +310,38 @@
 			return PROJECTILE_CONTINUE // complete projectile permutation
 */
 
+/obj/item/clothing/suit/armor/pcsi
+	name = "P.C.S.I officer's vest"
+	desc = "The Concordance Extraction Corporation's standard issue security armor, used on its larger vessels and colonial interests, outfitted with protective polymer plating and a lightweight kevlar web beneath those plates. Deployed in high-risk situations where CEC property and personnel are at risk, usually from piracy or looters."
+	icon = 'icons/obj/clothing/modular_armor.dmi'
+	item_icons = list(slot_wear_suit_str = 'icons/mob/onmob/modular_armor.dmi')
+	icon_state = "pcsi"
+	valid_accessory_slots = list(ACCESSORY_SLOT_INSIGNIA, ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L)
+	restricted_accessory_slots = list(ACCESSORY_SLOT_INSIGNIA, ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L)
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+	armor = list(melee = 30, bullet = 20, laser = 0, energy = 0, bomb = 10, bio = 0, rad = 0)
+	siemens_coefficient = 0.5
+	starting_accessories = list(/obj/item/clothing/accessory/armguards/pcsi, /obj/item/clothing/accessory/legguards/pcsi)
 
+/obj/item/clothing/suit/armor/pcsi/vest
+	starting_accessories = list()
+
+/* - Plan on using this for something later - Snype
+/obj/item/clothing/suit/armor/tactical
+	name = "tactical vest"
+	desc = "TEMP DESC"
+	icon = 'icons/obj/clothing/modular_armor.dmi'
+	item_icons = list(slot_wear_suit_str = 'icons/mob/onmob/modular_armor.dmi')
+	icon_state = "tactical"
+	valid_accessory_slots = list(ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L)
+	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L)
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
+	siemens_coefficient = 0.5
+	starting_accessories = list(/obj/item/clothing/accessory/armguards/tactical, /obj/item/clothing/accessory/legguards/tactical)
+
+/obj/item/clothing/suit/armor/tactical/vest
+	starting_accessories = list()*/
 
 //All of the armor below is mostly unused
 /obj/item/clothing/suit/armor/heavy

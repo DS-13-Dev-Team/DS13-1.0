@@ -6,6 +6,15 @@
 /turf/simulated/floor/holofloor
 	thermal_conductivity = 0
 
+/turf/simulated/floor/holofloor/ex_act()
+	return
+
+/turf/simulated/floor/holofloor/take_damage()
+	return
+
+/turf/simulated/floor/holofloor/make_plating(place_product, defer_icon_update)
+	return
+
 /turf/simulated/floor/holofloor/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	return
 	// HOLOFLOOR DOES NOT GIVE A FUCK
@@ -14,12 +23,6 @@
 	return
 
 /turf/simulated/floor/holofloor/carpet
-	name = "brown carpet"
-	icon = 'icons/turf/flooring/carpet.dmi'
-	icon_state = "brown"
-	initial_flooring = /decl/flooring/carpet
-
-/turf/simulated/floor/holofloor/concrete
 	name = "brown carpet"
 	icon = 'icons/turf/flooring/carpet.dmi'
 	icon_state = "brown"

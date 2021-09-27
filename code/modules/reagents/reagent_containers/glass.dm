@@ -42,8 +42,8 @@
 		/obj/machinery/radiocarbon_spectrometer
 	)
 
-/obj/item/weapon/reagent_containers/glass/New()
-	..()
+/obj/item/weapon/reagent_containers/glass/Initialize()
+	. = ..()
 	base_name = name
 
 /obj/item/weapon/reagent_containers/glass/examine(var/mob/user)
@@ -112,8 +112,9 @@
 	center_of_mass = "x=15;y=10"
 	matter = list(MATERIAL_GLASS = 250)
 
-/obj/item/weapon/reagent_containers/glass/beaker/New()
-	..()
+/obj/item/weapon/reagent_containers/glass/beaker/Initialize()
+	. = ..()
+
 	desc += " Can hold up to [volume] units."
 
 /obj/item/weapon/reagent_containers/glass/beaker/on_reagent_change()
@@ -211,17 +212,17 @@
 	possible_transfer_amounts = "5;10;15;30"
 	atom_flags = ATOM_FLAG_OPEN_CONTAINER
 
-/obj/item/weapon/reagent_containers/glass/beaker/cryoxadone
-	New()
-		..()
-		reagents.add_reagent(/datum/reagent/cryoxadone, 30)
-		update_icon()
+/obj/item/weapon/reagent_containers/glass/beaker/cryoxadone/Initialize()
+	. = ..()
 
-/obj/item/weapon/reagent_containers/glass/beaker/sulphuric
-	New()
-		..()
-		reagents.add_reagent(/datum/reagent/acid, 60)
-		update_icon()
+	reagents.add_reagent(/datum/reagent/cryoxadone, 30)
+	update_icon()
+
+/obj/item/weapon/reagent_containers/glass/beaker/sulphuric/Initialize()
+	. = ..()
+
+	reagents.add_reagent(/datum/reagent/acid, 60)
+	update_icon()
 
 /obj/item/weapon/reagent_containers/glass/bucket
 	desc = "It's a bucket."

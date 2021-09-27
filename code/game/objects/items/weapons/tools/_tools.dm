@@ -107,7 +107,7 @@
 			L.IgniteMob()
 
 	if(target.used_now)
-		user << SPAN_WARNING("[target.name] is used by someone. Wait for them to finish.")
+		to_chat(user, SPAN_WARNING("[target.name] is used by someone. Wait for them to finish."))
 		return TOOL_USE_CANCEL
 
 
@@ -115,7 +115,7 @@
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(H.shock_stage >= 30)
-			user << SPAN_WARNING("Pain distracts you from your task.")
+			to_chat(user, SPAN_WARNING("Pain distracts you from your task."))
 			fail_chance += round(H.shock_stage/120 * 40)
 			base_time += round(H.shock_stage/120 * 40)
 
@@ -176,7 +176,7 @@
 
 		if(!do_after(user, time_to_finish, target, proc_to_call = progress_proc, proc_interval = progress_proc_interval))
 			//If the doafter fails
-			user << SPAN_WARNING("You need to stand still to finish the task properly!")
+			to_chat(user, SPAN_WARNING("You need to stand still to finish the task properly!"))
 			target.used_now = FALSE
 			time_spent = world.time - max(start_time, T ? T.last_resource_consumption : 0) //We failed, spent only part of the time working
 			if (T)
@@ -219,7 +219,7 @@
 		fail_chance = 0
 
 	if(prob(fail_chance))
-		user << SPAN_WARNING("You failed to finish your task with [src.name]! There was a [fail_chance]% chance to screw this up.")
+		to_chat(user, SPAN_WARNING("You failed to finish your task with [src.name]! There was a [fail_chance]% chance to screw this up."))
 		return TOOL_USE_FAIL
 
 	return TOOL_USE_SUCCESS
@@ -243,8 +243,7 @@
         return FALSE
     return cell.checked_use(power_usage)
 
-/obj/item/weapon/tool/New()
-
+/obj/item/weapon/tool/Initialize()
 	if(!cell && suitable_cell)
 		cell = new suitable_cell(src)
 
@@ -255,9 +254,7 @@
 
 	if (use_stock_cost)
 		stock = max_stock
-	.=..()
 
-/obj/item/weapon/tool/Initialize()
 	base_max_modifications = max_modifications
 	for(var/modtype in preinstalled_mods)
 		var/obj/item/weapon/tool_modification/TU = new modtype(src)
@@ -271,7 +268,7 @@
 /obj/item/weapon/tool/Created()
 	QDEL_NULL(cell)
 	if(use_fuel_cost)
-		consume_fuel(get_fuel())
+		consume_fuel(max_fuel)
 
 
 
@@ -339,7 +336,7 @@
 
 		if (C.use_tool(user = user, target =  src, base_time = WORKTIME_SLOW, required_quality = QUALITY_SCREW_DRIVING, fail_chance = FAILCHANCE_CHALLENGING, required_stat = "construction"))
 			//If you pass the check, then you manage to remove the modification intact
-			user << SPAN_NOTICE("You successfully remove [toremove] while leaving it intact.")
+			to_chat(user, SPAN_NOTICE("You successfully remove [toremove] while leaving it intact."))
 			modifications -= toremove
 			toremove.forceMove(get_turf(src))
 			toremove.holder = null
@@ -351,7 +348,7 @@
 			//You failed the check, lets see what happens
 			if (prob(50))
 				//50% chance to break the modification and remove it
-				user << SPAN_DANGER("You successfully remove [toremove], but destroy it in the process.")
+				to_chat(user, SPAN_DANGER("You successfully remove [toremove], but destroy it in the process."))
 				modifications -= toremove
 				toremove.forceMove(get_turf(src))
 				toremove.holder = null
@@ -361,7 +358,7 @@
 				return 1
 			else if (degradation) //Because robot tools are unbreakable
 				//otherwise, damage the host tool a bit, and give you another try
-				user << SPAN_DANGER("You only managed to damage [src], but you can retry.")
+				to_chat(user, SPAN_DANGER("You only managed to damage [src], but you can retry."))
 				unreliability += 10*degradation
 				refresh_modifications()
 				return 1
@@ -470,14 +467,14 @@
 			//Drop the tool on the floor
 			if("damage")
 				if(user)
-					user << SPAN_DANGER("Your hand slips and you damage [src] a bit.")
+					to_chat(user, SPAN_DANGER("Your hand slips and you damage [src] a bit."))
 				T.unreliability += 5
 				return
 
 			//Drop the tool on the floor
 			if("drop")
 				if(user)
-					user << SPAN_DANGER("You drop [src] on the floor.")
+					to_chat(user, SPAN_DANGER("You drop [src] on the floor."))
 					user.drop_from_inventory(src)
 				else if(istype(loc, /obj/machinery/door/airlock))
 					//var/obj/machinery/door/airlock/AD = loc
@@ -489,7 +486,7 @@
 			//Hit yourself
 			if("slip")
 				var/mob/living/carbon/human/H = user
-				user << SPAN_DANGER("Your hand slips while working with [src]!")
+				to_chat(user, SPAN_DANGER("Your hand slips while working with [src]!"))
 				I.attack(H, H, H.get_holding_hand(src))
 				return
 
@@ -504,7 +501,7 @@
 				var/newtarget = pick(targets)
 				var/mob/living/carbon/human/H = user
 
-				user << SPAN_DANGER("Your hand slips and you hit [target] with [src]!")
+				to_chat(user, SPAN_DANGER("Your hand slips and you hit [target] with [src]!"))
 				spawn()
 					H.ClickOn(newtarget)
 				return
@@ -514,7 +511,7 @@
 				if(user)
 					var/mob/living/carbon/human/H = user
 					var/throw_target = pick(trange(6, user))
-					user << SPAN_DANGER("Your [src] flies away!")
+					to_chat(user, SPAN_DANGER("Your [src] flies away!"))
 					H.unEquip(src)
 					throw_at(throw_target, src.throw_range, src.throw_speed, H)
 					return
@@ -530,14 +527,14 @@
 			//Stab yourself in the hand so hard your tool embeds
 			if("stab")
 				var/mob/living/carbon/human/H = user
-				user << SPAN_DANGER("You accidentally stuck [src] in your hand!")
+				to_chat(user, SPAN_DANGER("You accidentally stuck [src] in your hand!"))
 				H.get_organ(H.get_holding_hand(src)).embed(src)
 				return
 
 			//The tool completely breaks, permanantly gone
 			if("break")
 				if(user)
-					user << SPAN_DANGER("Your [src] broke beyond repair!")
+					to_chat(user, SPAN_DANGER("Your [src] broke beyond repair!"))
 					new /obj/item/weapon/material/shard/shrapnel(user.loc)
 				else
 					new /obj/item/weapon/material/shard/shrapnel(get_turf(src))
@@ -558,7 +555,7 @@
 
 			//The fuel in the tool ignites and sets you aflame
 			if("burn")
-				user << SPAN_DANGER("You ignite the fuel of the [src]!")
+				to_chat(user, SPAN_DANGER("You ignite the fuel of the [src]!"))
 				var/fuel = T.get_fuel()
 				T.consume_fuel(fuel)
 				user.adjust_fire_stacks(fuel/10)
@@ -577,7 +574,7 @@
 
 
 				if(user)
-					user << SPAN_DANGER("You overload the cell in the [src]!")
+					to_chat(user, SPAN_DANGER("You overload the cell in the [src]!"))
 				C.explode()
 				if (T)
 					T.cell = null
@@ -707,12 +704,12 @@
 
 	if(use_power_cost)
 		if (!consume_power(use_power_cost*timespent))
-			user << SPAN_WARNING("[src] battery is dead or missing.")
+			to_chat(user, SPAN_WARNING("[src] battery is dead or missing."))
 			return FALSE
 
 	if(use_fuel_cost)
 		if(!consume_fuel(use_fuel_cost*timespent))
-			user << SPAN_NOTICE("You need more welding fuel to complete this task.")
+			to_chat(user, SPAN_NOTICE("You need more welding fuel to complete this task."))
 			return FALSE
 
 	if(use_stock_cost)
@@ -732,17 +729,17 @@
 
 	if(use_power_cost)
 		if(!cell || !cell.check_charge(use_power_cost*time))
-			user << SPAN_WARNING("[src] battery is dead or missing.")
+			to_chat(user, SPAN_WARNING("[src] battery is dead or missing."))
 			return FALSE
 
 	if(use_fuel_cost)
 		if(get_fuel() < (use_fuel_cost*time))
-			user << SPAN_NOTICE("You need more welding fuel to complete this task.")
+			to_chat(user, SPAN_NOTICE("You need more welding fuel to complete this task."))
 			return FALSE
 
 	if (use_stock_cost)
 		if(stock < (use_stock_cost*time))
-			user << SPAN_NOTICE("There is not enough left in [src] to complete this task.")
+			to_chat(user, SPAN_NOTICE("There is not enough left in [src] to complete this task."))
 			return FALSE
 
 	if(eye_hazard)
@@ -825,43 +822,43 @@
 
 	if(use_power_cost)
 		if(!cell)
-			user << SPAN_WARNING("There is no cell inside to power the tool")
+			to_chat(user, SPAN_WARNING("There is no cell inside to power the tool"))
 		else
-			user << "The charge meter reads [round(cell.percent() )]%."
+			to_chat(user, "The charge meter reads [round(cell.percent() )]%.")
 
 	if(use_fuel_cost)
-		user << text("\icon[] [] contains []/[] units of fuel!", src, src.name, get_fuel(),src.max_fuel )
+		to_chat(user, text("\icon[] [] contains []/[] units of fuel!", src, src.name, get_fuel(),src.max_fuel))
 
 	if (use_stock_cost)
-		user << SPAN_NOTICE("it has [stock] / [max_stock] units remaining.")
+		to_chat(user, SPAN_NOTICE("it has [stock] / [max_stock] units remaining."))
 
 	//Display a bunch of stats but only if they're nondefault values
 	if (precision != 0)
-		user << "Precision: [SPAN_NOTICE("[precision]")]"
+		to_chat(user, "Precision: [SPAN_NOTICE("[precision]")]")
 
 	if (workspeed != 1)
-		user << "Work Speed: [SPAN_NOTICE("[workspeed*100]%")]"
+		to_chat(user, "Work Speed: [SPAN_NOTICE("[workspeed*100]%")]")
 
 	if (modifications.len)
-		user << "It has the following modifications installed:"
+		to_chat(user, "It has the following modifications installed:")
 		for (var/obj/item/weapon/tool_modification/TU in modifications)
-			user << SPAN_NOTICE(TU.name)
+			to_chat(user, SPAN_NOTICE(TU.name))
 
 	if (unreliability)
 		if (unreliability < 2)
 			return
 		else if (unreliability < 4)
-			user << "It has a few light scratches."
+			to_chat(user, "It has a few light scratches.")
 		else if (unreliability < 8)
-			user << SPAN_NOTICE("It shows minor signs of stress and wear.")
+			to_chat(user, SPAN_NOTICE("It shows minor signs of stress and wear."))
 		else if (unreliability < 12)
-			user << SPAN_WARNING("It looks a bit cracked and worn.")
+			to_chat(user, SPAN_WARNING("It looks a bit cracked and worn."))
 		else if (unreliability < 25)
-			user << SPAN_WARNING("Whatever use this tool once had is fading fast.")
+			to_chat(user, SPAN_WARNING("Whatever use this tool once had is fading fast."))
 		else if (unreliability < 40)
-			user << SPAN_WARNING("Attempting to use this thing as a tool is probably not going to work out well.")
+			to_chat(user, SPAN_WARNING("Attempting to use this thing as a tool is probably not going to work out well."))
 		else
-			user << SPAN_DANGER("It's falling apart. This is one slip away from just being a pile of assorted trash.")
+			to_chat(user, SPAN_DANGER("It's falling apart. This is one slip away from just being a pile of assorted trash."))
 
 
 //Recharge the fuel at fueltank, also explode if switched on
@@ -870,13 +867,13 @@
 		if(!proximity) return
 		if ((istype(O, /obj/structure/reagent_dispensers/fueltank)) && get_dist(src,O) <= 1 && !switched_on)
 			O.reagents.trans_to_obj(src, max_fuel)
-			user << SPAN_NOTICE("[src] refueled")
+			to_chat(user, SPAN_NOTICE("[src] refueled"))
 			playsound(src.loc, 'sound/effects/refill.ogg', 50, 1, -6)
 			return
 		else if ((istype(O, /obj/structure/reagent_dispensers/fueltank)) && get_dist(src,O) <= 1 && switched_on)
 			message_admins("[key_name_admin(user)] triggered a fueltank explosion with a welding tool.")
 			log_game("[key_name(user)] triggered a fueltank explosion with a welding tool.")
-			user << SPAN_DANGER("You begin welding on the [O] and with a moment of lucidity you realize, this might not have been the smartest thing you've ever done.")
+			to_chat(user, SPAN_DANGER("You begin welding on the [O] and with a moment of lucidity you realize, this might not have been the smartest thing you've ever done."))
 			var/obj/structure/reagent_dispensers/fueltank/tank = O
 			tank.explode()
 			return
@@ -952,7 +949,7 @@
 				E.damage += rand(12, 16)
 		if(safety<FLASH_PROTECTION_MAJOR)
 			if(E.damage > 10)
-				user << SPAN_WARNING("Your eyes are really starting to hurt. This can't be good for you!")
+				to_chat(user, SPAN_WARNING("Your eyes are really starting to hurt. This can't be good for you!"))
 
 			if (E.damage >= E.min_broken_damage)
 				H << SPAN_DANGER("You go blind!")
@@ -985,14 +982,14 @@
 						return 1
 			/*
 				else if (S.open != 2)
-					user << SPAN_DANGER("The damage is far too severe to patch over externally.")
+					to_chat(user, SPAN_DANGER("The damage is far too severe to patch over externally."))
 					return 1
 			else if (S.open != 2) // For surgery.
-				user << SPAN_NOTICE("Nothing to fix!")
+				to_chat(user, SPAN_NOTICE("Nothing to fix!"))
 				return 1
 				*/
 			else
-				user << SPAN_NOTICE("Nothing to fix!")
+				to_chat(user, SPAN_NOTICE("Nothing to fix!"))
 				return 1
 
 	return ..()

@@ -32,10 +32,10 @@
 	name = "gloves"
 
 /obj/item/clothing/shoes/magboots/rig/patrol
-	name = "shoes"
+	name = "boots"
 
 /obj/item/clothing/head/helmet/space/rig/patrol
-	name = "hood"
+	name = "helmet"
 
 
 

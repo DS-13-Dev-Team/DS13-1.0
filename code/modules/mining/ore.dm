@@ -1,3 +1,4 @@
+
 /obj/item/weapon/ore
 	name = "small rock"
 	icon = 'icons/obj/mining.dmi'
@@ -25,14 +26,7 @@
 	. = ..()
 	if(!ore)
 		return
-	var/material/M
-	if(ore.smelts_to)
-		M = get_material_by_name(ore.smelts_to)
-	else if (ore.compresses_to)
-		M = get_material_by_name(ore.compresses_to)
-	if(!istype(M))
-		return
-	return 0.5*M.value*ore.result_amount
+	return ore.Value(base)
 
 /obj/item/weapon/ore/slag
 	name = "slag"

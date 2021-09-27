@@ -282,7 +282,7 @@
 				/obj/item/weapon/material/wirerod = 3,
 				/obj/item/weapon/melee/baton/cattleprod = 1,
 				/obj/item/weapon/material/butterfly/switchblade = 1,
-				/obj/item/weapon/storage/secure/briefcase/money = 1,
+				/obj/item/weapon/storage/secure/briefcase/money = 0.01,
 				/obj/item/weapon/reagent_containers/syringe = 3,
 				/obj/item/weapon/reagent_containers/syringe/steroid = 2,
 				/obj/item/weapon/reagent_containers/syringe/drugs = 1))

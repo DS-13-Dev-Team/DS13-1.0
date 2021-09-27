@@ -130,13 +130,26 @@
 	blood_overlay_type = "armor"
 	body_parts_covered = UPPER_TORSO|ARMS
 
+
+//Security
+/obj/item/clothing/suit/storage/toggle/cseco
+	name = "armored security jacket"
+	desc = "An armored jacket often worn by the Chief Security Officer that combines style and protection."
+	icon_state = "csecojacket_open"
+	icon_open = "csecojacket_open"
+	icon_closed = "csecojacket"
+	blood_overlay_type = "coat"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
+	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS
+	heat_protection = UPPER_TORSO|LOWER_TORSO|ARMS
+	armor = list(melee = 35, bullet = 35, laser = 0, energy = 0, bomb = 20, bio = 10, rad = 0)
+
 //Cargo
 /obj/item/clothing/suit/storage/toggle/cargo_jacket
 	name = "fur-lined coat"
 	desc = "A snazzy coat with a nice fur lining on the inside and near the neck. The zipper looks like gold."
-	icon_state = "cargojacket"
-	item_state = "cargojacket"
+	icon_state = "cargojacket_open"
 	icon_open = "cargojacket_open"
 	icon_closed = "cargojacket"
 	blood_overlay_type = "coat"
-	body_parts_covered = UPPER_TORSO|ARMS
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS

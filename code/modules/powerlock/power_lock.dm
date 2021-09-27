@@ -14,7 +14,7 @@
 
 /obj/power_lock/examine(var/mob/user)
 	.=..()
-	user << "This lock has [nodes_collected] / [NR ? NR.difficulty : "1"] power nodes slotted in."
+	to_chat(user, "This lock has [nodes_collected] / [NR ? NR.difficulty : "1"] power nodes slotted in.")
 
 /obj/power_lock/attackby(obj/item/I, mob/user)
 
