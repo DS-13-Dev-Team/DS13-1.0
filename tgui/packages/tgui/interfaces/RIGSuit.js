@@ -129,9 +129,8 @@ const RIGSuitStatus = (props, context) => {
             selected={tracking_mode}
             nochevron
             noscroll
-            disabled={!healthbar_installed||automatic_tracking}
+            disabled={!healthbar_installed}
             icon="heart"
-            width={15}
             onSelected={(value) => act("change_tracking_mode", { "tracking_mode": value })} />
         </LabeledList.Item>
         <LabeledList.Item label="Tracking Level">
@@ -140,7 +139,8 @@ const RIGSuitStatus = (props, context) => {
             selected={tracking_level}
             nochevron
             noscroll
-            disabled={!healthbar_installed}
+            width={15}
+            disabled={!healthbar_installed||automatic_tracking}
             icon="heart"
             onSelected={(value) => act("change_tracking_level", { "new_tracking_level": value })} />
         </LabeledList.Item>

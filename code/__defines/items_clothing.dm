@@ -193,7 +193,7 @@
 #define RIG_SENSOR_VITAL		2
 #define RIG_SENSOR_TRACKING		3
 
-// RIG sensor work status
+// RIG sensor work mode
 #define RIG_SENSOR_MANUAL		1
 #define RIG_SENSOR_AUTOMATIC	2
 #define RIG_SENSOR_RANDOM		3

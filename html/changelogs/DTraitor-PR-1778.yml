@@ -58,5 +58,5 @@ changes:
   - bugfix: "Fixed bug when screwdriver was moved to RIG when module was removed."
   - rscadd: "Vitals Tracker now also work as suit sensor (can be configured in RIG Interface)."
   - rscadd: "RIG Interface now uses TGUI."
-  - balance: "RIG tracking level and status are randomized on spawn."
+  - balance: "RIG tracking level and mode are randomized on spawn."
   - rscadd: "Automatic health tracking mode was added. It chages tracking level depending on current station alert level."
