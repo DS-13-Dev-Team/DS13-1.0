@@ -187,3 +187,5 @@
   - rscdel: Removed the C4 in the Primary Armory.
   - rscdel: Removed security belts from spawning with security jobs.
   - bugfix: Fixed the plasma saw turning off immediately after activating it.
+  - bugfix: Fixed the Aegis Colony Medical doors being unopenable.
+  - bugfix: Fixed the vendors in Aegis Colony Medical having the wrong access.

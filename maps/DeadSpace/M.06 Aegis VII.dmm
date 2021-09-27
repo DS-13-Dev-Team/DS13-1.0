@@ -1834,7 +1834,8 @@
 	icon_state = "closed";
 	id_tag = "med_exit";
 	name = "Colony Medbay";
-	req_access = list(3,4,46)
+	req_access = newlist();
+	req_one_access = list(3,4,46)
 	},
 /turf/simulated/floor/tiled/white/monotile,
 /area/aegis/colony/medical)
@@ -2219,7 +2220,10 @@
 	dir = 4;
 	icon_state = "corner_white_three_quarters"
 	},
-/obj/machinery/vending/bloodbank,
+/obj/machinery/vending/bloodbank{
+	req_access = newlist();
+	req_one_access = list(3,4,46)
+	},
 /turf/simulated/floor/tiled/white,
 /area/aegis/colony/medical)
 "fn" = (
@@ -3143,9 +3147,12 @@
 /turf/simulated/floor/tiled/monotile,
 /area/aegis/colony)
 "gX" = (
-/obj/machinery/vending/medical,
 /obj/effect/floor_decal/corner/grey/mono,
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/vending/medical{
+	req_access = newlist();
+	req_one_access = list(3,4,46)
+	},
 /turf/simulated/floor/tiled/white/monotile,
 /area/aegis/colony/medical)
 "gY" = (
@@ -3240,7 +3247,8 @@
 	icon_state = "closed";
 	id_tag = "med_exit";
 	name = "Colony Medbay";
-	req_access = list(3,4,46)
+	req_access = newlist();
+	req_one_access = list(3,4,46)
 	},
 /turf/simulated/floor/tiled/white/monotile,
 /area/aegis/colony/medical)
@@ -7173,6 +7181,15 @@
 /obj/random/loot/often,
 /turf/simulated/floor/tiled/monotile,
 /area/aegis/colony)
+"ZJ" = (
+/obj/machinery/vending/medical{
+	req_access = newlist();
+	req_one_access = list(3,4,46)
+	},
+/obj/effect/floor_decal/corner/grey/mono,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/tiled/white/monotile,
+/area/aegis/colony/medical)
 
 (1,1,1) = {"
 aa
@@ -33143,7 +33160,7 @@ he
 iQ
 ef
 gS
-gX
+ZJ
 gX
 fl
 fm
