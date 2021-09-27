@@ -158,8 +158,14 @@
 
 		//3. If the number of organs we have is above that number, then we'll lose one
 		if (current_organs > remaining_organs)
+
 			var/obj/item/organ/external/toremove = pick(H.get_extremities())
 			toremove.droplimb(clean = TRUE, silent = TRUE)
+
+			var/organ_mass = toremove.get_biomass()
+			if (organ_mass)
+				remaining_mass += organ_mass
+
 			qdel(toremove)//It is devoured, no trace left
 
 
