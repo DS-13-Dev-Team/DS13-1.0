@@ -389,14 +389,8 @@ default behaviour is:
 		if(HAS_TRAIT(src, TRAIT_BUCKLED))
 			var/list/sources = status_traits[TRAIT_BUCKLED]
 			for(var/i in sources)
-				if(istype(i, /obj/item/javelin))
-					var/obj/item/javelin/j = i
-					j.attack_hand(src)
-				else
-					if (buckled.resist_buckle(src))
-						escape_buckle()
-					else
-						continue
+				var/obj/buckled_obj = i
+				buckled_obj.escape_buckle(src)
 			return TRUE
 		else
 			if (buckled.resist_buckle(src))

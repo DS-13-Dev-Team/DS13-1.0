@@ -21,6 +21,14 @@
 	unbuckle_mob()
 	return ..()
 
+/obj/proc/escape_buckle(mob/user, support = FALSE)
+	if(!buckled_mob)
+		return FALSE
+
+	if(support)
+		return TRUE
+
+	return resist_buckle(buckled_mob)
 
 /obj/proc/buckle_mob(mob/living/M)
 	if(buckled_mob) //unless buckled_mob becomes a list this can cause problems

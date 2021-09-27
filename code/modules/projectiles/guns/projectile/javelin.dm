@@ -249,26 +249,32 @@
 
 /obj/item/javelin/attack_hand(mob/user)
 	if(is_mounted() && buckled_mob)
-
-		//Freeing yourself is harder than freeing another
-		var/free_time = 3 SECONDS
-		if (buckled_mob == user)
-			free_time *= 2
-		if (!do_after(user, free_time, src))
-			return
-
-		//Maybe someone else freed the victim in the meantime
-		if(!is_mounted())
-			return
-
-		playsound(src, "fleshtear", VOLUME_MID, TRUE)
-		anchored = FALSE
-		REMOVE_TRAIT(buckled_mob, TRAIT_BUCKLED, src)
-		unbuckle_mob()
+		escape_buckle(user)
 	return ..()
 
+/obj/item/javelin/escape_buckle(mob/user, support = FALSE)
+	if(user != buckled_mob)
+		support = TRUE
 
+	. = ..(user, support)
+	if(!.)
+		return
 
+	//Freeing yourself is harder than freeing another
+	var/free_time = 3 SECONDS
+	if (!support)
+		free_time *= 2
+	if (!do_after(user, free_time, src))
+		return
+
+	//Maybe someone else freed the victim in the meantime
+	if(!is_mounted() && buckled_mob)
+		return
+
+	playsound(src, "fleshtear", VOLUME_MID, TRUE)
+	anchored = FALSE
+	REMOVE_TRAIT(buckled_mob, TRAIT_BUCKLED, src)
+	unbuckle_mob()
 
 
 /obj/item/ammo_magazine/javelin
