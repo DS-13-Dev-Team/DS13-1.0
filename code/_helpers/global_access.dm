@@ -1570,7 +1570,7 @@
 	"_client_preferences",
 	"_client_preferences_by_key",
 	"_client_preferences_by_type",
-	"account_hack_attempted",,
+	"account_hack_attempted",
 	"admin_pm_repository",
 	"admin_ranks",
 	"admin_secrets",

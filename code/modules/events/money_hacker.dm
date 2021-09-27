@@ -47,7 +47,7 @@
 		T.amount = -lost
 		var/date1 = "31 December, 1999"
 		var/date2 = "[num2text(rand(1,31))] [pick("January","February","March","April","May","June","July","August","September","October","November","December")], [rand(1000,3000)]"
-		T.date = pick("", stationTimestamp(), date1, date2)
+		T.date = pick("", GLOB.current_date_string, date1, date2)
 		var/time1 = rand(0, 99999999)
 		var/time2 = "[round(time1 / 36000)+12]:[(time1 / 600 % 60) < 10 ? add_zero(time1 / 600 % 60, 1) : time1 / 600 % 60]"
 		T.time = pick("", stationTimestamp(), time2)

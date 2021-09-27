@@ -16,7 +16,7 @@
 		wtime = world.time
 	return time2text(wtime - GLOB.timezoneOffset + (12 * 36000), format)
 
-/proc/gameTime(wtime=null)
+/proc/get_game_time(wtime=null)
 	if(!wtime)
 		wtime = world.time
 	return wtime - GLOB.timezoneOffset + (12 * 36000)
