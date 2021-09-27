@@ -131,7 +131,7 @@ const RIGSuitStatus = (props, context) => {
             noscroll
             disabled={!healthbar_installed}
             icon="heart"
-            onSelected={(value) => act("change_tracking_mode", { "tracking_mode": value })} />
+            onSelected={(value) => act("change_tracking_mode", { "new_tracking_mode": value })} />
         </LabeledList.Item>
         <LabeledList.Item label="Tracking Level">
           <Dropdown
@@ -142,7 +142,7 @@ const RIGSuitStatus = (props, context) => {
             width={15}
             disabled={!healthbar_installed||automatic_tracking}
             icon="heart"
-            onSelected={(value) => act("change_tracking_level", { "new_tracking_level": value })} />
+            onSelected={(value) => act("change_tracking_level", { "tracking_level": value })} />
         </LabeledList.Item>
       </LabeledList>
     </Section>
