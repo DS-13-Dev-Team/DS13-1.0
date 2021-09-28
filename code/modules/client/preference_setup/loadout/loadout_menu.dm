@@ -10,7 +10,7 @@
 			continue
 		if(GLOB.using_map.loadout_blacklist && (geartype in GLOB.using_map.loadout_blacklist))
 			continue
-
+		G = new geartype()
 		register_gear(G)
 
 
@@ -26,7 +26,7 @@
 	if(!GLOB.loadout_categories[use_category])
 		GLOB.loadout_categories[use_category] = new /datum/loadout_category(use_category)
 	var/datum/loadout_category/LC = GLOB.loadout_categories[use_category]
-	GLOB.gear_datums[use_name] = new geartype
+	GLOB.gear_datums[use_name] = G
 	LC.gear[use_name] = GLOB.gear_datums[use_name]
 
 /proc/sort_loadout_categories()

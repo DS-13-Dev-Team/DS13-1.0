@@ -87,11 +87,15 @@
 
 	. = ..()
 
-/proc/register_design(var/datum/design/design)
+/proc/register_research_design(var/datum/design/design)
+	var/datum/asset/simple/research_designs/RD = GLOB.asset_datums[/datum/asset/simple/research_designs]
+	RD.register_design(design)
+
+/datum/asset/simple/research_designs/proc/register_design(var/datum/design/design)
 	design.AssembleDesignInfo()
 
 	if(!design.build_path)
-		continue
+		return
 
 	//Cache the icons
 	var/filename = sanitizeFileName("[design.build_path].png")

@@ -83,7 +83,7 @@
 			//do nothing
 		if (ACCESS_PATRONS)
 			G.patron_only = TRUE
-		if (ACCESS_WHITELIST)
+		//if (ACCESS_WHITELIST)
 			//TODO: Code gear whitelists
 
 	G.Initialize()
@@ -106,7 +106,7 @@
 	//TODO: Whitelist functionality for store listings
 	//TODO: Set transfer setting if the item is a rig or module
 
-	register_design(D)
+	register_research_design(D)
 
 
 /hook/startup/proc/load_patron_item_whitelists()
