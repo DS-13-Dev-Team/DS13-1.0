@@ -248,7 +248,7 @@
 		var/mob/living/L = AM
 		if (!L.is_necromorph())
 			//Yes we can
-			add_biomass_source(L, L.mass, 8 MINUTES, /datum/biomass_source/convergence)
+			add_biomass_source(L, L.get_biomass(), 8 MINUTES, /datum/biomass_source/convergence)
 			//We can only absorb dead mobs, but we don't check that here
 			//We'll add a still-living mob to the list and it'll be checked each tick to see if it died yet
 

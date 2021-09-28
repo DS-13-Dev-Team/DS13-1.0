@@ -20,6 +20,7 @@
 #include "code\__datastructures\priority_queue.dm"
 #include "code\__datastructures\stack.dm"
 #include "code\__defines\__game.dm"
+#include "code\__defines\_logging.dm"
 #include "code\__defines\_planes+layers.dm"
 #include "code\__defines\_protect.dm"
 #include "code\__defines\_tick.dm"

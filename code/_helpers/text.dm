@@ -632,3 +632,10 @@ proc/TextPreview(var/string,var/len=40)
 
 		else
 			return "its"//Something went wrong
+
+//Adds 'char' ahead of 'text' until there are 'count' characters total
+/proc/add_leading(text, count, char = " ")
+	text = "[text]"
+	var/charcount = count - length_char(text)
+	var/list/chars_to_add[max(charcount + 1, 0)]
+	return jointext(chars_to_add, char) + text
