@@ -389,9 +389,11 @@ default behaviour is:
 		if(HAS_TRAIT(src, TRAIT_BUCKLED))
 			var/list/sources = status_traits[TRAIT_BUCKLED]
 			for(var/i in sources)
-				var/obj/buckled_obj = i
-				buckled_obj.escape_buckle(src)
-			return TRUE
+				var/obj/item/buckled_obj = i
+				if(buckled_obj.resist_buckle(src))
+					buckled_obj.escape_buckle(src)
+					. = TRUE
+			return .
 		else
 			if (buckled.resist_buckle(src))
 				spawn()

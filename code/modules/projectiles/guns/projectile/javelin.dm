@@ -252,17 +252,10 @@
 		escape_buckle(user)
 	return ..()
 
-/obj/item/javelin/escape_buckle(mob/user, support = FALSE)
-	if(user != buckled_mob)
-		support = TRUE
-
-	. = ..(user, support)
-	if(!.)
-		return
-
+/obj/item/javelin/escape_buckle(mob/user)
 	//Freeing yourself is harder than freeing another
 	var/free_time = 3 SECONDS
-	if (!support)
+	if (user == buckled_mob)
 		free_time *= 2
 	if (!do_after(user, free_time, src))
 		return
