@@ -189,3 +189,9 @@
   - bugfix: Fixed the plasma saw turning off immediately after activating it.
   - bugfix: Fixed the Aegis Colony Medical doors being unopenable.
   - bugfix: Fixed the vendors in Aegis Colony Medical having the wrong access.
+2021-09-28:
+  DTraitor:
+  - bugfix: Fixed ore compressing.
+  DeadLineSS13:
+  - bugfix: Fixed a chems dispensers.
+  - bugfix: Fixed a BrigTimer.
