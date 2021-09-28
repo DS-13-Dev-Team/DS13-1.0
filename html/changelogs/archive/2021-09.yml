@@ -189,6 +189,14 @@
   - bugfix: Fixed the plasma saw turning off immediately after activating it.
   - bugfix: Fixed the Aegis Colony Medical doors being unopenable.
   - bugfix: Fixed the vendors in Aegis Colony Medical having the wrong access.
+2021-09-27:
+  Nanako:
+  - bugfix: Fixed an issue where humans being absorbed by marker/maws were worth less
+      biomass than they should be.
+  - bugfix: Fixed an issue where monkeys being absorbed by marker/maws were worth
+      far more biomass than they should be.
+  Snypehunter007:
+  - bugfix: Fixes the EDF Shuttle being unable to land in the Ishimura Hangar.
 2021-09-28:
   DTraitor:
   - bugfix: Fixed ore compressing.
