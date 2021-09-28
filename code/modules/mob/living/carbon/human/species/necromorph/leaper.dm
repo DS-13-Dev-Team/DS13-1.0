@@ -293,6 +293,7 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 
 	return leap_attack(A, _cooldown = 4 SECONDS, _delay = 1 SECONDS, _speed = 8, _maxrange = 11, _lifespan = 8 SECONDS, _maxrange = 20)
 
+
 /atom/movable/proc/leaper_leap_monkey(var/mob/living/A)
 	set name = "Leap"
 	set category = "Abilities"
