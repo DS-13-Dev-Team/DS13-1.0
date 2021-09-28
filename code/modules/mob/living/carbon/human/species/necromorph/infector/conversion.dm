@@ -115,13 +115,13 @@
 	var/list/options = list()
 	switch(mob_size)
 		if (MOB_MINISCULE to MOB_TINY)
-		options = list(/mob/living/simple_animal/necromorph/divider_component/leg = 1, /mob/living/simple_animal/necromorph/divider_component/arm = 1)
+			options = list(/mob/living/simple_animal/necromorph/divider_component/leg = 1, /mob/living/simple_animal/necromorph/divider_component/arm = 1)
 		if (MOB_SMALL)
-		options = list(/mob/living/carbon/human/necromorph/lurker = 1)
+			options = list(/mob/living/carbon/human/necromorph/lurker = 1)
 		if (MOB_MEDIUM)
-		options = list(/mob/living/carbon/human/necromorph/exploder = 1)
+			options = list(/mob/living/carbon/human/necromorph/exploder = 1)
 		if (MOB_LARGE)
-		options = list(/mob/living/carbon/human/necromorph/brute = 1)
+			options = list(/mob/living/carbon/human/necromorph/brute = 1)
 
 	return options
 
@@ -129,6 +129,10 @@
 	//These options are always available
 	var/list/options = list(SPECIES_NECROMORPH_SLASHER = (9.5 / compatibility),
 	SPECIES_NECROMORPH_SLASHER_ENHANCED = (1 * compatibility))
+
+	//Monkey?
+	if (biomass == 7)
+		options[SPECIES_NECROMORPH_LEAPER_NECROMONKEY]	=	9999 * compatibility
 
 	//Gender based options
 	if (gender == FEMALE)

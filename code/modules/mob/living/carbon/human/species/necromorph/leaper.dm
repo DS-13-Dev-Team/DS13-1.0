@@ -179,6 +179,7 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 	stun = 0.75
 	leap_damage = 2
 	limb_health_factor = 0.6
+	pixel_offset_x = null
 
 	biomass = 14
 	biomass_reclamation = 0.75
