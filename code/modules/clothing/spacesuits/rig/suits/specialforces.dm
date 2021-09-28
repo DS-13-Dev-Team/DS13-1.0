@@ -1,5 +1,5 @@
 /obj/item/weapon/rig/special_forces
-	name = "Special Forces RIG"
+	name = "special forces RIG"
 	desc = "A heavily armoured rig suit, designed for military use."
 	icon_state = "special_forces_rig"
 	armor = list(melee = 72.5, bullet = 75, laser = 75, energy = 40, bomb = 75, bio = 100, rad = 75)
@@ -29,11 +29,12 @@
 	name = "gloves"
 
 /obj/item/clothing/shoes/magboots/rig/special_forces
-	name = "shoes"
+	name = "boots"
 
 /obj/item/clothing/head/helmet/space/rig/special_forces
-	name = "hood"
+	name = "helmet"
 	light_overlay = "special_forces_light"
+
 
 /obj/item/weapon/rig/carver
 	name = "Carver's RIG"
@@ -66,10 +67,10 @@
 	name = "gloves"
 
 /obj/item/clothing/shoes/magboots/rig/carver
-	name = "shoes"
+	name = "boots"
 
 /obj/item/clothing/head/helmet/space/rig/carver
-	name = "hood"
+	name = "helmet"
 	light_overlay = "carver_light"
 
 

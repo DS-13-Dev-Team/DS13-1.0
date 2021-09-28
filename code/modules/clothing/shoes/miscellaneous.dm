@@ -153,7 +153,7 @@
 /obj/item/clothing/shoes/pcsi
 	name = "combat boots"
 	desc = "A pair of standard, CEC issue, combat boots. Stomping on secession since the Mars Riots."
-	icon_state = "duty"
+	icon_state = "combat"
 	force = 3
 	armor = list(melee = 80, bullet = 60, laser = 0,energy = 0, bomb = 50, bio = 10, rad = 0)
 	item_flags = ITEM_FLAG_NOSLIP
@@ -166,7 +166,6 @@
 	icon_state = "kellion_grunt_boots"
 	force = 3
 	armor = list(melee = 80, bullet = 60, laser = 0,energy = 0, bomb = 55, bio = 10, rad = 0)
-	item_flags = ITEM_FLAG_NOSLIP
 	siemens_coefficient = 0.6
 
 /obj/item/clothing/shoes/kellion/lead
@@ -175,5 +174,4 @@
 	icon_state = "kellion_lead_boots"
 	force = 3
 	armor = list(melee = 80, bullet = 70, laser = 0,energy = 0, bomb = 55, bio = 10, rad = 0)
-	item_flags = ITEM_FLAG_NOSLIP
 	siemens_coefficient = 0.

@@ -137,3 +137,8 @@
 	name = "beret"
 	desc = "A simple, solid color beret. This one has no emblems or insignia on it."
 	icon_state = "beret_white"
+
+/obj/item/clothing/head/beret/cseco
+	name = "chief security officer's beret"
+	desc = "A brown beret with the badge of P.C.S.I."
+	icon_state = "beret_cseco"

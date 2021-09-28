@@ -1,9 +1,9 @@
 /decl/hierarchy/outfit/job/security
 	hierarchy_type = /decl/hierarchy/outfit/job/security
 	uniform = /obj/item/clothing/under/deadspace/security
+	head = /obj/item/clothing/head/soft/pcsi
 	l_ear = /obj/item/device/radio/headset/headset_sec
 	glasses = /obj/item/clothing/glasses/sunglasses/sechud
-	belt = /obj/item/weapon/storage/belt/holster/security
 	shoes = /obj/item/clothing/shoes/pcsi
 	backpack_contents = list(/obj/item/weapon/handcuffs = 1)
 
@@ -13,8 +13,10 @@
 
 /decl/hierarchy/outfit/job/security/cseco
 	name = OUTFIT_JOB_NAME("Chief Security Officer")
-	suit = /obj/item/clothing/suit/armor/vest/ds_jacket
+	suit = /obj/item/clothing/suit/storage/toggle/cseco
+	head = /obj/item/clothing/under/deadspace/security/cseco
 	l_ear = /obj/item/device/radio/headset/heads/cseco
+	glasses = /obj/item/clothing/glasses/sunglasses/csecohud
 	id_type = /obj/item/weapon/card/id/holo/security/cseco
 	pda_type = /obj/item/modular_computer/pda/heads/hos
 

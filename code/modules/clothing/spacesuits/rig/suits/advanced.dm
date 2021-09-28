@@ -45,10 +45,10 @@
 	siemens_coefficient = 0
 
 /obj/item/clothing/shoes/magboots/rig/advanced
-	name = "shoes"
+	name = "boots"
 
 /obj/item/clothing/head/helmet/space/rig/advanced
-	name = "hood"
+	name = "helmet"
 
 /obj/item/weapon/rig/advanced/maxstone
 	name = "modified advanced RIG"

@@ -292,9 +292,8 @@ var/list/organ_cache = list()
 	if(!istype(owner))
 		return
 
-	if (owner.biomass > 1)
-		biomass = 1
-		owner.adjust_biomass(-1)
+	if (biomass && owner.biomass >= biomass)
+		owner.adjust_biomass(-biomass)
 
 	action_button_name = null
 

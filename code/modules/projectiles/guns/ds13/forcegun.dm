@@ -13,6 +13,7 @@
 	icon = 'icons/obj/weapons/ds13guns48x32.dmi'
 	icon_state = "forcegun"
 	item_state = "forcegun"
+	w_class = ITEM_SIZE_BULKY
 
 	charge_cost = 1000 //Five shots per battery
 	cell_type = /obj/item/weapon/cell/force
@@ -22,11 +23,14 @@
 	mag_insert_sound = 'sound/weapons/guns/interaction/force_magin.ogg'
 	mag_remove_sound = 'sound/weapons/guns/interaction/force_magout.ogg'
 	removeable_cell = TRUE
+
+
 	firemodes = list(
 		list(mode_name = "blast", mode_type = /datum/firemode/forcegun/blast, fire_sound = 'sound/weapons/guns/fire/force_shot.ogg', fire_delay = 1.5 SECONDS),
 		list(mode_name = "focus", mode_type = /datum/firemode/forcegun/focus, windup_time = 1.5 SECONDS, windup_sound = 'sound/weapons/guns/fire/force_windup.ogg', fire_sound = 'sound/weapons/guns/fire/force_focus.ogg',fire_delay = 1.5 SECONDS)
 		)
-	has_safety = TRUE	//This thing is too dangerous to lack safety
+
+	safety_state = 1
 
 	aiming_modes = list(/datum/extension/aim_mode/heavy)
 
@@ -173,11 +177,11 @@
 
 /obj/item/weapon/cell/force
 	name = "force energy"
-	desc = "A heavy power pack designed for use with the handheld graviton accelerator"
+	desc = "A heavy power pack designed for use with the Handheld Graviton Accelerator."
 	origin_tech = list(TECH_POWER = 4)
 	icon = 'icons/obj/ammo.dmi'
 	icon_state = "forcebattery"
-	w_class = ITEM_SIZE_LARGE
+	w_class = ITEM_SIZE_NORMAL
 	maxcharge = 5000
 	matter = list(MATERIAL_STEEL = 700, MATERIAL_SILVER = 80)
 

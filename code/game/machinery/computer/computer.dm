@@ -26,11 +26,8 @@
 		return 1
 	return .=..()
 
-/obj/machinery/computer/New(var/atom/location, var/direction, var/nocircuit = FALSE)
+/obj/machinery/computer/Initialize(mapload, d)
 	overlay_layer = layer
-	..()
-
-/obj/machinery/computer/Initialize()
 	. = ..()
 	power_change()
 	update_icon()

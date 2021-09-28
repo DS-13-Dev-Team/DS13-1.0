@@ -44,21 +44,21 @@
 */
 /mob/living/carbon/human/proc/mercer_execution(var/mob/living/carbon/human/target)
 	set name = "Sacrifice"
-	set desc = "A ritual which prepares the subject for uplifting"
+	set desc = "A ritual which prepares the subject for uplifting."
 	set category = "Abilities"
 
 	if (!istype(target) || target.stat == DEAD)
-		to_chat(src, SPAN_DANGER("It is too late to sacrifice this one, they are lost"))
+		to_chat(src, SPAN_DANGER("It is too late to sacrifice this one, they are lost."))
 		return
 
 	var/list/held = get_held_items()
 	var/obj/item/weapon/material/knife/unitologist/blade = locate() in held
 	if (!blade)
-		to_chat(src, SPAN_DANGER("You must be holding your ritual blade"))
+		to_chat(src, SPAN_DANGER("You must be holding your ritual blade."))
 		return
 
 	if (!has_free_hand())
-		to_chat(src, SPAN_DANGER("You need a free hand"))
+		to_chat(src, SPAN_DANGER("You need a free hand."))
 		return
 
 	perform_execution(/datum/extension/execution/sacrifice, target, blade)
@@ -103,7 +103,7 @@
 			var/list/held = user.get_held_items()
 			var/obj/item/weapon/material/knife/unitologist/blade = locate() in held
 			if (!blade)
-				to_chat(user, SPAN_DANGER("You must be holding your ritual blade"))
+				to_chat(user, SPAN_DANGER("You must be holding your ritual blade."))
 				return EXECUTION_CANCEL
 
 

@@ -279,7 +279,7 @@
 
 			else if(ores_processing[metal] == 2 && O.compresses_to) //Compressing.
 
-				var/can_make = Clamp(OS,0,sheets_per_tick-sheets)
+				var/can_make = Clamp(OS,0,(sheets_per_tick-sheets)*2)
 				if(can_make%2>0) can_make--
 
 				var/material/M = get_material_by_name(O.compresses_to)

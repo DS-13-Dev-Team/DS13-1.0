@@ -18,13 +18,16 @@
 	one_hand_penalty = -30
 	accuracy = -10
 	scoped_accuracy = 5
-	fire_sound = null
-	firemodes = list(
-		list(mode_name = "launch", fire_delay = 1.5 SECONDS, fire_sound = 'sound/weapons/guns/fire/jav_fire.ogg'),
-		list(mode_name = "shock mode", mode_type = /datum/firemode/automatic/shock, projectile_type = /obj/item/projectile/null_projectile, fire_delay = 3 SECONDS)
-		)
-	screen_shake = FALSE
+
 	var/list/javelins = list()
+
+
+	firemodes = list(
+		list(mode_name = "launch", fire_delay = 1.5, fire_sound = 'sound/weapons/guns/fire/jav_fire.ogg'),
+		list(mode_name = "shock mode", mode_type = /datum/firemode/automatic/shock, projectile_type = /obj/item/projectile/null_projectile, fire_delay = 3)
+		)
+
+	safety_state = 1
 
 /obj/item/weapon/gun/projectile/javelin_gun/empty
 	magazine_type = null
@@ -67,7 +70,7 @@
 
 /obj/item/weapon/gun/projectile/javelin_gun/update_icon()
 	. = ..()
-	if(ammo_magazine)
+	if(ammo_magazine && ammo_magazine.stored_ammo.len)
 		icon_state = icon_loaded
 	else
 		icon_state = initial(icon_state)
@@ -271,9 +274,10 @@
 
 /obj/item/ammo_magazine/javelin
 	name = "javelin rack"
-	desc = "A set of javelins for the launcher"
+	desc = "A set of javelins for the T15 Javelin Gun."
 	icon_state = "javelin"
 	caliber = "javelin"
+	w_class = ITEM_SIZE_NORMAL
 	mag_type = MAGAZINE
 	ammo_type = /obj/item/ammo_casing/javelin
 	matter = list(MATERIAL_STEEL = 600)

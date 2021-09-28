@@ -1,4 +1,4 @@
-#define ORE_VALUE_FACTOR	8 //Change this number to modify mining bonus outputs globally
+#define ORE_VALUE_FACTOR	6 //Change this number to modify mining bonus outputs globally
 var/global/list/ore_data = list()
 var/global/list/ores_by_type = list()
 
@@ -52,7 +52,7 @@ var/global/list/ores_by_type = list()
 	if(istype(M))
 		return ORE_VALUE_FACTOR*M.value
 	else
-		return value
+		return ORE_VALUE_FACTOR*value
 
 /ore/uranium
 	name = "uranium"

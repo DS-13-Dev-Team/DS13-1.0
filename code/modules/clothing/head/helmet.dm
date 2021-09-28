@@ -24,23 +24,13 @@
 	cold_protection = HEAD
 	siemens_coefficient = 0.5
 
-/obj/item/clothing/head/helmet/pcsi
-	name = "P.C.S.I helmet"
-	desc = "A ceramic helmet with a thin, tempered glass, face shield in the middle. A common design look for different security force helmets throughout the galaxy."
-	icon_state = "pcsi_helmet"
-	armor = list(melee = 55, bullet = 60, laser = 0, energy = 0, bomb = 20, bio = 0, rad = 0)
-	flags_inv = HIDEEARS|BLOCKHEADHAIR
-	body_parts_covered = HEAD|FACE|EYES
-	cold_protection = HEAD
-	siemens_coefficient = 0.5
-
 /obj/item/clothing/head/helmet/riot
 	name = "riot helmet"
 	desc = "It's a helmet specifically designed to protect against close range attacks."
 	icon_state = "helmet_riot"
 	valid_accessory_slots = null
 	body_parts_covered = HEAD|FACE|EYES //face shield
-	armor = list(melee = 82, bullet = 15, laser = 5, energy = 5, bomb = 5, bio = 2, rad = 0)
+	armor = list(melee = 82, bullet = 15, laser = 15, energy = 0, bomb = 10, bio = 2, rad = 0)
 	siemens_coefficient = 0.7
 	action_button_name = "Toggle Visor"
 
@@ -60,8 +50,25 @@
 	desc = "A helmet with reinforced plating to protect against ballistic projectiles."
 	icon_state = "helmet_bulletproof"
 	valid_accessory_slots = null
-	armor = list(melee = 5, bullet = 82, laser = 30, energy = 5, bomb = 30, bio = 2, rad = 0)
+	armor = list(melee = 5, bullet = 82, laser = 30, energy = 0, bomb = 30, bio = 0, rad = 0)
 	siemens_coefficient = 0.7
+
+/obj/item/clothing/head/helmet/pcsi
+	name = "P.C.S.I helmet"
+	desc = "A ceramic helmet with the badge of P.C.S.I emblazoned on the forehead. Sturdy, but a bullet to the face will still probably kill the wearer."
+	icon_state = "helmet_pcsi"
+	armor = list(melee = 50, bullet = 50, laser = 15, energy = 0, bomb = 10, bio = 0, rad = 0)
+	flags_inv = HIDEEARS|BLOCKHEADHAIR
+	siemens_coefficient = 0.5
+
+/*Plan on using this for something later - Snype
+/obj/item/clothing/head/helmet/tactical
+	name = "tactical helmet"
+	desc = "TEMPORARY DESC"
+	icon_state = "helmet_tactical"
+	armor = list(melee = 50, bullet = 50, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
+	flags_inv = HIDEEARS|BLOCKHEADHAIR
+	siemens_coefficient = 0.5*/
 
 /obj/item/clothing/head/helmet/thunderdome
 	name = "\improper Thunderdome helmet"

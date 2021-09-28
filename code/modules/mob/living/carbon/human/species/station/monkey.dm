@@ -2,6 +2,7 @@
 	name = "Monkey"
 	name_plural = "Monkeys"
 	blurb = "Ook."
+	mass = 7
 	biomass	= 7	//Based on Rhesus Macaqueue, a fairly light monkey
 
 	icobase =         'icons/mob/human_races/species/monkey/monkey_body.dmi'

@@ -1,5 +1,5 @@
 /obj/item/weapon/rig/civilian
-	name = "CEC Civilian RIG"
+	name = "CEC civilian RIG"
 	desc = "Resource Integrated Gear. Standard issue for all CEC employees"
 	icon_state = "ds_civilian_rig"
 	armor = list(melee = 10, bullet = 10, laser = 10, energy = 10, bomb = 10, bio = 10, rad = 10)
@@ -19,7 +19,7 @@
 		)
 
 /obj/item/weapon/rig/emergency
-	name = "Emergency RIG"
+	name = "emergency RIG"
 	desc = "A light, emergency rig for use by non-qualified personnel in the case of emergency decompression."
 	icon_state = "eva_suit"
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 100, rad = 50)
@@ -43,7 +43,7 @@
 	name = "gloves"
 
 /obj/item/clothing/shoes/magboots/rig/emergency
-	name = "shoes"
+	name = "boots"
 
 /obj/item/clothing/head/helmet/space/rig/emergency
 	name = "helmet"

@@ -30,8 +30,9 @@ GLOBAL_LIST_EMPTY(smartfridge_types)
 /obj/machinery/smartfridge/secure
 	is_secure = 1
 
-/obj/machinery/smartfridge/New(var/atom/location, var/direction, var/nocircuit = FALSE)
-	..()
+/obj/machinery/smartfridge/Initialize(mapload, d)
+	. = ..()
+
 	if(is_secure)
 		wires = new/datum/wires/smartfridge/secure(src)
 	else
