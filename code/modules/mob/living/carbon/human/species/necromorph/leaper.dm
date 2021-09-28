@@ -166,11 +166,12 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 	modifier_verbs = list(KEY_CTRLALT = list(/atom/movable/proc/leaper_leap_enhanced),
 	KEY_ALT = list(/mob/living/carbon/human/proc/tailstrike_leaper_enhanced))
 
-/datum/species/necromorph/leaper/monkey
-	name = SPECIES_NECROMORPH_LEAPER_MONKEY
+/datum/species/necromorph/leaper/necromonkey
+	name = SPECIES_NECROMORPH_LEAPER_NECROMONKEY
 	marker_spawnable = FALSE 	//Enable this once we have sprites for it
-	mob_type	=	/mob/living/carbon/human/necromorph/leaper/monkey
+	mob_type	=	/mob/living/carbon/human/necromorph/leaper/necromonkey
 	unarmed_types = list(/datum/unarmed_attack/claws/monkey)
+	icon_template = 'icons/mob/necromorph/leaper_monkey.dmi'
 
 	slowdown = 2.5
 	total_health = 65
@@ -189,7 +190,7 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 	KEY_ALT = list(/mob/living/carbon/human/proc/tailstrike_leaper_monkey))
 
 	view_range = 8
-	view_offset = ()
+	view_offset = (null)
 
 
 
