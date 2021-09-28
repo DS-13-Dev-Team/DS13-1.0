@@ -5,6 +5,15 @@
 	icon_state = "plating"
 	layer = PLATING_LAYER
 
+
+
+/turf/simulated/floor/concrete
+	name = "concrete"
+	desc = "Stone-like artificial material."
+	icon = 'icons/turf/flooring/misc.dmi'
+	icon_state = "concrete"
+	initial_flooring = /decl/flooring/concrete
+
 /turf/simulated/floor/bluegrid
 	name = "mainframe floor"
 	icon = 'icons/turf/flooring/circuit.dmi'

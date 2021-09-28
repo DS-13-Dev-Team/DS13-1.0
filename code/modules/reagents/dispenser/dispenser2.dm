@@ -24,8 +24,8 @@
 	core_skill = SKILL_MEDICAL
 	var/can_contaminate = TRUE
 
-/obj/machinery/chemical_dispenser/New(var/atom/location, var/direction, var/nocircuit = FALSE)
-	..()
+/obj/machinery/chemical_dispenser/Initialize(mapload, d)
+	. = ..()
 
 	if(spawn_cartridges)
 		for(var/type in spawn_cartridges)
