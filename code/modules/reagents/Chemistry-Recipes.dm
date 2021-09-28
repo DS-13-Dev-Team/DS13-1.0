@@ -259,11 +259,13 @@
 	inhibitors = list(/datum/reagent/sugar = 1) // Messes up with inaprovaline
 	result_amount = 2
 
+/* disabled for now. You can still spawn in anabolic steroids for events, but this needs to be rebalanced.
 /datum/chemical_reaction/hyperzine
 	name = "Hyperzine"
 	result = /datum/reagent/hyperzine
 	required_reagents = list(/datum/reagent/sugar = 1, /datum/reagent/phosphorus = 1, /datum/reagent/sulfur = 1)
 	result_amount = 3
+*/
 
 /datum/chemical_reaction/cryoxadone
 	name = "Cryoxadone"

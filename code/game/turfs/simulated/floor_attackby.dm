@@ -15,6 +15,7 @@
 	if (flooring && flooring.attackby(I, user, src))
 		return TRUE
 
+/* disabled until further notice. This isn't intended, use tools instead.
 	//Attempting to damage floors with things
 	//This has a lot of potential to break things, so it's limited to harm intent.
 	//This supercedes all construction, deconstruction and similar actions. So change your intent out of harm if you don't want to smack the floor
@@ -36,6 +37,7 @@
 				visible_message(SPAN_DANGER("[user] ineffectually hits [src] with [I]"))
 			user.set_click_cooldown(DEFAULT_ATTACK_COOLDOWN*1.5) //This longer cooldown helps promote skill in melee combat by punishing misclicks a bit
 			return TRUE
+*/
 
 	for(var/atom/movable/A in src)
 		if(A.preventsTurfInteractions())
