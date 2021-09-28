@@ -701,5 +701,5 @@ its easier to just keep the beam vertical.
 			paramslist[ALT_CLICK] = "1"
 
 		var/mouseparams = list2params(paramslist)
-		usr_client.Click(loc, null, mouseparams)
+		usr_client.Click(src, loc, null, mouseparams)
 		return TRUE
