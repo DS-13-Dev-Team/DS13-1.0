@@ -60,12 +60,6 @@ const RIGSuitStatus = (props, context) => {
     emagged,
     securitycheck,
     coverlock,
-    tracking_level,
-    tracking_mode,
-    possible_tracking_levels,
-    possible_tracking_modes,
-    healthbar_installed,
-    automatic_tracking,
   } = data;
 
   const SealButton = (
@@ -122,27 +116,6 @@ const RIGSuitStatus = (props, context) => {
               content={coverlock ? "Locked" : "Unlocked"}
               onClick={() => act("toggle_suit_lock")} />
           )}
-        </LabeledList.Item>
-        <LabeledList.Item label="Tracking Mode">
-          <Dropdown
-            options={possible_tracking_modes}
-            selected={tracking_mode}
-            nochevron
-            noscroll
-            disabled={!healthbar_installed}
-            icon="map-marked-alt"
-            onSelected={(value) => act("change_tracking_mode", { "new_tracking_mode": value })} />
-        </LabeledList.Item>
-        <LabeledList.Item label="Tracking Level">
-          <Dropdown
-            options={possible_tracking_levels}
-            selected={tracking_level}
-            nochevron
-            noscroll
-            width={15}
-            disabled={!healthbar_installed||automatic_tracking}
-            icon="heart"
-            onSelected={(value) => act("change_tracking_level", { "tracking_level": value })} />
         </LabeledList.Item>
       </LabeledList>
     </Section>
@@ -233,6 +206,8 @@ const RIGSuitModules = (props, context) => {
     primarysystem,
     // The actual modules.
     modules,
+    possible_tracking_levels,
+    possible_tracking_modes,
   } = data;
 
   if (!sealed || sealing) {
@@ -306,6 +281,30 @@ const RIGSuitModules = (props, context) => {
               </Stack.Item>
             </Stack>
           )}
+          {module.healthbar_module ? (
+            <Stack>
+              <Stack.Item>
+                <Dropdown
+                  options={possible_tracking_modes}
+                  selected={module.tracking_mode}
+                  nochevron
+                  noscroll
+                  icon="map-marked-alt"
+                  onSelected={(value) => act("change_tracking_mode", { "new_tracking_mode": value, "healthbar_ref": module.healthbar_module })} />
+              </Stack.Item>
+              <Stack.Item>
+                <Dropdown
+                  options={possible_tracking_levels}
+                  selected={module.tracking_level}
+                  nochevron
+                  noscroll
+                  width={15}
+                  disabled={module.automatic_tracking}
+                  icon="heart"
+                  onSelected={(value) => act("change_tracking_level", { "tracking_level": value, "healthbar_ref": module.healthbar_module })} />
+              </Stack.Item>
+            </Stack>
+          ) : null}
           {module.charges ? (
             <Section title="Module Charges">
               <LabeledList>

@@ -148,20 +148,3 @@
 			toggle_seals(target, TRUE)
 
 	seal_delay = cached_seal_delay
-
-// Automatically updates tracking level depending on current station alert
-// Should be called only if person is currently using automatic mode (GLOB.rig_update_tracking)
-/obj/item/weapon/rig/proc/automatic_tracking_update()
-	var/decl/security_state/SecState = decls_repository.get_decl(GLOB.using_map.security_state)
-// If you have better idea how to make this without refactoring security state then tell me
-	if(SecState.current_security_level.name == STATION_ALERT_GREEN)
-		tracking_level = RIG_SENSOR_BINARY
-
-	else if(SecState.current_security_level.name == STATION_ALERT_BLUE)
-		tracking_level = RIG_SENSOR_VITAL
-
-	else if(SecState.current_security_level.name == STATION_ALERT_RED)
-		tracking_level = RIG_SENSOR_TRACKING
-
-	else if(SecState.current_security_level.name == STATION_ALERT_DELTA)
-		tracking_level = RIG_SENSOR_TRACKING

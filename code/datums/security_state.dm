@@ -121,8 +121,8 @@
 		previous_security_level.switching_down_from()
 		new_security_level.switching_down_to()
 
-	for(var/obj/item/weapon/rig/R as anything in GLOB.rig_update_tracking)
-		R.automatic_tracking_update()
+	for(var/obj/item/rig_module/healthbar/HB as anything in GLOB.vitals_auto_update_tracking)
+		HB.automatic_tracking_update()
 	log_and_message_admins("has changed the security level from [previous_security_level.name] to [new_security_level.name].")
 	return TRUE
 

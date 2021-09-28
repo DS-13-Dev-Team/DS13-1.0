@@ -105,10 +105,6 @@
 						/obj/item/weapon/rig/verb/select_module, /obj/item/weapon/rig/verb/toggle_module,
 						/obj/item/weapon/rig/verb/engage_module)
 
-	// Health tracking things
-	var/tracking_level = RIG_SENSOR_OFF
-	var/tracking_mode = RIG_SENSOR_MANUAL
-
 /obj/item/weapon/rig/examine()
 	. = ..()
 	if(wearer)
@@ -191,13 +187,6 @@
 		piece.acid_melted = acid_melted
 		if(islist(armor)) piece.armor = armor.Copy()
 
-	tracking_level = pick(RIG_SENSOR_OFF, RIG_SENSOR_BINARY, RIG_SENSOR_VITAL, RIG_SENSOR_TRACKING)
-	tracking_mode = pick(RIG_SENSOR_MANUAL, RIG_SENSOR_AUTOMATIC)
-
-	if(tracking_mode == RIG_SENSOR_AUTOMATIC)
-		GLOB.rig_update_tracking += src
-		automatic_tracking_update()
-
 	set_slowdown_and_vision(!offline)
 	update_icon(1)
 
@@ -214,7 +203,6 @@
 	wires = null
 	qdel(spark_system)
 	spark_system = null
-	GLOB.rig_update_tracking -= src
 	return ..()
 
 /obj/item/weapon/rig/proc/get_pieces()

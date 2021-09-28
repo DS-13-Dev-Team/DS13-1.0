@@ -21,6 +21,31 @@
 
 	base_type = /obj/item/rig_module/healthbar
 
+	var/tracking_level = RIG_SENSOR_OFF
+	var/tracking_mode = RIG_SENSOR_MANUAL
+
+/obj/item/rig_module/healthbar/Initialize()
+	. = ..()
+	tracking_mode = pick(RIG_SENSOR_MANUAL, RIG_SENSOR_AUTOMATIC)
+
+	if(tracking_mode == RIG_SENSOR_AUTOMATIC)
+		GLOB.vitals_auto_update_tracking += src
+		automatic_tracking_update()
+
+	else
+		tracking_level = pick(RIG_SENSOR_OFF, RIG_SENSOR_BINARY, RIG_SENSOR_VITAL, RIG_SENSOR_TRACKING)
+
+/obj/item/rig_module/healthbar/Destroy()
+	unregister_user()
+	GLOB.vitals_auto_update_tracking -= src
+	.=..()
+
+/obj/item/rig_module/healthbar/rig_equipped(var/mob/user, var/slot)
+	register_user(user)
+
+/obj/item/rig_module/healthbar/rig_unequipped(var/mob/user, var/slot)
+	unregister_user()
+
 /obj/item/rig_module/healthbar/proc/register_user(var/mob/newuser)
 	user = newuser
 	GLOB.updatehealth_event.register(user, src, /obj/item/rig_module/healthbar/proc/update)
@@ -30,18 +55,6 @@
 	GLOB.updatehealth_event.unregister(user, src, /obj/item/rig_module/healthbar/proc/update)
 	GLOB.death_event.unregister(user, src, /obj/item/rig_module/healthbar/proc/death)
 	user = null
-
-/obj/item/rig_module/healthbar/Destroy()
-	unregister_user()
-	.=..()
-
-
-/obj/item/rig_module/healthbar/rig_equipped(var/mob/user, var/slot)
-	register_user(user)
-
-/obj/item/rig_module/healthbar/rig_unequipped(var/mob/user, var/slot)
-	unregister_user()
-
 
 /obj/item/rig_module/healthbar/proc/update()
 	if (QDELETED(user) || QDELETED(holder) || holder.loc != user)
@@ -74,8 +87,22 @@
 	playsound(src, 'sound/effects/rig/modules/flatline.ogg', VOLUME_MAX, 0, 4)
 	update()
 
+// Automatically updates tracking level depending on current station alert
+// Should be called only if person is currently using automatic mode (GLOB.rig_update_tracking)
+/obj/item/rig_module/healthbar/proc/automatic_tracking_update()
+	var/decl/security_state/SecState = decls_repository.get_decl(GLOB.using_map.security_state)
+// If you have better idea how to make this without refactoring security state then tell me
+	if(SecState.current_security_level.name == STATION_ALERT_GREEN)
+		tracking_level = RIG_SENSOR_BINARY
 
+	else if(SecState.current_security_level.name == STATION_ALERT_BLUE)
+		tracking_level = RIG_SENSOR_VITAL
 
+	else if(SecState.current_security_level.name == STATION_ALERT_RED)
+		tracking_level = RIG_SENSOR_TRACKING
+
+	else if(SecState.current_security_level.name == STATION_ALERT_DELTA)
+		tracking_level = RIG_SENSOR_TRACKING
 
 /*
 	Advanced Vital Monitor

@@ -51,7 +51,7 @@
 	else
 		data["ai"] = FALSE
 
-	data["sealed"] = !canremove
+	data["sealed"] = active
 	data["sealing"] = sealing
 	data["helmet"] = (helmet ? "[helmet.name]" : "None.")
 	data["gauntlets"] = (gloves ? "[gloves.name]" : "None.")
@@ -109,7 +109,20 @@
 					module_data["charges"] += list(list("caption" = "[charge.display_name] ([charge.charges])", "index" = "[chargetype]"))
 
 			if(istype(module, /obj/item/rig_module/healthbar))
-				data["healthbar_installed"] = TRUE
+				var/obj/item/rig_module/healthbar/HB = module
+				module_data["healthbar_module"] = REF(module)
+				if(!HB.tracking_level)
+					module_data["tracking_level"] = "Off"
+				else
+					var/level = list("Binary Tracker", "Vitals Tracker", "Vitals + Position Tracker")
+					module_data["tracking_level"] = level[HB.tracking_level]
+
+				var/mode = list("Manual", "Automatic")
+				module_data["tracking_mode"] = mode[HB.tracking_mode]
+				if(HB.tracking_mode == RIG_SENSOR_AUTOMATIC)
+					module_data["automatic_tracking"] = TRUE
+				else
+					module_data["automatic_tracking"] = FALSE
 
 			module_list += list(module_data)
 			i++
@@ -119,22 +132,8 @@
 	else
 		data["modules"] = list()
 
-	if(!tracking_level)
-		data["tracking_level"] = "Off"
-	else
-		var/level = list("Binary Tracker", "Vitals Tracker", "Vitals + Position Tracker")
-		data["tracking_level"] = level[tracking_level]
-
-	var/mode = list("Manual", "Automatic")
-
-	data["tracking_mode"] = mode[tracking_mode]
-	if(tracking_mode == RIG_SENSOR_AUTOMATIC)
-		data["automatic_tracking"] = TRUE
-	else
-		data["automatic_tracking"] = FALSE
-
 	data["possible_tracking_levels"] = list("Off", "Binary Tracker", "Vitals Tracker", "Vitals + Position Tracker")
-	data["possible_tracking_modes"] = mode
+	data["possible_tracking_modes"] = list("Manual", "Automatic")
 
 	return data
 
@@ -187,16 +186,18 @@
 						. = TRUE
 
 		if("change_tracking_level")
-			if(tracking_mode != RIG_SENSOR_AUTOMATIC)
+			var/obj/item/rig_module/healthbar/HB = locate(params["healthbar_ref"])
+			if(HB.tracking_mode != RIG_SENSOR_AUTOMATIC)
 				var/levels = list("Off"=RIG_SENSOR_OFF, "Binary Tracker"=RIG_SENSOR_BINARY, "Vitals Tracker"=RIG_SENSOR_VITAL, "Vitals + Position Tracker"=RIG_SENSOR_TRACKING)
-				tracking_level = levels[params["tracking_level"]]
+				HB.tracking_level = levels[params["tracking_level"]]
 
 		if("change_tracking_mode")
+			var/obj/item/rig_module/healthbar/HB = locate(params["healthbar_ref"])
 			var/modes = list("Manual"=RIG_SENSOR_MANUAL, "Automatic"=RIG_SENSOR_AUTOMATIC)
 			var/new_mode = modes[params["new_tracking_mode"]]
-			tracking_mode = new_mode
-			if(tracking_mode == RIG_SENSOR_AUTOMATIC)
-				GLOB.rig_update_tracking += src
-				automatic_tracking_update()
-			else if(tracking_mode == RIG_SENSOR_MANUAL)
-				GLOB.rig_update_tracking -= src
+			HB.tracking_mode = new_mode
+			if(HB.tracking_mode == RIG_SENSOR_AUTOMATIC)
+				GLOB.vitals_auto_update_tracking += src
+				HB.automatic_tracking_update()
+			else if(HB.tracking_mode == RIG_SENSOR_MANUAL)
+				GLOB.vitals_auto_update_tracking -= src

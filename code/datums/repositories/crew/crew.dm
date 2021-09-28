@@ -49,12 +49,12 @@ var/global/datum/repository/crew/crew_repository = new()
 
 	cache_data_alert[num2text(z_level)] = FALSE
 	var/tracked = scan()
-	for(var/obj/item/weapon/rig/R in tracked)
-		var/turf/pos = get_turf(R)
-		if(R.tracking_level != RIG_SENSOR_OFF && pos?.z == z_level)
+	for(var/obj/item/rig_module/healthbar/HB in tracked)
+		var/turf/pos = get_turf(HB)
+		if(HB.tracking_level != RIG_SENSOR_OFF && pos?.z == z_level && HB.holder.active)
 
-			var/list/crewmemberData = list("sensor_type"=R.tracking_level, "stat"=R.wearer.stat, "area"="", "x"=-1, "y"=-1, "z"=-1, "ref"="\ref[R.wearer]")
-			if(!(run_queues(R.wearer, R, pos, crewmemberData) & MOD_SUIT_SENSORS_REJECTED))
+			var/list/crewmemberData = list("sensor_type"=HB.tracking_level, "stat"=HB.holder.wearer.stat, "area"="", "x"=-1, "y"=-1, "z"=-1, "ref"="\ref[HB.holder.wearer]")
+			if(!(run_queues(HB.holder.wearer, HB, pos, crewmemberData) & MOD_SUIT_SENSORS_REJECTED))
 				crewmembers[++crewmembers.len] = crewmemberData
 				if (crewmemberData["alert"])
 					cache_data_alert[num2text(z_level)] = TRUE
@@ -78,36 +78,37 @@ var/global/datum/repository/crew/crew_repository = new()
 	var/list/tracked = list()
 	for(var/mob/living/carbon/human/H in SSmobs.mob_list)
 		if(H.wearing_rig)
-			tracked |= H.wearing_rig
+			for(var/obj/item/rig_module/healthbar/HB in H.wearing_rig.installed_modules)
+				tracked |= HB
 	return tracked
 
 
-/datum/repository/crew/proc/run_queues(H, C, pos, crewmemberData)
+/datum/repository/crew/proc/run_queues(H, HB, pos, crewmemberData)
 	for(var/modifier_queue in modifier_queues)
 		if(crewmemberData["sensor_type"] >= modifier_queues[modifier_queue])
-			. = process_crew_data(modifier_queue, H, C, pos, crewmemberData)
+			. = process_crew_data(modifier_queue, H, HB, pos, crewmemberData)
 			if(. & MOD_SUIT_SENSORS_REJECTED)
 				return
 
-/datum/repository/crew/proc/process_crew_data(var/PriorityQueue/modifiers, var/mob/living/carbon/human/H, var/obj/item/clothing/under/C, var/turf/pos, var/list/crew_data)
+/datum/repository/crew/proc/process_crew_data(var/PriorityQueue/modifiers, var/mob/living/carbon/human/H, var/obj/item/rig_module/healthbar/HB, var/turf/pos, var/list/crew_data)
 	var/current_priority = INFINITY
 	var/list/modifiers_of_this_priority = list()
 
 	for(var/crew_sensor_modifier/csm in modifiers.L)
 		if(csm.priority < current_priority)
-			. = check_queue(modifiers_of_this_priority, H, C, pos, crew_data)
+			. = check_queue(modifiers_of_this_priority, H, HB, pos, crew_data)
 			if(. != MOD_SUIT_SENSORS_NONE)
 				return
 		current_priority = csm.priority
 		modifiers_of_this_priority += csm
-	return check_queue(modifiers_of_this_priority, H, C, pos, crew_data)
+	return check_queue(modifiers_of_this_priority, H, HB, pos, crew_data)
 
-/datum/repository/crew/proc/check_queue(var/list/modifiers_of_this_priority, H, C, pos, crew_data)
+/datum/repository/crew/proc/check_queue(var/list/modifiers_of_this_priority, H, HB, pos, crew_data)
 	while(modifiers_of_this_priority.len)
 		var/crew_sensor_modifier/pcsm = pick(modifiers_of_this_priority)
 		modifiers_of_this_priority -= pcsm
-		if(pcsm.may_process_crew_data(H, C, pos))
-			. = pcsm.process_crew_data(H, C, pos, crew_data)
+		if(pcsm.may_process_crew_data(H, HB, pos))
+			. = pcsm.process_crew_data(H, HB, pos, crew_data)
 			if(. != MOD_SUIT_SENSORS_NONE)
 				return
 	return MOD_SUIT_SENSORS_NONE

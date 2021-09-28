@@ -73,12 +73,14 @@ proc/iscuffed(A)
 
 proc/hassensorlevel(mob/living/carbon/human/H, var/level)
 	if(H?.wearing_rig)
-		return H.wearing_rig.tracking_level >= level
+		for(var/obj/item/rig_module/healthbar/HB in H.wearing_rig.installed_modules)
+			return HB.tracking_level >= level
 	return 0
 
 proc/getsensorlevel(mob/living/carbon/human/H)
 	if(H?.wearing_rig)
-		return H.wearing_rig.tracking_level
+		for(var/obj/item/rig_module/healthbar/HB in H.wearing_rig.installed_modules)
+			return HB.tracking_level
 	return RIG_SENSOR_OFF
 
 
