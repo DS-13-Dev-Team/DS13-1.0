@@ -50,7 +50,7 @@
 					if(found)
 						if(!(found in mobs_found))
 							mobs_found += found
-							msg += "<b>[original_word] <A HREF='?_src_=holder;adminmoreinfo=\ref[found]'>(?)</A>"
+							msg += "<b>[original_word] [ADMIN_QUE(found)]"
 							if(!ai_found && isAI(found))
 								ai_found = 1
 								msg += " <A HREF='?_src_=holder;adminchecklaws=\ref[mob]'>(CL)</A>"
@@ -168,7 +168,7 @@
 					X << msg
 
 	//show it to the person adminhelping too
-	to_chat(src, "<font color='blue'>PM to-<b>Staff</b> (<a href='?src=\ref[usr];close_ticket=\ref[ticket]'>CLOSE</a>): [original_msg]</font>")
+	to_chat(src, "<span class='adminhelp'><font color='blue'>PM to-<b>Staff</b> (<a href='?src=\ref[usr];close_ticket=\ref[ticket]'>CLOSE</a>): [original_msg]</font></span>")
 	var/admin_number_present = GLOB.admins.len - admin_number_afk
 	log_admin("HELP: [key_name(src)]: [original_msg] - heard by [admin_number_present] non-AFK admins.")
 	if(admin_number_present <= 0)

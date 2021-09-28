@@ -181,18 +181,39 @@
 	set category = "Server"
 	set desc="Start the round RIGHT NOW"
 	set name="Start Now"
-	if(!SSticker)
-		alert("Unable to start the game as it is not set up.")
+	if(!check_rights(R_SERVER))
 		return
-	if(SSticker.current_state == GAME_STATE_PREGAME && !(initialization_stage & INITIALIZATION_NOW))
-		log_admin("[usr.key] has started the game.")
-		message_admins("<font color='blue'>[usr.key] has started the game.</font>")
-		feedback_add_details("admin_verb","SN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-		initialization_stage |= INITIALIZATION_NOW
-		return 1
-	else
-		to_chat(usr, "<span class='warning'>Error: Start Now: Game has already started.</span>")
-		return 0
+
+	if(SSticker.current_state != GAME_STATE_STARTUP && SSticker.current_state != GAME_STATE_PREGAME)
+		to_chat(usr, SPAN_WARNING("The round has already started."))
+		return
+
+	if(SSticker.start_immediately)
+		SSticker.start_immediately = FALSE
+		log_admin("[key_name(usr)] has cancelled the early round start.")
+		message_admins("[ADMIN_TPMONTY(usr)] has cancelled the early round start.")
+		return
+
+	var/msg = "has started the round early."
+
+	if(SSticker.setup_failed)
+		if(tgui_alert("Previous setup failed. Would you like to try again, bypassing the checks? Win condition checking will also be paused.", "Start Round", list("Yes", "No")) != "Yes")
+			return
+		msg += " Bypassing roundstart checks."
+		SSticker.bypass_checks = TRUE
+		SSticker.roundend_check_paused = TRUE
+
+	else if(tgui_alert("Are you sure you want to start the round early?", "Start Round", list("Yes", "No")) == "No")
+		return
+
+	if(SSticker.current_state == GAME_STATE_STARTUP)
+		msg += " The round is still setting up, but the round will be started as soon as possible. You may abort this by trying to start early again."
+
+	SSticker.start_immediately = TRUE
+	SSvote.voted = TRUE
+	SSvote.reset()
+	log_admin("[key_name(usr)] [msg]")
+	message_admins("[ADMIN_TPMONTY(usr)] [msg]")
 
 /datum/admins/proc/toggleenter()
 	set category = "Server"

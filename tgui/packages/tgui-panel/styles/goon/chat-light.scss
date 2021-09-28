@@ -673,6 +673,18 @@ h1.alert, h2.alert {
   font-weight: bold;
 }
 
+.necromorph {
+  color: #543354
+}
+
+.necrosignal {
+  color: #543354
+}
+
+.necromarker {
+  color: #543354
+}
+
 .alien {
   color: #543354;
 }
@@ -701,6 +713,40 @@ h1.alert, h2.alert {
   color: #4d004d;
   font-weight: bold;
   font-size: 185%;
+}
+
+.role_header{
+  color: #db0000;
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  font-family: trebuchet-ms;
+  font-size: 1.5em;
+}
+.role_body{
+  color: #000099;
+  display: block;
+  text-align: center;
+}
+.round_setup{
+  color: #db0000;
+  font-family: impact;
+  font-size: 1.25em;
+}
+.round_header{
+  color: #db0000;
+  display: block;
+  text-align: center;
+  font-family: courier;
+  font-weight: bold;
+  font-size: 2em;
+}
+.round_body{
+  color: #001427;
+  display: block;
+  text-align: center;
+  font-family: trebuchet-ms;
+  font-weight: bold; font-size: 1.5em;
 }
 
 .interface {

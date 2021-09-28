@@ -89,9 +89,9 @@
 		if(holder)
 			if(C.is_stealthed())
 				extra += " (Stealthed)"
-			if(isobserver(C.mob))
+			if(isghost(C.mob))
 				extra += " - Observing"
-			else if(istype(C.mob,/mob/dead/new_player))
+			else if(isnewplayer(C.mob))
 				extra += " - Lobby"
 			else
 				extra += " - Playing"
@@ -110,11 +110,18 @@
 		else if (R_DEBUG & C.holder.rights)
 			devwho += "\t[C] is a [C.holder.rank][extra]\n"
 			dev_count++
-
-	to_chat(src, "<b><big>Online staff:</big></b>")
-	to_chat(src, "<b>Current Admins ([admin_count]):</b><br>[adminwho]<br>")
-	to_chat(src, "<b>Current Moderators ([mod_count]):</b><br>[modwho]<br>")
-	to_chat(src, "<b>Current Mentors ([ment_count]):</b><br>[mentwho]<br>")
-	to_chat(src, "<b>Current Developers ([dev_count]):</b><br>[devwho]<br>")
+	var/msg = ""
+	if(!admin_count && !mod_count && !ment_count && !dev_count)
+		msg += "<b><big>Online staff:</big></b>"
+		if(!admin_count)
+			msg += "<b>Current Admins ([admin_count]):</b><br>[adminwho]<br>"
+		if(!mod_count)
+			msg += "<b>Current Moderators ([mod_count]):</b><br>[modwho]<br>"
+		if(!ment_count)
+			msg += "<b>Current Mentors ([ment_count]):</b><br>[mentwho]<br>"
+		if(!dev_count)
+			msg += "<b>Current Developers ([dev_count]):</b><br>[devwho]<br>"
+	if(!msg)
+		to_chat(src, "<span class='infoplain'>[msg]</span>")
 
 #undef DEFAULT_WHO_CELLS_PER_ROW

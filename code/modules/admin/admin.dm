@@ -10,7 +10,7 @@ var/global/floorIsLava = 0
 	for(var/client/C in GLOB.admins)
 		if(R_ADMIN & C.holder.rights)
 			to_chat(C,
-					type = MESSAGE_TYPE_ADMINCHAT,
+					type = MESSAGE_TYPE_ADMINLOG,
 					html = msg)
 /proc/message_mods(msg)
 	msg = "<span class=\"log_message\"><span class=\"prefix\">MOD LOG:</span> <span class=\"message\">[msg]</span></span>"
@@ -18,7 +18,7 @@ var/global/floorIsLava = 0
 	for(var/client/C in GLOB.admins)
 		if(R_MOD & C.holder.rights)
 			to_chat(C,
-					type = MESSAGE_TYPE_MENTORCHAT,
+					type = MESSAGE_TYPE_ADMINLOG,
 					html = msg)
 /proc/message_staff(msg)
 	msg = "<span class=\"log_message\"><span class=\"prefix\">STAFF LOG:</span> <span class=\"message\">[msg]</span></span>"
@@ -36,7 +36,7 @@ var/global/floorIsLava = 0
 			if(C.get_preference_value(/datum/client_preference/staff/show_attack_logs) == GLOB.PREF_SHOW)
 				var/msg = rendered
 				to_chat(C,
-					type = MESSAGE_TYPE_ADMINCHAT,
+					type = MESSAGE_TYPE_ATTACKLOG,
 					html = msg)
 
 /proc/admin_notice(message, rights)
@@ -78,8 +78,8 @@ var/global/floorIsLava = 0
 		<a href='?_src_=vars;Vars=\ref[M]'>VV</a> -
 		<a href='?src=\ref[src];traitor=\ref[M]'>TP</a> -
 		<a href='?src=\ref[usr];priv_msg=\ref[M]'>PM</a> -
-		<a href='?src=\ref[src];subtlemessage=\ref[M]'>SM</a> -
-		[admin_jump_link(M, src)]\] <br>
+		[ADMIN_SM(M)] -
+		[ADMIN_JMP(M)]\] <br>
 		<b>Mob type:</b> [M.type]<br>
 		<b>Inactivity time:</b> [M.client ? "[M.client.inactivity/600] minutes" : "Logged out"]<br/><br/>
 		<A href='?src=\ref[src];boot2=\ref[M]'>Kick</A> |
@@ -116,7 +116,7 @@ var/global/floorIsLava = 0
 		[check_rights(R_ADMIN|R_MOD,0) ? "<A href='?src=\ref[src];traitor=\ref[M]'>Traitor panel</A> | " : "" ]
 		[check_rights(R_INVESTIGATE,0) ? "<A href='?src=\ref[src];skillpanel=\ref[M]'>Skill panel</A> | " : "" ]
 		<A href='?src=\ref[src];narrateto=\ref[M]'>Narrate to</A> |
-		<A href='?src=\ref[src];subtlemessage=\ref[M]'>Subtle message</A>
+		[ADMIN_SM(M)]
 	"}
 
 	if (M.client)
@@ -1024,19 +1024,19 @@ var/global/floorIsLava = 0
 			return "<b>[key_name(C, link, name, highlight_special, ticket)]</b>"
 
 		if(1)	//Private Messages
-			return "<b>[key_name(C, link, name, highlight_special, ticket)](<A HREF='?_src_=holder;adminmoreinfo=\ref[M]'>?</A>)</b>"
+			return "<b>[key_name(C, link, name, highlight_special, ticket)]([ADMIN_QUE(M)])</b>"
 
 		if(2)	//Admins
 			var/ref_mob = "\ref[M]"
-			return "<b>[key_name(C, link, name, highlight_special, ticket)](<A HREF='?_src_=holder;adminmoreinfo=[ref_mob]'>?</A>) (<A HREF='?_src_=holder;adminplayeropts=[ref_mob]'>PP</A>) (<A HREF='?_src_=vars;Vars=[ref_mob]'>VV</A>) (<A HREF='?_src_=holder;subtlemessage=[ref_mob]'>SM</A>) ([ADMIN_JMP(M)]) (<A HREF='?_src_=holder;check_antagonist=1'>CA</A>)</b>"
+			return "<b>[key_name(C, link, name, highlight_special, ticket)]([ADMIN_QUE(ref_mob)]'>?</A>) (<A HREF='?_src_=holder;adminplayeropts=[ref_mob]'>PP</A>) ([ADMIN_VV(ref_mob)]) ([ADMIN_SM(ref_mob)]) ([ADMIN_JMP(M)]) (<A HREF='?_src_=holder;check_antagonist=1'>CA</A>)</b>"
 
 		if(3)	//Devs
 			var/ref_mob = "\ref[M]"
-			return "<b>[key_name(C, link, name, highlight_special, ticket)](<A HREF='?_src_=vars;Vars=[ref_mob]'>VV</A>)([ADMIN_JMP(M)])</b>"
+			return "<b>[key_name(C, link, name, highlight_special, ticket)]([ADMIN_VV(ref_mob)])([ADMIN_JMP(M)])</b>"
 
 		if(4)	//Mentors
 			var/ref_mob = "\ref[M]"
-			return "<b>[key_name(C, link, name, highlight_special, ticket)] (<A HREF='?_src_=holder;adminmoreinfo=\ref[M]'>?</A>) (<A HREF='?_src_=holder;adminplayeropts=[ref_mob]'>PP</A>) (<A HREF='?_src_=vars;Vars=[ref_mob]'>VV</A>) (<A HREF='?_src_=holder;subtlemessage=[ref_mob]'>SM</A>) ([ADMIN_JMP(M)])</b>"
+			return "<b>[key_name(C, link, name, highlight_special, ticket)] ([ADMIN_QUE(M)]) (<A HREF='?_src_=holder;adminplayeropts=[ref_mob]'>PP</A>) ([ADMIN_VV(ref_mob)]) ([ADMIN_SM(ref_mob)]) ([ADMIN_JMP(M)])</b>"
 
 /proc/ishost(var/client/C)
 	return check_rights(R_HOST, 0, C)
