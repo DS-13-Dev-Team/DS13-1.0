@@ -58,3 +58,5 @@ changes:
   - bugfix: "Fixed infectors being able to affect necromorphs."
   - bugfix: "Sense no longer detects converted humans."
   - bugfix: "Fixed a few issues where newly converted humans would be stuck unconscious for a long period or have a missing HUD"
+  - tweak: "Necromorphs can no longer buckle people to chairs"
+  - tweak: "Infectors can now use Reanimate on unconscious victims."
