@@ -69,6 +69,9 @@
 			if (H.stat == DEAD)
 				continue
 
+			if (H.is_necromorph())
+				continue
+
 			//Only detect people on our floor
 			if (H.z != user.z)
 				continue
