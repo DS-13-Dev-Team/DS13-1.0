@@ -63,7 +63,7 @@
 
 
 /datum/patron_item/New()
-
+	.=..()
 
 	if (!isnull(loadout_cost) && !isnull(loadout_access))
 		create_loadout_datum()
@@ -109,4 +109,116 @@
 	register_research_design(D)
 
 
-/hook/startup/proc/load_patron_item_whitelists()
+
+/*
+	This proc loads whitelists for Patron items. It assumes that list is appropriately formatted according to the instructions in that file
+*/
+/proc/load_patron_item_whitelists()
+
+	//The ID of the whitelist we are currently reading
+	var/current_id
+
+	//The list of keys in the whitelist
+	var/list/current_list = null
+
+	for(var/line in splittext(file2text("config/custom_items.txt"), "\n"))
+
+		line = trim(line)
+		if(line == "" || !line || findtext(line, "#", 1, 2))
+			continue
+
+
+
+		var/list/split = splittext(line,regex(@"[ {},]"))
+		if(!LAZYLEN(split))
+			continue
+
+		for (var/string in split)
+
+			if (!length(string))
+				continue
+
+			//If we don't have an open list id yet, then this first word must be a new ID
+			if (!current_id)
+				current_id = string
+				continue
+
+			current_list += string
+
+		//If there's a curly brace at the end of the line, it closes this list
+		if (current_id && findtext(line, "}"))
+			register_patron_whitelist(current_id, current_list)
+			current_list = list()
+			current_id = null
+
+
+//Here we take an assembled whitelist and find which patron item it should attach to by matching the ID
+/proc/register_patron_whitelist(current_id, list/current_list)
+	GLOB.patron_item_whitelisted_ckeys |= current_list
+
+	for (var/datum/patron_item/PI in GLOB.patron_items)
+		if (PI.id == current_id)
+			PI.whitelist = current_list.Copy()
+			return TRUE
+
+	LOG_DEBUG("ERROR: Patron whitelist ID [current_id] found no matching patron_item datum to assign to")
+	return FALSE
+
+
+// Parses the config file into the custom_items list.
+//DEPRECATED: This proc is no longer used, kept for future reference
+/*
+/hook/startup/proc/load_custom_items()
+
+	var/datum/custom_item/current_data
+
+
+		if(findtext(line, "{", 1, 2) || findtext(line, "}", 1, 2)) // New block!
+			if(current_data && current_data.assoc_key)
+				if(!custom_items[current_data.assoc_key])
+					custom_items[current_data.assoc_key] = list()
+				var/list/L = custom_items[current_data.assoc_key]
+				L |= current_data
+			current_data = null
+
+		var/split = findtext(line,":")
+		if(!split)
+			continue
+		var/field = trim(copytext(line,1,split))
+		var/field_data = trim(copytext(line,(split+1)))
+		if(!field || !field_data)
+			continue
+
+		if(!current_data)
+			current_data = new()
+
+		switch(field)
+			if("ckey")
+				current_data.assoc_key = lowertext(field_data)
+			if("character_name")
+				current_data.character_name = lowertext(field_data)
+			if("item_path")
+				current_data.item_path = text2path(field_data)
+				current_data.item_path_as_string = field_data
+			if("item_name")
+				current_data.name = field_data
+			if("item_icon")
+				current_data.item_icon = field_data
+			if("inherit_inhands")
+				current_data.inherit_inhands = text2num(field_data)
+			if("description")
+				current_data.description = field_data
+			if("req_access")
+				current_data.req_access = text2num(field_data)
+			if("req_titles")
+				current_data.req_titles = splittext(field_data,", ")
+			if("kit_name")
+				current_data.kit_name = field_data
+			if("kit_desc")
+				current_data.kit_desc = field_data
+			if("kit_icon")
+				current_data.kit_icon = field_data
+			if("additional_data")
+				current_data.additional_data = field_data
+	return TRUE
+*/

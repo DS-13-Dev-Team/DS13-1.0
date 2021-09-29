@@ -17,3 +17,15 @@
 	  <br>\
 	  2. While equipped, both in your loadout at roundstart, and your inventory during the round, this blade gives an extra 15% chance to be picked for unitology antagonist roles.<br>\
 	  This effect does not override your preferences, if you have unitologists set to never then you still won't be picked"
+
+
+
+/*
+	RIG suits
+*/
+/datum/custom_item/max_stone_rig
+	display_name = "modified advanced RIG"
+	path = /obj/item/weapon/rig/advanced/maxstone
+	id = "max_stone_rig"
+	store_cost = 12000
+	store_access = ACCESS_WHITELIST

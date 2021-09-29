@@ -169,6 +169,9 @@
 
 		GLOB.patron_items += PI
 
+	//Now we load and assign the whitelists
+	load_patron_item_whitelists()
+
 	//These procs update and sort various other things after the patron items have added themselves to them
 	sort_loadout_categories()
 	SSdatabase.update_store_designs()
