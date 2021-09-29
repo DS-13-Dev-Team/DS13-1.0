@@ -50,11 +50,13 @@
 	user = newuser
 	GLOB.updatehealth_event.register(user, src, /obj/item/rig_module/healthbar/proc/update)
 	GLOB.death_event.register(user, src, /obj/item/rig_module/healthbar/proc/death)
+	holder.healthbar = src
 
 /obj/item/rig_module/healthbar/proc/unregister_user()
 	GLOB.updatehealth_event.unregister(user, src, /obj/item/rig_module/healthbar/proc/update)
 	GLOB.death_event.unregister(user, src, /obj/item/rig_module/healthbar/proc/death)
 	user = null
+	holder.healthbar = null
 
 /obj/item/rig_module/healthbar/proc/update()
 	if (QDELETED(user) || QDELETED(holder) || holder.loc != user)

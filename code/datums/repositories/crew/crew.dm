@@ -49,7 +49,7 @@ var/global/datum/repository/crew/crew_repository = new()
 
 	cache_data_alert[num2text(z_level)] = FALSE
 	var/tracked = scan()
-	for(var/obj/item/rig_module/healthbar/HB in tracked)
+	for(var/obj/item/rig_module/healthbar/HB as anything in tracked)
 		var/turf/pos = get_turf(HB)
 		if(HB.tracking_level != RIG_SENSOR_OFF && pos?.z == z_level && HB.holder.active)
 
@@ -76,10 +76,9 @@ var/global/datum/repository/crew/crew_repository = new()
 
 /datum/repository/crew/proc/scan()
 	var/list/tracked = list()
-	for(var/mob/living/carbon/human/H in SSmobs.mob_list)
-		if(H.wearing_rig)
-			for(var/obj/item/rig_module/healthbar/HB in H.wearing_rig.installed_modules)
-				tracked |= HB
+	for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
+		if(H.wearing_rig?.healthbar)
+			tracked |= H.wearing_rig.healthbar
 	return tracked
 
 
