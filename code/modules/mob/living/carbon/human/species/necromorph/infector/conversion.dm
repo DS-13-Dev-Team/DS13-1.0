@@ -132,7 +132,7 @@
 
 	//Monkey?
 	if (biomass == 7)
-		options[SPECIES_NECROMORPH_LEAPER_NECROMONKEY]	=	9999 * compatibility
+		options[SPECIES_NECROMORPH_LEAPER_HOPPER]	=	9999 * compatibility
 
 	//Gender based options
 	if (gender == FEMALE)

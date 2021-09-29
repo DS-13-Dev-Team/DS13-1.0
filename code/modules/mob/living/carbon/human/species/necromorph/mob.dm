@@ -47,7 +47,7 @@
 /mob/living/carbon/human/necromorph/leaper/enhanced/New(var/new_loc, var/new_species = SPECIES_NECROMORPH_LEAPER_ENHANCED)
 	..(new_loc, new_species)
 
-/mob/living/carbon/human/necromorph/leaper/necromonkey/New(var/new_loc, var/new_species = SPECIES_NECROMORPH_LEAPER_NECROMONKEY)
+/mob/living/carbon/human/necromorph/leaper/hopper/New(var/new_loc, var/new_species = SPECIES_NECROMORPH_LEAPER_HOPPER)
 	..(new_loc, new_species)
 
 /mob/living/carbon/human/necromorph/lurker/New(var/new_loc, var/new_species = SPECIES_NECROMORPH_LURKER)
