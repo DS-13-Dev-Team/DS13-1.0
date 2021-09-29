@@ -182,7 +182,7 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 	limb_health_factor = 0.6
 	pixel_offset_x = null
 
-	biomass = 14 //7 more biomass than a normal monkey. Reward for infecting monkeys rather than absorbing them.
+	biomass = 7
 	biomass_reclamation = 0.75
 	spawner_spawnable = FALSE
 
