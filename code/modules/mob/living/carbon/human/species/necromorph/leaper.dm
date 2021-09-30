@@ -203,10 +203,6 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 /datum/unarmed_attack/claws/leaper/strong
 	damage = 10.5 //Noninteger damage values are perfectly fine, contrary to popular belief
 
-/datum/unarmed_attack/claws/monkey
-	damage = 6.5
-
-
 //The leaper has a tail instead of legs
 /obj/item/organ/external/tail/leaper
 	max_damage = 65
