@@ -15,7 +15,7 @@
 	var/datum/wires/rnd/wires = null
 	var/obj/machinery/computer/rdconsole/linked_console
 	var/working = 0
-	var/list/materials = list()
+	var/list/datum/rnd_material/materials = list()
 
 /obj/machinery/r_n_d/proc/eject_sheet()
 	return

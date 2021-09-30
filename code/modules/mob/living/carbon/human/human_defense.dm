@@ -647,7 +647,8 @@ meteor_act
 	if (strike.affecting && strike.affecting.defensive_group)
 		if (prob(limb_block_chance))
 			//It is! Alright, lets get the list of limbs that can be used to defend this one
-			var/list/possible_defenses = species.defensive_limbs[strike.affecting.defensive_group].Copy()
+			var/list/defences = species.defensive_limbs[strike.affecting.defensive_group]
+			var/list/possible_defenses = defences.Copy()
 			if (!LAZYLEN(possible_defenses))
 				return
 			var/obj/item/organ/external/blocker = null

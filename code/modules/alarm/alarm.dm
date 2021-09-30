@@ -150,5 +150,3 @@ area/get_alarm_z()
 
 /mob/living/silicon/robot/syndicate/get_alarm_cameras()
 	return list()
-
-#undef ALARM_LOSS_DELAY

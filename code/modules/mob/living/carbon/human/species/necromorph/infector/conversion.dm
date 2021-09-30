@@ -173,13 +173,18 @@
 	return options
 
 
-
+/*
+	Safety Checks
+*/
 /mob/living/proc/is_necromorph_conversion_valid()
 	.= TRUE
-	if (stat != DEAD)
+	if (stat != DEAD && stat != UNCONSCIOUS)
 		return FALSE
 
 	if (QDELETED(src))
+		return FALSE
+
+	if (is_necromorph())
 		return FALSE
 
 
@@ -187,6 +192,9 @@
 	.=..()
 	if (!has_organ(BP_HEAD))
 		return FALSE
+
+
+
 
 
 //Compatibility
