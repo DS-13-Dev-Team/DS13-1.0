@@ -60,7 +60,7 @@
 		L.handle_regular_hud_updates(FALSE)//Pass false here to not call update vision and avoid an infinite loop
 
 		//Update hud healthbar if one exists, so that its clamped to screen size
-		if (L.hud_used.hud_healthbar)
+		if (L.hud_used?.hud_healthbar)
 			L.hud_used.hud_healthbar.set_size(TRUE)
 
 	if (prefs.auto_fit_viewport)

@@ -43,9 +43,6 @@
 /proc/cmp_subsystem_priority(datum/controller/subsystem/a, datum/controller/subsystem/b)
 	return a.priority - b.priority
 
-/proc/cmp_filter_data_priority(list/A, list/B)
-	return A["priority"] - B["priority"]
-
 /proc/cmp_text_asc(a,b)
 	return sorttext(b, a)
 
