@@ -73,4 +73,4 @@ GLOBAL_DATUM_INIT(clarity_set_event, /decl/observ/clarity_set, new)
 		if (clear != newdensity)
 			clear = null
 
-	GLOB.clarity_set_event.raise_event(src)
+	RAISE_EVENT(src, clarity_set_event)

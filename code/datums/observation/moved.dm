@@ -45,14 +45,14 @@ GLOBAL_DATUM_INIT(moved_event, /decl/observ/moved, new)
 // Entered() typically lifts the moved event, but in the case of null-space we'll have to handle it.
 /atom/movable/Move(NewLoc, Dir = 0, step_x = 0, step_y = 0, var/glide_size_override = 0)
 	var/old_loc = loc
-	GLOB.pre_move_event.raise_event(src, loc, NewLoc)
+	RAISE_EVENT(src, pre_move_event, loc, NewLoc)
 	. = ..()
 	if(. && !loc)
 		RAISE_EVENT(src, moved_event, old_loc, null)
 
 /atom/movable/forceMove(atom/destination, var/special_event, glide_size_override=0)
 	var/old_loc = loc
-	GLOB.pre_move_event.raise_event(src, loc, destination)
+	RAISE_EVENT(src, pre_move_event, loc, destination)
 	. = ..()
 	if(. && !loc)
 		RAISE_EVENT(src, moved_event, old_loc, null)

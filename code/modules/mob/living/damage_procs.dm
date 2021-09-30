@@ -138,7 +138,7 @@
 		var/heal_amount = min(total, getToxLoss())
 		adjustToxLoss(-heal_amount)
 		total -= heal_amount
-		
+
 	if (total <= 0)
 		return 0
 
@@ -159,7 +159,7 @@
 
 	if (health <= 0)
 		zero_health()
-	GLOB.updatehealth_event.raise_event(src)
+	RAISE_EVENT(src, updatehealth_event)
 
 /mob/living/proc/zero_health()
 	handle_death_check()

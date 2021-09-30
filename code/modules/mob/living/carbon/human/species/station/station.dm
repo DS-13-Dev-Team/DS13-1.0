@@ -95,7 +95,7 @@
 	return ..()
 
 /datum/species/human/handle_organ_external_damage(var/obj/item/organ/external/organ, brute, burn, damage_flags, used_weapon)
-	GLOB.damage_hit_event.raise_event(organ.owner, organ, brute, burn, damage_flags, used_weapon)
+	RAISE_EVENT(organ.owner, damage_hit_event, organ, brute, burn, damage_flags, used_weapon)
 
 	var/mob/living/L = organ.owner
 	//Here we'll handle pain audio

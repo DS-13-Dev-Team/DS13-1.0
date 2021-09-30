@@ -50,7 +50,7 @@ default behaviour is:
 	return ..()
 
 /mob/living/Bump(atom/movable/AM, yes)
-	GLOB.bump_event.raise_event(src, AM)
+	RAISE_EVENT(src, bump_event, AM)
 	spawn(0)
 		if ((!( yes ) || now_pushing) || !loc)
 			return

@@ -21,4 +21,4 @@ GLOBAL_DATUM_INIT(exited_event, /decl/observ/exited, new)
 
 /atom/Exited(atom/movable/exiter, atom/new_loc)
 	. = ..()
-	GLOB.exited_event.raise_event(src, exiter, new_loc)
+	RAISE_EVENT(src, exited_event, exiter, new_loc)

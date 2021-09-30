@@ -36,5 +36,5 @@ GLOBAL_DATUM_INIT(item_equipped_event, /decl/observ/item_equipped, new)
 
 /obj/item/equipped(var/mob/user, var/slot)
 	. = ..()
-	GLOB.mob_equipped_event.raise_event(user, src, slot)
-	GLOB.item_equipped_event.raise_event(src, user, slot)
+	RAISE_EVENT(user, mob_equipped_event, src, slot)
+	RAISE_EVENT(src, item_equipped_event, user, slot)

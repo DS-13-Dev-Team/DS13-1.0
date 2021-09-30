@@ -25,4 +25,4 @@ GLOBAL_DATUM_INIT(turf_changed_event, /decl/observ/turf_changed, new)
 	var/old_opacity = opacity
 	. = ..()
 	if(.)
-		GLOB.turf_changed_event.raise_event(src, old_density, density, old_opacity, opacity)
+		RAISE_EVENT(src, turf_changed_event, old_density, density, old_opacity, opacity)

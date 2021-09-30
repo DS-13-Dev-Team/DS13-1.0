@@ -118,9 +118,9 @@
 
 	if (prev_held != new_held)
 		if (istype(prev_held))
-			GLOB.swapped_from_event.raise_event(prev_held, src)
+			RAISE_EVENT(prev_held, swapped_from_event, src)
 		if (istype(new_held))
-			GLOB.swapped_to_event.raise_event(new_held, src)
+			RAISE_EVENT(new_held, swapped_to_event, src)
 
 	return TRUE
 

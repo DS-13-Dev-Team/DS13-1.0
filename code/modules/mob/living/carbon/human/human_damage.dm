@@ -74,7 +74,7 @@
 
 	health = max_health - getBrainLoss()
 
-	GLOB.updatehealth_event.raise_event(src)
+	RAISE_EVENT(src, updatehealth_event)
 
 	handle_death_check()	//This is where people die
 

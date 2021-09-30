@@ -22,4 +22,4 @@ GLOBAL_DATUM_INIT(sight_set_event, /decl/observ/sight_set, new)
 	var/old_sight = sight
 	if(old_sight != new_sight)
 		sight = new_sight
-		GLOB.sight_set_event.raise_event(src, old_sight, new_sight)
+		RAISE_EVENT(src, sight_set_event, old_sight, new_sight)

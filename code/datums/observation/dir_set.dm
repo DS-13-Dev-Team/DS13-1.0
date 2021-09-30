@@ -29,7 +29,7 @@ GLOBAL_DATUM_INIT(dir_set_event, /decl/observ/dir_set, new)
 /atom/set_dir()
 	var/old_dir = dir
 	. = ..()
-	GLOB.dir_set_event.raise_event(src, old_dir, dir)
+	RAISE_EVENT(src, dir_set_event, old_dir, dir)
 
 /atom/movable/Entered(var/atom/movable/am, atom/old_loc)
 	. = ..()

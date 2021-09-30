@@ -278,7 +278,7 @@
 				view_changed = TRUE
 
 			if (view_changed)
-				GLOB.view_changed_event.raise_event(src)
+				RAISE_EVENT(src, view_changed_event)
 
 
 /mob/proc/show_inv(mob/user as mob)

@@ -21,4 +21,4 @@ GLOBAL_DATUM_INIT(stat_set_event, /decl/observ/stat_set, new)
 	var/old_stat = stat
 	. = ..()
 	if(stat != old_stat)
-		GLOB.stat_set_event.raise_event(src, old_stat, new_stat)
+		RAISE_EVENT(src, stat_set_event, old_stat, new_stat)

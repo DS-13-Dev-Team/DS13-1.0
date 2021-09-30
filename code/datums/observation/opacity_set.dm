@@ -21,7 +21,7 @@ GLOBAL_DATUM_INIT(opacity_set_event, /decl/observ/opacity_set, new)
 	if(new_opacity != opacity)
 		var/old_opacity = opacity
 		opacity = new_opacity
-		GLOB.opacity_set_event.raise_event(src, old_opacity, new_opacity)
+		RAISE_EVENT(src, opacity_set_event, old_opacity, new_opacity)
 		return TRUE
 	else
 		return FALSE
@@ -30,4 +30,4 @@ GLOBAL_DATUM_INIT(opacity_set_event, /decl/observ/opacity_set, new)
 	var/old_opacity = opacity
 	. = ..()
 	if(opacity != old_opacity)
-		GLOB.opacity_set_event.raise_event(src, old_opacity, opacity)
+		RAISE_EVENT(src, opacity_set_event, old_opacity, opacity)

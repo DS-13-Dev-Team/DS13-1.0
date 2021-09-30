@@ -21,18 +21,18 @@ GLOBAL_DATUM_INIT(density_set_event, /decl/observ/density_set, new)
 	var/old_density = density
 	UNLINT(. = ..())
 	if(density != old_density)
-		GLOB.density_set_event.raise_event(src, old_density, density)
+		RAISE_EVENT(src, density_set_event, old_density, density)
 		//We may have just changed our turf's clear status, set it to maybe
 		if (isturf(loc))
 			var/turf/T = loc
-			GLOB.density_set_event.raise_event(T, old_density, density)	//Fire the event on the turf too
+			RAISE_EVENT(T, density_set_event, old_density, density)	//Fire the event on the turf too
 			T.clear = null
 
 /turf/ChangeTurf()
 	var/old_density = opacity
 	UNLINT(. = ..())
 	if(density != old_density)
-		GLOB.density_set_event.raise_event(src, old_density, density)
+		RAISE_EVENT(src, density_set_event, old_density, density)
 		clear = null
 
 
@@ -46,4 +46,4 @@ GLOBAL_DATUM_INIT(density_set_event, /decl/observ/density_set, new)
 
 		//If this turf was not already dense, maybe it is now. notify everyone of that possibility
 		if (!density)
-			GLOB.density_set_event.raise_event(src, density, density)
+			RAISE_EVENT(src, density_set_event, density, density)
