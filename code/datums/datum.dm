@@ -9,6 +9,15 @@
 	/// Datum level flags
 	var/datum_flags = NONE
 
+	/**
+	  * Any datum registered to receive observations from this datum is in this list
+	  *
+	  * Lazy associated list in the structure of `observation:registree/list of registrees`
+	  */
+	var/list/observations
+	/// Lazy associated list in the structure of `observations:proctype` that are run when the datum receives that observation
+	var/list/list/datum/callback/observation_procs
+
 	/// A weak reference to another datum
 	var/datum/weakref/weak_reference
 

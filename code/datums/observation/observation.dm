@@ -67,7 +67,7 @@
 	GLOB.all_observable_events += src
 	..()
 
-/decl/observ/proc/is_listening(var/event_source, var/datum/listener, var/proc_call)
+/decl/observ/proc/is_listening(event_source, datum/listener, proc_call)
 	if (!(event_source in event_sources))
 		return FALSE
 
@@ -87,19 +87,29 @@
 
 	return (proc_call in callback)
 
-/decl/observ/proc/has_listeners(var/event_source)
+/decl/observ/proc/has_listeners(event_source)
 	return is_listening(event_source)
 
-/decl/observ/proc/register(var/datum/event_source, var/datum/listener, var/proc_call)
-
+// listener - src, event_source - target, src - sig_type
+/decl/observ/proc/register(datum/event_source, datum/listener, proc_call)
+	if(QDELETED(src) || QDELETED(event_source))
+		return FALSE
 
 	// Crash if the event source is the wrong type.
 	if (!istype(event_source, expected_type))
 		CRASH("Unexpected type. Expected [expected_type], was [event_source.type]")
 
-	// Sanity checking.
-	if (!(listener && proc_call))
-		return FALSE
+	var/list/procs = listener.observation_procs
+
+	if(!procs)
+		listener.observation_procs = procs = list()
+
+	if(!procs[event_source])
+		procs[event_source] = list()
+
+	var/list/observations = event_source.observations
+	if(!observations)
+		event_source.observations = observations = list()
 
 	// Setup the listeners for this source if needed.
 	var/list/listeners = event_sources[event_source]
@@ -119,11 +129,24 @@
 
 	// Add the callback, and return true.
 	callbacks += proc_call
+
+	procs[event_source][src] = proc_call
+
+	if(!observations[src]) // Nothing has registered here yet
+		observations[src] = listener
+	else if(observations[src] == listener) // We already registered here
+		return TRUE
+	else if(!length(observations[src])) // One other thing registered here
+		observations[src] = list(observations[src]=TRUE)
+		observations[src][listener] = TRUE
+	else // Many other things have registered here
+		observations[src][listener] = TRUE
+
 	return TRUE
 
-/decl/observ/proc/unregister(var/event_source, var/datum/listener, var/proc_call)
-	// Sanity.
-	if (!(event_source && listener))
+/decl/observ/proc/unregister(datum/event_source, datum/listener, proc_call)
+	var/list/observations = event_source.observations
+	if(!listener.observation_procs || !listener.observation_procs[event_source] || !observations)
 		return FALSE
 
 	// Return false if nothing is listening for this event.
@@ -147,13 +170,52 @@
 	if(!callbacks?.Remove(proc_call))
 		return FALSE
 
+	switch(length(observations[src]))
+		if(2)
+			observations[src] = (observations[src]-listener)[1]
+		if(1)
+			crash_with("[event_source] ([event_source.type]) somehow has single length list inside observations")
+			if(src in observations[src])
+				observations -= src
+				if(!length(observations))
+					event_source.observations = null
+		if(0)
+			if(observations[src] == listener)
+				observations -= src
+				if(!length(observations))
+					event_source.observations = null
+		else
+			observations[src] -= listener
+
 	if (!length(callbacks))
 		listeners -= listener
 	if (!length(listener))
 		event_sources -= event_source
+
+	listener.observation_procs[event_source] -= src
+	if(!listener.observation_procs[event_source].len)
+		listener.observation_procs -= event_source
+
 	return TRUE
 
 
+/decl/observ/proc/RaiseEvent(list/arguments)
+	events_raised++
+
+	var/datum/listener = arguments[1]
+	var/target = listener.observations[src]
+	if(!length(target))
+		var/datum/listening_datum = target
+		return NONE | call(listening_datum, listening_datum.observation_procs[listener][src])(arglist(arguments))
+	. = NONE
+	// This exists so that even if one of the observation receivers unregisters the observation,
+	// all the objects that are receiving the observation get the observation this final time.
+	// AKA: No you can't cancel the observation reception of another object by doing an unregister in the same observation.
+	var/list/queued_calls = list()
+	for(var/datum/listening_datum as anything in target)
+		queued_calls[listening_datum] = listening_datum.observation_procs[listener][src]
+	for(var/datum/listening_datum as anything in queued_calls)
+		. |= call(listening_datum, queued_calls[listening_datum])(arglist(arguments))
 
 /decl/observ/proc/raise_event()
 
