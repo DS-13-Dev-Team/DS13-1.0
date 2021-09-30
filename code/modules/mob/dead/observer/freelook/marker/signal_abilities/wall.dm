@@ -12,6 +12,8 @@
 	energy_cost = 100
 	LOS_block = FALSE
 	placement_atom = /obj/structure/corruption_node/wall/visible
+	distance_blocked = 1	//Small minimum distance
+
 
 /*
 	The actual atom

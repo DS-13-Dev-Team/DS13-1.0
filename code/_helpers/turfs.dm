@@ -246,6 +246,30 @@
 		return H
 
 
+/*
+	Very specific use case. This proc returns true if the turf is currently visible to any conscious, living, human crewmember
+	It does not return true if seen by:
+		Animals
+		Necromorphs
+		Ghosts/signals
+
+	Optionally (enabled by default), tiles in sight of the marker, or a marker shard, are designated safe zone, crew visibility is ignored there
+*/
+/turf/proc/crew_nearby(var/distance = 7)
+	.=FALSE
+	for (var/mob/living/carbon/human/H in range(distance, src))
+		if (H.is_necromorph())
+			//Necromorphs don't count
+			continue
+		if (H.stat == UNCONSCIOUS)
+			continue
+
+		return H
+
+	return FALSE
+
+
+
 /turf/proc/is_in_sight_of_marker()
 	var/list/safe_types = list(/obj/item/marker_shard, /obj/machinery/marker)
 	for (var/obj/O in dview(7, src))
