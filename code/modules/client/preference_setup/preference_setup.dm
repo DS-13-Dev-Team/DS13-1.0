@@ -85,7 +85,7 @@ var/const/CHARACTER_PREFERENCE_INPUT_TITLE = "Character Preference"
 
 /*
 	This is run for changes that need to be made after loading a character
-	
+
 	This calls update_setup on every /datum/category_group/player_setup_category
 	And THAT calls the same thing on every /datum/category_item/player_setup_item
 	If anything anywhere in that propagated hierarchy returns true, the preferences will be saved back to disk after its all done
@@ -116,7 +116,7 @@ var/const/CHARACTER_PREFERENCE_INPUT_TITLE = "Character Preference"
 
 	if(href_list["category"])
 		var/category = locate(href_list["category"])
-		if(category && category in categories)
+		if(category && (category in categories))
 			selected_category = category
 		. = 1
 
