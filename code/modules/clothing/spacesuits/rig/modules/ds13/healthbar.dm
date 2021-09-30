@@ -27,6 +27,8 @@
 	GLOB.death_event.register(user, src, /obj/item/rig_module/healthbar/proc/death)
 
 /obj/item/rig_module/healthbar/proc/unregister_user()
+	if(!user)
+		return
 	GLOB.updatehealth_event.unregister(user, src, /obj/item/rig_module/healthbar/proc/update)
 	GLOB.death_event.unregister(user, src, /obj/item/rig_module/healthbar/proc/death)
 	user = null
