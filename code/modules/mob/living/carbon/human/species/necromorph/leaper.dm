@@ -301,19 +301,30 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 	set name = "Leap"
 	set category = "Abilities"
 
-	//Leap autotargets enemies within one tile of the clickpoint
 	if (!isliving(A))
-		A = autotarget_enemy_mob(A, 1, src, 999)
+		A = autotarget_enemy_mob(A, 2, src, 999)
 
 	var/mob/living/carbon/human/H = src
 
-	//Do a chargeup animation
+	if (!H.can_charge(A))
+		return
+
+	var/organ_check = FALSE
+	if (H.has_organ(BP_TAIL))
+		organ_check = TRUE
+
+	else if (H.has_organ(BP_R_ARM) && H.has_organ(BP_L_ARM))
+		organ_check = TRUE
+
+	if (!organ_check)
+		to_chat(src, SPAN_DANGER("You need your tail or both arms to perform a leap!"))
+		return
+
 	var/vector2/pixel_offset = Vector2.DirectionBetween(src, A) * -16
 	var/vector2/cached_pixels = get_new_vector(src.pixel_x, src.pixel_y)
 	animate(src, pixel_x = src.pixel_x + pixel_offset.x, pixel_y = src.pixel_y + pixel_offset.y, time = 1.2 SECONDS, easing = BACK_EASING, flags = ANIMATION_PARALLEL)
 	animate(pixel_x = cached_pixels.x, pixel_y = cached_pixels.y, time = 0.3 SECONDS)
 
-	//Long shout when targeting mobs, normal when targeting objects
 	if (ismob(A))
 		H.play_species_audio(H, SOUND_SHOUT_LONG, 100, 1, 3)
 	else
