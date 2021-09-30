@@ -47,7 +47,7 @@
 			var/icon_state = craftitem["icon_state"]
 			var/icon/I = icon(icon_file, icon_state, SOUTH)
 			Insert(sanitizeFileName(craftitem["name"]), I, icon_state)
-
+		craftitem = list("name" = craftitem["name"])
 	return ..()
 
 proc/get_craft_item(path)
