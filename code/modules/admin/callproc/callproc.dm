@@ -11,7 +11,7 @@
 	var/target = null
 	var/targetselected = 0
 
-	switch(alert("Proc owned by something?",, "Yes", "No", "Cancel"))
+	switch(alert("Proc owned by something?",, "Yes", "No", "CANCEL"))
 		if("Yes")
 			targetselected=1
 			switch(input("Proc owned by...", "Owner", null) as null|anything in list("Obj", "Mob", "Area or Turf", "Client"))
@@ -26,9 +26,9 @@
 				else
 					return
 			if(!target)
-				to_chat(usr, "Proc call cancelled.")
+				to_chat(usr, "Proc call CANCEL_led.")
 				return
-		if("Cancel")
+		if("CANCEL")
 			return
 		if("No")
 			; // do nothing
@@ -57,7 +57,7 @@
 		holder.callproc = new(src)
 	holder.callproc.callproc(hastarget, target)
 
-#define CANCEL -1
+#define CANCEL_N -1
 #define WAITING 0
 #define DONE 1
 
@@ -121,12 +121,12 @@
 	while(!done)
 		if(hastarget && !target)
 			to_chat(usr, "Your callproc target no longer exists.")
-			return CANCEL
+			return CANCEL_N
 		switch(input("Type of [arguments.len+1]\th variable", "argument [arguments.len+1]") as null|anything in list(
 				"finished", "null", "text", "num", "type", "obj reference", "mob reference",
 				"area/turf reference", "icon", "file", "client", "mob's area", "marked datum", "click on atom"))
 			if(null)
-				return CANCEL
+				return CANCEL_N
 
 			if("finished")
 				done = 1
@@ -136,60 +136,60 @@
 
 			if("text")
 				current = input("Enter text for [arguments.len+1]\th argument") as null|text
-				if(isnull(current)) return CANCEL
+				if(isnull(current)) return CANCEL_N
 
 			if("num")
 				current = input("Enter number for [arguments.len+1]\th argument") as null|num
-				if(isnull(current)) return CANCEL
+				if(isnull(current)) return CANCEL_N
 
 			if("type")
 				current = input("Select type for [arguments.len+1]\th argument") as null|anything in typesof(/obj, /mob, /area, /turf)
-				if(isnull(current)) return CANCEL
+				if(isnull(current)) return CANCEL_N
 
 			if("obj reference")
 				current = input("Select object for [arguments.len+1]\th argument") as null|obj in world
-				if(isnull(current)) return CANCEL
+				if(isnull(current)) return CANCEL_N
 
 			if("mob reference")
 				current = input("Select mob for [arguments.len+1]\th argument") as null|mob in world
-				if(isnull(current)) return CANCEL
+				if(isnull(current)) return CANCEL_N
 
 			if("area/turf reference")
 				current = input("Select area/turf for [arguments.len+1]\th argument") as null|area|turf in world
-				if(isnull(current)) return CANCEL
+				if(isnull(current)) return CANCEL_N
 
 			if("icon")
 				current = input("Provide icon for [arguments.len+1]\th argument") as null|icon
-				if(isnull(current)) return CANCEL
+				if(isnull(current)) return CANCEL_N
 
 			if("client")
 				current = input("Select client for [arguments.len+1]\th argument") as null|anything in GLOB.clients
-				if(isnull(current)) return CANCEL
+				if(isnull(current)) return CANCEL_N
 
 			if("mob's area")
 				var/mob/M = input("Select mob to take area for [arguments.len+1]\th argument") as null|mob in world
 				if(!M) return
 				current = get_area(M)
 				if(!current)
-					switch(alert("\The [M] appears to not have an area; do you want to pass null instead?",, "Yes", "Cancel"))
+					switch(alert("\The [M] appears to not have an area; do you want to pass null instead?",, "Yes", "CANCEL"))
 						if("Yes")
 							; // do nothing
-						if("Cancel")
-							return CANCEL
+						if("CANCEL")
+							return CANCEL_N
 
 			if("marked datum")
 				current = C.holder.marked_datum()
 				if(!current)
-					switch(alert("You do not currently have a marked datum; do you want to pass null instead?",, "Yes", "Cancel"))
+					switch(alert("You do not currently have a marked datum; do you want to pass null instead?",, "Yes", "CANCEL"))
 						if("Yes")
 							; // do nothing
-						if("Cancel")
-							return CANCEL
+						if("CANCEL")
+							return CANCEL_N
 
 			if("click on atom")
 				waiting_for_click = 1
 				add_verb(C, /client/proc/cancel_callproc_select)
-				to_chat(C, "Click an atom to select it. Click an atom then click 'cancel', or use the Cancel-Callproc-Select verb to cancel selecting a target by click.")
+				to_chat(C, "Click an atom to select it. Click an atom then click 'CANCEL', or use the CANCEL-Callproc-Select verb to CANCEL selecting a target by click.")
 				return WAITING
 
 		if(!done)
@@ -198,7 +198,7 @@
 	return DONE
 
 /client/proc/cancel_callproc_select()
-	set name = "Cancel Callproc Select"
+	set name = "CANCEL Callproc Select"
 	set category = "Admin"
 
 	remove_verb(src, /client/proc/cancel_callproc_select)
@@ -236,6 +236,6 @@
 	to_chat(usr, "<span class='info'>[procname]() returned: [json_encode(returnval)]</span>")
 	feedback_add_details("admin_verb","APC") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-#undef CANCEL
+#undef CANCEL_N
 #undef WAITING
 #undef DONE

@@ -528,7 +528,8 @@
 			if("stab")
 				var/mob/living/carbon/human/H = user
 				to_chat(user, SPAN_DANGER("You accidentally stuck [src] in your hand!"))
-				H.get_organ(H.get_holding_hand(src)).embed(src)
+				var/obj/item/organ/external/hand  = H.get_organ(H.get_holding_hand(src))
+				hand.embed(src)
 				return
 
 			//The tool completely breaks, permanantly gone

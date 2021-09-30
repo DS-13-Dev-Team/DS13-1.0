@@ -19,6 +19,7 @@
 #include "code\__datastructures\globals.dm"
 #include "code\__datastructures\priority_queue.dm"
 #include "code\__datastructures\stack.dm"
+#include "code\__defines\_click.dm"
 #include "code\__defines\_logging.dm"
 #include "code\__defines\_game.dm"
 #include "code\__defines\_planes+layers.dm"

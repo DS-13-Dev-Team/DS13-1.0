@@ -123,7 +123,7 @@
 			return
 
 		if (!L.is_necromorph_conversion_valid())
-			to_chat(potential_user, "Invalid Target: The target must be a dead non-necromorph lifeform which is not headless")
+			to_chat(potential_user, "Invalid Target: The target must be a dead or unconscious,  non-necromorph lifeform which is not headless")
 			return FALSE
 /*
 	Engorge

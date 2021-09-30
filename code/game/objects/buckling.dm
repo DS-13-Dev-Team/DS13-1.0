@@ -71,7 +71,7 @@
 	if(!SSticker) //why do we need to check this?
 		to_chat(user, "<span class='warning'>You can't buckle anyone in before the game starts.</span>")
 		return 0
-	if(!user.Adjacent(M) || user.restrained() || user.stat || istype(user, /mob/living/silicon/pai))
+	if(!user.Adjacent(M) || !user.is_advanced_tool_user() || user.restrained() || user.stat || istype(user, /mob/living/silicon/pai))
 		return 0
 	if(M == buckled_mob)
 		return 0
