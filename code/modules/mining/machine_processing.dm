@@ -204,8 +204,11 @@
 
 		if(!O)
 			break
-		var/OS = ores_stored[O.ore.name]
+
+
+		var/OS
 		if(O.ore)
+			OS = ores_stored[O.ore.name]
 			if (isnull(OS))
 				OS = 0
 			OS++
@@ -213,7 +216,7 @@
 			ores_stored[O.ore.name] = OS
 			qdel(O)
 		else
-			world.log << "[src] encountered ore [O] with oretag [O.ore ? O.ore : "(no ore)"] which this machine did not have an entry for!"
+			world.log << "[src] encountered ore [O] [O.type] with oretag [O.ore ? O.ore : "(no ore)"] which this machine did not have an entry for!"
 
 
 
