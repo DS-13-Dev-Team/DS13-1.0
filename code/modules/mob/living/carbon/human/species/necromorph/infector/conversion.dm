@@ -131,7 +131,8 @@
 	SPECIES_NECROMORPH_SLASHER_ENHANCED = (1 * compatibility))
 
 	//Monkey?
-	if (biomass == 7)
+	var/mob/living/carbon/human/H = src
+	if(istype(H.species, /datum/species/monkey))
 		options[SPECIES_NECROMORPH_LEAPER_HOPPER]	=	9999 * compatibility
 
 	//Gender based options
