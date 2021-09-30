@@ -133,7 +133,7 @@
 	//Monkey?
 	if(mob_size < MOB_MEDIUM)
 		options = list(SPECIES_NECROMORPH_LEAPER_HOPPER	=	1)
-	return options
+		return options
 
 	//Gender based options
 	if (gender == FEMALE)
