@@ -270,7 +270,7 @@ Be warned that friendly fire is fully active, it can harm other necromorphs as m
 /obj/item/projectile/bullet/acid/puker_snap
 	icon_state = "acid_small"
 	damage = 15
-	step_delay = 1.25
+	step_delay = 2
 	kill_count = PUKER_SNAPSHOT_RANGE
 	impact_type = /obj/effect/projectile/acid/impact/small
 
@@ -279,7 +279,7 @@ Be warned that friendly fire is fully active, it can harm other necromorphs as m
 /obj/item/projectile/bullet/acid/puker_long
 	name = "acid blast"
 	icon_state = "acid_large"
-	step_delay = 1.75
+	step_delay = 3
 	damage = 30
 	grippable = TRUE
 

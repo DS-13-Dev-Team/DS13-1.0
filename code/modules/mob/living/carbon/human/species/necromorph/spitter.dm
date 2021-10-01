@@ -215,7 +215,7 @@ Best used for harassment, skirmishing and initiating fights from afar against un
 /obj/item/projectile/bullet/acid/spitter_snap
 	icon_state = "acid_small"
 	damage = 10
-	step_delay = 1.5
+	step_delay = 2.5
 	kill_count = SPITTER_SNAPSHOT_RANGE
 	impact_type = /obj/effect/projectile/acid/impact/small
 
@@ -224,7 +224,7 @@ Best used for harassment, skirmishing and initiating fights from afar against un
 /obj/item/projectile/bullet/acid/spitter_long
 	name = "acid blast"
 	icon_state = "acid_large"
-	step_delay = 2
+	step_delay = 3.5
 	damage = 20
 	grippable = TRUE
 
