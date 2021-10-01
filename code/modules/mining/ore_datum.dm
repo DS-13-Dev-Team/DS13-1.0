@@ -1,4 +1,4 @@
-#define ORE_VALUE_FACTOR	6 //Change this number to modify mining bonus outputs globally
+#define ORE_VALUE_FACTOR	5 //Change this number to modify mining bonus outputs globally
 var/global/list/ore_data = list()
 var/global/list/ores_by_type = list()
 
