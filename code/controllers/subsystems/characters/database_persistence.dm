@@ -135,8 +135,8 @@ SUBSYSTEM_DEF(database)
 
 		//And lets write the new value back to the database
 		var/qstring = "UPDATE credit_records	SET credits = [total] WHERE character_id = [id];"
-		query = dbcon.NewQuery(qstring)
-		var/result = query.Execute()
+		var/DBQuery/upload_query = dbcon.NewQuery(qstring)
+		var/result = upload_query.Execute()
 		log_debug("Update credit query: [qstring]\n\
 		\n\
 		result is [result]")
