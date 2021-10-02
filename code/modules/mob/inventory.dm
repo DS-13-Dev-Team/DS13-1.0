@@ -379,6 +379,3 @@ var/list/slot_equipment_priority = list( \
 //placeholder until tg inventory system
 /mob/proc/is_holding(obj/item/I)
 	return ((I == l_hand) || (I == r_hand))
-
-/mob/proc/can_equip(obj/item/I, slot, disable_warning = FALSE, bypass_equip_delay_self = FALSE)
-	return FALSE

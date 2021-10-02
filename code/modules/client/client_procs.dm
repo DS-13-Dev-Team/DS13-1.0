@@ -263,7 +263,7 @@
 	//DISCONNECT//
 	//////////////
 /client/Del()
-	if(!gc_destroyed)
+	if(!QDELING(src))
 		Destroy() //Clean up signals and timers.
 	return ..()
 
