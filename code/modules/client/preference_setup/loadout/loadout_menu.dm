@@ -65,9 +65,9 @@
 	for(var/gear_name in GLOB.gear_datums)
 		var/datum/gear/G = GLOB.gear_datums[gear_name]
 		var/okay = 1
-		if(G.species_whitelisted && preference_mob)
-			for(var/species in G.species_whitelisted)
-				if(!is_species_whitelisted(preference_mob, species))
+		if(G.species_whitelist && preference_mob)
+			for(var/species in G.species_whitelist)
+				if(!is_species_whitelist(preference_mob, species))
 					okay = FALSE
 					break
 

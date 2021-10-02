@@ -59,6 +59,11 @@
 	occupant_ui_data = list()
 	combined_store_data = GLOB.public_store_designs.Copy()
 
+	for (var/datum/design/D in GLOB.limited_store_designs)
+		to_chat(world << "Checking eligibility for item [D.name]")
+		if (D.PI?.can_buy_in_store(occupant))
+			LAZYADD(combined_store_data[D.category], list(D.ui_data))
+
 /obj/machinery/store/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null)
 	var/list/data = ui_data(user, ui_key)
 	ui = SSnano.try_update_ui(user, src, ui_key, ui, data)

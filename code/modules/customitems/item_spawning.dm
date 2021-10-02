@@ -116,6 +116,7 @@
 	D.price = store_cost
 	D.build_type = STORE
 	D.starts_unlocked = TRUE
+	D.PI = src
 
 	//TODO: PAtron functionality for store listings
 	//TODO: Whitelist functionality for store listings
@@ -190,7 +191,7 @@
 
 
 
-	LOG_DEBUG("ERROR: Patron whitelist ID [current_id] found no matching patron_item datum to assign to")
+	log_debug("ERROR: Patron whitelist ID [current_id] found no matching patron_item datum to assign to")
 	return FALSE
 
 
@@ -207,9 +208,18 @@
 	var/is_patron
 	if (istext(user))
 		ckey = user
-		var/datum/player/P = get_player_from_key(client_ckey)
+		var/datum/player/P = get_player_from_key(ckey)
 		is_patron = P.patron
 	else if (istype(user, /datum))
 		var/datum/D = user
 		ckey = D.get_key()
 		is_patron = D.is_patron()
+
+
+	switch (loadout_access)
+		if (ACCESS_PUBLIC)
+			return TRUE
+		if (ACCESS_PATRONS)
+			return is_patron
+		if (ACCESS_WHITELIST)
+			return (ckey in whitelist)

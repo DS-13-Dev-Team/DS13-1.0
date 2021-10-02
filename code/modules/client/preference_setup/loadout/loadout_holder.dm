@@ -307,7 +307,7 @@
 	var/list/unrestricted_gear = list()
 	var/list/restricted_gear = list()
 	for(var/datum/gear/G in gear_list)
-		if (G.allowed_roles || G.allowed_branches || G.whitelisted || G.priority > 1)
+		if (G.allowed_roles || G.allowed_branches || G.species_whitelist || G.priority > 1)
 			//Items with a larger than normal priority go here too, since they may depend on something else
 			restricted_gear += G
 

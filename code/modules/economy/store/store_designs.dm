@@ -14,6 +14,10 @@ GLOBAL_LIST_EMPTY(limited_store_designs)
 
 /obj/machinery/store
 
+/datum/design
+	//A patron item datum used to manage access
+	var/datum/patron_item/PI
+
 
 /proc/load_store_database()
 	GLOB.public_store_designs = list()
