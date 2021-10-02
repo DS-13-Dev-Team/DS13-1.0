@@ -53,7 +53,7 @@ var/global/datum/repository/crew/crew_repository = new()
 		var/turf/pos = get_turf(HB)
 		if(HB.tracking_level != RIG_SENSOR_OFF && pos?.z == z_level && HB.holder.active)
 
-			var/list/crewmemberData = list("sensor_type"=HB.tracking_level, "stat"=HB.holder.wearer.stat, "area"="", "x"=-1, "y"=-1, "z"=-1, "ref"="\ref[HB.holder.wearer]")
+			var/list/crewmemberData = list("sensor_type"=HB.tracking_level, "stat"=HB.holder.wearer.stat, "area"="", "x"=-1, "y"=-1, "z"=-1, "ref"="\ref[HB.holder.wearer]", "name"=HB.holder.wearer.name)
 			if(!(run_queues(HB.holder.wearer, HB, pos, crewmemberData) & MOD_SUIT_SENSORS_REJECTED))
 				crewmembers[++crewmembers.len] = crewmemberData
 				if (crewmemberData["alert"])
