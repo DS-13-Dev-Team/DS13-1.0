@@ -4,7 +4,6 @@
 	icon_state = "syndicate"
 	item_state = "bl_suit"
 	worn_state = "syndicate"
-	has_sensor = 0
 	armor = list(melee = 10, bullet = 10, laser = 10,energy = 0, bomb = 0, bio = 0, rad = 0)
 	siemens_coefficient = 0.9
 
@@ -14,7 +13,6 @@
 	icon_state = "combat"
 	item_state = "bl_suit"
 	worn_state = "combat"
-	has_sensor = SUIT_HAS_SENSORS
 
 /obj/item/clothing/under/syndicate/tacticool
 	name = "\improper Tacticool turtleneck"
@@ -24,6 +22,4 @@
 	worn_state = "tactifool"
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 	siemens_coefficient = 1
-	has_sensor = SUIT_HAS_SENSORS
-
 

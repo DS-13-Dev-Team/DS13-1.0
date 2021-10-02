@@ -1,0 +1,25 @@
+2021-10-01:
+  Nanako:
+  - bugfix: Fixed infectors being able to affect necromorphs.
+  - bugfix: Sense no longer detects converted humans.
+  - bugfix: Fixed a few issues where newly converted humans would be stuck unconscious
+      for a long period or have a missing HUD
+  - tweak: Necromorphs can no longer buckle people to chairs
+  - tweak: Infectors can now use Reanimate on unconscious victims.
+2021-10-02:
+  DTraitor:
+  - bugfix: Fixed bug when screwdriver was moved to RIG when module was removed.
+  - rscadd: Vitals Tracker now also work as suit sensor (can be configured in RIG
+      Interface).
+  - rscadd: RIG Interface now uses TGUI.
+  - balance: RIG tracking level and mode are randomized on spawn.
+  - rscadd: Automatic health tracking mode was added. It chages tracking level depending
+      on current station alert level.
+  DeadLineSS13:
+  - bugfix: Fixed a part stamps.
+  Nanako:
+  - tweak: Frantic Growth can now only be cast at least two tiles away from conscious
+      crewmembers
+  - bugfix: Fixed ore processor crashing.
+  - tweak: Increased speed of ore processor
+  - tweak: slightly reduced mining bonuses.
