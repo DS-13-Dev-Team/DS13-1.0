@@ -57,7 +57,7 @@
 */
 /obj/machinery/store/proc/update_occupant_data()
 	occupant_ui_data = list()
-	combined_store_data = GLOB.public_store_designs
+	combined_store_data = GLOB.public_store_designs.Copy()
 
 /obj/machinery/store/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null)
 	var/list/data = ui_data(user, ui_key)
