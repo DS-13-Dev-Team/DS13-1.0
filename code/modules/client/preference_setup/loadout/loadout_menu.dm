@@ -65,12 +65,16 @@
 	for(var/gear_name in GLOB.gear_datums)
 		var/datum/gear/G = GLOB.gear_datums[gear_name]
 		var/okay = 1
-		if(G.whitelisted && preference_mob)
-			okay = 0
-			for(var/species in G.whitelisted)
-				if(is_species_whitelisted(preference_mob, species))
-					okay = 1
+		if(G.species_whitelisted && preference_mob)
+			for(var/species in G.species_whitelisted)
+				if(!is_species_whitelisted(preference_mob, species))
+					okay = FALSE
 					break
+
+		if (G.key_whitelist)
+			if (!(preference_mob.ckey in G.key_whitelist))
+				okay = FALSE
+
 		if(!okay)
 			continue
 		if(max_cost && G.cost > max_cost)
@@ -111,6 +115,10 @@
 
 	. += "<tr><td colspan=3><center><b>"
 	var/firstcat = 1
+
+	//Maybe this should be cached earlier than this proc
+	var/list/valid_gear = valid_gear_choices()
+
 	for(var/category in GLOB.loadout_categories)
 
 		if(firstcat)
@@ -150,9 +158,11 @@
 	var/datum/player/P = get_player_from_key(pref.client_ckey)
 	var/is_patron = (P ? P.patron	: FALSE)
 	var/current_subcategory
+
+
 	for(var/gear_name in LC.gear)
 
-		if(!(gear_name in valid_gear_choices()))
+		if(!(gear_name in valid_gear))
 			continue
 		var/list/entry = list()
 		var/datum/gear/G = LC.gear[gear_name]

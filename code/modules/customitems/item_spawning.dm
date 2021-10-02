@@ -38,11 +38,16 @@
 	var/additional_data
 
 
+
+
 	/*
 		New vars for DS13
 	*/
 	var/loadout_cost = null //If not null, this item can be purchased in the loadout for this many points
 	var/loadout_access	=	null //One of the ACCESS_XXX defines above, determines who is allowed to buy this in loadout
+
+	var/datum/gear/loadout_listing
+	var/datum/design/store_listing
 
 	var/store_cost = null //If not null, this item can be purchased in the store for this many credits
 	var/store_access	=	null //One of the ACCESS_XXX defines above, determines who is allowed to buy this in store
@@ -70,6 +75,16 @@
 
 	if (!isnull(store_cost) && !isnull(store_access))
 		create_store_datum()
+
+
+/datum/patron_item/proc/set_whitelist(var/list/new_list)
+	whitelist = new_list.Copy()
+
+	if (loadout_listing)
+		loadout_listing.key_whitelist = whitelist
+
+	if (store_listing)
+		store_listing.whitelist = whitelist
 
 /datum/patron_item/proc/create_loadout_datum()
 	var/datum/gear/G = new()
@@ -108,6 +123,12 @@
 
 	register_research_design(D)
 
+	//If this has patron or whitelist access, put it in the limited store designs list
+	if (store_access != ACCESS_PUBLIC)
+		GLOB.limited_store_designs += D
+
+	else
+		GLOB.unlimited_store_designs += D
 
 
 /*
@@ -154,71 +175,41 @@
 
 //Here we take an assembled whitelist and find which patron item it should attach to by matching the ID
 /proc/register_patron_whitelist(current_id, list/current_list)
-	GLOB.patron_item_whitelisted_ckeys |= current_list
+
 
 	for (var/datum/patron_item/PI in GLOB.patron_items)
 		if (PI.id == current_id)
 			PI.whitelist = current_list.Copy()
+
+			//Lets add all these keys to the global list
+			for (var/ckey in current_list)
+				var/list/custom_item_lists_we_are_on	=	(GLOB.patron_item_whitelisted_ckeys[ckey] || list())
+				custom_item_lists_we_are_on |= PI
+				GLOB.patron_item_whitelisted_ckeys[ckey] = custom_item_lists_we_are_on
 			return TRUE
+
+
 
 	LOG_DEBUG("ERROR: Patron whitelist ID [current_id] found no matching patron_item datum to assign to")
 	return FALSE
 
 
-// Parses the config file into the custom_items list.
-//DEPRECATED: This proc is no longer used, kept for future reference
 /*
-/hook/startup/proc/load_custom_items()
+	This proc takes an input vaguely identifying a user. That could be a mob, ckey, mind, or player datum
 
-	var/datum/custom_item/current_data
-
-
-		if(findtext(line, "{", 1, 2) || findtext(line, "}", 1, 2)) // New block!
-			if(current_data && current_data.assoc_key)
-				if(!custom_items[current_data.assoc_key])
-					custom_items[current_data.assoc_key] = list()
-				var/list/L = custom_items[current_data.assoc_key]
-				L |= current_data
-			current_data = null
-
-		var/split = findtext(line,":")
-		if(!split)
-			continue
-		var/field = trim(copytext(line,1,split))
-		var/field_data = trim(copytext(line,(split+1)))
-		if(!field || !field_data)
-			continue
-
-		if(!current_data)
-			current_data = new()
-
-		switch(field)
-			if("ckey")
-				current_data.assoc_key = lowertext(field_data)
-			if("character_name")
-				current_data.character_name = lowertext(field_data)
-			if("item_path")
-				current_data.item_path = text2path(field_data)
-				current_data.item_path_as_string = field_data
-			if("item_name")
-				current_data.name = field_data
-			if("item_icon")
-				current_data.item_icon = field_data
-			if("inherit_inhands")
-				current_data.inherit_inhands = text2num(field_data)
-			if("description")
-				current_data.description = field_data
-			if("req_access")
-				current_data.req_access = text2num(field_data)
-			if("req_titles")
-				current_data.req_titles = splittext(field_data,", ")
-			if("kit_name")
-				current_data.kit_name = field_data
-			if("kit_desc")
-				current_data.kit_desc = field_data
-			if("kit_icon")
-				current_data.kit_icon = field_data
-			if("additional_data")
-				current_data.additional_data = field_data
-	return TRUE
+	Returns true if they can do store access to this
 */
+/datum/patron_item/proc/can_buy_in_store(var/user)
+	if (store_access == ACCESS_PUBLIC)
+		return TRUE
+
+	var/ckey
+	var/is_patron
+	if (istext(user))
+		ckey = user
+		var/datum/player/P = get_player_from_key(client_ckey)
+		is_patron = P.patron
+	else if (istype(user, /datum))
+		var/datum/D = user
+		ckey = D.get_key()
+		is_patron = D.is_patron()
