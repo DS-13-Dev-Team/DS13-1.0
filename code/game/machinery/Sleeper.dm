@@ -9,7 +9,6 @@
 	clickvol = 30
 	var/mob/living/carbon/human/occupant = null
 	var/list/available_chemicals = list(/datum/reagent/inaprovaline, /datum/reagent/soporific, /datum/reagent/paracetamol, /datum/reagent/dylovene, /datum/reagent/dexalin)
-	var/list/injectable = list()
 	var/amounts = list(5, 10)
 	var/obj/item/weapon/reagent_containers/glass/beaker = null
 	var/filtering = 0
