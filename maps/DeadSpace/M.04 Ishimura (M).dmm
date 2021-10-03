@@ -11904,14 +11904,6 @@
 /obj/effect/floor_decal/corner/grey/mono,
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/research)
-"azj" = (
-/obj/machinery/body_scanconsole{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/grey/mono,
-/obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/tiled/white/monotile,
-/area/ishimura/upper/medical)
 "azk" = (
 /obj/structure/cable/green{
 	d1 = 2;
@@ -60624,7 +60616,7 @@ aqx
 awJ
 axG
 ayD
-azj
+aDk
 ayx
 aCZ
 aXY
@@ -61028,7 +61020,7 @@ axU
 awK
 axG
 ayD
-azj
+aDk
 ayx
 aGE
 bek

@@ -563,10 +563,9 @@
 
 	if(!H)	return
 
-	var/dat = H.get_medical_data(SKILL_MAX)
-
-	dat += text("<BR><A href='?src=\ref[];mach_close=scanconsole'>Close</A>", usr)
-	show_browser(usr, dat, "window=scanconsole;size=430x600")
+	var/datum/advanced_scanner/AS = new /datum/advanced_scanner()
+	AS.occupant = H
+	AS.tgui_interact(mob)
 
 /client/proc/cmd_analyse_health_context(mob/living/carbon/human/H as mob in GLOB.human_mob_list)
 	set category = null

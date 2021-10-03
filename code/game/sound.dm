@@ -65,7 +65,7 @@ GLOBAL_LIST_INIT(bubble_small_sound,list('sound/machines/tanksmallbubble1.ogg','
 GLOBAL_LIST_INIT(fleshtear_sound, list('sound/effects/organic/flesh_tear_1.ogg','sound/effects/organic/flesh_tear_2.ogg','sound/effects/organic/flesh_tear_3.ogg',))
 
 
-/proc/playsound(var/atom/source, soundin, vol as num, vary, extrarange as num, falloff, var/is_global, var/frequency, var/is_ambiance = 0)
+/datum/proc/playsound(var/atom/source, soundin, vol as num, vary, extrarange as num, falloff, var/is_global, var/frequency, var/is_ambiance = 0)
 
 
 

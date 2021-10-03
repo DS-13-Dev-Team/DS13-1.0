@@ -36,7 +36,8 @@
 		tracking_level = pick(RIG_SENSOR_OFF, RIG_SENSOR_BINARY, RIG_SENSOR_VITAL, RIG_SENSOR_TRACKING)
 
 /obj/item/rig_module/healthbar/Destroy()
-	unregister_user()
+	if(user)
+		unregister_user()
 	GLOB.vitals_auto_update_tracking -= src
 	.=..()
 
