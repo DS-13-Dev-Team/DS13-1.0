@@ -36,8 +36,7 @@
 		tracking_level = pick(RIG_SENSOR_OFF, RIG_SENSOR_BINARY, RIG_SENSOR_VITAL, RIG_SENSOR_TRACKING)
 
 /obj/item/rig_module/healthbar/Destroy()
-	if(user)
-		unregister_user()
+	unregister_user()
 	GLOB.vitals_auto_update_tracking -= src
 	.=..()
 
@@ -54,10 +53,11 @@
 	holder.healthbar = src
 
 /obj/item/rig_module/healthbar/proc/unregister_user()
-	GLOB.updatehealth_event.unregister(user, src, /obj/item/rig_module/healthbar/proc/update)
-	GLOB.death_event.unregister(user, src, /obj/item/rig_module/healthbar/proc/death)
-	user = null
-	holder.healthbar = null
+	if(user)
+		GLOB.updatehealth_event.unregister(user, src, /obj/item/rig_module/healthbar/proc/update)
+		GLOB.death_event.unregister(user, src, /obj/item/rig_module/healthbar/proc/death)
+		user = null
+		holder.healthbar = null
 
 /obj/item/rig_module/healthbar/proc/update()
 	if (QDELETED(user) || QDELETED(holder) || holder.loc != user)

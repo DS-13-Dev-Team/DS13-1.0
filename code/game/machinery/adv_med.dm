@@ -358,7 +358,7 @@
 			BS.eject()
 		if("print_p")
 			BS.visible_message("<span class='notice'>[BS] rattles and prints out a sheet of paper.</span>")
-			BS.playsound(src, 'sound/machines/printer.ogg', 50, 1)
+			playsound(BS, 'sound/machines/printer.ogg', 50, 1)
 			var/obj/item/weapon/paper/P = new /obj/item/weapon/paper(get_turf(BS))
 			var/name = occupant ? occupant.name : "Unknown"
 			P.info = "<CENTER><B>Body Scan - [name]</B></CENTER><BR>"
