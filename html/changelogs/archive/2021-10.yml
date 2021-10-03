@@ -23,3 +23,6 @@
   - bugfix: Fixed ore processor crashing.
   - tweak: Increased speed of ore processor
   - tweak: slightly reduced mining bonuses.
+2021-10-03:
+  Nanako:
+  - bugfix: Fixed a major bug that was causing credits to not persist between rounds
