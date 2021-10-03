@@ -3,7 +3,6 @@
 	desc = "A fancy bed with built-in injectors, a dialysis machine, and a limited health scanner."
 	icon = 'icons/obj/Cryogenic2.dmi'
 	icon_state = "sleeper_0"
-	atom_flags = ATOM_FLAG_OPEN_CONTAINER
 	density = 1
 	anchored = 1
 	clicksound = 'sound/machines/buttonbeep.ogg'
