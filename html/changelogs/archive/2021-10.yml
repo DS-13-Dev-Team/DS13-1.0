@@ -24,5 +24,16 @@
   - tweak: Increased speed of ore processor
   - tweak: slightly reduced mining bonuses.
 2021-10-03:
+  DTraitor:
+  - bugfix: Cells bought in store no longer spawn with 0 charge.
   Nanako:
   - bugfix: Fixed a major bug that was causing credits to not persist between rounds
+  Snypehunter007:
+  - bugfix: Fixed Salvage Technicians spawning with Cargo Serviceman IDs.
+  - imageadd: Added a new Sec HUD sprite for the Chief Engineer, courtesy of Ketrai.
+  - imageadd: Added a new Sec HUD sprite for the Technical Engineer, courtesy of Ketrai.
+  - imageadd: Added a new Sec HUD sprite for the Supply Officer, courtesy of Ketrai.
+  - imageadd: Added a new Sec HUD sprite for the Cargo Serviceman, courtesy of Ketrai.
+  - imageadd: Added a new Sec HUD sprite for the Salvage Technician, courtesy of Ketrai.
+  - imageadd: Added a new Sec HUD sprite for the Senior Medical Officer, courtesy
+      of Ketrai.
