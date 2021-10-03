@@ -68,7 +68,7 @@
 
 
 	playsound(src, sound_vend, VOLUME_MID, TRUE)
-	return new current_design(src)
+	return current_design.CreatedInStore(src)
 
 /obj/machinery/store/proc/store_or_drop(var/obj/item/I)
 	if (!deposit_box.store_item(I))
