@@ -56,13 +56,16 @@
 	Called whenever a new occupant enters
 */
 /obj/machinery/store/proc/update_occupant_data()
-	occupant_ui_data = list()
+	to_chat(world,"updating occupant data")
 	combined_store_data = GLOB.public_store_designs.Copy()
 
 	for (var/datum/design/D in GLOB.limited_store_designs)
-		to_chat(world << "Checking eligibility for item [D.name]")
+		to_chat(world, "Checking eligibility for item [D.name]")
 		if (D.PI?.can_buy_in_store(occupant))
+			to_chat(world, "Successfully allowed [D.name]")
 			LAZYADD(combined_store_data[D.category], list(D.ui_data))
+		else
+			to_chat(world, "Not allowed to buy. [D] [D.PI]")
 
 /obj/machinery/store/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null)
 	var/list/data = ui_data(user, ui_key)

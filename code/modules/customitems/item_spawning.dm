@@ -23,10 +23,13 @@
 
 /datum/patron_item
 	var/name
-	var/id	//Used to link whitelists to us
+	var/id	//Used to link whitelists to us and uniquely identify research designs. Mandatory for store listing
 	var/inherit_inhands = 1 //if unset, and inhands are not provided, then the inhand overlays will be invisible.
 	var/item_icon
 	var/description
+
+	var/category = "Misc"	//Used for store and loadout
+	var/subcategory
 
 	var/item_path = /obj/item
 	var/item_path_as_string
@@ -57,7 +60,7 @@
 
 	var/list/whitelist	=	null	//A list of ckeys who can use ACCESS_WHITELIST channels with this item
 
-	var/category = "Misc"	//Used for store and loadout
+
 
 	/*
 		This can be one of a few things:
@@ -92,14 +95,15 @@
 	G.description = description
 	G.path = item_path
 	G.cost = loadout_cost
+	G.category = src.category
 
 	switch (loadout_access)
 		if (ACCESS_PUBLIC)
 			//do nothing
 		if (ACCESS_PATRONS)
 			G.patron_only = TRUE
-		//if (ACCESS_WHITELIST)
-			//TODO: Code gear whitelists
+		if (ACCESS_WHITELIST)
+			G.key_whitelist = whitelist
 
 	G.Initialize()
 
@@ -116,10 +120,12 @@
 	D.price = store_cost
 	D.build_type = STORE
 	D.starts_unlocked = TRUE
+	D.id = id
+	D.category = src.category
 	D.PI = src
 
-	//TODO: PAtron functionality for store listings
-	//TODO: Whitelist functionality for store listings
+	//TODO: Icons not working
+	//TODO: Multiselection is happening
 	//TODO: Set transfer setting if the item is a rig or module
 
 	register_research_design(D)
@@ -141,7 +147,7 @@
 	var/current_id
 
 	//The list of keys in the whitelist
-	var/list/current_list = null
+	var/list/current_list = list()
 
 	for(var/line in splittext(file2text("config/custom_items.txt"), "\n"))
 
@@ -165,6 +171,9 @@
 				current_id = string
 				continue
 
+
+			//Okay this string must be a ckey. Lets sanitise it with the ckey proc
+			string = ckey(string)
 			current_list += string
 
 		//If there's a curly brace at the end of the line, it closes this list
@@ -201,11 +210,13 @@
 	Returns true if they can do store access to this
 */
 /datum/patron_item/proc/can_buy_in_store(var/user)
+	to_chat(world, "canbuy 1 [user]")
 	if (store_access == ACCESS_PUBLIC)
 		return TRUE
 
 	var/ckey
 	var/is_patron
+	to_chat(world, "canbuy 2")
 	if (istext(user))
 		ckey = user
 		var/datum/player/P = get_player_from_key(ckey)
@@ -214,12 +225,14 @@
 		var/datum/D = user
 		ckey = D.get_key()
 		is_patron = D.is_patron()
+		to_chat(world, "isdatum, [ckey]	[is_patron]")
 
 
-	switch (loadout_access)
+	switch (store_access)
 		if (ACCESS_PUBLIC)
 			return TRUE
 		if (ACCESS_PATRONS)
+			to_chat(world, "PATRON ACCESS")
 			return is_patron
 		if (ACCESS_WHITELIST)
 			return (ckey in whitelist)

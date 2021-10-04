@@ -181,6 +181,9 @@ other types of metals and chemistry for reagents).
 
 
 /datum/design/ui_data()
+	if (isnull(ui_data))
+		AssembleDesignInfo()
+
 	return ui_data
 
 //Returns a new instance of the item for this design

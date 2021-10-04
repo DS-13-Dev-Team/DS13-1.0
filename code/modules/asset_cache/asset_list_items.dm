@@ -163,11 +163,17 @@
 
 
 /datum/asset/simple/patron_content/register()
-
+	log_debug("Registering patron content")
+	var/total = 0
 	for (var/typepath in subtypesof(/datum/patron_item))
+		log_debug("Registering [typepath]")
+		total++
 		var/datum/patron_item/PI = new typepath()
 
 		GLOB.patron_items += PI
+
+	log_debug("Done Registering patron content. Total: [total]")
+	log_debug("---------------------------------")
 
 	//Now we load and assign the whitelists
 	load_patron_item_whitelists()
@@ -175,3 +181,6 @@
 	//These procs update and sort various other things after the patron items have added themselves to them
 	sort_loadout_categories()
 	SSdatabase.update_store_designs()
+
+
+	.=..()

@@ -33,8 +33,8 @@ GLOBAL_LIST_EMPTY(limited_store_designs)
 			continue
 
 
-		LAZYADD(GLOB.public_store_designs[D.category], list(D.ui_data))
+		LAZYADD(GLOB.public_store_designs[D.category], list(D.ui_data()))
 
 	//Add this lot to the list
 	for (var/datum/design/D in GLOB.unlimited_store_designs)
-		LAZYADD(GLOB.public_store_designs[D.category], list(D.ui_data))
+		LAZYADD(GLOB.public_store_designs[D.category], list(D.ui_data()))
