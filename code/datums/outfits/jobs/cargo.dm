@@ -19,5 +19,5 @@
 
 /decl/hierarchy/outfit/job/cargo/salvage
 	name = OUTFIT_JOB_NAME("Salvage Technician")
-	id_type = /obj/item/weapon/card/id/holo/cargo
+	id_type = /obj/item/weapon/card/id/holo/cargo/salvage_tech
 	pda_type = /obj/item/modular_computer/pda/cargo
