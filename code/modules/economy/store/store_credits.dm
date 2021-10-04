@@ -71,7 +71,7 @@
 	return current_design.CreatedInStore(src)
 
 /obj/machinery/store/proc/store_or_drop(var/obj/item/I)
-	if (!deposit_box.store_item(I))
+	if (!istype(I) || !deposit_box.store_item(I))
 		I.forceMove(get_turf(src))
 
 
