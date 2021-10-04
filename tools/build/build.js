@@ -44,7 +44,7 @@ export const WarningParameter = new Juke.Parameter({
 export const DmMapsIncludeTarget = new Juke.Target({
   executes: async () => {
     const folders = [
-      ...Juke.glob('maps/DeadSpace/**/*.dmm')
+      ...Juke.glob('maps/DeadSpace/**/*.dmm'),
     ];
     const content = folders
       .map((file) => file.replace('maps/', ''))
@@ -188,6 +188,11 @@ export const TguiAnalyzeTarget = new Juke.Target({
   executes: () => yarn('tgui:analyze'),
 });
 
+export const TguiBenchTarget = new Juke.Target({
+  dependsOn: [YarnTarget],
+  executes: () => yarn('tgui:bench'),
+});
+
 export const TestTarget = new Juke.Target({
   dependsOn: [DmTestTarget, TguiTestTarget],
 });
@@ -232,7 +237,7 @@ export const CleanTarget = new Juke.Target({
     Juke.rm('*.{dmb,rsc}');
     Juke.rm('*.mdme*');
     Juke.rm('*.m.*');
-    Juke.rm('maps/templates.dm');
+    Juke.rm('_maps/templates.dm');
   },
 });
 
