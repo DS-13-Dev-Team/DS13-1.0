@@ -625,7 +625,6 @@ var/list/worths = list(
 					/obj/machinery/atmospherics/unary/vent_pump = -2000,
 					/obj/machinery/atmospherics/unary/vent_scrubber = -2300,
 					/obj/machinery/bodyscanner = -6000,
-					/obj/machinery/body_scanconsole = -1500,
 					/obj/machinery/ai_slipper = -500,
 					/obj/machinery/alarm = -800,
 					/obj/machinery/air_sensor = -800,

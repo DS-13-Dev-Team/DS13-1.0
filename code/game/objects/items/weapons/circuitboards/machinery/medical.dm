@@ -52,3 +52,12 @@
 							/obj/item/weapon/stock_parts/manipulator = 1,
 							/obj/item/stack/cable_coil = 1,
 							/obj/item/weapon/stock_parts/console_screen = 2)
+
+/obj/item/weapon/circuitboard/body_scanner
+	name = T_BOARD("Body Scanner")
+	build_path = /obj/machinery/bodyscanner
+	board_type = "machine"
+	origin_tech = list(TECH_DATA = 3, TECH_BIO = 2, TECH_ENGINEERING = 3, TECH_MATERIALS = 3)
+	req_components = list(
+							/obj/item/weapon/stock_parts/scanning_module = 3,
+							/obj/item/stack/material/glass/reinforced = 2)
