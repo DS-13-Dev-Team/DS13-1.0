@@ -674,7 +674,7 @@
 	dir = 0				// dir will contain dominant direction for junction pipes
 	health = 10 	// health points 0-10
 	alpha = 192 // Plane and alpha modified for mapping, reset to normal on spawn.
-
+	layer = ABOVE_TILE_LAYER
 	var/base_icon_state	// initial icon state on map
 	var/sortType = ""
 	var/subtype = 0
@@ -963,15 +963,15 @@
 /obj/structure/disposalpipe/segment
 	icon_state = "pipe-s"
 
-	New()
-		..()
-		if(icon_state == "pipe-s")
-			dpdir = dir | turn(dir, 180)
-		else
-			dpdir = dir | turn(dir, -90)
+/obj/structure/disposalpipe/segment/Initialize()
+	. = ..()
+	if(icon_state == "pipe-s")
+		dpdir = dir | turn(dir, 180)
+	else
+		dpdir = dir | turn(dir, -90)
 
-		update()
-		return
+	update()
+	return
 
 ///// Z-Level stuff
 /obj/structure/disposalpipe/up
