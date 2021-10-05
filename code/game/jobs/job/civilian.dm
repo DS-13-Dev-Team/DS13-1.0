@@ -129,9 +129,9 @@ datum/job/serviceman/get_description_blurb()
 	access = list(access_cargo, access_maint_tunnels, access_external_airlocks)
 	outfit_type = /decl/hierarchy/outfit/job/cargo/serviceman
 
-	min_skill = list(   SKILL_CONSTRUCTION     = SKILL_BASIC,
-	                    SKILL_ELECTRICAL    = SKILL_BASIC,
-	                    SKILL_EVA = SKILL_BASIC)
+	min_skill = list(   SKILL_CONSTRUCTION= SKILL_BASIC,
+	                    SKILL_ELECTRICAL  = SKILL_BASIC,
+	                    SKILL_EVA 		  = SKILL_BASIC)
 
 	max_skill = list(	SKILL_BOTANY      = SKILL_EXPERT,
 	                    SKILL_COOKING     = SKILL_EXPERT,
@@ -142,8 +142,7 @@ datum/job/serviceman/get_description_blurb()
 
 datum/job/salvage/get_description_blurb()
 	return "You are a Salvage Technician, part of CEC's reclamation project. Your job is to comb dark and abandoned areas, recovering valueable equipment. You recieve no salary, but may keep some of the things you recover\n\
-	You may enlist other cargo servicemen to help you when short staffed.\n\
-	The Ishimura is decades old and a terrible rusty mess, tread carefully."
+	You may enlist other cargo servicemen to help you when short staffed. You are subordinate to the Supply Officer."
 
 
 /datum/job/botanist

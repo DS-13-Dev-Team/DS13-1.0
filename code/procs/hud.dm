@@ -24,9 +24,9 @@ proc/process_med_hud(var/mob/M, var/local_scanner, var/mob/Alt)
 			add_hudlist(P.Client.images, patient, STATUS_HUD)
 		else
 			var/sensor_level = getsensorlevel(patient)
-			if(sensor_level >= SUIT_SENSOR_VITAL)
+			if(sensor_level >= RIG_SENSOR_VITAL)
 				add_hudlist(P.Client.images, patient, HEALTH_HUD)
-			if(sensor_level >= SUIT_SENSOR_BINARY)
+			if(sensor_level >= RIG_SENSOR_BINARY)
 				add_hudlist(P.Client.images, patient, LIFE_HUD)
 
 //Security HUDs. Pass a value for the second argument to enable implant viewing or other special features.

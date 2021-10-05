@@ -11,6 +11,7 @@ Medical:
 +	chem master
 +	Cryo Cell
 +	Sleeper
++	Body Scanner
 RnD:
 +	R&D control console
 +	destructive analyzer
@@ -133,6 +134,11 @@ Food:
 	name = "Sleeper"
 	id = "sleeper"
 	build_path = /obj/item/weapon/circuitboard/sleeper
+
+/datum/design/circuit/medical/sleeper
+	name = "Body Scanner"
+	id = "body_scanner"
+	build_path = /obj/item/weapon/circuitboard/body_scanner
 
 /datum/design/circuit/research
 	category = "RnD"

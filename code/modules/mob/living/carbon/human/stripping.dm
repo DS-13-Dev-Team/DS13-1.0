@@ -30,11 +30,6 @@
 			if(do_after(user, HUMAN_STRIP_DELAY, src, progress = 0))
 				remove_splints(user)
 			return
-		if("sensors")
-			visible_message("<span class='danger'>\The [user] is trying to set \the [src]'s sensors!</span>")
-			if(do_after(user, HUMAN_STRIP_DELAY, src, progress = 0))
-				toggle_sensors(user)
-			return
 		if("internals")
 			visible_message("<span class='danger'>\The [usr] is trying to set \the [src]'s internals!</span>")
 			if(do_after(user, HUMAN_STRIP_DELAY, src, progress = 0))
@@ -117,19 +112,6 @@
 			return
 	to_chat(user, "<span class='warning'>You are unable to place [I] in [src]'s pockets.</span>")
 	user.put_in_active_hand(I)
-
-// Modify the current target sensor level.
-/mob/living/carbon/human/proc/toggle_sensors(var/mob/living/user)
-	var/obj/item/clothing/under/suit = w_uniform
-	if(!suit)
-		to_chat(user, "<span class='warning'>\The [src] is not wearing a suit with sensors.</span>")
-		return
-	if (suit.has_sensor >= 2)
-		to_chat(user, "<span class='warning'>\The [src]'s suit sensor controls are locked.</span>")
-		return
-
-	admin_attack_log(user, src, "Toggled their suit sensors.", "Toggled their suit sensors.", "toggled the suit sensors of")
-	suit.set_sensors(user)
 
 // Remove all splints.
 /mob/living/carbon/human/proc/remove_splints(var/mob/living/user)

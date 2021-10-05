@@ -121,6 +121,8 @@
 		previous_security_level.switching_down_from()
 		new_security_level.switching_down_to()
 
+	for(var/obj/item/rig_module/healthbar/HB as anything in GLOB.vitals_auto_update_tracking)
+		HB.automatic_tracking_update()
 	log_and_message_admins("has changed the security level from [previous_security_level.name] to [new_security_level.name].")
 	return TRUE
 
@@ -193,7 +195,7 @@
 	post_status("alert", src)
 
 /decl/security_level/default/code_green
-	name = "code green"
+	name = STATION_ALERT_GREEN
 
 	light_max_bright = 0.25
 	light_inner_range = 0.1
@@ -208,7 +210,7 @@
 	down_description = "All threats to the station have passed. Security may not have weapons visible, privacy laws are once again fully enforced."
 
 /decl/security_level/default/code_blue
-	name = "code blue"
+	name = STATION_ALERT_BLUE
 
 	light_max_bright = 0.5
 	light_inner_range = 0.1
@@ -223,7 +225,7 @@
 	down_description = "The immediate threat has passed. Security may no longer have weapons drawn at all times, but may continue to have them visible. Random searches are still allowed."
 
 /decl/security_level/default/code_red
-	name = "code red"
+	name = STATION_ALERT_RED
 
 	light_max_bright = 0.5
 	light_inner_range = 0.1
@@ -238,7 +240,7 @@
 	down_description = "The self-destruct mechanism has been deactivated, there is still however an immediate serious threat to the station. Security may have weapons unholstered at all times, random searches are allowed and advised."
 
 /decl/security_level/default/code_delta
-	name = "code delta"
+	name = STATION_ALERT_DELTA
 
 	light_max_bright = 0.75
 	light_inner_range = 0.1

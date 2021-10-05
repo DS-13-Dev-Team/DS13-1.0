@@ -102,7 +102,7 @@
 	required_tech_levels = list()
 	cost = 1500
 
-	unlocks_designs = list("cryo_cell", "sleeper")
+	unlocks_designs = list("cryo_cell", "sleeper", "body_scanner")
 
 /datum/technology/bio/add_med_tools
 	name = "Additional Medical Tools"
@@ -200,7 +200,7 @@
 	id = "scalpelmanager"
 
 	x = 0.7
-	y = 0.5
+	y = 0.6
 	icon = "scalpelmanager"
 
 	required_technologies = list("chemicals")
@@ -208,6 +208,21 @@
 	cost = 2000
 
 	unlocks_designs = list("scalpel_manager")
+
+/datum/technology/bio/adv_health_scanner
+	name = "Advanced Health Scanner"
+	desc = "Advanced Health Scanner"
+	id = "adv_health_scanner"
+
+	x = 0.8
+	y = 0.5
+	icon = "adv_health_scanner"
+
+	required_technologies = list("chemicals")
+	required_tech_levels = list()
+	cost = 3000
+
+	unlocks_designs = list("adv_health_analyzer")
 
 /datum/technology/bio/beakers
 	name = "Special Beakers"

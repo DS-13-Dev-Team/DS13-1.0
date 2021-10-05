@@ -176,10 +176,9 @@
 		return
 	else if (!active)
 		activate()
-		return
 
 	//This goes here because we dont need to pass the safety checks to turn off
-	if (active)
+	else if (active)
 		deactivate()
 
 /obj/item/rig_module/kinesis/proc/get_user()

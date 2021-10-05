@@ -197,7 +197,17 @@ other types of metals and chemistry for reagents).
 
 	return A
 
+// Same as above but for store
+/datum/design/proc/CreatedInStore(store_ref)
+	if(!build_path)
+		return
 
+	if(!(build_type & STORE))
+		return
+
+	var/atom/A = new build_path(store_ref)
+
+	return A
 
 /datum/design/autolathe
 	build_type = AUTOLATHE

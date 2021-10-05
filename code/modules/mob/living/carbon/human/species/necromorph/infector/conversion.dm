@@ -130,6 +130,11 @@
 	var/list/options = list(SPECIES_NECROMORPH_SLASHER = (9.5 / compatibility),
 	SPECIES_NECROMORPH_SLASHER_ENHANCED = (1 * compatibility))
 
+	//Monkey?
+	if(mob_size < MOB_MEDIUM)
+		options = list(SPECIES_NECROMORPH_LEAPER_HOPPER	=	1)
+		return options
+
 	//Gender based options
 	if (gender == FEMALE)
 		options[SPECIES_NECROMORPH_SPITTER]	=	3 * compatibility

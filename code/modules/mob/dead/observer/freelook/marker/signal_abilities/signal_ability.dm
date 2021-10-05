@@ -55,7 +55,7 @@
 	var/LOS_block	=	FALSE
 
 	//When set to a number, the spell must be cast at least this distance away from a conscious crewmember
-	//var/distance_blocked = 0
+	var/distance_blocked = null
 
 	//If true, this spell can only be cast after the marker has activated
 	//If false, it can be cast anytime from roundstart
@@ -385,6 +385,12 @@
 		var/mob/M = T.is_seen_by_crew()
 		if (M)
 			to_chat(user, SPAN_WARNING("Casting here is blocked because the tile is seen by [M]"))
+			return FALSE
+
+	if (distance_blocked)
+		var/mob/M = T.crew_nearby(distance_blocked)
+		if (M)
+			to_chat(user, SPAN_WARNING("Casting here is blocked because the tile is too close to [M]. It must be cast at least [distance_blocked] tiles away from crewmembers"))
 			return FALSE
 
 	if (!isnull(allied_check))
