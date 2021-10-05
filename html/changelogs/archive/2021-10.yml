@@ -37,3 +37,14 @@
   - imageadd: Added a new Sec HUD sprite for the Salvage Technician, courtesy of Ketrai.
   - imageadd: Added a new Sec HUD sprite for the Senior Medical Officer, courtesy
       of Ketrai.
+2021-10-05:
+  DTraitor:
+  - rscadd: Body Scanner now uses TGUI.
+  - admin: Analyse Health now uses same TGUI interface as body scanner.
+  - rscadd: Added advanced health scanner as high end tech in bio tech tree. It can
+      also be bought in store.
+  - bugfix: Printed in body scanner health report displays info again.
+  - bugfix: Research Assistants now spawn with med-science telecomms and have access
+      to mining channel.
+  - bugfix: Planet Crackers now have access to mining channel.
+  - qol: Sleeper now uses TGUI.
