@@ -156,7 +156,7 @@
 
 /obj/item/clothing/suit/storage/toggle/bomber
 	name = "bomber jacket"
-	desc = "A thick, well-worn WW2 leather bomber jacket."
+	desc = "A thick, well-worn leather bomber jacket."
 	icon_state = "bomber"
 	item_state = "bomber"
 	icon_open = "bomber_open"
@@ -168,7 +168,7 @@
 
 /obj/item/clothing/suit/storage/leather_jacket
 	name = "leather jacket"
-	desc = "A black leather coat."
+	desc = "A black synthetic leather jacket."
 	icon_state = "leather_jacket"
 	item_state = "leather_jacket"
 	body_parts_covered = UPPER_TORSO|ARMS

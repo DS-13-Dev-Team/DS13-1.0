@@ -122,7 +122,7 @@
 //Medical
 /obj/item/clothing/suit/storage/toggle/ems
 	name = "\improper EMS jacket"
-	desc = "A dark blue, martian-pattern, EMS jacket. It sports high-visibility reflective stripes and a star of life on the back."
+	desc = "A dark blue utility jacket with high-visibility reflective stripes and a star of life on the back."
 	icon_state = "ems_jacket_closed"
 	item_state = "ems_jacket_closed"
 	icon_open = "ems_jacket_open"
