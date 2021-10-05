@@ -242,14 +242,27 @@
 
 		occupantData["blood"] = bloodData
 
-		var/reagentData[0]
-		if(H.chem_doses)
+		var/tracesData[0]
+		if(H.chem_doses.len)
 			for(var/A in H.chem_doses)
 				var/datum/reagent/R = A
-				reagentData[++reagentData.len] = list(
+				tracesData[++tracesData.len] = list(
 					"name" = initial(R.name),
 					"amount" = H.chem_doses[A],
 					"overdose" = (initial(R.overdose) && H.chem_doses[A] > initial(R.overdose)) ? TRUE : FALSE,
+				)
+		else
+			tracesData = null
+
+		occupantData["chem_traces"] = tracesData
+
+		var/reagentData[0]
+		if(H.bloodstr.reagent_list.len >= 1)
+			for(var/datum/reagent/R in H.bloodstr.reagent_list)
+				reagentData[++reagentData.len] = list(
+					"name" = R.name,
+					"amount" = R.volume,
+					"overdose" = (R.overdose && R.volume > R.overdose) ? TRUE : FALSE,
 				)
 		else
 			reagentData = null
