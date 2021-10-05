@@ -7,6 +7,7 @@
 	anchored = 1
 	clicksound = 'sound/machines/buttonbeep.ogg'
 	clickvol = 30
+	atom_flags = ATOM_FLAG_NO_REACT
 	var/mob/living/carbon/human/occupant = null
 	var/list/available_chemicals = list(/datum/reagent/inaprovaline, /datum/reagent/soporific, /datum/reagent/paracetamol, /datum/reagent/dylovene, /datum/reagent/dexalin)
 	var/amounts = list(5, 10)
