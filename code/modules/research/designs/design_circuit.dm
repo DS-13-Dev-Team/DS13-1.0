@@ -135,7 +135,7 @@ Food:
 	id = "sleeper"
 	build_path = /obj/item/weapon/circuitboard/sleeper
 
-/datum/design/circuit/medical/sleeper
+/datum/design/circuit/medical/body_scanner
 	name = "Body Scanner"
 	id = "body_scanner"
 	build_path = /obj/item/weapon/circuitboard/body_scanner
