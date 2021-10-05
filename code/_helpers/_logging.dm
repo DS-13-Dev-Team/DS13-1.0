@@ -156,7 +156,9 @@
 
 /* Log to both DD and the logfile. */
 /proc/log_world(text)
+#ifdef USE_CUSTOM_ERROR_HANDLER
 	WRITE_LOG(GLOB.world_runtime_log, text)
+#endif
 	SEND_TEXT(world.log, text)
 
 
@@ -324,3 +326,16 @@
 	//Only do this log if port is nonzero, which means we are hosting through dream daemon
 	if (world.port)
 		admin_notice(progress_message, R_DEBUG)
+
+/proc/loc_name(atom/A)
+	if(!istype(A))
+		return "(INVALID LOCATION)"
+
+	var/turf/T = A
+	if (!istype(T))
+		T = get_turf(A)
+
+	if(istype(T))
+		return "([AREACOORD(T)])"
+	else if(A.loc)
+		return "(UNKNOWN (?, ?, ?))"

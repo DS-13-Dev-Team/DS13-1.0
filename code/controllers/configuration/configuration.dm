@@ -11,6 +11,9 @@
 	var/list/list/maplist
 	var/list/defaultmaps
 
+	/// If the configuration is loaded
+	var/loaded = FALSE
+
 	var/list/modes // allowed modes
 	var/list/gamemode_cache
 	var/list/votable_modes // votable modes
@@ -53,6 +56,8 @@
 					LoadEntries(J)
 				break
 	LoadMOTD()
+
+	loaded = TRUE
 
 	if(Master)
 		Master.OnConfigLoad()
