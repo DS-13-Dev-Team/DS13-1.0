@@ -87,7 +87,7 @@
 		return
 
 	var/welcome_text = "<center><img src = sollogo.png /><br /><font size = 3><b>SEV Torch</b> Sensor Readings:</font><hr />"
-	welcome_text += "Report generated on [stationTimestamp()] at [stationTimestamp()]</center><br /><br />"
+	welcome_text += "Report generated on [station_time_timestamp()] at [station_time_timestamp()]</center><br /><br />"
 	welcome_text += "Current system:<br /><b>[system_name()]</b><br />"
 	welcome_text += "Next system targeted for jump:<br /><b>[generate_system_name()]</b><br />"
 	welcome_text += "Travel time to Sol:<br /><b>[rand(15,45)] days</b><br />"

@@ -28,5 +28,5 @@
 	return dat
 
 /datum/computer_file/data/email_message/proc/set_timestamp()
-	timestamp = stationTimestamp()
+	timestamp = station_time_timestamp()
 

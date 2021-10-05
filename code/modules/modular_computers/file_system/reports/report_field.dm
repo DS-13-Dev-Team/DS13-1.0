@@ -107,7 +107,7 @@ Basic field subtypes.
 //Uses YYYY-MM-DD format for dates.
 /datum/report_field/date/New()
 	..()
-	value = stationTimestamp()
+	value = station_time_timestamp()
 
 /datum/report_field/date/set_value(given_value)
 	value = sanitize_time(given_value, value, "YEAR-MM-DD")

@@ -41,47 +41,47 @@
 
 /* Items with private are stripped from public logs. */
 /proc/log_admin(text)
-	LAZYADD(GLOB.admin_log, "\[[stationTimestamp()]\] ADMIN: [text]")
+	LAZYADD(GLOB.admin_log, "\[[station_time_timestamp()]\] ADMIN: [text]")
 	if(CONFIG_GET(flag/log_admin))
 		WRITE_LOG(GLOB.world_game_log, "ADMIN: [text]")
 
 
 /proc/log_admin_private(text)
-	LAZYADD(GLOB.adminprivate_log, "\[[stationTimestamp()]\] PRIVATE: [text]")
+	LAZYADD(GLOB.adminprivate_log, "\[[station_time_timestamp()]\] PRIVATE: [text]")
 	if(CONFIG_GET(flag/log_admin))
 		WRITE_LOG(GLOB.world_game_log, "ADMINPRIVATE: [text]")
 
 
 /proc/log_admin_private_asay(text)
-	LAZYADD(GLOB.asay_log, "\[[stationTimestamp()]\] ASAY: [text]")
+	LAZYADD(GLOB.asay_log, "\[[station_time_timestamp()]\] ASAY: [text]")
 	if(CONFIG_GET(flag/log_adminchat))
 		WRITE_LOG(GLOB.world_game_log, "ADMINPRIVATE: ASAY: [text]")
 
 
 /proc/log_admin_private_msay(text)
-	LAZYADD(GLOB.msay_log, "\[[stationTimestamp()]\] MSAY: [text]")
+	LAZYADD(GLOB.msay_log, "\[[station_time_timestamp()]\] MSAY: [text]")
 	if(CONFIG_GET(flag/log_adminchat))
 		WRITE_LOG(GLOB.world_game_log, "ADMINPRIVATE: MSAY: [text]")
 
 
 /proc/log_dsay(text)
-	LAZYADD(GLOB.admin_log, "\[[stationTimestamp()]\] DSAY: [text]")
+	LAZYADD(GLOB.admin_log, "\[[station_time_timestamp()]\] DSAY: [text]")
 	if(CONFIG_GET(flag/log_adminchat))
 		WRITE_LOG(GLOB.world_game_log, "ADMIN: DSAY: [text]")
 
 /proc/log_misc(text)
-	LAZYADD(GLOB.game_log, "\[[stationTimestamp()]\] MISC: [text]")
+	LAZYADD(GLOB.game_log, "\[[station_time_timestamp()]\] MISC: [text]")
 	WRITE_LOG(GLOB.world_game_log, "MISC: [text]")
 
 /* All other items are public. */
 /proc/log_game(text)
-	LAZYADD(GLOB.game_log, "\[[stationTimestamp()]\] GAME: [text]")
+	LAZYADD(GLOB.game_log, "\[[station_time_timestamp()]\] GAME: [text]")
 	if(CONFIG_GET(flag/log_game))
 		WRITE_LOG(GLOB.world_game_log, "GAME: [text]")
 
 
 /proc/log_access(text)
-	LAZYADD(GLOB.access_log, "\[[stationTimestamp()]\] ACCESS: [text]")
+	LAZYADD(GLOB.access_log, "\[[station_time_timestamp()]\] ACCESS: [text]")
 	if(CONFIG_GET(flag/log_access))
 		WRITE_LOG(GLOB.world_game_log, "ACCESS: [text]")
 
@@ -92,51 +92,51 @@
 	WRITE_LOG(GLOB.world_asset_log, "ASSET: [text]")
 
 /proc/log_attack(text)
-	LAZYADD(GLOB.attack_log, "\[[stationTimestamp()]\] ATTACK: [text]")
+	LAZYADD(GLOB.attack_log, "\[[station_time_timestamp()]\] ATTACK: [text]")
 	if(CONFIG_GET(flag/log_attack))
 		WRITE_LOG(GLOB.world_attack_log, "ATTACK: [text]")
 
 /proc/log_say(text)
-	LAZYADD(GLOB.say_log, "\[[stationTimestamp()]\] SAY: [text]")
+	LAZYADD(GLOB.say_log, "\[[station_time_timestamp()]\] SAY: [text]")
 	if(CONFIG_GET(flag/log_say))
 		WRITE_LOG(GLOB.world_game_log, "SAY: [text]")
 
 /proc/log_telecomms(text)
-	LAZYADD(GLOB.telecomms_log, "\[[stationTimestamp()]\] TCOMMS: [text]")
+	LAZYADD(GLOB.telecomms_log, "\[[station_time_timestamp()]\] TCOMMS: [text]")
 	WRITE_LOG(GLOB.world_telecomms_log, "TCOMMS: [text]")
 
 /proc/log_ooc(text)
-	LAZYADD(GLOB.say_log, "\[[stationTimestamp()]\] OOC: [text]")
+	LAZYADD(GLOB.say_log, "\[[station_time_timestamp()]\] OOC: [text]")
 	if(CONFIG_GET(flag/log_ooc))
 		WRITE_LOG(GLOB.world_game_log, "OOC: [text]")
 
 
 /proc/log_looc(text)
-	LAZYADD(GLOB.say_log, "\[[stationTimestamp()]\] LOOC: [text]")
+	LAZYADD(GLOB.say_log, "\[[station_time_timestamp()]\] LOOC: [text]")
 	if(CONFIG_GET(flag/log_looc))
 		WRITE_LOG(GLOB.world_game_log, "LOOC: [text]")
 
 
 /proc/log_necro(text)
-	LAZYADD(GLOB.telecomms_log, "\[[stationTimestamp()]\] NECRO: [text]")
+	LAZYADD(GLOB.telecomms_log, "\[[station_time_timestamp()]\] NECRO: [text]")
 	if(CONFIG_GET(flag/log_necro))
 		WRITE_LOG(GLOB.world_game_log, "NECRO: [text]")
 
 
 /proc/log_whisper(text)
-	LAZYADD(GLOB.say_log, "\[[stationTimestamp()]\] WHISPER: [text]")
+	LAZYADD(GLOB.say_log, "\[[station_time_timestamp()]\] WHISPER: [text]")
 	if(CONFIG_GET(flag/log_whisper))
 		WRITE_LOG(GLOB.world_game_log, "WHISPER: [text]")
 
 
 /proc/log_emote(text)
-	LAZYADD(GLOB.say_log, "\[[stationTimestamp()]\] EMOTE: [text]")
+	LAZYADD(GLOB.say_log, "\[[station_time_timestamp()]\] EMOTE: [text]")
 	if(CONFIG_GET(flag/log_emote))
 		WRITE_LOG(GLOB.world_game_log, "EMOTE: [text]")
 
 
 /proc/log_vote(text)
-	LAZYADD(GLOB.game_log, "\[[stationTimestamp()]\] VOTE: [text]")
+	LAZYADD(GLOB.game_log, "\[[station_time_timestamp()]\] VOTE: [text]")
 	if(CONFIG_GET(flag/log_vote))
 		WRITE_LOG(GLOB.world_game_log, "VOTE: [text]")
 

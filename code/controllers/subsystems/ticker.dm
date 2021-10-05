@@ -26,6 +26,9 @@ SUBSYSTEM_DEF(ticker)
 	var/time_left							//Pre-game timer
 	var/start_at
 
+	var/gametime_offset = 432000			//Deciseconds to add to world.time for station time.
+	var/station_time_rate_multiplier = 12	//factor of station time progressal vs real time.
+
 	var/roundend_check_paused = FALSE
 
 	var/round_start_time = 0
@@ -37,8 +40,8 @@ SUBSYSTEM_DEF(ticker)
 	var/queue_delay = 0
 	var/list/queued_players = list()		//used for join queues when the server exceeds the hard population cap
 
-	var/totalPlayers = 0 //used for pregame stats on statpanel
-	var/totalPlayersReady = 0 //used for pregame stats on statpanel
+	var/totalPlayers = 0					//used for pregame stats on statpanel
+	var/totalPlayersReady = 0				//used for pregame stats on statpanel
 
 /datum/controller/subsystem/ticker/Initialize(timeofday)
 	load_mode()

@@ -16,12 +16,12 @@ var/global/ntnrc_uid = 0
 	..()
 
 /datum/ntnet_conversation/proc/add_message(var/message, var/username)
-	message = "[stationTimestamp()] [username]: [message]"
+	message = "[station_time_timestamp()] [username]: [message]"
 	messages.Add(message)
 	trim_message_list()
 
 /datum/ntnet_conversation/proc/add_status_message(var/message)
-	messages.Add("[stationTimestamp()] -!- [message]")
+	messages.Add("[station_time_timestamp()] -!- [message]")
 	trim_message_list()
 
 /datum/ntnet_conversation/proc/trim_message_list()

@@ -234,7 +234,7 @@
 		on_hear_radio(part_a, speaker_name, track, part_b, part_c, formatted)
 
 /proc/say_timestamp()
-	return "<span class='say_quote'>\[[stationTimestamp()]\]</span>"
+	return "<span class='say_quote'>\[[station_time_timestamp()]\]</span>"
 
 /mob/proc/on_hear_radio(part_a, speaker_name, track, part_b, part_c, formatted)
 	to_chat(src,

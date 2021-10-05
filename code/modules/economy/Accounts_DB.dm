@@ -25,7 +25,7 @@
 		T.purpose = reason
 		T.amount = amount
 		T.date = GLOB.current_date_string
-		T.time = stationTimestamp()
+		T.time = station_time_timestamp()
 		T.source_terminal = machine_id
 		return T
 

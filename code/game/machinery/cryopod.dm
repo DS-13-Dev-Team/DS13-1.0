@@ -422,8 +422,8 @@
 	var/role_alt_title = occupant.mind ? occupant.mind.role_alt_title : "Unknown"
 
 	if(control_computer)
-		control_computer.frozen_crew += "[occupant.real_name], [role_alt_title] - [stationTimestamp()]"
-		control_computer._admin_logs += "[key_name(occupant)] ([role_alt_title]) at [stationTimestamp()]"
+		control_computer.frozen_crew += "[occupant.real_name], [role_alt_title] - [station_time_timestamp()]"
+		control_computer._admin_logs += "[key_name(occupant)] ([role_alt_title]) at [station_time_timestamp()]"
 	log_and_message_admins("[key_name(occupant)] ([role_alt_title]) entered cryostorage.")
 
 	announce.autosay("[occupant.real_name], [role_alt_title], [on_store_message]", "[on_store_name]")

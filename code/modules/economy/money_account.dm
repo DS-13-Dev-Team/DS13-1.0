@@ -33,7 +33,7 @@
 /datum/transaction/New(_target, _purpose, _amount, _source)
 	..()
 	date = GLOB.current_date_string
-	time = stationTimestamp()
+	time = station_time_timestamp()
 	target_name = _target
 	purpose = _purpose
 	amount = _amount
@@ -90,7 +90,7 @@
 		R.info += "<i>Account number:</i> [M.account_number]<br>"
 		R.info += "<i>Account pin:</i> [M.remote_access_pin]<br>"
 		R.info += "<i>Starting balance:</i> T[M.money]<br>"
-		R.info += "<i>Date and time:</i> [stationTimestamp()], [GLOB.current_date_string]<br><br>"
+		R.info += "<i>Date and time:</i> [station_time_timestamp()], [GLOB.current_date_string]<br><br>"
 		R.info += "<i>Creation terminal ID:</i> [source_db.machine_id]<br>"
 		R.info += "<i>Authorised NT officer overseeing creation:</i> [source_db.held_card.registered_name]<br>"
 

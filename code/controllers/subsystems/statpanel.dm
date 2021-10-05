@@ -15,6 +15,7 @@ SUBSYSTEM_DEF(statpanels)
 			"Map: [GLOB.using_map.full_name || "Loading..."]",
 			"Round ID: [GLOB.round_id ? GLOB.round_id : "NULL"]",
 			"Server Time: [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")]",
+			"Station Time: [station_time_timestamp()]",
 			"Round Time: [ROUND_TIME]",
 		)
 

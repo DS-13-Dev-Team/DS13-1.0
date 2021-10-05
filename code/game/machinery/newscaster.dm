@@ -77,7 +77,7 @@
 	var/datum/feed_message/newMsg = new /datum/feed_message
 	newMsg.author = author
 	newMsg.body = msg
-	newMsg.time_stamp = "[stationTimestamp()]"
+	newMsg.time_stamp = "[station_time_timestamp()]"
 	newMsg.is_admin_message = adminMessage
 	if(message_type)
 		newMsg.message_type = message_type

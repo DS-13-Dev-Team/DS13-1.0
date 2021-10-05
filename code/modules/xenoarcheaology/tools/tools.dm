@@ -140,7 +140,7 @@
 			//create a new scanlog entry
 			var/datum/depth_scan/D = new()
 			D.coords = "[M.x]:[M.y]:[M.z]"
-			D.time = stationTimestamp()
+			D.time = station_time_timestamp()
 			D.record_index = positive_locations.len + 1
 			D.material = M.mineral ? M.mineral.display_name : "Rock"
 
@@ -161,7 +161,7 @@
 			//create a new scanlog entry
 			var/datum/depth_scan/D = new()
 			D.coords = "[B.x]:[B.y]:[B.z]"
-			D.time = stationTimestamp()
+			D.time = station_time_timestamp()
 			D.record_index = positive_locations.len + 1
 
 			//these values are arbitrary

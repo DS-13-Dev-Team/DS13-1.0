@@ -75,7 +75,7 @@
 
 
 	timeofdeath = world.time
-	if(mind) mind.store_memory("Time of death: [stationTimestamp()]", 0)
+	if(mind) mind.store_memory("Time of death: [station_time_timestamp()]", 0)
 	switch_from_living_to_dead_mob_list()
 
 	update_icon()

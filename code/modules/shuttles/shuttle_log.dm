@@ -127,7 +127,7 @@
 	if(!current_mission || (current_mission.stage != SHUTTLE_MISSION_PLANNED))
 		create_mission()
 	current_mission.stage = SHUTTLE_MISSION_STARTED
-	current_mission.depart_time = stationTimestamp()
+	current_mission.depart_time = station_time_timestamp()
 	process_queue()
 
 /datum/shuttle_log/proc/shuttle_returned()
@@ -135,7 +135,7 @@
 		current_mission = null
 		CRASH("Shuttle returned, but mission stage was incorrect or no mission was logged.")
 	current_mission.stage = SHUTTLE_MISSION_FINISHED
-	current_mission.return_time = stationTimestamp()
+	current_mission.return_time = station_time_timestamp()
 	process_queue()
 
 /datum/shuttle_mission
