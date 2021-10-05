@@ -7,7 +7,7 @@
 	set src in usr.contents
 
 	if(wearer?.wearing_rig == src)
-		ui_interact(usr)
+		tgui_interact(usr)
 	else
 		to_chat(usr, "<span class='warning'>The RIG is not being worn.</span>")
 

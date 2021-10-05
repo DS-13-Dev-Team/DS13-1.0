@@ -386,3 +386,18 @@
 	reagents.add_reagent(/datum/reagent/adrenaline, 5)
 	reagents.add_reagent(/datum/reagent/hyperzine, 10)
 
+/obj/item/weapon/reagent_containers/syringe/necrotoxin
+	name = "Syringe (mysterious fluid)"
+	desc = "Smells like rotten flesh."
+
+/obj/item/weapon/reagent_containers/syringe/necrotoxin/New()
+	..()
+	reagents.add_reagent(/datum/reagent/toxin/necro, 15)
+
+/obj/item/weapon/reagent_containers/syringe/necrotoxin/low
+
+/obj/item/weapon/reagent_containers/syringe/necrotoxin/low/New()
+	..()
+	reagents.add_reagent(/datum/reagent/toxin/necro, 5)
+
+

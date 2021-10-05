@@ -841,10 +841,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/ERT/valor/shuttle)
 "cr" = (
-/obj/machinery/body_scanconsole{
-	dir = 8;
-	icon_state = "body_scannerconsole"
-	},
 /obj/machinery/alarm{
 	pixel_y = 23
 	},
@@ -1119,10 +1115,6 @@
 /turf/simulated/wall/r_wall,
 /area/ERT/valor/medical/morgue)
 "cY" = (
-/obj/machinery/body_scanconsole{
-	dir = 8;
-	icon_state = "body_scannerconsole"
-	},
 /obj/effect/floor_decal/corner/grey/mono,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/white/monotile,
@@ -3426,13 +3418,6 @@
 	},
 /turf/unsimulated/floor/rescue_base,
 /area/ERT/escapebase)
-"hZ" = (
-/obj/machinery/body_scanconsole{
-	dir = 8;
-	icon_state = "body_scannerconsole"
-	},
-/turf/unsimulated/floor/rescue_base,
-/area/ERT/escapebase)
 "ia" = (
 /obj/machinery/vending/medical,
 /turf/unsimulated/floor/rescue_base,
@@ -3571,13 +3556,6 @@
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/white/monotile,
 /area/ERT/valor/medical)
-"it" = (
-/obj/machinery/body_scanconsole{
-	dir = 4;
-	icon_state = "body_scannerconsole"
-	},
-/turf/unsimulated/floor/rescue_base,
-/area/ERT/escapebase)
 "iu" = (
 /obj/machinery/bodyscanner{
 	dir = 4;
@@ -31063,7 +31041,7 @@ hR
 hR
 hR
 hR
-hZ
+MM
 MM
 MM
 hR
@@ -31467,7 +31445,7 @@ hR
 hR
 hR
 hR
-it
+MM
 MM
 MM
 hR

@@ -43,6 +43,7 @@ Mining:
 +	Alden-Saraspova counter
 Medical:
 +	health analyzer
++	advanced health analyzer
 +	Defibrillators
 +	Compact Defibrillators
 +	mass spectrometer
@@ -421,6 +422,14 @@ Botany:
 	materials = list(MATERIAL_STEEL = 1000, MATERIAL_GLASS = 300)
 	build_path = /obj/item/device/healthanalyzer
 	price = 250
+
+/datum/design/item/medical/adv_health_analyzer
+	name = "Advanced Health Analyzer"
+	desc = "A hand-held body scanner able to show full health information about person."
+	id = "adv_health_analyzer"
+	materials = list(MATERIAL_STEEL = 2000, MATERIAL_GLASS = 800, MATERIAL_GOLD = 300)
+	build_path = /obj/item/device/healthanalyzer
+	price = 1500
 
 /datum/design/item/medical/defibrillators_back
 	name = "Defibrillators"
