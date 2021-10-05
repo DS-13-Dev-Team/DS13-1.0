@@ -17,11 +17,6 @@
 /proc/station_time_timestamp(format = "hh:mm:ss", wtime)
 	return time2text(station_time(TRUE, wtime), format)
 
-/proc/get_game_time(wtime=null)
-	if(!wtime)
-		wtime = world.time
-	return wtime - GLOB.timezoneOffset + (12 * 36000)
-
 GLOBAL_VAR_INIT(midnight_rollovers, 0)
 GLOBAL_VAR_INIT(rollovercheck_last_timeofday, 0)
 /proc/update_midnight_rollover()
