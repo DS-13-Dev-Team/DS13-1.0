@@ -55,11 +55,25 @@
 	slot = GEAR_EQUIP_SPECIAL
 	var/item_name
 	var/list/valid_types
+	var/list/valid_names
 
+
+/datum/gear/modkit/Initialize()
+
+	var/obj/O = path
+	item_name = initial(O.name)
+	name = "Conversion Kit: ([item_name])2"
+
+	valid_names = list()
+	for (var/typepath in valid_types)
+		O = path
+		valid_names += initial(O.name)
 
 /datum/gear/modkit/spawn_special(var/mob/living/carbon/human/H,  var/metadata)
 	var/obj/item/mod_kit/MK = new (H.loc)
 	MK.name = name
-	MK.desc =
+	MK.desc = "This is a kit which can be applied to certain things to convert them into \a [item_name]. It will be consumed on use. Valid items to convert are:"
+	for (var/thingname in valid_names)
+		MK.desc += "\n	[thingname]"
 	MK.result_path = path
 	return item
