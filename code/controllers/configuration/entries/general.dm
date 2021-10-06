@@ -48,9 +48,6 @@ Basics, the most important.
 /datum/config_entry/flag/log_hrefs  //logs all links clicked in-game. Could be used for debugging and tracking down exploits
     protection = CONFIG_ENTRY_LOCKED
 
-/datum/config_entry/flag/log_runtime    //logs world.log to a file
-	config_entry_value = FALSE
-
 /datum/config_entry/flag/log_world_output   //log world.log << messages
 
 /datum/config_entry/flag/sql_enabled    //for sql switching
