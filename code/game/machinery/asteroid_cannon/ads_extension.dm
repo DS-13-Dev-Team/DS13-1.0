@@ -105,6 +105,7 @@
 	if (gunner)
 		remove_verb(gunner, list(/mob/living/carbon/human/proc/stop_gunning, /mob/living/carbon/human/proc/recenter_gunning))
 		gunner.eyeobj = null
+		gunner.update_vision_range()
 		gun.overlays.Cut()
 		gunner.plane = gun.cached_plane
 		gunner.forceMove(get_turf(gun))

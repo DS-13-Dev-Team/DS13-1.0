@@ -49,6 +49,7 @@
 		view = new_size
 
 	apply_clickcatcher()
+	mob.reload_fullscreens()
 	//This thing handles nightvision, it is set to a certain size and does not scale with the screen
 	//BUT, we can't allow it to be bigger than the screen, so we resize it here to the size it already is
 	//It will check our screen limit and cap itself to that
