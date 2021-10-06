@@ -295,6 +295,10 @@
 
 	LOADOUT_CHECK
 
+	//Quick safety check
+	if (!islist(pref.gear_list[pref.gear_slot]))
+		pref.gear_list[pref.gear_slot] = list()
+
 	//If the gear is enabled, disable it
 	if((TG.display_name in pref.gear_list[pref.gear_slot]) && pref.loadout.remove_gear(TG))
 		pref.gear_list[pref.gear_slot] -= TG.display_name

@@ -57,6 +57,7 @@
 
 	var/loadout_modkit_cost	=	null //If not null, a modkit to transform another item into this item can be purchased in the loadout for this many points
 	var/modkit_access	=	null//One of the ACCESS_XXX defines above, determines who is allowed to buy this in store
+	var/list/modkit_typelist	= null //A list of types the modkit can apply to
 
 	var/list/whitelist	=	null	//A list of ckeys who can use ACCESS_WHITELIST channels with this item
 
@@ -75,6 +76,9 @@
 
 	if (!isnull(loadout_cost) && !isnull(loadout_access))
 		create_loadout_datum()
+
+	if (!isnull(loadout_modkit_cost) && !isnull(modkit_access))
+		create_modkit_loadout_datum()
 
 	if (!isnull(store_cost) && !isnull(store_access))
 		create_store_datum()
@@ -109,6 +113,26 @@
 
 	GLOB.gear_datums[G.display_name] = G
 
+
+/datum/patron_item/proc/create_modkit_loadout_datum()
+	var/datum/gear/modkit/G = new()
+	G.display_name = src.name
+	G.description = description
+	G.path = item_path
+	G.cost = loadout_cost
+	G.category = src.category
+
+	switch (loadout_access)
+		if (ACCESS_PUBLIC)
+			//do nothing
+		if (ACCESS_PATRONS)
+			G.patron_only = TRUE
+		if (ACCESS_WHITELIST)
+			G.key_whitelist = whitelist
+
+	G.Initialize()
+
+	GLOB.gear_datums[G.display_name] = G
 
 
 /datum/patron_item/proc/create_store_datum()
