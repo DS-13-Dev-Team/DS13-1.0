@@ -122,8 +122,8 @@ BITSET(mobref.hud_updateflag, hudtype)}
 #define VECTOR_POOL_FULL	4000
 
 #define release_vector(A)	if (!istype(A, /vector2)){\
-		if (!isnull(A)){\
-			crash_with("Invalid vector released to pool")}}\
+		if ( !isnull(A)){\
+			crash_with("Invalid vector released to pool: [to_string(A)]")}}\
 	else if (length(GLOB.vector_pool) < VECTOR_POOL_MAX){\
 GLOB.vector_pool += A;}\
 A = null;

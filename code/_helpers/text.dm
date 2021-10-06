@@ -639,3 +639,23 @@ proc/TextPreview(var/string,var/len=40)
 	var/charcount = count - length_char(text)
 	var/list/chars_to_add[max(charcount + 1, 0)]
 	return jointext(chars_to_add, char) + text
+
+
+/*
+	Mostly for debugging. This proc is kind of hackish and inefficient, but it works
+
+	Attempts to turn the thing it's given into a string
+*/
+/proc/to_string(var/input)
+
+	if (istype(input, /vector2))
+		return vstr(input)
+
+	if (islist(input))
+		return dump_list(input)
+
+	if (ismob(input))
+		var/mob/M = input
+		return "[M]" // TODO: What else should this show?
+
+	return "[input]"
