@@ -78,5 +78,7 @@
 		msg += "No commit information"
 	if(world.TgsAvailable())
 		var/datum/tgs_version/version = world.TgsVersion()
-		msg += "Server tools version: [version.raw_parameter]"
-	to_chat(src, msg.Join("<br>"))
+		msg += "TGS version: [version.raw_parameter]"
+		var/datum/tgs_version/api_version = world.TgsApiVersion()
+		msg += "DMAPI version: [api_version.raw_parameter]"
+	to_chat(src, "<span class='infoplain'>[msg.Join("<br>")]</span>")
