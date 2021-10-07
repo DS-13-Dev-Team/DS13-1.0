@@ -41,6 +41,9 @@
 	store_cost = 12000
 	store_access = ACCESS_WHITELIST
 
+	loadout_modkit_cost = 2
+	modkit_access = ACCESS_PATRONS
+	modkit_typelist = list(/obj/item/weapon/rig/advanced)
 
 
 /datum/patron_item/mouse
@@ -49,3 +52,4 @@
 	id = "mouse"
 	store_cost = 1000
 	store_access = ACCESS_WHITELIST
+
