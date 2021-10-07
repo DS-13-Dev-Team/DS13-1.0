@@ -17,7 +17,16 @@
 		if (!istype(source))
 			sources -= source
 			continue
-		for(var/t in get_datum_visible_turfs(source))//source.get_visualnet_tiles(visualnet))
+
+
+		var/list/visible = get_datum_visible_turfs(source)
+
+		//Special return value to indicate that we are invalid and should be removed
+		if (visible == PROCESS_KILL)
+			sources -= source
+			continue
+
+		for(var/t in visible)//source.get_visualnet_tiles(visualnet))
 			visible[t] = t
 
 

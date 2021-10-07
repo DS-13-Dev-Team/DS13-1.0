@@ -48,9 +48,19 @@
 
 
 /obj/effect/psychic_tracer/get_visualnet_tiles(var/datum/visualnet/network)
+
+	//Unsure why this is happening, but it seems that we aren't getting properly removed from chunk lists. Return PROCESS_KILL to ensure that happens
+	if (!EM)
+		if (!QDELETED(src))
+			QDEL_IN(src, 1)
+		return PROCESS_KILL
+
 	return EM.get_visualnet_tiles(network)
 
 /obj/effect/psychic_tracer/Destroy()
+	//If this is null, something has gone wrong with our deletion
+	if (!EM)
+		GLOB.necrovision.remove_source(src, TRUE, TRUE)
 	EM = null //Clears out the ref that's about to become nulled to save GC time.
 	. = ..()
 
