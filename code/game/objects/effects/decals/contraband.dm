@@ -139,7 +139,7 @@
 	if(ruined)
 		return
 
-	if(alert("Do I want to rip the poster from the wall?","You think...","Yes","No") == "Yes")
+	if(tgui_alert(user, "Do I want to rip the poster from the wall?","You think...", list("Yes","No")) == "Yes")
 
 		if(ruined || !user.Adjacent(src))
 			return

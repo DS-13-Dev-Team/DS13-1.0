@@ -147,7 +147,7 @@
 
 	if (href_list["revoke"])
 		var/ckey = href_list["revoke"]
-		var/confirm = alert(usr,"Are you sure you wish to revoke patron status for [ckey]? They will immediately lose access to patronage privilages" , "Cast into the abyss","Revoke","Cancel")
+		var/confirm = tgui_alert(usr,"Are you sure you wish to revoke patron status for [ckey]? They will immediately lose access to patronage privilages" , "Cast into the abyss", list("Revoke","Cancel"))
 		if (confirm == "Revoke")
 			GLOB.patron_keys -= ckey
 			to_chat(usr, "Success, [ckey] expiry date is no longer a patron.")

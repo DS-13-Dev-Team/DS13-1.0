@@ -331,7 +331,7 @@ var/list/organ_cache = list()
 	if(status & ORGAN_ROBOTIC || !istype(target) || !istype(user) || (user != target && user.a_intent == I_HELP))
 		return ..()
 
-	if(alert("Do you really want to use this organ as food? It will be useless for anything else afterwards.",,"Ew, no.","Bon appetit!") == "Ew, no.")
+	if(tgui_alert(user, "Do you really want to use this organ as food? It will be useless for anything else afterwards.",, list("Ew, no","Bon appetit!")) != "Bon appetit!")
 		to_chat(user, "<span class='notice'>You successfully repress your cannibalistic tendencies.</span>")
 		return
 	if(!user.unEquip(src))

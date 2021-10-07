@@ -50,7 +50,7 @@
 
 /obj/item/weapon/rig/proc/handle_credit_chip(W, user)
 	var/obj/item/weapon/spacecash/ewallet/chip = W
-	var/response = alert(user, "What are you trying to do with this chip?", "Credit Chip Interface", "Deposit", "Withdraw", "Store")
+	var/response = tgui_alert(user, "What are you trying to do with this chip?", "Credit Chip Interface", list("Deposit", "Withdraw", "Store"))
 	var/cashflow_direction = 0	//What direction are we trying to move money?
 		//1 = Deposit
 		//-1 = Withdraw

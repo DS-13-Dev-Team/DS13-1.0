@@ -28,7 +28,7 @@
 		to_chat(user, "Try as you might to touch the fountain, some force prevents you from doing so.")
 		return
 
-	if(alert("As you reach out to touch the fountain, a feeling of doubt overcomes you. Steel yourself and proceed?",,"Yes", "No") == "Yes")
+	if(tgui_alert(user, "As you reach out to touch the fountain, a feeling of doubt overcomes you. Steel yourself and proceed?",,list("Yes", "No")) == "Yes")
 		visible_message("\The [user] touches \the [src].")
 		time_dilation(user)
 	else

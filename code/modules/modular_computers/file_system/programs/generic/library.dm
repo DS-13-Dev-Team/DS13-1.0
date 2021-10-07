@@ -125,7 +125,7 @@ The answer was five and a half years -ZeroBits
 			else
 				log_and_message_admins("has uploaded the book titled [B.name], [length(B.dat)] signs")
 				log_game("[usr.name]/[usr.key] has uploaded the book titled [B.name], [length(B.dat)] signs")
-				alert("Upload Complete.")
+				tgui_alert(usr, "Upload Complete.")
 			return 1
 
 		return 0

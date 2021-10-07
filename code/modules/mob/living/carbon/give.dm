@@ -19,7 +19,7 @@
 		return
 
 
-	if(alert(target,"[usr] wants to give you \a [I]. Will you accept it?",,"Yes","No") == "No")
+	if(tgui_alert(target,"[usr] wants to give you \a [I]. Will you accept it?",, list("Yes","No")) != "Yes")
 		target.visible_message("<span class='notice'>\The [usr] tried to hand \the [I] to \the [target], \
 		but \the [target] didn't want it.</span>")
 		return

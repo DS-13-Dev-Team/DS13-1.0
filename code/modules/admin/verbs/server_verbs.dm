@@ -9,7 +9,7 @@
 	if(!ticker?.mode)
 		return
 
-	if(alert("Are you sure you want to end the round?", "End Round", "Yes", "No") != "Yes")
+	if(tgui_alert("Are you sure you want to end the round?", "End Round", list("Yes", "No")) != "Yes")
 		return
 
 	var/winstate = input(usr, "What do you want the round end state to be?", "End Round") as null|anything in list("Custom", "Admin Intervention") + ticker.mode.round_end_states //TO DO Change declare complitation
@@ -182,7 +182,7 @@
 	set desc="Start the round RIGHT NOW"
 	set name="Start Now"
 	if(!ticker)
-		alert("Unable to start the game as it is not set up.")
+		tgui_alert(usr, "Unable to start the game as it is not set up.")
 		return
 	if(ticker.current_state == GAME_STATE_PREGAME && !(initialization_stage & INITIALIZATION_NOW))
 		log_admin("[usr.key] has started the game.")
@@ -278,7 +278,8 @@
 	if (!ticker || ticker.current_state != GAME_STATE_PREGAME)
 		ticker.delay_end = !ticker.delay_end
 		log_and_message_admins("[ticker.delay_end ? "delayed the round end" : "has made the round end normally"].")
-		return //alert("Round end delayed", null, null, null, null, null)
+		//tgui_alert(usr, "Round end delayed")
+		return
 	round_progressing = !round_progressing
 	if (!round_progressing)
 		to_chat(world, "<span class='infodisplay'><b>The game start has been delayed.</b></span>")
@@ -317,7 +318,7 @@
 	set desc="Reboots the server post haste"
 	set name="Immediate Reboot"
 	if(!usr.client.holder)	return
-	if( alert("Reboot server?",,"Yes","No") == "No")
+	if(tgui_alert("Reboot server?", "Confirmation", list("Yes","No")) != "Yes")
 		return
 	to_chat(world, "<span class='danger'>Rebooting world!</span> <span class='notice'>Initiated by [usr.key]!</span>")
 	log_admin("[key_name(usr)] initiated an immediate reboot.")

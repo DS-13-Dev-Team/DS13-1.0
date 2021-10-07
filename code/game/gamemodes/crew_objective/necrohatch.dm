@@ -30,7 +30,7 @@
 
 
 /obj/effect/necrohatch/attack_hand(var/mob/user)
-	var/response = alert(user,"Would you like to leave this spawning area?","Leave Spawn Confirmation","Send me out","Not Yet")
+	var/response = tgui_alert(user,"Would you like to leave this spawning area?","Leave Spawn Confirmation", list("Send me out","Not Yet"))
 	if (response != "Send me out")
 		return
 	transport_user(user)

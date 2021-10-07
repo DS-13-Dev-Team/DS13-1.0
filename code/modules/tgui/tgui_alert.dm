@@ -10,7 +10,7 @@
  * * timeout - The timeout of the alert, after which the modal will close and qdel itself. Set to zero for no timeout.
  * * autofocus - The bool that controls if this alert should grab window focus.
  */
-/proc/tgui_alert(mob/user, message = null, title = null, list/buttons = list("Ok"), timeout = 0, autofocus = TRUE)
+/proc/tgui_alert(mob/user, message = null, title = null, list/buttons = list("Ok"), timeout = 0, autofocus = FALSE)
 	if (!user)
 		user = usr
 	if (!istype(user))
@@ -87,7 +87,6 @@
 
 /datum/tgui_modal/Destroy(force, ...)
 	SStgui.close_uis(src)
-	QDEL_NULL(buttons)
 	. = ..()
 
 /**

@@ -68,15 +68,17 @@
 		to_chat(user, "<span class='warning'>You can't do that while [src] is scanning!</span>")
 	else
 		if(istype(I, /obj/item/stack/nanopaste))
-			var/choice = alert("What do you want to do with the nanopaste?","Radiometric Scanner","Scan nanopaste","Fix seal integrity")
+			var/choice = tgui_alert(user, "What do you want to do with the nanopaste?","Radiometric Scanner",list("Scan nanopaste","Fix seal integrity"))
 			if(choice == "Fix seal integrity")
 				var/obj/item/stack/nanopaste/N = I
 				var/amount_used = min(N.get_amount(), 10 - scanner_seal_integrity / 10)
 				N.use(amount_used)
 				scanner_seal_integrity = round(scanner_seal_integrity + amount_used * 10)
 				return
+			else if (!choice)
+				return
 		if(istype(I, /obj/item/weapon/reagent_containers/glass))
-			var/choice = alert("What do you want to do with the container?","Radiometric Scanner","Add coolant","Empty coolant","Scan container")
+			var/choice = tgui_alert(user, "What do you want to do with the container?","Radiometric Scanner", list("Add coolant","Empty coolant","Scan container"))
 			if(choice == "Add coolant")
 				var/obj/item/weapon/reagent_containers/glass/G = I
 				var/amount_transferred = min(src.reagents.maximum_volume - src.reagents.total_volume, G.reagents.total_volume)
@@ -90,6 +92,8 @@
 				src.reagents.trans_to(G, amount_transferred)
 				to_chat(user, "<span class='info'>You remove [amount_transferred]u of coolant from [src].</span>")
 				update_coolant()
+				return
+			else if (!choice)
 				return
 		if(scanned_item)
 			to_chat(user, "<span class=warning>\The [src] already has \a [scanned_item] inside!</span>")

@@ -101,7 +101,7 @@
 			to_chat(src, "<span class='warning'>Please wait for server initialization to complete...</span>")
 			return
 
-		if(!CONFIG_GET(number/respawn_delay) || client.holder || alert(src,"Are you sure you wish to observe? You will have to wait [CONFIG_GET(number/respawn_delay)] minute\s before being able to respawn!","Player Setup","Yes","No") == "Yes")
+		if(!CONFIG_GET(number/respawn_delay) || client.holder || tgui_alert(src,"Are you sure you wish to observe? You will have to wait [CONFIG_GET(number/respawn_delay)] minute\s before being able to respawn!","Player Setup", list("Yes","No")) == "Yes")
 			return make_observer(src)
 
 
@@ -254,7 +254,7 @@
 		return FALSE
 
 	if(!job || !job.is_available(client))
-		alert("[job.title] is not available. Please try another.")
+		tgui_alert(src, "[job.title] is not available. Please try another.")
 		return FALSE
 	if(job.is_restricted(client.prefs, src))
 		return
@@ -272,9 +272,9 @@
 	if(!job_master.CheckUnsafeSpawn(src, spawn_turf))
 		return
 	*/
-	// Just in case someone stole our position while we were waiting for input from alert() proc
+	// Just in case someone stole our position while we were waiting for input from tgui_alert() proc
 	if(!job || !job.is_available(client))
-		to_chat(src, alert("[job.title] is not available. Please try another."))
+		to_chat(src, tgui_alert(src, "[job.title] is not available. Please try another."))
 		return FALSE
 
 
@@ -513,11 +513,11 @@
 /mob/dead/new_player/proc/check_species_allowed(datum/species/S, var/show_alert=1)
 	if(!(S.spawn_flags & SPECIES_CAN_JOIN) && !has_admin_rights())
 		if(show_alert)
-			to_chat(src, alert("Your current species, [client.prefs.species], is not available for play."))
+			tgui_alert(src, "Your current species, [client.prefs.species], is not available for play.")
 		return FALSE
 	if(!is_alien_whitelisted(src, S))
 		if(show_alert)
-			to_chat(src, alert("You are currently not whitelisted to play [client.prefs.species]."))
+			tgui_alert(src, "You are currently not whitelisted to play [client.prefs.species].")
 		return FALSE
 	return TRUE
 

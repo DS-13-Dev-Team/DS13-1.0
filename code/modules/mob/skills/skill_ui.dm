@@ -123,7 +123,7 @@ The generic antag version.
 	if(href_list["submit"])
 		if(!can_choose())
 			return 1
-		if(alert(usr, "Are you sure you want to commit this selection? You won't be able to change it again.", "Warning", "Yes", "No")=="No")
+		if(tgui_alert(usr, "Are you sure you want to commit this selection? You won't be able to change it again.", "Warning", list("Yes", "No"))!="Yes")
 			return 1
 		if(!can_choose())
 			return 1

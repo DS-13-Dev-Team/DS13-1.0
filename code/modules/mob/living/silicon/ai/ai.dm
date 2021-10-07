@@ -329,7 +329,7 @@ var/list/ai_verbs_default = list(
 	if(check_unable(AI_CHECK_WIRELESS))
 		return
 
-	var/confirm = alert("Are you sure you want to evacuate?", "Confirm Evacuation", "Yes", "No")
+	var/confirm = tgui_alert(src, "Are you sure you want to evacuate?", "Confirm Evacuation", list("Yes", "No"))
 
 	if(check_unable(AI_CHECK_WIRELESS))
 		return
@@ -346,7 +346,7 @@ var/list/ai_verbs_default = list(
 	if(check_unable(AI_CHECK_WIRELESS))
 		return
 
-	var/confirm = alert("Are you sure you want to cancel the evacuation?", "Confirm Cancel", "Yes", "No")
+	var/confirm = tgui_alert(src, "Are you sure you want to cancel the evacuation?", "Confirm Cancel", list("Yes", "No"))
 	if(check_unable(AI_CHECK_WIRELESS))
 		return
 
@@ -518,7 +518,7 @@ var/list/ai_verbs_default = list(
 		return
 
 	var/input
-	if(alert("Would you like to select a hologram based on a crew member or switch to unique avatar?",,"Crew Member","Unique")=="Crew Member")
+	if(tgui_alert(src, "Would you like to select a hologram based on a crew member or switch to unique avatar?",, list("Crew Member","Unique"))=="Crew Member")
 
 		var/personnel_list[] = list()
 
@@ -534,7 +534,7 @@ var/list/ai_verbs_default = list(
 				holo_icon = getHologramIcon(icon(character_icon))
 				holo_icon_longrange = getHologramIcon(icon(character_icon), hologram_color = HOLOPAD_LONG_RANGE)
 		else
-			alert("No suitable records found. Aborting.")
+			tgui_alert(src, "No suitable records found. Aborting.")
 
 	else
 		var/list/hologramsAICanUse = list()

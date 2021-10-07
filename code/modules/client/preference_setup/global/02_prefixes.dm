@@ -86,11 +86,11 @@
 				return TOPIC_NOACTION
 
 			if(length(new_key) != 1)
-				alert(user, "Only single characters are allowed.", "Error", "Ok")
+				tgui_alert(user, "Only single characters are allowed.", "Error")
 			else if(contains_az09(new_key))
-				alert(user, "Only special character are allowed.", "Error", "Ok")
+				tgui_alert(user, "Only special character are allowed.", "Error")
 			else if(new_key == " ")
-				alert(user, "The space character is not allowed.", "Error", "Ok")
+				tgui_alert(user, "The space character is not allowed.", "Error")
 			else
 				pref.prefix_keys_by_type[prefix_instance.type] = new_key
 
@@ -107,7 +107,7 @@
 				// Then, if the new key was reset it means it matched a default key.
 				// If so the user has to select another key, otherwise the selection was successful
 				if(pref.prefix_keys_by_type[prefix_instance.type] != new_key)
-					alert(user, "The selected key is already the default key for another prefix.", "Error", "Ok")
+					tgui_alert(user, "The selected key is already the default key for another prefix.", "Error")
 				else
 					return TOPIC_REFRESH
 		while(TRUE)

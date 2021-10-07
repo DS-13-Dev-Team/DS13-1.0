@@ -40,7 +40,7 @@
 	if(!MayRespawn(1) || !GLOB.actor.can_become_antag(usr.mind, 1))
 		return
 
-	var/choice = alert("Are you sure you'd like to join as an actor?", "Confirmation","Yes", "No")
+	var/choice = tgui_alert(usr, "Are you sure you'd like to join as an actor?", "Confirmation", list("Yes", "No"))
 	if(choice != "Yes")
 		return
 

@@ -93,7 +93,7 @@
 		return
 
 	if(user.last_failed_malf_title || user.last_failed_malf_message)
-		if (alert(user, "Your last hack attempt with title '[user.last_failed_malf_title]' has failed. Try again?", "Retransmission", "Yes", "No") != "Yes")
+		if (tgui_alert(user, "Your last hack attempt with title '[user.last_failed_malf_title]' has failed. Try again?", "Retransmission", list("Yes", "No")) != "Yes")
 			user.last_failed_malf_title = null
 			user.last_failed_malf_message = null
 
@@ -153,7 +153,7 @@
 	set desc = "500 CPU - Begins hacking primary firewall, quickly overtaking remaining APC systems. When completed grants access to the self-destruct mechanism. Network administrators will probably notice this."
 	var/price = 500
 	var/mob/living/silicon/ai/user = usr
-	if (alert(user, "Begin system override? This cannot be stopped once started. The network administrators will probably notice this.", "System Override:", "Yes", "No") != "Yes")
+	if (tgui_alert(user, "Begin system override? This cannot be stopped once started. The network administrators will probably notice this.", "System Override", list("Yes", "No")) != "Yes")
 		return
 	if (!ability_prechecks(user, price) || !ability_pay(user, price) || user.system_override)
 		if(user.system_override)

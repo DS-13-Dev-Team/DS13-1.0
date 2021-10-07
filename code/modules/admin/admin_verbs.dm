@@ -654,7 +654,7 @@ var/list/admin_verbs_mentor = list(
 	set category = "Fun"
 	set name = "OOC Text Color"
 	if(!holder)	return
-	var/response = alert(src, "Please choose a distinct color that is easy to read and doesn't mix with all the other chat and radio frequency colors.", "Change own OOC color", "Pick new color", "Reset to default", "Cancel")
+	var/response = tgui_alert(src, "Please choose a distinct color that is easy to read and doesn't mix with all the other chat and radio frequency colors.", "Change own OOC color", list("Pick new color", "Reset to default", "Cancel"))
 	if(response == "Pick new color")
 		prefs.ooccolor = input(src, "Please select your OOC colour.", "OOC colour") as color
 	else if(response == "Reset to default")
@@ -818,11 +818,11 @@ var/list/admin_verbs_mentor = list(
 		remove_verb(src, /client/proc/readmin_self)
 
 /client/proc/deadmin_self()
-	set name = "De-admin self"
+	set name = "De-Admin self"
 	set category = "Admin"
 
 	if(holder)
-		if(alert("Confirm self-deadmin for the round? You can re-admin yourself at any time.",,"Yes","No") == "Yes")
+		if(tgui_alert(src, "Confirm self-deadmin for the round? You can re-admin yourself at any time.", "De-Admin self",list("Yes","No")) == "Yes")
 			log_admin("[src] deadmined themself.")
 			message_admins("[src] deadmined themself.", 1)
 			deadmin()
@@ -893,7 +893,7 @@ var/list/admin_verbs_mentor = list(
 		to_chat(usr, "Only mobs with clients can alter their own appearance.")
 		return
 
-	switch(alert("Do you wish for [H] to be allowed to select non-whitelisted races?","Alter Mob Appearance","Yes","No","Cancel"))
+	switch(tgui_alert(src, "Do you wish for [H] to be allowed to select non-whitelisted races?","Alter Mob Appearance",list("Yes","No","Cancel")))
 		if("Yes")
 			log_and_message_admins("has allowed [H] to change \his appearance, including races that requires whitelisting")
 			H.change_appearance(APPEARANCE_ALL, H.loc, check_species_whitelist = 0)
@@ -915,7 +915,7 @@ var/list/admin_verbs_mentor = list(
 	if(!new_security_level)
 		return
 
-	if(alert("Switch from [security_state.current_security_level.name] to [new_security_level.name]?","Change security level?","Yes","No") == "Yes")
+	if(tgui_alert(src, "Switch from [security_state.current_security_level.name] to [new_security_level.name]?","Change security level?", list("Yes","No")) == "Yes")
 		security_state.set_security_level(new_security_level, TRUE)
 
 
@@ -940,7 +940,7 @@ var/list/admin_verbs_mentor = list(
 	if(!istype(M, /mob/living/carbon/human))
 		to_chat(usr, "<span class='warning'>You can only do this to humans!</span>")
 		return
-	switch(alert("Are you sure you wish to edit this mob's appearance? Skrell, Unathi, Vox and Tajaran can result in unintended consequences.",,"Yes","No"))
+	switch(tgui_alert(src, "Are you sure you wish to edit this mob's appearance? Skrell, Unathi, Vox and Tajaran can result in unintended consequences.",,list("Yes","No")))
 		if("No")
 			return
 	var/new_facial = input("Please select facial hair color.", "Character Generation") as color
@@ -984,7 +984,7 @@ var/list/admin_verbs_mentor = list(
 	if(new_fstyle)
 		M.f_style = new_fstyle
 
-	var/new_gender = alert(usr, "Please select gender.", "Character Generation", "Male", "Female", "Neuter")
+	var/new_gender = tgui_alert(usr, "Please select gender.", "Character Generation", list("Male", "Female", "Neuter"))
 	if (new_gender)
 		if(new_gender == "Male")
 			M.gender = MALE
