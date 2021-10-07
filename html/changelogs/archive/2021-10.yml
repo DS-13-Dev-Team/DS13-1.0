@@ -48,3 +48,7 @@
       to mining channel.
   - bugfix: Planet Crackers now have access to mining channel.
   - qol: Sleeper now uses TGUI.
+2021-10-06:
+  DTraitor:
+  - bugfix: Fixed bug when dylovene and inaprovaline were missing in sleeper.
+  - rscadd: Body Scanner now shows blood reagents and reagent traces as separate categories.

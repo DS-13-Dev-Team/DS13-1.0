@@ -18,17 +18,6 @@ const abnormalities = [
   ['colourblind', 'average', occupant =>
     'Photoreceptor abnormalities detected.'],
   ['nearsighted', 'average', occupant => 'Retinal misalignment detected.'],
-  /* VOREStation Add */
-  ['humanPrey', 'average', occupant => {
-    return 'Foreign Humanoid(s) detected: ' + occupant.humanPrey;
-  }],
-  ['livingPrey', 'average', occupant => {
-    return 'Foreign Creature(s) detected: ' + occupant.livingPrey;
-  }],
-  ['objectPrey', 'average', occupant => {
-    return 'Foreign Object(s) detected: ' + occupant.objectPrey;
-  }],
-  /* VOREStation Add End */
 ];
 
 const damages = [
@@ -153,16 +142,27 @@ const BodyScannerMainOccupant = (props, context) => {
           {occupant.name}
         </LabeledList.Item>
         <LabeledList.Item label="Health">
-          <ProgressBar
-            min="0"
-            max={occupant.maxHealth}
-            value={occupant.health / occupant.maxHealth}
-            ranges={{
-              good: [0.5, Infinity],
-              average: [0, 0.5],
-              bad: [-Infinity, 0],
-            }}
-          />
+          {occupant.stat !== 2 ? (
+            <ProgressBar
+              min="0"
+              max={occupant.maxHealth}
+              value={occupant.health / occupant.maxHealth}
+              ranges={{
+                good: [0.5, Infinity],
+                average: [0, 0.5],
+                bad: [-Infinity, 0],
+              }}
+            />
+          ):(
+            <ProgressBar
+              min={0}
+              max={occupant.maxHealth}
+              value={0}
+              ranges={{
+                bad: [-Infinity, Infinity],
+              }}
+            />
+          )}
         </LabeledList.Item>
         <LabeledList.Item label="Status" color={stats[occupant.stat][0]}>
           {stats[occupant.stat][1]}
@@ -195,6 +195,32 @@ const BodyScannerMainReagents = props => {
 
   return (
     <Fragment>
+      <Section title="Processed Reagents">
+        {occupant.chem_traces ? (
+          <Table>
+            <Table.Row header>
+              <Table.Cell>
+                Reagent
+              </Table.Cell>
+              <Table.Cell textAlign="right">
+                Amount
+              </Table.Cell>
+            </Table.Row>
+            {occupant.chem_traces.map(reagent => (
+              <Table.Row key={reagent.name}>
+                <Table.Cell>{reagent.name}</Table.Cell>
+                <Table.Cell textAlign="right">
+                  {reagent.amount} Units {
+                    reagent.overdose
+                      ? <Box color="bad">OVERDOSING</Box>
+                      : null
+                  }
+                </Table.Cell>
+              </Table.Row>
+            ))}
+          </Table>
+        ) : <Box color="good">No Processed Reagents Detected</Box>}
+      </Section>
       <Section title="Blood Reagents">
         {occupant.reagents ? (
           <Table>

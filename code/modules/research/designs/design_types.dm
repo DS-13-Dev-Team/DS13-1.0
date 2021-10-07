@@ -428,7 +428,7 @@ Botany:
 	desc = "A hand-held body scanner able to show full health information about person."
 	id = "adv_health_analyzer"
 	materials = list(MATERIAL_STEEL = 2000, MATERIAL_GLASS = 800, MATERIAL_GOLD = 300)
-	build_path = /obj/item/device/healthanalyzer
+	build_path = /obj/item/device/adv_health_analyzer
 	price = 1500
 
 /datum/design/item/medical/defibrillators_back
