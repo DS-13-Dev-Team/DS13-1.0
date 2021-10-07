@@ -59,7 +59,7 @@
 					src.authorized -= W:registered_name
 					to_chat(world, text("<span class='notice'><b>Alert: [] authorizations needed until shuttle is launched early</b></span>", src.auth_need - src.authorized.len))
 
-				if("Abort")
+				if("Abort" || null)
 					to_chat(world, "<span class='notice'><b>All authorizations to shortening time for shuttle launch have been revoked!</b></span>")
 					src.authorized.len = 0
 					src.authorized = list(  )
@@ -73,6 +73,4 @@
 						to_chat(world, "<span class='notice'><b>Alert: Shuttle launch time shortened to 10 seconds!</b></span>")
 						evacuation_controller.set_launch_time(world.time+100)
 						emagged = 1
-					if("Cancel")
-						return
 		return

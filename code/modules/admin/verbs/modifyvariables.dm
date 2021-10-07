@@ -112,7 +112,7 @@
 		if("Yes")
 			L += var_value
 			L[var_value] = mod_list_add_ass() //haha
-		else // In case you close window instead of answering
+		else
 			L += var_value
 	world.log << "### ListVarEdit by [src]: [O.type] [objectvar]: ADDED=[var_value]"
 	log_admin("[key_name(src)] modified [original_name]'s [objectvar]: ADDED=[var_value]")

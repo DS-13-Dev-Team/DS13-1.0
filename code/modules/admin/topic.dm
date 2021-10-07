@@ -21,7 +21,7 @@
 		var/datum/ticket/ticket = get_open_ticket_by_client(ref_person.client)
 		if(ticket && ticket.assigned_admins.len)
 			to_chat(usr, "<b>This adminhelp is already being handled, but continue if you wish.</b>")
-			if(tgui_alert(usr, "Are you sure you want to autoreply to this marked adminhelp?", "Confirmation", list("Yes", "No")) == "No")
+			if(tgui_alert(usr, "Are you sure you want to autoreply to this marked adminhelp?", "Confirmation", list("Yes", "No")) != "Yes")
 				return
 		else if (!ticket)
 			to_chat(usr, "<b>This ticket no longer exists.</b>")
@@ -260,8 +260,10 @@
 
 		var/delmob = 0
 		switch(tgui_alert(usr, "Delete old mob?","Message",list("Yes","No","Cancel")))
-			if("Cancel")	return
-			if("Yes")		delmob = 1
+			if("Cancel" || null)
+				return
+			if("Yes")
+				delmob = 1
 
 		log_and_message_admins("has used rudimentary transformation on [key_name_admin(M)]. Transforming to [href_list["simplemake"]]; deletemob=[delmob]")
 
@@ -335,7 +337,7 @@
 				duration = GetExp(minutes)
 				reason = sanitize(input(usr,"Reason?","reason",reason2) as text|null)
 				if(!reason)	return
-			if("No")
+			else
 				temp = 0
 				duration = "Perma"
 				reason = sanitize(input(usr,"Reason?","reason",reason2) as text|null)
@@ -826,7 +828,7 @@
 						to_chat(M, "<span class='warning'>Jobban can be lifted only upon request.</span>")
 						href_list["jobban2"] = 1 // lets it fall through and refresh
 						return 1
-				if("Cancel")
+				if("Cancel" || null)
 					return
 
 		//Unbanning joblist

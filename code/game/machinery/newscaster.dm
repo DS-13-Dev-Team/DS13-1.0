@@ -578,7 +578,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 						src.screen = 15
 					else
 						if(news_network.wanted_issue.is_admin_message)
-							tgui_alert(usr,"The wanted issue has been distributed by a [GLOB.using_map.company_name] higherup. You cannot edit it.",, list("Ok"))
+							tgui_alert(usr,"The wanted issue has been distributed by a [GLOB.using_map.company_name] higherup. You cannot edit it.")
 							return
 						news_network.wanted_issue.author = src.channel_name
 						news_network.wanted_issue.body = src.msg
@@ -591,7 +591,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 
 		else if(href_list["cancel_wanted"])
 			if(news_network.wanted_issue.is_admin_message)
-				tgui_alert(usr, "The wanted issue has been distributed by a [GLOB.using_map.company_name] higherup. You cannot take it down.",, list("Ok"))
+				tgui_alert(usr, "The wanted issue has been distributed by a [GLOB.using_map.company_name] higherup. You cannot take it down.")
 				return
 			var/choice = tgui_alert(usr, "Please confirm Wanted Issue removal","Network Security Handler",list("Confirm","Cancel"))
 			if(choice=="Confirm")
@@ -607,7 +607,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 		else if(href_list["censor_channel_author"])
 			var/datum/feed_channel/FC = locate(href_list["censor_channel_author"])
 			if(FC.is_admin_channel)
-				tgui_alert(usr, "This channel was created by a [GLOB.using_map.company_name] Officer. You cannot censor it.",, list("Ok"))
+				tgui_alert(usr, "This channel was created by a [GLOB.using_map.company_name] Officer. You cannot censor it.")
 				return
 			if(FC.author != "<B>\[REDACTED\]</B>")
 				FC.backup_author = FC.author
@@ -620,7 +620,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 		else if(href_list["censor_channel_story_author"])
 			var/datum/feed_message/MSG = locate(href_list["censor_channel_story_author"])
 			if(MSG.is_admin_message)
-				tgui_alert(usr, "This message was created by a [GLOB.using_map.company_name] Officer. You cannot censor its author.",, list("Ok"))
+				tgui_alert(usr, "This message was created by a [GLOB.using_map.company_name] Officer. You cannot censor its author.")
 				return
 			if(MSG.author != "<B>\[REDACTED\]</B>")
 				MSG.backup_author = MSG.author
@@ -633,7 +633,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 		else if(href_list["censor_channel_story_body"])
 			var/datum/feed_message/MSG = locate(href_list["censor_channel_story_body"])
 			if(MSG.is_admin_message)
-				tgui_alert(usr, "This channel was created by a [GLOB.using_map.company_name] Officer. You cannot censor it.",, list("Ok"))
+				tgui_alert(usr, "This channel was created by a [GLOB.using_map.company_name] Officer. You cannot censor it.")
 				return
 			if(MSG.body != "<B>\[REDACTED\]</B>")
 				MSG.backup_body = MSG.body
@@ -659,7 +659,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 		else if(href_list["toggle_d_notice"])
 			var/datum/feed_channel/FC = locate(href_list["toggle_d_notice"])
 			if(FC.is_admin_channel)
-				tgui_alert(usr, "This channel was created by a [GLOB.using_map.company_name] Officer. You cannot place a D-Notice upon it.",, list("Ok"))
+				tgui_alert(usr, "This channel was created by a [GLOB.using_map.company_name] Officer. You cannot place a D-Notice upon it.")
 				return
 			FC.censored = !FC.censored
 			FC.update()

@@ -72,8 +72,10 @@
 
 	if(age == "All")
 		age = 9999999
-	else
+	else if(age)
 		age = text2num(age)
+	else
+		return
 
 	var/missing_ages = 0
 	var/msg = ""

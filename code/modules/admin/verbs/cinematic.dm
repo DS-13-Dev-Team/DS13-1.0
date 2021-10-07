@@ -10,7 +10,7 @@
 	if(!ticker)	return
 	switch(cinematic)
 		if("explosion")
-			if(tgui_alert(src, "The game will be over. Are you really sure?", "Confirmation", list("Continue", "Cancel")) == "Cancel")
+			if(tgui_alert(src, "The game will be over. Are you really sure?", "Confirmation", list("Continue", "Cancel")) != "Continue")
 				return
 			var/parameter = input(src,"station_missed = ?","Enter Parameter",0) as num
 			var/override

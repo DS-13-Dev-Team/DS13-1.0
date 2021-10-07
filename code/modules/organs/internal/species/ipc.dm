@@ -79,6 +79,7 @@
 	var/response = tgui_alert(user, "Are you sure you wish to possess this [src]?", "Possess [src]", list("Yes", "No"))
 	if(response == "Yes")
 		G.transfer_personality(user, brainmob)
+	return
 
 /obj/item/organ/internal/posibrain/examine(mob/user)
 	if(!..(user))

@@ -149,14 +149,14 @@
 
 /obj/item/weapon/implant/explosive/implanted(mob/target)
 	if(!elevel)
-		elevel = tgui_alert(usr, "What sort of explosion would you prefer?", "Implant Intent", list("Localized Limb", "Destroy Body", "Full Explosion"))
+		elevel = tgui_alert(usr, "What sort of explosion would you prefer?", "Implant Intent", list("Localized Limb", "Destroy Body", "Full Explosion"), canClose = FALSE)
 	if(!phrase)
 		phrase = sanitize_phrase(input("Choose activation phrase:") as text)
 	if(!code)
-		code = sanitize_phrase(input("Choose activation code (1-100):") as num)
+		code = input("Choose activation code (1-100):") as num
 		if(code > 100 || code < 1)
-			to_chat(usr, "Wrong activation code. Resetting to 13.")
-			code = 13
+			code = rand_between(1, 100)
+			to_chat(usr, "Wrong activation code. New code is [code].")
 
 	var/memo = "Explosive implant in [target] can be activated by saying something containing the phrase ''[phrase]'', <B>say [phrase]</B> to attempt to activate. It can also be triggered with a radio signal on frequency <b>[format_frequency(src.frequency)]</b> with code <b>[code]</b>."
 	usr.mind.store_memory(memo, 0, 0)

@@ -130,7 +130,7 @@ var/global/datum/controller/occupations/job_master
 			var/reply = tgui_alert(spawner, "Warning. Your selected spawn location seems to have unfavorable conditions. \
 			You may die shortly after spawning. \
 			Spawn anyway? More information: [airstatus] Radiation: [radlevel] Bq", "Atmosphere warning", list("Abort", "Spawn anyway"))
-			if(reply == "Abort")
+			if(reply != "Spawn anyway")
 				return FALSE
 			else
 				// Let the staff know, in case the person complains about dying due to this later. They've been warned.

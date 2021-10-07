@@ -19,7 +19,7 @@
 			if(owner.pulling_punches)
 				to_chat(owner, "<span class='warning'>You must be in your hunting stance to do a threat display.</span>")
 			else
-				var/message = tgui_alert(owner, "Would you like to show a scary message?",, list("Cancel","Yes", "No"))
+				var/message = tgui_alert(owner, "Would you like to show a scary message?",, list("Yes", "No"))
 				if(message == "Cancel" || !message)
 					return
 				else if(message == "Yes")

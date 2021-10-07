@@ -397,7 +397,7 @@
 
 	var/reset_equipment = (outfit.flags&OUTFIT_RESET_EQUIPMENT)
 	if(!reset_equipment)
-		reset_equipment = tgui_alert(usr, "Do you wish to delete all current equipment first?", "Delete Equipment?", list("Yes", "No")) == "Yes"
+		reset_equipment = tgui_alert(usr, "Do you wish to delete all current equipment first?", "Delete Equipment?", list("Yes", "No")) == "Yes" ? TRUE : FALSE
 
 	feedback_add_details("admin_verb","SEQ")
 	dressup_human(H, outfit, reset_equipment)

@@ -10,7 +10,7 @@
 	if(!.)
 		return
 	var/confirm = tgui_alert(user, "This command directly moves a shuttle from one area to another. DO NOT USE THIS UNLESS YOU ARE DEBUGGING A SHUTTLE AND YOU KNOW WHAT YOU ARE DOING.", "Are you sure?", list("Ok", "Cancel"))
-	if (confirm == "Cancel")
+	if (confirm != "Ok")
 		return
 
 	var/shuttle_tag = input(user, "Which shuttle do you want to move?") as null|anything in SSshuttle.shuttles

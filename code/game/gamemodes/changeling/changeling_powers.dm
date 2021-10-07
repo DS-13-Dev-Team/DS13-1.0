@@ -430,7 +430,7 @@ var/global/list/possible_changeling_IDs = list("Alpha","Beta","Gamma","Delta","E
 	if(!changeling)	return
 
 	var/mob/living/carbon/C = src
-	if(!C.stat && tgui_alert(usr, "Are we sure we wish to fake our death?", "Fake Death", list("Yes","No")) == "No")//Confirmation for living changelings if they want to fake their death
+	if(!C.stat && tgui_alert(usr, "Are we sure we wish to fake our death?", "Fake Death", list("Yes","No")) != "Yes")//Confirmation for living changelings if they want to fake their death
 		return
 	to_chat(C, "<span class='notice'>We will attempt to regenerate our form.</span>")
 	C.status_flags |= FAKEDEATH		//play dead

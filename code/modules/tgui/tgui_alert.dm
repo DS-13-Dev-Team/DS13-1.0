@@ -10,7 +10,7 @@
  * * timeout - The timeout of the alert, after which the modal will close and qdel itself. Set to zero for no timeout.
  * * autofocus - The bool that controls if this alert should grab window focus.
  */
-/proc/tgui_alert(mob/user, message = null, title = null, list/buttons = list("Ok"), timeout = 0, autofocus = FALSE)
+/proc/tgui_alert(mob/user, message = null, title = null, list/buttons = list("Ok"), timeout = 0, autofocus = TRUE, canClose = TRUE)
 	if (!user)
 		user = usr
 	if (!istype(user))
@@ -19,7 +19,7 @@
 			user = client.mob
 		else
 			return
-	var/datum/tgui_modal/alert = new(user, message, title, buttons, timeout, autofocus)
+	var/datum/tgui_modal/alert = new(user, message, title, buttons, timeout, autofocus, canClose)
 	alert.tgui_interact(user)
 	alert.wait()
 	if (alert)
@@ -39,7 +39,7 @@
  * * timeout - The timeout of the alert, after which the modal will close and qdel itself. Disabled by default, can be set to seconds otherwise.
  * * autofocus - The bool that controls if this alert should grab window focus.
  */
-/proc/tgui_alert_async(mob/user, message = null, title = null, list/buttons = list("Ok"), datum/callback/callback, timeout = 0, autofocus = TRUE)
+/proc/tgui_alert_async(mob/user, message = null, title = null, list/buttons = list("Ok"), datum/callback/callback, timeout = 0, autofocus = TRUE, canClose = TRUE)
 	if (!user)
 		user = usr
 	if (!istype(user))
@@ -48,7 +48,7 @@
 			user = client.mob
 		else
 			return
-	var/datum/tgui_modal/async/alert = new(user, message, title, buttons, callback, timeout, autofocus)
+	var/datum/tgui_modal/async/alert = new(user, message, title, buttons, callback, timeout, autofocus, canClose)
 	alert.tgui_interact(user)
 
 /**
@@ -74,12 +74,15 @@
 	var/autofocus
 	/// Boolean field describing if the tgui_modal was closed by the user.
 	var/closed
+	/// Bool that controls if window can be closed
+	var/canClose
 
-/datum/tgui_modal/New(mob/user, message, title, list/buttons, timeout, autofocus)
+/datum/tgui_modal/New(mob/user, message, title, list/buttons, timeout, autofocus, canClose)
 	src.title = title
 	src.message = message
 	src.buttons = buttons.Copy()
 	src.autofocus = autofocus
+	src.canClose = canClose
 	if (timeout)
 		src.timeout = timeout
 		start_time = world.time
@@ -115,7 +118,8 @@
 		"title" = title,
 		"message" = message,
 		"buttons" = buttons,
-		"autofocus" = autofocus
+		"autofocus" = autofocus,
+		"can_close" = canClose
 	)
 
 	if(timeout)

@@ -941,7 +941,7 @@ var/list/admin_verbs_mentor = list(
 		to_chat(usr, "<span class='warning'>You can only do this to humans!</span>")
 		return
 	switch(tgui_alert(src, "Are you sure you wish to edit this mob's appearance? Skrell, Unathi, Vox and Tajaran can result in unintended consequences.",,list("Yes","No")))
-		if("No")
+		if(!"Yes")
 			return
 	var/new_facial = input("Please select facial hair color.", "Character Generation") as color
 	if(new_facial)

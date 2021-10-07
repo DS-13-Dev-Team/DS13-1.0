@@ -1175,11 +1175,11 @@ datum/admins/var/obj/item/weapon/paper/admin/faxreply // var to hold fax replies
 	P.SetName("[P.origin] - [customname]")
 	P.desc = "This is a paper titled '" + P.name + "'."
 
-	var/shouldStamp = 1
+	var/shouldStamp = 0
 	if(!P.sender) // admin initiated
 		switch(tgui_alert(usr, "Would you like the fax stamped?",, list("Yes", "No")))
-			if("No")
-				shouldStamp = 0
+			if("Yes")
+				shouldStamp = 1
 
 	if(shouldStamp)
 		P.stamps += "<hr><i>This paper has been stamped by the [P.origin] Quantum Relay.</i>"

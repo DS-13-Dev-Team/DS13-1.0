@@ -318,7 +318,7 @@
 	set desc="Reboots the server post haste"
 	set name="Immediate Reboot"
 	if(!usr.client.holder)	return
-	if(tgui_alert("Reboot server?", "Confirmation", list("Yes","No")) != "Yes")
+	if(tgui_alert(usr, "Reboot server?", "Confirmation", list("Yes","No")) != "Yes")
 		return
 	to_chat(world, "<span class='danger'>Rebooting world!</span> <span class='notice'>Initiated by [usr.key]!</span>")
 	log_admin("[key_name(usr)] initiated an immediate reboot.")
