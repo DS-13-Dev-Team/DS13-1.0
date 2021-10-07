@@ -115,7 +115,7 @@
 #define COLOR_NECRO_DARK_YELLOW		"#AAAA00"
 #define COLOR_MARKER_RED		"#FF4444"
 #define COLOR_HARVESTER_RED		rgb(255,68,68,128)
-#define COLOR_BIOMASS_GREEN		"#53761d"
+#define COLOR_BIOMASS_GREEN		"#82bf26"
 #define COLOR_BIOLUMINESCENT_ORANGE "#ffb347"
 
 // Codex category colours.
