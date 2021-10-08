@@ -19,7 +19,7 @@
 			continue
 
 
-		var/list/visible = get_datum_visible_turfs(source)
+		var/list/visible_turfs = get_datum_visible_turfs(source)
 
 		//Special return value to indicate that we are invalid and should be removed
 		if (visible == PROCESS_KILL)
