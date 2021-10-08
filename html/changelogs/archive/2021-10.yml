@@ -52,3 +52,6 @@
   DTraitor:
   - bugfix: Fixed bug when dylovene and inaprovaline were missing in sleeper.
   - rscadd: Body Scanner now shows blood reagents and reagent traces as separate categories.
+2021-10-08:
+  Nanako:
+  - imageadd: Tweaked BPL growth tank visuals to be brighter and clearer
