@@ -228,7 +228,7 @@ S	fuel tank (hydrazine)
 	id = "pulsehighvel"
 	materials = list(MATERIAL_PLASTEEL = 7500, MATERIAL_DIAMOND = 2500, MATERIAL_PHORON = 500)
 	build_path = /obj/item/ammo_magazine/pulse/hv
-	price = 16000
+	price = 10000
 
 /datum/design/item/ammo/seeker_ammo
 	name = "seeker shell"
