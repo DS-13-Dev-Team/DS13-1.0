@@ -22,11 +22,11 @@
 		var/list/visible_turfs = get_datum_visible_turfs(source)
 
 		//Special return value to indicate that we are invalid and should be removed
-		if (visible == PROCESS_KILL)
+		if (visible_turfs == PROCESS_KILL)
 			sources -= source
 			continue
 
-		for(var/t in visible)//source.get_visualnet_tiles(visualnet))
+		for(var/t in visible_turfs)//source.get_visualnet_tiles(visualnet))
 			visible[t] = t
 
 
