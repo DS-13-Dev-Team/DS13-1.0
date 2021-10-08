@@ -61,7 +61,6 @@
 /datum/uplink_item/item/ammo/c45uzi/special
 	item_cost = 2
 	is_special = TRUE
-	antag_roles = list(MODE_UNITOLOGIST, MODE_UNITOLOGIST_SHARD)
 
 /datum/uplink_item/item/ammo/a10mm
 	name = "10mm SMG Magazine"
@@ -70,6 +69,11 @@
 
 /datum/uplink_item/item/ammo/a10mm/special
 	item_cost = 2
+	is_special = TRUE
+
+/datum/uplink_item/item/ammo/bullpup/special
+	item_cost = 8
+	path = /obj/item/ammo_magazine/bullpup
 	is_special = TRUE
 	antag_roles = list(MODE_UNITOLOGIST, MODE_UNITOLOGIST_SHARD)
 
