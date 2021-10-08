@@ -133,15 +133,17 @@
 	icon = 'icons/obj/weapons/ds13guns48x32.dmi'
 	icon_state = "scl_shotgun"
 	item_state = "scl_shotgun"
+	wielded_item_state = "scl_shotgun-wielded"
 	var/icon_loaded = "scl_shotgun_loaded"
 	slot_flags = SLOT_BELT
 	magazine_type = /obj/item/ammo_magazine/shotgun
-	w_class = ITEM_SIZE_NORMAL
+	w_class = ITEM_SIZE_HUGE
 	load_method = MAGAZINE
 	caliber = "shotgun"
 	force = 5
 	one_hand_penalty = 0
 	fire_delay = 20
+	one_hand_penalty = 6 //It's a shotgun, brace yourself before firing.
 	firemodes = list(
 		list(mode_name = "shotgun", fire_delay = 1 SECONDS),
 		list(mode_name = "bolas", projectile_type = /obj/item/projectile/bullet/shotgun/bola, fire_sound = 'sound/weapons/bolathrow.ogg', fire_delay = 1 SECONDS))
