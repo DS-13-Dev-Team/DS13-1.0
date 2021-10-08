@@ -10,7 +10,7 @@
 	path = /obj/item/weapon/storage/box/syndie_kit/imp_freedom
 
 /datum/uplink_item/item/implants/imp_freedom/special
-	item_cost = 12
+	item_cost = 20
 	is_special = TRUE
 	antag_roles = list(MODE_EARTHGOV_AGENT)
 
@@ -40,14 +40,14 @@
 	path = /obj/item/weapon/storage/box/syndie_kit/imp_imprinting
 
 /datum/uplink_item/item/implants/imp_imprinting/special
-	item_cost = 13
+	item_cost = 20
 	is_special = TRUE
 	antag_roles = list(MODE_UNITOLOGIST, MODE_UNITOLOGIST_SHARD)
 
 /datum/uplink_item/item/implants/explosive
-	name = "temp name1"
-	desc = "temp desc1"
-	item_cost = 13
+	name = "Explosive Implant"
+	desc = "Used to  give someone an explosive surprise"
+	item_cost = 20
 	is_special = TRUE
 	path = /obj/item/weapon/implantcase/explosive
 	antag_roles = list(MODE_UNITOLOGIST, MODE_UNITOLOGIST_SHARD)
