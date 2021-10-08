@@ -79,7 +79,7 @@ The Pulse Rifle is the standard-issue service rifle of the Earth Defense Force a
 	caliber = "pulse"
 	ammo_type = /obj/item/ammo_casing/pulse
 	matter = list(MATERIAL_STEEL = 1260)
-	max_ammo = 50
+	max_ammo = 65
 	multiple_sprites = FALSE
 	mag_type = MAGAZINE
 
