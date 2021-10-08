@@ -184,6 +184,6 @@ client/verb/bugreport()
 	set name ="Submit Bug Report/Suggestions"
 	var url = "https://github.com/DS-13-Dev-Team/DS13/issues"
 	if(url)
-		if(tgui_alert(src, "This will open the Dead Space 13 Bug Report and Suggestions GitHub Page in your Browser. Are you sure?", "Confirmation", list("Yes","No"))=="No")
+		if(tgalert(src, "This will open the Dead Space 13 Bug Report and Suggestions GitHub Page in your Browser. Are you sure?", "Confirmation", "Yes","No")!="Yes")
 			return
 		src << link(url)
