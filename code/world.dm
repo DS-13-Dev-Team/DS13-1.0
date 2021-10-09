@@ -7,7 +7,7 @@
 	mob = /mob/dead/new_player
 	turf = /turf/space
 	area = /area/space
-	view = 7
+	view = WORLD_VIEW_RANGE
 	cache_lifespan = 7
 	hub = "Exadv1.spacestation13"
 	icon_size = WORLD_ICON_SIZE
