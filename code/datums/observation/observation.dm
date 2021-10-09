@@ -199,10 +199,9 @@
 	return TRUE
 
 
-/decl/observ/proc/RaiseEvent(list/arguments)
+/decl/observ/proc/RaiseEvent(datum/listener, list/arguments)
 	events_raised++
 
-	var/datum/listener = arguments[1]
 	var/target = listener.observations[src]
 	if(!length(target))
 		var/datum/listening_datum = target
