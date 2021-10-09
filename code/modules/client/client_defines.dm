@@ -1,10 +1,10 @@
 /client
-		//////////////////////
-		//BLACK MAGIC THINGS//
-		//////////////////////
-	parent_type = /datum
+	parent_type = /datum		// black magic
+	preload_rsc = PRELOAD_RSC	// This is 0 so we can set it to an URL once the player logs in and have them download the resources from a different server.
+	view = WORLD_VIEW
+	var/view_radius = WORLD_VIEW_RANGE
+	var/datum/tooltip/tooltips
 
-	preload_rsc = PRELOAD_RSC // This is 0 so we can set it to an URL once the player logs in and have them download the resources from a different server.
 		////////////////
 		//ADMIN THINGS//
 		////////////////
@@ -66,7 +66,6 @@
 	var/last_asset_job = 0
 	var/last_completed_asset_job = 0
 
-	var/datum/tooltip/tooltips
 
 		////////////
 		//MOUSE HANDLING//
@@ -77,6 +76,8 @@
 		View Handling
 	--------------------------------*/
 	var/view_offset_magnitude	//Cached when view offset is set
+
+	var/obj/screen/click_catcher/void = null
 
 	//Static framerate
 	fps = 50

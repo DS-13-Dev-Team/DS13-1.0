@@ -31,47 +31,49 @@
 	return host.get_client()
 
 
-/client/var/temp_view = 7
-/client/proc/set_view_range(var/radius, var/force_update = FALSE)
+/client/proc/change_view(new_size)
+	if(isnull(new_size))
+		CRASH("change_view called without argument.")
+	if(isnum(new_size))
+		if(view_radius == new_size)
+			return
 
-	if ((force_update || view != radius) && isnum(radius))
-		//If radius has changed, we'll return true
-		.=TRUE
+		view_radius = new_size
+		view = VIEW_NUM_TO_STRING(view_radius)
+	else
+		if(view == new_size)
+			return
 
-		temp_view = radius
+		var/list/view_size = getviewsize(new_size)
+		view_radius = round(max(view_size[1], view_size[2])/2)
+		view = new_size
 
-		remake_click_catcher()
+	apply_clickcatcher()
+	mob.reload_fullscreens()
+	//This thing handles nightvision, it is set to a certain size and does not scale with the screen
+	//BUT, we can't allow it to be bigger than the screen, so we resize it here to the size it already is
+	//It will check our screen limit and cap itself to that
+	mob.set_darksight_range(view_radius)
+	if (mob.client)
+		mob.client.update_skybox(TRUE)
+	if (isliving(mob))
+		var/mob/living/L = mob
+		L.handle_regular_hud_updates(FALSE)//Pass false here to not call update vision and avoid an infinite loop
 
-		update_skybox(TRUE)
+		//Update hud healthbar if one exists, so that its clamped to screen size
+		if (L.hud_used?.hud_healthbar)
+			L.hud_used.hud_healthbar.set_size(TRUE)
 
-		if (mob)
-			mob.reload_fullscreen()
-
-			//This thing handles nightvision, it is set to a certain size and does not scale with the screen
-			//BUT, we can't allow it to be bigger than the screen, so we resize it here to the size it already is
-			//It will check our screen limit and cap itself to that
-			if (mob.l_general)//It may not exist during login
-				mob.l_general.resize(mob.l_general.size, src)
-
-
-			if (isliving(mob))
-				var/mob/living/L = mob
-				L.handle_regular_hud_updates(FALSE)//Pass false here to not call update vision and avoid an infinite loop
-
-				//Update hud healthbar if one exists, so that its clamped to screen size
-				if (L.hud_used.hud_healthbar)
-					L.hud_used.hud_healthbar.set_size(TRUE)
-
-		spawn()
-			view = temp_view
+	if (prefs.auto_fit_viewport)
+		addtimer(CALLBACK(src,.verb/fit_viewport,10)) //Delayed to avoid wingets from Login calls.
 
 //Returns the width of the viewport/map window, in pixels
 /client/proc/get_viewport_width()
-	return ((temp_view*2)+1) * WORLD_ICON_SIZE
+	return ((view_radius*2)+1) * WORLD_ICON_SIZE
 
 //Returns the total distance infront of the mob that this client can see, taking into account view radius and offset
 /client/proc/get_view_length()
-	return temp_view + (view_offset_magnitude / WORLD_ICON_SIZE)
+	return view_radius + (view_offset_magnitude / WORLD_ICON_SIZE)
 
 
 /client/proc/set_view_offset(var/direction, var/magnitude, var/force_update = FALSE)

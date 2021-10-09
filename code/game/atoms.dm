@@ -703,3 +703,8 @@ its easier to just keep the beam vertical.
 		var/mouseparams = list2params(paramslist)
 		usr_client.Click(src, loc, null, mouseparams)
 		return TRUE
+
+
+//Hook for running code when a dir change occurs
+/atom/proc/setDir(newdir)
+	dir = newdir

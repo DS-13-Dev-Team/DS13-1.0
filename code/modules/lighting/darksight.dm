@@ -13,9 +13,9 @@
 	var/size = 7
 	var/cached_color
 
-/obj/lighting_general/New(var/atom/location, var/client/C)
+/obj/lighting_general/New(atom/location, client/C)
 	. = ..()
-	var/newscale = ((C.view * 2) + 1) / C.view
+	var/newscale = ((C.view_radius * 2) + 1) / C.view_radius
 	transform *= newscale
 
 /obj/lighting_general/proc/sync(var/new_colour)
@@ -24,7 +24,7 @@
 
 /obj/lighting_general/proc/resize(var/new_size = 2, var/client/C)
 	if (istype(C))
-		new_size = min(new_size, C.temp_view)
+		new_size = min(new_size, C.view_radius)
 	size = new_size
 	var/newscale = ((new_size * 2) + 1)
 	var/matrix/M = matrix()

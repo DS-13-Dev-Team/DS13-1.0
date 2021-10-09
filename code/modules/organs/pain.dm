@@ -1,7 +1,6 @@
-mob/proc/flash_pain(var/target)
-	if(hud_used.pain)
-		animate(hud_used.pain, alpha = target, time = 15, easing = ELASTIC_EASING)
-		animate(hud_used.pain, alpha = 0, time = 20)
+/mob/proc/flash_pain(var/target)
+	overlay_fullscreen("pain", /obj/screen/fullscreen/pain, 2)
+	clear_fullscreen("pain")
 
 mob/var/last_pain_message
 mob/var/next_pain_time = 0

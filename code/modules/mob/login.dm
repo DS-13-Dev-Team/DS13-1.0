@@ -77,7 +77,10 @@
 	client.images = null				//remove the images such as AIs being unable to see runes
 	client.screen = list()				//remove hud items just in case
 
-	create_mob_hud()
+	if(!hud_used)
+		create_mob_hud()
+	if(hud_used)
+		hud_used.show_hud(hud_used.hud_version)
 
 	next_move = 1
 	set_sight(sight|SEE_SELF)
@@ -95,10 +98,7 @@
 	if(eyeobj)
 		eyeobj.possess(src)
 
-	refresh_lighting_overlays()
-
 	refresh_client_images()
-	reload_fullscreen() // Reload any fullscreen overlays this mob has.
 
 	add_click_catcher()
 	update_action_buttons()
@@ -118,10 +118,8 @@
 		return
 
 	if (l_plane)
-		client.screen -= l_plane
 		QDEL_NULL(l_plane)
 	if (l_general)
-		client.screen -= l_general
 		QDEL_NULL(l_general)
 
 	l_plane = new(null, client)

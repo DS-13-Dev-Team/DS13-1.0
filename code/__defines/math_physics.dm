@@ -49,3 +49,6 @@
 //Clock directions, used for multistage cones
 #define CLOCKWISE	1
 #define ANTICLOCKWISE	-1
+
+/// Gets shift x that would be required the bitflag (1<<x)
+#define TOBITSHIFT(bit) ( log(2, bit) )

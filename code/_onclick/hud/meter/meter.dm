@@ -4,7 +4,6 @@
 #define METER_HEIGHT	"16"
 /obj/screen/meter
 	name = "meter"
-	var/client/C
 	var/mob/living/L
 	var/obj/screen/meter_component/current/remaining_meter	//The actual remaining health, in red or green
 	var/obj/screen/meter_component/delta/delta_meter	//A yellow section indicating recent loss
@@ -20,7 +19,7 @@
 	screen_loc = "CENTER,TOP"
 	plane = HUD_PLANE
 	layer = HUD_BASE_LAYER
-	icon = 'icons/mob/screen_health.dmi'
+	icon = 'icons/hud/screen_health.dmi'
 	icon_state = "white"
 
 	var/total_value = 1
@@ -51,49 +50,15 @@
 
 	var/margin = 8//Extra length that isn't counted as part of our length for the purpose of components
 
-/obj/screen/meter/New(var/atom/holder)
-
+/obj/screen/meter/New(atom/holder, holder_hud)
+	L = holder
+	hud = holder_hud
 	cache_data(arglist(args))
+
 	.=..()
 
-
-//Override this and change the parameters in subtypes
-/obj/screen/meter/proc/cache_data(var/atom/holder)
-
-
-/obj/screen/meter/Destroy()
-	QDEL_NULL(remaining_meter)
-	QDEL_NULL(delta_meter)
-	QDEL_NULL(limit_meter)
-	QDEL_NULL(textholder)
-	if (C)
-		C.screen -= src
-		C = null
-	.=..()
-
-/obj/screen/meter/added_to_screen(var/client/newclient)
-	recreate_components(newclient)
-
-
-
-
-/obj/screen/meter/proc/recreate_components(var/client/newclient)
-	if (C)
-		C.screen -= remaining_meter
-		C.screen -= delta_meter
-		C.screen -= limit_meter
-		C.screen -= textholder
-
-	if (newclient && newclient != C)
-		C = newclient
-		set_mob(C.mob)
-
-
-	QDEL_NULL(remaining_meter)
-	QDEL_NULL(delta_meter)
-	QDEL_NULL(limit_meter)
-	QDEL_NULL(textholder)
-
+/obj/screen/meter/Initialize()
+	. = ..()
 	remaining_meter = new(src)
 	remaining_meter.color = remaining_color
 	remaining_meter.screen_loc = src.screen_loc
@@ -110,15 +75,24 @@
 	textholder = new(src)
 	textholder.screen_loc = src.screen_loc
 
+	hud.infodisplay += list(remaining_meter, delta_meter, limit_meter, textholder)
+
 	update(TRUE)
 
-
-/obj/screen/meter/proc/set_mob(var/mob/living/newmob)
-	L = newmob
-
+//Override this and change the parameters in subtypes
+/obj/screen/meter/proc/cache_data(atom/holder)
 
 
-/obj/screen/meter/proc/set_size(var/update = TRUE)
+/obj/screen/meter/Destroy()
+	QDEL_NULL(remaining_meter)
+	QDEL_NULL(delta_meter)
+	QDEL_NULL(limit_meter)
+	QDEL_NULL(textholder)
+	.=..()
+
+
+
+/obj/screen/meter/proc/set_size(update = TRUE)
 	//Lets set the size
 
 
@@ -166,7 +140,7 @@
 	length = round(length)
 
 	//We must make sure it can fit on the client's screen
-	length = min(length, C.get_viewport_width() - margin)
+	length = min(length, L.client.get_viewport_width() - margin)
 
 
 
@@ -187,7 +161,7 @@
 
 
 
-/obj/screen/meter/proc/update(var/force_update = FALSE)
+/obj/screen/meter/proc/update(force_update = FALSE)
 	var/list/data = get_data()
 
 
@@ -264,7 +238,7 @@
 	screen_loc = "CENTER,TOP"
 	plane = HUD_PLANE
 	layer = HUD_ITEM_LAYER
-	icon = 'icons/mob/screen_health.dmi'
+	icon = 'icons/hud/screen_health.dmi'
 	icon_state = "white_slim"
 	var/side = -1	//-1 = left, 1 = right
 
@@ -274,22 +248,21 @@
 
 	mouse_opacity = 2
 
-/obj/screen/meter_component/New(var/obj/screen/meter/newparent)
+/obj/screen/meter_component/New(obj/screen/meter/newparent)
 	parent = newparent
-	parent.C.screen += src
+	hud = parent.hud
 	update_total()
 	.=..()
 
 /obj/screen/meter_component/Destroy()
-	if (parent && parent.C)
-		parent.C.screen -= src
+	hud.infodisplay -= src
 	.=..()
 
 
 /obj/screen/meter_component/proc/update()
 
 //Sets a new size in pixels
-/obj/screen/meter_component/proc/set_size(var/newsize)
+/obj/screen/meter_component/proc/set_size(newsize)
 	if (!newsize)
 		alpha = 0
 		return
@@ -450,7 +423,7 @@
 	icon_state = ""
 	layer = HUD_TEXT_LAYER
 
-/obj/screen/meter_component/text/update_total(var/resize = FALSE)
+/obj/screen/meter_component/text/update_total(resize = FALSE)
 	if (parent)
 		if (resize)
 			set_size(parent.length)
@@ -466,21 +439,4 @@
 
 /obj/screen/meter_component/text/set_size()
 	return
-
-
-
-//Helpers
-/mob/proc/add_meter(var/meter_type)
-	var/obj/screen/meter/M = new meter_type()
-	/*
-	if (hud_used)
-		var/datum/hud/H = hud_used
-		H.hud_elements += M
-	*/
-
-	if (client)
-		client.add_to_screen(M)
-
-	return M
-
 

@@ -272,7 +272,7 @@
 			var/mob/M = client.eye
 			visualnet_range = M.view_range
 			var/view_changed = FALSE
-			if (client.set_view_range(M.view_range))
+			if (client.change_view(M.view_range))
 				view_changed = TRUE
 			if (client.set_view_offset(M.get_visual_dir(), M.view_offset))
 				view_changed = TRUE
@@ -1036,3 +1036,7 @@
 
 /mob/GenerateTag()
 	tag = "mob_[next_mob_id++]"
+
+///Get the item on the mob in the storage slot identified by the id passed in
+/mob/proc/get_item_by_slot(slot_id)
+	return null
