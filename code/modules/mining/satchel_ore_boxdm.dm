@@ -27,16 +27,16 @@
 /obj/structure/ore_box/random/Initialize()
 	.=..()
 	for (var/i in 1 to 30)
-		var/ore_name = pick(ore_data)
-		var/ore/ore_datum = ore_data[ore_name]
+		var/ore_name = pick(GLOB.ore_data)
+		var/ore/ore_datum = GLOB.ore_data[ore_name]
 		new ore_datum.ore(src)
 	update_ore_count()
 
 //A debug type that contains one of each ore
 /obj/structure/ore_box/all/Initialize()
 	.=..()
-	for (var/ore_name in ore_data)
-		var/ore/ore_datum = ore_data[ore_name]
+	for (var/ore_name in GLOB.ore_data)
+		var/ore/ore_datum = GLOB.ore_data[ore_name]
 		new ore_datum.ore(src)
 		to_chat(world, "[ore_name] is worth [ore_datum.Value()] ")
 	update_ore_count()

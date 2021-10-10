@@ -12,7 +12,7 @@
 	. = ..()
 	if(ispath(ore))
 		ensure_ore_data_initialised()
-		ore = ores_by_type[ore]
+		ore = GLOB.ores_by_type[ore]
 		if(ore.ore != type)
 			log_debug("[src] ([src.type]) had ore type [ore.type] but that type does not have [src.type] set as its ore item!")
 		update_ore()

@@ -1,111 +1,79 @@
-/**********************Mineral processing unit console**************************/
+#define ORE_PROCESSING_NOTHING 0
+#define ORE_PROCESSING_SMELTING 1
+#define ORE_PROCESSING_COMPRESSING 2
+#define ORE_PROCESSING_ALLOYING 3
 
+/**********************Mineral processing unit console**************************/
 /obj/machinery/mineral/processing_unit_console
-	name = "production machine console"
+	name = "processing unit console"
 	icon = 'icons/obj/machines/mining_machines.dmi'
 	icon_state = "console"
 	density = 1
 	anchored = 1
-
+	can_block_movement = FALSE
 	var/obj/machinery/mineral/processing_unit/machine = null
-	var/machinedir = EAST
-	var/show_all_ores = 0
 
+/obj/machinery/mineral/processing_unit_console/Initialize()
+	.=..()
+	. = INITIALIZE_HINT_LATELOAD
 
-
-
-/obj/machinery/mineral/processing_unit_console/New(var/atom/location, var/direction, var/nocircuit = FALSE)
-	..()
-	spawn(7)
-		src.machine = locate(/obj/machinery/mineral/processing_unit, get_step(src, machinedir))
-		if (machine)
-			machine.console = src
-		else
-			qdel(src)
+/obj/machinery/mineral/processing_unit_console/LateInitialize()
+	if(!machine)
+		qdel(src)
 
 /obj/machinery/mineral/processing_unit_console/attack_hand(mob/user)
 	add_fingerprint(user)
-	interact(user)
+	if(machine)
+		tgui_interact(user)
+	else
+		to_chat(user, SPAN_NOTICE("Couldn't find linked Ore Processor!"))
 
-/obj/machinery/mineral/processing_unit_console/interact(mob/user)
+/obj/machinery/mineral/processing_unit_console/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "OreProcessor", name)
+		ui.open()
 
+/obj/machinery/mineral/processing_unit_console/ui_status(mob/user, datum/ui_state/state)
+	if(!machine)
+		return UI_CLOSE
+	else
+		. = ..()
+
+/obj/machinery/mineral/processing_unit_console/ui_data(mob/user)
+	var/list/data = list()
+
+	for(var/ore in machine.ores_stored)
+		var/ore/O = GLOB.ores_by_type[ore]
+		var/ore_data = list("name" = capitalize(O.name), "type" = ore, "amount" = machine.ores_stored[ore], "processing" = machine.ores_processing[ore])
+
+		data["ores"] += list(ore_data)
+
+	data["active"] = machine.active
+
+	data["panel_status"] = machine.panel_open
+
+	return data
+
+/obj/machinery/mineral/processing_unit_console/ui_act(action, list/params)
 	if(..())
-		return
+		return TRUE
 
-	if(!allowed(user))
-		to_chat(user, "<span class='warning'>Access denied.</span>")
-		return
+	switch(action)
+		if("activate")
+			if(!machine.panel_open)
+				machine.active = !machine.active
+				machine.update_icon()
 
-	user.set_machine(src)
+		if("toggle_smelting")
+			var/choice = params["tog_smelt"]
+			var/ore_type = text2path(params["ore_type"])
+			machine.ores_processing[ore_type] = choice
 
-	var/dat = "<h1>Ore processor console</h1>"
-
-	dat += "<hr><table>"
-
-	for(var/ore in machine.ores_processing)
-
-		if(!machine.ores_stored[ore] && !show_all_ores) continue
-		var/ore/O = ore_data[ore]
-		if(!O) continue
-		dat += "<tr><td width = 40><b>[capitalize(O.display_name)]</b></td><td width = 30>[machine.ores_stored[ore]]</td><td width = 100>"
-		if(machine.ores_processing[ore])
-			switch(machine.ores_processing[ore])
-				if(0)
-					dat += "<font color='red'>not processing</font>"
-				if(1)
-					dat += "<font color='orange'>smelting</font>"
-				if(2)
-					dat += "<font color='blue'>compressing</font>"
-				if(3)
-					dat += "<font color='gray'>alloying</font>"
-		else
-			dat += "<font color='red'>not processing</font>"
-		dat += ".</td><td width = 30><a href='?src=\ref[src];toggle_smelting=[ore]'>\[change\]</a></td></tr>"
-
-	dat += "</table><hr>"
-	dat += "Currently displaying [show_all_ores ? "all ore types" : "only available ore types"]. <A href='?src=\ref[src];toggle_ores=1'>\[[show_all_ores ? "show less" : "show more"]\]</a></br>"
-	dat += "The ore processor is currently <A href='?src=\ref[src];toggle_power=1'>[(machine.active ? "<font color='green'>processing</font>" : "<font color='red'>disabled</font>")]</a>."
-	user << browse(dat, "window=processor_console;size=400x500")
-	onclose(user, "processor_console")
-	return
-
-/obj/machinery/mineral/processing_unit_console/Topic(href, href_list)
-	if(..())
-		return 1
-	usr.set_machine(src)
-	src.add_fingerprint(usr)
-
-	if(href_list["toggle_smelting"])
-
-		var/choice = input("What setting do you wish to use for processing [href_list["toggle_smelting"]]?") as null|anything in list("Smelting","Compressing","Alloying","Nothing")
-		if(!choice) return
-
-		switch(choice)
-			if("Nothing") choice = 0
-			if("Smelting") choice = 1
-			if("Compressing") choice = 2
-			if("Alloying") choice = 3
-
-		machine.ores_processing[href_list["toggle_smelting"]] = choice
-
-	if(href_list["toggle_power"])
-
-		machine.active = !machine.active
-		machine.update_icon()
-
-	if(href_list["toggle_ores"])
-
-		show_all_ores = !show_all_ores
-
-	if (machine)
-		machine.wake_up()
-
-	src.updateUsrDialog()
-	return
+	SStgui.update_uis(src)
+	machine.wake_up()
 
 /**********************Mineral processing unit**************************/
-
-
 /obj/machinery/mineral/processing_unit
 	name = "material processor" //This isn't actually a goddamn furnace, we're in space and it's processing platinum and flammable phoron...
 	icon = 'icons/obj/machines/mining_machines.dmi'
@@ -113,22 +81,98 @@
 	density = 1
 	anchored = 1
 	light_outer_range = 3
+	circuit = /obj/item/weapon/circuitboard/ore_processing
 	var/obj/machinery/input/input = null
 	var/obj/machinery/mineral/output = null
 	var/obj/machinery/mineral/processing_unit_console/console = null
-	var/sheets_per_tick = 2
+	var/sheets_per_tick = 0
 	var/list/ores_processing[0]
 	var/list/ores_stored[0]
 	var/static/list/alloy_data
-	var/active = 0
+	var/active = FALSE
 	var/currently_working = FALSE	//Set true if we made anything last tick
 
-
-
 /obj/machinery/mineral/processing_unit/Initialize()
-	update_icon()
 	.=..()
+	// initialize static alloy_data list
+	if(!alloy_data)
+		alloy_data = list()
+		for(var/alloytype in subtypesof(/datum/alloy))
+			alloy_data += new alloytype()
 
+	ensure_ore_data_initialised()
+	for(var/ore in GLOB.ores_by_type)
+		ores_processing[ore] = ORE_PROCESSING_NOTHING
+		ores_stored[ore] = 0
+
+	for(var/obj/machinery/mineral/processing_unit_console/PC in orange(2, src))
+		console = PC
+		console.machine = src
+		break
+
+	for(var/obj/machinery/input/I in orange(1, src))
+		input = I
+		input.master = src
+		break
+
+	for(var/obj/machinery/mineral/output/O in orange(1, src))
+		output = O
+		break
+
+	update_icon()
+
+/obj/machinery/mineral/processing_unit/Destroy()
+	if (input)
+		if (input.master == src)
+			input.master = null
+		input = null
+
+	if (output)
+		output = null
+
+	if (console)
+		if (console.machine == src)
+			console.machine = null
+		console = null
+
+	. = ..()
+
+/obj/machinery/mineral/processing_unit/dismantle()
+	for(var/ore in ores_stored)
+		to_chat(usr, "test1")
+		if(ores_stored[ore])
+			to_chat(usr, "test2")
+			for(var/i = 1 to ores_stored[ore])
+				to_chat(usr, "test3")
+				new ore(get_turf(src))
+	. = ..()
+
+/obj/machinery/mineral/processing_unit/RefreshParts()
+	sheets_per_tick = 0
+	for(var/obj/item/weapon/stock_parts/manipulator/MP in component_parts)
+		sheets_per_tick += MP.rating * 0.5
+
+	var/eff = 0
+	for(var/obj/item/weapon/stock_parts/micro_laser/ML in component_parts)
+		eff += ML.rating * 0.5
+	// Up to 9 per tick
+	sheets_per_tick *= eff
+
+	// In case someone decides to upgrade only one component
+	sheets_per_tick = round(sheets_per_tick)
+
+/obj/machinery/mineral/processing_unit/attackby(obj/item/O, mob/user)
+	if(!currently_working)
+		if(default_deconstruction_screwdriver(user, O))
+			active = FALSE
+			update_icon()
+			SStgui.update_uis(console)
+			return
+	if(default_deconstruction_crowbar(user, O))
+		return
+	if(default_part_replacement(user, O))
+		return
+	.=..()
 
 /obj/machinery/mineral/processing_unit/update_icon()
 	if (active)
@@ -139,55 +183,11 @@
 /obj/machinery/mineral/processing_unit/proc/wake_up()
 	START_PROCESSING_MACHINE(src, MACHINERY_PROCESS_SELF)
 
-/obj/machinery/mineral/processing_unit/Destroy()
-	if (input)
-		if (input.master == src)
-			input.master = null
-		input = null
-	if (output)
-		output = null
-	if (console)
-		if (console.machine == src)
-			console.machine = null
-		console = null
-	. = ..()
-
-
-/obj/machinery/mineral/processing_unit/New(var/atom/location, var/direction, var/nocircuit = FALSE)
-	..()
-
-	// initialize static alloy_data list
-	if(!alloy_data)
-		alloy_data = list()
-		for(var/alloytype in typesof(/datum/alloy)-/datum/alloy)
-			alloy_data += new alloytype()
-
-	ensure_ore_data_initialised()
-	for(var/ore in ore_data)
-		ores_processing[ore] = 0
-		ores_stored[ore] = 0
-
-	//Locate our output and input machinery.
-	spawn(5)
-		for (var/dir in GLOB.cardinal)
-			src.input = locate(/obj/machinery/input, get_step(src, dir))
-			if(src.input)
-				input.master = src
-				break
-		for (var/dir in GLOB.cardinal)
-			src.output = locate(/obj/machinery/mineral/output, get_step(src, dir))
-			if(src.output) break
-		return
-	return
-
-
 /obj/machinery/mineral/processing_unit/input_available(var/obj/item/weapon/ore/O)
 	if (istype(O))
 		wake_up()
 
 /obj/machinery/mineral/processing_unit/Process()
-
-
 	//This will be set back to true if we intake or process any ores this tick
 	currently_working = FALSE
 
@@ -208,12 +208,12 @@
 
 		var/OS
 		if(O.ore)
-			OS = ores_stored[O.ore.name]
+			OS = ores_stored[O.ore.type]
 			if (isnull(OS))
 				OS = 0
 			OS++
 			currently_working = TRUE
-			ores_stored[O.ore.name] = OS
+			ores_stored[O.ore.type] = OS
 			qdel(O)
 		else
 			world.log << "[src] encountered ore [O] [O.type] with oretag [O.ore ? O.ore : "(no ore)"] which this machine did not have an entry for!"
@@ -236,16 +236,15 @@
 		if(sheets >= sheets_per_tick) break
 
 		var/OS = ores_stored[metal]
-		if(OS > 0 && ores_processing[metal] != 0)
+		if(OS > 0 && ores_processing[metal] != ORE_PROCESSING_NOTHING)
 
-			var/ore/O = ore_data[metal]
+			var/ore/O = metal
 
 			if(!O) continue
 
 
 			//Alloying.
-			//--------------
-			if(ores_processing[metal] == 3 && O.alloy)
+			if(ores_processing[metal] == ORE_PROCESSING_ALLOYING && initial(O.alloy))
 
 				for(var/datum/alloy/A in alloy_data)
 
@@ -261,7 +260,7 @@
 
 						for(var/needs_metal in A.requires)
 							//Check if we're alloying the needed metal and have it stored.
-							if(ores_processing[needs_metal] != 3 || ores_stored[needs_metal] < A.requires[needs_metal])
+							if(ores_processing[needs_metal] != ORE_PROCESSING_ALLOYING || ores_stored[needs_metal] < A.requires[needs_metal])
 								enough_metal = 0
 								break
 					if(!enough_metal)
@@ -270,7 +269,10 @@
 
 						var/total
 						for(var/needs_metal in A.requires)
-							OS -= A.requires[needs_metal]
+							if(needs_metal == metal)
+								OS -= A.requires[needs_metal]
+							else
+								ores_stored[needs_metal] -= A.requires[needs_metal]
 							LAZYAPLUS(ores_processed, needs_metal, A.requires[needs_metal])
 							total += A.requires[needs_metal]
 							total = max(1,round(total*A.product_mod)) //Always get at least one sheet.
@@ -280,12 +282,13 @@
 							currently_working = TRUE	//We have enough ore to make something
 							new A.product(output.loc)
 
-			else if(ores_processing[metal] == 2 && O.compresses_to) //Compressing.
+			//Compressing
+			else if(ores_processing[metal] == ORE_PROCESSING_COMPRESSING && initial(O.compresses_to))
 
 				var/can_make = Clamp(OS,0,(sheets_per_tick-sheets)*2)
 				if(can_make%2>0) can_make--
 
-				var/material/M = get_material_by_name(O.compresses_to)
+				var/material/M = get_material_by_name(initial(O.compresses_to))
 
 				if(!istype(M) || !can_make || OS < 1)
 					continue
@@ -297,11 +300,12 @@
 					currently_working = TRUE	//We have enough ore to make something
 					new M.stack_type(output.loc)
 
-			else if(ores_processing[metal] == 1 && O.smelts_to) //Smelting.
+			//Smelting
+			else if(ores_processing[metal] == ORE_PROCESSING_SMELTING && initial(O.smelts_to))
 
 				var/can_make = Clamp(OS,0,sheets_per_tick-sheets)
 
-				var/material/M = get_material_by_name(O.smelts_to)
+				var/material/M = get_material_by_name(initial(O.smelts_to))
 				if(!istype(M) || !can_make || OS < 1)
 					continue
 
@@ -326,7 +330,6 @@
 	console.updateUsrDialog()
 
 	if (can_stop_processing())
-		//STOP_PROCESSING_MACHINE(src, MACHINERY_PROCESS_SELF)
 		return PROCESS_KILL
 
 /obj/machinery/mineral/processing_unit/can_stop_processing()
@@ -334,11 +337,8 @@
 		return FALSE
 
 	return TRUE
-/*
-	var/total = 0
-	for (var/thing in ores_stored)
-		total += ores_stored[thing]
 
-	if (total <= 0)
-		return TRUE
-*/
+#undef ORE_PROCESSING_NOTHING
+#undef ORE_PROCESSING_SMELTING
+#undef ORE_PROCESSING_COMPRESSING
+#undef ORE_PROCESSING_ALLOYING
