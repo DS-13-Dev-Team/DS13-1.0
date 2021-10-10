@@ -16,9 +16,11 @@
 			log_debug("Lobby screen '[lobby_screen]' did not exist in the icon set [icon].")
 			GLOB.using_map.lobby_screens -= lobby_screen
 
-	change_image()
-
 	. = ..()
+	. = INITIALIZE_HINT_LATELOAD
+
+/obj/effect/lobby_image/LateInitialize()
+	change_image()
 
 /obj/effect/lobby_image/proc/change_image()
 	var/list/possible_options = GLOB.using_map.lobby_screens

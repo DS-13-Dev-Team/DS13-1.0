@@ -37,15 +37,17 @@
 	if (!isturf(loc))
 		dummy = TRUE
 
-	if (!dummy && SSnecromorph.marker && biomass_reclamation && biomass)
-		add_massive_atom(src)
+	if(!dummy)
+		if (SSnecromorph.marker && biomass_reclamation && biomass)
+			add_massive_atom(src)
 
-	update_icon()
-	if (!dummy)
-		animate_fade_in()
+			update_icon()
+			animate_fade_in()
 
-	START_PROCESSING(SSobj, src)
+			START_PROCESSING(SSobj, src)
 
+	else
+		.=INITIALIZE_HINT_QDEL
 
 /obj/structure/corruption_node/get_biomass(var/who_is_asking)
 

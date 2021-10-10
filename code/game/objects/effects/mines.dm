@@ -157,6 +157,7 @@
 	var/mount_type = /datum/extension/mount/sticky
 
 /obj/item/projectile/deploy/Initialize()
+	.=..()
 	if (sticky)
 		create_mount_parameters()
 
