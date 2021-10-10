@@ -40,9 +40,8 @@
 	var/datum/map_template/template = SSmapping.map_templates[map]
 
 	if (template.loaded && !(template.template_flags & TEMPLATE_FLAG_ALLOW_DUPLICATES))
-		var/jesus_take_the_wheel = tgui_alert(usr, "That template has already been loaded and doesn't want to be loaded again. \
-			Proceeding may unpredictably break things and cause runtimes.", "Confirm load", list("Cancel load", "Do you see any cops around?"))
-		if (!jesus_take_the_wheel != "Do you see any cops around?")
+		if(tgui_alert(usr, "That template has already been loaded and doesn't want to be loaded again. \
+			Proceeding may unpredictably break things and cause runtimes.", "Confirm load", list("Cancel load", "Do you see any cops around?")) != "Do you see any cops around?")
 			return
 
 	var/new_z_centre = template.load_new_z()
