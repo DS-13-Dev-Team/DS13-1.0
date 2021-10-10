@@ -71,3 +71,14 @@
   - balance: Propagator spread speed increased modestly.
   - balance: Shotguns no longer fit in backpacks.
   - balance: Shotguns need to be wielded for perfect accuracy.
+2021-10-10:
+  DeadLineSS13:
+  - refactor: Reworked screen works.
+  - refactor: Reworked hud works.
+  - rscadd: ToolTips items in inventory.
+  - rscadd: Outline for items when MouseEntered and good thing.
+  Ketrai:
+  - balance: Significantly increases the price of HV pulse ammo.
+  - balance: Lowered HV pulse ammo damage significantly
+  - balance: Lowered HV pulse ammo clip size significantly
+  - balance: increased pulse ammo clip size significantly
