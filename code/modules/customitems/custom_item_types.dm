@@ -27,8 +27,11 @@
 	store_cost = 2400
 	store_access = ACCESS_PATRONS
 	description = "The 711-MarkCL Rivet Gun is the latest refinement from Timson Tools' long line of friendly tools. Useful for rapid repairs at a distance!"
+	loadout_cost = 4
+	loadout_access = ACCESS_PATRONS
 
-
+	category = CATEGORY_TOOLS
+	subcategory = SUBCATEGORY_DANGEROUS_TOOLS
 
 
 /*
@@ -36,14 +39,34 @@
 */
 /datum/patron_item/max_stone_rig
 	name = "modified advanced RIG"
+	description = "The latest in cutting-edge RIG technology. This one is a slightly older model, still using the standard engineering suit scheme. It has `Max S.` engraved next to the monitor lights."
 	item_path = /obj/item/weapon/rig/advanced/maxstone
 	id = "max_stone_rig"
 	store_cost = 12000
 	store_access = ACCESS_WHITELIST
 
+	category = CATEGORY_RIG
+	subcategory = SUBCATEGORY_FRAMES
+
 	loadout_modkit_cost = 2
-	modkit_access = ACCESS_PATRONS
+	modkit_access = ACCESS_WHITELIST
 	modkit_typelist = list(/obj/item/weapon/rig/advanced)
+
+
+/datum/patron_item/hacker_rig
+	name = "digital infiltration RIG"
+	item_path = /obj/item/weapon/rig/hacker
+	id = "max_stone_rig"
+
+	loadout_cost = 4
+	loadout_access = ACCESS_PATRONS
+
+	category = CATEGORY_RIG
+	subcategory = SUBCATEGORY_FRAMES
+
+	tags = list(LOADOUT_TAG_RIG)
+	exclusion_tags = list(LOADOUT_TAG_RIG)
+	equip_adjustments = OUTFIT_ADJUSTMENT_SKIP_BACKPACK
 
 
 /datum/patron_item/mouse

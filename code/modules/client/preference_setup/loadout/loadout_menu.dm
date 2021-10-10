@@ -6,7 +6,7 @@
 	//create a list of gear datums to sort
 	for(var/geartype in typesof(/datum/gear)-/datum/gear)
 		var/datum/gear/G = geartype
-		if(initial(G.category) == geartype)
+		if(initial(G.base_type) == geartype)
 			continue
 		if(GLOB.using_map.loadout_blacklist && (geartype in GLOB.using_map.loadout_blacklist))
 			continue
@@ -20,8 +20,8 @@
 
 /proc/register_gear(var/datum/gear/G)
 
-	var/use_name = initial(G.display_name)
-	var/use_category = initial(G.sort_category)
+	var/use_name = G.display_name
+	var/use_category = G.sort_category
 
 	if(!GLOB.loadout_categories[use_category])
 		GLOB.loadout_categories[use_category] = new /datum/loadout_category(use_category)

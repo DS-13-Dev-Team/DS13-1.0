@@ -1,7 +1,4 @@
-//Access defines, one is applied to each distribution channel for obtaining the item. An item can have different access in different channels
-#define ACCESS_PUBLIC	"public"
-#define ACCESS_PATRONS	"patrons"
-#define ACCESS_WHITELIST	"whitelist"
+
 // Switch this out to use a database at some point. Each ckey is
 // associated with a list of custom item datums. When the character
 // spawns, the list is checked and all appropriate datums are spawned.
@@ -28,7 +25,7 @@
 	var/item_icon
 	var/description
 
-	var/category = "Misc"	//Used for store and loadout
+	var/category = CATEGORY_MISC	//Used for store and loadout
 	var/subcategory
 
 	var/item_path = /obj/item
@@ -42,6 +39,9 @@
 
 
 
+	var/tags
+	var/exclusion_tags
+	var/equip_adjustments
 
 	/*
 		New vars for DS13
@@ -99,7 +99,14 @@
 	G.description = description
 	G.path = item_path
 	G.cost = loadout_cost
-	G.category = src.category
+	G.sort_category = src.category
+	G.subcategory = src.subcategory
+
+	//These are only applied to normal loadout, not modkit
+	G.tags = tags
+	G.exclusion_tags = exclusion_tags
+	G.equip_adjustments = equip_adjustments
+
 
 	switch (loadout_access)
 		if (ACCESS_PUBLIC)
@@ -111,7 +118,8 @@
 
 	G.Initialize()
 
-	GLOB.gear_datums[G.display_name] = G
+	register_gear(G)
+
 
 
 /datum/patron_item/proc/create_modkit_loadout_datum()
@@ -119,10 +127,12 @@
 	G.display_name = src.name
 	G.description = description
 	G.path = item_path
-	G.cost = loadout_cost
-	G.category = src.category
+	G.cost = loadout_modkit_cost
+	G.sort_category = src.category
+	G.subcategory = src.subcategory
+	G.valid_types = modkit_typelist
 
-	switch (loadout_access)
+	switch (modkit_access)
 		if (ACCESS_PUBLIC)
 			//do nothing
 		if (ACCESS_PATRONS)
@@ -132,7 +142,7 @@
 
 	G.Initialize()
 
-	GLOB.gear_datums[G.display_name] = G
+	register_gear(G)
 
 
 /datum/patron_item/proc/create_store_datum()

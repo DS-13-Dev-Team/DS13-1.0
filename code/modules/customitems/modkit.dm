@@ -7,11 +7,16 @@
 	var/consumed = FALSE
 
 
-/obj/item/mod_kit/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
-	. = ..()
-	if (!consumed && is_valid_target(target))
-		apply_to(target, user)
+	icon = 'icons/obj/device.dmi'
+	icon_state = "modkit"
 
+/obj/item/mod_kit/resolve_attackby(atom/A, mob/user, var/click_params)
+	if (!consumed && is_valid_target(A))
+		apply_to(A, user)
+		return
+	else
+		to_chat(user, "Invalid target for modifying")
+	. = ..()
 
 
 /obj/item/mod_kit/proc/is_valid_target(var/atom/target)
@@ -46,8 +51,8 @@
 */
 /atom/proc/pre_modkit_transform(var/atom/replacement, var/obj/item/mod_kit/transformer, var/mob/user)
 
-
-
+/obj/item/weapon/rig/pre_modkit_transform(var/atom/replacement, var/obj/item/mod_kit/transformer, var/mob/user)
+	transfer_rig(replacement, src)
 /*
 	Special gear subtype
 */
@@ -58,11 +63,13 @@
 	var/list/valid_names
 
 
-/datum/gear/modkit/Initialize()
 
+/datum/gear/modkit/Initialize()
+	//This proc intentionally does not call parent
+	log_debug("Modkit initialize [display_name]")
 	var/obj/O = path
-	item_name = initial(O.name)
-	name = "Conversion Kit: ([item_name])2"
+	item_name = display_name
+	display_name = "Conversion Kit: ([item_name])"
 
 	valid_names = list()
 	for (var/typepath in valid_types)
@@ -71,9 +78,12 @@
 
 /datum/gear/modkit/spawn_special(var/mob/living/carbon/human/H,  var/metadata)
 	var/obj/item/mod_kit/MK = new (H.loc)
-	MK.name = name
+	MK.name = display_name
 	MK.desc = "This is a kit which can be applied to certain things to convert them into \a [item_name]. It will be consumed on use. Valid items to convert are:"
+	MK.valid_types = src.valid_types
 	for (var/thingname in valid_names)
 		MK.desc += "\n	[thingname]"
 	MK.result_path = path
-	return item
+
+	H.equip_to_storage(MK)
+	return MK
