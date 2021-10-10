@@ -11,7 +11,7 @@
 /datum/alloy/plasteel
 	metaltag = MATERIAL_PLASTEEL
 	requires = list(
-		/ore/iron = 1,
+		/ore/hematite = 1,
 		/ore/coal = 2,
 		/ore/platinum = 2
 		)
