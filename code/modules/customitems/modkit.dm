@@ -41,8 +41,8 @@
 	var/atom/A = new result_path(target.loc)
 
 	target.pre_modkit_transform(A, src, user)
-
-
+	qdel(target)
+	qdel(src)
 
 
 /*

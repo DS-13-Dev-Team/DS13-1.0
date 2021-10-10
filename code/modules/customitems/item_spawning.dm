@@ -244,13 +244,11 @@
 	Returns true if they can do store access to this
 */
 /datum/patron_item/proc/can_buy_in_store(var/user)
-	to_chat(world, "canbuy 1 [user]")
 	if (store_access == ACCESS_PUBLIC)
 		return TRUE
 
 	var/ckey
 	var/is_patron
-	to_chat(world, "canbuy 2")
 	if (istext(user))
 		ckey = user
 		var/datum/player/P = get_player_from_key(ckey)
@@ -259,14 +257,12 @@
 		var/datum/D = user
 		ckey = D.get_key()
 		is_patron = D.is_patron()
-		to_chat(world, "isdatum, [ckey]	[is_patron]")
 
 
 	switch (store_access)
 		if (ACCESS_PUBLIC)
 			return TRUE
 		if (ACCESS_PATRONS)
-			to_chat(world, "PATRON ACCESS")
 			return is_patron
 		if (ACCESS_WHITELIST)
 			return (ckey in whitelist)
