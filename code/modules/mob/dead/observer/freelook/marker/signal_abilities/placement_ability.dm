@@ -34,8 +34,10 @@
 /datum/signal_ability/placement/corruption/New()
 	.=..()
 	if (ispath(placement_atom, /obj/structure/corruption_node))
-		var/obj/structure/corruption_node/C = new placement_atom(dummy = TRUE)
+		var/obj/structure/corruption_node/C = new placement_atom()
+		C.biomass = 0
 		desc = "<hr>[C.get_long_description()]"
+		qdel(C)
 
 
 /datum/signal_ability/placement/corruption/on_cast(var/mob/user, var/atom/target, var/list/data)
