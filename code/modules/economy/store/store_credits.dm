@@ -88,12 +88,16 @@
 	if THAT fails it is dropped on the floor
 */
 /obj/machinery/store/proc/buy_to_occupant()
+	to_chat(world, "Buy occupant 1")
 	var/list/things = list() + buy_current()
-	for (var/obj/item/I in things)
+	for (var/atom/movable/I in things)
+
 		var/atom/destination = occupant.equip_to_storage_or_hands(I)
+		to_chat(world, "Buy occupant 2 [destination]")
 		if(!destination)
 			destination = store_or_drop(I)
 
+		to_chat(world, "Buy occupant 3 [destination]")
 		if (istype(destination, /atom))
 			to_chat(occupant, "[I] vended to [destination]")
 
