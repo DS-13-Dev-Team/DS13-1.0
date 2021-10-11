@@ -82,3 +82,6 @@
   - balance: Lowered HV pulse ammo damage significantly
   - balance: Lowered HV pulse ammo clip size significantly
   - balance: increased pulse ammo clip size significantly
+2021-10-11:
+  Nanako:
+  - bugfix: Fixed a runtime error with psychic tracers
