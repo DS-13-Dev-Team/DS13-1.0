@@ -48,6 +48,8 @@ export const setClientTheme = name => {
       'mainwindow.menu': 'menu',
       'mainwindow.background-color': 'none',
       'mainwindow.split.pos': '3x0',
+      'status_bar.background-color': 'none',
+      'status_bar.text-color': '#000000',
       'split.background-color': 'none',
       // Buttons
       'changelog.background-color': 'none',
@@ -109,6 +111,8 @@ export const setClientTheme = name => {
       'mainwindow.menu': 'menu',
       'mainwindow.background-color': COLOR_DARK_BG,
       'mainwindow.split.pos': '3x0',
+      'status_bar.background-color': '#222222',
+      'status_bar.text-color': '#ffffff',
       'split.background-color': COLOR_DARK_BG,
       // Buttons
       'changelog.background-color': '#494949',
@@ -170,6 +174,8 @@ export const setClientTheme = name => {
       'mainwindow.menu': 'null',
       'mainwindow.background-color': COLOR_DARK_BG,
       'mainwindow.split.pos': '0x0',
+      'status_bar.background-color': '#222222',
+      'status_bar.text-color': '#ffffff',
       'split.background-color': COLOR_DARK_BG,
       // Buttons
       'changelog.background-color': '#494949',
