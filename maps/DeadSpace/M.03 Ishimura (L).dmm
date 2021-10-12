@@ -3584,6 +3584,9 @@
 /area/ishimura/lower/mining/processing_room)
 "ahU" = (
 /obj/structure/ship_component/scanners,
+/obj/machinery/mineral/processing_unit_console{
+	pixel_x = 32
+	},
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/mining/processing_room)
 "ahV" = (
@@ -26878,10 +26881,10 @@
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/mining/processing_room)
 "bdI" = (
-/obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/machinery/conveyor_switch/oneway{
 	id = "mining"
 	},
+/obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/mining/processing_room)
 "bdJ" = (
@@ -26951,11 +26954,10 @@
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/mining/processing_room)
 "bdR" = (
-/obj/effect/wallframe_spawn/reinforced,
-/obj/machinery/door/firedoor/border_only{
-	dir = 4
+/obj/machinery/mineral/stacking_unit_console{
+	pixel_y = -32
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/mining/processing_room)
 "bdS" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
@@ -27018,9 +27020,14 @@
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/mining/processing_room)
 "bdZ" = (
-/obj/machinery/mineral/processing_unit_console,
-/turf/simulated/wall/r_wall,
-/area/ishimura/lower/mining/processing_room)
+/obj/machinery/door/window/holowindoor{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/danger{
+	dir = 4
+	},
+/turf/simulated/floor/dank/golf_brown,
+/area/space)
 "bea" = (
 /obj/machinery/mineral/processing_unit,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -27050,10 +27057,6 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/dank/golf_brown,
-/area/ishimura/lower/mining/processing_room)
-"bee" = (
-/obj/machinery/mineral/stacking_unit_console,
-/turf/simulated/wall/r_wall,
 /area/ishimura/lower/mining/processing_room)
 "bef" = (
 /obj/machinery/mineral/output,
@@ -47114,9 +47117,9 @@ aUg
 aAH
 ahT
 bdy
-bdI
+abI
 bdQ
-bdQ
+bdR
 ahT
 bet
 ahT
@@ -47316,10 +47319,10 @@ fvJ
 aAK
 ahT
 bdz
-ahT
+bdI
 ahU
 bdQ
-bee
+ahT
 beu
 ahT
 oma
@@ -47519,7 +47522,7 @@ aXQ
 ahT
 bdA
 ahT
-bdR
+ahT
 bdZ
 ahT
 bev
