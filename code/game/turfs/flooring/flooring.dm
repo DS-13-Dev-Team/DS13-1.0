@@ -199,9 +199,9 @@ var/list/flooring_types
 	plating_type = /decl/flooring/reinforced/plating/hull
 	is_plating = TRUE
 	removal_time = 250
-	health = 200
+	health = 275
 	has_base_range = 0
-	resistance = RESISTANCE_ARMOURED
+	resistance = RESISTANCE_HEAVILY_ARMOURED
 	footstep_sound = "catwalk"
 	space_smooth = SMOOTH_ALL
 	floor_smooth = SMOOTH_NONE
