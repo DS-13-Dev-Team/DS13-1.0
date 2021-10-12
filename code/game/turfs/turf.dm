@@ -8,6 +8,8 @@
 	var/is_hole = FALSE			// If true, turf is open to vertical transitions through it.
 	var/is_wall = FALSE			// If true, this turf is, or contains, a solid wall.
 
+	var/hitsound = 'sound/weapons/Genhit.ogg'
+
 	var/health
 	var/max_health = 100
 	var/resistance
@@ -314,14 +316,6 @@ var/const/enterloopsanity = 100
 		decals.Cut()
 		decals = null
 
-// Called when turf is hit by a thrown object
-/turf/hitby(atom/movable/AM as mob|obj, var/speed)
-	if(src.density)
-		spawn(2)
-			step(AM, turn(AM.last_move, 180))
-		if(isliving(AM))
-			var/mob/living/M = AM
-			M.turf_collision(src, speed)
 
 /turf/proc/is_floor()
 	return FALSE

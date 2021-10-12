@@ -9,7 +9,11 @@
 	thermal_conductivity = WALL_HEAT_TRANSFER_COEFFICIENT
 	heat_capacity = 312500 //a little over 5 cm thick , 312500 for 1 m by 2.5 m by 0.25 m plasteel wall
 	is_wall = TRUE
-	var/damage = 0
+
+	resistance = 10
+	health = 200
+	max_health = 200
+
 	var/damage_overlay = 0
 	var/global/damage_overlays[16]
 	var/active
@@ -18,7 +22,7 @@
 	var/material/reinf_material
 	var/last_state
 	var/construction_stage
-	var/hitsound = 'sound/weapons/Genhit.ogg'
+
 	var/list/wall_connections = list("0", "0", "0", "0")
 	var/list/other_connections = list("0", "0", "0", "0")
 	var/floor_type = /turf/simulated/floor/plating //turf it leaves after destruction
@@ -28,6 +32,7 @@
 	var/list/blend_turfs = list(/turf/simulated/wall/cult)
 	var/list/blend_objects = list(/obj/machinery/door, /obj/structure/wall_frame, /obj/structure/grille, /obj/structure/window/reinforced/full, /obj/structure/window/reinforced/polarized/full, /obj/structure/window/shuttle, ,/obj/structure/window/phoronbasic/full, /obj/structure/window/phoronreinforced/full) // Objects which to blend with
 	var/list/noblend_objects = list(/obj/machinery/door/window) //Objects to avoid blending with (such as children of listed blend objects.
+
 
 /turf/simulated/wall/New(var/newloc, var/materialtype, var/rmaterialtype)
 	..(newloc)
@@ -39,6 +44,7 @@
 		reinf_material = get_material_by_name(rmaterialtype)
 	update_material()
 	hitsound = material.hitsound
+
 
 /turf/simulated/wall/Initialize()
 	set_extension(src, /datum/extension/penetration/proc_call, .proc/CheckPenetration)
@@ -124,11 +130,11 @@
 //Appearance
 /turf/simulated/wall/examine(mob/user)
 	. = ..(user)
-
+	var/damage = get_damage()
 	if(!damage)
 		to_chat(user, "<span class='notice'>It looks fully intact.</span>")
 	else
-		var/dam = damage / material.integrity
+		var/dam = damage / max_health
 		if(dam <= 0.3)
 			to_chat(user, "<span class='warning'>It looks slightly damaged.</span>")
 		else if(dam <= 0.6)
@@ -157,35 +163,10 @@
 	visible_message("<span class='danger'>\The [src] spontaneously combusts!.</span>") //!!OH SHIT!!
 	return
 
-/turf/simulated/wall/proc/take_damage(dam)
-	if ((atom_flags & ATOM_FLAG_INDESTRUCTIBLE))
-		return
-	if(dam)
-		damage = max(0, damage + dam)
-		update_damage()
-	return
 
-/turf/simulated/wall/repair(var/repair_power, var/datum/repair_source, var/mob/user)
-	damage = clamp(damage-repair_power, 0, damage)
-	update_damage()
 
-/turf/simulated/wall/repair_needed()
-	return damage
 
-/turf/simulated/wall/proc/update_damage()
-	var/cap = material.integrity
-	if(reinf_material)
-		cap += reinf_material.integrity
 
-	if(locate(/obj/effect/overlay/wallrot) in src)
-		cap = cap / 10
-
-	if(damage >= cap)
-		dismantle_wall()
-	else
-		update_icon()
-
-	return
 
 /turf/simulated/wall/fire_act(var/datum/gas_mixture/air, var/exposed_temperature, var/exposed_volume, var/multiplier = 1)//Doesn't fucking work because walls don't interact with air :(
 	burn(exposed_temperature)
