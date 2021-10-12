@@ -27,7 +27,8 @@
 	update_icon()
 
 
-/turf/simulated/floor/proc/take_damage(var/damage, var/damage_type = BRUTE, var/ignore_resistance = FALSE)
+/turf/simulated/floor/take_damage(var/damage, var/damage_type = BRUTE, var/ignore_resistance = FALSE)
+	.=..()
 	if ((atom_flags & ATOM_FLAG_INDESTRUCTIBLE))
 		return
 	if (is_hole)
@@ -41,36 +42,43 @@
 				L.ex_act(1)
 		return
 
-	if (!ignore_resistance && flooring)
-		damage -= flooring.resistance
-	if (!damage || damage <= 0)
-		return
 
+	var/changed = FALSE
+	//Breaking or burning overlays.
+	//A tile can have one of each type
+	if (health < (max_health * 0.9))
+		if ((damage_type == BRUTE || damage_type == BLAST) )
+			if (!broken)
+				changed = TRUE
+			broken = TRUE
 
-	health -= damage
+		if ( (damage_type == BURN || damage_type == BLAST))
+			if (!burnt)
+				changed = TRUE
+			burnt = TRUE
 
+	if (changed)
+		update_icon()
+
+/turf/simulated/floor/zero_health()
 	//The tile has broken!
 	if (health <= 0)
+
+		make_plating() //Destroy us and make the plating underneath
+
+		/* Damage carryover feature disabled, it doesnt quite work here
 		//Leftover damage will carry over to whatever tile replaces this one
 		var/leftover = abs(health)
-		make_plating() //Destroy us and make the plating underneath
+
 		spawn()
 			//We'll spawn off a new stack in order to damage the next layer, incase it turns into a different turf object
 			damage_floor_at(x,y,z,leftover, damage_type, ignore_resistance)
+		*/
 		return
 
 
 	else
-		//Breaking or burning overlays.
-		//A tile can have one of each type
-		if (!broken && (damage_type == BRUTE || damage_type == BLAST) && health < (flooring.health * 0.9))
-			broken = TRUE
 
-		if (!burnt && (damage_type == BURN || damage_type == BLAST) && health < (flooring.health * 0.9))
-			burnt = TRUE
-
-		if (broken || burnt)
-			update_icon()
 
 
 /proc/damage_floor_at(var/x, var/y, var/z, var/damage, var/damage_type, var/ignore_resistance)

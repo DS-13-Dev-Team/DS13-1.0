@@ -126,9 +126,6 @@
 /turf/simulated/wall/attackby(obj/item/weapon/W as obj, mob/user as mob)
 
 	user.set_click_cooldown(DEFAULT_ATTACK_COOLDOWN)
-	if (!user.is_advanced_tool_user())
-		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
-		return
 
 	//get the user's location
 	if(!istype(user.loc, /turf))	return	//can't do this stuff whilst inside objects and such
@@ -173,146 +170,157 @@
 
 	var/turf/T = user.loc	//get user's location for delay checks
 
-	if(damage && isWelder(W))
 
-		to_chat(user, "<span class='notice'>You start repairing the damage to [src].</span>")
-		if(W.use_tool(user, src, WORKTIME_NORMAL, QUALITY_WELDING, FAILCHANCE_NORMAL))
-			take_damage(-damage)
-		return
+	//Tool interactions require non-harm intent
+	if (user.a_intent != I_HURT)
+		if(get_damage() && isWelder(W))
 
-	// Basic dismantling.
-	if(isnull(construction_stage) || !reinf_material)
-		if ((atom_flags & ATOM_FLAG_INDESTRUCTIBLE))
+			to_chat(user, "<span class='notice'>You start repairing the damage to [src].</span>")
+			if(W.use_tool(user, src, get_damage(), QUALITY_WELDING, 0))
+				repair(max_health, W, user)
 			return
-		var/cut_delay = 60 - material.cut_delay
-		var/dismantle_verb
-		var/dismantle_sound
-		var/req_quality = QUALITY_WELDING
 
-		if(isWelder(W))
-			cut_delay *= 0.7
-		else if(istype(W,/obj/item/weapon/melee/energy/blade))
-			dismantle_sound = "sparks"
-			dismantle_verb = "slicing"
-			cut_delay *= 0.5
-		else if(istype(W,/obj/item/weapon/tool/pickaxe))
-			req_quality = QUALITY_DIGGING
-			var/obj/item/weapon/tool/pickaxe/P = W
-			dismantle_verb = "digging"
-			dismantle_sound = P.worksound
-			cut_delay -= P.get_tool_quality(QUALITY_DIGGING)
+		// Basic dismantling.
 
-		if(dismantle_verb)
+		if(isnull(construction_stage) || !reinf_material)
+			if ((atom_flags & ATOM_FLAG_INDESTRUCTIBLE))
+				return
+			var/cut_delay = 60 - material.cut_delay
+			var/dismantle_verb
+			var/dismantle_sound
+			var/req_quality = QUALITY_WELDING
 
-			to_chat(user, "<span class='notice'>You begin [dismantle_verb] through the outer plating.</span>")
-			if(dismantle_sound)
-				playsound(src, dismantle_sound, 100, 1)
+			if(isWelder(W))
+				cut_delay *= 0.7
+			else if(istype(W,/obj/item/weapon/melee/energy/blade))
+				dismantle_sound = "sparks"
+				dismantle_verb = "slicing"
+				cut_delay *= 0.5
+			else if(istype(W,/obj/item/weapon/tool/pickaxe))
+				req_quality = QUALITY_DIGGING
+				var/obj/item/weapon/tool/pickaxe/P = W
+				dismantle_verb = "digging"
+				dismantle_sound = P.worksound
+				cut_delay -= P.get_tool_quality(QUALITY_DIGGING)
 
-			if(cut_delay<0)
-				cut_delay = 0
+			if(dismantle_verb)
 
-			if(!W.use_tool(user, src, WORKTIME_NORMAL+cut_delay, req_quality, FAILCHANCE_NORMAL))
+				to_chat(user, "<span class='notice'>You begin [dismantle_verb] through the outer plating.</span>")
+				if(dismantle_sound)
+					playsound(src, dismantle_sound, 100, 1)
+
+				if(cut_delay<0)
+					cut_delay = 0
+
+				if(!W.use_tool(user, src, WORKTIME_NORMAL+cut_delay, req_quality, FAILCHANCE_NORMAL))
+					return
+
+				to_chat(user, "<span class='notice'>You remove the outer plating.</span>")
+				dismantle_wall()
+				user.visible_message("<span class='warning'>\The [src] was torn open by [user]!</span>")
 				return
 
-			to_chat(user, "<span class='notice'>You remove the outer plating.</span>")
-			dismantle_wall()
-			user.visible_message("<span class='warning'>\The [src] was torn open by [user]!</span>")
-			return
-
-	//Reinforced dismantling.
-	else
-		if ((atom_flags & ATOM_FLAG_INDESTRUCTIBLE))
-			return
-		switch(construction_stage)
-			if(6)
-				if(isWirecutter(W))
-					to_chat(user, "<span class='notice'>You begin cutting the outer grille.</span>")
-					if(W.use_tool(user, src, WORKTIME_VERY_SLOW, QUALITY_WIRE_CUTTING, FAILCHANCE_NORMAL))
-						playsound(src, 'sound/items/Wirecutter.ogg', 100, 1)
-						construction_stage = 5
-						new /obj/item/stack/rods( src )
-						to_chat(user, "<span class='notice'>You cut the outer grille.</span>")
+		//Reinforced dismantling.
+		else
+			if ((atom_flags & ATOM_FLAG_INDESTRUCTIBLE))
+				return
+			switch(construction_stage)
+				if(6)
+					if(isWirecutter(W))
+						to_chat(user, "<span class='notice'>You begin cutting the outer grille.</span>")
+						if(W.use_tool(user, src, WORKTIME_VERY_SLOW, QUALITY_WIRE_CUTTING, FAILCHANCE_NORMAL))
+							playsound(src, 'sound/items/Wirecutter.ogg', 100, 1)
+							construction_stage = 5
+							new /obj/item/stack/rods( src )
+							to_chat(user, "<span class='notice'>You cut the outer grille.</span>")
+							update_icon()
+							return
+				if(5)
+					if(isScrewdriver(W) )
+						to_chat(user, "<span class='notice'>You begin removing the support lines.</span>")
+						if(!W.use_tool(user, src, WORKTIME_FAST, QUALITY_SCREW_DRIVING, FAILCHANCE_NORMAL) || !istype(src, /turf/simulated/wall) || construction_stage != 5)
+							return
+						construction_stage = 4
 						update_icon()
+						to_chat(user, "<span class='notice'>You remove the support lines.</span>")
 						return
-			if(5)
-				if(isScrewdriver(W) )
-					to_chat(user, "<span class='notice'>You begin removing the support lines.</span>")
-					if(!W.use_tool(user, src, WORKTIME_FAST, QUALITY_SCREW_DRIVING, FAILCHANCE_NORMAL) || !istype(src, /turf/simulated/wall) || construction_stage != 5)
-						return
-					construction_stage = 4
-					update_icon()
-					to_chat(user, "<span class='notice'>You remove the support lines.</span>")
-					return
-				else if( istype(W, /obj/item/stack/rods) )
-					var/obj/item/stack/O = W
-					if(O.get_amount()>0)
-						O.use(1)
-						construction_stage = 6
+					else if( istype(W, /obj/item/stack/rods) )
+						var/obj/item/stack/O = W
+						if(O.get_amount()>0)
+							O.use(1)
+							construction_stage = 6
+							update_icon()
+							to_chat(user, "<span class='notice'>You replace the outer grille.</span>")
+							return
+				if(4)
+					if(isWelder(W))
+						to_chat(user, "<span class='notice'>You begin slicing through the metal cover.</span>")
+						if(!W.use_tool(user, src, WORKTIME_FAST, QUALITY_WELDING, FAILCHANCE_NORMAL) || !istype(src, /turf/simulated/wall) || construction_stage != 4)
+							return
+						construction_stage = 3
 						update_icon()
-						to_chat(user, "<span class='notice'>You replace the outer grille.</span>")
+						to_chat(user, "<span class='notice'>You press firmly on the cover, dislodging it.</span>")
 						return
-			if(4)
-				if(isWelder(W))
-					to_chat(user, "<span class='notice'>You begin slicing through the metal cover.</span>")
-					if(!W.use_tool(user, src, WORKTIME_FAST, QUALITY_WELDING, FAILCHANCE_NORMAL) || !istype(src, /turf/simulated/wall) || construction_stage != 4)
+				if(3)
+					if(isCrowbar(W))
+						to_chat(user, "<span class='notice'>You struggle to pry off the cover.</span>")
+						playsound(src, 'sound/items/Crowbar.ogg', 100, 1)
+						if(!W.use_tool(user, src, WORKTIME_FAST, QUALITY_PRYING, FAILCHANCE_NORMAL) || !istype(src, /turf/simulated/wall) || construction_stage != 3)
+							return
+						construction_stage = 2
+						update_icon()
+						to_chat(user, "<span class='notice'>You pry off the cover.</span>")
 						return
-					construction_stage = 3
-					update_icon()
-					to_chat(user, "<span class='notice'>You press firmly on the cover, dislodging it.</span>")
-					return
-			if(3)
-				if(isCrowbar(W))
-					to_chat(user, "<span class='notice'>You struggle to pry off the cover.</span>")
-					playsound(src, 'sound/items/Crowbar.ogg', 100, 1)
-					if(!W.use_tool(user, src, WORKTIME_FAST, QUALITY_PRYING, FAILCHANCE_NORMAL) || !istype(src, /turf/simulated/wall) || construction_stage != 3)
+				if(2)
+					if(isWrench(W))
+						to_chat(user, "<span class='notice'>You start loosening the anchoring bolts which secure the support rods to their frame.</span>")
+						playsound(src, 'sound/items/Ratchet.ogg', 100, 1)
+						if(!W.use_tool(user, src, WORKTIME_FAST, QUALITY_BOLT_TURNING, FAILCHANCE_NORMAL) || !istype(src, /turf/simulated/wall) || construction_stage != 2)
+							return
+						construction_stage = 1
+						update_icon()
+						to_chat(user, "<span class='notice'>You remove the bolts anchoring the support rods.</span>")
 						return
-					construction_stage = 2
-					update_icon()
-					to_chat(user, "<span class='notice'>You pry off the cover.</span>")
-					return
-			if(2)
-				if(isWrench(W))
-					to_chat(user, "<span class='notice'>You start loosening the anchoring bolts which secure the support rods to their frame.</span>")
-					playsound(src, 'sound/items/Ratchet.ogg', 100, 1)
-					if(!W.use_tool(user, src, WORKTIME_FAST, QUALITY_BOLT_TURNING, FAILCHANCE_NORMAL) || !istype(src, /turf/simulated/wall) || construction_stage != 2)
+				if(1)
+					if(isWelder(W))
+						to_chat(user, "<span class='notice'>You begin slicing through the support rods.</span>")
+						if(!W.use_tool(user, src, WORKTIME_FAST, QUALITY_WELDING, FAILCHANCE_NORMAL) || !istype(src, /turf/simulated/wall) || construction_stage != 1)
+							return
+						construction_stage = 0
+						update_icon()
+						new /obj/item/stack/rods(src)
+						to_chat(user, "<span class='notice'>The support rods drop out as you cut them loose from the frame.</span>")
 						return
-					construction_stage = 1
-					update_icon()
-					to_chat(user, "<span class='notice'>You remove the bolts anchoring the support rods.</span>")
-					return
-			if(1)
-				if(isWelder(W))
-					to_chat(user, "<span class='notice'>You begin slicing through the support rods.</span>")
-					if(!W.use_tool(user, src, WORKTIME_FAST, QUALITY_WELDING, FAILCHANCE_NORMAL) || !istype(src, /turf/simulated/wall) || construction_stage != 1)
+				if(0)
+					if(isCrowbar(W))
+						to_chat(user, "<span class='notice'>You struggle to pry off the outer sheath.</span>")
+						playsound(src, 'sound/items/Crowbar.ogg', 100, 1)
+						if(!do_after(user,100,src) || !istype(src, /turf/simulated/wall) || !user || !W || !T )	return
+						if(user.loc == T && user.get_active_hand() == W )
+							to_chat(user, "<span class='notice'>You pry off the outer sheath.</span>")
+							dismantle_wall()
 						return
-					construction_stage = 0
-					update_icon()
-					new /obj/item/stack/rods(src)
-					to_chat(user, "<span class='notice'>The support rods drop out as you cut them loose from the frame.</span>")
-					return
-			if(0)
-				if(isCrowbar(W))
-					to_chat(user, "<span class='notice'>You struggle to pry off the outer sheath.</span>")
-					playsound(src, 'sound/items/Crowbar.ogg', 100, 1)
-					if(!do_after(user,100,src) || !istype(src, /turf/simulated/wall) || !user || !W || !T )	return
-					if(user.loc == T && user.get_active_hand() == W )
-						to_chat(user, "<span class='notice'>You pry off the outer sheath.</span>")
-						dismantle_wall()
-					return
 
 	if(istype(W,/obj/item/frame))
 		var/obj/item/frame/F = W
 		F.try_build(src)
 		return
 
-	else if(!istype(W,/obj/item/weapon/rcd) && !istype(W, /obj/item/weapon/reagent_containers))
-		if(!W.force)
-			return attack_hand(user)
-		var/dam_threshhold = material.integrity
+	else if (!(W.item_flags & ITEM_FLAG_NO_BLUDGEON))
+
+
+		user.launch_weapon_strike(src, W)
+
+		user.set_click_cooldown(DEFAULT_ATTACK_COOLDOWN*3)	//Attacking walls is strenuous
+		return
+	.=..()
+
+	/*
+		var/resistance = material.integrity
 		if(reinf_material)
-			dam_threshhold = ceil(max(dam_threshhold,reinf_material.integrity)/2)
+			resistance = ceil(max(resistance,reinf_material.integrity)/2)
 		var/dam_prob = min(100,material.hardness*1.5)
-		if(dam_prob < 100 && W.force > (dam_threshhold/10))
+		if(dam_prob < 100 && W.force > (resistance/10))
 			playsound(src, 'sound/effects/metalhit.ogg', 50, 1)
 			if(!prob(dam_prob))
 				visible_message("<span class='danger'>\The [user] attacks \the [src] with \the [W] and it [material.destruction_desc]!</span>")
@@ -323,3 +331,4 @@
 			visible_message("<span class='danger'>\The [user] attacks \the [src] with \the [W], but it bounces off!</span>")
 			playsound(src, hitsound, 25, 1)
 		return
+	*/

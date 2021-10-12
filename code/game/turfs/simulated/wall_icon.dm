@@ -23,6 +23,20 @@
 
 	set_opacity(material.opacity >= 0.5)
 
+	var/health_percent = max_health / health
+	max_health = 0
+	resistance = 0
+	if (reinf_material)
+		resistance += reinf_material.resistance
+		max_health += reinf_material.integrity
+
+	if (material)
+		resistance += material.resistance
+		max_health += material.integrity
+
+	health = max_health * health_percent
+
+
 	SSradiation.resistance_cache.Remove(src)
 	update_connections(1)
 	update_icon()
@@ -85,12 +99,9 @@
 			I.color = stripe_color
 			overlays += I
 
+	var/damage = get_damage()
 	if(damage != 0)
-		var/integrity = material.integrity
-		if(reinf_material)
-			integrity += reinf_material.integrity
-
-		var/overlay = round(damage / integrity * damage_overlays.len) + 1
+		var/overlay = round(damage / max_health * damage_overlays.len) + 1
 		if(overlay > damage_overlays.len)
 			overlay = damage_overlays.len
 
