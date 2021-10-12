@@ -51,8 +51,6 @@
 	step_delay = 0.75	//Real fast
 	expiry_method = EXPIRY_FADEOUT
 	fire_sound = 'sound/weapons/gunshot/sniper.ogg'
-	stun = 1.5
-	weaken = 3
 	penetrating = 5
 	armor_penetration = 20
 
