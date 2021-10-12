@@ -397,8 +397,6 @@
 			return global.lighting_overlays_initialised;
 		if("limb_icon_cache")
 			return global.limb_icon_cache;
-		if("lobby_image")
-			return global.lobby_image;
 		if("lunchables_drink_reagents_")
 			return global.lunchables_drink_reagents_;
 		if("lunchables_drinks_")
@@ -1194,8 +1192,6 @@
 			global.lighting_overlays_initialised=newval;
 		if("limb_icon_cache")
 			global.limb_icon_cache=newval;
-		if("lobby_image")
-			global.lobby_image=newval;
 		if("lunchables_drink_reagents_")
 			global.lunchables_drink_reagents_=newval;
 		if("lunchables_drinks_")
@@ -1798,7 +1794,6 @@
 	"lighting_overlays_initialised",
 	"limb_icon_cache",
 	"loadout_categories",
-	"lobby_image",
 	"lunchables_drink_reagents_",
 	"lunchables_drinks_",
 	"lunchables_ethanol_reagents_",

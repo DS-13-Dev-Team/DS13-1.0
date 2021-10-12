@@ -1,51 +1,3 @@
-/var/obj/effect/lobby_image = new/obj/effect/lobby_image()
-
-/obj/effect/lobby_image
-	name = "Baystation12"
-	desc = "This shouldn't be read."
-	screen_loc = "WEST,SOUTH"
-	var/change_interval = 1 MINUTE
-	var/fade_time = 2 SECOND	//This fade time is used twice, so effectively doubled
-
-/obj/effect/lobby_image/Initialize()
-	icon = GLOB.using_map.lobby_icon
-
-	var/known_icon_states = icon_states(icon)
-	for(var/lobby_screen in GLOB.using_map.lobby_screens)
-		if(!(lobby_screen in known_icon_states))
-			log_debug("Lobby screen '[lobby_screen]' did not exist in the icon set [icon].")
-			GLOB.using_map.lobby_screens -= lobby_screen
-
-	. = ..()
-	. = INITIALIZE_HINT_LATELOAD
-
-/obj/effect/lobby_image/LateInitialize()
-	change_image()
-
-/obj/effect/lobby_image/proc/change_image()
-	var/list/possible_options = GLOB.using_map.lobby_screens
-	possible_options -= icon_state
-
-	if (possible_options.len)
-		fade_out()
-		sleep(fade_time)
-
-
-
-		icon_state = pick(GLOB.using_map.lobby_screens)
-
-
-		fade_in()
-		sleep(fade_time)
-		addtimer(CALLBACK(src, /obj/effect/lobby_image/proc/change_image), change_interval)
-
-/obj/effect/lobby_image/proc/fade_out()
-	animate(src, color = "#000000", time = fade_time)
-
-
-/obj/effect/lobby_image/proc/fade_in()
-	animate(src, color = "#FFFFFF", time = fade_time)
-
 
 /mob/dead/new_player/Login()
 	if(!client)
@@ -79,7 +31,7 @@
 		mind.current = src
 
 	loc = null
-	client.screen += lobby_image
+	ShowTitleScreen()
 	my_client = client
 	set_sight(sight|SEE_TURFS)
 	GLOB.player_list |= src
