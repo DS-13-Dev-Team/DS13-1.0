@@ -555,3 +555,14 @@ mob/new_player/MayRespawn()
 
 /mob/dead/new_player/say(var/message)
 	sanitize_and_communicate(/decl/communication_channel/ooc, client, message)
+
+/mob/dead/new_player/proc/ShowTitleScreen()
+	winset(client, "lobbybrowser", "is-disabled=false;is-visible=true")
+
+	show_browser(client, GLOB.using_map.current_lobby_screen, "file=titlescreen.png;display=0")
+	show_browser(client, file('html/browser/lobby_titlescreen.html'), "window=lobbybrowser")
+
+/mob/dead/new_player/proc/HideTitleScreen()
+	if(my_client.mob) // Check if the client is still connected to something
+		// Hide title screen, allowing player to see the map
+		winset(my_client, "lobbybrowser", "is-disabled=true;is-visible=false")
