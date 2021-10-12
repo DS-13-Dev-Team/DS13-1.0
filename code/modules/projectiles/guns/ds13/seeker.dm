@@ -22,7 +22,7 @@
 
 
 	firemodes = list(
-		list(mode_name="semi-automatic",  fire_delay=10),
+		list(mode_name="semi-automatic",  fire_delay=12),
 		)
 
 /obj/item/weapon/gun/projectile/seeker/empty
@@ -43,7 +43,7 @@
 
 /obj/item/projectile/bullet/seeker
 	icon_state = "seeker"
-	damage = 60
+	damage = 50
 	embed = 1
 	structure_damage_factor = 3
 	penetration_modifier = 1.25
@@ -63,7 +63,7 @@
 	caliber = "seeker"
 	ammo_type = /obj/item/ammo_casing/seeker
 	matter = list(MATERIAL_STEEL = 1260)
-	max_ammo = 5
+	max_ammo = 6
 	multiple_sprites = TRUE
 	mag_type = MAGAZINE
 
