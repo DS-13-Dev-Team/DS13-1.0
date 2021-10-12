@@ -854,6 +854,7 @@ window "mainwindow"
 		icon = 'icons\\ss13_64.png'
 		macro = "macro"
 		menu = "menu"
+		statusbar = false
 	elem "split"
 		type = CHILD
 		pos = 3,0
