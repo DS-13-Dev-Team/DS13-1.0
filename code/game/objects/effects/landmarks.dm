@@ -197,4 +197,7 @@
 	new /datum/random_map/automata/cave_system(seed, min_x, min_y, src.z, max_x, max_y)
 	new /datum/random_map/noise/ore(seed, min_x, min_y, src.z, max_x, max_y)
 
+	. = INITIALIZE_HINT_LATELOAD
+
+/obj/effect/landmark/random_gen/asteroid/LateInitialize()
 	GLOB.using_map.refresh_mining_turfs(src.z)

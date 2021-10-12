@@ -12,7 +12,7 @@
 	center_of_mass = "x=16;y=10"
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/cola/Initialize()
-	..()
+	.=..()
 	reagents.add_reagent(/datum/reagent/drink/space_cola, 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/waterbottle
@@ -22,7 +22,7 @@
 	center_of_mass = "x=15;y=8"
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/waterbottle/Initialize()
-	..()
+	.=..()
 	reagents.add_reagent(/datum/reagent/water, 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/waterbottle/open(mob/user)
@@ -37,7 +37,7 @@
 	center_of_mass = "x=16;y=10"
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/space_mountain_wind/Initialize()
-	..()
+	.=..()
 	reagents.add_reagent(/datum/reagent/drink/spacemountainwind, 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/thirteenloko
@@ -47,7 +47,7 @@
 	center_of_mass = "x=16;y=8"
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/thirteenloko/Initialize()
-	..()
+	.=..()
 	reagents.add_reagent(/datum/reagent/ethanol/thirteenloko, 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/dr_gibb
@@ -57,7 +57,7 @@
 	center_of_mass = "x=16;y=10"
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/dr_gibb/Initialize()
-	..()
+	.=..()
 	reagents.add_reagent(/datum/reagent/drink/dr_gibb, 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/starkist
@@ -66,7 +66,7 @@
 	icon_state = "starkist"
 	center_of_mass = "x=16;y=10"
 /obj/item/weapon/reagent_containers/food/drinks/cans/starkist/Initialize()
-	..()
+	.=..()
 	reagents.add_reagent(/datum/reagent/drink/brownstar, 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/space_up
@@ -76,7 +76,7 @@
 	center_of_mass = "x=16;y=10"
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/space_up/Initialize()
-	..()
+	.=..()
 	reagents.add_reagent(/datum/reagent/drink/space_up, 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/lemon_lime
@@ -86,7 +86,7 @@
 	center_of_mass = "x=16;y=10"
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/lemon_lime/Initialize()
-	..()
+	.=..()
 	reagents.add_reagent(/datum/reagent/drink/lemon_lime, 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/iced_tea
@@ -96,7 +96,7 @@
 	center_of_mass = "x=16;y=10"
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/iced_tea/Initialize()
-	..()
+	.=..()
 	reagents.add_reagent(/datum/reagent/drink/tea/icetea, 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/grape_juice
@@ -106,7 +106,7 @@
 	center_of_mass = "x=16;y=10"
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/grape_juice/Initialize()
-	..()
+	.=..()
 	reagents.add_reagent(/datum/reagent/drink/juice/grape, 30)
 
 /obj/item/weapon/reagent_containers/food/drinks/cans/tonic

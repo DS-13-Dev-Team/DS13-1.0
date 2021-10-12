@@ -46,7 +46,6 @@
 
 	START_PROCESSING(SSobj, src)
 
-
 /obj/structure/corruption_node/get_biomass(var/who_is_asking)
 
 	//This is needed for invested biomass handling

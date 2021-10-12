@@ -124,6 +124,7 @@
 	. = ..()
 
 /obj/machinery/turretid/Initialize()
+	. = ..()
 	if(!control_area)
 		control_area = get_area(src)
 	else if(istext(control_area))
@@ -132,16 +133,12 @@
 				control_area = A
 				break
 
-
-
 	if(control_area)
 		var/area/A = control_area
 		if(istype(A))
 			A.turret_controls += src
 		else
 			control_area = null
-
-
 
 	//Fill out the targeting profiles list
 	var/templist = targeting_profiles.Copy()
@@ -153,8 +150,11 @@
 
 	selected_profile = targeting_profiles[1]
 
+	.=INITIALIZE_HINT_LATELOAD
+
+// Calls sleep
+/obj/machinery/turretid/LateInitialize()
 	power_change() //Checks power and initial settings
-	. = ..()
 	update_turrets()
 
 /obj/machinery/turretid/proc/isLocked(mob/user)

@@ -8,4 +8,7 @@
 	I.color=color
 	I.layer = DECAL_LAYER
 	T.overlays += I
-	qdel(src)
+
+/obj/effect/decal/warning_stripes/Initialize()
+	.=..()
+	.=INITIALIZE_HINT_QDEL
