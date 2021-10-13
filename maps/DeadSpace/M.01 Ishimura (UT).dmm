@@ -5594,6 +5594,12 @@
 /obj/structure/table/rack/dark,
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
+"ZB" = (
+/obj/structure/foamedmetal,
+/obj/structure/foamedmetal,
+/obj/machinery/vending/snack,
+/turf/simulated/floor/plating,
+/area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
 "ZQ" = (
 /obj/structure/barricade/wood,
 /turf/simulated/floor,
@@ -14147,7 +14153,7 @@ il
 il
 il
 il
-il
+ro
 ef
 dB
 ef
@@ -14545,7 +14551,7 @@ il
 il
 il
 il
-il
+ro
 il
 il
 il
@@ -14753,7 +14759,7 @@ il
 il
 il
 il
-il
+ro
 ef
 dB
 ef
@@ -15154,10 +15160,10 @@ ow
 uf
 ow
 il
+ro
 il
-il
-il
-il
+ro
+ro
 ef
 dB
 ef
@@ -15757,12 +15763,12 @@ ae
 ae
 ae
 ae
+ZB
 ae
 ae
 ae
 ae
-ae
-il
+ro
 il
 ef
 hs
@@ -16167,7 +16173,7 @@ ae
 ae
 ae
 il
-il
+ro
 ef
 dJ
 ew
@@ -16966,10 +16972,10 @@ il
 il
 il
 il
+ro
 il
 il
-il
-il
+ro
 il
 Aa
 il
@@ -17569,7 +17575,7 @@ ab
 dN
 dN
 il
-il
+ro
 il
 ow
 uf
@@ -18178,7 +18184,7 @@ il
 il
 il
 il
-il
+ro
 il
 il
 il
