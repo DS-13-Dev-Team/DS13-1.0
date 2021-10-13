@@ -85,3 +85,16 @@
 2021-10-11:
   Nanako:
   - bugfix: Fixed a runtime error with psychic tracers
+2021-10-13:
+  DTraitor:
+  - qol: Console for Ore Processing Machine now uses TGUI.
+  - bugfix: Fixed bug when instead of using alloy materials only first ore was used.
+  - rscadd: Unloading and Ore Processing machines can be upgraded with better parts.
+  DeadLineSS13:
+  - refactor: Statusbar now support darkmode and small refactored code.
+  Nanako:
+  - refactor: Completely refactored wall damage to join the modern damage system instead
+      of its previous snowflakey, luck-based damage model. Walls are now much tougher
+      and more consistent as a result, most weapons will be unable to damage them.
+  - balance: Increased the health and resistance of Underplating floors, to discourage
+      tunnelling between decks
