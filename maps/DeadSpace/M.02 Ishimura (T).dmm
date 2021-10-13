@@ -388,10 +388,15 @@
 /turf/simulated/floor/plating,
 /area/ishimura/tramdeck/tram/misc/disusedbotanics)
 "bd" = (
-/turf/simulated/floor/reinforced,
+/obj/effect/wallframe_spawn/reinforced,
+/turf/simulated/floor,
 /area/ishimura/tramdeck/tram/misc/disusedbotanics)
 "be" = (
-/obj/effect/wallframe_spawn/reinforced,
+/obj/machinery/door/blast/regular{
+	dir = 4;
+	id = null;
+	name = "Auxiliary Cargo Docking Port"
+	},
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/misc/disusedbotanics)
 "bf" = (
@@ -661,14 +666,6 @@
 /obj/machinery/door/firedoor/border_only,
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/forward)
-"bL" = (
-/obj/machinery/door/blast/regular{
-	dir = 4;
-	id = null;
-	name = "Auxiliary Cargo Docking Port"
-	},
-/turf/simulated/floor,
-/area/ishimura/tramdeck/tram/misc/disusedbotanics)
 "bM" = (
 /obj/effect/decal/cleanable/generic,
 /turf/simulated/floor/dank,
@@ -753,7 +750,7 @@
 	dir = 4;
 	id = "mining"
 	},
-/turf/simulated/floor/dank,
+/turf/simulated/floor/plating,
 /area/ishimura/tramdeck/tram/misc/disusedbotanics)
 "bU" = (
 /obj/structure/cable{
@@ -773,7 +770,7 @@
 	dir = 4;
 	id = "mining"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank,
 /area/ishimura/tramdeck/tram/misc/disusedbotanics)
 "bW" = (
 /obj/effect/spider/spiderling/mundane/dormant,
@@ -31178,13 +31175,13 @@ aa
 aa
 aO
 aG
-be
-be
-be
-be
-be
-be
-be
+bi
+bi
+bi
+bi
+bi
+bi
+bi
 aG
 aG
 ev
@@ -32191,10 +32188,10 @@ aG
 bj
 bq
 bi
-bB
-bT
-bV
-cx
+bi
+bi
+bi
+bi
 de
 eg
 eA
@@ -32592,13 +32589,13 @@ aa
 aa
 aO
 aG
-be
-be
-be
-bL
-bL
-bL
-bL
+bi
+bi
+bi
+bB
+bT
+bV
+cx
 aG
 aG
 eB
@@ -32797,10 +32794,10 @@ aO
 bd
 bd
 bd
-bd
-bd
-bd
-bd
+be
+be
+be
+be
 aO
 aG
 eC
