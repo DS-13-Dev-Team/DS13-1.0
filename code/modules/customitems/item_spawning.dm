@@ -1,29 +1,33 @@
+
 // Switch this out to use a database at some point. Each ckey is
 // associated with a list of custom item datums. When the character
 // spawns, the list is checked and all appropriate datums are spawned.
-// See config/example/custom_items.txt for a more detailed overview
+// See config/example/patron_items.txt for a more detailed overview
 // of how the config system works.
 
 // CUSTOM ITEM ICONS:
-// Inventory icons must be in CUSTOM_ITEM_OBJ with state name [item_icon].
-// On-mob icons must be in CUSTOM_ITEM_MOB with state name [item_icon].
-// Inhands must be in CUSTOM_ITEM_MOB as [icon_state]_l and [icon_state]_r.
+// Inventory icons must be in patron_item_OBJ with state name [item_icon].
+// On-mob icons must be in patron_item_MOB with state name [item_icon].
+// Inhands must be in patron_item_MOB as [icon_state]_l and [icon_state]_r.
 
-// Kits must have mech icons in CUSTOM_ITEM_OBJ under [kit_icon].
+// Kits must have mech icons in patron_item_OBJ under [kit_icon].
 // Broken must be [kit_icon]-broken and open must be [kit_icon]-open.
 
-// Kits must also have hardsuit icons in CUSTOM_ITEM_MOB as [kit_icon]_suit
-// and [kit_icon]_helmet, and in CUSTOM_ITEM_OBJ as [kit_icon].
+// Kits must also have hardsuit icons in patron_item_MOB as [kit_icon]_suit
+// and [kit_icon]_helmet, and in patron_item_OBJ as [kit_icon].
 
-/var/list/custom_items = list()
+/var/list/patron_items = list()
 
-/datum/custom_item
-	var/assoc_key
-	var/character_name
+/datum/patron_item
+	var/name
+	var/id	//Used to link whitelists to us and uniquely identify research designs. Mandatory for store listing
 	var/inherit_inhands = 1 //if unset, and inhands are not provided, then the inhand overlays will be invisible.
 	var/item_icon
-	var/item_desc
-	var/name
+	var/description
+
+	var/category = CATEGORY_MISC	//Used for store and loadout
+	var/subcategory
+
 	var/item_path = /obj/item
 	var/item_path_as_string
 	var/req_access = 0
@@ -33,224 +37,232 @@
 	var/kit_icon
 	var/additional_data
 
-/datum/custom_item/proc/is_valid(var/checker)
-	if(!item_path)
-		to_chat(checker, "<span class='warning'>The given item path, [item_path_as_string], is invalid and does not exist.</span>")
-		return FALSE
-	if(item_icon && !(item_icon in icon_states(CUSTOM_ITEM_OBJ)))
-		to_chat(checker, "<span class='warning'>The given item icon, [item_icon], is invalid and does not exist.</span>")
-		return FALSE
-	return TRUE
 
-/datum/custom_item/proc/spawn_item(var/newloc)
-	var/obj/item/citem = new item_path(newloc)
-	apply_to_item(citem)
-	return citem
 
-/datum/custom_item/proc/apply_to_item(var/obj/item/item)
-	if(!item)
-		return
-	if(name)
-		item.SetName(name)
-	if(item_desc)
-		item.desc = item_desc
-	if(item_icon)
-		if(!istype(item))
-			item.icon = CUSTOM_ITEM_OBJ
-			item.set_icon_state(item_icon)
-			return
-		else
-			if(inherit_inhands)
-				apply_inherit_inhands(item)
-			else
-				item.item_state_slots = null
-				item.item_icons = null
+	var/tags
+	var/exclusion_tags
+	var/equip_adjustments
 
-			item.icon = CUSTOM_ITEM_OBJ
-			item.set_icon_state(item_icon)
-			item.item_state = null
-			item.icon_override = CUSTOM_ITEM_MOB
+	/*
+		New vars for DS13
+	*/
+	var/loadout_cost = null //If not null, this item can be purchased in the loadout for this many points
+	var/loadout_access	=	null //One of the ACCESS_XXX defines above, determines who is allowed to buy this in loadout
 
-		var/obj/item/clothing/under/U = item
-		if(istype(U))
-			U.worn_state = U.icon_state
-			U.update_rolldown_status()
+	var/datum/gear/loadout_listing
+	var/datum/design/store_listing
 
-	// Kits are dumb so this is going to have to be hardcoded/snowflake.
-	if(istype(item, /obj/item/device/kit))
-		var/obj/item/device/kit/K = item
-		K.new_name = kit_name
-		K.new_desc = kit_desc
-		K.new_icon = kit_icon
-		K.new_icon_file = CUSTOM_ITEM_OBJ
-		if(istype(item, /obj/item/device/kit/paint))
-			var/obj/item/device/kit/paint/kit = item
-			kit.allowed_types = splittext(additional_data, ", ")
-		else if(istype(item, /obj/item/device/kit/suit))
-			var/obj/item/device/kit/suit/kit = item
-			kit.new_light_overlay = additional_data
-			kit.new_mob_icon_file = CUSTOM_ITEM_MOB
+	var/store_cost = null //If not null, this item can be purchased in the store for this many credits
+	var/store_access	=	null //One of the ACCESS_XXX defines above, determines who is allowed to buy this in store
 
-	return item
+	var/loadout_modkit_cost	=	null //If not null, a modkit to transform another item into this item can be purchased in the loadout for this many points
+	var/modkit_access	=	null//One of the ACCESS_XXX defines above, determines who is allowed to buy this in store
+	var/list/modkit_typelist	= null //A list of types the modkit can apply to
 
-/datum/custom_item/proc/apply_inherit_inhands(var/obj/item/item)
-	var/list/new_item_icons = list()
-	var/list/new_item_state_slots = list()
+	var/list/whitelist	=	null	//A list of ckeys who can use ACCESS_WHITELIST channels with this item
 
-	var/list/available_states = icon_states(CUSTOM_ITEM_MOB)
 
-	//If l_hand or r_hand are not present, preserve them using item_icons/item_state_slots
-	//Then use icon_override to make every other slot use the custom sprites by default.
-	//This has to be done before we touch any of item's vars
-	if(!("[item_icon]_l" in available_states))
-		new_item_state_slots[slot_l_hand_str] = get_state(item, slot_l_hand_str, "_l")
-		new_item_icons[slot_l_hand_str] = get_icon(item, slot_l_hand_str, 'icons/mob/onmob/items/lefthand.dmi')
-	if(!("[item_icon]_r" in available_states))
-		new_item_state_slots[slot_r_hand_str] = get_state(item, slot_r_hand_str, "_r")
-		new_item_icons[slot_r_hand_str] = get_icon(item, slot_r_hand_str, 'icons/mob/onmob/items/righthand.dmi')
 
-	item.item_state_slots = new_item_state_slots
-	item.item_icons = new_item_icons
+	/*
+		This can be one of a few things:
+			-A single typepath, or a list of typepaths, of items which the modkit can be applied to, to transform them into the desired item
+			-A modkit typepath which is the exact type the modkit will be. This allows you to override procs and make more complex rules about application
+	*/
+	var/modkit_base	= null
 
-//this has to mirror the way update_inv_*_hand() selects the state
-/datum/custom_item/proc/get_state(var/obj/item/item, var/slot_str, var/hand_str)
-	var/t_state
-	if(item.item_state_slots && item.item_state_slots[slot_str])
-		t_state = item.item_state_slots[slot_str]
-	else if(item.item_state)
-		t_state = item.item_state
+
+/datum/patron_item/New()
+	.=..()
+
+	if (!isnull(loadout_cost) && !isnull(loadout_access))
+		create_loadout_datum()
+
+	if (!isnull(loadout_modkit_cost) && !isnull(modkit_access))
+		create_modkit_loadout_datum()
+
+	if (!isnull(store_cost) && !isnull(store_access))
+		create_store_datum()
+
+
+/datum/patron_item/proc/set_whitelist(var/list/new_list)
+	whitelist = new_list.Copy()
+
+	if (loadout_listing)
+		loadout_listing.key_whitelist = whitelist
+
+	if (store_listing)
+		store_listing.whitelist = whitelist
+
+/datum/patron_item/proc/create_loadout_datum()
+	var/datum/gear/G = new()
+	G.display_name = src.name
+	G.description = description
+	G.path = item_path
+	G.cost = loadout_cost
+	G.sort_category = src.category
+	G.subcategory = src.subcategory
+
+	//These are only applied to normal loadout, not modkit
+	G.tags = tags
+	G.exclusion_tags = exclusion_tags
+	G.equip_adjustments = equip_adjustments
+
+
+	switch (loadout_access)
+		if (ACCESS_PUBLIC)
+			//do nothing
+		if (ACCESS_PATRONS)
+			G.patron_only = TRUE
+		if (ACCESS_WHITELIST)
+			G.key_whitelist = whitelist
+
+	G.Initialize()
+
+	register_gear(G)
+
+
+
+/datum/patron_item/proc/create_modkit_loadout_datum()
+	var/datum/gear/modkit/G = new()
+	G.display_name = src.name
+	G.description = description
+	G.path = item_path
+	G.cost = loadout_modkit_cost
+	G.sort_category = src.category
+	G.subcategory = src.subcategory
+	G.valid_types = modkit_typelist
+
+	switch (modkit_access)
+		if (ACCESS_PUBLIC)
+			//do nothing
+		if (ACCESS_PATRONS)
+			G.patron_only = TRUE
+		if (ACCESS_WHITELIST)
+			G.key_whitelist = whitelist
+
+	G.Initialize()
+
+	register_gear(G)
+
+
+/datum/patron_item/proc/create_store_datum()
+	var/datum/design/D = new()
+
+	D.name = name
+	D.desc = description
+	D.build_path = item_path
+	D.price = store_cost
+	D.build_type = STORE
+	D.starts_unlocked = TRUE
+	D.id = id
+	D.category = src.category
+	D.PI = src
+
+	//TODO: Icons not working
+	//TODO: Multiselection is happening
+	//TODO: Set transfer setting if the item is a rig or module
+
+	register_research_design(D)
+
+	//If this has patron or whitelist access, put it in the limited store designs list
+	if (store_access != ACCESS_PUBLIC)
+		GLOB.limited_store_designs += D
+
 	else
-		t_state = item.icon_state
-	if(item.icon_override)
-		t_state += hand_str
-	return t_state
+		GLOB.unlimited_store_designs += D
 
-//this has to mirror the way update_inv_*_hand() selects the icon
-/datum/custom_item/proc/get_icon(var/obj/item/item, var/slot_str, var/icon/hand_icon)
-	var/icon/t_icon
-	if(item.icon_override)
-		t_icon = item.icon_override
-	else if(item.item_icons && (slot_str in item.item_icons))
-		t_icon = item.item_icons[slot_str]
-	else
-		t_icon = hand_icon
-	return t_icon
 
-// Parses the config file into the custom_items list.
-/hook/startup/proc/load_custom_items()
+/*
+	This proc loads whitelists for Patron items. It assumes that list is appropriately formatted according to the instructions in that file
+*/
+/proc/load_patron_item_whitelists()
 
-	var/datum/custom_item/current_data
+	//The ID of the whitelist we are currently reading
+	var/current_id
+
+	//The list of keys in the whitelist
+	var/list/current_list = list()
+
 	for(var/line in splittext(file2text("config/custom_items.txt"), "\n"))
 
 		line = trim(line)
 		if(line == "" || !line || findtext(line, "#", 1, 2))
 			continue
 
-		if(findtext(line, "{", 1, 2) || findtext(line, "}", 1, 2)) // New block!
-			if(current_data && current_data.assoc_key)
-				if(!custom_items[current_data.assoc_key])
-					custom_items[current_data.assoc_key] = list()
-				var/list/L = custom_items[current_data.assoc_key]
-				L |= current_data
-			current_data = null
 
-		var/split = findtext(line,":")
-		if(!split)
-			continue
-		var/field = trim(copytext(line,1,split))
-		var/field_data = trim(copytext(line,(split+1)))
-		if(!field || !field_data)
+
+		var/list/split = splittext(line,regex(@"[ {},]"))
+		if(!LAZYLEN(split))
 			continue
 
-		if(!current_data)
-			current_data = new()
+		for (var/string in split)
 
-		switch(field)
-			if("ckey")
-				current_data.assoc_key = lowertext(field_data)
-			if("character_name")
-				current_data.character_name = lowertext(field_data)
-			if("item_path")
-				current_data.item_path = text2path(field_data)
-				current_data.item_path_as_string = field_data
-			if("item_name")
-				current_data.name = field_data
-			if("item_icon")
-				current_data.item_icon = field_data
-			if("inherit_inhands")
-				current_data.inherit_inhands = text2num(field_data)
-			if("item_desc")
-				current_data.item_desc = field_data
-			if("req_access")
-				current_data.req_access = text2num(field_data)
-			if("req_titles")
-				current_data.req_titles = splittext(field_data,", ")
-			if("kit_name")
-				current_data.kit_name = field_data
-			if("kit_desc")
-				current_data.kit_desc = field_data
-			if("kit_icon")
-				current_data.kit_icon = field_data
-			if("additional_data")
-				current_data.additional_data = field_data
-	return TRUE
-
-//gets the relevant list for the key from the listlist if it exists, check to make sure they are meant to have it and then calls the giving function
-/proc/equip_custom_items(mob/living/carbon/human/M)
-	var/list/key_list = custom_items[M.ckey]
-	if(!key_list || key_list.len < 1)
-		return
-
-	for(var/datum/custom_item/citem in key_list)
-
-		// Check for requisite ckey and character name.
-		if((lowertext(citem.assoc_key) != lowertext(M.ckey)) || (lowertext(citem.character_name) != lowertext(M.real_name)))
-			continue
-
-		// Once we've decided that the custom item belongs to this player, validate it
-		if(!citem.is_valid(M))
-			return
-
-		// Check for required access.
-		var/obj/item/weapon/card/id/current_id = M.wear_id
-		if(citem.req_access && citem.req_access > 0)
-			if(!(istype(current_id) && (citem.req_access in current_id.access)))
+			if (!length(string))
 				continue
 
-		// Check for required job title.
-		if(citem.req_titles && citem.req_titles.len > 0)
-			var/has_title
-			var/current_title = M.mind.role_alt_title ? M.mind.role_alt_title : M.mind.assigned_role
-			for(var/title in citem.req_titles)
-				if(title == current_title)
-					has_title = 1
-					break
-			if(!has_title)
+			//If we don't have an open list id yet, then this first word must be a new ID
+			if (!current_id)
+				current_id = string
 				continue
 
-		// ID cards and PDAs are applied directly to the existing object rather than spawned fresh.
-		var/obj/item/existing_item
-		if(citem.item_path == /obj/item/weapon/card/id && istype(current_id)) //Set earlier.
-			existing_item = M.wear_id
-		else if(citem.item_path == /obj/item/modular_computer/pda)
-			existing_item = locate(/obj/item/modular_computer/pda) in M.contents
 
-		// Spawn and equip the item.
-		if(existing_item)
-			citem.apply_to_item(existing_item)
-		else
-			place_custom_item(M,citem)
+			//Okay this string must be a ckey. Lets sanitise it with the ckey proc
+			string = ckey(string)
+			current_list += string
 
-// Places the item on the target mob.
-/proc/place_custom_item(mob/living/carbon/human/M, var/datum/custom_item/citem)
+		//If there's a curly brace at the end of the line, it closes this list
+		if (current_id && findtext(line, "}"))
+			register_patron_whitelist(current_id, current_list)
+			current_list = list()
+			current_id = null
 
-	if(!citem) return
-	var/obj/item/newitem = citem.spawn_item(M.loc)
 
-	if(M.equip_to_appropriate_slot(newitem))
-		return newitem
+//Here we take an assembled whitelist and find which patron item it should attach to by matching the ID
+/proc/register_patron_whitelist(current_id, list/current_list)
 
-	if(M.equip_to_storage(newitem))
-		return newitem
 
-	return newitem
+	for (var/datum/patron_item/PI in GLOB.patron_items)
+		if (PI.id == current_id)
+			PI.whitelist = current_list.Copy()
+
+			//Lets add all these keys to the global list
+			for (var/ckey in current_list)
+				var/list/custom_item_lists_we_are_on	=	(GLOB.patron_item_whitelisted_ckeys[ckey] || list())
+				custom_item_lists_we_are_on |= PI
+				GLOB.patron_item_whitelisted_ckeys[ckey] = custom_item_lists_we_are_on
+			return TRUE
+
+
+
+	log_debug("ERROR: Patron whitelist ID [current_id] found no matching patron_item datum to assign to")
+	return FALSE
+
+
+/*
+	This proc takes an input vaguely identifying a user. That could be a mob, ckey, mind, or player datum
+
+	Returns true if they can do store access to this
+*/
+/datum/patron_item/proc/can_buy_in_store(var/user)
+	if (store_access == ACCESS_PUBLIC)
+		return TRUE
+
+	var/ckey
+	var/is_patron
+	if (istext(user))
+		ckey = user
+		var/datum/player/P = get_player_from_key(ckey)
+		is_patron = P.patron
+	else if (istype(user, /datum))
+		var/datum/D = user
+		ckey = D.get_key()
+		is_patron = D.is_patron()
+
+
+	switch (store_access)
+		if (ACCESS_PUBLIC)
+			return TRUE
+		if (ACCESS_PATRONS)
+			return is_patron
+		if (ACCESS_WHITELIST)
+			return (ckey in whitelist)

@@ -71,7 +71,7 @@
 	return current_design.CreatedInStore(src)
 
 /obj/machinery/store/proc/store_or_drop(var/obj/item/I)
-	if (!deposit_box.store_item(I))
+	if (!istype(I) || !deposit_box.store_item(I))
 		I.forceMove(get_turf(src))
 
 
@@ -89,7 +89,8 @@
 */
 /obj/machinery/store/proc/buy_to_occupant()
 	var/list/things = list() + buy_current()
-	for (var/obj/item/I in things)
+	for (var/atom/movable/I in things)
+
 		var/atom/destination = occupant.equip_to_storage_or_hands(I)
 		if(!destination)
 			destination = store_or_drop(I)

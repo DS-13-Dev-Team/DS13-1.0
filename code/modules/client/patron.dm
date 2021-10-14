@@ -187,6 +187,35 @@
 /*
 	Checking procs
 */
-/datum/preferences/proc/is_patron()
+/datum/proc/is_patron()
+	return FALSE
+
+datum/preferences/is_patron()
 	var/datum/player/P = get_player_from_key(client_ckey)
 	return P.patron
+
+/mob/is_patron()
+	if (ckey)
+		var/datum/player/P = get_player_from_key(ckey)
+		return P.patron
+	return FALSE
+
+/datum/mind/is_patron()
+	if (key)
+		var/datum/player/P = get_player_from_key(key)
+		return P.patron
+	return FALSE
+
+
+//Attempts to return an associated player ckey
+/datum/proc/get_key()
+	return null
+
+datum/preferences/get_key()
+	return client_ckey
+
+/mob/get_key()
+	return ckey
+
+/datum/mind/get_key()
+	return key

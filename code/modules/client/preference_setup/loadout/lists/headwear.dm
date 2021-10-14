@@ -1,7 +1,7 @@
 /datum/gear/head
-	sort_category = "Hats and Headwear"
+	sort_category = CATEGORY_HEADWEAR
 	slot = slot_head
-	category = /datum/gear/head
+	base_type = /datum/gear/head
 
 /datum/gear/head/beret
 	display_name = "beret, colour select"

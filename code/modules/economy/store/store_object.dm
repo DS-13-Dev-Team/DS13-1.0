@@ -103,6 +103,7 @@ GLOBAL_VAR_INIT(number_of_store_kiosks, 0)
 			return
 		remove_occupant()
 	occupant = O
+	update_occupant_data()
 
 
 /obj/machinery/store/proc/remove_occupant()
