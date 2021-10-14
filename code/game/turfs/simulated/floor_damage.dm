@@ -31,6 +31,11 @@
 	.=..()
 	if ((atom_flags & ATOM_FLAG_INDESTRUCTIBLE))
 		return
+
+	//It is possible for a non floor turf to end up here after certain wierd turf changing operations
+	if (!istype(src, /turf/simulated/floor))
+		return
+
 	if (is_hole)
 		//This turf is space or an open space, it can't break, burn or be damaged
 		broken = FALSE
