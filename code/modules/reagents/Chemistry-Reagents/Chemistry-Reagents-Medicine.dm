@@ -404,8 +404,24 @@
 		return
 	if(prob(5))
 		M.emote(pick("twitch", "blink_r", "shiver"))
-	M.add_chemical_effect(CE_SPEEDBOOST, 1)
+	M.add_chemical_effect(CE_UNENCUMBRANCE, 1)
 	M.add_chemical_effect(CE_PULSE, 2)
+
+
+/datum/reagent/hyperzine/initialize_data(var/newdata) // Called when the reagent is created.
+	.=..()
+	var/mob/living/carbon/C = holder?.my_atom
+	if (istype(C))
+		C.add_chemical_effect(CE_UNENCUMBRANCE, 10)
+		C.update_extension(/datum/extension/updating/encumbrance)
+
+/datum/reagent/hyperzine/Destroy() // This should only be called by the holder, so it's already handled clearing its references
+	var/mob/living/carbon/C = holder?.my_atom
+	if (istype(C))
+		C.remove_chemical_effect(CE_UNENCUMBRANCE)
+		C.update_extension(/datum/extension/updating/encumbrance)
+	. = ..()
+
 
 /datum/reagent/ethylredoxrazine
 	name = "Ethylredoxrazine"

@@ -52,7 +52,7 @@
 	//Unsure why this is happening, but it seems that we aren't getting properly removed from chunk lists. Return PROCESS_KILL to ensure that happens
 	if (!EM)
 		if (!QDELETED(src))
-			QDEL_IN(src, 1)
+			qdel(src)
 		return PROCESS_KILL
 
 	return EM.get_visualnet_tiles(network)

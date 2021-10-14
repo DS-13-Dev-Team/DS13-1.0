@@ -9,7 +9,7 @@
 /turf/simulated/floor/holofloor/ex_act()
 	return
 
-/turf/simulated/floor/holofloor/take_damage(var/damage, var/damage_type = BRUTE, var/ignore_resistance = FALSE)
+/turf/simulated/floor/holofloor/take_damage(var/amount, var/damtype = BRUTE, var/user, var/used_weapon, var/bypass_resist = FALSE)
 	return
 
 /turf/simulated/floor/holofloor/make_plating(place_product, defer_icon_update)

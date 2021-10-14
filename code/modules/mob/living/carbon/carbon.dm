@@ -325,6 +325,12 @@
 	else
 		chem_effects[effect] = magnitude
 
+
+
+/mob/living/carbon/proc/remove_chemical_effect(var/effect)
+	if(effect in chem_effects)
+		chem_effects -= effect
+
 /mob/living/carbon/get_default_language()
 	if(default_language && can_speak(default_language))
 		return default_language
