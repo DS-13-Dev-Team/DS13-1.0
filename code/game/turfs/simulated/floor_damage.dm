@@ -27,7 +27,7 @@
 	update_icon()
 
 
-/turf/simulated/floor/take_damage(var/damage, var/damage_type = BRUTE, var/ignore_resistance = FALSE)
+/turf/simulated/floor/take_damage(var/amount, var/damtype = BRUTE, var/user, var/used_weapon, var/bypass_resist = FALSE)
 	.=..()
 	if ((atom_flags & ATOM_FLAG_INDESTRUCTIBLE))
 		return
@@ -38,7 +38,7 @@
 
 		//But we could break lattices in this tile
 		for (var/obj/structure/lattice/L in src)
-			if (damage > 75)
+			if (amount > 75)
 				L.ex_act(1)
 		return
 
@@ -47,12 +47,12 @@
 	//Breaking or burning overlays.
 	//A tile can have one of each type
 	if (health < (max_health * 0.9))
-		if ((damage_type == BRUTE || damage_type == BLAST) )
+		if ((damtype == BRUTE || damtype == BLAST) )
 			if (!broken)
 				changed = TRUE
 			broken = TRUE
 
-		if ( (damage_type == BURN || damage_type == BLAST))
+		if ( (damtype == BURN || damtype == BLAST))
 			if (!burnt)
 				changed = TRUE
 			burnt = TRUE
