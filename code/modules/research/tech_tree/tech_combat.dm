@@ -9,7 +9,6 @@
 	icon = "stunbaton"
 
 	required_technologies = list()
-	required_tech_levels = list()
 	cost = 0
 
 	unlocks_designs = list("stunbaton", "handcuffs")
@@ -24,7 +23,6 @@
 	icon = "seccomputer"
 
 	required_technologies = list("sec_eq")
-	required_tech_levels = list()
 	cost = 250
 
 	unlocks_designs = list("prisonmanage")
@@ -39,7 +37,6 @@
 	icon = "add_sec_eq"
 
 	required_technologies = list("sec_eq")
-	required_tech_levels = list()
 	cost = 500
 
 	unlocks_designs = list("security_hud", "megaphone")
@@ -54,7 +51,6 @@
 	icon = "rigtaser"
 
 	required_technologies = list("add_eq")
-	required_tech_levels = list()
 	cost = 750
 
 	unlocks_designs = list("rig_flash", "rig_taser")
@@ -69,7 +65,6 @@
 	icon = "recharger"
 
 	required_technologies = list("nleth_eq", "sup_power")
-	required_tech_levels = list()
 	cost = 1250
 
 	unlocks_designs = list("recharger", "force_energy")
@@ -84,7 +79,6 @@
 	icon = "shield"
 
 	required_technologies = list("recharger")
-	required_tech_levels = list()
 	cost = 1000
 
 	unlocks_designs = list("advancedcombatshield", "tactical_goggles")
@@ -99,7 +93,6 @@
 	icon = "divet"
 
 	required_technologies = list("recharger")
-	required_tech_levels = list()
 	cost = 1500
 
 	unlocks_designs = list("divet", "divetslug")
@@ -114,7 +107,6 @@
 	icon = "speedloader"
 
 	required_technologies = list("divet")
-	required_tech_levels = list()
 	cost = 750
 
 	unlocks_designs = list("44cal")
@@ -129,7 +121,6 @@
 	icon = "pulse"
 
 	required_technologies = list("divet")
-	required_tech_levels = list()
 	cost = 2500
 
 	unlocks_designs = list("pulserifle", "pulseslug")
@@ -144,7 +135,6 @@
 	icon = "pulsehv"
 
 	required_technologies = list("pulse")
-	required_tech_levels = list()
 	cost = 1500
 
 	unlocks_designs = list("pulsehighvel")
@@ -159,7 +149,6 @@
 	icon = "ripper"
 
 	required_technologies = list("pulse")
-	required_tech_levels = list()
 	cost = 1500
 
 	unlocks_designs = list("ripper", "ripper_blades")
@@ -174,7 +163,6 @@
 	icon = "dblades"
 
 	required_technologies = list("ripper")
-	required_tech_levels = list()
 	cost = 750
 
 	unlocks_designs = list("diamond_blades")
@@ -189,7 +177,6 @@
 	icon = "javeline"
 
 	required_technologies = list("pulse")
-	required_tech_levels = list()
 	cost = 2000
 
 	unlocks_designs = list("javgun", "javelin_rack")
@@ -204,7 +191,6 @@
 	icon = "seeker"
 
 	required_technologies = list("pulse")
-	required_tech_levels = list()
 	cost = 3500
 
 	unlocks_designs = list("seeker", "seeker_ammo")

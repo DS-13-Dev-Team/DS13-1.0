@@ -28,8 +28,6 @@ cause a ton of data to be lost, an admin can go send it back.
 	light_color = "#a97faa"
 	circuit = /obj/item/weapon/circuitboard/rdconsole
 	var/datum/research/files							//Stores all the collected research data.
-	var/obj/item/weapon/disk/tech_disk/t_disk = null	//Stores the technology disk.
-	var/obj/item/weapon/disk/design_disk/d_disk = null	//Stores the design disk.
 
 	var/obj/machinery/r_n_d/destructive_analyzer/linked_destroy = null	//Linked Destructive Analyzer
 	var/obj/machinery/r_n_d/protolathe/linked_lathe = null				//Linked Protolathe
@@ -49,29 +47,6 @@ cause a ton of data to be lost, an admin can go send it back.
 	var/search_text
 
 	req_access = list(access_research)	//Data and setting manipulation requires scientist access.
-
-/obj/machinery/computer/rdconsole/proc/CallMaterialName(var/ID)
-	var/return_name = ID
-	switch(return_name)
-		if(MATERIAL_STEEL)
-			return_name = "Steel"
-		if(MATERIAL_GLASS)
-			return_name = "Glass"
-		if(MATERIAL_PLASTIC)
-			return_name = "Plastic"
-		if(MATERIAL_PLASTEEL)
-			return_name = "Plasteel"
-		if(MATERIAL_GOLD)
-			return_name = "Gold"
-		if(MATERIAL_SILVER)
-			return_name = "Silver"
-		if(MATERIAL_PHORON)
-			return_name = "Solid Phoron"
-		if(MATERIAL_URANIUM)
-			return_name = "Uranium"
-		if(MATERIAL_DIAMOND)
-			return_name = "Diamond"
-	return return_name
 
 /obj/machinery/computer/rdconsole/proc/CallReagentName(var/reagent_type)
 	var/datum/reagent/R = reagent_type
@@ -95,17 +70,15 @@ cause a ton of data to be lost, an admin can go send it back.
 				D.linked_console = src
 	return
 
-/obj/machinery/computer/rdconsole/proc/griefProtection() //Have it automatically push research to the centcomm server so wild griffins can't fuck up R&D's work
-	for(var/obj/machinery/r_n_d/server/centcom/C in SSmachines.machinery)
-		C.files.download_from(files)
-
 /obj/machinery/computer/rdconsole/Initialize()
-	. = ..()
-	files = new /datum/research(src) //Setup the research data holder.
+	.=..()
+	files = new /datum/research(src) //Setup the research data holder
 	SyncRDevices()
 	sync_tech()
 
 /obj/machinery/computer/rdconsole/Destroy()
+	sync_tech()
+	QDEL_NULL(files)
 	if(linked_destroy)
 		linked_destroy.linked_console = null
 		linked_destroy = null
@@ -115,7 +88,7 @@ cause a ton of data to be lost, an admin can go send it back.
 	if(linked_imprinter)
 		linked_imprinter.linked_console = null
 		linked_destroy = null
-	return ..()
+	.=..()
 
 /obj/machinery/computer/rdconsole/attackby(var/obj/item/weapon/D as obj, var/mob/user as mob)
 	if(istype(D, /obj/item/weapon/disk/research_points))
@@ -125,24 +98,14 @@ cause a ton of data to be lost, an admin can go send it back.
 		user.remove_from_mob(disk)
 		qdel(disk)
 
-/*	else if(istype(D, /obj/item/device/science_tool))
-		var/research_points = files.experiments.read_science_tool(D)
-		if(research_points > 0)
-			to_chat(user, "<span class='notice'>[name] received [research_points] research points from uploaded data.</span>")
-			files.research_points += research_points
-		else
-			to_chat(user, "<span class='notice'>There was no usefull data inside [D.name]'s buffer.</span>")
-*/
 	else
-		//The construction/deconstruction of the console code.
-		..()
+		.=..()
 
 	update_open_uis()
 
 /obj/machinery/computer/rdconsole/attack_hand(mob/user as mob)
 	if(..())
 		return
-
 	ui_interact(user)
 
 /obj/machinery/computer/rdconsole/emp_act(var/remaining_charges, var/mob/user)
@@ -158,16 +121,16 @@ cause a ton of data to be lost, an admin can go send it back.
 
 	if(href_list["select_tech_tree"])
 		var/new_select_tech_tree = href_list["select_tech_tree"]
-		if(files.all_technologies[new_select_tech_tree])
+		if(new_select_tech_tree in files.tech_trees_shown)
 			selected_tech_tree = new_select_tech_tree
 			selected_technology = null
 	if(href_list["select_technology"])
 		var/new_selected_technology = href_list["select_technology"]
-		if(files.all_technologies[selected_tech_tree][new_selected_technology])
+		if(new_selected_technology in files.all_technologies)
 			selected_technology = new_selected_technology
 	if(href_list["unlock_technology"])
 		var/unlock = href_list["unlock_technology"]
-		files.UnlockTechology(files.all_technologies[selected_tech_tree][unlock])
+		files.UnlockTechology(SSresearch.all_technologies[unlock])
 	if(href_list["go_screen"])
 		var/where = href_list["go_screen"]
 		if(href_list["need_access"])
@@ -192,7 +155,6 @@ cause a ton of data to be lost, an admin can go send it back.
 			to_chat(usr, "<span class='warning'>You must connect to the network first!</span>")
 		else
 			screen = "working"
-			griefProtection() //Putting this here because I dont trust the sync process
 			addtimer(CALLBACK(src, .proc/sync_tech), 3 SECONDS)
 			update_open_uis()
 	if(href_list["togglesync"]) //Prevents the console from being synced by other consoles. Can still send data.
@@ -200,18 +162,14 @@ cause a ton of data to be lost, an admin can go send it back.
 	if(href_list["build"] && screen == "protolathe" && linked_lathe) //Causes the Protolathe to build something.
 		var/amount=text2num(href_list["amount"])
 		var/datum/design/being_built = null
-		for(var/datum/design/D in files.known_designs)
-			if(D.id == href_list["build"])
-				being_built = D
-				break
+		if(SSresearch.design_by_id[href_list["build"]])
+			being_built = SSresearch.design_by_id[href_list["build"]]
 		if(being_built && amount)
 			linked_lathe.queue_design(being_built, amount)
 	if(href_list["build"] && screen == "circuit_imprinter" && linked_imprinter)
 		var/datum/design/being_built = null
-		for(var/datum/design/D in files.known_designs)
-			if(D.id == href_list["build"])
-				being_built = D
-				break
+		if(SSresearch.design_by_id[href_list["build"]])
+			being_built = SSresearch.design_by_id[href_list["build"]]
 		if(being_built)
 			linked_imprinter.queue_design(being_built)
 	if(href_list["select_category"])
@@ -252,11 +210,11 @@ cause a ton of data to be lost, an admin can go send it back.
 	if(href_list["protolathe_purgeall"] && linked_lathe)
 		linked_lathe.reagents.clear_reagents()
 	if(href_list["protolathe_purge"] && linked_lathe)
-		linked_lathe.reagents.del_reagent(href_list["protolathe_purge"])
+		linked_lathe.reagents.del_reagent(text2path(href_list["protolathe_purge"]))
 	if(href_list["imprinter_purgeall"] && linked_imprinter)
 		linked_imprinter.reagents.clear_reagents()
 	if(href_list["imprinter_purge"] && linked_imprinter)
-		linked_imprinter.reagents.del_reagent(href_list["imprinter_purge"])
+		linked_imprinter.reagents.del_reagent(text2path(href_list["imprinter_purge"]))
 	if(href_list["lathe_ejectsheet"] && linked_lathe)
 		var/desired_num_sheets = text2num(href_list["lathe_ejectsheet_amt"])
 		linked_lathe.eject_sheet(href_list["lathe_ejectsheet"], desired_num_sheets)
@@ -295,36 +253,35 @@ cause a ton of data to be lost, an admin can go send it back.
 	screen = "main"
 	update_open_uis()
 
-
 /obj/machinery/computer/rdconsole/proc/sync_tech()
-	for(var/obj/machinery/r_n_d/server/S in GLOB.rnd_server_list)
-		var/server_processed = 0
+	for(var/obj/machinery/r_n_d/server/S in SSresearch.servers)
+		var/server_processed = FALSE
 		if(S.disabled)
 			continue
-		if((id in S.id_with_upload) || istype(S, /obj/machinery/r_n_d/server/centcom))
+		if((id in S.id_with_upload))
 			S.files.download_from(files)
-			server_processed = 1
-		if(((id in S.id_with_download) && !istype(S, /obj/machinery/r_n_d/server/centcom)) || S.hacked)
+			server_processed = TRUE
+		if(((id in S.id_with_download) || S.hacked))
 			files.download_from(S.files)
-			server_processed = 1
-		if(!istype(S, /obj/machinery/r_n_d/server/centcom) && server_processed)
+			server_processed = TRUE
+		if(server_processed)
 			S.produce_heat(100)
 	screen = "main"
 	update_open_uis()
 
 /obj/machinery/computer/rdconsole/proc/get_protolathe_data()
 	var/list/protolathe_list = list(
-		"max_material_storage" =             linked_lathe.max_material_storage,
-		"total_materials" =                  linked_lathe.TotalMaterials(),
-		"total_volume" =                     linked_lathe.reagents.total_volume,
-		"maximum_volume" =                   linked_lathe.reagents.maximum_volume,
+		"max_material_storage" =	linked_lathe.max_material_storage,
+		"total_materials" =			linked_lathe.TotalMaterials(),
+		"total_volume" =			linked_lathe.reagents.total_volume,
+		"maximum_volume" =			linked_lathe.reagents.maximum_volume,
 	)
 	var/list/protolathe_reagent_list = list()
 	for(var/datum/reagent/R in linked_lathe.reagents.reagent_list)
 		protolathe_reagent_list += list(list(
-			"name" =           R.name,
-			"volume" =         R.volume,
-			"type" = R
+			"name" =	R.name,
+			"volume" =	R.volume,
+			"type" =	R.type
 		))
 	protolathe_list["reagents"] = protolathe_reagent_list
 	var/list/material_list = list()
@@ -342,17 +299,17 @@ cause a ton of data to be lost, an admin can go send it back.
 
 /obj/machinery/computer/rdconsole/proc/get_imprinter_data()
 	var/list/imprinter_list = list(
-		"max_material_storage" =             linked_imprinter.max_material_storage,
-		"total_materials" =                  linked_imprinter.TotalMaterials(),
-		"total_volume" =                     linked_imprinter.reagents.total_volume,
-		"maximum_volume" =                   linked_imprinter.reagents.maximum_volume,
+		"max_material_storage" =	linked_imprinter.max_material_storage,
+		"total_materials" =			linked_imprinter.TotalMaterials(),
+		"total_volume" =			linked_imprinter.reagents.total_volume,
+		"maximum_volume" =			linked_imprinter.reagents.maximum_volume,
 	)
 	var/list/printer_reagent_list = list()
 	for(var/datum/reagent/R in linked_imprinter.reagents.reagent_list)
 		printer_reagent_list += list(list(
-			"name" =           R.name,
-			"volume" =         R.volume,
-			"type" = R,
+			"name" =	R.name,
+			"volume" =	R.volume,
+			"type" =	R.type,
 		))
 	imprinter_list["reagents"] = printer_reagent_list
 	var/list/material_list = list()
@@ -376,7 +333,8 @@ cause a ton of data to be lost, an admin can go send it back.
 		coeff = linked_imprinter.efficiency_coeff
 
 	var/list/designs_list = list()
-	for(var/datum/design/D in files.known_designs)
+	for(var/I in files.known_designs)
+		var/datum/design/D = SSresearch.design_by_id[I]
 		if(D.build_type & build_type)
 			var/cat = "Unspecified"
 			if(D.category)
@@ -391,11 +349,10 @@ cause a ton of data to be lost, an admin can go send it back.
 					if(build_type == IMPRINTER)
 						t = linked_imprinter.check_mat(D, M)
 
-
 					if(t < 1)
-						temp_material += " <span style=\"color:red\">[D.materials[M]/coeff] [CallMaterialName(M)]</span>"
+						temp_material += " <span style=\"color:red\">[D.materials[M]/coeff] [capitalize(M)]</span>"
 					else
-						temp_material += " [D.materials[M]/coeff] [CallMaterialName(M)]"
+						temp_material += " [D.materials[M]/coeff] [capitalize(M)]"
 					c = min(t,c)
 
 				if(D.chemicals.len)
@@ -439,15 +396,13 @@ cause a ton of data to be lost, an admin can go send it back.
 		data["can_research"] = can_research
 
 		var/list/tech_tree_list = list()
-		for(var/tech_tree_id in files.tech_trees)
-			var/datum/tech/Tech_Tree = files.tech_trees[tech_tree_id]
-			if(!Tech_Tree.shown)
-				continue
+		for(var/tech_tree_id in files.tech_trees_shown)
+			var/datum/tech/Tech_Tree = SSresearch.tech_trees[tech_tree_id]
 			var/list/tech_tree_data = list(
 				"id" =             Tech_Tree.id,
 				"name" =           "[Tech_Tree.name]",
 				"shortname" =      "[Tech_Tree.shortname]",
-				"level" =          Tech_Tree.level,
+				"level" =          files.tech_trees_shown[tech_tree_id],
 				"maxlevel" =       Tech_Tree.maxlevel,
 			)
 			tech_tree_list += list(tech_tree_data)
@@ -544,10 +499,8 @@ cause a ton of data to be lost, an admin can go send it back.
 		var/list/line_list = list()
 
 		var/list/tech_tree_list = list()
-		for(var/tech_tree_id in files.tech_trees)
-			var/datum/tech/Tech_Tree = files.tech_trees[tech_tree_id]
-			if(!Tech_Tree.shown)
-				continue
+		for(var/tech_tree_id in files.tech_trees_shown)
+			var/datum/tech/Tech_Tree = SSresearch.tech_trees[tech_tree_id]
 			var/list/tech_tree_data = list(
 				"id" =             Tech_Tree.id,
 				"name" =           "[Tech_Tree.name]",
@@ -558,17 +511,17 @@ cause a ton of data to be lost, an admin can go send it back.
 		data["tech_trees"] = tech_tree_list
 
 		if(!selected_tech_tree)
-			selected_tech_tree = files.all_technologies[1]
+			selected_tech_tree = files.tech_trees_shown[1]
 
 		var/list/tech_list = list()
-		if(selected_tech_tree && files.all_technologies[selected_tech_tree])
-			var/datum/tech/Tech_Tree = files.tech_trees[selected_tech_tree]
-			data["tech_tree_name"] = Tech_Tree.name
-			data["tech_tree_desc"] = Tech_Tree.desc
-			data["tech_tree_level"] = Tech_Tree.level
+		var/datum/tech/Tech_Tree = SSresearch.tech_trees[selected_tech_tree]
+		data["tech_tree_name"] = Tech_Tree.name
+		data["tech_tree_desc"] = Tech_Tree.desc
+		data["tech_tree_level"] = Tech_Tree.level
 
-			for(var/tech_id in files.all_technologies[selected_tech_tree])
-				var/datum/technology/Tech = files.all_technologies[selected_tech_tree][tech_id]
+		for(var/tech_id in files.all_technologies)
+			var/datum/technology/Tech = SSresearch.all_technologies[tech_id]
+			if(Tech.tech_type == selected_tech_tree)
 				var/list/tech_data = list(
 					"id" =             Tech.id,
 					"name" =           "[Tech.name]",
@@ -581,8 +534,8 @@ cause a ton of data to be lost, an admin can go send it back.
 				tech_list += list(tech_data)
 
 				for(var/req_tech_id in Tech.required_technologies)
-					if(files.all_technologies[selected_tech_tree][req_tech_id])
-						var/datum/technology/OTech = files.all_technologies[selected_tech_tree][req_tech_id]
+					if(req_tech_id in files.all_technologies)
+						var/datum/technology/OTech = SSresearch.all_technologies[req_tech_id]
 						if(OTech.tech_type == Tech.tech_type && !Tech.no_lines)
 							var/line_x = (min(round(OTech.x*100), round(Tech.x*100)))
 							var/line_y = (min(round(OTech.y*100), round(Tech.y*100)))
@@ -613,7 +566,7 @@ cause a ton of data to be lost, an admin can go send it back.
 
 		data["selected_technology_id"] = ""
 		if(selected_technology)
-			var/datum/technology/Tech = files.all_technologies[selected_tech_tree][selected_technology]
+			var/datum/technology/Tech = SSresearch.all_technologies[selected_technology]
 			var/list/technology_data = list(
 				"name" =           Tech.name,
 				"desc" =           Tech.desc,
@@ -625,17 +578,9 @@ cause a ton of data to be lost, an admin can go send it back.
 			data["selected_technology_id"] = Tech.id
 
 			var/list/requirement_list = list()
-			for(var/t in Tech.required_tech_levels)
-				var/datum/tech/Tech_Tree = files.tech_trees[t]
 
-				var/level = Tech.required_tech_levels[t]
-				var/list/req_data = list(
-					"text" =           "[Tech_Tree.shortname] level [level]",
-					"isgood" =         (Tech_Tree.level >= level)
-				)
-				requirement_list += list(req_data)
 			for(var/t in Tech.required_technologies)
-				var/datum/technology/OTech = files.all_tech_no_types[t]
+				var/datum/technology/OTech = SSresearch.all_technologies[t]
 
 				var/list/req_data = list(
 					"text" =           "[OTech.name]",
@@ -646,7 +591,7 @@ cause a ton of data to be lost, an admin can go send it back.
 
 			var/list/unlock_list = list()
 			for(var/T in Tech.unlocks_designs)
-				var/datum/design/D = files.design_by_id[T]
+				var/datum/design/D = SSresearch.design_by_id[T]
 				var/list/unlock_data = list(
 					"text" =           "[D.name]",
 				)

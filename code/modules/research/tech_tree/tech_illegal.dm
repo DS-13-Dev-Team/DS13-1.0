@@ -9,7 +9,6 @@
 	icon = "sdivet"
 
 	required_technologies = list("divet")
-	required_tech_levels = list()
 	cost = 1250
 
 	unlocks_designs = list("sdivet")
@@ -25,7 +24,6 @@
 	icon = "icds"
 
 	required_technologies = list("divet")
-	required_tech_levels = list()
 	cost = 1500
 
 	unlocks_designs = list("icds")
@@ -41,7 +39,6 @@
 	icon = "hpds"
 
 	required_technologies = list("divet")
-	required_tech_levels = list()
 	cost = 1500
 
 	unlocks_designs = list("hpds")
@@ -57,7 +54,6 @@
 	icon = "apds"
 
 	required_technologies = list("divet")
-	required_tech_levels = list()
 	cost = 1500
 
 	unlocks_designs = list("apds")
@@ -73,7 +69,6 @@
 	icon = "implant"
 
 	required_technologies = list("implants")
-	required_tech_levels = list()
 	cost = 1250
 
 	unlocks_designs = list("implant_free")
@@ -89,7 +84,6 @@
 	icon = "implant"
 
 	required_technologies = list("implants")
-	required_tech_levels = list()
 	cost = 1250
 
 	unlocks_designs = list("implant_imprinting")
@@ -105,7 +99,6 @@
 	icon = "implant"
 
 	required_technologies = list("implants")
-	required_tech_levels = list()
 	cost = 1250
 
 	unlocks_designs = list("implant_explosive")
@@ -121,7 +114,6 @@
 	icon = "implant"
 
 	required_technologies = list("implants")
-	required_tech_levels = list()
 	cost = 1250
 
 	unlocks_designs = list("implant_chem")

@@ -56,7 +56,7 @@
 
 
 /datum/computer_file/binary/design/ui_data()
-	var/list/old_data = design.ui_data()
+	var/list/old_data = design.ui_data
 	var/list/data = old_data.Copy()
 	data["copy_protected"] = copy_protected
 	data["filename"] = filename

@@ -9,7 +9,6 @@
 	icon = "telecom_part"
 
 	required_technologies = list("super_parts")
-	required_tech_levels = list()
 	cost = 750
 
 	unlocks_designs = list("s-ansible", "s-filter", "s-amplifier", "s-treatment", "s-analyzer", "s-crystal", "s-transmitter")
@@ -24,7 +23,6 @@
 	icon = "monitoring"
 
 	required_technologies = list("telecomm_parts")
-	required_tech_levels = list()
 	cost = 1250
 
 	unlocks_designs = list("comm_monitor", "comm_server", "comm_traffic", "message_monitor", "shield_generator", "shield_diffuser")
@@ -39,7 +37,6 @@
 	icon = "monitoring"
 
 	required_technologies = list("tcom_monitoring", "adv_power_storage")
-	required_tech_levels = list()
 	cost = 750
 
 	unlocks_designs = list("rcon_console")
@@ -54,7 +51,6 @@
 	icon = "relay"
 
 	required_technologies = list("telecomm_parts")
-	required_tech_levels = list()
 	cost = 1500
 
 	unlocks_designs = list("tcom-server", "tcom-bus", "tcom-hub", "tcom-relay")
@@ -69,7 +65,6 @@
 	icon = "solnet_relay"
 
 	required_technologies = list("telecomm_parts")
-	required_tech_levels = list()
 	cost = 1750
 
 	unlocks_designs = list("ntnet_relay")
@@ -84,7 +79,6 @@
 	icon = "subspace"
 
 	required_technologies = list("telecomm_parts")
-	required_tech_levels = list()
 	cost = 1500
 
 	unlocks_designs = list("tcom-broadcaster", "tcom-receiver")
@@ -99,7 +93,6 @@
 	icon = "processor"
 
 	required_technologies = list("telecomm_parts")
-	required_tech_levels = list()
 	cost = 1500
 
 	unlocks_designs = list("tcom-processor")

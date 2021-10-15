@@ -60,57 +60,11 @@
 /datum/asset/simple/research_designs
 	keep_local_name = TRUE
 
+// If any new design appears it is added to the asset list in SSresearch
 /datum/asset/simple/research_designs/register()
-	for(var/R in subtypesof(/datum/design))
-		var/datum/design/design = new R
-
-		register_design(design)
-
-	SSresearch.generate_integrated_circuit_designs()
-
-	for(var/D in SSresearch.design_ids)
-		var/datum/design/design = SSresearch.design_ids[D]
-		var/datum/computer_file/binary/design/design_file = new
-		design_file.design = design
-		design_file.on_design_set()
-		design.file = design_file
-
-	SSresearch.designs_initialized = TRUE
-
-	// Initialize design files that were created before
-	for(var/file in SSresearch.design_files_to_init)
-		SSresearch.initialize_design_file(file)
-	SSresearch.design_files_to_init = list()
-
-
-	SSdatabase.update_store_designs()
-
-	. = ..()
-
-/proc/register_research_design(var/datum/design/design)
-	var/datum/asset/simple/research_designs/RD = GLOB.asset_datums[/datum/asset/simple/research_designs]
-	RD.register_design(design)
-
-/datum/asset/simple/research_designs/proc/register_design(var/datum/design/design)
-	design.AssembleDesignInfo()
-
-	if(!design.build_path)
-		return
-
-	//Cache the icons
-	var/filename = sanitizeFileName("[design.build_path].png")
-	var/icon/I = getFlatTypeIcon(design.build_path)
-	assets[filename] = I
-
-	design.ui_data["icon"] = filename
-	design.ui_data["icon_width"] = I.Width()
-	design.ui_data["icon_height"] = I.Height()
-
-	SSresearch.all_designs += design
-
-	// Design ID is string
-	SSresearch.design_ids["[design.id]"] = design
-
+	for(var/I in SSresearch.design_by_id)
+		var/datum/design/D = SSresearch.design_by_id[I]
+		assets[D.ui_data["icon_name"]] = D.ui_data["icon"]
 
 /datum/asset/simple/jquery
 	legacy = TRUE

@@ -232,13 +232,9 @@
 
 	interface_name = "contact datajack"
 	interface_desc = "An induction-powered high-throughput datalink suitable for hacking encrypted networks."
-	var/list/stored_research
+	var/list/stored_research = list()
 
 	process_with_rig = FALSE
-
-/obj/item/rig_module/datajack/Initialize()
-	. =..()
-	stored_research = list()
 
 /obj/item/rig_module/datajack/engage(atom/target)
 
@@ -279,11 +275,11 @@
 			var/obj/machinery/mecha_part_fabricator/input_machine = input_device
 			incoming_files = input_machine.files
 
-		if(!incoming_files || !incoming_files.known_designs || !incoming_files.known_designs.len)
+		if(!incoming_files || !incoming_files.tech_trees_shown || !incoming_files.tech_trees_shown.len)
 			to_chat(user, "<span class='warning'>Memory failure. There is nothing accessible stored on this terminal.</span>")
 		else
 			// Maybe consider a way to drop all your data into a target repo in the future.
-			if(load_data(incoming_files.known_designs))
+			if(load_data(incoming_files.tech_trees_shown))
 				to_chat(user, "<font color='blue'>Download successful; local and remote repositories synchronized.</font>")
 			else
 				to_chat(user, "<span class='warning'>Scan complete. There is nothing useful stored on this terminal.</span>")
@@ -291,25 +287,16 @@
 	return 0
 
 /obj/item/rig_module/datajack/proc/load_data(var/incoming_data)
+	var/nothing = TRUE
+	for(var/entry in incoming_data)
+		if(stored_research[entry] <= incoming_data[entry])
+			stored_research[entry] = incoming_data[entry]
+			nothing = FALSE
 
-	if(islist(incoming_data))
-		for(var/entry in incoming_data)
-			load_data(entry)
-		return 1
-
-	if(istype(incoming_data, /datum/tech))
-		var/data_found
-		var/datum/tech/new_data = incoming_data
-		for(var/datum/tech/current_data in stored_research)
-			if(current_data.id == new_data.id)
-				data_found = 1
-				if(current_data.level < new_data.level)
-					current_data.level = new_data.level
-				break
-		if(!data_found)
-			stored_research += incoming_data
-		return 1
-	return 0
+	if(nothing)
+		return FALSE
+	else
+		return TRUE
 
 /obj/item/rig_module/electrowarfare_suite
 

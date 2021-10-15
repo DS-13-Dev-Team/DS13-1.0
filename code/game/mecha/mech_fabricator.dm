@@ -16,7 +16,7 @@
 	var/res_max_amount = 200000
 
 	var/datum/research/files
-	var/list/datum/design/queue = list()
+	var/list/queue = list()
 	var/progress = 0
 	var/busy = 0
 
@@ -223,7 +223,7 @@
 		busy = 0
 
 /obj/machinery/mecha_part_fabricator/proc/add_to_queue(var/index)
-	var/datum/design/D = files.known_designs[index]
+	var/D = files.known_designs[index]
 	queue += D
 	update_busy()
 
@@ -233,7 +233,8 @@
 	queue.Cut(index, index + 1)
 	update_busy()
 
-/obj/machinery/mecha_part_fabricator/proc/can_build(var/datum/design/D)
+/obj/machinery/mecha_part_fabricator/proc/can_build(I)
+	var/datum/design/D = SSresearch.design_by_id[I]
 	for(var/M in D.materials)
 		if(materials[M] <= D.materials[M] * mat_efficiency)
 			return 0
@@ -243,7 +244,7 @@
 	if(!queue.len)
 		progress = 0
 		return
-	var/datum/design/D = queue[1]
+	var/datum/design/D = SSresearch.design_by_id[queue[1]]
 	if(!can_build(D))
 		progress = 0
 		return
@@ -263,7 +264,7 @@
 /obj/machinery/mecha_part_fabricator/proc/get_queue_names()
 	. = list()
 	for(var/i = 2 to queue.len)
-		var/datum/design/D = queue[i]
+		var/datum/design/D = SSresearch.design_by_id[queue[i]]
 		. += D.name
 
 /obj/machinery/mecha_part_fabricator/proc/get_build_options()

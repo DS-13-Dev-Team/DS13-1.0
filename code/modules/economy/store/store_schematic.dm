@@ -73,7 +73,7 @@
 
 	design_id = pick(SSdatabase.unknown_designs)
 
-	var/datum/design/D = SSresearch.design_ids[design_id]
+	var/datum/design/D = SSresearch.design_by_id[design_id]
 	design_name = D.item_name
 	name = "Store Schematic ([design_name])"
 

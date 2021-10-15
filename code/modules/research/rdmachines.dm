@@ -17,24 +17,25 @@
 	var/working = 0
 	var/list/datum/rnd_material/materials = list()
 
-/obj/machinery/r_n_d/proc/eject_sheet()
-	return
+/obj/machinery/r_n_d/proc/eject_sheet(sheet_type, amount)
+	if(materials[sheet_type])
+		var/available_num_sheets = round(materials[sheet_type].amount / materials[sheet_type].sheet_size)
+		if(available_num_sheets > 0)
+			var/S = materials[sheet_type].sheet_type
+			var/obj/item/stack/material/sheet = new S(loc)
+			var/sheet_ammount = min(available_num_sheets, amount)
+			sheet.set_amount(sheet_ammount)
+			materials[sheet_type].amount = max(0, materials[sheet_type].amount - sheet_ammount * materials[sheet_type].sheet_size)
 
 /obj/machinery/r_n_d/attack_hand(mob/user as mob)
 	return
 
 /obj/machinery/r_n_d/dismantle()
-	for(var/obj/I in component_parts)
-		if(istype(I, /obj/item/weapon/reagent_containers/glass/beaker))
-			reagents.trans_to_obj(I, reagents.total_volume)
+	for(var/obj/item/weapon/reagent_containers/glass/beaker/B in component_parts)
+		reagents.trans_to_obj(B, reagents.total_volume)
 	for(var/f in materials)
 		eject_sheet(f, INFINITY)
-	..()
-
-/obj/machinery/r_n_d/protolathe/dismantle()
-	for(var/f in materials)
-		eject_sheet(f, INFINITY)
-	..()
+	.=..()
 
 /obj/machinery/r_n_d/proc/eject(var/material, var/amount)
 	if(!(material in materials))
@@ -51,4 +52,4 @@
 
 /obj/machinery/r_n_d/proc/TotalMaterials()
 	for(var/f in materials)
-		. += materials[f]
+		. += materials[f].amount

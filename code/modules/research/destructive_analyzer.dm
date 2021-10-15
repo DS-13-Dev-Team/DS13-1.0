@@ -18,12 +18,6 @@
 		T += S.rating
 	decon_mod = T
 
-/obj/machinery/r_n_d/destructive_analyzer/proc/ConvertReqString2List(list/source_list)
-	var/list/temp_list = params2list(source_list)
-	for(var/O in temp_list)
-		temp_list[O] = text2num(temp_list[O])
-	return temp_list
-
 /obj/machinery/r_n_d/destructive_analyzer/update_icon()
 	if(panel_open)
 		icon_state = "d_analyzer_t"
@@ -97,11 +91,11 @@
 	update_icon()
 	if(linked_console)
 		linked_console.screen = "working"
+		SSnano.update_uis(linked_console)
 	addtimer(CALLBACK(src, .proc/finish_deconstructing), 24)
 
 /obj/machinery/r_n_d/destructive_analyzer/proc/finish_deconstructing()
 	busy = FALSE
-	update_icon()
 	if(hacked)
 		return
 

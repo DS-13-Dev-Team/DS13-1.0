@@ -35,64 +35,39 @@ The tech datums are the actual "tech trees" that you improve through researching
 
 /datum/research								//Holder for all the existing, archived, and known tech. Individual to console.
 	var/list/known_designs = list()			//List of available designs (at base reliability).
-	var/list/design_by_id = list()
+	var/list/designs = list()
 	var/list/design_categories_protolathe = list()
 	var/list/design_categories_imprinter = list()
 
-	var/list/datum/tech/tech_trees = list()
-	var/list/list/all_technologies = list()
-	var/list/all_tech_no_types = list()
+	var/list/tech_trees_shown = list()
+	var/list/tech_trees_hidden = list()
+	var/list/all_technologies = list()
 	var/list/researched_tech = list()
 
+	var/atom/linked_atom
+	var/obj/machinery/r_n_d/server/server
 	var/datum/experiment_data/experiments
 
 	var/research_points = 0
 
-/datum/research/New()
-	for(var/D in subtypesof(/datum/design))
-		var/datum/design/d = new D(src)
-		design_by_id[d.id] = d
-
-	for(var/T in subtypesof(/datum/tech))
-		var/datum/tech/Tech_Tree = new T
-		tech_trees[Tech_Tree.id] = Tech_Tree
-		all_technologies[Tech_Tree.id] = list()
-
-	for(var/T in subtypesof(/datum/technology))
-		var/datum/technology/Tech = new T
-		all_tech_no_types[Tech.id] = Tech
-		if(all_technologies[Tech.tech_type])
-			all_technologies[Tech.tech_type][Tech.id] = Tech
-		else
-			WARNING("Unknown tech_type '[Tech.tech_type]' in technology '[Tech.name]'")
-
-	for(var/tech_tree_id in tech_trees)
-		var/datum/tech/Tech_Tree = tech_trees[tech_tree_id]
-		Tech_Tree.maxlevel = 1 + all_technologies[tech_tree_id].len
-
-	for(var/design_id in design_by_id)
-		var/datum/design/D = design_by_id[design_id]
-		if(D.starts_unlocked)
-			AddDesign2Known(D)
-
+/datum/research/New(atom/A)
+	linked_atom = A
 	experiments = new /datum/experiment_data()
+	SSresearch.initialize_research_file(src)
+
+/datum/research/Destroy()
+	SSresearch.research_files -= src
+	.=..()
 
 /datum/research/proc/IsResearched(datum/technology/T)
-	return !!researched_tech[T.id]
+	return !!(T.id in researched_tech)
 
 /datum/research/proc/CanResearch(datum/technology/T)
 	if(T.cost > research_points)
 		return FALSE
 
-	for(var/t in T.required_tech_levels)
-		var/datum/tech/Tech_Tree = tech_trees[t]
-		var/level = T.required_tech_levels[t]
-
-		if(Tech_Tree.level < level)
-			return FALSE
-
 	for(var/t in T.required_technologies)
-		var/datum/technology/OTech = all_tech_no_types[t]
+		var/datum/technology/OTech = SSresearch.all_technologies[t]
 
 		if(!IsResearched(OTech))
 			return FALSE
@@ -105,68 +80,58 @@ The tech datums are the actual "tech trees" that you improve through researching
 	if(!CanResearch(T) && !force)
 		return
 
-	researched_tech[T.id] = T
+	researched_tech |= T.id
 	if(!force)
 		research_points -= T.cost
-	tech_trees[T.tech_type].level += 1
+	tech_trees_shown[T.tech_type] += 1
 
 	for(var/t in T.unlocks_designs)
-		var/datum/design/D = design_by_id[t]
+		var/datum/design/D = SSresearch.design_by_id[t]
 
 		AddDesign2Known(D)
 
 /datum/research/proc/download_from(datum/research/O)
-	for(var/tech_tree_id in O.tech_trees)
-		var/datum/tech/Tech_Tree = O.tech_trees[tech_tree_id]
-		var/datum/tech/Our_Tech_Tree = tech_trees[tech_tree_id]
-
-		if(Tech_Tree.shown)
-			Our_Tech_Tree.shown = Tech_Tree.shown
+	tech_trees_shown |= O.tech_trees_shown
+	tech_trees_hidden -= O.tech_trees_shown
 
 	for(var/tech_id in O.researched_tech)
-		var/datum/technology/T = O.researched_tech[tech_id]
+		var/datum/technology/T = SSresearch.all_technologies[tech_id]
 		UnlockTechology(T, force = TRUE)
 	experiments.merge_with(O.experiments)
 
 /datum/research/proc/forget_techology(datum/technology/T)
 	if(!IsResearched(T))
 		return
-	var/datum/tech/Tech_Tree = tech_trees[T.tech_type]
-	if(!Tech_Tree)
-		return
-	Tech_Tree.level -= 1
+	tech_trees_shown[T.tech_type] -= 1
 	researched_tech -= T.id
 
 	for(var/t in T.unlocks_designs)
-		var/datum/design/D = design_by_id[t]
-		known_designs -= D
+		var/datum/design/D = SSresearch.design_by_id[t]
+		known_designs -= D.id
 
 /datum/research/proc/forget_random_technology()
 	if(researched_tech.len > 0)
 		var/random_tech = pick(researched_tech)
-		var/datum/technology/T = researched_tech[random_tech]
+		var/datum/technology/T = SSresearch.all_technologies[random_tech]
 
 		forget_techology(T)
 
 /datum/research/proc/forget_all(tech_type)
-	var/datum/tech/Tech_Tree = tech_trees[tech_type]
-	if(!Tech_Tree)
-		return
-	Tech_Tree.level = 1
+	tech_trees_shown[tech_type] -= 1
 	for(var/tech_id in researched_tech)
-		var/datum/technology/T = researched_tech[tech_id]
+		var/datum/technology/T = SSresearch.all_technologies[tech_id]
 		if(T.tech_type == tech_type)
 			researched_tech -= tech_id
 
 			for(var/t in T.unlocks_designs)
-				var/datum/design/D = design_by_id[t]
-				known_designs -= D
+				var/datum/design/D = SSresearch.design_by_id[t]
+				known_designs -= D.id
 
 /datum/research/proc/AddDesign2Known(datum/design/D)
-	if(D in known_designs)
+	if(D.id in known_designs)
 		return
 
-	known_designs += D
+	known_designs |= D.id
 	var/cat = D.category ? D.category : "Unspecified"
 	if(D.build_type & PROTOLATHE)
 		design_categories_protolathe |= cat
@@ -178,14 +143,15 @@ The tech datums are the actual "tech trees" that you improve through researching
 	if(!I.origin_tech.len)
 		return
 
-	for(var/tech_tree_id in tech_trees)
-		var/datum/tech/T = tech_trees[tech_tree_id]
-		if(T.shown || !T.item_tech_req)
+	for(var/tech_tree_id in tech_trees_hidden)
+		var/datum/tech/T = SSresearch.tech_trees[tech_tree_id]
+		if(!T.item_tech_req)
 			continue
 
 		for(var/item_tech in I.origin_tech)
 			if(item_tech == T.item_tech_req)
-				T.shown = TRUE
+				tech_trees_hidden -= T.id
+				tech_trees_shown |= T.id
 				return
 
 // A simple helper proc to find the name of a tech with a given ID.
@@ -220,30 +186,13 @@ The tech datums are the actual "tech trees" that you improve through researching
 	var/shortname = "name"
 	var/desc = "description"   //General description of what it does and what it makes.
 	var/id = "id"              //An easily referenced ID. Must be alphanumeric, lower-case, and no symbols.
-	var/level = 1              //A simple number scale of the research level. Level 0 = Secret tech.
+	var/level = 0              //A simple number scale of the research level. Level 0 = Secret tech.
 	var/rare = 1               //How much CentCom wants to get that tech. Used in supply shuttle tech cost calculation.
 	var/maxlevel               //Calculated based on the ammount of technologies
 	var/shown = TRUE           //Used to hide tech that is not supposed to be shown from the start
 	var/item_tech_req          //Deconstructing items with this tech will unlock this tech tree
 
-/datum/tech/proc/getCost(current_level = null)
-	// Calculates tech disk's supply points sell cost
-	if(!current_level)
-		current_level = initial(level)
-
-	if(current_level >= level)
-		return 0
-
-	var/cost = 0
-	for(var/i = current_level + 1 to level)
-		if(i == initial(level))
-			continue
-		cost += i*rare
-
-	return cost
-
-//Trunk Technologies (don't require any other techs and you start knowning them).
-
+// CEC Basic Technologies
 /datum/tech/engineering
 	name = "Engineering Research"
 	shortname = "Engineering"
@@ -281,6 +230,7 @@ The tech datums are the actual "tech trees" that you improve through researching
 	desc = "Research into the modular computers."
 	id = TECH_DATA
 
+// Secret technologies
 /datum/tech/illegal
 	name = "Illegal Technologies Research"
 	shortname = "Illegal Tech"
@@ -311,7 +261,6 @@ The tech datums are the actual "tech trees" that you improve through researching
 	var/icon = "gun"						// css class of techology icon, defined in shared.css
 
 	var/list/required_technologies = list()	// Ids of techologies that are required to be unlocked before this one. Should have same tech_type
-	var/list/required_tech_levels = list()	// list(TECH_BIO = 5, ...) Ids and required levels of tech
 	var/cost = 100							// How much research points required to unlock this techology
 
 	var/list/unlocks_designs = list()		// Ids of designs that this technology unlocks

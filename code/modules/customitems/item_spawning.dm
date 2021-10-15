@@ -162,7 +162,7 @@
 	//TODO: Multiselection is happening
 	//TODO: Set transfer setting if the item is a rig or module
 
-	register_research_design(D)
+	SSresearch.register_research_design(D)
 
 	//If this has patron or whitelist access, put it in the limited store designs list
 	if (store_access != ACCESS_PUBLIC)

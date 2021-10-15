@@ -99,7 +99,7 @@
 
 
 	if(href_list["select_item"])
-		var/datum/design/D = SSresearch.design_ids[href_list["select_item"]]
+		var/datum/design/D = SSresearch.design_by_id[href_list["select_item"]]
 		//TODO: Check that D is in our valid designs
 		if (istype(D))
 			current_design = D

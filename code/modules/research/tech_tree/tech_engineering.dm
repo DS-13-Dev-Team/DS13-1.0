@@ -9,7 +9,6 @@
 	icon = "wrench"
 
 	required_technologies = list()
-	required_tech_levels = list()
 	cost = 0
 
 	unlocks_designs = list("micro_mani", "basic_matter_bin", "basic_micro_laser", "light_replacer", "weldingmask", "autolathe", "arcademachine", "oriontrail", "boombox")
@@ -24,7 +23,6 @@
 	icon = "spaceheater"
 
 	required_technologies = list("monitoring")
-	required_tech_levels = list()
 	cost = 500
 
 	unlocks_designs = list("gasheater", "gascooler", "stasis_clamp")
@@ -39,7 +37,6 @@
 	icon = "flamethrower"
 
 	required_technologies = list("gas_heat", "divet")
-	required_tech_levels = list()
 	cost = 1500
 
 	unlocks_designs = list("flamethrower")
@@ -54,7 +51,6 @@
 	icon = "advmatterbin"
 
 	required_technologies = list("adv_eng")
-	required_tech_levels = list()
 	cost = 1000
 
 	unlocks_designs = list("nano_mani", "adv_matter_bin", "high_micro_laser", "adv_sensor")
@@ -69,7 +65,6 @@
 	icon = "supermatterbin"
 
 	required_technologies = list("adv_parts")
-	required_tech_levels = list()
 	cost = 2000
 
 	unlocks_designs = list("pico_mani", "super_matter_bin", "ultra_micro_laser", "phasic_sensor")
@@ -84,7 +79,6 @@
 	icon = "monitoring"
 
 	required_technologies = list("basic_engineering")
-	required_tech_levels = list()
 	cost = 500
 
 	unlocks_designs = list("atmosalerts", "air_management")
@@ -99,7 +93,6 @@
 	icon = "rd"
 
 	required_technologies = list("monitoring")
-	required_tech_levels = list()
 	cost = 750
 
 	unlocks_designs = list("destructive_analyzer", "protolathe", "circuit_imprinter", "rdservercontrol", "rdserver", "rdconsole")
@@ -114,7 +107,6 @@
 	icon = "anom"
 
 	required_technologies = list("res_tech")
-	required_tech_levels = list()
 	cost = 500
 
 	unlocks_designs = list("depth_scanner", "ano_scanner")
@@ -129,7 +121,6 @@
 	icon = "drill"
 
 	required_technologies = list("xenoarch")
-	required_tech_levels = list()
 	cost = 1000
 
 	unlocks_designs = list("excavation_drill")
@@ -144,7 +135,6 @@
 	icon = "diamond_drill"
 
 	required_technologies = list("excavation_drill")
-	required_tech_levels = list()
 	cost = 1500
 
 	unlocks_designs = list("excavation_drill_diamond")
@@ -159,7 +149,6 @@
 	icon = "pickaxe"
 
 	required_technologies = list("res_tech")
-	required_tech_levels = list()
 	cost = 1000
 
 	unlocks_designs = list("miningcutter", "Rock Saw", "plasma_energy")
@@ -174,7 +163,6 @@
 	icon = "furnace"
 
 	required_technologies = list("basic_mining")
-	required_tech_levels = list()
 	cost = 1000
 
 	unlocks_designs = list()	Add ore smelting machines here. They should be connected to consoles so I decided to left this tech undone*/
@@ -189,7 +177,6 @@
 	icon = "cutter"
 
 	required_technologies = list("basic_mining", "recharger")
-	required_tech_levels = list()
 	cost = 2000
 
 	unlocks_designs = list("mining drill head", "mining drill brace", "plasmacutter", "linecutter", "contactbeam", "forcegun")
@@ -204,7 +191,6 @@
 	icon = "contact"
 
 	required_technologies = list("adv_mining")
-	required_tech_levels = list()
 	cost = 1250
 
 	unlocks_designs = list("line_rack", "contact_energy", "force_energy")
@@ -219,7 +205,6 @@
 	icon = "rped"
 
 	required_technologies = list("adv_mining", "excavation_drill")
-	required_tech_levels = list()
 	cost = 2000
 
 	unlocks_designs = list("rped", "mesons", "mesons_material", "nanopaste", "rivet_bolts")
@@ -234,7 +219,6 @@
 	icon = "jawsoflife"
 
 	required_technologies = list("adv_eng")
-	required_tech_levels = list()
 	cost = 2000
 
 	unlocks_designs = list("SH-B1 Plasma Saw", "pneum_crow", "combi_driver", "experimental_welder", "price_scanner")
@@ -249,7 +233,6 @@
 	icon = "brace"
 
 	required_technologies = list("res_tech")
-	required_tech_levels = list()
 	cost = 500
 
 	unlocks_designs = list("brace", "bracejack")
@@ -264,7 +247,6 @@
 	icon = "icprinter"
 
 	required_technologies = list("adv_eng")
-	required_tech_levels = list()
 	cost = 750
 
 	unlocks_designs = list("icprinter")
@@ -279,7 +261,6 @@
 	icon = "icupgradv"
 
 	required_technologies = list("icprinter")
-	required_tech_levels = list()
 	cost = 1500
 
 	unlocks_designs = list("icupgradv")
@@ -294,7 +275,6 @@
 	icon = "icupclo"
 
 	required_technologies = list("icprinter")
-	required_tech_levels = list()
 	cost = 1000
 
 	unlocks_designs = list("icupclo")
@@ -310,7 +290,6 @@
 	icon = "power_node"
 
 	required_technologies = list("adv_tools", "adv_power_storage", "hyp_power")
-	required_tech_levels = list()
 	cost = 4000
 
 	unlocks_designs = list("powernode")

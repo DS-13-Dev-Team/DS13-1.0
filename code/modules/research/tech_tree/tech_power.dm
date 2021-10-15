@@ -9,7 +9,6 @@
 	icon = "cell"
 
 	required_technologies = list()
-	required_tech_levels = list()
 	cost = 0
 
 	unlocks_designs = list("basic_capacitor", "basic_cell", "device_cell_standard", "powermonitor", "pacman")
@@ -24,7 +23,6 @@
 	icon = "cell"
 
 	required_technologies = list("basic_power")
-	required_tech_levels = list()
 	cost = 500
 
 	unlocks_designs = list("high_cell", "device_cell_high", "adv_capacitor")
@@ -39,7 +37,6 @@
 	icon = "cell"
 
 	required_technologies = list("adv_power")
-	required_tech_levels = list()
 	cost = 1000
 
 	unlocks_designs = list("super_cell", "super_capacitor")
@@ -54,7 +51,6 @@
 	icon = "cell"
 
 	required_technologies = list("sup_power")
-	required_tech_levels = list()
 	cost = 1500
 
 	unlocks_designs = list("hyper_cell")
@@ -69,7 +65,6 @@
 	icon = "solarcontrol"
 
 	required_technologies = list("adv_power")
-	required_tech_levels = list()
 	cost = 750
 
 	unlocks_designs = list("solarcontrol")
@@ -84,7 +79,6 @@
 	icon = "generator"
 
 	required_technologies = list("adv_power")
-	required_tech_levels = list()
 	cost = 1250
 
 	unlocks_designs = list("superpacman")
@@ -99,7 +93,6 @@
 	icon = "batteryrack"
 
 	required_technologies = list("adv_power_gen")
-	required_tech_levels = list()
 	cost = 1750
 
 	unlocks_designs = list("batteryrack")
@@ -114,7 +107,6 @@
 	icon = "smes"
 
 	required_technologies = list("power_storage")
-	required_tech_levels = list()
 	cost = 2500
 
 	unlocks_designs = list("smes_cell", "smes_coil_standard", "smes_coil_super_capacity", "smes_coil_super_io")
@@ -129,7 +121,6 @@
 	icon = "generator"
 
 	required_technologies = list("adv_power_gen", "sup_power")
-	required_tech_levels = list()
 	cost = 2000
 
 	unlocks_designs = list("mrspacman")
@@ -144,7 +135,6 @@
 	icon = "fusion"
 
 	required_technologies = list("sup_power_gen")
-	required_tech_levels = list()
 	cost = 2500
 
 	unlocks_designs = list("fusion_core_control", "fusion_fuel_compressor", "fusion_fuel_control", "gyrotron_control", "fusion_core", "fusion_injector")

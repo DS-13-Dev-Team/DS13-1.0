@@ -529,9 +529,8 @@ datum/objective/download
 		if(!istype(stolen_data))
 			return 0
 
-		for(var/datum/tech/current_data in stolen_data.stored_research)
-			if(current_data.level > 1)
-				current_amount += (current_data.level-1)
+		for(var/current_data in stolen_data.stored_research)
+			current_amount += (stolen_data[current_data])
 
 		return (current_amount<target_amount) ? 0 : 1
 

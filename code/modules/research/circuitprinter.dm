@@ -11,7 +11,6 @@ using metal and glass, it uses glass and reagents (usually sulfuric acid).
 	var/max_material_storage = 75000
 	var/efficiency_coeff
 	var/list/queue = list()
-	var/list/allowed_mats = list(MATERIAL_GLASS, MATERIAL_GOLD, MATERIAL_DIAMOND)
 	circuit = /obj/item/weapon/circuitboard/circuit_imprinter
 
 /obj/machinery/r_n_d/circuit_imprinter/Initialize()
@@ -60,12 +59,6 @@ using metal and glass, it uses glass and reagents (usually sulfuric acid).
 		A /= max(1, (being_built.chemicals[M]/efficiency_coeff))
 		return A
 
-/obj/machinery/r_n_d/circuit_imprinter/TotalMaterials()
-	var/am = 0
-	for(var/M in materials)
-		am += materials[M].amount
-	return am
-
 /obj/machinery/r_n_d/circuit_imprinter/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(default_deconstruction_screwdriver(user, O))
 		update_icon()
@@ -95,7 +88,7 @@ using metal and glass, it uses glass and reagents (usually sulfuric acid).
 		return
 	var/obj/item/stack/material/stack = O
 	if(istype(O, /obj/item/stack/material))
-		if(!(stack.default_type in allowed_mats))
+		if(!materials[stack.default_type])
 			to_chat(user, "<span class='notice'>You cannot insert this material into the [src]!</span>")
 			return
 	if(busy)
@@ -183,13 +176,3 @@ using metal and glass, it uses glass and reagents (usually sulfuric acid).
 
 	if(linked_console)
 		linked_console.update_open_uis()
-
-/obj/machinery/r_n_d/circuit_imprinter/eject_sheet(sheet_type, amount)
-	if(materials[sheet_type])
-		var/available_num_sheets = Floor(materials[sheet_type].amount / materials[sheet_type].sheet_size)
-		if(available_num_sheets > 0)
-			var/S = materials[sheet_type].sheet_type
-			var/obj/item/stack/material/sheet = new S(loc)
-			var/sheet_ammount = min(available_num_sheets, amount)
-			sheet.set_amount(sheet_ammount)
-			materials[sheet_type].amount = max(0, materials[sheet_type].amount - sheet_ammount * materials[sheet_type].sheet_size)
