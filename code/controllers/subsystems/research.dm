@@ -4,7 +4,7 @@ SUBSYSTEM_DEF(research)
 	priority = SS_PRIORITY_DEFAULT
 	init_order = SS_INIT_RESEARCH
 
-	var/list/design_by_id = list()		// id = datum
+	var/list/designs_by_id = list()		// id = datum
 	var/list/tech_trees = list()		// id = datum
 	var/list/all_technologies = list()	// id = datum
 	var/list/servers = list()			// obj list
@@ -21,7 +21,7 @@ SUBSYSTEM_DEF(research)
 			qdel(D)
 		else
 			D.AssembleDesignInfo()
-			design_by_id[D.id] = D
+			designs_by_id[D.id] = D
 
 	for(var/A in subtypesof(/datum/technology))
 		var/datum/technology/T = new A
@@ -54,15 +54,15 @@ SUBSYSTEM_DEF(research)
 	.=..()
 
 /datum/controller/subsystem/research/stat_entry(msg)
-	return "Research Files: [research_files.len]|Tech Trees: [tech_trees.len]|Technologies: [all_technologies.len]|Designs: [design_by_id.len]"
+	return "Research Files: [research_files.len]|Tech Trees: [tech_trees.len]|Technologies: [all_technologies.len]|Designs: [designs_by_id.len]"
 
 /datum/controller/subsystem/research/proc/initialize_research_file(datum/research/R)
 	// If designs are already generated, initialized right away.
 	// If not, add them to the list to be initialized later.
 	if(designs_initialized)
 
-		for(var/I in SSresearch.design_by_id)
-			var/datum/design/D = SSresearch.design_by_id[I]
+		for(var/I in SSresearch.designs_by_id)
+			var/datum/design/D = SSresearch.designs_by_id[I]
 			if(D.starts_unlocked)
 				R.AddDesign2Known(D)
 
@@ -85,7 +85,7 @@ SUBSYSTEM_DEF(research)
 	// If designs are already generated, initialized right away.
 	// If not, add them to the list to be initialized later.
 	if(designs_initialized)
-		var/datum/design/design = design_by_id[get_design_id_from_type(design_file.design)]
+		var/datum/design/design = designs_by_id[get_design_id_from_type(design_file.design)]
 		if(design)
 			design_file.design = design
 			design_file.on_design_set()
@@ -101,7 +101,7 @@ SUBSYSTEM_DEF(research)
 			CRASH("Tried to late register design with invalid build path!")
 		else
 			D.AssembleDesignInfo()
-			design_by_id[D.id] = D
+			designs_by_id[D.id] = D
 			var/datum/asset/simple/research_designs/RD = get_asset_datum(/datum/asset/simple/research_designs)
 			RD.assets[D.ui_data["icon_name"]] = D.ui_data["icon"]
 

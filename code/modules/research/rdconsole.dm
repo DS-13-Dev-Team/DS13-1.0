@@ -162,14 +162,14 @@ cause a ton of data to be lost, an admin can go send it back.
 	if(href_list["build"] && screen == "protolathe" && linked_lathe) //Causes the Protolathe to build something.
 		var/amount=text2num(href_list["amount"])
 		var/datum/design/being_built = null
-		if(SSresearch.design_by_id[href_list["build"]])
-			being_built = SSresearch.design_by_id[href_list["build"]]
+		if(SSresearch.designs_by_id[href_list["build"]])
+			being_built = SSresearch.designs_by_id[href_list["build"]]
 		if(being_built && amount)
 			linked_lathe.queue_design(being_built, amount)
 	if(href_list["build"] && screen == "circuit_imprinter" && linked_imprinter)
 		var/datum/design/being_built = null
-		if(SSresearch.design_by_id[href_list["build"]])
-			being_built = SSresearch.design_by_id[href_list["build"]]
+		if(SSresearch.designs_by_id[href_list["build"]])
+			being_built = SSresearch.designs_by_id[href_list["build"]]
 		if(being_built)
 			linked_imprinter.queue_design(being_built)
 	if(href_list["select_category"])
@@ -334,7 +334,7 @@ cause a ton of data to be lost, an admin can go send it back.
 
 	var/list/designs_list = list()
 	for(var/I in files.known_designs)
-		var/datum/design/D = SSresearch.design_by_id[I]
+		var/datum/design/D = SSresearch.designs_by_id[I]
 		if(D.build_type & build_type)
 			var/cat = "Unspecified"
 			if(D.category)
@@ -591,7 +591,7 @@ cause a ton of data to be lost, an admin can go send it back.
 
 			var/list/unlock_list = list()
 			for(var/T in Tech.unlocks_designs)
-				var/datum/design/D = SSresearch.design_by_id[T]
+				var/datum/design/D = SSresearch.designs_by_id[T]
 				var/list/unlock_data = list(
 					"text" =           "[D.name]",
 				)

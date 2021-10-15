@@ -234,7 +234,7 @@
 	update_busy()
 
 /obj/machinery/mecha_part_fabricator/proc/can_build(I)
-	var/datum/design/D = SSresearch.design_by_id[I]
+	var/datum/design/D = SSresearch.designs_by_id[I]
 	for(var/M in D.materials)
 		if(materials[M] <= D.materials[M] * mat_efficiency)
 			return 0
@@ -244,7 +244,7 @@
 	if(!queue.len)
 		progress = 0
 		return
-	var/datum/design/D = SSresearch.design_by_id[queue[1]]
+	var/datum/design/D = SSresearch.designs_by_id[queue[1]]
 	if(!can_build(D))
 		progress = 0
 		return
@@ -264,7 +264,7 @@
 /obj/machinery/mecha_part_fabricator/proc/get_queue_names()
 	. = list()
 	for(var/i = 2 to queue.len)
-		var/datum/design/D = SSresearch.design_by_id[queue[i]]
+		var/datum/design/D = SSresearch.designs_by_id[queue[i]]
 		. += D.name
 
 /obj/machinery/mecha_part_fabricator/proc/get_build_options()

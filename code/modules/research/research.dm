@@ -85,7 +85,7 @@ The tech datums are the actual "tech trees" that you improve through researching
 	tech_trees_shown[T.tech_type] += 1
 
 	for(var/t in T.unlocks_designs)
-		var/datum/design/D = SSresearch.design_by_id[t]
+		var/datum/design/D = SSresearch.designs_by_id[t]
 
 		AddDesign2Known(D)
 
@@ -105,7 +105,7 @@ The tech datums are the actual "tech trees" that you improve through researching
 	researched_tech -= T.id
 
 	for(var/t in T.unlocks_designs)
-		var/datum/design/D = SSresearch.design_by_id[t]
+		var/datum/design/D = SSresearch.designs_by_id[t]
 		known_designs -= D.id
 
 /datum/research/proc/forget_random_technology()
@@ -123,7 +123,7 @@ The tech datums are the actual "tech trees" that you improve through researching
 			researched_tech -= tech_id
 
 			for(var/t in T.unlocks_designs)
-				var/datum/design/D = SSresearch.design_by_id[t]
+				var/datum/design/D = SSresearch.designs_by_id[t]
 				known_designs -= D.id
 
 /datum/research/proc/AddDesign2Known(datum/design/D)

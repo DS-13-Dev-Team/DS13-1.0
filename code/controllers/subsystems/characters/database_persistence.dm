@@ -185,7 +185,7 @@ SUBSYSTEM_DEF(database)
 	unknown_designs = list()
 
 	//This gets a list of every design that exists
-	var/list/designs = SSresearch.design_by_id.Copy()
+	var/list/designs = SSresearch.designs_by_id.Copy()
 
 	if (!length(designs))
 		return	//Fatal error
