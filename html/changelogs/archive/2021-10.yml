@@ -98,3 +98,8 @@
       and more consistent as a result, most weapons will be unable to damage them.
   - balance: Increased the health and resistance of Underplating floors, to discourage
       tunnelling between decks
+2021-10-15:
+  Nanako:
+  - balance: Reworked hyperzine. It no longer gives a base speed boost, but instead
+      lowers the slowing effect of encumbrance by 25%.
+  - bugfix: Fixed SMES explosions causing lots of lag.
