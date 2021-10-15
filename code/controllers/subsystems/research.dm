@@ -63,7 +63,6 @@ SUBSYSTEM_DEF(research)
 
 		for(var/I in SSresearch.design_by_id)
 			var/datum/design/D = SSresearch.design_by_id[I]
-			R.designs |= I
 			if(D.starts_unlocked)
 				R.AddDesign2Known(D)
 

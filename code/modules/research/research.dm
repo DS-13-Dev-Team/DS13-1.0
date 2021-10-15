@@ -35,7 +35,6 @@ The tech datums are the actual "tech trees" that you improve through researching
 
 /datum/research								//Holder for all the existing, archived, and known tech. Individual to console.
 	var/list/known_designs = list()			//List of available designs (at base reliability).
-	var/list/designs = list()
 	var/list/design_categories_protolathe = list()
 	var/list/design_categories_imprinter = list()
 
