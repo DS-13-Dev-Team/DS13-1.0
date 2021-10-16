@@ -52,6 +52,22 @@
 	modkit_access = ACCESS_WHITELIST
 	modkit_typelist = list(/obj/item/weapon/rig/advanced)
 
+//This is not my typo, his ckey is actually spelled like that
+/datum/patron_item/plaugewalker
+	name = "SCAF elite RIG"
+	description = "A lightweight and flexible armoured rig suit, designed for riot control and shipboard disciplinary enforcement."
+	item_path = /obj/item/weapon/rig/scaf/elite
+	id = "plaugewalker_rig"
+	store_cost = 6400
+	store_access = ACCESS_WHITELIST
+
+	category = CATEGORY_RIG
+	subcategory = SUBCATEGORY_FRAMES
+
+	loadout_modkit_cost = 3
+	modkit_access = ACCESS_WHITELIST
+	modkit_typelist = list(/obj/item/weapon/rig/security)
+
 
 /datum/patron_item/hacker_rig
 	name = "digital infiltration RIG"

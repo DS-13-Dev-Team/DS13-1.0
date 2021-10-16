@@ -51,6 +51,7 @@
 	var/loadout_subtype = /datum/gear	//The typepath of a specific /datum/gear subtype we want to use.
 
 	var/datum/gear/loadout_listing
+	var/datum/gear/modkit/modkit_listing
 	var/datum/design/store_listing
 
 	var/store_cost = null //If not null, this item can be purchased in the store for this many credits
@@ -86,64 +87,70 @@
 
 
 /datum/patron_item/proc/set_whitelist(var/list/new_list)
-	whitelist = new_list.Copy()
+	//This whitelist is passed around unaltered and should stay that way
+	whitelist = new_list
 
 	if (loadout_listing)
 		loadout_listing.key_whitelist = whitelist
 
+	if (modkit_listing)
+		modkit_listing.key_whitelist = whitelist
+
 	if (store_listing)
 		store_listing.whitelist = whitelist
 
+
+
 /datum/patron_item/proc/create_loadout_datum()
-	var/datum/gear/G = new loadout_subtype()
-	G.display_name = src.name
-	G.description = description
-	G.path = item_path
-	G.cost = loadout_cost
-	G.sort_category = src.category
-	G.subcategory = src.subcategory
+	loadout_listing = new loadout_subtype()
+	loadout_listing.display_name = src.name
+	loadout_listing.description = description
+	loadout_listing.path = item_path
+	loadout_listing.cost = loadout_cost
+	loadout_listing.sort_category = src.category
+	loadout_listing.subcategory = src.subcategory
 
 	//These are only applied to normal loadout, not modkit
-	G.tags = tags
-	G.exclusion_tags = exclusion_tags
-	G.equip_adjustments = equip_adjustments
+	loadout_listing.tags = tags
+	loadout_listing.exclusion_tags = exclusion_tags
+	loadout_listing.equip_adjustments = equip_adjustments
 
 
 	switch (loadout_access)
 		if (ACCESS_PUBLIC)
 			//do nothing
 		if (ACCESS_PATRONS)
-			G.patron_only = TRUE
+			loadout_listing.patron_only = TRUE
 		if (ACCESS_WHITELIST)
-			G.key_whitelist = whitelist
+			loadout_listing.key_whitelist = whitelist
 
-	G.Initialize()
+	loadout_listing.Initialize()
 
-	register_gear(G)
+	register_gear(loadout_listing)
 
 
 
 /datum/patron_item/proc/create_modkit_loadout_datum()
-	var/datum/gear/modkit/G = new()
-	G.display_name = src.name
-	G.description = description
-	G.path = item_path
-	G.cost = loadout_modkit_cost
-	G.sort_category = src.category
-	G.subcategory = src.subcategory
-	G.valid_types = modkit_typelist
+	modkit_listing = new()
+	modkit_listing.display_name = src.name
+	modkit_listing.description = description
+	modkit_listing.path = item_path
+	modkit_listing.cost = loadout_modkit_cost
+	modkit_listing.sort_category = src.category
+	modkit_listing.subcategory = src.subcategory
+	modkit_listing.valid_types = modkit_typelist
 
 	switch (modkit_access)
 		if (ACCESS_PUBLIC)
 			//do nothing
 		if (ACCESS_PATRONS)
-			G.patron_only = TRUE
+			modkit_listing.patron_only = TRUE
 		if (ACCESS_WHITELIST)
-			G.key_whitelist = whitelist
+			modkit_listing.key_whitelist = whitelist
 
-	G.Initialize()
+	modkit_listing.Initialize()
 
-	register_gear(G)
+	register_gear(modkit_listing)
 
 
 /datum/patron_item/proc/create_store_datum()
@@ -224,8 +231,8 @@
 
 	for (var/datum/patron_item/PI in GLOB.patron_items)
 		if (PI.id == current_id)
-			PI.whitelist = current_list.Copy()
-
+			log_debug("Assigning whitelist [dump_list(current_list)] to id [current_id]")
+			PI.set_whitelist(current_list)
 			//Lets add all these keys to the global list
 			for (var/ckey in current_list)
 				var/list/custom_item_lists_we_are_on	=	(GLOB.patron_item_whitelisted_ckeys[ckey] || list())
