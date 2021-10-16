@@ -72,7 +72,7 @@
 			if(spawn_in_storage)
 				for(var/datum/gear/G in spawn_in_storage)
 					G.spawn_in_storage_or_drop(user_human, user_human.client.prefs.Gear()[G.display_name])
-			equip_custom_items(user_human)
+
 
 		character.job = job.title
 		if(character.mind) character.mind.assigned_role = character.job

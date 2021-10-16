@@ -705,6 +705,17 @@ its easier to just keep the beam vertical.
 		return TRUE
 
 
+//Hook for running code when a dir change occurs
+/atom/proc/setDir(newdir)
+	dir = newdir
+
+//Update the screentip to reflect what we're hoverin over
+/atom/MouseEntered(location, control, params)
+	. = ..()
+	// Statusbar
+	status_bar_set_text(usr, name)
+
+
 // Generic logging helper
 /atom/proc/log_message(message, message_type, color, log_globally = TRUE)
 	if(!log_globally)

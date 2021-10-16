@@ -13,8 +13,6 @@
 	if(legcuffed)
 		tally += legcuffed.get_onmob_delay()
 
-	if(CE_SPEEDBOOST in chem_effects)
-		tally -= chem_effects[CE_SPEEDBOOST]
 
 	if(CE_SLOWDOWN in chem_effects)
 		tally += chem_effects[CE_SLOWDOWN]

@@ -31,31 +31,6 @@
 	else
 		target_permissions |= perm
 
-	// Update HUD icons.
-	if(owner.hud_used.gun_move_icon)
-		if(!(target_permissions & TARGET_CAN_MOVE))
-			owner.hud_used.gun_move_icon.icon_state = "no_walk0"
-			owner.hud_used.gun_move_icon.SetName("Allow Movement")
-		else
-			owner.hud_used.gun_move_icon.icon_state = "no_walk1"
-			owner.hud_used.gun_move_icon.SetName("Disallow Movement")
-
-	if(owner.hud_used.item_use_icon)
-		if(!(target_permissions & TARGET_CAN_CLICK))
-			owner.hud_used.item_use_icon.icon_state = "no_item0"
-			owner.hud_used.item_use_icon.SetName("Allow Item Use")
-		else
-			owner.hud_used.item_use_icon.icon_state = "no_item1"
-			owner.hud_used.item_use_icon.SetName("Disallow Item Use")
-
-	if(owner.hud_used.radio_use_icon)
-		if(!(target_permissions & TARGET_CAN_RADIO))
-			owner.hud_used.radio_use_icon.icon_state = "no_radio0"
-			owner.hud_used.radio_use_icon.SetName("Allow Radio Use")
-		else
-			owner.hud_used.radio_use_icon.icon_state = "no_radio1"
-			owner.hud_used.radio_use_icon.SetName("Disallow Radio Use")
-
 	var/message = "no longer permitted to "
 	var/use_span = "warning"
 	if(target_permissions & perm)
@@ -157,8 +132,6 @@ obj/aiming_overlay/proc/update_aiming_deferred()
 	else
 		owner.visible_message("<span class='danger'>\The [owner] aims \the [thing] at \the [target]!</span>")
 
-	if(owner.client)
-		owner.client.add_gun_icons()
 	to_chat(target, "<span class='danger'>You now have a gun pointed at you. No sudden moves!</span>")
 	aiming_with = thing
 	aiming_at = target
@@ -195,13 +168,7 @@ obj/aiming_overlay/proc/update_aiming_deferred()
 		cancel_aiming()
 
 	if(owner.client)
-		if(active)
-			to_chat(owner, "<span class='notice'>You will now aim rather than fire.</span>")
-			owner.client.add_gun_icons()
-		else
-			to_chat(owner, "<span class='notice'>You will no longer aim rather than fire.</span>")
-			owner.client.remove_gun_icons()
-		owner.hud_used.gun_setting_icon.icon_state = "gun[active]"
+		owner.hud_used?.gun_setting_icon.icon_state = "gun[active]"
 
 /obj/aiming_overlay/proc/cancel_aiming(var/no_message = 0)
 	if(!aiming_with || !aiming_at)

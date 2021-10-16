@@ -30,6 +30,7 @@
 
 /datum/strike/implement/show_result()
 	var/sound = get_impact_sound()
+	user.do_attack_animation(target)
 	if (L)
 		if (blocker)
 			if (sound)	playsound(target, sound, VOLUME_HIGH, 1, 1)
@@ -44,7 +45,7 @@
 			target.shake_animation(8)
 			user.visible_message("<span class='warning'>[user] [pick(used_item.attack_verb)] [target] [affecting ? "in the [affecting.name]":""]!</span>")
 	else
-		user.visible_message("<span class='warning'>[user] [pick(used_item.attack_verb)] [target] [affecting ? "in the [affecting.name]":""][damage_done?"":", to no effect"]!</span>")
+		user.visible_message("<span class='warning'>[user] [pick(used_item.attack_verb)] [target][affecting ? " in the [affecting.name]":""][damage_done?"":", to no effect"]!</span>")
 
 
 /datum/strike/implement/setup_difficulty()
@@ -55,3 +56,24 @@
 	.=..()
 	if (!.)
 		return used_item.hitsound
+
+
+/datum/strike/implement/get_final_damage()
+	.=..()
+
+	//No special structure damage? Return
+	if (used_item.structure_damage_factor == 1)
+		return
+
+	var/is_structure = FALSE
+	if (isturf(target))
+		is_structure = TRUE
+	else if (isobj(target))
+		if (target.density || isstructure(target))
+			is_structure = TRUE
+
+	if (is_structure)
+		.*= used_item.structure_damage_factor
+
+
+	final_damage = .

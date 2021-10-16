@@ -52,3 +52,54 @@
   DTraitor:
   - bugfix: Fixed bug when dylovene and inaprovaline were missing in sleeper.
   - rscadd: Body Scanner now shows blood reagents and reagent traces as separate categories.
+2021-10-08:
+  Nanako:
+  - imageadd: Tweaked BPL growth tank visuals to be brighter and clearer
+2021-10-09:
+  Ketrai:
+  - balance: Rebalanced antag equipment.
+  - balance: Uni zealot rig cost increased.
+  - balance: Earthgov agents can now get a rig as well.
+  - balance: Zealot smg replaced by bullpup, cost increased.
+  - balance: Implant cost increased.
+  - balance: c4 cost increased.
+  - balance: zealots now have access to the divet.
+  - balance: Arm/hand health increased further.
+  - balance: Marker can now spawn in the undertram.
+  - balance: Branch cost decreased.
+  - balance: Root distance and spread speed nerfed significantly.
+  - balance: Propagator spread speed increased modestly.
+  - balance: Shotguns no longer fit in backpacks.
+  - balance: Shotguns need to be wielded for perfect accuracy.
+2021-10-10:
+  DeadLineSS13:
+  - refactor: Reworked screen works.
+  - refactor: Reworked hud works.
+  - rscadd: ToolTips items in inventory.
+  - rscadd: Outline for items when MouseEntered and good thing.
+  Ketrai:
+  - balance: Significantly increases the price of HV pulse ammo.
+  - balance: Lowered HV pulse ammo damage significantly
+  - balance: Lowered HV pulse ammo clip size significantly
+  - balance: increased pulse ammo clip size significantly
+2021-10-11:
+  Nanako:
+  - bugfix: Fixed a runtime error with psychic tracers
+2021-10-13:
+  DTraitor:
+  - qol: Console for Ore Processing Machine now uses TGUI.
+  - bugfix: Fixed bug when instead of using alloy materials only first ore was used.
+  - rscadd: Unloading and Ore Processing machines can be upgraded with better parts.
+  DeadLineSS13:
+  - refactor: Statusbar now support darkmode and small refactored code.
+  Nanako:
+  - refactor: Completely refactored wall damage to join the modern damage system instead
+      of its previous snowflakey, luck-based damage model. Walls are now much tougher
+      and more consistent as a result, most weapons will be unable to damage them.
+  - balance: Increased the health and resistance of Underplating floors, to discourage
+      tunnelling between decks
+2021-10-15:
+  Nanako:
+  - balance: Reworked hyperzine. It no longer gives a base speed boost, but instead
+      lowers the slowing effect of encumbrance by 25%.
+  - bugfix: Fixed SMES explosions causing lots of lag.

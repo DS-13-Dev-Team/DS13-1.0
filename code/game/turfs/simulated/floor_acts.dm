@@ -23,7 +23,7 @@
 
 	var/burn_damage = get_fire_damage(exposed_temperature, 0.5*multiplier)
 	if (burn_damage > 0)
-		take_damage(damage = burn_damage, damage_type = BURN, ignore_resistance = TRUE)
+		take_damage(amount = burn_damage, damtype = BURN, bypass_resist = TRUE)
 
 
 //should be a little bit lower than the temperature required to destroy the material

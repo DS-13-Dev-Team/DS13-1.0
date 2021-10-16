@@ -35,19 +35,17 @@
 	var/obj/screen/diona/hat/hat
 	var/obj/screen/diona/held/held
 
-/datum/hud/diona_nymph/FinalizeInstantiation()
-
-	src.adding = list()
-	src.other = list()
+/datum/hud/diona_nymph/New(mob/owner)
+	..()
 
 	hat = new
-	adding += hat
+	toggleable_inventory += hat
 
 	held = new
-	adding += held
+	toggleable_inventory += held
 
-	action_intent = new /obj/screen/intent/diona_nymph()
-	adding += action_intent
+	action_intent = new /obj/screen/intent/diona_nymph(owner)
+	static_inventory += action_intent
 
 	//This is deprecated, see health_doll.dm
 	//If these are ever re-activated a new version will be needed
@@ -56,6 +54,4 @@
 	healths.icon_state = "health0"
 	healths.SetName("health")
 	healths.screen_loc = DIONA_SCREEN_LOC_HEALTH
-
-	mymob.client.screen = list(healths)
-	mymob.client.screen += src.adding + src.other
+	infodisplay += healths

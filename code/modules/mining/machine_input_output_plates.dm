@@ -1,7 +1,7 @@
 /**********************Input and output plates**************************/
 
 /obj/machinery/input
-	icon = 'icons/mob/screen1.dmi'
+	icon = 'icons/hud/screen1.dmi'
 	icon_state = "x2"
 	name = "Input area"
 	density = 0
@@ -23,7 +23,7 @@
 /obj/machinery/proc/input_available(var/atom/movable/O)
 
 /obj/machinery/mineral/output
-	icon = 'icons/mob/screen1.dmi'
+	icon = 'icons/hud/screen1.dmi'
 	icon_state = "x"
 	name = "Output area"
 	density = 0

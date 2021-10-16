@@ -11,9 +11,9 @@
 /datum/alloy/plasteel
 	metaltag = MATERIAL_PLASTEEL
 	requires = list(
-		"platinum" = 1,
-		"carbon" = 2,
-		"iron" = 2
+		/ore/hematite = 1,
+		/ore/coal = 2,
+		/ore/platinum = 2
 		)
 	product_mod = 0.3
 	product = /obj/item/stack/material/plasteel
@@ -22,15 +22,15 @@
 /datum/alloy/steel
 	metaltag = MATERIAL_STEEL
 	requires = list(
-		"carbon" = 1,
-		"iron" = 1
+		/ore/coal = 1,
+		/ore/hematite = 1
 		)
 	product = /obj/item/stack/material/steel
 
 /datum/alloy/borosilicate
-	metaltag = "phglass"
+	metaltag = MATERIAL_PLASMAGLASS
 	requires = list(
-		"platinum" = 1,
-		"sand" = 2
+		/ore/platinum = 1,
+		/ore/glass = 2
 		)
 	product = /obj/item/stack/material/glass/phoronglass

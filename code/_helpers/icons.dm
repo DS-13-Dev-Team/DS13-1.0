@@ -1180,3 +1180,9 @@ proc/generate_image(var/tx as num, var/ty as num, var/tz as num, var/range as nu
 
 	var/icon/I = getFlatIcon(thing)
 	return icon2html(I, target, sourceonly = sourceonly)
+
+//Hook, override to run code on- wait this is images
+//Images have dir without being an atom, so they get their own definition.
+//Lame.
+/image/proc/setDir(newdir)
+	dir = newdir

@@ -1,6 +1,4 @@
 /datum/map/torch
-	lobby_icon = 'maps/torch/icons/lobby.dmi'
-	lobby_screens = list("title","title2")
 	lobby_tracks = list(
 		/music_track/chasing_time,
 		/music_track/torch,

@@ -8,7 +8,7 @@
 */
 /obj/screen
 	name = ""
-	icon = 'icons/mob/screen1.dmi'
+	icon = 'icons/hud/screen1.dmi'
 	plane = HUD_PLANE
 	layer = HUD_BASE_LAYER
 	appearance_flags = NO_CLIENT_COLOR
@@ -16,6 +16,9 @@
 	var/obj/master = null    //A reference to the object in the slot. Grabs or items, generally.
 	var/globalscreen = FALSE //Global screens are not qdeled when the holding mob is destroyed.
 	can_block_movement = FALSE	//This can never be on a turf
+
+	/// A reference to the owner HUD, if any.
+	var/datum/hud/hud = null
 
 /obj/screen/Destroy()
 	master = null
@@ -31,8 +34,68 @@
 
 
 /obj/screen/inventory
-	var/slot_id	//The indentifier for the slot. It has nothing to do with ID cards.
+	/// The identifier for the slot. It has nothing to do with ID cards.
+	var/slot_id
+	/// Icon when empty. For now used only by humans.
+	var/icon_empty
+	/// Icon when contains an item. For now used only by humans.
+	var/icon_full
+	/// The overlay when hovering over with an item in your hand
+	var/image/object_overlay
 
+/obj/screen/inventory/Click(location, control, params)
+	// At this point in client Click() code we have passed the 1/10 sec check and little else
+	// We don't even know if it's a middle click
+	if(world.time <= usr.next_move)
+		return TRUE
+
+	if(usr.incapacitated())
+		return TRUE
+
+	if (istype(usr.loc,/obj/mecha)) // stops inventory actions in a mech
+		return TRUE
+
+	if(hud?.mymob && slot_id)
+		var/obj/item/inv_item = hud.mymob.get_item_by_slot(slot_id)
+		if(inv_item)
+			return inv_item.Click(location, control, params)
+
+	if(usr.attack_ui(slot_id, params))
+		usr.update_inv_l_hand(0)
+		usr.update_inv_r_hand(0)
+	return TRUE
+
+/obj/screen/inventory/MouseEntered(location, control, params)
+	. = ..()
+	add_overlays()
+
+/obj/screen/inventory/MouseExited()
+	..()
+	cut_overlay(object_overlay)
+	QDEL_NULL(object_overlay)
+
+/obj/screen/inventory/proc/add_overlays()
+	var/mob/user = hud?.mymob
+
+	if(!user || !slot_id)
+		return
+
+	var/obj/item/holding = user.get_active_hand()
+
+	if(!holding || user.get_item_by_slot(slot_id))
+		return
+
+	var/image/item_overlay = image(holding)
+	item_overlay.alpha = 92
+
+	if(!holding.mob_can_equip(user, slot_id, TRUE))
+		item_overlay.color = "#FF0000"
+	else
+		item_overlay.color = "#00ff00"
+
+	cut_overlay(object_overlay)
+	object_overlay = item_overlay
+	add_overlay(object_overlay)
 
 /obj/screen/close
 	name = "close"
@@ -84,18 +147,86 @@
 	return 1
 
 
+/obj/screen/stamina
+	name = "stamina"
+	icon = 'icons/effects/progessbar.dmi'
+	icon_state = "prog_bar_100"
+	invisibility = INVISIBILITY_MAXIMUM
+	screen_loc = ui_stamina
 
+/obj/screen/inventory/hand
+	name = "l_hand"
+	icon_state = "hand_l"
+	screen_loc = ui_lhand
+	var/hand_tag = "l"
 
+/obj/screen/inventory/hand/update_icon(active = FALSE)
+	cut_overlays()
+	if(active)
+		add_overlay("hand_active")
 
+/obj/screen/inventory/hand/Click()
+	if(world.time <= usr.next_move)
+		return TRUE
+	if(usr.incapacitated() || !iscarbon(usr))
+		return TRUE
+	var/mob/living/carbon/C = usr
+	C.activate_hand(hand_tag)
+
+/obj/screen/inventory/hand/right
+	name = "r_hand"
+	icon_state = "hand_r"
+	screen_loc = ui_rhand
+	hand_tag = "r"
+
+/obj/screen/swap_hand
+	name = "swap hand"
+	name = "swap"
+	icon_state = "hand1"
+	screen_loc = ui_swaphand1
+
+/obj/screen/swap_hand/Click()
+	if(!iscarbon(usr))
+		return
+	var/mob/living/carbon/M = usr
+	M.swap_hand()
+
+/obj/screen/swap_hand/right
+	icon_state = "hand2"
+	screen_loc = ui_swaphand2
+
+/obj/screen/swap_hand/human
+	icon_state = "hand1"
+
+/obj/screen/toggle_inv
+	name = "toggle"
+	icon = 'icons/hud/midnight.dmi'
+	icon_state = "toggle"
+	screen_loc = ui_inventory
+
+/obj/screen/toggle_inv/Click()
+	if(usr.hud_used.inventory_shown)
+		usr.hud_used.inventory_shown = FALSE
+		usr.client.screen -= usr.hud_used.toggleable_inventory
+	else
+		usr.hud_used.inventory_shown = TRUE
+		usr.client.screen += usr.hud_used.toggleable_inventory
+
+	usr.hud_used.hidden_inventory_update()
 
 /obj/screen/intent
 	name = "intent"
-	icon = 'icons/mob/screen1_White.dmi'
+	icon = 'icons/hud/White.dmi'
 	icon_state = "intent_help"
 	screen_loc = ui_acti
 	var/intent = I_HELP
 
-/obj/screen/intent/Click(var/location, var/control, var/params)
+/obj/screen/intent/New(mob/C)
+	if (C)
+		intent = C.a_intent
+		update_icon()
+
+/obj/screen/intent/Click(location, control, params)
 	var/list/P = params2list(params)
 	var/icon_x = text2num(P["icon-x"])
 	var/icon_y = text2num(P["icon-y"])
@@ -113,28 +244,10 @@
 /obj/screen/intent/update_icon()
 	icon_state = "intent_[intent]"
 
-/obj/screen/intent/added_to_screen(var/client/C)
-	if (C.mob)
-		intent = C.mob.a_intent
-		update_icon()
-
-
-
-
-
 
 /obj/screen/Click(location, control, params)
 	if(!usr)	return 1
 	switch(name)
-		if("toggle")
-			if(usr.hud_used.inventory_shown)
-				usr.hud_used.inventory_shown = 0
-				usr.client.screen -= usr.hud_used.other
-			else
-				usr.hud_used.inventory_shown = 1
-				usr.client.screen += usr.hud_used.other
-
-			usr.hud_used.hidden_inventory_update()
 
 		if("equip")
 			if (istype(usr.loc,/obj/mecha)) // stops inventory actions in a mech
@@ -311,35 +424,3 @@
 		else
 			return 0
 	return 1
-
-/obj/screen/inventory/Click()
-	// At this point in client Click() code we have passed the 1/10 sec check and little else
-	// We don't even know if it's a middle click
-	if(!usr.canClick())
-		return 1
-	if(usr.stat || usr.paralysis || usr.stunned || usr.weakened)
-		return 1
-	if (istype(usr.loc,/obj/mecha)) // stops inventory actions in a mech
-		return 1
-	switch(name)
-		if("r_hand")
-			if(iscarbon(usr))
-				var/mob/living/carbon/C = usr
-				C.activate_hand("r")
-		if("l_hand")
-			if(iscarbon(usr))
-				var/mob/living/carbon/C = usr
-				C.activate_hand("l")
-		if("swap")
-			usr:swap_hand()
-		if("hand")
-			usr:swap_hand()
-		else
-			if(usr.attack_ui(slot_id))
-				usr.update_inv_l_hand(0)
-				usr.update_inv_r_hand(0)
-	return 1
-
-
-/obj/proc/added_to_screen(var/client/C)
-	return

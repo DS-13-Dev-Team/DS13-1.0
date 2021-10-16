@@ -26,7 +26,7 @@
 	path = /obj/item/weapon/plastique
 
 /datum/uplink_item/item/tools/plastique/special
-	item_cost = 4
+	item_cost = 6
 	is_special = TRUE
 	antag_roles = list(MODE_EARTHGOV_AGENT, MODE_UNITOLOGIST, MODE_UNITOLOGIST_SHARD)
 

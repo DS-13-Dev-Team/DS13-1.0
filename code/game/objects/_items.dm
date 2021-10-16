@@ -98,6 +98,12 @@
 	//Items are not dense typically
 	can_block_movement = FALSE
 
+	//Tooltip vars
+	///string form of an item's force. Edit this var only to set a custom force string
+	var/force_string
+	var/last_force_string_check = 0
+	var/tip_timer
+
 /obj/item/Initialize()
 	if (!max_health)
 		if (w_class != ITEM_SIZE_NO_CONTAINER)	//This is infinity, would cause errors
@@ -790,10 +796,6 @@ THIS SCOPE CODE IS DEPRECATED, USE AIM MODES INSTEAD.
 
 	if(!user.client)
 		return
-
-	//user.client.view = world.view
-	if(!user.hud_used.hud_shown)
-		user.toggle_zoom_hud()
 
 	user.client.pixel_x = 0
 	user.client.pixel_y = 0

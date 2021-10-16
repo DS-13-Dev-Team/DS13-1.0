@@ -2,6 +2,11 @@
 	var/datum/design/current_design
 	var/current_category
 
+	//This list contains data for listings that are specific to one occupant
+	var/list/occupant_ui_data
+
+	var/list/combined_store_data
+
 /obj/machinery/store/attack_hand(var/mob/user)
 	if (user == occupant)
 		ui_interact(user)
@@ -24,7 +29,7 @@
 		data["credits_chip"] = "[credits_chip]"
 	data["credits_total"] = (isnum(credits_chip) ? credits_chip : 0) + credits_rig
 
-	data["designs"] = GLOB.store_designs
+	data["designs"] = combined_store_data
 
 	if (current_category)
 		data["selected_category"] = current_category
@@ -46,6 +51,16 @@
 		data["deposit"] = deposit_box.ui_data
 
 	return data
+
+/*
+	Called whenever a new occupant enters
+*/
+/obj/machinery/store/proc/update_occupant_data()
+	combined_store_data = GLOB.public_store_designs.Copy()
+
+	for (var/datum/design/D in GLOB.limited_store_designs)
+		if (D.PI?.can_buy_in_store(occupant))
+			LAZYADD(combined_store_data[D.category], list(D.ui_data))
 
 
 /obj/machinery/store/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null)

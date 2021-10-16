@@ -113,8 +113,6 @@
 			return global.all_robolimbs;
 		if("all_species")
 			return global.all_species;
-		if("all_ui_styles")
-			return global.all_ui_styles;
 		if("all_unit_tests_passed")
 			return global.all_unit_tests_passed;
 		if("all_virtual_listeners")
@@ -217,8 +215,6 @@
 			return global.csrfz_check;
 		if("custom_event_msg")
 			return global.custom_event_msg;
-		if("custom_items")
-			return global.custom_items;
 		if("damage_icon_parts")
 			return global.damage_icon_parts;
 		if("dbcon")
@@ -395,8 +391,6 @@
 			return global.lighting_overlays_initialised;
 		if("limb_icon_cache")
 			return global.limb_icon_cache;
-		if("lobby_image")
-			return global.lobby_image;
 		if("lunchables_drink_reagents_")
 			return global.lunchables_drink_reagents_;
 		if("lunchables_drinks_")
@@ -505,10 +499,6 @@
 			return global.nuke_disks;
 		if("num_financial_terminals")
 			return global.num_financial_terminals;
-		if("ore_data")
-			return global.ore_data;
-		if("ores_by_type")
-			return global.ores_by_type;
 		if("organ_cache")
 			return global.organ_cache;
 		if("organ_rel_size")
@@ -888,8 +878,6 @@
 			global.all_robolimbs=newval;
 		if("all_species")
 			global.all_species=newval;
-		if("all_ui_styles")
-			global.all_ui_styles=newval;
 		if("all_unit_tests_passed")
 			global.all_unit_tests_passed=newval;
 		if("all_virtual_listeners")
@@ -992,8 +980,6 @@
 			global.csrfz_check=newval;
 		if("custom_event_msg")
 			global.custom_event_msg=newval;
-		if("custom_items")
-			global.custom_items=newval;
 		if("damage_icon_parts")
 			global.damage_icon_parts=newval;
 		if("dbcon")
@@ -1170,8 +1156,6 @@
 			global.lighting_overlays_initialised=newval;
 		if("limb_icon_cache")
 			global.limb_icon_cache=newval;
-		if("lobby_image")
-			global.lobby_image=newval;
 		if("lunchables_drink_reagents_")
 			global.lunchables_drink_reagents_=newval;
 		if("lunchables_drinks_")
@@ -1280,10 +1264,6 @@
 			global.nuke_disks=newval;
 		if("num_financial_terminals")
 			global.num_financial_terminals=newval;
-		if("ore_data")
-			global.ore_data=newval;
-		if("ores_by_type")
-			global.ores_by_type=newval;
 		if("organ_cache")
 			global.organ_cache=newval;
 		if("organ_rel_size")
@@ -1606,7 +1586,6 @@
 	"all_objectives",
 	"all_robolimbs",
 	"all_species",
-	"all_ui_styles",
 	"all_unit_tests_passed",
 	"all_virtual_listeners",
 	"announced_news_types",
@@ -1753,7 +1732,6 @@
 	"lighting_overlays_initialised",
 	"limb_icon_cache",
 	"loadout_categories",
-	"lobby_image",
 	"lunchables_drink_reagents_",
 	"lunchables_drinks_",
 	"lunchables_ethanol_reagents_",
@@ -1808,8 +1786,6 @@
 	"nttransfer_uid",
 	"nuke_disks",
 	"num_financial_terminals",
-	"ore_data",
-	"ores_by_type",
 	"organ_cache",
 	"organ_rel_size",
 	"outfits_decls_",

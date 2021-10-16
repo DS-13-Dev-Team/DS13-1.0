@@ -120,3 +120,7 @@
 //Most things use is_plating to test if there is a cover tile on top (like regular floors)
 /turf/simulated/open/is_plating()
 	return TRUE
+
+
+/turf/simulated/open/take_damage(var/amount, var/damtype = BRUTE, var/user, var/used_weapon, var/bypass_resist = FALSE)
+	return 0	//You can't damage what doesn't exist

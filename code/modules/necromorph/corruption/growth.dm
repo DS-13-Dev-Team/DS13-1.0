@@ -7,7 +7,7 @@
 	density = FALSE
 
 	var/range = 14
-	var/speed = 1.25
+	var/speed = 1.5
 	var/falloff = 0.1
 	var/limit = null	//Maximum number of tiles it can support
 
@@ -66,7 +66,7 @@
 	name = "branch"
 	id = "branch"
 	desc = ""
-	energy_cost = 150
+	energy_cost = 135
 	placement_atom = /obj/structure/corruption_node/growth/branch
 
 
@@ -82,8 +82,8 @@
 	density = FALSE
 	marker_spawnable = FALSE
 
-	range = 40
-	speed = 3
+	range = 12
+	speed = 2
 	falloff = 0.025
 	limit = 60
 	randpixel = 4

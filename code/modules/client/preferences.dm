@@ -2,7 +2,7 @@
 
 var/list/preferences_datums = list()
 
-datum/preferences
+/datum/preferences
 	//doohickeys for savefiles
 	var/path
 	var/default_slot = 1				//Holder so it doesn't default to slot 1, rather the last one used
@@ -19,6 +19,14 @@ datum/preferences
 	var/ui_style = "Midnight"
 	var/tgui_fancy = TRUE
 	var/tgui_lock = FALSE
+	var/enable_tips = TRUE
+	var/tip_delay = 500 //tip delay in milliseconds
+
+	///Do we show item hover outlines?
+	var/itemoutline_pref = TRUE
+
+	///Should we automatically fit the viewport?
+	var/auto_fit_viewport = TRUE
 
 	//character preferences
 	var/species_preview                 //Used for the species selection window.

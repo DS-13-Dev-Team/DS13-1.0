@@ -213,7 +213,7 @@
 
 //Figures out the offsets of the bottomleft and topright corners of the game window
 /client/proc/get_pixel_bounds()
-	var/radius = view*world.icon_size
+	var/radius = view_radius * world.icon_size
 	var/vector2/bottomleft = get_new_vector(-radius, -radius)
 	var/vector2/topright = get_new_vector(radius, radius)
 	var/vector2/offset = get_pixel_offset()

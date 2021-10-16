@@ -25,37 +25,7 @@
 		if (ishuman(user))\
 			{huser = user;\
 			damage *= huser.damage_multiplier}
-//Helper Procs
-//------------------------------
-///atom/proc/launch_strike(target = target, damage = 0, used_weapon = src, damage_flags = 0, armor_penetration = 0, damage_type = BRUTE, armor_type = "melee", target_zone = ran_zone(), difficulty = 0)
 
-/atom/proc/launch_strike(var/atom/target, var/damage, var/used_weapon, var/damage_flags, var/armor_penetration, var/damage_type = BRUTE, var/armor_type = "melee", var/target_zone = ran_zone(), var/difficulty = 0, var/allow_dismemberment = TRUE)
-	var/datum/strike/strike = new /datum/strike(src, target, damage, used_weapon, damage_flags, armor_penetration, damage_type, armor_type, target_zone, difficulty)
-	strike.start()
-	return strike
-
-
-
-
-/atom/proc/launch_weapon_strike(var/atom/target, var/obj/item/I)
-	var/mob/living/carbon/human/H
-	if (ishuman(src))
-		H = src
-		if(world.time < H.last_attack + I.get_delay(H))
-			to_chat(H, "<span class='notice'>You can't attack again so soon.</span>")
-			return null
-		else
-			H.last_attack = world.time
-			H.set_click_cooldown(I.get_delay(H))
-	//user.do_attack_animation(M)
-	var/datum/strike/implement/strike = new /datum/strike/implement(src, target, I)
-	strike.start()
-
-
-//When a thrown object hits a mob, it calls this itself
-/atom/proc/launch_throw_strike(var/atom/target, var/speed)
-	var/datum/strike/thrown/strike = new /datum/strike/thrown(src, target, speed)
-	strike.start()
 
 
 //Main Code
@@ -72,6 +42,10 @@
 	var/mob/living/carbon/human/huser
 
 	var/damage = 0
+
+	//A temporary value, set just before impact, factoring in all calculations on the attacker's side_effects =
+	//Calculations on the defending side may still affect damage, so this value is not the actual damage dealt
+	var/final_damage
 
 	//Only set after we have impacted, this contains the actual final quantity of health we removed from the target
 	var/damage_done = null
@@ -213,7 +187,9 @@
 	if (!isnull(damage_done))
 		return damage_done
 
-	return max(damage - blocked_damage, 0)
+	final_damage = max(damage - blocked_damage, 0)
+
+	return final_damage
 
 /datum/strike/proc/get_impact_sound()
 	if (blocker)
@@ -298,10 +274,13 @@
 	else if(istype(target, /obj/machinery/vending) && ishuman(huser) && huser.is_necromorph())
 		impact_vending()
 
+	else if (istype(target, /turf))
+		impact_turf()
+
 //This is called when the target is a living mob, so we can assume L is populated
 /datum/strike/proc/impact_mob()
 	//Alright, how much damage are we going to deal
-	var/final_damage = get_final_damage()
+	get_final_damage()
 	if (final_damage <= 0)
 		return FALSE
 	// Finally, apply damage to target
@@ -317,6 +296,12 @@
 	var/obj/structure/S = target
 	damage_done = get_final_damage()
 	damage_done = S:take_damage(damage_done, BRUTE, user, used_weapon)
+
+
+/datum/strike/proc/impact_turf()
+	var/turf/T = target
+	damage_done = get_final_damage()
+	damage_done = T.handle_strike(src)
 
 /datum/strike/proc/impact_vending()
 	var/obj/machinery/vending/S = target
