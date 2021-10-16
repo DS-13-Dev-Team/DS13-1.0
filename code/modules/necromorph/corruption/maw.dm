@@ -254,7 +254,7 @@
 	GLOB.updatehealth_event.register(L, src, /obj/structure/corruption_node/maw/proc/check_grip)
 	buckle_mob(L)
 	if (check_grip())
-		L << "<span class='danger'>The jaws beneath bite into you, trapping you in place!</span>"
+		to_chat(L, SPAN_DANGER("The jaws beneath bite into you, trapping you in place!"))
 
 
 		START_PROCESSING(SSobj, src)

@@ -12,11 +12,11 @@ var/failed_old_db_connections = 0
 			success = TRUE
 
 	if (success)
-		world.log << "Database connection established ? [dbcon.IsConnected()]"
+		log_world("Database connection established ? [dbcon.IsConnected()]")
 		callHook("database_connected")
 
 	else
-		world.log << "Your server failed to establish a connection with the database."
+		log_world("Your server failed to establish a connection with the database.")
 	return success
 
 proc/setup_database_connection()
@@ -43,7 +43,7 @@ proc/setup_database_connection()
 		return TRUE
 	else
 		failed_db_connections++		//If it failed, increase the failed connections counter.
-		world.log << dbcon.ErrorMsg()
+		log_world(dbcon.ErrorMsg())
 		return FALSE
 
 

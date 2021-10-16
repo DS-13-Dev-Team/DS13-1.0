@@ -269,7 +269,7 @@ Freeing yourself is much harder than freeing someone else. Calling for help is a
 	buckle_mob(L)
 	GLOB.updatehealth_event.register(L, src, /obj/item/weapon/beartrap/proc/check_grip)
 	if (check_grip())
-		L << "<span class='danger'>The steel jaws of \the [src] bite into you, trapping you in place!</span>"
+		to_chat(L, SPAN_DANGER("The steel jaws of \the [src] bite into you, trapping you in place!"))
 
 
 
