@@ -7,3 +7,4 @@
 ##
 max_stone_rig{MrMischief2015}
 mouse{nanakoac}
+plaugewalker_rig{plaugewalker}
