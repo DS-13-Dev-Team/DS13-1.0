@@ -48,6 +48,7 @@
 	*/
 	var/loadout_cost = null //If not null, this item can be purchased in the loadout for this many points
 	var/loadout_access	=	null //One of the ACCESS_XXX defines above, determines who is allowed to buy this in loadout
+	var/loadout_subtype = /datum/gear	//The typepath of a specific /datum/gear subtype we want to use.
 
 	var/datum/gear/loadout_listing
 	var/datum/design/store_listing
@@ -94,7 +95,7 @@
 		store_listing.whitelist = whitelist
 
 /datum/patron_item/proc/create_loadout_datum()
-	var/datum/gear/G = new()
+	var/datum/gear/G = new loadout_subtype()
 	G.display_name = src.name
 	G.description = description
 	G.path = item_path

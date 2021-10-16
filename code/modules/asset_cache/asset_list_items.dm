@@ -182,5 +182,8 @@
 	sort_loadout_categories()
 	SSdatabase.update_store_designs()
 
+	GLOB.custom_items_loaded = TRUE
+	if (LOADOUT_LOADED)
+		handle_pending_loadouts()
 
 	.=..()
