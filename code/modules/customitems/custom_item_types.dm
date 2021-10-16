@@ -61,6 +61,7 @@
 	loadout_cost = 4
 	loadout_access = ACCESS_PATRONS
 
+	loadout_subtype = /datum/gear/RIG/frame
 	category = CATEGORY_RIG
 	subcategory = SUBCATEGORY_FRAMES
 

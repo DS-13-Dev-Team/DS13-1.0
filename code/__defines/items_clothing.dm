@@ -278,3 +278,5 @@ var/list/default_onmob_icons = list(
 
 //How many loadout slots can each player have? Reducing this may cause issues
 #define LOADOUT_SLOTS	3
+
+#define LOADOUT_LOADED	(GLOB.loadout_datums_loaded && GLOB.custom_items_loaded)
