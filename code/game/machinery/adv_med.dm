@@ -378,7 +378,7 @@
 			P.info += "<b>Time of scan:</b> [station_time_timestamp()]<br><br>"
 			P.info += "[generate_printing_text()]"
 			P.info += "<br><br><b>Notes:</b><br>"
-			P.name = "Body Scan - [name] ([worldtime2stationtime(world.time)])"
+			P.name = "Body Scan - [name] ([station_time_timestamp()])"
 		else
 			return FALSE
 
