@@ -431,7 +431,6 @@
 */
 /obj/item/weapon/reagent_containers/glass/fuel_tank/proc/check_fuel_type_and_contamination()
 	fueltype = /datum/reagent/fuel
-	vacuum_burn = FALSE
 
 	var/contaminants = reagents.total_volume
 
@@ -443,6 +442,7 @@
 		vacuum_burn = TRUE
 		contaminants -= quantity_hydrazine
 	else
+		vacuum_burn = FALSE
 		contaminants -= quantity_fuel
 
 	contamination = 0
@@ -468,6 +468,7 @@
 
 /obj/item/weapon/reagent_containers/glass/fuel_tank/hydrazine
 	name = "fuel tank (hydrazine)"
+	vacuum_burn = TRUE
 
 /obj/item/weapon/reagent_containers/glass/fuel_tank/hydrazine
 	fueltype = /datum/reagent/hydrazine
