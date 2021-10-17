@@ -58,31 +58,35 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 	return view(range, GLOB.dview_mob)
 
 //Returns a list of all turfs this mob can see, accounting for view radius and offset
-/atom/proc/turfs_in_view(var/check_range = world.view)
-	var/list/things = list()
-	FOR_DVIEW(var/turf/T, check_range, get_turf(src), 0)
-		things += T
-	END_FOR_DVIEW
-	return things
+/atom/proc/turfs_in_view(var/check_range = world.view, var/atom/origin=get_turf(src))
+	RETURN_TYPE(/list)
+	var/list/ret = list()
+	for(var/T as () in view(check_range, origin))
+		if(!isturf(T))
+			continue
+		ret += T
+	return ret
 
-/mob/turfs_in_view(var/check_range = null)
-	var/range = (check_range ? check_range : view_range)
-	if (!isnum(range) || range < 0)
-		range = world.view
-	else
-		range = Ceiling(range)	//Just incase a noninteger value was passed
-	var/origin
-	if (!view_offset)
-		origin = get_turf(src)
-	else
-		origin = get_view_centre()
+/**
+<summary>Gets all the turfs in view of this mob. Ignores invisibility as it was never used.</summary>
+<returns>A list of all the visible turfs for this mob, as /turf/.</returns>
+*/
 
-	var/list/things = list()
-	FOR_DVIEW(var/turf/T, range, origin, 0)
-		things += T
-	END_FOR_DVIEW
-	return things
-
+/mob/turfs_in_view(var/check_range = view_range)
+	//Handle unsafe int32 values.
+	check_range = (!isnum(check_range) || check_range < 0) ? world.view : Ceiling(check_range)
+	var/turf/_origin = (view_offset) ? null : get_turf(src)
+	//Try get the offset from the vector. This can crash if there's an invalid dir of "16". If this fails, we just go with pure loc. If _origin is null, we have a view offset to account for.
+	if(_origin == null)
+		try
+			_origin = get_view_centre()
+		//Invalid dir passed in. Default back to our current loc.
+		catch(var/exception/ex)
+			//Pass over ex so linters don't yell. We don't particularly care what caused the invalid dir, so.
+			pass(ex)
+			_origin = get_turf(src)
+	//Call to super with the updated offset origin turfs.
+	return ..(check_range=check_range, origin=_origin)
 
 /*
 	As above, but specifically finds turfs without dense objects blocking them
