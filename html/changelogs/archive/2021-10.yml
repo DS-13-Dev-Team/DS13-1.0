@@ -103,3 +103,6 @@
   - balance: Reworked hyperzine. It no longer gives a base speed boost, but instead
       lowers the slowing effect of encumbrance by 25%.
   - bugfix: Fixed SMES explosions causing lots of lag.
+2021-10-17:
+  DTraitor:
+  - bugfix: Kinesis module now works properly if you install it using hotswap.
