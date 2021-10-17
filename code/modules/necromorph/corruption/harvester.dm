@@ -20,8 +20,8 @@
 /obj/structure/corruption_node/harvester
 	name = "harvester"
 	desc = "It will take its due"
-	max_health = 500
-	resistance = 10	//Extremely tough, basically immune to small arms fire
+	max_health = 475
+	resistance = 9	//Extremely tough, basically immune to small arms fire
 	icon = 'icons/effects/corruption96x96.dmi'
 	icon_state = "harvester"
 	density = TRUE

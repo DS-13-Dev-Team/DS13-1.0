@@ -64,6 +64,7 @@ Basics, the most important.
 /datum/config_entry/flag/allow_vote_mode    //allow votes to change mode
 
 /datum/config_entry/flag/allow_admin_jump   //allows admin jumping
+	config_entry_value = TRUE
 
 /datum/config_entry/flag/disable_admin_spawn   //allows admin item spawning
 
