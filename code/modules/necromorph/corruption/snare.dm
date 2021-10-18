@@ -8,7 +8,7 @@
 
 	It's main design goal is to act as a chilling effect. To force crew players to slow down and pay attention to their environment
 */
-#define SNARE_PLACEMENT_BUFFER	3
+#define SNARE_PLACEMENT_BUFFER	2
 /obj/structure/corruption_node/snare
 	name = "snare"
 	desc = "<span class='notice'>That looks dangerous, good thing you noticed before tripping over it! Should be safe to step over it now</span>"
@@ -239,7 +239,7 @@
 	name = "Snare"
 	id = "snare"
 	desc = ""
-	energy_cost = 50
+	energy_cost = 40
 	LOS_block = FALSE
 	placement_atom = /obj/structure/corruption_node/snare
 	click_handler_type = /datum/click_handler/placement/ability/snare

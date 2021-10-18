@@ -48,7 +48,7 @@
 	icon_state = ""
 	density = FALSE
 	pathweight = INFINITY //Seriously, don't try and path over this one numbnuts
-
+	is_hole = TRUE
 	z_flags = ZM_MIMIC_DEFAULTS | ZM_MIMIC_OVERWRITE | ZM_MIMIC_NO_AO | ZM_ALLOW_ATMOS
 
 /turf/simulated/open/update_dirt()

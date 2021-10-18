@@ -81,10 +81,16 @@
 
 
 /obj/effect/vine/proc/can_spread_to(var/turf/floor, var/bounds)
+
 	if (isfloor(floor))
 		var/turf/simulated/floor/F = floor
 		if (F.incorruptible)
 			return -1
+
+	else
+		//Cant spread to openspaces unless theres a catwalk to cover
+		if (floor.is_hole && !length(floor.zstructures))
+			return FALSE
 
 	if(bounds && !can_reach(floor))
 		return FALSE
