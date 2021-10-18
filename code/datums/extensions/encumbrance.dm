@@ -19,6 +19,10 @@
 	if (!holder)
 		return
 	var/mob/living/L = holder
+
+	//No encumbrance in nullspace
+	if (!isnull(L.loc))
+		return
 	var/encumbrance_before = encumbrance
 	encumbrance = 0
 
