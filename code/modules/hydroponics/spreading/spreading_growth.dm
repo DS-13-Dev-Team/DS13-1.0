@@ -81,16 +81,15 @@
 
 
 /obj/effect/vine/proc/can_spread_to(var/turf/floor, var/bounds)
-	to_chat(world, "---------------------------------------")
-	to_chat(world, "Trying to spread to [jumplink(floor)]")
+
 	if (isfloor(floor))
 		var/turf/simulated/floor/F = floor
 		if (F.incorruptible)
 			return -1
 
 	else
-		to_chat(world, "Can't spread to [jumplink(floor)]")
-		if (floor.is_hole)
+		//Cant spread to openspaces unless theres a catwalk to cover
+		if (floor.is_hole && !length(floor.zstructures))
 			return FALSE
 
 	if(bounds && !can_reach(floor))
