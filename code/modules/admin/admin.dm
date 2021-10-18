@@ -1175,32 +1175,27 @@ datum/admins/var/obj/item/weapon/paper/admin/faxreply // var to hold fax replies
 	P.SetName("[P.origin] - [customname]")
 	P.desc = "This is a paper titled '" + P.name + "'."
 
-	var/shouldStamp = 0
 	if(!P.sender) // admin initiated
-		switch(tgui_alert(usr, "Would you like the fax stamped?",, list("Yes", "No")))
-			if("Yes")
-				shouldStamp = 1
+		if(tgui_alert(usr, "Would you like the fax stamped?", "Confirmation", list("Yes", "No")) == "Yes")
+			P.stamps += "<hr><i>This paper has been stamped by the [P.origin] Quantum Relay.</i>"
 
-	if(shouldStamp)
-		P.stamps += "<hr><i>This paper has been stamped by the [P.origin] Quantum Relay.</i>"
+			var/image/stampoverlay = image('icons/obj/bureaucracy.dmi')
+			var/x = rand(-2, 0)
+			var/y = rand(-1, 2)
+			P.offset_x += x
+			P.offset_y += y
+			stampoverlay.pixel_x = x
+			stampoverlay.pixel_y = y
 
-		var/image/stampoverlay = image('icons/obj/bureaucracy.dmi')
-		var/x = rand(-2, 0)
-		var/y = rand(-1, 2)
-		P.offset_x += x
-		P.offset_y += y
-		stampoverlay.pixel_x = x
-		stampoverlay.pixel_y = y
+			if(!P.ico)
+				P.ico = new
+			P.ico += "paper_stamp-cent"
+			stampoverlay.icon_state = "paper_stamp-cent"
 
-		if(!P.ico)
-			P.ico = new
-		P.ico += "paper_stamp-cent"
-		stampoverlay.icon_state = "paper_stamp-cent"
-
-		if(!P.stamped)
-			P.stamped = new
-		P.stamped += /obj/item/weapon/stamp/centcomm
-		P.overlays += stampoverlay
+			if(!P.stamped)
+				P.stamped = new
+			P.stamped += /obj/item/weapon/stamp/centcomm
+			P.overlays += stampoverlay
 
 	var/obj/item/rcvdcopy
 	rcvdcopy = destination.copy(P)

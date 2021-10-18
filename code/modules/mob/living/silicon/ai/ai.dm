@@ -517,17 +517,14 @@ var/list/ai_verbs_default = list(
 	if(check_unable())
 		return
 
-	var/input
-	if(tgui_alert(src, "Would you like to select a hologram based on a crew member or switch to unique avatar?",, list("Crew Member","Unique"))=="Crew Member")
-
+	var/input = tgui_alert(src, "Would you like to select a hologram based on a crew member or switch to unique avatar?", "Hologram ", list("Crew Member","Unique"))
+	if(input == "Crew Member")
 		var/personnel_list[] = list()
-
 		for(var/datum/computer_file/report/crew_record/t in GLOB.all_crew_records)//Look in data core locked.
 			personnel_list["[t.get_name()]: [t.get_rank()]"] = t.photo_front//Pull names, rank, and image.
 
 		if(personnel_list.len)
-			input = input("Select a crew member:") as null|anything in personnel_list
-			var/icon/character_icon = personnel_list[input]
+			var/icon/character_icon = personnel_list[input("Select a crew member:") as null|anything in personnel_list]
 			if(character_icon)
 				qdel(holo_icon)//Clear old icon so we're not storing it in memory.
 				qdel(holo_icon_longrange)
@@ -536,7 +533,7 @@ var/list/ai_verbs_default = list(
 		else
 			tgui_alert(src, "No suitable records found. Aborting.")
 
-	else
+	else if(input == "Unique")
 		var/list/hologramsAICanUse = list()
 		var/holograms_by_type = decls_repository.get_decls_of_subtype(/decl/ai_holo)
 		for (var/holo_type in holograms_by_type)

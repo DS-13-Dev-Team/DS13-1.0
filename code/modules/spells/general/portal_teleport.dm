@@ -24,7 +24,7 @@
 
 /spell/portal_teleport/choose_targets(mob/user)
 	var/area/thearea
-	var/message = tgui_alert(user, "Would you like to show station areas?\nNote: it can take up to 5 minutes for the away sites to load in and show up.",, list("Yes", "No"))
+	var/message = tgui_alert(user, "Would you like to show station areas?\nNote: it can take up to 5 minutes for the away sites to load in and show up.", "Confirmation", list("Yes", "No"))
 	switch(message)
 		if("Yes")
 			select_areas = stationlocs

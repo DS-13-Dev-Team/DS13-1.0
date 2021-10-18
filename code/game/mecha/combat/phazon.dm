@@ -57,7 +57,7 @@
 	set popup_menu = 0
 	if(usr!=src.occupant)
 		return
-	var/new_damtype = tgui_alert(src.occupant,"Melee Damage Type",,list("Brute","Fire","Toxic"))
+	var/new_damtype = tgui_alert(src.occupant,"Melee Damage Type", "Choose Damage Type",list("Brute","Fire","Toxic"))
 	switch(new_damtype)
 		if("Brute")
 			damtype = "brute"

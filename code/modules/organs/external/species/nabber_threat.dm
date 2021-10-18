@@ -19,10 +19,9 @@
 			if(owner.pulling_punches)
 				to_chat(owner, "<span class='warning'>You must be in your hunting stance to do a threat display.</span>")
 			else
-				var/message = tgui_alert(owner, "Would you like to show a scary message?",, list("Yes", "No"))
-				if(message == "Cancel" || !message)
+				if(tgui_alert(owner, "Would you like to show a scary message?", "Scary Message", list("Yes", "No")) != "Yes")
 					return
-				else if(message == "Yes")
+				else
 					owner.visible_message("<span class='warning'>[owner]'s skin shifts to a deep red colour with dark chevrons running down in an almost hypnotic \
 						pattern. Standing tall, \he strikes, sharp spikes aimed at those threatening \him, claws whooshing through the air past them.</span>")
 				playsound(owner.loc, 'sound/effects/angrybug.ogg', 60, 0)

@@ -44,7 +44,7 @@ var/const/commandos_possible = 6 //if more Commandos are needed in the future
 	while(!choice)
 		choice = sanitize(input(src, "Please specify which mission the strike team shall undertake.", "Specify Mission", ""))
 		if(!choice)
-			if(tgui_alert(src, "Error, no mission set. Do you want to exit the setup process?",, list("Yes","No"))=="Yes")
+			if(tgui_alert(src, "Error, no mission set. Do you want to exit the setup process?", "Mission Setup", list("Yes","No")) != "No")
 				return
 
 	if(team.deployed)

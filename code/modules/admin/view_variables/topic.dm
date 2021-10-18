@@ -190,7 +190,7 @@
 			to_chat(usr, "This can only be used on instances of type /obj")
 			return
 
-		var/action_type = tgui_alert(src, "Strict type ([O.type]) or type and all subtypes?",, list("Strict type","Type and subtypes","Cancel"))
+		var/action_type = tgui_alert(src, "Strict type ([O.type]) or type and all subtypes?", "Types", list("Strict type","Type and subtypes","Cancel"))
 		if(action_type == "Cancel" || !action_type)
 			return
 

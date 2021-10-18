@@ -24,7 +24,7 @@
 		return
 	if (ismob(M))
 		if(istype(M, /mob/living/silicon/ai))
-			tgui_alert(src, "The AI can't be sent to prison you jerk!",, list("Damn"))
+			tgui_alert(src, "The AI can't be sent to prison you jerk!", null, list("Damn"))
 			return
 		//strip their stuff before they teleport into a cell :downs:
 		for(var/obj/item/W in M)
