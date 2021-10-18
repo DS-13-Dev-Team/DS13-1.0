@@ -95,6 +95,7 @@
 
 #define SPAN_EXECUTION(X) "<span class='execution'>[X]</span>"
 
+#define SPAN_BOLDANNOUNCE(str) ("<span class='boldannounce'>" + str + "</span>")
 
 //Makes span tags easier
 #define span(class, text) ("<span class='[class]'>[text]</span>")

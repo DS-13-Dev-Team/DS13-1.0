@@ -1619,6 +1619,17 @@
 		var/mob/M = locate(href_list["skillpanel"])
 		show_skills(M)
 
+	else if(href_list["viewruntime"])
+		var/datum/error_viewer/error_viewer = locate(href_list["viewruntime"])
+		if(!istype(error_viewer))
+			to_chat(usr, SPAN_WARNING("That runtime viewer no longer exists."), confidential = TRUE)
+			return
+
+		if(href_list["viewruntime_backto"])
+			error_viewer.show_to(owner, locate(href_list["viewruntime_backto"]), href_list["viewruntime_linear"])
+		else
+			error_viewer.show_to(owner, null, href_list["viewruntime_linear"])
+
 	else if(href_list["create_object"])
 		if(!check_rights(R_SPAWN))	return
 		return create_object(usr)
@@ -2044,7 +2055,6 @@
 				show_player_panel(M)
 			if("No")
 				return
-
 
 mob/living/proc/can_centcom_reply()
 	return 0
