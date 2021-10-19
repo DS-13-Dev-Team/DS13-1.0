@@ -160,12 +160,17 @@
 	return 1
 
 /obj/machinery/door/Bumped(atom/AM)
+	to_chat(world, "[src] bumped 1: [p_open] [operating]")
 	if(p_open || operating) return
+	to_chat(world, "[src] bumped 2: [ismob(AM)]")
 	if(ismob(AM))
 		var/mob/M = AM
+		to_chat(world, "[src] bumped 3")
 		if(world.time - M.last_bumped <= 10) return	//Can bump-open one airlock per second. This is to prevent shock spam.
 		M.last_bumped = world.time
+		to_chat(world, "[src] bumped 4")
 		if(!M.restrained() && (!issmall(M) || ishuman(M)))
+			to_chat(world, "[src] bumped 5")
 			bumpopen(M)
 		return
 
