@@ -106,3 +106,17 @@
 2021-10-17:
   DTraitor:
   - bugfix: Kinesis module now works properly if you install it using hotswap.
+2021-10-19:
+  DTraitor:
+  - bugfix: Fixed all cases when messages didn't appear in TGchat. This time for real!
+  Ketrai:
+  - balance: Removes seeker stun altogether.
+  - balance: Seeker firerate reduced.
+  - balance: Moved some damage from the seeker to the magazine instead.
+  - balance: Lowers mining performance bonuses by 20%.
+  Nanako:
+  - balance: Reduced the energy cost of snare and audio abilities for signals.
+  - balance: Slightly reduced the health and armor of the Harvester node.
+  - balance: Corruption now spreads more slowly.
+  - balance: Reduced the minimum placement buffer of snare to 2 tiles.
+  - bugfix: Corruption will no longer grow over openspace tiles
