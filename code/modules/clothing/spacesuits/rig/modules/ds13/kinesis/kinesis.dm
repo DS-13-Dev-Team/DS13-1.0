@@ -909,7 +909,7 @@
 	hotkeys_set = TRUE
 
 /obj/item/rig_module/kinesis/proc/remove_hotkeys(var/mob/living/carbon/human/user)
-	if(user.wearing_rig && user.wearing_rig != src)
+	if(user.wearing_rig != holder)
 		return
 	winset(user, "macro.kinesis_toggle", "parent=")
 	winset(user, "hotkeymode.kinesis_toggle", "parent=")

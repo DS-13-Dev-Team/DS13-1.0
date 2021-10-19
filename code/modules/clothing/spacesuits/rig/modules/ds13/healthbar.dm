@@ -46,6 +46,15 @@
 /obj/item/rig_module/healthbar/rig_unequipped(var/mob/user, var/slot)
 	unregister_user()
 
+/obj/item/rig_module/healthbar/installed(obj/item/weapon/rig/new_holder)
+	if(new_holder.wearer)
+		register_user(new_holder.wearer)
+	. = ..()
+
+/obj/item/rig_module/healthbar/uninstalled(obj/item/weapon/rig/former, mob/living/user)
+	unregister_user()
+	.=..()
+
 /obj/item/rig_module/healthbar/proc/register_user(var/mob/newuser)
 	user = newuser
 	GLOB.updatehealth_event.register(user, src, /obj/item/rig_module/healthbar/proc/update)
