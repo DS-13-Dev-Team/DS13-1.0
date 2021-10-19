@@ -48,7 +48,7 @@
 	single_icon = FALSE
 	spawner_spawnable = TRUE
 
-	variants = list(SPECIES_NECROMORPH_LURKER = 1, SPECIES_NECROMORPH_LURKER_MALO = 0.1)
+	variants = list(SPECIES_NECROMORPH_LURKER = list(WEIGHT = 1), SPECIES_NECROMORPH_LURKER_MALO = list(WEIGHT = 0.1))
 
 	var/shell_type = /obj/item/clothing/lurker_shell
 
