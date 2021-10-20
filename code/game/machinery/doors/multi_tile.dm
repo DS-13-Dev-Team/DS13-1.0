@@ -20,6 +20,8 @@
 	opacity = 1
 	assembly_type = /obj/structure/door_assembly/multi_tile
 
+	var/list/turfs_covered = list()
+
 /obj/machinery/door/airlock/multi_tile/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	SetBounds()
@@ -29,6 +31,12 @@
 	SetBounds()
 
 /obj/machinery/door/airlock/multi_tile/proc/SetBounds()
+
+	for (var/turf/T in turfs_covered)
+		T.movement_blocking_atoms -= src
+
+	turfs_covered = list()
+
 	if(dir in list(NORTH, SOUTH))
 		bound_width = width * world.icon_size
 		bound_height = world.icon_size
