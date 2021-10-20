@@ -120,3 +120,6 @@
   - balance: Corruption now spreads more slowly.
   - balance: Reduced the minimum placement buffer of snare to 2 tiles.
   - bugfix: Corruption will no longer grow over openspace tiles
+2021-10-20:
+  Nanako:
+  - bugfix: Fixed lurker malo skin not appearing randomly
