@@ -11,7 +11,7 @@
 	//This gun has no safety switch
 	safety_state = FALSE
 
-	var/obj/item/weapon/reagent_containers/glass/fuel_tank/tank
+	var/obj/item/weapon/reagent_containers/glass/fuel_tank/tank = /obj/item/weapon/reagent_containers/glass/fuel_tank
 
 	//25 Seconds continuous firing from a 400u fueltank
 	var/fuel_per_second = 16
@@ -55,23 +55,15 @@
 /obj/item/weapon/gun/spray/hydrazine_torch/Initialize()
 	.=..()
 
-	tank = new /obj/item/weapon/reagent_containers/glass/fuel_tank(src)
+	tank = new tank(src)
 	update_fuel()
 	update_firemode()
 
-/obj/item/weapon/gun/spray/hydrazine_torch/fuel/Initialize()
-	.=..()
-	QDEL_NULL(tank)
-	tank = new /obj/item/weapon/reagent_containers/glass/fuel_tank/fuel(src)
-	update_fuel()
-	update_firemode()
+/obj/item/weapon/gun/spray/hydrazine_torch/fuel
+	tank = /obj/item/weapon/reagent_containers/glass/fuel_tank/fuel
 
-/obj/item/weapon/gun/spray/hydrazine_torch/hydrazine/Initialize()
-	.=..()
-	QDEL_NULL(tank)
-	tank = new /obj/item/weapon/reagent_containers/glass/fuel_tank/hydrazine(src)
-	update_fuel()
-	update_firemode()
+/obj/item/weapon/gun/spray/hydrazine_torch/hydrazine
+	tank = /obj/item/weapon/reagent_containers/glass/fuel_tank/hydrazine
 
 
 /obj/item/weapon/gun/spray/hydrazine_torch/examine(var/mob/user)
@@ -184,11 +176,15 @@
 		update_icon()
 	playsound(src, pick(fire_sound), VOLUME_MID, TRUE)
 
+//We don't need it
+/obj/item/weapon/gun/spray/hydrazine_torch/toggle_safety_verb()
+	set hidden = TRUE
+	.=..()
 
 /obj/item/weapon/gun/spray/hydrazine_torch/verb/toggle_pilot_light()
-	set name = "Toggle pilot light"
+	set name = "Toggle Pilot Light"
 	set src in usr
-	set category = null
+	set category = "Object"
 
 	if (pilot_light == -1) //-1 indicates "currently being lit"
 		return //Prevents spamclicks breaking things
@@ -396,6 +392,12 @@
 		/obj/item/weapon/gun/spray/hydrazine_torch
 	)
 
+/obj/item/weapon/reagent_containers/glass/fuel_tank/Initialize()
+	.=..()
+	.=INITIALIZE_HINT_LATELOAD
+
+/obj/item/weapon/reagent_containers/glass/fuel_tank/LateInitialize()
+	check_fuel_type_and_contamination()
 
 /obj/item/weapon/reagent_containers/glass/fuel_tank/examine(var/mob/user)
 	.=..()
@@ -420,6 +422,7 @@
 
 //To save processing, lets not recheck the fuel unless something other than our designated fuel went in or out
 /obj/item/weapon/reagent_containers/glass/fuel_tank/on_reagent_change(var/reagent_type, var/delta)
+	.=..()
 	if (reagent_type != fueltype)
 		check_fuel_type_and_contamination()
 
@@ -430,18 +433,19 @@
 	2. Determines how contaminated the tank is
 */
 /obj/item/weapon/reagent_containers/glass/fuel_tank/proc/check_fuel_type_and_contamination()
-	fueltype = /datum/reagent/fuel
-
 	var/contaminants = reagents.total_volume
 
 	var/quantity_fuel = reagents.get_reagent_amount(/datum/reagent/fuel)
 	var/quantity_hydrazine = reagents.get_reagent_amount(/datum/reagent/hydrazine)
 
 	if (quantity_hydrazine > quantity_fuel)
+		name = "fuel tank (hydrazine)"
 		fueltype = /datum/reagent/hydrazine
 		vacuum_burn = TRUE
 		contaminants -= quantity_hydrazine
 	else
+		name = "fuel tank (gasoline)"
+		fueltype = /datum/reagent/fuel
 		vacuum_burn = FALSE
 		contaminants -= quantity_fuel
 
@@ -458,20 +462,9 @@
 /*
 	Prefilled subtypes
 */
-/obj/item/weapon/reagent_containers/glass/fuel_tank/fuel
-	name = "fuel tank (gasoline)"
 /obj/item/weapon/reagent_containers/glass/fuel_tank/fuel/Initialize()
 	.=..()
 	reagents.add_reagent(/datum/reagent/fuel, 400)		//Intentionally low since it is so strong. Still enough to knock someone out.
-
-
-
-/obj/item/weapon/reagent_containers/glass/fuel_tank/hydrazine
-	name = "fuel tank (hydrazine)"
-	vacuum_burn = TRUE
-
-/obj/item/weapon/reagent_containers/glass/fuel_tank/hydrazine
-	fueltype = /datum/reagent/hydrazine
 
 /obj/item/weapon/reagent_containers/glass/fuel_tank/hydrazine/Initialize()
 	.=..()
