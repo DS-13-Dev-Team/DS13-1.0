@@ -404,6 +404,7 @@
 #include "code\datums\extensions\multitool\items\cable.dm"
 #include "code\datums\extensions\multitool\items\items.dm"
 #include "code\datums\extensions\updating\impaired_locomotion.dm"
+#include "code\datums\extensions\updating\large_atom.dm"
 #include "code\datums\helper_datums\construction_datum.dm"
 #include "code\datums\helper_datums\dist_check.dm"
 #include "code\datums\helper_datums\events.dm"

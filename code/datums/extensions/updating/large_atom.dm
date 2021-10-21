@@ -13,6 +13,10 @@
 /datum/extension/updating/large_atom
 	var/list/turfs_occupied = list()
 
+/datum/extension/updating/large_atom/Initialize()
+	var/atom/movable/A = holder
+	GLOB.moved_event.register(A, src, /datum/extension/updating/large_atom/update)
+
 
 /datum/extension/updating/large_atom/update()
 
