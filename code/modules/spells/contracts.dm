@@ -17,7 +17,7 @@
 		to_chat(user, "You can't contract with yourself!")
 		return
 
-	var/ans = alert(user,"The contract clearly states that signing this contract will bind your soul to \the [contract_master]. Are you sure you want to continue?","[src]","Yes","No")
+	var/ans = tgui_alert(user,"The contract clearly states that signing this contract will bind your soul to \the [contract_master]. Are you sure you want to continue?","[src]",list("Yes","No"))
 
 	if(ans == "Yes")
 		user.visible_message("\The [user] signs the contract, their body glowing a deep yellow.")

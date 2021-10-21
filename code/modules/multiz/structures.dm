@@ -136,9 +136,9 @@
 		to_chat(M, "<span class='notice'>\The [src] is incomplete and can't be climbed.</span>")
 		return
 	if(target_down && target_up)
-		var/direction = alert(M,"Do you want to go up or down?", "Ladder", "Up", "Down", "Cancel")
+		var/direction = tgui_alert(M,"Do you want to go up or down?", "Ladder", list("Up", "Down", "Cancel"))
 
-		if(direction == "Cancel")
+		if(direction == "Cancel"||!direction)
 			return
 
 		if(!M.may_climb_ladders(src))

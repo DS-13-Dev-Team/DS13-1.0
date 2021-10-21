@@ -57,7 +57,7 @@
 	set popup_menu = 0
 	if(usr!=src.occupant)
 		return
-	var/new_damtype = alert(src.occupant,"Melee Damage Type",null,"Brute","Fire","Toxic")
+	var/new_damtype = tgui_alert(src.occupant,"Melee Damage Type", "Choose Damage Type",list("Brute","Fire","Toxic"))
 	switch(new_damtype)
 		if("Brute")
 			damtype = "brute"
@@ -65,7 +65,9 @@
 			damtype = "fire"
 		if("Toxic")
 			damtype = "tox"
-	src.occupant_message("Melee damage type switched to [new_damtype ]")
+		if(null)
+			return
+	src.occupant_message("Melee damage type switched to [new_damtype]")
 	return
 
 /obj/mecha/combat/phazon/get_commands()

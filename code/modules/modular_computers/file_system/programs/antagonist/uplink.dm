@@ -24,7 +24,7 @@
 	if(istype(computer) && istype(prog))
 		if(computer.hidden_uplink && prog.password)
 			if(prog.authenticated)
-				if(alert(user, "Resume or close and secure?", name, "Resume", "Close") == "Resume")
+				if(tgui_alert(user, "Resume or close and secure?", name, list("Resume", "Close")) == "Resume")
 					computer.hidden_uplink.trigger(user)
 					return
 			else if(computer.hidden_uplink.check_trigger(user, input(user, "Please enter your unique tax ID:", "Authentication"), prog.password))

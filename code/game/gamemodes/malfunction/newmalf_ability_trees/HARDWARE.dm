@@ -23,7 +23,7 @@
 		user.bombing_core = 0
 		return
 
-	var/choice = alert("Really destroy core?", "Core self-destruct", "YES", "NO")
+	var/choice = tgui_alert(usr, "Really destroy core?", "Core self-destruct", list("YES", "NO"))
 	if(choice != "YES")
 		return
 
@@ -79,7 +79,7 @@
 		to_chat(user, "You attempt to activate your hardware piece, but it does not work. It must be damaged.")
 		return
 
-	var/choice = alert("Really activate your hardware? It will advance your research by one tier, but may only be used once.", "Rapid System Upgrade", "YES", "NO")
+	var/choice = tgui_alert(usr, "Really activate your hardware? It will advance your research by one tier, but may only be used once.", "Rapid System Upgrade", list("YES", "NO"))
 	if(choice != "YES")
 		return
 
@@ -110,7 +110,7 @@
 		user.bombing_station = 0
 		return
 
-	var/choice = alert("Really destroy installation?", "Installation self-destruct", "YES", "NO")
+	var/choice = tgui_alert(usr, "Really destroy installation?", "Installation self-destruct", list("YES", "NO"))
 	if(choice != "YES")
 		return
 	if(!ability_prechecks(user, 0, 0))

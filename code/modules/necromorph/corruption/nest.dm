@@ -91,12 +91,12 @@
 
 		if (upgrade_level < upgrade_multipliers.len)
 			var/upgrade_cost = spawner_species.biomass*upgrade_multipliers[upgrade_level+1]
-			var/response = alert(user, "This nest is already spawning [spawner_species.name_plural]. You may upgrade it for an additional cost of [upgrade_cost] biomass.\n\
+			var/response = tgui_alert(user, "This nest is already spawning [spawner_species.name_plural]. You may upgrade it for an additional cost of [upgrade_cost] biomass.\n\
 			\n\
 			Biomass Investment: 		[biomass]	->	[biomass+upgrade_cost]\n\
 			Max Ready/Active Spawns: 	[max_spawns]	->	[max_spawns+1]\n\
 			Spawn Growth Time: 		[time2text(spawner_species.biomass_reclamation_time*upgrade_multipliers[upgrade_level], "mm:ss")]	->	[time2text(spawner_species.biomass_reclamation_time*upgrade_multipliers[upgrade_level+1], "mm:ss")]",
-			"Spawning confirmation","Upgrade","Cancel")
+			"Spawning confirmation", list("Upgrade","Cancel"))
 
 			if (response == "Upgrade")
 				if (!increase_upgrade_level())
@@ -234,7 +234,7 @@
 		upgrade_spawner(user)
 	else
 		if (spawns_ready)
-			var/response = alert(user, "[spawner_species.name_plural]: [spawns_ready]\n Would you like to spawn and take control of a [spawner_species.name] ?","Spawning confirmation","Yes","No")
+			var/response = tgui_alert(user, "[spawner_species.name_plural]: [spawns_ready]\n Would you like to spawn and take control of a [spawner_species.name] ?","Spawning confirmation", list("Yes","No"))
 			if (response == "Yes")
 				//This could take an indeterminate amount of time, do more safety checks when we get response
 				if (QDELETED(user))

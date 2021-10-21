@@ -329,7 +329,7 @@ var/list/ai_verbs_default = list(
 	if(check_unable(AI_CHECK_WIRELESS))
 		return
 
-	var/confirm = alert("Are you sure you want to evacuate?", "Confirm Evacuation", "Yes", "No")
+	var/confirm = tgui_alert(src, "Are you sure you want to evacuate?", "Confirm Evacuation", list("Yes", "No"))
 
 	if(check_unable(AI_CHECK_WIRELESS))
 		return
@@ -346,7 +346,7 @@ var/list/ai_verbs_default = list(
 	if(check_unable(AI_CHECK_WIRELESS))
 		return
 
-	var/confirm = alert("Are you sure you want to cancel the evacuation?", "Confirm Cancel", "Yes", "No")
+	var/confirm = tgui_alert(src, "Are you sure you want to cancel the evacuation?", "Confirm Cancel", list("Yes", "No"))
 	if(check_unable(AI_CHECK_WIRELESS))
 		return
 
@@ -517,26 +517,23 @@ var/list/ai_verbs_default = list(
 	if(check_unable())
 		return
 
-	var/input
-	if(alert("Would you like to select a hologram based on a crew member or switch to unique avatar?",,"Crew Member","Unique")=="Crew Member")
-
+	var/input = tgui_alert(src, "Would you like to select a hologram based on a crew member or switch to unique avatar?", "Hologram ", list("Crew Member","Unique"))
+	if(input == "Crew Member")
 		var/personnel_list[] = list()
-
 		for(var/datum/computer_file/report/crew_record/t in GLOB.all_crew_records)//Look in data core locked.
 			personnel_list["[t.get_name()]: [t.get_rank()]"] = t.photo_front//Pull names, rank, and image.
 
 		if(personnel_list.len)
-			input = input("Select a crew member:") as null|anything in personnel_list
-			var/icon/character_icon = personnel_list[input]
+			var/icon/character_icon = personnel_list[input("Select a crew member:") as null|anything in personnel_list]
 			if(character_icon)
 				qdel(holo_icon)//Clear old icon so we're not storing it in memory.
 				qdel(holo_icon_longrange)
 				holo_icon = getHologramIcon(icon(character_icon))
 				holo_icon_longrange = getHologramIcon(icon(character_icon), hologram_color = HOLOPAD_LONG_RANGE)
 		else
-			alert("No suitable records found. Aborting.")
+			tgui_alert(src, "No suitable records found. Aborting.")
 
-	else
+	else if(input == "Unique")
 		var/list/hologramsAICanUse = list()
 		var/holograms_by_type = decls_repository.get_decls_of_subtype(/decl/ai_holo)
 		for (var/holo_type in holograms_by_type)

@@ -12,7 +12,7 @@
 	if(!check_rights(R_ADMIN|R_MOD|R_DEBUG))
 		return
 	if(!CONFIG_GET(flag/allow_admin_jump))
-		return alert("Admin jumping disabled")
+		return tgui_alert(src, "Admin jumping disabled")
 
 	var/list/areas = area_repository.get_areas_by_z_level()
 	var/area/A = areas[selected_area]
@@ -26,7 +26,7 @@
 	if(!check_rights(R_ADMIN|R_MOD|R_DEBUG))
 		return
 	if(!CONFIG_GET(flag/allow_admin_jump))
-		return alert("Admin jumping disabled")
+		return tgui_alert(src, "Admin jumping disabled")
 
 	log_and_message_admins("jumped to [T.x],[T.y],[T.z] in [T.loc]")
 	mob.jumpTo(T)
@@ -49,7 +49,7 @@
 			else
 				to_chat(mob, "This mob is not located in the game world.")
 	else
-		alert("Admin jumping disabled")
+		tgui_alert(src, "Admin jumping disabled")
 
 /client/proc/jumptocoord(tx as num, ty as num, tz as num)
 	set category = "Admin"
@@ -59,7 +59,7 @@
 		return
 
 	if(!CONFIG_GET(flag/allow_admin_jump))
-		alert("Admin jumping disabled")
+		tgui_alert(src, "Admin jumping disabled")
 		return
 	if(!mob)
 		return
@@ -92,7 +92,7 @@
 		mob.jumpTo(get_turf(M))
 		feedback_add_details("admin_verb","JK") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	else
-		alert("Admin jumping disabled")
+		tgui_alert(usr, "Admin jumping disabled")
 
 /client/proc/Getmob(var/mob/M in SSmobs.mob_list)
 	set category = "Admin"
@@ -105,7 +105,7 @@
 		M.jumpTo(get_turf(mob))
 		feedback_add_details("admin_verb","GM") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	else
-		alert("Admin jumping disabled")
+		tgui_alert(usr, "Admin jumping disabled")
 
 /client/proc/Getkey()
 	set category = "Admin"
@@ -131,7 +131,7 @@
 			M.jumpTo(get_turf(mob))
 			feedback_add_details("admin_verb","GK") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	else
-		alert("Admin jumping disabled")
+		tgui_alert(usr, "Admin jumping disabled")
 
 /client/proc/sendmob(var/mob/M in sortmobs())
 	set category = "Admin"
@@ -139,7 +139,7 @@
 	if(!check_rights(R_ADMIN|R_MOD|R_DEBUG))
 		return
 	if(!CONFIG_GET(flag/allow_admin_jump))
-		alert("Admin jumping disabled")
+		tgui_alert(usr, "Admin jumping disabled")
 		return
 
 	var/list/areas = area_repository.get_areas_by_name()

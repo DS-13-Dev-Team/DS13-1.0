@@ -200,12 +200,12 @@
 		. = TOPIC_REFRESH
 
 	else if(href_list["reset_tech"])
-		var/choice = alert(user, "Technology Data Rest", "Are you sure you want to reset this technology to its default data? Data lost cannot be recovered.", "Continue", "Cancel")
+		var/choice = tgui_alert(user, "Technology Data Rest", "Are you sure you want to reset this technology to its default data? Data lost cannot be recovered.", list("Continue", "Cancel"))
 		if(choice == "Continue" && CanUseTopic(user, state))
 			temp_server.files.forget_all(href_list["reset_tech"])
 
 	else if(href_list["reset_techology"])
-		var/choice = alert("Techology Deletion", "Are you sure you want to delete this techology? Data lost cannot be recovered.", "Continue", "Cancel")
+		var/choice = tgui_alert(user, "Techology Deletion", "Are you sure you want to delete this techology? Data lost cannot be recovered.", list("Continue", "Cancel"))
 
 		if(choice == "Continue" && CanUseTopic(user, state))
 			temp_server.files.forget_techology( temp_server.files.researched_tech[href_list["reset_design"]] )

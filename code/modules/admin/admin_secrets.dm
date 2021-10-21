@@ -62,7 +62,7 @@ var/datum/admin_secrets/admin_secrets = new()
 
 /datum/admin_secret_item/proc/can_execute(var/mob/user)
 	if(can_view(user))
-		if(!warn_before_use || alert("Execute the command '[name]'?[istext(warn_before_use) ? " [warn_before_use]" : ""]", name, "No","Yes") == "Yes")
+		if(!warn_before_use || tgui_alert(user, "Execute the command '[name]'?[istext(warn_before_use) ? " [warn_before_use]" : ""]", name, list("No","Yes")) == "Yes")
 			return can_view(user)
 	return FALSE
 

@@ -210,7 +210,7 @@
 	if(!get_default_access(user))
 		return 1 //No program access if you don't have the right access.
 	if(text2num(href_list["warning"])) //Gives the user a chance to avoid losing unsaved reports.
-		if(alert(user, "Are you sure you want to do this? Data may be lost.",, "Yes.", "No.") == "No.")
+		if(tgui_alert(user, "Are you sure you want to do this? Data may be lost.", "Confirmation", list("Yes", "No")) != "Yes")
 			return 1 //If yes, proceed to the actual action instead.
 
 	if(href_list["details"])
@@ -325,12 +325,12 @@
 			to_chat(user, "<span class='warning'>Please fill in the crew manifest and departure time first.</span>")
 			return 1
 		var/place = selected_shuttle.name
-		if(alert(user, "Would you like to choose a custom gathering point, or just use [place]?", "Announcement Creation", "Default", "Custom") == "Custom")
+		if(tgui_alert(user, "Would you like to choose a custom gathering point, or just use [place]?", "Announcement Creation", list("Default", "Custom")) == "Custom")
 			var/list/areas = area_repository.get_areas_by_name()
 			var/area/A = input(user, "Pick a custom location from the list.", "Announcement Creation") as null|anything in areas
 			if(A)
 				place = A
-		if(alert(user, "This will make a radio announcement summoning all mission crew to the [place]. Are you sure you want to do this?",, "Yes.", "No.") == "No.")
+		if(tgui_alert(user, "This will make a radio announcement summoning all mission crew to the [place]. Are you sure you want to do this?", "Confirmation", list("Yes", "No")) != "Yes")
 			return 1
 		var/datum/shuttle_log/my_log = SSshuttle.shuttle_logs[selected_shuttle]
 		if(world.time - my_log.last_spam >= 1 MINUTE) //Slow down with that spam button
