@@ -123,3 +123,7 @@
 2021-10-20:
   Nanako:
   - bugfix: Fixed lurker malo skin not appearing randomly
+2021-10-22:
+  DTraitor:
+  - qol: All alerts were replaced with TGUI alerts.
+  - bugfix: Fixes bug when hydrazine torch didn't shoot in vacuum.
