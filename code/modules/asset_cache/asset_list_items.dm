@@ -190,7 +190,7 @@
 
 /datum/asset/simple/chem_master
 	keep_local_name = TRUE
-	assets = ["pillA.png" = icon('icons/obj/chemical.dmi', "pillA")
+	assets = list("pillA.png" = icon('icons/obj/chemical.dmi', "pillA"))
 
 /datum/asset/simple/chem_master/register()
 	for(var/i = 1 to 25)
