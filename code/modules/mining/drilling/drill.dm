@@ -218,7 +218,7 @@
 		if(istype(P, /obj/item/weapon/stock_parts/capacitor))
 			charge_multiplier += P.rating
 		if(istype(P, /obj/item/weapon/stock_parts/scanning_module))
-			dig_chance = 70 + (10*P.rating)
+			dig_chance = 55 + (15*P.rating)
 	cell = locate(/obj/item/weapon/cell) in component_parts
 	if(charge_multiplier)
 		actual_power_usage = base_power_usage / charge_multiplier
