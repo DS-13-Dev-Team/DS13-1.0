@@ -187,3 +187,14 @@
 		handle_pending_loadouts()
 
 	.=..()
+
+/datum/asset/simple/chem_master
+	keep_local_name = TRUE
+	assets = ["pillA.png" = icon('icons/obj/chemical.dmi', "pillA")
+
+/datum/asset/simple/chem_master/register()
+	for(var/i = 1 to 25)
+		assets["pill[i].png"] = icon('icons/obj/chemical.dmi', "pill[i]")
+	for(var/i = 1 to 4)
+		assets["bottle-[i].png"] = icon('icons/obj/chemical.dmi', "bottle-[i]")
+	.=..()

@@ -229,6 +229,7 @@
 		else
 			return FALSE
 	add_fingerprint(usr)
+	SStgui.update_uis(src)
 
 /obj/machinery/sleeper/attack_ai(var/mob/user)
 	return attack_hand(user)
@@ -241,6 +242,7 @@
 				return
 			beaker = I
 			user.visible_message("<span class='notice'>\The [user] adds \a [I] to \the [src].</span>", "<span class='notice'>You add \a [I] to \the [src].</span>")
+			SStgui.update_uis(src)
 		else
 			to_chat(user, "<span class='warning'>\The [src] has a beaker already.</span>")
 		return
@@ -265,6 +267,7 @@
 		to_chat(user, "<span class='warning'>Unbuckle the subject before attempting to move them.</span>")
 		return
 	go_in(target, user)
+	SStgui.update_uis(src)
 
 /obj/machinery/sleeper/relaymove(var/mob/user)
 	..()
@@ -338,6 +341,7 @@
 	update_use_power(1)
 	update_icon()
 	toggle_filter()
+	SStgui.update_uis(src)
 
 /obj/machinery/sleeper/proc/remove_beaker()
 	if(beaker)
