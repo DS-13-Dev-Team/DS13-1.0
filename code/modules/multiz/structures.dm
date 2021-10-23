@@ -247,6 +247,8 @@
 	if (above && istype(above, /turf/simulated/open))
 		LAZYREMOVE(above.zstructures, src)
 
+	.=..()
+
 /obj/structure/stairs/Initialize()
 	for(var/turf/turf in locs)
 		var/turf/simulated/open/above = GetAbove(turf)
