@@ -34,6 +34,7 @@
 	//Upgrades
 	var/harvest_speed
 	var/capacity
+	var/dig_chance
 	var/obj/item/weapon/cell/cell = null
 
 	//Flags
@@ -75,6 +76,10 @@
 	else if(istype(get_turf(src), /turf/simulated/floor))
 		var/turf/simulated/floor/T = get_turf(src)
 		T.ex_act(2.0, src)
+
+	// prob() won't work here
+	if(rand(1, 100) < dig_chance)
+		return
 
 	//Dig out the tasty ores.
 	if(resource_field.len)
@@ -202,6 +207,7 @@
 /obj/machinery/mining/drill/RefreshParts()
 	harvest_speed = 0
 	capacity = 0
+	dig_chance = 0
 	var/charge_multiplier = 0
 
 	for(var/obj/item/weapon/stock_parts/P in component_parts)
@@ -211,6 +217,8 @@
 			capacity = 200 * P.rating
 		if(istype(P, /obj/item/weapon/stock_parts/capacitor))
 			charge_multiplier += P.rating
+		if(istype(P, /obj/item/weapon/stock_parts/scanning_module))
+			dig_chance = 55 + (15*P.rating)
 	cell = locate(/obj/item/weapon/cell) in component_parts
 	if(charge_multiplier)
 		actual_power_usage = base_power_usage / charge_multiplier
