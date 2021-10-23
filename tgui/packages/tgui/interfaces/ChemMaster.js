@@ -1,6 +1,6 @@
 import { Fragment } from 'inferno';
 import { useBackend } from "../backend";
-import { Box, Button, Dropdown, Flex, Icon, LabeledList, Section, Stack, Input } from "../components";
+import { Box, Button, Dropdown, Stack, Icon, LabeledList, Section, Input } from "../components";
 import { Window } from "../layouts";
 import { BeakerContents } from './common/BeakerContents';
 import { ComplexModal, modalOpen, modalRegisterBodyOverride } from './common/ComplexModal';
@@ -256,8 +256,8 @@ const ChemMasterProduction = (props, context) => {
     return (
       <Section
         title="Production">
-        <Flex height="100%">
-          <Flex.Item
+        <Stack height="100%">
+          <Stack.Item
             grow
             align="center"
             textAlign="center"
@@ -269,8 +269,8 @@ const ChemMasterProduction = (props, context) => {
               size="5"
             /><br />
             Buffer is empty.
-          </Flex.Item>
-        </Flex>
+          </Stack.Item>
+        </Stack>
       </Section>
     );
   }

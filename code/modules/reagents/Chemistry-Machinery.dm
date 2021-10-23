@@ -210,9 +210,6 @@
 					var/list/choices = list()
 					for(var/i = 1 to MAX_PILL_SPRITE)
 						choices += "pill[i].png"
-					// Animated pills
-					if(check_rights(R_ADMIN, 0, usr) || check_rights(R_DEBUG, 0, usr))
-						choices += "pillA.png"
 					ui_modal_bento(src, id, "Please select the new style for pills:", null, arguments, pillsprite, choices)
 				if("create_bottle")
 					if(condi || !reagents.total_volume)
@@ -291,13 +288,10 @@
 						return
 					ui_act("modal_open", list("id" = "create_pill", "arguments" = list("num" = answer)), ui, state)
 				if("change_pill_style")
-					if(answer == "26" && (check_rights(R_ADMIN, 0, usr) || check_rights(R_DEBUG, 0, usr)))
-						pillsprite = "A"
-					else
-						var/new_style = CLAMP(text2num(answer) || 0, 0, MAX_PILL_SPRITE)
-						if(!new_style)
-							return
-						pillsprite = new_style
+					var/new_style = CLAMP(text2num(answer) || 0, 0, MAX_PILL_SPRITE)
+					if(!new_style)
+						return
+					pillsprite = new_style
 				if("create_bottle")
 					if(condi || !reagents.total_volume)
 						return
