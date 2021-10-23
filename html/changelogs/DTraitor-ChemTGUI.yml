@@ -57,4 +57,4 @@ delete-after: True
 changes:
   - qol: "Converted Chemical Dispenser, ChemMaster and Reagent Grinder to TGUI"
   - rscadd: "Added pill bottle customisation to ChemMaster UI."
-  - bugfix: "Fixed an bug where the pill bottle wouldn't do anything when you click human while targeting mouth."
+  - bugfix: "Fixed a bug where the pill bottle wouldn't do anything when you click human while targeting mouth."
