@@ -7,12 +7,16 @@ const formatUnits = a => a + ' unit' + (a === 1 ? '' : 's');
  * @property {object} props
  */
 export const BeakerContents = props => {
-  const { beakerLoaded, beakerContents = [], buttons } = props;
+  const { beakerLoaded, beakerContents = [], buttons, buffer } = props;
   return (
     <Box>
       {!beakerLoaded && (
         <Box color="label">
           No beaker loaded.
+        </Box>
+      ) || (beakerContents.length === 0 && buffer) && (
+        <Box color="label">
+          Buffer is empty.
         </Box>
       ) || beakerContents.length === 0 && (
         <Box color="label">

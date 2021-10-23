@@ -30,9 +30,9 @@
 		"CLEAR" = "Default",
 		COLOR_RED = "Red",
 		COLOR_GREEN = "Green",
-		COLOR_PALE_BTL_GREEN = "Pale green",
+		COLOR_PALE_BTL_GREEN = "Pale Green",
 		COLOR_BLUE = "Blue",
-		COLOR_CYAN_BLUE = "Light blue",
+		COLOR_CYAN_BLUE = "Light Blue",
 		COLOR_TEAL = "Teal",
 		COLOR_YELLOW = "Yellow",
 		COLOR_ORANGE = "Orange",
@@ -88,10 +88,6 @@
 		if(!user.unEquip(B, src))
 			return
 		loaded_pill_bottle = B
-//		var/list/uis = SStgui.get_open_uis(src)
-//		if(uis)
-//			for(var/datum/tgui/ui in uis)
-//				ui.user << browse_rsc(getFlatIcon(loaded_pill_bottle), "loaded_pill_bottle.png")
 		to_chat(user, "You add the pill bottle into the dispenser slot!")
 
 	SStgui.update_uis(src)
@@ -103,28 +99,24 @@
 
 /obj/machinery/chem_master/ui_assets(mob/user)
 	return list(
+		get_asset_datum(/datum/asset/spritesheet/simple/pill_bottles),
 		get_asset_datum(/datum/asset/simple/chem_master),
 	)
 
 /obj/machinery/chem_master/tgui_interact(mob/user, datum/tgui/ui = null)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		// Probably not the best way but it works
-//		if(loaded_pill_bottle)
-//			user << browse_rsc(getFlatIcon(loaded_pill_bottle), "loaded_pill_bottle.png")
 		ui = new(user, src, "ChemMaster", name)
 		ui.open()
 
 /obj/machinery/chem_master/ui_data(mob/user)
 	var/list/data = list()
 
-	data["condi"] = condi
-	data["pill_bottle_sprite"] = "loaded_pill_bottle.png"
 	data["loaded_pill_bottle"] = !!loaded_pill_bottle
 	if(loaded_pill_bottle)
 		data["loaded_pill_bottle_name"] = loaded_pill_bottle.name
-		data["loaded_pill_bottle_color"] = pill_bottle_wrappers[loaded_pill_bottle.wrapper_color] || "Default"
-		data["loaded_pill_bottle_color_real"] = loaded_pill_bottle.wrapper_color || "#FFFFFF"
+		data["loaded_pill_bottle_second_name"] = replace_characters(loaded_pill_bottle.name, list("pill bottle"="", " ("="", ")"=""))
+		data["loaded_pill_bottle_color"] = sanitizeFileName(pill_bottle_wrappers[loaded_pill_bottle.wrapper_color]) || "Default"
 		data["loaded_pill_bottle_contents_len"] = loaded_pill_bottle.contents.len
 		data["loaded_pill_bottle_storage_slots"] = loaded_pill_bottle.max_storage_space
 
@@ -133,7 +125,7 @@
 		var/list/beaker_reagents_list = list()
 		data["beaker_reagents"] = beaker_reagents_list
 		for(var/datum/reagent/R in beaker.reagents.reagent_list)
-			beaker_reagents_list[++beaker_reagents_list.len] = list("name" = R.name, "volume" = R.volume, "description" = R.description, "id" = R.type)
+			beaker_reagents_list[++beaker_reagents_list.len] = list("name" = R.name, "volume" = R.volume, "id" = R.type, "description" = R.description)
 
 		var/list/buffer_reagents_list = list()
 		data["buffer_reagents"] = buffer_reagents_list
@@ -145,10 +137,17 @@
 	data["mode"] = mode
 	data["printing"] = printing
 
-	// Transfer modal information if there is one
-	data["modal"] = ui_modal_data(src)
-
 	return data
+
+/obj/machinery/chem_master/ui_static_data(mob/user)
+	. = list()
+	.["condi"] = condi
+	var/colors = list()
+	for(var/A in pill_bottle_wrappers)
+		colors += pill_bottle_wrappers[A]
+	// Transfer modal information if there is one
+	.["modal"] = ui_modal_data(src)
+	.["pill_bottle_colors"] = colors
 
 /**
   * Called in tgui_act() to process modal actions
@@ -180,15 +179,6 @@
 
 					arguments["analysis"] = result
 					ui_modal_message(src, id, "", null, arguments)
-				if("change_pill_bottle_name")
-					if(!loaded_pill_bottle)
-						return
-					ui_modal_input(src, id, "Please enter pill bottle name:", null, arguments, replace_characters(loaded_pill_bottle.name, list("pill bottle"="", " ("="", ")"="")), MAX_CUSTOM_NAME_LEN)
-				if("change_pill_bottle_style")
-					if(!loaded_pill_bottle)
-						return
-					var/current = pill_bottle_wrappers[loaded_pill_bottle.wrapper_color] || "Default"
-					ui_modal_choice(src, id, "Please select a pill bottle wrapper:", null, arguments, current, pill_bottle_wrappers)
 				if("addcustom")
 					if(!beaker || !beaker.reagents.total_volume)
 						return
@@ -220,6 +210,9 @@
 					var/list/choices = list()
 					for(var/i = 1 to MAX_PILL_SPRITE)
 						choices += "pill[i].png"
+					// Animated pills
+					if(check_rights(R_ADMIN, 0, usr) || check_rights(R_DEBUG, 0, usr))
+						choices += "pillA.png"
 					ui_modal_bento(src, id, "Please select the new style for pills:", null, arguments, pillsprite, choices)
 				if("create_bottle")
 					if(condi || !reagents.total_volume)
@@ -246,29 +239,6 @@
 		if(TGUI_MODAL_ANSWER)
 			var/answer = params["answer"]
 			switch(id)
-				if("change_pill_bottle_name")
-					if(!loaded_pill_bottle)
-						return
-					answer = replace_characters(answer, list("(" = "", ")" =""))
-					if(!answer || !replace_characters(answer, list(" " = "")))
-						loaded_pill_bottle.name = "pill bottle"
-					else
-						loaded_pill_bottle.name = "pill bottle ([answer])"
-				if("change_pill_bottle_style")
-					if(!pill_bottle_wrappers || !loaded_pill_bottle) // wat?
-						return
-					var/color = "CLEAR"
-					for(var/col in pill_bottle_wrappers)
-						var/col_name = pill_bottle_wrappers[col]
-						if(col_name == answer)
-							color = col
-							break
-					if(color && color != "CLEAR")
-						loaded_pill_bottle.wrapper_color = color
-					else
-						loaded_pill_bottle.wrapper_color = null
-					loaded_pill_bottle.update_icon()
-					//usr << browse_rsc(getFlatIcon(loaded_pill_bottle), "loaded_pill_bottle.png")
 				if("addcustom")
 					var/amount = isgoodnumber(text2num(answer))
 					if(!amount || !arguments["id"])
@@ -292,7 +262,8 @@
 				if("create_pill")
 					if(condi || !reagents.total_volume)
 						return
-					var/count = CLAMP(round(text2num(arguments["num"]) || 0), 0, MAX_MULTI_AMOUNT)
+					var/ans = text2num(arguments["num"])
+					var/count = CLAMP(round(ans), 0, MAX_MULTI_AMOUNT)
 					if(!count)
 						return
 
@@ -320,10 +291,13 @@
 						return
 					ui_act("modal_open", list("id" = "create_pill", "arguments" = list("num" = answer)), ui, state)
 				if("change_pill_style")
-					var/new_style = CLAMP(text2num(answer) || 0, 0, MAX_PILL_SPRITE)
-					if(!new_style)
-						return
-					pillsprite = new_style
+					if(answer == "26" && (check_rights(R_ADMIN, 0, usr) || check_rights(R_DEBUG, 0, usr)))
+						pillsprite = "A"
+					else
+						var/new_style = CLAMP(text2num(answer) || 0, 0, MAX_PILL_SPRITE)
+						if(!new_style)
+							return
+						pillsprite = new_style
 				if("create_bottle")
 					if(condi || !reagents.total_volume)
 						return
@@ -356,6 +330,8 @@
 					bottlesprite = new_style
 				else
 					return FALSE
+		if(TGUI_MODAL_CLOSE)
+			update_static_data(usr, ui)
 		else
 			return FALSE
 
@@ -364,6 +340,7 @@
 		return TRUE
 
 	if(ui_act_modal(action, params, ui, state))
+		update_static_data(usr, ui)
 		SStgui.update_uis(src)
 		return TRUE
 
@@ -409,6 +386,31 @@
 				printing = FALSE
 		else
 			. = FALSE
+
+	if(loaded_pill_bottle)
+		switch(action)
+			if("change_pill_bottle_style")
+				if(!pill_bottle_wrappers) // wat?
+					return
+				var/color = "CLEAR"
+				for(var/col in pill_bottle_wrappers)
+					var/col_name = pill_bottle_wrappers[col]
+					if(col_name == params["color"])
+						color = col
+						break
+				if(color && color != "CLEAR")
+					loaded_pill_bottle.wrapper_color = color
+				else
+					loaded_pill_bottle.wrapper_color = null
+				loaded_pill_bottle.update_icon()
+			if("change_pill_bottle_name")
+				if(!loaded_pill_bottle)
+					return
+				var/answer = replace_characters(params["name"], list("(" = "", ")" =""))
+				if(!answer || !replace_characters(answer, list(" " = "")))
+					loaded_pill_bottle.name = "pill bottle"
+				else
+					loaded_pill_bottle.name = "pill bottle ([answer])"
 
 	if(. || !beaker)
 		SStgui.update_uis(src)
@@ -506,7 +508,7 @@
 				return
 			src.beaker =  O
 			update_icon()
-			src.updateUsrDialog()
+			SStgui.update_uis(src)
 			return 0
 
 	if(holdingitems && holdingitems.len >= limit)
@@ -537,7 +539,7 @@
 		else
 			to_chat(user, "You fill \the [src] from \the [O].")
 
-		src.updateUsrDialog()
+		SStgui.update_uis(src)
 		return 0
 
 	if(istype(O,/obj/item/stack/material))
@@ -554,85 +556,69 @@
 	if(!user.unEquip(O, src))
 		return
 	holdingitems += O
-	src.updateUsrDialog()
+	SStgui.update_uis(src)
 	return 0
 
 /obj/machinery/reagentgrinder/attack_ai(mob/user as mob)
-	return 0
+	attack_hand(user)
 
 /obj/machinery/reagentgrinder/attack_hand(mob/user as mob)
-	interact(user)
-
-/obj/machinery/reagentgrinder/attack_robot(var/mob/user)
-	//Calling for adjacency as I don't think grinders are wireless.
-	if(Adjacent(user))
-		//Calling attack_hand(user) to make ensure no functionality is missed.
-		//If attack_hand is updated, this segment won't have to be updated as well.
-		return attack_hand(user)
-
-/obj/machinery/reagentgrinder/interact(mob/user as mob) // The microwave Menu
 	if(inoperable())
 		return
-	user.set_machine(src)
-	var/is_chamber_empty = 0
-	var/is_beaker_ready = 0
-	var/processing_chamber = ""
-	var/beaker_contents = ""
-	var/dat = list()
+	tgui_interact(user)
 
-	if(!inuse)
-		for (var/obj/item/O in holdingitems)
-			processing_chamber += "\A [O.name]<BR>"
+/obj/machinery/reagentgrinder/tgui_interact(mob/user, datum/tgui/ui = null)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "Grinder", name)
+		ui.open()
 
-		if (!processing_chamber)
-			is_chamber_empty = 1
-			processing_chamber = "Nothing."
-		if (!beaker)
-			beaker_contents = "<B>No beaker attached.</B><br>"
-		else
-			is_beaker_ready = 1
-			beaker_contents = "<B>The beaker contains:</B><br>"
-			var/anything = 0
-			for(var/datum/reagent/R in beaker.reagents.reagent_list)
-				anything = 1
-				beaker_contents += "[R.volume] - [R.name]<br>"
-			if(!anything)
-				beaker_contents += "Nothing<br>"
-
-
-		dat += {"
-	<b>Processing chamber contains:</b><br>
-	[processing_chamber]<br>
-	[beaker_contents]<hr>
-	"}
-		if (is_beaker_ready && !is_chamber_empty && !(stat & (NOPOWER|BROKEN)))
-			dat += "<A href='?src=\ref[src];action=grind'>Process the reagents</a><BR>"
-		if(holdingitems && holdingitems.len > 0)
-			dat += "<A href='?src=\ref[src];action=eject'>Eject the reagents</a><BR>"
-		if (beaker)
-			dat += "<A href='?src=\ref[src];action=detach'>Detach the beaker</a><BR>"
+/obj/machinery/reagentgrinder/ui_data(mob/user)
+	var/list/data = list()
+	var/list/processing = list()
+	for(var/obj/item/O in holdingitems)
+		processing += capitalize(O.name)
+	if(processing.len)
+		data["processing"] = processing
 	else
-		dat += "Please wait..."
-	dat = "<HEAD><TITLE>[name]</TITLE></HEAD><TT>[JOINTEXT(dat)]</TT>"
-	show_browser(user, strip_improper(dat), "window=reagentgrinder")
-	onclose(user, "reagentgrinder")
+		data["processing"] = FALSE
+	data["inuse"] = inuse
+	data["isBeakerLoaded"] = beaker ? 1 : 0
 
-/obj/machinery/reagentgrinder/OnTopic(user, href_list)
-	if(href_list["action"])
-		switch(href_list["action"])
-			if ("grind")
-				grind(user)
-			if("eject")
-				eject()
-			if ("detach")
-				detach()
-		interact(user)
-		return TOPIC_REFRESH
+	if(!beaker)
+		data["beakerCurrentVolume"] = null
+		data["beakerMaxVolume"] = null
+	else
+		data["beakerCurrentVolume"] = beaker.reagents.total_volume
+		data["beakerMaxVolume"] = beaker.reagents.maximum_volume
+
+	var/beakerContents[0]
+	if(beaker && beaker.reagents && beaker.reagents.reagent_list.len)
+		for(var/datum/reagent/R in beaker.reagents.reagent_list)
+			beakerContents.Add(list(list("name" = R.name, "volume" = R.volume)))
+	data["beakerContents"] = beakerContents
+
+	return data
+
+/obj/machinery/reagentgrinder/ui_act(action, list/params)
+	if(..())
+		return
+
+	switch(action)
+		if ("grind")
+			grind(usr)
+		if("eject")
+			eject()
+		if ("detach")
+			detach()
+	SStgui.update_uis(src)
 
 /obj/machinery/reagentgrinder/proc/detach()
 	if (!beaker)
 		return
 	beaker.dropInto(loc)
+	if(Adjacent(usr) && !issilicon(usr))
+		usr.put_in_hands(beaker)
 	beaker = null
 	update_icon()
 
@@ -643,6 +629,8 @@
 	for(var/obj/item/O in holdingitems)
 		O.loc = src.loc
 		holdingitems -= O
+		if(Adjacent(usr) && !issilicon(usr))
+			usr.put_in_hands(O)
 	holdingitems.Cut()
 
 

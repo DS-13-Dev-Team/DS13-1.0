@@ -1,4 +1,4 @@
-import { useBackend } from "../../backend";
+import { useBackend, useSharedState } from "../../backend";
 import { Box, Button, Dropdown, Flex, Input, Modal } from '../../components';
 
 let bodyOverrides = {};
@@ -69,6 +69,7 @@ const modalClose = (context, id) => {
  */
 export const ComplexModal = (props, context) => {
   const { data } = useBackend(context);
+  const [cur_value, setValue] = useSharedState(context, "value", null);
   if (!data.modal) {
     return;
   }
@@ -94,18 +95,19 @@ export const ComplexModal = (props, context) => {
   if (bodyOverrides[id]) {
     modalBody = bodyOverrides[id](data.modal, context);
   } else if (type === "input") {
-    let curValue = data.modal.value;
-    modalOnEnter = e => modalAnswer(context, id, curValue);
+    if (!cur_value) {
+      setValue(data.modal.value); }
+    modalOnEnter = e => modalAnswer(context, id, cur_value);
     modalBody = (
       <Input
-        value={data.modal.value}
+        value={cur_value}
         placeholder="ENTER to submit"
         width="100%"
         my="0.5rem"
         autoFocus
         autoSelect
         onInput={(_e, val) => {
-          curValue = val;
+          setValue(val);
         }}
       />
     );
@@ -115,7 +117,7 @@ export const ComplexModal = (props, context) => {
           icon="arrow-left"
           content="Cancel"
           color="grey"
-          onClick={() => modalClose(context)}
+          onClick={() => { modalClose(context); setValue(null); }}
         />
         <Button
           icon="check"
@@ -123,7 +125,8 @@ export const ComplexModal = (props, context) => {
           color="good"
           float="right"
           m="0"
-          onClick={() => modalAnswer(context, id, curValue)}
+          onClick={() => { modalAnswer(context, id, cur_value);
+            setValue(null); }}
         />
         <Box clear="both" />
       </Box>

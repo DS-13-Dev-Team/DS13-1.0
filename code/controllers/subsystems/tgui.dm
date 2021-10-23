@@ -180,25 +180,6 @@ SUBSYSTEM_DEF(tgui)
 /**
  * public
  *
- * Get all open UIs attached to src_object.
- *
- * required src_object datum The object/datum which owns the UIs.
- *
- * return list All attached UIs.
- */
-/datum/controller/subsystem/tgui/proc/get_open_uis(datum/src_object)
-	var/key = "[REF(src_object)]"
-	// No UIs opened for this src_object
-	if(isnull(open_uis_by_src[key]) || !istype(open_uis_by_src[key], /list))
-		return
-	for(var/datum/tgui/ui in open_uis_by_src[key])
-		// Check if UI is valid.
-		if(ui?.src_object && ui.user && ui.src_object.ui_host(ui.user))
-			. += ui
-
-/**
- * public
- *
  * Update all UIs attached to src_object.
  *
  * required src_object datum The object/datum which owns the UIs.

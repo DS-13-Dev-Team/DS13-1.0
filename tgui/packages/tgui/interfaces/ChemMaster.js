@@ -1,6 +1,6 @@
 import { Fragment } from 'inferno';
 import { useBackend } from "../backend";
-import { Box, Button, Flex, Icon, LabeledList, Section, Stack } from "../components";
+import { Box, Button, Dropdown, Flex, Icon, LabeledList, Section, Stack, Input } from "../components";
 import { Window } from "../layouts";
 import { BeakerContents } from './common/BeakerContents';
 import { ComplexModal, modalOpen, modalRegisterBodyOverride } from './common/ComplexModal';
@@ -67,7 +67,7 @@ export const ChemMaster = (props, context) => {
   return (
     <Window
       width={575}
-      height={500}
+      height={550}
       resizable>
       <ComplexModal />
       <Window.Content scrollable className="Layout__content--flexColumn">
@@ -77,10 +77,12 @@ export const ChemMaster = (props, context) => {
           bufferNonEmpty={buffer_reagents.length > 0}
         />
         <ChemMasterBuffer
+          beaker={beaker}
           mode={mode}
           bufferReagents={buffer_reagents}
         />
         <ChemMasterProduction
+          beaker={beaker}
           isCondiment={condi}
           bufferNonEmpty={buffer_reagents.length > 0}
         />
@@ -91,7 +93,7 @@ export const ChemMaster = (props, context) => {
 };
 
 const ChemMasterBeaker = (props, context) => {
-  const { act, data } = useBackend(context);
+  const { act } = useBackend(context);
   const {
     beaker,
     beakerReagents,
@@ -175,12 +177,14 @@ const ChemMasterBeaker = (props, context) => {
 const ChemMasterBuffer = (props, context) => {
   const { act } = useBackend(context);
   const {
+    beaker,
     mode,
     bufferReagents = [],
   } = props;
   return (
     <Section
       title="Buffer"
+      flexGrow="1"
       buttons={
         <Box color="label">
           Transferring to&nbsp;
@@ -192,10 +196,11 @@ const ChemMasterBuffer = (props, context) => {
           />
         </Box>
       }>
-      {(bufferReagents.length > 0)
+      {bufferReagents && beaker
         ? (
           <BeakerContents
             beakerLoaded
+            buffer
             beakerContents={bufferReagents}
             buttons={(chemical, i) => (
               <Box mb={(i < bufferReagents.length - 1) && "2px"}>
@@ -247,29 +252,10 @@ const ChemMasterBuffer = (props, context) => {
 };
 
 const ChemMasterProduction = (props, context) => {
-  const { act, data } = useBackend(context);
-  if (!props.bufferNonEmpty) {
+  if (!props.bufferNonEmpty || !props.beaker) {
     return (
       <Section
-        title="Production"
-        buttons={
-          <Button
-            disabled={!data.loaded_pill_bottle}
-            icon="eject"
-            content={data.loaded_pill_bottle
-              ? (
-                data.loaded_pill_bottle_name
-                + " ("
-                + data.loaded_pill_bottle_contents_len
-                + "/"
-                + data.loaded_pill_bottle_storage_slots
-                + ")"
-              )
-              : "No pill bottle loaded"}
-            mb="0.5rem"
-            onClick={() => act('ejectp')}
-          />
-        }>
+        title="Production">
         <Flex height="100%">
           <Flex.Item
             grow
@@ -291,25 +277,7 @@ const ChemMasterProduction = (props, context) => {
 
   return (
     <Section
-      title="Production"
-      buttons={
-        <Button
-          disabled={!data.loaded_pill_bottle}
-          icon="eject"
-          content={data.loaded_pill_bottle
-            ? (
-              data.loaded_pill_bottle_name
-              + " ("
-              + data.loaded_pill_bottle_contents_len
-              + "/"
-              + data.loaded_pill_bottle_storage_slots
-              + ")"
-            )
-            : "No pill bottle loaded"}
-          mb="0.5rem"
-          onClick={() => act('ejectp')}
-        />
-      }>
+      title="Production">
       {!props.isCondiment ? (
         <ChemMasterProductionChemical />
       ) : (
@@ -432,28 +400,25 @@ const ChemMasterCustomization = (props, context) => {
         onClick={() => act('ejectp')}
       />
     }>
-      <Button
-        mb="0.5rem"
-        onClick={() => modalOpen(context, 'change_pill_bottle_style')}>
-        Change Pill Bottle Color
-      </Button>
-      <Button
-        mb="0.5rem"
-        onClick={() => modalOpen(context, 'change_pill_bottle_name')}>
-        Change Pill Bottle Name
-      </Button> <br />
       <Stack>
         <Stack.Item>
-          {/* <img src={data.pill_bottle_sprite}
-            style={"width: 64px; height: 64px;"
-            + "-ms-interpolation-mode: nearest-neighbor;"} />*/ }
-          <Box fontSize={2}>
-            Current Color: {data.loaded_pill_bottle_color} |
-          </Box>
+          <Dropdown
+            nochevron
+            over
+            noscroll
+            textAlign="center"
+            options={data.pill_bottle_colors}
+            selected={data.loaded_pill_bottle_color}
+            mb="0.5rem"
+            onSelected={(value) => act('change_pill_bottle_style', { color: value })} />
+          <div class={"pill_bottles96x96 "+data.loaded_pill_bottle_color+"_pill_bottle"} />
         </Stack.Item>
         <Stack.Item>
           <Box fontSize={2}>
-            {data.loaded_pill_bottle_name}
+            pill bottle (<Input
+              maxLength={20}
+              value={data.loaded_pill_bottle_second_name}
+              onInput={(e, value) => act("change_pill_bottle_name", { name: value })} />)
           </Box>
         </Stack.Item>
       </Stack>

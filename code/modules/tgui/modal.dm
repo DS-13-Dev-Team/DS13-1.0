@@ -36,7 +36,7 @@ GLOBAL_LIST(tgui_modals)
 			return TGUI_MODAL_CLOSE
 
 /**
-  * Call this from tgui_data() to return modal information if needed
+  * Call this from ui_data() to return modal information if needed
 
   * Arguments:
   * * source - The source datum
