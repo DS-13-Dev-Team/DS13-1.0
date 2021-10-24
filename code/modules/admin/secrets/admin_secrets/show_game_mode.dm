@@ -10,5 +10,5 @@
 	. = ..()
 	if(!.)
 		return
-	if (SSticker.mode) alert("The game mode is [SSticker.mode.name]")
-	else alert("For some reason there's a SSticker, but not a game mode")
+	if (ticker.mode) tgui_alert(user, "The game mode is [ticker.mode.name]")
+	else tgui_alert(user, "For some reason there's a ticker, but not a game mode")

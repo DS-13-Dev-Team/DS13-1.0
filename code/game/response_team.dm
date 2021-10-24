@@ -12,7 +12,7 @@
 	if(SSticker.current_state == 1)
 		to_chat(usr, "<span class='danger'>The round hasn't started yet!</span>")
 		return
-	if(alert("Do you want to dispatch an Emergency Response Team?",,"Yes","No") != "Yes")
+	if(tgui_alert(usr, "Do you want to dispatch an Emergency Response Team?","ERT Dispatch",list("Yes","No")) != "Yes")
 		return
 
 	if(GLOB.waiting_for_candidates)
@@ -59,7 +59,7 @@
 	GLOB.picked_call.members_min = min
 	*/
 	var/is_announcing = TRUE
-	if(alert(usr, "Would you like to announce the distress beacon to the server population? This will reveal the distress beacon to all players.", "Announce distress beacon?", "Yes", "No") != "Yes")
+	if(tgui_alert(usr, "Would you like to announce the distress beacon to the server population? This will reveal the distress beacon to all players.", "Announce distress beacon?", list("Yes", "No")) != "Yes")
 		is_announcing = FALSE
 
 	GLOB.picked_call.activate(is_announcing)

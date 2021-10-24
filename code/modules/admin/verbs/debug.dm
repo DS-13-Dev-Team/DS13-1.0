@@ -43,7 +43,7 @@
 	set name = "Make Robot"
 
 	if(!SSticker)
-		alert("Wait until the game starts")
+		tgui_alert(src, "Wait until the game starts")
 		return
 	if(istype(M, /mob/living/carbon/human))
 		log_admin("[key_name(src)] has robotized [M.key].")
@@ -51,22 +51,22 @@
 			M:Robotize()
 
 	else
-		alert("Invalid mob")
+		tgui_alert(src, "Invalid mob")
 
 /client/proc/cmd_admin_animalize(var/mob/M in SSmobs.mob_list)
 	set category = "Fun"
 	set name = "Make Simple Animal"
 
-	if(!SSticker)
+	if(!ticker)
 		alert("Wait until the game starts")
 		return
 
 	if(!M)
-		alert("That mob doesn't seem to exist, close the panel and try again.")
+		tgui_alert(src, "That mob doesn't seem to exist, close the panel and try again.")
 		return
 
 	if(istype(M, /mob/dead/new_player))
-		alert("The mob must not be a new_player.")
+		tgui_alert(src, "The mob must not be a new_player.")
 		return
 
 	log_admin("[key_name(src)] has animalized [M.key].")
@@ -105,7 +105,7 @@
 	set category = "Fun"
 	set name = "Make slime"
 
-	if(!SSticker)
+	if(!ticker)
 		alert("Wait until the game starts")
 		return
 	if(ishuman(M))
@@ -115,14 +115,14 @@
 			feedback_add_details("admin_verb","MKMET") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 		log_and_message_admins("made [key_name(M)] into a slime.")
 	else
-		alert("Invalid mob")
+		tgui_alert(src, "Invalid mob")
 
 /*
 /client/proc/cmd_admin_monkeyize(var/mob/M in mob_list)
 	set category = "Fun"
 	set name = "Make Monkey"
 
-	if(!SSticker)
+	if(!ticker)
 		alert("Wait until the game starts")
 		return
 	if(istype(M, /mob/living/carbon/human))
@@ -131,13 +131,13 @@
 		spawn(10)
 			target.monkeyize()
 	else
-		alert("Invalid mob")
+		tgui_alert(src, "Invalid mob")
 
 /client/proc/cmd_admin_changelinginize(var/mob/M in mob_list)
 	set category = "Fun"
 	set name = "Make Changeling"
 
-	if(!SSticker)
+	if(!ticker)
 		alert("Wait until the game starts")
 		return
 	if(istype(M, /mob/living/carbon/human))
@@ -148,7 +148,7 @@
 			if(M.mind)
 				M.mind.set_special_role("Changeling")
 	else
-		alert("Invalid mob")
+		tgui_alert(src, "Invalid mob")
 */
 /*
 /client/proc/cmd_admin_abominize(var/mob/M in mob_list)
@@ -157,7 +157,7 @@
 
 	to_chat(usr, "Ruby Mode disabled. Command aborted.")
 	return
-	if(!SSticker)
+	if(!ticker)
 		alert("Wait until the game starts.")
 		return
 	if(istype(M, /mob/living/carbon/human))
@@ -178,7 +178,7 @@
 		if(M.mind in SSticker.mode.cult)
 			return
 		else
-			if(alert("Spawn that person a tome?",,"Yes","No")=="Yes")
+			if(tgui_alert(src, "Spawn that person a tome?", "Confirmation","Yes","No")=="Yes")
 				to_chat(M, "<span class='warning'>You catch a glimpse of the Realm of Nar-Sie, The Geometer of Blood. You now see how flimsy the world is, you see that it should be open to the knowledge of Nar-Sie. A tome, a message from your new master, appears on the ground.</span>")
 				new /obj/item/weapon/book/tome(M.loc)
 			else
@@ -245,7 +245,7 @@
 	set category = "Admin"
 	set name = "Grant Full Access"
 
-	if (!SSticker)
+	if (!ticker)
 		alert("Wait until the game starts")
 		return
 	if (istype(M, /mob/living/carbon/human))
@@ -264,7 +264,7 @@
 			H.equip_to_slot_or_del(id, slot_wear_id)
 			H.update_inv_wear_id()
 	else
-		alert("Invalid mob")
+		tgui_alert(src, "Invalid mob")
 	feedback_add_details("admin_verb","GFA") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	log_and_message_admins("has granted [M.key] full access.")
 
@@ -275,7 +275,7 @@
 
 	if(!check_rights(R_DEBUG|R_ADMIN))	return
 	if(M.ckey)
-		if(alert("This mob is being controlled by [M.ckey]. Are you sure you wish to assume control of it? [M.ckey] will be made a ghost.",,"Yes","No") != "Yes")
+		if(tgui_alert(src, "This mob is being controlled by [M.ckey]. Are you sure you wish to assume control of it? [M.ckey] will be made a ghost.", "Confirmation", list("Yes","No")) != "Yes")
 			return
 		else
 			var/mob/dead/observer/ghost/ghost = new/mob/dead/observer/ghost(M,1)
@@ -397,7 +397,7 @@
 
 	var/reset_equipment = (outfit.flags&OUTFIT_RESET_EQUIPMENT)
 	if(!reset_equipment)
-		reset_equipment = alert("Do you wish to delete all current equipment first?", "Delete Equipment?","Yes", "No") == "Yes"
+		reset_equipment = tgui_alert(usr, "Do you wish to delete all current equipment first?", "Delete Equipment?", list("Yes", "No")) == "Yes" ? TRUE : FALSE
 
 	feedback_add_details("admin_verb","SEQ")
 	dressup_human(H, outfit, reset_equipment)
@@ -415,7 +415,7 @@
 	set name = "Start Singularity"
 	set desc = "Sets up the singularity and all machines to get power flowing"
 
-	if(alert("Are you sure? This will start up the engine. Should only be used during debug!",,"Yes","No") != "Yes")
+	if(tgui_alert(src, "Are you sure? This will start up the engine. Should only be used during debug!", "Confirmation","Yes","No") != "Yes")
 		return
 
 	for(var/obj/machinery/power/emitter/E in world)
@@ -483,7 +483,7 @@
 
 // DNA2 - Admin Hax
 /client/proc/cmd_admin_toggle_block(var/mob/M,var/block)
-	if(!SSticker)
+	if(!ticker)
 		alert("Wait until the game starts")
 		return
 	if(istype(M, /mob/living/carbon))
@@ -495,7 +495,7 @@
 		message_admins("[key_name_admin(src)] has toggled [M.key]'s [blockname] block [state]!")
 		log_admin("[key_name(src)] has toggled [M.key]'s [blockname] block [state]!")
 	else
-		alert("Invalid mob")
+		tgui_alert(src, "Invalid mob")
 
 /datum/admins/proc/view_runtimes()
 	set category = "Debug"

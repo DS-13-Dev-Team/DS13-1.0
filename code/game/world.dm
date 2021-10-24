@@ -83,14 +83,13 @@ GLOBAL_VAR(restart_counter)
 
 	GLOB.revdata = new
 
+	InitTgs()
+
 	config.Load(params[OVERRIDE_CONFIG_DIRECTORY_PARAMETER])
 
 	initialize_chemical_reactions()
 	makeDatumRefLists()
 	generate_gameid()
-
-	if(byond_version < MIN_COMPILER_VERSION)
-		world.log << "Your server's byond version does not meet the recommended requirements for this server. Please update BYOND"
 
 	SetupLogs()
 
@@ -126,6 +125,7 @@ GLOBAL_VAR(restart_counter)
 		world.log = file("[GLOB.log_directory]/dd.log") //not all runtimes trigger world/Error, so this is the only way to ensure we can see all of them.
 #endif
 
+	GLOB.timezoneOffset = text2num(time2text(0,"hh")) * 36000
 	master_controller = new /datum/controller/game_controller()
 
 	Master.Initialize(10, FALSE, TRUE)
@@ -133,14 +133,18 @@ GLOBAL_VAR(restart_counter)
 	if(CONFIG_GET(flag/generate_map))
 		GLOB.using_map.perform_map_generation()
 
-	if(CONFIG_GET(flag/log_runtime))
-		var/runtime_log = file("data/logs/runtime/[date_string]_[time2text(world.timeofday, "hh:mm")]_[GLOB.round_id].log")
-		runtime_log << "Game [GLOB.round_id] starting up at [time2text(world.timeofday, "hh:mm.ss")]"
-		log = runtime_log
-
 	update_status()
 
-	GLOB.timezoneOffset = text2num(time2text(0,"hh")) * 36000
+	if(fexists(RESTART_COUNTER_PATH))
+		GLOB.restart_counter = text2num(trim(file2text(RESTART_COUNTER_PATH)))
+		fdel(RESTART_COUNTER_PATH)
+
+	Master.Initialize(10, FALSE, TRUE)
+
+
+/world/proc/InitTgs()
+	TgsNew(new /datum/tgs_event_handler/impl, TGS_SECURITY_TRUSTED)
+	GLOB.revdata.load_tgs_info()
 
 var/world_topic_spam_protect_ip = "0.0.0.0"
 var/world_topic_spam_protect_time = world.timeofday

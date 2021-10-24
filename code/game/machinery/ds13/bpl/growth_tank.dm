@@ -289,8 +289,8 @@ There's no need to make this choice right now, if you cancel it will carry on gr
 				ready = FALSE
 
 		//We spawn a new completed organ to replace the forming one
-		var/choice = alert(user, "The [current_growth_atom] is [ready? "finished growing and ready for use" : "not yet at a viable growth stage.\n If you remove it now, it will just be a useless lump of biomass."]\n\
-		Do you wish to eject it?", "Eject Growth Product", "Remove from Tank", "Leave it in")
+		var/choice = tgui_alert(user, "The [current_growth_atom] is [ready? "finished growing and ready for use" : "not yet at a viable growth stage.\n If you remove it now, it will just be a useless lump of biomass."]\n\
+		Do you wish to eject it?", "Eject Growth Product", list("Remove from Tank", "Leave it in"))
 		if (choice == "Remove from Tank")
 			remove_product(user)
 			playsound(src, "bubble", VOLUME_LOW)

@@ -61,7 +61,7 @@
 			message += GLOB.revdata.GetTestMergeInfo(FALSE)
 		// We still use tgalert here because some people were concerned that if someone wanted to report that tgui wasn't working
 		// then the report issue button being tgui-based would be problematic.
-		if(tgalert(src, message, "Report Issue","Yes","No")!="Yes")
+		if(tgui_alert(src, message, "Report Issue", list("Yes","No"))!="Yes")
 			return
 
 		// Keep a static version of the template to avoid reading file

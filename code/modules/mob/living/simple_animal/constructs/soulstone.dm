@@ -94,11 +94,11 @@
 		to_chat(user, "<span class='notice'>\The [shade] in \the [src] is dormant.</span>")
 		return
 	else if(shade.loc == src)
-		var/choice = alert("Would you like to invoke the spirit within?",,"Yes","No")
+		var/choice = tgui_alert(user, "Would you like to invoke the spirit within?", "Confirmation", list("Yes", "No"))
 		if(choice == "Yes")
 			shade.forceMove(get_turf(src))
 			to_chat(user, "<span class='notice'>You summon \the [shade].</span>")
-		if(choice == "No")
+		else
 			return
 
 /obj/item/device/soulstone/proc/set_full(var/f)
@@ -124,8 +124,10 @@
 		if(S.shade.loc != S)
 			to_chat(user, "<span class='notice'>Recapture the shade back into \the [I] first.</span>")
 			return
-		var/construct = alert(user, "Please choose which type of construct you wish to create.",,"Artificer", "Wraith", "Juggernaut")
+		var/construct = tgui_alert(user, "Please choose which type of construct you wish to create.", "Choose type", list("Artificer", "Wraith", "Juggernaut"))
 		var/ctype
+		if(!construct)
+			return
 		switch(construct)
 			if("Artificer")
 				ctype = /mob/living/simple_animal/construct/builder

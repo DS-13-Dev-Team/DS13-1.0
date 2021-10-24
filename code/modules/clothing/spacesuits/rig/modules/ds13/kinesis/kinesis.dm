@@ -873,13 +873,20 @@
 	Hotkey
 */
 /obj/item/rig_module/kinesis/rig_equipped(var/mob/user, var/slot)
+	.=..()
 	update_hotkeys()
 
 /obj/item/rig_module/kinesis/rig_unequipped(var/mob/user, var/slot)
 	remove_hotkeys(user)
+	.=..()
 
+/obj/item/rig_module/kinesis/installed(obj/item/weapon/rig/new_holder)
+	. = ..()
+	update_hotkeys()
 
-
+/obj/item/rig_module/kinesis/uninstalled(obj/item/weapon/rig/former, mob/living/user)
+	remove_hotkeys(user)
+	.=..()
 
 /obj/item/rig_module/kinesis/proc/update_hotkeys()
 	var/mob/living/carbon/human/user = get_user()
@@ -902,7 +909,7 @@
 	hotkeys_set = TRUE
 
 /obj/item/rig_module/kinesis/proc/remove_hotkeys(var/mob/living/carbon/human/user)
-	if(user.wearing_rig && user.wearing_rig != src)
+	if(user.wearing_rig != holder)
 		return
 	winset(user, "macro.kinesis_toggle", "parent=")
 	winset(user, "hotkeymode.kinesis_toggle", "parent=")

@@ -214,6 +214,9 @@
 		if (!shared || shared.len != G.required_tags.len)
 			return FALSE
 
+	if (G.key_whitelist && !(prefs.get_key() in G.key_whitelist ))
+		return FALSE
+
 	if (points < G.cost)
 		return FALSE
 

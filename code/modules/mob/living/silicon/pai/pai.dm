@@ -239,13 +239,13 @@
 
 	var/choice
 	var/finalized = "No"
-	while(finalized == "No" && src.client)
+	while(finalized != "Yes" && src.client)
 
 		choice = input(usr,"What would you like to use for your mobile chassis icon? This decision can only be made once.") as null|anything in possible_chassis
 		if(!choice) return
 
 		icon_state = possible_chassis[choice]
-		finalized = alert("Look at your sprite. Is this what you wish to use?",,"No","Yes")
+		finalized = tgui_alert(src, "Look at your sprite. Is this what you wish to use?", "Confirmation", list("No","Yes"))
 
 	chassis = possible_chassis[choice]
 	remove_verb(src, /mob/living/silicon/pai/proc/choose_chassis)
@@ -350,8 +350,11 @@
 	set desc = "Wipe your software. This is functionally equivalent to cryo or robotic storage, freeing up your job slot."
 
 	// Make sure people don't kill themselves accidentally
-	if(alert("WARNING: This will immediately wipe your software and ghost you, removing your character from the round permanently (similar to cryo and robotic storage). Are you entirely sure you want to do this?",
-					"Wipe Software", "No", "No", "Yes") != "Yes")
+	if(tgui_alert(src, "WARNING: This will immediately wipe your software and ghost you, removing your character from the round permanently (similar to cryo and robotic storage). Are you entirely sure you want to do this?",
+					"Wipe Software", list("No", "Yes")) != "Yes")
+		return
+
+	if(tgui_alert(src, "Are you sure?", "Confirmation", list("Yes", "No")) != "Yes") // Swaped buttons positions in case someone will have double click issue
 		return
 
 	close_up()

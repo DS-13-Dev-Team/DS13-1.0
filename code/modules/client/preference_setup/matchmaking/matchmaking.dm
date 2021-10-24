@@ -194,9 +194,8 @@ var/global/datum/matchmaker/matchmaker = new()
 				see_relationship_info()
 				return 1
 	if(href_list["relations_close"])
-		var/ok = "Close anyway"
-		ok = alert("HEY! You have some non-finalized relationships. You can terminate them if they do not fit your character, or edit the info tidbit that the other party is given. THIS IS YOUR ONLY CHANCE to do so - after you close the window, they won't be editable.","Finalize relationships","Return to edit", "Close anyway")
-		if(ok == "Close anyway")
+		var/ok = tgui_alert(src, "HEY! You have some non-finalized relationships. You can terminate them if they do not fit your character, or edit the info tidbit that the other party is given. THIS IS YOUR ONLY CHANCE to do so - after you close the window, they won't be editable.", "Finalize relationships", list("Return to edit", "Close anyway"))
+		if(ok != "Return to edit")
 			var/list/relations = matchmaker.get_relationships(mind)
 			for(var/datum/relation/R in relations)
 				R.finalize()

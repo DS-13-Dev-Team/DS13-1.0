@@ -171,7 +171,7 @@ turf/attackby(obj/item/weapon/W as obj, mob/user as mob)
 
 	//Finally, check objects/mobs to block entry that are not on the border
 	for(var/atom/movable/obstacle in src.movement_blocking_atoms)
-		if (QDELETED(obstacle) || obstacle.loc != src)
+		if (QDELETED(obstacle))
 			movement_blocking_atoms -= obstacle
 			continue
 		if(!(obstacle.atom_flags & ATOM_FLAG_CHECKS_BORDER))

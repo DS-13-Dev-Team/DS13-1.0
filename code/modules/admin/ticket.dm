@@ -20,7 +20,7 @@ var/list/ticket_panels = list()
 	if(status == TICKET_CLOSED)
 		return
 
-	if(status == TICKET_ASSIGNED && !((closed_by.ckey in assigned_admin_ckeys()) || owner.ckey == closed_by.ckey) && alert(client_by_ckey(closed_by.ckey), "You are not assigned to this ticket. Are you sure you want to close it?",  "Close ticket?" , "Yes" , "No") != "Yes")
+	if(status == TICKET_ASSIGNED && !((closed_by.ckey in assigned_admin_ckeys()) || owner.ckey == closed_by.ckey) && tgui_alert(client_by_ckey(closed_by.ckey), "You are not assigned to this ticket. Are you sure you want to close it?",  "Close ticket?" , list("Yes" , "No")) != "Yes")
 		return
 
 	var/client/real_client = client_by_ckey(closed_by.ckey)
@@ -45,7 +45,7 @@ var/list/ticket_panels = list()
 	if(assigned_admin.ckey == owner.ckey)
 		return
 
-	if(status == TICKET_ASSIGNED && ((assigned_admin.ckey in assigned_admin_ckeys()) || alert(client_by_ckey(assigned_admin.ckey), "This ticket is already assigned. Do you want to add yourself to the ticket?",  "Join ticket?" , "Yes" , "No") != "Yes"))
+	if(status == TICKET_ASSIGNED && ((assigned_admin.ckey in assigned_admin_ckeys()) || tgui_alert(client_by_ckey(assigned_admin.ckey), "This ticket is already assigned. Do you want to add yourself to the ticket?",  "Join ticket?" , list("Yes" , "No")) != "Yes"))
 		return
 
 	assigned_admins |= assigned_admin

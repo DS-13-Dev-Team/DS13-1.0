@@ -217,7 +217,7 @@
 			SStgui.update_uis(console)
 			qdel(O)
 		else
-			world.log << "[src] encountered ore [O] [O.type] with oretag [O.ore ? O.ore : "(no ore)"] which this machine did not have an entry for!"
+			log_world("[src] encountered ore [O] [O.type] with oretag [O.ore ? O.ore : "(no ore)"] which this machine did not have an entry for!")
 
 
 

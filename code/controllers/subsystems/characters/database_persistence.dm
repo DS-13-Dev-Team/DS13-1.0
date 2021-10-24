@@ -196,6 +196,10 @@ SUBSYSTEM_DEF(database)
 		if (!(D.build_type & STORE))
 			designs -= id
 
+		//Custom items, they dont belong in normal lists
+		if (D.patron_only || D.whitelist)
+			designs -= id
+
 	if(dbcon && dbcon.IsConnected())
 
 

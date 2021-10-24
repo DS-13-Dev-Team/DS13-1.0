@@ -20,21 +20,20 @@
 	opacity = 1
 	assembly_type = /obj/structure/door_assembly/multi_tile
 
-/obj/machinery/door/airlock/multi_tile/New(var/atom/location, var/direction, var/nocircuit = FALSE)
+/obj/machinery/door/airlock/multi_tile/Initialize()
 	..()
-	SetBounds()
+	update_bounds()
+	GLOB.dir_set_event.register(src, src, /obj/machinery/door/airlock/multi_tile/proc/update_bounds)
 
 /obj/machinery/door/airlock/multi_tile/Move(NewLoc, Dir = 0, step_x = 0, step_y = 0, var/glide_size_override = 0)
 	. = ..()
-	SetBounds()
+	update_bounds()
 
-/obj/machinery/door/airlock/multi_tile/proc/SetBounds()
+/obj/machinery/door/airlock/multi_tile/proc/update_bounds()
 	if(dir in list(NORTH, SOUTH))
-		bound_width = width * world.icon_size
-		bound_height = world.icon_size
+		set_bounds(width * world.icon_size, world.icon_size)
 	else
-		bound_width = world.icon_size
-		bound_height = width * world.icon_size
+		set_bounds(world.icon_size,width * world.icon_size)
 
 
 /obj/machinery/door/airlock/multi_tile/update_icon(state=0, override=0)

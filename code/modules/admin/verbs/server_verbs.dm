@@ -9,7 +9,7 @@
 	if(!SSticker?.mode)
 		return
 
-	if(tgui_alert(src, "Are you sure you want to end the round?", "End Round", list("Yes","No")) != "Yes")
+	if(tgui_alert("Are you sure you want to end the round?", "End Round", list("Yes", "No")) != "Yes")
 		return
 
 	var/winstate = input(usr, "What do you want the round end state to be?", "End Round") as null|anything in list("Custom", "Admin Intervention") + SSticker.mode.round_end_states //TO DO Change declare complitation
@@ -181,7 +181,8 @@
 	set category = "Server"
 	set desc="Start the round RIGHT NOW"
 	set name="Start Now"
-	if(!check_rights(R_SERVER))
+	if(!ticker)
+		alert("Unable to start the game as it is not set up.")
 		return
 
 	if(SSticker.current_state != GAME_STATE_STARTUP && SSticker.current_state != GAME_STATE_PREGAME)
@@ -294,24 +295,15 @@
 	set category = "Server"
 	set name = "Delay Round Start"
 
-	if(!check_rights(R_SERVER))
-		return
-
-	if(!SSticker)
-		return
-
-	var/newtime = input("Set a new time in seconds. Set -1 for indefinite delay.", "Set Delay", round(SSticker.GetTimeLeft())) as num|null
-	if(SSticker.current_state > GAME_STATE_PREGAME)
-		return
-	if(isnull(newtime))
-		return
-
-	newtime = newtime * 10
-	SSticker.SetTimeLeft(newtime)
-	if(newtime < 0)
-		to_chat(world, SPAN_BOLDNOTICE("The game start has been delayed."))
-		log_admin("[key_name(usr)] delayed the round start.")
-		message_admins("[ADMIN_TPMONTY(usr)] delayed the round start.")
+	if(!check_rights(R_SERVER|R_REJUVINATE))	return
+	if (!ticker || ticker.current_state != GAME_STATE_PREGAME)
+		ticker.delay_end = !ticker.delay_end
+		log_and_message_admins("[ticker.delay_end ? "delayed the round end" : "has made the round end normally"].")
+		return //alert("Round end delayed", null, null, null, null, null)
+	round_progressing = !round_progressing
+	if (!round_progressing)
+		to_chat(world, "<span class='infodisplay'><b>The game start has been delayed.</b></span>")
+		log_admin("[key_name(usr)] delayed the game.")
 	else
 		to_chat(world, SPAN_BOLDNOTICE("The game will start in [DisplayTimeText(newtime)]."))
 		log_admin("[key_name(usr)] set the pre-game delay to [DisplayTimeText(newtime)].")
@@ -374,7 +366,7 @@
 	set desc="Reboots the server post haste"
 	set name="Immediate Reboot"
 	if(!usr.client.holder)	return
-	if( alert("Reboot server?",,"Yes","No") == "No")
+	if(tgui_alert(usr, "Reboot server?", "Confirmation", list("Yes","No")) != "Yes")
 		return
 	to_chat(world, "<span class='danger'>Rebooting world!</span> <span class='notice'>Initiated by [usr.key]!</span>")
 	log_admin("[key_name(usr)] initiated an immediate reboot.")
