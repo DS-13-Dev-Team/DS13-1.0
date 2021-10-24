@@ -127,3 +127,11 @@
   DTraitor:
   - qol: All alerts were replaced with TGUI alerts.
   - bugfix: Fixes bug when hydrazine torch didn't shoot in vacuum.
+2021-10-24:
+  DTraitor:
+  - rscadd: Mining drills now extract ore more slowly, but can be upgraded with new
+      parts.
+  - bugfix: Fixed xenoarcheology excavation drills doing nothing after changing their
+      mining depth.
+  Nanako:
+  - bugfix: Corruption now grows through stairs and ladders again
