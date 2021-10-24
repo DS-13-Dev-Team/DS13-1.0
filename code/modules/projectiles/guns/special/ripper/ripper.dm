@@ -1,7 +1,7 @@
 
 /obj/item/weapon/gun/projectile/ripper
 	name = "RC-DS Remote Control Disc Ripper"
-	desc = "Suspends a spinning sawblade in the air with a mini gravity tether"
+	desc = "Suspends a spinning sawblade in the air with a mini gravity tether."
 	w_class = ITEM_SIZE_HUGE
 	obj_flags =  OBJ_FLAG_CONDUCTIBLE
 	slot_flags = SLOT_BACK

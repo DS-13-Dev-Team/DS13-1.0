@@ -66,24 +66,24 @@
 /obj/structure/closet/secure_closet/CSECO
 	name = "chief security officer's locker"
 	req_access = list(access_armory)
-	icon_state = "secure1"
-	icon_closed = "secure"
-	icon_locked = "secure1"
-	icon_opened = "secureopen"
-	icon_off = "secureoff"
+	icon_state = "sec1"
+	icon_closed = "sec"
+	icon_locked = "sec1"
+	icon_opened = "secopen"
+	icon_off = "secoff"
 
 /obj/structure/closet/secure_closet/CSECO/WillContain()
 	return list(
 		new/datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack/security, /obj/item/weapon/storage/backpack/satchel_sec)),
 		new/datum/atom_creator/simple(/obj/item/weapon/storage/backpack/dufflebag/sec, 50),
-		/obj/item/clothing/under/deadspace/security,
+		/obj/item/clothing/under/deadspace/security/cseco,
+		/obj/item/clothing/suit/armor/pcsi,
 		/obj/item/clothing/head/helmet/pcsi,
-		/obj/item/clothing/suit/armor/vest/pcsi,
-		/obj/item/clothing/gloves/combat/pcsi,
 		/obj/item/clothing/shoes/pcsi,
 		/obj/item/clothing/glasses/hud/security,
 		/obj/item/clothing/mask/gas,
-		/obj/item/clothing/accessory/storage/webbing,
+		/obj/item/clothing/gloves/combat/pcsi,
+		/obj/item/clothing/accessory/storage/webbing/security,
 		/obj/item/device/radio/headset/heads/cseco,
 		/obj/item/weapon/storage/belt/holster/security,
 		/obj/item/weapon/gun/projectile/divet,
@@ -93,6 +93,7 @@
 		/obj/item/weapon/melee/baton/loaded,
 		/obj/item/taperoll/police,
 		/obj/item/device/hailer,
+		/obj/item/device/flash,
 		/obj/item/device/holowarrant,
 		/obj/item/device/flashlight/maglight
 	)
@@ -100,25 +101,25 @@
 /obj/structure/closet/secure_closet/SSO
 	name = "senior security officer's locker"
 	req_access = list(access_security)
-	icon_state = "secure1"
-	icon_closed = "secure"
-	icon_locked = "secure1"
-	icon_opened = "secureopen"
-	icon_off = "secureoff"
+	icon_state = "sec1"
+	icon_closed = "sec"
+	icon_locked = "sec1"
+	icon_opened = "secopen"
+	icon_off = "secoff"
 
 /obj/structure/closet/secure_closet/SSO/WillContain()
 	return list(
 		new /datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack/security, /obj/item/weapon/storage/backpack/satchel_sec)),
 		new /datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack/dufflebag/sec, /obj/item/weapon/storage/backpack/messenger/sec)),
 		/obj/item/clothing/under/deadspace/security,
+		/obj/item/clothing/suit/armor/pcsi,
 		/obj/item/clothing/head/helmet/pcsi,
-		/obj/item/clothing/suit/armor/vest/pcsi,
-		/obj/item/clothing/gloves/combat/pcsi,
 		/obj/item/clothing/shoes/pcsi,
-		/obj/item/clothing/gloves/forensic,
 		/obj/item/clothing/glasses/hud/security,
-		/obj/item/clothing/accessory/storage/webbing,
+		/obj/item/clothing/accessory/storage/webbing/security,
 		/obj/item/clothing/mask/gas,
+		/obj/item/clothing/gloves/combat/pcsi,
+		/obj/item/clothing/gloves/forensic,
 		/obj/item/device/radio/headset/headset_sec,
 		/obj/item/weapon/storage/belt/holster/forensic,
 		/obj/item/weapon/storage/belt/holster/security,
@@ -128,6 +129,7 @@
 		/obj/item/weapon/melee/baton/loaded,
 		/obj/item/taperoll/police,
 		/obj/item/device/hailer,
+		/obj/item/device/flash,
 		/obj/item/device/holowarrant,
 		/obj/item/device/flashlight/maglight
 	)
@@ -135,24 +137,24 @@
 /obj/structure/closet/secure_closet/security
 	name = "security officer's locker"
 	req_access = list(access_security)
-	icon_state = "secure1"
-	icon_closed = "secure"
-	icon_locked = "secure1"
-	icon_opened = "secureopen"
-	icon_off = "secureoff"
+	icon_state = "sec1"
+	icon_closed = "sec"
+	icon_locked = "sec1"
+	icon_opened = "secopen"
+	icon_off = "secoff"
 
 /obj/structure/closet/secure_closet/security/WillContain()
 	return list(
 		new/datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack/security, /obj/item/weapon/storage/backpack/satchel_sec)),
 		new/datum/atom_creator/simple(/obj/item/weapon/storage/backpack/dufflebag/sec, 50),
 		/obj/item/clothing/under/deadspace/security,
+		/obj/item/clothing/suit/armor/pcsi,
 		/obj/item/clothing/head/helmet/pcsi,
-		/obj/item/clothing/suit/armor/vest/pcsi,
-		/obj/item/clothing/gloves/combat/pcsi,
 		/obj/item/clothing/shoes/pcsi,
 		/obj/item/clothing/glasses/hud/security,
 		/obj/item/clothing/mask/gas,
-		/obj/item/clothing/accessory/storage/webbing,
+		/obj/item/clothing/gloves/combat/pcsi,
+		/obj/item/clothing/accessory/storage/webbing/security,
 		/obj/item/device/radio/headset/headset_sec,
 		/obj/item/weapon/storage/belt/holster/security,
 		/obj/item/weapon/gun/projectile/divet,
@@ -161,6 +163,7 @@
 		/obj/item/weapon/melee/baton/loaded,
 		/obj/item/taperoll/police,
 		/obj/item/device/hailer,
+		/obj/item/device/flash,
 		/obj/item/device/holowarrant,
 		/obj/item/device/flashlight/maglight
 	)

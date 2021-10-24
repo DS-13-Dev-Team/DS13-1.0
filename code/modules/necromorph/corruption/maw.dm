@@ -200,7 +200,8 @@
 
 	if (ishuman(L))
 		var/mob/living/carbon/human/H = L
-		visible_message(SPAN_DANGER("\The [src] snaps back, digging deeper into [buckled_mob.name]'s [H.find_target_organ(target_zone).name]"))
+		var/obj/item/organ/external/target_organ = H.find_target_organ(target_zone)
+		visible_message(SPAN_DANGER("\The [src] snaps back, digging deeper into [buckled_mob.name]'s [target_organ.name]"))
 	else
 		visible_message(SPAN_DANGER("\The [src] snaps back, digging deeper into [buckled_mob.name]"))
 
@@ -253,7 +254,7 @@
 	GLOB.updatehealth_event.register(L, src, /obj/structure/corruption_node/maw/proc/check_grip)
 	buckle_mob(L)
 	if (check_grip())
-		L << "<span class='danger'>The jaws beneath bite into you, trapping you in place!</span>"
+		to_chat(L, SPAN_DANGER("The jaws beneath bite into you, trapping you in place!"))
 
 
 		START_PROCESSING(SSobj, src)

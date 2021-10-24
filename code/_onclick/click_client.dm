@@ -1,7 +1,7 @@
 //It sucks that we have to do this
 /client/Click(object,location,control,params)
 	object = resolve_drag(object, params)
-	.=..(object, location, control, params)
+	. = ..(object, location, control, params)
 
 
 /client/MouseDown(object,location,control,params)

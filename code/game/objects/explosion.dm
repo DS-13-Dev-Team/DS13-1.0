@@ -72,7 +72,7 @@ Method to spawn explosion particles.
 @param use_smoke -> Whether or not to spawn smoke particles with this explosion.
 
 */
-proc/explosion_FX(turf/epicenter, max_range, explosion_sound=get_sfx("explosion"), use_smoke=TRUE)
+proc/explosion_FX(turf/epicenter, max_range = 0, explosion_sound=get_sfx("explosion"), use_smoke=TRUE)
 	set waitfor = FALSE //Gotta go fast
 	max_range += world.view
 	var/datum/effect/system/explosion/E = new/datum/effect/system/explosion()

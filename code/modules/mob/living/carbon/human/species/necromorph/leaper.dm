@@ -32,6 +32,8 @@
 	ventcrawl = FALSE //temporarily disabled until rebalanced.
 
 	evasion = 20	//Harder to hit than usual
+	var/stun = 5 //stun duration
+	var/leap_damage = 3
 
 	view_range = 9
 	view_offset = (WORLD_ICON_SIZE*3)	//Can see much farther than usual
@@ -164,6 +166,34 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 	modifier_verbs = list(KEY_CTRLALT = list(/atom/movable/proc/leaper_leap_enhanced),
 	KEY_ALT = list(/mob/living/carbon/human/proc/tailstrike_leaper_enhanced))
 
+/datum/species/necromorph/leaper/hopper
+	name = SPECIES_NECROMORPH_LEAPER_HOPPER
+	name_plural =  "Hoppers"
+	marker_spawnable = FALSE 	//Enable this once we have sprites for it
+	mob_type	=	/mob/living/carbon/human/necromorph/leaper/hopper
+	unarmed_types = list(/datum/unarmed_attack/claws/monkey)
+	icon_template = 'icons/mob/necromorph/leaper_hopper.dmi'
+
+	slowdown = 2.5
+	total_health = 65
+	evasion = 21
+	stun = 0.75
+	leap_damage = 2
+	limb_health_factor = 0.6
+	pixel_offset_x = null
+
+	biomass = 7
+	biomass_reclamation = 0.75
+	spawner_spawnable = FALSE
+
+	inherent_verbs = list(/atom/movable/proc/leaper_leap_monkey, /mob/living/carbon/human/proc/tailstrike_leaper_monkey, /mob/living/proc/leaper_gallop_monkey)
+	modifier_verbs = list(KEY_CTRLALT = list(/atom/movable/proc/leaper_leap_monkey),
+	KEY_CTRLSHIFT = list(/mob/living/proc/leaper_gallop_monkey),
+	KEY_ALT = list(/mob/living/carbon/human/proc/tailstrike_leaper_monkey))
+
+	view_range = 8
+	view_offset = (null)
+
 
 
 //Light claw attack, not its main means of damage
@@ -172,6 +202,9 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 
 /datum/unarmed_attack/claws/leaper/strong
 	damage = 10.5 //Noninteger damage values are perfectly fine, contrary to popular belief
+
+/datum/unarmed_attack/claws/monkey
+	damage = 6.5
 
 
 //The leaper has a tail instead of legs
@@ -264,6 +297,42 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 	return leap_attack(A, _cooldown = 4 SECONDS, _delay = 1 SECONDS, _speed = 8, _maxrange = 11, _lifespan = 8 SECONDS, _maxrange = 20)
 
 
+/atom/movable/proc/leaper_leap_monkey(var/mob/living/A)
+	set name = "Leap"
+	set category = "Abilities"
+
+	if (!isliving(A))
+		A = autotarget_enemy_mob(A, 2, src, 999)
+
+	var/mob/living/carbon/human/H = src
+
+	if (!H.can_charge(A))
+		return
+
+	var/organ_check = FALSE
+	if (H.has_organ(BP_TAIL))
+		organ_check = TRUE
+
+	else if (H.has_organ(BP_R_ARM) && H.has_organ(BP_L_ARM))
+		organ_check = TRUE
+
+	if (!organ_check)
+		to_chat(src, SPAN_DANGER("You need your tail or both arms to perform a leap!"))
+		return
+
+	var/vector2/pixel_offset = Vector2.DirectionBetween(src, A) * -16
+	var/vector2/cached_pixels = get_new_vector(src.pixel_x, src.pixel_y)
+	animate(src, pixel_x = src.pixel_x + pixel_offset.x, pixel_y = src.pixel_y + pixel_offset.y, time = 1.2 SECONDS, easing = BACK_EASING, flags = ANIMATION_PARALLEL)
+	animate(pixel_x = cached_pixels.x, pixel_y = cached_pixels.y, time = 0.3 SECONDS)
+
+	if (ismob(A))
+		H.play_species_audio(H, SOUND_SHOUT_LONG, 100, 1, 3)
+	else
+		H.play_species_audio(H, SOUND_SHOUT, 100, 1, 3)
+
+	return leap_attack(A, _cooldown = 4 SECONDS, _delay = 1 SECONDS, _speed = 10, _maxrange = 11, _lifespan = 8 SECONDS, _maxrange = 20)
+
+
 //Special effects for leaper impact, its pretty powerful if it lands on the primary target mob, but it backfires if it was blocked by anything else
 /datum/species/necromorph/leaper/charge_impact(var/datum/extension/charge/leap/charge)
 	.=..()	//We call the parent charge impact too, all the following effects are in addition to the default behaviour
@@ -273,8 +342,8 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 	//To be considered a success, we must leap onto a mob, and they must be the one we intended to hit
 	if (isliving(charge.last_obstacle))
 		var/mob/living/L = charge.last_obstacle
-		L.Weaken(5) //Down they go!
-		L.apply_damage(3*(charge.distance_travelled+1), used_weapon = charge.user) //We apply damage based on the distance. We add 1 to the distance because we're moving into their tile too
+		L.Weaken(stun) //Down they go!
+		L.apply_damage(leap_damage*(charge.distance_travelled+1), used_weapon = charge.user) //We apply damage based on the distance. We add 1 to the distance because we're moving into their tile too
 		shake_camera(L,5,3)
 		//And lets also land ontop of them
 		H.play_species_audio(H, SOUND_SHOUT, 100, 1, 3) //Victory scream
@@ -317,6 +386,17 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 		spawn(rand_between(0, 1.8 SECONDS))
 			play_species_audio(src, SOUND_ATTACK, 30, 1)
 
+/mob/living/carbon/human/proc/tailstrike_leaper_monkey(var/atom/A)
+	set name = "Tail Strike"
+	set category = "Abilities"
+
+	if (!A)
+		A = get_step(src, dir)
+
+	//The sound has a randomised delay
+	if(tailstrike_attack(A, _damage = 14, _windup_time = 0.6 SECONDS, _winddown_time = 0.9 SECONDS, _cooldown = 0.5)) //Monkey has pretty much no stun, therefore a quicker but weaker tailstrike.
+		spawn(rand_between(0, 1.8 SECONDS))
+			play_species_audio(src, SOUND_ATTACK, 30, 1)
 
 
 //Gallop ability
@@ -333,6 +413,18 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 	if (gallop_ability(_duration = 4 SECONDS, _cooldown = 10 SECONDS, _power = 3))
 		H.play_species_audio(H, SOUND_SHOUT, VOLUME_MID, 1, 3)
 
+/mob/living/proc/leaper_gallop_monkey()
+	set name = "Gallop"
+	set category = "Abilities"
+	set desc = "Gives a huge burst of speed, but makes you vulnerable"
+	var/mob/living/carbon/human/H = src
+	if (!H.has_organ(BP_L_ARM) || !H.has_organ(BP_R_ARM) || !H.has_organ(BP_TAIL))
+		to_chat(H, SPAN_WARNING("You require a tail and both arms to use this ability!"))
+		return
+
+
+	if (gallop_ability(_duration = 2 SECONDS, _cooldown = 8 SECONDS, _power = 0.75))
+		H.play_species_audio(H, SOUND_SHOUT, VOLUME_MID, 1, 3)
 
 //Wallrunning
 /datum/species/necromorph/leaper/setup_movement(var/mob/living/carbon/human/H)

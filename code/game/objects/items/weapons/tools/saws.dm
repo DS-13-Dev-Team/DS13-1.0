@@ -10,7 +10,7 @@
 	throw_range = 5
 	w_class = ITEM_SIZE_NORMAL
 	attack_verb = list("attacked", "slashed", "sawed", "cut")
-	attack_verb = list("attack", "slash", "saw", "cut")
+	attack_noun = list("attack", "slash", "saw", "cut")
 	sharp = TRUE
 	edge = TRUE
 	tool_qualities = list(QUALITY_SAWING = 30, QUALITY_CUTTING = 20, QUALITY_WIRE_CUTTING = 20)
@@ -86,7 +86,7 @@
 	toggleable = TRUE
 	atom_flags = ATOM_FLAG_NO_BLOOD
 	item_flags = ITEM_FLAG_NO_EMBED
-	armor_penetration = 4
+	armor_penetration = 4.5
 
 /obj/item/weapon/tool/saw/plasma/update_icon()
 	if (switched_on)

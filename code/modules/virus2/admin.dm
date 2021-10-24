@@ -153,7 +153,7 @@
 				if(!I) return
 				infectionchance = I
 			if("stype")
-				var/S = alert("Which spread type?", "Spread Type", "Cancel", "Contact", "Airborne")
+				var/S = tgui_alert(usr, "Which spread type?", "Spread Type", list("Cancel", "Contact", "Airborne"))
 				if(!S || S == "Cancel") return
 				spreadtype = S
 			if("speed")
@@ -186,9 +186,9 @@
 				species |= infectee.species.get_bodytype(infectee)
 			if("go")
 				if(!antigens.len)
-					var/a = alert("This disease has no antigens; it will be impossible to permanently immunise anyone without them.\
-									It is strongly recommended to set at least one antigen. Do you want to go back and edit your virus?", "Antigens", "Yes", "Yes", "No")
-					if(a == "Yes") return
+					var/a = tgui_alert("This disease has no antigens; it will be impossible to permanently immunise anyone without them.\
+									It is strongly recommended to set at least one antigen. Do you want to go back and edit your virus?", "Antigens", list("Yes", "Yes", "No"))
+					if(a != "No") return
 				var/datum/disease2/disease/D = new
 				D.infectionchance = infectionchance
 				D.spreadtype = spreadtype

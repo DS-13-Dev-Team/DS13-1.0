@@ -43,7 +43,7 @@
 /datum/extension/resource/proc/setup_meter()
 	var/mob/M = holder
 	if (M.client)
-		meter = M.add_meter(meter_type,src)
+		meter = M.hud_used.hud_resource
 		meter.resource_holder = src
 		meter.update()
 

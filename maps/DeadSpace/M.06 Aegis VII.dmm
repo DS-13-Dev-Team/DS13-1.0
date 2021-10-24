@@ -509,8 +509,10 @@
 /turf/simulated/floor/tiled/monotile,
 /area/aegis/colony)
 "bv" = (
-/obj/machinery/mineral/stacking_unit_console,
-/turf/simulated/wall/r_wall,
+/obj/machinery/mineral/stacking_unit_console{
+	pixel_y = -32
+	},
+/turf/simulated/floor/tiled/steel_grid,
 /area/aegis/colony/refinery)
 "bw" = (
 /turf/simulated/wall/r_wall,
@@ -1834,7 +1836,8 @@
 	icon_state = "closed";
 	id_tag = "med_exit";
 	name = "Colony Medbay";
-	req_access = list(3,4,46)
+	req_access = newlist();
+	req_one_access = list(3,4,46)
 	},
 /turf/simulated/floor/tiled/white/monotile,
 /area/aegis/colony/medical)
@@ -2219,7 +2222,10 @@
 	dir = 4;
 	icon_state = "corner_white_three_quarters"
 	},
-/obj/machinery/vending/bloodbank,
+/obj/machinery/vending/bloodbank{
+	req_access = newlist();
+	req_one_access = list(3,4,46)
+	},
 /turf/simulated/floor/tiled/white,
 /area/aegis/colony/medical)
 "fn" = (
@@ -3143,9 +3149,12 @@
 /turf/simulated/floor/tiled/monotile,
 /area/aegis/colony)
 "gX" = (
-/obj/machinery/vending/medical,
 /obj/effect/floor_decal/corner/grey/mono,
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/vending/medical{
+	req_access = newlist();
+	req_one_access = list(3,4,46)
+	},
 /turf/simulated/floor/tiled/white/monotile,
 /area/aegis/colony/medical)
 "gY" = (
@@ -3240,7 +3249,8 @@
 	icon_state = "closed";
 	id_tag = "med_exit";
 	name = "Colony Medbay";
-	req_access = list(3,4,46)
+	req_access = newlist();
+	req_one_access = list(3,4,46)
 	},
 /turf/simulated/floor/tiled/white/monotile,
 /area/aegis/colony/medical)
@@ -6850,6 +6860,12 @@
 	},
 /turf/simulated/floor/holofloor/concrete,
 /area/aegis)
+"JY" = (
+/obj/machinery/mineral/processing_unit_console{
+	pixel_x = 32
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/aegis/colony/refinery)
 "KH" = (
 /turf/simulated/floor/airless,
 /area/aegis/colony/charging_station)
@@ -7139,8 +7155,11 @@
 /turf/simulated/floor/holofloor/concrete,
 /area/aegis)
 "XP" = (
-/obj/machinery/mineral/processing_unit_console,
-/turf/simulated/wall/r_wall,
+/obj/machinery/door/window/holowindoor{
+	dir = 1
+	},
+/obj/effect/floor_decal/industrial/danger,
+/turf/simulated/floor/tiled/steel_grid,
 /area/aegis/colony/refinery)
 "XR" = (
 /obj/machinery/conveyor{
@@ -7173,6 +7192,15 @@
 /obj/random/loot/often,
 /turf/simulated/floor/tiled/monotile,
 /area/aegis/colony)
+"ZJ" = (
+/obj/machinery/vending/medical{
+	req_access = newlist();
+	req_one_access = list(3,4,46)
+	},
+/obj/effect/floor_decal/corner/grey/mono,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/tiled/white/monotile,
+/area/aegis/colony/medical)
 
 (1,1,1) = {"
 aa
@@ -29495,7 +29523,7 @@ BC
 BC
 BC
 BC
-qW
+BC
 pc
 Oh
 bZ
@@ -29696,8 +29724,8 @@ on
 BC
 BC
 BC
-BC
-LW
+JY
+qW
 zE
 Oh
 ch
@@ -29898,7 +29926,7 @@ Nv
 BC
 Gn
 CC
-XP
+CC
 CC
 OD
 Oh
@@ -30099,7 +30127,7 @@ uO
 LH
 EO
 Af
-LW
+XP
 Om
 tW
 oC
@@ -30906,8 +30934,8 @@ lu
 SF
 TD
 BC
-BC
 bv
+CC
 cI
 CC
 bR
@@ -33143,7 +33171,7 @@ he
 iQ
 ef
 gS
-gX
+ZJ
 gX
 fl
 fm

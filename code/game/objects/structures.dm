@@ -1,6 +1,7 @@
 /obj/structure
 	icon = 'icons/obj/structures.dmi'
 	w_class = ITEM_SIZE_NO_CONTAINER
+	layer = STRUCTURE_LAYER
 
 	var/breakable = TRUE
 	resistance = 5
@@ -42,8 +43,8 @@
 /obj/structure/proc/get_footstep_sound()
 	if(LAZYLEN(footstep_sounds)) return pick(footstep_sounds)
 
-/obj/structure/New()
-	.=..()
+/obj/structure/Initialize()
+	. = ..()
 	if (max_health) //Not everything sets both of these. either will do
 		health = max_health
 	else if (health)

@@ -24,6 +24,13 @@ var/global/list/playable_species = list(SPECIES_HUMAN)    // A list of ALL playa
 //A list of IC characters in the format character_id = mind
 GLOBAL_LIST_EMPTY(characters)
 
+//Datum/patron_item instances
+GLOBAL_LIST_EMPTY(patron_items)
+
+//This list holds each unique ckey which appears on any whitelist for any number of patron items.area
+//It is in the format ckey = list(item, item, item, etc)
+//Each item is a /datum/patron_item singleton
+GLOBAL_LIST_EMPTY(patron_item_whitelisted_ckeys)
 
 GLOBAL_LIST_EMPTY(client_themes)
 

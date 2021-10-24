@@ -1500,7 +1500,7 @@
 		if(newname)
 			SetName(newname)
 		else
-			alert(occupant, "nope.avi")
+			tgui_alert(occupant, "nope.avi")
 		return
 	if (href_list["toggle_id_upload"])
 		if(usr != src.occupant)	return

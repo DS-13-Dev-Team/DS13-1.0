@@ -76,6 +76,10 @@
 	damage = 10.5
 	shredding = 1
 
+/datum/unarmed_attack/claws/monkey
+	attack_verb = list("scratched")
+	damage = 6.5
+
 /datum/unarmed_attack/bite/weak
 	damage = 4
 

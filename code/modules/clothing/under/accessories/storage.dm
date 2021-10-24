@@ -54,6 +54,11 @@
 	desc = "Sturdy mess of synthcotton belts and buckles, ready to share your burden."
 	icon_state = "webbing"
 
+/obj/item/clothing/accessory/storage/webbing/security
+	name = "security webbing"
+	desc = "Sturdy mess of synthcotton belts and buckles, ready to share your burden."
+	icon_state = "webbing_ishi"
+
 /obj/item/clothing/accessory/storage/webbing_large
 	name = "large webbing"
 	desc = "A large collection of synthcotton pockets and pouches."

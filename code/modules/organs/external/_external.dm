@@ -94,6 +94,12 @@
 	// HUD element variable, see organ_icon.dm get_damage_hud_image()
 	var/image/hud_damage_image
 
+
+/obj/item/organ/external/get_biomass()
+	. = biomass
+	for (var/obj/item/organ/internal/I in internal_organs)
+		. += I.get_biomass()
+
 /obj/item/organ/external/proc/get_fingerprint()
 
 	if((limb_flags & ORGAN_FLAG_FINGERPRINT) && dna && !is_stump() && !BP_IS_ROBOTIC(src))

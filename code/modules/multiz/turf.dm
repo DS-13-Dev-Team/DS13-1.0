@@ -48,7 +48,7 @@
 	icon_state = ""
 	density = FALSE
 	pathweight = INFINITY //Seriously, don't try and path over this one numbnuts
-
+	is_hole = TRUE
 	z_flags = ZM_MIMIC_DEFAULTS | ZM_MIMIC_OVERWRITE | ZM_MIMIC_NO_AO | ZM_ALLOW_ATMOS
 
 /turf/simulated/open/update_dirt()
@@ -120,3 +120,7 @@
 //Most things use is_plating to test if there is a cover tile on top (like regular floors)
 /turf/simulated/open/is_plating()
 	return TRUE
+
+
+/turf/simulated/open/take_damage(var/amount, var/damtype = BRUTE, var/user, var/used_weapon, var/bypass_resist = FALSE)
+	return 0	//You can't damage what doesn't exist

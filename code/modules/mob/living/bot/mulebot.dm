@@ -103,7 +103,7 @@
 				if(beaconlist.len)
 					new_dest = input("Select new home tag", "Mulebot [suffix ? "([suffix])" : ""]", null) in null|beaconlist
 				else
-					alert("No destination beacons available.")
+					tgui_alert(user, "No destination beacons available.")
 				if(new_dest)
 					home = get_turf(beaconlist[new_dest])
 					homeName = new_dest
@@ -135,7 +135,7 @@
 			if(beaconlist.len)
 				new_dest = input("Select new destination tag", "Mulebot [suffix ? "([suffix])" : ""]") in null|beaconlist
 			else
-				alert("No destination beacons available.")
+				tgui_alert(usr, "No destination beacons available.")
 			if(new_dest)
 				resetTarget()
 				target = get_turf(beaconlist[new_dest])

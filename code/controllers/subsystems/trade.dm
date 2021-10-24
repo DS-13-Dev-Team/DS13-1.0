@@ -174,8 +174,8 @@ SUBSYSTEM_DEF(trade)
 	Used to put funds into the mining department performance bonus pool based on ore output
 */
 /datum/controller/subsystem/trade/proc/ores_processed(var/list/ores)
-	for (var/orename in ores)
-		var/ore/ore_datum = ore_data[orename]
+	for (var/oretype in ores)
+		var/ore/ore_datum = GLOB.ores_by_type[oretype]
 		var/value = ore_datum.Value()
-		value *= ores[orename]
+		value *= ores[oretype]
 		LAZYAPLUS(departmental_bonuses, "Mining", value)

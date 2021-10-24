@@ -2,7 +2,7 @@
 	name = "bible"
 	desc = "Apply to head repeatedly."
 	icon_state ="bible"
-	
+
 	throw_range = 5
 	w_class = ITEM_SIZE_NORMAL
 	max_w_class = ITEM_SIZE_SMALL
@@ -76,7 +76,7 @@
 				if(icon_picked != "don't change" && icon_picked)
 					icon_state = icon_picked
 				if(i != 0)
-					var/confirm = alert(M, "Is this what you want? Chances remaining: [i]", "Confirmation", "Yes", "No")
+					var/confirm = tgui_alert(M, "Is this what you want? Chances remaining: [i]", "Confirmation", list("Yes", "No"))
 					if(confirm == "Yes")
 						icon_changed = 1
 						break

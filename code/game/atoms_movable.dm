@@ -69,6 +69,7 @@
 
 
 /atom/movable/Bump(var/atom/A, yes)
+
 	if(src.throwing)
 		src.throw_impact(A, src.throwing)
 		src.throwing = FALSE

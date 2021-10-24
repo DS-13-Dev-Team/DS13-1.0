@@ -1,5 +1,5 @@
 /obj/item/weapon/rig/engineering
-	name = "engineering rig"
+	name = "engineering RIG"
 	desc = "A lightweight and flexible armoured rig suit, designed for mining and shipboard engineering."
 	icon_state = "ds_engineering_rig"
 	armor = list(melee = 40, bullet = 50, laser = 50, energy = 25, bomb = 60, bio = 100, rad = 75)
@@ -32,7 +32,7 @@
 	siemens_coefficient = 0
 
 /obj/item/clothing/shoes/magboots/rig/engineering
-	name = "shoes"
+	name = "boots"
 
 /obj/item/clothing/head/helmet/space/rig/engineering
-	name = "hood"
+	name = "helmet"

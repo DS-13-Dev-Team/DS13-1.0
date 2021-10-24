@@ -3,7 +3,7 @@
 	set name = "Show Air Report"
 
 	if(!SSair)
-		alert(usr,"SSair not found.","Air Report")
+		tgui_alert(usr,"SSair not found.","Air Report")
 		return
 
 	var/active_groups = SSair.active_zones
@@ -17,7 +17,7 @@
 	var/inactive_on_main_station = 0
 	for(var/zone/zone in SSair.zones)
 		var/turf/simulated/turf = locate() in zone.contents
-		if(turf && turf.z in GLOB.using_map.station_levels)
+		if(turf && (turf.z in GLOB.using_map.station_levels))
 			if(zone.needs_update)
 				active_on_main_station++
 			else

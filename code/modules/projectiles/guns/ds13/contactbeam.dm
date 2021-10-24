@@ -27,6 +27,8 @@
 	mag_insert_sound = 'sound/weapons/guns/interaction/contact_magin.ogg'
 	mag_remove_sound = 'sound/weapons/guns/interaction/contact_magout.ogg'
 	removeable_cell = TRUE
+
+
 	firemodes = list(
 		list(mode_name = "charge beam", mode_type = /datum/firemode/contact_beam, fire_delay = 2 SECONDS),
 		list(mode_name = "repulse", mode_type = /datum/firemode/contact_repulse, windup_time = 0.5 SECONDS, 	fire_delay = 2 SECONDS)
@@ -252,12 +254,12 @@
 
 /obj/item/weapon/cell/contact
 	name = "contact energy"
-	desc = "A heavy power pack designed for use with the C99 Supercollider Contact Beam"
+	desc = "A heavy power pack designed for use with the C99 Supercollider Contact Beam."
 	origin_tech = list(TECH_POWER = 6)
 	icon = 'icons/obj/ammo.dmi'
 	icon_state = "contact_energy"
 	w_class = ITEM_SIZE_LARGE
-	maxcharge = 5000
+	maxcharge = 4000
 	matter = list(MATERIAL_STEEL = 700, MATERIAL_SILVER = 80)
 
 /obj/item/weapon/cell/contact/update_icon()

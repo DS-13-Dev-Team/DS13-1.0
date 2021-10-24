@@ -418,4 +418,4 @@
 		dat += "</body></html>"
 		usr << browse(jointext(dat,null), "window=roundstatus;size=400x500")
 	else
-		alert("The game hasn't started yet!")
+		tgui_alert(usr, "The game hasn't started yet!")

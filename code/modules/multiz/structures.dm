@@ -29,6 +29,7 @@
 
 /obj/structure/ladder/Initialize()
 	. = ..()
+
 	// the upper will connect to the lower
 	if(allowed_directions & DOWN) //we only want to do the top one, as it will initialize the ones before it.
 		for(var/obj/structure/ladder/L in GetBelow(src))
@@ -37,8 +38,14 @@
 				L.target_up = src
 				var/turf/T = get_turf(src)
 				T.ReplaceWithLattice()
-				return
+				break
+
+
 	update_icon()
+
+	var/turf/T = get_turf(src)
+	if (T)
+		LAZYSET(T.zstructures, src, 2)
 
 
 
@@ -49,6 +56,10 @@
 	if(target_up)
 		target_up.target_down = null
 		target_up = null
+
+	var/turf/T = get_turf(src)
+	if (T)
+		LAZYREMOVE(T.zstructures, src)
 	return ..()
 
 /obj/structure/ladder/attackby(obj/item/I, mob/user)
@@ -136,9 +147,9 @@
 		to_chat(M, "<span class='notice'>\The [src] is incomplete and can't be climbed.</span>")
 		return
 	if(target_down && target_up)
-		var/direction = alert(M,"Do you want to go up or down?", "Ladder", "Up", "Down", "Cancel")
+		var/direction = tgui_alert(M,"Do you want to go up or down?", "Ladder", list("Up", "Down", "Cancel"))
 
-		if(direction == "Cancel")
+		if(direction == "Cancel"||!direction)
 			return
 
 		if(!M.may_climb_ladders(src))
@@ -227,7 +238,16 @@
 		For now though, just making them indestructible because deleting stairs is no fun
 	*/
 	atom_flags = ATOM_FLAG_INDESTRUCTIBLE
+/obj/structure/stairs/Destroy()
+	var/turf/T = get_turf(src)
+	if (T)
+		LAZYREMOVE(T.zstructures, src)
 
+	var/turf/above = GetAbove(src)
+	if (above && istype(above, /turf/simulated/open))
+		LAZYREMOVE(above.zstructures, src)
+
+	.=..()
 
 /obj/structure/stairs/Initialize()
 	for(var/turf/turf in locs)
@@ -237,7 +257,17 @@
 			return INITIALIZE_HINT_QDEL
 		if(!istype(above))
 			above.ChangeTurf(/turf/simulated/open)
+
+		LAZYSET(above.zstructures, src, 2)
+
 	. = ..()
+
+	var/turf/T = get_turf(src)
+	if (T)
+		LAZYSET(T.zstructures, src, 2)
+
+
+
 
 /obj/structure/stairs/CheckExit(atom/movable/mover as mob|obj, turf/target as turf)
 	if(get_dir(loc, target) == dir && upperStep(mover.loc))

@@ -1,5 +1,5 @@
 /obj/item/weapon/gun/energy/cutter
-	name = "210-V mining cutter"
+	name = "210-V Mining Cutter"
 	desc = "A medium-power mining tool capable of splitting dense material with only a few directed blasts. Unsurprisingly, it is also an extremely deadly tool and should be handled with the utmost care. "
 	charge_meter = 0
 	icon = 'icons/obj/tools.dmi'
@@ -22,7 +22,7 @@
 	mag_remove_sound = 'sound/weapons/guns/interaction/force_magout.ogg'
 	removeable_cell = TRUE
 
-	has_safety = TRUE	//This thing is too dangerous to lack safety
+	safety_state = 1	//This thing is too dangerous to lack safety
 
 /obj/item/weapon/gun/energy/cutter/empty
 	cell_type = null
@@ -69,7 +69,7 @@
 
 
 /obj/item/projectile/beam/cutter/plasma
-	damage = 17.75
+	damage = 18.5
 	kill_count = 7 //an upgrade over the mining cutter, used for engineering work, but still not a proper firearm
 	dig_power = 900
 
@@ -95,7 +95,7 @@
 
 /obj/item/weapon/cell/plasmacutter
 	name = "plasma energy"
-	desc = "A light power pack designed for use with high energy cutting tools"
+	desc = "A light power pack designed for use with high energy cutting tools."
 	origin_tech = list(TECH_POWER = 4)
 	icon = 'icons/obj/ammo.dmi'
 	icon_state = "darts"

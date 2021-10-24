@@ -20,6 +20,9 @@ other types of metals and chemistry for reagents).
 	var/desc = "No description set"	//Description of the created object. If null, it will use group_desc and name where applicable.
 	var/id = null					//ID of the created object for easy refernece. If null, uses typepath instead.
 
+	var/list/whitelist 				//A list of ckeys who are the only ones that can buy this in stores. Not used in lathing
+	var/patron_only = FALSE			//If true, only patrons can buy this in stores
+
 	var/list/materials = list()		//List of materials. Format: "id" = amount.
 	var/list/chemicals = list()		//List of reagents. Format: "id" = amount. DON'T USE IN PROTOLATHE DESIGNS!
 	var/build_path = null			//The path of the object that gets created.
@@ -178,6 +181,9 @@ other types of metals and chemistry for reagents).
 
 
 /datum/design/ui_data()
+	if (isnull(ui_data))
+		AssembleDesignInfo()
+
 	return ui_data
 
 //Returns a new instance of the item for this design
@@ -197,7 +203,17 @@ other types of metals and chemistry for reagents).
 
 	return A
 
+// Same as above but for store
+/datum/design/proc/CreatedInStore(store_ref)
+	if(!build_path)
+		return
 
+	if(!(build_type & STORE))
+		return
+
+	var/atom/A = new build_path(store_ref)
+
+	return A
 
 /datum/design/autolathe
 	build_type = AUTOLATHE

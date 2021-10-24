@@ -1,3 +1,17 @@
+/mob/living/carbon/get_item_by_slot(slot_id)
+	switch(slot_id)
+		if(slot_back)
+			return back
+		if(slot_wear_mask)
+			return wear_mask
+		if(slot_wear_mask)
+			return wear_mask
+		if(slot_handcuffed)
+			return handcuffed
+		if(slot_legcuffed)
+			return legcuffed
+	return null
+
 /mob/living/carbon/New()
 	//setup reagent holders
 	bloodstr = new/datum/reagents/metabolism(120, src, CHEM_BLOOD)
@@ -96,21 +110,20 @@
 
 /mob/living/carbon/swap_hand()
 
-
 	//We cache the held items before and after swapping using get active hand.
 	//This approach is future proof and will support people who possibly have >2 hands
 	var/obj/item/prev_held = get_active_hand()
 
 	//Now we do the hand swapping
 	//Possible future todo: Make this cycle through a list of hands instead, to support creatures with many arms
-	src.hand = !( src.hand )
+	hand = !hand
 	if(hud_used.l_hand_hud_object && hud_used.r_hand_hud_object)
+		hud_used.l_hand_hud_object.update_icon(hand)
+		hud_used.r_hand_hud_object.update_icon(!hand)
 		if(hand)	//This being 1 means the left hand is in use
-			hud_used.l_hand_hud_object.icon_state = "l_hand_active"
-			hud_used.r_hand_hud_object.icon_state = "r_hand_inactive"
+			hud_used.l_hand_hud_object.add_overlay("hand_active")
 		else
-			hud_used.l_hand_hud_object.icon_state = "l_hand_inactive"
-			hud_used.r_hand_hud_object.icon_state = "r_hand_active"
+			hud_used.r_hand_hud_object.add_overlay("hand_active")
 
 	var/obj/item/new_held = get_active_hand()
 
@@ -280,7 +293,7 @@
 	if(usr.sleeping)
 		to_chat(usr, "<span class='warning'>You are already sleeping</span>")
 		return
-	if(alert(src,"You sure you want to sleep for a while?","Sleep","Yes","No") == "Yes")
+	if(tgui_alert(src,"You sure you want to sleep for a while?","Sleep", list("Yes","No")) == "Yes")
 		usr.sleeping = 20 //Short nap
 
 /mob/living/carbon/Bump(var/atom/movable/AM, yes)
@@ -311,6 +324,12 @@
 		chem_effects[effect] = max(magnitude, chem_effects[effect])
 	else
 		chem_effects[effect] = magnitude
+
+
+
+/mob/living/carbon/proc/remove_chemical_effect(var/effect)
+	if(effect in chem_effects)
+		chem_effects -= effect
 
 /mob/living/carbon/get_default_language()
 	if(default_language && can_speak(default_language))

@@ -2,6 +2,7 @@
 
 /obj/item/weapon/tool/wirecutters/clippers
 	name = "plant clippers"
+	icon_state = "clippers"
 	desc = "A tool used to take samples from plants."
 
 /obj/item/device/analyzer/plant_analyzer

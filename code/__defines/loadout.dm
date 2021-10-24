@@ -34,3 +34,25 @@
 
 //If this is set as a gear's slot var, it will call spawn_special to create that gear item, allowing it to be overridden and placed manually
 #define GEAR_EQUIP_SPECIAL	"special"
+
+
+#define CATEGORY_ACCESSORIES	"Accessories"
+#define CATEGORY_CLOTHING	"Clothing"
+#define CATEGORY_EARWEAR	 "Earwear"
+#define CATEGORY_EYEWEAR	"Eyewear"
+#define CATEGORY_GLOVES		"Gloves"
+#define CATEGORY_HEADWEAR	"Headwear"
+#define CATEGORY_RIG	"RIG"
+#define CATEGORY_GENERAL	"General"
+#define CATEGORY_MISC	"Misc"
+#define CATEGORY_TOOLS	"Tools"
+
+#define SUBCATEGORY_FRAMES	"Frames"
+#define SUBCATEGORY_MODULES	 "Modules"
+#define SUBCATEGORY_DANGEROUS_TOOLS	 "Dangerous Tools"
+
+
+//Access defines for custom items, one is applied to each distribution channel for obtaining the item. An item can have different access in different channels
+#define ACCESS_PUBLIC	"public"
+#define ACCESS_PATRONS	"patrons"
+#define ACCESS_WHITELIST	"whitelist"

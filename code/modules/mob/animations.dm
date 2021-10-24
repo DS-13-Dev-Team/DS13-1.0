@@ -121,7 +121,10 @@ note dizziness decrements automatically in the mob's Life() proc.
 	//reset the pixel offsets to zero
 	is_floating = 0
 
-/atom/movable/proc/do_attack_animation(atom/A)
+
+/atom/proc/do_attack_animation(atom/A)
+
+/atom/movable/do_attack_animation(atom/A)
 
 	var/pixel_x_diff = 0
 	var/pixel_y_diff = 0

@@ -1,7 +1,7 @@
 /datum/gear/RIG
-	sort_category = "RIG"
-	category = /datum/gear/RIG
-	subcategory = "Frames"
+	sort_category = CATEGORY_RIG
+	base_type = /datum/gear/RIG
+	subcategory = SUBCATEGORY_FRAMES
 
 /*
 	Frames
@@ -12,7 +12,7 @@
 /datum/gear/RIG/frame
 	gear_tweaks = list(/datum/gear_tweak/RIG/active)
 	slot = slot_back
-	category = /datum/gear/RIG/frame
+	base_type = /datum/gear/RIG/frame
 
 	//Only one rig can be equipped
 	tags = list(LOADOUT_TAG_RIG)
@@ -40,12 +40,7 @@
 
 
 
-/datum/gear/RIG/frame/hacker
-	display_name = "digital infiltration RIG"
-	path = /obj/item/weapon/rig/hacker
 
-	cost = 4
-	patron_only = TRUE
 
 
 
@@ -64,8 +59,8 @@
 
 /datum/gear/RIG/module
 
-	category = /datum/gear/RIG/module
-	subcategory = "Modules"
+	base_type = /datum/gear/RIG/module
+	subcategory = SUBCATEGORY_MODULES
 	priority = 2 //These should come after a frame is equipped
 
 	//They go into a rig frame, so you need to pick one first

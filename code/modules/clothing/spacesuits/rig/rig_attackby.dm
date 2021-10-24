@@ -118,6 +118,7 @@
 							module.deactivate()
 						user.put_in_hands(cell)
 						cell = null
+						return
 					else
 						to_chat(user, "There is nothing loaded in that mount.")
 
@@ -139,10 +140,8 @@
 
 					var/obj/item/rig_module/removed = possible_removals[removal_choice]
 					to_chat(user, "You detach \the [removed] from \the [src].")
-					removed.forceMove(get_turf(src))
-					removed.uninstalled(src, user)
-					processing_modules -= removed
-					update_icon()
+					uninstall(removed, FALSE, user)
+					return
 
 		else if(istype(W,/obj/item/stack/nanopaste)) //EMP repair
 			var/obj/item/stack/S = W
@@ -163,7 +162,7 @@
 	for(var/obj/item/rig_module/module in installed_modules)
 		if(module.accepts_item(W,user)) //Item is handled in this proc
 			return
-	..()
+	.=..()
 
 
 
@@ -252,10 +251,10 @@
 	update_icon()
 
 
-/obj/item/weapon/rig/proc/uninstall(var/obj/item/rig_module/RM, var/delete = FALSE)
+/obj/item/weapon/rig/proc/uninstall(obj/item/rig_module/RM, delete = FALSE, mob/user)
 	processing_modules -= RM
 
-	RM.uninstalled(src)
+	RM.uninstalled(src, user)
 	if (delete)
 		qdel(RM)
 	else

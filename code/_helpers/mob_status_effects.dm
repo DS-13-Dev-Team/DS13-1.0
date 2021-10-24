@@ -52,3 +52,16 @@
 		O.rejuvenate()
 
 	shock_stage = 0
+
+	paralysis = 0
+	stunned = 0
+	sleeping = 0
+	weakened = 0
+
+	//Remake the hud
+	if (hud_used)
+		QDEL_NULL(hud_used)
+
+		//If there isn't a client right now, the next one to login to this mob will run this anyway
+		if (client)
+			create_mob_hud()

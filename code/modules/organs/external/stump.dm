@@ -3,6 +3,7 @@
 	icon_name = ""
 	dislocated = -1
 	base_miss_chance = 15	//Small target
+	biomass = 0
 
 /obj/item/organ/external/stump/New(var/mob/living/carbon/holder, var/internal, var/obj/item/organ/external/limb)
 	if(istype(limb))

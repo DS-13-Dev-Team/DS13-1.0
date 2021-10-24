@@ -98,7 +98,13 @@
 	//Items are not dense typically
 	can_block_movement = FALSE
 
-/obj/item/New()
+	//Tooltip vars
+	///string form of an item's force. Edit this var only to set a custom force string
+	var/force_string
+	var/last_force_string_check = 0
+	var/tip_timer
+
+/obj/item/Initialize()
 	if (!max_health)
 		if (w_class != ITEM_SIZE_NO_CONTAINER)	//This is infinity, would cause errors
 			max_health = 30 * w_class	//Bigger items are harder to break
@@ -107,7 +113,8 @@
 	health = max_health
 
 
-	..()
+	. = ..()
+
 	if(randpixel && (!pixel_x && !pixel_y) && isturf(loc)) //hopefully this will prevent us from messing with mapper-set pixel_x/y
 		pixel_x = rand(-randpixel, randpixel)
 		pixel_y = rand(-randpixel, randpixel)
@@ -394,7 +401,9 @@
 		M.r_hand.update_twohanding()
 
 	if (slowdown_general || slowdown_per_slot)
-		M.update_extension(/datum/extension/updating/encumbrance)
+		//A bit of a hack. If this is true, it means the current stack is being executed from loadout, and we don't want to bother loadout dummies with encumbrance values
+		if (!istype(usr, /mob/dead/new_player))
+			M.update_extension(/datum/extension/updating/encumbrance)
 
 //Defines which slots correspond to which slot flags
 var/list/global/slot_flags_enumeration = list(
@@ -789,10 +798,6 @@ THIS SCOPE CODE IS DEPRECATED, USE AIM MODES INSTEAD.
 
 	if(!user.client)
 		return
-
-	//user.client.view = world.view
-	if(!user.hud_used.hud_shown)
-		user.toggle_zoom_hud()
 
 	user.client.pixel_x = 0
 	user.client.pixel_y = 0

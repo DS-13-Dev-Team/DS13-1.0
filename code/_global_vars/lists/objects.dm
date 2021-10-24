@@ -78,3 +78,6 @@ GLOBAL_LIST_INIT(click_catchers, list())
 GLOBAL_LIST_EMPTY(gear_datums)
 
 GLOBAL_LIST_EMPTY(rnd_server_list)
+
+// Used to update tracking level for all vitals monitors that are set to automatic mode when alert changes
+GLOBAL_LIST_EMPTY(vitals_auto_update_tracking)

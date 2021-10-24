@@ -147,8 +147,10 @@
 	var/altitude = 1
 
 /datum/projectile_wave/Destroy()
-	release_vector(direction)
-	release_vector(perpendicular_direction)
+	if (istype(direction))
+		release_vector(direction)
+	if (istype(perpendicular_direction))
+		release_vector(perpendicular_direction)
 	.=..()
 
 /*

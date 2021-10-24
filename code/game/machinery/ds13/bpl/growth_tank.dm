@@ -35,6 +35,7 @@
 	density = TRUE
 	anchored = TRUE
 
+	var/icon_updating = FALSE
 
 
 /obj/machinery/growth_tank/Initialize()
@@ -87,14 +88,18 @@
 /obj/machinery/growth_tank/is_open_container()
 	return TRUE
 
-/obj/machinery/growth_tank/on_reagent_change()
+/obj/machinery/growth_tank/on_reagent_change(var/reagent_type, var/delta)
+	. = ..()
 	update_current_biomass()
 	playsound(src, "bubble_small", VOLUME_LOW)
 
 /obj/machinery/growth_tank/proc/update_current_biomass()
 	current_biomass = reagents.get_reagent_amount(/datum/reagent/nutriment/biomass)
 	if (stat && current_biomass && forming)
-		turn_on()
+		if (!turn_on())
+			update_icon()
+		return
+	update_icon()
 
 
 /obj/machinery/growth_tank/proc/growth_progress()
@@ -123,16 +128,18 @@
 /obj/machinery/growth_tank/proc/turn_on()
 	//If stat is 0 we're turned on
 	if (!stat)
-		return
+		return FALSE
 
 	//We're only on when something is inside us and we have a nonzero quantity of biomass
 	if (!current_growth_atom || !current_biomass)
 		turn_off()
-		return
+		return FALSE
 
 	CLEAR_FLAGS(stat, POWEROFF)
 	START_PROCESSING_MACHINE(src, MACHINERY_PROCESS_SELF)
+
 	update_icon()
+	return TRUE
 
 /obj/machinery/growth_tank/Process()
 	ticks++
@@ -169,7 +176,10 @@
 
 
 /obj/machinery/growth_tank/update_icon()
-
+	if (icon_updating)
+		return
+	icon_updating = TRUE
+	sleep(rand(10,30))
 	overlays.Cut()
 	underlays.Cut()
 
@@ -187,9 +197,9 @@
 			var/obj/item/organ/forming/F = current_growth_atom
 			var/growth_progress = F.biomass / F.target_biomass
 			I.transform = I.transform.Scale(Interpolate(0.2, 1, growth_progress))
-		I.transform = I.transform.Turn(rand_between(-20, 20))	//Slight random rotation
-		I.pixel_x += rand_between(-4, 4)
-		I.pixel_y += rand_between(-4, 4)
+		I.transform = I.transform.Turn(rand_between(-10, 10))	//Slight random rotation
+		I.pixel_x += rand_between(-3, 3)
+		I.pixel_y += rand_between(-3, 3)
 		I.alpha = 220	//Slightly less than full opacity so some of the green liquid is visible
 		underlays += I
 
@@ -221,15 +231,24 @@
 	I.color = liquid_color
 	underlays += I
 
-	I = image(icon, src, "bubbles")
-	I.color = liquid_color
-	overlays += I
+
 
 	I = image(icon, src, "gradient_grayscale")
 	I.color = liquid_color
+	I.alpha = 190
 	overlays += I
 
-	//overlays += image(icon, src, "shine")
+	I = image(icon, src, pick("bubbles1", "bubbles2", "bubbles3"))
+	I.color = liquid_color
+	overlays += I
+
+	I = image(icon, src, "shine")
+	I.color = liquid_color
+	I.alpha = 220
+	overlays += I
+
+
+	icon_updating = FALSE
 
 
 /obj/machinery/growth_tank/proc/get_stored_biomass()
@@ -270,8 +289,8 @@ There's no need to make this choice right now, if you cancel it will carry on gr
 				ready = FALSE
 
 		//We spawn a new completed organ to replace the forming one
-		var/choice = alert(user, "The [current_growth_atom] is [ready? "finished growing and ready for use" : "not yet at a viable growth stage.\n If you remove it now, it will just be a useless lump of biomass."]\n\
-		Do you wish to eject it?", "Eject Growth Product", "Remove from Tank", "Leave it in")
+		var/choice = tgui_alert(user, "The [current_growth_atom] is [ready? "finished growing and ready for use" : "not yet at a viable growth stage.\n If you remove it now, it will just be a useless lump of biomass."]\n\
+		Do you wish to eject it?", "Eject Growth Product", list("Remove from Tank", "Leave it in"))
 		if (choice == "Remove from Tank")
 			remove_product(user)
 			playsound(src, "bubble", VOLUME_LOW)
@@ -367,22 +386,6 @@ There's no need to make this choice right now, if you cancel it will carry on gr
 /obj/machinery/growth_tank/attack_hand(var/mob/living/carbon/human/user)
 	show_menu(user)
 
-/obj/machinery/growth_tank/attackby(var/obj/item/I, var/mob/user)
-	if(!I || !user)
-		return
-
-	add_fingerprint(user, 0, I)
-
-	//With containers, you pour in the contents, assuming the container itself is non-organic
-	//Growth tank only accepts a small whitelist of chemicals
-	if (I.is_open_container() && !I.get_biomass() && I.reagents && I.reagents.contains_purely(valid_reagents))
-		var/obj/item/weapon/reagent_containers/RC = I
-		RC.standard_pour_into(user, src, I.reagents.maximum_volume)
-		if (!stat || !current_growth_atom)
-			update_icon()
-		else
-			turn_on()
-		return
 
 
 /obj/machinery/growth_tank/can_harvest_biomass()
@@ -390,3 +393,10 @@ There's no need to make this choice right now, if you cancel it will carry on gr
 
 /obj/machinery/growth_tank/harvest_biomass()
 	return BIOMASS_HARVEST_LARGE
+
+
+
+/obj/item/weapon/reagent_containers/glass/bucket/infinite_biomass/Initialize()
+	. = ..()
+	reagents.maximum_volume = 1000000
+	reagents.add_reagent(/datum/reagent/nutriment/biomass, 100000)

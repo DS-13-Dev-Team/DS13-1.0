@@ -68,10 +68,10 @@
 
 
 	playsound(src, sound_vend, VOLUME_MID, TRUE)
-	return current_design.Fabricate(src, 1, src)
+	return current_design.CreatedInStore(src)
 
 /obj/machinery/store/proc/store_or_drop(var/obj/item/I)
-	if (!deposit_box.store_item(I))
+	if (!istype(I) || !deposit_box.store_item(I))
 		I.forceMove(get_turf(src))
 
 
@@ -89,7 +89,8 @@
 */
 /obj/machinery/store/proc/buy_to_occupant()
 	var/list/things = list() + buy_current()
-	for (var/obj/item/I in things)
+	for (var/atom/movable/I in things)
+
 		var/atom/destination = occupant.equip_to_storage_or_hands(I)
 		if(!destination)
 			destination = store_or_drop(I)
@@ -150,13 +151,15 @@
 
 
 
-	var/response = alert(user, "Welcome to the CEC Employee Checking Account withdrawal interface. \n\
+	var/response = tgui_alert(user, "Welcome to the CEC Employee Checking Account withdrawal interface. \n\
 	Currently Available Balance:	[available_balance]	credits \n\
 	You are withdrawing: [withdrawal_amount] credits. Please select the location to withdraw to.",
 	"CEC Employee Checking Account",
+	list(
 	(rig_account ? "Withdraw to RIG" : null),
 	(chip ? "Withdraw to Credit Chip" : null),
-	"Cancel")
+	"Cancel"
+	))
 
 	//We need to recheck things to prevent exploits now
 	if (!ECA)
@@ -169,9 +172,6 @@
 		return
 
 	switch (response)
-		if ("Cancel")
-			return
-
 		if ("Withdraw to RIG")
 			charge_to_account(rig_account.account_number, machine_id, "Credit Withdrawal", machine_id, withdrawal_amount)
 			charge_to_account(ECA.account_number, machine_id, "Credit Withdrawal", machine_id, -withdrawal_amount)

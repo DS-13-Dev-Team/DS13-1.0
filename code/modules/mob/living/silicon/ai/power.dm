@@ -170,7 +170,7 @@
 		self_shutdown = 0
 		return
 
-	var/confirm = alert("Are you sure that you want to shut yourself down? You can reboot yourself later by using the \"Shutdown\" command again. This will put you into reduced power usage mode, at the cost of losing most functions.", "Confirm Shutdown", "Yes", "No")
+	var/confirm = tgui_alert(src, "Are you sure that you want to shut yourself down? You can reboot yourself later by using the \"Shutdown\" command again. This will put you into reduced power usage mode, at the cost of losing most functions.", "Confirm Shutdown", list("Yes", "No"))
 
 	if(confirm == "Yes")
 		to_chat(src, "<span class='notice'>Shutting down. Minimal power mode: Enabled. You may reboot yourself by using the \"Shutdown\" command again.</span>")

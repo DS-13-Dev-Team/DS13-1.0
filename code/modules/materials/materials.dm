@@ -251,6 +251,7 @@ var/list/name_to_material
 // Datum definitions follow.
 /material/uranium
 	name = "uranium"
+	value = 52
 	stack_type = /obj/item/stack/material/uranium
 	radioactivity = 12
 	icon_base = "stone"
@@ -267,6 +268,7 @@ var/list/name_to_material
 
 /material/diamond
 	name = MATERIAL_DIAMOND
+	value = 52
 	stack_type = /obj/item/stack/material/diamond
 	flags = MATERIAL_UNMELTABLE
 	cut_delay = 60
@@ -329,6 +331,7 @@ var/list/name_to_material
 	stack_type = /obj/item/stack/material/phoron
 	ignition_point = PHORON_MINIMUM_BURN_TEMPERATURE
 	icon_base = "stone"
+	value = 20
 	table_icon_base = "stone"
 	icon_colour = "#e37108"
 	shard_type = SHARD_SHARD
@@ -643,6 +646,7 @@ var/list/name_to_material
 	sheet_plural_name = "ingots"
 	is_fusion_fuel = 1
 	construction_difficulty = 2
+	value = 52
 
 /material/deuterium
 	name = "deuterium"
@@ -655,7 +659,7 @@ var/list/name_to_material
 	construction_difficulty = 2
 
 /material/mhydrogen
-	name = "mhydrogen"
+	name = "metallic hydrogen"
 	stack_type = /obj/item/stack/material/mhydrogen
 	icon_colour = "#e6c5de"
 	stack_origin_tech = list(TECH_MATERIAL = 6, TECH_POWER = 6, TECH_MAGNET = 5)
@@ -667,6 +671,7 @@ var/list/name_to_material
 
 /material/platinum
 	name = "platinum"
+	value = 20
 	stack_type = /obj/item/stack/material/platinum
 	icon_colour = "#9999ff"
 	weight = 27

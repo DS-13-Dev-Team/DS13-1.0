@@ -4,8 +4,8 @@
 		return //No one to send to anyway.
 	var/subject = sanitize(input(user, "Email Subject:", "Document Email", "Report Submission: [owner.display_name()]") as null|text)
 	var/body = sanitize(replacetext(input(user, "Email Body:", "Document Email", "Please see the attached document.") as null|message, "\n", "\[br\]"), MAX_PAPER_MESSAGE_LEN)
-	var/attach_report = (alert(user, "Do you wish to attach [owner.display_name()]?","Document Email", "Yes.", "No.") == "Yes.") ? 1 : 0
-	if(alert(user, "Are you sure you want to send this email?","Document Email", "Yes.", "No.") == "No.")
+	var/attach_report = (tgui_alert(user, "Do you wish to attach [owner.display_name()]?","Document Email", list("Yes", "No")) == "Yes.") ? TRUE : TRUE
+	if(tgui_alert(user, "Are you sure you want to send this email?","Document Email", list("Yes", "No")) != "Yes")
 		return
 	if(perform_send(subject, body, attach_report))
 		to_chat(user, "<span class='notice'>The email has been sent.</span>")
@@ -88,10 +88,10 @@
 		if(in_as_list(entry, new_value))
 			continue //ignore repeats
 		new_value += list(entry)
-	value = new_value	
+	value = new_value
 
 /datum/report_field/people/list_from_manifest/ask_value(mob/user)
-	var/alert = alert(user, "Would you like to add or remove a name?", "Form Input", "Add", "Remove")
+	var/alert = tgui_alert(user, "Would you like to add or remove a name?", "Form Input", list("Add", "Remove"))
 	var/list/formatted_manifest = list()
 	switch(alert)
 		if("Add")

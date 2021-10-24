@@ -33,7 +33,7 @@
 	if(!registered_user && register_user(user))
 		to_chat(user, "<span class='notice'>The microscanner marks you as its owner, preventing others from accessing its internals.</span>")
 	if(registered_user == user)
-		switch(alert("Would you like edit the ID, or show it?","Show or Edit?", "Edit","Show"))
+		switch(tgui_alert(user, "Would you like edit the ID, or show it?","Show or Edit?", list("Edit","Show")))
 			if("Edit")
 				ui_interact(user)
 			if("Show")
@@ -169,7 +169,7 @@
 					to_chat(user, "<span class='notice'>Sex changed to '[new_sex]'.</span>")
 					. = 1
 			if("Factory Reset")
-				if(alert("This will factory reset the card, including access and owner. Continue?", "Factory Reset", "No", "Yes") == "Yes" && CanUseTopic(user, state))
+				if(tgui_alert(usr, "This will factory reset the card, including access and owner. Continue?", "Factory Reset", list("No", "Yes")) == "Yes" && CanUseTopic(user, state))
 					age = initial(age)
 					access = syndicate_access.Copy()
 					assignment = initial(assignment)

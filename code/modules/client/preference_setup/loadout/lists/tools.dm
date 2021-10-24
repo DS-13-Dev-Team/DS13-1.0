@@ -1,40 +1,26 @@
 /datum/gear/tool
-	sort_category = "Tools"
-	category = /datum/gear/tool
+	sort_category = CATEGORY_TOOLS
+	base_type = /datum/gear/tool
 
 /*
 	Dangerous Tools, high cost
 */
-/datum/gear/tool/rivetgun
-	subcategory = "Dangerous Tools"
-	display_name = "711-MarkCL Rivet Gun"
-	path = /obj/item/weapon/gun/projectile/rivet
-	patron_only = TRUE
-	cost = 4
-
-
-/datum/gear/tool/cutter
-	display_name = "210-V mining cutter"
-	subcategory = "Dangerous Tools"
-	path = /obj/item/weapon/gun/energy/cutter
-	cost = 4
-
 
 /datum/gear/tool/crowbar
 	display_name = "crowbar"
-	subcategory = "Dangerous Tools"
+	subcategory = SUBCATEGORY_DANGEROUS_TOOLS
 	path = /obj/item/weapon/tool/crowbar
 	cost = 2
 
 /datum/gear/tool/plasmasaw
 	display_name = "plasma saw"
-	subcategory = "Dangerous Tools"
+	subcategory = SUBCATEGORY_DANGEROUS_TOOLS
 	path = /obj/item/weapon/tool/saw/plasma
 	cost = 3
 
 /datum/gear/tool/laserpick
 	display_name = "laser pick"
-	subcategory = "Dangerous Tools"
+	subcategory =SUBCATEGORY_DANGEROUS_TOOLS
 	path = /obj/item/weapon/tool/pickaxe/laser
 	cost = 3
 

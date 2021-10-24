@@ -59,7 +59,7 @@
 		to_chat(user, "<span class='danger'>You are banned from playing a Xenophage.</span>")
 		return
 
-	var/confirm = alert(user, "Are you sure you want to join as a Xenophage larva?", "Become Larva", "No", "Yes")
+	var/confirm = tgui_alert(user, "Are you sure you want to join as a Xenophage larva?", "Become Larva", list("No", "Yes"))
 
 	if(!src || confirm != "Yes")
 		return

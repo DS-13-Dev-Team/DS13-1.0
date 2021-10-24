@@ -1,8 +1,8 @@
 /obj/item/weapon/rig/zealot
-	name = "zealot rig"
+	name = "zealot RIG"
 	desc = "An old combat RIG used by SCAF over two hundred years ago. The armour has seen some wear but still functions as it should, it has been repainted in black and crimson colours. There are unitologist markings across the suit."
 	icon_state = "zealot_rig"
-	armor = list(melee = 60, bullet = 60, laser = 30, energy = 20, bomb = 30, bio = 40, rad = 40)
+	armor = list(melee = 60, bullet = 60, laser = 30, energy = 20, bomb = 30, bio = 100, rad = 40)
 	online_slowdown = RIG_MEDIUM
 	acid_resistance = 1.75	//Contains a fair bit of plastic
 
@@ -18,17 +18,13 @@
 		/obj/item/rig_module/vision/nvgsec
 		)
 
+/obj/item/clothing/head/helmet/space/rig/zealot
+	light_overlay = "zealothelm_light"
+
 /obj/item/clothing/suit/space/rig/zealot
-	name = "suit"
 	valid_accessory_slots = list(ACCESSORY_SLOT_INSIGNIA, ACCESSORY_SLOT_ARMOR_S, ACCESSORY_SLOT_ARMOR_M)
 	restricted_accessory_slots = list(ACCESSORY_SLOT_INSIGNIA, ACCESSORY_SLOT_ARMOR_S)
 
 /obj/item/clothing/gloves/rig/zealot
-	name = "gloves"
 
 /obj/item/clothing/shoes/magboots/rig/zealot
-	name = "shoes"
-
-/obj/item/clothing/head/helmet/space/rig/zealot
-	name = "helmet"
-	light_overlay = "zealothelm_light"

@@ -35,7 +35,7 @@
 				to_chat(user, "The access level of [W:registered_name]\'s card is not high enough. ")
 				return 0
 
-			var/choice = alert(user, text("Would you like to (un)authorize a shortened launch time? [] authorization\s are still needed. Use abort to cancel all authorizations.", src.auth_need - src.authorized.len), "Shuttle Launch", "Authorize", "Repeal", "Abort")
+			var/choice = tgui_alert(user, text("Would you like to (un)authorize a shortened launch time? [] authorization\s are still needed. Use abort to cancel all authorizations.", src.auth_need - src.authorized.len), "Shuttle Launch", list("Authorize", "Repeal", "Abort"))
 			if(evacuation_controller.is_prepared() && user.get_active_hand() != W)
 				return 0
 			switch(choice)
@@ -59,13 +59,13 @@
 					src.authorized -= W:registered_name
 					to_chat(world, text("<span class='notice'><b>Alert: [] authorizations needed until shuttle is launched early</b></span>", src.auth_need - src.authorized.len))
 
-				if("Abort")
+				if("Abort" || null)
 					to_chat(world, "<span class='notice'><b>All authorizations to shortening time for shuttle launch have been revoked!</b></span>")
 					src.authorized.len = 0
 					src.authorized = list(  )
 
 		else if (istype(W, /obj/item/weapon/card/emag) && !emagged)
-			var/choice = alert(user, "Would you like to launch the shuttle?","Shuttle control", "Launch", "Cancel")
+			var/choice = tgui_alert(user, "Would you like to launch the shuttle?","Shuttle control", list("Launch", "Cancel"))
 
 			if(!emagged && !evacuation_controller.is_prepared() && user.get_active_hand() == W)
 				switch(choice)
@@ -73,6 +73,4 @@
 						to_chat(world, "<span class='notice'><b>Alert: Shuttle launch time shortened to 10 seconds!</b></span>")
 						evacuation_controller.set_launch_time(world.time+100)
 						emagged = 1
-					if("Cancel")
-						return
 		return

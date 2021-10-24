@@ -6,28 +6,41 @@
 	//create a list of gear datums to sort
 	for(var/geartype in typesof(/datum/gear)-/datum/gear)
 		var/datum/gear/G = geartype
-		if(initial(G.category) == geartype)
+		if(initial(G.base_type) == geartype)
 			continue
 		if(GLOB.using_map.loadout_blacklist && (geartype in GLOB.using_map.loadout_blacklist))
 			continue
+		G = new geartype()
+		register_gear(G)
 
-		var/use_name = initial(G.display_name)
-		var/use_category = initial(G.sort_category)
 
-		if(!GLOB.loadout_categories[use_category])
-			GLOB.loadout_categories[use_category] = new /datum/loadout_category(use_category)
-		var/datum/loadout_category/LC = GLOB.loadout_categories[use_category]
-		GLOB.gear_datums[use_name] = new geartype
-		LC.gear[use_name] = GLOB.gear_datums[use_name]
+	sort_loadout_categories()
 
+
+
+	GLOB.loadout_datums_loaded = TRUE
+	if (LOADOUT_LOADED)
+		handle_pending_loadouts()
+
+	return TRUE
+
+
+/proc/register_gear(var/datum/gear/G)
+
+	var/use_name = G.display_name
+	var/use_category = G.sort_category
+
+	if(!GLOB.loadout_categories[use_category])
+		GLOB.loadout_categories[use_category] = new /datum/loadout_category(use_category)
+	var/datum/loadout_category/LC = GLOB.loadout_categories[use_category]
+	GLOB.gear_datums[use_name] = G
+	LC.gear[use_name] = GLOB.gear_datums[use_name]
+
+/proc/sort_loadout_categories()
 	GLOB.loadout_categories = sortAssoc(GLOB.loadout_categories)
 	for(var/loadout_category in GLOB.loadout_categories)
 		var/datum/loadout_category/LC = GLOB.loadout_categories[loadout_category]
 		sortTim(LC.gear, /proc/cmp_gear_subcategory, TRUE)	//Sort the loadout menu by subcategory
-		//LC.gear = sortAssoc(LC.gear)
-	return TRUE
-
-
 
 
 
@@ -58,13 +71,17 @@
 	var/mob/preference_mob = preference_mob()
 	for(var/gear_name in GLOB.gear_datums)
 		var/datum/gear/G = GLOB.gear_datums[gear_name]
-		var/okay = 1
-		if(G.whitelisted && preference_mob)
-			okay = 0
-			for(var/species in G.whitelisted)
-				if(is_species_whitelisted(preference_mob, species))
-					okay = 1
+		var/okay = TRUE
+		if(G.species_whitelist && preference_mob)
+			for(var/species in G.species_whitelist)
+				if(!is_species_whitelist(preference_mob, species))
+					okay = FALSE
 					break
+
+		if (G.key_whitelist)
+			if (!(preference_mob.ckey in G.key_whitelist))
+				okay = FALSE
+
 		if(!okay)
 			continue
 		if(max_cost && G.cost > max_cost)
@@ -105,6 +122,10 @@
 
 	. += "<tr><td colspan=3><center><b>"
 	var/firstcat = 1
+
+	//Maybe this should be cached earlier than this proc
+	var/list/valid_gear = valid_gear_choices()
+
 	for(var/category in GLOB.loadout_categories)
 
 		if(firstcat)
@@ -144,9 +165,11 @@
 	var/datum/player/P = get_player_from_key(pref.client_ckey)
 	var/is_patron = (P ? P.patron	: FALSE)
 	var/current_subcategory
+
+
 	for(var/gear_name in LC.gear)
 
-		if(!(gear_name in valid_gear_choices()))
+		if(!(gear_name in valid_gear))
 			continue
 		var/list/entry = list()
 		var/datum/gear/G = LC.gear[gear_name]
@@ -279,11 +302,17 @@
 
 	LOADOUT_CHECK
 
+	//Quick safety check
+	if (!islist(pref.gear_list[pref.gear_slot]))
+		pref.gear_list[pref.gear_slot] = list()
+
+
 	//If the gear is enabled, disable it
 	if((TG.display_name in pref.gear_list[pref.gear_slot]) && pref.loadout.remove_gear(TG))
 		pref.gear_list[pref.gear_slot] -= TG.display_name
 	else if (pref.loadout.add_gear(TG))
 		pref.gear_list[pref.gear_slot] += list(TG.display_name)
+
 
 
 /datum/category_item/player_setup_item/loadout/proc/change_slot(var/newslot)

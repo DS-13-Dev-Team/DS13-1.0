@@ -1,5 +1,5 @@
 /*
-	The Rivet Gun, patron exclusive.  pistol, high firing rate
+	The Rivet Gun, patron exclusive. Pistol, high firing rate
 
 	Primary Fire:
 		Semi automatic, high firing rate. Very poor damage and range. Repairs instead of damaging non-organic objects.
@@ -41,7 +41,7 @@
 		list(mode_name = "fragmentate", mode_type = /datum/firemode/rivet_frag)
 		)
 
-	has_safety = TRUE	//This thing is too dangerous to lack safety
+	safety_state = 1
 
 /obj/item/weapon/gun/projectile/rivet/update_icon()
 	..()
@@ -140,7 +140,7 @@
 	Projectile
 */
 /obj/item/projectile/bullet/rivet
-	damage = 9	//Not really meant for direct fire
+	damage = 10	//Not really meant for direct fire
 	expiry_method = EXPIRY_FADEOUT
 	muzzle_type = /obj/effect/projectile/pulse/muzzle/light
 	//fire_sound='sound/weapons/guns/fire/divet_fire.ogg'

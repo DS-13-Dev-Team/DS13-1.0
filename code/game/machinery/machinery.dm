@@ -97,6 +97,7 @@ Class Procs:
 	name = "machinery"
 	icon = 'icons/obj/stationobjs.dmi'
 	w_class = ITEM_SIZE_NO_CONTAINER
+	layer = STRUCTURE_LAYER // Layer under items
 
 	var/stat = 0
 	var/emagged = 0
@@ -127,8 +128,7 @@ Class Procs:
 	var/list/processing_parts // Component parts queued for processing by the machine. Expected type: /obj/item/weapon/stock_parts
 	var/processing_flags         // What is being processed
 
-/obj/machinery/New(var/atom/location, var/direction, var/nocircuit = FALSE)
-
+/obj/machinery/New(mapload, d, nocircuit = FALSE)
 
 	//Nocircuit=TRUE will skip the default circuit init
 	//This is used when constructing a machine ingame, by inserting components into a frame, so that duplicate components and circuits aren't spawned
@@ -136,7 +136,7 @@ Class Procs:
 	if (nocircuit)
 		circuit = null
 
-	.=..()
+	. = ..()
 
 /obj/machinery/Initialize(mapload, d=0)
 	. = ..()

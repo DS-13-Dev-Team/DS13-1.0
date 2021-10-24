@@ -64,24 +64,7 @@
 	for(var/R in subtypesof(/datum/design))
 		var/datum/design/design = new R
 
-		design.AssembleDesignInfo()
-
-		if(!design.build_path)
-			continue
-
-		//Cache the icons
-		var/filename = sanitizeFileName("[design.build_path].png")
-		var/icon/I = getFlatTypeIcon(design.build_path)
-		assets[filename] = I
-
-		design.ui_data["icon"] = filename
-		design.ui_data["icon_width"] = I.Width()
-		design.ui_data["icon_height"] = I.Height()
-
-		SSresearch.all_designs += design
-
-		// Design ID is string
-		SSresearch.design_ids["[design.id]"] = design
+		register_design(design)
 
 	SSresearch.generate_integrated_circuit_designs()
 
@@ -103,6 +86,31 @@
 	SSdatabase.update_store_designs()
 
 	. = ..()
+
+/proc/register_research_design(var/datum/design/design)
+	var/datum/asset/simple/research_designs/RD = GLOB.asset_datums[/datum/asset/simple/research_designs]
+	RD.register_design(design)
+
+/datum/asset/simple/research_designs/proc/register_design(var/datum/design/design)
+	design.AssembleDesignInfo()
+
+	if(!design.build_path)
+		return
+
+	//Cache the icons
+	var/filename = sanitizeFileName("[design.build_path].png")
+	var/icon/I = getFlatTypeIcon(design.build_path)
+	assets[filename] = I
+
+	design.ui_data["icon"] = filename
+	design.ui_data["icon_width"] = I.Width()
+	design.ui_data["icon_height"] = I.Height()
+
+	SSresearch.all_designs += design
+
+	// Design ID is string
+	SSresearch.design_ids["[design.id]"] = design
+
 
 /datum/asset/simple/jquery
 	legacy = TRUE
@@ -138,15 +146,44 @@
 		"stamp-deny" = 'icons/stamp_icons/large_stamp-deny.png',
 		"stamp-ok" = 'icons/stamp_icons/large_stamp-ok.png',
 		"stamp-hop" = 'icons/stamp_icons/large_stamp-hop.png',
-		"stamp-cmo" = 'icons/stamp_icons/large_stamp-cmo.png',
+		"stamp-smo" = 'icons/stamp_icons/large_stamp-cmo.png',
 		"stamp-ce" = 'icons/stamp_icons/large_stamp-ce.png',
-		"stamp-hos" = 'icons/stamp_icons/large_stamp-hos.png',
-		"stamp-rd" = 'icons/stamp_icons/large_stamp-rd.png',
+		"stamp-cseco" = 'icons/stamp_icons/large_stamp-hos.png',
+		"stamp-sci" = 'icons/stamp_icons/large_stamp-rd.png',
 		"stamp-cap" = 'icons/stamp_icons/large_stamp-cap.png',
-		"stamp-qm" = 'icons/stamp_icons/large_stamp-qm.png',
+		"stamp-cargo" = 'icons/stamp_icons/large_stamp-qm.png',
 		"stamp-law" = 'icons/stamp_icons/large_stamp-law.png',
 		"stamp-chap" = 'icons/stamp_icons/large_stamp-chap.png',
 		"stamp-mime" = 'icons/stamp_icons/large_stamp-mime.png',
-		"stamp-centcom" = 'icons/stamp_icons/large_stamp-centcom.png',
+		"stamp-cent" = 'icons/stamp_icons/large_stamp-centcom.png',
 		"stamp-syndicate" = 'icons/stamp_icons/large_stamp-syndicate.png'
 	)
+
+
+
+
+/datum/asset/simple/patron_content/register()
+	log_debug("Registering patron content")
+	var/total = 0
+	for (var/typepath in subtypesof(/datum/patron_item))
+		log_debug("Registering [typepath]")
+		total++
+		var/datum/patron_item/PI = new typepath()
+
+		GLOB.patron_items += PI
+
+	log_debug("Done Registering patron content. Total: [total]")
+	log_debug("---------------------------------")
+
+	//Now we load and assign the whitelists
+	load_patron_item_whitelists()
+
+	//These procs update and sort various other things after the patron items have added themselves to them
+	sort_loadout_categories()
+	SSdatabase.update_store_designs()
+
+	GLOB.custom_items_loaded = TRUE
+	if (LOADOUT_LOADED)
+		handle_pending_loadouts()
+
+	.=..()

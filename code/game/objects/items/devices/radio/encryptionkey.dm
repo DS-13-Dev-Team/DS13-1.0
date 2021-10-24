@@ -54,12 +54,12 @@
 /obj/item/device/encryptionkey/headset_sci
 	name = "science radio encryption key"
 	icon_state = "sci_cypherkey"
-	channels = list("Science" = 1, "Supply" = 1)
+	channels = list("Science" = 1, "Mining" = 1)
 
 /obj/item/device/encryptionkey/headset_medsci
 	name = "medical research radio encryption key"
 	icon_state = "medsci_cypherkey"
-	channels = list("Medical" = 1, "Science" = 1)
+	channels = list("Medical" = 1, "Science" = 1, "Mining" = 1)
 
 /obj/item/device/encryptionkey/headset_com
 	name = "command radio encryption key"
@@ -80,7 +80,7 @@
 /obj/item/device/encryptionkey/heads/rd
 	name = "research director's encryption key"
 	icon_state = "rd_cypherkey"
-	channels = list("Science" = 1, "Command" = 1, "Medical" = 1, "Supply" = 1)
+	channels = list("Science" = 1, "Command" = 1, "Medical" = 1, "Mining" = 1)
 
 /obj/item/device/encryptionkey/heads/hos
 	name = "head of security's encryption key"
@@ -105,7 +105,7 @@
 /obj/item/device/encryptionkey/headset_cargo
 	name = "supply radio encryption key"
 	icon_state = "cargo_cypherkey"
-	channels = list("Supply" = 1, "Science" = 1)
+	channels = list("Supply" = 1)
 
 /obj/item/device/encryptionkey/headset_service
 	name = "service radio encryption key"
@@ -127,9 +127,9 @@
 	channels = list("Entertainment" = 1)
 
 /obj/item/device/encryptionkey/headset_mining
-	name = "prospector radio encryption key"
+	name = "miner radio encryption key"
 	icon_state = "srv_cypherkey"
-	channels = list("Supply" = 1)
+	channels = list("Supply" = 1, "Mining" =1)
 
 /obj/item/device/encryptionkey/dom
 	name = "director of mining encryption key"

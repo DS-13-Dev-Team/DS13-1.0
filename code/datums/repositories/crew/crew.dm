@@ -9,7 +9,7 @@ var/global/datum/repository/crew/crew_repository = new()
 /datum/repository/crew/New()
 	cache_data = list()
 	cache_data_alert = list()
-	
+
 	var/PriorityQueue/general_modifiers = new/PriorityQueue(/proc/cmp_crew_sensor_modifier)
 	var/PriorityQueue/binary_modifiers = new/PriorityQueue(/proc/cmp_crew_sensor_modifier)
 	var/PriorityQueue/vital_modifiers = new/PriorityQueue(/proc/cmp_crew_sensor_modifier)
@@ -22,9 +22,9 @@ var/global/datum/repository/crew/crew_repository = new()
 
 	modifier_queues = list()
 	modifier_queues[general_modifiers] = 0
-	modifier_queues[binary_modifiers] = SUIT_SENSOR_BINARY
-	modifier_queues[vital_modifiers] = SUIT_SENSOR_VITAL
-	modifier_queues[tracking_modifiers] = SUIT_SENSOR_TRACKING
+	modifier_queues[binary_modifiers] = RIG_SENSOR_BINARY
+	modifier_queues[vital_modifiers] = RIG_SENSOR_VITAL
+	modifier_queues[tracking_modifiers] = RIG_SENSOR_TRACKING
 
 	modifier_queues_by_type = list()
 	modifier_queues_by_type[/crew_sensor_modifier/general] = general_modifiers
@@ -49,19 +49,15 @@ var/global/datum/repository/crew/crew_repository = new()
 
 	cache_data_alert[num2text(z_level)] = FALSE
 	var/tracked = scan()
-	for(var/obj/item/clothing/under/C in tracked)
-		var/turf/pos = get_turf(C)
-		if(C.has_sensor && pos && pos.z == z_level && C.sensor_mode != SUIT_SENSOR_OFF)
-			if(istype(C.loc, /mob/living/carbon/human))
-				var/mob/living/carbon/human/H = C.loc
-				if(H.w_uniform != C)
-					continue
+	for(var/obj/item/rig_module/healthbar/HB as anything in tracked)
+		var/turf/pos = get_turf(HB)
+		if(HB.tracking_level != RIG_SENSOR_OFF && pos?.z == z_level && HB.holder?.active)
 
-				var/list/crewmemberData = list("sensor_type"=C.sensor_mode, "stat"=H.stat, "area"="", "x"=-1, "y"=-1, "z"=-1, "ref"="\ref[H]")
-				if(!(run_queues(H, C, pos, crewmemberData) & MOD_SUIT_SENSORS_REJECTED))
-					crewmembers[++crewmembers.len] = crewmemberData
-					if (crewmemberData["alert"])
-						cache_data_alert[num2text(z_level)] = TRUE
+			var/list/crewmemberData = list("sensor_type"=HB.tracking_level, "stat"=HB.holder.wearer.stat, "area"="", "x"=-1, "y"=-1, "z"=-1, "ref"="\ref[HB.holder.wearer]", "name"=HB.holder.wearer.name)
+			if(!(run_queues(HB.holder.wearer, HB, pos, crewmemberData) & MOD_SUIT_SENSORS_REJECTED))
+				crewmembers[++crewmembers.len] = crewmemberData
+				if (crewmemberData["alert"])
+					cache_data_alert[num2text(z_level)] = TRUE
 
 	crewmembers = sortByKey(crewmembers, "name")
 	cache_entry.timestamp = world.time + 5 SECONDS
@@ -80,40 +76,38 @@ var/global/datum/repository/crew/crew_repository = new()
 
 /datum/repository/crew/proc/scan()
 	var/list/tracked = list()
-	for(var/mob/living/carbon/human/H in SSmobs.mob_list)
-		if(istype(H.w_uniform, /obj/item/clothing/under))
-			var/obj/item/clothing/under/C = H.w_uniform
-			if (C.has_sensor)
-				tracked |= C
+	for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
+		if(H.wearing_rig?.healthbar)
+			tracked |= H.wearing_rig.healthbar
 	return tracked
 
 
-/datum/repository/crew/proc/run_queues(H, C, pos, crewmemberData)
+/datum/repository/crew/proc/run_queues(H, HB, pos, crewmemberData)
 	for(var/modifier_queue in modifier_queues)
 		if(crewmemberData["sensor_type"] >= modifier_queues[modifier_queue])
-			. = process_crew_data(modifier_queue, H, C, pos, crewmemberData)
+			. = process_crew_data(modifier_queue, H, HB, pos, crewmemberData)
 			if(. & MOD_SUIT_SENSORS_REJECTED)
 				return
 
-/datum/repository/crew/proc/process_crew_data(var/PriorityQueue/modifiers, var/mob/living/carbon/human/H, var/obj/item/clothing/under/C, var/turf/pos, var/list/crew_data)
+/datum/repository/crew/proc/process_crew_data(var/PriorityQueue/modifiers, var/mob/living/carbon/human/H, var/obj/item/rig_module/healthbar/HB, var/turf/pos, var/list/crew_data)
 	var/current_priority = INFINITY
 	var/list/modifiers_of_this_priority = list()
 
 	for(var/crew_sensor_modifier/csm in modifiers.L)
 		if(csm.priority < current_priority)
-			. = check_queue(modifiers_of_this_priority, H, C, pos, crew_data)
+			. = check_queue(modifiers_of_this_priority, H, HB, pos, crew_data)
 			if(. != MOD_SUIT_SENSORS_NONE)
 				return
 		current_priority = csm.priority
 		modifiers_of_this_priority += csm
-	return check_queue(modifiers_of_this_priority, H, C, pos, crew_data)
+	return check_queue(modifiers_of_this_priority, H, HB, pos, crew_data)
 
-/datum/repository/crew/proc/check_queue(var/list/modifiers_of_this_priority, H, C, pos, crew_data)
+/datum/repository/crew/proc/check_queue(var/list/modifiers_of_this_priority, H, HB, pos, crew_data)
 	while(modifiers_of_this_priority.len)
 		var/crew_sensor_modifier/pcsm = pick(modifiers_of_this_priority)
 		modifiers_of_this_priority -= pcsm
-		if(pcsm.may_process_crew_data(H, C, pos))
-			. = pcsm.process_crew_data(H, C, pos, crew_data)
+		if(pcsm.may_process_crew_data(H, HB, pos))
+			. = pcsm.process_crew_data(H, HB, pos, crew_data)
 			if(. != MOD_SUIT_SENSORS_NONE)
 				return
 	return MOD_SUIT_SENSORS_NONE

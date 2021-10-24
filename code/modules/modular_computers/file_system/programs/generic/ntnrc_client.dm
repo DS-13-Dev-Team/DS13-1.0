@@ -87,7 +87,7 @@
 		var/mob/living/user = usr
 		if(can_run(usr, 1, access_bridge))
 			if(channel)
-				var/response = alert(user, "Really engage admin-mode? You will be disconnected from your current channel!", "SolNRC Admin mode", "Yes", "No")
+				var/response = tgui_alert(user, "Really engage admin-mode? You will be disconnected from your current channel!", "SolNRC Admin mode", list("Yes", "No"))
 				if(response == "Yes")
 					if(channel)
 						channel.remove_client(src)

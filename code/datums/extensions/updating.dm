@@ -10,7 +10,10 @@
 
 /datum/extension/updating/New(var/atom/holder)
 	.=..()
+	Initialize()
 	update()
+
+/datum/extension/updating/proc/Initialize()
 
 /datum/extension/updating/proc/update()
 

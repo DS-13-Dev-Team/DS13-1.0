@@ -1,6 +1,6 @@
 /obj/item/weapon/gun/projectile/seeker
 	name = "Seeker Rifle"
-	desc = "The Seeker Rifle is a riot control device that is meant for accuracy at long-range. Comes with a built in scope"
+	desc = "The Seeker Rifle is a riot control device that is meant for accuracy at long-range. Comes with a built-in scope."
 	icon = 'icons/obj/weapons/ds13guns48x32.dmi'
 	icon_state = "seeker"
 	item_state = "seeker"
@@ -22,7 +22,7 @@
 
 
 	firemodes = list(
-		list(mode_name="semi-automatic",  fire_delay=10),
+		list(mode_name="semi-automatic",  fire_delay=12),
 		)
 
 /obj/item/weapon/gun/projectile/seeker/empty
@@ -34,7 +34,7 @@
 
 /obj/item/ammo_casing/seeker
 	name = "seeker shell"
-	desc = "A high caliber round designed for the Seeker marksman rifle"
+	desc = "A high caliber round designed for the Seeker Rifle."
 	icon_state = "empshell"
 	spent_icon = "empshell-spent"
 	projectile_type  = /obj/item/projectile/bullet/seeker
@@ -43,7 +43,7 @@
 
 /obj/item/projectile/bullet/seeker
 	icon_state = "seeker"
-	damage = 60
+	damage = 50
 	embed = 1
 	structure_damage_factor = 3
 	penetration_modifier = 1.25
@@ -51,21 +51,19 @@
 	step_delay = 0.75	//Real fast
 	expiry_method = EXPIRY_FADEOUT
 	fire_sound = 'sound/weapons/gunshot/sniper.ogg'
-	stun = 3
-	weaken = 3
 	penetrating = 5
 	armor_penetration = 20
 
 
 /obj/item/ammo_magazine/seeker
 	name = "seeker shells"
-	desc = "High caliber armor piercing shells designed for use in the Seeker Rifle"
+	desc = "High caliber armor piercing shells designed for use in the Seeker Rifle."
 	icon = 'icons/obj/ammo.dmi'
 	icon_state = "seekerclip"
 	caliber = "seeker"
 	ammo_type = /obj/item/ammo_casing/seeker
 	matter = list(MATERIAL_STEEL = 1260)
-	max_ammo = 5
+	max_ammo = 6
 	multiple_sprites = TRUE
 	mag_type = MAGAZINE
 

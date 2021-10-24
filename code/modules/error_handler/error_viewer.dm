@@ -7,7 +7,7 @@
 //   logged errors. Only one instance of this datum should ever exist, and it's
 //   right here:
 
-#ifdef DEBUG
+#ifdef USE_CUSTOM_ERROR_HANDLER
 GLOBAL_DATUM_INIT(error_cache, /datum/error_viewer/error_cache, new)
 #else
 // If debugging is disabled, there's nothing useful to log, so don't bother.
@@ -24,18 +24,6 @@ GLOBAL_DATUM(error_cache, /datum/error_viewer/error_cache)
 /datum/error_viewer
 	var/name = ""
 
-/datum/error_viewer/Topic(href, href_list)
-	if(href_list["viewruntime"])
-		var/datum/error_viewer/error_viewer = locate(href_list["viewruntime"])
-		if(!istype(error_viewer))
-			to_chat(usr, "<span class='warning'>That runtime viewer no longer exists.</span>")
-			return
-
-		if(href_list["viewruntime_backto"])
-			error_viewer.show_to(usr.client, locate(href_list["viewruntime_backto"]), href_list["viewruntime_linear"])
-		else
-			error_viewer.show_to(usr.client, null, href_list["viewruntime_linear"])
-
 /datum/error_viewer/proc/browse_to(client/user, html)
 	var/datum/browser/browser = new(user.mob, "error_viewer", null, 600, 400)
 	browser.set_content(html)
@@ -47,7 +35,7 @@ GLOBAL_DATUM(error_cache, /datum/error_viewer/error_cache)
 		border: solid 1px #202020;
 		font-family: "Courier New";
 		padding-left: 10px;
-		color: #cccccc;
+		color: #CCCCCC;
 	}
 	.runtime_line
 	{
@@ -78,12 +66,12 @@ GLOBAL_DATUM(error_cache, /datum/error_viewer/error_cache)
 		linktext = name
 
 	if (istype(back_to))
-		back_to_param = ";viewruntime_backto=\ref[back_to]"
+		back_to_param = ";viewruntime_backto=[REF(back_to)]"
 
 	if (linear)
 		back_to_param += ";viewruntime_linear=1"
 
-	return "<a href='?src=\ref[src];viewruntime=\ref[src][back_to_param]'>[linktext]</a>"
+	return "<a href='?_src_=holder;viewruntime=[REF(src)][back_to_param]'>[linktext]</a>"
 
 /datum/error_viewer/error_cache
 	var/list/errors = list()
@@ -107,11 +95,11 @@ GLOBAL_DATUM(error_cache, /datum/error_viewer/error_cache)
 
 	browse_to(user, html)
 
-/datum/error_viewer/error_cache/proc/log_debug(exception/e, list/desclines, skip_count)
+/datum/error_viewer/error_cache/proc/log_error(exception/e, list/desclines, skip_count)
 	if (!istype(e))
 		return // Abnormal exception, don't even bother
 
-	var/erroruid = "[e.file],[e.line]"
+	var/erroruid = "[e.file][e.line]"
 	var/datum/error_viewer/error_source/error_source = error_sources[erroruid]
 	if (!error_source)
 		error_source = new(e)
@@ -130,11 +118,11 @@ GLOBAL_DATUM(error_cache, /datum/error_viewer/error_cache)
 		var/const/viewtext = "\[view]" // Nesting these in other brackets went poorly
 		//log_debug("Runtime in <b>[e.file]</b>, line <b>[e.line]</b>: <b>[html_encode(e.name)]</b> [error_entry.make_link(viewtext)]")
 		var/err_msg_delay
-		if(config)
+		if(config?.loaded)
 			err_msg_delay = CONFIG_GET(number/error_msg_delay)
 		else
 			var/datum/config_entry/CE = /datum/config_entry/number/error_msg_delay
-			err_msg_delay = initial(CE.config_entry_value)
+			err_msg_delay = initial(CE.default)
 		error_source.next_message_at = world.time + err_msg_delay
 
 /datum/error_viewer/error_source
@@ -166,9 +154,6 @@ GLOBAL_DATUM(error_cache, /datum/error_viewer/error_cache)
 	var/turf/usr_loc
 	var/is_skip_count
 
-	var/info_name
-	var/info
-
 /datum/error_viewer/error_entry/New(exception/e, list/desclines, skip_count)
 	if (!istype(e))
 		name = "<b>\[[time_stamp()]]</b> Uncaught exception: <b>[html_encode(e.name)]</b>"
@@ -180,18 +165,14 @@ GLOBAL_DATUM(error_cache, /datum/error_viewer/error_cache)
 		return
 
 	name = "<b>\[[time_stamp()]]</b> Runtime in <b>[e.file]</b>, line <b>[e.line]</b>: <b>[html_encode(e.name)]</b>"
-	info_name = "Runtime in [e.file],[e.line]: [e]"
-	info = info_name
-
 	exc = e
 	if (istype(desclines))
 		for (var/line in desclines)
 			// There's probably a better way to do this than non-breaking spaces...
 			desc += "<span class='runtime_line'>[html_encode(line)]</span><br>"
-			info += "\n  " + line
 
 	if (usr)
-		usr_ref = "\ref[usr]"
+		usr_ref = "[REF(usr)]"
 		usr_loc = get_turf(usr)
 
 /datum/error_viewer/error_entry/show_to(user, datum/error_viewer/back_to, linear)
@@ -205,7 +186,7 @@ GLOBAL_DATUM(error_cache, /datum/error_viewer/error_cache)
 		html += " <a href='?_src_=holder;adminplayeropts=[usr_ref]'>PP</a>"
 		html += " <a href='?_src_=holder;adminplayerobservefollow=[usr_ref]'>Follow</a>"
 		if (istype(usr_loc))
-			html += "<br><b>usr.loc</b>: <a href='?_src_=vars;Vars=\ref[usr_loc]'>VV</a>"
+			html += "<br><b>usr.loc</b>: <a href='?_src_=vars;Vars=[REF(usr_loc)]'>VV</a>"
 			html += " <a href='?_src_=holder;adminplayerobservecoodjump=1;X=[usr_loc.x];Y=[usr_loc.y];Z=[usr_loc.z]'>JMP</a>"
 
 	browse_to(user, html)

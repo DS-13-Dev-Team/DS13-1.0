@@ -95,6 +95,7 @@
 
 #define SPAN_EXECUTION(X) "<span class='execution'>[X]</span>"
 
+#define SPAN_BOLDANNOUNCE(str) ("<span class='boldannounce'>" + str + "</span>")
 
 //Makes span tags easier
 #define span(class, text) ("<span class='[class]'>[text]</span>")
@@ -121,7 +122,10 @@ BITSET(mobref.hud_updateflag, hudtype)}
 #define VECTOR_POOL_MAX	20000
 #define VECTOR_POOL_FULL	4000
 
-#define release_vector(A)	if (A && length(GLOB.vector_pool) < VECTOR_POOL_MAX){\
+#define release_vector(A)	if (!istype(A, /vector2)){\
+		if ( !isnull(A)){\
+			crash_with("Invalid vector released to pool: [to_string(A)]")}}\
+	else if (length(GLOB.vector_pool) < VECTOR_POOL_MAX){\
 GLOB.vector_pool += A;}\
 A = null;
 

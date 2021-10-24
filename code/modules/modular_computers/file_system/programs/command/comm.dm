@@ -190,7 +190,7 @@
 					return
 				if (selected_evac_option.needs_syscontrol && !ntn_cont)
 					return
-				var/confirm = alert("Are you sure you want to [selected_evac_option.option_desc]?", name, "No", "Yes")
+				var/confirm = tgui_alert(user, "Are you sure you want to [selected_evac_option.option_desc]?", name, list("No", "Yes"))
 				if (confirm == "Yes" && can_still_topic())
 					evacuation_controller.handle_evac_option(selected_evac_option.option_target, user)
 		if("setstatus")
@@ -217,7 +217,7 @@
 				var/decl/security_state/security_state = decls_repository.get_decl(GLOB.using_map.security_state)
 				var/decl/security_level/target_level = locate(href_list["target"]) in security_state.comm_console_security_levels
 				if(target_level && security_state.can_switch_to(target_level))
-					var/confirm = alert("Are you sure you want to change the alert level to [target_level.name]?", name, "No", "Yes")
+					var/confirm = tgui_alert("Are you sure you want to change the alert level to [target_level.name]?", name, list("No", "Yes"))
 					if(confirm == "Yes" && can_still_topic())
 						if(security_state.set_security_level(target_level))
 							feedback_inc(target_level.type,1)
