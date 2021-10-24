@@ -40,7 +40,7 @@
 		if(eyes_shielded)
 			to_chat(owner, "<span class='notice'>Nearly opaque lenses slide down to shield your eyes.</span>")
 			innate_flash_protection = FLASH_PROTECTION_MAJOR
-			owner.overlay_fullscreen("eyeshield", /obj/screen/fullscreen/blind)
+			owner.overlay_fullscreen("eyeshield", /atom/movable/screen/fullscreen/blind)
 			owner.update_icons()
 		else
 			to_chat(owner, "<span class='notice'>Your protective lenses retract out of the way.</span>")

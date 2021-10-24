@@ -4,24 +4,24 @@
 /datum/hud/deity/New(mob/owner)
 	..()
 
-	action_intent = new /obj/screen/intent/deity(owner)
+	action_intent = new /atom/movable/screen/intent/deity(owner)
 	static_inventory += action_intent
 
 	action_intent:sync_to_mob(mymob)
 
 
-/obj/screen/intent/deity
+/atom/movable/screen/intent/deity
 	var/list/desc_screens = list()
 	screen_loc = "EAST-5:122,SOUTH:8"
 
-/obj/screen/intent/deity/New()
+/atom/movable/screen/intent/deity/New()
 	..()
 	overlays += image('icons/hud/screen_phenomena.dmi', icon_state = "hud", pixel_x = -138, pixel_y = -1)
 
-/obj/screen/intent/deity/proc/sync_to_mob(var/mob)
+/atom/movable/screen/intent/deity/proc/sync_to_mob(var/mob)
 	var/mob/living/deity/D = mob
 	for(var/i in 1 to D.control_types.len)
-		var/obj/screen/S = new()
+		var/atom/movable/screen/S = new()
 		S.SetName(null) //Don't want them to be able to actually right click it.
 		S.mouse_opacity = 0
 		S.icon_state = "blank"
@@ -35,18 +35,18 @@
 
 	update_text()
 
-/obj/screen/intent/deity/proc/update_text()
+/atom/movable/screen/intent/deity/proc/update_text()
 	if(!istype(usr, /mob/living/deity))
 		return
 	var/mob/living/deity/D = usr
 	for(var/i in D.control_types)
-		var/obj/screen/S = desc_screens[i]
+		var/atom/movable/screen/S = desc_screens[i]
 		var/datum/phenomena/P = D.intent_phenomenas[intent][i]
 		if(P)
 			S.maptext = "<span style='font-size:7pt;font-family:Impact'><font color='#3C3612'>[P.name]</font></span>"
 		else
 			S.maptext = null
 
-/obj/screen/intent/deity/Click(var/location, var/control, var/params)
+/atom/movable/screen/intent/deity/Click(var/location, var/control, var/params)
 	..()
 	update_text()

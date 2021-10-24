@@ -6,7 +6,7 @@
 	src.throw_mode_off()
 	if(usr.stat || !target)
 		return
-	if(target.type == /obj/screen) return
+	if(target.type == /atom/movable/screen) return
 
 	var/atom/movable/item = src.get_active_hand()
 
