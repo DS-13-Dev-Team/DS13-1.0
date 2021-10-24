@@ -972,3 +972,17 @@ proc/dd_sortedTextList(list/incoming)
 					for(var/T in typesof(P))
 						L[T] = TRUE
 		return L
+
+//Return a list with no duplicate entries
+/proc/uniqueList(list/L)
+	. = list()
+	for(var/i in L)
+		. |= i
+
+//same, but returns nothing and acts on list in place
+/proc/shuffle_inplace(list/L)
+	if(!L)
+		return
+
+	for(var/i=1, i<L.len, ++i)
+		L.Swap(i,rand(i,L.len))

@@ -3054,6 +3054,8 @@
 #include "code\modules\tgui\tgui_alert.dm"
 #include "code\modules\tgui\tgui_input_list.dm"
 #include "code\modules\tgui\tgui_window.dm"
+#include "code\modules\tgui\modules\_base.dm"
+#include "code\modules\tgui\modules\crew_monitor.dm"
 #include "code\modules\tgui\states\admin.dm"
 #include "code\modules\tgui\states\always.dm"
 #include "code\modules\tgui\states\conscious.dm"

@@ -159,8 +159,16 @@
 		"stamp-syndicate" = 'icons/stamp_icons/large_stamp-syndicate.png'
 	)
 
-
-
+/datum/asset/simple/nanomaps
+	keep_local_name = TRUE
+	assets = list(
+		"Ishimura-1.png"	= 'nano/images/ishimura/ishimura-1.png',
+		"Ishimura-2.png"	= 'nano/images/ishimura/ishimura-2.png',
+		"Ishimura-3.png"	= 'nano/images/ishimura/ishimura-3.png',
+		"Ishimura-4.png"	= 'nano/images/ishimura/ishimura-4.png',
+		"Ishimura-5.png"	= 'nano/images/ishimura/ishimura-5.png',
+		"Ishimura-6.png"	= 'nano/images/ishimura/ishimura-6.png',
+	)
 
 /datum/asset/simple/patron_content/register()
 	log_debug("Registering patron content")

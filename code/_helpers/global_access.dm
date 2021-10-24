@@ -211,8 +211,6 @@
 			return global.create_turf_html;
 		if("created")
 			return global.created;
-		if("crew_repository")
-			return global.crew_repository;
 		if("csrfz_check")
 			return global.csrfz_check;
 		if("custom_event_msg")
@@ -1004,8 +1002,6 @@
 			global.create_turf_html=newval;
 		if("created")
 			global.created=newval;
-		if("crew_repository")
-			global.crew_repository=newval;
 		if("csrfz_check")
 			global.csrfz_check=newval;
 		if("custom_event_msg")
@@ -1692,7 +1688,6 @@
 	"create_object_html",
 	"create_turf_html",
 	"created",
-	"crew_repository",
 	"csrfz_check",
 	"custom_event_msg",
 	"custom_items",

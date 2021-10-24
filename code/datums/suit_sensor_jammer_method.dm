@@ -14,11 +14,11 @@
 
 /suit_sensor_jammer_method/proc/enable()
 	for(var/jammer_method in jammer_methods)
-		crew_repository.add_modifier(jammer_method, jammer_methods[jammer_method])
+		GLOB.crew_repository.add_modifier(jammer_method, jammer_methods[jammer_method])
 
 /suit_sensor_jammer_method/proc/disable()
 	for(var/jammer_method in jammer_methods)
-		crew_repository.remove_modifier(jammer_method, jammer_methods[jammer_method])
+		GLOB.crew_repository.remove_modifier(jammer_method, jammer_methods[jammer_method])
 
 /suit_sensor_jammer_method/random
 	name = "Random - Minor"
