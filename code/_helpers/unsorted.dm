@@ -1070,6 +1070,15 @@ var/list/WALLITEMS = list(
 /proc/crash_with(msg)
 	CRASH(msg)
 
+GLOBAL_REAL_VAR(list/stack_trace_storage)
+/proc/gib_stack_trace()
+	stack_trace_storage = list()
+	crash_with()
+	stack_trace_storage.Cut(1, min(3,stack_trace_storage.len))
+	. = stack_trace_storage
+	stack_trace_storage = null
+
+
 /proc/pass()
 	return
 
@@ -1123,6 +1132,20 @@ var/list/WALLITEMS = list(
 	else
 		used_key_list[input_key] = 1
 	return input_key
+
+/proc/params2turf(scr_loc, turf/origin, client/C)
+	if(!scr_loc || !origin)
+		return
+	var/tX = splittext(scr_loc, ",")
+	var/tY = splittext(tX[2], ":")
+	var/tZ = origin.z
+	tY = tY[1]
+	tX = splittext(tX[1], ":")
+	tX = tX[1]
+	var/list/actual_view = getviewsize(C ? C.view : WORLD_VIEW)
+	tX = clamp(origin.x + text2num(tX) - round(actual_view[1] * 0.5) + (round(C?.pixel_x / 32)) - 1, 1, world.maxx)
+	tY = clamp(origin.y + text2num(tY) - round(actual_view[2] * 0.5) + (round(C?.pixel_y / 32)) - 1, 1, world.maxy)
+	return locate(tX, tY, tZ)
 
 //ultra range (no limitations on distance, faster than range for distances > 8); including areas drastically decreases performance
 /proc/urange(dist=0, atom/center=usr, orange=0, areas=0)

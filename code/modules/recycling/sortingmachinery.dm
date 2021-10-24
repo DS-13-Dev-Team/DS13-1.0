@@ -42,7 +42,7 @@
 			to_chat(user, "<span class='warning'>You need to set a destination first!</span>")
 
 	else if(istype(W, /obj/item/weapon/pen))
-		switch(alert("What would you like to alter?",,"Title","Description", "Cancel"))
+		switch(tgui_alert(user, "What would you like to alter?", null,list("Title","Description")))
 			if("Title")
 				var/str = sanitizeSafe(input(usr,"Label text?","Set label",""), MAX_NAME_LEN)
 				if(!str || !length(str))
@@ -167,7 +167,7 @@
 			to_chat(user, "<span class='warning'>You need to set a destination first!</span>")
 
 	else if(istype(W, /obj/item/weapon/pen))
-		switch(alert("What would you like to alter?",,"Title","Description", "Cancel"))
+		switch(tgui_alert(user,"What would you like to alter?", null,list("Title","Description")))
 			if("Title")
 				var/str = sanitizeSafe(input(usr,"Label text?","Set label",""), MAX_NAME_LEN)
 				if(!str || !length(str))
@@ -251,7 +251,7 @@
 	icon_state = "c_tube"
 	throwforce = 1
 	w_class = ITEM_SIZE_SMALL
-	
+
 	throw_range = 5
 
 /obj/item/stack/package_wrap/afterattack(var/obj/target as obj, mob/user as mob, proximity)
@@ -363,7 +363,7 @@
 	openwindow(user)
 
 /obj/item/device/destTagger/OnTopic(user, href_list, state)
-	if(href_list["nextTag"] && href_list["nextTag"] in GLOB.tagger_locations)
+	if(href_list["nextTag"] && (href_list["nextTag"] in GLOB.tagger_locations))
 		src.currTag = href_list["nextTag"]
 		to_chat(user, "<span class='notice'>You set [src] to <b>[src.currTag]</b>.</span>")
 		playsound(src.loc, 'sound/machines/chime.ogg', 50, 1)

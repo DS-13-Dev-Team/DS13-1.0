@@ -68,6 +68,11 @@
 /datum/uplink_item/item/visible_weapons/submachinegun/special
 	item_cost = 9
 	is_special = TRUE
+
+/datum/uplink_item/item/visible_weapons/bullpup/special
+	item_cost = 15
+	path = /obj/item/weapon/gun/projectile/automatic/bullpup
+	is_special = TRUE
 	antag_roles = list(MODE_UNITOLOGIST, MODE_UNITOLOGIST_SHARD)
 
 /datum/uplink_item/item/visible_weapons/assaultrifle
@@ -146,4 +151,4 @@
 	item_cost = 7
 	path = /obj/item/weapon/gun/projectile/divet
 	is_special = TRUE
-	antag_roles = list(MODE_EARTHGOV_AGENT)
+	antag_roles = list(MODE_EARTHGOV_AGENT, MODE_UNITOLOGIST, MODE_UNITOLOGIST_SHARD)

@@ -72,6 +72,7 @@
 	name = flooring.name
 	max_health = flooring.health
 	health = max_health
+	resistance = flooring.resistance
 	flooring_override = null
 
 	/*This is passed false in the New() flooring set, so that we're not calling everything up to

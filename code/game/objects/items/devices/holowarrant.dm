@@ -5,7 +5,7 @@
 	item_state = "holowarrant"
 	throwforce = 5
 	w_class = ITEM_SIZE_SMALL
-	
+
 	throw_range = 10
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
 	slot_flags = SLOT_BELT
@@ -42,7 +42,7 @@
 	if(active)
 		var/obj/item/weapon/card/id/I = W.GetIdCard()
 		if(I && (access_security in I.access))
-			var/choice = alert(user, "Would you like to authorize this warrant?","Warrant authorization","Yes","No")
+			var/choice = tgui_alert(user, "Would you like to authorize this warrant?","Warrant authorization",list("Yes","No"))
 			if(choice == "Yes")
 				active.fields["auth"] = "[I.registered_name] - [I.assignment ? I.assignment : "(Unknown)"]"
 			user.visible_message("<span class='notice'>You swipe \the [I] through the [src].</span>", \

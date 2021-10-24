@@ -115,7 +115,7 @@
 #define COLOR_NECRO_DARK_YELLOW		"#AAAA00"
 #define COLOR_MARKER_RED		"#FF4444"
 #define COLOR_HARVESTER_RED		rgb(255,68,68,128)
-#define COLOR_BIOMASS_GREEN		"#53761d"
+#define COLOR_BIOMASS_GREEN		"#82bf26"
 #define COLOR_BIOLUMINESCENT_ORANGE "#ffb347"
 
 // Codex category colours.
@@ -126,3 +126,8 @@
 #define COLOR_OOC	"#386aff"
 
 #define RANDOM_RGB rgb(rand(0,255), rand(0,255), rand(0,255))
+
+///Main colors for UI themes
+#define COLOR_THEME_MIDNIGHT "#6086A0"
+#define COLOR_THEME_ORANGE "#FFB200"
+#define COLOR_THEME_OLD "#24CA00"

@@ -1,6 +1,6 @@
 /obj/effect/landmark
 	name = "landmark"
-	icon = 'icons/mob/screen1.dmi'
+	icon = 'icons/hud/screen1.dmi'
 	icon_state = "x2"
 	anchored = 1.0
 	unacidable = 1
@@ -84,7 +84,7 @@
 
 /obj/effect/landmark/start
 	name = "start"
-	icon = 'icons/mob/screen1.dmi'
+	icon = 'icons/hud/screen1.dmi'
 	icon_state = "x"
 	anchored = 1.0
 	invisibility = 101
@@ -197,4 +197,7 @@
 	new /datum/random_map/automata/cave_system(seed, min_x, min_y, src.z, max_x, max_y)
 	new /datum/random_map/noise/ore(seed, min_x, min_y, src.z, max_x, max_y)
 
+	. = INITIALIZE_HINT_LATELOAD
+
+/obj/effect/landmark/random_gen/asteroid/LateInitialize()
 	GLOB.using_map.refresh_mining_turfs(src.z)

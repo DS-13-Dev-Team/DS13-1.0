@@ -3,7 +3,6 @@
 	full_name = "The Example"
 	path = "example"
 
-	lobby_icon = 'maps/example/example_lobby.dmi'
 	lobby_tracks = list(/music_track/absconditus)
 
 	station_levels = list(1, 2, 3)

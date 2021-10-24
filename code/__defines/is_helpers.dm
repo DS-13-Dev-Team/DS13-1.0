@@ -71,6 +71,8 @@
 
 #define isslime(A) istype(A, /mob/living/carbon/slime)
 
+#define isstructure(A)	istype(A, /obj/structure)
+
 #define isbst(A) istype(A, /mob/living/carbon/human/bst)
 
 #define isunderwear(A) istype(A, /obj/item/underwear)

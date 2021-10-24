@@ -33,6 +33,10 @@
 #define STRUCTURE_DAMAGE_BREACHING 		1.8
 #define STRUCTURE_DAMAGE_BORING 		3
 
+//These multipliers are factored with the integrity and resistance values on materials
+#define WALL_HEALTH_MULTIPLIER			1
+#define WALL_RESISTANCE_MULTIPLIER		1
+
 //Quick defines for rapid fire
 #define FULL_AUTO_300	list(mode_name="full auto",  mode_type = /datum/firemode/automatic, fire_delay=2)
 #define FULL_AUTO_400	list(mode_name="full auto",  mode_type = /datum/firemode/automatic, fire_delay=1.5)
@@ -71,3 +75,8 @@
 //Damage dealt by fire per second, is equal to the fire temperature - heat resistance, multiplied by this
 //1 damage (per second) per 125 degrees kelvin
 #define FIRE_DAMAGE_MULTIPLIER	0.008
+
+
+//Defines for types of damage sources sent through take_damage
+//These are only needed for rare cases where you want to do special snowflakey behaviour depending on what caused the damage. EG explosions, acid, directed energy
+#define DAMAGE_SOURCE_EXPLOSION	"Explosive Blast"

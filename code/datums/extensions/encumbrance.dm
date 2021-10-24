@@ -19,6 +19,10 @@
 	if (!holder)
 		return
 	var/mob/living/L = holder
+
+	//No encumbrance in nullspace
+	if (!isnull(L.loc))
+		return
 	var/encumbrance_before = encumbrance
 	encumbrance = 0
 
@@ -44,6 +48,14 @@
 		encumbrance *= 0.66
 
 	encumbrance = max(0, encumbrance - ((L.get_skill_value(SKILL_HAULING)-1) * ENCUMBRANCE_REDUCTION_FACTOR))
+
+
+	if (iscarbon(L))
+		var/mob/living/carbon/C = L
+		//This chem effect takes a percentage of encumbrance, so it is more effective the heavier your gear is
+		if(CE_UNENCUMBRANCE in C.chem_effects)
+			encumbrance -= (encumbrance * 0.25)
+
 	if (encumbrance == encumbrance_before)
 		//If its unchanged, do nothing
 		return

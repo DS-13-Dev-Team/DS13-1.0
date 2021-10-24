@@ -79,7 +79,7 @@ The Pulse Rifle is the standard-issue service rifle of the Earth Defense Force a
 	caliber = "pulse"
 	ammo_type = /obj/item/ammo_casing/pulse
 	matter = list(MATERIAL_STEEL = 1260)
-	max_ammo = 50
+	max_ammo = 65
 	multiple_sprites = FALSE
 	mag_type = MAGAZINE
 
@@ -109,7 +109,7 @@ The Pulse Rifle is the standard-issue service rifle of the Earth Defense Force a
 	desc = "With a distinctive \"bell and stock\" design, pulse magazines can be inserted and removed from the Pulse Rifle with minimal effort and risk. This one contains hypersonic rounds, unsafe for naval usage."
 	caliber = "pulse"
 	ammo_type = /obj/item/ammo_casing/pulse/hv
-	max_ammo = 100
+	max_ammo = 80
 
 /obj/item/ammo_magazine/pulse/hv/update_icon()
 	if (stored_ammo.len)
@@ -119,7 +119,7 @@ The Pulse Rifle is the standard-issue service rifle of the Earth Defense Force a
 
 /obj/item/projectile/bullet/pulse/hv
 	icon_state = "pulse_hv"
-	damage = 11.9
+	damage = 10
 	embed = 0
 	structure_damage_factor = 1.2
 	penetration_modifier = 1

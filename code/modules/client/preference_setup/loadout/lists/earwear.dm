@@ -3,9 +3,9 @@
 /datum/gear/ears
 	display_name = "earmuffs"
 	path = /obj/item/clothing/ears/earmuffs
-	sort_category = "Earwear"
+	sort_category =CATEGORY_EARWEAR
 
 /datum/gear/headphones
 	display_name = "headphones"
 	path = /obj/item/clothing/ears/earmuffs/headphones
-	sort_category = "Earwear"
+	sort_category = CATEGORY_EARWEAR

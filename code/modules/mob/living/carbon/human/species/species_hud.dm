@@ -14,6 +14,7 @@
 	var/has_guns	=	TRUE	//Set to draw the gun/aiming toggle buttons
 	var/list/equip_slots = list() // Checked by mob_can_equip().
 	var/has_healthbar = FALSE	//Big healthbar across top of screen
+	var/has_resources = FALSE
 
 
 	// Contains information on the position and tag for all inventory slots
@@ -103,6 +104,9 @@
 	has_nutrition = FALSE
 	has_guns = FALSE
 	has_healthbar = TRUE
+
+/datum/hud_data/necromorph/infector
+	has_resources = TRUE
 
 /datum/hud_data/necromorph/lurker
 	gear = list(

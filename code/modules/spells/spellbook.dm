@@ -22,7 +22,7 @@ var/list/artefact_feedback = list(/obj/structure/closet/wizard/armor = 		"HS",
 	desc = "The legendary book of spells of the wizard."
 	icon = 'icons/obj/library.dmi'
 	icon_state = "spellbook"
-	
+
 	throw_range = 5
 	w_class = ITEM_SIZE_NORMAL
 	var/uses = 1
@@ -271,7 +271,7 @@ var/list/artefact_feedback = list(/obj/structure/closet/wizard/armor = 		"HS",
 			if(!S.can_improve())
 				return
 			if(S.can_improve(Sp_SPEED) && S.can_improve(Sp_POWER))
-				switch(alert(user, "Do you want to upgrade this spell's speed or power?", "Spell upgrade", "Speed", "Power", "Cancel"))
+				switch(tgui_alert(user, "Do you want to upgrade this spell's speed or power?", "Spell upgrade", "Speed", "Power", "Cancel"))
 					if("Speed")
 						return S.quicken_spell()
 					if("Power")

@@ -1,7 +1,7 @@
 
 /datum/gear/accessory
-	sort_category = "Accessories"
-	category = /datum/gear/accessory
+	sort_category = CATEGORY_ACCESSORIES
+	base_type = /datum/gear/accessory
 	slot = slot_tie
 
 /datum/gear/accessory/locket

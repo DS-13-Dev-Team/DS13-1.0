@@ -7,7 +7,9 @@
 	status_flags = GODMODE|CANPUSH
 	virtual_mob = null
 
-
+//Dummies don't do this stuff
+/mob/living/carbon/human/dummy/update_extension(var/etype, var/instant = FALSE)
+	return
 
 //This one starts off holding a riot shield and wearing riot armor
 /mob/living/carbon/human/dummy/shielded/Initialize()

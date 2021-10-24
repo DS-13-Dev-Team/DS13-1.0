@@ -63,7 +63,7 @@
 	var/activates_on_touch              // If set, unarmed attacks will call engage() on the target.
 	var/process_with_rig = TRUE			// If true, this calls process every tick when the rig does
 
-	var/active                          // Basic module status
+	var/active = 0                      // Basic module status
 	var/disruptable                     // Will deactivate if some other powers are used.
 
 	// Now in joules/watts!

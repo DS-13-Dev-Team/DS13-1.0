@@ -1,6 +1,6 @@
 /datum/computer_file/program/suit_sensors
-	filename = "sensormonitor"
-	filedesc = "Suit Sensors Monitoring"
+	filename = "rigsensormonitor"
+	filedesc = "RIG Sensors Monitoring"
 	nanomodule_path = /datum/nano_module/crew_monitor
 	ui_header = "crew_green.gif"
 	program_icon_state = "crew"
@@ -45,7 +45,7 @@
 		if(isAI(usr))
 			var/mob/living/silicon/ai/AI = usr
 			var/mob/living/carbon/human/H = locate(href_list["track"]) in SSmobs.mob_list
-			if(hassensorlevel(H, SUIT_SENSOR_TRACKING))
+			if(hassensorlevel(H, RIG_SENSOR_TRACKING))
 				AI.ai_actual_track(H)
 		return 1
 
@@ -59,7 +59,7 @@
 
 	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if(!ui)
-		ui = new(user, src, ui_key, "crew_monitor.tmpl", "Crew Monitoring Computer", 1050, 800, state = state)
+		ui = new(user, src, ui_key, "crew_monitor.tmpl", "RIG Sensors Monitoring Computer", 1050, 800, state = state)
 
 		// adding a template with the key "mapContent" enables the map ui functionality
 		ui.add_template("mapContent", "crew_monitor_map_content.tmpl")

@@ -1,3 +1,4 @@
+#define SHOULD_SHOW_TO(mymob, myscreen) (!(mymob.stat == DEAD && !myscreen.show_when_dead))
 
 /mob
 	var/list/screens = list()
@@ -5,120 +6,98 @@
 /mob/proc/set_fullscreen(condition, screen_name, screen_type, arg)
 	condition ? overlay_fullscreen(screen_name, screen_type, arg) : clear_fullscreen(screen_name)
 
+/mob/proc/overlay_fullscreen_timer(duration, animated, category, type, severity)
+	overlay_fullscreen(category, type, severity)
+	addtimer(CALLBACK(src, .proc/clear_fullscreen, category, animated), duration)
+
 /mob/proc/overlay_fullscreen(category, type, severity)
-
-	var/rescale = FALSE
 	var/obj/screen/fullscreen/screen = screens[category]
-
-	if(!client) //The mob needs to be player-controlled to modify the screen
-
-		return
-
-	if (client.temp_view != world.view)
-		rescale = TRUE
-
-
-
-	if(screen)
-		if(screen.type != type)
-			clear_fullscreen(category, FALSE)
-			screen = null
-		else if(!severity || severity == screen.severity)
-			return null
-
-
-	if(!screen)
-		screen = new type()
-		screen.owner = src
-
+	if (!screen || screen.type != type)
+		// needs to be recreated
+		clear_fullscreen(category, FALSE)
+		screens[category] = screen = new type()
+	else if ((!severity || severity == screen.severity) && (!client || screen.fs_view == client.view))
+		// doesn't need to be updated
+		return screen
 
 	screen.icon_state = "[initial(screen.icon_state)][severity]"
 	screen.severity = severity
-
-	if (rescale)
-		screen.set_size(client)
-
-	screens[category] = screen
-	if(client && (stat != DEAD || screen.allstate))
-
+	if (client && SHOULD_SHOW_TO(src, screen))
+		screen.update_for_view(client.view)
 		client.screen += screen
+
 	return screen
 
 /mob/proc/clear_fullscreen(category, animated = 10)
-
 	var/obj/screen/fullscreen/screen = screens[category]
-
 	if(!screen)
 		return
 
 	screens -= category
 
 	if(animated)
-		spawn(0)
-			animate(screen, alpha = 0, time = animated)
-			sleep(animated)
-			if(client)
-				client.screen -= screen
-			qdel(screen)
+		animate(screen, alpha = 0, time = animated)
+		addtimer(CALLBACK(src, .proc/clear_fullscreen_after_animate, screen), animated, TIMER_CLIENT_TIME)
 	else
 		if(client)
 			client.screen -= screen
 		qdel(screen)
 
+/mob/proc/clear_fullscreen_after_animate(obj/screen/fullscreen/screen)
+	if(client)
+		client.screen -= screen
+	qdel(screen)
+
 /mob/proc/clear_fullscreens()
 	for(var/category in screens)
-		clear_fullscreen(category, 0)
+		clear_fullscreen(category)
 
 /mob/proc/hide_fullscreens()
 	if(client)
 		for(var/category in screens)
 			client.screen -= screens[category]
 
-/mob/proc/reload_fullscreen()
+/mob/proc/reload_fullscreens()
 	if(client)
+		var/obj/screen/fullscreen/screen
 		for(var/category in screens)
-			var/obj/screen/fullscreen/F = screens[category]
-			var/newtype
-			if (F)
-				newtype = F.type
-			clear_fullscreen(category, 0)
-			//client.screen -= screens[category]
-			overlay_fullscreen(category, newtype, INFINITY)
-
-
-/proc/get_or_create_fullscreen(var/view_radius)
-	var/pixels = ((view_radius*2)+1)*world.icon_size
-	var/entry_name = "[pixels]x[pixels]"
-	if (!GLOB.fullscreen_icons[entry_name])
-		//If the icons isn't made yet, make it and set it in the global list
-		GLOB.fullscreen_icons[entry_name] = rescale_icon('icons/mob/screen_full.dmi', pixels, pixels)
-	return GLOB.fullscreen_icons[entry_name] //Then return it
-
+			screen = screens[category]
+			if(SHOULD_SHOW_TO(src, screen))
+				screen.update_for_view(client.view)
+				client.screen |= screen
+			else
+				client.screen -= screen
 
 /obj/screen/fullscreen
-	icon = 'icons/mob/screen_full.dmi'
+	icon = 'icons/hud/screen_full.dmi'
 	icon_state = "default"
 	screen_loc = "BOTTOMLEFT"
 	plane = FULLSCREEN_PLANE
 	mouse_opacity = 0
-	var/small_icon = FALSE	//True on any that don't use screen_full.dmi
 	var/severity = 0
-	var/allstate = 0 //shows if it should show up for dead people too
-	var/mob/owner
-
-/obj/screen/fullscreen/proc/set_size(var/client/C)
-	//Here we select (and if needed, generate) the icon for the right size
-	if (C.temp_view == world.view)
-		return	//No special sizing needed
-
-	icon = get_or_create_fullscreen(C.temp_view)
-
+	var/fs_view = WORLD_VIEW
+	var/show_when_dead = FALSE
 
 
 /obj/screen/fullscreen/Destroy()
 	severity = 0
-	owner = null
+	hud = null
 	return ..()
+
+/obj/screen/fullscreen/proc/update_for_view(client_view)
+	if (fs_view != client_view)
+		fs_view = client_view
+		icon = get_or_create_fullscreen(client_view)
+
+/obj/screen/fullscreen/proc/get_or_create_fullscreen(client_view)
+	var/list/view_list = getviewsize(client_view)
+	var/pixels_x = view_list[1]*world.icon_size
+	var/pixels_y = view_list[2]*world.icon_size
+	var/entry_name = "[pixels_x]x[pixels_y]"
+	if (!GLOB.fullscreen_icons[entry_name])
+		//If the icons isn't made yet, make it and set it in the global list
+		GLOB.fullscreen_icons[entry_name] = rescale_icon(icon, pixels_x, pixels_y)
+	return GLOB.fullscreen_icons[entry_name] //Then return it
 
 /obj/screen/fullscreen/brute
 	icon_state = "brutedamageoverlay"
@@ -145,47 +124,40 @@
 
 /obj/screen/fullscreen/fishbed
 	icon_state = "fishbed"
-	allstate = 1
+	show_when_dead = TRUE
 
 /obj/screen/fullscreen/pain
 	icon_state = "brutedamageoverlay6"
 	alpha = 0
 
-/obj/screen/fullscreen/pain/Destroy()
-	if (owner && owner.hud_used && owner.hud_used.pain == src)
-		owner.hud_used.pain = null
-	.= ..()
 
 
 //Small icons
 //-------------------------
 /obj/screen/fullscreen/blackout
-	icon = 'icons/mob/screen1.dmi'
+	icon = 'icons/hud/screen1.dmi'
 	icon_state = "black"
 	screen_loc = "WEST,SOUTH to EAST,NORTH"
 	layer = DAMAGE_LAYER
-	small_icon = TRUE
 
 
 
 /obj/screen/fullscreen/blurry
-	icon = 'icons/mob/screen1.dmi'
+	icon = 'icons/hud/screen1.dmi'
 	screen_loc = "WEST,SOUTH to EAST,NORTH"
 	icon_state = "blurry"
-	small_icon = TRUE
 
 /obj/screen/fullscreen/flash
-	icon = 'icons/mob/screen1.dmi'
+	icon = 'icons/hud/screen1.dmi'
 	screen_loc = "WEST,SOUTH to EAST,NORTH"
 	icon_state = "flash"
 
 
 
 /obj/screen/fullscreen/high
-	icon = 'icons/mob/screen1.dmi'
+	icon = 'icons/hud/screen1.dmi'
 	screen_loc = "WEST,SOUTH to EAST,NORTH"
 	icon_state = "druggy"
-	small_icon = TRUE
 
 /obj/screen/fullscreen/noise
 	icon = 'icons/effects/static.dmi'
@@ -193,16 +165,14 @@
 	screen_loc = ui_entire_screen
 	layer = FULLSCREEN_LAYER
 	alpha = 127
-	small_icon = TRUE
 
 /obj/screen/fullscreen/fadeout
-	icon = 'icons/mob/screen1.dmi'
+	icon = 'icons/hud/screen1.dmi'
 	icon_state = "black"
 	screen_loc = ui_entire_screen
 	layer = FULLSCREEN_LAYER
 	alpha = 0
-	allstate = 1
-	small_icon = TRUE
+	show_when_dead = TRUE
 
 /obj/screen/fullscreen/fadeout/Initialize()
 	. = ..()
@@ -214,6 +184,5 @@
 	screen_loc = ui_entire_screen
 	alpha = 50
 	layer = FULLSCREEN_LAYER
-	small_icon = TRUE
 
-
+#undef SHOULD_SHOW_TO

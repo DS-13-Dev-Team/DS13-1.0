@@ -16,7 +16,7 @@
 
 /obj/item/weapon/flame/hands
 	name = "Burning Hand"
-	icon = 'icons/mob/screen1.dmi'
+	icon = 'icons/hud/screen1.dmi'
 	icon_state = "grabbed+1"
 	force = 10
 	damtype = BURN

@@ -39,8 +39,8 @@ The tech datums are the actual "tech trees" that you improve through researching
 	var/list/design_categories_protolathe = list()
 	var/list/design_categories_imprinter = list()
 
-	var/list/tech_trees = list()
-	var/list/all_technologies = list()
+	var/list/datum/tech/tech_trees = list()
+	var/list/list/all_technologies = list()
 	var/list/all_tech_no_types = list()
 	var/list/researched_tech = list()
 

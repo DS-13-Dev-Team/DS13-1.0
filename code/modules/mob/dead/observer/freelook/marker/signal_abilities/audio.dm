@@ -3,8 +3,8 @@
 	id = "sound_premarker"
 	desc = "Plays a fake sound of a chosen type, from a necromorph species of your choice. This spell becomes a lot cheaper once the marker is active"
 	target_string = "any turf to play the sound from"
-	energy_cost = 150
-	cooldown = 3 MINUTES
+	energy_cost = 100
+	cooldown = 2 MINUTES
 	require_corruption = FALSE
 	require_necrovision = TRUE
 	target_types = list(/turf)
@@ -20,8 +20,8 @@
 	id = "sound_postmarker"
 	desc = "Plays a fake sound of a chosen type, from a necromorph species of your choice."
 
-	energy_cost = 50
-	cooldown = 10 SECONDS
+	energy_cost = 25
+	cooldown = 5 SECONDS
 	marker_active_required = TRUE
 
 

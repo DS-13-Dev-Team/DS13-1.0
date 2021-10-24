@@ -509,8 +509,10 @@
 /turf/simulated/floor/tiled/monotile,
 /area/aegis/colony)
 "bv" = (
-/obj/machinery/mineral/stacking_unit_console,
-/turf/simulated/wall/r_wall,
+/obj/machinery/mineral/stacking_unit_console{
+	pixel_y = -32
+	},
+/turf/simulated/floor/tiled/steel_grid,
 /area/aegis/colony/refinery)
 "bw" = (
 /turf/simulated/wall/r_wall,
@@ -6858,6 +6860,12 @@
 	},
 /turf/simulated/floor/holofloor/concrete,
 /area/aegis)
+"JY" = (
+/obj/machinery/mineral/processing_unit_console{
+	pixel_x = 32
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/aegis/colony/refinery)
 "KH" = (
 /turf/simulated/floor/airless,
 /area/aegis/colony/charging_station)
@@ -7147,8 +7155,11 @@
 /turf/simulated/floor/holofloor/concrete,
 /area/aegis)
 "XP" = (
-/obj/machinery/mineral/processing_unit_console,
-/turf/simulated/wall/r_wall,
+/obj/machinery/door/window/holowindoor{
+	dir = 1
+	},
+/obj/effect/floor_decal/industrial/danger,
+/turf/simulated/floor/tiled/steel_grid,
 /area/aegis/colony/refinery)
 "XR" = (
 /obj/machinery/conveyor{
@@ -29512,7 +29523,7 @@ BC
 BC
 BC
 BC
-qW
+BC
 pc
 Oh
 bZ
@@ -29713,8 +29724,8 @@ on
 BC
 BC
 BC
-BC
-LW
+JY
+qW
 zE
 Oh
 ch
@@ -29915,7 +29926,7 @@ Nv
 BC
 Gn
 CC
-XP
+CC
 CC
 OD
 Oh
@@ -30116,7 +30127,7 @@ uO
 LH
 EO
 Af
-LW
+XP
 Om
 tW
 oC
@@ -30923,8 +30934,8 @@ lu
 SF
 TD
 BC
-BC
 bv
+CC
 cI
 CC
 bR

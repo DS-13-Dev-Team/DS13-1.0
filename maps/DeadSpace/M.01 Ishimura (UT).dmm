@@ -5394,6 +5394,9 @@
 	},
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
+"ow" = (
+/turf/simulated/floor/plating,
+/area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
 "oL" = (
 /obj/structure/table/steel,
 /obj/random/loot/sometimes/few,
@@ -5411,6 +5414,11 @@
 	},
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
+"ro" = (
+/obj/structure/foamedmetal,
+/obj/machinery/vending/snack,
+/turf/simulated/floor/plating,
+/area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
 "rW" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/simulated/floor,
@@ -5426,6 +5434,16 @@
 "tQ" = (
 /turf/simulated/wall/r_wall/hull,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
+"uf" = (
+/obj/effect/landmark/marker/ishimura,
+/turf/simulated/floor/plating,
+/area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
+"vk" = (
+/obj/structure/foamedmetal,
+/obj/structure/foamedmetal,
+/obj/machinery/vending/hotfood,
+/turf/simulated/floor/plating,
+/area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
 "vK" = (
 /obj/structure/table/steel,
 /obj/random/tool/low_chance,
@@ -5440,6 +5458,11 @@
 /obj/random/loot/sometimes/few,
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
+"Aa" = (
+/obj/structure/foamedmetal,
+/obj/machinery/vending/hotfood,
+/turf/simulated/floor/plating,
+/area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
 "Ff" = (
 /obj/machinery/light{
 	dir = 1;
@@ -5499,6 +5522,12 @@
 /obj/effect/decal/cleanable/blood/gibs/robot/down,
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
+"Ll" = (
+/obj/structure/foamedmetal,
+/obj/structure/foamedmetal,
+/obj/machinery/vending/cola,
+/turf/simulated/floor/plating,
+/area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
 "Mk" = (
 /obj/machinery/light{
 	dir = 4
@@ -5521,6 +5550,11 @@
 	icon_state = "0-8"
 	},
 /turf/simulated/floor,
+/area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
+"PN" = (
+/obj/structure/foamedmetal,
+/obj/machinery/vending/cola,
+/turf/simulated/floor/plating,
 /area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
 "SP" = (
 /obj/effect/decal/cleanable/cobweb2{
@@ -5549,6 +5583,12 @@
 /obj/structure/table/standard,
 /obj/random/loot/sometimes/few,
 /turf/simulated/floor,
+/area/ishimura/tramdeck/tram/undertunnel/uttt)
+"Yo" = (
+/obj/machinery/door/airlock/civilian{
+	name = "Garbage Pit"
+	},
+/turf/simulated/floor/plating,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "YH" = (
 /obj/structure/table/rack/dark,
@@ -13292,9 +13332,9 @@ dN
 dN
 dN
 dN
+ro
 il
-il
-il
+Aa
 il
 il
 il
@@ -13903,7 +13943,7 @@ il
 il
 il
 il
-il
+PN
 il
 il
 ef
@@ -14101,7 +14141,7 @@ il
 il
 il
 il
-il
+Aa
 il
 il
 il
@@ -14299,7 +14339,7 @@ ab
 dN
 il
 il
-il
+PN
 il
 il
 il
@@ -14903,20 +14943,20 @@ aa
 aa
 ab
 dN
+ro
+il
+il
+il
+il
+ow
+ow
+ow
 il
 il
 il
 il
 il
-il
-il
-il
-il
-il
-il
-il
-il
-ef
+Yo
 dB
 ef
 dp
@@ -15110,9 +15150,9 @@ il
 il
 il
 il
-il
-il
-il
+ow
+uf
+ow
 il
 il
 il
@@ -15312,9 +15352,9 @@ il
 il
 il
 il
-il
-il
-il
+ow
+ow
+ow
 il
 il
 il
@@ -15924,7 +15964,7 @@ ae
 ae
 ae
 ae
-il
+PN
 il
 ef
 dB
@@ -16320,7 +16360,7 @@ il
 ae
 ae
 ae
-ae
+vk
 ae
 ae
 ae
@@ -16329,7 +16369,7 @@ ae
 ae
 ae
 il
-il
+ro
 ef
 dB
 ef
@@ -16517,7 +16557,7 @@ aa
 aa
 ab
 dN
-il
+ro
 il
 ae
 ae
@@ -16724,7 +16764,7 @@ il
 ae
 ae
 ae
-ae
+Ll
 ae
 ae
 ae
@@ -16931,7 +16971,7 @@ il
 il
 il
 il
-il
+Aa
 il
 il
 dN
@@ -17329,9 +17369,9 @@ il
 il
 il
 il
-il
-il
-il
+ow
+ow
+ow
 il
 il
 il
@@ -17531,9 +17571,9 @@ dN
 il
 il
 il
-il
-il
-il
+ow
+uf
+ow
 il
 il
 il
@@ -17733,9 +17773,9 @@ dN
 il
 il
 il
-il
-il
-il
+ow
+ow
+ow
 il
 il
 il
@@ -17932,7 +17972,7 @@ aa
 aa
 ab
 dN
-il
+ro
 il
 il
 il
@@ -18142,7 +18182,7 @@ il
 il
 il
 il
-il
+PN
 il
 il
 il
@@ -19761,7 +19801,7 @@ il
 il
 il
 il
-il
+ro
 dN
 dP
 dN
@@ -20162,7 +20202,7 @@ il
 il
 il
 dN
-il
+ro
 il
 il
 dN

@@ -1513,7 +1513,7 @@ About the new airlock wires panel:
 		to_chat(M, "<span class='warning'>You must close \the [src] before installing \the [B]!</span>")
 		return
 
-	if((!B.req_access.len && !B.req_one_access) && (alert("\the [B]'s 'Access Not Set' light is flashing. Install it anyway?", "Access not set", "Yes", "No") == "No"))
+	if((!B.req_access.len && !B.req_one_access) && (tgui_alert(usr, "\the [B]'s 'Access Not Set' light is flashing. Install it anyway?", "Access not set", list("Yes", "No")) != "Yes"))
 		return
 
 	if(get_turf(B) == get_turf(src))

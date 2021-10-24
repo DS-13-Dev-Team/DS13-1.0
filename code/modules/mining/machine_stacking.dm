@@ -6,19 +6,16 @@
 	icon_state = "console"
 	density = 1
 	anchored = 1
+	can_block_movement = FALSE
 	var/obj/machinery/mineral/stacking_machine/machine = null
-	var/machinedir = SOUTH
 
-/obj/machinery/mineral/stacking_unit_console/New(var/atom/location, var/direction, var/nocircuit = FALSE)
+/obj/machinery/mineral/stacking_unit_console/Initialize()
+	.=..()
+	. = INITIALIZE_HINT_LATELOAD
 
-	..()
-
-	spawn(7)
-		src.machine = locate(/obj/machinery/mineral/stacking_machine, get_step(src, machinedir))
-		if (machine)
-			machine.console = src
-		else
-			qdel(src)
+/obj/machinery/mineral/stacking_unit_console/LateInitialize()
+	if(!machine)
+		qdel(src)
 
 /obj/machinery/mineral/stacking_unit_console/attack_hand(mob/user)
 	add_fingerprint(user)
@@ -72,15 +69,14 @@
 	density = 1
 	anchored = 1.0
 	var/obj/machinery/mineral/stacking_unit_console/console
-	var/obj/machinery/input = null
+	var/obj/machinery/input/input = null
 	var/obj/machinery/mineral/output = null
 	var/list/stack_storage[0]
 	var/list/stack_paths[0]
 	var/stack_amt = 50; // Amount to stack before releassing
 
-/obj/machinery/mineral/stacking_machine/New(var/atom/location, var/direction, var/nocircuit = FALSE)
-	..()
-
+/obj/machinery/mineral/stacking_machine/Initialize()
+	.=..()
 	for(var/stacktype in subtypesof(/obj/item/stack/material))
 		var/obj/item/stack/S = stacktype
 		var/stack_name = initial(S.name)
@@ -94,15 +90,21 @@
 	stack_storage[MATERIAL_PLASTEEL] = 0
 	stack_paths[MATERIAL_PLASTEEL] = /obj/item/stack/material/plasteel
 
-	spawn( 5 )
-		for (var/dir in GLOB.cardinal)
-			src.input = locate(/obj/machinery/input, get_step(src, dir))
-			if(src.input) break
-		for (var/dir in GLOB.cardinal)
-			src.output = locate(/obj/machinery/mineral/output, get_step(src, dir))
-			if(src.output) break
-		return
-	return
+	for(var/obj/machinery/mineral/stacking_unit_console/SU in orange(2, src))
+		if(!SU.machine)
+			console = SU
+			console.machine = src
+			break
+
+	for(var/obj/machinery/input/I in orange(1, src))
+		if(!I.master)
+			input = I
+			input.master = src
+			break
+
+	for(var/obj/machinery/mineral/output/O in orange(1, src))
+		output = O
+		break
 
 /obj/machinery/mineral/stacking_machine/Process()
 	if (src.output && src.input)

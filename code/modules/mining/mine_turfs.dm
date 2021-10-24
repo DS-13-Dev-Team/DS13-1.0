@@ -308,8 +308,8 @@ var/list/mining_floors = list()
 		else if (depth == F.excavation_required)
 			excavate_find(TRUE, F)
 
-
-/turf/simulated/mineral/proc/take_damage(var/amount, var/damtype = BRUTE, var/user, var/used_weapon, var/ignore_resistance = FALSE)
+//TODO_ Factor this into turf damage
+/turf/simulated/mineral/take_damage(var/amount, var/damtype = BRUTE, var/user, var/used_weapon, var/ignore_resistance = FALSE)
 	if (!ignore_resistance)
 		var/AP = 0
 		if (istype(used_weapon, /obj))
@@ -329,7 +329,7 @@ var/list/mining_floors = list()
 		update_icon()
 		return TRUE
 
-/turf/simulated/mineral/proc/zero_health(var/amount, var/damtype = BRUTE, var/user, var/used_weapon, var/ignore_resistance)
+/turf/simulated/mineral/zero_health(var/amount, var/damtype = BRUTE, var/user, var/used_weapon, var/ignore_resistance)
 	finish_mining()
 
 /turf/simulated/mineral/proc/finish_mining()
@@ -443,8 +443,8 @@ var/list/mining_floors = list()
 	if (prob(mineralChance) && !mineral)
 		var/mineral_name = pickweight(mineralSpawnChanceList) //temp mineral name
 		mineral_name = lowertext(mineral_name)
-		if (mineral_name && (mineral_name in ore_data))
-			mineral = ore_data[mineral_name]
+		if (mineral_name && (mineral_name in GLOB.ore_data))
+			mineral = GLOB.ore_data[mineral_name]
 			UpdateMineral()
 
 /turf/simulated/mineral/random/high_chance

@@ -130,6 +130,11 @@
 	var/list/options = list(SPECIES_NECROMORPH_SLASHER = (9.5 / compatibility),
 	SPECIES_NECROMORPH_SLASHER_ENHANCED = (1 * compatibility))
 
+	//Monkey?
+	if(mob_size < MOB_MEDIUM)
+		options = list(SPECIES_NECROMORPH_LEAPER_HOPPER	=	1)
+		return options
+
 	//Gender based options
 	if (gender == FEMALE)
 		options[SPECIES_NECROMORPH_SPITTER]	=	3 * compatibility
@@ -173,13 +178,18 @@
 	return options
 
 
-
+/*
+	Safety Checks
+*/
 /mob/living/proc/is_necromorph_conversion_valid()
 	.= TRUE
-	if (stat != DEAD)
+	if (stat != DEAD && stat != UNCONSCIOUS)
 		return FALSE
 
 	if (QDELETED(src))
+		return FALSE
+
+	if (is_necromorph())
 		return FALSE
 
 
@@ -187,6 +197,9 @@
 	.=..()
 	if (!has_organ(BP_HEAD))
 		return FALSE
+
+
+
 
 
 //Compatibility

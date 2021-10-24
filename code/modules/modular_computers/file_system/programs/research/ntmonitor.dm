@@ -68,7 +68,7 @@
 		// NTNet is enabled and user is about to shut it down. Let's ask them if they really want to do it, as wirelessly connected computers won't connect without NTNet being enabled (which may prevent people from turning it back on)
 		if(!user)
 			return 1
-		var/response = alert(user, "Really disable SolNet wireless? If your computer is connected wirelessly you won't be able to turn it back on! This will affect all connected wireless devices.", "SolNet shutdown", "Yes", "No")
+		var/response = tgui_alert(user, "Really disable SolNet wireless? If your computer is connected wirelessly you won't be able to turn it back on! This will affect all connected wireless devices.", "SolNet shutdown", list("Yes", "No"))
 		if(response == "Yes")
 			ntnet_global.setting_disabled = 1
 		return 1

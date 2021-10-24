@@ -110,7 +110,7 @@
 /obj/effect/overload/Process()
 	for(var/turf/T in trange(2, get_turf(src)))
 		for(var/mob/living/L in T)
-			L.electrocute_act(shock_damage * (FAST_PROCESS_INTERVAL * 0.1), src, 1, def_zone = BP_OVERALL)
+			L.electrocute_act(shock_damage * (FAST_PROCESS_INTERVAL * 0.1), src, 1, BP_OVERALL)
 
 	life_time -= FAST_PROCESS_INTERVAL
 	if(life_time <= 0)

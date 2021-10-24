@@ -187,15 +187,16 @@
 #define THROWNOBJ_KNOCKBACK_SPEED   15 // The minumum speed of a w_class 2 thrown object that will cause living mobs it hits to be knocked back. Heavier objects can cause knockback at lower speeds.
 #define THROWNOBJ_KNOCKBACK_DIVISOR 2  // Affects how much speed the mob is knocked back with.
 
-// Suit sensor levels
-#define SUIT_SENSOR_OFF      0
-#define SUIT_SENSOR_BINARY   1
-#define SUIT_SENSOR_VITAL    2
-#define SUIT_SENSOR_TRACKING 3
+// RIG sensor levels
+#define RIG_SENSOR_OFF			0
+#define RIG_SENSOR_BINARY		1
+#define RIG_SENSOR_VITAL		2
+#define RIG_SENSOR_TRACKING		3
 
-#define SUIT_NO_SENSORS 0
-#define SUIT_HAS_SENSORS 1
-#define SUIT_LOCKED_SENSORS 2
+// RIG sensor work mode
+#define RIG_SENSOR_MANUAL		1
+#define RIG_SENSOR_AUTOMATIC	2
+#define RIG_SENSOR_RANDOM		3
 
 // Hair Flags
 #define VERY_SHORT 0x1
@@ -277,3 +278,5 @@ var/list/default_onmob_icons = list(
 
 //How many loadout slots can each player have? Reducing this may cause issues
 #define LOADOUT_SLOTS	3
+
+#define LOADOUT_LOADED	(GLOB.loadout_datums_loaded && GLOB.custom_items_loaded)

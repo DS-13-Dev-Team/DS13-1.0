@@ -17,7 +17,7 @@ Pipelines + Other Objects -> Pipe network
 	var/nodealert = 0
 	var/power_rating //the maximum amount of power the machine can use to do work, affects how powerful the machine is, in Watts
 
-
+	layer = EXPOSED_PIPE_LAYER
 
 	var/connect_types = CONNECT_TYPE_REGULAR
 	var/icon_connect_type = "" //"-supply" or "-scrubbers"
@@ -42,10 +42,6 @@ Pipelines + Other Objects -> Pipe network
 	if(!pipe_color_check(pipe_color))
 		pipe_color = null
 	..()
-
-/obj/machinery/atmospherics/Initialize(mapload, d)
-	. = ..()
-	layer = EXPOSED_PIPE_LAYER
 
 /obj/machinery/atmospherics/proc/atmos_init()
 	atmos_initalized = TRUE

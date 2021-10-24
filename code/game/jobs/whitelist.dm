@@ -22,7 +22,7 @@ var/list/whitelist = list()
 	if(CONFIG_GET(flag/usealienwhitelist))
 		if(CONFIG_GET(flag/usealienwhitelistSQL))
 			if(!load_alienwhitelistSQL())
-				world.log << "Could not load alienwhitelist via SQL"
+				log_world("Could not load alienwhitelist via SQL")
 		else
 			load_alienwhitelist()
 	return 1
@@ -37,7 +37,7 @@ var/list/whitelist = list()
 /proc/load_alienwhitelistSQL()
 	var/DBQuery/query = dbcon.NewQuery("SELECT * FROM whitelist")
 	if(!query.Execute())
-		world.log << dbcon.ErrorMsg()
+		log_world(dbcon.ErrorMsg())
 		return 0
 	else
 		while(query.NextRow())
@@ -49,7 +49,7 @@ var/list/whitelist = list()
 				alien_whitelist[row["ckey"]] = list(row["race"])
 	return 1
 
-/proc/is_species_whitelisted(mob/M, var/species_name)
+/proc/is_species_whitelist(mob/M, var/species_name)
 	var/datum/species/S = all_species[species_name]
 	return is_alien_whitelisted(M, S)
 

@@ -1,5 +1,4 @@
 #define TANK_MAX_RELEASE_PRESSURE (3*ONE_ATMOSPHERE)
-#define TANK_DEFAULT_RELEASE_PRESSURE ONE_ATMOSPHERE
 
 /obj/machinery/oxygen_pump
 	name = "emergency oxygen pump"
@@ -200,7 +199,7 @@
 	if(tank)
 		data["tankPressure"] = round(tank.air_contents.return_pressure() ? tank.air_contents.return_pressure() : 0)
 		data["releasePressure"] = round(tank.distribute_pressure ? tank.distribute_pressure : 0)
-		data["defaultReleasePressure"] = round(TANK_DEFAULT_RELEASE_PRESSURE)
+		data["defaultReleasePressure"] = round(ONE_ATMOSPHERE)
 		data["maxReleasePressure"] = round(TANK_MAX_RELEASE_PRESSURE)
 		data["maskConnected"] = 0
 		data["tankInstalled"] = 1
@@ -230,7 +229,7 @@
 
 	if (href_list["dist_p"])
 		if (href_list["dist_p"] == "reset")
-			tank.distribute_pressure = TANK_DEFAULT_RELEASE_PRESSURE
+			tank.distribute_pressure = ONE_ATMOSPHERE
 		else if (href_list["dist_p"] == "max")
 			tank.distribute_pressure = TANK_MAX_RELEASE_PRESSURE
 		else

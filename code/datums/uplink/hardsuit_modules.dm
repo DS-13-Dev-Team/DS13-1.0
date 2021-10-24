@@ -27,9 +27,16 @@
 /datum/uplink_item/item/hardsuit_modules/zealot
 	name = "Zealot RIG"
 	path = /obj/item/weapon/rig/zealot
-	item_cost = 15
+	item_cost = 23
 	is_special = TRUE
 	antag_roles = list(MODE_UNITOLOGIST, MODE_UNITOLOGIST_SHARD)
+
+/datum/uplink_item/item/hardsuit_modules/earthgov
+	name = "Earthgov RIG"
+	path = /obj/item/weapon/rig/marine/earthgov
+	item_cost = 19
+	is_special = TRUE
+	antag_roles = list(MODE_EARTHGOV_AGENT)
 
 /datum/uplink_item/item/hardsuit_modules/maneuvering_jets
 	name = "\improper Maneuvering Jets"

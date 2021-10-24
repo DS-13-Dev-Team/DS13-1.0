@@ -9,7 +9,7 @@
 
 
 /obj/screen/meter/resource/cache_data(var/atom/holder, var/datum/extension/resource/R)
-	resource_holder= R
+	resource_holder = R
 	.=..()
 
 /obj/screen/meter/resource/get_data()

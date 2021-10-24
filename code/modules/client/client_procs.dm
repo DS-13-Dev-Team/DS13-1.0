@@ -62,7 +62,7 @@
 
 	//search the href for script injection
 	if( findtext(href,"<script",1,0) )
-		world.log << "Attempted use of scripts within a topic call, by [src]"
+		log_world("Attempted use of scripts within a topic call, by [src]")
 		message_admins("Attempted use of scripts within a topic call, by [src]")
 		//qdel(usr)
 		return
@@ -110,6 +110,18 @@
 
 	..()	//redirect to hsrc.Topic()
 
+/client/proc/generate_clickcatcher()
+	if(void)
+		return
+	void = new()
+	screen += void
+
+
+/client/proc/apply_clickcatcher()
+	generate_clickcatcher()
+	var/list/actualview = getviewsize(view)
+	void.UpdateGreed(actualview[1], actualview[2])
+
 //This stops files larger than UPLOAD_LIMIT being sent from client to server via input(), client.Import() etc.
 /client/AllowUpload(filename, filelength)
 	if(filelength > UPLOAD_LIMIT)
@@ -141,7 +153,7 @@
 		return null
 
 	if(!CONFIG_GET(flag/guests_allowed) && IsGuestKey(key))
-		alert(src,"This server doesn't allow guest accounts to play. Please go to http://www.byond.com/ and register for a key.","Guest","OK")
+		tgui_alert(src,"This server doesn't allow guest accounts to play. Please go to http://www.byond.com/ and register for a key.","Guest")
 		qdel(src)
 		return
 
@@ -153,7 +165,7 @@
 			allowed = TRUE
 
 		if (!allowed)
-			alert(src,"This server is currently full and not accepting new connections. Please try again later!","Server Full","OK")
+			tgui_alert(src,"This server is currently full and not accepting new connections. Please try again later!","Server Full")
 			log_admin("[ckey] tried to join and was turned away due to the server being full (player_limit=[CONFIG_GET(number/player_limit)])")
 			qdel(src)
 			return
@@ -221,6 +233,9 @@
 
 	send_resources()
 
+	generate_clickcatcher()
+	apply_clickcatcher()
+
 	if(prefs.lastchangelog != GLOB.changelog_hash) //bolds the changelog button on the interface so we know there are updates.
 		to_chat(src, "<span class='info'>You have unread updates in the changelog.</span>")
 		if(CONFIG_GET(flag/aggressive_changelog))
@@ -235,6 +250,10 @@
 	if(!winexists(src, "asset_cache_browser")) // The client is using a custom skin, tell them.
 		to_chat(src, "<span class='warning'>Unable to access asset cache browser, if you are using a custom skin file, please allow DS to download the updated version, if you are not, then make a bug report. This is not a critical issue but can cause issues with resource downloading, as it is impossible to know when extra resources arrived to you.</span>")
 
+	//This is down here because of the browse() calls in tooltip/New()
+	if(!tooltips)
+		tooltips = new /datum/tooltip(src)
+
 	if(holder)
 		src.control_freak = 0 //Devs need 0 for profiler access
 
@@ -244,6 +263,11 @@
 	//DISCONNECT//
 	//////////////
 /client/Del()
+	if(!QDELING(src))
+		Destroy() //Clean up signals and timers.
+	return ..()
+
+/client/Destroy()
 	ticket_panels -= src
 	if(src && watched_variables_window)
 		STOP_PROCESSING(SSprocessing, watched_variables_window)
@@ -252,9 +276,10 @@
 		GLOB.admins -= src
 	GLOB.ckey_directory -= ckey
 	GLOB.clients -= src
-	return ..()
 
-/client/Destroy()
+	QDEL_NULL(void)
+	QDEL_NULL(tooltips)
+
 	..()
 	return QDEL_HINT_HARDDEL_NOW
 
@@ -397,16 +422,6 @@ client/proc/MayRespawn()
 	// Something went wrong, client is usually kicked or transfered to a new mob at this point
 	return 0
 
-//Adds things to screen and tells them this was done
-/client/proc/add_to_screen(var/list/things)
-
-	if (!islist(things))
-		things = list(things)
-
-	for (var/obj/O as anything in things)
-		screen += O
-		O.added_to_screen(src)
-
 /// compiles a full list of verbs and sends it to the browser
 /client/proc/init_verbs()
 	var/list/verblist = list()
@@ -433,3 +448,8 @@ client/proc/MayRespawn()
 	if(statbrowser_ready)
 		return
 	to_chat(src, "<span class='warning'>Statpanel failed to load, click <a href='?src=[REF(src)];reload_statbrowser=1'>here</a> to reload the panel</span>")
+
+//Hook, override it to run code when dir changes
+//Like for /atoms, but clients are their own snowflake FUCK
+/client/proc/setDir(newdir)
+	dir = newdir

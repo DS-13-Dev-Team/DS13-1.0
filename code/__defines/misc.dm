@@ -207,9 +207,6 @@
 #define VIRUS_ENGINEERED	3
 #define VIRUS_EXOTIC		4	//Usually adminbus only
 
-//Error handler defines
-#define ERROR_USEFUL_LEN 2
-
 #define RAD_LEVEL_LOW 0.5 // Around the level at which radiation starts to become harmful
 #define RAD_LEVEL_MODERATE 5
 #define RAD_LEVEL_HIGH 25
@@ -268,3 +265,8 @@
 #define PRINTER_FONT "Times New Roman"
 #define SIGNFONT "Times New Roman"
 #define CHARCOAL_FONT "Candara"
+
+#define STATION_ALERT_GREEN	"code green"
+#define STATION_ALERT_BLUE	"code blue"
+#define STATION_ALERT_RED	"code red"
+#define STATION_ALERT_DELTA	"code delta"

@@ -122,6 +122,8 @@
 	'sound/effects/creatures/necromorph/infector/infector_shout_long_3.ogg')
 	)
 
+	//HUD Handling
+	hud_type = /datum/hud_data/necromorph/infector
 
 
 #define INFECTOR_PASSIVE_1	"<h2>PASSIVE: Necrotoxin:</h2><br>\

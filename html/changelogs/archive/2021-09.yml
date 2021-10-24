@@ -203,3 +203,6 @@
   DeadLineSS13:
   - bugfix: Fixed a chems dispensers.
   - bugfix: Fixed a BrigTimer.
+2021-09-30:
+  DeadLineSS13:
+  - bugfix: Fixed a AltClick issue in StatBrowser.
