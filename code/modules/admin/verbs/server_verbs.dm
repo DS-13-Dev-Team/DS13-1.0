@@ -181,7 +181,7 @@
 	set category = "Server"
 	set desc="Start the round RIGHT NOW"
 	set name="Start Now"
-	if(!ticker)
+	if(!SSticker)
 		alert("Unable to start the game as it is not set up.")
 		return
 
@@ -295,17 +295,26 @@
 	set category = "Server"
 	set name = "Delay Round Start"
 
-	if(!check_rights(R_SERVER|R_REJUVINATE))	return
-	if (!ticker || ticker.current_state != GAME_STATE_PREGAME)
-		ticker.delay_end = !ticker.delay_end
-		log_and_message_admins("[ticker.delay_end ? "delayed the round end" : "has made the round end normally"].")
-		return //alert("Round end delayed", null, null, null, null, null)
-	round_progressing = !round_progressing
-	if (!round_progressing)
-		to_chat(world, "<span class='infodisplay'><b>The game start has been delayed.</b></span>")
-		log_admin("[key_name(usr)] delayed the game.")
+	if(!check_rights(R_SERVER))
+		return
+
+	if(!SSticker)
+		return
+
+	var/newtime = input("Set a new time in seconds. Set -1 for indefinite delay.", "Set Delay", round(SSticker.GetTimeLeft())) as num|null
+	if(SSticker.current_state > GAME_STATE_PREGAME)
+		return
+	if(isnull(newtime))
+		return
+
+	newtime = newtime * 10
+	SSticker.SetTimeLeft(newtime)
+	if(newtime < 0)
+		to_chat(world, SPAN_BOLDANNOUNCE("The game start has been delayed."))
+		log_admin("[key_name(usr)] delayed the round start.")
+		message_admins("[ADMIN_TPMONTY(usr)] delayed the round start.")
 	else
-		to_chat(world, SPAN_BOLDNOTICE("The game will start in [DisplayTimeText(newtime)]."))
+		to_chat(world, SPAN_BOLDANNOUNCE("The game will start in [DisplayTimeText(newtime)]."))
 		log_admin("[key_name(usr)] set the pre-game delay to [DisplayTimeText(newtime)].")
 		message_admins("[ADMIN_TPMONTY(usr)] set the pre-game delay to [DisplayTimeText(newtime)].")
 
