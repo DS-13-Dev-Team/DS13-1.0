@@ -4864,10 +4864,6 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/space)
-"YG" = (
-/obj/structure/closet/secure_closet/guncabinet/military,
-/turf/simulated/floor/tiled,
-/area/ERT/valor/armory)
 "Zp" = (
 /obj/structure/table/woodentable,
 /turf/simulated/floor/reinforced,
@@ -14014,7 +14010,7 @@ dU
 cG
 bE
 aO
-YG
+bi
 eP
 dV
 ha
