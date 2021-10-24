@@ -7,7 +7,7 @@ name: 'Render Nanomaps'
 on:
   push:
     branches:
-      - dev
+      - NanoMapComponent
     paths:
       - 'maps/**'
 
