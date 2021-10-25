@@ -10,7 +10,7 @@ const pauseEvent = e => {
   return false;
 };
 
-const zoomScale = 560;
+const zoomScale = 800;
 
 export class NanoMap extends Component {
   constructor(props) {
@@ -85,7 +85,7 @@ export class NanoMap extends Component {
 
     this.handleZoom = (_e, value) => {
       this.setState(state => {
-        const newZoom = Math.min(Math.max(value, 1), 8);
+        const newZoom = Math.min(Math.max(value, 1), 4);
         let zoomDiff = (newZoom - state.zoom) * 1.5;
         state.zoom = newZoom;
 
@@ -114,7 +114,6 @@ export class NanoMap extends Component {
     const { children } = this.props;
 
     const mapUrl = config.map + "-" + config.mapZLevel + ".png";
-    // (x * zoom), x Needs to be double the turf- map size. (for virgo, 140x140)
     const mapSize = (zoomScale * zoom) + 'px';
     const newStyle = {
       width: mapSize,
@@ -123,9 +122,11 @@ export class NanoMap extends Component {
       "margin-left": offsetX + "px",
       "overflow": "hidden",
       "position": "relative",
+      "background-image": "url(" + mapUrl + ")",
       "background-size": "cover",
       "background-repeat": "no-repeat",
       "text-align": "center",
+      "-ms-interpolation-mode": "nearest-neighbor",
       "cursor": dragging ? "move" : "auto",
     };
 
@@ -136,7 +137,6 @@ export class NanoMap extends Component {
           textAlign="center"
           onMouseDown={this.handleDragStart}
           onClick={this.handleOnClick}>
-          <img style={"-ms-interpolation-mode: nearest-neighbor;"+""} src={mapUrl} />
           <Box>
             {children}
           </Box>
@@ -196,8 +196,8 @@ const NanoMapZoomer = (props, context) => {
       <LabeledList>
         <LabeledList.Item label="Zoom">
           <Slider
-            minValue="1"
-            maxValue="8"
+            minValue={1}
+            maxValue={4}
             stepPixelSize="10"
             format={v => v + "x"}
             value={props.zoom}
