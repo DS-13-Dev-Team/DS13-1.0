@@ -156,7 +156,7 @@ other types of metals and chemistry for reagents).
 	ui_data = list("id" = "[id]", "name" = name, "item_name" = (item_name ? item_name : name), "desc" = desc, "time" = time, "category" = category, "price" = price)
 
 	var/filename = sanitizeFileName("[id].png")
-	var/icon/I = getFlatTypeIcon(temp.type)
+	var/icon/I = getFlatIcon(temp)
 
 	ui_data["icon_name"] = filename
 	ui_data["icon"] = I
