@@ -55,5 +55,13 @@ delete-after: True
 # Also, this gets changed to [] after reading.  Just remove the brackets when you add new shit.
 # Please surround your changes in  double quotes ("). It works without them, but if you use certain characters it screws up compiling. The quotes will not show up in the changelog.
 changes:
-  - balance: "Reduced the speed bonus of advanced femoral exoskeleton"
-  - balance: "Slightly Increased stamina costs of sprinting, and slightly reduced stamina regen
+  - experiment: "Reduced human top speed. The intent here is to nerf the most extreme examples of zoomy humans without significantly affecting the majority of people. This is broken up into several changes:"
+  - balance: "Reduced the speed bonus of advanced femoral exoskeleton, Basic femoral unaffected"
+  - balance: "Slightly Increased stamina costs of sprinting, and slightly reduced stamina regen"
+  - balance: "Athletics skill is now broken into two skills, Hauling and Athletics. The former affects speed penalties from encumbrance, throwing, and pulling, the latter affects stamina costs."
+  - balance: "Slightly increased corruption slowdown effect on humans."
+  - balance: "Slightly decreased sprint speed, and slightly increased walking speed."
+  - experiment: "Increased Time To Kill (TTK) by 10% across the board. This is broken up into several changes:"
+  - balance: "Increased human limb health by 10%"
+  - balance: "Increased human pain-shock threshold by 10%. from 50 to 55 This is the quantity of pain that can be suffered without any real bad effects."
+  - tweak: "Increased health of all necromorphs by 10%"

@@ -13,7 +13,7 @@
 	mob_type	=	/mob/living/carbon/human/necromorph/infector
 	name_plural =  "Infectors"
 	blurb = "A high value, fragile support, the Infector works as a builder and healer"
-	total_health = 140
+	total_health = 155
 
 	//Normal necromorph flags plus no slip
 	species_flags = SPECIES_FLAG_NO_PAIN | SPECIES_FLAG_NO_MINOR_CUT | SPECIES_FLAG_NO_POISON  | SPECIES_FLAG_NO_BLOCK | SPECIES_FLAG_NO_SLIP

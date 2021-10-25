@@ -374,7 +374,7 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 	var/incoming_damage_mod = 0.85	//Incoming damage reduction
 
 	//Effects on non necros
-	var/slowdown = 0.60	//Movespeed Penalty
+	var/slowdown = 0.625	//Movespeed Penalty
 
 	var/speed_factor = 0
 

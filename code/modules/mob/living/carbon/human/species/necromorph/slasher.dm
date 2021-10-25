@@ -12,7 +12,7 @@
 	mob_type = /mob/living/carbon/human/necromorph/slasher
 	blurb = "The frontline soldier of the necromorph horde. Slow when not charging, but its blade arms make for powerful melee attacks"
 	unarmed_types = list(/datum/unarmed_attack/blades, /datum/unarmed_attack/bite/weak) //Bite attack is a backup if blades are severed
-	total_health = 90
+	total_health = 100
 	biomass = 50
 	mass = 70
 
@@ -138,7 +138,7 @@
 	marker_spawnable = TRUE 	//Enable this once we have sprites for it
 	mob_type = /mob/living/carbon/human/necromorph/slasher_enhanced
 	unarmed_types = list(/datum/unarmed_attack/blades/strong, /datum/unarmed_attack/bite/strong)
-	total_health = 225
+	total_health = 250
 	slowdown = 2.8
 	biomass = 125
 	require_total_biomass	=	BIOMASS_REQ_T2
