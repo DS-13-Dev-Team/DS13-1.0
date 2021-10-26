@@ -13,8 +13,8 @@
 
 
 
-	var/meter_type = /obj/screen/meter/resource
-	var/obj/screen/meter/resource/meter
+	var/meter_type = /atom/movable/screen/meter/resource
+	var/atom/movable/screen/meter/resource/meter
 
 /datum/extension/resource/New(var/mob/holder)
 	.=..()

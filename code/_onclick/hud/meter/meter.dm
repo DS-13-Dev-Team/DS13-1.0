@@ -2,13 +2,13 @@
 
 #define DEFAULT_METER_DATA	list("current"	=	null, "max"	=	null, 	"regen"	=	null, "blocked"	=	null)
 #define METER_HEIGHT	"16"
-/obj/screen/meter
+/atom/movable/screen/meter
 	name = "meter"
 	var/mob/living/L
-	var/obj/screen/meter_component/current/remaining_meter	//The actual remaining health, in red or green
-	var/obj/screen/meter_component/delta/delta_meter	//A yellow section indicating recent loss
-	var/obj/screen/meter_component/limit/limit_meter	//A solid grey block at the end, representing reduced maximum
-	var/obj/screen/meter_component/text/textholder
+	var/atom/movable/screen/meter_component/current/remaining_meter	//The actual remaining health, in red or green
+	var/atom/movable/screen/meter_component/delta/delta_meter	//A yellow section indicating recent loss
+	var/atom/movable/screen/meter_component/limit/limit_meter	//A solid grey block at the end, representing reduced maximum
+	var/atom/movable/screen/meter_component/text/textholder
 
 	var/remaining_color = COLOR_NT_RED
 	var/delta_color	=	COLOR_AMBER
@@ -50,14 +50,14 @@
 
 	var/margin = 8//Extra length that isn't counted as part of our length for the purpose of components
 
-/obj/screen/meter/New(atom/holder, holder_hud)
+/atom/movable/screen/meter/New(atom/holder, holder_hud)
 	L = holder
 	hud = holder_hud
 	cache_data(arglist(args))
 
 	.=..()
 
-/obj/screen/meter/Initialize()
+/atom/movable/screen/meter/Initialize()
 	. = ..()
 	remaining_meter = new(src)
 	remaining_meter.color = remaining_color
@@ -80,10 +80,10 @@
 	update(TRUE)
 
 //Override this and change the parameters in subtypes
-/obj/screen/meter/proc/cache_data(atom/holder)
+/atom/movable/screen/meter/proc/cache_data(atom/holder)
 
 
-/obj/screen/meter/Destroy()
+/atom/movable/screen/meter/Destroy()
 	QDEL_NULL(remaining_meter)
 	QDEL_NULL(delta_meter)
 	QDEL_NULL(limit_meter)
@@ -92,7 +92,7 @@
 
 
 
-/obj/screen/meter/proc/set_size(update = TRUE)
+/atom/movable/screen/meter/proc/set_size(update = TRUE)
 	//Lets set the size
 
 
@@ -161,7 +161,7 @@
 
 
 
-/obj/screen/meter/proc/update(force_update = FALSE)
+/atom/movable/screen/meter/proc/update(force_update = FALSE)
 	var/list/data = get_data()
 
 
@@ -223,7 +223,7 @@
 
 
 
-/obj/screen/meter/proc/get_data()
+/atom/movable/screen/meter/proc/get_data()
 	return DEFAULT_METER_DATA
 
 
@@ -231,8 +231,8 @@
 	The components
 	Core:
 */
-/obj/screen/meter_component
-	var/obj/screen/meter/parent
+/atom/movable/screen/meter_component
+	var/atom/movable/screen/meter/parent
 	alpha = 200
 
 	screen_loc = "CENTER,TOP"
@@ -248,21 +248,21 @@
 
 	mouse_opacity = 2
 
-/obj/screen/meter_component/New(obj/screen/meter/newparent)
+/atom/movable/screen/meter_component/New(atom/movable/screen/meter/newparent)
 	parent = newparent
 	hud = parent.hud
 	update_total()
 	.=..()
 
-/obj/screen/meter_component/Destroy()
+/atom/movable/screen/meter_component/Destroy()
 	hud.infodisplay -= src
 	.=..()
 
 
-/obj/screen/meter_component/proc/update()
+/atom/movable/screen/meter_component/proc/update()
 
 //Sets a new size in pixels
-/obj/screen/meter_component/proc/set_size(newsize)
+/atom/movable/screen/meter_component/proc/set_size(newsize)
 	if (!newsize)
 		alpha = 0
 		return
@@ -278,7 +278,7 @@
 	animate(src, transform = M,  time = animate_time)
 
 
-/obj/screen/meter_component/proc/update_total()
+/atom/movable/screen/meter_component/proc/update_total()
 	if (parent)
 		set_size(parent.length)
 
@@ -286,7 +286,7 @@
 /*
 	Health
 */
-/obj/screen/meter_component/current
+/atom/movable/screen/meter_component/current
 	layer = HUD_ABOVE_ITEM_LAYER	//This must draw above the delta
 	color = COLOR_NT_RED
 	animate_time = 0.3 SECOND
@@ -295,7 +295,7 @@
 /*
 	Limit
 */
-/obj/screen/meter_component/limit
+/atom/movable/screen/meter_component/limit
 	color = COLOR_GRAY40
 	side = 1
 
@@ -303,7 +303,7 @@
 /*
 	Delta
 */
-/obj/screen/meter_component/delta
+/atom/movable/screen/meter_component/delta
 	color = COLOR_AMBER
 	var/head_health = 0	//What health value is the tip of the delta meter currently showing
 	var/ticks_per_second = 2
@@ -322,21 +322,21 @@
 
 	var/health_per_tick = 10
 
-/obj/screen/meter_component/delta/New(var/obj/screen/meternewparent)
+/atom/movable/screen/meter_component/delta/New(var/atom/movable/screen/meternewparent)
 	.=..()
 	head_health = parent.total_value
 	animate_time = (1 SECOND / ticks_per_second)
 	health_per_tick = (parent.total_value * 0.065)/ticks_per_second
 
 
-/obj/screen/meter_component/delta/update_total()
+/atom/movable/screen/meter_component/delta/update_total()
 	head_health = parent.current_value
 	animate_time = (1 SECOND / ticks_per_second)
 	alpha = 0
 	health_per_tick = (parent.total_value * 0.1)/ticks_per_second
 
 //Delta works very differently
-/obj/screen/meter_component/delta/update()
+/atom/movable/screen/meter_component/delta/update()
 	if (!parent)
 		return
 
@@ -352,7 +352,7 @@
 	if (animation_state == 0)
 		start_animation()
 
-/obj/screen/meter_component/delta/proc/start_animation()
+/atom/movable/screen/meter_component/delta/proc/start_animation()
 	set waitfor = FALSE
 	alpha = initial(alpha)
 	//Gotta do this in the right order
@@ -384,7 +384,7 @@
 	ongoing_animation()
 
 //Here we animate and move each tick until we
-/obj/screen/meter_component/delta/proc/ongoing_animation()
+/atom/movable/screen/meter_component/delta/proc/ongoing_animation()
 	set waitfor = FALSE
 
 	//Gotta do this in the right order
@@ -405,7 +405,7 @@
 	stop_animation()
 
 //Terminates any ongoing animation
-/obj/screen/meter_component/delta/proc/stop_animation()
+/atom/movable/screen/meter_component/delta/proc/stop_animation()
 	animation_state = 0
 	head_health = parent.current_value
 
@@ -419,11 +419,11 @@
 /*
 	Text
 */
-/obj/screen/meter_component/text
+/atom/movable/screen/meter_component/text
 	icon_state = ""
 	layer = HUD_TEXT_LAYER
 
-/obj/screen/meter_component/text/update_total(resize = FALSE)
+/atom/movable/screen/meter_component/text/update_total(resize = FALSE)
 	if (parent)
 		if (resize)
 			set_size(parent.length)
@@ -437,6 +437,6 @@
 			else
 				maptext += "<span style='font-size:6px; color:#CCCCCC;'>-[parent.change_per_second]</span>"
 
-/obj/screen/meter_component/text/set_size()
+/atom/movable/screen/meter_component/text/set_size()
 	return
 

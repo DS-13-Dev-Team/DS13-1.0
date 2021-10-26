@@ -60,16 +60,24 @@ What is the naming convention for planes or layers?
 	FLOAT_PLANE = -32767
 */
 
-#define CLICKCATCHER_PLANE -100
+//NEVER HAVE ANYTHING BELOW THIS PLANE ADJUST IF YOU NEED MORE SPACE
+#define LOWEST_EVER_PLANE				-200
 
-#define SPACE_PLANE -99
-#define SKYBOX_PLANE -98
+#define CLICKCATCHER_PLANE				-100
+
+#define SPACE_PLANE						-99
+#define SKYBOX_PLANE					-98
+
+#define GRAVITY_PULSE_PLANE				-11
+#define GRAVITY_PULSE_RENDER_TARGET 	"*GRAVPULSE_RENDER_TARGET"
 
 #define DUST_PLANE -97
 	#define DEBRIS_LAYER 1
 	#define DUST_LAYER 2
 
-#define DEFAULT_PLANE                   0
+#define FLOOR_PLANE						-7
+
+#define DEFAULT_PLANE                   -4
 	#define PLATING_LAYER               1
 	//ABOVE PLATING
 	#define HOLOMAP_LAYER               1.01
@@ -162,24 +170,28 @@ What is the naming convention for planes or layers?
 	#define OBFUSCATION_LAYER           5.2
 	#define BASE_AREA_LAYER             999
 
-#define OBSERVER_PLANE					1 // For observers and ghosts
+#define BLACKNESS_PLANE					0 //To keep from conflicts with SEE_BLACKNESS internals
 
-#define LIGHTING_PLANE					2 // For Lighting. - The highest plane (ignoring all other even higher planes)
+#define MASSIVE_OBJ_PLANE				70
+#define OBSERVER_PLANE					80 // For observers and ghosts
+#define POINT_PLANE						90
+
+#define LIGHTING_PLANE					100 // For Lighting. - The highest plane (ignoring all other even higher planes)
 
 	#define LIGHTBULB_LAYER				0
 	#define LIGHTING_LAYER				1
 	#define ABOVE_LIGHTING_LAYER		2
 
-#define EFFECTS_ABOVE_LIGHTING_PLANE	3 // For glowy eyes, laser beams, etc. that shouldn't be affected by darkness
+#define EFFECTS_ABOVE_LIGHTING_PLANE	200 // For glowy eyes, laser beams, etc. that shouldn't be affected by darkness
 	#define EYE_GLOW_LAYER				1
 	#define BEAM_PROJECTILE_LAYER		2
 	#define SUPERMATTER_WALL_LAYER		3
 
-#define OBSCURITY_PLANE					4 // For visualnets, such as the AI's static.
+#define OBSCURITY_PLANE					300 // For visualnets, such as the AI's static.
 
-#define ABOVE_OBSCURITY_PLANE			5	//For objects that are seen even on obscured tiles. Mainly AI/signal eye sprites
+#define ABOVE_OBSCURITY_PLANE			400	//For objects that are seen even on obscured tiles. Mainly AI/signal eye sprites
 
-#define FULLSCREEN_PLANE				6 // for fullscreen overlays that do not cover the hud.
+#define FULLSCREEN_PLANE				500 // for fullscreen overlays that do not cover the hud.
 
 	#define FULLSCREEN_LAYER			0
 	#define DAMAGE_LAYER				1
@@ -187,7 +199,11 @@ What is the naming convention for planes or layers?
 	#define BLIND_LAYER					3
 	#define CRIT_LAYER					4
 
-#define HUD_PLANE                       7 // For the Head-Up Display
+#define RENDER_PLANE_GAME				990
+#define RENDER_PLANE_NON_GAME			995
+#define RENDER_PLANE_MASTER				999
+
+#define HUD_PLANE                       1000 // For the Head-Up Display
 
 	#define UNDER_HUD_LAYER				0
 	#define HUD_BASE_LAYER				1
@@ -210,27 +226,5 @@ What is the naming convention for planes or layers?
 	plane = HUD_PLANE
 	layer = HUD_ITEM_LAYER
 
-
-
-/*
-  PLANE MASTERS
-*/
-
-/obj/screen/plane_master
-	appearance_flags = PLANE_MASTER
-	screen_loc = "CENTER,CENTER"
-	globalscreen = 1
-
-/obj/screen/plane_master/ghost_master
-	plane = OBSERVER_PLANE
-
-/obj/screen/plane_master/ghost_dummy
-	// this avoids a bug which means plane masters which have nothing to control get angry and mess with the other plane masters out of spite
-	alpha = 0
-	appearance_flags = 0
-	plane = OBSERVER_PLANE
-
-GLOBAL_LIST_INIT(ghost_master, list(
-	new /obj/screen/plane_master/ghost_master(),
-	new /obj/screen/plane_master/ghost_dummy()
-))
+///Plane master controller keys
+#define PLANE_MASTERS_GAME "plane_masters_game"
