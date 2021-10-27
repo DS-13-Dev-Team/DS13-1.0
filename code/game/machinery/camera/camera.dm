@@ -104,7 +104,6 @@
 				if(C.number)
 					number = max(number, C.number+1)
 			c_tag = "[A.name][number == 1 ? "" : " #[number]"]"
-		invalidateCameraCache()
 
 
 /obj/machinery/camera/Destroy()

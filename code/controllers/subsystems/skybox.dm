@@ -78,7 +78,7 @@ SUBSYSTEM_DEF(skybox)
 	for(var/z in zlevels)
 		skybox_cache["[z]_[world.view]"] = generate_skybox(z)
 
-	for(var/client/C)
+	for(var/client/C in GLOB.clients)
 		C.update_skybox(1)
 
 //Update skyboxes. Called by universes, for now.
@@ -103,5 +103,5 @@ SUBSYSTEM_DEF(skybox)
 	if(need_rebuild)
 		skybox_cache.Cut()
 
-		for(var/client/C)
+		for(var/client/C in GLOB.clients)
 			C.update_skybox(1)
