@@ -165,8 +165,6 @@
 			return global.camera_alarm;
 		if("camera_range_display_status")
 			return global.camera_range_display_status;
-		if("camera_repository")
-			return global.camera_repository;
 		if("captain_announcement")
 			return global.captain_announcement;
 		if("cargo_supply_pack_root")
@@ -956,8 +954,6 @@
 			global.camera_alarm=newval;
 		if("camera_range_display_status")
 			global.camera_range_display_status=newval;
-		if("camera_repository")
-			global.camera_repository=newval;
 		if("captain_announcement")
 			global.captain_announcement=newval;
 		if("cargo_supply_pack_root")
@@ -1664,7 +1660,6 @@
 	"cached_space",
 	"camera_alarm",
 	"camera_range_display_status",
-	"camera_repository",
 	"can_call_ert",
 	"captain_announcement",
 	"cargo_supply_pack_root",
