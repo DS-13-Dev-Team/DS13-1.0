@@ -15,6 +15,8 @@ GLOBAL_REAL(Vector2, /Vector2) = new
 	var/vector2/Northwest
 	var/vector2/Southeast
 	var/vector2/Southwest
+	var/vector2/Up
+	var/vector2/Down
 
 /Vector2/New()
 	Zero = new(0, 0)
@@ -27,6 +29,9 @@ GLOBAL_REAL(Vector2, /Vector2) = new
 	Northwest = new(-sqrt(1/2), sqrt(1/2))
 	Southeast = new(sqrt(1/2), -sqrt(1/2))
 	Southwest = new(-sqrt(1/2), -sqrt(1/2))
+	//DS13 Change - Multiz support.
+	Up = new(1, 1)
+	Down = new(-1, -1)
 
 /Vector2/proc/FromDir(dir)
 	switch(dir)
@@ -46,6 +51,10 @@ GLOBAL_REAL(Vector2, /Vector2) = new
 			return Northwest
 		if(SOUTHWEST)
 			return Southwest
+		if(UP)
+			return Up
+		if(DOWN)
+			return Down
 		else
 			CRASH("Invalid direction.")
 
@@ -70,6 +79,10 @@ GLOBAL_REAL(Vector2, /Vector2) = new
 			v = Northwest
 		if(SOUTHWEST)
 			v = Southwest
+		if(UP)
+			v = Up
+		if(DOWN)
+			v = Down
 	return get_new_vector(v.x, v.y)
 
 //Gets a directional vector between two atoms
