@@ -20,15 +20,15 @@
 /obj/item/weapon/card/id/guest/examine(mob/user)
 	. = ..()
 	if (world.time < expiration_time)
-		to_chat(user, "<span class='notice'>This pass expires at [worldtime2text(expiration_time)].</span>")
+		to_chat(user, "<span class='notice'>This pass expires at [station_time_timestamp(wtime = expiration_time)].</span>")
 	else
-		to_chat(user, "<span class='warning'>It expired at [worldtime2text(expiration_time)].</span>")
+		to_chat(user, "<span class='warning'>It expired at [station_time_timestamp(wtime = expiration_time)].</span>")
 
 /obj/item/weapon/card/id/guest/read()
 	if (world.time > expiration_time)
-		to_chat(usr, "<span class='notice'>This pass expired at [worldtime2text(expiration_time)].</span>")
+		to_chat(usr, "<span class='notice'>This pass expired at [station_time_timestamp(wtime = expiration_time)].</span>")
 	else
-		to_chat(usr, "<span class='notice'>This pass expires at [worldtime2text(expiration_time)].</span>")
+		to_chat(usr, "<span class='notice'>This pass expires at [station_time_timestamp(wtime = expiration_time)].</span>")
 
 	to_chat(usr, "<span class='notice'>It grants access to following areas:</span>")
 	for (var/A in temp_access)
