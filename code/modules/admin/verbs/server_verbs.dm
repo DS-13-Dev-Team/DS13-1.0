@@ -185,7 +185,7 @@
 		alert("Unable to start the game as it is not set up.")
 		return
 
-	if(SSticker.current_state != GAME_STATE_STARTUP && SSticker.current_state != GAME_STATE_PREGAME)
+	if(SSticker.HasRoundStarted())
 		to_chat(usr, SPAN_WARNING("The round has already started."))
 		return
 
@@ -302,7 +302,7 @@
 		return
 
 	var/newtime = input("Set a new time in seconds. Set -1 for indefinite delay.", "Set Delay", round(SSticker.GetTimeLeft())) as num|null
-	if(SSticker.current_state > GAME_STATE_PREGAME)
+	if(SSticker.HasRoundStarted())
 		return
 	if(isnull(newtime))
 		return

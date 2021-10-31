@@ -39,7 +39,7 @@
 	output +="<hr>"
 	output += "<p><a href='byond://?src=\ref[src];show_preferences=1'>Setup Character</A></p>"
 
-	if(!SSticker || SSticker.current_state <= GAME_STATE_PREGAME)
+	if(SSticker.HasRoundStarted())
 		if(ready)
 			output += "<p>\[ <span class='linkOn'><b>Ready</b></span> | <a href='byond://?src=\ref[src];ready=0'>Not Ready</a> \]</p>"
 		else
@@ -87,7 +87,7 @@
 		return TRUE
 
 	if(href_list["ready"])
-		if(!SSticker || SSticker.current_state <= GAME_STATE_PREGAME) // Make sure we don't ready up after the round has started
+		if(!SSticker.HasRoundStarted()) // Make sure we don't ready up after the round has started
 			ready = text2num(href_list["ready"])
 		else
 			ready = 0

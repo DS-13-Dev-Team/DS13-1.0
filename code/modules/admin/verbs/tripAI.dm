@@ -2,7 +2,7 @@
 	set category = "Fun"
 	set name = "Create AI Triumvirate"
 
-	if(SSticker.current_state > GAME_STATE_PREGAME)
+	if(SSticker.HasRoundStarted())
 		to_chat(usr, "This option is currently only usable during pregame. This may change at a later date.")
 		return
 
