@@ -111,15 +111,15 @@
 			devwho += "\t[C] is a [C.holder.rank][extra]\n"
 			dev_count++
 	var/msg = ""
-	if(!admin_count && !mod_count && !ment_count && !dev_count)
+	if(admin_count || mod_count || ment_count || dev_count)
 		msg += "<b><big>Online staff:</big></b>"
-		if(!admin_count)
+		if(admin_count)
 			msg += "<b>Current Admins ([admin_count]):</b><br>[adminwho]<br>"
-		if(!mod_count)
+		if(mod_count)
 			msg += "<b>Current Moderators ([mod_count]):</b><br>[modwho]<br>"
-		if(!ment_count)
+		if(ment_count)
 			msg += "<b>Current Mentors ([ment_count]):</b><br>[mentwho]<br>"
-		if(!dev_count)
+		if(dev_count)
 			msg += "<b>Current Developers ([dev_count]):</b><br>[devwho]<br>"
 	if(!msg)
 		to_chat(src, "<span class='infoplain'>[msg]</span>")
