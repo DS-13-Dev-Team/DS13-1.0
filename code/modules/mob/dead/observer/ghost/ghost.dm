@@ -169,6 +169,9 @@ Works together with spawning an observer, noted above.
 			ghost.client.init_verbs()
 		return ghost
 
+/mob/dead/observer/ghost/is_advanced_tool_user()
+	return TRUE
+
 /*
 This is the proc mobs get to turn into a ghost. Forked from ghostize due to compatibility issues.
 */
