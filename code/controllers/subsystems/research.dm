@@ -76,7 +76,7 @@ SUBSYSTEM_DEF(research)
 		for(var/I in SSresearch.all_technologies)
 			var/datum/technology/T = SSresearch.all_technologies[I]
 			R.all_technologies |= I
-			if(T.cost <= 0)
+			if(T.cost <= 0 && !T.required_technologies.len)
 				R.UnlockTechology(T, TRUE)
 
 	research_files |= R
@@ -103,7 +103,7 @@ SUBSYSTEM_DEF(research)
 			D.AssembleDesignInfo()
 			designs_by_id[D.id] = D
 			var/datum/asset/simple/research_designs/RD = get_asset_datum(/datum/asset/simple/research_designs)
-			RD.assets[D.ui_data["icon_name"]] = D.ui_data["icon"]
+			RD.register()
 
 	else
 		late_designs_init += D

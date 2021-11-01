@@ -62,9 +62,12 @@
 
 // If any new design appears it is added to the asset list in SSresearch
 /datum/asset/simple/research_designs/register()
+	assets.Cut()
 	for(var/I in SSresearch.designs_by_id)
 		var/datum/design/D = SSresearch.designs_by_id[I]
-		assets[D.ui_data["icon_name"]] = D.ui_data["icon"]
+		if(D.build_type & STORE)
+			assets[D.ui_data["icon_name"]] = D.ui_data["icon"]
+	.=..()
 
 /datum/asset/simple/jquery
 	legacy = TRUE
