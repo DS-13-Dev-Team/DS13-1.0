@@ -30,3 +30,16 @@
 	throwforce = WEAPON_FORCE_NORMAL
 	degradation = DEGRADATION_TOUGH_2
 	max_modifications = 4
+
+
+
+/obj/item/weapon/material/twohanded/fireaxe/bigwrench
+	name = "huge wrench"
+	desc = "If everything else failed - bring a bigger wrench."
+	base_icon = "big_wrench"
+	edge = FALSE
+	sharp = FALSE
+	tool_qualities = list(QUALITY_BOLT_TURNING = 80)
+	matter = list(MATERIAL_STEEL = 8000)
+	attack_verb = list("attacked", "bashed", "crushed", "slammed", "smashed", "smote", "wrenched")
+	attack_noun = list("attack", "bash", "crush", "slam", "tear", "smash", "smite", "wrench")
