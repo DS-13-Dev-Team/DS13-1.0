@@ -28,7 +28,7 @@
 	biomass	=	120
 	require_total_biomass	=	BIOMASS_REQ_T2
 	lying_rotation = 90
-	total_health = 100
+	total_health = 110
 
 	slowdown = 1.5
 	view_offset = 3 * WORLD_ICON_SIZE //Forward view offset allows longer-ranged charges

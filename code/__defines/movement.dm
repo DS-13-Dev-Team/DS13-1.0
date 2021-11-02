@@ -25,10 +25,10 @@
 
 
 
-#define RUN_DELAY 1.5
-#define WALK_DELAY 3
+#define RUN_DELAY 1.6
+#define WALK_DELAY 2.95
 #define STALK_DELAY 6
-#define MINIMUM_SPRINT_COST 0.8
-#define SKILL_SPRINT_COST_RANGE 0.8
-#define MINIMUM_STAMINA_RECOVERY 2
-#define MAXIMUM_STAMINA_RECOVERY 6
+#define MINIMUM_SPRINT_COST 0.85	//The part of sprint cost that everyone gets
+#define SKILL_SPRINT_COST_RANGE 0.775	//The part of sprint cost that is affected by athletics
+#define MINIMUM_STAMINA_RECOVERY 1.75
+#define MAXIMUM_STAMINA_RECOVERY 5
