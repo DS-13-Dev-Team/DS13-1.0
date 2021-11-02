@@ -22,6 +22,6 @@ SUBSYSTEM_DEF(craft)
 		if(!(CR.category in categories))
 			categories[CR.category] = list()
 		categories[CR.category] += CR
+		if(CR.result)
+			get_craft_item(CR.result)
 		CHECK_TICK
-
-

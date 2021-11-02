@@ -42,7 +42,7 @@
 	current_value = 5 //5 points free to start with
 	max_value = 15
 	regen = (1 SECOND) / (1 MINUTE)	//One point regenerated per minute
-	meter_type = /obj/screen/meter/resource/essence
+	meter_type = /atom/movable/screen/meter/resource/essence
 	var/list/selected_essence_ability	//Used by infector, this is a list containing the type and parameters of the essence ability we have selected
 
 

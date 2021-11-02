@@ -127,7 +127,7 @@ var/list/mob_hat_cache = list()
 
 	..()
 
-	add_verb(src, /mob/living/proc/hide)
+	add_verb(src, /mob/living/proc/hide_mob)
 	remove_language("Robot Talk")
 	add_language("Robot Talk", 0)
 	add_language("Drone Talk", 1)

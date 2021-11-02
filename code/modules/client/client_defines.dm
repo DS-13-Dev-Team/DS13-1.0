@@ -79,7 +79,7 @@
 	--------------------------------*/
 	var/view_offset_magnitude	//Cached when view offset is set
 
-	var/obj/screen/click_catcher/void = null
+	var/atom/movable/screen/click_catcher/void = null
 
 	//Static framerate
 	fps = 50

@@ -16,8 +16,8 @@
 
 	src.hotkeybuttons = list() //These can be disabled for hotkey usersx
 
-	var/obj/screen/using
-	var/obj/screen/inventory/inv_box
+	var/atom/movable/screen/using
+	var/atom/movable/screen/inventory/inv_box
 
 	stamina_bar = new
 	infodisplay += stamina_bar
@@ -26,7 +26,7 @@
 	var/has_hidden_gear
 	for(var/gear_slot in hud_data.gear)
 
-		inv_box = new /obj/screen/inventory()
+		inv_box = new /atom/movable/screen/inventory()
 		inv_box.icon = ui_style
 		inv_box.color = ui_color
 		inv_box.alpha = ui_alpha
@@ -47,7 +47,7 @@
 			static_inventory += inv_box
 
 	if(has_hidden_gear)
-		using = new /obj/screen/toggle_inv()
+		using = new /atom/movable/screen/toggle_inv()
 		using.icon = ui_style
 		using.color = ui_color
 		using.alpha = ui_alpha
@@ -56,20 +56,20 @@
 	// Draw the attack intent dialogue.
 	if(hud_data.has_a_intent)
 
-		action_intent = new /obj/screen/intent(owner)
+		action_intent = new /atom/movable/screen/intent(owner)
 		static_inventory += action_intent
 
 	if(hud_data.has_healthbar)
 
-		hud_healthbar = new /obj/screen/meter/health(owner, src)
+		hud_healthbar = new /atom/movable/screen/meter/health(owner, src)
 		infodisplay += hud_healthbar
 
 	if(hud_data.has_resources)
-		hud_resource = new /obj/screen/meter/resource/essence(owner, src)
+		hud_resource = new /atom/movable/screen/meter/resource/essence(owner, src)
 		infodisplay += hud_resource
 
 	if(hud_data.has_m_intent)
-		move_intent = new /obj/screen/movement()
+		move_intent = new /atom/movable/screen/movement()
 		move_intent.SetName("movement method")
 		move_intent.icon = ui_style
 		move_intent.icon_state = mymob.move_intent.hud_icon_state
@@ -79,7 +79,7 @@
 		static_inventory += move_intent
 
 	if(hud_data.has_drop)
-		using = new /obj/screen()
+		using = new /atom/movable/screen()
 		using.SetName("drop")
 		using.icon = ui_style
 		using.icon_state = "act_drop"
@@ -90,7 +90,7 @@
 
 	if(hud_data.has_hands)
 
-		using = new /obj/screen()
+		using = new /atom/movable/screen()
 		using.SetName("equip")
 		using.icon = ui_style
 		using.icon_state = "act_equip"
@@ -99,7 +99,7 @@
 		using.alpha = ui_alpha
 		static_inventory += using
 
-		inv_box = new /obj/screen/inventory/hand/right()
+		inv_box = new /atom/movable/screen/inventory/hand/right()
 		inv_box.icon = ui_style
 		if(owner && !owner.hand)	//This being 0 or null means the right hand is in use
 			inv_box.add_overlay("hand_active")
@@ -109,7 +109,7 @@
 		r_hand_hud_object = inv_box
 		static_inventory += inv_box
 
-		inv_box = new /obj/screen/inventory/hand()
+		inv_box = new /atom/movable/screen/inventory/hand()
 		inv_box.setDir(EAST)
 		inv_box.icon = ui_style
 		if(owner?.hand)	//This being 1 means the left hand is in use
@@ -120,20 +120,20 @@
 		l_hand_hud_object = inv_box
 		static_inventory += inv_box
 
-		using = new /obj/screen/swap_hand/human()
+		using = new /atom/movable/screen/swap_hand/human()
 		using.icon = ui_style
 		using.color = ui_color
 		using.alpha = ui_alpha
 		static_inventory += using
 
-		using = new /obj/screen/swap_hand/right()
+		using = new /atom/movable/screen/swap_hand/right()
 		using.icon = ui_style
 		using.color = ui_color
 		using.alpha = ui_alpha
 		static_inventory += using
 
 	if(hud_data.has_resist)
-		using = new /obj/screen()
+		using = new /atom/movable/screen()
 		using.SetName("resist")
 		using.icon = ui_style
 		using.icon_state = "act_resist"
@@ -145,7 +145,7 @@
 
 
 	if(hud_data.has_throw)
-		throw_icon = new /obj/screen()
+		throw_icon = new /atom/movable/screen()
 		throw_icon.icon = ui_style
 		throw_icon.icon_state = "act_throw_off"
 		throw_icon.SetName("throw")
@@ -154,7 +154,7 @@
 		throw_icon.alpha = ui_alpha
 		hotkeybuttons += throw_icon
 
-		pullin = new /obj/screen()
+		pullin = new /atom/movable/screen()
 		pullin.icon = ui_style
 		pullin.icon_state = "pull0"
 		pullin.SetName("pull")
@@ -162,7 +162,7 @@
 		hotkeybuttons += pullin
 
 	if(hud_data.has_internals)
-		internals = new /obj/screen()
+		internals = new /atom/movable/screen()
 		internals.icon = ui_style
 		internals.icon_state = "internal0"
 		internals.SetName("internal")
@@ -170,33 +170,33 @@
 		infodisplay += internals
 
 	if(hud_data.has_warnings)
-		oxygen = new /obj/screen()
+		oxygen = new /atom/movable/screen()
 		oxygen.icon = ui_style
 		oxygen.icon_state = "oxy0"
 		oxygen.SetName("oxygen")
 		oxygen.screen_loc = ui_oxygen
 		infodisplay += oxygen
 
-		toxin = new /obj/screen()
+		toxin = new /atom/movable/screen()
 		toxin.icon = ui_style
 		toxin.icon_state = "tox0"
 		toxin.SetName("toxin")
 		toxin.screen_loc = ui_toxin
 		infodisplay += toxin
 
-		fire = new /obj/screen()
+		fire = new /atom/movable/screen()
 		fire.icon = ui_style
 		fire.icon_state = "fire0"
 		fire.SetName("fire")
 		fire.screen_loc = ui_fire
 		infodisplay += fire
 
-		healths = new /obj/screen/health_doll/human(mymob)
+		healths = new /atom/movable/screen/health_doll/human(mymob)
 		healths.icon = ui_style
 		infodisplay += healths
 
 	if(hud_data.has_pressure)
-		pressure = new /obj/screen()
+		pressure = new /atom/movable/screen()
 		pressure.icon = ui_style
 		pressure.icon_state = "pressure0"
 		pressure.SetName("pressure")
@@ -204,7 +204,7 @@
 		infodisplay += pressure
 
 	if(hud_data.has_bodytemp)
-		bodytemp = new /obj/screen()
+		bodytemp = new /atom/movable/screen()
 		bodytemp.icon = ui_style
 		bodytemp.icon_state = "temp1"
 		bodytemp.SetName("body temperature")
@@ -212,7 +212,7 @@
 		infodisplay += bodytemp
 
 	if(target.isSynthetic())
-		target.cells = new /obj/screen()
+		target.cells = new /atom/movable/screen()
 		target.cells.icon = 'icons/hud/screen1_robot.dmi'
 		target.cells.icon_state = "charge-empty"
 		target.cells.SetName("cell")
@@ -220,14 +220,14 @@
 		infodisplay += target.cells
 
 	else if(hud_data.has_nutrition)
-		nutrition_icon = new /obj/screen()
+		nutrition_icon = new /atom/movable/screen()
 		nutrition_icon.icon = ui_style
 		nutrition_icon.icon_state = "nutrition0"
 		nutrition_icon.SetName("nutrition")
 		nutrition_icon.screen_loc = ui_nutrition
 		infodisplay += nutrition_icon
 
-	zone_sel = new /obj/screen/zone_sel( null )
+	zone_sel = new /atom/movable/screen/zone_sel( null )
 	zone_sel.icon = ui_style
 	zone_sel.color = ui_color
 	zone_sel.alpha = ui_alpha
@@ -237,14 +237,14 @@
 
 	//Handle the gun settings buttons
 	if(hud_data.has_guns)
-		gun_setting_icon = new /obj/screen/gun/mode(null)
+		gun_setting_icon = new /atom/movable/screen/gun/mode(null)
 		gun_setting_icon.icon = ui_style
 		gun_setting_icon.color = ui_color
 		gun_setting_icon.alpha = ui_alpha
 		static_inventory += gun_setting_icon
 		//FAIL POINT 1
 
-	for(var/obj/screen/inventory/inv in (static_inventory + toggleable_inventory))
+	for(var/atom/movable/screen/inventory/inv in (static_inventory + toggleable_inventory))
 		if(inv.slot_id)
 			inv.hud = src
 			inv_slots[TOBITSHIFT(inv.slot_id) + 1] = inv
@@ -383,6 +383,6 @@
 		client.screen -= hud_used.hotkeybuttons
 		hud_used.hotkey_ui_hidden = 1
 
-/obj/screen/movement/Click(var/location, var/control, var/params)
+/atom/movable/screen/movement/Click(var/location, var/control, var/params)
 	if(istype(usr))
 		usr.set_next_usable_move_intent()

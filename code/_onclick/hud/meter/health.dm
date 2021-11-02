@@ -1,7 +1,7 @@
 /*
 	The healthbar is displayed along the top of the client's screen
 */
-/obj/screen/meter/health
+/atom/movable/screen/meter/health
 	name = "healthbar"
 
 	alpha = 200
@@ -18,18 +18,18 @@
 	"400" = 0.3)
 
 
-/obj/screen/meter/health/Destroy()
+/atom/movable/screen/meter/health/Destroy()
 	L = null
 	GLOB.updatehealth_event.unregister(L, src, .proc/update)
 	.=..()
 
-/obj/screen/meter/health/Initialize()
+/atom/movable/screen/meter/health/Initialize()
 	. = ..()
 	GLOB.updatehealth_event.register(L, src, .proc/update)
 	set_health()
 
 
-/obj/screen/meter/health/proc/set_health()
+/atom/movable/screen/meter/health/proc/set_health()
 
 	if (total_value != L.max_health)
 		total_value = L.max_health
@@ -40,7 +40,7 @@
 
 		set_size()
 
-/obj/screen/meter/health/get_data()
+/atom/movable/screen/meter/health/get_data()
 	var/list/data = L.get_health_report()
 	data["current"]	=	data["max"]	-	data["damage"]
 	return data

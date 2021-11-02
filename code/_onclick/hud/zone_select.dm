@@ -14,13 +14,13 @@
 		if (!precise && (. in list(BP_MOUTH,BP_EYES)))
 			. = BP_HEAD
 
-/obj/screen/zone_sel
+/atom/movable/screen/zone_sel
 	name = "damage zone"
 	icon_state = "zone_sel"
 	screen_loc = ui_zonesel
 	var/selecting = BP_CHEST
 
-/obj/screen/zone_sel/Click(location, control,params)
+/atom/movable/screen/zone_sel/Click(location, control,params)
 	var/list/PL = params2list(params)
 	var/icon_x = text2num(PL["icon-x"])
 	var/icon_y = text2num(PL["icon-y"])
@@ -81,12 +81,12 @@
 	set_selected_zone(newselect)
 	return 1
 
-/obj/screen/zone_sel/proc/set_selected_zone(bodypart)
+/atom/movable/screen/zone_sel/proc/set_selected_zone(bodypart)
 	var/old_selecting = selecting
 	selecting = bodypart
 	if(old_selecting != selecting)
 		update_icon()
 
-/obj/screen/zone_sel/update_icon()
+/atom/movable/screen/zone_sel/update_icon()
 	overlays.Cut()
 	overlays += image('icons/hud/zone_sel.dmi', "[selecting]")

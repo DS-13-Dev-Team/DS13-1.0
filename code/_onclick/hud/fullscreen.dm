@@ -11,7 +11,7 @@
 	addtimer(CALLBACK(src, .proc/clear_fullscreen, category, animated), duration)
 
 /mob/proc/overlay_fullscreen(category, type, severity)
-	var/obj/screen/fullscreen/screen = screens[category]
+	var/atom/movable/screen/fullscreen/screen = screens[category]
 	if (!screen || screen.type != type)
 		// needs to be recreated
 		clear_fullscreen(category, FALSE)
@@ -29,7 +29,7 @@
 	return screen
 
 /mob/proc/clear_fullscreen(category, animated = 10)
-	var/obj/screen/fullscreen/screen = screens[category]
+	var/atom/movable/screen/fullscreen/screen = screens[category]
 	if(!screen)
 		return
 
@@ -43,7 +43,7 @@
 			client.screen -= screen
 		qdel(screen)
 
-/mob/proc/clear_fullscreen_after_animate(obj/screen/fullscreen/screen)
+/mob/proc/clear_fullscreen_after_animate(atom/movable/screen/fullscreen/screen)
 	if(client)
 		client.screen -= screen
 	qdel(screen)
@@ -59,7 +59,7 @@
 
 /mob/proc/reload_fullscreens()
 	if(client)
-		var/obj/screen/fullscreen/screen
+		var/atom/movable/screen/fullscreen/screen
 		for(var/category in screens)
 			screen = screens[category]
 			if(SHOULD_SHOW_TO(src, screen))
@@ -68,7 +68,7 @@
 			else
 				client.screen -= screen
 
-/obj/screen/fullscreen
+/atom/movable/screen/fullscreen
 	icon = 'icons/hud/screen_full.dmi'
 	icon_state = "default"
 	screen_loc = "BOTTOMLEFT"
@@ -79,17 +79,17 @@
 	var/show_when_dead = FALSE
 
 
-/obj/screen/fullscreen/Destroy()
+/atom/movable/screen/fullscreen/Destroy()
 	severity = 0
 	hud = null
 	return ..()
 
-/obj/screen/fullscreen/proc/update_for_view(client_view)
+/atom/movable/screen/fullscreen/proc/update_for_view(client_view)
 	if (fs_view != client_view)
 		fs_view = client_view
 		icon = get_or_create_fullscreen(client_view)
 
-/obj/screen/fullscreen/proc/get_or_create_fullscreen(client_view)
+/atom/movable/screen/fullscreen/proc/get_or_create_fullscreen(client_view)
 	var/list/view_list = getviewsize(client_view)
 	var/pixels_x = view_list[1]*world.icon_size
 	var/pixels_y = view_list[2]*world.icon_size
@@ -99,34 +99,34 @@
 		GLOB.fullscreen_icons[entry_name] = rescale_icon(icon, pixels_x, pixels_y)
 	return GLOB.fullscreen_icons[entry_name] //Then return it
 
-/obj/screen/fullscreen/brute
+/atom/movable/screen/fullscreen/brute
 	icon_state = "brutedamageoverlay"
 	layer = DAMAGE_LAYER
 
-/obj/screen/fullscreen/oxy
+/atom/movable/screen/fullscreen/oxy
 	icon_state = "oxydamageoverlay"
 	layer = DAMAGE_LAYER
 
-/obj/screen/fullscreen/crit
+/atom/movable/screen/fullscreen/crit
 	icon_state = "passage"
 	layer = CRIT_LAYER
 
-/obj/screen/fullscreen/blind
+/atom/movable/screen/fullscreen/blind
 	icon_state = "blackimageoverlay"
 	layer = DAMAGE_LAYER
 
-/obj/screen/fullscreen/impaired
+/atom/movable/screen/fullscreen/impaired
 	icon_state = "impairedoverlay"
 	layer = IMPAIRED_LAYER
 
-/obj/screen/fullscreen/flash/noise
+/atom/movable/screen/fullscreen/flash/noise
 	icon_state = "noise"
 
-/obj/screen/fullscreen/fishbed
+/atom/movable/screen/fullscreen/fishbed
 	icon_state = "fishbed"
 	show_when_dead = TRUE
 
-/obj/screen/fullscreen/pain
+/atom/movable/screen/fullscreen/pain
 	icon_state = "brutedamageoverlay6"
 	alpha = 0
 
@@ -134,7 +134,7 @@
 
 //Small icons
 //-------------------------
-/obj/screen/fullscreen/blackout
+/atom/movable/screen/fullscreen/blackout
 	icon = 'icons/hud/screen1.dmi'
 	icon_state = "black"
 	screen_loc = "WEST,SOUTH to EAST,NORTH"
@@ -142,31 +142,31 @@
 
 
 
-/obj/screen/fullscreen/blurry
+/atom/movable/screen/fullscreen/blurry
 	icon = 'icons/hud/screen1.dmi'
 	screen_loc = "WEST,SOUTH to EAST,NORTH"
 	icon_state = "blurry"
 
-/obj/screen/fullscreen/flash
+/atom/movable/screen/fullscreen/flash
 	icon = 'icons/hud/screen1.dmi'
 	screen_loc = "WEST,SOUTH to EAST,NORTH"
 	icon_state = "flash"
 
 
 
-/obj/screen/fullscreen/high
+/atom/movable/screen/fullscreen/high
 	icon = 'icons/hud/screen1.dmi'
 	screen_loc = "WEST,SOUTH to EAST,NORTH"
 	icon_state = "druggy"
 
-/obj/screen/fullscreen/noise
+/atom/movable/screen/fullscreen/noise
 	icon = 'icons/effects/static.dmi'
 	icon_state = "1 light"
 	screen_loc = ui_entire_screen
 	layer = FULLSCREEN_LAYER
 	alpha = 127
 
-/obj/screen/fullscreen/fadeout
+/atom/movable/screen/fullscreen/fadeout
 	icon = 'icons/hud/screen1.dmi'
 	icon_state = "black"
 	screen_loc = ui_entire_screen
@@ -174,11 +174,11 @@
 	alpha = 0
 	show_when_dead = TRUE
 
-/obj/screen/fullscreen/fadeout/Initialize()
+/atom/movable/screen/fullscreen/fadeout/Initialize()
 	. = ..()
 	animate(src, alpha = 255, time = 10)
 
-/obj/screen/fullscreen/scanline
+/atom/movable/screen/fullscreen/scanline
 	icon = 'icons/effects/static.dmi'
 	icon_state = "scanlines"
 	screen_loc = ui_entire_screen

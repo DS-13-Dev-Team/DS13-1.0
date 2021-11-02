@@ -224,6 +224,8 @@ SUBSYSTEM_DEF(database)
 		//Cache this
 		unknown_designs	=	designs
 
+	else
+		SSdatabase.known_designs = designs
 
 	//And now reload the database for individual stores
 	load_store_database()

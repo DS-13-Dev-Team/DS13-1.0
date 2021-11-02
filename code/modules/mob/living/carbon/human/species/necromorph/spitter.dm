@@ -2,7 +2,7 @@
 /datum/species/necromorph/slasher/spitter
 	name = SPECIES_NECROMORPH_SPITTER
 	name_plural = "Spitters"
-	total_health = 65
+	total_health = 72
 	biomass = 55
 	mass = 45
 	view_range = 8

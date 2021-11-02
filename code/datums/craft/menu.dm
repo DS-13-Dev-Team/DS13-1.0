@@ -51,9 +51,11 @@
 	data["cur_item"] = null
 
 	if(CR)
+		var/datum/asset/spritesheet/sheet = get_asset_datum(/datum/asset/spritesheet/craft)
+		var/list/result_item = get_craft_item(CR.result)
 		data["cur_item"] = list(
 			"name" = CR.name,
-			"icon" = sanitizeFileName("[CR.result].png"),
+			"icon" = sheet.icon_tag(sanitizeFileName(result_item["name"])),
 			"ref"  = "\ref[CR]",
 			"desc" = CR.get_description(),
 			"steps" = CR.get_step_descriptions()
@@ -69,10 +71,11 @@
 
 	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
-		var/datum/asset/assets = get_asset_datum(/datum/asset/simple/craft)
-		assets.send(user)
+		var/datum/asset/spritesheet/sheet = get_asset_datum(/datum/asset/spritesheet/craft)
+		sheet.send(user)
 		ui = new(user, src, ui_key, "craft.tmpl", "[src]", 800, 450, state = state)
 		ui.set_initial_data(data)
+		ui.add_stylesheet(sheet)
 		ui.open()
 
 /datum/nano_module/craft/Topic(href, href_list)

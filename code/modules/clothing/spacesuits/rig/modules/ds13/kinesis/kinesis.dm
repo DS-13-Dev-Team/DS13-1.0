@@ -404,7 +404,7 @@
 */
 //Main release proc, drops the item but does nothing with it
 /obj/item/rig_module/kinesis/proc/release()
-	.=subject
+	. = subject
 	if (!QDELETED(subject))
 		GLOB.destroyed_event.unregister(subject, src, /obj/item/rig_module/kinesis/proc/release_grip)
 		GLOB.bump_event.unregister(subject, src, /obj/item/rig_module/kinesis/proc/subject_collision)
@@ -433,7 +433,8 @@
 //The default entrypoint, a wrapper for release
 //If the item is not in control range, it will be thrown based upon its velocity
 /obj/item/rig_module/kinesis/proc/release_grip()
-	var/speed = velocity.Magnitude()
+	//Precondition: Velocity must exist.
+	var/speed = (velocity != null) ? velocity.Magnitude() : 0
 	if (speed > 1 && release_type == RELEASE_DROP)
 		release_type = RELEASE_THROW
 
@@ -489,6 +490,9 @@
 
 	target_direction.SelfNormalize()
 	target_direction.SelfMultiply(acceleration)
+	//Precondition: Velocity must exist.
+	if(velocity == null)
+		velocity = get_new_vector(0,0)
 	velocity.SelfAdd(target_direction)
 
 	var/speed = velocity.Magnitude()
