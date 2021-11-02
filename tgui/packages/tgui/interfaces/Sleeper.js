@@ -98,7 +98,7 @@ const SleeperOccupant = (props, context) => {
             content="Eject"
             onClick={() => act('ejectify')}
           />
-          <Box inline="display">Stasis Level:</Box>
+          <Box inline>Stasis Level:</Box>
           <NumberInput
             minValue={0}
             maxValue={5}

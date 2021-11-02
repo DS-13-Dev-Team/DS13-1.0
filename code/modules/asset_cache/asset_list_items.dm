@@ -189,3 +189,43 @@ proc/get_craft_item(path)
 		handle_pending_loadouts()
 
 	.=..()
+
+/datum/asset/simple/chem_master
+	keep_local_name = TRUE
+	assets = list("pillA.png" = icon('icons/obj/chemical.dmi', "pillA"))
+
+/datum/asset/simple/chem_master/register()
+	for(var/i = 1 to 25)
+		assets["pill[i].png"] = icon('icons/obj/chemical.dmi', "pill[i]")
+	for(var/i = 1 to 4)
+		assets["bottle-[i].png"] = icon('icons/obj/chemical.dmi', "bottle-[i]")
+	.=..()
+
+/datum/asset/spritesheet/simple/pill_bottles
+	name = "pill_bottles"
+
+/datum/asset/spritesheet/simple/pill_bottles/register()
+	var/list/pill_bottle_wrappers = list(
+		COLOR_RED = "Red",
+		COLOR_GREEN = "Green",
+		COLOR_PALE_BTL_GREEN = "Pale_Green",
+		COLOR_BLUE = "Blue",
+		COLOR_CYAN_BLUE = "Light_Blue",
+		COLOR_TEAL = "Teal",
+		COLOR_YELLOW = "Yellow",
+		COLOR_ORANGE = "Orange",
+		COLOR_PINK = "Pink",
+		COLOR_MAROON = "Brown"
+	)
+	var/obj/item/weapon/storage/pill_bottle/PB = new()
+	var/icon/I = getFlatIcon(PB)
+	I.Scale(96, 96)
+	assets = list("Default_pill_bottle" = I)
+	for(var/A in pill_bottle_wrappers)
+		PB.wrapper_color = A
+		PB.update_icon()
+		I = getFlatIcon(PB)
+		I.Scale(96, 96)
+		assets["[pill_bottle_wrappers[A]]_pill_bottle"] = I
+	qdel(PB)
+	.=..()

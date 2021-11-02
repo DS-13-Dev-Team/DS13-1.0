@@ -68,5 +68,9 @@
 #define IGNORE_MOB_SIZE 0x1
 #define AFFECTS_DEAD    0x2
 
-#define HANDLE_REACTIONS(_reagents)  SSchemistry.active_holders[_reagents] = TRUE
-#define UNQUEUE_REACTIONS(_reagents) SSchemistry.active_holders -= _reagents
+#define MAX_PILL_SPRITE 25 //max icon state of the pill sprites
+#define MAX_BOTTLE_SPRITE 4 //max icon state of the pill sprites
+#define MAX_MULTI_AMOUNT 20 // Max number of pills/patches that can be made at once
+#define MAX_UNITS_PER_PILL 60 // Max amount of units in a pill
+#define MAX_UNITS_PER_BOTTLE 60 // Max amount of units in a bottle (it's volume)
+#define MAX_CUSTOM_NAME_LEN 20 // Max length of a custom pill/condiment/whatever
