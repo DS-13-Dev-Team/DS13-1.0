@@ -213,17 +213,19 @@
 /obj/item/weapon/rig/proc/attempt_install(var/obj/item/rig_module/RM, var/mob/user, var/force = FALSE, var/instant = FALSE, var/delete_replaced = FALSE, var/selfchecks = TRUE)
 
 	if(selfchecks && is_worn() && !can_modify() && !force)
-		to_chat(user, "<span class='danger'>You can't install a RIG module while the suit is being worn.</span>")
+		if(user)
+			to_chat(user, "<span class='danger'>You can't install a RIG module while the suit is being worn.</span>")
 		return FALSE
 
 
 	var/list/replaced
-	if (!RM.can_install(src, user, TRUE))
+	if (!RM.can_install(src))
 		RM.resolve_installation_upgrade(src, FALSE, force)
 
 		//If force is enabled, we check again with conflict detection turned off
-		if (!RM.can_install(src, user, FALSE))
-			to_chat(user, "The RIG already has a module of that class installed.")
+		if (!RM.can_install(src, !force))
+			if(user)
+				to_chat(user, "The RIG already has a module of that class installed.")
 			return FALSE
 
 	if (user)

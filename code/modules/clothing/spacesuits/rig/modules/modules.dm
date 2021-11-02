@@ -205,7 +205,7 @@
 	. = ..()
 
 
-/obj/item/rig_module/proc/can_install(var/obj/item/weapon/rig/rig, var/mob/user, var/feedback = FALSE, var/check_conflict = TRUE)
+/obj/item/rig_module/proc/can_install(var/obj/item/weapon/rig/rig, var/check_conflict = TRUE)
 	if (!redundant && check_conflict)
 		if (get_conflicting(rig))
 			return FALSE
