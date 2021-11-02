@@ -20,8 +20,8 @@ client
 	LAZYINITLIST(credits)
 
 	if(mob)
-		mob.overlay_fullscreen("fishbed",/obj/screen/fullscreen/fishbed)
-		mob.overlay_fullscreen("fadeout",/obj/screen/fullscreen/fadeout)
+		mob.overlay_fullscreen("fishbed",/atom/movable/screen/fullscreen/fishbed)
+		mob.overlay_fullscreen("fadeout",/atom/movable/screen/fullscreen/fadeout)
 
 	sleep(50)
 	var/list/_credits = credits
@@ -29,7 +29,7 @@ client
 	for(var/I in GLOB.end_titles)
 		if(!credits)
 			return
-		var/obj/screen/credit/T = new(null, I, src)
+		var/atom/movable/screen/credit/T = new(null, I, src)
 		_credits += T
 		T.rollem()
 		sleep(CREDIT_SPAWN_SPEED)
@@ -47,7 +47,7 @@ client
 	mob.clear_fullscreen("fadeout")
 	SEND_SOUND(mob, sound(null, channel = GLOB.lobby_sound_channel))
 
-/obj/screen/credit
+/atom/movable/screen/credit
 	icon_state = "blank"
 	mouse_opacity = 0
 	alpha = 0
@@ -57,14 +57,14 @@ client
 	var/client/parent
 	var/matrix/target
 
-/obj/screen/credit/Initialize(mapload, credited, client/P)
+/atom/movable/screen/credit/Initialize(mapload, credited, client/P)
 	. = ..()
 	parent = P
 	maptext = credited
 	maptext_height = world.icon_size * 2
 	maptext_width = world.icon_size * 14
 
-/obj/screen/credit/proc/rollem()
+/atom/movable/screen/credit/proc/rollem()
 	var/matrix/M = matrix(transform)
 	M.Translate(0, CREDIT_ANIMATE_HEIGHT)
 	animate(src, transform = M, time = CREDIT_ROLL_SPEED)
@@ -77,7 +77,7 @@ client
 			qdel(src)
 	parent.screen += src
 
-/obj/screen/credit/Destroy()
+/atom/movable/screen/credit/Destroy()
 	var/client/P = parent
 	if(parent)
 		P.screen -= src

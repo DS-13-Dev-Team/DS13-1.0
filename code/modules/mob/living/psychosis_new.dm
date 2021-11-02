@@ -112,7 +112,7 @@ Method to cripple the victim with insanity effects. Calls recursively via timers
 			user.visible_message("<span class='warning'><b>[user]</b> looks around wildly!</span>","<span class='warning'>You feel your eyes darting around to faraway places...</span>")
 			user.adjust_hallucination(20,20)
 		if(PSYCHOSIS_EFFECT_WEIRDSCREEN)
-			user.overlay_fullscreen("insane", /obj/screen/fullscreen/insane)
+			user.overlay_fullscreen("insane", /atom/movable/screen/fullscreen/insane)
 	psychosis_timer = addtimer(CALLBACK(src, /datum/extension/psychosis/proc/apply_psychosis_effects), rand(0, duration/2), TIMER_STOPPABLE) //Call recursively. Delay from 0 seconds to half the duration, so that theyre always guaranteed to get one psychosis effect.
 	return TRUE
 /**
@@ -131,7 +131,7 @@ Method to finish up the psychosis effects, clear any screen effects we put on th
 /datum/extension/psychosis/Destroy()
 	.=..()
 
-/obj/screen/fullscreen/insane
+/atom/movable/screen/fullscreen/insane
 	icon_state = "insane"
 	layer = DAMAGE_LAYER
 	alpha = 180

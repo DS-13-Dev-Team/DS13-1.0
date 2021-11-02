@@ -17,31 +17,35 @@
 	var/show_intent_icons = FALSE
 	var/hotkey_ui_hidden = FALSE	//This is to hide the buttons that can be used via hotkeys. (hotkeybuttons list of buttons)
 
-	var/obj/screen/lingchemdisplay
-	var/obj/screen/r_hand_hud_object
-	var/obj/screen/l_hand_hud_object
-	var/obj/screen/intent/action_intent
-	var/obj/screen/move_intent
-	var/obj/screen/stamina/stamina_bar
-	var/obj/screen/meter/health/hud_healthbar
-	var/obj/screen/meter/resource/hud_resource
-	var/obj/screen/hands
-	var/obj/screen/pullin
-	var/obj/screen/purged
-	var/obj/screen/internals
-	var/obj/screen/oxygen
-	var/obj/screen/i_select
-	var/obj/screen/m_select
-	var/obj/screen/toxin
-	var/obj/screen/fire
-	var/obj/screen/bodytemp
-	var/obj/screen/healths
-	var/obj/screen/throw_icon
-	var/obj/screen/nutrition_icon
-	var/obj/screen/pressure
-	var/obj/screen/gun/mode/gun_setting_icon
+	var/atom/movable/screen/lingchemdisplay
+	var/atom/movable/screen/r_hand_hud_object
+	var/atom/movable/screen/l_hand_hud_object
+	var/atom/movable/screen/intent/action_intent
+	var/atom/movable/screen/move_intent
+	var/atom/movable/screen/stamina/stamina_bar
+	var/atom/movable/screen/meter/health/hud_healthbar
+	var/atom/movable/screen/meter/resource/hud_resource
+	var/atom/movable/screen/hands
+	var/atom/movable/screen/pullin
+	var/atom/movable/screen/purged
+	var/atom/movable/screen/internals
+	var/atom/movable/screen/oxygen
+	var/atom/movable/screen/i_select
+	var/atom/movable/screen/m_select
+	var/atom/movable/screen/toxin
+	var/atom/movable/screen/fire
+	var/atom/movable/screen/bodytemp
+	var/atom/movable/screen/healths
+	var/atom/movable/screen/throw_icon
+	var/atom/movable/screen/nutrition_icon
+	var/atom/movable/screen/pressure
+	var/atom/movable/screen/gun/mode/gun_setting_icon
 
-	var/obj/screen/movable/ability_master/ability_master
+	var/atom/movable/screen/movable/ability_master/ability_master
+
+	var/list/atom/movable/screen/plane_master/plane_masters = list() // see "appearance_flags" in the ref, assoc list of "[plane]" = object
+	///Assoc list of controller groups, associated with key string group name with value of the plane master controller ref
+	var/list/atom/movable/plane_master_controller/plane_master_controllers = list()
 
 	/*A bunch of this stuff really needs to go under their own defines instead of being globally attached to mob.
 	A variable should only be globally attached to turfs/objects/whatever, when it is in fact needed as such.
@@ -49,15 +53,15 @@
 	I'll make some notes on where certain variable defines should probably go.
 	Changing this around would probably require a good look-over the pre-existing code.
 	*/
-	var/obj/screen/zone_sel/zone_sel
+	var/atom/movable/screen/zone_sel/zone_sel
 
 	var/list/static_inventory = list() //the screen objects which are static
 	var/list/toggleable_inventory = list() //the screen objects which can be hidden
-	var/list/obj/screen/hotkeybuttons = list() //the buttons that can be used via hotkeys
+	var/list/atom/movable/screen/hotkeybuttons = list() //the buttons that can be used via hotkeys
 	var/list/infodisplay = list() //the screen objects that display mob info (health, alien plasma, etc...)
 	var/list/inv_slots[SLOTS_AMT] // /atom/movable/screen/inventory objects, ordered by their slot ID.
 
-	var/obj/screen/movable/action_button/hide_toggle/hide_actions_toggle
+	var/atom/movable/screen/movable/action_button/hide_toggle/hide_actions_toggle
 	var/action_buttons_hidden = 0
 
 	// subtypes can override this to force a specific UI style
@@ -76,7 +80,16 @@
 	if (!ui_alpha)
 		ui_alpha = mymob.client?.prefs?.UI_style_alpha
 
-	ability_master = new /obj/screen/movable/ability_master(null,mymob)
+	ability_master = new /atom/movable/screen/movable/ability_master(null,mymob)
+
+	for(var/mytype in subtypesof(/atom/movable/screen/plane_master))
+		var/atom/movable/screen/plane_master/instance = new mytype()
+		plane_masters["[instance.plane]"] = instance
+		instance.backdrop(mymob)
+
+	for(var/mytype in subtypesof(/atom/movable/plane_master_controller))
+		var/atom/movable/plane_master_controller/controller_instance = new mytype(null,src)
+		plane_master_controllers[controller_instance.name] = controller_instance
 
 /datum/hud/Destroy()
 	if(mymob.hud_used == src)

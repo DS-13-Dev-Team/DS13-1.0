@@ -52,7 +52,7 @@
 	..(newloc)
 
 	add_language("Cortical Link")
-	add_verb(src, list(/mob/living/proc/ventcrawl, /mob/living/proc/hide))
+	add_verb(src, list(/mob/living/proc/ventcrawl, /mob/living/proc/hide_mob))
 
 	generation = gen
 	truename = "[borer_names[min(generation, borer_names.len)]] [random_id("borer[generation]", 1000, 9999)]"

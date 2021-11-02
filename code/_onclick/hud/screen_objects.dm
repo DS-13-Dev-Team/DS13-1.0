@@ -6,13 +6,12 @@
 	They are used with the client/screen list and the screen_loc var.
 	For more information, see the byond documentation on the screen_loc and screen vars.
 */
-/obj/screen
+/atom/movable/screen
 	name = ""
 	icon = 'icons/hud/screen1.dmi'
 	plane = HUD_PLANE
 	layer = HUD_BASE_LAYER
 	appearance_flags = NO_CLIENT_COLOR
-	unacidable = 1
 	var/obj/master = null    //A reference to the object in the slot. Grabs or items, generally.
 	var/globalscreen = FALSE //Global screens are not qdeled when the holding mob is destroyed.
 	can_block_movement = FALSE	//This can never be on a turf
@@ -20,11 +19,11 @@
 	/// A reference to the owner HUD, if any.
 	var/datum/hud/hud = null
 
-/obj/screen/Destroy()
+/atom/movable/screen/Destroy()
 	master = null
 	return ..()
 
-/obj/screen/text
+/atom/movable/screen/text
 	icon = null
 	icon_state = null
 	mouse_opacity = 0
@@ -33,7 +32,7 @@
 	maptext_width = 480
 
 
-/obj/screen/inventory
+/atom/movable/screen/inventory
 	/// The identifier for the slot. It has nothing to do with ID cards.
 	var/slot_id
 	/// Icon when empty. For now used only by humans.
@@ -43,7 +42,7 @@
 	/// The overlay when hovering over with an item in your hand
 	var/image/object_overlay
 
-/obj/screen/inventory/Click(location, control, params)
+/atom/movable/screen/inventory/Click(location, control, params)
 	// At this point in client Click() code we have passed the 1/10 sec check and little else
 	// We don't even know if it's a middle click
 	if(world.time <= usr.next_move)
@@ -65,16 +64,16 @@
 		usr.update_inv_r_hand(0)
 	return TRUE
 
-/obj/screen/inventory/MouseEntered(location, control, params)
+/atom/movable/screen/inventory/MouseEntered(location, control, params)
 	. = ..()
 	add_overlays()
 
-/obj/screen/inventory/MouseExited()
+/atom/movable/screen/inventory/MouseExited()
 	..()
 	cut_overlay(object_overlay)
 	QDEL_NULL(object_overlay)
 
-/obj/screen/inventory/proc/add_overlays()
+/atom/movable/screen/inventory/proc/add_overlays()
 	var/mob/user = hud?.mymob
 
 	if(!user || !slot_id)
@@ -97,10 +96,10 @@
 	object_overlay = item_overlay
 	add_overlay(object_overlay)
 
-/obj/screen/close
+/atom/movable/screen/close
 	name = "close"
 
-/obj/screen/close/Click()
+/atom/movable/screen/close/Click()
 	if(master)
 		if(istype(master, /obj/item/weapon/storage))
 			var/obj/item/weapon/storage/S = master
@@ -108,14 +107,14 @@
 	return 1
 
 
-/obj/screen/item_action
+/atom/movable/screen/item_action
 	var/obj/item/owner
 
-/obj/screen/item_action/Destroy()
+/atom/movable/screen/item_action/Destroy()
 	..()
 	owner = null
 
-/obj/screen/item_action/Click()
+/atom/movable/screen/item_action/Click()
 	if(!usr || !owner)
 		return 1
 	if(!usr.canClick())
@@ -130,10 +129,10 @@
 	owner.ui_action_click()
 	return 1
 
-/obj/screen/storage
+/atom/movable/screen/storage
 	name = "storage"
 
-/obj/screen/storage/Click()
+/atom/movable/screen/storage/Click()
 	if(!usr.canClick())
 		return 1
 	if(usr.stat || usr.paralysis || usr.stunned || usr.weakened)
@@ -147,25 +146,25 @@
 	return 1
 
 
-/obj/screen/stamina
+/atom/movable/screen/stamina
 	name = "stamina"
 	icon = 'icons/effects/progessbar.dmi'
 	icon_state = "prog_bar_100"
 	invisibility = INVISIBILITY_MAXIMUM
 	screen_loc = ui_stamina
 
-/obj/screen/inventory/hand
+/atom/movable/screen/inventory/hand
 	name = "l_hand"
 	icon_state = "hand_l"
 	screen_loc = ui_lhand
 	var/hand_tag = "l"
 
-/obj/screen/inventory/hand/update_icon(active = FALSE)
+/atom/movable/screen/inventory/hand/update_icon(active = FALSE)
 	cut_overlays()
 	if(active)
 		add_overlay("hand_active")
 
-/obj/screen/inventory/hand/Click()
+/atom/movable/screen/inventory/hand/Click()
 	if(world.time <= usr.next_move)
 		return TRUE
 	if(usr.incapacitated() || !iscarbon(usr))
@@ -173,38 +172,38 @@
 	var/mob/living/carbon/C = usr
 	C.activate_hand(hand_tag)
 
-/obj/screen/inventory/hand/right
+/atom/movable/screen/inventory/hand/right
 	name = "r_hand"
 	icon_state = "hand_r"
 	screen_loc = ui_rhand
 	hand_tag = "r"
 
-/obj/screen/swap_hand
+/atom/movable/screen/swap_hand
 	name = "swap hand"
 	name = "swap"
 	icon_state = "hand1"
 	screen_loc = ui_swaphand1
 
-/obj/screen/swap_hand/Click()
+/atom/movable/screen/swap_hand/Click()
 	if(!iscarbon(usr))
 		return
 	var/mob/living/carbon/M = usr
 	M.swap_hand()
 
-/obj/screen/swap_hand/right
+/atom/movable/screen/swap_hand/right
 	icon_state = "hand2"
 	screen_loc = ui_swaphand2
 
-/obj/screen/swap_hand/human
+/atom/movable/screen/swap_hand/human
 	icon_state = "hand1"
 
-/obj/screen/toggle_inv
+/atom/movable/screen/toggle_inv
 	name = "toggle"
 	icon = 'icons/hud/midnight.dmi'
 	icon_state = "toggle"
 	screen_loc = ui_inventory
 
-/obj/screen/toggle_inv/Click()
+/atom/movable/screen/toggle_inv/Click()
 	if(usr.hud_used.inventory_shown)
 		usr.hud_used.inventory_shown = FALSE
 		usr.client.screen -= usr.hud_used.toggleable_inventory
@@ -214,19 +213,19 @@
 
 	usr.hud_used.hidden_inventory_update()
 
-/obj/screen/intent
+/atom/movable/screen/intent
 	name = "intent"
 	icon = 'icons/hud/White.dmi'
 	icon_state = "intent_help"
 	screen_loc = ui_acti
 	var/intent = I_HELP
 
-/obj/screen/intent/New(mob/C)
+/atom/movable/screen/intent/New(mob/C)
 	if (C)
 		intent = C.a_intent
 		update_icon()
 
-/obj/screen/intent/Click(location, control, params)
+/atom/movable/screen/intent/Click(location, control, params)
 	var/list/P = params2list(params)
 	var/icon_x = text2num(P["icon-x"])
 	var/icon_y = text2num(P["icon-y"])
@@ -241,11 +240,11 @@
 	update_icon()
 	usr.set_attack_intent(intent)
 
-/obj/screen/intent/update_icon()
+/atom/movable/screen/intent/update_icon()
 	icon_state = "intent_[intent]"
 
 
-/obj/screen/Click(location, control, params)
+/atom/movable/screen/Click(location, control, params)
 	if(!usr)	return 1
 	switch(name)
 
