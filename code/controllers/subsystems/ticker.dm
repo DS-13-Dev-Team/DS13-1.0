@@ -231,7 +231,7 @@ SUBSYSTEM_DEF(ticker)
 		return	//already a cinematic in progress!
 
 	//initialise our cinematic screen object
-	var/obj/screen/cinematic = new(src)
+	var/atom/movable/screen/cinematic = new(src)
 	cinematic.icon = 'icons/effects/station_explosion.dmi'
 	cinematic.icon_state = "station_intact"
 	cinematic.plane = HUD_PLANE
