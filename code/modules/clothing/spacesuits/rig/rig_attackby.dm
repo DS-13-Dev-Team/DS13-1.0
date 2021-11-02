@@ -225,7 +225,7 @@
 		//If force is enabled, we check again with conflict detection turned off
 		if (!RM.can_install(src, !force))
 			if(user)
-				to_chat(user, "The RIG already has a module of that class installed.")
+				to_chat(user, "The RIG either already has a module of that class installed, or this is not valid for some other reason.")
 			return FALSE
 
 	if (user)
