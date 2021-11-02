@@ -4,10 +4,8 @@
 	keep_local_name = TRUE
 
 	var/list/asset_dirs = list(
-		"nano/css/",
 		"nano/images/",
 		"nano/images/modular_computers/",
-		"nano/js/",
 		"nano/templates/"
 	)
 
@@ -36,26 +34,30 @@
 		"tgui-panel.bundle.css" = file("tgui/public/tgui-panel.bundle.css"),
 	)
 
-/datum/asset/simple/craft
-	keep_local_name = TRUE
 
-/datum/asset/simple/craft/register()
-	for(var/name in SScraft.categories)
-		for(var/datum/craft_recipe/CR in SScraft.categories[name])
-			if(CR.result)
-				var/filename = sanitizeFileName("[CR.result].png")
-				var/icon/I = getFlatTypeIcon(CR.result)
-				assets[filename] = I
+/datum/asset/spritesheet/craft
+	name = "craft"
 
-			var/list/steplist = CR.steps + CR.passive_steps
+/datum/asset/spritesheet/craft/register()
+	for(var/i in GLOB.craftitems)
+		var/list/craftitem = GLOB.craftitems[i]
 
-			for(var/datum/craft_step/CS in steplist)
-				if(CS.icon_type)
-					var/filename = sanitizeFileName("[CS.icon_type].png")
-					var/icon/I = getFlatTypeIcon(CS.icon_type)
-					assets[filename] = I
+		if (!sprites[sanitizeFileName(craftitem["name"])])
+			var/icon_file = craftitem["icon"]
+			var/icon_state = craftitem["icon_state"]
+			var/icon/I = icon(icon_file, icon_state, SOUTH)
+			Insert(sanitizeFileName(craftitem["name"]), I, icon_state)
+		craftitem = list("name" = craftitem["name"])
+	return ..()
 
-	. = ..()
+proc/get_craft_item(path)
+	if(GLOB.craftitems[path])
+		return GLOB.craftitems[path]
+	else
+		var/obj/A = new path()
+		GLOB.craftitems[path] = list("icon" = A.icon, "icon_state" = A.icon_state, "name" = A.name)
+		qdel(A)
+		return GLOB.craftitems[path]
 
 /datum/asset/simple/research_designs
 	keep_local_name = TRUE
@@ -186,4 +188,44 @@
 	if (LOADOUT_LOADED)
 		handle_pending_loadouts()
 
+	.=..()
+
+/datum/asset/simple/chem_master
+	keep_local_name = TRUE
+	assets = list("pillA.png" = icon('icons/obj/chemical.dmi', "pillA"))
+
+/datum/asset/simple/chem_master/register()
+	for(var/i = 1 to 25)
+		assets["pill[i].png"] = icon('icons/obj/chemical.dmi', "pill[i]")
+	for(var/i = 1 to 4)
+		assets["bottle-[i].png"] = icon('icons/obj/chemical.dmi', "bottle-[i]")
+	.=..()
+
+/datum/asset/spritesheet/simple/pill_bottles
+	name = "pill_bottles"
+
+/datum/asset/spritesheet/simple/pill_bottles/register()
+	var/list/pill_bottle_wrappers = list(
+		COLOR_RED = "Red",
+		COLOR_GREEN = "Green",
+		COLOR_PALE_BTL_GREEN = "Pale_Green",
+		COLOR_BLUE = "Blue",
+		COLOR_CYAN_BLUE = "Light_Blue",
+		COLOR_TEAL = "Teal",
+		COLOR_YELLOW = "Yellow",
+		COLOR_ORANGE = "Orange",
+		COLOR_PINK = "Pink",
+		COLOR_MAROON = "Brown"
+	)
+	var/obj/item/weapon/storage/pill_bottle/PB = new()
+	var/icon/I = getFlatIcon(PB)
+	I.Scale(96, 96)
+	assets = list("Default_pill_bottle" = I)
+	for(var/A in pill_bottle_wrappers)
+		PB.wrapper_color = A
+		PB.update_icon()
+		I = getFlatIcon(PB)
+		I.Scale(96, 96)
+		assets["[pill_bottle_wrappers[A]]_pill_bottle"] = I
+	qdel(PB)
 	.=..()

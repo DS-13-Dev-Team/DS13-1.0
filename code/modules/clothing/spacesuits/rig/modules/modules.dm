@@ -101,6 +101,10 @@
 	*/
 	var/module_tags
 
+
+	//If true, this module requires the rig to have a chest piece, IE a suit. Meaning it can't be installed in back-only rigs, like the civilian RIG
+	var/require_suit = FALSE
+
 /obj/item/rig_module/Initialize()
 	.=..()
 	if (!interface_name)
@@ -209,6 +213,10 @@
 	if (!redundant && check_conflict)
 		if (get_conflicting(rig))
 			return FALSE
+
+	if (require_suit && !rig.chest_type)
+		to_chat(user, "This module requires a RIG that has a suit component")
+		return FALSE
 	return TRUE
 
 //Returns any existing module which blocks the installation of this one

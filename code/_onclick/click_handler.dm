@@ -174,7 +174,7 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 		if (a != b)
 			return b
 
-		if (istype(a, /obj/screen/click_catcher))
+		if (istype(a, /atom/movable/screen/click_catcher))
 			return RESOLVE_CLICK_CATCHER(params, user.client)
 
 	if (istype(a, /turf))

@@ -25,7 +25,7 @@
 	Avoid fire though."
 
 	//Health and Defense
-	total_health = 250
+	total_health = 275
 	torso_damage_mult = 0.5 //Hitting centre mass more fine for hunter
 	can_obliterate = FALSE
 	healing_factor = 4	//Minor constant healing
