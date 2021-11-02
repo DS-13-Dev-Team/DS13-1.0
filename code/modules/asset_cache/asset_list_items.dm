@@ -4,10 +4,8 @@
 	keep_local_name = TRUE
 
 	var/list/asset_dirs = list(
-		"nano/css/",
 		"nano/images/",
 		"nano/images/modular_computers/",
-		"nano/js/",
 		"nano/templates/"
 	)
 
@@ -36,26 +34,30 @@
 		"tgui-panel.bundle.css" = file("tgui/public/tgui-panel.bundle.css"),
 	)
 
-/datum/asset/simple/craft
-	keep_local_name = TRUE
 
-/datum/asset/simple/craft/register()
-	for(var/name in SScraft.categories)
-		for(var/datum/craft_recipe/CR in SScraft.categories[name])
-			if(CR.result)
-				var/filename = sanitizeFileName("[CR.result].png")
-				var/icon/I = getFlatTypeIcon(CR.result)
-				assets[filename] = I
+/datum/asset/spritesheet/craft
+	name = "craft"
 
-			var/list/steplist = CR.steps + CR.passive_steps
+/datum/asset/spritesheet/craft/register()
+	for(var/i in GLOB.craftitems)
+		var/list/craftitem = GLOB.craftitems[i]
 
-			for(var/datum/craft_step/CS in steplist)
-				if(CS.icon_type)
-					var/filename = sanitizeFileName("[CS.icon_type].png")
-					var/icon/I = getFlatTypeIcon(CS.icon_type)
-					assets[filename] = I
+		if (!sprites[sanitizeFileName(craftitem["name"])])
+			var/icon_file = craftitem["icon"]
+			var/icon_state = craftitem["icon_state"]
+			var/icon/I = icon(icon_file, icon_state, SOUTH)
+			Insert(sanitizeFileName(craftitem["name"]), I, icon_state)
+		craftitem = list("name" = craftitem["name"])
+	return ..()
 
-	. = ..()
+proc/get_craft_item(path)
+	if(GLOB.craftitems[path])
+		return GLOB.craftitems[path]
+	else
+		var/obj/A = new path()
+		GLOB.craftitems[path] = list("icon" = A.icon, "icon_state" = A.icon_state, "name" = A.name)
+		qdel(A)
+		return GLOB.craftitems[path]
 
 /datum/asset/simple/research_designs
 	keep_local_name = TRUE

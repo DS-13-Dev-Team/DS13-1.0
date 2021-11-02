@@ -18,6 +18,7 @@
 
 	//Todo: Show icons for everything in valid types list, rather than just the first
 	icon_type = valid_types[1]
+	get_craft_item(icon_type)
 
 	//Third var is the worktime, we feed that through the load_time function
 	if (params.len >= 3)
@@ -126,6 +127,8 @@
 
 	var/material/M = get_material_by_name("[required_material]")
 	icon_type = M.stack_type
+	get_craft_item(icon_type)
+
 	if (required_quantity <= 1)
 		desc = "Apply [M.display_name]"
 	else
@@ -194,6 +197,8 @@
 	//The second var contains the typepath
 	required_type = params[2]
 	icon_type = required_type
+	get_craft_item(icon_type)
+
 	//Third var contains quantity. 1 is a fallback value if none specified
 	if (params.len >= 3)
 		required_quantity = params[3]
@@ -271,6 +276,7 @@
 	//The second var contains the typepath
 	required_quality = params[2]
 	icon_type = GLOB.iconic_tools[required_quality]
+	get_craft_item(icon_type)
 
 	//Third var contains quantity. 1 is a fallback value if none specified
 	if (params.len >= 3)
@@ -353,6 +359,8 @@
 	//The second var contains the typepath
 	required_quality = params[2]
 	icon_type = GLOB.iconic_tools[required_quality]
+	get_craft_item(icon_type)
+
 	//Third var contains quantity. 1 is a fallback value if none specified
 	if (params.len >= 3)
 		required_level = params[3]
