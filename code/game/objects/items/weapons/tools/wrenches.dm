@@ -39,6 +39,7 @@
 	base_icon = "big_wrench"
 	edge = FALSE
 	sharp = FALSE
+	force_divisor = 1.04	//Double the value of fireaxe, because blunt weapons do half damage, so this works out to the same
 	tool_qualities = list(QUALITY_BOLT_TURNING = 80)
 	matter = list(MATERIAL_STEEL = 8000)
 	attack_verb = list("attacked", "bashed", "crushed", "slammed", "smashed", "smote", "wrenched")
