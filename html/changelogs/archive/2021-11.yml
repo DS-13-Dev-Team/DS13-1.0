@@ -1,0 +1,27 @@
+2021-11-03:
+  DTraitor:
+  - qol: Converted Chemical Dispenser, ChemMaster and Reagent Grinder to TGUI
+  - rscadd: Added pill bottle customisation to ChemMaster UI.
+  - bugfix: Fixed a bug where the pill bottle wouldn't do anything when you click
+      human while targeting mouth.
+  DeadLineSS13:
+  - refactor: Refactored code with spritesheet/craft.
+  Nanako:
+  - experiment: 'Reduced human top speed. The intent here is to nerf the most extreme
+      examples of zoomy humans without significantly affecting the majority of people.
+      This is broken up into several changes:'
+  - balance: Reduced the speed bonus of advanced femoral exoskeleton, Basic femoral
+      unaffected
+  - balance: Slightly Increased stamina costs of sprinting, and slightly reduced stamina
+      regen
+  - balance: Athletics skill is now broken into two skills, Hauling and Athletics.
+      The former affects speed penalties from encumbrance, throwing, and pulling,
+      the latter affects stamina costs.
+  - balance: Slightly increased corruption slowdown effect on humans.
+  - balance: Slightly decreased sprint speed, and slightly increased walking speed.
+  - experiment: 'Increased Time To Kill (TTK) by 10% across the board. This is broken
+      up into several changes:'
+  - balance: Increased human limb health by 10%
+  - balance: Increased human pain-shock threshold by 10%. from 50 to 55 This is the
+      quantity of pain that can be suffered without any real bad effects.
+  - tweak: Increased health of all necromorphs by 10%
