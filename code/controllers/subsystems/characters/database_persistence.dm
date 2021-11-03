@@ -21,8 +21,8 @@ SUBSYSTEM_DEF(database)
 
 
 	//Design caches
-	var/list/known_designs
-	var/list/unknown_designs
+	var/list/known_design_ids = list()
+	var/list/unknown_design_ids = list()
 
 
 	var/list/pending_schematics = list()
@@ -37,14 +37,6 @@ SUBSYSTEM_DEF(database)
 
 /datum/controller/subsystem/database/stat_entry(msg)
 	return "Click to debug!"
-
-/datum/controller/subsystem/database/Initialize()
-
-
-	log_world("Database initializing")
-	//update_store_designs()	//No point doing this here, its called from the asset system after designs are initialised
-
-
 
 /datum/controller/subsystem/database/fire(resumed = 0)
 	for (var/datum/mind/M as anything in credits_to_update)
@@ -181,24 +173,19 @@ SUBSYSTEM_DEF(database)
 //This returns a list of all design IDs which are not known to the store. These can thusly be used for assigning to new schematics
 /datum/controller/subsystem/database/proc/update_store_designs()
 
-	known_designs = list()
-	unknown_designs = list()
+	known_design_ids.Cut()
+	unknown_design_ids.Cut()
 
-	//This gets a list of every design that exists
-	var/list/designs = SSresearch.designs_by_id.Copy()
+	var/list/designs = list()
+
+	//This gets a list of every store design that exists and filters it to contain only valid designs
+	for(var/A in SSresearch.designs_by_id)
+		var/datum/design/D = SSresearch.designs_by_id[A]
+		if(D.build_type & STORE && (!D.patron_only || !D.whitelist))
+			designs |= A
 
 	if (!length(designs))
 		return	//Fatal error
-
-	//We need to filter it to contain only designs that are valid for store use
-	for (var/id in designs)
-		var/datum/design/D = designs[id]
-		if (!(D.build_type & STORE))
-			designs -= id
-
-		//Custom items, they dont belong in normal lists
-		if (D.patron_only || D.whitelist)
-			designs -= id
 
 	if(dbcon && dbcon.IsConnected())
 
@@ -217,19 +204,20 @@ SUBSYSTEM_DEF(database)
 				continue
 
 			designs -= schematic_id
-			SSdatabase.known_designs += schematic_id
+			SSdatabase.known_design_ids += schematic_id
 
 		//Now designs only contains things which aren't in the DB
 
 		//Cache this
-		unknown_designs	=	designs
+		unknown_design_ids	= designs
 
 	else
-		SSdatabase.known_designs = designs
+		SSdatabase.known_design_ids = designs
 
 	//And now reload the database for individual stores
-	load_store_database()
+	GLOB.public_store_designs = SSdatabase.known_design_ids.Copy()
 
+	GLOB.public_store_designs |= GLOB.unlimited_store_designs
 
 	//Now all thats done, if there were any schematics waiting on this moment, lets allow them to do their thing now
 	for (var/obj/item/store_schematic/SS in pending_schematics)

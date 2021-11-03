@@ -22,6 +22,7 @@ other types of metals and chemistry for reagents).
 
 	var/list/whitelist 				//A list of ckeys who are the only ones that can buy this in stores. Not used in lathing
 	var/patron_only = FALSE			//If true, only patrons can buy this in stores
+	var/datum/patron_item/PI		//A patron item datum used to manage access
 
 	var/list/materials = list()		//List of materials. Format: "id" = amount.
 	var/list/chemicals = list()		//List of reagents. Format: "id" = amount. DON'T USE IN PROTOLATHE DESIGNS!
@@ -153,7 +154,7 @@ other types of metals and chemistry for reagents).
 
 
 /datum/design/proc/AssembleDesignUIData(atom/temp)
-	ui_data = list("id" = "[id]", "name" = name, "item_name" = (item_name ? item_name : name), "desc" = desc, "time" = time, "category" = category, "price" = price)
+	ui_data = list("id" = id, "name" = name, "item_name" = (item_name ? item_name : name), "desc" = desc, "time" = time, "category" = category, "price" = price)
 
 	var/filename = sanitizeFileName("[id].png")
 	var/icon/I = getFlatIcon(temp)

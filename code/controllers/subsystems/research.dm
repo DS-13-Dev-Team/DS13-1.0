@@ -23,6 +23,8 @@ SUBSYSTEM_DEF(research)
 			D.AssembleDesignInfo()
 			designs_by_id[D.id] = D
 
+	SSdatabase.update_store_designs()
+
 	for(var/A in subtypesof(/datum/technology))
 		var/datum/technology/T = new A
 		all_technologies[T.id] = T

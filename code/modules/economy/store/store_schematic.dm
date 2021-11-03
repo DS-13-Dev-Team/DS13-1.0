@@ -61,17 +61,17 @@
 /obj/item/store_schematic/proc/get_design()
 
 	//If the designs aren't populated, add ourself to a pending list, we'll be back!
-	if (!SSdatabase.unknown_designs)
+	if (!SSdatabase.unknown_design_ids)
 		SSdatabase.pending_schematics |= src
 		return
 
-	if (!length(SSdatabase.unknown_designs))
+	if (!SSdatabase.unknown_design_ids.len)
 		//There are no unknown designs left? We'll just have to delete ourselves
 		QDEL_IN(src, 1)
 		new /obj/random/rare_loot(get_turf(src))
 		return
 
-	design_id = pick(SSdatabase.unknown_designs)
+	design_id = pick(SSdatabase.unknown_design_ids)
 
 	var/datum/design/D = SSresearch.designs_by_id[design_id]
 	design_name = D.item_name

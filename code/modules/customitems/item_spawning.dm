@@ -166,7 +166,6 @@
 	D.category = src.category
 	D.PI = src
 
-	//TODO: Icons not working
 	//TODO: Multiselection is happening
 	//TODO: Set transfer setting if the item is a rig or module
 
@@ -174,10 +173,10 @@
 
 	//If this has patron or whitelist access, put it in the limited store designs list
 	if (store_access != ACCESS_PUBLIC)
-		GLOB.limited_store_designs += D
+		GLOB.limited_store_designs += D.id
 
 	else
-		GLOB.unlimited_store_designs += D
+		GLOB.unlimited_store_designs += D.id
 
 
 /*
