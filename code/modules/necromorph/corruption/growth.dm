@@ -18,6 +18,10 @@
 	falloff = 0
 	marker_spawnable = FALSE
 
+//A short range debug object
+/obj/structure/corruption_node/growth/debug/smol
+	range = 2
+
 
 /obj/structure/corruption_node/growth/Initialize()
 	.=..()

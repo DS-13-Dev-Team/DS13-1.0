@@ -76,7 +76,7 @@ var/const/HOLOPAD_MODE = RANGE_BASED
 		audible_message("Severing connection to distant holopad.")
 		end_call(user)
 		return
-	switch(alert(user,"Would you like to request an AI's presence or establish communications with another pad?", "Holopad","AI","Holocomms","Cancel"))
+	switch(tgui_alert(user,"Would you like to request an AI's presence or establish communications with another pad?", "Holopad",list("AI","Holocomms","Cancel")))
 		if("AI")
 			if(last_request + 200 < world.time) //don't spam the AI with requests you jerk!
 				last_request = world.time

@@ -113,7 +113,7 @@
 	if(istype(M) && M.client && M.machine == src)
 		src.attack_self(M)
 
-/obj/proc/hide(var/hide)
+/atom/movable/proc/hide(hide)
 	set_invisibility(hide ? INVISIBILITY_MAXIMUM : initial(invisibility))
 
 /obj/proc/hides_under_flooring()
@@ -192,7 +192,7 @@
 		return FALSE
 	I.forceMove(src)
 	playsound(src.loc, 'sound/weapons/guns/interact/pistol_magout.ogg', 75, 1)
-	M << SPAN_NOTICE("You insert [I] into [src].")
+	to_chat(M, SPAN_NOTICE("You insert [I] into [src]."))
 	return TRUE
 
 

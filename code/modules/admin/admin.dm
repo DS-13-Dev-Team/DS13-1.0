@@ -704,9 +704,9 @@ var/global/floorIsLava = 0
 			message_admins("[key_name_admin(usr)] has unprisoned [key_name_admin(M)]", 1)
 			log_admin("[key_name(usr)] has unprisoned [key_name(M)]")
 		else
-			alert("Admin jumping disabled")
+			tgui_alert(usr, "Admin jumping disabled")
 	else
-		alert("[M.name] is not prisoned.")
+		tgui_alert(usr, "[M.name] is not prisoned.")
 	feedback_add_details("admin_verb","UP") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 ////////////////////////////////////////////////////////////////////////////////////////////////ADMIN HELPER PROCS
@@ -817,7 +817,7 @@ var/global/floorIsLava = 0
 	set name = "Show Game Mode"
 
 	if(!ticker || !ticker.mode)
-		alert("Not before roundstart!", "Alert")
+		tgui_alert(usr, "Not before roundstart!", "Alert")
 		return
 
 	var/out = "<font size=3><b>Current mode: [ticker.mode.name] (<a href='?src=\ref[ticker.mode];debug_antag=self'>[ticker.mode.config_tag]</a>)</b></font><br/>"
@@ -1026,7 +1026,7 @@ var/global/floorIsLava = 0
 	if (tomob.ckey)
 		question = "This mob already has a user ([tomob.key]) in control of it! "
 	question += "Are you sure you want to place [frommob.name]([frommob.key]) in control of [tomob.name]?"
-	var/ask = alert(question, "Place ghost in control of mob?", "Yes", "No")
+	var/ask = tgui_alert(usr, question, "Place ghost in control of mob?", list("Yes", "No"))
 	if (ask != "Yes")
 		return 1
 	if (!frommob || !tomob) //make sure the mobs don't go away while we waited for a response
@@ -1135,32 +1135,27 @@ datum/admins/var/obj/item/weapon/paper/admin/faxreply // var to hold fax replies
 	P.SetName("[P.origin] - [customname]")
 	P.desc = "This is a paper titled '" + P.name + "'."
 
-	var/shouldStamp = 1
 	if(!P.sender) // admin initiated
-		switch(alert("Would you like the fax stamped?",, "Yes", "No"))
-			if("No")
-				shouldStamp = 0
+		if(tgui_alert(usr, "Would you like the fax stamped?", "Confirmation", list("Yes", "No")) == "Yes")
+			P.stamps += "<hr><i>This paper has been stamped by the [P.origin] Quantum Relay.</i>"
 
-	if(shouldStamp)
-		P.stamps += "<hr><i>This paper has been stamped by the [P.origin] Quantum Relay.</i>"
+			var/image/stampoverlay = image('icons/obj/bureaucracy.dmi')
+			var/x = rand(-2, 0)
+			var/y = rand(-1, 2)
+			P.offset_x += x
+			P.offset_y += y
+			stampoverlay.pixel_x = x
+			stampoverlay.pixel_y = y
 
-		var/image/stampoverlay = image('icons/obj/bureaucracy.dmi')
-		var/x = rand(-2, 0)
-		var/y = rand(-1, 2)
-		P.offset_x += x
-		P.offset_y += y
-		stampoverlay.pixel_x = x
-		stampoverlay.pixel_y = y
+			if(!P.ico)
+				P.ico = new
+			P.ico += "paper_stamp-cent"
+			stampoverlay.icon_state = "paper_stamp-cent"
 
-		if(!P.ico)
-			P.ico = new
-		P.ico += "paper_stamp-cent"
-		stampoverlay.icon_state = "paper_stamp-cent"
-
-		if(!P.stamped)
-			P.stamped = new
-		P.stamped += /obj/item/weapon/stamp/centcomm
-		P.overlays += stampoverlay
+			if(!P.stamped)
+				P.stamped = new
+			P.stamped += /obj/item/weapon/stamp/centcomm
+			P.overlays += stampoverlay
 
 	var/obj/item/rcvdcopy
 	rcvdcopy = destination.copy(P)

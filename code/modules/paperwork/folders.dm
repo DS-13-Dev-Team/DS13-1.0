@@ -126,7 +126,7 @@
 	to_chat(user, "The seal is [sealed ? "intact" : "broken"].")
 
 /obj/item/weapon/folder/envelope/proc/sealcheck(user)
-	var/ripperoni = alert("Are you sure you want to break the seal on \the [src]?", "Confirmation","Yes", "No")
+	var/ripperoni = tgui_alert(user, "Are you sure you want to break the seal on \the [src]?", "Confirmation", list("Yes", "No"))
 	if(ripperoni == "Yes")
 		visible_message("[user] breaks the seal on \the [src], and opens it.")
 		sealed = 0

@@ -221,7 +221,7 @@
 /mob/living/carbon/proc/eyecheck()
 	return 0
 
-/mob/living/carbon/flash_eyes(intensity = FLASH_PROTECTION_MODERATE, override_blindness_check = FALSE, affect_silicon = FALSE, visual = FALSE, type = /obj/screen/fullscreen/flash)
+/mob/living/carbon/flash_eyes(intensity = FLASH_PROTECTION_MODERATE, override_blindness_check = FALSE, affect_silicon = FALSE, visual = FALSE, type = /atom/movable/screen/fullscreen/flash)
 	if(eyecheck() < intensity || override_blindness_check)
 		return ..()
 
@@ -293,7 +293,7 @@
 	if(usr.sleeping)
 		to_chat(usr, "<span class='warning'>You are already sleeping</span>")
 		return
-	if(alert(src,"You sure you want to sleep for a while?","Sleep","Yes","No") == "Yes")
+	if(tgui_alert(src,"You sure you want to sleep for a while?","Sleep", list("Yes","No")) == "Yes")
 		usr.sleeping = 20 //Short nap
 
 /mob/living/carbon/Bump(var/atom/movable/AM, yes)

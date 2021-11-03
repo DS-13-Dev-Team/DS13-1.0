@@ -149,23 +149,23 @@
 				for(var/client/X in mentorholders) // Mentors get a message without buttons and no character name
 					if(X.get_preference_value(/datum/client_preference/staff/play_adminhelp_ping))
 						X << 'sound/effects/adminhelp_new.ogg'
-					X << mentor_msg
+					to_chat(X, mentor_msg)
 			if(adminholders.len)
 				for(var/client/X in adminholders) // Admins get the full monty
 					if(X.get_preference_value(/datum/client_preference/staff/play_adminhelp_ping))
 						X << 'sound/effects/adminhelp_new.ogg'
-					X << msg
+					to_chat(X, msg)
 		if("Mods/Admins: Rule Issue")
 			if(mentorholders.len)
 				for(var/client/X in mentorholders) // Mentors get a message without buttons and no character name
 					if(X.get_preference_value(/datum/client_preference/staff/play_adminhelp_ping))
 						X << 'sound/effects/adminhelp_new.ogg'
-					X << mentor_msg
+					to_chat(X, mentor_msg)
 			if(adminholders.len)
 				for(var/client/X in adminholders) // Mods
 					if(X.get_preference_value(/datum/client_preference/staff/play_adminhelp_ping))
 						X << 'sound/effects/adminhelp_new.ogg'
-					X << msg
+					to_chat(X, msg)
 
 	//show it to the person adminhelping too
 	to_chat(src, "<font color='blue'>PM to-<b>Staff</b> (<a href='?src=\ref[usr];close_ticket=\ref[ticket]'>CLOSE</a>): [original_msg]</font>")
@@ -184,6 +184,6 @@ client/verb/bugreport()
 	set name ="Submit Bug Report/Suggestions"
 	var url = "https://github.com/DS-13-Dev-Team/DS13/issues"
 	if(url)
-		if(alert("This will open the Dead Space 13 Bug Report and Suggestions GitHub Page in your Browser. Are you sure?",,"Yes","No")=="No")
+		if(tgalert(src, "This will open the Dead Space 13 Bug Report and Suggestions GitHub Page in your Browser. Are you sure?", "Confirmation", "Yes","No")!="Yes")
 			return
 		src << link(url)

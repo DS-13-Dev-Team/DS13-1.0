@@ -15,6 +15,13 @@
 
 
 	sort_loadout_categories()
+
+
+
+	GLOB.loadout_datums_loaded = TRUE
+	if (LOADOUT_LOADED)
+		handle_pending_loadouts()
+
 	return TRUE
 
 
@@ -64,7 +71,7 @@
 	var/mob/preference_mob = preference_mob()
 	for(var/gear_name in GLOB.gear_datums)
 		var/datum/gear/G = GLOB.gear_datums[gear_name]
-		var/okay = 1
+		var/okay = TRUE
 		if(G.species_whitelist && preference_mob)
 			for(var/species in G.species_whitelist)
 				if(!is_species_whitelist(preference_mob, species))
@@ -299,11 +306,13 @@
 	if (!islist(pref.gear_list[pref.gear_slot]))
 		pref.gear_list[pref.gear_slot] = list()
 
+
 	//If the gear is enabled, disable it
 	if((TG.display_name in pref.gear_list[pref.gear_slot]) && pref.loadout.remove_gear(TG))
 		pref.gear_list[pref.gear_slot] -= TG.display_name
 	else if (pref.loadout.add_gear(TG))
 		pref.gear_list[pref.gear_slot] += list(TG.display_name)
+
 
 
 /datum/category_item/player_setup_item/loadout/proc/change_slot(var/newslot)

@@ -96,8 +96,8 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 	set category = "Necromorph"
 	set desc = "Joins the necromorph team, and allows you to control horrible creatures."
 
-	var/response = alert(src, "Would you like to join the necromorph side?", "Make us whole again", "Yes", "No")
-	if (!response || response == "No")
+	var/response = tgui_alert(src, "Would you like to join the necromorph side?", "Make us whole again", list("Yes", "No"))
+	if (response != "Yes")
 		return
 
 	var/mob/dead/observer/eye/signal/S = join_marker()	//This cannot fail, do safety checks first

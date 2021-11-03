@@ -11,7 +11,7 @@
 
 
 //The health doll attempts to update whenever the host mob updates its health
-/obj/screen/health_doll
+/atom/movable/screen/health_doll
 	var/last_updated = 0
 	var/updating = FALSE
 	var/mob/living/carbon/human/H
@@ -20,21 +20,21 @@
 	icon_state = "health0"
 	screen_loc = "EAST-1:28,CENTER:15"
 
-/obj/screen/health_doll/Destroy()
+/atom/movable/screen/health_doll/Destroy()
 	if (H && H.hud_used && H.hud_used.healths == src)
 		H.hud_used.healths = null
 	H = null
 	.=..()
 
-/obj/screen/health_doll/New(var/mob/living/carbon/human/owner)
+/atom/movable/screen/health_doll/New(var/mob/living/carbon/human/owner)
 	H = owner
 	.=..()
 
-/obj/screen/health_doll/Initialize()
+/atom/movable/screen/health_doll/Initialize()
 	.=..()
 	if (istype(H))
-		GLOB.updatehealth_event.register(H, src, /obj/screen/health_doll/proc/try_update)
-		GLOB.death_event.register(H, src, /obj/screen/health_doll/proc/try_update)
+		GLOB.updatehealth_event.register(H, src, /atom/movable/screen/health_doll/proc/try_update)
+		GLOB.death_event.register(H, src, /atom/movable/screen/health_doll/proc/try_update)
 
 
 		var/vector2/icon_size = H.get_icon_size()
@@ -47,11 +47,11 @@
 		update()
 		release_vector(icon_size)
 
-/obj/screen/health_doll/proc/get_offset()
+/atom/movable/screen/health_doll/proc/get_offset()
 	return 0
 
 
-/obj/screen/health_doll/proc/try_update()
+/atom/movable/screen/health_doll/proc/try_update()
 	//We'll have a minimum time between updates to save on performance
 	if (updating)
 		return
@@ -60,15 +60,15 @@
 
 	//If its not been long enough, we schedule the next update
 	if (time_delta < HEALTH_DOLL_UPDATE_DELAY)
-		addtimer(CALLBACK(src, /obj/screen/health_doll/proc/update), HEALTH_DOLL_UPDATE_DELAY - time_delta)
+		addtimer(CALLBACK(src, /atom/movable/screen/health_doll/proc/update), HEALTH_DOLL_UPDATE_DELAY - time_delta)
 	else
 		update()
 
 
-/obj/screen/health_doll/proc/update()
+/atom/movable/screen/health_doll/proc/update()
 	return
 
-/obj/screen/health_doll/human/update()
+/atom/movable/screen/health_doll/human/update()
 
 	if (QDELETED(H))
 		updating = FALSE
@@ -123,7 +123,7 @@
 	last_updated = world.time
 	updating = FALSE
 
-/obj/screen/health_doll/human/get_offset()
+/atom/movable/screen/health_doll/human/get_offset()
 	return H.species.health_doll_offset
 
 

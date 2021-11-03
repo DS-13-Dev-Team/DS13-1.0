@@ -8,7 +8,7 @@
 
 	It's main design goal is to act as a chilling effect. To force crew players to slow down and pay attention to their environment
 */
-#define SNARE_PLACEMENT_BUFFER	3
+#define SNARE_PLACEMENT_BUFFER	2
 /obj/structure/corruption_node/snare
 	name = "snare"
 	desc = "<span class='notice'>That looks dangerous, good thing you noticed before tripping over it! Should be safe to step over it now</span>"
@@ -182,15 +182,15 @@
 	aware[reference] = world.time
 
 	if (user.client)
-		var/obj/screen/movable/tracker/tracker = null
-		for (var/obj/screen/movable/tracker/snare_highlight/T in user.client.screen)
+		var/atom/movable/screen/movable/tracker/tracker = null
+		for (var/atom/movable/screen/movable/tracker/snare_highlight/T in user.client.screen)
 			if (T.tracked == src)
 				tracker = T
 				tracker.set_lifetime(awareness_timeout)
 				break
 
 		if (!tracker)
-			tracker = new /obj/screen/movable/tracker/snare_highlight(user, src, awareness_timeout)
+			tracker = new /atom/movable/screen/movable/tracker/snare_highlight(user, src, awareness_timeout)
 
 
 /obj/structure/corruption_node/snare/proc/unregister_awareness(var/mob/user)
@@ -198,7 +198,7 @@
 	aware -= reference
 
 	if (user.client)
-		for (var/obj/screen/movable/tracker/snare_highlight/T in user.client.screen)
+		for (var/atom/movable/screen/movable/tracker/snare_highlight/T in user.client.screen)
 			if (T.tracked == src)
 				qdel(T)
 
@@ -214,10 +214,10 @@
 
 
 //Snare highlight, used to show where a seen snare is
-/obj/screen/movable/tracker/snare_highlight
+/atom/movable/screen/movable/tracker/snare_highlight
 	alpha = 255
 
-/obj/screen/movable/tracker/snare_highlight/setup()
+/atom/movable/screen/movable/tracker/snare_highlight/setup()
 	appearance = new /mutable_appearance(tracked)
 	alpha = 255
 	mouse_opacity = 0
@@ -239,7 +239,7 @@
 	name = "Snare"
 	id = "snare"
 	desc = ""
-	energy_cost = 50
+	energy_cost = 40
 	LOS_block = FALSE
 	placement_atom = /obj/structure/corruption_node/snare
 	click_handler_type = /datum/click_handler/placement/ability/snare

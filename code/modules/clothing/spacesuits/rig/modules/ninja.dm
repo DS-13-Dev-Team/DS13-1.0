@@ -201,7 +201,7 @@
 		return 1
 
 	if(!skip_check)
-		if(!usr || alert(usr, "Are you sure you want to push that button?", "Self-destruct", "No", "Yes") == "No")
+		if(!usr || tgui_alert(usr, "Are you sure you want to push that button?", "Self-destruct", list("No", "Yes")) != "Yes")
 			return
 
 		if(usr == holder.wearer)

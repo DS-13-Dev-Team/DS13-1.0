@@ -18,7 +18,7 @@
 	to_chat(user, "<span class='notice'>***********************************************************</span>")
 
 /datum/build_mode/room_builder/Configurate()
-	var/choice = alert("Would you like to set the floor or wall type?", name, "Floor", "Wall", "Cancel")
+	var/choice = tgui_alert(usr, "Would you like to set the floor or wall type?", name, list("Floor", "Wall", "Cancel"))
 	switch(choice)
 		if("Floor")
 			floor_type = select_subpath(floor_type) || floor_type

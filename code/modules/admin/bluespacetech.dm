@@ -200,10 +200,10 @@
 
 	if (fall_override)
 		fall_override = FALSE
-		src << SPAN_NOTICE("You will now fall normally.")
+		to_chat(src, SPAN_NOTICE("You will now fall normally."))
 	else
 		fall_override = TRUE
-		src << SPAN_NOTICE("You will no longer fall.")
+		to_chat(src, SPAN_NOTICE("You will no longer fall."))
 
 /mob/living/carbon/human/bst/verb/bstwalk()
 	set name = "Ruin Everything"
@@ -212,11 +212,11 @@
 	set popup_menu = 0
 
 	if(!HasMovementHandler(/datum/movement_handler/mob/incorporeal))
-		src << SPAN_NOTICE("You will now phase through solid matter.")
+		to_chat(src, SPAN_NOTICE("You will now phase through solid matter."))
 		//incorporeal_move = TRUE
 		ReplaceMovementHandler(/datum/movement_handler/mob/incorporeal)
 	else
-		src << SPAN_NOTICE("You will no-longer phase through solid matter.")
+		to_chat(src, SPAN_NOTICE("You will no-longer phase through solid matter."))
 		//incorporeal_move = FALSE
 		RemoveMovementHandler(/datum/movement_handler/mob/incorporeal)
 
@@ -249,9 +249,9 @@
 	set category = "BST"
 
 	status_flags ^= GODMODE
-	src << SPAN_NOTICE("God mode is now [status_flags & GODMODE ? "enabled" : "disabled"]")
+	to_chat(src, SPAN_NOTICE("God mode is now [status_flags & GODMODE ? "enabled" : "disabled"]"))
 
-	src << span("notice", "God mode is now [status_flags & GODMODE ? "enabled" : "disabled"]")
+	to_chat(src, SPAN_NOTICE("God mode is now [status_flags & GODMODE ? "enabled" : "disabled"]"))
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////

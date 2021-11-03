@@ -29,7 +29,7 @@
 				message = sanitize(input("Enter an emote to display.") as text|null)
 			if(!message)
 				return
-			if(alert(src, "Is this an audible emote?", "Emote", "Yes", "No") == "No")
+			if(tgui_alert(src, "Is this an audible emote?", "Emote", list("Yes", "No")) != "Yes")
 				m_type = VISIBLE_MESSAGE
 			else
 				m_type = AUDIBLE_MESSAGE

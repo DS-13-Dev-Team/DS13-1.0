@@ -3,7 +3,7 @@
 	set name = "Show Air Report"
 
 	if(!SSair)
-		alert(usr,"SSair not found.","Air Report")
+		tgui_alert(usr,"SSair not found.","Air Report")
 		return
 
 	var/active_groups = SSair.active_zones

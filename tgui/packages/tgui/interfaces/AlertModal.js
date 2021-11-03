@@ -63,7 +63,7 @@ export class AlertModal extends Component {
 
   render() {
     const { act, data } = useBackend(this.context);
-    const { title, message, buttons, timeout } = data;
+    const { title, message, buttons, timeout, can_close } = data;
     const { current } = this.state;
     const focusCurrentButton = () => this.setCurrent(current, false);
 
@@ -71,7 +71,8 @@ export class AlertModal extends Component {
       <Window
         title={title}
         width={350}
-        height={150}>
+        height={150}
+        canClose={can_close}>
         {timeout && <Loader value={timeout} />}
         <Window.Content
           onFocus={focusCurrentButton}

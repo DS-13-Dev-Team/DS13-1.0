@@ -11,7 +11,7 @@
 	var/target = null
 	var/targetselected = 0
 
-	switch(alert("Proc owned by something?",, "Yes", "No", "CANCEL"))
+	switch(tgui_alert(usr, "Proc owned by something?", "Confirmation", list("Yes", "No", "Cancel")))
 		if("Yes")
 			targetselected=1
 			switch(input("Proc owned by...", "Owner", null) as null|anything in list("Obj", "Mob", "Area or Turf", "Client"))
@@ -28,7 +28,7 @@
 			if(!target)
 				to_chat(usr, "Proc call CANCEL_led.")
 				return
-		if("CANCEL")
+		if("Cancel" || null)
 			return
 		if("No")
 			; // do nothing
@@ -171,19 +171,19 @@
 				if(!M) return
 				current = get_area(M)
 				if(!current)
-					switch(alert("\The [M] appears to not have an area; do you want to pass null instead?",, "Yes", "CANCEL"))
+					switch(tgui_alert(usr, "\The [M] appears to not have an area; do you want to pass null instead?", "Confirmation", list("Yes", "Cancel")))
 						if("Yes")
 							; // do nothing
-						if("CANCEL")
+						if("Cancel" || null)
 							return CANCEL_N
 
 			if("marked datum")
 				current = C.holder.marked_datum()
 				if(!current)
-					switch(alert("You do not currently have a marked datum; do you want to pass null instead?",, "Yes", "CANCEL"))
+					switch(tgui_alert(usr, "You do not currently have a marked datum; do you want to pass null instead?", "Confirmation", list("Yes", "Cancel")))
 						if("Yes")
 							; // do nothing
-						if("CANCEL")
+						if("Cancel" || null)
 							return CANCEL_N
 
 			if("click on atom")
@@ -208,7 +208,7 @@
 
 /client/Click(atom/A)
 	if(holder && holder.callproc && holder.callproc.waiting_for_click)
-		if(alert("Do you want to select \the [A] as the [holder.callproc.arguments.len+1]\th argument?",, "Yes", "No") == "Yes")
+		if(tgui_alert(usr, "Do you want to select \the [A] as the [holder.callproc.arguments.len+1]\th argument?", "Confirmation", list("Yes", "No")) == "Yes")
 			holder.callproc.arguments += A
 
 		holder.callproc.waiting_for_click = 0

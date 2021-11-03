@@ -62,7 +62,7 @@
 
 	//search the href for script injection
 	if( findtext(href,"<script",1,0) )
-		world.log << "Attempted use of scripts within a topic call, by [src]"
+		log_world("Attempted use of scripts within a topic call, by [src]")
 		message_admins("Attempted use of scripts within a topic call, by [src]")
 		//qdel(usr)
 		return
@@ -153,7 +153,7 @@
 		return null
 
 	if(!CONFIG_GET(flag/guests_allowed) && IsGuestKey(key))
-		alert(src,"This server doesn't allow guest accounts to play. Please go to http://www.byond.com/ and register for a key.","Guest","OK")
+		tgui_alert(src,"This server doesn't allow guest accounts to play. Please go to http://www.byond.com/ and register for a key.","Guest")
 		qdel(src)
 		return
 
@@ -165,7 +165,7 @@
 			allowed = TRUE
 
 		if (!allowed)
-			alert(src,"This server is currently full and not accepting new connections. Please try again later!","Server Full","OK")
+			tgui_alert(src,"This server is currently full and not accepting new connections. Please try again later!","Server Full")
 			log_admin("[ckey] tried to join and was turned away due to the server being full (player_limit=[CONFIG_GET(number/player_limit)])")
 			qdel(src)
 			return

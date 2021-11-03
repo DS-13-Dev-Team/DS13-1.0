@@ -1,4 +1,4 @@
-#define ORE_VALUE_FACTOR	5 //Change this number to modify mining bonus outputs globally
+#define ORE_VALUE_FACTOR	4 //Change this number to modify mining bonus outputs globally
 GLOBAL_LIST_EMPTY(ore_data)
 GLOBAL_LIST_EMPTY(ores_by_type)
 

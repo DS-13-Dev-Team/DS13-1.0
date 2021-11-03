@@ -56,9 +56,9 @@
 /obj/machinery/camera/apply_visual(mob/living/carbon/human/M)
 	if(!M.client)
 		return
-	M.overlay_fullscreen("fishbed",/obj/screen/fullscreen/fishbed)
-	M.overlay_fullscreen("scanlines",/obj/screen/fullscreen/scanline)
-	M.overlay_fullscreen("whitenoise",/obj/screen/fullscreen/noise)
+	M.overlay_fullscreen("fishbed",/atom/movable/screen/fullscreen/fishbed)
+	M.overlay_fullscreen("scanlines",/atom/movable/screen/fullscreen/scanline)
+	M.overlay_fullscreen("whitenoise",/atom/movable/screen/fullscreen/noise)
 	M.machine_visual = src
 	return 1
 
@@ -82,7 +82,7 @@
 	for(var/obj/machinery/camera/C in GLOB.cameranet.cameras)
 		var/list/tempnetwork = C.network&src.network
 		if(C != src && C.c_tag == src.c_tag && tempnetwork.len)
-			world.log << "[src.c_tag] [src.x] [src.y] [src.z] conflicts with [C.c_tag] [C.x] [C.y] [C.z]"
+			log_world("[src.c_tag] [src.x] [src.y] [src.z] conflicts with [C.c_tag] [C.x] [C.y] [C.z]")
 	*/
 	if(!src.network || src.network.len < 1)
 		if(loc)

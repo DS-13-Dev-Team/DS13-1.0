@@ -103,3 +103,35 @@
   - balance: Reworked hyperzine. It no longer gives a base speed boost, but instead
       lowers the slowing effect of encumbrance by 25%.
   - bugfix: Fixed SMES explosions causing lots of lag.
+2021-10-17:
+  DTraitor:
+  - bugfix: Kinesis module now works properly if you install it using hotswap.
+2021-10-19:
+  DTraitor:
+  - bugfix: Fixed all cases when messages didn't appear in TGchat. This time for real!
+  Ketrai:
+  - balance: Removes seeker stun altogether.
+  - balance: Seeker firerate reduced.
+  - balance: Moved some damage from the seeker to the magazine instead.
+  - balance: Lowers mining performance bonuses by 20%.
+  Nanako:
+  - balance: Reduced the energy cost of snare and audio abilities for signals.
+  - balance: Slightly reduced the health and armor of the Harvester node.
+  - balance: Corruption now spreads more slowly.
+  - balance: Reduced the minimum placement buffer of snare to 2 tiles.
+  - bugfix: Corruption will no longer grow over openspace tiles
+2021-10-20:
+  Nanako:
+  - bugfix: Fixed lurker malo skin not appearing randomly
+2021-10-22:
+  DTraitor:
+  - qol: All alerts were replaced with TGUI alerts.
+  - bugfix: Fixes bug when hydrazine torch didn't shoot in vacuum.
+2021-10-24:
+  DTraitor:
+  - rscadd: Mining drills now extract ore more slowly, but can be upgraded with new
+      parts.
+  - bugfix: Fixed xenoarcheology excavation drills doing nothing after changing their
+      mining depth.
+  Nanako:
+  - bugfix: Corruption now grows through stairs and ladders again

@@ -6,6 +6,8 @@
 GLOBAL_LIST_EMPTY(corruption_sources)
 GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 
+#define CORRUPTION_SPREAD_HEALTH_THRESHOLD	0.3
+
 //We'll be using a subtype in addition to a seed, becuase there's a lot of special case behaviour here
 /obj/effect/vine/corruption
 	name = "corruption"
@@ -191,9 +193,13 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 	return FALSE
 
 /obj/effect/vine/corruption/can_spread()
-	if(neighbors && neighbors.len)
-		return TRUE
-	return FALSE
+	if(!neighbors || !neighbors.len)
+		return FALSE
+
+	if (healthpercent() <= CORRUPTION_SPREAD_HEALTH_THRESHOLD)
+		return FALSE
+
+	return TRUE
 
 /obj/effect/vine/corruption/wake_up(var/wake_adjacent = TRUE)
 	if (QDELETED(source))
@@ -368,7 +374,7 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 	var/incoming_damage_mod = 0.85	//Incoming damage reduction
 
 	//Effects on non necros
-	var/slowdown = 0.60	//Movespeed Penalty
+	var/slowdown = 0.625	//Movespeed Penalty
 
 	var/speed_factor = 0
 

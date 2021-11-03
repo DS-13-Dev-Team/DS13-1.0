@@ -48,7 +48,7 @@
 	return FALSE
 
 //Hud objects
-/obj/screen/can_telegrip(var/obj/item/rig_module/kinesis/gripper)
+/atom/movable/screen/can_telegrip(var/obj/item/rig_module/kinesis/gripper)
 	return FALSE
 
 //Lighting

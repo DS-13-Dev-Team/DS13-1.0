@@ -207,9 +207,6 @@
 #define VIRUS_ENGINEERED	3
 #define VIRUS_EXOTIC		4	//Usually adminbus only
 
-//Error handler defines
-#define ERROR_USEFUL_LEN 2
-
 #define RAD_LEVEL_LOW 0.5 // Around the level at which radiation starts to become harmful
 #define RAD_LEVEL_MODERATE 5
 #define RAD_LEVEL_HIGH 25
@@ -273,3 +270,10 @@
 #define STATION_ALERT_BLUE	"code blue"
 #define STATION_ALERT_RED	"code red"
 #define STATION_ALERT_DELTA	"code delta"
+
+//different types of atom colorations
+#define ADMIN_COLOUR_PRIORITY 1 //only used by rare effects like greentext coloring mobs and when admins varedit color
+#define TEMPORARY_COLOUR_PRIORITY 2 //e.g. purple effect of the revenant on a mob, black effect when mob electrocuted
+#define WASHABLE_COLOUR_PRIORITY 3 //color splashed onto an atom (e.g. paint on turf)
+#define FIXED_COLOUR_PRIORITY 4 //color inherent to the atom (e.g. blob color)
+#define COLOUR_PRIORITY_AMOUNT 4 //how many priority levels there are.

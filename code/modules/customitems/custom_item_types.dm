@@ -52,15 +52,48 @@
 	modkit_access = ACCESS_WHITELIST
 	modkit_typelist = list(/obj/item/weapon/rig/advanced)
 
+//This is not my typo, his ckey is actually spelled like that
+/datum/patron_item/plaugewalker
+	name = "SCAF elite RIG"
+	description = "A lightweight and flexible armoured rig suit, designed for riot control and shipboard disciplinary enforcement."
+	item_path = /obj/item/weapon/rig/scaf/elite
+	id = "plaugewalker_rig"
+	store_cost = 6400
+	store_access = ACCESS_WHITELIST
+
+	category = CATEGORY_RIG
+	subcategory = SUBCATEGORY_FRAMES
+
+	loadout_modkit_cost = 3
+	modkit_access = ACCESS_WHITELIST
+	modkit_typelist = list(/obj/item/weapon/rig/security)
+
+
+/datum/patron_item/banditofdoom
+	name = "Evangelion RIG"
+	description = "A project many months in the works, created by an obsessive historical anime fan. Even incorporates a custom voice changer for impersonating TV characters."
+	item_path = /obj/item/weapon/rig/advanced/banditofdoom
+	id = "banditofdoom_rig"
+	store_cost = 10000
+	store_access = ACCESS_WHITELIST
+
+	category = CATEGORY_RIG
+	subcategory = SUBCATEGORY_FRAMES
+
+	loadout_modkit_cost = 2
+	modkit_access = ACCESS_WHITELIST
+	modkit_typelist = list(/obj/item/weapon/rig/advanced)
+
 
 /datum/patron_item/hacker_rig
 	name = "digital infiltration RIG"
 	item_path = /obj/item/weapon/rig/hacker
-	id = "max_stone_rig"
+	id = "hacker_rig"
 
 	loadout_cost = 4
 	loadout_access = ACCESS_PATRONS
 
+	loadout_subtype = /datum/gear/RIG/frame
 	category = CATEGORY_RIG
 	subcategory = SUBCATEGORY_FRAMES
 

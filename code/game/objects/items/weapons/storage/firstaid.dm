@@ -190,7 +190,7 @@
 	if(!contents.len)
 		to_chat(user, "<span class='warning'>It's empty!</span>")
 		return 1
-	var/zone = get_zone_sel(user)
+	var/zone = get_zone_sel(user, TRUE)
 	if(zone == BP_MOUTH && target.can_eat())
 		user.visible_message("<span class='notice'>[user] pops a pill from \the [src].</span>")
 		playsound(get_turf(src), 'sound/effects/peelz.ogg', 50)

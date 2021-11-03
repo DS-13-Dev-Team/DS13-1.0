@@ -38,14 +38,14 @@ GLOBAL_LIST_INIT(available_ui_styles, list(
 
 	var/icon/ic = GLOB.available_ui_styles[UI_style_new]
 
-	for(var/obj/screen/I in icons)
+	for(var/atom/movable/screen/I in icons)
 		if(I.name in list(I_HELP, I_HURT, I_DISARM, I_GRAB)) continue
 		I.icon = ic
 		I.color = UI_style_color_new
 		I.alpha = UI_style_alpha_new
 
 
-	if(alert("Like it? Save changes?",,"Yes", "No") == "Yes")
+	if(tgui_alert(src, "Like it? Save changes?", "Confirmation", list("Yes", "No")) == "Yes")
 		prefs.UI_style = UI_style_new
 		prefs.UI_style_alpha = UI_style_alpha_new
 		prefs.UI_style_color = UI_style_color_new

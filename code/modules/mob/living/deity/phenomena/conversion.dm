@@ -20,7 +20,7 @@
 
 /datum/phenomena/conversion/activate(var/mob/living/L)
 	to_chat(src,"<span class='notice'>You give \the [L] a chance to willingly convert. May they choose wisely.</span>")
-	var/choice = alert(L, "You feel a weak power enter your mind attempting to convert it.", "Conversion", "Allow Conversion", "Deny Conversion")
+	var/choice = tgui_alert(L, "You feel a weak power enter your mind attempting to convert it.", "Conversion", list("Allow Conversion", "Deny Conversion"))
 	if(choice == "Allow Conversion")
 		GLOB.godcult.add_antagonist_mind(L.mind,1, "Servant of [linked]", "You willingly give your mind to it, may it bring you fortune", specific_god=linked)
 	else

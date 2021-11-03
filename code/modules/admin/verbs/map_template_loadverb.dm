@@ -19,7 +19,7 @@
 	for(var/S in template.get_affected_turfs(T,centered = TRUE))
 		preview += image('icons/turf/overlays.dmi',S,"greenOverlay")
 	usr.client.images += preview
-	if(alert(usr,"Confirm location.","Template Confirm","Yes","No") == "Yes")
+	if(tgui_alert(usr,"Confirm location.","Template Confirm", list("Yes","No")) == "Yes")
 		if(template.load(T, centered = TRUE))
 			log_and_message_admins("has placed a map template ([template.name]).")
 		else
@@ -40,9 +40,8 @@
 	var/datum/map_template/template = SSmapping.map_templates[map]
 
 	if (template.loaded && !(template.template_flags & TEMPLATE_FLAG_ALLOW_DUPLICATES))
-		var/jesus_take_the_wheel = alert(usr, "That template has already been loaded and doesn't want to be loaded again. \
-			Proceeding may unpredictably break things and cause runtimes.", "Confirm load", "Cancel load", "Do you see any cops around?") == "Do you see any cops around?"
-		if (!jesus_take_the_wheel)
+		if(tgui_alert(usr, "That template has already been loaded and doesn't want to be loaded again. \
+			Proceeding may unpredictably break things and cause runtimes.", "Confirm load", list("Cancel load", "Do you see any cops around?")) != "Do you see any cops around?")
 			return
 
 	var/new_z_centre = template.load_new_z()

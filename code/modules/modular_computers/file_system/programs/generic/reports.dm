@@ -89,17 +89,19 @@
 	var/choice = input(user, "Which report would you like to load?", "Loading Report") as null|anything in choices
 	if(choice in choices)
 		var/datum/computer_file/report/chosen_report = choices[choice]
-		var/editing = alert(user, "Would you like to view or edit the report", "Loading Report", "View", "Edit")
+		var/editing = tgui_alert(user, "Would you like to view or edit the report", "Loading Report", list("View", "Edit"))
 		if(editing == "View")
 			if(!chosen_report.verify_access(get_access(user)))
 				to_chat(user, "<span class='warning'>You lack access to view this report.</span>")
 				return
 			can_view_only = 1
-		else
+		else if(editing == "Edit")
 			if(!chosen_report.verify_access_edit(get_access(user)))
 				to_chat(user, "<span class='warning'>You lack access to edit this report.</span>")
 				return
 			can_view_only = 0
+		else
+			return
 		saved_report = chosen_report
 		selected_report = chosen_report.clone()
 		return 1
@@ -110,7 +112,7 @@
 	var/mob/user = usr
 
 	if(text2num(href_list["warning"])) //Gives the user a chance to avoid losing unsaved reports.
-		if(alert(user, "Are you sure you want to leave this page? Unsubmitted data will be lost.",, "Yes.", "No.") == "No.")
+		if(tgui_alert(user, "Are you sure you want to leave this page? Unsubmitted data will be lost.", "Confirmation", list("Yes", "No")) != "Yes")
 			return 1 //If yes, proceed to the actual action instead.
 
 	if(href_list["load"])
@@ -132,7 +134,7 @@
 			return 1
 		if(selected_report.submit(user))
 			to_chat(user, "The [src] has been submitted.")
-			if(alert(user, "Would you like to save a copy?","Save Report", "Yes.", "No.") == "Yes.")
+			if(tgui_alert(user, "Would you like to save a copy?","Save Report", list("Yes", "No")) == "Yes.")
 				save_report(user)
 		return 1
 	if(href_list["discard"])

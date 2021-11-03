@@ -177,7 +177,7 @@
 	if(enabled)
 		ui_interact(user)
 	else if(check_rights(R_ADMIN, 0, user))
-		var/response = alert(user, "This computer is turned off. Would you like to turn it on?", "Admin Override", "Yes", "No")
+		var/response = tgui_alert(user, "This computer is turned off. Would you like to turn it on?", "Admin Override", list("Yes", "No"))
 		if(response == "Yes")
 			turn_on(user)
 
@@ -310,7 +310,7 @@
 
 /obj/item/modular_computer/MouseDrop(var/atom/over_object)
 	var/mob/M = usr
-	if(!istype(over_object, /obj/screen) && CanMouseDrop(M))
+	if(!istype(over_object, /atom/movable/screen) && CanMouseDrop(M))
 		return attack_self(M)
 
 /obj/item/modular_computer/afterattack(atom/target, mob/user, proximity)

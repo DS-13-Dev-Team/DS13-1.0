@@ -11,6 +11,10 @@
 	name_language = LANGUAGE_GALCOM
 	min_age = 16
 	max_age = 65
+
+	limb_health_factor = 1.1
+	pain_shock_threshold = 55
+
 	gluttonous = GLUT_TINY
 
 	spawn_flags = SPECIES_CAN_JOIN | SPECIES_NO_LACE

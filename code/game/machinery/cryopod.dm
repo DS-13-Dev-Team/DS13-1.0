@@ -456,7 +456,7 @@
 		var/mob/M = G:affecting
 
 		if(M.client)
-			if(alert(M,"Would you like to enter long-term storage?",,"Yes","No") == "Yes")
+			if(tgui_alert(M, "Would you like to enter long-term storage?", "Confirmation", list("Yes","No")) == "Yes")
 				if(!M || !grab || !grab.affecting) return
 				willing = 1
 		else

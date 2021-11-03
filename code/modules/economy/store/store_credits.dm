@@ -151,13 +151,15 @@
 
 
 
-	var/response = alert(user, "Welcome to the CEC Employee Checking Account withdrawal interface. \n\
+	var/response = tgui_alert(user, "Welcome to the CEC Employee Checking Account withdrawal interface. \n\
 	Currently Available Balance:	[available_balance]	credits \n\
 	You are withdrawing: [withdrawal_amount] credits. Please select the location to withdraw to.",
 	"CEC Employee Checking Account",
+	list(
 	(rig_account ? "Withdraw to RIG" : null),
 	(chip ? "Withdraw to Credit Chip" : null),
-	"Cancel")
+	"Cancel"
+	))
 
 	//We need to recheck things to prevent exploits now
 	if (!ECA)
@@ -170,9 +172,6 @@
 		return
 
 	switch (response)
-		if ("Cancel")
-			return
-
 		if ("Withdraw to RIG")
 			charge_to_account(rig_account.account_number, machine_id, "Credit Withdrawal", machine_id, withdrawal_amount)
 			charge_to_account(ECA.account_number, machine_id, "Credit Withdrawal", machine_id, -withdrawal_amount)

@@ -9,7 +9,7 @@
 		if(!mind.learned_spells)
 			mind.learned_spells = list()
 		if(hud_used.ability_master && hud_used.ability_master.spell_objects)
-			for(var/obj/screen/ability/spell/screen in hud_used.ability_master.spell_objects)
+			for(var/atom/movable/screen/ability/spell/screen in hud_used.ability_master.spell_objects)
 				var/spell/S = screen.spell
 				mind.learned_spells |= S
 

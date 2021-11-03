@@ -76,7 +76,7 @@
 	var/datum/ghosttrap/G = get_ghost_trap("positronic brain")
 	if(!G.assess_candidate(user))
 		return
-	var/response = alert(user, "Are you sure you wish to possess this [src]?", "Possess [src]", "Yes", "No")
+	var/response = tgui_alert(user, "Are you sure you wish to possess this [src]?", "Possess [src]", list("Yes", "No"))
 	if(response == "Yes")
 		G.transfer_personality(user, brainmob)
 	return

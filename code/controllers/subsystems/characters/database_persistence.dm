@@ -196,6 +196,10 @@ SUBSYSTEM_DEF(database)
 		if (!(D.build_type & STORE))
 			designs -= id
 
+		//Custom items, they dont belong in normal lists
+		if (D.patron_only || D.whitelist)
+			designs -= id
+
 	if(dbcon && dbcon.IsConnected())
 
 
@@ -220,6 +224,8 @@ SUBSYSTEM_DEF(database)
 		//Cache this
 		unknown_designs	=	designs
 
+	else
+		SSdatabase.known_designs = designs
 
 	//And now reload the database for individual stores
 	load_store_database()
