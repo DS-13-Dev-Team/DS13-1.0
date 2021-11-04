@@ -67,7 +67,7 @@
 
 	//If the marker is activated manually, tell the gamemode to activate itself too.
 	//This is a circular process, activate_marker will call this proc, hence the check for active at the start
-	var/datum/game_mode/marker/GM = ticker.mode
+	var/datum/game_mode/marker/GM = SSticker.mode
 	if (GM && !GM.marker_active)
 		GM.activate_marker()
 
