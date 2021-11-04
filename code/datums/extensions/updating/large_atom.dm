@@ -38,8 +38,8 @@
 		return
 
 	var/vector2/coords = get_new_vector(T1.x, T1.y)
-	coords.x = min(coords.x + tile_width, world.maxx)
-	coords.y = min(coords.y + tile_height, world.maxy)
+	coords.x = min(coords.x + (tile_width -1), world.maxx)
+	coords.y = min(coords.y + (tile_height -1), world.maxy)
 	var/turf/T2 = locate(coords.x, coords.y, T1.z)
 
 	//Now we have both corners of the bounding box, lets get all the turfs in them
