@@ -86,16 +86,10 @@
 		if(!watched_variables.len && watched_variables_window.is_processing)
 			STOP_PROCESSING(SSprocessing, watched_variables_window)
 
-	else if(href_list["mob_player_panel"])
-		if(!check_rights(0))	return
-
-		var/mob/M = locate(href_list["mob_player_panel"])
-		if(!istype(M))
-			to_chat(usr, "This can only be used on instances of type /mob")
-			return
-
+	else if(href_list["adminplayeropts"])
+		var/mob/M = locate(href_list["adminplayeropts"])
 		src.holder.show_player_panel(M)
-		href_list["datumrefresh"] = href_list["mob_player_panel"]
+		href_list["datumrefresh"] = href_list["adminplayeropts"]
 
 	else if(href_list["give_spell"])
 		if(!check_rights(R_ADMIN|R_FUN))	return

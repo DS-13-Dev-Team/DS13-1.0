@@ -75,13 +75,13 @@
 
 
 	timeofdeath = world.time
-	if(mind) mind.store_memory("Time of death: [stationtime2text()]", 0)
+	if(mind) mind.store_memory("Time of death: [station_time_timestamp()]", 0)
 	switch_from_living_to_dead_mob_list()
 
 	update_icon()
 
-	if(ticker && ticker.mode)
-		ticker.mode.check_win()
+	if(SSticker && SSticker.mode)
+		SSticker.mode.check_win()
 	to_chat(src,"<span class='deadsay'>[show_dead_message]</span>")
 	var/datum/computer_file/report/crew_record/R = get_crewmember_record(real_name) //Try get a crew manifest for this mob
 	if(!R)

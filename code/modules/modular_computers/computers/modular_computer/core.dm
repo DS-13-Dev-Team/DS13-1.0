@@ -254,8 +254,8 @@
 			ui_update_needed = 1
 			last_battery_percent = batery_percent
 
-	if(stationtime2text() != last_world_time)
-		last_world_time = stationtime2text()
+	if(station_time_timestamp() != last_world_time)
+		last_world_time = station_time_timestamp()
 		ui_update_needed = 1
 
 	if(idle_threads.len)

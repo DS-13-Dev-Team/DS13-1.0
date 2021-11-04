@@ -11,5 +11,5 @@
 		return
 	last_tgs_check = rtod
 	var/server = CONFIG_GET(string/server)
-	return "Round Time: [gameTimestamp("hh:mm")] | Players: [length(GLOB.clients)] | Map: USG Ishimura | Mode: [ticker.mode.name] | Round Status: [ticker.HasRoundStarted() ? (ticker.IsRoundInProgress() ? "Active" : "Finishing") : "Starting"] | Link: [server ? server : "<byond://[world.internet_address]:[world.port]>"]"
+	return "Round Time: [gameTimestamp("hh:mm")] | Players: [length(GLOB.clients)] | Map: USG Ishimura | Mode: [SSticker.mode.name] | Round Status: [SSticker.HasRoundStarted() ? (SSticker.IsRoundInProgress() ? "Active" : "Finishing") : "Starting"] | Link: [server ? server : "<byond://[world.internet_address]:[world.port]>"]"
 
