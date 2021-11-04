@@ -129,7 +129,7 @@
 
 	// Prune restricted status. Broke it up for readability.
 	// Note that this is done before jobs are handed out.
-	for(var/datum/mind/player in SSticker.mode.get_players_for_role(id))
+	for(var/datum/mind/player in ticker.mode.get_players_for_role(id))
 		if(ghosts_only)
 			if(!isghostmind(player))
 				log_debug("[key_name(player)] is not eligible to become a [role_text]: Only ghosts may join as this role!")
@@ -259,7 +259,7 @@
 	if(!(flags & ANTAG_OVERRIDE_JOB) && (!player.current || istype(player.current, /mob/dead/new_player)))
 		log_debug("[player.key] was selected for [role_text] by lottery, but they have not joined the game.")
 		return 0
-	if(SSticker.current_state >= GAME_STATE_PLAYING && (isghostmind(player) || isnewplayer(player.current)) && !(player.ghost_role_valid()))
+	if(ticker.current_state >= GAME_STATE_PLAYING && (isghostmind(player) || isnewplayer(player.current)) && !(player.ghost_role_valid()))
 		log_debug("[player.key] was selected for [role_text] by lottery, but they are a ghost not in the antag pool.")
 		return 0
 

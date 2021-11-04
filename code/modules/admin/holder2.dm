@@ -2,7 +2,7 @@
 #define STEALTH_MANUAL 1
 #define STEALTH_AUTO 2
 
-GLOBAL_LIST_EMPTY(admin_datums)
+var/list/admin_datums = list()
 
 /datum/admins
 	var/rank         = "Temporary Admin"
@@ -30,7 +30,7 @@ GLOBAL_LIST_EMPTY(admin_datums)
 	admincaster_signature = "[GLOB.using_map.company_name] Officer #[rand(0,9)][rand(0,9)][rand(0,9)]"
 	rank = initial_rank
 	rights = initial_rights
-	GLOB.admin_datums[ckey] = src
+	admin_datums[ckey] = src
 
 /datum/admins/proc/associate(client/C)
 	if(istype(C))

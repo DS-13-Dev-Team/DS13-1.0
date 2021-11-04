@@ -69,10 +69,6 @@ h1.alert, h2.alert		{color: #000000;}
 
 /* Game Messages */
 
-.round_setup			{color: #db0000;		font-family: impact; font-size: 1.25em;}
-.round_header			{color: #db0000; 	display: block; text-align: center; font-family: courier; font-weight: bold; font-size: 2em;}
-.round_body				{color: #001427; 	display: block; text-align: center; font-family: trebuchet-ms; font-weight: bold; font-size: 1.5em;}
-
 .attack					{color: #ff0000;}
 .moderate				{color: #cc0000;}
 .disarm					{color: #990000;}

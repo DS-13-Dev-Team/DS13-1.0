@@ -71,10 +71,10 @@
 
 	callHook("death", list(src, gibbed))
 
-	if(SSticker && SSticker.mode)
+	if(ticker && ticker.mode)
 		sql_report_death(src)
 
-		SSticker.mode.check_win()
+		ticker.mode.check_win()
 
 	if(wearing_rig)
 		wearing_rig.notify_ai("<span class='danger'>Warning: user death event. Mobility control passed to integrated intelligence system.</span>")
@@ -87,7 +87,7 @@
 	handle_hud_list()
 
 	//TODO Future: Check if this was actually a crewmember
-	SSticker.mode.on_crew_death(src)
+	ticker.mode.on_crew_death(src)
 
 /mob/living/carbon/human/proc/ChangeToHusk()
 	if(HUSK in mutations)	return

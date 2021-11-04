@@ -151,8 +151,7 @@ var/list/admin_verbs_server = list(
 	/client/proc/Set_Holiday,
 	/datum/admins/proc/startnow,
 	/datum/admins/proc/restart,
-	/datum/admins/proc/delay_start,
-	/datum/admins/proc/delay_end,
+	/datum/admins/proc/delay,
 	/datum/admins/proc/toggleaban,
 	/client/proc/toggle_log_hrefs,
 	/datum/admins/proc/immreboot,
@@ -243,8 +242,7 @@ var/list/admin_verbs_rejuv = list(
 	/client/proc/cmd_admin_rejuvenate,
 	/datum/admins/proc/announce,		//priority announce something to all clients.,
 	/datum/admins/proc/restart,
-	/datum/admins/proc/delay_start,
-	/datum/admins/proc/delay_end,
+	/datum/admins/proc/delay,
 	/datum/admins/proc/toggleooc,		//toggles ooc on/off for everyone,
 	/datum/admins/proc/toggleaooc,		//toggles aooc on/off for everyone,
 	/datum/admins/proc/togglelooc,		//toggles looc on/off for everyone,
@@ -322,8 +320,7 @@ var/list/admin_verbs_hideable = list(
 	/client/proc/Set_Holiday,
 	/datum/admins/proc/startnow,
 	/datum/admins/proc/restart,
-	/datum/admins/proc/delay_start,
-	/datum/admins/proc/delay_end,
+	/datum/admins/proc/delay,
 	/datum/admins/proc/toggleaban,
 	/client/proc/toggle_log_hrefs,
 	/datum/admins/proc/immreboot,
@@ -670,7 +667,7 @@ var/list/admin_verbs_mentor = list(
 	if(!check_rights(R_ADMIN))	return
 
 	if(!warned_ckey || !istext(warned_ckey))	return
-	if(warned_ckey in GLOB.admin_datums)
+	if(warned_ckey in admin_datums)
 		to_chat(usr, "<font color='red'>Error: warn(): You can't warn admins.</font>")
 		return
 

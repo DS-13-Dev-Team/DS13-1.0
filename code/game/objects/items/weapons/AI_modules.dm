@@ -16,7 +16,7 @@ AI MODULES
 	force = 5.0
 	w_class = ITEM_SIZE_SMALL
 	throwforce = 5.0
-
+	
 	throw_range = 15
 	origin_tech = list(TECH_DATA = 3)
 	var/datum/ai_laws/laws = null
@@ -34,7 +34,7 @@ AI MODULES
 			to_chat(usr, "You haven't selected an AI to transmit laws to!")
 			return
 
-		if(SSticker && SSticker.mode && SSticker.mode.name == "blob")
+		if(ticker && ticker.mode && ticker.mode.name == "blob")
 			to_chat(usr, "Law uploads have been disabled by [GLOB.using_map.company_name]!")
 			return
 

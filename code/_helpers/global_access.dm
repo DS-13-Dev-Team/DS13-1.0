@@ -43,6 +43,8 @@
 			return global._client_preferences_by_type;
 		if("account_hack_attempted")
 			return global.account_hack_attempted;
+		if("admin_datums")
+			return global.admin_datums;
 		if("admin_pm_repository")
 			return global.admin_pm_repository;
 		if("admin_ranks")
@@ -383,6 +385,8 @@
 			return global.last_chew;
 		if("last_message_id")
 			return global.last_message_id;
+		if("last_round_duration")
+			return global.last_round_duration;
 		if("last_tick_duration")
 			return global.last_tick_duration;
 		if("light_overlay_cache")
@@ -419,6 +423,8 @@
 			return global.mark;
 		if("master_controller")
 			return global.master_controller;
+		if("master_mode")
+			return global.master_mode;
 		if("matchmaker")
 			return global.matchmaker;
 		if("maze_cell_count")
@@ -485,6 +491,10 @@
 			return global.newscaster_standard_feeds;
 		if("next_account_number")
 			return global.next_account_number;
+		if("next_duration_update")
+			return global.next_duration_update;
+		if("next_station_date_change")
+			return global.next_station_date_change;
 		if("ninjastart")
 			return global.ninjastart;
 		if("ntnet_card_uid")
@@ -561,6 +571,8 @@
 			return global.priv_station_access;
 		if("priv_syndicate_access")
 			return global.priv_syndicate_access;
+		if("processScheduler")
+			return global.processScheduler;
 		if("prometheans")
 			return global.prometheans;
 		if("protected_objects")
@@ -603,6 +615,10 @@
 			return global.robot_modules;
 		if("round_progressing")
 			return global.round_progressing;
+		if("round_start_time")
+			return global.round_start_time;
+		if("roundstart_hour")
+			return global.roundstart_hour;
 		if("rune_list")
 			return global.rune_list;
 		if("same_wires")
@@ -645,6 +661,8 @@
 			return global.sqllogging;
 		if("station_account")
 			return global.station_account;
+		if("station_date")
+			return global.station_date;
 		if("stool_cache")
 			return global.stool_cache;
 		if("stored_shock_by_ref")
@@ -695,6 +713,10 @@
 			return global.tertiary_mode;
 		if("text_tag_icons")
 			return global.text_tag_icons;
+		if("ticker")
+			return global.ticker;
+		if("tickerProcess")
+			return global.tickerProcess;
 		if("ticket_panels")
 			return global.ticket_panels;
 		if("tickets")
@@ -707,6 +729,10 @@
 			return global.total_lighting_sources;
 		if("total_unit_tests")
 			return global.total_unit_tests;
+		if("transfer_controller")
+			return global.transfer_controller;
+		if("turbolift_controller")
+			return global.turbolift_controller;
 		if("turbolifts")
 			return global.turbolifts;
 		if("turret_icons")
@@ -735,6 +761,8 @@
 			return global.view_variables_no_assoc;
 		if("virusDB")
 			return global.virusDB;
+		if("vote")
+			return global.vote;
 		if("vsc")
 			return global.vsc;
 		if("wax_recipes")
@@ -808,6 +836,8 @@
 			global._client_preferences_by_type=newval;
 		if("account_hack_attempted")
 			global.account_hack_attempted=newval;
+		if("admin_datums")
+			global.admin_datums=newval;
 		if("admin_pm_repository")
 			global.admin_pm_repository=newval;
 		if("admin_ranks")
@@ -1148,6 +1178,8 @@
 			global.last_chew=newval;
 		if("last_message_id")
 			global.last_message_id=newval;
+		if("last_round_duration")
+			global.last_round_duration=newval;
 		if("last_tick_duration")
 			global.last_tick_duration=newval;
 		if("light_overlay_cache")
@@ -1184,6 +1216,8 @@
 			global.mark=newval;
 		if("master_controller")
 			global.master_controller=newval;
+		if("master_mode")
+			global.master_mode=newval;
 		if("matchmaker")
 			global.matchmaker=newval;
 		if("maze_cell_count")
@@ -1250,6 +1284,10 @@
 			global.newscaster_standard_feeds=newval;
 		if("next_account_number")
 			global.next_account_number=newval;
+		if("next_duration_update")
+			global.next_duration_update=newval;
+		if("next_station_date_change")
+			global.next_station_date_change=newval;
 		if("ninjastart")
 			global.ninjastart=newval;
 		if("ntnet_card_uid")
@@ -1326,6 +1364,8 @@
 			global.priv_station_access=newval;
 		if("priv_syndicate_access")
 			global.priv_syndicate_access=newval;
+		if("processScheduler")
+			global.processScheduler=newval;
 		if("prometheans")
 			global.prometheans=newval;
 		if("protected_objects")
@@ -1367,7 +1407,11 @@
 		if("robot_modules")
 			global.robot_modules=newval;
 		if("round_progressing")
-			global.round_progressing=newval;;
+			global.round_progressing=newval;
+		if("round_start_time")
+			global.round_start_time=newval;
+		if("roundstart_hour")
+			global.roundstart_hour=newval;
 		if("rune_list")
 			global.rune_list=newval;
 		if("same_wires")
@@ -1410,6 +1454,8 @@
 			global.sqllogging=newval;
 		if("station_account")
 			global.station_account=newval;
+		if("station_date")
+			global.station_date=newval;
 		if("stool_cache")
 			global.stool_cache=newval;
 		if("stored_shock_by_ref")
@@ -1460,6 +1506,10 @@
 			global.tertiary_mode=newval;
 		if("text_tag_icons")
 			global.text_tag_icons=newval;
+		if("ticker")
+			global.ticker=newval;
+		if("tickerProcess")
+			global.tickerProcess=newval;
 		if("ticket_panels")
 			global.ticket_panels=newval;
 		if("tickets")
@@ -1472,6 +1522,10 @@
 			global.total_lighting_sources=newval;
 		if("total_unit_tests")
 			global.total_unit_tests=newval;
+		if("transfer_controller")
+			global.transfer_controller=newval;
+		if("turbolift_controller")
+			global.turbolift_controller=newval;
 		if("turbolifts")
 			global.turbolifts=newval;
 		if("turret_icons")
@@ -1500,6 +1554,8 @@
 			global.view_variables_no_assoc=newval;
 		if("virusDB")
 			global.virusDB=newval;
+		if("vote")
+			global.vote=newval;
 		if("vsc")
 			global.vsc=newval;
 		if("wax_recipes")
@@ -1551,6 +1607,7 @@
 	"_client_preferences_by_key",
 	"_client_preferences_by_type",
 	"account_hack_attempted",
+	"admin_datums",
 	"admin_pm_repository",
 	"admin_ranks",
 	"admin_secrets",
@@ -1727,6 +1784,7 @@
 	"language_keys",
 	"last_chew",
 	"last_message_id",
+	"last_round_duration",
 	"last_tick_duration",
 	"light_overlay_cache",
 	"lighting_overlays_initialised",
@@ -1746,6 +1804,7 @@
 	"maploader",
 	"mark",
 	"master_controller",
+	"master_mode",
 	"matchmaker",
 	"maze_cell_count",
 	"mechas_list",
@@ -1779,6 +1838,8 @@
 	"news_network",
 	"newscaster_standard_feeds",
 	"next_account_number",
+	"next_duration_update",
+	"next_station_date_change",
 	"ninjastart",
 	"ntnet_card_uid",
 	"ntnet_global",
@@ -1817,6 +1878,7 @@
 	"priv_region_access",
 	"priv_station_access",
 	"priv_syndicate_access",
+	"processScheduler",
 	"prometheans",
 	"protected_objects",
 	"rad_collectors",
@@ -1838,6 +1900,8 @@
 	"robot_inventory",
 	"robot_modules",
 	"round_progressing",
+	"round_start_time",
+	"roundstart_hour",
 	"rune_list",
 	"same_wires",
 	"secondary_mode",
@@ -1860,6 +1924,7 @@
 	"splatter_cache",
 	"sqllogging",
 	"station_account",
+	"station_date",
 	"stool_cache",
 	"stored_shock_by_ref",
 	"string_part_flags",
@@ -1885,12 +1950,16 @@
 	"telecomms_list",
 	"tertiary_mode",
 	"text_tag_icons",
+	"ticker",
+	"tickerProcess",
 	"ticket_panels",
 	"tickets",
 	"total_lighting_corners",
 	"total_lighting_overlays",
 	"total_lighting_sources",
 	"total_unit_tests",
+	"transfer_controller",
+	"turbolift_controller",
 	"turbolifts",
 	"turret_icons",
 	"uniqueness_repository",
@@ -1905,6 +1974,7 @@
 	"view_variables_dont_expand",
 	"view_variables_no_assoc",
 	"virusDB",
+	"vote",
 	"vsc",
 	"wax_recipes",
 	"weighted_mundaneevent_locations",

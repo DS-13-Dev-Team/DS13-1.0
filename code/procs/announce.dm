@@ -112,7 +112,7 @@ datum/announcement/proc/NewsCast(message as text, message_title as text)
 /proc/AnnounceArrival(var/mob/living/carbon/human/character, var/datum/job/job, var/join_message)
 	if(!istype(job) || !job.announced)
 		return
-	if (SSticker.current_state != GAME_STATE_PLAYING)
+	if (ticker.current_state != GAME_STATE_PLAYING)
 		return
 	var/rank = job.title
 	if(character.mind.role_alt_title)

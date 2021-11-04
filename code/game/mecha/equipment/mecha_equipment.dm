@@ -140,7 +140,7 @@
 		chassis.occupant_message("\icon[src] [message]")
 	return
 
-/obj/item/mecha_parts/mecha_equipment/log_message(message)
+/obj/item/mecha_parts/mecha_equipment/proc/log_message(message)
 	if(chassis)
 		chassis.log_message("<i>[src]:</i> [message]")
 	return

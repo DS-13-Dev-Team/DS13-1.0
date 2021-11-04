@@ -208,7 +208,7 @@ var/datum/callback/proc_to_call, var/proc_interval = 10)
 			break
 
 		if (proc_to_call)
-			//Deplete this SSticker
+			//Deplete this ticker
 			proc_ticker -= 1
 
 			//If it goes below zero, we ADD not set the proc interval, so that any overflow isn't lost
@@ -294,7 +294,7 @@ var/datum/callback/proc_to_call, var/proc_interval = 10)
 				break
 
 		if (proc_to_call)
-			//Deplete this SSticker
+			//Deplete this ticker
 			proc_ticker -= 1
 
 			//If it goes below zero, we ADD not set the proc interval, so that any overflow isn't lost

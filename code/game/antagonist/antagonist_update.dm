@@ -79,13 +79,13 @@
 							qdel(I)
 
 /datum/antagonist/proc/update_current_antag_max()
-	if (SSticker.current_state <	GAME_STATE_PLAYING)
+	if (ticker.current_state <	GAME_STATE_PLAYING)
 		cur_max = hard_cap
 	else
 		cur_max = hard_cap_round
 
 
-	var/scaling = SSticker.mode.antag_scaling_coeff
+	var/scaling = ticker.mode.antag_scaling_coeff
 	if (!isnull(override_scaling))
 		scaling = override_scaling
 
@@ -98,4 +98,4 @@
 
 		// Minimum: initial_spawn_target
 		// Maximum: hard_cap or hard_cap_round
-		cur_max = max(initial_spawn_target,min(round(count/SSticker.mode.antag_scaling_coeff),cur_max))
+		cur_max = max(initial_spawn_target,min(round(count/ticker.mode.antag_scaling_coeff),cur_max))

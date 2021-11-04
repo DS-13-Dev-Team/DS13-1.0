@@ -116,7 +116,7 @@
 	if(!GLOB.changelog_tgui)
 		GLOB.changelog_tgui = new /datum/changelog()
 
-	GLOB.changelog_tgui.tgui_interact(mob)
+	GLOB.changelog_tgui.ui_interact(mob)
 	if(prefs.lastchangelog != GLOB.changelog_hash)
 		prefs.lastchangelog = GLOB.changelog_hash
 		prefs.save_preferences()

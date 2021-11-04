@@ -166,5 +166,4 @@
 	var/evasion = 15	//A base percentage chance of avoiding attacks which would otherwise hit
 
 	//Seciruty
-	var/list/logging = list()
 	var/static/next_mob_id = 0

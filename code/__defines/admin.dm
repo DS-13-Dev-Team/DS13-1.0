@@ -49,16 +49,7 @@
 #define TICKET_OPEN     1 // Ticket has been created, but not responded to
 #define TICKET_ASSIGNED 2 // An admin has assigned themself to the ticket and will respond
 
-#define ADMIN_QUE(user) "(<a href='?_src_=holder;moreinfo=[REF(user)]'>?</a>)"
-#define ADMIN_FLW(user) "(<a href='?_src_=holder;observefollow=[REF(user)]'>FLW</a>)"
 #define ADMIN_JMP(src) "(<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[src.x];Y=[src.y];Z=[src.z]'>JMP</a>)"
-#define ADMIN_PP(user) "(<a href='?_src_=holder;adminplayeropts=[REF(user)]'>PP</a>)"
-#define ADMIN_VV(atom) "(<a href='?_src_=vars;Vars=[REF(atom)]'>VV</a>)"
-#define ADMIN_SM(user) "(<a href='?_src_=holder;subtlemessage=[REF(user)]'>SM</a>)"
-#define ADMIN_FULLMONTY_NONAME(user) "[ADMIN_QUE(user)] [ADMIN_PP(user)] [ADMIN_VV(user)] [ADMIN_SM(user)] [ADMIN_JMP(user)] [ADMIN_FLW(user)]"
-#define ADMIN_FULLMONTY(user) "[key_name_admin(user)] [ADMIN_FULLMONTY_NONAME(user)]"
-#define ADMIN_TPMONTY_NONAME(user) "[ADMIN_QUE(user)] [ADMIN_JMP(user)] [ADMIN_FLW(user)]"
-#define ADMIN_TPMONTY(user) "[key_name_admin(user)] [ADMIN_TPMONTY_NONAME(user)]"
 #define COORD(src) "[src ? src.Admin_Coordinates_Readable() : "nonexistent location"]"
 #define AREACOORD(src) "[src ? src.Admin_Coordinates_Readable(TRUE) : "nonexistent location"]"
 

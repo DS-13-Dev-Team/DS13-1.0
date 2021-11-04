@@ -126,9 +126,12 @@ GLOBAL_VAR(restart_counter)
 #endif
 
 	GLOB.timezoneOffset = text2num(time2text(0,"hh")) * 36000
+
+	processScheduler = new
 	master_controller = new /datum/controller/game_controller()
 
-	Master.Initialize(10, FALSE, TRUE)
+	processScheduler.deferSetupFor(/datum/controller/process/ticker)
+	processScheduler.setup()
 
 	if(CONFIG_GET(flag/generate_map))
 		GLOB.using_map.perform_map_generation()
@@ -180,8 +183,8 @@ var/world_topic_spam_protect_time = world.timeofday
 
 		// This is dumb, but spacestation13.com's banners break if player count isn't the 8th field of the reply, so... this has to go here.
 		s["players"] = 0
-		s["stationtime"] = station_time_timestamp()
-		s["roundduration"] = worldtime2text()
+		s["stationtime"] = stationtime2text()
+		s["roundduration"] = roundduration2text()
 		s["map"] = GLOB.using_map.full_name
 
 		var/active = 0
@@ -517,15 +520,17 @@ var/world_topic_spam_protect_time = world.timeofday
 
 		msg += "Current Map: [GLOB.using_map.full_name]"
 
-		if(SSticker.mode)
-			msg += "Game Mode: [SSticker.mode.name]"
-			msg += "Round End State: [SSticker.mode.round_finished]"
+		if(ticker.mode)
+			msg += "Game Mode: [ticker.mode.name]"
+			msg += "Round End State: [ticker.mode.round_finished]"
 
 		if(length(GLOB.clients))
 			msg += "Players: [length(GLOB.clients)]"
 
 		if(length(msg))
 			send2chat("GAME: " + msg.Join(" | "), "game") //TOO!
+
+	processScheduler.stop()
 
 	if(TgsAvailable())
 		var/do_hard_reboot
@@ -557,6 +562,25 @@ var/world_topic_spam_protect_time = world.timeofday
 /world/Del()
 	callHook("shutdown")
 	return ..()
+
+/hook/startup/proc/loadMode()
+	world.load_mode()
+	return 1
+
+/world/proc/load_mode()
+	if(!fexists("data/mode.txt"))
+		return
+
+	var/list/Lines = file2list("data/mode.txt")
+	if(Lines.len)
+		if(Lines[1])
+			master_mode = Lines[1]
+			log_misc("Saved mode is '[master_mode]'")
+
+/world/proc/save_mode(var/the_mode)
+	var/F = file("data/mode.txt")
+	fdel(F)
+	F << the_mode
 
 /world/proc/load_mods()
 	if(CONFIG_GET(flag/admin_legacy_system))
@@ -611,7 +635,7 @@ var/world_topic_spam_protect_time = world.timeofday
 
 	var/new_status = ""
 	new_status += "<b><a href='[discord_url ? discord_url : "#"]'>[server_name] &#8212; [mapname]</a></b>"
-	new_status += "<br>Mode: <b>[SSticker.mode ? SSticker.mode.name : "Lobby"]</b>"
+	new_status += "<br>Mode: <b>[ticker.mode ? ticker.mode.name : "Lobby"]</b>"
 	new_status += "<br>Round time: <b>[gameTimestamp("hh:mm")]</b>"
 
 	// Finally set the new status
