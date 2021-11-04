@@ -15,7 +15,12 @@
 		mob_target = target
 		target = mob_target.client
 	else if(!istype(target, /client))
-		CRASH("add_verb called on a non-mob and non-client")
+		//Things that aren't a client or mob don't do fancy handling
+		if (isatom(target))
+			var/atom/D = target
+			D.verbs += verb_or_list_to_add
+			return TRUE
+		CRASH("add_verb called on a non datum")
 	var/list/verbs_list = list()
 	if(!islist(verb_or_list_to_add))
 		verbs_list += verb_or_list_to_add
@@ -60,7 +65,12 @@
 		mob_target = target
 		target = mob_target.client
 	else if(!istype(target, /client))
-		CRASH("remove_verb called on a non-mob and non-client")
+		//Things that aren't a client or mob don't do fancy handling
+		if (isatom(target))
+			var/atom/D = target
+			D.verbs -= verb_or_list_to_remove
+			return TRUE
+		CRASH("remove_verb called on a non datum")
 
 	var/list/verbs_list = list()
 	if(!islist(verb_or_list_to_remove))
