@@ -1072,6 +1072,7 @@
 #include "code\game\objects\items\weapons\gift_wrappaper.dm"
 #include "code\game\objects\items\weapons\handcuffs.dm"
 #include "code\game\objects\items\weapons\improvised_components.dm"
+#include "code\game\objects\items\weapons\industrial_net.dm"
 #include "code\game\objects\items\weapons\ironing_iron.dm"
 #include "code\game\objects\items\weapons\janitor_sign.dm"
 #include "code\game\objects\items\weapons\legcuffs.dm"
