@@ -26,6 +26,7 @@
 #define iscredits(A) istype(A, /obj/item/weapon/spacecash/ewallet)
 
 #define is_drone(A) istype(A, /mob/living/silicon/robot/drone)
+#define isdatum(A) istype(A, /datum)
 
 #define isEye(A) istype(A, /mob/dead/observer/eye)
 
