@@ -18,6 +18,12 @@
 /hook/roundstart
 
 /**
+ * Roundend hook.
+ * Called in gameticker.dm when a round ends.
+ */
+/hook/roundend
+
+/**
  * Shutdown hook.
  * Called in world.dm when world/Del is called.
  */

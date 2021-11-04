@@ -1,4 +1,4 @@
-#define PUBLIC_GAME_MODE (SSticker ? (SSticker.hide_mode == 0 ? GLOB.master_mode : "Secret") : "Unknown")
+#define PUBLIC_GAME_MODE (ticker ? (ticker.hide_mode == 0 ? master_mode : "Secret") : "Unknown")
 
 #define Clamp(value, low, high) 	(value <= low ? low : (value >= high ? high : value))
 #define CLAMP01(x) 		(Clamp(x, 0, 1))
@@ -86,6 +86,16 @@
 #define FLAGS_EQUALS(flag, flags) ((flag & (flags)) == (flags))
 
 #define JOINTEXT(X) jointext(X, null)
+
+#define SPAN_NOTICE(X) "<span class='notice'>[X]</span>"
+
+#define SPAN_WARNING(X) "<span class='warning'>[X]</span>"
+
+#define SPAN_DANGER(X) "<span class='danger'>[X]</span>"
+
+#define SPAN_EXECUTION(X) "<span class='execution'>[X]</span>"
+
+#define SPAN_BOLDANNOUNCE(str) ("<span class='boldannounce'>" + str + "</span>")
 
 //Makes span tags easier
 #define span(class, text) ("<span class='[class]'>[text]</span>")

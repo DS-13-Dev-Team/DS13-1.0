@@ -50,7 +50,7 @@
 /datum/report_field/proc/set_value(given_value)
 	value = given_value
 
-//Exports the contents of the field into html for viewing.
+//Exports the contents of the field into html for viewing. 
 /datum/report_field/proc/get_value()
 	return value
 
@@ -107,7 +107,7 @@ Basic field subtypes.
 //Uses YYYY-MM-DD format for dates.
 /datum/report_field/date/New()
 	..()
-	value = station_time_timestamp()
+	value = stationdate2text()
 
 /datum/report_field/date/set_value(given_value)
 	value = sanitize_time(given_value, value, "YEAR-MM-DD")

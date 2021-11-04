@@ -1,6 +1,5 @@
 /mob/Destroy()//This makes sure that mobs with clients/keys are not just deleted from the game.
 	STOP_PROCESSING(SSmobs, src)
-	GLOB.mob_list -= src
 	GLOB.dead_mob_list -= src
 	GLOB.living_mob_list -= src
 	unset_machine()
@@ -23,7 +22,6 @@
 	return QDEL_HINT_HARDDEL
 
 /mob/Initialize()
-	GLOB.mob_list += src
 	. = ..()
 	skillset = new skillset(src)
 	if(!move_intent)

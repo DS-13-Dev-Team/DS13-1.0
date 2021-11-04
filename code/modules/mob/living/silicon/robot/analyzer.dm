@@ -10,7 +10,7 @@
 	slot_flags = SLOT_BELT
 	throwforce = 3
 	w_class = ITEM_SIZE_SMALL
-
+	
 	throw_range = 10
 	origin_tech = list(TECH_MAGNET = 2, TECH_BIO = 1, TECH_ENGINEERING = 2)
 	matter = list(MATERIAL_STEEL = 500, MATERIAL_GLASS = 200)
@@ -45,7 +45,7 @@
 			user.show_message("\t Key: <font color='#ffa500'>Electronics</font>/<font color='red'>Brute</font>", 1)
 			user.show_message("\t Damage Specifics: <font color='#ffa500'>[BU]</font> - <font color='red'>[BR]</font>")
 			if(M.stat == DEAD)
-				user.show_message("<span class='notice'>Time of Failure: [time2text(worldtime2text(M.timeofdeath))]</span>")
+				user.show_message("<span class='notice'>Time of Failure: [time2text(worldtime2stationtime(M.timeofdeath))]</span>")
 			var/mob/living/silicon/robot/H = M
 			var/list/damaged = H.get_damaged_components(1,1,1)
 			user.show_message("<span class='notice'>Localized Damage:</span>",1)

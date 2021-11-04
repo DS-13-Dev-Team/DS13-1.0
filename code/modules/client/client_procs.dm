@@ -2,6 +2,8 @@
 	//SECURITY//
 	////////////
 #define UPLOAD_LIMIT		10485760	//Restricts client uploads to the server to 10MB //Boosted this thing. What's the worst that can happen?
+#define MIN_CLIENT_VERSION	0		//Just an ambiguously low version for now, I don't want to suddenly stop people playing.
+									//I would just like the code ready should it ever need to be used.
 
 //#define TOPIC_DEBUGGING 1
 
@@ -101,16 +103,10 @@
 		to_chat(href_logfile, "<small>[time2text(world.timeofday,"hh:mm")] [src] (usr:[usr])</small> || [hsrc ? "[hsrc] " : ""][href]<br>")
 
 	switch(href_list["_src_"])
-		if("holder")
-			hsrc = holder
-		if("usr")
-			hsrc = mob
-		if("prefs")
-			return prefs.process_link(usr,href_list)
-		if("vars")
-			return view_var_Topic(href,href_list,hsrc)
-		if("vote")
-			return SSvote.Topic(href, href_list)
+		if("holder")	hsrc = holder
+		if("usr")		hsrc = mob
+		if("prefs")		return prefs.process_link(usr,href_list)
+		if("vars")		return view_var_Topic(href,href_list,hsrc)
 
 	..()	//redirect to hsrc.Topic()
 
@@ -153,6 +149,9 @@
 	// Instantiate tgui panel
 	tgui_panel = new(src)
 
+	if(byond_version < MIN_CLIENT_VERSION)		//Out of date client.
+		return null
+
 	if(!CONFIG_GET(flag/guests_allowed) && IsGuestKey(key))
 		tgui_alert(src,"This server doesn't allow guest accounts to play. Please go to http://www.byond.com/ and register for a key.","Guest")
 		qdel(src)
@@ -160,7 +159,7 @@
 
 	if(CONFIG_GET(number/player_limit) != 0 && (GLOB.clients.len >= CONFIG_GET(number/player_limit)))
 		var/allowed = FALSE
-		if (ckey in GLOB.admin_datums)
+		if (ckey in admin_datums)
 			allowed = TRUE
 		if(CONFIG_GET(flag/always_admit_patrons) && (ckey in GLOB.patron_keys))
 			allowed = TRUE
@@ -185,13 +184,10 @@
 	GLOB.ckey_directory[ckey] = src
 
 	//Admin Authorisation
-	holder = GLOB.admin_datums[ckey]
+	holder = admin_datums[ckey]
 	if(holder)
 		GLOB.admins |= src
 		holder.owner = src
-
-	var/full_version = "[byond_version].[byond_build ? byond_build : "xxx"]"
-	log_access("Login: [key_name(src)] from [address ? address : "localhost"]-[computer_id] || BYOND v[full_version]")
 
 	//preferences datum - also holds some persistant data for the client (because we may as well keep these datums to a minimum)
 	prefs = preferences_datums[ckey]
@@ -200,14 +196,6 @@
 		preferences_datums[ckey] = prefs
 	prefs.last_ip = address				//these are gonna be used for banning
 	prefs.last_id = computer_id			//these are gonna be used for banning
-
-	if(GLOB.player_details[ckey])
-		player_details = GLOB.player_details[ckey]
-		player_details.byond_version = full_version
-	else
-		player_details = new
-		player_details.byond_version = full_version
-		GLOB.player_details[ckey] = player_details
 
 	. = ..()	//calls mob.Login()
 	prefs.sanitize_preferences()
@@ -392,6 +380,7 @@
 
 
 #undef UPLOAD_LIMIT
+#undef MIN_CLIENT_VERSION
 
 //checks if a client is afk
 //3000 frames = 5 minutes

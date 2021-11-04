@@ -1,4 +1,3 @@
-#define DEFAULT_WHO_CELLS_PER_ROW 4
 
 /client/verb/who()
 	set name = "Who"
@@ -7,64 +6,58 @@
 	var/msg = "<b>Current Players:</b>\n"
 
 	var/list/Lines = list()
-	var/columns_per_row = DEFAULT_WHO_CELLS_PER_ROW
 
-	if(holder)
-		if (check_rights(R_ADMIN,0) && isghost(src.mob))//If they have +ADMIN and are a ghost they can see players IC names and statuses.
-			columns_per_row = 1
-			var/mob/dead/observer/ghost/G = src.mob
-			if(!G.started_as_observer)//If you aghost to do this, KorPhaeron will deadmin you in your sleep.
-				log_admin("[key_name(usr)] checked advanced who in-round")
-			for(var/client/C in GLOB.clients)
-				var/entry = "\t[C.key]"
-				if (isnewplayer(C.mob))
-					entry += " - <font color='darkgray'><b>In Lobby</b></font>"
-				else
-					entry += " - Playing as [C.mob.real_name]"
-					switch(C.mob.stat)
-						if(UNCONSCIOUS)
-							entry += " - <font color='darkgray'><b>Unconscious</b></font>"
-						if(DEAD)
-							if(isghost(C.mob))
-								var/mob/dead/observer/ghost/O = C.mob
-								if(O.started_as_observer)
-									entry += " - <font color='gray'>Observing</font>"
-								else
-									entry += " - <font color='black'><b>DEAD</b></font>"
-							else if(issignal(C.mob))
-								entry += " - <font color='gray>Signal</font>"
-							else
-								entry += " - <font color='black'><b>DEAD</b></font>"
-					if(is_special_character(C.mob))
-						entry += " - <b><font color='red'>Antagonist</font></b>"
-					if(C.is_afk())
-						entry += " (AFK - [C.inactivity2text()])"
-				entry += " [ADMIN_QUE(C.mob)]"
-				entry += " ([round(C.avgping, 1)]ms)"
+	if(check_rights(R_INVESTIGATE, 0))
+		for(var/client/C in GLOB.clients)
+			var/entry = "\t[C.key]"
+			if(!C.mob) //If mob is null, print error and skip rest of info for client.
+				entry += " - <font color='red'><i>HAS NO MOB</i></font>"
 				Lines += entry
-		else//If they don't have +ADMIN, only show hidden admins
-			for(var/client/C in GLOB.clients)
-				var/entry = "[C.key]"
-				entry += " ([round(C.avgping, 1)]ms)"
-				Lines += entry
+				continue
+
+			entry += " - Playing as [C.mob.real_name]"
+			switch(C.mob.stat)
+				if(UNCONSCIOUS)
+					entry += " - <font color='darkgray'><b>Unconscious</b></font>"
+				if(DEAD)
+					if(isghost(C.mob))
+						var/mob/dead/observer/ghost/O = C.mob
+						if(O.started_as_observer)
+							entry += " - <font color='gray'>Observing</font>"
+						else
+							entry += " - <font color='black'><b>DEAD</b></font>"
+					else
+						entry += " - <font color='black'><b>DEAD</b></font>"
+
+			var/age
+			if(isnum(C.player_age))
+				age = C.player_age
+			else
+				age = 0
+
+			if(age <= 1)
+				age = "<font color='#ff0000'><b>[age]</b></font>"
+			else if(age < 10)
+				age = "<font color='#ff8c00'><b>[age]</b></font>"
+
+			entry += " - [age]"
+
+			if(is_special_character(C.mob))
+				entry += " - <b><font color='red'>Antagonist</font></b>"
+			if(C.is_afk())
+				entry += " (AFK - [C.inactivity2text()])"
+			entry += " (<A HREF='?_src_=holder;adminmoreinfo=\ref[C.mob]'>?</A>)"
+			Lines += entry
 	else
 		for(var/client/C in GLOB.clients)
 			if(!C.is_stealthed())
-				Lines += "[C.key] ([round(C.avgping, 1)]ms)"
+				Lines += C.key
 
-	var/num_lines = 0
-	msg += "<table style='width: 100%; table-layout: fixed'><tr>"
 	for(var/line in sortList(Lines))
-		msg += "<td>[line]</td>"
-
-		num_lines += 1
-		if (num_lines == columns_per_row)
-			num_lines = 0
-			msg += "</tr><tr>"
-	msg += "</tr></table>"
+		msg += "[line]\n"
 
 	msg += "<b>Total Players: [length(Lines)]</b>"
-	to_chat(src, "<span class='infoplain'>[msg]</span>")
+	to_chat(src, msg)
 
 
 // Staffwho verb. Displays online staff. Hides stealthed or AFK staff members automatically.
@@ -89,9 +82,9 @@
 		if(holder)
 			if(C.is_stealthed())
 				extra += " (Stealthed)"
-			if(isghost(C.mob))
+			if(isobserver(C.mob))
 				extra += " - Observing"
-			else if(isnewplayer(C.mob))
+			else if(istype(C.mob,/mob/dead/new_player))
 				extra += " - Lobby"
 			else
 				extra += " - Playing"
@@ -110,18 +103,9 @@
 		else if (R_DEBUG & C.holder.rights)
 			devwho += "\t[C] is a [C.holder.rank][extra]\n"
 			dev_count++
-	var/msg = ""
-	if(admin_count || mod_count || ment_count || dev_count)
-		msg += "<b><big>Online staff:</big></b>"
-		if(admin_count)
-			msg += "<b>Current Admins ([admin_count]):</b><br>[adminwho]<br>"
-		if(mod_count)
-			msg += "<b>Current Moderators ([mod_count]):</b><br>[modwho]<br>"
-		if(ment_count)
-			msg += "<b>Current Mentors ([ment_count]):</b><br>[mentwho]<br>"
-		if(dev_count)
-			msg += "<b>Current Developers ([dev_count]):</b><br>[devwho]<br>"
-	if(!msg)
-		to_chat(src, "<span class='infoplain'>[msg]</span>")
 
-#undef DEFAULT_WHO_CELLS_PER_ROW
+	to_chat(src, "<b><big>Online staff:</big></b>")
+	to_chat(src, "<b>Current Admins ([admin_count]):</b><br>[adminwho]<br>")
+	to_chat(src, "<b>Current Moderators ([mod_count]):</b><br>[modwho]<br>")
+	to_chat(src, "<b>Current Mentors ([ment_count]):</b><br>[mentwho]<br>")
+	to_chat(src, "<b>Current Developers ([dev_count]):</b><br>[devwho]<br>")

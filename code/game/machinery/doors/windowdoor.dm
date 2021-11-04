@@ -82,7 +82,7 @@
 					close()
 		return
 	var/mob/M = AM // we've returned by here if M is not a mob
-	if (!( SSticker ))
+	if (!( ticker ))
 		return
 	if (src.operating)
 		return
@@ -115,7 +115,7 @@
 /obj/machinery/door/window/open()
 	if (operating == 1) //doors can still open when emag-disabled
 		return 0
-	if (!SSticker)
+	if (!ticker)
 		return 0
 	if (!src.operating) //in case of emag
 		src.operating = 1

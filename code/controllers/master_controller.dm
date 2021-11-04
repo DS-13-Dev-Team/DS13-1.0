@@ -40,6 +40,8 @@ datum/controller/game_controller/proc/setup()
 	setup_objects()
 	setupgenetics()
 
+	transfer_controller = new
+
 	report_progress("Initializations complete")
 	initialization_stage |= INITIALIZATION_COMPLETE
 

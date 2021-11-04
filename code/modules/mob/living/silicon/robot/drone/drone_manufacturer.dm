@@ -40,7 +40,7 @@
 
 /obj/machinery/drone_fabricator/Process()
 
-	if(SSticker.current_state < GAME_STATE_PLAYING)
+	if(ticker.current_state < GAME_STATE_PLAYING)
 		return
 
 	if(stat & NOPOWER || !produce_drones)
@@ -95,7 +95,7 @@
 
 /proc/try_drone_spawn(var/mob/user, var/obj/machinery/drone_fabricator/fabricator)
 
-	if(SSticker.current_state < GAME_STATE_PLAYING)
+	if(ticker.current_state < GAME_STATE_PLAYING)
 		to_chat(user, "<span class='danger'>The game hasn't started yet!</span>")
 		return
 

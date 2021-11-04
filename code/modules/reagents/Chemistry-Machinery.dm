@@ -367,7 +367,7 @@
 
 			var/obj/item/weapon/paper/P = new /obj/item/weapon/paper(loc)
 			P.info = "<center><b>Chemical Analysis</b></center><br>"
-			P.info += "<b>Time of analysis:</b> [station_time()]<br><br>"
+			P.info += "<b>Time of analysis:</b> [worldtime2stationtime(world.time)]<br><br>"
 			P.info += "<b>Chemical name:</b> [R.name]<br>"
 			if(istype(R, /datum/reagent/blood))
 				var/datum/reagent/blood/B = R

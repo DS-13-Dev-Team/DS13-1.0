@@ -69,8 +69,8 @@
 
 	..()
 
-/obj/item/integrated_circuit/time/SSticker
-	name = "SSticker circuit"
+/obj/item/integrated_circuit/time/ticker
+	name = "ticker circuit"
 	desc = "This circuit sends an automatic pulse every four seconds."
 	icon_state = "tick-m"
 	complexity = 4
@@ -82,12 +82,12 @@
 	spawn_flags = IC_SPAWN_RESEARCH
 	power_draw_per_use = 4
 
-/obj/item/integrated_circuit/time/SSticker/Destroy()
+/obj/item/integrated_circuit/time/ticker/Destroy()
 	if(is_running)
 		STOP_PROCESSING(SSfastprocess, src)
 	return ..()
 
-/obj/item/integrated_circuit/time/SSticker/on_data_written()
+/obj/item/integrated_circuit/time/ticker/on_data_written()
 	var/do_tick = get_pin_data(IC_INPUT, 1)
 	if(do_tick && !is_running)
 		is_running = TRUE
@@ -96,7 +96,7 @@
 		is_running = FALSE
 
 
-/obj/item/integrated_circuit/time/SSticker/proc/tick()
+/obj/item/integrated_circuit/time/ticker/proc/tick()
 	if(is_running)
 		addtimer(CALLBACK(src, .proc/tick), delay)
 		if(world.time > next_fire)
@@ -104,8 +104,8 @@
 			activate_pin(1)
 
 
-/obj/item/integrated_circuit/time/SSticker/custom
-	name = "custom SSticker"
+/obj/item/integrated_circuit/time/ticker/custom
+	name = "custom ticker"
 	desc = "This advanced circuit sends an automatic pulse every given interval, defined in tenths of a second."
 	extended_desc ="This advanced circuit sends an automatic pulse every given interval, defined in tenths of a second. \
 	For example, setting the time pin to 4 will send a pulse every 0.4 seconds, or 15 for every 1.5 seconds."
@@ -116,15 +116,15 @@
 	spawn_flags = IC_SPAWN_RESEARCH
 	power_draw_per_use = 8
 
-/obj/item/integrated_circuit/time/SSticker/custom/on_data_written()
+/obj/item/integrated_circuit/time/ticker/custom/on_data_written()
 	var/delay_input = get_pin_data(IC_INPUT, 2)
 	if(delay_input && isnum(delay_input) )
 		var/new_delay = Clamp(delay_input ,1 ,1 HOURS)
 		delay = new_delay
 	..()
 
-/obj/item/integrated_circuit/time/SSticker/fast
-	name = "fast SSticker"
+/obj/item/integrated_circuit/time/ticker/fast
+	name = "fast ticker"
 	desc = "This advanced circuit sends an automatic pulse every two seconds."
 	icon_state = "tick-f"
 	complexity = 6
@@ -132,8 +132,8 @@
 	spawn_flags = IC_SPAWN_RESEARCH
 	power_draw_per_use = 8
 
-/obj/item/integrated_circuit/time/SSticker/slow
-	name = "slow SSticker"
+/obj/item/integrated_circuit/time/ticker/slow
+	name = "slow ticker"
 	desc = "This simple circuit sends an automatic pulse every six seconds."
 	icon_state = "tick-s"
 	complexity = 2
@@ -175,7 +175,7 @@
 	desc = "Tells you what the time is, in terms and adjusted for your local station or planet."
 
 /obj/item/integrated_circuit/time/clock/station/get_time()
-	return station_time_timestamp()
+	return stationtime2text()
 
 /obj/item/integrated_circuit/time/clock/bluespace
 	name = "integrated clock (Bluespace Absolute Time)"

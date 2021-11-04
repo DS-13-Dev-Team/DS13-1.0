@@ -146,7 +146,7 @@
 
 /obj/effect/catwalk_plated/Initialize(mapload)
 	. = ..()
-	var/auto_activate = mapload || (SSticker && SSticker.current_state < GAME_STATE_PLAYING)
+	var/auto_activate = mapload || (ticker && ticker.current_state < GAME_STATE_PLAYING)
 	if(auto_activate)
 		activate()
 		return INITIALIZE_HINT_QDEL

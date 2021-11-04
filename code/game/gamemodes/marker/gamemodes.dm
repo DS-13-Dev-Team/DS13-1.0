@@ -121,7 +121,7 @@ GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 	if(confirm != "Send in the Necromorphs!")
 		return
 
-	var/datum/game_mode/marker/GM = SSticker.mode
+	var/datum/game_mode/marker/GM = ticker.mode
 	if (!istype(GM))
 		return
 

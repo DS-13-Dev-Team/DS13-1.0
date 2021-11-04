@@ -6,7 +6,7 @@
 		message_admins("[usr.key] has attempted to override the admin panel!")
 		return
 
-	if(SSticker.mode && SSticker.mode.check_antagonists_topic(href, href_list))
+	if(ticker.mode && ticker.mode.check_antagonists_topic(href, href_list))
 		check_antagonists()
 		return
 
@@ -136,7 +136,7 @@
 		if(task == "add")
 			var/new_ckey = ckey(input(usr,"New admin's ckey","Admin ckey", null) as text|null)
 			if(!new_ckey)	return
-			if(new_ckey in GLOB.admin_datums)
+			if(new_ckey in admin_datums)
 				to_chat(usr, "<font color='red'>Error: Topic 'editrights': [new_ckey] is already an admin</font>")
 				return
 			adm_ckey = new_ckey
@@ -147,12 +147,12 @@
 				to_chat(usr, "<font color='red'>Error: Topic 'editrights': No valid ckey</font>")
 				return
 
-		var/datum/admins/D = GLOB.admin_datums[adm_ckey]
+		var/datum/admins/D = admin_datums[adm_ckey]
 
 		if(task == "remove")
 			if(tgui_alert(usr, "Are you sure you want to remove [adm_ckey]?","Message",list("Yes","Cancel")) == "Yes")
 				if(!D)	return
-				GLOB.admin_datums -= adm_ckey
+				admin_datums -= adm_ckey
 				D.disassociate()
 
 				message_admins("[key_name_admin(usr)] removed [adm_ckey] from the admins list")
@@ -225,10 +225,10 @@
 
 		if(!check_rights(R_ADMIN))	return
 
-		if (!SSticker || !evacuation_controller)
+		if (!ticker || !evacuation_controller)
 			return
 
-		if( SSticker.mode.name == "blob" )
+		if( ticker.mode.name == "blob" )
 			tgui_alert(usr, "You can't call the shuttle during blob!", "Shuttle Call")
 			return
 
@@ -245,8 +245,8 @@
 	else if(href_list["delay_round_end"])
 		if(!check_rights(R_SERVER))	return
 
-		SSticker.delay_end = !SSticker.delay_end
-		log_and_message_admins("[SSticker.delay_end ? "delayed the round end" : "has made the round end normally"].")
+		ticker.delay_end = !ticker.delay_end
+		log_and_message_admins("[ticker.delay_end ? "delayed the round end" : "has made the round end normally"].")
 		href_list["secretsadmin"] = "check_antagonist"
 
 	else if(href_list["simplemake"])
@@ -975,23 +975,23 @@
 	else if(href_list["c_mode"])
 		if(!check_rights(R_ADMIN))	return
 
-		if(SSticker && SSticker.mode)
-			return alert(usr, "The game has already started.", null, null, null, null)
+		if(ticker && ticker.mode)
+			return tgui_alert(usr, "The game has already started.")
 		var/dat = {"<B>What mode do you wish to play?</B><HR>"}
 		for(var/mode in config.modes)
 			dat += {"<A href='?src=\ref[src];c_mode2=[mode]'>[config.mode_names[mode]]</A><br>"}
 		dat += {"<A href='?src=\ref[src];c_mode2=secret'>Secret</A><br>"}
 		dat += {"<A href='?src=\ref[src];c_mode2=random'>Random</A><br>"}
-		dat += {"Now: [GLOB.master_mode]"}
+		dat += {"Now: [master_mode]"}
 		usr << browse(dat, "window=c_mode")
 
 	else if(href_list["f_secret"])
 		if(!check_rights(R_ADMIN))	return
 
-		if(SSticker && SSticker.mode)
-			return alert(usr, "The game has already started.", null, null, null, null)
-		if(GLOB.master_mode != "secret")
-			return alert(usr, "The game mode has to be secret!", null, null, null, null)
+		if(ticker && ticker.mode)
+			return tgui_alert(usr, "The game has already started.")
+		if(master_mode != "secret")
+			return tgui_alert(usr, "The game mode has to be secret!")
 		var/dat = {"<B>What game mode do you want to force secret to be? Use this if you want to change the game mode, but want the players to believe it's secret. This will only work if the current game mode is secret.</B><HR>"}
 		for(var/mode in config.modes)
 			dat += {"<A href='?src=\ref[src];f_secret2=[mode]'>[config.mode_names[mode]]</A><br>"}
@@ -1002,22 +1002,22 @@
 	else if(href_list["c_mode2"])
 		if(!check_rights(R_ADMIN|R_SERVER))	return
 
-		if (SSticker && SSticker.mode)
-			return alert(usr, "The game has already started.", null, null, null, null)
-		GLOB.master_mode = href_list["c_mode2"]
-		log_and_message_admins("set the mode as [GLOB.master_mode].")
-		to_chat(world, "<span class='notice'><b>The mode is now: [GLOB.master_mode]</b></span>")
+		if (ticker && ticker.mode)
+			return tgui_alert(usr, "The game has already started.")
+		master_mode = href_list["c_mode2"]
+		log_and_message_admins("set the mode as [master_mode].")
+		to_chat(world, "<span class='notice'><b>The mode is now: [master_mode]</b></span>")
 		Game() // updates the main game menu
-		SSticker.save_mode(GLOB.master_mode)
+		world.save_mode(master_mode)
 		.(href, list("c_mode"=1))
 
 	else if(href_list["f_secret2"])
 		if(!check_rights(R_ADMIN|R_SERVER))	return
 
-		if(SSticker && SSticker.mode)
-			return alert(usr, "The game has already started.", null, null, null, null)
-		if(GLOB.master_mode != "secret")
-			return alert(usr, "The game mode has to be secret!", null, null, null, null)
+		if(ticker && ticker.mode)
+			return tgui_alert(usr, "The game has already started.")
+		if(master_mode != "secret")
+			return tgui_alert(usr, "The game mode has to be secret!")
 		secret_force_mode = href_list["f_secret2"]
 		log_and_message_admins("set the forced secret mode as [secret_force_mode].")
 		Game() // updates the main game menu
@@ -1361,61 +1361,58 @@
 		sleep(2)
 		C.jumptocoord(x,y,z)
 
-	else if(href_list["observefollow"])
-		var/atom/movable/AM = locate(href_list["observefollow"])
-		var/client/C = usr.client
-
-		if(!ismovable(AM))
-			return
-
-		if(isnewplayer(C.mob) || isnewplayer(AM))
-			return
-
-		var/message
-		if(!isobserver(C.mob))
-			C.admin_ghost()
-			message = TRUE
-
-		var/mob/dead/observer/ghost/O = C.mob
-		O.ManualFollow(AM)
-
-		if(message)
-			log_admin("[key_name(O)] jumped to follow [key_name(AM)].")
-			message_admins("[ADMIN_TPMONTY(O)] jumped to follow [ADMIN_TPMONTY(AM)].")
-
-	else if(href_list["moreinfo"])
-		if(!check_rights(R_ADMIN))
-			return
-
-		var/mob/M = locate(href_list["moreinfo"]) in GLOB.mob_list
-
-		if(!istype(M))
-			return
-
-		var/status
-		var/health
-		var/datum/job/job
-
-		if(isliving(M))
-			var/mob/living/L = M
-			job = L.job
-			switch(L.stat)
-				if(CONSCIOUS)
-					status = "Alive"
-				if(UNCONSCIOUS)
-					status = "Unconscious"
-				if(DEAD)
-					status = "Dead"
-			health = "Oxy: [L.getOxyLoss()]  Tox: [L.getToxLoss()]  Fire: [L.getFireLoss()]  Brute: [L.getBruteLoss()]  Clone: [L.getCloneLoss()]  Brain: [L.getBrainLoss()]"
-
-		to_chat(usr, {"<span class='notice'><hr><b>Info about [M.real_name]:</b>
-Type: [M.type] | Gender: [M.gender] |[job ? " Job: [job.title]" : ""]
-Location: [AREACOORD(M.loc)]
-Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
-[SPAN_ADMIN("<span class='message'>[ADMIN_FULLMONTY(M)]")]</span><hr></span>"})
-
 	else if(href_list["adminchecklaws"])
 		output_ai_laws()
+
+	else if(href_list["adminmoreinfo"])
+		var/mob/M = locate(href_list["adminmoreinfo"])
+		if(!ismob(M))
+			to_chat(usr, "This can only be used on instances of type /mob")
+			return
+
+		var/location_description = ""
+		var/special_role_description = ""
+		var/health_description = ""
+		var/gender_description = ""
+		var/turf/T = get_turf(M)
+
+		//Location
+		if(isturf(T))
+			if(isarea(T.loc))
+				location_description = "([M.loc == T ? "at coordinates " : "in [M.loc] at coordinates "] [T.x], [T.y], [T.z] in area <b>[T.loc]</b>)"
+			else
+				location_description = "([M.loc == T ? "at coordinates " : "in [M.loc] at coordinates "] [T.x], [T.y], [T.z])"
+
+		//Job + antagonist
+		if(M.mind)
+			special_role_description = "Role: <b>[M.mind.assigned_role]</b>; Antagonist: <font color='red'><b>[M.mind.special_role]</b></font>; Has been rev: [(M.mind.has_been_rev)?"Yes":"No"]"
+		else
+			special_role_description = "Role: <i>Mind datum missing</i> Antagonist: <i>Mind datum missing</i>; Has been rev: <i>Mind datum missing</i>;"
+
+		//Health
+		if(isliving(M))
+			var/mob/living/L = M
+			var/status
+			switch (M.stat)
+				if (0) status = "Alive"
+				if (1) status = "<font color='orange'><b>Unconscious</b></font>"
+				if (2) status = "<font color='red'><b>Dead</b></font>"
+			health_description = "Status = [status]"
+			health_description += "<BR>Oxy: [L.getOxyLoss()] - Tox: [L.getToxLoss()] - Fire: [L.getFireLoss()] - Brute: [L.getBruteLoss()] - Clone: [L.getCloneLoss()] - Brain: [L.getBrainLoss()]"
+		else
+			health_description = "This mob type has no health to speak of."
+
+		//Gener
+		switch(M.gender)
+			if(MALE,FEMALE)	gender_description = "[M.gender]"
+			else			gender_description = "<font color='red'><b>[M.gender]</b></font>"
+
+		to_chat(src.owner, "<b>Info about [M.name]:</b> ")
+		to_chat(src.owner, "Mob type = [M.type]; Gender = [gender_description] Damage = [health_description]")
+		to_chat(src.owner, "Name = <b>[M.name]</b>; Real_name = [M.real_name]; Mind_name = [M.mind?"[M.mind.name]":""]; Key = <b>[M.key]</b>;")
+		to_chat(src.owner, "Location = [location_description];")
+		to_chat(src.owner, "[special_role_description]")
+		to_chat(src.owner, "(<a href='?src=\ref[usr];priv_msg=\ref[M]'>PM</a>) (<A HREF='?src=\ref[src];adminplayeropts=\ref[M]'>PP</A>) (<A HREF='?_src_=vars;Vars=\ref[M]'>VV</A>) (<A HREF='?src=\ref[src];subtlemessage=\ref[M]'>SM</A>) ([admin_jump_link(M, src)]) (<A HREF='?src=\ref[src];secretsadmin=check_antagonist'>CA</A>)")
 
 	else if(href_list["adminspawncookie"])
 		if(!check_rights(R_ADMIN|R_FUN))	return
@@ -1603,8 +1600,8 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 	else if(href_list["traitor"])
 		if(!check_rights(R_ADMIN|R_MOD))	return
 
-		if(!SSticker || !SSticker.mode)
-			alert("The game hasn't started yet!")
+		if(!ticker || !ticker.mode)
+			tgui_alert(usr, "The game hasn't started yet!")
 			return
 
 		var/mob/M = locate(href_list["traitor"])
@@ -1617,8 +1614,8 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 		if(!check_rights(R_INVESTIGATE))
 			return
 
-		if(!SSticker || !SSticker.mode)
-			alert("The game hasn't started yet!")
+		if(!ticker || !ticker.mode)
+			tgui_alert(usr, "The game hasn't started yet!")
 			return
 
 		var/mob/M = locate(href_list["skillpanel"])

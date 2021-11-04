@@ -11,58 +11,30 @@
 	var/doors_closing = 0								// Whether doors are in the process of closing
 
 	var/tmp/moving_upwards
-	var/busy_state										// Used for controller processing.
-	var/next_process
+	var/tmp/busy
 
 /datum/turbolift/proc/emergency_stop()
 	queued_floors.Cut()
 	target_floor = null
 	open_doors()
 
-/datum/turbolift/proc/doors_are_open(datum/turbolift_floor/use_floor = current_floor)
+/datum/turbolift/proc/doors_are_open(var/datum/turbolift_floor/use_floor = current_floor)
 	for(var/obj/machinery/door/airlock/door in (use_floor ? (doors + use_floor.doors) : doors))
 		if(!door.density)
 			return 1
 	return 0
 
-/datum/turbolift/proc/open_doors(datum/turbolift_floor/use_floor = current_floor)
+/datum/turbolift/proc/open_doors(var/datum/turbolift_floor/use_floor = current_floor)
 	for(var/obj/machinery/door/airlock/door in (use_floor ? (doors + use_floor.doors) : doors))
 		door.command("open")
 	return
 
-/datum/turbolift/proc/close_doors(datum/turbolift_floor/use_floor = current_floor)
+/datum/turbolift/proc/close_doors(var/datum/turbolift_floor/use_floor = current_floor)
 	for(var/obj/machinery/door/airlock/door in (use_floor ? (doors + use_floor.doors) : doors))
 		door.command("close")
 	return
 
-#define LIFT_MOVING		1
-#define LIFT_WAITING_A	2
-#define LIFT_WAITING_B	3
-
-/datum/turbolift/Process()
-	if(world.time < next_process)
-		return
-	switch(busy_state)
-		if(LIFT_MOVING)
-			if(!do_move())
-				queued_floors.Cut()
-				return PROCESS_KILL
-			else if(!next_process)
-				next_process = world.time + move_delay
-		if(LIFT_WAITING_A)
-			var/area/turbolift/origin = locate(current_floor.area_ref)
-			control_panel_interior.visible_message("<b>The elevator</b> announces, \"[origin.lift_announce_str]\"")
-			next_process = world.time + floor_wait_delay
-			busy_state = LIFT_WAITING_B
-		if(LIFT_WAITING_B)
-			if(queued_floors.len)
-				busy_state = LIFT_MOVING
-			else
-				busy_state = null
-				return PROCESS_KILL
-
 /datum/turbolift/proc/do_move()
-	next_process = null
 
 	var/current_floor_index = floors.Find(current_floor)
 
@@ -98,8 +70,10 @@
 		target_floor.arrived(src)
 		target_floor = null
 
-		next_process = world.time + 2 SECONDS
-		busy_state = LIFT_WAITING_A
+		sleep(15)
+		control_panel_interior.visible_message("<b>The elevator</b> announces, \"[origin.lift_announce_str]\"")
+		sleep(floor_wait_delay)
+
 		return 1
 
 	// Work out where we're headed.
@@ -132,13 +106,12 @@
 
 	return 1
 
-/datum/turbolift/proc/queue_move_to(datum/turbolift_floor/floor)
+/datum/turbolift/proc/queue_move_to(var/datum/turbolift_floor/floor)
 	if(!floor || !(floor in floors) || (floor in queued_floors))
 		return // STOP PRESSING THE BUTTON.
 	floor.pending_move(src)
 	queued_floors |= floor
-	busy_state = LIFT_MOVING
-	START_PROCESSING(SSprocessing, src)
+	turbolift_controller.lift_is_moving(src)
 
 // TODO: dummy machine ('lift mechanism') in powered area for functionality/blackout checks.
 /datum/turbolift/proc/is_functional()

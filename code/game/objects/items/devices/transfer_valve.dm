@@ -204,15 +204,18 @@
 		else
 			attacher_name = "[attacher.name]([attacher.ckey])"
 
-		var/log_str = "Bomb valve opened in [COORD(A)] "
+		var/log_str = "Bomb valve opened in <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[bombturf.x];Y=[bombturf.y];Z=[bombturf.z]'>[A.name]</a> "
 		log_str += "with [attached_device ? attached_device : "no device"] attacher: [attacher_name]"
 
 		if(attacher)
-			log_str += "([ADMIN_QUE(attacher)])"
+			log_str += "(<A HREF='?_src_=holder;adminmoreinfo=\ref[attacher]'>?</A>)"
 
 		var/mob/mob = get_mob_by_key(src.fingerprintslast)
+		var/last_touch_info = ""
+		if(mob)
+			last_touch_info = "(<A HREF='?_src_=holder;adminmoreinfo=\ref[mob]'>?</A>)"
 
-		log_str += " Last touched by: [src.fingerprintslast][ADMIN_QUE(mob)]"
+		log_str += " Last touched by: [src.fingerprintslast][last_touch_info]"
 		GLOB.bombers += log_str
 		message_admins(log_str, 0, 1)
 		log_game(log_str)

@@ -61,8 +61,8 @@ var/datum/evacuation_controller/evacuation_controller
 	emergency_evacuation = _emergency_evac
 
 	var/evac_prep_delay_multiplier = 1
-	if(SSticker && SSticker.mode)
-		evac_prep_delay_multiplier = SSticker.mode.shuttle_delay
+	if(ticker && ticker.mode)
+		evac_prep_delay_multiplier = ticker.mode.shuttle_delay
 
 	var/additional_delay
 	if(_emergency_evac)

@@ -4,7 +4,6 @@
 	flags = COMMUNICATION_NO_GUESTS
 	log_proc = /proc/log_necro
 	show_preference_setting = /datum/client_preference/show_necrochat
-	message_type = MESSAGE_TYPE_RADIO
 
 /decl/communication_channel/necrochat/can_ignore(var/client/C)
 	.=..()

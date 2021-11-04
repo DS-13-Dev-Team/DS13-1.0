@@ -43,7 +43,7 @@ GLOBAL_VAR_INIT(distress_cooldown, FALSE)
 /datum/game_mode/proc/activate_distress(datum/emergency_call/chosen_call)
 	GLOB.picked_call = chosen_call || get_random_call()
 
-	//if(SSticker?.mode?.GLOB.waiting_for_candidates) //It's already been activated
+	//if(ticker?.mode?.GLOB.waiting_for_candidates) //It's already been activated
 		//return FALSE
 
 
@@ -59,7 +59,7 @@ GLOBAL_VAR_INIT(distress_cooldown, FALSE)
 	message_admins("Distress beacon: [name] has been reset.")
 
 /datum/emergency_call/proc/activate(announce = TRUE)
-	if(!SSticker?.mode) //Something horribly wrong with the gamemode SSticker
+	if(!ticker?.mode) //Something horribly wrong with the gamemode ticker
 		message_admins("Distress beacon: [name] attempted to activate but no gamemode exists")
 		return FALSE
 

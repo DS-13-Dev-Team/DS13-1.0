@@ -11,7 +11,7 @@ var/game_version		= "Baystation12"
 GLOBAL_VAR_INIT(changelog_hash, "")
 var/game_year		   = (text2num(time2text(world.realtime, "YYYY")) + 544)
 
-GLOBAL_VAR_INIT(master_mode, "containment")// "extended"
+var/master_mode	   = "containment" // "extended"
 var/secondary_mode	= "extended"
 var/tertiary_mode	 = "extended"
 var/secret_force_mode = "secret"   // if this is anything but "secret", the secret rotation will forceably choose this mode.
