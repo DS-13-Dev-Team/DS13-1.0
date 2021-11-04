@@ -52,6 +52,8 @@
 /datum/design/autolathe/tool/big_wrench
 	name = "big wrench"
 	build_path = /obj/item/weapon/tool/wrench/big_wrench
+	build_type = AUTOLATHE | STORE
+	price = 4000
 
 /datum/design/autolathe/tool/pickaxe
 	name = "pickaxe"

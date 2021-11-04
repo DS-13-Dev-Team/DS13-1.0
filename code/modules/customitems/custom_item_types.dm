@@ -109,3 +109,19 @@
 	store_cost = 1000
 	store_access = ACCESS_WHITELIST
 
+
+/datum/patron_item/marshal_wrench
+	name =  "Colossal Wrench"
+	id = "marshal_wrench"
+	item_path = /obj/item/weapon/material/twohanded/fireaxe/bigwrench
+
+	store_cost = 6000
+	store_access = ACCESS_WHITELIST
+
+	loadout_modkit_cost = 2
+	modkit_access = ACCESS_WHITELIST
+	modkit_typelist = list(/obj/item/weapon/tool/wrench/big_wrench)
+
+
+	category = CATEGORY_TOOLS
+	subcategory = SUBCATEGORY_DANGEROUS_TOOLS
