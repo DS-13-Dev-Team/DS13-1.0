@@ -39,7 +39,7 @@
 	output +="<hr>"
 	output += "<p><a href='byond://?src=\ref[src];show_preferences=1'>Setup Character</A></p>"
 
-	if(SSticker.HasRoundStarted())
+	if(SSticker && !SSticker.HasRoundStarted())
 		if(ready)
 			output += "<p>\[ <span class='linkOn'><b>Ready</b></span> | <a href='byond://?src=\ref[src];ready=0'>Not Ready</a> \]</p>"
 		else

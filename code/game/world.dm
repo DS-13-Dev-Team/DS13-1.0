@@ -128,8 +128,6 @@ GLOBAL_VAR(restart_counter)
 	GLOB.timezoneOffset = text2num(time2text(0,"hh")) * 36000
 	master_controller = new /datum/controller/game_controller()
 
-	Master.Initialize(10, FALSE, TRUE)
-
 	if(CONFIG_GET(flag/generate_map))
 		GLOB.using_map.perform_map_generation()
 
