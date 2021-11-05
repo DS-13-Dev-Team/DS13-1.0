@@ -18,7 +18,7 @@
 /obj/structure/net/Initialize(var/mapload)
 	. = ..()
 	update_connections()
-	var/turf/T = get_turf(src)
+	var/turf/simulated/floor/T = get_turf(src)
 	if (!mapload)//if it's not mapped object but rather created during round, we should update visuals of adjacent net objects
 
 		for (var/turf/AT in T.CardinalTurfs(FALSE))
@@ -27,12 +27,14 @@
 					continue
 				N.update_connections()
 
-	T?.incorruptible = TRUE
+	if (istype(T))
+		T?.incorruptible = TRUE
 
 /obj/structure/net/Destroy()
 
-	var/turf/T = get_turf(src)
-	T?.incorruptible = FALSE
+	var/turf/simulated/floor/T = get_turf(src)
+	if (istype(T))
+		T?.incorruptible = FALSE
 	. = ..()
 
 /obj/structure/net/examine()
