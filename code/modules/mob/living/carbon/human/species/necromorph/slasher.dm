@@ -325,25 +325,44 @@ Dodge is a skill that requires careful timing, but if used correctly, it can all
 
 /*
 	Slashers have a special charge impact. Each of their blade arms gets a free hit on impact with the primary target
+
+	However, to limit the power of this, these hits are mostly randomised in terms of where they land on the body.
 */
 /datum/species/necromorph/slasher/charge_impact(var/datum/extension/charge/charge)
+	to_chat(world, "Slasher charge impact 1  [charge] Type: [charge.last_target_type] living: [isliving(charge.last_obstacle)]")
 	if (charge.last_target_type == CHARGE_TARGET_PRIMARY && isliving(charge.last_obstacle))
 		var/mob/living/carbon/human/H = charge.user
 		var/mob/living/L = charge.last_obstacle
+		to_chat(world, "Slasher charge impact 2")
 
 		//We need to be in harm intent for this, set it if its not already
 		if (H.a_intent != I_HURT)
 			H.set_attack_intent(I_HURT)
 
+
+		var/current_target_zone = H.get_zone_sel()
+
+
 		//This is a bit of a hack because unarmed attacks are poorly coded:
 			//We'll set the user's last attack to some time in the past so they can attack again
 		if (H.has_organ(BP_R_ARM))
 			H.last_attack = 0
+
+			//50% chance to hit the zone you're targeting, otherwise random target zone
+			if (prob(50))
+				H.set_random_zone()
 			H.UnarmedAttack(L)
 
 		if (H.has_organ(BP_L_ARM))
 			H.last_attack = 0
+
+			//Second hit is always a random target
+			H.set_random_zone()
 			H.UnarmedAttack(L)
+
+		//Return the target zone to normal
+		H.set_zone_sel(current_target_zone)
+		to_chat(world, "Slasher charge impact 3")
 		return FALSE
 	else
 		return ..()

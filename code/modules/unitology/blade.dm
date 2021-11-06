@@ -133,7 +133,7 @@
 
 /datum/execution_stage/cover_mouth/enter()
 	host.user.face_atom(host.victim, TRUE)
-	host.user.set_selected_zone(BP_MOUTH)
+	host.user.set_zone_sel(BP_MOUTH)
 	.=..()
 
 /datum/execution_stage/cover_mouth/can_advance()
