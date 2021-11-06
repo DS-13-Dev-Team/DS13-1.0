@@ -23,8 +23,6 @@ SUBSYSTEM_DEF(research)
 			D.AssembleDesignInfo()
 			designs_by_id[D.id] = D
 
-	SSdatabase.update_store_designs()
-
 	for(var/A in subtypesof(/datum/technology))
 		var/datum/technology/T = new A
 		all_technologies[T.id] = T
@@ -42,6 +40,8 @@ SUBSYSTEM_DEF(research)
 
 	for(var/A in late_designs_init)
 		register_research_design(A)
+
+	SSdatabase.update_store_designs()
 
 	late_designs_init = null
 
@@ -107,5 +107,6 @@ SUBSYSTEM_DEF(research)
 			var/datum/asset/simple/research_designs/RD = get_asset_datum(/datum/asset/simple/research_designs)
 			RD.register()
 
+		SSdatabase.update_store_designs()
 	else
 		late_designs_init += D

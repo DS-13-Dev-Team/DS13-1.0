@@ -80,12 +80,5 @@ GLOBAL_LIST_EMPTY(gear_datums)
 // Used to update tracking level for all vitals monitors that are set to automatic mode when alert changes
 GLOBAL_LIST_EMPTY(vitals_auto_update_tracking)
 
-//This list holds all the designs that are publicly available, sorted into sublists tagged by category. These are unlocked by schematics
-GLOBAL_LIST_EMPTY(public_store_designs)
-
-//This list holds designs which come from custom items, but do NOT require any special status, and are available to everyone
-//These do not require schematics
-GLOBAL_LIST_EMPTY(unlimited_store_designs)
-
 //Holds designs that are patron only or require a whitelist. These do not require schematics
 GLOBAL_LIST_EMPTY(limited_store_designs)

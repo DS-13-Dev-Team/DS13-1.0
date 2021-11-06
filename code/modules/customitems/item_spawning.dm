@@ -175,9 +175,6 @@
 	if (store_access != ACCESS_PUBLIC)
 		GLOB.limited_store_designs += D.id
 
-	else
-		GLOB.unlimited_store_designs += D.id
-
 
 /*
 	This proc loads whitelists for Patron items. It assumes that list is appropriately formatted according to the instructions in that file

@@ -57,16 +57,14 @@
 */
 /obj/machinery/store/proc/update_occupant_data()
 	combined_store_data = list()
-	for(var/A in GLOB.public_store_designs)
+	for(var/A in SSdatabase.known_design_ids)
 		var/datum/design/D = SSresearch.designs_by_id[A]
 		combined_store_data[D.category] += list(D.ui_data)
-
 
 	for(var/A in GLOB.limited_store_designs)
 		var/datum/design/D = SSresearch.designs_by_id[A]
 		if (D.PI?.can_buy_in_store(occupant))
 			combined_store_data[D.category] += list(D.ui_data)
-
 
 /obj/machinery/store/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null)
 	var/list/data = ui_data(user, ui_key)
