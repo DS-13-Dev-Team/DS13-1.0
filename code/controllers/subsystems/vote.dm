@@ -118,7 +118,7 @@ SUBSYSTEM_DEF(vote)
 	if(restart)
 		var/active_admins = FALSE
 		for(var/client/C in GLOB.admins)
-			if(!C.is_afk() && check_rights(R_SERVER, null, C))
+			if(!C.is_afk() && check_rights(R_SERVER, FALSE, C))
 				active_admins = TRUE
 				break
 		if(!active_admins)
@@ -246,7 +246,7 @@ SUBSYSTEM_DEF(vote)
 		"question" = question,
 		"selected_choice" = choice_by_ckey[user.client?.ckey],
 		"time_remaining" = time_remaining,
-		"upper_admin" = check_rights(R_ADMIN, null, user.client),
+		"upper_admin" = check_rights(R_ADMIN, FALSE, user.client),
 		"voting" = list(),
 	)
 
@@ -268,7 +268,7 @@ SUBSYSTEM_DEF(vote)
 
 	var/upper_admin = FALSE
 	if(usr.client.holder)
-		if(check_rights(R_ADMIN, null, usr.client))
+		if(check_rights(R_ADMIN, FALSE, usr.client))
 			upper_admin = TRUE
 
 	switch(action)
