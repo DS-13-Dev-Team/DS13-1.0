@@ -1,16 +1,16 @@
 
 /mob/dead/new_player/proc/handle_privacy_poll()
-	establish_db_connection()
-	if(!dbcon.IsConnected())
+	SSdbcore.Connect()
+	if(!SSdbcore.IsConnected())
 		return
 	var/voted = 0
 
-	var/DBQuery/query = dbcon.NewQuery("SELECT * FROM erro_privacy WHERE ckey='[src.ckey]'")
+	var/datum/db_query/query = SSdbcore.NewQuery("SELECT * FROM erro_privacy WHERE ckey='[src.ckey]'")
 	query.Execute()
 	while(query.NextRow())
 		voted = 1
 		break
-
+	qdel(query)
 	if(!voted)
 		privacy_poll()
 
@@ -47,13 +47,13 @@
 	var/optiontext
 
 /mob/dead/new_player/proc/handle_player_polling()
-	establish_db_connection()
-	if(dbcon.IsConnected())
+	SSdbcore.Connect()
+	if(SSdbcore.IsConnected())
 		var/isadmin = 0
 		if(src.client && src.client.holder)
 			isadmin = 1
 
-		var/DBQuery/select_query = dbcon.NewQuery("SELECT id, question FROM erro_poll_question WHERE [(isadmin ? "" : "adminonly = false AND")] Now() BETWEEN starttime AND endtime")
+		var/datum/db_query/select_query = SSdbcore.NewQuery("SELECT id, question FROM erro_poll_question WHERE [(isadmin ? "" : "adminonly = false AND")] Now() BETWEEN starttime AND endtime")
 		select_query.Execute()
 
 		var/output = "<div align='center'><B>Player polls</B>"
@@ -74,6 +74,7 @@
 			i++
 
 		output += "</table>"
+		qdel(select_query)
 
 		src << browse(output,"window=playerpolllist;size=500x300")
 
@@ -81,10 +82,10 @@
 
 /mob/dead/new_player/proc/poll_player(var/pollid = -1)
 	if(pollid == -1) return
-	establish_db_connection()
-	if(dbcon.IsConnected())
+	SSdbcore.Connect()
+	if(SSdbcore.IsConnected())
 
-		var/DBQuery/select_query = dbcon.NewQuery("SELECT starttime, endtime, question, polltype, multiplechoiceoptions FROM erro_poll_question WHERE id = [pollid]")
+		var/datum/db_query/select_query = SSdbcore.NewQuery("SELECT starttime, endtime, question, polltype, multiplechoiceoptions FROM erro_poll_question WHERE id = [pollid]")
 		select_query.Execute()
 
 		var/pollstarttime = ""
@@ -102,6 +103,8 @@
 			found = 1
 			break
 
+		qdel(select_query)
+
 		if(!found)
 			to_chat(usr, "<span class='warning'>Poll question details not found.</span>")
 			return
@@ -109,7 +112,7 @@
 		switch(polltype)
 			//Polls that have enumerated options
 			if("OPTION")
-				var/DBQuery/voted_query = dbcon.NewQuery("SELECT optionid FROM erro_poll_vote WHERE pollid = [pollid] AND ckey = '[usr.ckey]'")
+				var/datum/db_query/voted_query = SSdbcore.NewQuery("SELECT optionid FROM erro_poll_vote WHERE pollid = [pollid] AND ckey = '[usr.ckey]'")
 				voted_query.Execute()
 
 				var/voted = 0
@@ -118,16 +121,18 @@
 					votedoptionid = text2num(voted_query.item[1])
 					voted = 1
 					break
+				qdel(voted_query)
 
 				var/list/datum/polloption/options = list()
 
-				var/DBQuery/options_query = dbcon.NewQuery("SELECT id, text FROM erro_poll_option WHERE pollid = [pollid]")
+				var/datum/db_query/options_query = SSdbcore.NewQuery("SELECT id, text FROM erro_poll_option WHERE pollid = [pollid]")
 				options_query.Execute()
 				while(options_query.NextRow())
 					var/datum/polloption/PO = new()
 					PO.optionid = text2num(options_query.item[1])
 					PO.optiontext = options_query.item[2]
 					options += PO
+				qdel(options_query)
 
 				var/output = "<div align='center'><B>Player poll</B>"
 				output +="<hr>"
@@ -162,7 +167,7 @@
 
 			//Polls with a text input
 			if("TEXT")
-				var/DBQuery/voted_query = dbcon.NewQuery("SELECT replytext FROM erro_poll_textreply WHERE pollid = [pollid] AND ckey = '[usr.ckey]'")
+				var/datum/db_query/voted_query = SSdbcore.NewQuery("SELECT replytext FROM erro_poll_textreply WHERE pollid = [pollid] AND ckey = '[usr.ckey]'")
 				voted_query.Execute()
 
 				var/voted = 0
@@ -171,7 +176,7 @@
 					vote_text = voted_query.item[1]
 					voted = 1
 					break
-
+				qdel(voted_query)
 
 				var/output = "<div align='center'><B>Player poll</B>"
 				output +="<hr>"
@@ -204,7 +209,7 @@
 
 			//Polls with a text input
 			if("NUMVAL")
-				var/DBQuery/voted_query = dbcon.NewQuery("SELECT o.text, v.rating FROM erro_poll_option o, erro_poll_vote v WHERE o.pollid = [pollid] AND v.ckey = '[usr.ckey]' AND o.id = v.optionid")
+				var/datum/db_query/voted_query = SSdbcore.NewQuery("SELECT o.text, v.rating FROM erro_poll_option o, erro_poll_vote v WHERE o.pollid = [pollid] AND v.ckey = '[usr.ckey]' AND o.id = v.optionid")
 				voted_query.Execute()
 
 				var/output = "<div align='center'><B>Player poll</B>"
@@ -220,6 +225,7 @@
 					var/rating = voted_query.item[2]
 
 					output += "<br><b>[optiontext] - [rating]</b>"
+				qdel(voted_query)
 
 				if(!voted)	//Only make this a form if we have not voted yet
 					output += "<form name='cardcomp' action='?src=\ref[src]' method='get'>"
@@ -230,7 +236,7 @@
 					var/minid = 999999
 					var/maxid = 0
 
-					var/DBQuery/option_query = dbcon.NewQuery("SELECT id, text, minval, maxval, descmin, descmid, descmax FROM erro_poll_option WHERE pollid = [pollid]")
+					var/datum/db_query/option_query = SSdbcore.NewQuery("SELECT id, text, minval, maxval, descmin, descmid, descmax FROM erro_poll_option WHERE pollid = [pollid]")
 					option_query.Execute()
 					while(option_query.NextRow())
 						var/optionid = text2num(option_query.item[1])
@@ -270,10 +276,11 @@
 
 					output += "<p><input type='submit' value='Submit'>"
 					output += "</form>"
+					qdel(option_query)
 
 				src << browse(output,"window=playerpoll;size=500x500")
 			if("MULTICHOICE")
-				var/DBQuery/voted_query = dbcon.NewQuery("SELECT optionid FROM erro_poll_vote WHERE pollid = [pollid] AND ckey = '[usr.ckey]'")
+				var/datum/db_query/voted_query = SSdbcore.NewQuery("SELECT optionid FROM erro_poll_vote WHERE pollid = [pollid] AND ckey = '[usr.ckey]'")
 				voted_query.Execute()
 
 				var/list/votedfor = list()
@@ -281,12 +288,13 @@
 				while(voted_query.NextRow())
 					votedfor.Add(text2num(voted_query.item[1]))
 					voted = 1
+				qdel(voted_query)
 
 				var/list/datum/polloption/options = list()
 				var/maxoptionid = 0
 				var/minoptionid = 0
 
-				var/DBQuery/options_query = dbcon.NewQuery("SELECT id, text FROM erro_poll_option WHERE pollid = [pollid]")
+				var/datum/db_query/options_query = SSdbcore.NewQuery("SELECT id, text FROM erro_poll_option WHERE pollid = [pollid]")
 				options_query.Execute()
 				while(options_query.NextRow())
 					var/datum/polloption/PO = new()
@@ -297,7 +305,7 @@
 					if(PO.optionid < minoptionid || !minoptionid)
 						minoptionid = PO.optionid
 					options += PO
-
+				qdel(options_query)
 
 				if(select_query.item[5])
 					multiplechoiceoptions = text2num(select_query.item[5])
@@ -342,10 +350,10 @@
 
 	if(!isnum(pollid) || !isnum(optionid))
 		return
-	establish_db_connection()
-	if(dbcon.IsConnected())
+	SSdbcore.Connect()
+	if(SSdbcore.IsConnected())
 
-		var/DBQuery/select_query = dbcon.NewQuery("SELECT starttime, endtime, question, polltype, multiplechoiceoptions FROM erro_poll_question WHERE id = [pollid] AND Now() BETWEEN starttime AND endtime")
+		var/datum/db_query/select_query = SSdbcore.NewQuery("SELECT starttime, endtime, question, polltype, multiplechoiceoptions FROM erro_poll_question WHERE id = [pollid] AND Now() BETWEEN starttime AND endtime")
 		select_query.Execute()
 
 		var/validpoll = 0
@@ -353,17 +361,20 @@
 
 		while(select_query.NextRow())
 			if(select_query.item[4] != "OPTION" && select_query.item[4] != "MULTICHOICE")
+				qdel(select_query)
 				return
 			validpoll = 1
 			if(select_query.item[5])
 				multiplechoiceoptions = text2num(select_query.item[5])
 			break
 
+		qdel(select_query)
+
 		if(!validpoll)
 			to_chat(usr, "<span class='warning'>Poll is not valid.</span>")
 			return
 
-		var/DBQuery/select_query2 = dbcon.NewQuery("SELECT id FROM erro_poll_option WHERE id = [optionid] AND pollid = [pollid]")
+		var/datum/db_query/select_query2 = SSdbcore.NewQuery("SELECT id FROM erro_poll_option WHERE id = [optionid] AND pollid = [pollid]")
 		select_query2.Execute()
 
 		var/validoption = 0
@@ -371,6 +382,7 @@
 		while(select_query2.NextRow())
 			validoption = 1
 			break
+		qdel(select_query2)
 
 		if(!validoption)
 			to_chat(usr, "<span class='warning'>Poll option is not valid.</span>")
@@ -378,13 +390,14 @@
 
 		var/alreadyvoted = 0
 
-		var/DBQuery/voted_query = dbcon.NewQuery("SELECT id FROM erro_poll_vote WHERE pollid = [pollid] AND ckey = '[usr.ckey]'")
+		var/datum/db_query/voted_query = SSdbcore.NewQuery("SELECT id FROM erro_poll_vote WHERE pollid = [pollid] AND ckey = '[usr.ckey]'")
 		voted_query.Execute()
 
 		while(voted_query.NextRow())
 			alreadyvoted += 1
 			if(!multichoice)
 				break
+		qdel(voted_query)
 
 		if(!multichoice && alreadyvoted)
 			to_chat(usr, "<span class='warning'>You already voted in this poll.</span>")
@@ -399,8 +412,9 @@
 			adminrank = usr.client.holder.rank
 
 
-		var/DBQuery/insert_query = dbcon.NewQuery("INSERT INTO erro_poll_vote (id ,datetime ,pollid ,optionid ,ckey ,ip ,adminrank) VALUES (null, Now(), [pollid], [optionid], '[usr.ckey]', '[usr.client.address]', '[adminrank]')")
+		var/datum/db_query/insert_query = SSdbcore.NewQuery("INSERT INTO erro_poll_vote (id ,datetime ,pollid ,optionid ,ckey ,ip ,adminrank) VALUES (null, Now(), [pollid], [optionid], '[usr.ckey]', '[usr.client.address]', '[adminrank]')")
 		insert_query.Execute()
+		qdel(insert_query)
 
 		to_chat(usr, "<span class='notice'>Vote successful.</span>")
 		usr << browse(null,"window=playerpoll")
@@ -412,19 +426,21 @@
 
 	if(!isnum(pollid) || !istext(replytext))
 		return
-	establish_db_connection()
-	if(dbcon.IsConnected())
+	SSdbcore.Connect()
+	if(SSdbcore.IsConnected())
 
-		var/DBQuery/select_query = dbcon.NewQuery("SELECT starttime, endtime, question, polltype FROM erro_poll_question WHERE id = [pollid] AND Now() BETWEEN starttime AND endtime")
+		var/datum/db_query/select_query = SSdbcore.NewQuery("SELECT starttime, endtime, question, polltype FROM erro_poll_question WHERE id = [pollid] AND Now() BETWEEN starttime AND endtime")
 		select_query.Execute()
 
 		var/validpoll = 0
 
 		while(select_query.NextRow())
 			if(select_query.item[4] != "TEXT")
+				qdel(select_query)
 				return
 			validpoll = 1
 			break
+		qdel(select_query)
 
 		if(!validpoll)
 			to_chat(usr, "<span class='warning'>Poll is not valid.</span>")
@@ -432,12 +448,13 @@
 
 		var/alreadyvoted = 0
 
-		var/DBQuery/voted_query = dbcon.NewQuery("SELECT id FROM erro_poll_textreply WHERE pollid = [pollid] AND ckey = '[usr.ckey]'")
+		var/datum/db_query/voted_query = SSdbcore.NewQuery("SELECT id FROM erro_poll_textreply WHERE pollid = [pollid] AND ckey = '[usr.ckey]'")
 		voted_query.Execute()
 
 		while(voted_query.NextRow())
 			alreadyvoted = 1
 			break
+		qdel(voted_query)
 
 		if(alreadyvoted)
 			to_chat(usr, "<span class='warning'>You already sent your feedback for this poll.</span>")
@@ -457,8 +474,9 @@
 			to_chat(usr, "The text you entered was blank, contained illegal characters or was too long. Please correct the text and submit again.")
 			return
 
-		var/DBQuery/insert_query = dbcon.NewQuery("INSERT INTO erro_poll_textreply (id ,datetime ,pollid ,ckey ,ip ,replytext ,adminrank) VALUES (null, Now(), [pollid], '[usr.ckey]', '[usr.client.address]', '[replytext]', '[adminrank]')")
+		var/datum/db_query/insert_query = SSdbcore.NewQuery("INSERT INTO erro_poll_textreply (id ,datetime ,pollid ,ckey ,ip ,replytext ,adminrank) VALUES (null, Now(), [pollid], '[usr.ckey]', '[usr.client.address]', '[replytext]', '[adminrank]')")
 		insert_query.Execute()
+		qdel(insert_query)
 
 		to_chat(usr, "<span class='notice'>Feedback logging successful.</span>")
 		usr << browse(null,"window=playerpoll")
@@ -470,25 +488,27 @@
 
 	if(!isnum(pollid) || !isnum(optionid))
 		return
-	establish_db_connection()
-	if(dbcon.IsConnected())
+	SSdbcore.Connect()
+	if(SSdbcore.IsConnected())
 
-		var/DBQuery/select_query = dbcon.NewQuery("SELECT starttime, endtime, question, polltype FROM erro_poll_question WHERE id = [pollid] AND Now() BETWEEN starttime AND endtime")
+		var/datum/db_query/select_query = SSdbcore.NewQuery("SELECT starttime, endtime, question, polltype FROM erro_poll_question WHERE id = [pollid] AND Now() BETWEEN starttime AND endtime")
 		select_query.Execute()
 
 		var/validpoll = 0
 
 		while(select_query.NextRow())
 			if(select_query.item[4] != "NUMVAL")
+				qdel(select_query)
 				return
 			validpoll = 1
 			break
+		qdel(select_query)
 
 		if(!validpoll)
 			to_chat(usr, "<span class='warning'>Poll is not valid.</span>")
 			return
 
-		var/DBQuery/select_query2 = dbcon.NewQuery("SELECT id FROM erro_poll_option WHERE id = [optionid] AND pollid = [pollid]")
+		var/datum/db_query/select_query2 = SSdbcore.NewQuery("SELECT id FROM erro_poll_option WHERE id = [optionid] AND pollid = [pollid]")
 		select_query2.Execute()
 
 		var/validoption = 0
@@ -496,6 +516,7 @@
 		while(select_query2.NextRow())
 			validoption = 1
 			break
+		qdel(select_query2)
 
 		if(!validoption)
 			to_chat(usr, "<span class='warning'>Poll option is not valid.</span>")
@@ -503,12 +524,13 @@
 
 		var/alreadyvoted = 0
 
-		var/DBQuery/voted_query = dbcon.NewQuery("SELECT id FROM erro_poll_vote WHERE optionid = [optionid] AND ckey = '[usr.ckey]'")
+		var/datum/db_query/voted_query = SSdbcore.NewQuery("SELECT id FROM erro_poll_vote WHERE optionid = [optionid] AND ckey = '[usr.ckey]'")
 		voted_query.Execute()
 
 		while(voted_query.NextRow())
 			alreadyvoted = 1
 			break
+		qdel(voted_query)
 
 		if(alreadyvoted)
 			to_chat(usr, "<span class='warning'>You already voted in this poll.</span>")
@@ -519,8 +541,9 @@
 			adminrank = usr.client.holder.rank
 
 
-		var/DBQuery/insert_query = dbcon.NewQuery("INSERT INTO erro_poll_vote (id ,datetime ,pollid ,optionid ,ckey ,ip ,adminrank, rating) VALUES (null, Now(), [pollid], [optionid], '[usr.ckey]', '[usr.client.address]', '[adminrank]', [(isnull(rating)) ? "null" : rating])")
+		var/datum/db_query/insert_query = SSdbcore.NewQuery("INSERT INTO erro_poll_vote (id ,datetime ,pollid ,optionid ,ckey ,ip ,adminrank, rating) VALUES (null, Now(), [pollid], [optionid], '[usr.ckey]', '[usr.client.address]', '[adminrank]', [(isnull(rating)) ? "null" : rating])")
 		insert_query.Execute()
+		qdel(insert_query)
 
 		to_chat(usr, "<span class='notice'>Vote successful.</span>")
 		usr << browse(null,"window=playerpoll")

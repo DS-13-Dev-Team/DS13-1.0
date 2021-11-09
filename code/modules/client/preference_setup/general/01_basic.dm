@@ -47,15 +47,15 @@ datum/preferences
 //Called from load and update character, through several layers of propagation
 /datum/category_item/player_setup_item/general/basic/update_setup()
 	var/ID_needed = FALSE
-	if (!isnull(pref.character_id) && (dbcon?.IsConnected()))
+	if (!isnull(pref.character_id) && (SSdbcore?.IsConnected()))
 		//Here we will account for an edge case
 		//If we have an ID, but the database has been wiped and no longer contains our information....
-		var/DBQuery/query = dbcon.NewQuery("SELECT * FROM characters	WHERE	 (character_id = [pref.character_id] AND slot = [pref.default_slot] AND ckey = '[pref.client_ckey]');")
+		var/datum/db_query/query = SSdbcore.NewQuery("SELECT * FROM characters	WHERE	 (character_id = [pref.character_id] AND slot = [pref.default_slot] AND ckey = '[pref.client_ckey]');")
 		query.Execute()
 		if(!query.NextRow())
 			//We're not in the database!
 			ID_needed = TRUE
-
+		qdel(query)
 	else
 		ID_needed = TRUE
 

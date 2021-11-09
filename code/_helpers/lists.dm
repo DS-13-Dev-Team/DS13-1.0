@@ -268,13 +268,22 @@ Checks if a list has the same entries and values as an element of big.
 		return picked
 	return null
 
-//Returns the top(last) element from the list and removes it from the list (typical stack function)
-/proc/pop(list/listfrom)
-	if (listfrom.len > 0)
-		var/picked = listfrom[listfrom.len]
-		listfrom.len--
-		return picked
-	return null
+///Returns the top(last) element from the list and removes it from the list (typical stack function)
+/proc/pop(list/L)
+	if(L.len)
+		. = L[L.len]
+		L.len--
+
+/// Returns the top (last) element from the list, does not remove it from the list. Stack functionality.
+/proc/peek(list/target_list)
+	var/list_length = length(target_list)
+	if(list_length != 0)
+		return target_list[list_length]
+
+/proc/popleft(list/L)
+	if(L.len)
+		. = L[1]
+		L.Cut(1,2)
 
 //Macro version of pop, no safety checks, ultra fast. Pass in list, and variable to recieve the function
 #define macropop(L, A)	A = L[length(L)];L.len--;

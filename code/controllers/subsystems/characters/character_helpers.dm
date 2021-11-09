@@ -18,7 +18,7 @@
 */
 /proc/get_character_id(var/data)
 	var/slot = 0
-	if(!dbcon || !(dbcon?.IsConnected()))
+	if(!SSdbcore || !(SSdbcore?.IsConnected()))
 		return null
 
 	//Data used for registering, if we need to
@@ -76,7 +76,7 @@
 */
 /proc/find_character(var/ckey, var/name, var/slot, var/output)
 
-	var/DBQuery/query = dbcon.NewQuery("SELECT * FROM (characters)	WHERE (slot = [slot] AND ckey = '[ckey]');")
+	var/datum/db_query/query = SSdbcore.NewQuery("SELECT * FROM (characters)	WHERE (slot = [slot] AND ckey = '[ckey]');")
 	query.Execute()
 
 	if(query.NextRow())
@@ -94,6 +94,8 @@
 					P.character_id = id
 					P.save_preferences()
 
+	qdel(query)
+
 /*
 	This creates a record for a character with this name, use sparingly
 	Do other checks to ensure it doesn't already exist first
@@ -103,10 +105,12 @@
 */
 /proc/register_character(var/ckey, var/name, var/slot, var/output)
 
-	var/DBQuery/query = dbcon.NewQuery("INSERT INTO characters (ckey, character_name, slot) VALUES('[ckey]','[name]',[slot]);")
+	var/datum/db_query/query = SSdbcore.NewQuery("INSERT INTO characters (ckey, character_name, slot) VALUES('[ckey]','[name]',[slot]);")
 	query.Execute()
 
-	query = dbcon.NewQuery("SELECT LAST_INSERT_ID();")
+	qdel(query)
+
+	query = SSdbcore.NewQuery("SELECT LAST_INSERT_ID();")
 	query.Execute()
 
 
@@ -115,7 +119,7 @@
 			var/id = query.item[1]
 			.=id
 			output:character_id = id
-			query = dbcon.NewQuery("INSERT INTO credit_records (character_id)\
+			query = SSdbcore.NewQuery("INSERT INTO credit_records (character_id)\
 			VALUES('[id]');")
 			query.Execute()
 
@@ -127,6 +131,7 @@
 				P.character_id = id
 				P.save_preferences()
 
+	qdel(query)
 
 /*
 	Called when a character loads into the world, to populate their employee checking account
@@ -138,15 +143,17 @@
 //TODO: Insert in preferences menu
 /proc/get_character_credits(var/character_data)
 	var/id = get_character_id(character_data)
-	if (!id || !(dbcon?.IsConnected()))
+	if (!id || !(SSdbcore?.IsConnected()))
 		return 0
 
 	//Get the number of credits from the database record associated with our ID
-	var/DBQuery/query = dbcon.NewQuery("SELECT (credits) FROM (credit_records)	WHERE (character_id = [id]);")
+	var/datum/db_query/query = SSdbcore.NewQuery("SELECT (credits) FROM (credit_records)	WHERE (character_id = [id]);")
 	query.Execute()
 
 	if(query.NextRow())
 		return text2num(query.item[1])
+
+	qdel(query)
 
 	return 0
 
@@ -162,14 +169,16 @@
 
 
 
-	if (!id || !(dbcon?.IsConnected()))
+	if (!id || !(SSdbcore?.IsConnected()))
 		return
 
 
 	//Now lets update the characters table first
 	//Update the last seen var
-	var/DBQuery/query = dbcon.NewQuery("UPDATE characters	 SET	last_seen = CURRENT_TIMESTAMP(), character_name = '[M.name]'	 WHERE	 (character_id = [id]);")
+	var/datum/db_query/query = SSdbcore.NewQuery("UPDATE characters	 SET	last_seen = CURRENT_TIMESTAMP(), character_name = '[M.name]'	 WHERE	 (character_id = [id]);")
 	query.Execute()
+
+	qdel(query)
 
 	//Force living status on spawning.
 	//This accounts for situations where someone is killed by griefing and admins let them respawn to fix it
@@ -180,7 +189,7 @@
 	Creates or updates an entry in the lastround_credits table, which is used at the end or beginning of the round to handle changes in persistent credits
 	A status can optionally be passed in, if not we'll call a proc to get status
 */
-/proc/update_lastround_credits(var/datum/mind/M, var/status)
+/proc/update_lastround_credits(datum/mind/M, status)
 
 	if (!status)
 		status = M.get_round_status()
@@ -191,14 +200,14 @@
 
 	var/id = get_character_id(M)
 
-	if (!id || !(dbcon?.IsConnected()))
-		return 0
+	if (!id || !(SSdbcore.IsConnected()))
+		return FALSE
 
 	var/credits_stored = credits["stored"]
 	var/credits_carried = credits["carried"]
 	var/character_status = status
 	//And lets set their status in the lastround table to living
-	var/DBQuery/query = dbcon.NewQuery(
+	var/datum/db_query/query = SSdbcore.NewQuery(
 	"INSERT INTO credit_lastround	\
 		(character_id, credits_stored, credits_carried, character_status)	\
 	VALUES	\
@@ -208,7 +217,7 @@
 		credits_carried = [credits_carried],\
 		character_status = [character_status];")
 	query.Execute()
-
+	qdel(query)
 
 /*
 	Called when a character dies

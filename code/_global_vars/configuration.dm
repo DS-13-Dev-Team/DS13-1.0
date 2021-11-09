@@ -21,10 +21,6 @@ var/Debug2 = 0
 var/gravity_is_on = 1
 var/round_progressing = 1
 
-// Database connections. A connection is established on world creation.
-// Ideally, the connection dies when the server restarts (After feedback logging.).
-var/DBConnection/dbcon	 = new() // Feedback	database (New database)
-
 
 // For FTP requests. (i.e. downloading runtime logs.)
 // However it'd be ok to use for accessing attack logs and such too, which are even laggier.

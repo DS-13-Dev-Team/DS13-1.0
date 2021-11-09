@@ -153,6 +153,8 @@
 /proc/log_qdel(text)
 	WRITE_LOG(GLOB.world_qdel_log, "QDEL: [text]")
 
+/proc/log_query_debug(text)
+	WRITE_LOG(GLOB.query_debug_log, "SQL: [text]")
 
 /* Log to both DD and the logfile. */
 /proc/log_world(text)

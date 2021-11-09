@@ -21,20 +21,21 @@
 #define SS_PRIORITY_CHEMISTRY		60  // Multi-tick chemical reactions.
 #define SS_PRIORITY_CHUNKS			30  // Necromorph visualnet updates
 #define SS_PRIORITY_ALARM			20  // Alarm processing.
-#define SS_PRIORITY_EVENT          20  // Event processing and queue handling.
-#define SS_PRIORITY_SHUTTLE        20  // Shuttle movement.
-#define SS_PRIORITY_CIRCUIT_COMP   20	// Processing circuit component do_work.
-#define SS_PRIORITY_TEMPERATURE    20  // Cooling and heating of atoms.
-#define SS_PRIORITY_RADIATION      20  // Radiation processing and cache updates.
-#define SS_PRIORITY_OPEN_SPACE     20  // Open turf updates.
-#define SS_PRIORITY_AIRFLOW        15  // Object movement from ZAS airflow.
+#define SS_PRIORITY_EVENT			20  // Event processing and queue handling.
+#define SS_PRIORITY_SHUTTLE			20  // Shuttle movement.
+#define SS_PRIORITY_CIRCUIT_COMP	20	// Processing circuit component do_work.
+#define SS_PRIORITY_TEMPERATURE		20  // Cooling and heating of atoms.
+#define SS_PRIORITY_RADIATION		20  // Radiation processing and cache updates.
+#define SS_PRIORITY_OPEN_SPACE		20  // Open turf updates.
+#define SS_PRIORITY_DATABASE		16
+#define SS_PRIORITY_AIRFLOW			15  // Object movement from ZAS airflow.
 #define SS_PRIORITY_SERVER_MAINT	10
-#define SS_PRIORITY_VOTE           10  // Vote management.
-#define SS_PRIORITY_INACTIVITY     10  // Idle kicking.
-#define SS_PRIORITY_SUPPLY         10  // Supply point accumulation.
-#define SS_PRIORITY_TRADE          10  // Adds/removes traders.
-#define SS_PRIORITY_GHOST_IMAGES   10  // Updates ghost client images.
-#define SS_PRIORITY_ZCOPY          10  // Builds appearances for Z-Mimic.
+#define SS_PRIORITY_VOTE			10  // Vote management.
+#define SS_PRIORITY_INACTIVITY		10  // Idle kicking.
+#define SS_PRIORITY_SUPPLY			10  // Supply point accumulation.
+#define SS_PRIORITY_TRADE			10  // Adds/removes traders.
+#define SS_PRIORITY_GHOST_IMAGES	10  // Updates ghost client images.
+#define SS_PRIORITY_ZCOPY			10  // Builds appearances for Z-Mimic.
 
 // SS_BACKGROUND
 #define SS_PRIORITY_OBJECTS       100	// processing_objects processing.

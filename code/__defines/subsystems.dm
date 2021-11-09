@@ -1,3 +1,27 @@
+//! Defines for subsystems and overlays
+//!
+//! Lots of important stuff in here, make sure you have your brain switched on
+//! when editing this file
+
+//! ## DB defines
+/**
+ * DB major schema version
+ *
+ * Update this whenever the db schema changes
+ *
+ * make sure you add an update to the schema_version stable in the db changelog
+ */
+#define DB_MAJOR_VERSION 1
+
+/**
+ * DB minor schema version
+ *
+ * Update this whenever the db schema changes
+ *
+ * make sure you add an update to the schema_version stable in the db changelog
+ */
+#define DB_MINOR_VERSION 1
+
 //Timing subsystem
 //Don't run if there is an identical unique timer active
 //if the arguments to addtimer are the same as an existing timer, it doesn't create a new timer, and returns the id of the existing timer

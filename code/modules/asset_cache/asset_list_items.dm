@@ -85,7 +85,7 @@ proc/get_craft_item(path)
 	SSresearch.design_files_to_init = list()
 
 
-	SSdatabase.update_store_designs()
+	SSstore.update_store_designs()
 
 	. = ..()
 
@@ -182,7 +182,7 @@ proc/get_craft_item(path)
 
 	//These procs update and sort various other things after the patron items have added themselves to them
 	sort_loadout_categories()
-	SSdatabase.update_store_designs()
+	SSstore.update_store_designs()
 
 	GLOB.custom_items_loaded = TRUE
 	if (LOADOUT_LOADED)

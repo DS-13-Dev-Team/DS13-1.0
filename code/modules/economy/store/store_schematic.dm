@@ -33,7 +33,7 @@
 	if (!I.design_id)
 		I.get_design()
 
-	var/success = SSdatabase.upload_design(I.design_id)
+	var/success = SSstore.upload_design(I.design_id)
 
 	if (!success)
 		var/former_design = I.design_id
@@ -42,7 +42,7 @@
 
 
 		//One last attempt
-		success = SSdatabase.upload_design(I.design_id)
+		success = SSstore.upload_design(I.design_id)
 
 	if (!success)
 		//Terminal failure
@@ -61,17 +61,17 @@
 /obj/item/store_schematic/proc/get_design()
 
 	//If the designs aren't populated, add ourself to a pending list, we'll be back!
-	if (!SSdatabase.unknown_designs)
-		SSdatabase.pending_schematics |= src
+	if (!SSstore.unknown_designs)
+		SSstore.pending_schematics |= src
 		return
 
-	if (!length(SSdatabase.unknown_designs))
+	if (!length(SSstore.unknown_designs))
 		//There are no unknown designs left? We'll just have to delete ourselves
 		QDEL_IN(src, 1)
 		new /obj/random/rare_loot(get_turf(src))
 		return
 
-	design_id = pick(SSdatabase.unknown_designs)
+	design_id = pick(SSstore.unknown_designs)
 
 	var/datum/design/D = SSresearch.design_ids[design_id]
 	design_name = D.item_name

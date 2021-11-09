@@ -26,6 +26,8 @@ GLOBAL_VAR(tgui_log)
 GLOBAL_PROTECT(tgui_log)
 GLOBAL_VAR(world_paper_log)
 GLOBAL_PROTECT(world_paper_log)
+GLOBAL_VAR(query_debug_log)
+GLOBAL_PROTECT(query_debug_log)
 
 GLOBAL_LIST_EMPTY(admin_log)
 GLOBAL_PROTECT(admin_log)

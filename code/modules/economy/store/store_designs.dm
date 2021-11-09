@@ -22,7 +22,7 @@ GLOBAL_LIST_EMPTY(limited_store_designs)
 /proc/load_store_database()
 	GLOB.public_store_designs = list()
 
-	var/list/temp_list = SSdatabase.known_designs.Copy()
+	var/list/temp_list = SSstore.known_designs.Copy()
 
 	for (var/id in temp_list)
 

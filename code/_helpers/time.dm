@@ -107,24 +107,6 @@ GLOBAL_VAR_INIT(rollovercheck_last_timeofday, 0)
 		return GLOB.midnight_rollovers++
 	return GLOB.midnight_rollovers
 
-//Increases delay as the server gets more overloaded,
-//as sleeps aren't cheap and sleeping only to wake up and sleep again is wasteful
-#define DELTA_CALC max(((max(world.tick_usage, world.cpu) / 100) * max(Master.sleep_delta,1)), 1)
-
-/proc/stoplag()
-	if (!Master || !(Master.current_runlevel & RUNLEVELS_DEFAULT))
-		sleep(world.tick_lag)
-		return 1
-	. = 0
-	var/i = 1
-	do
-		. += round(i*DELTA_CALC)
-		sleep(i*world.tick_lag*DELTA_CALC)
-		i *= 2
-	while (world.tick_usage > min(TICK_LIMIT_TO_RUN, Master.current_ticklimit))
-
-#undef DELTA_CALC
-
 
 /proc/descriptive_time(var/time, var/divider = ", ")
 	var/list/components = list()

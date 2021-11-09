@@ -50,8 +50,6 @@ Basics, the most important.
 
 /datum/config_entry/flag/log_world_output   //log world.log << messages
 
-/datum/config_entry/flag/sql_enabled    //for sql switching
-
 /datum/config_entry/flag/allow_admin_ooccolor   //Allows admins with relevant permissions to have their own ooc colour
 
 /datum/config_entry/flag/allow_vote_restart //allow votes to restart

@@ -35,10 +35,10 @@ The answer was five and a half years -ZeroBits
 		data["current_book"] = current_book
 	else
 		var/list/all_entries[0]
-		if(!dbcon.IsConnected())
+		if(!SSdbcore.IsConnected())
 			error_message = "Unable to contact External Archive. Please contact your system administrator for assistance."
 		else
-			var/DBQuery/query = dbcon.NewQuery("SELECT id, author, title, category FROM library ORDER BY "+sanitizeSQL(sort_by))
+			var/datum/db_query/query = SSdbcore.NewQuery("SELECT id, author, title, category FROM library ORDER BY "+sanitizeSQL(sort_by))
 			query.Execute()
 
 			while(query.NextRow())
@@ -48,6 +48,7 @@ The answer was five and a half years -ZeroBits
 				"title" = query.item[3],
 				"category" = query.item[4]
 			)))
+			qdel(query)
 		data["book_list"] = all_entries
 		data["scanner"] = istype(scanner)
 
@@ -107,7 +108,7 @@ The answer was five and a half years -ZeroBits
 
 		var/choice = input(usr, "Upload [B.name] by [B.author] to the External Archive?") in list("Yes", "No")
 		if(choice == "Yes")
-			if(!dbcon.IsConnected())
+			if(!SSdbcore.IsConnected())
 				error_message = "Network Error: Connection to the Archive has been severed."
 				return 1
 
@@ -117,15 +118,15 @@ The answer was five and a half years -ZeroBits
 			var/sqlauthor = sanitizeSQL(B.author)
 			var/sqlcontent = sanitizeSQL(B.dat)
 			var/sqlcategory = sanitizeSQL(upload_category)
-			var/DBQuery/query = dbcon.NewQuery("INSERT INTO library (author, title, content, category) VALUES ('[sqlauthor]', '[sqltitle]', '[sqlcontent]', '[sqlcategory]')")
+			var/datum/db_query/query = SSdbcore.NewQuery("INSERT INTO library (author, title, content, category) VALUES ('[sqlauthor]', '[sqltitle]', '[sqlcontent]', '[sqlcategory]')")
 			if(!query.Execute())
 				to_chat(usr, query.ErrorMsg())
 				error_message = "Network Error: Unable to upload to the Archive. Contact your system Administrator for assistance."
-				return 1
 			else
 				log_and_message_admins("has uploaded the book titled [B.name], [length(B.dat)] signs")
 				log_game("[usr.name]/[usr.key] has uploaded the book titled [B.name], [length(B.dat)] signs")
 				tgui_alert(usr, "Upload Complete.")
+			qdel(query)
 			return 1
 
 		return 0
@@ -170,11 +171,11 @@ The answer was five and a half years -ZeroBits
 		return 0
 
 	var/sqlid = sanitizeSQL(id)
-	if(!dbcon.IsConnected())
+	if(!SSdbcore.IsConnected())
 		error_message = "Network Error: Connection to the Archive has been severed."
 		return 1
 
-	var/DBQuery/query = dbcon.NewQuery("SELECT * FROM library WHERE id=[sqlid]")
+	var/datum/db_query/query = SSdbcore.NewQuery("SELECT * FROM library WHERE id=[sqlid]")
 	query.Execute()
 
 	while(query.NextRow())
@@ -185,4 +186,5 @@ The answer was five and a half years -ZeroBits
 			"content" = query.item[4]
 			)
 		break
+	qdel(query)
 	return 1

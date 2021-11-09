@@ -35,9 +35,9 @@ var/list/whitelist = list()
 		alien_whitelist = splittext(text, "\n")
 		return 1
 /proc/load_alienwhitelistSQL()
-	var/DBQuery/query = dbcon.NewQuery("SELECT * FROM whitelist")
+	var/datum/db_query/query = SSdbcore.NewQuery("SELECT * FROM whitelist")
 	if(!query.Execute())
-		log_world(dbcon.ErrorMsg())
+		log_world(SSdbcore.ErrorMsg())
 		return 0
 	else
 		while(query.NextRow())
@@ -47,6 +47,9 @@ var/list/whitelist = list()
 				A.Add(row["race"])
 			else
 				alien_whitelist[row["ckey"]] = list(row["race"])
+
+	qdel(query)
+
 	return 1
 
 /proc/is_species_whitelist(mob/M, var/species_name)

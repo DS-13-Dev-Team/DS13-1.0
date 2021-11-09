@@ -1,11 +1,5 @@
 
 /**
- * Database hook.
- * Called in code\game\database.dm, just after the database is successfully connected
- */
-/hook/database_connected
-
-/**
  * Startup hook.
  * Called in world.dm when the server starts.
  */

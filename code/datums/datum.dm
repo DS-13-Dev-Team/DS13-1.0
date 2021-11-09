@@ -40,8 +40,8 @@
 		qdel(timer)
 	return QDEL_HINT_QUEUE
 
-/datum/proc/Process()
-	set waitfor = 0
+/datum/proc/Process(delta_time)
+	set waitfor = FALSE
 	return PROCESS_KILL
 
 /datum/proc/CanProcCall(procname)
