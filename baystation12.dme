@@ -2129,6 +2129,8 @@
 #include "code\modules\mob\living\abilities\swing\_swing.dm"
 #include "code\modules\mob\living\abilities\swing\arm.dm"
 #include "code\modules\mob\living\abilities\swing\helpers.dm"
+#include "code\modules\mob\living\abilities\toggled\fend.dm"
+#include "code\modules\mob\living\abilities\toggled\toggled.dm"
 #include "code\modules\mob\living\bot\bot.dm"
 #include "code\modules\mob\living\bot\cleanbot.dm"
 #include "code\modules\mob\living\bot\ed209bot.dm"

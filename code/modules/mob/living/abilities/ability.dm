@@ -11,6 +11,8 @@
 	var/expected_target_type = /atom
 	flags = EXTENSION_FLAG_IMMEDIATE
 
+	var/persist = FALSE
+
 	//One of the INCAPACITATION_XXX defines, checked in can_use
 	var/incapacitation_flags = INCAPACITATION_DEFAULT
 
@@ -90,6 +92,11 @@
 		resource_cost_paid = TRUE
 	return TRUE
 
+//Just an alternative path to stop that indicates an unsuccessful/failure state
+/datum/extension/ability/proc/interrupt()
+	deltimer(ongoing_timer)
+	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/ability/proc/stop), 1, TIMER_STOPPABLE)
+
 /datum/extension/ability/proc/stop()
 	if (!stopped_at)
 		deltimer(ongoing_timer)
@@ -104,7 +111,8 @@
 
 /datum/extension/ability/proc/finish_cooldown()
 	deltimer(ongoing_timer)
-	remove_self()
+	if (!persist)
+		remove_self()
 
 
 /datum/extension/ability/proc/get_cooldown_time()
@@ -136,12 +144,13 @@
 /datum/extension/ability/proc/can_use(var/mob/potential_user, var/list/parameters, var/error_messages = TRUE)
 	if (user.incapacitated(incapacitation_flags))
 		return FALSE
-	if (stopped_at)
-		to_chat(potential_user, SPAN_NOTICE("[name] is cooling down. You can use it again in [get_cooldown_time() /10] seconds"))
-		return FALSE
-	else if (started_at)
-		to_chat(src, SPAN_NOTICE("You're already [ability_verb]"))
-		return FALSE
+	if (ongoing_timer)
+		if (stopped_at)
+			to_chat(potential_user, SPAN_NOTICE("[name] is cooling down. You can use it again in [get_cooldown_time() /10] seconds"))
+			return FALSE
+		else if (started_at)
+			to_chat(src, SPAN_NOTICE("You're already [ability_verb]"))
+			return FALSE
 
 	if (!can_afford_resource_cost(potential_user, error_messages))
 		return FALSE

@@ -218,6 +218,8 @@
 #define BP_GROIN  "groin"
 #define BP_TAIL	"tail"
 #define BP_TORSO	list(BP_CHEST, BP_GROIN)
+#define BP_UPPER_BODY	list(BP_CHEST, BP_HEAD, BP_L_ARM, BP_R_ARM, BP_L_HAND, BP_R_HAND)	//Everything above the waist
+#define BP_LOWER_BODY	list(BP_GROIN, BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT, BP_TAIL)	//Everything below	 the waist
 #define BP_ALL_LIMBS list(BP_CHEST, BP_GROIN, BP_HEAD, BP_L_ARM, BP_R_ARM, BP_L_HAND, BP_R_HAND, BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT, BP_TAIL)
 #define BP_BY_DEPTH list(BP_HEAD, BP_L_HAND, BP_R_HAND, BP_L_ARM, BP_R_ARM, BP_L_FOOT, BP_R_FOOT, BP_L_LEG, BP_R_LEG, BP_TAIL,  BP_GROIN, BP_CHEST)
 #define BP_OVERALL	"overall"	//A special value that means "target everything evenly"
@@ -281,12 +283,16 @@
 #define STASIS_CRYOBAG  "cryobag"
 #define STASIS_COLD     "cold"
 
-#define AURA_CANCEL 1
-#define AURA_FALSE  2
+
+//Aura hit return values
+#define AURA_CANCEL 1	//This means "We've handled the hit, stop doing tests"
+#define AURA_FALSE  2	//This means Abort the hit. The bullet/strike/whatever does not land
+#define AURA_DEFLECT	3	//Only used for bullets, will cause ricochet
 #define AURA_TYPE_BULLET "Bullet"
 #define AURA_TYPE_WEAPON "Weapon"
 #define AURA_TYPE_THROWN "Thrown"
 #define AURA_TYPE_LIFE   "Life"
+#define AURA_TYPE_STRIKE   "Strike"
 
 #define SPECIES_BLOOD_DEFAULT 560
 

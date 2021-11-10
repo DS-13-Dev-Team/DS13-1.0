@@ -1,9 +1,12 @@
-/mob/proc/set_selected_zone(var/newzone)
+/mob/proc/set_zone_sel(var/newzone)
 	if (hud_used.zone_sel)
 		//Possible future todo: Raise an event here
-		hud_used.zone_sel.set_selected_zone(newzone)
+		hud_used.zone_sel.set_zone_sel(newzone)
 
-
+/mob/proc/set_random_zone()
+	if (hud_used.zone_sel)
+		//Possible future todo: Raise an event here
+		hud_used.zone_sel.set_zone_sel(ran_zone())
 
 //When passed a mob, returns the bodypart this mob is aiming its attacks at
 //This is a generic proc to allow it to handle null users
@@ -13,6 +16,9 @@
 		.=user.hud_used.zone_sel.selecting
 		if (!precise && (. in list(BP_MOUTH,BP_EYES)))
 			. = BP_HEAD
+
+/mob/proc/get_zone_sel()
+	return global.get_zone_sel(src)
 
 /atom/movable/screen/zone_sel
 	name = "damage zone"
@@ -78,10 +84,10 @@
 						if(icon_x in 15 to 17)
 							newselect = BP_EYES
 
-	set_selected_zone(newselect)
+	set_zone_sel(newselect)
 	return 1
 
-/atom/movable/screen/zone_sel/proc/set_selected_zone(bodypart)
+/atom/movable/screen/zone_sel/proc/set_zone_sel(bodypart)
 	var/old_selecting = selecting
 	selecting = bodypart
 	if(old_selecting != selecting)

@@ -274,6 +274,7 @@
 
 
 /datum/extension/charge/proc/bump(var/atom/movable/user, var/atom/obstacle, var/crossed = FALSE)
+
 	if (obstacle in atoms_hit)
 		return //Don't hit the same atom more than once
 

@@ -12,7 +12,6 @@
 	var/last_disarm
 
 /mob/living/carbon/human/UnarmedAttack(var/atom/A, var/proximity)
-
 	if(!..())
 		return
 

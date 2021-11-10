@@ -55,7 +55,7 @@
 /datum/extension/ability/domob/proc/apply_effect()
 
 
-/datum/extension/ability/domob/proc/interrupt()
+/datum/extension/ability/domob/interrupt()
 	set_extension(user, /datum/extension/interrupt_doafter, world.time + 2 SECONDS)
 	if (refund_on_interrupt)
 		refund_resource_cost(user)

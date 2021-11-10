@@ -286,7 +286,6 @@
 
 /obj/item/projectile/proc/ricochet_from(var/atom/bounceoff, var/angle = 90)
 
-
 	//Causes this projectile to bounce off of the atom in a random angle.
 		//The angle is bidirectional, an input of 90 could go up to a right angle either side
 	//For best results, this should be called from a tile adjacent to the target
@@ -332,8 +331,9 @@
 	var/result = PROJECTILE_FORCE_MISS
 	if(hit_zone)
 		def_zone = hit_zone //set def_zone, so if the projectile ends up hitting someone else later (to be implemented), it is more likely to hit the same part
-		if(!target_mob.aura_check(AURA_TYPE_BULLET, src,def_zone))
-			return 0
+		var/aura_result = target_mob.aura_check(AURA_TYPE_BULLET, src,def_zone)
+		if(aura_result != TRUE)
+			return aura_result//The aura has blocked or deflected the bullet
 		result = target_mob.bullet_act(src, def_zone)
 
 	//Incase that bullet act wanted to override something

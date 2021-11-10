@@ -1018,7 +1018,7 @@
 	if(!check_has_body_select())
 		return
 	var/atom/movable/screen/zone_sel/selector = mob.hud_used.zone_sel
-	selector.set_selected_zone(next_in_list(mob.hud_used.zone_sel.selecting,zones))
+	selector.set_zone_sel(next_in_list(mob.hud_used.zone_sel.selecting,zones))
 
 /mob/proc/has_chem_effect(chem, threshold)
 	return FALSE
