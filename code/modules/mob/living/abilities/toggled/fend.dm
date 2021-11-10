@@ -8,7 +8,7 @@
 #define FEND_DAMAGE_REDUCTION	10
 
 /datum/extension/ability/toggled/fend
-	toggle_on_time = (0.5 SECONDS)
+	toggle_on_time = (0.25 SECONDS)
 	statmods = list(STATMOD_MOVESPEED_MULTIPLICATIVE	=	0.5,
 	STATMOD_INCOMING_DAMAGE_MULTIPLICATIVE = 0.8)
 

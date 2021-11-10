@@ -98,7 +98,7 @@
 	activate()
 
 /datum/extension/ability/toggled/Initialize()
-	GLOB.stat_set.register(holder, src, /datum/extension/ability/toggled/proc/stat_set)
+	GLOB.stat_set_event.register(holder, src, /datum/extension/ability/toggled/proc/stat_set)
 
 /datum/extension/ability/toggled/Destroy()
 
