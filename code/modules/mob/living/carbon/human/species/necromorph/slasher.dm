@@ -72,7 +72,8 @@
 
 	inherent_verbs = list(/atom/movable/proc/slasher_charge, /mob/living/proc/slasher_dodge, /mob/living/proc/slasher_fend, /mob/proc/shout)
 	modifier_verbs = list(KEY_CTRLALT = list(/atom/movable/proc/slasher_charge),
-	KEY_ALT = list(/mob/living/proc/slasher_dodge))
+	KEY_ALT = list(/mob/living/proc/slasher_dodge),
+	KEY_MIDDLE = list(/mob/living/proc/slasher_dodge))
 
 
 	variants = list(SPECIES_NECROMORPH_SLASHER = list(WEIGHT = 8),
@@ -234,18 +235,29 @@ Charge is a great move to initiate a fight, or to damage obstacles blocking your
 
 
 #define SLASHER_DODGE_DESC "<h2>Dodge:</h2><br>\
-<h3>Hotkey: Alt+Click</h3><br>\
+<h3>Hotkey: Middle Mouse Click</h3><br>\
 <h3>Cooldown: 6 seconds</h3><br>\
 A simple trick, dodge causes the user to leap one tile to the side, and gain a large but brief bonus to evasion, making them almost impossible to hit.<br>\
 The evasion bonus only lasts 1.5 seconds, so it's best used while an enemy is already firing at you. <br>\
 
 Dodge is a skill that requires careful timing, but if used correctly, it can allow you to assault an entrenched firing line, and get close enough to land a few hits."
 
+#define SLASHER_FEND_DESC "<h2>Fend:</h2><br>\
+<h3>Hotkey: Alt+Click</h3><br>\
+A toggleable ability, the slasher shields its body with its claws, trading off movespeed for defensive ability. Fend gives an active block that flatly reduces damage of hits\n\
+The block chance is slightly random, but is most effective with melee attacks, aimed at the upper body, and from the front. If a blocked projectile is weak enough, it will bounce off\n\
+Weak melee attacks will provoke a devastating counterattack instead.\n\
+In addition, fend grants a 20% reduction to all incoming damage while active, but it halves your movespeed.\n\
+Fend automatically cancels when you perform a charge or a melee attack. Dodge will not interrupt it though, and those two can be comboed together to approach enemies."
+
+
 /datum/species/necromorph/slasher/get_ability_descriptions()
 	.= ""
 	. += SLASHER_CHARGE_DESC
 	. += "<hr>"
 	. += SLASHER_DODGE_DESC
+	. += "<hr>"
+	. += SLASHER_FEND_DESC
 
 
 //Can't slash things without arms
@@ -336,11 +348,9 @@ Dodge is a skill that requires careful timing, but if used correctly, it can all
 	However, to limit the power of this, these hits are mostly randomised in terms of where they land on the body.
 */
 /datum/species/necromorph/slasher/charge_impact(var/datum/extension/charge/charge)
-	to_chat(world, "Slasher charge impact 1  [charge] Type: [charge.last_target_type] living: [isliving(charge.last_obstacle)]")
 	if (charge.last_target_type == CHARGE_TARGET_PRIMARY && isliving(charge.last_obstacle))
 		var/mob/living/carbon/human/H = charge.user
 		var/mob/living/L = charge.last_obstacle
-		to_chat(world, "Slasher charge impact 2")
 
 		//We need to be in harm intent for this, set it if its not already
 		if (H.a_intent != I_HURT)
@@ -369,7 +379,6 @@ Dodge is a skill that requires careful timing, but if used correctly, it can all
 
 		//Return the target zone to normal
 		H.set_zone_sel(current_target_zone)
-		to_chat(world, "Slasher charge impact 3")
 		return FALSE
 	else
 		return ..()
