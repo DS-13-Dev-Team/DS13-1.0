@@ -70,7 +70,7 @@
 
 	slowdown = 3.5
 
-	inherent_verbs = list(/atom/movable/proc/slasher_charge, /mob/living/proc/slasher_dodge, /mob/proc/shout)
+	inherent_verbs = list(/atom/movable/proc/slasher_charge, /mob/living/proc/slasher_dodge, /mob/living/proc/slasher_fend, /mob/proc/shout)
 	modifier_verbs = list(KEY_CTRLALT = list(/atom/movable/proc/slasher_charge),
 	KEY_ALT = list(/mob/living/proc/slasher_dodge))
 
@@ -254,6 +254,11 @@ Dodge is a skill that requires careful timing, but if used correctly, it can all
 		return FALSE
 	return TRUE
 
+/datum/unarmed_attack/blades/show_attack(var/datum/strike/strike)
+	//Fend is cancelled when you charge or attack
+	strike.user.toggle_extension(/datum/extension/ability/toggled/fend, FALSE, FALSE, TRUE)
+	.=..()
+
 /datum/unarmed_attack/blades/strong
 	damage = 22.4
 	delay = 14
@@ -271,6 +276,8 @@ Dodge is a skill that requires careful timing, but if used correctly, it can all
 	if (!isliving(A))
 		A = autotarget_enemy_mob(A, 2, src, 999)
 
+	//Fend is cancelled when you charge or attack
+	toggle_extension(/datum/extension/ability/toggled/fend, FALSE, FALSE, TRUE)
 
 	.= charge_attack(A, _delay = 1 SECONDS, _speed = 5.0, _lifespan = 4 SECONDS)
 	if (.)
@@ -369,6 +376,11 @@ Dodge is a skill that requires careful timing, but if used correctly, it can all
 
 
 
+/mob/living/proc/slasher_fend()
+	set name = "Fend"
+	set category = "Abilities"
+
+	toggle_extension(/datum/extension/ability/toggled/fend)
 
 
 
