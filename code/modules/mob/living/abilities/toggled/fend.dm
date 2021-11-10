@@ -56,15 +56,11 @@
 
 
 /obj/aura/fend/handle_strike(var/datum/strike/S)
-	to_chat(world, "Fend strike 1")
 	if (check_block(S.target_zone, S.origin))
-		to_chat(world, "Fend strike 2 [S.damage] [S.melee]")
 		S.blocker = get_blocking_limb()
 		//Free counterattack if the incoming attack is weak enough
 		if (S.damage <=  damage_block && S.melee)
-			to_chat(world, "Fend strike 3")
 			var/mob/living/carbon/human/H = user
-			H.visible_message("[H] parries the strike and swings at [S.user]")
 
 			//Two free hits, one at a random zone
 			H.last_attack = 0
@@ -82,7 +78,6 @@
 //Checks if fend can block this
 /obj/aura/fend/proc/check_block(var/target_zone, var/origin, var/modifier = 0)
 	var/block_chance = 100 + modifier
-	to_chat(world, "checkblock 1")
 	if (user.lying)
 		block_chance -= 30
 	else if (!target_in_frontal_arc(user, origin, 45))
@@ -91,10 +86,8 @@
 			block_chance -= 20
 		else
 			//Target is behind us, we can't block it
-			to_chat(world, "checkblock 2")
 			return FALSE
 
-	to_chat(world, "checkblock 3")
 
 	//Mostly protects upperbody, less effective on lower
 	if ((target_zone in BP_LOWER_BODY))
@@ -113,14 +106,12 @@
 
 	if (!num_limbs)
 		return FALSE
-		to_chat(world, "checkblock 4")
 	else
 		//Missing some of the required limbs reduces the block chance proportionally
 		block_chance *= num_limbs / length(blocking_limbs)
 
 
 
-	to_chat(world, "checkblock 5")
 	return prob(block_chance)
 
 /obj/aura/fend/proc/get_blocking_limb()

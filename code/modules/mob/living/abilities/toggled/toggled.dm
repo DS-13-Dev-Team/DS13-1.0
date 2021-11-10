@@ -23,20 +23,18 @@
 	Helpers
 */
 /datum/proc/toggle_extension(var/etype, var/target_state = null,var/can_fail = TRUE, var/instant)
-	to_chat(world,"[src] toggling extension [target_state] [etype]")
 	var/datum/extension/ability/toggled/T
 	if (target_state != FALSE)
 		T = get_or_create_extension(src, etype)
 	else
-		to_chat(world,"toggling 2")
 		//If we're specifically trying to turn off, and the extension doesn't exist, we don't create it.
 		//We are happy that its nonexistence is as good as being turned off, and will leave it that way
 		T = get_extension(src, etype)
 		if (!T)
-			to_chat(world,"toggling 3")
 			return
 
-	to_chat(world,"toggling 4")
+	if (T.status == target_state)
+		return
 
 	if (isnull(target_state))
 		T.toggle(can_fail, instant)
