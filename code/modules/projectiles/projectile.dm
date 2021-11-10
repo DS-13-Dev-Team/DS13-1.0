@@ -285,7 +285,6 @@
 	setup_trajectory(starting_loc, new_target)
 
 /obj/item/projectile/proc/ricochet_from(var/atom/bounceoff, var/angle = 90)
-	to_chat(world,"Ricocheting off of [bounceoff] at [jumplink(bounceoff)]")
 
 	//Causes this projectile to bounce off of the atom in a random angle.
 		//The angle is bidirectional, an input of 90 could go up to a right angle either side
