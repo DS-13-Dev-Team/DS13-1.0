@@ -25,3 +25,10 @@
   - balance: Increased human pain-shock threshold by 10%. from 50 to 55 This is the
       quantity of pain that can be suffered without any real bad effects.
   - tweak: Increased health of all necromorphs by 10%
+2021-11-11:
+  Nanako:
+  - rscadd: Added a new defensive ability for slashers. Fend trades off movespeed
+      for a powerful defensive buff, giving both incoming damage reduction, and an
+      active block, especially for upperbody attacks from the front. Weaker attacks
+      may even be ricocheted or parried and countered, depending on if they're ranged
+      or melee respectively
