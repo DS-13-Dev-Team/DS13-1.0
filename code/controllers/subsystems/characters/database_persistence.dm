@@ -64,16 +64,18 @@ SUBSYSTEM_DEF(database)
 /*
 	Credit Handling
 */
-/datum/controller/subsystem/database/proc/credits_changed(var/datum/mind/M)
+/datum/controller/subsystem/database/credits_changed(var/datum/mind/M)
 	credits_to_update |= M
 
+/datum/proc/credits_changed()
+
 //Mob level helper
-/mob/proc/credits_changed()
+/mob/credits_changed()
 	if (mind)
 		SSdatabase.credits_changed(mind)
 
 //Item helper
-/obj/item/proc/credits_changed()
+/obj/item/credits_changed()
 	var/mob/M = get_holding_mob()
 	if(M)
 		M.credits_changed()
