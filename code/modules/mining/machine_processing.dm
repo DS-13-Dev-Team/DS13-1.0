@@ -187,9 +187,8 @@
 /obj/machinery/mineral/processing_unit/proc/wake_up()
 	START_PROCESSING_MACHINE(src, MACHINERY_PROCESS_SELF)
 
-/obj/machinery/mineral/processing_unit/input_available(var/obj/item/weapon/ore/O)
-	if (istype(O))
-		wake_up()
+/obj/machinery/mineral/processing_unit/input_available()
+	wake_up()
 
 /obj/machinery/mineral/processing_unit/Process()
 	//This will be set back to true if we intake or process any ores this tick

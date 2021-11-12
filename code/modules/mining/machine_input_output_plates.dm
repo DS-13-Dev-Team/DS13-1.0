@@ -22,6 +22,21 @@
 //Called when something enters our relevant input tile
 /obj/machinery/proc/input_available(var/atom/movable/O)
 
+/obj/machinery/input/ore
+	name = "Ore Input Area"
+
+/obj/machinery/input/ore/Destroy()
+	var/obj/machinery/mineral/processing_unit/P = master
+	P.input = null
+	.=..()
+
+// In case someone left an ore while was there
+/obj/machinery/input/Uncrossed(O)
+	.=..()
+	if(master)
+		var/obj/machinery/mineral/processing_unit/P = master
+		P.input_available(O)
+
 /obj/machinery/mineral/output
 	icon = 'icons/hud/screen1.dmi'
 	icon_state = "x"
