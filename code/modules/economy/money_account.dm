@@ -13,7 +13,6 @@
 	var/datum/mind/mind = null 	//Optional, contains a character mind this account is associated with
 
 /datum/money_account/credits_changed()
-	to_chat(world, "money account credits changed")
 	if (mind)
 		SSdatabase.credits_changed(mind)
 
