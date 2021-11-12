@@ -34,6 +34,7 @@ var/list/mining_floors = list()
 	var/obj/item/weapon/last_find
 	var/datum/artifact_find/artifact_find
 
+	var/mining_done = FALSE
 
 	has_resources = 1
 
@@ -333,6 +334,10 @@ var/list/mining_floors = list()
 	finish_mining()
 
 /turf/simulated/mineral/proc/finish_mining()
+	if (mining_done)
+		return
+
+	mining_done = TRUE
 	//var/destroyed = 0 //used for breaking strange rocks
 	if (mineral && mineral.result_amount)
 

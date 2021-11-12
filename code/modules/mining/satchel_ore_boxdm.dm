@@ -10,18 +10,32 @@
 	var/last_update = 0
 	var/list/stored_ore = list()
 
+	var/max_contents = 150
+
+
 /obj/structure/ore_box/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if (istype(W, /obj/item/weapon/ore))
+		if (contents.len >= max_contents)
+			to_chat(user, "<span class='danger'>The ore box is full!</span>")
+			return
 		user.unEquip(W, src)
 	else if (istype(W, /obj/item/weapon/storage))
+		if (contents.len >= max_contents)
+			to_chat(user, "<span class='danger'>The ore box is full!</span>")
+			return
 		var/obj/item/weapon/storage/S = W
 		S.hide_from(usr)
 		for(var/obj/item/weapon/ore/O in S.contents)
+			if (contents.len >= max_contents)
+				to_chat(user, "<span class='danger'>You filled the ore box, but there's still ore in the satchel.</span>")
+				return
 			S.remove_from_storage(O, src, 1) //This will move the item to this item's contents
+
 		S.finish_bulk_removal()
 		to_chat(user, "<span class='notice'>You empty the satchel into the box.</span>")
 
 	update_ore_count()
+
 
 //A debug type that contains a bunch of randomly generated ores
 /obj/structure/ore_box/random/Initialize()
@@ -76,6 +90,8 @@
 	to_chat(user, "It holds:")
 	for(var/ore in stored_ore)
 		to_chat(user, "- [stored_ore[ore]] [ore]")
+
+	to_chat(user, "It is [(contents.len / max_contents)*100]% full")
 	return
 
 
