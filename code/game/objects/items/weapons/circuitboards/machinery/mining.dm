@@ -30,7 +30,7 @@
 							/obj/item/weapon/stock_parts/matter_bin = 3,
 							/obj/item/weapon/stock_parts/micro_laser = 2,
 							/obj/item/weapon/stock_parts/manipulator = 2,
-							/obj/item/weapon/stock_parts/scanning_module = 1)
+							/obj/item/weapon/stock_parts/scanning_module = 2)
 
 /obj/item/weapon/circuitboard/unloading_machine
 	name = T_BOARD("unloading machine")
