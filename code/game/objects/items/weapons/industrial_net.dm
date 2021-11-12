@@ -1,3 +1,4 @@
+
 /obj/structure/net//if you want to have fun, make them to be draggable as a whole unless at least one piece is attached to a non-space turf or anchored object
 	name = "industrial net"
 	desc = "A sturdy industrial net of synthetic belts reinforced with plasteel threads."
@@ -6,18 +7,35 @@
 	anchored = 1
 	//on the floor
 	layer = CATWALK_LAYER//probably? Should cover cables, pipes and the rest of objects that are secured on the floor
-	health = 100
+	max_health = 50
 
-obj/structure/net/Initialize(var/mapload)
+
+/obj/structure/net/Crossed(atom/movable/O)
+	if (isliving(O))
+		O.update_extension(/datum/extension/updating/net_entanglement)
+		playsound(src, "rustle", VOLUME_LOW, TRUE)
+
+/obj/structure/net/Initialize(var/mapload)
 	. = ..()
 	update_connections()
+	var/turf/simulated/floor/T = get_turf(src)
 	if (!mapload)//if it's not mapped object but rather created during round, we should update visuals of adjacent net objects
-		var/turf/T = get_turf(src)
+
 		for (var/turf/AT in T.CardinalTurfs(FALSE))
 			for (var/obj/structure/net/N in AT)
 				if (type != N.type)//net-walls cause update for net-walls and floors for floors but not for each other
 					continue
 				N.update_connections()
+
+	if (istype(T))
+		T?.incorruptible = TRUE
+
+/obj/structure/net/Destroy()
+
+	var/turf/simulated/floor/T = get_turf(src)
+	if (istype(T))
+		T?.incorruptible = FALSE
+	. = ..()
 
 /obj/structure/net/examine()
 	..()
@@ -29,6 +47,19 @@ obj/structure/net/Initialize(var/mapload)
 		to_chat(usr, "Few ribbons of \the [src] are cut away.")
 
 /obj/structure/net/attackby(obj/item/weapon/W as obj, mob/user as mob)
+	if (istype(W, /obj/item/stack/net))
+		var/obj/item/stack/net/N = W
+		if (N.amount >= N.max_amount)
+			to_chat(user, "\The [N] is full.")
+			return
+
+		pull_in_mob(user)
+
+		if (do_after(user, 3 SECONDS, src, TRUE))
+			N.amount += 1
+			qdel(src)
+		return
+
 	if (istype(W, /obj/item/weapon/material)) //sharp objects can cut thorugh
 		var/obj/item/weapon/material/SH = W
 		if (!(SH.sharp) || (SH.sharp && SH.force < 10))//is not sharp enough or at all
@@ -43,6 +74,17 @@ obj/structure/net/Initialize(var/mapload)
 		visible_message("<span class='warning'>[user] cuts through \the [src]!</span>")
 		new /obj/item/stack/net(src.loc)
 		qdel(src)
+
+//If you're not standing in a net and you try to touch it, you'll get tangled in it.
+//This feature is mainly to prevent necromorphs from playing lawnmower
+/obj/structure/net/attack_hand(var/mob/user)
+	pull_in_mob(user)
+
+	.=..()
+
+/obj/structure/net/proc/pull_in_mob(var/mob/user)
+	if (user.loc != src)
+		user.SelfMove(get_dir(user, src))
 
 /obj/structure/net/bullet_act(obj/item/projectile/P)
 	. = PROJECTILE_CONTINUE //few cloth ribbons won't stop bullet or energy ray
@@ -60,6 +102,7 @@ obj/structure/net/Initialize(var/mapload)
 	icon_state = "net_w"
 	density = 1
 	layer = ABOVE_HUMAN_LAYER
+	max_health = 200
 
 /obj/structure/net/net_wall/Initialize(var/mapload)
 	. = ..()
@@ -100,7 +143,13 @@ obj/structure/net/Initialize(var/mapload)
 	. = ..()
 	update_icon()
 
-/obj/item/stack/net/thirty
+/obj/item/stack/net/small
+	amount = 5
+
+/obj/item/stack/net/medium
+	amount = 10
+
+/obj/item/stack/net/large
 	amount = 30
 
 /obj/item/stack/net/update_icon()
@@ -137,3 +186,11 @@ obj/structure/net/Initialize(var/mapload)
 	update_icon()
 	if (amount < 1)
 		qdel(src)
+
+
+/datum/design/item/weapon/netroll
+	name = "Industrial Net Roll"
+	id = "netroll"
+	materials = list(MATERIAL_PLASTEEL = 2500)
+	build_path = /obj/item/stack/net/large
+	price = 10000

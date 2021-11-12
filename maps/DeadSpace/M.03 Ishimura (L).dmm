@@ -4081,7 +4081,7 @@
 	d2 = 4;
 	icon_state = "0-4"
 	},
-/obj/item/stack/net/thirty,
+/obj/item/stack/net/large,
 /turf/simulated/floor/dank,
 /area/ishimura/lower/misc/marker)
 "aiS" = (

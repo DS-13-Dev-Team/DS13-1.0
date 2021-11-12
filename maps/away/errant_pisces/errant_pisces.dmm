@@ -4994,7 +4994,7 @@
 /area/errant_pisces/general_storage)
 "ms" = (
 /obj/structure/table/rack,
-/obj/item/stack/net/thirty,
+/obj/item/stack/net/large,
 /turf/simulated/floor/plating,
 /area/errant_pisces/general_storage)
 "mt" = (
@@ -6791,8 +6791,8 @@
 /obj/structure/table/rack,
 /obj/item/weapon/material/hatchet/tacknife,
 /obj/item/weapon/material/hatchet/tacknife,
-/obj/item/stack/net/thirty,
-/obj/item/stack/net/thirty,
+/obj/item/stack/net/large,
+/obj/item/stack/net/large,
 /turf/simulated/floor/plating,
 /area/errant_pisces/fishing_wing)
 "qE" = (
@@ -6805,7 +6805,7 @@
 "qF" = (
 /obj/structure/table/rack,
 /obj/item/weapon/storage/box/survival,
-/obj/item/stack/net/thirty,
+/obj/item/stack/net/large,
 /turf/simulated/floor/plating,
 /area/errant_pisces/fishing_wing)
 "qG" = (
@@ -6843,7 +6843,7 @@
 /obj/structure/table/rack,
 /obj/item/clothing/mask/breath,
 /obj/item/device/flashlight,
-/obj/item/stack/net/thirty,
+/obj/item/stack/net/large,
 /turf/simulated/floor/plating,
 /area/errant_pisces/fishing_wing)
 "qL" = (
