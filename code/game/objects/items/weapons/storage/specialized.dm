@@ -15,7 +15,7 @@
 	icon = 'icons/obj/mining.dmi'
 	icon_state = "satchel"
 	slot_flags = SLOT_BELT
-	max_storage_space = 20
+	max_storage_space = 30
 	max_w_class = ITEM_SIZE_NORMAL
 	w_class = ITEM_SIZE_LARGE
 	can_hold = list(/obj/item/weapon/ore)
