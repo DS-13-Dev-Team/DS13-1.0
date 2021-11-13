@@ -32,3 +32,24 @@
       active block, especially for upperbody attacks from the front. Weaker attacks
       may even be ricocheted or parried and countered, depending on if they're ranged
       or melee respectively
+2021-11-13:
+  Nanako:
+  - balance: Mining satchels and ore boxes now have a significantly smaller capacity,
+      so they need to be hauled back to the processor more often. This change is designed
+      to encourage cooperation, and slow down solo-miners. Bring a friend with you
+      to carry your stuff!
+  - bugfix: Fixed a major bug where rock turfs mined out with ranged toolguns (like
+      plasma cutter and line cutter) were giving double ore yields. This was never
+      an intended thing.
+  - bugfix: Fixed a case where credits weren't being saved from payday and mining
+      bonuses.
+  - experiment: Reworked and reintroduced a legacy feature, Industrial Nets.
+  - rscadd: Nets can be dispensed from a netroll by humans to cover areas of floor,
+      and can be dispensed again to build a net wall. A netroll can also be used to
+      pickup deployed nets and return them to the roll.
+  - rscadd: Floor nets will reduce the speed, evasion, and defense of human-sized-mobs
+      walking on them, and will block corruption from spreading into the tile. Net
+      walls only impede movement, and do not provide cover against ranged attacks,
+      or block vision.
+  - rscadd: Net rolls can be found in random loot, or purchased from the store with
+      the right schematic.
