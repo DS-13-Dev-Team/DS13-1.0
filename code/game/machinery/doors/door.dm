@@ -116,7 +116,7 @@
 
 	var/list/raytrace_turfs = list()
 
-	for (var/turf/T as anything in turfs_in_view(world.view))
+	for (var/turf/T as anything in turfs_in_view(WORLD_VIEW_RANGE))
 		var/area/A = get_area(T)
 		if (!(A in border_areas))
 			raytrace_turfs += T

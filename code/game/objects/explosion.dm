@@ -74,7 +74,7 @@ Method to spawn explosion particles.
 */
 proc/explosion_FX(turf/epicenter, max_range = 0, explosion_sound=get_sfx("explosion"), use_smoke=TRUE)
 	set waitfor = FALSE //Gotta go fast
-	max_range += world.view
+	max_range += WORLD_VIEW_RANGE
 	var/datum/effect/system/explosion/E = new/datum/effect/system/explosion()
 	E.set_up(epicenter, use_smoke)
 	E.start()

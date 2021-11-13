@@ -196,7 +196,7 @@ GLOBAL_VAR(spawntypes)
 		return FALSE
 
 	//No visible corruption
-	if (turf_near_corrupted(spawn_turf, world.view))
+	if (turf_near_corrupted(spawn_turf, WORLD_VIEW_RANGE))
 		return FALSE
 
 	//No live necros

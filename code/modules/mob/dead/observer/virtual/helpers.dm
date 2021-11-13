@@ -17,12 +17,12 @@
 	. = list()
 
 	ACQUIRE_VIRTUAL_OR_TURF(center_vmob)
-	for(var/mob/dead/observer/virtual/v_mob in range(world.view, center_vmob))
+	for(var/mob/dead/observer/virtual/v_mob in range(WORLD_VIEW_RANGE, center_vmob))
 		var/client/C = v_mob.get_client()
 		if(C)
 			. |= C
 
-/proc/hearers_in_range(var/atom/movable/center_vmob, var/hearing_range = world.view)
+/proc/hearers_in_range(var/atom/movable/center_vmob, var/hearing_range = WORLD_VIEW_RANGE)
 	. = list()
 
 	ACQUIRE_VIRTUAL_OR_TURF(center_vmob)
@@ -34,7 +34,7 @@
 	. = list()
 
 	ACQUIRE_VIRTUAL_OR_TURF(center_vmob)
-	for(var/mob/dead/observer/virtual/v_mob in range(world.view, center_vmob))
+	for(var/mob/dead/observer/virtual/v_mob in range(WORLD_VIEW_RANGE, center_vmob))
 		if(v_mob.abilities & VIRTUAL_ABILITY_SEE)
 			. |= v_mob.host
 
@@ -46,7 +46,7 @@
 // Thus, unlike viewing hearing is communicative. I.e. if Mob A can hear Mob B then Mob B can also hear Mob A.
 
 // Gets the hosts of all the virtual mobs that can hear the given movable atom (or rather, it's virtual mob or turf in that existence order)
-/proc/all_hearers(var/atom/movable/heard_vmob, var/range = world.view)
+/proc/all_hearers(var/atom/movable/heard_vmob, var/range = WORLD_VIEW_RANGE)
 	. = list()
 
 	ACQUIRE_VIRTUAL_OR_TURF(heard_vmob)
@@ -74,7 +74,7 @@
 	if(!T)
 		return
 
-	for(var/mob/dead/observer/virtual/seeing_v_mob in viewers(world.view, viewed_atom))
+	for(var/mob/dead/observer/virtual/seeing_v_mob in viewers(WORLD_VIEW_RANGE, viewed_atom))
 		if(!(seeing_v_mob.abilities & VIRTUAL_ABILITY_SEE))
 			continue
 		var/atom/movable/host = seeing_v_mob.host
@@ -88,7 +88,7 @@
 
 	ACQUIRE_VIRTUAL_OR_TURF(viewing_atom)
 	// As per http://www.byond.com/docs/ref/info.html#/proc/view by using a non-mob/client this automatically skips the vast majority of sight checks
-	for(var/mob/dead/observer/virtual/v_mob in viewers(world.view, get_turf(viewing_atom.loc)))
+	for(var/mob/dead/observer/virtual/v_mob in viewers(WORLD_VIEW_RANGE, get_turf(viewing_atom.loc)))
 		. |= v_mob.host
 
 /*

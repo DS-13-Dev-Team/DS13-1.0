@@ -8,7 +8,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 
 
 //Version of view() which ignores darkness, because BYOND doesn't have it.
-/proc/dview(var/range = world.view, var/center, var/invis_flags = 0)
+/proc/dview(var/range = WORLD_VIEW_RANGE, var/center, var/invis_flags = 0)
 	if(!center)
 		return
 
@@ -40,7 +40,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 
 //Mob
 
-/atom/proc/atoms_in_view(var/check_range = world.view)
+/atom/proc/atoms_in_view(var/check_range = WORLD_VIEW_RANGE)
 	GLOB.dview_mob.loc = get_turf(src)
 	GLOB.dview_mob.see_invisible = 0
 	return view(check_range, GLOB.dview_mob)
@@ -58,7 +58,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 	return view(range, GLOB.dview_mob)
 
 //Returns a list of all turfs this mob can see, accounting for view radius and offset
-/atom/proc/turfs_in_view(var/check_range = world.view)
+/atom/proc/turfs_in_view(var/check_range = WORLD_VIEW_RANGE)
 	var/list/things = list()
 	FOR_DVIEW(var/turf/T, check_range, get_turf(src), 0)
 		things += T
@@ -68,7 +68,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 /mob/turfs_in_view(var/check_range = null)
 	var/range = (check_range ? check_range : view_range)
 	if (!isnum(range) || range < 0)
-		range = world.view
+		range = WORLD_VIEW_RANGE
 	else
 		range = Ceiling(range)	//Just incase a noninteger value was passed
 	var/origin
@@ -88,7 +88,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 	As above, but specifically finds turfs without dense objects blocking them
 	Floor only excludes space and openspace, only returning tiles that someone could stand/be placed on
 */
-/atom/proc/clear_turfs_in_view(var/check_range = world.view, var/floor_only = TRUE)
+/atom/proc/clear_turfs_in_view(var/check_range = WORLD_VIEW_RANGE, var/floor_only = TRUE)
 	var/list/things = list()
 	for (var/turf/T as anything in turfs_in_view(check_range))
 		if (floor_only && !istype(T, /turf/simulated/floor))

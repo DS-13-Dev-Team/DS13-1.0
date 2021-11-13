@@ -250,7 +250,7 @@
 		return 0
 
 	if(emagged && ishuman(targ))
-		if(targ in view(world.view, src))
+		if(targ in view(WORLD_VIEW_RANGE, src))
 			return 1
 		return 0
 

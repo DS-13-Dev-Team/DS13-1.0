@@ -32,7 +32,7 @@
 	if(T)
 		if(rebuild)
 			skybox.overlays.Cut()
-			skybox.overlays += SSskybox.get_skybox(T.z, max(world.view, view_radius))
+			skybox.overlays += SSskybox.get_skybox(T.z, max(WORLD_VIEW_RANGE, view_radius))
 			screen |= skybox
 			skybox.scalar = view_scalar(view_radius)
 

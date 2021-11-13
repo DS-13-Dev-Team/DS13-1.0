@@ -624,7 +624,7 @@
 	set name = "Stress Test Garbage Collection"
 	set desc = "Mass deletes objects onscreen to stress-test garbage collection."
 
-	for (var/obj/O in range(world.view, mob))
+	for (var/obj/O in range(WORLD_VIEW_RANGE, mob))
 		qdel(O)
 
 

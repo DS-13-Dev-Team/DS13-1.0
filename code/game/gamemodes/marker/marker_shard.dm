@@ -244,7 +244,7 @@
 		user.Paralyse(10)
 		user.take_overall_damage(0, 30, src)
 
-	var/list/turfs = clear_turfs_in_view(world.view)
+	var/list/turfs = clear_turfs_in_view(WORLD_VIEW_RANGE)
 	if (turfs.len)
 		if (loc == user)
 			user.drop_from_inventory(src, pick(turfs))

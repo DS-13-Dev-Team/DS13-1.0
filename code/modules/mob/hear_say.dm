@@ -84,7 +84,7 @@
 
 		else
 			on_hear_say("<span class='game say'>[track]<span class='name'>[speaker_name]</span>[alt_name] [verb], <span class='message'><span class='body'>\"[message]\"</span></span></span>")
-		if (speech_sound && (get_dist(speaker, src) <= world.view && src.z == speaker.z))
+		if (speech_sound && (get_dist(speaker, src) <= WORLD_VIEW_RANGE && src.z == speaker.z))
 			var/turf/source = speaker? get_turf(speaker) : get_turf(src)
 			src.playsound_local(source, speech_sound, sound_vol, 1)
 		return TRUE

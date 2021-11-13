@@ -19,7 +19,7 @@ Methods to apply and remove traumatic sight status to an atom
 */
 
 
-/atom/proc/set_traumatic_sight(state, intensity = 3, poll_rate = 5 SECONDS, view_range = world.view, duration = 5 SECONDS)
+/atom/proc/set_traumatic_sight(state, intensity = 3, poll_rate = 5 SECONDS, view_range = WORLD_VIEW_RANGE, duration = 5 SECONDS)
 	if(state)
 		set_extension(src, /datum/extension/traumatic_sight, poll_rate, view_range, duration, intensity)
 	else

@@ -43,7 +43,7 @@
 	subject.default_alpha *= 0.5
 	subject.default_scale += 0.15
 
-	hum = GLOB.sound_player.PlayLoopingSound(subject, "[rand(0, 99999)]", 'sound/effects/rig/modules/kinesis_hold.ogg', VOLUME_MID_HIGH, world.view)
+	hum = GLOB.sound_player.PlayLoopingSound(subject, "[rand(0, 99999)]", 'sound/effects/rig/modules/kinesis_hold.ogg', VOLUME_MID_HIGH, WORLD_VIEW_RANGE)
 
 	subject.animate_to_default(3, FALSE)
 

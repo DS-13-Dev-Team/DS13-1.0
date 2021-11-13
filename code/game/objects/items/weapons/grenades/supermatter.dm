@@ -30,7 +30,7 @@
 			M.drop_from_inventory(src)
 		forceMove(get_turf(src))
 	playsound(src, 'sound/effects/supermatter.ogg', 100)
-	supermatter_pull(src, world.view, STAGE_THREE)
+	supermatter_pull(src, WORLD_VIEW_RANGE, STAGE_THREE)
 	if(world.time > implode_at)
 		explosion(4, 2)
 		qdel(src)

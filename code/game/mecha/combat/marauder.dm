@@ -168,7 +168,7 @@
 			src.occupant.client.view = 12
 			SEND_SOUND(src.occupant, sound('sound/mecha/imag_enh.ogg',volume=50))
 		else
-			src.occupant.client.view = world.view//world.view - default mob view size
+			src.occupant.client.view = world.view //world.view - default mob view size
 	return
 
 

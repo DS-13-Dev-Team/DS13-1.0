@@ -100,7 +100,7 @@
 			if(!CanInteract(usr,state))
 				return
 			if (nrange)
-				sensors.set_range(Clamp(nrange, 1, world.view))
+				sensors.set_range(Clamp(nrange, 1, WORLD_VIEW_RANGE))
 			return 1
 		if (href_list["toggle"])
 			sensors.toggle()

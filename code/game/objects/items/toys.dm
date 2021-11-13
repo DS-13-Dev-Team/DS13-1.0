@@ -188,7 +188,7 @@
 					for(var/mob/living/M in D.loc)
 						if(!istype(M,/mob/living)) continue
 						if(M == user) continue
-						for(var/mob/O in viewers(world.view, D))
+						for(var/mob/O in viewers(WORLD_VIEW_RANGE, D))
 							O.show_message(text("<span class='warning'>\The [] was hit by the foam dart!</span>", M), 1)
 						new /obj/item/toy/ammo/crossbow(M.loc)
 						qdel(D)
@@ -210,7 +210,7 @@
 			return
 		else if (bullets == 0)
 			user.Weaken(5)
-			for(var/mob/O in viewers(world.view, user))
+			for(var/mob/O in viewers(WORLD_VIEW_RANGE, user))
 				O.show_message(text("<span class='warning'>\The [] realized they were out of ammo and starting scrounging for some!</span>", user), 1)
 
 

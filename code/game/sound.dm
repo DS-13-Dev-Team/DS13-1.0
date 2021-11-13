@@ -84,7 +84,7 @@ GLOBAL_LIST_INIT(fleshtear_sound, list('sound/effects/organic/flesh_tear_1.ogg',
 		var/mob/M = P
 		if(!M || !M.client)
 			continue
-		if(get_dist(M, turf_source) <= (world.view + extrarange) * 2)
+		if(get_dist(M, turf_source) <= (WORLD_VIEW_RANGE + extrarange) * 2)
 			var/turf/T = get_turf(M)
 			if(T && T.z == turf_source.z && (!is_ambiance || M.get_preference_value(/datum/client_preference/play_ambiance) == GLOB.PREF_YES))
 				M.playsound_local(turf_source, soundin, vol, vary, frequency, falloff, is_global, extrarange)
@@ -121,7 +121,7 @@ var/const/FALLOFF_SOUNDS = 0.5
 
 
 
-		S.volume -= max(distance - (world.view + extrarange), 0) * 2 //multiplicative falloff to add on top of natural audio falloff.
+		S.volume -= max(distance - (WORLD_VIEW_RANGE + extrarange), 0) * 2 //multiplicative falloff to add on top of natural audio falloff.
 
 
 		var/datum/gas_mixture/hearer_env = T.return_air()

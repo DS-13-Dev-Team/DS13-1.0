@@ -818,7 +818,7 @@ proc/DuplicateObject(obj/original, var/perfectcopy = 0 , var/sameloc = 0)
 proc/anyprob(value)
 	return (rand(1,value)==value)
 
-proc/view_or_range(distance = world.view , center = usr , type)
+proc/view_or_range(distance = WORLD_VIEW_RANGE , center = usr , type)
 	switch(type)
 		if("view")
 			. = view(distance,center)
@@ -826,7 +826,7 @@ proc/view_or_range(distance = world.view , center = usr , type)
 			. = range(distance,center)
 	return
 
-proc/oview_or_orange(distance = world.view , center = usr , type)
+proc/oview_or_orange(distance = WORLD_VIEW_RANGE , center = usr , type)
 	switch(type)
 		if("view")
 			. = oview(distance,center)

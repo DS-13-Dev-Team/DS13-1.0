@@ -215,7 +215,7 @@ proc/get_radio_key_from_channel(var/channel)
 	var/sound_vol = handle_v[2]
 
 	var/italics = 0
-	var/message_range = world.view
+	var/message_range = WORLD_VIEW_RANGE
 
 	if(whispering)
 		italics = 1

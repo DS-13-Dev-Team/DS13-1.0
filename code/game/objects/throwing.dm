@@ -52,7 +52,7 @@
 	throw_range *= skill_mod
 
 	//actually throw it!
-	src.visible_message("<span class='warning'>[message]</span>", range = min(itemsize*2,world.view))
+	src.visible_message("<span class='warning'>[message]</span>", range = min(itemsize*2,WORLD_VIEW_RANGE))
 
 	if(!src.lastarea)
 		src.lastarea = get_area(src.loc)

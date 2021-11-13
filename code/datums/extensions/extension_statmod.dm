@@ -195,7 +195,7 @@ STATMOD_LAYER	=	list(/datum/proc/reset_layer)
 /datum/proc/update_vision_range()
 
 /datum/proc/get_base_view_range()
-	return world.view
+	return WORLD_VIEW_RANGE
 
 /mob/living/get_base_view_range()
 	if (eyeobj)

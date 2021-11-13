@@ -36,7 +36,7 @@
 	callproc_targetpicked(targetselected, target)
 
 // right click verb
-/client/proc/callproc_target(atom/A in range(world.view))
+/client/proc/callproc_target(atom/A in range(WORLD_VIEW_RANGE))
 	set category = "Debug"
 	set name = "Advanced ProcCall Target"
 

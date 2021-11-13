@@ -5,10 +5,10 @@
 	return a.Adjacent(b)
 
 /decl/dist_check/in_view/within_dist(var/atom/a, var/atom/b)
-	return (b in view(world.view, a))
+	return (b in view(WORLD_VIEW_RANGE, a))
 
 /decl/dist_check/in_range/within_dist(var/atom/a, var/atom/b)
-	return (b in range(world.view, a))
+	return (b in range(WORLD_VIEW_RANGE, a))
 
 /decl/dist_check/same_z_level/within_dist(var/atom/a, var/atom/b)
 	var/turf/turf_a = get_turf(a)

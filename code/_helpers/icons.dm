@@ -994,7 +994,7 @@ proc/generate_image(var/tx as num, var/ty as num, var/tz as num, var/range as nu
 //Finds mobs near the source and shows them an overlay
 /proc/flick_overlay_source(image/I, var/atom/source, duration)
 	source = get_turf(source)
-	var/range = world.view + 4
+	var/range = WORLD_VIEW_RANGE + 4
 	//First lets figure out how far away to find mobs.
 	//The longer the duration, the higher the chance of someone walking in while its playing, so we'll search farther at high duration
 	range += Ceiling(duration * 0.2)

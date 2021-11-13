@@ -63,12 +63,12 @@
 			return
 		var/distance = max(1,get_dist(here, there))
 		var/freq_mod = 1
-		if(distance < world.view)
-			freq_mod = min(world.view/distance, 2)
-		else if (distance > 3*world.view)
-			freq_mod = max(3*world.view/distance, 0.6)
+		if(distance < WORLD_VIEW_RANGE)
+			freq_mod = min(WORLD_VIEW_RANGE/distance, 2)
+		else if (distance > 3*WORLD_VIEW_RANGE)
+			freq_mod = max(3*WORLD_VIEW_RANGE/distance, 0.6)
 		playsound(loc, 'sound/machines/buttonbeep.ogg', 1, frequency = freq_mod)
-		if(distance > world.view || here.z != there.z)
+		if(distance > WORLD_VIEW_RANGE || here.z != there.z)
 			beeping = initial(beeping)
 	else
 		beeping--
@@ -104,9 +104,9 @@
 	dir = get_dir(here,there)
 	var/image/pointer = image(icon,"pin_point")
 	var/distance = get_dist(here,there)
-	if(distance < world.view)
+	if(distance < WORLD_VIEW_RANGE)
 		pointer.color = COLOR_LIME
-	else if(distance > 4*world.view)
+	else if(distance > 4*WORLD_VIEW_RANGE)
 		pointer.color = COLOR_RED
 	else
 		pointer.color = COLOR_BLUE

@@ -47,7 +47,7 @@
 /proc/_get_step(Ref, Dir)
 	return get_step(Ref, Dir)
 
-/proc/_hearers(Depth = world.view, Center = usr)
+/proc/_hearers(Depth = WORLD_VIEW_RANGE, Center = usr)
 	return hearers(Depth, Center)
 
 /proc/_image(icon, loc, icon_state, layer, dir)

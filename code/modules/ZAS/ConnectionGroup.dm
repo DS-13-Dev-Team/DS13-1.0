@@ -111,7 +111,7 @@ Class Procs:
 			//Check for things that are in range of the midpoint turfs.
 			var/list/close_turfs = list()
 			for(var/turf/U in connecting_turfs)
-				if(get_dist(M,U) < world.view) close_turfs += U
+				if(get_dist(M,U) < WORLD_VIEW_RANGE) close_turfs += U
 			if(!close_turfs.len) continue
 
 			M.airflow_dest = pick(close_turfs) //Pick a random midpoint to fly towards.

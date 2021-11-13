@@ -37,7 +37,7 @@
 			ignore_list -= g
 
 /mob/living/bot/cleanbot/lookForTargets()
-	for(var/obj/effect/decal/cleanable/D in view(world.view + 1, src))
+	for(var/obj/effect/decal/cleanable/D in view(WORLD_VIEW_RANGE + 1, src))
 		if(confirmTarget(D))
 			target = D
 			playsound(src, 'sound/machines/boop1.ogg', 30)

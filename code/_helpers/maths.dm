@@ -205,7 +205,7 @@ EG:
 
 
 //Takes a view range. Produces a multiplier of how much bigger or smaller a screen edge would be with that range, compared to a baseline
-/proc/view_scalar(var/range, var/base = world.view)
+/proc/view_scalar(var/range, var/base = WORLD_VIEW_RANGE)
 	return ((range*2)+1) / ((base*2)+1)
 
 

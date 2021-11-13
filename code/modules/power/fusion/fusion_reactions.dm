@@ -140,7 +140,7 @@ proc/get_fusion_reaction(var/p_react, var/s_react, var/m_energy)
 				var/mob/living/carbon/human/H = mob
 				H.hallucination(rand(100,150), 51)
 
-	for(var/obj/machinery/fusion_fuel_injector/I in range(world.view, origin))
+	for(var/obj/machinery/fusion_fuel_injector/I in range(WORLD_VIEW_RANGE, origin))
 		if(I.cur_assembly && I.cur_assembly.fuel_type == "supermatter")
 			I.explosion(5, 1)
 			spawn(5)

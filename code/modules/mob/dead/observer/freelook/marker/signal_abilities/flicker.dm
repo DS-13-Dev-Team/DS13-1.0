@@ -28,7 +28,7 @@
 
 /datum/signal_ability/flicker/mass/on_cast(var/mob/user, var/atom/target, var/list/data)
 	var/list/lights = list()
-	for (var/obj/machinery/light/L in view(world.view, target))
+	for (var/obj/machinery/light/L in view(WORLD_VIEW_RANGE, target))
 		lights |= L
 
 	var/area/A = get_area(target)

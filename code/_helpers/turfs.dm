@@ -60,7 +60,7 @@
 
 
 //Returns true if this turf is near a live necromorph
-/proc/turf_near_necromorphs(var/atom/A, var/range = world.view)
+/proc/turf_near_necromorphs(var/atom/A, var/range = WORLD_VIEW_RANGE)
 	var/turf/T = get_turf(A)
 	//If we're not in the visualnet then we can't be
 	if (!T.is_in_visualnet(GLOB.necrovision))
