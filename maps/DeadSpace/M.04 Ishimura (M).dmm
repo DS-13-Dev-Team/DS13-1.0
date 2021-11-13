@@ -15892,7 +15892,7 @@
 	icon_state = "0-8"
 	},
 /obj/item/weapon/autopsy_scanner,
-/obj/item/weapon/scalpel,
+/obj/item/weapon/tool/scalpel,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/medical/morgue/autopsy)
 "aGt" = (

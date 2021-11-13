@@ -139,13 +139,13 @@
 	use_sound = 'sound/effects/storage/briefcase.ogg'
 
 	can_hold = list(
-		/obj/item/weapon/bonesetter,
-		/obj/item/weapon/cautery,
+		/obj/item/weapon/tool/bonesetter,
+		/obj/item/weapon/tool/cautery,
 		/obj/item/weapon/tool/saw/circular,
-		/obj/item/weapon/hemostat,
-		/obj/item/weapon/retractor,
-		/obj/item/weapon/scalpel,
-		/obj/item/weapon/surgicaldrill,
+		/obj/item/weapon/tool/hemostat,
+		/obj/item/weapon/tool/retractor,
+		/obj/item/weapon/tool/scalpel,
+		/obj/item/weapon/tool/surgicaldrill,
 		/obj/item/weapon/bonegel,
 		/obj/item/weapon/FixOVein,
 		/obj/item/stack/medical/advanced/bruise_pack,
@@ -153,13 +153,13 @@
 		)
 
 	startswith = list(
-		/obj/item/weapon/bonesetter,
-		/obj/item/weapon/cautery,
+		/obj/item/weapon/tool/bonesetter,
+		/obj/item/weapon/tool/cautery,
 		/obj/item/weapon/tool/saw/circular,
-		/obj/item/weapon/hemostat,
-		/obj/item/weapon/retractor,
-		/obj/item/weapon/scalpel,
-		/obj/item/weapon/surgicaldrill,
+		/obj/item/weapon/tool/hemostat,
+		/obj/item/weapon/tool/retractor,
+		/obj/item/weapon/tool/scalpel,
+		/obj/item/weapon/tool/surgicaldrill,
 		/obj/item/weapon/bonegel,
 		/obj/item/weapon/FixOVein,
 		/obj/item/stack/medical/advanced/bruise_pack,

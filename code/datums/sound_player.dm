@@ -215,13 +215,16 @@ datum/sound_token/proc/Mute()
 	status = new_status
 	PrivUpdateListeners()
 
-/datum/sound_token/proc/PrivAddListener(var/atom/listener)
+/datum/sound_token/proc/PrivAddListener(var/mob/listener)
 	if(isvirtualmob(listener))
 		var/mob/dead/observer/virtual/v = listener
 		if(!(v.abilities & VIRTUAL_ABILITY_HEAR))
 			return
 		listener = v.host
 	if(listener in listeners)
+		return
+
+	if(!istype(listener, /mob))
 		return
 
 	listeners += listener

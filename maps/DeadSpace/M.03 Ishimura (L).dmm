@@ -25156,7 +25156,7 @@
 /area/ishimura/lower/misc/hallway/central)
 "aYN" = (
 /obj/structure/table/standard,
-/obj/item/weapon/bonesetter,
+/obj/item/weapon/tool/bonesetter,
 /obj/structure/sign/warning/nosmoking_burned{
 	pixel_y = 30
 	},
