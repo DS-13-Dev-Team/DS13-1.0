@@ -126,7 +126,7 @@ Basics, the most important.
 
 /datum/config_entry/number/ticklag/New()	//ticklag weirdly just mirrors fps
 	var/datum/config_entry/CE = /datum/config_entry/number/fps
-	config_entry_value = 10 / initial(CE.config_entry_value)
+	config_entry_value = 10 / initial(CE.default)
 	return ..()
 
 /datum/config_entry/number/ticklag/ValidateAndSet(str_val)

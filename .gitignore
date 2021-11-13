@@ -19,9 +19,8 @@ reboot_called
 atupdate
 __pycache__
 
-# ignore config, but not subdirs
-!config/*/
-config/*
+#Ignore byond config folder.
+/cfg/**/*
 sql/test_db
 
 # vscode
