@@ -121,7 +121,7 @@
 			msg += "<b>Current Mentors ([ment_count]):</b><br>[mentwho]<br>"
 		if(dev_count)
 			msg += "<b>Current Developers ([dev_count]):</b><br>[devwho]<br>"
-	if(!msg)
+	if(msg)
 		to_chat(src, "<span class='infoplain'>[msg]</span>")
 
 #undef DEFAULT_WHO_CELLS_PER_ROW
