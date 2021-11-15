@@ -173,6 +173,7 @@ GLOBAL_LIST(additional_antag_types)
 	create_characters() //Create player characters and transfer them
 	collect_minds()
 	equip_characters()
+	create_antagonists()
 	for(var/mob/living/carbon/human/H in GLOB.player_list)
 		if(!H.mind || player_is_antag(H.mind, only_offstation_roles = 1) || !job_master.ShouldCreateRecords(H.mind.assigned_role))
 			continue
