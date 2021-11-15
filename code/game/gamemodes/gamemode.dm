@@ -169,7 +169,6 @@ GLOBAL_LIST(additional_antag_types)
 	return TRUE
 
 /datum/game_mode/proc/setup()
-	create_antagonists()
 	job_master.DivideOccupations()
 	create_characters() //Create player characters and transfer them
 	collect_minds()
@@ -230,6 +229,7 @@ GLOBAL_LIST(additional_antag_types)
 			EMajor.delay_modifier = event_delay_mod_major
 
 /datum/game_mode/proc/pre_setup()
+	create_antagonists()
 	for(var/datum/antagonist/antag in antag_templates)
 		antag.update_current_antag_max()
 		antag.build_candidate_list() //compile a list of all eligible candidates
