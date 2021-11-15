@@ -306,7 +306,7 @@ its easier to just keep the beam vertical.
 		else
 			f_name += "oil-stained [name][infix]."
 
-	to_chat(user, "\icon[src] That's [f_name] [suffix]")
+	to_chat(user, "[icon2html(src)] That's [f_name] [suffix]")
 	to_chat(user, desc)
 
 	return distance == -1 || (get_dist(src, user) <= distance)
@@ -833,3 +833,41 @@ its easier to just keep the beam vertical.
 		else if(checked_color)
 			color = checked_color
 			return
+
+
+// Generic logging helper
+/atom/proc/log_message(message, message_type, color, log_globally = TRUE)
+	if(!log_globally)
+		return
+
+	var/log_text = "[key_name(src)] [message] [AREACOORD(src)]"
+	switch(message_type)
+		if(LOG_ATTACK)
+			log_attack(log_text)
+		if(LOG_SAY)
+			log_say(log_text)
+		if(LOG_TELECOMMS)
+			log_telecomms(log_text)
+		if(LOG_WHISPER)
+			log_whisper(log_text)
+		if(LOG_NECRO)
+			log_necro(log_text)
+		if(LOG_EMOTE)
+			log_emote(log_text)
+		if(LOG_DSAY)
+			log_dsay(log_text)
+		if(LOG_OOC)
+			log_ooc(log_text)
+		if(LOG_ADMIN)
+			log_admin(log_text)
+		if(LOG_LOOC)
+			log_looc(log_text)
+		if(LOG_ADMIN_PRIVATE)
+			log_admin_private(log_text)
+		if(LOG_ASAY)
+			log_admin_private_asay(log_text)
+		if(LOG_GAME)
+			log_game(log_text)
+		else
+			crash_with("Invalid individual logging type: [message_type]. Defaulting to [LOG_GAME] (LOG_GAME).")
+			log_game(log_text)

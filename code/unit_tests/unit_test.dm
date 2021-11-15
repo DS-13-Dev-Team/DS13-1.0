@@ -203,7 +203,7 @@ SUBSYSTEM_DEF(unit_tests)
 	//
 	//Start the Round.
 	//
-	world.save_mode("extended")
+	SSticker.save_mode("extended")
 	for(var/test_datum_type in get_test_datums())
 		queue += new test_datum_type
 	log_test("[queue.len] unit tests loaded.")
@@ -214,14 +214,14 @@ SUBSYSTEM_DEF(unit_tests)
 		return //Have to wait for the old Master.
 	log_test("Master process setup.")
 
-	if (ticker.current_state == GAME_STATE_PREGAME)
-		ticker.current_state = GAME_STATE_SETTING_UP
+	if (SSticker.current_state == GAME_STATE_PREGAME)
+		SSticker.current_state = GAME_STATE_SETTING_UP
 		Master.SetRunLevel(RUNLEVEL_SETUP)
 		stage++
 		log_test("Round has been started.  Waiting 10 seconds to start tests.")
 		postpone(5)
 	else
-		log_test("Unable to start testing; ticker.current_state=[ticker.current_state]!")
+		log_test("Unable to start testing; SSticker.current_state=[SSticker.current_state]!")
 		del world
 
 /datum/controller/subsystem/unit_tests/proc/handle_tests()

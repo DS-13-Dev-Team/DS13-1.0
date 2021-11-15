@@ -80,7 +80,7 @@
 					body += "<a href='?_src_=vars;Vars="+ref+"'>VV</a> - "
 					body += "<a href='?src=\ref[src];traitor="+ref+"'>TP</a> - "
 					body += "<a href='?src=\ref[usr];priv_msg=\ref"+ref+"'>PM</a> - "
-					body += "<a href='?src=\ref[src];subtlemessage="+ref+"'>SM</a> - "
+					body += "[ADMIN_SM(usr)] - "
 					body += "<a href='?src=\ref[src];adminplayerobservejump="+ref+"'>JMP</a><br>"
 					if(antagonist > 0)
 						body += "<font size='2'><a href='?src=\ref[src];check_antagonist=1'><font color='red'><b>Antagonist</b></font></a></font>";
@@ -395,11 +395,11 @@
 
 
 /datum/admins/proc/check_antagonists()
-	if (ticker && ticker.current_state >= GAME_STATE_PLAYING)
+	if (SSticker && SSticker.current_state >= GAME_STATE_PLAYING)
 		var/dat = list()
 		dat += "<html><head><title>Round Status</title></head><body><h1><B>Round Status</B></h1>"
-		dat += "Current Game Mode: <B>[ticker.mode.name]</B><BR>"
-		dat += "Round Duration: <B>[roundduration2text()]</B><BR>"
+		dat += "Current Game Mode: <B>[SSticker.mode.name]</B><BR>"
+		dat += "Round Duration: <B>[worldtime2text()]</B><BR>"
 		dat += "<B>Evacuation</B><BR>"
 		if (evacuation_controller.is_idle())
 			dat += "<a href='?src=\ref[src];call_shuttle=1'>Call Evacuation</a><br>"
@@ -409,7 +409,7 @@
 				dat += "ETA: [(timeleft / 60) % 60]:[add_zero(num2text(timeleft % 60), 2)]<BR>"
 				dat += "<a href='?src=\ref[src];call_shuttle=2'>Send Back</a><br>"
 
-		dat += "<a href='?src=\ref[src];delay_round_end=1'>[ticker.delay_end ? "End Round Normally" : "Delay Round End"]</a><br>"
+		dat += "<a href='?src=\ref[src];delay_round_end=1'>[SSticker.delay_end ? "End Round Normally" : "Delay Round End"]</a><br>"
 		dat += "<hr>"
 		var/list/all_antag_types = GLOB.all_antag_types_
 		for(var/antag_type in all_antag_types)

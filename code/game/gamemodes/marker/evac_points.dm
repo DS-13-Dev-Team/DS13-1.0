@@ -68,7 +68,7 @@
 	evac_threshold += round(extra_time / minutes_per_point)
 
 /datum/evacuation_predicate/travel_points/New()
-	var/datum/game_mode/marker/GM = ticker.mode
+	var/datum/game_mode/marker/GM = SSticker.mode
 	if(GM)
 		GM.minutes_per_point = GM.minimum_evac_time / initial(GM.evac_threshold)
 	return
@@ -80,14 +80,14 @@
 	return ..()
 
 /datum/evacuation_predicate/travel_points/is_valid()
-	var/datum/game_mode/marker/GM = ticker.mode
+	var/datum/game_mode/marker/GM = SSticker.mode
 	if (istype(GM))
 		return TRUE
 	return FALSE
 
 /datum/evacuation_predicate/travel_points/can_call(var/user)
 
-	var/datum/game_mode/marker/GM = ticker.mode
+	var/datum/game_mode/marker/GM = SSticker.mode
 	if (GM.evac_points >= GM.evac_threshold)
 		return TRUE
 

@@ -20,15 +20,15 @@
 /obj/item/weapon/card/id/guest/examine(mob/user)
 	. = ..()
 	if (world.time < expiration_time)
-		to_chat(user, "<span class='notice'>This pass expires at [worldtime2stationtime(expiration_time)].</span>")
+		to_chat(user, "<span class='notice'>This pass expires at [station_time_timestamp(wtime = expiration_time)].</span>")
 	else
-		to_chat(user, "<span class='warning'>It expired at [worldtime2stationtime(expiration_time)].</span>")
+		to_chat(user, "<span class='warning'>It expired at [station_time_timestamp(wtime = expiration_time)].</span>")
 
 /obj/item/weapon/card/id/guest/read()
 	if (world.time > expiration_time)
-		to_chat(usr, "<span class='notice'>This pass expired at [worldtime2stationtime(expiration_time)].</span>")
+		to_chat(usr, "<span class='notice'>This pass expired at [station_time_timestamp(wtime = expiration_time)].</span>")
 	else
-		to_chat(usr, "<span class='notice'>This pass expires at [worldtime2stationtime(expiration_time)].</span>")
+		to_chat(usr, "<span class='notice'>This pass expires at [station_time_timestamp(wtime = expiration_time)].</span>")
 
 	to_chat(usr, "<span class='notice'>It grants access to following areas:</span>")
 	for (var/A in temp_access)
@@ -165,13 +165,13 @@
 			if ("issue")
 				if (giver && accesses.len)
 					var/number = add_zero(random_id("guestpass_id_number",1000,9999), 4)
-					var/entry = "\[[stationtime2text()]\] Pass #[number] issued by [giver.registered_name] ([giver.assignment]) to [giv_name]. Reason: [reason]. Granted access to following areas: "
+					var/entry = "\[[station_time_timestamp()]\] Pass #[number] issued by [giver.registered_name] ([giver.assignment]) to [giv_name]. Reason: [reason]. Granted access to following areas: "
 					var/list/access_descriptors = list()
 					for (var/A in accesses)
 						if (A in giver.access)
 							access_descriptors += get_access_desc(A)
 					entry += english_list(access_descriptors, and_text = ", ")
-					entry += ". Expires at [worldtime2stationtime(world.time + duration MINUTES)]."
+					entry += ". Expires at [worldtime2text(world.time + duration MINUTES)]."
 					internal_log.Add(entry)
 
 					var/obj/item/weapon/card/id/guest/pass = new(src.loc)
