@@ -59,12 +59,14 @@
 	user = newuser
 	GLOB.updatehealth_event.register(user, src, /obj/item/rig_module/healthbar/proc/update)
 	GLOB.death_event.register(user, src, /obj/item/rig_module/healthbar/proc/death)
+	GLOB.heart_stop_event.register(user, src, /obj/item/rig_module/healthbar/proc/heart_stop)
 	holder.healthbar = src
 
 /obj/item/rig_module/healthbar/proc/unregister_user()
 	if(user)
 		GLOB.updatehealth_event.unregister(user, src, /obj/item/rig_module/healthbar/proc/update)
 		GLOB.death_event.unregister(user, src, /obj/item/rig_module/healthbar/proc/death)
+		GLOB.heart_stop_event.unregister(user, src, /obj/item/rig_module/healthbar/proc/heart_stop)
 		user = null
 		holder.healthbar = null
 
@@ -97,6 +99,10 @@
 
 /obj/item/rig_module/healthbar/proc/death()
 	playsound(src, 'sound/effects/rig/modules/flatline.ogg', VOLUME_MAX, 0, 4)
+	update()
+
+/obj/item/rig_module/healthbar/proc/heart_stop()
+	playsound(src, 'sound/effects/caution.ogg', VOLUME_MAX, 0, 4)
 	update()
 
 // Automatically updates tracking level depending on current station alert
