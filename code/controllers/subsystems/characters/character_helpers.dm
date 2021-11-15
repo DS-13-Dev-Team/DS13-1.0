@@ -173,7 +173,7 @@
 
 	//Force living status on spawning.
 	//This accounts for situations where someone is killed by griefing and admins let them respawn to fix it
-	update_lastround_credits(M, STATUS_LIVING)
+	update_lastround_credits(M, STATUS_ACTIVE)
 
 
 /*

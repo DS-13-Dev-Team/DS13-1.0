@@ -318,7 +318,7 @@ GLOBAL_LIST(additional_antag_types)
 
 /datum/game_mode/proc/check_finished()
 	if(station_was_nuked)
-		return 1
+		return GAME_FINISHED
 	if(end_on_antag_death && antag_templates && antag_templates.len)
 		var/has_antags = 0
 		for(var/datum/antagonist/antag in antag_templates)
@@ -327,8 +327,9 @@ GLOBAL_LIST(additional_antag_types)
 				break
 		if(!has_antags)
 			evacuation_controller.recall = 0
-			return 1
-	return 0
+			return GAME_FINISHED
+	return GAME_NOT_FINISHED
+
 
 /datum/game_mode/proc/create_characters()
 	for(var/i in GLOB.new_player_list)
@@ -704,6 +705,8 @@ proc/get_nt_opposed()
 	return TRUE
 
 /datum/game_mode/proc/on_crew_despawn(mob/living/carbon/human/H)
+	if (H.mind)
+		H.mind.removed = TRUE
 	update_living_crew()
 	return TRUE
 

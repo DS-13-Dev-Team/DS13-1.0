@@ -54,8 +54,12 @@ GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 
 	//For it to trigger, there needs to have been at least this many crewmembers in total over the round
 	//This includes the living, and the dead
-	var/minimum_historic_crew	=	5
 	var/minimum_alive_percentage = 0.1 //0.1 = 10%
+
+	//When did we last call a vote to restart
+	var/last_restart_vote = 0
+
+	var/restart_vote_interval	=	15 MINUTES	//Minimum time between restart votes
 
 /datum/game_mode/marker/post_setup() //Mr Gaeta. Start the clock.
 	. = ..()
@@ -140,10 +144,23 @@ Non-critical characters like any ghost-roles you may wish to add, or even antags
 
 //Marker gamemode can end when necros kill most of the crew
 /datum/game_mode/marker/check_finished()
+
 	if(marker_active)	//Marker must be active
-		if (get_historic_crew_total() >= minimum_historic_crew)	//We need to have had a minimum total crewcount
-			var/minimum_living_crew = Ceiling(get_historic_crew_total() * minimum_alive_percentage)	//This many crew players at least, need to be left alive
-			if (get_living_active_crew_aboard_ship() < minimum_living_crew)
-				return TRUE
+		var/list/crewlist = get_crew_totals
+		var/valid_historic_crew = crewlist[total] - crewlist[STATUS_REMOVED]	//We don't count those who left the round
+
+		//Lets see how many are left alive
+		var/remaining = valid_historic_crew - (crewlist[STATUS_DEAD] + crewlist[STATUS_ESCAPED])
+		if (remaining <= 0)
+			//No humans left alive? Immediate end
+			return TRUE
+
+		var/remaining_percent = remaining / valid_historic_crew
+
+
+		if (remaining_percent <= minimum_alive_percentage)	//We need to have had a minimum total crewcount
+			/*
+				There are not enough people left to definitely continue the round, so now we put it to a vote
+			*/
 
 	return ..() //Fallback to the default game end conditions like all antags dying, shuttles being docked, etc.

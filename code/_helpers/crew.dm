@@ -17,3 +17,33 @@
 	for(var/datum/mind/possible_target in GLOB.minds)
 		if(((role_type ? possible_target.special_role : possible_target.assigned_role) == role) )
 			. += possible_target
+
+
+
+/*
+	This aggregate proc gives you a big list of all crew data
+*/
+/proc/get_crew_totals()
+	var/list/crewlist = list()
+	for (var/datum/mind/M in GLOB.all_crew)
+		LAZYAPLUS(crewlist, "total", 1)
+		var/status = M.get_round_status
+		if (status)
+			LAZYAPLUS(crewlist, status, 1)
+
+	return crewlist
+
+
+/atom/proc/has_escaped()
+	var/area/A = get_area(current)
+	if(A)
+		if (is_type_in_list(A, GLOB.using_map.post_round_safe_areas))
+			escaped = TRUE
+			return TRUE
+
+		//Shuttle handling
+		if (istype(A, /area/shuttle))
+			var/area/shuttle/AS = A
+			if (AS.has_escaped())
+				escaped = TRUE
+				return TRUE

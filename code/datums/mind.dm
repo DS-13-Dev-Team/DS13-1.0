@@ -40,6 +40,10 @@
 	var/mob/dead/observer/ghost	//When this mob is dead and floating around, this var holds the ghost mob who used to be its body
 	var/active = 0
 
+	var/removed	=	FALSE	//If true, this mob has been removed from the round in an OOC way that doesn't count as escaping. Generally, this means they went to cryostorage and their body got deleted
+	var/escaped = FALSE		//If true, this mind successfully escaped the round, they are considered victorious even if they die later
+
+
 	var/character_id	//The database ID of the associated character records for this mind. Used to fetch and store persistent data
 
 	var/memory
@@ -681,26 +685,25 @@
 */
 /datum/mind/proc/get_round_status()
 
+	if (removed)
+		return STATUS_REMOVED
 
+	//If you've been marked as escaped, that status is permanant, even if you die after
+	if (escaped)
+		return STATUS_ESCAPED
 
-	if (current?.stat == DEAD || isghostmind(src))
+	//But if you haven't escaped yet and you're now dead, then you're dead forever and cant escape
+	if (!current || current.stat == DEAD || isghostmind(src))
 		return STATUS_DEAD
 
-	//TODO: Check if they're on a shuttle or an escape area
-	var/area/A = get_area(current)
-	if(A)
-		if (is_type_in_list(A, GLOB.using_map.post_round_safe_areas))
-			return STATUS_ESCAPED
-
-		//Shuttle handling
-		if (istype(A, /area/shuttle))
-			var/area/shuttle/AS = A
-			if (AS.has_escaped())
-				return STATUS_ESCAPED
+	if (current.has_escaped())
+		escaped = TRUE
+		return STATUS_ESCAPED
 
 
 
-	return STATUS_LIVING
+
+	return STATUS_ACTIVE
 
 
 

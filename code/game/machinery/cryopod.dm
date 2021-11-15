@@ -340,6 +340,7 @@
 // This function can not be undone; do not call this unless you are sure
 // Also make sure there is a valid control computer
 /obj/machinery/cryopod/proc/despawn_occupant()
+
 	//Drop all items into the pod.
 	for(var/obj/item/W in occupant)
 		occupant.drop_from_inventory(W)
@@ -399,6 +400,7 @@
 		if(occupant.mind.objectives.len)
 			occupant.mind.objectives = null
 			occupant.mind.set_special_role(null)
+
 
 	//else
 		//if(SSticker.mode.name == "AutoTraitor")
