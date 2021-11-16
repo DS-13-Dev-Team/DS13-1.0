@@ -27,7 +27,7 @@
 	var/list/crewlist = list()
 	for (var/datum/mind/M in GLOB.all_crew)
 		LAZYAPLUS(crewlist, "total", 1)
-		var/status = M.get_round_status
+		var/status = M.get_round_status()
 		if (status)
 			LAZYAPLUS(crewlist, status, 1)
 
@@ -35,15 +35,13 @@
 
 
 /atom/proc/has_escaped()
-	var/area/A = get_area(current)
+	var/area/A = get_area(src)
 	if(A)
 		if (is_type_in_list(A, GLOB.using_map.post_round_safe_areas))
-			escaped = TRUE
 			return TRUE
 
 		//Shuttle handling
 		if (istype(A, /area/shuttle))
 			var/area/shuttle/AS = A
 			if (AS.has_escaped())
-				escaped = TRUE
 				return TRUE

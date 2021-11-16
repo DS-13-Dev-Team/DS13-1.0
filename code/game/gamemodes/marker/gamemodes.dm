@@ -146,8 +146,8 @@ Non-critical characters like any ghost-roles you may wish to add, or even antags
 /datum/game_mode/marker/check_finished()
 
 	if(marker_active)	//Marker must be active
-		var/list/crewlist = get_crew_totals
-		var/valid_historic_crew = crewlist[total] - crewlist[STATUS_REMOVED]	//We don't count those who left the round
+		var/list/crewlist = get_crew_totals()
+		var/valid_historic_crew = crewlist["total"] - crewlist[STATUS_REMOVED]	//We don't count those who left the round
 
 		//Lets see how many are left alive
 		var/remaining = valid_historic_crew - (crewlist[STATUS_DEAD] + crewlist[STATUS_ESCAPED])
@@ -162,5 +162,13 @@ Non-critical characters like any ghost-roles you may wish to add, or even antags
 			/*
 				There are not enough people left to definitely continue the round, so now we put it to a vote
 			*/
+			handle_restart_vote()
+			//But we aren't ending immediately
 
 	return ..() //Fallback to the default game end conditions like all antags dying, shuttles being docked, etc.
+
+
+/datum/game_mode/marker/proc/handle_restart_vote()
+	if (world.time - last_restart_vote >= restart_vote_interval)
+		SSvote.initiate_vote("restart", null)
+		last_restart_vote = world.time

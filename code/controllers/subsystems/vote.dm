@@ -160,7 +160,7 @@ SUBSYSTEM_DEF(vote)
 		return FALSE
 	var/lower_admin = FALSE
 	var/ckey = ckey(initiator_key)
-	if(GLOB.admin_datums[ckey])
+	if(ckey && GLOB.admin_datums[ckey])
 		lower_admin = TRUE
 
 	if(!mode)

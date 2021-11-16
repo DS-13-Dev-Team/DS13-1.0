@@ -7,7 +7,9 @@
 /area/shuttle/escape
 	escape	=	TRUE
 
-/area/shuttle/proc/has_escaped()
+
+//This returns true if this shuttle is currently acting as a valid escape vehicle. IE, it could theoretically be moving people to safety right now
+/area/shuttle/has_escaped()
 
 	if (!escape)
 		return FALSE	//Invalid shuttle
