@@ -39,8 +39,8 @@
 
 /datum/transaction/New(_target, _purpose, _amount, _source)
 	..()
-	date = stationdate2text()
-	time = stationtime2text()
+	date = GLOB.current_date_string
+	time = station_time_timestamp()
 	target_name = _target
 	purpose = _purpose
 	amount = _amount
@@ -75,7 +75,7 @@
 	T.amount = starting_funds
 	if(!source_db)
 		//set a random date, time and location some time over the past few decades
-		T.date = "[num2text(rand(1,31))] [pick("January","February","March","April","May","June","July","August","September","October","November","December")], [game_year-rand(8,18)]"
+		T.date = "[num2text(rand(1,31))] [pick("January","February","March","April","May","June","July","August","September","October","November","December")], [GAME_YEAR]"
 		T.time = "[rand(0,24)]:[rand(11,59)]"
 		T.source_terminal = "CEC StellarNet Terminal #[rand(111,1111)]"
 
@@ -97,7 +97,7 @@
 		R.info += "<i>Account number:</i> [M.account_number]<br>"
 		R.info += "<i>Account pin:</i> [M.remote_access_pin]<br>"
 		R.info += "<i>Starting balance:</i> T[M.money]<br>"
-		R.info += "<i>Date and time:</i> [stationtime2text()], [stationdate2text()]<br><br>"
+		R.info += "<i>Date and time:</i> [station_time_timestamp()], [GLOB.current_date_string]<br><br>"
 		R.info += "<i>Creation terminal ID:</i> [source_db.machine_id]<br>"
 		R.info += "<i>Authorised NT officer overseeing creation:</i> [source_db.held_card.registered_name]<br>"
 

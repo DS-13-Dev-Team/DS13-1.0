@@ -184,7 +184,7 @@
 				to_chat(usr, "Distress beacon will not be ready for another [time2text(GLOB.distress_cooldown - world.time, "mm:ss")]")
 				return FALSE
 
-			ticker.mode.activate_distress()
+			SSticker.mode.activate_distress()
 
 			feedback_inc("alert_keycard_auth_ert",1)
 		if("Grant Nuclear Authorization Code")
@@ -197,7 +197,7 @@
 
 /obj/machinery/keycard_auth/proc/is_ert_blocked()
 	if(CONFIG_GET(flag/ert_admin_call_only)) return 1
-	return ticker.mode && ticker.mode.ert_disabled
+	return SSticker.mode && SSticker.mode.ert_disabled
 
 var/global/maint_all_access = 0
 

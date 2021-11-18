@@ -150,12 +150,12 @@
 			close_door_at = 0
 
 /obj/machinery/door/proc/can_open(var/forced = FALSE)
-	if(!density || operating || !ticker)
+	if(!density || operating || !SSticker)
 		return 0
 	return 1
 
 /obj/machinery/door/proc/can_close()
-	if(density || operating || !ticker || (stat & BROKEN))
+	if(density || operating || !SSticker || (stat & BROKEN))
 		return 0
 	return 1
 

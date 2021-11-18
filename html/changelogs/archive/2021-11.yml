@@ -53,3 +53,6 @@
       or block vision.
   - rscadd: Net rolls can be found in random loot, or purchased from the store with
       the right schematic.
+2021-11-16:
+  DeadLineSS13:
+  - refactor: Ticker and Vote refactored. (Vote now on TGUI)

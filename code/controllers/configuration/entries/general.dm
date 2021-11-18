@@ -104,6 +104,18 @@ Basics, the most important.
 
 /datum/config_entry/flag/popup_admin_pm //adminPMs to non-admins show in a pop-up 'reply' window when set to 1.
 
+/datum/config_entry/flag/allow_vote_mode
+
+/datum/config_entry/flag/default_no_vote
+
+/datum/config_entry/flag/no_dead_vote
+
+/datum/config_entry/number/lobby_countdown
+	config_entry_value = 180
+
+/datum/config_entry/number/round_end_countdown
+	config_entry_value = 120
+
 /datum/config_entry/number/fps
 	default = 20
 	integer = FALSE

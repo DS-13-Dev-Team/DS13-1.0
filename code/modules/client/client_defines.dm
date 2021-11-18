@@ -11,6 +11,8 @@
 	var/datum/admins/holder = null
 	var/datum/admins/deadmin_holder = null
 
+	var/datum/player_details/player_details //these persist between logins/logouts during the same round.
+
 		/////////
 		//OTHER//
 		/////////
