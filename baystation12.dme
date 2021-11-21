@@ -467,6 +467,7 @@
 #include "code\datums\observation\equipped.dm"
 #include "code\datums\observation\exited.dm"
 #include "code\datums\observation\global_listener.dm"
+#include "code\datums\observation\heart_stop.dm"
 #include "code\datums\observation\helpers.dm"
 #include "code\datums\observation\life.dm"
 #include "code\datums\observation\logged_in.dm"
