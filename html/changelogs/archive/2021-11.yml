@@ -56,3 +56,9 @@
 2021-11-16:
   DeadLineSS13:
   - refactor: Ticker and Vote refactored. (Vote now on TGUI)
+2021-11-22:
+  DTraitor:
+  - rscadd: Better scanning modules speed up mining smelter ore gathering.
+  - bugfix: Fixed bug that prevented smetler from gathering and processing ores.
+  - rscadd: Vitals Monitor plays sound on heart stop now.
+  - bugfix: Fixed 'You can't use your hand' bug.
