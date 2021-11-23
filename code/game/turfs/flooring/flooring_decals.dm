@@ -778,6 +778,13 @@ var/list/floor_decals = list()
 	icon_state = "frame_tiles"
 	icon = 'icons/turf/marks_96x96_ds13.dmi'
 
+
+//DS13 Escape Pod floor
+/obj/effect/floor_decal/pod
+	name = "clear warning"
+	icon_state = "pod_clear"
+
+
 //Corners
 /obj/effect/floor_decal/corner
 	icon_state = "corner_white"

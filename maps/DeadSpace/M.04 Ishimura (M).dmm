@@ -104,26 +104,38 @@
 /turf/simulated/floor/plating,
 /area/ishimura/upper/maintenance/fore_central)
 "aay" = (
-/obj/structure/bed/chair/shuttle,
-/obj/machinery/status_display{
-	pixel_x = 32
-	},
 /obj/machinery/light/small{
 	dir = 8
 	},
-/obj/structure/closet/walllocker/emerglocker/west,
-/turf/simulated/floor/plating,
+/obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod{
+	dir = 1;
+	frequency = 1380;
+	icon_state = "pod_control_standby";
+	id_tag = "escape_pod_3";
+	layer = 4;
+	name = "escape pod three controller";
+	pixel_y = -24;
+	tag_door = "escape_pod_3_hatch"
+	},
+/obj/structure/bed/chair/pod/yellow,
+/turf/simulated/floor/shuttle/pod,
 /area/shuttle/escape_pod3/station)
 "aaz" = (
-/obj/structure/bed/chair/shuttle,
-/obj/machinery/status_display{
-	pixel_x = 32
-	},
 /obj/machinery/light/small{
 	dir = 8
 	},
-/obj/structure/closet/walllocker/emerglocker/west,
-/turf/simulated/floor/plating,
+/obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod{
+	dir = 1;
+	frequency = 1380;
+	icon_state = "pod_control_standby";
+	id_tag = "escape_pod_2";
+	layer = 4;
+	name = "escape pod two controller";
+	pixel_y = -24;
+	tag_door = "escape_pod_2_hatch"
+	},
+/obj/structure/bed/chair/pod/yellow,
+/turf/simulated/floor/shuttle/pod,
 /area/shuttle/escape_pod2/station)
 "aaA" = (
 /obj/machinery/computer/crew,
@@ -21729,9 +21741,10 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
-/obj/structure/disposalpipe/segment{
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /turf/simulated/floor/dank/grater,
@@ -21797,13 +21810,14 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/obj/structure/disposalpipe/junction{
-	dir = 8
-	},
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 8;
 	icon_state = "1-8"
+	},
+/obj/structure/disposalpipe/junction{
+	dir = 4;
+	icon_state = "pipe-j2"
 	},
 /turf/simulated/floor/dank/grater,
 /area/ishimura/upper/misc/hallway/escape)
@@ -23219,40 +23233,36 @@
 /turf/simulated/floor/plating,
 /area/ishimura/upper/maintenance/aft_starboard)
 "aTI" = (
-/obj/structure/shuttle/engine/propulsion{
-	dir = 1
-	},
-/turf/simulated/shuttle/wall{
-	icon_state = "wall3"
+/turf/simulated/floor/plating,
+/turf/simulated/shuttle/wall/corner/pod1{
+	icon_state = "corner_pod1";
+	dir = 8
 	},
 /area/shuttle/escape_pod3/station)
 "aTJ" = (
-/obj/machinery/door/airlock/external{
+/obj/effect/floor_decal/pod,
+/obj/machinery/door/airlock/shuttle{
 	frequency = 1380;
 	id_tag = "escape_pod_3_hatch";
-	locked = 1;
-	name = "Escape Pod Three Hatch";
-	req_access = list(15)
+	name = "Escape Pod Door"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/shuttle/pod,
 /area/shuttle/escape_pod3/station)
 "aTK" = (
-/obj/structure/shuttle/engine/propulsion{
-	dir = 1
-	},
-/turf/simulated/shuttle/wall{
-	icon_state = "wall3"
+/turf/simulated/floor/plating,
+/turf/simulated/shuttle/wall/corner/pod1{
+	icon_state = "corner_pod1";
+	dir = 8
 	},
 /area/shuttle/escape_pod2/station)
 "aTL" = (
-/obj/machinery/door/airlock/external{
+/obj/effect/floor_decal/pod,
+/obj/machinery/door/airlock/shuttle{
 	frequency = 1380;
 	id_tag = "escape_pod_2_hatch";
-	locked = 1;
-	name = "Escape Pod Two Hatch";
-	req_access = list(15)
+	name = "Escape Pod Door"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/shuttle/pod,
 /area/shuttle/escape_pod2/station)
 "aTM" = (
 /obj/machinery/light,
@@ -23281,11 +23291,10 @@
 /turf/simulated/floor/plating,
 /area/ishimura/upper/maintenance/fore_central)
 "aTO" = (
-/obj/structure/shuttle/engine/propulsion{
-	dir = 1
-	},
-/turf/simulated/shuttle/wall{
-	icon_state = "wall3"
+/turf/simulated/floor/plating,
+/turf/simulated/shuttle/wall/corner/pod1{
+	icon_state = "corner_pod1";
+	dir = 8
 	},
 /area/shuttle/escape_pod1/station)
 "aTP" = (
@@ -23523,18 +23532,18 @@
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/upper/security/checkpoint)
 "aUo" = (
-/obj/machinery/door/airlock/external{
+/obj/effect/floor_decal/pod,
+/obj/machinery/door/airlock/shuttle{
 	frequency = 1380;
 	id_tag = "escape_pod_1_hatch";
-	locked = 1;
-	name = "Escape Pod One Hatch";
-	req_access = list(15)
+	name = "Escape Pod Door"
 	},
-/turf/simulated/floor/shuttle/black,
+/turf/simulated/floor/shuttle/pod,
 /area/shuttle/escape_pod1/station)
 "aUp" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "wall3"
+/turf/simulated/shuttle/wall/pod{
+	icon_state = "p_wall1";
+	dir = 8
 	},
 /area/shuttle/escape_pod3/station)
 "aUq" = (
@@ -23552,20 +23561,9 @@
 /turf/simulated/floor/tiled/white,
 /area/ishimura/upper/medical)
 "aUr" = (
-/obj/structure/bed/chair/shuttle,
-/obj/item/device/radio/intercom{
-	dir = 8;
-	pixel_x = 21
-	},
-/obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod{
-	frequency = 1380;
-	id_tag = "escape_pod_3";
-	name = "escape pod three controller";
-	pixel_x = -32;
-	tag_door = "escape_pod_3_hatch"
-	},
 /obj/effect/shuttle_landmark/escape_pod/start/pod3,
-/turf/simulated/floor/plating,
+/obj/structure/bed/chair/pod/yellow,
+/turf/simulated/floor/shuttle/pod,
 /area/shuttle/escape_pod3/station)
 "aUs" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -23593,8 +23591,9 @@
 /turf/simulated/floor/tiled/white,
 /area/ishimura/upper/research/biolab)
 "aUv" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "wall3"
+/turf/simulated/shuttle/wall/pod{
+	icon_state = "p_wall1";
+	dir = 8
 	},
 /area/shuttle/escape_pod2/station)
 "aUw" = (
@@ -23635,24 +23634,14 @@
 	},
 /area/ishimura/upper/misc/hallway/central)
 "aUA" = (
-/obj/structure/bed/chair/shuttle,
-/obj/item/device/radio/intercom{
-	dir = 8;
-	pixel_x = 21
-	},
-/obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod{
-	frequency = 1380;
-	id_tag = "escape_pod_2";
-	name = "escape pod two controller";
-	pixel_x = -32;
-	tag_door = "escape_pod_2_hatch"
-	},
 /obj/effect/shuttle_landmark/escape_pod/start/pod2,
-/turf/simulated/floor/plating,
+/obj/structure/bed/chair/pod/yellow,
+/turf/simulated/floor/shuttle/pod,
 /area/shuttle/escape_pod2/station)
 "aUB" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "wall3"
+/turf/simulated/shuttle/wall/pod{
+	icon_state = "p_wall1";
+	dir = 8
 	},
 /area/shuttle/escape_pod1/station)
 "aUC" = (
@@ -23763,20 +23752,9 @@
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/security/checkpoint)
 "aUK" = (
-/obj/structure/bed/chair/shuttle,
-/obj/item/device/radio/intercom{
-	dir = 8;
-	pixel_x = 21
-	},
-/obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod{
-	frequency = 1380;
-	id_tag = "escape_pod_1";
-	name = "escape pod one controller";
-	pixel_x = -32;
-	tag_door = "escape_pod_1_hatch"
-	},
 /obj/effect/shuttle_landmark/escape_pod/start/pod1,
-/turf/simulated/floor/plating,
+/obj/structure/bed/chair/pod/yellow,
+/turf/simulated/floor/shuttle/pod,
 /area/shuttle/escape_pod1/station)
 "aUL" = (
 /obj/item/device/radio/intercom{
@@ -28079,6 +28057,9 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/simulated/floor/dank/grater,
 /area/ishimura/upper/misc/hallway/fore)
 "bcO" = (
@@ -29462,15 +29443,21 @@
 /turf/simulated/floor/plating,
 /area/ishimura/upper/security/checkpoint/medical)
 "bfg" = (
-/obj/structure/bed/chair/shuttle,
-/obj/machinery/status_display{
-	pixel_x = 32
-	},
 /obj/machinery/light/small{
 	dir = 8
 	},
-/obj/structure/closet/walllocker/emerglocker/west,
-/turf/simulated/floor/plating,
+/obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod{
+	dir = 1;
+	frequency = 1380;
+	icon_state = "pod_control_standby";
+	id_tag = "escape_pod_1";
+	layer = 4;
+	name = "escape pod one controller";
+	pixel_y = -24;
+	tag_door = "escape_pod_1_hatch"
+	},
+/obj/structure/bed/chair/pod/yellow,
+/turf/simulated/floor/shuttle/pod,
 /area/shuttle/escape_pod1/station)
 "bfh" = (
 /obj/machinery/door/firedoor/border_only{
@@ -29703,7 +29690,7 @@
 /area/ishimura/upper/misc/hallway/fore)
 "bfv" = (
 /turf/simulated/floor/plating,
-/turf/simulated/shuttle/wall/corner/dark/sw,
+/turf/simulated/shuttle/wall/corner/pod2,
 /area/shuttle/escape_pod3/station)
 "bfw" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
@@ -29739,7 +29726,7 @@
 /turf/simulated/floor/plating,
 /area/ishimura/upper/security/equipment)
 "bfB" = (
-/obj/effect/wallframe_spawn/reinforced/shuttle,
+/obj/structure/shuttle/window/pod,
 /turf/simulated/floor/airless,
 /area/shuttle/escape_pod3/station)
 "bfC" = (
@@ -29766,31 +29753,40 @@
 /area/ishimura/upper/security/equipment)
 "bfE" = (
 /turf/simulated/floor/plating,
-/turf/simulated/shuttle/wall/corner/dark/se,
+/turf/simulated/shuttle/wall/corner/pod2{
+	icon_state = "corner_pod2";
+	dir = 4
+	},
 /area/shuttle/escape_pod3/station)
 "bfF" = (
 /turf/simulated/floor/plating,
-/turf/simulated/shuttle/wall/corner/dark/sw,
+/turf/simulated/shuttle/wall/corner/pod2,
 /area/shuttle/escape_pod2/station)
 "bfG" = (
-/obj/effect/wallframe_spawn/reinforced/shuttle,
+/obj/structure/shuttle/window/pod,
 /turf/simulated/floor/airless,
 /area/shuttle/escape_pod2/station)
 "bfH" = (
 /turf/simulated/floor/plating,
-/turf/simulated/shuttle/wall/corner/dark/se,
+/turf/simulated/shuttle/wall/corner/pod2{
+	icon_state = "corner_pod2";
+	dir = 4
+	},
 /area/shuttle/escape_pod2/station)
 "bfI" = (
 /turf/simulated/floor/plating,
-/turf/simulated/shuttle/wall/corner/dark/sw,
+/turf/simulated/shuttle/wall/corner/pod2,
 /area/shuttle/escape_pod1/station)
 "bfJ" = (
-/obj/effect/wallframe_spawn/reinforced/shuttle,
+/obj/structure/shuttle/window/pod,
 /turf/simulated/floor/airless,
 /area/shuttle/escape_pod1/station)
 "bfK" = (
 /turf/simulated/floor/plating,
-/turf/simulated/shuttle/wall/corner/dark/se,
+/turf/simulated/shuttle/wall/corner/pod2{
+	icon_state = "corner_pod2";
+	dir = 4
+	},
 /area/shuttle/escape_pod1/station)
 "bfL" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -31097,6 +31093,12 @@
 	dir = 8
 	},
 /area/ishimura/upper/misc/hallway/central)
+"bon" = (
+/turf/simulated/shuttle/wall/pod{
+	icon_state = "p_wall1";
+	dir = 1
+	},
+/area/shuttle/escape_pod1/station)
 "bpx" = (
 /obj/machinery/light{
 	dir = 1
@@ -31161,6 +31163,18 @@
 	dir = 4
 	},
 /area/ishimura/upper/misc/hallway/fore)
+"bTI" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/turf/simulated/floor/dank/grater,
+/area/ishimura/upper/misc/hallway/escape)
 "caT" = (
 /turf/simulated/floor/dank/slides{
 	dir = 8
@@ -31240,6 +31254,12 @@
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/upper/security/checkpoint/bridge)
+"eJh" = (
+/turf/simulated/shuttle/wall/pod/two{
+	icon_state = "p_wall2";
+	dir = 1
+	},
+/area/shuttle/escape_pod2/station)
 "flg" = (
 /turf/simulated/floor/dank/tech{
 	dir = 4
@@ -31259,6 +31279,23 @@
 	dir = 1
 	},
 /area/ishimura/upper/security/checkpoint/bridge)
+"fFR" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/dank/grater,
+/area/ishimura/upper/misc/hallway/escape)
 "fYM" = (
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/upper/misc/hallway/central)
@@ -31466,6 +31503,12 @@
 	dir = 4
 	},
 /area/ishimura/upper/misc/hallway/aft)
+"juU" = (
+/turf/simulated/shuttle/wall/pod/two{
+	icon_state = "p_wall2";
+	dir = 1
+	},
+/area/shuttle/escape_pod1/station)
 "jzY" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -31483,6 +31526,12 @@
 	dir = 4
 	},
 /area/ishimura/upper/misc/hallway/aft)
+"jEi" = (
+/turf/simulated/shuttle/wall/pod{
+	icon_state = "p_wall1";
+	dir = 1
+	},
+/area/shuttle/escape_pod3/station)
 "jYG" = (
 /turf/simulated/floor/dank/cable/end,
 /area/ishimura/upper/engineering/prep)
@@ -31619,9 +31668,6 @@
 	dir = 1
 	},
 /area/ishimura/upper/engineering/prep)
-"lWs" = (
-/turf/simulated/floor/dank/rectangles,
-/area/ishimura/upper/misc/hangar/reception)
 "mgr" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -31645,6 +31691,12 @@
 	dir = 4
 	},
 /area/ishimura/upper/misc/hallway/central)
+"mAD" = (
+/turf/simulated/shuttle/wall/pod{
+	icon_state = "p_wall1";
+	dir = 1
+	},
+/area/shuttle/escape_pod2/station)
 "mMF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
@@ -31696,6 +31748,13 @@
 	dir = 8
 	},
 /area/ishimura/upper/misc/hallway/fore)
+"nqJ" = (
+/turf/simulated/floor/plating,
+/turf/simulated/shuttle/wall/corner/pod1{
+	icon_state = "corner_pod1";
+	dir = 1
+	},
+/area/shuttle/escape_pod3/station)
 "nrU" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -31925,6 +31984,18 @@
 	dir = 4
 	},
 /area/ishimura/upper/misc/hallway/central)
+"qHI" = (
+/turf/simulated/shuttle/wall/pod/two{
+	icon_state = "p_wall2";
+	dir = 1
+	},
+/area/shuttle/escape_pod3/station)
+"qYp" = (
+/turf/simulated/shuttle/wall/pod/two{
+	icon_state = "p_wall2";
+	dir = 8
+	},
+/area/shuttle/escape_pod1/station)
 "rjP" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable/green{
@@ -31936,6 +32007,16 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/upper/misc/hallway/aft)
+"ryv" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/dank/rectangles,
+/area/ishimura/upper/misc/hallway/escape)
 "rEO" = (
 /turf/simulated/floor/dank/slides,
 /area/ishimura/upper/engineering/bay)
@@ -32019,6 +32100,12 @@
 	dir = 4
 	},
 /area/ishimura/upper/misc/hallway/aft)
+"uye" = (
+/turf/simulated/shuttle/wall/pod/two{
+	icon_state = "p_wall2";
+	dir = 8
+	},
+/area/shuttle/escape_pod2/station)
 "uGx" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/structure/cable/cyan{
@@ -32118,6 +32205,13 @@
 	},
 /turf/simulated/floor/dank/tech,
 /area/ishimura/upper/misc/hallway/aft)
+"wHC" = (
+/turf/simulated/floor/plating,
+/turf/simulated/shuttle/wall/corner/pod1{
+	icon_state = "corner_pod1";
+	dir = 1
+	},
+/area/shuttle/escape_pod1/station)
 "wKV" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 10
@@ -32125,6 +32219,13 @@
 /obj/effect/wallframe_spawn/reinforced_phoron,
 /turf/simulated/floor/reinforced/airless,
 /area/ishimura/upper/engineering/engine_room)
+"wNh" = (
+/turf/simulated/floor/plating,
+/turf/simulated/shuttle/wall/corner/pod1{
+	icon_state = "corner_pod1";
+	dir = 1
+	},
+/area/shuttle/escape_pod2/station)
 "wUq" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1;
@@ -32143,6 +32244,12 @@
 "xmt" = (
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/upper/security/brig)
+"xtb" = (
+/turf/simulated/shuttle/wall/pod/two{
+	icon_state = "p_wall2";
+	dir = 8
+	},
+/area/shuttle/escape_pod3/station)
 "xvK" = (
 /obj/machinery/atmospherics/unary/vent_pump/wall{
 	dir = 8
@@ -50432,7 +50539,7 @@ flg
 acL
 anc
 aNJ
-lWs
+aap
 adc
 aDB
 aFy
@@ -56111,7 +56218,7 @@ aSz
 aOQ
 arP
 aOU
-aQP
+bTI
 aSg
 aUV
 arP
@@ -56918,7 +57025,7 @@ bhz
 bhA
 bhA
 arR
-aOV
+ryv
 aRb
 aSS
 arP
@@ -57323,7 +57430,7 @@ aQS
 aMv
 aOC
 aSS
-aQP
+fFR
 aSa
 arP
 axq
@@ -59352,7 +59459,7 @@ aUk
 bcI
 aUi
 aTI
-aUp
+jEi
 aUp
 bfv
 aaa
@@ -59755,9 +59862,9 @@ aZv
 bbE
 bdJ
 aUi
-aTI
-aUp
-aUp
+nqJ
+qHI
+xtb
 bfE
 aaa
 aaa
@@ -60160,7 +60267,7 @@ aUk
 bcV
 aUi
 aTK
-aUv
+mAD
 aUv
 bfF
 aaa
@@ -60563,9 +60670,9 @@ bcw
 nle
 bcY
 aUi
-aTK
-aUv
-aUv
+wNh
+eJh
+uye
 bfH
 aaa
 aaa
@@ -60968,7 +61075,7 @@ bbI
 bdG
 aUi
 aTO
-aUB
+bon
 aUB
 bfI
 aaa
@@ -61371,9 +61478,9 @@ bbj
 bck
 bdJ
 aUi
-aTO
-aUB
-aUB
+wHC
+juU
+qYp
 bfK
 aaa
 aaa
