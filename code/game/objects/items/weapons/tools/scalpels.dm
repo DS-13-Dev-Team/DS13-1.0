@@ -44,7 +44,7 @@
 	icon_state = "scalpel_manager_on"
 	force = 7.5
 	damtype = "fire"
-	tool_qualities = list(QUALITY_CUTTING = 100, QUALITY_WIRE_CUTTING = 20, QUALITY_LASER_CUTTING = 100)
+	tool_qualities = list(QUALITY_CUTTING = 100, QUALITY_WIRE_CUTTING = 20, QUALITY_LASER_CUTTING = 100, QUALITY_CLAMPING = 100, QUALITY_RETRACTING = 100)
 	use_power_cost = 0.16
 	suitable_cell = /obj/item/weapon/cell
 	max_modifications = 4
