@@ -109,8 +109,8 @@
 
 	// You need a multitool to use this, or be silicon
 	if(!issilicon(user))
-		// istype returns false if the value is null
-		if(!isMultitool(user.get_active_hand()))
+		var/obj/item/I = user.get_active_hand()
+		if(!isMultitool(I))
 			return
 
 	if(stat & (BROKEN|NOPOWER))
