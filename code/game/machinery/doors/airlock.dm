@@ -989,7 +989,7 @@ About the new airlock wires panel:
 		cut_verb = "slicing"
 		cut_sound = "sparks"
 		cut_delay *= 0.66
-	else if(istype(item,/obj/item/weapon/tool/saw/circular))
+	else if(isSaw(item))
 		cut_verb = "sawing"
 		cut_sound = 'sound/weapons/circsawhit.ogg'
 		quality = QUALITY_SAWING

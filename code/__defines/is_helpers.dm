@@ -100,6 +100,16 @@
 
 #define isCrowbar(A) A.has_quality(QUALITY_PRYING)
 
+#define isPickaxe(A) A.has_quality(QUALITY_DIGGING)
+
+#define isSaw(A) A.has_quality(QUALITY_SAWING)
+
+#define isShovel(A) A.has_quality(QUALITY_EXCAVATION)
+
+#define isScalpel(A) (A.has_quality(QUALITY_CUTTING) || A.has_quality(QUALITY_LASER_CUTTING))
+
+#define isLaserScalpel(A) (A.has_quality(QUALITY_LASER_CUTTING))
+
 #define sequential_id(key) uniqueness_repository.Generate(/datum/uniqueness_generator/id_sequential, key)
 
 #define random_id(key,min_id,max_id) uniqueness_repository.Generate(/datum/uniqueness_generator/id_random, key, min_id, max_id)
