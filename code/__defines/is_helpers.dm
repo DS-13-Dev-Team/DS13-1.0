@@ -110,6 +110,10 @@
 
 #define isLaserScalpel(A) (A.has_quality(QUALITY_LASER_CUTTING))
 
+#define isAdhesive(A) (A.has_quality(QUALITY_ADHESIVE))
+
+#define isSealing(A) (A.has_quality(QUALITY_SEALING))
+
 #define sequential_id(key) uniqueness_repository.Generate(/datum/uniqueness_generator/id_sequential, key)
 
 #define random_id(key,min_id,max_id) uniqueness_repository.Generate(/datum/uniqueness_generator/id_random, key, min_id, max_id)

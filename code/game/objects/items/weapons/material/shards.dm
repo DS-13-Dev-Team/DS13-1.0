@@ -9,6 +9,7 @@
 	sharp = TRUE
 	edge = TRUE
 	w_class = ITEM_SIZE_SMALL
+	tool_qualities = list(QUALITY_CUTTING = 5, QUALITY_WIRE_CUTTING = 5)
 	force_divisor = 0.12 // 6 with hardness 30 (glass)
 	thrown_force_divisor = 0.4 // 4 with weight 15 (glass)
 	item_state = "shard-glass"
@@ -93,6 +94,7 @@
 	name = "shrapnel"
 	default_material = MATERIAL_STEEL
 	w_class = ITEM_SIZE_TINY	//it's real small
+	tool_qualities = list(QUALITY_CUTTING = 5, QUALITY_WIRE_CUTTING = 5)
 
 /obj/item/weapon/material/shard/shrapnel
 	var/atom/launcher
