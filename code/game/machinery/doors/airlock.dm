@@ -172,6 +172,21 @@ var/list/airlock_overlays = list()
 	stripe_color = COLOR_PALE_ORANGE
 	req_access = list(1)
 
+/obj/machinery/door/airlock/shuttle
+	name = "Pod Door"
+	icon_state = "closed"
+	icon = 'icons/obj/doors/external/pod.dmi'
+	fill_file = null
+	color_file = null
+	color_fill_file = null
+	glass_file = null
+	bolts_file = null
+	deny_file = null
+	lights_file = null
+	emag_file = null
+	req_access = list(15)
+	paintable = 0
+
 //Glass airlock presets
 
 /obj/machinery/door/airlock/glass

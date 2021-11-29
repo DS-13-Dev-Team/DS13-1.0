@@ -30,6 +30,9 @@
 	icon_state = "floor7"
 	initial_flooring = /decl/flooring/reinforced/shuttle/black
 
+/turf/simulated/floor/shuttle/pod
+	icon_state = "p_floor"
+	initial_flooring = /decl/flooring/reinforced/shuttle/pod
 
 /decl/flooring/reinforced/shuttle
 	name = "floor"
@@ -58,3 +61,6 @@
 
 /decl/flooring/reinforced/shuttle/black
 	icon_base = "floor7"
+
+/decl/flooring/reinforced/shuttle/pod
+	icon_base = "p_floor"
