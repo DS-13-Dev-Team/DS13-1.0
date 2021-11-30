@@ -303,7 +303,7 @@ GLOBAL_LIST(additional_antag_types)
 		"shadowy interlopers",
 		"a stranded Vox arkship",
 		"haywire IPC constructs",
-		"rogue Unathi exiles",
+		"rogue Martian exiles",
 		"artifacts of eldritch horror",
 		"a brain slug infestation",
 		"killer bugs that lay eggs in the husks of the living",
@@ -316,7 +316,12 @@ GLOBAL_LIST(additional_antag_types)
 		)
 	command_announcement.Announce("The presence of [pick(reasons)] in the region is tying up all available local emergency resources; emergency response teams cannot be called at this time, and post-evacuation recovery efforts will be substantially delayed.","Emergency Transmission")
 
-/datum/game_mode/proc/check_finished()
+/datum/game_mode/proc/check_finished(var/force_ending)
+
+	//Gameticker is trying to force the round to end, we won't stand in its way. An overriding subtype might
+	if (force_ending)
+		return TRUE
+
 	if(station_was_nuked)
 		return GAME_FINISHED
 	if(end_on_antag_death && antag_templates && antag_templates.len)
@@ -731,3 +736,6 @@ proc/get_nt_opposed()
 		crew_count++
 
 	return crew_count
+
+/datum/game_mode/proc/is_votable()
+	return votable

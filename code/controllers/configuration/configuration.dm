@@ -29,6 +29,26 @@
 
 	var/static/regex/ic_filter_regex
 
+
+	//These vars are not really used, just ported to make bay voting code compile
+	/// allow votes to restart
+	var/static/allow_vote_restart = FALSE
+	/// allow votes to change mode
+	var/static/allow_vote_mode = FALSE
+	/// vote does not default to nochange/norestart (tbi)
+	var/static/vote_no_default = FALSE
+	/// dead people can't vote (tbi)
+	var/static/vote_no_dead = FALSE
+	/// dead people can't vote on crew transfer votes
+	var/static/vote_no_dead_crew_transfer = FALSE
+	/// length of time before next sequential autotransfer vote
+	var/static/vote_autotransfer_interval = 30 MINUTES
+	/// Whether map switching is allowed
+	var/static/allow_map_switching = FALSE
+	/// Automatically call a map vote at end of round and switch to the selected map
+	var/static/auto_map_vote = FALSE
+	var/static/allow_extra_antags = FALSE
+
 /datum/controller/configuration/proc/admin_reload()
 	if(check_rights(R_ADMIN))
 		return

@@ -122,7 +122,18 @@
 #define MODE_MARKER_DRAW_DEATH	"DRAW: Mutual Annihilation"
 #define MODE_GENERIC_DRAW_NUKE	"DRAW: Nuclear Explosion"
 
+
 //Return values from gamemode check_finished
 #define GAME_NOT_FINISHED	0
 #define GAME_FINISHED		1
 #define GAME_MAYBE_FINISHED	2
+
+
+//Voting-related
+#define VOTE_PROCESS_ABORT    1
+#define VOTE_PROCESS_COMPLETE 2
+#define VOTE_PROCESS_ONGOING  3
+
+#define VOTE_STATUS_PREVOTE   1
+#define VOTE_STATUS_ACTIVE    2
+#define VOTE_STATUS_COMPLETE  3

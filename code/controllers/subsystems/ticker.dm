@@ -19,6 +19,7 @@ SUBSYSTEM_DEF(ticker)
 	var/hide_mode = FALSE
 	var/datum/game_mode/mode = null
 	var/voted = FALSE
+	var/list/gamemode_vote_results  //Will be a list, in order of preference, of form list(config_tag = number of votes).
 
 	var/delay_end = FALSE					//If set true, the round will not restart on it's own
 	var/admin_delay_notice = ""				//A message to display to anyone who tries to restart the world after a delay
@@ -72,7 +73,7 @@ SUBSYSTEM_DEF(ticker)
 				time_left = 0
 
 			if(!voted)
-				addtimer(CALLBACK(SSvote, /datum/controller/subsystem/vote.proc/initiate_vote, "gamemode", "SERVER"), 10 SECONDS)
+				addtimer(CALLBACK(SSvote, /datum/controller/subsystem/vote.proc/initiate_vote, /datum/vote/gamemode, null, TRUE), 10 SECONDS)
 				time_left += 10 SECONDS
 				voted = TRUE
 
@@ -101,7 +102,9 @@ SUBSYSTEM_DEF(ticker)
 		if(GAME_STATE_PLAYING)
 			mode.process(wait * 0.1)
 
-			if(!roundend_check_paused && mode.check_finished(force_ending) || force_ending)
+			var/mode_finished = mode.check_finished(force_ending)
+			if (mode_finished)
+			//if(!roundend_check_paused && mode.check_finished(force_ending) || force_ending)
 				SSdatabase.handle_endround_schematics()
 				current_state = GAME_STATE_FINISHED
 				config.ooc_allowed = TRUE

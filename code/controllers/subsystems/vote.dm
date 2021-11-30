@@ -1,4 +1,314 @@
+#define VOTE_PERIOD	(2 MINUTES)
+#define VOTE_DELAY (15 MINUTES)
+SUBSYSTEM_DEF(vote)
+	name = "Voting"
+	wait = 1 SECOND
+	priority = SS_PRIORITY_VOTE
+	flags = SS_NO_TICK_CHECK | SS_KEEP_TIMING
+	runlevels = RUNLEVELS_DEFAULT | RUNLEVEL_LOBBY
 
+	var/last_started_time        //To enforce delay between votes.
+	var/antag_added              //Enforces a maximum of one added antag per round.
+
+	var/datum/vote/active_vote   //The current vote. This handles most voting activity.
+	var/list/old_votes           //Stores completed votes for reference.
+	var/queued_auto_vote         //Used if a vote queues another vote to happen after it.
+
+	var/list/voting = list()     //Clients recieving UI updates.
+	var/list/vote_prototypes     //To run checks on whether they are available.
+
+/datum/controller/subsystem/vote/Initialize()
+	vote_prototypes = list()
+	for(var/vote_type in subtypesof(/datum/vote))
+		var/datum/vote/fake_vote = vote_type
+		if(initial(fake_vote.manual_allowed))
+			vote_prototypes[vote_type] = new vote_type
+	return ..()
+
+/datum/controller/subsystem/vote/fire(resumed = 0)
+	if(!active_vote)
+		if(queued_auto_vote)
+			initiate_vote(queued_auto_vote, automatic = 1)
+			queued_auto_vote = null
+		return
+
+	switch(active_vote.Process())
+		if(VOTE_PROCESS_ABORT)
+			QDEL_NULL(active_vote)
+			reset()
+			return
+		if(VOTE_PROCESS_COMPLETE)
+			active_vote.tally_result()      // Does math to figure out who won. Data is stored on the vote datum.
+			active_vote.report_result()     // Announces the result; possibly alerts other entities of the result.
+			LAZYADD(old_votes, active_vote) // Store the datum for future reference.
+			reset()
+			return
+		/* Spam people with the voting panel every tick? Why??
+		if(VOTE_PROCESS_ONGOING)
+			for(var/client/C in voting)
+				show_panel(C.mob)
+		*/
+
+/datum/controller/subsystem/vote/stat_entry()
+	..("Vote:[active_vote ? "[active_vote.name], [active_vote.time_remaining]" : "none"]")
+
+/datum/controller/subsystem/vote/Recover()
+	last_started_time = SSvote.last_started_time
+	antag_added = SSvote.antag_added
+	active_vote = SSvote.active_vote
+	queued_auto_vote = SSvote.queued_auto_vote
+
+/datum/controller/subsystem/vote/proc/reset()
+	active_vote = null
+	SStgui.close_uis(src)
+	voting.Cut()
+
+//A false return means that a vote couldn't be started.
+/datum/controller/subsystem/vote/proc/initiate_vote(vote_type, mob/creator, automatic = 0)
+	to_chat(world, "Initiating vote 1")
+	if(active_vote)
+		return FALSE
+	to_chat(world, "Initiating vote 2")
+	if(!automatic && (!istype(creator) || !creator.client))
+		return FALSE
+
+	to_chat(world, "Initiating vote 3")
+	if(last_started_time != null && !(is_admin(creator) || automatic))
+		var/next_allowed_time = (last_started_time + VOTE_DELAY)
+		if(next_allowed_time > world.time)
+			return FALSE
+
+	to_chat(world, "Initiating vote 4")
+	var/datum/vote/new_vote = new vote_type
+	if(!new_vote.setup(creator, automatic))
+		return FALSE
+
+	to_chat(world, "Initiating vote 5")
+	active_vote = new_vote
+	last_started_time = world.time
+	return TRUE
+
+
+
+
+/*
+	UI
+*/
+
+
+/datum/controller/subsystem/vote/ui_data(mob/user)
+	var/list/data
+	if (active_vote)
+		data = active_vote.ui_data()
+	
+	else
+		//This UI data is for when no vote is currently ongoing
+		data = list(
+			"allow_vote_mode" = CONFIG_GET(flag/allow_vote_mode),
+			"allow_vote_restart" = CONFIG_GET(flag/allow_vote_restart),
+			"lower_admin" = !!user.client?.holder,
+			"mode" = "custom",
+			"choices" = list(),
+			//"question" = question,
+			//"selected_choice" = choice_by_ckey[user.client?.ckey],
+			//"time_remaining" = time_remaining,
+			"admin" = check_rights(R_ADMIN, FALSE, user.client),
+			"voting" = list(),
+		)
+
+	if(!!user.client?.holder)
+		data["voting"] = voting
+
+	/* This comes from the vote datum
+	
+	*/
+
+	to_chat(world, "Data: [dump_list(data)]")
+
+	return data
+
+/datum/controller/subsystem/vote/ui_act(action, params)
+	to_chat(world, "SSVote Handle TGUI: [action], [dump_list(params)]")
+	. = ..()
+	if(.)
+		return
+
+	to_chat(world, "SSVote 2")
+
+	var/admin = FALSE
+	if(usr.client.holder)
+		admin = TRUE
+
+	if (active_vote)
+		active_vote.handle_tgui(action, params, admin)
+		return TRUE
+
+	to_chat(world, "SSVote 3")
+
+	switch(action)
+		if("toggle_restart")
+			if(usr.client.holder && admin)
+				CONFIG_SET(flag/allow_vote_restart, !CONFIG_GET(flag/allow_vote_restart))
+		if("restart")
+			if(CONFIG_GET(flag/allow_vote_restart) || usr.client.holder)
+				initiate_vote(/datum/vote/restart,usr)
+		if("toggle_gamemode")
+			if(usr.client.holder && admin)
+				CONFIG_SET(flag/allow_vote_mode, !CONFIG_GET(flag/allow_vote_mode))
+		if("gamemode")
+			to_chat(world, "SSVote 4")
+			if(CONFIG_GET(flag/allow_vote_mode) || usr.client.holder)
+				to_chat(world, "SSVote 5")
+				initiate_vote(/datum/vote/gamemode,usr)
+		if("custom")
+			if(usr.client.holder)
+				initiate_vote(/datum/vote/custom,usr)
+		if("vote")
+			submit_vote(usr, round(text2num(params["index"])))
+	return TRUE
+
+
+/*
+
+/datum/controller/subsystem/vote/proc/interface(client/C)
+	if(!C)
+		return
+	var/admin = is_admin(C)
+	voting |= C
+
+	. = list()
+	. += "<html><head><title>Voting Panel</title></head><body>"
+	if(active_vote)
+		. += active_vote.interface(C.mob)
+		if(admin)
+			. += "(<a href='?src=\ref[src];cancel=1'>Cancel Vote</a>) "
+	else
+		. += "<h2>Start a vote:</h2><hr><ul>"
+		for(var/vote_type in vote_prototypes)
+			var/datum/vote/vote_datum = vote_prototypes[vote_type]
+			. += "<li><a href='?src=\ref[src];vote=\ref[vote_datum.type]'>"
+			if(vote_datum.can_run(C.mob))
+				. += "[capitalize(vote_datum.name)]"
+			else
+				. += "<font color='grey'>[capitalize(vote_datum.name)] (Disallowed)</font>"
+			. += "</a>"
+			var/toggle = vote_datum.check_toggle()
+			if(admin && toggle)
+				. += "\t(<a href='?src=\ref[src];toggle=1;vote=\ref[vote_datum.type]'>toggle; currently [toggle]</a>)"
+			. += "</li>"
+		. += "</ul><hr>"
+
+	. += "<a href='?src=\ref[src];close=1' style='position:absolute;right:50px'>Close</a></body></html>"
+	return JOINTEXT(.)
+
+/datum/controller/subsystem/vote/proc/show_panel(mob/user)
+	var/win_x = 450
+	var/win_y = 740
+	if(active_vote)
+		win_x = active_vote.win_x
+		win_y = active_vote.win_y
+	show_browser(user, interface(user.client),"window=vote;size=[win_x]x[win_y]")
+	onclose(user, "vote", src)
+
+	/datum/controller/subsystem/vote/proc/close_panel(mob/user)
+	show_browser(user, null, "window=vote")
+	if(user)
+		voting -= user.client
+*/
+
+/datum/controller/subsystem/vote/tgui_interact(mob/user, datum/tgui/ui)
+	// Tracks who is voting
+	if(!(user.client?.ckey in voting))
+		voting += user.client?.ckey
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "Vote")
+		ui.open()
+
+/datum/controller/subsystem/vote/ui_state()
+	return GLOB.tgui_always_state
+
+
+
+
+
+
+/datum/controller/subsystem/vote/proc/cancel_vote(mob/user)
+	if(!is_admin(user))
+		return
+	active_vote.report_result() // Will not make announcement, but do any override failure reporting tasks.
+	QDEL_NULL(active_vote)
+	reset()
+
+/datum/controller/subsystem/vote/Topic(href,href_list[],hsrc)
+	to_chat(world, "Handle Topic: [href]")
+	if(href_list["vote_panel"])
+		tgui_interact(usr)
+		return
+
+/* Topic is not used much, we have ui_act instead
+	if(href_list["cancel"])
+		cancel_vote(usr)
+		return
+	if(href_list["close"])
+		close_panel(usr)
+		return
+
+	if(href_list["vote"])
+		var/vote_path = locate(href_list["vote"])
+		if(!ispath(vote_path, /datum/vote))
+			return
+
+		if(href_list["toggle"])
+			var/datum/vote/vote_datum = vote_prototypes[vote_path]
+			if(!vote_datum)
+				return
+			vote_datum.toggle(usr)
+			show_panel(usr)
+			return
+
+		initiate_vote(vote_path, usr, 0) // Additional permission checking happens in here.
+*/
+//Helper for certain votes.
+/datum/controller/subsystem/vote/proc/restart_world()
+	set waitfor = FALSE
+
+	to_world("World restarting due to vote...")
+	//SSstatistics.set_field_details("end_error","restart vote")
+	sleep(50)
+	log_game("Rebooting due to restart vote")
+	world.Reboot()
+
+// Helper proc for determining whether addantag vote can be called.
+/datum/controller/subsystem/vote/proc/is_addantag_allowed(mob/creator, automatic)
+	if(!config.allow_extra_antags)
+		return 0
+	// Gamemode has to be determined before we can add antagonists, so we can respect gamemode's add antag vote settings.
+	if((GAME_STATE <= RUNLEVEL_SETUP) || !SSticker.mode)
+		return 0
+	if(automatic)
+		return (SSticker.mode.addantag_allowed & ADDANTAG_AUTO) && !antag_added
+	if(is_admin(creator))
+		return SSticker.mode.addantag_allowed & (ADDANTAG_ADMIN|ADDANTAG_PLAYER)
+	else
+		return (SSticker.mode.addantag_allowed & ADDANTAG_PLAYER) && !antag_added
+
+/mob/verb/vote()
+	set category = "OOC"
+	set name = "Vote"
+
+	if(GAME_STATE < RUNLEVEL_LOBBY)
+		to_chat(src, "It's too soon to do any voting!")
+		return
+	//SSvote.show_panel(src)
+	SSvote.tgui_interact(usr)
+
+/datum/controller/subsystem/vote/proc/submit_vote(var/mob/user, vote)
+	if(active_vote)
+		active_vote.submit_vote(user, vote)
+	
+
+/*
 SUBSYSTEM_DEF(vote)
 	name = "Vote"
 	wait = 10
@@ -25,7 +335,7 @@ SUBSYSTEM_DEF(vote)
 	time_remaining = round((started_time + CONFIG_GET(number/vote_period) - world.time)/10)
 	if(time_remaining < 0)
 		result()
-		SStgui.close_uis(src)
+		
 		reset()
 
 /datum/controller/subsystem/vote/proc/reset()
@@ -37,6 +347,7 @@ SUBSYSTEM_DEF(vote)
 	time_remaining = 0
 	voted.Cut()
 	voting.Cut()
+	SStgui.close_uis(src)
 
 	//remove_action_buttons()
 
@@ -137,21 +448,7 @@ SUBSYSTEM_DEF(vote)
 
 	return .
 
-/datum/controller/subsystem/vote/proc/submit_vote(vote)
-	if(!mode)
-		return FALSE
-	if(CONFIG_GET(flag/no_dead_vote) && usr.stat == DEAD && !usr.client.holder)
-		return FALSE
-	if(!vote || vote < 1 || vote > choices.len)
-		return FALSE
-	// If user has already voted, remove their specific vote
-	if(usr.ckey in voted)
-		choices[choices[choice_by_ckey[usr.ckey]]]--
-	else
-		voted += usr.ckey
-	choice_by_ckey[usr.ckey] = vote
-	choices[choices[vote]]++
-	return vote
+
 
 /datum/controller/subsystem/vote/proc/initiate_vote(vote_type, initiator_key)
 	//Server is still intializing.
@@ -216,85 +513,14 @@ SUBSYSTEM_DEF(vote)
 		return TRUE
 	return FALSE
 
-/mob/verb/vote()
-	set category = "OOC"
-	set name = "Vote"
-	SSvote.tgui_interact(usr)
-
 /datum/controller/subsystem/vote/proc/automatic_vote()
 	initiate_vote("gamemode", null, TRUE)
 
-/datum/controller/subsystem/vote/ui_state()
-	return GLOB.tgui_always_state
 
-/datum/controller/subsystem/vote/tgui_interact(mob/user, datum/tgui/ui)
-	// Tracks who is voting
-	if(!(user.client?.ckey in voting))
-		voting += user.client?.ckey
-	ui = SStgui.try_update_ui(user, src, ui)
-	if(!ui)
-		ui = new(user, src, "Vote")
-		ui.open()
 
-/datum/controller/subsystem/vote/ui_data(mob/user)
-	var/list/data = list(
-		"allow_vote_mode" = CONFIG_GET(flag/allow_vote_mode),
-		"allow_vote_restart" = CONFIG_GET(flag/allow_vote_restart),
-		"choices" = list(),
-		"lower_admin" = !!user.client?.holder,
-		"mode" = mode,
-		"question" = question,
-		"selected_choice" = choice_by_ckey[user.client?.ckey],
-		"time_remaining" = time_remaining,
-		"upper_admin" = check_rights(R_ADMIN, FALSE, user.client),
-		"voting" = list(),
-	)
 
-	if(!!user.client?.holder)
-		data["voting"] = voting
 
-	for(var/key in choices)
-		data["choices"] += list(list(
-			"name" = key,
-			"votes" = choices[key] || 0
-		))
 
-	return data
-
-/datum/controller/subsystem/vote/ui_act(action, params)
-	. = ..()
-	if(.)
-		return
-
-	var/upper_admin = FALSE
-	if(usr.client.holder)
-		if(check_rights(R_ADMIN, FALSE, usr.client))
-			upper_admin = TRUE
-
-	switch(action)
-		if("cancel")
-			if(usr.client.holder)
-				usr.log_message("[key_name_admin(usr)] cancelled a vote.", LOG_ADMIN)
-				message_admins("[key_name_admin(usr)] has cancelled the current vote.")
-				reset()
-		if("toggle_restart")
-			if(usr.client.holder && upper_admin)
-				CONFIG_SET(flag/allow_vote_restart, !CONFIG_GET(flag/allow_vote_restart))
-		if("restart")
-			if(CONFIG_GET(flag/allow_vote_restart) || usr.client.holder)
-				initiate_vote("restart",usr.key)
-		if("toggle_gamemode")
-			if(usr.client.holder && upper_admin)
-				CONFIG_SET(flag/allow_vote_mode, !CONFIG_GET(flag/allow_vote_mode))
-		if("gamemode")
-			if(CONFIG_GET(flag/allow_vote_mode) || usr.client.holder)
-				initiate_vote("gamemode",usr.key)
-		if("custom")
-			if(usr.client.holder)
-				initiate_vote("custom",usr.key)
-		if("vote")
-			submit_vote(round(text2num(params["index"])))
-	return TRUE
 /*
 /datum/controller/subsystem/vote/proc/remove_action_buttons()
 	for(var/v in generated_actions)
@@ -330,4 +556,6 @@ SUBSYSTEM_DEF(vote)
 		var/datum/player_details/P = GLOB.player_details[owner.ckey]
 		if(P)
 			P.player_actions -= src
+*/
+
 */

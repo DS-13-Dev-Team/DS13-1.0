@@ -211,8 +211,8 @@
 		msg += " The round is still setting up, but the round will be started as soon as possible. You may abort this by trying to start early again."
 
 	SSticker.start_immediately = TRUE
-	SSvote.voted = TRUE
-	SSvote.reset()
+	//SSvote.voted = TRUE
+	//SSvote.reset()
 	log_admin("[key_name(usr)] [msg]")
 	message_admins("[ADMIN_TPMONTY(usr)] [msg]")
 
