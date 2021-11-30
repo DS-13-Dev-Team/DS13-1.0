@@ -62,3 +62,12 @@
   - bugfix: Fixed bug that prevented smetler from gathering and processing ores.
   - rscadd: Vitals Monitor plays sound on heart stop now.
   - bugfix: Fixed 'You can't use your hand' bug.
+2021-11-30:
+  Snypehunter007:
+  - bugfix: Fixed several piping issues with 02 and Scrubber pipes.
+  - bugfix: Fixed there being a missing wall in the Hangar Lobby.
+  - bugfix: Fixed the Upper Deck Breakroom and Escape Hallway disposal pipes being
+      piped wrong.
+  - rscadd: Added civilian RIGs to the personal lockers in the Crew Quarters.
+  - rscdel: Removed backpacks and duffels from the personal lockers in the Crew Quarters.
+  - imageadd: Added custom Escape Pod sprites.
