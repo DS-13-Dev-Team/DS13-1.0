@@ -505,9 +505,9 @@ Example:
 **Props:**
 
 - See inherited props: [Box](#box)
-- `columns: number`, - Amount of empty columns to generate.
-- `rows: number`, - Amount of empty rows to generate.
-- `gridSize: string | number`, - Width and height of one cell
+- `columns: number` - Amount of empty columns to generate.
+- `rows: number` - Amount of empty rows to generate.
+- `gridSize: string | number` - Width and height of one cell
 
 ### `Grid.Cell`
 
@@ -516,10 +516,10 @@ Example:
 **Props:**
 
 - See inherited props: [Box](#box)
-- `firstColumn`, - Column to position left corner of the [Box](#box)
-- `firstRow`, - Row to position top corner of the [Box](#box)
-- `secondColumn`, - Column to position right corner of the [Box](#box)
-- `secondRow`, - Row to position bottom corner of the [Box](#box)
+- `firstColumn` - Column to position left corner of the [Box](#box)
+- `firstRow` - Row to position top corner of the [Box](#box)
+- `secondColumn` - Column to position right corner of the [Box](#box)
+- `secondRow` - Row to position bottom corner of the [Box](#box)
 
 ### `Icon`
 
