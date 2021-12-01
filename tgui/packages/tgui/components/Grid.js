@@ -30,7 +30,7 @@ export const Grid = props => {
   );
 };
 
-export const GridItem = props => {
+export const GridCell = props => {
   const {
     firstColumn,
     firstRow,
@@ -48,5 +48,5 @@ export const GridItem = props => {
 };
 
 Grid.defaultHooks = pureComponentHooks;
-GridItem.defaultHooks = pureComponentHooks;
-Grid.Item = GridItem;
+GridCell.defaultHooks = pureComponentHooks;
+Grid.Cell = GridCell;
