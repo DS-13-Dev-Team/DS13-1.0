@@ -31,10 +31,12 @@
 /// asset - the actual asset file (or an asset_cache_item datum)
 /// returns a /datum/asset_cache_item.
 /// mutiple calls to register the same asset under the same asset_name return the same datum
-/datum/asset_transport/proc/register_asset(asset_name, asset)
+/datum/asset_transport/proc/register_asset(asset_name, asset, keep_local_name)
 	var/datum/asset_cache_item/ACI = asset
 	if (!istype(ACI))
 		ACI = new(asset_name, asset)
+		if(keep_local_name)
+			ACI.keep_local_name = TRUE
 		if (!ACI || !ACI.hash)
 			CRASH("ERROR: Invalid asset: [asset_name]:[asset]:[ACI]")
 	if (SSassets.cache[asset_name])
@@ -127,7 +129,7 @@
 				|| (ACI.namespace && !ACI.namespace_parent)
 			if (!keep_local_name)
 				new_asset_name = "asset.[ACI.hash][ACI.ext]"
-			//log_asset("Sending asset `[asset_name]` to client `[client]` as `[new_asset_name]`")	
+			//log_asset("Sending asset `[asset_name]` to client `[client]` as `[new_asset_name]`")
 			//Commented out by nanako because this stuff is generating tens of MB of logs. We only need to log problems, not when everything is going fine
 			client << browse_rsc(ACI.resource, new_asset_name)
 

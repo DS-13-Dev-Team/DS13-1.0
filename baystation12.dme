@@ -41,6 +41,7 @@
 #include "code\__defines\codex.dm"
 #include "code\__defines\colors.dm"
 #include "code\__defines\configuration.dm"
+#include "code\__defines\cooldowns.dm"
 #include "code\__defines\coordinates.dm"
 #include "code\__defines\craft.dm"
 #include "code\__defines\damage_organs.dm"

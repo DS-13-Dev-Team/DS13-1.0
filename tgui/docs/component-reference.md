@@ -26,7 +26,7 @@ Make sure to add new items to this list if you document new components.
   - [`Flex`](#flex)
   - [`Flex.Item`](#flexitem)
   - [`Grid`](#grid)
-  - [`Grid.Column`](#gridcolumn)
+  - [`Grid.Cell`](#gridcell)
   - [`Icon`](#icon)
   - [`Icon.Stack`](#iconstack)
   - [`Input`](#input)
@@ -473,40 +473,53 @@ align-items) to be overridden for individual flex items. See: [Flex](#flex).
 
 ### `Grid`
 
-> **Deprecated:** This component is no longer recommended due to the variety
-> of bugs that come with table-based layouts.
-> We recommend using [Flex](#flex) instead.
-
-Helps you to divide horizontal space into two or more equal sections.
-It is essentially a single-row `Table`, but with some extra features.
+Works similar to `display: grid` but uses 2 for loops to generate needed amount
+of empty cells.
 
 Example:
 
 ```jsx
-<Grid>
-  <Grid.Column>
-    <Section title="Section 1">
-      Hello world!
-    </Section>
-  </Grid.Column>
-  <Grid.Column size={2}>
-    <Section title="Section 2">
-      Hello world!
-    </Section>
-  </Grid.Column>
+<Grid
+  columns={3}
+  rows={4}
+  gridSize="12px">
+  <Grid.Cell
+    firstColumn={2}
+    firstRow={2}
+    secondColumn={3}>
+    <Button>
+      Hello!
+    </Button>
+  </Grid.Cell>
+  <Grid.Cell
+    firstColumn={1}
+    firstRow={3}
+    secondRow={4}>
+    <Button>
+      Goodbye!
+    </Button>
+  </Grid.Cell>
 </Grid>
 ```
 
 **Props:**
 
-- See inherited props: [Table](#table)
+- See inherited props: [Box](#box)
+- `columns: number`, - Amount of empty columns to generate.
+- `rows: number`, - Amount of empty rows to generate.
+- `gridSize: string | number`, - Width and height of one cell
 
-### `Grid.Column`
+### `Grid.Cell`
+
+[Box](#box) positioned on the grid.
 
 **Props:**
 
-- See inherited props: [Table.Cell](#tablecell)
-- `size: number` (default: 1) - Size of the column relative to other columns.
+- See inherited props: [Box](#box)
+- `firstColumn`, - Column to position left corner of the [Box](#box)
+- `firstRow`, - Row to position top corner of the [Box](#box)
+- `secondColumn`, - Column to position right corner of the [Box](#box)
+- `secondRow`, - Row to position bottom corner of the [Box](#box)
 
 ### `Icon`
 
