@@ -6607,8 +6607,8 @@
 /turf/simulated/floor/plating,
 /area/aegis/colony/refinery)
 "tW" = (
-/obj/machinery/input,
 /obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/machinery/input/ore,
 /turf/simulated/floor/plating,
 /area/aegis/colony/refinery)
 "ui" = (

@@ -6,10 +6,10 @@
 	if(!holder)
 		to_chat(usr, "<span class='danger'>Only administrators may use this command.</span>")
 		return
-	if(!ticker)
+	if(!SSticker)
 		to_chat(usr, "<span class='danger'>The game hasn't started yet!</span>")
 		return
-	if(ticker.current_state == 1)
+	if(SSticker.current_state == 1)
 		to_chat(usr, "<span class='danger'>The round hasn't started yet!</span>")
 		return
 	if(tgui_alert(usr, "Do you want to dispatch an Emergency Response Team?","ERT Dispatch",list("Yes","No")) != "Yes")
@@ -35,7 +35,7 @@
 		return
 
 	if(choice == "Randomize")
-		GLOB.picked_call	= ticker.mode.get_random_call()
+		GLOB.picked_call	= SSticker.mode.get_random_call()
 	else
 		for(var/datum/emergency_call/C in GLOB.emergency_call_datums)
 			if(C.name == choice)

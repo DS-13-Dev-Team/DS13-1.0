@@ -57,7 +57,14 @@ var/list/escape_pods_by_name = list()
 //This controller goes on the escape pod itself
 /obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod
 	name = "escape pod controller"
+	icon_state = "pod_control_standby"
 	var/datum/shuttle/autodock/ferry/escape_pod/pod
+
+/obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod/update_icon()
+	if(program.memory["processing"])
+		icon_state = "pod_control_process"
+	else
+		icon_state = "pod_control_standby"
 
 /obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1,  var/datum/topic_state/state = GLOB.default_state)
 	var/data[0]

@@ -127,9 +127,9 @@ GLOBAL_LIST(additional_antag_types)
 			return
 		var/datum/antagonist/antag = GLOB.all_antag_types_[choice]
 		if(antag)
-			if(!islist(ticker.mode.antag_templates))
-				ticker.mode.antag_templates = list()
-			ticker.mode.antag_templates |= antag
+			if(!islist(SSticker.mode.antag_templates))
+				SSticker.mode.antag_templates = list()
+			SSticker.mode.antag_templates |= antag
 			message_admins("Admin [key_name_admin(usr)] added [antag.role_text] template to game mode.")
 
 	// I am very sure there's a better way to do this, but I'm not sure what it might be. ~Z
@@ -157,10 +157,28 @@ GLOBAL_LIST(additional_antag_types)
 			antag_summary += "[antag.role_text_plural]"
 			i++
 		antag_summary += "."
-		if(antag_templates.len > 1 && master_mode != "secret")
+		if(antag_templates.len > 1 && GLOB.master_mode != "secret")
 			to_chat(world, "<span class='infoplain'>[antag_summary]</span>")
 		else
 			message_admins("[antag_summary]")
+
+/datum/game_mode/proc/can_start(bypass_checks = FALSE)
+	if(length(SSticker.totalPlayersReady) < required_players && !bypass_checks)
+		to_chat(world, "<b>Unable to start [name].</b> Not enough players, [required_players] players needed.")
+		return FALSE
+	return TRUE
+
+/datum/game_mode/proc/setup()
+	job_master.DivideOccupations()
+	create_characters() //Create player characters and transfer them
+	collect_minds()
+	equip_characters()
+	for(var/mob/living/carbon/human/H in GLOB.player_list)
+		if(!H.mind || player_is_antag(H.mind, only_offstation_roles = 1) || !job_master.ShouldCreateRecords(H.mind.assigned_role))
+			continue
+		CreateModularRecord(H)
+
+	return TRUE
 
 // startRequirements()
 // Checks to see if the game can be setup and ran with the current number of players or whatnot.
@@ -211,6 +229,7 @@ GLOBAL_LIST(additional_antag_types)
 			EMajor.delay_modifier = event_delay_mod_major
 
 /datum/game_mode/proc/pre_setup()
+	create_antagonists()
 	for(var/datum/antagonist/antag in antag_templates)
 		antag.update_current_antag_max()
 		antag.build_candidate_list() //compile a list of all eligible candidates
@@ -218,6 +237,7 @@ GLOBAL_LIST(additional_antag_types)
 		//antag roles that replace jobs need to be assigned before the job controller hands out jobs.
 		if(antag.flags & ANTAG_OVERRIDE_JOB)
 			antag.attempt_spawn() //select antags to be spawned
+	return TRUE
 
 ///post_setup()
 /datum/game_mode/proc/post_setup()
@@ -249,8 +269,8 @@ GLOBAL_LIST(additional_antag_types)
 
 
 	feedback_set_details("round_start","[time2text(world.realtime)]")
-	if(ticker && ticker.mode)
-		feedback_set_details("game_mode","[ticker.mode]")
+	if(SSticker && SSticker.mode)
+		feedback_set_details("game_mode","[SSticker.mode]")
 	feedback_set_details("server_ip","[world.internet_address]:[world.port]")
 	return 1
 
@@ -310,6 +330,44 @@ GLOBAL_LIST(additional_antag_types)
 			evacuation_controller.recall = 0
 			return 1
 	return 0
+
+/datum/game_mode/proc/create_characters()
+	for(var/i in GLOB.new_player_list)
+		var/mob/dead/new_player/player = i
+		if(player?.ready && player?.mind)
+			if(player.mind.assigned_role=="AI")
+				player.close_spawn_windows()
+				player.AIize()
+			else if(!player.mind.assigned_role)
+				continue
+			else
+				if(player.create_character())
+					player.client?.init_verbs()
+					qdel(player)
+		CHECK_TICK
+
+
+/datum/game_mode/proc/collect_minds()
+	for(var/mob/living/player in GLOB.player_list)
+		if(player.mind)
+			GLOB.minds += player.mind
+		CHECK_TICK
+
+
+/datum/game_mode/proc/equip_characters()
+	var/captainless=1
+	for(var/mob/living/carbon/human/player in GLOB.player_list)
+		if(player && player.mind && player.mind.assigned_role)
+			if(player.mind.assigned_role == "Captain")
+				captainless=0
+			if(!player_is_antag(player.mind, only_offstation_roles = 1))
+				job_master.EquipRank(player, player.mind.assigned_role, 0)
+				//equip_custom_items(player)
+				equip_loadout(player, player.mind.assigned_role, player.client.prefs)
+	if(captainless)
+		for(var/mob/M in GLOB.player_list)
+			if(!istype(M,/mob/dead/new_player))
+				to_chat(M, "<span class='infoplain'>Captainship not forced on anyone.</span>")
 
 /datum/game_mode/proc/cleanup()	//This is called when the round has ended but not the game, if any cleanup would be necessary in that case.
 	return
@@ -436,7 +494,7 @@ GLOBAL_LIST(additional_antag_types)
 	to_chat(world, "<span class='infoplain'>[text]</span>")
 
 	var/obj/machinery/marker/M = get_marker()
-	if (M.player)
+	if (M?.player)
 		to_chat(world, "<span class='infoplain'><b>The Marker player was: [M.player]!</b><br></span>")
 	else
 		to_chat(world, "<span class='infoplain'><b>There was no Marker at the end.</b><br></span>")
@@ -473,7 +531,7 @@ GLOBAL_LIST(additional_antag_types)
 		return candidates
 
 	// If this is being called post-roundstart then it doesn't care about ready status.
-	if(ticker && ticker.current_state == GAME_STATE_PLAYING)
+	if(SSticker && SSticker.current_state == GAME_STATE_PLAYING)
 		for(var/mob/player in GLOB.player_list)
 			if(!player.client)
 				continue
@@ -624,16 +682,16 @@ proc/get_nt_opposed()
 
 	GLOB.using_map.map_info(src)
 
-	if(!ticker || !ticker.mode)
+	if(!SSticker || !SSticker.mode)
 		to_chat(usr, "Something is terribly wrong; there is no gametype.")
 		return
 
-	if(!ticker.hide_mode)
-		to_chat(usr, "<b>The roundtype is [capitalize(ticker.mode.name)]</b>")
-		if(ticker.mode.round_description)
-			to_chat(usr, "<i>[ticker.mode.round_description]</i>")
-		if(ticker.mode.extended_round_description)
-			to_chat(usr, "[ticker.mode.extended_round_description]")
+	if(!SSticker.hide_mode)
+		to_chat(usr, "<b>The roundtype is [capitalize(SSticker.mode.name)]</b>")
+		if(SSticker.mode.round_description)
+			to_chat(usr, "<i>[SSticker.mode.round_description]</i>")
+		if(SSticker.mode.extended_round_description)
+			to_chat(usr, "[SSticker.mode.extended_round_description]")
 	else
 		to_chat(usr, "<i>Shhhh</i>. It's a secret.")
 

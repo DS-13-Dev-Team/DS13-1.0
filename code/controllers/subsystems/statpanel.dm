@@ -15,6 +15,7 @@ SUBSYSTEM_DEF(statpanels)
 			"Map: [GLOB.using_map.full_name || "Loading..."]",
 			"Round ID: [GLOB.round_id ? GLOB.round_id : "NULL"]",
 			"Server Time: [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")]",
+			"Station Time: [station_time_timestamp()]",
 			"Round Time: [ROUND_TIME]",
 		)
 
@@ -94,7 +95,6 @@ SUBSYSTEM_DEF(statpanels)
 		list("Byond:", "(FPS:[world.fps]) (TickCount:[world.time/world.tick_lag]) (TickDrift:[round(Master.tickdrift,1)]([round((Master.tickdrift/(world.time/world.tick_lag))*100,0.1)]%)) (Internal Tick Usage: [round(MAPTICK_LAST_INTERNAL_TICK_USAGE,0.1)]%)"),
 		list("Master Controller:", Master.stat_entry(), "\ref[Master]"),
 		list("Failsafe Controller:", Failsafe.stat_entry(), "\ref[Failsafe]"),
-		list("Processing:", processScheduler.stat_entry(), "\ref[processScheduler]"),
 		list("","")
 	)
 	for(var/ss in Master.subsystems)

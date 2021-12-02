@@ -5,15 +5,10 @@
 	var/registered_name = null
 
 /obj/structure/closet/secure_closet/personal/WillContain()
-	var/list/results = list(
-		new /datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack, /obj/item/weapon/storage/backpack/satchel/grey)),
-		/obj/item/device/radio/headset
+	return list(
+		/obj/item/device/radio/headset,
+		/obj/item/weapon/rig/civilian
 	)
-
-	//Civilian rigs are common equipment and can be found in personal closets
-	if (prob(10))
-		results.Add(/obj/item/weapon/rig/civilian)
-	return results
 
 /obj/structure/closet/secure_closet/personal/empty/WillContain()
 	return
