@@ -44,6 +44,10 @@ SUBSYSTEM_DEF(ticker)
 	var/totalPlayers = 0					//used for pregame stats on statpanel
 	var/totalPlayersReady = 0				//used for pregame stats on statpanel
 
+	var/bypass_gamemode_vote = 0    //Intended for use with admin tools. Will avoid voting and ignore any results.
+	var/list/bad_modes = list()     //Holds modes we tried to start and failed to.
+	var/revotes_allowed = 0         //How many times a game mode revote might be attempted before giving up.
+
 /datum/controller/subsystem/ticker/Initialize(timeofday)
 	load_mode()
 
@@ -114,6 +118,7 @@ SUBSYSTEM_DEF(ticker)
 				Master.SetRunLevel(RUNLEVEL_POSTGAME)
 
 /datum/controller/subsystem/ticker/proc/setup()
+	to_chat(world, "Ticker setup 1 Mastermode [GLOB.master_mode]")
 	to_chat(world, SPAN_BOLDNOTICE("<b>Enjoy the game!</b>"))
 	SEND_SOUND(world, sound(GLOB.using_map.welcome_sound))
 	var/init_start = world.timeofday
@@ -131,12 +136,19 @@ SUBSYSTEM_DEF(ticker)
 	else
 		mode = config.pick_mode(GLOB.master_mode)
 
+
+
+	to_chat(world, "Ticker setup 2 mode [mode]")
+	
+//--------------------------------------
 	CHECK_TICK
 	if(!mode.can_start(bypass_checks))
 		to_chat(world, "Reverting to pre-game lobby.")
 		QDEL_NULL(mode)
 		job_master.ResetOccupations()
 		return FALSE
+
+	to_chat(world, "Ticker setup 3 canstart [mode]")
 
 	CHECK_TICK
 	if(!mode.pre_setup() && !bypass_checks)
@@ -145,12 +157,16 @@ SUBSYSTEM_DEF(ticker)
 		job_master.ResetOccupations()
 		return FALSE
 
+	to_chat(world, "Ticker setup 4 presetup [mode]")
+
 	CHECK_TICK
 	if(!mode.setup() && !bypass_checks)
 		QDEL_NULL(mode)
 		to_chat(world, "<b>Error in setup for [GLOB.master_mode].</b> Reverting to pre-game lobby.")
 		job_master.ResetOccupations()
 		return FALSE
+
+	to_chat(world, "Ticker setup 5 setup [mode] ")
 
 	callHook("roundstart")
 
@@ -182,6 +198,7 @@ SUBSYSTEM_DEF(ticker)
 			C.enable_debug_verbs(TRUE)
 
 	CHECK_TICK
+	to_chat(world, "Ticker setup 6 [mode] ")
 	for(var/I in round_start_events)
 		var/datum/callback/cb = I
 		cb.InvokeAsync()
@@ -195,11 +212,13 @@ SUBSYSTEM_DEF(ticker)
 	Master.SetRunLevel(RUNLEVEL_GAME)
 
 	CHECK_TICK
+	to_chat(world, "Ticker setup 7")
 	PostSetup()
-
+	to_chat(world, "Ticker setup 8")
 	if(CONFIG_GET(flag/sql_enabled))
 		statistic_cycle() // Polls population totals regularly and stores them in an SQL DB -- TLE
 
+	to_chat(world, "Ticker setup 9")
 	return TRUE
 
 
@@ -527,3 +546,87 @@ SUBSYSTEM_DEF(ticker)
 	to_chat_immediate(world, "<h3>[SPAN_BOLDNOTICE("Rebooting...")]</h3>")
 
 	world.Reboot(TRUE)
+
+
+/datum/controller/subsystem/ticker/proc/choose_gamemode()
+	to_chat(world, "Choose gamemode 1")
+	. = (revotes_allowed && !bypass_gamemode_vote) ? CHOOSE_GAMEMODE_REVOTE : CHOOSE_GAMEMODE_RESTART
+
+	to_chat(world, "Choose gamemode 2 [.]")
+	var/mode_to_try = GLOB.master_mode //This is the config tag
+	var/datum/game_mode/mode_datum
+
+	to_chat(world, "Choose gamemode 3 [mode_to_try]")
+	//Decide on the mode to try.
+	if(!bypass_gamemode_vote && gamemode_vote_results)
+		to_chat(world, "Choose gamemode 4 [dump_list(gamemode_vote_results)] badmodes [dump_list(bad_modes)]")
+		gamemode_vote_results -= bad_modes
+		if(length(gamemode_vote_results))
+			
+			mode_to_try = gamemode_vote_results[1]
+			to_chat(world, "Choose gamemode 5 [mode_to_try]")
+			. = CHOOSE_GAMEMODE_RETRY //Worth it to try again at least once.
+		else
+			mode_to_try = "extended"
+
+	if(!mode_to_try)
+		log_debug("Could not find a valid game mode from config or vote results.")
+		return
+	if(mode_to_try in bad_modes)
+		log_debug("Could not start game mode [mode_to_try] - Mode is listed in bad_modes.")
+		return
+
+	to_chat(world, "Choose gamemode 6")
+	//Find the relevant datum, resolving secret in the process.
+	var/list/base_runnable_modes = config.get_runnable_modes() //format: list(config_tag = weight)
+	if((mode_to_try=="random") || (mode_to_try=="secret"))
+		var/list/runnable_modes = base_runnable_modes - bad_modes
+		if(secret_force_mode != "secret") // Config option to force secret to be a specific mode.
+			mode_datum = config.pick_mode(secret_force_mode)
+		else if(!length(runnable_modes))  // Indicates major issues; will be handled on return.
+			bad_modes += mode_to_try
+			log_debug("Could not start game mode [mode_to_try] - No runnable modes available to start, or all options listed under bad modes.")
+			return
+		else
+			mode_datum = config.pick_mode(pickweight(runnable_modes))
+			if(length(runnable_modes) > 1) // More to pick if we fail; we won't tell anyone we failed unless we fail all possibilities, though.
+				. = CHOOSE_GAMEMODE_SILENT_REDO
+	else
+		
+		mode_datum = config.pick_mode(mode_to_try)
+		to_chat(world, "Choose gamemode 7 [mode_datum]")
+	if(!istype(mode_datum))
+		bad_modes += mode_to_try
+		log_debug("Could not find a valid game mode for [mode_to_try].")
+		return
+
+	//Deal with jobs and antags, check that we can actually run the mode.
+	//SSjobs.reset_occupations() // Clears all players' role assignments. Clean slate.
+	mode_datum.create_antagonists() // Init operation on the mode; sets up antag datums and such.
+	mode_datum.pre_setup() // Makes lists of viable candidates; performs candidate draft for job-override roles; stores the draft result both internally and on the draftee.
+	//SSjobs.divide_occupations(mode_datum) // Gives out jobs to everyone who was not selected to antag.
+
+	if(mode_datum.startRequirements())
+		mode_datum.fail_setup()
+		//SSjobs.reset_occupations()
+		bad_modes += mode_datum.config_tag
+		log_debug("Could not start game mode [mode_to_try] ([mode_datum.name]) - Failed to meet requirements.")
+		return
+
+	//Declare victory, make an announcement.
+	. = CHOOSE_GAMEMODE_SUCCESS
+	mode = mode_datum
+	GLOB.master_mode = mode_to_try
+	if(mode_to_try == "secret")
+		to_world("<B>The current game mode is Secret!</B>")
+		var/list/mode_names = list()
+		for (var/mode_tag in base_runnable_modes)
+			var/datum/game_mode/M = config.gamemode_cache[mode_tag]
+			if(M)
+				mode_names += M.name
+		if (config.secret_hide_possibilities)
+			message_admins("<B>Possibilities:</B> [english_list(mode_names)]")
+		else
+			to_world("<B>Possibilities:</B> [english_list(mode_names)]")
+	else
+		mode.announce()

@@ -13,15 +13,15 @@
 	var/time_remaining
 	var/status = VOTE_STATUS_PREVOTE
 
-	var/list/result                // The results; format is list(choice = votes).
-	var/result_length = 1         // How many choices to show in the result. Must be >= 1
+	var/list/result				// The results; format is list(choice = votes).
+	var/result_length = 3		 // How many choices to show in the result. Must be >= 1
 
-	var/list/votes = list()        // Format is list(ckey = list(a, b, ...)); a, b, ... are ordered by order of preference and are numbers, referring to the index in choices
+	var/list/votes = list()		// Format is list(ckey = list(a, b, ...)); a, b, ... are ordered by order of preference and are numbers, referring to the index in choices
 
 	var/win_x = 450
-	var/win_y = 740                // Vote window size.
+	var/win_y = 740				// Vote window size.
 
-	var/manual_allowed = 1         // Whether humans can start it.
+	var/manual_allowed = 1		 // Whether humans can start it.
 
 //Expected to be run immediately after creation; a false return means that the vote could not be run and the datum will be deleted.
 /datum/vote/proc/setup(mob/creator, automatic)
@@ -69,39 +69,74 @@
 		return length(GLOB.clients) - length(votes) //Number of non-voters (might not be active, though; should be revisited if the config option is used. This is legacy code.)
 
 /datum/vote/proc/tally_result()
+	to_chat(world, "Tallying Results")
 	handle_default_votes()
 
 	result = list()
 	var/list/remaining_choices = choices.Copy()
 	var/list/remaining_votes = votes.Copy()
-	while(length(result) < result_length)
+
+	var/list/runners_up = list()
+	while(length(remaining_choices))
+		to_chat(world, "Tallying Results loop [dump_list(remaining_choices)]")
+		sleep(1)
+		//to_chat(world, "Iteration [i]: Choices [dump_list(remaining_choices)]  Votes [dump_list(remaining_votes)]")
 		remaining_choices = shuffle(remaining_choices)
 		sortTim(remaining_choices, /proc/cmp_numeric_dsc, TRUE)
-		if(!length(remaining_votes) || !length(remaining_choices))  // we ran out of options or votes, you get what we have
-			result += remaining_choices.Copy(1, Clamp(result_length - length(result) + 1, 0, length(remaining_choices) + 1))
+		// we ran out of options or votes, you get what we have
+		if(!length(remaining_votes))  
+			to_chat(world, "Leftovers [dump_list(remaining_choices)]")
+			runners_up += remaining_choices.Copy()
 			break
 		else
-			// 50% majority or we don't have enough candidates to be picky, declare the winner and remove it from the possible candidates
-			if(remaining_choices[remaining_choices[1]] > length(remaining_votes) / 2 || length(remaining_choices) <= result_length - length(result))
+			//First of all, do we have more than two options remaining?
+			if (length(remaining_choices) < 2)
+				//If not, we'll just take the first one as the winner
 				var/winner = remaining_choices[1]
 				result[winner] = remaining_choices[remaining_choices[1]]
-				remove_candidate(remaining_choices, remaining_votes, winner)
-			else // no winner, remove the biggest loser and go again
-				var/loser = remaining_choices[length(remaining_choices)]
-				remove_candidate(remaining_choices, remaining_votes, loser)
+
+				if (length(remaining_choices) == 2)
+					//And the second as a runner up if theres any
+					var/runner =  remaining_choices[2]
+					runners_up[runner] = remaining_choices[runner]
+
+				//And we're outta here
+				break
+
+			//Okay we have at least three options, lets take the choice at the end away
+			var/runner =  remaining_choices[length(remaining_choices)]
+			runners_up[runner] = remaining_choices[runner]
+			remove_candidate(remaining_choices, remaining_votes, runner)
+	to_chat(world, "Tallying Results exitloop 1 [length(result)] [length(runners_up)]")
+	//End of the loop, lets sort those runners and append them
+	sortTim(runners_up, /proc/cmp_numeric_dsc, TRUE)
+
+	to_chat(world, "Tallying Results exitloop 2")
+	result += runners_up
+
+
+	to_chat(world, "Tallying Results exitloop 3")
+	//And lets trim the result list
+	result.Cut(min(result_length+1, length(result)))
+
+	to_chat(world, "Tallying Results exitloop 4")
+
+	to_chat(world, "Vote tallied [dump_list(result)]")
+
 
 // Remove candidate from choice_list and any votes for it from vote_list, transfering first choices to second
-/datum/vote/proc/remove_candidate(list/choice_list, list/vote_list, candidate)
+/datum/vote/proc/remove_candidate(list/choice_list, list/vote_list, candidate, var/transfer = TRUE)
 	var/candidate_index = list_find(choices, candidate) // use choices instead of choice_list because we need the original indexing
 	choice_list -= candidate
-	for(var/ckey in vote_list)
-		if(length(votes[ckey]) && vote_list[ckey][1] == candidate_index && length(vote_list[ckey]) > 1)
-			var/new_first_choice = choices[vote_list[ckey][2]]
-			choice_list[new_first_choice] += 1
-		vote_list[ckey] -= candidate_index
+	if (transfer)
+		for(var/ckey in vote_list)
+			if(length(votes[ckey]) && vote_list[ckey][1] == candidate_index && length(vote_list[ckey]) > 1)
+				var/new_first_choice = choices[vote_list[ckey][2]]
+				choice_list[new_first_choice] += 1
+			vote_list[ckey] -= candidate_index
 
-		if(!length(vote_list[ckey]))
-			vote_list -= ckey
+			if(!length(vote_list[ckey]))
+				vote_list -= ckey
 
 // Truthy return indicates that either no one votes or there was another error.
 /datum/vote/proc/report_result()
@@ -261,13 +296,21 @@
 			submit_vote(user, params["index"])
 
 
-/datum/vote/ui_data()
+/datum/vote/ui_data(var/mob/user)
 	var/list/data = list("mode" = template_mode)
-
+	var/index = 0
 	for(var/key in display_choices)
+		index++
+		var/priority = ""
+        //length(votes[user.ckey]) >= 2
+        //If this user has placed at least two votes, we'll show the priority of them
+		if (index in votes[user.ckey])
+			priority =  votes[user.ckey].Find(index)
+
 		data["choices"] += list(list(
 			"name" = key,	//The name is in display choices
-			"votes" = choices[display_choices[key]] || 0	//The number of votes is gotten from choices, using the datum in display choices
+			"votes" = choices[display_choices[key]] || 0,	//The number of votes is gotten from choices, using the datum in display choices
+			"priority"  =  priority 
 		))
 	//TODO: Add in data about multiple choices
 	return data

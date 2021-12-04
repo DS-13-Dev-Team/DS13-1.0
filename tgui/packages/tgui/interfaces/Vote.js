@@ -161,7 +161,6 @@ const ChoicesPanel = (props, context) => {
               <Box key={choice.id}>
                 <LabeledList.Item
                   label={choice.name.replace(/^\w/, (c) => c.toUpperCase())}
-                  textAlign="right"
                   buttons={
                     <Button
                       disabled={i === selected_choice - 1}
@@ -179,7 +178,11 @@ const ChoicesPanel = (props, context) => {
                       name="vote-yea"
                     />
                   )}
-                  {choice.votes} Votes
+                  <Stack nowrap>
+                  {choice.priority !== "" ? (<Box inline width="100%" mr="25px" >Priority: {choice.priority}</Box>) : ""}
+                  <Box>{choice.votes} Votes
+                  </Box>
+                  </Stack>
                 </LabeledList.Item>
                 <LabeledList.Divider />
               </Box>

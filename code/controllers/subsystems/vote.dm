@@ -99,7 +99,7 @@ SUBSYSTEM_DEF(vote)
 /datum/controller/subsystem/vote/ui_data(mob/user)
 	var/list/data
 	if (active_vote)
-		data = active_vote.ui_data()
+		data = active_vote.ui_data(user)
 	
 	else
 		//This UI data is for when no vote is currently ongoing
@@ -119,11 +119,6 @@ SUBSYSTEM_DEF(vote)
 	if(!!user.client?.holder)
 		data["voting"] = voting
 
-	/* This comes from the vote datum
-	
-	*/
-
-	to_chat(world, "Data: [dump_list(data)]")
 
 	return data
 

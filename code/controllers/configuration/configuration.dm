@@ -48,6 +48,8 @@
 	/// Automatically call a map vote at end of round and switch to the selected map
 	var/static/auto_map_vote = FALSE
 	var/static/allow_extra_antags = FALSE
+	/// Whether or not secret modes show list of possible round types
+	var/static/secret_hide_possibilities = FALSE
 
 /datum/controller/configuration/proc/admin_reload()
 	if(check_rights(R_ADMIN))
@@ -328,12 +330,27 @@ Example config:
 */
 
 /datum/controller/configuration/proc/pick_mode(mode_name)
+	to_chat(world, "pick mode [mode_name]")
 	for(var/T in gamemode_cache)
+	
 		var/datum/game_mode/M = T
 		var/ct = initial(M.config_tag)
+		to_chat(world, "Testing [T]  [ct]")
 		if(ct && ct == mode_name)
+			to_chat(world, "Got a match!")
 			return new T
+	to_chat(world, "No match!")
 	return new /datum/game_mode/extended()
+
+
+/datum/controller/configuration/proc/get_runnable_modes()
+	var/list/result = list()
+	for (var/tag in gamemode_cache)
+		var/datum/game_mode/M = gamemode_cache[tag]
+		if (!M.startRequirements())
+			result[tag] = 1//probabilities[tag]
+	return result
+
 
 //Message admins when you can.
 /datum/controller/configuration/proc/DelayedMessageAdmins(text)
