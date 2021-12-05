@@ -52,9 +52,8 @@ GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 
 	//Auto End condition stuff. To make the round auto end when necromorphs kill everyone
 
-	//For it to trigger, there needs to have been at least this many crewmembers in total over the round
-	//This includes the living, and the dead
-	var/minimum_alive_percentage = 0.1 //0.1 = 10%
+	//For it to trigger, there needs to be only this percentage of humans remaining
+	var/minimum_alive_percentage = 0.2 //0.2 = 20% TODO: Uncomment 0.2
 
 	//When did we last call a vote to restart
 	var/last_restart_vote = 0
@@ -144,19 +143,21 @@ Non-critical characters like any ghost-roles you may wish to add, or even antags
 
 //Marker gamemode can end when necros kill most of the crew
 /datum/game_mode/marker/check_finished()
-
+	to_chat(world, "Checking finished")
 	if(marker_active)	//Marker must be active
 		var/list/crewlist = get_crew_totals()
 		var/valid_historic_crew = crewlist["total"] - crewlist[STATUS_REMOVED]	//We don't count those who left the round
-
+		to_chat(world, "Marker active, historic crew [valid_historic_crew]")
 		//Lets see how many are left alive
 		var/remaining = valid_historic_crew - (crewlist[STATUS_DEAD] + crewlist[STATUS_ESCAPED])
 		if (remaining <= 0)
 			//No humans left alive? Immediate end
+			to_chat(world, SPAN_EXECUTION("All the humans are dead, Necromorphs win!"))
 			return TRUE
+		
 
 		var/remaining_percent = remaining / valid_historic_crew
-
+		to_chat(world, "Remaining crew/percent [remaining]/[remaining_percent], min alive [minimum_alive_percentage]")
 
 		if (remaining_percent <= minimum_alive_percentage)	//We need to have had a minimum total crewcount
 			/*
@@ -169,6 +170,10 @@ Non-critical characters like any ghost-roles you may wish to add, or even antags
 
 
 /datum/game_mode/marker/proc/handle_restart_vote()
+	to_chat(world, " restart vote 1 [world.time - last_restart_vote]	/	[restart_vote_interval]")
+
 	if (world.time - last_restart_vote >= restart_vote_interval)
-		SSvote.initiate_vote("restart", null)
+		to_chat(world, " restart vote 2 doing vote")
+
+		SSvote.initiate_vote(/datum/vote/extinction, automatic = TRUE)
 		last_restart_vote = world.time

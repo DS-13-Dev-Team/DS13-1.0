@@ -586,6 +586,7 @@
 #include "code\datums\vote\gamemode.dm"
 #include "code\datums\vote\map.dm"
 #include "code\datums\vote\restart.dm"
+#include "code\datums\vote\round_end.dm"
 #include "code\datums\vote\transfer.dm"
 #include "code\datums\vote\vote.dm"
 #include "code\datums\wires\airlock.dm"

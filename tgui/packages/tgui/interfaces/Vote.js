@@ -27,6 +27,9 @@ export const Vote = (props, context) => {
           <Section title="Start Voting">
             <StartVoteOptions />
           </Section>
+		  <Section title="Description">
+			<p>{question}</p>
+          </Section>
           <ChoicesPanel />
           <TimePanel />
         </Stack>

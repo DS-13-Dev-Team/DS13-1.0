@@ -2,7 +2,7 @@
 	var/name = "default vote"
 	var/template_mode	=	"custom"//Used for TGUI Template, this tells it which of several presets to use in laying out the window
 	var/initiator
-	var/question
+	var/question = "Description"
 	var/list/choices = list()
 
 	var/list/display_choices = list() // What's actually shown to the users.
@@ -297,7 +297,9 @@
 
 
 /datum/vote/ui_data(var/mob/user)
-	var/list/data = list("mode" = template_mode)
+	var/list/data = list("mode" = template_mode,
+	"question" = question, 
+	"time_remaining" = time_remaining)
 	var/index = 0
 	for(var/key in display_choices)
 		index++
@@ -310,7 +312,9 @@
 		data["choices"] += list(list(
 			"name" = key,	//The name is in display choices
 			"votes" = choices[display_choices[key]] || 0,	//The number of votes is gotten from choices, using the datum in display choices
+			
 			"priority"  =  priority 
+			
 		))
 	//TODO: Add in data about multiple choices
 	return data

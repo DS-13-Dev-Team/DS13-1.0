@@ -4,6 +4,7 @@
 	win_x = 500
 	win_y = 1100
 	result_length = 3
+	question = "Place your vote for the next gamemode."
 
 /datum/vote/gamemode/can_run(mob/creator, automatic)
 	if(!automatic && (!is_admin(creator)))
