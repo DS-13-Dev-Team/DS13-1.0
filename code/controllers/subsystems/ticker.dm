@@ -118,7 +118,6 @@ SUBSYSTEM_DEF(ticker)
 				Master.SetRunLevel(RUNLEVEL_POSTGAME)
 
 /datum/controller/subsystem/ticker/proc/setup()
-	to_chat(world, "Ticker setup 1 Mastermode [GLOB.master_mode]")
 	to_chat(world, SPAN_BOLDNOTICE("<b>Enjoy the game!</b>"))
 	SEND_SOUND(world, sound(GLOB.using_map.welcome_sound))
 	var/init_start = world.timeofday
@@ -138,7 +137,6 @@ SUBSYSTEM_DEF(ticker)
 
 
 
-	to_chat(world, "Ticker setup 2 mode [mode]")
 	
 //--------------------------------------
 	CHECK_TICK
@@ -148,7 +146,6 @@ SUBSYSTEM_DEF(ticker)
 		job_master.ResetOccupations()
 		return FALSE
 
-	to_chat(world, "Ticker setup 3 canstart [mode]")
 
 	CHECK_TICK
 	if(!mode.pre_setup() && !bypass_checks)
@@ -157,8 +154,6 @@ SUBSYSTEM_DEF(ticker)
 		job_master.ResetOccupations()
 		return FALSE
 
-	to_chat(world, "Ticker setup 4 presetup [mode]")
-
 	CHECK_TICK
 	if(!mode.setup() && !bypass_checks)
 		QDEL_NULL(mode)
@@ -166,7 +161,6 @@ SUBSYSTEM_DEF(ticker)
 		job_master.ResetOccupations()
 		return FALSE
 
-	to_chat(world, "Ticker setup 5 setup [mode] ")
 
 	callHook("roundstart")
 
@@ -198,7 +192,6 @@ SUBSYSTEM_DEF(ticker)
 			C.enable_debug_verbs(TRUE)
 
 	CHECK_TICK
-	to_chat(world, "Ticker setup 6 [mode] ")
 	for(var/I in round_start_events)
 		var/datum/callback/cb = I
 		cb.InvokeAsync()
@@ -212,13 +205,10 @@ SUBSYSTEM_DEF(ticker)
 	Master.SetRunLevel(RUNLEVEL_GAME)
 
 	CHECK_TICK
-	to_chat(world, "Ticker setup 7")
 	PostSetup()
-	to_chat(world, "Ticker setup 8")
 	if(CONFIG_GET(flag/sql_enabled))
 		statistic_cycle() // Polls population totals regularly and stores them in an SQL DB -- TLE
 
-	to_chat(world, "Ticker setup 9")
 	return TRUE
 
 
@@ -549,22 +539,17 @@ SUBSYSTEM_DEF(ticker)
 
 
 /datum/controller/subsystem/ticker/proc/choose_gamemode()
-	to_chat(world, "Choose gamemode 1")
 	. = (revotes_allowed && !bypass_gamemode_vote) ? CHOOSE_GAMEMODE_REVOTE : CHOOSE_GAMEMODE_RESTART
 
-	to_chat(world, "Choose gamemode 2 [.]")
 	var/mode_to_try = GLOB.master_mode //This is the config tag
 	var/datum/game_mode/mode_datum
 
-	to_chat(world, "Choose gamemode 3 [mode_to_try]")
 	//Decide on the mode to try.
 	if(!bypass_gamemode_vote && gamemode_vote_results)
-		to_chat(world, "Choose gamemode 4 [dump_list(gamemode_vote_results)] badmodes [dump_list(bad_modes)]")
 		gamemode_vote_results -= bad_modes
 		if(length(gamemode_vote_results))
 			
 			mode_to_try = gamemode_vote_results[1]
-			to_chat(world, "Choose gamemode 5 [mode_to_try]")
 			. = CHOOSE_GAMEMODE_RETRY //Worth it to try again at least once.
 		else
 			mode_to_try = "extended"
@@ -576,7 +561,6 @@ SUBSYSTEM_DEF(ticker)
 		log_debug("Could not start game mode [mode_to_try] - Mode is listed in bad_modes.")
 		return
 
-	to_chat(world, "Choose gamemode 6")
 	//Find the relevant datum, resolving secret in the process.
 	var/list/base_runnable_modes = config.get_runnable_modes() //format: list(config_tag = weight)
 	if((mode_to_try=="random") || (mode_to_try=="secret"))
@@ -594,21 +578,17 @@ SUBSYSTEM_DEF(ticker)
 	else
 		
 		mode_datum = config.pick_mode(mode_to_try)
-		to_chat(world, "Choose gamemode 7 [mode_datum]")
 	if(!istype(mode_datum))
 		bad_modes += mode_to_try
 		log_debug("Could not find a valid game mode for [mode_to_try].")
 		return
 
 	//Deal with jobs and antags, check that we can actually run the mode.
-	//SSjobs.reset_occupations() // Clears all players' role assignments. Clean slate.
 	mode_datum.create_antagonists() // Init operation on the mode; sets up antag datums and such.
 	mode_datum.pre_setup() // Makes lists of viable candidates; performs candidate draft for job-override roles; stores the draft result both internally and on the draftee.
-	//SSjobs.divide_occupations(mode_datum) // Gives out jobs to everyone who was not selected to antag.
-
+	
 	if(mode_datum.startRequirements())
 		mode_datum.fail_setup()
-		//SSjobs.reset_occupations()
 		bad_modes += mode_datum.config_tag
 		log_debug("Could not start game mode [mode_to_try] ([mode_datum.name]) - Failed to meet requirements.")
 		return

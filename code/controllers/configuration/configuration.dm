@@ -330,16 +330,12 @@ Example config:
 */
 
 /datum/controller/configuration/proc/pick_mode(mode_name)
-	to_chat(world, "pick mode [mode_name]")
 	for(var/T in gamemode_cache)
 	
 		var/datum/game_mode/M = T
 		var/ct = initial(M.config_tag)
-		to_chat(world, "Testing [T]  [ct]")
 		if(ct && ct == mode_name)
-			to_chat(world, "Got a match!")
 			return new T
-	to_chat(world, "No match!")
 	return new /datum/game_mode/extended()
 
 

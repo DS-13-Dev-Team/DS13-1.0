@@ -25,17 +25,13 @@
 
 //Expected to be run immediately after creation; a false return means that the vote could not be run and the datum will be deleted.
 /datum/vote/proc/setup(mob/creator, automatic)
-	to_chat(world, "Setup vote 1")
 	if(!can_run(creator, automatic))
 		qdel(src)
 		return FALSE
-	to_chat(world, "Setup vote 2")
 	setup_vote(creator, automatic)
-	to_chat(world, "Setup vote 3")
 	if(!can_run(creator, automatic))
 		qdel(src)
 		return FALSE
-	to_chat(world, "Setup vote 4")
 	start_vote()
 	return TRUE
 
@@ -69,7 +65,6 @@
 		return length(GLOB.clients) - length(votes) //Number of non-voters (might not be active, though; should be revisited if the config option is used. This is legacy code.)
 
 /datum/vote/proc/tally_result()
-	to_chat(world, "Tallying Results")
 	handle_default_votes()
 
 	result = list()
@@ -78,14 +73,11 @@
 
 	var/list/runners_up = list()
 	while(length(remaining_choices))
-		to_chat(world, "Tallying Results loop [dump_list(remaining_choices)]")
 		sleep(1)
-		//to_chat(world, "Iteration [i]: Choices [dump_list(remaining_choices)]  Votes [dump_list(remaining_votes)]")
 		remaining_choices = shuffle(remaining_choices)
 		sortTim(remaining_choices, /proc/cmp_numeric_dsc, TRUE)
 		// we ran out of options or votes, you get what we have
-		if(!length(remaining_votes))  
-			to_chat(world, "Leftovers [dump_list(remaining_choices)]")
+		if(!length(remaining_votes))
 			runners_up += remaining_choices.Copy()
 			break
 		else
@@ -107,21 +99,17 @@
 			var/runner =  remaining_choices[length(remaining_choices)]
 			runners_up[runner] = remaining_choices[runner]
 			remove_candidate(remaining_choices, remaining_votes, runner)
-	to_chat(world, "Tallying Results exitloop 1 [length(result)] [length(runners_up)]")
+	
 	//End of the loop, lets sort those runners and append them
 	sortTim(runners_up, /proc/cmp_numeric_dsc, TRUE)
 
-	to_chat(world, "Tallying Results exitloop 2")
 	result += runners_up
 
 
-	to_chat(world, "Tallying Results exitloop 3")
 	//And lets trim the result list
 	result.Cut(min(result_length+1, length(result)))
 
-	to_chat(world, "Tallying Results exitloop 4")
 
-	to_chat(world, "Vote tallied [dump_list(result)]")
 
 
 // Remove candidate from choice_list and any votes for it from vote_list, transfering first choices to second
@@ -170,7 +158,6 @@
 	This takes a mob and a numerical index of which option they're voting for
 */
 /datum/vote/proc/submit_vote(var/mob/voter, var/vote)
-	to_chat(world, "Vote submitting [vote]")
 	if(mob_not_participating(voter))
 		return
 
@@ -195,22 +182,7 @@
 			choices[choice] += 1
 
 
-		/*
-		if(!mode)
-			return FALSE
-		if(CONFIG_GET(flag/no_dead_vote) && usr.stat == DEAD && !usr.client.holder)
-			return FALSE
-		if(!vote || vote < 1 || vote > choices.len)
-			return FALSE
-		// If user has already voted, remove their specific vote
-		if(usr.ckey in voted)
-			choices[choices[choice_by_ckey[usr.ckey]]]--
-		else
-			voted += usr.ckey
-		choice_by_ckey[usr.ckey] = vote
-		choices[choices[vote]]++
-		return vote
-		*/
+
 
 // Checks if the mob is participating in the round sufficiently to vote, as per config settings.
 /datum/vote/proc/mob_not_participating(mob/voter)
@@ -284,8 +256,6 @@
 
 /datum/vote/proc/handle_tgui(action, params, admin)
 	var/mob/user = usr
-	to_chat(world, "Specific Vote: Handle TGUI: [action], [dump_list(params)]")
-
 	switch(action)
 		if("cancel")
 			if(admin)
@@ -304,7 +274,6 @@
 	for(var/key in display_choices)
 		index++
 		var/priority = ""
-        //length(votes[user.ckey]) >= 2
         //If this user has placed at least two votes, we'll show the priority of them
 		if (index in votes[user.ckey])
 			priority =  votes[user.ckey].Find(index)
@@ -316,7 +285,6 @@
 			"priority"  =  priority 
 			
 		))
-	//TODO: Add in data about multiple choices
 	return data
 
 /datum/controller/subsystem/vote/ui_state()
