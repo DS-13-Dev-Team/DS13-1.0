@@ -19,8 +19,7 @@ SUBSYSTEM_DEF(vote)
 
 /datum/controller/subsystem/vote/Initialize()
 	vote_prototypes = list()
-	for(var/vote_type in subtypesof(/datum/vote))
-		var/datum/vote/fake_vote = vote_type
+	for(var/datum/vote/fake_vote as anything in subtypesof(/datum/vote))
 		if(initial(fake_vote.manual_allowed))
 			vote_prototypes[vote_type] = new vote_type
 	return ..()
