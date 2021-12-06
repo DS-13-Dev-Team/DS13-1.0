@@ -140,12 +140,8 @@ A = null;
 /// Common use
 #define legacy_chat(target, message)          to_target(target, message)
 #define to_world(message)                     to_chat(world, message)
-#define to_world_log(message)                 to_target(world.log, message)
 #define sound_to(target, sound)               to_target(target, sound)
 #define image_to(target, image)               to_target(target, image)
-#define show_browser(target, content, title)  to_target(target, browse(content, title))
-#define close_browser(target, title)          to_target(target, browse(null, title))
-#define send_rsc(target, content, title)      to_target(target, browse_rsc(content, title))
 #define send_link(target, url)                to_target(target, link(url))
 #define send_output(target, msg, control)     to_target(target, output(msg, control))
 #define to_file(handle, value)                to_target(handle, value)

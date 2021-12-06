@@ -25,7 +25,7 @@
 */
 /proc/get_crew_totals()
 	var/list/crewlist = list()
-	for (var/datum/mind/M in GLOB.all_crew)
+	for (var/datum/mind/M as anything in GLOB.all_crew)
 		LAZYAPLUS(crewlist, "total", 1)
 		var/status = M.get_round_status()
 		if (status)

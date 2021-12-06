@@ -126,7 +126,6 @@
 //Return values from gamemode check_finished
 #define GAME_NOT_FINISHED	0
 #define GAME_FINISHED		1
-#define GAME_MAYBE_FINISHED	2
 
 
 //Voting-related
