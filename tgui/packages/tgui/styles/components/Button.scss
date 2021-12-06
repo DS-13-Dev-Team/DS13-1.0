@@ -127,10 +127,10 @@ $bg-map: colors.$bg-map !default;
   color: $color-transparent-text;
 }
 
-.Button--disabled {
+.Button--color--disabled {
   background-color: $color-disabled !important;
 }
 
-.Button--selected {
+.Button--color--selected {
   @include button-color($color-selected);
 }

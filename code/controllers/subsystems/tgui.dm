@@ -180,13 +180,32 @@ SUBSYSTEM_DEF(tgui)
 /**
  * public
  *
+ * Get a open UIs given a src_object.
+ *
+ * required src_object datum The object/datum which owns the UI.
+ *
+ * return list(datum/tgui, datum/tgui) The found UIs.
+ */
+/datum/controller/subsystem/tgui/proc/get_open_uis(datum/src_object)
+	var/key = "[REF(src_object)]"
+	. = list()
+	// No UIs opened for this src_object
+	if(isnull(open_uis_by_src[key]) || !istype(open_uis_by_src[key], /list))
+		return .
+	for(var/datum/tgui/ui as anything in open_uis_by_src[key])
+		. += ui
+
+/**
+ * public
+ *
  * Update all UIs attached to src_object.
  *
  * required src_object datum The object/datum which owns the UIs.
+ * optional update_static_data bool Should UI update static data.
  *
  * return int The number of UIs updated.
  */
-/datum/controller/subsystem/tgui/proc/update_uis(datum/src_object)
+/datum/controller/subsystem/tgui/proc/update_uis(datum/src_object, update_static_data = FALSE)
 	var/count = 0
 	var/key = "[REF(src_object)]"
 	// No UIs opened for this src_object
@@ -195,7 +214,10 @@ SUBSYSTEM_DEF(tgui)
 	for(var/datum/tgui/ui in open_uis_by_src[key])
 		// Check if UI is valid.
 		if(ui?.src_object && ui.user && ui.src_object.ui_host(ui.user))
-			ui.Process(wait * 0.1, force = 1)
+			if(!update_static_data)
+				ui.Process(wait * 0.1, force = 1)
+			else
+				ui.send_full_update()
 			count++
 	return count
 
