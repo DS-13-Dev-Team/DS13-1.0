@@ -584,7 +584,6 @@ SUBSYSTEM_DEF(ticker)
 		return
 
 	//Deal with jobs and antags, check that we can actually run the mode.
-	mode_datum.create_antagonists() // Init operation on the mode; sets up antag datums and such.
 	mode_datum.pre_setup() // Makes lists of viable candidates; performs candidate draft for job-override roles; stores the draft result both internally and on the draftee.
 	
 	if(mode_datum.startRequirements())
