@@ -79,8 +79,8 @@
 #define ADD_SORTED(list, A, cmp_proc) if(!list.len) {list.Add(A)} else {list.Insert(FindElementIndex(A, list, cmp_proc), A)}
 
 //Currently used in SDQL2 stuff
-#define send_output(target, msg, control) target << output(msg, control)
-#define send_link(target, url) target << link(url)
+#define send_link(target, url)                to_target(target, link(url))
+#define send_output(target, msg, control)     to_target(target, output(msg, control))
 
 // Spawns multiple objects of the same type
 #define cast_new(type, num, args...) if((num) == 1) { new type(args) } else { for(var/i=0;i<(num),i++) { new type(args) } }
@@ -142,8 +142,7 @@ A = null;
 #define to_world(message)                     to_chat(world, message)
 #define sound_to(target, sound)               to_target(target, sound)
 #define image_to(target, image)               to_target(target, image)
-#define send_link(target, url)                to_target(target, link(url))
-#define send_output(target, msg, control)     to_target(target, output(msg, control))
+
 #define to_file(handle, value)                to_target(handle, value)
 #define to_save(handle, value)                to_target(handle, value) //semantics
 #define from_save(handle, target_var)         from_target(handle, target_var)
