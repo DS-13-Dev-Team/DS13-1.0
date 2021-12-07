@@ -4,7 +4,7 @@ import { Window } from '../layouts';
 
 export const Vote = (props, context) => {
   const { data } = useBackend(context);
-  const { mode, question, lower_admin } = data;
+  const { mode, question, admin } = data;
 
   /**
    * Adds the voting type to title if there is an ongoing vote.
@@ -18,7 +18,7 @@ export const Vote = (props, context) => {
     <Window resizable title={windowTitle} width={400} height={500}>
       <Window.Content>
         <Stack fill vertical>
-          {!!lower_admin && (
+          {!!admin && (
             <Section title="Admin Options">
               <VoteOptions />
               <VotersList />
@@ -205,17 +205,16 @@ const ChoicesPanel = (props, context) => {
  */
 const TimePanel = (props, context) => {
   const { act, data } = useBackend(context);
-  const { lower_admin, time_remaining } = data;
+  const { admin, time_remaining } = data;
 
   return (
     <Stack.Item mt={1}>
       <Section>
         <Stack justify="space-between">
           <Box fontSize={1.5}>Time Remaining: {time_remaining || 0}s</Box>
-          {!!lower_admin && (
+          {!!admin && (
             <Button
               color="red"
-              disabled={!lower_admin}
               onClick={() => act('cancel')}>
               Cancel Vote
             </Button>

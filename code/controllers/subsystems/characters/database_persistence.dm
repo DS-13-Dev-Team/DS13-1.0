@@ -124,7 +124,7 @@ SUBSYSTEM_DEF(database)
 		//In the case that they escaped, we don't take any of their credits.
 		//So here, we're only applying a fee to held credits if they lived to the end of the round, but did not escape the ship.
 			//This includes going afk/cryo/hiding out on aegis
-		if (status == STATUS_ACTIVE)
+		if (status == CHARACTER_STATUS_ACTIVE)
 			total_fees += carried * FEE_NEUTRAL
 			carried *= 1 - FEE_NEUTRAL
 

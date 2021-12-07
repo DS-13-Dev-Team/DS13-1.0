@@ -88,22 +88,17 @@ SUBSYSTEM_DEF(vote)
 
 
 /datum/controller/subsystem/vote/ui_data(mob/user)
-	var/list/data
+	var/list/data = list("admin" = check_rights(R_ADMIN, FALSE, user.client),
+			"allow_vote_mode" = CONFIG_GET(flag/allow_vote_mode),
+			"allow_vote_restart" = CONFIG_GET(flag/allow_vote_restart),
+			"mode" = "custom")
 	if (active_vote)
-		data = active_vote.ui_data(user)
+		data += active_vote.ui_data(user)
 	
 	else
 		//This UI data is for when no vote is currently ongoing
-		data = list(
-			"allow_vote_mode" = CONFIG_GET(flag/allow_vote_mode),
-			"allow_vote_restart" = CONFIG_GET(flag/allow_vote_restart),
-			"lower_admin" = !!user.client?.holder,
-			"mode" = "custom",
+		data += list(
 			"choices" = list(),
-			//"question" = question,
-			//"selected_choice" = choice_by_ckey[user.client?.ckey],
-			//"time_remaining" = time_remaining,
-			"admin" = check_rights(R_ADMIN, FALSE, user.client),
 			"voting" = list(),
 		)
 

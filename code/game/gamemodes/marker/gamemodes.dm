@@ -145,10 +145,10 @@ Non-critical characters like any ghost-roles you may wish to add, or even antags
 /datum/game_mode/marker/check_finished()
 	if(marker_active)	//Marker must be active
 		var/list/crewlist = get_crew_totals()
-		var/valid_historic_crew = crewlist["total"] - crewlist[STATUS_REMOVED]	//We don't count those who left the round
+		var/valid_historic_crew = crewlist["total"] - crewlist[CHARACTER_STATUS_REMOVED]	//We don't count those who left the round
 		
 		//Lets see how many are left alive
-		var/remaining = valid_historic_crew - (crewlist[STATUS_DEAD] + crewlist[STATUS_ESCAPED])
+		var/remaining = valid_historic_crew - (crewlist[CHARACTER_STATUS_DEAD] + crewlist[CHARACTER_STATUS_ESCAPED])
 		if (remaining <= 0)
 			//No humans left alive? Immediate end
 			return TRUE

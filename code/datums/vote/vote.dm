@@ -276,7 +276,8 @@
 		var/priority = ""
         //If this user has placed at least two votes, we'll show the priority of them
 		if (index in votes[user.ckey])
-			priority =  votes[user.ckey].Find(index)
+			var/list/L = votes[user.ckey]
+			priority =  L.Find(index)
 
 		data["choices"] += list(list(
 			"name" = key,	//The name is in display choices

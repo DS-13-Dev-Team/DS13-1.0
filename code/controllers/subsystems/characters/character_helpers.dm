@@ -173,7 +173,7 @@
 
 	//Force living status on spawning.
 	//This accounts for situations where someone is killed by griefing and admins let them respawn to fix it
-	update_lastround_credits(M, STATUS_ACTIVE)
+	update_lastround_credits(M, CHARACTER_STATUS_ACTIVE)
 
 
 /*
@@ -223,7 +223,7 @@
 
 	//Spawn off to let the stack finish executing so they get properly marked as dead
 	spawn(10)
-		update_lastround_credits(M, STATUS_DEAD)
+		update_lastround_credits(M, CHARACTER_STATUS_DEAD)
 
 
 

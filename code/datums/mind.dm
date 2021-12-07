@@ -686,24 +686,24 @@
 /datum/mind/proc/get_round_status()
 
 	if (removed)
-		return STATUS_REMOVED
+		return CHARACTER_STATUS_REMOVED
 
 	//If you've been marked as escaped, that status is permanant, even if you die after
 	if (escaped)
-		return STATUS_ESCAPED
+		return CHARACTER_STATUS_ESCAPED
 
 	//But if you haven't escaped yet and you're now dead, then you're dead forever and cant escape
 	if (!current || current.stat == DEAD || isghostmind(src))
-		return STATUS_DEAD
+		return CHARACTER_STATUS_DEAD
 
 	if (current.has_escaped())
 		escaped = TRUE
-		return STATUS_ESCAPED
+		return CHARACTER_STATUS_ESCAPED
 
 
 
 
-	return STATUS_ACTIVE
+	return CHARACTER_STATUS_ACTIVE
 
 
 
