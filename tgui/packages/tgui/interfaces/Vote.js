@@ -28,7 +28,7 @@ export const Vote = (props, context) => {
             <StartVoteOptions />
           </Section>
           <Section title="Description">
-            <p>{question}</p>
+            {question}
           </Section>
           <ChoicesPanel />
           <TimePanel />
