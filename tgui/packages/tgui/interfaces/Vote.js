@@ -27,8 +27,8 @@ export const Vote = (props, context) => {
           <Section title="Start Voting">
             <StartVoteOptions />
           </Section>
-		  <Section title="Description">
-			<p>{question}</p>
+          <Section title="Description">
+            <p>{question}</p>
           </Section>
           <ChoicesPanel />
           <TimePanel />
@@ -182,9 +182,9 @@ const ChoicesPanel = (props, context) => {
                     />
                   )}
                   <Stack nowrap>
-                  {choice.priority !== "" ? (<Box inline width="100%" mr="25px" >Priority: {choice.priority}</Box>) : ""}
-                  <Box>{choice.votes} Votes
-                  </Box>
+                    {choice.priority !== "" ? (<Box inline width="100%" mr="25px" >Priority: {choice.priority}</Box>) : ""}
+                    <Box>{choice.votes} Votes
+                    </Box>
                   </Stack>
                 </LabeledList.Item>
                 <LabeledList.Divider />
