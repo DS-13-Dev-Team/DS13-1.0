@@ -149,7 +149,7 @@
 
 	if (!length(callbacks))
 		listeners -= listener
-	if (!length(listener))
+	if (!length(listeners))
 		event_sources -= event_source
 	return TRUE
 

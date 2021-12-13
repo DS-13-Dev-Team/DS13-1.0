@@ -77,8 +77,7 @@
 		var/turf/simulated/floor/T = get_turf(src)
 		T.ex_act(2.0, src)
 
-	// prob() won't work here
-	if(rand(1, 100) < dig_chance)
+	if(!prob(dig_chance))
 		return
 
 	//Dig out the tasty ores.
