@@ -440,3 +440,48 @@
 /atom/movable/screen/meter_component/text/set_size()
 	return
 
+/*
+	Creates a resource meter on the target, giving it any additional parameters passed
+
+	Target can be any of..
+		/datum/hud
+		/mob
+		/client
+
+	Note that this will not immediately update the hud unless instant update is set true
+*/
+/proc/add_resource_meter(var/target, var/subtype = /atom/movable/screen/meter/resource, var/datum/extension/resource/resource_datum, var/instant_update = TRUE)
+	var/list/data = get_hud_data_for_target(target)
+	to_chat(world, "Adding meter, for target [target] data: [dump_list(data)]")
+	var/datum/hud/H = data["hud"]
+	var/mob/M = data["mob"]
+	var/atom/movable/screen/meter/resource/meter = new subtype(M, data["hud"], resource_datum)
+	H.hud_resource[resource_datum.resource_tag] = meter
+	H.infodisplay += meter
+	meter.resource_holder = resource_datum
+
+	if (instant_update)
+		H.show_hud(-1, M)
+		meter.update()
+
+	return meter
+
+
+/*
+	Finds and removes a meter with a matching tag
+*/
+/proc/remove_resource_meter(var/target, var/tag)
+	var/list/data = get_hud_data_for_target(target)
+	var/datum/hud/H = data["hud"]
+	var/atom/movable/screen/meter/meter = H.hud_resource[tag]
+	if (!meter)
+		return //Its not there
+
+	H.hud_resource.Remove(tag)
+
+	var/client/C = data["screen"]
+	if (C)
+		C.screen -= meter
+	
+	qdel(meter)
+	return TRUE
