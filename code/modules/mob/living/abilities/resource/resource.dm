@@ -11,7 +11,7 @@
 	var/max_value = 100
 	var/regen = 1	//Per second
 
-
+	var/resource_tag = "resource"//This unique lowercase string is used to index this extension and its hud meter in lists.
 
 	var/meter_type = /atom/movable/screen/meter/resource
 	var/atom/movable/screen/meter/resource/meter
@@ -19,36 +19,26 @@
 /datum/extension/resource/New(var/mob/holder)
 	.=..()
 	start_processing()
-	if (meter_type && ismob(holder))
+	var/mob/M = holder
+	if (meter_type && istype(M) && M.client)
 		setup_meter()	//Onscreen resource meter
-
-		GLOB.logged_in_event.register(holder, src, /datum/extension/resource/proc/holder_login)
-		GLOB.logged_out_event.register(holder, src, /datum/extension/resource/proc/holder_logout)
 
 /datum/extension/resource/Destroy()
 	remove_meter()
 	.=..()
-/*
-	HUD meter handling
-*/
-/datum/extension/resource/proc/holder_login()
-	remove_meter()
-	setup_meter()
 
 
-/datum/extension/resource/proc/holder_logout()
-	remove_meter()
+/datum/extension/resource/proc/setup_meter(var/target)
+	if (!target)
+		target = holder
+	meter = add_resource_meter(target, meter_type, src, TRUE)
+	to_chat(world, "created meter [meter]")
 
-
-/datum/extension/resource/proc/setup_meter()
-	var/mob/M = holder
-	if (M.client)
-		meter = M.hud_used.hud_resource
-		meter.resource_holder = src
-		meter.update()
 
 /datum/extension/resource/proc/remove_meter()
-	QDEL_NULL(meter)
+	if (meter)
+		meter = null
+		remove_resource_meter(holder, resource_tag)
 
 /datum/extension/resource/Process()
 
@@ -136,6 +126,11 @@
 		to_chat(src, "You don't have enough [R.name]!")
 
 
+/datum/extension/resource/handle_hud(var/datum/hud/M)
+	to_chat(world, "Handling hud for [M]")
+	remove_meter()
+	setup_meter(M)
+
 //Getters
 /datum/proc/get_resource(var/type)
 	.=0
@@ -157,3 +152,5 @@
 	var/datum/extension/resource/R = get_extension(src, type)
 	if (istype(R))
 		return "[R.current_value]/[R.max_value]"
+
+

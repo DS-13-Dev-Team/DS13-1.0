@@ -134,3 +134,16 @@
 
 /datum/extension/proc/remove_self()
 	remove_extension(holder, (base_type ? base_type : type))
+
+
+/*
+	If this extension creates any hud elements, do so here
+
+	In addition, its important to note that this can be called multiple times on the same mob, especially in response to logins. 
+	So you must also be sure to clean up any previously existing hud elements before recreating them
+
+	The update parameter tells whether or not we should attempt to instantly add things to client screen
+	If false, this is being called from normal hud instantiation and we can assume screen adding will be done in a batch at the end
+*/
+/datum/extension/proc/handle_hud(var/datum/hud/M, var/update = TRUE)
+	return
