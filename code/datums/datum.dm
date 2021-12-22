@@ -47,7 +47,29 @@
 		if (timer.spent)
 			continue
 		qdel(timer)
+
+	//BEGIN: ECS SHIT
+	if(extensions)
+		for(var/expansion_key in extensions)
+			var/list/extension = extensions[expansion_key]
+			if(islist(extension))
+				extension.Cut()
+			else
+				qdel(extension)
+		extensions = null
+
+	clear_signal_refs()
+	//END: ECS SHIT
+
 	return QDEL_HINT_QUEUE
+
+///Only override this if you know what you're doing. You do not know what you're doing
+///This is a threat
+/datum/proc/clear_signal_refs()
+
+	for(var/target in observation_procs)
+		var/decl/observ/O = observation_procs[target]
+		O.unregister(target, src)
 
 /datum/proc/Process()
 	set waitfor = 0
