@@ -425,7 +425,7 @@
 	dir = 4
 	},
 /obj/item/weapon/storage/box/checkers/chess,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -551,7 +551,7 @@
 "bE" = (
 /obj/structure/table/standard,
 /obj/item/weapon/storage/box/checkers/chess/red,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 1;
 	layer = 2.4;
 	level = 2
@@ -559,7 +559,7 @@
 /turf/simulated/floor/tiled,
 /area/ERT/valor/barracks)
 "bF" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 4
 	},
 /obj/machinery/light{
@@ -605,7 +605,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/ERT/valor/medical)
 "bL" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 8
 	},
 /obj/machinery/light{
@@ -626,7 +626,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/warning,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -690,7 +690,7 @@
 /turf/simulated/floor/plating,
 /area/ERT/valor/hangar)
 "bX" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/unary/vent/scrubber/on,
 /turf/simulated/floor/plating,
 /area/ERT/valor/hangar)
 "bY" = (
@@ -960,7 +960,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/warning,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -980,7 +980,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/ERT/valor/barracks)
 "cH" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 8
 	},
 /obj/machinery/light{
@@ -1160,7 +1160,7 @@
 /area/ERT/valor/medical)
 "df" = (
 /obj/structure/table/standard,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 4
 	},
 /obj/machinery/alarm{
@@ -1258,7 +1258,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/ERT/valor/firingrange)
 "dq" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -1276,7 +1276,7 @@
 /area/ERT/valor/hangar)
 "dt" = (
 /obj/structure/table/standard,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 1;
 	layer = 2.4;
 	level = 2
@@ -1450,7 +1450,7 @@
 /area/ERT/valor/closet)
 "dI" = (
 /obj/structure/table/reinforced,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 1;
 	layer = 2.4;
 	level = 2
@@ -1458,7 +1458,7 @@
 /turf/simulated/floor/tiled,
 /area/ERT/valor/firingrange)
 "dJ" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -1499,7 +1499,7 @@
 /turf/simulated/floor/tiled/white,
 /area/ERT/valor/medical)
 "dP" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 1;
 	layer = 2.4;
 	level = 2
@@ -1910,7 +1910,7 @@
 /turf/simulated/floor/tiled,
 /area/ERT/valor/hangar)
 "eF" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 4
 	},
 /obj/structure/table/standard,
@@ -2254,7 +2254,7 @@
 /turf/simulated/floor/tiled,
 /area/ERT/valor/armory)
 "fj" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -2304,7 +2304,7 @@
 	pixel_y = 4
 	},
 /obj/item/weapon/storage/box/bloodpacks,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 4
 	},
 /obj/machinery/firealarm{
@@ -2666,7 +2666,7 @@
 	dir = 8;
 	pixel_x = 25
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/freezer,
@@ -2844,7 +2844,7 @@
 /turf/simulated/floor/plating,
 /area/ERT/valor/hangar)
 "gB" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 1;
 	layer = 2.4;
 	level = 2
@@ -2988,7 +2988,7 @@
 /turf/simulated/floor/plating,
 /area/ERT/valor/hangar)
 "gU" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 1;
 	layer = 2.4;
 	level = 2
@@ -3031,7 +3031,7 @@
 /turf/simulated/floor/tiled/white,
 /area/ERT/valor/medical)
 "gZ" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/unary/vent/scrubber/on,
 /obj/machinery/alarm{
 	pixel_y = 23
 	},
@@ -3283,7 +3283,7 @@
 /area/supply/dock)
 "hA" = (
 /obj/structure/table/standard,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 1;
 	layer = 2.4;
 	level = 2

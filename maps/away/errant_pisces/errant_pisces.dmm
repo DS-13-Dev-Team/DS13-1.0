@@ -204,7 +204,7 @@
 /area/errant_pisces/bow_port)
 "aD" = (
 /obj/structure/closet/firecloset,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
@@ -233,7 +233,7 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/plating,
@@ -341,7 +341,7 @@
 	d2 = 4;
 	icon_state = "0-4"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 4;
 	layer = 2.4;
 	level = 2
@@ -364,7 +364,7 @@
 /area/errant_pisces/bow_port)
 "aT" = (
 /obj/structure/closet/firecloset,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/plating,
@@ -948,7 +948,7 @@
 /turf/simulated/floor/plating,
 /area/errant_pisces/storage_port)
 "cI" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 2;
 	layer = 2.4;
 	level = 2
@@ -995,7 +995,7 @@
 /turf/simulated/floor/plating,
 /area/errant_pisces/atmos)
 "cO" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/plating,
@@ -1008,7 +1008,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 2;
 	layer = 2.4;
 	level = 2
@@ -1033,7 +1033,7 @@
 /turf/simulated/floor/plating,
 /area/errant_pisces/storage_port)
 "cU" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 2;
 	layer = 2.4;
 	level = 2
@@ -1063,7 +1063,7 @@
 	pixel_y = 0
 	},
 /obj/machinery/portable_atmospherics/canister/oxygen,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/plating,
@@ -1130,7 +1130,7 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/plating,
@@ -1174,7 +1174,7 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 8
 	},
 /obj/effect/decal/cleanable/blood,
@@ -1206,7 +1206,7 @@
 	},
 /obj/structure/mopbucket,
 /obj/item/weapon/mop,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
@@ -1491,7 +1491,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 4;
 	layer = 2.4;
 	level = 2
@@ -1530,7 +1530,7 @@
 	pixel_y = -24
 	},
 /obj/structure/cable/green,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/plating,
@@ -1718,7 +1718,7 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume,
+/obj/machinery/atmospherics/unary/vent/pump/high_volume,
 /obj/machinery/airlock_sensor{
 	frequency = 1011;
 	id_tag = "xyn_solar_starboard_sensor";
@@ -1818,7 +1818,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/unary/vent/scrubber/on,
 /turf/simulated/floor/plating,
 /area/errant_pisces/smes_room)
 "et" = (
@@ -1834,7 +1834,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 2;
 	layer = 2.4;
 	level = 2
@@ -1901,7 +1901,7 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/unary/vent/pump/high_volume{
 	frequency = 1013;
 	id_tag = "xyn_solar_port_pump"
 	},
@@ -2026,7 +2026,7 @@
 /area/errant_pisces/head_f)
 "eK" = (
 /obj/structure/closet/athletic_mixed,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
@@ -2134,7 +2134,7 @@
 /area/errant_pisces/head_m)
 "eT" = (
 /obj/structure/closet/athletic_mixed,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
@@ -2198,7 +2198,7 @@
 /area/errant_pisces/head_f)
 "eZ" = (
 /obj/structure/closet/athletic_mixed,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 4;
 	layer = 2.4;
 	level = 2
@@ -2283,7 +2283,7 @@
 /area/errant_pisces/head_m)
 "fh" = (
 /obj/structure/closet/athletic_mixed,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
@@ -2549,7 +2549,7 @@
 "fG" = (
 /obj/machinery/power/solar_control,
 /obj/structure/cable/yellow,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
@@ -2568,7 +2568,7 @@
 	},
 /obj/structure/cable,
 /obj/item/weapon/stool,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
@@ -2661,7 +2661,7 @@
 	pixel_y = -24
 	},
 /obj/structure/cable,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 1;
 	layer = 2.4;
 	level = 2
@@ -2670,7 +2670,7 @@
 /area/errant_pisces/solar_port)
 "fS" = (
 /obj/structure/cable/yellow,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 1
 	},
 /obj/machinery/power/solar_control{
@@ -2920,7 +2920,7 @@
 /area/errant_pisces/rooms)
 "gw" = (
 /obj/structure/table/woodentable,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 2;
 	layer = 2.4;
 	level = 2
@@ -2933,7 +2933,7 @@
 /turf/simulated/floor/plating,
 /area/errant_pisces/rooms)
 "gy" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 4;
 	layer = 2.4;
 	level = 2
@@ -2953,7 +2953,7 @@
 /turf/simulated/floor/tiled,
 /area/errant_pisces/hallway)
 "gA" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -2965,7 +2965,7 @@
 /area/errant_pisces/dorms)
 "gC" = (
 /obj/machinery/vending/snack,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 2;
 	layer = 2.4;
 	level = 2
@@ -3286,7 +3286,7 @@
 /area/errant_pisces/rooms)
 "hu" = (
 /obj/machinery/vending/coffee,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -3330,7 +3330,7 @@
 /obj/structure/table/woodentable,
 /obj/random/smokes,
 /obj/structure/cable/green,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/wood,
@@ -3593,7 +3593,7 @@
 /turf/simulated/floor/plating,
 /area/errant_pisces/infirmary)
 "ix" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/unary/vent/pump/on,
 /turf/simulated/floor/plating,
 /area/errant_pisces/infirmary)
 "iy" = (
@@ -3680,7 +3680,7 @@
 /turf/simulated/floor/plating,
 /area/errant_pisces/infirmary)
 "iP" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
@@ -3983,7 +3983,7 @@
 /obj/structure/table/standard,
 /obj/random/firstaid,
 /obj/item/clothing/under/rank/medical/paramedic,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -3991,7 +3991,7 @@
 "jE" = (
 /obj/structure/table/standard,
 /obj/item/roller,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -4032,7 +4032,7 @@
 	pixel_y = -25;
 	req_one_access = list(24,11)
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -4045,7 +4045,7 @@
 	},
 /obj/item/weapon/stool,
 /obj/structure/cable/green,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -4099,7 +4099,7 @@
 /turf/simulated/floor/tiled,
 /area/errant_pisces/science_wing)
 "jT" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 8
 	},
 /obj/machinery/alarm{
@@ -4148,7 +4148,7 @@
 /turf/simulated/floor/tiled,
 /area/errant_pisces/cryo)
 "ka" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/unary/vent/pump/high_volume{
 	frequency = 1021;
 	id_tag = "xyn_ls_pump"
 	},
@@ -4184,7 +4184,7 @@
 /turf/simulated/floor/tiled,
 /area/errant_pisces/science_wing)
 "ke" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 8
 	},
 /obj/structure/closet,
@@ -4241,7 +4241,7 @@
 /turf/simulated/floor/tiled,
 /area/errant_pisces/cryo)
 "kn" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -4271,7 +4271,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -4373,7 +4373,7 @@
 /turf/simulated/floor/tiled,
 /area/errant_pisces/science_wing)
 "kA" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 8
 	},
 /obj/machinery/light{
@@ -4559,7 +4559,7 @@
 /turf/simulated/floor/tiled,
 /area/errant_pisces/science_wing)
 "lg" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 1;
 	layer = 2.4;
 	level = 2
@@ -4869,7 +4869,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/unary/vent/pump/high_volume{
 	dir = 4;
 	frequency = 1015;
 	id_tag = "xyn_sci_pump"
@@ -4986,7 +4986,7 @@
 /turf/simulated/floor/tiled,
 /area/errant_pisces/cryo)
 "mr" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/unary/vent/scrubber/on,
 /obj/machinery/light/small{
 	dir = 8
 	},
@@ -5026,7 +5026,7 @@
 /area/errant_pisces/prod_storage)
 "mx" = (
 /obj/structure/table/rack,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 4
 	},
 /obj/item/weapon/material/harpoon,
@@ -5141,7 +5141,7 @@
 /turf/simulated/floor/plating,
 /area/errant_pisces/general_storage)
 "mN" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 8
 	},
 /obj/machinery/alarm{
@@ -5173,7 +5173,7 @@
 	d2 = 4;
 	icon_state = "0-4"
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/freezer,
@@ -5194,7 +5194,7 @@
 /turf/simulated/floor/tiled/freezer,
 /area/errant_pisces/prod_storage)
 "mS" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 8
 	},
 /obj/machinery/light/small,
@@ -5205,7 +5205,7 @@
 /turf/simulated/floor/tiled/freezer,
 /area/errant_pisces/prod_storage)
 "mU" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 4;
 	layer = 2.4;
 	level = 2
@@ -5331,7 +5331,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/unary/vent/pump/high_volume{
 	dir = 8;
 	frequency = 1017;
 	id_tag = "xyn_dock1_pump"
@@ -5760,7 +5760,7 @@
 /turf/simulated/floor/plating,
 /area/errant_pisces/aux_power)
 "nL" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
@@ -5836,13 +5836,13 @@
 /turf/simulated/floor/tiled,
 /area/errant_pisces/aft_hallway)
 "nV" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/errant_pisces/aft_hallway)
 "nW" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -5895,7 +5895,7 @@
 	pixel_x = 24
 	},
 /obj/structure/cable/green,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 1;
 	layer = 2.4;
 	level = 2
@@ -5968,7 +5968,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/unary/vent/pump/high_volume{
 	dir = 8;
 	frequency = 1019;
 	id_tag = "xyn_dock2_airlock"
@@ -6058,7 +6058,7 @@
 "ov" = (
 /obj/structure/table/marble,
 /obj/item/weapon/material/knife/butch,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/freezer,
@@ -6154,7 +6154,7 @@
 /turf/simulated/floor/tiled,
 /area/errant_pisces/fishing_wing)
 "oJ" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 1
 	},
 /obj/machinery/alarm{
@@ -6183,7 +6183,7 @@
 /turf/simulated/floor/tiled,
 /area/errant_pisces/bridge)
 "oM" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 8
 	},
 /obj/structure/closet/firecloset,
@@ -6318,7 +6318,7 @@
 /turf/space,
 /area/space)
 "pg" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -6377,7 +6377,7 @@
 /turf/space,
 /area/errant_pisces/bridge)
 "pr" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -6510,7 +6510,7 @@
 /turf/simulated/floor/tiled/white,
 /area/errant_pisces/fishing_wing)
 "pP" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 4;
 	layer = 2.4;
 	level = 2
@@ -6606,7 +6606,7 @@
 /turf/simulated/floor/plating,
 /area/errant_pisces/fishing_wing)
 "pY" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/plating,
@@ -6671,7 +6671,7 @@
 /turf/simulated/floor/wood,
 /area/errant_pisces/bridge)
 "qj" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 1
 	},
 /obj/structure/table/rack,
@@ -6679,7 +6679,7 @@
 /turf/simulated/floor/plating,
 /area/errant_pisces/fishing_wing)
 "qk" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
@@ -6695,7 +6695,7 @@
 /obj/structure/table/rack,
 /obj/item/clothing/mask/breath,
 /obj/item/weapon/storage/box/survival,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 4;
 	layer = 2.4;
 	level = 2
@@ -6714,7 +6714,7 @@
 	dir = 4
 	},
 /obj/machinery/suit_storage_unit/standard_unit,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
@@ -6910,7 +6910,7 @@
 	id_tag = "xyn_fish_sensor";
 	pixel_y = 25
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/unary/vent/pump/high_volume{
 	dir = 8;
 	frequency = 1023;
 	id_tag = "xyn_fish_pump"

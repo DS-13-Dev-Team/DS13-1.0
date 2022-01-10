@@ -7,7 +7,7 @@
 #define PRESSURE_CHECK_EXTERNAL 1
 #define PRESSURE_CHECK_INTERNAL 2
 
-/obj/machinery/atmospherics/unary/vent_pump
+/obj/machinery/atmospherics/unary/vent/pump
 	icon = 'icons/atmos/vent_pump.dmi'
 	icon_state = "map_vent"
 
@@ -50,18 +50,18 @@
 	var/radio_filter_out
 	var/radio_filter_in
 
-/obj/machinery/atmospherics/unary/vent_pump/on
+/obj/machinery/atmospherics/unary/vent/pump/on
 	use_power = 1
 	icon_state = "map_vent_out"
 
-/obj/machinery/atmospherics/unary/vent_pump/siphon
+/obj/machinery/atmospherics/unary/vent/pump/siphon
 	pump_direction = 0
 
-/obj/machinery/atmospherics/unary/vent_pump/siphon/on
+/obj/machinery/atmospherics/unary/vent/pump/siphon/on
 	use_power = 1
 	icon_state = "map_vent_in"
 
-/obj/machinery/atmospherics/unary/vent_pump/siphon/on/atmos
+/obj/machinery/atmospherics/unary/vent/pump/siphon/on/atmos
 	use_power = 1
 	icon_state = "map_vent_in"
 	external_pressure_bound = 0
@@ -71,37 +71,37 @@
 	pressure_checks = 2
 	pressure_checks_default = 2
 
-/obj/machinery/atmospherics/unary/vent_pump/New(var/atom/location, var/direction, var/nocircuit = FALSE)
+/obj/machinery/atmospherics/unary/vent/pump/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	air_contents.volume = ATMOS_DEFAULT_VOLUME_PUMP
 	icon = null
 
-/obj/machinery/atmospherics/unary/vent_pump/Destroy()
+/obj/machinery/atmospherics/unary/vent/pump/Destroy()
 	unregister_radio(src, frequency)
 	if(initial_loc)
 		initial_loc.air_vent_info -= id_tag
 		initial_loc.air_vent_names -= id_tag
 	. = ..()
 
-/obj/machinery/atmospherics/unary/vent_pump/high_volume
+/obj/machinery/atmospherics/unary/vent/pump/high_volume
 	name = "Large Air Vent"
 	power_channel = EQUIP
 	power_rating = 80000	//80 kW ~ 100 HP
 
-/obj/machinery/atmospherics/unary/vent_pump/high_volume/New(var/atom/location, var/direction, var/nocircuit = FALSE)
+/obj/machinery/atmospherics/unary/vent/pump/high_volume/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	air_contents.volume = ATMOS_DEFAULT_VOLUME_PUMP + 3000
 
-/obj/machinery/atmospherics/unary/vent_pump/engine
+/obj/machinery/atmospherics/unary/vent/pump/engine
 	name = "Engine Core Vent"
 	power_channel = ENVIRON
 	power_rating = 30000	//15 kW ~ 20 HP
 
-/obj/machinery/atmospherics/unary/vent_pump/engine/New(var/atom/location, var/direction, var/nocircuit = FALSE)
+/obj/machinery/atmospherics/unary/vent/pump/engine/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	air_contents.volume = ATMOS_DEFAULT_VOLUME_PUMP + 500 //meant to match air injector
 
-/obj/machinery/atmospherics/unary/vent_pump/update_icon(var/safety = 0)
+/obj/machinery/atmospherics/unary/vent/pump/update_icon(var/safety = 0)
 	if(!check_icon_cache())
 		return
 	if (!node)
@@ -127,7 +127,7 @@
 
 	overlays += icon_manager.get_atmos_icon("device", , , vent_icon)
 
-/obj/machinery/atmospherics/unary/vent_pump/update_underlays()
+/obj/machinery/atmospherics/unary/vent/pump/update_underlays()
 	if(..())
 		underlays.Cut()
 		var/turf/T = get_turf(src)
@@ -141,11 +141,11 @@
 			else
 				add_underlay(T,, dir)
 
-/obj/machinery/atmospherics/unary/vent_pump/hide()
+/obj/machinery/atmospherics/unary/vent/pump/hide()
 	update_icon()
 	update_underlays()
 
-/obj/machinery/atmospherics/unary/vent_pump/proc/can_pump()
+/obj/machinery/atmospherics/unary/vent/pump/proc/can_pump()
 	if(stat & (NOPOWER|BROKEN))
 		return 0
 	if(!use_power)
@@ -154,7 +154,7 @@
 		return 0
 	return 1
 
-/obj/machinery/atmospherics/unary/vent_pump/Process()
+/obj/machinery/atmospherics/unary/vent/pump/Process()
 	..()
 
 	if (hibernate > world.time)
@@ -199,7 +199,7 @@
 
 	return 1
 
-/obj/machinery/atmospherics/unary/vent_pump/proc/get_pressure_delta(datum/gas_mixture/environment)
+/obj/machinery/atmospherics/unary/vent/pump/proc/get_pressure_delta(datum/gas_mixture/environment)
 	var/pressure_delta = DEFAULT_PRESSURE_DELTA
 	var/environment_pressure = environment.return_pressure()
 
@@ -216,7 +216,7 @@
 
 	return pressure_delta
 
-/obj/machinery/atmospherics/unary/vent_pump/proc/broadcast_status()
+/obj/machinery/atmospherics/unary/vent/pump/proc/broadcast_status()
 	if(!radio_connection)
 		return 0
 
@@ -250,7 +250,7 @@
 	return 1
 
 
-/obj/machinery/atmospherics/unary/vent_pump/Initialize()
+/obj/machinery/atmospherics/unary/vent/pump/Initialize()
 	. = ..()
 	initial_loc = get_area(loc)
 	area_uid = initial_loc.uid
@@ -264,13 +264,13 @@
 		radio_connection = register_radio(src, frequency, frequency, radio_filter_in)
 		src.broadcast_status()
 
-/obj/machinery/atmospherics/unary/vent_pump/receive_signal(datum/signal/signal)
+/obj/machinery/atmospherics/unary/vent/pump/receive_signal(datum/signal/signal)
 	if(stat & (NOPOWER|BROKEN))
 		return
 
 	hibernate = 0
 
-	//log_admin("DEBUG \[[world.timeofday]\]: /obj/machinery/atmospherics/unary/vent_pump/receive_signal([signal.debug_print()])")
+	//log_admin("DEBUG \[[world.timeofday]\]: /obj/machinery/atmospherics/unary/vent/pump/receive_signal([signal.debug_print()])")
 	if(!signal.data["tag"] || (signal.data["tag"] != id_tag) || (signal.data["sigtype"]!="command"))
 		return 0
 
@@ -333,7 +333,7 @@
 	update_icon()
 	return
 
-/obj/machinery/atmospherics/unary/vent_pump/attackby(obj/item/W, mob/user)
+/obj/machinery/atmospherics/unary/vent/pump/attackby(obj/item/W, mob/user)
 	if(isWelder(W))
 		to_chat(user, "<span class='notice'>Now welding \the [src].</span>")
 		if(W.use_tool(user, src, WORKTIME_NORMAL, QUALITY_WELDING, FAILCHANCE_NORMAL))
@@ -347,7 +347,7 @@
 	else
 		..()
 
-/obj/machinery/atmospherics/unary/vent_pump/examine(mob/user)
+/obj/machinery/atmospherics/unary/vent/pump/examine(mob/user)
 	if(..(user, 1))
 		to_chat(user, "A small gauge in the corner reads [round(last_flow_rate, 0.1)] L/s; [round(last_power_draw)] W")
 	else
@@ -355,7 +355,7 @@
 	if(welded)
 		to_chat(user, "It seems welded shut.")
 
-/obj/machinery/atmospherics/unary/vent_pump/attackby(var/obj/item/weapon/W as obj, var/mob/user as mob)
+/obj/machinery/atmospherics/unary/vent/pump/attackby(var/obj/item/weapon/W as obj, var/mob/user as mob)
 	if(!isWrench(W))
 		return ..()
 	if (!(stat & NOPOWER) && use_power)

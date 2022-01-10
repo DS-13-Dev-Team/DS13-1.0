@@ -35,8 +35,6 @@
 	torso_damage_mult = 0.75
 	mob_size = MOB_SMALL
 	bump_flag 	= SIMPLE_ANIMAL
-	ventcrawl = FALSE //temporarily disabled until rebalanced.
-	ventcrawl_time = 10 SECONDS //They're huge....
 
 	//Normal necromorph flags plus no slip
 	species_flags = SPECIES_FLAG_NO_PAIN | SPECIES_FLAG_NO_MINOR_CUT | SPECIES_FLAG_NO_POISON  | SPECIES_FLAG_NO_BLOCK | SPECIES_FLAG_NO_SLIP

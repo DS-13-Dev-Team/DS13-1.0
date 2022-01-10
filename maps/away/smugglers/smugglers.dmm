@@ -57,7 +57,7 @@
 	master_tag = "asteroid_base_dock_airlock";
 	pixel_x = 25
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/unary/vent/pump/high_volume{
 	dir = 2;
 	frequency = 1503;
 	id_tag = "asteroid_base_dock_pump"
@@ -306,7 +306,7 @@
 	master_tag = "asteroid_base_east_airlock";
 	pixel_y = -25
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/unary/vent/pump/high_volume{
 	dir = 8;
 	frequency = 1501;
 	id_tag = "asteroid_base_east_pump"

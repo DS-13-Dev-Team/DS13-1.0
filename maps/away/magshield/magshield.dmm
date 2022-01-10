@@ -195,7 +195,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume,
+/obj/machinery/atmospherics/unary/vent/pump/high_volume,
 /obj/effect/floor_decal/industrial/hatch/blue,
 /obj/machinery/embedded_controller/radio/airlock/airlock_controller{
 	pixel_x = 25
@@ -302,7 +302,7 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/unary/vent/pump{
 	dir = 8;
 	external_pressure_bound = 0;
 	external_pressure_bound_default = 0;
@@ -489,7 +489,7 @@
 /turf/simulated/floor/airless,
 /area/magshield/engine)
 "bl" = (
-/obj/machinery/atmospherics/unary/vent_pump,
+/obj/machinery/atmospherics/unary/vent/pump,
 /turf/simulated/floor/airless,
 /area/magshield/engine)
 "bm" = (
@@ -764,7 +764,7 @@
 "ca" = (
 /obj/structure/table/steel,
 /obj/item/device/geiger,
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/unary/vent/scrubber/on,
 /turf/simulated/floor/airless,
 /area/magshield/engine)
 "cb" = (
@@ -958,7 +958,7 @@
 /turf/simulated/floor/airless,
 /area/magshield/engine)
 "cu" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 8;
 	layer = 2.4;
 	level = 2
@@ -1106,7 +1106,7 @@
 /turf/simulated/floor/airless,
 /area/magshield/engine)
 "cM" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/unary/vent/scrubber/on,
 /turf/simulated/floor/airless,
 /area/magshield/engine)
 "cN" = (
@@ -1125,7 +1125,7 @@
 	icon_state = "4-8";
 	pixel_y = 0
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/airless,
@@ -1142,7 +1142,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/airless,
@@ -1290,7 +1290,7 @@
 /turf/simulated/floor/airless,
 /area/magshield/engine)
 "da" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 8;
 	layer = 2.4;
 	level = 2
@@ -1595,11 +1595,11 @@
 /turf/simulated/floor/airless,
 /area/magshield/north)
 "ec" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/unary/vent/scrubber/on,
 /turf/simulated/floor/airless,
 /area/magshield/north)
 "ed" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/unary/vent/pump/on,
 /turf/simulated/floor/airless,
 /area/magshield/north)
 "ee" = (
@@ -1905,7 +1905,7 @@
 /turf/simulated/floor/airless,
 /area/magshield/north)
 "eE" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/unary/vent/pump/high_volume{
 	dir = 8;
 	frequency = 1501;
 	id_tag = "asteroid_base_east_pump"
@@ -1967,7 +1967,7 @@
 /turf/simulated/floor/airless,
 /area/space)
 "eJ" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/unary/vent/pump/high_volume{
 	dir = 4;
 	frequency = 1380;
 	id_tag = "merchant_station_vent"
@@ -2098,7 +2098,7 @@
 /turf/space,
 /area/space)
 "fd" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/unary/vent/pump/high_volume{
 	dir = 1;
 	frequency = 1380;
 	id_tag = "centcom_shuttle_dock_pump"
@@ -2193,7 +2193,7 @@
 /turf/simulated/floor/airless,
 /area/magshield/east)
 "fs" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 8;
 	layer = 2.4;
 	level = 2
@@ -2535,7 +2535,7 @@
 /obj/random/cash,
 /obj/random/cash,
 /obj/random/clothing,
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/unary/vent/pump/on,
 /turf/simulated/floor/carpet/blue,
 /area/magshield/west)
 "gt" = (
@@ -2610,7 +2610,7 @@
 /turf/simulated/floor/airless,
 /area/magshield/east)
 "gF" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/airless,
@@ -2627,7 +2627,7 @@
 	dir = 10
 	},
 /obj/item/weapon/storage/box/checkers,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/carpet/blue,
@@ -3110,7 +3110,7 @@
 "hZ" = (
 /obj/structure/table/woodentable,
 /obj/random/accessory,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/carpet/blue,
@@ -3118,7 +3118,7 @@
 "ia" = (
 /obj/structure/table/woodentable,
 /obj/item/weapon/flame/lighter/zippo,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/carpet/blue,
@@ -3155,7 +3155,7 @@
 /area/magshield/east)
 "ih" = (
 /obj/machinery/portable_atmospherics/hydroponics,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -3401,7 +3401,7 @@
 /area/magshield/south)
 "iP" = (
 /obj/machinery/vending/coffee,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -3445,7 +3445,7 @@
 /turf/simulated/floor/tiled,
 /area/magshield/south)
 "iW" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/unary/vent/scrubber/on,
 /turf/simulated/floor/tiled/white,
 /area/magshield/south)
 "iX" = (
@@ -3533,7 +3533,7 @@
 /turf/simulated/floor/tiled/white,
 /area/magshield/south)
 "jk" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 8;
 	layer = 2.4;
 	level = 2
@@ -3659,7 +3659,7 @@
 /turf/simulated/floor/airless,
 /area/magshield/south)
 "jG" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/unary/vent/pump/high_volume{
 	dir = 4;
 	frequency = 1380;
 	id_tag = "merchant_station_vent"
@@ -3795,7 +3795,7 @@
 /turf/simulated/floor/tiled/freezer,
 /area/magshield/south)
 "jX" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/unary/vent/pump/on,
 /obj/machinery/light{
 	dir = 8;
 	icon_state = "tube1";
@@ -3890,11 +3890,11 @@
 /turf/simulated/floor/tiled,
 /area/magshield/south)
 "kk" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/unary/vent/pump/on,
 /turf/simulated/floor/tiled,
 /area/magshield/south)
 "kl" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/unary/vent/scrubber/on,
 /turf/simulated/floor/tiled,
 /area/magshield/south)
 "km" = (
@@ -3922,7 +3922,7 @@
 /turf/simulated/floor/tiled/white,
 /area/magshield/south)
 "kr" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
@@ -4139,7 +4139,7 @@
 /area/magshield/south)
 "kS" = (
 /obj/machinery/computer/arcade,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,

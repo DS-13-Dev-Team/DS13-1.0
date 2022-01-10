@@ -45,6 +45,7 @@
 	swap_flags 	= ALLMOBS	// What can we swap place with?
 	evasion = -10	//Tripod has poor natural evasion, but this value will be constantly modified by a passive ability
 	reach = 2
+	ventcrawl = FALSE //It breaks down doors instead
 
 	//Implacable
 	stun_mod = 0.5

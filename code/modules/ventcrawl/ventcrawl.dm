@@ -1,6 +1,6 @@
 var/list/ventcrawl_machinery = list(
-	/obj/machinery/atmospherics/unary/vent_scrubber,
-	/obj/machinery/atmospherics/unary/vent_pump
+	/obj/machinery/atmospherics/unary/vent/scrubber,
+	/obj/machinery/atmospherics/unary/vent/pump
 	)
 
 // Vent crawling whitelisted items, whoo
@@ -163,22 +163,26 @@ var/list/ventcrawl_machinery = list(
 			to_chat(src, "This vent is not connected to anything.")
 	else
 		to_chat(src, "You must be standing on or beside an air vent to enter it.")
+
+
 /mob/living/proc/add_ventcrawl(obj/machinery/atmospherics/starting_machine)
+	to_chat(world, "Adding ventcrawl [starting_machine]")
 	is_ventcrawling = 1
 	//candrop = 0
-	var/datum/pipe_network/network = starting_machine.return_network(starting_machine)
-	if(!network)
+	var/list/machines = starting_machine.get_ventcrawl_machines_in_network()
+	if(!length(machines))
+		to_chat(world, "got no network, returning")
 		return
-	for(var/datum/pipeline/pipeline in network.line_members)
-		for(var/obj/machinery/atmospherics/A in (pipeline.members || pipeline.edges))
-			if(!A.pipe_image)
-				A.pipe_image = image(A, A.loc, dir = A.dir)
-			A.pipe_image.layer = ABOVE_LIGHTING_LAYER
-			A.pipe_image.plane = EFFECTS_ABOVE_LIGHTING_PLANE
-			pipes_shown += A.pipe_image
-			client.images += A.pipe_image
+	for(var/obj/machinery/atmospherics/A as anything in machines)
+		if(!A.pipe_image)
+			A.pipe_image = image(A, A.loc, dir = A.dir)
+		A.pipe_image.layer = ABOVE_LIGHTING_LAYER
+		A.pipe_image.plane = EFFECTS_ABOVE_LIGHTING_PLANE
+		pipes_shown += A.pipe_image
+		client.images += A.pipe_image
 
 /mob/living/proc/remove_ventcrawl()
+	to_chat(world, "removing ventcrawl")
 	is_ventcrawling = 0
 	//candrop = 1
 	if(client)

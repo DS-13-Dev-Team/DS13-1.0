@@ -1554,7 +1554,7 @@
 /turf/simulated/floor,
 /area/constructionsite/teleporter)
 "eS" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/unary/vent/pump/high_volume{
 	frequency = 1379;
 	id_tag = "constructionsite_vent"
 	},
@@ -2623,7 +2623,7 @@
 /turf/simulated/floor/plating,
 /area/constructionsite/atmospherics)
 "iA" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/unary/vent/pump/high_volume{
 	dir = 8;
 	external_pressure_bound = 0;
 	external_pressure_bound_default = 0;
@@ -2735,7 +2735,7 @@
 /turf/simulated/floor/airless,
 /area/constructionsite/atmospherics)
 "iP" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/unary/vent/pump{
 	dir = 8;
 	external_pressure_bound = 0;
 	external_pressure_bound_default = 0;
@@ -2836,7 +2836,7 @@
 /turf/simulated/floor/airless,
 /area/constructionsite/atmospherics)
 "jd" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/unary/vent/pump{
 	dir = 8;
 	external_pressure_bound = 0;
 	external_pressure_bound_default = 0;
@@ -3682,7 +3682,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/constructionsite/teleporter)
 "ob" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/unary/vent/pump/high_volume{
 	frequency = 1379;
 	id_tag = "constructionsite_vent"
 	},

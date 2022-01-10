@@ -295,3 +295,10 @@
 	update_ports()
 
 	return null
+
+
+/obj/machinery/atmospherics/omni/get_attached_pipe_networks()
+	.=..()
+	for(var/datum/omni_port/P as anything in ports)
+		if (P.network)
+			. |= P.network

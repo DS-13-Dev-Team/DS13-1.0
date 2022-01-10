@@ -107,14 +107,14 @@
 /turf/simulated/floor/tiled,
 /area/constructionsite)
 "r" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	 icon_state = "map_scrubber_on";
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/constructionsite)
 "s" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/unary/vent/pump/on,
 /turf/simulated/floor/tiled,
 /area/constructionsite)
 "t" = (

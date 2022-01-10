@@ -98,7 +98,7 @@
 /turf/simulated/floor/dank,
 /area/ishimura/tramdeck/tram/station/aft)
 "at" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 4
 	},
 /obj/machinery/light/small{
@@ -957,7 +957,7 @@
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/aft)
 "ct" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/dank/mono,
@@ -1222,13 +1222,13 @@
 /turf/simulated/floor/dank/heavy,
 /area/ishimura/tramdeck/switchingstation/upper)
 "dd" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/amidships/north)
 "de" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/plating,
@@ -1241,7 +1241,7 @@
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/amidships/north)
 "dg" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -1785,7 +1785,7 @@
 /turf/simulated/floor/dank,
 /area/ishimura/tramdeck/tram/misc/disusedbotanics)
 "ex" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 4
 	},
 /obj/effect/catwalk_plated/dank,
@@ -1862,13 +1862,13 @@
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/maintenance/midmaintenance)
 "eM" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/aft)
 "eN" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/unary/vent/scrubber/on,
 /turf/simulated/floor/dank,
 /area/ishimura/tramdeck/tram/station/aft)
 "eO" = (
@@ -1895,7 +1895,7 @@
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/station/amidships/north)
 "eR" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 8
 	},
 /obj/structure/bed/chair/office,
@@ -2054,7 +2054,7 @@
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/maintenance/aftmaintenance)
 "fk" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 1;
 	layer = 2.4;
 	level = 2
@@ -2140,7 +2140,7 @@
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/aft)
 "fv" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/dank/mono,
@@ -2191,14 +2191,14 @@
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/amidships/north)
 "fA" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/unary/vent/pump/on,
 /obj/structure/bed/chair{
 	dir = 1
 	},
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/amidships/north)
 "fB" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/unary/vent/scrubber/on,
 /obj/structure/bed/chair{
 	dir = 1
 	},
@@ -2917,7 +2917,7 @@
 /turf/simulated/floor/dank,
 /area/ishimura/tramdeck/tram/station/amidships/north)
 "gI" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 8
 	},
 /obj/structure/bed/chair/office{
@@ -2926,7 +2926,7 @@
 /turf/simulated/floor/dank,
 /area/ishimura/tramdeck/tram/station/amidships/north)
 "gJ" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 8
 	},
 /obj/structure/bed/chair/office{
@@ -3365,7 +3365,7 @@
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/forward)
 "hz" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -3437,7 +3437,7 @@
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/forward)
 "hG" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 4;
 	layer = 2.4;
 	level = 2
@@ -3457,7 +3457,7 @@
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/forward)
 "hI" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 8
 	},
 /obj/structure/bed/chair{
@@ -3524,7 +3524,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 1;
 	layer = 2.4;
 	level = 2
@@ -3572,7 +3572,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/dank,
@@ -3635,7 +3635,7 @@
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/amidships/north)
 "ic" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/dank/mono,
@@ -3708,7 +3708,7 @@
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/forward)
 "il" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 4
 	},
 /obj/structure/bed/chair{
@@ -3859,13 +3859,13 @@
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/forward)
 "iy" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/forward)
 "iz" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/dank/mono,
@@ -3882,7 +3882,7 @@
 /turf/simulated/floor/dank,
 /area/ishimura/tramdeck/tram/station/forward)
 "iB" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 8
 	},
 /obj/effect/landmark/node_room/maintenance,
@@ -3960,7 +3960,7 @@
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/forward)
 "iN" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 4
 	},
 /obj/structure/bed/chair,
@@ -3978,7 +3978,7 @@
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/amidships/north)
 "iQ" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 4;
 	layer = 2.4;
 	level = 2
@@ -4498,7 +4498,7 @@
 /turf/simulated/open,
 /area/ishimura/tramdeck/tram/tunnel)
 "kb" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 8
 	},
 /obj/structure/bed/chair,
@@ -4543,7 +4543,7 @@
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/forward)
 "kh" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 8
 	},
 /obj/structure/bed/chair{
@@ -5009,7 +5009,7 @@
 /turf/simulated/floor/dank,
 /area/ishimura/tramdeck/tram/misc)
 "kY" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 4
 	},
 /obj/structure/table/steel,
@@ -5177,13 +5177,13 @@
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/misc)
 "lz" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/unary/vent/scrubber/on,
 /obj/effect/catwalk_plated/dank,
 /obj/machinery/firealarm,
 /turf/simulated/floor/plating,
 /area/ishimura/tramdeck/tram/maintenance/midmaintenance)
 "lA" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 1
 	},
 /obj/effect/catwalk_plated/dank,
@@ -5420,7 +5420,7 @@
 /area/ishimura/tramdeck/tram/misc)
 "lY" = (
 /obj/machinery/light_construct,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor,
@@ -5877,7 +5877,7 @@
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/misc/auxcargostor)
 "mW" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 4
 	},
 /obj/effect/catwalk_plated/dank,
@@ -5885,7 +5885,7 @@
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/misc/auxcargostor)
 "mX" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 1
 	},
 /obj/effect/catwalk_plated/dank,

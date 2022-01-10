@@ -71,7 +71,7 @@
 /turf/simulated/floor,
 /area/maintenance/fsmaint2)
 "o" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/unary/vent/pump/on,
 /obj/effect/floor_decal/corner/blue/diagonal,
 /turf/simulated/floor/tiled,
 /area/maintenance/fsmaint2)
@@ -133,7 +133,7 @@
 /turf/simulated/floor/tiled,
 /area/maintenance/fsmaint2)
 "w" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	 icon_state = "map_scrubber_on";
 	dir = 1
 	},

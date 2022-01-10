@@ -104,6 +104,10 @@
 			return
 		return loc
 
+
+
+
+
 /mob
 	var/mob/dead/observer/eye/eyeobj
 

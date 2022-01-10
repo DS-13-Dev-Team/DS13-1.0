@@ -116,7 +116,7 @@
 
 //Vents
 /datum/codex_entry/atmos_vent_pump
-	associated_paths = list(/obj/machinery/atmospherics/unary/vent_pump)
+	associated_paths = list(/obj/machinery/atmospherics/unary/vent/pump)
 	mechanics_text = "This pumps the contents of the attached pipe out into the atmosphere, if needed.  It can be controlled from an Air Alarm."
 
 //Freezers
@@ -141,7 +141,7 @@
 
 //Scrubbers
 /datum/codex_entry/atmos_vent_scrubber
-	associated_paths = list(/obj/machinery/atmospherics/unary/vent_scrubber)
+	associated_paths = list(/obj/machinery/atmospherics/unary/vent/scrubber)
 	mechanics_text = "This filters the atmosphere of harmful gas.  Filtered gas goes to the pipes connected to it, typically a scrubber pipe. \
 	It can be controlled from an Air Alarm.  It can be configured to drain all air rapidly with a 'panic syphon' from an air alarm."
 

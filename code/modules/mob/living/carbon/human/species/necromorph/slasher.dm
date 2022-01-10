@@ -25,8 +25,6 @@
 	single_icon = FALSE
 	evasion = 0	//No natural evasion
 	spawner_spawnable = TRUE
-	ventcrawl = FALSE //temporarily disabled until rebalanced.
-	ventcrawl_time = 10 SECONDS //They're huge....
 
 	//Slashers hold their arms up in an overhead pose, so they override height too
 	override_limb_types = list(

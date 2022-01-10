@@ -125,7 +125,7 @@
 /obj/structure/bed/chair/comfy/black{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/unary/vent/pump/on,
 /turf/simulated/floor/tiled,
 /area/bluespaceriver/ship)
 "aw" = (
@@ -135,7 +135,7 @@
 /turf/simulated/floor/tiled,
 /area/bluespaceriver/ship)
 "ax" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/unary/vent/scrubber/on,
 /obj/machinery/light,
 /turf/simulated/floor/tiled,
 /area/bluespaceriver/ship)
@@ -277,13 +277,13 @@
 /turf/simulated/floor/tiled,
 /area/bluespaceriver/ship)
 "aY" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/unary/vent/pump/on,
 /turf/simulated/floor/tiled,
 /area/bluespaceriver/ship)
 "aZ" = (
 /obj/structure/table/steel,
-/obj/machinery/atmospherics/unary/vent_pump/on,
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/unary/vent/pump/on,
+/obj/machinery/atmospherics/unary/vent/scrubber/on,
 /obj/machinery/light{
 	dir = 4;
 	icon_state = "tube1"
@@ -304,14 +304,14 @@
 /turf/simulated/floor/tiled,
 /area/bluespaceriver/ship)
 "bc" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 4
 	},
 /obj/item/weapon/reagent_containers/spray,
 /turf/simulated/floor/tiled,
 /area/bluespaceriver/ship)
 "bd" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 4;
 	layer = 2.4;
 	level = 2
@@ -402,7 +402,7 @@
 "bn" = (
 /obj/structure/bed/padded,
 /obj/item/weapon/bedsheet/rd,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 8;
 	layer = 2.4;
 	level = 2
@@ -548,7 +548,7 @@
 /area/bluespaceriver/ship)
 "bK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -612,7 +612,7 @@
 	pixel_y = 0;
 	req_access = newlist()
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 8;
 	layer = 2.4;
 	level = 2
@@ -743,7 +743,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/bluespaceriver/ship)
 "co" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 1;
 	layer = 2.4;
 	level = 2
@@ -752,7 +752,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/bluespaceriver/ship)
 "cp" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 1
 	},
 /obj/machinery/suspension_gen,

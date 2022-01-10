@@ -22,8 +22,8 @@
 	var/spawner_spawnable = FALSE	//If true, a nest can be upgraded to autospawn this unit
 	var/necroshop_item_type = /datum/necroshop_item //Give this a subtype if you want to have special behaviour for when this necromorph is spawned from the necroshop
 	var/global_limit = 0	//0 = no limit
-	var/ventcrawl = FALSE //Can this necromorph type ventcrawl?
-	var/ventcrawl_time = 4.5 SECONDS
+	var/ventcrawl = TRUE //Can this necromorph type ventcrawl?
+	var/ventcrawl_time_factor = 3	//The time required to enter a vent is this* the mob's size. Adjust this to make a necro faster or slower relative to its size class
 	lasting_damage_factor = 0.2	//Necromorphs take lasting damage based on incoming hits
 
 	strength    = STR_MEDIUM
@@ -201,7 +201,7 @@
 	if(ventcrawl && isliving(H))
 		add_verb(H, list(/mob/living/proc/ventcrawl, /mob/living/proc/necro_burst_vent))
 		//And if we want to set a custom ventcrawl delay....
-		H.ventcrawl_time = (src.ventcrawl_time) ? src.ventcrawl_time : H.ventcrawl_time
+		H.ventcrawl_time = src.ventcrawl_time_factor * H.mob_size
 	//H.verbs |= /mob/proc/message_unitologists
 	make_scary(H)
 

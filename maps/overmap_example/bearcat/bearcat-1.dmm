@@ -35,14 +35,14 @@
 /turf/simulated/floor/plating,
 /area/ship/scrap/escape_port)
 "aj" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/unary/vent/pump/high_volume{
 	frequency = 1379;
 	id_tag = "cargo_pump"
 	},
 /turf/simulated/floor/plating,
 /area/ship/scrap/cargo/lower)
 "ak" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/unary/vent/pump/high_volume{
 	frequency = 1379;
 	id_tag = "cargo_pump"
 	},
@@ -320,7 +320,7 @@
 /turf/simulated/floor/plating,
 /area/ship/scrap/gambling)
 "ba" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/unary/vent/scrubber/on,
 /obj/structure/holostool,
 /obj/machinery/light/small{
 	icon_state = "bulb1";
@@ -376,7 +376,7 @@
 /turf/simulated/floor/tiled,
 /area/ship/scrap/cargo/lower)
 "bf" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 2;
 	layer = 2.4;
 	level = 2
@@ -627,7 +627,7 @@
 /turf/simulated/floor/plating,
 /area/ship/scrap/crew/dorms1)
 "bG" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 1;
 	layer = 2.4;
 	level = 2
@@ -768,7 +768,7 @@
 /area/ship/scrap/cargo/lower)
 "bW" = (
 /obj/effect/floor_decal/industrial/warning,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -846,7 +846,7 @@
 /turf/simulated/floor/tiled,
 /area/ship/scrap/escape_port)
 "cc" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/unary/vent/scrubber/on,
 /obj/machinery/light_construct/small{
 	icon_state = "bulb-construct-stage1";
 	dir = 1
@@ -1117,7 +1117,7 @@
 /turf/simulated/floor/plating,
 /area/ship/scrap/broken2)
 "cJ" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 1;
 	layer = 2.4;
 	level = 2
@@ -1255,7 +1255,7 @@
 /area/ship/scrap/broken1)
 "db" = (
 /obj/structure/inflatable/wall,
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/unary/vent/scrubber/on,
 /turf/simulated/floor/tiled,
 /area/ship/scrap/broken1)
 "dc" = (
@@ -1265,7 +1265,7 @@
 /obj/structure/closet/crate,
 /obj/item/weapon/mop,
 /obj/item/device/radio,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 2;
 	layer = 2.4;
 	level = 2
@@ -1507,7 +1507,7 @@
 /turf/simulated/floor/plating,
 /area/ship/scrap/crew/dorms3)
 "dD" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 1;
 	layer = 2.4;
 	level = 2
@@ -2005,7 +2005,7 @@
 /turf/simulated/floor/plating,
 /area/ship/scrap/maintenance/eva)
 "eH" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/unary/vent/pump/high_volume{
 	dir = 8;
 	frequency = 1379;
 	id_tag = "eva_pump"
@@ -2058,7 +2058,7 @@
 	pixel_y = -24
 	},
 /obj/structure/cable,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 1;
 	layer = 2.4;
 	level = 2
@@ -2125,7 +2125,7 @@
 	dir = 4;
 	pixel_x = -22
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -2146,7 +2146,7 @@
 /obj/structure/sign/warning/vacuum{
 	pixel_x = 35
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 8;
 	layer = 2.4;
 	level = 2
@@ -2175,7 +2175,7 @@
 /obj/item/weapon/inflatable_dispenser,
 /obj/item/device/radio,
 /obj/item/device/radio,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 1
 	},
 /obj/machinery/light/small,
@@ -2557,7 +2557,7 @@
 /turf/simulated/wall/r_wall/hull,
 /area/ship/scrap/cargo/lower)
 "yb" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/unary/vent/scrubber/on,
 /obj/effect/floor_decal/corner/beige{
 	icon_state = "corner_white";
 	dir = 5
@@ -2631,7 +2631,7 @@
 /turf/simulated/floor/plating,
 /area/ship/scrap/gambling)
 "Db" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 1;
 	layer = 2.4;
 	level = 2
@@ -2728,7 +2728,7 @@
 /turf/simulated/floor/tiled,
 /area/ship/scrap/cargo/lower)
 "Ib" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/unary/vent/scrubber/on,
 /obj/structure/holostool,
 /obj/machinery/light/small{
 	icon_state = "bulb1";
@@ -2779,7 +2779,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/ship/scrap/crew/dorms2)
 "Lb" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 1;
 	layer = 2.4;
 	level = 2
@@ -2809,7 +2809,7 @@
 /turf/simulated/wall,
 /area/ship/scrap/escape_port)
 "Nb" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/unary/vent/scrubber/on,
 /obj/effect/floor_decal/corner/beige{
 	icon_state = "corner_white";
 	dir = 5
@@ -2882,7 +2882,7 @@
 /turf/simulated/wall/r_wall,
 /area/ship/scrap/maintenance/storage)
 "Sb" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 1;
 	layer = 2.4;
 	level = 2
@@ -2995,7 +2995,7 @@
 	icon_state = "corner_white";
 	dir = 5
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/unary/vent/scrubber/on,
 /obj/item/weapon/circuitboard/unary_atmos/heater,
 /turf/simulated/floor/tiled,
 /area/ship/scrap/maintenance/techstorage)

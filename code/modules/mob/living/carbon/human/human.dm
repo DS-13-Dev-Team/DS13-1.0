@@ -16,12 +16,20 @@
 	grasp_limbs = list()
 	stance_limbs = list()
 
+	species = new_species //This is just used as a temporary storage
+	.=..()
+
+/mob/living/carbon/human/Initialize()
+	
+	
 	if(!dna)
 		dna = new /datum/dna(null)
 		// Species name is handled by set_species()
 
-	if(!species)
-		if(new_species)
+	if(!istype(species))
+		if(species)
+			var/new_species = species
+			species = null
 			set_species(new_species,1)
 		else
 			set_species()
@@ -45,7 +53,7 @@
 	hud_list[LIFE_HUD]	      = new /image/hud_overlay('icons/mob/hud.dmi', src, "hudhealthy")
 
 	GLOB.human_mob_list |= src
-	..()
+	. = ..()
 
 	if(dna)
 		dna.ready_dna(src)
@@ -866,7 +874,7 @@
 	if(dna)
 		dna.species = new_species
 
-	if(species)
+	if(istype(species))
 
 		if(species.name && species.name == new_species)
 			return

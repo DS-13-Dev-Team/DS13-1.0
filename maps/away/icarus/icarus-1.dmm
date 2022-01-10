@@ -132,7 +132,7 @@
 /turf/simulated/floor/wood,
 /area/icarus/vessel)
 "aI" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 4;
 	layer = 2.4;
 	level = 2
@@ -149,7 +149,7 @@
 /turf/simulated/floor/wood,
 /area/icarus/vessel)
 "aK" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/wood,
@@ -304,7 +304,7 @@
 /obj/structure/noticeboard{
 	pixel_y = -25
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 4;
 	layer = 2.4;
 	level = 2
@@ -321,7 +321,7 @@
 /turf/simulated/floor/tiled,
 /area/icarus/vessel)
 "bp" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -485,7 +485,7 @@
 /area/icarus/vessel)
 "bQ" = (
 /obj/structure/table/steel,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -586,7 +586,7 @@
 "cg" = (
 /obj/structure/table/steel,
 /obj/random/firstaid,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 4;
 	layer = 2.4;
 	level = 2
@@ -729,7 +729,7 @@
 /turf/simulated/floor/tiled,
 /area/icarus/vessel)
 "cB" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -812,7 +812,7 @@
 "cP" = (
 /obj/structure/table/standard,
 /obj/item/weapon/reagent_containers/pill/dexalin,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 4;
 	layer = 2.4;
 	level = 2
@@ -1081,7 +1081,7 @@
 /turf/simulated/floor/tiled,
 /area/icarus/vessel)
 "dG" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 4;
 	layer = 2.4;
 	level = 2
@@ -1131,7 +1131,7 @@
 /area/icarus/vessel)
 "dO" = (
 /obj/structure/table/standard,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -1219,7 +1219,7 @@
 /area/icarus/vessel)
 "ec" = (
 /obj/structure/table/standard,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -2088,7 +2088,7 @@
 /turf/simulated/floor/plating,
 /area/icarus/open)
 "gL" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
@@ -2103,7 +2103,7 @@
 /turf/simulated/floor/plating,
 /area/icarus/vessel)
 "gN" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/plating,
@@ -2171,7 +2171,7 @@
 /turf/simulated/floor/plating,
 /area/icarus/vessel)
 "gY" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 8
 	},
 /obj/structure/sign/warning/nosmoking_2{
@@ -2418,7 +2418,7 @@
 /turf/simulated/floor/reinforced,
 /area/icarus/vessel)
 "hH" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/unary/vent/pump/high_volume{
 	dir = 8;
 	frequency = 1331;
 	id_tag = "vox_west_vent"

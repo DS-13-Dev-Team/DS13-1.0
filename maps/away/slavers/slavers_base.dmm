@@ -127,7 +127,7 @@
 /turf/simulated/floor/airless/ceiling,
 /area/slavers_base/mort)
 "aD" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/unary/vent/scrubber/on,
 /turf/simulated/floor/airless/ceiling,
 /area/slavers_base/mort)
 "aE" = (
@@ -140,7 +140,7 @@
 	name = "Slaves Mortuary";
 	pixel_x = 24
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/unary/vent/pump/on,
 /turf/simulated/floor/airless/ceiling,
 /area/slavers_base/mort)
 "aF" = (
@@ -401,7 +401,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 8
 	},
 /obj/structure/cable/cyan{
@@ -509,7 +509,7 @@
 "bz" = (
 /obj/structure/closet/crate/freezer/rations,
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 1
 	},
 /obj/structure/cable/cyan{
@@ -551,7 +551,7 @@
 /turf/simulated/floor/airless/ceiling,
 /area/slavers_base/cells)
 "bE" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/unary/vent/scrubber/on,
 /turf/simulated/floor/airless/ceiling,
 /area/slavers_base/cells)
 "bF" = (
@@ -577,7 +577,7 @@
 "bI" = (
 /obj/random/trash,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/unary/vent/pump/on,
 /turf/simulated/floor/airless/ceiling,
 /area/slavers_base/cells)
 "bJ" = (
@@ -869,13 +869,13 @@
 /area/slavers_base/cells)
 "cj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/airless/ceiling,
 /area/slavers_base/cells)
 "ck" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/airless/ceiling,
@@ -944,7 +944,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 8
 	},
 /obj/structure/cable/cyan{
@@ -1400,7 +1400,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/airless,
@@ -1598,7 +1598,7 @@
 /area/slavers_base/hallway)
 "dV" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/airless,
@@ -1673,7 +1673,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/unary/vent/scrubber/on,
 /turf/simulated/floor/tiled,
 /area/slavers_base/secwing)
 "ek" = (
@@ -1783,7 +1783,7 @@
 /turf/simulated/floor/airless/ceiling,
 /area/slavers_base/med)
 "eC" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume,
+/obj/machinery/atmospherics/unary/vent/pump/high_volume,
 /turf/simulated/floor/airless/ceiling,
 /area/slavers_base/hangar)
 "eD" = (
@@ -1896,7 +1896,7 @@
 /turf/simulated/floor/tiled,
 /area/slavers_base/secwing)
 "eP" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -2053,7 +2053,7 @@
 /area/slavers_base/hangar)
 "fl" = (
 /obj/effect/decal/cleanable/generic,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 4;
 	layer = 2.4;
 	level = 2
@@ -2340,7 +2340,7 @@
 /turf/simulated/floor/airless/ceiling,
 /area/slavers_base/powatm)
 "fO" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/airless/ceiling,
@@ -2665,7 +2665,7 @@
 /area/slavers_base/hallway)
 "gG" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/airless,
@@ -2811,7 +2811,7 @@
 /turf/simulated/floor/airless/ceiling,
 /area/slavers_base/maint)
 "gV" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/airless/ceiling,
@@ -2849,7 +2849,7 @@
 /turf/simulated/floor/tiled,
 /area/slavers_base/dorms)
 "gZ" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/unary/vent/scrubber/on,
 /turf/simulated/floor/tiled/airless,
 /area/slavers_base/dorms)
 "ha" = (
@@ -2882,7 +2882,7 @@
 /turf/simulated/wall,
 /area/slavers_base/demo)
 "he" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/airless/ceiling,
@@ -2923,7 +2923,7 @@
 /area/slavers_base/dorms)
 "hk" = (
 /obj/structure/table/standard,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/airless,
@@ -2988,7 +2988,7 @@
 /turf/simulated/floor/tiled/airless,
 /area/slavers_base/demo)
 "hv" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/airless,
@@ -3265,7 +3265,7 @@
 /turf/simulated/floor/airless/ceiling,
 /area/slavers_base/demo)
 "ii" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/airless,
@@ -3554,7 +3554,7 @@
 	pixel_x = 3;
 	pixel_y = 10
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -3601,7 +3601,7 @@
 	icon_state = "4-8";
 	pixel_x = 0
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -3692,7 +3692,7 @@
 	icon_state = "2-8"
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/airless,
@@ -3925,7 +3925,7 @@
 /area/slavers_base/hallway)
 "jH" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/airless,
@@ -3984,7 +3984,7 @@
 /turf/simulated/floor/tiled/airless,
 /area/slavers_base/hallway)
 "jR" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/unary/vent/scrubber/on,
 /turf/simulated/floor/tiled,
 /area/slavers_base/demo)
 "jS" = (
@@ -4108,7 +4108,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -4301,7 +4301,7 @@
 /turf/simulated/floor/airless/ceiling,
 /area/slavers_base/maint)
 "kU" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/unary/vent/pump/high_volume{
 	dir = 1;
 	frequency = 1379;
 	id_tag = "solar_port_pump"

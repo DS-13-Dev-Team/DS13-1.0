@@ -40,7 +40,7 @@
 /turf/simulated/floor/fixed/alium,
 /area/map_template/hydrobase/station/growX)
 "ai" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 2;
 	layer = 2.4;
 	level = 2
@@ -308,7 +308,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/map_template/hydrobase/station/goatzone)
 "aV" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 2;
 	layer = 2.4;
 	level = 2
@@ -445,7 +445,7 @@
 /turf/simulated/floor/tiled/white,
 /area/map_template/hydrobase/station/growD)
 "bk" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 4
 	},
 /obj/machinery/light,
@@ -664,7 +664,7 @@
 /turf/simulated/floor/tiled/white,
 /area/map_template/hydrobase/station/growF)
 "bJ" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 2;
 	layer = 2.4;
 	level = 2
@@ -690,7 +690,7 @@
 /turf/simulated/floor/tiled/white,
 /area/map_template/hydrobase/station/growD)
 "bN" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
@@ -1306,7 +1306,7 @@
 /turf/simulated/floor/fixed/alium,
 /area/map_template/hydrobase/station/growC)
 "dp" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
@@ -1723,7 +1723,7 @@
 /turf/simulated/floor/tiled,
 /area/map_template/hydrobase/station/processing)
 "ej" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -1963,7 +1963,7 @@
 	pixel_x = 0;
 	pixel_y = 25
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/unary/vent/pump/high_volume{
 	dir = 8;
 	frequency = 1392;
 	id_tag = "solars_pump"
@@ -2167,7 +2167,7 @@
 /turf/simulated/floor/tiled,
 /area/map_template/hydrobase/station/processing)
 "eZ" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 1
 	},
 /obj/structure/cable/yellow{
@@ -2255,7 +2255,7 @@
 /turf/simulated/floor/bluegrid,
 /area/map_template/hydrobase/station/growB)
 "fk" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
@@ -2594,7 +2594,7 @@
 /turf/simulated/floor/tiled/white,
 /area/map_template/hydrobase/station/growB)
 "fV" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 4
 	},
 /obj/machinery/light{
@@ -2713,7 +2713,7 @@
 /area/map_template/hydrobase/station/shipaccess)
 "gg" = (
 /obj/effect/floor_decal/industrial/warning,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 4
 	},
 /obj/structure/cable/yellow{
@@ -2748,7 +2748,7 @@
 /turf/simulated/floor/tiled/freezer,
 /area/map_template/hydrobase/station/shower)
 "gj" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 1
 	},
 /obj/structure/cable/yellow{
@@ -2876,7 +2876,7 @@
 	icon_state = "warning";
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/unary/vent/pump/high_volume{
 	dir = 8;
 	frequency = 1391;
 	id_tag = "hydrodock_pump"
@@ -2909,7 +2909,7 @@
 /obj/machinery/oxygen_pump{
 	pixel_x = -32
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/unary/vent/pump/high_volume{
 	dir = 4;
 	frequency = 1391;
 	id_tag = "hydrodock_pump"
@@ -2922,7 +2922,7 @@
 /turf/simulated/floor/tiled,
 /area/map_template/hydrobase/station/dockport)
 "gC" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/unary/vent/pump/high_volume{
 	dir = 8;
 	frequency = 1391;
 	id_tag = "hydrodock_pump"
@@ -2967,7 +2967,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/unary/vent/pump/high_volume{
 	dir = 4;
 	frequency = 1391;
 	id_tag = "hydrodock_pump"
@@ -2986,7 +2986,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/unary/vent/pump/high_volume{
 	dir = 8;
 	frequency = 1391;
 	id_tag = "hydrodock_pump"

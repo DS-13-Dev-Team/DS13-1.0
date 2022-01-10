@@ -115,11 +115,11 @@ if(current_step == this_step || (check_resumed && !resumed)) {\
 		CHECK_TICK
 
 	for(var/obj/machinery/atmospherics/unary/U in machines)
-		if(istype(U, /obj/machinery/atmospherics/unary/vent_pump))
-			var/obj/machinery/atmospherics/unary/vent_pump/T = U
+		if(istype(U, /obj/machinery/atmospherics/unary/vent/pump))
+			var/obj/machinery/atmospherics/unary/vent/pump/T = U
 			T.broadcast_status()
-		else if(istype(U, /obj/machinery/atmospherics/unary/vent_scrubber))
-			var/obj/machinery/atmospherics/unary/vent_scrubber/T = U
+		else if(istype(U, /obj/machinery/atmospherics/unary/vent/scrubber))
+			var/obj/machinery/atmospherics/unary/vent/scrubber/T = U
 			T.broadcast_status()
 		CHECK_TICK
 

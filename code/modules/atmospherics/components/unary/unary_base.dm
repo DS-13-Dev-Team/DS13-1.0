@@ -93,3 +93,9 @@
 		update_underlays()
 
 		return null
+
+
+/obj/machinery/atmospherics/unary/get_attached_pipe_networks()
+	.=..()
+	if (network)
+		. |= network

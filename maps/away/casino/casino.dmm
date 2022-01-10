@@ -236,7 +236,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 5
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/unary/vent/pump/high_volume{
 	dir = 2;
 	frequency = 1380;
 	id_tag = "admin_shuttle_dock_pump"
@@ -265,7 +265,7 @@
 /turf/simulated/floor/tiled,
 /area/casino/casino_bridge)
 "aN" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/unary/vent/pump/high_volume{
 	dir = 4;
 	frequency = 1381;
 	id_tag = "admin_shuttle_dock_pump"
@@ -339,7 +339,7 @@
 	icon_state = "4-8";
 	pixel_x = 0
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -726,7 +726,7 @@
 	},
 /obj/item/weapon/gun/projectile/shotgun/pump,
 /obj/effect/decal/cleanable/blood/splatter,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 8;
 	layer = 2.4;
 	level = 2
@@ -819,7 +819,7 @@
 /area/casino/casino_security)
 "cg" = (
 /obj/structure/table/rack,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
@@ -879,7 +879,7 @@
 "cr" = (
 /obj/structure/bed,
 /obj/random/plushie,
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/unary/vent/pump/on,
 /turf/simulated/floor/tiled,
 /area/casino/casino_crew_bunk)
 "cs" = (
@@ -975,7 +975,7 @@
 "cz" = (
 /obj/structure/table/steel_reinforced,
 /obj/random/firstaid,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 1;
 	layer = 2.4;
 	level = 2
@@ -1023,7 +1023,7 @@
 	icon_state = "0-4";
 	d2 = 4
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -1084,7 +1084,7 @@
 "cQ" = (
 /obj/structure/table/steel_reinforced,
 /obj/random/firstaid,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -1122,7 +1122,7 @@
 /area/casino/casino_hangar)
 "cW" = (
 /obj/effect/floor_decal/industrial/warning,
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/unary/vent/pump/high_volume{
 	dir = 1;
 	external_pressure_bound = 140;
 	external_pressure_bound_default = 140;
@@ -1147,7 +1147,7 @@
 /area/space)
 "cZ" = (
 /obj/effect/decal/cleanable/blood/splatter,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
@@ -1182,7 +1182,7 @@
 "dd" = (
 /obj/structure/closet,
 /obj/random/glasses,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -1819,7 +1819,7 @@
 /obj/structure/table/steel_reinforced,
 /obj/machinery/light,
 /obj/random/coin,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
@@ -1828,7 +1828,7 @@
 /obj/structure/table/steel_reinforced,
 /obj/random/tool,
 /obj/item/weapon/circuitboard/recharge_station,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -2179,7 +2179,7 @@
 	dir = 4;
 	icon_state = "tube1"
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -2321,7 +2321,7 @@
 	dir = 4;
 	icon_state = "tube1"
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -2542,7 +2542,7 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/unary/vent/pump/high_volume{
 	dir = 2;
 	frequency = 1329;
 	id_tag = "casino_solar_pump"
@@ -3092,7 +3092,7 @@
 /area/casino/casino_kitchen)
 "il" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 8;
 	layer = 2.4;
 	level = 2
@@ -3109,7 +3109,7 @@
 /area/casino/casino_kitchen)
 "im" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 8
 	},
 /obj/item/weapon/reagent_containers/food/condiment/sugar,
@@ -3471,7 +3471,7 @@
 	icon_state = "warning";
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
@@ -3562,7 +3562,7 @@
 /obj/structure/sink/kitchen{
 	pixel_y = 30
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 8;
 	layer = 2.4;
 	level = 2
@@ -3681,7 +3681,7 @@
 /obj/random/drinkbottle,
 /obj/random/drinkbottle,
 /obj/random/drinkbottle,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -3737,7 +3737,7 @@
 	icon_state = "warning";
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
@@ -4303,7 +4303,7 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 8;
 	layer = 2.4;
 	level = 2
@@ -4360,7 +4360,7 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 8;
 	layer = 2.4;
 	level = 2
@@ -4417,7 +4417,7 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 8;
 	layer = 2.4;
 	level = 2
@@ -4759,7 +4759,7 @@
 /obj/structure/bed/chair/comfy/red{
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/wood,
@@ -4789,7 +4789,7 @@
 /obj/random/drinkbottle,
 /obj/random/coin,
 /obj/random/coin,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/wood,
@@ -4807,7 +4807,7 @@
 "mx" = (
 /obj/structure/table/woodentable,
 /obj/random/drinkbottle,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/wood,
@@ -4863,7 +4863,7 @@
 /turf/simulated/floor/plating,
 /area/casino/casino_bow)
 "mI" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
@@ -4914,7 +4914,7 @@
 /turf/simulated/floor/plating,
 /area/casino/casino_bow)
 "mO" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
@@ -5160,7 +5160,7 @@
 	icon_state = "tube1";
 	pixel_y = 0
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 1;
 	layer = 2.4;
 	level = 2
@@ -5222,7 +5222,7 @@
 /area/casino/casino_bridge)
 "rc" = (
 /obj/machinery/computer/arcade,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 8;
 	layer = 2.4;
 	level = 2
@@ -5247,7 +5247,7 @@
 /area/casino/casino_bridge)
 "sc" = (
 /obj/structure/reagent_dispensers/water_cooler,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 8
 	},
 /obj/structure/cable{
@@ -5319,7 +5319,7 @@
 /obj/item/ammo_casing/a556/used,
 /obj/item/ammo_casing/a556/used,
 /obj/item/ammo_casing/a556/used,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 8;
 	layer = 2.4;
 	level = 2
@@ -5539,7 +5539,7 @@
 /area/casino/casino_mainfloor)
 "Gb" = (
 /obj/item/ammo_casing/a50/used,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 1;
 	layer = 2.4;
 	level = 2
@@ -5947,7 +5947,7 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 1;
 	layer = 2.4;
 	level = 2
@@ -5985,7 +5985,7 @@
 /obj/item/weapon/storage/mirror{
 	pixel_x = -25
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,

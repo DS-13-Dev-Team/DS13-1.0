@@ -471,13 +471,13 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/ishimura/eva/substation)
 "aZ" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 4
 	},
 /obj/machinery/light{
@@ -535,7 +535,7 @@
 /turf/simulated/floor/dank,
 /area/ishimura/eva)
 "be" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 8
 	},
 /obj/machinery/light{
@@ -783,7 +783,7 @@
 	id_tag = "eva_smes1_sensor";
 	pixel_y = -24
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/unary/vent/pump/high_volume{
 	dir = 1;
 	frequency = 1380;
 	id_tag = "eva_smes1_pump"
@@ -795,7 +795,7 @@
 /turf/simulated/floor/plating,
 /area/ishimura/eva/substation)
 "bv" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 4
 	},
 /obj/machinery/access_button{
@@ -834,7 +834,7 @@
 	id_tag = "eva_smes2_sensor";
 	pixel_y = -24
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/unary/vent/pump/high_volume{
 	dir = 1;
 	frequency = 1380;
 	id_tag = "eva_smes2_pump"
@@ -960,7 +960,7 @@
 /area/ishimura/eva/supply)
 "bP" = (
 /obj/structure/table/standard,
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/unary/vent/scrubber/on,
 /obj/item/weapon/storage/toolbox/emergency,
 /obj/machinery/light{
 	dir = 1
@@ -970,7 +970,7 @@
 "bQ" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 4
 	},
 /obj/item/stack/material/glass/fifty,
@@ -1053,7 +1053,7 @@
 /turf/simulated/floor/dank,
 /area/ishimura/eva/prep)
 "ce" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/dank,
@@ -1074,7 +1074,7 @@
 /turf/simulated/floor/dank,
 /area/ishimura/eva/prep)
 "ch" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/dank,
@@ -1086,7 +1086,7 @@
 /turf/simulated/floor/dank,
 /area/ishimura/eva)
 "cj" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/unary/vent/scrubber/on,
 /turf/simulated/floor/tiled/dark,
 /area/ishimura/eva/prep)
 "ck" = (
@@ -1124,7 +1124,7 @@
 "cp" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 4
 	},
 /obj/item/stack/material/steel/fifty,
@@ -1391,7 +1391,7 @@
 /turf/simulated/floor/reinforced,
 /area/space)
 "cI" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 4;
 	layer = 2.4;
 	level = 2
@@ -1409,7 +1409,7 @@
 /turf/simulated/floor/plating,
 /area/ishimura/eva)
 "cK" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/dank,
@@ -1519,7 +1519,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/ishimura/eva/prep)
 "cY" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
@@ -1624,7 +1624,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/eva)
 "dm" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/unary/vent/scrubber/on,
 /obj/machinery/status_display{
 	pixel_y = 32
 	},
@@ -1730,7 +1730,7 @@
 /area/ishimura/eva/airlock)
 "dB" = (
 /obj/effect/floor_decal/industrial/warning/full,
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/unary/vent/pump/high_volume{
 	frequency = 1380;
 	id_tag = "topdeck_airlock_pump"
 	},
@@ -1760,7 +1760,7 @@
 	tag_exterior_door = "topdeck_airlock_outer";
 	tag_interior_door = "topdeck_airlock_inner"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/unary/vent/pump/high_volume{
 	frequency = 1380;
 	id_tag = "topdeck_airlock_pump"
 	},
@@ -1942,7 +1942,7 @@
 "dU" = (
 /obj/structure/closet/walllocker/emerglocker/north,
 /obj/effect/floor_decal/industrial/warning/full,
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/unary/vent/pump/high_volume{
 	frequency = 1380;
 	id_tag = "topdeck_airlock_pump"
 	},
@@ -2191,7 +2191,7 @@
 /turf/simulated/floor/dank/mono,
 /area/ishimura/eva)
 "eu" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/dank,
@@ -2205,7 +2205,7 @@
 /area/ishimura/eva)
 "ew" = (
 /obj/effect/floor_decal/industrial/warning/full,
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/unary/vent/pump/high_volume{
 	dir = 1;
 	frequency = 1380;
 	id_tag = "topdeck_airlock_pump"
@@ -2219,7 +2219,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ishimura/eva/airlock)
 "ey" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/unary/vent/pump/high_volume{
 	dir = 1;
 	frequency = 1380;
 	id_tag = "topdeck_airlock_pump"
@@ -2878,7 +2878,7 @@
 /turf/simulated/open,
 /area/ishimura/eva/substation/transfer)
 "fF" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/unary/vent/pump/high_volume{
 	dir = 1;
 	frequency = 1380;
 	id_tag = "eva_smes3_pump"
@@ -2975,7 +2975,7 @@
 /area/space)
 "fO" = (
 /obj/effect/floor_decal/industrial/warning/full,
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/unary/vent/pump/high_volume{
 	dir = 1;
 	frequency = 1380;
 	id_tag = "topdeck_airlock_pump"
@@ -3100,14 +3100,14 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ishimura/eva/airlock/ADS)
 "ga" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/unary/vent/scrubber/on,
 /obj/structure/table/reinforced,
 /obj/random/rare_loot/rarely,
 /obj/item/weapon/storage/box/lights/mixed,
 /turf/simulated/floor/tiled/dark,
 /area/ishimura/eva/prep/ADS)
 "gb" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/unary/vent/scrubber/on,
 /turf/simulated/floor/dank,
 /area/ishimura/eva/ADS)
 "gc" = (
@@ -3128,7 +3128,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/unary/vent/scrubber/on,
 /turf/simulated/floor/dank/mono,
 /area/ishimura/eva/ADS)
 "gf" = (
@@ -3231,7 +3231,7 @@
 /turf/simulated/floor/dank,
 /area/ishimura/eva/ADS)
 "gm" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 4
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -3474,7 +3474,7 @@
 /area/ishimura/eva/ADS)
 "gQ" = (
 /obj/machinery/light,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/dank/mono,
@@ -3494,7 +3494,7 @@
 /area/ishimura/eva/ADS)
 "gS" = (
 /obj/structure/table/reinforced,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 1
 	},
 /obj/item/weapon/paper_bin,
@@ -3625,7 +3625,7 @@
 /obj/machinery/camera/network/engineering{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/unary/vent/pump/high_volume{
 	dir = 1;
 	frequency = 1380;
 	id_tag = "ADS_airlock_pump"
@@ -3702,7 +3702,7 @@
 "wF" = (
 /obj/effect/floor_decal/industrial/warning/full,
 /obj/structure/closet/walllocker/emerglocker/north,
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/unary/vent/pump/high_volume{
 	frequency = 1380;
 	id_tag = "ADS_airlock_pump"
 	},
@@ -3740,7 +3740,7 @@
 	tag_exterior_door = "ADS_airlock_outer";
 	tag_interior_door = "ADS_airlock_inner"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/unary/vent/pump/high_volume{
 	frequency = 1380;
 	id_tag = "ADS_airlock_pump"
 	},
@@ -3759,7 +3759,7 @@
 	dir = 8;
 	pixel_x = 22
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/unary/vent/pump/high_volume{
 	frequency = 1380;
 	id_tag = "ADS_airlock_pump"
 	},
@@ -3777,7 +3777,7 @@
 /area/ishimura/eva/prep/ADS)
 "Cj" = (
 /obj/effect/floor_decal/industrial/warning/full,
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/unary/vent/pump/high_volume{
 	dir = 1;
 	frequency = 1380;
 	id_tag = "ADS_airlock_pump"
@@ -3924,7 +3924,7 @@
 	id_tag = "ADS_airlock_sensor";
 	pixel_y = -24
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/unary/vent/pump/high_volume{
 	dir = 1;
 	frequency = 1380;
 	id_tag = "ADS_airlock_pump"

@@ -376,7 +376,7 @@
 /area/lar_maria/cells)
 "aY" = (
 /obj/structure/bed/padded,
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/unary/vent/pump/on,
 /turf/simulated/floor/tiled,
 /area/lar_maria/cells)
 "aZ" = (
@@ -626,7 +626,7 @@
 /turf/simulated/floor/tiled/white,
 /area/lar_maria/vir_main)
 "bJ" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 8
 	},
 /obj/structure/table/glass,
@@ -695,7 +695,7 @@
 /area/lar_maria/cells)
 "bV" = (
 /obj/structure/reagent_dispensers/water_cooler,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -739,7 +739,7 @@
 /turf/simulated/floor/tiled/white,
 /area/lar_maria/vir_main)
 "cb" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 8
 	},
 /obj/structure/table/glass,
@@ -751,7 +751,7 @@
 /turf/simulated/floor/tiled/white,
 /area/lar_maria/cells)
 "cd" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/unary/vent/scrubber/on,
 /turf/simulated/floor/plating,
 /area/lar_maria/cells)
 "ce" = (
@@ -774,7 +774,7 @@
 	icon_state = "morgue1";
 	dir = 8
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/unary/vent/pump/on,
 /obj/machinery/alarm{
 	alarm_id = "misc_research";
 	dir = 8;
@@ -916,7 +916,7 @@
 /turf/simulated/floor/tiled/white,
 /area/lar_maria/cells)
 "cw" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/unary/vent/pump/on,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plating,
 /area/lar_maria/cells)
@@ -929,7 +929,7 @@
 /obj/structure/crematorium{
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
@@ -1102,7 +1102,7 @@
 /area/lar_maria/cells)
 "cS" = (
 /obj/structure/closet/emcloset,
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/unary/vent/pump/on,
 /turf/simulated/floor/tiled,
 /area/lar_maria/cells)
 "cT" = (
@@ -1247,7 +1247,7 @@
 /turf/simulated/floor/plating,
 /area/lar_maria/sec_wing)
 "di" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -1272,7 +1272,7 @@
 	pixel_x = 0;
 	pixel_y = 32
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 8
 	},
 /obj/machinery/door/firedoor,
@@ -1604,7 +1604,7 @@
 /area/lar_maria/vir_ward)
 "ej" = (
 /obj/structure/bed/roller,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 2;
 	layer = 2.4;
 	level = 2
@@ -1851,7 +1851,7 @@
 	name = "west bump";
 	pixel_x = -24
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/unary/vent/scrubber/on,
 /obj/effect/landmark/corpse/lar_maria/zhp_guard/dark,
 /obj/structure/cable{
 	icon_state = "0-2";
@@ -2032,7 +2032,7 @@
 /area/lar_maria/sec_wing)
 "fk" = (
 /obj/structure/table/steel_reinforced,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 8
 	},
 /obj/machinery/embedded_controller/radio/airlock/airlock_controller{
@@ -2070,7 +2070,7 @@
 /area/lar_maria/sec_wing)
 "fo" = (
 /obj/structure/bed/roller,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
@@ -2088,7 +2088,7 @@
 	name = "west bump";
 	pixel_x = -24
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/unary/vent/pump/on,
 /obj/structure/cable{
 	icon_state = "0-2";
 	d2 = 2
@@ -2097,7 +2097,7 @@
 /turf/simulated/floor/tiled/white,
 /area/lar_maria/vir_aux)
 "fr" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/unary/vent/scrubber/on,
 /obj/structure/table/glass,
 /obj/item/weapon/storage/box/masks,
 /obj/item/weapon/storage/box/gloves,
@@ -2119,7 +2119,7 @@
 	name = "east bump";
 	pixel_x = 24
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/unary/vent/pump/on,
 /obj/structure/cable{
 	icon_state = "0-2";
 	d2 = 2
@@ -2129,13 +2129,13 @@
 "fv" = (
 /obj/structure/table/rack,
 /obj/item/weapon/flamethrower/full,
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/unary/vent/scrubber/on,
 /turf/simulated/floor/tiled,
 /area/lar_maria/sec_wing)
 "fw" = (
 /obj/structure/table/rack,
 /obj/item/weapon/storage/box/glowsticks,
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/unary/vent/pump/on,
 /turf/simulated/floor/tiled,
 /area/lar_maria/sec_wing)
 "fx" = (
@@ -3026,12 +3026,12 @@
 /area/lar_maria/vir_access)
 "he" = (
 /obj/structure/closet,
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/unary/vent/pump/on,
 /turf/simulated/floor/tiled,
 /area/lar_maria/vir_access)
 "hf" = (
 /obj/structure/closet,
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/unary/vent/scrubber/on,
 /turf/simulated/floor/tiled,
 /area/lar_maria/vir_access)
 "hg" = (
@@ -3069,12 +3069,12 @@
 /area/lar_maria/vir_access)
 "hn" = (
 /obj/structure/closet/l3closet/virology,
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/unary/vent/pump/on,
 /turf/simulated/floor/tiled,
 /area/lar_maria/vir_access)
 "ho" = (
 /obj/structure/closet/l3closet/virology,
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/unary/vent/scrubber/on,
 /turf/simulated/floor/tiled,
 /area/lar_maria/vir_access)
 "hp" = (
@@ -3186,7 +3186,7 @@
 	},
 /obj/random/smokes,
 /obj/item/weapon/storage/box/matches,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -3383,7 +3383,7 @@
 	dir = 8
 	},
 /obj/structure/table/standard,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 4
 	},
 /obj/item/weapon/paper/lar_maria/note_7,
@@ -3712,7 +3712,7 @@
 /area/lar_maria/sec_wing)
 "iE" = (
 /obj/structure/closet,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 1;
 	layer = 2.4;
 	level = 2
@@ -3721,7 +3721,7 @@
 /area/lar_maria/vir_access)
 "iF" = (
 /obj/structure/closet,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -3742,7 +3742,7 @@
 /area/lar_maria/vir_access)
 "iI" = (
 /obj/structure/closet/l3closet/virology,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 1;
 	layer = 2.4;
 	level = 2
@@ -3751,7 +3751,7 @@
 /area/lar_maria/vir_access)
 "iJ" = (
 /obj/structure/closet/l3closet/virology,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -3789,7 +3789,7 @@
 /turf/simulated/floor/plating,
 /area/lar_maria/cells)
 "iO" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/unary/vent/pump/high_volume{
 	dir = 1;
 	frequency = 1037;
 	id_tag = "ZHPCells_airlock_pump"

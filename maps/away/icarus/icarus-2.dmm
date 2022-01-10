@@ -225,7 +225,7 @@
 "aU" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/weapon/storage/box/PDAs,
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/unary/vent/pump/on,
 /turf/simulated/floor/tiled,
 /area/icarus/vessel)
 "aV" = (
@@ -308,7 +308,7 @@
 /area/icarus/vessel)
 "be" = (
 /obj/machinery/light,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -361,7 +361,7 @@
 	icon_state = "tube1";
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/unary/vent/pump/on,
 /turf/simulated/floor/tiled,
 /area/icarus/vessel)
 "bn" = (
@@ -399,7 +399,7 @@
 /turf/simulated/floor/bluegrid,
 /area/icarus/vessel)
 "bu" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -438,7 +438,7 @@
 /turf/simulated/floor/tiled,
 /area/icarus/vessel)
 "bz" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -459,7 +459,7 @@
 /area/icarus/vessel)
 "bD" = (
 /obj/structure/filingcabinet,
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/unary/vent/scrubber/on,
 /turf/simulated/floor/tiled,
 /area/icarus/vessel)
 "bE" = (
@@ -478,7 +478,7 @@
 /obj/structure/closet,
 /obj/item/weapon/reagent_containers/food/drinks/bottle/tequilla,
 /obj/item/weapon/reagent_containers/food/drinks/bottle/wine,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 1;
 	layer = 2.4;
 	level = 2
@@ -556,14 +556,14 @@
 /obj/structure/closet,
 /obj/item/weapon/storage/backpack/industrial,
 /obj/item/weapon/storage/toolbox/mechanical,
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/unary/vent/scrubber/on,
 /turf/simulated/floor/tiled,
 /area/icarus/vessel)
 "bW" = (
 /obj/structure/closet,
 /obj/item/clothing/suit/radiation,
 /obj/item/clothing/suit/radiation,
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/unary/vent/pump/on,
 /turf/simulated/floor/tiled,
 /area/icarus/vessel)
 "bX" = (
@@ -645,7 +645,7 @@
 /area/icarus/vessel)
 "cj" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -683,7 +683,7 @@
 /turf/simulated/floor/tiled,
 /area/icarus/vessel)
 "co" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -728,7 +728,7 @@
 /area/icarus/vessel)
 "cu" = (
 /obj/structure/table/steel_reinforced,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -787,7 +787,7 @@
 "cE" = (
 /obj/structure/table/woodentable,
 /obj/random/action_figure,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -822,7 +822,7 @@
 /area/icarus/vessel)
 "cJ" = (
 /obj/structure/table/steel_reinforced,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -912,7 +912,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 8
 	},
 /obj/effect/decal/cleanable/blood,
@@ -1050,7 +1050,7 @@
 /turf/simulated/floor/tiled,
 /area/icarus/vessel)
 "do" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 1
 	},
 /obj/machinery/alarm{
@@ -1066,13 +1066,13 @@
 /obj/item/weapon/gun/projectile/shotgun/pump,
 /obj/item/weapon/reagent_containers/spray/pepper,
 /obj/item/weapon/storage/box/handcuffs,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/icarus/vessel)
 "dq" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -1090,7 +1090,7 @@
 /turf/simulated/floor/tiled,
 /area/icarus/open)
 "dt" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 8
 	},
 /obj/item/modular_computer/console{
@@ -1165,7 +1165,7 @@
 "dF" = (
 /obj/structure/closet,
 /obj/item/clothing/suit/storage/toggle/labcoat/blue,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -1213,7 +1213,7 @@
 	icon_state = "tube1";
 	pixel_y = 0
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 1
 	},
 /obj/item/modular_computer/console{
@@ -1249,7 +1249,7 @@
 /area/icarus/open)
 "dS" = (
 /obj/structure/bed,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -1279,7 +1279,7 @@
 /area/icarus/open)
 "dX" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -1360,7 +1360,7 @@
 	},
 /area/icarus/vessel)
 "ej" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 4
 	},
 /obj/structure/sign/warning/internals_required{
@@ -1540,7 +1540,7 @@
 /turf/simulated/floor/plating,
 /area/icarus/vessel)
 "eO" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/unary/vent/pump/high_volume{
 	dir = 4;
 	frequency = 1379;
 	id_tag = "bridgeport_pump"
@@ -1564,7 +1564,7 @@
 /turf/simulated/floor/plating,
 /area/icarus/vessel)
 "eR" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/unary/vent/pump/high_volume{
 	dir = 8;
 	frequency = 1331;
 	id_tag = "ninja_shuttle_pump"
@@ -1793,7 +1793,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/unary/vent/pump/high_volume{
 	dir = 1;
 	frequency = 1331;
 	id_tag = "calypso_shuttle_pump"

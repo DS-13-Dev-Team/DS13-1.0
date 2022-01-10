@@ -230,7 +230,7 @@
 	tag_exterior_door = "solar_starboard_outer";
 	tag_interior_door = "solar_starboard_inner"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/unary/vent/pump/high_volume{
 	dir = 2;
 	frequency = 1379;
 	id_tag = "solar_starboard_pump"
@@ -416,7 +416,7 @@
 	icon_state = "4-8"
 	},
 /obj/item/weapon/paper,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/airless,
@@ -455,7 +455,7 @@
 /turf/simulated/floor/tiled/airless,
 /area/lost_supply_base/office)
 "aX" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/unary/vent/pump{
 	dir = 4;
 	external_pressure_bound = 0;
 	external_pressure_bound_default = 0;
@@ -851,7 +851,7 @@
 /turf/simulated/floor/tiled/airless,
 /area/lost_supply_base/office)
 "bY" = (
-/obj/machinery/atmospherics/unary/vent_scrubber,
+/obj/machinery/atmospherics/unary/vent/scrubber,
 /turf/simulated/floor/tiled/airless,
 /area/lost_supply_base/office)
 "bZ" = (
@@ -1306,7 +1306,7 @@
 /turf/simulated/floor/tiled/airless,
 /area/lost_supply_base/common)
 "dr" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/airless,
@@ -1703,7 +1703,7 @@
 /turf/simulated/floor/tiled/airless,
 /area/lost_supply_base)
 "eF" = (
-/obj/machinery/atmospherics/unary/vent_scrubber,
+/obj/machinery/atmospherics/unary/vent/scrubber,
 /turf/simulated/floor/tiled/airless,
 /area/lost_supply_base/common)
 "eG" = (
@@ -1890,7 +1890,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/airless,
@@ -1991,7 +1991,7 @@
 /turf/simulated/floor/airless,
 /area/lost_supply_base)
 "fx" = (
-/obj/machinery/atmospherics/unary/vent_scrubber{
+/obj/machinery/atmospherics/unary/vent/scrubber{
 	icon_state = "map_scrubber_off";
 	dir = 1
 	},
@@ -2036,7 +2036,7 @@
 /turf/simulated/floor/airless,
 /area/lost_supply_base)
 "fE" = (
-/obj/machinery/atmospherics/unary/vent_scrubber,
+/obj/machinery/atmospherics/unary/vent/scrubber,
 /turf/simulated/floor/tiled/airless,
 /area/lost_supply_base/supply)
 "fF" = (
@@ -2161,7 +2161,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent/pump/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/airless{
@@ -2306,7 +2306,7 @@
 /obj/structure/closet/crate/trashcart,
 /obj/item/weapon/mop,
 /obj/item/weapon/storage/box/lights/bulbs,
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/unary/vent/pump{
 	dir = 1;
 	external_pressure_bound = 0;
 	external_pressure_bound_default = 0;

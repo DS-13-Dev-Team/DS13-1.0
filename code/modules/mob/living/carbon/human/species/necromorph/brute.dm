@@ -37,6 +37,7 @@
 	density_lying = TRUE	//Chunky boi
 	evasion = -15	//Big target, easier to shoot
 	reach = 2
+	ventcrawl = FALSE //It breaks down doors instead
 
 	//Implacable
 	stun_mod = 0.5

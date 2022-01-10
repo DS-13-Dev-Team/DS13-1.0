@@ -133,3 +133,12 @@ obj/machinery/atmospherics/binary/Destroy()
 	node2 = null
 
 	. = ..()
+
+
+/obj/machinery/atmospherics/binary/get_attached_pipe_networks()
+	.=..()
+	if (network1)
+		. |= network1
+
+	if (network2)
+		. |= network2

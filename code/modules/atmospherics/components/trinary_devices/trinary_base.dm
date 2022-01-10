@@ -166,3 +166,14 @@ obj/machinery/atmospherics/trinary
 		update_underlays()
 
 		return null
+
+/obj/machinery/atmospherics/trinary/get_attached_pipe_networks()
+	.=..()
+	if (network1)
+		. |= network1
+
+	if (network2)
+		. |= network2
+
+	if (network3)
+		. |= network3

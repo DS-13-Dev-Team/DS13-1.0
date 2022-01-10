@@ -82,3 +82,8 @@
 
 /datum/pipe_network/proc/reconcile_air()
 	equalize_gases(gases)
+
+//Debug proc
+/datum/pipe_network/proc/dump()
+	for(var/obj/machinery/atmospherics/normal_member in normal_members)
+		to_chat(world, "[jumplink(normal_member)] | [normal_member.type]")
