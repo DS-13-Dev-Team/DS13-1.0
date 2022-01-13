@@ -3,6 +3,7 @@
 	desc = "A machine that either fills or sucks air from the surrounding environment."
 	icon = 'icons/obj/atmos.dmi'
 	icon_state = "psiphon:0"
+	clicksound = "button2"
 	density = 1
 	w_class = ITEM_SIZE_NORMAL
 

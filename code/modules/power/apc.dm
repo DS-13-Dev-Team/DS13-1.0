@@ -75,7 +75,7 @@
 	anchored = 1
 	use_power = 0
 	req_access = list(access_engineering)
-	clicksound = "switch"
+	clicksound = "button"
 	layer = ABOVE_WINDOW_LAYER
 	var/needs_powerdown_sound
 	var/area/area

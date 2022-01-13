@@ -111,6 +111,7 @@
 	else
 		on = !on
 		user.visible_message("<span class='notice'>[user] switches [on ? "on" : "off"] the [src].</span>","<span class='notice'>You switch [on ? "on" : "off"] the [src].</span>")
+		playsound(src, 'sound/machines/button2.ogg', VOLUME_MID_HIGH)
 		update_icon()
 	return
 

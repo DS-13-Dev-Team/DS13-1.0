@@ -91,7 +91,7 @@
 /obj/machinery/growth_tank/on_reagent_change(var/reagent_type, var/delta)
 	. = ..()
 	update_current_biomass()
-	playsound(src, "bubble_small", VOLUME_LOW)
+	playsound(src, "bubble_small", VOLUME_MID)
 
 /obj/machinery/growth_tank/proc/update_current_biomass()
 	current_biomass = reagents.get_reagent_amount(/datum/reagent/nutriment/biomass)
@@ -293,7 +293,7 @@ There's no need to make this choice right now, if you cancel it will carry on gr
 		Do you wish to eject it?", "Eject Growth Product", list("Remove from Tank", "Leave it in"))
 		if (choice == "Remove from Tank")
 			remove_product(user)
-			playsound(src, "bubble", VOLUME_LOW)
+			playsound(src, "bubble", VOLUME_MID)
 
 	else
 		//Selecting a product to grow!
@@ -316,7 +316,7 @@ There's no need to make this choice right now, if you cancel it will carry on gr
 			return FALSE
 	current_growth_atom = new /obj/item/organ/forming(src, choice)
 	forming = TRUE
-	playsound(src, "bubble", VOLUME_LOW)
+	playsound(src, "bubble", VOLUME_MID)
 	turn_on()
 
 

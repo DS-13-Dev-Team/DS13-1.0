@@ -1,6 +1,7 @@
 /obj/machinery/atmospherics/trinary/mixer
 	icon = 'icons/atmos/mixer.dmi'
 	icon_state = "map"
+	clicksound = "button2"
 	density = 0
 	level = 1
 

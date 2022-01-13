@@ -880,6 +880,7 @@ FIRE ALARM
 	name = "fire alarm"
 	desc = "<i>\"Pull this in case of emergency\"</i>. Thus, keep pulling it forever."
 	icon = 'icons/obj/monitors.dmi'
+	clicksound = "button"
 	icon_state = "fire0"
 	var/detecting = 1.0
 	var/working = 1.0
