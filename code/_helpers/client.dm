@@ -35,17 +35,17 @@
 	if(isnull(new_size))
 		CRASH("change_view called without argument.")
 	if(isnum(new_size))
-		if(view_radius == new_size)
+		if(view_range == new_size)
 			return
 
-		view_radius = new_size
-		view = VIEW_NUM_TO_STRING(view_radius)
+		view_range = new_size
+		view = VIEW_NUM_TO_STRING(view_range)
 	else
 		if(view == new_size)
 			return
 
 		var/list/view_size = getviewsize(new_size)
-		view_radius = round(max(view_size[1], view_size[2])/2)
+		view_range = round(max(view_size[1], view_size[2])/2)
 		view = new_size
 
 	apply_clickcatcher()
@@ -53,7 +53,7 @@
 	//This thing handles nightvision, it is set to a certain size and does not scale with the screen
 	//BUT, we can't allow it to be bigger than the screen, so we resize it here to the size it already is
 	//It will check our screen limit and cap itself to that
-	mob.set_darksight_range(view_radius)
+	mob.set_darksight_range(view_range)
 	if (mob.client)
 		mob.client.update_skybox(TRUE)
 	if (isliving(mob))
@@ -69,11 +69,11 @@
 
 //Returns the width of the viewport/map window, in pixels
 /client/proc/get_viewport_width()
-	return ((view_radius*2)+1) * WORLD_ICON_SIZE
+	return ((view_range*2)+1) * WORLD_ICON_SIZE
 
 //Returns the total distance infront of the mob that this client can see, taking into account view radius and offset
 /client/proc/get_view_length()
-	return view_radius + (view_offset_magnitude / WORLD_ICON_SIZE)
+	return view_range + (view_offset_magnitude / WORLD_ICON_SIZE)
 
 
 /client/proc/set_view_offset(var/direction, var/magnitude, var/force_update = FALSE)

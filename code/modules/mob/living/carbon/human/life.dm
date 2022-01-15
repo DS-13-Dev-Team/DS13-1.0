@@ -1045,9 +1045,6 @@
 			reset_view(null, 0)
 
 	update_equipment_vision()
-	species.handle_vision(src)
 
-/mob/living/carbon/human/update_living_sight()
-	..()
-	if(XRAY in mutations)
-		set_sight(sight|SEE_TURFS|SEE_MOBS|SEE_OBJS)
+	//Stop doing this every tick
+	//species.handle_vision(src)

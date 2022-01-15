@@ -32,17 +32,17 @@
 	if(T)
 		if(rebuild)
 			skybox.overlays.Cut()
-			skybox.overlays += SSskybox.get_skybox(T.z, max(world.view, view_radius))
+			skybox.overlays += SSskybox.get_skybox(T.z, max(world.view, view_range))
 			screen |= skybox
-			skybox.scalar = view_scalar(view_radius)
+			skybox.scalar = view_scalar(view_range)
 
-			skybox.buffer_tiles = BASE_BUFFER_TILES + view_radius
+			skybox.buffer_tiles = BASE_BUFFER_TILES + view_range
 
 			//Alright, time for some math. First of all, how big is the skybox image now, in pixels
 			var/skybox_side_size = DEFAULT_SKYBOX_SIZE * skybox.scalar
 
 			//Here's the minimum distance in pixels we need to be from the edge, to not-see whitespace
-			var/buffer_pixels = (view_radius + 1) * WORLD_ICON_SIZE
+			var/buffer_pixels = (view_range + 1) * WORLD_ICON_SIZE
 
 			//And here's the farthest we're allowed to slide on both axes before we see whitespace. Inverting it makes math easier
 			skybox.slide_range = ((skybox_side_size *0.5) - buffer_pixels)	*-1

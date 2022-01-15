@@ -165,16 +165,16 @@
 		src.log_message("Toggled zoom mode.")
 		src.occupant_message("<font color='[src.zoom?"blue":"red"]'>Zoom mode [zoom?"en":"dis"]abled.</font>")
 		if(zoom)
-			src.occupant.client.view = 12
+			src.occupant.client.view_range = 12
 			SEND_SOUND(src.occupant, sound('sound/mecha/imag_enh.ogg',volume=50))
 		else
-			src.occupant.client.view = world.view//world.view - default mob view size
+			src.occupant.client.view_range = world.view//world.view - default mob view size
 	return
 
 
 /obj/mecha/combat/marauder/go_out()
 	if(src.occupant && src.occupant.client)
-		src.occupant.client.view = world.view
+		src.occupant.client.view_range = world.view
 		src.zoom = 0
 	..()
 	return

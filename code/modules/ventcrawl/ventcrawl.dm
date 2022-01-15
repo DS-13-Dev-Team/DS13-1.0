@@ -156,8 +156,10 @@ var/list/ventcrawl_machinery = list(
 
 			visible_message("<B>[src] scrambles into the ventilation ducts!</B>", "You climb into the ventilation system.")
 
+			var/oldloc = loc
 			forceMove(vent_found)
 			add_ventcrawl(vent_found)
+			vent_found.ventcrawl_enter(src, oldloc)
 
 		else
 			to_chat(src, "This vent is not connected to anything.")
@@ -166,28 +168,51 @@ var/list/ventcrawl_machinery = list(
 
 
 /mob/living/proc/add_ventcrawl(obj/machinery/atmospherics/starting_machine)
-	to_chat(world, "Adding ventcrawl [starting_machine]")
+
 	is_ventcrawling = 1
 	//candrop = 0
+	var/datum/pipe_network/our_network = starting_machine.return_network()
+	LAZYDISTINCTADD(our_network.crawlers,src)
+
 	var/list/machines = starting_machine.get_ventcrawl_machines_in_network()
 	if(!length(machines))
-		to_chat(world, "got no network, returning")
 		return
 	for(var/obj/machinery/atmospherics/A as anything in machines)
 		if(!A.pipe_image)
 			A.pipe_image = image(A, A.loc, dir = A.dir)
-		A.pipe_image.layer = ABOVE_LIGHTING_LAYER
-		A.pipe_image.plane = EFFECTS_ABOVE_LIGHTING_PLANE
+			A.pipe_image.layer = ABOVE_LIGHTING_LAYER
+			A.pipe_image.plane = EFFECTS_ABOVE_LIGHTING_PLANE
+			A.pipe_image.color = "#FFFFFF"
+			A.pipe_image.appearance_flags |= RESET_COLOR
 		pipes_shown += A.pipe_image
 		client.images += A.pipe_image
 
+	var/newsight = sight
+	newsight |= BLIND
+	newsight |= (SEE_OBJS|SEE_TURFS|SEE_SELF)
+	newsight &= ~SEE_MOBS
+	set_sight(newsight)
+
+	set_fullscreen(TRUE, "vent", /atom/movable/screen/fullscreen/ventcrawl)
+	get_or_create_extension(src, /datum/extension/ventcrawl_tracker)
+
 /mob/living/proc/remove_ventcrawl()
-	to_chat(world, "removing ventcrawl")
 	is_ventcrawling = 0
 	//candrop = 1
+
+	var/obj/machinery/atmospherics/A = loc
+	if (istype(A))
+		var/datum/pipe_network/our_network = A.return_network(A)
+		LAZYREMOVE(our_network.crawlers,src)
+
 	if(client)
 		for(var/image/current_image in pipes_shown)
 			client.images -= current_image
 		client.eye = src
 
 	pipes_shown.len = 0
+	set_fullscreen(FALSE, "vent", /atom/movable/screen/fullscreen/ventcrawl)
+
+	set_sight(SEE_SELF)	//Future TODO: Make this reset to default
+
+	remove_extension(src, /datum/extension/ventcrawl_tracker)

@@ -1,16 +1,17 @@
-#define VENT_COVER_INTACT   0
-#define VENT_COVER_BROKEN   1
-#define VENT_COVER_SEALED   2
+
 /obj/machinery/atmospherics/unary/vent
 	var/cover_status = VENT_COVER_INTACT
 	var/list/eyes
 
 /obj/machinery/atmospherics/unary/vent/ventcrawl_enter(mob/living/user, atom/oldloc)
+	
 	//Did we just enter from within a vent network, or from without?
 	var/external_entry = !(istype(oldloc, /obj/machinery/atmospherics))
 	
+	
 	if (external_entry)
 		break_cover(user)
+		playsound(src, "vent_transfer", VOLUME_MID, TRUE)
 	
 	//If we entered from a pipe
 	//OR if the mob entered through the cover without breaking it (tiny mobs only)
@@ -23,6 +24,17 @@
 	if (user && user.eyeobj && (LAZYISIN(user.eyeobj,eyes)))
 		eyes -= user.eyeobj
 		qdel(user.eyeobj)
+
+	var/external_exit = !(istype(target_move, /obj/machinery/atmospherics))
+	if (external_exit)
+		playsound(src, "vent_transfer", VOLUME_MID, TRUE)
+
+		//Okay we're flopping out of the vent if the cover is broken
+		if (cover_status == VENT_COVER_BROKEN)
+			//Mobs which can wallcrawl, and those smaller than medium, are immune
+			if (user.mob_size > MOB_SMALL && !get_extension(user, /datum/extension/wallrun))
+				user.airflow_stun()
+				playsound(user.loc, "punch", VOLUME_MID, TRUE)
 	.=..()
 	
 
@@ -39,11 +51,13 @@
 	if (user && user.mob_size <= MOB_TINY)
 		return
 
-	//TODO: Sound 
+	playsound(src, "vent_break", VOLUME_HIGH, TRUE)
 	visible_message("The cover on the [src] breaks open")
 	shake_animation()
 	cover_status = VENT_COVER_BROKEN
+	
 	update_icon()
+
 
 
 /* 
@@ -71,5 +85,8 @@
 	var/mob/dead/observer/eye/vent/EV = new /mob/dead/observer/eye/vent(loc)
 	EV.associated_vent = src
 	EV.possess(user)
+
+	user.set_fullscreen(FALSE, "vent", /atom/movable/screen/fullscreen/ventcrawl)
+	user.set_sight(SEE_SELF)
 
 	LAZYDISTINCTADD(eyes, EV)

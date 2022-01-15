@@ -750,7 +750,7 @@ THIS SCOPE CODE IS DEPRECATED, USE AIM MODES INSTEAD.
 
 	if(user.hud_used.hud_shown)
 		user.toggle_zoom_hud()	// If the user has already limited their HUD this avoids them having a HUD when they zoom in
-	//user.client.view = viewsize
+	//user.client.view_range = viewsize
 	zoom = 1
 
 	var/viewoffset = WORLD_ICON_SIZE * tileoffset

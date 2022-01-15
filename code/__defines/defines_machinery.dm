@@ -115,3 +115,8 @@ var/list/restricted_camera_networks = list(NETWORK_ERT,NETWORK_MERCENARY,"Secret
 #define SCRUBBER_SIPHON   "siphon"
 #define SCRUBBER_SCRUB    "scrub"
 #define SCRUBBER_EXCHANGE "exchange"
+
+//Vent cover states, used for ventcrawling
+#define VENT_COVER_INTACT   0
+#define VENT_COVER_BROKEN   1
+#define VENT_COVER_SEALED   2

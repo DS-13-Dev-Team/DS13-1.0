@@ -15,7 +15,7 @@
 
 /obj/lighting_general/New(atom/location, client/C)
 	. = ..()
-	var/newscale = ((C.view_radius * 2) + 1) / C.view_radius
+	var/newscale = ((C.view_range * 2) + 1) / C.view_range
 	transform *= newscale
 
 /obj/lighting_general/proc/sync(var/new_colour)
@@ -24,7 +24,7 @@
 
 /obj/lighting_general/proc/resize(var/new_size = 2, var/client/C)
 	if (istype(C))
-		new_size = min(new_size, C.view_radius)
+		new_size = min(new_size, C.view_range)
 	size = new_size
 	var/newscale = ((new_size * 2) + 1)
 	var/matrix/M = matrix()

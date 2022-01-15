@@ -187,7 +187,7 @@
 		var/direction = get_dir(src, L)
 		if(direction)
 			feedback += "towards the [dir2text(direction)], "
-			switch(get_dist(src, L) / client.view)
+			switch(get_dist(src, L) / client.view_range)
 				if(0 to 0.2)
 					feedback += "very close by."
 				if(0.2 to 0.4)

@@ -64,6 +64,15 @@ GLOBAL_LIST_INIT(bubble_sound,list('sound/machines/tankbubble1.ogg','sound/machi
 GLOBAL_LIST_INIT(bubble_small_sound,list('sound/machines/tanksmallbubble1.ogg','sound/machines/tanksmallbubble2.ogg','sound/machines/tanksmallbubble3.ogg','sound/machines/tanksmallbubble4.ogg'))
 GLOBAL_LIST_INIT(fleshtear_sound, list('sound/effects/organic/flesh_tear_1.ogg','sound/effects/organic/flesh_tear_2.ogg','sound/effects/organic/flesh_tear_3.ogg',))
 
+//Sounds played when entering or leaving the vent system
+GLOBAL_LIST_INIT(vent_transfer_sound, list('sound/machines/vents/ventcrawl_1.ogg','sound/machines/vents/ventcrawl_2.ogg','sound/machines/vents/ventcrawl_3.ogg','sound/machines/vents/ventcrawl_4.ogg','sound/machines/vents/ventcrawl_5.ogg','sound/machines/vents/ventcrawl_6.ogg',))
+
+//Sounds played when entering or leaving the vent system through a vent cover that gets smashed in the process
+GLOBAL_LIST_INIT(vent_break_sound, list('sound/machines/vents/ventbreak_1.ogg','sound/machines/vents/ventbreak_2.ogg'))
+
+//Sounds played at regular intervals while moving around inside vent system
+GLOBAL_LIST_INIT(vent_travel_sound, list('sound/machines/vents/vent_travel_1.ogg','sound/machines/vents/vent_travel_2.ogg','sound/machines/vents/vent_travel_3.ogg','sound/machines/ventcrawl.ogg'))
+
 
 /proc/playsound(var/atom/source, soundin, vol as num, vary, extrarange as num, falloff, var/is_global, var/frequency, var/is_ambiance = 0)
 
@@ -187,6 +196,9 @@ var/const/FALLOFF_SOUNDS = 0.5
 /proc/get_rand_frequency()
 	return rand(32000, 55000) //Frequency stuff only works with 45kbps oggs.
 
+/*
+	Note, this is a terrible system which needs to be replaced
+*/
 /proc/get_sfx(soundin)
 	switch(soundin)
 		if ("shatter") soundin = pick(GLOB.shatter_sound)
@@ -215,6 +227,9 @@ var/const/FALLOFF_SOUNDS = 0.5
 		if ("bubble") soundin = pick(GLOB.bubble_sound)
 		if ("bubble_small") soundin = pick(GLOB.bubble_small_sound)
 		if ("fleshtear")	soundin = pick(GLOB.fleshtear_sound)
+		if ("vent_transfer")	soundin = pick(GLOB.vent_transfer_sound)	//These are for things entering or leaving the vent system
+		if ("vent_break")	soundin = pick(GLOB.vent_break_sound)	//These are for things entering or leaving the vent system
+		if ("vent_travel")	soundin = pick(GLOB.vent_travel_sound)
 	return soundin
 
 

@@ -14,7 +14,6 @@
 
 	can_block_movement = FALSE //Its on the floor
 
-	var/area/initial_loc
 	var/id_tag = null
 	var/frequency = 1439
 	var/datum/radio_frequency/radio_connection
@@ -29,7 +28,6 @@
 	var/radio_filter_out
 	var/radio_filter_in
 
-	var/welded = 0
 
 /obj/machinery/atmospherics/unary/vent/scrubber/on
 	use_power = 1
@@ -49,6 +47,7 @@
 		return
 
 	overlays.Cut()
+	pipe_image = null
 
 
 	var/turf/T = get_turf(src)
@@ -58,6 +57,8 @@
 	var/scrubber_icon = "scrubber"
 	if(welded)
 		scrubber_icon += "weld"
+	else if (cover_status == VENT_COVER_BROKEN)
+		scrubber_icon += "broken"
 	else
 		if(!powered())
 			scrubber_icon += "off"
@@ -65,6 +66,7 @@
 			scrubber_icon += "[use_power ? "[scrubbing ? "on" : "in"]" : "off"]"
 
 	overlays += icon_manager.get_atmos_icon("device", , , scrubber_icon)
+	update_ventcrawl_network()
 
 /obj/machinery/atmospherics/unary/vent/scrubber/update_underlays()
 	if(..())

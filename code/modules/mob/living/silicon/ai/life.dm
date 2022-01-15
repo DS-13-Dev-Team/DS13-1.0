@@ -37,7 +37,8 @@
 	update_power_usage()
 	handle_power_oxyloss()
 	handle_confused()
-	update_sight()
+	//Lets stop doing this every tick
+	//update_sight()
 
 	process_queued_alarms()
 	handle_regular_hud_updates()

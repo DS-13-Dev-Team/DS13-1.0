@@ -233,7 +233,7 @@
 				screenmob.client.screen -= infodisplay
 
 	screenmob.refresh_lighting_overlays()
-	screenmob.set_darksight_range(screenmob.client.view_radius)
+	screenmob.set_darksight_range(screenmob.client.view_range)
 	hud_version = display_hud_version
 	persistent_inventory_update(screenmob)
 	screenmob.update_action_buttons()

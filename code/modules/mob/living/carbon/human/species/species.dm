@@ -655,7 +655,7 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 
 /datum/species/proc/handle_vision(var/mob/living/carbon/human/H)
 	H.update_sight()
-	H.set_sight(H.sight|get_vision_flags(H)|H.equipment_vision_flags)
+
 
 
 

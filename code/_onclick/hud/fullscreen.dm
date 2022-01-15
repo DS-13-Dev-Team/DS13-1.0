@@ -23,7 +23,7 @@
 	screen.icon_state = "[initial(screen.icon_state)][severity]"
 	screen.severity = severity
 	if (client && SHOULD_SHOW_TO(src, screen))
-		screen.update_for_view(client.view)
+		screen.update_for_view(client.view_range)
 		client.screen += screen
 
 	return screen
@@ -35,7 +35,7 @@
 
 	screens -= category
 
-	if(animated)
+	if(animated && !screen.no_animate)
 		animate(screen, alpha = 0, time = animated)
 		addtimer(CALLBACK(src, .proc/clear_fullscreen_after_animate, screen), animated, TIMER_CLIENT_TIME)
 	else
@@ -63,7 +63,7 @@
 		for(var/category in screens)
 			screen = screens[category]
 			if(SHOULD_SHOW_TO(src, screen))
-				screen.update_for_view(client.view)
+				screen.update_for_view(client.view_range)
 				client.screen |= screen
 			else
 				client.screen -= screen
@@ -77,6 +77,7 @@
 	var/severity = 0
 	var/fs_view = WORLD_VIEW
 	var/show_when_dead = FALSE
+	var/no_animate = 0	//If true, never animate
 
 
 /atom/movable/screen/fullscreen/Destroy()

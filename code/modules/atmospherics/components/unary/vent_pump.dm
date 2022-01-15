@@ -21,7 +21,7 @@
 
 	can_block_movement = FALSE //Its on the floor
 
-	var/area/initial_loc
+	
 	level = 1
 	var/area_uid
 	var/id_tag = null
@@ -42,7 +42,7 @@
 	var/internal_pressure_bound_default = INTERNAL_PRESSURE_BOUND
 	var/pressure_checks_default = PRESSURE_CHECKS
 
-	var/welded = 0 // Added for aliens -- TLE
+	
 
 	var/frequency = 1439
 	var/datum/radio_frequency/radio_connection
@@ -102,12 +102,14 @@
 	air_contents.volume = ATMOS_DEFAULT_VOLUME_PUMP + 500 //meant to match air injector
 
 /obj/machinery/atmospherics/unary/vent/pump/update_icon(var/safety = 0)
+
 	if(!check_icon_cache())
 		return
 	if (!node)
 		use_power = 0
 
 	overlays.Cut()
+	pipe_image = null
 
 	var/vent_icon = "vent"
 
@@ -120,12 +122,16 @@
 
 	if(welded)
 		vent_icon += "weld"
+	else if (cover_status == VENT_COVER_BROKEN)
+		vent_icon += "broken"
 	else if(!powered())
 		vent_icon += "off"
 	else
 		vent_icon += "[use_power ? "[pump_direction ? "out" : "in"]" : "off"]"
 
+
 	overlays += icon_manager.get_atmos_icon("device", , , vent_icon)
+	update_ventcrawl_network()
 
 /obj/machinery/atmospherics/unary/vent/pump/update_underlays()
 	if(..())

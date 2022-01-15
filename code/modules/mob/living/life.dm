@@ -168,7 +168,9 @@
 	return 1
 
 /mob/living/proc/handle_vision()
-	update_sight()
+
+	//Lets stop doing this every tick
+	//update_sight()
 
 	if(stat == DEAD)
 		return
@@ -204,8 +206,11 @@
 		update_living_sight()
 
 /mob/living/proc/update_living_sight()
+	/*
+		Why the hell is this awful code here. Resetting these values to default every tick is absurd nonsense
 	set_sight(sight&(~(SEE_TURFS|SEE_MOBS|SEE_OBJS)))
 	set_see_invisible(initial(see_invisible))
+	*/
 
 /mob/living/proc/update_dead_sight()
 	set_sight(sight|SEE_TURFS|SEE_MOBS|SEE_OBJS)

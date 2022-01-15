@@ -18,13 +18,11 @@
 	. = ..()
 
 /obj/machinery/atmospherics/relaymove(mob/living/user, direction)
-
 	if(user.loc != src || !(direction & initialize_directions)) //can't go in a way we aren't connecting to
 		return
 	ventcrawl_to(user,findConnecting(direction),direction)
 
 /obj/machinery/atmospherics/proc/ventcrawl_to(var/mob/living/user, var/obj/machinery/atmospherics/target_move, var/direction)
-	to_chat(world,"[src] Ventcrawl to [target_move]")
 	if(target_move)
 		/*
 		if(is_type_in_list(target_move, ventcrawl_machinery) && target_move.can_crawl_through())
@@ -33,7 +31,6 @@
 		*/
 		
 		if(target_move.can_crawl_through())
-			to_chat(world,"Crawling through target")
 			if(target_move.return_network(target_move) != return_network(src))
 				user.remove_ventcrawl()
 				user.add_ventcrawl(target_move)
@@ -44,7 +41,7 @@
 			user.client.eye = target_move //if we don't do this, Byond only updates the eye every tick - required for smooth movement
 			if(world.time > user.next_play_vent)
 				user.next_play_vent = world.time+30
-				playsound(src, 'sound/machines/ventcrawl.ogg', 50, 1, -3)
+				playsound(src, "vent_travel", VOLUME_MID, TRUE, -2)
 	else
 		if((direction & initialize_directions) || is_type_in_list(src, ventcrawl_machinery) && src.can_crawl_through()) //if we move in a way the pipe can connect, but doesn't - or we're in a vent
 			//Exit from this and enter into its turf instead
@@ -123,10 +120,11 @@ obj/machinery/atmospherics/trinary/isConnectable(var/obj/machinery/atmospherics/
 //We only go one level deep, we're not currently looking at other networks connected to those networks
 /obj/machinery/atmospherics/proc/get_ventcrawl_machines_in_network()
 	var/list/networks = get_attached_pipe_networks()
-	var/list/machines = list()
+	var/list/machines = list(src)
 
 	//TODO: Fetch networks attached to us
 	for (var/datum/pipe_network/network in networks)
+		machines += network.normal_members
 		for(var/datum/pipeline/pipeline in network.line_members)
 			for(var/obj/machinery/atmospherics/A in (pipeline.members || pipeline.edges))
 				machines += A
@@ -141,3 +139,8 @@ obj/machinery/atmospherics/trinary/isConnectable(var/obj/machinery/atmospherics/
 		networks += our_network
 
 	return networks
+
+/obj/machinery/atmospherics/proc/update_ventcrawl_network()
+	var/datum/pipe_network/our_network = return_network(src)
+	if (our_network)
+		our_network.update_crawlers()

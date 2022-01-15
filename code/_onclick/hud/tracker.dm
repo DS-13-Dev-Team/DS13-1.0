@@ -42,7 +42,8 @@
 	.=..()
 	//Create moved observations for host and target
 	GLOB.moved_event.register(origin, src, /atom/movable/screen/movable/tracker/proc/update)
-	GLOB.moved_event.register(tracked, src, /atom/movable/screen/movable/tracker/proc/update)
+	if (tracked != origin)
+		GLOB.moved_event.register(tracked, src, /atom/movable/screen/movable/tracker/proc/update)
 
 	//Create dir set observation for host only
 	GLOB.dir_set_event.register(origin, src, /atom/movable/screen/movable/tracker/proc/update)
@@ -53,6 +54,15 @@
 		update()
 
 /atom/movable/screen/movable/tracker/Destroy()
+	GLOB.moved_event.unregister(origin, src, /atom/movable/screen/movable/tracker/proc/update)
+	if (tracked != origin)
+		GLOB.moved_event.unregister(tracked, src, /atom/movable/screen/movable/tracker/proc/update)
+
+	//Create dir set observation for host only
+	GLOB.dir_set_event.unregister(origin, src, /atom/movable/screen/movable/tracker/proc/update)
+
+	//Create a view changed observation for host only
+	GLOB.view_changed_event.unregister(origin, src, /atom/movable/screen/movable/tracker/proc/update)
 	clear_from_screen()
 	.=..()
 
@@ -64,7 +74,7 @@
 	screen_loc = "CENTER"
 	alpha = 0
 
-/atom/movable/screen/movable/tracker/proc/update()
+/atom/movable/screen/movable/tracker/proc/update() 
 	if (QDELETED(tracked) || QDELETED(origin))
 		qdel(src)	//if our target atom is gone, so are we
 		return
@@ -73,11 +83,17 @@
 		qdel(src)
 		return
 
+
 	if (origin.client && origin.client != C)	//Someone else posessed the player? Lets transfer ourselves to the new client
 		clear_from_screen()
 		C = origin.client
 
 	alpha = initial(alpha)
+
+	var/atom/origin_toplevel = origin
+	//Your Zlevel is zero if you're not on a turf
+	if (!origin_toplevel.z)
+		origin_toplevel = get_turf(origin)
 
 	var/atom/track_target
 	if (isturf(tracked.loc))
@@ -89,7 +105,8 @@
 	//First we've got to figure out what onscreen is
 
 	//The point we work from, the client eye. Which is probably screen centre, but there can be offsets
-	if (origin.z != track_target.z)
+	if (origin_toplevel.z != track_target.z)
+		
 		//If its on another zlevel we can't see it
 		//Possible todo: Add support for openspace/transparent floors and seeing things below. But not now
 		hide()
@@ -97,7 +114,7 @@
 
 	//Lets get how far the screen extends around the origin
 	var/list/bound_offsets = C.get_tile_bounds(FALSE) //Cut off partial tiles or they might stretch the screen
-	var/vector2/delta = get_new_vector(track_target.x - origin.x, track_target.y - origin.y)	//Lets get the position delta from origin to target
+	var/vector2/delta = get_new_vector(track_target.x - origin_toplevel.x, track_target.y - origin_toplevel.y)	//Lets get the position delta from origin to target
 	//Now check whether or not that would put it onscreen
 	//Bottomleft first
 	var/vector2/BL = bound_offsets["BL"]
@@ -109,9 +126,12 @@
 		return
 
 
+	
+
 	//Then topright
 	var/vector2/TR = bound_offsets["TR"]
 	if (delta.x > TR.x || delta.y > TR.y)
+
 		//Its offscreen
 		hide()
 		release_vector(delta)
@@ -119,12 +139,14 @@
 		return
 
 
+
 	//If we get here, the target is on our screen!
 	//Lets place it
 	delta.SelfAdd(bound_offsets["OFFSET"])
-	delta.x += C.view + 1
-	delta.y += C.view + 1
+	delta.x += C.view_range + 1
+	delta.y += C.view_range + 1
 	screen_loc = "[encode_screen_X(delta.x, origin)],[encode_screen_Y(delta.y,origin)]"
 	release_vector(delta)
 	release_vector_assoc_list(bound_offsets)
 	//AAaaand done
+	

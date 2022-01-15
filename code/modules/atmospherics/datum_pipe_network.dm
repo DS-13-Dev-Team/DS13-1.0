@@ -8,6 +8,9 @@
 	var/list/leaks = list()
 	var/update = 1
 
+	//List of mobs who are currently ventcrawling through this pipenet
+	var/list/crawlers
+
 /datum/pipe_network/Destroy()
 	STOP_PROCESSING_PIPENET(src)
 	for(var/datum/pipeline/line_member in line_members)
@@ -87,3 +90,21 @@
 /datum/pipe_network/proc/dump()
 	for(var/obj/machinery/atmospherics/normal_member in normal_members)
 		to_chat(world, "[jumplink(normal_member)] | [normal_member.type]")
+
+/datum/pipe_network/proc/update_crawlers()
+	if (!crawlers)
+		return
+	for (var/thing in crawlers)
+		var/mob/living/L = thing
+
+		//Clean junk from the list as we go
+		if (QDELETED(L) || !istype(L))
+			crawlers -= L
+			continue
+		var/obj/machinery/atmospherics/A = L.loc
+		if(!istype(A))
+			crawlers -= L
+			continue
+
+		L.remove_ventcrawl()
+		L.add_ventcrawl(A)

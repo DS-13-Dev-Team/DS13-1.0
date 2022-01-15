@@ -155,7 +155,8 @@
 	return 1
 
 /mob/living/carbon/brain/handle_regular_hud_updates()
-	update_sight()
+	//Lets stop doing this every tick
+	//update_sight()
 
 	if(!client || !hud_used)
 		return
