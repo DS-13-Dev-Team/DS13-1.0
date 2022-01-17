@@ -6,6 +6,7 @@
 	anchored = 1
 	var/unwrenched = 0
 	var/wait = 0
+	clicksound = "button2"
 
 /obj/machinery/pipedispenser/attack_hand(user as mob)
 	if(..())
@@ -91,12 +92,14 @@
 			var/obj/item/pipe/P = new (/*usr.loc*/ src.loc, pipe_type=p_type, dir=p_dir)
 			P.update()
 			wait = 1
+			playsound(loc, 'sound/machines/vending_purchase.ogg', VOLUME_LOW)
 			spawn(10)
 				wait = 0
 	if(href_list["makemeter"])
 		if(!wait)
 			new /obj/item/pipe_meter(/*usr.loc*/ src.loc)
 			wait = 1
+			playsound(loc, 'sound/machines/vending_purchase.ogg', VOLUME_LOW)
 			spawn(15)
 				wait = 0
 
@@ -105,6 +108,7 @@
 		if(!user.unEquip(W))
 			return
 		to_chat(usr, "<span class='notice'>You put \the [W] back into \the [src].</span>")
+		playsound(loc, 'sound/machines/vending_click.ogg', VOLUME_LOW)
 		add_fingerprint(usr)
 		qdel(W)
 		return
@@ -254,6 +258,7 @@ Nah
 ///// Z-Level stuff
 				C.update()
 			wait = 1
+			playsound(loc, 'sound/machines/vending_purchase.ogg', VOLUME_LOW)
 			spawn(15)
 				wait = 0
 	return

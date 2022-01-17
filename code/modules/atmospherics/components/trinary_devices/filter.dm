@@ -1,6 +1,7 @@
 /obj/machinery/atmospherics/trinary/filter
 	icon = 'icons/atmos/filter.dmi'
 	icon_state = "map"
+	clicksound = "button2"
 	density = 0
 	level = 1
 

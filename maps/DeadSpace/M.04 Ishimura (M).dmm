@@ -1096,7 +1096,7 @@
 /turf/simulated/floor/dank/rivets,
 /area/ishimura/upper/security/checkpoint/bridge)
 "acJ" = (
-/obj/structure/closet/secure_closet/brig,
+/obj/structure/closet/secure_closet/brig/evidence,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/dank/rivets,
 /area/ishimura/upper/security/evidence)
@@ -1264,7 +1264,7 @@
 /turf/simulated/wall/r_wall/hull,
 /area/ishimura/hull)
 "adk" = (
-/obj/structure/closet/secure_closet/brig,
+/obj/structure/closet/secure_closet/brig/evidence,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/camera/network/security{
 	dir = 8
@@ -2483,7 +2483,7 @@
 /turf/simulated/floor/tiled/white,
 /area/ishimura/upper/medical)
 "afP" = (
-/obj/structure/closet/secure_closet/brig,
+/obj/structure/closet/secure_closet/brig/evidence,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4;
@@ -6342,7 +6342,7 @@
 /turf/simulated/floor/dank/grater,
 /area/ishimura/upper/engineering/machining_room)
 "aoN" = (
-/obj/structure/closet/secure_closet/brig,
+/obj/structure/closet/secure_closet/brig/evidence,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/light{
 	dir = 4

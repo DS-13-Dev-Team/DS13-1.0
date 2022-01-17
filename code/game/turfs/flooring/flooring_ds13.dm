@@ -4,7 +4,6 @@
 	icon = 'icons/turf/floors_ds13.dmi'
 	icon_state = "dank_plating"
 
-
 /decl/flooring/tiling_ds
 	name = "floor"
 	desc = "Scuffed from the passage of countless planet crackers, it looks ancient."
@@ -110,12 +109,9 @@
 
 // FLOOR UPDATE 2 ELECTRIC BOOGALO.
 
-/decl/flooring/complex/tiling_ds
-	footstep_sound = "hull"
-
 /decl/flooring/complex/tiling_ds/tech
 	name = "tech plating"
-	desc = "Ingenius plating that can supposedly withstand more tension stress."
+	desc = "Ingenious plating that can supposedly withstand more tension stress."
 	icon_base = "tech"
 	build_type = null
 	has_base_range = 6

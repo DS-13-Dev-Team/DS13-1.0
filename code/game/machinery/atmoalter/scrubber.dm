@@ -3,6 +3,7 @@
 	desc = "A machine that filters out gases from the surrounding environment."
 	icon = 'icons/obj/atmos.dmi'
 	icon_state = "pscrubber:0"
+	clicksound = "button2"
 	density = 1
 	w_class = ITEM_SIZE_HUGE
 

@@ -2,6 +2,7 @@
 // Gas filter - omni variant
 //--------------------------------------------
 /obj/machinery/atmospherics/omni/filter
+	clicksound = "button2"
 	name = "omni gas filter"
 	icon_state = "map_filter"
 

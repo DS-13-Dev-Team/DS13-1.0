@@ -250,6 +250,7 @@ GLOBAL_LIST_EMPTY(smartfridge_types)
 			return
 		stock_item(O)
 		user.visible_message("<span class='notice'>\The [user] has added \the [O] to \the [src].</span>", "<span class='notice'>You add \the [O] to \the [src].</span>")
+		playsound(loc, 'sound/machines/vending_click.ogg', VOLUME_LOW)
 
 	else if(istype(O, /obj/item/weapon/storage))
 		var/obj/item/weapon/storage/bag/P = O
@@ -261,11 +262,13 @@ GLOBAL_LIST_EMPTY(smartfridge_types)
 
 		if(plants_loaded)
 			user.visible_message("<span class='notice'>\The [user] loads \the [src] with the contents of \the [P].</span>", "<span class='notice'>You load \the [src] with the contents of \the [P].</span>")
+			playsound(loc, 'sound/machines/vending_click.ogg', VOLUME_LOW)
 			if(P.contents.len > 0)
 				to_chat(user, "<span class='notice'>Some items were refused.</span>")
 
 	else
 		to_chat(user, "<span class='notice'>\The [src] smartly refuses [O].</span>")
+		playsound(loc, 'sound/machines/vending_denied.ogg', VOLUME_LOW)
 	return 1
 
 /obj/machinery/smartfridge/secure/emag_act(var/remaining_charges, var/mob/user)
@@ -351,6 +354,7 @@ GLOBAL_LIST_EMPTY(smartfridge_types)
 				amount = count
 			for(var/i = 1 to amount)
 				I.get_product(get_turf(src))
+				playsound(loc, 'sound/machines/vending_purchase.ogg', VOLUME_LOW)
 
 		return 1
 	return 0
@@ -372,6 +376,7 @@ GLOBAL_LIST_EMPTY(smartfridge_types)
 	spawn(0)
 		throw_item.throw_at(target,16,3,src)
 	src.visible_message("<span class='warning'>[src] launches [throw_item.name] at [target.name]!</span>")
+	playsound(loc, 'sound/machines/vending_purchase.ogg', VOLUME_LOW)
 	return 1
 
 /************************
@@ -383,5 +388,6 @@ GLOBAL_LIST_EMPTY(smartfridge_types)
 	if(usr.contents.Find(src) || (in_range(src, usr) && istype(loc, /turf)))
 		if(!allowed(usr) && !emagged && locked != -1 && href_list["vend"])
 			to_chat(usr, "<span class='warning'>Access denied.</span>")
+			playsound(loc, 'sound/machines/vending_denied.ogg', VOLUME_LOW)
 			return 0
 	return ..()
