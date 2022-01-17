@@ -133,9 +133,9 @@ var/list/mining_floors = list()
 	. = ..()
 	if(istype(AM,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = AM
-		if((istype(H.l_hand,/obj/item/weapon/tool/pickaxe)) && (!H.hand))
+		if((isPickaxe(H.l_hand)) && (!H.hand))
 			attackby(H.l_hand,H)
-		else if((istype(H.r_hand,/obj/item/weapon/tool/pickaxe)) && H.hand)
+		else if((isPickaxe(H.r_hand)) && H.hand)
 			attackby(H.r_hand,H)
 
 	else if(istype(AM,/mob/living/silicon/robot))
@@ -145,7 +145,7 @@ var/list/mining_floors = list()
 
 	else if(istype(AM,/obj/mecha))
 		var/obj/mecha/M = AM
-		if(istype(M.selected,/obj/item/mecha_parts/mecha_equipment/tool/drill))
+		if(isPickaxe(M.selected))
 			M.selected.action(src)
 
 /turf/simulated/mineral/proc/MineralSpread()
@@ -206,7 +206,7 @@ var/list/mining_floors = list()
 	//And if it defaults single strike, altclick does a full dig
 /turf/simulated/mineral/AltClick(var/mob/user)
 	var/obj/item/I = user.get_active_hand()
-	if (istype(I,/obj/item/weapon/tool/pickaxe))
+	if (isPickaxe(I))
 		var/obj/item/weapon/tool/pickaxe/P = I
 		return dig_with_tool(P, user, (!P.default_full_dig))
 	else
@@ -232,7 +232,7 @@ var/list/mining_floors = list()
 /turf/simulated/mineral/proc/dig_with_tool(var/obj/item/I, var/mob/living/user, var/full_dig = null)
 	if (isnull(full_dig))
 		full_dig = TRUE
-		if (istype(I, /obj/item/weapon/tool/pickaxe))
+		if (isPickaxe(I))
 			var/obj/item/weapon/tool/pickaxe/P = I
 			full_dig = P.default_full_dig
 

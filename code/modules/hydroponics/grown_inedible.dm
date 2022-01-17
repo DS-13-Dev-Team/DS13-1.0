@@ -40,12 +40,12 @@
 	item_state = "corncob"
 	w_class = ITEM_SIZE_SMALL
 	throwforce = 0
-	
+
 	throw_range = 20
 
 /obj/item/weapon/corncob/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	..()
-	if(istype(W, /obj/item/weapon/tool/saw/circular) || istype(W, /obj/item/weapon/material/hatchet) || istype(W, /obj/item/weapon/material/kitchen/utensil/knife) || istype(W, /obj/item/weapon/material/knife) || istype(W, /obj/item/weapon/material/knife/ritual))
+	if(isSaw(W) || isWirecutter(W) || isScalpel(W))
 		to_chat(user, "<span class='notice'>You use [W] to fashion a pipe out of the corn cob!</span>")
 		new /obj/item/clothing/mask/smokable/pipe/cobpipe (user.loc)
 		qdel(src)
@@ -59,5 +59,5 @@
 	item_state = "banana_peel"
 	w_class = ITEM_SIZE_SMALL
 	throwforce = 0
-	
+
 	throw_range = 20

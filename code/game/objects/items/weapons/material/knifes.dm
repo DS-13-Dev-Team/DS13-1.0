@@ -6,6 +6,7 @@
 	hitsound = null
 	var/active = 0
 	w_class = ITEM_SIZE_SMALL
+	tool_qualities = list(QUALITY_CUTTING = 40, QUALITY_WIRE_CUTTING = 10)
 	attack_verb = list("patted", "tapped")
 	force = 3
 	edge = 0
@@ -70,6 +71,7 @@
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
 	sharp = 1
 	edge = 1
+	tool_qualities = list(QUALITY_CUTTING = 30, QUALITY_WIRE_CUTTING = 15)
 	force_divisor = 0.3 // 13 when wielded with hardness 40 (steel)
 	matter = list(MATERIAL_STEEL = 12000)
 	origin_tech = list(TECH_MATERIAL = 1)
@@ -84,6 +86,7 @@
 	desc = "A sharp, metal hook what sticks into things."
 	icon_state = "hook_knife"
 	item_state = "hook_knife"
+	tool_qualities = list(QUALITY_CUTTING = 10)
 	unbreakable = 1
 
 /obj/item/weapon/material/knife/ritual
@@ -91,6 +94,7 @@
 	desc = "The unearthly energies that once powered this blade are now dormant."
 	icon = 'icons/obj/wizard.dmi'
 	icon_state = "render"
+	tool_qualities = list(QUALITY_CUTTING = 50, QUALITY_WIRE_CUTTING = 20)
 	applies_material_colour = 0
 	unbreakable = 1
 
@@ -101,7 +105,7 @@
 	desc = "A huge thing used for chopping and chopping up meat. This includes clowns and clown-by-products."
 	attack_verb = list("cleaved", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	attack_noun = list("attack", "slash", "stab", "slice", "tear", "rip", "dice", "cut")
-	tool_qualities = list(QUALITY_CUTTING, 40)
+	tool_qualities = list(QUALITY_CUTTING = 40, QUALITY_WIRE_CUTTING = 15)
 	unbreakable = 1
 
 
