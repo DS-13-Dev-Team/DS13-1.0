@@ -208,6 +208,12 @@
 		/obj/item/clothing/shoes/orange
 	)
 
+/obj/structure/closet/secure_closet/brig/evidence
+	name = "evidence locker"
+
+/obj/structure/closet/secure_closet/brig/evidence/WillContain()
+	return null
+
 /obj/structure/closet/secure_closet/courtroom
 	name = "courtroom locker"
 	req_access = list(access_security)
