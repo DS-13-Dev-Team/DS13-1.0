@@ -2,7 +2,7 @@ datum/map/ishimura
 	emergency_shuttle_docked_message = ""
 	emergency_shuttle_leaving_dock = "Attention all hands: the escape pods have been launched, arriving at rendezvous point in %ETA%."
 
-	emergency_shuttle_called_message = "Attention all hands: emergency evacuation procedures are now in effect. The escape pods are now unlocked, you have %ETA%"
+	emergency_shuttle_called_message = "Attention all hands: emergency evacuation procedures are now in effect. The escape pods are now unlocked, you have %ETA%."
 	emergency_shuttle_called_sound = sound('sound/AI/torch/abandonship.ogg', volume = 45)
 
 	emergency_shuttle_recall_message = "Attention all hands: emergency evacuation sequence aborted. Return to normal operating conditions."
@@ -12,7 +12,7 @@ datum/map/ishimura
 	grid_check_message = "Abnormal activity detected in the %STATION_NAME%'s power network. As a precaution, the %STATION_NAME%'s power must be shut down for an indefinite duration."
 	grid_check_sound = sound('sound/AI/torch/poweroff.ogg', volume = 45)
 
-	grid_restored_message = "Ship power to the %STATION_NAME% will be restored at this time"
+	grid_restored_message = "Ship power to the %STATION_NAME% will be restored at this time."
 	grid_restored_sound = sound('sound/AI/torch/poweron.ogg', volume = 45)
 
 	meteor_detected_sound = sound('sound/AI/torch/meteors.ogg', volume = 45)

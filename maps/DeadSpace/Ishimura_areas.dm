@@ -5,6 +5,8 @@
 /area/ishimura
 	icon = 'maps/DeadSpace/ishimura_areas.dmi'
 	ship_area = TRUE
+	ambience = list('sound/ambience/ishimura/general/shippa1.ogg','sound/ambience/ishimura/general/shippa2.ogg','sound/ambience/ishimura/general/shippa3.ogg', 'sound/ambience/ishimura/general/shippa4.ogg', 'sound/ambience/ishimura/general/shippa5.ogg', 'sound/ambience/ishimura/general/shippa6.ogg', 'sound/ambience/ishimura/general/shippa7.ogg', 'sound/ambience/ishimura/general/shippa8.ogg', 'sound/ambience/ishimura/general/shippa9.ogg', 'sound/ambience/ishimura/general/shippa10.ogg', 'sound/ambience/ishimura/general/shippa11.ogg')
+	forced_ambience = null
 
 /area/ishimura/hull
 	name = "\improper Ishimura Hull"
@@ -249,6 +251,7 @@
 	sound_env = TUNNEL_ENCLOSED
 	turf_initializer = /decl/turf_initializer/maintenance
 	forced_ambience = list('sound/ambience/maintambience.ogg')
+	ambience = null
 	name = "\improper Maintenance"
 	icon_state = "maintbase"
 	is_maintenance = TRUE
@@ -694,6 +697,7 @@ area/ishimura/upper/medical/bpc
 	sound_env = TUNNEL_ENCLOSED
 	turf_initializer = /decl/turf_initializer/maintenance
 	forced_ambience = list('sound/ambience/maintambience.ogg')
+	ambience = null
 	name = "\improper Maintenance"
 	icon_state = "maintbase"
 	is_maintenance = TRUE
@@ -914,6 +918,12 @@ area/ishimura/upper/medical/bpc
 /area/shuttle/tram
 	name = "\improper Ishimura Tram"
 	icon_state = "tram"
+	forced_ambience = list('sound/ambience/ishimura/tramstation.ogg')
+	ambience = null
+
+/area/ishimura/tramdeck
+	forced_ambience = list('sound/ambience/ishimura/tramstation.ogg')
+	ambience = null
 
 /area/ishimura/tramdeck/tram
 	name = "\improper Ishimura Tram"
