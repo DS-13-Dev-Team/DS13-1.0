@@ -27,15 +27,6 @@
 	pixel_x = -26
 	dir = WEST
 
-/mob/living/proc/necro_burst_vent()
-	set name = "Burst Through Vent"
-	set category = "Necromorph"
-	set desc = "Burst out of wall-vents."
-
-	var/obj/machinery/atmospherics/unary/vent/pump/wall/W = locate(/obj/machinery/atmospherics/unary/vent/pump/wall) in get_turf(src)
-	if(W && istype(W))
-		W.exit_vent(src)
-
 
 /mob/living/carbon/human/necromorph/is_allowed_vent_crawl_item(var/obj/item/carried_item)
 	//FOR NOW. This is because necros can't really take their clothes off.

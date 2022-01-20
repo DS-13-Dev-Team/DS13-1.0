@@ -35,6 +35,7 @@
 			if (user.mob_size > MOB_SMALL && !get_extension(user, /datum/extension/wallrun))
 				user.airflow_stun()
 				playsound(user.loc, "punch", VOLUME_MID, TRUE)
+		remove_verb(user, /mob/living/carbon/human/proc/burst_out)
 	.=..()
 	
 
@@ -75,6 +76,8 @@
 	//They can hide inside the vent but also look out
 	else if (cover_status == VENT_COVER_INTACT)
 		create_vent_eye(user)
+		
+
 
 
 //Create an eye mob that allows the mob to see things outside the vent
@@ -90,3 +93,14 @@
 	user.set_sight(SEE_SELF)
 
 	LAZYDISTINCTADD(eyes, EV)
+
+//Doubleclicking the vent you're in bursts out of it
+//Otherwise it tries to crawl in 
+/obj/machinery/atmospherics/unary/vent/DblClick(var/location, var/control, var/params)
+	if (ishuman(usr) && usr.loc == src)
+		var/mob/living/carbon/human/H = usr
+		H.burst_out()
+	else if (isliving(usr) && get_dist(usr, src) < 2)
+		var/mob/living/L = usr
+		L.ventcrawl()
+	.=..()

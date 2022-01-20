@@ -160,7 +160,7 @@
 	//And finally, the most important step of all.
 	//ACTUALLY MOVE US TOWARDS THE DESTINATION
 	//Animate movement has no collision checks, but thats fine because we already did them before starting
-	animate_movement(holder, target_loc, travel_speed)
+	animated_movement(holder, target_loc, travel_speed)
 
 	spawn(1)
 		//We do the launch animation after

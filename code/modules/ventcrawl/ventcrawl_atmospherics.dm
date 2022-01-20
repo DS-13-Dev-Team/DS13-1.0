@@ -1,3 +1,5 @@
+#define VENTCRAWL_DELAY_MULTIPLIER 0.2
+
 /obj/machinery/atmospherics/var/image/pipe_image
 
 /obj/machinery/atmospherics/Destroy()
@@ -23,12 +25,10 @@
 	ventcrawl_to(user,findConnecting(direction),direction)
 
 /obj/machinery/atmospherics/proc/ventcrawl_to(var/mob/living/user, var/obj/machinery/atmospherics/target_move, var/direction)
+	if (!user.check_move_cooldown())
+		return //Can't move yet
 	if(target_move)
-		/*
-		if(is_type_in_list(target_move, ventcrawl_machinery) && target_move.can_crawl_through())
-			to_chat(world,"Crawling out of target")
-			return ventcrawl_exit(user, get_turf(target_move))
-		*/
+
 		
 		if(target_move.can_crawl_through())
 			if(target_move.return_network(target_move) != return_network(src))
@@ -46,23 +46,23 @@
 		if((direction & initialize_directions) || is_type_in_list(src, ventcrawl_machinery) && src.can_crawl_through()) //if we move in a way the pipe can connect, but doesn't - or we're in a vent
 			//Exit from this and enter into its turf instead
 			return ventcrawl_exit(user, get_turf(src))
-	user.set_move_cooldown(user.movement_delay())
+	
 
 //Method called for the user to try to leave this vent by moving out.
 /obj/machinery/atmospherics/proc/ventcrawl_exit(mob/living/user, atom/target_move)
 
-	/*
-	if(istype(target_move, /obj/machinery/atmospherics/unary/vent/pump/wall))
-		//Jumpscare time...
-		to_chat(user, "<span class='warning'>You are now lurking inside of [target_move]. Use the break-out verb to burst out of it... </span>")
-		user.forceMove(target_move)
-		return FALSE
-	*/
+	
 	if (!istype(target_move, /obj/machinery/atmospherics))
 		user.remove_ventcrawl()
 		user.visible_message("You hear something squeezing through the ducts.", "You climb out the ventilation system.")
-	user.forceMove(target_move) //handles entering and so on
+	var/delay = user.movement_delay()*VENTCRAWL_DELAY_MULTIPLIER
+	var/speed = 1 / (delay * 0.1)
+
+	//Smoothly move so the camera slides gracefully
+	animated_movement(user, target_move, speed, 1, camera_only = TRUE)
+
 	
+	user.set_move_cooldown(delay)
 	return TRUE
 	
 

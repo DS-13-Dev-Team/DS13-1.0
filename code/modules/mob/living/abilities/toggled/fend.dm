@@ -18,6 +18,7 @@
 	.=..()
 	var/mob/living/carbon/human/H = holder
 	H.play_species_audio(SOUND_PAIN)
+	crash_with("fend crash")
 
 
 /datum/extension/ability/toggled/fend/activated()

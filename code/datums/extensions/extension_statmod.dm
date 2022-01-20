@@ -8,13 +8,14 @@
 	Name:								Define:									Expected Value
 	Movespeed (additive)				STATMOD_MOVESPEED_ADDITIVE				A percentage value, 0=no change, 1 = +100%, etc. Negative allowed
 	Movespeed (multiplicative)			STATMOD_MOVESPEED_MULTIPLICATIVE		A multiplier. 1 = no change, 2 = double, etc. Must be > 0
+	Attack Speed: 						STATMOD_ATTACK_SPEED					A percentage value, 0=no change, 1 = +100%, etc. Negative allowed
 	Incoming Damage						STATMOD_INCOMING_DAMAGE_MULTIPLICATIVE	A multiplier. 1 = no change, 2 = double, etc. Must be > 0
 	Ranged Accuracy						STATMOD_RANGED_ACCURACY					A flat number of percentage points
-	Vision Range						STATMOD_VIEW_RANGE					An integer number of tiles to add/remove from vision range
+	Vision Range						STATMOD_VIEW_RANGE						An integer number of tiles to add/remove from vision range
 	Evasion								STATMOD_EVASION							An number of percentage points which will be additively added to evasion, negative allowed
 	Scale								STATMOD_SCALE							A percentage value, 0=no change, 1 = +100%, etc. Negative allowed
 	Max Health							STATMOD_HEALTH							A flat value which is added or removed
-	Conversion Compatibility			STATMOD_CONVERSION_COMPATIBILITY			A flat value which is added or removed
+	Conversion Compatibility			STATMOD_CONVERSION_COMPATIBILITY		A flat value which is added or removed
 	Layer								STATMOD_LAYER							A flat value, the highest one is used and all others are ignored. Note that any specified value, even if lower, will override the base layer
 */
 

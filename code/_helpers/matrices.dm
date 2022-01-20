@@ -54,6 +54,11 @@
 		animate(pixel_x=init_px.x, pixel_y=init_px.y, time=duration, easing=ELASTIC_EASING)
 		release_vector(init_px)
 
+//A mob version, mostly for debugging
+/mob/proc/mob_shake_camera(duration= 4, strength=1, var/flags = ANIMATION_PARALLEL)
+	shake_camera(src, duration, strength, flags)
+
+
 //The X pixel offset of this matrix
 /matrix/proc/get_x_shift()
 	. = c
@@ -153,15 +158,26 @@
 //This movement is effectively teleporting, it will ignore any obstacles. Do any checks before moving
 //Speed is in metres (tiles) per second
 //Client lag is a divisor on client animation time. Lower values will cause it to take longer to catch up with the mob, this is a cool effect for conveying speed
-/proc/animate_movement(var/atom/movable/mover, var/atom/target, var/speed, var/client_lag = 1.0)
+//The camera-only flag is useful if the mob itself isnt visible. For example, moving through pipes when ventcrawling
+/proc/animated_movement(var/atom/movable/mover, var/atom/target, var/speed, var/client_lag = 1.0, var/camera_only = FALSE)
 	var/vector2/target_pixel_loc = target.get_global_pixel_loc()
-	target_pixel_loc.x += mover.default_pixel_x
-	target_pixel_loc.y += mover.default_pixel_y
-	var/vector2/pixel_delta = mover.get_global_pixel_loc() - target_pixel_loc //This is an inverse delta that gives the offset FROM target TO mover
-	var/vector2/cached_pixels = get_new_vector(mover.default_pixel_x, mover.default_pixel_y)
+	
+	var/vector2/ourloc = mover.get_toplevel_global_pixel_loc()
+	
+	var/vector2/cached_pixels
+	if (istype(mover.loc, /turf))
+		cached_pixels = get_new_vector(mover.default_pixel_x, mover.default_pixel_y)
+		target_pixel_loc.x += mover.default_pixel_x
+		target_pixel_loc.y += mover.default_pixel_y
+	else
+		cached_pixels = get_new_vector(0, 0)
+
+	var/vector2/pixel_delta = ourloc - target_pixel_loc //This is an inverse delta that gives the offset FROM target TO mover
+	
 	var/pixel_distance = pixel_delta.Magnitude()
 	var/pixels_per_decisecond = (world.icon_size * speed) * 0.1
 
+	dump_args
 
 
 
@@ -178,18 +194,26 @@
 
 	//Okay, lets set ourselves there
 	mover.forceMove(target)
-	mover.pixel_x += pixel_delta.x
-	mover.pixel_y += pixel_delta.y
+
+	//to_chat(world, "doing animated movement, mover is now in [jumplink(mover.loc)]")
+
+	if (!camera_only)
+		mover.pixel_x += pixel_delta.x
+		mover.pixel_y += pixel_delta.y
 	if (C)
 		C.pixel_x += pixel_delta.x
 		C.pixel_y += pixel_delta.y
+		//to_chat(world, "doing animated movement, client pixels [C.pixel_x],[C.pixel_y]")
+		
 
 	//If we were to stop now, the mover would technically be in the new tile, but visually appear to have not moved at all,
 	//due to being pixel-offset to exactly where we came from
 
 	var/animtime  = (pixel_distance / pixels_per_decisecond)
-	animate(mover, pixel_x = cached_pixels.x, pixel_y = cached_pixels.y, time = animtime,flags = ANIMATION_PARALLEL)
+	if (!camera_only)
+		animate(mover, pixel_x = cached_pixels.x, pixel_y = cached_pixels.y, time = animtime,flags = ANIMATION_PARALLEL)
 	if (C)
+		//to_chat(world, "doing animated movement over time [animtime] from  [C.pixel_x],[C.pixel_y] to [vstr(cached_client_pixels)]")
 		animate(C, pixel_x = cached_client_pixels.x, pixel_y = cached_client_pixels.y, time = (animtime / client_lag),flags = ANIMATION_PARALLEL)
 
 	//Lets make sure view stays locked until we're done animating client
@@ -201,6 +225,7 @@
 	release_vector(pixel_delta)
 	release_vector(cached_pixels)
 	release_vector(cached_client_pixels)
+	release_vector(ourloc)
 
 //Returns the rotation necessary to point source's forward_direction at target
 //The default value of south, will point the source's feet at the target

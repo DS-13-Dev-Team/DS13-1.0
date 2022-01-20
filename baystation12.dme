@@ -2099,6 +2099,7 @@
 #include "code\modules\mob\living\abilities\construction.dm"
 #include "code\modules\mob\living\abilities\do_mob.dm"
 #include "code\modules\mob\living\abilities\dodge.dm"
+#include "code\modules\mob\living\abilities\effect.dm"
 #include "code\modules\mob\living\abilities\false_death.dm"
 #include "code\modules\mob\living\abilities\frenzy_shout.dm"
 #include "code\modules\mob\living\abilities\gallop.dm"

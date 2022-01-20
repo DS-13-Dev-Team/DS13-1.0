@@ -50,9 +50,12 @@ GLOBAL_DATUM_INIT(moved_event, /decl/observ/moved, new)
 	if(. && !loc)
 		GLOB.moved_event.raise_event(src, old_loc, null)
 
+
+
 /atom/movable/forceMove(atom/destination, var/special_event, glide_size_override=0)
 	var/old_loc = loc
 	GLOB.pre_move_event.raise_event(src, loc, destination)
 	. = ..()
 	if(. && !loc)
 		GLOB.moved_event.raise_event(src, old_loc, null)
+

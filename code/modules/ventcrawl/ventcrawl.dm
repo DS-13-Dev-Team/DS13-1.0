@@ -86,6 +86,9 @@ var/list/ventcrawl_machinery = list(
 	return ..()
 
 /mob/proc/start_ventcrawl()
+	//Cant ventcrawl unless you're on a turf
+	if (!istype(loc, /turf))
+		return null
 	var/atom/pipe
 	var/list/pipes = list()
 	for(var/obj/machinery/atmospherics/unary/U in range(1))
@@ -99,6 +102,7 @@ var/list/ventcrawl_machinery = list(
 	else
 		pipe = input("Crawl Through Vent", "Pick a pipe") as null|anything in pipes
 	if(!is_physically_disabled() && pipe)
+		
 		return pipe
 
 /mob/living/carbon/alien/ventcrawl_carry()
@@ -107,6 +111,9 @@ var/list/ventcrawl_machinery = list(
 /mob/living/proc/handle_ventcrawl(var/atom/clicked_on)
 	if(!can_ventcrawl())
 		return
+
+	if (ishuman(src) && mob_size >= MOB_SMALL)
+		add_verb(src, list(/mob/living/carbon/human/proc/burst_out))
 
 	var/obj/machinery/atmospherics/unary/vent_found
 	if(clicked_on && Adjacent(clicked_on))

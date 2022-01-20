@@ -51,7 +51,7 @@
 
 		var/turf/target = clear_turf_in_list(possible_turfs, TRUE)
 		if (target)
-			animate_movement(user, target, 8, client_lag = 0.4)
+			animated_movement(user, target, 8, client_lag = 0.4)
 			user.visible_message(SPAN_DANGER("[user] nimbly dodges to the side!"))
 			//Randomly selected sound
 			var/sound_type = pickweight(list(SOUND_SPEECH = 6, SOUND_ATTACK  = 2, SOUND_PAIN = 1.5, SOUND_SHOUT = 1))

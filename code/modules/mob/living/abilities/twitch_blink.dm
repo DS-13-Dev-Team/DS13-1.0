@@ -74,7 +74,7 @@
 	if (!turf_clear(get_turf(target)))
 		return FALSE
 
-	animate_movement(user, target, speed, client_lag = 0.4)
+	animated_movement(user, target, speed, client_lag = 0.4)
 	twitch_animation()
 	return TRUE
 

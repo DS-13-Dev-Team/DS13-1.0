@@ -88,7 +88,7 @@
 			else
 				sfat = FALSE
 
-		animate_movement(user, target_loc, 6, client_lag = 0.4)
+		animated_movement(user, target_loc, 6, client_lag = 0.4)
 		user.face_atom(target)
 
 		//And make the user hit the target

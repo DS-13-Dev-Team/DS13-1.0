@@ -199,7 +199,7 @@
 	add_verb(H, list(/mob/proc/necro_evacuate, /mob/proc/prey_sightings, /datum/proc/help))
 	//Ventcrawling necromorphs are handled here. Don't give this to non living mobs...
 	if(ventcrawl && isliving(H))
-		add_verb(H, list(/mob/living/proc/ventcrawl, /mob/living/proc/necro_burst_vent))
+		add_verb(H, list(/mob/living/proc/ventcrawl))
 		//And if we want to set a custom ventcrawl delay....
 		H.ventcrawl_time = src.ventcrawl_time_factor * H.mob_size
 	//H.verbs |= /mob/proc/message_unitologists
