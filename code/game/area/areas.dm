@@ -297,7 +297,7 @@ var/list/mob/living/forced_ambiance_list = new
 	else
 		if(L.client.vent_ambience_playing)
 			L.client.vent_ambience_playing = 0
-			SEND_SOUND(L, sound(null, channel = 2))
+			SEND_SOUND(L, sound(null, channel = GLOB.ambience_sound_channel))
 
 	if(L.lastarea != src)
 		var/cancel_existing = TRUE
