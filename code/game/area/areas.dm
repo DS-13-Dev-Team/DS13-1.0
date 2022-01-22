@@ -291,21 +291,36 @@ var/list/mob/living/forced_ambiance_list = new
 				hum = 1
 				break
 	if(hum)
-		if(!L.client.ambience_playing)
-			L.client.ambience_playing = 1
+		if(!L.client.vent_ambience_playing)
+			L.client.vent_ambience_playing = 1
 			L.playsound_local(T,sound('sound/ambience/vents.ogg', repeat = 1, wait = 0, volume = 20, channel = GLOB.ambience_sound_channel))
 	else
-		if(L.client.ambience_playing)
-			L.client.ambience_playing = 0
+		if(L.client.vent_ambience_playing)
+			L.client.vent_ambience_playing = 0
 			SEND_SOUND(L, sound(null, channel = 2))
 
 	if(L.lastarea != src)
+		var/cancel_existing = TRUE
+		var/selected_ambience
 		if(LAZYLEN(forced_ambience))
-			forced_ambiance_list |= L
-			L.playsound_local(T,sound(pick(forced_ambience), repeat = 1, wait = 0, volume = 25, channel = GLOB.lobby_sound_channel))
-		else	//stop any old area's forced ambience, and try to play our non-forced ones
-			SEND_SOUND(L, sound(null, channel = GLOB.lobby_sound_channel))
-			forced_ambiance_list -= L
+			selected_ambience = pick(forced_ambience)
+
+		//If the currently selected track is the same as whats already playing, we don't cancel it
+		if (selected_ambience && selected_ambience == L.client.area_ambience_playing)
+			cancel_existing = FALSE
+
+		if (cancel_existing)
+			if (selected_ambience)
+				forced_ambiance_list |= L
+				L.playsound_local(T,sound(selected_ambience, repeat = 1, wait = 0, volume = 25, channel = GLOB.lobby_sound_channel))
+				L.client.area_ambience_playing = selected_ambience
+			else	//stop any old area's forced ambience, and try to play our non-forced ones
+				SEND_SOUND(L, sound(null, channel = GLOB.lobby_sound_channel))
+				forced_ambiance_list -= L
+				L.client.area_ambience_playing = null
+
+		
+		
 	if(ambience.len && prob(5) && (world.time >= L.client.played + 3 MINUTES))
 		L.playsound_local(T, sound(pick(ambience), repeat = 0, wait = 0, volume = 15, channel = GLOB.lobby_sound_channel))
 		L.client.played = world.time
