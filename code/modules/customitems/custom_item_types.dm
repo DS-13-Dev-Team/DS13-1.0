@@ -125,3 +125,19 @@
 
 	category = CATEGORY_TOOLS
 	subcategory = SUBCATEGORY_DANGEROUS_TOOLS
+
+//Made public by request of commissioner
+/datum/patron_item/blackwolf
+	name = "wasp RIG"
+	description = "A lightweight and flexible armoured rig suit, offers good protection against light impacts"
+	item_path = /obj/item/weapon/rig/wasp
+	id = "blackwolf_rig"
+	store_cost = 10000
+	store_access = ACCESS_PUBLIC
+
+	category = CATEGORY_RIG
+	subcategory = SUBCATEGORY_FRAMES
+
+	loadout_modkit_cost = 2
+	modkit_access = ACCESS_PUBLIC
+	modkit_typelist = list(/obj/item/weapon/rig/engineering)

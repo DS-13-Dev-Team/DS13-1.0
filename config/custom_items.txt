@@ -11,3 +11,4 @@ mouse{nanakoac}
 plaugewalker_rig{plaugewalker}
 banditofdoom_rig{banditofdoom}
 marshal_wrench{marshalred}
+blackwolf_rig{blackwolf602}
