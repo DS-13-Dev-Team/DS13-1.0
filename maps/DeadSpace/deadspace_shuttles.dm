@@ -327,6 +327,8 @@
 		)
 	shuttle_area = /area/shuttle/tram
 	current_location = "nav_forwardships"
+	sound_takeoff = 'sound/effects/tramdepart.ogg'
+	sound_arrival = 'sound/effects/tramarrive.ogg'
 
 //	landmark_transition = "nav_tramtrans"
 

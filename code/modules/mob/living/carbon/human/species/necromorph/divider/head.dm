@@ -52,15 +52,15 @@
 	if (H.get_organ(BP_HEAD))
 		var/obj/item/organ/external/E = H.get_organ(BP_HEAD)
 		if (!E.is_stump())
-			to_chat(src, SPAN_DANGER("You can only take over a headless corpse."))
+			to_chat(src, SPAN_DANGER("You can only take over a headless corpse!"))
 			return FALSE
 
 	if (get_extension(H, /datum/extension/used_vessel))
-		to_chat(src, SPAN_DANGER("This vessel has been posessed and used up already, find another!"))
+		to_chat(src, SPAN_DANGER("This vessel has been possessed and used up already, find another!"))
 		return FALSE
 
 	if (get_dist(src, H) > 1)
-		to_chat(src, SPAN_DANGER("You must be within one tile"))
+		to_chat(src, SPAN_DANGER("You must be within one tile!"))
 		return FALSE
 	playsound(src, 'sound/effects/creatures/necromorph/divider/divider_posession.ogg', VOLUME_LOUD, TRUE)
 
@@ -231,12 +231,12 @@
 
 /datum/extension/divider_puppet/proc/holder_moved()
 	if (prob(3))
-		H.visible_message("[H] lurches around awkwardly")
+		H.visible_message("[H] lurches around awkwardly.")
 		H.lurch()
 
 /datum/extension/divider_puppet/proc/holder_bump(var/mover, var/obstacle)
 	if (prob(10))
-		H.visible_message("[H] bumps into [obstacle] and staggers off")
+		H.visible_message("[H] bumps into [obstacle] and staggers off.")
 		H.lurch(get_dir(obstacle, H))
 
 /datum/extension/divider_puppet/proc/screen_rotation()
@@ -250,7 +250,7 @@
 	H.client.dir = SOUTH
 	spawn(70)
 		if (H && H.client)
-			H.visible_message("[H] adjusts its head upon the new body")
+			H.visible_message("[H] adjusts its head upon the new body.")
 			H.client.dir = pick(list(EAST, WEST))
 			sleep(15)
 			H.client.dir = NORTH

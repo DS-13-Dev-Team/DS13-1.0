@@ -653,7 +653,7 @@
 /turf/simulated/floor/dank/mono,
 /area/shuttle/tram)
 "bJ" = (
-/obj/structure/handrai,
+/obj/structure/handrail,
 /turf/simulated/floor/dank/mono,
 /area/shuttle/tram)
 "bK" = (
@@ -694,7 +694,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/structure/handrai,
+/obj/structure/handrail,
 /turf/simulated/floor/dank/mono,
 /area/shuttle/tram)
 "bQ" = (
@@ -1017,7 +1017,7 @@
 /turf/simulated/floor/dank/mono,
 /area/shuttle/tram)
 "cA" = (
-/obj/structure/handrai{
+/obj/structure/handrail{
 	dir = 1
 	},
 /turf/simulated/floor/dank/mono,
@@ -5455,7 +5455,7 @@
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/maintenance/aftmaintenance)
 "md" = (
-/obj/structure/handrai,
+/obj/structure/handrail,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -6126,7 +6126,7 @@
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/maintenance/aftmaintenance)
 "nO" = (
-/obj/structure/handrai{
+/obj/structure/handrail{
 	dir = 1
 	},
 /turf/simulated/floor,
