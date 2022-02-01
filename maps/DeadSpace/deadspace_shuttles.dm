@@ -357,6 +357,13 @@
 	name = "Tram Control Console"
 	shuttle_tag = "Tram"
 
+/obj/machinery/computer/shuttle_control/multi/tram/onboard //functionally the same, just a different sprite for the computer that's on the tram
+	name = "Tram Control Console"
+	shuttle_tag = "Tram"
+	icon_state = "tramterminal"
+	icon_keyboard = "tramkeyboard" //intentionally nothing
+	icon_screen = "tramscreen"
+
 // Something else. //
 
 /obj/effect/shuttle_landmark/valor/landing2

@@ -369,6 +369,7 @@
 	desc = "A comfortable, secure seat. It has a sturdy-looking buckling system for protecting passengers from sudden changes in acceleration."
 	base_icon = "pod_chair"
 	icon_state = "pod_chair_preview"
+	color = "#FFFFFF"
 
 /obj/structure/bed/chair/pod/post_buckle_mob()
 	if(buckled_mob)
@@ -388,3 +389,13 @@
 
 /obj/structure/bed/chair/pod/yellow/New(var/newloc,var/newmaterial)
 	..(newloc,"steel","yellow")
+
+/obj/structure/bed/chair/tram
+	name = "bench"
+	desc = "A rusting tram bench. Sturdy enough to protect passengers from sudden changes in acceleration."
+	base_icon = "trambench"
+	icon_state = "trambench_preview"
+	color = "#FFFFFF"
+
+/obj/structure/bed/chair/tram/New(var/newloc,var/newmaterial)
+	..(newloc,"steel","cotton")

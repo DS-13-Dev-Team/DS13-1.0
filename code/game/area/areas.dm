@@ -319,10 +319,10 @@ var/list/mob/living/forced_ambiance_list = new
 				forced_ambiance_list -= L
 				L.client.area_ambience_playing = null
 
-		
-		
-	if(ambience.len && prob(5) && (world.time >= L.client.played + 3 MINUTES))
-		L.playsound_local(T, sound(pick(ambience), repeat = 0, wait = 0, volume = 15, channel = GLOB.lobby_sound_channel))
+
+
+	if(ambience.len && prob(5) && (world.time >= L.client.played + 1.5 MINUTES))
+		L.playsound_local(T, sound(pick(ambience), repeat = 0, wait = 0, volume = 15, channel = 1)) //channel 1 stops ambience clips cutting out when you enter a new area. that was an easier fix than the forced_ambience situation lol
 		L.client.played = world.time
 
 /area/proc/prison_break()
