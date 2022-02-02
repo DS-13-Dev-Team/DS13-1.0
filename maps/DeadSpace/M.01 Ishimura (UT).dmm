@@ -256,7 +256,7 @@
 /turf/simulated/floor/dank/heavy,
 /area/ishimura/tramdeck/switchingstation/lower)
 "aT" = (
-/turf/simulated/wall/titanium,
+/turf/simulated/wall/tram,
 /area/ishimura/tramdeck/switchingstation/lower)
 "aU" = (
 /obj/effect/decal/cleanable/dirt,
