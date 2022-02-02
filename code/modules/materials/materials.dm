@@ -412,6 +412,17 @@ var/list/name_to_material
 				)
 	resistance = RESISTANCE_IMPROVED
 
+/material/tram
+	name = MATERIAL_TRAM
+	integrity = 100
+	brute_armor = 5
+	icon_base = "tram"
+	icon_reinf = "reinf_over"
+	icon_colour = "#FFFFFF"
+	hitsound = 'sound/weapons/smash.ogg'
+	construction_difficulty = 1
+	resistance = RESISTANCE_IMPROVED
+
 /material/steel/holographic
 	name = "holo" + MATERIAL_STEEL
 	display_name = MATERIAL_STEEL

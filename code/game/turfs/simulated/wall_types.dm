@@ -67,6 +67,12 @@
 /turf/simulated/wall/iron/New(var/newloc)
 	..(newloc,"iron")
 
+/turf/simulated/wall/tram
+	icon_state = "tram"
+
+/turf/simulated/wall/tram/New(var/newloc)
+	..(newloc,MATERIAL_TRAM)
+
 /turf/simulated/wall/uranium/New(var/newloc)
 	..(newloc,"uranium")
 

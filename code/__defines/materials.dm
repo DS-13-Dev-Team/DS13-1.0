@@ -40,6 +40,7 @@
 #define MATERIAL_CARPET "carpet"
 #define MATERIAL_CRYSTAL "crystal"
 #define MATERIAL_BRONZE	"bronze"
+#define MATERIAL_TRAM	"tram"
 
 
 #define PLASTEEL_COLOUR "#8e9799"
