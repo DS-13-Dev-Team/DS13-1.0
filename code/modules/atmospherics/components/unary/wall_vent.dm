@@ -29,36 +29,26 @@
 
 /obj/machinery/atmospherics/unary/vent/pump/wall/update_icon()
 
+	if (!node)
+		use_power = 0
 
-/*
-/mob/living/proc/necro_burst_vent()
-	set name = "Burst Through Vent"
-	set category = "Necromorph"
-	set desc = "Burst out of wall-vents."
+	cut_overlays()
+	if (cover_status == VENT_COVER_BROKEN)
+		icon_state = "background_blank"
+	else
+		icon_state = "background_fan"
+		if (cover_status == VENT_COVER_BROKEN)
+			add_overlay("cover")
 
-	var/obj/machinery/atmospherics/unary/vent/pump/wall/W = locate(/obj/machinery/atmospherics/unary/vent/pump/wall) in get_turf(src)
-	if(W && istype(W))
-		W.exit_vent(src)
-*/
+	update_ventcrawl_network()
+
 
 /mob/living/carbon/human/necromorph/is_allowed_vent_crawl_item(var/obj/item/carried_item)
 	//FOR NOW. This is because necros can't really take their clothes off.
 	if(istype(species, /datum/species/necromorph))
 		return TRUE
 	return ..()
-
-/*
-/obj/machinery/atmospherics/unary/vent/pump/wall/update_icon(safety)
-	. = ..()
-	//Probably best to do this with a icon state to save CPU.
-	/*
-	//No cover? Expose the necromorph underneath it..
-	vis_contents = list()
-	if(!cover)
-		for(var/mob/living/M in contents)
-			vis_contents |= M
-	*/
-*/
+	
 
 /obj/machinery/atmospherics/unary/vent/pump/wall/proc/exit_vent(mob/living/user)
 	//If there's a cover, break that first.
