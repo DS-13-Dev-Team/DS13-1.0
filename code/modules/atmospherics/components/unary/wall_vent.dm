@@ -12,21 +12,34 @@
 		to_chat(user, "<span class='warning'>There's something lurking inside it...</span>")
 
 /obj/machinery/atmospherics/unary/vent/pump/wall/north
-	pixel_y = 26
+	pixel_y = 32
 	dir = NORTH
 
 /obj/machinery/atmospherics/unary/vent/pump/wall/south
-	pixel_y = -26
+	pixel_y = -32
 	dir = SOUTH
 
 /obj/machinery/atmospherics/unary/vent/pump/wall/east
-	pixel_x = 26
+	pixel_x = 32
 	dir = EAST
 
 /obj/machinery/atmospherics/unary/vent/pump/wall/west
-	pixel_x = -26
+	pixel_x = -32
 	dir = WEST
 
+/obj/machinery/atmospherics/unary/vent/pump/wall/update_icon()
+
+
+/*
+/mob/living/proc/necro_burst_vent()
+	set name = "Burst Through Vent"
+	set category = "Necromorph"
+	set desc = "Burst out of wall-vents."
+
+	var/obj/machinery/atmospherics/unary/vent/pump/wall/W = locate(/obj/machinery/atmospherics/unary/vent/pump/wall) in get_turf(src)
+	if(W && istype(W))
+		W.exit_vent(src)
+*/
 
 /mob/living/carbon/human/necromorph/is_allowed_vent_crawl_item(var/obj/item/carried_item)
 	//FOR NOW. This is because necros can't really take their clothes off.
