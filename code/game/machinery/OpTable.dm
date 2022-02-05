@@ -58,7 +58,12 @@
 		to_chat(user, "<span class='warning'>There is nobody on \the [src]. It would be pointless to turn the suppressor on.</span>")
 		return
 
-	if(user != victim && !suppressing) // Skip checks if you're doing it to yourself or turning it off, this is an anti-griefing mechanic more than anything.
+	if(user == victim)
+		var/alert = tgui_alert(user, "Are you sure you want to enable the neural suppressor?", "Operating Table", list("Yes", "No"))
+		if(alert == "No" || !alert)
+			return
+
+	if(!suppressing)
 		user.visible_message("<span class='warning'>\The [user] begins switching on \the [src]'s neural suppressor.</span>")
 		if(!do_after(user, 30, src) || !user || !src || user.incapacitated() || !user.Adjacent(src))
 			return
