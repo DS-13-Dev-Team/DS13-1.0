@@ -5,40 +5,62 @@
 	var/cover = TRUE //Is the wall-vent covered?
 	layer = ABOVE_HUMAN_LAYER //So that the vents stack on top of the necromorphs.
 	icon = 'icons/atmos/wallvent.dmi'
+	icon_state = "composite"
 
 /obj/machinery/atmospherics/unary/vent/pump/wall/examine(mob/user)
 	. = ..()
 	if(!cover && locate(/mob) in contents)
 		to_chat(user, "<span class='warning'>There's something lurking inside it...</span>")
 
+/obj/machinery/atmospherics/unary/vent/pump/wall/Initialize()
+	default_pixel_x = pixel_x
+	default_pixel_y = pixel_y
+	.=..()
+	icon = initial(icon)
+	
+	var/turf/T = get_step(src, reverse_direction(dir))
+	if (istype(T))
+		to_chat(world, "Got turf [jumplink(T)]")
+		var/atom/wall = T.is_connected_vertical_surface()
+
+		to_chat(world, "Got wall [jumplink(wall)]")
+		if (istype(wall))
+			mount_to_atom(subject = src, mountpoint = wall)
+
+
 /obj/machinery/atmospherics/unary/vent/pump/wall/north
-	pixel_y = 32
+	pixel_y = -32
 	dir = NORTH
 
 /obj/machinery/atmospherics/unary/vent/pump/wall/south
-	pixel_y = -32
+	pixel_y = 30
 	dir = SOUTH
 
 /obj/machinery/atmospherics/unary/vent/pump/wall/east
-	pixel_x = 32
+	pixel_x = -32
 	dir = EAST
 
 /obj/machinery/atmospherics/unary/vent/pump/wall/west
-	pixel_x = -32
+	pixel_x = 32
 	dir = WEST
+
 
 /obj/machinery/atmospherics/unary/vent/pump/wall/update_icon()
 
 	if (!node)
 		use_power = 0
 
+	
+
 	cut_overlays()
 	if (cover_status == VENT_COVER_BROKEN)
 		icon_state = "background_blank"
 	else
 		icon_state = "background_fan"
-		if (cover_status == VENT_COVER_BROKEN)
+		if (cover_status == VENT_COVER_INTACT)
 			add_overlay("cover")
+		else if (cover_status == VENT_COVER_BROKEN)
+			add_overlay("cover_broken")
 
 	update_ventcrawl_network()
 
@@ -48,8 +70,8 @@
 	if(istype(species, /datum/species/necromorph))
 		return TRUE
 	return ..()
-	
 
+/*
 /obj/machinery/atmospherics/unary/vent/pump/wall/proc/exit_vent(mob/living/user)
 	//If there's a cover, break that first.
 	if(cover)
@@ -61,3 +83,4 @@
 	(cover) ? user.visible_message("<span class='userdanger'>[user] violently bursts out of [src]!</span>", "<span class='warning'>You burst through [src]!</span>") : user.visible_message("You hear something squeezing through the ducts.", "You climb out the ventilation system.")
 	user.remove_ventcrawl()
 	user.forceMove(get_turf(src)) //handles entering and so on
+*/

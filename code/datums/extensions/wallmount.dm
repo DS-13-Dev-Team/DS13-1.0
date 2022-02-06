@@ -19,6 +19,7 @@
 	var/attach_mob_standing		=	TRUE		//Can this be attached to mobs, like brutes?
 	var/attach_mob_downed		=	TRUE	//Can this be/remain attached to mobs that are lying down?
 	var/attach_mob_dead	=	FALSE	//Can this be/remain attached to mobs that are dead?
+	var/adjust_pixel_placement = TRUE //In the case that we're attached to the end of a line of walls, slightly shift our placement away from the end to look better
 
 /*
 	Attaches the subject to mountpoint
@@ -140,6 +141,12 @@
 	var/pixel_offset_magnitude = 8	//How far to offset us towards the target atom
 	var/mount_angle
 
+	//If The mountpoint and mountee are on different turfs, this is the direction from A to B
+	//If same turf, this is the dir value of mountee at the time of mounting
+	var/mount_facing_dir
+
+	var/adjust_pixel_placement
+
 	//If nonzero, mount angle is rounded to the nearest multiple of this
 	var/mount_round = 0
 
@@ -151,6 +158,12 @@
 	src.WP = WP
 	mountee = holder
 	mountpoint = target
+
+	if (get_turf(mountee) != get_turf(mountpoint))
+		mount_facing_dir = get_dir(mountpoint, mountee)
+	else
+		mount_facing_dir = mountee.dir
+
 	offset = get_new_vector(mountee.x - mountpoint.x,mountee.y - mountpoint.y)
 	if (istype(target, /atom/movable))
 		GLOB.moved_event.register(mountpoint, src, /datum/extension/mount/proc/on_mountpoint_move)
@@ -161,6 +174,7 @@
 		if (!WP.attach_mob_dead)
 			GLOB.death_event.register(mountpoint, src, /datum/extension/mount/proc/mountpoint_updated)
 
+	adjust_pixel_placement = WP.adjust_pixel_placement
 
 	on_mount()
 
@@ -178,7 +192,7 @@
 
 /datum/extension/mount/proc/on_mount()
 	mounted  = TRUE
-	if (face_away_from_mountpoint)
+	if (face_away_from_mountpoint || adjust_pixel_placement)
 		cache_offsets()
 		mount_offset()
 
@@ -254,23 +268,31 @@
 
 /datum/extension/mount/proc/mount_offset()
 	//Visuals
+	to_chat(world, "mount offset default pixels [mountee.default_pixel_x],[mountee.default_pixel_y]")
+	to_chat(world, "mount pixels [mountee.pixel_x],[mountee.pixel_y]")
+	if (face_away_from_mountpoint)
+		mount_angle = rotation_to_target(mountee, get_turf(mountpoint), SOUTH)	//Point our feet at the wall we're walking on
+		clamp_mount_angle()	//Override this to round it off
 
-	mount_angle = rotation_to_target(mountee, get_turf(mountpoint), SOUTH)	//Point our feet at the wall we're walking on
-	clamp_mount_angle()	//Override this to round it off
+		mountee.default_rotation = mount_angle
 
-	mountee.default_rotation = mount_angle
+		var/vector2/newpix = base_offset.Turn(mount_angle)
+		newpix.SelfAdd(centre_offset)	//The base offset is used with rotation
+		mountee.default_pixel_x += newpix.x
+		mountee.default_pixel_y += newpix.y
+		release_vector(newpix)
 
-	var/vector2/newpix = base_offset.Turn(mount_angle)
-	newpix.SelfAdd(centre_offset)	//The base offset is used with rotation
-	mountee.default_pixel_x = newpix.x
-	mountee.default_pixel_y = newpix.y
+	to_chat(world, "adjust_pixel_placement is [adjust_pixel_placement]")
+	to_chat(world, "is_connected_vertical_surface is [mountpoint.is_connected_vertical_surface()]")
+	if (adjust_pixel_placement && mountpoint.is_connected_vertical_surface())
+		adjust_pixel_offset()
 
 
 
 	animate(mountee, transform = mountee.get_default_transform(), alpha = mountee.default_alpha, pixel_x = mountee.default_pixel_x, pixel_y = mountee.default_pixel_y, time = 3, easing = BACK_EASING)
 
 
-	release_vector(newpix)
+	
 
 /datum/extension/mount/proc/clamp_mount_angle()
 	if (mount_round)
