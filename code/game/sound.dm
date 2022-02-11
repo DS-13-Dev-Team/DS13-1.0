@@ -73,6 +73,7 @@ GLOBAL_LIST_INIT(vent_break_sound, list('sound/machines/vents/ventbreak_1.ogg','
 //Sounds played at regular intervals while moving around inside vent system
 GLOBAL_LIST_INIT(vent_travel_sound, list('sound/machines/vents/vent_travel_1.ogg','sound/machines/vents/vent_travel_2.ogg','sound/machines/vents/vent_travel_3.ogg','sound/machines/ventcrawl.ogg'))
 
+GLOBAL_LIST_INIT(weld_sound, list('sound/items/Welder.ogg','sound/items/Welder2.ogg','sound/items/welding1.ogg','sound/items/welding2.ogg','sound/items/welding3.ogg','sound/items/welding4.ogg'))
 
 /proc/playsound(var/atom/source, soundin, vol as num, vary, extrarange as num, falloff, var/is_global, var/frequency, var/is_ambiance = 0)
 
@@ -230,6 +231,7 @@ var/const/FALLOFF_SOUNDS = 0.5
 		if ("vent_transfer")	soundin = pick(GLOB.vent_transfer_sound)	//These are for things entering or leaving the vent system
 		if ("vent_break")	soundin = pick(GLOB.vent_break_sound)	//These are for things entering or leaving the vent system
 		if ("vent_travel")	soundin = pick(GLOB.vent_travel_sound)
+		if ("weld")	soundin = pick(GLOB.weld_sound)
 	return soundin
 
 

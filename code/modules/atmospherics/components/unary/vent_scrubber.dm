@@ -36,7 +36,7 @@
 /obj/machinery/atmospherics/unary/vent/scrubber/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	air_contents.volume = ATMOS_DEFAULT_VOLUME_FILTER
-	icon = null
+	icon_state = "blank"
 
 /obj/machinery/atmospherics/unary/vent/scrubber/Destroy()
 	unregister_radio(src, frequency)
@@ -55,17 +55,18 @@
 		return
 
 	var/scrubber_icon = "scrubber"
-	if(welded)
-		scrubber_icon += "weld"
-	else if (cover_status == VENT_COVER_BROKEN)
+	if (cover_status == VENT_COVER_BROKEN)
 		scrubber_icon += "broken"
 	else
 		if(!powered())
 			scrubber_icon += "off"
 		else
 			scrubber_icon += "[use_power ? "[scrubbing ? "on" : "in"]" : "off"]"
+		
 
 	overlays += icon_manager.get_atmos_icon("device", , , scrubber_icon)
+	if (cover_status == VENT_COVER_SEALED)
+		overlays += "sealed"
 	update_ventcrawl_network()
 
 /obj/machinery/atmospherics/unary/vent/scrubber/update_underlays()
@@ -281,16 +282,6 @@
 				"You hear a ratchet.")
 			new /obj/item/pipe(loc, make_from=src)
 			qdel(src)
-		return 1
-
-	if(isWelder(W))
-		to_chat(user, "<span class='notice'>Now welding \the [src].</span>")
-		if(W.use_tool(user, src, WORKTIME_NORMAL, QUALITY_WELDING, FAILCHANCE_NORMAL))
-			welded = !welded
-			update_icon()
-			user.visible_message("<span class='notice'>\The [user] [welded ? "welds \the [src] shut" : "unwelds \the [src]"].</span>", \
-				"<span class='notice'>You [welded ? "weld \the [src] shut" : "unweld \the [src]"].</span>", \
-				"You hear welding.")
 		return 1
 
 	return ..()

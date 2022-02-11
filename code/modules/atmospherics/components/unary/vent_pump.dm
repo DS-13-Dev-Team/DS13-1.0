@@ -74,7 +74,7 @@
 /obj/machinery/atmospherics/unary/vent/pump/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	air_contents.volume = ATMOS_DEFAULT_VOLUME_PUMP
-	icon = null
+	icon_state = "blank"
 
 /obj/machinery/atmospherics/unary/vent/pump/Destroy()
 	unregister_radio(src, frequency)
@@ -120,17 +120,18 @@
 	if(!T.is_plating() && node && node.level == 1 && istype(node, /obj/machinery/atmospherics/pipe))
 		vent_icon += "h"
 
-	if(welded)
-		vent_icon += "weld"
-	else if (cover_status == VENT_COVER_BROKEN)
+	if (cover_status == VENT_COVER_BROKEN)
 		vent_icon += "broken"
 	else if(!powered())
 		vent_icon += "off"
 	else
 		vent_icon += "[use_power ? "[pump_direction ? "out" : "in"]" : "off"]"
+		
 
 
 	overlays += icon_manager.get_atmos_icon("device", , , vent_icon)
+	if (cover_status == VENT_COVER_SEALED)
+		overlays += "sealed"
 	update_ventcrawl_network()
 
 /obj/machinery/atmospherics/unary/vent/pump/update_underlays()
@@ -339,19 +340,6 @@
 	update_icon()
 	return
 
-/obj/machinery/atmospherics/unary/vent/pump/attackby(obj/item/W, mob/user)
-	if(isWelder(W))
-		to_chat(user, "<span class='notice'>Now welding \the [src].</span>")
-		if(W.use_tool(user, src, WORKTIME_NORMAL, QUALITY_WELDING, FAILCHANCE_NORMAL))
-			welded = !welded
-			update_icon()
-			user.visible_message("<span class='notice'>\The [user] [welded ? "welds \the [src] shut" : "unwelds \the [src]"].</span>", \
-				"<span class='notice'>You [welded ? "weld \the [src] shut" : "unweld \the [src]"].</span>", \
-				"You hear welding.")
-		return 1
-
-	else
-		..()
 
 /obj/machinery/atmospherics/unary/vent/pump/examine(mob/user)
 	if(..(user, 1))

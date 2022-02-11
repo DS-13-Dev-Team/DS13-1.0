@@ -78,10 +78,10 @@
 	return 1
 
 /obj/machinery/atmospherics/unary/vent/pump/can_crawl_through()
-	return !welded
+	return TRUE
 
 /obj/machinery/atmospherics/unary/vent/scrubber/can_crawl_through()
-	return !welded
+	return TRUE
 
 /obj/machinery/atmospherics/proc/findConnecting(var/direction)
 	for(var/obj/machinery/atmospherics/target in get_step(src,direction))

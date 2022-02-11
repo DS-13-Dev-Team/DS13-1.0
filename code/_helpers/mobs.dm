@@ -146,7 +146,7 @@ proc/age2agedescription(age)
 //This is used to interrupt these procs from outside
 /datum/extension/interrupt_doafter
 
-/proc/do_after(mob/user, delay, atom/target = null, needhand = 1, progress = 1, var/incapacitation_flags = INCAPACITATION_DEFAULT, var/same_direction = 0, var/can_move = 0,
+/proc/do_after(mob/user, delay, atom/target = null, needhand = 1, progress = 1, var/incapacitation_flags = INCAPACITATION_DEFAULT, var/same_direction = 0, var/can_move = FALSE,
 var/datum/callback/proc_to_call, var/proc_interval = 10)
 
 	if(!user)
@@ -191,20 +191,20 @@ var/datum/callback/proc_to_call, var/proc_interval = 10)
 			progbar.update(world.time - starttime)
 
 		if(!user || user.incapacitated(incapacitation_flags) || (user.loc != original_loc && !can_move) || (same_direction && user.dir != original_dir))
-			. = 0
+			. = FALSE
 			break
 
 		if(target_loc && (!target || QDELETED(target) || target_loc != target.loc || target_type != target.type))
-			. = 0
+			. = FALSE
 			break
 
 		if(needhand)
 			if(user.get_active_hand() != holding)
-				. = 0
+				. = FALSE
 				break
 
 		if (doafter_blocked(user))
-			. = 0
+			. = FALSE
 			break
 
 		if (proc_to_call)
@@ -217,8 +217,12 @@ var/datum/callback/proc_to_call, var/proc_interval = 10)
 
 				//And we call the proc
 				//We will pass: User, Interval
-				proc_to_call.Invoke(user, target, proc_interval)
+				var/result = proc_to_call.Invoke(user, target, proc_interval)
 
+				//The proc can tell us to abort the doafter
+				if (result == CANCEL)
+					. = FALSE
+					break
 
 	if (progbar)
 		qdel(progbar)
@@ -246,7 +250,7 @@ var/datum/callback/proc_to_call, var/proc_interval = 10)
 	proc_to_call: A callback. While the operation is ongoing, periodically call this
 		proc_interval: how often to call the above, in deciseconds
 */
-/proc/do_mob(mob/user , mob/target, time = 30, target_zone = 0, uninterruptible = 0, progress = 1, var/incapacitation_flags = INCAPACITATION_DEFAULT, var/needhand = 1,
+/proc/do_mob(mob/user , mob/target, time = 30, target_zone = 0, uninterruptible = FALSE, progress = 1, var/incapacitation_flags = INCAPACITATION_DEFAULT, var/needhand = 1,
 var/datum/callback/proc_to_call, var/proc_interval = 10)
 	if(!user || !target)
 		return 0
@@ -268,29 +272,29 @@ var/datum/callback/proc_to_call, var/proc_interval = 10)
 		if (progress)
 			progbar.update(world.time - starttime)
 		if(!user || !target)
-			. = 0
+			. = FALSE
 			break
 		if(uninterruptible)
 			continue
 
 		if (doafter_blocked(user))
-			. = 0
+			. = FALSE
 			break
 
 		if(!user || user.incapacitated(incapacitation_flags) || user.loc != user_loc)
-			. = 0
+			. = FALSE
 			break
 
 		if(target.loc != target_loc)
-			. = 0
+			. = FALSE
 			break
 
 		if (needhand)
 			if(needhand == 1 && user.get_active_hand() != holding)
-				. = 0
+				. = FALSE
 				break
 			else if (needhand == 2 && !user.has_free_hand())
-				. = 0
+				. = FALSE
 				break
 
 		if (proc_to_call)
@@ -306,7 +310,7 @@ var/datum/callback/proc_to_call, var/proc_interval = 10)
 				proc_to_call.Invoke(user, target, proc_interval)
 
 		if(target_zone && get_zone_sel(user) != target_zone)
-			. = 0
+			. = FALSE
 			break
 
 	if (progbar)
@@ -352,7 +356,7 @@ var/datum/callback/proc_to_call, var/proc_interval = 10)
 	return GLOB.dead_mob_list.Remove(src)
 
 //Find a dead mob with a brain and client.
-/proc/find_dead_player(var/find_key, var/include_observers = 0)
+/proc/find_dead_player(var/find_key, var/include_observers = FALSE)
 	if(isnull(find_key))
 		return
 

@@ -1,4 +1,5 @@
-
+#define SEALED_VENT_BREAK_TIME	(120 SECONDS)
+#define SEALED_VENT_PROC_INTERVAL	(4 SECONDS)
 
 //This dims the visible screen
 //It renders above everything in the world, but below the pipe overlays from ventcrawling
@@ -37,16 +38,24 @@
 	set desc = "Break out and terrify nearby crew, buffing yourself, debuffing them, and granting free attacks on anyone within reach"
 	set category = "Abilities"
 	
-	to_chat(world, "Burst out 1")
 
 	var/obj/machinery/atmospherics/unary/vent/V = loc
 
 	//Gotta be actually inside the vent and it needs to have the cover intact
-	if (!istype(V) || V.cover_status != VENT_COVER_INTACT)
-		to_chat(src, SPAN_DANGER("You can only use this when lurking inside an intact, unsealed vent cover"))
+	if (!istype(V) || V.cover_status == VENT_COVER_BROKEN)
+		to_chat(src, SPAN_DANGER("You can only use this when lurking inside a vent cover"))
 		return
+
+	if (V.cover_status == VENT_COVER_SEALED)
+		var/answer =  alert(src, "You are inside a sealed vent, are you sure you wish to try to break it? It will be slow, loud, and hurt like hell, you might die in the process of trying to bust out. And if you do break it, you'll be stunned and vulnerable on the floor for a while.",
+		"Breaking a Sealed Vent", 
+		"Yes",
+		"Cancel")
+		if (answer != "Yes")
+			return
+		
+		do_after(user = src, delay = SEALED_VENT_BREAK_TIME, target = V, proc_to_call = CALLBACK(src, /mob/living/carbon/human/proc/sealed_vent_bang, V), proc_interval = SEALED_VENT_PROC_INTERVAL)
 	
-	to_chat(world, "Burst out 2")
 
 
 	var/turf/T = get_turf(V)
@@ -57,7 +66,6 @@
 	if (mob_size < MOB_SMALL)
 		return
 
-	to_chat(world, "Burst out 3")
 
 	//The vent breaks in the process, so nobody can use this same vent for an ambush again
 	V.break_cover()
@@ -94,6 +102,27 @@
 		do_shout()
 
 
+/*
+	Called every few seconds when a mob is trying to break a sealed vent cover
+	Shakes the vent, makes a loud noise, and deals some damage to the mob
+*/
+/mob/living/carbon/human/proc/sealed_vent_bang(var/obj/machinery/atmospherics/unary/vent/V)
+	V.shake_animation()
+
+	//This can be heard far away
+	playsound(V, 'sound/effects/grillehit.ogg', VOLUME_LOUD, TRUE, 5)
+
+	//Banging on a vent hurts
+	take_overall_damage(6, sharp = FALSE, edge = FALSE, used_weapon = V, armortype = "melee")
+
+	//two minutes worth of banging should get us there
+	var/damage_per_tick = V.max_health / (SEALED_VENT_BREAK_TIME / SEALED_VENT_PROC_INTERVAL)
+	V.take_damage(damage_per_tick, bypass_resist = TRUE)
+
+	//We have successfully broken it
+	if (V.cover_status == VENT_COVER_BROKEN)
+		V.ventcrawl_exit(src, get_turf(V))
+		return CANCEL	//Abort the doafter
 /*
 	When jumping out of a vent, that necromorph gets significant buffs for a short duration
 */

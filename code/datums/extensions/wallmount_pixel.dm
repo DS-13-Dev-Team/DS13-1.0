@@ -41,7 +41,6 @@
 	var/vector2/pixel_offset
 
 /datum/extension/mount/proc/adjust_pixel_offset()
-	to_chat(world, "adjust_pixel_offset")
 	if (pixel_offset)
 		release_vector(pixel_offset)
 	//Get a vector for the direction perpendicular to us
@@ -61,19 +60,14 @@
 		//We are on an island as far as perpendicular connections go.
 		//Possible future todo: Squeeze ourselves a little to fit better?
 		//We cant move anywhere, so we're done
-		to_chat(world, "No neighbor walls, returning")
 		return
 
 	else if (filled_1 && filled_2)
 		//We're on a long section of wall. This is fine, do nothing
-		to_chat(world, "Both neighbor walls, returning")
 		return
 	else if (filled_2)
 		//only 2 is filled, so we move towards it
-		to_chat(world, "Only wall 2 is filled")
 		offset_direction = -1
-	else
-		to_chat(world, "Only wall 1 is filled")
 
 	//How far are we going to move in the desired direction? This is just hardcoded for now, maybe do something better in future
 	//We offset by different amounts on X and Y axes because more vertical offset is needed to look right on our isometric walls

@@ -20,10 +20,8 @@
 	
 	var/turf/T = get_step(src, reverse_direction(dir))
 	if (istype(T))
-		to_chat(world, "Got turf [jumplink(T)]")
 		var/atom/wall = T.is_connected_vertical_surface()
 
-		to_chat(world, "Got wall [jumplink(wall)]")
 		if (istype(wall))
 			mount_to_atom(subject = src, mountpoint = wall)
 
@@ -55,12 +53,12 @@
 	cut_overlays()
 	if (cover_status == VENT_COVER_BROKEN)
 		icon_state = "background_blank"
+		add_overlay("cover_broken")
 	else
 		icon_state = "background_fan"
-		if (cover_status == VENT_COVER_INTACT)
-			add_overlay("cover")
-		else if (cover_status == VENT_COVER_BROKEN)
-			add_overlay("cover_broken")
+		add_overlay("cover")
+		if (cover_status == VENT_COVER_SEALED)
+			add_overlay("sealed")
 
 	update_ventcrawl_network()
 
