@@ -619,7 +619,7 @@
 /obj/machinery/camera/network/common{
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 1
 	},
 /turf/simulated/floor/dank/mono,
@@ -765,7 +765,7 @@
 	dir = 4;
 	pixel_x = -21
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 4
 	},
 /turf/simulated/floor/dank/mono,
@@ -860,7 +860,7 @@
 	dir = 1;
 	pixel_y = -24
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/effect/vent_spawner/pump{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
@@ -949,7 +949,7 @@
 /turf/simulated/floor/dank/grater,
 /area/ishimura/lower/engineering/bay)
 "acw" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 4
 	},
 /turf/simulated/floor/dank/rivets,
@@ -1217,8 +1217,8 @@
 "ada" = (
 /turf/simulated/floor/plating,
 /turf/simulated/shuttle/wall/corner/pod2{
-	icon_state = "corner_pod2";
-	dir = 8
+	dir = 8;
+	icon_state = "corner_pod2"
 	},
 /area/shuttle/escape_pod4/station)
 "adb" = (
@@ -1233,7 +1233,7 @@
 /turf/simulated/floor/plating,
 /area/ishimura/lower/maintenance/aft_port)
 "adc" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/effect/vent_spawner/pump{
 	dir = 1
 	},
 /obj/structure/table/standard,
@@ -1314,7 +1314,7 @@
 /turf/simulated/floor/dank/tech,
 /area/ishimura/lower/misc/hallway/aft)
 "adl" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 4;
 	layer = 2.4;
 	level = 2
@@ -1640,7 +1640,7 @@
 /turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/cargo/lobby)
 "adV" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/effect/vent_spawner/pump{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
@@ -1767,7 +1767,7 @@
 /turf/simulated/floor/plating,
 /area/ishimura/lower/maintenance/aft_central)
 "aei" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 1
 	},
 /turf/simulated/floor/dank/golf_brown,
@@ -1784,13 +1784,13 @@
 "aek" = (
 /obj/structure/mopbucket,
 /obj/item/weapon/mop,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/effect/vent_spawner/pump{
 	dir = 1
 	},
 /turf/simulated/floor/dank/mono,
 /area/ishimura/lower/crew/hydroponics)
 "ael" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/cargo/lobby)
 "aem" = (
@@ -1815,13 +1815,13 @@
 /turf/simulated/floor/dank/mono,
 /area/ishimura/lower/crew/hydroponics)
 "aep" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/effect/vent_spawner/pump{
 	dir = 4
 	},
 /turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/cargo/lobby)
 "aeq" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 8
 	},
 /turf/simulated/floor/dank/hardwood,
@@ -1870,7 +1870,7 @@
 /area/ishimura/lower/engineering/bay)
 "aev" = (
 /obj/structure/table/standard,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/effect/vent_spawner/pump{
 	dir = 8
 	},
 /obj/item/weapon/clipboard,
@@ -2013,7 +2013,7 @@
 /turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/cargo/lobby)
 "aeK" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/effect/vent_spawner/pump{
 	dir = 8
 	},
 /turf/simulated/floor/dank/rivets,
@@ -2048,7 +2048,7 @@
 /turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/cargo/bay)
 "aeR" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/effect/vent_spawner/pump{
 	dir = 1
 	},
 /turf/simulated/floor/dank/hardwood,
@@ -2065,7 +2065,7 @@
 /turf/simulated/floor/plating,
 /area/ishimura/lower/maintenance/engineering_port)
 "aeU" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/engineering/storage_closet/fore)
 "aeV" = (
@@ -2135,7 +2135,7 @@
 "afd" = (
 /obj/structure/closet/radiation,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor/dank/rivets,
 /area/ishimura/lower/engineering/bay)
 "afe" = (
@@ -2191,7 +2191,7 @@
 	dir = 8;
 	pixel_x = 21
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/effect/vent_spawner/pump{
 	dir = 8
 	},
 /turf/simulated/floor/dank/mono,
@@ -2255,12 +2255,6 @@
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/lower/crew/messhall/bar)
 "afq" = (
-/turf/simulated/floor/dank/golf_gray,
-/area/ishimura/lower/engineering/storage_closet/electronics)
-"afr" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
-	dir = 4
-	},
 /turf/simulated/floor/dank/golf_gray,
 /area/ishimura/lower/engineering/storage_closet/electronics)
 "afs" = (
@@ -2650,7 +2644,7 @@
 /obj/effect/floor_decal/corner/grey{
 	dir = 9
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor/tiled/kafel_full,
 /area/ishimura/lower/crew/messhall/kitchen)
 "agj" = (
@@ -2867,7 +2861,7 @@
 	},
 /area/ishimura/lower/misc/hallway/central)
 "agy" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/effect/vent_spawner/pump{
 	dir = 1
 	},
 /obj/machinery/firealarm{
@@ -2930,7 +2924,7 @@
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/misc/hallway/central)
 "agD" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/effect/vent_spawner/pump{
 	dir = 1
 	},
 /obj/machinery/firealarm{
@@ -4255,7 +4249,7 @@
 /area/ishimura/lower/crew/hydroponics)
 "ajg" = (
 /obj/structure/table/standard,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 4;
 	layer = 2.4;
 	level = 2
@@ -4276,12 +4270,6 @@
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/misc/hallway/aft)
-"aji" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
-	dir = 4
-	},
-/turf/simulated/floor/dank/golf_brown,
-/area/ishimura/lower/mining/locker_room)
 "ajj" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -4449,7 +4437,7 @@
 /area/ishimura/lower/security/checkpoint/crew)
 "ajB" = (
 /obj/structure/table/standard,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 4
 	},
 /obj/item/device/toner{
@@ -4521,7 +4509,7 @@
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/cargo/bay)
 "ajH" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/mining/briefing)
 "ajI" = (
@@ -4603,7 +4591,7 @@
 /obj/structure/table/standard,
 /obj/item/weapon/reagent_containers/spray/cleaner,
 /obj/item/weapon/reagent_containers/spray/cleaner,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 8
 	},
 /obj/machinery/light{
@@ -4658,7 +4646,7 @@
 /turf/simulated/floor/dank/golf_gray,
 /area/ishimura/lower/engineering/storage_closet/paint)
 "ajS" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 1
 	},
 /obj/machinery/light{
@@ -5029,7 +5017,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 4
 	},
 /turf/simulated/floor/dank/grater,
@@ -5508,7 +5496,7 @@
 /turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/mining/briefing)
 "alt" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/effect/vent_spawner/pump,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -5715,7 +5703,7 @@
 /turf/simulated/floor/tiled/freezer,
 /area/ishimura/lower/crew/messhall/kitchen/freezer)
 "alP" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/effect/vent_spawner/pump{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/freezer,
@@ -5730,7 +5718,7 @@
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/lower/crew/messhall/bar)
 "alR" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/freezer,
@@ -5994,7 +5982,7 @@
 /turf/simulated/floor/dank/rivets,
 /area/ishimura/lower/engineering/storage_closet/air)
 "amz" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor/dank/rivets,
 /area/ishimura/lower/engineering/storage_closet/air)
 "amA" = (
@@ -6260,7 +6248,7 @@
 /area/ishimura/lower/crew/messhall/bar/quarters)
 "amW" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 1
 	},
 /turf/simulated/floor/dank/rivets,
@@ -6282,7 +6270,7 @@
 /turf/simulated/floor/lino,
 /area/ishimura/lower/crew/messhall/bar)
 "amZ" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/security/checkpoint/executive)
 "ana" = (
@@ -6327,7 +6315,7 @@
 	pixel_x = 2;
 	pixel_y = 2
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 1
 	},
 /turf/simulated/floor/dank/hardwood,
@@ -6429,7 +6417,7 @@
 /area/ishimura/lower/engineering/storage_closet/electronics)
 "anq" = (
 /obj/item/weapon/stool/padded,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/effect/vent_spawner/pump{
 	dir = 4
 	},
 /turf/simulated/floor/lino,
@@ -6483,7 +6471,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/effect/vent_spawner/pump{
 	dir = 8
 	},
 /turf/simulated/floor/dank/hardwood,
@@ -6843,7 +6831,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 4;
 	layer = 2.4;
 	level = 2
@@ -6975,7 +6963,7 @@
 	},
 /obj/structure/window/reinforced/tinted/frosted,
 /obj/machinery/door/window/eastleft,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 4
 	},
 /turf/simulated/floor/dank/bathr,
@@ -6983,10 +6971,6 @@
 "aoy" = (
 /turf/simulated/floor/tiled/white,
 /area/ishimura/lower/crew/cryo)
-"aoz" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
-/turf/simulated/floor/dank/hardwood,
-/area/ishimura/lower/crew/messhall)
 "aoA" = (
 /obj/structure/bed,
 /obj/item/weapon/bedsheet/hos,
@@ -7095,7 +7079,7 @@
 /area/ishimura/lower/crew/hydroponics)
 "aoN" = (
 /obj/machinery/light/small,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/effect/vent_spawner/pump{
 	dir = 1
 	},
 /turf/simulated/floor/dank/bathr,
@@ -7140,7 +7124,7 @@
 /turf/simulated/floor/tiled/kafel_full,
 /area/ishimura/lower/crew/messhall/kitchen)
 "aoT" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 4
 	},
 /turf/simulated/floor/dank/rectangles,
@@ -7168,7 +7152,7 @@
 /turf/simulated/floor/dank/bathr,
 /area/ishimura/lower/crew/sleepblock/executive/quarters/captain)
 "aoX" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/effect/vent_spawner/pump,
 /obj/machinery/light/small{
 	dir = 1
 	},
@@ -7730,7 +7714,7 @@
 /obj/structure/table/standard,
 /obj/item/weapon/caution,
 /obj/item/weapon/caution,
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/effect/vent_spawner/pump,
 /obj/item/weapon/caution,
 /obj/item/weapon/soap,
 /turf/simulated/floor/dank/golf_gray,
@@ -7750,7 +7734,7 @@
 /turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/a)
 "aqb" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/effect/vent_spawner/pump,
 /obj/machinery/light/small{
 	dir = 1
 	},
@@ -7890,7 +7874,7 @@
 /turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/b)
 "aqr" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 8
 	},
 /turf/simulated/floor/dank/hardwood,
@@ -8119,7 +8103,7 @@
 /turf/simulated/floor/dank/golf_gray,
 /area/ishimura/lower/engineering/storage_closet/paint)
 "aqR" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/effect/vent_spawner/pump{
 	dir = 4
 	},
 /turf/simulated/floor/dank/hardwood,
@@ -8192,7 +8176,7 @@
 /turf/simulated/floor/dank/bathr,
 /area/ishimura/lower/misc/bathroom/fore/male)
 "ara" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/effect/vent_spawner/pump{
 	dir = 8
 	},
 /obj/structure/table/rack,
@@ -8326,7 +8310,7 @@
 /turf/simulated/floor/carpet/blue2,
 /area/ishimura/lower/crew/messhall/bar/quarters)
 "arn" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 4;
 	layer = 2.4;
 	level = 2
@@ -8609,7 +8593,7 @@
 /turf/simulated/floor/dank/grater,
 /area/ishimura/lower/misc/hallway/escape_executive)
 "arL" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/commons)
 "arM" = (
@@ -9060,14 +9044,14 @@
 /turf/simulated/floor/dank/tech,
 /area/ishimura/lower/misc/hallway/escape_executive)
 "asD" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/effect/vent_spawner/pump{
 	dir = 4
 	},
 /turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/c)
 "asE" = (
 /obj/structure/table/steel_reinforced,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 4
 	},
 /obj/item/weapon/storage/box/glasses/cocktail,
@@ -9116,7 +9100,7 @@
 /turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/checkpoint/crew)
 "asJ" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 8
 	},
 /turf/simulated/floor/dank/hardwood,
@@ -9139,7 +9123,7 @@
 /turf/simulated/floor/dank/grater,
 /area/ishimura/lower/cargo/disposals)
 "asL" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/effect/vent_spawner/pump{
 	dir = 8
 	},
 /turf/simulated/floor/dank/bathr,
@@ -9305,7 +9289,7 @@
 /area/ishimura/lower/crew/sleepblock/commons)
 "atf" = (
 /obj/structure/table/rack,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/effect/vent_spawner/pump{
 	dir = 4
 	},
 /obj/effect/floor_decal/industrial/outline/grey,
@@ -9322,7 +9306,7 @@
 /obj/effect/floor_decal/spline/fancy/wood/corner{
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 8
 	},
 /turf/simulated/floor/lino,
@@ -9487,7 +9471,7 @@
 /turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/c)
 "atB" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/effect/vent_spawner/pump{
 	dir = 1
 	},
 /turf/simulated/floor/lino,
@@ -9525,7 +9509,7 @@
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/security/checkpoint/executive)
 "atG" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/effect/vent_spawner/pump{
 	dir = 4
 	},
 /turf/simulated/floor/dank/bathr,
@@ -9929,7 +9913,7 @@
 	dir = 1;
 	pixel_y = -28
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/effect/vent_spawner/pump{
 	dir = 1
 	},
 /turf/simulated/floor/dank/hardwood/alt,
@@ -9939,7 +9923,7 @@
 	dir = 1;
 	pixel_y = -28
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/effect/vent_spawner/pump{
 	dir = 1
 	},
 /turf/simulated/floor/dank/hardwood/alt,
@@ -10137,7 +10121,7 @@
 /turf/simulated/floor/dank/hardwood/alt,
 /area/ishimura/lower/crew/sleepblock/executive/quarters/first_lieutenant)
 "auY" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor/tiled/freezer,
 /area/ishimura/lower/crew/messhall/kitchen/freezer/executive)
 "auZ" = (
@@ -10153,7 +10137,7 @@
 /turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/b)
 "avb" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/freezer,
@@ -10740,7 +10724,7 @@
 /obj/item/device/toner{
 	pixel_y = -1
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 8
 	},
 /obj/item/weapon/folder/yellow,
@@ -10851,7 +10835,7 @@
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/cargo/lobby)
 "awg" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 8
 	},
 /obj/item/device/radio/intercom{
@@ -10867,7 +10851,7 @@
 /turf/simulated/floor/dank/rivets,
 /area/ishimura/lower/engineering/bay)
 "awi" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor/dank/rivets,
 /area/ishimura/lower/engineering/bay)
 "awj" = (
@@ -10901,7 +10885,7 @@
 /turf/simulated/floor/dank/rivets,
 /area/ishimura/lower/engineering/bay)
 "awm" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor/dank/bathr,
 /area/ishimura/lower/misc/bathroom/fore/male)
 "awn" = (
@@ -10976,13 +10960,13 @@
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/misc/hallway/central)
 "awu" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 4
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/mining/shuttlebay/starboard)
 "awv" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/effect/vent_spawner/pump{
 	dir = 8
 	},
 /turf/simulated/floor/dank/golf_brown,
@@ -11078,7 +11062,7 @@
 /turf/simulated/floor/dank/golf_gray,
 /area/ishimura/lower/misc/janitorcloset/aft/starboard)
 "awG" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/effect/vent_spawner/pump,
 /obj/structure/table/standard,
 /obj/machinery/camera/network/command,
 /obj/random/loot/usually/few,
@@ -11103,7 +11087,7 @@
 /turf/simulated/floor/plating,
 /area/ishimura/lower/misc/marker)
 "awJ" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 4
 	},
 /turf/simulated/floor/dank/golf_brown,
@@ -11136,7 +11120,7 @@
 	},
 /area/ishimura/lower/mining/shuttlebay/port)
 "awN" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/effect/vent_spawner/pump{
 	dir = 8
 	},
 /turf/simulated/floor/dank/golf_brown,
@@ -11223,7 +11207,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/ishimura/lower/security/emergency_supply_room)
 "awY" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 8
 	},
 /obj/machinery/alarm{
@@ -11288,7 +11272,7 @@
 /turf/simulated/floor/tiled,
 /area/ishimura/lower/security/escape)
 "axe" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 4
 	},
 /turf/simulated/floor/dank/bathr,
@@ -11441,7 +11425,7 @@
 /turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/checkpoint/crew)
 "axr" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 4;
 	layer = 2.4;
 	level = 2
@@ -11515,7 +11499,7 @@
 /turf/simulated/floor/plating,
 /area/ishimura/lower/maintenance/engineering_starboard)
 "axy" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/effect/vent_spawner/pump{
 	dir = 4
 	},
 /obj/machinery/vending/dinnerware,
@@ -11532,13 +11516,13 @@
 /turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/mining/reception)
 "axA" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/effect/vent_spawner/pump{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
 /area/ishimura/lower/security/armory)
 "axB" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/effect/vent_spawner/pump{
 	dir = 4
 	},
 /turf/simulated/floor/dank/hardwood,
@@ -11567,7 +11551,7 @@
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/lower/security/armory)
 "axD" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/effect/vent_spawner/pump{
 	dir = 8
 	},
 /turf/simulated/floor/dank,
@@ -12417,7 +12401,7 @@
 /turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/checkpoint/crew)
 "azd" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/effect/vent_spawner/pump{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
@@ -12498,7 +12482,7 @@
 /turf/simulated/floor/carpet/red,
 /area/ishimura/lower/crew/sleepblock/executive/quarters/captain)
 "azl" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/effect/vent_spawner/pump{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
@@ -12554,7 +12538,7 @@
 /turf/simulated/floor/dank/grater,
 /area/ishimura/lower/security/checkpoint/executive)
 "azo" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -12669,7 +12653,7 @@
 /area/ishimura/lower/misc/hallway/central)
 "azE" = (
 /obj/effect/landmark/node_room,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/effect/vent_spawner/pump{
 	dir = 8
 	},
 /turf/simulated/floor/dank,
@@ -12693,7 +12677,7 @@
 /turf/simulated/floor/plating,
 /area/ishimura/lower/maintenance/aft_port)
 "azH" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/effect/vent_spawner/pump{
 	dir = 4
 	},
 /obj/machinery/light{
@@ -12729,7 +12713,7 @@
 /turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/misc/observationroom)
 "azM" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor/dank/golf_gray,
 /area/ishimura/lower/engineering/storage_closet/battery)
 "azN" = (
@@ -12828,7 +12812,7 @@
 /turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/cargo/bay)
 "azY" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 4;
 	layer = 2.4;
 	level = 2
@@ -12884,7 +12868,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/shuttle/executive_shuttle)
 "aAh" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 8
 	},
 /obj/structure/closet/medical_wall/filled{
@@ -12975,7 +12959,7 @@
 /turf/simulated/floor/dank/grater,
 /area/ishimura/lower/misc/hallway/aft)
 "aAq" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 4;
 	layer = 2.4;
 	level = 2
@@ -13005,7 +12989,7 @@
 /obj/machinery/shower{
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor/dank/bathr,
 /area/ishimura/lower/misc/bathroom/aft)
 "aAt" = (
@@ -13550,7 +13534,7 @@
 "aBu" = (
 /obj/structure/closet/radiation,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 1
 	},
 /turf/simulated/floor/dank/rivets,
@@ -13798,14 +13782,14 @@
 /turf/simulated/floor/dank/bathr,
 /area/ishimura/lower/misc/bathroom/fore/female)
 "aBY" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/effect/vent_spawner/pump,
 /obj/structure/closet/walllocker/emerglocker/north,
 /turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/escape/one)
 "aBZ" = (
 /obj/structure/table/standard,
 /obj/item/device/camera,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 4
 	},
 /turf/simulated/floor/dank/hardwood,
@@ -13816,7 +13800,7 @@
 /area/ishimura/lower/security/escape)
 "aCb" = (
 /obj/structure/table/standard,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 4
 	},
 /turf/simulated/floor/dank/hardwood,
@@ -13836,7 +13820,7 @@
 	dir = 8;
 	pixel_x = 21
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/effect/vent_spawner/pump{
 	dir = 8
 	},
 /turf/simulated/floor/dank/hardwood,
@@ -13850,7 +13834,7 @@
 /area/ishimura/lower/misc/bathroom/fore/female)
 "aCf" = (
 /obj/structure/table/standard,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 1;
 	layer = 2.4;
 	level = 2
@@ -13864,7 +13848,7 @@
 	dir = 1;
 	pixel_y = -28
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/effect/vent_spawner/pump{
 	dir = 1
 	},
 /turf/simulated/floor/dank/hardwood,
@@ -14211,7 +14195,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/ishimura/lower/crew/cryo)
 "aCM" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/effect/vent_spawner/pump{
 	dir = 1
 	},
 /obj/machinery/camera/network/command{
@@ -14242,7 +14226,7 @@
 /turf/simulated/floor/tiled/freezer,
 /area/ishimura/lower/crew/messhall/kitchen/freezer/executive)
 "aCO" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/effect/vent_spawner/pump{
 	dir = 8
 	},
 /obj/machinery/alarm{
@@ -14701,7 +14685,7 @@
 	dir = 1;
 	health = 1e+006
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/lower/crew/gym)
 "aDx" = (
@@ -14709,7 +14693,7 @@
 /turf/simulated/floor/tiled/white,
 /area/ishimura/lower/crew/cryo)
 "aDy" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 1
 	},
 /obj/item/device/radio/intercom{
@@ -15113,7 +15097,7 @@
 /turf/simulated/floor/dank/bathr,
 /area/ishimura/lower/misc/bathroom/fore/female)
 "aEe" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
@@ -15739,7 +15723,7 @@
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/security/escape)
 "aFc" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/effect/vent_spawner/pump{
 	dir = 8
 	},
 /turf/simulated/floor/dank/hardwood/alt,
@@ -16317,13 +16301,13 @@
 /turf/simulated/floor/dank/hardwood/alt,
 /area/ishimura/lower/security/escape/lounge)
 "aGd" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 1
 	},
 /turf/simulated/floor/dank/hardwood/alt,
 /area/ishimura/lower/security/escape/lounge)
 "aGe" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/effect/vent_spawner/pump{
 	dir = 1
 	},
 /obj/structure/closet/walllocker/emerglocker/south,
@@ -16386,7 +16370,7 @@
 /turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/checkpoint/crew)
 "aGj" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/messhall)
 "aGk" = (
@@ -16616,7 +16600,7 @@
 /turf/simulated/floor/dank/bathr,
 /area/ishimura/lower/misc/bathroom/fore/female)
 "aGD" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor/dank/bathr,
 /area/ishimura/lower/misc/bathroom/fore/female)
 "aGE" = (
@@ -16629,7 +16613,7 @@
 /turf/simulated/floor/dank/bathr,
 /area/ishimura/lower/misc/bathroom/fore/female)
 "aGF" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/effect/vent_spawner/pump{
 	dir = 4
 	},
 /obj/machinery/alarm{
@@ -17037,7 +17021,7 @@
 /turf/simulated/floor/tiled/white,
 /area/ishimura/lower/crew/cryo)
 "aHk" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 8
 	},
 /turf/simulated/floor/dank/bathr,
@@ -17280,7 +17264,7 @@
 "aHG" = (
 /obj/structure/closet/firecloset,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 4
 	},
 /turf/simulated/floor/dank/slides,
@@ -17630,7 +17614,7 @@
 /turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/checkpoint/crew)
 "aIu" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 8
 	},
 /obj/machinery/light{
@@ -17802,7 +17786,7 @@
 /turf/simulated/floor/dank/hardwood/alt,
 /area/ishimura/lower/security/escape/lounge)
 "aIL" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/effect/vent_spawner/pump{
 	dir = 8
 	},
 /turf/simulated/floor/dank/bathr,
@@ -17918,7 +17902,7 @@
 /area/ishimura/lower/crew/sleepblock/executive)
 "aIY" = (
 /obj/structure/table/standard,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/effect/vent_spawner/pump{
 	dir = 1
 	},
 /obj/item/weapon/folder/red,
@@ -18005,7 +17989,7 @@
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/lower/cargo/storage)
 "aJj" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 1
 	},
 /obj/machinery/light,
@@ -18022,7 +18006,7 @@
 /obj/structure/noticeboard{
 	pixel_y = 32
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/effect/vent_spawner/pump,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/closet/secure_closet/cargoservice,
 /turf/simulated/floor/dank/hardwood,
@@ -18242,7 +18226,7 @@
 	dir = 1;
 	pixel_y = -28
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 8
 	},
 /obj/structure/table/reinforced,
@@ -18424,7 +18408,7 @@
 /turf/simulated/floor/dank/hardwood/alt,
 /area/ishimura/lower/mining/office)
 "aKd" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/effect/vent_spawner/pump{
 	dir = 4
 	},
 /turf/simulated/floor/dank/hardwood/alt,
@@ -18538,7 +18522,7 @@
 "aKk" = (
 /obj/item/weapon/paper_bin,
 /obj/item/weapon/pen/fancy,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 8
 	},
 /obj/structure/table/woodentable,
@@ -18909,7 +18893,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/lower/mining/shuttle/two)
 "aKR" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor/dank/tech{
 	dir = 8
 	},
@@ -19184,7 +19168,7 @@
 /turf/simulated/floor/plating,
 /area/ishimura/lower/maintenance/starboard)
 "aLx" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 1
 	},
 /turf/simulated/floor/dank/golf_gray,
@@ -19245,7 +19229,7 @@
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/lower/crew/gym)
 "aLE" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 4
 	},
 /turf/simulated/floor/dank/mono,
@@ -19407,58 +19391,58 @@
 /area/ishimura/lower/misc/hallway/central)
 "aMd" = (
 /obj/structure/shuttle/window/pod{
-	icon_state = "p_window";
-	dir = 8
+	dir = 8;
+	icon_state = "p_window"
 	},
 /turf/space,
 /area/shuttle/escape_pod4/station)
 "aMe" = (
 /turf/simulated/floor/plating,
 /turf/simulated/shuttle/wall/corner/pod2{
-	icon_state = "corner_pod2";
-	dir = 5
+	dir = 5;
+	icon_state = "corner_pod2"
 	},
 /area/shuttle/escape_pod4/station)
 "aMf" = (
 /turf/simulated/floor/plating,
 /turf/simulated/shuttle/wall/corner/pod2{
-	icon_state = "corner_pod2";
-	dir = 8
+	dir = 8;
+	icon_state = "corner_pod2"
 	},
 /area/shuttle/escape_pod5/station)
 "aMg" = (
 /obj/structure/shuttle/window/pod{
-	icon_state = "p_window";
-	dir = 8
+	dir = 8;
+	icon_state = "p_window"
 	},
 /turf/space,
 /area/shuttle/escape_pod5/station)
 "aMh" = (
 /turf/simulated/floor/plating,
 /turf/simulated/shuttle/wall/corner/pod2{
-	icon_state = "corner_pod2";
-	dir = 5
+	dir = 5;
+	icon_state = "corner_pod2"
 	},
 /area/shuttle/escape_pod5/station)
 "aMi" = (
 /turf/simulated/floor/plating,
 /turf/simulated/shuttle/wall/corner/pod2{
-	icon_state = "corner_pod2";
-	dir = 8
+	dir = 8;
+	icon_state = "corner_pod2"
 	},
 /area/shuttle/escape_pod6/station)
 "aMj" = (
 /obj/structure/shuttle/window/pod{
-	icon_state = "p_window";
-	dir = 8
+	dir = 8;
+	icon_state = "p_window"
 	},
 /turf/space,
 /area/shuttle/escape_pod6/station)
 "aMk" = (
 /turf/simulated/floor/plating,
 /turf/simulated/shuttle/wall/corner/pod2{
-	icon_state = "corner_pod2";
-	dir = 5
+	dir = 5;
+	icon_state = "corner_pod2"
 	},
 /area/shuttle/escape_pod6/station)
 "aMl" = (
@@ -19491,8 +19475,8 @@
 /area/ishimura/lower/maintenance/starboard)
 "aMo" = (
 /turf/simulated/shuttle/wall/pod{
-	icon_state = "p_wall1";
-	dir = 8
+	dir = 8;
+	icon_state = "p_wall1"
 	},
 /area/shuttle/escape_pod4/station)
 "aMp" = (
@@ -19500,8 +19484,8 @@
 	dir = 8
 	},
 /obj/structure/bed/chair/pod/yellow{
-	icon_state = "pod_chair_preview";
-	dir = 1
+	dir = 1;
+	icon_state = "pod_chair_preview"
 	},
 /obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod{
 	frequency = 1380;
@@ -19520,8 +19504,8 @@
 /area/shuttle/escape_pod4/station)
 "aMq" = (
 /turf/simulated/shuttle/wall/pod{
-	icon_state = "p_wall1";
-	dir = 8
+	dir = 8;
+	icon_state = "p_wall1"
 	},
 /area/shuttle/escape_pod5/station)
 "aMr" = (
@@ -19529,8 +19513,8 @@
 	dir = 8
 	},
 /obj/structure/bed/chair/pod/yellow{
-	icon_state = "pod_chair_preview";
-	dir = 1
+	dir = 1;
+	icon_state = "pod_chair_preview"
 	},
 /obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod{
 	frequency = 1380;
@@ -19549,8 +19533,8 @@
 /area/shuttle/escape_pod5/station)
 "aMs" = (
 /turf/simulated/shuttle/wall/pod{
-	icon_state = "p_wall1";
-	dir = 8
+	dir = 8;
+	icon_state = "p_wall1"
 	},
 /area/shuttle/escape_pod6/station)
 "aMt" = (
@@ -19558,8 +19542,8 @@
 	dir = 8
 	},
 /obj/structure/bed/chair/pod/yellow{
-	icon_state = "pod_chair_preview";
-	dir = 1
+	dir = 1;
+	icon_state = "pod_chair_preview"
 	},
 /obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod{
 	frequency = 1380;
@@ -19879,7 +19863,7 @@
 /turf/simulated/floor/plating,
 /area/ishimura/lower/maintenance/port)
 "aMS" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 4;
 	layer = 2.4;
 	level = 2
@@ -20162,7 +20146,7 @@
 /obj/machinery/shower{
 	dir = 8
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/effect/vent_spawner/pump{
 	dir = 8
 	},
 /turf/simulated/floor/dank/bathr,
@@ -20823,7 +20807,7 @@
 /turf/simulated/floor/plating,
 /area/ishimura/lower/maintenance/aft_central)
 "aOL" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 8
 	},
 /obj/machinery/light{
@@ -20923,7 +20907,7 @@
 "aOX" = (
 /obj/structure/reagent_dispensers/watertank,
 /obj/item/weapon/reagent_containers/glass/bucket,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/effect/vent_spawner/pump{
 	dir = 8
 	},
 /turf/simulated/floor/dank/mono,
@@ -20963,14 +20947,14 @@
 	},
 /area/ishimura/lower/misc/hallway/aft)
 "aPb" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/effect/vent_spawner/pump,
 /obj/machinery/status_display{
 	pixel_y = 32
 	},
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/misc/hallway/aft)
 "aPc" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 1;
 	layer = 2.4;
 	level = 2
@@ -20980,7 +20964,7 @@
 	},
 /area/ishimura/lower/misc/hallway/aft)
 "aPd" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 4
 	},
 /turf/simulated/floor/dank/tech{
@@ -21161,7 +21145,7 @@
 /area/ishimura/lower/crew/hydroponics)
 "aPz" = (
 /obj/structure/table/standard,
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/effect/vent_spawner/pump,
 /obj/item/weapon/deck/cards,
 /obj/machinery/alarm{
 	pixel_y = 23
@@ -21204,7 +21188,7 @@
 	id_tag = "m_one_airlock";
 	pixel_x = -26
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/effect/vent_spawner/pump{
 	dir = 4
 	},
 /obj/effect/floor_decal/industrial/warning/full,
@@ -21664,7 +21648,7 @@
 /turf/simulated/floor/plating,
 /area/ishimura/lower/mining/shuttlebay/starboard)
 "aQO" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/effect/vent_spawner/pump{
 	dir = 4
 	},
 /obj/effect/floor_decal/industrial/warning/full,
@@ -21906,14 +21890,14 @@
 /turf/simulated/floor/plating,
 /area/ishimura/lower/maintenance/starboard)
 "aRw" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/effect/vent_spawner/pump{
 	dir = 1
 	},
 /turf/simulated/floor/dank/bathr,
 /area/ishimura/lower/misc/bathroom/aft)
 "aRx" = (
 /obj/structure/table/standard,
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/effect/vent_spawner/pump,
 /obj/random/loot/sometimes/few,
 /turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/escape/two)
@@ -22339,7 +22323,7 @@
 /area/ishimura/lower/misc/janitorcloset/aft/starboard)
 "aSu" = (
 /obj/item/weapon/storage/fancy/cigar,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 4;
 	layer = 2.4;
 	level = 2
@@ -22386,7 +22370,7 @@
 /turf/simulated/floor/plating,
 /area/ishimura/lower/maintenance/starboard)
 "aSA" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/effect/vent_spawner/pump{
 	dir = 4
 	},
 /obj/structure/table/standard,
@@ -22506,7 +22490,7 @@
 /turf/simulated/floor/dank/golf_gray,
 /area/ishimura/lower/engineering/storage_closet/electronics)
 "aSN" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 4
 	},
 /turf/simulated/floor/dank/golf_gray,
@@ -22614,7 +22598,7 @@
 /turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/mining/office/foreman)
 "aSZ" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/effect/vent_spawner/pump{
 	dir = 1
 	},
 /obj/machinery/photocopier,
@@ -23494,8 +23478,8 @@
 "aUF" = (
 /turf/simulated/floor/plating,
 /turf/simulated/shuttle/wall/corner/pod1{
-	icon_state = "corner_pod1";
-	dir = 8
+	dir = 8;
+	icon_state = "corner_pod1"
 	},
 /area/shuttle/escape_pod9/station)
 "aUG" = (
@@ -24379,8 +24363,8 @@
 /area/ishimura/lower/crew/sleepblock/executive/quarters/bridge_officers)
 "aWn" = (
 /turf/simulated/shuttle/wall/pod{
-	icon_state = "p_wall1";
-	dir = 8
+	dir = 8;
+	icon_state = "p_wall1"
 	},
 /area/shuttle/escape_pod9/station)
 "aWo" = (
@@ -24453,8 +24437,8 @@
 "aWv" = (
 /turf/simulated/floor/plating,
 /turf/simulated/shuttle/wall/corner/pod2{
-	icon_state = "corner_pod2";
-	dir = 4
+	dir = 4;
+	icon_state = "corner_pod2"
 	},
 /area/shuttle/escape_pod9/station)
 "aWw" = (
@@ -24664,8 +24648,8 @@
 /area/ishimura/lower/security/escape/two)
 "aXl" = (
 /obj/structure/bed/chair/pod/yellow{
-	icon_state = "pod_chair_preview";
-	dir = 1
+	dir = 1;
+	icon_state = "pod_chair_preview"
 	},
 /obj/effect/shuttle_landmark/escape_pod/start/pod4,
 /turf/simulated/floor/shuttle/pod,
@@ -24903,7 +24887,7 @@
 /turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/cargo/bay)
 "aXU" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/effect/vent_spawner/pump{
 	dir = 1
 	},
 /turf/simulated/floor/dank/hardwood,
@@ -25433,16 +25417,16 @@
 /area/ishimura/lower/misc/hallway/central)
 "aZv" = (
 /obj/structure/bed/chair/pod/yellow{
-	icon_state = "pod_chair_preview";
-	dir = 1
+	dir = 1;
+	icon_state = "pod_chair_preview"
 	},
 /obj/effect/shuttle_landmark/escape_pod/start/pod5,
 /turf/simulated/floor/shuttle/pod,
 /area/shuttle/escape_pod5/station)
 "aZw" = (
 /obj/structure/bed/chair/pod/yellow{
-	icon_state = "pod_chair_preview";
-	dir = 1
+	dir = 1;
+	icon_state = "pod_chair_preview"
 	},
 /obj/effect/shuttle_landmark/escape_pod/start/pod6,
 /turf/simulated/floor/shuttle/pod,
@@ -25450,8 +25434,8 @@
 "aZx" = (
 /turf/simulated/floor/plating,
 /turf/simulated/shuttle/wall/corner/pod1{
-	icon_state = "corner_pod1";
-	dir = 10
+	dir = 10;
+	icon_state = "corner_pod1"
 	},
 /area/shuttle/escape_pod4/station)
 "aZy" = (
@@ -25466,8 +25450,8 @@
 "aZz" = (
 /turf/simulated/floor/plating,
 /turf/simulated/shuttle/wall/corner/pod1{
-	icon_state = "corner_pod1";
-	dir = 10
+	dir = 10;
+	icon_state = "corner_pod1"
 	},
 /area/shuttle/escape_pod5/station)
 "aZA" = (
@@ -25630,8 +25614,8 @@
 "baa" = (
 /turf/simulated/floor/plating,
 /turf/simulated/shuttle/wall/corner/pod1{
-	icon_state = "corner_pod1";
-	dir = 10
+	dir = 10;
+	icon_state = "corner_pod1"
 	},
 /area/shuttle/escape_pod6/station)
 "bab" = (
@@ -25646,8 +25630,8 @@
 "bac" = (
 /turf/simulated/floor/plating,
 /turf/simulated/shuttle/wall/corner/pod1{
-	icon_state = "corner_pod1";
-	dir = 8
+	dir = 8;
+	icon_state = "corner_pod1"
 	},
 /area/shuttle/escape_pod7/station)
 "bad" = (
@@ -25662,8 +25646,8 @@
 "bae" = (
 /turf/simulated/floor/plating,
 /turf/simulated/shuttle/wall/corner/pod1{
-	icon_state = "corner_pod1";
-	dir = 8
+	dir = 8;
+	icon_state = "corner_pod1"
 	},
 /area/shuttle/escape_pod8/station)
 "baf" = (
@@ -25677,8 +25661,8 @@
 /area/shuttle/escape_pod8/station)
 "bai" = (
 /turf/simulated/shuttle/wall/pod{
-	icon_state = "p_wall1";
-	dir = 8
+	dir = 8;
+	icon_state = "p_wall1"
 	},
 /area/shuttle/escape_pod7/station)
 "baj" = (
@@ -25688,8 +25672,8 @@
 /area/shuttle/escape_pod7/station)
 "bak" = (
 /turf/simulated/shuttle/wall/pod{
-	icon_state = "p_wall1";
-	dir = 8
+	dir = 8;
+	icon_state = "p_wall1"
 	},
 /area/shuttle/escape_pod8/station)
 "bal" = (
@@ -25704,8 +25688,8 @@
 "bat" = (
 /turf/simulated/floor/plating,
 /turf/simulated/shuttle/wall/corner/pod2{
-	icon_state = "corner_pod2";
-	dir = 4
+	dir = 4;
+	icon_state = "corner_pod2"
 	},
 /area/shuttle/escape_pod7/station)
 "bau" = (
@@ -25715,8 +25699,8 @@
 "baw" = (
 /turf/simulated/floor/plating,
 /turf/simulated/shuttle/wall/corner/pod2{
-	icon_state = "corner_pod2";
-	dir = 4
+	dir = 4;
+	icon_state = "corner_pod2"
 	},
 /area/shuttle/escape_pod8/station)
 "baA" = (
@@ -25967,7 +25951,7 @@
 /turf/simulated/floor/dank/maint_left,
 /area/ishimura/lower/maintenance/starboard)
 "bbz" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 1;
 	layer = 2.4;
 	level = 2
@@ -25994,7 +25978,7 @@
 	},
 /area/ishimura/lower/misc/hallway/central)
 "bbF" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/effect/vent_spawner/pump{
 	dir = 8
 	},
 /turf/simulated/floor/dank/grater,
@@ -26005,7 +25989,7 @@
 	},
 /obj/structure/closet/emcloset,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 4
 	},
 /turf/simulated/floor/dank/grater,
@@ -26056,7 +26040,7 @@
 /turf/simulated/floor/dank/cable,
 /area/ishimura/lower/misc/hallway/aft)
 "bbP" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/effect/vent_spawner/pump{
 	dir = 8
 	},
 /turf/simulated/floor/dank/tech,
@@ -26174,11 +26158,11 @@
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/misc/hallway/aft)
 "bcc" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/sleepblock/executive)
 "bcd" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/effect/vent_spawner/pump,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -26200,7 +26184,7 @@
 /turf/simulated/floor/dank/grater,
 /area/ishimura/lower/crew/sleepblock/executive)
 "bcf" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 1
 	},
 /turf/simulated/floor/dank/rectangles,
@@ -26229,7 +26213,7 @@
 /turf/simulated/floor/dank/tech,
 /area/ishimura/lower/crew/sleepblock/commons)
 "bci" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/effect/vent_spawner/pump{
 	dir = 8
 	},
 /turf/simulated/floor/dank/slides{
@@ -26237,24 +26221,24 @@
 	},
 /area/ishimura/lower/crew/sleepblock/commons)
 "bcj" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 1
 	},
 /turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/commons)
 "bck" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/sleepblock/commons)
 "bcl" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/effect/vent_spawner/pump,
 /obj/item/device/radio/intercom{
 	pixel_y = 21
 	},
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/sleepblock/commons)
 "bcm" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 4
 	},
 /turf/simulated/floor/dank/tech,
@@ -26275,7 +26259,7 @@
 /turf/simulated/floor/dank/grater,
 /area/ishimura/lower/misc/hallway/escape_executive)
 "bco" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/effect/vent_spawner/pump{
 	dir = 8
 	},
 /turf/simulated/floor/dank/tech{
@@ -26300,14 +26284,14 @@
 	},
 /area/ishimura/lower/crew/sleepblock/commons)
 "bcq" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/effect/vent_spawner/pump,
 /obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/mining/mining_bay)
 "bcr" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/mining/mining_bay)
 "bcs" = (
@@ -26326,7 +26310,7 @@
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/mining/mining_bay)
 "bct" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 1;
 	layer = 2.4;
 	level = 2
@@ -26353,7 +26337,7 @@
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/mining/mining_bay)
 "bcx" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 1;
 	layer = 2.4;
 	level = 2
@@ -26740,7 +26724,7 @@
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/misc/hallway/aft)
 "bdj" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/effect/vent_spawner/pump,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -26821,7 +26805,7 @@
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/cargo/bay)
 "bdt" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/effect/vent_spawner/pump,
 /obj/structure/window/reinforced{
 	dir = 1;
 	health = 1e+006
@@ -26836,7 +26820,7 @@
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/cargo/bay)
 "bdx" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/effect/vent_spawner/pump{
 	dir = 8
 	},
 /turf/simulated/floor/dank/golf_brown,
@@ -26957,7 +26941,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 4;
 	layer = 2.4;
 	level = 2
@@ -27108,7 +27092,7 @@
 /turf/simulated/floor/plating,
 /area/ishimura/lower/mining/processing_room)
 "beg" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 4
 	},
 /turf/simulated/floor/dank/golf_brown,
@@ -27129,12 +27113,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
-	},
-/turf/simulated/floor/dank/golf_brown,
-/area/ishimura/lower/mining/locker_room)
-"bej" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 8
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/mining/locker_room)
@@ -27258,7 +27236,7 @@
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/mining/locker_room)
 "bey" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
+/obj/effect/vent_spawner/pump{
 	dir = 8
 	},
 /turf/simulated/floor/dank/golf_brown,
@@ -27428,7 +27406,7 @@
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/sleepblock/commons)
 "bVR" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor/dank/slides{
 	dir = 4
 	},
@@ -27436,8 +27414,8 @@
 "bWn" = (
 /turf/simulated/floor/plating,
 /turf/simulated/shuttle/wall/corner/pod1{
-	icon_state = "corner_pod1";
-	dir = 4
+	dir = 4;
+	icon_state = "corner_pod1"
 	},
 /area/shuttle/escape_pod4/station)
 "bXd" = (
@@ -27508,8 +27486,8 @@
 /area/ishimura/lower/misc/storagesmall)
 "cMD" = (
 /turf/simulated/shuttle/wall/pod/two{
-	icon_state = "p_wall2";
-	dir = 1
+	dir = 1;
+	icon_state = "p_wall2"
 	},
 /area/shuttle/escape_pod4/station)
 "cOX" = (
@@ -27523,7 +27501,7 @@
 	},
 /area/ishimura/lower/crew/sleepblock/commons)
 "cXh" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 1;
 	layer = 2.4;
 	level = 2
@@ -27560,8 +27538,8 @@
 "dBt" = (
 /turf/simulated/floor/plating,
 /turf/simulated/shuttle/wall/corner/pod1{
-	icon_state = "corner_pod1";
-	dir = 1
+	dir = 1;
+	icon_state = "corner_pod1"
 	},
 /area/shuttle/escape_pod9/station)
 "dFp" = (
@@ -27576,7 +27554,7 @@
 /turf/simulated/floor/dank/maint,
 /area/ishimura/lower/maintenance/starboard)
 "dKx" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 1;
 	layer = 2.4;
 	level = 2
@@ -27603,7 +27581,7 @@
 /turf/simulated/floor/dank/cable,
 /area/ishimura/lower/crew/sleepblock/commons)
 "efw" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 1
 	},
 /turf/simulated/floor/dank/tech{
@@ -27744,8 +27722,8 @@
 /area/ishimura/lower/mining/mining_bay)
 "fvQ" = (
 /turf/simulated/shuttle/wall/pod{
-	icon_state = "p_wall1";
-	dir = 1
+	dir = 1;
+	icon_state = "p_wall1"
 	},
 /area/shuttle/escape_pod4/station)
 "fwZ" = (
@@ -27791,14 +27769,14 @@
 "fSC" = (
 /turf/simulated/floor/plating,
 /turf/simulated/shuttle/wall/corner/pod1{
-	icon_state = "corner_pod1";
-	dir = 4
+	dir = 4;
+	icon_state = "corner_pod1"
 	},
 /area/shuttle/escape_pod5/station)
 "gkd" = (
 /turf/simulated/shuttle/wall/pod{
-	icon_state = "p_wall1";
-	dir = 1
+	dir = 1;
+	icon_state = "p_wall1"
 	},
 /area/shuttle/escape_pod5/station)
 "gkQ" = (
@@ -27845,8 +27823,8 @@
 /area/ishimura/lower/maintenance/engineering_starboard)
 "gzm" = (
 /turf/simulated/shuttle/wall/pod/two{
-	icon_state = "p_wall2";
-	dir = 1
+	dir = 1;
+	icon_state = "p_wall2"
 	},
 /area/shuttle/escape_pod6/station)
 "gzu" = (
@@ -27934,7 +27912,7 @@
 	},
 /area/ishimura/lower/misc/hallway/central)
 "hCQ" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 1
 	},
 /turf/simulated/floor/dank/rectangles,
@@ -27961,8 +27939,8 @@
 /area/ishimura/lower/security/checkpoint/executive)
 "hWi" = (
 /turf/simulated/shuttle/wall/pod/two{
-	icon_state = "p_wall2";
-	dir = 8
+	dir = 8;
+	icon_state = "p_wall2"
 	},
 /area/shuttle/escape_pod5/station)
 "hYt" = (
@@ -27992,8 +27970,8 @@
 /area/ishimura/lower/mining/mining_bay)
 "ixO" = (
 /turf/simulated/shuttle/wall/pod/two{
-	icon_state = "p_wall2";
-	dir = 8
+	dir = 8;
+	icon_state = "p_wall2"
 	},
 /area/shuttle/escape_pod6/station)
 "iyr" = (
@@ -28043,7 +28021,7 @@
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/misc/hallway/aft)
 "iQp" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 1;
 	layer = 2.4;
 	level = 2
@@ -28138,7 +28116,7 @@
 /turf/simulated/floor/dank/maint,
 /area/ishimura/lower/maintenance/port)
 "kpG" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor/dank/slides,
 /area/ishimura/lower/misc/hallway/aft)
 "kEE" = (
@@ -28146,12 +28124,12 @@
 /area/ishimura/lower/misc/hallway/aft)
 "kMn" = (
 /turf/simulated/shuttle/wall/pod/two{
-	icon_state = "p_wall2";
-	dir = 1
+	dir = 1;
+	icon_state = "p_wall2"
 	},
 /area/shuttle/escape_pod5/station)
 "kMv" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 1;
 	layer = 2.4;
 	level = 2
@@ -28172,7 +28150,7 @@
 /turf/simulated/floor/dank/cable/end,
 /area/ishimura/lower/misc/hallway/central)
 "kXY" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor/dank/tech{
 	dir = 8
 	},
@@ -28290,8 +28268,8 @@
 /area/ishimura/lower/mining/shuttlebay/port)
 "mNU" = (
 /turf/simulated/shuttle/wall/pod/two{
-	icon_state = "p_wall2";
-	dir = 8
+	dir = 8;
+	icon_state = "p_wall2"
 	},
 /area/shuttle/escape_pod7/station)
 "nfn" = (
@@ -28299,8 +28277,8 @@
 /area/ishimura/lower/mining/shuttlebay/port)
 "nrJ" = (
 /turf/simulated/shuttle/wall/pod{
-	icon_state = "p_wall1";
-	dir = 1
+	dir = 1;
+	icon_state = "p_wall1"
 	},
 /area/shuttle/escape_pod8/station)
 "nsT" = (
@@ -28324,8 +28302,8 @@
 "ntc" = (
 /turf/simulated/floor/plating,
 /turf/simulated/shuttle/wall/corner/pod1{
-	icon_state = "corner_pod1";
-	dir = 1
+	dir = 1;
+	icon_state = "corner_pod1"
 	},
 /area/shuttle/escape_pod8/station)
 "nxX" = (
@@ -28394,8 +28372,8 @@
 /area/ishimura/lower/misc/hallway/central)
 "nRo" = (
 /turf/simulated/shuttle/wall/pod/two{
-	icon_state = "p_wall2";
-	dir = 8
+	dir = 8;
+	icon_state = "p_wall2"
 	},
 /area/shuttle/escape_pod4/station)
 "nSf" = (
@@ -28568,7 +28546,7 @@
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/mining/shuttlebay/starboard)
 "oXb" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/misc/hallway/central)
 "pgB" = (
@@ -28615,8 +28593,8 @@
 /area/ishimura/lower/misc/hallway/central)
 "pFv" = (
 /turf/simulated/shuttle/wall/pod/two{
-	icon_state = "p_wall2";
-	dir = 8
+	dir = 8;
+	icon_state = "p_wall2"
 	},
 /area/shuttle/escape_pod9/station)
 "pLC" = (
@@ -28660,7 +28638,7 @@
 /turf/simulated/floor/dank/grater,
 /area/ishimura/lower/misc/hallway/central)
 "pYS" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/misc/hallway/central)
 "qaR" = (
@@ -28706,7 +28684,7 @@
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/misc/hallway/central)
 "qxy" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 1;
 	layer = 2.4;
 	level = 2
@@ -28718,8 +28696,8 @@
 /area/ishimura/lower/security/checkpoint/executive)
 "qEy" = (
 /turf/simulated/shuttle/wall/pod/two{
-	icon_state = "p_wall2";
-	dir = 1
+	dir = 1;
+	icon_state = "p_wall2"
 	},
 /area/shuttle/escape_pod8/station)
 "qGV" = (
@@ -28753,8 +28731,8 @@
 /area/ishimura/lower/security/escape)
 "qUY" = (
 /turf/simulated/shuttle/wall/pod{
-	icon_state = "p_wall1";
-	dir = 1
+	dir = 1;
+	icon_state = "p_wall1"
 	},
 /area/shuttle/escape_pod6/station)
 "qVk" = (
@@ -28786,7 +28764,7 @@
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/misc/hallway/central)
 "rNw" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 1;
 	layer = 2.4;
 	level = 2
@@ -28872,8 +28850,8 @@
 /area/ishimura/lower/mining/mining_bay)
 "spo" = (
 /turf/simulated/shuttle/wall/pod{
-	icon_state = "p_wall1";
-	dir = 1
+	dir = 1;
+	icon_state = "p_wall1"
 	},
 /area/shuttle/escape_pod9/station)
 "sxy" = (
@@ -28930,8 +28908,8 @@
 "tbw" = (
 /turf/simulated/floor/plating,
 /turf/simulated/shuttle/wall/corner/pod1{
-	icon_state = "corner_pod1";
-	dir = 4
+	dir = 4;
+	icon_state = "corner_pod1"
 	},
 /area/shuttle/escape_pod6/station)
 "tbV" = (
@@ -29010,7 +28988,7 @@
 /turf/simulated/floor/dank/tech,
 /area/ishimura/lower/misc/hallway/aft)
 "tGa" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 1;
 	layer = 2.4;
 	level = 2
@@ -29050,8 +29028,8 @@
 "tYQ" = (
 /turf/simulated/floor/plating,
 /turf/simulated/shuttle/wall/corner/pod1{
-	icon_state = "corner_pod1";
-	dir = 1
+	dir = 1;
+	icon_state = "corner_pod1"
 	},
 /area/shuttle/escape_pod7/station)
 "tZh" = (
@@ -29133,8 +29111,8 @@
 /area/ishimura/lower/maintenance/port)
 "uHf" = (
 /turf/simulated/shuttle/wall/pod/two{
-	icon_state = "p_wall2";
-	dir = 1
+	dir = 1;
+	icon_state = "p_wall2"
 	},
 /area/shuttle/escape_pod7/station)
 "uTL" = (
@@ -29187,8 +29165,8 @@
 /area/ishimura/lower/security/checkpoint/executive)
 "vtz" = (
 /turf/simulated/shuttle/wall/pod{
-	icon_state = "p_wall1";
-	dir = 1
+	dir = 1;
+	icon_state = "p_wall1"
 	},
 /area/shuttle/escape_pod7/station)
 "vxU" = (
@@ -29208,8 +29186,8 @@
 /area/ishimura/lower/crew/sleepblock/commons)
 "vBd" = (
 /turf/simulated/shuttle/wall/pod/two{
-	icon_state = "p_wall2";
-	dir = 8
+	dir = 8;
+	icon_state = "p_wall2"
 	},
 /area/shuttle/escape_pod8/station)
 "vBT" = (
@@ -29230,8 +29208,8 @@
 /area/ishimura/lower/crew/messhall)
 "wgI" = (
 /turf/simulated/shuttle/wall/pod/two{
-	icon_state = "p_wall2";
-	dir = 1
+	dir = 1;
+	icon_state = "p_wall2"
 	},
 /area/shuttle/escape_pod9/station)
 "wlX" = (
@@ -29332,7 +29310,7 @@
 	},
 /area/ishimura/lower/misc/hallway/central)
 "xcY" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 1;
 	layer = 2.4;
 	level = 2
@@ -29342,7 +29320,7 @@
 	},
 /area/ishimura/lower/misc/hallway/aft)
 "xfB" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor/dank/tech{
 	dir = 1
 	},
@@ -29407,7 +29385,7 @@
 	},
 /area/ishimura/lower/misc/hallway/central)
 "xqj" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/effect/vent_spawner/pump{
 	dir = 4
 	},
 /turf/simulated/floor/dank,
@@ -35371,7 +35349,7 @@ aaa
 awC
 abD
 afh
-afr
+aSN
 aih
 anp
 aqx
@@ -51549,7 +51527,7 @@ gHS
 dof
 aAW
 lQK
-aji
+beg
 lQK
 lQK
 lQK
@@ -52565,7 +52543,7 @@ lQK
 lQK
 lQK
 lQK
-bej
+bey
 bek
 aiK
 oma
@@ -63854,7 +63832,7 @@ alK
 ami
 xMj
 xMj
-aoz
+aGj
 aHN
 xMj
 xMj
