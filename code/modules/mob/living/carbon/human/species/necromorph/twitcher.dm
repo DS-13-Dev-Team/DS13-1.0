@@ -38,6 +38,9 @@
 	BP_R_ARM =  /obj/item/organ/external/arm/blade/right,
 	)
 
+	unarmed_types = list(/datum/unarmed_attack/blades/twitcher, /datum/unarmed_attack/bite/weak) //Bite attack is a backup if blades are severed
+	
+
 	evasion = 20
 	inherent_verbs = list(/mob/living/carbon/human/proc/twitcher_charge, /mob/living/carbon/human/proc/twitcher_step_strike, /mob/proc/shout)
 	modifier_verbs = list(KEY_MIDDLE = list(/mob/living/carbon/human/proc/twitcher_step_strike),
@@ -128,7 +131,8 @@ All of these properties combined make Step Strike tricky and disorienting to use
 	. += "<hr>"
 	. += TWITCHER_STEPSTRIKE_DESC
 
-
+/datum/unarmed_attack/blades/twitcher
+	airlock_force_power = 2
 
 //Setup the twitch extension which handles a lot of the special behaviour
 /datum/species/necromorph/slasher/twitcher/add_inherent_verbs(var/mob/living/carbon/human/H)

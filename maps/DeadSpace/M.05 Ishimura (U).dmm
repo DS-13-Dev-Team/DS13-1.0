@@ -477,9 +477,7 @@
 /turf/simulated/floor/plating,
 /area/ishimura/eva/substation)
 "aZ" = (
-/obj/machinery/atmospherics/unary/vent/pump/on{
-	dir = 4
-	},
+/obj/effect/vent_spawner/pump,
 /obj/machinery/light{
 	dir = 8
 	},
@@ -795,9 +793,7 @@
 /turf/simulated/floor/plating,
 /area/ishimura/eva/substation)
 "bv" = (
-/obj/machinery/atmospherics/unary/vent/pump/on{
-	dir = 4
-	},
+/obj/effect/vent_spawner/pump,
 /obj/machinery/access_button{
 	frequency = 1380;
 	master_tag = "eva_smes1";
@@ -970,9 +966,7 @@
 "bQ" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/atmospherics/unary/vent/pump/on{
-	dir = 4
-	},
+/obj/effect/vent_spawner/pump,
 /obj/item/stack/material/glass/fifty,
 /obj/item/device/radio/intercom{
 	pixel_y = 24
@@ -1053,9 +1047,7 @@
 /turf/simulated/floor/dank,
 /area/ishimura/eva/prep)
 "ce" = (
-/obj/machinery/atmospherics/unary/vent/pump/on{
-	dir = 4
-	},
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor/dank,
 /area/ishimura/eva/prep)
 "cf" = (
@@ -1124,9 +1116,7 @@
 "cp" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/atmospherics/unary/vent/pump/on{
-	dir = 4
-	},
+/obj/effect/vent_spawner/pump,
 /obj/item/stack/material/steel/fifty,
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/eva/supply)
@@ -1390,14 +1380,6 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/space)
-"cI" = (
-/obj/machinery/atmospherics/unary/vent/pump/on{
-	dir = 4;
-	layer = 2.4;
-	level = 2
-	},
-/turf/simulated/floor/dank,
-/area/ishimura/eva)
 "cJ" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
@@ -1519,9 +1501,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/ishimura/eva/prep)
 "cY" = (
-/obj/machinery/atmospherics/unary/vent/pump/on{
-	dir = 8
-	},
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor/tiled/dark,
 /area/ishimura/eva/prep)
 "cZ" = (
@@ -2191,9 +2171,7 @@
 /turf/simulated/floor/dank/mono,
 /area/ishimura/eva)
 "eu" = (
-/obj/machinery/atmospherics/unary/vent/pump/on{
-	dir = 1
-	},
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor/dank,
 /area/ishimura/eva)
 "ev" = (
@@ -3231,9 +3209,7 @@
 /turf/simulated/floor/dank,
 /area/ishimura/eva/ADS)
 "gm" = (
-/obj/machinery/atmospherics/unary/vent/pump/on{
-	dir = 4
-	},
+/obj/effect/vent_spawner/pump,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/dispenser/oxygen,
 /turf/simulated/floor/tiled/dark/monotile,
@@ -3474,9 +3450,7 @@
 /area/ishimura/eva/ADS)
 "gQ" = (
 /obj/machinery/light,
-/obj/machinery/atmospherics/unary/vent/pump/on{
-	dir = 1
-	},
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor/dank/mono,
 /area/ishimura/eva/ADS)
 "gR" = (
@@ -3494,9 +3468,7 @@
 /area/ishimura/eva/ADS)
 "gS" = (
 /obj/structure/table/reinforced,
-/obj/machinery/atmospherics/unary/vent/pump/on{
-	dir = 1
-	},
+/obj/effect/vent_spawner/pump,
 /obj/item/weapon/paper_bin,
 /obj/item/weapon/pen,
 /turf/simulated/floor/dank,
@@ -13965,7 +13937,7 @@ bI
 aC
 aC
 aC
-cI
+eu
 aC
 aC
 aC

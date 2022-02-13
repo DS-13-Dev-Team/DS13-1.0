@@ -28,11 +28,12 @@ var/global/list/sparring_attack_cache = list()
 	var/eye_attack_text
 	var/eye_attack_text_victim
 
-	var/airlock_force_power = 0	//Can this attack be used to force open airlocks?
-		//A power of 1 can open a normal airlock.
-		//Power of 2 is needed to force open a welded and bolted airlock
-		//Power of 3 will open a bolted and reinforced airlock
-		//Power of 5 will open everything, even with a brace attached
+	var/airlock_force_power = 1	//Can this attack be used to force open airlocks?
+		//A power of 1 can force an airlock which is depowered
+		//A power of 2 can open a normal airlock.
+		//Power of 3 is needed to force open a welded and bolted airlock
+		//Power of 4 will open a bolted and reinforced airlock
+		//Power of 6 will open everything, even with a brace attached
 
 		//Extra power above what's required will make the forcing go faster
 

@@ -178,6 +178,7 @@ Be warned that friendly fire is fully active, it can harm other necromorphs as m
 //Light claw attack, not its main means of damage
 /datum/unarmed_attack/claws/puker
 	damage = 7
+	airlock_force_power = 2
 
 
 /*

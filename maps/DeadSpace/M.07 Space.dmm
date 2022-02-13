@@ -551,11 +551,7 @@
 "bE" = (
 /obj/structure/table/standard,
 /obj/item/weapon/storage/box/checkers/chess/red,
-/obj/machinery/atmospherics/unary/vent/pump/on{
-	dir = 1;
-	layer = 2.4;
-	level = 2
-	},
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor/tiled,
 /area/ERT/valor/barracks)
 "bF" = (
@@ -605,9 +601,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/ERT/valor/medical)
 "bL" = (
-/obj/machinery/atmospherics/unary/vent/pump/on{
-	dir = 8
-	},
+/obj/effect/vent_spawner/pump,
 /obj/machinery/light{
 	dir = 4;
 	icon_state = "tube_map"
@@ -626,9 +620,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/warning,
-/obj/machinery/atmospherics/unary/vent/pump/on{
-	dir = 4
-	},
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor/tiled/monotile,
 /area/ERT/valor/medical)
 "bO" = (
@@ -1160,9 +1152,7 @@
 /area/ERT/valor/medical)
 "df" = (
 /obj/structure/table/standard,
-/obj/machinery/atmospherics/unary/vent/pump/on{
-	dir = 4
-	},
+/obj/effect/vent_spawner/pump,
 /obj/machinery/alarm{
 	dir = 4;
 	pixel_x = -21
@@ -1276,11 +1266,7 @@
 /area/ERT/valor/hangar)
 "dt" = (
 /obj/structure/table/standard,
-/obj/machinery/atmospherics/unary/vent/pump/on{
-	dir = 1;
-	layer = 2.4;
-	level = 2
-	},
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor/tiled/monotile,
 /area/ERT/valor/hangar)
 "du" = (
@@ -1450,11 +1436,7 @@
 /area/ERT/valor/closet)
 "dI" = (
 /obj/structure/table/reinforced,
-/obj/machinery/atmospherics/unary/vent/pump/on{
-	dir = 1;
-	layer = 2.4;
-	level = 2
-	},
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor/tiled,
 /area/ERT/valor/firingrange)
 "dJ" = (
@@ -1499,11 +1481,7 @@
 /turf/simulated/floor/tiled/white,
 /area/ERT/valor/medical)
 "dP" = (
-/obj/machinery/atmospherics/unary/vent/pump/on{
-	dir = 1;
-	layer = 2.4;
-	level = 2
-	},
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor/tiled/white/monotile,
 /area/ERT/valor/medical/morgue)
 "dQ" = (
@@ -2304,9 +2282,7 @@
 	pixel_y = 4
 	},
 /obj/item/weapon/storage/box/bloodpacks,
-/obj/machinery/atmospherics/unary/vent/pump/on{
-	dir = 4
-	},
+/obj/effect/vent_spawner/pump,
 /obj/machinery/firealarm{
 	dir = 8;
 	pixel_x = -24
@@ -2844,11 +2820,7 @@
 /turf/simulated/floor/plating,
 /area/ERT/valor/hangar)
 "gB" = (
-/obj/machinery/atmospherics/unary/vent/pump/on{
-	dir = 1;
-	layer = 2.4;
-	level = 2
-	},
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor/tiled/freezer,
 /area/ERT/valor/medical/surgery)
 "gC" = (
@@ -2988,11 +2960,7 @@
 /turf/simulated/floor/plating,
 /area/ERT/valor/hangar)
 "gU" = (
-/obj/machinery/atmospherics/unary/vent/pump/on{
-	dir = 1;
-	layer = 2.4;
-	level = 2
-	},
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor/plating,
 /area/ERT/valor/hangar)
 "gV" = (
@@ -3283,11 +3251,7 @@
 /area/supply/dock)
 "hA" = (
 /obj/structure/table/standard,
-/obj/machinery/atmospherics/unary/vent/pump/on{
-	dir = 1;
-	layer = 2.4;
-	level = 2
-	},
+/obj/effect/vent_spawner/pump,
 /obj/item/weapon/storage/box/lights/mixed,
 /obj/item/weapon/storage/box/lights/mixed,
 /obj/item/device/lightreplacer,

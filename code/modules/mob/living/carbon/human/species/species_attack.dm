@@ -18,6 +18,7 @@
 	eye_attack_text_victim = "sharp claws"
 	attack_sound = 'sound/weapons/slice.ogg'
 	miss_sound = 'sound/weapons/slashmiss.ogg'
+	airlock_force_power = 1
 	sharp = 1
 	edge = 1
 	damage = 7
@@ -73,6 +74,7 @@
 
 /datum/unarmed_attack/claws/strong
 	attack_verb = list("slashed")
+	airlock_force_power = 2
 	damage = 10.5
 	shredding = 1
 

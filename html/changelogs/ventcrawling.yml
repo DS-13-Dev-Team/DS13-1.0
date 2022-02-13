@@ -1,0 +1,72 @@
+################################
+# Example Changelog File
+#
+# Note: This file, and files beginning with ".", and files that don't end in ".yml" will not be read. If you change this file, you will look really dumb.
+#
+# Your changelog will be merged with a master changelog. (New stuff added only, and only on the date entry for the day it was merged.)
+# When it is, any changes listed below will disappear.
+#
+# Valid Prefixes:
+#   bugfix
+#     - (fixes bugs)
+#   wip
+#     - (work in progress)
+#   qol
+#     - (quality of life)
+#   soundadd
+#     - (adds a sound)
+#   sounddel
+#     - (removes a sound)
+#   rscadd
+#     - (adds a feature)
+#   rscdel
+#     - (removes a feature)
+#   imageadd
+#     - (adds an image or sprite)
+#   imagedel
+#     - (removes an image or sprite)
+#   spellcheck
+#     - (fixes spelling or grammar)
+#   experiment
+#     - (experimental change)
+#   balance
+#     - (balance changes)
+#   code_imp
+#     - (misc internal code change)
+#   refactor
+#     - (refactors code)
+#   config
+#     - (makes a change to the config files)
+#   admin
+#     - (makes changes to administrator tools)
+#   server
+#     - (miscellaneous changes to server)
+#################################
+
+# Your name.
+author: ""
+
+# Optional: Remove this file after generating master changelog.  Useful for PR changelogs that won't get used again.
+delete-after: True
+
+# Any changes you've made.  See valid prefix list above.
+# INDENT WITH TWO SPACES.  NOT TABS.  SPACES.
+# SCREW THIS UP AND IT WON'T WORK.
+# Also, this gets changed to [] after reading.  Just remove the brackets when you add new shit.
+# Please surround your changes in  double quotes ("). It works without them, but if you use certain characters it screws up compiling. The quotes will not show up in the changelog.
+changes:
+  - refactor: "Reworked ventcrawling. Changes to follow"
+  - rscadd: "All necromorphs of T1 and T2 can now ventcrawl. Big things still can't."
+  - tweak: "Increased the strength of airlocks significantly. T1 necromorphs are no longer able to destroy or force open airlocks, they should use vents to travel around."
+  - tweak: "Necromorphs can now lurk inside an intact vent to peek out and see the world around them. Anyone who examines the vent during this time will see there's something lurking inside it."
+  - rscadd: "Necromorphs can now burst out of an intact vent to surprise nearby crewmembers, initiating a fight with a major advantage. Each vent can only be used once like this, as it will break in the process."
+  - refactor: "Added vent sealing. A vent can be sealed with metal sheets and welding or riveting tools. A sealed vent is extremely durable and cannot be used by necromorphs to ambush. Sealed vents have new graphics demonstrating a metal frame built over the vent."
+  - tweak: "Removed vent welding. The new sealing feature replaces it."
+  - tweak: "Mobs crawling inside vents will no longer take pressure damage from the air (or lack of it) in the pipes."
+  - tweak: "Ventcrawling movement is now smooth, and a little slower."
+  - imageadd: "When ventcrawling, an icon now shows where you are in the pipes."
+  - tweak: "Vents and scrubbers are now shown onscreen while ventcrawling"
+  - tweak: "The world outside the vents is now darkened while ventcrawling to indicate that it can't be seen."
+  - rscadd: "Added wall-mounted vents. These are automatically spawned instead of normal floor vents whenever the vent would be near a flat wall to place it on."
+  
+  

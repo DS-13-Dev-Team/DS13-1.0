@@ -26,7 +26,7 @@
 
 	var/destroy_hits = 10 //How many strong hits it takes to destroy the door
 	var/min_force = 10 //minimum amount of force needed to damage the door with a melee weapon or unarmed attack
-	var/force_resist	=	1	//Used to determine whether a mob can force this door open with its bare hands
+	var/force_resist	=	2	//Used to determine whether a mob can force this door open with its bare hands
 	var/force_time = 20 SECONDS
 
 	var/hitsound = 'sound/weapons/smash.ogg' //sound door makes when hit with a weapon

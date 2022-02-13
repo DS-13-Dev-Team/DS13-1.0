@@ -88,7 +88,7 @@
 /turf/simulated/floor,
 /area/ishimura/tramdeck/switchingstation/lower)
 "as" = (
-/obj/machinery/atmospherics/unary/vent/pump/on,
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor/dank/heavy,
 /area/ishimura/tramdeck/switchingstation/lower)
 "at" = (
@@ -402,7 +402,7 @@
 /turf/simulated/floor/dank/heavy,
 /area/ishimura/tramdeck/tram/undertunnel/utars)
 "br" = (
-/obj/machinery/atmospherics/unary/vent/pump/on,
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor/dank/heavy,
 /area/ishimura/tramdeck/tram/undertunnel/utars)
 "bs" = (
@@ -1167,11 +1167,7 @@
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "df" = (
-/obj/machinery/atmospherics/unary/vent/pump/on{
-	dir = 1;
-	layer = 2.4;
-	level = 2
-	},
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor/plating,
 /area/ishimura/tramdeck/tram/undertunnel/utama)
 "dg" = (
@@ -1920,14 +1916,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
-"ev" = (
-/obj/machinery/atmospherics/unary/vent/pump/on{
-	dir = 1;
-	layer = 2.4;
-	level = 2
-	},
-/turf/simulated/floor/plating,
-/area/ishimura/tramdeck/tram/undertunnel/uttt)
 "ew" = (
 /obj/structure/grille,
 /turf/simulated/floor/plating,
@@ -1935,14 +1923,6 @@
 "ex" = (
 /obj/machinery/atmospherics/unary/vent/scrubber/on{
 	dir = 1
-	},
-/turf/simulated/floor,
-/area/ishimura/tramdeck/tram/undertunnel/uttt)
-"ey" = (
-/obj/machinery/atmospherics/unary/vent/pump/on{
-	dir = 1;
-	layer = 2.4;
-	level = 2
 	},
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
@@ -2382,7 +2362,7 @@
 /turf/simulated/floor/plating,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "fy" = (
-/obj/machinery/atmospherics/unary/vent/pump/on,
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor/plating,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "fz" = (
@@ -2409,7 +2389,7 @@
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "fB" = (
-/obj/machinery/atmospherics/unary/vent/pump/on,
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "fC" = (
@@ -4189,7 +4169,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "iE" = (
-/obj/machinery/atmospherics/unary/vent/pump/on,
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor/tiled/steel_grid,
 /area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "iF" = (
@@ -4679,9 +4659,7 @@
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "jK" = (
-/obj/machinery/atmospherics/unary/vent/pump/on{
-	dir = 4
-	},
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor/tiled/dark,
 /area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "jL" = (
@@ -12736,7 +12714,7 @@ cA
 ky
 ef
 dK
-ev
+fy
 ef
 gV
 fs
@@ -16978,7 +16956,7 @@ dN
 dN
 ef
 dK
-ev
+fy
 ef
 gV
 fs
@@ -24048,7 +24026,7 @@ il
 il
 ef
 dV
-ey
+fB
 ef
 eT
 fs
@@ -27078,7 +27056,7 @@ il
 il
 ef
 dV
-ey
+fB
 ef
 eT
 fs
@@ -31118,7 +31096,7 @@ ck
 in
 ef
 dV
-ey
+fB
 ef
 eT
 fs
@@ -41016,7 +40994,7 @@ tq
 tq
 ef
 ee
-ey
+fB
 ef
 eT
 fs
@@ -46874,7 +46852,7 @@ kK
 kG
 ef
 eq
-ey
+fB
 ef
 eT
 fs

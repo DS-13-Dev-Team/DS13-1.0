@@ -98,9 +98,7 @@
 /turf/simulated/floor/dank,
 /area/ishimura/tramdeck/tram/station/aft)
 "at" = (
-/obj/machinery/atmospherics/unary/vent/pump/on{
-	dir = 4
-	},
+/obj/effect/vent_spawner/pump,
 /obj/machinery/light/small{
 	dir = 1
 	},
@@ -1221,16 +1219,8 @@
 	},
 /turf/simulated/floor/dank/heavy,
 /area/ishimura/tramdeck/switchingstation/upper)
-"dd" = (
-/obj/machinery/atmospherics/unary/vent/pump/on{
-	dir = 8
-	},
-/turf/simulated/floor/dank/mono,
-/area/ishimura/tramdeck/tram/station/amidships/north)
 "de" = (
-/obj/machinery/atmospherics/unary/vent/pump/on{
-	dir = 8
-	},
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor/plating,
 /area/ishimura/tramdeck/tram/misc/disusedbotanics)
 "df" = (
@@ -1862,9 +1852,7 @@
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/maintenance/midmaintenance)
 "eM" = (
-/obj/machinery/atmospherics/unary/vent/pump/on{
-	dir = 8
-	},
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/aft)
 "eN" = (
@@ -1895,9 +1883,7 @@
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/station/amidships/north)
 "eR" = (
-/obj/machinery/atmospherics/unary/vent/pump/on{
-	dir = 8
-	},
+/obj/effect/vent_spawner/pump,
 /obj/structure/bed/chair/office,
 /turf/simulated/floor/dank,
 /area/ishimura/tramdeck/tram/station/aft)
@@ -2054,11 +2040,7 @@
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/maintenance/aftmaintenance)
 "fk" = (
-/obj/machinery/atmospherics/unary/vent/pump/on{
-	dir = 1;
-	layer = 2.4;
-	level = 2
-	},
+/obj/effect/vent_spawner/pump,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/bed/chair/office,
 /turf/simulated/floor/dank,
@@ -2191,7 +2173,7 @@
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/amidships/north)
 "fA" = (
-/obj/machinery/atmospherics/unary/vent/pump/on,
+/obj/effect/vent_spawner/pump,
 /obj/structure/bed/chair{
 	dir = 1
 	},
@@ -3437,11 +3419,7 @@
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/forward)
 "hG" = (
-/obj/machinery/atmospherics/unary/vent/pump/on{
-	dir = 4;
-	layer = 2.4;
-	level = 2
-	},
+/obj/effect/vent_spawner/pump,
 /obj/structure/bed/chair{
 	dir = 4
 	},
@@ -3524,11 +3502,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/unary/vent/pump/on{
-	dir = 1;
-	layer = 2.4;
-	level = 2
-	},
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor/dank,
 /area/ishimura/tramdeck/tram/station/amidships/north)
 "hQ" = (
@@ -3572,9 +3546,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/unary/vent/pump/on{
-	dir = 1
-	},
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor/dank,
 /area/ishimura/tramdeck/tram/station/forward)
 "hW" = (
@@ -3859,9 +3831,7 @@
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/forward)
 "iy" = (
-/obj/machinery/atmospherics/unary/vent/pump/on{
-	dir = 1
-	},
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/forward)
 "iz" = (
@@ -3960,9 +3930,7 @@
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/forward)
 "iN" = (
-/obj/machinery/atmospherics/unary/vent/pump/on{
-	dir = 4
-	},
+/obj/effect/vent_spawner/pump,
 /obj/structure/bed/chair,
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/amidships/north)
@@ -3978,11 +3946,7 @@
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/amidships/north)
 "iQ" = (
-/obj/machinery/atmospherics/unary/vent/pump/on{
-	dir = 4;
-	layer = 2.4;
-	level = 2
-	},
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/amidships/north)
 "iR" = (
@@ -4543,9 +4507,7 @@
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/forward)
 "kh" = (
-/obj/machinery/atmospherics/unary/vent/pump/on{
-	dir = 8
-	},
+/obj/effect/vent_spawner/pump,
 /obj/structure/bed/chair{
 	dir = 8
 	},
@@ -5009,9 +4971,7 @@
 /turf/simulated/floor/dank,
 /area/ishimura/tramdeck/tram/misc)
 "kY" = (
-/obj/machinery/atmospherics/unary/vent/pump/on{
-	dir = 4
-	},
+/obj/effect/vent_spawner/pump,
 /obj/structure/table/steel,
 /turf/simulated/floor/dank,
 /area/ishimura/tramdeck/tram/misc)
@@ -5183,9 +5143,7 @@
 /turf/simulated/floor/plating,
 /area/ishimura/tramdeck/tram/maintenance/midmaintenance)
 "lA" = (
-/obj/machinery/atmospherics/unary/vent/pump/on{
-	dir = 1
-	},
+/obj/effect/vent_spawner/pump,
 /obj/effect/catwalk_plated/dank,
 /turf/simulated/floor/plating,
 /area/ishimura/tramdeck/tram/maintenance/midmaintenance)
@@ -5885,9 +5843,7 @@
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/misc/auxcargostor)
 "mX" = (
-/obj/machinery/atmospherics/unary/vent/pump/on{
-	dir = 1
-	},
+/obj/effect/vent_spawner/pump,
 /obj/effect/catwalk_plated/dank,
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/misc/auxcargostor)
@@ -29376,7 +29332,7 @@ nd
 nd
 ah
 kT
-dd
+iQ
 eP
 ak
 aj
@@ -29394,7 +29350,7 @@ fS
 bD
 gN
 hp
-dd
+iQ
 hZ
 kb
 aj

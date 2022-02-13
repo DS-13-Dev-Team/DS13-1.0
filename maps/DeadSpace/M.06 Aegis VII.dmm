@@ -609,11 +609,7 @@
 /turf/simulated/floor/tiled,
 /area/aegis/colony/hangar/entrance/one)
 "bL" = (
-/obj/machinery/atmospherics/unary/vent/pump/on{
-	dir = 1;
-	layer = 2.4;
-	level = 2
-	},
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor/tiled,
 /area/aegis/colony/hangar/entrance/one)
 "bM" = (
@@ -1006,9 +1002,7 @@
 	dir = 4;
 	icon_state = "tube_map"
 	},
-/obj/machinery/atmospherics/unary/vent/pump/on{
-	dir = 8
-	},
+/obj/effect/vent_spawner/pump,
 /obj/machinery/portable_atmospherics/powered/scrubber,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/monotile,
@@ -1319,10 +1313,6 @@
 "dk" = (
 /turf/simulated/wall/r_wall,
 /area/aegis)
-"dl" = (
-/obj/machinery/atmospherics/unary/vent/pump/on,
-/turf/simulated/floor/tiled,
-/area/aegis/colony/hangar)
 "dm" = (
 /obj/machinery/light,
 /turf/simulated/floor/tiled,
@@ -1362,9 +1352,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/aegis/colony/airlock)
 "ds" = (
-/obj/machinery/atmospherics/unary/vent/pump/on{
-	dir = 4
-	},
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor/tiled,
 /area/aegis/colony/security)
 "dt" = (
@@ -1523,7 +1511,7 @@
 "dI" = (
 /obj/structure/table/standard,
 /obj/machinery/microwave,
-/obj/machinery/atmospherics/unary/vent/pump/on,
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor/tiled/monotile,
 /area/aegis/colony/breakroom)
 "dJ" = (
@@ -1578,7 +1566,7 @@
 /turf/simulated/floor/plating,
 /area/aegis)
 "dT" = (
-/obj/machinery/atmospherics/unary/vent/pump/on,
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor/tiled,
 /area/aegis/colony/hangar/entrance/two)
 "dU" = (
@@ -1644,7 +1632,7 @@
 /turf/simulated/floor/tiled/white,
 /area/aegis/colony/medical)
 "ee" = (
-/obj/machinery/atmospherics/unary/vent/pump/on,
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor/tiled/white,
 /area/aegis/colony/medical)
 "ef" = (
@@ -3167,9 +3155,7 @@
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/item/weapon/gun/energy/cutter,
-/obj/machinery/atmospherics/unary/vent/pump/on{
-	dir = 1
-	},
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor/tiled/monotile,
 /area/aegis/colony/spare_storage)
 "ha" = (
@@ -3520,9 +3506,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/aegis/colony)
 "hJ" = (
-/obj/machinery/atmospherics/unary/vent/pump/on{
-	dir = 1
-	},
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor/tiled,
 /area/aegis/colony)
 "hK" = (
@@ -3868,11 +3852,7 @@
 /turf/simulated/floor/tiled,
 /area/aegis/colony/hangar)
 "io" = (
-/obj/machinery/atmospherics/unary/vent/pump/on{
-	dir = 1;
-	layer = 2.4;
-	level = 2
-	},
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor/tiled,
 /area/aegis/colony/hangar)
 "ip" = (
@@ -4391,7 +4371,7 @@
 /obj/machinery/alarm/cold{
 	pixel_y = 16
 	},
-/obj/machinery/atmospherics/unary/vent/pump/on,
+/obj/effect/vent_spawner/pump,
 /obj/effect/catwalk_plated/dank,
 /turf/simulated/floor,
 /area/aegis/colony/research/storage)
@@ -4484,9 +4464,7 @@
 /turf/simulated/floor/dank/medical,
 /area/aegis/colony/research/analysis)
 "jI" = (
-/obj/machinery/atmospherics/unary/vent/pump/on{
-	dir = 8
-	},
+/obj/effect/vent_spawner/pump,
 /obj/effect/catwalk_plated/dank,
 /turf/simulated/floor,
 /area/aegis/colony/research/analysis)
@@ -4569,7 +4547,7 @@
 /obj/structure/sign/warning/compressed_gas{
 	pixel_y = 32
 	},
-/obj/machinery/atmospherics/unary/vent/pump/on,
+/obj/effect/vent_spawner/pump,
 /obj/effect/catwalk_plated/dank,
 /obj/structure/closet/emcloset,
 /turf/simulated/floor,
@@ -4700,7 +4678,7 @@
 /turf/simulated/floor,
 /area/aegis/colony/research/airlock)
 "kn" = (
-/obj/machinery/atmospherics/unary/vent/pump/on,
+/obj/effect/vent_spawner/pump,
 /obj/effect/catwalk_plated/dank,
 /obj/structure/table/steel,
 /obj/machinery/recharger,
@@ -4946,7 +4924,7 @@
 /turf/simulated/floor/dank/medical,
 /area/aegis/colony/research/lab)
 "kJ" = (
-/obj/machinery/atmospherics/unary/vent/pump/on,
+/obj/effect/vent_spawner/pump,
 /obj/effect/catwalk_plated/dank,
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 32
@@ -5141,9 +5119,7 @@
 /area/aegis/colony/research/airlock/hallway)
 "lc" = (
 /obj/effect/catwalk_plated/dank,
-/obj/machinery/atmospherics/unary/vent/pump/on{
-	dir = 1
-	},
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor,
 /area/aegis/colony/research)
 "ld" = (
@@ -5534,7 +5510,7 @@
 /area/aegis/colony/research/locker)
 "lP" = (
 /obj/structure/closet/secure_closet/xenoarchaeologist,
-/obj/machinery/atmospherics/unary/vent/pump/on,
+/obj/effect/vent_spawner/pump,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/effect/catwalk_plated/dank,
 /obj/item/clothing/suit/storage/toggle/labcoat,
@@ -5554,9 +5530,7 @@
 	dir = 4;
 	pixel_x = -21
 	},
-/obj/machinery/atmospherics/unary/vent/pump/on{
-	dir = 4
-	},
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor/wood,
 /area/aegis/colony/research/airlock/breakroom)
 "lS" = (
@@ -6061,9 +6035,7 @@
 /area/aegis/colony/research)
 "mT" = (
 /obj/effect/catwalk_plated/dank,
-/obj/machinery/atmospherics/unary/vent/pump/on{
-	dir = 4
-	},
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor,
 /area/aegis/colony/research/lab)
 "mU" = (
@@ -6140,9 +6112,7 @@
 	dir = 1;
 	pixel_y = -24
 	},
-/obj/machinery/atmospherics/unary/vent/pump/on{
-	dir = 1
-	},
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor,
 /area/aegis/colony/research/iso2)
 "na" = (
@@ -6664,9 +6634,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/aegis/colony/refinery)
 "Af" = (
-/obj/machinery/atmospherics/unary/vent/pump/on{
-	dir = 1
-	},
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor/tiled/steel_grid,
 /area/aegis/colony/refinery)
 "Ax" = (
@@ -6911,9 +6879,7 @@
 /area/aegis/colony)
 "Ob" = (
 /obj/machinery/light,
-/obj/machinery/atmospherics/unary/vent/pump/on{
-	dir = 1
-	},
+/obj/effect/vent_spawner/pump,
 /turf/simulated/floor/tiled,
 /area/aegis/colony)
 "Oh" = (
@@ -37595,7 +37561,7 @@ dd
 ae
 ai
 ai
-dl
+io
 hX
 hX
 hX

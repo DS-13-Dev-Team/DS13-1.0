@@ -219,7 +219,7 @@
 	shredding = TRUE
 	damage = 16
 	delay = 15
-	airlock_force_power = 2
+	airlock_force_power = 1
 	armor_penetration = 5
 
 #define SLASHER_CHARGE_DESC	"<h2>Charge:</h2><br>\
