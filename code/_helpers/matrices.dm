@@ -177,7 +177,6 @@
 	var/pixel_distance = pixel_delta.Magnitude()
 	var/pixels_per_decisecond = (world.icon_size * speed) * 0.1
 
-	dump_args
 
 
 

@@ -454,7 +454,7 @@
 /proc/dirs_to_corner_states(list/dirs)
 	if(!istype(dirs)) return
 
-	var/list/ret = list(NORTHWEST, SOUTHEAST, NORTHEAST, SOUTHWEST)
+	var/list/ret = LIST_CORNERS
 
 	for(var/i = 1 to ret.len)
 		var/dir = ret[i]
@@ -468,6 +468,31 @@
 		ret[i] = "[.]"
 
 	return ret
+
+
+/*
+	The inverse of the above
+*/
+/proc/corner_states_to_dirs(list/corners)
+
+
+	var/list/ret = corners.Copy()
+	var/list/reference = LIST_CORNERS
+
+	var/list/dirs = list()
+
+	for(var/i = 1 to ret.len)
+		var/corner = text2num(ret[i])
+		var/refdir = reference[i]
+		switch (corner)
+			if (CORNER_DIAGONAL)
+				dirs |= reference[i]
+			if (CORNER_COUNTERCLOCKWISE)
+				dirs |= turn(refdir,45)
+			if (CORNER_CLOCKWISE)
+				dirs |= turn(refdir,-45)
+
+	return dirs
 
 #undef CORNER_NONE
 #undef CORNER_COUNTERCLOCKWISE

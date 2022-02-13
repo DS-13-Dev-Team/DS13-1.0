@@ -268,8 +268,6 @@
 
 /datum/extension/mount/proc/mount_offset()
 	//Visuals
-	to_chat(world, "mount offset default pixels [mountee.default_pixel_x],[mountee.default_pixel_y]")
-	to_chat(world, "mount pixels [mountee.pixel_x],[mountee.pixel_y]")
 	if (face_away_from_mountpoint)
 		mount_angle = rotation_to_target(mountee, get_turf(mountpoint), SOUTH)	//Point our feet at the wall we're walking on
 		clamp_mount_angle()	//Override this to round it off
@@ -282,8 +280,6 @@
 		mountee.default_pixel_y += newpix.y
 		release_vector(newpix)
 
-	to_chat(world, "adjust_pixel_placement is [adjust_pixel_placement]")
-	to_chat(world, "is_connected_vertical_surface is [mountpoint.is_connected_vertical_surface()]")
 	if (adjust_pixel_placement && mountpoint.is_connected_vertical_surface())
 		adjust_pixel_offset()
 

@@ -20,3 +20,23 @@
 #define S_SOUTHWEST	"10"
 #define S_UP	"16"
 #define S_DOWN "32"
+
+//Axes
+#define LATERAL	list(EAST, WEST)	//East or west
+#define LONGITUDINAL list(NORTH, SOUTH)	//North or South
+
+/proc/direction_to_axis(var/direction)
+	switch (direction)
+		if (NORTH, SOUTH)
+			return LONGITUDINAL
+		if (EAST, WEST)
+			return LATERAL
+
+
+//Connection indexes
+#define CONNECTION_NORTH	1
+#define CONNECTION_SOUTH	2
+#define CONNECTION_EAST	3
+#define CONNECTION_WEST	4
+
+#define LIST_CORNERS list(NORTHWEST, SOUTHEAST, NORTHEAST, SOUTHWEST)

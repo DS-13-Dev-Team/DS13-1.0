@@ -3,14 +3,34 @@
 /obj/machinery/atmospherics/unary/vent/pump/wall
 	name = "Wall mounted vent pump"
 	var/cover = TRUE //Is the wall-vent covered?
-	layer = ABOVE_HUMAN_LAYER //So that the vents stack on top of the necromorphs.
+	layer = ABOVE_WINDOW_LAYER //So that the vents stack on top of the necromorphs.
 	icon = 'icons/atmos/wallvent.dmi'
 	icon_state = "composite"
+	use_power = 1
 
 /obj/machinery/atmospherics/unary/vent/pump/wall/examine(mob/user)
 	. = ..()
 	if(!cover && locate(/mob) in contents)
 		to_chat(user, "<span class='warning'>There's something lurking inside it...</span>")
+
+/obj/machinery/atmospherics/unary/vent/pump/wall/set_dir(ndir)
+	. = ..()
+	
+	switch (dir)
+		if (NORTH)
+			pixel_x = 0
+			pixel_y = -31
+		if (SOUTH)
+			pixel_x = 0
+			pixel_y = 30
+		if (EAST)
+			pixel_x = -32
+			pixel_y = 0
+		if (WEST)
+			pixel_x = 32
+			pixel_y = 0
+	default_pixel_x = pixel_x
+	default_pixel_y = pixel_y
 
 /obj/machinery/atmospherics/unary/vent/pump/wall/Initialize()
 	default_pixel_x = pixel_x

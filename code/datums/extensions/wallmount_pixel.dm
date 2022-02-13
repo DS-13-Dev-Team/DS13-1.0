@@ -1,30 +1,42 @@
 //Is this atom a "vertical surface" which is connected to at least one other such atom?
 //This can be true for walls, low walls, full tile windows, and airlocks
-/atom/proc/is_connected_vertical_surface()
+//Axis is an optional var that can be either LATERAL (eastwest) or LONGITUDINAL (northsouth). If an axis is supplied, will only return true for connections on that axis
+//Axis currently only implemented for walls
+/atom/proc/is_connected_vertical_surface(var/axis)
 
-/turf/is_connected_vertical_surface()
+/turf/is_connected_vertical_surface(var/axis)
 	//Nonwall turfs will check the things within them
 	//In addition, they return exactly which atom is the surface if they find one
 	for (var/atom/A in contents)
-		if (A.is_connected_vertical_surface())
-			to_chat(world, "Wall found atom [A]")
+		if (A.is_connected_vertical_surface(axis))
 			return A
 
-/turf/simulated/wall/is_connected_vertical_surface()
-	var/list/things = other_connections + wall_connections
-	for (var/thing in things)
-		if (thing && thing != "0")
-			return src
+/turf/simulated/wall/is_connected_vertical_surface(var/axis)
+
+	if (axis)
+		var/list/directions = corner_states_to_dirs(wall_connections)
+		
+		directions |= corner_states_to_dirs(other_connections)
+
+		var/list/remaining_directions = (axis & directions)
+		if (length(remaining_directions))
+			return TRUE
+
+	else
+		var/list/things = other_connections + wall_connections
+		for (var/thing in things)
+			if (thing && thing != "0")
+				return src
 
 
-/obj/structure/is_connected_vertical_surface()
+/obj/structure/is_connected_vertical_surface(var/axis)
 	var/list/things = other_connections + connections
 	for (var/thing in things)
 		if (thing && thing != "0")
 			return TRUE
 
 
-/obj/machinery/door/is_connected_vertical_surface()
+/obj/machinery/door/is_connected_vertical_surface(var/axis)
 	var/list/things = connections
 	for (var/thing in things)
 		if (thing && thing != "0")

@@ -42,5 +42,4 @@
 
 /mob/dead/observer/eye/vent/proc/owner_moved()
 	if (owner.loc != associated_vent)
-		to_chat(world, "Owner left the vent, deleting eye")
 		qdel(src)

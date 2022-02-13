@@ -18,81 +18,100 @@
 		air_contents.volume = 200
 
 // Housekeeping and pipe network stuff below
-	network_expand(datum/pipe_network/new_network, obj/machinery/atmospherics/pipe/reference)
-		if(reference == node)
-			network = new_network
+/obj/machinery/atmospherics/unary/network_expand(datum/pipe_network/new_network, obj/machinery/atmospherics/pipe/reference)
+	if(reference == node)
+		network = new_network
 
-		if(new_network.normal_members.Find(src))
-			return 0
+	if(new_network.normal_members.Find(src))
+		return 0
 
-		new_network.normal_members += src
+	new_network.normal_members += src
 
-		return null
+	return null
 
-	Destroy()
-		loc = null
+/obj/machinery/atmospherics/unary/Destroy()
+	loc = null
 
-		if(node)
-			node.disconnect(src)
-			qdel(network)
+	if(node)
+		node.disconnect(src)
+		qdel(network)
 
-		node = null
+	node = null
 
-		. = ..()
+	. = ..()
 
-	atmos_init()
-		..()
-		if(node) return
-
-		var/node_connect = dir
-
-		for(var/obj/machinery/atmospherics/target in get_step(src,node_connect))
+	//A fallback, if no connection is found in the desired direction, lets attempt to connect with any pipe that might be pointed at us
+/obj/machinery/atmospherics/unary/proc/auto_connect()
+	for (var/turf/T in get_cardinal())
+		for(var/obj/machinery/atmospherics/target in T)
+			
 			if(target.initialize_directions & get_dir(target,src))
 				if (check_connect_types(target,src))
 					node = target
-					break
+					var/dir_to_target = get_dir(src,target)
+					initialize_directions |= dir_to_target
+					return
 
-		update_icon()
-		update_underlays()
+/obj/machinery/atmospherics/unary/atmos_init()
+	..()
+	if(node) return
 
+	var/node_connect = dir
+
+	for(var/obj/machinery/atmospherics/target in get_step(src,node_connect))
+		if(target.initialize_directions & get_dir(target,src))
+			if (check_connect_types(target,src))
+				node = target
+				break
+			
+	
+	if (!node)
+		auto_connect()
+
+	update_icon()
+	update_underlays()
+
+
+	
+
+/obj/machinery/atmospherics/unary/build_network()
+	if(!network && node)
+		network = new /datum/pipe_network()
+		network.normal_members += src
+		network.build_network(node, src)
+
+
+/obj/machinery/atmospherics/unary/return_network(obj/machinery/atmospherics/reference)
 	build_network()
-		if(!network && node)
-			network = new /datum/pipe_network()
-			network.normal_members += src
-			network.build_network(node, src)
 
+	if(reference==node)
+		return network
 
-	return_network(obj/machinery/atmospherics/reference)
-		build_network()
+	return null
 
-		if(reference==node)
-			return network
+/obj/machinery/atmospherics/unary/reassign_network(datum/pipe_network/old_network, datum/pipe_network/new_network)
+	if(network == old_network)
+		network = new_network
 
-		return null
+	return 1
 
-	reassign_network(datum/pipe_network/old_network, datum/pipe_network/new_network)
-		if(network == old_network)
-			network = new_network
+/obj/machinery/atmospherics/unary/return_network_air(datum/pipe_network/reference)
+	var/list/results = list()
 
-		return 1
+	if(network == reference)
+		results += air_contents
 
-	return_network_air(datum/pipe_network/reference)
-		var/list/results = list()
+	return results
 
-		if(network == reference)
-			results += air_contents
+/obj/machinery/atmospherics/unary/disconnect(obj/machinery/atmospherics/reference)
+	if(reference==node)
+		qdel(network)
+		node = null
 
-		return results
+	update_icon()
+	update_underlays()
 
-	disconnect(obj/machinery/atmospherics/reference)
-		if(reference==node)
-			qdel(network)
-			node = null
-
-		update_icon()
-		update_underlays()
-
-		return null
+	return null
 
 
 /obj/machinery/atmospherics/unary/get_attached_pipe_networks()
