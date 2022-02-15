@@ -21,15 +21,15 @@
 #if DM_VERSION < MIN_COMPILER_VERSION || DM_BUILD < MIN_COMPILER_BUILD
 //Don't forget to update this part
 #error Your version of BYOND is too out-of-date to compile this project. Go to https://secure.byond.com/download and update.
-#error You need version 514.1556 to 514.1566
+#error You need version 514.1556 to 514.1575
 #endif
 #endif
 
 //Update this whenever the byond version is stable so people stop updating to hilariously broken versions
 #define MAX_COMPILER_VERSION 514
-#define MAX_COMPILER_BUILD 1566
+#define MAX_COMPILER_BUILD 1575
 #if DM_VERSION > MAX_COMPILER_VERSION || DM_BUILD > MAX_COMPILER_BUILD
-#warn WARNING! your byond version is over the recommended 514.1566! There may be unexpected byond bugs!
+#warn WARNING! your byond version is over the recommended 514.1575! There may be unexpected byond bugs!
 #endif
 
 //Don't load extools on 514
