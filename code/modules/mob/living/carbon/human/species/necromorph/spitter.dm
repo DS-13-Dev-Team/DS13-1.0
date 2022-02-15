@@ -72,7 +72,7 @@
 	desc = "These modest sized blades can cut off a limb or two."
 	damage = 12
 	delay = 16
-	airlock_force_power = 1.5
+	airlock_force_power = 1
 	armor_penetration = 5
 
 #define SPITTER_PASSIVE	"<h2>PASSIVE: No Friendly Fire:</h2><br>\
