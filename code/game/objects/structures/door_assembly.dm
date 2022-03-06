@@ -42,6 +42,14 @@
 	base_name = "External Airlock"
 	airlock_type = "/external"
 
+/obj/structure/door_assembly/door_assembly_tram
+	icon = 'icons/obj/doors/station/door_tram.dmi'
+	base_name = "Tram"
+	fill_icon = null
+	panel_icon = null
+	airlock_type = "/civilian/tram"
+	glass = -1
+
 /obj/structure/door_assembly/multi_tile
 	icon = 'icons/obj/doors/double/door.dmi'
 	fill_icon = 'icons/obj/doors/double/fill_steel.dmi'
