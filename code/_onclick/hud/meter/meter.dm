@@ -452,7 +452,6 @@
 */
 /proc/add_resource_meter(var/target, var/subtype = /atom/movable/screen/meter/resource, var/datum/extension/resource/resource_datum, var/instant_update = TRUE)
 	var/list/data = get_hud_data_for_target(target)
-	to_chat(world, "Adding meter, for target [target] data: [dump_list(data)]")
 	var/datum/hud/H = data["hud"]
 	var/mob/M = data["mob"]
 	var/atom/movable/screen/meter/resource/meter = new subtype(M, data["hud"], resource_datum)

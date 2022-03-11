@@ -32,7 +32,6 @@
 	if (!target)
 		target = holder
 	meter = add_resource_meter(target, meter_type, src, TRUE)
-	to_chat(world, "created meter [meter]")
 
 
 /datum/extension/resource/proc/remove_meter()
@@ -127,7 +126,6 @@
 
 
 /datum/extension/resource/handle_hud(var/datum/hud/M)
-	to_chat(world, "Handling hud for [M]")
 	remove_meter()
 	setup_meter(M)
 
