@@ -109,8 +109,8 @@
 
 /obj/structure/closet/secure_closet/SSO/WillContain()
 	return list(
-		new /datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack/security, /obj/item/weapon/storage/backpack/satchel_sec)),
-		new /datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack/dufflebag/sec, /obj/item/weapon/storage/backpack/messenger/sec)),
+		pick(list(/obj/item/weapon/storage/backpack/security, /obj/item/weapon/storage/backpack/satchel_sec)),
+		pick(list(/obj/item/weapon/storage/backpack/dufflebag/sec, /obj/item/weapon/storage/backpack/messenger/sec)),
 		/obj/item/clothing/under/deadspace/security,
 		/obj/item/clothing/suit/armor/pcsi,
 		/obj/item/clothing/head/helmet/pcsi,
@@ -131,7 +131,8 @@
 		/obj/item/device/hailer,
 		/obj/item/device/flash,
 		/obj/item/device/holowarrant,
-		/obj/item/device/flashlight/maglight
+		/obj/item/device/flashlight/maglight,
+		/obj/item/weapon/rig/marksman
 	)
 
 /obj/structure/closet/secure_closet/security
