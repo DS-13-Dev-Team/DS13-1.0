@@ -51,3 +51,7 @@
 /datum/design/item/rig/advanced
 	build_path = /obj/item/weapon/rig/advanced
 	price = 15000
+
+/datum/design/item/rig/marksman
+	build_path = /obj/item/weapon/rig/marksman
+	price = 9000
