@@ -15359,9 +15359,6 @@
 	dir = 2;
 	icon_state = "pipe-c"
 	},
-/obj/machinery/atm{
-	pixel_y = 32
-	},
 /turf/simulated/floor/dank/slides{
 	dir = 4
 	},
