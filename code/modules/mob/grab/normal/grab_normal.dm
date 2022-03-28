@@ -145,7 +145,7 @@
 			else
 				if(headbutt(G))
 					if(drop_headbutt)
-						let_go()
+						let_go(G)
 					return 1
 	return 0
 
@@ -180,11 +180,11 @@
 	if(target.lying)
 		return
 
-	var/damage = 20
+	var/damage = 10
 	var/obj/item/clothing/hat = attacker.head
 	var/damage_flags = 0
 	if(istype(hat))
-		damage += hat.force * 3
+		damage += hat.force
 		damage_flags = hat.damage_flags()
 
 	if(damage_flags & DAM_SHARP)
@@ -194,7 +194,7 @@
 
 	var/armor = target.run_armor_check(BP_HEAD, "melee")
 	target.apply_damage(damage, BRUTE, BP_HEAD, armor, damage_flags)
-	attacker.apply_damage(10, BRUTE, BP_HEAD, attacker.run_armor_check(BP_HEAD, "melee"))
+	attacker.apply_damage(damage*0.6, BRUTE, BP_HEAD, attacker.run_armor_check(BP_HEAD, "melee"))
 
 	if(armor < 50 && target.headcheck(BP_HEAD) && prob(damage))
 		target.apply_effect(20, PARALYZE)
