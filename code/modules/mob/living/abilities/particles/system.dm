@@ -26,7 +26,7 @@
 	origin_turf = get_turf(host)
 
 	if (istype(host, /atom/movable))
-		GLOB.moved_event.register(host, src, /obj/effect/particle_system/proc/origin_moved)
+		RegisterSignal(host, COMSIG_MOVABLE_MOVED, .proc/origin_moved)
 	set_direction(direction)
 	if (isnum(duration))
 		src.duration = duration

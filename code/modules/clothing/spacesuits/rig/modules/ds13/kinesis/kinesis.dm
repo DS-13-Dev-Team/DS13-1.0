@@ -367,7 +367,7 @@
 
 	//We need to register some listeners
 	GLOB.destroyed_event.register(subject, src, /obj/item/rig_module/kinesis/proc/release_grip)
-	GLOB.bump_event.register(subject, src, /obj/item/rig_module/kinesis/proc/subject_collision)
+	RegisterSignal(subject, COMSIG_MOVABLE_BUMP, .proc/subject_collision)
 
 	START_PROCESSING(SSfastprocess, src)
 
@@ -407,7 +407,7 @@
 	. = subject
 	if (!QDELETED(subject))
 		GLOB.destroyed_event.unregister(subject, src, /obj/item/rig_module/kinesis/proc/release_grip)
-		GLOB.bump_event.unregister(subject, src, /obj/item/rig_module/kinesis/proc/subject_collision)
+		UnregisterSignal(subject, COMSIG_MOVABLE_BUMP, .proc/subject_collision)
 		remove_extension(subject, /datum/extension/kinesis_gripped)
 		//Restore these
 		subject.pass_flags = cached_pass_flags

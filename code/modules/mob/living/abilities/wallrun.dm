@@ -77,11 +77,11 @@
 
 /datum/extension/wallrun/proc/start()
 	started_at	=	world.time
-	GLOB.bump_event.register(A, src, /datum/extension/wallrun/proc/on_bumped)
+	RegisterSignal(A, COMSIG_MOVABLE_BUMP, /datum/extension/wallrun/proc/on_bumped)
 
 
 /datum/extension/wallrun/proc/stop()
-	GLOB.bump_event.unregister(A, src, /datum/extension/wallrun/proc/on_bumped)
+	UnregisterSignal(A, COMSIG_MOVABLE_BUMP)
 	remove_extension(holder, base_type)
 
 
@@ -111,12 +111,12 @@
 	offset = get_new_vector(A.x - target.x, A.y - target.y)
 
 	if (istype(mountpoint, /atom/movable))
-		GLOB.moved_event.register(mountpoint, src, /datum/extension/wallrun/proc/on_mountpoint_move)
-	GLOB.destroyed_event.register(mountpoint, src, /datum/extension/wallrun/proc/unmount_to_floor)
-	GLOB.density_set_event.register(mountpoint, src, /datum/extension/wallrun/proc/on_density_set)
-	GLOB.pre_move_event.register(A, src, /datum/extension/wallrun/proc/on_premove)
-	GLOB.moved_event.register(A, src, /datum/extension/wallrun/proc/on_move)
-	GLOB.dir_set_event.register(A, src, /datum/extension/wallrun/proc/dir_set)
+		RegisterSignal(mountpoint, COMSIG_MOVABLE_MOVED, .proc/on_mountpoint_move)
+	RegisterSignal(mountpoint, list(COMSIG_PARENT_QDELETING), .proc/unmount_to_floor)
+	RegisterSignal(A, COMSIG_ATOM_DENSITY_CHANGE, .proc/on_density_set)
+	RegisterSignal(A, COMSIG_MOVABLE_PRE_MOVE, .proc/on_premove)
+	RegisterSignal(A, COMSIG_MOVABLE_MOVED, .proc/on_move)
+	RegisterSignal(A, COMSIG_ATOM_DIR_CHANGE, .proc/dir_set)
 	GLOB.death_event.register(A, src, /datum/extension/wallrun/proc/unmount_to_floor)
 
 
@@ -199,11 +199,8 @@
 /datum/extension/wallrun/proc/unmount(var/atom/target)
 	if (mountpoint)
 		if (istype(mountpoint, /atom/movable))
-			GLOB.moved_event.unregister(mountpoint, src, /datum/extension/wallrun/proc/on_mountpoint_move)
-		GLOB.destroyed_event.unregister(mountpoint, src, /datum/extension/wallrun/proc/unmount_to_floor)
-		GLOB.density_set_event.unregister(mountpoint, src, /datum/extension/wallrun/proc/on_density_set)
-		GLOB.pre_move_event.unregister(A, src, /datum/extension/wallrun/proc/on_premove)
-		GLOB.moved_event.unregister(A, src, /datum/extension/wallrun/proc/on_move)
+			UnregisterSignal(mountpoint, COMSIG_MOVABLE_MOVED)
+		UnregisterSignal(A, list(COMSIG_MOVABLE_PRE_MOVE, COMSIG_ATOM_DENSITY_CHANGE, COMSIG_MOVABLE_MOVED, COMSIG_PARENT_QDELETING))
 		GLOB.death_event.unregister(A, src, /datum/extension/wallrun/proc/unmount_to_floor)
 
 

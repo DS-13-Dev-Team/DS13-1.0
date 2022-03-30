@@ -173,7 +173,7 @@
 	can_buckle = initial(can_buckle)
 	update_icon()
 	STOP_PROCESSING(SSobj, src)
-	GLOB.updatehealth_event.unregister(buckled_mob, src, /obj/structure/corruption_node/maw/proc/check_grip)
+	RegisterSignal(buckled_mob, COMSIG_MOB_HEALTH_CHANGED, .proc/check_grip)
 
 //Attempting to resist out of a maw will not work, and you'll get nothing but pain for trying
 /obj/structure/corruption_node/maw/resist_buckle(var/mob/user)
@@ -251,7 +251,7 @@
 	//trap the victim in place
 	set_dir(L.dir)
 	can_buckle = 1
-	GLOB.updatehealth_event.register(L, src, /obj/structure/corruption_node/maw/proc/check_grip)
+	RegisterSignal(L, COMSIG_MOB_HEALTH_CHANGED, .proc/check_grip)
 	buckle_mob(L)
 	if (check_grip())
 		to_chat(L, SPAN_DANGER("The jaws beneath bite into you, trapping you in place!"))

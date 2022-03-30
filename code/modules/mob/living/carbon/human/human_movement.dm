@@ -127,11 +127,10 @@
 	var/lac_chance =  10 * encumbrance()
 	if(lac_chance && prob(skill_fail_chance(SKILL_ATHLETICS, lac_chance)))
 		make_reagent(1, /datum/reagent/lactate)
-		switch(rand(1,20))
-			if(1)
-				visible_message("<span class='notice'>\The [src] is sweating heavily!</span>", "<span class='notice'>You are sweating heavily!</span>")
-			if(2)
-				visible_message("<span class='notice'>\The [src] looks out of breath!</span>", "<span class='notice'>You are out of breath!</span>")
+		if(prob(5))
+			visible_message("<span class='notice'>\The [src] is sweating heavily!</span>", "<span class='notice'>You are sweating heavily!</span>")
+		else if(prob(5))
+			visible_message("<span class='notice'>\The [src] looks out of breath!</span>", "<span class='notice'>You are out of breath!</span>")
 
 //Returns what percentage of the limbs we use for movement, are still attached
 /mob/living/carbon/human/proc/get_locomotive_limb_percent()

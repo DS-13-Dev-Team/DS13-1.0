@@ -1,0 +1,12 @@
+#define COMSIG_VIEW_CHANGED "view_changed"
+#define COMSIG_MOB_HEALTH_CHANGED "mob_health_changed"
+#define COMSIG_MOVABLE_BUMP "movable_bump"
+#define COMSIG_MOVABLE_PRE_MOVE "movable_pre_move"
+#define COMSIG_MOVABLE_MOVED "movable_moved"
+#define COMSIG_TURF_CLARITY_SET "turf_clarity_set"
+#define COMSIG_ATOM_DIR_CHANGE "atom_dir_change"
+#define COMSIG_MOB_STATCHANGE "mob_statchange"
+#define COMSIG_ATOM_DENSITY_CHANGE "atom_density_change"
+#define COMSIG_PARENT_QDELETING "parent_qdeleting"
+
+#define COMSIG_CARBON_SWAP_HANDS "carbon_swap_hands"

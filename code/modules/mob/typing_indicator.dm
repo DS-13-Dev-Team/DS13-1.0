@@ -19,19 +19,13 @@ I IS TYPIN'!'
 	src.master = master
 	name = master.name
 
-	GLOB.moved_event.register(master, src, /atom/movable/proc/move_to_turf_or_null)
+	RegisterSignal(master, COMSIG_MOVABLE_MOVED, .proc/move_to_turf_or_null)
 
-	GLOB.stat_set_event.register(master, src, /datum/proc/qdel_self) // Making the assumption master is conscious at creation
+	RegisterSignal(master, list(COMSIG_MOB_STATCHANGE, COMSIG_PARENT_QDELETING), .proc/qdel_self)
 	GLOB.logged_out_event.register(master, src, /datum/proc/qdel_self)
-	GLOB.destroyed_event.register(master, src, /datum/proc/qdel_self)
 
 /atom/movable/overlay/typing_indicator/Destroy()
 	var/mob/M = master
-
-	GLOB.moved_event.unregister(master, src)
-	GLOB.stat_set_event.unregister(master, src)
-	GLOB.logged_out_event.unregister(master, src)
-	GLOB.destroyed_event.unregister(master, src)
 
 	M.typing_indicator = null
 	master = null

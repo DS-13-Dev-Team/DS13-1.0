@@ -35,7 +35,7 @@
 
 /obj/effect/projectile/tether/proc/set_origin(var/atom/neworigin)
 	origin_atom = neworigin
-	GLOB.moved_event.register(origin_atom, src, /obj/effect/projectile/tether/proc/origin_moved)
+	RegisterSignal(origin_atom, COMSIG_MOVABLE_MOVED, .proc/origin_moved)
 
 /obj/effect/projectile/tether/proc/origin_moved()
 	var/vector2/newstart = origin_atom.get_toplevel_global_pixel_loc()
@@ -44,7 +44,7 @@
 
 /obj/effect/projectile/tether/proc/set_target(var/atom/newtarget)
 	target_atom = newtarget
-	GLOB.moved_event.register(target_atom, src, /obj/effect/projectile/tether/proc/target_moved)
+	RegisterSignal(target_atom, COMSIG_MOVABLE_MOVED, .proc/target_moved)
 
 //This proc takes a vector2 global pixel coords to point the end at
 //It expects a source atom to already be set first.
@@ -121,12 +121,8 @@
 		release_vector(start_offset)
 	if (end_offset)
 		release_vector(end_offset)
-	if (origin_atom)
-		GLOB.moved_event.unregister(origin_atom, src, /obj/effect/projectile/tether/proc/origin_moved)
-		origin_atom = null
-	if (target_atom)
-		GLOB.moved_event.unregister(target_atom, src, /obj/effect/projectile/tether/proc/target_moved)
-		target_atom = null
+	origin_atom = null
+	target_atom = null
 	.=..()
 
 

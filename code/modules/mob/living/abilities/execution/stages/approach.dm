@@ -18,7 +18,7 @@
 		to_chat(host.user, SPAN_DANGER("Unable to reach target, they may be too close to obstacles"))
 		return FALSE	//This will cause an interrupt and fail the execution
 
-	GLOB.moved_event.register(host.user, src, /datum/execution_stage/approach/proc/user_moved)
+	RegisterSignal(host.user, COMSIG_MOVABLE_MOVED, .proc/user_moved)
 	walk_to(host.user, target_turf, 0, SPEED_TO_DELAY(speed))
 	host.user.visible_message(SPAN_EXECUTION("[host.user] [speed  < 3 ? "slowly ":""]approaches [host.victim]"))
 	.=..()
@@ -29,12 +29,12 @@
 		host.user.face_atom(host.victim, TRUE)
 	walk(host.user, 0)
 
-	GLOB.moved_event.unregister(host.user, src, /datum/execution_stage/approach/proc/user_moved)
+	UnregisterSignal(host.user, COMSIG_MOVABLE_MOVED)
 
 /datum/execution_stage/approach/interrupt()
 	walk(host.user, 0)
 
-	GLOB.moved_event.unregister(host.user, src, /datum/execution_stage/approach/proc/user_moved)
+	UnregisterSignal(host.user, COMSIG_MOVABLE_MOVED)
 
 /datum/execution_stage/approach/proc/get_target_turf()
 	victim_last_loc = get_turf(host.victim)

@@ -350,7 +350,7 @@
 	. = ..()
 	owner = user
 	follow()
-	GLOB.moved_event.register(owner, src, /atom/movable/z_observer/proc/follow)
+	RegisterSignal(owner, COMSIG_MOVABLE_MOVED, .proc/follow)
 
 /atom/movable/z_observer/proc/follow()
 
@@ -374,7 +374,6 @@
 	qdel(src)
 
 /atom/movable/z_observer/Destroy()
-	GLOB.moved_event.unregister(owner, src, /atom/movable/z_observer/proc/follow)
 	owner = null
 	. = ..()
 

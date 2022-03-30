@@ -88,8 +88,8 @@ var/const/PROXIMITY_EXCLUDE_HOLDER_TURF = 1 // When acquiring turfs to monitor, 
 
 /datum/proximity_trigger/proc/register_turfs()
 	if(ismovable(holder))
-		GLOB.moved_event.register(holder, src, /datum/proximity_trigger/proc/on_holder_moved)
-	GLOB.dir_set_event.register(holder, src, /datum/proximity_trigger/proc/register_turfs) // Changing direction might alter the relevant turfs
+		RegisterSignal(holder, COMSIG_MOVABLE_MOVED, .proc/on_holder_moved)
+	RegisterSignal(holder, COMSIG_ATOM_DIR_CHANGE, .proc/register_turfs) // Changing direction might alter the relevant turfs
 
 	var/list/new_turfs = acquire_relevant_turfs()
 	if(listequal(turfs_in_range, new_turfs))
@@ -105,8 +105,8 @@ var/const/PROXIMITY_EXCLUDE_HOLDER_TURF = 1 // When acquiring turfs to monitor, 
 
 /datum/proximity_trigger/proc/unregister_turfs()
 	if(ismovable(holder))
-		GLOB.moved_event.unregister(holder, src, /datum/proximity_trigger/proc/on_holder_moved)
-	GLOB.dir_set_event.unregister(holder, src, /datum/proximity_trigger/proc/register_turfs)
+		UnregisterSignal(holder, COMSIG_MOVABLE_MOVED)
+	UnregisterSignal(holder, COMSIG_ATOM_DIR_CHANGE)
 
 	for(var/t in turfs_in_range)
 		GLOB.opacity_set_event.unregister(t, src, /datum/proximity_trigger/proc/on_turf_visibility_changed)

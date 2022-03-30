@@ -31,8 +31,8 @@
 	source = holder
 	sourceturf = get_turf(source)
 	GLOB.corruption_sources |= src
-	GLOB.moved_event.register(source, src, /datum/extension/corruption_source/proc/source_moved)
-	GLOB.destroyed_event.register(source, src, /datum/extension/corruption_source/proc/source_deleted)
+	RegisterSignal(source, COMSIG_MOVABLE_MOVED, .proc/source_moved)
+	RegisterSignal(source, COMSIG_PARENT_QDELETING, .proc/source_deleted)
 	if (range)
 		src.range = range
 	if (speed)

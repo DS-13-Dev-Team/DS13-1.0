@@ -57,7 +57,7 @@
 /datum/extension/tripod_evasion/proc/start()
 	started_at	=	world.time
 
-	GLOB.moved_event.register(holder, src, /datum/extension/tripod_evasion/proc/holder_moved)
+	RegisterSignal(holder, COMSIG_MOVABLE_MOVED, .proc/holder_moved)
 
 
 

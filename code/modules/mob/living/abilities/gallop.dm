@@ -45,9 +45,9 @@
 		ongoing_timer = addtimer(CALLBACK(src, /datum/extension/gallop/proc/stop), duration, TIMER_STOPPABLE)
 
 		user.reset_move_cooldown()//Allow nextmove immediately
-		GLOB.damage_hit_event.register(user, src, /datum/extension/gallop/proc/user_hit)
-		GLOB.bump_event.register(user, src, /datum/extension/gallop/proc/user_bumped)
-		GLOB.moved_event.register(user, src, /datum/extension/gallop/proc/user_moved)
+		GLOB.damage_hit_event.register(user, /datum/extension/gallop/proc/user_hit)
+		RegisterSignal(user, COMSIG_MOVABLE_BUMP, .proc/user_bumped)
+		RegisterSignal(user, COMSIG_MOVABLE_MOVED, .proc/user_moved)
 
 /datum/extension/gallop/Destroy()
 	if (!stopped_at)
@@ -62,8 +62,8 @@
 		stopped_at = world.time
 		ongoing_timer = addtimer(CALLBACK(src, /datum/extension/gallop/proc/finish_cooldown), cooldown, TIMER_STOPPABLE)
 		GLOB.damage_hit_event.unregister(user, src, /datum/extension/gallop/proc/user_hit)
-		GLOB.bump_event.unregister(user, src, /datum/extension/gallop/proc/user_bumped)
-		GLOB.moved_event.unregister(user, src, /datum/extension/gallop/proc/user_moved)
+		UnregisterSignal(user, COMSIG_MOVABLE_BUMP)
+		UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
 		user.visible_message(SPAN_NOTICE("[user] slows down"))
 
 /datum/extension/gallop/proc/finish_cooldown()

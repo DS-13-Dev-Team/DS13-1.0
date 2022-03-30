@@ -280,7 +280,7 @@
 				view_changed = TRUE
 
 			if (view_changed)
-				GLOB.view_changed_event.raise_event(src)
+				SEND_SIGNAL(src, COMSIG_VIEW_CHANGED)
 
 
 /mob/proc/show_inv(mob/user as mob)

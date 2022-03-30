@@ -23,7 +23,7 @@
 /obj/machinery/door/airlock/multi_tile/Initialize()
 	..()
 	update_bounds()
-	GLOB.dir_set_event.register(src, src, /obj/machinery/door/airlock/multi_tile/proc/update_bounds)
+	RegisterSignal(src, COMSIG_ATOM_DIR_CHANGE, .proc/update_bounds)
 
 /obj/machinery/door/airlock/multi_tile/Move(NewLoc, Dir = 0, step_x = 0, step_y = 0, var/glide_size_override = 0)
 	. = ..()

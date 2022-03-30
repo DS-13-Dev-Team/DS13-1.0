@@ -201,8 +201,8 @@
 		return FALSE
 
 	status = CHARGE_STATE_CHARGING
-	GLOB.bump_event.register(holder, src, /datum/extension/charge/proc/bump)
-	GLOB.moved_event.register(holder, src, /datum/extension/charge/proc/moved)
+	RegisterSignal(holder, COMSIG_MOVABLE_BUMP, .proc/bump)
+	RegisterSignal(holder, COMSIG_MOVABLE_MOVED, .proc/moved)
 
 	started_at = world.time
 
@@ -241,8 +241,8 @@
 			H.step_interval = cached_step_interval
 		L.enable()
 
-	GLOB.bump_event.unregister(holder, src, /datum/extension/charge/proc/bump)
-	GLOB.moved_event.unregister(holder, src, /datum/extension/charge/proc/moved)
+	UnregisterSignal(holder, COMSIG_MOVABLE_BUMP)
+	UnregisterSignal(holder, COMSIG_MOVABLE_MOVED)
 	walk(holder, 0)
 	stopped_at = world.time
 	if (lifespan_timer)

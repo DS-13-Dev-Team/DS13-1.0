@@ -57,14 +57,14 @@
 
 /obj/item/rig_module/healthbar/proc/register_user(var/mob/newuser)
 	user = newuser
-	GLOB.updatehealth_event.register(user, src, /obj/item/rig_module/healthbar/proc/update)
+	RegisterSignal(user, COMSIG_MOB_HEALTH_CHANGED, .proc/update)
 	GLOB.death_event.register(user, src, /obj/item/rig_module/healthbar/proc/death)
 	GLOB.heart_stop_event.register(user, src, /obj/item/rig_module/healthbar/proc/heart_stop)
 	holder.healthbar = src
 
 /obj/item/rig_module/healthbar/proc/unregister_user()
 	if(user)
-		GLOB.updatehealth_event.unregister(user, src, /obj/item/rig_module/healthbar/proc/update)
+		UnregisterSignal(user, COMSIG_MOB_HEALTH_CHANGED)
 		GLOB.death_event.unregister(user, src, /obj/item/rig_module/healthbar/proc/death)
 		GLOB.heart_stop_event.unregister(user, src, /obj/item/rig_module/healthbar/proc/heart_stop)
 		user = null

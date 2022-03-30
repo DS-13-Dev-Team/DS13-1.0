@@ -101,7 +101,7 @@
 	set name = "Stop Pulling"
 	set category = "IC"
 	if(pulling)
-		GLOB.moved_event.unregister(pulling, src, /mob/proc/pulling_moved)
+		UnregisterSignal(pulling, COMSIG_MOVABLE_MOVED)
 		pulling.pulledby = null
 		pulling = null
 		if(hud_used.pullin)
@@ -178,7 +178,7 @@
 		if(H.pull_damage())
 			to_chat(src, "<span class='danger'>Pulling \the [H] in their current condition would probably be a bad idea.</span>")
 
-	GLOB.moved_event.register(AM, src, /mob/proc/pulling_moved)
+	RegisterSignal(AM, COMSIG_MOVABLE_MOVED, .proc/pulling_moved)
 
 	//Attempted fix for people flying away through space when cuffed and dragged.
 	if(ismob(AM))

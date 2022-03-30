@@ -73,7 +73,7 @@
 	if(src.throwing)
 		src.throw_impact(A, src.throwing)
 		src.throwing = FALSE
-	GLOB.bump_event.raise_event(src, A)
+	SEND_SIGNAL(src, COMSIG_MOVABLE_BUMP, A)
 
 	spawn(0)
 		if (A && yes)

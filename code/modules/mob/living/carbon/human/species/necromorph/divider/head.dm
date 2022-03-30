@@ -226,8 +226,8 @@
 		screen_rotation()
 
 	H.mutations.Add(CLUMSY)
-	GLOB.moved_event.register(H, src, /datum/extension/divider_puppet/proc/holder_moved)
-	GLOB.bump_event.register(H, src, /datum/extension/divider_puppet/proc/holder_bump)
+	RegisterSignal(H, COMSIG_MOVABLE_MOVED, .proc/holder_moved)
+	RegisterSignal(H, COMSIG_MOVABLE_BUMP, .proc/holder_bump)
 
 /datum/extension/divider_puppet/proc/holder_moved()
 	if (prob(3))

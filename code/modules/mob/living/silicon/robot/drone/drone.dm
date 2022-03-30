@@ -62,16 +62,15 @@ var/list/mob_hat_cache = list()
 
 	holder_type = /obj/item/weapon/holder/drone
 
-/mob/living/silicon/robot/drone/New()
-	..()
-	GLOB.moved_event.register(src, src, /mob/living/silicon/robot/drone/proc/on_moved)
+/mob/living/silicon/robot/drone/Initialize()
+	.=..()
+	RegisterSignal(src, COMSIG_MOVABLE_MOVED, .proc/on_moved)
 
 /mob/living/silicon/robot/drone/Destroy()
 	if(hat)
 		hat.dropInto(loc)
 		hat = null
-	GLOB.moved_event.unregister(src, src, /mob/living/silicon/robot/drone/proc/on_moved)
-	. = ..()
+	.=..()
 
 /mob/living/silicon/robot/drone/proc/on_moved(var/atom/movable/am, var/turf/old_loc, var/turf/new_loc)
 	old_loc = get_turf(old_loc)

@@ -124,7 +124,7 @@
 		return FALSE
 
 	sources += source
-	GLOB.moved_event.register(source, src, /datum/visualnet/proc/source_moved)
+	RegisterSignal(source, COMSIG_MOVABLE_MOVED, .proc/source_moved)
 	GLOB.destroyed_event.register(source, src, /datum/visualnet/proc/remove_source)
 	for_all_chunks_in_range(source, /datum/chunk/proc/add_source, list(source), null, source.get_visualnet_range(src))
 	if(update_visibility)
@@ -135,7 +135,7 @@
 	if(!sources.Remove(source))
 		return FALSE
 
-	GLOB.moved_event.unregister(source, src, /datum/visualnet/proc/source_moved)
+	UnregisterSignal(source, COMSIG_MOVABLE_MOVED)
 	GLOB.destroyed_event.unregister(source, src, /datum/visualnet/proc/remove_source)
 	for_all_chunks_in_range(source, /datum/chunk/proc/remove_source, list(source), null, source.get_visualnet_range(src))
 	if(update_visibility)

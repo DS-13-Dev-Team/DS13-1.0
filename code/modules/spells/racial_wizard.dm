@@ -245,14 +245,14 @@
 	var/mob/living/L = targets[1]
 
 	vision.possess(L)
-	GLOB.destroyed_event.register(L, src, /spell/camera_connection/proc/release)
+	RegisterSignal(L, COMSIG_PARENT_QDELETING, .proc/release)
 	GLOB.logged_out_event.register(L, src, /spell/camera_connection/proc/release)
 	add_verb(L, /mob/living/proc/release_eye)
 
 /spell/camera_connection/proc/release(var/mob/living/L)
 	vision.release(L)
 	remove_verb(L, /mob/living/proc/release_eye)
-	GLOB.destroyed_event.unregister(L, src)
+	UnregisterSignal(L, list(COMSIG_PARENT_QDELETING))
 	GLOB.logged_out_event.unregister(L, src)
 
 /mob/dead/observer/eye/wizard_eye

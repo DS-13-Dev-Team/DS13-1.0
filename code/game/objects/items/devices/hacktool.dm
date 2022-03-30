@@ -15,9 +15,6 @@
 	hack_state = new(src)
 
 /obj/item/weapon/tool/multitool/hacktool/Destroy()
-	for(var/T in known_targets)
-		var/atom/target = T
-		GLOB.destroyed_event.unregister(target, src)
 	known_targets.Cut()
 	qdel(hack_state)
 	hack_state = null

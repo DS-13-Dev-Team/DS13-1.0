@@ -159,7 +159,7 @@
 	target.embed(SP)
 	playsound(src, "fleshtear", VOLUME_MID, TRUE)
 	if(!M.buckled)
-		GLOB.bump_event.register(M, SP, /obj/item/weapon/material/shard/shrapnel/javelin/proc/on_target_collision)
+		SP.RegisterSignal(M, COMSIG_MOVABLE_BUMP, /obj/item/weapon/material/shard/shrapnel/javelin/proc/on_target_collision)
 
 		M.apply_push_impulse_from(last_turf, push_force)
 
@@ -237,7 +237,7 @@
 	unregister_collision(user)
 
 /obj/item/weapon/material/shard/shrapnel/javelin/proc/unregister_collision(mob/M)
-	GLOB.bump_event.unregister(M, src, /obj/item/weapon/material/shard/shrapnel/javelin/proc/on_target_collision)
+	UnregisterSignal(M, COMSIG_MOVABLE_BUMP, .proc/on_target_collision)
 
 /obj/item/javelin
 	name = "javelin"

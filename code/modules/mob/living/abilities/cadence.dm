@@ -53,7 +53,7 @@
 
 /datum/extension/cadence/proc/start()
 	started_at	=	world.time
-	GLOB.moved_event.register(holder, src, /datum/extension/cadence/proc/holder_moved)
+	RegisterSignal(holder, COMSIG_MOVABLE_MOVED, .proc/holder_moved)
 
 
 //Stop is called when we move in the opposite direction or go too long without moving

@@ -106,7 +106,7 @@
 /obj/item/marker_shard/proc/activate()
 	active = TRUE
 	last_known_location = loc
-	GLOB.moved_event.register(src, src, .proc/moved)
+	RegisterSignal(src, COMSIG_MOVABLE_MOVED, .proc/moved)
 	attempt_deploy()
 	mass = mass_active
 	update_icon()
@@ -114,7 +114,7 @@
 /obj/item/marker_shard/proc/deactivate()
 	active = FALSE
 	mass = initial(mass)
-	GLOB.moved_event.unregister(src, src, .proc/moved)
+	UnregisterSignal(src, COMSIG_MOVABLE_MOVED)
 	update_icon()
 
 /obj/item/marker_shard/proc/set_deploy_timer()

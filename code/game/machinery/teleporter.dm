@@ -166,14 +166,14 @@
 
 /obj/machinery/computer/teleporter/proc/clear_target()
 	if(src.locked)
-		GLOB.destroyed_event.unregister(locked, src, .proc/target_lost)
+		UnregisterSignal(locked, COMSIG_PARENT_QDELETING, .proc/target_lost)
 	src.locked = null
 	if(station && station.engaged)
 		station.disengage()
 
 /obj/machinery/computer/teleporter/proc/set_target(var/obj/O)
 	src.locked = O
-	GLOB.destroyed_event.register(locked, src, .proc/target_lost)
+	RegisterSignal(locked, COMSIG_PARENT_QDELETING, .proc/target_lost)
 
 /obj/machinery/computer/teleporter/Destroy()
 	clear_target()

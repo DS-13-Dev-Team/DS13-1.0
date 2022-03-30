@@ -84,14 +84,11 @@
 	daddy = ndaddy
 	set_dir(daddy.dir)
 	appearance = daddy.appearance
-	GLOB.moved_event.register(daddy, src, /obj/effect/bluegoast/proc/mirror)
-	GLOB.dir_set_event.register(daddy, src, /obj/effect/bluegoast/proc/mirror_dir)
-	GLOB.destroyed_event.register(daddy, src, /datum/proc/qdel_self)
+	RegisterSignal(daddy, COMSIG_MOVABLE_MOVED, .proc/mirror)
+	RegisterSignal(daddy, COMSIG_ATOM_DIR_CHANGE, .proc/mirror_dir)
+	RegisterSignal(daddy, COMSIG_PARENT_QDELETING, .proc/qdel_self)
 
 /obj/effect/bluegoast/Destroy()
-	GLOB.destroyed_event.unregister(daddy, src)
-	GLOB.dir_set_event.unregister(daddy, src)
-	GLOB.moved_event.unregister(daddy, src)
 	daddy = null
 	. = ..()
 

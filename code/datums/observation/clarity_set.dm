@@ -1,20 +1,3 @@
-//	Observer Pattern Implementation: Clarity Set
-//		Registration type: /turf
-//
-//		Raised when: The total number of dense nonmob atoms in a turf's self+contents changes between zero and nonzero. This is primarily useful for vine and visualnet updating
-//		It is less certain, but more comprehensive, than density set. Firing off an event whenever anything could possibly happen to catch all cases and eliminate the need to poll things
-//
-//		Clarity set event is intended to be paired with turf_clear() to get a comprehensive measure of whether the turf is blocked.
-//		This proc is not run automatically, call it on demand if you want to know for sure.
-//
-//		Arguments that the called proc should expect:
-//			/atom/clarity_changer: The instance that changed clarity.
-
-GLOBAL_DATUM_INIT(clarity_set_event, /decl/observ/clarity_set, new)
-
-/decl/observ/clarity_set
-	name = "Clarity set event"
-	expected_type = /turf
 
 /*******************
 * Density Handling *
@@ -73,4 +56,4 @@ GLOBAL_DATUM_INIT(clarity_set_event, /decl/observ/clarity_set, new)
 		if (clear != newdensity)
 			clear = null
 
-	GLOB.clarity_set_event.raise_event(src)
+	SEND_SIGNAL(src, COMSIG_TURF_CLARITY_SET)

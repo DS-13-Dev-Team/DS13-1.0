@@ -37,16 +37,16 @@
 
 	//Track our holder for movement
 	if(active_track)
-		GLOB.moved_event.register(AM, src, /datum/extension/rotate_facing/proc/holder_moved)
+		RegisterSignal(AM, COMSIG_MOVABLE_MOVED, .proc/holder_moved)
 
 /datum/extension/rotate_facing/proc/set_target(var/atom/newtarget)
 	if (active_track)
 		//We need to remove the tracking from the old target
-		if (target && ismovable(target))
-			GLOB.moved_event.unregister(target, src, /datum/extension/rotate_facing/proc/target_moved)
+		if(ismovable(target))
+			UnregisterSignal(target, COMSIG_MOVABLE_MOVED, .proc/target_moved)
 
 		if (ismovable(newtarget))
-			GLOB.moved_event.register(newtarget, src, /datum/extension/rotate_facing/proc/target_moved)
+			RegisterSignal(newtarget, COMSIG_MOVABLE_MOVED, .proc/target_moved)
 
 	target = newtarget
 

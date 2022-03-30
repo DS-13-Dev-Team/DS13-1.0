@@ -7,14 +7,9 @@
 
 /datum/extension/deity_be_near/New(var/datum/holder, var/mob/living/deity/connect)
 	..()
-	GLOB.moved_event.register(holder,src, .proc/check_movement)
+	RegisterSignal(holder, COMSIG_MOVABLE_MOVED, .proc/check_movement)
 	connected_deity = connect
-	GLOB.destroyed_event.register(holder, src, .proc/dead_deity)
-
-/datum/extension/deity_be_near/Destroy()
-	GLOB.moved_event.unregister(holder,src)
-	GLOB.destroyed_event.unregister(holder, src)
-	. = ..()
+	RegisterSignal(holder, COMSIG_PARENT_QDELETING, .proc/dead_deity)
 
 /datum/extension/deity_be_near/proc/check_movement()
 	var/obj/item/I = holder
