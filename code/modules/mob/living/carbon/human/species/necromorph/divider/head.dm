@@ -157,7 +157,7 @@
 
 /obj/item/organ/external/head/simple/divider/New(var/mob/living/carbon/holder, var/datum/dna/given_dna)
 	.=..()
-	GLOB.death_event.register(holder, src, /obj/item/organ/external/head/simple/divider/proc/holder_death)
+	RegisterSignal(holder, COMSIG_LIVING_DEATH, .proc/holder_death)
 
 
 

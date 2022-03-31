@@ -110,14 +110,13 @@
 		release_vector(offset)
 	offset = get_new_vector(A.x - target.x, A.y - target.y)
 
-	if (istype(mountpoint, /atom/movable))
-		RegisterSignal(mountpoint, COMSIG_MOVABLE_MOVED, .proc/on_mountpoint_move)
-	RegisterSignal(mountpoint, list(COMSIG_PARENT_QDELETING), .proc/unmount_to_floor)
+	RegisterSignal(mountpoint, COMSIG_MOVABLE_MOVED, .proc/on_mountpoint_move)
+	RegisterSignal(mountpoint, COMSIG_PARENT_QDELETING, .proc/unmount_to_floor)
 	RegisterSignal(A, COMSIG_ATOM_DENSITY_CHANGE, .proc/on_density_set)
 	RegisterSignal(A, COMSIG_MOVABLE_PRE_MOVE, .proc/on_premove)
 	RegisterSignal(A, COMSIG_MOVABLE_MOVED, .proc/on_move)
 	RegisterSignal(A, COMSIG_ATOM_DIR_CHANGE, .proc/dir_set)
-	GLOB.death_event.register(A, src, /datum/extension/wallrun/proc/unmount_to_floor)
+	RegisterSignal(A, COMSIG_LIVING_DEATH, .proc/unmount_to_floor)
 
 
 	A.pass_flags |= passflag_delta
@@ -198,10 +197,8 @@
 //Called everytime we move between mountpoints, or end mounting
 /datum/extension/wallrun/proc/unmount(var/atom/target)
 	if (mountpoint)
-		if (istype(mountpoint, /atom/movable))
-			UnregisterSignal(mountpoint, COMSIG_MOVABLE_MOVED)
-		UnregisterSignal(A, list(COMSIG_MOVABLE_PRE_MOVE, COMSIG_ATOM_DENSITY_CHANGE, COMSIG_MOVABLE_MOVED, COMSIG_PARENT_QDELETING))
-		GLOB.death_event.unregister(A, src, /datum/extension/wallrun/proc/unmount_to_floor)
+		UnregisterSignal(mountpoint, COMSIG_MOVABLE_MOVED)
+		UnregisterSignal(A, list(COMSIG_MOVABLE_PRE_MOVE, COMSIG_ATOM_DENSITY_CHANGE, COMSIG_MOVABLE_MOVED, COMSIG_PARENT_QDELETING, COMSIG_LIVING_DEATH))
 
 
 

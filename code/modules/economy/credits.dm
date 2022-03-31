@@ -5,14 +5,12 @@
 	icon_state = "grey"
 	var/owner_name = "" //So the ATM can set it so the EFTPOS can put a valid name on transactions.
 
-//When a credit chip is picked up or dropped, we need to flag the holding mob as having possibly changed their wealth
-/obj/item/weapon/spacecash/ewallet/Initialize()
+/obj/item/weapon/spacecash/ewallet/equipped(mob/user, slot)
 	.=..()
-	//Note that these are imperfect, if people start putting chips into containers then passing those around things might get out of sync
-	GLOB.item_equipped_event.register(src, src, /obj/item/weapon/spacecash/ewallet/proc/on_equip)
-	GLOB.item_unequipped_event.register(src, src, /obj/item/weapon/spacecash/ewallet/proc/on_equip)
+	credits_changed()
 
-/obj/item/weapon/spacecash/ewallet/proc/on_equip()
+/obj/item/weapon/spacecash/ewallet/dropped()
+	.=..()
 	credits_changed()
 
 /obj/item/weapon/spacecash/ewallet/examine(mob/user)

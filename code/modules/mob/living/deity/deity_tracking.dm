@@ -26,13 +26,10 @@
 	to_chat(src, "<span class='notice'>You begin to follow \the [L].</span>")
 	following = L
 	RegisterSignal(L, COMSIG_MOVABLE_MOVED, .proc/keep_following)
-	GLOB.destroyed_event.register(L, src, /mob/living/deity/proc/stop_follow)
-	GLOB.death_event.register(L, src, /mob/living/deity/proc/stop_follow)
+	RegisterSignal(L, list(COMSIG_PARENT_QDELETING, COMSIG_LIVING_DEATH), .proc/stop_follow)
 
 /mob/living/deity/proc/stop_follow()
-	UnregisterSignal(following, COMSIG_MOVABLE_MOVED)
-	GLOB.destroyed_event.unregister(following, src)
-	GLOB.death_event.unregister(following,src)
+	UnregisterSignal(following, list(COMSIG_PARENT_QDELETING, COMSIG_MOVABLE_MOVED, COMSIG_LIVING_DEATH))
 	to_chat(src, "<span class='notice'>You stop following \the [following].</span>")
 	following = null
 

@@ -280,7 +280,7 @@
 				view_changed = TRUE
 
 			if (view_changed)
-				SEND_SIGNAL(src, COMSIG_VIEW_CHANGED)
+				SEND_SIGNAL(src, COMSIG_MOB_VIEW_CHANGED)
 
 
 /mob/proc/show_inv(mob/user as mob)

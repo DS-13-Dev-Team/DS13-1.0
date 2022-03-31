@@ -20,8 +20,7 @@
 	linger = 20 MINUTES
 
 /datum/extension/reagent/necrotoxin/Initialize()
-
-	GLOB.death_event.register(holder, src, /datum/extension/reagent/necrotoxin/proc/victim_died)
+	RegisterSignal(holder, COMSIG_LIVING_DEATH, .proc/victim_died)
 
 
 /datum/extension/reagent/necrotoxin/proc/victim_died()

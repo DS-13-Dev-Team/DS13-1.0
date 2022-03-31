@@ -48,7 +48,7 @@
 	RegisterSignal(origin, COMSIG_ATOM_DIR_CHANGE, .proc/update)
 
 	//Create a view changed observation for host only
-	RegisterSignal(origin, COMSIG_VIEW_CHANGED, .proc/update)
+	RegisterSignal(origin, COMSIG_MOB_VIEW_CHANGED, .proc/update)
 	INVOKE_ASYNC(src, .proc/update)
 
 /atom/movable/screen/movable/tracker/Destroy()

@@ -3,19 +3,6 @@
 	health = 1
 	var/triggered = 0
 
-/obj/structure/deity/trap/New()
-	..()
-	GLOB.entered_event.register(get_turf(src),src,/obj/structure/deity/trap/proc/trigger)
-
-/obj/structure/deity/trap/Destroy()
-	GLOB.entered_event.unregister(get_turf(src),src)
-	return ..()
-
-/obj/structure/deity/trap/Move(NewLoc, Dir = 0, step_x = 0, step_y = 0, var/glide_size_override = 0)
-	GLOB.entered_event.unregister(get_turf(src),src)
-	. = ..()
-	GLOB.entered_event.register(get_turf(src), src, /obj/structure/deity/trap/proc/trigger)
-
 /obj/structure/deity/trap/attackby(obj/item/W as obj, mob/user as mob)
 	trigger(user)
 	return ..()
@@ -23,8 +10,12 @@
 /obj/structure/deity/trap/bullet_act()
 	return
 
-/obj/structure/deity/trap/proc/trigger(var/atom/entered, var/atom/movable/enterer)
-	if(triggered > world.time || !istype(enterer, /mob/living))
+/obj/structure/deity/trap/Crossed(atom/movable/object)
+	.=..()
+	trigger(object)
+
+/obj/structure/deity/trap/proc/trigger(atom/movable/enterer)
+	if(triggered > world.time || !isliving(enterer))
 		return
 
 	triggered = world.time + 30 SECONDS

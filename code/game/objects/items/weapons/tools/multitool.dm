@@ -14,7 +14,7 @@
 	throwforce = WEAPON_FORCE_HARMLESS
 	worksound = WORKSOUND_PULSING
 	throw_range = 15
-	
+
 	tool_qualities = list(QUALITY_PULSING = 30)
 	matter = list(MATERIAL_PLASTIC = 200, MATERIAL_GLASS = 100)
 
@@ -48,13 +48,13 @@
 			unregister_buffer(buffer_object)
 			buffer_object = buffer
 			if(buffer_object)
-				GLOB.destroyed_event.register(buffer_object, src, /obj/item/weapon/tool/multitool/proc/unregister_buffer)
+				RegisterSignal(buffer_object, COMSIG_PARENT_QDELETING, .proc/unregister_buffer)
 
 /obj/item/weapon/tool/multitool/proc/unregister_buffer(var/atom/buffer_to_unregister)
 	// Only remove the buffered object, don't reset the name
 	// This means one cannot know if the buffer has been destroyed until one attempts to use it.
 	if(buffer_to_unregister == buffer_object && buffer_object)
-		GLOB.destroyed_event.unregister(buffer_object, src)
+		UnregisterSignal(buffer_object, COMSIG_PARENT_QDELETING)
 		buffer_object = null
 
 /obj/item/weapon/tool/multitool/resolve_attackby(atom/A, mob/user)

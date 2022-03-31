@@ -33,9 +33,7 @@
 /atom/movable/screen/health_doll/Initialize()
 	.=..()
 	if (istype(H))
-		RegisterSignal(H, COMSIG_MOB_HEALTH_CHANGED, .proc/update)
-		GLOB.death_event.register(H, src, /atom/movable/screen/health_doll/proc/update)
-
+		RegisterSignal(H, list(COMSIG_MOB_HEALTH_CHANGED, COMSIG_LIVING_DEATH), .proc/update)
 
 		var/vector2/icon_size = H.get_icon_size()
 		icon_size.x += 4 //Padding from screen edge

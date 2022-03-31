@@ -323,7 +323,7 @@
 
 		//If we started on a mob and are no longer on that mob, we call dropped
 		if(ismob(old_loc) && loc != old_loc)
-			dropped()
+			dropped(user)
 
 /obj/item/attack_ai(mob/user as mob)
 	if (istype(src.loc, /obj/item/weapon/robot_module))
@@ -770,9 +770,8 @@ THIS SCOPE CODE IS DEPRECATED, USE AIM MODES INSTEAD.
 
 	user.visible_message("\The [user] peers through [zoomdevicename ? "the [zoomdevicename] of [src]" : "[src]"].")
 
-	GLOB.destroyed_event.register(src, src, /obj/item/proc/unzoom)
-	RegisterSignal(src, list(COMSIG_MOVABLE_MOVED, COMSIG_ATOM_DIR_CHANGE, COMSIG_MOB_STATCHANGE), .proc/unzoom)
-	GLOB.item_unequipped_event.register(src, src, /obj/item/proc/zoom_drop)
+	RegisterSignal(src, list(COMSIG_MOVABLE_MOVED, COMSIG_ATOM_DIR_CHANGE, COMSIG_MOB_STATCHANGE, COMSIG_PARENT_QDELETING), .proc/unzoom)
+	RegisterSigna(src, COMSIG_ITEM_UNEQUIPPED, .proc/zoom_drop)
 	*/
 
 /obj/item/proc/zoom_drop(var/obj/item/I, var/mob/user)
@@ -783,9 +782,7 @@ THIS SCOPE CODE IS DEPRECATED, USE AIM MODES INSTEAD.
 		return
 	zoom = 0
 
-	GLOB.destroyed_event.unregister(src, src, /obj/item/proc/unzoom)
-	UnregisterSignal(src, list(COMSIG_MOVABLE_MOVED, COMSIG_ATOM_DIR_CHANGE, COMSIG_MOB_STATCHANGE))
-	GLOB.item_unequipped_event.unregister(src, src, /obj/item/proc/zoom_drop)
+	UnregisterSignal(src, list(COMSIG_MOVABLE_MOVED, COMSIG_ATOM_DIR_CHANGE, COMSIG_MOB_STATCHANGE, COMSIG_PARENT_QDELETING, COMSIG_ITEM_UNEQUIPPED))
 
 	user = user == src ? loc : (user || loc)
 	if(!istype(user))

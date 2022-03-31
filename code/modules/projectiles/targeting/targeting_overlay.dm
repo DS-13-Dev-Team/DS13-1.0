@@ -181,7 +181,6 @@ obj/aiming_overlay/proc/update_aiming_deferred()
 	UnregisterSignal(owner, COMSIG_MOVABLE_MOVED)
 	if(aiming_at)
 		UnregisterSignal(aiming_at, list(COMSIG_MOVABLE_MOVED, COMSIG_PARENT_QDELETING))
-		GLOB.destroyed_event.unregister(aiming_at, src)
 		aiming_at.aimed -= src
 		aiming_at = null
 

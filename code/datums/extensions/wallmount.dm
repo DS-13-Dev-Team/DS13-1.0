@@ -159,7 +159,7 @@
 	RegisterSignal(mountpoint, COMSIG_ATOM_DENSITY_CHANGE, .proc/mountpoint_updated)
 	if (isliving(mountpoint))
 		if (!WP.attach_mob_dead)
-			GLOB.death_event.register(mountpoint, src, /datum/extension/mount/proc/mountpoint_updated)
+			RegisterSignal(mountpoint, COMSIG_LIVING_DEATH, .proc/mountpoint_updated)
 
 
 	on_mount()

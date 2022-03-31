@@ -421,7 +421,7 @@
 					pulling = to_pull
 					acting_object.visible_message("\The [acting_object] starts pulling \the [to_pull] around.")
 					RegisterSignal(to_pull, COMSIG_MOVABLE_MOVED, .proc/check_pull) //Whenever the target moves, make sure we can still pull it!
-					GLOB.destroyed_event.register(to_pull, src, .proc/stop_pulling) //Stop pulling if it gets destroyed
+					RegisterSignal(to_pull, COMSIG_PARENT_QDELETING, .proc/stop_pulling) //Stop pulling if it gets destroyed
 					RegisterSignal(acting_object, COMSIG_MOVABLE_MOVED, .proc/pull) //Make sure we actually pull it.
 			push_data()
 		if(3)
@@ -456,10 +456,9 @@
 
 /obj/item/integrated_circuit/manipulation/claw/proc/stop_pulling()
 	var/atom/movable/AM = get_object()
-	UnregisterSignal(pulling, COMSIG_MOVABLE_MOVED)
+	UnregisterSignal(pulling, list(COMSIG_PARENT_QDELETING, COMSIG_MOVABLE_MOVED))
 	UnregisterSignal(AM, COMSIG_MOVABLE_MOVED)
 	AM.visible_message("\The [AM] stops pulling \the [pulling]")
-	GLOB.destroyed_event.unregister(pulling, src)
 	pulling = null
 	set_pin_data(IC_OUTPUT, 1, FALSE)
 	activate_pin(3)

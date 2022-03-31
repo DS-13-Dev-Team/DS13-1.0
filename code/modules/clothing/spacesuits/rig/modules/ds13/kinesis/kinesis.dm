@@ -366,7 +366,7 @@
 	release_type = RELEASE_DROP
 
 	//We need to register some listeners
-	GLOB.destroyed_event.register(subject, src, /obj/item/rig_module/kinesis/proc/release_grip)
+	RegisterSignal(subject, COMSIG_PARENT_QDELETING, .proc/release_grip)
 	RegisterSignal(subject, COMSIG_MOVABLE_BUMP, .proc/subject_collision)
 
 	START_PROCESSING(SSfastprocess, src)
@@ -406,8 +406,7 @@
 /obj/item/rig_module/kinesis/proc/release()
 	. = subject
 	if (!QDELETED(subject))
-		GLOB.destroyed_event.unregister(subject, src, /obj/item/rig_module/kinesis/proc/release_grip)
-		UnregisterSignal(subject, COMSIG_MOVABLE_BUMP, .proc/subject_collision)
+		UnregisterSignal(subject, list(COMSIG_PARENT_QDELETING, COMSIG_MOVABLE_BUMP))
 		remove_extension(subject, /datum/extension/kinesis_gripped)
 		//Restore these
 		subject.pass_flags = cached_pass_flags

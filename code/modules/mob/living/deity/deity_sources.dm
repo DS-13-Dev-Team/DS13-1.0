@@ -10,12 +10,11 @@
 	if(form)
 		L.faction = form.faction
 	update_followers()
-	GLOB.destroyed_event.register(L,src, .proc/dead_follower)
-	GLOB.death_event.register(L,src, .proc/update_followers)
+	RegisterSignal(L, COMSIG_PARENT_QDELETING, .proc/dead_follower)
+	RegisterSignal(L, COMSIG_LIVING_DEATH, .proc/update_followers)
 
 /mob/living/deity/proc/dead_follower(var/mob/living/L)
-	GLOB.death_event.unregister(L,src)
-	GLOB.destroyed_event.unregister(L,src)
+	UnregisterSignal(L, list(COMSIG_PARENT_QDELETING, COMSIG_LIVING_DEATH))
 
 /mob/living/deity/proc/remove_follower_spells(var/datum/mind/M)
 	if(M.learned_spells)

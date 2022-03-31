@@ -21,8 +21,7 @@ I IS TYPIN'!'
 
 	RegisterSignal(master, COMSIG_MOVABLE_MOVED, .proc/move_to_turf_or_null)
 
-	RegisterSignal(master, list(COMSIG_MOB_STATCHANGE, COMSIG_PARENT_QDELETING), .proc/qdel_self)
-	GLOB.logged_out_event.register(master, src, /datum/proc/qdel_self)
+	RegisterSignal(master, list(COMSIG_MOB_STATCHANGE, COMSIG_PARENT_QDELETING, COMSIG_MOB_LOGOUT), .proc/qdel_self)
 
 /atom/movable/overlay/typing_indicator/Destroy()
 	var/mob/M = master

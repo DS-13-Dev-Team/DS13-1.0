@@ -1027,7 +1027,7 @@ These procs should return their entire args list. Best just to return parent in 
 
 //Override damage values here as a one stop catch-all solution
 /datum/species/proc/handle_organ_external_damage(var/obj/item/organ/external/organ, brute, burn, damage_flags, used_weapon)
-	GLOB.damage_hit_event.raise_event(organ.owner, organ, brute, burn, damage_flags, used_weapon)
+	SEND_SIGNAL(organ.owner, COMSIG_MOB_DAMAGE_HIT, organ, brute, burn, damage_flags, used_weapon)
 
 	var/mob/living/L = organ.owner
 	//Here we'll handle pain audio

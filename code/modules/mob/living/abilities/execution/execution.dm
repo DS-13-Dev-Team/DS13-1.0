@@ -203,7 +203,7 @@ if (result == EXECUTION_CANCEL && can_interrupt){\
 	//Lets setup handling for future interruption
 	can_interrupt = TRUE
 	if (user)
-		GLOB.damage_hit_event.register(user, src, /datum/extension/execution/proc/user_damaged)
+		RegisterSignal(user, COMSIG_MOB_DAMAGE_HIT, .proc/user_damaged)
 
 
 	try_advance_stage()
@@ -233,7 +233,7 @@ if (result == EXECUTION_CANCEL && can_interrupt){\
 	stopped_at = world.time
 	status = STATUS_ENDED
 	//Lets remove observations
-	GLOB.damage_hit_event.unregister(user, src, /datum/extension/execution/proc/user_damaged)
+	UnregisterSignal(user, COMSIG_MOB_DAMAGE_HIT)
 	unregister_statmods()
 
 
