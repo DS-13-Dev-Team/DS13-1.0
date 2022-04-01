@@ -159,6 +159,7 @@
 		disturbed()
 
 /obj/effect/spider/spiderling/proc/disturbed()
+	SIGNAL_HANDLER
 	if(!dormant)
 		return
 	dormant = FALSE

@@ -131,7 +131,6 @@
 	try_sink()
 	if (!isturf(loc))
 		apply_debuff()
-	.=..()
 
 /*
 	Any crewman who picks up the shard recieves significant penalties

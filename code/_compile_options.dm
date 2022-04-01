@@ -42,11 +42,6 @@
 									//referencing objects that refuse to hard delete
 #endif
 
-//Log the full sendmaps profile on 514.1556+, any earlier and we get bugs or it not existing
-#if DM_VERSION >= 514 && DM_BUILD >= 1556
-#define SENDMAPS_PROFILE
-#endif
-
 //Additional code for the above flags.
 #ifdef TESTING
 #warn compiling in TESTING mode. testing() debug messages will be visible.

@@ -108,6 +108,8 @@
 	//set macro to normal incase it was overriden (like cyborg currently does)
 	winset(src, null, "mainwindow.macro=hotkeymode hotkey_toggle.is-checked=true mapwindow.map.focus=true input.background-color=#d3b5b5")
 
+	SEND_SIGNAL(src, COMSIG_MOB_LOGIN)
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_MOB_LOGGED_IN, src)
 
 /*
 	This updates lighting, darkvision, and skybox

@@ -444,6 +444,7 @@
 	return assembly && I && I.w_class <= assembly.w_class && !I.anchored
 
 /obj/item/integrated_circuit/manipulation/claw/proc/pull()
+	SIGNAL_HANDLER
 	var/obj/acting_object = get_object()
 	if(istype(acting_object.loc, /turf))
 		step_towards(pulling,src)
@@ -451,10 +452,12 @@
 		stop_pulling()
 
 /obj/item/integrated_circuit/manipulation/claw/proc/check_pull()
+	SIGNAL_HANDLER
 	if(get_dist(pulling,src) > 1)
 		stop_pulling()
 
 /obj/item/integrated_circuit/manipulation/claw/proc/stop_pulling()
+	SIGNAL_HANDLER
 	var/atom/movable/AM = get_object()
 	UnregisterSignal(pulling, list(COMSIG_PARENT_QDELETING, COMSIG_MOVABLE_MOVED))
 	UnregisterSignal(AM, COMSIG_MOVABLE_MOVED)

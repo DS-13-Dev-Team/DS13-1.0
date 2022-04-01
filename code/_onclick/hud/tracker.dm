@@ -40,15 +40,9 @@
 
 /atom/movable/screen/movable/tracker/Initialize()
 	.=..()
-	//Create moved observations for host and target
-	RegisterSignal(origin, COMSIG_MOVABLE_MOVED, .proc/update)
+	RegisterSignal(origin, list(COMSIG_MOVABLE_MOVED, COMSIG_ATOM_DIR_CHANGE, COMSIG_MOB_VIEW_CHANGED), .proc/update)
 	RegisterSignal(tracked, COMSIG_MOVABLE_MOVED, .proc/update)
 
-	//Create dir set observation for host only
-	RegisterSignal(origin, COMSIG_ATOM_DIR_CHANGE, .proc/update)
-
-	//Create a view changed observation for host only
-	RegisterSignal(origin, COMSIG_MOB_VIEW_CHANGED, .proc/update)
 	INVOKE_ASYNC(src, .proc/update)
 
 /atom/movable/screen/movable/tracker/Destroy()
@@ -64,6 +58,7 @@
 	alpha = 0
 
 /atom/movable/screen/movable/tracker/proc/update()
+	SIGNAL_HANDLER
 	if (QDELETED(tracked) || QDELETED(origin))
 		qdel(src)	//if our target atom is gone, so are we
 		return

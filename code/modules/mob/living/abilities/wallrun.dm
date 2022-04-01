@@ -209,6 +209,7 @@
 
 //Called to end mounting and return to standing on the floor
 /datum/extension/wallrun/proc/unmount_to_floor()
+	SIGNAL_HANDLER
 	if (user && !user.stat)
 		user.visible_message(SPAN_NOTICE("[A] climbs down from \the [mountpoint]"))
 	unmount_animation()
@@ -394,6 +395,7 @@
 -------------------------*/
 //Called when we bump into something
 /datum/extension/wallrun/proc/on_bumped(var/atom/movable/mover, var/atom/obstacle)
+	SIGNAL_HANDLER
 	//Can't do wallrun and wallmount at the same time
 	if (mover.is_mounted())
 		return
@@ -406,6 +408,7 @@
 //Called when the thing we're mounted to, moves
 //This will most often happen when attached to mobs
 /datum/extension/wallrun/proc/on_mountpoint_move()
+	SIGNAL_HANDLER
 	var/turf/T = locate(mountpoint.x + offset.x, mountpoint.y + offset.y, mountpoint.z)
 	if (T.Enter(A))
 		A.forceMove(T)
@@ -415,6 +418,7 @@
 //Called when the thing we're mounted to changes density
 //This will most often happen with airlocks opening
 /datum/extension/wallrun/proc/on_density_set()
+	SIGNAL_HANDLER
 	if (!mountpoint  || QDELETED(mountpoint) || mountpoint.density == FALSE)
 		unmount_to_floor()
 
@@ -426,6 +430,7 @@
 	If we can't find one, we'll unmount to floor before moving
 */
 /datum/extension/wallrun/proc/on_premove(var/atom/mover, var/curloc, var/newloc)
+	SIGNAL_HANDLER
 	.=TRUE
 	if (!mountpoint)
 		return	//If we aren't already mounted to something, we don't care
@@ -446,6 +451,7 @@
 
 
 /datum/extension/wallrun/proc/on_move(var/atom/mover, var/oldloc, var/newloc)
+	SIGNAL_HANDLER
 	var/mounted = FALSE
 	//We have a next target? Try mounting to it
 	if (next_mountpoint)
@@ -490,6 +496,7 @@
 
 //An attempt to make directional facings meaningful
 /datum/extension/wallrun/proc/dir_set(var/atom/mover, var/old_dir, var/new_dir)
+	SIGNAL_HANDLER
 	if (mountpoint)
 		//We get the normal direction of the wall
 		var/vector2/current_wall_normal = get_new_vector(mover.x - mountpoint.x, mover.y - mountpoint.y)

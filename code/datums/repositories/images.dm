@@ -31,6 +31,7 @@
 		return I
 
 /repository/images/proc/atom_destroyed(var/atom/destroyed)
+	SIGNAL_HANDLER
 	var/list/atom_cache_list = image_cache_for_atoms[destroyed]
 	for(var/img in atom_cache_list)
 		qdel(atom_cache_list[img])

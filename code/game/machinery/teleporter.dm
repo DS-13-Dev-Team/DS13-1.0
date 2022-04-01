@@ -161,6 +161,7 @@
 	return
 
 /obj/machinery/computer/teleporter/proc/target_lost()
+	SIGNAL_HANDLER
 	audible_message("<span class='warning'>Connection with locked in coordinates has been lost.</span>")
 	clear_target()
 

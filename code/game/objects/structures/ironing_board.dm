@@ -75,7 +75,7 @@
 
 		if(user.unEquip(I, src))
 			cloth = I
-			RegisterSignal(I, COMSIG_PARENT_QDELETING, .proc/remove_item)
+			RegisterSignal(I, COMSIG_PARENT_QDELETING, /atom/proc/remove_item)
 			update_icon()
 		return
 	else if(istype(I,/obj/item/weapon/ironingiron))
@@ -83,7 +83,7 @@
 
 		if(!holding && !R.enabled && user.unEquip(I, src))
 			holding = R
-			RegisterSignal(I, src, .proc/remove_item)
+			RegisterSignal(I, src, /atom/proc/remove_item)
 			update_icon()
 			return
 

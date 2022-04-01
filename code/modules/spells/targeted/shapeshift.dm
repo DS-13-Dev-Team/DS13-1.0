@@ -62,11 +62,13 @@
 				stop_transformation(trans)
 
 /spell/targeted/shapeshift/proc/destroyed_transformer(var/mob/target) //Juuuuust in case
+	SIGNAL_HANDLER
 	var/mob/current = transformed_dudes[target]
 	to_chat(current, "<span class='danger'>You suddenly feel as if this transformation has become permanent...</span>")
 	remove_target(target)
 
 /spell/targeted/shapeshift/proc/stop_transformation(var/mob/living/target)
+	SIGNAL_HANDLER
 	var/mob/living/transformer = transformed_dudes[target]
 	if(!transformer)
 		return FALSE

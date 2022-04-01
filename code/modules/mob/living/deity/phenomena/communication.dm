@@ -43,6 +43,7 @@
 						remove_image(M)
 
 /datum/phenomena/point/proc/remove_image(var/mob/living/L)
+	SIGNAL_HANDLER
 	L.client.images -= arrow
 	UnregisterSignal(L, COMSIG_MOB_LOGOUT)
 

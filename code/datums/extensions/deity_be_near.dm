@@ -12,6 +12,7 @@
 	RegisterSignal(holder, COMSIG_PARENT_QDELETING, .proc/dead_deity)
 
 /datum/extension/deity_be_near/proc/check_movement()
+	SIGNAL_HANDLER
 	var/obj/item/I = holder
 	if(!istype(I.loc, /mob/living))
 		return
@@ -30,6 +31,7 @@
 	return
 
 /datum/extension/deity_be_near/proc/dead_deity()
+	SIGNAL_HANDLER
 	var/obj/item/I = holder
 	I.visible_message("<span class='warning'>\The [holder]'s power fades!</span>")
 	qdel(src)

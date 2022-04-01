@@ -110,6 +110,7 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 
 
 /datum/click_handler/proc/OnMobLogout()
+	SIGNAL_HANDLER
 	user.RemoveClickHandler(src)
 
 /datum/click_handler/proc/OnClick(var/atom/A, var/params)

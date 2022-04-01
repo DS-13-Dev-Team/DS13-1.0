@@ -22,6 +22,7 @@
 	RegisterSignal(target, COMSIG_PARENT_QDELETING, .proc/clear_target)
 
 /obj/machinery/meter/proc/clear_target()
+	SIGNAL_HANDLER
 	if(target)
 		UnregisterSignal(target, COMSIG_PARENT_QDELETING)
 		target = null

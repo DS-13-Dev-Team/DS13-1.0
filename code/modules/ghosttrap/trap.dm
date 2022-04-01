@@ -64,6 +64,7 @@ var/list/ghost_traps
 			to_chat(O, "[request_string] <a href='?src=\ref[src];candidate=\ref[O];target=\ref[target]'>(Occupy)</a> ([ghost_follow_link(target, O)])")
 
 /datum/ghosttrap/proc/unregister_target(var/target)
+	SIGNAL_HANDLER
 	request_timeouts -= target
 	UnregisterSignal(target, COMSIG_PARENT_QDELETING)
 

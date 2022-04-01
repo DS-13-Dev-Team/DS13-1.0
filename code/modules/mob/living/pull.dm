@@ -9,6 +9,7 @@
 	var/reach = 1
 
 /mob/proc/pulling_moved()
+	SIGNAL_HANDLER
 	if(!pulling.mid_diag_move)
 		update_pulling()
 

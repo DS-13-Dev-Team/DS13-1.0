@@ -75,17 +75,20 @@
 
 
 /datum/extension/gallop/proc/user_hit(var/obj/item/organ/external/organ, brute, burn, damage_flags, used_weapon)
+	SIGNAL_HANDLER
 	if (!crashed)
 		user.visible_message(SPAN_DANGER("[user] crumples under the impact [istype(used_weapon, /obj) ? "of":"from"] [used_weapon]"))
 		stop_crash(used_weapon)
 
 /datum/extension/gallop/proc/user_bumped(var/mob/user, var/atom/obstacle)
+	SIGNAL_HANDLER
 	if (!crashed)
 		user.visible_message(SPAN_DANGER("[user] crashes into [obstacle]"))
 		stop_crash(obstacle)
 
 //Play extra footstep sounds as the leaper clatters along the floor
 /datum/extension/gallop/proc/user_moved(var/atom/obstacle)
+	SIGNAL_HANDLER
 	shake_camera(user, 3,0.5)
 	user.play_species_audio(user, SOUND_FOOTSTEP, VOLUME_QUIET)
 

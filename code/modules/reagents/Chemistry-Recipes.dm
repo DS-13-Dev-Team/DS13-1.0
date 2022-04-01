@@ -964,10 +964,11 @@
 	required = /obj/item/slime_extract/darkblue
 	mix_message = "The slime extract begins to vibrate violently!"
 
-/datum/chemical_reaction/slime/freeze/on_reaction(var/datum/reagents/holder)
-	set waitfor = 0
-	..()
-	sleep(50)
+/datum/chemical_reaction/slime/freeze/on_reaction(datum/reagents/holder)
+	.=..()
+	addtimer(CALLBACK(src, .proc/reaction_async, holder), 5 SECONDS)
+
+/datum/chemical_reaction/slime/freeze/proc/reaction_async(datum/reagents/holder)
 	playsound(get_turf(holder.my_atom), 'sound/effects/phasein.ogg', 100, 1)
 	for(var/mob/living/M in range (get_turf(holder.my_atom), 7))
 		M.bodytemperature -= 140
@@ -990,9 +991,10 @@
 	mix_message = "The slime extract begins to vibrate violently!"
 
 /datum/chemical_reaction/slime/fire/on_reaction(var/datum/reagents/holder)
-	set waitfor = 0
-	..()
-	sleep(50)
+	.=..()
+	addtimer(CALLBACK(src, .proc/reaction_async, holder), 5 SECONDS)
+
+/datum/chemical_reaction/slime/fire/proc/reaction_async(datum/reagents/holder)
 	if(!(holder.my_atom && holder.my_atom.loc))
 		return
 
@@ -1121,10 +1123,8 @@
 	mix_message = "The slime extract begins to vibrate violently!"
 
 /datum/chemical_reaction/slime/explosion/on_reaction(var/datum/reagents/holder)
-	set waitfor = 0
-	..()
-	sleep(50)
-	holder.my_atom.explosion(4, 1)
+	.=..()
+	addtimer(CALLBACK(holder.my_atom, /atom/proc/explosion, 4, 1), 5 SECONDS)
 
 //Light Pink
 /datum/chemical_reaction/slime/potion2

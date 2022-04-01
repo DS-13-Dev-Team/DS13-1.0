@@ -49,6 +49,7 @@
 	return 0
 
 /atom/movable/screen/health_doll/proc/update()
+	SIGNAL_HANDLER
 	return
 
 /atom/movable/screen/health_doll/human/update()

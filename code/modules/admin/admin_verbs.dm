@@ -209,9 +209,6 @@ var/list/admin_verbs_debug = list(
 	/client/proc/jumptomob,
 	/client/proc/jumptocoord,
 	/client/proc/dsay,
-	#ifdef SENDMAPS_PROFILE
-	/client/proc/display_sendmaps,
-	#endif
 	/client/proc/check_timer_sources,
 	/datum/admins/proc/run_unit_test,
 	/client/proc/view_chunk,
@@ -1077,11 +1074,3 @@ var/list/admin_verbs_mentor = list(
 	T.add_spell(new S)
 	feedback_add_details("admin_verb","GS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	log_and_message_admins("gave [key_name(T)] the spell [S].")
-
-#ifdef SENDMAPS_PROFILE
-/client/proc/display_sendmaps()
-	set name = "Send Maps Profile"
-	set category = "Debug"
-
-	src << link("?debug=profile&type=sendmaps&window=test")
-#endif

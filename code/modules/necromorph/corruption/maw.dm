@@ -262,6 +262,7 @@
 
 //Checks if we can still hold onto this mob
 /obj/structure/corruption_node/maw/proc/check_grip()
+	SIGNAL_HANDLER
 	if (!ishuman(buckled_mob))
 		return TRUE
 

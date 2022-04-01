@@ -126,10 +126,12 @@
 
 
 /datum/extension/corruption_source/proc/source_moved(var/atom/movable/mover, var/old_loc, var/new_loc)
+	SIGNAL_HANDLER
 	sourceturf = get_turf(source)
 	update_vines()
 
 /datum/extension/corruption_source/proc/source_deleted()
+	SIGNAL_HANDLER
 	qdel(src)
 
 

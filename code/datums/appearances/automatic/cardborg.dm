@@ -2,6 +2,7 @@
 	var/static/list/appearances
 
 /decl/appearance_handler/cardborg/proc/item_equipped(var/obj/item/item, var/mob/user, var/slot)
+	SIGNAL_HANDLER
 	if(!(slot == slot_head || slot == slot_wear_suit|| slot == slot_back))
 		return
 	if(!ishuman(user))
@@ -20,12 +21,14 @@
 	RegisterSignal(SSdcs, COMSIG_GLOB_MOB_LOGGED_IN, .proc/mob_joined) // Duplicate registration request are handled for us
 
 /decl/appearance_handler/cardborg/proc/item_removed(var/obj/item/item, var/mob/user)
+	SIGNAL_HANDLER
 	if((istype(item, /obj/item/clothing/suit/cardborg) || istype(item, /obj/item/clothing/head/cardborg)) || istype(item, /obj/item/weapon/storage/backpack))
 		RemoveAltAppearance(user)
 		if(!appearance_sources.len)
 			UnregisterSignal(SSdcs, COMSIG_GLOB_MOB_LOGGED_IN)
 
 /decl/appearance_handler/cardborg/proc/mob_joined(var/mob/user)
+	SIGNAL_HANDLER
 	if(issilicon(user))
 		DisplayAllAltAppearancesTo(user)
 

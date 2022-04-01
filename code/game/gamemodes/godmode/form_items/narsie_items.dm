@@ -63,6 +63,7 @@
 	return ..()
 
 /obj/item/weapon/material/twohanded/fireaxe/cult/proc/gain_power()
+	SIGNAL_HANDLER
 	stored_power += 50
 	src.visible_message("<span class='cult'>\The [src] screeches as the smell of death fills the air!</span>")
 

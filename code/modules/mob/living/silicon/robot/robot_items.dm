@@ -129,7 +129,7 @@
 	strobe_effect = L
 
 	// Make the light effect follow this party light object.
-	L.RegisterSignal(src, COMSIG_MOVABLE_MOVED, .proc/move_to_turf_or_null)
+	L.RegisterSignal(src, COMSIG_MOVABLE_MOVED, /atom/movable/proc/move_to_turf_or_null)
 
 	update_icon()
 
@@ -137,7 +137,7 @@
 	activated = 0
 
 	// Cause the party light effect to stop following this object, and then delete it.
-	strobe_effect.UnregisterSignal(src, COMSIG_MOVABLE_MOVED, .proc/move_to_turf_or_null)
+	strobe_effect.UnregisterSignal(src, COMSIG_MOVABLE_MOVED)
 	QDEL_NULL(strobe_effect)
 
 	update_icon()

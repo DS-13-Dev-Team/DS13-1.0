@@ -52,8 +52,8 @@ var/list/holder_mob_icon_cache = list()
 		qdel(src)
 	else if(last_holder != loc)
 		for(var/mob/M in contents)
-			M.RegisterSignal(loc, COMSIG_MOVABLE_MOVED, .proc/recursive_move)
-			M.RegisterSignal(loc, COMSIG_ATOM_DIR_CHANGE, .proc/recursive_dir_set)
+			M.RegisterSignal(loc, COMSIG_MOVABLE_MOVED, /atom/movable/proc/recursive_move)
+			M.RegisterSignal(loc, COMSIG_ATOM_DIR_CHANGE, /atom/proc/recursive_dir_set)
 
 /obj/item/weapon/holder/onDropInto(var/atom/movable/AM)
 	if(ismob(loc))   // Bypass our holding mob and drop directly to its loc
@@ -99,8 +99,8 @@ var/list/holder_mob_icon_cache = list()
 	overlays |= M.overlays
 	var/mob/living/carbon/human/H = loc
 	last_holder = H
-	M.RegisterSignal(H, COMSIG_MOVABLE_MOVED, .proc/recursive_move)
-	M.RegisterSignal(H, COMSIG_ATOM_DIR_CHANGE, .proc/recursive_dir_set)
+	M.RegisterSignal(H, COMSIG_MOVABLE_MOVED, /atom/movable/proc/recursive_move)
+	M.RegisterSignal(H, COMSIG_ATOM_DIR_CHANGE, /atom/proc/recursive_dir_set)
 
 	update_held_icon()
 

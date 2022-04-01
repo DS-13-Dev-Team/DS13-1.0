@@ -249,6 +249,7 @@
 	add_verb(L, /mob/living/proc/release_eye)
 
 /spell/camera_connection/proc/release(var/mob/living/L)
+	SIGNAL_HANDLER
 	vision.release(L)
 	remove_verb(L, /mob/living/proc/release_eye)
 	UnregisterSignal(L, list(COMSIG_PARENT_QDELETING, COMSIG_MOB_LOGOUT))

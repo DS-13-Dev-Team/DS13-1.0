@@ -139,6 +139,7 @@
 	RegisterSignal(target, COMSIG_MOVABLE_MOVED, .proc/target_moved)
 
 /mob/living/bot/secbot/proc/target_moved(atom/movable/moving_instance, atom/old_loc, atom/new_loc)
+	SIGNAL_HANDLER
 	if(get_dist(get_turf(src), get_turf(target)) >= 1)
 		awaiting_surrender = INFINITY
 		UnregisterSignal(moving_instance, COMSIG_MOVABLE_MOVED)

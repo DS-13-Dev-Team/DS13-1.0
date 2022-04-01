@@ -96,7 +96,7 @@
 	activate()
 
 /datum/extension/ability/toggled/Initialize()
-	RegisterSignal(holder, COMSIG_MOB_STATCHANGE)
+	RegisterSignal(holder, COMSIG_MOB_STATCHANGE, .proc/stat_set)
 
 /datum/extension/ability/toggled/Destroy()
 
@@ -150,9 +150,10 @@
 
 
 /datum/extension/ability/toggled/proc/stat_set()
+	SIGNAL_HANDLER
 	var/mob/living/L = holder
 	if (L.stat == DEAD)
 		remove_self()
 	else if (L.stat)
 		if (status == STATUS_ACTIVE)
-			deactivate(FALSE, TRUE)
+			INVOKE_ASYNC(src, .proc/deactivate, FALSE, TRUE)

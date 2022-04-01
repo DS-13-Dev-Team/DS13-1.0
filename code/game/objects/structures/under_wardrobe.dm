@@ -36,8 +36,9 @@
 		..()
 
 /obj/structure/undies_wardrobe/proc/remove_id_card(var/id_card)
+	SIGNAL_HANDLER
 	LAZYREMOVE(amount_of_underwear_by_id_card, id_card)
-	RegisterSignal(id_card, COMSIG_PARENT_QDELETING, .proc/remove_id_card)
+	UnregisterSignal(id_card, COMSIG_PARENT_QDELETING)
 
 /obj/structure/undies_wardrobe/attack_hand(var/mob/user)
 	if(!human_who_can_use_underwear(user))

@@ -102,6 +102,7 @@
 		return 1
 
 /datum/nano_module/shields_monitor/proc/deselect_shield(var/source)
+	SIGNAL_HANDLER
 	if(!active)
 		return
 	UnregisterSignal(active, COMSIG_PARENT_QDELETING)

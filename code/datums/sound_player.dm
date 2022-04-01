@@ -232,6 +232,7 @@ datum/sound_token/proc/Mute()
 	PrivUpdateListenerLoc(listener, FALSE)
 
 /datum/sound_token/proc/PrivRemoveListener(var/atom/listener, var/sound/null_sound)
+	SIGNAL_HANDLER
 	if (!QDELETED(listener))
 		null_sound = null_sound || new(channel = sound.channel)
 		SEND_SOUND(listener, null_sound)
@@ -239,6 +240,7 @@ datum/sound_token/proc/Mute()
 	listeners -= listener
 
 /datum/sound_token/proc/PrivUpdateListenerLoc(var/atom/listener, var/update_sound = TRUE)
+	SIGNAL_HANDLER
 	if (QDELETED(source))
 		return
 

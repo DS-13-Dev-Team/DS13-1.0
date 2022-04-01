@@ -63,21 +63,14 @@
 
 
 /obj/structure/corruption_node/harvester/update_icon()
-	set waitfor = FALSE
-
 	.=..()
-
 	underlays.Cut()
 	overlays.Cut()
-
-	if (deployed)
+	if(deployed)
 		overlays += image(icon, src, "beak")
 		underlays += image(icon, src, "tentacle_1")
-		sleep(1)
 		underlays += image(icon, src, "tentacle_2")
-		sleep(1)
 		underlays += image(icon, src, "tentacle_3")
-		sleep(1)
 		underlays += image(icon, src, "tentacle_4")
 	else
 		overlays += image(icon, src, "beak_closed")
@@ -173,12 +166,14 @@
 
 //When a source moves, we update, but with a delay for batching
 /obj/structure/corruption_node/harvester/proc/source_moved()
+	SIGNAL_HANDLER
 	if (refresh_timer)
 		return
 	refresh_timer = addtimer(CALLBACK(src, /obj/structure/corruption_node/harvester/proc/refresh_sources), 3 SECONDS, TIMER_STOPPABLE)
 
 //If a source is deleted we refresh immediately
 /obj/structure/corruption_node/harvester/proc/source_deleted()
+	SIGNAL_HANDLER
 	refresh_sources()
 
 

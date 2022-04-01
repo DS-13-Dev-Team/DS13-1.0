@@ -188,7 +188,8 @@
 //Called immediately after this atom is unmounted from mountpoint.
 	//WARNING: You cannot rely on mountpoint to still exist at this time. Check it before doing anything to it
 /datum/extension/mount/proc/on_dismount()
-	mounted  = FALSE
+	SIGNAL_HANDLER
+	mounted = FALSE
 	mountee.on_dismount(src)
 
 /datum/extension/mount/proc/dismount()
@@ -201,11 +202,13 @@
 
 //Called when the atom we are mounted to moves
 /datum/extension/mount/proc/on_mountpoint_move(var/atom/mover, var/oldloc, var/newloc)
+	SIGNAL_HANDLER
 	if (mounted)
 		ignore_mountee_move = TRUE
 		mountee.forceMove(locate(mountpoint.x + offset.x, mountpoint.y + offset.y, mountpoint.z))
 
 /datum/extension/mount/proc/on_mountee_move(var/atom/mover, var/oldloc, var/newloc)
+	SIGNAL_HANDLER
 	if (ignore_mountee_move)
 		ignore_mountee_move = FALSE
 		return
@@ -213,6 +216,7 @@
 	mountpoint_updated()
 
 /datum/extension/mount/proc/mountpoint_updated()
+	SIGNAL_HANDLER
 	if (mounted)
 		if (!is_valid_mount_target(mountpoint, WP))
 			dismount()

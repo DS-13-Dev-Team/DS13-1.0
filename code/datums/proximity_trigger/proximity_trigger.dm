@@ -87,6 +87,7 @@ var/const/PROXIMITY_EXCLUDE_HOLDER_TURF = 1 // When acquiring turfs to monitor, 
 		register_turfs()
 
 /datum/proximity_trigger/proc/register_turfs()
+	SIGNAL_HANDLER
 	if(ismovable(holder))
 		RegisterSignal(holder, COMSIG_MOVABLE_MOVED, .proc/on_holder_moved)
 	RegisterSignal(holder, COMSIG_ATOM_DIR_CHANGE, .proc/register_turfs) // Changing direction might alter the relevant turfs
@@ -120,6 +121,7 @@ var/const/PROXIMITY_EXCLUDE_HOLDER_TURF = 1 // When acquiring turfs to monitor, 
 	seen_turfs_.Cut()
 
 /datum/proximity_trigger/proc/on_turf_visibility_changed()
+	SIGNAL_HANDLER
 	var/list/new_seen_turfs_ = get_seen_turfs()
 	if(listequal(seen_turfs_, new_seen_turfs_))
 		return
@@ -135,6 +137,7 @@ var/const/PROXIMITY_EXCLUDE_HOLDER_TURF = 1 // When acquiring turfs to monitor, 
 	seen_turfs_ = new_seen_turfs_
 
 /datum/proximity_trigger/proc/on_holder_moved(var/holder, var/old_loc, var/new_loc)
+	SIGNAL_HANDLER
 	var/old_turf = get_turf(old_loc)
 	var/new_turf = get_turf(new_loc)
 	if(old_turf == new_turf)
@@ -144,6 +147,7 @@ var/const/PROXIMITY_EXCLUDE_HOLDER_TURF = 1 // When acquiring turfs to monitor, 
 	register_turfs()
 
 /datum/proximity_trigger/proc/on_turf_entered(var/turf/T, var/atom/enterer)
+	SIGNAL_HANDLER
 	if(enterer == holder) // We have an explicit call for holder, in case it moved somewhere we're not listening to.
 		return
 	if(enterer.opacity)

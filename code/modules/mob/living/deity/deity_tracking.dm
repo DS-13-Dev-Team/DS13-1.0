@@ -29,9 +29,11 @@
 	RegisterSignal(L, list(COMSIG_PARENT_QDELETING, COMSIG_LIVING_DEATH), .proc/stop_follow)
 
 /mob/living/deity/proc/stop_follow()
+	SIGNAL_HANDLER
 	UnregisterSignal(following, list(COMSIG_PARENT_QDELETING, COMSIG_MOVABLE_MOVED, COMSIG_LIVING_DEATH))
 	to_chat(src, "<span class='notice'>You stop following \the [following].</span>")
 	following = null
 
 /mob/living/deity/proc/keep_following(var/atom/movable/moving_instance, var/atom/old_loc, var/atom/new_loc)
+	SIGNAL_HANDLER
 	eyeobj.setLoc(new_loc)

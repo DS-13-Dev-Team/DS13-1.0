@@ -58,6 +58,7 @@
 	return 0
 
 /datum/extension/holster/proc/clear_holster()
+	SIGNAL_HANDLER
 	UnregisterSignal(holstered, list(COMSIG_MOVABLE_MOVED, COMSIG_PARENT_QDELETING))
 	holstered = null
 	atom_holder.SetName(initial(atom_holder.name))
@@ -98,6 +99,7 @@
 		to_chat(user, "It is empty.")
 
 /datum/extension/holster/proc/check_holster()
+	SIGNAL_HANDLER
 	if(holstered.loc != storage)
 		clear_holster()
 

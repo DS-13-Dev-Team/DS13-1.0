@@ -73,6 +73,7 @@ var/list/mob_hat_cache = list()
 	.=..()
 
 /mob/living/silicon/robot/drone/proc/on_moved(var/atom/movable/am, var/turf/old_loc, var/turf/new_loc)
+	SIGNAL_HANDLER
 	old_loc = get_turf(old_loc)
 	new_loc = get_turf(new_loc)
 

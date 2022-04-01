@@ -37,6 +37,7 @@
 	to_chat(user, "<span class='notice'>Will now move targets into \the [destination].</span>")
 
 /datum/build_mode/move_into/proc/ClearDestination(var/feedback)
+	SIGNAL_HANDLER
 	if(!destination)
 		return
 

@@ -51,6 +51,7 @@
 
 //If our host atom could move, we'll call this when it does
 /obj/effect/particle_system/proc/origin_moved()
+	SIGNAL_HANDLER
 	origin_turf = get_turf(origin)
 
 /obj/effect/particle_system/Initialize()

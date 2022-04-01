@@ -172,6 +172,7 @@
 //Called when the holder dies. This is intended for death by methods other than decapitation
 //It will be called in a decapitation case too, but one or more of the three vars below will prevent an infinite loop
 /obj/item/organ/external/head/simple/divider/proc/holder_death()
+	SIGNAL_HANDLER
 	if (!QDELETED(src) && owner && divider_component_type)
 		create_divider_component(owner, 0)
 		qdel(src)
@@ -230,11 +231,13 @@
 	RegisterSignal(H, COMSIG_MOVABLE_BUMP, .proc/holder_bump)
 
 /datum/extension/divider_puppet/proc/holder_moved()
+	SIGNAL_HANDLER
 	if (prob(3))
 		H.visible_message("[H] lurches around awkwardly")
 		H.lurch()
 
 /datum/extension/divider_puppet/proc/holder_bump(var/mover, var/obstacle)
+	SIGNAL_HANDLER
 	if (prob(10))
 		H.visible_message("[H] bumps into [obstacle] and staggers off")
 		H.lurch(get_dir(obstacle, H))

@@ -152,6 +152,7 @@
 	set_status(STATE_MOVING)
 
 /obj/item/projectile/remote/proc/entered_new_tile(var/atom/movable/moving_instance, var/atom/old_loc, var/atom/new_loc)
+	SIGNAL_HANDLER
 	remove_all_grind_atoms()
 	damage_tile = new_loc
 

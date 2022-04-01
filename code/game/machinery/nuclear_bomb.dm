@@ -357,6 +357,7 @@ var/bomb_set
 	RegisterSignal(src, COMSIG_MOVABLE_MOVED, .proc/check_z_level)
 
 /obj/item/weapon/disk/nuclear/proc/check_z_level()
+	SIGNAL_HANDLER
 	if(!(SSticker && istype(SSticker.mode, /datum/game_mode/nuclear)))
 		UnregisterSignal(src, COMSIG_MOVABLE_MOVED) // However, when we are certain unregister if necessary
 		return

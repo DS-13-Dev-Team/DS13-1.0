@@ -66,6 +66,7 @@
 
 
 /datum/extension/twitch/proc/moved(var/atom/mover, var/oldloc, var/newloc)
+	SIGNAL_HANDLER
 	//Sometimes blink around while walking
 	if(prob(movement_displace_chance))
 		displace(FALSE)

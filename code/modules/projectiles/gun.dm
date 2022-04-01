@@ -143,6 +143,7 @@
 	.=..()
 
 /obj/item/weapon/gun/proc/swaped_hands(mob/user, obj/item/previous_item, obj/item/new_item)
+	SIGNAL_HANDLER
 	if(src == new_item)
 		update_all()
 	else

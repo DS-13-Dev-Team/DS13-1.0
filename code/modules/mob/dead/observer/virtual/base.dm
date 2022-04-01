@@ -21,7 +21,7 @@ var/list/all_virtual_listeners = list()
 	if(!istype(host, host_type))
 		CRASH("Received an unexpected host type. Expected [host_type], was [log_info_line(host)].")
 	src.host = host
-	RegisterSignal(host, COMSIG_MOVABLE_MOVED, .proc/move_to_turf_or_null)
+	RegisterSignal(host, COMSIG_MOVABLE_MOVED, /atom/movable/proc/move_to_turf_or_null)
 
 	all_virtual_listeners += src
 

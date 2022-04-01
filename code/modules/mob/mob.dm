@@ -917,8 +917,11 @@
 
 
 /mob/proc/set_stat(var/new_stat)
+	var/old_stat = stat
 	. = stat != new_stat
 	stat = new_stat
+	if(.)
+		SEND_SIGNAL(src, COMSIG_MOB_STATCHANGE, old_stat, new_stat)
 
 /mob/verb/northfaceperm()
 	set hidden = 1

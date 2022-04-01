@@ -76,6 +76,7 @@
 
 
 /obj/item/weapon/evidencebag/proc/item_removed(atom/movable/exiter, old_loc, new_loc)
+	SIGNAL_HANDLER
 	if(exiter == stored_item)
 		UnregisterSignal(stored_item, COMSIG_MOVABLE_MOVED)
 		stored_item = null

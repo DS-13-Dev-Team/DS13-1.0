@@ -98,6 +98,7 @@
 				RegisterSignal(S, COMSIG_PARENT_QDELETING, .proc/remove_sensor)
 
 /datum/nano_module/power_monitor/proc/remove_sensor(var/removed_sensor, var/update_ui = TRUE)
+	SIGNAL_HANDLER
 	if(active_sensor == removed_sensor)
 		active_sensor = null
 		if(update_ui)

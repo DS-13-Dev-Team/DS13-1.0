@@ -388,7 +388,6 @@
 
 
 /datum/extension/mount/infector/on_dismount()
-	sleep(1)
 	var/mob/living/carbon/human/user = mountee
 
 	user.default_rotation = 0

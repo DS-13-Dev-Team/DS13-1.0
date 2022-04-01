@@ -38,12 +38,14 @@
 		RegisterSignal(H, COMSIG_MOVABLE_MOVED, .proc/drop_cloak)
 
 /spell/veil_of_shadows/proc/drop_cloak()
+	SIGNAL_HANDLER
 	var/mob/living/carbon/human/H = holder
 	if(H.remove_cloaking_source(src))
 		H.visible_message("<span class='notice'>\The [H] appears from nowhere!</span>")
 	UnregisterSignal(H, COMSIG_MOVABLE_MOVED)
 
 /spell/veil_of_shadows/proc/check_light()
+	SIGNAL_HANDLER
 	if(light_steps)
 		light_steps--
 		return

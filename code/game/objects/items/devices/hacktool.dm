@@ -73,6 +73,7 @@
 		known_targets.Cut(max_known_targets + 1)
 
 /obj/item/weapon/tool/multitool/hacktool/proc/on_target_destroy(var/target)
+	SIGNAL_HANDLER
 	known_targets -= target
 
 /datum/topic_state/default/must_hack

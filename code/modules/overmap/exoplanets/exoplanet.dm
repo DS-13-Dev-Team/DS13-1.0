@@ -103,6 +103,7 @@
 			Z.air.equalize(daddy)
 
 /obj/effect/overmap/sector/exoplanet/proc/remove_animal(var/mob/M)
+	SIGNAL_HANDLER
 	animals -= M
 	UnregisterSignal(M, list(COMSIG_PARENT_QDELETING, COMSIG_LIVING_DEATH))
 	repopulate_types |= M.type

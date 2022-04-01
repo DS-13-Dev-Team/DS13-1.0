@@ -66,6 +66,7 @@
 	RegisterSignal(L, list(COMSIG_MOVABLE_MOVED, COMSIG_PARENT_QDELETING, COMSIG_LIVING_DEATH), .proc/remove_target)
 
 /obj/structure/deity/altar/proc/remove_target()
+	SIGNAL_HANDLER
 	STOP_PROCESSING(SSobj, src)
 	UnregisterSignal(target, list(COMSIG_MOVABLE_MOVED, COMSIG_PARENT_QDELETING, COMSIG_LIVING_DEATH))
 	target = null

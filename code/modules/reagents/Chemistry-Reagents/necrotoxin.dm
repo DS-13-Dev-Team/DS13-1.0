@@ -24,6 +24,7 @@
 
 
 /datum/extension/reagent/necrotoxin/proc/victim_died()
+	SIGNAL_HANDLER
 	if (is_toxin_victim())
 		addtimer(CALLBACK(holder, /mob/living/proc/start_necromorph_conversion), 1 MINUTE, TIMER_STOPPABLE)
 /*

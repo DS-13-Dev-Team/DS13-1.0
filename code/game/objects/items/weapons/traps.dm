@@ -280,6 +280,7 @@ Freeing yourself is much harder than freeing someone else. Calling for help is a
 
 //Checks if we can still hold onto this mob
 /obj/item/weapon/beartrap/proc/check_grip()
+	SIGNAL_HANDLER
 	if (!ishuman(buckled_mob))
 		return TRUE
 

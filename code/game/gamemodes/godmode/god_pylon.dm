@@ -33,6 +33,7 @@
 	RegisterSignal(L, COMSIG_PARENT_QDELETING, .proc/remove_intuned)
 
 /obj/structure/deity/pylon/proc/remove_intuned(var/mob/living/L)
+	SIGNAL_HANDLER
 	if(!(L in intuned))
 		return
 	to_chat(L, "<span class='warning'>You no longer feel intuned to \the [src].</span>")

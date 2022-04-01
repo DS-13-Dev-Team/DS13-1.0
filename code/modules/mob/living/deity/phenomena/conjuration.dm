@@ -61,6 +61,7 @@
 		P2.target = get_turf(P1)
 
 /datum/phenomena/portals/proc/remove_portal(var/portal)
+	SIGNAL_HANDLER
 	portals -= portal
 	UnregisterSignal(portal, COMSIG_PARENT_QDELETING)
 	var/turf/T = get_turf(portal)

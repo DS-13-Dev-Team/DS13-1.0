@@ -56,7 +56,7 @@
 
 //We will recalculate the position after each step, in case the host.victim is trying to escape us
 /datum/execution_stage/approach/proc/user_moved(var/mover, var/oldloc, var/newloc)
-
+	SIGNAL_HANDLER
 	if (host.victim.loc != victim_last_loc)
 		get_target_turf()
 		walk_to(host.user, target_turf, 0, SPEED_TO_DELAY(speed))

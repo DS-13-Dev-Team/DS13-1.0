@@ -43,7 +43,7 @@
 	if (active_track)
 		//We need to remove the tracking from the old target
 		if(ismovable(target))
-			UnregisterSignal(target, COMSIG_MOVABLE_MOVED, .proc/target_moved)
+			UnregisterSignal(target, COMSIG_MOVABLE_MOVED)
 
 		if (ismovable(newtarget))
 			RegisterSignal(newtarget, COMSIG_MOVABLE_MOVED, .proc/target_moved)
@@ -114,9 +114,11 @@
 	STOP_PROCESSING(SSfastprocess, src)
 
 /datum/extension/rotate_facing/proc/target_moved()
+	SIGNAL_HANDLER
 	start_tracking()
 
 /datum/extension/rotate_facing/proc/holder_moved()
+	SIGNAL_HANDLER
 	start_tracking()
 
 

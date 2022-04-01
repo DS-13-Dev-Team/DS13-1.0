@@ -37,6 +37,7 @@
 	to_chat(user, "<span class='notice'>Will now be throwing \the [to_throw].</span>")
 
 /datum/build_mode/throw_at/proc/ClearThrowable(var/feedback)
+	SIGNAL_HANDLER
 	if(!to_throw)
 		return
 

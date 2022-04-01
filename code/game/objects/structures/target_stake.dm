@@ -29,8 +29,8 @@
 		T.pixel_x = 0
 		T.pixel_y = 0
 		T.layer = ABOVE_OBJ_LAYER
-		RegisterSignal(T, COMSIG_MOVABLE_MOVED, .proc/move_to_turf)
-		T.RegisterSignal(src, COMSIG_MOVABLE_MOVED, .proc/move_to_turf)
+		RegisterSignal(T, COMSIG_MOVABLE_MOVED, /atom/movable/proc/move_to_turf)
+		T.RegisterSignal(src, COMSIG_MOVABLE_MOVED, /atom/movable/proc/move_to_turf)
 		T.stake = src
 		pinned_target = T
 	else

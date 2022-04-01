@@ -30,10 +30,11 @@
 	update_bounds()
 
 /obj/machinery/door/airlock/multi_tile/proc/update_bounds()
+	SIGNAL_HANDLER
 	if(dir in list(NORTH, SOUTH))
 		set_bounds(width * world.icon_size, world.icon_size)
 	else
-		set_bounds(world.icon_size,width * world.icon_size)
+		set_bounds(world.icon_size, width * world.icon_size)
 
 
 /obj/machinery/door/airlock/multi_tile/update_icon(state=0, override=0)

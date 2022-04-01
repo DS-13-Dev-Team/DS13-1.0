@@ -294,7 +294,7 @@ if (result == EXECUTION_CANCEL && can_interrupt){\
 			reward_biomass = 0
 
 	if (reward_heal)
-		user.heal_overall_damage(reward_heal)
+		INVOKE_ASYNC(user, /mob/living/proc/heal_overall_damage, reward_heal)
 		to_chat(user, SPAN_EXECUTION("Execution complete, you have recovered [reward_heal] health!"))
 		reward_heal = 0
 
@@ -432,6 +432,7 @@ if (result == EXECUTION_CANCEL && can_interrupt){\
 
 //Called if the attacker takes a damaging impact while performing an execution
 /datum/extension/execution/proc/user_damaged(var/mob/living/damaged_user, var/obj/item/organ/external/organ, var/brute, var/burn, var/damage_flags, var/used_weapon)
+	SIGNAL_HANDLER
 	hit_damage_taken += (brute + burn)
 	if (can_interrupt && (hit_damage_taken >= interrupt_damage_threshold))
 		to_chat(user, SPAN_WARNING("You took too much damage, execution interrupted! [hit_damage_taken] >= [interrupt_damage_threshold]"))

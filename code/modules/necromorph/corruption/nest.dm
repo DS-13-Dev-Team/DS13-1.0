@@ -157,6 +157,7 @@
 
 
 /obj/structure/corruption_node/nest/proc/start_growth()
+	SIGNAL_HANDLER
 	if (total_spawns() >= max_spawns)
 		return
 

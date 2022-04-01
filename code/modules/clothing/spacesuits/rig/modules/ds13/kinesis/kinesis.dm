@@ -432,6 +432,7 @@
 //The default entrypoint, a wrapper for release
 //If the item is not in control range, it will be thrown based upon its velocity
 /obj/item/rig_module/kinesis/proc/release_grip()
+	SIGNAL_HANDLER
 	//Precondition: Velocity must exist.
 	var/speed = (velocity != null) ? velocity.Magnitude() : 0
 	if (speed > 1 && release_type == RELEASE_DROP)
@@ -745,6 +746,7 @@
 
 //We collide with a thing
 /obj/item/rig_module/kinesis/proc/subject_collision(var/atom/movable/mover, var/atom/obstacle)
+	SIGNAL_HANDLER
 	if (QDELETED(subject) || !isturf(subject.loc))
 		return
 

@@ -7,6 +7,7 @@
 	sync_sight(host)
 
 /mob/dead/observer/virtual/mob/proc/sync_sight(mob/mob_host)
+	SIGNAL_HANDLER
 	sight = mob_host.sight
 	see_invisible = mob_host.see_invisible
 	see_in_dark = mob_host.see_in_dark

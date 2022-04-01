@@ -13,6 +13,7 @@
 	RegisterSignal(source, COMSIG_PARENT_QDELETING, .proc/RemoveAltAppearance)
 
 /decl/appearance_handler/proc/RemoveAltAppearance(var/source)
+	SIGNAL_HANDLER
 	var/datum/appearance_data/ad = appearance_sources[source]
 	if(ad)
 		UnregisterSignal(source, COMSIG_PARENT_QDELETING)

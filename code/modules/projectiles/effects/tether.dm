@@ -38,6 +38,7 @@
 	RegisterSignal(origin_atom, COMSIG_MOVABLE_MOVED, .proc/origin_moved)
 
 /obj/effect/projectile/tether/proc/origin_moved()
+	SIGNAL_HANDLER
 	var/vector2/newstart = origin_atom.get_toplevel_global_pixel_loc()
 	set_ends(newstart, end, TRUE, 3)
 	release_vector(newstart)
@@ -55,6 +56,7 @@
 	release_vector(newstart)
 
 /obj/effect/projectile/tether/proc/target_moved()
+	SIGNAL_HANDLER
 	var/vector2/newend = target_atom.get_toplevel_global_pixel_loc()
 	set_ends(start, newend, TRUE, 3)
 	release_vector(newend)

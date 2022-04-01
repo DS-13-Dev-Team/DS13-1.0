@@ -132,6 +132,7 @@
 	return TRUE
 
 /datum/visualnet/proc/remove_source(var/atom/source, var/update_visibility = TRUE, var/opacity_check = FALSE)
+	SIGNAL_HANDLER
 	if(!sources.Remove(source))
 		return FALSE
 
@@ -142,6 +143,7 @@
 	return TRUE
 
 /datum/visualnet/proc/source_moved(var/atom/movable/source, var/old_loc, var/new_loc)
+	SIGNAL_HANDLER
 	var/turf/old_turf = get_turf(old_loc)
 	var/turf/new_turf = get_turf(new_loc)
 

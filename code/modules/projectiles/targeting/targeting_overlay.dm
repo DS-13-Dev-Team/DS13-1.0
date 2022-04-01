@@ -63,13 +63,13 @@
 	owner = null
 	return ..()
 
-obj/aiming_overlay/proc/update_aiming_deferred()
+/obj/aiming_overlay/proc/update_aiming_deferred()
 	set waitfor = 0
 	sleep(0)
 	update_aiming()
 
 /obj/aiming_overlay/proc/update_aiming()
-
+	SIGNAL_HANDLER
 	if(!owner)
 		qdel(src)
 		return
@@ -171,6 +171,7 @@ obj/aiming_overlay/proc/update_aiming_deferred()
 		owner.hud_used?.gun_setting_icon.icon_state = "gun[active]"
 
 /obj/aiming_overlay/proc/cancel_aiming(var/no_message = 0)
+	SIGNAL_HANDLER
 	if(!aiming_with || !aiming_at)
 		return
 	if(istype(aiming_with, /obj/item/weapon/gun))
@@ -189,5 +190,6 @@ obj/aiming_overlay/proc/update_aiming_deferred()
 	STOP_PROCESSING(SSobj, src)
 
 /obj/aiming_overlay/proc/target_moved()
+	SIGNAL_HANDLER
 	update_aiming()
-	trigger(TARGET_CAN_MOVE)
+	INVOKE_ASYNC(src, .proc/trigger, TARGET_CAN_MOVE)

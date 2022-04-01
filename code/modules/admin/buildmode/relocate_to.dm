@@ -38,10 +38,11 @@
 	to_chat(user, "<span class='notice'>Will now be relocating \the [to_relocate].</span>")
 
 /datum/build_mode/relocate_to/proc/ClearRelocator(var/feedback)
+	SIGNAL_HANDLER
 	if(!to_relocate)
 		return
 
-	RegisterSignal(to_relocate, COMSIG_PARENT_QDELETING)
+	UnregisterSignal(to_relocate, COMSIG_PARENT_QDELETING)
 	to_relocate = null
 	if(feedback)
 		Warn("The selected relocation object was deleted.")

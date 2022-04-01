@@ -69,6 +69,7 @@
 		holder.healthbar = null
 
 /obj/item/rig_module/healthbar/proc/update()
+	SIGNAL_HANDLER
 	if (QDELETED(user) || QDELETED(holder) || holder.loc != user)
 		//Something broked
 		unregister_user()
@@ -96,10 +97,12 @@
 
 
 /obj/item/rig_module/healthbar/proc/death()
+	SIGNAL_HANDLER
 	playsound(src, 'sound/effects/rig/modules/flatline.ogg', VOLUME_MAX, 0, 4)
 	update()
 
 /obj/item/rig_module/healthbar/proc/heart_stop()
+	SIGNAL_HANDLER
 	playsound(src, 'sound/effects/caution.ogg', VOLUME_MAX, 0, 4)
 	update()
 

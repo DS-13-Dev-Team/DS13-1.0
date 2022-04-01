@@ -353,6 +353,7 @@
 	RegisterSignal(owner, COMSIG_MOVABLE_MOVED, .proc/follow)
 
 /atom/movable/z_observer/proc/follow()
+	SIGNAL_HANDLER
 
 /atom/movable/z_observer/z_up/follow()
 	forceMove(get_step(owner, UP))

@@ -65,6 +65,7 @@
 	RegisterSignal(value_to_set, COMSIG_PARENT_QDELETING, .proc/ClearValue)
 
 /datum/build_mode/edit/proc/ClearValue(var/feedback)
+	SIGNAL_HANDLER
 	if(!istype(value_to_set, /datum))
 		return
 

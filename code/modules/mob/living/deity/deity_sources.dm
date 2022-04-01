@@ -14,6 +14,7 @@
 	RegisterSignal(L, COMSIG_LIVING_DEATH, .proc/update_followers)
 
 /mob/living/deity/proc/dead_follower(var/mob/living/L)
+	SIGNAL_HANDLER
 	UnregisterSignal(L, list(COMSIG_PARENT_QDELETING, COMSIG_LIVING_DEATH))
 
 /mob/living/deity/proc/remove_follower_spells(var/datum/mind/M)

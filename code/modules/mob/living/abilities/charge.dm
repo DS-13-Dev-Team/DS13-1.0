@@ -274,7 +274,7 @@
 
 
 /datum/extension/charge/proc/bump(var/atom/movable/user, var/atom/obstacle, var/crossed = FALSE)
-
+	SIGNAL_HANDLER
 	if (obstacle in atoms_hit)
 		return //Don't hit the same atom more than once
 
@@ -338,11 +338,8 @@
 
 
 /datum/extension/charge/proc/moved(var/atom/mover, var/oldloc, var/newloc)
+	SIGNAL_HANDLER
 	.=TRUE
-
-
-
-
 
 	//First of all, make us fall over if we lost a limb
 	if (!check_limbs(TRUE))

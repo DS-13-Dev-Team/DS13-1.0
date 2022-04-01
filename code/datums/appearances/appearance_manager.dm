@@ -34,6 +34,7 @@ var/decl/appearance_manager/appearance_manager = new()
 		appearances_ -= viewer
 
 /decl/appearance_manager/proc/remove_appearances(var/mob/viewer)
+	SIGNAL_HANDLER
 	var/PriorityQueue/pq = appearances_[viewer]
 	for(var/entry in pq.L)
 		var/datum/appearance_data/ad = entry
@@ -55,6 +56,7 @@ var/decl/appearance_manager/appearance_manager = new()
 		viewer.client.images -= ad.images
 
 /decl/appearance_manager/proc/apply_appearance_images(var/mob/viewer)
+	SIGNAL_HANDLER
 	if(!viewer.client)
 		return
 	var/PriorityQueue/pq = appearances_[viewer]

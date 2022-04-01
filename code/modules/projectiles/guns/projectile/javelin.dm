@@ -222,6 +222,7 @@
 	shock_count++
 
 /obj/item/weapon/material/shard/shrapnel/javelin/proc/on_target_collision(mob/user, atom/obstacle)
+	SIGNAL_HANDLER
 	var/list/implants = user.get_visible_implants(0, TRUE)
 	if(src in implants)
 		var/mount_target = get_mount_target_at_direction(user, get_dir(obstacle, user))

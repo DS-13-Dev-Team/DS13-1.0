@@ -77,6 +77,7 @@
 	return TRUE
 
 /obj/item/weapon/card/id/syndicate/proc/unset_registered_user(var/mob/user)
+	SIGNAL_HANDLER
 	if(!registered_user || (user && user != registered_user))
 		return
 	UnregisterSignal(registered_user, COMSIG_PARENT_QDELETING)

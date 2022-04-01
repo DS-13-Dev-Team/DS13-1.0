@@ -162,6 +162,7 @@
 
 
 /atom/movable/screen/meter/proc/update(force_update = FALSE)
+	SIGNAL_HANDLER
 	var/list/data = get_data()
 
 
@@ -482,6 +483,6 @@
 	var/client/C = data["screen"]
 	if (C)
 		C.screen -= meter
-	
+
 	qdel(meter)
 	return TRUE

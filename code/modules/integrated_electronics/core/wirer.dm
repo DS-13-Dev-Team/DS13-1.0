@@ -88,6 +88,7 @@
 			mode = WIRING
 
 /obj/item/device/integrated_electronics/wirer/proc/unselect_io(datum/integrated_io/io)
+	SIGNAL_HANDLER
 	if(selected_io != io)
 		return
 	UnregisterSignal(selected_io, COMSIG_PARENT_QDELETING)

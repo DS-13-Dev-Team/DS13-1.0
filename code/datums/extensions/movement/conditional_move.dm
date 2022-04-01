@@ -25,6 +25,7 @@
 	RegisterSignal(holder, COMSIG_MOVABLE_MOVED, .proc/handle_move)
 
 /datum/extension/conditionalmove/proc/handle_move(var/atom/movable/am, var/atom/old_loc, var/atom/new_loc)
+	SIGNAL_HANDLER
 	if (check_move(am, old_loc, new_loc))
 		conditional_move(am, old_loc, new_loc)
 

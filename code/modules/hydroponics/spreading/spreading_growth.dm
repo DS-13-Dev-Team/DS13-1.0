@@ -25,6 +25,7 @@
 
 //If a watched tile changes, lets wake up. This will wipe watched tiles, and start checks anew
 /obj/effect/vine/proc/watched_tile_updated(var/turf/T)
+	SIGNAL_HANDLER
 	wake_up()
 
 

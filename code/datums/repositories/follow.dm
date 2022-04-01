@@ -34,6 +34,7 @@
 	RegisterSignal(AM, list(COMSIG_PARENT_QDELETING, COMSIG_PARENT_QDELETING), .proc/remove_subject)
 
 /repository/follow/proc/remove_subject(var/atom/movable/AM)
+	SIGNAL_HANDLER
 	cache = null
 
 	var/follow_holder = followed_objects_assoc[AM]
