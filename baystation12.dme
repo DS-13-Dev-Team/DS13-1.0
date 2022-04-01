@@ -24,7 +24,6 @@
 #include "code\__defines\_game.dm"
 #include "code\__defines\_logging.dm"
 #include "code\__defines\_planes+layers.dm"
-#include "code\__defines\_profile.dm"
 #include "code\__defines\_protect.dm"
 #include "code\__defines\_tick.dm"
 #include "code\__defines\admin.dm"
