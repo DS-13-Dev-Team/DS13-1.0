@@ -141,7 +141,7 @@ GLOBAL_DATUM_INIT(sound_player, /decl/sound_player, new)
 	listeners = list()
 	listener_status = list()
 
-	GLOB.destroyed_event.register(source, src, /datum/proc/qdel_self)
+	RegisterSignal(source, COMSIG_PARENT_QDELETING, .proc/qdel_self)
 
 	if(ismovable(source))
 		proxy_listener = new(source, /datum/sound_token/proc/PrivAddListener, /datum/sound_token/proc/PrivLocateListeners, range, proc_owner = src)
@@ -182,7 +182,7 @@ datum/sound_token/proc/Mute()
 	listeners = null
 	listener_status = null
 
-	GLOB.destroyed_event.unregister(source, src, /datum/proc/qdel_self)
+	UnregisterSignal(source, COMSIG_PARENT_QDELETING)
 	QDEL_NULL(proxy_listener)
 	source = null
 
@@ -226,20 +226,21 @@ datum/sound_token/proc/Mute()
 
 	listeners += listener
 
-	GLOB.moved_event.register(listener, src, /datum/sound_token/proc/PrivUpdateListenerLoc)
-	GLOB.destroyed_event.register(listener, src, /datum/sound_token/proc/PrivRemoveListener)
+	RegisterSignal(listener, COMSIG_MOVABLE_MOVED, .proc/PrivUpdateListenerLoc)
+	RegisterSignal(listener, COMSIG_PARENT_QDELETING, .proc/PrivRemoveListener)
 
 	PrivUpdateListenerLoc(listener, FALSE)
 
 /datum/sound_token/proc/PrivRemoveListener(var/atom/listener, var/sound/null_sound)
+	SIGNAL_HANDLER
 	if (!QDELETED(listener))
 		null_sound = null_sound || new(channel = sound.channel)
 		SEND_SOUND(listener, null_sound)
-		GLOB.moved_event.unregister(listener, src, /datum/sound_token/proc/PrivUpdateListenerLoc)
-		GLOB.destroyed_event.unregister(listener, src, /datum/sound_token/proc/PrivRemoveListener)
+		UnregisterSignal(listener, list(COMSIG_MOVABLE_MOVED, COMSIG_PARENT_QDELETING))
 	listeners -= listener
 
 /datum/sound_token/proc/PrivUpdateListenerLoc(var/atom/listener, var/update_sound = TRUE)
+	SIGNAL_HANDLER
 	if (QDELETED(source))
 		return
 

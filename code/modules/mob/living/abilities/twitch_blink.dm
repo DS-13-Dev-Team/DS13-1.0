@@ -37,7 +37,7 @@
 /datum/extension/twitch/New(var/mob/living/carbon/human/_user)
 	..()
 	user = _user
-	GLOB.moved_event.register(user, src, /datum/extension/twitch/proc/moved)
+	RegisterSignal(user, COMSIG_MOVABLE_MOVED, .proc/moved)
 	set_next_idle_twitch()
 
 
@@ -66,6 +66,7 @@
 
 
 /datum/extension/twitch/proc/moved(var/atom/mover, var/oldloc, var/newloc)
+	SIGNAL_HANDLER
 	//Sometimes blink around while walking
 	if(prob(movement_displace_chance))
 		displace(FALSE)

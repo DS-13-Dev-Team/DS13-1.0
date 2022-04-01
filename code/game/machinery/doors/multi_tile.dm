@@ -23,17 +23,18 @@
 /obj/machinery/door/airlock/multi_tile/Initialize()
 	..()
 	update_bounds()
-	GLOB.dir_set_event.register(src, src, /obj/machinery/door/airlock/multi_tile/proc/update_bounds)
+	RegisterSignal(src, COMSIG_ATOM_DIR_CHANGE, .proc/update_bounds)
 
 /obj/machinery/door/airlock/multi_tile/Move(NewLoc, Dir = 0, step_x = 0, step_y = 0, var/glide_size_override = 0)
 	. = ..()
 	update_bounds()
 
 /obj/machinery/door/airlock/multi_tile/proc/update_bounds()
+	SIGNAL_HANDLER
 	if(dir in list(NORTH, SOUTH))
 		set_bounds(width * world.icon_size, world.icon_size)
 	else
-		set_bounds(world.icon_size,width * world.icon_size)
+		set_bounds(world.icon_size, width * world.icon_size)
 
 
 /obj/machinery/door/airlock/multi_tile/update_icon(state=0, override=0)

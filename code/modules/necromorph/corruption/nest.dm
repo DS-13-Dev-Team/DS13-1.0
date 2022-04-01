@@ -157,6 +157,7 @@
 
 
 /obj/structure/corruption_node/nest/proc/start_growth()
+	SIGNAL_HANDLER
 	if (total_spawns() >= max_spawns)
 		return
 
@@ -196,8 +197,7 @@
 	for (var/a in spawned_creatures)
 		var/mob/living/L = a
 		if (QDELETED(L) || L.stat == DEAD)
-			GLOB.death_event.unregister(L, src, /obj/structure/corruption_node/nest/proc/start_growth)
-			GLOB.destroyed_event.unregister(L, src, /obj/structure/corruption_node/nest/proc/start_growth)
+			UnregisterSignal(L, list(COMSIG_PARENT_QDELETING, COMSIG_LIVING_DEATH))
 			spawned_creatures -= L
 			continue
 
@@ -224,8 +224,7 @@
 		return null
 	spawns_ready--
 	var/mob/living/L = new spawner_species.mob_type(loc)
-	GLOB.death_event.register(L, src, /obj/structure/corruption_node/nest/proc/start_growth)
-	GLOB.destroyed_event.register(L, src, /obj/structure/corruption_node/nest/proc/start_growth)
+	RegisterSignal(L, list(COMSIG_PARENT_QDELETING, COMSIG_LIVING_DEATH), .proc/start_growth)
 	L.biomass = 0	//This won't give anything when slain
 	return L
 

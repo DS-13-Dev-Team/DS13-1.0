@@ -33,9 +33,7 @@
 /atom/movable/screen/health_doll/Initialize()
 	.=..()
 	if (istype(H))
-		GLOB.updatehealth_event.register(H, src, /atom/movable/screen/health_doll/proc/try_update)
-		GLOB.death_event.register(H, src, /atom/movable/screen/health_doll/proc/try_update)
-
+		RegisterSignal(H, list(COMSIG_MOB_HEALTH_CHANGED, COMSIG_LIVING_DEATH), .proc/update)
 
 		var/vector2/icon_size = H.get_icon_size()
 		icon_size.x += 4 //Padding from screen edge
@@ -50,22 +48,8 @@
 /atom/movable/screen/health_doll/proc/get_offset()
 	return 0
 
-
-/atom/movable/screen/health_doll/proc/try_update()
-	//We'll have a minimum time between updates to save on performance
-	if (updating)
-		return
-	updating = TRUE
-	var/time_delta = world.time - last_updated
-
-	//If its not been long enough, we schedule the next update
-	if (time_delta < HEALTH_DOLL_UPDATE_DELAY)
-		addtimer(CALLBACK(src, /atom/movable/screen/health_doll/proc/update), HEALTH_DOLL_UPDATE_DELAY - time_delta)
-	else
-		update()
-
-
 /atom/movable/screen/health_doll/proc/update()
+	SIGNAL_HANDLER
 	return
 
 /atom/movable/screen/health_doll/human/update()

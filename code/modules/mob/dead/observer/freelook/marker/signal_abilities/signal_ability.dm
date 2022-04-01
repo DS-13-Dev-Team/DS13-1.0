@@ -304,7 +304,7 @@
 	.=is_valid_user(user)
 
 	if (!.)
-		return
+		return "You can't cast this spell!"
 
 	var/datum/extension/psi_energy/PE = user.get_energy_extension()
 	if (energy_cost)

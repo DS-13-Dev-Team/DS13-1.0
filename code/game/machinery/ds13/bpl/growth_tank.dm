@@ -179,7 +179,9 @@
 	if (icon_updating)
 		return
 	icon_updating = TRUE
-	sleep(rand(10,30))
+	addtimer(CALLBACK(src, .proc/update_icon_async), rand(10,30))
+
+/obj/machinery/growth_tank/proc/update_icon_async()
 	overlays.Cut()
 	underlays.Cut()
 

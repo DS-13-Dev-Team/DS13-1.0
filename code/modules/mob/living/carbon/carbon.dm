@@ -130,10 +130,7 @@
 	//Tell the old and new held items that they've been swapped
 
 	if (prev_held != new_held)
-		if (istype(prev_held))
-			GLOB.swapped_from_event.raise_event(prev_held, src)
-		if (istype(new_held))
-			GLOB.swapped_to_event.raise_event(new_held, src)
+		SEND_SIGNAL(src, COMSIG_CARBON_SWAP_HANDS, prev_held, new_held)
 
 	return TRUE
 

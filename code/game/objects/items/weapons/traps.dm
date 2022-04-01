@@ -161,7 +161,7 @@ Freeing yourself is much harder than freeing someone else. Calling for help is a
 	can_buckle = initial(can_buckle)
 	update_icon()
 	STOP_PROCESSING(SSobj, src)
-	GLOB.updatehealth_event.unregister(buckled_mob, src, /obj/item/weapon/beartrap/proc/check_grip)
+	UnregisterSignal(buckled_mob, COMSIG_MOB_HEALTH_CHANGED)
 
 //Attempting to resist out of a beartrap will not work, and you'll get nothing but pain for trying
 /obj/item/weapon/beartrap/resist_buckle(var/mob/user)
@@ -267,7 +267,7 @@ Freeing yourself is much harder than freeing someone else. Calling for help is a
 	set_dir(L.dir)
 	can_buckle = 1
 	buckle_mob(L)
-	GLOB.updatehealth_event.register(L, src, /obj/item/weapon/beartrap/proc/check_grip)
+	RegisterSignal(L, COMSIG_MOB_HEALTH_CHANGED, .proc/check_grip)
 	if (check_grip())
 		to_chat(L, SPAN_DANGER("The steel jaws of \the [src] bite into you, trapping you in place!"))
 
@@ -280,6 +280,7 @@ Freeing yourself is much harder than freeing someone else. Calling for help is a
 
 //Checks if we can still hold onto this mob
 /obj/item/weapon/beartrap/proc/check_grip()
+	SIGNAL_HANDLER
 	if (!ishuman(buckled_mob))
 		return TRUE
 

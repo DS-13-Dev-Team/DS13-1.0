@@ -1,4 +1,5 @@
 /mob/Logout()
+	SEND_SIGNAL(src, COMSIG_MOB_LOGOUT, my_client)
 
 	//Cache our last location on the player datum, incase this mob is deleted before we log in again
 	if (ckey)

@@ -74,7 +74,7 @@
 
 	health = max_health - getBrainLoss()
 
-	GLOB.updatehealth_event.raise_event(src)
+	SEND_SIGNAL(src, COMSIG_MOB_HEALTH_CHANGED)
 
 	handle_death_check()	//This is where people die
 

@@ -27,7 +27,7 @@
 /datum/extension/scorched_earth/Destroy()
 	if (earth)
 		earth.incorruptible = FALSE
-		GLOB.clarity_set_event.raise_event(earth)
+		SEND_SIGNAL(earth, COMSIG_TURF_CLARITY_SET)
 	.=..()
 
 

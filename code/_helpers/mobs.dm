@@ -345,6 +345,7 @@ var/datum/callback/proc_to_call, var/proc_interval = 10)
 	if((src in GLOB.living_mob_list) || (src in GLOB.dead_mob_list))
 		return FALSE
 	GLOB.dead_mob_list += src
+	SEND_SIGNAL(src, COMSIG_LIVING_DEATH)
 	return TRUE
 
 // Returns true if the mob was removed form the dead list

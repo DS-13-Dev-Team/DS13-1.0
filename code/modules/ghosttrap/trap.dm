@@ -51,7 +51,7 @@ var/list/ghost_traps
 /datum/ghosttrap/proc/request_player(var/mob/target, var/request_string, var/request_timeout)
 	if(request_timeout)
 		request_timeouts[target] = world.time + request_timeout
-		GLOB.destroyed_event.register(target, src, /datum/ghosttrap/proc/unregister_target)
+		RegisterSignal(target, COMSIG_PARENT_QDELETING, .proc/unregister_target)
 	else
 		unregister_target(target)
 
@@ -64,8 +64,9 @@ var/list/ghost_traps
 			to_chat(O, "[request_string] <a href='?src=\ref[src];candidate=\ref[O];target=\ref[target]'>(Occupy)</a> ([ghost_follow_link(target, O)])")
 
 /datum/ghosttrap/proc/unregister_target(var/target)
+	SIGNAL_HANDLER
 	request_timeouts -= target
-	GLOB.destroyed_event.unregister(target, src, /datum/ghosttrap/proc/unregister_target)
+	UnregisterSignal(target, COMSIG_PARENT_QDELETING)
 
 // Handles a response to request_player().
 /datum/ghosttrap/Topic(href, href_list)

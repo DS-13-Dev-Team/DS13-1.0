@@ -5,7 +5,7 @@
 
 	For conserving memory the account is only made when necessary
 */
-#define RIG_ACCOUNT_CREATE	if (!account)create_rig_account()
+#define RIG_ACCOUNT_CREATE	if (!account) account = create_account((wearer ? wearer.name : "Generic"))
 
 /obj/item/weapon/rig
 	var/datum/money_account/account
@@ -17,16 +17,15 @@
 
 /obj/item/weapon/rig/proc/create_rig_account()
 
-	account = create_account((wearer ? wearer.name : "Generic"))
 
-	GLOB.item_equipped_event.register(src, src, /obj/item/weapon/rig/proc/on_equip)
-	GLOB.item_unequipped_event.register(src, src, /obj/item/weapon/rig/proc/on_unequip)
 
-/obj/item/weapon/rig/proc/on_equip(var/mob/equipper, var/obj/item/item)
-	credits_changed()
+/obj/item/weapon/rig/equipped(mob/living/carbon/human/user, slot)
+	.=..()
+	user.credits_changed()
 
-/obj/item/weapon/rig/proc/on_unequip(var/mob/equipper, var/obj/item/item)
-	equipper.credits_changed()
+/obj/item/weapon/rig/dropped(mob/user)
+	.=..()
+	user.credits_changed()
 
 /obj/item/weapon/rig/proc/get_account_balance()
 	//We don't need to create the account for this if it doesn't exist yet

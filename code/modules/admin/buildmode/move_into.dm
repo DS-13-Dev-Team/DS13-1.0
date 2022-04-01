@@ -33,14 +33,15 @@
 	ClearDestination()
 
 	destination = A
-	GLOB.destroyed_event.register(destination, src, /datum/build_mode/move_into/proc/ClearDestination)
+	RegisterSignal(destination, COMSIG_PARENT_QDELETING, .proc/ClearDestination)
 	to_chat(user, "<span class='notice'>Will now move targets into \the [destination].</span>")
 
 /datum/build_mode/move_into/proc/ClearDestination(var/feedback)
+	SIGNAL_HANDLER
 	if(!destination)
 		return
 
-	GLOB.destroyed_event.unregister(destination, src, /datum/build_mode/move_into/proc/ClearDestination)
+	UnregisterSignal(destination, COMSIG_PARENT_QDELETING)
 	destination = null
 	if(feedback)
 		Warn("The selected destination was deleted.")

@@ -20,12 +20,11 @@
 
 /atom/movable/screen/meter/health/Destroy()
 	L = null
-	GLOB.updatehealth_event.unregister(L, src, .proc/update)
 	.=..()
 
 /atom/movable/screen/meter/health/Initialize()
 	. = ..()
-	GLOB.updatehealth_event.register(L, src, .proc/update)
+	RegisterSignal(L, COMSIG_MOB_HEALTH_CHANGED, .proc/update)
 	set_health()
 
 

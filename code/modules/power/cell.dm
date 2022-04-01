@@ -186,7 +186,7 @@
 /obj/item/weapon/cell/crap
 	name = "old power cell"
 	desc = "A cheap old power cell. It's probably been in use for quite some time now."
-	origin_tech = list(TECH_POWER = 0)
+	origin_tech = list(TECH_POWER = 1)
 	maxcharge = 100
 	matter = list(MATERIAL_STEEL = 700, MATERIAL_SILVER = 40)
 
@@ -196,7 +196,7 @@
 /obj/item/weapon/cell/standard
 	name = "standard power cell"
 	desc = "A standard and relatively cheap power cell, commonly used."
-	origin_tech = list(TECH_POWER = 0)
+	origin_tech = list(TECH_POWER = 1)
 	maxcharge = 250
 	matter = list(MATERIAL_STEEL = 700, MATERIAL_SILVER = 40)
 

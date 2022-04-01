@@ -215,7 +215,14 @@ var/const/enterloopsanity = 100
 					A.HasProximity(thing, 1)
 					if ((thing && A) && (thing.movable_flags & MOVABLE_FLAG_PROXMOVE))
 						thing.HasProximity(A, 1)
-	return
+
+	if(A.density)
+		if(clear)	//If clear was previously true, null it
+			clear = null
+
+		//If this turf was not already dense, maybe it is now. notify everyone of that possibility
+		if(!density && A.density)
+			content_density_set(A.density)
 
 /turf/Exited(atom/atom as mob|obj)
 	if (atom.can_block_movement)
@@ -223,6 +230,14 @@ var/const/enterloopsanity = 100
 		LAZYREMOVE(movement_blocking_atoms,atom)
 
 	.=..()
+
+	if(atom.density)
+		if(!clear)	//If clear was previously true, null it
+			clear = null
+
+		//If this turf was not naturally dense, maybe this object was the only thing blocking it, lets fire off an event
+		if(!density && atom.density)
+			content_density_set(atom.density)
 
 
 /turf/proc/adjacent_fire_act(turf/simulated/floor/source, temperature, volume)

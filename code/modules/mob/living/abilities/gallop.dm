@@ -45,9 +45,9 @@
 		ongoing_timer = addtimer(CALLBACK(src, /datum/extension/gallop/proc/stop), duration, TIMER_STOPPABLE)
 
 		user.reset_move_cooldown()//Allow nextmove immediately
-		GLOB.damage_hit_event.register(user, src, /datum/extension/gallop/proc/user_hit)
-		GLOB.bump_event.register(user, src, /datum/extension/gallop/proc/user_bumped)
-		GLOB.moved_event.register(user, src, /datum/extension/gallop/proc/user_moved)
+		RegisterSignal(user, COMSIG_MOB_DAMAGE_HIT, .proc/user_hit)
+		RegisterSignal(user, COMSIG_MOVABLE_BUMP, .proc/user_bumped)
+		RegisterSignal(user, COMSIG_MOVABLE_MOVED, .proc/user_moved)
 
 /datum/extension/gallop/Destroy()
 	if (!stopped_at)
@@ -61,9 +61,7 @@
 		deltimer(ongoing_timer)
 		stopped_at = world.time
 		ongoing_timer = addtimer(CALLBACK(src, /datum/extension/gallop/proc/finish_cooldown), cooldown, TIMER_STOPPABLE)
-		GLOB.damage_hit_event.unregister(user, src, /datum/extension/gallop/proc/user_hit)
-		GLOB.bump_event.unregister(user, src, /datum/extension/gallop/proc/user_bumped)
-		GLOB.moved_event.unregister(user, src, /datum/extension/gallop/proc/user_moved)
+		UnregisterSignal(user, list(COMSIG_MOVABLE_MOVED, COMSIG_MOVABLE_BUMP, COMSIG_MOB_DAMAGE_HIT))
 		user.visible_message(SPAN_NOTICE("[user] slows down"))
 
 /datum/extension/gallop/proc/finish_cooldown()
@@ -77,17 +75,20 @@
 
 
 /datum/extension/gallop/proc/user_hit(var/obj/item/organ/external/organ, brute, burn, damage_flags, used_weapon)
+	SIGNAL_HANDLER
 	if (!crashed)
 		user.visible_message(SPAN_DANGER("[user] crumples under the impact [istype(used_weapon, /obj) ? "of":"from"] [used_weapon]"))
 		stop_crash(used_weapon)
 
 /datum/extension/gallop/proc/user_bumped(var/mob/user, var/atom/obstacle)
+	SIGNAL_HANDLER
 	if (!crashed)
 		user.visible_message(SPAN_DANGER("[user] crashes into [obstacle]"))
 		stop_crash(obstacle)
 
 //Play extra footstep sounds as the leaper clatters along the floor
 /datum/extension/gallop/proc/user_moved(var/atom/obstacle)
+	SIGNAL_HANDLER
 	shake_camera(user, 3,0.5)
 	user.play_species_audio(user, SOUND_FOOTSTEP, VOLUME_QUIET)
 

@@ -52,14 +52,14 @@
 		user.visible_message("<span class='notice'>\The [user] holsters \the [holstered].</span>", "<span class='notice'>You holster \the [holstered].</span>")
 		atom_holder.SetName("occupied [initial(atom_holder.name)]")
 		atom_holder.update_icon()
-		GLOB.moved_event.register(holstered, src, .proc/check_holster)
-		GLOB.destroyed_event.register(holstered, src, .proc/clear_holster)
+		RegisterSignal(holstered, COMSIG_MOVABLE_MOVED, .proc/check_holster)
+		RegisterSignal(holstered, COMSIG_PARENT_QDELETING, .proc/clear_holster)
 		return 1
 	return 0
 
 /datum/extension/holster/proc/clear_holster()
-	GLOB.moved_event.unregister(holstered, src, .proc/check_holster)
-	GLOB.destroyed_event.unregister(holstered, src, .proc/clear_holster)
+	SIGNAL_HANDLER
+	UnregisterSignal(holstered, list(COMSIG_MOVABLE_MOVED, COMSIG_PARENT_QDELETING))
 	holstered = null
 	atom_holder.SetName(initial(atom_holder.name))
 
@@ -99,6 +99,7 @@
 		to_chat(user, "It is empty.")
 
 /datum/extension/holster/proc/check_holster()
+	SIGNAL_HANDLER
 	if(holstered.loc != storage)
 		clear_holster()
 

@@ -63,21 +63,14 @@
 
 
 /obj/structure/corruption_node/harvester/update_icon()
-	set waitfor = FALSE
-
 	.=..()
-
 	underlays.Cut()
 	overlays.Cut()
-
-	if (deployed)
+	if(deployed)
 		overlays += image(icon, src, "beak")
 		underlays += image(icon, src, "tentacle_1")
-		sleep(1)
 		underlays += image(icon, src, "tentacle_2")
-		sleep(1)
 		underlays += image(icon, src, "tentacle_3")
-		sleep(1)
 		underlays += image(icon, src, "tentacle_4")
 	else
 		overlays += image(icon, src, "beak_closed")
@@ -130,8 +123,8 @@
 
 	//Ok now lets do individual stuff for them
 	for (var/atom/A as anything in all_sources)
-		GLOB.moved_event.register(A, src, /obj/structure/corruption_node/harvester/proc/source_moved)
-		GLOB.destroyed_event.register(A, src, /obj/structure/corruption_node/harvester/proc/source_deleted)
+		RegisterSignal(A, COMSIG_MOVABLE_MOVED, .proc/source_moved)
+		RegisterSignal(A, COMSIG_PARENT_QDELETING, .proc/source_deleted)
 		set_extension(A, /datum/extension/being_harvested)
 
 	//Alright lets create the biomass sources on the marker
@@ -159,8 +152,7 @@
 /obj/structure/corruption_node/harvester/proc/unregister_sources()
 	for (var/atom/A as anything in all_sources)
 		if (!QDELETED(A))
-			GLOB.moved_event.unregister(A, src, /obj/structure/corruption_node/harvester/proc/source_moved)
-			GLOB.destroyed_event.unregister(A, src, /obj/structure/corruption_node/harvester/proc/source_deleted)
+			UnregisterSignal(A, list(COMSIG_MOVABLE_MOVED, COMSIG_PARENT_QDELETING))
 			A.filters.Remove(all_sources[A])	//Remove the visual filter we created earlier by using its stored reference
 			remove_extension(A, /datum/extension/being_harvested)
 
@@ -174,12 +166,14 @@
 
 //When a source moves, we update, but with a delay for batching
 /obj/structure/corruption_node/harvester/proc/source_moved()
+	SIGNAL_HANDLER
 	if (refresh_timer)
 		return
 	refresh_timer = addtimer(CALLBACK(src, /obj/structure/corruption_node/harvester/proc/refresh_sources), 3 SECONDS, TIMER_STOPPABLE)
 
 //If a source is deleted we refresh immediately
 /obj/structure/corruption_node/harvester/proc/source_deleted()
+	SIGNAL_HANDLER
 	refresh_sources()
 
 

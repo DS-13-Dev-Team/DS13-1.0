@@ -260,7 +260,7 @@
 
 		var/delmob = 0
 		switch(tgui_alert(usr, "Delete old mob?","Message",list("Yes","No","Cancel")))
-			if("Cancel" || null)
+			if("Cancel", null)
 				return
 			if("Yes")
 				delmob = 1
@@ -828,7 +828,7 @@
 						to_chat(M, "<span class='warning'>Jobban can be lifted only upon request.</span>")
 						href_list["jobban2"] = 1 // lets it fall through and refresh
 						return 1
-				if("Cancel" || null)
+				if("Cancel", null)
 					return
 
 		//Unbanning joblist
@@ -842,18 +842,17 @@
 			for(var/job in joblist)
 				var/reason = jobban_isbanned(M, job)
 				if(!reason) continue //skip if it isn't jobbanned anyway
-				switch(tgui_alert(usr, "Job: '[job]' Reason: '[reason]' Un-jobban?", "Please Confirm", list("Yes","No")))
-					if("Yes")
-						ban_unban_log_save("[key_name(usr)] unjobbanned [key_name(M)] from [job]")
-						log_admin("[key_name(usr)] unbanned [key_name(M)] from [job]")
-						DB_ban_unban(M.ckey, BANTYPE_JOB_PERMA, job)
-						feedback_inc("ban_job_unban",1)
-						feedback_add_details("ban_job_unban","- [job]")
-						jobban_unban(M, job)
-						if(!msg)	msg = job
-						else		msg += ", [job]"
-					else
-						continue
+				if(tgui_alert(usr, "Job: '[job]' Reason: '[reason]' Un-jobban?", "Please Confirm", list("Yes","No")) == "Yes")
+					ban_unban_log_save("[key_name(usr)] unjobbanned [key_name(M)] from [job]")
+					log_admin("[key_name(usr)] unbanned [key_name(M)] from [job]")
+					DB_ban_unban(M.ckey, BANTYPE_JOB_PERMA, job)
+					feedback_inc("ban_job_unban",1)
+					feedback_add_details("ban_job_unban","- [job]")
+					jobban_unban(M, job)
+					if(!msg)	msg = job
+					else		msg += ", [job]"
+				else
+					continue
 			if(msg)
 				message_admins("[key_name_admin(usr)] unbanned [key_name_admin(M)] from [msg]", 1)
 				to_chat(M, "<span class='danger'>You have been un-jobbanned by [usr.client.ckey] from [msg].</span>")
@@ -2030,21 +2029,20 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 
 		if(M.client && M.client.holder) return // admins don't get staffnotify'd about
 
-		switch(tgui_alert(usr, "Really set staff warn?", "Confirmation", list("Yes","No")))
-			if("Yes")
-				var/reason = sanitize(input(usr,"Staff warn message","Staff Warn","Problem Player") as text|null)
-				if (!reason || reason == "")
-					return
-				notes_add(M.ckey,"\[AUTO\] Staff warn enabled: [reason]",usr)
-				reason += "\n-- Set by [usr.client.ckey]([usr.client.holder.rank])"
-				DB_staffwarn_record(M.ckey, reason)
-				if(M.client)
-					M.client.staffwarn = reason
-				feedback_inc("staff_warn",1)
-				log_and_message_admins("has enabled staffwarn on [M.ckey].\nMessage: [reason]\n")
-				show_player_panel(M)
-			if("No")
+		if(tgui_alert(usr, "Really set staff warn?", "Confirmation", list("Yes","No")) == "Yes")
+			var/reason = sanitize(input(usr,"Staff warn message","Staff Warn","Problem Player") as text|null)
+			if (!reason || reason == "")
 				return
+			notes_add(M.ckey,"\[AUTO\] Staff warn enabled: [reason]",usr)
+			reason += "\n-- Set by [usr.client.ckey]([usr.client.holder.rank])"
+			DB_staffwarn_record(M.ckey, reason)
+			if(M.client)
+				M.client.staffwarn = reason
+			feedback_inc("staff_warn",1)
+			log_and_message_admins("has enabled staffwarn on [M.ckey].\nMessage: [reason]\n")
+			show_player_panel(M)
+		else
+			return
 	if(href_list["removestaffwarn"])
 		var/mob/M = locate(href_list["removestaffwarn"])
 		if(!ismob(M)) return

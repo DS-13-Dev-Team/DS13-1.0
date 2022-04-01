@@ -179,9 +179,16 @@
 /atom/proc/emp_act(var/severity)
 	return
 
-/atom/proc/set_density(var/new_density)
+/atom/proc/set_density(new_density)
 	if(density != new_density)
+		var/old_density = density
 		density = !!new_density
+		SEND_SIGNAL(src, COMSIG_ATOM_DENSITY_CHANGE, old_density, new_density)
+
+		//We may have just changed our turf's clear status, set it to maybe
+		if(isturf(loc))
+			var/turf/T = loc
+			T.content_density_set(density)
 
 /atom/proc/bullet_act(obj/item/projectile/P, def_zone)
 	P.on_hit(src, 0, def_zone)
@@ -322,6 +329,7 @@ its easier to just keep the beam vertical.
 	if(new_dir == old_dir)
 		return FALSE
 	dir = new_dir
+	SEND_SIGNAL(src, COMSIG_ATOM_DIR_CHANGE, old_dir, new_dir)
 	return TRUE
 
 /atom/proc/set_icon_state(var/new_icon_state)
@@ -670,6 +678,7 @@ its easier to just keep the beam vertical.
 //Tell this atom that we want output to be removed from it.
 //Return false if we fail to remove the item
 /atom/proc/remove_item(var/obj/item/output)
+	SIGNAL_HANDLER
 	return TRUE
 
 ///Where atoms should drop if taken from this atom

@@ -43,6 +43,7 @@
 	nano_data["item_data"] = item_data
 
 /mob/living/deity/proc/update_followers()
+	SIGNAL_HANDLER
 	var/list/follower_data = list()
 	for(var/m in minions)
 		var/list/minion_data = list()

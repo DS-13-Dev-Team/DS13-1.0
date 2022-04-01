@@ -10,7 +10,7 @@
 
 /datum/extension/updating/net_entanglement/Initialize()
 	.=..()
-	GLOB.moved_event.register(holder, src, /datum/extension/updating/proc/schedule_update)
+	RegisterSignal(holder, COMSIG_MOVABLE_MOVED, .proc/schedule_update)
 	var/mob/living/H = holder
 	var/obj/structure/net/N = (locate(/obj/structure/net) in get_turf(H))
 	H.visible_message("[H] gets entangled in \the [N]")
