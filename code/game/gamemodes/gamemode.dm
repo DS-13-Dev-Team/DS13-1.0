@@ -722,7 +722,7 @@ proc/get_nt_opposed()
 	var/crew_count = 0
 	for(var/datum/mind/M in GLOB.living_crew)
 		var/mob/living/L = M.current
-		if(!L.client || L.client.is_afk(2 MINUTES))	//activity check
+		if(!L?.client || L.client.is_afk(2 MINUTES))	//activity check
 			continue
 		if(!isStationLevel(L.z) || istype(get_turf(L), /turf/space))	//location check
 			continue
