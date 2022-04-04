@@ -95,7 +95,6 @@
  * Use the [SEND_SIGNAL] define instead
  */
 /datum/proc/_SendSignal(sigtype, list/arguments)
-	LINE_PROFILE_START
 	var/target = comp_lookup[sigtype]
 	if(!length(target))
 		var/datum/listening_datum = target
@@ -113,4 +112,3 @@
 	for(var/datum/listening_datum as anything in queued_calls)
 		. |= call(listening_datum, queued_calls[listening_datum])(arglist(arguments))
 	PROFILE_TICK
-	LINE_PROFILE_STOP
