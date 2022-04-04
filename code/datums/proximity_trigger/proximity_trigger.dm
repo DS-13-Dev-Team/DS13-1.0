@@ -88,9 +88,9 @@ var/const/PROXIMITY_EXCLUDE_HOLDER_TURF = 1 // When acquiring turfs to monitor, 
 
 /datum/proximity_trigger/proc/register_turfs()
 	SIGNAL_HANDLER
-	if(ismovable(holder))
+	if(!is_active())
 		RegisterSignal(holder, COMSIG_MOVABLE_MOVED, .proc/on_holder_moved)
-	RegisterSignal(holder, COMSIG_ATOM_DIR_CHANGE, .proc/register_turfs) // Changing direction might alter the relevant turfs
+		RegisterSignal(holder, COMSIG_ATOM_DIR_CHANGE, .proc/register_turfs) // Changing direction might alter the relevant turfs
 
 	var/list/new_turfs = acquire_relevant_turfs()
 	if(listequal(turfs_in_range, new_turfs))
