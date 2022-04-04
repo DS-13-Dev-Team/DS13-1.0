@@ -38,7 +38,7 @@
 			to_chat(user, "<span class='notice'>\The [I] won't fit in \the [atom_holder]'s holster!.</span>")
 			return 1
 	if(can_holster(I))
-		if(holstered && istype(user))
+		if(holstered)
 			to_chat(user, "<span class='warning'>There is already \a [holstered] holstered here!</span>")
 			return 1
 		if(sound_in)
