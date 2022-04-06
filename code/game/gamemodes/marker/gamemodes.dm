@@ -104,8 +104,7 @@ GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 	return FALSE
 
 /datum/game_mode/marker/proc/activate_marker()
-	last_pointgain_time = world.timeofday
-		//This handles preventing evac until we have enough points
+	//This handles preventing evac until we have enough points
 	charge_evac_points()
 	SSnecromorph.marker.make_active() //Allow controlling
 	pick_marker_player()

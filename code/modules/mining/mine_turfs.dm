@@ -206,7 +206,7 @@ var/list/mining_floors = list()
 	//And if it defaults single strike, altclick does a full dig
 /turf/simulated/mineral/AltClick(var/mob/user)
 	var/obj/item/I = user.get_active_hand()
-	if (isPickaxe(I))
+	if(I && isPickaxe(I))
 		var/obj/item/weapon/tool/pickaxe/P = I
 		return dig_with_tool(P, user, (!P.default_full_dig))
 	else

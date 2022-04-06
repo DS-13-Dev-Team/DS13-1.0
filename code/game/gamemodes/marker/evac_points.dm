@@ -3,8 +3,6 @@
 	var/evac_threshold = 100
 	var/minimum_evac_time = 75// in minutes. How soon after marker setup that evac can be called, assuming all systems remain working (they won't)
 
-
-	var/last_pointgain_time	= 0
 	var/last_pointgain_quantity = 0
 	var/pointgain_timer
 
@@ -24,15 +22,8 @@
 	//The minimum time is used as a scalar on this
 	pointgain *= evac_threshold / minimum_evac_time
 
-	//And finally, we'll factor in the real time that has passed to compensate for lag and/or time dilation
-	var/minutes_passed = (world.timeofday - last_pointgain_time) / 600	//In ideal circumstances, this value will be 1, but it may be more than 1 if server is lagging
-	pointgain *= minutes_passed
-
-
 	last_pointgain_quantity = pointgain
 	evac_points += pointgain
-
-	last_pointgain_time = world.timeofday
 
 	if(evac_points >= evac_threshold)
 		auto_recall_shuttle = FALSE //Allow shuttles now.

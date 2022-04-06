@@ -12,8 +12,6 @@
 
 //The health doll attempts to update whenever the host mob updates its health
 /atom/movable/screen/health_doll
-	var/last_updated = 0
-	var/updating = FALSE
 	var/mob/living/carbon/human/H
 	name = "health"
 	//icon = ui_style
@@ -55,7 +53,6 @@
 /atom/movable/screen/health_doll/human/update()
 
 	if (QDELETED(H))
-		updating = FALSE
 		return
 
 
@@ -104,8 +101,6 @@
 
 		overlays += health_images
 
-	last_updated = world.time
-	updating = FALSE
 
 /atom/movable/screen/health_doll/human/get_offset()
 	return H.species.health_doll_offset
