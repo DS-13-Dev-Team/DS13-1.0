@@ -194,7 +194,7 @@ datum/sound_token/proc/Mute()
 
 	can_be_heard_from = current_turfs
 	var/current_listeners = all_hearers(source, range)
-	var/former_listeners = listeners - current_listeners
+	var/former_listeners = listeners.Copy() - current_listeners
 	var/new_listeners = current_listeners - listeners
 
 	for(var/listener in former_listeners)
@@ -223,8 +223,6 @@ datum/sound_token/proc/Mute()
 		if(!(v.abilities & VIRTUAL_ABILITY_HEAR))
 			return
 		listener = v.host
-	if(listener in listeners)
-		return
 
 	listeners += listener
 
