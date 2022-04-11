@@ -155,7 +155,7 @@
 	icon_state = "broken_bottle"
 	force = 9
 	throwforce = 5
-	
+
 	throw_range = 5
 	item_state = "beer"
 	attack_verb = list("stabbed", "slashed", "attacked")
@@ -508,7 +508,7 @@
 	volume = 20
 
 
-/obj/item/weapon/reagent_containers/food/drinks/bottle/ds_medigel/New()
-	..()
+/obj/item/weapon/reagent_containers/food/drinks/bottle/ds_medigel/Initialize()
+	.=..()
 	reagents.add_reagent(/datum/reagent/ds_medicalgelreagent, 20)
 	update_icon()

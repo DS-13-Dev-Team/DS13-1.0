@@ -67,7 +67,8 @@
 	else if(stat)
 		return UI_DISABLED
 	// Update UIs if incapicitated but concious.
-	else if(incapacitated())
+	// Pretty much the same as INCAPACITATION_DEFAULT but without INCAPACITATION_LYING
+	else if(incapacitated(INCAPACITATION_RESTRAINED|INCAPACITATION_BUCKLED_FULLY|INCAPACITATION_KNOCKOUT|INCAPACITATION_STUNNED))
 		return UI_UPDATE
 	return UI_INTERACTIVE
 /*

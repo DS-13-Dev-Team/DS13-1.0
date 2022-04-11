@@ -143,7 +143,7 @@
 /obj/item/weapon/rig/ui_act(action, params)
 	// This parent call is very important, as it's responsible for invoking tgui_status and checking our state's rules.
 	if(..())
-		return TRUE
+		return
 
 	add_fingerprint(usr)
 
@@ -190,6 +190,7 @@
 			if(HB.tracking_mode != RIG_SENSOR_AUTOMATIC)
 				var/levels = list("Off"=RIG_SENSOR_OFF, "Binary Tracker"=RIG_SENSOR_BINARY, "Vitals Tracker"=RIG_SENSOR_VITAL, "Vitals + Position Tracker"=RIG_SENSOR_TRACKING)
 				HB.tracking_level = levels[params["tracking_level"]]
+			. = TRUE
 
 		if("change_tracking_mode")
 			var/obj/item/rig_module/healthbar/HB = locate(params["healthbar_ref"])
@@ -201,3 +202,4 @@
 				HB.automatic_tracking_update()
 			else if(HB.tracking_mode == RIG_SENSOR_MANUAL)
 				GLOB.vitals_auto_update_tracking -= src
+			. = TRUE
