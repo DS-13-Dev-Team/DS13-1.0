@@ -1126,8 +1126,9 @@ var/global/floorIsLava = 0
 			P.origin = replyorigin
 			P.destination = sendto
 
+			P.tgui_interact(owner.mob)
 
-datum/admins/var/obj/item/weapon/paper/admin/faxreply // var to hold fax replies in
+/datum/admins/var/obj/item/weapon/paper/admin/faxreply // var to hold fax replies in
 
 /datum/admins/proc/faxCallback(obj/item/weapon/paper/admin/P, var/obj/machinery/photocopier/faxmachine/destination)
 	var/customname = input(src.owner, "Pick a title for the report", "Title") as text|null

@@ -1408,7 +1408,7 @@
 			health = "Oxy: [L.getOxyLoss()]  Tox: [L.getToxLoss()]  Fire: [L.getFireLoss()]  Brute: [L.getBruteLoss()]  Clone: [L.getCloneLoss()]  Brain: [L.getBrainLoss()]"
 
 		to_chat(usr, {"<span class='notice'><hr><b>Info about [M.real_name]:</b>
-Type: [M.type] | Gender: [M.gender] |[job ? " Job: [job.title]" : ""]
+Type: [M.type] | Gender: [M.gender] | Job: [job]
 Location: [AREACOORD(M.loc)]
 Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 [SPAN_ADMIN("<span class='message'>[ADMIN_FULLMONTY(M)]")]</span><hr></span>"})
@@ -1518,6 +1518,9 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 		to_chat(H, "You hear something crackle in your headset for a moment before a voice speaks.  \"Please stand by for a message from your benefactor.  Message as follows, agent. <b>\"[input]\"</b>  Message ends.\"")
 
 	else if(href_list["AdminFaxView"])
+		if(!IsAdminGhost(owner.mob))
+			to_chat(owner, SPAN_NOTICE("You should aghost first!"))
+			return
 		var/obj/item/fax = locate(href_list["AdminFaxView"])
 		if (istype(fax, /obj/item/weapon/paper))
 			var/obj/item/weapon/paper/P = fax
@@ -1539,6 +1542,9 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 		else
 			to_chat(usr, "<span class='warning'>The faxed item is not viewable. This is probably a bug, and should be reported on the tracker: [fax.type]</span>")
 	else if (href_list["AdminFaxViewPage"])
+		if(!IsAdminGhost(owner.mob))
+			to_chat(owner, SPAN_NOTICE("You should aghost first!"))
+			return
 		var/page = text2num(href_list["AdminFaxViewPage"])
 		var/obj/item/weapon/paper_bundle/bundle = locate(href_list["paper_bundle"])
 
@@ -1553,6 +1559,9 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 		return
 
 	else if(href_list["FaxReply"])
+		if(!IsAdminGhost(owner.mob))
+			to_chat(owner, SPAN_NOTICE("You should aghost first!"))
+			return
 		var/mob/sender = locate(href_list["FaxReply"])
 		var/obj/machinery/photocopier/faxmachine/fax = locate(href_list["originfax"])
 		var/replyorigin = href_list["replyorigin"]
@@ -1566,7 +1575,7 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 		P.destination = fax
 		P.sender = sender
 
-		P.tgui_interact(sender)
+		P.tgui_interact(owner.mob)
 
 	else if(href_list["jumpto"])
 		if(!check_rights(R_ADMIN))	return

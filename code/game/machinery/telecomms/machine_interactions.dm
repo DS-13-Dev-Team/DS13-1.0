@@ -110,7 +110,7 @@
 	// You need a multitool to use this, or be silicon
 	if(!issilicon(user))
 		var/obj/item/I = user.get_active_hand()
-		if(!isMultitool(I))
+		if(!I || !isMultitool(I))
 			return
 
 	if(stat & (BROKEN|NOPOWER))

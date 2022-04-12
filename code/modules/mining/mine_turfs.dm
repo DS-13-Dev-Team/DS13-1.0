@@ -133,9 +133,9 @@ var/list/mining_floors = list()
 	. = ..()
 	if(istype(AM,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = AM
-		if((isPickaxe(H.l_hand)) && (!H.hand))
+		if((H.l_hand && isPickaxe(H.l_hand)) && (!H.hand))
 			attackby(H.l_hand,H)
-		else if((isPickaxe(H.r_hand)) && H.hand)
+		else if((H.r_hand && isPickaxe(H.r_hand)) && H.hand)
 			attackby(H.r_hand,H)
 
 	else if(istype(AM,/mob/living/silicon/robot))
