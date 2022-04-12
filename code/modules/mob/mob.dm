@@ -13,7 +13,7 @@
 	if(client)
 		for(var/atom/movable/AM in client.screen)
 			var/atom/movable/screen/screenobj = AM
-			if(!istype(screenobj) || !screenobj.globalscreen)
+			if(istype(screenobj) && !screenobj.globalscreen)
 				qdel(screenobj)
 		client.screen = list()
 	if(mind && mind.current == src)

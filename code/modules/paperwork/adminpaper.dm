@@ -18,3 +18,15 @@
 
 	var/logo_list = list("ceclogo.png")
 	var/logo = ""
+
+/obj/item/weapon/paper/admin/ui_data(mob/user)
+	.=..()
+	.["edit_mode"] = 1
+
+/obj/item/weapon/paper/admin/ui_close(mob/user)
+	if(tgui_alert(user, "Send Fax?", "Fax Paper", list("Yes", "No")) == "Yes")
+		admindatum.faxCallback(src, destination)
+	else
+		if(admindatum.faxreply == src)
+			admindatum.faxreply = null
+		qdel(src)
