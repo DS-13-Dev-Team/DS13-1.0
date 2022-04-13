@@ -8,6 +8,7 @@ SUBSYSTEM_DEF(necromorph)
 	var/list/minor_vessels	=	list()	//Necromorphs that have AI and don't need a player, but can be possessed anyway if someone wants to do manual control
 	var/list/shards = list()	//Marker shards in the world
 	var/list/spawned_necromorph_types = list() //Assoc list of typepath = quantity, tracks the number of necromorphs ever spawned this round
+	var/list/nests = list()
 
 	//Signal Lists
 	var/list/signals	=	list()	//List of all signal players

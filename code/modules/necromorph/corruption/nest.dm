@@ -42,9 +42,9 @@
 	//Add ourselves as a possible spawnpoint for the marker
 	.=..()
 	if (!dummy)
-		if (SSnecromorph.marker)
+		if(SSnecromorph.marker)
 			register_spawnpoint()
-
+		SSnecromorph.nests += src
 
 		set_light(1, 1, 7, 2, COLOR_NECRO_YELLOW)
 
@@ -52,12 +52,23 @@
 	SSnecromorph.marker.add_spawnpoint(src)
 
 /obj/structure/corruption_node/nest/Destroy()
-
-	if (!dummy)
-		if (SSnecromorph.marker)
+	if(!dummy)
+		if(SSnecromorph.marker)
 			SSnecromorph.marker.remove_spawnpoint(src)
+		SSnecromorph.nests -= src
 	.=..()
 
+/mob/proc/jump_to_nest()
+	set name = "Jump to Nest"
+	set category = "Necromorph"
+
+	if(!SSnecromorph.shards.len)
+		to_chat(src, SPAN_WARNING("There are no nests in the world."))
+		return
+
+	var/obj/structure/corruption_node/nest/nest = tgui_input_list(src, "Choose a nest to jump", "Jump to Nest", SSnecromorph.nests)
+	if(nest)
+		jumpTo(get_turf(nest))
 
 /obj/structure/corruption_node/nest/proc/increase_upgrade_level()
 	if (upgrade_level >= upgrade_multipliers.len)
