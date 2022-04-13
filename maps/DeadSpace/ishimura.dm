@@ -6,7 +6,7 @@
 	name = "Ishimura"
 	full_name = "USG Ishimura"
 	path = "ishimura"
-	station_levels = list(1,2,3,4,5,6)
+	station_levels = list(1,2,3,4,5)
 	contact_levels = list(1,2,3,4,5,6)
 	player_levels = list(1,2,3,4,5)
 	sealed_levels = list(6,7)
