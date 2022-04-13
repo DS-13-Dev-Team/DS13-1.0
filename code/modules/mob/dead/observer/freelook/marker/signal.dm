@@ -334,7 +334,7 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 /mob/dead/observer/eye/signal/update_verbs()
 	.=..()
 	update_verb(/mob/proc/jump_to_shard, (SSnecromorph.shards.len > 0))	//Give us the verb to jump to shards, if there are any
-
+	update_verb(/mob/proc/jump_to_nest, (SSnecromorph.nests.len > 0))	//Give us the verb to jump to shards, if there are any
 
 /*
 	Helper
