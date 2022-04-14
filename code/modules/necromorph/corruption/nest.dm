@@ -58,11 +58,11 @@
 		SSnecromorph.nests -= src
 	.=..()
 
-/mob/proc/jump_to_nest()
+/mob/dead/observer/eye/signal/verb/jump_to_nest()
 	set name = "Jump to Nest"
 	set category = "Necromorph"
 
-	if(!SSnecromorph.shards.len)
+	if(!SSnecromorph.nests.len)
 		to_chat(src, SPAN_WARNING("There are no nests in the world."))
 		return
 
