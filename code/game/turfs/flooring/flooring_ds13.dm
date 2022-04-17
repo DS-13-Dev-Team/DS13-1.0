@@ -66,6 +66,30 @@
 	icon_base = "slashed_odd"
 	build_type = /obj/item/stack/tile/slashed/odd
 
+/decl/flooring/tiling_ds/tramcorner
+	name = "tram floor"
+	desc = "Scuffed from the passage of countless tram users."
+	icon_base = "tramcorner"
+	build_type = /obj/item/stack/tile/tramcorner
+
+/decl/flooring/tiling_ds/trammiddle
+	name = "tram floor"
+	desc = "Scuffed from the passage of countless tram users."
+	icon_base = "trammiddle"
+	build_type = /obj/item/stack/tile/trammiddle
+
+/decl/flooring/tiling_ds/tramwarning
+	name = "tram floor"
+	desc = "Scuffed from the passage of countless tram users."
+	icon_base = "tramwarning"
+	build_type = /obj/item/stack/tile/tramwarning
+
+/decl/flooring/tiling_ds/tramgrating
+	name = "tram floor"
+	desc = "Scuffed from the passage of countless tram users."
+	icon_base = "tramgrating"
+	build_type = /obj/item/stack/tile/tramgrating
+
 /decl/flooring/tiling/mono
 	icon_base = "monotile"
 	build_type = /obj/item/stack/tile/mono

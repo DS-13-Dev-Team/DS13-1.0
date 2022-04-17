@@ -126,6 +126,24 @@
 /obj/machinery/door/airlock/multi_tile/civilian
 	stripe_color = COLOR_CIVIE_GREEN
 
+/obj/machinery/door/airlock/multi_tile/civilian/tram
+	icon = 'icons/obj/doors/double/doortram.dmi'
+	fill_file = null
+	color_file = null
+	color_fill_file = null
+	stripe_file = null
+	stripe_fill_file = null
+	glass_file = null
+	bolts_file = null
+	deny_file = null
+	lights_file = null
+	welded_file = 'icons/obj/doors/double/doortram_weld.dmi'
+	emag_file = null
+	open_sound_powered = "doorheavyopen"
+	open_sound_unpowered = "doorheavyopen"
+	close_sound_powered = "doorheavyclose"
+	close_sound_unpowered = "doorheavyclose"
+
 /obj/machinery/door/airlock/multi_tile/freezer
 	name = "Freezer Airlock"
 	door_color = COLOR_WHITE

@@ -327,6 +327,8 @@
 		)
 	shuttle_area = /area/shuttle/tram
 	current_location = "nav_forwardships"
+	sound_takeoff = 'sound/effects/tramdepart.ogg'
+	sound_arrival = 'sound/effects/tramarrive.ogg'
 
 //	landmark_transition = "nav_tramtrans"
 
@@ -354,6 +356,13 @@
 /obj/machinery/computer/shuttle_control/multi/tram
 	name = "Tram Control Console"
 	shuttle_tag = "Tram"
+
+/obj/machinery/computer/shuttle_control/multi/tram/onboard //functionally the same, just a different sprite for the computer that's on the tram
+	name = "Tram Control Console"
+	shuttle_tag = "Tram"
+	icon_state = "tramterminal"
+	icon_keyboard = "tramkeyboard" //intentionally nothing
+	icon_screen = "tramscreen"
 
 // Something else. //
 

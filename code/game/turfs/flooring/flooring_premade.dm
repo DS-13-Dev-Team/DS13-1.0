@@ -379,6 +379,26 @@
 	icon_state = "slashed_odd"
 	initial_flooring = /decl/flooring/complex/tiling_ds/slashed/odd
 
+/turf/simulated/floor/dank/tramcorner
+	name = "tram floor"
+	icon_state = "tramcorner"
+	initial_flooring = /decl/flooring/tiling_ds/tramcorner
+
+/turf/simulated/floor/dank/trammiddle
+	name = "tram floor"
+	icon_state = "trammiddle"
+	initial_flooring = /decl/flooring/tiling_ds/trammiddle
+
+/turf/simulated/floor/dank/tramwarning
+	name = "tram floor"
+	icon_state = "tramwarning"
+	initial_flooring = /decl/flooring/tiling_ds/tramwarning
+
+/turf/simulated/floor/dank/tramgrating
+	name = "tram floor"
+	icon_state = "tramgrating"
+	initial_flooring = /decl/flooring/tiling_ds/tramgrating
+
 // FLOOR UPDATE 2 : ELECTRIC BOOGALLOO
 /turf/simulated/floor/dank/tech
 	name = "tech plating"
