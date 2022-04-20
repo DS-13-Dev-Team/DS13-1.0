@@ -27,7 +27,7 @@
 /datum/craft_recipe/tool/expansion
 	name = "Tool expansion"
 	desc = "This recipe is used to upgrade a tool's potential, unlocking an extra modification slot to allow more toolmods to be fitted onto it."
-	result = null
+	result = /obj/item/craft
 	steps = list(
 		list(CRAFT_OBJECT, /obj/item/weapon/tool),
 		list(CRAFT_STACK, /obj/item/stack/power_node, 1)
