@@ -63,9 +63,12 @@
 	remove_massive_atom(src)	//Remove necromorphs from the massive atoms list
 	for(var/organ in organs)
 		qdel(organ)
+	stack_trace("Human was just deleted")
 	return ..()
 
-
+//Gonna use it to prevent silencing
+/proc/stack_trace(msg)
+	CRASH(msg)
 
 
 /mob/living/carbon/human/proc/implant_loyalty(mob/living/carbon/human/M, override = FALSE) // Won't override by default.
