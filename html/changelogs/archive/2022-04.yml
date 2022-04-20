@@ -4,3 +4,7 @@
 2022-04-13:
   DTraitor:
   - rscadd: Added janitors to the game.
+2022-04-20:
+  DTraitor:
+  - balance: Tasers shoudln't work on necromorphs anymore.
+  - experiment: You can switch RIG mounted taser modes.
