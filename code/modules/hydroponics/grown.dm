@@ -158,7 +158,7 @@
 			M.Stun(8)
 			M.Weaken(5)
 			seed.thrown_at(src,M)
-			INVOKE_ASYNC(GLOBAL_PROC, /proc/qdel, src)
+			INVOKE_ASYNC(GLOBAL_PROC, /proc/_qdel, src)
 			return
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/throw_impact(atom/hit_atom)

@@ -2,8 +2,8 @@
 #define QDELETED(X) (!X || QDELING(X))
 #define QDESTROYING(X) (!X || X.gc_destroyed == GC_CURRENTLY_BEING_QDELETED)
 
-#define QDEL_IN(item, time) addtimer(CALLBACK(GLOBAL_PROC, .proc/qdel, item), time, TIMER_STOPPABLE)
-#define QDEL_IN_CLIENT_TIME(item, time) addtimer(CALLBACK(GLOBAL_PROC, .proc/qdel, item), time, TIMER_STOPPABLE | TIMER_CLIENT_TIME)
+#define QDEL_IN(item, time) addtimer(CALLBACK(GLOBAL_PROC, .proc/_qdel, item), time, TIMER_STOPPABLE)
+#define QDEL_IN_CLIENT_TIME(item, time) addtimer(CALLBACK(GLOBAL_PROC, .proc/_qdel, item), time, TIMER_STOPPABLE | TIMER_CLIENT_TIME)
 #define QDEL_NULL(item) qdel(item); item = null
 #define QDEL_NULL_LIST(L) for(var/y in L) qdel(y); L = null;
 #define QDEL_LIST(L) for(var/I in L) qdel(I); L?.Cut();

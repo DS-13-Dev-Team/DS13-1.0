@@ -55,7 +55,7 @@
 	make_blood()
 
 
-/mob/living/carbon/human/Destroy()
+/mob/living/carbon/human/Destroy(force, file, line)
 	if(species)
 		species.onDestroy(src)
 	GLOB.human_mob_list -= src
@@ -63,12 +63,9 @@
 	remove_massive_atom(src)	//Remove necromorphs from the massive atoms list
 	for(var/organ in organs)
 		qdel(organ)
-	stack_trace("Human was just deleted")
+	SEND_TEXT(world.log, "Deleted human| Name: [name] | Key: [key] | File: [file] | Line: [line]")
+	log_runtime("Deleted human| Name: [name] | Key: [key] | File: [file] | Line: [line]")
 	return ..()
-
-//Gonna use it to prevent silencing
-/proc/stack_trace(msg)
-	CRASH(msg)
 
 
 /mob/living/carbon/human/proc/implant_loyalty(mob/living/carbon/human/M, override = FALSE) // Won't override by default.
