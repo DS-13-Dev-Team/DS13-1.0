@@ -208,7 +208,7 @@ Best used for harassment, skirmishing and initiating fights from afar against un
 		var/acid_volume = damage / NECROMORPH_ACID_POWER	//Figure out how many units of acid we need
 		var/datum/reagents/R = new(acid_volume, GLOB.bioblast_acid_holder)
 		R.add_reagent(/datum/reagent/acid/necromorph, acid_volume, safety = TRUE)
-		R.trans_to(target_mob, R.total_volume)	//Apply acid to mob
+		R.splash_mob(target_mob, R.total_volume)	//Apply acid to mob
 		qdel(R)
 
 //Snapshot projectile. Lower damage, limited range
