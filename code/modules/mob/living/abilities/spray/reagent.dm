@@ -29,8 +29,11 @@ Vars in extradata list
 	for (var/t in affected_turfs)
 		var/turf/T = t
 		chem_holder.trans_to(T, volume_tick)
-		for (var/atom/A in T)
-			chem_holder.trans_to(A, volume_tick)
+		for (var/atom/movable/A in T)
+			if(isobj(A))
+				chem_holder.trans_to(A, volume_tick)
+			if(ismob(A))
+				chem_holder.splash_mob(A, volume_tick)
 	.=..()
 
 
