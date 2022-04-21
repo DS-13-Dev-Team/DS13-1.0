@@ -42,7 +42,8 @@
 /datum/extension/gallop/proc/start()
 	if (!started_at)
 		started_at = world.time
-		holder.can_pull_mobs = MOB_PULL_NONE
+		user.can_pull_mobs = MOB_PULL_NONE
+		user.can_pull_size = NONE
 		ongoing_timer = addtimer(CALLBACK(src, /datum/extension/gallop/proc/stop), duration, TIMER_STOPPABLE)
 
 		user.reset_move_cooldown()//Allow nextmove immediately
@@ -63,7 +64,8 @@
 		stopped_at = world.time
 		ongoing_timer = addtimer(CALLBACK(src, /datum/extension/gallop/proc/finish_cooldown), cooldown, TIMER_STOPPABLE)
 		UnregisterSignal(user, list(COMSIG_MOVABLE_MOVED, COMSIG_MOVABLE_BUMP, COMSIG_MOB_DAMAGE_HIT))
-		holder.can_pull_mobs = MOB_PULL_SAME
+		user.can_pull_mobs = MOB_PULL_SAME
+		user.can_pull_size = ITEM_SIZE_NO_CONTAINER
 		user.visible_message(SPAN_NOTICE("[user] slows down"))
 
 /datum/extension/gallop/proc/finish_cooldown()
