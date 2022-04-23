@@ -59,3 +59,5 @@ changes:
   - balance: "Leapers won't be able to pull things while galloping."
   - fixes: "Flamethrower blasts and pulse rifle grenades won't ricochet anymore."
   - fixes: "Removed shrapnel from all recipes and replaced with something sane."
+  - balance: "Removed ore box limit."
+  - fixes: "Destroying ore box will drop ores inside."
