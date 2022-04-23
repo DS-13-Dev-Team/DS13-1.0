@@ -176,8 +176,8 @@ datum/job/bar/get_description_blurb()
 	title = "Janitor"
 	abbreviation = "JTR"
 	department_flag = SRV
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 3
+	spawn_positions = 3
 	supervisors = "the First Lieutenant"
 	selection_color = "#6c0864"
 	minimal_player_age = 18

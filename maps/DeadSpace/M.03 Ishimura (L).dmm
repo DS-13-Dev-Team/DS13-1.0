@@ -2937,6 +2937,7 @@
 	dir = 8;
 	pixel_x = -20
 	},
+/obj/structure/closet/secure_closet/janitor,
 /turf/simulated/floor/dank/golf_gray,
 /area/ishimura/lower/misc/janitorcloset/midship)
 "agE" = (
@@ -8866,6 +8867,9 @@
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
+	},
+/obj/effect/landmark/start{
+	name = "Janitor"
 	},
 /turf/simulated/floor/dank/golf_gray,
 /area/ishimura/lower/misc/janitorcloset/midship)
@@ -14798,7 +14802,8 @@
 	},
 /obj/machinery/door/airlock/engineering{
 	dir = 8;
-	name = "Janitor Closet"
+	name = "Janitor Closet";
+	req_access = list(6)
 	},
 /turf/simulated/floor/dank/golf_gray,
 /area/ishimura/lower/misc/janitorcloset/midship)
@@ -24013,7 +24018,8 @@
 	},
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/maintenance{
-	name = "Janitor Closet Maintenance"
+	name = "Janitor Closet Maintenance";
+	req_access = list(1, 6)
 	},
 /turf/simulated/floor/plating,
 /area/ishimura/lower/misc/janitorcloset/midship)
