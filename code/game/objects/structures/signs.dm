@@ -412,6 +412,34 @@
 	name = "\improper Fourth Deck"
 	icon_state = "deck-4"
 
+// ds13 signs.
+
+/obj/structure/sign/deck/ds
+	name = "Concordance Extraction Corporation"
+	icon = 'icons/obj/decals_ds13.dmi'
+	icon_state = "cec_ominous"
+	desc = "A logo representing the Concordance Extraction Corporation, this one seems a little ominous."
+
+/obj/structure/sign/deck/ds/red
+	icon_state = "cec_red"
+	desc = "A logo representing the Concordance Extraction Corporation, this one represents general CEC presence and core security personnel."
+
+/obj/structure/sign/deck/ds/purple
+	icon_state = "cec_purple"
+	desc = "A logo representing the Concordance Extraction Corporation, this one represents CEC commanding officers and their area."
+
+/obj/structure/sign/deck/ds/blue
+	icon_state = "cec_blue"
+	desc = "A logo representing the Concordance Extraction Corporation, this one represents the CEC research & development department."
+
+/obj/structure/sign/deck/ds/cyan
+	icon_state = "cec_cyan"
+	desc = "A logo representing the Concordance Extraction Corporation, this one represents CEC medical areas & staff."
+
+/obj/structure/sign/deck/ds/orange
+	icon_state = "cec_orange"
+	desc = "A logo representing the Concordance Extraction Corporation, this one represents CEC cargo operations."
+
 /obj/item/sign/medipolma
 	name = "medical diploma"
 	desc = "A fancy print laminated paper that certifies that its bearer is indeed a Doctor of Medicine, graduated from a medical school in one of fringe systems. You don't recognize the name though, and half of latin words they used do not actually exist."

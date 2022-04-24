@@ -88,3 +88,39 @@
 	name = "chicken crate"
 	held_count = 5
 	held_type = /mob/living/simple_animal/chick
+
+//fancy ds13 crates.
+
+/obj/structure/largecrate/ds
+	name = "Supply crate"
+	desc = "A shiny supply crate."
+	icon_state = "crate_ds_blue1"
+	var/held_count = 1
+	var/held_type = /obj/random/cash_poor
+
+/obj/structure/largecrate/ds/New()
+	..()
+	if(held_type)
+		for(var/i = 1;i<=held_count;i++)
+			new held_type(src)
+
+/obj/structure/largecrate/ds/blue_vertical
+	icon_state = "crate_ds_blue2"
+
+/obj/structure/largecrate/ds/blue_diagonal
+	icon_state = "crate_ds_blue3"
+
+/obj/structure/largecrate/ds/blue_diagonal_alt
+	icon_state = "crate_ds_blue4"
+
+/obj/structure/largecrate/ds/green_horizontal
+	icon_state = "crate_ds_green1"
+
+/obj/structure/largecrate/ds/green_vertical
+	icon_state = "crate_ds_green2"
+
+/obj/structure/largecrate/ds/green_diagonal
+	icon_state = "crate_ds_green3"
+
+/obj/structure/largecrate/ds/green_diagonal_alt
+	icon_state = "crate_ds_green4"

@@ -538,3 +538,53 @@
 	name = "grille-spare2"
 	icon_state = "grille-spare2"
 	initial_flooring = /decl/flooring/complex/tiling_ds/grille_spare2
+
+//outside tiles
+
+/turf/simulated/floor/outside
+	name = "wet-soft"
+	icon = 'icons/turf/floors_outside_ds13.dmi'
+	icon_state = "wet_soft"
+	initial_flooring = /decl/flooring/outside_ds
+	has_resources = TRUE
+
+	desc = "Dirt."
+
+/turf/simulated/floor/outside/Initialize()
+	..()
+	dir = pick(GLOB.alldirs)
+
+/turf/simulated/floor/outside/firm
+	name = "wet-firm"
+	icon_state = "wet_firm"
+	initial_flooring = /decl/flooring/outside_ds/firm
+
+/turf/simulated/floor/outside/muddy
+	name = "wet-muddy"
+	icon_state = "wet_muddy"
+	initial_flooring = /decl/flooring/outside_ds/muddy
+
+/turf/simulated/floor/outside/cracked
+	name = "wet-cracked"
+	icon_state = "wet_cracked"
+	initial_flooring = /decl/flooring/outside_ds/cracked
+
+/turf/simulated/floor/outside/dry_soft
+	name = "dry-soft"
+	icon_state = "dry_soft"
+	initial_flooring = /decl/flooring/outside_ds/dry_soft
+
+/turf/simulated/floor/outside/dry_firm
+	name = "dry-firm"
+	icon_state = "dry_firm"
+	initial_flooring = /decl/flooring/outside_ds/dry_firm
+
+/turf/simulated/floor/outside/dry_muddy
+	name = "dry-muddy"
+	icon_state = "dry_muddy"
+	initial_flooring = /decl/flooring/outside_ds/dry_muddy
+
+/turf/simulated/floor/outside/dry_cracked
+	name = "dry-cracked"
+	icon_state = "dry_cracked"
+	initial_flooring = /decl/flooring/outside_ds/dry_cracked
