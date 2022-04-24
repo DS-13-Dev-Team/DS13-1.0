@@ -20,7 +20,7 @@
 		spellremove(src)
 	ghostize()
 	..()
-	SEND_TEXT(world.log, "Deleted mob | Name: [name] | Key: [key] | File: [file] | Line: [line]")
+	SEND_TEXT(world.log, "Deleted mob | Name: [name] | Type: [type] | Key: [key] | File: [file] | Line: [line]")
 	log_runtime("Deleted mob | Name: [name] | Key: [key] | File: [file] | Line: [line]")
 	return QDEL_HINT_HARDDEL
 
