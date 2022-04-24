@@ -165,7 +165,8 @@
 
 /mob/living/carbon/human/bst
 	universal_understand = TRUE
-	//status_flags = GODMODE	//Leave this off by default, more useful for testing
+	skillset = /datum/skillset/bst
+	status_flags = GODMODE
 	var/fall_override = TRUE
 	var/mob/original_body = null
 
@@ -248,9 +249,7 @@
 	set desc = "Enable or disable god mode. For testing things that require you to be vulnerable."
 	set category = "BST"
 
-	status_flags ^= GODMODE
-	to_chat(src, SPAN_NOTICE("God mode is now [status_flags & GODMODE ? "enabled" : "disabled"]"))
-
+	status_flags |= GODMODE
 	to_chat(src, SPAN_NOTICE("God mode is now [status_flags & GODMODE ? "enabled" : "disabled"]"))
 
 

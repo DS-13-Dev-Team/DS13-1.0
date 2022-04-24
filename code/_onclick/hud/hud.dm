@@ -131,6 +131,7 @@
 	QDEL_LIST(static_inventory)
 	QDEL_LIST(infodisplay)
 	QDEL_LIST(hotkeybuttons)
+	QDEL_LIST_ASSOC_VAL(inv_slots)
 
 	mymob = null
 
@@ -266,7 +267,7 @@
 		data["hud"] = C.mob?.hud_used
 	else if (istype(target, /datum/hud))
 		var/datum/hud/M = target
-		
+
 		data["mob"] = M.mymob
 		data["client"] = M.mymob?.client
 		data["hud"] = M

@@ -143,6 +143,7 @@ The Pulse Rifle is the standard-issue service rifle of the Earth Defense Force a
 	fire_sound='sound/weapons/guns/fire/pulse_grenade.ogg'
 	grippable = TRUE
 	embed = FALSE
+	ricochet_chance = 0
 
 /obj/item/projectile/bullet/impact_grenade/proc/detonate()
 	if (!exploded)

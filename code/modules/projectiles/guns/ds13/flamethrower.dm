@@ -572,6 +572,7 @@
 	name = "fireball"
 	icon_state = "fireblast"
 	icon = 'icons/obj/projectiles.dmi'
+	ricochet_chance = 0
 
 	fire_sound = list('sound/weapons/guns/fire/torch_altfire_1.ogg',
 	'sound/weapons/guns/fire/torch_altfire_2.ogg',

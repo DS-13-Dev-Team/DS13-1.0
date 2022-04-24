@@ -148,8 +148,7 @@
 	result = /obj/item/weapon/tool/saw/improvised
 	steps = list(
 		list(CRAFT_STACK, /obj/item/stack/rods, 1, 30),
-		list(CRAFT_OBJECT, /obj/item/weapon/material/shard/shrapnel, "time" = 30),
-		list(CRAFT_OBJECT, /obj/item/weapon/material/shard/shrapnel, "time" = 30),
+		list(CRAFT_STACK, /obj/item/stack/material/steel, 2, 30),
 		list(CRAFT_TOOL, QUALITY_ADHESIVE, 15, 150)
 	)
 
@@ -224,11 +223,9 @@
 	result = /obj/item/weapon/tool_modification/augment/spikes
 	steps = list(
 		list(CRAFT_STACK, /obj/item/stack/rods, 2, 30),
-		list(CRAFT_TOOL,QUALITY_WELDING, 10, 150),
-		list(CRAFT_OBJECT,/obj/item/weapon/material/shard/shrapnel, "time" = 30),
-		list(CRAFT_OBJECT,/obj/item/weapon/material/shard/shrapnel, "time" = 30),
-		list(CRAFT_OBJECT,/obj/item/weapon/material/shard/shrapnel, "time" = 30),
-		list(CRAFT_OBJECT,/obj/item/weapon/material/shard/shrapnel, "time" = 30),
+		list(CRAFT_TOOL, QUALITY_WELDING, 10, 150),
+		list(CRAFT_STACK, /obj/item/stack/material/steel, 2, 30),
+		list(CRAFT_TOOL, QUALITY_SAWING, 15, 50),
 		list(CRAFT_TOOL,QUALITY_WELDING, 10, 150),
 	)
 
