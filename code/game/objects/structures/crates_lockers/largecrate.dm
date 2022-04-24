@@ -6,6 +6,9 @@
 	density = 1
 	atom_flags = ATOM_FLAG_CLIMBABLE
 
+	var/held_count = 0
+	var/held_type
+
 /obj/structure/largecrate/Initialize()
 	. = ..()
 	for(var/obj/I in src.loc)
@@ -49,17 +52,15 @@
 		ME.attach(H)
 	..()
 
-
-/obj/structure/largecrate/animal
-	icon_state = "mulecrate"
-	var/held_count = 1
-	var/held_type
-
-/obj/structure/largecrate/animal/New()
+/obj/structure/largecrate/New()
 	..()
 	if(held_type)
 		for(var/i = 1;i<=held_count;i++)
 			new held_type(src)
+
+
+/obj/structure/largecrate/animal
+	icon_state = "mulecrate"
 
 /obj/structure/largecrate/animal/mulebot
 	name = "Mulebot crate"
@@ -95,14 +96,8 @@
 	name = "Supply crate"
 	desc = "A shiny supply crate."
 	icon_state = "crate_ds_blue1"
-	var/held_count = 1
-	var/held_type = /obj/random/cash_poor
-
-/obj/structure/largecrate/ds/New()
-	..()
-	if(held_type)
-		for(var/i = 1;i<=held_count;i++)
-			new held_type(src)
+	held_count = 1
+	held_type = /obj/random/cash_poor
 
 /obj/structure/largecrate/ds/blue_vertical
 	icon_state = "crate_ds_blue2"
