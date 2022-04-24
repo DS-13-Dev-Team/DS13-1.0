@@ -418,13 +418,13 @@
 						return FALSE
 				SSticker.Reboot(reason, delay * 10)
 			if("Hard Restart (No Delay, No Feeback Reason)")
-				to_chat(world, "<span class='infoplain'>World reboot - [init_by]</span>")
+				to_chat(world, "<span class='infoplain'>World reboot - Initiated by [usr.client.holder ? "Admin" : usr.key].</span>")
 				world.Reboot()
 			if("Hardest Restart (No actions, just reboot)")
-				to_chat(world, "<span class='infoplain'>Hard world reboot - [init_by]</span>")
+				to_chat(world, "<span class='infoplain'>Hard world reboot - Initiated by [usr.client.holder ? "Admin" : usr.key].</span>")
 				world.Reboot(fast_track = TRUE)
 			if("Server Restart (Kill and restart DD)")
-				to_chat(world, "<span class='infoplain'>Server restart - [init_by]</span>")
+				to_chat(world, "<span class='infoplain'>Server restart - Initiated by [usr.client.holder ? "Admin" : usr.key].</span>")
 				world.TgsEndProcess()
 
 /datum/admins/proc/toggleooc()
