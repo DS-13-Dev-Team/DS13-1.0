@@ -462,10 +462,9 @@ var/list/mining_floors = list()
 // Setting icon/icon_state initially will use these values when the turf is built on/replaced.
 // This means you can put grass on the asteroid etc.
 /turf/simulated/floor/asteroid
-	name = "sand"
-	icon = 'icons/turf/flooring/asteroid.dmi'
-	icon_state = "asteroid"
-
+	name = "soil"
+	icon = 'icons/turf/floors_outside_ds13.dmi'
+	icon_state = "wet_muddy"
 
 	initial_flooring = null
 	initial_gas = null
@@ -473,6 +472,36 @@ var/list/mining_floors = list()
 	var/dug = 0       //0 = has not yet been dug, 1 = has already been dug
 	var/overlay_detail
 	has_resources = 1
+
+/turf/simulated/floor/asteroid/Initialize()
+	..()
+	dir = pick(GLOB.alldirs)
+
+/turf/simulated/floor/asteroid/outside_ds
+	name = "soil"
+	desc = "Dirt."
+	icon_state = "wet_soft"
+
+/turf/simulated/floor/asteroid/outside_ds/firm
+	icon_state = "wet_firm"
+
+/turf/simulated/floor/asteroid/outside_ds/muddy
+	icon_state = "wet_muddy"
+
+/turf/simulated/floor/asteroid/outside_ds/cracked
+	icon_state = "wet_cracked"
+
+/turf/simulated/floor/asteroid/outside_ds/dry_soft
+	icon_state = "dry_soft"
+
+/turf/simulated/floor/asteroid/outside_ds/dry_firm
+	icon_state = "dry_firm"
+
+/turf/simulated/floor/asteroid/outside_ds/dry_muddy
+	icon_state = "dry_muddy"
+
+/turf/simulated/floor/asteroid/outside_ds/dry_cracked
+	icon_state = "dry_cracked"
 
 /turf/simulated/floor/asteroid/New()
 	if (!mining_floors["[src.z]"])
@@ -558,7 +587,7 @@ var/list/mining_floors = list()
 		new/obj/item/weapon/ore/glass(src)
 
 	dug = 1
-	icon_state = "asteroid_dug"
+	icon_state = "[icon_state]_dug"
 	return
 
 /turf/simulated/floor/asteroid/proc/updateMineralOverlays(var/update_neighbors)

@@ -324,34 +324,3 @@
 	icon_base = "cable_end"
 	build_type = null
 	has_base_range = 0
-
-//outside tiles.
-
-/decl/flooring/outside_ds
-	name = "soil"
-	desc = "Dirt."
-	icon = 'icons/turf/floors_outside_ds13.dmi'
-	icon_base = "wet_soft"
-	has_base_range = 3
-	flags = TURF_REMOVE_SHOVEL
-
-/decl/flooring/outside_ds/firm
-	icon_base = "wet_firm"
-
-/decl/flooring/outside_ds/muddy
-	icon_base = "wet_muddy"
-
-/decl/flooring/outside_ds/cracked
-	icon_base = "wet_cracked"
-
-/decl/flooring/outside_ds/dry_soft
-	icon_base = "dry_soft"
-
-/decl/flooring/outside_ds/dry_firm
-	icon_base = "dry_firm"
-
-/decl/flooring/outside_ds/dry_muddy
-	icon_base = "dry_muddy"
-
-/decl/flooring/outside_ds/dry_cracked
-	icon_base = "dry_cracked"
