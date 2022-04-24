@@ -36,7 +36,7 @@
 	stop_aiming(no_message=1)
 	..()
 
-/mob/living/Destroy()
+/mob/living/Destroy(force, file, line)
 	if(aiming)
 		qdel(aiming)
 		aiming = null

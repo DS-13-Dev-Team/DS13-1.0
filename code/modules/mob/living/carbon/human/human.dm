@@ -63,8 +63,6 @@
 	remove_massive_atom(src)	//Remove necromorphs from the massive atoms list
 	for(var/organ in organs)
 		qdel(organ)
-	SEND_TEXT(world.log, "Deleted human| Name: [name] | Key: [key] | File: [file] | Line: [line]")
-	log_runtime("Deleted human| Name: [name] | Key: [key] | File: [file] | Line: [line]")
 	return ..()
 
 

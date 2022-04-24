@@ -23,7 +23,7 @@
 		default_language = all_languages[species_language]
 	..()
 
-/mob/living/carbon/Destroy()
+/mob/living/carbon/Destroy(force, file, line)
 	QDEL_NULL(ingested)
 	QDEL_NULL(touching)
 	// We don't qdel(bloodstr) because it's the same as qdel(reagents)

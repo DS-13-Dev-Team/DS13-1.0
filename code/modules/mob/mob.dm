@@ -1,4 +1,4 @@
-/mob/Destroy()//This makes sure that mobs with clients/keys are not just deleted from the game.
+/mob/Destroy(force, file, line)//This makes sure that mobs with clients/keys are not just deleted from the game.
 	STOP_PROCESSING(SSmobs, src)
 	GLOB.mob_list -= src
 	GLOB.dead_mob_list -= src
@@ -20,6 +20,8 @@
 		spellremove(src)
 	ghostize()
 	..()
+	SEND_TEXT(world.log, "Deleted mob | Name: [name] | Key: [key] | File: [file] | Line: [line]")
+	log_runtime("Deleted mob | Name: [name] | Key: [key] | File: [file] | Line: [line]")
 	return QDEL_HINT_HARDDEL
 
 /mob/Initialize()
