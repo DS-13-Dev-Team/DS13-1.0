@@ -883,7 +883,15 @@ obj/random/obstruction/item_to_spawn()
 				/obj/item/weapon/spacecash/ewallet/random/c5000 = 2,
 				/obj/item/weapon/spacecash/ewallet/random/c10000 = 1))
 
+/obj/random/cash_poor
+	name = "lesser random currency"
+	desc = "LOADSAMONEY!"
+	icon = 'icons/obj/items.dmi'
+	icon_state = "spacecash1"
 
+/obj/random/cash_poor/item_to_spawn()
+	return pickweight(list(/obj/item/weapon/spacecash/ewallet/random/c200 = 9,
+				/obj/item/weapon/spacecash/ewallet/random/c500 = 1))
 
 /obj/random/voidhelmet
 	name = "Random Voidsuit Helmet"
