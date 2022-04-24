@@ -467,8 +467,8 @@ var/list/mining_floors = list()
 	icon_state = "wet_muddy"
 
 	initial_flooring = null
-	initial_gas = null
-	temperature = TCMB
+	initial_gas = list("oxygen" = MOLES_O2STANDARD, "nitrogen" = MOLES_N2STANDARD)
+	temperature = T20C
 	var/dug = 0       //0 = has not yet been dug, 1 = has already been dug
 	var/overlay_detail
 	has_resources = 1
