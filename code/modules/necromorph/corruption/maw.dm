@@ -85,7 +85,7 @@
 		if (check == MASS_READY)
 			if (prob(chomp_chance))
 				animate_chomp()
-				var/atom/A = locate(S.source)
+				var/atom/A = S.source
 				if (A)//Shake the thing around
 					A.shake_animation()
 
