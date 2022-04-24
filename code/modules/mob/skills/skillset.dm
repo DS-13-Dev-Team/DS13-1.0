@@ -67,6 +67,26 @@
 	update_verbs()
 	refresh_uis()
 
+/datum/skillset/bst
+	skill_list = list(
+		SKILL_EVA			= SKILL_MAX,
+		SKILL_HAULING		= SKILL_MAX,
+		SKILL_ATHLETICS		= SKILL_MAX,
+		SKILL_PILOT			= SKILL_MAX,
+		SKILL_COMPUTER		= SKILL_MAX,
+		SKILL_COOKING		= SKILL_MAX,
+		SKILL_COMBAT		= SKILL_MAX,
+		SKILL_WEAPONS		= SKILL_MAX,
+		SKILL_CONSTRUCTION	= SKILL_MAX,
+		SKILL_ELECTRICAL	= SKILL_MAX,
+		SKILL_MEDICAL		= SKILL_MAX,
+		SKILL_ANATOMY		= SKILL_MAX,
+		SKILL_DEVICES		= SKILL_MAX,
+		SKILL_BOTANY		= SKILL_MAX,
+		SKILL_FORENSICS		= SKILL_MAX
+	)
+	default_value = SKILL_MAX
+	skills_transferable = FALSE
 
 
 // Show skills verb
