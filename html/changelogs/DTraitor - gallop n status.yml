@@ -61,3 +61,4 @@ changes:
   - fixes: "Removed shrapnel from all recipes and replaced with something sane."
   - balance: "Removed ore box limit."
   - fixes: "Destroying ore box will drop ores inside."
+  - fixes: "Fixed 'Restart' verb in 'Server' tab."

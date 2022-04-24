@@ -401,13 +401,14 @@
 
 	var/result = input(usr, "Select reboot method", "World Reboot", options[1]) as null|anything in options
 	if(result)
-		var/init_by = "Initiated by [usr.client.holder ? "Admin" : usr.key]."
+		var/reason = input(usr, "Type restart reason", "Restart Reason") as null|text
+		to_chat(world, SPAN_BOLDANNOUNCE("Initiated by [usr.client.holder ? "Admin" : usr.key]."))
 		switch(result)
 			if("Regular Restart")
 				if(!(isnull(usr.client.address) || (usr.client.address in localhost_addresses)))
 					if(tgui_alert(usr, "Are you sure you want to restart the server?","This server is live",list("Restart","Cancel")) != "Restart")
 						return FALSE
-				SSticker.Reboot(init_by, "admin reboot - by [usr.key]", 10)
+				SSticker.Reboot(reason, 10)
 			if("Regular Restart (with delay)")
 				var/delay = input("What delay should the restart have (in seconds)?", "Restart Delay", 5) as num|null
 				if(!delay)
@@ -415,7 +416,7 @@
 				if(!(isnull(usr.client.address) || (usr.client.address in localhost_addresses)))
 					if(tgui_alert(usr,"Are you sure you want to restart the server?","This server is live",list("Restart","Cancel")) != "Restart")
 						return FALSE
-				SSticker.Reboot(init_by, "admin reboot - by [usr.key]", delay * 10)
+				SSticker.Reboot(reason, delay * 10)
 			if("Hard Restart (No Delay, No Feeback Reason)")
 				to_chat(world, "<span class='infoplain'>World reboot - [init_by]</span>")
 				world.Reboot()
