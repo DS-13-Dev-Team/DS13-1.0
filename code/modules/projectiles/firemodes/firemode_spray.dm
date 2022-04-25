@@ -30,7 +30,7 @@
 		stop_spray()
 
 		//We pass in a null user
-		spray_extension = gun.spray_ability(subtype = spray_type,  target = target, angle = src.angle, length = range, stun = FALSE, duration  = FALSE, cooldown = FALSE, windup = FALSE, override_user = -1, extra_data = src.extra_data)
+		spray_extension = gun.spray_ability(subtype = spray_type,  target = target, angle = src.angle, length = range, stun = FALSE, duration  = FALSE, cooldown = FALSE, windup = FALSE, override_user = user, extra_data = src.extra_data)
 		if (istype(spray_extension))
 			gun.started_firing()
 

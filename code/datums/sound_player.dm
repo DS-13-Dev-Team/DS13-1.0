@@ -215,15 +215,14 @@ datum/sound_token/proc/Mute()
 	status = new_status
 	PrivUpdateListeners()
 
-/datum/sound_token/proc/PrivAddListener(var/atom/listener)
-	//Not sure why but if(listener in listeners) doesn't work
-	if(listeners.Find(listener))
-		return
+/datum/sound_token/proc/PrivAddListener(atom/listener)
 	if(isvirtualmob(listener))
 		var/mob/dead/observer/virtual/v = listener
 		if(!(v.abilities & VIRTUAL_ABILITY_HEAR))
 			return
 		listener = v.host
+	if(listener in listeners)
+		return
 
 	listeners += listener
 

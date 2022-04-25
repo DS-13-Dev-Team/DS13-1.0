@@ -174,7 +174,7 @@ Vars/
 			QDEL_NULL(fx)
 
 		//Lets create the chemspray fx
-		fx = new fx_type(source, direction, duration, length, angle)
+		fx = new fx_type(user ? user : source, direction, duration, length, angle)
 		fx.particle_color = particle_color
 		fx.start()
 
