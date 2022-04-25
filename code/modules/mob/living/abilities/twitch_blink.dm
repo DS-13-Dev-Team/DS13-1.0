@@ -14,13 +14,6 @@
 	flags = EXTENSION_FLAG_IMMEDIATE
 	var/mob/living/carbon/human/user
 
-	//Twitcher will periodically do idle jerking animations
-	var/idle_delay_min = 3 SECONDS
-	var/idle_delay_max = 15 SECONDS
-
-	//Idle twitching animations
-	var/list/animations = list("twitcher_anim_1", "twitcher_anim_2")
-
 	//Twitchers will blink to an adjacent tile when damaged, this effect has a cooldown
 	var/defensive_displace_cooldown = 3 SECONDS
 
@@ -38,32 +31,6 @@
 	..()
 	user = _user
 	RegisterSignal(user, COMSIG_MOVABLE_MOVED, .proc/moved)
-	set_next_idle_twitch()
-
-
-//This is called after every twitch, idle or active
-/datum/extension/twitch/proc/set_next_idle_twitch()
-	if (idle_twitch_timer)	//Cancel any queued idle
-		deltimer(idle_twitch_timer)
-
-	. = rand_between(idle_delay_min, idle_delay_max)
-	idle_twitch_timer = addtimer(CALLBACK(src, .proc/twitch_animation), ., TIMER_STOPPABLE)
-
-
-//Does an animation. Only if the user is standing up
-	//Can be done while stunned, as part of special abilities
-/datum/extension/twitch/proc/twitch_animation()
-	if (!user.lying)
-		flick(pick(animations), user)
-
-	//Make random sounds sometimes when we twitch.
-	//I originally tested this without a prob call, and it got annoying real fast
-	if (prob(20))
-		var/sound_type = pickweight(list(SOUND_SPEECH = 6, SOUND_ATTACK  = 2, SOUND_PAIN = 1.5, SOUND_SHOUT = 1))
-		user.play_species_audio(user, sound_type, VOLUME_QUIET, 1, -1)
-
-	set_next_idle_twitch()
-
 
 /datum/extension/twitch/proc/moved(var/atom/mover, var/oldloc, var/newloc)
 	SIGNAL_HANDLER
@@ -76,7 +43,6 @@
 		return FALSE
 
 	animate_movement(user, target, speed, client_lag = 0.4)
-	twitch_animation()
 	return TRUE
 
 

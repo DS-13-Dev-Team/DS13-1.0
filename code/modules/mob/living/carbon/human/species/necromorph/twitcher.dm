@@ -18,11 +18,9 @@
 	mob_type	=	/mob/living/carbon/human/necromorph/twitcher
 	name_plural = "Twitchers"
 	blurb = "An elite soldier displaced in time, blinks around randomly and is difficult to hit. Charges extremely quickly"
-	icon_template = 'icons/mob/necromorph/48x48necros.dmi'
-	icon_normal = "twitcher"
-	icon_lying = "twitcher"
-	icon_dead = "twitcher"
-	single_icon = TRUE
+	icon_template = 'icons/mob/necromorph/twitcher.dmi'
+	icon_lying = "_lying"
+	single_icon = FALSE
 	spawner_spawnable = FALSE
 	virus_immune = 1
 	biomass	=	120
