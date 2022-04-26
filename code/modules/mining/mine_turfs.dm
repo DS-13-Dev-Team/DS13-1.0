@@ -47,6 +47,9 @@ var/list/mining_floors = list()
 	var/image/archaeo_overlay	//Handled in update_archaeo_overlay, updated whenever a find is dug out
 	var/image/excav_overlay		//Handled in update_excavation_overlay, updated every time dig is called
 
+/turf/simulated/mineral/old
+	icon = 'icons/turf/flooring/old_rock.dmi'
+
 /turf/simulated/mineral/New()
 	health = max_health
 
