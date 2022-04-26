@@ -27,6 +27,7 @@
 	require_total_biomass	=	BIOMASS_REQ_T2
 	lying_rotation = 90
 	total_health = 110
+	damage_mask = null
 
 	slowdown = 1.5
 
