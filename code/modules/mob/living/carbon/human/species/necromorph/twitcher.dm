@@ -29,7 +29,6 @@
 	total_health = 110
 
 	slowdown = 1.5
-	view_offset = 3 * WORLD_ICON_SIZE //Forward view offset allows longer-ranged charges
 
 	override_limb_types = list(
 	BP_L_ARM =  /obj/item/organ/external/arm/blade,
