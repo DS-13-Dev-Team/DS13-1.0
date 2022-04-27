@@ -66,7 +66,7 @@
 	var/armor_front = 30	//Flat reduction applied to incoming damage within a 45 degree cone infront
 	var/armor_flank = 20	//Flat reduction applied to incoming damage within a 90 degree cone infront. Doesnt stack with front
 	var/curl_armor_mult = 1.5	//Multiplier applied to armor when we are curled up
-	var/armor_coverage = 96 //What percentage of our body is covered by armor plating. 95 = 5% chance for hits to strike a weak spot
+	var/armor_coverage = 100 //What percentage of our body is covered by armor plating. 95 = 5% chance for hits to strike a weak spot
 
 
 	has_limbs = list(

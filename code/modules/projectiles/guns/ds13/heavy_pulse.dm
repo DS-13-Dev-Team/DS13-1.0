@@ -51,7 +51,7 @@
 	var/overheating = FALSE
 
 	//While we're overheating, we cooldown this much faster
-	var/overheat_cooldown_mult = 1.5
+	var/overheat_cooldown_mult = 1.75
 
 	//When overheating, we exit the overheat state if heat drops below this value
 	var/overheat_min = 0.8625 //75%
