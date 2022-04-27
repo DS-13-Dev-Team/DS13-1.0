@@ -238,9 +238,6 @@
 	if (!user) return
 	if (anchored)
 		return ..()
-	//If an object carry us already = do nothing
-	if(loc == user)
-		return
 	if (hasorgans(user))
 		var/mob/living/carbon/human/H
 		if (istype(user, /mob/living/carbon/human))
