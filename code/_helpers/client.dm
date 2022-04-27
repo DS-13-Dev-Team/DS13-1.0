@@ -65,7 +65,7 @@
 			L.hud_used.hud_healthbar.set_size(TRUE)
 
 	if (prefs.auto_fit_viewport)
-		addtimer(CALLBACK(src,.verb/fit_viewport,10)) //Delayed to avoid wingets from Login calls.
+		INVOKE_ASYNC(src, .verb/fit_viewport, 10) //Delayed to avoid wingets from Login calls.
 
 //Returns the width of the viewport/map window, in pixels
 /client/proc/get_viewport_width()

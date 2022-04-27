@@ -33,17 +33,32 @@ var/global/list/image/ghost_sightless_images = list() //this is a list of images
 	var/obj/item/weapon/tool/multitool/ghost/ghost_multitool
 	var/list/hud_images // A list of hud images
 
-/mob/dead/observer/ghost/New(mob/body)
+/mob/dead/observer/ghost/New(mob/body, transfer_key = TRUE)
 	add_verb(src, /mob/proc/toggle_antag_pool)
 
 	var/turf/T
 	if(ismob(body))
 		T = get_turf(body)               //Where is the body located?
+		if(!T)
+			T = pick(GLOB.latejoin | GLOB.latejoin_cryo | GLOB.latejoin_gateway) //Safety in case we cannot find the body's position
+		forceMove(T)
 		attack_logs_ = body.attack_logs_ //preserve our attack logs by copying them to our ghost
 
 		set_appearance(body)
-		if(body.mind && body.mind.name)
-			name = body.mind.name
+		if(body.mind)
+			if(!transfer_key)
+				body.mind.active = FALSE
+				body.mind.transfer_to(src)
+				body.mind.active = TRUE
+			else
+				body.mind.transfer_to(src)
+		else //new mind for the body
+			var/datum/mind/new_mind = new /datum/mind(key)
+			if(transfer_key)
+				new_mind.active = TRUE
+			new_mind.transfer_to(src)
+		if(mind.name)
+			name = mind.name
 		else
 			if(body.real_name)
 				name = body.real_name
@@ -53,24 +68,12 @@ var/global/list/image/ghost_sightless_images = list() //this is a list of images
 				else
 					name = capitalize(pick(GLOB.first_names_female)) + " " + capitalize(pick(GLOB.last_names))
 
-		if(body.mind)
-			mind = body.mind	//we don't transfer the mind but we keep a reference to it.
-			mind.ghost = src	//Register ourself on the mind too
-
-		else					//new mind for the body
-			spawn(10)
-				body.mind = new /datum/mind(key)
-				mind = body.mind
-				mind.current = body
-				mind.ghost = src
-
 	else
-		spawn(10) // wait for the observer mob to receive the client's key
-			mind = new /datum/mind(key)
-			mind.current = src
-			mind.ghost = src
-	if(!T)	T = pick(GLOB.latejoin | GLOB.latejoin_cryo | GLOB.latejoin_gateway)			//Safety in case we cannot find the body's position
-	forceMove(T)
+		forceMove(pick(GLOB.latejoin | GLOB.latejoin_cryo | GLOB.latejoin_gateway))
+		var/datum/mind/new_mind = new /datum/mind(key)
+		if(transfer_key)
+			new_mind.active = TRUE
+		new_mind.transfer_to(src)
 
 	if(!name)							//To prevent nameless ghosts
 		name = capitalize(pick(GLOB.first_names_male)) + " " + capitalize(pick(GLOB.last_names))
@@ -162,7 +165,6 @@ Works together with spawning an observer, noted above.
 		var/mob/dead/observer/ghost/ghost = new(src)	//Transfer safety to observer spawning proc.
 		ghost.can_reenter_corpse = can_reenter_corpse
 		ghost.timeofdeath = src.stat == DEAD ? src.timeofdeath : world.time
-		ghost.key = key
 		if (ghost.client)		// For new ghosts we remove the verb from even showing up if it's not allowed.
 			if (!ghost.client.holder && !CONFIG_GET(flag/antag_hud_allowed))
 				remove_verb(ghost, /mob/dead/observer/ghost/verb/toggle_antagHUD)// Poor guys, don't know what they are missing!
@@ -185,7 +187,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	if(stat == DEAD)
-		announce_ghost_joinleave(ghostize(1))
+		announce_ghost_joinleave(ghostize(CORPSE_CAN_REENTER))
 	else
 		var/response
 		if(src.client && src.client.holder)
@@ -204,7 +206,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		var/turf/location = get_turf(src)
 		message_admins("[key_name_admin(usr)] has ghosted. (<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[location.x];Y=[location.y];Z=[location.z]'>JMP</a>)")
 		log_game("[key_name_admin(usr)] has ghosted.")
-		var/mob/dead/observer/ghost/ghost = ghostize(0)	//0 parameter is so we can never re-enter our body, "Charlie, you can never come baaaack~" :3
+		var/mob/dead/observer/ghost/ghost = ghostize(CORPSE_CANT_REENTER)	//0 parameter is so we can never re-enter our body, "Charlie, you can never come baaaack~" :3
 		ghost.timeofdeath = world.time // Because the living mob won't have a time of death and we want the respawn timer to work properly.
 		announce_ghost_joinleave(ghost)
 

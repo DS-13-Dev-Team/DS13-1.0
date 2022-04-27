@@ -184,15 +184,13 @@
 	var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
 	s.set_up(5, 1, src)
 	s.start()
-	spawn(10)
-		qdel(src)
 	if(key)
-
 		var/mob/dead/observer/ghost/ghost = ghostize(TRUE)
 		ghost.name = "[ghost.key] BSTech"
 		ghost.real_name = "[ghost.key] BSTech"
 		ghost.voice_name = "[ghost.key] BSTech"
 		ghost.admin_ghosted = TRUE
+	qdel(src)
 
 /mob/living/carbon/human/bst/verb/antigrav()
 	set name = "Toggle Gravity"
@@ -249,7 +247,7 @@
 	set desc = "Enable or disable god mode. For testing things that require you to be vulnerable."
 	set category = "BST"
 
-	status_flags |= GODMODE
+	status_flags ^= GODMODE
 	to_chat(src, SPAN_NOTICE("God mode is now [status_flags & GODMODE ? "enabled" : "disabled"]"))
 
 

@@ -129,9 +129,7 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 	if (ckey)
 		message_necromorphs(SPAN_NOTICE("[key] has left the necromorph horde."))
 		set_necromorph(FALSE)
-	var/mob/dead/observer/ghost/ghost = ghostize(0)
 	qdel(src)
-	return ghost
 
 
 //Signals don't leave behind ghosts if they are clientless

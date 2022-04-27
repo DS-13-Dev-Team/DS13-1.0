@@ -8,9 +8,10 @@
 /obj/item/craft/New(loc, new_recipe)
 	..(loc)
 	recipe = new_recipe
-	src.name = "crafting [recipe.name]"
-	src.icon_state = recipe.icon_state
-	update()
+	if(recipe)
+		src.name = "crafting [recipe.name]"
+		src.icon_state = recipe.icon_state
+		update()
 
 
 /obj/item/craft/proc/update()
