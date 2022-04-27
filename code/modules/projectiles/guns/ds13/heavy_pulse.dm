@@ -45,28 +45,28 @@
 	heat = 0
 
 	//Enters overheating state when heat gets this high
-	var/max_heat = 1
+	var/max_heat = 1.15
 
 	//When true, cannot fire
 	var/overheating = FALSE
 
 	//While we're overheating, we cooldown this much faster
-	var/overheat_cooldown_mult = 1.30
+	var/overheat_cooldown_mult = 1.5
 
 	//When overheating, we exit the overheat state if heat drops below this value
-	var/overheat_min = 0.5
+	var/overheat_min = 0.575
 
-	//Loses this much heat per second. Approx 250 seconds to cooldown completely
-	var/cooldown_per_second	=	0.004
+	//Loses this much heat per second. Approx 200 seconds to cooldown completely
+	var/cooldown_per_second	=	0.00575
 
 	//Heat gained per bullet fired
 	var/heat_per_shot = 0.004
 
 	//Heat gained each time the trigger is pulled
-	var/heat_per_burst = 0.05
+	var/heat_per_burst = 0.04
 
 	//Firing delay is divided by 1 + (heat * this), making the gun speed up as it gets closer to max heat
-	var/heat_delay_multiplier = 2
+	var/heat_delay_multiplier = 1.85
 
 /obj/item/weapon/gun/projectile/automatic/pulse_heavy/Initialize()
 	.=..()
@@ -81,7 +81,7 @@
 	heat = clamp(heat + quantity, 0, max_heat)
 	START_PROCESSING(SSobj, src)
 
-	//The Heavy Pulse Rifle speeds up its firing speed based on heat level, 3* speed at max heat
+	//The Heavy Pulse Rifle speeds up its firing speed based on heat level, 3.1275* speed at max heat
 	UPDATE_DELAY
 
 	if (heat < max_heat)

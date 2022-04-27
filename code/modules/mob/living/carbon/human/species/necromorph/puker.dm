@@ -4,6 +4,7 @@
 	bodytype = SPECIES_NECROMORPH_PUKER
 	name_plural = "pukers"
 	total_health = 176
+	burn_mod = 1.1
 	biomass = 130
 	require_total_biomass	=	BIOMASS_REQ_T2
 	mass = 120
