@@ -136,7 +136,8 @@
 
 /obj/item/weapon/gun/pickup(mob/user)
 	.=..()
-	RegisterSignal(user, COMSIG_CARBON_SWAP_HANDS, .proc/swaped_hands)
+	//Gonna use override = TRUE because of bay shitcode
+	RegisterSignal(user, COMSIG_CARBON_SWAP_HANDS, .proc/swaped_hands, override = TRUE)
 
 /obj/item/weapon/gun/dropped(mob/living/user)
 	UnregisterSignal(user, COMSIG_CARBON_SWAP_HANDS)

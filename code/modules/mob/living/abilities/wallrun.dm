@@ -538,4 +538,6 @@
 	if (W)
 		return W.visual_dir
 	else
+		if(dir > SOUTHWEST)
+			return NORTH
 		return dir

@@ -33,18 +33,9 @@
 	if(T != loc)
 		forceMove(T)
 
-/atom/proc/recursive_dir_set(atom/a, old_dir, new_dir)
-	SIGNAL_HANDLER
-	if (new_dir != old_dir)
-		set_dir(new_dir)
-
 /datum/proc/qdel_self()
 	SIGNAL_HANDLER
 	qdel(src)
-
-/atom/movable/proc/recursive_move(atom/movable/am, old_loc, new_loc)
-	SIGNAL_HANDLER
-	SEND_SIGNAL(src, COMSIG_MOVABLE_MOVED, old_loc, new_loc)
 
 /atom/movable/forceMove(atom/destination, special_event, glide_size_override=0)
 	var/old_loc = loc
@@ -83,14 +74,6 @@
 /atom/Entered(atom/movable/enterer, atom/old_loc)
 	.=..()
 	SEND_SIGNAL(src, COMSIG_ATOM_ENTERED, enterer, old_loc)
-
-/atom/movable/Entered(atom/movable/am, atom/old_loc)
-	.=..()
-	am.RegisterSignal(src, COMSIG_ATOM_DIR_CHANGE, .proc/recursive_dir_set)
-
-/atom/movable/Exited(atom/movable/am, atom/old_loc)
-	.=..()
-	am.UnregisterSignal(src, COMSIG_ATOM_DIR_CHANGE)
 
 /mob/proc/set_see_in_dark(var/new_see_in_dark)
 	var/old_see_in_dark = sight
