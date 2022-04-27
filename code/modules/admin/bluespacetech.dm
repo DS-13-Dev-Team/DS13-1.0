@@ -249,7 +249,7 @@
 	set desc = "Enable or disable god mode. For testing things that require you to be vulnerable."
 	set category = "BST"
 
-	status_flags |= GODMODE
+	status_flags ^= GODMODE
 	to_chat(src, SPAN_NOTICE("God mode is now [status_flags & GODMODE ? "enabled" : "disabled"]"))
 
 

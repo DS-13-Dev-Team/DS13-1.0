@@ -390,15 +390,15 @@ SUBSYSTEM_DEF(garbage)
 	testing("Beginning search for references to a [type].")
 	last_find_references = world.time
 
-	DoSearchVar(GLOB) //globals
+	DoSearchVar(GLOB, "[ADMIN_VV(GLOB)]") //globals
 	for(var/datum/thing in world) //atoms (don't believe its lies)
-		DoSearchVar(thing, "World -> [thing]")
+		DoSearchVar(thing, "World -> [thing] [ADMIN_VV(thing)]")
 
 	for (var/datum/thing) //datums
-		DoSearchVar(thing, "World -> [thing]")
+		DoSearchVar(thing, "World -> [thing] [ADMIN_VV(thing)]")
 
 	for (var/client/thing) //clients
-		DoSearchVar(thing, "World -> [thing]")
+		DoSearchVar(thing, "World -> [thing] [ADMIN_VV(thing)]")
 
 	testing("Completed search for references to a [type].")
 	if(usr && usr.client)

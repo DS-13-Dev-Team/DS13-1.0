@@ -178,7 +178,7 @@ datum/sound_token/proc/Mute()
 
 	var/sound/null_sound = new(channel = sound.channel)
 	for(var/listener in listeners)
-		PrivRemoveListener(listener, null_sound)
+		PrivRemoveListener(listener, null, null_sound)
 	listeners = null
 	listener_status = null
 
@@ -231,13 +231,15 @@ datum/sound_token/proc/Mute()
 
 	PrivUpdateListenerLoc(listener, FALSE)
 
-/datum/sound_token/proc/PrivRemoveListener(var/atom/listener, var/sound/null_sound)
+/datum/sound_token/proc/PrivRemoveListener(atom/listener, force_state, sound/null_sound)
 	SIGNAL_HANDLER
-	if (!QDELETED(listener))
-		null_sound = null_sound || new(channel = sound.channel)
-		SEND_SOUND(listener, null_sound)
+	if(listener)
+		if(!QDELING(listener))
+			null_sound = null_sound || new(channel = sound.channel)
+			SEND_SOUND(listener, null_sound)
 		UnregisterSignal(listener, list(COMSIG_MOVABLE_MOVED, COMSIG_PARENT_QDELETING))
 	listeners -= listener
+	listener_status -= listener
 
 /datum/sound_token/proc/PrivUpdateListenerLoc(var/atom/listener, var/update_sound = TRUE)
 	SIGNAL_HANDLER
