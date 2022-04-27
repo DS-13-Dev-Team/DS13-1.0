@@ -30,7 +30,7 @@
 
 	aiming_modes = list(/datum/extension/aim_mode/rifle)
 
-	screen_shake = 1
+	screen_shake = 0.1 //This needs to be small or people will get seizures.
 
 	firemodes = list(
 		list(mode_name="full auto",  mode_type = /datum/firemode/automatic/pulserifle, fire_delay=HP_BASE_DELAY, dispersion = list(1.90)),
@@ -54,7 +54,7 @@
 	var/overheat_cooldown_mult = 1.5
 
 	//When overheating, we exit the overheat state if heat drops below this value
-	var/overheat_min = 0.575
+	var/overheat_min = 0.8625 //75%
 
 	//Loses this much heat per second. Approx 200 seconds to cooldown completely
 	var/cooldown_per_second	=	0.00575

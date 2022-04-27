@@ -64,3 +64,5 @@ changes:
   - balance: "HPR is 15% slower to overheat. Cools down significantly faster, especially when above 50% heat (20-30% on average)"
   - balance: "HPR max firerate increased by 4-5%"
   - balance: "HPR max firerate slower to attain which makes the gun easier to control again."
+  - balance: "HPR recoil is now pretty small"
+  - balance: "HPR can be fired again sooner after overheating."
