@@ -13,10 +13,11 @@
 	var/tag_secure = 0
 	var/list/dummy_terminals = list()
 	var/cycle_to_external_air = 0
+	var/target_external_pressure = 0
 
 /obj/machinery/embedded_controller/radio/airlock/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
-	program = new/datum/computer/file/embedded_program/airlock(src)
+	program = new/datum/computer/file/embedded_program/airlock(src, target_external_pressure)
 
 /obj/machinery/embedded_controller/radio/airlock/Destroy()
 	for(var/thing in dummy_terminals)

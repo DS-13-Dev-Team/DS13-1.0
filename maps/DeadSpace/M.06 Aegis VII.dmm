@@ -24,7 +24,7 @@
 /turf/unsimulated/mask,
 /area/aegis/colony/maintenance/east)
 "ag" = (
-/turf/simulated/floor/asteroid,
+/turf/simulated/floor/asteroid/outside_ds,
 /area/aegis)
 "ah" = (
 /obj/machinery/door/blast/regular,
@@ -188,7 +188,7 @@
 /area/aegis/colony/spare_storage)
 "aL" = (
 /obj/random/loot/usually,
-/turf/simulated/floor/asteroid,
+/turf/simulated/floor/asteroid/outside_ds,
 /area/aegis)
 "aM" = (
 /obj/machinery/door/firedoor/border_only{
@@ -755,14 +755,14 @@
 	},
 /obj/effect/floor_decal/industrial/warning/full,
 /obj/machinery/embedded_controller/radio/airlock/airlock_controller{
-	cycle_to_external_air = 0;
 	frequency = 1380;
 	id_tag = "aegis_airlock";
 	pixel_y = 30;
 	tag_airpump = "aegis_airlock_pump";
 	tag_chamber_sensor = "aegis_airlock_sensor";
 	tag_exterior_door = "aegis_airlock_outer";
-	tag_interior_door = "aegis_airlock_inner"
+	tag_interior_door = "aegis_airlock_inner";
+	target_external_pressure = 101.325
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/aegis/colony/airlock)
@@ -3326,7 +3326,7 @@
 /area/aegis/colony/security)
 "hp" = (
 /obj/random/loot/usually,
-/turf/simulated/floor/asteroid,
+/turf/simulated/floor/asteroid/outside_ds,
 /area/aegis/colony/maintenance/east)
 "hq" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -4170,10 +4170,10 @@
 /area/aegis/colony/spare_storage)
 "iS" = (
 /obj/effect/landmark/marker/aegis,
-/turf/simulated/floor/asteroid,
+/turf/simulated/floor/asteroid/outside_ds,
 /area/aegis)
 "iT" = (
-/turf/simulated/floor/asteroid,
+/turf/simulated/floor/asteroid/outside_ds,
 /area/aegis/colony/maintenance/east)
 "iU" = (
 /obj/structure/table/standard,
@@ -4241,7 +4241,7 @@
 "jc" = (
 /obj/random/loot/usually,
 /obj/random/loot/usually,
-/turf/simulated/floor/asteroid,
+/turf/simulated/floor/asteroid/outside_ds,
 /area/aegis)
 "jd" = (
 /obj/structure/bed/chair{
@@ -4649,7 +4649,7 @@
 /area/aegis/colony/research/airlock)
 "ke" = (
 /obj/machinery/floodlight/on,
-/turf/simulated/floor/asteroid,
+/turf/simulated/floor/asteroid/outside_ds,
 /area/aegis)
 "kf" = (
 /obj/structure/anomaly_container,
@@ -4657,7 +4657,7 @@
 /area/aegis)
 "kg" = (
 /obj/structure/anomaly_container,
-/turf/simulated/floor/asteroid,
+/turf/simulated/floor/asteroid/outside_ds,
 /area/aegis)
 "kh" = (
 /obj/structure/table/steel,
@@ -6485,7 +6485,7 @@
 "nJ" = (
 /obj/machinery/suspension_gen,
 /obj/item/weapon/tool/wrench,
-/turf/simulated/floor/asteroid,
+/turf/simulated/floor/asteroid/outside_ds,
 /area/aegis)
 "nK" = (
 /obj/structure/sign/warning/radioactive,
