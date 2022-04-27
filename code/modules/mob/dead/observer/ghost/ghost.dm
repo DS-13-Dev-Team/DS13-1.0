@@ -320,11 +320,16 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	stop_following()
 	following = target
 	RegisterSignal(following, COMSIG_MOVABLE_MOVED, /atom/movable/proc/move_to_turf)
-	RegisterSignal(following, COMSIG_ATOM_DIR_CHANGE, /atom/proc/recursive_dir_set)
+	RegisterSignal(following, COMSIG_ATOM_DIR_CHANGE, .proc/recursive_dir_set)
 	RegisterSignal(following, COMSIG_PARENT_QDELETING, .proc/stop_following)
 
 	to_chat(src, "<span class='notice'>Now following \the [following].</span>")
 	move_to_turf(following, loc, following.loc)
+
+/mob/dead/observer/ghost/proc/recursive_dir_set(atom/a, old_dir, new_dir)
+	SIGNAL_HANDLER
+	if (new_dir != old_dir)
+		set_dir(new_dir)
 
 /mob/dead/observer/ghost/proc/stop_following()
 	SIGNAL_HANDLER
