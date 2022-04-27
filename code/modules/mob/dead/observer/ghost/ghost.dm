@@ -33,23 +33,30 @@ var/global/list/image/ghost_sightless_images = list() //this is a list of images
 	var/obj/item/weapon/tool/multitool/ghost/ghost_multitool
 	var/list/hud_images // A list of hud images
 
-/mob/dead/observer/ghost/New(mob/body)
+/mob/dead/observer/ghost/New(mob/body, transfer_key = TRUE)
 	add_verb(src, /mob/proc/toggle_antag_pool)
 
 	var/turf/T
 	if(ismob(body))
 		T = get_turf(body)               //Where is the body located?
+		if(!T)
+			T = pick(GLOB.latejoin | GLOB.latejoin_cryo | GLOB.latejoin_gateway) //Safety in case we cannot find the body's position
+		forceMove(T)
 		attack_logs_ = body.attack_logs_ //preserve our attack logs by copying them to our ghost
 
 		set_appearance(body)
 		if(body.mind)
-			body.mind.active = TRUE
-			body.mind.transfer_to(src)
+			if(!transfer_key)
+				body.mind.active = FALSE
+				body.mind.transfer_to(src)
+				body.mind.active = TRUE
+			else
+				body.mind.transfer_to(src)
 		else //new mind for the body
-			spawn(10)
-				var/datum/mind/new_mind = new /datum/mind(key)
+			var/datum/mind/new_mind = new /datum/mind(key)
+			if(transfer_key)
 				new_mind.active = TRUE
-				new_mind.transfer_to(src)
+			new_mind.transfer_to(src)
 		if(mind.name)
 			name = mind.name
 		else
@@ -62,12 +69,11 @@ var/global/list/image/ghost_sightless_images = list() //this is a list of images
 					name = capitalize(pick(GLOB.first_names_female)) + " " + capitalize(pick(GLOB.last_names))
 
 	else
-		spawn(10) // wait for the observer mob to receive the client's key
-			var/datum/mind/new_mind = new /datum/mind(key)
+		forceMove(pick(GLOB.latejoin | GLOB.latejoin_cryo | GLOB.latejoin_gateway))
+		var/datum/mind/new_mind = new /datum/mind(key)
+		if(transfer_key)
 			new_mind.active = TRUE
-			new_mind.transfer_to(src)
-	if(!T)	T = pick(GLOB.latejoin | GLOB.latejoin_cryo | GLOB.latejoin_gateway)			//Safety in case we cannot find the body's position
-	forceMove(T)
+		new_mind.transfer_to(src)
 
 	if(!name)							//To prevent nameless ghosts
 		name = capitalize(pick(GLOB.first_names_male)) + " " + capitalize(pick(GLOB.last_names))
@@ -159,7 +165,6 @@ Works together with spawning an observer, noted above.
 		var/mob/dead/observer/ghost/ghost = new(src)	//Transfer safety to observer spawning proc.
 		ghost.can_reenter_corpse = can_reenter_corpse
 		ghost.timeofdeath = src.stat == DEAD ? src.timeofdeath : world.time
-		ghost.key = key
 		if (ghost.client)		// For new ghosts we remove the verb from even showing up if it's not allowed.
 			if (!ghost.client.holder && !CONFIG_GET(flag/antag_hud_allowed))
 				remove_verb(ghost, /mob/dead/observer/ghost/verb/toggle_antagHUD)// Poor guys, don't know what they are missing!
