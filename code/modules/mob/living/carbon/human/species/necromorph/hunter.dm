@@ -30,6 +30,7 @@
 	can_obliterate = FALSE
 	healing_factor = 4	//Minor constant healing
 	burn_heal_factor = 0.15
+	burn_mod = 1.3
 	dismember_mult = 1
 	biomass = 400
 	require_total_biomass	=	BIOMASS_REQ_T3

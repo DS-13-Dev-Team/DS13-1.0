@@ -140,6 +140,7 @@
 	mob_type = /mob/living/carbon/human/necromorph/slasher_enhanced
 	unarmed_types = list(/datum/unarmed_attack/blades/strong, /datum/unarmed_attack/bite/strong)
 	total_health = 250
+	burn_mod = 1.1
 	slowdown = 2.8
 	biomass = 125
 	require_total_biomass	=	BIOMASS_REQ_T2
