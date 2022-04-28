@@ -126,9 +126,11 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 	icon_state = "ghost"
 
 
-	if (ckey)
+	if(key)
 		message_necromorphs(SPAN_NOTICE("[key] has left the necromorph horde."))
 		set_necromorph(FALSE)
+	var/mob/dead/observer/ghost = ghostize(0)
+	ghost.key = key
 	qdel(src)
 
 
