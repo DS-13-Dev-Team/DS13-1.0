@@ -15,7 +15,7 @@
 
 /datum/genetics/side_effect/proc/trigger_side_effect(mob/living/carbon/human/H)
 	if(ishuman(H))
-		addtimer(CALLBACK(src, .proc/do_side_effect, H), 0)
+		INVOKE_ASYNC(src, .proc/do_side_effect, H)
 
 /datum/genetics/side_effect/proc/do_side_effect(mob/living/carbon/human/H)
 	var/tp = pick(typesof(/datum/genetics/side_effect) - /datum/genetics/side_effect)

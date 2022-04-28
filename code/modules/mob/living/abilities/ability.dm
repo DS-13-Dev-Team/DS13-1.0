@@ -64,7 +64,7 @@
 			src.vars[thing] = parameters[thing]
 
 	pre_calculate()
-	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/ability/proc/start), 0, TIMER_STOPPABLE)
+	INVOKE_ASYNC(src, .proc/start)
 
 
 

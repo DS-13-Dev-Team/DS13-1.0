@@ -42,7 +42,7 @@ var/bomb_set
 		timeleft = max(timeleft - (wait / 10), 0)
 		playsound(loc, 'sound/items/timer.ogg', 50)
 		if(timeleft <= 0)
-			addtimer(CALLBACK(src, .proc/explode), 0)
+			INVOKE_ASYNC(src, .proc/explode)
 		SSnano.update_uis(src)
 
 /obj/machinery/nuclearbomb/attackby(obj/item/weapon/O as obj, mob/user as mob, params)

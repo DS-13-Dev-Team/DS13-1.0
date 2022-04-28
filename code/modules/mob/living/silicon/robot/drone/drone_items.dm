@@ -191,7 +191,7 @@
 		var/resolved = wrapped.resolve_attackby(target,user,params)
 
 		//If resolve_attackby forces waiting before taking wrapped, we need to let it finish before doing the rest.
-		addtimer(CALLBACK(src, .proc/finish_using, target, user, params, force_holder, resolved), 0)
+		INVOKE_ASYNC(src, .proc/finish_using, target, user, params, force_holder, resolved)
 
 	else if(istype(target,/obj/item)) //Check that we're not pocketing a mob.
 		var/obj/item/I = target

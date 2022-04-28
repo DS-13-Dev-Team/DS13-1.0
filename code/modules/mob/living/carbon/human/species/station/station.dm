@@ -385,7 +385,7 @@
 /datum/species/diona/handle_post_spawn(var/mob/living/carbon/human/H)
 	H.gender = NEUTER
 	. = ..()
-	addtimer(CALLBACK(src, .proc/fill_with_nymphs, H), 0)
+	INVOKE_ASYNC(src, .proc/fill_with_nymphs, H)
 
 /datum/species/diona/proc/fill_with_nymphs(var/mob/living/carbon/human/H)
 

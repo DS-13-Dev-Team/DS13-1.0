@@ -182,7 +182,6 @@ datum/sound_token/proc/Mute()
 	listeners = null
 	listener_status = null
 
-	UnregisterSignal(source, COMSIG_PARENT_QDELETING)
 	QDEL_NULL(proxy_listener)
 	source = null
 
