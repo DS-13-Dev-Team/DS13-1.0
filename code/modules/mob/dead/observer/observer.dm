@@ -139,7 +139,7 @@ var/const/GHOST_IMAGE_ALL = ~GHOST_IMAGE_NONE
 	if(!M.client.holder && !CONFIG_GET(flag/antag_hud_allowed))           // For new ghosts we remove the verb from even showing up if it's not allowed.
 		remove_verb(observer, /mob/dead/observer/ghost/verb/toggle_antagHUD)        // Poor guys, don't know what they are missing!
 	QDEL_NULL(observer.mind)
-	M.mind.transfer_to(observer)
+	observer.key = M.key
 	qdel(M)
 
 	return 1
