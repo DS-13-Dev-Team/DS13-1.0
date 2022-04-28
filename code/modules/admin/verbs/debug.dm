@@ -274,14 +274,13 @@
 	set desc = "Direct intervention"
 
 	if(!check_rights(R_DEBUG|R_ADMIN))	return
+	var/mob/adminmob = src.mob
 	if(M.key)
 		if(tgui_alert(src, "This mob is being controlled by [M.key]. Are you sure you wish to assume control of it? [M.key] will be made a ghost.", "Confirmation", list("Yes","No")) != "Yes")
 			return
 		else
 			new/mob/dead/observer/ghost(M)
 	log_and_message_admins("assumed direct control of [M].")
-	var/mob/adminmob = src.mob
-	adminmob.mind.transfer_to(M)
 	if(isghost(adminmob))
 		qdel(adminmob)
 	feedback_add_details("admin_verb","ADC") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
