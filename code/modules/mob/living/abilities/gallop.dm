@@ -100,8 +100,8 @@
 	shake_camera(user, 20,4)
 	crashed = TRUE
 	user.Weaken(5)
-	user.Stun(5)
-	user.take_overall_damage(20, 0,0,0, stopper)
+	user.Stun(1)
+	user.take_overall_damage(5, 0,0,0, stopper)
 	stop()
 
 /***********************

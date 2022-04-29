@@ -60,7 +60,7 @@
 
 	//Vision
 	view_range = 4
-	view_offset = 3 * WORLD_ICON_SIZE
+	// view_offset = 3 * WORLD_ICON_SIZE // Just no.
 
 	//Brute Armor vars
 	var/armor_front = 30	//Flat reduction applied to incoming damage within a 45 degree cone infront
