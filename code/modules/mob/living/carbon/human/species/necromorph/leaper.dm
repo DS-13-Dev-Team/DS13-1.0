@@ -165,6 +165,7 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 
 	biomass = 180
 	spawner_spawnable = FALSE
+	require_total_biomass	=	BIOMASS_REQ_T2
 
 	inherent_verbs = list(/atom/movable/proc/leaper_leap_enhanced, /mob/living/carbon/human/proc/tailstrike_leaper_enhanced, /mob/living/proc/leaper_gallop)
 	modifier_verbs = list(KEY_CTRLALT = list(/atom/movable/proc/leaper_leap_enhanced),
