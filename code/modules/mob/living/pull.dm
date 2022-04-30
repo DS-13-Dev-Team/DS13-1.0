@@ -113,6 +113,10 @@
 	if ( !AM || src==AM || !isturf(src.loc) )	//if there's no person pulling OR the person is pulling themself OR the object being pulled is inside something: abort!
 		return FALSE
 
+	if(!Adjacent(AM))
+		to_chat(src, SPAN_WARNING("It's too far to pull!"))
+		return FALSE
+
 	if(AM.atom_flags & ATOM_FLAG_INTANGIBLE)
 		to_chat(src, "<span class='warning'>Your hand goes through [AM]!</span>")
 		return FALSE

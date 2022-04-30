@@ -208,14 +208,14 @@
 
 	//Grab some more ore to process this tick.
 	for(var/i = 1 to ores_per_tick)
-		var/obj/item/weapon/ore/O = locate() in input.loc
+		var/obj/item/stack/ore/O = locate() in input.loc
 
 		if(!O)
 			break
 
 		if(O.ore)
 			currently_working = TRUE
-			ores_stored[O.ore.type]++
+			ores_stored[O.ore.type] += O.amount
 			qdel(O)
 			SStgui.update_uis(console)
 		else
@@ -320,7 +320,7 @@
 				OS--
 				sheets++
 				currently_working = TRUE	//We have enough ore to make something
-				new /obj/item/weapon/ore/slag(output.loc)
+				new /obj/item/stack/ore/slag(output.loc)
 			ores_stored[metal] = OS
 		else
 			continue
