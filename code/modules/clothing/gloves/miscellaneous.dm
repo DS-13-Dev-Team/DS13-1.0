@@ -150,7 +150,7 @@
 	name = "armored gloves"
 	icon_state = "pcsi"
 	item_state = "pcsi"
-	armor = list(melee = 45, bullet = 45, laser = 0, energy = 0, bomb = 30, bio = 10, rad = 0)
+	armor = list(melee = 45, bullet = 45, laser = 50, energy = 40, bomb = 30, bio = 10, rad = 0)
 
 /obj/item/clothing/gloves/combat/kellion
 	desc = "A pair of thick, armored gloves designed to protect the wearer and stains off."

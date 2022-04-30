@@ -319,7 +319,7 @@
 	valid_accessory_slots = list(ACCESSORY_SLOT_INSIGNIA, ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L)
 	restricted_accessory_slots = list(ACCESSORY_SLOT_INSIGNIA, ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L)
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
-	armor = list(melee = 30, bullet = 20, laser = 0, energy = 0, bomb = 10, bio = 0, rad = 0)
+	armor = list(melee = 50, bullet = 45, laser = 60, energy = 35, bomb = 30, bio = 10, rad = 0)
 	siemens_coefficient = 0.5
 	starting_accessories = list(/obj/item/clothing/accessory/armguards/pcsi, /obj/item/clothing/accessory/legguards/pcsi)
 

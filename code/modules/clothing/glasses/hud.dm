@@ -44,8 +44,7 @@
 	desc = "A heads-up display that scans the humans in view and provides accurate data about their ID status and security records."
 	icon_state = "securityhud"
 	hud_type = HUD_SECURITY
-	body_parts_covered = 0
-	var/global/list/jobs[0]
+	flash_protection = FLASH_PROTECTION_MAJOR
 
 /obj/item/clothing/glasses/hud/security/prescription
 	name = "prescription security HUD"
