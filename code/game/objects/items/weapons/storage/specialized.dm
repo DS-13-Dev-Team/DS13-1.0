@@ -18,11 +18,39 @@
 	max_storage_space = 30
 	max_w_class = ITEM_SIZE_NORMAL
 	w_class = ITEM_SIZE_LARGE
-	can_hold = list(/obj/item/weapon/ore)
+	can_hold = list(/obj/item/stack/ore)
 	allow_quick_gather = 1
 	allow_quick_empty = 1
 	use_to_pickup = 1
 
+
+/obj/item/weapon/storage/ore/gather_all(var/turf/T, var/mob/user)
+	var/success = 0
+	var/failure = 0
+
+	for(var/obj/item/stack/ore/O in T.contents)
+		//We assume there is only ore in the satchel
+		for(var/obj/item/stack/ore/ore as anything in contents)
+			if(!istype(O, ore.type))
+				continue
+			O.transfer_to(ore)
+			if(!QDELING(O))
+				O.forceMove(src)
+
+	for(var/obj/item/I in T)
+		if(!can_be_inserted(I, user, 0))	// Note can_be_inserted still makes noise when the answer is no
+			failure = 1
+			continue
+		success = 1
+		handle_item_insertion(I, 1, 1) // First 1 is no messages, second 1 is no ui updates
+	if(success && !failure)
+		to_chat(user, "<span class='notice'>You put everything into \the [src].</span>")
+		update_ui_after_item_insertion()
+	else if(success)
+		to_chat(user, "<span class='notice'>You put some things into \the [src].</span>")
+		update_ui_after_item_insertion()
+	else
+		to_chat(user, "<span class='notice'>You fail to pick anything up with \the [src].</span>")
 
 // -----------------------------
 //          Plant bag

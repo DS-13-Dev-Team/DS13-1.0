@@ -225,7 +225,7 @@ var/list/mining_floors = list()
 		return
 
 	clear_ore_effects()
-	var/obj/item/weapon/ore/O = new mineral.ore (src)
+	var/obj/item/stack/ore/O = new mineral.ore (src)
 	if(geologic_data && istype(O))
 		geologic_data.UpdateNearbyArtifactInfo(src)
 		O.geologic_data = geologic_data
@@ -391,7 +391,7 @@ var/list/mining_floors = list()
 		var/find = get_archeological_find_by_findtype(F.find_type)
 		new find(src)
 	else
-		var/obj/item/weapon/ore/strangerock/rock = new(src, inside_item_type = F.find_type)
+		var/obj/item/strangerock/rock = new(src, inside_item_type = F.find_type)
 		geologic_data.UpdateNearbyArtifactInfo(src)
 		rock.geologic_data = geologic_data
 
@@ -567,8 +567,14 @@ var/list/mining_floors = list()
 	else if(istype(W,/obj/item/weapon/storage/ore))
 		var/obj/item/weapon/storage/ore/S = W
 		if(S.collection_mode)
-			for(var/obj/item/weapon/ore/O in contents)
-				O.attackby(W,user)
+			for(var/obj/item/stack/ore/O in contents)
+				//We assume there is only ore in the satchel
+				for(var/obj/item/stack/ore/ore as anything in S.contents)
+					if(!istype(O, ore.type))
+						continue
+					O.transfer_to(ore)
+					if(!QDELING(O))
+						O.forceMove(src)
 				return
 	else if(istype(W,/obj/item/weapon/storage/bag/fossils))
 		var/obj/item/weapon/storage/bag/fossils/S = W
@@ -586,8 +592,7 @@ var/list/mining_floors = list()
 	if(dug)
 		return
 
-	for(var/i=0;i<(rand(3)+2);i++)
-		new/obj/item/weapon/ore/glass(src)
+	new/obj/item/stack/ore/glass(src, rand(3)+2)
 
 	dug = 1
 	icon_state = "[icon_state]_dug"

@@ -23,7 +23,7 @@
 /turf/simulated/floor/plating,
 /area/icarus/vessel)
 "ah" = (
-/obj/item/weapon/ore/slag,
+/obj/item/stack/ore/slag,
 /turf/simulated/floor/plating,
 /area/icarus/vessel)
 "ai" = (
@@ -44,7 +44,7 @@
 /turf/simulated/floor/tiled,
 /area/icarus/vessel)
 "am" = (
-/obj/item/weapon/ore/slag,
+/obj/item/stack/ore/slag,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled,
 /area/icarus/vessel)
@@ -1928,7 +1928,7 @@
 /turf/simulated/floor/plating,
 /area/icarus/vessel)
 "Fo" = (
-/obj/item/weapon/ore/slag,
+/obj/item/stack/ore/slag,
 /obj/structure/wall_frame,
 /turf/simulated/floor/plating,
 /area/icarus/vessel)

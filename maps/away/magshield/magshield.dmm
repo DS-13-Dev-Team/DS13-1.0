@@ -11,7 +11,7 @@
 /turf/space,
 /area/space)
 "ad" = (
-/obj/item/weapon/ore,
+/obj/item/stack/ore,
 /turf/space,
 /area/space)
 "ae" = (
@@ -338,7 +338,7 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
-/obj/item/weapon/ore,
+/obj/item/stack/ore,
 /turf/simulated/floor/airless,
 /area/magshield/smes_storage)
 "aQ" = (
@@ -506,7 +506,7 @@
 /turf/simulated/floor/airless,
 /area/magshield/smes_storage)
 "bo" = (
-/obj/item/weapon/ore,
+/obj/item/stack/ore,
 /turf/simulated/floor/airless,
 /area/magshield/smes_storage)
 "bp" = (
@@ -616,7 +616,7 @@
 /turf/simulated/floor/airless,
 /area/magshield/engine)
 "bE" = (
-/obj/item/weapon/ore,
+/obj/item/stack/ore,
 /turf/space,
 /area/magshield/smes_storage)
 "bF" = (
@@ -676,7 +676,7 @@
 /area/space)
 "bO" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging,
-/obj/item/weapon/ore,
+/obj/item/stack/ore,
 /turf/space,
 /area/space)
 "bP" = (
@@ -1034,7 +1034,7 @@
 	icon_state = "intact";
 	dir = 4
 	},
-/obj/item/weapon/ore,
+/obj/item/stack/ore,
 /turf/space,
 /area/space)
 "cF" = (
@@ -1050,7 +1050,7 @@
 	icon_state = "1-2";
 	pixel_y = 0
 	},
-/obj/item/weapon/ore,
+/obj/item/stack/ore,
 /turf/simulated/floor/airless,
 /area/magshield/smes_storage)
 "cG" = (
@@ -1358,7 +1358,7 @@
 /turf/simulated/floor/airless,
 /area/magshield/north)
 "di" = (
-/obj/item/weapon/ore,
+/obj/item/stack/ore,
 /turf/simulated/floor/airless,
 /area/magshield/north)
 "dj" = (
@@ -2894,7 +2894,7 @@
 /turf/space,
 /area/magshield/east)
 "hv" = (
-/obj/item/weapon/ore/slag,
+/obj/item/stack/ore/slag,
 /turf/simulated/floor/airless,
 /area/space)
 "hw" = (
@@ -2953,7 +2953,7 @@
 /turf/space,
 /area/magshield/west)
 "hF" = (
-/obj/item/weapon/ore,
+/obj/item/stack/ore,
 /turf/simulated/floor/tiled,
 /area/magshield/west)
 "hG" = (
@@ -2997,7 +2997,7 @@
 /turf/simulated/floor/carpet/blue,
 /area/magshield/west)
 "hL" = (
-/obj/item/weapon/ore,
+/obj/item/stack/ore,
 /turf/simulated/floor/tiled/dark,
 /area/magshield/west)
 "hM" = (
@@ -3241,7 +3241,7 @@
 /turf/simulated/floor/tiled,
 /area/magshield/south)
 "is" = (
-/obj/item/weapon/ore/slag,
+/obj/item/stack/ore/slag,
 /turf/space,
 /area/space)
 "it" = (
@@ -3449,7 +3449,7 @@
 /turf/simulated/floor/tiled/white,
 /area/magshield/south)
 "iX" = (
-/obj/item/weapon/ore/slag,
+/obj/item/stack/ore/slag,
 /turf/simulated/floor/tiled/white,
 /area/magshield/south)
 "iY" = (
@@ -3950,7 +3950,7 @@
 /turf/simulated/floor/tiled,
 /area/magshield/south)
 "ku" = (
-/obj/item/weapon/ore,
+/obj/item/stack/ore,
 /turf/space,
 /area/magshield/south)
 "kv" = (

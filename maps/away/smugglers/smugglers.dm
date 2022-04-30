@@ -79,11 +79,11 @@
 
 /obj/random/ore_smug/item_to_spawn()
 	return pickweight(list(
-		/obj/item/weapon/ore/uranium,
-		/obj/item/weapon/ore/gold,
-		/obj/item/weapon/ore/silver,
-		/obj/item/weapon/ore/slag,
-		/obj/item/weapon/ore/phoron))
+		/obj/item/stack/ore/uranium,
+		/obj/item/stack/ore/gold,
+		/obj/item/stack/ore/silver,
+		/obj/item/stack/ore/slag,
+		/obj/item/stack/ore/phoron))
 
 /obj/random/ammo_magazine_smug
 	name = "Random Ammo Magazine"

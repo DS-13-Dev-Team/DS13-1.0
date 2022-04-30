@@ -60,7 +60,7 @@ GLOBAL_LIST_EMPTY(ores_by_type)
 	smelts_to = "uranium"
 	result_amount = 5
 	spread_chance = 10
-	ore = /obj/item/weapon/ore/uranium
+	ore = /obj/item/stack/ore/uranium
 	scan_icon = "mineral_uncommon"
 	xarch_ages = list(
 		"thousand" = 999,
@@ -76,7 +76,7 @@ GLOBAL_LIST_EMPTY(ores_by_type)
 	alloy = 1
 	result_amount = 5
 	spread_chance = 25
-	ore = /obj/item/weapon/ore/iron
+	ore = /obj/item/stack/ore/iron
 	scan_icon = "mineral_common"
 
 /ore/coal
@@ -87,7 +87,7 @@ GLOBAL_LIST_EMPTY(ores_by_type)
 	alloy = 1
 	result_amount = 5
 	spread_chance = 25
-	ore = /obj/item/weapon/ore/coal
+	ore = /obj/item/stack/ore/coal
 	scan_icon = "mineral_common"
 
 /ore/glass
@@ -97,7 +97,7 @@ GLOBAL_LIST_EMPTY(ores_by_type)
 	smelts_to = MATERIAL_GLASS
 	alloy = 1
 	compresses_to = MATERIAL_SANDSTONE
-	ore = /obj/item/weapon/ore/glass //Technically not needed since there's no glass ore vein, but consistency is nice
+	ore = /obj/item/stack/ore/glass //Technically not needed since there's no glass ore vein, but consistency is nice
 
 /ore/phoron
 	name = MATERIAL_PHORON
@@ -106,7 +106,7 @@ GLOBAL_LIST_EMPTY(ores_by_type)
 	//smelts_to = something that explodes violently on the conveyor, huhuhuhu
 	result_amount = 5
 	spread_chance = 25
-	ore = /obj/item/weapon/ore/phoron
+	ore = /obj/item/stack/ore/phoron
 	scan_icon = "mineral_uncommon"
 	xarch_ages = list(
 		"thousand" = 999,
@@ -123,7 +123,7 @@ GLOBAL_LIST_EMPTY(ores_by_type)
 	smelts_to = MATERIAL_SILVER
 	result_amount = 5
 	spread_chance = 10
-	ore = /obj/item/weapon/ore/silver
+	ore = /obj/item/stack/ore/silver
 	scan_icon = "mineral_uncommon"
 	origin_tech = list(TECH_MATERIAL = 3)
 
@@ -133,7 +133,7 @@ GLOBAL_LIST_EMPTY(ores_by_type)
 	display_name = "native gold"
 	result_amount = 5
 	spread_chance = 10
-	ore = /obj/item/weapon/ore/gold
+	ore = /obj/item/stack/ore/gold
 	scan_icon = "mineral_uncommon"
 	xarch_ages = list(
 		"thousand" = 999,
@@ -149,7 +149,7 @@ GLOBAL_LIST_EMPTY(ores_by_type)
 	compresses_to = MATERIAL_DIAMOND
 	result_amount = 5
 	spread_chance = 10
-	ore = /obj/item/weapon/ore/diamond
+	ore = /obj/item/stack/ore/diamond
 	scan_icon = "mineral_rare"
 	xarch_source_mineral = "nitrogen"
 	origin_tech = list(TECH_MATERIAL = 6)
@@ -162,7 +162,7 @@ GLOBAL_LIST_EMPTY(ores_by_type)
 	alloy = 1
 	result_amount = 5
 	spread_chance = 10
-	ore = /obj/item/weapon/ore/osmium
+	ore = /obj/item/stack/ore/osmium
 	scan_icon = "mineral_rare"
 
 /ore/hydrogen
@@ -170,5 +170,5 @@ GLOBAL_LIST_EMPTY(ores_by_type)
 	display_name = "metallic hydrogen"
 	smelts_to = "tritium"
 	compresses_to = "mhydrogen"
-	ore = /obj/item/weapon/ore/hydrogen //Technically not needed since there's no hydrogen ore vein, but consistency is nice
+	ore = /obj/item/stack/ore/hydrogen //Technically not needed since there's no hydrogen ore vein, but consistency is nice
 	scan_icon = "mineral_rare"

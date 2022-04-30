@@ -22,14 +22,14 @@
 /turf/simulated/floor/plating,
 /area/icarus/vessel)
 "ai" = (
-/obj/item/weapon/ore/slag,
+/obj/item/stack/ore/slag,
 /turf/simulated/floor/plating,
 /area/icarus/vessel)
 "aj" = (
 /turf/simulated/floor/wood,
 /area/icarus/vessel)
 "ak" = (
-/obj/item/weapon/ore/slag,
+/obj/item/stack/ore/slag,
 /turf/simulated/floor/wood,
 /area/icarus/vessel)
 "al" = (
@@ -82,7 +82,7 @@
 /turf/simulated/floor/wood,
 /area/icarus/vessel)
 "ax" = (
-/obj/item/weapon/ore/slag,
+/obj/item/stack/ore/slag,
 /turf/simulated/floor/exoplanet/grass,
 /area/icarus/open)
 "ay" = (
@@ -1480,7 +1480,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/ore/slag,
+/obj/item/stack/ore/slag,
 /turf/unsimulated/beach/sand,
 /area/icarus/open)
 "eS" = (
@@ -1512,7 +1512,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/ore/slag,
+/obj/item/stack/ore/slag,
 /turf/unsimulated/beach/sand,
 /area/icarus/open)
 "eV" = (
@@ -1718,7 +1718,7 @@
 /area/icarus/open)
 "fs" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/ore/slag,
+/obj/item/stack/ore/slag,
 /turf/unsimulated/beach/sand,
 /area/icarus/open)
 "ft" = (
@@ -2565,7 +2565,7 @@
 "ie" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/ore/slag,
+/obj/item/stack/ore/slag,
 /turf/unsimulated/beach/sand,
 /area/icarus/open)
 "if" = (
@@ -2574,7 +2574,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/ore/slag,
+/obj/item/stack/ore/slag,
 /turf/unsimulated/beach/sand,
 /area/icarus/open)
 "ig" = (
@@ -2599,7 +2599,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/ore/slag,
+/obj/item/stack/ore/slag,
 /turf/unsimulated/beach/sand,
 /area/icarus/open)
 "ij" = (
@@ -2638,7 +2638,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/ore/slag,
+/obj/item/stack/ore/slag,
 /turf/unsimulated/beach/sand,
 /area/icarus/open)
 "io" = (
