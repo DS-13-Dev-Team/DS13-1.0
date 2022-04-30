@@ -29,7 +29,7 @@
 	var/failure = 0
 
 	for(var/obj/item/stack/ore/O in T.contents)
-		if(!can_be_inserted(I, user, 0))	// Note can_be_inserted still makes noise when the answer is no
+		if(!can_be_inserted(O, user, 0))	// Note can_be_inserted still makes noise when the answer is no
 			failure = 1
 			continue
 		success = 1
