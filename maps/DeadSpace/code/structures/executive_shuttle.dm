@@ -62,8 +62,13 @@ GLOBAL_LIST_INIT(executive_shuttle_controllers, list())
 	var/auth_timeout = 10 SECONDS //How long do you have to launch before this one's auth times out?
 
 /obj/machinery/computer/shuttle_control/executive/Initialize()
-	. = ..()
+	.=..()
 	GLOB.executive_shuttle_controllers += src
+
+/obj/machinery/computer/shuttle_control/executive/Destroy()
+	//Remove it from the list to prevent hard deletion
+	GLOB.executive_shuttle_controllers -= src
+	.=..()
 
 /obj/machinery/computer/shuttle_control/executive/get_ui_data(datum/shuttle/autodock/shuttle)
 	var/list/data = ..()
