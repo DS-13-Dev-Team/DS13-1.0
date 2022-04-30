@@ -35,8 +35,7 @@
 	if (cooldown)
 		src.cooldown = cooldown
 
-
-	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/<name>/proc/start), 0, TIMER_STOPPABLE)
+	INVOKE_ASYNC(src, .proc/start)
 
 
 

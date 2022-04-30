@@ -321,7 +321,7 @@ var/list/mob/living/forced_ambiance_list = new
 
 
 
-	if(ambience.len && prob(5) && (world.time >= L.client.played + 1.5 MINUTES))
+	if(LAZYLEN(ambience) && prob(5) && (world.time >= L.client.played + 1.5 MINUTES))
 		L.playsound_local(T, sound(pick(ambience), repeat = 0, wait = 0, volume = 15, channel = 1)) //channel 1 stops ambience clips cutting out when you enter a new area. that was an easier fix than the forced_ambience situation lol
 		L.client.played = world.time
 

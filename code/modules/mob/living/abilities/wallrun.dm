@@ -197,7 +197,7 @@
 //Called everytime we move between mountpoints, or end mounting
 /datum/extension/wallrun/proc/unmount(var/atom/target)
 	if (mountpoint)
-		UnregisterSignal(mountpoint, COMSIG_MOVABLE_MOVED)
+		UnregisterSignal(mountpoint, list(COMSIG_MOVABLE_MOVED, COMSIG_PARENT_QDELETING))
 		UnregisterSignal(A, list(COMSIG_ATOM_DIR_CHANGE, COMSIG_MOVABLE_PRE_MOVE, COMSIG_ATOM_DENSITY_CHANGE, COMSIG_MOVABLE_MOVED, COMSIG_PARENT_QDELETING, COMSIG_LIVING_DEATH))
 
 

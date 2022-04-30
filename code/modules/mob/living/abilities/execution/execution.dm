@@ -164,7 +164,7 @@ if (result == EXECUTION_CANCEL && can_interrupt){\
 		var/stagetype = all_stages[i]
 		all_stages[i] = new stagetype(src)
 
-	//ongoing_timer = addtimer(CALLBACK(src, /datum/extension/execution/proc/start), 0, TIMER_STOPPABLE)
+	//INVOKE_ASYNC(src, .proc/start)
 
 
 
@@ -370,7 +370,7 @@ if (result == EXECUTION_CANCEL && can_interrupt){\
 	if (current_stage_index > max_stages)
 		//We just finished the last stage, time to stop.
 		complete()
-		ongoing_timer = addtimer(CALLBACK(src, /datum/extension/execution/proc/stop), 0, TIMER_STOPPABLE)
+		INVOKE_ASYNC(src, .proc/stop)
 		return
 
 	//Here's our new current stage, enter it

@@ -90,7 +90,7 @@ Vars/
 	src.cooldown = cooldown
 
 	handle_extra_data(extra_data)
-	//ongoing_timer = addtimer(CALLBACK(src, /datum/extension/spray/proc/start), 0)
+	//INVOKE_ASYNC(src, .proc/start)
 
 /datum/extension/spray/proc/handle_extra_data(var/list/data)
 

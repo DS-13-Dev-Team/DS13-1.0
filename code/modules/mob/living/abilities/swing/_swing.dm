@@ -87,7 +87,7 @@
 	src.damage_flags = damage_flags
 	src.stages = stages
 	src.swing_direction = swing_direction
-	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/swing/proc/start), 0, TIMER_STOPPABLE)
+	INVOKE_ASYNC(src, .proc/start)
 
 
 /datum/extension/swing/Destroy()

@@ -90,7 +90,7 @@ proc/explosion_rec(turf/epicenter, power, var/falloff = 1, shaped)
 			if(AM && !(AM.atom_flags & ATOM_FLAG_INTANGIBLE) && AM.simulated && !T.protects_atom(AM))
 				AM.ex_act(severity, epicenter)
 				if(!AM.anchored)
-					addtimer(CALLBACK(AM, /atom/movable/.proc/throw_at, throw_target, 9/severity, 9/severity), 0)
+					INVOKE_ASYNC(AM, /atom/movable/.proc/throw_at, throw_target, 9/severity, 9/severity)
 
 			CHECK_TICK
 

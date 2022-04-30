@@ -707,7 +707,7 @@
 	else
 		user.take_blood(beaker, dam)
 	user.Stun(2)
-	addtimer(CALLBACK(src, .proc/shake, user, 40), 0)
+	INVOKE_ASYNC(src, .proc/shake, user, 40)
 
 /obj/machinery/reagentgrinder/proc/shake(mob/user, duration)
 	for(var/i = 1, i<=duration, i++)

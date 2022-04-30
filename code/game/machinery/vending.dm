@@ -352,7 +352,6 @@
 		if(src.shock(user, 100))
 			return
 	if(!shot_down && user.a_intent == I_HURT)
-		admin_notice("entramos en el strike_machine")
 		user.strike_machine(src)
 		return
 	else if(shot_down && user.a_intent != I_HURT)

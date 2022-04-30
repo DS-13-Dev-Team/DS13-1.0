@@ -225,12 +225,11 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		to_chat(src, "<span class='warning'>Another consciousness is in your body... it is resisting you.</span>")
 		return
 	stop_following()
-	mind.current.key = key
+	mind.transfer_to(mind.current)
 	mind.current.teleop = null
 	mind.current.reload_fullscreens()
 	if(!admin_ghosted)
 		announce_ghost_joinleave(mind, 0, "They now occupy their body again.")
-	src.client.init_verbs()
 	return 1
 
 /mob/dead/observer/ghost/verb/toggle_medHUD()
