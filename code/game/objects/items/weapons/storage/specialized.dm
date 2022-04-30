@@ -29,20 +29,17 @@
 	var/failure = 0
 
 	for(var/obj/item/stack/ore/O in T.contents)
+		if(!can_be_inserted(I, user, 0))	// Note can_be_inserted still makes noise when the answer is no
+			failure = 1
+			continue
+		success = 1
 		//We assume there is only ore in the satchel
 		for(var/obj/item/stack/ore/ore as anything in contents)
 			if(!istype(O, ore.type))
 				continue
 			O.transfer_to(ore)
-			if(!QDELING(O))
-				O.forceMove(src)
-
-	for(var/obj/item/I in T)
-		if(!can_be_inserted(I, user, 0))	// Note can_be_inserted still makes noise when the answer is no
-			failure = 1
-			continue
-		success = 1
-		handle_item_insertion(I, 1, 1) // First 1 is no messages, second 1 is no ui updates
+		if(!QDELING(O))
+			handle_item_insertion(O, 1, 1) // First 1 is no messages, second 1 is no ui updates
 	if(success && !failure)
 		to_chat(user, "<span class='notice'>You put everything into \the [src].</span>")
 		update_ui_after_item_insertion()
