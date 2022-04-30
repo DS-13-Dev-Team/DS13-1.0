@@ -235,6 +235,7 @@
 
 
 /datum/extension/wallrun/proc/cache_data()
+	pixel_offset_magnitude = A.default_pixel_y
 	cached_pixels = get_new_vector(A.default_pixel_x, A.default_pixel_y)
 	default_rotation = A.default_rotation
 	cached_alpha = A.default_alpha

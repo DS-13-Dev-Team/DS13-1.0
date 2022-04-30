@@ -17,7 +17,7 @@
 	blurb = "A long range ambusher, the leaper can leap on unsuspecting victims from afar, knock them down, and tear them apart with its bladed tail. Not good for prolonged combat though."
 	unarmed_types = list(/datum/unarmed_attack/claws) //Bite attack is a backup if blades are severed
 	total_health = 121
-	biomass = 75
+	biomass = 70
 
 	//Normal necromorph flags plus no slip
 	species_flags = SPECIES_FLAG_NO_PAIN | SPECIES_FLAG_NO_MINOR_CUT | SPECIES_FLAG_NO_POISON  | SPECIES_FLAG_NO_BLOCK | SPECIES_FLAG_NO_SLIP
@@ -29,14 +29,15 @@
 	spawner_spawnable = TRUE
 	virus_immune = 1
 	pixel_offset_x = -16
+	pixel_offset_y = -24
 	ventcrawl = FALSE //temporarily disabled until rebalanced.
 
 	evasion = 20	//Harder to hit than usual
-	var/stun = 5 //stun duration
+	var/stun = 2 //stun duration
 	var/leap_damage = 3
 
 	view_range = 9
-	view_offset = (WORLD_ICON_SIZE*3)	//Can see much farther than usual
+	// view_offset = (WORLD_ICON_SIZE*3)	//Just no.
 
 	darksight_tint = DARKTINT_GOOD
 
@@ -151,19 +152,23 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 
 /datum/species/necromorph/leaper/enhanced
 	name = SPECIES_NECROMORPH_LEAPER_ENHANCED
-	marker_spawnable = FALSE 	//Enable this once we have sprites for it
+	marker_spawnable = TRUE
 	mob_type	=	/mob/living/carbon/human/necromorph/leaper/enhanced
+	icon_template = 'icons/mob/necromorph/leaper_enhanced.dmi'
 	unarmed_types = list(/datum/unarmed_attack/claws/strong)
 	slowdown = 3
-	total_health = 200
+	total_health = 225
+	limb_health_factor = 1.6
 	evasion = 30
+	leap_damage = 3.75
+	stun = 1.5
 
-	biomass = 240
-	biomass_reclamation = 0.75
+	biomass = 180
 	spawner_spawnable = FALSE
 
-	inherent_verbs = list(/atom/movable/proc/leaper_leap_enhanced, /mob/living/carbon/human/proc/tailstrike_leaper_enhanced)
+	inherent_verbs = list(/atom/movable/proc/leaper_leap_enhanced, /mob/living/carbon/human/proc/tailstrike_leaper_enhanced, /mob/living/proc/leaper_gallop)
 	modifier_verbs = list(KEY_CTRLALT = list(/atom/movable/proc/leaper_leap_enhanced),
+	KEY_CTRLSHIFT = list(/mob/living/proc/leaper_gallop),
 	KEY_ALT = list(/mob/living/carbon/human/proc/tailstrike_leaper_enhanced))
 
 /datum/species/necromorph/leaper/hopper
@@ -183,7 +188,6 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 	pixel_offset_x = null
 
 	biomass = 7
-	biomass_reclamation = 0.75
 	spawner_spawnable = FALSE
 
 	inherent_verbs = list(/atom/movable/proc/leaper_leap_monkey, /mob/living/carbon/human/proc/tailstrike_leaper_monkey, /mob/living/proc/leaper_gallop_monkey)
@@ -269,7 +273,7 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 	else
 		H.play_species_audio(H, SOUND_SHOUT, 100, 1, 3)
 
-	return leap_attack(A, _cooldown = 6 SECONDS, _delay = 1.3 SECONDS, _speed = 7, _maxrange = 11,_lifespan = 8 SECONDS, _maxrange = 20)
+	return leap_attack(A, _cooldown = 6 SECONDS, _delay = 1.2 SECONDS, _speed = 7, _maxrange = 11,_lifespan = 8 SECONDS, _maxrange = 20)
 
 
 /atom/movable/proc/leaper_leap_enhanced(var/mob/living/A)
@@ -352,8 +356,8 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 			H.Move(charge.last_obstacle.loc)
 	else if (charge.last_obstacle.density)
 	//If something else blocked our leap, or if we hit a dense object (even intentionally) we get pretty rattled
-		H.Weaken(2)
-		H.apply_damage(15, used_weapon = charge.last_obstacle) //ow
+		H.Weaken(0.5)
+		H.apply_damage(5, used_weapon = charge.last_obstacle) //ow
 		H.play_species_audio(H, SOUND_PAIN, VOLUME_MID, 1, 3) //It huuurts
 		.=FALSE
 
@@ -367,7 +371,7 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 		A = get_step(src, dir)
 
 
-	.=tailstrike_attack(A, _damage = 22.5, _windup_time = 0.75 SECONDS, _winddown_time = 1.2 SECONDS, _cooldown = 0.5)
+	.=tailstrike_attack(A, _damage = 20, _windup_time = 0.75 SECONDS, _winddown_time = 1.2 SECONDS, _cooldown = 0.5)
 	if (.)
 		//The sound has a randomised delay
 		spawn(rand_between(0, 2 SECONDS))
@@ -412,6 +416,20 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 
 	if (gallop_ability(_duration = 4 SECONDS, _cooldown = 10 SECONDS, _power = 3))
 		H.play_species_audio(H, SOUND_SHOUT, VOLUME_MID, 1, 3)
+
+/mob/living/proc/leaper_gallop_enhanced()
+	set name = "Gallop"
+	set category = "Abilities"
+	set desc = "Gives a huge burst of speed, but makes you vulnerable"
+	var/mob/living/carbon/human/H = src
+	if (!H.has_organ(BP_L_ARM) || !H.has_organ(BP_R_ARM) || !H.has_organ(BP_TAIL))
+		to_chat(H, SPAN_WARNING("You require a tail and both arms to use this ability!"))
+		return
+
+
+	if (gallop_ability(_duration = 4 SECONDS, _cooldown = 9 SECONDS, _power = 1.5))
+		H.play_species_audio(H, SOUND_SHOUT, VOLUME_MID, 1, 3)
+
 
 /mob/living/proc/leaper_gallop_monkey()
 	set name = "Gallop"
