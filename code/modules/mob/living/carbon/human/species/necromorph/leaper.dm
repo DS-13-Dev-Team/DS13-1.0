@@ -160,7 +160,7 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 	total_health = 225
 	limb_health_factor = 1.6
 	evasion = 30
-	leap_damage = 3.75
+	leap_damage = 3.3
 	stun = 1.5
 
 	biomass = 180
