@@ -229,7 +229,7 @@
 /obj/item/stack/proc/transfer_to(obj/item/stack/S, tamount, type_verified)
 	if (!get_amount())
 		return 0
-	if ((stacktype != S.stacktype) && !type_verified)
+	if (!type_verified && (stacktype != S.stacktype))
 		return 0
 	if (isnull(tamount))
 		tamount = src.get_amount()

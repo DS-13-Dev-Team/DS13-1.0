@@ -15,11 +15,11 @@
 
 /obj/structure/ore_box/proc/pick_up_ore(obj/item/stack/ore/ore)
 	for(var/obj/item/stack/ore/stored_ore in contents)
-		if(!istype(stored_ore, ore.type))
+		if(!istype(ore, stored_ore.type))
 			continue
 		ore.transfer_to(stored_ore)
-		if(!QDELING(ore))
-			ore.forceMove(src)
+	if(!QDELING(ore))
+		ore.forceMove(src)
 
 /obj/structure/ore_box/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/stack/ore))
