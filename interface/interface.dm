@@ -94,21 +94,29 @@
 		to_chat(src, "<span class='danger'>The Github URL is not set in the server configuration.</span>")
 	return
 
-#define RULES_FILE "config/rules.html"
 /client/verb/rules()
 	set name = "Rules"
 	set desc = "Show Server Rules."
 	set hidden = 1
-	src << browse(file(RULES_FILE), "window=rules;size=720x640")
-#undef RULES_FILE
+	if(CONFIG_GET(string/ruleurl))
+		if(tgui_alert(src, "This will open the rule page in your browser. Are you sure?",,list("Yes","No"))!="Yes")
+			return
+		DIRECT_OUTPUT(src, link(CONFIG_GET(string/ruleurl)))
+	else
+		to_chat(src, "<span class='warning'>The rule URL is not set in the server configuration.</span>")
+	return
 
-#define LORE_FILE "config/lore.html"
 /client/verb/lore_splash()
 	set name = "Lore"
 	set desc = "Links to the beginner Lore wiki."
 	set hidden = 1
-	show_browser(src, file(LORE_FILE), "window=lore;size=480x320")
-#undef LORE_FILE
+	if(CONFIG_GET(string/loreurl))
+		if(tgui_alert(src, "This will open the rule page in your browser. Are you sure?",,list("Yes","No"))!="Yes")
+			return
+		DIRECT_OUTPUT(src, link(CONFIG_GET(string/loreurl)))
+	else
+		to_chat(src, "<span class='warning'>The rule URL is not set in the server configuration.</span>")
+	return
 
 /client/verb/changelog()
 	set name = "Changelog"
