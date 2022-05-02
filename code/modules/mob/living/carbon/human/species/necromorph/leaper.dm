@@ -160,8 +160,8 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 	total_health = 225
 	limb_health_factor = 1.6
 	evasion = 30
-	leap_damage = 3.75
-	stun = 1.5
+	leap_damage = 3.3
+	stun = 1
 
 	biomass = 180
 	spawner_spawnable = FALSE
@@ -335,7 +335,7 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 	else
 		H.play_species_audio(H, SOUND_SHOUT, 100, 1, 3)
 
-	return leap_attack(A, _cooldown = 4 SECONDS, _delay = 1 SECONDS, _speed = 10, _maxrange = 11, _lifespan = 8 SECONDS, _maxrange = 20)
+	return leap_attack(A, _cooldown = 5.5 SECONDS, _delay = 1 SECONDS, _speed = 10, _maxrange = 11, _lifespan = 8 SECONDS, _maxrange = 20)
 
 
 //Special effects for leaper impact, its pretty powerful if it lands on the primary target mob, but it backfires if it was blocked by anything else
