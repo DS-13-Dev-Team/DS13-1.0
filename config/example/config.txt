@@ -197,6 +197,12 @@ GUEST_JOBBAN
 ## forum address
 # FORUMURL http://example.com
 
+## Rule page address
+RULEURL https://ds-ss13.com/index.php/Rules
+
+## Lore page address
+LOREURL https://ds-ss13.com/index.php/Lore
+
 ## Wiki address
 WIKIURL https://ds-ss13.com/index.php/Main_Page
 
