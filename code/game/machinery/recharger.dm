@@ -12,7 +12,9 @@ obj/machinery/recharger
 	circuit = /obj/item/weapon/circuitboard/recharger
 	var/obj/item/charging = null
 	var/recharge_coeff = 1
+	var/charge_comp = 1 // Used when trying to charge special weapon cells. So they don't charge too fast.
 	var/list/allowed_devices = list(/obj/item/weapon/gun/energy, /obj/item/weapon/gun/magnetic/railgun, /obj/item/weapon/melee/baton, /obj/item/weapon/cell, /obj/item/modular_computer/, /obj/item/device/suit_sensor_jammer, /obj/item/weapon/computer_hardware/battery_module, /obj/item/weapon/shield_diffuser, /obj/item/clothing/mask/smokable/ecig, /obj/item/device/radio)
+	var/list/compensated_devices = list (/obj/item/weapon/cell/contact, /obj/item/weapon/cell/force)
 	var/icon_state_charged = "recharger2"
 	var/icon_state_charging = "recharger1"
 	var/icon_state_idle = "recharger0" //also when unpowered
@@ -36,6 +38,10 @@ obj/machinery/recharger/attackby(obj/item/weapon/G as obj, mob/user as mob)
 	var/allowed = 0
 	for (var/allowed_type in allowed_devices)
 		if (istype(G, allowed_type)) allowed = 1
+
+	for (var/compensated_type in compensated_devices)
+		if (istype(G, compensated_type)) charge_comp = 0.2
+		else charge_comp = 1
 
 	if(allowed)
 		if(charging)
@@ -92,7 +98,7 @@ obj/machinery/recharger/Process()
 		if(istype(C))
 			if(!C.fully_charged())
 				icon_state = icon_state_charging
-				C.give(active_power_usage*recharge_coeff*CELLRATE)
+				C.give(active_power_usage*recharge_coeff*charge_comp*CELLRATE)
 				update_use_power(2)
 			else
 				icon_state = icon_state_charged
