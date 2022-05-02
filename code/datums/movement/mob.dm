@@ -115,7 +115,7 @@
 	if(!istype(mob, /mob/living/carbon))
 		return
 	if (!mob.stat && isturf(mob.loc) && !mob.restrained())
-		mob:toggle_throw_mode()
+		mob.toggle_throw_mode()
 	else
 		return
 

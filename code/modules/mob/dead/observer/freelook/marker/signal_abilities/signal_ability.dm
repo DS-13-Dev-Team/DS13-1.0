@@ -133,7 +133,7 @@
 			var/datum/click_handler/CH = user.PushClickHandler((click_handler_type ? click_handler_type : /datum/click_handler/target), CALLBACK(src, /datum/signal_ability/proc/target_click, user))
 			CH.id = "[src.type]"
 		if (TARGET_PLACEMENT)
-			to_chat(user, SPAN_NOTICE("Now Placing [name], click on a target. Right click to cancel. Hold shift to place multiple copies, press R to rotate"))
+			to_chat(user, SPAN_NOTICE("Now Placing [name], click on a target. Right click to cancel. Hold shift to place multiple copies, press Ctrl+R to rotate"))
 			//Make the placement handler, passing in atom to show. Callback is propagated through and will link its clicks back here
 			var/datum/click_handler/CH = create_ability_placement_handler(user, placement_atom, click_handler_type ? click_handler_type : /datum/click_handler/placement/ability, placement_snap, require_corruption, LOS_block, CALLBACK(src, /datum/signal_ability/proc/placement_click, user))
 			CH.id = "[src.type]"
