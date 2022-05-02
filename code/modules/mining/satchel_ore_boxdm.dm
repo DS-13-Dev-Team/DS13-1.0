@@ -18,6 +18,7 @@
 		if(!istype(ore, stored_ore.type))
 			continue
 		ore.transfer_to(stored_ore)
+		break
 	if(!QDELING(ore))
 		ore.forceMove(src)
 
