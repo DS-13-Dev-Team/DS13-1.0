@@ -87,7 +87,6 @@
 		holstered.add_fingerprint(user)
 		user.put_in_hands(holstered)
 		storage.w_class = initial(storage.w_class)
-		clear_holster()
 		atom_holder.update_icon()
 		return 1
 	return 0
