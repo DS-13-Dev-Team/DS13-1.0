@@ -34,7 +34,7 @@
 
 	evasion = 20	//Harder to hit than usual
 	var/stun = 2 //stun duration
-	var/leap_damage = 3
+	var/leap_damage = 2.8
 
 	view_range = 9
 	// view_offset = (WORLD_ICON_SIZE*3)	//Just no.
@@ -160,7 +160,7 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 	total_health = 225
 	limb_health_factor = 1.6
 	evasion = 30
-	leap_damage = 3.3
+	leap_damage = 1.4
 	stun = 1
 
 	biomass = 180
@@ -299,7 +299,7 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 	else
 		H.play_species_audio(H, SOUND_SHOUT, 100, 1, 3)
 
-	return leap_attack(A, _cooldown = 4 SECONDS, _delay = 1 SECONDS, _speed = 8, _maxrange = 11, _lifespan = 8 SECONDS, _maxrange = 20)
+	return leap_attack(A, _cooldown = 4 SECONDS, _delay = 0.9 SECONDS, _speed = 8, _maxrange = 11, _lifespan = 8 SECONDS, _maxrange = 20)
 
 
 /atom/movable/proc/leaper_leap_monkey(var/mob/living/A)
@@ -387,7 +387,7 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 		A = get_step(src, dir)
 
 	//The sound has a randomised delay
-	if(tailstrike_attack(A, _damage = 28, _windup_time = 0.6 SECONDS, _winddown_time = 1 SECONDS, _cooldown = 0))
+	if(tailstrike_attack(A, _damage = 10, _windup_time = 0.55 SECONDS, _winddown_time = 0.9 SECONDS, _cooldown = 0))
 		spawn(rand_between(0, 1.8 SECONDS))
 			play_species_audio(src, SOUND_ATTACK, 30, 1)
 
@@ -415,7 +415,7 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 		return
 
 
-	if (gallop_ability(_duration = 4 SECONDS, _cooldown = 10 SECONDS, _power = 3))
+	if (gallop_ability(_duration = 4 SECONDS, _cooldown = 15 SECONDS, _power = 3))
 		H.play_species_audio(H, SOUND_SHOUT, VOLUME_MID, 1, 3)
 
 /mob/living/proc/leaper_gallop_enhanced()
