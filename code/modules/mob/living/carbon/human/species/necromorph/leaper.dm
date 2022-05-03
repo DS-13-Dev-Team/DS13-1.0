@@ -387,7 +387,7 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 		A = get_step(src, dir)
 
 	//The sound has a randomised delay
-	if(tailstrike_attack(A, _damage = 10, _windup_time = 0.55 SECONDS, _winddown_time = 0.9 SECONDS, _cooldown = 0))
+	if(tailstrike_attack(A, _damage = 10, _windup_time = 0.55 SECONDS, _winddown_time = 0.9 SECONDS, _cooldown = 0.5))
 		spawn(rand_between(0, 1.8 SECONDS))
 			play_species_audio(src, SOUND_ATTACK, 30, 1)
 
