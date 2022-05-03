@@ -372,7 +372,7 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 		A = get_step(src, dir)
 
 
-	.=tailstrike_attack(A, _damage = 20, _windup_time = 0.75 SECONDS, _winddown_time = 1.2 SECONDS, _cooldown = 2)
+	.=tailstrike_attack(A, _damage = 20, _windup_time = 0.75 SECONDS, _winddown_time = 1.2 SECONDS, _cooldown = 2.5)
 	if (.)
 		//The sound has a randomised delay
 		spawn(rand_between(0, 2 SECONDS))
