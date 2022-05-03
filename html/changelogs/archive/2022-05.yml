@@ -29,3 +29,12 @@
       again.
   - balance: HPR recoil is now pretty small
   - balance: HPR can be fired again sooner after overheating.
+2022-05-03:
+  DTraitor:
+  - qol: Swapped rotate and throw keybinds. Throwing is R and rotating is Ctrl+R now.
+  Ketrai:
+  - balance: Lowers enhanced leaper's leap damage modifier from 25% more to 10% more
+      compared to normal leaper.
+  - balance: Lowers enhanced leaper's stun from 1.5 => 1 second.
+  - balance: Nerfs enhanced leaper's leap cooldown from 4 => 5.5 seconds.
+  - balance: Nerfs javelin fire delay from 1.5 to 2.5 seconds.
