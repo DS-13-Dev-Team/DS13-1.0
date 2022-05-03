@@ -161,7 +161,7 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 	limb_health_factor = 1.6
 	evasion = 30
 	leap_damage = 1.4
-	stun = 1
+	stun = 0.5
 
 	biomass = 180
 	spawner_spawnable = FALSE
