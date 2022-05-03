@@ -69,7 +69,9 @@
 	if (!can_charge(_target, TRUE))
 		return FALSE
 
-
+	var/datum/extension/gallop/E = get_extension(src, /datum/extension/gallop)
+	if(E)
+		E.stop()
 	//Ok we've passed all safety checks, let's commence charging!
 	//We simply create the extension on the movable atom, and everything works from there
 	set_extension(src, subtype, _target, _speed, _lifespan, _maxrange, _homing, _inertia, _power, _cooldown, _delay)

@@ -67,6 +67,8 @@
 		user.can_pull_mobs = MOB_PULL_SAME
 		user.can_pull_size = ITEM_SIZE_NO_CONTAINER
 		user.visible_message(SPAN_NOTICE("[user] slows down"))
+		for(var/modtype in statmods)
+			unregister_statmod(modtype)
 
 /datum/extension/gallop/proc/finish_cooldown()
 	deltimer(ongoing_timer)
@@ -112,13 +114,19 @@
 	if (incapacitated())
 		return FALSE
 
-	var/datum/extension/gallop/E = get_extension(src, /datum/extension/gallop)
-	if(istype(E))
+	var/datum/extension/gallop/gallop = get_extension(src, /datum/extension/gallop)
+	if(gallop)
 		if (error_messages)
-			if (E.stopped_at)
-				to_chat(src, SPAN_NOTICE("[E.name] is cooling down. You can use it again in [E.get_cooldown_time() /10] seconds"))
+			if (gallop.stopped_at)
+				to_chat(src, SPAN_NOTICE("[gallop.name] is cooling down. You can use it again in [gallop.get_cooldown_time() /10] seconds."))
 			else
-				E.stop()
+				gallop.stop()
+		return FALSE
+
+	var/datum/extension/charge/charge = get_extension(src, /datum/extension/charge)
+	if(charge && !charge.stopped_at)
+		if (error_messages)
+			to_chat(src, SPAN_NOTICE("You can't use use gallop while leaping!"))
 		return FALSE
 
 	return TRUE
