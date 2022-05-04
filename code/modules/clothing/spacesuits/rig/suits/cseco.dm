@@ -1,5 +1,5 @@
 /obj/item/weapon/rig/cseco
-	name = "military RIG"
+	name = "P.C.S.I Commander RIG"
 	desc = "A heavy duty and armoured rig suit, designed for riot control and shipboard disciplinary enforcement. It was designed specially for CSECO."
 	icon_state = "military_rig"
 	armor = list(melee = 70, bullet = 60, laser = 60, energy = 30, bomb = 65, bio = 100, rad = 60)
