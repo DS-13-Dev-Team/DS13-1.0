@@ -109,7 +109,7 @@
 		'sound/effects/creatures/necromorph/leaper/leaper_tailswing_4.ogg')), 40, 1, -1)
 
 	//Start a timer to do the finishing hit
-	tailstrike_timer = addtimer(CALLBACK(src, .proc/finish), windup_time, TIMER_STOPPABLE)
+	tailstrike_timer = addtimer(CALLBACK(src, .proc/finish), windup_time*2, TIMER_STOPPABLE)
 
 	release_vector(cached_pixels)
 	release_vector(pixel_offset)
