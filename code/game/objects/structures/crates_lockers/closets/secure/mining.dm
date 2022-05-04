@@ -42,7 +42,8 @@
 		/obj/item/weapon/gun/energy/cutter,
 		/obj/item/weapon/cell/plasmacutter = 2,
 		/obj/item/device/flashlight/maglight,
-		/obj/item/weapon/rig/vintage
+// 		Replace with a unique RIG
+//		/obj/item/weapon/rig/vintage
 	)
 
 /obj/structure/closet/secure_closet/planet_cracker
