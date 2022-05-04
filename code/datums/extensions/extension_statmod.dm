@@ -16,6 +16,7 @@
 	Max Health							STATMOD_HEALTH							A flat value which is added or removed
 	Conversion Compatibility			STATMOD_CONVERSION_COMPATIBILITY			A flat value which is added or removed
 	Layer								STATMOD_LAYER							A flat value, the highest one is used and all others are ignored. Note that any specified value, even if lower, will override the base layer
+	Health Percent						STATMOD_HEALTH_PERCENT					A percentage value, 0=no change, 1 = +100%, etc. Negative allowed
 */
 
 
@@ -32,7 +33,8 @@ STATMOD_EVASION = list(/datum/proc/update_evasion),
 STATMOD_VIEW_RANGE = list(/datum/proc/update_vision_range),
 STATMOD_SCALE	=	list(/datum/proc/update_scale),
 STATMOD_HEALTH	=	list(/datum/proc/update_max_health),
-STATMOD_LAYER	=	list(/datum/proc/reset_layer)
+STATMOD_LAYER	=	list(/datum/proc/reset_layer),
+STATMOD_HEALTH_MULTIPLICATIVE	=	list(/datum/proc/update_max_health)
 //Conversion compatibility doesn't get an entry here, its only used by infector conversions
 ))
 
@@ -278,6 +280,12 @@ STATMOD_LAYER	=	list(/datum/proc/reset_layer)
 
 /mob/living/update_max_health()
 	max_health = get_base_health()
+
+	for (var/datum/extension/E as anything in LAZYACCESS(statmods, STATMOD_HEALTH_MULTIPLICATIVE))
+		var/health_increase = (max_health * E.get_statmod(STATMOD_HEALTH_MULTIPLICATIVE))
+		max_health += health_increase
+
+
 	for (var/datum/extension/E as anything in LAZYACCESS(statmods, STATMOD_HEALTH))
 		max_health += E.get_statmod(STATMOD_HEALTH)
 
@@ -290,8 +298,6 @@ STATMOD_LAYER	=	list(/datum/proc/reset_layer)
 
 /mob/living/carbon/human/get_base_health()
 	return species.total_health
-
-
 
 //Layer
 

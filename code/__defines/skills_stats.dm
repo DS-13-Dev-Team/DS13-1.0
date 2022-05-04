@@ -39,6 +39,7 @@
 #define STATMOD_SCALE "scale"
 #define STATMOD_CONVERSION_COMPATIBILITY	"conversion compatibility"
 #define STATMOD_LAYER	"layer"
+#define STATMOD_HEALTH_MULTIPLICATIVE "health percent"
 
 //Resource Defines
 #define RESOURCE_ESSENCE	/datum/extension/resource/essence
