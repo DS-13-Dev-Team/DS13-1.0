@@ -266,8 +266,8 @@
 
 /obj/item/weapon/shockpaddles/proc/can_revive(mob/living/carbon/human/H) //This is checked right before attempting to revive
 	if(H.stat == DEAD)
-		var/obj/item/organ/internal/brain/brain = H.get_organ(BP_BRAIN)
-		if(!brain?.can_recover())
+		var/obj/item/organ/internal/brain/brain = H.internal_organs_by_name[BP_BRAIN]
+		if(!brain || !brain.can_recover())
 			return "buzzes, \"Resuscitation failed - Severe neurological decay makes recovery of patient impossible. Further attempts futile.\""
 
 /obj/item/weapon/shockpaddles/proc/check_contact(mob/living/carbon/human/H)

@@ -147,7 +147,7 @@
 	return 1
 
 /obj/item/organ/internal/brain/can_recover()
-	return ~status & ORGAN_DEAD
+	return !(status & ORGAN_DEAD)
 
 /obj/item/organ/internal/brain/proc/get_current_damage_threshold()
 	return round(damage / damage_threshold_value)

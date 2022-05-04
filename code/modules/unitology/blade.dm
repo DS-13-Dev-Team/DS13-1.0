@@ -208,7 +208,7 @@
 
 
 	//Destroy the brain. This kills the man
-	var/obj/item/organ/internal/brain/B = host.victim.get_organ(BP_BRAIN)
+	var/obj/item/organ/internal/brain/B = host.victim.internal_organs_by_name[BP_BRAIN]
 	if (B)
 		B.take_internal_damage(9999)	//Victim is now ded
 
