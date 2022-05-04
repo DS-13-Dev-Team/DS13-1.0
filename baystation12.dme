@@ -1635,6 +1635,7 @@
 #include "code\modules\clothing\spacesuits\rig\suits\advanced.dm"
 #include "code\modules\clothing\spacesuits\rig\suits\civilian.dm"
 #include "code\modules\clothing\spacesuits\rig\suits\combat.dm"
+#include "code\modules\clothing\spacesuits\rig\suits\cseco.dm"
 #include "code\modules\clothing\spacesuits\rig\suits\engineering.dm"
 #include "code\modules\clothing\spacesuits\rig\suits\ert.dm"
 #include "code\modules\clothing\spacesuits\rig\suits\firesuit.dm"

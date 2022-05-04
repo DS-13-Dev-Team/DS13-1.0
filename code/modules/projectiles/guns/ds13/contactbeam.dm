@@ -19,7 +19,7 @@
 	wielded_item_state = "contact-wielded"
 	w_class = ITEM_SIZE_HUGE
 
-	charge_cost = 250 //Five shots per battery
+	charge_cost = 250 //Four shots per battery
 	cell_type = /obj/item/weapon/cell/contact
 	projectile_type = null
 	slot_flags = SLOT_BACK

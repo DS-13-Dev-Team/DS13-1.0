@@ -499,16 +499,10 @@
 
 
 
-/obj/item/weapon/reagent_containers/food/drinks/bottle/ds_medigel
+/obj/item/weapon/reagent_containers/hypospray/autoinjector/ds_medigel
 	name = "medical pack"
 	desc = "A standard medi-gel container to treat life threatening injuries."
 	icon = 'icons/obj/drinks.dmi'
 	icon_state = "ds_medipack"
-	amount_per_transfer_from_this = 20
-	volume = 20
+	starts_with = list(/datum/reagent/ds_medicalgelreagent = 20)
 
-
-/obj/item/weapon/reagent_containers/food/drinks/bottle/ds_medigel/Initialize()
-	.=..()
-	reagents.add_reagent(/datum/reagent/ds_medicalgelreagent, 20)
-	update_icon()

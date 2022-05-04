@@ -65,7 +65,7 @@
 
 /obj/structure/closet/secure_closet/CSECO
 	name = "chief security officer's locker"
-	req_access = list(access_armory)
+	req_access = list(access_cseco)
 	icon_state = "sec1"
 	icon_closed = "sec"
 	icon_locked = "sec1"
@@ -76,6 +76,7 @@
 	return list(
 		new/datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack/security, /obj/item/weapon/storage/backpack/satchel_sec)),
 		new/datum/atom_creator/simple(/obj/item/weapon/storage/backpack/dufflebag/sec, 50),
+		/obj/item/weapon/rig/cseco,
 		/obj/item/clothing/under/deadspace/security/cseco,
 		/obj/item/clothing/suit/armor/pcsi,
 		/obj/item/clothing/head/helmet/pcsi,
