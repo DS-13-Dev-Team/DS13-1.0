@@ -915,10 +915,10 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 
 /datum/species/proc/skills_from_age(age)	//Converts an age into a skill point allocation modifier. Can be used to give skill point bonuses/penalities not depending on job.
 	switch(age)
-		if(0 to 22) 	. = -4
+		if(0 to 22) 	. = 0
 		if(23 to 30) 	. = 0
-		if(31 to 45)	. = 4
-		else			. = 8
+		if(31 to 45)	. = 0
+		else			. = 0
 
 /datum/species/proc/post_organ_rejuvenate(var/obj/item/organ/org)
 	return
