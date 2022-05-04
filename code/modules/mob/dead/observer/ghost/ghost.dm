@@ -33,7 +33,7 @@ var/global/list/image/ghost_sightless_images = list() //this is a list of images
 	var/obj/item/weapon/tool/multitool/ghost/ghost_multitool
 	var/list/hud_images // A list of hud images
 
-/mob/dead/observer/ghost/New(mob/body, transfer_key = TRUE)
+/mob/dead/observer/ghost/New(mob/body)
 	add_verb(src, /mob/proc/toggle_antag_pool)
 
 	var/turf/T
@@ -46,17 +46,13 @@ var/global/list/image/ghost_sightless_images = list() //this is a list of images
 
 		set_appearance(body)
 		if(body.mind)
-			if(!transfer_key)
-				body.mind.active = FALSE
-				body.mind.transfer_to(src)
-				body.mind.active = TRUE
-			else
-				body.mind.transfer_to(src)
+			mind = body.mind	//we don't transfer the mind but we keep a reference to it.
+			mind.ghost = src	//Register ourself on the mind too
 		else //new mind for the body
-			var/datum/mind/new_mind = new /datum/mind(key)
-			if(transfer_key)
-				new_mind.active = TRUE
-			new_mind.transfer_to(src)
+			body.mind = new /datum/mind(key)
+			mind = body.mind
+			mind.current = body
+			mind.ghost = src
 		if(mind.name)
 			name = mind.name
 		else
@@ -70,10 +66,9 @@ var/global/list/image/ghost_sightless_images = list() //this is a list of images
 
 	else
 		forceMove(pick(GLOB.latejoin | GLOB.latejoin_cryo | GLOB.latejoin_gateway))
-		var/datum/mind/new_mind = new /datum/mind(key)
-		if(transfer_key)
-			new_mind.active = TRUE
-		new_mind.transfer_to(src)
+		mind = new /datum/mind(key)
+		mind.current = src
+		mind.ghost = src
 
 	if(!name)							//To prevent nameless ghosts
 		name = capitalize(pick(GLOB.first_names_male)) + " " + capitalize(pick(GLOB.last_names))
@@ -165,6 +160,7 @@ Works together with spawning an observer, noted above.
 		var/mob/dead/observer/ghost/ghost = new(src)	//Transfer safety to observer spawning proc.
 		ghost.can_reenter_corpse = can_reenter_corpse
 		ghost.timeofdeath = src.stat == DEAD ? src.timeofdeath : world.time
+		ghost.key = key
 		if (ghost.client)		// For new ghosts we remove the verb from even showing up if it's not allowed.
 			if (!ghost.client.holder && !CONFIG_GET(flag/antag_hud_allowed))
 				remove_verb(ghost, /mob/dead/observer/ghost/verb/toggle_antagHUD)// Poor guys, don't know what they are missing!
@@ -225,7 +221,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		to_chat(src, "<span class='warning'>Another consciousness is in your body... it is resisting you.</span>")
 		return
 	stop_following()
-	mind.transfer_to(mind.current)
+	mind.current.key = key
 	mind.current.teleop = null
 	mind.current.reload_fullscreens()
 	if(!admin_ghosted)
