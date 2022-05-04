@@ -353,18 +353,16 @@ var/datum/callback/proc_to_call, var/proc_interval = 10)
 	return GLOB.dead_mob_list.Remove(src)
 
 //Find a dead mob with a brain and client.
-/proc/find_dead_player(var/find_key, var/include_observers = 0)
-	if(isnull(find_key))
+/proc/find_dead_player(var/find_ckey, var/include_observers = 0)
+	if(isnull(find_ckey))
 		return
-
-	var/mob/selected = null
 
 	if(include_observers)
 		for(var/mob/M in GLOB.player_list)
 			if((M.stat != DEAD) || (!M.client))
 				continue
-			if(M.ckey == find_key)
-				selected = M
+			if(M.ckey == find_ckey)
+				. = M
 				break
 	else
 		for(var/mob/living/M in GLOB.player_list)
@@ -376,10 +374,9 @@ var/datum/callback/proc_to_call, var/proc_interval = 10)
 				var/mob/living/carbon/human/H = M
 				if(H.should_have_organ(BP_BRAIN) && !H.has_brain())
 					continue
-			if(M.ckey == find_key)
-				selected = M
+			if(M.ckey == find_ckey)
+				. = M
 				break
-	return selected
 
 
 //Returns true if the two passed mobs are on the same "team".
