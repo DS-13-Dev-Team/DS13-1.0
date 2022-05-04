@@ -31,7 +31,7 @@
 	var/ongoing_timer
 	var/tick_timer
 
-	var/atom/target
+	var/atom/movable/target
 
 	var/resource_cost_type	=	null
 	var/resource_cost_quantity = 1
