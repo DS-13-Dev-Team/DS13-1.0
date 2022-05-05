@@ -141,7 +141,7 @@ All of these properties combined make Step Strike tricky and disorienting to use
 	blurb = "Extremely rare twitcher variant achieved by infecting an oracle operative."
 	icon_template = 'icons/mob/necromorph/twitcher_oracle.dmi'
 	biomass	=	360
-	require_total_biomass	=	BIOMASS_REQ_T2
+	require_total_biomass	=	BIOMASS_REQ_T3
 	total_health = 200
 
 	slowdown = 1.2
