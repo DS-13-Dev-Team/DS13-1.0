@@ -1,9 +1,9 @@
 /obj/item/weapon/rig/cseco
 	name = "P.C.S.I Commander RIG"
-	desc = "A heavy duty and armoured rig suit, designed for riot control and shipboard disciplinary enforcement. It was designed specially for CSECO."
-	icon_state = "military_rig"
-	armor = list(melee = 70, bullet = 60, laser = 60, energy = 30, bomb = 65, bio = 100, rad = 60)
-	online_slowdown = RIG_VERY_HEAVY
+	desc = "A lightweight and flexible armoured rig suit used by CEC shipboard security during crackdowns and for use in hazardous environments. This instance was designed specially for CSECO."
+	icon_state = "pcsi_riot_rig"
+	armor = list(melee = 70, bullet = 65, laser = 60, energy = 30, bomb = 75, bio = 100, rad = 60)
+	online_slowdown = RIG_MEDIUM
 	acid_resistance = 2	//Contains a fair bit of plastic
 	allowed = list(/obj/item/weapon/shield/riot)
 
