@@ -14,13 +14,11 @@
 	flags = EXTENSION_FLAG_IMMEDIATE
 	var/mob/living/carbon/human/user
 
-	//Twitchers will blink to an adjacent tile when damaged, this effect has a cooldown
-	var/defensive_displace_cooldown = 3 SECONDS
-
 	//Small chance to randomly displace each step taken. This does not trigger the defensive cooldown
 	var/movement_displace_chance = 4
 
-
+	//Twitchers will blink to an adjacent tile when damaged, this effect has a cooldown
+	var/defensive_displace_cooldown = 3 SECONDS
 
 
 	//Runtime data
