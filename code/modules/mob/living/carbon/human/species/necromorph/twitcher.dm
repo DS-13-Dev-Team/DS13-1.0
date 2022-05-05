@@ -154,8 +154,8 @@ All of these properties combined make Step Strike tricky and disorienting to use
 	)
 
 	evasion = 30
-	inherent_verbs = list(/mob/living/carbon/human/proc/twitcher_charge, /mob/living/carbon/human/proc/twitcher_step_strike/oracle, /mob/proc/shout)
-	modifier_verbs = list(KEY_MIDDLE = list(/mob/living/carbon/human/proc/twitcher_step_strike/oracle),
+	inherent_verbs = list(/mob/living/carbon/human/proc/twitcher_charge, /mob/living/carbon/human/proc/twitcher_step_strike_oracle, /mob/proc/shout)
+	modifier_verbs = list(KEY_MIDDLE = list(/mob/living/carbon/human/proc/twitcher_step_strike_oracle),
 	KEY_CTRLALT = list(/mob/living/carbon/human/proc/twitcher_charge))
 
 	blink_damage_mult = 0.15 	//When the twitcher dodges an attack, the incoming damage is multiplied by this value
@@ -232,7 +232,7 @@ All of these properties combined make Step Strike tricky and disorienting to use
 	if (.)
 		play_species_audio(src, SOUND_ATTACK, VOLUME_MID, 1, 3)
 
-/mob/living/carbon/human/proc/twitcher_step_strike/oracle(var/atom/A)
+/mob/living/carbon/human/proc/twitcher_step_strike_oracle(var/atom/A)
 	set name = "Step Strike"
 	set category = "Abilities"
 
