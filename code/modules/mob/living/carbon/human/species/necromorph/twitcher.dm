@@ -169,7 +169,7 @@ All of these properties combined make Step Strike tricky and disorienting to use
 /datum/species/necromorph/slasher/twitcher/oracle/add_inherent_verbs(var/mob/living/carbon/human/H)
 	.=..()
 	var/datum/extension/twitch/twitch = get_extension(H, /datum/extension/twitch)
-		twitch.defensive_displace_cooldown = 1.5 SECONDS
+	twitch.defensive_displace_cooldown = 1.5 SECONDS
 
 //Twitcher charge
 //Aside from being faster moving, it also kicks off with a shortrange teleport, and has a much lower cooldown
