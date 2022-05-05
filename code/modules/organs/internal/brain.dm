@@ -99,6 +99,7 @@
 		brainmob.default_language = H.default_language
 		brainmob.SetName(H.real_name)
 		brainmob.real_name = H.real_name
+		brainmob.skillset.obtain_from_mob(H)
 		brainmob.dna = H.dna.Clone()
 		brainmob.timeofhostdeath = H.timeofdeath
 
@@ -150,6 +151,7 @@
 			target.real_name = brainmob.real_name
 			target.languages = brainmob.languages.Copy()
 			target.default_language = brainmob.default_language
+			target.skillset.obtain_from_mob(brainmob)
 
 	return 1
 
