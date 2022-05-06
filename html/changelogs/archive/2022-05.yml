@@ -55,3 +55,6 @@
   - balance: Infector engorge now taxes you more essence the more expensive the target.
   - balance: Infector engorge health gain changed from 50 to 10 + 15% health. Sorry
       for all you buff arm lovers, you'll have to do with less now.
+2022-05-06:
+  DTraitor:
+  - rscadd: Defib can revive a brain now if it is not decaying yet.
