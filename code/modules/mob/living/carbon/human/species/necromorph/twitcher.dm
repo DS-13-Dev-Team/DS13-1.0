@@ -13,6 +13,10 @@
 
 	Note: Blink = reallyfast movement that looks like teleporting
 */
+
+#define TWITCHER_DODGE_EVASION	72
+#define TWITCHER_DODGE_DURATION	1.8 SECONDS
+
 /datum/species/necromorph/slasher/twitcher
 	name = SPECIES_NECROMORPH_TWITCHER
 	mob_type	=	/mob/living/carbon/human/necromorph/twitcher
@@ -142,9 +146,18 @@ All of these properties combined make Step Strike tricky and disorienting to use
 	icon_template = 'icons/mob/necromorph/twitcher_oracle.dmi'
 	biomass	=	360
 	require_total_biomass	=	BIOMASS_REQ_T3
-	total_health = 200
+	layer = LARGE_MOB_LAYER
+	biomass_reclamation_time	=	14 MINUTES
+	total_health = 210
+	limb_health_factor = 1 //This can't be too low thanks to evasion.
+	burn_mod = 1.1
 
 	slowdown = 1.2
+	strength    = STR_VHIGH
+	mob_size	= MOB_LARGE
+	bump_flag 	= HEAVY	// What are we considered to be when bumped?
+	push_flags 	= ALLMOBS	// What can we push?
+	swap_flags 	= ALLMOBS	// What can we swap place with?
 
 	unarmed_types = list(/datum/unarmed_attack/blades/oracle, /datum/unarmed_attack/bite/strong)
 
@@ -154,22 +167,40 @@ All of these properties combined make Step Strike tricky and disorienting to use
 	)
 
 	evasion = 30
-	inherent_verbs = list(/mob/living/carbon/human/proc/twitcher_charge, /mob/living/carbon/human/proc/twitcher_step_strike_oracle, /mob/proc/shout)
+	inherent_verbs = list(/mob/living/carbon/human/proc/twitcher_charge, /mob/living/carbon/human/proc/twitcher_step_strike_oracle, /mob/proc/shout, /mob/living/proc/oracle_dodge)
 	modifier_verbs = list(KEY_MIDDLE = list(/mob/living/carbon/human/proc/twitcher_step_strike_oracle),
+	KEY_ALT = list(/mob/living/proc/oracle_dodge),
 	KEY_CTRLALT = list(/mob/living/carbon/human/proc/twitcher_charge))
 
 	blink_damage_mult = 0.15 	//When the twitcher dodges an attack, the incoming damage is multiplied by this value
 
-/datum/unarmed_attack/blades/oracle
-	damage = 14
+/datum/unarmed_attack/blades/oracle // Fast and deadly thanks to the armor penetration
+	damage = 12
 	delay = 7
 	airlock_force_power = 3
-	armor_penetration = 10
+	armor_penetration = 8
 
 /datum/species/necromorph/slasher/twitcher/oracle/add_inherent_verbs(var/mob/living/carbon/human/H)
 	.=..()
 	var/datum/extension/twitch/twitch = get_extension(H, /datum/extension/twitch)
-	twitch.defensive_displace_cooldown = 1.5 SECONDS
+	twitch.defensive_displace_cooldown = 2 SECONDS
+
+/mob/living/proc/oracle_dodge()
+	set name = "Dodge"
+	set category = "Abilities"
+
+
+	.= dodge_ability(_duration = TWITCHER_DODGE_DURATION, _cooldown = 8 SECONDS, _power = TWITCHER_DODGE_EVASION) //similar to enhanced slasher, only slightly longer duration, for a much longer cooldown
+
+/datum/species/necromorph/twitcher/oracle/get_ability_descriptions()
+	.= ""
+	. += TWITCHER_PASSIVE
+	. += "<hr>"
+	. += TWITCHER_CHARGE_DESC
+	. += "<hr>"
+	. += TWITCHER_STEPSTRIKE_DESC
+	. += "<hr>"
+	. += SLASHER_DODGE_DESC
 
 //Twitcher charge
 //Aside from being faster moving, it also kicks off with a shortrange teleport, and has a much lower cooldown
