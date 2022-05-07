@@ -18,3 +18,5 @@
 	name = "medical gel injector"
 	item_cost = 8
 	path = /obj/item/weapon/reagent_containers/hypospray/autoinjector/ds_medigel
+	is_special = TRUE
+	antag_roles = list(MODE_EARTHGOV_AGENT, MODE_UNITOLOGIST, MODE_UNITOLOGIST_SHARD)
