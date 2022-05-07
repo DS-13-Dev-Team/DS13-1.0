@@ -58,3 +58,10 @@
 2022-05-06:
   DTraitor:
   - rscadd: Defib can revive a brain now if it is not decaying yet.
+2022-05-07:
+  Ketrai:
+  - balance: Oracle twitcher damage and armor pen lowered by about 20%.
+  - balance: Oracle twitcher passive dodge cooldown nerfed by 33%.
+  - balance: Oracle twitcher health increased by 5%.
+  - balance: Oracle twitcher is now properly, a big boy.
+  - balance: Oracle twitcher now has an active dodge.
