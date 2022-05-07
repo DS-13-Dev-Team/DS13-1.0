@@ -155,6 +155,7 @@
 	containername = "\improper Disposal Dispenser Crate"
 	access = access_engineering
 
+/*
 /decl/hierarchy/supply_pack/engineering/smbig
 	name = "Supermatter Core"
 	contains = list(/obj/machinery/power/supermatter)
@@ -162,6 +163,7 @@
 	containertype = /obj/structure/closet/crate/secure/large/phoron
 	containername = "\improper Supermatter crate (CAUTION)"
 	access = access_ce
+*/
 
 /decl/hierarchy/supply_pack/engineering/fueltank
 	name = "Fuel tank crate"
