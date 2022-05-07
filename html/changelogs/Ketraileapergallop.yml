@@ -58,3 +58,4 @@ changes:
   - balance: "Leaper gallop duration extended by 50%."
   - balance: "Enhanced leaper gallop cooldown lowered."
   - balance: "Leaper speed increased."
+  - balance: "Gallop isn't as easily interrupted by bullets/shrapnel anymore"
