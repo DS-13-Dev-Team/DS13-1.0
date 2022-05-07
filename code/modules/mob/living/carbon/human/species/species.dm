@@ -199,7 +199,7 @@
 	var/grab_type = GRAB_NORMAL		// The species' default grab type.
 
 	//Movement
-	var/slowdown = 0              // Passive movement speed malus (or boost, if negative)
+	var/slowdown = 1              // Passive movement speed malus (or boost, if negative)
 	// Move intents. Earlier in list == default for that type of movement.
 	var/list/move_intents = list(/decl/move_intent/walk, /decl/move_intent/run, /decl/move_intent/stalk)
 
