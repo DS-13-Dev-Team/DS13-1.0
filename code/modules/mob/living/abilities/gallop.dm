@@ -19,6 +19,8 @@
 	var/stopped_at
 	var/ongoing_timer
 	var/crashed = FALSE
+	var/crash_limit = 2
+	var/crash_count = 0
 
 	statmods = list(STATMOD_MOVESPEED_MULTIPLICATIVE = 1)
 /***********************
@@ -82,6 +84,9 @@
 
 /datum/extension/gallop/proc/user_hit(var/obj/item/organ/external/organ, brute, burn, damage_flags, used_weapon)
 	SIGNAL_HANDLER
+	if (crash_count < crash_limit)
+		crash_count++
+		return
 	if (!crashed)
 		user.visible_message(SPAN_DANGER("[user] crumples under the impact [istype(used_weapon, /obj) ? "of":"from"] [used_weapon]"))
 		stop_crash(used_weapon)
