@@ -484,6 +484,7 @@ var/list/mining_floors = list()
 	name = "soil"
 	desc = "Dirt."
 	icon_state = "wet_soft"
+	initial_flooring = /decl/flooring/asteroid_ds
 
 /turf/simulated/floor/asteroid/outside_ds/firm
 	icon_state = "wet_firm"

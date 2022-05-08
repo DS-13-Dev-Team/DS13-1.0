@@ -528,5 +528,10 @@ var/list/flooring_types
 /decl/flooring/reinforced/shuttle/black
 	icon_base = "floor7"
 
-/decl/flooring/holo_water
-
+/decl/flooring/water
+	name = "shallow water"
+	icon = 'icons/misc/beach.dmi'
+	icon_base = "seashallow"
+	flags = 0
+	footstep_sound = "water"
+	smooth_nothing = TRUE

@@ -1272,7 +1272,7 @@
 /turf/simulated/floor/plating,
 /area/mining_colony/lower)
 "ei" = (
-/turf/simulated/floor/holofloor/beach/water{
+/turf/simulated/floor/exoplanet/water/shallow{
 	color = "";
 	desc = "Where all the Aegis VII liquid waste goes to.";
 	name = "waste water"
@@ -1339,7 +1339,7 @@
 /area/mining_colony/lower)
 "es" = (
 /obj/item/weapon/reagent_containers/glass/bucket,
-/turf/simulated/floor/holofloor/beach/water{
+/turf/simulated/floor/exoplanet/water/shallow{
 	color = "";
 	desc = "Where all the Aegis VII liquid waste goes to.";
 	name = "waste water"
@@ -1365,7 +1365,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/turf/simulated/floor/holofloor/beach/water{
+/turf/simulated/floor/exoplanet/water/shallow{
 	color = "";
 	desc = "Where all the Aegis VII liquid waste goes to.";
 	name = "waste water"
@@ -1386,7 +1386,7 @@
 /area/mining_colony/lower)
 "ey" = (
 /obj/item/weapon/mop,
-/turf/simulated/floor/holofloor/beach/water{
+/turf/simulated/floor/exoplanet/water/shallow{
 	color = "";
 	desc = "Where all the Aegis VII liquid waste goes to.";
 	name = "waste water"
@@ -1421,7 +1421,7 @@
 /area/mining_colony/lower)
 "eF" = (
 /obj/structure/grille/broken,
-/turf/simulated/floor/holofloor/beach/water{
+/turf/simulated/floor/exoplanet/water/shallow{
 	color = "";
 	desc = "Where all the Aegis VII liquid waste goes to.";
 	name = "waste water"
@@ -1773,7 +1773,7 @@
 /area/mining_colony/lower)
 "fQ" = (
 /obj/machinery/floodlight,
-/turf/simulated/floor/holofloor/beach/water{
+/turf/simulated/floor/exoplanet/water/shallow{
 	color = "";
 	desc = "Where all the Aegis VII liquid waste goes to.";
 	name = "waste water"
@@ -1785,7 +1785,7 @@
 /area/mining_colony/lower)
 "fS" = (
 /obj/random/obstruction,
-/turf/simulated/floor/holofloor/beach/water{
+/turf/simulated/floor/exoplanet/water/shallow{
 	color = "";
 	desc = "Where all the Aegis VII liquid waste goes to.";
 	name = "waste water"
@@ -1793,7 +1793,7 @@
 /area/mining_colony/lower)
 "fT" = (
 /obj/structure/toilet,
-/turf/simulated/floor/holofloor/beach/water{
+/turf/simulated/floor/exoplanet/water/shallow{
 	color = "";
 	desc = "Where all the Aegis VII liquid waste goes to.";
 	name = "waste water"
@@ -2121,7 +2121,7 @@
 /area/mining_colony/lower)
 "gY" = (
 /obj/machinery/icecream_vat,
-/turf/simulated/floor/holofloor/beach/water{
+/turf/simulated/floor/exoplanet/water/shallow{
 	color = "";
 	desc = "Where all the Aegis VII liquid waste goes to.";
 	name = "waste water"
@@ -2129,7 +2129,7 @@
 /area/mining_colony/lower)
 "gZ" = (
 /obj/structure/plushie/beepsky,
-/turf/simulated/floor/holofloor/beach/water{
+/turf/simulated/floor/exoplanet/water/shallow{
 	color = "";
 	desc = "Where all the Aegis VII liquid waste goes to.";
 	name = "waste water"
@@ -2208,7 +2208,7 @@
 /area/mining_colony/lower)
 "hp" = (
 /obj/item/weapon/bikehorn/rubberducky,
-/turf/simulated/floor/holofloor/beach/water{
+/turf/simulated/floor/exoplanet/water/shallow{
 	color = "";
 	desc = "Where all the Aegis VII liquid waste goes to.";
 	name = "waste water"
@@ -2344,7 +2344,7 @@
 /area/mining_colony/lower)
 "hR" = (
 /obj/item/weapon/storage/wallet/leather,
-/turf/simulated/floor/holofloor/beach/water{
+/turf/simulated/floor/exoplanet/water/shallow{
 	color = "";
 	desc = "Where all the Aegis VII liquid waste goes to.";
 	name = "waste water"
@@ -2448,7 +2448,7 @@
 /area/mining_colony/lower)
 "il" = (
 /obj/structure/net/net_wall,
-/turf/simulated/floor/holofloor/beach/water{
+/turf/simulated/floor/exoplanet/water/shallow{
 	color = "";
 	desc = "Where all the Aegis VII liquid waste goes to.";
 	name = "waste water"
