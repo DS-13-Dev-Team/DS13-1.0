@@ -311,6 +311,13 @@ var/list/flooring_types
 	build_type = null
 	step_priority = 2 //Soft surfaces have more distinctive sounds
 
+/decl/flooring/asteroid_ds
+	name = "soil"
+	desc = "Dirt."
+	flags = 0
+	build_type = null
+	step_priority = 2 //Soft surfaces have more distinctive sounds
+
 /decl/flooring/carpet
 	name = "brown carpet"
 	desc = "Comfy and fancy carpeting."
@@ -520,3 +527,6 @@ var/list/flooring_types
 
 /decl/flooring/reinforced/shuttle/black
 	icon_base = "floor7"
+
+/decl/flooring/holo_water
+

@@ -105,8 +105,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	var/ignitermes = "USER lights NAME with FLAME"
 	var/brand
 
-/obj/item/clothing/mask/smokable/New()
-	..()
+/obj/item/clothing/mask/smokable/Initialize()
+	.=..()
 	atom_flags |= ATOM_FLAG_NO_REACT // so it doesn't react until you light it
 	create_reagents(chem_volume) // making the cigarrete a chemical holder with a maximum volume of 15
 
@@ -224,8 +224,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	brand = "\improper Trans-Stellar Duty-free"
 	var/list/filling = list(/datum/reagent/tobacco = 1)
 
-/obj/item/clothing/mask/smokable/cigarette/New()
-	..()
+/obj/item/clothing/mask/smokable/cigarette/Initialize()
+	.=..()
 	for(var/R in filling)
 		reagents.add_reagent(R, filling[R])
 
@@ -444,8 +444,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	slot_flags = SLOT_EARS
 	throwforce = 1
 
-/obj/item/weapon/cigbutt/New()
-	..()
+/obj/item/weapon/cigbutt/Initialize()
+	.=..()
 	transform = turn(transform,rand(0,360))
 
 /obj/item/weapon/cigbutt/cigarbutt
@@ -492,8 +492,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	var/dry = 1
 	var/list/filling = list(/datum/reagent/tobacco = 5)
 
-/obj/item/weapon/reagent_containers/terrbacco/New()
-	..()
+/obj/item/weapon/reagent_containers/terrbacco/Initialize()
+	.=..()
 	for(var/R in filling)
 		reagents.add_reagent(R, filling[R])
 
@@ -707,7 +707,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	weldermes = "<span class='notice'>USER recklessly lights NAME with FLAME.</span>"
 	ignitermes = "<span class='notice'>USER fiddles with FLAME, and manages to light their NAME with the power of science.</span>"
 
-/obj/item/clothing/mask/smokable/pipe/New()
+/obj/item/clothing/mask/smokable/pipe/Initialize()
 	..()
 	name = "empty [initial(name)]"
 
@@ -810,7 +810,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	var/brand
 	var/list/filling = list()
 
-obj/item/clothing/mask/chewable/New()
+/obj/item/clothing/mask/chewable/Initialize()
 	..()
 	atom_flags |= ATOM_FLAG_NO_REACT // so it doesn't react until you light it
 	create_reagents(chem_volume) // making the cigarrete a chemical holder with a maximum volume of 15
@@ -898,8 +898,9 @@ obj/item/clothing/mask/chewable/Destroy()
 	desc = "A chewy wad of synthetic rubber, laced with nicotine. Possibly the least disgusting method of nicotine delivery."
 	icon_state = "nic_gum"
 	type_butt = /obj/item/weapon/cigbutt/spitgum
-/obj/item/clothing/mask/chewable/tobacco/nico/New()
-	..()
+
+/obj/item/clothing/mask/chewable/tobacco/nico/Initialize()
+	.=..()
 	reagents.add_reagent(/datum/reagent/nicotine, 2)
 	color = reagents.get_color()
 
@@ -936,7 +937,7 @@ obj/item/clothing/mask/chewable/Destroy()
 	item_state = "gum"
 //	brand = "gum"
 
-/obj/item/clothing/mask/chewable/candy/gum/New()
+/obj/item/clothing/mask/chewable/candy/gum/Initialize()
 	..()
 	reagents.add_reagent(pick(list(
 				/datum/reagent/fuel,
@@ -958,7 +959,7 @@ obj/item/clothing/mask/chewable/Destroy()
 	icon_state = "lollipop"
 	item_state = "lollipop"
 //	brand = "unremarkable"
-/obj/item/clothing/mask/chewable/candy/lolli/New()
+/obj/item/clothing/mask/chewable/candy/lolli/Initialize()
 	..()
 	reagents.add_reagent(pick(list(
 				/datum/reagent/fuel,
@@ -979,7 +980,7 @@ obj/item/clothing/mask/chewable/Destroy()
 	type_butt = /obj/item/weapon/cigbutt/lollibutt
 	icon_state = "lollipop"
 
-/obj/item/clothing/mask/chewable/candy/lolli/meds/New()
+/obj/item/clothing/mask/chewable/candy/lolli/meds/Initialize()
 	..()
 	reagents.add_reagent(pick(list(
 				/datum/reagent/dexalinp,
@@ -1075,10 +1076,10 @@ obj/item/clothing/mask/chewable/Destroy()
 		to_chat(user, "<span class='notice'>You refuel [src] from \the [O]</span>")
 		playsound(src.loc, 'sound/effects/refill.ogg', 50, 1, -6)
 
-/obj/item/weapon/flame/lighter/random/New()
+/obj/item/weapon/flame/lighter/random/Initialize()
 	icon_state = "lighter-[pick("r","c","y","g")]"
 	item_state = icon_state
-	..()
+	.=..()
 
 /obj/item/weapon/flame/lighter/attack_self(mob/living/user)
 	if(!lit)

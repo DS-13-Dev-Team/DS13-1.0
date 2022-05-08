@@ -1,4 +1,4 @@
-#define using_map_DATUM /datum/map/ishimura
+#define USING_MAP_DATUM /datum/map/ishimura
 
 //	#include "DeadSpace/job.dm"
 

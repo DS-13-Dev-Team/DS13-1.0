@@ -32,7 +32,7 @@
 	name = "floor"
 	icon = 'icons/turf/flooring/misc.dmi'
 	icon_state = "concrete"
-	initial_flooring = null
+	initial_flooring = /decl/flooring/concrete
 
 /turf/simulated/floor/holofloor/tiled
 	name = "floor"

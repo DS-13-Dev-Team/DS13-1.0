@@ -29,10 +29,19 @@
 			I.pixel_x = -16
 	overlays += I
 
-/obj/structure/platform/CheckExit(atom/movable/O, turf/target)
-	. = ..()
-	if(O.throwing)
+/obj/structure/platform/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
+	if(!istype(mover) || mover.checkpass(PASS_FLAG_TABLE))
 		return TRUE
+	if(get_dir(loc, target) == dir)
+		return !density
+	return TRUE
+
+/obj/structure/platform/CheckExit(var/atom/movable/O, var/turf/target)
+	if(istype(O) && O.checkpass(PASS_FLAG_TABLE))
+		return 1
+	if(get_dir(O.loc, target) == dir)
+		return 0
+	return 1
 
 /obj/structure/platform/ex_act()
 	return

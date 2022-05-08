@@ -1,4 +1,4 @@
-#if !defined(using_map_DATUM)
+#if !defined(USING_MAP_DATUM)
 
 	#include "torch_announcements.dm"
 	#include "torch_antagonism.dm"

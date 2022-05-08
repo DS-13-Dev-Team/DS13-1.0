@@ -65,3 +65,5 @@
 #warn In order to build, run BUILD.bat in the root directory.
 #warn Consider switching to VSCode editor instead, where you can press Ctrl+Shift+B to build.
 #endif
+
+//#define MAP_ISHIMURA "Ishimura"

@@ -22,11 +22,9 @@
 
 /obj/machinery/recycling_tank/Initialize()
 	var/obj/structure/reagent_dispensers/biomass/temp = (locate(/obj/structure/reagent_dispensers/biomass) in orange(1, src))
-	if(temp.recycle)
-		storage = null
-	else
+	if(temp)
 		storage = temp
-		storage.recycle = src
+		RegisterSignal(storage, COMSIG_PARENT_QDELETING, .proc/on_tank_delete)
 	create_reagents(1000)
 	.=..()
 
@@ -36,6 +34,10 @@
 		return
 
 	icon_state = "biogen-work"
+
+/obj/machinery/recycling_tank/proc/on_tank_delete(obj/structure/reagent_dispensers/biomass/source)
+	if(storage == source)
+		storage = null
 
 /obj/machinery/recycling_tank/proc/turn_off()
 	BITSET(stat, POWEROFF)

@@ -27,7 +27,9 @@ var/list/event_last_fired = list()
 	if(!CONFIG_GET(flag/allow_random_events))
 		return
 
+	#ifdef MAP_ISHIMURA
 	var/minutes_passed = world.time/600
+	#endif
 
 	var/list/active_with_role = number_active_with_role()
 	//var/engineer_count = number_active_with_role("Engineer")
@@ -58,8 +60,10 @@ var/list/event_last_fired = list()
 	possibleEvents[/datum/event/grid_check] = 25 + 10 * active_with_role["Engineer"]
 	possibleEvents[/datum/event/electrical_storm] = 15 * active_with_role["Janitor"] + 5 * active_with_role["Engineer"]
 
+	#ifdef MAP_ISHIMURA
 	if(minutes_passed >= 30) // Give engineers time to set up engine
 		possibleEvents[/datum/event/meteor_wave] = 10 * active_with_role["Engineer"]
+	#endif
 
 	if(active_with_role["Medical"] > 0)
 		possibleEvents[/datum/event/spontaneous_appendicitis] = active_with_role["Medical"] * 10

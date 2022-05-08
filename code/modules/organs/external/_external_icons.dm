@@ -77,7 +77,7 @@ var/list/limb_icon_cache = list()
 
 
 	icon_state = "[icon_name][gender]"
-	if(species.base_skin_colours && !isnull(species.base_skin_colours[s_base]))
+	if(species?.base_skin_colours && !isnull(species.base_skin_colours[s_base]))
 		icon_state += species.base_skin_colours[s_base]
 
 	//Lying down icons per organ
