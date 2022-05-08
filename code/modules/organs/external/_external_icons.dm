@@ -184,7 +184,7 @@ var/list/robot_hud_colours = list("#ffffff","#cccccc","#aaaaaa","#888888","#6666
 
 /obj/item/organ/external/proc/apply_colouration(var/icon/applying)
 
-	if(species.limbs_are_nonsolid)
+	if(species?.limbs_are_nonsolid)
 		applying.MapColors("#4d4d4d","#969696","#1c1c1c", "#000000")
 		if(species && species.get_bodytype(owner) != SPECIES_HUMAN)
 			applying.SetIntensity(1.5)
@@ -203,7 +203,7 @@ var/list/robot_hud_colours = list("#ffffff","#cccccc","#aaaaaa","#888888","#6666
 		else
 			applying.Blend(rgb(-s_tone,  -s_tone,  -s_tone), ICON_SUBTRACT)
 		icon_cache_key += "_tone_[s_tone]"
-	if(species.appearance_flags & HAS_SKIN_COLOR)
+	if(species?.appearance_flags & HAS_SKIN_COLOR)
 		if(s_col && s_col.len >= 3)
 			applying.Blend(rgb(s_col[1], s_col[2], s_col[3]), s_col_blend)
 			icon_cache_key += "_color_[s_col[1]]_[s_col[2]]_[s_col[3]]_[s_col_blend]"

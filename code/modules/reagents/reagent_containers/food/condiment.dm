@@ -174,7 +174,7 @@
 	desc = "You feel more American already."
 	icon_state = "ketchup"
 
-/obj/item/weapon/reagent_containers/food/condiment/ketchup/New()
+/obj/item/weapon/reagent_containers/food/condiment/ketchup/Initialize()
 	. = ..()
 	reagents.add_reagent(/datum/reagent/nutriment/ketchup, 50)
 
@@ -217,8 +217,8 @@
 /obj/item/weapon/reagent_containers/food/condiment/flour/on_reagent_change()
 	return
 
-/obj/item/weapon/reagent_containers/food/condiment/flour/New()
-	..()
+/obj/item/weapon/reagent_containers/food/condiment/flour/Initialize()
+	.=..()
 	reagents.add_reagent(/datum/reagent/nutriment/flour, 50)
 
 /obj/item/weapon/reagent_containers/food/condiment/rice
@@ -232,8 +232,8 @@
 /obj/item/weapon/reagent_containers/food/condiment/rice/on_reagent_change()
 	return
 
-/obj/item/weapon/reagent_containers/food/condiment/rice/New()
-	..()
+/obj/item/weapon/reagent_containers/food/condiment/rice/Initialize()
+	.=..()
 	reagents.add_reagent(/datum/reagent/nutriment/rice, 50)
 
 /obj/item/weapon/reagent_containers/food/condiment/salt
@@ -249,8 +249,8 @@
 /obj/item/weapon/reagent_containers/food/condiment/salt/on_reagent_change()
 	return
 
-/obj/item/weapon/reagent_containers/food/condiment/salt/New()
-	..()
+/obj/item/weapon/reagent_containers/food/condiment/salt/Initialize()
+	.=..()
 	reagents.add_reagent(/datum/reagent/sodiumchloride, 500)
 
 /obj/item/weapon/reagent_containers/food/condiment/small
