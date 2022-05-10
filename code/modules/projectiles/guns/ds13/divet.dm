@@ -148,12 +148,12 @@ Projectile logic
 //Non lethal ammo
 /obj/item/projectile/bullet/ls_slug/rb
 	damage = 5
-	agony = 30
+	agony = 40
 	step_delay = DIVET_DELAY * 1.25
 	structure_damage_factor = 0
 	penetration_modifier = 0
 	embed_mult = 0
-	armor_penetration = 5
+	armor_penetration = 10
 	icon_state = "divet"
 
 //Mostly normal rounds with a little extra armor pen, but they also set you on fire
