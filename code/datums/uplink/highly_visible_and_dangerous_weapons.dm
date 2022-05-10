@@ -110,7 +110,6 @@
 /datum/uplink_item/item/visible_weapons/pulserifle
 	name = "Pulse Rifle"
 	item_cost = 15
-	antag_costs = list(MODE_UNITOLOGIST, MODE_UNITOLOGIST_SHARD)
 	path = /obj/item/weapon/gun/projectile/automatic/pulse_rifle
 
 /datum/uplink_item/item/visible_weapons/flechetterifle
