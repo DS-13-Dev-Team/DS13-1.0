@@ -1004,7 +1004,10 @@
 	vend_delay = 14
 	req_access = list(access_security)
 	products = list(/obj/item/weapon/handcuffs = 8,
-					/obj/item/weapon/reagent_containers/food/snacks/donut/normal = 12,/obj/item/weapon/storage/box/evidence = 6, /obj/item/weapon/computer_hardware/hard_drive/portable/design/security = 3,
+					/obj/item/weapon/reagent_containers/food/snacks/donut/normal = 12,
+					/obj/item/weapon/storage/box/evidence = 6,
+					/obj/item/weapon/computer_hardware/hard_drive/portable/design/security = 3,
+					/obj/item/ammo_magazine/divet/rb = 8,
 					/obj/item/weapon/grenade/flashbang = 12)
 	contraband = list(/obj/item/clothing/glasses/sunglasses = 2,/obj/item/weapon/storage/box/donut = 2)
 

@@ -21,11 +21,13 @@ Ammo:
 +	Incendiary Divet Magazine
 +	Hollow Point Divet Magazine
 +	Armor Piercing Divet Magazine
++	Rubber Divet Magazine
 +	speed loader (.44 magnum)
 +	plasma energy
 +	rivet bolts
 +	pulse rounds
 +	high velocity pulse rounds
++	deflection pulse rounds
 +	seeker shell
 S	fuel tank (gasoline)
 S	fuel tank (hydrazine)
@@ -185,6 +187,14 @@ S	fuel tank (hydrazine)
 	build_path = /obj/item/ammo_magazine/divet/hollow_point
 	build_type = PROTOLATHE
 
+/datum/design/item/ammo/rbds
+	name = "Rubber Divet Magazine"
+	id = "rbds"
+	materials = list(MATERIAL_STEEL = 2500)
+	build_path = /obj/item/ammo_magazine/divet/rb
+	build_type = PROTOLATHE
+	price = 900
+
 /datum/design/item/ammo/apds
 	name = "Armor Piercing Divet Magazine"
 	id = "apds"
@@ -223,12 +233,18 @@ S	fuel tank (hydrazine)
 	build_path = /obj/item/ammo_magazine/pulse
 	price = 1250
 
+/datum/design/item/ammo/pulsedeflect
+	name = "deflection pulse rounds"
+	id = "pulsedeflect"
+	materials = list(MATERIAL_PLASTEEL = 5000, MATERIAL_DIAMOND = 2000, MATERIAL_PHORON = 500)
+	build_path = /obj/item/ammo_magazine/pulse/df
+	price = 4000
+
 /datum/design/item/ammo/pulsehighvel
 	name = "high velocity pulse rounds"
 	id = "pulsehighvel"
-	materials = list(MATERIAL_PLASTEEL = 7500, MATERIAL_DIAMOND = 2500, MATERIAL_PHORON = 500)
+	materials = list(MATERIAL_PLASTEEL = 7500, MATERIAL_DIAMOND = 3000, MATERIAL_PHORON = 500)
 	build_path = /obj/item/ammo_magazine/pulse/hv
-	price = 5750
 
 /datum/design/item/ammo/seeker_ammo
 	name = "seeker shell"
@@ -244,7 +260,7 @@ S	fuel tank (hydrazine)
 	id = "javelin_rack"
 	materials = list(MATERIAL_PLASTEEL = 4000, MATERIAL_PHORON = 2500)
 	build_path = /obj/item/ammo_magazine/javelin
-	price = 1200	// 400 per 2 spears, same as in DS2
+	price = 2000	// 400 per 2 spears, same as in DS2
 
 
 /datum/design/item/ammo/fuel_tank
