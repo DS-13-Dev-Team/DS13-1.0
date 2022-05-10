@@ -75,7 +75,6 @@
 	item_cost = 8
 	path = /obj/item/ammo_magazine/bullpup
 	is_special = TRUE
-	antag_roles = list(MODE_UNITOLOGIST, MODE_UNITOLOGIST_SHARD)
 
 /datum/uplink_item/item/ammo/a50
 	name = ".50 AE magazine"
