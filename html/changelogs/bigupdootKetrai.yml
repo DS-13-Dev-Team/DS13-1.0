@@ -59,3 +59,4 @@ changes:
   - rscdel: "Removes HV pulse ammo from stores and reduces the chance to find it in maint."
   - rscadd: "Added rubber divet ammo in sec's equipment and stores. Use it for non lethal takedown, practically useless against necromorphs."
   - rscadd: "Excavation rig, found in the foreman and DOM locker, rarely in maint. Better version of the mining rig, but more susceptible to bombs 'Exploders'."
+  - balance: "Makes line racks more expensive because they were really cheap"

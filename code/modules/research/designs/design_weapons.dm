@@ -190,7 +190,7 @@ S	fuel tank (hydrazine)
 /datum/design/item/ammo/rbds
 	name = "Rubber Divet Magazine"
 	id = "rbds"
-	materials = list(MATERIAL_STEEL = 2500)
+	materials = list(MATERIAL_PLASTIC = 2500)
 	build_path = /obj/item/ammo_magazine/divet/rb
 	build_type = PROTOLATHE
 	price = 900
@@ -245,6 +245,7 @@ S	fuel tank (hydrazine)
 	id = "pulsehighvel"
 	materials = list(MATERIAL_PLASTEEL = 7500, MATERIAL_DIAMOND = 3000, MATERIAL_PHORON = 500)
 	build_path = /obj/item/ammo_magazine/pulse/hv
+	build_type = PROTOLATHE
 
 /datum/design/item/ammo/seeker_ammo
 	name = "seeker shell"
