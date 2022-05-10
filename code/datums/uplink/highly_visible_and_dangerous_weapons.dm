@@ -65,15 +65,6 @@
 	antag_costs = list(MODE_MERCENARY = 20)
 	path = /obj/item/weapon/gun/projectile/automatic/c20r
 
-/datum/uplink_item/item/visible_weapons/submachinegun/special
-	item_cost = 9
-	is_special = TRUE
-
-/datum/uplink_item/item/visible_weapons/bullpup/special
-	item_cost = 15
-	path = /obj/item/weapon/gun/projectile/automatic/bullpup
-	is_special = TRUE
-
 /datum/uplink_item/item/visible_weapons/assaultrifle
 	name = "Assault Rifle"
 	item_cost = 60
