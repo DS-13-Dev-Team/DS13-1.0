@@ -56,6 +56,7 @@
 	var/list/things = list(
 		/obj/item/weapon/gun/projectile/automatic/pulse_rifle/empty,
 		/obj/item/ammo_magazine/pulse/hv = 6,
+		/obj/item/ammo_magazine/pulse/df = 8,
 		/obj/item/weapon/storage/belt/holster/security
 	)
 	//Contains either an HPR or a seeker rifle
