@@ -187,6 +187,7 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 	leap_damage = 2
 	limb_health_factor = 0.6
 	pixel_offset_x = null
+	pixel_offset_y = null
 
 	biomass = 7
 	spawner_spawnable = FALSE
