@@ -669,24 +669,3 @@ var/world_topic_spam_protect_time = world.timeofday
 	// but those are both private, so let's put the commit info in the runtime
 	// log which is ultimately public.
 	log_runtime(GLOB.revdata.get_log_message())
-
-/world/proc/change_fps(new_value = 20)
-	if(new_value <= 0)
-		CRASH("change_fps() called with [new_value] new_value.")
-	if(fps == new_value)
-		return //No change required.
-
-	fps = new_value
-	on_tickrate_change()
-
-/world/proc/change_tick_lag(new_value = 0.5)
-	if(new_value <= 0)
-		CRASH("change_tick_lag() called with [new_value] new_value.")
-	if(tick_lag == new_value)
-		return //No change required.
-
-	tick_lag = new_value
-	on_tickrate_change()
-
-/world/proc/on_tickrate_change()
-	SStimer?.reset_buckets()

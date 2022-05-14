@@ -207,7 +207,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 #else
 	world.sleep_offline = TRUE
 #endif
-	world.change_fps(CONFIG_GET(number/fps))
+	world.fps = CONFIG_GET(number/fps)
 	var/initialized_tod = REALTIMEOFDAY
 
 	initializations_finished_with_no_players_logged_in = initialized_tod < REALTIMEOFDAY - 10

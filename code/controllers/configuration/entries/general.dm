@@ -117,10 +117,10 @@ Basics, the most important.
 	config_entry_value = 120
 
 /datum/config_entry/number/fps
-	default = 20
+	config_entry_value = 50
 	integer = FALSE
-	min_val = 1
-	max_val = 100   //byond will start crapping out at 100, so this is just ridic
+	min_val = 50
+	max_val = 50   //byond will start crapping out at 50, so this is just ridic
 	var/sync_validate = FALSE
 
 /datum/config_entry/number/fps/ValidateAndSet(str_val)
@@ -133,12 +133,13 @@ Basics, the most important.
 		sync_validate = FALSE
 
 /datum/config_entry/number/ticklag
+	config_entry_value = 0.5
 	integer = FALSE
 	var/sync_validate = FALSE
 
 /datum/config_entry/number/ticklag/New()	//ticklag weirdly just mirrors fps
 	var/datum/config_entry/CE = /datum/config_entry/number/fps
-	config_entry_value = 10 / initial(CE.default)
+	config_entry_value = 10 / initial(CE.config_entry_value)
 	return ..()
 
 /datum/config_entry/number/ticklag/ValidateAndSet(str_val)
