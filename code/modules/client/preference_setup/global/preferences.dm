@@ -219,13 +219,13 @@ var/list/_client_preferences_by_type
 	default_value = "1"
 
 //recommened client FPS
-#define RECOMMENDED_FPS 100
+#define RECOMMENDED_FPS 50
 
 /datum/client_preference/client_fps
 	description = "Client FPS"
 	key = "CLIENT_FPS"
 	options = list("20", "30", "50", "60", "100")
-	default_value = "100"
+	default_value = "50"
 
 /datum/client_preference/client_fps/changed(mob/preference_mob, new_value)
 	var/value = text2num(new_value)
