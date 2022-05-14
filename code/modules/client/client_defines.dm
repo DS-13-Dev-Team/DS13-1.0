@@ -83,7 +83,7 @@
 	var/atom/movable/screen/click_catcher/void = null
 
 	//Static framerate
-	fps = 50
+	fps = 100
 
 	/// our current tab
 	var/stat_tab
