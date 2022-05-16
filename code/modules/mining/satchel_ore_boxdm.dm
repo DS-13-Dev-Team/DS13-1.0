@@ -24,7 +24,8 @@
 
 /obj/structure/ore_box/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/stack/ore))
-		if(user.unEquip(W, src))
+		//Move it to null instead of ore box to prevent bugs
+		if(user.unEquip(W, null))
 			pick_up_ore(W)
 	else if (istype(W, /obj/item/weapon/storage))
 		var/obj/item/weapon/storage/S = W
@@ -76,7 +77,7 @@
 	var/list/ores = list()
 	for(var/obj/item/stack/ore/ore in contents)
 		ores[ore.type] += ore.amount
-	for(var/obj/item/stack/ore/ore in ores)
+	for(var/obj/item/stack/ore/ore as anything in ores)
 		to_chat(user, "- [ores[ore]] [initial(ore.name)]")
 
 	return

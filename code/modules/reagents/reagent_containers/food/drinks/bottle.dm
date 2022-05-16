@@ -505,6 +505,8 @@
 	icon = 'icons/obj/drinks.dmi'
 	icon_state = "ds_medipack"
 	starts_with = list(/datum/reagent/ds_medicalgelreagent = 20)
+	amount_per_transfer_from_this = 5
+	volume = 20
 
 /obj/item/weapon/reagent_containers/hypospray/autoinjector/ds_medigel/update_icon()
 	return
