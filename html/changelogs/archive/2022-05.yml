@@ -85,5 +85,5 @@
 2022-05-16:
   DTraitor:
   - rscadd: Added a head to BPL growth tank.
-  - bugfix: Fixed a lot of things that require you to target mouth of eyes.
+  - bugfix: Fixed a lot of things that require you to target mouth or eyes.
   - bugfix: Fixed ore boxes deleting ore instead of storing it.
