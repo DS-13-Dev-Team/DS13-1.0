@@ -21,4 +21,4 @@ export PHP_VERSION=5.6
 export SPACEMAN_DMM_VERSION=suite-1.7.1
 
 # Python version for mapmerge and other tools
-export PYTHON_VERSION=3.6.8
+export PYTHON_VERSION=3.7.9

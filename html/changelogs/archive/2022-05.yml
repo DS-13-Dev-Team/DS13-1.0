@@ -82,3 +82,8 @@
     - rscadd: Excavation rig, found in the foreman and DOM locker, rarely in maint.
         Better version of the mining rig, but more susceptible to bombs 'Exploders'.
     - balance: Makes line racks more expensive because they were really cheap
+2022-05-16:
+  DTraitor:
+  - rscadd: Added a head to BPL growth tank.
+  - bugfix: Fixed a lot of things that require you to target mouth of eyes.
+  - bugfix: Fixed ore boxes deleting ore instead of storing it.
