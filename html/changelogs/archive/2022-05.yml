@@ -87,3 +87,7 @@
   - rscadd: Added a head to BPL growth tank.
   - bugfix: Fixed a lot of things that require you to target mouth or eyes.
   - bugfix: Fixed ore boxes deleting ore instead of storing it.
+2022-05-21:
+  DTraitor:
+  - balance: Reduced infector's interaction range, it's 1 instead of 2.
+  - balance: Reduced infector's view range from 10 to 7.
