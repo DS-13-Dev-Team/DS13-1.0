@@ -13,7 +13,7 @@
 		new/datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack/industrial, /obj/item/weapon/storage/backpack/satchel_eng)),
 		new/datum/atom_creator/simple(/obj/item/weapon/storage/backpack/dufflebag/eng, 50),
 		/obj/item/blueprints,
-		/obj/item/weapon/rig/advanced,
+		/obj/item/weapon/rig/ce,
 		/obj/item/clothing/under/deadspace/engineer,
 		/obj/item/clothing/head/hardhat/white,
 		/obj/item/clothing/head/welding,
@@ -89,8 +89,7 @@
 		/obj/item/device/radio/headset/headset_eng,
 		/obj/item/taperoll/engineering,
 		/obj/item/device/flashlight,
-		/obj/item/weapon/storage/belt/utility/full,
-		/obj/item/weapon/rig/engineering
+		/obj/item/weapon/storage/belt/utility/full
 	)
 
 /obj/structure/closet/secure_closet/atmos_personal

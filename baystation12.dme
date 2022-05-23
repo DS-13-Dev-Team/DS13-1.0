@@ -1634,6 +1634,7 @@
 #include "code\modules\clothing\spacesuits\rig\modules\extension\extension.dm"
 #include "code\modules\clothing\spacesuits\rig\modules\extension\speedboost.dm"
 #include "code\modules\clothing\spacesuits\rig\suits\advanced.dm"
+#include "code\modules\clothing\spacesuits\rig\suits\ce.dm"
 #include "code\modules\clothing\spacesuits\rig\suits\civilian.dm"
 #include "code\modules\clothing\spacesuits\rig\suits\combat.dm"
 #include "code\modules\clothing\spacesuits\rig\suits\cseco.dm"

@@ -8582,7 +8582,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/airlock/maintenance{
 	name = "Janitor Closet Maintenance";
-	req_access = list(1, 6)
+	req_access = list(1,6)
 	},
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/dank/golf_gray,
@@ -22765,13 +22765,9 @@
 /turf/simulated/floor/dank/hardwood,
 /area/ishimura/upper/security/brig)
 "aSR" = (
+/obj/effect/floor_decal/industrial/outline/orange,
 /obj/structure/table/rack,
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/device/flashlight/maglight,
-/obj/item/device/flashlight/maglight,
-/obj/item/device/flashlight/maglight,
-/obj/item/device/flashlight/maglight,
-/obj/item/device/flashlight/maglight,
+/obj/item/weapon/rig/engineering,
 /turf/simulated/floor/dank/slides,
 /area/ishimura/upper/engineering/prep)
 "aSS" = (
@@ -22962,6 +22958,7 @@
 /obj/item/device/camera_film,
 /obj/item/device/camera_film,
 /obj/item/device/camera,
+/obj/item/weapon/storage/toolbox/mechanical,
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/upper/engineering/prep)
 "aTn" = (
@@ -22973,6 +22970,9 @@
 /obj/item/device/analyzer,
 /obj/item/device/analyzer,
 /obj/random/loot/often/some,
+/obj/item/weapon/storage/toolbox/electrical{
+	pixel_y = 6
+	},
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/upper/engineering/prep)
 "aTo" = (
@@ -24420,12 +24420,9 @@
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/effect/floor_decal/industrial/outline/orange,
 /obj/structure/table/rack,
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/weapon/storage/toolbox/mechanical,
-/obj/item/weapon/storage/toolbox/electrical{
-	pixel_y = 6
-	},
+/obj/item/weapon/rig/engineering,
 /turf/simulated/floor/dank/slides,
 /area/ishimura/upper/engineering/prep)
 "aVW" = (
@@ -26951,14 +26948,6 @@
 	},
 /turf/simulated/floor/dank/cable/end,
 /area/ishimura/upper/misc/escape)
-"bav" = (
-/obj/structure/table/rack,
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/weapon/grenade/chem_grenade/metalfoam,
-/obj/item/weapon/grenade/chem_grenade/metalfoam,
-/obj/item/weapon/grenade/chem_grenade/metalfoam,
-/turf/simulated/floor/dank/slides,
-/area/ishimura/upper/engineering/prep)
 "baw" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/plating,
@@ -44690,7 +44679,7 @@ asm
 aHl
 aTn
 aVV
-bav
+aSR
 aSR
 aTm
 ara
