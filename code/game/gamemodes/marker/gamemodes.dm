@@ -46,7 +46,7 @@ GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 	antag_templates = list(/datum/antagonist/unitologist, /datum/antagonist/earthgov_agent)
 	require_all_templates = FALSE
 	votable = FALSE
-	var/marker_setup_time = 60 MINUTES
+	var/marker_setup_time = 20 MINUTES
 	var/marker_active = FALSE
 	antag_scaling_coeff = 8
 
