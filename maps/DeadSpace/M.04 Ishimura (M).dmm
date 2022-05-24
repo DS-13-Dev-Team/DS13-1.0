@@ -1596,13 +1596,18 @@
 /turf/simulated/floor/dank/mono,
 /area/ishimura/upper/security/forensics)
 "adY" = (
-/obj/machinery/light{
-	dir = 1
+/obj/structure/reagent_dispensers/peppertank{
+	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/dark,
 /area/ishimura/upper/security/equipment)
 "adZ" = (
-/obj/machinery/door/window/eastleft,
+/obj/machinery/door/window/eastleft{
+	req_one_access = list(2,57,100)
+	},
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/dark,
 /area/ishimura/upper/security/equipment)
 "aea" = (
@@ -7144,7 +7149,9 @@
 /turf/simulated/floor/dank/mono,
 /area/ishimura/upper/medical/bpc)
 "aqq" = (
-/obj/machinery/door/window/eastright,
+/obj/machinery/door/window/eastright{
+	req_one_access = list(2,57,100)
+	},
 /turf/simulated/floor/tiled/dark,
 /area/ishimura/upper/security/equipment)
 "aqr" = (
@@ -21797,13 +21804,20 @@
 /turf/simulated/floor/dank/grater,
 /area/ishimura/upper/misc/hallway/escape)
 "aRe" = (
-/obj/structure/reagent_dispensers/peppertank{
-	pixel_y = -30
-	},
 /obj/item/device/radio/intercom/department/security{
 	dir = 4;
 	pixel_x = -21
 	},
+/obj/structure/table/steel_reinforced,
+/obj/machinery/door/window/eastleft{
+	dir = 1;
+	icon_state = "left";
+	req_one_access = list(2,57,100)
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/item/weapon/rig/security,
 /turf/simulated/floor/tiled/dark,
 /area/ishimura/upper/security/equipment)
 "aRf" = (
@@ -22411,12 +22425,20 @@
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/upper/misc/hallway/escape)
 "aSh" = (
-/obj/structure/reagent_dispensers/peppertank{
-	pixel_y = -30
-	},
 /obj/machinery/recharger/wallcharger{
 	pixel_x = 34
 	},
+/obj/structure/table/steel_reinforced,
+/obj/machinery/door/window/eastright{
+	dir = 1;
+	icon_state = "right";
+	req_one_access = list(2,57,100)
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 1e+006
+	},
+/obj/item/weapon/rig/security,
 /turf/simulated/floor/tiled/dark,
 /area/ishimura/upper/security/equipment)
 "aSi" = (
@@ -22768,6 +22790,14 @@
 /obj/effect/floor_decal/industrial/outline/orange,
 /obj/structure/table/rack,
 /obj/item/weapon/rig/engineering,
+/obj/machinery/door/window/westright{
+	req_access = list(5)
+	},
+/obj/structure/window/reinforced{
+	dir = 1;
+	health = 1e+006
+	},
+/obj/structure/window/reinforced,
 /turf/simulated/floor/dank/slides,
 /area/ishimura/upper/engineering/prep)
 "aSS" = (
@@ -24423,6 +24453,14 @@
 /obj/effect/floor_decal/industrial/outline/orange,
 /obj/structure/table/rack,
 /obj/item/weapon/rig/engineering,
+/obj/machinery/door/window/westright{
+	req_access = list(5)
+	},
+/obj/structure/window/reinforced{
+	dir = 1;
+	health = 1e+006
+	},
+/obj/structure/window/reinforced,
 /turf/simulated/floor/dank/slides,
 /area/ishimura/upper/engineering/prep)
 "aVW" = (
@@ -31955,6 +31993,13 @@
 /obj/random/loot/sometimes/few,
 /turf/simulated/floor/plating,
 /area/ishimura/upper/maintenance/fore_port)
+"qBN" = (
+/obj/item/weapon/stool/padded,
+/obj/structure/reagent_dispensers/peppertank{
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled/dark,
+/area/ishimura/upper/security/equipment)
 "qGj" = (
 /turf/simulated/floor/dank/slides{
 	dir = 4
@@ -67093,7 +67138,7 @@ bcp
 lgW
 aLr
 acA
-adz
+qBN
 adz
 adz
 adz
