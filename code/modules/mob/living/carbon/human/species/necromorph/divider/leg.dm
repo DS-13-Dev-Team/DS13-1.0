@@ -22,7 +22,6 @@
 	attacktext = "kicked"
 	attack_sound = 'sound/weapons/bite.ogg'
 	leap_cooldown = 4 SECONDS
-	credits_reward = list(1,5)
 
 	pain_sounds = list('sound/effects/creatures/necromorph/divider/component/leg_pain_1.ogg',
 	'sound/effects/creatures/necromorph/divider/component/leg_pain_2.ogg',

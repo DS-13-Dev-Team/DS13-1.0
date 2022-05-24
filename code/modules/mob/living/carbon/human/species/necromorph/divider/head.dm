@@ -18,7 +18,6 @@
 	speed = 1.75
 	leap_range = 4
 	max_health = 60
-	credits_reward = list(10,25)
 
 	pain_sounds = list('sound/effects/creatures/necromorph/divider/component/head_pain_1.ogg',
 	'sound/effects/creatures/necromorph/divider/component/head_pain_2.ogg')
