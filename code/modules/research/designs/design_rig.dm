@@ -41,8 +41,8 @@
 	price = 16500
 
 /datum/design/item/rig/riot
-	build_path = /obj/item/weapon/rig/riot
-	price = 15000
+	build_path = /obj/item/weapon/rig/riot/store
+	price = 20000 // Currently the beefiest thing we've got. Veeeery expensive.
 
 /datum/design/item/rig/vintage
 	build_path = /obj/item/weapon/rig/vintage
