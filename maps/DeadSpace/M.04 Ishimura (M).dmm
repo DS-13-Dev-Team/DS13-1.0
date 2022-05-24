@@ -163,8 +163,7 @@
 /area/ishimura/upper/security/brig)
 "aaE" = (
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/machinery/computer/station_alert/security,
 /turf/simulated/floor/tiled/dark/monotile,
@@ -214,8 +213,7 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/command/bridge)
@@ -18048,8 +18046,7 @@
 "aKd" = (
 /obj/structure/bed/chair/office/light,
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/command/bridge)
@@ -18889,8 +18886,7 @@
 /area/ishimura/upper/misc/hallway/aft)
 "aLL" = (
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/machinery/computer/station_alert/engineering{
 	dir = 1
@@ -22435,8 +22431,7 @@
 	req_one_access = list(2,57,100)
 	},
 /obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
+	dir = 8
 	},
 /obj/item/weapon/rig/security,
 /turf/simulated/floor/tiled/dark,
@@ -22794,8 +22789,7 @@
 	req_access = list(5)
 	},
 /obj/structure/window/reinforced{
-	dir = 1;
-	health = 1e+006
+	dir = 1
 	},
 /obj/structure/window/reinforced,
 /turf/simulated/floor/dank/slides,
@@ -24457,8 +24451,7 @@
 	req_access = list(5)
 	},
 /obj/structure/window/reinforced{
-	dir = 1;
-	health = 1e+006
+	dir = 1
 	},
 /obj/structure/window/reinforced,
 /turf/simulated/floor/dank/slides,
