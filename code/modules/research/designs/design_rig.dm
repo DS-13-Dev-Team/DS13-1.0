@@ -28,8 +28,8 @@
 
 //This one is cheap and shoddy
 /datum/design/item/rig/mining
-	build_path = /obj/item/weapon/rig/mining
-	price = 4000
+	build_path = /obj/item/weapon/rig/mining/store
+	price = 4400
 
 
 
@@ -53,8 +53,8 @@
 	price = 19000
 
 /datum/design/item/rig/advanced
-	build_path = /obj/item/weapon/rig/advanced
-	price = 15000
+	build_path = /obj/item/weapon/rig/advanced/store
+	price = 16500
 
 /datum/design/item/rig/marksman
 	build_path = /obj/item/weapon/rig/marksman
