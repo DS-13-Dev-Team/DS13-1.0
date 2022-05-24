@@ -45,8 +45,12 @@
 	price = 20000 // Currently the beefiest thing we've got. Veeeery expensive.
 
 /datum/design/item/rig/vintage
-	build_path = /obj/item/weapon/rig/vintage
-	price = 10000	//Its outdated and has drawbacks
+	build_path = /obj/item/weapon/rig/vintage/store
+	price = 11000	//Its outdated and has drawbacks (But still QUITE Good, so 10% increase on May 24th, 2022)
+
+/datum/design/item/rig/vintageheavy
+	build_path = /obj/item/weapon/rig/vintage/heavy/store
+	price = 19000
 
 /datum/design/item/rig/advanced
 	build_path = /obj/item/weapon/rig/advanced
