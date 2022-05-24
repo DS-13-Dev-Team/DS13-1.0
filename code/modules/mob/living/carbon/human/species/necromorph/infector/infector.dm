@@ -41,8 +41,7 @@
 	swap_flags 	= ALLMOBS	// What can we swap place with?
 	can_pull_mobs = MOB_PULL_SMALLER
 	can_pull_size = ITEM_SIZE_NORMAL
-	evasion = 10
-	reach = 2
+	reach = 1
 
 
 
@@ -63,10 +62,6 @@
 	unarmed_types = list(/datum/unarmed_attack/proboscis)
 
 	slowdown = 5.5 //Note, this is a terribly awful way to do speed, bay's entire speed code needs redesigned
-
-	//Vision
-	view_range = 10
-
 
 	has_limbs = list(BP_CHEST =  list("path" = /obj/item/organ/external/chest/simple, "height" = new /vector2(0, 2.5)),
 	BP_HEAD = list("path" = /obj/item/organ/external/arm/tentacle/proboscis, "height" = new /vector2(1.5, 2.5)),	//The infector is tall and all of its limbs are too
