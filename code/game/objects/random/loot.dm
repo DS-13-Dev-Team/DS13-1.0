@@ -142,7 +142,7 @@ GLOBAL_LIST_EMPTY(loot_locations)
 
 //Subtype that spawns *some* suits.
 
-/obj/random/rare_loot/RIG
+/obj/random/rare_loot/rig
 	possible_spawns = list(
 	/obj/item/weapon/rig/vintage = 0.1,
 	/obj/item/weapon/rig/riot = 0.1,

@@ -100,5 +100,5 @@
 		/obj/item/rig_module/kinesis/advanced,
 		/obj/item/rig_module/hotswap,
 		/obj/item/rig_module/power_sink,
-		/obj/item/rig_module/vision/multi
+		/obj/item/rig_module/vision/nvg
 		)

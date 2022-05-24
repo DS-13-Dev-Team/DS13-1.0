@@ -55,6 +55,6 @@
 	initial_modules = list(
 		/obj/item/rig_module/healthbar/advanced,
 		/obj/item/rig_module/storage/heavy,
-		/obj/item/rig_module/extension/speedboost/advanced,
+		/obj/item/rig_module/extension/speedboost,
 		/obj/item/rig_module/hotswap,
 		)
