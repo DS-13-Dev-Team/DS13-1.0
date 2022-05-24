@@ -1809,6 +1809,7 @@
 	},
 /obj/item/weapon/storage/box/survival,
 /obj/random/loot/sometimes/few,
+/obj/random/cash_poor,
 /turf/simulated/floor/dank/maint_left,
 /area/ishimura/lower/maintenance/starboard)
 "aeo" = (
@@ -4038,6 +4039,7 @@
 	},
 /obj/item/weapon/spacecash/ewallet/random/c200,
 /obj/random/loot/often/few,
+/obj/random/cash_poor,
 /turf/simulated/floor/plating,
 /area/ishimura/lower/maintenance/aft_port)
 "aiN" = (
@@ -9058,9 +9060,7 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/obj/random/cash,
-/obj/random/cash,
-/obj/random/cash,
+/obj/random/cash_poor,
 /turf/simulated/floor/dank/tech,
 /area/ishimura/lower/misc/hallway/escape_executive)
 "asD" = (
@@ -11813,6 +11813,7 @@
 "ayf" = (
 /obj/structure/bed/chair/shuttle/blue,
 /obj/structure/closet/walllocker/emerglocker/north,
+/obj/random/cash_poor,
 /turf/simulated/floor/tiled/monotile,
 /area/shuttle/executive_shuttle)
 "ayg" = (
@@ -22475,6 +22476,7 @@
 	dir = 8
 	},
 /obj/random/toolbox,
+/obj/random/cash_poor,
 /turf/simulated/floor/plating,
 /area/ishimura/lower/maintenance/starboard)
 "aSJ" = (
@@ -22779,6 +22781,7 @@
 	},
 /obj/random/toolbox,
 /obj/random/loot/sometimes/some,
+/obj/random/cash_poor,
 /turf/simulated/floor/plating,
 /area/ishimura/lower/maintenance/aft_starboard)
 "aTo" = (
@@ -24019,7 +24022,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/maintenance{
 	name = "Janitor Closet Maintenance";
-	req_access = list(1, 6)
+	req_access = list(1,6)
 	},
 /turf/simulated/floor/plating,
 /area/ishimura/lower/misc/janitorcloset/midship)
@@ -24777,6 +24780,7 @@
 /obj/item/clothing/mask/smokable/cigarette/cigar,
 /obj/item/clothing/mask/smokable/cigarette/cigar,
 /obj/item/weapon/material/ashtray/bronze,
+/obj/random/cash_poor,
 /turf/simulated/floor/carpet/blue2,
 /area/ishimura/lower/crew/sleepblock/executive)
 "aXE" = (
@@ -25560,6 +25564,7 @@
 /obj/effect/decal/cleanable/cobweb2,
 /obj/machinery/space_heater,
 /obj/random/trash,
+/obj/random/cash_poor,
 /turf/simulated/floor/plating,
 /area/ishimura/lower/maintenance/port)
 "aZO" = (
@@ -25888,6 +25893,7 @@
 /obj/random/tool/low_chance,
 /obj/random/tool,
 /obj/random/tool,
+/obj/random/cash_poor,
 /turf/simulated/floor/plating,
 /area/ishimura/lower/maintenance/starboard)
 "bbg" = (

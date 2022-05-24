@@ -15,6 +15,7 @@
 	total_health = 100
 	biomass = 50
 	mass = 70
+	credits_reward = list(5, 25) // Shitty necro, shitty payout.
 
 	biomass_reclamation_time	=	7 MINUTES
 

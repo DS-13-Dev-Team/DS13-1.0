@@ -4967,6 +4967,7 @@
 	dir = 4
 	},
 /obj/structure/table/steel,
+/obj/random/cash,
 /turf/simulated/floor/dank,
 /area/ishimura/tramdeck/tram/misc)
 "kZ" = (
@@ -6034,6 +6035,7 @@
 "nE" = (
 /obj/effect/floor_decal/dank/outline_striped,
 /obj/structure/closet/crate/internals,
+/obj/random/cash_poor,
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/misc/auxcargostor)
 "nF" = (
@@ -6519,6 +6521,7 @@
 "pr" = (
 /obj/effect/floor_decal/dank/outline_striped,
 /obj/structure/closet/crate/medical,
+/obj/random/cash_poor,
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/misc/auxcargostor)
 "ps" = (
@@ -6666,6 +6669,12 @@
 /obj/machinery/light,
 /turf/simulated/floor/dank/tramcorner,
 /area/shuttle/tram)
+"vo" = (
+/obj/structure/table/steel,
+/obj/random/loot/sometimes/few,
+/obj/random/cash,
+/turf/simulated/floor,
+/area/ishimura/tramdeck/tram/maintenance/aftmaintenance)
 "wS" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/effect/decal/cleanable/dirt,
@@ -6765,6 +6774,12 @@
 	dir = 8
 	},
 /area/shuttle/tram)
+"SO" = (
+/obj/structure/table/marble,
+/obj/random/loot/sometimes/few,
+/obj/random/cash_poor,
+/turf/simulated/floor,
+/area/ishimura/tramdeck/tram/maintenance/aftmaintenance)
 "Vm" = (
 /obj/machinery/door/airlock/civilian/tram{
 	dir = 4;
@@ -12330,7 +12345,7 @@ ja
 jr
 jr
 lU
-lU
+SO
 lU
 ja
 cR
@@ -46092,7 +46107,7 @@ dt
 dA
 aR
 nt
-va
+vo
 ja
 cR
 aa

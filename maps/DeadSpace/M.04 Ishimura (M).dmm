@@ -1075,6 +1075,7 @@
 	dir = 1
 	},
 /obj/structure/closet/emcloset,
+/obj/random/cash_poor,
 /turf/simulated/floor/plating,
 /area/ishimura/upper/maintenance/fore_central)
 "acH" = (
@@ -2851,6 +2852,7 @@
 /obj/random/rare_loot/rarely,
 /obj/random/loot/sometimes/few,
 /obj/random/loot/sometimes/few,
+/obj/random/cash_poor,
 /turf/simulated/floor/plating,
 /area/ishimura/upper/maintenance/fore_port)
 "agD" = (
@@ -3008,6 +3010,7 @@
 /obj/structure/table/rack,
 /obj/random/firstaid,
 /obj/random/loot/sometimes/few,
+/obj/random/cash_poor,
 /turf/simulated/floor/plating,
 /area/ishimura/upper/maintenance/aft_port)
 "agW" = (
@@ -8582,7 +8585,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/airlock/maintenance{
 	name = "Janitor Closet Maintenance";
-	req_access = list(1, 6)
+	req_access = list(1,6)
 	},
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/dank/golf_gray,
@@ -22222,6 +22225,7 @@
 	d2 = 2;
 	icon_state = "0-2"
 	},
+/obj/random/cash_poor,
 /turf/simulated/floor/dank/slides{
 	dir = 4
 	},
@@ -22553,6 +22557,7 @@
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/random/loot/sometimes/some,
+/obj/random/cash_poor,
 /turf/simulated/floor/tiled/dark,
 /area/ishimura/upper/engineering/spare_storage/starboard)
 "aSv" = (
@@ -24646,6 +24651,7 @@
 "aWl" = (
 /obj/structure/closet/crate/internals,
 /obj/random/loot/sometimes/few,
+/obj/random/cash_poor,
 /turf/simulated/floor/plating,
 /area/ishimura/upper/maintenance/aft_starboard)
 "aWm" = (
@@ -26745,6 +26751,7 @@
 "bab" = (
 /obj/structure/closet/crate/freezer/rations,
 /obj/effect/decal/cleanable/cobweb,
+/obj/random/cash_poor,
 /turf/simulated/floor/plating,
 /area/ishimura/upper/maintenance/aft_starboard)
 "bac" = (

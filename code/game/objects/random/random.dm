@@ -875,23 +875,32 @@ obj/random/obstruction/item_to_spawn()
 	desc = "LOADSAMONEY!"
 	icon = 'icons/obj/items.dmi'
 	icon_state = "spacecash1"
+	spawn_nothing_percentage = 75
 
 /obj/random/cash/item_to_spawn()
-	return pickweight(list(/obj/item/weapon/spacecash/ewallet/random/c200 = 8,
+	return pickweight(list(
+				/obj/item/weapon/spacecash/ewallet/random/c50 = 24,
+				/obj/item/weapon/spacecash/ewallet/random/c100 = 16,
+				/obj/item/weapon/spacecash/ewallet/random/c200 = 8,
 				/obj/item/weapon/spacecash/ewallet/random/c500 = 6,
-				/obj/item/weapon/spacecash/ewallet/random/c1000 = 4,
-				/obj/item/weapon/spacecash/ewallet/random/c5000 = 2,
-				/obj/item/weapon/spacecash/ewallet/random/c10000 = 1))
+				/obj/item/weapon/spacecash/ewallet/random/c1000 = 4))
 
 /obj/random/cash_poor
 	name = "lesser random currency"
 	desc = "LOADSAMONEY!"
 	icon = 'icons/obj/items.dmi'
 	icon_state = "spacecash1"
+	spawn_nothing_percentage = 50
 
 /obj/random/cash_poor/item_to_spawn()
-	return pickweight(list(/obj/item/weapon/spacecash/ewallet/random/c200 = 9,
-				/obj/item/weapon/spacecash/ewallet/random/c500 = 1))
+	return pickweight(list(
+				/obj/item/weapon/spacecash/ewallet/random/c1 = 96,
+				/obj/item/weapon/spacecash/ewallet/random/c5 = 48,
+				/obj/item/weapon/spacecash/ewallet/random/c10 = 24,
+				/obj/item/weapon/spacecash/ewallet/random/c25 = 16,
+				/obj/item/weapon/spacecash/ewallet/random/c50 = 8,
+				/obj/item/weapon/spacecash/ewallet/random/c100 = 4,
+				/obj/item/weapon/spacecash/ewallet/random/c200 = 2))
 
 /obj/random/voidhelmet
 	name = "Random Voidsuit Helmet"

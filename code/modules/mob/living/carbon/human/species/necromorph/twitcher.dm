@@ -32,6 +32,7 @@
 	lying_rotation = 90
 	total_health = 110
 	damage_mask = null
+	credits_reward = list(100,250) // Shitty necro, shitty payout.
 
 	slowdown = 1.5
 

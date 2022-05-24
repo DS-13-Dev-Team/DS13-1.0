@@ -12,6 +12,7 @@
 	total_health = 94	//It has high health for the sake of making it a bit harder to destroy without targeting the pustule. Exploding the pustule is always an instakill
 	biomass = 65
 	mass = 50
+	credits_reward = list(25,50)
 
 	biomass_reclamation_time	=	5 MINUTES
 	view_range = 6

@@ -359,6 +359,7 @@
 /obj/structure/table/standard,
 /obj/random/tool,
 /obj/random/tool,
+/obj/random/cash_poor,
 /turf/simulated/floor/plating,
 /area/ishimura/eva/substation)
 "aL" = (
@@ -3104,6 +3105,7 @@
 /obj/structure/table/reinforced,
 /obj/random/rare_loot/rarely,
 /obj/item/weapon/storage/box/lights/mixed,
+/obj/random/cash_poor,
 /turf/simulated/floor/tiled/dark,
 /area/ishimura/eva/prep/ADS)
 "gb" = (

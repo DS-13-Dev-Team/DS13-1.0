@@ -16,6 +16,7 @@
 	virus_immune = 1
 	reach = 2
 	lasting_damage_factor = 0 //It regenerates this stuff away
+	credits_reward = list(750,1500) // If you manage to kill an Uber, you can have the jackpot for all I care.
 
 
 	icon_template = 'icons/mob/necromorph/ubermorph.dmi'

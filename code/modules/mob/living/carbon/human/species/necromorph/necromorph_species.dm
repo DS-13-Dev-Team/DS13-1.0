@@ -24,6 +24,7 @@
 	var/global_limit = 0	//0 = no limit
 	var/ventcrawl = FALSE //Can this necromorph type ventcrawl?
 	var/ventcrawl_time = 4.5 SECONDS
+	var/reward
 	lasting_damage_factor = 0.2	//Necromorphs take lasting damage based on incoming hits
 
 	strength    = STR_MEDIUM
@@ -37,8 +38,6 @@
 	knockout_message = "crumples into a heap"
 	halloss_message = "twitches and collapses"
 	halloss_message_self = "your limbs spasm violently, pitching you forward onto the ground"
-
-
 
 	//Vision
 	darksight_range = -1
@@ -177,6 +176,8 @@
 
 	disarm_cooldown = 10
 
+	var/list/credits_reward = list(5, 100)
+
 /datum/species/necromorph/psychosis_vulnerable()
 	return FALSE
 
@@ -251,6 +252,8 @@
 
 
 /datum/species/necromorph/handle_death(var/mob/living/carbon/human/H)
+	var/obj/item/weapon/spacecash/ewallet/chip = new(get_turf(H))
+	chip.set_worth(rand(credits_reward[1], credits_reward[2]))
 	//We just died? Lets start getting absorbed by the marker
 	if (!SSnecromorph.marker)	//Gotta have one
 		return
@@ -259,6 +262,7 @@
 		remove_massive_atom(H)
 	GLOB.necrovision.remove_source(H)
 	SSnecromorph.major_vessels -= H
+
 
 //How much damage has this necromorph taken?
 //We'll loop through each organ tag in the species' initial health values list, which should definitely be populated already, and try to get the organ for each
@@ -330,3 +334,4 @@
 	//Apply customisation with a null preference, this applies default settings
 	if (!(HAS_TRANSFORMATION_MOVEMENT_HANDLER(H)))
 		H.apply_customisation(null)
+

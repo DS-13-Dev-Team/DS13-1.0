@@ -22,6 +22,7 @@
 	//Normal necromorph flags plus no slip
 	species_flags = SPECIES_FLAG_NO_PAIN | SPECIES_FLAG_NO_MINOR_CUT | SPECIES_FLAG_NO_POISON  | SPECIES_FLAG_NO_BLOCK | SPECIES_FLAG_NO_SLIP
 	stability = 2
+	credits_reward = list(50,100)
 
 	icon_template = 'icons/mob/necromorph/leaper.dmi'
 	icon_lying = "_lying"

@@ -48,6 +48,24 @@
 	.=..()
 	set_worth(round(rand_between(initial(worth)*0.5, initial(worth)*1.5), 1))
 
+/obj/item/weapon/spacecash/ewallet/random/c1
+	worth = 1
+
+/obj/item/weapon/spacecash/ewallet/random/c5
+	worth = 5
+
+/obj/item/weapon/spacecash/ewallet/random/c10
+	worth = 10
+
+/obj/item/weapon/spacecash/ewallet/random/c25
+	worth = 25
+
+/obj/item/weapon/spacecash/ewallet/random/c50
+	worth = 50
+
+/obj/item/weapon/spacecash/ewallet/random/c100
+	worth = 100
+
 /obj/item/weapon/spacecash/ewallet/random/c200
 	worth = 200
 

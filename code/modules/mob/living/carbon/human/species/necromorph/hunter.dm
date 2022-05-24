@@ -38,6 +38,7 @@
 	limb_health_factor = 1	//Not as fragile as a slasher
 	virus_immune = 1
 	reach = 2
+	credits_reward = list(150, 200)
 
 
 	icon_template = 'icons/mob/necromorph/hunter.dmi'

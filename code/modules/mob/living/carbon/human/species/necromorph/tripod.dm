@@ -17,6 +17,7 @@
 	blurb = "A heavy skirmisher, the tripod is adept at leaping around open spaces and fighting against multiple distant targets."
 	total_health = 475
 	torso_damage_mult = 0.65 //Hitting centre mass is fine for tripod
+	credits_reward = list(350,450) // Shitty necro, shitty payout.
 
 	//Normal necromorph flags plus no slip
 	species_flags = SPECIES_FLAG_NO_PAIN | SPECIES_FLAG_NO_MINOR_CUT | SPECIES_FLAG_NO_POISON  | SPECIES_FLAG_NO_BLOCK | SPECIES_FLAG_NO_SLIP

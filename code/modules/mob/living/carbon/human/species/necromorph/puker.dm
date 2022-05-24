@@ -21,6 +21,7 @@
 	step_priority = 2
 	step_volume = 10
 	virus_immune = 1
+	credits_reward = list(75,125) // Shitty necro, shitty payout.
 
 	//Acid has long since burned out its eyes, somehow the puker sees without them
 	override_organ_types = list(BP_EYES = null)

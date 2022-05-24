@@ -13,6 +13,7 @@
 	//Normal necromorph flags plus no slip
 	species_flags = SPECIES_FLAG_NO_PAIN | SPECIES_FLAG_NO_MINOR_CUT | SPECIES_FLAG_NO_POISON  | SPECIES_FLAG_NO_BLOCK | SPECIES_FLAG_NO_SLIP
 	stability = 2
+	credits_reward = list(250,350) // Good necro, good payout.
 
 	icon_template = 'icons/mob/necromorph/brute.dmi'
 	icon_normal = "brute-d"

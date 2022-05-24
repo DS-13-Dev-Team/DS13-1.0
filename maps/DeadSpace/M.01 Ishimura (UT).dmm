@@ -234,6 +234,7 @@
 /obj/structure/bed/chair/tram{
 	dir = 4
 	},
+/obj/random/cash_poor,
 /turf/simulated/floor/dank/tramcorner{
 	dir = 9
 	},
@@ -1178,6 +1179,7 @@
 /area/ishimura/tramdeck/tram/undertunnel/utama)
 "di" = (
 /obj/structure/table/steel,
+/obj/random/cash,
 /turf/simulated/floor/plating,
 /area/ishimura/tramdeck/tram/undertunnel/utama)
 "dj" = (
@@ -2229,6 +2231,7 @@
 "fh" = (
 /obj/structure/table/standard,
 /obj/random/rig_module,
+/obj/random/cash_poor,
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "fi" = (
@@ -4334,6 +4337,7 @@
 "ja" = (
 /obj/structure/table/standard,
 /obj/item/stack/material/steel/ten,
+/obj/random/cash_poor,
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "jb" = (
@@ -5301,6 +5305,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/random/cash,
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "kL" = (
@@ -5467,6 +5472,11 @@
 	},
 /turf/simulated/floor/dank/heavy,
 /area/ishimura/tramdeck/switchingstation/lower)
+"sW" = (
+/obj/structure/table/rack,
+/obj/random/cash,
+/turf/simulated/floor,
+/area/ishimura/tramdeck/tram/undertunnel/uttt)
 "tg" = (
 /obj/structure/bed/chair{
 	dir = 4;
@@ -5686,6 +5696,11 @@
 	},
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
+"Mn" = (
+/obj/structure/table/standard,
+/obj/random/cash_poor,
+/turf/simulated/floor,
+/area/ishimura/tramdeck/tram/undertunnel/uttt)
 "My" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/weapon/storage/toolbox/mechanical,
@@ -46093,7 +46108,7 @@ aa
 aa
 tQ
 ef
-kG
+Mn
 eF
 eF
 eF
@@ -46699,7 +46714,7 @@ aa
 aa
 tQ
 ef
-kH
+sW
 eF
 eF
 eF

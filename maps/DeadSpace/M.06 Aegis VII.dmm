@@ -2146,6 +2146,7 @@
 	pixel_y = 32
 	},
 /obj/random/loot/often,
+/obj/random/cash_poor,
 /turf/simulated/floor/tiled,
 /area/aegis/colony/hangar/entrance/one)
 "ff" = (
@@ -4197,6 +4198,7 @@
 /obj/random/loot/often,
 /obj/random/loot/often,
 /obj/random/loot/often,
+/obj/random/cash_poor,
 /turf/simulated/floor/tiled/monotile,
 /area/aegis/colony/engineering)
 "iY" = (
@@ -4269,6 +4271,7 @@
 "jf" = (
 /obj/structure/closet/firecloset,
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/random/cash_poor,
 /turf/simulated/floor/tiled/monotile,
 /area/aegis/colony)
 "jg" = (
@@ -6606,6 +6609,10 @@
 /obj/machinery/light,
 /turf/simulated/floor/plating,
 /area/aegis/colony/refinery)
+"sK" = (
+/obj/random/cash_poor,
+/turf/simulated/floor/plating,
+/area/aegis/colony/maintenance/north)
 "tW" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/machinery/input/ore,
@@ -7201,6 +7208,11 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/white/monotile,
 /area/aegis/colony/medical)
+"ZV" = (
+/obj/structure/table/steel_reinforced,
+/obj/random/cash_poor,
+/turf/simulated/floor/lino,
+/area/aegis/colony/breakroom)
 
 (1,1,1) = {"
 aa
@@ -30748,7 +30760,7 @@ dH
 dW
 dW
 eM
-eQ
+ZV
 eW
 fd
 fo
@@ -35173,7 +35185,7 @@ mb
 mu
 mV
 jU
-aI
+sK
 hC
 aI
 aR

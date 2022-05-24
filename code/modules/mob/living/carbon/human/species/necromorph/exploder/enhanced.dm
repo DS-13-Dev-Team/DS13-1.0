@@ -10,6 +10,7 @@
 	biomass = 165
 	mass = 80
 	view_range = 8
+	credits_reward = list(50,65)
 
 	variants = list(SPECIES_NECROMORPH_EXPLODER_ENHANCED = list(WEIGHT = 1),
 	SPECIES_NECROMORPH_EXPLODER_ENHANCED_RIGHT = list(WEIGHT = 1))
