@@ -317,7 +317,12 @@
 		/obj/item/device/binoculars,
 		/obj/item/weapon/marshalling_wand,
 		/obj/item/device/camera,
-		/obj/item/device/destTagger
+		/obj/item/device/destTagger,
+		/obj/item/weapon/gun/projectile/divet,
+		/obj/item/ammo_magazine/divet/ap,
+		/obj/item/ammo_magazine/divet/hollow_point,
+		/obj/item/ammo_magazine/divet/incendiary,
+		/obj/item/ammo_magazine/divet/rb
 		)
 
 /obj/item/weapon/storage/belt/holster/general/command/New()
