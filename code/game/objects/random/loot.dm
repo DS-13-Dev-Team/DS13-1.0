@@ -107,7 +107,8 @@ GLOBAL_LIST_EMPTY(loot_locations)
 
 
 /obj/random/uncommon_loot
-	possible_spawns = list(/obj/random/tool_upgrade = 3,
+	possible_spawns = list(
+	/obj/random/tool_upgrade = 3,
 	/obj/random/gun_tool = 0.65,//Only tool-like guns are randomly spawned, the military weapons stay in the armoury. More for theming than for balance
 	/obj/random/firstaid = 2,
 	/obj/random/glasses = 1,
@@ -125,7 +126,8 @@ GLOBAL_LIST_EMPTY(loot_locations)
 
 
 /obj/random/rare_loot
-	possible_spawns = list( /obj/item/stack/power_node = 3,
+	possible_spawns = list(
+	/obj/item/stack/power_node = 3,
 	/obj/item/store_schematic = 0.8,
 	/obj/random/material/rare = 1,
 	/obj/random/tool/modded = 1,
@@ -137,6 +139,16 @@ GLOBAL_LIST_EMPTY(loot_locations)
 //Subtype that cannot spawn power nodes
 /obj/random/rare_loot/nodeless
 	exclusions = list(/obj/item/stack/power_node)
+
+//Subtype that spawns *some* suits.
+
+/obj/random/rare_loot/RIG
+	possible_spawns = list(
+	/obj/item/weapon/rig/vintage = 0.1,
+	/obj/item/weapon/rig/riot = 0.1,
+	/obj/item/weapon/rig/advanced = 0.1,
+	/obj/item/weapon/rig/patrol = 0.1
+	)
 
 
 /obj/random/rare_loot/pengless
