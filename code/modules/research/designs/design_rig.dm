@@ -36,9 +36,9 @@
 
 
 //Tier II: Advanced rigs with fancy modules or armor
-/datum/design/item/rig/patrol
+/datum/design/item/rig/patrol/store
 	build_path = /obj/item/weapon/rig/patrol
-	price = 12000
+	price = 16500
 
 /datum/design/item/rig/riot
 	build_path = /obj/item/weapon/rig/riot
