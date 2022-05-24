@@ -55,7 +55,8 @@ delete-after: True
 # Also, this gets changed to [] after reading.  Just remove the brackets when you add new shit.
 # Please surround your changes in  double quotes ("). It works without them, but if you use certain characters it screws up compiling. The quotes will not show up in the changelog.
 changes:
-  - rscadd: "Riot, Vintage, Vintage Heavy, Advanced & Patrol RIG have a new subtype intended for store use only. The store version is now inherently superior to any found ones, with better modules as well. Armor values UNCHANGED."
+  - rscadd: "Riot, Vintage, Vintage Heavy, Advanced, Marksman & Patrol RIG have a new subtype intended for store use only. The store version is now inherently superior to any found ones, with better modules as well. Armor values UNCHANGED."
+  - rscadd: "Vintage Heavy suit added to the Store."
   - balance: "Moderately to significantly increased the prices of store-bound RIGs."
   - balance: "Slightly reduced the amount of available Engineering RIGs."
   - balance: "Slightly increased readily available Security RIGs."

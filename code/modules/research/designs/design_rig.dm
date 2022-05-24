@@ -57,5 +57,5 @@
 	price = 16500
 
 /datum/design/item/rig/marksman
-	build_path = /obj/item/weapon/rig/marksman
-	price = 9000
+	build_path = /obj/item/weapon/rig/marksman/store
+	price = 10350
