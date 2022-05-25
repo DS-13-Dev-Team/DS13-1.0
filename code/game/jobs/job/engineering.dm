@@ -23,8 +23,8 @@
 	min_skill = list(   SKILL_HAULING     = SKILL_BASIC,
 						SKILL_EVA	      = SKILL_EXPERT,
 	                    SKILL_COMPUTER    = SKILL_ADEPT,
-	                    SKILL_CONSTRUCTION= SKILL_MASTER,
-	                    SKILL_ELECTRICAL  = SKILL_MASTER,
+	                    SKILL_CONSTRUCTION= SKILL_MAX,
+	                    SKILL_ELECTRICAL  = SKILL_MAX,
 	                    SKILL_DEVICES	  = SKILL_BASIC)
 
 	max_skill = list(   SKILL_BOTANY      = SKILL_EXPERT,
