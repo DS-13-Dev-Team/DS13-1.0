@@ -57,3 +57,4 @@ delete-after: True
 changes:
   - bugfix: "Adjusts Peng force values to not be murderous."
   - bugfix: "Fixed a rare issue where if you added salt from a salt bag into an empty condiment bottle, it causes a missing texture box to appear."
+  - balance: "Buffed CE's base stats for Engineering-related skills."

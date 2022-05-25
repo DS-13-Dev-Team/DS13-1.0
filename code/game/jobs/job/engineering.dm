@@ -21,10 +21,10 @@
 	outfit_type = /decl/hierarchy/outfit/job/engineering/ce
 
 	min_skill = list(   SKILL_HAULING     = SKILL_BASIC,
-						SKILL_EVA	      = SKILL_ADEPT,
+						SKILL_EVA	      = SKILL_EXPERT,
 	                    SKILL_COMPUTER    = SKILL_ADEPT,
-	                    SKILL_CONSTRUCTION= SKILL_EXPERT,
-	                    SKILL_ELECTRICAL  = SKILL_EXPERT,
+	                    SKILL_CONSTRUCTION= SKILL_MASTER,
+	                    SKILL_ELECTRICAL  = SKILL_MASTER,
 	                    SKILL_DEVICES	  = SKILL_BASIC)
 
 	max_skill = list(   SKILL_BOTANY      = SKILL_EXPERT,
