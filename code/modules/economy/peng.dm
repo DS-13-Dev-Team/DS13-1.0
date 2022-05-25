@@ -18,8 +18,10 @@ GLOBAL_DATUM(peng, /obj/item/weapon/peng)
 	icon = 'icons/obj/economy.dmi'
 
 	var/claimed = FALSE
-	force = 25	//Its pretty good to whack people with
-	throwforce = 25
+	force = 6	//Its pretty good to whack people with - Not anymore.
+	throwforce = 8
+	thrown_force_divisor = 0.9
+	force_divisor = 0.8
 	w_class = ITEM_SIZE_HUGE //Cumbersome, just because
 	mass = 20
 	attack_verb = list("smashed", "beaten", "slammed", "smacked", "struck", "battered", "bonked")
