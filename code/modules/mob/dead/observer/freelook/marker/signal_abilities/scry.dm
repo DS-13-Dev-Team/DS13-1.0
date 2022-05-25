@@ -39,7 +39,6 @@
 	.=..()
 	GLOB.necrovision.add_source(src, TRUE, TRUE)	//Add it as a vision source
 
-	set_light(1, 1, 6, 2, COLOR_NECRO_YELLOW)
 	QDEL_IN(src, lifespan)
 
 //Prevent it getting blown up
