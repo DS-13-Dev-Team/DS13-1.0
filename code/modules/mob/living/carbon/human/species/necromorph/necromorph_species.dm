@@ -24,7 +24,6 @@
 	var/global_limit = 0	//0 = no limit
 	var/ventcrawl = FALSE //Can this necromorph type ventcrawl?
 	var/ventcrawl_time = 4.5 SECONDS
-	var/reward
 	lasting_damage_factor = 0.2	//Necromorphs take lasting damage based on incoming hits
 
 	strength    = STR_MEDIUM
