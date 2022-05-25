@@ -107,7 +107,7 @@
 			if(/datum/reagent/sodiumchloride)
 				name = "Salt Shaker"
 				desc = "Salt. From space oceans, presumably."
-				icon_state = "saltshaker"
+				icon_state = "saltshakersmall"
 				center_of_mass = "x=16;y=10"
 			if(/datum/reagent/blackpepper)
 				name = "Pepper Mill"
