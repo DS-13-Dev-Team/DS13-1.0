@@ -20,8 +20,6 @@ GLOBAL_DATUM(peng, /obj/item/weapon/peng)
 	var/claimed = FALSE
 	force = 6	//Its pretty good to whack people with - Not anymore.
 	throwforce = 8
-	thrown_force_divisor = 0.9
-	force_divisor = 0.8
 	w_class = ITEM_SIZE_HUGE //Cumbersome, just because
 	mass = 20
 	attack_verb = list("smashed", "beaten", "slammed", "smacked", "struck", "battered", "bonked")
