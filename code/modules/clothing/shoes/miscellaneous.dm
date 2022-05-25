@@ -156,7 +156,6 @@
 	icon_state = "combat"
 	force = 3
 	armor = list(melee = 80, bullet = 60, laser = 50, energy = 40, bomb = 50, bio = 10, rad = 0)
-	item_flags = ITEM_FLAG_NOSLIP
 	siemens_coefficient = 0.6
 	can_hold_knife = 1
 
