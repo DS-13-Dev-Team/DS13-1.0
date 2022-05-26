@@ -4,7 +4,7 @@
 	)
 	result = /obj/item/weapon/reagent_containers/food/snacks/bacon
 
-/datum/recipe/microwave/baconcheeseburger
+/datum/recipe/microwave/baconcheeseburger_simplest
 	items = list(
 		/obj/item/weapon/reagent_containers/food/snacks/cheeseburger,
 		/obj/item/weapon/reagent_containers/food/snacks/bacon
@@ -20,7 +20,7 @@
 	)
 	result = /obj/item/weapon/reagent_containers/food/snacks/baconcheeseburger
 
-/datum/recipe/microwave/deluxebaconcheeseburger
+/datum/recipe/microwave/deluxebaconcheeseburger_simplest
 	fruit = list("cabbage" = 1, "tomato" = 1)
 	items = list(
 		/obj/item/weapon/reagent_containers/food/snacks/baconcheeseburger,
@@ -28,7 +28,7 @@
 	)
 	result = /obj/item/weapon/reagent_containers/food/snacks/deluxebaconcheeseburger
 
-/datum/recipe/microwave/deluxebaconcheeseburger
+/datum/recipe/microwave/deluxebaconcheeseburger_simple
 	fruit = list("cabbage" = 1, "tomato" = 1)
 	items = list(
 		/obj/item/weapon/reagent_containers/food/snacks/cheeseburger,
