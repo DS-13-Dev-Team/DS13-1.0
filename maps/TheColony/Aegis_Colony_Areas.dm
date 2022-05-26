@@ -377,6 +377,11 @@
 	icon_state = "medicalbase"
 	sound_env = ASTEROID
 
+/area/mining_colony/interior/medbay/med_ward
+	name = "\improper Clinic Medical Ward"
+	icon_state = "medicalbase"
+	sound_env = ASTEROID
+
 // Mining area of the colony
 
 /area/mining_colony/interior/mining
@@ -533,11 +538,6 @@ area/mining_colony/interior/mining/hallway
 	icon_state = "researchbase"
 	sound_env = ASTEROID
 
-/area/mining_colony/interior/science/psych
-	name = "\improper Aegis Science Labs - Psychiatrist Room"
-	icon_state = "researchbase"
-	sound_env = ASTEROID
-
 /area/mining_colony/interior/science/xenoarcheology
 	name = "\improper Aegis Science Labs - Xenoarcheology Laboratory"
 	icon_state = "researchbase"
@@ -587,6 +587,11 @@ area/mining_colony/interior/mining/hallway
 
 /area/mining_colony/security/sec_firingrange
 	name = "\improper P-Sec Firing Range"
+	icon_state = "brig"
+	sound_env = ASTEROID
+
+/area/mining_colony/security/infirmary
+	name = "\improper P-Sec Infirmary"
 	icon_state = "brig"
 	sound_env = ASTEROID
 

@@ -1,173 +1,54 @@
-/obj/effect/shuttle_landmark/supply/start
-	name = "Below Deck"
-	landmark_tag = "supply_elevator_start"
+/datum/shuttle/autodock/ferry/escape1
+	name = "Escape Shuttle"
+	warmup_time = 5
+	shuttle_area = /area/shuttle/executive_shuttle
+	dock_target = "executive_shuttle"
+	waypoint_station = "colony_escape1_start"
+	waypoint_offsite = "colony_escape1_end"
+	landmark_transition = "colony_escape1_transition"
 
-// ESCAPE SHUTTLES
+/obj/effect/shuttle_landmark/escape1/start
+	name = "Escape Shuttle Start"
+	landmark_tag = "colony_escape1_start"
+	//docking_controller = "executive_shuttle"
+	base_area = /area/centcom
+	base_turf = /turf/simulated/floor/plating
 
-/datum/shuttle/autodock/ferry/escape_pod/ishimurapod
-	category = /datum/shuttle/autodock/ferry/escape_pod/ishimurapod
-	sound_takeoff = 'sound/effects/rocket.ogg'
-	sound_landing = 'sound/effects/rocket_backwards.ogg'
-	var/number
+/obj/effect/shuttle_landmark/escape1/transit
+	landmark_tag = "colony_escape1_transition"
 
-/datum/shuttle/autodock/ferry/escape_pod/ishimurapod/New()
-	name = "Escape Pod [number]"
-	dock_target = "escape_pod_[number]"
-	arming_controller = "escape_pod_[number]_berth"
-	waypoint_station = "escape_pod_[number]_start"
-	landmark_transition = "escape_pod_[number]_internim"
-	waypoint_offsite = "escape_pod_[number]_out"
-	..()
-
-/obj/effect/shuttle_landmark/escape_pod/
-	var/number
-
-/obj/effect/shuttle_landmark/escape_pod/start
-	name = "Docked"
-
-/obj/effect/shuttle_landmark/escape_pod/start/New()
-	landmark_tag = "escape_pod_[number]_start"
-	docking_controller = "escape_pod_[number]_berth"
-	..()
-
-/obj/effect/shuttle_landmark/escape_pod/transit
-	name = "In transit"
-
-/obj/effect/shuttle_landmark/escape_pod/transit/New()
-	landmark_tag = "escape_pod_[number]_internim"
-	..()
-
-/obj/effect/shuttle_landmark/escape_pod/out
-	name = "Escaped"
+/obj/effect/shuttle_landmark/escape1/end
+	name = "Docking Bay"
+	landmark_tag = "colony_escape1_end"
 	escape = TRUE
 
-/obj/effect/shuttle_landmark/escape_pod/out/New()
-	landmark_tag = "escape_pod_[number]_out"
-	..()
+/datum/shuttle/autodock/ferry/escape2
+	name = "Executive Shuttle"
+	warmup_time = 5	//Takes off quickly to keep the sacrifice element in play.
+	shuttle_area = /area/shuttle/executive_shuttle
+	dock_target = "executive_shuttle"
+	waypoint_station = "colony_escape2_start"
+	waypoint_offsite = "colony_escape2_end"
+	landmark_transition = "colony_escape2_transition"
 
-//PODS
+/obj/effect/shuttle_landmark/escape2/start
+	name = "Executive Shuttle EVAC"
+	landmark_tag = "colony_escape2_start"
+	//docking_controller = "executive_shuttle"
+	base_area = /area/centcom
+	base_turf = /turf/simulated/floor/plating
 
-/datum/shuttle/autodock/ferry/escape_pod/ishimurapod/escape_pod1
-	warmup_time = 10
-	shuttle_area = /area/shuttle/escape_pod1/station
-	number = 1
-/obj/effect/shuttle_landmark/escape_pod/start/pod1
-	number = 1
-	base_turf =/turf/simulated/floor/airless
-/obj/effect/shuttle_landmark/escape_pod/out/pod1
-	number = 1
-/obj/effect/shuttle_landmark/escape_pod/transit/pod1
-	number = 1
+/obj/effect/shuttle_landmark/escape2/transit
+	landmark_tag = "colony_escape2_transition"
 
+/obj/effect/shuttle_landmark/escape2/end
+	name = "Docking Bay"
+	landmark_tag = "colony_escape2_end"
+	escape = TRUE
 
-/datum/shuttle/autodock/ferry/escape_pod/ishimurapod/escape_pod2
-	warmup_time = 10
-	shuttle_area = /area/shuttle/escape_pod2/station
-	number = 2
-/obj/effect/shuttle_landmark/escape_pod/start/pod2
-	number = 2
-	base_turf =/turf/simulated/floor/airless
-/obj/effect/shuttle_landmark/escape_pod/out/pod2
-	number = 2
-/obj/effect/shuttle_landmark/escape_pod/transit/pod2
-	number = 2
-
-/datum/shuttle/autodock/ferry/escape_pod/ishimurapod/escape_pod3
-	warmup_time = 10
-	shuttle_area = /area/shuttle/escape_pod3/station
-	number = 3
-/obj/effect/shuttle_landmark/escape_pod/start/pod3
-	number = 3
-	base_turf =/turf/simulated/floor/airless
-/obj/effect/shuttle_landmark/escape_pod/out/pod3
-	number = 3
-/obj/effect/shuttle_landmark/escape_pod/transit/pod3
-	number = 3
-
-/datum/shuttle/autodock/ferry/escape_pod/ishimurapod/escape_pod4
-	warmup_time = 10
-	shuttle_area = /area/shuttle/escape_pod4/station
-	number = 4
-/obj/effect/shuttle_landmark/escape_pod/start/pod4
-	number = 4
-	base_turf =/turf/simulated/floor/airless
-/obj/effect/shuttle_landmark/escape_pod/out/pod4
-	number = 4
-/obj/effect/shuttle_landmark/escape_pod/transit/pod4
-	number = 4
-
-/datum/shuttle/autodock/ferry/escape_pod/ishimurapod/escape_pod5
-	warmup_time = 10
-	shuttle_area = /area/shuttle/escape_pod5/station
-	number = 5
-/obj/effect/shuttle_landmark/escape_pod/start/pod5
-	number = 5
-	base_turf =/turf/simulated/floor/airless
-/obj/effect/shuttle_landmark/escape_pod/out/pod5
-	number = 5
-/obj/effect/shuttle_landmark/escape_pod/transit/pod5
-	number = 5
-
-/datum/shuttle/autodock/ferry/escape_pod/ishimurapod/escape_pod6
-	warmup_time = 10
-	shuttle_area = /area/shuttle/escape_pod6/station
-	number = 6
-/obj/effect/shuttle_landmark/escape_pod/start/pod6
-	number = 6
-	base_turf =/turf/simulated/floor/airless
-/obj/effect/shuttle_landmark/escape_pod/out/pod6
-	number = 6
-/obj/effect/shuttle_landmark/escape_pod/transit/pod6
-	number = 6
-
-/datum/shuttle/autodock/ferry/escape_pod/ishimurapod/escape_pod7
-	warmup_time = 10
-	shuttle_area = /area/shuttle/escape_pod7/station
-	number = 7
-/obj/effect/shuttle_landmark/escape_pod/start/pod7
-	number = 7
-	base_turf =/turf/simulated/floor/airless
-/obj/effect/shuttle_landmark/escape_pod/out/pod7
-	number = 7
-/obj/effect/shuttle_landmark/escape_pod/transit/pod7
-	number = 7
-
-/datum/shuttle/autodock/ferry/escape_pod/ishimurapod/escape_pod8
-	warmup_time = 10
-	shuttle_area = /area/shuttle/escape_pod8/station
-	number = 8
-/obj/effect/shuttle_landmark/escape_pod/start/pod8
-	number = 8
-	base_turf =/turf/simulated/floor/airless
-/obj/effect/shuttle_landmark/escape_pod/out/pod8
-	number = 8
-/obj/effect/shuttle_landmark/escape_pod/transit/pod8
-	number = 8
-
-/datum/shuttle/autodock/ferry/escape_pod/ishimurapod/escape_pod9
-	warmup_time = 10
-	shuttle_area = /area/shuttle/escape_pod9/station
-	number = 9
-/obj/effect/shuttle_landmark/escape_pod/start/pod9
-	number = 9
-	base_turf =/turf/simulated/floor/airless
-/obj/effect/shuttle_landmark/escape_pod/out/pod9
-	number = 9
-/obj/effect/shuttle_landmark/escape_pod/transit/pod9
-	number = 9
-/*
-/datum/shuttle/autodock/ferry/escape_pod/ishimurapod/escape_pod10
-	warmup_time = 10
-	shuttle_area = /area/shuttle/escape_pod10/station
-	number = 10
-/obj/effect/shuttle_landmark/escape_pod/start/pod10
-	number = 10
-	base_turf =/turf/simulated/floor/airless
-/obj/effect/shuttle_landmark/escape_pod/out/pod10
-	number = 10
-/obj/effect/shuttle_landmark/escape_pod/transit/pod10
-	number = 10
-*/
+/area/shuttle/executive_shuttle
+	name = "\improper Escape Shuttle"
+	icon_state = "shuttlered"
 
 //////// ERT SHUTTLES \\\\\\\\
 

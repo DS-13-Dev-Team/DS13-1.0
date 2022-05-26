@@ -51,6 +51,7 @@ var/list/mining_floors = list()
 	icon = 'icons/turf/flooring/old_rock.dmi'
 
 /turf/simulated/mineral/New()
+	.=..()
 	health = max_health
 
 /turf/simulated/mineral/Initialize()
