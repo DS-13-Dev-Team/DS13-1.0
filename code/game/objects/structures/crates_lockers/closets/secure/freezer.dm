@@ -24,7 +24,8 @@
 	return list(
 		/obj/item/weapon/reagent_containers/food/snacks/meat/beef = 6,
 		/obj/item/weapon/reagent_containers/food/snacks/meat/chicken = 4,
-		/obj/item/weapon/reagent_containers/food/snacks/fish = 4
+		/obj/item/weapon/reagent_containers/food/snacks/fish = 4,
+		/obj/item/weapon/reagent_containers/food/snacks/rawbacon = 12
 	)
 /obj/structure/closet/secure_closet/freezer/chicken
 	name = "meat fridge"
