@@ -1,3 +1,86 @@
+/datum/recipe/microwave/bacon
+	items = list(
+		/obj/item/weapon/reagent_containers/food/snacks/rawbacon
+	)
+	result = /obj/item/weapon/reagent_containers/food/snacks/bacon
+
+/datum/recipe/microwave/baconcheeseburger
+	items = list(
+		/obj/item/weapon/reagent_containers/food/snacks/cheeseburger,
+		/obj/item/weapon/reagent_containers/food/snacks/bacon
+	)
+	result = /obj/item/weapon/reagent_containers/food/snacks/baconcheeseburger
+
+/datum/recipe/microwave/baconcheeseburger
+	items = list(
+		/obj/item/weapon/reagent_containers/food/snacks/bun,
+		/obj/item/weapon/reagent_containers/food/snacks/cheesewedge,
+		/obj/item/weapon/reagent_containers/food/snacks/cutlet,
+		/obj/item/weapon/reagent_containers/food/snacks/bacon
+	)
+	result = /obj/item/weapon/reagent_containers/food/snacks/baconcheeseburger
+
+/datum/recipe/microwave/deluxebaconcheeseburger
+	fruit = list("cabbage" = 1, "tomato" = 1)
+	items = list(
+		/obj/item/weapon/reagent_containers/food/snacks/baconcheeseburger,
+		/obj/item/weapon/reagent_containers/food/snacks/bacon
+	)
+	result = /obj/item/weapon/reagent_containers/food/snacks/deluxebaconcheeseburger
+
+/datum/recipe/microwave/deluxebaconcheeseburger
+	fruit = list("cabbage" = 1, "tomato" = 1)
+	items = list(
+		/obj/item/weapon/reagent_containers/food/snacks/cheeseburger,
+		/obj/item/weapon/reagent_containers/food/snacks/bacon,
+		/obj/item/weapon/reagent_containers/food/snacks/bacon
+	)
+	result = /obj/item/weapon/reagent_containers/food/snacks/deluxebaconcheeseburger
+
+/datum/recipe/microwave/deluxebaconcheeseburger
+	fruit = list("cabbage" = 1, "tomato" = 1)
+	items = list(
+		/obj/item/weapon/reagent_containers/food/snacks/bun,
+		/obj/item/weapon/reagent_containers/food/snacks/cheesewedge,
+		/obj/item/weapon/reagent_containers/food/snacks/cutlet,
+		/obj/item/weapon/reagent_containers/food/snacks/bacon,
+		/obj/item/weapon/reagent_containers/food/snacks/bacon
+	)
+	result = /obj/item/weapon/reagent_containers/food/snacks/deluxebaconcheeseburger
+
+/datum/recipe/microwave/baconandeggs
+	reagents = list(/datum/reagent/blackpepper = 1, /datum/reagent/sodiumchloride = 1)
+	items = list(
+		/obj/item/weapon/reagent_containers/food/snacks/bacon,
+		/obj/item/weapon/reagent_containers/food/snacks/bacon,
+		/obj/item/weapon/reagent_containers/food/snacks/egg,
+		/obj/item/weapon/reagent_containers/food/snacks/egg
+	)
+	result = /obj/item/weapon/reagent_containers/food/snacks/baconandeggs
+
+/datum/recipe/microwave/blt
+	fruit = list("cabbage" = 1, "tomato" = 1)
+	items = list(
+		/obj/item/weapon/reagent_containers/food/snacks/slice/bread,
+		/obj/item/weapon/reagent_containers/food/snacks/slice/bread,
+		/obj/item/weapon/reagent_containers/food/snacks/bacon,
+		/obj/item/weapon/reagent_containers/food/snacks/bacon
+	)
+	result = /obj/item/weapon/reagent_containers/food/snacks/blt
+
+/datum/recipe/microwave/xlclubsandwich
+	fruit = list("cabbage" = 1, "tomato" = 1)
+	items = list(
+		/obj/item/weapon/reagent_containers/food/snacks/slice/bread,
+		/obj/item/weapon/reagent_containers/food/snacks/slice/bread,
+		/obj/item/weapon/reagent_containers/food/snacks/slice/bread,
+		/obj/item/weapon/reagent_containers/food/snacks/cheesewedge,
+		/obj/item/weapon/reagent_containers/food/snacks/meat/chicken,
+		/obj/item/weapon/reagent_containers/food/snacks/bacon,
+		/obj/item/weapon/reagent_containers/food/snacks/bacon
+	)
+	result = /obj/item/weapon/reagent_containers/food/snacks/sliceable/xlclubsandwich
+
 /datum/recipe/microwave/lobster
 	fruit = list()
 	items = list(
