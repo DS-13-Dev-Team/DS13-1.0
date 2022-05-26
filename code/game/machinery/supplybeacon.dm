@@ -1,4 +1,4 @@
-// Used to deploy the bacon.
+// Used to deploy the beacon.
 /obj/item/supply_beacon
 	name = "inactive supply beacon"
 	icon = 'icons/obj/supplybeacon.dmi'

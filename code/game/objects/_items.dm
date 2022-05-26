@@ -323,7 +323,7 @@
 
 		//If we started on a mob and are no longer on that mob, we call dropped
 		if(ismob(old_loc) && loc != old_loc)
-			dropped()
+			dropped(user)
 
 /obj/item/attack_ai(mob/user as mob)
 	if (istype(src.loc, /obj/item/weapon/robot_module))
@@ -348,6 +348,7 @@
 	return
 
 /obj/item/proc/moved(mob/user as mob, old_loc as turf)
+	SIGNAL_HANDLER
 	return
 
 //Dropped is called just after an item leaves a mob's direct contents
@@ -363,17 +364,10 @@
 			user.l_hand.update_twohanding()
 		if(user.r_hand)
 			user.r_hand.update_twohanding()
+	SEND_SIGNAL(src, COMSIG_ITEM_UNEQUIPPED, user)
 
 // called just as an item is picked up (loc is not yet changed)
 /obj/item/proc/pickup(mob/user)
-	return
-
-// called when this item is removed from a storage item, which is passed on as S. The loc variable is already set to the new destination before this is called.
-/obj/item/proc/on_exit_storage(obj/item/weapon/storage/S as obj)
-	return
-
-// called when this item is added into a storage item, which is passed on as S. The loc variable is already set to the storage item.
-/obj/item/proc/on_enter_storage(obj/item/weapon/storage/S as obj)
 	return
 
 // called when "found" in pockets and storage items. Returns 1 if the search should end.
@@ -404,6 +398,7 @@
 		//A bit of a hack. If this is true, it means the current stack is being executed from loadout, and we don't want to bother loadout dummies with encumbrance values
 		if (!istype(usr, /mob/dead/new_player))
 			M.update_extension(/datum/extension/updating/encumbrance)
+	SEND_SIGNAL(src, COMSIG_ITEM_EQUIPPED, user, slot)
 
 //Defines which slots correspond to which slot flags
 var/list/global/slot_flags_enumeration = list(
@@ -770,31 +765,20 @@ THIS SCOPE CODE IS DEPRECATED, USE AIM MODES INSTEAD.
 
 	user.visible_message("\The [user] peers through [zoomdevicename ? "the [zoomdevicename] of [src]" : "[src]"].")
 
-	GLOB.destroyed_event.register(src, src, /obj/item/proc/unzoom)
-	GLOB.moved_event.register(src, src, /obj/item/proc/unzoom)
-	GLOB.dir_set_event.register(src, src, /obj/item/proc/unzoom)
-	GLOB.item_unequipped_event.register(src, src, /obj/item/proc/zoom_drop)
-	GLOB.stat_set_event.register(user, src, /obj/item/proc/unzoom)
+	RegisterSignal(src, list(COMSIG_MOVABLE_MOVED, COMSIG_ATOM_DIR_CHANGE, COMSIG_MOB_STATCHANGE, COMSIG_PARENT_QDELETING, COMSIG_ITEM_UNEQUIPPED), .proc/unzoom)
 	*/
 
-/obj/item/proc/zoom_drop(var/obj/item/I, var/mob/user)
-	unzoom(user)
-
 /obj/item/proc/unzoom(var/mob/user)
+	SIGNAL_HANDLER
 	if(!zoom)
 		return
 	zoom = 0
 
-	GLOB.destroyed_event.unregister(src, src, /obj/item/proc/unzoom)
-	GLOB.moved_event.unregister(src, src, /obj/item/proc/unzoom)
-	GLOB.dir_set_event.unregister(src, src, /obj/item/proc/unzoom)
-	GLOB.item_unequipped_event.unregister(src, src, /obj/item/proc/zoom_drop)
+	UnregisterSignal(src, list(COMSIG_MOVABLE_MOVED, COMSIG_ATOM_DIR_CHANGE, COMSIG_MOB_STATCHANGE, COMSIG_PARENT_QDELETING, COMSIG_ITEM_UNEQUIPPED))
 
 	user = user == src ? loc : (user || loc)
 	if(!istype(user))
 		return
-
-	GLOB.stat_set_event.unregister(user, src, /obj/item/proc/unzoom)
 
 	if(!user.client)
 		return

@@ -9,6 +9,15 @@
 	/// Datum level flags
 	var/datum_flags = NONE
 
+	/**
+	  * Any datum registered to receive signals from this datum is in this list
+	  *
+	  * Lazy associated list in the structure of `signal:registree/list of registrees`
+	  */
+	var/list/comp_lookup
+	/// Lazy associated list in the structure of `signals:proctype` that are run when the datum receives that signal
+	var/list/list/datum/callback/signal_procs
+
 	/// A weak reference to another datum
 	var/datum/weakref/weak_reference
 
@@ -38,6 +47,23 @@
 		if (timer.spent)
 			continue
 		qdel(timer)
+
+	var/list/lookup = comp_lookup
+	if(lookup)
+		for(var/sig in lookup)
+			var/list/comps = lookup[sig]
+			if(length(comps))
+				for(var/i in comps)
+					var/datum/dat = i
+					dat.UnregisterSignal(src, sig)
+			else
+				var/datum/dat = comps
+				dat.UnregisterSignal(src, sig)
+		comp_lookup = lookup = null
+
+	for(var/target in signal_procs)
+		UnregisterSignal(target, signal_procs[target])
+
 	return QDEL_HINT_QUEUE
 
 /datum/proc/Process()

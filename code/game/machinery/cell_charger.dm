@@ -10,6 +10,8 @@
 	power_channel = EQUIP
 	var/obj/item/weapon/cell/charging = null
 	var/chargelevel = -1
+	var/charge_comp = 1 // Used when trying to charge special weapon cells. So they don't charge too fast.
+	var/list/compensated_devices = list (/obj/item/weapon/cell/contact, /obj/item/weapon/cell/force)
 
 /obj/machinery/cell_charger/update_icon()
 	icon_state = "ccharger[charging ? 1 : 0]"
@@ -40,6 +42,10 @@
 /obj/machinery/cell_charger/attackby(obj/item/weapon/W, mob/user)
 	if(stat & BROKEN)
 		return
+
+	for (var/compensated_type in compensated_devices)
+		if (istype(W, compensated_type)) charge_comp = 0.2
+		else charge_comp = 1
 
 	if(istype(W, /obj/item/weapon/cell) && anchored)
 		if(charging)
@@ -104,7 +110,7 @@
 		return
 
 	if (charging && !charging.fully_charged())
-		charging.give(active_power_usage*CELLRATE)
+		charging.give(active_power_usage*charge_comp*CELLRATE)
 		update_use_power(2)
 
 		update_icon()

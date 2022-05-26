@@ -74,7 +74,7 @@
 
 	health = max_health - getBrainLoss()
 
-	GLOB.updatehealth_event.raise_event(src)
+	SEND_SIGNAL(src, COMSIG_MOB_HEALTH_CHANGED)
 
 	handle_death_check()	//This is where people die
 
@@ -463,15 +463,8 @@ This function restores all organs.
 		if (1.0)
 			b_loss = 400
 			f_loss = 100
-			if (!prob(getarmor(null, "bomb")))
-				gib()
-				return
-			else
-				var/atom/target = get_edge_target_turf(src, get_dir(src, get_step_away(src, epicentre)))
-				throw_at(target, 200, 4)
-			//return
-//				var/atom/target = get_edge_target_turf(user, get_dir(src, get_step_away(user, src)))
-				//user.throw_at(target, 200, 4)
+			var/atom/target = get_edge_target_turf(src, get_dir(src, get_step_away(src, epicentre)))
+			throw_at(target, 200, 4)
 
 		if (2.0)
 			b_loss = 70

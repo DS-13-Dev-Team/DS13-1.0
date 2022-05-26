@@ -102,12 +102,6 @@
 
 /obj/item/weapon/gun/Initialize()
 	.=..()
-	// Updating firing modes at appropriate times
-	// Now uses events to avoid unnecessarily complex proc overrides
-	GLOB.item_equipped_event.register(src, src, .proc/update_equipped)
-	GLOB.item_unequipped_event.register(src, src, .proc/update_all_stop)
-	GLOB.swapped_to_event.register(src, src, .proc/update_all)
-	GLOB.swapped_from_event.register(src, src, .proc/update_all_stop)
 
 	for(var/i in 1 to firemodes.len)
 		var/list/L = firemodes[i]
@@ -132,10 +126,6 @@
 		scoped_accuracy = accuracy
 
 /obj/item/weapon/gun/Destroy()
-	GLOB.item_equipped_event.unregister(src, src, .proc/update_equipped)
-	GLOB.item_unequipped_event.unregister(src, src, .proc/update_all_stop)
-	GLOB.swapped_to_event.unregister(src, src, .proc/update_all)
-	GLOB.swapped_from_event.unregister(src, src, .proc/update_all_stop)
 	if (current_firemode)
 		current_firemode.unapply_to(src)
 	QDEL_LIST(firemodes)
@@ -143,6 +133,22 @@
 	disable_aiming_mode()
 	//TODO: Delete ACH click handler
 	.=..()
+
+/obj/item/weapon/gun/pickup(mob/user)
+	.=..()
+	//Gonna use override = TRUE because of bay shitcode
+	RegisterSignal(user, COMSIG_CARBON_SWAP_HANDS, .proc/swaped_hands, override = TRUE)
+
+/obj/item/weapon/gun/dropped(mob/living/user)
+	UnregisterSignal(user, COMSIG_CARBON_SWAP_HANDS)
+	.=..()
+
+/obj/item/weapon/gun/proc/swaped_hands(mob/user, obj/item/previous_item, obj/item/new_item)
+	SIGNAL_HANDLER
+	if(src == new_item)
+		update_all()
+	else
+		update_all(FALSE)
 
 //Called when the user moves while holding this gun.
 //Must be manually registered to the moved event if your gun needs it
@@ -720,15 +726,17 @@
 	update_firemode(force_state)
 	update_aiming_handler()
 
-/obj/item/weapon/gun/proc/update_equipped(obj/self, mob/equipper, slot)
-	if(!equipper)
-		CRASH("update_equipped called on [self] with slot [slot] and invalid mob!")
-	if(slot == equipper.get_active_hand_slot())
+/obj/item/weapon/gun/equipped(mob/living/user, slot)
+	. = ..()
+	if(!user)
+		CRASH("equipped called on [src] with slot [slot] and invalid user!")
+	if(slot == user.get_active_hand_slot())
 		update_all()
-		return
-	update_all_stop()
+		return .
+	update_all(FALSE)
 
-/obj/item/weapon/gun/proc/update_all_stop()
+/obj/item/weapon/gun/dropped(mob/living/user)
+	.=..()
 	update_all(FALSE)
 
 

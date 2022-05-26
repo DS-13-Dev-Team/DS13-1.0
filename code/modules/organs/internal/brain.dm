@@ -95,8 +95,11 @@
 
 	if(!brainmob)
 		brainmob = new(src)
+		brainmob.languages = H.languages.Copy()
+		brainmob.default_language = H.default_language
 		brainmob.SetName(H.real_name)
 		brainmob.real_name = H.real_name
+		brainmob.skillset.obtain_from_mob(H)
 		brainmob.dna = H.dna.Clone()
 		brainmob.timeofhostdeath = H.timeofdeath
 
@@ -141,13 +144,19 @@
 		if(brainmob)
 			if(brainmob.mind)
 				brainmob.mind.transfer_to(target)
+				target.name = target.mind.name
 			else
 				target.key = brainmob.key
+			target.SetName(brainmob.real_name)
+			target.real_name = brainmob.real_name
+			target.languages = brainmob.languages.Copy()
+			target.default_language = brainmob.default_language
+			target.skillset.obtain_from_mob(brainmob)
 
 	return 1
 
 /obj/item/organ/internal/brain/can_recover()
-	return ~status & ORGAN_DEAD
+	return !(status & ORGAN_DEAD)
 
 /obj/item/organ/internal/brain/proc/get_current_damage_threshold()
 	return round(damage / damage_threshold_value)

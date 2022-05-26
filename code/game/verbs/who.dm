@@ -32,7 +32,7 @@
 								else
 									entry += " - <font color='black'><b>DEAD</b></font>"
 							else if(issignal(C.mob))
-								entry += " - <font color='gray>Signal</font>"
+								entry += " - <font color='gray'>Signal</font>"
 							else
 								entry += " - <font color='black'><b>DEAD</b></font>"
 					if(is_special_character(C.mob))

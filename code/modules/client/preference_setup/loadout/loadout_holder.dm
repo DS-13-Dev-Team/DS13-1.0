@@ -78,8 +78,8 @@
 
 	//Set patron status
 	is_patron = FALSE
-	var/datum/player/P = get_player_from_key(prefs.client_ckey)
-	if (P.patron)
+	var/datum/player/P = get_or_create_player(prefs.client_ckey)
+	if(P.patron)
 		is_patron = TRUE
 
 

@@ -84,18 +84,16 @@
 	daddy = ndaddy
 	set_dir(daddy.dir)
 	appearance = daddy.appearance
-	GLOB.moved_event.register(daddy, src, /obj/effect/bluegoast/proc/mirror)
-	GLOB.dir_set_event.register(daddy, src, /obj/effect/bluegoast/proc/mirror_dir)
-	GLOB.destroyed_event.register(daddy, src, /datum/proc/qdel_self)
+	RegisterSignal(daddy, COMSIG_MOVABLE_MOVED, .proc/mirror)
+	RegisterSignal(daddy, COMSIG_ATOM_DIR_CHANGE, .proc/mirror_dir)
+	RegisterSignal(daddy, COMSIG_PARENT_QDELETING, /datum/proc/qdel_self)
 
 /obj/effect/bluegoast/Destroy()
-	GLOB.destroyed_event.unregister(daddy, src)
-	GLOB.dir_set_event.unregister(daddy, src)
-	GLOB.moved_event.unregister(daddy, src)
 	daddy = null
 	. = ..()
 
 /obj/effect/bluegoast/proc/mirror(var/atom/movable/am, var/old_loc, var/new_loc)
+	SIGNAL_HANDLER
 	var/ndir = get_dir(new_loc,old_loc)
 	appearance = daddy.appearance
 	var/nloc = get_step(src, ndir)
@@ -105,13 +103,14 @@
 		reality++
 		if(reality > 5)
 			to_chat(daddy, "<span class='notice'>Yep, it's certainly the other one. Your existance was a glitch, and it's finally being mended...</span>")
-			blueswitch()
+			INVOKE_ASYNC(src, .proc/blueswitch)
 		else if(reality > 3)
 			to_chat(daddy, "<span class='danger'>Something is definitely wrong. Why do you think YOU are the original?</span>")
 		else
 			to_chat(daddy, "<span class='warning'>You feel a bit less real. Which one of you two was original again?..</span>")
 
 /obj/effect/bluegoast/proc/mirror_dir(var/atom/movable/am, var/old_dir, var/new_dir)
+	SIGNAL_HANDLER
 	set_dir(GLOB.reverse_dir[new_dir])
 
 /obj/effect/bluegoast/examine(user)

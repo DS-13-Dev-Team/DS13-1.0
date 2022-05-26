@@ -59,21 +59,6 @@
 	path = /obj/item/weapon/gun/launcher/grenade/loaded
 
 //These are for traitors (or other antags, perhaps) to have the option of purchasing some merc gear.
-/datum/uplink_item/item/visible_weapons/submachinegun
-	name = "Submachine Gun"
-	item_cost = 52
-	antag_costs = list(MODE_MERCENARY = 20)
-	path = /obj/item/weapon/gun/projectile/automatic/c20r
-
-/datum/uplink_item/item/visible_weapons/submachinegun/special
-	item_cost = 9
-	is_special = TRUE
-
-/datum/uplink_item/item/visible_weapons/bullpup/special
-	item_cost = 15
-	path = /obj/item/weapon/gun/projectile/automatic/bullpup
-	is_special = TRUE
-	antag_roles = list(MODE_UNITOLOGIST, MODE_UNITOLOGIST_SHARD)
 
 /datum/uplink_item/item/visible_weapons/assaultrifle
 	name = "Assault Rifle"
@@ -121,13 +106,12 @@
 	name = "Holdout Revolver"
 	item_cost = 38
 	path = /obj/item/weapon/gun/projectile/revolver/detective
-/*
+
 /datum/uplink_item/item/visible_weapons/pulserifle
 	name = "Pulse Rifle"
-	item_cost = 68
-	antag_costs = list(MODE_MERCENARY = 30)
-	path = /obj/item/weapon/gun/energy/pulse_rifle
-*/
+	item_cost = 15
+	path = /obj/item/weapon/gun/projectile/automatic/pulse_rifle
+
 /datum/uplink_item/item/visible_weapons/flechetterifle
 	name = "Flechette Rifle"
 	item_cost = 60

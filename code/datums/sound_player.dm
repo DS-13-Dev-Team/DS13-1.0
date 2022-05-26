@@ -141,7 +141,7 @@ GLOBAL_DATUM_INIT(sound_player, /decl/sound_player, new)
 	listeners = list()
 	listener_status = list()
 
-	GLOB.destroyed_event.register(source, src, /datum/proc/qdel_self)
+	RegisterSignal(source, COMSIG_PARENT_QDELETING, .proc/qdel_self)
 
 	if(ismovable(source))
 		proxy_listener = new(source, /datum/sound_token/proc/PrivAddListener, /datum/sound_token/proc/PrivLocateListeners, range, proc_owner = src)
@@ -178,11 +178,10 @@ datum/sound_token/proc/Mute()
 
 	var/sound/null_sound = new(channel = sound.channel)
 	for(var/listener in listeners)
-		PrivRemoveListener(listener, null_sound)
+		PrivRemoveListener(listener, null, null_sound)
 	listeners = null
 	listener_status = null
 
-	GLOB.destroyed_event.unregister(source, src, /datum/proc/qdel_self)
 	QDEL_NULL(proxy_listener)
 	source = null
 
@@ -194,7 +193,7 @@ datum/sound_token/proc/Mute()
 
 	can_be_heard_from = current_turfs
 	var/current_listeners = all_hearers(source, range)
-	var/former_listeners = listeners - current_listeners
+	var/former_listeners = listeners.Copy() - current_listeners
 	var/new_listeners = current_listeners - listeners
 
 	for(var/listener in former_listeners)
@@ -215,7 +214,7 @@ datum/sound_token/proc/Mute()
 	status = new_status
 	PrivUpdateListeners()
 
-/datum/sound_token/proc/PrivAddListener(var/mob/listener)
+/datum/sound_token/proc/PrivAddListener(atom/listener)
 	if(isvirtualmob(listener))
 		var/mob/dead/observer/virtual/v = listener
 		if(!(v.abilities & VIRTUAL_ABILITY_HEAR))
@@ -224,25 +223,26 @@ datum/sound_token/proc/Mute()
 	if(listener in listeners)
 		return
 
-	if(!istype(listener, /mob))
-		return
-
 	listeners += listener
 
-	GLOB.moved_event.register(listener, src, /datum/sound_token/proc/PrivUpdateListenerLoc)
-	GLOB.destroyed_event.register(listener, src, /datum/sound_token/proc/PrivRemoveListener)
+	RegisterSignal(listener, COMSIG_MOVABLE_MOVED, .proc/PrivUpdateListenerLoc)
+	if(listener != source)
+		RegisterSignal(listener, COMSIG_PARENT_QDELETING, .proc/PrivRemoveListener)
 
 	PrivUpdateListenerLoc(listener, FALSE)
 
-/datum/sound_token/proc/PrivRemoveListener(var/atom/listener, var/sound/null_sound)
-	if (!QDELETED(listener))
-		null_sound = null_sound || new(channel = sound.channel)
-		SEND_SOUND(listener, null_sound)
-		GLOB.moved_event.unregister(listener, src, /datum/sound_token/proc/PrivUpdateListenerLoc)
-		GLOB.destroyed_event.unregister(listener, src, /datum/sound_token/proc/PrivRemoveListener)
+/datum/sound_token/proc/PrivRemoveListener(atom/listener, force_state, sound/null_sound)
+	SIGNAL_HANDLER
+	if(listener)
+		if(!QDELING(listener))
+			null_sound = null_sound || new(channel = sound.channel)
+			SEND_SOUND(listener, null_sound)
+		UnregisterSignal(listener, list(COMSIG_MOVABLE_MOVED, COMSIG_PARENT_QDELETING))
 	listeners -= listener
+	listener_status -= listener
 
 /datum/sound_token/proc/PrivUpdateListenerLoc(var/atom/listener, var/update_sound = TRUE)
+	SIGNAL_HANDLER
 	if (QDELETED(source))
 		return
 

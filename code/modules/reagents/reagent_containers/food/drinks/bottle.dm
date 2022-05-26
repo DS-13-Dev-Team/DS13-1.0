@@ -155,7 +155,7 @@
 	icon_state = "broken_bottle"
 	force = 9
 	throwforce = 5
-	
+
 	throw_range = 5
 	item_state = "beer"
 	attack_verb = list("stabbed", "slashed", "attacked")
@@ -499,16 +499,14 @@
 
 
 
-/obj/item/weapon/reagent_containers/food/drinks/bottle/ds_medigel
+/obj/item/weapon/reagent_containers/hypospray/autoinjector/ds_medigel
 	name = "medical pack"
 	desc = "A standard medi-gel container to treat life threatening injuries."
 	icon = 'icons/obj/drinks.dmi'
 	icon_state = "ds_medipack"
-	amount_per_transfer_from_this = 20
+	starts_with = list(/datum/reagent/ds_medicalgelreagent = 20)
+	amount_per_transfer_from_this = 5
 	volume = 20
 
-
-/obj/item/weapon/reagent_containers/food/drinks/bottle/ds_medigel/New()
-	..()
-	reagents.add_reagent(/datum/reagent/ds_medicalgelreagent, 20)
-	update_icon()
+/obj/item/weapon/reagent_containers/hypospray/autoinjector/ds_medigel/update_icon()
+	return

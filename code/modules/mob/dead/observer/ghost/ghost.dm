@@ -39,11 +39,22 @@ var/global/list/image/ghost_sightless_images = list() //this is a list of images
 	var/turf/T
 	if(ismob(body))
 		T = get_turf(body)               //Where is the body located?
+		if(!T)
+			T = pick(GLOB.latejoin | GLOB.latejoin_cryo | GLOB.latejoin_gateway) //Safety in case we cannot find the body's position
+		forceMove(T)
 		attack_logs_ = body.attack_logs_ //preserve our attack logs by copying them to our ghost
 
 		set_appearance(body)
-		if(body.mind && body.mind.name)
-			name = body.mind.name
+		if(body.mind)
+			mind = body.mind	//we don't transfer the mind but we keep a reference to it.
+			mind.ghost = src	//Register ourself on the mind too
+		else //new mind for the body
+			body.mind = new /datum/mind(key)
+			mind = body.mind
+			mind.current = body
+			mind.ghost = src
+		if(mind.name)
+			name = mind.name
 		else
 			if(body.real_name)
 				name = body.real_name
@@ -53,24 +64,11 @@ var/global/list/image/ghost_sightless_images = list() //this is a list of images
 				else
 					name = capitalize(pick(GLOB.first_names_female)) + " " + capitalize(pick(GLOB.last_names))
 
-		if(body.mind)
-			mind = body.mind	//we don't transfer the mind but we keep a reference to it.
-			mind.ghost = src	//Register ourself on the mind too
-
-		else					//new mind for the body
-			spawn(10)
-				body.mind = new /datum/mind(key)
-				mind = body.mind
-				mind.current = body
-				mind.ghost = src
-
 	else
-		spawn(10) // wait for the observer mob to receive the client's key
-			mind = new /datum/mind(key)
-			mind.current = src
-			mind.ghost = src
-	if(!T)	T = pick(GLOB.latejoin | GLOB.latejoin_cryo | GLOB.latejoin_gateway)			//Safety in case we cannot find the body's position
-	forceMove(T)
+		forceMove(pick(GLOB.latejoin | GLOB.latejoin_cryo | GLOB.latejoin_gateway))
+		mind = new /datum/mind(key)
+		mind.current = src
+		mind.ghost = src
 
 	if(!name)							//To prevent nameless ghosts
 		name = capitalize(pick(GLOB.first_names_male)) + " " + capitalize(pick(GLOB.last_names))
@@ -185,7 +183,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	if(stat == DEAD)
-		announce_ghost_joinleave(ghostize(1))
+		announce_ghost_joinleave(ghostize(CORPSE_CAN_REENTER))
 	else
 		var/response
 		if(src.client && src.client.holder)
@@ -204,7 +202,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		var/turf/location = get_turf(src)
 		message_admins("[key_name_admin(usr)] has ghosted. (<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[location.x];Y=[location.y];Z=[location.z]'>JMP</a>)")
 		log_game("[key_name_admin(usr)] has ghosted.")
-		var/mob/dead/observer/ghost/ghost = ghostize(0)	//0 parameter is so we can never re-enter our body, "Charlie, you can never come baaaack~" :3
+		var/mob/dead/observer/ghost/ghost = ghostize(CORPSE_CANT_REENTER)	//0 parameter is so we can never re-enter our body, "Charlie, you can never come baaaack~" :3
 		ghost.timeofdeath = world.time // Because the living mob won't have a time of death and we want the respawn timer to work properly.
 		announce_ghost_joinleave(ghost)
 
@@ -228,7 +226,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	mind.current.reload_fullscreens()
 	if(!admin_ghosted)
 		announce_ghost_joinleave(mind, 0, "They now occupy their body again.")
-	src.client.init_verbs()
 	return 1
 
 /mob/dead/observer/ghost/verb/toggle_medHUD()
@@ -319,19 +316,23 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	stop_following()
 	following = target
-	GLOB.moved_event.register(following, src, /atom/movable/proc/move_to_turf)
-	GLOB.dir_set_event.register(following, src, /atom/proc/recursive_dir_set)
-	GLOB.destroyed_event.register(following, src, /mob/dead/observer/ghost/proc/stop_following)
+	RegisterSignal(following, COMSIG_MOVABLE_MOVED, /atom/movable/proc/move_to_turf)
+	RegisterSignal(following, COMSIG_ATOM_DIR_CHANGE, .proc/recursive_dir_set)
+	RegisterSignal(following, COMSIG_PARENT_QDELETING, .proc/stop_following)
 
 	to_chat(src, "<span class='notice'>Now following \the [following].</span>")
 	move_to_turf(following, loc, following.loc)
 
+/mob/dead/observer/ghost/proc/recursive_dir_set(atom/a, old_dir, new_dir)
+	SIGNAL_HANDLER
+	if (new_dir != old_dir)
+		set_dir(new_dir)
+
 /mob/dead/observer/ghost/proc/stop_following()
+	SIGNAL_HANDLER
 	if(following)
 		to_chat(src, "<span class='notice'>No longer following \the [following]</span>")
-		GLOB.moved_event.unregister(following, src)
-		GLOB.dir_set_event.unregister(following, src)
-		GLOB.destroyed_event.unregister(following, src)
+		UnregisterSignal(following, list(COMSIG_MOVABLE_MOVED, COMSIG_ATOM_DIR_CHANGE, COMSIG_PARENT_QDELETING))
 		following = null
 
 /mob/dead/observer/ghost/move_to_turf(var/atom/movable/am, var/old_loc, var/new_loc)

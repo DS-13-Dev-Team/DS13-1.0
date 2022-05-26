@@ -24,3 +24,10 @@
 	shoes = /obj/item/clothing/shoes/black
 	id_type = /obj/item/weapon/card/id/holo/civilian/botanist
 	pda_type = /obj/item/modular_computer/pda
+
+/decl/hierarchy/outfit/job/service/janitor
+	name = OUTFIT_JOB_NAME("Janitor")
+	uniform = /obj/item/clothing/under/rank/janitor
+	shoes = /obj/item/clothing/shoes/galoshes
+	id_type = /obj/item/weapon/card/id/holo/civilian/janitor
+	pda_type = /obj/item/modular_computer/pda

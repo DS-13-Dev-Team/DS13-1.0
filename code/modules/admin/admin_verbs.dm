@@ -561,7 +561,7 @@ var/list/admin_verbs_mentor = list(
 	else
 		//ghostize
 		var/mob/body = mob
-		var/mob/dead/observer/ghost/ghost = body.ghostize(1)
+		var/mob/dead/observer/ghost/ghost = body.ghostize(CORPSE_CAN_REENTER)
 		if (istype(ghost))
 			ghost.admin_ghosted = 1
 		if(body)

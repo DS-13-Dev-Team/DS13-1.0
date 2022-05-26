@@ -153,7 +153,7 @@ var/list/_client_preferences_by_type
 	key = "SHOW_TYPING"
 	options = list(GLOB.PREF_SHOW, GLOB.PREF_HIDE)
 
-/datum/client_preference/show_typing_indicator/changed(var/mob/preference_mob, var/new_value)
+/datum/client_preference/show_typing_indicator/changed(mob/preference_mob, new_value)
 	if(new_value == GLOB.PREF_HIDE)
 		QDEL_NULL(preference_mob.typing_indicator)
 
@@ -218,6 +218,19 @@ var/list/_client_preferences_by_type
 	options = list("0.2", "0.3", "0.5", "0.75", "0.9", "1", "1.25", "1.5", "2", "2.5", "3")
 	default_value = "1"
 
+//recommened client FPS
+#define RECOMMENDED_FPS 50
+
+/datum/client_preference/client_fps
+	description = "Client FPS"
+	key = "CLIENT_FPS"
+	options = list("20", "30", "50", "60", "100")
+	default_value = "50"
+
+/datum/client_preference/client_fps/changed(mob/preference_mob, new_value)
+	var/value = text2num(new_value)
+	preference_mob.client.fps = (value < 0) ? RECOMMENDED_FPS : value
+
 /datum/client_preference/show_credits
 	description = "Show End Titles"
 	key = "SHOW_CREDITS"
@@ -229,7 +242,7 @@ var/list/_client_preferences_by_type
 /datum/client_preference/staff
 	var/flags
 
-/datum/client_preference/staff/may_set(var/mob/preference_mob)
+/datum/client_preference/staff/may_set(mob/preference_mob)
 	if(flags)
 		return check_rights(flags, 0, preference_mob)
 	else

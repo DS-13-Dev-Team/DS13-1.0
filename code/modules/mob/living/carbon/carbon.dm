@@ -26,7 +26,8 @@
 /mob/living/carbon/Destroy()
 	QDEL_NULL(ingested)
 	QDEL_NULL(touching)
-	// We don't qdel(bloodstr) because it's the same as qdel(reagents)
+	QDEL_NULL(bloodstr)
+	// We will nullify reagents var later in the proc
 	QDEL_NULL_LIST(internal_organs)
 	QDEL_NULL_LIST(stomach_contents)
 	QDEL_NULL_LIST(hallucinations)
@@ -130,10 +131,7 @@
 	//Tell the old and new held items that they've been swapped
 
 	if (prev_held != new_held)
-		if (istype(prev_held))
-			GLOB.swapped_from_event.raise_event(prev_held, src)
-		if (istype(new_held))
-			GLOB.swapped_to_event.raise_event(new_held, src)
+		SEND_SIGNAL(src, COMSIG_CARBON_SWAP_HANDS, prev_held, new_held)
 
 	return TRUE
 

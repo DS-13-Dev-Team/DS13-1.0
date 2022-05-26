@@ -30,7 +30,7 @@
 		holding = null
 
 	update_icon()
-	GLOB.destroyed_event.unregister(I, src, /atom/.proc/remove_item)
+	UnregisterSignal(I, COMSIG_PARENT_QDELETING)
 
 // make a screeching noise to drive people mad
 /obj/structure/bed/roller/ironingboard/Move(NewLoc, Dir = 0, step_x = 0, step_y = 0, var/glide_size_override = 0)
@@ -75,7 +75,7 @@
 
 		if(user.unEquip(I, src))
 			cloth = I
-			GLOB.destroyed_event.register(I, src, /atom/.proc/remove_item)
+			RegisterSignal(I, COMSIG_PARENT_QDELETING, /atom/proc/remove_item)
 			update_icon()
 		return
 	else if(istype(I,/obj/item/weapon/ironingiron))
@@ -83,7 +83,7 @@
 
 		if(!holding && !R.enabled && user.unEquip(I, src))
 			holding = R
-			GLOB.destroyed_event.register(I, src, /atom/.proc/remove_item)
+			RegisterSignal(I, src, /atom/proc/remove_item)
 			update_icon()
 			return
 

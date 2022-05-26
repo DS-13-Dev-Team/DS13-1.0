@@ -211,6 +211,7 @@
 
 	. = ..()	//calls mob.Login()
 	prefs.sanitize_preferences()
+	fps = text2num(get_preference_value(/datum/client_preference/client_fps))
 
 	GLOB.using_map.map_info(src)
 

@@ -14,6 +14,7 @@
 	desc = "A pneumatic waste disposal unit."
 	icon = 'icons/obj/pipes/disposal.dmi'
 	icon_state = "disposal"
+	clicksound = "button2"
 	anchored = 1
 	density = 1
 	var/datum/gas_mixture/air_contents	// internal reservoir

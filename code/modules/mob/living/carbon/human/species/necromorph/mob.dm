@@ -28,6 +28,9 @@
 /mob/living/carbon/human/necromorph/twitcher/New(var/new_loc, var/new_species = SPECIES_NECROMORPH_TWITCHER)
 	..(new_loc, new_species)
 
+/mob/living/carbon/human/necromorph/twitcher/oracle/New(var/new_loc, var/new_species = SPECIES_NECROMORPH_TWITCHER_ORACLE)
+	..(new_loc, new_species)
+
 //Variants need their own mobtype
 /mob/living/carbon/human/necromorph/brute/New(var/new_loc, var/new_species = SPECIES_NECROMORPH_BRUTE)
 	..(new_loc, new_species)

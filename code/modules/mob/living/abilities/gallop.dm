@@ -19,6 +19,8 @@
 	var/stopped_at
 	var/ongoing_timer
 	var/crashed = FALSE
+	var/crash_limit = 2
+	var/crash_count = 0
 
 	statmods = list(STATMOD_MOVESPEED_MULTIPLICATIVE = 1)
 /***********************
@@ -42,12 +44,14 @@
 /datum/extension/gallop/proc/start()
 	if (!started_at)
 		started_at = world.time
+		user.can_pull_mobs = MOB_PULL_NONE
+		user.can_pull_size = NONE
 		ongoing_timer = addtimer(CALLBACK(src, /datum/extension/gallop/proc/stop), duration, TIMER_STOPPABLE)
 
 		user.reset_move_cooldown()//Allow nextmove immediately
-		GLOB.damage_hit_event.register(user, src, /datum/extension/gallop/proc/user_hit)
-		GLOB.bump_event.register(user, src, /datum/extension/gallop/proc/user_bumped)
-		GLOB.moved_event.register(user, src, /datum/extension/gallop/proc/user_moved)
+		RegisterSignal(user, COMSIG_MOB_DAMAGE_HIT, .proc/user_hit)
+		RegisterSignal(user, COMSIG_MOVABLE_BUMP, .proc/user_bumped)
+		RegisterSignal(user, COMSIG_MOVABLE_MOVED, .proc/user_moved)
 
 /datum/extension/gallop/Destroy()
 	if (!stopped_at)
@@ -61,10 +65,12 @@
 		deltimer(ongoing_timer)
 		stopped_at = world.time
 		ongoing_timer = addtimer(CALLBACK(src, /datum/extension/gallop/proc/finish_cooldown), cooldown, TIMER_STOPPABLE)
-		GLOB.damage_hit_event.unregister(user, src, /datum/extension/gallop/proc/user_hit)
-		GLOB.bump_event.unregister(user, src, /datum/extension/gallop/proc/user_bumped)
-		GLOB.moved_event.unregister(user, src, /datum/extension/gallop/proc/user_moved)
+		UnregisterSignal(user, list(COMSIG_MOVABLE_MOVED, COMSIG_MOVABLE_BUMP, COMSIG_MOB_DAMAGE_HIT))
+		user.can_pull_mobs = MOB_PULL_SAME
+		user.can_pull_size = ITEM_SIZE_NO_CONTAINER
 		user.visible_message(SPAN_NOTICE("[user] slows down"))
+		for(var/modtype in statmods)
+			unregister_statmod(modtype)
 
 /datum/extension/gallop/proc/finish_cooldown()
 	deltimer(ongoing_timer)
@@ -77,17 +83,23 @@
 
 
 /datum/extension/gallop/proc/user_hit(var/obj/item/organ/external/organ, brute, burn, damage_flags, used_weapon)
+	SIGNAL_HANDLER
+	if (crash_count < crash_limit)
+		crash_count++
+		return
 	if (!crashed)
 		user.visible_message(SPAN_DANGER("[user] crumples under the impact [istype(used_weapon, /obj) ? "of":"from"] [used_weapon]"))
 		stop_crash(used_weapon)
 
 /datum/extension/gallop/proc/user_bumped(var/mob/user, var/atom/obstacle)
+	SIGNAL_HANDLER
 	if (!crashed)
 		user.visible_message(SPAN_DANGER("[user] crashes into [obstacle]"))
 		stop_crash(obstacle)
 
 //Play extra footstep sounds as the leaper clatters along the floor
 /datum/extension/gallop/proc/user_moved(var/atom/obstacle)
+	SIGNAL_HANDLER
 	shake_camera(user, 3,0.5)
 	user.play_species_audio(user, SOUND_FOOTSTEP, VOLUME_QUIET)
 
@@ -95,8 +107,8 @@
 	shake_camera(user, 20,4)
 	crashed = TRUE
 	user.Weaken(5)
-	user.Stun(5)
-	user.take_overall_damage(20, 0,0,0, stopper)
+	user.Stun(1)
+	user.take_overall_damage(5, 0,0,0, stopper)
 	stop()
 
 /***********************
@@ -107,13 +119,19 @@
 	if (incapacitated())
 		return FALSE
 
-	var/datum/extension/gallop/E = get_extension(src, /datum/extension/gallop)
-	if(istype(E))
+	var/datum/extension/gallop/gallop = get_extension(src, /datum/extension/gallop)
+	if(gallop)
 		if (error_messages)
-			if (E.stopped_at)
-				to_chat(src, SPAN_NOTICE("[E.name] is cooling down. You can use it again in [E.get_cooldown_time() /10] seconds"))
+			if (gallop.stopped_at)
+				to_chat(src, SPAN_NOTICE("[gallop.name] is cooling down. You can use it again in [gallop.get_cooldown_time() /10] seconds."))
 			else
-				E.stop()
+				gallop.stop()
+		return FALSE
+
+	var/datum/extension/charge/charge = get_extension(src, /datum/extension/charge)
+	if(charge && !charge.stopped_at)
+		if (error_messages)
+			to_chat(src, SPAN_NOTICE("You can't use use gallop while leaping!"))
 		return FALSE
 
 	return TRUE

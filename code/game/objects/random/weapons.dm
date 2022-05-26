@@ -63,7 +63,8 @@
 
 /obj/random/ammo/item_to_spawn()
 	return pickweight(list(/obj/item/ammo_magazine/pulse = 2,
-	/obj/item/ammo_magazine/pulse/hv = 0.5,
+	/obj/item/ammo_magazine/pulse/hv = 0.3,
+	/obj/item/ammo_magazine/pulse/df = 0.3,
 	/obj/item/weapon/cell/plasmacutter = 1.5,
 	/obj/item/ammo_magazine/sawblades = 1,
 	///obj/item/ammo_magazine/bullpup = 1,
@@ -82,7 +83,8 @@
 //This subtype only spawns ammo for security/military-type weapons
 /obj/random/ammo/security/item_to_spawn()
 	return pickweight(list(/obj/item/ammo_magazine/pulse = 1.5,
-	/obj/item/ammo_magazine/pulse/hv = 0.5,
+	/obj/item/ammo_magazine/pulse/hv = 0.3,
+	/obj/item/ammo_magazine/pulse/df = 0.3,
 	/obj/item/ammo_magazine/seeker = 1,
 	/obj/item/ammo_magazine/divet = 1.5,
 	/obj/item/ammo_magazine/shotgun = 1))

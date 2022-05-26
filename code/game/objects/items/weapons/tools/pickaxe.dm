@@ -80,6 +80,7 @@
 	desc = "An energised mining tool for surveying and retrieval of objects embedded in otherwise dense material. Very dangerous, will cut through flesh and bone with ease."
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "ds_rocksaw0"
+	item_flags = ITEM_FLAG_NO_EMBED
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
 	slot_flags = SLOT_BELT
 	switched_on_force = WEAPON_FORCE_ROBUST*0.9

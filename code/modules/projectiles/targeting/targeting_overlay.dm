@@ -63,13 +63,13 @@
 	owner = null
 	return ..()
 
-obj/aiming_overlay/proc/update_aiming_deferred()
+/obj/aiming_overlay/proc/update_aiming_deferred()
 	set waitfor = 0
 	sleep(0)
 	update_aiming()
 
 /obj/aiming_overlay/proc/update_aiming()
-
+	SIGNAL_HANDLER
 	if(!owner)
 		qdel(src)
 		return
@@ -146,9 +146,9 @@ obj/aiming_overlay/proc/update_aiming_deferred()
 	locked = 0
 	update_icon()
 	lock_time = world.time + 35
-	GLOB.moved_event.register(owner, src, /obj/aiming_overlay/proc/update_aiming)
-	GLOB.moved_event.register(aiming_at, src, /obj/aiming_overlay/proc/target_moved)
-	GLOB.destroyed_event.register(aiming_at, src, /obj/aiming_overlay/proc/cancel_aiming)
+	RegisterSignal(owner, COMSIG_MOVABLE_MOVED, .proc/update_aiming)
+	RegisterSignal(aiming_at, COMSIG_MOVABLE_MOVED, .proc/target_moved)
+	RegisterSignal(aiming_at, COMSIG_PARENT_QDELETING, .proc/cancel_aiming)
 
 /obj/aiming_overlay/update_icon()
 	if(locked)
@@ -171,6 +171,7 @@ obj/aiming_overlay/proc/update_aiming_deferred()
 		owner.hud_used?.gun_setting_icon.icon_state = "gun[active]"
 
 /obj/aiming_overlay/proc/cancel_aiming(var/no_message = 0)
+	SIGNAL_HANDLER
 	if(!aiming_with || !aiming_at)
 		return
 	if(istype(aiming_with, /obj/item/weapon/gun))
@@ -178,10 +179,9 @@ obj/aiming_overlay/proc/update_aiming_deferred()
 	if(!no_message)
 		owner.visible_message("<span class='notice'>\The [owner] lowers \the [aiming_with].</span>")
 
-	GLOB.moved_event.unregister(owner, src)
+	UnregisterSignal(owner, COMSIG_MOVABLE_MOVED)
 	if(aiming_at)
-		GLOB.moved_event.unregister(aiming_at, src)
-		GLOB.destroyed_event.unregister(aiming_at, src)
+		UnregisterSignal(aiming_at, list(COMSIG_MOVABLE_MOVED, COMSIG_PARENT_QDELETING))
 		aiming_at.aimed -= src
 		aiming_at = null
 
@@ -190,5 +190,6 @@ obj/aiming_overlay/proc/update_aiming_deferred()
 	STOP_PROCESSING(SSobj, src)
 
 /obj/aiming_overlay/proc/target_moved()
+	SIGNAL_HANDLER
 	update_aiming()
-	trigger(TARGET_CAN_MOVE)
+	INVOKE_ASYNC(src, .proc/trigger, TARGET_CAN_MOVE)

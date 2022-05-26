@@ -37,6 +37,7 @@
 			return
 
 	open = !open
+	playsound(src.loc, 'sound/effects/locker_open.ogg', VOLUME_LOW)
 	update_icon()
 
 /obj/structure/toilet/update_icon()
@@ -89,6 +90,7 @@
 	var/watertemp = "normal"	//freezing, normal, or boiling
 	var/is_washing = 0
 	var/list/temperature_settings = list("normal" = 310, "boiling" = T0C+100, "freezing" = T0C)
+	var/datum/sound_token/showera_token
 
 /obj/machinery/shower/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
@@ -118,6 +120,8 @@
 
 /obj/machinery/shower/proc/turn_on(mob/M as mob)
 	on = TRUE
+	playsound(src, "switch", VOLUME_LOW)
+	showera_token = GLOB.sound_player.PlayLoopingSound(source = src, sound = 'sound/machines/showera_token.ogg', sound_id = "showera_token", volume = VOLUME_LOW)
 	update_icon()
 	if(on)
 		if (M && M.loc == loc)
@@ -128,6 +132,8 @@
 
 /obj/machinery/shower/proc/turn_off()
 	on = FALSE
+	playsound(src, "switch", VOLUME_LOW)
+	QDEL_NULL(showera_token)
 	update_icon()
 
 /obj/machinery/shower/attackby(obj/item/I as obj, mob/user as mob)

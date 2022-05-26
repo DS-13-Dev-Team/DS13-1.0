@@ -243,7 +243,7 @@
 	else
 		def_zone = ran_zone()
 
-	addtimer(CALLBACK(src, .proc/finalize_launch, curloc, targloc, x_offset, y_offset, angle_offset),0)
+	INVOKE_ASYNC(src, .proc/finalize_launch, curloc, targloc, x_offset, y_offset, angle_offset)
 	return 0
 
 /obj/item/projectile/proc/finalize_launch(var/turf/curloc, var/turf/targloc, var/x_offset, var/y_offset, var/angle_offset)

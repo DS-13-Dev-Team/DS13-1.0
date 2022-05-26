@@ -377,7 +377,7 @@
 	max_storage_space = DEFAULT_BACKPACK_STORAGE
 
 	startswith = list(
-		/obj/item/weapon/reagent_containers/food/drinks/bottle/ds_medigel = 2, //medigel should be rare, there should be some on the map, maybe some available in stores but generally speaking should be rare, this is a heal-all solution, it can be applied and will pretty much guarantee survival. the only thing you might need to combine with it is nanoblood, as it does not regenerate blood on its own.
+		/obj/item/weapon/reagent_containers/hypospray/autoinjector/ds_medigel = 2, //medigel should be rare, there should be some on the map, maybe some available in stores but generally speaking should be rare, this is a heal-all solution, it can be applied and will pretty much guarantee survival. the only thing you might need to combine with it is nanoblood, as it does not regenerate blood on its own.
 		/obj/item/weapon/storage/pill_bottle/dexalin_plus,
 		/obj/item/weapon/storage/pill_bottle/dylovene,
 		/obj/item/weapon/storage/pill_bottle/tramadol,
@@ -410,7 +410,7 @@
 	max_storage_space = DEFAULT_BACKPACK_STORAGE
 
 	startswith = list(
-		/obj/item/weapon/reagent_containers/food/drinks/bottle/ds_medigel = 6, //no need for other chems as this and inaproavline covers all damage types. also no health analyzer as ert medics spawn with one.
+		/obj/item/weapon/reagent_containers/hypospray/autoinjector/ds_medigel = 6, //no need for other chems as this and inaproavline covers all damage types. also no health analyzer as ert medics spawn with one.
 		/obj/item/weapon/storage/pill_bottle/inaprovaline, //stabilizes vitals, restores brain damage slightly.
 		/obj/item/weapon/storage/pill_bottle/tramadol, // deals with pain
 		/obj/item/weapon/storage/pill_bottle/nanoblood, //recovers blood

@@ -57,7 +57,7 @@
 	name = "P.C.S.I helmet"
 	desc = "A ceramic helmet with the badge of P.C.S.I emblazoned on the forehead. Sturdy, but a bullet to the face will still probably kill the wearer."
 	icon_state = "helmet_pcsi"
-	armor = list(melee = 50, bullet = 50, laser = 15, energy = 0, bomb = 10, bio = 0, rad = 0)
+	armor = list(melee = 65, bullet = 55, laser = 40, energy = 40, bomb = 20, bio = 5, rad = 0)
 	flags_inv = HIDEEARS|BLOCKHEADHAIR
 	siemens_coefficient = 0.5
 

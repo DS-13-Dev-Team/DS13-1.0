@@ -7,7 +7,7 @@
 
 /obj/item/weapon/tool/tape_roll/attack(var/mob/living/carbon/human/H, var/mob/user)
 	if(istype(H))
-		if(get_zone_sel(user) == BP_EYES)
+		if(get_zone_sel(user, TRUE) == BP_EYES)
 
 			if(!H.organs_by_name[BP_HEAD])
 				to_chat(user, "<span class='warning'>\The [H] doesn't have a head.</span>")

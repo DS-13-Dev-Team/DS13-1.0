@@ -7,7 +7,7 @@
 	w_class = ITEM_SIZE_LARGE
 	force = 9.0
 	throwforce = 15.0
-	
+
 	throw_range = 20
 	matter = list(MATERIAL_STEEL = 1875)
 	max_amount = 100
@@ -53,7 +53,7 @@
 				user.put_in_hands(new_item)
 		return
 
-	if (istype(W, /obj/item/weapon/tool/tape_roll))
+	if (isSealing(W))
 		var/obj/item/stack/medical/splint/ghetto/new_splint = new(user.loc)
 		new_splint.dropInto(loc)
 		new_splint.add_fingerprint(user)

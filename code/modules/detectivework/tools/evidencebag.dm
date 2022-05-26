@@ -65,7 +65,7 @@
 		return
 
 	stored_item = I
-	GLOB.exited_event.register(src, src, /obj/item/weapon/evidencebag/proc/item_removed)
+	RegisterSignal(stored_item, COMSIG_MOVABLE_MOVED, .proc/item_removed)
 	w_class = I.w_class
 	update_icon()
 	if (user)
@@ -75,9 +75,10 @@
 			I.add_fingerprint(user)
 
 
-/obj/item/weapon/evidencebag/proc/item_removed(var/atom/exited, var/atom/movable/exiter, var/atom/new_loc)
-	if (!stored_item || exiter == stored_item)
-		GLOB.exited_event.unregister(src, src, /obj/item/weapon/evidencebag/proc/item_removed)
+/obj/item/weapon/evidencebag/proc/item_removed(atom/movable/exiter, old_loc, new_loc)
+	SIGNAL_HANDLER
+	if(exiter == stored_item)
+		UnregisterSignal(stored_item, COMSIG_MOVABLE_MOVED)
 		stored_item = null
 		w_class = initial(w_class)
 		update_icon()

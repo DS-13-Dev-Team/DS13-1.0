@@ -79,7 +79,7 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 	..()
 	src.user = user
 	if(flags & (CLICK_HANDLER_REMOVE_ON_MOB_LOGOUT))
-		GLOB.logged_out_event.register(user, src, /datum/click_handler/proc/OnMobLogout)
+		RegisterSignal(user, COMSIG_MOB_LOGOUT, .proc/OnMobLogout)
 	if (cursor_override && user.client)
 		cached_cursor = user.client.mouse_pointer_icon
 		user.client.mouse_pointer_icon = cursor_override
@@ -88,7 +88,7 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 
 /datum/click_handler/Destroy()
 	if(flags & (CLICK_HANDLER_REMOVE_ON_MOB_LOGOUT))
-		GLOB.logged_out_event.unregister(user, src, /datum/click_handler/proc/OnMobLogout)
+		UnregisterSignal(user, COMSIG_MOB_LOGOUT)
 	if (flags & CLICK_HANDLER_SUPPRESS_POPUP_MENU)
 		user.update_popup_menu()
 	if (cursor_override && user.client)
@@ -110,6 +110,7 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 
 
 /datum/click_handler/proc/OnMobLogout()
+	SIGNAL_HANDLER
 	user.RemoveClickHandler(src)
 
 /datum/click_handler/proc/OnClick(var/atom/A, var/params)

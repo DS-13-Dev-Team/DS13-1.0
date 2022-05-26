@@ -1,0 +1,93 @@
+2022-05-01:
+  DTraitor:
+  - balance: Speeds up status effects like stun, paralyzer, blurry, etc.
+  - balance: Leapers won't be able to pull things while galloping.
+  - fixes: Flamethrower blasts and pulse rifle grenades won't ricochet anymore.
+  - fixes: Removed shrapnel from all recipes and replaced with something sane.
+  - balance: Removed ore box limit.
+  - fixes: Destroying ore box will drop ores inside.
+  - fixes: Fixed 'Restart' verb in 'Server' tab.
+  - bugfix: Fixed 'Tool expansion' recipe making you unable to open crafting menu.
+  - balance: P.C.S.I armour has better stats now.
+  - balance: Security huds will protect you from flashes.
+  - balance: CSECO jacket was buffed.
+  - bugfix: Fixed missing antag icons.
+  - balance: Spitters shouldn't be that OP now.
+  Ketrai:
+  - balance: Makes necromorphs slightly more fire-resistant Hunter unchanged, particularly
+      affects brute.
+  - balance: Brute isn't as slow to turn anymore
+  - balance: Brute HP increased by 2%
+  - balance: Brute & tripod cost reduced by 10%
+  - balance: Brute speed increased slightly.
+  - balance: Brute barely gets stunned now.
+  - balance: Brute armor RNG removed. (4% chance to bypass brute armor outright)
+  - balance: HPR is 15% slower to overheat. Cools down significantly faster, especially
+      when overheated(20-30% on average)
+  - balance: HPR max firerate increased by 4-5%
+  - balance: HPR max firerate slower to attain which makes the gun easier to control
+      again.
+  - balance: HPR recoil is now pretty small
+  - balance: HPR can be fired again sooner after overheating.
+2022-05-03:
+  DTraitor:
+  - qol: Swapped rotate and throw keybinds. Throwing is R and rotating is Ctrl+R now.
+  Ketrai:
+  - balance: Lowers enhanced leaper's leap damage modifier from 25% more to 10% more
+      compared to normal leaper.
+  - balance: Lowers enhanced leaper's stun from 1.5 => 1 second.
+  - balance: Nerfs enhanced leaper's leap cooldown from 4 => 5.5 seconds.
+  - balance: Nerfs javelin fire delay from 1.5 to 2.5 seconds.
+2022-05-05:
+  Ketrai:
+  - balance: Infector cost 150 => 105.
+  - balance: Infector is now a T1 morph.
+  - balance: Infector spine damage reduced by about 33%.
+  - balance: Infector health reduced from 155 => 90.
+  - balance: Infector essence generation when about 7.5 increased from 50 => 60%.
+  - balance: Infector max essence increased by 33%.
+  - balance: Infector can now make new growths far more cheaply 30 => 10. And do so
+      quicker.
+  - balance: Infector can now make regular growths more cheaply.
+  - balance: Infector growth effects reduced.
+  - balance: Reanimate is slightly more expensive now.
+  - balance: Infector snare is 40% cheaper.
+  - balance: Infector engorge now taxes you more essence the more expensive the target.
+  - balance: Infector engorge health gain changed from 50 to 10 + 15% health. Sorry
+      for all you buff arm lovers, you'll have to do with less now.
+2022-05-06:
+  DTraitor:
+  - rscadd: Defib can revive a brain now if it is not decaying yet.
+2022-05-07:
+  Ketrai:
+  - balance: Oracle twitcher damage and armor pen lowered by about 20%.
+  - balance: Oracle twitcher passive dodge cooldown nerfed by 33%.
+  - balance: Oracle twitcher health increased by 5%.
+  - balance: Oracle twitcher is now properly, a big boy.
+  - balance: Oracle twitcher now has an active dodge.
+2022-05-09:
+  Ketrai:
+  - balance: Leaper gallop duration extended by 50%.
+  - balance: Enhanced leaper gallop cooldown lowered.
+  - balance: Leaper speed increased.
+  - balance: Gallop isn't as easily interrupted by bullets/shrapnel anymore
+2022-05-14:
+  ? ''
+  : - rscadd: Adds deflection pulse ammo, found in maint, stores, and the lockers
+        in the valor.
+    - rscdel: Removes HV pulse ammo from stores and reduces the chance to find it
+        in maint.
+    - rscadd: Added rubber divet ammo in sec's equipment and stores. Use it for non
+        lethal takedown, practically useless against necromorphs.
+    - rscadd: Excavation rig, found in the foreman and DOM locker, rarely in maint.
+        Better version of the mining rig, but more susceptible to bombs 'Exploders'.
+    - balance: Makes line racks more expensive because they were really cheap
+2022-05-16:
+  DTraitor:
+  - rscadd: Added a head to BPL growth tank.
+  - bugfix: Fixed a lot of things that require you to target mouth or eyes.
+  - bugfix: Fixed ore boxes deleting ore instead of storing it.
+2022-05-21:
+  DTraitor:
+  - balance: Reduced infector's interaction range, it's 1 instead of 2.
+  - balance: Reduced infector's view range from 10 to 7.

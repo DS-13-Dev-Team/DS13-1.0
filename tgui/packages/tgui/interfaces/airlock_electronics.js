@@ -1,8 +1,8 @@
 import { useBackend, useLocalState } from '../backend';
-import { Button, Flex, Grid, LabeledList, Section, Tabs } from '../components';
+import { Button, Flex, LabeledList, Section, Table, Tabs } from '../components';
 import { Window } from '../layouts';
 import { sortBy } from 'common/collections';
-import { multiline } from '../../common/string';
+import { TableCell } from '../components/Table';
 
 export const airlock_electronics = (props, context) => {
   const { act, data } = useBackend(context);
@@ -158,24 +158,24 @@ export const AirlockAccessList = (props, context) => {
           </Tabs>
         </Flex.Item>
         <Flex.Item grow={1} ml={1.5}>
-          <Grid>
-            <Grid.Column mr={0}>
+          <Table>
+            <TableCell mr={0}>
               <Button
                 fluid
                 icon="check"
                 content="Grant Region"
                 color="good"
                 onClick={() => grantDep(selectedAccess.name)} />
-            </Grid.Column>
-            <Grid.Column ml={0}>
+            </TableCell>
+            <TableCell ml={0}>
               <Button
                 fluid
                 icon="times"
                 content="Deny Region"
                 color="bad"
                 onClick={() => denyDep(selectedAccess.name)} />
-            </Grid.Column>
-          </Grid>
+            </TableCell>
+          </Table>
           {selectedAccessEntries.map(entry => (
             <Button.Checkbox
               fluid

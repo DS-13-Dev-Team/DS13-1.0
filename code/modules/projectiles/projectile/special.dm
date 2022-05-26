@@ -57,26 +57,23 @@
 	check_armour = "bullet"
 	grippable = TRUE
 
-	Bump(atom/A as mob|obj|turf|area, forced = 0)
-		if(A == firer)
-			loc = A.loc
-			return
+/obj/item/projectile/meteor/Bump(atom/A as mob|obj|turf|area, forced = 0)
+	if(A == firer)
+		loc = A.loc
+		return
 
-		sleep(-1) //Might not be important enough for a sleep(-1) but the sleep/spawn itself is necessary thanks to explosions and metoerhits
+	INVOKE_ASYNC(src, .proc/impact, A)
 
-		if(src)//Do not add to this if() statement, otherwise the meteor won't delete them
-			if(A)
+/obj/item/projectile/meteor/proc/impact(atom/impact_loc)
+	if(!QDELETED(src) && impact_loc)
+		impact_loc.ex_act(2, src)
+		playsound(src.loc, 'sound/effects/meteorimpact.ogg', 40, 1)
 
-				A.ex_act(2, src)
-				playsound(src.loc, 'sound/effects/meteorimpact.ogg', 40, 1)
+		for(var/mob/M in urange(10, src))
+			if(!M.stat && !istype(M, /mob/living/silicon/ai))\
+				shake_camera(M, 3, 1)
+		qdel(src)
 
-				for(var/mob/M in range(10, src))
-					if(!M.stat && !istype(M, /mob/living/silicon/ai))\
-						shake_camera(M, 3, 1)
-				qdel(src)
-				return 1
-		else
-			return 0
 
 /obj/item/projectile/energy/floramut
 	name = "alpha somatoray"

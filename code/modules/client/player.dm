@@ -32,10 +32,6 @@
 	if (C && C.prefs && C.prefs.loadout)
 		C.prefs.loadout.set_prefs(C.prefs)
 
-/datum/player/proc/Login()
-	GLOB.logged_in_event.raise_event(src)
-	return
-
 /datum/player/proc/get_mob()
 	return locate(mob)
 
@@ -62,17 +58,6 @@
 	//Existing stuff i might replace
 	GLOB.player_list |= src
 	GLOB.key_to_mob[key] = src
-
-
-
-/mob/proc/player_login()
-	register_client_and_player()
-
-	var/datum/player/me = get_or_create_player(key)
-	if (!me)
-		return
-	me.Login()
-
 
 
 /*

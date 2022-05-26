@@ -13,7 +13,7 @@
 	if(client)
 		for(var/atom/movable/AM in client.screen)
 			var/atom/movable/screen/screenobj = AM
-			if(!istype(screenobj) || !screenobj.globalscreen)
+			if(istype(screenobj) && !screenobj.globalscreen)
 				qdel(screenobj)
 		client.screen = list()
 	if(mind && mind.current == src)
@@ -231,7 +231,10 @@
 	if ((incapacitation_flags & INCAPACITATION_STUNNED) && stunned)
 		return 1
 
-	if ((incapacitation_flags & INCAPACITATION_FORCELYING) && (weakened || resting || pinned.len))
+	if ((incapacitation_flags & INCAPACITATION_FORCELYING) && (weakened || pinned.len))
+		return 1
+
+	if ((incapacitation_flags & INCAPACITATION_LYING) && resting)
 		return 1
 
 	if ((incapacitation_flags & INCAPACITATION_KNOCKOUT) && (stat || paralysis || sleeping || (status_flags & FAKEDEATH)))
@@ -280,7 +283,7 @@
 				view_changed = TRUE
 
 			if (view_changed)
-				GLOB.view_changed_event.raise_event(src)
+				SEND_SIGNAL(src, COMSIG_MOB_VIEW_CHANGED)
 
 
 /mob/proc/show_inv(mob/user as mob)
@@ -917,8 +920,11 @@
 
 
 /mob/proc/set_stat(var/new_stat)
+	var/old_stat = stat
 	. = stat != new_stat
 	stat = new_stat
+	if(.)
+		SEND_SIGNAL(src, COMSIG_MOB_STATCHANGE, old_stat, new_stat)
 
 /mob/verb/northfaceperm()
 	set hidden = 1

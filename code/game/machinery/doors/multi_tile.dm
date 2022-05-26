@@ -23,17 +23,18 @@
 /obj/machinery/door/airlock/multi_tile/Initialize()
 	..()
 	update_bounds()
-	GLOB.dir_set_event.register(src, src, /obj/machinery/door/airlock/multi_tile/proc/update_bounds)
+	RegisterSignal(src, COMSIG_ATOM_DIR_CHANGE, .proc/update_bounds)
 
 /obj/machinery/door/airlock/multi_tile/Move(NewLoc, Dir = 0, step_x = 0, step_y = 0, var/glide_size_override = 0)
 	. = ..()
 	update_bounds()
 
 /obj/machinery/door/airlock/multi_tile/proc/update_bounds()
+	SIGNAL_HANDLER
 	if(dir in list(NORTH, SOUTH))
 		set_bounds(width * world.icon_size, world.icon_size)
 	else
-		set_bounds(world.icon_size,width * world.icon_size)
+		set_bounds(world.icon_size, width * world.icon_size)
 
 
 /obj/machinery/door/airlock/multi_tile/update_icon(state=0, override=0)
@@ -124,6 +125,24 @@
 
 /obj/machinery/door/airlock/multi_tile/civilian
 	stripe_color = COLOR_CIVIE_GREEN
+
+/obj/machinery/door/airlock/multi_tile/civilian/tram
+	icon = 'icons/obj/doors/double/doortram.dmi'
+	fill_file = null
+	color_file = null
+	color_fill_file = null
+	stripe_file = null
+	stripe_fill_file = null
+	glass_file = null
+	bolts_file = null
+	deny_file = null
+	lights_file = null
+	welded_file = 'icons/obj/doors/double/doortram_weld.dmi'
+	emag_file = null
+	open_sound_powered = "doorheavyopen"
+	open_sound_unpowered = "doorheavyopen"
+	close_sound_powered = "doorheavyclose"
+	close_sound_unpowered = "doorheavyclose"
 
 /obj/machinery/door/airlock/multi_tile/freezer
 	name = "Freezer Airlock"

@@ -13,18 +13,19 @@
 	if ((T in watched_tiles))
 		return	//Don't watch the same tile twice
 
-	GLOB.clarity_set_event.register(T, src, /obj/effect/vine/proc/watched_tile_updated)
+	RegisterSignal(T, COMSIG_TURF_CLARITY_SET, .proc/watched_tile_updated)
 	watched_tiles += T
 
 //Remove the observations from tiles we're watching
 /obj/effect/vine/proc/unwatch_tiles()
-	for (var/turf/T in watched_tiles)
-		GLOB.clarity_set_event.unregister(T, src, /obj/effect/vine/proc/watched_tile_updated)
+	for(var/turf/T in watched_tiles)
+		UnregisterSignal(T, COMSIG_TURF_CLARITY_SET)
 
 	watched_tiles = list()
 
 //If a watched tile changes, lets wake up. This will wipe watched tiles, and start checks anew
 /obj/effect/vine/proc/watched_tile_updated(var/turf/T)
+	SIGNAL_HANDLER
 	wake_up()
 
 

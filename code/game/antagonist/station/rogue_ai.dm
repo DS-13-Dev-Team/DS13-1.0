@@ -91,7 +91,7 @@
 		player.current = new mob_path(get_turf(player.current), null, null, 1)
 		player.transfer_to(player.current)
 		if(holder) qdel(holder)
-	player.original = player.current
+	player.replace_original_mob(player.current)
 	return player.current
 
 /datum/antagonist/rogue_ai/set_antag_name(var/mob/living/silicon/player)

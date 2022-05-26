@@ -47,6 +47,9 @@ var/list/mining_floors = list()
 	var/image/archaeo_overlay	//Handled in update_archaeo_overlay, updated whenever a find is dug out
 	var/image/excav_overlay		//Handled in update_excavation_overlay, updated every time dig is called
 
+/turf/simulated/mineral/old
+	icon = 'icons/turf/flooring/old_rock.dmi'
+
 /turf/simulated/mineral/New()
 	health = max_health
 
@@ -133,9 +136,9 @@ var/list/mining_floors = list()
 	. = ..()
 	if(istype(AM,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = AM
-		if((istype(H.l_hand,/obj/item/weapon/tool/pickaxe)) && (!H.hand))
+		if((H.l_hand && isPickaxe(H.l_hand)) && (!H.hand))
 			attackby(H.l_hand,H)
-		else if((istype(H.r_hand,/obj/item/weapon/tool/pickaxe)) && H.hand)
+		else if((H.r_hand && isPickaxe(H.r_hand)) && H.hand)
 			attackby(H.r_hand,H)
 
 	else if(istype(AM,/mob/living/silicon/robot))
@@ -145,7 +148,7 @@ var/list/mining_floors = list()
 
 	else if(istype(AM,/obj/mecha))
 		var/obj/mecha/M = AM
-		if(istype(M.selected,/obj/item/mecha_parts/mecha_equipment/tool/drill))
+		if(isPickaxe(M.selected))
 			M.selected.action(src)
 
 /turf/simulated/mineral/proc/MineralSpread()
@@ -206,7 +209,7 @@ var/list/mining_floors = list()
 	//And if it defaults single strike, altclick does a full dig
 /turf/simulated/mineral/AltClick(var/mob/user)
 	var/obj/item/I = user.get_active_hand()
-	if (istype(I,/obj/item/weapon/tool/pickaxe))
+	if(I && isPickaxe(I))
 		var/obj/item/weapon/tool/pickaxe/P = I
 		return dig_with_tool(P, user, (!P.default_full_dig))
 	else
@@ -222,7 +225,7 @@ var/list/mining_floors = list()
 		return
 
 	clear_ore_effects()
-	var/obj/item/weapon/ore/O = new mineral.ore (src)
+	var/obj/item/stack/ore/O = new mineral.ore (src)
 	if(geologic_data && istype(O))
 		geologic_data.UpdateNearbyArtifactInfo(src)
 		O.geologic_data = geologic_data
@@ -232,7 +235,7 @@ var/list/mining_floors = list()
 /turf/simulated/mineral/proc/dig_with_tool(var/obj/item/I, var/mob/living/user, var/full_dig = null)
 	if (isnull(full_dig))
 		full_dig = TRUE
-		if (istype(I, /obj/item/weapon/tool/pickaxe))
+		if (isPickaxe(I))
 			var/obj/item/weapon/tool/pickaxe/P = I
 			full_dig = P.default_full_dig
 
@@ -388,7 +391,7 @@ var/list/mining_floors = list()
 		var/find = get_archeological_find_by_findtype(F.find_type)
 		new find(src)
 	else
-		var/obj/item/weapon/ore/strangerock/rock = new(src, inside_item_type = F.find_type)
+		var/obj/item/strangerock/rock = new(src, inside_item_type = F.find_type)
 		geologic_data.UpdateNearbyArtifactInfo(src)
 		rock.geologic_data = geologic_data
 
@@ -462,17 +465,46 @@ var/list/mining_floors = list()
 // Setting icon/icon_state initially will use these values when the turf is built on/replaced.
 // This means you can put grass on the asteroid etc.
 /turf/simulated/floor/asteroid
-	name = "sand"
-	icon = 'icons/turf/flooring/asteroid.dmi'
-	icon_state = "asteroid"
-
+	name = "soil"
+	icon = 'icons/turf/floors_outside_ds13.dmi'
+	icon_state = "wet_muddy"
 
 	initial_flooring = null
-	initial_gas = null
-	temperature = TCMB
+	initial_gas = list("oxygen" = MOLES_O2STANDARD, "nitrogen" = MOLES_N2STANDARD)
+	temperature = T20C
 	var/dug = 0       //0 = has not yet been dug, 1 = has already been dug
 	var/overlay_detail
 	has_resources = 1
+
+/turf/simulated/floor/asteroid/Initialize()
+	..()
+	dir = pick(GLOB.alldirs)
+
+/turf/simulated/floor/asteroid/outside_ds
+	name = "soil"
+	desc = "Dirt."
+	icon_state = "wet_soft"
+
+/turf/simulated/floor/asteroid/outside_ds/firm
+	icon_state = "wet_firm"
+
+/turf/simulated/floor/asteroid/outside_ds/muddy
+	icon_state = "wet_muddy"
+
+/turf/simulated/floor/asteroid/outside_ds/cracked
+	icon_state = "wet_cracked"
+
+/turf/simulated/floor/asteroid/outside_ds/dry_soft
+	icon_state = "dry_soft"
+
+/turf/simulated/floor/asteroid/outside_ds/dry_firm
+	icon_state = "dry_firm"
+
+/turf/simulated/floor/asteroid/outside_ds/dry_muddy
+	icon_state = "dry_muddy"
+
+/turf/simulated/floor/asteroid/outside_ds/dry_cracked
+	icon_state = "dry_cracked"
 
 /turf/simulated/floor/asteroid/New()
 	if (!mining_floors["[src.z]"])
@@ -535,8 +567,14 @@ var/list/mining_floors = list()
 	else if(istype(W,/obj/item/weapon/storage/ore))
 		var/obj/item/weapon/storage/ore/S = W
 		if(S.collection_mode)
-			for(var/obj/item/weapon/ore/O in contents)
-				O.attackby(W,user)
+			for(var/obj/item/stack/ore/O in contents)
+				//We assume there is only ore in the satchel
+				for(var/obj/item/stack/ore/ore as anything in S.contents)
+					if(!istype(O, ore.type))
+						continue
+					O.transfer_to(ore)
+					if(!QDELING(O))
+						O.forceMove(src)
 				return
 	else if(istype(W,/obj/item/weapon/storage/bag/fossils))
 		var/obj/item/weapon/storage/bag/fossils/S = W
@@ -554,11 +592,10 @@ var/list/mining_floors = list()
 	if(dug)
 		return
 
-	for(var/i=0;i<(rand(3)+2);i++)
-		new/obj/item/weapon/ore/glass(src)
+	new/obj/item/stack/ore/glass(src, rand(3)+2)
 
 	dug = 1
-	icon_state = "asteroid_dug"
+	icon_state = "[icon_state]_dug"
 	return
 
 /turf/simulated/floor/asteroid/proc/updateMineralOverlays(var/update_neighbors)

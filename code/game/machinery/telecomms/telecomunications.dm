@@ -22,6 +22,7 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 	var/list/autolinkers = list() // list of text/number values to link with
 	var/id = "NULL" // identification string
 	var/network = "NULL" // the network of the machinery
+	clicksound = "button2"
 
 	var/list/freq_listening = list() // list of frequencies to tune into: if none, will listen to all
 	var/list/channel_tags = list() // a list specifying what to tag packets on different frequencies

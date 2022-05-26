@@ -88,41 +88,41 @@
 
 /mob/living/proc/handle_stunned()
 	if(stunned)
-		AdjustStunned(-1)
+		AdjustStunned(-(MOB_PROCESS_INTERVAL*0.1))
 		if(!stunned)
 			update_icons()
 	return stunned
 
 /mob/living/proc/handle_weakened()
 	if(weakened)
-		weakened = max(weakened-1,0)
+		weakened = max(weakened-(MOB_PROCESS_INTERVAL*0.1),0)
 		if(!weakened)
 			update_icons()
 	return weakened
 
 /mob/living/proc/handle_stuttering()
 	if(stuttering)
-		stuttering = max(stuttering-1, 0)
+		stuttering = max(stuttering-(MOB_PROCESS_INTERVAL*0.1), 0)
 	return stuttering
 
 /mob/living/proc/handle_silent()
 	if(silent)
-		silent = max(silent-1, 0)
+		silent = max(silent-(MOB_PROCESS_INTERVAL*0.1), 0)
 	return silent
 
 /mob/living/proc/handle_drugged()
 	if(druggy)
-		druggy = max(druggy-1, 0)
+		druggy = max(druggy-(MOB_PROCESS_INTERVAL*0.1), 0)
 	return druggy
 
 /mob/living/proc/handle_slurring()
 	if(slurring)
-		slurring = max(slurring-1, 0)
+		slurring = max(slurring-(MOB_PROCESS_INTERVAL*0.1), 0)
 	return slurring
 
 /mob/living/proc/handle_paralysed()
 	if(paralysis)
-		AdjustParalysis(-1)
+		AdjustParalysis(-(MOB_PROCESS_INTERVAL*0.1))
 		if(!paralysis)
 			update_icons()
 	return paralysis
@@ -133,7 +133,7 @@
 
 /mob/living/proc/handle_confused()
 	if(confused)
-		confused = max(0, confused - 1)
+		confused = max(0, confused - (MOB_PROCESS_INTERVAL*0.1))
 	return confused
 
 /mob/living/proc/handle_impaired_vision()

@@ -244,9 +244,9 @@ proc/slur(phrase)
 			if(lowertext(newletter)=="s")	newletter="ch"
 			if(lowertext(newletter)=="a")	newletter="ah"
 			if(lowertext(newletter)=="c")	newletter="k"
-		switch(rand(1,15))
-			if(1,3,5,8)	newletter="[lowertext(newletter)]"
-			if(2,4,6,15)	newletter="[uppertext(newletter)]"
+		switch(rand(1,7))
+			if(1,3,5)	newletter="[lowertext(newletter)]"
+			if(2,4,6)	newletter="[uppertext(newletter)]"
 			if(7)	newletter+="'"
 			//if(9,10)	newletter="<b>[newletter]</b>"
 			//if(11,12)	newletter="<big>[newletter]</big>"
@@ -771,8 +771,8 @@ proc/is_blind(A)
 		buckled.set_dir(ndir)
 	if (. && slow_turning && changing)	//Only mobs with slow turning set will set their move cooldown when changing dir
 		var/turntime = movement_delay()
-		set_move_cooldown(turntime)
-		set_click_cooldown(max(turntime,DEFAULT_ATTACK_COOLDOWN))
+		set_move_cooldown(turntime * 0.75) //100% is too harsh
+		set_click_cooldown(max((turntime * 0.75),DEFAULT_ATTACK_COOLDOWN))
 
 //Mobs with offset view should update it every time they turn
 /mob/set_dir(new_dir)

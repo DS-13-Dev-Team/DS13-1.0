@@ -28,7 +28,7 @@
 			if(!target)
 				to_chat(usr, "Proc call CANCEL_led.")
 				return
-		if("Cancel" || null)
+		if("Cancel", null)
 			return
 		if("No")
 			; // do nothing
@@ -174,7 +174,7 @@
 					switch(tgui_alert(usr, "\The [M] appears to not have an area; do you want to pass null instead?", "Confirmation", list("Yes", "Cancel")))
 						if("Yes")
 							; // do nothing
-						if("Cancel" || null)
+						if("Cancel", null)
 							return CANCEL_N
 
 			if("marked datum")
@@ -183,7 +183,7 @@
 					switch(tgui_alert(usr, "You do not currently have a marked datum; do you want to pass null instead?", "Confirmation", list("Yes", "Cancel")))
 						if("Yes")
 							; // do nothing
-						if("Cancel" || null)
+						if("Cancel", null)
 							return CANCEL_N
 
 			if("click on atom")

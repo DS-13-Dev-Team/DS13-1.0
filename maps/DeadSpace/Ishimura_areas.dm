@@ -5,6 +5,8 @@
 /area/ishimura
 	icon = 'maps/DeadSpace/ishimura_areas.dmi'
 	ship_area = TRUE
+	ambience = list('sound/ambience/ishimura/corridor/shippa1.ogg','sound/ambience/ishimura/corridor/shippa2.ogg','sound/ambience/ishimura/corridor/shippa3.ogg', 'sound/ambience/ishimura/corridor/shippa4.ogg', 'sound/ambience/ishimura/corridor/shippa5.ogg', 'sound/ambience/ishimura/corridor/shippa6.ogg', 'sound/ambience/ishimura/corridor/shippa7.ogg', 'sound/ambience/ishimura/corridor/shippa8.ogg', 'sound/ambience/ishimura/corridor/shippa9.ogg', 'sound/ambience/ishimura/corridor/shippa10.ogg', 'sound/ambience/ishimura/corridor/shippa11.ogg')
+	forced_ambience = null
 
 /area/ishimura/hull
 	name = "\improper Ishimura Hull"
@@ -248,7 +250,8 @@
 	area_flags = AREA_FLAG_RAD_SHIELDED
 	sound_env = TUNNEL_ENCLOSED
 	turf_initializer = /decl/turf_initializer/maintenance
-	forced_ambience = list('sound/ambience/maintambience.ogg')
+	forced_ambience = list('sound/ambience/ishimura/forced_ambience/maint.ogg')
+	ambience = list('sound/ambience/ishimura/maint/noise1.ogg','sound/ambience/ishimura/maint/noise2.ogg','sound/ambience/ishimura/maint/noise3.ogg','sound/ambience/ishimura/maint/noise4.ogg','sound/ambience/ishimura/maint/noise5.ogg','sound/ambience/ishimura/maint/noise6.ogg','sound/ambience/ishimura/maint/noise7.ogg')
 	name = "\improper Maintenance"
 	icon_state = "maintbase"
 	is_maintenance = TRUE
@@ -693,7 +696,8 @@ area/ishimura/upper/medical/bpc
 	area_flags = AREA_FLAG_RAD_SHIELDED
 	sound_env = TUNNEL_ENCLOSED
 	turf_initializer = /decl/turf_initializer/maintenance
-	forced_ambience = list('sound/ambience/maintambience.ogg')
+	forced_ambience = list('sound/ambience/ishimura/forced_ambience/maint.ogg')
+	ambience = list('sound/ambience/ishimura/maint/noise1.ogg','sound/ambience/ishimura/maint/noise2.ogg','sound/ambience/ishimura/maint/noise3.ogg','sound/ambience/ishimura/maint/noise4.ogg','sound/ambience/ishimura/maint/noise5.ogg','sound/ambience/ishimura/maint/noise6.ogg','sound/ambience/ishimura/maint/noise7.ogg')
 	name = "\improper Maintenance"
 	icon_state = "maintbase"
 	is_maintenance = TRUE
@@ -914,6 +918,12 @@ area/ishimura/upper/medical/bpc
 /area/shuttle/tram
 	name = "\improper Ishimura Tram"
 	icon_state = "tram"
+	forced_ambience = list('sound/ambience/ishimura/forced_ambience/tramstation.ogg')
+	ambience = null
+
+/area/ishimura/tramdeck
+	forced_ambience = list('sound/ambience/ishimura/forced_ambience/tramstation.ogg')
+	ambience = list('sound/ambience/ishimura/undertram/noise1.ogg','sound/ambience/ishimura/undertram/noise2.ogg','sound/ambience/ishimura/undertram/noise3.ogg','sound/ambience/ishimura/undertram/noise4.ogg','sound/ambience/ishimura/undertram/noise5.ogg')
 
 /area/ishimura/tramdeck/tram
 	name = "\improper Ishimura Tram"

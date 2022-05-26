@@ -32,7 +32,7 @@
 	if (!E.can_start())
 		E.failed_start()
 		.=FALSE
-	E.ongoing_timer = addtimer(CALLBACK(E, /datum/extension/execution/proc/start), 0, TIMER_STOPPABLE)
+	INVOKE_ASYNC(E, /datum/extension/execution/proc/start)
 
 	.= TRUE
 

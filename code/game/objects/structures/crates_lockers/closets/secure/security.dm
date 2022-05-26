@@ -65,7 +65,7 @@
 
 /obj/structure/closet/secure_closet/CSECO
 	name = "chief security officer's locker"
-	req_access = list(access_armory)
+	req_access = list(access_cseco)
 	icon_state = "sec1"
 	icon_closed = "sec"
 	icon_locked = "sec1"
@@ -76,6 +76,7 @@
 	return list(
 		new/datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack/security, /obj/item/weapon/storage/backpack/satchel_sec)),
 		new/datum/atom_creator/simple(/obj/item/weapon/storage/backpack/dufflebag/sec, 50),
+		/obj/item/weapon/rig/cseco,
 		/obj/item/clothing/under/deadspace/security/cseco,
 		/obj/item/clothing/suit/armor/pcsi,
 		/obj/item/clothing/head/helmet/pcsi,
@@ -88,6 +89,7 @@
 		/obj/item/weapon/storage/belt/holster/security,
 		/obj/item/weapon/gun/projectile/divet,
 		/obj/item/ammo_magazine/divet = 2,
+		/obj/item/ammo_magazine/divet/rb = 2,
 		/obj/item/weapon/reagent_containers/spray/pepper,
 		/obj/item/weapon/storage/box/holobadge,
 		/obj/item/weapon/melee/baton/loaded,
@@ -109,8 +111,8 @@
 
 /obj/structure/closet/secure_closet/SSO/WillContain()
 	return list(
-		new /datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack/security, /obj/item/weapon/storage/backpack/satchel_sec)),
-		new /datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack/dufflebag/sec, /obj/item/weapon/storage/backpack/messenger/sec)),
+		pick(list(/obj/item/weapon/storage/backpack/security, /obj/item/weapon/storage/backpack/satchel_sec)),
+		pick(list(/obj/item/weapon/storage/backpack/dufflebag/sec, /obj/item/weapon/storage/backpack/messenger/sec)),
 		/obj/item/clothing/under/deadspace/security,
 		/obj/item/clothing/suit/armor/pcsi,
 		/obj/item/clothing/head/helmet/pcsi,
@@ -125,13 +127,15 @@
 		/obj/item/weapon/storage/belt/holster/security,
 		/obj/item/weapon/gun/projectile/divet,
 		/obj/item/ammo_magazine/divet = 2,
+		/obj/item/ammo_magazine/divet/rb = 2,
 		/obj/item/weapon/reagent_containers/spray/pepper,
 		/obj/item/weapon/melee/baton/loaded,
 		/obj/item/taperoll/police,
 		/obj/item/device/hailer,
 		/obj/item/device/flash,
 		/obj/item/device/holowarrant,
-		/obj/item/device/flashlight/maglight
+		/obj/item/device/flashlight/maglight,
+		/obj/item/weapon/rig/marksman
 	)
 
 /obj/structure/closet/secure_closet/security
@@ -159,6 +163,7 @@
 		/obj/item/weapon/storage/belt/holster/security,
 		/obj/item/weapon/gun/projectile/divet,
 		/obj/item/ammo_magazine/divet = 2,
+		/obj/item/ammo_magazine/divet/rb = 2,
 		/obj/item/weapon/reagent_containers/spray/pepper,
 		/obj/item/weapon/melee/baton/loaded,
 		/obj/item/taperoll/police,
@@ -207,6 +212,12 @@
 		/obj/item/clothing/under/color/orange,
 		/obj/item/clothing/shoes/orange
 	)
+
+/obj/structure/closet/secure_closet/brig/evidence
+	name = "evidence locker"
+
+/obj/structure/closet/secure_closet/brig/evidence/WillContain()
+	return null
 
 /obj/structure/closet/secure_closet/courtroom
 	name = "courtroom locker"

@@ -16,9 +16,11 @@
 /datum/extension/updating/proc/Initialize()
 
 /datum/extension/updating/proc/update()
+	SIGNAL_HANDLER
 
 
 /datum/extension/updating/proc/schedule_update()
+	SIGNAL_HANDLER
 	if (update_timer)
 		return
 

@@ -21,7 +21,7 @@
 			increment_construction_stage()
 			return
 
-	if(istype(thing, /obj/item/weapon/tool/tape_roll) && construction_stage == 2)
+	if(isAdhesive(thing) && construction_stage == 2)
 		user.visible_message("<span class='notice'>\The [user] secures \the [src] together with \the [thing].</span>")
 		increment_construction_stage()
 		return

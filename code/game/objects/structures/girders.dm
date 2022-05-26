@@ -206,7 +206,7 @@
 			to_chat(user, "<span class='notice'>You dissasembled the girder!</span>")
 			dismantle()
 
-	else if(istype(W, /obj/item/weapon/tool/pickaxe/diamonddrill))
+	else if(W.get_tool_quality(QUALITY_DRILLING) >= 50)
 		to_chat(user, "<span class='notice'>You drill through the girder!</span>")
 		new /obj/item/remains/human(get_turf(src))
 		dismantle()

@@ -126,12 +126,10 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 	icon_state = "ghost"
 
 
-	if (ckey)
+	if(key)
 		message_necromorphs(SPAN_NOTICE("[key] has left the necromorph horde."))
 		set_necromorph(FALSE)
-	var/mob/dead/observer/ghost/ghost = ghostize(0)
 	qdel(src)
-	return ghost
 
 
 //Signals don't leave behind ghosts if they are clientless
@@ -334,7 +332,6 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 /mob/dead/observer/eye/signal/update_verbs()
 	.=..()
 	update_verb(/mob/proc/jump_to_shard, (SSnecromorph.shards.len > 0))	//Give us the verb to jump to shards, if there are any
-
 
 /*
 	Helper

@@ -7,16 +7,12 @@
 
 /datum/extension/deity_be_near/New(var/datum/holder, var/mob/living/deity/connect)
 	..()
-	GLOB.moved_event.register(holder,src, .proc/check_movement)
+	RegisterSignal(holder, COMSIG_MOVABLE_MOVED, .proc/check_movement)
 	connected_deity = connect
-	GLOB.destroyed_event.register(holder, src, .proc/dead_deity)
-
-/datum/extension/deity_be_near/Destroy()
-	GLOB.moved_event.unregister(holder,src)
-	GLOB.destroyed_event.unregister(holder, src)
-	. = ..()
+	RegisterSignal(holder, COMSIG_PARENT_QDELETING, .proc/dead_deity)
 
 /datum/extension/deity_be_near/proc/check_movement()
+	SIGNAL_HANDLER
 	var/obj/item/I = holder
 	if(!istype(I.loc, /mob/living))
 		return
@@ -35,6 +31,7 @@
 	return
 
 /datum/extension/deity_be_near/proc/dead_deity()
+	SIGNAL_HANDLER
 	var/obj/item/I = holder
 	I.visible_message("<span class='warning'>\The [holder]'s power fades!</span>")
 	qdel(src)

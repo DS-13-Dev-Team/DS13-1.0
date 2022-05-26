@@ -108,7 +108,7 @@ var/const/GHOST_IMAGE_ALL = ~GHOST_IMAGE_NONE
 			return
 		N.spawning = TRUE
 		N.close_spawn_windows()
-	var/mob/dead/observer/ghost/observer = new()
+	var/mob/dead/observer/ghost/observer = new(M)
 
 
 	SEND_SOUND(M, sound(null, repeat = 0, wait = 0, volume = 85, channel = GLOB.lobby_sound_channel))// MAD JAMS cant last forever yo
@@ -138,7 +138,8 @@ var/const/GHOST_IMAGE_ALL = ~GHOST_IMAGE_NONE
 	observer.SetName(observer.real_name)
 	if(!M.client.holder && !CONFIG_GET(flag/antag_hud_allowed))           // For new ghosts we remove the verb from even showing up if it's not allowed.
 		remove_verb(observer, /mob/dead/observer/ghost/verb/toggle_antagHUD)        // Poor guys, don't know what they are missing!
-	observer.key = M.key
+	QDEL_NULL(observer.mind)
+	M.mind.transfer_to(observer)
 	qdel(M)
 
 	return 1

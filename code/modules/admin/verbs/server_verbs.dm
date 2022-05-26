@@ -9,7 +9,7 @@
 	if(!SSticker?.mode)
 		return
 
-	if(tgui_alert("Are you sure you want to end the round?", "End Round", list("Yes", "No")) != "Yes")
+	if(tgui_alert(usr, "Are you sure you want to end the round?", "End Round", list("Yes", "No")) != "Yes")
 		return
 
 	var/winstate = input(usr, "What do you want the round end state to be?", "End Round") as null|anything in list("Custom", "Admin Intervention") + SSticker.mode.round_end_states //TO DO Change declare complitation
@@ -211,7 +211,6 @@
 		msg += " The round is still setting up, but the round will be started as soon as possible. You may abort this by trying to start early again."
 
 	SSticker.start_immediately = TRUE
-	SSvote.voted = TRUE
 	SSvote.reset()
 	log_admin("[key_name(usr)] [msg]")
 	message_admins("[ADMIN_TPMONTY(usr)] [msg]")
@@ -402,13 +401,14 @@
 
 	var/result = input(usr, "Select reboot method", "World Reboot", options[1]) as null|anything in options
 	if(result)
-		var/init_by = "Initiated by [usr.client.holder ? "Admin" : usr.key]."
+		var/reason = input(usr, "Type restart reason", "Restart Reason") as null|text
+		to_chat(world, SPAN_BOLDANNOUNCE("Initiated by [usr.client.holder ? "Admin" : usr.key]."))
 		switch(result)
 			if("Regular Restart")
 				if(!(isnull(usr.client.address) || (usr.client.address in localhost_addresses)))
 					if(tgui_alert(usr, "Are you sure you want to restart the server?","This server is live",list("Restart","Cancel")) != "Restart")
 						return FALSE
-				SSticker.Reboot(init_by, "admin reboot - by [usr.key]", 10)
+				SSticker.Reboot(reason, 10)
 			if("Regular Restart (with delay)")
 				var/delay = input("What delay should the restart have (in seconds)?", "Restart Delay", 5) as num|null
 				if(!delay)
@@ -416,15 +416,15 @@
 				if(!(isnull(usr.client.address) || (usr.client.address in localhost_addresses)))
 					if(tgui_alert(usr,"Are you sure you want to restart the server?","This server is live",list("Restart","Cancel")) != "Restart")
 						return FALSE
-				SSticker.Reboot(init_by, "admin reboot - by [usr.key]", delay * 10)
+				SSticker.Reboot(reason, delay * 10)
 			if("Hard Restart (No Delay, No Feeback Reason)")
-				to_chat(world, "<span class='infoplain'>World reboot - [init_by]</span>")
+				to_chat(world, "<span class='infoplain'>World reboot - Initiated by [usr.client.holder ? "Admin" : usr.key].</span>")
 				world.Reboot()
 			if("Hardest Restart (No actions, just reboot)")
-				to_chat(world, "<span class='infoplain'>Hard world reboot - [init_by]</span>")
+				to_chat(world, "<span class='infoplain'>Hard world reboot - Initiated by [usr.client.holder ? "Admin" : usr.key].</span>")
 				world.Reboot(fast_track = TRUE)
 			if("Server Restart (Kill and restart DD)")
-				to_chat(world, "<span class='infoplain'>Server restart - [init_by]</span>")
+				to_chat(world, "<span class='infoplain'>Server restart - Initiated by [usr.client.holder ? "Admin" : usr.key].</span>")
 				world.TgsEndProcess()
 
 /datum/admins/proc/toggleooc()

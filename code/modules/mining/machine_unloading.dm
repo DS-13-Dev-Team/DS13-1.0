@@ -50,20 +50,19 @@
 		if (src.output && src.input)
 			if (locate(/obj/structure/ore_box, input.loc))
 				var/obj/structure/ore_box/BOX = locate(/obj/structure/ore_box, input.loc)
-				var/i = 0
-				for (var/obj/item/weapon/ore/O in BOX.contents)
-					BOX.contents -= O
-					O.loc = output.loc
-					i++
-					if (i>=max_unloads_per_tick)
-						return
+				var/i = max_unloads_per_tick
+				for(var/obj/item/stack/ore/O in BOX.contents)
+					var/obj/item/stack/ore/splitted = O.split(i)
+					splitted.forceMove(output.loc)
+					i -= splitted.amount
+					if(i <= 0)
+						break
 			if (locate(/obj/item, input.loc))
 				var/obj/item/O
 				var/i
-				for (i = 0; i<10; i++)
+				for(i = 0 to 9)
 					O = locate(/obj/item, input.loc)
-					if (O)
-						O.loc = src.output.loc
-					else
-						return
+					if(!O)
+						break
+					O.forceMove(output.loc)
 	return

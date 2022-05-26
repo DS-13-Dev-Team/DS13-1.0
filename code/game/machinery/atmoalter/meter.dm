@@ -19,12 +19,13 @@
 /obj/machinery/meter/proc/set_target(atom/new_target)
 	clear_target()
 	target = new_target
-	GLOB.destroyed_event.register(target, src, .proc/clear_target)
+	RegisterSignal(target, COMSIG_PARENT_QDELETING, .proc/clear_target)
 
 /obj/machinery/meter/proc/clear_target()
+	SIGNAL_HANDLER
 	if(target)
-		GLOB.destroyed_event.unregister(target, src)
-		target = null	
+		UnregisterSignal(target, COMSIG_PARENT_QDELETING)
+		target = null
 
 /obj/machinery/meter/Destroy()
 	clear_target()

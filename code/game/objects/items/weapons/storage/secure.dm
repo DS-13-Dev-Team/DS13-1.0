@@ -109,6 +109,7 @@
 					src.code = null
 				else
 					src.code = "ERROR"
+					playsound(src, 'sound/machines/vending_denied.ogg', VOLUME_LOW)
 			else
 				if ((href_list["type"] == "R") && (src.emagged == 0) && (!src.l_setshort))
 					src.locked = 1
@@ -119,6 +120,7 @@
 					src.code += text("[]", href_list["type"])
 					if (length(src.code) > 5)
 						src.code = "ERROR"
+					playsound(src, 'sound/machines/vending_denied.ogg', VOLUME_LOW)
 			for(var/mob/M in viewers(1, src.loc))
 				if ((M.client && M.machine == src))
 					src.attack_self(M)
@@ -156,6 +158,7 @@
 	attack_hand(mob/user as mob)
 		if ((src.loc == user) && (src.locked == 1))
 			to_chat(usr, "<span class='warning'>[src] is locked and cannot be opened!</span>")
+			playsound(src, 'sound/machines/vending_denied.ogg', VOLUME_LOW)
 		else if ((src.loc == user) && (!src.locked))
 			src.open(usr)
 		else

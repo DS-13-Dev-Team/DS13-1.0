@@ -183,7 +183,7 @@
 	if (I || istype(W, /obj/item/weapon/spacecash))
 		attack_hand(user)
 		return
-	else if(istype(W, /obj/item/weapon/tool/screwdriver))
+	else if(isScrewdriver(W))
 		src.panel_open = !src.panel_open
 		to_chat(user, "You [src.panel_open ? "open" : "close"] the maintenance panel.")
 		src.overlays.Cut()
@@ -352,7 +352,6 @@
 		if(src.shock(user, 100))
 			return
 	if(!shot_down && user.a_intent == I_HURT)
-		admin_notice("entramos en el strike_machine")
 		user.strike_machine(src)
 		return
 	else if(shot_down && user.a_intent != I_HURT)
@@ -1005,7 +1004,10 @@
 	vend_delay = 14
 	req_access = list(access_security)
 	products = list(/obj/item/weapon/handcuffs = 8,
-					/obj/item/weapon/reagent_containers/food/snacks/donut/normal = 12,/obj/item/weapon/storage/box/evidence = 6, /obj/item/weapon/computer_hardware/hard_drive/portable/design/security = 3,
+					/obj/item/weapon/reagent_containers/food/snacks/donut/normal = 12,
+					/obj/item/weapon/storage/box/evidence = 6,
+					/obj/item/weapon/computer_hardware/hard_drive/portable/design/security = 3,
+					/obj/item/ammo_magazine/divet/rb = 8,
 					/obj/item/weapon/grenade/flashbang = 12)
 	contraband = list(/obj/item/clothing/glasses/sunglasses = 2,/obj/item/weapon/storage/box/donut = 2)
 

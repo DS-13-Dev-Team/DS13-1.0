@@ -366,8 +366,8 @@
 	release_type = RELEASE_DROP
 
 	//We need to register some listeners
-	GLOB.destroyed_event.register(subject, src, /obj/item/rig_module/kinesis/proc/release_grip)
-	GLOB.bump_event.register(subject, src, /obj/item/rig_module/kinesis/proc/subject_collision)
+	RegisterSignal(subject, COMSIG_PARENT_QDELETING, .proc/release_grip)
+	RegisterSignal(subject, COMSIG_MOVABLE_BUMP, .proc/subject_collision)
 
 	START_PROCESSING(SSfastprocess, src)
 
@@ -406,8 +406,7 @@
 /obj/item/rig_module/kinesis/proc/release()
 	. = subject
 	if (!QDELETED(subject))
-		GLOB.destroyed_event.unregister(subject, src, /obj/item/rig_module/kinesis/proc/release_grip)
-		GLOB.bump_event.unregister(subject, src, /obj/item/rig_module/kinesis/proc/subject_collision)
+		UnregisterSignal(subject, list(COMSIG_PARENT_QDELETING, COMSIG_MOVABLE_BUMP))
 		remove_extension(subject, /datum/extension/kinesis_gripped)
 		//Restore these
 		subject.pass_flags = cached_pass_flags
@@ -433,6 +432,7 @@
 //The default entrypoint, a wrapper for release
 //If the item is not in control range, it will be thrown based upon its velocity
 /obj/item/rig_module/kinesis/proc/release_grip()
+	SIGNAL_HANDLER
 	//Precondition: Velocity must exist.
 	var/speed = (velocity != null) ? velocity.Magnitude() : 0
 	if (speed > 1 && release_type == RELEASE_DROP)
@@ -746,6 +746,7 @@
 
 //We collide with a thing
 /obj/item/rig_module/kinesis/proc/subject_collision(var/atom/movable/mover, var/atom/obstacle)
+	SIGNAL_HANDLER
 	if (QDELETED(subject) || !isturf(subject.loc))
 		return
 

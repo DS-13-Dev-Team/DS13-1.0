@@ -34,8 +34,3 @@
 	// don't check then?
 	if(!glass)
 		updateVisibility(src, FALSE)
-
-/turf/ChangeTurf()
-	. = ..()
-	if(.)
-		updateVisibility(src, FALSE)

@@ -8,6 +8,7 @@
 	return pickweight(list(/obj/item/weapon/rig/security,
 				/obj/item/weapon/rig/engineering,
 				/obj/item/weapon/rig/mining,
+				/obj/item/weapon/rig/excavation,
 				/obj/item/weapon/rig/vintage = 0.5,
 				/obj/item/weapon/rig/advanced = 0.5,
 				/obj/item/weapon/rig/patrol = 0.5,

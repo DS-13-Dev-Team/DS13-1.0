@@ -142,7 +142,7 @@
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
 	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS
 	heat_protection = UPPER_TORSO|LOWER_TORSO|ARMS
-	armor = list(melee = 35, bullet = 35, laser = 0, energy = 0, bomb = 20, bio = 10, rad = 0)
+	armor = list(melee = 50, bullet = 30, laser = 50, energy = 30, bomb = 5, bio = 10, rad = 0)
 
 //Cargo
 /obj/item/clothing/suit/storage/toggle/cargo_jacket

@@ -40,7 +40,7 @@ GLOBAL_LIST_EMPTY(asset_datums)
 	/// list of assets for this datum in the form of:
 	/// asset_filename = asset_file. At runtime the asset_file will be
 	/// converted into a asset_cache datum.
-	var/assets = list()
+	var/list/assets = list()
 	/// Set to true to have this asset also be sent via the legacy browse_rsc
 	/// system when cdn transports are enabled?
 	var/legacy = FALSE
@@ -251,7 +251,7 @@ GLOBAL_LIST_EMPTY(asset_datums)
 
 /datum/asset/spritesheet/simple
 	_abstract = /datum/asset/spritesheet/simple
-	var/list/assets
+	var/list/assets = list()
 
 /datum/asset/spritesheet/simple/register()
 	for (var/key in assets)

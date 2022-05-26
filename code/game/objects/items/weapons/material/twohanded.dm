@@ -77,6 +77,7 @@
 	w_class = ITEM_SIZE_HUGE
 	slot_flags = SLOT_BACK
 	force_wielded = WEAPON_FORCE_ROBUST
+	tool_qualities = list(QUALITY_SAWING = 45)
 	attack_verb = list("attacked", "chopped", "cleaved", "torn", "cut")
 	attack_noun = list("attack", "slash", "chop", "slice", "tear", "rip", "dice", "cut")
 	applies_material_colour = 0

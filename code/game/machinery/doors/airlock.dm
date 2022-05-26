@@ -159,6 +159,23 @@ var/list/airlock_overlays = list()
 /obj/machinery/door/airlock/civilian
 	stripe_color = COLOR_CIVIE_GREEN
 
+/obj/machinery/door/airlock/civilian/tram
+	icon = 'icons/obj/doors/station/door_tram.dmi'
+	stripe_color = null
+	stripe_file = null
+	stripe_fill_file = null
+	bolts_file = null
+	deny_file = null
+	lights_file = null
+	welded_file = 'icons/obj/doors/hazard/welded.dmi'
+	emag_file = null
+	opacity = 0
+	lights = 0
+	open_sound_powered = "doorheavyopen"
+	open_sound_unpowered = "doorheavyopen"
+	close_sound_powered = "doorheavyclose"
+	close_sound_unpowered = "doorheavyclose"
+
 /obj/machinery/door/airlock/freezer
 	name = "Freezer Airlock"
 	stripe_color = COLOR_WHITE
@@ -1004,7 +1021,7 @@ About the new airlock wires panel:
 		cut_verb = "slicing"
 		cut_sound = "sparks"
 		cut_delay *= 0.66
-	else if(istype(item,/obj/item/weapon/tool/saw/circular))
+	else if(isSaw(item))
 		cut_verb = "sawing"
 		cut_sound = 'sound/weapons/circsawhit.ogg'
 		quality = QUALITY_SAWING

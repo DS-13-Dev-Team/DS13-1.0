@@ -27,8 +27,8 @@
 
 /mob/dead/new_player/Destroy()
 	GLOB.new_player_list -= src
-
-	return ..()
+	QDEL_NULL(panel)
+	.=..()
 
 /mob/dead/new_player/verb/new_player_panel()
 	set src = usr
@@ -444,7 +444,7 @@
 
 	if(mind)
 		mind.active = 0					//we wish to transfer the key manually
-		mind.original = new_character
+		mind.replace_original_mob(new_character)
 		if(client.prefs.memory)
 			mind.store_memory(client.prefs.memory)
 		if(client.prefs.relations.len)

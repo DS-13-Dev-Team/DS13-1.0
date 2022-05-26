@@ -7,34 +7,39 @@
 	name = "ore box"
 	desc = "A heavy box used for storing ore."
 	density = 1
-	var/last_update = 0
-	var/list/stored_ore = list()
 
-	var/max_contents = 150
+/obj/structure/ore_box/Destroy()
+	for(var/obj/item/stack/ore/ore as anything in contents)
+		ore.forceMove(loc)
+	.=..()
 
+/obj/structure/ore_box/proc/pick_up_ore(obj/item/stack/ore/ore)
+	for(var/obj/item/stack/ore/stored_ore in contents)
+		if(!istype(ore, stored_ore.type))
+			continue
+		ore.transfer_to(stored_ore)
+		break
+	if(!QDELING(ore))
+		ore.forceMove(src)
 
 /obj/structure/ore_box/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	if (istype(W, /obj/item/weapon/ore))
-		if (contents.len >= max_contents)
-			to_chat(user, "<span class='danger'>The ore box is full!</span>")
-			return
-		user.unEquip(W, src)
+	if(istype(W, /obj/item/stack/ore))
+		//Move it to null instead of ore box to prevent bugs
+		if(user.unEquip(W, null))
+			pick_up_ore(W)
 	else if (istype(W, /obj/item/weapon/storage))
-		if (contents.len >= max_contents)
-			to_chat(user, "<span class='danger'>The ore box is full!</span>")
-			return
 		var/obj/item/weapon/storage/S = W
 		S.hide_from(usr)
-		for(var/obj/item/weapon/ore/O in S.contents)
-			if (contents.len >= max_contents)
-				to_chat(user, "<span class='danger'>You filled the ore box, but there's still ore in the satchel.</span>")
-				return
+		var/list/new_ore = list()
+		for(var/obj/item/stack/ore/O in S.contents)
 			S.remove_from_storage(O, src, 1) //This will move the item to this item's contents
-
+			new_ore += O
 		S.finish_bulk_removal()
+		//Merge new ores with our contents
+		for(var/ore in new_ore)
+			pick_up_ore(ore)
 		to_chat(user, "<span class='notice'>You empty the satchel into the box.</span>")
 
-	update_ore_count()
 
 
 //A debug type that contains a bunch of randomly generated ores
@@ -44,7 +49,6 @@
 		var/ore_name = pick(GLOB.ore_data)
 		var/ore/ore_datum = GLOB.ore_data[ore_name]
 		new ore_datum.ore(src)
-	update_ore_count()
 
 //A debug type that contains one of each ore
 /obj/structure/ore_box/all/Initialize()
@@ -52,20 +56,6 @@
 	for (var/ore_name in GLOB.ore_data)
 		var/ore/ore_datum = GLOB.ore_data[ore_name]
 		new ore_datum.ore(src)
-		to_chat(world, "[ore_name] is worth [ore_datum.Value()] ")
-	update_ore_count()
-
-
-/obj/structure/ore_box/proc/update_ore_count()
-
-	stored_ore = list()
-
-	for(var/obj/item/weapon/ore/O in contents)
-
-		if(stored_ore[O.name])
-			stored_ore[O.name]++
-		else
-			stored_ore[O.name] = 1
 
 /obj/structure/ore_box/examine(mob/user)
 	. = ..(user)
@@ -83,15 +73,13 @@
 		to_chat(user, "It is empty.")
 		return
 
-	if(world.time > last_update + 10)
-		update_ore_count()
-		last_update = world.time
-
 	to_chat(user, "It holds:")
-	for(var/ore in stored_ore)
-		to_chat(user, "- [stored_ore[ore]] [ore]")
+	var/list/ores = list()
+	for(var/obj/item/stack/ore/ore in contents)
+		ores[ore.type] += ore.amount
+	for(var/obj/item/stack/ore/ore as anything in ores)
+		to_chat(user, "- [ores[ore]] [initial(ore.name)]")
 
-	to_chat(user, "It is [(contents.len / max_contents)*100]% full")
 	return
 
 
@@ -100,7 +88,7 @@
 	set category = "Object"
 	set src in view(1)
 
-	if(!istype(usr, /mob/living/carbon/human)) //Only living, intelligent creatures with hands can empty ore boxes.
+	if(!istype(usr, /mob/living/carbon/human) && usr.is_advanced_tool_user()) //Only living, intelligent creatures with hands can empty ore boxes.
 		to_chat(usr, "<span class='warning'>You are physically incapable of emptying the ore box.</span>")
 		return
 
@@ -117,17 +105,16 @@
 		to_chat(usr, "<span class='warning'>The ore box is empty</span>")
 		return
 
-	for (var/obj/item/weapon/ore/O in contents)
-		contents -= O
-		O.loc = src.loc
+	for (var/obj/item/stack/ore/O in contents)
+		O.forceMove(loc)
 	to_chat(usr, "<span class='notice'>You empty the ore box</span>")
 
 	return
 
 /obj/structure/ore_box/ex_act(severity, var/atom/epicentre)
 	if(severity == 1.0 || (severity < 3.0 && prob(50)))
-		for (var/obj/item/weapon/ore/O in contents)
-			O.loc = src.loc
+		for (var/obj/item/stack/ore/O in contents)
+			O.forceMove(loc)
 			O.ex_act(severity++, epicentre)
 		qdel(src)
 		return

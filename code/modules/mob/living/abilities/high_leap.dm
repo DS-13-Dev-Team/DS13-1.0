@@ -69,7 +69,7 @@
 	src.winddown_time = winddown_time
 	src.minimum_range = minimum_range
 	src.travel_speed = travel_speed
-	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/high_leap/proc/windup), 0, TIMER_STOPPABLE)
+	INVOKE_ASYNC(src, .proc/windup)
 
 
 

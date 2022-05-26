@@ -79,6 +79,12 @@ Magazine type definitions
 	icon_state = "apds"
 	ammo_type = /obj/item/ammo_casing/ls_slug/ap
 
+/obj/item/ammo_magazine/divet/rb
+	name = "divet magazine (RB)"
+	icon_state = "rbds"
+	ammo_type = /obj/item/ammo_casing/ls_slug/rb
+	max_ammo = 15
+
 /obj/item/ammo_magazine/divet/incendiary
 	name = "divet magazine (incendiary)"
 	icon_state = "icds"
@@ -99,6 +105,9 @@ Ammo casings for the mags
 
 /obj/item/ammo_casing/ls_slug/ap
 	projectile_type = /obj/item/projectile/bullet/ls_slug/ap
+
+/obj/item/ammo_casing/ls_slug/rb
+	projectile_type = /obj/item/projectile/bullet/ls_slug/rb
 
 /obj/item/ammo_casing/ls_slug/incendiary
 	projectile_type = /obj/item/projectile/bullet/ls_slug/incendiary
@@ -135,6 +144,17 @@ Projectile logic
 	penetration_modifier = 1.5
 	armor_penetration = 15
 	icon_state = "divet_ap"
+
+//Non lethal ammo
+/obj/item/projectile/bullet/ls_slug/rb
+	damage = 5
+	agony = 40
+	step_delay = DIVET_DELAY * 1.25
+	structure_damage_factor = 0
+	penetration_modifier = 0
+	embed_mult = 0
+	armor_penetration = 10
+	icon_state = "divet"
 
 //Mostly normal rounds with a little extra armor pen, but they also set you on fire
 /obj/item/projectile/bullet/ls_slug/incendiary

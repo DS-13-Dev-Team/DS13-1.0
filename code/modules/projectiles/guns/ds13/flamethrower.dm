@@ -492,9 +492,10 @@
 	var/range =	4
 	var/angle = 30
 
-/obj/item/weapon/gun/spray/update_all_stop()
-	stop_firing()
-	. = ..()
+/obj/item/weapon/gun/spray/update_all(force_state)
+	if(force_state == FALSE)
+		stop_firing()
+	.=..()
 
 //How long it will take to windup before
 /obj/item/weapon/gun/spray/proc/get_windup()
@@ -571,6 +572,7 @@
 	name = "fireball"
 	icon_state = "fireblast"
 	icon = 'icons/obj/projectiles.dmi'
+	ricochet_chance = 0
 
 	fire_sound = list('sound/weapons/guns/fire/torch_altfire_1.ogg',
 	'sound/weapons/guns/fire/torch_altfire_2.ogg',

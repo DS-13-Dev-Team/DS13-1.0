@@ -28,11 +28,11 @@
 	var/tag_pump_out_external
 	var/tag_pump_out_internal
 
-/datum/computer/file/embedded_program/airlock/New(var/obj/machinery/embedded_controller/M)
+/datum/computer/file/embedded_program/airlock/New(var/obj/machinery/embedded_controller/M, target_external_pressure = 0)
 	..(M)
 
 	memory["chamber_sensor_pressure"] = ONE_ATMOSPHERE
-	memory["external_sensor_pressure"] = 0					//assume vacuum for simple airlock controller
+	memory["external_sensor_pressure"] = target_external_pressure			//assume vacuum for simple airlock controller
 	memory["internal_sensor_pressure"] = ONE_ATMOSPHERE
 	memory["exterior_status"] = list(state = "closed", lock = "locked")		//assume closed and locked in case the doors dont report in
 	memory["interior_status"] = list(state = "closed", lock = "locked")

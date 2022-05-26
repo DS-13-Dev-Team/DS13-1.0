@@ -19,7 +19,7 @@
 	biomass_reclamation_time	=	7 MINUTES
 
 	icon_template = 'icons/mob/necromorph/slasher/fleshy.dmi'
-	damage_mask = 'icons/mob/necromorph/slasher/damage_mask.dmi'
+	damage_mask = 'icons/mob/necromorph/slasher/damage_mask.dmi' // This is badly implemented and should be fixed down the line.
 	icon_lying = "_lying"
 	pixel_offset_x = -8
 	single_icon = FALSE
@@ -140,6 +140,7 @@
 	mob_type = /mob/living/carbon/human/necromorph/slasher_enhanced
 	unarmed_types = list(/datum/unarmed_attack/blades/strong, /datum/unarmed_attack/bite/strong)
 	total_health = 250
+	burn_mod = 1.1
 	slowdown = 2.8
 	biomass = 125
 	require_total_biomass	=	BIOMASS_REQ_T2
@@ -148,6 +149,7 @@
 	mob_size	= MOB_LARGE
 	bump_flag 	= HEAVY
 	spawner_spawnable = FALSE
+	damage_mask = null
 
 	variants = null
 	outfits = null

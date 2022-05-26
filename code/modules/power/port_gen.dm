@@ -3,6 +3,7 @@
 	name = "Placeholder Generator"	//seriously, don't use this. It can't be anchored without VV magic.
 	desc = "A portable generator for emergency backup power."
 	icon = 'icons/obj/power.dmi'
+	clicksound = "button2"
 	icon_state = "portgen0"
 	density = 1
 	anchored = 0

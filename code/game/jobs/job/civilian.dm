@@ -171,3 +171,29 @@ datum/job/salvage/get_description_blurb()
 
 datum/job/bar/get_description_blurb()
 	return "You are the Bartender. Your job is to serve drinks to any crewmember that show up at your bar. You don't have a department head and are subordinate to the Captain and First Lieutenant."
+
+/datum/job/janitor
+	title = "Janitor"
+	abbreviation = "JTR"
+	department_flag = SRV
+	total_positions = 3
+	spawn_positions = 3
+	supervisors = "the First Lieutenant"
+	selection_color = "#6c0864"
+	minimal_player_age = 18
+	ideal_character_age = 20
+	starting_credits = 943
+
+	access = list(access_maint_tunnels, access_service)
+	outfit_type = /decl/hierarchy/outfit/job/service/janitor
+
+	max_skill = list(	SKILL_BOTANY	= SKILL_ADEPT,
+	                	SKILL_MEDICAL	= SKILL_ADEPT,
+	                	SKILL_ANATOMY	= SKILL_ADEPT,
+	                	SKILL_FORENSICS	= SKILL_ADEPT)
+	skill_points = 20
+
+	salary = 500	//Miners and civilians are underpaid plebs
+
+/datum/job/janitor/get_description_blurb()
+	return "You are the Janitor. Your job is to clean the ship from the mess created by the crew. You are subordinate to the First Lieutenant."

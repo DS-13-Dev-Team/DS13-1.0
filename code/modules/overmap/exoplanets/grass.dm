@@ -52,8 +52,8 @@
 
 /area/exoplanet/grass/play_ambience(var/mob/living/L)
 	..()
-	if(!L.ear_deaf && L.client && !L.client.ambience_playing)
-		L.client.ambience_playing = 1
+	if(!L.ear_deaf && L.client && !!L.client.vent_ambience_playing)
+		L.client.vent_ambience_playing = TRUE
 		L.playsound_local(get_turf(L),sound('sound/ambience/jungle.ogg', repeat = 1, wait = 0, volume = 25, channel = GLOB.ambience_sound_channel))
 
 /datum/random_map/noise/exoplanet/grass

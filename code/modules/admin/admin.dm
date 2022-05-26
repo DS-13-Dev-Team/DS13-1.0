@@ -761,15 +761,16 @@ var/global/floorIsLava = 0
 	new /obj/effect/vine(get_turf(usr), plant_controller.seeds[seedtype])
 	log_admin("[key_name(usr)] spawned [seedtype] vines at ([usr.x],[usr.y],[usr.z])")
 
-/datum/admins/proc/spawn_atom(var/object as text)
+/datum/admins/proc/spawn_atom(object as text)
 	set category = "Debug"
 	set desc = "(atom path) Spawn an atom"
 	set name = "Spawn"
 
-	if(!check_rights(R_SPAWN))	return
+	if(!check_rights(R_SPAWN) || !object)
+		return
 
 	var/list/types = typesof(/atom)
-	var/list/matches = new()
+	var/list/matches = list()
 
 	for(var/path in types)
 		if(findtext("[path]", object))
@@ -1126,8 +1127,9 @@ var/global/floorIsLava = 0
 			P.origin = replyorigin
 			P.destination = sendto
 
+			P.tgui_interact(owner.mob)
 
-datum/admins/var/obj/item/weapon/paper/admin/faxreply // var to hold fax replies in
+/datum/admins/var/obj/item/weapon/paper/admin/faxreply // var to hold fax replies in
 
 /datum/admins/proc/faxCallback(obj/item/weapon/paper/admin/P, var/obj/machinery/photocopier/faxmachine/destination)
 	var/customname = input(src.owner, "Pick a title for the report", "Title") as text|null

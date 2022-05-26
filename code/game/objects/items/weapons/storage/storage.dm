@@ -187,7 +187,6 @@
 		if(!M.unEquip(W))
 			return
 	W.forceMove(src)
-	W.on_enter_storage(src)
 	if(usr)
 		add_fingerprint(usr)
 
@@ -243,7 +242,6 @@
 		update_ui_after_item_removal()
 	if(W.maptext)
 		W.maptext = ""
-	W.on_exit_storage(src)
 	if(!NoUpdate)
 		update_icon()
 	return TRUE

@@ -107,9 +107,9 @@
 					if(locate(/obj/item/mecha_parts/mecha_equipment/tool/hydraulic_clamp) in chassis.equipment)
 						var/obj/structure/ore_box/ore_box = locate(/obj/structure/ore_box) in chassis:cargo
 						if(ore_box)
-							for(var/obj/item/weapon/ore/ore in range(chassis,1))
+							for(var/obj/item/stack/ore/ore in range(chassis,1))
 								if(get_dir(chassis,ore)&chassis.dir)
-									ore.Move(ore_box)
+									ore_box.pick_up_ore(ore)
 				else if(istype(target, /turf/simulated/floor/asteroid))
 					for(var/turf/simulated/floor/asteroid/M in range(chassis,1))
 						if(get_dir(chassis,M)&chassis.dir)
@@ -118,9 +118,9 @@
 					if(locate(/obj/item/mecha_parts/mecha_equipment/tool/hydraulic_clamp) in chassis.equipment)
 						var/obj/structure/ore_box/ore_box = locate(/obj/structure/ore_box) in chassis:cargo
 						if(ore_box)
-							for(var/obj/item/weapon/ore/ore in range(chassis,1))
+							for(var/obj/item/stack/ore/ore in range(chassis,1))
 								if(get_dir(chassis,ore)&chassis.dir)
-									ore.Move(ore_box)
+									ore_box.pick_up_ore(ore)
 				else if(target.loc == C)
 					log_message("Drilled through \the [target]")
 					target.ex_act(2, chassis)
@@ -160,9 +160,9 @@
 					if(locate(/obj/item/mecha_parts/mecha_equipment/tool/hydraulic_clamp) in chassis.equipment)
 						var/obj/structure/ore_box/ore_box = locate(/obj/structure/ore_box) in chassis:cargo
 						if(ore_box)
-							for(var/obj/item/weapon/ore/ore in range(chassis,1))
+							for(var/obj/item/stack/ore/ore in range(chassis,1))
 								if(get_dir(chassis,ore)&chassis.dir)
-									ore.Move(ore_box)
+									ore_box.pick_up_ore(ore)
 				else if(istype(target,/turf/simulated/floor/asteroid))
 					for(var/turf/simulated/floor/asteroid/M in range(target,1))
 						M.gets_dug()
@@ -170,8 +170,8 @@
 					if(locate(/obj/item/mecha_parts/mecha_equipment/tool/hydraulic_clamp) in chassis.equipment)
 						var/obj/structure/ore_box/ore_box = locate(/obj/structure/ore_box) in chassis:cargo
 						if(ore_box)
-							for(var/obj/item/weapon/ore/ore in range(target,1))
-								ore.Move(ore_box)
+							for(var/obj/item/stack/ore/ore in range(target,1))
+								ore_box.pick_up_ore(ore)
 				else if(target.loc == C)
 					log_message("Drilled through \the [target]")
 					target.ex_act(2, chassis)
@@ -212,7 +212,7 @@
 
 		playsound(chassis, 'sound/effects/extinguish.ogg', 75, 1, -3)
 
-		addtimer(CALLBACK(src, .proc/do_spray, target), 0)
+		INVOKE_ASYNC(src, .proc/do_spray, target)
 		return 1
 
 /obj/item/mecha_parts/mecha_equipment/tool/extinguisher/get_equip_info()

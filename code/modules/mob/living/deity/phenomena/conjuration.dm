@@ -49,7 +49,7 @@
 	var/obj/effect/portal/P = new(get_turf(a), null, 0)
 	P.failchance = 0
 	portals += P
-	GLOB.destroyed_event.register(P,src,/datum/phenomena/portals/proc/remove_portal)
+	RegisterSignal(P, COMSIG_PARENT_QDELETING, .proc/remove_portal)
 	if(portals.len > 2)
 		var/removed = portals[1]
 		remove_portal(removed)
@@ -61,8 +61,9 @@
 		P2.target = get_turf(P1)
 
 /datum/phenomena/portals/proc/remove_portal(var/portal)
+	SIGNAL_HANDLER
 	portals -= portal
-	GLOB.destroyed_event.unregister(portal,src)
+	UnregisterSignal(portal, COMSIG_PARENT_QDELETING)
 	var/turf/T = get_turf(portal)
 	for(var/obj/effect/portal/P in portals)
 		if(P.target == T)

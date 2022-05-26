@@ -47,7 +47,7 @@
 /datum/extension/auto_sound/New(var/mob/living/carbon/human/_user)
 	.=..()
 	user = _user
-	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/auto_sound/proc/start), 0, TIMER_STOPPABLE)
+	INVOKE_ASYNC(src, .proc/start)
 	start()
 
 
