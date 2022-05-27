@@ -240,3 +240,6 @@ export const getGasColor = gasId => {
     || gas.name.toLowerCase() === gasSearchString);
   return gas && gas.color;
 };
+
+/** 0.0 Degrees Celsius in Kelvin */
+export const T0C = 273.15;
