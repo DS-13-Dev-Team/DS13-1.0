@@ -7,6 +7,12 @@
 	cost = 10
 	containername = "\improper Replacement lights"
 
+/decl/hierarchy/supply_pack/engineering/coloredlights
+	name = "Colored replacement lights"
+	contains = list(/obj/item/weapon/storage/box/lights/tubes/random = 3)
+	cost = 15
+	containername = "\improper Colored replacement lights!"
+
 /decl/hierarchy/supply_pack/engineering/smes_circuit
 	name = "Superconducting Magnetic Energy Storage Unit Circuitry"
 	contains = list(/obj/item/weapon/circuitboard/smes)

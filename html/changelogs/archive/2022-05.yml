@@ -92,5 +92,13 @@
   - balance: Reduced infector's interaction range, it's 1 instead of 2.
   - balance: Reduced infector's view range from 10 to 7.
 2022-05-27:
+  Viz:
+  - rscadd: Added in bacon and bacon related items and recipes! There is now raw bacon,
+      bacon (cooked), bacon cheeseburger, deluxe bacon cheeseburger, bacon and eggs,
+      BLT, and a sliceable xl club sandwich.
+  - rscadd: Raw bacon now spawns in the meat fridge, and ordered from cargo as a 'Kitchen
+  - rscadd: Colored light tube boxes now orderable at cargo! Replace those broken
+      supply crate' or 'Bacon crate'
+      lights for STYLE!
   DTraitor:
   - bugfix: Ores won't disappear when moved to an ore box.
