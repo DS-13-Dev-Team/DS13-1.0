@@ -501,6 +501,14 @@ Botany:
 	build_path = /obj/item/weapon/tool/scalpel/advanced
 	price = 750
 
+/datum/design/item/surgery/scalpel_laser2
+	name = "Basic Laser Scalpel"
+	desc = "A scalpel augmented with a directed laser, for more precise cutting without blood entering the field. This one looks basic and could be improved."
+	id = "scalpel_laser2"
+	materials = list(MATERIAL_STEEL = 12500, MATERIAL_GLASS = 7500)
+	build_path = /obj/item/weapon/tool/scalpel/laser
+	price = 750
+
 /datum/design/item/surgery/scalpel_laser3
 	name = "Advanced Laser Scalpel"
 	desc = "A scalpel augmented with a directed laser, for more precise cutting without blood entering the field. This one looks to be the pinnacle of precision energy cutlery!"
