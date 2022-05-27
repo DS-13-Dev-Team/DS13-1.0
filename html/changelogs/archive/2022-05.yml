@@ -91,3 +91,6 @@
   DTraitor:
   - balance: Reduced infector's interaction range, it's 1 instead of 2.
   - balance: Reduced infector's view range from 10 to 7.
+2022-05-27:
+  DTraitor:
+  - bugfix: Ores won't disappear when moved to an ore box.
