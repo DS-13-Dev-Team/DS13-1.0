@@ -34,7 +34,7 @@
 
 /obj/item/device/boombox/dropped(mob/user)
 	.=..()
-	UnegisterSignal(user, COMSIG_MOVABLE_MOVED)
+	UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
 
 /obj/item/device/boombox/proc/on_holder_moved(mob/user, OldLoc, NewLoc)
 	SEND_SIGNAL(src, COMSIG_MOVABLE_MOVED, OldLoc, NewLoc)
