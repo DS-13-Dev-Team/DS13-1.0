@@ -194,10 +194,6 @@
 		return 0
 
 	var/mob/living/M = user
-	if(!firing && !safety() && world.time > last_safety_check + 5 MINUTES && !user.skill_check(SKILL_WEAPONS, SKILL_BASIC))
-		if(prob(30))
-			toggle_safety()
-			return 1
 	if(HULK in M.mutations)
 		to_chat(M, "<span class='danger'>Your fingers are much too large for the trigger guard!</span>")
 		return 0
