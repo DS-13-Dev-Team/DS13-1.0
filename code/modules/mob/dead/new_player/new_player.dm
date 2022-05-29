@@ -464,8 +464,6 @@
 
 		mind.transfer_to(new_character)					//won't transfer key since the mind is not active
 
-		client.prefs.copy_to_mind(new_character.mind)
-
 	new_character.SetName(real_name)
 	new_character.dna.ready_dna(new_character)
 	new_character.dna.b_type = client.prefs.b_type
@@ -485,10 +483,6 @@
 	new_character.regenerate_icons()
 
 	new_character.key = key		//Manually transfer the key to log them in
-
-	//Register that they've joined the round
-	character_spawned(new_character.mind)
-
 	return new_character
 
 /mob/dead/new_player/proc/ViewManifest()

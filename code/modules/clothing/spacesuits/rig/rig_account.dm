@@ -10,42 +10,19 @@
 /obj/item/weapon/rig
 	var/datum/money_account/account
 
-
 /obj/item/weapon/rig/proc/get_account()
-	RIG_ACCOUNT_CREATE
 	return account
 
-/obj/item/weapon/rig/proc/create_rig_account()
-
-
-
-/obj/item/weapon/rig/equipped(mob/living/carbon/human/user, slot)
-	.=..()
-	user.credits_changed()
-
-/obj/item/weapon/rig/dropped(mob/user)
-	.=..()
-	user.credits_changed()
-
 /obj/item/weapon/rig/proc/get_account_balance()
-	//We don't need to create the account for this if it doesn't exist yet
 	if (!account)
 		return 0
 	return account.money
 
 /obj/item/weapon/rig/proc/charge_to_rig_account(var/source, var/purpose, var/terminal_id, var/amount)
-	RIG_ACCOUNT_CREATE
-
 	var/datum/money_account/current_account = get_account()
-	charge_to_account(current_account.account_number, source, purpose, terminal_id, amount)
-	if (wearer)
-		wearer.credits_changed()
-	return TRUE
-
-
-
-/obj/item/weapon/rig/credits_recieved(var/balance, var/datum/source)
-	RIG_ACCOUNT_CREATE
+	if(current_account)
+		charge_to_account(current_account.account_number, source, purpose, terminal_id, amount)
+		return TRUE
 
 /obj/item/weapon/rig/proc/handle_credit_chip(W, user)
 	var/obj/item/weapon/spacecash/ewallet/chip = W
@@ -83,34 +60,21 @@
 		//Cant take more than the RIG has
 		amount = clamp(amount, 0, get_account_balance())
 
-
 	//Alright we are ready to do this
 	charge_to_rig_account(chip, (cashflow_direction == 1 ? "Deposit" : "Withdrawal"), chip, amount*cashflow_direction)
 	chip.modify_worth((-amount)*cashflow_direction)
 	to_chat(user, "Transferred [amount] credits [(cashflow_direction == 1 ? "to" : "from")] RIG")
 
-/*
-	Some Helpers
-*/
 /mob/proc/get_rig_balance()
 	return 0
 
-
 /mob/living/carbon/human/get_rig_balance()
-	if (wearing_rig)
+	if(wearing_rig)
 		return wearing_rig.get_account_balance()
-
 	return 0
 
-
-
-
 /mob/proc/get_rig_account()
-	return null
-
 
 /mob/living/carbon/human/get_rig_account()
-	if (wearing_rig)
+	if(wearing_rig)
 		return wearing_rig.get_account()
-
-	return null

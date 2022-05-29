@@ -56,9 +56,9 @@
 	Called whenever a new occupant enters
 */
 /obj/machinery/store/proc/update_occupant_data()
-	combined_store_data = GLOB.public_store_designs.Copy()
+	combined_store_data = GLOB.unlimited_store_designs.Copy()
 
-	for (var/datum/design/D in GLOB.limited_store_designs)
+	for(var/datum/design/D in GLOB.limited_store_designs)
 		if (D.PI?.can_buy_in_store(occupant))
 			LAZYADD(combined_store_data[D.category], list(D.ui_data))
 

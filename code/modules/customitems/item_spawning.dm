@@ -160,7 +160,7 @@
 	D.desc = description
 	D.build_path = item_path
 	D.price = store_cost
-	D.build_type = STORE
+	D.build_type = STORE_ROUNDSTART
 	D.starts_unlocked = TRUE
 	D.id = id
 	D.category = src.category

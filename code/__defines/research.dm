@@ -12,10 +12,11 @@
 #define TECH_ILLEGAL "earth gov"
 #define TECH_NECRO "marker"
 
-#define NONE		0
-#define IMPRINTER	1	//For circuits. Uses glass/chemicals.
-#define PROTOLATHE	2	//New stuff. Uses glass/metal/chemicals
-#define MECHFAB		4	//Mechfab
-#define CHASSIS		8	//For protolathe, but differently
-#define AUTOLATHE	16  //For autolathe
-#define STORE		32	//Purchasing in store
+#define NONE				0x1
+#define IMPRINTER			0x2		// For circuits. Uses glass/chemicals.
+#define PROTOLATHE			0x4		// New stuff. Uses glass/metal/chemicals
+#define MECHFAB				0x8		// Mechfab
+#define CHASSIS				0x10	// For protolathe, but differently
+#define AUTOLATHE			0x20	// For autolathe
+#define STORE_SCHEMATICS	0x40	// Bound to schematic, unlockable in store with said chematic
+#define STORE_ROUNDSTART	0x80	// Always available in store

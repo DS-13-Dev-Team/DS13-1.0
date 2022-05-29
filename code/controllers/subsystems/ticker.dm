@@ -102,7 +102,6 @@ SUBSYSTEM_DEF(ticker)
 			mode.process(wait * 0.1)
 
 			if(!roundend_check_paused && mode.check_finished(force_ending) || force_ending)
-				SSdatabase.handle_endround_schematics()
 				current_state = GAME_STATE_FINISHED
 				config.ooc_allowed = TRUE
 				config.dooc_allowed = TRUE
@@ -188,6 +187,8 @@ SUBSYSTEM_DEF(ticker)
 	log_world("Game start took [(world.timeofday - init_start) / 10]s")
 	round_start_time = world.time
 
+	GLOB.using_map.setup_economy()
+	load_store_database()
 	current_state = GAME_STATE_PLAYING
 	Master.SetRunLevel(RUNLEVEL_GAME)
 

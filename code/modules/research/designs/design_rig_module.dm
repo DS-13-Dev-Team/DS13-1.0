@@ -4,7 +4,7 @@
 	category = "Modules"
 	materials = list(MATERIAL_STEEL = 4000, "plastic" = 2500, MATERIAL_GLASS = 2000, MATERIAL_GOLD = 1000)
 	price = 2500
-	build_type = STORE
+	build_type = STORE_SCHEMATICS
 	store_transfer = TRUE
 
 /datum/design/item/rig_module/meson
@@ -98,7 +98,7 @@
 	name = "Flash"
 	desc = "A normal flash, mountable on a RIG."
 	id = "rig_flash"
-	build_type = PROTOLATHE | STORE
+	build_type = PROTOLATHE | STORE_SCHEMATICS
 	materials = list("plastic" = 1500, MATERIAL_STEEL = 1000, MATERIAL_GLASS = 500)
 	build_path = /obj/item/rig_module/device/flash
 
@@ -106,7 +106,7 @@
 	name = "Taser"
 	desc = "A taser, mountable on a RIG."
 	id = "rig_taser"
-	build_type = PROTOLATHE | STORE
+	build_type = PROTOLATHE | STORE_SCHEMATICS
 	materials = list(MATERIAL_STEEL = 4000, "plastic" = 2500, MATERIAL_GLASS = 2000, MATERIAL_GOLD = 1000)
 	build_path = /obj/item/rig_module/mounted/taser
 
@@ -132,37 +132,25 @@
 	materials = list(MATERIAL_STEEL = 3000, MATERIAL_GLASS = 3500, "plastic" = 2000)
 	build_path = /obj/item/rig_module/cooling_unit
 
-
-
 /datum/design/item/rig_module/kinesis
 	name = "G.R.I.P kinesis module"
-	build_type = STORE
+	build_type = STORE_SCHEMATICS
 	build_path = /obj/item/rig_module/kinesis
 
 /datum/design/item/rig_module/kinesis_adv
 	price = 5000
 	name = "G.R.I.P advanced kinesis module"
-	build_type = STORE
 	build_path = /obj/item/rig_module/kinesis/advanced
-
-
-
-
-
 
 /datum/design/item/rig_module/speedboost
 	name = "Femoral Exoskeleton"
-	build_type = STORE
 	build_path = /obj/item/rig_module/extension/speedboost
 
 /datum/design/item/rig_module/speedboost_adv
 	name = "Advanced Femoral Exoskeleton"
-	build_type = STORE
 	price = 5000
 	build_path = /obj/item/rig_module/extension/speedboost/advanced
 
-
 /datum/design/item/rig_module/adv_healthbar
 	name = "Vitals Monitor: Advanced"
-	build_type = STORE
 	build_path = /obj/item/rig_module/healthbar/advanced

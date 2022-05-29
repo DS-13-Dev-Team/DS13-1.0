@@ -208,12 +208,9 @@ other types of metals and chemistry for reagents).
 	if(!build_path)
 		return
 
-	if(!(build_type & STORE))
-		return
+	if((build_type & STORE_SCHEMATICS) || (build_type & STORE_ROUNDSTART))
+		return new build_path(store_ref)
 
-	var/atom/A = new build_path(store_ref)
-
-	return A
 
 /datum/design/autolathe
 	build_type = AUTOLATHE

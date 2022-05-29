@@ -1,190 +1,151 @@
 /obj/item/weapon/spacecash
-	name = "0 Credits"
-	desc = "It's worth 0 Credits."
-	gender = PLURAL
+	name = "credits"
+	desc = "It's worth something. Probably."
 	icon = 'icons/obj/items.dmi'
-	icon_state = "spacecash1"
-	opacity = 0
-	density = 0
-	anchored = 0.0
-	force = 1.0
-	throwforce = 1.0
-
+	icon_state = "spacecash"
+	force = 1
+	throw_speed = 1
 	throw_range = 2
 	w_class = ITEM_SIZE_TINY
-	var/access = list()
-	access = access_bridge
 	var/worth = 0
-	var/global/denominations = list(1000,500,200,100,50,20,10,1)
+	var/coin_icons = TRUE
 
 
-/obj/item/weapon/spacecash/proc/pay_into(var/cost, var/atom/target)
-	if (cost > worth)
-		return FALSE
+/obj/item/weapon/spacecash/minercash
+	name = "merits"
+	icon_state = "minercash"
+	coin_icons = FALSE
 
-	.=TRUE
-	worth -= cost
 
-	//Possible future TODO: Inform the target that it recieved credits
+/obj/item/weapon/spacecash/Destroy()
+	worth = 0
+	. = ..()
 
-	update_icon()
 
-/obj/item/weapon/spacecash/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/weapon/spacecash))
-		if(istype(W, /obj/item/weapon/spacecash/ewallet)) return 0
+/obj/item/weapon/spacecash/update_icon()
+	cut_overlays()
+	var/remaining_worth = worth
+	var/iteration = 0
+	var/coins_only = TRUE
+	var/list/coin_denominations = list(10, 5, 1)
+	var/list/banknote_denominations = list(1000, 500, 200, 100, 50, 20)
+	for(var/i in banknote_denominations)
+		while(remaining_worth >= i && iteration < 50)
+			remaining_worth -= i
+			iteration++
+			var/image/banknote = image('icons/obj/items.dmi', "[icon_state][i]")
+			var/matrix/M = matrix()
+			M.Translate(rand(-6, 6), rand(-4, 8))
+			banknote.transform = M
+			overlays += banknote
+			coins_only = FALSE
 
-		var/obj/item/weapon/spacecash/bundle/bundle
-		if(!istype(W, /obj/item/weapon/spacecash/bundle))
-			var/obj/item/weapon/spacecash/cash = W
-			bundle = new (src.loc)
-			bundle.worth += cash.worth
-			qdel(cash)
-		else //is bundle
-			bundle = W
-		bundle.worth += src.worth
-		bundle.update_icon()
-		if(istype(user, /mob/living/carbon/human))
-			var/mob/living/carbon/human/h_user = user
-			h_user.drop_from_inventory(bundle)
-			h_user.put_in_hands(bundle)
-		to_chat(user, "<span class='notice'>You add [src.worth] Credits worth of money to the bundles.<br>It holds [bundle.worth] Credits now.</span>")
+	if(remaining_worth)
+		for(var/i in coin_denominations)
+			while(remaining_worth >= i && iteration < 50)
+				remaining_worth -= i
+				iteration++
+				var/image/coin = image('icons/obj/items.dmi', "[icon_state][i]")
+				var/matrix/M = matrix()
+				M.Translate(rand(-6, 6), rand(-4, 8))
+				coin.transform = M
+				overlays += coin
+
+	if(coins_only && coin_icons)
+		if(worth == 1)
+			name = "coin"
+			desc = "A single credit."
+			gender = NEUTER
+		else
+			name = "coins"
+			desc = "Total of [worth] credits."
+			gender = PLURAL
+	else
+		name = "[worth] [initial(name)]" // 123 credits/merits
+		desc = "Cold hard cash."
+		gender = NEUTER
+
+
+/obj/item/weapon/spacecash/attackby(obj/item/weapon/spacecash/S, mob/living/carbon/human/H)
+	if(ispath(S.type, type))
+		worth += S.worth
+		update_icon()
+		to_chat(H, SPAN_NOTICE("You add [S.name] to the bundle.<br>It holds [name] now."))
+		H.unEquip(S)
+		qdel(S)
+
+
+/obj/item/weapon/spacecash/attack_self(mob/user)
+	var/amount = input(user, "How many credits do you want to take? (0 to [worth])", "Take Money", 20) as num
+	amount = round(CLAMP(amount, 0, worth))
+	if(!amount)
+		return
+
+	worth -= amount
+	if(!worth)
+		user.unEquip(src)
 		qdel(src)
 
-	else if(istype(W, /obj/item/weapon/gun/launcher/money))
-		var/obj/item/weapon/gun/launcher/money/L = W
-		L.absorb_cash(src, user)
+	var/obj/item/weapon/spacecash/S
+	if(istype(src, /obj/item/weapon/spacecash/minercash))
+		S = new /obj/item/weapon/spacecash/minercash(user.loc)
+	else
+		S = new(user.loc)
+	S.worth = amount
+	S.update_icon()
+	user.put_in_hands(S)
+	update_icon()
+
+
+/obj/item/weapon/spacecash/Initialize()
+	. = ..()
+	update_icon()
+
 
 /obj/item/weapon/spacecash/proc/getMoneyImages()
 	if(icon_state)
 		return list(icon_state)
 
-/obj/item/weapon/spacecash/bundle
-	name = "pile of credits"
-	icon_state = ""
-	desc = "They are worth 0 Credits."
-	worth = 0
 
-/obj/item/weapon/spacecash/bundle/getMoneyImages()
-	if(icon_state)
-		return list(icon_state)
-	. = list()
-	var/sum = src.worth
-	var/num = 0
-	for(var/i in denominations)
-		while(sum >= i && num < 50)
-			sum -= i
-			num++
-			. += "credits[i]"
-	if(num == 0) // Less than one thaler, let's just make it look like 1 for ease
-		. += "credits1"
-
-/obj/item/weapon/spacecash/bundle/update_icon()
-	overlays.Cut()
-	var/list/images = src.getMoneyImages()
-
-	for(var/A in images)
-		var/image/banknote = image('icons/obj/items.dmi', A)
-		var/matrix/M = matrix()
-		M.Translate(rand(-6, 6), rand(-4, 8))
-		M.Turn(pick(-45, -27.5, 0, 0, 0, 0, 0, 0, 0, 27.5, 45))
-		banknote.transform = M
-		src.overlays += banknote
-
-	src.desc = "They are worth [worth] Credits."
-	if(worth in denominations)
-		src.SetName("[worth] Credits")
-	else
-		src.SetName("pile of [worth] credits")
-
-	if(overlays.len <= 2)
-		w_class = ITEM_SIZE_TINY
-	else
-		w_class = ITEM_SIZE_SMALL
-
-/obj/item/weapon/spacecash/bundle/attack_self()
-	var/amount = input(usr, "How many Credits do you want to take? (0 to [src.worth])", "Take Money", 20) as num
-	amount = round(Clamp(amount, 0, src.worth))
-	if(amount==0) return 0
-
-	src.worth -= amount
-	src.update_icon()
-	if(amount in list(1000,500,200,100,50,20,1))
-		var/cashtype = text2path("/obj/item/weapon/spacecash/bundle/c[amount]")
-		var/obj/cash = new cashtype (usr.loc)
-		usr.put_in_hands(cash)
-	else
-		var/obj/item/weapon/spacecash/bundle/bundle = new (usr.loc)
-		bundle.worth = amount
-		bundle.update_icon()
-		usr.put_in_hands(bundle)
-	if(!worth)
-		qdel(src)
-
-/obj/item/weapon/spacecash/bundle/c1
-	name = "1 Credit"
-	icon_state = "spacecash1"
-	desc = "It's worth 1 credit."
+/obj/item/weapon/spacecash/c1
 	worth = 1
 
-/obj/item/weapon/spacecash/bundle/c10
-	name = "10 Credits"
-	icon_state = "spacecash10"
-	desc = "It's worth 10 Credits."
+/obj/item/weapon/spacecash/c10
 	worth = 10
 
-/obj/item/weapon/spacecash/bundle/c20
-	name = "20 Credits"
-	icon_state = "spacecash20"
-	desc = "It's worth 20 Credits."
+/obj/item/weapon/spacecash/c20
 	worth = 20
 
-/obj/item/weapon/spacecash/bundle/c50
-	name = "50 Credits"
-	icon_state = "spacecash50"
-	desc = "It's worth 50 Credits."
+/obj/item/weapon/spacecash/c50
 	worth = 50
 
-/obj/item/weapon/spacecash/bundle/c100
-	name = "100 Credits"
-	icon_state = "spacecash100"
-	desc = "It's worth 100 Credits."
+/obj/item/weapon/spacecash/c100
 	worth = 100
 
-/obj/item/weapon/spacecash/bundle/c200
-	name = "200 Credits"
-	icon_state = "spacecash200"
-	desc = "It's worth 200 Credits."
+/obj/item/weapon/spacecash/c200
 	worth = 200
 
-/obj/item/weapon/spacecash/bundle/c500
-	name = "500 Credits"
-	icon_state = "spacecash500"
-	desc = "It's worth 500 Credits."
+/obj/item/weapon/spacecash/c500
 	worth = 500
 
-/obj/item/weapon/spacecash/bundle/c1000
-	name = "1000 Credits"
-	icon_state = "spacecash1000"
-	desc = "It's worth 1000 Credits."
+/obj/item/weapon/spacecash/c1000
 	worth = 1000
 
-/obj/item/weapon/spacecash/bundle/c10000
-	name = "10000 Credits"
-	icon_state = "spacecash1000"
-	desc = "It's worth 10000 Credits."
+/obj/item/weapon/spacecash/c10000
 	worth = 10000
 
-proc/spawn_money(var/sum, spawnloc, mob/living/carbon/human/human_user as mob)
-	if(sum in list(1000,500,200,100,50,20,10,1))
-		var/cash_type = text2path("/obj/item/weapon/spacecash/bundle/c[sum]")
-		var/obj/cash = new cash_type (usr.loc)
-		if(ishuman(human_user) && !human_user.get_active_hand())
-			human_user.put_in_hands(cash)
-	else
-		var/obj/item/weapon/spacecash/bundle/bundle = new (spawnloc)
-		bundle.worth = sum
-		bundle.update_icon()
-		if (ishuman(human_user) && !human_user.get_active_hand())
-			human_user.put_in_hands(bundle)
-	return
 
+/proc/spawn_money(sum, spawnloc, mob/living/carbon/human/H)
+	var/obj/item/weapon/spacecash/S = new(spawnloc)
+	S.worth = sum
+	S.update_icon()
+	if(istype(H) && !H.get_active_hand())
+		H.put_in_hands(S)
+
+
+/proc/spawn_miner_money(sum, spawnloc, mob/living/carbon/human/H)
+	var/obj/item/weapon/spacecash/minercash/S = new(spawnloc)
+	S.worth = sum
+	S.update_icon()
+	if(istype(H) && !H.get_active_hand())
+		H.put_in_hands(S)
