@@ -4,7 +4,7 @@
 	desc = "Seperates the target necromorph from their controlling signal, causing them to become an inert vessel once more, that can be posessed by any other signal.<br>\
 	Good to use in cases of a necromorph player going AFK"
 	target_string = "A currently controlled necromorph vessel"
-	energy_cost = 50
+	energy_cost = 0
 	autotarget_range = 1
 
 	target_types = list(/mob/living)
