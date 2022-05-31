@@ -243,7 +243,7 @@ var/const/EXTRA_COST_FACTOR = 1.25
 
 /datum/autolathe/recipe/scalpel
 	name = "scalpel"
-	path = /obj/item/weapon/scalpel
+	path = /obj/item/weapon/tool/scalpel
 	category = "Medical"
 
 /datum/autolathe/recipe/circularsaw

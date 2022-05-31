@@ -498,22 +498,23 @@ Botany:
 	desc = "A scalpel augmented with a directed laser, for more precise cutting without blood entering the field. This one looks basic and could be improved."
 	id = "scalpel_laser1"
 	materials = list(MATERIAL_STEEL = 12500, MATERIAL_GLASS = 7500)
-	build_path = /obj/item/weapon/scalpel/laser1
+	build_path = /obj/item/weapon/tool/scalpel/advanced
 	price = 750
 
 /datum/design/item/surgery/scalpel_laser2
-	name = "Improved Laser Scalpel"
-	desc = "A scalpel augmented with a directed laser, for more precise cutting without blood entering the field. This one looks somewhat advanced."
+	name = "Basic Laser Scalpel"
+	desc = "A scalpel augmented with a directed laser, for more precise cutting without blood entering the field. This one looks basic and could be improved."
 	id = "scalpel_laser2"
-	materials = list(MATERIAL_STEEL = 12500, MATERIAL_GLASS = 7500, MATERIAL_SILVER = 2500)
-	build_path = /obj/item/weapon/scalpel/laser2
+	materials = list(MATERIAL_STEEL = 12500, MATERIAL_GLASS = 7500)
+	build_path = /obj/item/weapon/tool/scalpel/laser
+	price = 750
 
 /datum/design/item/surgery/scalpel_laser3
 	name = "Advanced Laser Scalpel"
 	desc = "A scalpel augmented with a directed laser, for more precise cutting without blood entering the field. This one looks to be the pinnacle of precision energy cutlery!"
 	id = "scalpel_laser3"
 	materials = list(MATERIAL_STEEL = 12500, MATERIAL_GLASS = 7500, MATERIAL_SILVER = 2000, MATERIAL_GOLD = 1500)
-	build_path = /obj/item/weapon/scalpel/laser3
+	build_path = /obj/item/weapon/tool/scalpel/laser
 	price = 1500
 
 /datum/design/item/surgery/scalpel_manager
@@ -521,7 +522,7 @@ Botany:
 	desc = "A true extension of the surgeon's body, this marvel instantly and completely prepares an incision allowing for the immediate commencement of therapeutic steps."
 	id = "scalpel_manager"
 	materials = list (MATERIAL_STEEL = 12500, MATERIAL_GLASS = 7500, MATERIAL_SILVER = 1500, MATERIAL_GOLD = 1500, MATERIAL_DIAMOND = 750)
-	build_path = /obj/item/weapon/scalpel/manager
+	build_path = /obj/item/weapon/tool/scalpel/manager
 	price = 2500
 
 /datum/design/item/beaker

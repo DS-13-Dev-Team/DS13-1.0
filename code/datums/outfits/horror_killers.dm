@@ -24,7 +24,7 @@
 	l_ear = /obj/item/device/radio/headset
 	suit = /obj/item/clothing/suit/apron
 	l_pocket = /obj/item/weapon/material/hatchet/tacknife
-	r_pocket = /obj/item/weapon/scalpel
+	r_pocket = /obj/item/weapon/tool/scalpel
 	r_hand = /obj/item/weapon/material/twohanded/fireaxe
 
 /decl/hierarchy/outfit/masked_killer/post_equip(var/mob/living/carbon/human/H)

@@ -15,7 +15,7 @@
 
 /obj/structure/ore_box/proc/pick_up_ore(obj/item/stack/ore/ore)
 	for(var/obj/item/stack/ore/stored_ore in contents)
-		if(!istype(ore, stored_ore.type))
+		if(!istype(ore, stored_ore.type) || stored_ore == ore)
 			continue
 		ore.transfer_to(stored_ore)
 		break

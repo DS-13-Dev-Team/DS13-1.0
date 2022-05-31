@@ -172,7 +172,7 @@
 					/obj/item/device/camera,
 					/obj/item/device/camera_film = 2,
 					/obj/item/weapon/autopsy_scanner,
-					/obj/item/weapon/scalpel,
+					/obj/item/weapon/tool/scalpel,
 					/obj/item/weapon/storage/box/masks,
 					/obj/item/weapon/storage/box/gloves,
 					/obj/item/weapon/pen)
@@ -219,16 +219,16 @@
 
 /decl/hierarchy/supply_pack/medical/surgery
 	name = "Surgery crate"
-	contains = list(/obj/item/weapon/cautery,
-					/obj/item/weapon/surgicaldrill,
+	contains = list(/obj/item/weapon/tool/cautery,
+					/obj/item/weapon/tool/surgicaldrill,
 					/obj/item/clothing/mask/breath/medical,
 					/obj/item/weapon/tank/anesthetic,
 					/obj/item/weapon/FixOVein,
-					/obj/item/weapon/hemostat,
-					/obj/item/weapon/scalpel,
+					/obj/item/weapon/tool/hemostat,
+					/obj/item/weapon/tool/scalpel,
 					/obj/item/weapon/bonegel,
-					/obj/item/weapon/retractor,
-					/obj/item/weapon/bonesetter,
+					/obj/item/weapon/tool/retractor,
+					/obj/item/weapon/tool/bonesetter,
 					/obj/item/weapon/tool/saw/circular)
 	cost = 25
 	containertype = /obj/structure/closet/crate/secure
