@@ -18,7 +18,7 @@ GLOBAL_DATUM(peng, /obj/item/weapon/peng)
 	icon = 'icons/obj/economy.dmi'
 
 	var/claimed = FALSE
-	force = 6	//Its pretty good to whack people with - Not anymore.
+	force = 6
 	throwforce = 8
 	w_class = ITEM_SIZE_HUGE //Cumbersome, just because
 	mass = 20
