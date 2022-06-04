@@ -1,5 +1,9 @@
 /obj/item/weapon/rig/cseco
+#ifdef MAP_ISHIMURA
 	name = "P.C.S.I Commander RIG"
+#else
+	name = "P-Sec Commander RIG"
+#endif
 	desc = "A lightweight and flexible armoured rig suit used by CEC shipboard security during crackdowns and for use in hazardous environments. This instance was designed specially for CSECO."
 	icon_state = "pcsi_riot_rig"
 	armor = list(melee = 70, bullet = 65, laser = 60, energy = 30, bomb = 75, bio = 100, rad = 60)

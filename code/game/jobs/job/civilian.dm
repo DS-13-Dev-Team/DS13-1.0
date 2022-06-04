@@ -15,9 +15,9 @@
 
 	min_skill = list(   SKILL_COOKING     = SKILL_ADEPT)
 	max_skill = list(	SKILL_BOTANY      = SKILL_EXPERT,
-	                    SKILL_MEDICAL     = SKILL_EXPERT,
-	                    SKILL_ANATOMY     = SKILL_ADEPT,
-	                    SKILL_FORENSICS   = SKILL_ADEPT)
+						SKILL_MEDICAL     = SKILL_EXPERT,
+						SKILL_ANATOMY     = SKILL_ADEPT,
+						SKILL_FORENSICS   = SKILL_ADEPT)
 	skill_points = 20
 
 	salary	= 500	//Miners and civilians are underpaid plebs
@@ -45,9 +45,9 @@ datum/job/bar/get_description_blurb()
 						SKILL_HAULING     = SKILL_BASIC)
 
 	max_skill = list(	SKILL_BOTANY      = SKILL_EXPERT,
-	                    SKILL_MEDICAL     = SKILL_EXPERT,
-	                    SKILL_ANATOMY     = SKILL_ADEPT,
-	                    SKILL_FORENSICS   = SKILL_ADEPT)
+						SKILL_MEDICAL     = SKILL_EXPERT,
+						SKILL_ANATOMY     = SKILL_ADEPT,
+						SKILL_FORENSICS   = SKILL_ADEPT)
 	skill_points = 20
 
 datum/job/line_cook/get_description_blurb()
@@ -71,14 +71,14 @@ datum/job/line_cook/get_description_blurb()
 	outfit_type = /decl/hierarchy/outfit/job/cargo/so
 
 	min_skill = list(   SKILL_HAULING     = SKILL_ADEPT,
-	                    SKILL_COMPUTER    = SKILL_ADEPT,
-	                    SKILL_COMBAT	  = SKILL_BASIC)
+						SKILL_COMPUTER    = SKILL_ADEPT,
+						SKILL_COMBAT	  = SKILL_BASIC)
 
 	max_skill = list(	SKILL_BOTANY      = SKILL_EXPERT,
-	                    SKILL_COOKING     = SKILL_EXPERT,
-	                    SKILL_MEDICAL     = SKILL_EXPERT,
-	                    SKILL_ANATOMY     = SKILL_ADEPT,
-	                    SKILL_FORENSICS   = SKILL_ADEPT)
+						SKILL_COOKING     = SKILL_EXPERT,
+						SKILL_MEDICAL     = SKILL_EXPERT,
+						SKILL_ANATOMY     = SKILL_ADEPT,
+						SKILL_FORENSICS   = SKILL_ADEPT)
 	skill_points = 20
 
 datum/job/so/get_description_blurb()
@@ -101,13 +101,13 @@ datum/job/so/get_description_blurb()
 	outfit_type = /decl/hierarchy/outfit/job/cargo/serviceman
 
 	min_skill = list(   SKILL_HAULING     = SKILL_EXPERT,
-	                    SKILL_COMPUTER    = SKILL_BASIC)
+						SKILL_COMPUTER    = SKILL_BASIC)
 
 	max_skill = list(	SKILL_BOTANY      = SKILL_EXPERT,
-	                    SKILL_COOKING     = SKILL_EXPERT,
-	                    SKILL_MEDICAL     = SKILL_EXPERT,
-	                    SKILL_ANATOMY     = SKILL_ADEPT,
-	                    SKILL_FORENSICS   = SKILL_ADEPT)
+						SKILL_COOKING     = SKILL_EXPERT,
+						SKILL_MEDICAL     = SKILL_EXPERT,
+						SKILL_ANATOMY     = SKILL_ADEPT,
+						SKILL_FORENSICS   = SKILL_ADEPT)
 	skill_points = 20
 
 datum/job/serviceman/get_description_blurb()
@@ -130,14 +130,14 @@ datum/job/serviceman/get_description_blurb()
 	outfit_type = /decl/hierarchy/outfit/job/cargo/serviceman
 
 	min_skill = list(   SKILL_CONSTRUCTION= SKILL_BASIC,
-	                    SKILL_ELECTRICAL  = SKILL_BASIC,
-	                    SKILL_EVA 		  = SKILL_BASIC)
+						SKILL_ELECTRICAL  = SKILL_BASIC,
+						SKILL_EVA 		  = SKILL_BASIC)
 
 	max_skill = list(	SKILL_BOTANY      = SKILL_EXPERT,
-	                    SKILL_COOKING     = SKILL_EXPERT,
-	                    SKILL_MEDICAL     = SKILL_EXPERT,
-	                    SKILL_ANATOMY     = SKILL_ADEPT,
-	                    SKILL_FORENSICS   = SKILL_ADEPT)
+						SKILL_COOKING     = SKILL_EXPERT,
+						SKILL_MEDICAL     = SKILL_EXPERT,
+						SKILL_ANATOMY     = SKILL_ADEPT,
+						SKILL_FORENSICS   = SKILL_ADEPT)
 	skill_points = 15
 
 datum/job/salvage/get_description_blurb()
@@ -162,9 +162,9 @@ datum/job/salvage/get_description_blurb()
 
 	min_skill = list(   SKILL_BOTANY 	  = SKILL_EXPERT)
 	max_skill = list(   SKILL_COOKING     = SKILL_EXPERT,
-	                    SKILL_MEDICAL     = SKILL_EXPERT,
-	                    SKILL_ANATOMY     = SKILL_ADEPT,
-	                    SKILL_FORENSICS   = SKILL_ADEPT)
+						SKILL_MEDICAL     = SKILL_EXPERT,
+						SKILL_ANATOMY     = SKILL_ADEPT,
+						SKILL_FORENSICS   = SKILL_ADEPT)
 	skill_points = 20
 
 	salary = SALARY_SKILLED
@@ -188,12 +188,40 @@ datum/job/bar/get_description_blurb()
 	outfit_type = /decl/hierarchy/outfit/job/service/janitor
 
 	max_skill = list(	SKILL_BOTANY	= SKILL_ADEPT,
-	                	SKILL_MEDICAL	= SKILL_ADEPT,
-	                	SKILL_ANATOMY	= SKILL_ADEPT,
-	                	SKILL_FORENSICS	= SKILL_ADEPT)
+						SKILL_MEDICAL	= SKILL_ADEPT,
+						SKILL_ANATOMY	= SKILL_ADEPT,
+						SKILL_FORENSICS	= SKILL_ADEPT)
 	skill_points = 20
 
 	salary = 500	//Miners and civilians are underpaid plebs
 
 /datum/job/janitor/get_description_blurb()
 	return "You are the Janitor. Your job is to clean the ship from the mess created by the crew. You are subordinate to the First Lieutenant."
+
+#ifndef MAP_ISHIMURA
+/datum/job/chaplain
+	title = "Unitologist Chaplain"
+	abbreviation = "CHP"
+	department_flag = CIV
+	total_positions = 1
+	spawn_positions = 1
+	supervisors = "the First Lieutenant"
+	selection_color = "#ac0e00"
+	minimal_player_age = 18
+	ideal_character_age = 30
+	starting_credits = 943
+
+	access = list(access_maint_tunnels, access_chaplain)
+	outfit_type = /decl/hierarchy/outfit/job/service/janitor
+
+	max_skill = list(	SKILL_BOTANY	= SKILL_ADEPT,
+						SKILL_MEDICAL	= SKILL_ADEPT,
+						SKILL_ANATOMY	= SKILL_ADEPT,
+						SKILL_FORENSICS	= SKILL_ADEPT)
+	skill_points = 24
+
+	salary = 700 //Church pays you more than CEC to miners and civs...
+
+/datum/job/chaplain/get_description_blurb()
+	return "You are the Chaplain of the Unitologist Church. Your job is to carry faith in the Marker. You are subordinate to the First Lieutenant."
+#endif

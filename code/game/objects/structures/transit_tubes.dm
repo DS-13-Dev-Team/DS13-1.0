@@ -106,7 +106,7 @@
 
 
 /obj/structure/transit_tube/station/attack_hand(mob/user as mob)
-	if(!pod_moving)
+	if(!pod_moving && user.is_advanced_tool_user())
 		for(var/obj/structure/transit_tube_pod/pod in loc)
 			if(!pod.moving && (pod.dir in directions()))
 				if(icon_state == "closed")
@@ -114,8 +114,6 @@
 
 				else if(icon_state == "open")
 					close_animation()
-
-
 
 /obj/structure/transit_tube/station/proc/open_animation()
 	if(icon_state == "closed")

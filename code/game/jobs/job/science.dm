@@ -6,7 +6,11 @@
 	department_flag = COM|SCI
 	total_positions = 1
 	spawn_positions = 1
+#ifdef MAP_ISHIMURA
 	supervisors = "the Captain"
+#else
+	supervisors = "the Colony Director"
+#endif
 	selection_color = "#ad6bad"
 	req_admin_notify = 1
 	minimal_player_age = 18
@@ -26,17 +30,21 @@
 	min_skill = list(   SKILL_ANATOMY     = SKILL_BASIC,
 						SKILL_MEDICAL	  = SKILL_ADEPT,
 						SKILL_COMPUTER	  = SKILL_ADEPT,
-	                    SKILL_DEVICES	  = SKILL_BASIC)
+						SKILL_DEVICES	  = SKILL_BASIC)
 
 	max_skill = list(   SKILL_BOTANY      = SKILL_EXPERT,
-	                    SKILL_COOKING     = SKILL_EXPERT,
-	                    SKILL_MEDICAL     = SKILL_EXPERT,
-	                    SKILL_ANATOMY     = SKILL_ADEPT,
-	                    SKILL_FORENSICS   = SKILL_ADEPT)
+						SKILL_COOKING     = SKILL_EXPERT,
+						SKILL_MEDICAL     = SKILL_EXPERT,
+						SKILL_ANATOMY     = SKILL_ADEPT,
+						SKILL_FORENSICS   = SKILL_ADEPT)
 	skill_points = 20
 
 datum/job/cscio/get_description_blurb()
+#ifdef MAP_ISHIMURA
 	return "You are the Chief Science Officer. You are in charge of the research department. Your job is to direct your assistants, do science, and further the scientific field. You are subordinate to the Captain and First Lieutenant."
+#else
+	return "You are the Chief Science Officer. You are in charge of the research department. Your job is to direct your assistants, do science, and further the scientific field. You are subordinate to the Colony Director and First Lieutenant."
+#endif
 
 /datum/job/ra
 	title = "Research Assistant"
@@ -53,7 +61,11 @@ datum/job/cscio/get_description_blurb()
 
 	salary = SALARY_EDUCATED
 
+	#ifdef MAP_ISHIMURA
 	access = list(access_research, access_medical, access_maint_tunnels)
+	#else
+	access = list(access_research, access_maint_tunnels)
+	#endif
 
 	//This applies to all research
 	necro_conversion_options = list(SPECIES_NECROMORPH_DIVIDER = 3)
@@ -63,13 +75,13 @@ datum/job/cscio/get_description_blurb()
 	min_skill = list(   SKILL_ANATOMY     = SKILL_BASIC,
 						SKILL_MEDICAL	  = SKILL_BASIC,
 						SKILL_COMPUTER	  = SKILL_ADEPT,
-	                    SKILL_DEVICES	  = SKILL_BASIC)
+						SKILL_DEVICES	  = SKILL_BASIC)
 
 	max_skill = list(   SKILL_BOTANY      = SKILL_EXPERT,
-	                    SKILL_COOKING     = SKILL_EXPERT,
-	                    SKILL_MEDICAL     = SKILL_EXPERT,
-	                    SKILL_ANATOMY     = SKILL_ADEPT,
-	                    SKILL_FORENSICS   = SKILL_ADEPT)
+						SKILL_COOKING     = SKILL_EXPERT,
+						SKILL_MEDICAL     = SKILL_EXPERT,
+						SKILL_ANATOMY     = SKILL_ADEPT,
+						SKILL_FORENSICS   = SKILL_ADEPT)
 	skill_points = 20
 
 datum/job/ra/get_description_blurb()

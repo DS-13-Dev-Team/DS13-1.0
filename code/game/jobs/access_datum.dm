@@ -93,7 +93,17 @@
 	desc = "External Airlocks"
 	region = ACCESS_REGION_ENGINEERING
 
+/var/const/access_chaplain = 16
+/datum/access/chaplain
+	id = access_chaplain
+	desc = "Unitology Church"
+	access_type = ACCESS_REGION_GENERAL
 
+/var/const/access_psychologist = 17
+/datum/access/psychologist
+	id = access_psychologist
+	desc = "Medical"
+	access_type = ACCESS_REGION_MEDBAY
 
 
 /**********************

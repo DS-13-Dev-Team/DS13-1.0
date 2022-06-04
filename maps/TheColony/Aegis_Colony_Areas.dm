@@ -654,7 +654,7 @@ area/mining_colony/interior/mining/hallway
 
 // Underground Levels of the colony, mining, morgue, maint tunnels and such
 
-/area/mining_colony/lower/
+/area/mining_colony/lower
 	name = "\improper Aegis Lower Level"
 	icon_state = "aegis"
 	sound_env = ASTEROID

@@ -1,3 +1,21 @@
+/datum/shuttle/autodock/ferry/supply/drone
+	name = "Supply Drone"
+	location = 1
+	warmup_time = 10
+	shuttle_area = /area/supply/dock
+	waypoint_offsite = "supply_elevator_start"
+	waypoint_station = "supply_elevator_up"
+
+/obj/effect/shuttle_landmark/supply/start
+	name = "Below Deck"
+	landmark_tag = "supply_elevator_start"
+
+/obj/effect/shuttle_landmark/supply/ishimura
+	name = "Cargo Bay"
+	landmark_tag = "supply_elevator_up"
+	base_area = /area/mining_colony/interior/cargo/logistics
+	base_turf = /turf/simulated/floor/plating
+
 /datum/shuttle/autodock/ferry/escape1
 	name = "Escape Shuttle"
 	warmup_time = 5
@@ -50,8 +68,6 @@
 	name = "\improper Escape Shuttle"
 	icon_state = "shuttlered"
 
-//////// ERT SHUTTLES \\\\\\\\
-
 /datum/shuttle/autodock/multi/antag/deliverance
 	name = "Deliverance"
 	warmup_time = 10
@@ -63,7 +79,6 @@
 	shuttle_area = /area/ERT/deliverance
 	current_location = "deliverance_start"
 	landmark_transition = "deliverance_transition"
-
 
 /obj/effect/shuttle_landmark/deliverance/start
 	name = "Space"
@@ -90,7 +105,6 @@
 	current_location = "kellion_start"
 	landmark_transition = "kellion_transition"
 
-
 /obj/effect/shuttle_landmark/kellion/start
 	name = "Space"
 	landmark_tag = "kellion_start"
@@ -116,7 +130,6 @@
 	current_location = "valor_start"
 	landmark_transition = "valor_transition"
 
-
 /obj/effect/shuttle_landmark/valor/start
 	name = "Space"
 	landmark_tag = "valor_start"
@@ -130,25 +143,6 @@
 	name = "Ishimura Hangar #1"
 	landmark_tag = "valor_landing"
 	base_turf = /turf/simulated/floor/plating
-
-// Tram //
-
-/datum/shuttle/autodock/multi/tram
-	name = "Tram"
-	warmup_time = 10
-	destination_tags = list(
-		"nav_forwardships",
-		"nav_amidships",
-		"nav_aftships"
-		)
-	shuttle_area = /area/shuttle/tram
-	current_location = "nav_forwardships"
-	sound_takeoff = 'sound/effects/tramdepart.ogg'
-	sound_arrival = 'sound/effects/tramarrive.ogg'
-
-//	landmark_transition = "nav_tramtrans"
-
-// Something else. //
 
 /obj/effect/shuttle_landmark/valor/landing2
 	name = "Evacuation Site - Alpha #2"
