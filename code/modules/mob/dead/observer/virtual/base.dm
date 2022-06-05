@@ -7,7 +7,6 @@ var/list/all_virtual_listeners = list()
 	sight = SEE_SELF
 
 	virtual_mob = null
-	no_z_overlay = TRUE
 
 	var/atom/movable/host
 	var/host_type = /atom/movable

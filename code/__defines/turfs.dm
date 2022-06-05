@@ -13,7 +13,7 @@
 #define TURF_HIDES_THINGS				4096
 #define TURF_CAN_HAVE_RANDOM_BORDER		8192
 #define TURF_IS_WET						16384
-
+#define TURF_PASS_ATMOS_Z				32768
 
 //Used for floor/wall smoothing
 #define SMOOTH_NONE 0	//Smooth only with itself

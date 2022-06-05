@@ -97,8 +97,9 @@
 			M.show_message(blind_message, AUDIBLE_MESSAGE)
 			continue
 	//Multiz, have shadow do same
-	if(bound_overlay)
-		bound_overlay.visible_message(message, blind_message, range, checkghosts)
+	var/turf/above = GetAbove(src)
+	if(isopenspace(above))
+		above.visible_message(message, blind_message, range, checkghosts)
 
 // Show a message to all mobs and objects in earshot of this one
 // This would be for audible actions by the src mob

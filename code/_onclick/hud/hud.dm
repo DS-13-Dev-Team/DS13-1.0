@@ -82,7 +82,7 @@
 
 	ability_master = new /atom/movable/screen/movable/ability_master(null,mymob)
 
-	for(var/mytype in subtypesof(/atom/movable/screen/plane_master))
+	for(var/mytype in subtypesof(/atom/movable/screen/plane_master)-/atom/movable/screen/plane_master/rendering_plate)
 		var/atom/movable/screen/plane_master/instance = new mytype()
 		plane_masters["[instance.plane]"] = instance
 		instance.backdrop(mymob)
@@ -132,6 +132,8 @@
 	QDEL_LIST(infodisplay)
 	QDEL_LIST(hotkeybuttons)
 	QDEL_LIST_ASSOC_VAL(inv_slots)
+	QDEL_LIST_ASSOC_VAL(plane_masters)
+	QDEL_LIST_ASSOC_VAL(plane_master_controllers)
 
 	mymob = null
 
@@ -240,7 +242,19 @@
 	screenmob.update_action_buttons()
 	screenmob.reload_fullscreens()
 
+	if(!viewmob)
+		plane_masters_update()
+	else if(viewmob.hud_used)
+		viewmob.hud_used.plane_masters_update()
+
 	return TRUE
+
+/datum/hud/proc/plane_masters_update()
+	// Plane masters are always shown to OUR mob, never to observers
+	for(var/thing in plane_masters)
+		var/atom/movable/screen/plane_master/PM = plane_masters[thing]
+		PM.backdrop(mymob)
+		mymob.client.screen += PM
 
 /datum/hud/proc/update_locked_slots()
 	return

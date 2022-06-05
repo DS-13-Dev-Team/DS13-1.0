@@ -75,7 +75,12 @@ What is the naming convention for planes or layers?
 	#define DEBRIS_LAYER 1
 	#define DUST_LAYER 2
 
+#define OPENSPACE_PLANE -9 //Openspace plane below all turfs
+#define OPENSPACE_BACKDROP_PLANE -8 //Black square just over openspace plane to guaranteed cover all in openspace turf
+	#define OPENSPACE_LAYER 600 //Openspace layer over all
+
 #define FLOOR_PLANE						-7
+#define GAME_PLANE						-6
 
 #define DEFAULT_PLANE                   -4
 	#define PLATING_LAYER               1
@@ -172,6 +177,7 @@ What is the naming convention for planes or layers?
 
 #define BLACKNESS_PLANE					0 //To keep from conflicts with SEE_BLACKNESS internals
 
+#define AREA_PLANE						60
 #define MASSIVE_OBJ_PLANE				70
 #define OBSERVER_PLANE					80 // For observers and ghosts
 #define POINT_PLANE						90
@@ -211,8 +217,8 @@ What is the naming convention for planes or layers?
 	#define HUD_ABOVE_ITEM_LAYER		3
 	#define HUD_TEXT_LAYER				4
 
-/atom
-	plane = DEFAULT_PLANE
+#define ABOVE_HUD_PLANE 1100
+	#define ABOVE_HUD_LAYER 1
 
 /image/proc/plating_decal_layerise()
 	plane = DEFAULT_PLANE
@@ -223,8 +229,8 @@ What is the naming convention for planes or layers?
 	layer = DECAL_LAYER
 
 /atom/proc/hud_layerise()
-	plane = HUD_PLANE
-	layer = HUD_ITEM_LAYER
+	plane = ABOVE_HUD_PLANE
+	layer = ABOVE_HUD_LAYER
 
 ///Plane master controller keys
 #define PLANE_MASTERS_GAME "plane_masters_game"

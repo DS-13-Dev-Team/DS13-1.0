@@ -30,9 +30,10 @@
 	charge_costs = list(500)
 	stacktype = /obj/item/stack/rods
 
-/obj/item/stack/rods/New()
-	..()
+/obj/item/stack/rods/Initialize()
+	.=..()
 	update_icon()
+	AddElement(/datum/element/openspace_item_click_handler)
 
 /obj/item/stack/rods/attackby(obj/item/W as obj, mob/user as mob)
 	if(isWelder(W))

@@ -2,7 +2,6 @@
 	name = "plating"
 	icon = 'icons/turf/flooring/plating.dmi'
 	icon_state = "plating"
-	permit_ao = TRUE
 
 	// Damage to flooring.
 	var/broken

@@ -1,20 +1,17 @@
 /turf/space
 	plane = SPACE_PLANE
 	icon = 'icons/turf/space.dmi'
-
+	//when this be added to vis_contents of something it be associated with something on clicking, important for visualisation of turf in openspace and interraction with openspace that show you turf.
+	vis_flags = VIS_INHERIT_ID
 	name = "\proper space"
 	icon_state = "default"
 	dynamic_lighting = 0
 	temperature = T20C
 	thermal_conductivity = OPEN_HEAT_TRANSFER_COEFFICIENT
 	var/static/list/dust_cache
-	permit_ao = FALSE
 
 	is_hole = TRUE
 	explosion_resistance = 0.5 //Impedes blasts less than any other tile, though not zero
-
-	z_eventually_space = TRUE
-
 	var/solid_below
 
 /turf/space/proc/build_dust_cache()
@@ -49,14 +46,6 @@
 		return
 
 	return INITIALIZE_HINT_LATELOAD // oh no! we need to switch to being a different kind of turf!
-
-/turf/space/Destroy()
-	// Cleanup cached z_eventually_space values above us.
-	if (above)
-		var/turf/T = src
-		while ((T = GetAbove(T)))
-			T.z_eventually_space = FALSE
-	return ..()
 
 /turf/space/LateInitialize()
 	if(GLOB.using_map.base_floor_area)

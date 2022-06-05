@@ -28,3 +28,85 @@
 	SHOULD_CALL_PARENT(TRUE)
 	if(!isnull(render_relay_plane))
 		relay_render_to_plane(mymob, render_relay_plane)
+
+/atom/movable/screen/plane_master/openspace_backdrop
+	name = "open space backdrop plane master"
+	plane = OPENSPACE_BACKDROP_PLANE
+	appearance_flags = PLANE_MASTER
+	blend_mode = BLEND_MULTIPLY
+	alpha = 255
+
+/atom/movable/screen/plane_master/openspace
+	name = "open space plane master"
+	plane = OPENSPACE_PLANE
+	appearance_flags = PLANE_MASTER
+
+/atom/movable/screen/plane_master/openspace/Initialize(mapload)
+	.=..()
+	add_filter("z_level_blur", 1, list(type = "blur", size = 0.75))
+	add_filter("first_stage_openspace", 1, drop_shadow_filter(color = "#04080FAA", size = -10))
+	add_filter("second_stage_openspace", 2, drop_shadow_filter(color = "#04080FAA", size = -15))
+	add_filter("third_stage_openspace", 3, drop_shadow_filter(color = "#04080FAA", size = -20))
+	add_filter("fourth_stage_openspace", 4, drop_shadow_filter(color = "#04080FAA", size = -25))
+	add_filter("fifth_stage_openspace", 5, drop_shadow_filter(color = "#04080FAA", size = -30))
+
+///Contains just the floor
+/atom/movable/screen/plane_master/floor
+	name = "floor plane master"
+	plane = FLOOR_PLANE
+	appearance_flags = PLANE_MASTER
+	blend_mode = BLEND_OVERLAY
+	render_relay_plane = RENDER_PLANE_GAME
+
+///Contains most things in the game world
+/atom/movable/screen/plane_master/game_world
+	name = "game world plane master"
+	plane = GAME_PLANE
+	appearance_flags = PLANE_MASTER //should use client color
+	blend_mode = BLEND_OVERLAY
+	render_relay_plane = RENDER_PLANE_GAME
+
+/atom/movable/screen/plane_master/game_world/backdrop(mob/mymob)
+	. = ..()
+	remove_filter("AO")
+	if(istype(mymob) && mymob.client)
+		add_filter("AO", 1, drop_shadow_filter(x = 0, y = -2, size = 4, color = "#04080FAA"))
+
+/atom/movable/screen/plane_master/point
+	name = "point plane master"
+	plane = POINT_PLANE
+	appearance_flags = PLANE_MASTER //should use client color
+	blend_mode = BLEND_OVERLAY
+	render_relay_plane = RENDER_PLANE_GAME
+
+/**
+ * Plane master handling byond internal blackness
+ * vars are set as to replicate behavior when rendering to other planes
+ * do not touch this unless you know what you are doing
+ */
+/atom/movable/screen/plane_master/blackness
+	name = "darkness plane master"
+	plane = BLACKNESS_PLANE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	color = list(null, null, null, "#0000", "#000f")
+	blend_mode = BLEND_MULTIPLY
+	appearance_flags = PLANE_MASTER | NO_CLIENT_COLOR | PIXEL_SCALE
+	//byond internal end
+	render_relay_plane = RENDER_PLANE_GAME
+
+/atom/movable/screen/plane_master/area
+	name = "area plane"
+	plane = AREA_PLANE
+	render_relay_plane = RENDER_PLANE_GAME
+
+/atom/movable/screen/plane_master/fullscreen
+	name = "fullscreen alert plane"
+	plane = FULLSCREEN_PLANE
+	render_relay_plane = RENDER_PLANE_NON_GAME
+
+/atom/movable/screen/plane_master/ghost
+	name = "ghost plane master"
+	plane = OBSERVER_PLANE
+	appearance_flags = PLANE_MASTER //should use client color
+	blend_mode = BLEND_OVERLAY
+	render_relay_plane = RENDER_PLANE_NON_GAME

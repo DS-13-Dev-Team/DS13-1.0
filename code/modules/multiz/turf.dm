@@ -1,4 +1,16 @@
 /turf/var/list/zstructures //A list of structures that may allow or interfere with ztransitions
+GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdrop, new)
+
+/atom/movable/openspace_backdrop
+	name = "openspace_backdrop"
+
+	anchored = TRUE
+
+	icon = 'icons/turf/floors.dmi'
+	icon_state = "grey"
+	plane = OPENSPACE_BACKDROP_PLANE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	vis_flags = VIS_INHERIT_ID
 
 /atom/proc/CanZPass()
 	return TRUE
@@ -49,7 +61,16 @@
 	density = FALSE
 	pathweight = INFINITY //Seriously, don't try and path over this one numbnuts
 	is_hole = TRUE
-	z_flags = ZM_MIMIC_DEFAULTS | ZM_MIMIC_OVERWRITE | ZM_MIMIC_NO_AO | ZM_ALLOW_ATMOS
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+/turf/simulated/open/Initialize(mapload)
+	.=..()
+	overlays += GLOB.openspace_backdrop_one_for_all //Special grey square for projecting backdrop darkness filter on it.
+	.=INITIALIZE_HINT_LATELOAD
+
+/turf/simulated/open/LateInitialize()
+	.=..()
+	AddElement(/datum/element/turf_z_transparency)
 
 /turf/simulated/open/update_dirt()
 	return FALSE
@@ -76,46 +97,6 @@
 		for(var/T = GetBelow(src); isopenspace(T); T = GetBelow(T))
 			depth += 1
 		to_chat(user, "It is about [depth] level\s deep.")
-
-/turf/simulated/open/attackby(obj/item/C, mob/user)
-	if (istype(C, /obj/item/stack/material/rods))
-		var/obj/structure/lattice/L = locate(/obj/structure/lattice, src)
-		if(L)
-			return L.attackby(C, user)
-		var/obj/item/stack/material/rods/R = C
-		if (R.use(1))
-			to_chat(user, "<span class='notice'>You lay down the support lattice.</span>")
-			playsound(src, 'sound/weapons/Genhit.ogg', 50, 1)
-			new /obj/structure/lattice(locate(src.x, src.y, src.z), R.material.name)
-		return
-
-	if (istype(C, /obj/item/stack/tile))
-		var/obj/structure/lattice/L = locate(/obj/structure/lattice, src)
-		if(L)
-			var/obj/item/stack/tile/floor/S = C
-			if (!S.use(1))
-				return
-			qdel(L)
-			playsound(src, 'sound/weapons/Genhit.ogg', 50, 1)
-			ChangeTurf(/turf/simulated/floor/airless)
-			return
-		else
-			to_chat(user, "<span class='warning'>The plating is going to need some support.</span>")
-
-	//To lay cable.
-	if(isCoil(C))
-		var/obj/item/stack/cable_coil/coil = C
-		coil.turf_place(src, user)
-		return
-
-	for(var/atom/movable/M in below)
-		if(M.movable_flags & MOVABLE_FLAG_Z_INTERACT)
-			return M.attackby(C, user)
-
-/turf/simulated/open/attack_hand(mob/user)
-	for(var/atom/movable/M in below)
-		if(M.movable_flags & MOVABLE_FLAG_Z_INTERACT)
-			return M.attack_hand(user)
 
 //Most things use is_plating to test if there is a cover tile on top (like regular floors)
 /turf/simulated/open/is_plating()

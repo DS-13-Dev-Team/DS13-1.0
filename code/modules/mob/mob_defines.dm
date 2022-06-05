@@ -18,6 +18,9 @@
 		/datum/movement_handler/mob/movement
 	)
 
+	///when this be added to vis_contents of something it inherit something.plane, important for visualisation of mob in openspace.
+	vis_flags = VIS_INHERIT_PLANE
+
 	var/mob_flags
 
 	var/last_quick_move_time = 0

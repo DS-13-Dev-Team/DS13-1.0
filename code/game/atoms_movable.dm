@@ -63,9 +63,6 @@
 	if(LAZYLEN(movement_handlers) && !ispath(movement_handlers[1]))
 		QDEL_NULL_LIST(movement_handlers)
 
-	if (bound_overlay)
-		QDEL_NULL(bound_overlay)
-
 
 
 /atom/movable/Bump(var/atom/A, yes)

@@ -4,6 +4,9 @@
 
 // ===
 /area
+	layer = AREA_LAYER
+	//Keeping this on the default plane, GAME_PLANE, will make area overlays fail to render on FLOOR_PLANE.
+	plane = AREA_PLANE
 	var/global/global_uid = 0
 	var/uid
 	var/area_flags

@@ -1,7 +1,7 @@
 /turf
 	icon = 'icons/turf/floors.dmi'
 	level = 1
-
+	vis_flags = VIS_INHERIT_ID | VIS_INHERIT_PLANE// Important for interaction with and visualization of openspace.
 	var/turf_flags
 
 	var/holy = 0
@@ -61,15 +61,9 @@
 	else
 		luminosity = 1
 
-	if (mapload && permit_ao)
-		queue_ao()
-
-	if (z_flags & ZM_MIMIC_BELOW)
-		setup_zmimic(mapload)
-
 	return INITIALIZE_HINT_NORMAL
 
-/turf/Destroy()
+/turf/Destroy(force)
 	if (!changing_turf)
 		crash_with("Improper turf qdel. Do not qdel turfs directly.")
 
@@ -77,18 +71,21 @@
 
 	remove_cleanables()
 
-	if (ao_queued)
-		SSao.queue -= src
-		ao_queued = 0
-
-	if (z_flags & ZM_MIMIC_BELOW)
-		cleanup_zmimic()
-
-	if (bound_overlay)
-		QDEL_NULL(bound_overlay)
+	var/turf/T = GetAbove(src)
+	if(T)
+		T.multiz_turf_del(src, DOWN)
+	T = GetBelow(src)
+	if(T)
+		T.multiz_turf_del(src, UP)
 
 	..()
 	return QDEL_HINT_IWILLGC
+
+/turf/proc/multiz_turf_del(turf/T, dir)
+	SEND_SIGNAL(src, COMSIG_TURF_MULTIZ_DEL, T, dir)
+
+/turf/proc/multiz_turf_new(turf/T, dir)
+	SEND_SIGNAL(src, COMSIG_TURF_MULTIZ_NEW, T, dir)
 
 /turf/ex_act(severity)
 	return FALSE

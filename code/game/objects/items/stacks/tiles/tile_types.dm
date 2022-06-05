@@ -23,6 +23,10 @@
 	item_flags = 0
 	obj_flags = 0
 
+/obj/item/stack/tile/Initialize()
+	.=..()
+	AddElement(/datum/element/openspace_item_click_handler)
+
 /*
  * Grass
  */

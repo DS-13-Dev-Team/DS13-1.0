@@ -497,9 +497,6 @@ obj/structure/cable/proc/cableColor(var/colorC)
 /obj/item/stack/cable_coil/single
 	amount = 1
 
-/obj/item/stack/cable_coil/single/New(var/loc, var/length = 1, var/param_color = null)
-	..(loc, length, param_color)
-
 /obj/item/stack/cable_coil/cyborg
 	name = "cable coil synthesizer"
 	desc = "A device that makes cable."
@@ -508,13 +505,14 @@ obj/structure/cable/proc/cableColor(var/colorC)
 	uses_charge = 1
 	charge_costs = list(1)
 
-/obj/item/stack/cable_coil/New(loc, length = MAXCOIL, var/param_color = null)
-	..()
-	src.amount = length
-	if (param_color) // It should be red by default, so only recolor it if parameter was specified.
+/obj/item/stack/cable_coil/Initialize(mapload, length = MAXCOIL, param_color)
+	.=..()
+	amount = length
+	if(param_color) // It should be red by default, so only recolor it if parameter was specified.
 		color = param_color
 	update_icon()
 	update_wclass()
+	AddElement(/datum/element/openspace_item_click_handler)
 
 ///////////////////////////////////
 // General procedures
