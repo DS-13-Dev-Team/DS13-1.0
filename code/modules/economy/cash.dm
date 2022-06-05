@@ -74,9 +74,9 @@
 		while(sum >= i && num < 50)
 			sum -= i
 			num++
-			. += "credits[i]"
+			. += "spacecash[i]"
 	if(num == 0) // Less than one thaler, let's just make it look like 1 for ease
-		. += "credits1"
+		. += "spacecash1"
 
 /obj/item/weapon/spacecash/bundle/update_icon()
 	overlays.Cut()

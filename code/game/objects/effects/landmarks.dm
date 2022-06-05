@@ -66,6 +66,10 @@
 			endgame_exits += loc
 			delete_me = 1
 			return
+		if("ShuttleRepairPart")
+			GLOB.shuttlerepairspawnlocs += loc
+			delete_me = 1
+			return
 
 	landmarks_list += src
 	return 1

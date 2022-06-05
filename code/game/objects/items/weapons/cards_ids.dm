@@ -557,6 +557,13 @@ var/const/NO_EMAG_ACT = -50
 	item_state = "holowarrant_filled"
 	job_access_type = /datum/job/surg
 
+/obj/item/weapon/card/id/holo/medical/psych
+	name = "holographic id"
+	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to a Psychologist."
+	icon_state = "holowarrant_filled"
+	item_state = "holowarrant_filled"
+	job_access_type = /datum/job/psychologist
+
 /obj/item/weapon/card/id/holo/science
 	name = "holographic id"
 	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to a Research Assistant."

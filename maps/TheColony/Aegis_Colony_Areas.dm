@@ -102,11 +102,6 @@
 	icon_state = "maintbase"
 	sound_env = ASTEROID
 
-/area/mining_colony/interior/seccie_checkpoint_1
-	name = "\improper Aegis Security Checkpoint #1"
-	icon_state = "checkpoint"
-	sound_env = ASTEROID
-
 /area/mining_colony/interior/seccie_checkpoint_2
 	name = "\improper Aegis Security Checkpoint #2"
 	icon_state = "checkpoint"
@@ -288,7 +283,7 @@
 	sound_env = ASTEROID
 
 /area/mining_colony/interior/shuttle_bay/hangar
-	name = "\improper Aegis  - Shuttle Bay Hangar "
+	name = "\improper Aegis  - Shuttle Bay Hangar"
 	icon_state = "tramstation"
 	sound_env = ASTEROID
 
@@ -642,11 +637,6 @@ area/mining_colony/interior/mining/hallway
 	icon_state = "commandbase"
 	sound_env = ASTEROID
 
-/area/mining_colony/security/upper/director
-	name = "\improper Colony Director's Office"
-	icon_state = "commandbase"
-	sound_env = ASTEROID
-
 /area/mining_colony/security/upper/commandofficers
 	name = "\improper Command Office"
 	icon_state = "commandbase"
@@ -877,3 +867,109 @@ area/mining_colony/interior/mining/hallway
 /area/tdome/tdomeobserve
 	name = "\improper Thunderdome (Observer.)"
 	icon_state = "purple"
+
+/area/mining_colony/security/upper/fl_office
+	name = "\improper First Lieutenant Office"
+	icon_state = "commandbase"
+	sound_env = ASTEROID
+
+/area/mining_colony/security/upper/be_room1
+	name = "\improper Bridge Ensign Room 1"
+	icon_state = "commandbase"
+	sound_env = ASTEROID
+
+/area/mining_colony/security/upper/be_room2
+	name = "\improper Bridge Ensign Room 2"
+	icon_state = "commandbase"
+	sound_env = ASTEROID
+
+/area/mining_colony/security/upper/be_room3
+	name = "\improper Bridge Ensign Room 3"
+	icon_state = "commandbase"
+	sound_env = ASTEROID
+
+/area/mining_colony/security/upper/be_room4
+	name = "\improper Bridge Ensign Room 4"
+	icon_state = "commandbase"
+	sound_env = ASTEROID
+
+/area/mining_colony/security/upper/bridge_corridor
+	name = "\improper Bridge Corridor"
+	icon_state = "commandbase"
+	sound_env = ASTEROID
+
+/*
+	LOWER DECK MAINTS! AAAAAAAAAAAAAAAAAAAAAAAAAA!
+*/
+
+/area/mining_colony/security/lower/maints
+	name = "\improper Maintance Room"
+	icon_state = "aegis"
+	sound_env = ASTEROID
+
+/area/mining_colony/security/lower/maints/room1
+/area/mining_colony/security/lower/maints/room2
+/area/mining_colony/security/lower/maints/room3
+/area/mining_colony/security/lower/maints/room4
+/area/mining_colony/security/lower/maints/room5
+/area/mining_colony/security/lower/maints/room6
+/area/mining_colony/security/lower/maints/room7
+/area/mining_colony/security/lower/maints/room8
+/area/mining_colony/security/lower/maints/room9
+/area/mining_colony/security/lower/maints/room10
+/area/mining_colony/security/lower/maints/room11
+/area/mining_colony/security/lower/maints/room12
+/area/mining_colony/security/lower/maints/room13
+/area/mining_colony/security/lower/maints/room14
+/area/mining_colony/security/lower/maints/room15
+/area/mining_colony/security/lower/maints/room16
+/area/mining_colony/security/lower/maints/room17
+/area/mining_colony/security/lower/maints/room18
+/area/mining_colony/security/lower/maints/room19
+/area/mining_colony/security/lower/maints/room20
+/area/mining_colony/security/lower/maints/room21
+/area/mining_colony/security/lower/maints/room22
+/area/mining_colony/security/lower/maints/room23
+/area/mining_colony/security/lower/maints/room24
+/area/mining_colony/security/lower/maints/room25
+/area/mining_colony/security/lower/maints/room26
+/area/mining_colony/security/lower/maints/room27
+/area/mining_colony/security/lower/maints/room28
+/area/mining_colony/security/lower/maints/room29
+/area/mining_colony/security/lower/maints/room30
+/area/mining_colony/security/lower/maints/room31
+/area/mining_colony/security/lower/maints/room32
+/area/mining_colony/security/lower/maints/room33
+/area/mining_colony/security/lower/maints/room34
+/area/mining_colony/security/lower/maints/room35
+/area/mining_colony/security/lower/maints/room36
+/area/mining_colony/security/lower/maints/room37
+/area/mining_colony/security/lower/maints/room38
+/area/mining_colony/security/lower/maints/room39
+/area/mining_colony/security/lower/maints/room40
+/area/mining_colony/security/lower/maints/room41
+/area/mining_colony/security/lower/maints/room42
+/area/mining_colony/security/lower/maints/room43
+/area/mining_colony/security/lower/maints/room44
+/area/mining_colony/security/lower/maints/room45
+/area/mining_colony/security/lower/maints/room46
+/area/mining_colony/security/lower/maints/room47
+/area/mining_colony/security/lower/maints/room48
+/area/mining_colony/security/lower/maints/room49
+/area/mining_colony/security/lower/maints/room50
+/area/mining_colony/security/lower/maints/room51
+/area/mining_colony/security/lower/maints/room52
+/area/mining_colony/security/lower/maints/room53
+/area/mining_colony/security/lower/maints/room54
+/area/mining_colony/security/lower/maints/room55
+/area/mining_colony/security/lower/maints/room56
+/area/mining_colony/security/lower/maints/room57
+/area/mining_colony/security/lower/maints/room58
+/area/mining_colony/security/lower/maints/room59
+/area/mining_colony/security/lower/maints/room60
+/area/mining_colony/security/lower/maints/room61
+/area/mining_colony/security/lower/maints/room62
+/area/mining_colony/security/lower/maints/room63
+/area/mining_colony/security/lower/maints/room64
+/area/mining_colony/security/lower/maints/room65
+/area/mining_colony/security/lower/maints/room66

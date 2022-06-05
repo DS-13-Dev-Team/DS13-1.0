@@ -83,11 +83,24 @@
 
 	allowed_jobs = list(/datum/job/cap, /datum/job/fl, /datum/job/bo, /datum/job/cseco,
 						/datum/job/sso, /datum/job/security_officer, /datum/job/smo,
-						/datum/job/md, /datum/job/surg, /datum/job/cscio, /datum/job/ra,
-						/datum/job/ce, /datum/job/tech_engineer, /datum/job/so, /datum/job/janitor,
-						/datum/job/serviceman, /datum/job/salvage, /datum/job/dom, /datum/job/foreman,
-						/datum/job/planet_cracker, /datum/job/line_cook, /datum/job/bar, /datum/job/botanist
+						/datum/job/md, /datum/job/surg, /datum/job/psychologist, /datum/job/cscio,
+						/datum/job/ra, /datum/job/ce, /datum/job/tech_engineer, /datum/job/so,
+						/datum/job/janitor, /datum/job/chaplain, /datum/job/serviceman,
+						/datum/job/salvage, /datum/job/dom, /datum/job/foreman, /datum/job/planet_cracker,
+						/datum/job/line_cook, /datum/job/bar, /datum/job/botanist
 						)
+
+/datum/map/colony/post_setup()
+	.=..()
+	if(GLOB.shuttlerepairspawnlocs.len < 5)
+		CRASH("Couldn't spawn enough shuttle parts to fix the shuttle!")
+	for(var/i=1 to 7)
+		var/turf/turf = pick(GLOB.shuttlerepairspawnlocs)
+		if(!turf)
+			break
+		GLOB.shuttlerepairspawnlocs -= turf
+		new /obj/item/shuttle_part(turf)
+
 /turf/simulated/wall
 	name = "bulkhead"
 

@@ -34,20 +34,20 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/dank/golf_brown,
-/area/space)
+/area/mining_colony/security/upper/commandofficers)
 "ae" = (
 /obj/item/modular_computer/console/preset/command,
 /turf/simulated/floor/dank/golf_brown,
-/area/space)
+/area/mining_colony/security/upper/commandofficers)
 "af" = (
 /obj/structure/filingcabinet,
 /turf/simulated/floor/dank/rectangles,
-/area/space)
+/area/mining_colony/security/upper/commandofficers)
 "ag" = (
 /obj/structure/table/standard,
 /obj/item/weapon/gun/projectile/divet,
 /turf/simulated/floor/dank/golf_brown,
-/area/space)
+/area/mining_colony/security/upper/commandofficers)
 "ah" = (
 /obj/effect/wallframe_spawn/reinforced,
 /obj/machinery/door/blast/shutters/open{
@@ -57,7 +57,7 @@
 	},
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/dank/mono,
-/area/space)
+/area/mining_colony/security/upper/commandofficers)
 "ai" = (
 /obj/machinery/light{
 	dir = 1;
@@ -69,20 +69,20 @@
 /obj/machinery/camera/network/security,
 /obj/item/modular_computer/console/preset/command,
 /turf/simulated/floor/dank/golf_brown,
-/area/space)
+/area/mining_colony/security/upper/commandofficers)
 "ak" = (
 /obj/structure/table/standard,
 /turf/simulated/floor/dank/hardwood,
 /area/mining_colony/security/upper/sec_commander)
 "al" = (
 /turf/simulated/floor/dank/rectangles,
-/area/space)
+/area/mining_colony/security/upper/commandofficers)
 "am" = (
 /obj/machinery/camera/network/security{
 	dir = 4
 	},
 /turf/simulated/floor/dank/rectangles,
-/area/space)
+/area/mining_colony/security/upper/commandofficers)
 "an" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/security/upper/sec_commander)
@@ -90,7 +90,7 @@
 /turf/simulated/floor/dank/slides{
 	dir = 8
 	},
-/area/space)
+/area/mining_colony/security/upper/bridge_corridor)
 "ap" = (
 /obj/machinery/power/apc{
 	dir = 4;
@@ -105,7 +105,7 @@
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/dank/golf_brown,
-/area/space)
+/area/mining_colony/security/upper/commandofficers)
 "aq" = (
 /obj/machinery/vending/hotfood,
 /turf/simulated/floor/dank/golf_brown,
@@ -116,15 +116,8 @@
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/upper)
 "as" = (
-/obj/structure/sign/goldenplaque{
-	desc = "Nathan McNeill, for 10 years of dedication and service to the citizens of Aegis VII.";
-	name = "P-Sec plaque";
-	pixel_w = 0;
-	pixel_y = 28
-	},
-/obj/item/modular_computer/console/preset/command,
-/turf/simulated/floor/dank/golf_brown,
-/area/space)
+/turf/simulated/wall/r_wall,
+/area/mining_colony/security/upper/bridge_corridor)
 "at" = (
 /obj/machinery/vending/snack,
 /turf/simulated/floor/dank/golf_brown,
@@ -136,20 +129,19 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/dank/golf_brown,
-/area/space)
+/area/mining_colony/security/upper/commandofficers)
 "av" = (
-/turf/simulated/open,
-/area/space)
+/obj/structure/railing/mapped{
+	dir = 1
+	},
+/turf/simulated/floor/dank/tech,
+/area/mining_colony/security/upper/bridge_corridor)
 "aw" = (
-/obj/machinery/cryopod{
-	dir = 4
+/obj/machinery/light{
+	dir = 8
 	},
-/obj/effect/floor_decal/dank/outline_striped,
-/obj/machinery/camera/network/security{
-	dir = 4
-	},
-/turf/simulated/floor/dank/rivets,
-/area/mining_colony/security/upper/cryo_room)
+/turf/simulated/floor/tiled/dark,
+/area/mining_colony/security/upper)
 "ax" = (
 /obj/machinery/camera/network/security{
 	dir = 4
@@ -160,32 +152,30 @@
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/upper)
 "az" = (
-/obj/machinery/camera/network/command{
-	dir = 1
+/obj/machinery/light{
+	dir = 4;
+	icon_state = "tube_map"
 	},
-/obj/machinery/firealarm{
-	dir = 1;
-	pixel_y = -35
-	},
-/turf/simulated/floor/dank/hardwood,
-/area/space)
+/obj/structure/closet/emcloset,
+/turf/simulated/floor/dank/slides,
+/area/mining_colony/security/upper/bridge_corridor)
 "aA" = (
 /obj/item/modular_computer/console/preset/security,
 /turf/simulated/floor/dank/rectangles,
-/area/space)
+/area/mining_colony/security/upper/commandofficers)
 "aB" = (
 /obj/structure/table/standard,
 /obj/random/accessory,
 /obj/random/ammo,
 /obj/random/hat,
 /turf/simulated/floor/dank/golf_brown,
-/area/space)
+/area/mining_colony/security/upper/commandofficers)
 "aC" = (
 /obj/structure/bed/chair/office{
 	dir = 1
 	},
 /turf/simulated/floor/dank/rectangles,
-/area/space)
+/area/mining_colony/security/upper/commandofficers)
 "aD" = (
 /obj/machinery/door/airlock/command{
 	dir = 4;
@@ -200,13 +190,13 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/dank/hardwood,
-/area/space)
+/area/mining_colony/security/upper/fl_office)
 "aE" = (
 /obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/dank/rectangles,
-/area/space)
+/area/mining_colony/security/upper/commandofficers)
 "aF" = (
 /obj/machinery/camera/network/security{
 	dir = 8
@@ -218,19 +208,15 @@
 	dir = 8
 	},
 /turf/simulated/floor/dank/golf_brown,
-/area/space)
+/area/mining_colony/security/upper/commandofficers)
 "aH" = (
-/obj/machinery/door/airlock/command{
-	name = "Colony Command"
-	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
+	d1 = 2;
+	d2 = 8;
 	icon_state = "1-2"
 	},
-/obj/machinery/door/firedoor,
-/turf/simulated/floor/dank/mono,
-/area/space)
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/security/upper)
 "aI" = (
 /obj/item/weapon/bedsheet/hos,
 /obj/structure/bed,
@@ -245,46 +231,66 @@
 	icon_state = "tube_map"
 	},
 /turf/simulated/floor/dank/rectangles,
-/area/space)
+/area/mining_colony/security/upper/commandofficers)
 "aK" = (
 /obj/machinery/light,
 /turf/simulated/floor/dank/rectangles,
-/area/space)
+/area/mining_colony/security/upper/commandofficers)
 "aL" = (
 /obj/structure/railing/mapped,
 /turf/simulated/floor/dank/rectangles,
-/area/space)
+/area/mining_colony/security/upper/commandofficers)
 "aM" = (
 /obj/structure/stairs_short/west,
 /obj/structure/railing/mapped,
 /turf/simulated/floor/dank/rectangles,
-/area/space)
+/area/mining_colony/security/upper/commandofficers)
 "aN" = (
 /turf/simulated/floor/dank/golf_brown,
-/area/space)
+/area/mining_colony/security/upper/bridge_corridor)
 "aO" = (
 /obj/structure/stairs_short/east,
 /obj/structure/railing/mapped,
 /turf/simulated/floor/dank/rectangles,
-/area/space)
+/area/mining_colony/security/upper/commandofficers)
 "aP" = (
-/obj/structure/transit_tube/station{
-	dir = 8
+/turf/simulated/floor/dank/slides_end{
+	dir = 1
 	},
-/turf/simulated/floor/plating,
-/area/space)
+/area/mining_colony/security/upper/bridge_corridor)
 "aQ" = (
+/obj/structure/cable{
+	d2 = 2;
+	icon_state = "0-2"
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "0-5"
+	},
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/obj/structure/cable{
+	d2 = 4;
+	icon_state = "0-4"
+	},
+/turf/simulated/floor/dank/golf_brown,
+/area/mining_colony/security/upper/commandofficers)
+"aR" = (
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/dank/golf_brown,
-/area/space)
-"aR" = (
-/obj/machinery/light,
-/turf/simulated/floor/dank/golf_brown,
-/area/space)
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/security{
+	dir = 2;
+	name = "P-Sec Commanding Office"
+	},
+/turf/simulated/floor/dank/mono,
+/area/mining_colony/security/upper/sec_offices)
 "aS" = (
 /obj/item/modular_computer/tablet/lease/preset/command,
 /obj/item/device/megaphone,
@@ -299,7 +305,7 @@
 /obj/item/clothing/suit/armor/vest,
 /obj/item/weapon/storage/belt/holster/security,
 /turf/simulated/floor/dank/hardwood,
-/area/space)
+/area/mining_colony/security/upper/be_room3)
 "aT" = (
 /obj/structure/closet/secure_closet/personal/cabinet,
 /obj/item/weapon/reagent_containers/food/drinks/bottle/whiskey,
@@ -314,14 +320,19 @@
 /obj/item/weapon/storage/box/glasses/wine,
 /obj/item/weapon/storage/box/glasses/cocktail,
 /turf/simulated/floor/dank/hardwood,
-/area/space)
+/area/mining_colony/security/upper/fl_office)
 "aU" = (
 /obj/machinery/firealarm{
 	dir = 1;
 	pixel_y = -24
 	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
 /turf/simulated/floor/dank/golf_brown,
-/area/space)
+/area/mining_colony/security/upper/commandofficers)
 "aV" = (
 /obj/machinery/light{
 	dir = 8
@@ -335,7 +346,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/dank/golf_brown,
-/area/space)
+/area/mining_colony/security/upper/commandofficers)
 "aX" = (
 /turf/simulated/floor/dank/hardwood,
 /area/mining_colony/security/upper/sec_commander)
@@ -387,18 +398,11 @@
 /turf/simulated/floor/dank/golf_gray,
 /area/mining_colony/security/upper/sec_commander)
 "bd" = (
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_y = 15;
-	req_access = list(201)
+/obj/structure/flora/pottedplant/large,
+/turf/simulated/floor/dank/slides_end{
+	dir = 2
 	},
-/obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2"
-	},
-/turf/simulated/floor/dank/rivets,
-/area/mining_colony/security/upper/cryo_room)
+/area/mining_colony/security/upper/bridge_corridor)
 "be" = (
 /obj/structure/table/reinforced,
 /obj/item/weapon/paper_bin,
@@ -437,7 +441,7 @@
 	icon_state = "officechair_preview"
 	},
 /turf/simulated/floor/dank/golf_brown,
-/area/space)
+/area/mining_colony/security/upper/commandofficers)
 "bk" = (
 /obj/machinery/light{
 	dir = 8
@@ -474,8 +478,9 @@
 /obj/item/weapon/reagent_containers/food/snacks/squid,
 /obj/item/weapon/reagent_containers/food/snacks/sharkmeatdip,
 /obj/item/weapon/reagent_containers/food/drinks/cans/artbru,
+/obj/random/cash,
 /turf/simulated/floor/dank/golf_brown,
-/area/space)
+/area/mining_colony/security/upper/commandofficers)
 "bo" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -525,8 +530,7 @@
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/upper)
 "bw" = (
-/obj/machinery/camera/network/security,
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/floor/dank/grater,
 /area/mining_colony/security/upper)
 "bx" = (
 /obj/machinery/door/airlock/security{
@@ -563,18 +567,11 @@
 /turf/simulated/floor/dank/medical,
 /area/mining_colony/security/upper/permacells1)
 "bz" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
+/obj/item/modular_computer/console/preset/command{
+	dir = 4
 	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
-/turf/simulated/floor/dank/grater,
-/area/mining_colony/security/upper)
+/turf/simulated/floor/dank/hardwood,
+/area/mining_colony/security/upper/sec_offices)
 "bA" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -592,25 +589,13 @@
 /turf/simulated/floor/dank/slides{
 	dir = 8
 	},
-/area/space)
+/area/mining_colony/security/upper/bridge_corridor)
 "bC" = (
-/obj/structure/closet/secure_closet/brig,
-/obj/item/clothing/suit/straight_jacket,
-/obj/item/clothing/suit/straight_jacket,
-/obj/item/clothing/mask/muzzle,
-/obj/item/clothing/mask/muzzle,
-/obj/item/clothing/glasses/sunglasses/blindfold,
-/obj/item/clothing/glasses/sunglasses/blindfold,
-/obj/structure/railing/mapped{
-	dir = 8;
-	icon_state = "railing0"
+/obj/structure/flora/pottedplant/tropical,
+/turf/simulated/floor/dank/slides_end{
+	dir = 1
 	},
-/obj/structure/railing/mapped{
-	dir = 4
-	},
-/obj/effect/floor_decal/dank/outline,
-/turf/simulated/floor/tiled/dark,
-/area/mining_colony/security/upper)
+/area/mining_colony/security/upper/bridge_corridor)
 "bD" = (
 /obj/structure/bed/chair/office,
 /obj/effect/landmark/start{
@@ -620,9 +605,12 @@
 /area/mining_colony/security/upper/forensics)
 "bE" = (
 /obj/structure/table/standard,
-/obj/random/cash,
+/obj/machinery/button/remote/blast_door{
+	id = "running_away";
+	name = "Civilian Hangar"
+	},
 /turf/simulated/floor/dank/golf_brown,
-/area/space)
+/area/mining_colony/security/upper/commandofficers)
 "bF" = (
 /obj/effect/wallframe_spawn/reinforced/polarized{
 	id = "shitcurity_overlord"
@@ -670,13 +658,10 @@
 /turf/simulated/floor/dank/medical,
 /area/mining_colony/security/upper/forensics)
 "bJ" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/dank/rivets,
-/area/mining_colony/security/upper/cryo_room)
+/obj/structure/table/reinforced,
+/obj/random/plushie,
+/turf/simulated/floor/dank/slides,
+/area/mining_colony/security/upper/bridge_corridor)
 "bK" = (
 /obj/structure/bed/chair/office{
 	dir = 4;
@@ -715,14 +700,14 @@
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/security/upper/forensics)
 "bO" = (
-/obj/machinery/door/airlock/security,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
+/obj/machinery/cryopod{
+	dir = 4
 	},
-/obj/machinery/door/firedoor,
-/turf/simulated/floor/dank/mono,
+/obj/effect/floor_decal/dank/outline_striped,
+/obj/machinery/camera/network/security{
+	dir = 4
+	},
+/turf/simulated/floor/dank/rivets,
 /area/mining_colony/security/upper/cryo_room)
 "bP" = (
 /obj/structure/cable{
@@ -757,7 +742,7 @@
 /obj/item/weapon/paper_bin,
 /obj/item/weapon/pen/multi,
 /turf/simulated/floor/dank/golf_brown,
-/area/space)
+/area/mining_colony/security/upper/commandofficers)
 "bV" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -767,12 +752,10 @@
 /turf/simulated/floor/dank/medical,
 /area/mining_colony/security/upper/forensics)
 "bW" = (
-/obj/machinery/cryopod{
+/turf/simulated/floor/dank/tech{
 	dir = 4
 	},
-/obj/effect/floor_decal/dank/outline_striped,
-/turf/simulated/floor/dank/rivets,
-/area/mining_colony/security/upper/cryo_room)
+/area/mining_colony/security/upper/bridge_corridor)
 "bX" = (
 /obj/machinery/door/airlock/security{
 	dir = 4;
@@ -797,10 +780,23 @@
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/upper)
 "bZ" = (
-/obj/machinery/cryopod,
-/obj/effect/floor_decal/dank/outline_striped,
-/turf/simulated/floor/dank/rivets,
-/area/mining_colony/security/upper/cryo_room)
+/obj/structure/closet/secure_closet/security,
+/obj/structure/window/reinforced{
+	dir = 4;
+	icon_state = "rwindow"
+	},
+/obj/item/weapon/gun/energy/taser,
+/obj/item/clothing/accessory/badge{
+	badge_string = "Planetary Security"
+	},
+/obj/effect/floor_decal/dank/outline,
+/obj/item/clothing/suit/storage/toggle/cseco{
+	desc = "An armored jacket often worn by Planetary Security Officers that combines style and protection."
+	},
+/obj/item/clothing/head/soft/pcsi,
+/obj/machinery/light,
+/turf/simulated/floor/dank/golf_brown,
+/area/mining_colony/security/upper)
 "ca" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -819,19 +815,19 @@
 	dir = 8
 	},
 /turf/simulated/floor/dank/golf_brown,
-/area/space)
+/area/mining_colony/security/upper/commandofficers)
 "cc" = (
 /obj/item/device/toner,
 /obj/item/device/toner,
 /obj/item/device/toner,
 /obj/machinery/photocopier,
 /turf/simulated/floor/dank/golf_brown,
-/area/space)
+/area/mining_colony/security/upper/commandofficers)
 "cd" = (
 /obj/structure/table/standard,
 /obj/machinery/photocopier/faxmachine,
 /turf/simulated/floor/dank/golf_brown,
-/area/space)
+/area/mining_colony/security/upper/commandofficers)
 "ce" = (
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/security/upper/forensics)
@@ -874,7 +870,7 @@
 /obj/structure/table/standard,
 /obj/item/weapon/folder/red,
 /turf/simulated/floor/dank/golf_brown,
-/area/space)
+/area/mining_colony/security/upper/commandofficers)
 "cj" = (
 /obj/structure/table/reinforced,
 /obj/random/loot/often/few,
@@ -995,35 +991,22 @@
 /turf/simulated/floor/carpet/red,
 /area/mining_colony/security/upper/sec_commander)
 "cx" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/turf/simulated/floor/dank/grater,
-/area/mining_colony/security/upper)
+/obj/effect/wallframe_spawn/reinforced,
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/dank/mono,
+/area/mining_colony/security/upper/sec_offices)
 "cy" = (
 /obj/effect/floor_decal/dank/border_corner{
 	dir = 1
 	},
 /turf/simulated/floor/dank/golf_brown,
-/area/space)
+/area/mining_colony/security/upper/commandofficers)
 "cz" = (
 /obj/effect/floor_decal/dank/border_corner{
 	dir = 4
 	},
 /turf/simulated/floor/dank/golf_brown,
-/area/space)
+/area/mining_colony/security/upper/commandofficers)
 "cA" = (
 /obj/structure/table/woodentable,
 /obj/item/weapon/paper_bin,
@@ -1059,8 +1042,13 @@
 	dir = 4;
 	req_access = list(1, 11)
 	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/dank/golf_brown,
-/area/space)
+/area/mining_colony/security/upper/commandofficers)
 "cG" = (
 /obj/machinery/door/airlock/security{
 	dir = 4;
@@ -1084,9 +1072,8 @@
 /turf/simulated/floor/dank/rectangles,
 /area/mining_colony/security/upper/secstorage2)
 "cI" = (
-/obj/structure/transit_tube/station,
-/turf/simulated/floor/plating,
-/area/space)
+/turf/simulated/floor/dank/golf_brown,
+/area/mining_colony/security/upper/commandofficers)
 "cJ" = (
 /obj/structure/sign/deck/ds/red,
 /turf/simulated/wall/r_wall,
@@ -1118,7 +1105,7 @@
 	icon_state = "officechair_preview"
 	},
 /turf/simulated/floor/dank/hardwood,
-/area/space)
+/area/mining_colony/security/upper/be_room1)
 "cN" = (
 /obj/structure/table/steel,
 /obj/item/weapon/storage/briefcase/crimekit,
@@ -1174,7 +1161,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/dank/golf_brown,
-/area/space)
+/area/mining_colony/security/upper/commandofficers)
 "cT" = (
 /obj/structure/bed/chair/office{
 	dir = 4;
@@ -1183,9 +1170,13 @@
 /turf/simulated/floor/dank/medical,
 /area/mining_colony/security/upper/forensics)
 "cU" = (
-/obj/structure/flora/pottedplant,
-/turf/simulated/floor/tiled/dark,
-/area/mining_colony/security/upper)
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/dank/hardwood,
+/area/mining_colony/security/upper/sec_offices)
 "cV" = (
 /obj/structure/table/steel,
 /obj/item/device/camera,
@@ -1239,12 +1230,12 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	d1 = 4;
+	d1 = 2;
 	d2 = 8;
-	icon_state = "4-8"
+	icon_state = "2-8"
 	},
 /turf/simulated/floor/dank/golf_brown,
-/area/space)
+/area/mining_colony/security/upper/commandofficers)
 "dd" = (
 /obj/effect/wallframe_spawn/reinforced/polarized{
 	id = "capicunt"
@@ -1272,20 +1263,15 @@
 /obj/effect/floor_decal/dank/border_corner_i{
 	dir = 4
 	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
 /turf/simulated/floor/dank/golf_brown,
-/area/space)
+/area/mining_colony/security/upper/commandofficers)
 "dg" = (
 /obj/machinery/light{
-	dir = 1;
-	icon_state = "tube_map"
+	dir = 1
 	},
-/turf/simulated/floor/tiled/dark,
-/area/mining_colony/security/upper)
+/obj/structure/railing/mapped,
+/turf/simulated/floor/dank/tech,
+/area/mining_colony/security/upper/bridge_corridor)
 "dh" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -1309,7 +1295,7 @@
 	icon_state = "bulb1"
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/mining_colony/security/upper/commandofficers)
 "dk" = (
 /obj/structure/table/steel,
 /obj/item/weapon/forensics/sample_kit/powder,
@@ -1324,11 +1310,18 @@
 /area/mining_colony/security/upper/forensics)
 "dl" = (
 /obj/structure/cable{
-	d1 = 1;
+	d1 = 4;
 	d2 = 8;
-	icon_state = "1-8"
+	icon_state = "4-8"
 	},
-/turf/simulated/floor/dank/grater,
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
+/obj/machinery/door/airlock/security{
+	name = "P-Sec Upper Hallway";
+	dir = 4
+	},
+/turf/simulated/floor/dank/mono,
 /area/mining_colony/security/upper)
 "dm" = (
 /obj/machinery/light{
@@ -1337,9 +1330,14 @@
 /turf/simulated/floor/carpet/red,
 /area/mining_colony/security/upper/director)
 "dn" = (
-/obj/structure/sign/deck/ds/purple,
-/turf/simulated/wall/r_wall,
-/area/mining_colony/security/upper)
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/structure/closet/emcloset,
+/turf/simulated/floor/dank/slides{
+	dir = 1
+	},
+/area/mining_colony/security/upper/bridge_corridor)
 "do" = (
 /turf/simulated/floor/carpet/red,
 /area/mining_colony/security/upper/director)
@@ -1371,13 +1369,16 @@
 /turf/simulated/floor/carpet/red,
 /area/mining_colony/security/upper/director)
 "dq" = (
-/turf/simulated/floor/plating,
-/area/space)
+/obj/structure/railing/mapped{
+	dir = 4;
+	icon_state = "railing0"
+	},
+/turf/simulated/floor/dank/golf_brown,
+/area/mining_colony/security/upper/bridge_corridor)
 "dr" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
+/obj/machinery/light{
+	dir = 4;
+	icon_state = "tube_map"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/mining_colony/security/upper)
@@ -1386,8 +1387,13 @@
 	name = "Colony Director's Quarters"
 	},
 /obj/machinery/door/firedoor,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/dank/hardwood,
-/area/space)
+/area/mining_colony/security/upper/be_room2)
 "dt" = (
 /obj/structure/table/rack,
 /obj/item/stack/material/phoron{
@@ -1396,18 +1402,13 @@
 /turf/simulated/floor/dank/rectangles,
 /area/mining_colony/security/upper/secstorage2)
 "du" = (
-/obj/structure/closet/secure_closet/security,
-/obj/item/weapon/gun/energy/taser,
-/obj/item/clothing/accessory/badge{
-	badge_string = "Planetary Security"
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "1-2"
 	},
-/obj/effect/floor_decal/dank/outline,
-/obj/item/clothing/suit/storage/toggle/cseco{
-	desc = "An armored jacket often worn by Planetary Security Officers that combines style and protection."
-	},
-/obj/item/clothing/head/soft/pcsi,
-/turf/simulated/floor/dank/golf_brown,
-/area/space)
+/turf/simulated/floor/tiled/dark,
+/area/mining_colony/security/upper)
 "dv" = (
 /obj/machinery/photocopier/faxmachine,
 /obj/structure/table/woodentable,
@@ -1448,7 +1449,7 @@
 /area/mining_colony/security/upper/permacells1)
 "dA" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony)
+/area/mining_colony/security/upper/commandofficers)
 "dB" = (
 /obj/machinery/door/airlock/security{
 	name = "Isolation Cells"
@@ -1465,16 +1466,18 @@
 /turf/simulated/wall/r_wall,
 /area/mining_colony/security/upper/director)
 "dD" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
+/obj/machinery/light{
+	dir = 4;
+	icon_state = "tube_map"
 	},
-/turf/simulated/floor/dank/hardwood,
-/area/space)
+/obj/structure/table/reinforced,
+/obj/random/hat,
+/turf/simulated/floor/dank/slides,
+/area/mining_colony/security/upper/bridge_corridor)
 "dE" = (
 /obj/machinery/door/airlock/command{
-	name = "Colony Director's Quarters"
+	name = "Colony Director's Quarters";
+	req_access = list(100)
 	},
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/dank/hardwood,
@@ -1488,22 +1491,13 @@
 /turf/simulated/floor/dank/slides{
 	dir = 4
 	},
-/area/space)
+/area/mining_colony/security/upper/bridge_corridor)
 "dH" = (
 /obj/effect/floor_decal/dank/border{
 	dir = 4
 	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2"
-	},
 /turf/simulated/floor/dank/golf_brown,
-/area/space)
+/area/mining_colony/security/upper/commandofficers)
 "dI" = (
 /obj/structure/bed/chair/office{
 	dir = 8;
@@ -1547,15 +1541,13 @@
 /turf/simulated/floor/dank/hardwood,
 /area/mining_colony/security/upper/director)
 "dO" = (
-/obj/structure/table/steel_reinforced,
-/obj/machinery/keycard_auth{
-	pixel_y = 8
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "1-8"
 	},
-/obj/machinery/keycard_auth{
-	pixel_y = -4
-	},
-/turf/simulated/floor/dank/hardwood,
-/area/space)
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/security/upper)
 "dP" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -1575,7 +1567,7 @@
 "dR" = (
 /obj/structure/railing/mapped,
 /turf/simulated/open,
-/area/space)
+/area/mining_colony/security/upper/commandofficers)
 "dS" = (
 /turf/simulated/floor/dank/medical,
 /area/mining_colony/security/upper/permacells1)
@@ -1722,9 +1714,11 @@
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/security/upper/director)
 "ek" = (
-/obj/machinery/light,
-/turf/simulated/floor/tiled/dark,
-/area/mining_colony/security/upper)
+/obj/structure/table/reinforced,
+/obj/structure/window/reinforced,
+/obj/random/glasses,
+/turf/simulated/floor/dank/slides,
+/area/mining_colony/security/upper/bridge_corridor)
 "el" = (
 /obj/effect/floor_decal/spline/fancy/wood/corner{
 	dir = 1
@@ -1749,13 +1743,15 @@
 /turf/simulated/floor/dank/hardwood,
 /area/mining_colony/security/upper/director)
 "eo" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
+/obj/machinery/door/airlock/security{
+	dir = 4;
+	name = "P-Sec Officer's Wardrobe"
 	},
-/turf/simulated/floor/dank/hardwood,
-/area/space)
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/mining_colony/security/upper)
 "ep" = (
 /obj/structure/bed,
 /turf/simulated/floor/dank/medical,
@@ -1763,7 +1759,8 @@
 "eq" = (
 /obj/machinery/door/airlock/command{
 	dir = 4;
-	name = "Colony Director's Office"
+	name = "Colony Director's Office";
+	req_access = list(100)
 	},
 /obj/structure/cable{
 	d1 = 4;
@@ -1782,30 +1779,17 @@
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/security/upper/director)
 "er" = (
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24
-	},
-/obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/mining_colony/security/upper)
+/turf/simulated/floor/dank/hardwood,
+/area/mining_colony/security/upper/sec_offices)
 "es" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
+/obj/structure/bed/chair/office{
+	dir = 8
 	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
+/obj/effect/landmark/start{
+	name = "Security Officer"
 	},
-/turf/simulated/floor/dank/grater,
-/area/mining_colony/security/upper)
+/turf/simulated/floor/dank/hardwood,
+/area/mining_colony/security/upper/sec_offices)
 "et" = (
 /obj/effect/wallframe_spawn/reinforced,
 /turf/simulated/floor/dank/mono,
@@ -1813,14 +1797,12 @@
 "eu" = (
 /obj/machinery/door/window/northleft,
 /turf/simulated/floor/dank/hardwood,
-/area/space)
+/area/mining_colony/security/upper/fl_office)
 "ev" = (
-/obj/structure/railing/mapped{
-	dir = 8;
-	pixel_w = 0
-	},
-/turf/simulated/floor/dank/mono,
-/area/mining_colony/security/upper)
+/obj/structure/table/reinforced,
+/obj/random/hat,
+/turf/simulated/floor/dank/slides,
+/area/mining_colony/security/upper/bridge_corridor)
 "ew" = (
 /turf/unsimulated/mineral{
 	icon_state = "rock"
@@ -1867,13 +1849,31 @@
 /turf/simulated/floor/dank/rectangles,
 /area/mining_colony/security/upper/secstorage2)
 "eB" = (
-/turf/simulated/wall/r_wall,
-/area/space)
+/obj/structure/closet/secure_closet/security,
+/obj/structure/window/reinforced{
+	dir = 4;
+	icon_state = "rwindow"
+	},
+/obj/item/weapon/gun/energy/taser,
+/obj/item/clothing/accessory/badge{
+	badge_string = "Planetary Security"
+	},
+/obj/effect/floor_decal/dank/outline,
+/obj/item/clothing/suit/storage/toggle/cseco{
+	desc = "An armored jacket often worn by Planetary Security Officers that combines style and protection."
+	},
+/obj/item/clothing/head/soft/pcsi,
+/obj/machinery/light{
+	dir = 1;
+	icon_state = "tube_map"
+	},
+/turf/simulated/floor/dank/golf_brown,
+/area/mining_colony/security/upper)
 "eC" = (
 /obj/structure/table/standard,
 /obj/item/weapon/gun/projectile/divet/empty,
 /turf/simulated/floor/dank/golf_brown,
-/area/space)
+/area/mining_colony/security/upper/commandofficers)
 "eD" = (
 /obj/structure/closet/secure_closet/CSECO{
 	name = "P-Sec Commander's locker"
@@ -1912,7 +1912,7 @@
 	pixel_y = -35
 	},
 /turf/simulated/floor/dank/hardwood,
-/area/space)
+/area/mining_colony/security/upper/be_room2)
 "eH" = (
 /obj/machinery/keycard_auth{
 	pixel_x = -26
@@ -1926,7 +1926,7 @@
 	pixel_y = 28
 	},
 /turf/simulated/floor/dank/rectangles,
-/area/space)
+/area/mining_colony/security/upper/commandofficers)
 "eJ" = (
 /obj/structure/filingcabinet,
 /obj/structure/cable{
@@ -1957,59 +1957,327 @@
 	dir = 4
 	},
 /turf/simulated/floor/dank/golf_brown,
-/area/space)
-"fE" = (
-/obj/structure/bed/chair/office{
-	dir = 8
+/area/mining_colony/security/upper/commandofficers)
+"eR" = (
+/obj/machinery/light{
+	dir = 4;
+	icon_state = "tube_map"
 	},
-/obj/effect/landmark/start{
-	name = "Security Officer"
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
-/turf/simulated/floor/dank/hardwood,
-/area/space)
-"gf" = (
-/obj/structure/table/steel_reinforced,
-/obj/machinery/button/remote/blast_door{
-	id = "plaza_lock";
-	name = "Plaza Lockdown";
-	pixel_y = 5
+/turf/simulated/floor/dank/rectangles,
+/area/mining_colony/security/upper/commandofficers)
+"fk" = (
+/obj/machinery/light{
+	dir = 1;
+	icon_state = "tube_map"
 	},
-/obj/machinery/button/remote/blast_door{
-	id = "running_away";
-	name = "Civilian Hangar";
-	pixel_y = -2
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
-/turf/simulated/floor/dank/hardwood,
-/area/space)
-"gS" = (
-/obj/machinery/vending/coffee,
-/obj/machinery/light,
 /turf/simulated/floor/dank/golf_brown,
-/area/space)
-"la" = (
-/obj/structure/transit_tube/station{
+/area/mining_colony/security/upper/commandofficers)
+"fE" = (
+/obj/machinery/door/firedoor{
 	dir = 4
 	},
-/obj/structure/transit_tube_pod,
-/turf/simulated/floor/plating,
-/area/space)
-"lz" = (
-/obj/structure/transit_tube{
-	icon_state = "auto"
+/obj/machinery/door/airlock/security{
+	dir = 4;
+	name = "P-Sec Officer's Wardrobe"
 	},
-/turf/simulated/floor/plating,
-/area/space)
+/turf/simulated/floor/tiled/dark,
+/area/mining_colony/security/upper)
+"gf" = (
+/obj/structure/closet/secure_closet/security,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/item/weapon/gun/energy/taser,
+/obj/item/clothing/accessory/badge{
+	badge_string = "Planetary Security"
+	},
+/obj/effect/floor_decal/dank/outline,
+/obj/item/clothing/suit/storage/toggle/cseco{
+	desc = "An armored jacket often worn by Planetary Security Officers that combines style and protection."
+	},
+/obj/item/clothing/head/soft/pcsi,
+/turf/simulated/floor/dank/golf_brown,
+/area/mining_colony/security/upper)
+"gS" = (
+/turf/simulated/floor/dank/slides_end{
+	dir = 4
+	},
+/area/mining_colony/security/upper/bridge_corridor)
+"hx" = (
+/turf/simulated/floor/dank/tech,
+/area/mining_colony/security/upper/bridge_corridor)
+"hy" = (
+/obj/structure/bed/chair/office{
+	dir = 8;
+	icon_state = "officechair_preview"
+	},
+/turf/simulated/floor/dank/hardwood,
+/area/mining_colony/security/upper/be_room4)
+"hB" = (
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/dank/rectangles,
+/area/mining_colony/security/upper/commandofficers)
+"hD" = (
+/obj/machinery/light,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/dank/golf_brown,
+/area/mining_colony/security/upper/commandofficers)
+"iq" = (
+/obj/structure/table/reinforced,
+/obj/structure/window/reinforced,
+/obj/random/gloves,
+/turf/simulated/floor/dank/slides,
+/area/mining_colony/security/upper/bridge_corridor)
+"iw" = (
+/obj/effect/floor_decal/dank/border_corner_i{
+	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/dank/golf_brown,
+/area/mining_colony/security/upper/commandofficers)
+"iT" = (
+/obj/structure/railing/mapped{
+	dir = 1
+	},
+/turf/simulated/floor/dank/slides_end{
+	dir = 1
+	},
+/area/mining_colony/security/upper/bridge_corridor)
+"ke" = (
+/obj/structure/bed,
+/obj/item/weapon/bedsheet/captain,
+/obj/effect/landmark/start{
+	name = "Bridge Officer"
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/dank/hardwood,
+/area/mining_colony/security/upper/be_room2)
+"kk" = (
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/security/upper)
+"kz" = (
+/obj/structure/closet/secure_closet/security,
+/obj/item/weapon/gun/energy/taser,
+/obj/item/clothing/accessory/badge{
+	badge_string = "Planetary Security"
+	},
+/obj/effect/floor_decal/dank/outline,
+/obj/item/clothing/suit/storage/toggle/cseco{
+	desc = "An armored jacket often worn by Planetary Security Officers that combines style and protection."
+	},
+/obj/item/clothing/head/soft/pcsi,
+/turf/simulated/floor/dank/golf_brown,
+/area/mining_colony/security/upper)
+"kB" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/dank/rivets,
+/area/mining_colony/security/upper/cryo_room)
+"kG" = (
+/obj/machinery/door/airlock/command{
+	name = "Colony Director's Quarters"
+	},
+/obj/machinery/door/firedoor,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/dank/hardwood,
+/area/mining_colony/security/upper/be_room4)
+"kR" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/dank/hardwood,
+/area/mining_colony/security/upper/be_room1)
+"la" = (
+/obj/structure/closet/emcloset,
+/turf/simulated/floor/dank/slides,
+/area/mining_colony/security/upper/bridge_corridor)
+"lg" = (
+/obj/item/modular_computer/tablet/lease/preset/command,
+/obj/item/device/megaphone,
+/obj/effect/floor_decal/dank/outline,
+/obj/structure/closet/secure_closet/personal/empty,
+/obj/item/clothing/accessory/armorplate/tactical,
+/obj/item/clothing/under/gentlesuit,
+/obj/item/clothing/under/rank/internalaffairs/plain,
+/obj/item/clothing/under/suit_jacket/checkered,
+/obj/item/clothing/under/suit_jacket/navy,
+/obj/item/clothing/under/suit_jacket/tan,
+/obj/item/clothing/suit/armor/vest,
+/obj/item/weapon/storage/belt/holster/security,
+/turf/simulated/floor/dank/hardwood,
+/area/mining_colony/security/upper/be_room2)
+"lm" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/dank/tech{
+	dir = 4
+	},
+/area/mining_colony/security/upper/bridge_corridor)
+"lz" = (
+/obj/structure/sign/deck/ds/purple,
+/turf/simulated/wall/r_wall,
+/area/mining_colony/security/upper/sec_offices)
+"lO" = (
+/obj/structure/bed/chair/office{
+	dir = 8;
+	icon_state = "officechair_preview"
+	},
+/turf/simulated/floor/dank/hardwood,
+/area/mining_colony/security/upper/be_room3)
+"lZ" = (
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "1-2"
+	},
+/obj/machinery/light{
+	dir = 4;
+	icon_state = "tube_map"
+	},
+/turf/simulated/floor/dank/mono,
+/area/mining_colony/security/upper)
+"md" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/security/upper)
+"mi" = (
+/obj/structure/table/reinforced,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/random/gloves,
+/turf/simulated/floor/dank/slides,
+/area/mining_colony/security/upper/bridge_corridor)
+"mv" = (
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/dank/tech{
+	dir = 4
+	},
+/area/mining_colony/security/upper/bridge_corridor)
 "mK" = (
 /obj/structure/bed,
 /obj/item/weapon/bedsheet/captain,
 /turf/simulated/floor/dank/hardwood,
-/area/space)
+/area/mining_colony/security/upper/fl_office)
+"nq" = (
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-5"
+	},
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/security/upper)
 "nx" = (
 /obj/structure/table/woodentable,
 /obj/item/weapon/pen/fancy,
 /obj/item/weapon/paper_bin,
 /turf/simulated/floor/dank/hardwood,
-/area/space)
+/area/mining_colony/security/upper/fl_office)
+"nK" = (
+/obj/structure/railing/mapped{
+	dir = 1
+	},
+/turf/simulated/floor/dank/slides_end{
+	dir = 2
+	},
+/area/mining_colony/security/upper/bridge_corridor)
+"nZ" = (
+/turf/simulated/open,
+/area/mining_colony/security/upper/bridge_corridor)
+"on" = (
+/obj/structure/railing/mapped,
+/turf/simulated/floor/dank/slides_end{
+	dir = 2
+	},
+/area/mining_colony/security/upper/bridge_corridor)
+"ou" = (
+/obj/structure/stairs_short/east,
+/obj/structure/railing/mapped,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/dank/rectangles,
+/area/mining_colony/security/upper/commandofficers)
+"oI" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/dank/hardwood,
+/area/mining_colony/security/upper/be_room3)
+"oO" = (
+/turf/simulated/floor/dank/slides,
+/area/mining_colony/security/upper/bridge_corridor)
+"pR" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/dank/golf_brown,
+/area/mining_colony/security/upper/commandofficers)
 "qv" = (
 /obj/structure/bed/chair/office{
 	dir = 8;
@@ -2028,7 +2296,26 @@
 	name = "First Lieutenant"
 	},
 /turf/simulated/floor/dank/hardwood,
-/area/space)
+/area/mining_colony/security/upper/fl_office)
+"qz" = (
+/obj/effect/floor_decal/dank/border{
+	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "4-10"
+	},
+/turf/simulated/floor/dank/golf_brown,
+/area/mining_colony/security/upper/commandofficers)
+"ro" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/dank/slides{
+	dir = 8
+	},
+/area/mining_colony/security/upper/bridge_corridor)
 "rv" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -2037,22 +2324,69 @@
 	},
 /obj/machinery/light,
 /turf/simulated/floor/dank/golf_brown,
-/area/space)
+/area/mining_colony/security/upper/commandofficers)
+"rK" = (
+/obj/structure/railing/mapped,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/dank/rectangles,
+/area/mining_colony/security/upper/commandofficers)
 "rU" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/security{
-	name = "Bridge";
-	req_one_access = list();
-	req_access = list(11)
+/obj/machinery/door/airlock/command{
+	name = "Bridge"
 	},
 /turf/simulated/floor/dank/mono,
-/area/space)
-"sW" = (
-/obj/structure/closet/secure_closet/personal/empty,
-/obj/item/modular_computer/tablet/lease/preset/command,
-/obj/effect/floor_decal/dank/outline,
+/area/mining_colony/security/upper/commandofficers)
+"rX" = (
+/obj/structure/closet/secure_closet/personal/cabinet,
+/obj/item/weapon/reagent_containers/food/drinks/bottle/whiskey,
+/obj/item/weapon/reagent_containers/food/drinks/bottle/vodka,
+/obj/item/weapon/reagent_containers/food/drinks/bottle/vermouth,
+/obj/item/weapon/reagent_containers/food/drinks/bottle/wine,
+/obj/item/weapon/reagent_containers/food/drinks/bottle/rum,
+/obj/item/weapon/reagent_containers/food/drinks/bottle/premiumvodka,
+/obj/item/weapon/reagent_containers/food/drinks/bottle/goldschlager,
+/obj/item/weapon/reagent_containers/food/drinks/bottle/kahlua,
+/obj/item/weapon/storage/box/glass_extras/sticks,
+/obj/item/weapon/storage/box/glasses/wine,
+/obj/item/weapon/storage/box/glasses/cocktail,
 /turf/simulated/floor/dank/hardwood,
-/area/space)
+/area/mining_colony/security/upper/be_room4)
+"so" = (
+/turf/simulated/wall/r_wall,
+/area/mining_colony/security/upper/be_room1)
+"sE" = (
+/obj/structure/bed,
+/obj/item/weapon/bedsheet/captain,
+/obj/effect/landmark/start{
+	name = "Bridge Officer"
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/dank/hardwood,
+/area/mining_colony/security/upper/be_room4)
+"sW" = (
+/obj/machinery/light{
+	dir = 1;
+	icon_state = "tube_map"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/mining_colony/security/upper)
+"sZ" = (
+/obj/machinery/light,
+/turf/simulated/floor/dank/golf_brown,
+/area/mining_colony/security/upper/commandofficers)
+"tv" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/mining_colony/security/upper)
 "tI" = (
 /obj/machinery/firealarm{
 	dir = 4;
@@ -2071,7 +2405,26 @@
 	dir = 4
 	},
 /turf/simulated/floor/dank/hardwood,
-/area/space)
+/area/mining_colony/security/upper/be_room3)
+"tY" = (
+/obj/structure/railing/mapped{
+	dir = 1
+	},
+/turf/simulated/floor/dank/tech{
+	dir = 1
+	},
+/area/mining_colony/security/upper/bridge_corridor)
+"ug" = (
+/obj/structure/table/reinforced,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/random/hat,
+/turf/simulated/floor/dank/slides,
+/area/mining_colony/security/upper/bridge_corridor)
+"ut" = (
+/turf/simulated/wall/r_wall,
+/area/mining_colony/security/upper/be_room4)
 "uz" = (
 /obj/structure/table/woodentable,
 /obj/structure/cable{
@@ -2081,12 +2434,53 @@
 	},
 /obj/random/rare_loot/pengless,
 /turf/simulated/floor/dank/hardwood,
-/area/space)
+/area/mining_colony/security/upper/fl_office)
 "uJ" = (
-/obj/machinery/vending/security,
-/obj/machinery/light,
+/obj/structure/flora/pottedplant/unusual,
+/turf/simulated/floor/dank/slides{
+	dir = 1
+	},
+/area/mining_colony/security/upper/bridge_corridor)
+"uW" = (
+/obj/effect/floor_decal/dank/border_corner{
+	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "4-10"
+	},
 /turf/simulated/floor/dank/golf_brown,
-/area/space)
+/area/mining_colony/security/upper/commandofficers)
+"va" = (
+/obj/structure/cable,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/dank/tech{
+	dir = 4
+	},
+/area/mining_colony/security/upper/bridge_corridor)
+"vh" = (
+/obj/structure/bed/chair/office{
+	dir = 1
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/dank/golf_brown,
+/area/mining_colony/security/upper/commandofficers)
+"vt" = (
+/obj/machinery/light{
+	dir = 4;
+	icon_state = "tube_map"
+	},
+/turf/simulated/floor/dank/slides,
+/area/mining_colony/security/upper/bridge_corridor)
 "vx" = (
 /obj/machinery/firealarm{
 	dir = 4;
@@ -2096,24 +2490,21 @@
 /turf/simulated/floor/dank/medical,
 /area/mining_colony/security/upper/permacells2)
 "vH" = (
-/turf/simulated/floor/dank/slides_end{
-	dir = 4
-	},
-/area/space)
+/obj/machinery/cryopod,
+/obj/effect/floor_decal/dank/outline_striped,
+/turf/simulated/floor/dank/rivets,
+/area/mining_colony/security/upper/cryo_room)
 "vL" = (
-/turf/simulated/floor/dank/slides_end{
-	dir = 8
-	},
-/area/space)
+/turf/simulated/floor/plating,
+/area/mining_colony/security/upper/commandofficers)
 "wa" = (
-/obj/item/modular_computer/console/preset/security{
-	dir = 4
-	},
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/dank/hardwood,
-/area/space)
+/turf/simulated/floor/dank/tech{
+	dir = 1
+	},
+/area/mining_colony/security/upper/bridge_corridor)
 "wi" = (
 /obj/machinery/door/firedoor,
 /obj/structure/cable{
@@ -2121,13 +2512,19 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/door/airlock/security{
-	name = "Bridge";
-	req_one_access = list();
-	req_access = list(11)
+/obj/machinery/door/airlock/command{
+	name = "Bridge"
 	},
 /turf/simulated/floor/dank/mono,
-/area/space)
+/area/mining_colony/security/upper/commandofficers)
+"wk" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/dank/hardwood,
+/area/mining_colony/security/upper/sec_offices)
 "wz" = (
 /obj/machinery/firealarm{
 	dir = 4;
@@ -2135,14 +2532,119 @@
 	pixel_x = 20
 	},
 /turf/simulated/floor/dank/hardwood,
-/area/space)
+/area/mining_colony/security/upper/fl_office)
+"wD" = (
+/obj/item/modular_computer/tablet/lease/preset/command,
+/obj/item/device/megaphone,
+/obj/effect/floor_decal/dank/outline,
+/obj/structure/closet/secure_closet/personal/empty,
+/obj/item/clothing/accessory/armorplate/tactical,
+/obj/item/clothing/under/gentlesuit,
+/obj/item/clothing/under/rank/internalaffairs/plain,
+/obj/item/clothing/under/suit_jacket/checkered,
+/obj/item/clothing/under/suit_jacket/navy,
+/obj/item/clothing/under/suit_jacket/tan,
+/obj/item/clothing/suit/armor/vest,
+/obj/item/weapon/storage/belt/holster/security,
+/turf/simulated/floor/dank/hardwood,
+/area/mining_colony/security/upper/fl_office)
+"xG" = (
+/obj/structure/closet/secure_closet/personal/cabinet,
+/obj/item/weapon/reagent_containers/food/drinks/bottle/whiskey,
+/obj/item/weapon/reagent_containers/food/drinks/bottle/vodka,
+/obj/item/weapon/reagent_containers/food/drinks/bottle/vermouth,
+/obj/item/weapon/reagent_containers/food/drinks/bottle/wine,
+/obj/item/weapon/reagent_containers/food/drinks/bottle/rum,
+/obj/item/weapon/reagent_containers/food/drinks/bottle/premiumvodka,
+/obj/item/weapon/reagent_containers/food/drinks/bottle/goldschlager,
+/obj/item/weapon/reagent_containers/food/drinks/bottle/kahlua,
+/obj/item/weapon/storage/box/glass_extras/sticks,
+/obj/item/weapon/storage/box/glasses/wine,
+/obj/item/weapon/storage/box/glasses/cocktail,
+/turf/simulated/floor/dank/hardwood,
+/area/mining_colony/security/upper/be_room1)
+"xM" = (
+/turf/simulated/floor/dank/slides_end{
+	dir = 8
+	},
+/area/mining_colony/security/upper/bridge_corridor)
+"xX" = (
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "5-8"
+	},
+/turf/simulated/floor/dank/golf_brown,
+/area/mining_colony/security/upper/commandofficers)
+"yF" = (
+/obj/machinery/power/apc{
+	name = "south bump";
+	pixel_y = -28
+	},
+/obj/structure/cable,
+/turf/simulated/floor/dank/hardwood,
+/area/mining_colony/security/upper/be_room4)
+"yK" = (
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -35
+	},
+/turf/simulated/floor/dank/hardwood,
+/area/mining_colony/security/upper/be_room4)
+"zd" = (
+/turf/simulated/wall/r_wall,
+/area/mining_colony/security/upper/fl_office)
+"zv" = (
+/turf/simulated/wall/r_wall,
+/area/mining_colony/security/upper/be_room2)
+"zx" = (
+/obj/item/modular_computer/tablet/lease/preset/command,
+/obj/item/device/megaphone,
+/obj/effect/floor_decal/dank/outline,
+/obj/structure/closet/secure_closet/personal/empty,
+/obj/item/clothing/accessory/armorplate/tactical,
+/obj/item/clothing/under/gentlesuit,
+/obj/item/clothing/under/rank/internalaffairs/plain,
+/obj/item/clothing/under/suit_jacket/checkered,
+/obj/item/clothing/under/suit_jacket/navy,
+/obj/item/clothing/under/suit_jacket/tan,
+/obj/item/clothing/suit/armor/vest,
+/obj/item/weapon/storage/belt/holster/security,
+/turf/simulated/floor/dank/hardwood,
+/area/mining_colony/security/upper/be_room1)
 "zA" = (
 /obj/item/device/radio/intercom/department/security{
 	dir = 1;
 	pixel_y = -30
 	},
 /turf/simulated/floor/dank/hardwood,
-/area/space)
+/area/mining_colony/security/upper/sec_offices)
+"zH" = (
+/obj/machinery/power/apc{
+	name = "south bump";
+	pixel_y = -28
+	},
+/obj/structure/cable,
+/turf/simulated/floor/dank/hardwood,
+/area/mining_colony/security/upper/be_room3)
+"Aa" = (
+/obj/machinery/light,
+/turf/simulated/floor/dank/slides{
+	dir = 4
+	},
+/area/mining_colony/security/upper/bridge_corridor)
+"Ay" = (
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -35
+	},
+/turf/simulated/floor/dank/hardwood,
+/area/mining_colony/security/upper/be_room3)
+"AC" = (
+/obj/structure/table/woodentable,
+/obj/random/toy,
+/turf/simulated/floor/dank/hardwood,
+/area/mining_colony/security/upper/be_room2)
 "Bc" = (
 /obj/item/device/radio/intercom/department/security{
 	dir = 8;
@@ -2153,19 +2655,47 @@
 "Bm" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/security/upper/permacells1)
+"BH" = (
+/obj/item/modular_computer/console/preset/command{
+	dir = 8
+	},
+/turf/simulated/floor/dank/hardwood,
+/area/mining_colony/security/upper/sec_offices)
 "BN" = (
 /obj/item/device/radio/intercom/department/security{
 	dir = 8;
 	pixel_x = 21
 	},
 /turf/simulated/floor/dank/rectangles,
-/area/space)
+/area/mining_colony/security/upper/commandofficers)
+"BR" = (
+/obj/item/modular_computer/console/preset/security{
+	dir = 8
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/dank/hardwood,
+/area/mining_colony/security/upper/sec_offices)
 "Cl" = (
 /obj/item/modular_computer/console/preset/command{
 	dir = 1
 	},
 /turf/simulated/floor/dank/hardwood,
-/area/space)
+/area/mining_colony/security/upper/fl_office)
+"Ct" = (
+/obj/machinery/power/apc{
+	dir = 1;
+	name = "north bump";
+	pixel_y = 15;
+	req_access = list(201)
+	},
+/obj/structure/cable{
+	d2 = 2;
+	icon_state = "0-2"
+	},
+/turf/simulated/floor/dank/rivets,
+/area/mining_colony/security/upper/cryo_room)
 "Cw" = (
 /obj/structure/bed/chair/office{
 	dir = 1
@@ -2175,164 +2705,63 @@
 	pixel_x = -21
 	},
 /turf/simulated/floor/dank/golf_brown,
-/area/space)
+/area/mining_colony/security/upper/commandofficers)
 "CI" = (
-/turf/simulated/wall/r_wall,
-/area/mining_colony/security/upper/cryo_room)
+/turf/simulated/floor/dank/slides{
+	dir = 1
+	},
+/area/mining_colony/security/upper/bridge_corridor)
 "CX" = (
-/obj/structure/transit_tube/station{
+/obj/machinery/door/airlock/security{
+	name = "P-Sec Upper Hallway"
+	},
+/turf/simulated/floor/dank/mono,
+/area/mining_colony/security/upper/bridge_corridor)
+"Dg" = (
+/obj/machinery/light{
 	dir = 8
 	},
-/obj/structure/transit_tube_pod,
-/turf/simulated/floor/plating,
-/area/space)
+/turf/simulated/floor/dank/slides{
+	dir = 1
+	},
+/area/mining_colony/security/upper/bridge_corridor)
 "Dq" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/security/upper/permacells2)
 "Dr" = (
-/obj/structure/closet/secure_closet/security,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/item/weapon/gun/energy/taser,
-/obj/item/clothing/accessory/badge{
-	badge_string = "Planetary Security"
-	},
+/obj/structure/closet/secure_closet/brig,
+/obj/item/clothing/suit/straight_jacket,
+/obj/item/clothing/suit/straight_jacket,
+/obj/item/clothing/mask/muzzle,
+/obj/item/clothing/mask/muzzle,
+/obj/item/clothing/glasses/sunglasses/blindfold,
+/obj/item/clothing/glasses/sunglasses/blindfold,
 /obj/effect/floor_decal/dank/outline,
-/obj/item/clothing/suit/storage/toggle/cseco{
-	desc = "An armored jacket often worn by Planetary Security Officers that combines style and protection."
-	},
-/obj/item/clothing/head/soft/pcsi,
-/turf/simulated/floor/dank/golf_brown,
-/area/space)
+/turf/simulated/floor/tiled/dark,
+/area/mining_colony/security/upper)
+"Dt" = (
+/obj/item/modular_computer/tablet/lease/preset/command,
+/obj/item/device/megaphone,
+/obj/effect/floor_decal/dank/outline,
+/obj/structure/closet/secure_closet/personal/empty,
+/obj/item/clothing/accessory/armorplate/tactical,
+/obj/item/clothing/under/gentlesuit,
+/obj/item/clothing/under/rank/internalaffairs/plain,
+/obj/item/clothing/under/suit_jacket/checkered,
+/obj/item/clothing/under/suit_jacket/navy,
+/obj/item/clothing/under/suit_jacket/tan,
+/obj/item/clothing/suit/armor/vest,
+/obj/item/weapon/storage/belt/holster/security,
+/turf/simulated/floor/dank/hardwood,
+/area/mining_colony/security/upper/be_room4)
 "Dz" = (
 /obj/machinery/light{
 	dir = 4;
 	icon_state = "tube_map"
 	},
 /turf/simulated/floor/dank/hardwood,
-/area/space)
-"DM" = (
-/obj/structure/closet/secure_closet/security,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/machinery/light,
-/obj/item/weapon/gun/energy/taser,
-/obj/item/clothing/accessory/badge{
-	badge_string = "Planetary Security"
-	},
-/obj/effect/floor_decal/dank/outline,
-/obj/item/clothing/suit/storage/toggle/cseco{
-	desc = "An armored jacket often worn by Planetary Security Officers that combines style and protection."
-	},
-/obj/item/clothing/head/soft/pcsi,
-/turf/simulated/floor/dank/golf_brown,
-/area/space)
-"Ef" = (
-/turf/simulated/wall/r_wall,
-/area/mining_colony/security/upper/forensics)
-"ER" = (
-/obj/structure/table/woodentable,
-/obj/item/weapon/folder/blue,
-/obj/random/rig_module/rare,
-/turf/simulated/floor/dank/hardwood,
-/area/mining_colony/security/upper/director)
-"FE" = (
-/turf/simulated/floor/dank/hardwood,
-/area/space)
-"FG" = (
-/obj/structure/table/woodentable,
-/obj/random/toy,
-/turf/simulated/floor/dank/hardwood,
-/area/space)
-"FN" = (
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
-/turf/simulated/floor/dank/hardwood,
-/area/space)
-"Ht" = (
-/obj/item/modular_computer/console/preset/security{
-	dir = 8
-	},
-/obj/machinery/light{
-	dir = 4
-	},
-/turf/simulated/floor/dank/hardwood,
-/area/space)
-"Iw" = (
-/obj/structure/sign/deck/ds/purple,
-/turf/simulated/wall/r_wall,
-/area/space)
-"Km" = (
-/obj/machinery/light{
-	dir = 8
-	},
-/turf/simulated/floor/dank/hardwood,
-/area/space)
-"KH" = (
-/obj/item/device/radio/intercom/department/security{
-	dir = 4;
-	pixel_x = -21
-	},
-/turf/simulated/floor/dank/mono,
-/area/mining_colony/security/upper/forensics)
-"LV" = (
-/obj/structure/bed/chair/office{
-	dir = 4;
-	icon_state = "officechair_preview"
-	},
-/obj/effect/landmark/start{
-	name = "Security Officer"
-	},
-/turf/simulated/floor/dank/hardwood,
-/area/space)
-"MS" = (
-/obj/structure/table/woodentable,
-/obj/item/weapon/folder/blue,
-/obj/item/weapon/stamp/fl,
-/obj/item/weapon/stamp/captain,
-/turf/simulated/floor/dank/hardwood,
-/area/space)
-"MU" = (
-/obj/machinery/firealarm{
-	dir = 1;
-	pixel_y = -35
-	},
-/turf/simulated/floor/dank/hardwood,
-/area/mining_colony/security/upper/director)
-"Nu" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/maintenance{
-	req_access = list(1, 11)
-	},
-/turf/simulated/floor/dank/maint,
-/area/space)
-"NL" = (
-/obj/structure/transit_tube/station,
-/obj/structure/transit_tube_pod{
-	dir = 8
-	},
-/turf/simulated/floor/plating,
-/area/space)
-"Oa" = (
-/obj/item/modular_computer/console/preset/command{
-	dir = 8
-	},
-/turf/simulated/floor/dank/hardwood,
-/area/space)
-"Oc" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/turf/simulated/floor/dank/hardwood,
-/area/space)
-"PY" = (
+/area/mining_colony/security/upper/fl_office)
+"DA" = (
 /obj/structure/closet/secure_closet/personal/empty,
 /obj/item/modular_computer/tablet/lease/preset/command,
 /obj/machinery/power/apc{
@@ -2346,7 +2775,361 @@
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/dank/hardwood,
-/area/space)
+/area/mining_colony/security/upper/sec_offices)
+"DG" = (
+/obj/structure/table/woodentable,
+/obj/random/toy,
+/turf/simulated/floor/dank/hardwood,
+/area/mining_colony/security/upper/be_room4)
+"DM" = (
+/obj/structure/railing/mapped{
+	dir = 8;
+	pixel_w = 0
+	},
+/obj/structure/flora/pottedplant/orientaltree,
+/turf/simulated/floor/tiled/dark,
+/area/mining_colony/security/upper)
+"DR" = (
+/obj/structure/bed/chair/office{
+	dir = 8;
+	icon_state = "officechair_preview"
+	},
+/turf/simulated/floor/dank/hardwood,
+/area/mining_colony/security/upper/be_room2)
+"Ef" = (
+/turf/simulated/wall/r_wall,
+/area/mining_colony/security/upper/forensics)
+"EB" = (
+/obj/structure/railing/mapped,
+/turf/simulated/floor/dank/tech{
+	dir = 1
+	},
+/area/mining_colony/security/upper/bridge_corridor)
+"EK" = (
+/obj/structure/table/reinforced,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/random/glasses,
+/obj/machinery/light{
+	dir = 4;
+	icon_state = "tube_map"
+	},
+/turf/simulated/floor/dank/slides,
+/area/mining_colony/security/upper/bridge_corridor)
+"EQ" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/dank/slides{
+	dir = 4
+	},
+/area/mining_colony/security/upper/bridge_corridor)
+"ER" = (
+/obj/structure/table/woodentable,
+/obj/item/weapon/folder/blue,
+/obj/random/rig_module/rare,
+/turf/simulated/floor/dank/hardwood,
+/area/mining_colony/security/upper/director)
+"FE" = (
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "1-2"
+	},
+/obj/machinery/door/airlock/security{
+	name = "P-Sec Upper Hallway"
+	},
+/turf/simulated/floor/dank/mono,
+/area/mining_colony/security/upper/bridge_corridor)
+"FG" = (
+/obj/structure/table/woodentable,
+/obj/random/toy,
+/turf/simulated/floor/dank/hardwood,
+/area/mining_colony/security/upper/be_room3)
+"FN" = (
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/dank/hardwood,
+/area/mining_colony/security/upper/fl_office)
+"Ga" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/dank/hardwood,
+/area/mining_colony/security/upper/be_room2)
+"GC" = (
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/dank/golf_brown,
+/area/mining_colony/security/upper/bridge_corridor)
+"GG" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/security/upper)
+"Ht" = (
+/obj/machinery/camera/network/command{
+	dir = 1
+	},
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -35
+	},
+/turf/simulated/floor/dank/hardwood,
+/area/mining_colony/security/upper/sec_offices)
+"Hv" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/security/upper)
+"HD" = (
+/obj/structure/table/woodentable,
+/obj/random/toy,
+/turf/simulated/floor/dank/hardwood,
+/area/mining_colony/security/upper/be_room1)
+"HJ" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/light,
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/security/upper)
+"In" = (
+/obj/machinery/power/apc{
+	name = "south bump";
+	pixel_y = -28
+	},
+/obj/structure/cable,
+/turf/simulated/floor/dank/hardwood,
+/area/mining_colony/security/upper/be_room1)
+"Iw" = (
+/obj/structure/table/reinforced,
+/obj/random/toolbox/low_chance,
+/turf/simulated/floor/dank/slides,
+/area/mining_colony/security/upper/bridge_corridor)
+"IH" = (
+/obj/structure/bed/chair/office{
+	dir = 4;
+	icon_state = "officechair_preview"
+	},
+/obj/effect/landmark/start{
+	name = "Security Officer"
+	},
+/turf/simulated/floor/dank/hardwood,
+/area/mining_colony/security/upper/sec_offices)
+"JG" = (
+/obj/structure/flora/pottedplant/fern,
+/turf/simulated/floor/tiled/dark,
+/area/mining_colony/security/upper)
+"JK" = (
+/turf/simulated/wall/r_wall,
+/area/mining_colony/security/upper/sec_offices)
+"JL" = (
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/dank/golf_brown,
+/area/mining_colony/security/upper/commandofficers)
+"Ka" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/dank/rectangles,
+/area/mining_colony/security/upper/commandofficers)
+"Km" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/dank/hardwood,
+/area/mining_colony/security/upper/fl_office)
+"KH" = (
+/obj/item/device/radio/intercom/department/security{
+	dir = 4;
+	pixel_x = -21
+	},
+/turf/simulated/floor/dank/mono,
+/area/mining_colony/security/upper/forensics)
+"KL" = (
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/dank/tech{
+	dir = 4
+	},
+/area/mining_colony/security/upper/bridge_corridor)
+"Ls" = (
+/obj/machinery/cryopod{
+	dir = 4
+	},
+/obj/effect/floor_decal/dank/outline_striped,
+/turf/simulated/floor/dank/rivets,
+/area/mining_colony/security/upper/cryo_room)
+"LC" = (
+/turf/simulated/floor/dank/hardwood,
+/area/mining_colony/security/upper/fl_office)
+"LV" = (
+/obj/structure/closet/firecloset,
+/turf/simulated/floor/dank/slides{
+	dir = 1
+	},
+/area/mining_colony/security/upper/bridge_corridor)
+"MA" = (
+/obj/structure/table/steel_reinforced,
+/obj/machinery/button/remote/blast_door{
+	id = "plaza_lock";
+	name = "Plaza Lockdown";
+	pixel_y = 5
+	},
+/obj/machinery/button/remote/blast_door{
+	id = "running_away";
+	name = "Civilian Hangar";
+	pixel_y = -2
+	},
+/turf/simulated/floor/dank/hardwood,
+/area/mining_colony/security/upper/sec_offices)
+"MS" = (
+/obj/structure/table/woodentable,
+/obj/item/weapon/folder/blue,
+/obj/item/weapon/stamp/fl,
+/obj/item/weapon/stamp/captain,
+/turf/simulated/floor/dank/hardwood,
+/area/mining_colony/security/upper/fl_office)
+"MU" = (
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -35
+	},
+/turf/simulated/floor/dank/hardwood,
+/area/mining_colony/security/upper/director)
+"Ng" = (
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
+/obj/machinery/door/airlock/security{
+	dir = 4;
+	name = "P-Sec Upper Hallway"
+	},
+/turf/simulated/floor/dank/mono,
+/area/mining_colony/security/upper)
+"Nj" = (
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/dank/tech{
+	dir = 4
+	},
+/area/mining_colony/security/upper/bridge_corridor)
+"Ns" = (
+/obj/machinery/power/apc{
+	name = "south bump";
+	pixel_y = -28
+	},
+/obj/structure/cable,
+/turf/simulated/floor/dank/hardwood,
+/area/mining_colony/security/upper/be_room2)
+"Nu" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/maintenance{
+	req_access = list(1, 11)
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "9-10"
+	},
+/turf/simulated/floor/dank/maint,
+/area/mining_colony/security/upper/commandofficers)
+"NL" = (
+/obj/machinery/light{
+	dir = 4;
+	icon_state = "tube_map"
+	},
+/obj/structure/table/reinforced,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/random/toolbox/low_chance,
+/turf/simulated/floor/dank/slides,
+/area/mining_colony/security/upper/bridge_corridor)
+"Oc" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/dank/hardwood,
+/area/mining_colony/security/upper/fl_office)
+"Pd" = (
+/obj/structure/cable{
+	d2 = 2;
+	icon_state = "0-2"
+	},
+/obj/machinery/power/apc{
+	dir = 1;
+	name = "north bump";
+	pixel_y = 15;
+	req_access = list(201)
+	},
+/turf/simulated/floor/dank/slides{
+	dir = 8
+	},
+/area/mining_colony/security/upper/bridge_corridor)
+"PY" = (
+/turf/simulated/floor/dank/slides_end{
+	dir = 2
+	},
+/area/mining_colony/security/upper/bridge_corridor)
+"Qc" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/dank/golf_brown,
+/area/mining_colony/security/upper/bridge_corridor)
+"Qn" = (
+/turf/simulated/wall/r_wall,
+/area/mining_colony/security/upper/be_room3)
 "QP" = (
 /obj/structure/railing/mapped,
 /obj/machinery/firealarm{
@@ -2355,8 +3138,112 @@
 	pixel_x = 20
 	},
 /turf/simulated/floor/dank/rectangles,
-/area/space)
+/area/mining_colony/security/upper/commandofficers)
+"QS" = (
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "4-10"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/mining_colony/security/upper)
+"QT" = (
+/obj/machinery/vending/coffee,
+/obj/machinery/light,
+/turf/simulated/floor/dank/golf_brown,
+/area/mining_colony/security/upper)
 "RI" = (
+/turf/simulated/floor/dank/tech{
+	dir = 8
+	},
+/area/mining_colony/security/upper/bridge_corridor)
+"RZ" = (
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/dank/slides{
+	dir = 4
+	},
+/area/mining_colony/security/upper/bridge_corridor)
+"Sj" = (
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -35
+	},
+/turf/simulated/floor/dank/hardwood,
+/area/mining_colony/security/upper/be_room1)
+"Sz" = (
+/obj/structure/bed/chair/office{
+	dir = 4;
+	icon_state = "officechair_preview"
+	},
+/obj/effect/landmark/start{
+	name = "Security Officer"
+	},
+/obj/structure/sign/goldenplaque{
+	desc = "Nathan McNeill, for 10 years of dedication and service to the citizens of Aegis VII.";
+	name = "P-Sec plaque";
+	pixel_w = 0;
+	pixel_y = -28
+	},
+/turf/simulated/floor/dank/hardwood,
+/area/mining_colony/security/upper/sec_offices)
+"SC" = (
+/obj/machinery/light{
+	dir = 4;
+	icon_state = "tube_map"
+	},
+/turf/simulated/floor/dank/golf_brown,
+/area/mining_colony/security/upper/bridge_corridor)
+"SI" = (
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/mining_colony/security/upper)
+"SL" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/dank/tech{
+	dir = 4
+	},
+/area/mining_colony/security/upper/bridge_corridor)
+"TK" = (
+/obj/machinery/door/airlock/command{
+	name = "Colony Director's Quarters"
+	},
+/obj/machinery/door/firedoor,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/dank/hardwood,
+/area/mining_colony/security/upper/be_room3)
+"Uk" = (
+/obj/machinery/vending/security,
+/obj/machinery/light{
+	dir = 1;
+	icon_state = "tube_map"
+	},
+/turf/simulated/floor/dank/golf_brown,
+/area/mining_colony/security/upper)
+"Um" = (
+/obj/structure/railing/mapped{
+	dir = 8;
+	icon_state = "railing0";
+	pixel_w = 5
+	},
+/turf/simulated/floor/dank/golf_brown,
+/area/mining_colony/security/upper/bridge_corridor)
+"Uo" = (
 /obj/machinery/cryopod,
 /obj/effect/floor_decal/dank/outline_striped,
 /obj/machinery/firealarm{
@@ -2366,39 +3253,77 @@
 	},
 /turf/simulated/floor/dank/rivets,
 /area/mining_colony/security/upper/cryo_room)
-"SI" = (
-/obj/machinery/light{
-	dir = 1;
-	icon_state = "tube_map"
+"Up" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/dank/tech{
+	dir = 8
+	},
+/area/mining_colony/security/upper/bridge_corridor)
+"Uu" = (
+/obj/effect/floor_decal/dank/border_corner_i{
+	dir = 1
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "5-8"
 	},
 /turf/simulated/floor/dank/golf_brown,
-/area/space)
+/area/mining_colony/security/upper/commandofficers)
 "UM" = (
 /turf/unsimulated/mineral{
 	icon = 'icons/turf/flooring/lava.dmi';
 	icon_state = "rock"
 	},
 /area/space)
+"UQ" = (
+/turf/simulated/wall/r_wall,
+/area/mining_colony/security/upper/cryo_room)
+"UZ" = (
+/obj/item/modular_computer/console/preset/security{
+	dir = 4
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/dank/hardwood,
+/area/mining_colony/security/upper/sec_offices)
+"Vh" = (
+/obj/structure/table/reinforced,
+/obj/structure/window/reinforced,
+/obj/random/clothing,
+/turf/simulated/floor/dank/slides,
+/area/mining_colony/security/upper/bridge_corridor)
 "Vv" = (
 /turf/simulated/open,
-/area/mining_colony)
-"VV" = (
-/obj/structure/closet/secure_closet/security,
-/obj/structure/window/reinforced{
-	dir = 4;
-	icon_state = "rwindow"
-	},
-/obj/item/weapon/gun/energy/taser,
-/obj/item/clothing/accessory/badge{
-	badge_string = "Planetary Security"
-	},
-/obj/effect/floor_decal/dank/outline,
-/obj/item/clothing/suit/storage/toggle/cseco{
-	desc = "An armored jacket often worn by Planetary Security Officers that combines style and protection."
-	},
-/obj/item/clothing/head/soft/pcsi,
+/area/mining_colony/security/upper/commandofficers)
+"VP" = (
+/obj/machinery/light,
 /turf/simulated/floor/dank/golf_brown,
-/area/space)
+/area/mining_colony/security/upper/bridge_corridor)
+"VT" = (
+/obj/structure/closet/secure_closet/personal/cabinet,
+/obj/item/weapon/reagent_containers/food/drinks/bottle/whiskey,
+/obj/item/weapon/reagent_containers/food/drinks/bottle/vodka,
+/obj/item/weapon/reagent_containers/food/drinks/bottle/vermouth,
+/obj/item/weapon/reagent_containers/food/drinks/bottle/wine,
+/obj/item/weapon/reagent_containers/food/drinks/bottle/rum,
+/obj/item/weapon/reagent_containers/food/drinks/bottle/premiumvodka,
+/obj/item/weapon/reagent_containers/food/drinks/bottle/goldschlager,
+/obj/item/weapon/reagent_containers/food/drinks/bottle/kahlua,
+/obj/item/weapon/storage/box/glass_extras/sticks,
+/obj/item/weapon/storage/box/glasses/wine,
+/obj/item/weapon/storage/box/glasses/cocktail,
+/turf/simulated/floor/dank/hardwood,
+/area/mining_colony/security/upper/be_room3)
+"VV" = (
+/obj/structure/closet/firecloset,
+/turf/simulated/floor/dank/slides,
+/area/mining_colony/security/upper/bridge_corridor)
 "VY" = (
 /obj/machinery/firealarm{
 	dir = 4;
@@ -2408,23 +3333,130 @@
 /turf/simulated/floor/dank/hardwood,
 /area/mining_colony/security/upper/sec_commander)
 "Wk" = (
-/obj/item/modular_computer/console/preset/command{
+/obj/structure/closet/secure_closet/personal/empty,
+/obj/item/modular_computer/tablet/lease/preset/command,
+/obj/effect/floor_decal/dank/outline,
+/turf/simulated/floor/dank/hardwood,
+/area/mining_colony/security/upper/sec_offices)
+"Wl" = (
+/obj/structure/bed,
+/obj/item/weapon/bedsheet/captain,
+/obj/effect/landmark/start{
+	name = "Bridge Officer"
+	},
+/obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/dank/hardwood,
-/area/space)
+/area/mining_colony/security/upper/be_room1)
 "WP" = (
 /obj/structure/sign/deck/ds/red,
 /turf/simulated/wall/r_wall,
-/area/space)
-"XG" = (
-/obj/effect/wallframe_spawn/reinforced,
+/area/mining_colony/security/upper/fl_office)
+"WR" = (
+/obj/machinery/door/airlock/command{
+	name = "Colony Director's Quarters"
+	},
 /obj/machinery/door/firedoor,
-/turf/simulated/floor/dank/mono,
-/area/space)
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/dank/hardwood,
+/area/mining_colony/security/upper/be_room1)
+"Xb" = (
+/obj/structure/table/steel_reinforced,
+/obj/machinery/keycard_auth{
+	pixel_y = 8
+	},
+/obj/machinery/keycard_auth{
+	pixel_y = -4
+	},
+/turf/simulated/floor/dank/hardwood,
+/area/mining_colony/security/upper/sec_offices)
+"Xr" = (
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/dank/tech{
+	dir = 4
+	},
+/area/mining_colony/security/upper/bridge_corridor)
+"XG" = (
+/obj/structure/table/reinforced,
+/obj/structure/window/reinforced,
+/obj/random/plushie/large,
+/turf/simulated/floor/dank/slides,
+/area/mining_colony/security/upper/bridge_corridor)
+"Yb" = (
+/obj/structure/railing/mapped,
+/turf/simulated/floor/dank/slides_end{
+	dir = 1
+	},
+/area/mining_colony/security/upper/bridge_corridor)
+"Yo" = (
+/obj/structure/closet/secure_closet/personal/cabinet,
+/obj/item/weapon/reagent_containers/food/drinks/bottle/whiskey,
+/obj/item/weapon/reagent_containers/food/drinks/bottle/vodka,
+/obj/item/weapon/reagent_containers/food/drinks/bottle/vermouth,
+/obj/item/weapon/reagent_containers/food/drinks/bottle/wine,
+/obj/item/weapon/reagent_containers/food/drinks/bottle/rum,
+/obj/item/weapon/reagent_containers/food/drinks/bottle/premiumvodka,
+/obj/item/weapon/reagent_containers/food/drinks/bottle/goldschlager,
+/obj/item/weapon/reagent_containers/food/drinks/bottle/kahlua,
+/obj/item/weapon/storage/box/glass_extras/sticks,
+/obj/item/weapon/storage/box/glasses/wine,
+/obj/item/weapon/storage/box/glasses/cocktail,
+/turf/simulated/floor/dank/hardwood,
+/area/mining_colony/security/upper/be_room2)
+"Yv" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/dank/hardwood,
+/area/mining_colony/security/upper/be_room4)
+"YA" = (
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "16-0"
+	},
+/obj/structure/lattice,
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "0-6"
+	},
+/turf/simulated/open,
+/area/mining_colony/security/upper/commandofficers)
+"YN" = (
+/turf/simulated/floor/dank/tech{
+	dir = 1
+	},
+/area/mining_colony/security/upper/bridge_corridor)
 "YS" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/security/upper/secstorage2)
+"ZE" = (
+/obj/machinery/door/airlock/security,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/dank/mono,
+/area/mining_colony/security/upper/cryo_room)
 
 (1,1,1) = {"
 UM
@@ -8273,12 +9305,12 @@ ew
 ew
 ew
 ew
-ew
-ew
-ew
-ew
-ew
-ew
+ab
+ab
+ab
+ab
+ab
+ab
 ew
 ew
 ew
@@ -8475,12 +9507,12 @@ ew
 ew
 ew
 ew
-ew
-ew
-ew
-ew
-ew
-ew
+ab
+Uk
+Dr
+Dr
+QT
+ab
 ew
 ew
 ew
@@ -8677,12 +9709,12 @@ ew
 ew
 ew
 ew
-ew
-ew
-ew
-ew
-ew
-ew
+ab
+gf
+ay
+ay
+gf
+ab
 ew
 ew
 ew
@@ -8879,12 +9911,12 @@ ew
 ew
 ew
 ew
-ew
-ew
-ew
-ew
-ew
-ew
+ab
+kz
+ay
+ay
+kz
+ab
 ew
 ew
 ew
@@ -9081,12 +10113,12 @@ ew
 ew
 ew
 ew
-ew
-ew
-ew
-ew
-ew
-ew
+ab
+kz
+ay
+ay
+kz
+ab
 ew
 ew
 ew
@@ -9283,12 +10315,12 @@ ew
 ew
 ew
 ew
-ew
-ew
-ew
-ew
-ew
-ew
+ab
+eB
+ay
+ay
+bZ
+ab
 ew
 ew
 ew
@@ -9477,23 +10509,23 @@ dC
 ew
 ew
 ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
+Ef
+Ef
+Ef
+Ef
+Ef
+Ef
+Ef
+Ef
+Ef
+Ef
+eo
+fE
+JK
+JK
+JK
+JK
+JK
 ew
 "}
 (36,1,1) = {"
@@ -9679,23 +10711,23 @@ dC
 ew
 ew
 ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
+Ef
+bl
+KH
+co
+aY
+cB
+dk
+cQ
+cX
+Ef
+br
+bw
+lz
+Wk
+UZ
+bz
+JK
 ew
 "}
 (37,1,1) = {"
@@ -9881,23 +10913,23 @@ dC
 ew
 ew
 ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
+Ef
+ba
+bI
+bM
+bS
+cf
+cf
+ee
+ce
+Ef
+tv
+bw
+cx
+er
+es
+es
+JK
 ew
 "}
 (38,1,1) = {"
@@ -10080,26 +11112,26 @@ dE
 dw
 dM
 dC
-eB
-eB
-eB
-eB
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
+so
+so
+so
+so
+bN
+bD
+bh
+bV
+cf
+cf
+cT
+ce
+Ef
+br
+bw
+cx
+er
+er
+Ht
+JK
 ew
 "}
 (39,1,1) = {"
@@ -10267,7 +11299,7 @@ Vv
 Vv
 Vv
 Vv
-eB
+dA
 ew
 ew
 ew
@@ -10282,26 +11314,26 @@ dC
 dJ
 dN
 dC
-eB
-FG
-aS
-eB
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
+so
+HD
+zx
+so
+bT
+tI
+cs
+bV
+cE
+cN
+cV
+cY
+Ef
+br
+kk
+aR
+cU
+MA
+Xb
+JK
 ew
 "}
 (40,1,1) = {"
@@ -10469,11 +11501,11 @@ Vv
 Vv
 Vv
 Vv
-eB
-eB
-eB
-eB
-eB
+dA
+dA
+dA
+dA
+dA
 dC
 dC
 dC
@@ -10484,26 +11516,26 @@ dC
 dC
 dC
 dC
-eB
+so
 cM
-eG
-eB
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
+Sj
+so
+Ef
+Ef
+Ef
+bX
+Ef
+cO
+cO
+Ef
+Ef
+br
+de
+cx
+wk
+er
+zA
+JK
 ew
 "}
 (41,1,1) = {"
@@ -10671,41 +11703,41 @@ Vv
 Vv
 Vv
 Vv
-eB
-as
+dA
+ae
 aW
-eB
+dA
 aB
 Cw
 am
 aL
 cS
-aR
-eB
+sZ
+dA
 ao
-al
-al
-dG
-ds
-FE
-FE
-eB
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
+RI
+mv
+EQ
+WR
+kR
+In
+so
+Ls
+bO
+UQ
+bY
+bk
+ay
+ay
+bs
+ab
+tv
+de
+cx
+wk
+IH
+Sz
+JK
 ew
 "}
 (42,1,1) = {"
@@ -10882,32 +11914,32 @@ al
 al
 aL
 cS
-aN
-eB
+cI
+dA
 ao
-al
-al
+RI
+SL
 dG
-eB
-tO
-aT
-eB
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
+so
+Wl
+xG
+so
+Ct
+kB
+ZE
+ca
+ay
+ay
+bm
+bm
+ab
+br
+de
+lz
+DA
+BR
+BH
+JK
 ew
 "}
 (43,1,1) = {"
@@ -11084,32 +12116,32 @@ al
 aL
 aM
 cS
-aN
-eB
+cI
+dA
 ao
-al
-al
-dG
-eB
-eB
-eB
-eB
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
+RI
+SL
+Aa
+zv
+zv
+zv
+zv
+vH
+Uo
+UQ
+eJ
+ay
+ay
+eF
+bt
+ab
+br
+HJ
+JK
+JK
+JK
+JK
+JK
 ew
 "}
 (44,1,1) = {"
@@ -11278,7 +12310,7 @@ Vv
 Vv
 Vv
 ah
-aN
+cI
 al
 aG
 aG
@@ -11286,32 +12318,32 @@ al
 aL
 cy
 dc
-aN
-eB
+JL
+dA
 ao
-al
-al
+RI
+SL
 dG
-eB
-FG
-aS
-eB
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
+zv
+AC
+lg
+zv
+UQ
+UQ
+UQ
+eK
+ay
+ay
+bo
+bo
+ab
+br
+de
+Bm
+by
+dW
+dS
+Bm
 ew
 "}
 (45,1,1) = {"
@@ -11488,32 +12520,32 @@ al
 aL
 cz
 df
-aR
-eB
-ao
-al
-al
+hD
+dA
+ro
+RI
+SL
 dG
-eB
-cM
+zv
+DR
 eG
-eB
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
+zv
+aq
+ax
+aV
+cg
+ay
+ay
+bm
+bm
+ab
+tv
+md
+dz
+dP
+dX
+ec
+Bm
 ew
 "}
 (46,1,1) = {"
@@ -11689,33 +12721,33 @@ cb
 aJ
 aL
 aO
-cS
-aN
+dH
+pR
 rU
 ao
-al
-al
-dG
+RI
+Xr
+EQ
 ds
-FE
-FE
-eB
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
+Ga
+Ns
+zv
+ar
+ay
+ay
+bY
+ay
+ay
+bp
+eF
+ab
+br
+de
+dF
+dS
+dY
+ed
+Bm
 ew
 "}
 (47,1,1) = {"
@@ -11883,41 +12915,41 @@ Vv
 Vv
 Vv
 Vv
-eB
+dA
 aj
 aC
 al
 aK
-eB
+dA
 eI
 aL
 dH
 aQ
 wi
 bB
-al
-al
+Up
+va
 dG
-eB
-tO
-aT
-eB
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
+zv
+ke
+Yo
+zv
+at
+ay
+ay
+bY
+ay
+ay
+bq
+bu
+ab
+br
+de
+Bm
+Bm
+Bm
+Bm
+Bm
 ew
 "}
 (48,1,1) = {"
@@ -12093,33 +13125,33 @@ bj
 aE
 aL
 aM
-cS
-aN
+qz
+pR
 rU
 ao
-al
-al
+RI
+SL
 dG
-eB
-eB
-eB
-eB
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
+Qn
+Qn
+Qn
+Qn
+bf
+bK
+bP
+ch
+bP
+bP
+cr
+bv
+ab
+br
+de
+Dq
+dT
+dZ
+dV
+Dq
 ew
 "}
 (49,1,1) = {"
@@ -12295,33 +13327,33 @@ aG
 al
 aL
 cy
-dc
-aR
-eB
-ao
-al
-al
-dG
-eB
+Uu
+hD
+dA
+ro
+RI
+SL
+Aa
+Qn
 FG
 aS
-eB
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
+Qn
+ac
+be
+cq
+cu
+cj
+bQ
+ct
+cD
+cJ
+br
+md
+dB
+dU
+ea
+eg
+Dq
 ew
 "}
 (50,1,1) = {"
@@ -12496,34 +13528,34 @@ eL
 bU
 al
 aL
-cz
-df
+uW
+iw
 aU
-eB
+dA
 ao
-al
-al
+RI
+SL
 dG
-eB
-cM
-eG
-eB
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-DM
-ew
-ew
-ew
-ew
-ew
-ew
-ew
+Qn
+lO
+Ay
+Qn
+br
+br
+br
+br
+br
+br
+bA
+br
+br
+br
+de
+dK
+dV
+vx
+ep
+Dq
 ew
 "}
 (51,1,1) = {"
@@ -12698,34 +13730,34 @@ cb
 cb
 al
 aL
-aO
+ou
 cS
-aN
-eB
+cI
+dA
 ao
-al
-al
-dG
-ds
-FE
-FE
-eB
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-du
-ew
-ew
-ew
-ew
-ew
-ew
-ew
+RI
+KL
+EQ
+TK
+oI
+zH
+Qn
+bw
+bw
+bw
+bw
+bw
+nq
+GG
+bL
+bL
+bL
+Hv
+Dq
+Dq
+Dq
+Dq
+Dq
 ew
 "}
 (52,1,1) = {"
@@ -12895,39 +13927,39 @@ Vv
 Vv
 ah
 af
-al
-aJ
-al
-al
-al
-aL
+hB
+eR
+Ka
+Ka
+Ka
+rK
 ad
 au
-eB
+dA
 ao
-al
-al
+RI
+SL
 dG
-eB
+Qn
 tO
-aT
-eB
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-du
-ew
-ew
-ew
-ew
-ew
-ew
-ew
+VT
+Qn
+br
+br
+cC
+br
+QS
+cC
+Bc
+br
+dr
+br
+de
+et
+bR
+bR
+bQ
+ab
 ew
 "}
 (53,1,1) = {"
@@ -13095,41 +14127,41 @@ Vv
 Vv
 Vv
 Vv
-eB
+dA
 cd
-aW
-eB
+vh
+dA
 aA
 aC
 BN
 QP
 ap
 rv
-eB
+dA
 ao
-al
-al
+RI
+SL
 dG
-eB
-eB
-eB
-eB
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-VV
-ew
-ew
-ew
-ew
-ew
-ew
-ew
+ut
+ut
+ut
+ut
+an
+an
+an
+an
+bx
+an
+bF
+bF
+an
+bQ
+ct
+et
+bR
+bR
+di
+ab
 ew
 "}
 (54,1,1) = {"
@@ -13297,41 +14329,41 @@ Vv
 Vv
 Vv
 Vv
-eB
-aN
-aN
-eB
-eB
-eB
-eB
-eB
-eB
+dA
+cI
+pR
+zd
+zd
+zd
+zd
+zd
+zd
 aD
 WP
 ao
-al
-al
+RI
+SL
 dG
-eB
-FG
-aS
-eB
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-gS
-ew
-ew
-ew
-ew
-ew
-ew
-ew
+ut
+DG
+Dt
+ut
+eD
+ak
+an
+aZ
+bG
+ck
+bg
+bg
+an
+sW
+de
+ab
+ab
+DM
+br
+ab
 ew
 "}
 (55,1,1) = {"
@@ -13500,40 +14532,40 @@ dA
 dA
 dA
 dA
-eB
+dA
 cF
-eB
-aS
+zd
+wD
 Km
-FE
+LC
 eu
 FN
 Oc
-eB
-ao
-al
-al
+zd
+Pd
+Up
+lm
 dG
-eB
-cM
-eG
-eB
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-Dr
-ew
-ew
-ew
-ew
-ew
-ew
-ew
+ut
+hy
+yK
+ut
+aX
+aX
+an
+bc
+bH
+dL
+dL
+eE
+an
+br
+dh
+lZ
+du
+SI
+br
+ab
 ew
 "}
 (56,1,1) = {"
@@ -13702,40 +14734,40 @@ ew
 ew
 ew
 ew
-eB
-aN
-eB
-FE
-FE
-FE
+dA
+pR
+zd
+LC
+LC
+LC
 nx
 uz
 MS
-eB
+zd
 ao
-al
-al
-dG
-ds
-FE
-FE
-eB
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-du
-ew
-ew
-ew
-ew
-ew
-ew
-ew
+RI
+KL
+EQ
+kG
+Yv
+yF
+ut
+ai
+aX
+bb
+dL
+cm
+cA
+da
+cL
+an
+Ng
+dl
+YS
+YS
+cG
+YS
+YS
 ew
 "}
 (57,1,1) = {"
@@ -13901,43 +14933,43 @@ ew
 ew
 ew
 ew
-eB
-eB
-eB
-eB
-SI
-eB
+dA
+dA
+dA
+dA
+fk
+zd
 mK
 aT
 Dz
 wz
 qv
 Cl
-eB
-ao
-al
-al
+zd
+ro
+RI
+SL
 dG
-eB
-tO
-aT
-eB
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-du
-ew
-ew
-ew
-ew
-ew
-ew
-ew
+ut
+sE
+rX
+ut
+aI
+VY
+an
+bi
+cv
+aF
+cw
+cn
+an
+sW
+de
+YS
+cl
+cP
+cH
+YS
 ew
 "}
 (58,1,1) = {"
@@ -14088,58 +15120,58 @@ ew
 ew
 ew
 ew
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 ew
 ew
 ew
 ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-eB
+dA
 dR
-dq
-eB
-aN
-eB
-eB
-eB
-eB
-eB
-eB
-eB
-eB
+YA
+dA
+xX
+zd
+zd
+zd
+zd
+zd
+zd
+zd
+zd
 ao
-al
-al
-dG
-eB
-eB
-eB
-eB
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-VV
-ew
-ew
-ew
-ew
-ew
-ew
-ew
+RI
+SL
+Aa
+ut
+ut
+ut
+ut
+as
+as
+as
+as
+an
+an
+an
+an
+an
+br
+de
+YS
+cp
+dy
+ey
+YS
 ew
 "}
 (59,1,1) = {"
@@ -14290,58 +15322,58 @@ ew
 ew
 ew
 ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-eB
-dR
-dq
-Nu
-aN
-eB
-eB
-eB
-eB
-eB
-eB
-dq
-dq
-vL
-al
-al
-vH
-eB
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
+as
+bC
+CI
+CI
+dn
+LV
+CI
+CI
+CI
 uJ
+as
 ew
 ew
 ew
 ew
-ew
-ew
-ew
+dA
+dR
+vL
+Nu
+cI
+dA
+aP
+CI
+CI
+CI
+Dg
+CI
+CI
+ao
+RI
+SL
+dG
+aN
+aN
+Qc
+aN
+aN
+aN
+aN
+CX
+br
+aw
+br
+br
+br
+br
+de
+YS
+cK
+dQ
+ez
+YS
 ew
 "}
 (60,1,1) = {"
@@ -14482,11 +15514,6 @@ ew
 ew
 ew
 ew
-eB
-eB
-eB
-eB
-eB
 ew
 ew
 ew
@@ -14497,53 +15524,58 @@ ew
 ew
 ew
 ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-eB
+as
+aN
 dq
+dq
+aN
+aN
+dq
+dq
+aN
+VP
+as
+ew
+ew
+ew
+ew
+dA
+vL
 dj
-eB
-eB
-eB
-eB
-eB
-eB
-eB
-eB
-dq
-eB
-eB
-eB
-eB
-eB
-eB
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
+dA
+dA
+dA
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+ao
+RI
+Nj
+RZ
+GC
+GC
+GC
+GC
+GC
+GC
+GC
+FE
+aH
+aH
+aH
+aH
+aH
+aH
+dO
+YS
+dt
+eb
+eA
+YS
 ew
 "}
 (61,1,1) = {"
@@ -14684,44 +15716,6 @@ ew
 ew
 ew
 ew
-eB
-av
-dq
-dq
-eB
-eB
-eB
-eB
-eB
-eB
-eB
-eB
-eB
-eB
-eB
-eB
-eB
-eB
-eB
-eB
-eB
-eB
-eB
-eB
-eB
-eB
-eB
-eB
-eB
-dq
-dq
-dq
-dq
-dq
-dq
-eB
-dq
-eB
 ew
 ew
 ew
@@ -14732,20 +15726,58 @@ ew
 ew
 ew
 ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
+as
+on
+nZ
+nZ
+PY
+oO
+nZ
+nZ
+nK
+oO
+as
+as
+as
+as
+as
+dA
+dA
+dA
+dA
+dA
+dA
+PY
+oO
+oO
+oO
+vt
+oO
+oO
+xM
+RI
+bW
+gS
+aN
+aN
+SC
+aN
+aN
+aN
+aN
+CX
+br
+br
+br
+dr
+br
+br
+JG
+YS
+YS
+YS
+YS
+YS
 ew
 "}
 (62,1,1) = {"
@@ -14886,44 +15918,6 @@ ew
 ew
 ew
 ew
-eB
-lz
-lz
-CX
-lz
-lz
-lz
-lz
-lz
-lz
-lz
-lz
-lz
-lz
-lz
-lz
-lz
-lz
-lz
-lz
-lz
-lz
-lz
-lz
-lz
-lz
-lz
-lz
-lz
-lz
-lz
-lz
-dq
-dq
-dq
-dq
-dq
-eB
 ew
 ew
 ew
@@ -14934,16 +15928,54 @@ ew
 ew
 ew
 ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
+as
+EB
+nZ
+nZ
+YN
+YN
+nZ
+nZ
+tY
+YN
+YN
+wa
+YN
+YN
+YN
+YN
+YN
+YN
+wa
+YN
+YN
+YN
+YN
+YN
+YN
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
 ew
 ew
 ew
@@ -15088,44 +16120,44 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-cI
-dq
-dq
-dq
-eB
-dq
-eB
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+as
+dg
+nZ
+nZ
+hx
+hx
+nZ
+nZ
+av
+hx
+hx
+hx
+hx
+hx
+hx
+hx
+hx
+hx
+hx
+hx
+hx
+hx
+hx
+hx
+hx
+as
+ew
+ew
 ew
 ew
 ew
@@ -15290,44 +16322,44 @@ ew
 ew
 ew
 ew
-eB
-lz
-lz
-lz
-lz
-lz
-lz
-lz
-lz
-lz
-lz
-lz
-lz
-lz
-lz
-lz
-lz
-lz
-lz
-lz
-lz
-lz
-lz
-lz
-lz
-lz
-lz
-lz
-lz
-lz
-lz
-lz
-dq
-dq
-dq
-eB
-dq
-eB
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+as
+Yb
+nZ
+nZ
+aP
+CI
+nZ
+nZ
+iT
+CI
+CI
+CI
+CI
+CI
+CI
+CI
+CI
+CI
+CI
+CI
+CI
+CI
+CI
+CI
+CI
+as
+ew
+ew
 ew
 ew
 ew
@@ -15492,44 +16524,44 @@ ew
 ew
 ew
 ew
-eB
-eB
-eB
-eB
-eB
-eB
-eB
-eB
-eB
-eB
-eB
-eB
-eB
-eB
-eB
-eB
-eB
-eB
-eB
-eB
-eB
-eB
-eB
-eB
-eB
-eB
-eB
-eB
-eB
-eB
-eB
-eB
-eB
-eB
-eB
-eB
-dq
-eB
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+as
+aN
+Um
+Um
+aN
+aN
+Um
+Um
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+as
+ew
+ew
 ew
 ew
 ew
@@ -15702,36 +16734,36 @@ ew
 ew
 ew
 ew
-eB
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-eB
+ew
+ew
+as
+bd
+oO
+oO
+az
+VV
+oO
+oO
+oO
+oO
+mi
+dD
+XG
+la
+ug
+Iw
+iq
+VV
+NL
+bJ
+ek
+la
+EK
+ev
+Vh
+as
+ew
+ew
 ew
 ew
 ew
@@ -15904,36 +16936,36 @@ ew
 ew
 ew
 ew
-eB
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-eB
+ew
+ew
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+ew
+ew
 ew
 ew
 ew
@@ -16106,36 +17138,36 @@ ew
 ew
 ew
 ew
-eB
-eB
-dq
-eB
-eB
-eB
-eB
-dq
-eB
-eB
-eB
-eB
-eB
-eB
-eB
-eB
-dq
-eB
-eB
-eB
-dq
-eB
-eB
-eB
-eB
-eB
-eB
-eB
-eB
-eB
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -16308,30 +17340,30 @@ ew
 ew
 ew
 ew
-eB
-dq
-dq
-dq
-dq
-eB
-dq
-dq
-dq
-dq
-eB
 ew
 ew
 ew
 ew
-eB
-dq
-dq
-eB
-dq
-dq
-dq
-dq
-eB
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -16510,30 +17542,30 @@ ew
 ew
 ew
 ew
-eB
-lz
-aP
-lz
-dq
-eB
-lz
-aP
-lz
-dq
-eB
 ew
 ew
 ew
 ew
-eB
-dq
-dq
-eB
-lz
-la
-lz
-dq
-eB
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -16712,30 +17744,30 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-dq
-lz
-eB
-lz
-dq
-dq
-lz
-eB
 ew
 ew
 ew
 ew
-eB
-dq
-dq
-eB
-lz
-dq
-dq
-lz
-eB
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -16914,30 +17946,30 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-dq
-lz
-eB
-lz
-dq
-dq
-lz
-eB
 ew
 ew
 ew
 ew
-eB
-dq
-dq
-eB
-eB
-lz
-dq
-lz
-eB
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -17116,30 +18148,30 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-dq
-lz
-eB
-lz
-dq
-dq
-lz
-eB
 ew
 ew
 ew
 ew
-eB
-dq
-dq
-eB
-eB
-lz
-dq
-lz
-eB
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -17318,30 +18350,30 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-dq
-lz
-eB
-lz
-dq
-dq
-lz
-eB
 ew
 ew
 ew
 ew
-eB
-av
-dq
-eB
-eB
-lz
-dq
-lz
-eB
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -17520,30 +18552,30 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-dq
-lz
-eB
-lz
-dq
-dq
-lz
-eB
 ew
 ew
 ew
 ew
-eB
-eB
-eB
-eB
-eB
-lz
-dq
-lz
-eB
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -17722,17 +18754,6 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-dq
-lz
-eB
-lz
-dq
-dq
-lz
-eB
 ew
 ew
 ew
@@ -17741,11 +18762,22 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -17924,17 +18956,6 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-dq
-lz
-eB
-lz
-dq
-dq
-lz
-eB
 ew
 ew
 ew
@@ -17943,11 +18964,22 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -18126,17 +19158,6 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-dq
-lz
-eB
-lz
-dq
-dq
-lz
-eB
 ew
 ew
 ew
@@ -18145,11 +19166,22 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -18328,17 +19360,6 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-dq
-lz
-eB
-lz
-dq
-dq
-lz
-eB
 ew
 ew
 ew
@@ -18347,11 +19368,22 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -18530,17 +19562,6 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-dq
-lz
-eB
-lz
-dq
-dq
-lz
-eB
 ew
 ew
 ew
@@ -18549,11 +19570,22 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -18732,17 +19764,6 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-dq
-lz
-eB
-lz
-dq
-dq
-lz
-eB
 ew
 ew
 ew
@@ -18751,11 +19772,22 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -18933,19 +19965,6 @@ ew
 ew
 ew
 ew
-eB
-eB
-lz
-dq
-lz
-eB
-eB
-lz
-dq
-dq
-lz
-eB
-eB
 ew
 ew
 ew
@@ -18953,11 +19972,24 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -19134,32 +20166,6 @@ ew
 ew
 ew
 ew
-eB
-eB
-lz
-dq
-dq
-lz
-eB
-eB
-lz
-dq
-dq
-dq
-lz
-eB
-eB
-ew
-ew
-ew
-ew
-ew
-eB
-eB
-lz
-dq
-lz
-eB
 ew
 ew
 ew
@@ -19174,15 +20180,41 @@ ew
 ew
 ew
 ew
-dn
-br
-de
-br
-Iw
-sW
-wa
-Wk
-eB
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -19336,55 +20368,55 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-dq
-lz
-eB
-eB
-eB
-eB
-lz
-dq
-dq
-dq
-lz
-eB
-eB
-ew
-ew
-ew
-eB
-eB
-lz
-dq
-dq
-lz
-eB
 ew
 ew
 ew
 ew
 ew
-Ef
-Ef
-Ef
-Ef
-Ef
-Ef
-Ef
-Ef
-Ef
-Ef
-er
-es
-br
-XG
-FE
-fE
-fE
-eB
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -19538,55 +20570,55 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
-eB
-ew
-ew
-eB
-eB
-lz
-dq
-dq
-dq
-lz
-eB
-eB
-ew
-ew
-eB
-lz
-dq
-dq
-lz
-eB
-eB
 ew
 ew
 ew
 ew
 ew
-Ef
-bl
-KH
-co
-aY
-cB
-dk
-cQ
-cX
-Ef
-br
-de
-br
-XG
-FE
-FE
-az
-eB
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -19740,55 +20772,55 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
-ew
-ew
-ew
-ew
-eB
-eB
-lz
-dq
-dq
-dq
-lz
-eB
-ew
-ew
-eB
-lz
-dq
-lz
-eB
-eB
 ew
 ew
 ew
 ew
 ew
 ew
-Ef
-ba
-bI
-bM
-bS
-cf
-cf
-ee
-ce
-Ef
-dg
-dh
-dr
-aH
-dD
-gf
-dO
-eB
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -19942,30 +20974,6 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
-ew
-ew
-ew
-ew
-ew
-eB
-eB
-lz
-dq
-dq
-lz
-eB
-ew
-ew
-eB
-lz
-dq
-lz
-eB
 ew
 ew
 ew
@@ -19973,24 +20981,48 @@ ew
 ew
 ew
 ew
-Ef
-bN
-bD
-bh
-bV
-cf
-cf
-cT
-ce
-Ef
-br
-de
-br
-XG
-eo
-FE
-zA
-eB
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -20144,30 +21176,6 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
-ew
-ew
-ew
-ew
-ew
-ew
-eB
-eB
-lz
-dq
-lz
-eB
-ew
-ew
-eB
-lz
-dq
-lz
-eB
 ew
 ew
 ew
@@ -20175,24 +21183,48 @@ ew
 ew
 ew
 ew
-Ef
-bT
-tI
-cs
-bV
-cE
-cN
-cV
-cY
-Ef
-br
-de
-br
-XG
-eo
-LV
-LV
-eB
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -20346,11 +21378,6 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
 ew
 ew
 ew
@@ -20358,18 +21385,6 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
-ew
-ew
-eB
-lz
-dq
-lz
-eB
 ew
 ew
 ew
@@ -20377,24 +21392,41 @@ ew
 ew
 ew
 ew
-CI
-CI
-CI
-CI
-bX
-Ef
-cO
-cO
-Ef
-Ef
-bw
-de
-br
-Iw
-PY
-Ht
-Oa
-eB
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -20548,11 +21580,6 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
 ew
 ew
 ew
@@ -20560,18 +21587,6 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
-ew
-ew
-eB
-lz
-dq
-lz
-eB
 ew
 ew
 ew
@@ -20579,24 +21594,41 @@ ew
 ew
 ew
 ew
-CI
-bW
-aw
-CI
-bY
-bk
-ay
-ay
-bs
-ab
-br
-de
-cU
-Bm
-Bm
-Bm
-Bm
-Bm
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -20750,11 +21782,6 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
 ew
 ew
 ew
@@ -20762,18 +21789,6 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
-ew
-ew
-eB
-lz
-dq
-lz
-eB
 ew
 ew
 ew
@@ -20781,24 +21796,41 @@ ew
 ew
 ew
 ew
-CI
-bd
-bJ
-bO
-ca
-ay
-ay
-bm
-bm
-ab
-br
-de
-br
-Bm
-by
-dW
-dS
-Bm
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -20952,11 +21984,6 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
 ew
 ew
 ew
@@ -20964,18 +21991,6 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
-ew
-ew
-eB
-lz
-dq
-lz
-eB
 ew
 ew
 ew
@@ -20983,24 +21998,41 @@ ew
 ew
 ew
 ew
-CI
-bZ
-RI
-CI
-eJ
-ay
-ay
-eF
-bt
-ab
-dg
-dh
-dr
-dz
-dP
-dX
-ec
-Bm
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -21154,11 +22186,6 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
 ew
 ew
 ew
@@ -21166,18 +22193,6 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
-ew
-ew
-eB
-lz
-dq
-lz
-eB
 ew
 ew
 ew
@@ -21185,24 +22200,41 @@ ew
 ew
 ew
 ew
-CI
-CI
-CI
-CI
-eK
-ay
-ay
-bo
-bo
-ab
-br
-de
-br
-dF
-dS
-dY
-ed
-Bm
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -21356,11 +22388,6 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
 ew
 ew
 ew
@@ -21368,18 +22395,6 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
-ew
-ew
-eB
-lz
-dq
-lz
-eB
 ew
 ew
 ew
@@ -21387,24 +22402,41 @@ ew
 ew
 ew
 ew
-ab
-aq
-ax
-aV
-cg
-ay
-ay
-bm
-bm
-ab
-br
-de
-bC
-Bm
-Bm
-Bm
-Bm
-Bm
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -21558,11 +22590,6 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
 ew
 ew
 ew
@@ -21570,18 +22597,6 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
-ew
-ew
-eB
-lz
-dq
-lz
-eB
 ew
 ew
 ew
@@ -21589,24 +22604,41 @@ ew
 ew
 ew
 ew
-ab
-ar
-ay
-ay
-bY
-ay
-ay
-bp
-eF
-ab
-br
-de
-br
-Dq
-dT
-dZ
-dV
-Dq
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -21760,11 +22792,6 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
 ew
 ew
 ew
@@ -21772,18 +22799,6 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
-ew
-ew
-eB
-lz
-dq
-lz
-eB
 ew
 ew
 ew
@@ -21791,24 +22806,41 @@ ew
 ew
 ew
 ew
-ab
-at
-ay
-ay
-bY
-ay
-ay
-bq
-bu
-ab
-br
-dh
-dr
-dB
-dU
-ea
-eg
-Dq
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -21962,11 +22994,6 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
 ew
 ew
 ew
@@ -21974,18 +23001,6 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
-ew
-ew
-eB
-lz
-dq
-lz
-eB
 ew
 ew
 ew
@@ -21993,24 +23008,41 @@ ew
 ew
 ew
 ew
-ab
-bf
-bK
-bP
-ch
-bP
-bP
-cr
-bv
-ab
-dg
-de
-br
-dK
-dV
-vx
-ep
-Dq
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -22164,11 +23196,6 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
 ew
 ew
 ew
@@ -22176,18 +23203,6 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
-ew
-ew
-eB
-lz
-dq
-lz
-eB
 ew
 ew
 ew
@@ -22195,24 +23210,41 @@ ew
 ew
 ew
 ew
-ab
-ac
-be
-cq
-cu
-cj
-bQ
-ct
-cD
-cJ
-br
-de
-br
-Dq
-Dq
-Dq
-Dq
-Dq
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -22366,30 +23398,6 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-eB
-lz
-dq
-lz
-eB
-ew
-ew
-eB
-lz
-dq
-lz
-eB
 ew
 ew
 ew
@@ -22398,23 +23406,47 @@ ew
 ew
 ew
 ew
-br
-br
-br
-br
-br
-br
-bA
-br
-br
-br
-de
-br
-et
-bR
-bR
-bQ
-ab
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -22568,30 +23600,6 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-eB
-lz
-dq
-lz
-eB
-ew
-ew
-eB
-lz
-dq
-lz
-eB
 ew
 ew
 ew
@@ -22600,23 +23608,47 @@ ew
 ew
 ew
 ew
-bz
-bL
-bL
-bL
-bL
-bL
-cx
-bL
-bL
-bL
-dl
-ek
-ab
-ab
-ev
-di
-ab
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -22770,30 +23802,6 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-eB
-lz
-dq
-lz
-eB
-ew
-ew
-eB
-lz
-dq
-lz
-eB
 ew
 ew
 ew
@@ -22802,23 +23810,47 @@ ew
 ew
 ew
 ew
-bA
-cC
-br
-br
-cC
-Bc
-bA
-br
-cC
-br
-br
-br
-bQ
-br
-br
-br
-ab
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -22972,30 +24004,6 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-eB
-lz
-dq
-lz
-eB
-ew
-ew
-eB
-lz
-dq
-lz
-eB
 ew
 ew
 ew
@@ -23004,23 +24012,47 @@ ew
 ew
 ew
 ew
-bx
-an
-bF
-bF
-YS
-YS
-cG
-YS
-YS
-br
-br
-br
-bQ
-br
-br
-br
-ab
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -23174,11 +24206,6 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
 ew
 ew
 ew
@@ -23186,43 +24213,48 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
-ew
-ew
-eB
-lz
-dq
-lz
-eB
 ew
 ew
 ew
-an
-an
-an
-an
-aZ
-bG
-ck
-bg
-bg
-YS
-cl
-cP
-cH
-YS
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -23376,11 +24408,6 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
 ew
 ew
 ew
@@ -23388,35 +24415,40 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
-ew
-ew
-eB
-lz
-dq
-lz
-eB
 ew
 ew
 ew
-an
-eD
-ak
-an
-bc
-bH
-dL
-dL
-eE
-YS
-cp
-dy
-ey
-YS
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -23578,11 +24610,6 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
 ew
 ew
 ew
@@ -23590,35 +24617,40 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
-ew
-ew
-eB
-lz
-dq
-lz
-eB
 ew
 ew
 ew
-an
-ai
-aX
-bb
-dL
-cm
-cA
-da
-cL
-YS
-cK
-dQ
-ez
-YS
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -23780,11 +24812,6 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
 ew
 ew
 ew
@@ -23792,35 +24819,40 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
-ew
-ew
-eB
-lz
-dq
-lz
-eB
 ew
 ew
 ew
-an
-aI
-VY
-an
-bi
-cv
-aF
-cw
-cn
-YS
-dt
-eb
-eA
-YS
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -23981,12 +25013,6 @@ ew
 ew
 ew
 ew
-eB
-eB
-lz
-dq
-lz
-eB
 ew
 ew
 ew
@@ -23994,35 +25020,41 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
-ew
-ew
-eB
-lz
-dq
-lz
-eB
 ew
 ew
 ew
-an
-an
-an
-an
-an
-an
-an
-an
-an
-YS
-YS
-YS
-YS
-YS
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -24183,12 +25215,6 @@ ew
 ew
 ew
 ew
-eB
-dq
-NL
-dq
-lz
-eB
 ew
 ew
 ew
@@ -24196,18 +25222,24 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
 ew
 ew
-eB
-lz
-dq
-lz
-eB
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -24385,12 +25417,6 @@ ew
 ew
 ew
 ew
-eB
-dq
-lz
-lz
-eB
-eB
 ew
 ew
 ew
@@ -24398,18 +25424,24 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
 ew
 ew
-eB
-lz
-dq
-lz
-eB
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -24587,11 +25619,6 @@ ew
 ew
 ew
 ew
-eB
-av
-eB
-eB
-eB
 ew
 ew
 ew
@@ -24600,18 +25627,23 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
 ew
 ew
-eB
-lz
-dq
-lz
-eB
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -24789,9 +25821,6 @@ ew
 ew
 ew
 ew
-eB
-eB
-eB
 ew
 ew
 ew
@@ -24802,18 +25831,21 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
 ew
 ew
-eB
-lz
-dq
-lz
-eB
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -25004,18 +26036,18 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
 ew
 ew
-eB
-lz
-dq
-lz
-eB
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -25206,18 +26238,18 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
 ew
 ew
-eB
-lz
-dq
-lz
-eB
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -25408,18 +26440,18 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
 ew
 ew
-eB
-lz
-dq
-lz
-eB
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -25610,18 +26642,18 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
 ew
 ew
-eB
-lz
-dq
-lz
-eB
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -25812,18 +26844,18 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
 ew
 ew
-eB
-lz
-dq
-lz
-eB
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -26014,18 +27046,18 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
 ew
 ew
-eB
-lz
-dq
-lz
-eB
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -26216,18 +27248,18 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
 ew
 ew
-eB
-lz
-dq
-lz
-eB
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -26418,18 +27450,18 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
 ew
 ew
-eB
-lz
-dq
-lz
-eB
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -26620,18 +27652,18 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
 ew
 ew
-eB
-lz
-dq
-lz
-eB
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -26822,18 +27854,18 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
 ew
 ew
-eB
-lz
-dq
-lz
-eB
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -27024,19 +28056,19 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
 ew
 ew
-eB
-lz
-dq
-lz
-eB
-eB
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -27226,20 +28258,20 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
 ew
 ew
-eB
-lz
-dq
-dq
-lz
-eB
-eB
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -27428,21 +28460,21 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
 ew
 ew
-eB
-lz
-dq
-dq
-dq
-lz
-eB
-eB
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -27630,24 +28662,24 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
 ew
 ew
-eB
-lz
-dq
-dq
-dq
-dq
-lz
-eB
-eB
-eB
-eB
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -27832,25 +28864,25 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
 ew
 ew
-eB
-eB
-lz
-dq
-dq
-dq
-dq
-lz
-lz
-lz
-eB
-eB
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -28034,25 +29066,25 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
 ew
 ew
 ew
-eB
-eB
-lz
-lz
-dq
-dq
-dq
-dq
-dq
-lz
-eB
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -28236,25 +29268,25 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
 ew
 ew
 ew
 ew
-eB
-eB
-eB
-lz
-lz
-CX
-lz
-lz
-eB
-eB
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -28438,24 +29470,24 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
 ew
 ew
 ew
 ew
 ew
 ew
-eB
-eB
-eB
-dq
-dq
-av
-eB
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -28640,11 +29672,6 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
 ew
 ew
 ew
@@ -28653,11 +29680,16 @@ ew
 ew
 ew
 ew
-eB
-eB
-eB
-eB
-eB
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -28842,11 +29874,11 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -29044,11 +30076,11 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -29246,11 +30278,11 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -29448,11 +30480,11 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -29650,12 +30682,12 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-eB
-eB
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -29852,12 +30884,12 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-NL
-dq
-eB
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -30054,12 +31086,12 @@ ew
 ew
 ew
 ew
-eB
-lz
-dq
-lz
-dq
-eB
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -30256,12 +31288,12 @@ ew
 ew
 ew
 ew
-eB
-eB
-lz
-dq
-av
-eB
+ew
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew
@@ -30459,11 +31491,11 @@ ew
 ew
 ew
 ew
-eB
-eB
-eB
-eB
-eB
+ew
+ew
+ew
+ew
+ew
 ew
 ew
 ew

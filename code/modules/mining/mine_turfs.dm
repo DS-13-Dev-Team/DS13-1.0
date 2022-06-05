@@ -509,6 +509,7 @@ var/list/mining_floors = list()
 	icon_state = "dry_cracked"
 
 /turf/simulated/floor/asteroid/New()
+	.=..()
 	if (!mining_floors["[src.z]"])
 		mining_floors["[src.z]"] = list()
 	mining_floors["[src.z]"] += src

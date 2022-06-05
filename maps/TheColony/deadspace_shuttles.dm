@@ -17,19 +17,25 @@
 	base_turf = /turf/simulated/floor/plating
 
 /datum/shuttle/autodock/ferry/escape1
-	name = "Escape Shuttle"
+	name = "Escape Shuttle 1"
 	warmup_time = 5
-	shuttle_area = /area/shuttle/executive_shuttle
+	shuttle_area = /area/mining_colony/interior/shuttle_bay/shuttle_1
 	dock_target = "executive_shuttle"
 	waypoint_station = "colony_escape1_start"
 	waypoint_offsite = "colony_escape1_end"
 	landmark_transition = "colony_escape1_transition"
 
+/datum/shuttle/autodock/ferry/escape1/can_force()
+	if (evacuation_controller.state < EVAC_LAUNCHING)
+		return FALSE
+
+	return (next_location && moving_status == SHUTTLE_IDLE)
+
 /obj/effect/shuttle_landmark/escape1/start
-	name = "Escape Shuttle Start"
+	name = "The Colony"
 	landmark_tag = "colony_escape1_start"
 	//docking_controller = "executive_shuttle"
-	base_area = /area/centcom
+	base_area = /area/mining_colony/interior/shuttle_bay/hangar
 	base_turf = /turf/simulated/floor/plating
 
 /obj/effect/shuttle_landmark/escape1/transit
@@ -37,23 +43,30 @@
 
 /obj/effect/shuttle_landmark/escape1/end
 	name = "Docking Bay"
+	base_area = /area/ERT/escapebase
 	landmark_tag = "colony_escape1_end"
 	escape = TRUE
 
 /datum/shuttle/autodock/ferry/escape2
-	name = "Executive Shuttle"
+	name = "Executive Shuttle 2"
 	warmup_time = 5	//Takes off quickly to keep the sacrifice element in play.
-	shuttle_area = /area/shuttle/executive_shuttle
+	shuttle_area = /area/mining_colony/interior/shuttle_bay/shuttle_2
 	dock_target = "executive_shuttle"
 	waypoint_station = "colony_escape2_start"
 	waypoint_offsite = "colony_escape2_end"
 	landmark_transition = "colony_escape2_transition"
 
+/datum/shuttle/autodock/ferry/escape2/can_force()
+	if (evacuation_controller.state < EVAC_LAUNCHING)
+		return FALSE
+
+	return (next_location && moving_status == SHUTTLE_IDLE)
+
 /obj/effect/shuttle_landmark/escape2/start
-	name = "Executive Shuttle EVAC"
+	name = "The Colony"
 	landmark_tag = "colony_escape2_start"
 	//docking_controller = "executive_shuttle"
-	base_area = /area/centcom
+	base_area =/area/mining_colony/interior/shuttle_bay/hangar
 	base_turf = /turf/simulated/floor/plating
 
 /obj/effect/shuttle_landmark/escape2/transit
@@ -61,7 +74,33 @@
 
 /obj/effect/shuttle_landmark/escape2/end
 	name = "Docking Bay"
+	base_area = /area/ERT/escapebase
 	landmark_tag = "colony_escape2_end"
+	escape = TRUE
+
+/datum/shuttle/autodock/ferry/escape_fix
+	name = "Repaired Shuttle"
+	warmup_time = 5	//Takes off quickly to keep the sacrifice element in play.
+	shuttle_area = /area/shuttle/executive_shuttle
+	dock_target = "executive_shuttle"
+	waypoint_station = "colony_escape_fix_start"
+	waypoint_offsite = "colony_escape_fix_end"
+	landmark_transition = "colony_escape_fix_transition"
+
+/obj/effect/shuttle_landmark/escape_fix/start
+	name = "The Colony"
+	landmark_tag = "colony_escape_fix_start"
+	//docking_controller = "executive_shuttle"
+	base_area = /area/mining_colony/c12_deadspace
+	base_turf = /turf/simulated/floor/plating
+
+/obj/effect/shuttle_landmark/escape_fix/transit
+	landmark_tag = "colony_escape_fix_transition"
+
+/obj/effect/shuttle_landmark/escape_fix/end
+	name = "Docking Bay"
+	base_area = /area/ERT/escapebase
+	landmark_tag = "colony_escape_fix_end"
 	escape = TRUE
 
 /area/shuttle/executive_shuttle
@@ -114,7 +153,7 @@
 	landmark_tag = "kellion_transition"
 
 /obj/effect/shuttle_landmark/kellion/landing
-	name = "Ishimura Hangar #3"
+	name = "The Colony"
 	landmark_tag = "kellion_landing"
 	base_turf = /turf/simulated/floor/plating
 

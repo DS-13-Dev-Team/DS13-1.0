@@ -384,6 +384,10 @@
 	name = "\improper Supply Office"
 	icon_state = "direction_supply"
 
+/obj/structure/sign/directions/mining
+	name = "\improper Mining"
+	icon_state = "direction_mining"
+
 /obj/structure/sign/directions/infirmary
 	name = "\improper Infirmary"
 	icon_state = "direction_infirm"

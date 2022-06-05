@@ -22,7 +22,7 @@
 
 	salary	= 500	//Miners and civilians are underpaid plebs
 
-datum/job/bar/get_description_blurb()
+/datum/job/bar/get_description_blurb()
 	return "You are the Bartender. Your job is to serve drinks to any crewmember that show up at your bar. You are subordinate to the First Lieutenant."
 
 /datum/job/line_cook
@@ -50,7 +50,7 @@ datum/job/bar/get_description_blurb()
 						SKILL_FORENSICS   = SKILL_ADEPT)
 	skill_points = 20
 
-datum/job/line_cook/get_description_blurb()
+/datum/job/line_cook/get_description_blurb()
 	return "You are a Line Cook. Your job is to cook meals and feed any crewmember that show up to the Cafeteria. You are subordinate to the First Lieutenant."
 
 /datum/job/so
@@ -81,7 +81,7 @@ datum/job/line_cook/get_description_blurb()
 						SKILL_FORENSICS   = SKILL_ADEPT)
 	skill_points = 20
 
-datum/job/so/get_description_blurb()
+/datum/job/so/get_description_blurb()
 	return "You are the Supply Officer. Your job is to direct Cargo Serviceman and balance the requests of the rest of the crew to the ship's requisition points. You are subordinate to the First Lieutenant."
 
 /datum/job/serviceman
@@ -110,7 +110,7 @@ datum/job/so/get_description_blurb()
 						SKILL_FORENSICS   = SKILL_ADEPT)
 	skill_points = 20
 
-datum/job/serviceman/get_description_blurb()
+/datum/job/serviceman/get_description_blurb()
 	return "You are a Cargo Serviceman. Your job is to haul around cargo according to the Supply Officer's whim and deliver cargo shipments to departments, if needed. You are subordinate to the Supply Officer."
 
 
@@ -140,7 +140,7 @@ datum/job/serviceman/get_description_blurb()
 						SKILL_FORENSICS   = SKILL_ADEPT)
 	skill_points = 15
 
-datum/job/salvage/get_description_blurb()
+/datum/job/salvage/get_description_blurb()
 	return "You are a Salvage Technician, part of CEC's reclamation project. Your job is to comb dark and abandoned areas, recovering valueable equipment. You recieve no salary, but may keep some of the things you recover\n\
 	You may enlist other cargo servicemen to help you when short staffed. You are subordinate to the Supply Officer."
 
@@ -169,7 +169,7 @@ datum/job/salvage/get_description_blurb()
 
 	salary = SALARY_SKILLED
 
-datum/job/bar/get_description_blurb()
+/datum/job/bar/get_description_blurb()
 	return "You are the Bartender. Your job is to serve drinks to any crewmember that show up at your bar. You don't have a department head and are subordinate to the Captain and First Lieutenant."
 
 /datum/job/janitor
@@ -198,7 +198,6 @@ datum/job/bar/get_description_blurb()
 /datum/job/janitor/get_description_blurb()
 	return "You are the Janitor. Your job is to clean the ship from the mess created by the crew. You are subordinate to the First Lieutenant."
 
-#ifndef MAP_ISHIMURA
 /datum/job/chaplain
 	title = "Unitologist Chaplain"
 	abbreviation = "CHP"
@@ -212,7 +211,6 @@ datum/job/bar/get_description_blurb()
 	starting_credits = 943
 
 	access = list(access_maint_tunnels, access_chaplain)
-	outfit_type = /decl/hierarchy/outfit/job/service/janitor
 
 	max_skill = list(	SKILL_BOTANY	= SKILL_ADEPT,
 						SKILL_MEDICAL	= SKILL_ADEPT,
@@ -224,4 +222,3 @@ datum/job/bar/get_description_blurb()
 
 /datum/job/chaplain/get_description_blurb()
 	return "You are the Chaplain of the Unitologist Church. Your job is to carry faith in the Marker. You are subordinate to the First Lieutenant."
-#endif

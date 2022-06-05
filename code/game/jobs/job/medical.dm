@@ -132,7 +132,7 @@
 	#else
 	access = list(access_medical, access_psychologist, access_chemistry, access_maint_tunnels)
 	#endif
-	outfit_type = /decl/hierarchy/outfit/job/service/janitor
+	outfit_type = /decl/hierarchy/outfit/job/medical/psych
 
 	min_skill = list(	SKILL_ANATOMY     = SKILL_BASIC,
 						SKILL_MEDICAL	  = SKILL_EXPERT,
