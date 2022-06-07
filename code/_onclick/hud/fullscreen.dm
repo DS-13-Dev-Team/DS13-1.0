@@ -185,4 +185,30 @@
 	alpha = 50
 	layer = FULLSCREEN_LAYER
 
+/atom/movable/screen/fullscreen/lighting_backdrop
+	icon = 'icons/hud/screen_gen.dmi'
+	icon_state = "flash"
+	transform = matrix(200, 0, 0, 0, 200, 0)
+	plane = LIGHTING_PLANE
+	blend_mode = BLEND_OVERLAY
+	show_when_dead = TRUE
+
+//Provides darkness to the back of the lighting plane
+/atom/movable/screen/fullscreen/lighting_backdrop/lit
+	invisibility = INVISIBILITY_LIGHTING
+	layer = BACKGROUND_LAYER+21
+	color = "#000"
+	show_when_dead = TRUE
+
+//Provides whiteness in case you don't see lights so everything is still visible
+/atom/movable/screen/fullscreen/lighting_backdrop/unlit
+	layer = BACKGROUND_LAYER+20
+	show_when_dead = TRUE
+
+/atom/movable/screen/fullscreen/see_through_darkness
+	icon_state = "nightvision"
+	plane = LIGHTING_PLANE
+	blend_mode = BLEND_ADD
+	show_when_dead = TRUE
+
 #undef SHOULD_SHOW_TO

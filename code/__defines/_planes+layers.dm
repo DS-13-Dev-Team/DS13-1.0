@@ -68,9 +68,6 @@ What is the naming convention for planes or layers?
 #define SPACE_PLANE						-99
 #define SKYBOX_PLANE					-98
 
-#define GRAVITY_PULSE_PLANE				-11
-#define GRAVITY_PULSE_RENDER_TARGET 	"*GRAVPULSE_RENDER_TARGET"
-
 #define DUST_PLANE -97
 	#define DEBRIS_LAYER 1
 	#define DUST_LAYER 2
@@ -109,7 +106,6 @@ What is the naming convention for planes or layers?
 	#define BLOOD_LAYER					2.11
 	#define MOUSETRAP_LAYER				2.12
 	#define PLANT_LAYER					2.13
-	#define AO_LAYER					2.14
 	//HIDING MOB
 	#define HIDING_MOB_LAYER			2.15
 	#define SHALLOW_FLUID_LAYER			2.16
@@ -133,8 +129,6 @@ What is the naming convention for planes or layers?
 	#define LYING_MOB_LAYER             3.07
 	#define LYING_HUMAN_LAYER           3.08
 	#define BASE_ABOVE_OBJ_LAYER        3.09
-	//HUMAN
-	#define BASE_HUMAN_LAYER            3.10
 	//MOB
 	#define MECH_UNDER_LAYER            3.11
 	// MOB_LAYER                        4
@@ -204,6 +198,9 @@ What is the naming convention for planes or layers?
 	#define IMPAIRED_LAYER				2
 	#define BLIND_LAYER					3
 	#define CRIT_LAYER					4
+
+///Popup Chat Messages
+#define RUNECHAT_PLANE 501
 
 #define RENDER_PLANE_GAME				990
 #define RENDER_PLANE_NON_GAME			995

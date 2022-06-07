@@ -255,6 +255,10 @@
 		T.affecting_lights += src
 		affecting_turfs    += T
 
+		if(isopenspace(T))
+			T = GetBelow(T)
+			goto check_t
+
 	END_FOR_DVIEW
 
 	update_gen++

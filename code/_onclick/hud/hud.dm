@@ -95,6 +95,8 @@
 		var/datum/extension/E = mymob.extensions[typepath]
 		E.handle_hud(src)
 
+	//owner.overlay_fullscreen("see_through_darkness", /atom/movable/screen/fullscreen/see_through_darkness)
+
 /datum/hud/Destroy()
 	if(mymob.hud_used == src)
 		mymob.hud_used = null

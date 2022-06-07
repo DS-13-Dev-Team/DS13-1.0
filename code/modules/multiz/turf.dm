@@ -9,6 +9,8 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	icon = 'icons/turf/floors.dmi'
 	icon_state = "grey"
 	plane = OPENSPACE_BACKDROP_PLANE
+	layer = 5
+
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	vis_flags = VIS_INHERIT_ID
 
@@ -64,9 +66,9 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /turf/simulated/open/Initialize(mapload)
-	.=..()
-	overlays += GLOB.openspace_backdrop_one_for_all //Special grey square for projecting backdrop darkness filter on it.
-	.=INITIALIZE_HINT_LATELOAD
+	..()
+	//overlays += GLOB.openspace_backdrop_one_for_all //Special grey square for projecting backdrop darkness filter on it.
+	return INITIALIZE_HINT_LATELOAD
 
 /turf/simulated/open/LateInitialize()
 	.=..()

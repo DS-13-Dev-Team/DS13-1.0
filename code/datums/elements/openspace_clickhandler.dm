@@ -28,7 +28,7 @@
 /obj/item/proc/handle_openspace_click(turf/target, mob/user, proximity_flag, click_parameters)
 	crash_with("Undefined handle_openspace_click() behaviour. Ascertain the openspace_item_click_handler element has been attached to the right item and that its proc override doesn't call parent.")
 
-/obj/item/stack/material/rods/handle_openspace_click(turf/target, mob/user, proximity_flag, click_parameters)
+/obj/item/stack/rods/handle_openspace_click(turf/target, mob/user, proximity_flag, click_parameters)
 	if(proximity_flag)
 		var/obj/structure/lattice/L = locate(/obj/structure/lattice, target)
 		if(L)
@@ -36,7 +36,7 @@
 		if(use(1))
 			to_chat(user, SPAN_NOTICE("You lay down the support lattice."))
 			playsound(target, 'sound/weapons/Genhit.ogg', 50, 1)
-			new /obj/structure/lattice(target, material.name)
+			new /obj/structure/lattice(target)
 
 /obj/item/stack/tile/handle_openspace_click(turf/target, mob/user, proximity_flag, click_parameters)
 	if(proximity_flag)

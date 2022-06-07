@@ -119,13 +119,9 @@
 	if (!client)
 		return
 
-	if (l_plane)
-		QDEL_NULL(l_plane)
 	if (l_general)
 		QDEL_NULL(l_general)
 
-	l_plane = new(null, client)
 	l_general = new(null, client)
-	client.screen += l_plane
 	client.screen += l_general
 	client.update_skybox(TRUE)

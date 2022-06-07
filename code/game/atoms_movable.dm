@@ -63,6 +63,8 @@
 	if(LAZYLEN(movement_handlers) && !ispath(movement_handlers[1]))
 		QDEL_NULL_LIST(movement_handlers)
 
+	vis_locs = null //clears this atom out of all viscontents
+	vis_contents.Cut()
 
 
 /atom/movable/Bump(var/atom/A, yes)

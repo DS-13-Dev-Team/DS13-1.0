@@ -30,7 +30,7 @@
 	//Thirdly, in single icon mode, it is the icon state for lying down
 	var/icon_lying = null
 	var/lying_rotation = 90 //How much to rotate the icon when lying down
-	var/layer = BASE_HUMAN_LAYER
+	var/layer = MOB_LAYER
 	var/layer_lying	=	LYING_HUMAN_LAYER
 
 	// Damage overlay and masks.

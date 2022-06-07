@@ -32,7 +32,6 @@
 	transform = M
 
 /mob
-	var/obj/lighting_plane/l_plane
 	var/obj/lighting_general/l_general
 
 

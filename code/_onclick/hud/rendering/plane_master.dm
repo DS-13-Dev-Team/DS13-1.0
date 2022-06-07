@@ -3,12 +3,13 @@
 	icon_state = "blank"
 	appearance_flags = PLANE_MASTER|NO_CLIENT_COLOR
 	blend_mode = BLEND_OVERLAY
+	plane = LOWEST_EVER_PLANE
 	var/show_alpha = 255
 	var/hide_alpha = 0
 
 	//--rendering relay vars--
 	///integer: what plane we will relay this planes render to
-	var/render_relay_plane = RENDER_PLANE_MASTER
+	var/render_relay_plane = RENDER_PLANE_GAME
 	///bool: Whether this plane should get a render target automatically generated
 	var/generate_render_target = TRUE
 	///integer: blend mode to apply to the render relay in case you dont want to use the plane_masters blend_mode
@@ -29,6 +30,7 @@
 	if(!isnull(render_relay_plane))
 		relay_render_to_plane(mymob, render_relay_plane)
 
+///Things rendered on "openspace"; holes in multi-z
 /atom/movable/screen/plane_master/openspace_backdrop
 	name = "open space backdrop plane master"
 	plane = OPENSPACE_BACKDROP_PLANE
@@ -47,8 +49,6 @@
 	add_filter("first_stage_openspace", 1, drop_shadow_filter(color = "#04080FAA", size = -10))
 	add_filter("second_stage_openspace", 2, drop_shadow_filter(color = "#04080FAA", size = -15))
 	add_filter("third_stage_openspace", 3, drop_shadow_filter(color = "#04080FAA", size = -20))
-	add_filter("fourth_stage_openspace", 4, drop_shadow_filter(color = "#04080FAA", size = -25))
-	add_filter("fifth_stage_openspace", 5, drop_shadow_filter(color = "#04080FAA", size = -30))
 
 ///Contains just the floor
 /atom/movable/screen/plane_master/floor
@@ -72,12 +72,12 @@
 	if(istype(mymob) && mymob.client)
 		add_filter("AO", 1, drop_shadow_filter(x = 0, y = -2, size = 4, color = "#04080FAA"))
 
-/atom/movable/screen/plane_master/point
-	name = "point plane master"
-	plane = POINT_PLANE
+/atom/movable/screen/plane_master/game_world_upper
+	name = "upper game world plane master"
+	plane = DEFAULT_PLANE
+	render_relay_plane = GAME_PLANE
 	appearance_flags = PLANE_MASTER //should use client color
 	blend_mode = BLEND_OVERLAY
-	render_relay_plane = RENDER_PLANE_GAME
 
 /**
  * Plane master handling byond internal blackness
@@ -99,14 +99,82 @@
 	plane = AREA_PLANE
 	render_relay_plane = RENDER_PLANE_GAME
 
-/atom/movable/screen/plane_master/fullscreen
-	name = "fullscreen alert plane"
-	plane = FULLSCREEN_PLANE
-	render_relay_plane = RENDER_PLANE_NON_GAME
+/atom/movable/screen/plane_master/massive_obj
+	name = "massive object plane master"
+	plane = MASSIVE_OBJ_PLANE
+	appearance_flags = PLANE_MASTER
+	blend_mode = BLEND_OVERLAY
 
 /atom/movable/screen/plane_master/ghost
 	name = "ghost plane master"
 	plane = OBSERVER_PLANE
 	appearance_flags = PLANE_MASTER //should use client color
 	blend_mode = BLEND_OVERLAY
+	render_relay_plane = RENDER_PLANE_NON_GAME
+
+/atom/movable/screen/plane_master/point
+	name = "point plane master"
+	plane = POINT_PLANE
+	appearance_flags = PLANE_MASTER //should use client color
+	blend_mode = BLEND_OVERLAY
+	render_relay_plane = RENDER_PLANE_GAME
+
+///Contains all lighting objects
+/atom/movable/screen/plane_master/lighting
+	name = "lighting plane master"
+	plane = LIGHTING_PLANE
+	blend_mode_override = BLEND_MULTIPLY
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	color = list(
+			-1, 00, 00, 00,
+			00, -1, 00, 00,
+			00, 00, -1, 00,
+			00, 00, 00, 00,
+			01, 01, 01, 01
+		)
+/*
+/atom/movable/screen/plane_master/lighting/backdrop(mob/mymob)
+	.=..()
+	mymob.overlay_fullscreen("lighting_backdrop_lit", /atom/movable/screen/fullscreen/lighting_backdrop/lit)
+	mymob.overlay_fullscreen("lighting_backdrop_unlit", /atom/movable/screen/fullscreen/lighting_backdrop/unlit)
+*/
+
+/atom/movable/screen/plane_master/above_lighting
+	name = "above lighting plane master"
+	plane = EFFECTS_ABOVE_LIGHTING_PLANE
+	appearance_flags = PLANE_MASTER
+	blend_mode = BLEND_OVERLAY
+
+/atom/movable/screen/plane_master/obscurity
+	name = "obscurity plane master"
+	plane = OBSCURITY_PLANE
+	appearance_flags = PLANE_MASTER
+	blend_mode = BLEND_OVERLAY
+
+/atom/movable/screen/plane_master/above_obscurity
+	name = "above obscurity plane master"
+	plane = ABOVE_OBSCURITY_PLANE
+	appearance_flags = PLANE_MASTER
+	blend_mode = BLEND_OVERLAY
+
+/atom/movable/screen/plane_master/fullscreen
+	name = "fullscreen alert plane"
+	plane = FULLSCREEN_PLANE
+	render_relay_plane = RENDER_PLANE_NON_GAME
+
+/atom/movable/screen/plane_master/runechat
+	name = "runechat plane master"
+	plane = RUNECHAT_PLANE
+	appearance_flags = PLANE_MASTER
+	blend_mode = BLEND_OVERLAY
+	render_relay_plane = RENDER_PLANE_NON_GAME
+
+/atom/movable/screen/plane_master/hud
+	name = "HUD plane"
+	plane = HUD_PLANE
+	render_relay_plane = RENDER_PLANE_NON_GAME
+
+/atom/movable/screen/plane_master/above_hud
+	name = "above HUD plane"
+	plane = ABOVE_HUD_PLANE
 	render_relay_plane = RENDER_PLANE_NON_GAME

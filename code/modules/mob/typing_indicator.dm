@@ -9,6 +9,7 @@ I IS TYPIN'!'
 /atom/movable/overlay/typing_indicator
 	icon = 'icons/mob/talk.dmi'
 	icon_state = "typing"
+	layer = ABOVE_HUMAN_LAYER
 
 /atom/movable/overlay/typing_indicator/New(var/newloc, var/mob/master)
 	..(newloc)

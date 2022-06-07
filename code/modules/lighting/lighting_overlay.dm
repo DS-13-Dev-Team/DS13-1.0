@@ -7,10 +7,11 @@
 	icon = LIGHTING_ICON
 	plane = LIGHTING_PLANE
 	layer = LIGHTING_LAYER
+	vis_flags = VIS_INHERIT_ID | VIS_INHERIT_PLANE
 	invisibility = INVISIBILITY_LIGHTING
 	color = LIGHTING_BASE_MATRIX
 	icon_state = "light1"
-	blend_mode = BLEND_OVERLAY
+	blend_mode = BLEND_ADD
 
 	appearance_flags = 0
 
@@ -98,8 +99,8 @@
 	var/set_luminosity = max > 1e-6
 	#endif
 
-	if((rr & gr & br & ar) && (rg + gg + bg + ag + rb + gb + bb + ab == 8))
-	//anything that passes the first case is very likely to pass the second, and addition is a little faster in this case
+	// If all channels are full lum, there's no point showing the overlay.
+	if(rr + rg + rb + gr + gg + gb + br + bg + bb + ar + ag + ab >= 12)
 		icon_state = "transparent"
 		color = null
 	else if(!set_luminosity)
