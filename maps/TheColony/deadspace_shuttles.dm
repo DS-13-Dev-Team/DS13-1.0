@@ -25,7 +25,7 @@
 	waypoint_offsite = "colony_escape1_end"
 	landmark_transition = "colony_escape1_transition"
 
-/datum/shuttle/autodock/ferry/escape1/can_force()
+/datum/shuttle/autodock/ferry/escape1/can_launch()
 	if (evacuation_controller.state < EVAC_LAUNCHING)
 		return FALSE
 
@@ -56,7 +56,7 @@
 	waypoint_offsite = "colony_escape2_end"
 	landmark_transition = "colony_escape2_transition"
 
-/datum/shuttle/autodock/ferry/escape2/can_force()
+/datum/shuttle/autodock/ferry/escape2/can_launch()
 	if (evacuation_controller.state < EVAC_LAUNCHING)
 		return FALSE
 
