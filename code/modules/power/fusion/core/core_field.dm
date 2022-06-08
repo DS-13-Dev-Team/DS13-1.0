@@ -42,7 +42,8 @@
 /obj/effect/fusion_em_field/New(loc, var/obj/machinery/power/fusion_core/new_owned_core)
 	..()
 
-	set_light(light_min_range, light_min_power)
+	set_light_range(light_min_range)
+	set_light_power(light_min_power)
 	last_range = light_min_range
 	last_power = light_min_power
 
@@ -137,7 +138,8 @@
 		use_power = light_min_power + ceil((light_max_power-light_min_power)*temp_mod)
 
 	if(last_range != use_range || last_power != use_power)
-		set_light(use_range, min(use_power, 1)) //cap first arg at 1 to avoid breaking lighting stuff.
+		set_light_range(use_range)
+		set_light_power(min(use_power, 1)) //cap first arg at 1 to avoid breaking lighting stuff.
 		last_range = use_range
 		last_power = use_power
 
@@ -205,7 +207,9 @@
 
 /obj/effect/fusion_em_field/proc/Rupture()
 	visible_message("<span class='danger'>\The [src] shudders like a dying animal before flaring to eye-searing brightness and rupturing!</span>")
-	set_light(15, 1, "#ccccff")
+	set_light_range(15)
+	set_light_power(1)
+	set_light_color("#ccccff")
 	empulse(get_turf(src), ceil(plasma_temperature/1000), ceil(plasma_temperature/300))
 	sleep(5)
 	RadiateAll()
@@ -443,7 +447,6 @@
 			AddParticles(reactant, react_pool[reactant])
 
 /obj/effect/fusion_em_field/Destroy()
-	set_light(0)
 	RadiateAll()
 	for(var/obj/effect/fusion_particle_catcher/catcher in particle_catchers)
 		qdel(catcher)

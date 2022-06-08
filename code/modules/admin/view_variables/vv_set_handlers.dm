@@ -137,7 +137,10 @@
 	VV_LIGHTING_SET(light_color)
 	VV_LIGHTING_SET(light_on)
 
-	A.set_light(new_light_range, new_light_power, new_light_color, new_light_on)
+	A.set_light_power(new_light_power)
+	A.set_light_range(new_light_range)
+	A.set_light_color(new_light_color)
+	A.set_light_on(new_light_on)
 
 /decl/vv_set_handler/area_light_handler
 	handled_type = /area

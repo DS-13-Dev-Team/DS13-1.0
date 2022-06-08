@@ -39,9 +39,10 @@ var/const/HOLOPAD_MODE = RANGE_BASED
 
 	layer = ABOVE_TILE_LAYER
 
-	var/power_per_hologram = 500 //per usage per hologram
 	idle_power_usage = 5
 	use_power = 1
+	light_power = 2
+	var/power_per_hologram = 500 //per usage per hologram
 
 	var/list/mob/living/silicon/ai/masters = new() //List of AIs that use the holopad
 	var/last_request = 0 //to prevent request spam. ~Carn
@@ -262,9 +263,9 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 		hologram.SetName("[A.name] (Hologram)") //If someone decides to right click.
 		A.holo = src
 		masters[A] = hologram
-	hologram.set_light(l_power = 2)	//hologram lighting
+	hologram.set_light_power(2)	//hologram lighting
 	hologram.color = color //painted holopad gives coloured holograms
-	set_light(l_power = 2)			//pad lighting
+	set_light_on(TRUE)			//pad lighting
 	icon_state = "[base_icon]1"
 	return 1
 
@@ -277,7 +278,7 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 		qdel(masters[caller_id])//Get rid of user's hologram
 		masters -= caller_id //Discard the caller from the list of those who use holopad
 	if (!masters.len)//If no users left
-		set_light(l_power = 0)			//pad lighting (hologram lighting will be handled automatically since its owner was deleted)
+		set_light_on(FALSE)			//pad lighting (hologram lighting will be handled automatically since its owner was deleted)
 		icon_state = "[base_icon]0"
 		if(sourcepad)
 			sourcepad.targetpad = null

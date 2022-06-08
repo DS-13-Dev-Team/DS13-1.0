@@ -63,11 +63,13 @@
 	return locate(/obj/structure/lattice, src) || locate(/obj/structure/catwalk, src) //counts as solid structure if it has a lattice or catwalk
 
 /turf/space/proc/update_starlight()
-	if(!CONFIG_GET(number/starlight))
-		return
-	if(locate(/turf/simulated) in orange(src,1)) //Let's make sure not to break everything if people use a crazy setting.
-		set_light(3, min(0.1*CONFIG_GET(number/starlight), 1), SSskybox.background_color)
-	else
+	if(CONFIG_GET(number/starlight))
+		for(var/t in RANGE_TURFS(src, 1)) //RANGE_TURFS is in code\__HELPERS\game.dm
+			if(isspaceturf(t))
+				//let's NOT update this that much pls
+				continue
+			set_light(2)
+			return
 		set_light(0)
 
 /turf/space/attackby(obj/item/C as obj, mob/user as mob)

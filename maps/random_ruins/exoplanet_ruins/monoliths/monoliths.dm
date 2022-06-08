@@ -14,6 +14,8 @@
 	layer = ABOVE_HUMAN_LAYER
 	density = 1
 	anchored = 1
+	light_range = 2
+	light_power = 0.3
 	var/active = 0
 
 /obj/structure/monolith/Initialize()
@@ -36,7 +38,10 @@
 		I.plane = ABOVE_LIGHTING_PLANE
 		I.layer = LIGHTING_SECONDARY_LAYER
 		overlays += I
-		set_light(2, 0.3, I.color)
+		set_light_color(I.color)
+		set_light_on(TRUE)
+	else
+		set_light_on(FALSE)
 
 /obj/structure/monolith/attack_hand(mob/user)
 	visible_message("[user] touches \the [src].")

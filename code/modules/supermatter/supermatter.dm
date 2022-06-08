@@ -249,7 +249,9 @@
 //Changes color and luminosity of the light to these values if they were not already set
 /obj/machinery/power/supermatter/proc/shift_light(var/lum, var/clr)
 	if(lum != light_range || clr != light_color)
-		set_light(lum, 1, clr)
+		set_light_range(lum)
+		set_light_power(1)
+		set_light_color(clr)
 
 /obj/machinery/power/supermatter/proc/get_integrity()
 	var/integrity = damage / explosion_point

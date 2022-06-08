@@ -30,7 +30,9 @@
 	anchored = 0
 	density = 1
 	stat = 0
-
+	light_range = 2
+	light_power = 1
+	light_color = "#00ccaa"
 	var/target_drop_time
 	var/drop_delay = 450
 	var/expended
@@ -78,7 +80,7 @@
 	if(surplus() < 500)
 		if(user) to_chat(user, "<span class='notice'>The connected wire doesn't have enough current.</span>")
 		return
-	set_light(2, 1, "#00ccaa")
+	set_light_on(TRUE)
 	icon_state = "beacon_active"
 	use_power = 1
 	if(user) to_chat(user, "<span class='notice'>You activate the beacon. The supply drop will be dispatched soon.</span>")
@@ -89,7 +91,7 @@
 		icon_state = "beacon_depleted"
 	else
 		icon_state = "beacon"
-	set_light(0)
+	set_light_on(FALSE)
 	use_power = 0
 	target_drop_time = null
 	if(user) to_chat(user, "<span class='notice'>You deactivate the beacon.</span>")

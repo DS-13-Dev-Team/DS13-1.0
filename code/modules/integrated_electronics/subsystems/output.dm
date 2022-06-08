@@ -83,10 +83,13 @@
 /obj/item/integrated_circuit/output/light/proc/update_lighting()
 	if(light_toggled)
 		if(assembly)
-			assembly.set_light(4, light_brightness, light_rgb)
+			assembly.set_light_range(4)
+			assembly.set_light_power(light_brightness)
+			assembly.set_light_color(light_rgb)
+			assembly.set_light_on(TRUE)
 	else
 		if(assembly)
-			assembly.set_light(0)
+			assembly.set_light_on(FALSE)
 	power_draw_idle = light_toggled ? light_brightness * 2 : 0
 
 /obj/item/integrated_circuit/output/light/power_fail() // Turns off the flashlight if there's no power left.

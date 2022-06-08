@@ -3,6 +3,7 @@
 /obj/item/modular_computer
 	name = "Modular Computer"
 	desc = "A modular computer. You shouldn't see this."
+	light_power = 0.2
 
 	var/enabled = 0											// Whether the computer is turned on.
 	var/screen_on = 1										// Whether the computer is active/opened/it's screen is on.
@@ -32,7 +33,6 @@
 	var/icon_state_screensaver = "standby"
 	var/max_hardware_size = 0								// Maximal hardware size. Currently, tablets have 1, laptops 2 and consoles 3. Limits what hardware types can be installed.
 	var/steel_sheet_cost = 5								// Amount of steel sheets refunded when disassembling an empty frame of this computer.
-	var/light_strength = 0									// Intensity of light this computer emits. Comparable to numbers light fixtures use.
 	var/list/idle_threads = list()							// Idle programs on background. They still receive process calls but can't be interacted with.
 
 	// Damage of the chassis. If the chassis takes too much damage it will break apart.

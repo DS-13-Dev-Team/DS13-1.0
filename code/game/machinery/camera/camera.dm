@@ -133,7 +133,6 @@
 			affected_by_emp_until = max(affected_by_emp_until, world.time + (90 SECONDS / severity))
 		else
 			stat |= EMPED
-			set_light(0)
 			triggerCameraAlarm()
 			update_icon()
 			update_coverage()

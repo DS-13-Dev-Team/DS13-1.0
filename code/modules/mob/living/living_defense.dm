@@ -275,14 +275,17 @@
 
 	if(fire_stacks > 0 && !on_fire)
 		on_fire = 1
-		set_light(4, 0.6, COLOR_ORANGE)
+		set_light_range(4)
+		set_light_power(0.6)
+		set_light_color(COLOR_ORANGE)
+		set_light_on(TRUE)
 		update_fire()
 
 /mob/living/proc/ExtinguishMob()
 	if(on_fire)
 		on_fire = 0
 		fire_stacks = 0
-		set_light(0)
+		set_light_on(FALSE)
 		update_fire()
 
 /mob/living/proc/update_fire()

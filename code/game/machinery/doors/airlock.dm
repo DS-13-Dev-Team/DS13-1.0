@@ -20,7 +20,8 @@ var/list/airlock_overlays = list()
 	icon = 'icons/obj/doors/station/door_medsec.dmi'
 	icon_state = "closed"
 	power_channel = ENVIRON
-
+	light_range = 1
+	light_power = 0.25
 	explosion_resistance = 10
 	var/aiControlDisabled = 0 //If 1, AI control is disabled until the AI hacks back in and disables the lock. If 2, the AI has bypassed the lock. If -1, the control is enabled but the AI had bypassed it earlier, so if it is disabled again the AI would have no trouble getting back in.
 	var/hackProof = 0 // if 1, this door can't be hacked by the AI
@@ -687,7 +688,7 @@ About the new airlock wires panel:
 	var/icon/sparks_overlay
 	var/icon/brace_overlay
 
-	set_light(0)
+	set_light_on(FALSE)
 
 	if(door_color && door_color != "none")
 		var/ikey = "[airlock_type]-[door_color]-color"
@@ -736,7 +737,8 @@ About the new airlock wires panel:
 			if(lights && src.arePowerSystemsOn())
 				if(locked)
 					lights_overlay = bolts_file
-					set_light(1, 0.25, COLOR_RED_LIGHT)
+					set_light_color(COLOR_RED_LIGHT)
+					set_light_on(TRUE)
 
 		if(AIRLOCK_DENY)
 			if(!src.arePowerSystemsOn())
@@ -751,7 +753,8 @@ About the new airlock wires panel:
 				weld_overlay = welded_file
 			if(lights && src.arePowerSystemsOn())
 				lights_overlay = deny_file
-				set_light(1, 0.25, COLOR_RED_LIGHT)
+				set_light_color(COLOR_RED_LIGHT)
+				set_light_on(TRUE)
 
 		if(AIRLOCK_EMAG)
 			sparks_overlay = emag_file
@@ -767,7 +770,8 @@ About the new airlock wires panel:
 		if(AIRLOCK_CLOSING)
 			if(lights && src.arePowerSystemsOn())
 				lights_overlay = lights_file
-				set_light(1, 0.25, COLOR_LIME)
+				set_light_color(COLOR_LIME)
+				set_light_on(TRUE)
 			if(p_open)
 				panel_overlay = panel_file
 
@@ -780,7 +784,8 @@ About the new airlock wires panel:
 		if(AIRLOCK_OPENING)
 			if(lights && src.arePowerSystemsOn())
 				lights_overlay = lights_file
-				set_light(1, 0.25, COLOR_LIME)
+				set_light_color(COLOR_LIME)
+				set_light_on(TRUE)
 			if(p_open)
 				panel_overlay = panel_file
 

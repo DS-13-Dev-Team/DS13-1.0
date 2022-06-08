@@ -44,7 +44,8 @@
 	req_one_access = list(access_engineering)
 	clicksound = "button"
 	clickvol = 30
-
+	light_range = 1
+	light_power = 0.25
 	layer = ABOVE_WINDOW_LAYER
 
 	var/alarm_id = null
@@ -311,11 +312,11 @@
 /obj/machinery/alarm/update_icon()
 	if(wiresexposed)
 		icon_state = "alarmx"
-		set_light(l_power = 0)
+		set_light_on(FALSE)
 		return
 	if((stat & (NOPOWER|BROKEN)) || shorted)
 		icon_state = "alarmp"
-		set_light(l_power = 0)
+		set_light_on(FALSE)
 		return
 
 	var/icon_level = danger_level
@@ -347,7 +348,8 @@
 		else if(dir == EAST)
 			pixel_x = -21
 
-	set_light(1, 0.25,new_color)
+	set_light_color(new_color)
+	set_light_on(TRUE)
 
 /obj/machinery/alarm/receive_signal(datum/signal/signal)
 	if(stat & (NOPOWER|BROKEN))
@@ -931,25 +933,31 @@ FIRE ALARM
 				icon_state="fire_b1"
 			if(0)
 				icon_state="fire_b0"
-		set_light(l_power = 0)
+		set_light_on(FALSE)
 		return
 
 	if(stat & BROKEN)
 		icon_state = "firex"
-		set_light(l_power = 0)
+		set_light_on(FALSE)
 	else if(stat & NOPOWER)
 		icon_state = "firep"
-		set_light(l_power = 0)
+		set_light_on(FALSE)
 	else
 		if(!src.detecting)
 			icon_state = "fire1"
-			set_light(1, 0.25, COLOR_RED)
+			set_light_range(1)
+			set_light_power(0.25)
+			set_light_color(COLOR_RED)
+			set_light_on(TRUE)
 		else if(z in GLOB.using_map.contact_levels)
 			icon_state = "fire0"
 			var/decl/security_state/security_state = decls_repository.get_decl(GLOB.using_map.security_state)
 			var/decl/security_level/sl = security_state.current_security_level
 
-			set_light(sl.light_range, sl.light_power, sl.light_color_alarm)
+			set_light_range(sl.light_range)
+			set_light_power(sl.light_power)
+			set_light_color(sl.light_color_alarm)
+			set_light_on(TRUE)
 			src.overlays += image(sl.icon, sl.overlay_alarm)
 
 /obj/machinery/firealarm/fire_act(datum/gas_mixture/air, temperature, volume)

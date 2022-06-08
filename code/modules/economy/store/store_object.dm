@@ -16,6 +16,10 @@ GLOBAL_VAR_INIT(number_of_store_kiosks, 0)
 	// Power
 	use_power = 1
 	idle_power_usage = 50
+	light_range = 4
+	light_power = 0.8
+	light_color = COLOR_DEEP_SKY_BLUE
+
 	var/vend_power_usage = 450 //actuators and stuff
 
 	var/door_state = STORE_OPEN
@@ -66,9 +70,9 @@ GLOBAL_VAR_INIT(number_of_store_kiosks, 0)
 
 	//The store emits light as long as its powered on and the door is open
 	if (light)
-		set_light(4, 0.8, COLOR_DEEP_SKY_BLUE)
+		set_light_on(TRUE)
 	else
-		set_light(0)
+		set_light_on(FALSE)
 
 
 /*

@@ -50,7 +50,6 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 	var/message = "";
 	var/recipient = ""; //the department which will be receiving the message
 	var/priority = -1 ; //Priority of the message being sent
-	light_range = 0
 	var/datum/announcement/announcement = new
 
 /obj/machinery/requests_console/update_icon()
@@ -75,8 +74,6 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 		req_console_supplies |= department
 	if (departmentType & RC_INFO)
 		req_console_information |= department
-
-	set_light(1)
 
 /obj/machinery/requests_console/Destroy()
 	allConsoles -= src
@@ -177,7 +174,6 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 				if (Console.department == department)
 					Console.newmessagepriority = 0
 					Console.icon_state = "req_comp0"
-					Console.set_light(1)
 		if(tempScreen == RCS_MAINMENU)
 			reset_message()
 		screen = tempScreen

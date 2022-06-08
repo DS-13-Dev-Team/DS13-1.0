@@ -242,13 +242,10 @@ The last resort. The exploder screams and shakes violently for 3 seconds, before
 	joint = "left wrist"
 	amputation_point = "left wrist"
 	tendon_name = "carpal ligament"
+	//The pustule casts soft yellow light in a broad area
+	light_range = 9
+	light_power = 1
 	light_color = COLOR_NECRO_YELLOW
-
-//The pustule casts soft yellow light in a broad area
-/obj/item/organ/external/exploder_pustule/Initialize()
-	set_light(9, 1, light_color)
-	.=..()
-
 
 /obj/item/organ/external/exploder_pustule/right
 	organ_tag = BP_R_ARM

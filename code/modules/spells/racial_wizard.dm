@@ -79,7 +79,6 @@
 		return
 
 	var/obj/O = new /obj(T)
-	O.set_light(10, -10, "#ffffff")
 
 	spawn(duration)
 		qdel(O)

@@ -12,12 +12,15 @@
 
 	if(radiation <= 20)
 		if(last_glow)
-			set_light(0)
+			set_light_on(FALSE)
 			last_glow = 0
 	else
 		var/mult = Clamp(radiation/200, 0.5, 1)
 		if(last_glow != mult)
-			set_light(5*mult, mult, "#55ff55")
+			set_light_range(5*mult)
+			set_light_power(mult)
+			set_light_color("#55ff55")
+			set_light_on(TRUE)
 			last_glow = mult
 
 	nutrition = Clamp(nutrition + Floor(radiation/100) + light_amount, 0, 500)

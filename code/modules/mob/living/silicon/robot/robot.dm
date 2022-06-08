@@ -427,11 +427,14 @@
 /mob/living/silicon/robot/proc/update_robot_light()
 	if(lights_on)
 		if(intenselight)
-			set_light(6, 1)
+			set_light_range(6)
+			set_light_power(1)
 		else
-			set_light(4, 0.75)
+			set_light_range(4)
+			set_light_power(0.75)
+		set_light_on(TRUE)
 	else
-		set_light(0)
+		set_light_on(FALSE)
 
 // this function displays jetpack pressure in the stat panel
 /mob/living/silicon/robot/proc/show_jetpack_pressure()

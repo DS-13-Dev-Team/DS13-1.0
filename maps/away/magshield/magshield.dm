@@ -128,10 +128,6 @@
 	light_max_bright = 1
 	light_color = "#00ee00"
 
-/obj/structure/magshield/nav_light/New()//try make flashing through the process
-	..()
-	set_light(light_range, light_power, light_color)
-
 /obj/structure/magshield/nav_light/red
 	desc = "Large and bright light regularly emitting red flashes."
 	light_color = "#ee0000"

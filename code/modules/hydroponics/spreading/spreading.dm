@@ -173,9 +173,9 @@
 
 	// Apply colour and light from seed datum.
 	if(seed.get_trait(TRAIT_BIOLUM))
-		set_light(3, 0.5, seed.get_trait(TRAIT_BIOLUM_COLOUR))
-	else
-		set_light(0)
+		set_light_range(3)
+		set_light_power(0,5)
+		set_light_color(seed.get_trait(TRAIT_BIOLUM_COLOUR))
 
 /obj/effect/vine/proc/calc_dir()
 	set background = 1

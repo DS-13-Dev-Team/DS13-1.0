@@ -16,7 +16,7 @@
 
 	patrol_speed = 2
 	target_speed = 3
-	light_strength = 0 //stunbaton makes it's own light
+	light_range = 0 //stunbaton makes it's own light
 
 	RequiresAccessToToggle = 1 // Haha no
 

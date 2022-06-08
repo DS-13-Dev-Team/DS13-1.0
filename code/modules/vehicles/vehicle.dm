@@ -11,8 +11,9 @@
 	density = 1
 	anchored = 1
 	animate_movement=1
-	light_range = 3
-
+	light_range = 5
+	light_power = 0.8
+	light_on = FALSE
 	can_buckle = 1
 	buckle_movable = 1
 	buckle_lying = 0
@@ -172,13 +173,13 @@
 	if(powered && cell.charge < (charge_use * CELLRATE))
 		return 0
 	on = 1
-	set_light(5, 0.8)
+	set_light_on(TRUE)
 	update_icon()
 	return 1
 
 /obj/vehicle/proc/turn_off()
 	on = 0
-	set_light(0)
+	set_light_on(FALSE)
 	update_icon()
 
 /obj/vehicle/emag_act(var/remaining_charges, mob/user as mob)

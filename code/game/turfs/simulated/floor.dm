@@ -105,7 +105,7 @@
 		decals = null
 
 
-	set_light(0)
+	set_light_on(FALSE)
 	broken = null
 	burnt = null
 	flooring_override = null

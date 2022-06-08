@@ -37,6 +37,9 @@
 	var/growth_timer_handle
 
 	can_block_movement = TRUE
+	light_range = 7
+	light_power = 1
+	light_color = COLOR_NECRO_YELLOW
 
 /obj/structure/corruption_node/nest/Initialize()
 	//Add ourselves as a possible spawnpoint for the marker
@@ -45,8 +48,6 @@
 		if(SSnecromorph.marker)
 			register_spawnpoint()
 		SSnecromorph.nests += src
-
-		set_light(7, 1, COLOR_NECRO_YELLOW)
 
 /obj/structure/corruption_node/nest/proc/register_spawnpoint()
 	SSnecromorph.marker.add_spawnpoint(src)

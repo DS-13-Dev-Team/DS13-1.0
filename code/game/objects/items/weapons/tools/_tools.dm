@@ -5,6 +5,8 @@
 	force = WEAPON_FORCE_NORMAL
 	throwforce = WEAPON_FORCE_NORMAL
 	w_class = ITEM_SIZE_SMALL
+	light_on = FALSE
+	light_range = 3
 
 	var/tool_in_use = FALSE
 
@@ -260,6 +262,9 @@
 		var/obj/item/weapon/tool_modification/TU = new modtype(src)
 		TU.apply(src)
 		TU.removeable = FALSE //Preinstalled mods are permanant
+
+	if(glow_color)
+		set_light_color(glow_color)
 
 	update_icon()
 	.=..()
@@ -669,7 +674,7 @@
 	if (!isnull(switched_on_force))
 		force = switched_on_force
 	if(glow_color)
-		set_light(3, 1, glow_color)
+		set_light_on(TRUE)
 	update_icon()
 	update_wear_icon() //Too tied into eris' inventory system, need to find a better path to do this
 
@@ -679,7 +684,7 @@
 	tool_qualities = switched_off_qualities
 	force = initial(force)
 	if(glow_color)
-		set_light(0)
+		set_light_on(FALSE)
 	update_icon()
 	update_wear_icon() //Too tied into eris' inventory system, need to find a better path to do this
 

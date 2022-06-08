@@ -13,12 +13,12 @@ var/list/floor_light_cache = list()
 	active_power_usage = 20
 	power_channel = LIGHT
 	matter = list(MATERIAL_STEEL = 250, MATERIAL_GLASS = 250)
+	light_power = 1
+	light_range = 4
+	light_color = "#ffffff"
 
 	var/on
 	var/damaged
-	var/default_light_power = 1
-	var/default_light_range = 4
-	var/default_light_colour = "#ffffff"
 
 /obj/machinery/floor_light/prebuilt
 	anchored = 1
@@ -87,11 +87,10 @@ var/list/floor_light_cache = list()
 
 /obj/machinery/floor_light/proc/update_brightness()
 	if(on && use_power == 2)
-		set_light(default_light_range, default_light_power, default_light_colour)
+		set_light_on(TRUE)
 	else
 		use_power = 0
-		if(light_range || default_light_power)
-			set_light(0)
+		set_light_on(FALSE)
 
 	active_power_usage = ((light_range + light_power) * 20)
 	update_icon()
@@ -100,10 +99,10 @@ var/list/floor_light_cache = list()
 	overlays.Cut()
 	if(use_power && !broken())
 		if(isnull(damaged))
-			var/cache_key = "floorlight-[default_light_colour]"
+			var/cache_key = "floorlight-[light_color]"
 			if(!floor_light_cache[cache_key])
 				var/image/I = image("on")
-				I.color = default_light_colour
+				I.color = light_color
 				I.plane = plane
 				I.layer = layer+0.001
 				floor_light_cache[cache_key] = I
@@ -111,10 +110,10 @@ var/list/floor_light_cache = list()
 		else
 			if(damaged == 0) //Needs init.
 				damaged = rand(1,4)
-			var/cache_key = "floorlight-broken[damaged]-[default_light_colour]"
+			var/cache_key = "floorlight-broken[damaged]-[light_color]"
 			if(!floor_light_cache[cache_key])
 				var/image/I = image("flicker[damaged]")
-				I.color = default_light_colour
+				I.color = light_color
 				I.plane = plane
 				I.layer = layer+0.001
 				floor_light_cache[cache_key] = I

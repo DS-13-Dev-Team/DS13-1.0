@@ -47,7 +47,7 @@
 			isbroken = 1
 			set_density(0)
 			icon_state = "pylon-broken"
-			set_light(l_power = 0)
+			set_light_on(FALSE)
 		else
 			to_chat(user, "You hit the pylon!")
 			playsound(get_turf(src), 'sound/effects/Glasshit.ogg', 75, 1)
@@ -66,7 +66,7 @@
 		isbroken = 0
 		set_density(1)
 		icon_state = "pylon"
-		set_light(l_power = 0.5)
+		set_light_on(TRUE)
 
 /obj/structure/cult/tome
 	name = "Desk"

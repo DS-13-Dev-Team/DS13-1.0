@@ -33,13 +33,14 @@
 /obj/effect/scry_eye
 	atom_flags = ATOM_FLAG_INTANGIBLE
 	visualnet_range = 6
+	light_range = 6
+	light_power = 1
+	light_color = COLOR_NECRO_YELLOW
 	var/lifespan = 1 MINUTE
 
 /obj/effect/scry_eye/Initialize()
 	.=..()
 	GLOB.necrovision.add_source(src, TRUE, TRUE)	//Add it as a vision source
-
-	set_light(6, 1, COLOR_NECRO_YELLOW)
 	QDEL_IN(src, lifespan)
 
 //Prevent it getting blown up

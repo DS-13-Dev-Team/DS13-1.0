@@ -108,9 +108,9 @@
 	if(!enabled)
 		if(icon_state_screensaver)
 			overlays.Add(icon_state_screensaver)
-		set_light(0)
+		set_light_on(FALSE)
 		return
-	set_light(light_strength, 0.2)
+	set_light_on(TRUE)
 	if(active_program)
 		overlays.Add(active_program.program_icon_state ? active_program.program_icon_state : icon_state_menu)
 		if(active_program.program_key_state)

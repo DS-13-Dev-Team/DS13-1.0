@@ -301,13 +301,13 @@
 	overlays.Cut()
 	if(!fuel)
 		icon_state = "glowstick-empty"
-		set_light(0)
+		set_light_on(FALSE)
 	else if (on)
 		var/image/I = overlay_image(icon,"glowstick-on",color)
 		I.blend_mode = BLEND_ADD
 		overlays += I
 		icon_state = "glowstick-on"
-		set_light(light_range, light_power, light_color)
+		set_light_on(on)
 	else
 		icon_state = "glowstick"
 	var/mob/M = loc
@@ -316,7 +316,6 @@
 			M.update_inv_l_hand()
 		if(M.r_hand == src)
 			M.update_inv_r_hand()
-	set_light_on(on)
 	if(light_system == STATIC_LIGHT)
 		update_light()
 

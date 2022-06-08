@@ -260,20 +260,21 @@
 		overlays += I
 
 	if(on)
-
 		use_power = 2
-
-		var/changed = 0
 		if(current_mode && (current_mode in lightbulb.lighting_modes))
-			changed = set_light(arglist(lightbulb.lighting_modes[current_mode]))
+			set_light_range(lightbulb.lighting_modes[current_mode]["l_range"])
+			set_light_power(lightbulb.lighting_modes[current_mode]["l_power"])
+			set_light_color(lightbulb.lighting_modes[current_mode]["l_color"])
 		else
-			changed = set_light(lightbulb.b_range, lightbulb.b_power, lightbulb.b_color)
-
-		if(trigger && changed && get_status() == LIGHT_OK)
+			set_light_range(lightbulb.b_range)
+			set_light_power(lightbulb.b_power)
+			set_light_color(lightbulb.b_color)
+		set_light_on(TRUE)
+		if(trigger && get_status() == LIGHT_OK)
 			switch_check()
 	else
 		use_power = 0
-		set_light(0)
+		set_light_on(FALSE)
 
 	active_power_usage = ((light_range * light_power) * LIGHTING_POWER_FACTOR)
 
@@ -287,7 +288,7 @@
 	lightbulb.switch_on()
 
 	if(get_status() != LIGHT_OK)
-		set_light(0)
+		set_light_on(FALSE)
 	else
 		playsound(src.loc, 'sound/effects/Custom_lights.ogg', 65, 1)
 

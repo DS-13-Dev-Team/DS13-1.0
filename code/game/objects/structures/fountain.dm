@@ -10,11 +10,12 @@
 	unacidable = 1
 	pixel_x = -16
 	var/used = FALSE
+	light_range = 5
+	light_power = 0.6
 
 /obj/structure/fountain/Initialize()
 	. = ..()
-	light_color = get_random_colour(lower = 190)
-	set_light(5, 0.6, light_color)
+	set_light_color(get_random_colour(lower = 190))
 
 /obj/structure/fountain/attack_hand(var/mob/living/user as mob)
 	if(user.incapacitated())

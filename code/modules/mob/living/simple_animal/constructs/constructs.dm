@@ -250,7 +250,6 @@
 	eye_glow.plane = ABOVE_LIGHTING_PLANE
 	eye_glow.layer = LIGHTING_SECONDARY_LAYER
 	overlays += eye_glow
-	set_light(3, -10, "#ffffff")
 
 ////////////////HUD//////////////////////
 

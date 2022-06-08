@@ -168,7 +168,9 @@
 	var/decl/security_level/sl = security_state.current_security_level
 
 	var/image/alert = image(sl.icon, sl.overlay_status_display)
-	set_light(sl.light_range, sl.light_power, sl.light_color_alarm)
+	set_light_range(sl.light_range)
+	set_light_power(sl.light_power)
+	set_light_color(sl.light_color_alarm)
 	overlays |= alert
 
 /obj/machinery/status_display/proc/set_picture(state)
@@ -177,13 +179,17 @@
 		picture_state = state
 		picture = image('icons/obj/status_display.dmi', icon_state=picture_state)
 	overlays |= picture
-	set_light(1, 0.5, COLOR_WHITE)
+	set_light_range(1)
+	set_light_power(0.5)
+	set_light_color(COLOR_WHITE)
 
 /obj/machinery/status_display/proc/update_display(line1, line2)
 	var/new_text = {"<div style="font-size:[FONT_SIZE];color:[FONT_COLOR];font:'[FONT_STYLE]';text-align:center;" valign="top">[line1]<br>[line2]</div>"}
 	if(maptext != new_text)
 		maptext = new_text
-	set_light(1, 0.5, COLOR_WHITE)
+	set_light_range(1)
+	set_light_power(0.5)
+	set_light_color(COLOR_WHITE)
 
 /obj/machinery/status_display/proc/get_shuttle_timer()
 	var/timeleft = evacuation_controller.get_eta()
@@ -208,7 +214,9 @@
 		overlays.Cut()
 	if(maptext)
 		maptext = ""
-	set_light(0)
+	set_light_range(0)
+	set_light_power(0)
+	set_light_color(COLOR_WHITE)
 
 /obj/machinery/status_display/receive_signal(datum/signal/signal)
 	switch(signal.data["command"])

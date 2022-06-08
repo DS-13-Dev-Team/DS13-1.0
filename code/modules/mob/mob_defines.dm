@@ -22,7 +22,7 @@
 	vis_flags = VIS_INHERIT_PLANE
 
 	var/mob_flags
-
+	var/lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
 	var/last_quick_move_time = 0
 	var/list/client_images = list() // List of images applied to/removed from the client on login/logout
 	var/datum/mind/mind

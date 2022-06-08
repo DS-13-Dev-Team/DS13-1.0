@@ -77,6 +77,8 @@
 	req_access = list(access_engineering)
 	clicksound = "button"
 	layer = ABOVE_WINDOW_LAYER
+	light_range = 1
+	light_power = 0.8
 	var/needs_powerdown_sound
 	var/area/area
 	var/areastring = null
@@ -362,21 +364,21 @@
 
 	if(update & 3)
 		if(update_state & (UPDATE_OPENED1|UPDATE_OPENED2|UPDATE_BROKE))
-			set_light(0)
+			set_light_on(FALSE)
 		else if(update_state & UPDATE_BLUESCREEN)
-			set_light(1, 0.8, "#00ecff")
+			set_light_color("#00ecff")
+			set_light_on(TRUE)
 		else if(!(stat & (BROKEN|MAINT)) && update_state & UPDATE_ALLGOOD)
-			var/color
 			switch(charging)
 				if(0)
-					color = "#f86060"
+					set_light_color("#f86060")
 				if(1)
-					color = "#a8b0f8"
+					set_light_color("#a8b0f8")
 				if(2)
-					color = "#82ff4c"
-			set_light(1, 0.8, color)
+					set_light_color("#82ff4c")
+			set_light_on(TRUE)
 		else
-			set_light(0)
+			set_light_on(FALSE)
 
 /obj/machinery/power/apc/proc/check_updates()
 	if(!update_overlay_chan)

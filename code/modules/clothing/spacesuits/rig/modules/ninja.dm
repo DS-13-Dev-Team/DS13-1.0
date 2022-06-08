@@ -220,7 +220,9 @@
 	holder.visible_message("<span class='danger'>\The [src.holder] emits a shrill tone!</span>","<span class='danger'> You hear a shrill tone!</span>")
 	sleep(blink_solid_time)
 	src.blink_mode = 0
-	src.holder.set_light(0, 0, "#000000")
+	src.holder.set_light_range(0)
+	src.holder.set_light_power(0)
+	src.holder.set_light_color("#000000")
 
 	explosion(get_turf(src), explosion_values[1], explosion_values[2], explosion_values[3], explosion_values[4])
 	if(holder && holder.wearer)
@@ -244,17 +246,27 @@
 		if(0)
 			return
 		if(1)
-			src.holder.set_light(8,5, 1,"#ff0a00")
+			src.holder.set_light_range(8.5)
+			src.holder.set_light_power(1)
+			src.holder.set_light_color("#ff0a00")
 			sleep(6)
-			src.holder.set_light(0, 0,"#000000")
+			src.holder.set_light_range(0)
+			src.holder.set_light_power(0)
+			src.holder.set_light_color("#000000")
 			spawn(6) .()
 		if(2)
-			src.holder.set_light(8.5, 1,"#ff0a00")
+			src.holder.set_light_range(8.5)
+			src.holder.set_light_power(1)
+			src.holder.set_light_color("#ff0a00")
 			sleep(2)
-			src.holder.set_light(0, 0, "#000000")
+			src.holder.set_light_range(0)
+			src.holder.set_light_power(0)
+			src.holder.set_light_color("#000000")
 			spawn(2) .()
 		if(3)
-			src.holder.set_light(8,5, 1,"#ff0a00")
+			src.holder.set_light_range(8.5)
+			src.holder.set_light_power(1)
+			src.holder.set_light_color("#ff0a00")
 
 /obj/item/rig_module/grenade_launcher/ninja
 	suit_overlay = null

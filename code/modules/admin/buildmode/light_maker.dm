@@ -5,6 +5,7 @@
 	var/light_range = 3
 	var/light_power = 3
 	var/light_color = COLOR_WHITE
+	var/light_on = TRUE
 
 /datum/build_mode/light_maker/Help()
 	to_chat(usr, "<span class='notice'>***********************************************************</span>")
@@ -14,7 +15,7 @@
 	to_chat(usr, "<span class='notice'>***********************************************************</span>")
 
 /datum/build_mode/light_maker/Configurate()
-	var/choice = tgui_alert(usr, "Change the new light range, power, or color?", "Light Maker", list("Range", "Power", "Color", "Cancel"))
+	var/choice = tgui_alert(usr, "Change the new light range, power, color or turn it on?", "Light Maker", list("Range", "Power", "Color", "Light On", "Cancel"))
 	switch(choice)
 		if("Range")
 			var/input = input("New light range.", name, light_range) as null|num
@@ -28,11 +29,23 @@
 			var/input = input("New light color.", name, light_color) as null|color
 			if(input)
 				light_color = input
+		if("Light On")
+			var/input = input("Turn on light.", name, light_on) as null|num
+			if(input)
+				light_on = TRUE
+			else
+				light_on = FALSE
 
 /datum/build_mode/light_maker/OnClick(var/atom/A, var/list/parameters)
 	if(parameters["left"])
 		if(A)
-			A.set_light(light_range, light_power,light_color)
+			A.set_light_power(light_power)
+			A.set_light_range(light_range)
+			A.set_light_color(light_color)
+			A.set_light_on(light_on)
 	if(parameters["right"])
 		if(A)
-			A.set_light(0, 0, COLOR_WHITE)
+			A.set_light_power(initial(A.light_power))
+			A.set_light_range(initial(A.light_range))
+			A.set_light_color(initial(A.light_color))
+			A.set_light_on(initial(A.light_on))

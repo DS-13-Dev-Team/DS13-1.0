@@ -8,16 +8,10 @@
 	icon_state = "light"
 	max_health = 20	//fragile
 	default_scale = 1.6
-	light_range = 8
 	marker_spawnable = FALSE
-
-
-
-/obj/structure/corruption_node/bioluminescence/Initialize()
-	.=..()
-	if (!dummy)	//Don't do this stuff if its a dummy for placement preview
-		set_light(light_range, 1, COLOR_BIOLUMINESCENT_ORANGE)
-
+	light_range = 8
+	light_power = 1
+	light_color = COLOR_BIOLUMINESCENT_ORANGE
 
 /obj/structure/corruption_node/bioluminescence/get_blurb()
 	. = "This node is effectively an organic lightbulb. <br>\

@@ -410,6 +410,8 @@
 	sheet_name = "Uranium Sheets"
 	time_per_sheet = 576 //same power output, but a 50 sheet stack will last 2 hours at max safe power
 	board_path = /obj/item/weapon/circuitboard/pacman/super
+	light_power = 0.7
+	light_color = "#3b97ca"
 	var/rad_power = 2
 
 /obj/machinery/power/port_gen/pacman/super/UseFuel()
@@ -420,7 +422,7 @@
 
 /obj/machinery/power/port_gen/pacman/super/update_icon()
 	if(..())
-		set_light(0)
+		set_light_on(FALSE)
 		return 1
 	overlays.Cut()
 	if(power_output >= max_safe_output)
@@ -428,9 +430,10 @@
 		I.blend_mode = BLEND_ADD
 		I.alpha = round(255*power_output/max_power_output)
 		overlays += I
-		set_light(rad_power + power_output - max_safe_output, 0.7, "#3b97ca")
+		set_light_range(rad_power + power_output - max_safe_output)
+		set_light_on(TRUE)
 	else
-		set_light(0)
+		set_light_on(FALSE)
 
 
 /obj/machinery/power/port_gen/pacman/super/explode()

@@ -12,7 +12,7 @@
 	var/unlocked = 0
 	var/open = 0
 
-	light_power = 0.8 //brightness of light when on, can be negative
+	light_power = 1 //brightness of light when on, can be negative
 	light_range = 6 //outer range of light when on, can be negative
 
 	can_block_movement = TRUE
@@ -35,10 +35,10 @@
 
 	// If the cell is almost empty rarely "flicker" the light. Aesthetic only.
 	if((cell.percent() < 10) && prob(5))
-		set_light(l_power = light_power / 2)
+		set_light_power(initial(light_power)/2)
 		spawn(20)
 			if(on)
-				set_light(l_power = light_power*2)
+				set_light_power(initial(light_power)*2)
 
 	cell.use(use*CELLRATE)
 
@@ -51,7 +51,7 @@
 		return 0
 
 	on = 1
-	set_light(l_power = initial(light_power))
+	set_light_on(FALSE)
 	update_icon()
 	if(loud)
 		visible_message("\The [src] turns on.")
@@ -60,7 +60,7 @@
 
 /obj/machinery/floodlight/proc/turn_off(var/loud = 0)
 	on = 0
-	set_light(l_power = 0)
+	set_light_on(FALSE)
 	update_icon()
 	if(loud)
 		visible_message("\The [src] shuts down.")
@@ -92,7 +92,7 @@
 
 		src.cell = null
 		on = 0
-		set_light(l_power = 0)
+		set_light_on(FALSE)
 		to_chat(user, "You remove the power cell")
 		update_icon()
 		return
