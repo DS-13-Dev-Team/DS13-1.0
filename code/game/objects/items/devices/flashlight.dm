@@ -11,52 +11,35 @@
 	matter = list(MATERIAL_STEEL = 50,MATERIAL_GLASS = 20)
 
 	action_button_name = "Toggle Flashlight"
-	var/on = 0
-	var/activation_sound = 'sound/effects/flashlight.ogg'
-	var/flashlight_power = 0.7 //brightness of light when on, must be no greater than 1.
-	var/flashlight_range = 3 //outer range of light when on, can be negative
 	light_system = MOVABLE_LIGHT_DIRECTIONAL
-	var/spawn_dir // a way for mappers to force which way a flashlight faces upon spawning
+	light_range = 4
+	light_power = 1
+	light_on = FALSE
+	var/on = FALSE
+	var/activation_sound = 'sound/effects/flashlight.ogg'
 
-/obj/item/device/flashlight/Initialize()
+/obj/item/device/flashlight/Initialize(mapload)
 	. = ..()
-	set_flashlight()
-	update_icon()
+	if(icon_state == "[initial(icon_state)]-on")
+		on = TRUE
+	update_brightness()
 
-/obj/item/device/flashlight/update_icon()
+/obj/item/device/flashlight/proc/update_brightness(mob/user)
 	if(on)
 		icon_state = "[initial(icon_state)]-on"
-		set_light(flashlight_range, flashlight_power, light_color)
 	else
-		icon_state = "[initial(icon_state)]"
-		set_light(0)
+		icon_state = initial(icon_state)
+	set_light_on(on)
+	if(light_system == STATIC_LIGHT)
+		update_light()
 
 /obj/item/device/flashlight/attack_self(mob/user)
-	if(!isturf(user.loc))
-		to_chat(user, "You cannot turn the light on while in this [user.loc].")//To prevent some lighting anomalities.
-
-		return 0
 	on = !on
-	if(on && activation_sound)
-		playsound(get_turf(src), activation_sound, 75, 1)
-	set_flashlight()
-	update_icon()
+	if(on)
+		playsound(user, activation_sound, 40, TRUE)
+	update_brightness(user)
 	user.update_action_buttons()
 	return 1
-
-/obj/item/device/flashlight/proc/set_flashlight()
-	if (on)
-		set_light(flashlight_range, flashlight_power, light_color)
-	else
-		set_light(0)
-
-/obj/item/device/flashlight/dropped(mob/user)
-	. = ..()
-	set_dir(user.dir)
-
-/obj/item/device/flashlight/throw_at(atom/target)
-	. = ..()
-	set_dir(get_dir(usr, target))
 
 /obj/item/device/flashlight/attack(mob/living/M as mob, mob/living/user as mob)
 	add_fingerprint(user)
@@ -84,7 +67,7 @@
 				return
 
 			user.visible_message("<span class='notice'>\The [user] directs [src] into [M]'s [vision.name].</span>", \
-								 "<span class='notice'>You direct [src] into [M]'s [vision.name].</span>")
+								"<span class='notice'>You direct [src] into [M]'s [vision.name].</span>")
 
 			inspect_vision(vision, user)
 
@@ -129,17 +112,7 @@
 	desc = "An energy efficient flashlight."
 	icon_state = "biglight"
 	item_state = "biglight"
-	flashlight_power = 0.9
-	flashlight_range = 4
-
-/obj/item/device/flashlight/flashdark
-	name = "flashdark"
-	desc = "A strange device manufactured with mysterious elements that somehow emits darkness. Or maybe it just sucks in light? Nobody knows for sure."
-	icon_state = "flashdark"
-	item_state = "flashdark"
-	w_class = ITEM_SIZE_NORMAL
-	flashlight_power = -1
-	flashlight_range = 4
+	light_range = 6
 
 /obj/item/device/flashlight/pen
 	name = "penlight"
@@ -149,8 +122,7 @@
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
 	slot_flags = SLOT_EARS
 	w_class = ITEM_SIZE_TINY
-	flashlight_power = 0.5
-	flashlight_range = 2
+	light_range = 3
 
 /obj/item/device/flashlight/maglight
 	name = "maglight"
@@ -161,8 +133,7 @@
 	attack_verb = list ("smacked", "thwacked", "gravity_shocked")
 	matter = list(MATERIAL_STEEL = 200,MATERIAL_GLASS = 50)
 	hitsound = "swing_hit"
-	flashlight_power = 0.8
-	flashlight_range = 5
+	light_range = 5
 
 /******************************Lantern*******************************/
 /obj/item/device/flashlight/lantern
@@ -177,14 +148,8 @@
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
 	slot_flags = SLOT_BELT
 	matter = list(MATERIAL_STEEL = 200,MATERIAL_GLASS = 100)
-	flashlight_range = 5
-
-/obj/item/device/flashlight/lantern/update_icon()
-	..()
-	if(on)
-		item_state = "lantern-on"
-	else
-		item_state = "lantern"
+	light_range = 6
+	light_system = MOVABLE_LIGHT
 
 /******************************Lantern*******************************/
 
@@ -195,9 +160,7 @@
 	item_state = ""
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
 	w_class = ITEM_SIZE_TINY
-	flashlight_power = 0.4
-	flashlight_range = 2
-
+	light_range = 3
 
 // the desk lamps are a bit special
 /obj/item/device/flashlight/lamp
@@ -207,9 +170,7 @@
 	item_state = "lamp"
 	w_class = ITEM_SIZE_LARGE
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
-	flashlight_power = 0.5
-	flashlight_range = 5
-
+	light_range = 5
 	on = 1
 
 // green-shaded desk lamp
@@ -241,19 +202,20 @@
 	var/on_damage = 7
 	var/produce_heat = 1500
 	activation_sound = 'sound/effects/flare.ogg'
-
-	flashlight_power = 0.8
-	flashlight_range = 5
+	light_color = "#e58775"
+	light_system = MOVABLE_LIGHT
+	light_range = 5
 
 //Subtype that enables on spawning
 /obj/item/device/flashlight/flare/active/Initialize()
 	.=..()
-	activate()
+	on = TRUE
+	update_brightness()
+	START_PROCESSING(SSobj, src)
 
 /obj/item/device/flashlight/flare/Initialize()
 	. = ..()
 	fuel = rand(800, 1000) // Sorry for changing this so much but I keep under-estimating how long X number of ticks last in seconds.v
-	update_icon()
 
 /obj/item/device/flashlight/flare/Destroy()
 	. = ..()
@@ -265,33 +227,46 @@
 		if(T)
 			T.hotspot_expose(produce_heat, 5)
 	fuel = max(fuel - 1, 0)
-	if(!fuel || !on)
-		update_damage()
-		update_icon()
+	if(fuel <= 0 || !on)
+		turn_off()
+		if(!fuel)
+			icon_state = "[initial(icon_state)]-empty"
 		STOP_PROCESSING(SSobj, src)
 
-/obj/item/device/flashlight/flare/attack_self(var/mob/user)
-	if(!fuel)
-		to_chat(user,"<span class='notice'>\The [src] is spent.</span>")
+/obj/item/device/flashlight/flare/proc/turn_off()
+	on = FALSE
+	force = initial(src.force)
+	damtype = initial(src.damtype)
+	if(ismob(loc))
+		var/mob/U = loc
+		update_brightness(U)
+	else
+		update_brightness(null)
+
+/obj/item/device/flashlight/flare/update_brightness(mob/user)
+	..()
+	if(on)
+		icon_state = "[initial(icon_state)]-on"
+	else
+		icon_state = initial(icon_state)
+
+/obj/item/device/flashlight/flare/attack_self(mob/user)
+
+	// Usual checks
+	if(fuel <= 0)
+		to_chat(user, SPAN_WARNING("[src] is out of fuel!"))
 		return
 	if(on)
-		to_chat(user,"<span class='notice'>\The [src] is already lit.</span>")
+		to_chat(user, SPAN_WARNING("[src] is already on!"))
 		return
 
 	. = ..()
-
+	// All good, turn it on.
 	if(.)
-		activate(user)
-
-/obj/item/device/flashlight/flare/proc/activate(var/mob/user)
-	if(on)
-		return
-	on = 1
-	if(user)
-		user.visible_message("<span class='notice'>[user] pulls the cord on \the [src], activating it.</span>", "<span class='notice'>You pull the cord on \the [src], activating it!</span>")
-	update_damage()
-	update_icon()
-	START_PROCESSING(SSobj, src)
+		user.visible_message(SPAN_NOTICE("[user] lights \the [src]."), SPAN_NOTICE("You light \the [src]!"))
+		force = on_damage
+		damtype = BURN
+		START_PROCESSING(SSobj, src)
 
 /obj/item/device/flashlight/flare/proc/update_damage()
 	if(on)
@@ -300,11 +275,6 @@
 	else
 		force = initial(force)
 		damtype = initial(damtype)
-
-/obj/item/device/flashlight/flare/update_icon()
-	..()
-	if(!on && !fuel)
-		icon_state = "[initial(icon_state)]-empty"
 
 //Glowsticks
 /obj/item/device/flashlight/flare/glowstick
@@ -317,16 +287,16 @@
 	randpixel = 12
 	produce_heat = 0
 	activation_sound = null
-
-	flashlight_power = 0.9
-	flashlight_range = 3
+	light_system = MOVABLE_LIGHT
+	color = "#49f37c"
+	light_range = 4
 
 /obj/item/device/flashlight/flare/glowstick/Initialize()
 	. = ..()
-	fuel = rand(1600, 2000)
-	light_color = color
+	fuel = rand(3200, 4000)
+	set_light_color(color)
 
-/obj/item/device/flashlight/flare/glowstick/update_icon()
+/obj/item/device/flashlight/flare/glowstick/update_brightness(mob/user)
 	item_state = "glowstick"
 	overlays.Cut()
 	if(!fuel)
@@ -336,8 +306,8 @@
 		var/image/I = overlay_image(icon,"glowstick-on",color)
 		I.blend_mode = BLEND_ADD
 		overlays += I
-		item_state = "glowstick-on"
-		set_light(flashlight_range, flashlight_power, light_color)
+		icon_state = "glowstick-on"
+		set_light(light_range, light_power, light_color)
 	else
 		icon_state = "glowstick"
 	var/mob/M = loc
@@ -346,13 +316,9 @@
 			M.update_inv_l_hand()
 		if(M.r_hand == src)
 			M.update_inv_r_hand()
-
-/obj/item/device/flashlight/flare/glowstick/activate(var/mob/user)
-	if(on)
-		return
-	if(user)
-		user.visible_message("<span class='notice'>[user] cracks and shakes \the [src].</span>", "<span class='notice'>You crack and shake \the [src], turning it on!</span>")
-	START_PROCESSING(SSobj, src)
+	set_light_on(on)
+	if(light_system == STATIC_LIGHT)
+		update_light()
 
 /obj/item/device/flashlight/flare/glowstick/red
 	name = "red glowstick"
@@ -388,9 +354,7 @@
 	item_state = "slime"
 	w_class = ITEM_SIZE_TINY
 	on = 1 //Bio-luminesence has one setting, on.
-
-	flashlight_power = 0.8
-	flashlight_range = 5
+	light_range = 5
 
 /obj/item/device/flashlight/slime/update_icon()
 	return
@@ -408,9 +372,7 @@
 	item_state = "lamp"
 	w_class = ITEM_SIZE_LARGE
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
-
-	flashlight_power = 0.8
-	flashlight_range = 7
+	light_range = 7
 
 
 /obj/item/device/flashlight/floodlamp/verb/rotate()
@@ -442,7 +404,7 @@
 	icon_state = "lavalamp"
 	on = 0
 	action_button_name = "Toggle lamp"
-	flashlight_range = 3 //range of light when on
+	light_range = 3 //range of light when on
 
 /obj/item/device/flashlight/lamp/lava/red
 	desc = "A kitchy red decorative light."

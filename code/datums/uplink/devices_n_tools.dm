@@ -84,11 +84,6 @@
 	item_cost = 24
 	path = /obj/item/clothing/glasses/thermal/syndi
 
-/datum/uplink_item/item/tools/flashdark
-	name = "Flashdark"
-	item_cost = 32
-	path = /obj/item/device/flashlight/flashdark
-
 /datum/uplink_item/item/tools/powersink
 	name = "Powersink (DANGER!)"
 	item_cost = 40
