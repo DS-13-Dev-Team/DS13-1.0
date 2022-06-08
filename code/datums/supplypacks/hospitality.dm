@@ -58,6 +58,13 @@
 	supply_method = /decl/supply_method/randomized
 
 
+/decl/hierarchy/supply_pack/hospitality/bacon
+	name = "Bacon crate"
+	contains = list(/obj/item/weapon/reagent_containers/food/snacks/rawbacon = 20)
+	containertype = /obj/structure/closet/crate/freezer
+	containername = "\improper Bacon crate"
+	cost = 20
+
 /decl/hierarchy/supply_pack/hospitality/beef
 	name = "Beef crate"
 	contains = list(/obj/item/weapon/reagent_containers/food/snacks/meat/beef = 6)

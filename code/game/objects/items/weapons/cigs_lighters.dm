@@ -1107,7 +1107,7 @@ obj/item/clothing/mask/chewable/Destroy()
 	if(lit)
 		M.IgniteMob()
 
-		if(istype(M.wear_mask, /obj/item/clothing/mask/smokable/cigarette) && get_zone_sel(user) == BP_MOUTH)
+		if(istype(M.wear_mask, /obj/item/clothing/mask/smokable/cigarette) && get_zone_sel(user, TRUE) == BP_MOUTH)
 			var/obj/item/clothing/mask/smokable/cigarette/cig = M.wear_mask
 			if(M == user)
 				cig.attackby(src, user)

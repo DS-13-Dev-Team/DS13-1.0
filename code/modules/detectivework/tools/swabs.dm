@@ -32,7 +32,7 @@
 		user.visible_message("<span class='danger'>\The [user] tries to take a swab sample from \the [H], but they move away.</span>")
 		return
 
-	if(get_zone_sel(user) == BP_MOUTH)
+	if(get_zone_sel(user, TRUE) == BP_MOUTH)
 		if(!H.organs_by_name[BP_HEAD])
 			to_chat(user, "<span class='warning'>They don't have a head.</span>")
 			return

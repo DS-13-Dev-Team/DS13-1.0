@@ -61,7 +61,7 @@
 	KEY_CTRLSHIFT = list(/mob/living/proc/leaper_gallop),
 	KEY_ALT = list(/mob/living/carbon/human/proc/tailstrike_leaper))
 
-	slowdown = 4.5
+	slowdown = 4.2
 
 	//Leaper has no legs, it moves with arms and tail
 	locomotion_limbs = list(BP_R_ARM, BP_L_ARM, BP_TAIL)
@@ -187,6 +187,7 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 	leap_damage = 2
 	limb_health_factor = 0.6
 	pixel_offset_x = null
+	pixel_offset_y = null
 
 	biomass = 7
 	spawner_spawnable = FALSE
@@ -415,7 +416,7 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 		return
 
 
-	if (gallop_ability(_duration = 4 SECONDS, _cooldown = 10 SECONDS, _power = 3))
+	if (gallop_ability(_duration = 6 SECONDS, _cooldown = 10 SECONDS, _power = 3))
 		H.play_species_audio(H, SOUND_SHOUT, VOLUME_MID, 1, 3)
 
 /mob/living/proc/leaper_gallop_enhanced()
@@ -428,7 +429,7 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 		return
 
 
-	if (gallop_ability(_duration = 4 SECONDS, _cooldown = 9 SECONDS, _power = 1.5))
+	if (gallop_ability(_duration = 6 SECONDS, _cooldown = 8 SECONDS, _power = 1.5))
 		H.play_species_audio(H, SOUND_SHOUT, VOLUME_MID, 1, 3)
 
 

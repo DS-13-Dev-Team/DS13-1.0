@@ -7,6 +7,12 @@
 	cost = 10
 	containername = "\improper Replacement lights"
 
+/decl/hierarchy/supply_pack/engineering/coloredlights
+	name = "Colored replacement lights"
+	contains = list(/obj/item/weapon/storage/box/lights/tubes/random = 3)
+	cost = 15
+	containername = "\improper Colored replacement lights!"
+
 /decl/hierarchy/supply_pack/engineering/smes_circuit
 	name = "Superconducting Magnetic Energy Storage Unit Circuitry"
 	contains = list(/obj/item/weapon/circuitboard/smes)
@@ -155,6 +161,7 @@
 	containername = "\improper Disposal Dispenser Crate"
 	access = access_engineering
 
+/*
 /decl/hierarchy/supply_pack/engineering/smbig
 	name = "Supermatter Core"
 	contains = list(/obj/machinery/power/supermatter)
@@ -162,6 +169,7 @@
 	containertype = /obj/structure/closet/crate/secure/large/phoron
 	containername = "\improper Supermatter crate (CAUTION)"
 	access = access_ce
+*/
 
 /decl/hierarchy/supply_pack/engineering/fueltank
 	name = "Fuel tank crate"

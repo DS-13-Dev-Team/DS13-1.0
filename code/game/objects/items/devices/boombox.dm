@@ -27,6 +27,18 @@
 	current_track = null
 	. = ..()
 
+/obj/item/device/boombox/equipped()
+	.=..()
+	if(!isturf(loc))
+		RegisterSignal(loc, COMSIG_MOVABLE_MOVED, .proc/on_holder_moved)
+
+/obj/item/device/boombox/dropped(mob/user)
+	.=..()
+	UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
+
+/obj/item/device/boombox/proc/on_holder_moved(mob/user, OldLoc, NewLoc)
+	SEND_SIGNAL(src, COMSIG_MOVABLE_MOVED, OldLoc, NewLoc)
+
 /obj/item/device/boombox/update_icon()
 	icon_state = active ? "on" : "off"
 

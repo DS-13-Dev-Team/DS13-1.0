@@ -130,6 +130,46 @@ The Pulse Rifle is the standard-issue service rifle of the Earth Defense Force a
 	fire_sound='sound/weapons/guns/fire/pulse_shot.ogg'
 
 /*-----------------------
+	Deflection Ammo
+------------------------*/
+
+/obj/item/ammo_casing/pulse/df
+	name = "deflection pulse round"
+	desc = "A low caliber deflection round designed for the SWS Motorized Pulse Rifle."
+	caliber = "pulse"
+	projectile_type  = /obj/item/projectile/bullet/pulse/df
+
+
+/obj/item/ammo_magazine/pulse/df
+	name = "magazine (deflection rounds)"
+	desc = "With a distinctive \"bell and stock\" design, pulse magazines can be inserted and removed from the Pulse Rifle with minimal effort and risk. This one contains EXPERIMENTAL deflection rounds. Extremely dangerous, these rounds are with a deflective tip, letting them bounce of surfaces."
+	caliber = "pulse"
+	ammo_type = /obj/item/ammo_casing/pulse/df
+	max_ammo = 130 //Slightly more total damage than a regular pulse mag
+
+/obj/item/ammo_magazine/pulse/df/update_icon()
+	if (stored_ammo.len)
+		icon_state = "pulse_rounds_df"
+	else
+		icon_state = "pulse_rounds_empty"
+
+/obj/item/projectile/bullet/pulse/df
+	icon_state = "pulse_df"
+	damage = 5
+	agony = 2
+	embed = 0
+	structure_damage_factor = 0.1
+	penetration_modifier = 0
+	embed_mult = 0
+	ricochet_chance = 120 //Bounces once, 20% chance to bounce twice. BE WARY.
+	penetrating = FALSE
+	step_delay = 1.15
+	expiry_time = 0.25 SECONDS //25% longer life-time
+	expiry_method = EXPIRY_FADEOUT
+	muzzle_type = /obj/effect/projectile/pulse/muzzle/df
+	fire_sound='sound/weapons/guns/fire/pulse_shot.ogg'
+
+/*-----------------------
 	Ammo
 ------------------------*/
 
@@ -172,3 +212,8 @@ The Pulse Rifle is the standard-issue service rifle of the Earth Defense Force a
 	icon_state = "muzzle_pulse_hv"
 	light_max_bright = 1
 	light_color = COLOR_MARKER_RED
+
+/obj/effect/projectile/pulse/muzzle/df
+	icon_state = "muzzle_pulse_light"
+	light_max_bright = 1
+	light_color = COLOR_YELLOW

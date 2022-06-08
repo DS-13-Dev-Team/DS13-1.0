@@ -511,7 +511,7 @@
 		usr.stop_pulling()
 		usr.client.perspective = EYE_PERSPECTIVE
 		usr.client.eye = src
-		usr.loc = src
+		usr.forceMove(src)
 		occupant = usr
 		isopen = 0 //Close the thing after the guy gets inside
 		update_icon()
@@ -561,7 +561,7 @@
 			if (M.client)
 				M.client.perspective = EYE_PERSPECTIVE
 				M.client.eye = src
-			M.loc = src
+			M.forceMove(src)
 			occupant = M
 			isopen = 0 //close ittt
 			add_fingerprint(user)
@@ -737,7 +737,7 @@
 			if (M.client)
 				M.client.perspective = EYE_PERSPECTIVE
 				M.client.eye = src
-			M.loc = src
+			M.forceMove(src)
 			occupant = M
 
 			add_fingerprint(user)
@@ -864,11 +864,11 @@
 /obj/machinery/suit_cycler/Topic(href, href_list)
 	if(href_list["eject_suit"])
 		if(!suit) return
-		suit.loc = get_turf(src)
+		suit.forceMove(get_turf(src))
 		suit = null
 	else if(href_list["eject_helmet"])
 		if(!helmet) return
-		helmet.loc = get_turf(src)
+		helmet.forceMove(get_turf(src))
 		helmet = null
 	else if(href_list["select_department"])
 		var/choice = input("Please select the target department paintjob.","Suit cycler",null) as null|anything in departments
@@ -1003,7 +1003,7 @@
 		occupant.client.eye = occupant.client.mob
 		occupant.client.perspective = MOB_PERSPECTIVE
 
-	occupant.loc = get_turf(occupant)
+	occupant.forceMove(get_turf(occupant))
 	occupant = null
 
 	add_fingerprint(user)

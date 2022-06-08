@@ -67,6 +67,7 @@ GLOBAL_LIST_INIT(bpl_growth_organs, list(
 "Lungs" = list("type" = /obj/item/organ/internal/lungs, "icon" = "lungs_shrunk", "name" = "Lungs", "stemcells"  = 5),
 "Liver" = list("type" = /obj/item/organ/internal/liver, "icon" = "liver", "name" = "Liver", "stemcells"  = 5),
 "Stem Cells" = list("type" = /obj/item/organ/fetus, "icon" = "thing", "name" = "Stem Cells", "stemcells"  = 0),
+"Head" = list("type" = /obj/item/organ/external/head, "icon" = "head", "name" = "Head", "stemcells" = 15),
 "Arm" = list("type" = list("Left Arm" = /obj/item/organ/external/arm/full, "Right Arm" = /obj/item/organ/external/arm/right/full), "icon" = "arm", "name" = "Arm", "stemcells"  = 10),
 "Leg" = list("type" = list("Left Leg" = /obj/item/organ/external/leg/full, "Right Leg" = /obj/item/organ/external/leg/right/full), "icon" = "leg", "name" = "Leg", "stemcells"  = 10)
 ))

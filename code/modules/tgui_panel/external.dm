@@ -17,7 +17,7 @@
 	nuke_chat()
 
 	// Failed to fix
-	action = tgui_alert(src, "Did that work?", "Fix Chat", list("Yes", "No, switch to old ui"))
+	action = tgalert(src, "Did that work?", "Fix Chat", "Yes", "No, switch to old ui")
 	// What's the point of using regular alert() here? We are doomed anyway if TGUI doesn't work
 	if (action == "No, switch to old ui")
 		winset(src, "output", "on-show=&is-disabled=0&is-visible=1")

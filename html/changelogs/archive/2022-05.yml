@@ -65,3 +65,40 @@
   - balance: Oracle twitcher health increased by 5%.
   - balance: Oracle twitcher is now properly, a big boy.
   - balance: Oracle twitcher now has an active dodge.
+2022-05-09:
+  Ketrai:
+  - balance: Leaper gallop duration extended by 50%.
+  - balance: Enhanced leaper gallop cooldown lowered.
+  - balance: Leaper speed increased.
+  - balance: Gallop isn't as easily interrupted by bullets/shrapnel anymore
+2022-05-14:
+  Ketrai:
+  - rscadd: Adds deflection pulse ammo, found in maint, stores, and the lockers
+        in the valor.
+  - rscdel: Removes HV pulse ammo from stores and reduces the chance to find it
+        in maint.
+  - rscadd: Added rubber divet ammo in sec's equipment and stores. Use it for non
+        lethal takedown, practically useless against necromorphs.
+  - rscadd: Excavation rig, found in the foreman and DOM locker, rarely in maint.
+        Better version of the mining rig, but more susceptible to bombs 'Exploders'.
+  - balance: Makes line racks more expensive because they were really cheap
+2022-05-16:
+  DTraitor:
+  - rscadd: Added a head to BPL growth tank.
+  - bugfix: Fixed a lot of things that require you to target mouth or eyes.
+  - bugfix: Fixed ore boxes deleting ore instead of storing it.
+2022-05-21:
+  DTraitor:
+  - balance: Reduced infector's interaction range, it's 1 instead of 2.
+  - balance: Reduced infector's view range from 10 to 7.
+2022-05-27:
+  Viz:
+  - rscadd: Added in bacon and bacon related items and recipes! There is now raw bacon,
+      bacon (cooked), bacon cheeseburger, deluxe bacon cheeseburger, bacon and eggs,
+      BLT, and a sliceable xl club sandwich.
+  - rscadd: Raw bacon now spawns in the meat fridge, and ordered from cargo as a 'Kitchen
+      supply crate' or 'Bacon crate'
+  - rscadd: Colored light tube boxes now orderable at cargo! Replace those broken
+      lights for STYLE!
+  DTraitor:
+  - bugfix: Ores won't disappear when moved to an ore box.

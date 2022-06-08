@@ -1,3 +1,102 @@
+/obj/item/weapon/reagent_containers/food/snacks/bacon
+	name = "slice of bacon"
+	desc = "A very tasty, thick slice of cooked bacon! Crispy yet still has a bit of chew to it, with some added salt. Will make any mouth salivate. May or may not increase likelihood heart disease."
+	icon_state = "bacon"
+	bitesize = 2
+
+/obj/item/weapon/reagent_containers/food/snacks/bacon/Initialize()
+	. = ..()
+	reagents.add_reagent(/datum/reagent/sodiumchloride, 1)
+	reagents.add_reagent(/datum/reagent/nutriment/protein, 4)
+
+/obj/item/weapon/reagent_containers/food/snacks/rawbacon
+	name = "raw slice of bacon"
+	desc = "A slice of salted raw bacon. Do not eat, tastes much better cooked"
+	icon_state = "rawbacon"
+	bitesize = 3
+
+/obj/item/weapon/reagent_containers/food/snacks/rawbacon/Initialize()
+	.=..()
+	reagents.add_reagent(/datum/reagent/nutriment/protein, 4)
+	reagents.add_reagent(/datum/reagent/sodiumchloride, 1)
+
+/obj/item/weapon/reagent_containers/food/snacks/baconcheeseburger
+	name = "bacon cheeseburger"
+	desc = "A cheeseburger with some bacon in it. Yum!"
+	icon_state = "bacon_cheeseburger"
+	bitesize = 6
+
+/obj/item/weapon/reagent_containers/food/snacks/baconcheeseburger/Initialize()
+	. = ..()
+	reagents.add_reagent(/datum/reagent/sodiumchloride, 1)
+	reagents.add_reagent(/datum/reagent/nutriment/protein, 18)
+	reagents.add_reagent(/datum/reagent/nutriment, 4)
+
+/obj/item/weapon/reagent_containers/food/snacks/deluxebaconcheeseburger
+	name = "deluxe bacon cheeseburger"
+	desc = "A sizeable burger. Contains bacon and burger meat, cheese, tomato, cabbage, set of buns, and a secret burger sauce. Fills one up, though may shorten one's life expectancy."
+	icon_state = "deluxe_bacon_cheeseburger"
+	bitesize = 6
+
+/obj/item/weapon/reagent_containers/food/snacks/deluxebaconcheeseburger/Initialize()
+	. = ..()
+	reagents.add_reagent(/datum/reagent/sodiumchloride, 3)
+	reagents.add_reagent(/datum/reagent/nutriment/protein, 24)
+	reagents.add_reagent(/datum/reagent/nutriment, 8)
+
+/obj/item/weapon/reagent_containers/food/snacks/baconandeggs
+	name = "bacon and eggs"
+	desc = "Some slices of bacon and eggs. It kind of looks like some sort of smiling face if you look at it enough."
+	icon_state = "bacon_and_eggs"
+	bitesize = 5
+
+/obj/item/weapon/reagent_containers/food/snacks/baconandeggs/Initialize()
+	..()
+	reagents.add_reagent(/datum/reagent/sodiumchloride, 3)
+	reagents.add_reagent(/datum/reagent/blackpepper, 1)
+	reagents.add_reagent(/datum/reagent/nutriment/protein, 8)
+	reagents.add_reagent(/datum/reagent/nutriment/protein/egg, 8)
+
+/obj/item/weapon/reagent_containers/food/snacks/blt
+	name = "BLT sandwich"
+	desc = "A pile of bacon with lettuce and tomatoes, slapped between 2 slices of bread. Optionally with mayo."
+	icon_state = "blt"
+	trash = /obj/item/trash/plate
+
+/obj/item/weapon/reagent_containers/food/snacks/blt/Initialize()
+	. = ..()
+	bitesize = 4
+	reagents.add_reagent(/datum/reagent/sodiumchloride, 2)
+	reagents.add_reagent(/datum/reagent/nutriment/protein, 10)
+	reagents.add_reagent(/datum/reagent/nutriment, 8)
+
+/obj/item/weapon/reagent_containers/food/snacks/sliceable/xlclubsandwich
+	name = "XL club sandwich"
+	desc = "A monstrous beast of a sandwich. A set of 3 slightly toasted bread slices, piled in high with bacon, turkey, lettuce, tomatoes, and optionally mayo. All in an extra large and tasty version."
+	icon_state = "xlclubsandwich"
+	slice_path = /obj/item/weapon/reagent_containers/food/snacks/xlclubslice
+	slices_num = 4
+	trash = /obj/item/trash/plate
+	bitesize = 10
+
+/obj/item/weapon/reagent_containers/food/snacks/sliceable/xlclubsandwich/Initialize()
+	. = ..()
+	reagents.add_reagent(/datum/reagent/sodiumchloride, 4)
+	reagents.add_reagent(/datum/reagent/nutriment/protein, 40)
+	reagents.add_reagent(/datum/reagent/nutriment, 14)
+
+/obj/item/weapon/reagent_containers/food/snacks/xlclubslice
+	name = "Slice of XL club sandwich"
+	desc = "A slice of a monstrous beast of a sandwich. A set of 3 slightly toasted bread slices, piled in high with bacon, turkey, lettuce, tomatoes, and optionally mayo. All in an extra large and tasty version."
+	icon_state = "xlclubslice"
+	bitesize = 5
+
+/obj/item/weapon/reagent_containers/food/snacks/xlclubslice/Initialize()
+	. = ..()
+	reagents.add_reagent(/datum/reagent/sodiumchloride, 1)
+	reagents.add_reagent(/datum/reagent/nutriment/protein, 10)
+	reagents.add_reagent(/datum/reagent/nutriment, 4)
+
 /obj/item/weapon/reagent_containers/food/snacks/lobster
 	name = "raw lobster"
 	desc = "A shifty lobster. You can try eating it, but its shell is extremely tough."

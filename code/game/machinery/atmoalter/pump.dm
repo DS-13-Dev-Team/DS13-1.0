@@ -5,7 +5,7 @@
 	icon_state = "psiphon:0"
 	clicksound = "button2"
 	density = 1
-	w_class = ITEM_SIZE_NORMAL
+	w_class = ITEM_SIZE_LARGE
 
 	var/on = 0
 	var/direction_out = 0 //0 = siphoning, 1 = releasing

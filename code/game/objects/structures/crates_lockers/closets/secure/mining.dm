@@ -16,6 +16,7 @@
 		/obj/item/weapon/storage/briefcase,
 		/obj/item/weapon/clipboard,
 		/obj/item/weapon/staff/gentcane,
+		/obj/item/weapon/rig/excavation,
 		/obj/item/device/flashlight/maglight
 )
 
@@ -41,6 +42,7 @@
 		/obj/item/weapon/tool/saw/plasma,
 		/obj/item/weapon/gun/energy/cutter,
 		/obj/item/weapon/cell/plasmacutter = 2,
+		/obj/item/weapon/rig/excavation,
 		/obj/item/device/flashlight/maglight,
 // 		Replace with a unique RIG
 //		/obj/item/weapon/rig/vintage

@@ -23,7 +23,7 @@
 
 
 	firemodes = list(
-		list(mode_name = "launch", fire_delay = 2.5, fire_sound = 'sound/weapons/guns/fire/jav_fire.ogg'),
+		list(mode_name = "launch", fire_delay = 3.5, fire_sound = 'sound/weapons/guns/fire/jav_fire.ogg'),
 		list(mode_name = "shock mode", mode_type = /datum/firemode/automatic/shock, projectile_type = /obj/item/projectile/null_projectile, fire_delay = 3)
 		)
 
