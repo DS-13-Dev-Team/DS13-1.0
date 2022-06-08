@@ -66,7 +66,7 @@
 	move_to_delay = 4
 
 /mob/living/simple_animal/hostile/giant_spider/New(var/location, var/atom/parent)
-	get_light_and_color(parent)
+	set_light_and_color(parent)
 	..()
 
 /mob/living/simple_animal/hostile/giant_spider/AttackingTarget()

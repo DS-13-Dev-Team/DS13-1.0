@@ -178,7 +178,7 @@
 /obj/effect/plasma_light/proc/flicker()
 	set waitfor = FALSE
 	while (!QDELETED(src))
-		set_light(1, 1, 3, 2, "#CCCC11")
+		set_light(3, 1, "#CCCC11")
 		sleep(2)
 		if (QDELETED(src))
 			return

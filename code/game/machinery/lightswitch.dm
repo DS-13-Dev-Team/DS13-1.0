@@ -37,12 +37,12 @@
 	overlays.Cut()
 	if(stat & (NOPOWER|BROKEN))
 		icon_state = "light-p"
-		set_light(0)
+		set_light(l_power = 0)
 	else
 		icon_state = "light[on]"
 		overlay.icon_state = "light[on]-overlay"
 		overlays += overlay
-		set_light(0.1, 0.1, 1, 2, on ? "#82ff4c" : "#f86060")
+		set_light(1, 0.1, on ? "#82ff4c" : "#f86060")
 
 /obj/machinery/light_switch/examine(mob/user)
 	if(..(user, 1))

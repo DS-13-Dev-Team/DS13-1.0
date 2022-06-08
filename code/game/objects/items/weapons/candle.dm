@@ -39,7 +39,7 @@
 		src.lit = 1
 		//src.damtype = "fire"
 		src.visible_message("<span class='notice'>\The [user] lights the [name].</span>")
-		set_light(0.3, 0.1, 4, 2)
+		set_light(4, 0.3)
 		START_PROCESSING(SSobj, src)
 
 

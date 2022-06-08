@@ -46,7 +46,7 @@
 			register_spawnpoint()
 		SSnecromorph.nests += src
 
-		set_light(1, 1, 7, 2, COLOR_NECRO_YELLOW)
+		set_light(7, 1, COLOR_NECRO_YELLOW)
 
 /obj/structure/corruption_node/nest/proc/register_spawnpoint()
 	SSnecromorph.marker.add_spawnpoint(src)

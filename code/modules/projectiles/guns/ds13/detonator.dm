@@ -202,7 +202,7 @@
 		//We will make the angle bound to a cardinal
 		laser_direction.SelfTurn(laser_angle)
 
-		set_light(0.8, 1, 3, l_falloff_curve = NONSENSICAL_VALUE, l_color = COLOR_DEEP_SKY_BLUE)
+		set_light(3, 0.8, COLOR_DEEP_SKY_BLUE)
 
 
 		var/vector2/tile_offset = laser_direction * max_laser_range

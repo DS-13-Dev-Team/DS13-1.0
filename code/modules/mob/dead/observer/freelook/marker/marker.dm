@@ -101,7 +101,7 @@
 /obj/machinery/marker/update_icon()
 	if (player && active)
 		icon_state = "marker_giant_active_anim"
-		set_light(1, 1, 12, 2, light_colour)
+		set_light(12 ,1, light_colour)
 	else
 		icon_state = "marker_giant_dormant"
 		set_light(0)

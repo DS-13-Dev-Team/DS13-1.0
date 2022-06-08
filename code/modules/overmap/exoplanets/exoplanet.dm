@@ -437,7 +437,7 @@
 				initial_gas = E.atmosphere.gas.Copy()
 				temperature = E.atmosphere.temperature
 			//Must be done here, as light data is not fully carried over by ChangeTurf (but overlays are).
-			set_light(E.lightlevel, 0.1, 2)
+			set_light(2, E.lightlevel)
 	..()
 
 /turf/simulated/floor/exoplanet/attackby(obj/item/C, mob/user)

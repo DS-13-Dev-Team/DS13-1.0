@@ -50,17 +50,13 @@
 		//Despite this being called a bunch during explosions,
 		//the zone will only really do heavy lifting once.
 		var/turf/simulated/S = src
-		if(S.zone) S.zone.rebuild()
+		if(S.zone)
+			S.zone.rebuild()
 
 	// Run the Destroy() chain.
 	qdel(src)
 
-	var/old_opaque_counter = opaque_counter
 	var/turf/simulated/W = new N(src)
-
-	W.opaque_counter = old_opaque_counter
-
-
 
 	if (keep_air)
 		W.air = old_air
@@ -84,17 +80,21 @@
 	W.post_change()
 	. = W
 
-	if(lighting_overlays_initialised)
-		lighting_overlay = old_lighting_overlay
-		affecting_lights = old_affecting_lights
-		corners = old_corners
-		if((old_opacity != opacity) || (dynamic_lighting != old_dynamic_lighting))
-			reconsider_lights()
-		if(dynamic_lighting != old_dynamic_lighting)
-			if(dynamic_lighting)
-				lighting_build_overlay()
-			else
-				lighting_clear_overlay()
+	affecting_lights = old_affecting_lights
+	corners = old_corners
+
+	lighting_overlay = old_lighting_overlay
+	recalc_atom_opacity()
+
+	var/tidlu = TURF_IS_DYNAMICALLY_LIT_UNSAFE(src)
+	if ((old_opacity != opacity) || (tidlu != old_dynamic_lighting) || force_lighting_update)
+		reconsider_lights()
+
+	if (tidlu != old_dynamic_lighting)
+		if (tidlu)
+			lighting_build_overlay()
+		else
+			lighting_clear_overlay()
 
 	for(var/turf/T in RANGE_TURFS(src, 1))
 		T.update_icon()

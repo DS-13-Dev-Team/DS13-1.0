@@ -387,8 +387,6 @@
 			return global.last_tick_duration;
 		if("light_overlay_cache")
 			return global.light_overlay_cache;
-		if("lighting_overlays_initialised")
-			return global.lighting_overlays_initialised;
 		if("limb_icon_cache")
 			return global.limb_icon_cache;
 		if("lunchables_drink_reagents_")
@@ -697,12 +695,6 @@
 			return global.ticket_panels;
 		if("tickets")
 			return global.tickets;
-		if("total_lighting_corners")
-			return global.total_lighting_corners;
-		if("total_lighting_overlays")
-			return global.total_lighting_overlays;
-		if("total_lighting_sources")
-			return global.total_lighting_sources;
 		if("total_unit_tests")
 			return global.total_unit_tests;
 		if("turbolifts")
@@ -1150,8 +1142,6 @@
 			global.last_tick_duration=newval;
 		if("light_overlay_cache")
 			global.light_overlay_cache=newval;
-		if("lighting_overlays_initialised")
-			global.lighting_overlays_initialised=newval;
 		if("limb_icon_cache")
 			global.limb_icon_cache=newval;
 		if("lunchables_drink_reagents_")
@@ -1460,12 +1450,6 @@
 			global.ticket_panels=newval;
 		if("tickets")
 			global.tickets=newval;
-		if("total_lighting_corners")
-			global.total_lighting_corners=newval;
-		if("total_lighting_overlays")
-			global.total_lighting_overlays=newval;
-		if("total_lighting_sources")
-			global.total_lighting_sources=newval;
 		if("total_unit_tests")
 			global.total_unit_tests=newval;
 		if("turbolifts")
@@ -1725,7 +1709,6 @@
 	"last_message_id",
 	"last_tick_duration",
 	"light_overlay_cache",
-	"lighting_overlays_initialised",
 	"limb_icon_cache",
 	"loadout_categories",
 	"lunchables_drink_reagents_",
@@ -1882,9 +1865,6 @@
 	"text_tag_icons",
 	"ticket_panels",
 	"tickets",
-	"total_lighting_corners",
-	"total_lighting_overlays",
-	"total_lighting_sources",
 	"total_unit_tests",
 	"turbolifts",
 	"turret_icons",

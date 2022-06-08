@@ -12,7 +12,7 @@
 	dir = SOUTH
 
 /obj/item/robot_parts/set_dir()
-	return
+	SHOULD_CALL_PARENT(FALSE)
 
 /obj/item/robot_parts/New(var/newloc, var/model)
 	..(newloc)

@@ -4,8 +4,8 @@
 	plane = EFFECTS_ABOVE_LIGHTING_PLANE
 	layer = BEAM_PROJECTILE_LAYER //Muzzle flashes would be above the lighting plane anyways.
 	//Standard compiletime light vars aren't working here, so we've made some of our own.
-	light_outer_range = 2
-	light_max_bright = 1
+	light_range = 2
+	light_power = 0.5
 	light_color = "#ff00dc"
 
 	mouse_opacity = 0
@@ -95,7 +95,7 @@
 // Heavy laser beam
 //----------------------------
 /obj/effect/projectile/laser/heavy
-	light_max_bright = 3
+	light_power = 0.8
 
 /obj/effect/projectile/laser/heavy/tracer
 	icon_state = "beam_heavy"
@@ -110,7 +110,7 @@
 // Pulse laser beam
 //----------------------------
 /obj/effect/projectile/laser/pulse
-	light_max_bright = 2
+	light_power = 0.7
 	light_color = COLOR_DEEP_SKY_BLUE
 
 /obj/effect/projectile/laser/pulse/tracer
@@ -128,7 +128,7 @@
 //----------------------------
 /obj/effect/projectile/pulse/muzzle
 	icon_state = "muzzle_pulse"
-	light_max_bright = 2
+	light_power = 0.7
 	light_color = COLOR_DEEP_SKY_BLUE
 
 //----------------------------
@@ -152,8 +152,7 @@
 //----------------------------
 // Emitter beam
 //----------------------------
-/obj/effect/projectile/laser/emitter/
-	light_max_bright = 1
+/obj/effect/projectile/laser/emitter
 	light_color = "#00cc00"
 
 /obj/effect/projectile/laser/emitter/tracer
@@ -185,8 +184,7 @@
 //----------------------------
 /obj/effect/projectile/bullet/muzzle
 	icon_state = "muzzle_bullet"
-	light_outer_range = 5
-	light_max_bright = 1
+	light_range = 5
 	light_color = COLOR_MUZZLE_FLASH
 
 
@@ -194,8 +192,8 @@
 // Biological projectiles
 //----------------------------
 /obj/effect/projectile/bio/muzzle
-	light_outer_range = 0
-	light_max_bright = 0
+	light_range = 0
+	light_power = 0
 	light_color = COLOR_MUZZLE_FLASH
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "spray"
@@ -212,8 +210,8 @@
 /obj/effect/projectile/acid/impact
 	icon_state = "impact_acid_1"
 	light_color = "#ff00dc"
-	light_max_bright = 0
-	light_outer_range = 0
+	light_power = 0
+	light_range = 0
 	lifespan = 12
 	random_iconstate = list("impact_acid_1","impact_acid_2","impact_acid_3","impact_acid_4")
 

@@ -101,7 +101,7 @@
 	init_atoms(atoms_to_initialise)
 	init_shuttles()
 	for(var/light_z = initial_z to world.maxz)
-		create_lighting_overlays_zlevel(light_z)
+		SSlighting.InitializeZlev(light_z)
 	log_game("Z-level [name] loaded at [x],[y],[world.maxz]")
 	loaded++
 

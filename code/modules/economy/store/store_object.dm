@@ -66,7 +66,7 @@ GLOBAL_VAR_INIT(number_of_store_kiosks, 0)
 
 	//The store emits light as long as its powered on and the door is open
 	if (light)
-		set_light(l_max_bright = 0.8, l_inner_range = 1, l_outer_range = 4, l_color = COLOR_DEEP_SKY_BLUE)
+		set_light(4, 0.8, COLOR_DEEP_SKY_BLUE)
 	else
 		set_light(0)
 

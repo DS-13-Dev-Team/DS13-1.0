@@ -262,9 +262,9 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 		hologram.SetName("[A.name] (Hologram)") //If someone decides to right click.
 		A.holo = src
 		masters[A] = hologram
-	hologram.set_light(2)	//hologram lighting
+	hologram.set_light(l_power = 2)	//hologram lighting
 	hologram.color = color //painted holopad gives coloured holograms
-	set_light(2)			//pad lighting
+	set_light(l_power = 2)			//pad lighting
 	icon_state = "[base_icon]1"
 	return 1
 
@@ -277,7 +277,7 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 		qdel(masters[caller_id])//Get rid of user's hologram
 		masters -= caller_id //Discard the caller from the list of those who use holopad
 	if (!masters.len)//If no users left
-		set_light(0)			//pad lighting (hologram lighting will be handled automatically since its owner was deleted)
+		set_light(l_power = 0)			//pad lighting (hologram lighting will be handled automatically since its owner was deleted)
 		icon_state = "[base_icon]0"
 		if(sourcepad)
 			sourcepad.targetpad = null

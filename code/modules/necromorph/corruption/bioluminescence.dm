@@ -8,7 +8,7 @@
 	icon_state = "light"
 	max_health = 20	//fragile
 	default_scale = 1.6
-	var/light_range = 8
+	light_range = 8
 	marker_spawnable = FALSE
 
 
@@ -16,7 +16,7 @@
 /obj/structure/corruption_node/bioluminescence/Initialize()
 	.=..()
 	if (!dummy)	//Don't do this stuff if its a dummy for placement preview
-		set_light(1, 1, light_range, 2, COLOR_BIOLUMINESCENT_ORANGE)
+		set_light(light_range, 1, COLOR_BIOLUMINESCENT_ORANGE)
 
 
 /obj/structure/corruption_node/bioluminescence/get_blurb()

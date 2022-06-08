@@ -119,7 +119,7 @@
 
 /turf/simulated/floor/exoplanet/lava/Initialize()
 	. = ..()
-	set_light(0.95, 0.5, 2, l_color = COLOR_ORANGE)
+	set_light(2, 0.95, COLOR_ORANGE)
 
 /turf/simulated/floor/exoplanet/lava/Destroy()
 	STOP_PROCESSING(SSobj, src)

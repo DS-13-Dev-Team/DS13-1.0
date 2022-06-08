@@ -248,7 +248,7 @@
 
 /obj/structure/flora/pottedplant/unusual/Initialize()
 	. = ..()
-	set_light(0.4, 0.1, 2, 2, "#007fff")
+	set_light(2, 0.4, "#007fff")
 
 /obj/structure/flora/pottedplant/orientaltree
 	name = "potted oriental tree"
@@ -307,7 +307,7 @@
 
 /obj/structure/flora/pottedplant/subterranean/Initialize()
 	. = ..()
-	set_light(0.4, 0.1, 2, 2, "#ff6633")
+	set_light(2, 0.4,"#ff6633")
 
 /obj/structure/flora/pottedplant/minitree
 	name = "potted tree"

@@ -10,7 +10,7 @@
 /obj/power_lock/New(var/atom/location)
 	.=..()
 
-	set_light(1, 1, 3, 2.5, COLOR_DEEP_SKY_BLUE)
+	set_light(3, 1, COLOR_DEEP_SKY_BLUE)
 
 /obj/power_lock/examine(var/mob/user)
 	.=..()

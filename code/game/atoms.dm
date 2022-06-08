@@ -100,7 +100,7 @@
 		crash_with("Warning: [src]([type]) initialized multiple times!")
 	atom_flags |= ATOM_FLAG_INITIALIZED
 
-	if(light_max_bright && light_outer_range)
+	if(light_power && light_range)
 		update_light()
 
 	return INITIALIZE_HINT_NORMAL
@@ -114,7 +114,9 @@
 
 	LAZYCLEARLIST(overlays)
 
-	. = ..()
+	QDEL_NULL(light)
+
+	.=..()
 
 /atom/proc/reveal_blood()
 	return
@@ -328,12 +330,19 @@ its easier to just keep the beam vertical.
 
 //called to set the atom's dir and used to add behaviour to dir-changes
 /atom/proc/set_dir(new_dir)
-	var/old_dir = dir
-	if(new_dir == old_dir)
-		return FALSE
+	SHOULD_CALL_PARENT(TRUE)
+	. = new_dir != dir
+	SEND_SIGNAL(src, COMSIG_ATOM_DIR_CHANGE, dir, new_dir)
 	dir = new_dir
-	SEND_SIGNAL(src, COMSIG_ATOM_DIR_CHANGE, old_dir, new_dir)
-	return TRUE
+	if(.)
+		if(light_source_solo)
+			light_source_solo.source_atom.update_light()
+		else if(light_source_multi)
+			var/datum/light_source/L
+			for(var/thing in light_source_multi)
+				L = thing
+				if(L.light_angle)
+					L.source_atom.update_light()
 
 /atom/proc/set_icon_state(var/new_icon_state)
 	if(has_extension(src, /datum/extension/base_icon_state))
@@ -724,11 +733,6 @@ its easier to just keep the beam vertical.
 		var/mouseparams = list2params(paramslist)
 		usr_client.Click(src, loc, null, mouseparams)
 		return TRUE
-
-
-//Hook for running code when a dir change occurs
-/atom/proc/setDir(newdir)
-	dir = newdir
 
 //Update the screentip to reflect what we're hoverin over
 /atom/MouseEntered(location, control, params)

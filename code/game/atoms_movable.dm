@@ -96,6 +96,16 @@
 	//  When either origin or destination is a turf and the other is not.
 	var/is_new_area = (is_origin_turf ^ is_destination_turf) || (is_origin_turf && is_destination_turf && loc.loc != destination.loc)
 
+	// lighting
+	if (light_source_solo)
+		light_source_solo.source_atom.update_light()
+	else if (light_source_multi)
+		var/datum/light_source/L
+		var/thing
+		for (thing in light_source_multi)
+			L = thing
+			L.source_atom.update_light()
+
 	var/atom/origin = loc
 	loc = destination
 

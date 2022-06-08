@@ -246,7 +246,7 @@ The last resort. The exploder screams and shakes violently for 3 seconds, before
 
 //The pustule casts soft yellow light in a broad area
 /obj/item/organ/external/exploder_pustule/Initialize()
-	set_light(1, 1, 9, 2, light_color)
+	set_light(9, 1, light_color)
 	.=..()
 
 

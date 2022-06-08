@@ -669,7 +669,7 @@
 	if (!isnull(switched_on_force))
 		force = switched_on_force
 	if(glow_color)
-		set_light(1, 1, 3, l_color = glow_color)
+		set_light(3, 1, glow_color)
 	update_icon()
 	update_wear_icon() //Too tied into eris' inventory system, need to find a better path to do this
 
@@ -679,7 +679,7 @@
 	tool_qualities = switched_off_qualities
 	force = initial(force)
 	if(glow_color)
-		set_light(0,0, 0)
+		set_light(0)
 	update_icon()
 	update_wear_icon() //Too tied into eris' inventory system, need to find a better path to do this
 

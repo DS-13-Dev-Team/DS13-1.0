@@ -14,7 +14,7 @@
 	visualnet_range = 20
 	var/minimum_notify_delay = 3 MINUTES	//Minimum time that must pass between sightings before we resend notifications
 	default_scale = 1.6
-	var/light_range = 8
+	light_range = 8
 
 /obj/structure/corruption_node/eye/Initialize()
 	.=..()
@@ -26,16 +26,10 @@
 		PT.register_turfs()
 		set_extension(src, /datum/extension/proximity_manager, PT)
 
-		set_light(1, 1, light_range, 2, COLOR_NECRO_YELLOW)
+		set_light(light_range, 1, COLOR_NECRO_YELLOW)
 
 /obj/structure/corruption_node/eye/get_visualnet_tiles(var/datum/visualnet/network)
-
 	return turfs_in_view(visualnet_range)
-
-
-/obj/structure/corruption_node/eye/proc/mark_turfs()
-	for (var/turf/T in turfs_in_view(visualnet_range))
-		debug_mark_turf(T)
 
 /obj/structure/corruption_node/eye/proc/nearby_movement(var/atom/movable/AM, var/atom/old_loc)
 	if (ishuman(AM))

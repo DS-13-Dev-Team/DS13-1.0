@@ -1,9 +1,10 @@
-/obj/lighting_general
+/atom/movable/lighting_general
+	name = ""
 	plane = LIGHTING_PLANE
 	screen_loc = "CENTER"
 
 	icon = LIGHTING_ICON
-	icon_state = LIGHTING_ICON_STATE_DARK
+	icon_state = LIGHTING_DARKNESS_ICON_STATE
 
 	color = "#ffffff"
 
@@ -13,16 +14,16 @@
 	var/size = 7
 	var/cached_color
 
-/obj/lighting_general/New(atom/location, client/C)
+/atom/movable/lighting_generall/New(atom/location, client/C)
 	. = ..()
 	var/newscale = ((C.view_radius * 2) + 1) / C.view_radius
 	transform *= newscale
 
-/obj/lighting_general/proc/sync(var/new_colour)
+/atom/movable/lighting_general/proc/sync(var/new_colour)
 	color = new_colour
 	cached_color = new_colour
 
-/obj/lighting_general/proc/resize(var/new_size = 2, var/client/C)
+/atom/movable/lighting_general/proc/resize(var/new_size = 2, var/client/C)
 	if (istype(C))
 		new_size = min(new_size, C.view_radius)
 	size = new_size
@@ -32,7 +33,7 @@
 	transform = M
 
 /mob
-	var/obj/lighting_general/l_general
+	var/atom/movable/lighting_general/l_general
 
 
 /mob/proc/set_darksight_color(var/new_colour)

@@ -56,7 +56,7 @@
 	update_wear_icon()
 
 	if(icon_state == "[initial(name)]_active")
-		set_light(0.4, 0.1, 1, 2, "#ff6a00")
+		set_light(1, 0.4,"#ff6a00")
 	else
 		set_light(0)
 
@@ -241,7 +241,7 @@
 /obj/item/weapon/melee/baton/robot/electrified_arm/update_icon()
 	if(status)
 		icon_state = "electrified_arm_active"
-		set_light(0.4, 0.1, 1, 2, "#006aff")
+		set_light(1, 0.4, "#006aff")
 	else
 		icon_state = "electrified_arm"
 		set_light(0)

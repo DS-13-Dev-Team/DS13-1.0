@@ -90,10 +90,10 @@
 /obj/item/marker_shard/update_icon()
 	if (active)
 		icon_state = "marker_shard_active"
-		set_light(1, 1, 8, 2, COLOR_MARKER_RED)
+		set_light(8, 1, COLOR_MARKER_RED)
 	else
 		icon_state = "marker_shard_dormant"
-		set_light(0)
+		set_light(l_power = 0)
 
 
 //The shard reveals an area around it, seeing through walls

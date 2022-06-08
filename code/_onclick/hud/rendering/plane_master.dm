@@ -30,6 +30,7 @@
 	if(!isnull(render_relay_plane))
 		relay_render_to_plane(mymob, render_relay_plane)
 
+/*
 ///Things rendered on "openspace"; holes in multi-z
 /atom/movable/screen/plane_master/openspace_backdrop
 	name = "open space backdrop plane master"
@@ -178,3 +179,4 @@
 	name = "above HUD plane"
 	plane = ABOVE_HUD_PLANE
 	render_relay_plane = RENDER_PLANE_NON_GAME
+*/

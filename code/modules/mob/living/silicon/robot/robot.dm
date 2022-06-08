@@ -427,9 +427,9 @@
 /mob/living/silicon/robot/proc/update_robot_light()
 	if(lights_on)
 		if(intenselight)
-			set_light(1, 2, 6)
+			set_light(6, 1)
 		else
-			set_light(0.75, 1, 4)
+			set_light(4, 0.75)
 	else
 		set_light(0)
 
