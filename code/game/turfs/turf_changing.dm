@@ -31,11 +31,13 @@
 
 	var/old_air = air
 	var/old_fire = fire
-	var/old_opacity = opacity
-	var/old_dynamic_lighting = dynamic_lighting
-	var/old_affecting_lights = affecting_lights
-	var/old_lighting_overlay = lighting_overlay
-	var/old_corners = corners
+	var/old_lighting_object = lighting_object
+	var/old_lighting_corner_NE = lighting_corner_NE
+	var/old_lighting_corner_SE = lighting_corner_SE
+	var/old_lighting_corner_SW = lighting_corner_SW
+	var/old_lighting_corner_NW = lighting_corner_NW
+	var/old_dynamic_lumcount = dynamic_lumcount
+	var/old_directional_opacity = directional_opacity
 
 //	log_debug("Replacing [src.type] with [N]")
 
@@ -80,23 +82,35 @@
 	W.post_change()
 	. = W
 
-	affecting_lights = old_affecting_lights
-	corners = old_corners
+	lighting_corner_NE = old_lighting_corner_NE
+	lighting_corner_SE = old_lighting_corner_SE
+	lighting_corner_SW = old_lighting_corner_SW
+	lighting_corner_NW = old_lighting_corner_NW
 
-	lighting_overlay = old_lighting_overlay
-	recalc_atom_opacity()
+	dynamic_lumcount = old_dynamic_lumcount
 
-	var/tidlu = TURF_IS_DYNAMICALLY_LIT_UNSAFE(src)
-	if ((old_opacity != opacity) || (tidlu != old_dynamic_lighting) || force_lighting_update)
-		reconsider_lights()
+	if(W.always_lit)
+		W.add_overlay(GLOB.fullbright_overlay)
+	else
+		W.cut_overlay(GLOB.fullbright_overlay)
 
-	if (tidlu != old_dynamic_lighting)
-		if (tidlu)
-			lighting_build_overlay()
-		else
-			lighting_clear_overlay()
+	if(SSlighting.initialized)
+		W.lighting_object = old_lighting_object
 
-	for(var/turf/T in RANGE_TURFS(src, 1))
+		directional_opacity = old_directional_opacity
+		recalculate_directional_opacity()
+
+		if(lighting_object && !lighting_object.needs_update)
+			lighting_object.update()
+
+		for(var/turf/space/space_tile in RANGE_TURFS(src, 1))
+			space_tile.update_starlight()
+
+	var/area/thisarea = get_area(W)
+	if(thisarea.lighting_effect)
+		W.add_overlay(thisarea.lighting_effect)
+
+	for(var/turf/T as anything in RANGE_TURFS(src, 1))
 		T.update_icon()
 
 	INVOKE_ASYNC(GLOBAL_PROC, /proc/updateVisibility, W, FALSE)

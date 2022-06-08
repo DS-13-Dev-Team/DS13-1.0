@@ -247,8 +247,8 @@
 ////////////////Glow//////////////////
 /mob/living/simple_animal/construct/proc/add_glow()
 	var/image/eye_glow = image(icon,"glow-[icon_state]")
-	eye_glow.plane = EFFECTS_ABOVE_LIGHTING_PLANE
-	eye_glow.layer = EYE_GLOW_LAYER
+	eye_glow.plane = ABOVE_LIGHTING_PLANE
+	eye_glow.layer = LIGHTING_SECONDARY_LAYER
 	overlays += eye_glow
 	set_light(3, -10, "#ffffff")
 

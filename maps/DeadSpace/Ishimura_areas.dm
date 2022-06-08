@@ -22,7 +22,6 @@
 	name = "\improper Thunderdome"
 	icon_state = "thunder"
 	requires_power = 0
-	dynamic_lighting = 0
 	sound_env = ARENA
 
 /area/tdome/tdome1
@@ -100,7 +99,6 @@
 	icon_state = "external hull"
 	requires_power = 1
 	always_unpowered = 1
-	dynamic_lighting = 1
 	power_light = 0
 	power_equip = 0
 	power_environ = 0

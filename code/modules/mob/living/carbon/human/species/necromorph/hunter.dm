@@ -189,8 +189,8 @@ Taunt has a very long possible duration, but it will terminate early if the hunt
 
 	//Lets do a little animation for the eyes lighting up
 	var/image/LR = image(eye_icon, newowner, "eyes_anim")
-	LR.plane = EFFECTS_ABOVE_LIGHTING_PLANE
-	LR.layer = EYE_GLOW_LAYER
+	LR.plane = ABOVE_LIGHTING_PLANE
+	LR.layer = LIGHTING_SECONDARY_LAYER
 	flick_overlay_source(LR, newowner, 3 SECONDS)
 
 	//Activate the actual glow

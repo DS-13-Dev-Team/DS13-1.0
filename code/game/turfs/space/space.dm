@@ -5,7 +5,8 @@
 	vis_flags = VIS_INHERIT_ID
 	name = "\proper space"
 	icon_state = "default"
-	dynamic_lighting = 0
+	light_power = 0.25
+	always_lit = TRUE
 	temperature = T20C
 	thermal_conductivity = OPEN_HEAT_TRANSFER_COEFFICIENT
 	var/static/list/dust_cache

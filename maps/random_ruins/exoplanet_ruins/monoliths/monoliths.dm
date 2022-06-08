@@ -33,8 +33,8 @@
 		var/image/I = image(icon,"[icon_state]decor")
 		I.appearance_flags = RESET_COLOR
 		I.color = get_random_colour(0, 150, 255)
-		I.layer = ABOVE_LIGHTING_LAYER
-		I.plane = EFFECTS_ABOVE_LIGHTING_PLANE
+		I.plane = ABOVE_LIGHTING_PLANE
+		I.layer = LIGHTING_SECONDARY_LAYER
 		overlays += I
 		set_light(2, 0.3, I.color)
 

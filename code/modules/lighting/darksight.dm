@@ -4,7 +4,7 @@
 	screen_loc = "CENTER"
 
 	icon = LIGHTING_ICON
-	icon_state = LIGHTING_DARKNESS_ICON_STATE
+//	icon_state = LIGHTING_DARKNESS_ICON_STATE
 
 	color = "#ffffff"
 
@@ -44,7 +44,7 @@
 	if(l_general && client)
 		client.screen -= l_general
 		l_general.resize(new_range, client)
-		client.screen += l_general
+		//client.screen += l_general
 	else if (l_general)
 		l_general.size = new_range
 

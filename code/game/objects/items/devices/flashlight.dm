@@ -15,7 +15,7 @@
 	var/activation_sound = 'sound/effects/flashlight.ogg'
 	var/flashlight_power = 0.7 //brightness of light when on, must be no greater than 1.
 	var/flashlight_range = 3 //outer range of light when on, can be negative
-	light_wedge = LIGHT_WIDE
+	light_system = MOVABLE_LIGHT_DIRECTIONAL
 	var/spawn_dir // a way for mappers to force which way a flashlight faces upon spawning
 
 /obj/item/device/flashlight/Initialize()
@@ -45,10 +45,6 @@
 	return 1
 
 /obj/item/device/flashlight/proc/set_flashlight()
-	if(light_wedge)
-		set_dir(pick(NORTH, SOUTH, EAST, WEST))
-		if(spawn_dir)
-			set_dir(spawn_dir)
 	if (on)
 		set_light(flashlight_range, flashlight_power, light_color)
 	else
@@ -56,16 +52,13 @@
 
 /obj/item/device/flashlight/dropped(mob/user)
 	. = ..()
-	if(light_wedge)
-		set_dir(user.dir)
-		update_light()
+	set_dir(user.dir)
+	update_light()
 
-/obj/item/device/flashlight/throw_at()
+/obj/item/device/flashlight/throw_at(atom/target)
 	. = ..()
-	if(light_wedge)
-		var/new_dir = pick(NORTH, SOUTH, EAST, WEST)
-		set_dir(new_dir)
-		update_light()
+	set_dir(get_dir(usr, target))
+	update_light()
 
 /obj/item/device/flashlight/attack(mob/living/M as mob, mob/living/user as mob)
 	add_fingerprint(user)

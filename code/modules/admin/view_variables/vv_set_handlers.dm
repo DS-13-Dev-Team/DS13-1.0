@@ -118,7 +118,7 @@
 
 /decl/vv_set_handler/light_handler
 	handled_type = /atom
-	handled_vars = list("light_color", "light_range", "light_power", "light_wedge")
+	handled_vars = list("light_color", "light_range", "light_power", "light_on")
 
 // I'm lazy, ok.
 #define VV_LIGHTING_SET(V) var/new_##V = variable == #V ? var_value : A.##V
@@ -134,9 +134,27 @@
 
 	VV_LIGHTING_SET(light_range)
 	VV_LIGHTING_SET(light_power)
-	VV_LIGHTING_SET(light_wedge)
 	VV_LIGHTING_SET(light_color)
+	VV_LIGHTING_SET(light_on)
 
-	A.set_light(new_light_range, new_light_power, new_light_color, new_light_wedge)
+	A.set_light(new_light_range, new_light_power, new_light_color, new_light_on)
+
+/decl/vv_set_handler/area_light_handler
+	handled_type = /area
+	handled_vars = list("base_lighting_color", "base_lighting_alpha", "static_lighting")
+
+/decl/vv_set_handler/area_light_handler/handle_set_var(area/A, variable, var_value, client)
+	VV_LIGHTING_SET(base_lighting_color)
+	VV_LIGHTING_SET(base_lighting_alpha)
+	VV_LIGHTING_SET(static_lighting)
+
+	A.set_base_lighting(new_base_lighting_color, new_base_lighting_alpha)
+	if(new_static_lighting != A.static_lighting)
+		if(new_static_lighting)
+			A.create_area_lighting_objects()
+		else
+			A.remove_area_lighting_objects()
+
+	return ..()
 
 #undef VV_LIGHTING_SET

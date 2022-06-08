@@ -420,7 +420,7 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 
 /datum/species/proc/setup_interaction(var/mob/living/carbon/human/H)
 	H.limited_click_arc = limited_click_arc
-	H.opacity = opacity
+	H.set_opacity(opacity)
 	H.reach = reach
 	H.set_attack_intent(H.a_intent || initial(H.a_intent) || I_HURT)
 
@@ -702,8 +702,9 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 		else
 			var/turf_brightness = 1
 			var/turf/T = get_turf(H)
-			if(T && T.lighting_overlay)
+			if(T?.lighting_object)
 				turf_brightness = min(1, T.get_lumcount())
+
 			if(turf_brightness < 0.33)
 				light = 0
 			else

@@ -21,8 +21,6 @@
 			return global.Debug2;
 		if("Holiday")
 			return global.Holiday;
-		if("LIGHTING_CORNER_DIAGONAL")
-			return global.LIGHTING_CORNER_DIAGONAL;
 		if("Tier1Runes")
 			return global.Tier1Runes;
 		if("Tier2Runes")
@@ -249,8 +247,6 @@
 			return global.doppler_arrays;
 		if("dreams")
 			return global.dreams;
-		if("dummy_lighting_corner")
-			return global.dummy_lighting_corner;
 		if("economic_species_modifier")
 			return global.economic_species_modifier;
 		if("empty_playable_ai_cores")
@@ -776,8 +772,6 @@
 			global.Debug2=newval;
 		if("Holiday")
 			global.Holiday=newval;
-		if("LIGHTING_CORNER_DIAGONAL")
-			global.LIGHTING_CORNER_DIAGONAL=newval;
 		if("Tier1Runes")
 			global.Tier1Runes=newval;
 		if("Tier2Runes")
@@ -1004,8 +998,6 @@
 			global.doppler_arrays=newval;
 		if("dreams")
 			global.dreams=newval;
-		if("dummy_lighting_corner")
-			global.dummy_lighting_corner=newval;
 		if("economic_species_modifier")
 			global.economic_species_modifier=newval;
 		if("empty_playable_ai_cores")
@@ -1520,7 +1512,6 @@
 	"DEPT_FREQS",
 	"Debug2",
 	"Holiday",
-	"LIGHTING_CORNER_DIAGONAL",
 	"Tier1Runes",
 	"Tier2Runes",
 	"Tier3Runes",
@@ -1636,7 +1627,6 @@
 	"dna_genes",
 	"doppler_arrays",
 	"dreams",
-	"dummy_lighting_corner",
 	"economic_species_modifier",
 	"empty_playable_ai_cores",
 	"endgame_exits",

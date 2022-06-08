@@ -31,8 +31,8 @@
 /obj/machinery/light_switch/update_icon()
 	if(!overlay)
 		overlay = image(icon, "light1-overlay")
-		overlay.plane = EFFECTS_ABOVE_LIGHTING_PLANE
-		overlay.layer = ABOVE_LIGHTING_LAYER
+		overlay.plane = ABOVE_LIGHTING_PLANE
+		overlay.layer = LIGHTING_SECONDARY_LAYER
 
 	overlays.Cut()
 	if(stat & (NOPOWER|BROKEN))

@@ -123,5 +123,5 @@
 		QDEL_NULL(l_general)
 
 	l_general = new(null, client)
-	client.screen += l_general
+	//client.screen += l_general
 	client.update_skybox(TRUE)

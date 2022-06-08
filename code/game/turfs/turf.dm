@@ -43,6 +43,27 @@
 
 	var/tmp/changing_turf
 
+	///Lumcount added by sources other than lighting datum objects, such as the overlay lighting component.
+	var/dynamic_lumcount = 0
+
+	///Bool, whether this turf will always be illuminated no matter what area it is in
+	var/always_lit = FALSE
+
+	var/tmp/lighting_corners_initialised = FALSE
+
+	///Our lighting object.
+	var/tmp/datum/lighting_object/lighting_object
+	///Lighting Corner datums.
+	var/tmp/datum/lighting_corner/lighting_corner_NE
+	var/tmp/datum/lighting_corner/lighting_corner_SE
+	var/tmp/datum/lighting_corner/lighting_corner_SW
+	var/tmp/datum/lighting_corner/lighting_corner_NW
+
+
+	///Which directions does this turf block the vision of, taking into account both the turf's opacity and the movable opacity_sources.
+	var/directional_opacity = NONE
+	///Lazylist of movable atoms providing opacity sources.
+	var/list/atom/movable/opacity_sources
 
 /turf/proc/has_wall()
 	if (is_wall)
@@ -54,14 +75,6 @@
 				return TRUE
 
 	return FALSE
-/turf/Initialize(mapload, ...)
-	. = ..()
-	if(dynamic_lighting)
-		luminosity = 0
-	else
-		luminosity = 1
-
-	return INITIALIZE_HINT_NORMAL
 
 /turf/Destroy(force)
 	if (!changing_turf)

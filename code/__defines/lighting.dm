@@ -5,76 +5,115 @@
 
 #define END_FOR_DVIEW GLOB.dview_mob.loc = null
 
-#define LIGHTING_INTERVAL       1     // Frequency, in 1/10ths of a second, of the lighting process.
+///Object doesn't use any of the light systems. Should be changed to add a light source to the object.
+#define NO_LIGHT_SUPPORT 0
+///Light made with the lighting datums, applying a matrix.
+#define STATIC_LIGHT 1
+///Light made by masking the lighting darkness plane.
+#define MOVABLE_LIGHT 2
+///Light made by masking the lighting darkness plane, and is directional.
+#define MOVABLE_LIGHT_DIRECTIONAL 3
 
-#define LIGHTING_HEIGHT         1 // height off the ground of light sources on the pseudo-z-axis, you should probably leave this alone
-#define LIGHTING_Z_FACTOR       10 // Z diff is multiplied by this and LIGHTING_HEIGHT to get the final height of a light source. Affects how much darker A Z light gets with each level transitioned.
-#define LIGHTING_ROUND_VALUE    (1 / 200) //Value used to round lumcounts, values smaller than 1/255 don't matter (if they do, thanks sinking points), greater values will make lighting less precise, but in turn increase performance, VERY SLIGHTLY.
+///Is a movable light source attached to another movable (its loc), meaning that the lighting component should go one level deeper.
+#define LIGHT_ATTACHED (1<<0)
 
-#define LIGHTING_ICON 'icons/effects/lighting_overlay.dmi' // icon used for lighting shading effects
-#define LIGHTING_BASE_ICON_STATE "matrix"	// icon_state used for normal color-matrix based lighting overlays.
-#define LIGHTING_STATION_ICON_STATE "tubedefault"	// icon_state used for lighting overlays that are just displaying standard station lighting.
-#define LIGHTING_DARKNESS_ICON_STATE "black"	// icon_state used for lighting overlays with no luminosity.
-#define LIGHTING_TRANSPARENT_ICON_STATE "blank"
+//Bay lighting engine shit, not in /code/modules/lighting because BYOND is being shit about it
+/// frequency, in 1/10ths of a second, of the lighting process
+#define LIGHTING_INTERVAL       5
 
-#define LIGHTING_SOFT_THRESHOLD 0.001 // If the max of the lighting lumcounts of each spectrum drops below this, disable luminosity on the lighting overlays.
-#define LIGHTING_BLOCKED_FACTOR 0.5	// How much the range of a directional light will be reduced while facing a wall.
+#define MINIMUM_USEFUL_LIGHT_RANGE 1.4
 
-// If defined, instant updates will be used whenever server load permits. Otherwise queued updates are always used.
-#define USE_INTELLIGENT_LIGHTING_UPDATES
+/// type of falloff to use for lighting; 1 for circular, 2 for square
+#define LIGHTING_FALLOFF        1
+/// use lambertian shading for light sources
+#define LIGHTING_LAMBERTIAN     0
+/// height off the ground of light sources on the pseudo-z-axis, you should probably leave this alone
+#define LIGHTING_HEIGHT         1
+/// Value used to round lumcounts, values smaller than 1/129 don't matter (if they do, thanks sinking points), greater values will make lighting less precise, but in turn increase performance, VERY SLIGHTLY.
+#define LIGHTING_ROUND_VALUE    (1 / 64)
 
-// mostly identical to below, but doesn't make sure T is valid first. Should only be used by lighting code.
-#define TURF_IS_DYNAMICALLY_LIT_UNSAFE(T) ((T:dynamic_lighting && T:loc:dynamic_lighting))
-#define TURF_IS_DYNAMICALLY_LIT(T) (isturf(T) && TURF_IS_DYNAMICALLY_LIT_UNSAFE(T))
+/// icon used for lighting shading effects
+#define LIGHTING_ICON 'icons/effects/lighting_object.dmi'
 
-// If I were you I'd leave this alone.
+/// If the max of the lighting lumcounts of each spectrum drops below this, disable luminosity on the lighting objects.
+/// Set to zero to disable soft lighting. Luminosity changes then work if it's lit at all.
+#define LIGHTING_SOFT_THRESHOLD 0
+
+/// If I were you I'd leave this alone.
 #define LIGHTING_BASE_MATRIX \
-	list            \
-	(               \
+	list                     \
+	(                        \
 		1, 1, 1, 0, \
 		1, 1, 1, 0, \
 		1, 1, 1, 0, \
 		1, 1, 1, 0, \
-		0, 0, 0, 1  \
-	)               \
+		0, 0, 0, 1           \
+	)                        \
 
-// Helpers so we can (more easily) control the colour matrices.
-#define CL_MATRIX_RR 1
-#define CL_MATRIX_RG 2
-#define CL_MATRIX_RB 3
-#define CL_MATRIX_RA 4
-#define CL_MATRIX_GR 5
-#define CL_MATRIX_GG 6
-#define CL_MATRIX_GB 7
-#define CL_MATRIX_GA 8
-#define CL_MATRIX_BR 9
-#define CL_MATRIX_BG 10
-#define CL_MATRIX_BB 11
-#define CL_MATRIX_BA 12
-#define CL_MATRIX_AR 13
-#define CL_MATRIX_AG 14
-#define CL_MATRIX_AB 15
-#define CL_MATRIX_AA 16
-#define CL_MATRIX_CR 17
-#define CL_MATRIX_CG 18
-#define CL_MATRIX_CB 19
-#define CL_MATRIX_CA 20
+///How many tiles standard fires glow.
+#define LIGHT_RANGE_FIRE 3
 
-// Higher numbers override lower.
+#define LIGHTING_PLANE_ALPHA_VISIBLE 255
+#define LIGHTING_PLANE_ALPHA_NV_TRAIT 245
+#define LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE 192
+/// For lighting alpha, small amounts lead to big changes. even at 128 its hard to figure out what is dark and what is light, at 64 you almost can't even tell.
+#define LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE 128
+#define LIGHTING_PLANE_ALPHA_INVISIBLE 0
+
+/// The amount of lumcount on a tile for it to be considered dark (used to determine reading and nyctophobia)
+#define LIGHTING_TILE_IS_DARK 0.2
+
+//code assumes higher numbers override lower numbers.
 #define LIGHTING_NO_UPDATE 0
 #define LIGHTING_VIS_UPDATE 1
 #define LIGHTING_CHECK_UPDATE 2
 #define LIGHTING_FORCE_UPDATE 3
 
-// This color of overlay is very common - most of the station is this color when lit fully.
-// Tube lights are a bluish-white, so we can't just assume 1-1-1 is full-illumination.
-// -- If you want to change these, find them *by checking in-game*, just converting tubes' RGB color into floats will not work!
-#define LIGHTING_DEFAULT_TUBE_R 0.96
-#define LIGHTING_DEFAULT_TUBE_G 1
-#define LIGHTING_DEFAULT_TUBE_B 1
+#define FLASH_LIGHT_DURATION 2
+#define FLASH_LIGHT_POWER 3
+#define FLASH_LIGHT_RANGE 3.8
 
-// Some angle presets for directional lighting.
-#define LIGHT_OMNI null
-#define LIGHT_SEMI 180
-#define LIGHT_WIDE 90
-#define LIGHT_NARROW 45
+// Emissive blocking.
+/// Uses vis_overlays to leverage caching so that very few new items need to be made for the overlay. For anything that doesn't change outline or opaque area much or at all.
+#define EMISSIVE_BLOCK_GENERIC 1
+/// Uses a dedicated render_target object to copy the entire appearance in real time to the blocking layer. For things that can change in appearance a lot from the base state, like humans.
+#define EMISSIVE_BLOCK_UNIQUE 2
+
+/// The color matrix applied to all emissive overlays. Should be solely dependent on alpha and not have RGB overlap with [EM_BLOCK_COLOR].
+#define EMISSIVE_COLOR list(0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,1, 1,1,1,0)
+/// A globaly cached version of [EMISSIVE_COLOR] for quick access.
+GLOBAL_LIST_INIT(emissive_color, EMISSIVE_COLOR)
+/// The color matrix applied to all emissive blockers. Should be solely dependent on alpha and not have RGB overlap with [EMISSIVE_COLOR].
+#define EM_BLOCK_COLOR list(0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,1, 0,0,0,0)
+/// A globaly cached version of [EM_BLOCK_COLOR] for quick access.
+GLOBAL_LIST_INIT(em_block_color, EM_BLOCK_COLOR)
+/// A set of appearance flags applied to all emissive and emissive blocker overlays.
+#define EMISSIVE_APPEARANCE_FLAGS (KEEP_APART|KEEP_TOGETHER|RESET_COLOR|RESET_TRANSFORM)
+/// The color matrix used to mask out emissive blockers on the emissive plane. Alpha should default to zero, be solely dependent on the RGB value of [EMISSIVE_COLOR], and be independant of the RGB value of [EM_BLOCK_COLOR].
+#define EM_MASK_MATRIX list(0,0,0,1/3, 0,0,0,1/3, 0,0,0,1/3, 0,0,0,0, 1,1,1,0)
+/// A globaly cached version of [EM_MASK_MATRIX] for quick access.
+GLOBAL_LIST_INIT(em_mask_matrix, EM_MASK_MATRIX)
+
+/// Returns the red part of a #RRGGBB hex sequence as number
+#define GETREDPART(hexa) hex2num(copytext(hexa, 2, 4))
+
+/// Returns the green part of a #RRGGBB hex sequence as number
+#define GETGREENPART(hexa) hex2num(copytext(hexa, 4, 6))
+
+/// Returns the blue part of a #RRGGBB hex sequence as number
+#define GETBLUEPART(hexa) hex2num(copytext(hexa, 6, 8))
+
+/// Parse the hexadecimal color into lumcounts of each perspective.
+#define PARSE_LIGHT_COLOR(source) \
+do { \
+	if (source.light_color != COLOR_WHITE) { \
+		var/__light_color = source.light_color; \
+		source.lum_r = GETREDPART(__light_color) / 255; \
+		source.lum_g = GETGREENPART(__light_color) / 255; \
+		source.lum_b = GETBLUEPART(__light_color) / 255; \
+	} else { \
+		source.lum_r = 1; \
+		source.lum_g = 1; \
+		source.lum_b = 1; \
+	}; \
+} while (FALSE)

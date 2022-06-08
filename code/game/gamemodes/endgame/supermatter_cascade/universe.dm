@@ -85,17 +85,6 @@ AUTOMATED ALERT: Link to [command_name()] lost.
 
 		A.update_icon()
 
-/datum/universal_state/supermatter_cascade/OverlayAndAmbientSet()
-	spawn(0)
-		for(var/datum/lighting_corner/L in world)
-			if(L.z in GLOB.using_map.admin_levels)
-				L.update_lumcount(1,1,1)
-			else
-				L.update_lumcount(0.0, 0.4, 1)
-
-		for(var/turf/space/T)
-			OnTurfChange(T)
-
 /datum/universal_state/supermatter_cascade/proc/MiscSet()
 	for (var/obj/machinery/firealarm/alm in SSmachines.machinery)
 		if (!(alm.stat & BROKEN))

@@ -160,7 +160,6 @@ What is the naming convention for planes or layers?
 	#define ABOVE_PROJECTILE_LAYER      4.20
 	#define SINGULARITY_LAYER           4.21
 	#define POINTER_LAYER               4.22
-	#define MIMICED_LIGHTING_LAYER      4.23	// Z-Mimic-managed lighting
 
 	//FLY_LAYER                          5
 	//OBSERVER
@@ -176,16 +175,35 @@ What is the naming convention for planes or layers?
 #define OBSERVER_PLANE					80 // For observers and ghosts
 #define POINT_PLANE						90
 
-#define LIGHTING_PLANE					100 // For Lighting. - The highest plane (ignoring all other even higher planes)
+//---------- LIGHTING -------------
+///Normal 1 per turf dynamic lighting underlays
+#define LIGHTING_PLANE 100
 
-	#define LIGHTBULB_LAYER				0
-	#define LIGHTING_LAYER				1
-	#define ABOVE_LIGHTING_LAYER		2
+///Lighting objects that are "free floating"
+#define O_LIGHTING_VISUAL_PLANE 110
+#define O_LIGHTING_VISUAL_RENDER_TARGET "O_LIGHT_VISUAL_PLANE"
 
-#define EFFECTS_ABOVE_LIGHTING_PLANE	200 // For glowy eyes, laser beams, etc. that shouldn't be affected by darkness
-	#define EYE_GLOW_LAYER				1
-	#define BEAM_PROJECTILE_LAYER		2
-	#define SUPERMATTER_WALL_LAYER		3
+///Things that should render ignoring lighting
+#define ABOVE_LIGHTING_PLANE 120
+
+#define LIGHTING_PRIMARY_LAYER 15	//The layer for the main lights of the station
+#define LIGHTING_PRIMARY_DIMMER_LAYER 15.1	//The layer that dims the main lights of the station
+#define LIGHTING_SECONDARY_LAYER 16	//The colourful, usually small lights that go on top
+
+
+///visibility + hiding of things outside of light source range
+#define BYOND_LIGHTING_PLANE 130
+
+//---------- EMISSIVES -------------
+//Layering order of these is not particularly meaningful.
+//Important part is the seperation of the planes for control via plane_master
+
+/// This plane masks out lighting to create an "emissive" effect, ie for glowing lights in otherwise dark areas.
+#define EMISSIVE_PLANE 150
+/// The render target used by the emissive layer.
+#define EMISSIVE_RENDER_TARGET "*EMISSIVE_PLANE"
+/// The layer you should use if you _really_ don't want an emissive overlay to be blocked.
+#define EMISSIVE_LAYER_UNBLOCKABLE 9999
 
 #define OBSCURITY_PLANE					300 // For visualnets, such as the AI's static.
 
