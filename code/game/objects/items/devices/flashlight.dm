@@ -53,12 +53,10 @@
 /obj/item/device/flashlight/dropped(mob/user)
 	. = ..()
 	set_dir(user.dir)
-	update_light()
 
 /obj/item/device/flashlight/throw_at(atom/target)
 	. = ..()
 	set_dir(get_dir(usr, target))
-	update_light()
 
 /obj/item/device/flashlight/attack(mob/living/M as mob, mob/living/user as mob)
 	add_fingerprint(user)
