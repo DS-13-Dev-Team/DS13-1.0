@@ -48,7 +48,7 @@
 	escape = TRUE
 
 /datum/shuttle/autodock/ferry/escape2
-	name = "Executive Shuttle 2"
+	name = "Escape Shuttle 2"
 	warmup_time = 5	//Takes off quickly to keep the sacrifice element in play.
 	shuttle_area = /area/mining_colony/interior/shuttle_bay/shuttle_2
 	dock_target = "executive_shuttle"

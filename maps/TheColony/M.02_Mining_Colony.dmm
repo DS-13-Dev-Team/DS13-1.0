@@ -13095,12 +13095,13 @@
 /turf/simulated/floor/plating,
 /area/mining_colony/interior/excavation/hangar)
 "aMd" = (
-/obj/structure/showcase{
-	icon = 'icons/obj/marker_giant.dmi';
-	icon_state = "marker_giant_dormant"
-	},
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 10
+	},
+/obj/structure/showcase{
+	icon = 'icons/obj/marker_giant.dmi';
+	icon_state = "marker_giant_dormant";
+	layer = 4.08
 	},
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/uni_church)
@@ -16603,6 +16604,9 @@
 /obj/item/weapon/flame/candle,
 /obj/machinery/camera/network/crew{
 	dir = 4
+	},
+/obj/machinery/light{
+	dir = 8
 	},
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/uni_church)
@@ -26259,6 +26263,14 @@
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/excavation/interior)
+"gLQ" = (
+/obj/structure/table/woodentable,
+/obj/item/weapon/flame/candle,
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/interior/uni_church)
 "gUp" = (
 /obj/structure/cable/green{
 	d1 = 2;
@@ -26543,6 +26555,12 @@
 	},
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/enginieering/engi_lockers)
+"mpd" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/mining_colony/interior/uni_church)
 "mqH" = (
 /obj/structure/cable/green{
 	d1 = 2;
@@ -26598,6 +26616,15 @@
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/c12_deadspace/controlroom)
+"nzY" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 8
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/dank/rectangles,
+/area/mining_colony/interior/uni_church)
 "nEu" = (
 /obj/structure/bed/chair/office/light{
 	dir = 1
@@ -26649,6 +26676,14 @@
 /obj/effect/shuttle_landmark/kellion/landing,
 /turf/simulated/floor,
 /area/mining_colony/interior/kellion_arrival)
+"oug" = (
+/obj/structure/table/woodentable,
+/obj/item/weapon/flame/candle,
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/interior/uni_church)
 "oUV" = (
 /obj/machinery/telecomms/processor/preset_three,
 /turf/simulated/floor/dank/grater,
@@ -35102,7 +35137,7 @@ adY
 adn
 ado
 ado
-ado
+oug
 aeD
 aaB
 aaB
@@ -35293,7 +35328,7 @@ aaC
 aaD
 aaP
 aaB
-abm
+nzY
 abm
 ayD
 abm
@@ -36909,7 +36944,7 @@ aaB
 aaI
 aaI
 aaB
-adc
+mpd
 aaT
 aaB
 adc
@@ -37922,13 +37957,13 @@ aaW
 ade
 aaT
 adn
-ado
+gLQ
 ado
 aWN
 ado
 aNz
 aNA
-ado
+gLQ
 ado
 ado
 aeD
