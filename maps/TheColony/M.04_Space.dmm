@@ -5102,6 +5102,13 @@
 /obj/item/weapon/reagent_containers/food/snacks/fishburger,
 /turf/unsimulated/floor/rescue_base,
 /area/ERT/escapebase)
+"xf" = (
+/obj/effect/shuttle_landmark/escape2/end,
+/turf/unsimulated/floor{
+	icon = 'icons/turf/floors.dmi';
+	icon_state = "plating"
+	},
+/area/ERT/escapebase)
 "xu" = (
 /turf/unsimulated/floor{
 	icon = 'icons/turf/floors.dmi';
@@ -5124,6 +5131,13 @@
 /obj/structure/table/woodentable,
 /obj/item/weapon/reagent_containers/food/snacks/fishandchips,
 /turf/unsimulated/floor/rescue_base,
+/area/ERT/escapebase)
+"Ar" = (
+/obj/effect/shuttle_landmark/escape1/end,
+/turf/unsimulated/floor{
+	icon = 'icons/turf/floors.dmi';
+	icon_state = "plating"
+	},
 /area/ERT/escapebase)
 "BS" = (
 /obj/effect/shuttle_landmark/escape_fix/end,
@@ -29257,7 +29271,7 @@ xu
 xu
 xu
 xu
-xu
+Ar
 UJ
 hR
 gK
@@ -31479,7 +31493,7 @@ xu
 xu
 xu
 xu
-xu
+xf
 UJ
 hR
 gK
