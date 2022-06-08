@@ -316,7 +316,7 @@ var/list/flooring_types
 	desc = "Dirt."
 	flags = 0
 	icon = 'icons/turf/floors_outside_ds13.dmi'
-	icon_state = "wet_soft"
+	icon_base = "wet_soft"
 	build_type = null
 	step_priority = 2 //Soft surfaces have more distinctive sounds
 
