@@ -8327,6 +8327,9 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/machinery/light{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/dark,
 /area/mining_colony/interior/uni_church)
 "ayK" = (
@@ -8360,6 +8363,9 @@
 	icon = 'icons/obj/cult.dmi';
 	icon_state = "churchaltar";
 	name = "wooden altar"
+	},
+/obj/machinery/light{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
 /area/mining_colony/interior/uni_church)
@@ -13101,7 +13107,9 @@
 /obj/structure/showcase{
 	icon = 'icons/obj/marker_giant.dmi';
 	icon_state = "marker_giant_dormant";
-	layer = 4.08
+	layer = 4.08;
+	bound_height = 64;
+	bound_width = 96
 	},
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/uni_church)
@@ -24571,7 +24579,7 @@
 /obj/machinery/door/airlock/medical{
 	dir = 4;
 	name = "Psychiatrist's Office";
-	req_access = list(3, 17)
+	req_access = list(3,17)
 	},
 /obj/machinery/door/firedoor{
 	dir = 4
@@ -26129,6 +26137,13 @@
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/interior/maint/storage)
+"cdY" = (
+/obj/machinery/light{
+	dir = 4;
+	icon_state = "tube_map"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/mining_colony/interior/uni_church)
 "cgV" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/abandoned/mining_prep/reception)
@@ -26859,6 +26874,12 @@
 "sJC" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/interior/mining/directoroffice)
+"sKa" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/mining_colony/interior/uni_church)
 "sYx" = (
 /obj/effect/floor_decal/corner_techfloor_grid/full{
 	dir = 4
@@ -26912,6 +26933,15 @@
 /obj/machinery/telecomms/broadcaster/preset_right,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/enginieering/telecomms)
+"ucz" = (
+/obj/effect/landmark/random_gen/asteroid{
+	generation_height = 200;
+	generation_width = 200
+	},
+/turf/unsimulated/mineral{
+	icon_state = "rock"
+	},
+/area/space)
 "umB" = (
 /obj/machinery/telecomms/relay/preset/telecomms,
 /turf/simulated/floor/dank/grater,
@@ -27314,7 +27344,7 @@ azn
 azn
 azn
 azn
-azn
+ucz
 "}
 (2,1,1) = {"
 azn
@@ -35936,7 +35966,7 @@ aaQ
 aaB
 adc
 adh
-adc
+cdY
 adc
 adc
 adc
@@ -36139,7 +36169,7 @@ aaB
 add
 adi
 aaB
-adc
+mpd
 adv
 adv
 adP
@@ -36340,7 +36370,7 @@ aaB
 aaB
 adc
 aaT
-adc
+sKa
 adc
 aLS
 aMd
@@ -36744,7 +36774,7 @@ aaR
 aaV
 adc
 aaT
-adc
+cdY
 adc
 aLV
 aMg
@@ -36947,7 +36977,7 @@ aaB
 mpd
 aaT
 aaB
-adc
+mpd
 azG
 azG
 adP
@@ -37148,7 +37178,7 @@ aaR
 aaV
 adc
 aaT
-adc
+sKa
 adc
 adc
 adc

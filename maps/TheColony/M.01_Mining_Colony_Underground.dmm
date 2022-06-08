@@ -5949,6 +5949,15 @@
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/security/lower/maints/room54)
+"Cr" = (
+/obj/effect/landmark/random_gen/asteroid{
+	generation_height = 200;
+	generation_width = 200
+	},
+/turf/unsimulated/mineral{
+	icon_state = "rock"
+	},
+/area/space)
 "Cs" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
@@ -7339,7 +7348,7 @@ aF
 aF
 aF
 aF
-aF
+Cr
 "}
 (2,1,1) = {"
 aF
