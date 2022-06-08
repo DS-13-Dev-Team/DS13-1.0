@@ -600,8 +600,8 @@
 	var/rigged = 0		// true if rigged to explode
 	var/broken_chance = 2
 
-	var/b_power = 0.9
-	var/b_range = 5
+	var/b_power = 1
+	var/b_range = 8
 	var/b_color = "#fffee0"
 	var/list/lighting_modes = list()
 	var/sound_on
@@ -614,7 +614,7 @@
 	item_state = "c_tube"
 	matter = list(MATERIAL_GLASS = 100)
 
-	b_range = 5
+	b_range = 8
 	b_color = "#fffee0"
 	lighting_modes = list(
 		LIGHTMODE_EMERGENCY = list(l_range = 4, l_power = 1, l_color = "#da0205"),
@@ -628,7 +628,7 @@
 /obj/item/weapon/light/tube/large
 	w_class = ITEM_SIZE_SMALL
 	name = "large light tube"
-	b_power = 0.95
+	b_power = 1
 	b_range = 8
 
 /obj/item/weapon/light/tube/large/party/Initialize() //Randomly colored light tubes. Mostly for testing, but maybe someone will find a use for them.
@@ -644,7 +644,7 @@
 	broken_chance = 3
 	matter = list(MATERIAL_GLASS = 100)
 
-	b_power = 0.6
+	b_power = 1
 	b_range = 4
 	b_color = "#fcfcc7"
 	lighting_modes = list(
