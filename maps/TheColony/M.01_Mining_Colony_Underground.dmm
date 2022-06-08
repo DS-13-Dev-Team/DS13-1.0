@@ -3886,7 +3886,7 @@
 /area/mining_colony/lower)
 "mB" = (
 /obj/structure/table/standard,
-/obj/item/weapon/scalpel,
+/obj/item/weapon/tool/scalpel,
 /turf/simulated/floor/dank/bathr,
 /area/mining_colony/lower/morgue)
 "mC" = (
