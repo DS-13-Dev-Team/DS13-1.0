@@ -127,3 +127,10 @@
 	icon_state = "psych"
 	item_state = "w_suit"
 	worn_state = "psych"
+
+/obj/item/clothing/under/rank/psych/turtleneck
+	desc = "A turqouise sweater and a pair of dark blue slacks."
+	name = "turqouise turtleneck"
+	icon_state = "psychturtle"
+	item_state = "b_suit"
+	worn_state = "psychturtle"

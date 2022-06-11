@@ -211,6 +211,7 @@
 	starting_credits = 943
 
 	access = list(access_maint_tunnels, access_chaplain)
+	outfit_type = /decl/hierarchy/outfit/job/service/chaplain
 
 	max_skill = list(	SKILL_BOTANY	= SKILL_ADEPT,
 						SKILL_MEDICAL	= SKILL_ADEPT,
