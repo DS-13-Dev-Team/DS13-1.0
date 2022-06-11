@@ -146,6 +146,7 @@ var/const/MAP_HAS_RANK = 2		//Rank system, also togglable
 		Which crew objectives are active on this map?
 	*/
 	var/list/crew_objectives
+	var/list/post_round_safe_areas = list()
 
 /datum/map/New()
 	if(!map_levels)
@@ -167,6 +168,12 @@ var/const/MAP_HAS_RANK = 2		//Rank system, also togglable
 	world.update_status()
 	setup_economy()
 
+	if(!post_round_safe_areas.len)
+		for(var/area/A)
+			if(isspace(A))
+				continue
+			if(A.z && (A.z in admin_levels))
+				post_round_safe_areas += A.type
 
 
 //Called late in the load order after other subsystems are done

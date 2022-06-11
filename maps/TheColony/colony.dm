@@ -47,20 +47,13 @@
 	base_floor_area = /area/maintenance/exterior
 */
 	post_round_safe_areas = list (
-		/area/shuttle/escape_pod1/station,
-		/area/shuttle/escape_pod2/station,
-		/area/shuttle/escape_pod3/station,
-		/area/shuttle/escape_pod4/station,
-		/area/shuttle/escape_pod5/station,
-		/area/shuttle/escape_pod6/station,
-		/area/shuttle/escape_pod7/station,
-		/area/shuttle/escape_pod8/station,
-		/area/shuttle/escape_pod9/station,
+		/area/mining_colony/interior/shuttle_bay/shuttle_1,
+		/area/mining_colony/interior/shuttle_bay/shuttle_2,
+		/area/shuttle/executive_shuttle,
 		/area/ERT/deliverance,
-		/area/ERT/kellion,
 		/area/ERT/valor,
+		/area/ERT/kellion,
 		/area/ERT/escapebase,
-		/area/ishimura/lower/security/escape/adminshuttle
 	)
 
 	//Todo: Find good values for these
