@@ -204,7 +204,7 @@ RULEURL https://ds-ss13.com/index.php/Rules
 LOREURL https://ds-ss13.com/index.php/Lore
 
 ## Wiki address
-WIKIURL https://ds-ss13.com/index.php/Main_Page
+WIKIURL https://ds-ss13.com/index.php/
 
 ## GitHub address
 GITHUBURL https://github.com/DS-13-Dev-Team/DS13

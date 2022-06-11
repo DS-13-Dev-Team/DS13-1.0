@@ -7,6 +7,7 @@
 	icon = 'maps/TheColony/ishimura_areas.dmi'
 	icon_state = "aegis"
 	sound_env = ASTEROID
+	ship_area = TRUE
 
 // Abandoned areas of the colony outside
 
