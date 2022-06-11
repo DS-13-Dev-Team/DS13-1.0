@@ -428,6 +428,7 @@ BLIND     // can't see anything
 	w_class = ITEM_SIZE_SMALL
 	light_range = 4
 	light_power = 1
+	light_on = FALSE
 	var/light_overlay = "helmet_light"
 	var/light_applied
 	var/brightness_on

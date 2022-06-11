@@ -348,8 +348,9 @@ its easier to just keep the beam vertical.
 /atom/proc/set_dir(new_dir)
 	SHOULD_CALL_PARENT(TRUE)
 	. = new_dir != dir
-	SEND_SIGNAL(src, COMSIG_ATOM_DIR_CHANGE, dir, new_dir)
-	dir = new_dir
+	if(.)
+		SEND_SIGNAL(src, COMSIG_ATOM_DIR_CHANGE, dir, new_dir)
+		dir = new_dir
 
 /atom/proc/set_icon_state(var/new_icon_state)
 	if(has_extension(src, /datum/extension/base_icon_state))

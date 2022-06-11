@@ -167,6 +167,14 @@
 	appearance_flags = PLANE_MASTER //should use client color
 	blend_mode = BLEND_OVERLAY
 
+/atom/movable/screen/plane_master/o_light_visual
+	name = "overlight light visual plane master"
+	plane = O_LIGHTING_VISUAL_PLANE
+	render_target = O_LIGHTING_VISUAL_RENDER_TARGET
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	blend_mode = BLEND_MULTIPLY
+	blend_mode_override = BLEND_MULTIPLY
+
 /atom/movable/screen/plane_master/obscurity
 	name = "obscurity plane master"
 	plane = OBSCURITY_PLANE
