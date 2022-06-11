@@ -5,7 +5,8 @@
 /datum/map/colony
 	name = "Colony"
 	full_name = "Aegis Colony"
-	path = "colony"
+	//WTF BAY USES IT FOR CHARACTER SAVES!?
+	path = "ishimura"
 	station_levels = list(1,2,3)
 	contact_levels = list(1,2,3)
 	player_levels = list(1,2,3)
