@@ -4610,7 +4610,7 @@
 /obj/item/weapon/storage/firstaid/surgery,
 /obj/item/clothing/gloves/latex/nitrile,
 /obj/item/clothing/mask/surgical,
-/obj/machinery/light/small{
+/obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/dank/medical,
@@ -4886,7 +4886,7 @@
 /obj/item/weapon/storage/firstaid/surgery,
 /obj/item/clothing/gloves/latex/nitrile,
 /obj/item/clothing/mask/surgical,
-/obj/machinery/light/small{
+/obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/dank/medical,
@@ -5479,6 +5479,7 @@
 /turf/simulated/floor,
 /area/mining_colony)
 "apy" = (
+/obj/machinery/light,
 /turf/simulated/floor/dank/medical,
 /area/mining_colony/interior/medbay/surgery1)
 "apz" = (
@@ -5531,6 +5532,9 @@
 "apH" = (
 /obj/effect/floor_decal/dank/frame_tiled_large{
 	dir = 8
+	},
+/obj/machinery/light_switch{
+	pixel_x = -32
 	},
 /turf/simulated/floor/dank/medical,
 /area/mining_colony/interior/medbay/surgery1)
@@ -5657,6 +5661,7 @@
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/enginieering/air_storage)
 "apZ" = (
+/obj/machinery/light,
 /turf/simulated/floor/dank/medical,
 /area/mining_colony/interior/medbay/surgery2)
 "aqa" = (
@@ -5688,6 +5693,9 @@
 "aqe" = (
 /obj/effect/floor_decal/dank/frame_tiled_large{
 	dir = 8
+	},
+/obj/machinery/light_switch{
+	pixel_x = -32
 	},
 /turf/simulated/floor/dank/medical,
 /area/mining_colony/interior/medbay/surgery2)
@@ -26846,6 +26854,12 @@
 /obj/machinery/telecomms/processor/preset_two,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/enginieering/telecomms)
+"mEc" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/wall/r_wall,
+/area/mining_colony/interior/medbay/surgery2)
 "mFA" = (
 /obj/machinery/door/airlock/engineering{
 	name = "Telecommunications"
@@ -41917,7 +41931,7 @@ bnB
 anc
 bcT
 apI
-joH
+mEc
 anU
 bdi
 aqf
