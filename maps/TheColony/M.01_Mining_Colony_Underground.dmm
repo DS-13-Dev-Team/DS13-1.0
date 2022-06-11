@@ -186,6 +186,10 @@
 	icon_state = "rock"
 	},
 /area/space)
+"aG" = (
+/obj/structure/barricade/spike,
+/turf/simulated/floor/asteroid/outside_ds,
+/area/mining_colony/lower/mining_caves)
 "aH" = (
 /obj/structure/table/standard,
 /obj/item/weapon/storage/box/gloves,
@@ -4248,14 +4252,13 @@
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/security/lower/maints/room66)
 "nM" = (
-/obj/item/weapon/gun/energy/cutter/plasma,
-/obj/structure/table/steel,
-/obj/structure/sign/kiddieplaque{
-	desc = "An extremely long list of details about the  211-V Plasma Cutter.";
-	name = "\improper  211-V Plasma Cutter schematics"
+/obj/item/weapon/inflatable_duck,
+/turf/simulated/floor/exoplanet/water/shallow{
+	color = "";
+	desc = "Where all the Aegis VII liquid waste goes to.";
+	name = "waste water"
 	},
-/turf/simulated/floor/dank/grater,
-/area/mining_colony/security/lower/maints/room66)
+/area/mining_colony/lower)
 "nN" = (
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/dank/golf_brown,
@@ -5451,9 +5454,23 @@
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/security/lower/maints/room53)
+"rD" = (
+/obj/item/weapon/gun/energy/cutter/plasma,
+/obj/structure/table/steel,
+/obj/structure/sign/kiddieplaque{
+	desc = "An extremely long list of details about the  211-V Plasma Cutter.";
+	name = "\improper  211-V Plasma Cutter schematics";
+	pixel_y = -32
+	},
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/security/lower/maints/room66)
 "rE" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/security/lower/maints/room37)
+"rF" = (
+/obj/effect/mine/stun,
+/turf/simulated/floor/asteroid/outside_ds,
+/area/mining_colony/lower/mining_caves)
 "rH" = (
 /turf/simulated/floor/plating,
 /area/mining_colony/security/lower/maints/room29)
@@ -10750,7 +10767,7 @@ aw
 ar
 ar
 dY
-ei
+nM
 ei
 ei
 ei
@@ -19700,7 +19717,7 @@ aw
 aw
 aq
 aq
-aq
+aG
 aq
 aq
 aw
@@ -19868,7 +19885,7 @@ jT
 cN
 dq
 jD
-eS
+jU
 cG
 aw
 aF
@@ -19894,17 +19911,17 @@ aw
 aw
 aw
 aw
+rF
+aq
+aq
+aq
+rF
+aG
 aq
 aq
 aq
 aq
-aq
-aq
-aq
-aq
-aq
-aq
-aq
+aG
 aq
 aw
 aw
@@ -20070,7 +20087,7 @@ jU
 cN
 rA
 jD
-eS
+jU
 cG
 aw
 aF
@@ -20272,7 +20289,7 @@ jU
 cN
 dq
 jD
-eS
+jU
 cG
 aw
 aF
@@ -20300,14 +20317,14 @@ aw
 aw
 aq
 aq
-aq
+rF
 aq
 aw
 aw
 aw
 aw
 aq
-aq
+aG
 aq
 aq
 aq
@@ -20474,7 +20491,7 @@ cG
 do
 cC
 jD
-eS
+jU
 cG
 aw
 aF
@@ -21080,7 +21097,7 @@ cG
 do
 cC
 jD
-eS
+jU
 cG
 aw
 aF
@@ -21282,7 +21299,7 @@ jT
 cN
 rA
 jD
-eS
+jU
 cG
 aw
 aF
@@ -21484,7 +21501,7 @@ jU
 cN
 dq
 jD
-eS
+jU
 cG
 aw
 aF
@@ -21686,7 +21703,7 @@ jU
 cN
 cC
 jD
-eS
+jU
 cG
 aw
 aF
@@ -40672,7 +40689,7 @@ mL
 mQ
 BF
 mO
-nM
+rD
 QI
 aw
 aw

@@ -128,9 +128,10 @@
 	landmark_tag = "deliverance_transition"
 
 /obj/effect/shuttle_landmark/deliverance/landing
-	name = "Ishimura Hangar #2"
+	name = "The Colony"
 	landmark_tag = "deliverance_landing"
 	base_turf = /turf/simulated/floor/plating
+	base_area = /area/mining_colony/interior/excavation/hangar
 
 /datum/shuttle/autodock/multi/antag/kellion
 	name = "Kellion"
@@ -156,6 +157,7 @@
 	name = "The Colony"
 	landmark_tag = "kellion_landing"
 	base_turf = /turf/simulated/floor/plating
+	base_area = /area/mining_colony/interior/kellion_arrival
 
 /datum/shuttle/autodock/multi/antag/valor
 	name = "Valor"
@@ -179,24 +181,28 @@
 	landmark_tag = "valor_transition"
 
 /obj/effect/shuttle_landmark/valor/landing
-	name = "Ishimura Hangar #1"
+	name = "The Colony"
 	landmark_tag = "valor_landing"
 	base_turf = /turf/simulated/floor/plating
-
-/obj/effect/shuttle_landmark/valor/landing2
-	name = "Evacuation Site - Alpha #2"
-	landmark_tag = "valor_landing2"
-	base_turf = /turf/simulated/floor/plating
-	escape = TRUE
+	base_turf = /area/mining_colony
 
 /obj/effect/shuttle_landmark/kellion/landing2
 	name = "Evacuation Site - Alpha #1"
 	landmark_tag = "kellion_landing2"
 	base_turf = /turf/simulated/floor/plating
+	base_area = /area/ERT/escapebase
+	escape = TRUE
+
+/obj/effect/shuttle_landmark/valor/landing2
+	name = "Evacuation Site - Alpha #2"
+	landmark_tag = "valor_landing2"
+	base_turf = /turf/simulated/floor/plating
+	base_area = /area/ERT/escapebase
 	escape = TRUE
 
 /obj/effect/shuttle_landmark/deliverance/landing2
 	name = "Evacuation Site - Alpha #3"
 	landmark_tag = "deliverance_landing2"
 	base_turf = /turf/simulated/floor/plating
+	base_area = /area/ERT/escapebase
 	escape = TRUE

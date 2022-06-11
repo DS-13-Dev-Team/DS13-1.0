@@ -174,4 +174,4 @@
 		return
 	if(C.idle_power_usage > C.avail())
 		return
-	. = 1
+	return TRUE
