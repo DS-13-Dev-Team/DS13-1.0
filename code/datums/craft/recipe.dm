@@ -90,7 +90,7 @@
 	//CRAFT_ON_SURFACE flag requires you to work on a table or bench. It must be on the tile directly infront of the user
 	//This check is skipped if there is no user
 	if (user && (flags & CRAFT_ON_SURFACE))
-		var/list/stuff = range(get_step(user, user.dir), 0)
+		var/list/stuff = range(get_step(user, user.dir), 1)
 		var/surfacefound = FALSE
 		for (var/obj/A in stuff)
 			if (A.is_surface())
@@ -98,7 +98,7 @@
 				break
 
 		if (!surfacefound)
-			to_chat(user, SPAN_WARNING("You need a flat surface to work on for this recipe. Stand at a table or workbench."))
+			to_chat(user, SPAN_WARNING("You need a flat surface to work on for this recipe. Stand near a table or workbench."))
 			return FALSE
 
 	if(flags & (CRAFT_ONE_PER_TURF|CRAFT_ON_FLOOR))
