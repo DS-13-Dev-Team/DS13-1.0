@@ -411,6 +411,10 @@ if (result == EXECUTION_CANCEL && can_interrupt){\
 /datum/extension/execution/proc/safety_check()
 	.=EXECUTION_CONTINUE
 
+	//Should be conscious
+	if(user.stat > CONSCIOUS)
+		return EXECUTION_CANCEL
+
 	//If we needed a grab, check that we have it and its valid
 	if (require_grab && require_grab <= current_stage_index)
 		if (!grab || !grab.safety_check())

@@ -26854,12 +26854,6 @@
 /obj/machinery/telecomms/processor/preset_two,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/enginieering/telecomms)
-"mEc" = (
-/obj/machinery/light{
-	dir = 1
-	},
-/turf/simulated/wall/r_wall,
-/area/mining_colony/interior/medbay/surgery2)
 "mFA" = (
 /obj/machinery/door/airlock/engineering{
 	name = "Telecommunications"
@@ -41931,7 +41925,7 @@ bnB
 anc
 bcT
 apI
-mEc
+joH
 anU
 bdi
 aqf
