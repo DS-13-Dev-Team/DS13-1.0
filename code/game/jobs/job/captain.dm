@@ -1,11 +1,12 @@
 /datum/job/cap
 #ifdef MAP_ISHIMURA
 	title = "Captain"
+	abbreviation = "CPT"
 #else
 	title = "Colony Director"
+	abbreviation = "DIR"
 #endif
 	department = "Command"
-	abbreviation = "CPT"
 	head_position = 1
 	department_flag = COM
 	total_positions = 1
@@ -38,7 +39,7 @@
 						SKILL_FORENSICS   = SKILL_ADEPT)
 	skill_points = 20
 
-datum/job/cap/get_description_blurb()
+/datum/job/cap/get_description_blurb()
 #ifdef MAP_ISHIMURA
 	return "You are the Captain. You are in charge of the overall situation aboard your ship. You are there to ensure that, overall, the ship's operations are safe and productive. You only answer to the CEC and work with the Director of Mining, normally."
 #else

@@ -39,12 +39,11 @@
 
 /datum/job/smo/get_description_blurb()
 #ifdef MAP_ISHIMURA
-	supervisors = "the Captain"
+	return "You are the Senior Medical Officer. You are chiefly responsible for the health and well-being of all crewmembers aboard the ship. You are subordinate to the Captain and First Lieutenant."
 #else
-	supervisors = "the Colony Director"
+	return "You are the Senior Medical Officer. You are chiefly responsible for the health and well-being of all workers in the colony. You are subordinate to the Captain and First Lieutenant."
 #endif
 
-	return "You are the Senior Medical Officer. You are chiefly responsible for the health and well-being of all crewmembers aboard the ship. You are subordinate to the Captain and First Lieutenant."
 
 /datum/job/md
 	title = "Medical Doctor"

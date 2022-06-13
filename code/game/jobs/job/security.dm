@@ -3,7 +3,6 @@
 	title = "Chief Security Officer"
 	abbreviation = "CSECO"
 	supervisors = "the Captain"
-
 #else
 	title = "P-Sec Commander"
 	abbreviation = "PSC"

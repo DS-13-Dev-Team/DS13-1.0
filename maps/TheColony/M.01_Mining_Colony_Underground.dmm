@@ -20,9 +20,12 @@
 /turf/simulated/floor/dank/slides,
 /area/mining_colony/lower/maints/room27)
 "ad" = (
-/obj/effect/landmark/marker/ishimura,
-/turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony/lower/mining_caves)
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/security{
+	name = "P-Sec Lower Hallway"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/mining_colony/lower/securitystation)
 "ae" = (
 /obj/structure/table/rack,
 /obj/random/loot/often/few,
@@ -738,7 +741,9 @@
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/lower/mining_caves)
 "ct" = (
-/obj/machinery/door/airlock/security,
+/obj/machinery/door/airlock/security{
+	name = "P-Sec Lower Hallway"
+	},
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/dark,
 /area/mining_colony/lower/securitystation)
@@ -19280,7 +19285,7 @@ dv
 aV
 aV
 aV
-ct
+ad
 aV
 aV
 aV
@@ -23273,7 +23278,7 @@ aw
 aq
 aq
 aq
-ad
+aq
 aq
 aq
 aq
