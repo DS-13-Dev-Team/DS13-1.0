@@ -2,7 +2,7 @@
 	var/datum/node_room/NR
 	var/nodes_collected = 0
 	desc = "A security system which requires power nodes to open."
-	//Temporary
+	anchored = TRUE
 	icon = 'icons/obj/powerlock.dmi'
 	icon_state = "powerlock1"
 	pixel_y = 5
