@@ -4,7 +4,7 @@ Guns:
 +	chemsprayer
 +	large capacity syringe gun
 +	large chemical grenade case
-	//advanced flash
+//	advanced flash
 +	C99 Supercollider Contact Beam
 +	210-V mining cutter
 +	211-V plasma cutter
@@ -269,14 +269,14 @@ S	fuel tank (hydrazine)
 	id = "fuel_tank"
 	build_type = STORE
 	build_path = /obj/item/weapon/reagent_containers/glass/fuel_tank/fuel
-	price = 1000
+	price = 2500
 
 /datum/design/item/ammo/hydrazine_tank
 	name = "fuel tank (hydrazine)"
 	id = "hydrazine_tank"
 	build_type = STORE
 	build_path = /obj/item/weapon/reagent_containers/glass/fuel_tank/hydrazine
-	price = 2000
+	price = 5000
 
 
 
