@@ -5,8 +5,8 @@
 
 /datum/player
 	var/key
-	var/client
-	var/mob
+	var/datum/weakref/client
+	var/datum/weakref/mob
 	var/is_necromorph = FALSE
 
 	//If true, this player is registered as a patron, and gets access to certain perks
@@ -33,10 +33,10 @@
 		C.prefs.loadout.set_prefs(C.prefs)
 
 /datum/player/proc/get_mob()
-	return locate(mob)
+	return mob.resolve()
 
 /datum/player/get_client()
-	return locate(client)
+	return client.resolve()
 
 /datum/player/proc/cache_location(var/atom/location)
 	last_location = list("x" = location.x, "y" = location.y, "z" = location.z)
@@ -51,9 +51,8 @@
 	var/datum/player/me = get_or_create_player(ckey)
 	if (!me)
 		return null
-	me.client = "\ref[src.client]"
-	me.mob = "\ref[src]"
-
+	me.client = WEAKREF(src.client)
+	me.mob = WEAKREF(src)
 
 	//Existing stuff i might replace
 	GLOB.player_list |= src
@@ -88,7 +87,7 @@
 
 /proc/get_preferences_from_key(var/key)
 	var/datum/player/P = get_player_from_key(key)
-	var/client/C = locate(P.client)
+	var/client/C = P.client.resolve()
 	if (istype(C))
 		return C.prefs
 	else
