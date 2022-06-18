@@ -73,7 +73,7 @@
 	landmark_tag = "colony_escape2_transition"
 
 /obj/effect/shuttle_landmark/escape2/end
-	name = "Docking Bay"
+	name =  "Docking Bay"
 	base_area = /area/ERT/escapebase
 	landmark_tag = "colony_escape2_end"
 	escape = TRUE
