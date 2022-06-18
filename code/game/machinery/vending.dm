@@ -168,7 +168,7 @@
 			var/obj/item/weapon/spacecash/ewallet/C = W
 			paid = pay_with_ewallet(C)
 			handled = 1
-		else if (istype(W, /obj/item/weapon/spacecash))
+		else if (istype(W, /obj/item/weapon/spacecash) && !istype(W, /obj/item/weapon/spacecash/minercash))
 			var/obj/item/weapon/spacecash/C = W
 			paid = pay_with_cash(C)
 			handled = 1

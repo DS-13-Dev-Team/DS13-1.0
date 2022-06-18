@@ -163,21 +163,13 @@
 	D.build_type = STORE_ROUNDSTART
 	D.starts_unlocked = TRUE
 	D.id = id
-	D.category = src.category
+	D.category = category
 	D.PI = src
 
 	//TODO: Icons not working
 	//TODO: Multiselection is happening
-	//TODO: Set transfer setting if the item is a rig or module
 
 	register_research_design(D)
-
-	//If this has patron or whitelist access, put it in the limited store designs list
-	if (store_access != ACCESS_PUBLIC)
-		GLOB.limited_store_designs += D
-
-	else
-		GLOB.unlimited_store_designs += D
 
 
 /*
@@ -252,25 +244,21 @@
 	Returns true if they can do store access to this
 */
 /datum/patron_item/proc/can_buy_in_store(var/user)
-	if (store_access == ACCESS_PUBLIC)
+	if(store_access == ACCESS_PUBLIC)
 		return TRUE
 
 	var/ckey
-	var/is_patron
-	if (istext(user))
+	if(istext(user))
 		ckey = user
-		var/datum/player/P = get_player_from_key(ckey)
-		is_patron = P.patron
-	else if (istype(user, /datum))
+
+	else if(istype(user, /datum))
 		var/datum/D = user
 		ckey = D.get_key()
-		is_patron = D.is_patron()
 
-
-	switch (store_access)
-		if (ACCESS_PUBLIC)
+	switch(store_access)
+		if(ACCESS_PUBLIC)
 			return TRUE
-		if (ACCESS_PATRONS)
-			return is_patron
-		if (ACCESS_WHITELIST)
+		if(ACCESS_PATRONS)
+			return (ckey in GLOB.patron_keys)
+		if(ACCESS_WHITELIST)
 			return (ckey in whitelist)

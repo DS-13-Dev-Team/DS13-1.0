@@ -5,7 +5,6 @@
 	materials = list(MATERIAL_STEEL = 4000, "plastic" = 2500, MATERIAL_GLASS = 2000, MATERIAL_GOLD = 1000)
 	price = 2500
 	build_type = STORE_SCHEMATICS
-	store_transfer = TRUE
 
 /datum/design/item/rig_module/meson
 	name = "Meson Scanner"

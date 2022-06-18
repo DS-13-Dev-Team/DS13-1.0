@@ -29,8 +29,7 @@
 	get_design()
 
 /obj/machinery/store/proc/handle_schematic(obj/item/store_schematic/I, mob/user)
-	var/datum/design/D = SSresearch.design_ids[I.design_id]
-	GLOB.unlimited_store_designs |= D
+	GLOB.unlimited_store_designs += I.design_id
 	visible_message("Thank you for participating in the CEC Data Recovery programme, [user.real_name]. Your account has been credited with [REWARD_SCHEMATIC] credits")
 	occupant.recieve_credits(REWARD_SCHEMATIC, machine_id, machine_id, "Schematic Bounty")
 	occupant.remove_item(I)
@@ -39,11 +38,12 @@
 
 /obj/item/store_schematic/proc/get_design()
 	if(GLOB.public_store_designs.len)
-		var/datum/design/D = pick(GLOB.public_store_designs)
+		var/id = pick(GLOB.public_store_designs)
+		var/datum/design/D = SSresearch.design_ids[id]
 		design_name = D.item_name
 		design_id = D.id
 		name = "Store Schematic ([design_name])"
-		GLOB.public_store_designs -= D
+		GLOB.public_store_designs -= id
 	else // There are no unknown designs left? We'll just have to delete ourselves
 		QDEL_IN(src, 1)
 		new /obj/random/rare_loot(get_turf(src))

@@ -782,6 +782,7 @@
 #include "code\game\machinery\syndicatebeacon.dm"
 #include "code\game\machinery\teleporter.dm"
 #include "code\game\machinery\vending.dm"
+#include "code\game\machinery\vending_miner.dm"
 #include "code\game\machinery\wall_frames.dm"
 #include "code\game\machinery\washing_machine.dm"
 #include "code\game\machinery\wishgranter.dm"

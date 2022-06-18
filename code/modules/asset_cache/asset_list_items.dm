@@ -158,9 +158,6 @@ proc/get_craft_item(path)
 		"stamp-syndicate" = 'icons/stamp_icons/large_stamp-syndicate.png'
 	)
 
-
-
-
 /datum/asset/simple/patron_content/register()
 	log_debug("Registering patron content")
 	var/total = 0

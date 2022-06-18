@@ -126,8 +126,10 @@
 /obj/machinery/store/proc/buy_and_transfer()
 	var/list/things = list() + buy_current()
 	var/obj/item/weapon/rig/R
-	for (var/obj/item/I in things)
-		if (isrig(I))
+	if(occupant.back && !occupant.wearing_rig)
+		store_or_drop(occupant.back)
+	for(var/obj/item/I in things)
+		if(isrig(I))
 			R = I
 		store_or_drop(I)
 

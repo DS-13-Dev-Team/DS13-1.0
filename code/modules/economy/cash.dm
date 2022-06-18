@@ -24,6 +24,7 @@
 
 /obj/item/weapon/spacecash/update_icon()
 	cut_overlays()
+	icon_state = initial(icon_state)
 	var/remaining_worth = worth
 	var/iteration = 0
 	var/coins_only = TRUE
@@ -64,7 +65,7 @@
 		name = "[worth] [initial(name)]" // 123 credits/merits
 		desc = "Cold hard cash."
 		gender = NEUTER
-
+	icon_state = ""
 
 /obj/item/weapon/spacecash/attackby(obj/item/weapon/spacecash/S, mob/living/carbon/human/H)
 	if(ispath(S.type, type))
