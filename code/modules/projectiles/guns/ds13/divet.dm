@@ -147,7 +147,7 @@ Projectile logic
 
 //Non lethal ammo
 /obj/item/projectile/bullet/ls_slug/rb
-	damage = 5
+	damage = 0
 	agony = 40
 	step_delay = DIVET_DELAY * 1.25
 	structure_damage_factor = 0

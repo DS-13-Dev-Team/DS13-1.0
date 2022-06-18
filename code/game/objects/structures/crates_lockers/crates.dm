@@ -194,6 +194,12 @@
 	icon_state = "largebin"
 	icon_opened = "largebinopen"
 	icon_closed = "largebin"
+	anchored = TRUE
+
+/obj/structure/closet/crate/bin/attackby(obj/item/W, mob/user)
+	if(isWrench(W))
+		wrench_floor_bolts(user, 3 SECONDS)
+	.=..()
 
 /obj/structure/closet/crate/radiation
 	name = "radioactive crate"

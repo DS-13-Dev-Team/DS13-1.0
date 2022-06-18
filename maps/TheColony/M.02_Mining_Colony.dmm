@@ -2046,15 +2046,16 @@
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/abandoned/hydro)
 "afM" = (
-/obj/machinery/power/fusion_core/mapped,
+/obj/machinery/power/fusion_core/mapped{
+	id_tag = "colonypower"
+	},
 /obj/structure/cable/green{
 	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
+	d2 = 2;
+	icon_state = "0-2"
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/mining_colony/interior/enginieering/reactor)
@@ -12091,6 +12092,9 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/mining_colony/interior/plaza)
 "aIJ" = (
@@ -18719,6 +18723,9 @@
 	icon_state = "ishimura_shutter_open";
 	id = "plaza_lock";
 	name = "Plaza Blast Door"
+	},
+/obj/machinery/door/firedoor{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/mining_colony/interior/plaza)
@@ -25863,6 +25870,9 @@
 	id = "plaza_lock";
 	name = "Plaza Blast Door"
 	},
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/mining_colony/interior/plaza)
 "bpT" = (
@@ -27471,6 +27481,13 @@
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/mining_colony/interior/enginieering/reactor)
+"dIL" = (
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = -24
+	},
+/turf/simulated/floor/tiled/dark,
+/area/mining_colony/interior/plaza)
 "egA" = (
 /obj/machinery/firealarm{
 	dir = 1;
@@ -28305,6 +28322,15 @@
 	icon_state = "warning"
 	},
 /turf/simulated/floor/plating,
+/area/mining_colony/interior/plaza)
+"tLl" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/firealarm{
+	dir = 4;
+	icon_state = "fire0";
+	pixel_x = 20
+	},
+/turf/simulated/floor/tiled/dark,
 /area/mining_colony/interior/plaza)
 "tOp" = (
 /turf/simulated/wall/r_wall,
@@ -36403,7 +36429,7 @@ bhp
 aVf
 bpr
 aVf
-afg
+dIL
 aAp
 bjA
 bll
@@ -39636,7 +39662,7 @@ aWA
 aXZ
 bnR
 bjA
-bjA
+tLl
 afg
 bns
 afg
