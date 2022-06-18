@@ -187,7 +187,6 @@ SUBSYSTEM_DEF(ticker)
 	log_world("Game start took [(world.timeofday - init_start) / 10]s")
 	round_start_time = world.time
 
-	GLOB.using_map.setup_economy()
 	load_store_database()
 	current_state = GAME_STATE_PLAYING
 	Master.SetRunLevel(RUNLEVEL_GAME)

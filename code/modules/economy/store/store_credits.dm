@@ -11,10 +11,8 @@
 	if(occupant && occupant.wearing_rig)
 		. += occupant.wearing_rig.get_account_balance()
 
-	for(var/i in deposit_box.contents)
-		if(istype(i, /obj/item/weapon/spacecash))
-			var/obj/item/weapon/spacecash/S = i
-			. += S.worth
+	for(var/obj/item/weapon/spacecash/S in deposit_box.contents)
+		. += S.worth
 
 	var/datum/money_account/A = occupant?.get_account()
 	if(A)
@@ -125,18 +123,14 @@
 */
 /obj/machinery/store/proc/buy_and_transfer()
 	var/list/things = list() + buy_current()
-	var/obj/item/weapon/rig/R
 	if(occupant.back && !occupant.wearing_rig)
 		store_or_drop(occupant.back)
-	for(var/obj/item/I in things)
-		if(isrig(I))
-			R = I
-		store_or_drop(I)
-
-	//If they bought a module, R will be null and it'll just attempt to install all the modules from the deposit box
-	start_transfer(R)
-
-
+	var/obj/item/weapon/rig/R = locate(/obj/item/weapon/rig) in things
+	if(R) //If they bought a module, R will be null and it'll just attempt to install all the modules from the deposit box
+		start_transfer(R)
+		things -= R
+	for(var/i in things)
+		store_or_drop(i)
 
 
 //Withdrawing credits from your employee account to something

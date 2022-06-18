@@ -20,17 +20,18 @@
 
 
 /obj/item/weapon/spacecash/ewallet/update_icon()
-	icon_state = "grey"
 	switch(worth)
-		if (0 to 500)
+		if(0)
+			icon_state = "grey"
+		if(1 to 500)
 			icon_state = "gold"
-		if (501 to 1000)
+		if(501 to 1000)
 			icon_state = "green"
-		if (1001 to 5000)
+		if(1001 to 5000)
 			icon_state = "blue"
-		if (5001 to 10000)
+		if(5001 to 10000)
 			icon_state = "purple"
-		if (10001 to INFINITY)
+		if(10001 to INFINITY)
 			icon_state = "orange"
 
 /*
