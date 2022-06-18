@@ -79,7 +79,7 @@
 	escape = TRUE
 
 /datum/shuttle/autodock/ferry/escape3
-	name = "Escape Shuttle 1"
+	name = "Escape Shuttle 3"
 	warmup_time = 5
 	shuttle_area = /area/mining_colony/interior/shuttle_bay/shuttle_3
 	dock_target = "executive_shuttle"

@@ -27773,6 +27773,18 @@
 /obj/machinery/telecomms/server/presets/service,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/enginieering/telecomms)
+"kZM" = (
+/obj/machinery/cryopod{
+	dir = 2
+	},
+/obj/effect/landmark{
+	name = "JoinLateCryo"
+	},
+/obj/machinery/computer/cryopod{
+	pixel_y = 28
+	},
+/turf/simulated/floor/dank/mono,
+/area/mining_colony/interior/apartament)
 "las" = (
 /obj/item/device/radio/intercom/department/security{
 	pixel_y = 20
@@ -31097,7 +31109,7 @@ aoG
 aoG
 abi
 abi
-abg
+kZM
 akO
 abi
 anX
