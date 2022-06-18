@@ -99,9 +99,9 @@
 	desc = "Unitology Church"
 	access_type = ACCESS_REGION_GENERAL
 
-/var/const/access_psychologist = 17
+/var/const/access_psychiatrist = 17
 /datum/access/psychologist
-	id = access_psychologist
+	id = access_psychiatrist
 	desc = "Medical"
 	access_type = ACCESS_REGION_MEDBAY
 

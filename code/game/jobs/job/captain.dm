@@ -24,7 +24,7 @@
 
 	access = list(access_captain, access_bridge, access_security, access_armory, access_service,
 				access_cargo, access_mining, access_engineering, access_bartender, access_chaplain,
-				access_external_airlocks, access_medical, access_research, access_psychologist,
+				access_external_airlocks, access_medical, access_research, access_psychiatrist,
 				access_chemistry, access_surgery, access_maint_tunnels, access_keycard_auth)
 	outfit_type = /decl/hierarchy/outfit/job/command/cap
 

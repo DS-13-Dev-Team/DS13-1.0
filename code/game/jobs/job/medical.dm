@@ -22,7 +22,7 @@
 	necro_conversion_options = list(SPECIES_NECROMORPH_DIVIDER = 3)
 
 	access = list(access_smo, access_bridge, access_maint_tunnels, access_medical, access_surgery, access_research, access_chemistry,
-					access_psychologist, access_keycard_auth)
+					access_psychiatrist, access_keycard_auth)
 	outfit_type = /decl/hierarchy/outfit/job/medical/smo
 
 	min_skill = list(   SKILL_ANATOMY     = SKILL_MAX,
@@ -115,7 +115,7 @@
 	return "You are a Surgeon. Your job is to perform surgery on any wounded crewmembers who require it and are one of the few people given access to the surgical suites. You are subordinate to the Senior Medical Officer."
 
 /datum/job/psychologist
-	title = "Psychologist"
+	title = "Psychiatrist"
 	abbreviation = "PSY"
 	department_flag = MED
 	total_positions = 1
@@ -127,9 +127,9 @@
 	starting_credits = 943
 
 	#ifdef MAP_ISHIMURA
-	access = list(access_medical, access_psychologist, access_research, access_chemistry, access_maint_tunnels)
+	access = list(access_medical, access_psychiatrist, access_research, access_chemistry, access_maint_tunnels)
 	#else
-	access = list(access_medical, access_psychologist, access_chemistry, access_maint_tunnels)
+	access = list(access_medical, access_psychiatrist, access_chemistry, access_maint_tunnels)
 	#endif
 	outfit_type = /decl/hierarchy/outfit/job/medical/psych
 
@@ -146,4 +146,4 @@
 	salary = SALARY_EDUCATED //Church pays you more than CEC to miners and civs...
 
 /datum/job/psychologist/get_description_blurb()
-	return "You are the Psychologist. Your job is to meet with clients to identify emotional, mental, and behavioral problems. You are subordinate to the Senior Medical Officer."
+	return "You are the Psychiatrist. Your job is to meet with clients to identify emotional, mental, and behavioral problems. You are subordinate to the Senior Medical Officer."
