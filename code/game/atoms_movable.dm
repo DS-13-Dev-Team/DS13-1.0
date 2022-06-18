@@ -31,19 +31,9 @@
 
 
 /atom/movable/Initialize(var/mapload)
-	if (can_block_movement && isturf(loc))
-		var/turf/T = loc
-		LAZYDISTINCTADD(T.movement_blocking_atoms,src)
-
 	.=..()
 
 /atom/movable/Destroy()
-	if (can_block_movement)
-		var/turf/T = get_turf(src)
-		if (T)
-			LAZYREMOVE(T.movement_blocking_atoms,src)
-
-
 	if(virtual_mob && !ispath(virtual_mob))
 		qdel(virtual_mob)
 		virtual_mob = null

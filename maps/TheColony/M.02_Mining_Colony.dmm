@@ -21540,12 +21540,12 @@
 /turf/simulated/floor/dank/rectangles,
 /area/mining_colony/interior/mining/lockeroom)
 "beU" = (
+/obj/structure/closet/crate/bin,
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/structure/closet/crate/bin,
 /turf/simulated/floor/dank/maint,
 /area/mining_colony/interior/enginieering/smes)
 "beV" = (
@@ -23188,6 +23188,9 @@
 /obj/structure/cable{
 	icon_state = "1-6"
 	},
+/obj/structure/cable{
+	icon_state = "6-10"
+	},
 /turf/simulated/floor/dank/maint,
 /area/mining_colony/interior/enginieering/smes)
 "biN" = (
@@ -23561,9 +23564,10 @@
 /area/mining_colony/interior/plaza)
 "bjL" = (
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
+	icon_state = "5-8"
+	},
+/obj/structure/cable{
+	icon_state = "5-6"
 	},
 /turf/simulated/floor/dank/maint_left,
 /area/mining_colony/interior/enginieering/smes)
@@ -23597,11 +23601,9 @@
 /area/mining_colony/interior/science/airlock)
 "bjP" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
+	icon_state = "5-10"
 	},
-/turf/simulated/floor/dank/maint_left,
+/turf/simulated/floor/dank/maint,
 /area/mining_colony/interior/enginieering/smes)
 "bjQ" = (
 /obj/structure/cable{
@@ -23650,12 +23652,12 @@
 /obj/structure/cable{
 	d1 = 2;
 	d2 = 8;
-	icon_state = "2-8"
+	icon_state = "1-4"
 	},
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/dank/maint,
 /area/mining_colony/interior/enginieering/smes)
@@ -25132,11 +25134,6 @@
 "bnY" = (
 /obj/machinery/light{
 	dir = 8
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
 	},
 /obj/item/weapon/caution/cone,
 /obj/item/weapon/caution/cone,
@@ -27647,6 +27644,17 @@
 "iux" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/interior/shuttle_bay/sec_armor)
+"iwz" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	icon_state = "5-10"
+	},
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/interior/enginieering/smes)
 "ixZ" = (
 /obj/effect/wallframe_spawn/reinforced,
 /obj/machinery/door/firedoor{
@@ -28055,6 +28063,12 @@
 	},
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/uni_church)
+"oEl" = (
+/obj/structure/cable{
+	icon_state = "5-10"
+	},
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/interior/enginieering/smes)
 "oUV" = (
 /obj/machinery/telecomms/processor/preset_three,
 /turf/simulated/floor/dank/grater,
@@ -28489,6 +28503,12 @@
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/simulated/floor/carpet/red,
 /area/shuttle/executive_shuttle)
+"wIG" = (
+/obj/structure/cable{
+	icon_state = "2-9"
+	},
+/turf/simulated/floor/dank/maint,
+/area/mining_colony/interior/enginieering/smes)
 "wJu" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/interior/mining/randr)
@@ -41867,7 +41887,7 @@ bja
 biL
 bjp
 bjL
-bjP
+bjp
 bnY
 abc
 ahZ
@@ -42067,9 +42087,9 @@ biD
 biK
 biK
 biL
+bjP
 biL
-biL
-biL
+wIG
 bjW
 biG
 alk
@@ -42268,7 +42288,7 @@ biN
 euh
 hjJ
 bjs
-bjb
+oEl
 bjb
 bjb
 bjb
@@ -42469,7 +42489,7 @@ aTr
 aSq
 biF
 biL
-xkW
+iwz
 bjq
 bjr
 bjq
