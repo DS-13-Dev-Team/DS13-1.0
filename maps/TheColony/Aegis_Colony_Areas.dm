@@ -312,6 +312,11 @@
 	icon_state = "m_shuttle_two"
 	sound_env = ASTEROID
 
+/area/mining_colony/interior/shuttle_bay/shuttle_3
+	name = "\improper Aegis - Scrapper Shuttle"
+	icon_state = "m_shuttle_two"
+	sound_env = ASTEROID
+
 // Replicated this area as best as i could from Chapter 12: Dead Space (From the first Dead Space game, hence the name) - Asi
 
 /area/mining_colony/c12_deadspace
@@ -992,3 +997,6 @@ area/mining_colony/interior/mining/hallway
 /area/mining_colony/lower/maints/room64
 /area/mining_colony/lower/maints/room65
 /area/mining_colony/lower/maints/room66
+/area/mining_colony/lower/maints/room67
+/area/mining_colony/lower/maints/room68
+/area/mining_colony/lower/maints/room69

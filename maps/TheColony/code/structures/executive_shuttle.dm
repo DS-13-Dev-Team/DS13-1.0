@@ -7,6 +7,9 @@
 /obj/machinery/computer/shuttle_control/escape2
 	shuttle_tag = "Escape Shuttle 2"
 
+/obj/machinery/computer/shuttle_control/escape3
+	shuttle_tag = "Escape Shuttle 3"
+
 /obj/machinery/computer/shuttle_control/repairable
 	name = "Broken Shuttle Console"
 	desc = "It looks like some parts of this shuttle console are missing."

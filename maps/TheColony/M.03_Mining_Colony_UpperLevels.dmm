@@ -66,8 +66,8 @@
 /turf/simulated/floor/dank/hardwood,
 /area/mining_colony/security/upper/sec_commander)
 "aj" = (
-/obj/machinery/camera/network/security,
 /obj/item/modular_computer/console/preset/command,
+/obj/machinery/camera/network/command,
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/upper/commandofficers)
 "ak" = (
@@ -332,6 +332,9 @@
 "aW" = (
 /obj/structure/bed/chair/office{
 	dir = 1
+	},
+/obj/machinery/camera/network/command{
+	dir = 4
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/upper/commandofficers)
@@ -1535,6 +1538,9 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
+/obj/machinery/camera/network/security{
+	dir = 1
+	},
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/security/upper)
 "dP" = (
@@ -1706,6 +1712,9 @@
 /obj/structure/table/reinforced,
 /obj/structure/window/reinforced,
 /obj/random/glasses,
+/obj/machinery/camera/network/common{
+	dir = 8
+	},
 /turf/simulated/floor/dank/slides,
 /area/mining_colony/security/upper/bridge_corridor)
 "el" = (
@@ -1838,6 +1847,9 @@
 /obj/structure/table/rack,
 /obj/random/maintenance/clean,
 /obj/random/maintenance/clean,
+/obj/machinery/camera/network/security{
+	dir = 1
+	},
 /turf/simulated/floor/dank/rectangles,
 /area/mining_colony/security/upper/secstorage2)
 "eA" = (
@@ -1909,6 +1921,9 @@
 /obj/machinery/firealarm{
 	dir = 1;
 	pixel_y = -35
+	},
+/obj/machinery/camera/network/command{
+	dir = 1
 	},
 /turf/simulated/floor/dank/hardwood,
 /area/mining_colony/security/upper/be_room2)
@@ -2289,6 +2304,12 @@
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/upper/commandofficers)
+"ic" = (
+/obj/machinery/camera/network/common{
+	dir = 8
+	},
+/turf/simulated/floor/dank/slides,
+/area/mining_colony/security/upper/bridge_corridor)
 "iq" = (
 /obj/structure/table/reinforced,
 /obj/structure/window/reinforced,
@@ -2306,6 +2327,12 @@
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/upper/commandofficers)
+"iP" = (
+/obj/machinery/camera/network/command{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/red,
+/area/mining_colony/security/upper/director)
 "iT" = (
 /obj/structure/railing/mapped{
 	dir = 1
@@ -2400,6 +2427,14 @@
 /obj/structure/sign/deck/ds/purple,
 /turf/simulated/wall/r_wall,
 /area/mining_colony/security/upper/sec_offices)
+"lA" = (
+/obj/machinery/camera/network/common{
+	dir = 4
+	},
+/turf/simulated/floor/dank/slides{
+	dir = 1
+	},
+/area/mining_colony/security/upper/bridge_corridor)
 "lO" = (
 /obj/structure/bed/chair/office{
 	dir = 8;
@@ -2457,6 +2492,12 @@
 /obj/item/weapon/paper_bin,
 /turf/simulated/floor/dank/hardwood,
 /area/mining_colony/security/upper/fl_office)
+"nF" = (
+/obj/machinery/camera/network/common{
+	dir = 8
+	},
+/turf/simulated/floor/dank/golf_brown,
+/area/mining_colony/security/upper/bridge_corridor)
 "nK" = (
 /obj/structure/railing/mapped{
 	dir = 1
@@ -2814,6 +2855,9 @@
 	dir = 1;
 	pixel_y = -35
 	},
+/obj/machinery/camera/network/command{
+	dir = 1
+	},
 /turf/simulated/floor/dank/hardwood,
 /area/mining_colony/security/upper/be_room4)
 "zd" = (
@@ -2862,6 +2906,9 @@
 /obj/machinery/firealarm{
 	dir = 1;
 	pixel_y = -35
+	},
+/obj/machinery/camera/network/command{
+	dir = 1
 	},
 /turf/simulated/floor/dank/hardwood,
 /area/mining_colony/security/upper/be_room3)
@@ -3094,12 +3141,12 @@
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/security/upper)
 "Ht" = (
-/obj/machinery/camera/network/command{
-	dir = 1
-	},
 /obj/machinery/firealarm{
 	dir = 1;
 	pixel_y = -35
+	},
+/obj/machinery/camera/network/security{
+	dir = 1
 	},
 /turf/simulated/floor/dank/hardwood,
 /area/mining_colony/security/upper/sec_offices)
@@ -3226,6 +3273,9 @@
 /obj/item/weapon/folder/blue,
 /obj/item/weapon/stamp/fl,
 /obj/item/weapon/stamp/captain,
+/obj/machinery/camera/network/command{
+	dir = 1
+	},
 /turf/simulated/floor/dank/hardwood,
 /area/mining_colony/security/upper/fl_office)
 "MU" = (
@@ -3310,6 +3360,12 @@
 	dir = 8
 	},
 /area/mining_colony/security/upper/bridge_corridor)
+"PF" = (
+/obj/machinery/camera/network/command{
+	dir = 1
+	},
+/turf/simulated/floor/dank/golf_brown,
+/area/mining_colony/security/upper/commandofficers)
 "PY" = (
 /turf/simulated/floor/dank/slides_end{
 	dir = 2
@@ -3365,6 +3421,9 @@
 /obj/machinery/firealarm{
 	dir = 1;
 	pixel_y = -35
+	},
+/obj/machinery/camera/network/command{
+	dir = 1
 	},
 /turf/simulated/floor/dank/hardwood,
 /area/mining_colony/security/upper/be_room1)
@@ -3466,6 +3525,15 @@
 	},
 /turf/simulated/floor/dank/hardwood,
 /area/mining_colony/security/upper/sec_offices)
+"Vg" = (
+/obj/structure/bed/chair/office{
+	dir = 1
+	},
+/obj/machinery/camera/network/command{
+	dir = 8
+	},
+/turf/simulated/floor/dank/rectangles,
+/area/mining_colony/security/upper/commandofficers)
 "Vh" = (
 /obj/structure/table/reinforced,
 /obj/structure/window/reinforced,
@@ -3537,6 +3605,14 @@
 	},
 /turf/simulated/floor/dank/hardwood,
 /area/mining_colony/security/upper/sec_offices)
+"Xc" = (
+/obj/machinery/camera/network/common{
+	dir = 1
+	},
+/turf/simulated/floor/dank/slides{
+	dir = 4
+	},
+/area/mining_colony/security/upper/bridge_corridor)
 "Xr" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -3556,6 +3632,9 @@
 /obj/structure/table/reinforced,
 /obj/structure/window/reinforced,
 /obj/random/plushie/large,
+/obj/machinery/camera/network/common{
+	dir = 8
+	},
 /turf/simulated/floor/dank/slides,
 /area/mining_colony/security/upper/bridge_corridor)
 "Yb" = (
@@ -3609,6 +3688,12 @@
 "YS" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/security/upper/secstorage2)
+"Zu" = (
+/obj/machinery/camera/network/security{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/mining_colony/security/upper)
 
 (1,1,1) = {"
 UM
@@ -11458,7 +11543,7 @@ ew
 ew
 dC
 eh
-do
+iP
 db
 do
 en
@@ -12268,7 +12353,7 @@ al
 aL
 aM
 cS
-cI
+PF
 dA
 ao
 RI
@@ -12677,7 +12762,7 @@ dA
 ro
 RI
 SL
-dG
+Xc
 zv
 DR
 eG
@@ -14284,7 +14369,7 @@ cd
 vh
 dA
 aA
-aC
+Vg
 BN
 QP
 cH
@@ -14495,7 +14580,7 @@ WP
 ao
 RI
 SL
-dG
+Xc
 ut
 DG
 Dt
@@ -14514,7 +14599,7 @@ de
 ab
 ab
 DM
-br
+Zu
 ab
 ew
 "}
@@ -15501,7 +15586,7 @@ CI
 CI
 Dg
 eX
-CI
+lA
 ao
 RI
 SL
@@ -15915,7 +16000,7 @@ aN
 SC
 aN
 aN
-aN
+nF
 aN
 CX
 br
@@ -16894,7 +16979,7 @@ oO
 oO
 az
 VV
-oO
+ic
 oO
 oO
 oO

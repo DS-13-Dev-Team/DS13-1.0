@@ -22,7 +22,7 @@
 	necro_conversion_options = list(SPECIES_NECROMORPH_DIVIDER = 3)
 
 	access = list(access_smo, access_bridge, access_maint_tunnels, access_medical, access_surgery, access_research, access_chemistry,
-					access_keycard_auth)
+					access_psychologist, access_keycard_auth)
 	outfit_type = /decl/hierarchy/outfit/job/medical/smo
 
 	min_skill = list(   SKILL_ANATOMY     = SKILL_MAX,
@@ -127,7 +127,7 @@
 	starting_credits = 943
 
 	#ifdef MAP_ISHIMURA
-	access = list(access_medical, access_research, access_chemistry, access_maint_tunnels)
+	access = list(access_medical, access_psychologist, access_research, access_chemistry, access_maint_tunnels)
 	#else
 	access = list(access_medical, access_psychologist, access_chemistry, access_maint_tunnels)
 	#endif

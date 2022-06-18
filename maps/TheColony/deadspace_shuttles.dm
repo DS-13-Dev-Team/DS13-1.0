@@ -78,6 +78,37 @@
 	landmark_tag = "colony_escape2_end"
 	escape = TRUE
 
+/datum/shuttle/autodock/ferry/escape3
+	name = "Escape Shuttle 1"
+	warmup_time = 5
+	shuttle_area = /area/mining_colony/interior/shuttle_bay/shuttle_3
+	dock_target = "executive_shuttle"
+	waypoint_station = "colony_escape3_start"
+	waypoint_offsite = "colony_escape3_end"
+	landmark_transition = "colony_escape3_transition"
+
+/datum/shuttle/autodock/ferry/escape3/can_launch()
+	if (evacuation_controller.state < EVAC_LAUNCHING)
+		return FALSE
+
+	return (next_location && moving_status == SHUTTLE_IDLE)
+
+/obj/effect/shuttle_landmark/escape3/start
+	name = "The Colony"
+	landmark_tag = "colony_escape3_start"
+	//docking_controller = "executive_shuttle"
+	base_area = /area/mining_colony/interior/shuttle_bay/hangar
+	base_turf = /turf/simulated/floor/plating
+
+/obj/effect/shuttle_landmark/escape3/transit
+	landmark_tag = "colony_escape3_transition"
+
+/obj/effect/shuttle_landmark/escape3/end
+	name = "Docking Bay"
+	base_area = /area/ERT/escapebase
+	landmark_tag = "colony_escape3_end"
+	escape = TRUE
+
 /datum/shuttle/autodock/ferry/escape_fix
 	name = "Repaired Shuttle"
 	warmup_time = 5	//Takes off quickly to keep the sacrifice element in play.

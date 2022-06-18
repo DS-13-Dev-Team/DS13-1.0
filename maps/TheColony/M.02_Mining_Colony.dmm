@@ -1094,14 +1094,14 @@
 /turf/simulated/floor/tiled/dark,
 /area/mining_colony/interior/uni_church)
 "adw" = (
-/obj/structure/closet/secure_closet/engineering_chief,
-/obj/item/modular_computer/tablet/lease/preset/command,
-/obj/item/device/megaphone,
-/obj/machinery/light{
-	dir = 8
+/obj/structure/window/reinforced{
+	dir = 4
 	},
-/turf/simulated/floor/dank/mono,
-/area/mining_colony/interior/enginieering/chief_engi)
+/obj/effect/floor_decal/dank/outline_striped,
+/obj/structure/closet/secure_closet/personal/empty,
+/obj/item/clothing/mask/gas/clown_hat,
+/turf/simulated/floor/wood,
+/area/mining_colony/abandoned/mining_prep/dormitories)
 "adx" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
@@ -2045,17 +2045,10 @@
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/abandoned/hydro)
 "afM" = (
-/obj/machinery/power/fusion_core/mapped{
-	id_tag = "colonypower"
-	},
+/obj/machinery/power/fusion_core/mapped,
 /obj/structure/cable/green{
 	d2 = 4;
 	icon_state = "0-4"
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "0-5"
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/mining_colony/interior/enginieering/reactor)
@@ -2153,10 +2146,9 @@
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/civ_hall)
 "age" = (
-/obj/machinery/botany,
-/obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/dank/mono,
-/area/mining_colony/abandoned/hydro)
+/obj/machinery/portable_atmospherics/hydroponics,
+/turf/simulated/floor/dank/grater,
+/area/mining_colony)
 "agf" = (
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/interior/mining)
@@ -2391,8 +2383,8 @@
 /turf/simulated/floor/dank/slides,
 /area/mining_colony/interior/mining)
 "agO" = (
+/obj/machinery/portable_atmospherics/hydroponics,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/botany,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/abandoned/hydro)
 "agP" = (
@@ -2680,10 +2672,6 @@
 	},
 /area/mining_colony/c12_deadspace/controlroom)
 "ahJ" = (
-/obj/item/weapon/paper{
-	info = "These are my last words, I'm heavily bleeding and there is no-one who could help me or at least turn on the sleeper. If someone will ever find this message - the ship is your but the parts to the console are g..."
-	},
-/obj/effect/decal/cleanable/blood/splatter,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/c12_deadspace/controlroom)
 "ahK" = (
@@ -3743,7 +3731,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
-/area/mining_colony/SCAF)
+/area/space)
 "akC" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -4600,7 +4588,8 @@
 /area/mining_colony/interior/enginieering/air_storage)
 "ana" = (
 /obj/structure/ladder,
-/turf/simulated/floor/plating,
+/obj/structure/lattice,
+/turf/simulated/open,
 /area/mining_colony/interior/plaza)
 "anb" = (
 /turf/simulated/floor/plating,
@@ -4610,7 +4599,7 @@
 /obj/item/weapon/storage/firstaid/surgery,
 /obj/item/clothing/gloves/latex/nitrile,
 /obj/item/clothing/mask/surgical,
-/obj/machinery/light{
+/obj/machinery/light/small{
 	dir = 1
 	},
 /turf/simulated/floor/dank/medical,
@@ -4676,7 +4665,8 @@
 /area/mining_colony/security/interrogation_room)
 "anj" = (
 /obj/structure/ladder,
-/turf/simulated/floor/plating,
+/obj/structure/lattice,
+/turf/simulated/open,
 /area/mining_colony/security/interrogation_room)
 "ank" = (
 /obj/structure/closet/hydrant{
@@ -4886,7 +4876,7 @@
 /obj/item/weapon/storage/firstaid/surgery,
 /obj/item/clothing/gloves/latex/nitrile,
 /obj/item/clothing/mask/surgical,
-/obj/machinery/light{
+/obj/machinery/light/small{
 	dir = 1
 	},
 /turf/simulated/floor/dank/medical,
@@ -4910,6 +4900,11 @@
 	},
 /obj/machinery/door/firedoor{
 	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/security/interrogation_room)
@@ -5479,7 +5474,6 @@
 /turf/simulated/floor,
 /area/mining_colony)
 "apy" = (
-/obj/machinery/light,
 /turf/simulated/floor/dank/medical,
 /area/mining_colony/interior/medbay/surgery1)
 "apz" = (
@@ -5521,20 +5515,18 @@
 /turf/simulated/floor,
 /area/mining_colony)
 "apG" = (
-/obj/structure/table/standard,
-/obj/item/weapon/paper_bin,
-/obj/item/weapon/pen/multi,
-/obj/effect/floor_decal/corner/grey{
-	dir = 5
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/power/apc{
+	dir = 1;
+	name = "north bump";
+	pixel_y = 15;
+	req_access = list(201)
 	},
-/turf/simulated/floor/tiled/white/monotile,
-/area/mining_colony/interior/science/scienceoffices)
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/interior/shuttle_bay/shuttle_3)
 "apH" = (
 /obj/effect/floor_decal/dank/frame_tiled_large{
 	dir = 8
-	},
-/obj/machinery/light_switch{
-	pixel_x = -32
 	},
 /turf/simulated/floor/dank/medical,
 /area/mining_colony/interior/medbay/surgery1)
@@ -5661,7 +5653,6 @@
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/enginieering/air_storage)
 "apZ" = (
-/obj/machinery/light,
 /turf/simulated/floor/dank/medical,
 /area/mining_colony/interior/medbay/surgery2)
 "aqa" = (
@@ -5693,9 +5684,6 @@
 "aqe" = (
 /obj/effect/floor_decal/dank/frame_tiled_large{
 	dir = 8
-	},
-/obj/machinery/light_switch{
-	pixel_x = -32
 	},
 /turf/simulated/floor/dank/medical,
 /area/mining_colony/interior/medbay/surgery2)
@@ -6075,6 +6063,7 @@
 /area/mining_colony/interior/medbay/chemestry)
 "ark" = (
 /obj/structure/table/steel,
+/obj/item/weapon/storage/box/monkeycubes,
 /turf/simulated/floor/tiled/white/monotile,
 /area/mining_colony/interior/medbay/chemestry)
 "arl" = (
@@ -6383,18 +6372,9 @@
 /turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony)
 "asg" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/mining_colony/interior)
+/obj/effect/landmark/marker/ishimura,
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/abandoned/hydro)
 "ash" = (
 /obj/item/weapon/reagent_containers/food/drinks/cans/artbru,
 /obj/item/weapon/reagent_containers/food/drinks/cans/artbru,
@@ -7213,13 +7193,15 @@
 /turf/simulated/floor/carpet/purple,
 /area/mining_colony/interior/science/sciencechief)
 "auJ" = (
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
+/obj/effect/floor_decal/dank/border{
+	dir = 8
 	},
-/turf/simulated/floor/dank/hardwood,
-/area/mining_colony/interior/mining/directoroffice)
+/obj/machinery/light/small{
+	dir = 4;
+	icon_state = "bulb1"
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/mining_colony/interior/science/researchwarcrime)
 "auK" = (
 /obj/effect/floor_decal/dank/border_corner_i{
 	dir = 8
@@ -7671,12 +7653,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/mining_colony/interior/plaza)
 "awb" = (
-/obj/effect/floor_decal/dank/border,
-/obj/effect/floor_decal/dank/border_corner_i{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/dark,
-/area/mining_colony/interior/plaza)
+/obj/structure/flora/pottedplant/stoutbush,
+/turf/simulated/floor/dank/maint,
+/area/mining_colony/interior/apartament)
 "awc" = (
 /obj/machinery/door/blast/regular{
 	dir = 4;
@@ -7711,13 +7690,10 @@
 /turf/simulated/wall/r_wall,
 /area/mining_colony/interior/medbay)
 "awh" = (
-/obj/machinery/botany,
-/obj/machinery/light/small{
-	dir = 8
-	},
 /obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/dank/grater,
-/area/mining_colony/interior/kitchen_area)
+/obj/machinery/portable_atmospherics/hydroponics,
+/turf/simulated/floor/dank/mono,
+/area/mining_colony/abandoned/hydro)
 "awi" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8;
@@ -7791,11 +7767,11 @@
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/mining/processing)
 "awx" = (
-/obj/machinery/botany,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/effect/decal/cleanable/cobweb2{
-	dir = 1
+/obj/machinery/light{
+	dir = 8
 	},
+/obj/machinery/portable_atmospherics/hydroponics,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/abandoned/hydro)
 "awy" = (
@@ -9119,11 +9095,9 @@
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/interior/enginieering/engi_lockers)
 "aAv" = (
-/obj/machinery/light{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/dark,
-/area/mining_colony/interior)
+/obj/structure/flora/pottedplant/stoutbush,
+/turf/simulated/floor/dank/maint_right,
+/area/mining_colony/interior/apartament)
 "aAw" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
@@ -9346,10 +9320,13 @@
 /turf/simulated/floor/tiled/dark,
 /area/mining_colony/interior/hydrophonics)
 "aBa" = (
-/obj/machinery/botany,
+/obj/machinery/portable_atmospherics/hydroponics,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/tiled/dark,
-/area/mining_colony/interior/hydrophonics)
+/obj/effect/decal/cleanable/cobweb2{
+	dir = 1
+	},
+/turf/simulated/floor/dank/mono,
+/area/mining_colony/abandoned/hydro)
 "aBb" = (
 /obj/structure/table/steel_reinforced,
 /obj/random/snack,
@@ -9533,10 +9510,11 @@
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/cargo/officerarea)
 "aBD" = (
-/obj/machinery/botany,
+/obj/machinery/portable_atmospherics/hydroponics,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/dank/grater,
-/area/mining_colony/interior/kitchen_area)
+/obj/machinery/light,
+/turf/simulated/floor/dank/mono,
+/area/mining_colony/abandoned/hydro)
 "aBE" = (
 /obj/structure/table/rack,
 /obj/item/stack/material/wood/fifty,
@@ -9647,10 +9625,13 @@
 /turf/simulated/floor/dank/maint,
 /area/mining_colony/interior/cargo/restandcrap)
 "aBQ" = (
-/obj/machinery/botany,
+/obj/machinery/portable_atmospherics/hydroponics,
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/decal/cleanable/cobweb{
+	dir = 8
+	},
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/interior/hydrophonics)
+/area/mining_colony/abandoned/hydro)
 "aBR" = (
 /obj/structure/closet/hydrant{
 	pixel_x = -30
@@ -9887,10 +9868,8 @@
 /turf/simulated/floor/dank/rectangles,
 /area/mining_colony/interior/cargo/logistics)
 "aCx" = (
-/obj/machinery/light{
-	dir = 8
-	},
-/turf/simulated/floor/dank/mono,
+/obj/structure/flora/pottedplant/stoutbush,
+/turf/simulated/floor/dank/maint_left,
 /area/mining_colony/interior/apartament)
 "aCy" = (
 /turf/simulated/floor/dank/maint,
@@ -10781,12 +10760,9 @@
 /turf/simulated/floor/dank/rectangles,
 /area/mining_colony/interior/enginieering/reactor_storage)
 "aFd" = (
-/obj/machinery/light{
-	dir = 4;
-	icon_state = "tube_map"
-	},
+/obj/effect/wallframe_spawn/reinforced,
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/interior/apartament)
+/area/mining_colony)
 "aFe" = (
 /obj/machinery/light{
 	dir = 8
@@ -10865,11 +10841,11 @@
 /turf/simulated/floor/tiled/white/monotile,
 /area/mining_colony/interior/science/scienceoffices)
 "aFo" = (
+/obj/machinery/portable_atmospherics/hydroponics,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/machinery/botany,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/abandoned/hydro)
 "aFp" = (
@@ -11631,9 +11607,17 @@
 /turf/simulated/floor/tiled/white/monotile,
 /area/mining_colony/interior/science)
 "aHx" = (
-/obj/machinery/vending/snack,
+/obj/structure/table/standard,
+/obj/item/weapon/paper_bin,
+/obj/item/weapon/pen/multi,
+/obj/effect/floor_decal/corner/grey{
+	dir = 5
+	},
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/white/monotile,
-/area/mining_colony/interior/science)
+/area/mining_colony/interior/science/scienceoffices)
 "aHy" = (
 /obj/structure/closet/secure_closet/xenoarchaeologist,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -11646,11 +11630,15 @@
 /turf/simulated/floor/tiled/dark,
 /area/mining_colony/interior/science/xenostorage)
 "aHA" = (
-/obj/machinery/botany,
+/obj/machinery/portable_atmospherics/hydroponics,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/light,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/abandoned/hydro)
+/area/mining_colony/interior/hydrophonics)
 "aHB" = (
 /obj/machinery/power/apc{
 	dir = 4;
@@ -12295,13 +12283,16 @@
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/abandoned/hydro)
 "aJk" = (
-/obj/machinery/botany,
+/obj/machinery/portable_atmospherics/hydroponics,
+/obj/machinery/light/small,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/light{
-	dir = 8
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
 	},
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/abandoned/hydro)
+/area/mining_colony/interior/hydrophonics)
 "aJl" = (
 /obj/machinery/firealarm{
 	dir = 4;
@@ -12425,10 +12416,10 @@
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/enginieering/engi_lockers)
 "aJD" = (
-/obj/structure/table/rack,
-/obj/effect/floor_decal/dank/outline,
-/turf/simulated/floor/dank/mono,
-/area/mining_colony/interior/enginieering/storage)
+/obj/structure/table/steel_reinforced,
+/obj/item/weapon/tool_modification/reinforcement/stick,
+/turf/simulated/floor/dank/grater,
+/area/mining_colony)
 "aJE" = (
 /obj/effect/landmark/start{
 	name = "Planet Cracker"
@@ -13603,13 +13594,12 @@
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/excavation/interior)
 "aMG" = (
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/turf/simulated/floor/dank/golf_brown,
-/area/mining_colony/interior/mining/foremanoffice)
+/obj/structure/table/rack,
+/obj/random/loot/usually/many,
+/obj/random/loot/rarely/some,
+/obj/machinery/light,
+/turf/simulated/floor/tiled/dark,
+/area/mining_colony/interior/science/xenostorage)
 "aMH" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -13788,11 +13778,9 @@
 /turf/simulated/floor/dank/slides,
 /area/mining_colony/interior/shuttle_bay)
 "aNc" = (
-/obj/machinery/light{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/dark,
-/area/mining_colony/interior)
+/obj/structure/wall_frame,
+/turf/simulated/floor/plating,
+/area/mining_colony)
 "aNd" = (
 /obj/effect/landmark/node_room,
 /turf/simulated/floor/wood,
@@ -14015,7 +14003,7 @@
 "aNK" = (
 /obj/structure/sign/warning,
 /turf/simulated/wall/r_wall,
-/area/mining_colony/security)
+/area/mining_colony/security/sec_armory)
 "aNL" = (
 /obj/machinery/vending/coffee{
 	prices = newlist()
@@ -14143,13 +14131,10 @@
 /turf/simulated/floor/dank/golf_gray,
 /area/mining_colony/abandoned/hydro)
 "aOc" = (
-/obj/machinery/botany,
+/obj/machinery/portable_atmospherics/hydroponics,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/effect/decal/cleanable/cobweb{
-	dir = 8
-	},
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/abandoned/hydro)
+/area/mining_colony/interior/hydrophonics)
 "aOd" = (
 /obj/machinery/power/apc/critical{
 	dir = 1;
@@ -14184,6 +14169,7 @@
 	name = "north bump";
 	pixel_y = 24
 	},
+/obj/item/stack/package_wrap/twenty_five,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/abandoned/mining_prep/storage)
 "aOi" = (
@@ -14612,14 +14598,12 @@
 	},
 /area/mining_colony/interior/shuttle_bay/shuttle_1)
 "aPp" = (
-/obj/effect/wallframe_spawn/reinforced,
-/obj/machinery/door/blast/regular/open{
-	icon_state = "pdoor0";
-	id = "evac_1";
-	name = "Evac Shuttle 1 Blast Door"
+/obj/machinery/light{
+	dir = 1;
+	icon_state = "tube_map"
 	},
-/turf/simulated/floor/dank/mono,
-/area/mining_colony/interior/shuttle_bay/shuttle_1)
+/turf/simulated/floor/dank/golf_brown,
+/area/mining_colony)
 "aPq" = (
 /turf/simulated/shuttle/wall{
 	dir = 5;
@@ -14654,14 +14638,11 @@
 	},
 /area/mining_colony/interior/shuttle_bay/shuttle_2)
 "aPv" = (
-/obj/effect/wallframe_spawn/reinforced,
-/obj/machinery/door/blast/regular/open{
-	icon_state = "pdoor0";
-	id = "evac_2";
-	name = "Evac Shuttle 2 Blast Door"
+/obj/machinery/floodlight/on{
+	anchored = 1
 	},
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/interior/shuttle_bay/shuttle_2)
+/area/mining_colony)
 "aPw" = (
 /turf/simulated/shuttle/wall{
 	dir = 5;
@@ -14885,9 +14866,10 @@
 /turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony)
 "aQf" = (
-/obj/machinery/botany,
-/turf/simulated/floor/dank/grater,
-/area/mining_colony)
+/obj/machinery/portable_atmospherics/hydroponics,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/tiled/dark,
+/area/mining_colony/interior/hydrophonics)
 "aQg" = (
 /obj/item/weapon/fossil/bone,
 /turf/simulated/floor/asteroid/outside_ds,
@@ -16378,21 +16360,12 @@
 /turf/simulated/floor/tiled/white,
 /area/mining_colony/interior/science)
 "aTN" = (
-/obj/item/weapon/stamp/science,
-/obj/item/weapon/stamp/denied,
-/obj/structure/table/reinforced,
-/obj/item/weapon/clipboard,
-/obj/effect/floor_decal/corner/grey/border{
-	dir = 1;
-	icon_state = "bordercolor"
+/obj/effect/floor_decal/industrial/outline,
+/obj/machinery/light{
+	dir = 8
 	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled/white,
-/area/mining_colony/interior/science)
+/turf/simulated/floor/tiled/dark,
+/area/mining_colony/interior/science/xenostorage)
 "aTO" = (
 /obj/effect/floor_decal/corner/grey/three_quarters{
 	dir = 1
@@ -16469,6 +16442,11 @@
 	d1 = 2;
 	d2 = 8;
 	icon_state = "2-8"
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/white,
 /area/mining_colony/interior/science/scienceoffices)
@@ -16894,21 +16872,12 @@
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/enginieering/main_room)
 "aUQ" = (
-/obj/machinery/door/airlock/civilian{
-	dir = 4;
-	name = "Janitor Room";
-	req_access = list(26)
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/door/firedoor{
-	dir = 4
+/obj/machinery/store,
+/obj/machinery/light{
+	dir = 8
 	},
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/interior/janitor)
+/area/mining_colony/interior/apartament)
 "aUR" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -17749,9 +17718,9 @@
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/abandoned/mining_prep)
 "aWM" = (
-/obj/structure/closet/secure_closet/engineering_electrical,
+/obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/interior/enginieering/airlock)
+/area/mining_colony)
 "aWN" = (
 /obj/structure/table/woodentable,
 /obj/item/weapon/flame/candle,
@@ -18223,8 +18192,8 @@
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/abandoned/mining_prep)
 "aYp" = (
-/obj/effect/decal/remains,
-/turf/simulated/floor/asteroid/outside_ds,
+/obj/random/rare_loot/usually,
+/turf/simulated/floor/tiled/dark,
 /area/mining_colony)
 "aYq" = (
 /obj/structure/table/reinforced,
@@ -18369,6 +18338,14 @@
 	},
 /turf/simulated/floor/carpet/blue2,
 /area/mining_colony/interior/cargo/officerarea)
+"aYN" = (
+/obj/machinery/portable_atmospherics/hydroponics,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/camera/network/crew{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/mining_colony/interior/hydrophonics)
 "aYO" = (
 /obj/structure/sign/deck/ds/orange,
 /turf/simulated/wall/r_wall,
@@ -18547,6 +18524,14 @@
 /obj/machinery/light,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/abandoned/mining_prep/electronics)
+"aZm" = (
+/obj/machinery/portable_atmospherics/hydroponics,
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/interior/kitchen_area)
 "aZn" = (
 /obj/machinery/door/airlock/mining{
 	dir = 4;
@@ -18936,6 +18921,11 @@
 	},
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/shuttle_bay/control_room)
+"bag" = (
+/obj/machinery/portable_atmospherics/hydroponics,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/interior/kitchen_area)
 "bah" = (
 /obj/structure/table/rack/dark,
 /obj/item/weapon/shield/riot,
@@ -19879,6 +19869,7 @@
 	d2 = 2;
 	icon_state = "0-2"
 	},
+/obj/item/stack/package_wrap/twenty_five,
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/interior/cargo/storage_upper)
 "bbS" = (
@@ -19949,6 +19940,14 @@
 	dir = 8
 	},
 /area/mining_colony/security)
+"bbZ" = (
+/obj/machinery/store,
+/obj/machinery/light{
+	dir = 4;
+	icon_state = "tube_map"
+	},
+/turf/simulated/floor/dank/mono,
+/area/mining_colony/interior/apartament)
 "bca" = (
 /obj/machinery/door/airlock/cargo{
 	dir = 4;
@@ -20014,8 +20013,10 @@
 /turf/simulated/floor/tiled/freezer,
 /area/mining_colony/interior/bathroom)
 "bch" = (
-/obj/random/junk,
-/obj/machinery/light,
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/structure/flora/pottedplant/stoutbush,
 /turf/simulated/floor/tiled/dark,
 /area/mining_colony/interior)
 "bci" = (
@@ -20230,26 +20231,18 @@
 /turf/simulated/floor/tiled/dark,
 /area/mining_colony/interior/hydrophonics)
 "bcD" = (
-/obj/machinery/botany,
-/obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/interior/hydrophonics)
+/area/mining_colony/interior)
 "bcE" = (
-/obj/machinery/botany,
-/obj/machinery/light/small,
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
+/obj/machinery/light,
+/obj/structure/flora/pottedplant/stoutbush,
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/interior/hydrophonics)
+/area/mining_colony/interior)
 "bcF" = (
 /obj/structure/table/reinforced,
 /obj/random/loot/usually/few,
@@ -21802,6 +21795,9 @@
 /obj/item/weapon/storage/briefcase/inflatable,
 /turf/simulated/floor/dank/slides,
 /area/mining_colony/interior/enginieering/main_room)
+"bfD" = (
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/interior)
 "bfE" = (
 /obj/structure/table/steel,
 /obj/item/weapon/book/manual/engineering_construction,
@@ -22166,6 +22162,12 @@
 	},
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/security/sec_firingrange)
+"bgu" = (
+/obj/random/junk,
+/obj/machinery/light,
+/obj/structure/flora/pottedplant/stoutbush,
+/turf/simulated/floor/dank/mono,
+/area/mining_colony/interior)
 "bgv" = (
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/security/sec_firingrange)
@@ -22490,7 +22492,7 @@
 /area/mining_colony/interior/medbay)
 "bhh" = (
 /obj/effect/wallframe_spawn/reinforced/polarized{
-	id = "psychologist_office"
+	id = "smo_office"
 	},
 /obj/machinery/door/blast/shutters/open{
 	dir = 4;
@@ -22580,10 +22582,11 @@
 /turf/simulated/floor/tiled/monotile,
 /area/mining_colony/interior/science/xenoarcheology)
 "bhp" = (
-/obj/structure/closet/medical_wall/filled{
-	pixel_y = 32
+/obj/machinery/light{
+	dir = 8
 	},
-/turf/simulated/floor/tiled/dark,
+/obj/structure/flora/pottedplant/stoutbush,
+/turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/plaza)
 "bhq" = (
 /obj/structure/bed/chair{
@@ -22897,7 +22900,7 @@
 	pixel_x = 24
 	},
 /obj/machinery/button/windowtint{
-	id = "psycholigst_office";
+	id = "smo_office";
 	pixel_x = 24;
 	pixel_y = -3
 	},
@@ -23013,6 +23016,13 @@
 /obj/random/maintenance/clean,
 /turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony)
+"bin" = (
+/obj/structure/closet/medical_wall/filled{
+	pixel_y = 32
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/dark,
+/area/mining_colony/interior/plaza)
 "bio" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/weapon/reagent_containers/food/drinks/bottle/cola,
@@ -23446,6 +23456,10 @@
 	},
 /turf/simulated/floor/dank/hardwood,
 /area/mining_colony/interior/enginieering/chief_engi)
+"bjA" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/dark,
+/area/mining_colony/interior/plaza)
 "bjB" = (
 /obj/machinery/power/smes/buildable/preset/torch/substation_full,
 /obj/effect/engine_setup/smes,
@@ -23517,6 +23531,13 @@
 	},
 /turf/simulated/floor/dank/hardwood,
 /area/mining_colony/interior/enginieering/chief_engi)
+"bjK" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/structure/flora/pottedplant/stoutbush,
+/turf/simulated/floor/dank/mono,
+/area/mining_colony/interior/plaza)
 "bjL" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -23875,13 +23896,11 @@
 /turf/simulated/floor/wood,
 /area/mining_colony/abandoned/mining_prep/dormitories)
 "bkM" = (
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/effect/floor_decal/dank/outline_striped,
-/obj/structure/closet/secure_closet/personal/empty,
-/turf/simulated/floor/wood,
-/area/mining_colony/abandoned/mining_prep/dormitories)
+/obj/structure/table/steel_reinforced,
+/obj/item/weapon/tool/crowbar,
+/obj/item/weapon/tool/screwdriver,
+/turf/simulated/floor/dank/grater,
+/area/mining_colony)
 "bkN" = (
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/dank/golf_brown,
@@ -24005,6 +24024,15 @@
 /obj/item/device/lightreplacer,
 /turf/simulated/floor/plating,
 /area/mining_colony/interior/janitor)
+"bll" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/dark,
+/area/mining_colony/interior/plaza)
 "blm" = (
 /obj/structure/janitorialcart,
 /obj/item/weapon/reagent_containers/glass/bucket,
@@ -24190,12 +24218,11 @@
 /turf/simulated/floor/dank/maint,
 /area/mining_colony/security)
 "blM" = (
-/obj/structure/table/rack,
-/obj/random/loot/usually/few,
-/obj/random/loot/usually/few,
-/obj/effect/floor_decal/dank/outline,
-/turf/simulated/floor/dank/heavy,
-/area/mining_colony/interior/apartament)
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/dank/mono,
+/area/mining_colony/interior)
 "blN" = (
 /obj/structure/table/rack,
 /obj/random/loot/usually/many,
@@ -24221,11 +24248,11 @@
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/apartament)
 "blQ" = (
-/obj/structure/table/rack,
-/obj/random/loot/usually/many,
-/obj/effect/floor_decal/dank/outline,
-/turf/simulated/floor/dank/heavy,
-/area/mining_colony/interior/apartament)
+/obj/structure/table/steel_reinforced,
+/obj/item/clothing/head/welding/engie,
+/obj/item/weapon/tool/weldingtool,
+/turf/simulated/floor/dank/grater,
+/area/mining_colony)
 "blR" = (
 /obj/machinery/vending/hydroseeds,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -24288,6 +24315,14 @@
 	},
 /turf/simulated/floor/plating,
 /area/mining_colony/interior/maint)
+"blZ" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/dank/mono,
+/area/mining_colony/interior)
 "bma" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -24382,6 +24417,12 @@
 	dir = 4
 	},
 /area/mining_colony/security/sec_firingrange)
+"bml" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/dank/mono,
+/area/mining_colony/interior)
 "bmm" = (
 /obj/machinery/door/airlock/civilian{
 	dir = 4;
@@ -24579,6 +24620,10 @@
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/infirmary)
+"bmK" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/monotile,
+/area/mining_colony/interior/plaza)
 "bmL" = (
 /obj/structure/bed,
 /turf/simulated/floor/dank/bathr,
@@ -24608,8 +24653,10 @@
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/infirmary)
 "bmP" = (
-/obj/machinery/camera/network/security{
-	dir = 8
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/dank/golf_gray,
 /area/mining_colony/security/interrogation_room)
@@ -24670,11 +24717,6 @@
 	d1 = 1;
 	d2 = 4;
 	icon_state = "1-4"
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
 	},
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/enginieering/reactor)
@@ -25037,13 +25079,12 @@
 /area/mining_colony/interior/plaza)
 "bnT" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
-/obj/random/junk,
-/turf/simulated/floor/tiled/dark,
-/area/mining_colony/interior/plaza)
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/interior)
 "bnU" = (
 /obj/random/junk,
 /turf/simulated/floor/dank/mono,
@@ -25699,13 +25740,18 @@
 /turf/simulated/floor/carpet,
 /area/mining_colony/interior/cargo)
 "bpF" = (
-/obj/machinery/botany,
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/camera/network/crew{
-	dir = 8
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled/dark,
-/area/mining_colony/interior/hydrophonics)
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/interior)
 "bpG" = (
 /turf/simulated/floor,
 /area/mining_colony/interior)
@@ -25762,6 +25808,14 @@
 /obj/effect/decal/cleanable/cobweb2,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/abandoned/storage)
+"bpP" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/interior)
 "bpQ" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -25958,6 +26012,22 @@
 /obj/random/loot/usually/some,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/shuttle_bay/hangar)
+"bqo" = (
+/obj/machinery/door/airlock/civilian{
+	dir = 4;
+	name = "Janitor Room";
+	req_access = list(6)
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
+/turf/simulated/floor/dank/mono,
+/area/mining_colony/interior/janitor)
 "bqp" = (
 /obj/machinery/computer/rdservercontrol,
 /turf/simulated/floor/dank/mono,
@@ -26023,11 +26093,12 @@
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/mining/processing)
 "bqy" = (
-/obj/structure/table/rack,
-/obj/random/loot/usually/few,
-/obj/effect/floor_decal/dank/outline,
-/turf/simulated/floor/dank/heavy,
-/area/mining_colony/interior/apartament)
+/obj/effect/floor_decal/dank/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/dank/border,
+/turf/simulated/floor/dank/mono,
+/area/mining_colony/interior/plaza)
 "bqz" = (
 /obj/structure/table/steel,
 /obj/item/weapon/storage/fancy/cigarettes/carcinomas,
@@ -26291,6 +26362,13 @@
 /obj/effect/shuttle_landmark/deliverance/landing,
 /turf/simulated/floor/plating,
 /area/mining_colony/interior/excavation/hangar)
+"bro" = (
+/obj/effect/floor_decal/dank/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/dank/border,
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/interior/plaza)
 "brp" = (
 /obj/structure/closet/crate,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -26308,12 +26386,21 @@
 /turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony)
 "brr" = (
-/obj/item/clothing/head/det,
-/turf/simulated/floor/asteroid/outside_ds,
+/obj/effect/floor_decal/dank/outline,
+/obj/machinery/light_construct/small{
+	dir = 8
+	},
+/obj/random/closet,
+/turf/simulated/floor/plating,
 /area/mining_colony)
 "brs" = (
-/obj/item/clothing/suit/poncho/colored,
-/turf/simulated/floor/asteroid/outside_ds,
+/obj/effect/floor_decal/dank/outline,
+/obj/machinery/light_construct/small{
+	dir = 4
+	},
+/obj/random/closet,
+/obj/random/maintenance/clean,
+/turf/simulated/floor/plating,
 /area/mining_colony)
 "brt" = (
 /obj/machinery/suspension_gen,
@@ -26346,6 +26433,920 @@
 /obj/random/loot/usually/few,
 /turf/simulated/floor/concrete,
 /area/mining_colony)
+"bry" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/dark,
+/area/mining_colony/interior/plaza)
+"brz" = (
+/obj/random/junk,
+/turf/simulated/floor/dank/mono,
+/area/mining_colony/interior)
+"brA" = (
+/obj/effect/floor_decal/dank/border{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/dark,
+/area/mining_colony/interior/plaza)
+"brB" = (
+/obj/structure/flora/pottedplant/stoutbush,
+/turf/simulated/floor/tiled/monotile,
+/area/mining_colony/interior/plaza)
+"brC" = (
+/obj/structure/railing/mapped,
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/interior/plaza)
+"brD" = (
+/obj/effect/floor_decal/dank/border{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/dark,
+/area/mining_colony/interior/plaza)
+"brE" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/dark,
+/area/mining_colony/interior)
+"brF" = (
+/obj/effect/floor_decal/dank/border{
+	dir = 1
+	},
+/turf/simulated/floor/dank/mono,
+/area/mining_colony/interior/plaza)
+"brG" = (
+/obj/effect/floor_decal/dank/border{
+	dir = 8
+	},
+/turf/simulated/floor/dank/mono,
+/area/mining_colony/interior/plaza)
+"brH" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/structure/flora/pottedplant/stoutbush,
+/turf/simulated/floor/dank/mono,
+/area/mining_colony/interior)
+"brI" = (
+/obj/random/trash,
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/interior)
+"brJ" = (
+/obj/structure/flora/pottedplant/stoutbush,
+/turf/simulated/floor/tiled/dark,
+/area/mining_colony/interior)
+"brK" = (
+/obj/random/trash,
+/obj/structure/flora/pottedplant/stoutbush,
+/turf/simulated/floor/tiled/dark,
+/area/mining_colony/interior)
+"brL" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/dark,
+/area/mining_colony/interior)
+"brM" = (
+/obj/effect/floor_decal/dank/border{
+	dir = 1
+	},
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/interior/plaza)
+"brN" = (
+/obj/effect/floor_decal/dank/border{
+	dir = 8
+	},
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/interior/plaza)
+"brO" = (
+/obj/structure/railing/mapped{
+	dir = 4;
+	icon_state = "railing0"
+	},
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/interior/plaza)
+"brP" = (
+/obj/structure/railing/mapped{
+	dir = 8;
+	pixel_w = 0
+	},
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/interior/plaza)
+"brQ" = (
+/obj/effect/floor_decal/dank/border{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/interior/plaza)
+"brR" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/dank/mono,
+/area/mining_colony/interior)
+"brS" = (
+/obj/effect/floor_decal/dank/border{
+	dir = 8
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/dark,
+/area/mining_colony/interior/plaza)
+"brT" = (
+/obj/effect/floor_decal/dank/border{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/dank/mono,
+/area/mining_colony/interior/plaza)
+"brU" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/dark,
+/area/mining_colony/interior)
+"brV" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/dank/mono,
+/area/mining_colony/interior)
+"brW" = (
+/obj/structure/railing/mapped{
+	dir = 1
+	},
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/interior/plaza)
+"brX" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/dank/mono,
+/area/mining_colony/interior/plaza)
+"brY" = (
+/obj/effect/floor_decal/dank/border,
+/obj/effect/floor_decal/dank/border{
+	dir = 4
+	},
+/turf/simulated/floor/dank/mono,
+/area/mining_colony/interior/plaza)
+"brZ" = (
+/obj/effect/floor_decal/dank/border,
+/obj/effect/floor_decal/dank/border{
+	dir = 4
+	},
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/interior/plaza)
+"bsa" = (
+/obj/effect/floor_decal/dank/border,
+/obj/effect/floor_decal/dank/border_corner_i{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/dark,
+/area/mining_colony/interior/plaza)
+"bsb" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/dark,
+/area/mining_colony/interior)
+"bsc" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/random/junk,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/dark,
+/area/mining_colony/interior/plaza)
+"bsd" = (
+/obj/structure/railing/mapped{
+	dir = 4;
+	icon_state = "railing0"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/dank/mono,
+/area/mining_colony/interior)
+"bse" = (
+/obj/structure/flora/pottedplant/stoutbush,
+/turf/simulated/floor/dank/mono,
+/area/mining_colony/interior/plaza)
+"bsf" = (
+/mob/living/simple_animal/mouse,
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/abandoned/mining_prep)
+"bsg" = (
+/mob/living/simple_animal/mouse,
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/abandoned/mining_prep/hallway_zone)
+"bsh" = (
+/turf/simulated/shuttle/wall{
+	dir = 8;
+	icon_state = "diagonalWall3"
+	},
+/area/mining_colony/interior/shuttle_bay/shuttle_3)
+"bsi" = (
+/turf/simulated/shuttle/wall{
+	dir = 1;
+	icon_state = "wall3"
+	},
+/area/mining_colony/interior/shuttle_bay/shuttle_3)
+"bsj" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/external{
+	name = "Scrapper Shuttle Entrace"
+	},
+/turf/simulated/floor/dank/mono,
+/area/mining_colony/interior/shuttle_bay/shuttle_3)
+"bsk" = (
+/turf/simulated/floor/dank/golf_brown,
+/area/mining_colony)
+"bsl" = (
+/turf/simulated/shuttle/wall{
+	dir = 5;
+	icon_state = "wall3"
+	},
+/area/mining_colony/interior/shuttle_bay/shuttle_3)
+"bsm" = (
+/obj/structure/shuttle/engine/propulsion{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/mining_colony/interior/shuttle_bay/shuttle_3)
+"bsn" = (
+/obj/structure/bed/chair/tram,
+/obj/effect/floor_decal/dank/outline,
+/turf/simulated/floor/dank/grater,
+/area/mining_colony)
+"bso" = (
+/turf/simulated/wall/tram,
+/area/mining_colony)
+"bsp" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/mining_colony/interior/shuttle_bay/shuttle_3)
+"bsq" = (
+/obj/effect/floor_decal/dank/outline,
+/obj/random/closet,
+/turf/simulated/floor/dank/golf_brown,
+/area/mining_colony/interior/shuttle_bay/shuttle_3)
+"bsr" = (
+/obj/structure/closet/walllocker/emerglocker/north,
+/turf/simulated/floor/dank/golf_brown,
+/area/mining_colony/interior/shuttle_bay/shuttle_3)
+"bss" = (
+/mob/living/simple_animal/mouse,
+/turf/simulated/floor/plating,
+/area/mining_colony/interior/apartament)
+"bst" = (
+/mob/living/simple_animal/lizard,
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/interior/enginieering/smes)
+"bsu" = (
+/mob/living/simple_animal/mouse,
+/turf/simulated/floor/tiled/dark,
+/area/mining_colony/interior)
+"bsv" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/dank/slides,
+/area/mining_colony/interior/excavation/interior)
+"bsw" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/dank/slides{
+	dir = 1
+	},
+/area/mining_colony/interior/excavation/interior)
+"bsx" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/dank/golf_brown,
+/area/mining_colony/interior/excavation/interior)
+"bsy" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/interior/excavation/interior)
+"bsz" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4;
+	icon_state = "warning"
+	},
+/obj/structure/railing/mapped{
+	dir = 4;
+	pixel_w = -5
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/dank/slides,
+/area/mining_colony/interior/excavation/interior)
+"bsA" = (
+/mob/living/simple_animal/mouse,
+/turf/simulated/floor/dank/rectangles,
+/area/mining_colony/interior/kitchen_area)
+"bsB" = (
+/mob/living/simple_animal/mouse,
+/turf/simulated/floor/dank/medical,
+/area/mining_colony/interior/medbay/med_ward)
+"bsC" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/dank/golf_brown,
+/area/mining_colony/interior/shuttle_bay/shuttle_3)
+"bsD" = (
+/turf/simulated/floor/dank/golf_brown,
+/area/mining_colony/interior/shuttle_bay/shuttle_3)
+"bsE" = (
+/obj/structure/bed/chair/shuttle/black,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/turf/simulated/floor/dank/golf_brown,
+/area/mining_colony/interior/shuttle_bay/shuttle_3)
+"bsF" = (
+/obj/structure/bed/chair/shuttle/black,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/dank/golf_brown,
+/area/mining_colony/interior/shuttle_bay/shuttle_3)
+"bsG" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/dank/grater,
+/area/mining_colony)
+"bsH" = (
+/obj/structure/bed/chair/shuttle/black,
+/turf/simulated/floor/dank/golf_brown,
+/area/mining_colony/interior/shuttle_bay/shuttle_3)
+"bsI" = (
+/obj/structure/table/steel,
+/turf/simulated/floor/dank/golf_brown,
+/area/mining_colony)
+"bsJ" = (
+/obj/structure/closet/walllocker/emerglocker/north,
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/interior/shuttle_bay/shuttle_3)
+"bsK" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/interior/shuttle_bay/shuttle_3)
+"bsL" = (
+/obj/structure/table/steel_reinforced,
+/turf/simulated/floor/dank/maint{
+	dir = 4
+	},
+/area/mining_colony/interior/shuttle_bay/shuttle_3)
+"bsM" = (
+/obj/structure/closet/medical_wall/filled{
+	pixel_y = 32
+	},
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/interior/shuttle_bay/shuttle_3)
+"bsN" = (
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/interior/shuttle_bay/shuttle_3)
+"bsO" = (
+/obj/structure/table/steel_reinforced,
+/obj/random/material,
+/obj/random/material,
+/turf/simulated/floor/dank/grater,
+/area/mining_colony)
+"bsP" = (
+/obj/effect/floor_decal/dank/outline,
+/turf/simulated/floor/dank/grater,
+/area/mining_colony)
+"bsQ" = (
+/obj/structure/table/workbench,
+/turf/simulated/floor/dank/grater,
+/area/mining_colony)
+"bsR" = (
+/obj/structure/computerframe,
+/turf/simulated/floor/plating,
+/area/mining_colony)
+"bsS" = (
+/obj/machinery/door/airlock/hatch{
+	dir = 8
+	},
+/turf/simulated/floor/dank/mono,
+/area/mining_colony/interior/shuttle_bay/shuttle_3)
+"bsT" = (
+/obj/structure/bed/chair/tram{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/mining_colony)
+"bsU" = (
+/turf/simulated/floor/dank/maint{
+	dir = 4
+	},
+/area/mining_colony/interior/shuttle_bay/shuttle_3)
+"bsV" = (
+/obj/structure/girder,
+/turf/simulated/floor/plating,
+/area/mining_colony)
+"bsW" = (
+/obj/structure/girder/displaced,
+/turf/simulated/floor/plating,
+/area/mining_colony)
+"bsX" = (
+/obj/effect/wallframe_spawn/reinforced,
+/obj/machinery/door/blast/regular/open{
+	icon_state = "pdoor0";
+	id = "evac_1";
+	name = "Evac Shuttle 1 Blast Door"
+	},
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/dank/mono,
+/area/mining_colony/interior/shuttle_bay/shuttle_1)
+"bsY" = (
+/obj/effect/wallframe_spawn/reinforced,
+/obj/machinery/door/blast/regular/open{
+	icon_state = "pdoor0";
+	id = "evac_2";
+	name = "Evac Shuttle 2 Blast Door"
+	},
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/dank/mono,
+/area/mining_colony/interior/shuttle_bay/shuttle_2)
+"bsZ" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/weapon/tool/repairkit,
+/turf/simulated/floor/dank/grater,
+/area/mining_colony)
+"bta" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/weapon/tool/wirecutters,
+/turf/simulated/floor/dank/grater,
+/area/mining_colony)
+"btb" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/weapon/tool/saw/circular,
+/turf/simulated/floor/dank/grater,
+/area/mining_colony)
+"btc" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/weapon/tool/tape_roll,
+/turf/simulated/floor/dank/grater,
+/area/mining_colony)
+"btd" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/weapon/tool/wrench,
+/turf/simulated/floor/dank/grater,
+/area/mining_colony)
+"bte" = (
+/obj/structure/table/rack,
+/obj/effect/floor_decal/dank/outline,
+/obj/item/weapon/tool/repairkit,
+/turf/simulated/floor/dank/mono,
+/area/mining_colony/interior/enginieering/storage)
+"btf" = (
+/obj/structure/table/rack,
+/obj/effect/floor_decal/dank/outline,
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/item/clothing/under/color/pink,
+/obj/item/clothing/under/color/red,
+/obj/item/clothing/under/color/yellow,
+/obj/item/clothing/under/color/green,
+/obj/item/clothing/under/casual_pants/mustangjeans,
+/turf/simulated/floor/dank/heavy,
+/area/mining_colony/interior/apartament)
+"btg" = (
+/obj/structure/table/rack,
+/obj/effect/floor_decal/dank/outline,
+/obj/item/clothing/under/lawyer/oldman,
+/obj/item/clothing/under/lawyer/bluesuit,
+/obj/item/clothing/under/lawyer/black,
+/turf/simulated/floor/dank/heavy,
+/area/mining_colony/interior/apartament)
+"bth" = (
+/obj/structure/closet/secure_closet/engineering_chief,
+/obj/item/modular_computer/tablet/lease/preset/command,
+/obj/item/device/megaphone,
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/item/clothing/head/welding/demon,
+/turf/simulated/floor/dank/mono,
+/area/mining_colony/interior/enginieering/chief_engi)
+"bti" = (
+/obj/structure/table/rack,
+/obj/random/loot/usually/many,
+/obj/effect/floor_decal/dank/outline,
+/obj/item/clothing/head/hairflower/pink,
+/obj/item/clothing/head/hairflower,
+/obj/item/clothing/head/hairflower/blue,
+/obj/item/clothing/head/hairflower/yellow,
+/obj/item/clothing/suit/storage/hazardvest/blue,
+/obj/item/clothing/suit/storage/hazardvest/green,
+/obj/item/clothing/suit/storage/hazardvest/white,
+/obj/item/clothing/under/serviceoveralls,
+/obj/item/clothing/shoes/flats,
+/obj/item/clothing/shoes/leather,
+/turf/simulated/floor/dank/heavy,
+/area/mining_colony/interior/apartament)
+"btj" = (
+/obj/structure/table/rack,
+/obj/effect/floor_decal/dank/outline,
+/obj/item/clothing/head/beret/plaincolor{
+	color = "green"
+	},
+/obj/item/clothing/head/beret/plaincolor{
+	color = "yellow"
+	},
+/obj/item/clothing/head/beret/plaincolor{
+	color = "purple"
+	},
+/obj/item/clothing/head/beret/plaincolor{
+	color = "blue"
+	},
+/obj/item/clothing/head/bandana/orange,
+/turf/simulated/floor/dank/heavy,
+/area/mining_colony/interior/apartament)
+"btk" = (
+/obj/structure/table/rack,
+/obj/effect/floor_decal/dank/outline,
+/obj/item/weapon/tool/tape_roll,
+/obj/item/weapon/tool/tape_roll,
+/obj/item/weapon/tool/tape_roll,
+/turf/simulated/floor/dank/mono,
+/area/mining_colony/interior/enginieering/storage)
+"btl" = (
+/obj/structure/bed/chair/shuttle/black{
+	dir = 4;
+	icon_state = "shuttle_chair_preview"
+	},
+/turf/simulated/floor/dank/maint{
+	dir = 4
+	},
+/area/mining_colony/interior/shuttle_bay/shuttle_3)
+"btm" = (
+/obj/structure/table/steel_reinforced,
+/obj/machinery/button/remote/blast_door{
+	dir = 8;
+	id = "scrapper";
+	name = "Scrapper Shutters Control"
+	},
+/turf/simulated/floor/dank/maint{
+	dir = 4
+	},
+/area/mining_colony/interior/shuttle_bay/shuttle_3)
+"btn" = (
+/obj/effect/wallframe_spawn/reinforced,
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
+/obj/machinery/door/blast/regular/open{
+	dir = 4;
+	icon_state = "pdoor0";
+	id = "scrapper";
+	name = "Scrapper Shutters"
+	},
+/turf/simulated/floor/dank/mono,
+/area/mining_colony/interior/shuttle_bay/shuttle_3)
+"bto" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/effect/floor_decal/dank/outline,
+/obj/random/closet,
+/turf/simulated/floor/dank/golf_brown,
+/area/mining_colony/interior/shuttle_bay/shuttle_3)
+"btp" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/dank/golf_brown,
+/area/mining_colony/interior/shuttle_bay/shuttle_3)
+"btq" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/turf/simulated/floor/dank/golf_brown,
+/area/mining_colony/interior/shuttle_bay/shuttle_3)
+"btr" = (
+/obj/machinery/light{
+	dir = 4;
+	icon_state = "tube_map"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/dank/golf_brown,
+/area/mining_colony/interior/shuttle_bay/shuttle_3)
+"bts" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/dank/maint{
+	dir = 4
+	},
+/area/mining_colony/interior/shuttle_bay/shuttle_3)
+"btt" = (
+/obj/structure/closet/walllocker/emerglocker/south,
+/turf/simulated/floor/dank/maint_left,
+/area/mining_colony/interior/shuttle_bay/shuttle_1)
+"btu" = (
+/obj/structure/closet/walllocker/emerglocker/south,
+/turf/simulated/floor/dank/maint_right,
+/area/mining_colony/interior/shuttle_bay/shuttle_1)
+"btv" = (
+/obj/structure/closet/walllocker/emerglocker/south,
+/turf/simulated/floor/dank/maint_left,
+/area/mining_colony/interior/shuttle_bay/shuttle_2)
+"btw" = (
+/obj/structure/closet/walllocker/emerglocker/south,
+/turf/simulated/floor/dank/maint_right,
+/area/mining_colony/interior/shuttle_bay/shuttle_2)
+"btx" = (
+/obj/structure/bed/chair/office{
+	dir = 4;
+	icon_state = "officechair_preview"
+	},
+/turf/simulated/floor/dank/golf_brown,
+/area/mining_colony)
+"bty" = (
+/obj/structure/table/steel,
+/obj/random/snack,
+/turf/simulated/floor/dank/golf_brown,
+/area/mining_colony)
+"btz" = (
+/obj/structure/table/steel,
+/obj/random/smokes,
+/turf/simulated/floor/dank/golf_brown,
+/area/mining_colony)
+"btA" = (
+/obj/structure/table/steel_reinforced,
+/obj/random/material,
+/turf/simulated/floor/dank/grater,
+/area/mining_colony)
+"btB" = (
+/obj/structure/largecrate/ds/green_horizontal,
+/obj/random/rare_loot/rarely,
+/turf/simulated/floor/asteroid/outside_ds,
+/area/mining_colony)
+"btC" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/simulated/floor/dank/grater,
+/area/mining_colony)
+"btD" = (
+/obj/machinery/door/airlock/civilian/tram{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/mining_colony)
+"btE" = (
+/obj/effect/floor_decal/dank/outline,
+/obj/random/closet,
+/obj/random/maintenance/clean,
+/turf/simulated/floor/plating,
+/area/mining_colony)
+"btF" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/plating,
+/area/mining_colony)
+"btG" = (
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/simulated/floor/dank/mono,
+/area/mining_colony)
+"btH" = (
+/obj/structure/reagent_dispensers/fueltank,
+/obj/effect/floor_decal/dank/outline,
+/turf/simulated/floor/plating,
+/area/mining_colony)
+"btI" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/simulated/floor/plating,
+/area/mining_colony)
+"btJ" = (
+/obj/machinery/door/airlock/civilian/tram,
+/turf/simulated/floor/plating,
+/area/mining_colony)
+"btK" = (
+/obj/random/rare_loot/sometimes,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/plating,
+/area/mining_colony)
+"btL" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/simulated/floor/dank/mono,
+/area/mining_colony)
+"btM" = (
+/obj/structure/bed/chair/shuttle/black{
+	dir = 4;
+	icon_state = "shuttle_chair_preview"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/dank/maint{
+	dir = 4
+	},
+/area/mining_colony/interior/shuttle_bay/shuttle_3)
+"btN" = (
+/obj/structure/closet/walllocker/emerglocker/south,
+/turf/simulated/floor/dank/golf_brown,
+/area/mining_colony/interior/shuttle_bay/shuttle_3)
+"btO" = (
+/obj/structure/bed/chair/shuttle/black{
+	dir = 1;
+	icon_state = "shuttle_chair_preview"
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/turf/simulated/floor/dank/golf_brown,
+/area/mining_colony/interior/shuttle_bay/shuttle_3)
+"btP" = (
+/obj/structure/bed/chair/shuttle/black{
+	dir = 1;
+	icon_state = "shuttle_chair_preview"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/dank/golf_brown,
+/area/mining_colony/interior/shuttle_bay/shuttle_3)
+"btQ" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/simulated/floor/dank/mono,
+/area/mining_colony/interior/enginieering/airlock)
+"btR" = (
+/obj/machinery/door/airlock/civilian{
+	name = "Scrapping Observation"
+	},
+/turf/simulated/floor/dank/mono,
+/area/mining_colony)
+"btS" = (
+/obj/machinery/light{
+	dir = 1;
+	icon_state = "tube_map"
+	},
+/obj/structure/filingcabinet,
+/turf/simulated/floor/dank/golf_brown,
+/area/mining_colony)
+"btT" = (
+/obj/machinery/computer{
+	dir = 1
+	},
+/turf/simulated/floor/dank/golf_brown,
+/area/mining_colony)
+"btU" = (
+/obj/item/toy/balloon{
+	desc = "FUK CEC!11!"
+	},
+/turf/simulated/floor/asteroid/outside_ds,
+/area/mining_colony)
+"btV" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/tape/engineering,
+/turf/simulated/floor/dank/grater,
+/area/mining_colony)
+"btW" = (
+/obj/effect/floor_decal/corner/grey{
+	dir = 10
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/white,
+/area/mining_colony/interior/science/scienceoffices)
+"btX" = (
+/obj/machinery/light_construct/small{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/mining_colony)
+"btY" = (
+/obj/item/toy/plushie/spider,
+/turf/simulated/floor/plating,
+/area/mining_colony)
+"btZ" = (
+/obj/random/loot/sometimes/many,
+/turf/simulated/floor/plating,
+/area/mining_colony)
+"bua" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/random/loot/sometimes/some,
+/turf/simulated/floor/plating,
+/area/mining_colony)
+"bub" = (
+/obj/structure/largecrate/ds/green_horizontal,
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/interior/shuttle_bay/hangar)
+"buc" = (
+/obj/random/ammo,
+/obj/structure/largecrate/ds/green_horizontal,
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/interior/shuttle_bay/hangar)
+"bud" = (
+/obj/structure/bed/chair/shuttle/black{
+	dir = 1;
+	icon_state = "shuttle_chair_preview"
+	},
+/turf/simulated/floor/dank/golf_brown,
+/area/mining_colony/interior/shuttle_bay/shuttle_3)
+"bue" = (
+/obj/effect/shuttle_landmark/escape3/start,
+/turf/simulated/shuttle/wall{
+	icon_state = "diagonalWall3"
+	},
+/area/mining_colony/interior/shuttle_bay/shuttle_3)
+"buf" = (
+/turf/simulated/shuttle/wall{
+	dir = 4;
+	icon_state = "diagonalWall3"
+	},
+/area/mining_colony/interior/shuttle_bay/shuttle_3)
+"bug" = (
+/obj/item/weapon/stamp/science,
+/obj/item/weapon/stamp/denied,
+/obj/structure/table/reinforced,
+/obj/item/weapon/clipboard,
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 1;
+	icon_state = "bordercolor"
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/mining_colony/interior/science)
+"buh" = (
+/obj/machinery/light/small{
+	dir = 4;
+	icon_state = "bulb1"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/mining_colony/interior/science/xenoarcheology)
+"bui" = (
+/obj/machinery/store,
+/turf/simulated/floor/tiled/white/monotile,
+/area/mining_colony/interior/science)
+"buj" = (
+/obj/machinery/vending/hotfood,
+/turf/simulated/floor/tiled/dark,
+/area/mining_colony/interior)
+"buk" = (
+/obj/machinery/vending/cola,
+/turf/simulated/floor/tiled/dark,
+/area/mining_colony/interior)
+"bul" = (
+/obj/machinery/vending/coffee,
+/turf/simulated/floor/tiled/dark,
+/area/mining_colony/interior)
+"bum" = (
+/obj/machinery/light{
+	dir = 4;
+	icon_state = "tube_map"
+	},
+/turf/simulated/floor/dank/golf_brown,
+/area/mining_colony/interior/mining)
+"bun" = (
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/obj/machinery/light{
+	dir = 4;
+	icon_state = "tube_map"
+	},
+/turf/simulated/floor/dank/hardwood,
+/area/mining_colony/interior/mining/directoroffice)
+"buo" = (
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/obj/machinery/light{
+	dir = 4;
+	icon_state = "tube_map"
+	},
+/turf/simulated/floor/dank/golf_brown,
+/area/mining_colony/interior/mining/foremanoffice)
 "bCF" = (
 /obj/machinery/telecomms/server/presets/centcomm,
 /obj/machinery/light{
@@ -26480,9 +27481,6 @@
 /turf/simulated/floor/lino,
 /area/mining_colony/interior/enginieering/telecomms_control)
 "fbk" = (
-/obj/effect/wallframe_spawn/reinforced/polarized{
-	id = "senior_office"
-	},
 /obj/machinery/door/blast/shutters/open{
 	dir = 4;
 	icon_state = "ishimura_shutter_open";
@@ -26491,6 +27489,9 @@
 	},
 /obj/machinery/door/firedoor{
 	dir = 4
+	},
+/obj/effect/wallframe_spawn/reinforced/polarized{
+	id = "smo_office"
 	},
 /turf/simulated/floor/tiled/white/monotile,
 /area/mining_colony/interior/medbay/CMOoffice)
@@ -26507,14 +27508,6 @@
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/excavation/interior)
-"gCT" = (
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "5-10"
-	},
-/turf/simulated/floor/reinforced/airless,
-/area/mining_colony/interior/enginieering/reactor)
 "gLQ" = (
 /obj/structure/table/woodentable,
 /obj/item/weapon/flame/candle,
@@ -26523,14 +27516,6 @@
 	},
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/uni_church)
-"gTq" = (
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "4-10"
-	},
-/turf/simulated/floor/reinforced/airless,
-/area/mining_colony/interior/enginieering/reactor)
 "gUp" = (
 /obj/structure/cable/green{
 	d1 = 2;
@@ -26539,6 +27524,12 @@
 	},
 /turf/simulated/floor/dank/grille_spare_4,
 /area/mining_colony/interior/enginieering/reactor)
+"gUS" = (
+/obj/item/weapon/paper{
+	info = "These are my last words, I'm heavily bleeding and there is no-one who could help me or at least turn on the sleeper. If someone will ever find this message - the ship is yours but the parts to the console are gon..."
+	},
+/turf/simulated/floor/asteroid/outside_ds,
+/area/mining_colony)
 "gYE" = (
 /obj/effect/wallframe_spawn/reinforced,
 /obj/machinery/door/firedoor,
@@ -26602,28 +27593,6 @@
 	},
 /turf/simulated/floor/dank/medical,
 /area/mining_colony/interior/medbay/med_ward)
-"ikh" = (
-/obj/effect/wallframe_spawn/reinforced_phoron,
-/obj/machinery/door/blast/regular/open{
-	icon_state = "pdoor0";
-	id = "oopsies_you_are_dead";
-	name = "Reactor Shutters"
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/dank/mono,
-/area/mining_colony/interior/enginieering/reactor)
-"ioH" = (
-/obj/machinery/door/airlock/engineering{
-	name = "Enginieering Lobby";
-	req_access = list()
-	},
-/obj/machinery/door/firedoor,
-/turf/simulated/floor/dank/mono,
-/area/mining_colony/interior/enginieering/lobby)
 "its" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/interior/science/scienceoffices)
@@ -26824,6 +27793,20 @@
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/simulated/floor/dank/grater,
 /area/shuttle/executive_shuttle)
+"lWK" = (
+/obj/structure/cable{
+	icon_state = "16-0"
+	},
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/obj/machinery/camera/network/security{
+	dir = 8
+	},
+/obj/structure/lattice,
+/turf/simulated/open,
+/area/mining_colony/security/interrogation_room)
 "mgv" = (
 /obj/structure/closet/secure_closet/engineering_welding,
 /obj/effect/floor_decal/dank/outline,
@@ -26855,10 +27838,8 @@
 /turf/simulated/wall/r_wall,
 /area/mining_colony/abandoned/mining_prep/storage)
 "mvB" = (
-/obj/item/weapon/pen/multi,
-/obj/effect/decal/cleanable/blood/splatter,
-/turf/simulated/floor/dank/slides,
-/area/mining_colony/c12_deadspace/controlroom)
+/turf/simulated/wall/r_wall,
+/area/mining_colony/security/sec_armory)
 "mxh" = (
 /obj/machinery/telecomms/processor/preset_two,
 /turf/simulated/floor/dank/grater,
@@ -26875,6 +27856,18 @@
 	},
 /turf/simulated/floor/dank/maint,
 /area/mining_colony/interior/enginieering/telecomms)
+"mSP" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4;
+	icon_state = "warning"
+	},
+/turf/simulated/floor/dank/mono,
+/area/mining_colony/security/interrogation_room)
 "nqe" = (
 /obj/effect/floor_decal/dank/outline,
 /obj/structure/closet/firecloset,
@@ -27006,6 +27999,10 @@
 	},
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/enginieering/telecomms)
+"pXC" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/simulated/floor/asteroid/outside_ds,
+/area/mining_colony)
 "qfX" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
@@ -27072,10 +28069,10 @@
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/enginieering/telecomms)
 "qML" = (
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/item/weapon/pen/multi,
 /obj/effect/landmark/corpse/marooned_officer,
-/turf/simulated/floor/dank/slides,
-/area/mining_colony/c12_deadspace/controlroom)
+/turf/simulated/floor/asteroid/outside_ds,
+/area/mining_colony)
 "qNq" = (
 /obj/effect/wallframe_spawn/reinforced,
 /obj/machinery/door/firedoor,
@@ -27131,6 +28128,10 @@
 	},
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/security/sec_firingrange)
+"sBK" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/simulated/floor/concrete,
+/area/mining_colony)
 "sDL" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1;
@@ -27154,6 +28155,22 @@
 /obj/machinery/ntnet_relay,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/enginieering/telecomms)
+"teZ" = (
+/obj/effect/floor_decal/corner/grey/three_quarters{
+	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/tiled/white,
+/area/mining_colony/interior/science/scienceoffices)
 "thw" = (
 /obj/effect/landmark/node_room,
 /turf/simulated/floor/tiled/freezer,
@@ -27272,6 +28289,14 @@
 /obj/structure/railing/mapped,
 /turf/simulated/floor/plating,
 /area/mining_colony/interior/plaza)
+"vIs" = (
+/obj/machinery/computer/shuttle_control/escape3{
+	dir = 8
+	},
+/turf/simulated/floor/dank/maint{
+	dir = 4
+	},
+/area/mining_colony/interior/shuttle_bay/shuttle_3)
 "vQk" = (
 /obj/item/device/radio/intercom{
 	dir = 8;
@@ -27295,18 +28320,6 @@
 	},
 /turf/simulated/floor/dank/slides,
 /area/mining_colony/security)
-"whd" = (
-/obj/machinery/cryopod{
-	dir = 2
-	},
-/obj/effect/landmark{
-	name = "JoinLateCryo"
-	},
-/obj/machinery/computer/cryopod{
-	pixel_y = 26
-	},
-/turf/simulated/floor/dank/mono,
-/area/mining_colony/interior/apartament)
 "wjH" = (
 /obj/machinery/telecomms/relay/preset/bridge,
 /turf/simulated/floor/dank/grater,
@@ -27388,6 +28401,12 @@
 	},
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/enginieering/main_room)
+"xDf" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/dank/slides,
+/area/mining_colony/c12_deadspace/controlroom)
 "xQG" = (
 /obj/machinery/telecomms/broadcaster/preset_cent,
 /obj/machinery/camera/network/engineering{
@@ -27398,6 +28417,19 @@
 	},
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/enginieering/telecomms)
+"xSK" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/dank/grille_spare_1,
+/area/mining_colony/security)
 "ybH" = (
 /obj/machinery/computer/atmos_alert{
 	dir = 4
@@ -28726,8 +29758,8 @@ aoG
 aoG
 aoG
 aoG
-brr
-aYp
+btU
+aCq
 aCq
 aoG
 aoG
@@ -28925,18 +29957,18 @@ aoG
 aoG
 aoG
 aoG
+aCB
+aoG
+aoG
+aJi
+aJi
+aJi
 aoG
 aoG
 aoG
-aCq
-brs
-aCq
 aoG
 aoG
-aoG
-aoG
-aoG
-aoG
+aCB
 aoG
 aoG
 aoG
@@ -29124,28 +30156,28 @@ aoG
 aoG
 aoG
 aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aCq
-aCq
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
+aue
+aue
+aue
+aOL
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aOL
+aue
+aue
+aue
+aue
+aue
+aue
+aue
 aoG
 aoG
 aoG
@@ -29175,7 +30207,7 @@ amM
 abi
 abi
 abi
-abi
+aUQ
 abi
 abi
 abi
@@ -29201,7 +30233,7 @@ aaK
 aaK
 aaK
 aaK
-aAv
+bsb
 aaK
 aaK
 ahK
@@ -29326,28 +30358,28 @@ aZx
 aZx
 aoG
 aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aue
 aoG
 aoG
 aoG
@@ -29377,7 +30409,7 @@ abi
 abi
 abi
 bgH
-aCx
+afU
 aiT
 abi
 abi
@@ -29400,11 +30432,11 @@ abi
 aaK
 aZH
 asY
+brU
 asY
 asY
 asY
-asY
-asY
+brU
 asY
 amg
 asT
@@ -29528,28 +30560,28 @@ bhB
 aZx
 aoG
 aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
+aue
+aue
+aCq
+aCq
+aCq
+aCq
+aCq
+aCq
+aCq
+aCq
+aCq
+aCq
+aCq
+aCq
+aCq
+aCq
+aCq
+aCq
+aCq
+aCq
+aue
+aue
 aoG
 aoG
 aoG
@@ -29599,7 +30631,7 @@ alm
 alJ
 amQ
 abi
-aaK
+brE
 aUA
 aaK
 aaK
@@ -29730,28 +30762,28 @@ aZx
 aZx
 aoG
 aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
+aue
+aue
+aCq
+aCq
+aCq
+aCq
+aCq
+aCq
+aCq
+aCq
+aCq
+aCq
+aCq
+aCq
+aCq
+aCq
+aCq
+aCq
+aCq
+aCq
+aue
+aue
 aoG
 aoG
 aoG
@@ -29763,7 +30795,7 @@ ake
 ake
 hEO
 abi
-aln
+awb
 aln
 aln
 aln
@@ -29804,12 +30836,12 @@ amS
 aaK
 aUA
 aaK
-aaJ
+brV
 acN
 acN
 acN
 acN
-acN
+bsd
 ahK
 aoN
 aCZ
@@ -29932,28 +30964,28 @@ bhB
 aZx
 aoG
 aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
+aue
+aue
+aCB
+aFd
+aFd
+aFd
+aCB
+aCq
+aCq
+aCq
+aCq
+bsh
+bsm
+bsm
+bsi
+bsm
+bsm
+bue
+aCq
+aCq
+aue
+aue
 aoG
 aoG
 aoG
@@ -30128,35 +31160,35 @@ aoG
 aZx
 aZx
 bkA
-bkM
+adw
 bkQ
 aZx
 aZx
 aoG
 aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
+aue
+aue
+aCB
+btS
+bsk
+btT
+aFd
+aCq
+aCq
+aCq
+aCq
+bsi
+bsp
+bsp
+bsi
+bsp
+bsp
+bsi
+aCq
+aCq
+aue
+aSR
+aCB
 aoG
 aoG
 abi
@@ -30167,7 +31199,7 @@ akZ
 ake
 aUH
 abi
-aln
+awb
 aln
 aln
 aln
@@ -30336,28 +31368,28 @@ bhB
 aZx
 aZx
 aZx
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
+aue
+aue
+btR
+bsk
+btx
+bty
+aFd
+aCq
+aCq
+aCq
+aCq
+bsi
+bsi
+bsi
+bsi
+bsi
+bsi
+bsi
+aCq
+aCq
+aue
+aue
 aoG
 aoG
 aoG
@@ -30385,11 +31417,11 @@ alo
 alo
 alo
 axB
+aAv
 alo
 alo
 alo
-alo
-alo
+aAv
 axB
 alo
 alo
@@ -30417,15 +31449,15 @@ aNi
 bqX
 aBS
 bcz
-aBQ
+aOc
 atp
-aBQ
+aOc
 aAn
-aBQ
+aOc
 atp
-aBQ
+aOc
 aAn
-aBQ
+aOc
 atp
 atp
 aoG
@@ -30538,28 +31570,28 @@ aZx
 aZx
 aZx
 aZx
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
+aue
+aue
+aCB
+aPp
+bsI
+btz
+aFd
+aCq
+aCq
+aCq
+aCq
+bsi
+bsq
+bsq
+bto
+bsq
+bsq
+bsi
+aCq
+aCq
+aue
+aue
 aoG
 aoG
 aoG
@@ -30619,15 +31651,15 @@ bpZ
 aaY
 aaY
 bcA
-aBQ
+aOc
 atp
-aBQ
+aOc
 aAo
-aBQ
+aOc
 atp
-aBQ
+aOc
 aAo
-aBQ
+aOc
 atp
 atp
 aoG
@@ -30740,28 +31772,28 @@ bhC
 bld
 biC
 biC
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
+aue
+aue
+aCB
+aFd
+aFd
+aFd
+aCB
 aCq
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
+aCq
+aCq
+aCq
+bsi
+bsr
+bsK
+bsD
+bsK
+btN
+bsi
+aCq
+aCq
+aue
+aue
 aoG
 aoG
 aoG
@@ -30942,28 +31974,28 @@ bla
 bld
 biC
 biC
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
+aue
+aue
 aCq
 aCq
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
+aCq
+aCq
+aCq
+aCq
+aCq
+aCq
+aCq
+bsi
+bsi
+bsM
+bsD
+bsN
+bsi
+bsi
+aCq
+aCq
+aue
+aue
 aoG
 aoG
 aoG
@@ -31144,28 +32176,28 @@ bkw
 bld
 biC
 biC
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
+aue
+aue
 aCq
 aCq
 aCq
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
+aCq
+aCq
+aCq
+aCq
+aCq
+aCq
+bsj
+bsC
+bsN
+btp
+bsN
+bsC
+bsj
+aCq
+aCq
+aue
+aue
 aoG
 aoG
 aoG
@@ -31224,14 +32256,14 @@ ahu
 aut
 aaY
 aAo
-bcD
+aHA
 bgf
 blR
 aAZ
 aAo
 aAZ
-aBa
-bpF
+aQf
+aYN
 aAZ
 aAo
 atp
@@ -31346,28 +32378,28 @@ bit
 bld
 biC
 biC
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
+aue
+aue
 aCq
 aCq
 aCq
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
+aCq
+aCq
+aCq
+aCq
+aCq
+aCq
+bsj
+bsD
+bsN
+btp
+bsK
+bsD
+bsj
+aCq
+aCq
+aue
+aue
 aoG
 aoG
 aoG
@@ -31426,7 +32458,7 @@ aLD
 bco
 bcq
 bcu
-bcE
+aJk
 atp
 atp
 bam
@@ -31548,28 +32580,28 @@ blb
 biC
 biC
 biC
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
+aue
+aue
 aCq
 aCq
 aCq
 aCq
-aoG
-aoG
-aoG
-aoG
-aoG
+aCq
+aCq
+aCq
+aCq
+aCq
+bsi
+bsE
+bsN
+btq
+bsN
+btO
+bsi
+aCq
+aCq
+aue
+aue
 aoG
 aoG
 aoG
@@ -31577,7 +32609,7 @@ abi
 abi
 acd
 akV
-abj
+bss
 abj
 abj
 abi
@@ -31628,9 +32660,9 @@ ahu
 aut
 aaY
 aAo
-aBQ
+aOc
 bpC
-aBQ
+aOc
 aAZ
 aAo
 aAZ
@@ -31750,28 +32782,28 @@ bkS
 bkS
 aje
 aje
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
+aue
+aue
 aCq
 aCq
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
+aCq
+aCq
+aCq
+aCq
+aCq
+aCq
+aCq
+bsi
+bsF
+bsK
+bsD
+bsN
+btP
+bsi
+aCq
+aCq
+aue
+aue
 aoG
 aoG
 aoG
@@ -31935,7 +32967,7 @@ aOl
 aOl
 aOl
 aOl
-aOl
+bsf
 aOl
 aOl
 aOl
@@ -31949,20 +32981,11 @@ bgj
 cgV
 bkS
 bkS
-bkS
+bsg
 aje
 aje
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
+aue
+aue
 aCq
 aCq
 aCq
@@ -31970,10 +32993,19 @@ aCq
 aCq
 aCq
 aCq
-aoG
-aoG
-aoG
-aoG
+aCq
+aCq
+bsi
+bsH
+bsD
+btr
+bsD
+bud
+bsi
+aCq
+aCq
+aue
+aue
 aoG
 aoG
 aoG
@@ -32002,9 +33034,9 @@ aBW
 anQ
 abi
 abi
-blN
+btf
 ajv
-blQ
+bti
 abi
 abi
 alg
@@ -32154,28 +33186,28 @@ bkS
 ble
 aje
 aje
-aoG
-aoG
+aue
+aue
 aCq
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
+aPv
+aWJ
+btG
+aWJ
+aPv
 aCq
 aCq
 aCq
+bsi
+bsi
+bsS
+bsi
+bsS
+bsi
+bsi
 aCq
 aCq
-aoG
-aoG
-aoG
-aoG
-aoG
+aue
+aue
 aoG
 aoG
 aoG
@@ -32184,7 +33216,7 @@ abi
 akU
 ahQ
 aho
-abj
+bss
 anZ
 abi
 ali
@@ -32204,9 +33236,9 @@ alN
 alN
 abi
 abi
-blM
+btg
 ajv
-bqy
+btj
 abi
 abi
 ali
@@ -32226,7 +33258,7 @@ alN
 alN
 abi
 aaK
-aUA
+brL
 aAt
 atp
 aJA
@@ -32235,15 +33267,15 @@ bpZ
 aaY
 aaY
 aaY
-aBQ
+aOc
 atp
-aBQ
+aOc
 aAo
-aBQ
+aOc
 atp
-aBQ
+aOc
 aAo
-aBQ
+aOc
 atp
 bkX
 bkX
@@ -32356,28 +33388,28 @@ bkS
 ble
 aje
 aje
-aoG
+aue
+aue
 aCq
-aCq
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
+aWJ
+aWI
+aWI
+aWI
+aWJ
 aCq
 aCq
 aCq
-aoG
+bsi
+bsJ
+bsU
+bts
+bsU
+bsK
+bsi
 aCq
 aCq
-aoG
-aoG
-aoG
-aoG
+aue
+aue
 aoG
 aoG
 aoG
@@ -32427,7 +33459,7 @@ alN
 alN
 amL
 abi
-aaK
+brE
 aUA
 aaK
 atp
@@ -32437,15 +33469,15 @@ aNk
 aRA
 alT
 kOy
-aBQ
+aOc
 atp
-aBQ
+aOc
 anC
-aBQ
+aOc
 atp
-aBQ
+aOc
 anC
-aBQ
+aOc
 atp
 bkX
 bkX
@@ -32558,28 +33590,28 @@ bkS
 blf
 aje
 aje
-aoG
-aoG
+aue
+aue
 aCq
-aCq
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
+aWJ
+bkM
+bta
+bsQ
+aWJ
 aCq
 aCq
 aCq
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
+bsi
+apG
+btl
+bsU
+btM
+bsK
+bsi
+aCq
+aCq
+aue
+aue
 aoG
 aoG
 aoG
@@ -32629,7 +33661,7 @@ alN
 aoa
 amM
 abi
-aaK
+brE
 aUA
 aaK
 atp
@@ -32650,10 +33682,10 @@ atp
 atp
 atp
 bkX
-awh
-aBD
-aBD
-awh
+aZm
+bag
+bag
+aZm
 bkX
 aVx
 bgx
@@ -32760,28 +33792,28 @@ bkS
 ble
 aje
 aje
-aoG
-aoG
+aSS
+aue
 aCq
-aCq
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
+aWJ
+aWI
+bsG
+bsG
+aWJ
 aCq
 aCq
 aCq
+bsi
+bsL
+btm
+vIs
+bsL
+bsL
+bsi
 aCq
 aCq
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
+aue
+aue
 aoG
 aoG
 aoG
@@ -32951,7 +33983,7 @@ aXM
 aYs
 aYB
 aOl
-aOl
+bsf
 aZt
 bgm
 bgm
@@ -32962,28 +33994,28 @@ bnJ
 ble
 aje
 aje
-aoG
-aoG
-aoG
+aue
+aue
 aCq
-aCq
-aoG
-aoG
-aoG
-aoG
-aoG
-aCq
+aWM
+aWI
+bsG
+btC
+aWJ
 aCq
 aCq
 aCq
+bsl
+bsi
+btn
+btn
+btn
+bsi
+buf
 aCq
 aCq
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
+aue
+aue
 aoG
 aoG
 aoG
@@ -33011,11 +34043,11 @@ alm
 alm
 alm
 alJ
+aCx
 alm
 alm
 alm
-alm
-alm
+aCx
 alJ
 alm
 alm
@@ -33056,7 +34088,7 @@ bkX
 bkX
 aDk
 aDk
-aDk
+bsA
 aDw
 bkX
 aVx
@@ -33164,28 +34196,28 @@ bkS
 bkS
 aje
 aje
-aoG
-aoG
-aoG
+aue
+aue
+aCq
+aWJ
+btC
+aWI
+aWI
+aWJ
 aCq
 aCq
-aoG
-aoG
-aoG
-aoG
-aoG
 aCq
 aCq
 aCq
-aoG
 aCq
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
+aCq
+aCq
+aCq
+aCq
+aCq
+aCq
+aue
+aue
 aoG
 aoG
 aoG
@@ -33197,7 +34229,7 @@ ake
 ake
 aUH
 abi
-aln
+awb
 aln
 aln
 aln
@@ -33366,34 +34398,34 @@ bkS
 bkS
 aje
 aje
-aoG
-aoG
-aoG
+aue
+aue
+aCq
+aWJ
+blQ
+btb
+btV
+aWJ
 aCq
 aCq
 aCq
-aoG
-aoG
-aoG
 aCq
 aCq
 aCq
 aCq
 aCq
 aCq
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
+aCq
+aCq
+aCq
+aue
+aue
 aoG
 aoG
 aoG
 abi
 abi
-whd
+abg
 akO
 abi
 alb
@@ -33568,28 +34600,28 @@ bkS
 bkS
 aje
 aje
-aoG
-aoG
-aoG
+aue
+aue
+aCq
+aPv
+bsZ
+btA
+btA
+aPv
+aCq
+aWJ
+aWJ
+btL
+aWJ
+aWJ
+aPv
 aCq
 aCq
-aoG
-aoG
-aoG
 aCq
 aCq
 aCq
-aCq
-aCq
-aCq
-aCq
-aCq
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
+aue
+aue
 aoG
 aoG
 aoG
@@ -33601,7 +34633,7 @@ akZ
 ake
 hEO
 abi
-aln
+awb
 aln
 aln
 aln
@@ -33770,29 +34802,29 @@ bkS
 bkS
 aje
 aje
-aoG
+aue
+aue
+aCq
+aWJ
+aWI
+btC
+bsG
+aWJ
+aCq
+aWJ
+btc
+bsG
+aWI
+aWI
+aWM
 aCq
 aCq
 aCq
 aCq
-aoG
-aoG
-aoG
 aCq
-aCq
-aCq
-aoG
-aoG
-aoG
-aCq
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
+aue
+aSR
+aCB
 aoG
 aoG
 abi
@@ -33972,28 +35004,28 @@ blc
 blg
 aje
 aje
-aoG
-aoG
-aoG
+aue
+aue
 aCq
-aoG
-aoG
-aoG
-aoG
+aWJ
+aWI
+aWI
+btC
+aWJ
 aCq
-aoG
-aoG
-aoG
-aoG
+aWJ
+btd
+btb
+bsO
+btA
+aWJ
 aCq
 aCq
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
+aCq
+aCq
+aCq
+aue
+aue
 aoG
 aoG
 aoG
@@ -34023,7 +35055,7 @@ abi
 abi
 abi
 bgH
-aFd
+afU
 aiT
 abi
 abi
@@ -34174,28 +35206,28 @@ aje
 aje
 aje
 aje
-aoG
-aoG
-aoG
+aue
+aue
+aCq
+aWJ
+bsG
+aWI
+aWI
+aWJ
+aCq
+aWJ
+aJD
+aWI
+bsG
+btC
+aWJ
 aCq
 aCq
-aoG
-aoG
 aCq
 aCq
 aCq
-aCq
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
+aue
+aue
 aoG
 aoG
 aoG
@@ -34225,7 +35257,7 @@ amM
 abi
 abi
 abi
-abi
+bbZ
 abi
 abi
 abi
@@ -34245,7 +35277,7 @@ alN
 aoa
 amM
 abi
-aaK
+brE
 aUA
 aaK
 bkD
@@ -34376,28 +35408,28 @@ aCB
 aCB
 aCB
 aCB
-aoG
-aoG
-aoG
-aoG
+aue
+aue
+aCq
+aWJ
+bsn
+bsP
+bsn
+aWJ
+aCq
+aPv
+aWJ
+btG
+aWM
+aWJ
+aWJ
 aCq
 aCq
 aCq
 aCq
 aCq
-aCq
-aCq
-aCq
-aCq
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
+aue
+aue
 aoG
 aoG
 aoG
@@ -34447,7 +35479,7 @@ alN
 alN
 amN
 abi
-aaK
+brE
 aUA
 aaK
 bkD
@@ -34562,6 +35594,30 @@ aCq
 aue
 aue
 aue
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aCq
+aWJ
+bsn
+bsP
+bsn
+aWJ
 aCq
 aCq
 aCq
@@ -34569,37 +35625,13 @@ aCq
 aCq
 aCq
 aCq
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
 aCq
 aCq
 aCq
 aCq
 aCq
-aCq
-aCq
-aCq
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
+aue
+aue
 aoG
 aoG
 aoG
@@ -34668,13 +35700,13 @@ aCk
 aCS
 aCk
 blD
-aae
-aae
-aae
-aae
-aae
-aae
-aae
+bkX
+bkX
+bkX
+bkX
+bkX
+bkX
+bkX
 aae
 aae
 aae
@@ -34764,6 +35796,30 @@ aCq
 aue
 aue
 aue
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aCq
+aPv
+aWJ
+aWJ
+aWJ
+aPv
 aCq
 aCq
 aCq
@@ -34773,35 +35829,11 @@ aCq
 aCq
 aCq
 aCq
-aoG
-aoG
-aoG
-aoG
-aCq
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aCq
-aCq
-aoG
-aCq
-aCq
-aoG
 aCq
 aCq
 aCq
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
+aue
+aue
 aoG
 aoG
 aoG
@@ -34870,14 +35902,14 @@ aCk
 aCk
 aCk
 blD
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
+bkX
+mvB
+mvB
+mvB
+mvB
+mvB
+mvB
+mvB
 aae
 aae
 aqu
@@ -34980,30 +36012,30 @@ aCq
 aCq
 aCq
 aCq
-aCq
-aoG
-aoG
-aoG
-aoG
-aoG
+asc
+aCB
+aSS
+aue
 aCq
 aCq
 aCq
 aCq
 aCq
-aoG
 aCq
 aCq
 aCq
 aCq
 aCq
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
+aCq
+aCq
+aCq
+aCq
+aCq
+aCq
+aCq
+aCq
+aue
+aue
 aoG
 aoG
 aoG
@@ -35072,14 +36104,14 @@ aCE
 aCI
 aGe
 blE
-aae
-aae
+bkX
+mvB
 akL
 ohW
 aoj
 aii
 aJU
-aae
+mvB
 aae
 aae
 aqt
@@ -35107,8 +36139,8 @@ aoG
 aoG
 aCq
 aWJ
-aQf
-aQf
+age
+age
 aWJ
 aCq
 aCq
@@ -35184,28 +36216,28 @@ aCq
 aCq
 aCq
 aCq
+aue
+aue
 aCq
-aoG
-aoG
-aoG
+bso
+bso
+bso
+bso
+bso
+btD
+akd
+bso
+bso
+bso
+bsV
+bsV
+bso
 aCq
 aCq
 aCq
 aCq
-aCq
-aoG
-aCq
-aoG
-aoG
-aCq
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
+aue
+aue
 aoG
 aoG
 aoG
@@ -35249,21 +36281,21 @@ aaB
 aaB
 aaB
 blG
-aXy
+bhp
 aVf
 bpr
 aVf
 afg
 aAp
-afg
-aZK
+bjA
+bll
 afg
 bnS
 afg
 aUr
 aOH
 aUr
-aUr
+bse
 bkD
 bkD
 bkD
@@ -35274,14 +36306,14 @@ bkX
 bkX
 bkX
 bkX
-aae
-aae
+bkX
+mvB
 amO
 aij
 amX
 aij
 aRb
-aae
+mvB
 aae
 aae
 aqt
@@ -35309,8 +36341,8 @@ aoG
 aCq
 aCq
 aWJ
-aQf
-aQf
+age
+age
 aWJ
 aCq
 aCq
@@ -35386,28 +36418,28 @@ aCq
 aCq
 aCq
 aCq
+aue
+aue
+aCq
+aNc
+brr
+btH
+bso
+akd
+akd
+btF
+btY
+bsT
+bsT
+bsT
+bua
+aNc
 aCq
 aCq
 aCq
 aCq
-aCq
-aCq
-aCq
-aCq
-aCq
-aCq
-aCq
-aCq
-aCq
-aCq
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
+aue
+aue
 aoG
 aoG
 aoG
@@ -35457,9 +36489,9 @@ bnQ
 afg
 bnq
 afg
-afg
-aZK
-afg
+bjA
+bll
+bjA
 afg
 afg
 afg
@@ -35477,13 +36509,13 @@ aae
 aae
 aae
 aae
-aae
+mvB
 alW
 bbv
 bbE
 bbH
 aJM
-aae
+mvB
 aae
 aae
 boA
@@ -35511,8 +36543,8 @@ aoG
 aCq
 aCq
 aWJ
-aQf
-aQf
+age
+age
 aWJ
 aCq
 aCq
@@ -35588,28 +36620,28 @@ aCq
 aCq
 aCq
 aCq
+aue
+aue
+aCq
+aNc
+btF
+btI
+btJ
+akd
+btI
+akd
+akd
+akd
+btF
+akd
+akd
+aNc
 aCq
 aCq
-aoG
-aoG
-aoG
-aoG
 aCq
 aCq
-aoG
-aCq
-aoG
-aoG
-aCq
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
+aue
+aue
 aoG
 aoG
 aoG
@@ -35661,7 +36693,7 @@ avU
 avU
 avU
 avW
-avU
+brS
 avU
 avU
 avU
@@ -35679,13 +36711,13 @@ agV
 ahY
 atv
 aae
-aae
+mvB
 alZ
 aik
 amX
 bbI
 aKy
-aae
+mvB
 aae
 aae
 aPF
@@ -35790,28 +36822,28 @@ aCq
 aCq
 aCq
 aoG
+aue
+aue
 aCq
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
+aNc
+brs
+btE
+bso
+btK
+akd
+btX
+bsR
+btZ
+btI
+btX
+btF
+aNc
 aCq
-aoG
 aCq
-aoG
-aoG
 aCq
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
+aCq
+aue
+aue
 aoG
 aoG
 aoG
@@ -35881,13 +36913,13 @@ agX
 aic
 wZL
 aae
-aae
+mvB
 auC
 aij
 amX
 bbJ
 bfL
-aae
+mvB
 aae
 anp
 anq
@@ -35992,28 +37024,28 @@ aCq
 aCq
 aCq
 aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
+aue
+aue
+aCq
+bso
+bso
+bso
+bso
+bso
+btD
+bso
+bso
+bso
+bso
+bso
+bsW
+bso
 aCq
 aCq
-aCq
-aCq
-aoG
-aoG
-aCq
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
+aue
+aue
+aue
+aue
 aoG
 aoG
 aoG
@@ -36057,20 +37089,20 @@ aeF
 bqT
 aaB
 blG
-bhp
-aZK
+bin
+bll
 aOv
 aXy
 aOz
-aOy
-aOy
-aOy
-aOy
+brA
+brF
+brM
+brF
 aOy
 aOE
 aXy
 aOA
-aZK
+bll
 afg
 aae
 aah
@@ -36083,13 +37115,13 @@ bfv
 ahc
 alP
 aae
-aae
+mvB
 aKM
 aik
 amX
 bbI
 aKy
-aae
+mvB
 aae
 aae
 las
@@ -36194,28 +37226,28 @@ aCq
 aoG
 aCq
 aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
+aue
+aue
 aCq
 aCq
 aCq
 aCq
-aoG
 aCq
 aCq
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
+aCq
+aCq
+aCq
+aCq
+aCq
+aCq
+aCq
+aCq
+aCq
+aCq
+aue
+aue
+aCQ
+aue
 aoG
 aoG
 aoG
@@ -36259,15 +37291,15 @@ aeG
 adb
 aFJ
 blG
-afg
-aZK
+bjA
+bll
 aOv
 aUr
 avZ
 aOx
-aOx
-aOx
-aOx
+brG
+brN
+brT
 bnu
 awa
 aUr
@@ -36285,13 +37317,13 @@ ahd
 ahd
 aIR
 aae
-aae
+mvB
 amP
 aik
 amX
 bbI
 aKE
-aae
+mvB
 aae
 aae
 aPI
@@ -36396,27 +37428,27 @@ aoG
 aoG
 aoG
 aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aCq
-aCq
-aCq
-aCq
-aCq
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aSR
+aCB
 aoG
 aoG
 aoG
@@ -36462,15 +37494,15 @@ aaT
 afc
 blG
 afg
-aZK
+bll
 aOv
-afl
+bmK
 aOB
-afl
+brB
 aDC
+brO
 aDC
-aDC
-afl
+brB
 aOF
 afl
 aOA
@@ -36487,13 +37519,13 @@ ahd
 ahd
 ais
 aae
-aae
+mvB
 aDj
 aij
 amX
 bbJ
 bbr
-aae
+mvB
 aae
 bgb
 anq
@@ -36597,27 +37629,27 @@ aoG
 aoG
 aoG
 aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aCq
-aCq
-aCq
-aCq
-aCq
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
+aCB
+aSS
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aCQ
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aue
+aue
 aoG
 aoG
 aoG
@@ -36667,13 +37699,13 @@ afg
 aZK
 aOv
 afl
-aOB
+bqy
 aDy
 afx
 aJt
 afx
 aDI
-aOF
+brY
 afl
 bnx
 aZK
@@ -36689,13 +37721,13 @@ ahr
 ahd
 alh
 aae
-aae
+mvB
 amV
 ain
 amY
 bbK
 avY
-aae
+mvB
 aae
 blT
 anq
@@ -36805,10 +37837,10 @@ aoG
 aoG
 aoG
 aoG
-aCq
-aCq
-aCq
-aoG
+aJi
+aJi
+aJi
+aCB
 aoG
 aoG
 aoG
@@ -36869,13 +37901,13 @@ afh
 aif
 aOv
 afl
-aOB
-aDy
+bro
+brC
 aJs
 bnr
 aJy
-aDI
-aOF
+brW
+brZ
 afl
 aOA
 aZS
@@ -36891,13 +37923,13 @@ ahd
 ahd
 amf
 aae
-aae
-aae
+mvB
+mvB
 aNK
 aog
 bbL
 aNK
-aae
+mvB
 aae
 blU
 anq
@@ -37071,13 +38103,13 @@ afg
 aZK
 aOv
 bod
-aOB
+bqy
 aDy
 afx
 aJw
 afx
 aDI
-aOF
+brY
 afl
 aOA
 aZK
@@ -37274,11 +38306,11 @@ aZK
 aOv
 afl
 aOB
-afl
+brB
 aPl
+brP
 aPl
-aPl
-afl
+brB
 aOF
 afl
 aOA
@@ -37477,11 +38509,11 @@ aOv
 aUr
 aOC
 aOy
+brF
+brQ
+brF
 aOy
-aOy
-aOy
-aOy
-awb
+bsa
 aUr
 aOA
 aZK
@@ -37678,15 +38710,15 @@ bib
 aOv
 aXA
 aOD
-aOx
-aOx
-aOx
-aOx
+brD
+brG
+brN
+brG
 aOx
 aOG
 aXA
 aOA
-aZK
+bll
 afg
 aae
 aAq
@@ -37883,12 +38915,12 @@ aXB
 aUr
 afl
 afl
-afl
-aUr
+bmK
+brX
 bog
 blG
 aOA
-bnT
+bsc
 aUr
 aae
 aah
@@ -37907,7 +38939,7 @@ baY
 bbg
 bbP
 baY
-baY
+xSK
 baY
 baY
 baY
@@ -38109,7 +39141,7 @@ agY
 bbh
 ahq
 ahq
-ahq
+bbh
 ahq
 ahq
 aap
@@ -38283,7 +39315,7 @@ aUr
 ajF
 afh
 afh
-afh
+bry
 afh
 afh
 azO
@@ -38481,21 +39513,21 @@ aaB
 aaB
 blG
 blG
-aXA
+bjK
 aWA
 aXZ
 bnR
-afg
-afg
+bjA
+bjA
 afg
 bns
 afg
-afg
-afg
+bjA
+bjA
 bpx
 aWA
 aOH
-aUr
+bse
 blG
 apu
 apu
@@ -38513,7 +39545,7 @@ bbw
 bbG
 aqM
 aWk
-alV
+bmP
 aol
 kPj
 bmv
@@ -38715,7 +39747,7 @@ alY
 atW
 aqM
 anh
-alV
+bmP
 blS
 kPj
 nrw
@@ -39026,7 +40058,7 @@ aoG
 aoG
 aoG
 aoG
-aCq
+btB
 aoG
 aoG
 aoG
@@ -39089,9 +40121,9 @@ aaK
 aaK
 aaK
 arF
-aAv
-aaK
-aaK
+blM
+bfD
+aaJ
 aaK
 aaK
 aUA
@@ -39119,7 +40151,7 @@ uId
 uId
 uId
 ani
-uId
+mSP
 uId
 kPj
 bnI
@@ -39242,7 +40274,7 @@ acG
 aef
 afa
 afa
-gCT
+afa
 agl
 afa
 afa
@@ -39291,9 +40323,9 @@ aUz
 asY
 asY
 asY
-asY
-asY
-asY
+blZ
+bnT
+blZ
 asY
 asY
 aVg
@@ -39321,7 +40353,7 @@ aoR
 aoR
 uId
 anj
-uId
+lWK
 uId
 kPj
 bmz
@@ -39443,7 +40475,7 @@ aaj
 acG
 aef
 afa
-gCT
+afa
 afa
 agl
 afa
@@ -39476,7 +40508,7 @@ ase
 aoG
 biZ
 biZ
-adw
+bth
 amb
 anB
 ady
@@ -39489,16 +40521,16 @@ aeg
 aaB
 aoH
 aaK
-aUA
-aAt
+bcD
+bcE
 aoH
 aoH
 aoH
 aoH
 aoH
 aoH
-aSF
-aUA
+brH
+bcD
 aaK
 blG
 blG
@@ -39644,7 +40676,7 @@ aaj
 aaj
 acG
 aef
-gTq
+afa
 afa
 afa
 agl
@@ -39691,16 +40723,16 @@ aeA
 aaB
 aoH
 aaK
-aUA
-aaK
+bcD
+bfD
 aaK
 jjV
 aoH
 aoH
 aUO
 aaK
-aaK
-aUA
+bfD
+bcD
 aaK
 abp
 agB
@@ -39846,7 +40878,7 @@ aay
 aaj
 abO
 acP
-ikh
+aef
 aef
 aef
 agm
@@ -39893,16 +40925,16 @@ adX
 aaB
 aoH
 aaK
-aUA
-aaK
+bcD
+bfD
 aaK
 biB
 aoH
 aoH
 beP
 aaK
-aaK
-aUA
+bfD
+bcD
 aaK
 abp
 agB
@@ -40095,16 +41127,16 @@ aaB
 aaB
 aoH
 aaK
-aUA
-aaK
+bcD
+bfD
 aaK
 biB
 aoH
 aoH
 beP
 aaK
-aaK
-aUA
+bfD
+bcD
 bgC
 aoR
 aar
@@ -40297,16 +41329,16 @@ aoH
 aoH
 aoH
 aaK
-aUA
-aaK
+bcD
+bfD
 aaK
 cLH
 aoH
 aoH
 bnF
 aaK
-arF
-aUA
+brI
+bcD
 aaK
 bqr
 agB
@@ -40499,16 +41531,16 @@ abc
 aoH
 aoH
 aaK
-aUA
-bch
+bcD
+bgu
 aoH
 aoH
 aoH
 aoH
 aoH
 aoH
-aSF
-aJO
+brH
+brR
 asY
 aoS
 aLO
@@ -40705,11 +41737,11 @@ aUA
 aaK
 aaK
 aaK
+aaJ
+bfD
+aaJ
 aaK
-aaK
-aaK
-aaK
-aaK
+bsu
 aUA
 aaK
 bqr
@@ -40907,9 +41939,9 @@ aUA
 aaK
 aaK
 aaK
-aNc
-aaK
-aaK
+bml
+bfD
+aaJ
 aaK
 aaK
 aUA
@@ -41106,7 +42138,7 @@ aoH
 aoH
 aaK
 aUA
-aaK
+bsu
 aLr
 aLr
 aLr
@@ -41315,7 +42347,7 @@ aRf
 aUM
 bii
 aLr
-aaK
+brJ
 aUA
 aaK
 abp
@@ -41701,7 +42733,7 @@ bjc
 aPt
 bjs
 bjb
-bjb
+bst
 bjZ
 biG
 amk
@@ -42351,7 +43383,7 @@ ark
 aqq
 jiM
 aTd
-aTd
+bsB
 aTd
 blJ
 bom
@@ -42491,7 +43523,7 @@ aAk
 aBj
 aBs
 boJ
-aJD
+btk
 aKh
 aSk
 aSt
@@ -42527,7 +43559,7 @@ aRf
 bcg
 aAW
 aLr
-arF
+brK
 aUA
 aaK
 aoH
@@ -42713,7 +43745,7 @@ bjD
 biH
 aSx
 aaK
-aaK
+bsu
 aaK
 aaK
 aAt
@@ -42918,18 +43950,18 @@ aaK
 aaK
 aaK
 aaK
-aaK
+bsu
 aaK
 aoH
-aSF
+bch
 aaK
 aUA
 aaK
 arF
 aaK
-aAv
-aaK
-aaK
+blM
+bfD
+aaJ
 aaK
 aaK
 aUA
@@ -43115,13 +44147,13 @@ bjg
 bjg
 biR
 bnX
-aaK
-aaK
-aaK
-aaK
-aaK
-aaK
-aaK
+aaJ
+aaJ
+aaJ
+aaJ
+aaJ
+aaJ
+aaJ
 qEe
 aaK
 aaK
@@ -43129,9 +44161,9 @@ aUA
 aaK
 aaK
 aaK
-aaK
-aaK
-bnO
+aaJ
+bfD
+brz
 aaK
 boc
 aUA
@@ -43299,7 +44331,7 @@ aAk
 aBk
 aBE
 aBE
-aBE
+bte
 aKH
 aAV
 aSu
@@ -43317,13 +44349,13 @@ bjh
 bju
 bjE
 bjN
-asY
-asY
-asY
-asY
-asY
-asY
-asY
+blZ
+bnT
+bnT
+bnT
+bnT
+bnT
+blZ
 uNM
 asY
 asY
@@ -43331,9 +44363,9 @@ aUB
 asY
 asY
 asY
-asY
-asg
-asY
+blZ
+bpF
+blZ
 asY
 asY
 aVo
@@ -43518,14 +44550,14 @@ biV
 bji
 bjg
 biR
-ioH
-aaK
-aaK
-aaK
-aaK
-aaK
-aaK
-aaK
+bnX
+aaJ
+aaJ
+aaJ
+aaJ
+aaJ
+aaJ
+aaJ
 qEe
 aaK
 aaK
@@ -43533,9 +44565,9 @@ aUA
 aaK
 aaK
 aaK
-aaK
-aUA
-aaK
+aaJ
+bpP
+aaJ
 aaK
 aaK
 aUA
@@ -43729,14 +44761,14 @@ aaK
 aaK
 aaK
 aoH
-aSF
+bch
 aaK
 aUA
 aaK
 boc
 aTB
 aTB
-aUQ
+bqo
 aTB
 aTB
 aaK
@@ -44364,7 +45396,7 @@ aPd
 baE
 aPb
 aPh
-aPp
+bsX
 aPE
 aPA
 aPA
@@ -44373,7 +45405,7 @@ aQj
 aQj
 aQj
 aQj
-aQj
+btt
 aPo
 aQI
 aQM
@@ -44566,7 +45598,7 @@ aPd
 baE
 aPb
 aPh
-aPp
+bsX
 aPB
 aPN
 aPA
@@ -44768,7 +45800,7 @@ aPd
 baE
 aPb
 aPh
-aPp
+bsX
 aPC
 aPN
 aPA
@@ -44970,7 +46002,7 @@ aPd
 baE
 aPb
 aPh
-aPp
+bsX
 aPE
 aPA
 aPA
@@ -44979,7 +46011,7 @@ aQk
 aQk
 aQk
 aQk
-aQk
+btu
 aPo
 aQI
 aQM
@@ -45592,7 +46624,7 @@ aPr
 aQU
 aQW
 aPb
-aPb
+bub
 aPZ
 aPZ
 aoG
@@ -45727,7 +46759,7 @@ aBp
 aPz
 aeW
 apS
-aWM
+btQ
 bfs
 aFg
 aFg
@@ -45794,7 +46826,7 @@ aPd
 aPd
 aQX
 aPb
-aPb
+buc
 aPZ
 aPZ
 aoG
@@ -46014,7 +47046,7 @@ aoG
 aoG
 abs
 abH
-aeQ
+aYp
 abH
 adH
 aeT
@@ -46198,7 +47230,7 @@ aPd
 aPd
 aQX
 aPb
-aPb
+buc
 aPZ
 aPZ
 aoG
@@ -46400,7 +47432,7 @@ aPm
 aQS
 aQW
 aPb
-aPb
+bub
 aPZ
 aPZ
 aoG
@@ -46990,7 +48022,7 @@ aPd
 baE
 aPb
 aPh
-aPv
+bsY
 aPK
 aPH
 aPH
@@ -46999,7 +48031,7 @@ aQn
 aQn
 aQn
 aQn
-aQn
+btv
 aPu
 aQJ
 aQP
@@ -47192,7 +48224,7 @@ aPd
 baE
 aPb
 aPh
-aPv
+bsY
 kmM
 aPR
 aPH
@@ -47394,7 +48426,7 @@ aPd
 baE
 aPb
 aPh
-aPv
+bsY
 aPJ
 aPR
 aPH
@@ -47596,7 +48628,7 @@ aPd
 baE
 aPb
 aPh
-aPv
+bsY
 aPK
 aPH
 aPH
@@ -47605,7 +48637,7 @@ aQo
 aQo
 aQo
 aQo
-aQo
+btw
 aPu
 aQJ
 aQP
@@ -49378,7 +50410,7 @@ aGw
 aAy
 aFn
 amj
-aGW
+btW
 afk
 auI
 aUc
@@ -49580,7 +50612,7 @@ aGw
 aGQ
 aEW
 amj
-aGW
+btW
 eKq
 aHr
 aUd
@@ -49782,7 +50814,7 @@ aGw
 aEU
 apX
 aFF
-aGR
+aTv
 eKq
 eKq
 eKq
@@ -49794,7 +50826,7 @@ aoH
 aaK
 aUA
 aaK
-aaK
+buj
 aoH
 aoH
 aoH
@@ -49984,19 +51016,19 @@ aGw
 aTu
 aTm
 aTm
-aTx
+teZ
 aTW
 aUb
 boZ
 aUg
-aHQ
+aHs
 akH
 aoH
 bpo
 aaK
 aUA
 aaK
-aaK
+buk
 aoH
 aoH
 aoH
@@ -50784,7 +51816,7 @@ aCq
 aCq
 its
 its
-apG
+aHx
 aFn
 aFA
 aTb
@@ -50993,7 +52025,7 @@ aTc
 aES
 aGR
 akH
-aTN
+bug
 aGP
 aLm
 aIZ
@@ -51612,7 +52644,7 @@ aaK
 aaK
 aaK
 arF
-aaK
+bul
 aoH
 aoH
 aoH
@@ -51804,7 +52836,7 @@ aFC
 aLd
 aGZ
 kpW
-aHx
+bui
 aHs
 aUj
 aHQ
@@ -51814,7 +52846,7 @@ aoH
 aaK
 aaK
 aaK
-aaK
+aRi
 aoH
 aoH
 bpG
@@ -53205,7 +54237,7 @@ bRo
 bRo
 arw
 aAI
-aAI
+auJ
 aAI
 aRG
 bRo
@@ -53732,13 +54764,13 @@ aCq
 abl
 abl
 awn
-agO
-aun
-aFo
-aun
-age
+awh
 aun
 awx
+aun
+agO
+aun
+aBa
 abl
 abl
 abl
@@ -53839,11 +54871,11 @@ aoG
 abv
 abv
 agv
-agf
+bum
 auD
 aHB
 agf
-agf
+bum
 alL
 abv
 auA
@@ -53934,16 +54966,16 @@ aCq
 afi
 afL
 aun
-agO
+awh
+aun
+awh
 aun
 agO
 aun
-age
-aun
-aHA
+aBD
 abl
-age
-aJk
+agO
+aFo
 atJ
 aJp
 aND
@@ -54134,15 +55166,15 @@ aCq
 aoG
 aoG
 afi
-age
+agO
+aun
+awh
+aun
+awh
 aun
 agO
 aun
 agO
-aun
-age
-aun
-age
 aJh
 aun
 aun
@@ -54336,7 +55368,7 @@ aoG
 aoG
 aCq
 afi
-age
+agO
 aun
 aAc
 aun
@@ -54421,7 +55453,7 @@ aqd
 aqd
 aHz
 aGE
-aEB
+aMG
 aqd
 aAe
 aTp
@@ -54538,12 +55570,12 @@ aoG
 aoG
 aCq
 afi
-agO
+awh
 aun
 aun
 aun
 aun
-aun
+asg
 aun
 aun
 aun
@@ -54624,7 +55656,7 @@ aqd
 aEE
 aGE
 aEE
-aEE
+aTN
 aEE
 aGE
 aRX
@@ -54740,7 +55772,7 @@ aoG
 aCq
 aCq
 afi
-age
+agO
 aun
 aAc
 aie
@@ -54831,7 +55863,7 @@ aJc
 aTq
 aRX
 aGM
-aGc
+buh
 aHf
 aRX
 aHC
@@ -54852,7 +55884,7 @@ aoG
 sJC
 sJC
 atc
-auJ
+bun
 bph
 bhQ
 aJW
@@ -54942,15 +55974,15 @@ aoG
 aCq
 aCq
 afi
-age
+agO
+aun
+awh
+aun
+awh
 aun
 agO
 aun
 agO
-aun
-age
-aun
-age
 aJh
 aun
 aun
@@ -55146,17 +56178,17 @@ aCq
 afi
 aun
 aun
-agO
+awh
+aun
+awh
 aun
 agO
 aun
-age
-aun
-aHA
+aBD
 abl
-aOc
-age
-age
+aBQ
+agO
+agO
 aNC
 aOb
 aOg
@@ -55348,13 +56380,13 @@ aCq
 abl
 abl
 awv
-agO
+awh
+aun
+awh
 aun
 agO
 aun
-age
-aun
-age
+agO
 abl
 abl
 abl
@@ -56065,7 +57097,7 @@ aoG
 uYU
 uYU
 amn
-aMG
+buo
 bdC
 aTV
 bdH
@@ -59210,7 +60242,7 @@ aue
 aue
 aCq
 aCq
-aCq
+pXC
 aCq
 aCq
 aCq
@@ -59611,8 +60643,8 @@ aCq
 aue
 aue
 aue
-aCq
-aCq
+pXC
+pXC
 aCq
 aCq
 aCq
@@ -59814,8 +60846,8 @@ aue
 aue
 aue
 aue
-aCq
-aCq
+qML
+gUS
 aCq
 aoG
 aoG
@@ -60015,9 +61047,9 @@ aCq
 aCq
 aue
 aue
-aue
+sBK
 aCq
-aCq
+pXC
 aCq
 aCq
 aoG
@@ -64355,7 +65387,7 @@ ajg
 bee
 ajg
 alU
-ajg
+bsw
 ajg
 aML
 ajg
@@ -64398,7 +65430,7 @@ aoG
 ahH
 azc
 axb
-nzh
+ahJ
 hoR
 ahJ
 axb
@@ -64557,7 +65589,7 @@ ajr
 bef
 ajh
 ajh
-ajh
+bsx
 ajh
 ajh
 ajh
@@ -64600,9 +65632,9 @@ aoG
 ahH
 ahS
 axc
-axn
-qML
-mvB
+xDf
+axc
+axc
 axn
 axc
 ahH
@@ -64757,11 +65789,11 @@ ajP
 ajP
 ajm
 beg
-ajm
+bsv
 ajP
 ajP
 ajP
-ajP
+bsz
 ajP
 ajP
 aMM
@@ -65970,11 +67002,11 @@ auu
 auu
 bel
 ajm
+bsv
 ajm
 ajm
 ajm
-ajm
-ajm
+bsv
 aMv
 ajm
 aug
@@ -66174,7 +67206,7 @@ aMI
 ajn
 ajn
 ajn
-ajn
+bsy
 ajn
 ajn
 ajn

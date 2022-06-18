@@ -6,12 +6,12 @@
 /obj/effect/step_trigger/teleporter/random{
 	affect_ghosts = 1;
 	name = "escapeshuttle_leave";
-	teleport_x = 25;
-	teleport_x_offset = 245;
-	teleport_y = 25;
-	teleport_y_offset = 245;
-	teleport_z = 6;
-	teleport_z_offset = 6
+	teleport_x = 3;
+	teleport_x_offset = 197;
+	teleport_y = 3;
+	teleport_y_offset = 197;
+	teleport_z = 2;
+	teleport_z_offset = 2
 	},
 /turf/space{
 	icon_state = "black"
@@ -78,16 +78,17 @@
 "ak" = (
 /obj/structure/table/standard,
 /obj/item/weapon/storage/firstaid/regular{
-	pixel_y = 8
+	pixel_y = 0
 	},
 /obj/item/weapon/storage/firstaid/o2{
-	pixel_y = 4
+	pixel_y = 0
 	},
 /obj/item/weapon/storage/firstaid/fire,
 /obj/machinery/light{
 	dir = 8
 	},
 /obj/effect/floor_decal/industrial/outline/grey,
+/obj/item/weapon/storage/firstaid/trauma,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ERT/kellion)
 "al" = (
@@ -134,8 +135,17 @@
 /turf/simulated/floor/tiled/dark,
 /area/ERT/kellion)
 "as" = (
-/obj/structure/closet/secure_closet/kellion/engineer,
-/turf/simulated/floor/tiled/dark,
+/obj/item/stack/material/steel/fifty{
+	pixel_y = 6
+	},
+/obj/item/stack/material/steel/fifty{
+	pixel_y = 4
+	},
+/obj/item/stack/material/steel/fifty{
+	pixel_y = 2
+	},
+/obj/structure/table/rack,
+/turf/simulated/floor/tiled/dark/monotile,
 /area/ERT/kellion)
 "at" = (
 /obj/machinery/light{
@@ -179,20 +189,6 @@
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ERT/kellion)
 "aA" = (
-/obj/structure/table/standard,
-/obj/item/stack/material/steel/fifty{
-	pixel_y = 6
-	},
-/obj/item/stack/material/steel/fifty{
-	pixel_y = 4
-	},
-/obj/item/stack/material/steel/fifty{
-	pixel_y = 2
-	},
-/turf/simulated/floor/tiled/dark/monotile,
-/area/ERT/kellion)
-"aB" = (
-/obj/structure/table/standard,
 /obj/item/stack/cable_coil/random{
 	pixel_y = 8
 	},
@@ -203,6 +199,20 @@
 /obj/machinery/recharger/wallcharger{
 	pixel_x = 32
 	},
+/obj/structure/table/rack,
+/turf/simulated/floor/tiled/dark/monotile,
+/area/ERT/kellion)
+"aB" = (
+/obj/item/stack/material/plasteel/fifty{
+	pixel_y = 6
+	},
+/obj/item/stack/material/plasteel/fifty{
+	pixel_y = 4
+	},
+/obj/item/stack/material/plasteel/fifty{
+	pixel_y = 2
+	},
+/obj/structure/table/rack,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ERT/kellion)
 "aC" = (
@@ -218,20 +228,6 @@
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ERT/kellion)
 "aE" = (
-/obj/structure/table/standard,
-/obj/item/stack/material/plasteel/fifty{
-	pixel_y = 6
-	},
-/obj/item/stack/material/plasteel/fifty{
-	pixel_y = 4
-	},
-/obj/item/stack/material/plasteel/fifty{
-	pixel_y = 2
-	},
-/turf/simulated/floor/tiled/dark/monotile,
-/area/ERT/kellion)
-"aF" = (
-/obj/structure/table/standard,
 /obj/item/stack/material/glass/reinforced/fifty{
 	pixel_y = 6
 	},
@@ -244,7 +240,14 @@
 /obj/machinery/recharger/wallcharger{
 	pixel_x = 32
 	},
+/obj/structure/table/rack,
 /turf/simulated/floor/tiled/dark/monotile,
+/area/ERT/kellion)
+"aF" = (
+/obj/structure/closet/secure_closet/kellion/engineer,
+/obj/item/weapon/gun/energy/cutter/plasma,
+/obj/item/weapon/cell/plasmacutter,
+/turf/simulated/floor/tiled/dark,
 /area/ERT/kellion)
 "aG" = (
 /obj/structure/table/rack,
@@ -424,12 +427,12 @@
 /obj/effect/step_trigger/teleporter/random{
 	affect_ghosts = 1;
 	name = "escapeshuttle_leave";
-	teleport_x = 25;
-	teleport_x_offset = 245;
-	teleport_y = 25;
-	teleport_y_offset = 245;
-	teleport_z = 6;
-	teleport_z_offset = 6
+	teleport_x = 3;
+	teleport_x_offset = 197;
+	teleport_y = 3;
+	teleport_y_offset = 197;
+	teleport_z = 2;
+	teleport_z_offset = 2
 	},
 /turf/space{
 	icon_state = "black"
@@ -785,22 +788,22 @@
 /obj/effect/step_trigger/teleporter/random{
 	affect_ghosts = 1;
 	name = "escapeshuttle_leave";
-	teleport_x = 25;
-	teleport_x_offset = 245;
-	teleport_y = 25;
-	teleport_y_offset = 245;
-	teleport_z = 6;
-	teleport_z_offset = 6
+	teleport_x = 3;
+	teleport_x_offset = 197;
+	teleport_y = 3;
+	teleport_y_offset = 197;
+	teleport_z = 2;
+	teleport_z_offset = 2
 	},
 /obj/effect/step_trigger/teleporter/random{
 	affect_ghosts = 1;
 	name = "escapeshuttle_leave";
-	teleport_x = 25;
-	teleport_x_offset = 245;
-	teleport_y = 25;
-	teleport_y_offset = 245;
-	teleport_z = 6;
-	teleport_z_offset = 6
+	teleport_x = 3;
+	teleport_x_offset = 197;
+	teleport_y = 3;
+	teleport_y_offset = 197;
+	teleport_z = 2;
+	teleport_z_offset = 2
 	},
 /turf/space{
 	icon_state = "black"
@@ -973,16 +976,11 @@
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ERT/valor/shuttle)
 "cz" = (
-/obj/structure/window/reinforced{
-	dir = 4;
-	icon_state = "rwindow"
-	},
-/turf/simulated/floor/plating,
-/turf/simulated/shuttle/wall{
-	dir = 4;
-	icon_state = "diagonalWall3"
-	},
-/area/supply/dock)
+/obj/item/weapon/storage/belt/utility/full,
+/obj/item/weapon/storage/box/lights,
+/obj/structure/table/rack,
+/turf/simulated/floor/tiled/dark/monotile,
+/area/ERT/kellion)
 "cA" = (
 /obj/structure/table/standard,
 /obj/item/weapon/storage/toolbox/mechanical,
@@ -1397,12 +1395,12 @@
 /obj/effect/step_trigger/teleporter/random{
 	affect_ghosts = 1;
 	name = "escapeshuttle_leave";
-	teleport_x = 25;
-	teleport_x_offset = 245;
-	teleport_y = 25;
-	teleport_y_offset = 245;
-	teleport_z = 6;
-	teleport_z_offset = 6
+	teleport_x = 3;
+	teleport_x_offset = 197;
+	teleport_y = 3;
+	teleport_y_offset = 197;
+	teleport_z = 2;
+	teleport_z_offset = 2
 	},
 /turf/space/transit/north,
 /area/space)
@@ -1589,12 +1587,12 @@
 /obj/effect/step_trigger/teleporter/random{
 	affect_ghosts = 1;
 	name = "escapeshuttle_leave";
-	teleport_x = 25;
-	teleport_x_offset = 245;
-	teleport_y = 25;
-	teleport_y_offset = 245;
-	teleport_z = 6;
-	teleport_z_offset = 6
+	teleport_x = 3;
+	teleport_x_offset = 197;
+	teleport_y = 3;
+	teleport_y_offset = 197;
+	teleport_z = 2;
+	teleport_z_offset = 2
 	},
 /turf/space,
 /area/space)
@@ -2408,8 +2406,8 @@
 	},
 /turf/simulated/floor/plating,
 /turf/simulated/shuttle/wall{
-	dir = 5;
-	icon_state = "wall3"
+	dir = 4;
+	icon_state = "diagonalWall3"
 	},
 /area/supply/dock)
 "fx" = (
@@ -2822,6 +2820,17 @@
 	},
 /turf/simulated/floor/dank/slides,
 /area/ERT/valor)
+"gp" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	icon_state = "rwindow"
+	},
+/turf/simulated/floor/plating,
+/turf/simulated/shuttle/wall{
+	dir = 5;
+	icon_state = "wall3"
+	},
+/area/supply/dock)
 "gq" = (
 /obj/structure/shuttle/engine/heater,
 /obj/structure/window/reinforced{
@@ -3111,6 +3120,15 @@
 	},
 /turf/simulated/floor/dank/golf_gray,
 /area/ERT/valor/firingrange)
+"hb" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
+	},
+/obj/structure/railing/mapped{
+	dir = 4
+	},
+/turf/unsimulated/floor/rescue_base,
+/area/ERT/escapebase)
 "hc" = (
 /turf/simulated/floor/plating,
 /turf/simulated/shuttle/wall{
@@ -3306,6 +3324,18 @@
 	},
 /turf/simulated/floor/plating,
 /area/supply/dock)
+"hw" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8;
+	icon_state = "warning"
+	},
+/obj/structure/railing/mapped{
+	dir = 8;
+	icon_state = "railing0";
+	pixel_w = 5
+	},
+/turf/unsimulated/floor/rescue_base,
+/area/ERT/escapebase)
 "hx" = (
 /obj/machinery/light,
 /turf/simulated/floor/plating,
@@ -3403,6 +3433,32 @@
 /obj/machinery/vending/medical,
 /turf/simulated/floor/tiled/monotile,
 /area/ERT/deliverance)
+"hI" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1;
+	icon_state = "warning"
+	},
+/obj/structure/railing/mapped{
+	dir = 1
+	},
+/turf/unsimulated/floor/rescue_base,
+/area/ERT/escapebase)
+"hJ" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1;
+	icon_state = "warning"
+	},
+/turf/unsimulated/floor/rescue_base,
+/area/ERT/escapebase)
+"hK" = (
+/obj/effect/step_trigger/thrower{
+	affect_ghosts = 1;
+	direction = 8;
+	name = "thrower_throwdown";
+	tiles = 0
+	},
+/turf/space/bluespace,
+/area/space)
 "hL" = (
 /obj/machinery/telecomms/broadcaster/preset_cent,
 /turf/unsimulated/floor{
@@ -5186,6 +5242,13 @@
 /obj/structure/railing/mapped,
 /turf/unsimulated/floor/rescue_base,
 /area/ERT/escapebase)
+"HV" = (
+/obj/effect/shuttle_landmark/escape3/end,
+/turf/unsimulated/floor{
+	icon = 'icons/turf/floors.dmi';
+	icon_state = "plating"
+	},
+/area/ERT/escapebase)
 "IW" = (
 /obj/machinery/vending/boozeomat,
 /turf/unsimulated/floor/rescue_base,
@@ -5224,6 +5287,33 @@
 /obj/machinery/door/airlock,
 /turf/unsimulated/floor/rescue_base,
 /area/ERT/escapebase)
+"Me" = (
+/obj/effect/shuttle_landmark/escape3/transit,
+/turf/space/bluespace,
+/area/space)
+"Mw" = (
+/obj/effect/step_trigger/teleporter/random{
+	affect_ghosts = 1;
+	name = "escapeshuttle_leave";
+	teleport_x = 3;
+	teleport_x_offset = 197;
+	teleport_y = 3;
+	teleport_y_offset = 197;
+	teleport_z = 2;
+	teleport_z_offset = 2
+	},
+/obj/effect/step_trigger/teleporter/random{
+	affect_ghosts = 1;
+	name = "escapeshuttle_leave";
+	teleport_x = 3;
+	teleport_x_offset = 197;
+	teleport_y = 3;
+	teleport_y_offset = 197;
+	teleport_z = 2;
+	teleport_z_offset = 2
+	},
+/turf/space,
+/area/space)
 "MI" = (
 /obj/effect/shuttle_landmark/escape_fix/transit,
 /turf/space/bluespace,
@@ -5231,12 +5321,6 @@
 "MM" = (
 /turf/unsimulated/floor/rescue_base,
 /area/ERT/escapebase)
-"PT" = (
-/obj/structure/table/standard,
-/obj/item/weapon/storage/belt/utility/full,
-/obj/item/weapon/storage/box/lights,
-/turf/simulated/floor/tiled/dark/monotile,
-/area/ERT/kellion)
 "Qk" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/closet/secure_closet/deliverance/berserker,
@@ -7145,7 +7229,7 @@ an
 aw
 es
 aD
-as
+aF
 aM
 gu
 et
@@ -7547,8 +7631,8 @@ an
 an
 an
 kw
-aA
-aE
+as
+aB
 aJ
 kt
 kt
@@ -7951,9 +8035,9 @@ an
 an
 an
 bs
-aB
-aF
-PT
+aA
+aE
+cz
 ai
 kv
 es
@@ -27107,17 +27191,17 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+dQ
+dQ
+dQ
+dQ
+dQ
+dQ
+dQ
+dQ
+dQ
+dQ
+Mw
 aa
 aa
 aa
@@ -27309,17 +27393,17 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+dQ
+hK
+hK
+hK
+hK
+hK
+hK
+hK
+hK
+hK
+dQ
 aa
 aa
 aa
@@ -27511,17 +27595,17 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+dQ
+hK
+hO
+hO
+hO
+hO
+hO
+hO
+Me
+hK
+dQ
 aa
 aa
 aa
@@ -27713,17 +27797,17 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+dQ
+hK
+hO
+hO
+hO
+hO
+hO
+hO
+hO
+hK
+dQ
 aa
 aa
 aa
@@ -27915,17 +27999,17 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+dQ
+hK
+hO
+hO
+hO
+hO
+hO
+hO
+hO
+hK
+dQ
 aa
 aa
 aa
@@ -28117,17 +28201,17 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+dQ
+hK
+hO
+hO
+hO
+hO
+hO
+hO
+hO
+hK
+dQ
 aa
 aa
 aa
@@ -28319,17 +28403,17 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+dQ
+hK
+hO
+hO
+hO
+hO
+hO
+hO
+hO
+hK
+dQ
 aa
 aa
 aa
@@ -28521,17 +28605,17 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+dQ
+hK
+hO
+hO
+hO
+hO
+hO
+hO
+hO
+hK
+dQ
 aa
 aa
 aa
@@ -28669,6 +28753,16 @@ gK
 gK
 gK
 gK
+gK
+gK
+gK
+gK
+gK
+gK
+gK
+gK
+gK
+gK
 aa
 aa
 aa
@@ -28713,27 +28807,17 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+dQ
+hK
+hO
+hO
+hO
+hO
+hO
+hO
+hO
+hK
+dQ
 aa
 aa
 aa
@@ -28870,6 +28954,16 @@ hR
 hR
 hR
 hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
 gK
 aa
 aa
@@ -28915,27 +29009,17 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+dQ
+hK
+hO
+hO
+hO
+hO
+hO
+hO
+hO
+hK
+dQ
 aa
 aa
 aa
@@ -29071,6 +29155,16 @@ jj
 jj
 jj
 MM
+MM
+MM
+MM
+MM
+MM
+MM
+MM
+MM
+MM
+MM
 hR
 gK
 aa
@@ -29117,27 +29211,17 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+dQ
+hK
+hO
+hO
+hO
+hO
+hO
+hO
+hO
+hK
+dQ
 aa
 aa
 aa
@@ -29273,6 +29357,16 @@ xu
 xu
 Ar
 UJ
+MM
+hb
+hb
+hb
+hb
+hb
+hb
+hb
+MM
+MM
 hR
 gK
 aa
@@ -29319,27 +29413,17 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+dQ
+hK
+hO
+hO
+hO
+hO
+hO
+hO
+hO
+hK
+dQ
 aa
 aa
 aa
@@ -29475,6 +29559,16 @@ xu
 xu
 xu
 UJ
+os
+xu
+xu
+xu
+xu
+xu
+xu
+HV
+hI
+MM
 hR
 gK
 aa
@@ -29521,27 +29615,17 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+dQ
+hK
+hO
+hO
+hO
+hO
+hO
+hO
+hO
+hK
+dQ
 aa
 aa
 aa
@@ -29677,6 +29761,16 @@ xu
 xu
 xu
 UJ
+os
+xu
+xu
+xu
+xu
+xu
+xu
+xu
+hI
+MM
 hR
 gK
 aa
@@ -29723,27 +29817,17 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+dQ
+hK
+hO
+hO
+hO
+hO
+hO
+hO
+hO
+hK
+dQ
 aa
 aa
 aa
@@ -29879,6 +29963,16 @@ xu
 xu
 xu
 UJ
+os
+xu
+xu
+xu
+xu
+xu
+xu
+xu
+hI
+MM
 hR
 gK
 aa
@@ -29925,27 +30019,17 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+dQ
+hK
+hO
+hO
+hO
+hO
+hO
+hO
+hO
+hK
+dQ
 aa
 aa
 aa
@@ -30081,6 +30165,16 @@ xu
 xu
 xu
 UJ
+os
+xu
+xu
+xu
+xu
+xu
+xu
+xu
+hI
+MM
 hR
 gK
 aa
@@ -30127,27 +30221,17 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+dQ
+hK
+hO
+hO
+hO
+hO
+hO
+hO
+hO
+hK
+dQ
 aa
 aa
 aa
@@ -30283,6 +30367,16 @@ xu
 xu
 xu
 UJ
+os
+xu
+xu
+xu
+xu
+xu
+xu
+xu
+hI
+MM
 hR
 gK
 aa
@@ -30329,27 +30423,17 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+dQ
+hK
+hO
+hO
+hO
+hO
+hO
+hO
+hO
+hK
+dQ
 aa
 aa
 aa
@@ -30485,6 +30569,16 @@ xu
 xu
 xu
 UJ
+os
+xu
+xu
+xu
+xu
+xu
+xu
+xu
+hI
+MM
 hR
 gK
 aa
@@ -30531,27 +30625,17 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+dQ
+hK
+hO
+hO
+hO
+hO
+hO
+hO
+hO
+hK
+dQ
 aa
 aa
 aa
@@ -30687,6 +30771,16 @@ xu
 xu
 xu
 UJ
+MM
+xu
+xu
+xu
+xu
+xu
+xu
+xu
+hJ
+MM
 hR
 gK
 aa
@@ -30733,27 +30827,17 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+dQ
+hK
+hK
+hK
+hK
+hK
+hK
+hK
+hK
+hK
+dQ
 aa
 aa
 aa
@@ -30889,6 +30973,16 @@ mb
 mb
 mb
 MM
+MM
+xu
+xu
+xu
+xu
+xu
+xu
+xu
+hJ
+MM
 hR
 gK
 aa
@@ -30935,27 +31029,17 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+dQ
+dQ
+dQ
+dQ
+dQ
+dQ
+dQ
+dQ
+dQ
+dQ
+Mw
 aa
 aa
 aa
@@ -31091,18 +31175,18 @@ MM
 MM
 MM
 MM
+os
+xu
+xu
+xu
+xu
+xu
+xu
+xu
+hI
+MM
 hR
 gK
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
 aa
 aa
 aa
@@ -31293,18 +31377,18 @@ jj
 jj
 jj
 MM
+os
+xu
+xu
+xu
+xu
+xu
+xu
+xu
+hI
+MM
 hR
 gK
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
 aa
 aa
 aa
@@ -31495,18 +31579,18 @@ xu
 xu
 xf
 UJ
+os
+xu
+xu
+xu
+xu
+xu
+xu
+xu
+hI
+MM
 hR
 gK
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
 aa
 aa
 aa
@@ -31697,18 +31781,18 @@ xu
 xu
 xu
 UJ
+os
+xu
+xu
+xu
+xu
+xu
+xu
+xu
+hI
+MM
 hR
 gK
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
 aa
 aa
 aa
@@ -31899,18 +31983,18 @@ xu
 xu
 xu
 UJ
+os
+xu
+xu
+xu
+xu
+xu
+xu
+xu
+hI
+MM
 hR
 gK
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
 aa
 aa
 aa
@@ -32101,18 +32185,18 @@ xu
 xu
 xu
 UJ
+os
+xu
+xu
+xu
+xu
+xu
+xu
+xu
+hI
+MM
 hR
 gK
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
 aa
 aa
 aa
@@ -32303,18 +32387,18 @@ xu
 xu
 xu
 UJ
+os
+xu
+xu
+xu
+xu
+xu
+xu
+xu
+hI
+MM
 hR
 gK
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
 aa
 aa
 aa
@@ -32505,18 +32589,18 @@ xu
 xu
 xu
 UJ
+os
+xu
+xu
+xu
+xu
+xu
+xu
+xu
+hI
+MM
 hR
 gK
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
 aa
 aa
 aa
@@ -32707,18 +32791,18 @@ xu
 xu
 xu
 UJ
+MM
+hw
+hw
+hw
+hw
+hw
+hw
+hw
+MM
+MM
 hR
 gK
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
 aa
 aa
 aa
@@ -32909,18 +32993,18 @@ xu
 xu
 xu
 UJ
+MM
+MM
+MM
+MM
+MM
+MM
+MM
+MM
+MM
+MM
 hR
 gK
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
 aa
 aa
 aa
@@ -33111,18 +33195,18 @@ mb
 mb
 mb
 MM
+MM
+MM
+MM
+MM
+MM
+MM
+MM
+MM
+MM
+MM
 hR
 gK
-gK
-gK
-gK
-gK
-gK
-gK
-gK
-aa
-aa
-aa
 aa
 aa
 aa
@@ -33208,10 +33292,10 @@ jl
 aa
 gK
 hn
-cz
+fw
 hu
 hv
-fw
+gp
 hn
 gK
 ab
@@ -33313,18 +33397,18 @@ MM
 MM
 MM
 MM
-hR
-hR
-hR
-hR
+MM
+MM
+MM
+MM
+MM
+MM
+MM
 hR
 hR
 hR
 hR
 gK
-aa
-aa
-aa
 aa
 aa
 aa
@@ -33524,9 +33608,9 @@ MM
 MM
 hR
 gK
-aa
-aa
-aa
+gK
+gK
+gK
 aa
 aa
 aa
