@@ -2051,6 +2051,11 @@
 	d2 = 4;
 	icon_state = "0-4"
 	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/reinforced/airless,
 /area/mining_colony/interior/enginieering/reactor)
 "afN" = (
@@ -27445,6 +27450,14 @@
 	},
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/enginieering/reactor_control)
+"dyv" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/reinforced/airless,
+/area/mining_colony/interior/enginieering/reactor)
 "egA" = (
 /obj/machinery/firealarm{
 	dir = 1;
@@ -27621,6 +27634,14 @@
 /obj/machinery/telecomms/server/presets/security,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/enginieering/telecomms)
+"iMy" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/reinforced/airless,
+/area/mining_colony/interior/enginieering/reactor)
 "jiM" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/interior/medbay/chemestry)
@@ -27709,6 +27730,17 @@
 	},
 /turf/simulated/floor/tiled/dark/monotile,
 /area/mining_colony/interior/enginieering/telecomms_control)
+"kCN" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/interior/enginieering/reactor)
 "kIF" = (
 /obj/effect/wallframe_spawn/reinforced,
 /obj/machinery/door/firedoor,
@@ -27816,6 +27848,19 @@
 /obj/structure/lattice,
 /turf/simulated/open,
 /area/mining_colony/security/interrogation_room)
+"maS" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/interior/enginieering/reactor)
 "mgv" = (
 /obj/structure/closet/secure_closet/engineering_welding,
 /obj/effect/floor_decal/dank/outline,
@@ -28016,6 +28061,20 @@
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony)
+"pYM" = (
+/obj/effect/wallframe_spawn/reinforced_phoron,
+/obj/machinery/door/blast/regular/open{
+	icon_state = "pdoor0";
+	id = "oopsies_you_are_dead";
+	name = "Reactor Shutters"
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/dank/mono,
+/area/mining_colony/interior/enginieering/reactor)
 "qfX" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
@@ -28161,6 +28220,14 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/mining_colony/interior/uni_church)
+"sXS" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/reinforced/airless,
+/area/mining_colony/interior/enginieering/reactor)
 "sYx" = (
 /obj/effect/floor_decal/corner_techfloor_grid/full{
 	dir = 4
@@ -28291,6 +28358,19 @@
 /obj/machinery/telecomms/receiver/preset_cent,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/enginieering/telecomms)
+"vtM" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/interior/enginieering/reactor)
 "vxs" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/interior/medbay/med_ward)
@@ -40087,8 +40167,8 @@ afm
 afa
 afa
 afM
-afa
-afa
+dyv
+sXS
 afa
 aef
 aht
@@ -40290,7 +40370,7 @@ afa
 afa
 agl
 afa
-afa
+iMy
 afa
 aef
 aht
@@ -40492,7 +40572,7 @@ afa
 afa
 agl
 afa
-afa
+iMy
 afa
 aef
 aht
@@ -40694,7 +40774,7 @@ afa
 afa
 agl
 afa
-afa
+iMy
 afa
 aef
 aht
@@ -40896,7 +40976,7 @@ aef
 aef
 agm
 aef
-aef
+pYM
 aef
 acP
 aay
@@ -41098,7 +41178,7 @@ afn
 afF
 agn
 afF
-afn
+kCN
 afn
 aba
 aaj
@@ -41300,7 +41380,7 @@ aaj
 aaj
 mqH
 ntB
-ntB
+maS
 ntB
 ntB
 ntB
@@ -41502,7 +41582,7 @@ agP
 agP
 ahv
 agP
-agP
+vtM
 agP
 agP
 ahv
