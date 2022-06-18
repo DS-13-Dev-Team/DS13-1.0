@@ -14,6 +14,7 @@
 /obj/effect/floor_decal/corner/grey/three_quarters{
 	dir = 1
 	},
+/obj/machinery/store,
 /turf/simulated/floor/tiled/white,
 /area/mining_colony/interior/science/scienceoffices)
 "aae" = (
@@ -27467,6 +27468,10 @@
 "eNd" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/c12_deadspace/lockeroom)
+"eVR" = (
+/obj/machinery/store,
+/turf/simulated/floor/dank/golf_brown,
+/area/mining_colony/interior/shuttle_bay)
 "eZZ" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
@@ -27766,6 +27771,10 @@
 "lEJ" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/interior/science/lockeroom)
+"lLD" = (
+/obj/machinery/store,
+/turf/simulated/floor/plating,
+/area/mining_colony/interior/shuttle_bay/hangar)
 "lOr" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -27992,6 +28001,10 @@
 "pvf" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/interior/mining/toolstorage)
+"pLO" = (
+/obj/machinery/store,
+/turf/simulated/floor/tiled/white,
+/area/mining_colony/interior/medbay)
 "pTY" = (
 /obj/machinery/message_server,
 /obj/machinery/light{
@@ -40752,7 +40765,7 @@ bdn
 bdq
 aqr
 aoR
-agB
+pLO
 agB
 agB
 aoR
@@ -44574,7 +44587,7 @@ aUA
 aaK
 aoH
 aFO
-aIL
+eVR
 aMV
 aNv
 aNx
@@ -47019,7 +47032,7 @@ aPZ
 aPd
 aPd
 aPd
-aPd
+lLD
 aPd
 aPP
 aPZ
