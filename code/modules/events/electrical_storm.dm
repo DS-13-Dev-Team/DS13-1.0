@@ -18,7 +18,7 @@
 	..()
 	valid_apcs = list()
 	for(var/obj/machinery/power/apc/A in SSmachines.machinery)
-		if(A.z in affecting_z)
+		if(A.z in affecting_z && !A.storm_protected)
 			valid_apcs.Add(A)
 	endWhen = (severity * 60) + startWhen
 

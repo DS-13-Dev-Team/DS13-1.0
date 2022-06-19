@@ -5530,7 +5530,8 @@
 	dir = 1;
 	name = "north bump";
 	pixel_y = 15;
-	req_access = list(201)
+	req_access = list(201);
+	storm_protected = 1
 	},
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/shuttle_bay/shuttle_3)
@@ -7880,7 +7881,8 @@
 /obj/machinery/power/apc{
 	dir = 8;
 	name = "west bump";
-	pixel_x = -24
+	pixel_x = -24;
+	storm_protected = 1
 	},
 /turf/simulated/floor/dank/slides{
 	dir = 1
@@ -14137,7 +14139,8 @@
 /obj/machinery/power/apc{
 	dir = 8;
 	name = "west bump";
-	pixel_x = -24
+	pixel_x = -24;
+	storm_protected = 1
 	},
 /turf/simulated/floor/dank/slides{
 	dir = 1
@@ -14818,7 +14821,8 @@
 /obj/machinery/power/apc{
 	dir = 8;
 	name = "west bump";
-	pixel_x = -24
+	pixel_x = -24;
+	storm_protected = 1
 	},
 /turf/simulated/floor/dank/slides{
 	dir = 1

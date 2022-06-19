@@ -80,6 +80,7 @@
 	req_access = list(access_engineering)
 	clicksound = "button"
 	layer = ABOVE_WINDOW_LAYER
+	var/storm_protected = FALSE
 	var/needs_powerdown_sound
 	var/area/area
 	var/areastring = null
