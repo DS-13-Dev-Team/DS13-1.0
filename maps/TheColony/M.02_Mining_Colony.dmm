@@ -1059,7 +1059,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/start{
-	name = "Psychologist"
+	name = "Unitologist Chaplain"
 	},
 /turf/simulated/floor/carpet/blue2,
 /area/mining_colony/interior/uni_church)
@@ -24831,7 +24831,7 @@
 "bnh" = (
 /obj/structure/bed/chair,
 /obj/effect/landmark/start{
-	name = "Psychologist"
+	name = "Psychiatrist"
 	},
 /turf/simulated/floor/lino,
 /area/mining_colony/interior/medbay/med_ward)
