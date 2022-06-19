@@ -474,7 +474,7 @@ GLOBAL_LIST(additional_antag_types)
 					text += "<br><center><h3>The Marker is <span class ='danger'> angry!</h3></span></center>"
 				else if(escaped_necros > 6) // More than 7? Marker now has abandonment issues.
 					text += "<br><center><h3>The Marker now has <span class ='danger'> abandonment issues</span> and <span class='danger'>spent [rand(1500,150000)] credits in therapy to overcome this crippling condition!</h3></span></center>"
-		if(escaped_humans >= (GLOB.all_crew.len * 0.5)) // Half of the crew escaped? Big party. Survivor major.
+		if((GLOB.all_crew.len * 0.5) to INFINITY) // Half of the crew escaped? Big party. Survivor major.
 			round_finished = "Survivor Major"
 			text += "<br><h1><b><center><span class='success'>Survivor Major Victory!</span></center></b></h1>"
 			text += "<br><center>A majority of the survivors managed to evacuate!</center>"
