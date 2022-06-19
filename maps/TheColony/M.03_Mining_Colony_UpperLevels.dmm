@@ -20,20 +20,14 @@
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/security/upper)
 "ad" = (
-/obj/effect/floor_decal/dank/border{
-	dir = 4
+/obj/effect/wallframe_spawn/reinforced,
+/obj/machinery/door/blast/shutters/open{
+	icon_state = "ishimura_shutter_open";
+	id = s;
+	name = "Bridge Window Shutters"
 	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/dank/golf_brown,
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/dank/mono,
 /area/mining_colony/security/upper/commandofficers)
 "ae" = (
 /obj/item/modular_computer/console/preset/command,
@@ -44,16 +38,27 @@
 /turf/simulated/floor/dank/rectangles,
 /area/mining_colony/security/upper/commandofficers)
 "ag" = (
-/obj/structure/table/standard,
-/obj/item/weapon/gun/projectile/divet,
-/turf/simulated/floor/dank/golf_brown,
+/obj/machinery/door/airlock/command{
+	dir = 8;
+	name = "Bridge"
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/door/blast/shutters{
+	dir = 8;
+	id = "bridge_armory"
+	},
+/turf/simulated/floor/dank/rectangles,
 /area/mining_colony/security/upper/commandofficers)
 "ah" = (
 /obj/effect/wallframe_spawn/reinforced,
 /obj/machinery/door/blast/shutters/open{
 	icon_state = "ishimura_shutter_open";
 	id = "touch_some_grass";
-	name = "P-Sec Window Shutters"
+	name = "Bridge Window Shutters"
 	},
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/dank/mono,
@@ -112,9 +117,14 @@
 /area/mining_colony/security/upper)
 "au" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/upper/commandofficers)
@@ -152,11 +162,23 @@
 /turf/simulated/floor/dank/rectangles,
 /area/mining_colony/security/upper/commandofficers)
 "aB" = (
-/obj/structure/table/standard,
-/obj/random/accessory,
-/obj/random/ammo,
-/obj/random/hat,
-/turf/simulated/floor/dank/golf_brown,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/button/remote/blast_door{
+	id = "bridge_armory";
+	name = "Bridge Armory";
+	pixel_y = 23;
+	pixel_x = 1
+	},
+/obj/machinery/turretid/lethal{
+	control_area = "Brigde Corridor";
+	pixel_x = -1;
+	pixel_y = 37
+	},
+/turf/simulated/floor/dank/rectangles,
 /area/mining_colony/security/upper/commandofficers)
 "aC" = (
 /obj/structure/bed/chair/office{
@@ -315,9 +337,9 @@
 	pixel_y = -24
 	},
 /obj/structure/cable{
-	d1 = 1;
+	d1 = 4;
 	d2 = 8;
-	icon_state = "1-8"
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/upper/commandofficers)
@@ -414,6 +436,10 @@
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/upper)
 "bg" = (
+/obj/structure/bed/chair/comfy{
+	dir = 4;
+	icon_state = "comfychair_preview"
+	},
 /turf/simulated/floor/dank/golf_gray,
 /area/mining_colony/security/upper/sec_commander)
 "bh" = (
@@ -1053,13 +1079,13 @@
 /obj/effect/floor_decal/dank/border{
 	dir = 4
 	},
-/obj/structure/cable{
-	d2 = 8;
-	icon_state = "0-8"
-	},
 /obj/machinery/power/apc/high{
 	dir = 4;
 	pixel_x = 24
+	},
+/obj/structure/cable{
+	d2 = 2;
+	icon_state = "0-2"
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/upper/commandofficers)
@@ -1501,6 +1527,9 @@
 "dJ" = (
 /obj/structure/bed,
 /obj/item/weapon/bedsheet/captain,
+/obj/machinery/firealarm{
+	pixel_y = 24
+	},
 /turf/simulated/floor/dank/hardwood,
 /area/mining_colony/security/upper/director)
 "dK" = (
@@ -1882,7 +1911,6 @@
 /area/mining_colony/security/upper)
 "eC" = (
 /obj/structure/table/standard,
-/obj/item/weapon/gun/projectile/divet/empty,
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/upper/commandofficers)
 "eD" = (
@@ -1937,7 +1965,17 @@
 /obj/machinery/button/remote/blast_door{
 	id = "touch_some_grass";
 	name = "Window Shutters";
-	pixel_y = 28
+	pixel_y = 39
+	},
+/obj/machinery/button/remote/blast_door{
+	id = "46";
+	name = "Bridge Lockdown";
+	pixel_y = 31
+	},
+/obj/machinery/button/remote/blast_door{
+	id = "47";
+	name = "Bridge Hallway Lockdown";
+	pixel_y = 23
 	},
 /turf/simulated/floor/dank/rectangles,
 /area/mining_colony/security/upper/commandofficers)
@@ -2058,8 +2096,8 @@
 	pixel_y = 8
 	},
 /obj/machinery/button/remote/blast_door{
-	id = "shitcurity_lockdown";
-	name = "P-Sec Upper Floor Lockdown";
+	id = "touch_some_grass";
+	name = "Bridge Windows";
 	pixel_y = -2
 	},
 /turf/simulated/floor/dank/golf_brown,
@@ -2317,16 +2355,20 @@
 /turf/simulated/floor/dank/slides,
 /area/mining_colony/security/upper/bridge_corridor)
 "iw" = (
-/obj/effect/floor_decal/dank/border_corner_i{
-	dir = 4
-	},
+/obj/effect/wallframe_spawn/reinforced,
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
+	d2 = 2;
+	icon_state = "0-2";
+	dir = 8
 	},
-/turf/simulated/floor/dank/golf_brown,
-/area/mining_colony/security/upper/commandofficers)
+/obj/machinery/door/blast/shutters/open{
+	dir = 8;
+	icon_state = "ishimura_shutter_open";
+	id = "bridge_shutters";
+	name = "Bridge shutters"
+	},
+/turf/simulated/floor/dank/mono,
+/area/mining_colony/security/upper/bridge_corridor)
 "iP" = (
 /obj/machinery/camera/network/command{
 	dir = 8
@@ -2341,6 +2383,19 @@
 	dir = 1
 	},
 /area/mining_colony/security/upper/bridge_corridor)
+"jr" = (
+/obj/machinery/deployable/barrier,
+/obj/effect/floor_decal/industrial/outline/red,
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/security/upper/commandofficers)
+"jE" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/dank/rectangles,
+/area/mining_colony/security/upper/commandofficers)
 "ke" = (
 /obj/structure/bed,
 /obj/item/weapon/bedsheet/captain,
@@ -2381,6 +2436,15 @@
 	},
 /turf/simulated/floor/dank/rivets,
 /area/mining_colony/security/upper/cryo_room)
+"kM" = (
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8";
+	dir = 4
+	},
+/turf/simulated/floor/dank/golf_brown,
+/area/mining_colony/security/upper/commandofficers)
 "kR" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -2435,6 +2499,21 @@
 	dir = 1
 	},
 /area/mining_colony/security/upper/bridge_corridor)
+"lC" = (
+/obj/effect/wallframe_spawn/reinforced,
+/obj/structure/cable{
+	d2 = 2;
+	icon_state = "0-2";
+	dir = 8
+	},
+/obj/machinery/door/blast/shutters/open{
+	dir = 8;
+	icon_state = "ishimura_shutter_open";
+	id = "bridge_shutters";
+	name = "Bridge Shutters"
+	},
+/turf/simulated/floor/dank/mono,
+/area/mining_colony/security/upper/bridge_corridor)
 "lO" = (
 /obj/structure/bed/chair/office{
 	dir = 8;
@@ -2463,6 +2542,16 @@
 /obj/random/gloves,
 /turf/simulated/floor/dank/slides,
 /area/mining_colony/security/upper/bridge_corridor)
+"mn" = (
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
+/obj/machinery/light{
+	dir = 4;
+	icon_state = "tube_map"
+	},
+/turf/simulated/floor/dank/rectangles,
+/area/mining_colony/security/upper/commandofficers)
 "mv" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -2472,6 +2561,19 @@
 /turf/simulated/floor/dank/tech{
 	dir = 4
 	},
+/area/mining_colony/security/upper/bridge_corridor)
+"mF" = (
+/obj/machinery/door/airlock/command{
+	dir = 8;
+	name = "Bridge"
+	},
+/obj/machinery/door/blast/shutters/open{
+	dir = 8;
+	icon_state = "ishimura_shutter_open";
+	id = "bridge_shutters";
+	name = "Bridge shutters"
+	},
+/turf/simulated/floor/dank/mono,
 /area/mining_colony/security/upper/bridge_corridor)
 "mK" = (
 /obj/structure/bed,
@@ -2509,6 +2611,12 @@
 "nZ" = (
 /turf/simulated/open,
 /area/mining_colony/security/upper/bridge_corridor)
+"od" = (
+/obj/structure/toilet{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/freezer,
+/area/mining_colony/security/upper/director)
 "on" = (
 /obj/structure/railing/mapped,
 /turf/simulated/floor/dank/slides_end{
@@ -2563,6 +2671,13 @@
 	},
 /turf/simulated/floor/dank/hardwood,
 /area/mining_colony/security/upper/fl_office)
+"qy" = (
+/obj/machinery/door/airlock/command{
+	name = "Colony Director's Quarters";
+	req_access = list(100)
+	},
+/turf/simulated/floor/tiled/freezer,
+/area/mining_colony/security/upper/director)
 "qz" = (
 /obj/effect/floor_decal/dank/border{
 	dir = 4
@@ -2574,6 +2689,18 @@
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/upper/commandofficers)
+"qD" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/structure/cable{
+	icon_state = "1-4";
+	dir = 8
+	},
+/turf/simulated/floor/dank/slides{
+	dir = 8
+	},
+/area/mining_colony/security/upper/bridge_corridor)
 "ro" = (
 /obj/machinery/light{
 	dir = 1
@@ -2589,6 +2716,11 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/light,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/upper/commandofficers)
 "rK" = (
@@ -2604,6 +2736,12 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/command{
 	name = "Bridge"
+	},
+/obj/machinery/door/blast/shutters/open{
+	dir = 2;
+	icon_state = "ishimura_shutter_open";
+	id = "bridge_shutters";
+	name = "Bridge Shutters"
 	},
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/security/upper/commandofficers)
@@ -2747,6 +2885,25 @@
 	},
 /turf/simulated/floor/dank/slides,
 /area/mining_colony/security/upper/bridge_corridor)
+"vv" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/obj/structure/cable{
+	icon_state = "1-4";
+	dir = 4
+	},
+/turf/simulated/floor/dank/tech{
+	dir = 4
+	},
+/area/mining_colony/security/upper/bridge_corridor)
 "vx" = (
 /obj/machinery/firealarm{
 	dir = 4;
@@ -2778,8 +2935,16 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/door/airlock/command{
-	name = "Bridge"
+/obj/effect/wallframe_spawn/reinforced,
+/obj/structure/cable{
+	d2 = 2;
+	icon_state = "0-2"
+	},
+/obj/machinery/door/blast/shutters/open{
+	dir = 2;
+	icon_state = "ishimura_shutter_open";
+	id = "bridge_shutters";
+	name = "Bridge Shutters"
 	},
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/security/upper/commandofficers)
@@ -2799,6 +2964,17 @@
 	},
 /turf/simulated/floor/dank/hardwood,
 /area/mining_colony/security/upper/fl_office)
+"wA" = (
+/obj/machinery/turret/covered/pulse,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/structure/sign/warning/lethal_turrets{
+	pixel_y = 1;
+	pixel_x = -29
+	},
+/turf/simulated/floor/dank/tech{
+	dir = 8
+	},
+/area/mining_colony/security/upper/bridge_corridor)
 "wD" = (
 /obj/item/modular_computer/tablet/lease/preset/command,
 /obj/item/device/megaphone,
@@ -2814,6 +2990,20 @@
 /obj/item/weapon/storage/belt/holster/security,
 /turf/simulated/floor/dank/hardwood,
 /area/mining_colony/security/upper/fl_office)
+"xk" = (
+/obj/machinery/power/apc{
+	dir = 8;
+	name = "Bridge Armor";
+	pixel_y = 1;
+	pixel_x = -25
+	},
+/obj/structure/cable{
+	d2 = 2;
+	icon_state = "0-2";
+	dir = 4
+	},
+/turf/simulated/floor/dank/rectangles,
+/area/mining_colony/security/upper/commandofficers)
 "xG" = (
 /obj/structure/closet/secure_closet/personal/cabinet,
 /obj/item/weapon/reagent_containers/food/drinks/bottle/whiskey,
@@ -2917,9 +3107,24 @@
 /obj/random/toy,
 /turf/simulated/floor/dank/hardwood,
 /area/mining_colony/security/upper/be_room2)
+"AR" = (
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/dank/rectangles,
+/area/mining_colony/security/upper/commandofficers)
 "Bm" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/security/upper/permacells1)
+"BF" = (
+/obj/structure/sink{
+	pixel_y = -12
+	},
+/obj/item/weapon/storage/mirror{
+	pixel_y = -31
+	},
+/turf/simulated/floor/tiled/freezer,
+/area/mining_colony/security/upper/director)
 "BH" = (
 /obj/item/modular_computer/console/preset/command{
 	dir = 8
@@ -2962,13 +3167,13 @@
 /turf/simulated/floor/dank/rivets,
 /area/mining_colony/security/upper/cryo_room)
 "Cw" = (
-/obj/structure/bed/chair/office{
-	dir = 1
-	},
 /obj/item/device/radio/intercom/department/security{
 	dir = 4;
 	pixel_x = -21
 	},
+/obj/structure/table/standard,
+/obj/random/glasses,
+/obj/random/cash,
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/upper/commandofficers)
 "CI" = (
@@ -2976,6 +3181,24 @@
 	dir = 1
 	},
 /area/mining_colony/security/upper/bridge_corridor)
+"CW" = (
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/dank/golf_brown,
+/area/mining_colony/security/upper/commandofficers)
 "CX" = (
 /obj/machinery/door/airlock/security{
 	name = "P-Sec Upper Hallway"
@@ -2990,9 +3213,30 @@
 	dir = 1
 	},
 /area/mining_colony/security/upper/bridge_corridor)
+"Do" = (
+/obj/machinery/light,
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8";
+	dir = 1
+	},
+/turf/simulated/floor/dank/slides{
+	dir = 4
+	},
+/area/mining_colony/security/upper/bridge_corridor)
 "Dq" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/security/upper/permacells2)
+"Dr" = (
+/obj/structure/railing/mapped,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/dank/rectangles,
+/area/mining_colony/security/upper/commandofficers)
 "Dt" = (
 /obj/item/modular_computer/tablet/lease/preset/command,
 /obj/item/device/megaphone,
@@ -3059,6 +3303,18 @@
 	dir = 1
 	},
 /area/mining_colony/security/upper/bridge_corridor)
+"EI" = (
+/obj/structure/closet/secure_closet/guncabinet/sec_support,
+/obj/effect/floor_decal/industrial/outline/red,
+/obj/item/ammo_magazine/divet,
+/obj/item/ammo_magazine/divet,
+/obj/item/weapon/gun/projectile/divet/empty,
+/obj/item/weapon/gun/projectile/divet/empty,
+/obj/item/ammo_magazine/divet,
+/obj/item/ammo_magazine/divet,
+/obj/item/clothing/suit/armor/pcsi,
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/security/upper/commandofficers)
 "EK" = (
 /obj/structure/table/reinforced,
 /obj/structure/window/reinforced{
@@ -3087,6 +3343,25 @@
 /obj/random/rig_module/rare,
 /turf/simulated/floor/dank/hardwood,
 /area/mining_colony/security/upper/director)
+"Fd" = (
+/obj/structure/table/rack,
+/obj/effect/floor_decal/industrial/outline/red,
+/obj/item/weapon/storage/firstaid/adv,
+/obj/item/stack/power_node,
+/obj/item/device/radio{
+	pixel_x = -2;
+	pixel_y = -2
+	},
+/obj/item/device/radio{
+	pixel_x = -2;
+	pixel_y = -2
+	},
+/obj/item/device/radio{
+	pixel_x = -2;
+	pixel_y = -2
+	},
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/security/upper/commandofficers)
 "FE" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -3119,6 +3394,16 @@
 	},
 /turf/simulated/floor/dank/hardwood,
 /area/mining_colony/security/upper/be_room2)
+"Gz" = (
+/obj/structure/closet/secure_closet/guncabinet/sec_support,
+/obj/effect/floor_decal/industrial/outline/red,
+/obj/item/ammo_magazine/pulse,
+/obj/item/ammo_magazine/pulse,
+/obj/item/ammo_magazine/pulse,
+/obj/item/weapon/gun/projectile/automatic/pulse_rifle,
+/obj/item/clothing/suit/armor/pcsi,
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/security/upper/commandofficers)
 "GC" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -3191,6 +3476,22 @@
 /obj/structure/flora/pottedplant/fern,
 /turf/simulated/floor/tiled/dark,
 /area/mining_colony/security/upper)
+"JJ" = (
+/obj/effect/wallframe_spawn/reinforced,
+/obj/machinery/door/firedoor,
+/obj/structure/cable{
+	d2 = 2;
+	icon_state = "0-2";
+	dir = 1
+	},
+/obj/machinery/door/blast/shutters/open{
+	dir = 2;
+	icon_state = "ishimura_shutter_open";
+	id = "bridge_shutters";
+	name = "Bridge Shutters"
+	},
+/turf/simulated/floor/dank/mono,
+/area/mining_colony/security/upper/commandofficers)
 "JK" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/security/upper/sec_offices)
@@ -3199,6 +3500,14 @@
 	d1 = 2;
 	d2 = 8;
 	icon_state = "1-4"
+	},
+/obj/machinery/camera/network/command{
+	dir = 1
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/upper/commandofficers)
@@ -3210,6 +3519,9 @@
 	},
 /turf/simulated/floor/dank/rectangles,
 /area/mining_colony/security/upper/commandofficers)
+"Kj" = (
+/turf/simulated/floor/tiled/freezer,
+/area/mining_colony/security/upper/director)
 "Km" = (
 /obj/machinery/light{
 	dir = 8
@@ -3279,11 +3591,13 @@
 /turf/simulated/floor/dank/hardwood,
 /area/mining_colony/security/upper/fl_office)
 "MU" = (
-/obj/machinery/firealarm{
-	dir = 1;
-	pixel_y = -35
+/obj/structure/window/reinforced/tinted/frosted,
+/obj/machinery/door/window/eastleft,
+/obj/machinery/shower{
+	dir = 4
 	},
-/turf/simulated/floor/dank/hardwood,
+/obj/item/weapon/towel,
+/turf/simulated/floor/tiled/freezer,
 /area/mining_colony/security/upper/director)
 "Ng" = (
 /obj/machinery/door/firedoor{
@@ -3337,6 +3651,24 @@
 /obj/random/toolbox/low_chance,
 /turf/simulated/floor/dank/slides,
 /area/mining_colony/security/upper/bridge_corridor)
+"NV" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/door/airlock/command{
+	dir = 8;
+	name = "Bridge"
+	},
+/obj/machinery/door/blast/shutters/open{
+	dir = 8;
+	icon_state = "ishimura_shutter_open";
+	id = "bridge_shutters";
+	name = "Bridge shutters"
+	},
+/turf/simulated/floor/dank/mono,
+/area/mining_colony/security/upper/bridge_corridor)
 "Oc" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -3352,7 +3684,7 @@
 	},
 /obj/machinery/power/apc{
 	dir = 1;
-	name = "north bump";
+	name = "Brigde Hallway";
 	pixel_y = 15;
 	req_access = list(201)
 	},
@@ -3361,8 +3693,16 @@
 	},
 /area/mining_colony/security/upper/bridge_corridor)
 "PF" = (
-/obj/machinery/camera/network/command{
-	dir = 1
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8";
+	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/upper/commandofficers)
@@ -3380,6 +3720,22 @@
 "Qn" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/security/upper/be_room3)
+"Qu" = (
+/obj/effect/floor_decal/dank/border{
+	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/dank/golf_brown,
+/area/mining_colony/security/upper/commandofficers)
 "QP" = (
 /obj/structure/railing/mapped,
 /obj/machinery/firealarm{
@@ -3496,6 +3852,16 @@
 	dir = 8
 	},
 /area/mining_colony/security/upper/bridge_corridor)
+"Us" = (
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/dank/tech{
+	dir = 8
+	},
+/area/mining_colony/security/upper/bridge_corridor)
 "Uu" = (
 /obj/effect/floor_decal/dank/border_corner_i{
 	dir = 1
@@ -3506,6 +3872,11 @@
 	icon_state = "5-8"
 	},
 /turf/simulated/floor/dank/golf_brown,
+/area/mining_colony/security/upper/commandofficers)
+"UC" = (
+/obj/effect/floor_decal/industrial/outline/red,
+/obj/machinery/deployable/barrier,
+/turf/simulated/floor/dank/grater,
 /area/mining_colony/security/upper/commandofficers)
 "UM" = (
 /turf/unsimulated/mineral{
@@ -3688,6 +4059,13 @@
 "YS" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/security/upper/secstorage2)
+"Zq" = (
+/obj/structure/cable{
+	icon_state = "2-8";
+	dir = 1
+	},
+/turf/simulated/floor/dank/rectangles,
+/area/mining_colony/security/upper/commandofficers)
 "Zu" = (
 /obj/machinery/camera/network/security{
 	dir = 1
@@ -10743,9 +11121,9 @@ dC
 dC
 dC
 dC
-ew
-ew
-ew
+dC
+dC
+dC
 Ef
 Ef
 Ef
@@ -10931,10 +11309,10 @@ ew
 ew
 ew
 ew
-ew
-ew
-ew
-ew
+dA
+dA
+dA
+dA
 dC
 dv
 dm
@@ -10945,9 +11323,9 @@ dC
 ER
 ex
 dC
-ew
-ew
-ew
+MU
+od
+dC
 Ef
 bl
 KH
@@ -11133,10 +11511,10 @@ ew
 ew
 ew
 ew
-ew
-ew
-ew
-ew
+dA
+Fd
+xk
+jr
 dC
 dx
 ef
@@ -11145,11 +11523,11 @@ ej
 el
 dC
 dI
-MU
+dw
+qy
+Kj
+BF
 dC
-ew
-ew
-ew
 Ef
 ba
 bI
@@ -11335,10 +11713,10 @@ dA
 dA
 dA
 dA
-ew
-ew
-ew
-ew
+dA
+Gz
+jE
+UC
 dC
 cR
 cW
@@ -11537,10 +11915,10 @@ Vv
 Vv
 Vv
 dA
-ew
-ew
-ew
-ew
+dA
+EI
+mn
+Zq
 dC
 eh
 iP
@@ -11742,7 +12120,7 @@ dA
 dA
 dA
 dA
-dA
+ag
 dC
 dC
 dC
@@ -11951,8 +12329,8 @@ aL
 cS
 sZ
 dA
-ao
-RI
+ro
+wA
 mv
 EQ
 ds
@@ -12143,16 +12521,16 @@ Vv
 Vv
 Vv
 ah
-ag
+eC
 al
 aE
-al
-al
-al
-aL
-cS
-cI
-dA
+AR
+Ka
+Ka
+Dr
+Qu
+kM
+JJ
 ao
 RI
 SL
@@ -12354,7 +12732,7 @@ aL
 aM
 cS
 PF
-dA
+JJ
 ao
 RI
 SL
@@ -12547,7 +12925,7 @@ Vv
 Vv
 Vv
 ah
-cI
+eC
 al
 aG
 aG
@@ -12950,7 +13328,7 @@ Vv
 Vv
 Vv
 Vv
-ah
+ad
 eV
 al
 cb
@@ -13766,7 +14144,7 @@ bU
 al
 aL
 uW
-iw
+df
 aU
 dA
 ao
@@ -13968,9 +14346,9 @@ cb
 al
 aL
 ou
-cS
-cI
-dA
+dH
+CW
+JJ
 ao
 RI
 KL
@@ -14170,9 +14548,9 @@ Ka
 Ka
 Ka
 rK
-ad
+dH
 au
-dA
+JJ
 ao
 RI
 SL
@@ -15183,10 +15561,10 @@ wz
 qv
 Cl
 zd
-ro
-RI
-SL
-dG
+qD
+Us
+vv
+Do
 ut
 sE
 rX
@@ -15385,10 +15763,10 @@ zd
 zd
 zd
 zd
-ao
-RI
-SL
-Aa
+lC
+mF
+NV
+iw
 ut
 ut
 ut

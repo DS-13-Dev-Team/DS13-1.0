@@ -20,7 +20,7 @@ RnD:
 +	autolathe board
 +	R&D server control console
 +	R&D server
-	//exosuit fabricator
+//	exosuit fabricator
 Engineering:
 +	atmosphere alert console
 +	atmosphere monitoring console
