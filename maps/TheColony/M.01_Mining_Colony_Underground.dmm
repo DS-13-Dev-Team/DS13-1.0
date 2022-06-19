@@ -2376,7 +2376,9 @@
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room38)
 "hv" = (
-/obj/machinery/photocopier/faxmachine,
+/obj/machinery/photocopier/faxmachine{
+	req_one_access = list()
+	},
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room38)
 "hw" = (
