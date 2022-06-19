@@ -3,7 +3,7 @@
 	density = TRUE
 	plane = DEFAULT_PLANE
 	layer = MOB_LAYER
-
+	blocks_emissive = EMISSIVE_BLOCK_GENERIC
 	appearance_flags = PIXEL_SCALE|LONG_GLIDE
 	animate_movement = 2
 	movable_flags = MOVABLE_FLAG_PROXMOVE

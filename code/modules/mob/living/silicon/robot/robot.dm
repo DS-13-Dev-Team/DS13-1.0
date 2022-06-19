@@ -7,7 +7,7 @@
 	icon_state = "robot"
 	max_health = 300
 	health = 300
-
+	blocks_emissive = EMISSIVE_BLOCK_UNIQUE
 	mob_bump_flag = ROBOT
 	mob_swap_flags = ROBOT|MONKEY|SLIME|SIMPLE_ANIMAL
 	mob_push_flags = ~HEAVY //trundle trundle

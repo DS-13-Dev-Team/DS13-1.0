@@ -4,6 +4,7 @@
 	var/break_message = "SELF breaks apart!"
 	w_class = ITEM_SIZE_NORMAL
 	mouse_drag_pointer = MOUSE_ACTIVE_POINTER
+	blocks_emissive = EMISSIVE_BLOCK_GENERIC
 
 	var/image/blood_overlay = null //this saves our blood splatter overlay, which will be processed not to go over the edges of the sprite
 	var/randpixel = 6
@@ -847,10 +848,15 @@ THIS SCOPE CODE IS DEPRECATED, USE AIM MODES INSTEAD.
 	else
 		mob_icon = default_onmob_icons[slot]
 
-
+	var/mutable_appearance/item_appearance
 	if(user_human)
-		return user_human.species.get_offset_overlay_image(spritesheet, mob_icon, mob_state, color, slot)
-	return overlay_image(mob_icon, mob_state, color, RESET_COLOR)
+		item_appearance = user_human.species.get_offset_overlay_image(spritesheet, mob_icon, mob_state, color, slot)
+	else
+		item_appearance = overlay_image(mob_icon, mob_state, color, RESET_COLOR)
+
+	if(blocks_emissive)
+		item_appearance.overlays += emissive_blocker(mob_icon, mob_state, alpha = item_appearance.alpha)
+	return item_appearance
 
 /obj/item/proc/get_examine_line()
 	if(blood_DNA)

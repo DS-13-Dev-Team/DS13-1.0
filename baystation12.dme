@@ -152,6 +152,7 @@
 #include "code\_helpers\global_lists.dm"
 #include "code\_helpers\icons.dm"
 #include "code\_helpers\jobs.dm"
+#include "code\_helpers\lighting.dm"
 #include "code\_helpers\lists.dm"
 #include "code\_helpers\maths.dm"
 #include "code\_helpers\matrices.dm"

@@ -46,7 +46,7 @@
 		if(I)
 			var/cache_key = "[last_eye_cache_key]-glow"
 			if(!human_icon_cache[cache_key])
-				var/image/eye_glow = image(I)
+				var/mutable_appearance/eye_glow = mutable_appearance(I)
 				eye_glow.plane = ABOVE_LIGHTING_PLANE
 				eye_glow.layer = LIGHTING_SECONDARY_LAYER
 				human_icon_cache[cache_key] = eye_glow

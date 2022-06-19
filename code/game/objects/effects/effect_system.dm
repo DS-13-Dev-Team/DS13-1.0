@@ -6,6 +6,8 @@ would spawn and follow the beaker, even if it is carried or thrown.
 */
 /obj/effect
 	can_block_movement = FALSE //Incorporeal generally
+	vis_flags = VIS_INHERIT_PLANE
+	blocks_emissive = EMISSIVE_BLOCK_GENERIC
 
 /obj/effect/effect
 	name = "effect"
