@@ -19,16 +19,6 @@
 	},
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/security/upper)
-"ad" = (
-/obj/effect/wallframe_spawn/reinforced,
-/obj/machinery/door/blast/shutters/open{
-	icon_state = "ishimura_shutter_open";
-	id = s;
-	name = "Bridge Window Shutters"
-	},
-/obj/machinery/door/firedoor,
-/turf/simulated/floor/dank/mono,
-/area/mining_colony/security/upper/commandofficers)
 "ae" = (
 /obj/item/modular_computer/console/preset/command,
 /turf/simulated/floor/dank/golf_brown,
@@ -13328,7 +13318,7 @@ Vv
 Vv
 Vv
 Vv
-ad
+ah
 eV
 al
 cb
