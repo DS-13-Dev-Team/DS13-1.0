@@ -89,7 +89,7 @@
 	var/tmp/lock_time = -100
 	var/tmp/last_safety_check = -INFINITY
 	var/suppress_delay_warning = FALSE
-	var/safety_state = 0
+	var/safety_state = TRUE
 	var/has_safety = TRUE
 
 
