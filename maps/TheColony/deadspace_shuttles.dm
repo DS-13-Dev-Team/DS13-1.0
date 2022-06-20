@@ -137,6 +137,7 @@
 /area/shuttle/executive_shuttle
 	name = "\improper Escape Shuttle"
 	icon_state = "shuttlered"
+	requires_power = FALSE
 
 /datum/shuttle/autodock/multi/antag/deliverance
 	name = "Deliverance"

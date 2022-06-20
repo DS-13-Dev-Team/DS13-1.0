@@ -306,16 +306,19 @@
 	name = "\improper Aegis - Civilian Evac Shuttle 1"
 	icon_state = "m_shuttle_one"
 	sound_env = ASTEROID
+	requires_power = FALSE
 
 /area/mining_colony/interior/shuttle_bay/shuttle_2
 	name = "\improper Aegis - Civilian Evac Shuttle 2"
 	icon_state = "m_shuttle_two"
 	sound_env = ASTEROID
+	requires_power = FALSE
 
 /area/mining_colony/interior/shuttle_bay/shuttle_3
 	name = "\improper Aegis - Scrapper Shuttle"
 	icon_state = "m_shuttle_two"
 	sound_env = ASTEROID
+	requires_power = FALSE
 
 // Replicated this area as best as i could from Chapter 12: Dead Space (From the first Dead Space game, hence the name) - Asi
 
