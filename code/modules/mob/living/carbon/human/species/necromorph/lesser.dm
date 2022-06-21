@@ -76,6 +76,7 @@
 		playsound(src, pick(pain_sounds), VOLUME_LOUD, TRUE)
 	SSnecromorph.minor_vessels -= src
 	remove_massive_atom(src)
+	spawn_money(rand(50, 300), loc)
 	.=..()
 
 //Attack sounds when hitting

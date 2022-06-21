@@ -1,9 +1,7 @@
 /datum/design/item/rig
-	build_type = STORE
+	build_type = STORE_ROUNDSTART
 	category = "RIG"
 	price = 8000
-	store_transfer = TRUE
-
 
 
 //Tier 0, unarmored/empty rigs

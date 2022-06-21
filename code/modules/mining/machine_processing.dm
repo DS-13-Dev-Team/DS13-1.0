@@ -325,8 +325,14 @@
 		else
 			continue
 
-	if (length(ores_processed))
-		SStrade.ores_processed(ores_processed)
+	if(length(ores_processed))
+		var/payout
+		for(var/oretype in ores_processed)
+			var/ore/ore_datum = GLOB.ores_by_type[oretype]
+			var/value = ore_datum.Value()
+			payout = value * ores_processed[oretype]
+		if(payout)
+			spawn_miner_money(payout, loc)
 
 	console.updateUsrDialog()
 

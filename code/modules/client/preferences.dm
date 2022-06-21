@@ -335,14 +335,6 @@ var/list/preferences_datums = list()
 	panel.set_content(jointext(dat,null))
 	panel.open()
 
-//Called during character creation, a step AFTER copy_to above, for the same mob.
-//This is run after the mob's mind datum is created and that is passed in here
-//Use for applying any vars which belong on the mind rather than the body
-/datum/preferences/proc/copy_to_mind(var/datum/mind/M)
-	M.set_id(src.character_id)
-
-/datum/preferences/proc/set_id(var/new_id)
-	character_id = new_id
 
 /datum/preferences/proc/close_load_dialog(mob/user)
 	if(panel)

@@ -8,10 +8,4 @@
 #define SALARY_COMMAND	1500	//Department heads and bridge staff
 #define SALARY_HIGH_COMMAND	3000	//The captain and first officer
 
-
-
-#define FEE_NEUTRAL	0.1	//10 percent
-#define FEE_DEATH	0.15
-
-
 #define REWARD_SCHEMATIC	3000

@@ -39,16 +39,13 @@ other types of metals and chemistry for reagents).
 	var/store_purchases	=	0	//How many times in the current round has this been bought from a store?
 	var/demand_scaling = 0.02	//The price of the item increases by this % every time it is purchased
 
-	//When this design is bought at the store, can we do a makeover/transfer to equip it?
-	//Only true for RIGs and rig modules
-	var/store_transfer	= FALSE
-	var/starts_unlocked = FALSE     //If true does not require any technologies and unlocked from the start
+	var/starts_unlocked = FALSE // If true does not require any technologies and unlocked from the start
+
+	var/datum/patron_item/PI // A patron item datum used to manage access
 
 //These procs are used in subtypes for assigning names and descriptions dynamically
 /datum/design/proc/AssembleDesignInfo()
-	var/atom/movable/temp_atom = Fabricate(null, 1, null)
-	if(build_path)
-		temp_atom = Fabricate(null, 1, null)
+	var/atom/movable/temp_atom = Fabricate()
 
 	AssembleDesignName(temp_atom)
 	AssembleDesignMaterials(temp_atom)
@@ -188,7 +185,7 @@ other types of metals and chemistry for reagents).
 
 //Returns a new instance of the item for this design
 //This is to allow additional initialization to be performed, including possibly additional contructor arguments.
-/datum/design/proc/Fabricate(newloc, mat_efficiency, fabricator)
+/datum/design/proc/Fabricate(newloc, mat_efficiency = 1, fabricator)
 	if(!build_path)
 		return
 
@@ -205,15 +202,8 @@ other types of metals and chemistry for reagents).
 
 // Same as above but for store
 /datum/design/proc/CreatedInStore(store_ref)
-	if(!build_path)
-		return
+	. = build_path ? new build_path(store_ref) : null
 
-	if(!(build_type & STORE))
-		return
-
-	var/atom/A = new build_path(store_ref)
-
-	return A
 
 /datum/design/autolathe
 	build_type = AUTOLATHE

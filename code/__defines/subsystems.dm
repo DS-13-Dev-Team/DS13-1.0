@@ -61,7 +61,6 @@
 
 #define SS_INIT_PROFILER			101
 #define SS_INIT_GARBAGE				99
-#define SS_INIT_DATABASE			95
 #define SS_INIT_SERVER_MAINT		93
 #define SS_INIT_TIMETRACK			46
 #define SS_INIT_MATERIALS        20
