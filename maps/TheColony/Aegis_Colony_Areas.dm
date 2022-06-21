@@ -267,9 +267,9 @@
 	sound_env = ASTEROID
 
 /area/mining_colony/interior/enginieering/supply_storage
-    name = "\improper Aegic Enginieering - Supply Storage"
-    icon_state = "engibase"
-    sound_env = ASTEROID
+	name = "\improper Aegic Enginieering - Supply Storage"
+	icon_state = "engibase"
+	sound_env = ASTEROID
 
 
 //Shuttle Area for the unlucky Kellion, which should be more safe now i hope - Asi
