@@ -300,7 +300,8 @@
 		var/turf/simulated/open/O = T
 		if(istype(O) && O.below)
 			// Consider the turf below us as well. (Z-lights)
-			for(T = O.below; !isnull(T); T = update_the_turf(T,corners, turfs));
+			for(T = O.below; !isnull(T)
+				T = update_the_turf(T,corners, turfs))
 
 	var/list/L = turfs - affecting_turfs // New turfs, add us to the affecting lights of them.
 	affecting_turfs += L

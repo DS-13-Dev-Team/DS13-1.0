@@ -59,8 +59,7 @@
 						break
 			if (locate(/obj/item, input.loc))
 				var/obj/item/O
-				var/i
-				for(i = 0 to 9)
+				for(var/i=0 to 9)
 					O = locate(/obj/item, input.loc)
 					if(!O)
 						break
