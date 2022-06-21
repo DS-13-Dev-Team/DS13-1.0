@@ -11,6 +11,7 @@
 	var/datum/money_account/account
 
 /obj/item/weapon/rig/proc/get_account()
+	RIG_ACCOUNT_CREATE
 	return account
 
 /obj/item/weapon/rig/proc/get_account_balance()
@@ -19,6 +20,7 @@
 	return account.money
 
 /obj/item/weapon/rig/proc/charge_to_rig_account(var/source, var/purpose, var/terminal_id, var/amount)
+	RIG_ACCOUNT_CREATE
 	var/datum/money_account/current_account = get_account()
 	if(current_account)
 		charge_to_account(current_account.account_number, source, purpose, terminal_id, amount)

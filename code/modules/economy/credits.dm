@@ -10,6 +10,12 @@
 	if((user == loc) || (user in oview(2)))
 		to_chat(user, SPAN_NOTICE("Chip's owner: [owner_name]. Credits remaining: [worth]."))
 
+/obj/item/weapon/spacecash/ewallet/attack_self()
+	return
+
+/obj/item/weapon/spacecash/ewallet/attackby()
+	return
+
 /obj/item/weapon/spacecash/ewallet/proc/set_worth(var/newval)
 	worth = newval
 	update_icon()
@@ -55,11 +61,6 @@
 
 /obj/item/weapon/spacecash/ewallet/random/c10000
 	worth = 10000
-
-
-//Helpers
-/datum/proc/credits_recieved(var/balance, var/datum/source)
-	return TRUE
 
 //Giving credits to a mob
 /mob/proc/recieve_credits(var/amount, var/sender, var/origin_account, var/reason)
