@@ -39,7 +39,7 @@ S	fuel tank (hydrazine)
 */
 /datum/design/item/weapon
 	category = "Weapons"
-	build_type = PROTOLATHE | STORE
+	build_type = PROTOLATHE | STORE_SCHEMATICS
 	price = 7000
 	materials = list(MATERIAL_STEEL = 30000, MATERIAL_GLASS = 2000, MATERIAL_SILVER = 4000, MATERIAL_URANIUM = 4000)
 
@@ -161,7 +161,7 @@ S	fuel tank (hydrazine)
 
 /datum/design/item/ammo
 	category = "Ammunition"
-	build_type = PROTOLATHE | STORE
+	build_type = PROTOLATHE | STORE_SCHEMATICS
 	price = 2000
 
 //Sidearms
@@ -267,14 +267,14 @@ S	fuel tank (hydrazine)
 /datum/design/item/ammo/fuel_tank
 	name = "fuel tank (gasoline)"
 	id = "fuel_tank"
-	build_type = STORE
+	build_type = STORE_SCHEMATICS
 	build_path = /obj/item/weapon/reagent_containers/glass/fuel_tank/fuel
 	price = 2500
 
 /datum/design/item/ammo/hydrazine_tank
 	name = "fuel tank (hydrazine)"
 	id = "hydrazine_tank"
-	build_type = STORE
+	build_type = STORE_SCHEMATICS
 	build_path = /obj/item/weapon/reagent_containers/glass/fuel_tank/hydrazine
 	price = 5000
 

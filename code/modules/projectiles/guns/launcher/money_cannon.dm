@@ -30,7 +30,7 @@
 			nv++
 		if (!nv)
 			break
-		var/obj/item/weapon/spacecash/bundle/bling = new(T)
+		var/obj/item/weapon/spacecash/bling = new(T)
 		bling.worth = nv
 		bling.update_icon()
 		if(projectile_vomit)
@@ -64,7 +64,7 @@
 		to_chat(user, "<span class='warning'>There's no money in [src].</span>")
 		return
 
-	var/obj/item/weapon/spacecash/bling = new /obj/item/weapon/spacecash/bundle()
+	var/obj/item/weapon/spacecash/bling = new /obj/item/weapon/spacecash()
 	bling.worth = receptacle_value
 	bling.update_icon()
 	user.put_in_hands(bling)
@@ -84,7 +84,7 @@
 	if(!receptacle_value || receptacle_value < 1)
 		return null
 
-	var/obj/item/weapon/spacecash/bling = new /obj/item/weapon/spacecash/bundle()
+	var/obj/item/weapon/spacecash/bling = new /obj/item/weapon/spacecash()
 	if(receptacle_value >= dispensing)
 		bling.worth = dispensing
 		receptacle_value -= dispensing

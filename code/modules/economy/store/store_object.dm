@@ -209,12 +209,9 @@ GLOBAL_VAR_INIT(number_of_store_kiosks, 0)
 	unbolt_occupant()
 	busy = FALSE
 
-/obj/machinery/store/proc/bolt_occupant(var/delay = TRUE)
+/obj/machinery/store/proc/bolt_occupant()
 	set waitfor = FALSE
 	playsound(src, sound_bolt, VOLUME_HIGH, TRUE)
-	if (delay)
-		sleep(bolt_time+2)
-
 	occupant.facedir(SOUTH)
 	buckle_mob(occupant)
 

@@ -135,10 +135,10 @@
 		last_comms = "PAD NOT CONNECTED. CANNOT TRANSFER"
 		return
 	var/turf/T = get_turf(pad)
-	var/obj/item/weapon/spacecash/bundle/B = new(T)
-	B.worth = bank
+	var/obj/item/weapon/spacecash/S = new(T)
+	S.worth = bank
 	bank = 0
-	B.update_icon()
+	S.update_icon()
 
 /datum/computer_file/program/merchant/Topic(href, href_list)
 	if(..())

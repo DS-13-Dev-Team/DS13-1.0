@@ -1217,8 +1217,8 @@
 "ada" = (
 /turf/simulated/floor/plating,
 /turf/simulated/shuttle/wall/corner/pod2{
-	icon_state = "corner_pod2";
-	dir = 8
+	dir = 8;
+	icon_state = "corner_pod2"
 	},
 /area/shuttle/escape_pod4/station)
 "adb" = (
@@ -4665,6 +4665,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/machinery/vending/mining,
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/mining/mining_bay)
 "ajT" = (
@@ -19412,58 +19413,58 @@
 /area/ishimura/lower/misc/hallway/central)
 "aMd" = (
 /obj/structure/shuttle/window/pod{
-	icon_state = "p_window";
-	dir = 8
+	dir = 8;
+	icon_state = "p_window"
 	},
 /turf/space,
 /area/shuttle/escape_pod4/station)
 "aMe" = (
 /turf/simulated/floor/plating,
 /turf/simulated/shuttle/wall/corner/pod2{
-	icon_state = "corner_pod2";
-	dir = 5
+	dir = 5;
+	icon_state = "corner_pod2"
 	},
 /area/shuttle/escape_pod4/station)
 "aMf" = (
 /turf/simulated/floor/plating,
 /turf/simulated/shuttle/wall/corner/pod2{
-	icon_state = "corner_pod2";
-	dir = 8
+	dir = 8;
+	icon_state = "corner_pod2"
 	},
 /area/shuttle/escape_pod5/station)
 "aMg" = (
 /obj/structure/shuttle/window/pod{
-	icon_state = "p_window";
-	dir = 8
+	dir = 8;
+	icon_state = "p_window"
 	},
 /turf/space,
 /area/shuttle/escape_pod5/station)
 "aMh" = (
 /turf/simulated/floor/plating,
 /turf/simulated/shuttle/wall/corner/pod2{
-	icon_state = "corner_pod2";
-	dir = 5
+	dir = 5;
+	icon_state = "corner_pod2"
 	},
 /area/shuttle/escape_pod5/station)
 "aMi" = (
 /turf/simulated/floor/plating,
 /turf/simulated/shuttle/wall/corner/pod2{
-	icon_state = "corner_pod2";
-	dir = 8
+	dir = 8;
+	icon_state = "corner_pod2"
 	},
 /area/shuttle/escape_pod6/station)
 "aMj" = (
 /obj/structure/shuttle/window/pod{
-	icon_state = "p_window";
-	dir = 8
+	dir = 8;
+	icon_state = "p_window"
 	},
 /turf/space,
 /area/shuttle/escape_pod6/station)
 "aMk" = (
 /turf/simulated/floor/plating,
 /turf/simulated/shuttle/wall/corner/pod2{
-	icon_state = "corner_pod2";
-	dir = 5
+	dir = 5;
+	icon_state = "corner_pod2"
 	},
 /area/shuttle/escape_pod6/station)
 "aMl" = (
@@ -19496,8 +19497,8 @@
 /area/ishimura/lower/maintenance/starboard)
 "aMo" = (
 /turf/simulated/shuttle/wall/pod{
-	icon_state = "p_wall1";
-	dir = 8
+	dir = 8;
+	icon_state = "p_wall1"
 	},
 /area/shuttle/escape_pod4/station)
 "aMp" = (
@@ -19505,8 +19506,8 @@
 	dir = 8
 	},
 /obj/structure/bed/chair/pod/yellow{
-	icon_state = "pod_chair_preview";
-	dir = 1
+	dir = 1;
+	icon_state = "pod_chair_preview"
 	},
 /obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod{
 	frequency = 1380;
@@ -19525,8 +19526,8 @@
 /area/shuttle/escape_pod4/station)
 "aMq" = (
 /turf/simulated/shuttle/wall/pod{
-	icon_state = "p_wall1";
-	dir = 8
+	dir = 8;
+	icon_state = "p_wall1"
 	},
 /area/shuttle/escape_pod5/station)
 "aMr" = (
@@ -19534,8 +19535,8 @@
 	dir = 8
 	},
 /obj/structure/bed/chair/pod/yellow{
-	icon_state = "pod_chair_preview";
-	dir = 1
+	dir = 1;
+	icon_state = "pod_chair_preview"
 	},
 /obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod{
 	frequency = 1380;
@@ -19554,8 +19555,8 @@
 /area/shuttle/escape_pod5/station)
 "aMs" = (
 /turf/simulated/shuttle/wall/pod{
-	icon_state = "p_wall1";
-	dir = 8
+	dir = 8;
+	icon_state = "p_wall1"
 	},
 /area/shuttle/escape_pod6/station)
 "aMt" = (
@@ -19563,8 +19564,8 @@
 	dir = 8
 	},
 /obj/structure/bed/chair/pod/yellow{
-	icon_state = "pod_chair_preview";
-	dir = 1
+	dir = 1;
+	icon_state = "pod_chair_preview"
 	},
 /obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod{
 	frequency = 1380;
@@ -23499,8 +23500,8 @@
 "aUF" = (
 /turf/simulated/floor/plating,
 /turf/simulated/shuttle/wall/corner/pod1{
-	icon_state = "corner_pod1";
-	dir = 8
+	dir = 8;
+	icon_state = "corner_pod1"
 	},
 /area/shuttle/escape_pod9/station)
 "aUG" = (
@@ -24385,8 +24386,8 @@
 /area/ishimura/lower/crew/sleepblock/executive/quarters/bridge_officers)
 "aWn" = (
 /turf/simulated/shuttle/wall/pod{
-	icon_state = "p_wall1";
-	dir = 8
+	dir = 8;
+	icon_state = "p_wall1"
 	},
 /area/shuttle/escape_pod9/station)
 "aWo" = (
@@ -24459,8 +24460,8 @@
 "aWv" = (
 /turf/simulated/floor/plating,
 /turf/simulated/shuttle/wall/corner/pod2{
-	icon_state = "corner_pod2";
-	dir = 4
+	dir = 4;
+	icon_state = "corner_pod2"
 	},
 /area/shuttle/escape_pod9/station)
 "aWw" = (
@@ -24670,8 +24671,8 @@
 /area/ishimura/lower/security/escape/two)
 "aXl" = (
 /obj/structure/bed/chair/pod/yellow{
-	icon_state = "pod_chair_preview";
-	dir = 1
+	dir = 1;
+	icon_state = "pod_chair_preview"
 	},
 /obj/effect/shuttle_landmark/escape_pod/start/pod4,
 /turf/simulated/floor/shuttle/pod,
@@ -25439,16 +25440,16 @@
 /area/ishimura/lower/misc/hallway/central)
 "aZv" = (
 /obj/structure/bed/chair/pod/yellow{
-	icon_state = "pod_chair_preview";
-	dir = 1
+	dir = 1;
+	icon_state = "pod_chair_preview"
 	},
 /obj/effect/shuttle_landmark/escape_pod/start/pod5,
 /turf/simulated/floor/shuttle/pod,
 /area/shuttle/escape_pod5/station)
 "aZw" = (
 /obj/structure/bed/chair/pod/yellow{
-	icon_state = "pod_chair_preview";
-	dir = 1
+	dir = 1;
+	icon_state = "pod_chair_preview"
 	},
 /obj/effect/shuttle_landmark/escape_pod/start/pod6,
 /turf/simulated/floor/shuttle/pod,
@@ -25456,8 +25457,8 @@
 "aZx" = (
 /turf/simulated/floor/plating,
 /turf/simulated/shuttle/wall/corner/pod1{
-	icon_state = "corner_pod1";
-	dir = 10
+	dir = 10;
+	icon_state = "corner_pod1"
 	},
 /area/shuttle/escape_pod4/station)
 "aZy" = (
@@ -25472,8 +25473,8 @@
 "aZz" = (
 /turf/simulated/floor/plating,
 /turf/simulated/shuttle/wall/corner/pod1{
-	icon_state = "corner_pod1";
-	dir = 10
+	dir = 10;
+	icon_state = "corner_pod1"
 	},
 /area/shuttle/escape_pod5/station)
 "aZA" = (
@@ -25636,8 +25637,8 @@
 "baa" = (
 /turf/simulated/floor/plating,
 /turf/simulated/shuttle/wall/corner/pod1{
-	icon_state = "corner_pod1";
-	dir = 10
+	dir = 10;
+	icon_state = "corner_pod1"
 	},
 /area/shuttle/escape_pod6/station)
 "bab" = (
@@ -25652,8 +25653,8 @@
 "bac" = (
 /turf/simulated/floor/plating,
 /turf/simulated/shuttle/wall/corner/pod1{
-	icon_state = "corner_pod1";
-	dir = 8
+	dir = 8;
+	icon_state = "corner_pod1"
 	},
 /area/shuttle/escape_pod7/station)
 "bad" = (
@@ -25668,8 +25669,8 @@
 "bae" = (
 /turf/simulated/floor/plating,
 /turf/simulated/shuttle/wall/corner/pod1{
-	icon_state = "corner_pod1";
-	dir = 8
+	dir = 8;
+	icon_state = "corner_pod1"
 	},
 /area/shuttle/escape_pod8/station)
 "baf" = (
@@ -25683,8 +25684,8 @@
 /area/shuttle/escape_pod8/station)
 "bai" = (
 /turf/simulated/shuttle/wall/pod{
-	icon_state = "p_wall1";
-	dir = 8
+	dir = 8;
+	icon_state = "p_wall1"
 	},
 /area/shuttle/escape_pod7/station)
 "baj" = (
@@ -25694,8 +25695,8 @@
 /area/shuttle/escape_pod7/station)
 "bak" = (
 /turf/simulated/shuttle/wall/pod{
-	icon_state = "p_wall1";
-	dir = 8
+	dir = 8;
+	icon_state = "p_wall1"
 	},
 /area/shuttle/escape_pod8/station)
 "bal" = (
@@ -25710,8 +25711,8 @@
 "bat" = (
 /turf/simulated/floor/plating,
 /turf/simulated/shuttle/wall/corner/pod2{
-	icon_state = "corner_pod2";
-	dir = 4
+	dir = 4;
+	icon_state = "corner_pod2"
 	},
 /area/shuttle/escape_pod7/station)
 "bau" = (
@@ -25721,8 +25722,8 @@
 "baw" = (
 /turf/simulated/floor/plating,
 /turf/simulated/shuttle/wall/corner/pod2{
-	icon_state = "corner_pod2";
-	dir = 4
+	dir = 4;
+	icon_state = "corner_pod2"
 	},
 /area/shuttle/escape_pod8/station)
 "baA" = (
@@ -27442,8 +27443,8 @@
 "bWn" = (
 /turf/simulated/floor/plating,
 /turf/simulated/shuttle/wall/corner/pod1{
-	icon_state = "corner_pod1";
-	dir = 4
+	dir = 4;
+	icon_state = "corner_pod1"
 	},
 /area/shuttle/escape_pod4/station)
 "bXd" = (
@@ -27514,8 +27515,8 @@
 /area/ishimura/lower/misc/storagesmall)
 "cMD" = (
 /turf/simulated/shuttle/wall/pod/two{
-	icon_state = "p_wall2";
-	dir = 1
+	dir = 1;
+	icon_state = "p_wall2"
 	},
 /area/shuttle/escape_pod4/station)
 "cOX" = (
@@ -27566,8 +27567,8 @@
 "dBt" = (
 /turf/simulated/floor/plating,
 /turf/simulated/shuttle/wall/corner/pod1{
-	icon_state = "corner_pod1";
-	dir = 1
+	dir = 1;
+	icon_state = "corner_pod1"
 	},
 /area/shuttle/escape_pod9/station)
 "dFp" = (
@@ -27750,8 +27751,8 @@
 /area/ishimura/lower/mining/mining_bay)
 "fvQ" = (
 /turf/simulated/shuttle/wall/pod{
-	icon_state = "p_wall1";
-	dir = 1
+	dir = 1;
+	icon_state = "p_wall1"
 	},
 /area/shuttle/escape_pod4/station)
 "fwZ" = (
@@ -27797,14 +27798,14 @@
 "fSC" = (
 /turf/simulated/floor/plating,
 /turf/simulated/shuttle/wall/corner/pod1{
-	icon_state = "corner_pod1";
-	dir = 4
+	dir = 4;
+	icon_state = "corner_pod1"
 	},
 /area/shuttle/escape_pod5/station)
 "gkd" = (
 /turf/simulated/shuttle/wall/pod{
-	icon_state = "p_wall1";
-	dir = 1
+	dir = 1;
+	icon_state = "p_wall1"
 	},
 /area/shuttle/escape_pod5/station)
 "gkQ" = (
@@ -27851,8 +27852,8 @@
 /area/ishimura/lower/maintenance/engineering_starboard)
 "gzm" = (
 /turf/simulated/shuttle/wall/pod/two{
-	icon_state = "p_wall2";
-	dir = 1
+	dir = 1;
+	icon_state = "p_wall2"
 	},
 /area/shuttle/escape_pod6/station)
 "gzu" = (
@@ -27967,8 +27968,8 @@
 /area/ishimura/lower/security/checkpoint/executive)
 "hWi" = (
 /turf/simulated/shuttle/wall/pod/two{
-	icon_state = "p_wall2";
-	dir = 8
+	dir = 8;
+	icon_state = "p_wall2"
 	},
 /area/shuttle/escape_pod5/station)
 "hYt" = (
@@ -27998,8 +27999,8 @@
 /area/ishimura/lower/mining/mining_bay)
 "ixO" = (
 /turf/simulated/shuttle/wall/pod/two{
-	icon_state = "p_wall2";
-	dir = 8
+	dir = 8;
+	icon_state = "p_wall2"
 	},
 /area/shuttle/escape_pod6/station)
 "iyr" = (
@@ -28152,8 +28153,8 @@
 /area/ishimura/lower/misc/hallway/aft)
 "kMn" = (
 /turf/simulated/shuttle/wall/pod/two{
-	icon_state = "p_wall2";
-	dir = 1
+	dir = 1;
+	icon_state = "p_wall2"
 	},
 /area/shuttle/escape_pod5/station)
 "kMv" = (
@@ -28296,8 +28297,8 @@
 /area/ishimura/lower/mining/shuttlebay/port)
 "mNU" = (
 /turf/simulated/shuttle/wall/pod/two{
-	icon_state = "p_wall2";
-	dir = 8
+	dir = 8;
+	icon_state = "p_wall2"
 	},
 /area/shuttle/escape_pod7/station)
 "nfn" = (
@@ -28305,8 +28306,8 @@
 /area/ishimura/lower/mining/shuttlebay/port)
 "nrJ" = (
 /turf/simulated/shuttle/wall/pod{
-	icon_state = "p_wall1";
-	dir = 1
+	dir = 1;
+	icon_state = "p_wall1"
 	},
 /area/shuttle/escape_pod8/station)
 "nsT" = (
@@ -28330,8 +28331,8 @@
 "ntc" = (
 /turf/simulated/floor/plating,
 /turf/simulated/shuttle/wall/corner/pod1{
-	icon_state = "corner_pod1";
-	dir = 1
+	dir = 1;
+	icon_state = "corner_pod1"
 	},
 /area/shuttle/escape_pod8/station)
 "nxX" = (
@@ -28400,8 +28401,8 @@
 /area/ishimura/lower/misc/hallway/central)
 "nRo" = (
 /turf/simulated/shuttle/wall/pod/two{
-	icon_state = "p_wall2";
-	dir = 8
+	dir = 8;
+	icon_state = "p_wall2"
 	},
 /area/shuttle/escape_pod4/station)
 "nSf" = (
@@ -28621,8 +28622,8 @@
 /area/ishimura/lower/misc/hallway/central)
 "pFv" = (
 /turf/simulated/shuttle/wall/pod/two{
-	icon_state = "p_wall2";
-	dir = 8
+	dir = 8;
+	icon_state = "p_wall2"
 	},
 /area/shuttle/escape_pod9/station)
 "pLC" = (
@@ -28724,8 +28725,8 @@
 /area/ishimura/lower/security/checkpoint/executive)
 "qEy" = (
 /turf/simulated/shuttle/wall/pod/two{
-	icon_state = "p_wall2";
-	dir = 1
+	dir = 1;
+	icon_state = "p_wall2"
 	},
 /area/shuttle/escape_pod8/station)
 "qGV" = (
@@ -28759,8 +28760,8 @@
 /area/ishimura/lower/security/escape)
 "qUY" = (
 /turf/simulated/shuttle/wall/pod{
-	icon_state = "p_wall1";
-	dir = 1
+	dir = 1;
+	icon_state = "p_wall1"
 	},
 /area/shuttle/escape_pod6/station)
 "qVk" = (
@@ -28878,8 +28879,8 @@
 /area/ishimura/lower/mining/mining_bay)
 "spo" = (
 /turf/simulated/shuttle/wall/pod{
-	icon_state = "p_wall1";
-	dir = 1
+	dir = 1;
+	icon_state = "p_wall1"
 	},
 /area/shuttle/escape_pod9/station)
 "sxy" = (
@@ -28936,8 +28937,8 @@
 "tbw" = (
 /turf/simulated/floor/plating,
 /turf/simulated/shuttle/wall/corner/pod1{
-	icon_state = "corner_pod1";
-	dir = 4
+	dir = 4;
+	icon_state = "corner_pod1"
 	},
 /area/shuttle/escape_pod6/station)
 "tbV" = (
@@ -29056,8 +29057,8 @@
 "tYQ" = (
 /turf/simulated/floor/plating,
 /turf/simulated/shuttle/wall/corner/pod1{
-	icon_state = "corner_pod1";
-	dir = 1
+	dir = 1;
+	icon_state = "corner_pod1"
 	},
 /area/shuttle/escape_pod7/station)
 "tZh" = (
@@ -29139,8 +29140,8 @@
 /area/ishimura/lower/maintenance/port)
 "uHf" = (
 /turf/simulated/shuttle/wall/pod/two{
-	icon_state = "p_wall2";
-	dir = 1
+	dir = 1;
+	icon_state = "p_wall2"
 	},
 /area/shuttle/escape_pod7/station)
 "uTL" = (
@@ -29193,8 +29194,8 @@
 /area/ishimura/lower/security/checkpoint/executive)
 "vtz" = (
 /turf/simulated/shuttle/wall/pod{
-	icon_state = "p_wall1";
-	dir = 1
+	dir = 1;
+	icon_state = "p_wall1"
 	},
 /area/shuttle/escape_pod7/station)
 "vxU" = (
@@ -29214,8 +29215,8 @@
 /area/ishimura/lower/crew/sleepblock/commons)
 "vBd" = (
 /turf/simulated/shuttle/wall/pod/two{
-	icon_state = "p_wall2";
-	dir = 8
+	dir = 8;
+	icon_state = "p_wall2"
 	},
 /area/shuttle/escape_pod8/station)
 "vBT" = (
@@ -29236,8 +29237,8 @@
 /area/ishimura/lower/crew/messhall)
 "wgI" = (
 /turf/simulated/shuttle/wall/pod/two{
-	icon_state = "p_wall2";
-	dir = 1
+	dir = 1;
+	icon_state = "p_wall2"
 	},
 /area/shuttle/escape_pod9/station)
 "wlX" = (

@@ -28,61 +28,28 @@
 	.=..()
 	get_design()
 
-/obj/machinery/store/proc/handle_schematic(var/obj/item/store_schematic/I, var/mob/user)
-
-	if (!I.design_id)
-		I.get_design()
-
-	var/success = SSdatabase.upload_design(I.design_id)
-
-	if (!success)
-		var/former_design = I.design_id
-		I.get_design()
-		to_chat(user, "Incorrect identification tag on schematic. Contents were falsely identified as [former_design] but are actually [I.design_id]")
-
-
-		//One last attempt
-		success = SSdatabase.upload_design(I.design_id)
-
-	if (!success)
-		//Terminal failure
-		to_chat(user, "Fatal error: If this error persists, please contact your system administrator")
-		return success
-
-
+/obj/machinery/store/proc/handle_schematic(obj/item/store_schematic/I, mob/user)
+	GLOB.unlimited_store_designs += I.design_id
 	visible_message("Thank you for participating in the CEC Data Recovery programme, [user.real_name]. Your account has been credited with [REWARD_SCHEMATIC] credits")
 	occupant.recieve_credits(REWARD_SCHEMATIC, machine_id, machine_id, "Schematic Bounty")
-
 	occupant.remove_item(I)
 	qdel(I)
 
-	return success
 
 /obj/item/store_schematic/proc/get_design()
-
-	//If the designs aren't populated, add ourself to a pending list, we'll be back!
-	if (!SSdatabase.unknown_designs)
-		SSdatabase.pending_schematics |= src
-		return
-
-	if (!length(SSdatabase.unknown_designs))
-		//There are no unknown designs left? We'll just have to delete ourselves
+	if(GLOB.public_store_designs.len)
+		var/id = pick(GLOB.public_store_designs)
+		var/datum/design/D = SSresearch.design_ids[id]
+		design_name = D.item_name
+		design_id = D.id
+		name = "Store Schematic ([design_name])"
+		GLOB.public_store_designs -= id
+	else // There are no unknown designs left? We'll just have to delete ourselves
 		QDEL_IN(src, 1)
 		new /obj/random/rare_loot(get_turf(src))
-		return
-
-	design_id = pick(SSdatabase.unknown_designs)
-
-	var/datum/design/D = SSresearch.design_ids[design_id]
-	design_name = D.item_name
-	name = "Store Schematic ([design_name])"
 
 
-
-/obj/machinery/store/proc/handle_peng(var/obj/item/weapon/peng/I, var/mob/user)
-
-
-
+/obj/machinery/store/proc/handle_peng(obj/item/weapon/peng/I, mob/user)
 	visible_message("Thank you for participating in the Peng cross-promotional scheme, [user.real_name]. Your account has been credited with [PENG_BOUNTY] credits")
 	occupant.recieve_credits(PENG_BOUNTY, machine_id, machine_id, "Peng Bounty")
 
