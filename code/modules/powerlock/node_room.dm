@@ -17,7 +17,7 @@ GLOBAL_LIST_EMPTY(powernode_rooms)
 
 	//Powerlock
 	var/obj/power_lock/lock
-	var/lock_dir	= SOUTH	//What direction should the lock face when we place it?
+	var/lock_dir = SOUTH	//What direction should the lock face when we place it?
 	var/turf/lock_spawn_turf
 	var/turf/lock_offset_turf
 

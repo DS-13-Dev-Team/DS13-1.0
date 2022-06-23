@@ -19,8 +19,7 @@
 	if(mind && mind.current == src)
 		spellremove(src)
 	ghostize()
-	..()
-	return QDEL_HINT_HARDDEL
+	.=..()
 
 /mob/Initialize()
 	GLOB.mob_list += src

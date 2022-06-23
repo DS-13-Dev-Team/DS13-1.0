@@ -5,18 +5,6 @@
 
 #define END_FOR_DVIEW GLOB.dview_mob.loc = null
 
-///Object doesn't use any of the light systems. Should be changed to add a light source to the object.
-#define NO_LIGHT_SUPPORT 0
-///Light made with the lighting datums, applying a matrix.
-#define STATIC_LIGHT 1
-///Light made by masking the lighting darkness plane.
-#define MOVABLE_LIGHT 2
-///Light made by masking the lighting darkness plane, and is directional.
-#define MOVABLE_LIGHT_DIRECTIONAL 3
-
-///Is a movable light source attached to another movable (its loc), meaning that the lighting component should go one level deeper.
-#define LIGHT_ATTACHED (1<<0)
-
 //Bay lighting engine shit, not in /code/modules/lighting because BYOND is being shit about it
 /// frequency, in 1/10ths of a second, of the lighting process
 #define LIGHTING_INTERVAL       5
@@ -27,13 +15,15 @@
 #define LIGHTING_FALLOFF        1
 /// use lambertian shading for light sources
 #define LIGHTING_LAMBERTIAN     0
-/// height off the ground of light sources on the pseudo-z-axis, you should probably leave this alone
-#define LIGHTING_HEIGHT         1
 /// Value used to round lumcounts, values smaller than 1/129 don't matter (if they do, thanks sinking points), greater values will make lighting less precise, but in turn increase performance, VERY SLIGHTLY.
 #define LIGHTING_ROUND_VALUE    (1 / 64)
 
 /// icon used for lighting shading effects
 #define LIGHTING_ICON 'icons/effects/lighting_object.dmi'
+#define LIGHTING_BASE_ICON_STATE "matrix"	// icon_state used for normal color-matrix based lighting overlays.
+#define LIGHTING_STATION_ICON_STATE "tubedefault"	// icon_state used for lighting overlays that are just displaying standard station lighting.
+#define LIGHTING_DARKNESS_ICON_STATE "black"	// icon_state used for lighting overlays with no luminosity.
+#define LIGHTING_TRANSPARENT_ICON_STATE "blank"
 
 /// If the max of the lighting lumcounts of each spectrum drops below this, disable luminosity on the lighting objects.
 /// Set to zero to disable soft lighting. Luminosity changes then work if it's lit at all.
@@ -117,3 +107,16 @@ do { \
 		source.lum_b = 1; \
 	}; \
 } while (FALSE)
+
+// Some angle presets for directional lighting.
+#define LIGHT_OMNI null
+#define LIGHT_SEMI 180
+#define LIGHT_WIDE 90
+#define LIGHT_NARROW 45
+
+// This color of overlay is very common - most of the station is this color when lit fully.
+// Tube lights are a bluish-white, so we can't just assume 1-1-1 is full-illumination.
+// -- If you want to change these, find them *by checking in-game*, just converting tubes' RGB color into floats will not work!
+#define LIGHTING_DEFAULT_TUBE_R 0.96
+#define LIGHTING_DEFAULT_TUBE_G 1
+#define LIGHTING_DEFAULT_TUBE_B 1

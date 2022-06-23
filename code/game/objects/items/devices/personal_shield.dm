@@ -16,7 +16,7 @@
 	QDEL_NULL(shield)
 	return ..()
 
-/obj/item/device/personal_shield/forceMove(atom/destination, var/special_event, glide_size_override=0)
+/obj/item/device/personal_shield/forceMove(atom/destination, glide_size_override=0)
 	QDEL_NULL(shield)
 	return ..()
 

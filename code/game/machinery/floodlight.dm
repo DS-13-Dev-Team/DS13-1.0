@@ -51,7 +51,7 @@
 		return 0
 
 	on = 1
-	set_light_on(FALSE)
+	set_light_on(TRUE)
 	update_icon()
 	if(loud)
 		visible_message("\The [src] turns on.")

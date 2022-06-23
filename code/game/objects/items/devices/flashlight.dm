@@ -11,9 +11,9 @@
 	matter = list(MATERIAL_STEEL = 50,MATERIAL_GLASS = 20)
 
 	action_button_name = "Toggle Flashlight"
-	light_system = MOVABLE_LIGHT_DIRECTIONAL
 	light_range = 4
 	light_power = 1
+	light_wedge = LIGHT_WIDE
 	light_on = FALSE
 	var/on = FALSE
 	var/activation_sound = 'sound/effects/flashlight.ogg'
@@ -30,7 +30,19 @@
 	else
 		icon_state = initial(icon_state)
 	set_light_on(on)
-	if(light_system == STATIC_LIGHT)
+	update_light()
+
+/obj/item/device/flashlight/dropped(mob/user)
+	. = ..()
+	if(light_wedge)
+		set_dir(user.dir)
+		update_light()
+
+/obj/item/device/flashlight/throw_at()
+	. = ..()
+	if(light_wedge)
+		var/new_dir = pick(NORTH, SOUTH, EAST, WEST)
+		set_dir(new_dir)
 		update_light()
 
 /obj/item/device/flashlight/attack_self(mob/user)
@@ -149,7 +161,6 @@
 	slot_flags = SLOT_BELT
 	matter = list(MATERIAL_STEEL = 200,MATERIAL_GLASS = 100)
 	light_range = 6
-	light_system = MOVABLE_LIGHT
 
 /******************************Lantern*******************************/
 
@@ -172,6 +183,7 @@
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
 	light_range = 5
 	on = 1
+	light_wedge = LIGHT_OMNI
 
 // green-shaded desk lamp
 /obj/item/device/flashlight/lamp/green
@@ -203,7 +215,6 @@
 	var/produce_heat = 1500
 	activation_sound = 'sound/effects/flare.ogg'
 	light_color = "#e58775"
-	light_system = MOVABLE_LIGHT
 	light_range = 5
 
 //Subtype that enables on spawning
@@ -287,7 +298,6 @@
 	randpixel = 12
 	produce_heat = 0
 	activation_sound = null
-	light_system = MOVABLE_LIGHT
 	color = "#49f37c"
 	light_range = 4
 
@@ -316,8 +326,7 @@
 			M.update_inv_l_hand()
 		if(M.r_hand == src)
 			M.update_inv_r_hand()
-	if(light_system == STATIC_LIGHT)
-		update_light()
+	update_light()
 
 /obj/item/device/flashlight/flare/glowstick/red
 	name = "red glowstick"

@@ -56,11 +56,6 @@
 			add_overlay(list(em_block))
 	if(opacity)
 		AddElement(/datum/element/light_blocking)
-	switch(light_system)
-		if(MOVABLE_LIGHT)
-			AddComponent(/datum/component/overlay_lighting)
-		if(MOVABLE_LIGHT_DIRECTIONAL)
-			AddComponent(/datum/component/overlay_lighting, is_directional = TRUE)
 
 ///Keeps track of the sources of dynamic luminosity and updates our visibility with the highest.
 /atom/movable/proc/update_dynamic_luminosity()
@@ -76,6 +71,7 @@
 	luminosity += affecting_dynamic_lumi
 
 /atom/movable/Destroy()
+	QDEL_NULL(em_block)
 	if (can_block_movement)
 		var/turf/T = get_turf(src)
 		if (T)
@@ -92,7 +88,7 @@
 	for(var/atom/movable/AM in src)
 		qdel(AM)
 
-	forceMove(null)
+	forceMove(null, hardforce = TRUE)
 	if (pulledby)
 		if (pulledby.pulling == src)
 			pulledby.pulling = null
@@ -132,7 +128,7 @@
 	..()
 	return
 
-/atom/movable/proc/forceMove(atom/destination, var/special_event, glide_size_override=0)
+/atom/movable/proc/forceMove(atom/destination, hardforce, glide_size_override=0)
 	if(loc == destination)
 		return FALSE
 
@@ -166,6 +162,10 @@
 					AM.Crossed(src)
 			if(is_new_area && is_destination_turf)
 				destination.loc.Entered(src, origin)
+
+	if(opacity)
+		updateVisibility(src)
+
 	Moved(origin, NONE)
 	return TRUE
 
@@ -200,9 +200,7 @@
 
 		. = ..()
 
-		if(direct != get_visual_dir())
-			set_dir(direct)
-
+		set_dir(direct)
 		//This is an actual speed in metres per second
 		var/last_move_delta = world.time - src.l_move_time
 		if (last_move_delta)
@@ -216,10 +214,14 @@
 			src.last_move = get_dir(A, src.loc)
 
 	if(.)
+		if(opacity)
+			updateVisibility(src)
 		Moved(OldLoc, dir)
 
 /atom/movable/proc/Moved(atom/OldLoc, Dir)
 	SEND_SIGNAL(src, COMSIG_MOVABLE_MOVED, OldLoc, loc)
+	for (var/datum/light_source/light as anything in light_sources) // Cycle through the light sources on this atom and tell them to update.
+		light.source_atom.update_light()
 
 /atom/movable/proc/set_glide_size(glide_size_override = 0, var/min = 0.1, var/max = world.icon_size/1)
 	if (!glide_size_override || glide_size_override > max)

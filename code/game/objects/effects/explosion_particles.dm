@@ -22,12 +22,14 @@
 
 /datum/effect/system/expl_particles/proc/start()
 	var/i = 0
-	for(i=0, i<src.number, i++)
+	for(i=0 to number)
 		spawn(0)
 			var/obj/effect/expl_particles/expl = new /obj/effect/expl_particles(src.location)
 			var/direct = pick(GLOB.alldirs)
-			for(i=0, i<pick(1;25,2;50,3,4;200), i++)
+			for(i=0 to pick(1;25, 2;50, 3, 4;200))
 				sleep(1)
+				if(QDELING(expl))
+					break
 				step(expl,direct)
 
 /obj/effect/explosion

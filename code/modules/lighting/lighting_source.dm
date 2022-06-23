@@ -1,3 +1,4 @@
+#define DETERMINANT(A_X,A_Y,B_X,B_Y) ((A_X)*(B_Y) - (A_Y)*(B_X))
 // This is where the fun begins.
 // These are the main datums that emit light.
 
@@ -17,6 +18,8 @@
 	var/light_range
 	/// The colour of the light, string, decomposed by parse_light_color()
 	var/light_color
+	/// The light's emission angle, in degrees.
+	var/light_angle
 
 	// Variables for keeping track of the colour.
 	var/lum_r
@@ -28,6 +31,26 @@
 	var/tmp/applied_lum_g
 	var/tmp/applied_lum_b
 
+	// The last known X coord of the origin.
+	var/tmp/cached_origin_x
+	// The last known Y coord of the origin.
+	var/tmp/cached_origin_y
+	// The last known direction of the origin.
+	var/tmp/old_direction
+	// How much the X coord should be offset due to direction.
+	var/tmp/test_x_offset
+	// How much the Y coord should be offset due to direction.
+	var/tmp/test_y_offset
+
+	// The first test point's X coord for the cone.
+	var/tmp/limit_a_x
+	// The first test point's Y coord for the cone.
+	var/tmp/limit_a_y
+	// The second test point's X coord for the cone.
+	var/tmp/limit_b_x
+	// The second test point's Y coord for the cone.
+	var/tmp/limit_b_y
+
 	/// List used to store how much we're affecting corners.
 	var/list/datum/lighting_corner/effect_str
 
@@ -36,7 +59,6 @@
 
 	/// whether we are to be added to SSlighting's sources_queue list for an update
 	var/needs_update = LIGHTING_NO_UPDATE
-
 
 /datum/light_source/New(atom/owner, atom/top)
 	source_atom = owner // Set our new owner.
@@ -51,6 +73,7 @@
 	light_power = source_atom.light_power
 	light_range = source_atom.light_range
 	light_color = source_atom.light_color
+	light_angle = source_atom.light_wedge
 
 	PARSE_LIGHT_COLOR(src)
 
@@ -111,7 +134,7 @@
 // If you're wondering what's with the backslashes, the backslashes cause BYOND to not automatically end the line.
 // As such this all gets counted as a single line.
 // The braces and semicolons are there to be able to do this on a single line.
-#define LUM_FALLOFF(C, T) (1 - CLAMP01(sqrt((C.x - T.x) ** 2 + (C.y - T.y) ** 2 + LIGHTING_HEIGHT) / max(1, light_range)))
+#define LUM_FALLOFF(C, T) (1 - CLAMP01(sqrt((C.x - T.x) ** 2 + (C.y - T.y) ** 2) / max(1, light_range)))
 
 #define APPLY_CORNER(C)                          \
 	. = LUM_FALLOFF(C, pixel_turf);              \
@@ -152,6 +175,56 @@
 	APPLY_CORNER(corner)
 	effect_str[corner] = .
 
+#define POLAR_TO_CART_X(R,T) ((R) * cos(T))
+#define POLAR_TO_CART_Y(R,T) ((R) * sin(T))
+#define MINMAX(NUM) ((NUM) < 0 ? -round(-(NUM)) : round(NUM))
+#define ARBITRARY_NUMBER 10
+
+/datum/light_source/proc/regenerate_angle(ndir)
+	old_direction = ndir
+
+	cached_origin_x = test_x_offset = source_turf.x
+	cached_origin_y = test_y_offset = source_turf.y
+
+	var/limit_a_t
+	var/limit_b_t
+
+	var/angle = light_angle * 0.5
+	switch (old_direction)
+		if (NORTH)
+			limit_a_t = angle + 90
+			limit_b_t = -(angle) + 90
+			test_y_offset += 1
+
+		if (SOUTH)
+			limit_a_t = (angle) - 90
+			limit_b_t = -(angle) - 90
+			test_y_offset -= 1
+
+		if (EAST)
+			limit_a_t = angle
+			limit_b_t = -(angle)
+			test_x_offset += 1
+
+		if (WEST)
+			limit_a_t = angle + 180
+			limit_b_t = -(angle) - 180
+			test_x_offset -= 1
+
+	// Convert our angle + range into a vector.
+	limit_a_x = POLAR_TO_CART_X(light_range + ARBITRARY_NUMBER, limit_a_t)
+	limit_a_x = MINMAX(limit_a_x)
+	limit_a_y = POLAR_TO_CART_Y(light_range + ARBITRARY_NUMBER, limit_a_t)
+	limit_a_y = MINMAX(limit_a_y)
+	limit_b_x = POLAR_TO_CART_X(light_range + ARBITRARY_NUMBER, limit_b_t)
+	limit_b_x = MINMAX(limit_b_x)
+	limit_b_y = POLAR_TO_CART_Y(light_range + ARBITRARY_NUMBER, limit_b_t)
+	limit_b_y = MINMAX(limit_b_y)
+
+#undef ARBITRARY_NUMBER
+#undef POLAR_TO_CART_X
+#undef POLAR_TO_CART_Y
+#undef MINMAX
 
 /datum/light_source/proc/update_corners()
 	var/update = FALSE
@@ -208,6 +281,29 @@
 	else if (applied_lum_r != lum_r || applied_lum_g != lum_g || applied_lum_b != lum_b)
 		update = TRUE
 
+	if (source_atom.light_wedge != light_angle)
+		light_angle = source_atom.light_wedge
+		update = TRUE
+
+	if (light_angle)
+		var/ndir
+		if (istype(top_atom, /mob) && top_atom:facing_dir)
+			ndir = top_atom:facing_dir
+		else
+			ndir = top_atom.dir
+
+		if (old_direction != ndir)	// If our direction has changed, we need to regenerate all the angle info.
+			regenerate_angle(ndir)
+			update = TRUE
+		else // Check if it was just a x/y translation, and update our vars without an regenerate_angle() call if it is.
+			if (source_turf.x != cached_origin_x)
+				test_x_offset += source_turf.x - cached_origin_x
+				cached_origin_x = source_turf.x
+
+			if (source_turf.y != cached_origin_y)
+				test_y_offset += source_turf.y - cached_origin_y
+				cached_origin_y = source_turf.y
+
 	if (update)
 		needs_update = LIGHTING_CHECK_UPDATE
 		applied = TRUE
@@ -215,21 +311,50 @@
 		return //nothing's changed
 
 	var/list/datum/lighting_corner/corners = list()
-	var/list/turf/turfs = list()
-
 	if (source_turf)
-		var/oldlum = source_turf.luminosity
-		source_turf.luminosity = CEILING(light_range, 1)
-		for(var/turf/T in view(CEILING(light_range, 1), source_turf))
-			if(!IS_OPAQUE_TURF(T))
-				if (!T.lighting_corners_initialised)
-					T.generate_missing_corners()
-				corners[T.lighting_corner_NE] = 0
-				corners[T.lighting_corner_SE] = 0
-				corners[T.lighting_corner_SW] = 0
-				corners[T.lighting_corner_NW] = 0
-			turfs += T
-		source_turf.luminosity = oldlum
+		var/turf/T
+		var/turf/T_origin
+		var/test_x
+		var/test_y
+		FOR_DVIEW(T, CEILING(light_range, 1), source_turf, 0)
+			T_origin = T
+			do
+				if (light_angle)	// Directional lighting coordinate filter.
+					test_x = T.x - test_x_offset
+					test_y = T.y - test_y_offset
+
+					// If the signs of these are the same, then the point is within the cone.
+					if ((DETERMINANT(limit_a_x, limit_a_y, test_x, test_y) > 0) || DETERMINANT(test_x, test_y, limit_b_x, limit_b_y) > 0)
+						continue
+
+				if (!IS_OPAQUE_TURF(T))
+					if (!T.lighting_corners_initialised)
+						T.generate_missing_corners()
+					corners[T.lighting_corner_NE] = 0
+					corners[T.lighting_corner_SE] = 0
+					corners[T.lighting_corner_SW] = 0
+					corners[T.lighting_corner_NW] = 0
+
+			//  This is a do-while associated with the FOR_DVIEW above.
+			while (T && isopenspace(T) && (T = GetBelow(T)))
+			T = T_origin
+			while ((T = GetAbove(T)) && T && isopenspace(T))
+				if (light_angle)	// Directional lighting coordinate filter.
+					test_x = T.x - test_x_offset
+					test_y = T.y - test_y_offset
+
+					// If the signs of these are the same, then the point is within the cone.
+					if ((DETERMINANT(limit_a_x, limit_a_y, test_x, test_y) > 0) || DETERMINANT(test_x, test_y, limit_b_x, limit_b_y) > 0)
+						continue
+
+				if (!IS_OPAQUE_TURF(T))
+					if (!T.lighting_corners_initialised)
+						T.generate_missing_corners()
+					corners[T.lighting_corner_NE] = 0
+					corners[T.lighting_corner_SE] = 0
+					corners[T.lighting_corner_SW] = 0
+					corners[T.lighting_corner_NW] = 0
+		END_FOR_DVIEW
 
 	var/list/datum/lighting_corner/new_corners = (corners - effect_str)
 	LAZYINITLIST(effect_str)
@@ -270,3 +395,4 @@
 #undef LUM_FALLOFF
 #undef REMOVE_CORNER
 #undef APPLY_CORNER
+#undef DETERMINANT

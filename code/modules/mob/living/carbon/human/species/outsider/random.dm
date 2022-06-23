@@ -70,8 +70,7 @@
 	hazard_low_pressure += pressure_comfort_shift
 
 	//Misc traits
-	darksight_range = rand(1,8)
-	darksight_tint = pick(DARKTINT_NONE,DARKTINT_POOR,DARKTINT_MODERATE)
+	lighting_alpha = pick(LIGHTING_PLANE_ALPHA_VISIBLE,LIGHTING_PLANE_ALPHA_NV_TRAIT,LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE)
 	if(prob(40))
 		genders = list(PLURAL)
 	if(prob(10))

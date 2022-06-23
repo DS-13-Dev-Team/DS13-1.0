@@ -45,10 +45,10 @@
 
 /atom/movable/screen/plane_master/openspace/Initialize(mapload)
 	.=..()
-	add_filter("z_level_blur", 1, list(type = "blur", size = 0.75))
 	add_filter("first_stage_openspace", 1, drop_shadow_filter(color = "#04080FAA", size = -10))
 	add_filter("second_stage_openspace", 2, drop_shadow_filter(color = "#04080FAA", size = -15))
 	add_filter("third_stage_openspace", 3, drop_shadow_filter(color = "#04080FAA", size = -20))
+	add_filter("z_level_blur", 4, list(type = "blur", size = 0.4))
 
 ///Contains just the floor
 /atom/movable/screen/plane_master/floor

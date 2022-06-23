@@ -67,7 +67,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	icon_state = "space"
 	requires_power = 1
 	always_unpowered = 1
-	static_lighting = FALSE
 	power_light = 0
 	power_equip = 0
 	power_environ = 0

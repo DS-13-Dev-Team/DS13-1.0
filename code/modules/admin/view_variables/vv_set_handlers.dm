@@ -144,20 +144,13 @@
 
 /decl/vv_set_handler/area_light_handler
 	handled_type = /area
-	handled_vars = list("base_lighting_color", "base_lighting_alpha", "static_lighting")
+	handled_vars = list("base_lighting_color", "base_lighting_alpha")
 
 /decl/vv_set_handler/area_light_handler/handle_set_var(area/A, variable, var_value, client)
 	VV_LIGHTING_SET(base_lighting_color)
 	VV_LIGHTING_SET(base_lighting_alpha)
-	VV_LIGHTING_SET(static_lighting)
 
 	A.set_base_lighting(new_base_lighting_color, new_base_lighting_alpha)
-	if(new_static_lighting != A.static_lighting)
-		if(new_static_lighting)
-			A.create_area_lighting_objects()
-		else
-			A.remove_area_lighting_objects()
-
 	return ..()
 
 #undef VV_LIGHTING_SET

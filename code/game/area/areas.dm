@@ -34,8 +34,6 @@
 		power_light = 0
 		power_equip = 0
 		power_environ = 0
-		if(static_lighting)
-			luminosity = 0
 	power_change()		// all machines set to current power level, also updates lighting icon
 	if(ship_area)
 		GLOB.ship_areas += src

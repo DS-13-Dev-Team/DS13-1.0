@@ -59,8 +59,7 @@
 	view_range = VIEW_RANGE_CLOSED
 	view_offset = VIEW_OFFSET_CLOSED
 
-
-	darksight_tint = DARKTINT_GOOD
+	lighting_alpha = LIGHTING_PLANE_ALPHA_NV_TRAIT
 
 	has_limbs = list(
 	BP_CHEST =  list("path" = /obj/item/organ/external/chest/simple, "height" = new /vector2(0, 0.5)),	//Half a metre high

@@ -70,7 +70,7 @@
 
 	//Vision
 	view_range = 8
-	darksight_tint = DARKTINT_GOOD
+	lighting_alpha = LIGHTING_PLANE_ALPHA_NV_TRAIT
 
 
 	//Audio

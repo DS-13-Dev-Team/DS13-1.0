@@ -15,7 +15,7 @@
 		return
 	. = ..()
 
-	current_underlay = mutable_appearance(LIGHTING_ICON, "transparent", source.z, LIGHTING_PLANE, 255, RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM)
+	current_underlay = mutable_appearance(LIGHTING_ICON, LIGHTING_BASE_ICON_STATE, source.z, LIGHTING_PLANE, 255, RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM)
 
 	affected_turf = source
 	if (affected_turf.lighting_object)
@@ -41,6 +41,9 @@
 		affected_turf.underlays -= current_underlay
 	affected_turf = null
 	return ..()
+
+// This is a macro PURELY so that the if below is actually readable.
+#define ALL_EQUAL ((rr == gr && gr == br && br == ar) && (rg == gg && gg == bg && bg == ag) && (rb == gb && gb == bb && bb == ab))
 
 /datum/lighting_object/proc/update()
 
@@ -85,20 +88,18 @@
 	var/set_luminosity = max > 1e-6
 	#endif
 
-	if((rr & gr & br & ar) && (rg + gg + bg + ag + rb + gb + bb + ab == 8))
-		//anything that passes the first case is very likely to pass the second, and addition is a little faster in this case
-		affected_turf.underlays -= current_underlay
-		current_underlay.icon_state = "lighting_transparent"
+	affected_turf.underlays -= current_underlay
+	if(rr + rg + rb + gr + gg + gb + br + bg + bb + ar + ag + ab >= 12)
+		current_underlay.icon_state = LIGHTING_TRANSPARENT_ICON_STATE
 		current_underlay.color = null
-		affected_turf.underlays += current_underlay
 	else if(!set_luminosity)
-		affected_turf.underlays -= current_underlay
-		current_underlay.icon_state = "lighting_dark"
+		current_underlay.icon_state = LIGHTING_DARKNESS_ICON_STATE
 		current_underlay.color = null
-		affected_turf.underlays += current_underlay
+	else if (rr == LIGHTING_DEFAULT_TUBE_R && rg == LIGHTING_DEFAULT_TUBE_G && rb == LIGHTING_DEFAULT_TUBE_B && ALL_EQUAL)
+		current_underlay.icon_state = LIGHTING_STATION_ICON_STATE
+		current_underlay.color = null
 	else
-		affected_turf.underlays -= current_underlay
-		current_underlay.icon_state = null
+		current_underlay.icon_state = LIGHTING_BASE_ICON_STATE
 		current_underlay.color = list(
 			rr, rg, rb, 00,
 			gr, gg, gb, 00,
@@ -106,7 +107,7 @@
 			ar, ag, ab, 00,
 			00, 00, 00, 01
 		)
-
-		affected_turf.underlays += current_underlay
-
+	affected_turf.underlays += current_underlay
 	affected_turf.luminosity = set_luminosity
+
+#undef ALL_EQUAL

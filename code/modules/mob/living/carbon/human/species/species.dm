@@ -217,8 +217,7 @@
 	//Vision
 	var/view_offset = 0			  //How far forward the mob's view is offset, in pixels.
 	var/view_range = 7		  //Mob's vision radius, in tiles. It gets buggy with values below 7, but anything 7+ is flawless
-	var/darksight_range = 2       // Native darksight distance.
-	var/darksight_tint = DARKTINT_NONE // How shadows are tinted.
+	var/lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE // How shadows are tinted.
 	var/vision_flags = SEE_SELF               // Same flags as glasses.
 	var/short_sighted                         // Permanent weldervision.
 
@@ -432,17 +431,9 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 	H.view_offset = view_offset
 	H.view_range = view_range
 
-	if (darksight_tint != DARKTINT_NONE)
-		H.set_darksight_color(darksight_tint)
-
-		//-1 range is a special value that means fullscreen
-		if (darksight_range == -1)
-			H.set_darksight_range(view_range)
-		else
-			H.set_darksight_range(darksight_range)
-
-
-
+	if(lighting_alpha != LIGHTING_PLANE_ALPHA_VISIBLE)
+		H.lighting_alpha = lighting_alpha
+		H.sync_lighting_plane_alpha()
 
 /datum/species/proc/sanitize_name(var/name)
 	return sanitizeName(name)
@@ -569,7 +560,7 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 			//Modclick takes key type, function name, function priority, and a list of extra arguments
 			H.add_modclick_verb(arglist(input_args))
 
-	if (darksight_tint != DARKTINT_NONE)
+	if(lighting_alpha != LIGHTING_PLANE_ALPHA_VISIBLE)
 		add_verb(H, /mob/living/carbon/human/proc/toggle_darkvision)
 
 
@@ -603,14 +594,8 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 
 // Used to update alien icons for aliens.
 /datum/species/proc/handle_login_special(var/mob/living/carbon/human/H)
-	if (H.l_general)
-		H.set_darksight_color(darksight_tint)
-		//-1 range is a special value that means fullscreen
-		if (darksight_range == -1)
-			H.set_darksight_range(view_range)
-		else
-			H.set_darksight_range(darksight_range)
-	return
+	H.lighting_alpha = lighting_alpha
+	H.sync_lighting_plane_alpha()
 
 // As above.
 /datum/species/proc/handle_logout_special(var/mob/living/carbon/human/H)

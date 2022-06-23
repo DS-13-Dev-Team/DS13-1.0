@@ -119,9 +119,5 @@
 	if (!client)
 		return
 
-	if (l_general)
-		QDEL_NULL(l_general)
-
-	l_general = new(null, client)
-	//client.screen += l_general
+	sync_lighting_plane_alpha()
 	client.update_skybox(TRUE)

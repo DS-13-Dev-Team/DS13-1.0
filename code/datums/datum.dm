@@ -54,6 +54,15 @@
 			continue
 		qdel(timer)
 
+	if(extensions)
+		for(var/expansion_key in extensions)
+			var/list/extension = extensions[expansion_key]
+			if(islist(extension))
+				extension.Cut()
+			else
+				qdel(extension)
+		extensions = null
+
 	var/list/dc = datum_components
 	if(dc)
 		var/all_components = dc[/datum/component]
@@ -81,7 +90,7 @@
 	for(var/target in signal_procs)
 		UnregisterSignal(target, signal_procs[target])
 
-	return QDEL_HINT_QUEUE
+	return QDEL_HINT_IFFAIL_FINDREFERENCE
 
 /datum/proc/Process()
 	set waitfor = 0

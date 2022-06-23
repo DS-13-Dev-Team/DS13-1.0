@@ -93,6 +93,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	name = "smokable item"
 	desc = "You're not sure what this is. You should probably ahelp it."
 	body_parts_covered = 0
+	light_on = FALSE
 	light_range = 2
 	light_power = 0.6
 	light_color = "#e38f46"

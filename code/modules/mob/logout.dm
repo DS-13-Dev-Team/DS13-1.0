@@ -13,9 +13,6 @@
 	GLOB.player_list -= src
 	log_access("Logout: [key_name(src)]")
 	handle_admin_logout()
-	if(my_client)
-		my_client.screen -= l_general
-	QDEL_NULL(l_general)
 	hide_client_images()
 
 	..()

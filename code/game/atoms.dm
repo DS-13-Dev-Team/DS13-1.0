@@ -13,18 +13,16 @@
 	var/germ_level = GERM_LEVEL_AMBIENT // The higher the germ level, the more germ on the atom.
 	var/simulated = 1 //filter for actions - used by lighting overlays
 	var/fluorescent // Shows up under a UV light.
-	///Light systems, both shouldn't be active at the same time.
-	var/light_system = STATIC_LIGHT
 	///Range of the light in tiles. Zero means no light.
 	var/light_range = 0
 	///Intensity of the light. The stronger, the less shadows you will see on the lit area.
 	var/light_power = 1
 	///Hexadecimal RGB string representing the colour of the light. White by default.
 	var/light_color = COLOR_WHITE
+	// The angle that the light's emission should be restricted to. null for omnidirectional.
+	var/light_wedge = LIGHT_OMNI
 	///Boolean variable for toggleable lights. Has no effect without the proper light_system, light_range and light_power values.
 	var/light_on = TRUE
-	///Bitflags to determine lighting-related atom properties.
-	var/light_flags = NONE
 	///Our light source. Don't fuck with this directly unless you have a good reason!
 	var/tmp/datum/light_source/light
 	///Any light sources that are "inside" of us, for example, if src here was a mob that's carrying a flashlight, that flashlight's light source would be part of this list.
@@ -116,7 +114,7 @@
 		crash_with("Warning: [src]([type]) initialized multiple times!")
 	atom_flags |= ATOM_FLAG_INITIALIZED
 
-	if (light_system == STATIC_LIGHT && light_power && light_range)
+	if(light_power && light_range)
 		update_light()
 
 	return INITIALIZE_HINT_NORMAL
@@ -351,6 +349,9 @@ its easier to just keep the beam vertical.
 	if(.)
 		SEND_SIGNAL(src, COMSIG_ATOM_DIR_CHANGE, dir, new_dir)
 		dir = new_dir
+		// Cycle through the light sources on this atom and tell them to update.
+		for (var/datum/light_source/light as anything in light_sources)
+			light.source_atom.update_light()
 
 /atom/proc/set_icon_state(var/new_icon_state)
 	if(has_extension(src, /datum/extension/base_icon_state))

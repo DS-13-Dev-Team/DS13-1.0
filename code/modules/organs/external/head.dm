@@ -147,7 +147,7 @@
 	return mob_icon
 
 /obj/item/organ/external/head/proc/get_hair_icon()
-	var/image/res = image(species.icon_template,"")
+	var/mutable_appearance/res = mutable_appearance(species.icon_template,"")
 	//Future TODO: Cache the hairstyle in the head so that heads can have hair after severing
 	if (owner)
 		if(owner.f_style)

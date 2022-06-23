@@ -35,6 +35,6 @@
 	return
 
 //Prevents people from moving these after creation, because they shouldn't be.
-/atom/movable/emissive_blocker/forceMove(atom/destination, no_tp=FALSE, harderforce = FALSE)
-	if(harderforce)
-		return ..()
+/atom/movable/emissive_blocker/forceMove(atom/destination, hardforce, glide_size_override)
+	if(hardforce)
+		.=..()
