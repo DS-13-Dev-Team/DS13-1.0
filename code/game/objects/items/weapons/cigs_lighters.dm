@@ -395,9 +395,9 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	return item_state
 
 /obj/item/clothing/mask/smokable/cigarette/get_mob_overlay(mob/user_mob, slot)
-	var/image/res = ..()
+	var/mutable_appearance/res = ..()
 	if(lit == 1)
-		var/image/ember = overlay_image(res.icon, "cigember", flags=RESET_COLOR)
+		var/mutable_appearance/ember = overlay_image(res.icon, "cigember", flags=RESET_COLOR)
 		ember.plane = ABOVE_LIGHTING_PLANE
 		ember.layer = LIGHTING_SECONDARY_LAYER
 		res.overlays += ember

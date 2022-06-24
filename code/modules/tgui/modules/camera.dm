@@ -8,7 +8,8 @@
 
 	var/obj/machinery/camera/active_camera
 	var/list/concurrent_users = list()
-
+	/// The turf where the camera was last updated.
+	var/turf/last_camera_turf
 	// Stuff needed to render the map
 	var/map_name
 	var/const/default_map_size = 15
@@ -17,9 +18,10 @@
 	var/list/cam_plane_masters
 	var/atom/movable/screen/background/cam_background
 	var/atom/movable/screen/background/cam_foreground
-	var/atom/movable/screen/skybox/local_skybox
-	// Stuff for moving cameras
-	var/turf/last_camera_turf
+	// Needed for moving camera support
+	var/camera_diff_x = -1
+	var/camera_diff_y = -1
+	var/camera_diff_z = -1
 
 /datum/tgui_module/camera/New(host, list/network_computer)
 	. = ..()
@@ -27,55 +29,38 @@
 		access_based = TRUE
 	else
 		network = network_computer
+	// Map name has to start and end with an A-Z character,
+	// and definitely NOT with a square bracket or even a number.
+	// I wasted 6 hours on this. :agony:
 	map_name = "camera_console_[REF(src)]_map"
+	// Convert networks to lowercase
+	for(var/i in network)
+		network -= i
+		network += lowertext(i)
 	// Initialize map objects
 	cam_screen = new
 	cam_screen.name = "screen"
 	cam_screen.assigned_map = map_name
 	cam_screen.del_on_map_removal = FALSE
 	cam_screen.screen_loc = "[map_name]:1,1"
-
 	cam_plane_masters = list()
-	for(var/plane in subtypesof(/atom/movable/screen/plane_master))
+	for(var/plane in subtypesof(/atom/movable/screen/plane_master) - /atom/movable/screen/plane_master/blackness)
 		var/atom/movable/screen/plane_master/instance = new plane()
+		if(instance.blend_mode_override)
+			instance.blend_mode = instance.blend_mode_override
 		instance.assigned_map = map_name
 		instance.del_on_map_removal = FALSE
 		instance.screen_loc = "[map_name]:CENTER"
 		cam_plane_masters += instance
-
-	local_skybox = new()
-	local_skybox.assigned_map = map_name
-	local_skybox.del_on_map_removal = FALSE
-	local_skybox.screen_loc = "[map_name]:CENTER,CENTER"
-	cam_plane_masters += local_skybox
-
 	cam_background = new
 	cam_background.assigned_map = map_name
 	cam_background.del_on_map_removal = FALSE
 
-	var/mutable_appearance/scanlines = mutable_appearance('icons/effects/static.dmi', "scanlines")
-	scanlines.alpha = 50
-	scanlines.layer = FULLSCREEN_LAYER
-
-	var/mutable_appearance/noise = mutable_appearance('icons/effects/static.dmi', "1 light")
-	noise.layer = FULLSCREEN_LAYER
-
-	cam_foreground = new
-	cam_foreground.assigned_map = map_name
-	cam_foreground.del_on_map_removal = FALSE
-	cam_foreground.plane = FULLSCREEN_PLANE
-	cam_foreground.add_overlay(scanlines)
-	cam_foreground.add_overlay(noise)
-
 /datum/tgui_module/camera/Destroy()
-	if(active_camera)
-		GLOB.moved_event.unregister(active_camera, src, .proc/update_active_camera_screen)
-	active_camera = null
-	last_camera_turf = null
-	qdel(cam_screen)
+	QDEL_NULL(cam_screen)
 	QDEL_LIST(cam_plane_masters)
-	qdel(cam_background)
-	qdel(cam_foreground)
+	QDEL_NULL(cam_background)
+	QDEL_NULL(cam_foreground)
 	return ..()
 
 /datum/tgui_module/camera/tgui_interact(mob/user, datum/tgui/ui = null)
@@ -92,14 +77,13 @@
 		if(is_living)
 			concurrent_users += user_ref
 		// Turn on the console
-//		if(length(concurrent_users) == 1 && is_living)
-//			playsound(ui_host(), 'sound/machines/terminal_on.ogg', 25, FALSE)
+		if(length(concurrent_users) == 1 && is_living)
+			playsound(ui_host(), 'sound/machines/terminal_on.ogg', 25, FALSE)
 		// Register map objects
 		user.client.register_map_obj(cam_screen)
 		for(var/plane in cam_plane_masters)
 			user.client.register_map_obj(plane)
 		user.client.register_map_obj(cam_background)
-		user.client.register_map_obj(cam_foreground)
 		// Open UI
 		ui = new(user, src, tgui_id, name)
 		ui.open()
@@ -108,6 +92,7 @@
 	var/list/data = list()
 	data["activeCamera"] = null
 	if(active_camera)
+		differential_check()
 		data["activeCamera"] = list(
 			name = active_camera.c_tag,
 			status = active_camera.status,
@@ -133,19 +118,16 @@
 	if(..())
 		return TRUE
 
-//	if(action && !issilicon(usr))
-//		playsound(ui_host(), "terminal_type", 50, 1)
+	if(action && !issilicon(usr))
+		playsound(ui_host(), "terminal_type", 50, 1)
 
 	if(action == "switch_camera")
 		var/c_tag = params["name"]
 		var/list/cameras = get_available_cameras(usr)
 		var/obj/machinery/camera/C = cameras["[ckey(c_tag)]"]
-		if(active_camera)
-			GLOB.moved_event.unregister(active_camera, src, .proc/update_active_camera_screen)
 		active_camera = C
-		GLOB.moved_event.register(active_camera, src, .proc/update_active_camera_screen)
-//		playsound(ui_host(), get_sfx("terminal_type"), 25, FALSE)
-		update_active_camera_screen()
+		playsound(ui_host(), get_sfx("terminal_type"), 25, FALSE)
+		reload_cameraview()
 		return TRUE
 
 	if(action == "pan")
@@ -167,35 +149,45 @@
 					target = C
 
 			if(target)
-				if(active_camera)
-					GLOB.moved_event.unregister(active_camera, src, .proc/update_active_camera_screen)
 				active_camera = target
-				GLOB.moved_event.register(active_camera, src, .proc/update_active_camera_screen)
-//				playsound(ui_host(), get_sfx("terminal_type"), 25, FALSE)
-				update_active_camera_screen()
+				playsound(ui_host(), get_sfx("terminal_type"), 25, FALSE)
+				reload_cameraview()
 				. = TRUE
 
-/datum/tgui_module/camera/proc/update_active_camera_screen()
+/datum/tgui_module/camera/proc/differential_check()
+	var/turf/T = get_turf(active_camera)
+	if(T)
+		var/new_x = T.x
+		var/new_y = T.y
+		var/new_z = T.z
+		if((new_x != camera_diff_x) || (new_y != camera_diff_y) || (new_z != camera_diff_z))
+			reload_cameraview()
+
+/datum/tgui_module/camera/proc/reload_cameraview()
 	// Show static if can't use the camera
 	if(!active_camera?.can_use())
 		show_camera_static()
-		return TRUE
+		return
+
+	var/list/visible_turfs = list()
+
+	// Is this camera located in or attached to a living thing? If so, assume the camera's loc is the living thing.
+	var/cam_location = isliving(active_camera.loc) ? active_camera.loc : active_camera
 
 	// If we're not forcing an update for some reason and the cameras are in the same location,
 	// we don't need to update anything.
 	// Most security cameras will end here as they're not moving.
-	var/turf/newturf = get_turf(active_camera)
-	if(newturf == last_camera_turf)
+	var/turf/newturf = get_turf(cam_location)
+	if(last_camera_turf == newturf)
 		return
 
 	// Cameras that get here are moving, and are likely attached to some moving atom such as cyborgs.
-	last_camera_turf = get_turf(active_camera)
+	last_camera_turf = get_turf(cam_location)
 
-	var/list/visible_turfs = list()
-	for(var/turf/T in (active_camera.isXRay() \
-			? range(active_camera.view_range, newturf) \
-			: view(active_camera.view_range, newturf)))
-		visible_turfs += T
+	var/list/visible_things = active_camera.isXRay() ? range(active_camera.view_range, cam_location) : view(active_camera.view_range, cam_location)
+
+	for(var/turf/visible_turf in visible_things)
+		visible_turfs += visible_turf
 
 	var/list/bbox = get_bbox_of_atoms(visible_turfs)
 	var/size_x = bbox[3] - bbox[1] + 1
@@ -205,12 +197,6 @@
 	cam_background.icon_state = "clear"
 	cam_background.fill_rect(1, 1, size_x, size_y)
 
-	cam_foreground.fill_rect(1, 1, size_x, size_y)
-
-	local_skybox.cut_overlays()
-	local_skybox.add_overlay(SSskybox.get_skybox(get_z(newturf)))
-	local_skybox.scale_to_view(size_x)
-	local_skybox.set_position("CENTER", "CENTER", (world.maxx>>1) - newturf.x, (world.maxy>>1) - newturf.y)
 
 // Returns the list of cameras accessible from this computer
 // This proc operates in two distinct ways depending on the context in which the module is created.
@@ -257,7 +243,6 @@
 	cam_screen.vis_contents.Cut()
 	cam_background.icon_state = "scanline2"
 	cam_background.fill_rect(1, 1, default_map_size, default_map_size)
-	local_skybox.cut_overlays()
 
 /datum/tgui_module/camera/ui_close(mob/user)
 	. = ..()
@@ -270,10 +255,8 @@
 		user.client.clear_map(map_name)
 	// Turn off the console
 	if(length(concurrent_users) == 0 && is_living)
-		if(active_camera)
-			GLOB.moved_event.unregister(active_camera, src, .proc/update_active_camera_screen)
 		active_camera = null
-//		playsound(ui_host(), 'sound/machines/terminal_off.ogg', 25, FALSE)
+		playsound(ui_host(), 'sound/machines/terminal_off.ogg', 25, FALSE)
 
 // NTOS Version
 // Please note, this isn't a very good replacement for converting modular computers 100% to TGUI

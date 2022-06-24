@@ -48,8 +48,38 @@
 	data["map_levels"] = map_levels
 
 	var/list/crewmembers = list()
-	for(var/zlevel in map_levels)
-		crewmembers += GLOB.crew_repository.health_data(zlevel)
+	var/list/healthbars = list()
+	for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
+		if(H.wearing_rig?.healthbar)
+			healthbars |= H.wearing_rig.healthbar
+
+	for(var/obj/item/rig_module/healthbar/HB as anything in healthbars)
+		var/turf/pos = get_turf(HB)
+		if(HB.tracking_level != RIG_SENSOR_OFF && HB.holder?.active)
+			var/list/crewmemberData = list("stat"=0, "oxy"=-1, "tox"=-1, "fire"=-1, "brute"=-1, "area"="", "x"=-1, "y"=-1, "ref" = "\ref[HB.holder.wearer]")
+
+			crewmemberData["sensor_type"] = HB.tracking_level
+			crewmemberData["name"] = HB.holder.wearer.get_authentification_name(if_no_id="Unknown")
+			crewmemberData["rank"] = HB.holder.wearer.get_authentification_rank(if_no_id="Unknown", if_no_job="No Job")
+			crewmemberData["assignment"] = HB.holder.wearer.get_assignment(if_no_id="Unknown", if_no_job="No Job")
+
+			if(HB.tracking_level >= RIG_SENSOR_BINARY)
+				crewmemberData["stat"] = HB.holder.wearer.stat
+
+			if(HB.tracking_level >= RIG_SENSOR_VITAL)
+				crewmemberData["oxy"] = round(HB.holder.wearer.getOxyLoss(), 1)
+				crewmemberData["tox"] = round(HB.holder.wearer.getToxLoss(), 1)
+				crewmemberData["fire"] = round(HB.holder.wearer.getFireLoss(), 1)
+				crewmemberData["brute"] = round(HB.holder.wearer.getBruteLoss(), 1)
+
+			if(HB.tracking_level >= RIG_SENSOR_TRACKING)
+				var/area/A = pos.loc
+				crewmemberData["area"] = sanitize(A.name)
+				crewmemberData["x"] = pos.x
+				crewmemberData["y"] = pos.y
+				crewmemberData["z"] = pos.z
+
+			crewmembers[++crewmembers.len] = crewmemberData
 
 	// This is apparently necessary, because the above loop produces an emergent behavior
 	// of telling you what coordinates someone is at even without sensors on,

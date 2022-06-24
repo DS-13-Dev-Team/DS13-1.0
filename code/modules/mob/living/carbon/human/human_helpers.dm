@@ -48,6 +48,7 @@
 	equipment_vision_flags = 0
 	equipment_prescription = 0
 	equipment_light_protection = 0
+	equipment_lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
 	equipment_darkness_modifier = 0
 	equipment_overlays.Cut()
 
@@ -68,6 +69,7 @@
 			equipment_darkness_modifier += G.darkness_view
 			equipment_vision_flags |= G.vision_flags
 			equipment_light_protection += G.light_protection
+			equipment_lighting_alpha = min(G.lighting_alpha, equipment_lighting_alpha)
 			if(G.overlay)
 				equipment_overlays |= G.overlay
 			if(G.see_invisible >= 0)

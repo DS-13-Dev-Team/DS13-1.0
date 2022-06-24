@@ -313,7 +313,7 @@
 		icon_state = "glowstick-empty"
 		set_light_on(FALSE)
 	else if (on)
-		var/image/I = overlay_image(icon,"glowstick-on",color)
+		var/mutable_appearance/I = overlay_image(icon,"glowstick-on",color)
 		I.blend_mode = BLEND_ADD
 		overlays += I
 		icon_state = "glowstick-on"

@@ -179,18 +179,22 @@
 	return TRUE
 
 /mob/living/carbon/human/bst/proc/suicide()
-
 	src.custom_emote(1,"presses a button on their suit, followed by a polite bow.")
 	var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
 	s.set_up(5, 1, src)
 	s.start()
 	if(key)
-		var/mob/dead/observer/ghost/ghost = ghostize(TRUE)
+		var/mob/dead/observer/ghost/ghost = ghostize(CORPSE_CAN_REENTER)
 		ghost.name = "[ghost.key] BSTech"
 		ghost.real_name = "[ghost.key] BSTech"
 		ghost.voice_name = "[ghost.key] BSTech"
 		ghost.admin_ghosted = TRUE
 	qdel(src)
+
+/mob/living/carbon/human/bst/show_inv(mob/user as mob)
+	if(!istype(user, /mob/living/carbon/human/bst))
+		return
+	.=..()
 
 /mob/living/carbon/human/bst/verb/antigrav()
 	set name = "Toggle Gravity"
@@ -314,7 +318,7 @@
 	vision_flags = (SEE_TURFS|SEE_OBJS|SEE_MOBS)
 	see_invisible = SEE_INVISIBLE_NOLIGHTING
 	flash_protection = FLASH_PROTECTION_MAJOR
-	var/lighting_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE
+	lighting_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE
 
 /obj/item/clothing/glasses/sunglasses/bst/verb/toggle_xray(mode in list("X-Ray without Lighting", "X-Ray with Lighting", "Normal"))
 	set name = "Change Vision Mode"
@@ -337,29 +341,6 @@
 			lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
 
 	to_chat(usr, "<span class='notice'>\The [src]'s vision mode is now <b>[mode]</b>.</span>")
-	if(ishuman(loc))
-		var/mob/living/carbon/human/holder = loc
-		if(holder.glasses == src)
-			holder.lighting_alpha = lighting_alpha
-			holder.sync_lighting_plane_alpha()
-
-/obj/item/clothing/glasses/sunglasses/bst/equipped(mob/living/carbon/human/user)
-	.=..()
-	if(user.glasses == src)
-		user.lighting_alpha = lighting_alpha
-		user.sync_lighting_plane_alpha()
-
-/obj/item/clothing/glasses/sunglasses/bst/forceMove(mob/living/carbon/human/destination, hardforce, glide_size_override)
-	.=..()
-	if(ishuman(destination) && destination.glasses != src)
-		destination.lighting_alpha = initial(destination.lighting_alpha)
-		destination.sync_lighting_plane_alpha()
-
-/obj/item/clothing/glasses/sunglasses/bst/Moved(mob/living/carbon/human/OldLoc, Dir)
-	.=..()
-	if(ishuman(OldLoc) && OldLoc.glasses != src)
-		OldLoc.lighting_alpha = initial(OldLoc.lighting_alpha)
-		OldLoc.sync_lighting_plane_alpha()
 
 /obj/item/clothing/glasses/sunglasses/bst/attack_hand()
 	if(!usr)

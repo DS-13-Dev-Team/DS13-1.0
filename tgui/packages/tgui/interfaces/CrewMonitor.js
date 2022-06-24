@@ -6,23 +6,25 @@ import { NanoMap, Box, Table, Button, Tabs, Icon } from "../components";
 import { Fragment } from 'inferno';
 
 const getStatText = cm => {
-  if (cm.dead) {
-    return "Deceased";
+  switch (cm.stat) {
+    case 0:
+      return "Living";
+    case 1:
+      return "Unconscious";
+    case 2:
+      return "Dead";
   }
-  if (parseInt(cm.stat, 10) === 1) { // Unconscious
-    return "Unconscious";
-  }
-  return "Living";
 };
 
 const getStatColor = cm => {
-  if (cm.dead) {
-    return "red";
+  switch (cm.stat) {
+    case 0:
+      return "green";
+    case 1:
+      return "orange";
+    case 2:
+      return "red";
   }
-  if (parseInt(cm.stat, 10) === 1) { // Unconscious
-    return "orange";
-  }
-  return "green";
 };
 
 export const CrewMonitor = () => {
@@ -162,7 +164,7 @@ const CrewMonitorMapView = (props, context) => {
     <Box height="526px" mb="0.5rem" overflow="hidden">
       <NanoMap onZoom={v => setZoom(v)}>
         {data.crewmembers.filter(x =>
-          (x.sensor_type === 3 && ~~x.realZ === ~~config.mapZLevel)
+          (x.sensor_type === 3 && ~~x.z === ~~config.mapZLevel)
         ).map(cm => (
           <NanoMap.Marker
             key={cm.ref}

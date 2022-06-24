@@ -10,7 +10,7 @@ const pauseEvent = e => {
   return false;
 };
 
-const zoomScale = 800;
+const zoomScale = 500;
 
 export class NanoMap extends Component {
   constructor(props) {
@@ -85,7 +85,7 @@ export class NanoMap extends Component {
 
     this.handleZoom = (_e, value) => {
       this.setState(state => {
-        const newZoom = Math.min(Math.max(value, 1), 4);
+        const newZoom = Math.min(Math.max(value, 1), 8);
         let zoomDiff = (newZoom - state.zoom) * 1.5;
         state.zoom = newZoom;
 
@@ -114,6 +114,7 @@ export class NanoMap extends Component {
     const { children } = this.props;
 
     const mapUrl = config.map + "-" + config.mapZLevel + ".png";
+    // (x * zoom), x Needs to be double the turf- map size. (for virgo, 140x140)
     const mapSize = (zoomScale * zoom) + 'px';
     const newStyle = {
       width: mapSize,
@@ -126,7 +127,6 @@ export class NanoMap extends Component {
       "background-size": "cover",
       "background-repeat": "no-repeat",
       "text-align": "center",
-      "-ms-interpolation-mode": "nearest-neighbor",
       "cursor": dragging ? "move" : "auto",
     };
 
@@ -165,16 +165,18 @@ const NanoMapMarker = (props, context) => {
     }
   };
 
-  const rx = ((x * 2 * zoom) - zoom) - 3;
-  const ry = ((y * 2 * zoom) - zoom) - 3;
+  const rx = x*0.5;
+  const ry = y*0.5;
   return (
     <div>
       <Box
         position="absolute"
         className="NanoMap__marker"
         lineHeight="0"
-        bottom={ry + "px"}
-        left={rx + "px"}
+        bottom={ry < 100 ? ry+"%" : null}
+        top={ry >= 100 ? "0%" : null}
+        left={rx < 100 ? rx+"%" : null}
+        right={rx >= 100 ? "0%" : null}
         onMouseDown={handleOnClick}>
         <Icon
           name={icon}
@@ -196,8 +198,8 @@ const NanoMapZoomer = (props, context) => {
       <LabeledList>
         <LabeledList.Item label="Zoom">
           <Slider
-            minValue={1}
-            maxValue={4}
+            minValue="1"
+            maxValue="8"
             stepPixelSize="10"
             format={v => v + "x"}
             value={props.zoom}
