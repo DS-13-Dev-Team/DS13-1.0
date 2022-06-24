@@ -87,12 +87,9 @@
 	if(!account_allowed || (H.mind && H.mind.initial_account))
 		return
 
-	//Here we load persistent credits from the database
-	var/money_amount = get_character_credits(H.mind)
+	var/datum/money_account/M = create_account(H.real_name, starting_credits, null)
 
-	var/datum/money_account/M = create_account(H.real_name, money_amount, null)
 	if(H.mind)
-
 		var/remembered_info = ""
 		remembered_info += "<b>Your account number is:</b> #[M.account_number]<br>"
 		remembered_info += "<b>Your account pin is:</b> [M.remote_access_pin]<br>"
@@ -104,8 +101,6 @@
 		H.mind.store_memory(remembered_info)
 
 		H.mind.initial_account = M
-		M.mind = H.mind	//Give the account a link to our mind
-		update_lastround_credits(H.mind)	//Update persistent credits to prepare for future changes
 
 	to_chat(H, "<span class='notice'><b>Your account number is: [M.account_number], your account pin is: [M.remote_access_pin]</b></span>")
 

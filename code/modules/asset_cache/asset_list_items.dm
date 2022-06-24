@@ -84,9 +84,6 @@ proc/get_craft_item(path)
 		SSresearch.initialize_design_file(file)
 	SSresearch.design_files_to_init = list()
 
-
-	SSdatabase.update_store_designs()
-
 	. = ..()
 
 /proc/register_research_design(var/datum/design/design)
@@ -161,9 +158,6 @@ proc/get_craft_item(path)
 		"stamp-syndicate" = 'icons/stamp_icons/large_stamp-syndicate.png'
 	)
 
-
-
-
 /datum/asset/simple/patron_content/register()
 	log_debug("Registering patron content")
 	var/total = 0
@@ -182,7 +176,6 @@ proc/get_craft_item(path)
 
 	//These procs update and sort various other things after the patron items have added themselves to them
 	sort_loadout_categories()
-	SSdatabase.update_store_designs()
 
 	GLOB.custom_items_loaded = TRUE
 	if (LOADOUT_LOADED)

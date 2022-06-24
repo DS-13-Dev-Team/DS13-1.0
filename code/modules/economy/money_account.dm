@@ -10,16 +10,11 @@
 							//1 - require manual login / account number and pin
 							//2 - require card and manual login
 
-	var/datum/mind/mind = null 	//Optional, contains a character mind this account is associated with
-
-/datum/money_account/credits_changed()
-	if (mind)
-		SSdatabase.credits_changed(mind)
 
 /datum/money_account/proc/do_transaction(var/datum/transaction/T)
 	money = max(0, money + T.amount)
 	transaction_log += T
-	credits_changed()
+
 
 /datum/money_account/proc/get_balance()
 	. = 0

@@ -167,15 +167,3 @@ SUBSYSTEM_DEF(trade)
 		department_shares[job_datum.department] = current_shares + job_datum.bonus_shares
 		var/list/payee = list("mob" = H, "account" = MA, "wage" = pay_amount, "department" = job_datum.department, "shares" = job_datum.bonus_shares)
 		payroll_list += list(payee)
-
-
-/*
-	Called from the mineral processor
-	Used to put funds into the mining department performance bonus pool based on ore output
-*/
-/datum/controller/subsystem/trade/proc/ores_processed(var/list/ores)
-	for (var/oretype in ores)
-		var/ore/ore_datum = GLOB.ores_by_type[oretype]
-		var/value = ore_datum.Value()
-		value *= ores[oretype]
-		LAZYAPLUS(departmental_bonuses, "Mining", value)

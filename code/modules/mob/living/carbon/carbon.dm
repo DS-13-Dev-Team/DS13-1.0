@@ -130,8 +130,7 @@
 
 	//Tell the old and new held items that they've been swapped
 
-	if (prev_held != new_held)
-		SEND_SIGNAL(src, COMSIG_CARBON_SWAP_HANDS, prev_held, new_held)
+	SEND_SIGNAL(src, COMSIG_CARBON_SWAP_HANDS, prev_held, new_held)
 
 	return TRUE
 
