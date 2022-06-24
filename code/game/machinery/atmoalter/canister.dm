@@ -2,6 +2,7 @@
 	name = "\improper Canister: \[CAUTION\]"
 	icon = 'icons/obj/atmos.dmi'
 	icon_state = "yellow"
+	clicksound = "button2"
 	density = 1
 	health = 100.0
 	obj_flags = OBJ_FLAG_CONDUCTIBLE

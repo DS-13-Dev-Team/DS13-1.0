@@ -55,11 +55,11 @@
 	if (source)
 
 		for (var/obj/item/rig_module/RM as anything in source.installed_modules)
-			source.uninstall(RM)
+			source.uninstall(RM, FALSE, user)
 			primary += RM
 
 	for (var/obj/item/rig_module/RM as anything in target.installed_modules)
-		target.uninstall(RM)
+		target.uninstall(RM, FALSE, user)
 		primary += RM
 
 

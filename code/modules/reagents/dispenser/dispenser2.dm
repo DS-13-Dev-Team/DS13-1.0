@@ -72,12 +72,12 @@
 	C.forceMove(src)
 	cartridges[C.label] = C
 	cartridges = sortAssoc(cartridges)
-	SSnano.update_uis(src)
+	SStgui.update_uis(src)
 
 /obj/machinery/chemical_dispenser/proc/remove_cartridge(label)
 	. = cartridges[label]
 	cartridges -= label
-	SSnano.update_uis(src)
+	SStgui.update_uis(src)
 
 /obj/machinery/chemical_dispenser/attackby(obj/item/weapon/W, mob/user)
 	if(istype(W, /obj/item/weapon/reagent_containers/chem_disp_cartridge))
@@ -118,23 +118,29 @@
 		RC.loc = src
 		update_icon()
 		to_chat(user, "<span class='notice'>You set \the [RC] on \the [src].</span>")
-		SSnano.update_uis(src) // update all UIs attached to src
+		SStgui.update_uis(src) // update all UIs attached to src
 
 	else
 		..()
 	return
 
-/obj/machinery/chemical_dispenser/ui_interact(mob/user, ui_key = "main",var/datum/nanoui/ui = null, var/force_open = 1)
-	// this is the data which will be sent to the ui
+/obj/machinery/chemical_dispenser/tgui_interact(mob/user, datum/tgui/ui = null)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "ChemDispenser", ui_title) // 390, 655
+		ui.open()
+
+/obj/machinery/chemical_dispenser/ui_data(mob/user)
 	var/data[0]
 	data["amount"] = amount
 	data["isBeakerLoaded"] = container ? 1 : 0
-	data[MATERIAL_GLASS] = accept_drinking
-	var beakerD[0]
+	data["glass"] = accept_drinking
+
+	var/beakerContents[0]
 	if(container && container.reagents && container.reagents.reagent_list.len)
 		for(var/datum/reagent/R in container.reagents.reagent_list)
-			beakerD[++beakerD.len] = list("name" = R.name, "volume" = R.volume)
-	data["beakerContents"] = beakerD
+			beakerContents.Add(list(list("name" = R.name, "id" = R.type, "volume" = R.volume))) // list in a list because Byond merges the first list...
+	data["beakerContents"] = beakerContents
 
 	if(container)
 		data["beakerCurrentVolume"] = container.reagents.total_volume
@@ -143,47 +149,60 @@
 		data["beakerCurrentVolume"] = null
 		data["beakerMaxVolume"] = null
 
-	var chemicals[0]
+	var/chemicals[0]
 	for(var/label in cartridges)
 		var/obj/item/weapon/reagent_containers/chem_disp_cartridge/C = cartridges[label]
-		chemicals[++chemicals.len] = list("label" = label, "amount" = C.reagents.total_volume)
+		chemicals.Add(list(list("title" = label, "id" = label, "amount" = C.reagents.total_volume))) // list in a list because Byond merges the first list...
 	data["chemicals"] = chemicals
+	return data
 
-	// update the ui if it exists, returns null if no ui is passed/found
-	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
-	if(!ui)
-		ui = new(user, src, ui_key, "chem_disp.tmpl", ui_title, 390, 680)
-		ui.set_initial_data(data)
-		ui.open()
+/obj/machinery/chemical_dispenser/ui_act(action, params)
+	if(..())
+		return TRUE
 
-/obj/machinery/chemical_dispenser/OnTopic(mob/user, href_list)
-	if(href_list["amount"])
-		amount = round(text2num(href_list["amount"]), 1) // round to nearest 1
-		amount = max(0, min(120, amount)) // Since the user can actually type the commands himself, some sanity checking
-		return TOPIC_REFRESH
+	. = TRUE
+	switch(action)
+		if("amount")
+			amount = clamp(round(text2num(params["amount"]), 1), 0, 120) // round to nearest 1 and clamp 0 - 120
+		if("dispense")
+			var/label = params["reagent"]
+			if(cartridges[label] && container && container.is_open_container())
+				var/obj/item/weapon/reagent_containers/chem_disp_cartridge/C = cartridges[label]
+				C.reagents.trans_to(container, amount)
+		if("remove")
+			var/amount = text2num(params["amount"])
+			if(!container || !amount)
+				return
+			var/datum/reagents/R = container.reagents
+			var/id = text2path(params["reagent"])
+			if(amount > 0)
+				R.remove_reagent(id, amount)
+		if("ejectBeaker")
+			if(container)
+				container.forceMove(get_turf(src))
 
-	if(href_list["dispense"])
-		var/label = href_list["dispense"]
-		if(cartridges[label] && container && container.is_open_container())
-			var/obj/item/weapon/reagent_containers/chem_disp_cartridge/C = cartridges[label]
-			C.reagents.trans_to(container, amount)
-			return TOPIC_REFRESH
-		return TOPIC_HANDLED
+				if(Adjacent(usr)) // So the AI doesn't get a beaker somehow.
+					usr.put_in_hands(container)
 
-	else if(href_list["ejectBeaker"])
-		if(container)
-			var/obj/item/weapon/reagent_containers/B = container
-			B.dropInto(loc)
-			container = null
-			update_icon()
-			return TOPIC_REFRESH
-		return TOPIC_HANDLED
+				container = null
+				update_icon()
+		else
+			return FALSE
+
+	add_fingerprint(usr)
+
+/obj/machinery/chemical_dispenser/attack_ghost(mob/user)
+	if(inoperable())
+		return
+	tgui_interact(user)
 
 /obj/machinery/chemical_dispenser/attack_ai(mob/user as mob)
-	ui_interact(user)
+	attack_hand(user)
 
 /obj/machinery/chemical_dispenser/attack_hand(mob/user as mob)
-	ui_interact(user)
+	if(inoperable())
+		return
+	tgui_interact(user)
 
 /obj/machinery/chemical_dispenser/update_icon()
 	overlays.Cut()

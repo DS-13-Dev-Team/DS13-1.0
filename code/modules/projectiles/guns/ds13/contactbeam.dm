@@ -19,7 +19,7 @@
 	wielded_item_state = "contact-wielded"
 	w_class = ITEM_SIZE_HUGE
 
-	charge_cost = 1000 //Five shots per battery
+	charge_cost = 250 //Four shots per battery
 	cell_type = /obj/item/weapon/cell/contact
 	projectile_type = null
 	slot_flags = SLOT_BACK
@@ -259,7 +259,7 @@
 	icon = 'icons/obj/ammo.dmi'
 	icon_state = "contact_energy"
 	w_class = ITEM_SIZE_LARGE
-	maxcharge = 4000
+	maxcharge = 1000
 	matter = list(MATERIAL_STEEL = 700, MATERIAL_SILVER = 80)
 
 /obj/item/weapon/cell/contact/update_icon()

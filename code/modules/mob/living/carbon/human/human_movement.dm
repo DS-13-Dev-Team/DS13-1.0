@@ -18,7 +18,8 @@
 		tally += chem_effects[CE_SLOWDOWN]
 
 	if(can_feel_pain())
-		if(get_shock() >= 10) tally += (get_shock() / 10) //pain shouldn't slow you down if you can't even feel it
+		if(get_shock() >= 10)
+			tally += (get_shock() / 10) //pain shouldn't slow you down if you can't even feel it
 
 
 	if(istype(buckled, /obj/structure/bed/chair/wheelchair))
@@ -31,9 +32,6 @@
 			else if(E.status & ORGAN_BROKEN)
 				tally += 1.5
 
-	if(shock_stage >= 10 || src.stamina <= 0)
-		tally += 3
-
 	if(is_asystole()) tally += 10  //heart attacks are kinda distracting
 
 	if(aiming && aiming.aiming_at) tally += 5 // Iron sights make you slower, it's a well-known fact.
@@ -44,11 +42,6 @@
 		tally += (283.222 - bodytemperature) / 10 * 1.75
 
 
-	tally += max(2 * stance_damage, 0) //damaged/missing feet or legs is slow
-
-
-	if(mRun in mutations)
-		tally = 0
 
 	tally += CONFIG_GET(number/human_delay)
 
@@ -132,13 +125,12 @@
 		handle_embedded_and_stomach_objects() //Moving with objects stuck in you can cause bad times.
 
 	var/lac_chance =  10 * encumbrance()
-	if(lac_chance && prob(skill_fail_chance(SKILL_HAULING, lac_chance)))
+	if(lac_chance && prob(skill_fail_chance(SKILL_ATHLETICS, lac_chance)))
 		make_reagent(1, /datum/reagent/lactate)
-		switch(rand(1,20))
-			if(1)
-				visible_message("<span class='notice'>\The [src] is sweating heavily!</span>", "<span class='notice'>You are sweating heavily!</span>")
-			if(2)
-				visible_message("<span class='notice'>\The [src] looks out of breath!</span>", "<span class='notice'>You are out of breath!</span>")
+		if(prob(5))
+			visible_message("<span class='notice'>\The [src] is sweating heavily!</span>", "<span class='notice'>You are sweating heavily!</span>")
+		else if(prob(5))
+			visible_message("<span class='notice'>\The [src] looks out of breath!</span>", "<span class='notice'>You are out of breath!</span>")
 
 //Returns what percentage of the limbs we use for movement, are still attached
 /mob/living/carbon/human/proc/get_locomotive_limb_percent()

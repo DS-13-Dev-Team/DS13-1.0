@@ -1216,7 +1216,7 @@
 						<script language='javascript' type='text/javascript'>
 						[js_byjax]
 						[js_dropdowns]
-						function ticker() {
+						function SSticker() {
 						    setInterval(function(){
 						        window.location='byond://?src=\ref[src]&update_content=1';
 						    }, 1000);
@@ -1224,7 +1224,7 @@
 
 						window.onload = function() {
 							dropdowns();
-							ticker();
+							SSticker();
 						}
 						</script>
 						</head>
@@ -1416,7 +1416,7 @@
 			to_chat(src.occupant, "\icon[src] [message]")
 	return
 
-/obj/mecha/proc/log_message(message as text,red=null)
+/obj/mecha/log_message(message as text,red=null)
 	log.len++
 	log[log.len] = list("time"=world.timeofday,"message"="[red?"<font color='red'>":null][message][red?"</font>":null]")
 	return log.len

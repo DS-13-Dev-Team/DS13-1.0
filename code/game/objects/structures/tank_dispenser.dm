@@ -55,6 +55,7 @@
 			oxytanks.Add(I)
 			oxygentanks++
 			to_chat(user, "<span class='notice'>You put [I] in [src].</span>")
+			playsound(loc, 'sound/machines/vending_click.ogg', VOLUME_LOW)
 			if(oxygentanks < 5)
 				update_icon()
 		else
@@ -68,6 +69,7 @@
 			platanks.Add(I)
 			phorontanks++
 			to_chat(user, "<span class='notice'>You put [I] in [src].</span>")
+			playsound(loc, 'sound/machines/vending_click.ogg', VOLUME_LOW)
 			if(oxygentanks < 6)
 				update_icon()
 		else
@@ -98,6 +100,7 @@
 					O = new /obj/item/weapon/tank/oxygen(loc)
 				O.loc = loc
 				to_chat(usr, "<span class='notice'>You take [O] out of [src].</span>")
+				playsound(loc, 'sound/machines/vending_purchase.ogg', VOLUME_LOW)
 				oxygentanks--
 				update_icon()
 		if(href_list[MATERIAL_PHORON])
@@ -110,6 +113,7 @@
 					P = new /obj/item/weapon/tank/phoron(loc)
 				P.loc = loc
 				to_chat(usr, "<span class='notice'>You take [P] out of [src].</span>")
+				playsound(loc, 'sound/machines/vending_purchase.ogg', VOLUME_LOW)
 				phorontanks--
 				update_icon()
 		add_fingerprint(usr)

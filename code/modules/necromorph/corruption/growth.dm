@@ -105,3 +105,18 @@
 	desc = ""
 	energy_cost = 150
 	placement_atom = /obj/structure/corruption_node/growth/root
+
+/obj/structure/corruption_node/growth/mini
+	name = "decrepit root"
+	desc = "weak"
+	max_health = 10
+	resistance = 6
+	icon_state = "minigrowth"
+	density = FALSE
+	marker_spawnable = FALSE
+
+	range = 2
+	speed = 0.5
+	falloff = 0.025
+	limit = 4
+	randpixel = 4

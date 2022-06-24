@@ -14,6 +14,11 @@
 		if(!height || air_group) return 0
 		else return ..()
 
+/obj/structure/shuttle/window/pod
+	name = "escape pod window"
+	icon = 'icons/obj/podwindows2.dmi'
+	icon_state = "p_window"
+
 /obj/structure/shuttle/engine
 	name = "engine"
 	density = 1

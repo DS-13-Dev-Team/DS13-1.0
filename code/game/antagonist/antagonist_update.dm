@@ -10,7 +10,7 @@
 		player.current = new mob_path(get_turf(player.current))
 		player.transfer_to(player.current)
 		if(holder) qdel(holder)
-	player.original = player.current
+	player.replace_original_mob(player.current)
 	if(!preserve_appearance && (flags & ANTAG_SET_APPEARANCE))
 		spawn(3)
 			var/mob/living/carbon/human/H = player.current
@@ -32,7 +32,8 @@
 	if(!antag_indicator || !other.current || !recipient.current)
 		return
 	var/indicator = (faction_indicator && (other in faction_members)) ? faction_indicator : antag_indicator
-	var/image/I = image('icons/mob/hud.dmi', loc = other.current, icon_state = indicator, layer = LIGHTING_LAYER+0.1)
+	var/image/I = image('icons/mob/hud.dmi', loc = other.current, icon_state = indicator, layer = ABOVE_HUMAN_LAYER)
+	I.plane = DEFAULT_PLANE
 	if(ishuman(other.current))
 		var/mob/living/carbon/human/H = other.current
 		I.pixel_x = H.species.antaghud_offset_x
@@ -79,13 +80,13 @@
 							qdel(I)
 
 /datum/antagonist/proc/update_current_antag_max()
-	if (ticker.current_state <	GAME_STATE_PLAYING)
+	if (SSticker.current_state <	GAME_STATE_PLAYING)
 		cur_max = hard_cap
 	else
 		cur_max = hard_cap_round
 
 
-	var/scaling = ticker.mode.antag_scaling_coeff
+	var/scaling = SSticker.mode.antag_scaling_coeff
 	if (!isnull(override_scaling))
 		scaling = override_scaling
 
@@ -98,4 +99,4 @@
 
 		// Minimum: initial_spawn_target
 		// Maximum: hard_cap or hard_cap_round
-		cur_max = max(initial_spawn_target,min(round(count/ticker.mode.antag_scaling_coeff),cur_max))
+		cur_max = max(initial_spawn_target,min(round(count/SSticker.mode.antag_scaling_coeff),cur_max))

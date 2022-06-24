@@ -107,7 +107,7 @@
 				to_chat(user, "<span class='notice'>It has a few scrapes and dents.</span>")
 /obj/structure/table/attackby(obj/item/weapon/W, mob/user)
 
-	if(reinforced && istype(W, /obj/item/weapon/tool/screwdriver))
+	if(reinforced && isScrewdriver(W))
 		remove_reinforced(W, user)
 		if(!reinforced)
 			update_desc()
@@ -133,7 +133,7 @@
 			return 1
 		else
 			to_chat(user, "<span class='warning'>You don't have enough carpet!</span>")
-	if(!reinforced && !carpeted && material && istype(W, /obj/item/weapon/tool/wrench))
+	if(!reinforced && !carpeted && material && isWrench(W))
 		remove_material(W, user)
 		if(!material)
 			update_connections(1)
@@ -144,7 +144,7 @@
 			update_material()
 		return 1
 
-	if(!carpeted && !reinforced && !material && istype(W, /obj/item/weapon/tool/wrench))
+	if(!carpeted && !reinforced && !material && isWrench(W))
 		dismantle(W, user)
 		return 1
 

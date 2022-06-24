@@ -13,25 +13,27 @@
 
 	Note: Blink = reallyfast movement that looks like teleporting
 */
+
+#define TWITCHER_DODGE_EVASION	72
+#define TWITCHER_DODGE_DURATION	1.8 SECONDS
+
 /datum/species/necromorph/slasher/twitcher
 	name = SPECIES_NECROMORPH_TWITCHER
 	mob_type	=	/mob/living/carbon/human/necromorph/twitcher
 	name_plural = "Twitchers"
 	blurb = "An elite soldier displaced in time, blinks around randomly and is difficult to hit. Charges extremely quickly"
-	icon_template = 'icons/mob/necromorph/48x48necros.dmi'
-	icon_normal = "twitcher"
-	icon_lying = "twitcher"
-	icon_dead = "twitcher"
-	single_icon = TRUE
+	icon_template = 'icons/mob/necromorph/twitcher.dmi'
+	icon_lying = "_lying"
+	single_icon = FALSE
 	spawner_spawnable = FALSE
 	virus_immune = 1
 	biomass	=	120
 	require_total_biomass	=	BIOMASS_REQ_T2
 	lying_rotation = 90
-	total_health = 100
+	total_health = 110
+	damage_mask = null
 
 	slowdown = 1.5
-	view_offset = 3 * WORLD_ICON_SIZE //Forward view offset allows longer-ranged charges
 
 	override_limb_types = list(
 	BP_L_ARM =  /obj/item/organ/external/arm/blade,
@@ -136,7 +138,69 @@ All of these properties combined make Step Strike tricky and disorienting to use
 	set_extension(H, /datum/extension/twitch)
 
 
+/datum/species/necromorph/slasher/twitcher/oracle
+	name = SPECIES_NECROMORPH_TWITCHER_ORACLE
+	mob_type	=	/mob/living/carbon/human/necromorph/twitcher/oracle
+	name_plural = "Twitchers"
+	blurb = "Extremely rare twitcher variant achieved by infecting an oracle operative."
+	icon_template = 'icons/mob/necromorph/twitcher_oracle.dmi'
+	biomass	=	360
+	require_total_biomass	=	BIOMASS_REQ_T3
+	layer = LARGE_MOB_LAYER
+	biomass_reclamation_time	=	14 MINUTES
+	total_health = 210
+	limb_health_factor = 1 //This can't be too low thanks to evasion.
+	burn_mod = 1.1
 
+	slowdown = 1.2
+	strength    = STR_VHIGH
+	mob_size	= MOB_LARGE
+	bump_flag 	= HEAVY	// What are we considered to be when bumped?
+	push_flags 	= ALLMOBS	// What can we push?
+	swap_flags 	= ALLMOBS	// What can we swap place with?
+
+	unarmed_types = list(/datum/unarmed_attack/blades/oracle, /datum/unarmed_attack/bite/strong)
+
+	override_limb_types = list(
+	BP_L_ARM =  /obj/item/organ/external/arm/blade,
+	BP_R_ARM =  /obj/item/organ/external/arm/blade/right,
+	)
+
+	evasion = 30
+	inherent_verbs = list(/mob/living/carbon/human/proc/twitcher_charge, /mob/living/carbon/human/proc/twitcher_step_strike_oracle, /mob/proc/shout, /mob/living/proc/oracle_dodge)
+	modifier_verbs = list(KEY_MIDDLE = list(/mob/living/carbon/human/proc/twitcher_step_strike_oracle),
+	KEY_ALT = list(/mob/living/proc/oracle_dodge),
+	KEY_CTRLALT = list(/mob/living/carbon/human/proc/twitcher_charge))
+
+	blink_damage_mult = 0.15 	//When the twitcher dodges an attack, the incoming damage is multiplied by this value
+
+/datum/unarmed_attack/blades/oracle // Fast and deadly thanks to the armor penetration
+	damage = 12
+	delay = 7
+	airlock_force_power = 3
+	armor_penetration = 8
+
+/datum/species/necromorph/slasher/twitcher/oracle/add_inherent_verbs(var/mob/living/carbon/human/H)
+	.=..()
+	var/datum/extension/twitch/twitch = get_extension(H, /datum/extension/twitch)
+	twitch.defensive_displace_cooldown = 2 SECONDS
+
+/mob/living/proc/oracle_dodge()
+	set name = "Dodge"
+	set category = "Abilities"
+
+
+	.= dodge_ability(_duration = TWITCHER_DODGE_DURATION, _cooldown = 8 SECONDS, _power = TWITCHER_DODGE_EVASION) //similar to enhanced slasher, only slightly longer duration, for a much longer cooldown
+
+/datum/species/necromorph/twitcher/oracle/get_ability_descriptions()
+	.= ""
+	. += TWITCHER_PASSIVE
+	. += "<hr>"
+	. += TWITCHER_CHARGE_DESC
+	. += "<hr>"
+	. += TWITCHER_STEPSTRIKE_DESC
+	. += "<hr>"
+	. += SLASHER_DODGE_DESC
 
 //Twitcher charge
 //Aside from being faster moving, it also kicks off with a shortrange teleport, and has a much lower cooldown
@@ -199,7 +263,14 @@ All of these properties combined make Step Strike tricky and disorienting to use
 	if (.)
 		play_species_audio(src, SOUND_ATTACK, VOLUME_MID, 1, 3)
 
+/mob/living/carbon/human/proc/twitcher_step_strike_oracle(var/atom/A)
+	set name = "Step Strike"
+	set category = "Abilities"
 
+
+	.= step_strike_ability(A, _distance = 3, _cooldown = 2 SECONDS)
+	if (.)
+		play_species_audio(src, SOUND_ATTACK, VOLUME_MID, 1, 3)
 
 //Defensive blinking
 //The twitcher will dodge one attack every 5 secs or so, greatly reducing its damage and moving to a nearby tile

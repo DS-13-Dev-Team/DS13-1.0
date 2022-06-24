@@ -179,9 +179,16 @@
 /atom/proc/emp_act(var/severity)
 	return
 
-/atom/proc/set_density(var/new_density)
+/atom/proc/set_density(new_density)
 	if(density != new_density)
+		var/old_density = density
 		density = !!new_density
+		SEND_SIGNAL(src, COMSIG_ATOM_DENSITY_CHANGE, old_density, new_density)
+
+		//We may have just changed our turf's clear status, set it to maybe
+		if(isturf(loc))
+			var/turf/T = loc
+			T.content_density_set(density)
 
 /atom/proc/bullet_act(obj/item/projectile/P, def_zone)
 	P.on_hit(src, 0, def_zone)
@@ -306,7 +313,7 @@ its easier to just keep the beam vertical.
 		else
 			f_name += "oil-stained [name][infix]."
 
-	to_chat(user, "\icon[src] That's [f_name] [suffix]")
+	to_chat(user, "[icon2html(src)] That's [f_name] [suffix]")
 	to_chat(user, desc)
 
 	return distance == -1 || (get_dist(src, user) <= distance)
@@ -322,6 +329,7 @@ its easier to just keep the beam vertical.
 	if(new_dir == old_dir)
 		return FALSE
 	dir = new_dir
+	SEND_SIGNAL(src, COMSIG_ATOM_DIR_CHANGE, old_dir, new_dir)
 	return TRUE
 
 /atom/proc/set_icon_state(var/new_icon_state)
@@ -670,6 +678,7 @@ its easier to just keep the beam vertical.
 //Tell this atom that we want output to be removed from it.
 //Return false if we fail to remove the item
 /atom/proc/remove_item(var/obj/item/output)
+	SIGNAL_HANDLER
 	return TRUE
 
 ///Where atoms should drop if taken from this atom
@@ -833,3 +842,41 @@ its easier to just keep the beam vertical.
 		else if(checked_color)
 			color = checked_color
 			return
+
+
+// Generic logging helper
+/atom/proc/log_message(message, message_type, color, log_globally = TRUE)
+	if(!log_globally)
+		return
+
+	var/log_text = "[key_name(src)] [message] [AREACOORD(src)]"
+	switch(message_type)
+		if(LOG_ATTACK)
+			log_attack(log_text)
+		if(LOG_SAY)
+			log_say(log_text)
+		if(LOG_TELECOMMS)
+			log_telecomms(log_text)
+		if(LOG_WHISPER)
+			log_whisper(log_text)
+		if(LOG_NECRO)
+			log_necro(log_text)
+		if(LOG_EMOTE)
+			log_emote(log_text)
+		if(LOG_DSAY)
+			log_dsay(log_text)
+		if(LOG_OOC)
+			log_ooc(log_text)
+		if(LOG_ADMIN)
+			log_admin(log_text)
+		if(LOG_LOOC)
+			log_looc(log_text)
+		if(LOG_ADMIN_PRIVATE)
+			log_admin_private(log_text)
+		if(LOG_ASAY)
+			log_admin_private_asay(log_text)
+		if(LOG_GAME)
+			log_game(log_text)
+		else
+			crash_with("Invalid individual logging type: [message_type]. Defaulting to [LOG_GAME] (LOG_GAME).")
+			log_game(log_text)

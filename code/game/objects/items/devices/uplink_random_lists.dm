@@ -18,9 +18,7 @@
 	items = list()
 
 /datum/uplink_random_selection/proc/get_random_item(var/telecrystals, obj/item/device/uplink/U, var/list/bought_items)
-	var/const/attempts = 50
-
-	for(var/i = 0; i < attempts; i++)
+	for(var/i = 1 to 50)
 		var/datum/uplink_random_item/RI = pick(items)
 		if(!prob(RI.keep_probability))
 			continue
@@ -82,6 +80,7 @@ var/list/uplink_random_selections_
 
 	items += new/datum/uplink_random_item(/datum/uplink_item/item/medical/surgery, reselect_propbability = 10)
 	items += new/datum/uplink_random_item(/datum/uplink_item/item/medical/combat, reselect_propbability = 10)
+	items += new/datum/uplink_random_item(/datum/uplink_item/item/medical/medigel)
 
 	items += new/datum/uplink_random_item(/datum/uplink_item/item/hardsuit_modules/thermal, reselect_propbability = 15)
 	items += new/datum/uplink_random_item(/datum/uplink_item/item/hardsuit_modules/energy_net, reselect_propbability = 15)
@@ -120,8 +119,7 @@ var/list/uplink_random_selections_
 		items += new_thing
 
 /datum/uplink_random_selection/blacklist/get_random_item(var/telecrystals, obj/item/device/uplink/U, var/list/bought_items)
-	var/const/attempts = 50
-	for(var/i = 0; i < attempts; i++)
+	for(var/i = 1 to 50)
 		var/datum/uplink_random_item/RI = pick(items)
 		if(!prob(RI.keep_probability))
 			continue

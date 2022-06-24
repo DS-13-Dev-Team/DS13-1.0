@@ -32,7 +32,7 @@
 
 	switch(M.a_intent)
 		if(I_HELP)
-			if (!can_grasp_with_selected())
+			if (!H.can_grasp_with_selected())
 				to_chat(H, "<span class='warning'>You can't use your hand.</span>")
 				return
 			if(istype(H) && (is_asystole() || (status_flags & FAKEDEATH)))
@@ -40,13 +40,14 @@
 					return 0
 
 				cpr_time = 0
-				spawn(30)
-					cpr_time = 1
 
 				H.visible_message("<span class='notice'>\The [H] is trying to perform CPR on \the [src].</span>")
 
 				if(!do_after(H, 30, src))
+					cpr_time = 1
 					return
+
+				cpr_time = 1
 
 				H.visible_message("<span class='notice'>\The [H] performs CPR on \the [src]!</span>")
 				if(prob(5))

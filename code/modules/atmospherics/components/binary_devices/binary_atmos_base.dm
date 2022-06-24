@@ -1,4 +1,5 @@
 obj/machinery/atmospherics/binary
+	clicksound = "button2"
 	dir = SOUTH
 	initialize_directions = SOUTH|NORTH
 	use_power = 1
@@ -117,7 +118,7 @@ obj/machinery/atmospherics/binary
 		update_underlays()
 
 		return null
-		
+
 obj/machinery/atmospherics/binary/Destroy()
 	loc = null
 

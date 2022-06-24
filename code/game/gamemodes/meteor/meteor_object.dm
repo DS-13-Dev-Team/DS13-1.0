@@ -28,7 +28,7 @@ GLOBAL_LIST_EMPTY(asteroids)
 	var/heavy = 0
 	var/z_original
 	var/z_target
-	var/meteordrop = /obj/item/weapon/ore/iron
+	var/obj/item/stack/meteordrop = /obj/item/stack/ore/iron
 	var/dropamt = 1
 	var/vector2/velocity = null
 
@@ -203,14 +203,14 @@ GLOBAL_LIST_EMPTY(asteroids)
 		qdel(src)
 
 /obj/effect/meteor/attackby(obj/item/weapon/W as obj, mob/user as mob, params)
-	if(istype(W, /obj/item/weapon/tool/pickaxe))
+	if(isPickaxe(W))
 		qdel(src)
 		return
 	..()
 
 /obj/effect/meteor/proc/make_debris()
 	for(var/throws = dropamt, throws > 0, throws--)
-		var/obj/item/O = new meteordrop(get_turf(src))
+		var/obj/item/O = new meteordrop(get_turf(src), rand(1, 5))
 		O.throw_at(dest, 5, 10)
 
 /obj/effect/meteor/proc/meteor_effect()
@@ -235,7 +235,7 @@ GLOBAL_LIST_EMPTY(asteroids)
 	hits = 1
 	hitpwr = 3
 	dropamt = 1
-	meteordrop = /obj/item/weapon/ore/glass
+	meteordrop = /obj/item/stack/ore/glass
 
 //Medium-sized
 /obj/effect/meteor/medium
@@ -264,7 +264,7 @@ GLOBAL_LIST_EMPTY(asteroids)
 	icon_state = "flaming"
 	hits = 5
 	heavy = 1
-	meteordrop = /obj/item/weapon/ore/phoron
+	meteordrop = /obj/item/stack/ore/phoron
 
 /obj/effect/meteor/flaming/meteor_effect()
 	explosion(2, 2)
@@ -276,7 +276,7 @@ GLOBAL_LIST_EMPTY(asteroids)
 	name = "glowing meteor"
 	icon_state = "glowing"
 	heavy = 1
-	meteordrop = /obj/item/weapon/ore/uranium
+	meteordrop = /obj/item/stack/ore/uranium
 
 /obj/effect/meteor/irradiated/meteor_effect()
 	explosion(2, 2)
@@ -289,19 +289,19 @@ GLOBAL_LIST_EMPTY(asteroids)
 	name = "golden meteor"
 	icon_state = "glowing"
 	desc = "Shiny! But also deadly."
-	meteordrop = /obj/item/weapon/ore/gold
+	meteordrop = /obj/item/stack/ore/gold
 
 /obj/effect/meteor/silver
 	name = "silver meteor"
 	icon_state = "glowing_blue"
 	desc = "Shiny! But also deadly."
-	meteordrop = /obj/item/weapon/ore/silver
+	meteordrop = /obj/item/stack/ore/silver
 
 /obj/effect/meteor/emp
 	name = "conducting meteor"
 	icon_state = "glowing_blue"
 	desc = "Hide your floppies!"
-	meteordrop = /obj/item/weapon/ore/osmium
+	meteordrop = /obj/item/stack/ore/osmium
 	dropamt = 2
 
 /obj/effect/meteor/emp/meteor_effect()
@@ -321,7 +321,7 @@ GLOBAL_LIST_EMPTY(asteroids)
 	hits = 10
 	hitpwr = 1
 	heavy = 1
-	meteordrop = /obj/item/weapon/ore/diamond	// Probably means why it penetrates the hull so easily before exploding.
+	meteordrop = /obj/item/stack/ore/diamond	// Probably means why it penetrates the hull so easily before exploding.
 
 /obj/effect/meteor/tunguska/meteor_effect()
 	explosion(8,3)

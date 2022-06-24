@@ -108,7 +108,7 @@ export class Dropdown extends Component {
             'Dropdown__control',
             'Button',
             'Button--color--' + color,
-            disabled && 'Button--disabled',
+            disabled && 'Button--color--disabled',
             className,
           ])}
           {...rest}

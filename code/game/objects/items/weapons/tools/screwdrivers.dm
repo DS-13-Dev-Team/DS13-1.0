@@ -44,7 +44,8 @@
 /obj/item/weapon/tool/screwdriver/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
 	if(!istype(M) || user.a_intent == "help")
 		return ..()
-	if(get_zone_sel(user) != BP_EYES && get_zone_sel(user) != BP_HEAD)
+	var/zone = get_zone_sel(user, TRUE)
+	if(zone != BP_EYES && zone != BP_HEAD)
 		return ..()
 	if((CLUMSY in user.mutations) && prob(50))
 		M = user

@@ -199,7 +199,7 @@
 	var/grab_type = GRAB_NORMAL		// The species' default grab type.
 
 	//Movement
-	var/slowdown = 0              // Passive movement speed malus (or boost, if negative)
+	var/slowdown = 1.5              // Passive movement speed malus (or boost, if negative)
 	// Move intents. Earlier in list == default for that type of movement.
 	var/list/move_intents = list(/decl/move_intent/walk, /decl/move_intent/run, /decl/move_intent/stalk)
 
@@ -915,10 +915,10 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 
 /datum/species/proc/skills_from_age(age)	//Converts an age into a skill point allocation modifier. Can be used to give skill point bonuses/penalities not depending on job.
 	switch(age)
-		if(0 to 22) 	. = -4
+		if(0 to 22) 	. = 0
 		if(23 to 30) 	. = 0
-		if(31 to 45)	. = 4
-		else			. = 8
+		if(31 to 45)	. = 0
+		else			. = 0
 
 /datum/species/proc/post_organ_rejuvenate(var/obj/item/organ/org)
 	return
@@ -1027,7 +1027,7 @@ These procs should return their entire args list. Best just to return parent in 
 
 //Override damage values here as a one stop catch-all solution
 /datum/species/proc/handle_organ_external_damage(var/obj/item/organ/external/organ, brute, burn, damage_flags, used_weapon)
-	GLOB.damage_hit_event.raise_event(organ.owner, organ, brute, burn, damage_flags, used_weapon)
+	SEND_SIGNAL(organ.owner, COMSIG_MOB_DAMAGE_HIT, organ, brute, burn, damage_flags, used_weapon)
 
 	var/mob/living/L = organ.owner
 	//Here we'll handle pain audio

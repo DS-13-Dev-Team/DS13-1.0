@@ -201,7 +201,7 @@
 	name = "mounted taser"
 	desc = "A palm-mounted nonlethal energy projector."
 	icon_state = "taser"
-	usable = 0
+	usable = 1
 
 	suit_overlay_active = null
 	suit_overlay_inactive = null

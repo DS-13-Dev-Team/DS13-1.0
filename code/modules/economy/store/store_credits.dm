@@ -4,13 +4,19 @@
 
 //How many credits are available for purchase in total, between inserted chip + rig account
 /obj/machinery/store/proc/get_available_credits()
-	.=0
-	if (chip)
-		.+= chip.worth
+	. = 0
+	if(chip)
+		. += chip.worth
 
-	if (occupant && occupant.wearing_rig)
-		.+=occupant.wearing_rig.get_account_balance()
+	if(occupant && occupant.wearing_rig)
+		. += occupant.wearing_rig.get_account_balance()
 
+	for(var/obj/item/weapon/spacecash/S in deposit_box.contents)
+		. += S.worth
+
+	var/datum/money_account/A = occupant?.get_account()
+	if(A)
+		. += A.money
 
 //Can the occupant afford to pay a cost ? True/false
 /obj/machinery/store/proc/occupant_can_afford(var/cost)
@@ -23,49 +29,52 @@
 	return (get_available_credits() >= cost)
 
 
-
-
 //Deducts credits
-/obj/machinery/store/proc/occupant_pay_credits(var/cost, var/safety = TRUE)
-	if (safety && (!occupant || !occupant_can_afford()))
+/obj/machinery/store/proc/occupant_pay_credits(left_to_pay)
+	if(!occupant || !occupant_can_afford())
 		return FALSE
 
+	if(chip)
+		if(chip.worth <= left_to_pay)
+			left_to_pay -= chip.worth
+			chip.worth = 0
+			chip.update_icon()
+		else
+			chip.worth -= left_to_pay
+			chip.update_icon()
+			return TRUE
 
-	var/pay_amount
-	if (chip)
-		pay_amount = min(cost, chip.worth)
-		if (chip.pay_into(pay_amount, src))
-			cost -= pay_amount
-
-	if (cost <= 0)
-		return TRUE
-
-	//Alright now we pay whatever is leftover from the rig account
-
-
-
-	if (cost > 0)
-		if (occupant && occupant.wearing_rig)
-			pay_amount = min(occupant.wearing_rig.get_account_balance(), cost)
+	if(occupant && occupant.wearing_rig)
+		var/pay_amount = min(occupant.wearing_rig.get_account_balance(), left_to_pay)
 		var/obj/item/weapon/rig/R = occupant.wearing_rig
 		R.charge_to_rig_account(src, "Store Purchase", machine_id, -pay_amount)
-		cost -= pay_amount
+		left_to_pay -= pay_amount
 
+	if(left_to_pay)
+		for(var/i in deposit_box.contents)
+			if(istype(i, /obj/item/weapon/spacecash))
+				var/obj/item/weapon/spacecash/S = i
+				if(S.worth <= left_to_pay)
+					left_to_pay -= S.worth
+					qdel(S)
+					deposit_box.update_ui_data()
+				else
+					S.worth -= left_to_pay
+					S.update_icon()
+					deposit_box.update_ui_data()
+					return TRUE
 
-	if (cost <= 0)
-		return TRUE
+	var/datum/money_account/A = occupant?.get_account()
+	if(A)
+		A.money -= left_to_pay
 
+	return TRUE
 
 
 //Buys and returns the current item, don't call this directly
 /obj/machinery/store/proc/buy_current()
-	if (!occupant)
+	if(!occupant || !occupant_pay_credits(current_design.get_price(occupant)))
 		return
-	var/cost = current_design.get_price(occupant)
-
-	if (!occupant_pay_credits(cost))
-		return
-
 
 	playsound(src, sound_vend, VOLUME_MID, TRUE)
 	return current_design.CreatedInStore(src)
@@ -114,16 +123,14 @@
 */
 /obj/machinery/store/proc/buy_and_transfer()
 	var/list/things = list() + buy_current()
-	var/obj/item/weapon/rig/R
-	for (var/obj/item/I in things)
-		if (isrig(I))
-			R = I
-		store_or_drop(I)
-
-	//If they bought a module, R will be null and it'll just attempt to install all the modules from the deposit box
-	start_transfer(R)
-
-
+	if(occupant.back && !occupant.wearing_rig)
+		store_or_drop(occupant.back)
+	var/obj/item/weapon/rig/R = locate(/obj/item/weapon/rig) in things
+	if(R) //If they bought a module, R will be null and it'll just attempt to install all the modules from the deposit box
+		start_transfer(R)
+		things -= R
+	for(var/i in things)
+		store_or_drop(i)
 
 
 //Withdrawing credits from your employee account to something

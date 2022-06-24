@@ -757,7 +757,7 @@
 /obj/item/weapon/fossil/bone,
 /obj/item/weapon/fossil/shell,
 /obj/item/xenos_claw,
-/obj/item/weapon/ore/strangerock,
+/obj/item/strangerock,
 /turf/simulated/floor/tiled,
 /area/ship/scrap/cargo/lower)
 "bV" = (

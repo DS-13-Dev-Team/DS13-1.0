@@ -28,7 +28,8 @@
 		return ..()
 
 	if(user.a_intent != I_HELP)
-		if(get_zone_sel(user) == BP_HEAD || get_zone_sel(user) == BP_EYES)
+		var/zone = get_zone_sel(user, TRUE)
+		if(zone == BP_HEAD || zone == BP_EYES)
 			if((CLUMSY in user.mutations) && prob(50))
 				M = user
 			return eyestab(M,user)
@@ -78,6 +79,7 @@
 	name = "knife"
 	desc = "A knife for eating with. Can cut through any food."
 	icon_state = "knife"
+	tool_qualities = list(QUALITY_CUTTING = 30, QUALITY_WIRE_CUTTING = 15)
 	force_divisor = 0.2 // 8 when wielded with hardness 40 (steel)
 	scoop_food = 0
 	sharp = 1
@@ -92,6 +94,7 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "pocketknife_open"
 	item_state = "knife"
+	tool_qualities = list(QUALITY_CUTTING = 25, QUALITY_WIRE_CUTTING = 10)
 	applies_material_colour = 0
 	unbreakable = 1
 	force_divisor = 0.27 // 12 when wielded with hardness 40 (steel)
@@ -110,6 +113,7 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "unathiknife"
 	item_state = "knife"
+	tool_qualities = list(QUALITY_CUTTING = 40, QUALITY_WIRE_CUTTING = 10)
 	attack_verb = list("ripped", "torn", "cut")
 	applies_material_colour = 0
 	unbreakable = 1

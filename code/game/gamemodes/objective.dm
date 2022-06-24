@@ -23,7 +23,7 @@ var/global/list/all_objectives = list()
 
 /datum/objective/proc/find_target()
 	var/list/possible_targets = list()
-	for(var/datum/mind/possible_target in ticker.minds)
+	for(var/datum/mind/possible_target in GLOB.minds)
 		if(possible_target != owner && ishuman(possible_target.current) && (possible_target.current.stat != 2))
 			possible_targets += possible_target
 	if(possible_targets.len > 0)
@@ -42,7 +42,7 @@ var/global/list/all_objectives = list()
 	check_completion(silent)
 
 /datum/objective/proc/find_target_by_role(role, role_type=0)//Option sets either to check assigned role or special role. Default to assigned.
-	for(var/datum/mind/possible_target in ticker.minds)
+	for(var/datum/mind/possible_target in GLOB.minds)
 		if((possible_target != owner) && ishuman(possible_target.current) && ((role_type ? possible_target.special_role : possible_target.assigned_role) == role) )
 			target = possible_target
 			break
@@ -568,13 +568,13 @@ datum/objective/capture
 /datum/objective/absorb
 	proc/gen_amount_goal(var/lowbound = 4, var/highbound = 6)
 		target_amount = rand (lowbound,highbound)
-		if (ticker)
+		if (SSticker)
 			var/n_p = 1 //autowin
-			if (ticker.current_state == GAME_STATE_SETTING_UP)
+			if (SSticker.current_state == GAME_STATE_SETTING_UP)
 				for(var/mob/dead/new_player/P in GLOB.player_list)
 					if(P.client && P.ready && P.mind!=owner)
 						n_p ++
-			else if (ticker.current_state == GAME_STATE_PLAYING)
+			else if (SSticker.current_state == GAME_STATE_PLAYING)
 				for(var/mob/living/carbon/human/P in GLOB.player_list)
 					if(P.client && !(P.mind.changeling) && P.mind!=owner)
 						n_p ++
@@ -600,7 +600,7 @@ datum/objective/heist/kidnap
 		var/list/possible_targets = list()
 		var/list/priority_targets = list()
 
-		for(var/datum/mind/possible_target in ticker.minds)
+		for(var/datum/mind/possible_target in GLOB.minds)
 			if(possible_target != owner && ishuman(possible_target.current) && (possible_target.current.stat != 2) && (!possible_target.special_role))
 				possible_targets += possible_target
 				for(var/role in roles)

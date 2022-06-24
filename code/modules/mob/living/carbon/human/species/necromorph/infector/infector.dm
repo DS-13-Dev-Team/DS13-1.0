@@ -13,7 +13,7 @@
 	mob_type	=	/mob/living/carbon/human/necromorph/infector
 	name_plural =  "Infectors"
 	blurb = "A high value, fragile support, the Infector works as a builder and healer"
-	total_health = 140
+	total_health = 90
 
 	//Normal necromorph flags plus no slip
 	species_flags = SPECIES_FLAG_NO_PAIN | SPECIES_FLAG_NO_MINOR_CUT | SPECIES_FLAG_NO_POISON  | SPECIES_FLAG_NO_BLOCK | SPECIES_FLAG_NO_SLIP
@@ -27,10 +27,9 @@
 	//health_doll_offset	= 56
 
 
-	biomass = 150
-	require_total_biomass	=	BIOMASS_REQ_T2
+	biomass = 105
 	mass = 30
-	biomass_reclamation_time	=	15 MINUTES
+	biomass_reclamation_time	=	10 MINUTES
 	marker_spawnable = TRUE
 
 
@@ -42,8 +41,7 @@
 	swap_flags 	= ALLMOBS	// What can we swap place with?
 	can_pull_mobs = MOB_PULL_SMALLER
 	can_pull_size = ITEM_SIZE_NORMAL
-	evasion = 10
-	reach = 2
+	reach = 1
 
 
 
@@ -64,10 +62,6 @@
 	unarmed_types = list(/datum/unarmed_attack/proboscis)
 
 	slowdown = 5.5 //Note, this is a terribly awful way to do speed, bay's entire speed code needs redesigned
-
-	//Vision
-	view_range = 10
-
 
 	has_limbs = list(BP_CHEST =  list("path" = /obj/item/organ/external/chest/simple, "height" = new /vector2(0, 2.5)),
 	BP_HEAD = list("path" = /obj/item/organ/external/arm/tentacle/proboscis, "height" = new /vector2(1.5, 2.5)),	//The infector is tall and all of its limbs are too
@@ -286,6 +280,9 @@ All of them except New Growth require corruption to build upon\
 	.= shoot_ability(/datum/extension/shoot/longshot/spine, A , /obj/item/projectile/bullet/spine/venomous, accuracy = 50, dispersion = 0, num = 1, windup_time = 0 SECONDS, fire_sound = null, cooldown = 10 SECONDS)
 	if (.)
 		play_species_audio(src, SOUND_ATTACK, VOLUME_MID, 1, 3)
+
+/obj/item/projectile/bullet/spine/venomous
+	damage = 9
 
 //Poisons the victim on impact but only if their armor didn't stop the hit
 /obj/item/projectile/bullet/spine/venomous/on_hit(var/atom/target, var/blocked = 0, var/def_zone = null)

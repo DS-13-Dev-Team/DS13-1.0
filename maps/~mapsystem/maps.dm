@@ -165,6 +165,7 @@ var/const/MAP_HAS_RANK = 2		//Rank system, also togglable
 
 	lobby_track = decls_repository.get_decl(lobby_track_type)
 	world.update_status()
+	setup_economy()
 
 
 

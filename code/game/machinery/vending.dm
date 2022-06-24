@@ -168,8 +168,8 @@
 			var/obj/item/weapon/spacecash/ewallet/C = W
 			paid = pay_with_ewallet(C)
 			handled = 1
-		else if (istype(W, /obj/item/weapon/spacecash/bundle))
-			var/obj/item/weapon/spacecash/bundle/C = W
+		else if (istype(W, /obj/item/weapon/spacecash) && !istype(W, /obj/item/weapon/spacecash/minercash))
+			var/obj/item/weapon/spacecash/C = W
 			paid = pay_with_cash(C)
 			handled = 1
 
@@ -183,7 +183,7 @@
 	if (I || istype(W, /obj/item/weapon/spacecash))
 		attack_hand(user)
 		return
-	else if(istype(W, /obj/item/weapon/tool/screwdriver))
+	else if(isScrewdriver(W))
 		src.panel_open = !src.panel_open
 		to_chat(user, "You [src.panel_open ? "open" : "close"] the maintenance panel.")
 		src.overlays.Cut()
@@ -229,7 +229,7 @@
 /**
  *  Receive payment with cashmoney.
  */
-/obj/machinery/vending/proc/pay_with_cash(var/obj/item/weapon/spacecash/bundle/cashmoney)
+/obj/machinery/vending/proc/pay_with_cash(var/obj/item/weapon/spacecash/cashmoney)
 	if(currently_vending.price > cashmoney.worth)
 		// This is not a status display message, since it's something the character
 		// themselves is meant to see BEFORE putting the money in
@@ -352,7 +352,6 @@
 		if(src.shock(user, 100))
 			return
 	if(!shot_down && user.a_intent == I_HURT)
-		admin_notice("entramos en el strike_machine")
 		user.strike_machine(src)
 		return
 	else if(shot_down && user.a_intent != I_HURT)
@@ -1005,7 +1004,10 @@
 	vend_delay = 14
 	req_access = list(access_security)
 	products = list(/obj/item/weapon/handcuffs = 8,
-					/obj/item/weapon/reagent_containers/food/snacks/donut/normal = 12,/obj/item/weapon/storage/box/evidence = 6, /obj/item/weapon/computer_hardware/hard_drive/portable/design/security = 3,
+					/obj/item/weapon/reagent_containers/food/snacks/donut/normal = 12,
+					/obj/item/weapon/storage/box/evidence = 6,
+					/obj/item/weapon/computer_hardware/hard_drive/portable/design/security = 3,
+					/obj/item/ammo_magazine/divet/rb = 8,
 					/obj/item/weapon/grenade/flashbang = 12)
 	contraband = list(/obj/item/clothing/glasses/sunglasses = 2,/obj/item/weapon/storage/box/donut = 2)
 
@@ -1180,7 +1182,7 @@
 	req_access = list(access_research)
 	products = list(/obj/item/weapon/reagent_containers/food/drinks/bottle/oiljug = 5,
 					/obj/item/stack/cable_coil = 4,/obj/item/device/flash/synthetic = 4,/obj/item/weapon/cell = 4,/obj/item/device/healthanalyzer = 2,
-					/obj/item/weapon/scalpel = 1,/obj/item/weapon/tool/saw/circular = 1,/obj/item/weapon/tank/anesthetic = 2,/obj/item/clothing/mask/breath/medical = 5,
+					/obj/item/weapon/tool/scalpel = 1,/obj/item/weapon/tool/saw/circular = 1,/obj/item/weapon/tank/anesthetic = 2,/obj/item/clothing/mask/breath/medical = 5,
 					/obj/item/weapon/tool/screwdriver = 2,/obj/item/weapon/tool/crowbar = 2)
 	contraband = list(/obj/item/device/flash = 2)
 

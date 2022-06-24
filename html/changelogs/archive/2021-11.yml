@@ -1,0 +1,73 @@
+2021-11-03:
+  DTraitor:
+  - qol: Converted Chemical Dispenser, ChemMaster and Reagent Grinder to TGUI
+  - rscadd: Added pill bottle customisation to ChemMaster UI.
+  - bugfix: Fixed a bug where the pill bottle wouldn't do anything when you click
+      human while targeting mouth.
+  DeadLineSS13:
+  - refactor: Refactored code with spritesheet/craft.
+  Nanako:
+  - experiment: 'Reduced human top speed. The intent here is to nerf the most extreme
+      examples of zoomy humans without significantly affecting the majority of people.
+      This is broken up into several changes:'
+  - balance: Reduced the speed bonus of advanced femoral exoskeleton, Basic femoral
+      unaffected
+  - balance: Slightly Increased stamina costs of sprinting, and slightly reduced stamina
+      regen
+  - balance: Athletics skill is now broken into two skills, Hauling and Athletics.
+      The former affects speed penalties from encumbrance, throwing, and pulling,
+      the latter affects stamina costs.
+  - balance: Slightly increased corruption slowdown effect on humans.
+  - balance: Slightly decreased sprint speed, and slightly increased walking speed.
+  - experiment: 'Increased Time To Kill (TTK) by 10% across the board. This is broken
+      up into several changes:'
+  - balance: Increased human limb health by 10%
+  - balance: Increased human pain-shock threshold by 10%. from 50 to 55 This is the
+      quantity of pain that can be suffered without any real bad effects.
+  - tweak: Increased health of all necromorphs by 10%
+2021-11-11:
+  Nanako:
+  - rscadd: Added a new defensive ability for slashers. Fend trades off movespeed
+      for a powerful defensive buff, giving both incoming damage reduction, and an
+      active block, especially for upperbody attacks from the front. Weaker attacks
+      may even be ricocheted or parried and countered, depending on if they're ranged
+      or melee respectively
+2021-11-13:
+  Nanako:
+  - balance: Mining satchels and ore boxes now have a significantly smaller capacity,
+      so they need to be hauled back to the processor more often. This change is designed
+      to encourage cooperation, and slow down solo-miners. Bring a friend with you
+      to carry your stuff!
+  - bugfix: Fixed a major bug where rock turfs mined out with ranged toolguns (like
+      plasma cutter and line cutter) were giving double ore yields. This was never
+      an intended thing.
+  - bugfix: Fixed a case where credits weren't being saved from payday and mining
+      bonuses.
+  - experiment: Reworked and reintroduced a legacy feature, Industrial Nets.
+  - rscadd: Nets can be dispensed from a netroll by humans to cover areas of floor,
+      and can be dispensed again to build a net wall. A netroll can also be used to
+      pickup deployed nets and return them to the roll.
+  - rscadd: Floor nets will reduce the speed, evasion, and defense of human-sized-mobs
+      walking on them, and will block corruption from spreading into the tile. Net
+      walls only impede movement, and do not provide cover against ranged attacks,
+      or block vision.
+  - rscadd: Net rolls can be found in random loot, or purchased from the store with
+      the right schematic.
+2021-11-16:
+  DeadLineSS13:
+  - refactor: Ticker and Vote refactored. (Vote now on TGUI)
+2021-11-22:
+  DTraitor:
+  - rscadd: Better scanning modules speed up mining smelter ore gathering.
+  - bugfix: Fixed bug that prevented smetler from gathering and processing ores.
+  - rscadd: Vitals Monitor plays sound on heart stop now.
+  - bugfix: Fixed 'You can't use your hand' bug.
+2021-11-30:
+  Snypehunter007:
+  - bugfix: Fixed several piping issues with 02 and Scrubber pipes.
+  - bugfix: Fixed there being a missing wall in the Hangar Lobby.
+  - bugfix: Fixed the Upper Deck Breakroom and Escape Hallway disposal pipes being
+      piped wrong.
+  - rscadd: Added civilian RIGs to the personal lockers in the Crew Quarters.
+  - rscdel: Removed backpacks and duffels from the personal lockers in the Crew Quarters.
+  - imageadd: Added custom Escape Pod sprites.

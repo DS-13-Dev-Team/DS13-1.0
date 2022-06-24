@@ -1,9 +1,7 @@
 /datum/design/item/rig
-	build_type = STORE
+	build_type = STORE_ROUNDSTART
 	category = "RIG"
 	price = 8000
-	store_transfer = TRUE
-
 
 
 //Tier 0, unarmored/empty rigs
@@ -51,3 +49,7 @@
 /datum/design/item/rig/advanced
 	build_path = /obj/item/weapon/rig/advanced
 	price = 15000
+
+/datum/design/item/rig/marksman
+	build_path = /obj/item/weapon/rig/marksman
+	price = 9000

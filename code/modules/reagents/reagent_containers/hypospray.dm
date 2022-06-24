@@ -66,8 +66,8 @@
 	var/obj/item/weapon/reagent_containers/glass/beaker/vial/loaded_vial
 	volume = 0
 
-/obj/item/weapon/reagent_containers/hypospray/vial/New()
-	..()
+/obj/item/weapon/reagent_containers/hypospray/vial/Initialize()
+	.=..()
 	loaded_vial = new /obj/item/weapon/reagent_containers/glass/beaker/vial(src)
 	volume = loaded_vial.volume
 	reagents.maximum_volume = loaded_vial.reagents.maximum_volume
@@ -121,12 +121,11 @@
 	w_class = ITEM_SIZE_TINY
 	var/list/starts_with = list(/datum/reagent/inaprovaline = 5)
 
-/obj/item/weapon/reagent_containers/hypospray/autoinjector/New()
-	..()
+/obj/item/weapon/reagent_containers/hypospray/autoinjector/Initialize()
+	.=..()
 	for(var/T in starts_with)
 		reagents.add_reagent(T, starts_with[T])
 	update_icon()
-	return
 
 /obj/item/weapon/reagent_containers/hypospray/autoinjector/attack(mob/M as mob, mob/user as mob)
 	..()

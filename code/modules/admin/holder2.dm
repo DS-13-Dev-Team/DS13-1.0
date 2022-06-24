@@ -2,7 +2,7 @@
 #define STEALTH_MANUAL 1
 #define STEALTH_AUTO 2
 
-var/list/admin_datums = list()
+GLOBAL_LIST_EMPTY(admin_datums)
 
 /datum/admins
 	var/rank         = "Temporary Admin"
@@ -30,7 +30,7 @@ var/list/admin_datums = list()
 	admincaster_signature = "[GLOB.using_map.company_name] Officer #[rand(0,9)][rand(0,9)][rand(0,9)]"
 	rank = initial_rank
 	rights = initial_rights
-	admin_datums[ckey] = src
+	GLOB.admin_datums[ckey] = src
 
 /datum/admins/proc/associate(client/C)
 	if(istype(C))
@@ -103,7 +103,7 @@ NOTE: It checks usr by default. Supply the "user" argument if you wish to check 
 		return FALSE
 	if(!user.client)
 		return FALSE
-	if(!check_rights(R_ADMIN, user.client)) // Are they allowed?
+	if(!check_rights(R_ADMIN, FALSE, user.client)) // Are they allowed?
 		return FALSE
 	return TRUE
 

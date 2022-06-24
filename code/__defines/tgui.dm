@@ -14,6 +14,8 @@
 
 /// Maximum ping timeout allowed to detect zombie windows
 #define TGUI_PING_TIMEOUT 4 SECONDS
+/// Used for rate-limiting to prevent DoS by excessively refreshing a TGUI window
+#define TGUI_REFRESH_FULL_UPDATE_COOLDOWN 5 SECONDS
 
 /// Window does not exist
 #define TGUI_WINDOW_CLOSED 0
@@ -34,3 +36,13 @@
 #define TGUI_CREATE_MESSAGE(type, payload) ( \
 	"%7b%22type%22%3a%22[type]%22%2c%22payload%22%3a[url_encode(json_encode(payload))]%7d" \
 )
+
+/// Max length for Modal Input
+#define TGUI_MODAL_INPUT_MAX_LENGTH 1024
+/// Max length for Modal Input for names
+#define TGUI_MODAL_INPUT_MAX_LENGTH_NAME 64 // Names for generally anything don't go past 32, let alone 64.
+
+#define TGUI_MODAL_OPEN 1
+#define TGUI_MODAL_DELEGATE 2
+#define TGUI_MODAL_ANSWER 3
+#define TGUI_MODAL_CLOSE 4

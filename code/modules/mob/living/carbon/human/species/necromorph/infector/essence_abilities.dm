@@ -6,7 +6,7 @@
 	"Forming: Maw" = /datum/extension/ability/construction/corruption/maw,
 	"Forming: Eye" = /datum/extension/ability/construction/corruption/eye,
 	"Forming: Snare" = /datum/extension/ability/construction/corruption/snare,
-	"Forming: Propagator" = /datum/extension/ability/construction/corruption/growth,
+	"Forming: Propagator" = /datum/extension/ability/construction/corruption/branch,
 	"Forming: New Growth" = /datum/extension/ability/construction/corruption/newgrowth,
 	"Forming: Harvester" = /datum/extension/ability/construction/corruption/harvester,
 	"Forming: Bioluminescence" = /datum/extension/ability/construction/corruption/light)
@@ -40,17 +40,17 @@
 /datum/extension/resource/essence
 	name = "Essence"
 	current_value = 5 //5 points free to start with
-	max_value = 15
+	max_value = 20
 	regen = (1 SECOND) / (1 MINUTE)	//One point regenerated per minute
 	meter_type = /atom/movable/screen/meter/resource/essence
 	var/list/selected_essence_ability	//Used by infector, this is a list containing the type and parameters of the essence ability we have selected
 
 
-//Regenerates faster when over half, to encourage cautious allocation
+//Regenerates faster when over 37.5%, to encourage cautious allocation
 /datum/extension/resource/essence/get_regen_amount()
 	.=..()
-	if (current_value >= max_value * 0.5)
-		.*=1.5
+	if (current_value >= max_value * 0.375)
+		.*=1.6
 
 /*
 	Entrypoints
@@ -100,7 +100,7 @@
 	duration = 13 SECONDS
 	reach = 2
 	resource_cost_type	=	RESOURCE_ESSENCE
-	resource_cost_quantity = 3
+	resource_cost_quantity = 3.5
 
 /datum/extension/ability/domob/reanimate/apply_start_effect()
 	var/mob/living/L = target
@@ -130,13 +130,14 @@
 */
 /datum/extension/ability/domob/engorge
 	name = "Engorge"
-	blurb = "Makes the targeted necromorph larger, increasing its health, movespeed and view range."
+	blurb = "Makes the targeted necromorph larger, increasing its health, movespeed and view range. Costs more to engorge expensive necromorphs"
 	resource_cost_type	=	RESOURCE_ESSENCE
 	resource_cost_quantity = 2
 
 /datum/extension/ability/domob/engorge/apply_effect()
 	if (!has_extension(target, /datum/extension/engorge))
 		set_extension(target, /datum/extension/engorge)
+		user.consume_resource(resource_cost_type, (target.biomass * 0.005))
 
 /datum/extension/ability/domob/engorge/is_valid_target(var/datum/potential_target, var/mob/potential_user)
 	.=..()
@@ -160,13 +161,12 @@
 			to_chat(potential_user, "You can't target yourself!")
 			return FALSE
 
-
-
 /datum/extension/engorge
 	flags = EXTENSION_FLAG_IMMEDIATE
 	statmods = list(STATMOD_SCALE	=	0.15,
 	STATMOD_MOVESPEED_MULTIPLICATIVE = 1.08,
-	STATMOD_HEALTH = 50,
+	STATMOD_HEALTH = 10,
+	STATMOD_HEALTH_MULTIPLICATIVE = 0.15,
 	STATMOD_VIEW_RANGE = 1)
 
 
@@ -272,24 +272,24 @@
 	blurb = "Constructs a Snare, used as a floor trap."
 	result_path = /obj/structure/corruption_node/snare
 	construction_time = 5	//Seconds
-	resource_cost_quantity = 1
+	resource_cost_quantity = 0.6
 
 
-/datum/extension/ability/construction/corruption/growth
-	name = "Forming: Propagator"
-	blurb = "Constructs a Propagator, used to spread corruption."
-	result_path = /obj/structure/corruption_node/growth
-	construction_time = 30	//Seconds
-	resource_cost_quantity = 4
+/datum/extension/ability/construction/corruption/branch
+	name = "Forming: Branch"
+	blurb = "Constructs a Branch, used to spread corruption."
+	result_path = /obj/structure/corruption_node/growth/branch
+	construction_time = 15	//Seconds
+	resource_cost_quantity = 2
 
 
 /datum/extension/ability/construction/corruption/newgrowth
 	name = "Forming: New Growth"
-	blurb = "Constructs a Propagator without requiring existing corruption, allowing an entirely new place to be corrupted. \n\
+	blurb = "Constructs a tiny node without requiring existing corruption, allowing an entirely new place to be corrupted. \n\
 	This is very slow and expensive, multiple Infectors should work together."
-	result_path = /obj/structure/corruption_node/growth
-	construction_time = 300	//Seconds
-	resource_cost_quantity = 30
+	result_path = /obj/structure/corruption_node/growth/mini
+	construction_time = 180	//Seconds
+	resource_cost_quantity = 10
 	deposit = 0.05	//1.5 base deposit
 	require_corruption = FALSE
 

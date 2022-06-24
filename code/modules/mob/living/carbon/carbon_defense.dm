@@ -35,6 +35,11 @@
 	return damage_dealt
 
 
+/mob/living/carbon/stun_effect_act(var/stun_amount, var/agony_amount, var/def_zone)
+	if(!can_feel_pain())
+		return
+	.=..()
+
 /mob/living/carbon/electrocute_act(var/shock_damage, var/obj/source, var/siemens_coeff = 1.0, var/def_zone = null)
 
 	//if(status_flags & GODMODE)	return 0	//godmode

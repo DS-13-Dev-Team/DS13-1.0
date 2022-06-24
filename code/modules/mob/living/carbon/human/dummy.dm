@@ -35,3 +35,6 @@
 
 /mob/living/carbon/human/dummy/mannequin/create_mob_hud()
 	return	// Mannequins don't get HUDs
+
+/mob/living/carbon/human/dummy/set_stat()
+	return	//dummies don't fall unconscious

@@ -26,6 +26,7 @@
 #define iscredits(A) istype(A, /obj/item/weapon/spacecash/ewallet)
 
 #define is_drone(A) istype(A, /mob/living/silicon/robot/drone)
+#define isdatum(A) istype(A, /datum)
 
 #define isEye(A) istype(A, /mob/dead/observer/eye)
 
@@ -98,6 +99,20 @@
 #define isMultitool(A) A.has_quality(QUALITY_PULSING)
 
 #define isCrowbar(A) A.has_quality(QUALITY_PRYING)
+
+#define isPickaxe(A) A.has_quality(QUALITY_DIGGING)
+
+#define isSaw(A) A.has_quality(QUALITY_SAWING)
+
+#define isShovel(A) A.has_quality(QUALITY_EXCAVATION)
+
+#define isScalpel(A) (A.has_quality(QUALITY_CUTTING) || A.has_quality(QUALITY_LASER_CUTTING))
+
+#define isLaserScalpel(A) (A.has_quality(QUALITY_LASER_CUTTING))
+
+#define isAdhesive(A) (A.has_quality(QUALITY_ADHESIVE))
+
+#define isSealing(A) (A.has_quality(QUALITY_SEALING))
 
 #define sequential_id(key) uniqueness_repository.Generate(/datum/uniqueness_generator/id_sequential, key)
 

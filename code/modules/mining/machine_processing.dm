@@ -63,6 +63,7 @@
 		if("activate")
 			if(!machine.panel_open)
 				machine.active = !machine.active
+				machine.wake_up()
 				machine.update_icon()
 
 		if("toggle_smelting")
@@ -82,12 +83,13 @@
 	anchored = 1
 	light_outer_range = 3
 	circuit = /obj/item/weapon/circuitboard/ore_processing
-	var/obj/machinery/input/input = null
-	var/obj/machinery/mineral/output = null
-	var/obj/machinery/mineral/processing_unit_console/console = null
-	var/sheets_per_tick = 0
-	var/list/ores_processing[0]
-	var/list/ores_stored[0]
+	var/obj/machinery/input/input
+	var/obj/machinery/mineral/output
+	var/obj/machinery/mineral/processing_unit_console/console
+	var/sheets_per_tick
+	var/ores_per_tick
+	var/list/ores_processing = list()
+	var/list/ores_stored = list()
 	var/static/list/alloy_data
 	var/active = FALSE
 	var/currently_working = FALSE	//Set true if we made anything last tick
@@ -133,22 +135,21 @@
 	if (console)
 		if (console.machine == src)
 			console.machine = null
+			SStgui.close_uis(console)
 		console = null
 
 	. = ..()
 
 /obj/machinery/mineral/processing_unit/dismantle()
 	for(var/ore in ores_stored)
-		to_chat(usr, "test1")
 		if(ores_stored[ore])
-			to_chat(usr, "test2")
 			for(var/i = 1 to ores_stored[ore])
-				to_chat(usr, "test3")
 				new ore(get_turf(src))
 	. = ..()
 
 /obj/machinery/mineral/processing_unit/RefreshParts()
 	sheets_per_tick = 0
+	ores_per_tick = 0
 	for(var/obj/item/weapon/stock_parts/manipulator/MP in component_parts)
 		sheets_per_tick += MP.rating * 0.5
 
@@ -158,16 +159,19 @@
 	// Up to 9 per tick
 	sheets_per_tick *= eff
 
+	for(var/obj/item/weapon/stock_parts/scanning_module/SM in component_parts)
+		ores_per_tick += round(SM.rating * 1.5)
+	// Up to 6 ores per tick
+
 	// In case someone decides to upgrade only one component
 	sheets_per_tick = round(sheets_per_tick)
 
 /obj/machinery/mineral/processing_unit/attackby(obj/item/O, mob/user)
-	if(!currently_working)
-		if(default_deconstruction_screwdriver(user, O))
-			active = FALSE
-			update_icon()
-			SStgui.update_uis(console)
-			return
+	if(default_deconstruction_screwdriver(user, O))
+		active = FALSE
+		update_icon()
+		SStgui.update_uis(console)
+		return
 	if(default_deconstruction_crowbar(user, O))
 		return
 	if(default_part_replacement(user, O))
@@ -183,9 +187,8 @@
 /obj/machinery/mineral/processing_unit/proc/wake_up()
 	START_PROCESSING_MACHINE(src, MACHINERY_PROCESS_SELF)
 
-/obj/machinery/mineral/processing_unit/input_available(var/obj/item/weapon/ore/O)
-	if (istype(O))
-		wake_up()
+/obj/machinery/mineral/processing_unit/input_available()
+	wake_up()
 
 /obj/machinery/mineral/processing_unit/Process()
 	//This will be set back to true if we intake or process any ores this tick
@@ -198,28 +201,25 @@
 
 	var/list/tick_alloys = list()
 
+	if(panel_open)
+		if (can_stop_processing())
+			return PROCESS_KILL
+		return
+
 	//Grab some more ore to process this tick.
-	for(var/i = 0,i<3,i++)
-		var/obj/item/weapon/ore/O = locate() in input.loc
+	for(var/i = 1 to ores_per_tick)
+		var/obj/item/stack/ore/O = locate() in input.loc
 
 		if(!O)
 			break
 
-
-		var/OS
 		if(O.ore)
-			OS = ores_stored[O.ore.type]
-			if (isnull(OS))
-				OS = 0
-			OS++
 			currently_working = TRUE
-			ores_stored[O.ore.type] = OS
-			SStgui.update_uis(console)
+			ores_stored[O.ore.type] += O.amount
 			qdel(O)
+			SStgui.update_uis(console)
 		else
-			log_world("[src] encountered ore [O] [O.type] with oretag [O.ore ? O.ore : "(no ore)"] which this machine did not have an entry for!")
-
-
+			crash_with("[src] encountered ore [O] [O.type] with oretag [O.ore ? O.ore : "(no ore)"] which this machine did not have an entry for!")
 
 	if(!active)
 		if (can_stop_processing())
@@ -320,13 +320,19 @@
 				OS--
 				sheets++
 				currently_working = TRUE	//We have enough ore to make something
-				new /obj/item/weapon/ore/slag(output.loc)
+				new /obj/item/stack/ore/slag(output.loc)
 			ores_stored[metal] = OS
 		else
 			continue
 
-	if (length(ores_processed))
-		SStrade.ores_processed(ores_processed)
+	if(length(ores_processed))
+		var/payout
+		for(var/oretype in ores_processed)
+			var/ore/ore_datum = GLOB.ores_by_type[oretype]
+			var/value = ore_datum.Value()
+			payout = value * ores_processed[oretype]
+		if(payout)
+			spawn_miner_money(payout, loc)
 
 	console.updateUsrDialog()
 

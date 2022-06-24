@@ -53,7 +53,7 @@
 
 /datum/extension/cadence/proc/start()
 	started_at	=	world.time
-	GLOB.moved_event.register(holder, src, /datum/extension/cadence/proc/holder_moved)
+	RegisterSignal(holder, COMSIG_MOVABLE_MOVED, .proc/holder_moved)
 
 
 //Stop is called when we move in the opposite direction or go too long without moving
@@ -68,6 +68,7 @@
 
 
 /datum/extension/cadence/proc/holder_moved(var/atom/movable/am, var/atom/old_loc, var/atom/new_loc)
+	SIGNAL_HANDLER
 	//Going straight up or down a level causes a runtime without this
 	if (old_loc.x == new_loc.x && old_loc.y == new_loc.y)
 		return

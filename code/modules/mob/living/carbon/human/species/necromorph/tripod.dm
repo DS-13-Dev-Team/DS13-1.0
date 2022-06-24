@@ -15,7 +15,7 @@
 	mob_type	=	/mob/living/carbon/human/necromorph/tripod
 	name_plural =  "Tripods"
 	blurb = "A heavy skirmisher, the tripod is adept at leaping around open spaces and fighting against multiple distant targets."
-	total_health = 450
+	total_health = 475
 	torso_damage_mult = 0.65 //Hitting centre mass is fine for tripod
 
 	//Normal necromorph flags plus no slip
@@ -30,7 +30,7 @@
 
 	layer = LARGE_MOB_LAYER
 
-	biomass = 400
+	biomass = 360
 	require_total_biomass	=	BIOMASS_REQ_T3
 	mass = 250
 	biomass_reclamation_time	=	15 MINUTES
@@ -50,6 +50,7 @@
 	stun_mod = 0.5
 	weaken_mod = 0.3
 	paralysis_mod = 0.3
+	burn_mod = 1
 
 
 	inherent_verbs = list(/mob/living/carbon/human/proc/tripod_leap,

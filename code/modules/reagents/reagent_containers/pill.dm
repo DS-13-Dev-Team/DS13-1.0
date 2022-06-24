@@ -94,7 +94,7 @@
 /obj/item/weapon/reagent_containers/pill/cyanide
 	name = "strange pill"
 	desc = "It's marked 'KCN'. Smells vaguely of almonds."
-	icon_state = "pillC"
+	icon_state = "pill25"
 /obj/item/weapon/reagent_containers/pill/cyanide/New()
 	..()
 	reagents.add_reagent(/datum/reagent/toxin/cyanide, 50)

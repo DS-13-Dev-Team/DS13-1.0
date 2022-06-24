@@ -25,16 +25,15 @@
 	eyeobj.setLoc(get_turf(L))
 	to_chat(src, "<span class='notice'>You begin to follow \the [L].</span>")
 	following = L
-	GLOB.moved_event.register(L, src, /mob/living/deity/proc/keep_following)
-	GLOB.destroyed_event.register(L, src, /mob/living/deity/proc/stop_follow)
-	GLOB.death_event.register(L, src, /mob/living/deity/proc/stop_follow)
+	RegisterSignal(L, COMSIG_MOVABLE_MOVED, .proc/keep_following)
+	RegisterSignal(L, list(COMSIG_PARENT_QDELETING, COMSIG_LIVING_DEATH), .proc/stop_follow)
 
 /mob/living/deity/proc/stop_follow()
-	GLOB.moved_event.unregister(following, src)
-	GLOB.destroyed_event.unregister(following, src)
-	GLOB.death_event.unregister(following,src)
+	SIGNAL_HANDLER
+	UnregisterSignal(following, list(COMSIG_PARENT_QDELETING, COMSIG_MOVABLE_MOVED, COMSIG_LIVING_DEATH))
 	to_chat(src, "<span class='notice'>You stop following \the [following].</span>")
 	following = null
 
 /mob/living/deity/proc/keep_following(var/atom/movable/moving_instance, var/atom/old_loc, var/atom/new_loc)
+	SIGNAL_HANDLER
 	eyeobj.setLoc(new_loc)

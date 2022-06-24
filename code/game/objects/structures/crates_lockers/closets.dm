@@ -498,10 +498,12 @@
 	if(!user || CanToggleLock(user, id_card))
 		locked = !locked
 		visible_message("<span class='notice'>\The [src] has been [locked ? null : "un"]locked by \the [user].</span>", range = 3)
+		playsound(src, 'sound/machines/button2.ogg', VOLUME_MID_HIGH)
 		update_icon()
 		return TRUE
 	else
 		to_chat(user, "<span class='warning'>Access denied!</span>")
+		playsound(src, 'sound/machines/vending_denied.ogg', VOLUME_LOW)
 		return FALSE
 
 /obj/structure/closet/proc/CanToggleLock(var/mob/user, var/obj/item/weapon/card/id/id_card)

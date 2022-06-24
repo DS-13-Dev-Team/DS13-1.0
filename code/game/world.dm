@@ -126,12 +126,7 @@ GLOBAL_VAR(restart_counter)
 #endif
 
 	GLOB.timezoneOffset = text2num(time2text(0,"hh")) * 36000
-
-	processScheduler = new
 	master_controller = new /datum/controller/game_controller()
-
-	processScheduler.deferSetupFor(/datum/controller/process/ticker)
-	processScheduler.setup()
 
 	if(CONFIG_GET(flag/generate_map))
 		GLOB.using_map.perform_map_generation()
@@ -183,8 +178,8 @@ var/world_topic_spam_protect_time = world.timeofday
 
 		// This is dumb, but spacestation13.com's banners break if player count isn't the 8th field of the reply, so... this has to go here.
 		s["players"] = 0
-		s["stationtime"] = stationtime2text()
-		s["roundduration"] = roundduration2text()
+		s["stationtime"] = station_time_timestamp()
+		s["roundduration"] = worldtime2text()
 		s["map"] = GLOB.using_map.full_name
 
 		var/active = 0
@@ -520,17 +515,15 @@ var/world_topic_spam_protect_time = world.timeofday
 
 		msg += "Current Map: [GLOB.using_map.full_name]"
 
-		if(ticker.mode)
-			msg += "Game Mode: [ticker.mode.name]"
-			msg += "Round End State: [ticker.mode.round_finished]"
+		if(SSticker.mode)
+			msg += "Game Mode: [SSticker.mode.name]"
+			msg += "Round End State: [SSticker.mode.round_finished]"
 
 		if(length(GLOB.clients))
 			msg += "Players: [length(GLOB.clients)]"
 
 		if(length(msg))
 			send2chat("GAME: " + msg.Join(" | "), "game") //TOO!
-
-	processScheduler.stop()
 
 	if(TgsAvailable())
 		var/do_hard_reboot
@@ -562,25 +555,6 @@ var/world_topic_spam_protect_time = world.timeofday
 /world/Del()
 	callHook("shutdown")
 	return ..()
-
-/hook/startup/proc/loadMode()
-	world.load_mode()
-	return 1
-
-/world/proc/load_mode()
-	if(!fexists("data/mode.txt"))
-		return
-
-	var/list/Lines = file2list("data/mode.txt")
-	if(Lines.len)
-		if(Lines[1])
-			master_mode = Lines[1]
-			log_misc("Saved mode is '[master_mode]'")
-
-/world/proc/save_mode(var/the_mode)
-	var/F = file("data/mode.txt")
-	fdel(F)
-	F << the_mode
 
 /world/proc/load_mods()
 	if(CONFIG_GET(flag/admin_legacy_system))
@@ -635,7 +609,7 @@ var/world_topic_spam_protect_time = world.timeofday
 
 	var/new_status = ""
 	new_status += "<b><a href='[discord_url ? discord_url : "#"]'>[server_name] &#8212; [mapname]</a></b>"
-	new_status += "<br>Mode: <b>[ticker.mode ? ticker.mode.name : "Lobby"]</b>"
+	new_status += "<br>Mode: <b>[SSticker.mode ? SSticker.mode.name : "Lobby"]</b>"
 	new_status += "<br>Round time: <b>[gameTimestamp("hh:mm")]</b>"
 
 	// Finally set the new status
@@ -695,3 +669,24 @@ var/world_topic_spam_protect_time = world.timeofday
 	// but those are both private, so let's put the commit info in the runtime
 	// log which is ultimately public.
 	log_runtime(GLOB.revdata.get_log_message())
+
+/world/proc/change_fps(new_value = 20)
+	if(new_value <= 0)
+		CRASH("change_fps() called with [new_value] new_value.")
+	if(fps == new_value)
+		return //No change required.
+
+	fps = new_value
+	on_tickrate_change()
+
+/world/proc/change_tick_lag(new_value = 0.5)
+	if(new_value <= 0)
+		CRASH("change_tick_lag() called with [new_value] new_value.")
+	if(tick_lag == new_value)
+		return //No change required.
+
+	tick_lag = new_value
+	on_tickrate_change()
+
+/world/proc/on_tickrate_change()
+	SStimer?.reset_buckets()

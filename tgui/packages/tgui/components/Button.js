@@ -46,15 +46,22 @@ export const Button = props => {
       + `'onClick' instead and read: `
       + `https://infernojs.org/docs/guides/event-handling`);
   }
-  // IE8: Use a lowercase "onclick" because synthetic events are fucked.
-  // IE8: Use an "unselectable" prop because "user-select" doesn't work.
+  rest.onClick = e => {
+    if (!disabled && onClick) {
+      onClick(e);
+    }
+  };
+  // IE8: Use "unselectable" because "user-select" doesn't work.
+  if (Byond.IS_LTE_IE8) {
+    rest.unselectable = true;
+  }
   let buttonContent = (
     <Box
       className={classes([
         'Button',
         fluid && 'Button--fluid',
-        disabled && 'Button--disabled',
-        selected && 'Button--selected',
+        disabled && 'Button--color--disabled',
+        selected && 'Button--color--selected',
         hasContent && 'Button--hasContent',
         ellipsis && 'Button--ellipsis',
         circular && 'Button--circular',
@@ -66,12 +73,6 @@ export const Button = props => {
         className,
       ])}
       tabIndex={!disabled && '0'}
-      unselectable={Byond.IS_LTE_IE8}
-      onClick={e => {
-        if (!disabled && onClick) {
-          onClick(e);
-        }
-      }}
       onKeyDown={e => {
         const keyCode = window.event ? e.which : e.keyCode;
         // Simulate a click when pressing space or enter.

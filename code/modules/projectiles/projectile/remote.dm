@@ -148,10 +148,11 @@
 	damage = dps * tick_interval //Overwrite the compiletime damage with the calculated value
 	animate_movement = 0 //Disable this to prevent byond's built in sliding, we do our own animate calls
 	damage_tile = get_turf(src) //Damage tile starts off as wherever we are
-	GLOB.moved_event.register(src, src, /obj/item/projectile/remote/proc/entered_new_tile)
+	RegisterSignal(src, COMSIG_MOVABLE_MOVED, .proc/entered_new_tile)
 	set_status(STATE_MOVING)
 
 /obj/item/projectile/remote/proc/entered_new_tile(var/atom/movable/moving_instance, var/atom/old_loc, var/atom/new_loc)
+	SIGNAL_HANDLER
 	remove_all_grind_atoms()
 	damage_tile = new_loc
 

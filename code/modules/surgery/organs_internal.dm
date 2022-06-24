@@ -122,7 +122,7 @@
 /datum/surgery_step/internal/detatch_organ
 
 	allowed_tools = list(
-	/obj/item/weapon/scalpel = 100,		\
+	/obj/item/weapon/tool/scalpel = 100,		\
 	/obj/item/weapon/material/knife = 75,	\
 	/obj/item/weapon/material/kitchen/utensil/knife = 75,	\
 	/obj/item/weapon/material/shard = 50, 		\
@@ -186,7 +186,7 @@
 /datum/surgery_step/internal/remove_organ
 	priority = 2
 	allowed_tools = list(
-	/obj/item/weapon/hemostat = 100,	\
+	/obj/item/weapon/tool/hemostat = 100,	\
 	/obj/item/weapon/tool/wirecutters = 75,
 	/obj/item/weapon/material/knife = 75,	\
 	/obj/item/weapon/material/kitchen/utensil/fork = 20

@@ -217,7 +217,7 @@
 				var/decl/security_state/security_state = decls_repository.get_decl(GLOB.using_map.security_state)
 				var/decl/security_level/target_level = locate(href_list["target"]) in security_state.comm_console_security_levels
 				if(target_level && security_state.can_switch_to(target_level))
-					var/confirm = tgui_alert("Are you sure you want to change the alert level to [target_level.name]?", name, list("No", "Yes"))
+					var/confirm = tgui_alert(user, "Are you sure you want to change the alert level to [target_level.name]?", name, list("No", "Yes"))
 					if(confirm == "Yes" && can_still_topic())
 						if(security_state.set_security_level(target_level))
 							feedback_inc(target_level.type,1)
@@ -309,7 +309,7 @@ var/last_message_id = 0
 	frequency.post_signal(source, status_signal)
 
 /proc/cancel_call_proc(var/mob/user)
-	if (!ticker || !evacuation_controller)
+	if (!SSticker || !evacuation_controller)
 		return
 
 	if(evacuation_controller.cancel_evacuation())
@@ -326,7 +326,7 @@ var/last_message_id = 0
 	return 0
 
 /proc/call_shuttle_proc(var/mob/user, var/emergency)
-	if (!ticker || !evacuation_controller)
+	if (!SSticker || !evacuation_controller)
 		return
 
 	if(isnull(emergency))
@@ -353,7 +353,7 @@ var/last_message_id = 0
 
 /proc/init_autotransfer()
 
-	if (!ticker || !evacuation_controller)
+	if (!SSticker || !evacuation_controller)
 		return
 
 	. = evacuation_controller.call_evacuation(null, _emergency_evac = FALSE, autotransfer = TRUE)

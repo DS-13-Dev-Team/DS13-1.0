@@ -19,6 +19,7 @@
 	w_class = ITEM_SIZE_SMALL
 	sharp = 1
 	edge = 1
+	tool_qualities = list(QUALITY_SAWING = 35, QUALITY_WIRE_CUTTING = 15)
 	origin_tech = list(TECH_MATERIAL = 2, TECH_COMBAT = 1)
 	attack_verb = list("chopped", "torn", "cut")
 	applies_material_colour = 0
@@ -31,6 +32,7 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "tacknife"
 	item_state = "knife"
+	tool_qualities = list(QUALITY_CUTTING = 45, QUALITY_WIRE_CUTTING = 20)
 	attack_verb = list("stabbed", "chopped", "cut")
 	applies_material_colour = 1
 	unbreakable = 1
@@ -45,6 +47,7 @@
 	base_parry_chance = 50
 	attack_cooldown_modifier = 1
 	unbreakable = 1
+	tool_qualities = list(QUALITY_SAWING = 30, QUALITY_CUTTING = 40, QUALITY_WIRE_CUTTING = 15)
 
 /obj/item/weapon/material/hatchet/machete/Initialize()
 	icon_state = "machete[pick("","_red","_blue", "_black", "_olive")]"
@@ -53,6 +56,7 @@
 /obj/item/weapon/material/hatchet/machete/deluxe
 	name = "deluxe machete"
 	desc = "A fine example of a machete, with a polished blade, wooden handle and a leather cord loop."
+	tool_qualities = list(QUALITY_SAWING = 40, QUALITY_CUTTING = 45, , QUALITY_WIRE_CUTTING = 20)
 
 /obj/item/weapon/material/hatchet/machete/deluxe/Initialize()
 	. = ..()
@@ -82,6 +86,7 @@
 	throw_range = 3
 	w_class = ITEM_SIZE_HUGE
 	slot_flags = SLOT_BACK
+	tool_qualities = list(QUALITY_CUTTING = 55, QUALITY_WIRE_CUTTING = 5)
 	origin_tech = list(TECH_MATERIAL = 2, TECH_COMBAT = 2)
 	attack_verb = list("chopped", "sliced", "cut", "reaped")
 	unbreakable = 1

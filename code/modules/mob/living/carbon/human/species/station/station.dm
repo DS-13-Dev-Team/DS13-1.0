@@ -11,6 +11,10 @@
 	name_language = LANGUAGE_GALCOM
 	min_age = 16
 	max_age = 65
+
+	limb_health_factor = 1.1
+	pain_shock_threshold = 55
+
 	gluttonous = GLUT_TINY
 
 	spawn_flags = SPECIES_CAN_JOIN | SPECIES_NO_LACE
@@ -95,7 +99,7 @@
 	return ..()
 
 /datum/species/human/handle_organ_external_damage(var/obj/item/organ/external/organ, brute, burn, damage_flags, used_weapon)
-	GLOB.damage_hit_event.raise_event(organ.owner, organ, brute, burn, damage_flags, used_weapon)
+	SEND_SIGNAL(organ.owner, COMSIG_MOB_DAMAGE_HIT, organ, brute, burn, damage_flags, used_weapon)
 
 	var/mob/living/L = organ.owner
 	//Here we'll handle pain audio
@@ -381,7 +385,7 @@
 /datum/species/diona/handle_post_spawn(var/mob/living/carbon/human/H)
 	H.gender = NEUTER
 	. = ..()
-	addtimer(CALLBACK(src, .proc/fill_with_nymphs, H), 0)
+	INVOKE_ASYNC(src, .proc/fill_with_nymphs, H)
 
 /datum/species/diona/proc/fill_with_nymphs(var/mob/living/carbon/human/H)
 

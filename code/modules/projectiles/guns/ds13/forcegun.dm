@@ -15,7 +15,7 @@
 	item_state = "forcegun"
 	w_class = ITEM_SIZE_BULKY
 
-	charge_cost = 1000 //Five shots per battery
+	charge_cost = 200 //Five shots per battery
 	cell_type = /obj/item/weapon/cell/force
 	projectile_type = null
 	slot_flags = SLOT_BACK
@@ -182,7 +182,7 @@
 	icon = 'icons/obj/ammo.dmi'
 	icon_state = "forcebattery"
 	w_class = ITEM_SIZE_NORMAL
-	maxcharge = 5000
+	maxcharge = 1000
 	matter = list(MATERIAL_STEEL = 700, MATERIAL_SILVER = 80)
 
 /obj/item/weapon/cell/force/update_icon()

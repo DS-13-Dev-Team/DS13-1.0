@@ -40,7 +40,7 @@
 		if (occupant_can_afford())
 			data["buy_enabled"] = TRUE
 
-		if (current_design.store_transfer)
+		if(ispath(current_design.build_path, /obj/item/rig_module) || ispath(current_design.build_path, /obj/item/weapon/rig))
 			data["transfer_enabled"] = TRUE
 
 	if (chip)
@@ -56,11 +56,17 @@
 	Called whenever a new occupant enters
 */
 /obj/machinery/store/proc/update_occupant_data()
-	combined_store_data = GLOB.public_store_designs.Copy()
+	combined_store_data = list()
+	var/existing_categories = list()
 
-	for (var/datum/design/D in GLOB.limited_store_designs)
-		if (D.PI?.can_buy_in_store(occupant))
-			LAZYADD(combined_store_data[D.category], list(D.ui_data))
+	for(var/list/L in list(GLOB.unlimited_store_designs, GLOB.limited_store_designs))
+		for(var/id in L)
+			var/datum/design/D = SSresearch.design_ids[id]
+			if(!(D.category in existing_categories))
+				existing_categories += D.category
+				combined_store_data[D.category] = list()
+			if(!D.PI || D.PI.can_buy_in_store(occupant))
+				LAZYADD(combined_store_data[D.category], list(D.ui_data()))
 
 
 /obj/machinery/store/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null)

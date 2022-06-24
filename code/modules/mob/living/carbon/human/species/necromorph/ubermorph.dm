@@ -253,7 +253,7 @@ Best used near the end, when all seems quiet, to help the necromorphs hunt down 
 	play_species_audio(src, SOUND_SHOUT, VOLUME_MID, 1, 3)
 	//Ok we've passed all safety checks, let's commence charging!
 	//We simply create the extension on the movable atom, and everything works from there
-	set_extension(src, /datum/extension/charge/lunge, A, 8, 2 SECONDS, 3, FALSE, TRUE, 1, 0, 0.5 SECONDS)
+	set_extension(src, /datum/extension/charge/lunge, A, 8, 2 SECONDS, 3, FALSE, TRUE, 1, 5 SECONDS, 0.5 SECONDS)
 
 	return TRUE
 

@@ -63,15 +63,18 @@
 		var/atom/A = result
 		.+="[initial(A.desc)]"
 
-/datum/craft_recipe/proc/get_step_descriptions(var/skip = 0)
+/datum/craft_recipe/proc/get_step_descriptions(skip = 0)
 	var/list/data = list()
+	var/datum/asset/spritesheet/sheet = get_asset_datum(/datum/asset/spritesheet/craft)
 	for(var/datum/craft_step/CS in passive_steps)
-		data += list(list("icon" = sanitizeFileName("[CS.icon_type].png"), "desc" = CS.desc))
+		var/list/icontype_item = get_craft_item(CS.icon_type)
+		data += list(list("icon" = sheet.icon_tag(sanitizeFileName(icontype_item["name"])), "desc" = CS.desc))
 	for(var/datum/craft_step/CS in steps)
 		if (skip > 0)
 			skip--
 			continue
-		data += list(list("icon" = sanitizeFileName("[CS.icon_type].png"), "desc" = CS.desc))
+		var/obj/icontype_item = get_craft_item(CS.icon_type)
+		data += list(list("icon" = sheet.icon_tag(sanitizeFileName(icontype_item["name"])), "desc" = CS.desc))
 	return data
 
 

@@ -36,8 +36,7 @@
 		if(11 to 15)
 			new/obj/item/weapon/reagent_containers/glass/beaker/bluespace(src)
 		if(16 to 20)
-			for(var/i = 0, i < 10, i++)
-				new/obj/item/weapon/ore/diamond(src)
+			new /obj/item/stack/ore/diamond(src, 10)
 		if(21 to 25)
 			for(var/i = 0, i < 3, i++)
 				new/obj/machinery/portable_atmospherics/hydroponics(src)
@@ -176,7 +175,7 @@
 
 /obj/structure/closet/crate/secure/loot/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(locked)
-		if (istype(W, /obj/item/weapon/tool/multitool)) // Greetings Urist McProfessor, how about a nice game of cows and bulls?
+		if(isMultitool(W)) // Greetings Urist McProfessor, how about a nice game of cows and bulls?
 			to_chat(user, "<span class='notice'>DECA-CODE LOCK ANALYSIS:</span>")
 			if (attempts == 1)
 				to_chat(user, "<span class='warning'>* Anti-Tamper system will activate on the next failed access attempt.</span>")

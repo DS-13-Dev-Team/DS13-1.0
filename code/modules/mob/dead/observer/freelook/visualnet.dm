@@ -87,7 +87,7 @@
 // Updates the chunks that the turf is located in. Use this when obstacles are destroyed or	when doors open.
 
 /datum/visualnet/proc/update_visibility(atom/A, var/opacity_check = TRUE)
-	if(!ticker || (opacity_check && !A.opacity))
+	if(!SSticker || (opacity_check && !A.opacity))
 		return
 	major_chunk_change(A)
 
@@ -124,25 +124,26 @@
 		return FALSE
 
 	sources += source
-	GLOB.moved_event.register(source, src, /datum/visualnet/proc/source_moved)
-	GLOB.destroyed_event.register(source, src, /datum/visualnet/proc/remove_source)
+	RegisterSignal(source, COMSIG_MOVABLE_MOVED, .proc/source_moved)
+	RegisterSignal(source, COMSIG_PARENT_QDELETING, .proc/remove_source)
 	for_all_chunks_in_range(source, /datum/chunk/proc/add_source, list(source), null, source.get_visualnet_range(src))
 	if(update_visibility)
 		update_visibility(source, opacity_check)
 	return TRUE
 
 /datum/visualnet/proc/remove_source(var/atom/source, var/update_visibility = TRUE, var/opacity_check = FALSE)
+	SIGNAL_HANDLER
 	if(!sources.Remove(source))
 		return FALSE
 
-	GLOB.moved_event.unregister(source, src, /datum/visualnet/proc/source_moved)
-	GLOB.destroyed_event.unregister(source, src, /datum/visualnet/proc/remove_source)
+	UnregisterSignal(source, list(COMSIG_PARENT_QDELETING, COMSIG_MOVABLE_MOVED))
 	for_all_chunks_in_range(source, /datum/chunk/proc/remove_source, list(source), null, source.get_visualnet_range(src))
 	if(update_visibility)
 		update_visibility(source, opacity_check)
 	return TRUE
 
 /datum/visualnet/proc/source_moved(var/atom/movable/source, var/old_loc, var/new_loc)
+	SIGNAL_HANDLER
 	var/turf/old_turf = get_turf(old_loc)
 	var/turf/new_turf = get_turf(new_loc)
 

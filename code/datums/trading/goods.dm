@@ -344,15 +344,15 @@ Sells devices, odds and ends, and medical stuff
 								  /obj/item/weapon/storage/firstaid/adv  = TRADER_THIS_TYPE,
 								  /obj/item/weapon/storage/box/bloodpacks  = TRADER_THIS_TYPE,
 								  /obj/item/weapon/reagent_containers/ivbag  = TRADER_SUBTYPES_ONLY,
-								  /obj/item/weapon/retractor = TRADER_THIS_TYPE,
-								  /obj/item/weapon/hemostat = TRADER_THIS_TYPE,
-								  /obj/item/weapon/cautery = TRADER_THIS_TYPE,
-								  /obj/item/weapon/surgicaldrill = TRADER_THIS_TYPE,
-								  /obj/item/weapon/scalpel = TRADER_THIS_TYPE,
-								  /obj/item/weapon/scalpel/manager = TRADER_THIS_TYPE,
+								  /obj/item/weapon/tool/retractor = TRADER_THIS_TYPE,
+								  /obj/item/weapon/tool/hemostat = TRADER_THIS_TYPE,
+								  /obj/item/weapon/tool/cautery = TRADER_THIS_TYPE,
+								  /obj/item/weapon/tool/surgicaldrill = TRADER_THIS_TYPE,
+								  /obj/item/weapon/tool/scalpel = TRADER_THIS_TYPE,
+								  /obj/item/weapon/tool/scalpel/manager = TRADER_THIS_TYPE,
 								  /obj/item/weapon/tool/saw/circular = TRADER_THIS_TYPE,
 								  /obj/item/weapon/bonegel = TRADER_THIS_TYPE,
-								  /obj/item/weapon/bonesetter = TRADER_THIS_TYPE,
+								  /obj/item/weapon/tool/bonesetter = TRADER_THIS_TYPE,
 								  /obj/item/weapon/reagent_containers/glass/bottle/inaprovaline = TRADER_THIS_TYPE,
 								  /obj/item/weapon/reagent_containers/glass/bottle/stoxin = TRADER_THIS_TYPE,
 								  /obj/item/weapon/reagent_containers/glass/bottle/antitoxin = TRADER_THIS_TYPE,
@@ -385,9 +385,9 @@ Sells devices, odds and ends, and medical stuff
 				"insult_bad"        = "This is not acceptable, please cease.",
 				)
 
-	possible_wanted_items = list(/obj/item/weapon/ore/ = TRADER_SUBTYPES_ONLY,
+	possible_wanted_items = list(/obj/item/stack/ore/ = TRADER_SUBTYPES_ONLY,
 								/obj/item/weapon/disk/survey = TRADER_THIS_TYPE,
-								/obj/item/weapon/ore/slag = TRADER_BLACKLIST)
+								/obj/item/stack/ore/slag = TRADER_BLACKLIST)
 
 	possible_trading_items = list(/obj/machinery/mining/drill = TRADER_THIS_TYPE,
 								  /obj/machinery/mining/brace = TRADER_THIS_TYPE,

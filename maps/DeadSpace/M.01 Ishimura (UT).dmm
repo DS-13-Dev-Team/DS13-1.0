@@ -166,39 +166,22 @@
 /obj/item/weapon/stool,
 /turf/simulated/floor/dank/heavy,
 /area/ishimura/tramdeck/switchingstation/lower)
-"aF" = (
-/obj/structure/table/standard,
-/turf/simulated/floor/dank/heavy,
-/area/ishimura/tramdeck/switchingstation/lower)
 "aG" = (
-/obj/structure/table/standard,
-/obj/item/weapon/deck/cards,
-/turf/simulated/floor/dank/heavy,
+/obj/structure/grille,
+/turf/simulated/floor/dank/trammiddle,
 /area/ishimura/tramdeck/switchingstation/lower)
 "aH" = (
-/obj/item/weapon/stool,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/dank/heavy,
-/area/ishimura/tramdeck/switchingstation/lower)
-"aI" = (
-/obj/structure/table/standard,
-/obj/item/weapon/material/ashtray/plastic,
-/turf/simulated/floor/dank/heavy,
+/obj/structure/grille/broken,
+/turf/simulated/floor/dank/trammiddle,
 /area/ishimura/tramdeck/switchingstation/lower)
 "aJ" = (
 /obj/effect/shuttle_landmark/lift/tramswitch_bottom,
 /turf/simulated/floor,
 /area/ishimura/tramdeck/switchingstation/lower)
 "aK" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/light{
 	dir = 8
-	},
-/turf/simulated/floor/dank/heavy,
-/area/ishimura/tramdeck/switchingstation/lower)
-"aL" = (
-/obj/effect/floor_decal/industrial/warning/dust/corner{
-	dir = 4;
-	icon_state = "warningcorner_dust"
 	},
 /turf/simulated/floor/dank/heavy,
 /area/ishimura/tramdeck/switchingstation/lower)
@@ -218,22 +201,16 @@
 /turf/simulated/floor/dank/heavy,
 /area/ishimura/tramdeck/switchingstation/lower)
 "aO" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 6
-	},
-/turf/simulated/floor/dank/heavy,
-/area/ishimura/tramdeck/switchingstation/lower)
-"aP" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
+/obj/structure/table/standard,
 /turf/simulated/floor/dank/heavy,
 /area/ishimura/tramdeck/switchingstation/lower)
 "aQ" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/dank/tramgrating{
+	dir = 4
 	},
-/turf/simulated/floor/dank/heavy,
 /area/ishimura/tramdeck/switchingstation/lower)
 "aR" = (
 /turf/simulated/wall/r_wall/hull,
@@ -243,47 +220,37 @@
 /turf/simulated/floor/dank/heavy,
 /area/ishimura/tramdeck/switchingstation/lower)
 "aT" = (
-/turf/simulated/wall/titanium,
-/area/ishimura/tramdeck/switchingstation/lower)
-"aU" = (
-/obj/effect/wallframe_spawn/reinforced/titanium,
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor,
+/obj/structure/table/standard,
+/obj/item/weapon/deck/cards,
+/turf/simulated/floor/dank/heavy,
 /area/ishimura/tramdeck/switchingstation/lower)
 "aV" = (
 /obj/effect/wallframe_spawn/reinforced/hull,
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/underforemaintenance)
 "aW" = (
-/obj/machinery/door/airlock/civilian{
-	name = "Tram Two"
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/chair/tram{
+	dir = 4
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/dank/tramcorner{
+	dir = 9
+	},
 /area/ishimura/tramdeck/switchingstation/lower)
 "aX" = (
 /turf/simulated/wall/r_wall,
 /area/ishimura/tramdeck/tram/undertunnel/utars)
 "aY" = (
-/obj/structure/wall_frame/titanium,
-/obj/machinery/door/blast/shutters{
-	name = "Tram Two Shutter"
-	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor,
+/turf/simulated/floor/dank/tramcorner{
+	dir = 1
+	},
 /area/ishimura/tramdeck/switchingstation/lower)
 "aZ" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/storage/toolbox/electrical,
-/turf/simulated/floor,
-/area/ishimura/tramdeck/switchingstation/lower)
-"ba" = (
-/obj/structure/bed/chair,
-/turf/simulated/floor,
-/area/ishimura/tramdeck/switchingstation/lower)
-"bb" = (
-/obj/effect/decal/cleanable/blood/oil,
-/obj/item/frame/apc,
-/turf/simulated/floor,
+/obj/structure/table/standard,
+/obj/item/weapon/material/ashtray/plastic,
+/turf/simulated/floor/dank/heavy,
 /area/ishimura/tramdeck/switchingstation/lower)
 "bc" = (
 /obj/machinery/atmospherics/pipe/tank/oxygen,
@@ -291,16 +258,23 @@
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/undertunnel/utars)
 "bd" = (
-/obj/random/tool_upgrade,
-/turf/simulated/floor,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/turf/simulated/floor/dank/heavy,
 /area/ishimura/tramdeck/switchingstation/lower)
 "be" = (
-/obj/random/tool/low_chance,
-/turf/simulated/floor,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/dank/heavy,
 /area/ishimura/tramdeck/switchingstation/lower)
 "bf" = (
-/obj/random/common_loot,
-/turf/simulated/floor,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/cable_coil,
+/turf/simulated/floor/dank/tramcorner{
+	dir = 8
+	},
 /area/ishimura/tramdeck/switchingstation/lower)
 "bg" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/blue{
@@ -355,22 +329,19 @@
 /area/ishimura/tramdeck/tram/undertunnel/utars)
 "bl" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor,
 /area/ishimura/tramdeck/switchingstation/lower)
 "bm" = (
-/obj/machinery/constructable_frame,
-/obj/item/stack/cable_coil,
-/turf/simulated/floor,
-/area/ishimura/tramdeck/switchingstation/lower)
-"bn" = (
-/obj/effect/decal/cleanable/blood,
-/turf/simulated/floor,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/turf/simulated/floor/dank/heavy,
 /area/ishimura/tramdeck/switchingstation/lower)
 "bo" = (
-/obj/structure/bed/chair{
-	dir = 8;
-	icon_state = "chair_preview"
-	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/floor_decal/rust,
+/obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor,
 /area/ishimura/tramdeck/switchingstation/lower)
 "bp" = (
@@ -428,9 +399,10 @@
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/undertunnel/utars)
 "bv" = (
-/obj/machinery/constructable_frame,
-/obj/item/weapon/tool/weldingtool/improvised,
-/turf/simulated/floor,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/dank/tramcorner{
+	dir = 9
+	},
 /area/ishimura/tramdeck/switchingstation/lower)
 "bw" = (
 /obj/effect/floor_decal/industrial/shutoff,
@@ -479,17 +451,19 @@
 /area/ishimura/tramdeck/tram/undertunnel/utars)
 "bB" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/storage/toolbox/mechanical,
+/obj/machinery/constructable_frame,
+/obj/item/weapon/tool/weldingtool/improvised,
+/obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor,
 /area/ishimura/tramdeck/switchingstation/lower)
 "bC" = (
+/obj/effect/floor_decal/rust,
 /obj/effect/decal/cleanable/dirt,
-/obj/random/toolbox/low_chance,
+/obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor,
 /area/ishimura/tramdeck/switchingstation/lower)
 "bD" = (
-/obj/effect/decal/cleanable/blood/oil/streak,
-/turf/simulated/floor,
+/turf/simulated/wall/tram,
 /area/ishimura/tramdeck/switchingstation/lower)
 "bE" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/blue{
@@ -523,10 +497,11 @@
 /turf/simulated/floor/dank/heavy,
 /area/ishimura/tramdeck/tram/undertunnel/utars)
 "bH" = (
-/obj/machinery/door/airlock/civilian{
-	name = "Tram Two"
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/floor_decal/rust,
+/obj/machinery/light_construct{
+	dir = 8
+	},
 /turf/simulated/floor,
 /area/ishimura/tramdeck/switchingstation/lower)
 "bI" = (
@@ -624,11 +599,11 @@
 /turf/simulated/floor/dank/heavy,
 /area/ishimura/tramdeck/switchingstation/lower)
 "bS" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 10
 	},
 /turf/simulated/floor/dank/heavy,
 /area/ishimura/tramdeck/switchingstation/lower)
@@ -687,7 +662,10 @@
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/undertunnel/utars)
 "bZ" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8;
+	icon_state = "map-scrubbers"
+	},
 /turf/simulated/floor/dank/heavy,
 /area/ishimura/tramdeck/switchingstation/lower)
 "ca" = (
@@ -831,35 +809,44 @@
 /turf/simulated/floor/dank/heavy,
 /area/ishimura/tramdeck/tram/undertunnel/utars)
 "cr" = (
-/obj/structure/bed/chair{
-	dir = 4;
-	icon_state = "chair_preview"
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
 	},
 /turf/simulated/floor/dank/heavy,
 /area/ishimura/tramdeck/switchingstation/lower)
 "cs" = (
-/obj/structure/table/steel,
-/turf/simulated/floor/dank/heavy,
+/obj/item/weapon/material/shard,
+/obj/effect/floor_decal/rust,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor,
 /area/ishimura/tramdeck/switchingstation/lower)
 "ct" = (
-/obj/random/closet,
-/turf/simulated/floor/dank/heavy,
+/obj/effect/decal/cleanable/dirt,
+/obj/random/toolbox/low_chance,
+/turf/simulated/floor/dank/tramcorner{
+	dir = 10
+	},
 /area/ishimura/tramdeck/switchingstation/lower)
 "cu" = (
-/obj/item/modular_computer/console{
-	dir = 1;
-	icon_state = "console"
-	},
-/turf/simulated/floor/dank/heavy,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/dank/tramcorner,
 /area/ishimura/tramdeck/switchingstation/lower)
 "cv" = (
-/obj/structure/table,
-/obj/item/weapon/tool/wrench,
-/turf/simulated/floor/dank/heavy,
+/obj/effect/floor_decal/rust,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/random/common_loot,
+/obj/machinery/light_construct,
+/turf/simulated/floor,
 /area/ishimura/tramdeck/switchingstation/lower)
 "cw" = (
-/obj/item/stack/material/steel,
-/turf/simulated/floor/dank/heavy,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/frame/apc,
+/turf/simulated/floor/dank/tramcorner{
+	dir = 5
+	},
 /area/ishimura/tramdeck/switchingstation/lower)
 "cx" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -2613,11 +2600,16 @@
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "fY" = (
-/obj/machinery/alarm{
-	dir = 1;
-	pixel_y = -22
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/chair/tram{
+	dir = 4
 	},
-/turf/simulated/floor/dank/heavy,
+/obj/machinery/light_construct{
+	dir = 8
+	},
+/turf/simulated/floor/dank/tramcorner{
+	dir = 8
+	},
 /area/ishimura/tramdeck/switchingstation/lower)
 "fZ" = (
 /obj/random/closet,
@@ -5345,6 +5337,12 @@
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/tiled/dark,
 /area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
+"lq" = (
+/obj/item/weapon/reagent_containers/food/snacks/old/hamburger,
+/obj/item/weapon/reagent_containers/food/snacks/old/hamburger,
+/obj/item/weapon/reagent_containers/food/snacks/old/hotdog,
+/turf/simulated/floor/plating,
+/area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
 "lX" = (
 /obj/structure/stairs_short,
 /obj/structure/platform_decoration{
@@ -5394,6 +5392,12 @@
 	},
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
+"nT" = (
+/obj/item/weapon/reagent_containers/food/snacks/old/burger,
+/obj/item/weapon/reagent_containers/food/snacks/old/fries,
+/obj/item/weapon/reagent_containers/food/snacks/old/hotdog,
+/turf/simulated/floor/plating,
+/area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
 "ow" = (
 /turf/simulated/floor/plating,
 /area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
@@ -5402,6 +5406,18 @@
 /obj/random/loot/sometimes/few,
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
+"pB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/chair/tram{
+	dir = 8
+	},
+/obj/machinery/light_construct{
+	dir = 4
+	},
+/turf/simulated/floor/dank/tramcorner{
+	dir = 4
+	},
+/area/ishimura/tramdeck/switchingstation/lower)
 "pG" = (
 /turf/simulated/wall/r_wall/hull,
 /area/ishimura/tramdeck/tram/undertunnel/utama)
@@ -5414,19 +5430,50 @@
 	},
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
-"ro" = (
-/obj/structure/foamedmetal,
-/obj/machinery/vending/snack,
-/turf/simulated/floor/plating,
-/area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
+"rf" = (
+/obj/structure/table,
+/obj/item/weapon/tool/wrench,
+/turf/simulated/floor/dank/heavy,
+/area/ishimura/tramdeck/switchingstation/lower)
+"rr" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/dank/tramcorner{
+	dir = 6
+	},
+/area/ishimura/tramdeck/switchingstation/lower)
+"rx" = (
+/obj/machinery/alarm{
+	dir = 1;
+	pixel_y = -22
+	},
+/turf/simulated/floor/dank/heavy,
+/area/ishimura/tramdeck/switchingstation/lower)
 "rW" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
-"sr" = (
-/obj/structure/foamedmetal,
-/turf/simulated/wall/r_wall,
+"rY" = (
+/obj/item/weapon/reagent_containers/food/snacks/old/hotdog,
+/turf/simulated/floor/plating,
 /area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
+"sr" = (
+/obj/item/weapon/reagent_containers/food/snacks/old/taco,
+/turf/simulated/floor/plating,
+/area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
+"sF" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
+	},
+/turf/simulated/floor/dank/heavy,
+/area/ishimura/tramdeck/switchingstation/lower)
+"tg" = (
+/obj/structure/bed/chair{
+	dir = 4;
+	icon_state = "chair_preview"
+	},
+/turf/simulated/floor/dank/heavy,
+/area/ishimura/tramdeck/switchingstation/lower)
 "tq" = (
 /obj/structure/foamedmetal,
 /turf/simulated/floor,
@@ -5438,12 +5485,11 @@
 /obj/effect/landmark/marker/ishimura,
 /turf/simulated/floor/plating,
 /area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
-"vk" = (
-/obj/structure/foamedmetal,
-/obj/structure/foamedmetal,
-/obj/machinery/vending/hotfood,
-/turf/simulated/floor/plating,
-/area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
+"vw" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/random/tool/low_chance,
+/turf/simulated/floor/dank/tramcorner,
+/area/ishimura/tramdeck/switchingstation/lower)
 "vK" = (
 /obj/structure/table/steel,
 /obj/random/tool/low_chance,
@@ -5453,14 +5499,78 @@
 /obj/machinery/door/airlock/civilian,
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
+"wm" = (
+/obj/machinery/growth_tank,
+/turf/simulated/floor/plating,
+/area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
+"wr" = (
+/obj/machinery/microwave,
+/turf/simulated/floor/plating,
+/area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
 "wW" = (
 /obj/structure/table/rack/dark,
 /obj/random/loot/sometimes/few,
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
+"xM" = (
+/obj/item/weapon/reagent_containers/food/snacks/old/hamburger,
+/turf/simulated/floor/plating,
+/area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
+"zE" = (
+/obj/structure/table/steel,
+/turf/simulated/floor/dank/heavy,
+/area/ishimura/tramdeck/switchingstation/lower)
 "Aa" = (
-/obj/structure/foamedmetal,
 /obj/machinery/vending/hotfood,
+/turf/simulated/floor/plating,
+/area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
+"AW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/handrai{
+	dir = 8
+	},
+/turf/simulated/floor/dank/tramcorner{
+	dir = 4
+	},
+/area/ishimura/tramdeck/switchingstation/lower)
+"Cd" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/decal/cleanable/dirt,
+/obj/random/common_loot,
+/turf/simulated/floor/dank/tramcorner{
+	dir = 9
+	},
+/area/ishimura/tramdeck/switchingstation/lower)
+"Cn" = (
+/obj/machinery/vending/snack,
+/turf/simulated/floor/plating,
+/area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
+"CI" = (
+/obj/item/weapon/reagent_containers/food/snacks/old/burger,
+/obj/item/weapon/reagent_containers/food/snacks/old/fries,
+/turf/simulated/floor/plating,
+/area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
+"Dk" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/handrai{
+	dir = 1
+	},
+/turf/simulated/floor/dank/tramcorner,
+/area/ishimura/tramdeck/switchingstation/lower)
+"ES" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/chair/tram{
+	dir = 8
+	},
+/turf/simulated/floor/dank/tramcorner{
+	dir = 6
+	},
+/area/ishimura/tramdeck/switchingstation/lower)
+"Fe" = (
+/obj/machinery/door/airlock/civilian{
+	name = "Garbage Pit"
+	},
 /turf/simulated/floor/plating,
 /area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
 "Ff" = (
@@ -5484,6 +5594,12 @@
 	},
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
+"Gc" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/dank/tramcorner{
+	dir = 4
+	},
+/area/ishimura/tramdeck/switchingstation/lower)
 "Gn" = (
 /obj/structure/table/rack,
 /obj/random/loot/sometimes/few,
@@ -5499,6 +5615,29 @@
 /obj/random/loot/sometimes/few,
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
+"Ha" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/door_assembly/door_assembly_tram,
+/turf/simulated/floor/dank/tramgrating{
+	dir = 4
+	},
+/area/ishimura/tramdeck/switchingstation/lower)
+"Hb" = (
+/obj/item/weapon/reagent_containers/food/snacks/old/burger,
+/turf/simulated/floor/plating,
+/area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
+"Hl" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/decal/cleanable/dirt,
+/obj/random/loot/often/many,
+/obj/machinery/light_construct{
+	dir = 1
+	},
+/turf/simulated/floor/dank/tramcorner{
+	dir = 5
+	},
+/area/ishimura/tramdeck/switchingstation/lower)
 "HF" = (
 /obj/structure/table/standard,
 /obj/random/loot/often,
@@ -5509,6 +5648,21 @@
 /obj/random/loot/sometimes/few,
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
+"IA" = (
+/obj/item/stack/material/steel,
+/turf/simulated/floor/dank/heavy,
+/area/ishimura/tramdeck/switchingstation/lower)
+"IB" = (
+/obj/item/modular_computer/console{
+	dir = 1;
+	icon_state = "console"
+	},
+/turf/simulated/floor/dank/heavy,
+/area/ishimura/tramdeck/switchingstation/lower)
+"Kj" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/dank/trammiddle,
+/area/ishimura/tramdeck/switchingstation/lower)
 "Kv" = (
 /obj/machinery/door/airlock/civilian,
 /obj/structure/cable/green{
@@ -5523,8 +5677,6 @@
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "Ll" = (
-/obj/structure/foamedmetal,
-/obj/structure/foamedmetal,
 /obj/machinery/vending/cola,
 /turf/simulated/floor/plating,
 /area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
@@ -5534,6 +5686,35 @@
 	},
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
+"My" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/weapon/storage/toolbox/mechanical,
+/obj/effect/floor_decal/rust,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor,
+/area/ishimura/tramdeck/switchingstation/lower)
+"MJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/floor_decal/rust,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/handrai{
+	dir = 4
+	},
+/turf/simulated/floor,
+/area/ishimura/tramdeck/switchingstation/lower)
+"NJ" = (
+/obj/item/weapon/reagent_containers/food/snacks/old/fries,
+/turf/simulated/floor/plating,
+/area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
+"OH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/chair/tram{
+	dir = 4
+	},
+/turf/simulated/floor/dank/tramcorner{
+	dir = 10
+	},
+/area/ishimura/tramdeck/switchingstation/lower)
 "OO" = (
 /obj/effect/catwalk_plated/dank,
 /obj/structure/cable/green{
@@ -5551,9 +5732,27 @@
 	},
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
+"Pf" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor,
+/area/ishimura/tramdeck/switchingstation/lower)
 "PN" = (
 /obj/structure/foamedmetal,
 /obj/machinery/vending/cola,
+/turf/simulated/floor/plating,
+/area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
+"Rn" = (
+/obj/effect/wallframe_spawn/reinforced,
+/turf/simulated/floor/dank/trammiddle,
+/area/ishimura/tramdeck/switchingstation/lower)
+"RL" = (
+/obj/machinery/portable_atmospherics/hydroponics,
+/turf/simulated/floor/plating,
+/area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
+"SM" = (
+/obj/structure/foamedmetal,
+/obj/item/weapon/reagent_containers/food/snacks/old/burger,
 /turf/simulated/floor/plating,
 /area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
 "SP" = (
@@ -5563,6 +5762,10 @@
 	},
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
+"Ta" = (
+/obj/random/closet,
+/turf/simulated/floor/dank/heavy,
+/area/ishimura/tramdeck/switchingstation/lower)
 "Te" = (
 /obj/structure/table/steel,
 /turf/simulated/floor,
@@ -5575,6 +5778,10 @@
 	},
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
+"TV" = (
+/obj/item/weapon/reagent_containers/food/snacks/old/pizza,
+/turf/simulated/floor/plating,
+/area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
 "Us" = (
 /obj/structure/table/standard,
 /turf/simulated/floor,
@@ -5584,12 +5791,40 @@
 /obj/random/loot/sometimes/few,
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
+"WZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/chair/tram{
+	dir = 8
+	},
+/obj/machinery/light_construct{
+	dir = 4
+	},
+/turf/simulated/floor/dank/tramcorner{
+	dir = 4
+	},
+/area/ishimura/tramdeck/switchingstation/lower)
+"Xq" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate,
+/obj/random/loot/often/many,
+/obj/random/loot/often/many,
+/turf/simulated/floor/dank/tramcorner{
+	dir = 10
+	},
+/area/ishimura/tramdeck/switchingstation/lower)
 "Yo" = (
 /obj/machinery/door/airlock/civilian{
 	name = "Garbage Pit"
 	},
 /turf/simulated/floor/plating,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
+"Yp" = (
+/obj/item/weapon/reagent_containers/food/snacks/old/hamburger,
+/obj/item/weapon/reagent_containers/food/snacks/old/hamburger,
+/turf/simulated/floor/plating,
+/area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
 "YH" = (
 /obj/structure/table/rack/dark,
 /turf/simulated/floor,
@@ -13332,14 +13567,14 @@ dN
 dN
 dN
 dN
-ro
+Cn
 il
 Aa
 il
-il
-il
-il
-il
+ow
+ow
+ow
+Hb
 ef
 dB
 ef
@@ -13529,19 +13764,19 @@ aa
 aa
 ab
 dN
+dN
+ow
+ow
+il
+SM
+ow
+ow
+ow
+ow
+il
+ow
+ow
 sr
-il
-il
-il
-il
-il
-il
-il
-il
-il
-il
-il
-il
 ef
 dJ
 ew
@@ -13731,19 +13966,19 @@ aa
 aa
 ab
 dN
+ow
+NJ
+ow
+ow
 il
+ow
+ow
+ow
+ow
+ow
 il
-il
-il
-il
-il
-il
-il
-il
-il
-il
-il
-il
+ow
+ow
 ef
 dB
 ef
@@ -13933,19 +14168,19 @@ aa
 aa
 ab
 dN
+ow
+ow
+ow
 il
+rY
+ow
+ow
+ow
+ow
+ow
+Ll
 il
-il
-il
-il
-il
-il
-il
-il
-il
-PN
-il
-il
+ow
 ef
 dB
 ef
@@ -14135,19 +14370,19 @@ aa
 aa
 ab
 dN
+wm
 il
+ow
 il
-il
-il
-il
+ow
 il
 Aa
 il
+ow
+ow
+ow
 il
-il
-il
-il
-il
+Yp
 ef
 dB
 ef
@@ -14338,18 +14573,18 @@ aa
 ab
 dN
 il
-il
+ow
 PN
+ow
 il
-il
-il
-il
-il
-il
-il
-il
-il
-il
+ow
+ow
+ow
+ow
+ow
+ow
+ow
+lq
 ef
 dB
 ef
@@ -14539,19 +14774,19 @@ aa
 aa
 ab
 dN
+SM
 il
+TV
+RL
 il
+ow
+ow
+SM
+ow
+ow
+ow
 il
-il
-il
-il
-il
-il
-il
-il
-il
-il
-il
+ow
 ef
 dB
 ef
@@ -14741,16 +14976,16 @@ aa
 aa
 ab
 dN
+ow
 il
-il
-il
-il
-il
-il
-il
-il
-il
-il
+ow
+ow
+RL
+ow
+ow
+sr
+sr
+ow
 il
 il
 il
@@ -14943,19 +15178,19 @@ aa
 aa
 ab
 dN
-ro
+Cn
+ow
 il
 il
-il
-il
+ow
+RL
 ow
 ow
 ow
 il
-il
-il
-il
-il
+ow
+RL
+ow
 Yo
 dB
 ef
@@ -15145,19 +15380,19 @@ aa
 aa
 ab
 dN
-il
-il
-il
-il
-il
 ow
-uf
+ow
+ow
 ow
 il
+ow
+ow
+ow
+ow
+ow
 il
-il
-il
-il
+ow
+RL
 ef
 dB
 ef
@@ -15347,18 +15582,18 @@ ab
 ab
 ab
 dN
-il
-il
-il
-il
-il
+ow
 ow
 ow
 ow
 il
+ow
+ow
+ow
+ow
+ow
 il
-il
-il
+ow
 il
 ef
 dB
@@ -15549,19 +15784,19 @@ ab
 dN
 dN
 dN
+ow
+SM
+xM
+ow
+ow
+ow
 il
-il
-il
-il
-il
-il
-il
-il
-il
-il
-il
-il
-il
+ow
+Hb
+ow
+Hb
+ow
+ow
 ef
 dB
 ef
@@ -15749,19 +15984,19 @@ aa
 aa
 ab
 dN
+sr
 il
+ow
+ow
+xM
+ow
+ow
+ae
+ow
+ae
+nT
+ow
 il
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
 il
 il
 ef
@@ -15951,21 +16186,21 @@ aa
 aa
 ab
 dN
-il
-il
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-PN
-il
+sr
+sr
+ow
+ow
+ow
+ow
+ow
+TV
+TV
+ow
+ow
+ow
+ow
+Ll
+ow
 ef
 dB
 ef
@@ -16153,21 +16388,21 @@ aa
 aa
 ab
 dN
+ow
 il
-il
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-il
-il
+ow
+ow
+ow
+ow
+ow
+TV
+wm
+ow
+ow
+ow
+ow
+ow
+ow
 ef
 dJ
 ew
@@ -16355,21 +16590,21 @@ aa
 aa
 ab
 dN
+ow
 il
-il
-ae
-ae
-ae
-vk
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-il
-ro
+ow
+ow
+rY
+Aa
+ow
+ow
+TV
+ow
+ow
+ow
+sr
+ow
+Cn
 ef
 dB
 ef
@@ -16557,21 +16792,21 @@ aa
 aa
 ab
 dN
-ro
+Cn
 il
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-il
-il
+ow
+ow
+ow
+ow
+ow
+ow
+ow
+ow
+ow
+ow
+ow
+sr
+RL
 ef
 dB
 ef
@@ -16759,21 +16994,21 @@ aa
 aa
 ab
 dN
-il
-il
-ae
-ae
-ae
+ow
+SM
+ow
+ow
+ow
 Ll
 ae
+ow
+ow
+ow
 ae
+ow
 ae
-ae
-ae
-ae
-ae
-il
-il
+ow
+RL
 ef
 dB
 ef
@@ -16961,19 +17196,19 @@ aa
 aa
 ab
 dN
+ow
 il
 il
+ow
+ow
 il
-il
-il
-il
-il
-il
-il
+ow
+ow
+ow
 il
 Aa
 il
-il
+RL
 dN
 dN
 ef
@@ -17164,18 +17399,18 @@ aa
 ab
 dN
 il
+ow
 il
 il
+ow
 il
+ow
+CI
 il
+ow
 il
-il
-il
-il
-il
-il
-il
-il
+ow
+RL
 dN
 fZ
 ef
@@ -17365,19 +17600,19 @@ aa
 aa
 ab
 dN
+ow
 il
-il
-il
+ow
 il
 ow
 ow
 ow
 il
-il
-il
-il
-il
-il
+ow
+ow
+ow
+ow
+ow
 dN
 cQ
 dm
@@ -17568,18 +17803,18 @@ aa
 ab
 dN
 dN
-il
-il
-il
+ow
+ow
+ow
 ow
 uf
 ow
 il
-il
-il
-il
-il
-il
+ow
+ow
+ow
+ow
+ow
 dN
 dP
 ef
@@ -17771,17 +18006,17 @@ ab
 ab
 dN
 il
-il
+ow
 il
 ow
 ow
 ow
 il
-il
-il
-il
-il
-il
+ow
+ow
+ow
+ow
+Hb
 dN
 dP
 dN
@@ -17972,18 +18207,18 @@ aa
 aa
 ab
 dN
-ro
+Cn
+ow
+ow
+ow
+ow
 il
+ow
 il
+ow
 il
-il
-il
-il
-il
-il
-il
-il
-il
+ow
+rY
 dN
 hf
 dN
@@ -18174,18 +18409,18 @@ aa
 aa
 ab
 dN
+RL
+Hb
+ow
+sr
+ow
+ow
+ow
+ow
+Ll
+rY
 il
-il
-il
-il
-il
-il
-il
-il
-PN
-il
-il
-il
+ow
 dN
 dP
 dN
@@ -18376,17 +18611,17 @@ aa
 aa
 ab
 dN
+wr
+wr
+wm
 il
 il
-il
-il
-il
-il
-il
-il
-il
-il
-il
+ow
+TV
+ow
+ow
+ow
+ow
 il
 dN
 dP
@@ -18585,11 +18820,11 @@ dN
 dN
 dN
 dN
-il
-il
-il
-il
-il
+ow
+ow
+ow
+ow
+ow
 dN
 dP
 dN
@@ -18788,10 +19023,10 @@ ab
 ab
 dN
 il
-il
-il
-il
-il
+ow
+ow
+ow
+ow
 dN
 dP
 dN
@@ -18991,8 +19226,8 @@ ab
 dN
 il
 il
-il
-il
+ow
+ow
 il
 dN
 dP
@@ -19192,9 +19427,9 @@ aa
 ab
 dN
 il
-il
-il
-il
+RL
+NJ
+ow
 il
 dN
 dP
@@ -19393,11 +19628,11 @@ aa
 aa
 ab
 dN
+RL
 il
 il
-il
-il
-il
+ow
+ow
 dN
 dP
 dN
@@ -19596,10 +19831,10 @@ aa
 ab
 dN
 il
+ow
 il
-il
-il
-il
+ow
+sr
 dN
 dP
 dN
@@ -19799,10 +20034,10 @@ ab
 dN
 il
 il
+ow
 il
-il
-ro
-dN
+Cn
+Fe
 dP
 dN
 eF
@@ -20001,7 +20236,7 @@ dN
 dN
 dN
 il
-il
+rY
 il
 dN
 dN
@@ -20202,9 +20437,9 @@ il
 il
 il
 dN
-ro
+Cn
 il
-il
+Hb
 dN
 fD
 dP
@@ -34118,11 +34353,11 @@ am
 ao
 af
 au
-al
-al
-al
+bd
+aw
+aw
 aK
-aO
+aw
 aw
 aw
 aw
@@ -34320,18 +34555,18 @@ an
 ap
 af
 al
+be
 al
 al
 al
 al
-aP
-aT
-aT
-aT
-aT
-aT
-aT
-aT
+al
+al
+al
+al
+al
+al
+al
 al
 al
 bR
@@ -34522,26 +34757,26 @@ an
 aq
 ar
 av
-al
-aE
-aE
-al
-aP
-aT
-aZ
 be
-bm
-aC
-bC
-aT
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
+al
 al
 as
 bS
-al
-al
+aS
+aS
 cr
-af
-im
+tg
+ck
 im
 im
 im
@@ -34724,26 +34959,26 @@ af
 af
 af
 al
-al
-aF
-aI
-al
-aP
-aU
-ba
-aC
-aC
-aC
-aC
-aU
-al
-al
+be
+bD
+bD
+bD
+bD
+bD
+bD
+bD
+Pf
+Pf
+bD
+bD
+bD
+bD
+bD
+bD
+bD
 bT
-al
-al
-cs
-af
-im
+zE
+ck
 im
 im
 im
@@ -34926,26 +35161,26 @@ al
 al
 al
 al
-al
+be
 aG
-aF
-al
-aP
-aW
-aC
-bf
-bn
-aC
-aC
-bH
-al
-al
-bT
-al
-al
+bv
 ct
-af
-im
+bD
+aW
+fY
+bf
+bo
+bo
+MJ
+bH
+OH
+bD
+Cd
+Xq
+Rn
+bT
+Ta
+ck
 im
 im
 im
@@ -35128,26 +35363,26 @@ al
 al
 as
 aw
-aw
+bm
 aH
-aH
-aw
+bC
+cu
 aQ
 aY
-aC
+Kj
 bl
 bo
 bB
-aC
-aU
-al
-al
+My
+bo
+vw
+Ha
+aY
+Dk
+Rn
 bT
-al
-al
-fY
-af
-im
+rx
+ck
 im
 im
 im
@@ -35326,30 +35561,30 @@ aa
 ad
 af
 ak
+aE
+aE
 al
 al
 al
 al
-al
-al
-al
-al
-al
-aW
-aC
-aC
-aC
-aC
-aC
-bH
-al
-al
+cs
+cv
+bD
+cw
+pB
+AW
+Gc
+Pf
+AW
+WZ
+ES
+bD
+Hl
+rr
+Rn
 bT
-al
-al
-cu
-af
-im
+IB
+ck
 im
 im
 im
@@ -35528,30 +35763,30 @@ aa
 ad
 af
 al
-al
-al
+aO
+aZ
 al
 ax
 aB
 aB
 aB
-aL
-al
-aU
-bb
-aC
-aC
-aC
 bD
-aU
-al
-al
+bD
+bD
+bD
+bD
+Pf
+Pf
+bD
+bD
+bD
+bD
+bD
+bD
+bD
 bT
 al
-al
-al
-af
-im
+ck
 im
 im
 im
@@ -35730,8 +35965,8 @@ aa
 ad
 af
 al
-al
-al
+aT
+aO
 at
 ay
 aC
@@ -35739,21 +35974,21 @@ aC
 aJ
 aM
 al
-aT
-bd
-aC
-bv
-bl
-aC
-aT
+al
+al
+al
+al
+al
+al
+al
 al
 at
 bZ
+aS
+aS
+sF
 al
-al
-al
-af
-im
+ck
 im
 im
 im
@@ -35932,8 +36167,8 @@ aa
 ad
 af
 al
-al
-al
+aE
+aE
 al
 az
 aC
@@ -35941,21 +36176,21 @@ aC
 aC
 aM
 al
-aT
-aT
-aT
-aT
-aT
-aT
-aT
+al
+al
+al
+al
+al
+al
+al
 al
 al
 bT
 al
 al
-cv
-af
-im
+al
+rf
+ck
 im
 im
 im
@@ -36155,9 +36390,9 @@ aS
 cc
 al
 al
-cw
-af
-im
+al
+IA
+ck
 im
 im
 im

@@ -103,6 +103,10 @@
 				result = aura.hitby(arglist(newargs))
 			if(AURA_TYPE_LIFE)
 				result = aura.life_tick()
+			if (AURA_TYPE_STRIKE)
+				result = aura.handle_strike(arglist(newargs))
+		if(result & PROJECTILE_DEFLECT)	//This is a specific result we'll only get from bullets
+			return result	//Immediate return
 		if(result & AURA_FALSE)
 			. = FALSE
 		if(result & AURA_CANCEL)

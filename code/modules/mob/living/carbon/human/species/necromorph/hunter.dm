@@ -25,11 +25,12 @@
 	Avoid fire though."
 
 	//Health and Defense
-	total_health = 250
+	total_health = 275
 	torso_damage_mult = 0.5 //Hitting centre mass more fine for hunter
 	can_obliterate = FALSE
 	healing_factor = 4	//Minor constant healing
 	burn_heal_factor = 0.15
+	burn_mod = 1.3
 	dismember_mult = 1
 	biomass = 400
 	require_total_biomass	=	BIOMASS_REQ_T3

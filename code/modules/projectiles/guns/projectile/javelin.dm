@@ -23,7 +23,7 @@
 
 
 	firemodes = list(
-		list(mode_name = "launch", fire_delay = 1.5, fire_sound = 'sound/weapons/guns/fire/jav_fire.ogg'),
+		list(mode_name = "launch", fire_delay = 3.5, fire_sound = 'sound/weapons/guns/fire/jav_fire.ogg'),
 		list(mode_name = "shock mode", mode_type = /datum/firemode/automatic/shock, projectile_type = /obj/item/projectile/null_projectile, fire_delay = 3)
 		)
 
@@ -159,7 +159,7 @@
 	target.embed(SP)
 	playsound(src, "fleshtear", VOLUME_MID, TRUE)
 	if(!M.buckled)
-		GLOB.bump_event.register(M, SP, /obj/item/weapon/material/shard/shrapnel/javelin/proc/on_target_collision)
+		SP.RegisterSignal(M, COMSIG_MOVABLE_BUMP, /obj/item/weapon/material/shard/shrapnel/javelin/proc/on_target_collision)
 
 		M.apply_push_impulse_from(last_turf, push_force)
 
@@ -222,6 +222,7 @@
 	shock_count++
 
 /obj/item/weapon/material/shard/shrapnel/javelin/proc/on_target_collision(mob/user, atom/obstacle)
+	SIGNAL_HANDLER
 	var/list/implants = user.get_visible_implants(0, TRUE)
 	if(src in implants)
 		var/mount_target = get_mount_target_at_direction(user, get_dir(obstacle, user))
@@ -237,7 +238,7 @@
 	unregister_collision(user)
 
 /obj/item/weapon/material/shard/shrapnel/javelin/proc/unregister_collision(mob/M)
-	GLOB.bump_event.unregister(M, src, /obj/item/weapon/material/shard/shrapnel/javelin/proc/on_target_collision)
+	UnregisterSignal(M, COMSIG_MOVABLE_BUMP, .proc/on_target_collision)
 
 /obj/item/javelin
 	name = "javelin"

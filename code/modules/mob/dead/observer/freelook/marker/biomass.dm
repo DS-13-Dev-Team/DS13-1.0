@@ -4,14 +4,15 @@
 	var/remaining_mass	=	NONSENSICAL_VALUE	//How much total mass is left to be absorbed
 	var/mass_tick	=	1	//How much mass is taken at each tick. IE, per second
 	var/datum/source = null	//The atom or thing we are drawing biomass from. Optional
-	var/datum/target	=	null	//The thing that is absorbing the source. Generally this is a marker
+	var/obj/machinery/marker/target	= null	//The thing that is absorbing the source. Generally this is a marker
 	var/sourcename
 	var/last_absorb = 0	//How much was absorbed during the last tick?
 	var/counts_toward_total = FALSE	//Does unabsorbed biomass in this source count towards the total biomass value?
 
 /datum/biomass_source/New(var/datum/_source = null, var/datum/_target = null, var/total_mass = 0, var/duration = 1 SECOND)
 	.=..()
-	source = "\ref[_source]"
+	source = _source
+	RegisterSignal(source, COMSIG_PARENT_QDELETING, .proc/source_deleted)
 	if (istype(_source, /atom))
 		var/atom/A = _source
 		sourcename = A.name
@@ -23,6 +24,9 @@
 		var/obj/machinery/marker/M = get_marker()
 		if (M)
 			M.reclaiming_biomass = NONSENSICAL_VALUE
+
+/datum/biomass_source/proc/source_deleted(source, force_state)
+	target.remove_biomass_source(src)
 
 //Do any desired checks here
 /datum/biomass_source/proc/can_absorb(var/ticks = 1)
@@ -106,9 +110,8 @@
 
 //Once we've completely absorbed our source, make the body quietly vanish when nobody is looking
 /datum/biomass_source/reclaim/mass_exhausted()
-	var/mob/M = locate(source)
-	if (!QDELETED(M))
-		DELETE_UNSEEN(M)
+	if (!QDELETED(source))
+		DELETE_UNSEEN(source)
 
 
 
@@ -121,7 +124,7 @@
 //If its too far away, return pause
 /datum/biomass_source/convergence/can_absorb(var/ticks = 1)
 
-	var/mob/living/L = locate(source)
+	var/mob/living/L = source
 	if (!L || QDELETED(L))
 		return MASS_FAIL	//Its gone!
 
@@ -139,7 +142,7 @@
 
 /datum/biomass_source/convergence/absorb(var/ticks = 1)
 	.=..()
-	var/mob/L = locate(source)
+	var/mob/L = source
 	if (ishuman(L) && remaining_mass)
 
 		var/mob/living/carbon/human/H = L
@@ -172,9 +175,8 @@
 //Once we've completely absorbed our source, there's nothing left. Delete them.
 //This will consume worn equipment too, maybe thats desireable
 /datum/biomass_source/convergence/mass_exhausted()
-	var/atom/A = locate(source)
-	if (A)
-		qdel(A)
+	if(source)
+		qdel(source)
 	source = null
 
 
@@ -253,12 +255,11 @@
 	//Now we search through all biomass sources to find one where the source equals us
 	var/list/sources = get_biomass_sources()
 	for (var/datum/biomass_source/BS in sources)
-		var/atom/A = locate(BS.source)
-		if (!A)
+		if (!BS.source)
 			continue
 
 		//Ding!
-		if (A == src)
+		if (BS.source == src)
 			BS.initial_mass += change
 			BS.remaining_mass += change
 

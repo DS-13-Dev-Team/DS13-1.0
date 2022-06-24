@@ -109,8 +109,8 @@
 
 	// You need a multitool to use this, or be silicon
 	if(!issilicon(user))
-		// istype returns false if the value is null
-		if(!istype(user.get_active_hand(), /obj/item/weapon/tool/multitool))
+		var/obj/item/I = user.get_active_hand()
+		if(!I || !isMultitool(I))
 			return
 
 	if(stat & (BROKEN|NOPOWER))
@@ -210,14 +210,15 @@
 
 	var/obj/item/weapon/tool/multitool/P = null
 	// Let's double check
-	if(!issilicon(user) && istype(user.get_active_hand(), /obj/item/weapon/tool/multitool))
-		P = user.get_active_hand()
+	var/obj/item/I = user.get_active_hand()
+	if(!issilicon(user) && isMultitool(I))
+		P = I
 	else if(isAI(user))
 		var/mob/living/silicon/ai/U = user
 		P = U.aiMulti
 	else if(isrobot(user) && in_range(user, src))
-		if(istype(user.get_active_hand(), /obj/item/weapon/tool/multitool))
-			P = user.get_active_hand()
+		if(isMultitool(I))
+			P = I
 	return P
 
 // Additional Options for certain machines. Use this when you want to add an option to a specific machine.
@@ -299,7 +300,8 @@
 	if(..())
 		return 1
 	if(!issilicon(usr))
-		if(!istype(usr.get_active_hand(), /obj/item/weapon/tool/multitool))
+		var/obj/item/I = usr.get_active_hand()
+		if(!isMultitool(I))
 			return
 
 	if(stat & (BROKEN|NOPOWER))

@@ -139,13 +139,13 @@
 	use_sound = 'sound/effects/storage/briefcase.ogg'
 
 	can_hold = list(
-		/obj/item/weapon/bonesetter,
-		/obj/item/weapon/cautery,
+		/obj/item/weapon/tool/bonesetter,
+		/obj/item/weapon/tool/cautery,
 		/obj/item/weapon/tool/saw/circular,
-		/obj/item/weapon/hemostat,
-		/obj/item/weapon/retractor,
-		/obj/item/weapon/scalpel,
-		/obj/item/weapon/surgicaldrill,
+		/obj/item/weapon/tool/hemostat,
+		/obj/item/weapon/tool/retractor,
+		/obj/item/weapon/tool/scalpel,
+		/obj/item/weapon/tool/surgicaldrill,
 		/obj/item/weapon/bonegel,
 		/obj/item/weapon/FixOVein,
 		/obj/item/stack/medical/advanced/bruise_pack,
@@ -153,13 +153,13 @@
 		)
 
 	startswith = list(
-		/obj/item/weapon/bonesetter,
-		/obj/item/weapon/cautery,
+		/obj/item/weapon/tool/bonesetter,
+		/obj/item/weapon/tool/cautery,
 		/obj/item/weapon/tool/saw/circular,
-		/obj/item/weapon/hemostat,
-		/obj/item/weapon/retractor,
-		/obj/item/weapon/scalpel,
-		/obj/item/weapon/surgicaldrill,
+		/obj/item/weapon/tool/hemostat,
+		/obj/item/weapon/tool/retractor,
+		/obj/item/weapon/tool/scalpel,
+		/obj/item/weapon/tool/surgicaldrill,
 		/obj/item/weapon/bonegel,
 		/obj/item/weapon/FixOVein,
 		/obj/item/stack/medical/advanced/bruise_pack,
@@ -190,7 +190,7 @@
 	if(!contents.len)
 		to_chat(user, "<span class='warning'>It's empty!</span>")
 		return 1
-	var/zone = get_zone_sel(user)
+	var/zone = get_zone_sel(user, TRUE)
 	if(zone == BP_MOUTH && target.can_eat())
 		user.visible_message("<span class='notice'>[user] pops a pill from \the [src].</span>")
 		playsound(get_turf(src), 'sound/effects/peelz.ogg', 50)
@@ -377,7 +377,7 @@
 	max_storage_space = DEFAULT_BACKPACK_STORAGE
 
 	startswith = list(
-		/obj/item/weapon/reagent_containers/food/drinks/bottle/ds_medigel = 2, //medigel should be rare, there should be some on the map, maybe some available in stores but generally speaking should be rare, this is a heal-all solution, it can be applied and will pretty much guarantee survival. the only thing you might need to combine with it is nanoblood, as it does not regenerate blood on its own.
+		/obj/item/weapon/reagent_containers/hypospray/autoinjector/ds_medigel = 2, //medigel should be rare, there should be some on the map, maybe some available in stores but generally speaking should be rare, this is a heal-all solution, it can be applied and will pretty much guarantee survival. the only thing you might need to combine with it is nanoblood, as it does not regenerate blood on its own.
 		/obj/item/weapon/storage/pill_bottle/dexalin_plus,
 		/obj/item/weapon/storage/pill_bottle/dylovene,
 		/obj/item/weapon/storage/pill_bottle/tramadol,
@@ -410,7 +410,7 @@
 	max_storage_space = DEFAULT_BACKPACK_STORAGE
 
 	startswith = list(
-		/obj/item/weapon/reagent_containers/food/drinks/bottle/ds_medigel = 6, //no need for other chems as this and inaproavline covers all damage types. also no health analyzer as ert medics spawn with one.
+		/obj/item/weapon/reagent_containers/hypospray/autoinjector/ds_medigel = 6, //no need for other chems as this and inaproavline covers all damage types. also no health analyzer as ert medics spawn with one.
 		/obj/item/weapon/storage/pill_bottle/inaprovaline, //stabilizes vitals, restores brain damage slightly.
 		/obj/item/weapon/storage/pill_bottle/tramadol, // deals with pain
 		/obj/item/weapon/storage/pill_bottle/nanoblood, //recovers blood

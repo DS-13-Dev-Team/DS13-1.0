@@ -6,7 +6,7 @@
 		message_admins("[usr.key] has attempted to override the admin panel!")
 		return
 
-	if(ticker.mode && ticker.mode.check_antagonists_topic(href, href_list))
+	if(SSticker.mode && SSticker.mode.check_antagonists_topic(href, href_list))
 		check_antagonists()
 		return
 
@@ -136,7 +136,7 @@
 		if(task == "add")
 			var/new_ckey = ckey(input(usr,"New admin's ckey","Admin ckey", null) as text|null)
 			if(!new_ckey)	return
-			if(new_ckey in admin_datums)
+			if(new_ckey in GLOB.admin_datums)
 				to_chat(usr, "<font color='red'>Error: Topic 'editrights': [new_ckey] is already an admin</font>")
 				return
 			adm_ckey = new_ckey
@@ -147,12 +147,12 @@
 				to_chat(usr, "<font color='red'>Error: Topic 'editrights': No valid ckey</font>")
 				return
 
-		var/datum/admins/D = admin_datums[adm_ckey]
+		var/datum/admins/D = GLOB.admin_datums[adm_ckey]
 
 		if(task == "remove")
 			if(tgui_alert(usr, "Are you sure you want to remove [adm_ckey]?","Message",list("Yes","Cancel")) == "Yes")
 				if(!D)	return
-				admin_datums -= adm_ckey
+				GLOB.admin_datums -= adm_ckey
 				D.disassociate()
 
 				message_admins("[key_name_admin(usr)] removed [adm_ckey] from the admins list")
@@ -225,10 +225,10 @@
 
 		if(!check_rights(R_ADMIN))	return
 
-		if (!ticker || !evacuation_controller)
+		if (!SSticker || !evacuation_controller)
 			return
 
-		if( ticker.mode.name == "blob" )
+		if( SSticker.mode.name == "blob" )
 			tgui_alert(usr, "You can't call the shuttle during blob!", "Shuttle Call")
 			return
 
@@ -245,8 +245,8 @@
 	else if(href_list["delay_round_end"])
 		if(!check_rights(R_SERVER))	return
 
-		ticker.delay_end = !ticker.delay_end
-		log_and_message_admins("[ticker.delay_end ? "delayed the round end" : "has made the round end normally"].")
+		SSticker.delay_end = !SSticker.delay_end
+		log_and_message_admins("[SSticker.delay_end ? "delayed the round end" : "has made the round end normally"].")
 		href_list["secretsadmin"] = "check_antagonist"
 
 	else if(href_list["simplemake"])
@@ -260,7 +260,7 @@
 
 		var/delmob = 0
 		switch(tgui_alert(usr, "Delete old mob?","Message",list("Yes","No","Cancel")))
-			if("Cancel" || null)
+			if("Cancel", null)
 				return
 			if("Yes")
 				delmob = 1
@@ -828,7 +828,7 @@
 						to_chat(M, "<span class='warning'>Jobban can be lifted only upon request.</span>")
 						href_list["jobban2"] = 1 // lets it fall through and refresh
 						return 1
-				if("Cancel" || null)
+				if("Cancel", null)
 					return
 
 		//Unbanning joblist
@@ -842,18 +842,17 @@
 			for(var/job in joblist)
 				var/reason = jobban_isbanned(M, job)
 				if(!reason) continue //skip if it isn't jobbanned anyway
-				switch(tgui_alert(usr, "Job: '[job]' Reason: '[reason]' Un-jobban?", "Please Confirm", list("Yes","No")))
-					if("Yes")
-						ban_unban_log_save("[key_name(usr)] unjobbanned [key_name(M)] from [job]")
-						log_admin("[key_name(usr)] unbanned [key_name(M)] from [job]")
-						DB_ban_unban(M.ckey, BANTYPE_JOB_PERMA, job)
-						feedback_inc("ban_job_unban",1)
-						feedback_add_details("ban_job_unban","- [job]")
-						jobban_unban(M, job)
-						if(!msg)	msg = job
-						else		msg += ", [job]"
-					else
-						continue
+				if(tgui_alert(usr, "Job: '[job]' Reason: '[reason]' Un-jobban?", "Please Confirm", list("Yes","No")) == "Yes")
+					ban_unban_log_save("[key_name(usr)] unjobbanned [key_name(M)] from [job]")
+					log_admin("[key_name(usr)] unbanned [key_name(M)] from [job]")
+					DB_ban_unban(M.ckey, BANTYPE_JOB_PERMA, job)
+					feedback_inc("ban_job_unban",1)
+					feedback_add_details("ban_job_unban","- [job]")
+					jobban_unban(M, job)
+					if(!msg)	msg = job
+					else		msg += ", [job]"
+				else
+					continue
 			if(msg)
 				message_admins("[key_name_admin(usr)] unbanned [key_name_admin(M)] from [msg]", 1)
 				to_chat(M, "<span class='danger'>You have been un-jobbanned by [usr.client.ckey] from [msg].</span>")
@@ -975,23 +974,23 @@
 	else if(href_list["c_mode"])
 		if(!check_rights(R_ADMIN))	return
 
-		if(ticker && ticker.mode)
-			return tgui_alert(usr, "The game has already started.")
+		if(SSticker && SSticker.mode)
+			return alert(usr, "The game has already started.", null, null, null, null)
 		var/dat = {"<B>What mode do you wish to play?</B><HR>"}
 		for(var/mode in config.modes)
 			dat += {"<A href='?src=\ref[src];c_mode2=[mode]'>[config.mode_names[mode]]</A><br>"}
 		dat += {"<A href='?src=\ref[src];c_mode2=secret'>Secret</A><br>"}
 		dat += {"<A href='?src=\ref[src];c_mode2=random'>Random</A><br>"}
-		dat += {"Now: [master_mode]"}
+		dat += {"Now: [GLOB.master_mode]"}
 		usr << browse(dat, "window=c_mode")
 
 	else if(href_list["f_secret"])
 		if(!check_rights(R_ADMIN))	return
 
-		if(ticker && ticker.mode)
-			return tgui_alert(usr, "The game has already started.")
-		if(master_mode != "secret")
-			return tgui_alert(usr, "The game mode has to be secret!")
+		if(SSticker && SSticker.mode)
+			return alert(usr, "The game has already started.", null, null, null, null)
+		if(GLOB.master_mode != "secret")
+			return alert(usr, "The game mode has to be secret!", null, null, null, null)
 		var/dat = {"<B>What game mode do you want to force secret to be? Use this if you want to change the game mode, but want the players to believe it's secret. This will only work if the current game mode is secret.</B><HR>"}
 		for(var/mode in config.modes)
 			dat += {"<A href='?src=\ref[src];f_secret2=[mode]'>[config.mode_names[mode]]</A><br>"}
@@ -1002,22 +1001,22 @@
 	else if(href_list["c_mode2"])
 		if(!check_rights(R_ADMIN|R_SERVER))	return
 
-		if (ticker && ticker.mode)
-			return tgui_alert(usr, "The game has already started.")
-		master_mode = href_list["c_mode2"]
-		log_and_message_admins("set the mode as [master_mode].")
-		to_chat(world, "<span class='notice'><b>The mode is now: [master_mode]</b></span>")
+		if (SSticker && SSticker.mode)
+			return alert(usr, "The game has already started.", null, null, null, null)
+		GLOB.master_mode = href_list["c_mode2"]
+		log_and_message_admins("set the mode as [GLOB.master_mode].")
+		to_chat(world, "<span class='notice'><b>The mode is now: [GLOB.master_mode]</b></span>")
 		Game() // updates the main game menu
-		world.save_mode(master_mode)
+		SSticker.save_mode(GLOB.master_mode)
 		.(href, list("c_mode"=1))
 
 	else if(href_list["f_secret2"])
 		if(!check_rights(R_ADMIN|R_SERVER))	return
 
-		if(ticker && ticker.mode)
-			return tgui_alert(usr, "The game has already started.")
-		if(master_mode != "secret")
-			return tgui_alert(usr, "The game mode has to be secret!")
+		if(SSticker && SSticker.mode)
+			return alert(usr, "The game has already started.", null, null, null, null)
+		if(GLOB.master_mode != "secret")
+			return alert(usr, "The game mode has to be secret!", null, null, null, null)
 		secret_force_mode = href_list["f_secret2"]
 		log_and_message_admins("set the forced secret mode as [secret_force_mode].")
 		Game() // updates the main game menu
@@ -1361,58 +1360,61 @@
 		sleep(2)
 		C.jumptocoord(x,y,z)
 
-	else if(href_list["adminchecklaws"])
-		output_ai_laws()
+	else if(href_list["observefollow"])
+		var/atom/movable/AM = locate(href_list["observefollow"])
+		var/client/C = usr.client
 
-	else if(href_list["adminmoreinfo"])
-		var/mob/M = locate(href_list["adminmoreinfo"])
-		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob")
+		if(!ismovable(AM))
 			return
 
-		var/location_description = ""
-		var/special_role_description = ""
-		var/health_description = ""
-		var/gender_description = ""
-		var/turf/T = get_turf(M)
+		if(isnewplayer(C.mob) || isnewplayer(AM))
+			return
 
-		//Location
-		if(isturf(T))
-			if(isarea(T.loc))
-				location_description = "([M.loc == T ? "at coordinates " : "in [M.loc] at coordinates "] [T.x], [T.y], [T.z] in area <b>[T.loc]</b>)"
-			else
-				location_description = "([M.loc == T ? "at coordinates " : "in [M.loc] at coordinates "] [T.x], [T.y], [T.z])"
+		var/message
+		if(!isobserver(C.mob))
+			C.admin_ghost()
+			message = TRUE
 
-		//Job + antagonist
-		if(M.mind)
-			special_role_description = "Role: <b>[M.mind.assigned_role]</b>; Antagonist: <font color='red'><b>[M.mind.special_role]</b></font>; Has been rev: [(M.mind.has_been_rev)?"Yes":"No"]"
-		else
-			special_role_description = "Role: <i>Mind datum missing</i> Antagonist: <i>Mind datum missing</i>; Has been rev: <i>Mind datum missing</i>;"
+		var/mob/dead/observer/ghost/O = C.mob
+		O.ManualFollow(AM)
 
-		//Health
+		if(message)
+			log_admin("[key_name(O)] jumped to follow [key_name(AM)].")
+			message_admins("[ADMIN_TPMONTY(O)] jumped to follow [ADMIN_TPMONTY(AM)].")
+
+	else if(href_list["moreinfo"])
+		if(!check_rights(R_ADMIN))
+			return
+
+		var/mob/M = locate(href_list["moreinfo"]) in GLOB.mob_list
+
+		if(!istype(M))
+			return
+
+		var/status
+		var/health
+		var/datum/job/job
+
 		if(isliving(M))
 			var/mob/living/L = M
-			var/status
-			switch (M.stat)
-				if (0) status = "Alive"
-				if (1) status = "<font color='orange'><b>Unconscious</b></font>"
-				if (2) status = "<font color='red'><b>Dead</b></font>"
-			health_description = "Status = [status]"
-			health_description += "<BR>Oxy: [L.getOxyLoss()] - Tox: [L.getToxLoss()] - Fire: [L.getFireLoss()] - Brute: [L.getBruteLoss()] - Clone: [L.getCloneLoss()] - Brain: [L.getBrainLoss()]"
-		else
-			health_description = "This mob type has no health to speak of."
+			job = L.job
+			switch(L.stat)
+				if(CONSCIOUS)
+					status = "Alive"
+				if(UNCONSCIOUS)
+					status = "Unconscious"
+				if(DEAD)
+					status = "Dead"
+			health = "Oxy: [L.getOxyLoss()]  Tox: [L.getToxLoss()]  Fire: [L.getFireLoss()]  Brute: [L.getBruteLoss()]  Clone: [L.getCloneLoss()]  Brain: [L.getBrainLoss()]"
 
-		//Gener
-		switch(M.gender)
-			if(MALE,FEMALE)	gender_description = "[M.gender]"
-			else			gender_description = "<font color='red'><b>[M.gender]</b></font>"
+		to_chat(usr, {"<span class='notice'><hr><b>Info about [M.real_name]:</b>
+Type: [M.type] | Gender: [M.gender] | Job: [job]
+Location: [AREACOORD(M.loc)]
+Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
+[SPAN_ADMIN("<span class='message'>[ADMIN_FULLMONTY(M)]")]</span><hr></span>"})
 
-		to_chat(src.owner, "<b>Info about [M.name]:</b> ")
-		to_chat(src.owner, "Mob type = [M.type]; Gender = [gender_description] Damage = [health_description]")
-		to_chat(src.owner, "Name = <b>[M.name]</b>; Real_name = [M.real_name]; Mind_name = [M.mind?"[M.mind.name]":""]; Key = <b>[M.key]</b>;")
-		to_chat(src.owner, "Location = [location_description];")
-		to_chat(src.owner, "[special_role_description]")
-		to_chat(src.owner, "(<a href='?src=\ref[usr];priv_msg=\ref[M]'>PM</a>) (<A HREF='?src=\ref[src];adminplayeropts=\ref[M]'>PP</A>) (<A HREF='?_src_=vars;Vars=\ref[M]'>VV</A>) (<A HREF='?src=\ref[src];subtlemessage=\ref[M]'>SM</A>) ([admin_jump_link(M, src)]) (<A HREF='?src=\ref[src];secretsadmin=check_antagonist'>CA</A>)")
+	else if(href_list["adminchecklaws"])
+		output_ai_laws()
 
 	else if(href_list["adminspawncookie"])
 		if(!check_rights(R_ADMIN|R_FUN))	return
@@ -1516,6 +1518,9 @@
 		to_chat(H, "You hear something crackle in your headset for a moment before a voice speaks.  \"Please stand by for a message from your benefactor.  Message as follows, agent. <b>\"[input]\"</b>  Message ends.\"")
 
 	else if(href_list["AdminFaxView"])
+		if(!IsAdminGhost(owner.mob))
+			to_chat(owner, SPAN_NOTICE("You should aghost first!"))
+			return
 		var/obj/item/fax = locate(href_list["AdminFaxView"])
 		if (istype(fax, /obj/item/weapon/paper))
 			var/obj/item/weapon/paper/P = fax
@@ -1537,6 +1542,9 @@
 		else
 			to_chat(usr, "<span class='warning'>The faxed item is not viewable. This is probably a bug, and should be reported on the tracker: [fax.type]</span>")
 	else if (href_list["AdminFaxViewPage"])
+		if(!IsAdminGhost(owner.mob))
+			to_chat(owner, SPAN_NOTICE("You should aghost first!"))
+			return
 		var/page = text2num(href_list["AdminFaxViewPage"])
 		var/obj/item/weapon/paper_bundle/bundle = locate(href_list["paper_bundle"])
 
@@ -1551,6 +1559,9 @@
 		return
 
 	else if(href_list["FaxReply"])
+		if(!IsAdminGhost(owner.mob))
+			to_chat(owner, SPAN_NOTICE("You should aghost first!"))
+			return
 		var/mob/sender = locate(href_list["FaxReply"])
 		var/obj/machinery/photocopier/faxmachine/fax = locate(href_list["originfax"])
 		var/replyorigin = href_list["replyorigin"]
@@ -1564,7 +1575,7 @@
 		P.destination = fax
 		P.sender = sender
 
-		P.tgui_interact(sender)
+		P.tgui_interact(owner.mob)
 
 	else if(href_list["jumpto"])
 		if(!check_rights(R_ADMIN))	return
@@ -1600,8 +1611,8 @@
 	else if(href_list["traitor"])
 		if(!check_rights(R_ADMIN|R_MOD))	return
 
-		if(!ticker || !ticker.mode)
-			tgui_alert(usr, "The game hasn't started yet!")
+		if(!SSticker || !SSticker.mode)
+			alert("The game hasn't started yet!")
 			return
 
 		var/mob/M = locate(href_list["traitor"])
@@ -1614,8 +1625,8 @@
 		if(!check_rights(R_INVESTIGATE))
 			return
 
-		if(!ticker || !ticker.mode)
-			tgui_alert(usr, "The game hasn't started yet!")
+		if(!SSticker || !SSticker.mode)
+			alert("The game hasn't started yet!")
 			return
 
 		var/mob/M = locate(href_list["skillpanel"])
@@ -2027,21 +2038,20 @@
 
 		if(M.client && M.client.holder) return // admins don't get staffnotify'd about
 
-		switch(tgui_alert(usr, "Really set staff warn?", "Confirmation", list("Yes","No")))
-			if("Yes")
-				var/reason = sanitize(input(usr,"Staff warn message","Staff Warn","Problem Player") as text|null)
-				if (!reason || reason == "")
-					return
-				notes_add(M.ckey,"\[AUTO\] Staff warn enabled: [reason]",usr)
-				reason += "\n-- Set by [usr.client.ckey]([usr.client.holder.rank])"
-				DB_staffwarn_record(M.ckey, reason)
-				if(M.client)
-					M.client.staffwarn = reason
-				feedback_inc("staff_warn",1)
-				log_and_message_admins("has enabled staffwarn on [M.ckey].\nMessage: [reason]\n")
-				show_player_panel(M)
-			if("No")
+		if(tgui_alert(usr, "Really set staff warn?", "Confirmation", list("Yes","No")) == "Yes")
+			var/reason = sanitize(input(usr,"Staff warn message","Staff Warn","Problem Player") as text|null)
+			if (!reason || reason == "")
 				return
+			notes_add(M.ckey,"\[AUTO\] Staff warn enabled: [reason]",usr)
+			reason += "\n-- Set by [usr.client.ckey]([usr.client.holder.rank])"
+			DB_staffwarn_record(M.ckey, reason)
+			if(M.client)
+				M.client.staffwarn = reason
+			feedback_inc("staff_warn",1)
+			log_and_message_admins("has enabled staffwarn on [M.ckey].\nMessage: [reason]\n")
+			show_player_panel(M)
+		else
+			return
 	if(href_list["removestaffwarn"])
 		var/mob/M = locate(href_list["removestaffwarn"])
 		if(!ismob(M)) return

@@ -244,9 +244,9 @@ proc/slur(phrase)
 			if(lowertext(newletter)=="s")	newletter="ch"
 			if(lowertext(newletter)=="a")	newletter="ah"
 			if(lowertext(newletter)=="c")	newletter="k"
-		switch(rand(1,15))
-			if(1,3,5,8)	newletter="[lowertext(newletter)]"
-			if(2,4,6,15)	newletter="[uppertext(newletter)]"
+		switch(rand(1,7))
+			if(1,3,5)	newletter="[lowertext(newletter)]"
+			if(2,4,6)	newletter="[uppertext(newletter)]"
 			if(7)	newletter+="'"
 			//if(9,10)	newletter="<b>[newletter]</b>"
 			//if(11,12)	newletter="<big>[newletter]</big>"
@@ -407,7 +407,7 @@ proc/is_blind(A)
 	for(var/mob/M in targets)
 		var/turf/targetturf = get_turf(M)
 		if(!sourceturf || (targetturf.z in GetConnectedZlevels(sourceturf.z)))
-			M.show_message("<span class='info'>\icon[icon] [message]</span>", 1)
+			M.show_message("<span class='info'>[icon2html(icon)] [message]</span>", 1)
 
 /proc/mobs_in_area(var/area/A)
 	var/list/mobs = new
@@ -771,8 +771,8 @@ proc/is_blind(A)
 		buckled.set_dir(ndir)
 	if (. && slow_turning && changing)	//Only mobs with slow turning set will set their move cooldown when changing dir
 		var/turntime = movement_delay()
-		set_move_cooldown(turntime)
-		set_click_cooldown(max(turntime,DEFAULT_ATTACK_COOLDOWN))
+		set_move_cooldown(turntime * 0.75) //100% is too harsh
+		set_click_cooldown(max((turntime * 0.75),DEFAULT_ATTACK_COOLDOWN))
 
 //Mobs with offset view should update it every time they turn
 /mob/set_dir(new_dir)
@@ -820,5 +820,33 @@ proc/is_blind(A)
 	eyeobj = new_eye
 	AddMovementHandler(/datum/movement_handler/mob/eye)
 
+/mob/log_message(message, message_type, color=null, log_globally = TRUE)
+	if(!length(message))
+		crash_with("Empty message")
+		return
 
+	// Cannot use the list as a map if the key is a number, so we stringify it (thank you BYOND)
+	var/smessage_type = num2text(message_type)
 
+	if(client?.player_details)
+		if(!islist(client.player_details.logging[smessage_type]))
+			client.player_details.logging[smessage_type] = list()
+
+	if(!islist(logging[smessage_type]))
+		logging[smessage_type] = list()
+
+	var/colored_message = message
+	if(color)
+		if(color[1] == "#")
+			colored_message = "<font color=[color]>[message]</font>"
+		else
+			colored_message = "<font color='[color]'>[message]</font>"
+
+	var/list/timestamped_message = list("[length(logging[smessage_type]) + 1]\[[station_time_timestamp()]\] [key_name(src)] [loc_name(src)]" = colored_message)
+
+	logging[smessage_type] += timestamped_message
+
+	if(client?.player_details)
+		client.player_details.logging[smessage_type] += timestamped_message
+
+	return ..()

@@ -211,6 +211,16 @@ var/list/floor_decals = list()
 	icon_state = "loadingarea"
 	alpha = 229
 
+/obj/effect/floor_decal/industrial/tram
+	name = "platform stripes"
+	desc = "Hazard stripes indicating a safe distance from incoming trams. Don't cross!"
+	icon_state = "tram1"
+
+/obj/effect/floor_decal/industrial/tram2
+	name = "platform stripes"
+	desc = "Hazard stripes indicating a safe distance from incoming trams. Don't cross!"
+	icon_state = "tram2"
+
 /obj/effect/floor_decal/plaque
 	name = "plaque"
 	icon_state = "plaque"
@@ -777,6 +787,13 @@ var/list/floor_decals = list()
 	name = "large frame with tiles"
 	icon_state = "frame_tiles"
 	icon = 'icons/turf/marks_96x96_ds13.dmi'
+
+
+//DS13 Escape Pod floor
+/obj/effect/floor_decal/pod
+	name = "clear warning"
+	icon_state = "pod_clear"
+
 
 //Corners
 /obj/effect/floor_decal/corner

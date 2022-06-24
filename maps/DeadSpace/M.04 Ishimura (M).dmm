@@ -6,10 +6,11 @@
 /turf/simulated/wall/r_wall,
 /area/space)
 "aac" = (
-/obj/machinery/disposal,
-/obj/structure/disposalpipe/trunk,
-/obj/effect/floor_decal/industrial/hatch/yellow,
-/turf/simulated/floor/tiled/monotile,
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/structure/closet/secure_closet/janitor,
+/turf/simulated/floor/dank/golf_gray,
 /area/ishimura/upper/misc/janitorcloset/fore_port)
 "aad" = (
 /turf/simulated/wall/r_wall,
@@ -104,26 +105,38 @@
 /turf/simulated/floor/plating,
 /area/ishimura/upper/maintenance/fore_central)
 "aay" = (
-/obj/structure/bed/chair/shuttle,
-/obj/machinery/status_display{
-	pixel_x = 32
-	},
 /obj/machinery/light/small{
 	dir = 8
 	},
-/obj/structure/closet/walllocker/emerglocker/west,
-/turf/simulated/floor/plating,
+/obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod{
+	dir = 1;
+	frequency = 1380;
+	icon_state = "pod_control_standby";
+	id_tag = "escape_pod_3";
+	layer = 4;
+	name = "escape pod three controller";
+	pixel_y = -24;
+	tag_door = "escape_pod_3_hatch"
+	},
+/obj/structure/bed/chair/pod/yellow,
+/turf/simulated/floor/shuttle/pod,
 /area/shuttle/escape_pod3/station)
 "aaz" = (
-/obj/structure/bed/chair/shuttle,
-/obj/machinery/status_display{
-	pixel_x = 32
-	},
 /obj/machinery/light/small{
 	dir = 8
 	},
-/obj/structure/closet/walllocker/emerglocker/west,
-/turf/simulated/floor/plating,
+/obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod{
+	dir = 1;
+	frequency = 1380;
+	icon_state = "pod_control_standby";
+	id_tag = "escape_pod_2";
+	layer = 4;
+	name = "escape pod two controller";
+	pixel_y = -24;
+	tag_door = "escape_pod_2_hatch"
+	},
+/obj/structure/bed/chair/pod/yellow,
+/turf/simulated/floor/shuttle/pod,
 /area/shuttle/escape_pod2/station)
 "aaA" = (
 /obj/machinery/computer/crew,
@@ -1084,7 +1097,7 @@
 /turf/simulated/floor/dank/rivets,
 /area/ishimura/upper/security/checkpoint/bridge)
 "acJ" = (
-/obj/structure/closet/secure_closet/brig,
+/obj/structure/closet/secure_closet/brig/evidence,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/dank/rivets,
 /area/ishimura/upper/security/evidence)
@@ -1252,7 +1265,7 @@
 /turf/simulated/wall/r_wall/hull,
 /area/ishimura/hull)
 "adk" = (
-/obj/structure/closet/secure_closet/brig,
+/obj/structure/closet/secure_closet/brig/evidence,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/camera/network/security{
 	dir = 8
@@ -2471,7 +2484,7 @@
 /turf/simulated/floor/tiled/white,
 /area/ishimura/upper/medical)
 "afP" = (
-/obj/structure/closet/secure_closet/brig,
+/obj/structure/closet/secure_closet/brig/evidence,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4;
@@ -6085,21 +6098,6 @@
 	},
 /turf/simulated/floor/dank/grater,
 /area/ishimura/upper/engineering/hub)
-"aoo" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/catwalk,
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/maintenance{
-	name = "Janitor Closet Maintenance"
-	},
-/turf/simulated/floor/plating,
-/area/ishimura/upper/misc/janitorcloset/fore_port)
 "aop" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -6330,7 +6328,7 @@
 /turf/simulated/floor/dank/grater,
 /area/ishimura/upper/engineering/machining_room)
 "aoN" = (
-/obj/structure/closet/secure_closet/brig,
+/obj/structure/closet/secure_closet/brig/evidence,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/light{
 	dir = 4
@@ -7407,10 +7405,11 @@
 	},
 /obj/machinery/door/airlock/engineering{
 	dir = 8;
-	name = "Janitor Closet"
+	name = "Janitor Closet";
+	req_access = list(6)
 	},
 /turf/simulated/floor/dank/golf_gray,
-/area/ishimura/upper/misc/hallway/aft)
+/area/ishimura/upper/misc/janitorcloset/fore_port)
 "aqU" = (
 /obj/structure/closet/crate/trashcart,
 /obj/random/junk,
@@ -8574,10 +8573,20 @@
 /turf/simulated/floor/tiled/dark,
 /area/ishimura/upper/engineering/smes/solar_connect)
 "atq" = (
-/obj/structure/closet/firecloset,
-/obj/random/loot/sometimes/few,
-/turf/simulated/floor/plating,
-/area/ishimura/upper/maintenance/fore_port)
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/airlock/maintenance{
+	name = "Janitor Closet Maintenance";
+	req_access = list(1, 6)
+	},
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/dank/golf_gray,
+/area/ishimura/upper/misc/janitorcloset/fore_port)
 "atr" = (
 /obj/structure/table/standard,
 /obj/random/rare_loot/rarely,
@@ -8588,11 +8597,6 @@
 /obj/item/weapon/folder/blue,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/command/bridge)
-"att" = (
-/obj/structure/closet/emcloset,
-/obj/random/loot/sometimes/few,
-/turf/simulated/floor/plating,
-/area/ishimura/upper/maintenance/fore_port)
 "atu" = (
 /obj/machinery/firealarm{
 	dir = 8;
@@ -8730,12 +8734,12 @@
 /turf/simulated/floor/dank/rivets,
 /area/ishimura/upper/engineering/hub)
 "atH" = (
-/obj/structure/disposalpipe/segment,
 /obj/machinery/firealarm{
 	dir = 8;
 	pixel_x = -22;
 	pixel_y = 4
 	},
+/obj/structure/closet/secure_closet/janitor,
 /turf/simulated/floor/dank/golf_gray,
 /area/ishimura/upper/misc/janitorcloset/fore_port)
 "atI" = (
@@ -9018,15 +9022,17 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 8
 	},
-/obj/machinery/light{
-	dir = 4
+/obj/item/device/radio/intercom{
+	dir = 8;
+	pixel_x = 21
 	},
 /obj/structure/table/standard,
-/obj/item/weapon/reagent_containers/spray/cleaner,
-/obj/item/weapon/reagent_containers/spray/cleaner,
-/obj/item/weapon/reagent_containers/spray/cleaner,
+/obj/item/weapon/storage/bag/trash,
+/obj/item/weapon/storage/bag/trash,
 /obj/item/weapon/grenade/chem_grenade/cleaner,
 /obj/item/weapon/grenade/chem_grenade/cleaner,
+/obj/item/weapon/grenade/chem_grenade/cleaner,
+/obj/item/weapon/storage/box/lights/mixed,
 /turf/simulated/floor/dank/golf_gray,
 /area/ishimura/upper/misc/janitorcloset/fore_port)
 "aum" = (
@@ -10776,6 +10782,12 @@
 /obj/item/weapon/caution,
 /obj/item/weapon/caution,
 /obj/item/weapon/mop,
+/obj/item/weapon/reagent_containers/spray/cleaner,
+/obj/item/weapon/grenade/chem_grenade/cleaner,
+/obj/item/weapon/grenade/chem_grenade/cleaner,
+/obj/random/loot/sometimes/few,
+/obj/item/device/lightreplacer,
+/obj/item/weapon/storage/box/lights/mixed,
 /turf/simulated/floor/dank/golf_gray,
 /area/ishimura/upper/misc/janitorcloset/fore_port)
 "axo" = (
@@ -12269,21 +12281,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/ishimura/upper/research/virology/entrance)
-"azZ" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 10
-	},
-/obj/structure/cable/green{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/obj/structure/catwalk,
-/turf/simulated/floor/plating,
-/area/ishimura/upper/maintenance/fore_port)
 "aAa" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -12436,6 +12433,9 @@
 	},
 /obj/structure/table/standard,
 /obj/item/weapon/soap,
+/obj/item/weapon/storage/box/lights/mixed,
+/obj/random/loot/sometimes/few,
+/obj/random/loot/sometimes/few,
 /turf/simulated/floor/dank/golf_gray,
 /area/ishimura/upper/misc/janitorcloset/fore_port)
 "aAq" = (
@@ -14702,16 +14702,6 @@
 	},
 /turf/simulated/floor/dank/rivets,
 /area/ishimura/upper/security/checkpoint/bridge)
-"aEg" = (
-/obj/item/device/radio/intercom{
-	pixel_y = 24
-	},
-/obj/structure/table/standard,
-/obj/item/weapon/storage/box/lights/mixed,
-/obj/item/device/lightreplacer,
-/obj/random/loot/sometimes/few,
-/turf/simulated/floor/dank/golf_gray,
-/area/ishimura/upper/misc/janitorcloset/fore_port)
 "aEh" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -15347,9 +15337,6 @@
 	dir = 2;
 	icon_state = "pipe-c"
 	},
-/obj/machinery/atm{
-	pixel_y = 32
-	},
 /turf/simulated/floor/dank/slides{
 	dir = 4
 	},
@@ -15892,7 +15879,7 @@
 	icon_state = "0-8"
 	},
 /obj/item/weapon/autopsy_scanner,
-/obj/item/weapon/scalpel,
+/obj/item/weapon/tool/scalpel,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/medical/morgue/autopsy)
 "aGt" = (
@@ -21729,9 +21716,10 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
-/obj/structure/disposalpipe/segment{
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /turf/simulated/floor/dank/grater,
@@ -21797,13 +21785,14 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/obj/structure/disposalpipe/junction{
-	dir = 8
-	},
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 8;
 	icon_state = "1-8"
+	},
+/obj/structure/disposalpipe/junction{
+	dir = 4;
+	icon_state = "pipe-j2"
 	},
 /turf/simulated/floor/dank/grater,
 /area/ishimura/upper/misc/hallway/escape)
@@ -22987,13 +22976,6 @@
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/upper/engineering/prep)
 "aTo" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /turf/simulated/floor/dank/golf_gray,
 /area/ishimura/upper/misc/janitorcloset/fore_port)
 "aTp" = (
@@ -23076,10 +23058,6 @@
 /turf/simulated/floor/dank/maint_left,
 /area/ishimura/upper/security/brig)
 "aTu" = (
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -23090,37 +23068,47 @@
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
 	},
 /turf/simulated/floor/dank/golf_gray,
 /area/ishimura/upper/misc/janitorcloset/fore_port)
 "aTv" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 1
-	},
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/dank/golf_gray,
-/area/ishimura/upper/misc/janitorcloset/fore_port)
-"aTw" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 9
+/obj/structure/disposalpipe/segment{
+	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 8;
 	icon_state = "1-8"
 	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/effect/landmark/start{
+	name = "Janitor"
+	},
+/turf/simulated/floor/dank/golf_gray,
+/area/ishimura/upper/misc/janitorcloset/fore_port)
+"aTw" = (
 /obj/structure/cable/green{
 	d1 = 2;
 	d2 = 8;
 	icon_state = "2-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
 	},
 /turf/simulated/floor/dank/golf_gray,
 /area/ishimura/upper/misc/janitorcloset/fore_port)
@@ -23139,6 +23127,9 @@
 /obj/structure/closet/hydrant{
 	pixel_x = -32
 	},
+/obj/machinery/light{
+	dir = 8
+	},
 /turf/simulated/floor/dank/golf_gray,
 /area/ishimura/upper/misc/janitorcloset/fore_port)
 "aTz" = (
@@ -23151,6 +23142,7 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/dank/golf_gray,
 /area/ishimura/upper/misc/janitorcloset/fore_port)
 "aTB" = (
@@ -23219,40 +23211,36 @@
 /turf/simulated/floor/plating,
 /area/ishimura/upper/maintenance/aft_starboard)
 "aTI" = (
-/obj/structure/shuttle/engine/propulsion{
-	dir = 1
-	},
-/turf/simulated/shuttle/wall{
-	icon_state = "wall3"
+/turf/simulated/floor/plating,
+/turf/simulated/shuttle/wall/corner/pod1{
+	dir = 8;
+	icon_state = "corner_pod1"
 	},
 /area/shuttle/escape_pod3/station)
 "aTJ" = (
-/obj/machinery/door/airlock/external{
+/obj/effect/floor_decal/pod,
+/obj/machinery/door/airlock/shuttle{
 	frequency = 1380;
 	id_tag = "escape_pod_3_hatch";
-	locked = 1;
-	name = "Escape Pod Three Hatch";
-	req_access = list(15)
+	name = "Escape Pod Door"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/shuttle/pod,
 /area/shuttle/escape_pod3/station)
 "aTK" = (
-/obj/structure/shuttle/engine/propulsion{
-	dir = 1
-	},
-/turf/simulated/shuttle/wall{
-	icon_state = "wall3"
+/turf/simulated/floor/plating,
+/turf/simulated/shuttle/wall/corner/pod1{
+	dir = 8;
+	icon_state = "corner_pod1"
 	},
 /area/shuttle/escape_pod2/station)
 "aTL" = (
-/obj/machinery/door/airlock/external{
+/obj/effect/floor_decal/pod,
+/obj/machinery/door/airlock/shuttle{
 	frequency = 1380;
 	id_tag = "escape_pod_2_hatch";
-	locked = 1;
-	name = "Escape Pod Two Hatch";
-	req_access = list(15)
+	name = "Escape Pod Door"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/shuttle/pod,
 /area/shuttle/escape_pod2/station)
 "aTM" = (
 /obj/machinery/light,
@@ -23281,11 +23269,10 @@
 /turf/simulated/floor/plating,
 /area/ishimura/upper/maintenance/fore_central)
 "aTO" = (
-/obj/structure/shuttle/engine/propulsion{
-	dir = 1
-	},
-/turf/simulated/shuttle/wall{
-	icon_state = "wall3"
+/turf/simulated/floor/plating,
+/turf/simulated/shuttle/wall/corner/pod1{
+	dir = 8;
+	icon_state = "corner_pod1"
 	},
 /area/shuttle/escape_pod1/station)
 "aTP" = (
@@ -23523,18 +23510,18 @@
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/upper/security/checkpoint)
 "aUo" = (
-/obj/machinery/door/airlock/external{
+/obj/effect/floor_decal/pod,
+/obj/machinery/door/airlock/shuttle{
 	frequency = 1380;
 	id_tag = "escape_pod_1_hatch";
-	locked = 1;
-	name = "Escape Pod One Hatch";
-	req_access = list(15)
+	name = "Escape Pod Door"
 	},
-/turf/simulated/floor/shuttle/black,
+/turf/simulated/floor/shuttle/pod,
 /area/shuttle/escape_pod1/station)
 "aUp" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "wall3"
+/turf/simulated/shuttle/wall/pod{
+	dir = 8;
+	icon_state = "p_wall1"
 	},
 /area/shuttle/escape_pod3/station)
 "aUq" = (
@@ -23552,20 +23539,9 @@
 /turf/simulated/floor/tiled/white,
 /area/ishimura/upper/medical)
 "aUr" = (
-/obj/structure/bed/chair/shuttle,
-/obj/item/device/radio/intercom{
-	dir = 8;
-	pixel_x = 21
-	},
-/obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod{
-	frequency = 1380;
-	id_tag = "escape_pod_3";
-	name = "escape pod three controller";
-	pixel_x = -32;
-	tag_door = "escape_pod_3_hatch"
-	},
 /obj/effect/shuttle_landmark/escape_pod/start/pod3,
-/turf/simulated/floor/plating,
+/obj/structure/bed/chair/pod/yellow,
+/turf/simulated/floor/shuttle/pod,
 /area/shuttle/escape_pod3/station)
 "aUs" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -23593,8 +23569,9 @@
 /turf/simulated/floor/tiled/white,
 /area/ishimura/upper/research/biolab)
 "aUv" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "wall3"
+/turf/simulated/shuttle/wall/pod{
+	dir = 8;
+	icon_state = "p_wall1"
 	},
 /area/shuttle/escape_pod2/station)
 "aUw" = (
@@ -23635,24 +23612,14 @@
 	},
 /area/ishimura/upper/misc/hallway/central)
 "aUA" = (
-/obj/structure/bed/chair/shuttle,
-/obj/item/device/radio/intercom{
-	dir = 8;
-	pixel_x = 21
-	},
-/obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod{
-	frequency = 1380;
-	id_tag = "escape_pod_2";
-	name = "escape pod two controller";
-	pixel_x = -32;
-	tag_door = "escape_pod_2_hatch"
-	},
 /obj/effect/shuttle_landmark/escape_pod/start/pod2,
-/turf/simulated/floor/plating,
+/obj/structure/bed/chair/pod/yellow,
+/turf/simulated/floor/shuttle/pod,
 /area/shuttle/escape_pod2/station)
 "aUB" = (
-/turf/simulated/shuttle/wall{
-	icon_state = "wall3"
+/turf/simulated/shuttle/wall/pod{
+	dir = 8;
+	icon_state = "p_wall1"
 	},
 /area/shuttle/escape_pod1/station)
 "aUC" = (
@@ -23763,20 +23730,9 @@
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/security/checkpoint)
 "aUK" = (
-/obj/structure/bed/chair/shuttle,
-/obj/item/device/radio/intercom{
-	dir = 8;
-	pixel_x = 21
-	},
-/obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod{
-	frequency = 1380;
-	id_tag = "escape_pod_1";
-	name = "escape pod one controller";
-	pixel_x = -32;
-	tag_door = "escape_pod_1_hatch"
-	},
 /obj/effect/shuttle_landmark/escape_pod/start/pod1,
-/turf/simulated/floor/plating,
+/obj/structure/bed/chair/pod/yellow,
+/turf/simulated/floor/shuttle/pod,
 /area/shuttle/escape_pod1/station)
 "aUL" = (
 /obj/item/device/radio/intercom{
@@ -24941,6 +24897,9 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/closet/walllocker/emerglocker/north,
 /obj/structure/reagent_dispensers/watertank,
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/simulated/floor/dank/golf_gray,
 /area/ishimura/upper/misc/janitorcloset/fore_port)
 "aWN" = (
@@ -24960,7 +24919,12 @@
 	dir = 1;
 	pixel_y = -22
 	},
-/turf/simulated/floor/dank/golf_gray,
+/obj/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 1
+	},
+/obj/effect/floor_decal/industrial/hatch/yellow,
+/turf/simulated/floor/tiled/monotile,
 /area/ishimura/upper/misc/janitorcloset/fore_port)
 "aWQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -25909,20 +25873,15 @@
 /turf/simulated/floor/plating,
 /area/ishimura/upper/maintenance/aft_port)
 "aYv" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 5
-	},
 /obj/structure/cable/green{
 	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
+	d2 = 2;
+	icon_state = "1-2"
 	},
-/obj/structure/catwalk,
-/turf/simulated/floor/plating,
-/area/ishimura/upper/maintenance/fore_port)
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/dank/golf_gray,
+/area/ishimura/upper/misc/janitorcloset/fore_port)
 "aYw" = (
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -26025,16 +25984,9 @@
 /turf/simulated/floor/plating,
 /area/ishimura/upper/maintenance/aft_port)
 "aYG" = (
-/obj/structure/catwalk,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/plating,
-/area/ishimura/upper/maintenance/fore_port)
+/obj/structure/janitorialcart,
+/turf/simulated/floor/dank/golf_gray,
+/area/ishimura/upper/misc/janitorcloset/fore_port)
 "aYH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -28079,6 +28031,9 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/simulated/floor/dank/grater,
 /area/ishimura/upper/misc/hallway/fore)
 "bcO" = (
@@ -29462,15 +29417,21 @@
 /turf/simulated/floor/plating,
 /area/ishimura/upper/security/checkpoint/medical)
 "bfg" = (
-/obj/structure/bed/chair/shuttle,
-/obj/machinery/status_display{
-	pixel_x = 32
-	},
 /obj/machinery/light/small{
 	dir = 8
 	},
-/obj/structure/closet/walllocker/emerglocker/west,
-/turf/simulated/floor/plating,
+/obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod{
+	dir = 1;
+	frequency = 1380;
+	icon_state = "pod_control_standby";
+	id_tag = "escape_pod_1";
+	layer = 4;
+	name = "escape pod one controller";
+	pixel_y = -24;
+	tag_door = "escape_pod_1_hatch"
+	},
+/obj/structure/bed/chair/pod/yellow,
+/turf/simulated/floor/shuttle/pod,
 /area/shuttle/escape_pod1/station)
 "bfh" = (
 /obj/machinery/door/firedoor/border_only{
@@ -29703,7 +29664,7 @@
 /area/ishimura/upper/misc/hallway/fore)
 "bfv" = (
 /turf/simulated/floor/plating,
-/turf/simulated/shuttle/wall/corner/dark/sw,
+/turf/simulated/shuttle/wall/corner/pod2,
 /area/shuttle/escape_pod3/station)
 "bfw" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
@@ -29739,7 +29700,7 @@
 /turf/simulated/floor/plating,
 /area/ishimura/upper/security/equipment)
 "bfB" = (
-/obj/effect/wallframe_spawn/reinforced/shuttle,
+/obj/structure/shuttle/window/pod,
 /turf/simulated/floor/airless,
 /area/shuttle/escape_pod3/station)
 "bfC" = (
@@ -29766,31 +29727,40 @@
 /area/ishimura/upper/security/equipment)
 "bfE" = (
 /turf/simulated/floor/plating,
-/turf/simulated/shuttle/wall/corner/dark/se,
+/turf/simulated/shuttle/wall/corner/pod2{
+	dir = 4;
+	icon_state = "corner_pod2"
+	},
 /area/shuttle/escape_pod3/station)
 "bfF" = (
 /turf/simulated/floor/plating,
-/turf/simulated/shuttle/wall/corner/dark/sw,
+/turf/simulated/shuttle/wall/corner/pod2,
 /area/shuttle/escape_pod2/station)
 "bfG" = (
-/obj/effect/wallframe_spawn/reinforced/shuttle,
+/obj/structure/shuttle/window/pod,
 /turf/simulated/floor/airless,
 /area/shuttle/escape_pod2/station)
 "bfH" = (
 /turf/simulated/floor/plating,
-/turf/simulated/shuttle/wall/corner/dark/se,
+/turf/simulated/shuttle/wall/corner/pod2{
+	dir = 4;
+	icon_state = "corner_pod2"
+	},
 /area/shuttle/escape_pod2/station)
 "bfI" = (
 /turf/simulated/floor/plating,
-/turf/simulated/shuttle/wall/corner/dark/sw,
+/turf/simulated/shuttle/wall/corner/pod2,
 /area/shuttle/escape_pod1/station)
 "bfJ" = (
-/obj/effect/wallframe_spawn/reinforced/shuttle,
+/obj/structure/shuttle/window/pod,
 /turf/simulated/floor/airless,
 /area/shuttle/escape_pod1/station)
 "bfK" = (
 /turf/simulated/floor/plating,
-/turf/simulated/shuttle/wall/corner/dark/se,
+/turf/simulated/shuttle/wall/corner/pod2{
+	dir = 4;
+	icon_state = "corner_pod2"
+	},
 /area/shuttle/escape_pod1/station)
 "bfL" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -31097,6 +31067,12 @@
 	dir = 8
 	},
 /area/ishimura/upper/misc/hallway/central)
+"bon" = (
+/turf/simulated/shuttle/wall/pod{
+	dir = 1;
+	icon_state = "p_wall1"
+	},
+/area/shuttle/escape_pod1/station)
 "bpx" = (
 /obj/machinery/light{
 	dir = 1
@@ -31161,6 +31137,18 @@
 	dir = 4
 	},
 /area/ishimura/upper/misc/hallway/fore)
+"bTI" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/turf/simulated/floor/dank/grater,
+/area/ishimura/upper/misc/hallway/escape)
 "caT" = (
 /turf/simulated/floor/dank/slides{
 	dir = 8
@@ -31240,6 +31228,12 @@
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/upper/security/checkpoint/bridge)
+"eJh" = (
+/turf/simulated/shuttle/wall/pod/two{
+	dir = 1;
+	icon_state = "p_wall2"
+	},
+/area/shuttle/escape_pod2/station)
 "flg" = (
 /turf/simulated/floor/dank/tech{
 	dir = 4
@@ -31259,6 +31253,23 @@
 	dir = 1
 	},
 /area/ishimura/upper/security/checkpoint/bridge)
+"fFR" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/dank/grater,
+/area/ishimura/upper/misc/hallway/escape)
 "fYM" = (
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/upper/misc/hallway/central)
@@ -31411,6 +31422,11 @@
 	dir = 4
 	},
 /area/ishimura/upper/misc/hallway/aft)
+"ike" = (
+/obj/structure/closet/emcloset,
+/obj/random/loot/sometimes/few,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/maintenance/fore_port)
 "imE" = (
 /turf/simulated/floor/dank/tech,
 /area/ishimura/upper/misc/hangar)
@@ -31466,6 +31482,12 @@
 	dir = 4
 	},
 /area/ishimura/upper/misc/hallway/aft)
+"juU" = (
+/turf/simulated/shuttle/wall/pod/two{
+	dir = 1;
+	icon_state = "p_wall2"
+	},
+/area/shuttle/escape_pod1/station)
 "jzY" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -31483,6 +31505,12 @@
 	dir = 4
 	},
 /area/ishimura/upper/misc/hallway/aft)
+"jEi" = (
+/turf/simulated/shuttle/wall/pod{
+	dir = 1;
+	icon_state = "p_wall1"
+	},
+/area/shuttle/escape_pod3/station)
 "jYG" = (
 /turf/simulated/floor/dank/cable/end,
 /area/ishimura/upper/engineering/prep)
@@ -31619,9 +31647,6 @@
 	dir = 1
 	},
 /area/ishimura/upper/engineering/prep)
-"lWs" = (
-/turf/simulated/floor/dank/rectangles,
-/area/ishimura/upper/misc/hangar/reception)
 "mgr" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -31645,6 +31670,12 @@
 	dir = 4
 	},
 /area/ishimura/upper/misc/hallway/central)
+"mAD" = (
+/turf/simulated/shuttle/wall/pod{
+	dir = 1;
+	icon_state = "p_wall1"
+	},
+/area/shuttle/escape_pod2/station)
 "mMF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
@@ -31696,6 +31727,13 @@
 	dir = 8
 	},
 /area/ishimura/upper/misc/hallway/fore)
+"nqJ" = (
+/turf/simulated/floor/plating,
+/turf/simulated/shuttle/wall/corner/pod1{
+	dir = 1;
+	icon_state = "corner_pod1"
+	},
+/area/shuttle/escape_pod3/station)
 "nrU" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -31920,11 +31958,31 @@
 	dir = 1
 	},
 /area/ishimura/upper/misc/hallway/aft)
+"qow" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/structure/closet/firecloset,
+/obj/random/loot/sometimes/few,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/maintenance/fore_port)
 "qGj" = (
 /turf/simulated/floor/dank/slides{
 	dir = 4
 	},
 /area/ishimura/upper/misc/hallway/central)
+"qHI" = (
+/turf/simulated/shuttle/wall/pod/two{
+	dir = 1;
+	icon_state = "p_wall2"
+	},
+/area/shuttle/escape_pod3/station)
+"qYp" = (
+/turf/simulated/shuttle/wall/pod/two{
+	dir = 8;
+	icon_state = "p_wall2"
+	},
+/area/shuttle/escape_pod1/station)
 "rjP" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable/green{
@@ -31936,6 +31994,16 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/upper/misc/hallway/aft)
+"ryv" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/dank/rectangles,
+/area/ishimura/upper/misc/hallway/escape)
 "rEO" = (
 /turf/simulated/floor/dank/slides,
 /area/ishimura/upper/engineering/bay)
@@ -32019,6 +32087,12 @@
 	dir = 4
 	},
 /area/ishimura/upper/misc/hallway/aft)
+"uye" = (
+/turf/simulated/shuttle/wall/pod/two{
+	dir = 8;
+	icon_state = "p_wall2"
+	},
+/area/shuttle/escape_pod2/station)
 "uGx" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/structure/cable/cyan{
@@ -32118,6 +32192,13 @@
 	},
 /turf/simulated/floor/dank/tech,
 /area/ishimura/upper/misc/hallway/aft)
+"wHC" = (
+/turf/simulated/floor/plating,
+/turf/simulated/shuttle/wall/corner/pod1{
+	dir = 1;
+	icon_state = "corner_pod1"
+	},
+/area/shuttle/escape_pod1/station)
 "wKV" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 10
@@ -32125,6 +32206,13 @@
 /obj/effect/wallframe_spawn/reinforced_phoron,
 /turf/simulated/floor/reinforced/airless,
 /area/ishimura/upper/engineering/engine_room)
+"wNh" = (
+/turf/simulated/floor/plating,
+/turf/simulated/shuttle/wall/corner/pod1{
+	dir = 1;
+	icon_state = "corner_pod1"
+	},
+/area/shuttle/escape_pod2/station)
 "wUq" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1;
@@ -32143,6 +32231,12 @@
 "xmt" = (
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/upper/security/brig)
+"xtb" = (
+/turf/simulated/shuttle/wall/pod/two{
+	dir = 8;
+	icon_state = "p_wall2"
+	},
+/area/shuttle/escape_pod3/station)
 "xvK" = (
 /obj/machinery/atmospherics/unary/vent_pump/wall{
 	dir = 8
@@ -50432,7 +50526,7 @@ flg
 acL
 anc
 aNJ
-lWs
+aap
 adc
 aDB
 aFy
@@ -56111,7 +56205,7 @@ aSz
 aOQ
 arP
 aOU
-aQP
+bTI
 aSg
 aUV
 arP
@@ -56918,7 +57012,7 @@ bhz
 bhA
 bhA
 arR
-aOV
+ryv
 aRb
 aSS
 arP
@@ -57089,11 +57183,11 @@ aaa
 aaa
 aah
 abv
-adS
+ike
 aXL
 adS
 adS
-atq
+adS
 abv
 aac
 atH
@@ -57291,14 +57385,14 @@ aaa
 aaa
 aah
 abv
-aeM
+qow
 aXM
 aXI
+aQk
+aQk
+atq
 aYv
-att
-abv
-aLn
-aEg
+aYv
 aTv
 aTz
 aJa
@@ -57323,7 +57417,7 @@ aQS
 aMv
 aOC
 aSS
-aQP
+fFR
 aSa
 arP
 axq
@@ -57495,11 +57589,11 @@ aah
 abv
 aoV
 ajw
-aWS
-azZ
-aXI
+adS
+aLG
+adS
+abv
 aYG
-aoo
 aTo
 aTw
 aTA
@@ -59352,7 +59446,7 @@ aUk
 bcI
 aUi
 aTI
-aUp
+jEi
 aUp
 bfv
 aaa
@@ -59755,9 +59849,9 @@ aZv
 bbE
 bdJ
 aUi
-aTI
-aUp
-aUp
+nqJ
+qHI
+xtb
 bfE
 aaa
 aaa
@@ -60160,7 +60254,7 @@ aUk
 bcV
 aUi
 aTK
-aUv
+mAD
 aUv
 bfF
 aaa
@@ -60563,9 +60657,9 @@ bcw
 nle
 bcY
 aUi
-aTK
-aUv
-aUv
+wNh
+eJh
+uye
 bfH
 aaa
 aaa
@@ -60968,7 +61062,7 @@ bbI
 bdG
 aUi
 aTO
-aUB
+bon
 aUB
 bfI
 aaa
@@ -61371,9 +61465,9 @@ bbj
 bck
 bdJ
 aUi
-aTO
-aUB
-aUB
+wHC
+juU
+qYp
 bfK
 aaa
 aaa

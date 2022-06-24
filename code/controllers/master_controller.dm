@@ -40,8 +40,6 @@ datum/controller/game_controller/proc/setup()
 	setup_objects()
 	setupgenetics()
 
-	transfer_controller = new
-
 	report_progress("Initializations complete")
 	initialization_stage |= INITIALIZATION_COMPLETE
 
@@ -53,7 +51,7 @@ datum/controller/game_controller/proc/setup_objects()
 	initialization_stage |= INITIALIZATION_HAS_BEGUN
 
 	if(GLOB.using_map.use_overmap)
-		report_progress("Initializing overmap events")
-		overmap_event_handler.create_events(GLOB.using_map.overmap_z, GLOB.using_map.overmap_size, GLOB.using_map.overmap_event_areas)
+		report_progress("Overmap Event Handler was disabled. In case you see this - report to developers!")
+//		overmap_event_handler.create_events(GLOB.using_map.overmap_z, GLOB.using_map.overmap_size, GLOB.using_map.overmap_event_areas)
 
 

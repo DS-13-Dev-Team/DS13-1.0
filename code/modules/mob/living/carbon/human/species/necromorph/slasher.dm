@@ -12,14 +12,14 @@
 	mob_type = /mob/living/carbon/human/necromorph/slasher
 	blurb = "The frontline soldier of the necromorph horde. Slow when not charging, but its blade arms make for powerful melee attacks"
 	unarmed_types = list(/datum/unarmed_attack/blades, /datum/unarmed_attack/bite/weak) //Bite attack is a backup if blades are severed
-	total_health = 90
+	total_health = 100
 	biomass = 50
 	mass = 70
 
 	biomass_reclamation_time	=	7 MINUTES
 
 	icon_template = 'icons/mob/necromorph/slasher/fleshy.dmi'
-	damage_mask = 'icons/mob/necromorph/slasher/damage_mask.dmi'
+	damage_mask = 'icons/mob/necromorph/slasher/damage_mask.dmi' // This is badly implemented and should be fixed down the line.
 	icon_lying = "_lying"
 	pixel_offset_x = -8
 	single_icon = FALSE
@@ -70,9 +70,10 @@
 
 	slowdown = 3.5
 
-	inherent_verbs = list(/atom/movable/proc/slasher_charge, /mob/living/proc/slasher_dodge, /mob/proc/shout)
+	inherent_verbs = list(/atom/movable/proc/slasher_charge, /mob/living/proc/slasher_dodge, /mob/living/proc/slasher_fend, /mob/proc/shout)
 	modifier_verbs = list(KEY_CTRLALT = list(/atom/movable/proc/slasher_charge),
-	KEY_ALT = list(/mob/living/proc/slasher_dodge))
+	KEY_ALT = list(/mob/living/proc/slasher_dodge),
+	KEY_MIDDLE = list(/mob/living/proc/slasher_dodge))
 
 
 	variants = list(SPECIES_NECROMORPH_SLASHER = list(WEIGHT = 8),
@@ -138,7 +139,8 @@
 	marker_spawnable = TRUE 	//Enable this once we have sprites for it
 	mob_type = /mob/living/carbon/human/necromorph/slasher_enhanced
 	unarmed_types = list(/datum/unarmed_attack/blades/strong, /datum/unarmed_attack/bite/strong)
-	total_health = 225
+	total_health = 250
+	burn_mod = 1.1
 	slowdown = 2.8
 	biomass = 125
 	require_total_biomass	=	BIOMASS_REQ_T2
@@ -147,6 +149,7 @@
 	mob_size	= MOB_LARGE
 	bump_flag 	= HEAVY
 	spawner_spawnable = FALSE
+	damage_mask = null
 
 	variants = null
 	outfits = null
@@ -234,18 +237,29 @@ Charge is a great move to initiate a fight, or to damage obstacles blocking your
 
 
 #define SLASHER_DODGE_DESC "<h2>Dodge:</h2><br>\
-<h3>Hotkey: Alt+Click</h3><br>\
+<h3>Hotkey: Middle Mouse Click</h3><br>\
 <h3>Cooldown: 6 seconds</h3><br>\
 A simple trick, dodge causes the user to leap one tile to the side, and gain a large but brief bonus to evasion, making them almost impossible to hit.<br>\
 The evasion bonus only lasts 1.5 seconds, so it's best used while an enemy is already firing at you. <br>\
 
 Dodge is a skill that requires careful timing, but if used correctly, it can allow you to assault an entrenched firing line, and get close enough to land a few hits."
 
+#define SLASHER_FEND_DESC "<h2>Fend:</h2><br>\
+<h3>Hotkey: Alt+Click</h3><br>\
+A toggleable ability, the slasher shields its body with its claws, trading off movespeed for defensive ability. Fend gives an active block that flatly reduces damage of hits\n\
+The block chance is slightly random, but is most effective with melee attacks, aimed at the upper body, and from the front. If a blocked projectile is weak enough, it will bounce off\n\
+Weak melee attacks will provoke a devastating counterattack instead.\n\
+In addition, fend grants a 20% reduction to all incoming damage while active, but it halves your movespeed.\n\
+Fend automatically cancels when you perform a charge or a melee attack. Dodge will not interrupt it though, and those two can be comboed together to approach enemies."
+
+
 /datum/species/necromorph/slasher/get_ability_descriptions()
 	.= ""
 	. += SLASHER_CHARGE_DESC
 	. += "<hr>"
 	. += SLASHER_DODGE_DESC
+	. += "<hr>"
+	. += SLASHER_FEND_DESC
 
 
 //Can't slash things without arms
@@ -253,6 +267,11 @@ Dodge is a skill that requires careful timing, but if used correctly, it can all
 	if(!user.has_organ(BP_R_ARM) && !user.has_organ(BP_L_ARM))
 		return FALSE
 	return TRUE
+
+/datum/unarmed_attack/blades/show_attack(var/datum/strike/strike)
+	//Fend is cancelled when you charge or attack
+	strike.user.toggle_extension(/datum/extension/ability/toggled/fend, FALSE, FALSE, TRUE)
+	.=..()
 
 /datum/unarmed_attack/blades/strong
 	damage = 22.4
@@ -271,6 +290,8 @@ Dodge is a skill that requires careful timing, but if used correctly, it can all
 	if (!isliving(A))
 		A = autotarget_enemy_mob(A, 2, src, 999)
 
+	//Fend is cancelled when you charge or attack
+	toggle_extension(/datum/extension/ability/toggled/fend, FALSE, FALSE, TRUE)
 
 	.= charge_attack(A, _delay = 1 SECONDS, _speed = 5.0, _lifespan = 4 SECONDS)
 	if (.)
@@ -325,6 +346,8 @@ Dodge is a skill that requires careful timing, but if used correctly, it can all
 
 /*
 	Slashers have a special charge impact. Each of their blade arms gets a free hit on impact with the primary target
+
+	However, to limit the power of this, these hits are mostly randomised in terms of where they land on the body.
 */
 /datum/species/necromorph/slasher/charge_impact(var/datum/extension/charge/charge)
 	if (charge.last_target_type == CHARGE_TARGET_PRIMARY && isliving(charge.last_obstacle))
@@ -335,21 +358,40 @@ Dodge is a skill that requires careful timing, but if used correctly, it can all
 		if (H.a_intent != I_HURT)
 			H.set_attack_intent(I_HURT)
 
+
+		var/current_target_zone = H.get_zone_sel()
+
+
 		//This is a bit of a hack because unarmed attacks are poorly coded:
 			//We'll set the user's last attack to some time in the past so they can attack again
 		if (H.has_organ(BP_R_ARM))
 			H.last_attack = 0
+
+			//50% chance to hit the zone you're targeting, otherwise random target zone
+			if (prob(50))
+				H.set_random_zone()
 			H.UnarmedAttack(L)
 
 		if (H.has_organ(BP_L_ARM))
 			H.last_attack = 0
+
+			//Second hit is always a random target
+			H.set_random_zone()
 			H.UnarmedAttack(L)
+
+		//Return the target zone to normal
+		H.set_zone_sel(current_target_zone)
 		return FALSE
 	else
 		return ..()
 
 
 
+/mob/living/proc/slasher_fend()
+	set name = "Fend"
+	set category = "Abilities"
+
+	toggle_extension(/datum/extension/ability/toggled/fend)
 
 
 

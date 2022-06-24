@@ -73,7 +73,7 @@
 	if(src.throwing)
 		src.throw_impact(A, src.throwing)
 		src.throwing = FALSE
-	GLOB.bump_event.raise_event(src, A)
+	SEND_SIGNAL(src, COMSIG_MOVABLE_BUMP, A)
 
 	spawn(0)
 		if (A && yes)
@@ -120,7 +120,9 @@
 
 
 //This proc should never be overridden elsewhere at /atom/movable to keep directions sane.
-/atom/movable/Move(NewLoc, direct = 0, step_x = 0, step_y = 0, var/glide_size_override = 0)
+/atom/movable/Move(NewLoc, direct = 0, step_x = 0, step_y = 0, glide_size_override = 0)
+	var/OldLoc = loc
+	SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_MOVE, loc, NewLoc)
 	if (glide_size_override > 0)
 		set_glide_size(glide_size_override)
 
@@ -162,6 +164,9 @@
 		src.m_flag = 1
 		if ((A != src.loc && A && A.z == src.z))
 			src.last_move = get_dir(A, src.loc)
+
+	if(.)
+		SEND_SIGNAL(src, COMSIG_MOVABLE_MOVED, OldLoc, NewLoc)
 
 /atom/movable/proc/set_glide_size(glide_size_override = 0, var/min = 0.1, var/max = world.icon_size/1)
 	if (!glide_size_override || glide_size_override > max)

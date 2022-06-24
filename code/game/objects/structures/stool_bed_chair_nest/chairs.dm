@@ -321,7 +321,7 @@
 	icon_state = "wooden_chair_preview"
 
 /obj/structure/bed/chair/wood/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	if(istype(W,/obj/item/stack) || istype(W, /obj/item/weapon/tool/wirecutters))
+	if(istype(W,/obj/item/stack) || isWirecutter(W))
 		return
 	..()
 
@@ -362,4 +362,40 @@
 	..(newloc,"steel","black")
 
 /obj/structure/bed/chair/shuttle/white/New(var/newloc,var/newmaterial)
+	..(newloc,"steel","cotton")
+
+/obj/structure/bed/chair/pod
+	name = "escape pod seat"
+	desc = "A comfortable, secure seat. It has a sturdy-looking buckling system for protecting passengers from sudden changes in acceleration."
+	base_icon = "pod_chair"
+	icon_state = "pod_chair_preview"
+	color = "#FFFFFF"
+
+/obj/structure/bed/chair/pod/post_buckle_mob()
+	if(buckled_mob)
+		base_icon = "pod_chair-b"
+	else
+		base_icon = "pod_chair"
+	..()
+
+/obj/structure/bed/chair/pod/update_icon()
+	..()
+	if(!buckled_mob)
+		var/image/I = image(icon, "[base_icon]_special")
+		I.layer = ABOVE_HUMAN_LAYER
+		if(material_alteration & MATERIAL_ALTERATION_COLOR)
+			I.color = material.icon_colour
+		overlays |= I
+
+/obj/structure/bed/chair/pod/yellow/New(newloc, newmaterial)
+	..(newloc,"steel","yellow")
+
+/obj/structure/bed/chair/tram
+	name = "bench"
+	desc = "A rusting tram bench. Sturdy enough to protect passengers from sudden changes in acceleration."
+	base_icon = "trambench"
+	icon_state = "trambench_preview"
+	color = "#FFFFFF"
+
+/obj/structure/bed/chair/tram/New(var/newloc,var/newmaterial)
 	..(newloc,"steel","cotton")

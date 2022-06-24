@@ -201,7 +201,7 @@ var/list/flooring_types
 	removal_time = 250
 	health = 275
 	has_base_range = 0
-	resistance = RESISTANCE_HEAVILY_ARMOURED
+	resistance = RESISTANCE_VAULT
 	footstep_sound = "catwalk"
 	space_smooth = SMOOTH_ALL
 	floor_smooth = SMOOTH_NONE
@@ -270,9 +270,9 @@ var/list/flooring_types
 	//try_update_icon = 0
 	plating_type = null
 	is_plating = TRUE
-	health = 700	//Virtually indestructible
-	resistance = RESISTANCE_HEAVILY_ARMOURED
-	removal_time = 1 MINUTES //Cutting through the hull is very slow work
+	health = 800	//Virtually indestructible
+	resistance = RESISTANCE_UNBREAKABLE
+	removal_time = 1.5 MINUTES //Cutting through the hull is very slow work
 	footstep_sound = "hull"
 	wall_smooth = SMOOTH_ALL
 	space_smooth = SMOOTH_NONE

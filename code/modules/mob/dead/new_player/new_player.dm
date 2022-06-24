@@ -27,8 +27,8 @@
 
 /mob/dead/new_player/Destroy()
 	GLOB.new_player_list -= src
-
-	return ..()
+	QDEL_NULL(panel)
+	.=..()
 
 /mob/dead/new_player/verb/new_player_panel()
 	set src = usr
@@ -39,7 +39,7 @@
 	output +="<hr>"
 	output += "<p><a href='byond://?src=\ref[src];show_preferences=1'>Setup Character</A></p>"
 
-	if(!ticker || ticker.current_state <= GAME_STATE_PREGAME)
+	if(SSticker && !SSticker.HasRoundStarted())
 		if(ready)
 			output += "<p>\[ <span class='linkOn'><b>Ready</b></span> | <a href='byond://?src=\ref[src];ready=0'>Not Ready</a> \]</p>"
 		else
@@ -87,7 +87,7 @@
 		return TRUE
 
 	if(href_list["ready"])
-		if(!ticker || ticker.current_state <= GAME_STATE_PREGAME) // Make sure we don't ready up after the round has started
+		if(!SSticker.HasRoundStarted()) // Make sure we don't ready up after the round has started
 			ready = text2num(href_list["ready"])
 		else
 			ready = 0
@@ -108,7 +108,7 @@
 
 	if(href_list["late_join"])
 
-		if(!ticker || ticker.current_state != GAME_STATE_PLAYING)
+		if(!SSticker || SSticker.current_state != GAME_STATE_PLAYING)
 			to_chat(usr, "<span class='warning'>The round is either not ready, or has already finished...</span>")
 			return
 		LateChoices() //show the latejoin job selection menu
@@ -246,7 +246,7 @@
 /mob/dead/new_player/proc/AttemptLateSpawn(var/datum/job/job, var/spawning_at)
 	if(src != usr)
 		return FALSE
-	if(!ticker || ticker.current_state != GAME_STATE_PLAYING)
+	if(!SSticker || SSticker.current_state != GAME_STATE_PLAYING)
 		to_chat(usr, "<span class='warning'>The round is either not ready, or has already finished...</span>")
 		return FALSE
 	if(!CONFIG_GET(flag/enter_allowed))
@@ -306,20 +306,20 @@
 		A.on_mob_init()
 
 		AnnounceCyborg(character, job.title, "has been downloaded to the empty core in \the [character.loc.loc]")
-		ticker.mode.handle_latejoin(character)
+		SSticker.mode.handle_latejoin(character)
 
 		qdel(C)
 		qdel(src)
 		return
 
-	ticker.mode.handle_latejoin(character)
+	SSticker.mode.handle_latejoin(character)
 	GLOB.universe.OnPlayerLatejoin(character)
 	if(job_master.ShouldCreateRecords(job.title))
 		if(character.mind.assigned_role != "Robot")
 			CreateModularRecord(character)
 
 
-			ticker.minds += character.mind//Cyborgs and AIs handle this in the transform proc.	//TODO!!!!! ~Carn
+			GLOB.minds += character.mind//Cyborgs and AIs handle this in the transform proc.	//TODO!!!!! ~Carn
 			AnnounceArrival(character, job, spawnpoint.msg)
 		else
 			AnnounceCyborg(character, job, spawnpoint.msg)
@@ -336,7 +336,7 @@
 
 
 /mob/dead/new_player/proc/AnnounceCyborg(var/mob/living/character, var/rank, var/join_message)
-	if (ticker.current_state == GAME_STATE_PLAYING)
+	if (SSticker.current_state == GAME_STATE_PLAYING)
 		if(character.mind.role_alt_title)
 			rank = character.mind.role_alt_title
 		// can't use their name here, since cyborg namepicking is done post-spawn, so we'll just say "A new Cyborg has arrived"/"A new Android has arrived"/etc.
@@ -347,7 +347,7 @@
 
 	var/list/dat = list("<html><body><center>")
 	dat += "<b>Welcome, [name].<br></b>"
-	dat += "Round Duration: [roundduration2text()]<br>"
+	dat += "Round Duration: <B>[worldtime2text()]</B><br>"
 
 	if(evacuation_controller.has_evacuated())
 		dat += "<font color='red'><b>The [station_name()] has been evacuated.</b></font><br>"
@@ -432,7 +432,7 @@
 			if(is_species_lang || ((!(chosen_language.flags & RESTRICTED) || has_admin_rights()) && is_alien_whitelisted(src, chosen_language)))
 				new_character.add_language(lang)
 
-	if(ticker.random_players)
+	if(SSticker.random_players)
 		new_character.gender = pick(MALE, FEMALE)
 		client.prefs.real_name = random_name(new_character.gender)
 		client.prefs.randomize_appearance_and_body_for(new_character)
@@ -444,7 +444,7 @@
 
 	if(mind)
 		mind.active = 0					//we wish to transfer the key manually
-		mind.original = new_character
+		mind.replace_original_mob(new_character)
 		if(client.prefs.memory)
 			mind.store_memory(client.prefs.memory)
 		if(client.prefs.relations.len)
@@ -463,8 +463,6 @@
 		GLOB.living_crew |= mind
 
 		mind.transfer_to(new_character)					//won't transfer key since the mind is not active
-
-		client.prefs.copy_to_mind(new_character.mind)
 
 	new_character.SetName(real_name)
 	new_character.dna.ready_dna(new_character)
@@ -485,10 +483,6 @@
 	new_character.regenerate_icons()
 
 	new_character.key = key		//Manually transfer the key to log them in
-
-	//Register that they've joined the round
-	character_spawned(new_character.mind)
-
 	return new_character
 
 /mob/dead/new_player/proc/ViewManifest()

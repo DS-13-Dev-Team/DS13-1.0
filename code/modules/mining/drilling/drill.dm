@@ -19,16 +19,16 @@
 	var/list/resource_field = list()
 
 	var/ore_types = list(
-		"iron" = /obj/item/weapon/ore/iron,
-		"uranium" = /obj/item/weapon/ore/uranium,
-		MATERIAL_GOLD = /obj/item/weapon/ore/gold,
-		MATERIAL_SILVER = /obj/item/weapon/ore/silver,
-		MATERIAL_DIAMOND = /obj/item/weapon/ore/diamond,
-		MATERIAL_PHORON = /obj/item/weapon/ore/phoron,
-		"osmium" = /obj/item/weapon/ore/osmium,
-		"hydrogen" = /obj/item/weapon/ore/hydrogen,
-		"silicates" = /obj/item/weapon/ore/glass,
-		"carbonaceous rock" = /obj/item/weapon/ore/coal
+		MATERIAL_IRON = /obj/item/stack/ore/iron,
+		MATERIAL_URANIUM = /obj/item/stack/ore/uranium,
+		MATERIAL_GOLD = /obj/item/stack/ore/gold,
+		MATERIAL_SILVER = /obj/item/stack/ore/silver,
+		MATERIAL_DIAMOND = /obj/item/stack/ore/diamond,
+		MATERIAL_PHORON = /obj/item/stack/ore/phoron,
+		MATERIAL_OSMIUM = /obj/item/stack/ore/osmium,
+		"hydrogen" = /obj/item/stack/ore/hydrogen,
+		"silicates" = /obj/item/stack/ore/glass,
+		"carbonaceous rock" = /obj/item/stack/ore/coal
 		)
 
 	//Upgrades
@@ -77,8 +77,7 @@
 		var/turf/simulated/floor/T = get_turf(src)
 		T.ex_act(2.0, src)
 
-	// prob() won't work here
-	if(rand(1, 100) < dig_chance)
+	if(!prob(dig_chance))
 		return
 
 	//Dig out the tasty ores.
@@ -281,8 +280,8 @@
 
 	var/obj/structure/ore_box/B = locate() in orange(1)
 	if(B)
-		for(var/obj/item/weapon/ore/O in contents)
-			O.loc = B
+		for(var/obj/item/stack/ore/O in contents)
+			B.pick_up_ore(O)
 		to_chat(usr, "<span class='notice'>You unload the drill's storage cache into the ore box.</span>")
 	else
 		to_chat(usr, "<span class='notice'>You must move an ore box up to the drill before you can unload it.</span>")

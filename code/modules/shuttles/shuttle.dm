@@ -17,6 +17,7 @@
 
 	var/sound_takeoff = 'sound/effects/shuttle_takeoff.ogg'
 	var/sound_landing = 'sound/effects/shuttle_landing.ogg'
+	var/sound_arrival = null //only used for tram, where this is defined. This is played after the tram arrives so the sound is heard by those waiting and also onboard the tram.
 
 	var/knockdown = 1 //whether shuttle downs non-buckled people when it moves
 
@@ -75,7 +76,7 @@
 
 	moving_status = SHUTTLE_WARMUP
 	if(sound_takeoff)
-		playsound(current_location, sound_takeoff, 100, 20, 0.2)
+		playsound(current_location, sound_takeoff, 100, 0, 0.2)
 	spawn(warmup_time*10)
 		if (moving_status == SHUTTLE_IDLE)
 			return	//someone cancelled the launch
@@ -97,7 +98,7 @@
 
 	moving_status = SHUTTLE_WARMUP
 	if(sound_takeoff)
-		playsound(current_location, sound_takeoff, 100, 20, 0.2)
+		playsound(current_location, sound_takeoff, 100, 0, 0.2)
 	spawn(warmup_time*10)
 		if(moving_status == SHUTTLE_IDLE)
 			return	//someone cancelled the launch
@@ -197,6 +198,7 @@
 	//This does the actual moving
 	translate_turfs(turf_translation, current_location.base_area, current_location.base_turf)
 	current_location = destination
+	playsound(current_location, sound_arrival, 100, 0, 7) //not sure if there is a better place for this but oh well it works
 
 	// if there's a zlevel above our destination, paint in a ceiling on it so we retain our air
 	if(HasAbove(current_location.z))

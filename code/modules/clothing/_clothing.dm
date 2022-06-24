@@ -182,7 +182,7 @@
 		if(accessories.len)
 			var/list/ties = list()
 			for(var/accessory in accessories)
-				ties += "\icon[accessory] \a [accessory]"
+				ties += "[icon2html(accessory)] \a [accessory]"
 			to_chat(user, "Attached to \the [src] are [english_list(ties)].")
 		return TOPIC_HANDLED
 
@@ -353,7 +353,7 @@ BLIND     // can't see anything
 	return 0 // return 1 to cancel attack_hand()
 
 /obj/item/clothing/gloves/attackby(obj/item/weapon/W, mob/user)
-	if(istype(W, /obj/item/weapon/tool/wirecutters) || istype(W, /obj/item/weapon/scalpel))
+	if(isWirecutter(W) || isScalpel(W))
 		if (clipped)
 			to_chat(user, "<span class='notice'>\The [src] have already been modified!</span>")
 			update_icon()

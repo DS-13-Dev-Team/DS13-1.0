@@ -82,8 +82,20 @@ GLOBAL_LIST_EMPTY(skills)
 
 /decl/hierarchy/skill/general/hauling
 	ID = "hauling"
+	name = "Hauling"
+	desc = "Your ability to perform tasks requiring great strength. Affects the penalties of wearing heavy gear"
+	levels = list( "Unskilled"			= "You are not used to manual labor, tire easily, and are likely not in great shape. Extended heavy labor may be dangerous for you.",
+						"Basic"				= "You have some familiarity with manual labor, and are in reasonable physical shape. Tasks requiring great dexterity or strength may still elude you.",
+						"Trained"			= "You have sufficient strength and dexterity for even very strenuous tasks, and can work for a long time without tiring.",
+						"Experienced"		= "You have experience with heavy work in trying physical conditions, and are in excellent shape. You visit the gym frequently.",
+						"Master"		= "In addition to your excellent strength and endurance, you have a lot of experience with the specific physical demands of your job. You may have competitive experience with some form of athletics.")
+	difficulty = SKILL_EASY
+
+
+/decl/hierarchy/skill/general/athletics
+	ID = "athletics"
 	name = "Athletics"
-	desc = "Your ability to perform tasks requiring great strength, dexterity, or endurance. Affects work speed and failure chance when mining"
+	desc = "Your ability to perform tasks requiring great endurance. Affects your stamina costs"
 	levels = list( "Unskilled"			= "You are not used to manual labor, tire easily, and are likely not in great shape. Extended heavy labor may be dangerous for you.",
 						"Basic"				= "You have some familiarity with manual labor, and are in reasonable physical shape. Tasks requiring great dexterity or strength may still elude you.",
 						"Trained"			= "You have sufficient strength and dexterity for even very strenuous tasks, and can work for a long time without tiring.",

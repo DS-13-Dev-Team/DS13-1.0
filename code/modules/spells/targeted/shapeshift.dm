@@ -55,19 +55,20 @@
 		M.forceMove(trans) //move inside the new dude to hide him.
 		M.status_flags |= GODMODE //dont want him to die or breathe or do ANYTHING
 		transformed_dudes[trans] = M
-		GLOB.death_event.register(trans,src,/spell/targeted/shapeshift/proc/stop_transformation)
-		GLOB.destroyed_event.register(trans,src,/spell/targeted/shapeshift/proc/stop_transformation)
-		GLOB.destroyed_event.register(M, src, /spell/targeted/shapeshift/proc/destroyed_transformer)
+		RegisterSignal(trans, list(COMSIG_LIVING_DEATH, COMSIG_PARENT_QDELETING), .proc/stop_transformation)
+		RegisterSignal(trans, COMSIG_PARENT_QDELETING, .proc/destroyed_transformer)
 		if(duration)
 			spawn(duration)
 				stop_transformation(trans)
 
 /spell/targeted/shapeshift/proc/destroyed_transformer(var/mob/target) //Juuuuust in case
+	SIGNAL_HANDLER
 	var/mob/current = transformed_dudes[target]
 	to_chat(current, "<span class='danger'>You suddenly feel as if this transformation has become permanent...</span>")
 	remove_target(target)
 
 /spell/targeted/shapeshift/proc/stop_transformation(var/mob/living/target)
+	SIGNAL_HANDLER
 	var/mob/living/transformer = transformed_dudes[target]
 	if(!transformer)
 		return FALSE
@@ -89,9 +90,8 @@
 
 /spell/targeted/shapeshift/proc/remove_target(var/mob/living/target)
 	var/mob/current = transformed_dudes[target]
-	GLOB.destroyed_event.unregister(target,src)
-	GLOB.death_event.unregister(current,src)
-	GLOB.destroyed_event.unregister(current,src)
+	UnregisterSignal(target, COMSIG_PARENT_QDELETING)
+	UnregisterSignal(current, list(COMSIG_PARENT_QDELETING, COMSIG_LIVING_DEATH))
 	transformed_dudes[target] = null
 	transformed_dudes -= target
 

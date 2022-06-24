@@ -11,6 +11,8 @@
 	var/datum/admins/holder = null
 	var/datum/admins/deadmin_holder = null
 
+	var/datum/player_details/player_details //these persist between logins/logouts during the same round.
+
 		/////////
 		//OTHER//
 		/////////
@@ -24,7 +26,8 @@
 		///////////////
 		//SOUND STUFF//
 		///////////////
-	var/ambience_playing= null
+	var/vent_ambience_playing= null
+	var/area_ambience_playing= null
 	var/played			= 0
 	var/list/played_lobby_tracks	//List of tracks we've already heard this session. Used to sort-of prevent a user from hearing the same track more than once per round
 	var/lobby_trackchange_timer			//Timer handle for queued lobby track change. This must be deleted when the client leaves the lobby
@@ -78,9 +81,6 @@
 	var/view_offset_magnitude	//Cached when view offset is set
 
 	var/atom/movable/screen/click_catcher/void = null
-
-	//Static framerate
-	fps = 50
 
 	/// our current tab
 	var/stat_tab

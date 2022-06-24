@@ -12,29 +12,15 @@ GLOBAL_LIST_EMPTY(unlimited_store_designs)
 //Holds designs that are patron only or require a whitelist. These do not require schematics
 GLOBAL_LIST_EMPTY(limited_store_designs)
 
-/obj/machinery/store
-
-/datum/design
-	//A patron item datum used to manage access
-	var/datum/patron_item/PI
-
-
 /proc/load_store_database()
-	GLOB.public_store_designs = list()
-
-	var/list/temp_list = SSdatabase.known_designs.Copy()
-
-	for (var/id in temp_list)
-
+	for(var/id in SSresearch.design_ids.Copy())
 		var/datum/design/D = SSresearch.design_ids[id]
 
-		//Its gotta be printable in the store
-		if (!(D.build_type & STORE))
-			continue
+		if(D.PI && D.PI.store_access != ACCESS_PUBLIC)
+			LAZYADD(GLOB.limited_store_designs, id)
 
+		else if(D.build_type & STORE_ROUNDSTART || (D.PI && D.PI.store_access == ACCESS_PUBLIC))
+			LAZYADD(GLOB.unlimited_store_designs, id)
 
-		LAZYADD(GLOB.public_store_designs[D.category], list(D.ui_data()))
-
-	//Add this lot to the list
-	for (var/datum/design/D in GLOB.unlimited_store_designs)
-		LAZYADD(GLOB.public_store_designs[D.category], list(D.ui_data()))
+		else if(D.build_type & STORE_SCHEMATICS)
+			LAZYADD(GLOB.public_store_designs, id)

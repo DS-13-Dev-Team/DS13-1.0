@@ -82,7 +82,7 @@
 			else                             // Deep metals.
 				T.resources["uranium"] =  rand(RESOURCE_LOW_MIN,  RESOURCE_LOW_MAX)
 				T.resources[MATERIAL_DIAMOND] =  rand(RESOURCE_LOW_MIN,  RESOURCE_LOW_MAX)
-				T.resources[MATERIAL_PHORON] =   rand(RESOURCE_HIGH_MIN, RESOURCE_HIGH_MAX)
+				T.resources[MATERIAL_PHORON] =   rand(RESOURCE_MID_MIN, RESOURCE_HIGH_MAX)
 				T.resources["osmium"] =   rand(RESOURCE_HIGH_MIN, RESOURCE_HIGH_MAX)
 				T.resources["hydrogen"] = rand(RESOURCE_MID_MIN,  RESOURCE_MID_MAX)
 				T.resources["iron"] =     0

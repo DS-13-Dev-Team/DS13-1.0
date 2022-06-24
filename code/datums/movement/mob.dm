@@ -95,7 +95,7 @@
 /client/verb/swap_hand()
 	set hidden = 1
 	if(istype(mob, /mob/living/carbon))
-		mob:swap_hand()
+		mob.swap_hand()
 	if(istype(mob,/mob/living/silicon/robot))
 		var/mob/living/silicon/robot/R = mob
 		R.cycle_modules()
@@ -115,7 +115,7 @@
 	if(!istype(mob, /mob/living/carbon))
 		return
 	if (!mob.stat && isturf(mob.loc) && !mob.restrained())
-		mob:toggle_throw_mode()
+		mob.toggle_throw_mode()
 	else
 		return
 
@@ -622,7 +622,7 @@ If this is needed in future, add new datum procs for adding allowed movers, and 
 	return 1
 
 /mob/living/carbon/human/get_stamina_used_per_step()
-	var/mod = (1-((get_skill_value(SKILL_HAULING) - SKILL_MIN)/(SKILL_MAX - SKILL_MIN)))
+	var/mod = (1-((get_skill_value(SKILL_ATHLETICS) - SKILL_MIN)/(SKILL_MAX - SKILL_MIN)))
 	if(species && (species.species_flags & SPECIES_FLAG_LOW_GRAV_ADAPTED))
 		if(has_gravity(src))
 			mod *= 1.2

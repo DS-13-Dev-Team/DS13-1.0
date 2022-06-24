@@ -3,7 +3,7 @@
 // TURFS
 
 /proc/updateVisibility(atom/A, var/opacity_check = 1)
-	if(ticker)
+	if(SSticker)
 		for(var/datum/visualnet/VN in GLOB.visual_nets)
 			VN.update_visibility(A, opacity_check)
 
@@ -33,9 +33,4 @@
 	// Glass door glass = 1
 	// don't check then?
 	if(!glass)
-		updateVisibility(src, FALSE)
-
-/turf/ChangeTurf()
-	. = ..()
-	if(.)
 		updateVisibility(src, FALSE)

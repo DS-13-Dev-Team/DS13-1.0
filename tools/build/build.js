@@ -64,6 +64,7 @@ export const DmTarget = new Juke.Target({
     'html/**',
     'icons/**',
     'interface/**',
+    'maps/**',
     `${DME_NAME}.dme`,
   ],
   outputs: [

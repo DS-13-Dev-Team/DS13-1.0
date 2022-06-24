@@ -72,6 +72,8 @@ meteor_act
 	return blocked
 
 /mob/living/carbon/human/stun_effect_act(var/stun_amount, var/agony_amount, var/def_zone)
+	if(!can_feel_pain())
+		return
 	var/obj/item/organ/external/affected = get_organ(check_zone(def_zone))
 	if(!affected)
 		return
@@ -598,6 +600,9 @@ meteor_act
 	An attack aimed at the face, but blocked by an arm hurts the arm less than an attack specifically aimed at that arm
 */
 /mob/living/carbon/human/handle_strike_defense(var/datum/strike/strike)
+	if(!aura_check(AURA_TYPE_STRIKE, strike))
+		return 0
+
 	if (!can_defend(strike))
 		return
 

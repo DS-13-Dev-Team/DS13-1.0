@@ -164,7 +164,7 @@ if (result == EXECUTION_CANCEL && can_interrupt){\
 		var/stagetype = all_stages[i]
 		all_stages[i] = new stagetype(src)
 
-	//ongoing_timer = addtimer(CALLBACK(src, /datum/extension/execution/proc/start), 0, TIMER_STOPPABLE)
+	//INVOKE_ASYNC(src, .proc/start)
 
 
 
@@ -203,7 +203,7 @@ if (result == EXECUTION_CANCEL && can_interrupt){\
 	//Lets setup handling for future interruption
 	can_interrupt = TRUE
 	if (user)
-		GLOB.damage_hit_event.register(user, src, /datum/extension/execution/proc/user_damaged)
+		RegisterSignal(user, COMSIG_MOB_DAMAGE_HIT, .proc/user_damaged)
 
 
 	try_advance_stage()
@@ -233,7 +233,7 @@ if (result == EXECUTION_CANCEL && can_interrupt){\
 	stopped_at = world.time
 	status = STATUS_ENDED
 	//Lets remove observations
-	GLOB.damage_hit_event.unregister(user, src, /datum/extension/execution/proc/user_damaged)
+	UnregisterSignal(user, COMSIG_MOB_DAMAGE_HIT)
 	unregister_statmods()
 
 
@@ -294,7 +294,7 @@ if (result == EXECUTION_CANCEL && can_interrupt){\
 			reward_biomass = 0
 
 	if (reward_heal)
-		user.heal_overall_damage(reward_heal)
+		INVOKE_ASYNC(user, /mob/living/proc/heal_overall_damage, reward_heal)
 		to_chat(user, SPAN_EXECUTION("Execution complete, you have recovered [reward_heal] health!"))
 		reward_heal = 0
 
@@ -370,7 +370,7 @@ if (result == EXECUTION_CANCEL && can_interrupt){\
 	if (current_stage_index > max_stages)
 		//We just finished the last stage, time to stop.
 		complete()
-		ongoing_timer = addtimer(CALLBACK(src, /datum/extension/execution/proc/stop), 0, TIMER_STOPPABLE)
+		INVOKE_ASYNC(src, .proc/stop)
 		return
 
 	//Here's our new current stage, enter it
@@ -432,6 +432,7 @@ if (result == EXECUTION_CANCEL && can_interrupt){\
 
 //Called if the attacker takes a damaging impact while performing an execution
 /datum/extension/execution/proc/user_damaged(var/mob/living/damaged_user, var/obj/item/organ/external/organ, var/brute, var/burn, var/damage_flags, var/used_weapon)
+	SIGNAL_HANDLER
 	hit_damage_taken += (brute + burn)
 	if (can_interrupt && (hit_damage_taken >= interrupt_damage_threshold))
 		to_chat(user, SPAN_WARNING("You took too much damage, execution interrupted! [hit_damage_taken] >= [interrupt_damage_threshold]"))

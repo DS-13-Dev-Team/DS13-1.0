@@ -14,7 +14,7 @@
 
 #define SKILL_EVA           /decl/hierarchy/skill/general/EVA
 #define SKILL_HAULING       /decl/hierarchy/skill/general/hauling
-#define SKILL_PILOT         /decl/hierarchy/skill/general/pilot
+#define SKILL_ATHLETICS     /decl/hierarchy/skill/general/athletics
 #define SKILL_COMPUTER      /decl/hierarchy/skill/general/computer
 #define SKILL_COOKING       /decl/hierarchy/skill/service/cooking
 #define SKILL_COMBAT        /decl/hierarchy/skill/security/combat
@@ -39,6 +39,7 @@
 #define STATMOD_SCALE "scale"
 #define STATMOD_CONVERSION_COMPATIBILITY	"conversion compatibility"
 #define STATMOD_LAYER	"layer"
+#define STATMOD_HEALTH_MULTIPLICATIVE "health percent"
 
 //Resource Defines
 #define RESOURCE_ESSENCE	/datum/extension/resource/essence

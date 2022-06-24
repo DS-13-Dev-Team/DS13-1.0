@@ -2,9 +2,6 @@
 		The way datum/mind stuff works has been changed a lot.
 		Minds now represent IC characters rather than following a client around constantly.
 
-		Note that a mind only represents a character who has been brought into physical existence this round.
-		Minds do not exist for characters in savefiles until they are spawned
-
 	Guidelines for using minds properly:
 
 	-	Never mind.transfer_to(ghost). The var/current and var/original of a mind must always be of type mob/living!
@@ -37,10 +34,8 @@
 	var/name				//replaces mob/var/original_name
 	var/mob/living/current
 	var/mob/living/original	//Edit by Nanako, this value is now used and should not be removed
-	var/mob/dead/observer/ghost	//When this mob is dead and floating around, this var holds the ghost mob who used to be its body
+	var/mob/dead/observer/ghost/ghost	//When this mob is dead and floating around, this var holds the ghost mob who used to be its body
 	var/active = 0
-
-	var/character_id	//The database ID of the associated character records for this mind. Used to fetch and store persistent data
 
 	var/memory
 	var/list/known_connections //list of known (RNG) relations between people
@@ -69,15 +64,6 @@
 	//put this here for easier tracking ingame
 	var/datum/money_account/initial_account
 
-	/*
-		This value is set once, on death, during the call stack
-		It checks and caches how many credits our original mob was carrying when they died.
-
-		The main purpose of this is to have a record in case the body is gibbed, dusted, or otherwise annihilated
-	*/
-	var/list/final_credits = null
-
-	var/cached_crew_persistence	=	null
 
 	var/list/initial_email_login = list("login" = "", "password" = "")
 
@@ -91,9 +77,9 @@
 
 
 
-/datum/mind/proc/transfer_to(mob/living/new_character)
+/datum/mind/proc/transfer_to(mob/new_character)
 	if(!istype(new_character))
-		log_world("## DEBUG: transfer_to(): Some idiot has tried to transfer_to() a non mob/living mob. Please inform Carn")
+		log_world("## DEBUG: transfer_to(): Some idiot has tried to transfer mind to a non mob. Please inform at least someone")
 	if(current)					//remove ourself from our old body's mind variable
 		if(changeling)
 			current.remove_changeling_powers()
@@ -104,7 +90,8 @@
 	if(new_character.mind)		//remove any mind currently in our new body's mind variable
 		new_character.mind.current = null
 
-	new_character.skillset.obtain_from_mob(current)	//handles moving skills over.
+	if(istype(new_character.skillset))
+		new_character.skillset.obtain_from_mob(current)	//handles moving skills over.
 
 	current = new_character		//link ourself to our new body
 	if (isghost(current))
@@ -123,6 +110,19 @@
 	if(new_character.client)
 		new_character.client.init_verbs()
 
+/datum/mind/proc/replace_original_mob(mob/new_mob)
+	if(!istype(new_mob) || original == new_mob)
+		return
+	if(original)
+		UnregisterSignal(original, COMSIG_PARENT_QDELETING)
+	original = new_mob
+	RegisterSignal(original, COMSIG_PARENT_QDELETING, .proc/original_mob_delete)
+
+/datum/mind/proc/original_mob_delete(datum/source, force_state)
+	if(original == source)
+		original = null
+		UnregisterSignal(source, COMSIG_PARENT_QDELETING)
+
 /datum/mind/proc/store_memory(new_text)
 	memory += "[new_text]<BR>"
 
@@ -137,7 +137,7 @@
 	recipient << browse(output,"window=memory")
 
 /datum/mind/proc/edit_memory()
-	if(!ticker || !ticker.mode)
+	if(!SSticker || !SSticker.mode)
 		tgui_alert(usr, "Not before round-start!", "Alert")
 		return
 
@@ -275,7 +275,7 @@
 				var/objective_type = "[objective_type_capital][objective_type_text]"//Add them together into a text string.
 
 				var/list/possible_targets = list("Free objective")
-				for(var/datum/mind/possible_target in ticker.minds)
+				for(var/datum/mind/possible_target in GLOB.minds)
 					if ((possible_target != src) && istype(possible_target.current, /mob/living/carbon/human))
 						possible_targets += possible_target.current
 
@@ -594,11 +594,11 @@
 		mind.key = key
 	else
 		mind = new /datum/mind(key)
-		mind.original = src
-		if(ticker)
-			ticker.minds += mind
+		mind.replace_original_mob(src)
+		if(SSticker)
+			GLOB.minds += mind
 		else
-			log_world("## DEBUG: mind_initialize(): No ticker ready yet! Please inform Carn")
+			world.log << "## DEBUG: mind_initialize(): No ticker ready yet! Please inform Carn"
 	if(!mind.name)	mind.name = real_name
 	mind.current = src
 	if(player_is_antag(mind))
@@ -661,124 +661,3 @@
 	..()
 	mind.assigned_role = "Juggernaut"
 	mind.set_special_role("Cultist")
-
-
-/*
-	Called when we are in a human mob who dies
-*/
-/datum/mind/proc/on_death()
-	//Database handling, only do this if we have a registered character ID
-	if (has_crew_persistence())
-		//Antags don't get death penalties
-		if (special_role)
-			return
-
-		character_died(src)
-
-
-/*
-	How is this character doing this round? Returns one of the three STATUS_XXX defines from defines/characters.dm
-*/
-/datum/mind/proc/get_round_status()
-
-
-
-	if (current?.stat == DEAD || isghostmind(src))
-		return STATUS_DEAD
-
-	//TODO: Check if they're on a shuttle or an escape area
-	var/area/A = get_area(current)
-	if(A)
-		if (is_type_in_list(A, GLOB.using_map.post_round_safe_areas))
-			return STATUS_ESCAPED
-
-		//Shuttle handling
-		if (istype(A, /area/shuttle))
-			var/area/shuttle/AS = A
-			if (AS.has_escaped())
-				return STATUS_ESCAPED
-
-
-
-	return STATUS_LIVING
-
-
-
-/*
-	Get the total credits that this character "owns", divided into two categories:
-	Stored: The contents of their checking account
-	Carried: The contents of their rig account, and of any credit chips on their person
-*/
-/datum/mind/proc/get_owned_credits()
-
-	//Indicates this mind is not properly setup yet
-	if (!initial_account)
-		return null
-
-	//If they're dead, we don't check credits again as we don't want to know about any postmortem changes
-	if (is_dead())
-		return final_credits
-
-	var/list/values =list()
-	values["stored"] = initial_account.money
-	values["carried"] = current.get_carried_credits()
-
-	return values
-
-
-/*
-	Called exactly once on death, caches the value of credits we were carrying at the moment we died
-	This happens just before our body is gibbed, if that's going to happen
-*/
-/datum/mind/proc/get_final_credits()
-	//Don't do it again if its been done
-	if (!isnull(final_credits))
-		return
-
-	final_credits = list()
-	final_credits["carried"] = original.get_carried_credits()
-
-	if (initial_account)
-		final_credits["stored"] = initial_account.money
-
-	//TODO: Delete excess carried credits from the mob to avoid looting?
-
-	//Lets drop a credit chip for the loot we have
-	if (final_credits["carried"] > 1)
-		var/obj/item/weapon/spacecash/ewallet/E = new (get_turf(original))
-		E.set_worth(final_credits["carried"]*FEE_DEATH)
-
-	//Now move the rest of the carried cash back to the account
-	if (initial_account)
-		initial_account.money += final_credits["carried"] * (1 - FEE_DEATH)
-
-
-	final_credits["carried"] *= (1 - FEE_DEATH)
-
-	//Get rid of what's left
-	spawn(10)
-		zero_carried_credits()
-
-/datum/mind/proc/zero_carried_credits()
-	var/mob/living/carbon/human/H = current
-	if (!istype(H))
-		return
-	if (H.wearing_rig)
-		var/datum/money_account/MA = H.wearing_rig.get_account()
-		MA.money = 0
-
-	for (var/obj/item/weapon/spacecash/ewallet/E in H.get_contents())
-		qdel(E)
-
-//Returns true if this mind is for a character who is dead.
-/datum/mind/proc/is_dead()
-	if (current?.stat == DEAD || isghostmind(src))
-		return TRUE
-
-	return FALSE
-
-
-//A wrapper that puts us in a global list
-/datum/mind/proc/set_id(var/new_id)
-	character_id = new_id
-	GLOB.characters["character_id"] = src

@@ -22,10 +22,10 @@
 		return ..()
 	return material.value * amount
 
-/obj/item/weapon/ore/Value()
+/obj/item/stack/ore/Value()
 	var/material/mat = get_material_by_name(ore.material)
 	if(mat)
-		return mat.value
+		return mat.value * amount
 	return 0
 
 /obj/item/weapon/material/Value()

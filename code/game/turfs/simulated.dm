@@ -135,13 +135,16 @@
 				slip_stun = 10
 
 			if(M.slip("the [floor_type] floor", slip_stun))
-				for(var/i = 1 to slip_dist)
-					step(M, M.dir)
-					sleep(1)
+				INVOKE_ASYNC(src, .proc/handle_slippery, M, slip_dist)
 			else
 				M.inertia_dir = 0
 		else
 			M.inertia_dir = 0
+
+/turf/simulated/proc/handle_slippery(mob/living/user, slip_dist)
+	for(var/i = 1 to slip_dist)
+		step(user, user.dir)
+		sleep(1)
 
 //returns 1 if made bloody, returns 0 otherwise
 /turf/simulated/add_blood(mob/living/carbon/human/M as mob)

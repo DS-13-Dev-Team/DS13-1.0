@@ -58,6 +58,7 @@
 /mob/living/carbon/human/Destroy()
 	if(species)
 		species.onDestroy(src)
+	QDEL_NULL(vessel)
 	GLOB.human_mob_list -= src
 	worn_underwear = null
 	remove_massive_atom(src)	//Remove necromorphs from the massive atoms list
@@ -936,7 +937,8 @@
 
 	regenerate_icons(TRUE)
 	spawn(0)
-
+		if(QDELETED(src))
+			return
 		if(vessel.total_volume < species.blood_volume)
 			vessel.maximum_volume = species.blood_volume
 			vessel.add_reagent(/datum/reagent/blood, species.blood_volume - vessel.total_volume)
@@ -1387,7 +1389,7 @@
 	var/datum/computer_file/report/crew_record/R = get_crewmember_record(real_name) //Try get a crew manifest for this mob
 	if(!R)
 		return FALSE //Not on the manifest? You don't exist.
-	ticker.mode.on_crew_revive(src) //Congrats, you're alive again.
+	SSticker.mode.on_crew_revive(src) //Congrats, you're alive again.
 
 /mob/living/carbon/human/proc/make_reagent(amount, reagent_type)
 	if(stat == CONSCIOUS)

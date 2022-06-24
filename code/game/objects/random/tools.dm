@@ -11,6 +11,9 @@
 				/obj/item/weapon/tool/screwdriver = 8,
 				/obj/item/weapon/tool/screwdriver/electric = 2,
 				/obj/item/weapon/tool/screwdriver/combi_driver = 1,
+				/obj/item/stack/net/small = 3,
+				/obj/item/stack/net/medium = 1,
+
 
 				//Wirecutters
 				/obj/item/weapon/tool/wirecutters/improvised = 12,
@@ -97,7 +100,8 @@
 				/obj/item/weapon/tool/pickaxe/laser = 2,
 				/obj/item/weapon/tool/tape_roll/fiber = 2,
 				/obj/item/weapon/tool/repairkit = 2,
-				/obj/item/stack/power_node = 2))
+				/obj/item/stack/power_node = 2,
+				/obj/item/stack/net/large = 1))
 
 /obj/random/toolbox
 	name = "random toolbox"

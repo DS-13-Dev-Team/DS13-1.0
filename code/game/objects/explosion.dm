@@ -95,7 +95,7 @@ proc/explosion_FX(turf/epicenter, max_range = 0, explosion_sound=get_sfx("explos
 
 			else
 				var/dist_percent = (dist > 0 ? dist / (EXPLOSION_FAR_RANGE) : 1)
-				var/upper_dist_percent = (dist * 0.5) + 0.5	//Percentage rescaled to be between 50-100%
+				var/upper_dist_percent = (dist_percent * 0.5) + 0.5	//Percentage rescaled to be between 50-100%
 				shake_camera(M, duration= 6 SECONDS*dist_percent , strength=3*upper_dist_percent)
 				M.playsound_local(epicenter, 'sound/effects/explosionfar.ogg', VOLUME_MAX, 1, extrarange = EXPLOSION_FAR_RANGE, falloff = 20)
 		CHECK_TICK

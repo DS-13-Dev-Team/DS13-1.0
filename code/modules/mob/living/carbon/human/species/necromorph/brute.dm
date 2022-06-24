@@ -7,7 +7,7 @@
 	name_plural =  "Brutes"
 	blurb = "A powerful linebreaker and assault specialist, the brute can smash through almost any obstacle, and its tough frontal armor makes it perfect for assaulting entrenched positions. \n\
 	Very vulnerable to flanking attacks"
-	total_health = 450
+	total_health = 510
 	torso_damage_mult = 1 //Hitting centre mass is fine for brute
 
 	//Normal necromorph flags plus no slip
@@ -23,7 +23,7 @@
 	pixel_offset_x = -16
 	layer = LARGE_MOB_LAYER
 	require_total_biomass	=	BIOMASS_REQ_T3
-	biomass = 400
+	biomass = 360
 	mass = 250
 	biomass_reclamation_time	=	15 MINUTES
 	virus_immune = 1
@@ -39,12 +39,12 @@
 	reach = 2
 
 	//Implacable
-	stun_mod = 0.5
-	weaken_mod = 0.3
-	paralysis_mod = 0.3
+	stun_mod = 0.15
+	weaken_mod = 0.1
+	paralysis_mod = 0.1
 
 	//Big targets are less vulnerable to fire and explosions
-	burn_mod = 0.85
+	burn_mod = 0.75
 
 	inherent_verbs = list(/atom/movable/proc/brute_charge, /atom/movable/proc/brute_slam, /atom/movable/proc/curl_verb, /mob/living/carbon/human/proc/biobomb, /mob/proc/shout)
 	modifier_verbs = list(KEY_MIDDLE = list(/mob/living/carbon/human/proc/biobomb),
@@ -54,19 +54,19 @@
 
 	unarmed_types = list(/datum/unarmed_attack/punch/brute)
 
-	slowdown = 5 //Note, this is a terribly awful way to do speed, bay's entire speed code needs redesigned
+	slowdown = 4.8 //Note, this is a terribly awful way to do speed, bay's entire speed code needs redesigned
 	slow_turning = TRUE		//Slow turning and limited clicks ensures he can't just 360quickscope someone who sneaked up behind
 	limited_click_arc = 90
 
 	//Vision
 	view_range = 4
-	view_offset = 3 * WORLD_ICON_SIZE
+	// view_offset = 3 * WORLD_ICON_SIZE // Just no.
 
 	//Brute Armor vars
 	var/armor_front = 30	//Flat reduction applied to incoming damage within a 45 degree cone infront
 	var/armor_flank = 20	//Flat reduction applied to incoming damage within a 90 degree cone infront. Doesnt stack with front
 	var/curl_armor_mult = 1.5	//Multiplier applied to armor when we are curled up
-	var/armor_coverage = 96 //What percentage of our body is covered by armor plating. 95 = 5% chance for hits to strike a weak spot
+	var/armor_coverage = 100 //What percentage of our body is covered by armor plating. 95 = 5% chance for hits to strike a weak spot
 
 
 	has_limbs = list(

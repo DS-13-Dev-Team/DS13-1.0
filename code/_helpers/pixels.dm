@@ -178,8 +178,7 @@
 //Moves this atom into the specified turf physically, but adjusts its pixel X/Y so that its global pixel loc remains the same
 /atom/movable/proc/set_turf_maintain_pixels(var/turf/T)
 	var/vector2/offset = get_global_pixel_offset(T)
-	//forceMove(T)
-	loc = T
+	forceMove(T)
 	pixel_x = offset.x
 	pixel_y = offset.y
 	release_vector(offset)

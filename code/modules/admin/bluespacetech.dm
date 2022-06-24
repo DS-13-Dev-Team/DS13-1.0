@@ -165,7 +165,8 @@
 
 /mob/living/carbon/human/bst
 	universal_understand = TRUE
-	//status_flags = GODMODE	//Leave this off by default, more useful for testing
+	skillset = /datum/skillset/bst
+	status_flags = GODMODE
 	var/fall_override = TRUE
 	var/mob/original_body = null
 
@@ -183,15 +184,13 @@
 	var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
 	s.set_up(5, 1, src)
 	s.start()
-	spawn(10)
-		qdel(src)
 	if(key)
-
 		var/mob/dead/observer/ghost/ghost = ghostize(TRUE)
 		ghost.name = "[ghost.key] BSTech"
 		ghost.real_name = "[ghost.key] BSTech"
 		ghost.voice_name = "[ghost.key] BSTech"
 		ghost.admin_ghosted = TRUE
+	qdel(src)
 
 /mob/living/carbon/human/bst/verb/antigrav()
 	set name = "Toggle Gravity"
@@ -249,8 +248,6 @@
 	set category = "BST"
 
 	status_flags ^= GODMODE
-	to_chat(src, SPAN_NOTICE("God mode is now [status_flags & GODMODE ? "enabled" : "disabled"]"))
-
 	to_chat(src, SPAN_NOTICE("God mode is now [status_flags & GODMODE ? "enabled" : "disabled"]"))
 
 

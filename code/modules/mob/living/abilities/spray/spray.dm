@@ -90,7 +90,7 @@ Vars/
 	src.cooldown = cooldown
 
 	handle_extra_data(extra_data)
-	//ongoing_timer = addtimer(CALLBACK(src, /datum/extension/spray/proc/start), 0)
+	//INVOKE_ASYNC(src, .proc/start)
 
 /datum/extension/spray/proc/handle_extra_data(var/list/data)
 
@@ -174,7 +174,7 @@ Vars/
 			QDEL_NULL(fx)
 
 		//Lets create the chemspray fx
-		fx = new fx_type(source, direction, duration, length, angle)
+		fx = new fx_type(user ? user : source, direction, duration, length, angle)
 		fx.particle_color = particle_color
 		fx.start()
 

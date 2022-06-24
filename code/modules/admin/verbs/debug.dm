@@ -42,7 +42,7 @@
 	set category = "Fun"
 	set name = "Make Robot"
 
-	if(!ticker)
+	if(!SSticker)
 		tgui_alert(src, "Wait until the game starts")
 		return
 	if(istype(M, /mob/living/carbon/human))
@@ -57,8 +57,8 @@
 	set category = "Fun"
 	set name = "Make Simple Animal"
 
-	if(!ticker)
-		tgui_alert(src, "Wait until the game starts")
+	if(!SSticker)
+		alert("Wait until the game starts")
 		return
 
 	if(!M)
@@ -105,8 +105,8 @@
 	set category = "Fun"
 	set name = "Make slime"
 
-	if(!ticker)
-		tgui_alert(src, "Wait until the game starts")
+	if(!SSticker)
+		alert("Wait until the game starts")
 		return
 	if(ishuman(M))
 		log_admin("[key_name(src)] has slimeized [M.key].")
@@ -123,7 +123,7 @@
 	set name = "Make Monkey"
 
 	if(!ticker)
-		tgui_alert(src, "Wait until the game starts")
+		alert("Wait until the game starts")
 		return
 	if(istype(M, /mob/living/carbon/human))
 		var/mob/living/carbon/human/target = M
@@ -138,7 +138,7 @@
 	set name = "Make Changeling"
 
 	if(!ticker)
-		tgui_alert(src, "Wait until the game starts")
+		alert("Wait until the game starts")
 		return
 	if(istype(M, /mob/living/carbon/human))
 		log_admin("[key_name(src)] has made [M.key] a changeling.")
@@ -158,7 +158,7 @@
 	to_chat(usr, "Ruby Mode disabled. Command aborted.")
 	return
 	if(!ticker)
-		tgui_alert(src, "Wait until the game starts.")
+		alert("Wait until the game starts.")
 		return
 	if(istype(M, /mob/living/carbon/human))
 		log_admin("[key_name(src)] has made [M.key] an abomination.")
@@ -175,7 +175,7 @@
 	if(!cultwords["travel"])
 		runerandom()
 	if(M)
-		if(M.mind in ticker.mode.cult)
+		if(M.mind in SSticker.mode.cult)
 			return
 		else
 			if(tgui_alert(src, "Spawn that person a tome?", "Confirmation","Yes","No")=="Yes")
@@ -204,7 +204,7 @@
 
 			if(M.mind)
 				M.mind.set_special_role("Cultist")
-				ticker.mode.cult += M.mind
+				SSticker.mode.cult += M.mind
 			to_chat(src, "Made [M] a cultist.")
 */
 
@@ -245,8 +245,8 @@
 	set category = "Admin"
 	set name = "Grant Full Access"
 
-	if (!ticker)
-		tgui_alert(src, "Wait until the game starts")
+	if (!SSticker)
+		alert("Wait until the game starts")
 		return
 	if (istype(M, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
@@ -273,16 +273,16 @@
 	set name = "Assume direct control"
 	set desc = "Direct intervention"
 
-	if(!check_rights(R_DEBUG|R_ADMIN))	return
-	if(M.ckey)
-		if(tgui_alert(src, "This mob is being controlled by [M.ckey]. Are you sure you wish to assume control of it? [M.ckey] will be made a ghost.", "Confirmation", list("Yes","No")) != "Yes")
+	if(!check_rights(R_DEBUG|R_ADMIN))
+		return
+	var/mob/adminmob = src.mob
+	if(M.key)
+		if(tgui_alert(src, "This mob is being controlled by [M.key]. Are you sure you wish to assume control of it? [M.key] will be made a ghost.", "Confirmation", list("Yes","No")) != "Yes")
 			return
 		else
-			var/mob/dead/observer/ghost/ghost = new/mob/dead/observer/ghost(M,1)
-			ghost.ckey = M.ckey
+			new/mob/dead/observer/ghost(M)
 	log_and_message_admins("assumed direct control of [M].")
-	var/mob/adminmob = src.mob
-	M.ckey = src.ckey
+	adminmob.mind.transfer_to(M)
 	if(isghost(adminmob))
 		qdel(adminmob)
 	feedback_add_details("admin_verb","ADC") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
@@ -483,8 +483,8 @@
 
 // DNA2 - Admin Hax
 /client/proc/cmd_admin_toggle_block(var/mob/M,var/block)
-	if(!ticker)
-		tgui_alert(src, "Wait until the game starts")
+	if(!SSticker)
+		alert("Wait until the game starts")
 		return
 	if(istype(M, /mob/living/carbon))
 		M.dna.SetSEState(block,!M.dna.GetSEState(block))

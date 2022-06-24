@@ -42,7 +42,7 @@ var/bomb_set
 		timeleft = max(timeleft - (wait / 10), 0)
 		playsound(loc, 'sound/items/timer.ogg', 50)
 		if(timeleft <= 0)
-			addtimer(CALLBACK(src, .proc/explode), 0)
+			INVOKE_ASYNC(src, .proc/explode)
 		SSnano.update_uis(src)
 
 /obj/machinery/nuclearbomb/attackby(obj/item/weapon/O as obj, mob/user as mob, params)
@@ -354,18 +354,18 @@ var/bomb_set
 	. = ..()
 	nuke_disks |= src
 	// Can never be quite sure that a game mode has been properly initiated or not at this point, so always register
-	GLOB.moved_event.register(src, src, /obj/item/weapon/disk/nuclear/proc/check_z_level)
+	RegisterSignal(src, COMSIG_MOVABLE_MOVED, .proc/check_z_level)
 
 /obj/item/weapon/disk/nuclear/proc/check_z_level()
-	if(!(ticker && istype(ticker.mode, /datum/game_mode/nuclear)))
-		GLOB.moved_event.unregister(src, src, /obj/item/weapon/disk/nuclear/proc/check_z_level) // However, when we are certain unregister if necessary
+	SIGNAL_HANDLER
+	if(!(SSticker && istype(SSticker.mode, /datum/game_mode/nuclear)))
+		UnregisterSignal(src, COMSIG_MOVABLE_MOVED) // However, when we are certain unregister if necessary
 		return
 	var/turf/T = get_turf(src)
 	if(!T || isNotStationLevel(T.z))
 		qdel(src)
 
 /obj/item/weapon/disk/nuclear/Destroy()
-	GLOB.moved_event.unregister(src, src, /obj/item/weapon/disk/nuclear/proc/check_z_level)
 	nuke_disks -= src
 	if(!nuke_disks.len)
 		var/turf/T = pick_area_turf(/area/maintenance, list(/proc/is_station_turf, /proc/not_turf_contains_dense_objects))
@@ -496,7 +496,7 @@ var/bomb_set
 
 /obj/machinery/nuclearbomb/station/Process()
 	..()
-	if(timeleft > 0 && ticker.current_state != GAME_STATE_FINISHED)
+	if(timeleft > 0 && SSticker.current_state != GAME_STATE_FINISHED)
 		if(timeleft <= self_destruct_cutoff)
 			if(!announced)
 				priority_announcement.Announce("The self-destruct sequence has reached terminal countdown, abort systems have been disabled.", "Self-Destruct Control Computer")

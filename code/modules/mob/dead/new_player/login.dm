@@ -3,7 +3,7 @@
 	if(!client)
 		return
 
-	player_login()
+	register_client_and_player()
 	update_Login_details()	//handles setting lastKnownIP and computer_id for use by the ban systems as well as checking for multikeying
 
 	//Here, before anything else, we'll handle signal continuance.

@@ -150,12 +150,12 @@
 			close_door_at = 0
 
 /obj/machinery/door/proc/can_open(var/forced = FALSE)
-	if(!density || operating || !ticker)
+	if(!density || operating || !SSticker)
 		return 0
 	return 1
 
 /obj/machinery/door/proc/can_close()
-	if(density || operating || !ticker || (stat & BROKEN))
+	if(density || operating || !SSticker || (stat & BROKEN))
 		return 0
 	return 1
 
@@ -543,8 +543,7 @@
 	operating = 0
 
 	//I shall not add a check every x ticks if a door has closed over some fire.
-	var/obj/fire/fire = locate() in loc
-	if(fire)
+	for(var/obj/fire/fire in loc)
 		qdel(fire)
 	return
 

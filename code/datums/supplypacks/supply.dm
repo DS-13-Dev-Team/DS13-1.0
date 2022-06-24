@@ -7,7 +7,8 @@
 					/obj/item/weapon/reagent_containers/food/drinks/milk = 4,
 					/obj/item/weapon/reagent_containers/food/drinks/soymilk = 2,
 					/obj/item/weapon/storage/fancy/egg_box = 2,
-					/obj/item/weapon/reagent_containers/food/snacks/tofu = 4,
+					/obj/item/weapon/reagent_containers/food/snacks/tofu = 2,
+					/obj/item/weapon/reagent_containers/food/snacks/rawbacon = 8,
 					/obj/item/weapon/reagent_containers/food/snacks/meat = 4
 					)
 	cost = 10
@@ -43,18 +44,18 @@
 
 /decl/hierarchy/supply_pack/supply/bureaucracy
 	contains = list(/obj/item/weapon/clipboard,
-					 /obj/item/weapon/clipboard,
-					 /obj/item/weapon/pen/red,
-					 /obj/item/weapon/pen/blue,
-					 /obj/item/weapon/pen/green,
-					 /obj/item/device/camera_film,
-					 /obj/item/weapon/folder/blue,
-					 /obj/item/weapon/folder/red,
-					 /obj/item/weapon/folder/yellow,
-					 /obj/item/weapon/hand_labeler,
-					 /obj/item/weapon/tool/tape_roll,
-					 /obj/structure/filingcabinet/chestdrawer{anchored = 0},
-					 /obj/item/weapon/paper_bin)
+					/obj/item/weapon/clipboard,
+					/obj/item/weapon/pen/red,
+					/obj/item/weapon/pen/blue,
+					/obj/item/weapon/pen/green,
+					/obj/item/device/camera_film,
+					/obj/item/weapon/folder/blue,
+					/obj/item/weapon/folder/red,
+					/obj/item/weapon/folder/yellow,
+					/obj/item/weapon/hand_labeler,
+					/obj/item/weapon/tool/tape_roll,
+					/obj/structure/filingcabinet/chestdrawer{anchored = 0},
+					/obj/item/weapon/paper_bin)
 	name = "Office supplies"
 	cost = 15
 	containertype = /obj/structure/closet/crate/large

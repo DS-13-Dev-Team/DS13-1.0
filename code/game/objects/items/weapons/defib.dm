@@ -266,7 +266,9 @@
 
 /obj/item/weapon/shockpaddles/proc/can_revive(mob/living/carbon/human/H) //This is checked right before attempting to revive
 	if(H.stat == DEAD)
-		return "buzzes, \"Resuscitation failed - Severe neurological decay makes recovery of patient impossible. Further attempts futile.\""
+		var/obj/item/organ/internal/brain/brain = H.internal_organs_by_name[BP_BRAIN]
+		if(!brain || !brain.can_recover())
+			return "buzzes, \"Resuscitation failed - Severe neurological decay makes recovery of patient impossible. Further attempts futile.\""
 
 /obj/item/weapon/shockpaddles/proc/check_contact(mob/living/carbon/human/H)
 	if(!combat)
@@ -322,9 +324,6 @@
 
 // This proc is used so that we can return out of the revive process while ensuring that busy and update_icon() are handled
 /obj/item/weapon/shockpaddles/proc/do_revive(mob/living/carbon/human/H, mob/living/user)
-	if(H.ssd_check())
-		to_chat(find_dead_player(H.ckey, 1), "<span class='notice'>Someone is attempting to resuscitate you. Re-enter your body if you want to be revived!</span>")
-
 	//beginning to place the paddles on patient's chest to allow some time for people to move away to stop the process
 	user.visible_message("<span class='warning'>\The [user] begins to place [src] on [H]'s chest.</span>", "<span class='warning'>You begin to place [src] on [H]'s chest...</span>")
 	if(!user.do_skilled(3 SECONDS, SKILL_MEDICAL, H))
@@ -364,6 +363,24 @@
 	if(!user.skill_check(SKILL_MEDICAL, SKILL_BASIC) && !lowskill_revive(H, user))
 		return
 	H.apply_damage(burn_damage_amt, BURN, BP_CHEST)
+
+	if(H.stat == DEAD)
+		H.switch_from_dead_to_living_mob_list()
+		H.timeofdeath = 0
+
+		// restore us to conciousness
+		H.set_stat(UNCONSCIOUS)
+
+		// make the icons look correct
+		H.regenerate_icons()
+
+		BITSET(H.hud_updateflag, HEALTH_HUD)
+		BITSET(H.hud_updateflag, STATUS_HUD)
+		BITSET(H.hud_updateflag, LIFE_HUD)
+
+		H.failed_last_breath = 0 //So mobs that died of oxyloss don't revive and have perpetual out of breath.
+		H.mind.ghost.reenter_corpse()
+		H.reload_fullscreens()
 
 	//set oxyloss so that the patient is just barely in crit, if possible
 	make_announcement("pings, \"Resuscitation successful.\"", "notice")

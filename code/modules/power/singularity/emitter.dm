@@ -82,11 +82,13 @@
 			if(src.active==1)
 				src.active = 0
 				to_chat(user, "You turn off \the [src].")
+				playsound(src, 'sound/machines/button2.ogg', VOLUME_MID_HIGH)
 				log_and_message_admins("turned off \the [src]")
 				investigate_log("turned <font color='red'>off</font> by [user.key]","singulo")
 			else
 				src.active = 1
 				to_chat(user, "You turn on \the [src].")
+				playsound(src, 'sound/machines/button2.ogg', VOLUME_MID_HIGH)
 				src.shot_number = 0
 				src.fire_delay = get_initial_fire_delay()
 				log_and_message_admins("turned on \the [src]")
@@ -201,8 +203,10 @@
 		if(src.allowed(user))
 			src.locked = !src.locked
 			to_chat(user, "The controls are now [src.locked ? "locked." : "unlocked."]")
+			playsound(src, 'sound/machines/button2.ogg', VOLUME_MID_HIGH)
 		else
 			to_chat(user, "<span class='warning'>Access denied.</span>")
+			playsound(loc, 'sound/machines/vending_denied.ogg', VOLUME_LOW)
 		return
 	..()
 	return
