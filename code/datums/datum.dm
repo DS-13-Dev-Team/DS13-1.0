@@ -90,7 +90,7 @@
 	for(var/target in signal_procs)
 		UnregisterSignal(target, signal_procs[target])
 
-	return QDEL_HINT_IFFAIL_FINDREFERENCE
+	return QDEL_HINT_QUEUE
 
 /datum/proc/Process()
 	set waitfor = 0
