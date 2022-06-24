@@ -77,6 +77,8 @@
 		if (T)
 			LAZYREMOVE(T.movement_blocking_atoms,src)
 
+	if(opacity)
+		RemoveElement(/datum/element/light_blocking)
 
 	if(virtual_mob && !ispath(virtual_mob))
 		qdel(virtual_mob)
