@@ -23,7 +23,7 @@
 	. = ..()
 
 /obj/item/clothing/glasses/needs_vision_update()
-	return ..() || overlay || vision_flags || see_invisible || darkness_view
+	return ..() || overlay || vision_flags || see_invisible || darkness_view || lighting_alpha
 
 /obj/item/clothing/glasses/emp_act(severity)
 	if(electric)

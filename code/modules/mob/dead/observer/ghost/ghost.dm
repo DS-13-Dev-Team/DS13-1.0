@@ -489,12 +489,21 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	updateghostsight()
 	to_chat(src, "You [(ghostvision?"now":"no longer")] have ghost vision.")
 
-/mob/dead/observer/ghost/verb/toggle_darkness()
+/mob/dead/observer/ghost/verb/toggle_darkvision()
 	set name = "Toggle Darkness"
 	set category = "Ghost"
-	seedarkness = !(seedarkness)
-	updateghostsight()
-	to_chat(src, "You [(seedarkness?"now":"no longer")] see darkness.")
+
+	switch(lighting_alpha)
+		if (LIGHTING_PLANE_ALPHA_VISIBLE)
+			lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
+		if (LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE)
+			lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
+		if (LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE)
+			lighting_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE
+		else
+			lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
+
+	sync_lighting_plane_alpha()
 
 /mob/dead/observer/ghost/proc/updateghostsight()
 	if (!seedarkness)

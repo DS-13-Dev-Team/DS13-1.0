@@ -161,8 +161,6 @@
 			return global.camera_alarm;
 		if("camera_range_display_status")
 			return global.camera_range_display_status;
-		if("camera_repository")
-			return global.camera_repository;
 		if("captain_announcement")
 			return global.captain_announcement;
 		if("cargo_supply_pack_root")
@@ -207,8 +205,6 @@
 			return global.create_turf_html;
 		if("created")
 			return global.created;
-		if("crew_repository")
-			return global.crew_repository;
 		if("csrfz_check")
 			return global.csrfz_check;
 		if("custom_event_msg")
@@ -912,8 +908,6 @@
 			global.camera_alarm=newval;
 		if("camera_range_display_status")
 			global.camera_range_display_status=newval;
-		if("camera_repository")
-			global.camera_repository=newval;
 		if("captain_announcement")
 			global.captain_announcement=newval;
 		if("cargo_supply_pack_root")
@@ -958,8 +952,6 @@
 			global.create_turf_html=newval;
 		if("created")
 			global.created=newval;
-		if("crew_repository")
-			global.crew_repository=newval;
 		if("csrfz_check")
 			global.csrfz_check=newval;
 		if("custom_event_msg")
@@ -1582,7 +1574,6 @@
 	"cached_space",
 	"camera_alarm",
 	"camera_range_display_status",
-	"camera_repository",
 	"can_call_ert",
 	"captain_announcement",
 	"cargo_supply_pack_root",
@@ -1606,7 +1597,6 @@
 	"create_object_html",
 	"create_turf_html",
 	"created",
-	"crew_repository",
 	"csrfz_check",
 	"custom_event_msg",
 	"custom_items",

@@ -22,15 +22,15 @@
 					access_external_airlocks, access_keycard_auth)
 	outfit_type = /decl/hierarchy/outfit/job/security/cseco
 
-	min_skill = list(   SKILL_WEAPONS     = SKILL_EXPERT,
-						SKILL_FORENSICS   = SKILL_EXPERT,
-						SKILL_COMBAT	  = SKILL_ADEPT,
-	                    SKILL_DEVICES	  = SKILL_BASIC)
+	min_skill = list(   SKILL_WEAPONS     = SKILL_PROF,
+						SKILL_FORENSICS   = SKILL_PROF,
+						SKILL_COMBAT	  = SKILL_PROF,
+						SKILL_DEVICES	  = SKILL_BASIC)
 
 	max_skill = list(   SKILL_BOTANY      = SKILL_EXPERT,
-	                    SKILL_COOKING     = SKILL_EXPERT,
-	                    SKILL_MEDICAL     = SKILL_EXPERT,
-	                    SKILL_ANATOMY	  = SKILL_ADEPT)
+						SKILL_COOKING     = SKILL_EXPERT,
+						SKILL_MEDICAL     = SKILL_EXPERT,
+						SKILL_ANATOMY	  = SKILL_ADEPT)
 	skill_points = 20
 
 datum/job/cseco/get_description_blurb()
@@ -53,16 +53,16 @@ datum/job/cseco/get_description_blurb()
 	access = list(access_armory, access_security, access_maint_tunnels, access_external_airlocks)
 	outfit_type = /decl/hierarchy/outfit/job/security/sso
 
-	min_skill = list(   SKILL_WEAPONS     = SKILL_ADEPT,
-						SKILL_COMBAT	  = SKILL_ADEPT,
+	min_skill = list(   SKILL_WEAPONS     = SKILL_PROF,
+						SKILL_COMBAT	  = SKILL_PROF,
 						SKILL_FORENSICS   = SKILL_EXPERT,
-	                    SKILL_DEVICES	  = SKILL_ADEPT)
+						SKILL_DEVICES	  = SKILL_ADEPT)
 
 	max_skill = list(   SKILL_BOTANY      = SKILL_EXPERT,
-	                    SKILL_COOKING     = SKILL_EXPERT,
-	                    SKILL_MEDICAL     = SKILL_EXPERT,
-	                    SKILL_ANATOMY     = SKILL_ADEPT)
-	skill_points = 16
+						SKILL_COOKING     = SKILL_EXPERT,
+						SKILL_MEDICAL     = SKILL_EXPERT,
+						SKILL_ANATOMY     = SKILL_ADEPT)
+	skill_points = 18
 
 datum/job/sso/get_description_blurb()
 	return "You are the Senior Security Officer. You are the second-in-command to the Chief Security Officer and should they be incapacitated or are unavailable, you are to assume command of the Planet Cracker Starship Ishimura Security, or P.C.S.I. Sec. You are expected to know the Law better than the average officer. You are typically in charge of foresnics investigations and lead security officers when the Chief Security Officer isn't present. You are subordinate to the Chief Security Officer."
@@ -87,13 +87,13 @@ datum/job/sso/get_description_blurb()
 	min_skill = list(   SKILL_WEAPONS     = SKILL_ADEPT,
 						SKILL_COMBAT	  = SKILL_ADEPT,
 						SKILL_FORENSICS   = SKILL_ADEPT,
-	                    SKILL_DEVICES	  = SKILL_BASIC)
+						SKILL_DEVICES	  = SKILL_BASIC)
 
 	max_skill = list(   SKILL_BOTANY      = SKILL_EXPERT,
-	                    SKILL_COOKING     = SKILL_EXPERT,
-	                    SKILL_MEDICAL     = SKILL_EXPERT,
-	                    SKILL_ANATOMY     = SKILL_ADEPT)
-	skill_points = 10
+						SKILL_COOKING     = SKILL_EXPERT,
+						SKILL_MEDICAL     = SKILL_EXPERT,
+						SKILL_ANATOMY     = SKILL_ADEPT)
+	skill_points = 15
 
 datum/job/security_officer/get_description_blurb()
 	return "You are a Security Officer. One of the many members of Planet Cracker Starship Ishimura Security, or P.C.S.I. Sec, you are there to provide safety and order to the crew. You are expected to have a good understanding of the Law. You are subordinate to the Chief Security Officer and Senior Security Officer."

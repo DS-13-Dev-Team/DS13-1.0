@@ -289,12 +289,12 @@
 		status_overlays_lighting.len = 5
 		status_overlays_environ.len = 5
 
-		status_overlays_lock[1] = image(icon, "apcox-0")    // 0=blue 1=red
-		status_overlays_lock[2] = image(icon, "apcox-1")
+		status_overlays_lock[1] = mutable_appearance(icon, "apcox-0")    // 0=blue 1=red
+		status_overlays_lock[2] = mutable_appearance(icon, "apcox-1")
 
-		status_overlays_charging[1] = image(icon, "apco3-0")
-		status_overlays_charging[2] = image(icon, "apco3-1")
-		status_overlays_charging[3] = image(icon, "apco3-2")
+		status_overlays_charging[1] = mutable_appearance(icon, "apco3-0")
+		status_overlays_charging[2] = mutable_appearance(icon, "apco3-1")
+		status_overlays_charging[3] = mutable_appearance(icon, "apco3-2")
 
 		var/list/channel_overlays = list(status_overlays_equipment, status_overlays_lighting, status_overlays_environ)
 		var/channel = 0

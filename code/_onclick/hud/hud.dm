@@ -130,6 +130,7 @@
 	action_intent = null
 	move_intent = null
 
+	QDEL_LIST(toggleable_inventory)
 	QDEL_LIST(static_inventory)
 	QDEL_LIST(infodisplay)
 	QDEL_LIST(hotkeybuttons)
