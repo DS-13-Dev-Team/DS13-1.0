@@ -110,6 +110,7 @@
 	see_invisible = SEE_INVISIBLE_NOLIGHTING
 	off_state = "denight"
 	electric = TRUE
+	lighting_alpha = LIGHTING_PLANE_ALPHA_NV_TRAIT
 
 /obj/item/clothing/glasses/night/Initialize()
 	. = ..()
@@ -127,6 +128,7 @@
 	armor = list(melee = 20, bullet = 20, laser = 20, energy = 15, bomb = 20, bio = 0, rad = 0)
 	siemens_coefficient = 0.6
 	electric = TRUE
+	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 
 /obj/item/clothing/glasses/eyepatch
 	name = "eyepatch"
