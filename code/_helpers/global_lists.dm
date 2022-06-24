@@ -21,9 +21,6 @@ var/global/list/whitelisted_species = list(SPECIES_HUMAN) // Species that requir
 var/global/list/playable_species = list(SPECIES_HUMAN)    // A list of ALL playable species, whitelisted, latejoin or otherwise.
 
 
-//A list of IC characters in the format character_id = mind
-GLOBAL_LIST_EMPTY(characters)
-
 //Datum/patron_item instances
 GLOBAL_LIST_EMPTY(patron_items)
 

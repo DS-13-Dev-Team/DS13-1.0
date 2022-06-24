@@ -141,7 +141,7 @@ Botany:
 
 
 /datum/design/item
-	build_type = PROTOLATHE | STORE
+	build_type = PROTOLATHE | STORE_ROUNDSTART
 
 /datum/design/item/powernode
 	name = "power node"
@@ -152,7 +152,7 @@ Botany:
 
 /datum/design/item/stock_part
 	category = "Parts"
-	build_type = PROTOLATHE | STORE
+	build_type = PROTOLATHE | STORE_ROUNDSTART
 
 /datum/design/item/stock_part/basic_capacitor
 	name = "basic capacitor"
@@ -287,7 +287,7 @@ Botany:
 	build_path = /obj/item/weapon/handcuffs
 
 /datum/design/item/powercell
-	build_type = PROTOLATHE | STORE
+	build_type = PROTOLATHE | STORE_ROUNDSTART
 	category = "Power"
 
 /datum/design/item/powercell/basic
@@ -333,7 +333,7 @@ Botany:
 
 /datum/design/item/optical
 	materials = list(MATERIAL_STEEL = 50, MATERIAL_GLASS = 50)
-	build_type = PROTOLATHE | STORE
+	build_type = PROTOLATHE | STORE_SCHEMATICS
 	category = "Optics"
 
 /datum/design/item/optical/health
@@ -368,7 +368,7 @@ Botany:
 	price = 750
 
 /datum/design/item/mining
-	build_type = PROTOLATHE | STORE
+	build_type = PROTOLATHE | STORE_SCHEMATICS
 	category = "Mining"
 
 /datum/design/item/mining/rocksaw
@@ -411,7 +411,7 @@ Botany:
 	price = 300
 
 /datum/design/item/medical
-	build_type = PROTOLATHE | STORE
+	build_type = PROTOLATHE | STORE_ROUNDSTART
 	materials = list(MATERIAL_STEEL = 30, MATERIAL_GLASS = 20)
 	category = "Medical"
 
@@ -490,7 +490,7 @@ Botany:
 	build_type = PROTOLATHE	//No appearing in store
 
 /datum/design/item/surgery
-	build_type = PROTOLATHE | STORE
+	build_type = PROTOLATHE | STORE_SCHEMATICS
 	category = "Medical"
 
 /datum/design/item/surgery/scalpel_laser1
@@ -676,7 +676,7 @@ Botany:
 	name = "Welding Mask"
 	desc = "A head-mounted face cover designed to protect the wearer completely from space-arc eye."
 	id = "weldingmask"
-	build_type = PROTOLATHE | STORE
+	build_type = PROTOLATHE | STORE_ROUNDSTART
 	materials = list(MATERIAL_STEEL = 4000, MATERIAL_GLASS = 1000)
 	build_path = /obj/item/clothing/head/welding
 
