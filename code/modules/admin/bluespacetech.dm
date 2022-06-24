@@ -349,6 +349,12 @@
 		user.lighting_alpha = lighting_alpha
 		user.sync_lighting_plane_alpha()
 
+/obj/item/clothing/glasses/sunglasses/bst/forceMove(mob/living/carbon/human/destination, hardforce, glide_size_override)
+	.=..()
+	if(ishuman(destination) && destination.glasses != src)
+		destination.lighting_alpha = initial(destination.lighting_alpha)
+		destination.sync_lighting_plane_alpha()
+
 /obj/item/clothing/glasses/sunglasses/bst/Moved(mob/living/carbon/human/OldLoc, Dir)
 	.=..()
 	if(ishuman(OldLoc) && OldLoc.glasses != src)
