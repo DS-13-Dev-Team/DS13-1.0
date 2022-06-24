@@ -121,7 +121,24 @@
 		cancelCameraAlarm()
 		update_icon()
 		update_coverage()
-	return internal_process()
+	// motion camera event loop
+	if (stat & (EMPED|NOPOWER))
+		return
+	if(!isMotion())
+		. = PROCESS_KILL
+		return
+	if (detectTime > 0)
+		var/elapsed = world.time - detectTime
+		if (elapsed > alarm_delay)
+			triggerAlarm()
+	else if (detectTime == -1)
+		for (var/mob/target in motionTargets)
+			if (target.stat == DEAD)
+				lostTarget(target)
+			// See if the camera is still in range
+			if(!in_range(src, target))
+				// If they aren't in range, lose the target.
+				lostTarget(target)
 
 /obj/machinery/camera/proc/internal_process()
 	return

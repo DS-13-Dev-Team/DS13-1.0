@@ -165,18 +165,16 @@ const NanoMapMarker = (props, context) => {
     }
   };
 
-  const rx = x*0.5;
-  const ry = y*0.5;
+  const rx = ((x * 2 * zoom) - zoom) - 3;
+  const ry = ((y * 2 * zoom) - zoom) - 3;
   return (
     <div>
       <Box
         position="absolute"
         className="NanoMap__marker"
         lineHeight="0"
-        bottom={ry < 100 ? ry+"%" : null}
-        top={ry >= 100 ? "0%" : null}
-        left={rx < 100 ? rx+"%" : null}
-        right={rx >= 100 ? "0%" : null}
+        bottom={ry + "px"}
+        left={rx + "px"}
         onMouseDown={handleOnClick}>
         <Icon
           name={icon}
