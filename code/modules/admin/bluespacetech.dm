@@ -349,11 +349,11 @@
 		user.lighting_alpha = lighting_alpha
 		user.sync_lighting_plane_alpha()
 
-/obj/item/clothing/glasses/sunglasses/bst/dropped(mob/living/carbon/human/user)
-	if(user.glasses != src)
-		user.lighting_alpha = initial(user.lighting_alpha)
-		user.sync_lighting_plane_alpha()
+/obj/item/clothing/glasses/sunglasses/bst/Moved(mob/living/carbon/human/OldLoc, Dir)
 	.=..()
+	if(ishuman(OldLoc) && OldLoc.glasses != src)
+		OldLoc.lighting_alpha = initial(OldLoc.lighting_alpha)
+		OldLoc.sync_lighting_plane_alpha()
 
 /obj/item/clothing/glasses/sunglasses/bst/attack_hand()
 	if(!usr)
