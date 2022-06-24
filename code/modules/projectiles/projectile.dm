@@ -154,7 +154,7 @@
 	last_loc = loc
 	return ..()
 
-/obj/item/projectile/forceMove(atom/destination, glide_size_override=0)
+/obj/item/projectile/forceMove(atom/destination, hardforce, glide_size_override=0)
 	..()
 	if(!vacuum_traversal && istype(loc, /turf/space/) && istype(loc.loc, /area/space))
 		qdel(src)

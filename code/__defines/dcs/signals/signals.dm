@@ -39,3 +39,5 @@
 #define COMSIG_COMPONENT_REMOVING "component_removing"
 ///from base of atom/set_opacity(): (new_opacity)
 #define COMSIG_ATOM_SET_OPACITY "atom_set_opacity"
+///from base of mob/living/revive() (full_heal, admin_revive)
+#define COMSIG_LIVING_REVIVE "living_revive"

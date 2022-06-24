@@ -584,8 +584,8 @@
 	render_stats(SSoverlays.stats, src)*/
 
 /obj/effect/debugmarker
-	icon = 'icons/effects/lighting_object.dmi'
-	icon_state = "blank"
+	icon = LIGHTING_ICON
+	icon_state = "lighting_transparent"
 
 	layer = HOLOMAP_LAYER
 	alpha = 127
@@ -602,7 +602,7 @@
 	for(var/datum/powernet/PN in SSmachines.powernets)
 		var/netcolor = rgb(rand(100,255),rand(100,255),rand(100,255))
 		for(var/obj/structure/cable/C in PN.cables)
-			var/image/I = image('icons/effects/lighting_object.dmi', get_turf(C), "blank")
+			var/image/I = image('icons/effects/lighting_object.dmi', get_turf(C), "lighting_transparent")
 			I.plane = DEFAULT_PLANE
 			I.layer = EXPOSED_WIRE_LAYER
 			I.alpha = 127

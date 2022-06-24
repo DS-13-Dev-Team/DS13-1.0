@@ -337,20 +337,23 @@
 			lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
 
 	to_chat(usr, "<span class='notice'>\The [src]'s vision mode is now <b>[mode]</b>.</span>")
-	if(ismob(loc))
-		var/mob/holder = loc
-		holder.lighting_alpha = lighting_alpha
-		holder.sync_lighting_plane_alpha()
+	if(ishuman(loc))
+		var/mob/living/carbon/human/holder = loc
+		if(holder.glasses == src)
+			holder.lighting_alpha = lighting_alpha
+			holder.sync_lighting_plane_alpha()
 
-/obj/item/clothing/glasses/sunglasses/bst/equipped(mob/user)
+/obj/item/clothing/glasses/sunglasses/bst/equipped(mob/living/carbon/human/user)
 	.=..()
-	user.lighting_alpha = lighting_alpha
-	user.sync_lighting_plane_alpha()
+	if(user.glasses == src)
+		user.lighting_alpha = lighting_alpha
+		user.sync_lighting_plane_alpha()
 
-/obj/item/clothing/glasses/sunglasses/bst/dropped(mob/user)
+/obj/item/clothing/glasses/sunglasses/bst/dropped(mob/living/carbon/human/user)
+	if(user.glasses != src)
+		user.lighting_alpha = initial(user.lighting_alpha)
+		user.sync_lighting_plane_alpha()
 	.=..()
-	user.lighting_alpha = initial(user.lighting_alpha)
-	user.sync_lighting_plane_alpha()
 
 /obj/item/clothing/glasses/sunglasses/bst/attack_hand()
 	if(!usr)

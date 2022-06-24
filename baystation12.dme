@@ -359,6 +359,7 @@
 #include "code\datums\communication\pray.dm"
 #include "code\datums\communication\~defines.dm"
 #include "code\datums\components\_component.dm"
+#include "code\datums\components\clickbox.dm"
 #include "code\datums\craft\item.dm"
 #include "code\datums\craft\lockout.dm"
 #include "code\datums\craft\menu.dm"

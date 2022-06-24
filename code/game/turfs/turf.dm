@@ -65,6 +65,39 @@
 	///Lazylist of movable atoms providing opacity sources.
 	var/list/atom/movable/opacity_sources
 
+/turf/Initialize(mapload)
+	SHOULD_CALL_PARENT(FALSE)
+	if(atom_flags & ATOM_FLAG_INITIALIZED)
+		crash_with("Warning: [src]([type]) initialized multiple times!")
+	atom_flags |= ATOM_FLAG_INITIALIZED
+
+	// by default, vis_contents is inherited from the turf that was here before
+	vis_contents.Cut()
+
+	levelupdate()
+
+	for(var/atom/movable/content as anything in src)
+		Entered(content, null)
+
+	var/area/our_area = loc
+	if(our_area.area_has_base_lighting && always_lit) //Only provide your own lighting if the area doesn't for you
+		add_overlay(GLOB.fullbright_overlay)
+
+	if (light_power && light_range)
+		update_light()
+
+	var/turf/T = GetAbove(src)
+	if(T)
+		T.multiz_turf_new(src, DOWN)
+	T = GetBelow(src)
+	if(T)
+		T.multiz_turf_new(src, UP)
+
+	if (opacity)
+		directional_opacity = ALL_CARDINALS
+
+	return INITIALIZE_HINT_NORMAL
+
 /turf/proc/has_wall()
 	if (is_wall)
 		return TRUE

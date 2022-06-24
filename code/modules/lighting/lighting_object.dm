@@ -15,7 +15,7 @@
 		return
 	. = ..()
 
-	current_underlay = mutable_appearance(LIGHTING_ICON, LIGHTING_BASE_ICON_STATE, source.z, LIGHTING_PLANE, 255, RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM)
+	current_underlay = mutable_appearance(LIGHTING_ICON, null, "transparent", LIGHTING_PLANE, 255, RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM)
 
 	affected_turf = source
 	if (affected_turf.lighting_object)
@@ -89,17 +89,15 @@
 	#endif
 
 	affected_turf.underlays -= current_underlay
-	if(rr + rg + rb + gr + gg + gb + br + bg + bb + ar + ag + ab >= 12)
-		current_underlay.icon_state = LIGHTING_TRANSPARENT_ICON_STATE
+	if((rr & gr & br & ar) && (rg + gg + bg + ag + rb + gb + bb + ab == 8))
+		//anything that passes the first case is very likely to pass the second, and addition is a little faster in this case
+		current_underlay.icon_state = "lighting_transparent"
 		current_underlay.color = null
 	else if(!set_luminosity)
-		current_underlay.icon_state = LIGHTING_DARKNESS_ICON_STATE
-		current_underlay.color = null
-	else if (rr == LIGHTING_DEFAULT_TUBE_R && rg == LIGHTING_DEFAULT_TUBE_G && rb == LIGHTING_DEFAULT_TUBE_B && ALL_EQUAL)
-		current_underlay.icon_state = LIGHTING_STATION_ICON_STATE
+		current_underlay.icon_state = "lighting_dark"
 		current_underlay.color = null
 	else
-		current_underlay.icon_state = LIGHTING_BASE_ICON_STATE
+		current_underlay.icon_state = null
 		current_underlay.color = list(
 			rr, rg, rb, 00,
 			gr, gg, gb, 00,

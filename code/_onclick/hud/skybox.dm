@@ -76,7 +76,7 @@
 	if(. && client)
 		client.update_skybox(old_z != get_z(src))
 
-/mob/forceMove(atom/destination, glide_size_override=0)
+/mob/forceMove(atom/destination, hardforce, glide_size_override=0)
 	var/old_z = get_z(src)
 
 	. = ..()
