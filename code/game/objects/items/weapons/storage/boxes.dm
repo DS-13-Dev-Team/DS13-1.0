@@ -222,12 +222,6 @@
 	icon_state = "flashbang"
 	startswith = list(/obj/item/weapon/grenade/smokebomb = 5)
 
-/obj/item/weapon/storage/box/anti_photons
-	name = "box of anti-photon grenades"
-	desc = "A box containing 5 experimental photon disruption grenades."
-	icon_state = "flashbang"
-	startswith = list(/obj/item/weapon/grenade/anti_photon = 5)
-
 /obj/item/weapon/storage/box/supermatters
 	name = "box of supermatter grenades"
 	desc = "A box containing 5 highly experimental supermatter grenades."

@@ -109,9 +109,12 @@
 	if(rag)
 		var/underlay_image = image(icon='icons/obj/drinks.dmi', icon_state=rag.on_fire? "[rag_underlay]_lit" : rag_underlay)
 		underlays += underlay_image
-		set_light(rag.light_max_bright, 0.1, rag.light_outer_range, 2, rag.light_color)
+		set_light_range(rag.light_range)
+		set_light_power(rag.light_power)
+		set_light_color(rag.light_color)
+		set_light_on(TRUE)
 	else
-		set_light(0)
+		set_light_on(FALSE)
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone)
 	var/blocked = ..()

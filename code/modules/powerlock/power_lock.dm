@@ -6,11 +6,9 @@
 	icon = 'icons/obj/powerlock.dmi'
 	icon_state = "powerlock1"
 	pixel_y = 5
-
-/obj/power_lock/New(var/atom/location)
-	.=..()
-
-	set_light(1, 1, 3, 2.5, COLOR_DEEP_SKY_BLUE)
+	light_range = 3
+	light_power = 1
+	light_color = COLOR_DEEP_SKY_BLUE
 
 /obj/power_lock/examine(var/mob/user)
 	.=..()

@@ -11,9 +11,8 @@
 
 	var/icon_keyboard = "generic_key"
 	var/icon_screen = "generic"
-	var/light_max_bright_on = 0.2
-	var/light_inner_range_on = 0.1
-	var/light_outer_range_on = 2
+	light_range = 2
+	light_power = 0.2
 	var/overlay_layer
 	atom_flags = ATOM_FLAG_CLIMBABLE
 	clicksound = "keyboard"
@@ -71,12 +70,12 @@
 /obj/machinery/computer/update_icon()
 	overlays.Cut()
 	if(stat & NOPOWER)
-		set_light(0)
+		set_light_on(FALSE)
 		if(icon_keyboard)
 			overlays += image(icon,"[icon_keyboard]_off", overlay_layer)
 		return
 	else
-		set_light(light_max_bright_on, light_inner_range_on, light_outer_range_on, 2, light_color)
+		set_light_on(TRUE)
 
 	if(stat & BROKEN)
 		overlays += image(icon,"[icon_state]_broken", overlay_layer)

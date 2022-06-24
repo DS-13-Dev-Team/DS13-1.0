@@ -132,7 +132,6 @@
 			affected_by_emp_until = max(affected_by_emp_until, world.time + (90 SECONDS / severity))
 		else
 			stat |= EMPED
-			set_light(0)
 			triggerCameraAlarm()
 			update_icon()
 			update_coverage()
@@ -205,7 +204,7 @@
 				else
 					assembly.state = 1
 					to_chat(user, "<span class='notice'>You cut \the [src] free from the wall.</span>")
-					new /obj/item/stack/cable_coil(src.loc, length=2)
+					new /obj/item/stack/cable_coil(src.loc, 2)
 				assembly = null //so qdel doesn't eat it.
 			qdel(src)
 			return

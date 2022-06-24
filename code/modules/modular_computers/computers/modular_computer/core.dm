@@ -80,7 +80,6 @@
 	. = ..()
 
 /obj/item/modular_computer/Destroy()
-
 	kill_program(1)
 	//STOP_PROCESSING(SSobj, src) //The parent call will handle ending processing
 	if(istype(stored_pen))
@@ -88,7 +87,6 @@
 	for(var/obj/item/weapon/computer_hardware/CH in src.get_all_components())
 		uninstall_component(null, CH)
 		qdel(CH)
-	remove_light()
 	return ..()
 
 /obj/item/modular_computer/emag_act(var/remaining_charges, var/mob/user)
@@ -110,9 +108,9 @@
 	if(!enabled)
 		if(icon_state_screensaver)
 			overlays.Add(icon_state_screensaver)
-		set_light(0)
+		set_light_on(FALSE)
 		return
-	set_light(0.2, 0.1, light_strength)
+	set_light_on(TRUE)
 	if(active_program)
 		overlays.Add(active_program.program_icon_state ? active_program.program_icon_state : icon_state_menu)
 		if(active_program.program_key_state)

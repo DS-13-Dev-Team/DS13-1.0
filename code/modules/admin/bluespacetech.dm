@@ -314,6 +314,7 @@
 	vision_flags = (SEE_TURFS|SEE_OBJS|SEE_MOBS)
 	see_invisible = SEE_INVISIBLE_NOLIGHTING
 	flash_protection = FLASH_PROTECTION_MAJOR
+	var/lighting_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE
 
 /obj/item/clothing/glasses/sunglasses/bst/verb/toggle_xray(mode in list("X-Ray without Lighting", "X-Ray with Lighting", "Normal"))
 	set name = "Change Vision Mode"
@@ -325,14 +326,40 @@
 		if ("X-Ray without Lighting")
 			vision_flags = (SEE_TURFS|SEE_OBJS|SEE_MOBS)
 			see_invisible = SEE_INVISIBLE_NOLIGHTING
+			lighting_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE
 		if ("X-Ray with Lighting")
 			vision_flags = (SEE_TURFS|SEE_OBJS|SEE_MOBS)
 			see_invisible = -1
+			lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
 		if ("Normal")
 			vision_flags = FALSE
 			see_invisible = -1
+			lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
 
 	to_chat(usr, "<span class='notice'>\The [src]'s vision mode is now <b>[mode]</b>.</span>")
+	if(ishuman(loc))
+		var/mob/living/carbon/human/holder = loc
+		if(holder.glasses == src)
+			holder.lighting_alpha = lighting_alpha
+			holder.sync_lighting_plane_alpha()
+
+/obj/item/clothing/glasses/sunglasses/bst/equipped(mob/living/carbon/human/user)
+	.=..()
+	if(user.glasses == src)
+		user.lighting_alpha = lighting_alpha
+		user.sync_lighting_plane_alpha()
+
+/obj/item/clothing/glasses/sunglasses/bst/forceMove(mob/living/carbon/human/destination, hardforce, glide_size_override)
+	.=..()
+	if(ishuman(destination) && destination.glasses != src)
+		destination.lighting_alpha = initial(destination.lighting_alpha)
+		destination.sync_lighting_plane_alpha()
+
+/obj/item/clothing/glasses/sunglasses/bst/Moved(mob/living/carbon/human/OldLoc, Dir)
+	.=..()
+	if(ishuman(OldLoc) && OldLoc.glasses != src)
+		OldLoc.lighting_alpha = initial(OldLoc.lighting_alpha)
+		OldLoc.sync_lighting_plane_alpha()
 
 /obj/item/clothing/glasses/sunglasses/bst/attack_hand()
 	if(!usr)
@@ -347,8 +374,7 @@
 	name = "bluespace technician's shoes"
 	desc = "A pair of black shoes with extra grip. The letters 'BST' are stamped on the side."
 	icon_state = "black"
-	//TODO: Enable noslip
-	//item_flags = NOSLIP
+	item_flags = ITEM_FLAG_NOSLIP
 
 /obj/item/clothing/shoes/black/bst/attack_hand()
 	if(!usr)
@@ -366,7 +392,7 @@
 	desc = "An ID straight from Central Command. This one looks highly classified."
 
 /obj/item/weapon/card/id/bst/New()
-		access = get_all_accesses()+get_all_centcom_access()+get_all_syndicate_access()
+	access = get_all_accesses()+get_all_centcom_access()+get_all_syndicate_access()
 
 /obj/item/weapon/card/id/bst/attack_hand()
 	if(!usr)

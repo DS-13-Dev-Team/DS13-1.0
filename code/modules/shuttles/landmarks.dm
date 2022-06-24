@@ -112,7 +112,10 @@
 	name = "bluespace flare"
 	desc = "Burst transmitter used to broadcast all needed information for shuttle navigation systems. Has a flare attached for marking the spot where you probably shouldn't be standing."
 	icon_state = "bluflare"
+	light_range = 6
+	light_power = 0.3
 	light_color = "#3728ff"
+	light_on = FALSE
 	var/active
 
 /obj/item/device/spaceflare/attack_self(var/mob/user)
@@ -139,4 +142,6 @@
 /obj/item/device/spaceflare/update_icon()
 	if(active)
 		icon_state = "bluflare_on"
-		set_light(0.3, 0.1, 6, 2, "85d1ff")
+		set_light_on(TRUE)
+	else
+		set_light_on(FALSE)

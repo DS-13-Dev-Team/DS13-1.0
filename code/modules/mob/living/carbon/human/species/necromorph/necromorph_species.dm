@@ -41,8 +41,7 @@
 
 
 	//Vision
-	darksight_range = -1
-	darksight_tint = DARKTINT_MODERATE
+	lighting_alpha = LIGHTING_PLANE_ALPHA_NV_TRAIT
 
 	// Move intents
 	move_intents = list(/decl/move_intent/walk, /decl/move_intent/stalk)

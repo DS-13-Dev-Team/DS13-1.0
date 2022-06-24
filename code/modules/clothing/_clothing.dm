@@ -426,7 +426,9 @@ BLIND     // can't see anything
 	body_parts_covered = HEAD
 	slot_flags = SLOT_HEAD
 	w_class = ITEM_SIZE_SMALL
-
+	light_range = 4
+	light_power = 1
+	light_on = FALSE
 	var/light_overlay = "helmet_light"
 	var/light_applied
 	var/brightness_on
@@ -458,10 +460,10 @@ BLIND     // can't see anything
 
 /obj/item/clothing/head/proc/update_flashlight(var/mob/user = null)
 	if(on && !light_applied)
-		set_light(0.5, 1, 3)
+		set_light_on(TRUE)
 		light_applied = 1
 	else if(!on && light_applied)
-		set_light(0)
+		set_light_on(FALSE)
 		light_applied = 0
 	update_icon(user)
 	user.update_action_buttons()

@@ -3,7 +3,7 @@
 	density = TRUE
 	plane = DEFAULT_PLANE
 	layer = MOB_LAYER
-
+	blocks_emissive = EMISSIVE_BLOCK_GENERIC
 	appearance_flags = PIXEL_SCALE|LONG_GLIDE
 	animate_movement = 2
 	movable_flags = MOVABLE_FLAG_PROXMOVE
@@ -18,8 +18,11 @@
 		/datum/movement_handler/mob/movement
 	)
 
-	var/mob_flags
+	///when this be added to vis_contents of something it inherit something.plane, important for visualisation of mob in openspace.
+	vis_flags = VIS_INHERIT_PLANE
 
+	var/mob_flags
+	var/lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
 	var/last_quick_move_time = 0
 	var/list/client_images = list() // List of images applied to/removed from the client on login/logout
 	var/datum/mind/mind

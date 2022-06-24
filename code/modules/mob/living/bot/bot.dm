@@ -5,13 +5,15 @@
 	icon = 'icons/mob/bot/placeholder.dmi'
 	universal_speak = 1
 	density = 0
+	light_range = 3
+	light_power = 0.5
+	light_on = FALSE
 	var/obj/item/weapon/card/id/botcard = null
 	var/list/botcard_access = list()
 	var/on = 1
 	var/open = 0
 	var/locked = 1
 	var/emagged = 0
-	var/light_strength = 3
 	var/busy = 0
 
 	var/obj/access_scanner = null
@@ -343,7 +345,7 @@
 	if(stat)
 		return 0
 	on = 1
-	set_light(0.5, 0.1, light_strength)
+	set_light_on(TRUE)
 	update_icons()
 	resetTarget()
 	patrol_path = list()
@@ -352,7 +354,7 @@
 
 /mob/living/bot/proc/turn_off()
 	on = 0
-	set_light(0)
+	set_light_on(FALSE)
 	update_icons()
 
 /mob/living/bot/proc/explode()

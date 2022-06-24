@@ -40,8 +40,7 @@
 
 	limb_blend = ICON_MULTIPLY
 
-	darksight_range = 8
-	darksight_tint = DARKTINT_MODERATE
+	lighting_alpha = LIGHTING_PLANE_ALPHA_NV_TRAIT
 	slowdown = -0.5
 	rarity_value = 4
 	hud_type = /datum/hud_data/nabber

@@ -24,7 +24,9 @@
 	movable_flags = MOVABLE_FLAG_Z_INTERACT
 	var/open_sound = "doorheavyopen"
 	var/close_sound = "doorheavyclose"
-
+	light_range = 1
+	light_power = 0.25
+	light_color = COLOR_SUN
 	max_health = 50
 	min_force = 12
 	explosion_resistance = 15
@@ -402,7 +404,7 @@
 	var/icon/weld_overlay
 
 	overlays.Cut()
-	set_light(0)
+	set_light_on(FALSE)
 	var/do_set_light = FALSE
 
 	if(connections in list(NORTH, SOUTH, NORTH|SOUTH))
@@ -434,7 +436,7 @@
 		weld_overlay = welded_file
 
 	if(do_set_light)
-		set_light(0.25, 0.1, 1, 2, COLOR_SUN)
+		set_light_on(TRUE)
 
 	overlays += panel_overlay
 	overlays += weld_overlay

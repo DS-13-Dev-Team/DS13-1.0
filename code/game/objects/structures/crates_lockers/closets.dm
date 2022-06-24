@@ -5,6 +5,7 @@
 	icon_state = "closed"
 	density = 1
 	w_class = ITEM_SIZE_NO_CONTAINER
+	blocks_emissive = EMISSIVE_BLOCK_GENERIC
 
 	var/icon_closed = "closed"
 	var/icon_opened = "open"

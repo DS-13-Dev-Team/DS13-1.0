@@ -103,6 +103,9 @@
 	icon = 'icons/obj/lighting.dmi'
 	icon_state = "partylight-off"
 	item_state = "partylight-off"
+	light_range = 7
+	light_power = 1
+	light_on = FALSE
 	var/activated = 0
 	var/obj/effect/party_light/strobe_effect = null
 
@@ -115,10 +118,10 @@
 /obj/item/weapon/party_light/update_icon()
 	if (activated)
 		icon_state = "partylight-on"
-		set_light(1, 1, 7)
+		set_light_on(TRUE)
 	else
 		icon_state = "partylight_off"
-		set_light(0)
+		set_light_on(FALSE)
 
 /obj/item/weapon/party_light/proc/activate_strobe()
 	activated = 1

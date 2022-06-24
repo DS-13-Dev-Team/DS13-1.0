@@ -10,6 +10,8 @@
 	use_power = 1
 	idle_power_usage = 20
 	power_channel = LIGHT
+	light_range = 1
+	light_power = 0.5
 	var/on = 0
 	var/area/connected_area = null
 	var/other_area = null
@@ -31,18 +33,19 @@
 /obj/machinery/light_switch/update_icon()
 	if(!overlay)
 		overlay = image(icon, "light1-overlay")
-		overlay.plane = EFFECTS_ABOVE_LIGHTING_PLANE
-		overlay.layer = ABOVE_LIGHTING_LAYER
+		overlay.plane = ABOVE_LIGHTING_PLANE
+		overlay.layer = LIGHTING_SECONDARY_LAYER
 
 	overlays.Cut()
 	if(stat & (NOPOWER|BROKEN))
 		icon_state = "light-p"
-		set_light(0)
+		set_light_on(FALSE)
 	else
 		icon_state = "light[on]"
 		overlay.icon_state = "light[on]-overlay"
 		overlays += overlay
-		set_light(0.1, 0.1, 1, 2, on ? "#82ff4c" : "#f86060")
+		set_light_on(TRUE)
+		set_light_color(on ? "#82ff4c" : "#f86060")
 
 /obj/machinery/light_switch/examine(mob/user)
 	if(..(user, 1))

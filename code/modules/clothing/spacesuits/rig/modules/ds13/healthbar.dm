@@ -13,8 +13,8 @@
 	var/mob/living/carbon/human/user
 	process_with_rig = FALSE
 
-	suit_overlay_layer = EYE_GLOW_LAYER
-	suit_overlay_plane = EFFECTS_ABOVE_LIGHTING_PLANE
+	suit_overlay_plane = ABOVE_LIGHTING_PLANE
+	suit_overlay_layer = LIGHTING_SECONDARY_LAYER
 	suit_overlay_flags = KEEP_APART
 
 	module_tags = list(LOADOUT_TAG_RIG_HEALTHBAR = 1)

@@ -17,7 +17,7 @@ GLOBAL_LIST_EMPTY(powernode_rooms)
 
 	//Powerlock
 	var/obj/power_lock/lock
-	var/lock_dir	= SOUTH	//What direction should the lock face when we place it?
+	var/lock_dir = SOUTH	//What direction should the lock face when we place it?
 	var/turf/lock_spawn_turf
 	var/turf/lock_offset_turf
 
@@ -300,17 +300,15 @@ GLOBAL_LIST_EMPTY(powernode_rooms)
 /datum/node_room/proc/dim_lights()
 	for (var/obj/machinery/light/L in lights)
 		if (L.lightbulb)
-			L.lightbulb.b_max_bright *= light_dim_factor
-			L.lightbulb.b_inner_range *= light_dim_factor
-			L.lightbulb.b_outer_range *= light_dim_factor
+			L.lightbulb.b_power *= light_dim_factor
+			L.lightbulb.b_range *= light_dim_factor
 			L.update_icon()
 
 /datum/node_room/proc/illuminate_lights()
 	for (var/obj/machinery/light/L in lights)
 		spawn(rand_between(2 SECONDS, 10 SECONDS))
 			if (L.lightbulb)
-				L.lightbulb.b_max_bright /= light_dim_factor
-				L.lightbulb.b_inner_range /= light_dim_factor
-				L.lightbulb.b_outer_range /= light_dim_factor
+				L.lightbulb.b_power /= light_dim_factor
+				L.lightbulb.b_range /= light_dim_factor
 				L.seton(TRUE)
 				L.update_icon()

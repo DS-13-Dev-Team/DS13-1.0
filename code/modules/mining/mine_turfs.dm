@@ -362,7 +362,7 @@ var/list/mining_floors = list()
 		B = new(src)
 
 	density = FALSE
-	opacity = FALSE
+	set_opacity(FALSE)
 
 	spawn()
 		if (!QDELETED(src) && istype(src, /turf/simulated/mineral))

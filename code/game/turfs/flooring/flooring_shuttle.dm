@@ -38,7 +38,7 @@
 	name = "floor"
 	icon = 'icons/turf/shuttle.dmi'
 	build_type = null
-	flags = TURF_ACID_IMMUNE | TURF_CAN_BREAK | TURF_REMOVE_WRENCH
+	flags = TURF_ACID_IMMUNE | TURF_CAN_BREAK | TURF_REMOVE_WRENCH | TURF_HIDES_THINGS
 	can_paint = 1
 
 /decl/flooring/reinforced/shuttle/blue

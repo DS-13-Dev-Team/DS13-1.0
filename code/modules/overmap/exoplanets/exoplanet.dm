@@ -417,6 +417,7 @@
 	icon = 'icons/turf/desert.dmi'
 	icon_state = "desert"
 	has_resources = 1
+	light_range = 2
 	var/diggable = 1
 	var/mudpit = 0	//if pits should not take turf's color
 
@@ -437,7 +438,7 @@
 				initial_gas = E.atmosphere.gas.Copy()
 				temperature = E.atmosphere.temperature
 			//Must be done here, as light data is not fully carried over by ChangeTurf (but overlays are).
-			set_light(E.lightlevel, 0.1, 2)
+			set_light_power(E.lightlevel)
 	..()
 
 /turf/simulated/floor/exoplanet/attackby(obj/item/C, mob/user)

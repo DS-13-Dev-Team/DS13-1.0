@@ -20,6 +20,8 @@
 	infra_luminosity = 15 //byond implementation is bugged.
 	anchor_fall = TRUE
 	w_class = ITEM_SIZE_NO_CONTAINER
+	light_range = 6
+	light_power = 0.6
 	var/initial_icon = null //Mech type for resetting icon. Only used for reskinning kits (see custom items)
 	var/can_move = 1
 	var/mob/living/carbon/occupant = null
@@ -975,8 +977,10 @@
 	set popup_menu = 0
 	if(usr!=occupant)	return
 	lights = !lights
-	if(lights)	set_light(0.6, 1, 6)
-	else		set_light(0)
+	if(lights)
+		set_light_on(TRUE)
+	else
+		set_light_on(FALSE)
 	src.occupant_message("Toggled lights [lights?"on":"off"].")
 	log_message("Toggled lights [lights?"on":"off"].")
 	return

@@ -8,8 +8,8 @@
 
 	//luminosity = 5
 	//l_color="#0066ff"
-	plane = EFFECTS_ABOVE_LIGHTING_PLANE
-	layer = SUPERMATTER_WALL_LAYER
+	plane = ABOVE_LIGHTING_PLANE
+	layer = LIGHTING_SECONDARY_LAYER+1
 
 	var/list/avail_dirs = list(NORTH,SOUTH,EAST,WEST,UP,DOWN)
 
@@ -22,7 +22,7 @@
 		Consume(A)
 
 /turf/unsimulated/wall/supermatter/Destroy()
-	STOP_PROCESSING(SSturf, src)	
+	STOP_PROCESSING(SSturf, src)
 	. = ..()
 
 /turf/unsimulated/wall/supermatter/Process(wait, times_fired)

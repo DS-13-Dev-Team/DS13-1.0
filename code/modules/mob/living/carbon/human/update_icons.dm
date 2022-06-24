@@ -9,7 +9,7 @@ var/global/list/tail_icon_cache = list() //key is [species.race_key][r_skin][g_s
 var/global/list/light_overlay_cache = list()
 
 /proc/overlay_image(icon,icon_state,color,flags)
-	var/image/ret = image(icon,icon_state)
+	var/mutable_appearance/ret = mutable_appearance(icon,icon_state)
 	ret.color = color
 	ret.appearance_flags = flags
 	return ret
@@ -173,18 +173,18 @@ Please contact me on #coderbus IRC. ~Carn x
 		if(lying && (species.prone_overlay_offset[1] || species.prone_overlay_offset[2]))
 			M.Translate(species.prone_overlay_offset[1], species.prone_overlay_offset[2])
 		for(var/entry in visible_overlays)
-			if(istype(entry, /image))
-				var/image/overlay = entry
+			if(istype(entry, /mutable_appearance))
+				var/mutable_appearance/overlay = entry
 				overlay.transform = M
 				overlays_to_apply += overlay
 			else if(istype(entry, /list))
-				for(var/image/overlay in entry)
+				for(var/mutable_appearance/overlay in entry)
 					overlay.transform = M
 					overlays_to_apply += overlay
 
 		var/obj/item/organ/external/head/head = organs_by_name[BP_HEAD]
 		if(istype(head) && !head.is_stump())
-			var/image/I = head.get_eye_overlay()
+			var/mutable_appearance/I = head.get_eye_overlay()
 			if(I) overlays_to_apply += I
 	lying_prev = lying	//so we don't update overlays for lying/standing unless our stance changes again
 
@@ -224,7 +224,7 @@ var/global/list/damage_icon_parts = list()
 
 	previous_damage_appearance = damage_appearance
 
-	var/image/standing_image = image(species.damage_overlays, icon_state = "00")
+	var/mutable_appearance/standing_image = mutable_appearance(species.damage_overlays, icon_state = "00")
 
 	// blend the individual damage states with our icons
 	for(var/obj/item/organ/external/O in organs)
@@ -397,7 +397,7 @@ var/global/list/damage_icon_parts = list()
 	for(var/entry in worn_underwear)
 		var/obj/item/underwear/UW = entry
 
-		var/image/I = image(icon = UW.icon, icon_state = UW.icon_state)
+		var/mutable_appearance/I = mutable_appearance(icon = UW.icon, icon_state = UW.icon_state)
 		I.appearance_flags = RESET_COLOR
 		I.color = UW.color
 
@@ -438,7 +438,7 @@ var/global/list/damage_icon_parts = list()
 	if(FAT in mutations)
 		fat = "fat"
 
-	var/image/standing	= overlay_image('icons/effects/genetics.dmi', flags=RESET_COLOR)
+	var/mutable_appearance/standing	= overlay_image('icons/effects/genetics.dmi', flags=RESET_COLOR)
 	var/add_image = 0
 	var/g = "m"
 	if(gender == FEMALE)	g = "f"
@@ -516,7 +516,7 @@ var/global/list/damage_icon_parts = list()
 		queue_icon_update()
 
 /mob/living/carbon/human/update_inv_wear_id(var/update_icons=1)
-	var/image/id_overlay
+	var/mutable_appearance/id_overlay
 
 	if (wear_id && !w_uniform && !wear_suit)
 		drop_from_inventory(wear_id)
@@ -541,7 +541,7 @@ var/global/list/damage_icon_parts = list()
 		overlays_standing[GLOVES_LAYER]	= gloves.get_mob_overlay(src,slot_gloves_str)
 	else
 		if(blood_DNA && species.blood_mask)
-			var/image/bloodsies	= overlay_image(species.blood_mask, "bloodyhands", hand_blood_color, RESET_COLOR)
+			var/mutable_appearance/bloodsies = overlay_image(species.blood_mask, "bloodyhands", hand_blood_color, RESET_COLOR)
 			overlays_standing[GLOVES_LAYER]	= bloodsies
 		else
 			overlays_standing[GLOVES_LAYER]	= null
@@ -567,7 +567,7 @@ var/global/list/damage_icon_parts = list()
 
 	if(l_ear || r_ear)
 		// Blank image upon which to layer left & right overlays.
-		var/image/both = image("icon" = 'icons/effects/effects.dmi', "icon_state" = "nothing")
+		var/mutable_appearance/both = mutable_appearance("icon" = 'icons/effects/effects.dmi', "icon_state" = "nothing")
 		if(l_ear)
 			both.overlays += l_ear.get_mob_overlay(src,slot_l_ear_str)
 		if(r_ear)
@@ -584,7 +584,7 @@ var/global/list/damage_icon_parts = list()
 		overlays_standing[SHOES_LAYER] = shoes.get_mob_overlay(src,slot_shoes_str)
 	else
 		if(feet_blood_DNA && species.blood_mask)
-			var/image/bloodsies = overlay_image(species.blood_mask, "shoeblood", hand_blood_color, RESET_COLOR)
+			var/mutable_appearance/bloodsies = overlay_image(species.blood_mask, "shoeblood", hand_blood_color, RESET_COLOR)
 			overlays_standing[SHOES_LAYER] = bloodsies
 		else
 			overlays_standing[SHOES_LAYER] = null
@@ -620,7 +620,7 @@ var/global/list/damage_icon_parts = list()
 /mob/living/carbon/human/update_inv_wear_suit(var/update_icons=1)
 
 	if(wear_suit)
-		var/image/first = wear_suit.get_mob_overlay(src,slot_wear_suit_str)
+		var/mutable_appearance/first = wear_suit.get_mob_overlay(src,slot_wear_suit_str)
 		overlays_standing[SUIT_LAYER]	= first
 		update_tail_showing(0)
 	else
@@ -681,7 +681,7 @@ var/global/list/damage_icon_parts = list()
 
 /mob/living/carbon/human/update_inv_r_hand(var/update_icons=1)
 	if(r_hand)
-		var/image/standing = r_hand.get_mob_overlay(src,slot_r_hand_str)
+		var/mutable_appearance/standing = r_hand.get_mob_overlay(src,slot_r_hand_str)
 		if(standing)
 			standing.appearance_flags |= RESET_ALPHA
 		overlays_standing[R_HAND_LAYER] = standing
@@ -695,7 +695,7 @@ var/global/list/damage_icon_parts = list()
 
 /mob/living/carbon/human/update_inv_l_hand(var/update_icons=1)
 	if(l_hand)
-		var/image/standing = l_hand.get_mob_overlay(src,slot_l_hand_str)
+		var/mutable_appearance/standing = l_hand.get_mob_overlay(src,slot_l_hand_str)
 		if(standing)
 			standing.appearance_flags |= RESET_ALPHA
 		overlays_standing[L_HAND_LAYER] = standing
@@ -714,7 +714,7 @@ var/global/list/damage_icon_parts = list()
 
 	if(species_tail && !(wear_suit && wear_suit.flags_inv & HIDETAIL))
 		var/icon/tail_s = get_tail_icon()
-		overlays_standing[TAIL_LAYER] = image(tail_s, icon_state = "[species_tail]_s")
+		overlays_standing[TAIL_LAYER] = mutable_appearance(tail_s, icon_state = "[species_tail]_s")
 		animate_tail_reset(0)
 
 	if(update_icons)
@@ -741,7 +741,7 @@ var/global/list/damage_icon_parts = list()
 
 
 /mob/living/carbon/human/proc/set_tail_state(var/t_state)
-	var/image/tail_overlay = overlays_standing[TAIL_LAYER]
+	var/mutable_appearance/tail_overlay = overlays_standing[TAIL_LAYER]
 
 	if(tail_overlay && species.get_tail_animation(src))
 		tail_overlay.icon_state = t_state
@@ -753,7 +753,7 @@ var/global/list/damage_icon_parts = list()
 /mob/living/carbon/human/proc/animate_tail_once(var/update_icons=1)
 	var/t_state = "[species.get_tail(src)]_once"
 
-	var/image/tail_overlay = overlays_standing[TAIL_LAYER]
+	var/mutable_appearance/tail_overlay = overlays_standing[TAIL_LAYER]
 	if(tail_overlay && tail_overlay.icon_state == t_state)
 		return //let the existing animation finish
 
@@ -811,17 +811,17 @@ var/global/list/damage_icon_parts = list()
 /mob/living/carbon/human/update_fire(var/update_icons=1)
 	overlays_standing[F_LAYER] = null
 	if(on_fire)
-		var/image/standing = overlay_image('icons/mob/OnFire.dmi', "Standing", RESET_COLOR)
+		var/mutable_appearance/standing = overlay_image('icons/mob/OnFire.dmi', "Standing", RESET_COLOR)
 		overlays_standing[F_LAYER] = standing
 	if(update_icons)
 		queue_icon_update()
 
 /mob/living/carbon/human/proc/update_surgery(var/update_icons=1)
 	overlays_standing[SURGERY_LEVEL] = null
-	var/image/total = new
+	var/mutable_appearance/total = new
 	for(var/obj/item/organ/external/E in organs)
 		if(!BP_IS_ROBOTIC(E) && E.how_open())
-			var/image/I = image("icon"='icons/mob/surgery.dmi', "icon_state"="[E.icon_name][round(E.how_open())]", "layer"=-SURGERY_LEVEL)
+			var/mutable_appearance/I = mutable_appearance(icon='icons/mob/surgery.dmi', icon_state="[E.icon_name][round(E.how_open())]", layer = -SURGERY_LEVEL)
 			total.overlays += I
 	total.appearance_flags = RESET_COLOR
 	overlays_standing[SURGERY_LEVEL] = total

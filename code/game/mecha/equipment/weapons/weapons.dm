@@ -242,7 +242,9 @@
 
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/flare/Fire(atom/movable/AM, atom/target, turf/aimloc)
 	var/obj/item/device/flashlight/flare/fired = AM
-	fired.activate()
+	fired.on = TRUE
+	fired.update_brightness(src)
+	START_PROCESSING(SSobj, fired)
 	..()
 
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/explosive

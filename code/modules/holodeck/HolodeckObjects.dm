@@ -425,10 +425,8 @@
 	icon_gib = null
 	meat_amount = 0
 	meat_type = null
-
-/mob/living/simple_animal/hostile/carp/holodeck/New()
-	..()
-	set_light(0.5, 0.1, 2) //hologram lighting
+	light_range = 2
+	light_power = 0.5
 
 /mob/living/simple_animal/hostile/carp/holodeck/proc/set_safety(var/safe)
 	if (safe)

@@ -7,7 +7,7 @@
 	name = "advanced floor"
 	icon = 'icons/turf/flooring/tiles_white.dmi'
 	build_type = /obj/item/stack/tile/floor/steel/gray_perforated //Same type as the normal plating, we'll use can_build_floor to control it
-	flags = TURF_CAN_BURN | TURF_CAN_BREAK | TURF_HAS_CORNERS | TURF_HAS_INNER_CORNERS
+	flags = TURF_CAN_BURN | TURF_CAN_BREAK | TURF_HAS_CORNERS | TURF_HAS_INNER_CORNERS | TURF_HIDES_THINGS
 	can_paint = 1
 	has_base_range = 0
 	resistance = RESISTANCE_ARMOURED

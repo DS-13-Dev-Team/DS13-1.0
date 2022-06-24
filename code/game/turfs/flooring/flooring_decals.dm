@@ -20,7 +20,9 @@ var/list/floor_decals = list()
 	..(newloc)
 
 /obj/effect/floor_decal/Initialize()
-	if(supplied_dir) set_dir(supplied_dir)
+	SHOULD_CALL_PARENT(FALSE)
+	if(supplied_dir)
+		set_dir(supplied_dir)
 	var/turf/T = get_turf(src)
 	if(istype(T, /turf/simulated/floor) || istype(T, /turf/unsimulated/floor))
 		layer = T.is_plating() ? DECAL_PLATING_LAYER : DECAL_LAYER
@@ -46,6 +48,7 @@ var/list/floor_decals = list()
 	name = "reset marker"
 
 /obj/effect/floor_decal/reset/Initialize()
+	SHOULD_CALL_PARENT(FALSE)
 	var/turf/T = get_turf(src)
 	T.remove_decals()
 	T.update_icon()

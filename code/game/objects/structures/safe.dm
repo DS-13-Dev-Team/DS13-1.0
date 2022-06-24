@@ -30,6 +30,7 @@ FLOOR SAFES
 	tumbler_2_open = rand(0, 72)
 
 /obj/structure/safe/Initialize()
+	.=..()
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/structure/safe/LateInitialize()

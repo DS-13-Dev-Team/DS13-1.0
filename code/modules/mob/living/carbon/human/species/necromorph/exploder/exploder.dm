@@ -15,7 +15,7 @@
 
 	biomass_reclamation_time	=	5 MINUTES
 	view_range = 6
-	darksight_tint = DARKTINT_POOR
+	lighting_alpha = LIGHTING_PLANE_ALPHA_NV_TRAIT
 
 	icon_template = 'icons/mob/necromorph/exploder/exploder.dmi'
 	icon_lying = "_lying"
@@ -242,13 +242,10 @@ The last resort. The exploder screams and shakes violently for 3 seconds, before
 	joint = "left wrist"
 	amputation_point = "left wrist"
 	tendon_name = "carpal ligament"
+	//The pustule casts soft yellow light in a broad area
+	light_range = 9
+	light_power = 1
 	light_color = COLOR_NECRO_YELLOW
-
-//The pustule casts soft yellow light in a broad area
-/obj/item/organ/external/exploder_pustule/Initialize()
-	set_light(1, 1, 9, 2, light_color)
-	.=..()
-
 
 /obj/item/organ/external/exploder_pustule/right
 	organ_tag = BP_R_ARM

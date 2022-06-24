@@ -17,8 +17,8 @@
 
 /obj/structure/diona_gestalt/Initialize(var/mapload)
 	eyes_overlay = image(icon = icon, icon_state = "eyes_gestalt")
-	eyes_overlay.layer = EYE_GLOW_LAYER
-	eyes_overlay.plane = EFFECTS_ABOVE_LIGHTING_PLANE
+	eyes_overlay.plane = ABOVE_LIGHTING_PLANE
+	eyes_overlay.layer = LIGHTING_SECONDARY_LAYER
 	update_icon()
 	. = ..(mapload)
 

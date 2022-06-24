@@ -1,155 +1,86 @@
-/var/lighting_overlays_initialised = FALSE
-
 SUBSYSTEM_DEF(lighting)
 	name = "Lighting"
-	wait = 1
+	wait = 2
 	init_order = SS_INIT_LIGHTING
-
-	// Queues of update counts, waiting to be rolled into stats lists
-	var/list/stats_queues = list(
-		"Source" = list(),
-		"Corner" = list(),
-		"Overlay" = list()
-	)
-	// Stats lists
-	var/list/stats_lists = list(
-		"Source" = list(),
-		"Corner" = list(),
-		"Overlay" = list()
-	)
-	var/update_stats_every = 1 SECOND
-	var/next_stats_update = 0
-	var/stat_updates_to_keep = 5
-
-	var/list/light_queue   = list() // lighting sources  queued for update.
-	var/lq_idex = 1
-	var/list/corner_queue  = list() // lighting corners  queued for update.
-	var/cq_idex = 1
-	var/list/overlay_queue = list() // lighting overlays queued for update.
-	var/oq_idex = 1
-
-	var/tmp/processed_lights = 0
-	var/tmp/processed_corners = 0
-	var/tmp/processed_overlays = 0
+	flags = SS_TICKER
+	var/static/list/sources_queue = list() // List of lighting sources queued for update.
+	var/static/list/corners_queue = list() // List of lighting corners queued for update.
+	var/static/list/objects_queue = list() // List of lighting objects queued for update.
 
 /datum/controller/subsystem/lighting/stat_entry(msg)
-	msg += "Queued:{L:[light_queue.len] C:[corner_queue.len] O:[overlay_queue.len]}"
-	for (var/stype in stats_lists)
-		msg += "[stype] updates: [jointext(stats_lists[stype], " | ")]"
+	msg = "L:[length(sources_queue)]|C:[length(corners_queue)]|O:[length(objects_queue)]"
+	return ..()
 
-	return msg
 
-/datum/controller/subsystem/lighting/Initialize()
-	InitializeTurfs()
-	lighting_overlays_initialised = TRUE
+/datum/controller/subsystem/lighting/Initialize(timeofday)
+	if(!initialized)
+		create_all_lighting_objects()
+		initialized = TRUE
+
 	fire(FALSE, TRUE)
-	..()
 
-// It's safe to pass a list of non-turfs to this list - it'll only check turfs.
-/datum/controller/subsystem/lighting/proc/InitializeTurfs(list/targets)
-	for (var/turf/T in (targets || world))
-		if (T.dynamic_lighting && T.loc:dynamic_lighting)
-			T.lighting_build_overlay()
-		// If this isn't here, BYOND will set-background us.
-		CHECK_TICK
+	return ..()
 
-/datum/controller/subsystem/lighting/fire(resumed = FALSE, no_mc_tick = FALSE)
-	if (!resumed)
-		stats_queues["Source"] += processed_lights
-		stats_queues["Corner"] += processed_corners
-		stats_queues["Overlay"] += processed_overlays
-
-		processed_lights = 0
-		processed_corners = 0
-		processed_overlays = 0
-
-		if(next_stats_update <= world.time)
-			next_stats_update = world.time + update_stats_every
-			for(var/stat_name in stats_queues)
-				var/stat_sum = 0
-				var/list/stats_queue = stats_queues[stat_name]
-				for(var/count in stats_queue)
-					stat_sum += count
-				stats_queue.Cut()
-
-				var/list/stats_list = stats_lists[stat_name]
-				stats_list.Insert(1, stat_sum)
-				if(stats_list.len > stat_updates_to_keep)
-					stats_list.Cut(stats_list.len)
-
+/datum/controller/subsystem/lighting/fire(resumed, init_tick_checks)
 	MC_SPLIT_TICK_INIT(3)
-	if (!no_mc_tick)
+	if(!init_tick_checks)
 		MC_SPLIT_TICK
+	var/list/queue = sources_queue
+	var/i = 0
+	for (i in 1 to length(queue))
+		var/datum/light_source/L = queue[i]
 
-	// Sources.
-	while (lq_idex <= light_queue.len)
-		var/datum/light_source/L = light_queue[lq_idex]
-		lq_idex += 1
+		L.update_corners()
 
-		if(L.check() || L.destroyed || L.force_update)
-			L.remove_lum()
-			if(!L.destroyed)
-				L.apply_lum()
+		L.needs_update = LIGHTING_NO_UPDATE
 
-		else if(L.vis_update)	//We smartly update only tiles that became (in) visible to use.
-			L.smart_vis_update()
-
-		L.vis_update   = FALSE
-		L.force_update = FALSE
-		L.needs_update = FALSE
-
-		processed_lights += 1
-
-		if (no_mc_tick)
+		if(init_tick_checks)
 			CHECK_TICK
 		else if (MC_TICK_CHECK)
 			break
+	if (i)
+		queue.Cut(1, i+1)
+		i = 0
 
-	if (lq_idex > 1)
-		light_queue.Cut(1, lq_idex)
-		lq_idex = 1
-
-	if (!no_mc_tick)
+	if(!init_tick_checks)
 		MC_SPLIT_TICK
 
-	// Corners.
-	while (cq_idex <= corner_queue.len)
-		var/datum/lighting_corner/C = corner_queue[cq_idex]
-		cq_idex += 1
+	queue = corners_queue
+	for (i in 1 to length(queue))
+		var/datum/lighting_corner/C = queue[i]
 
-		C.update_overlays()
+		C.needs_update = FALSE //update_objects() can call qdel if the corner is storing no data
+		C.update_objects()
 
-		C.needs_update = FALSE
-
-		processed_corners += 1
-
-		if (no_mc_tick)
+		if(init_tick_checks)
 			CHECK_TICK
 		else if (MC_TICK_CHECK)
 			break
+	if (i)
+		queue.Cut(1, i+1)
+		i = 0
 
-	if (cq_idex > 1)
-		corner_queue.Cut(1, cq_idex)
-		cq_idex = 1
 
-	if (!no_mc_tick)
+	if(!init_tick_checks)
 		MC_SPLIT_TICK
 
-	// Objects.
-	while (oq_idex <= overlay_queue.len)
-		var/atom/movable/lighting_overlay/O = overlay_queue[oq_idex]
-		oq_idex += 1
+	queue = objects_queue
+	for (i in 1 to length(queue))
+		var/datum/lighting_object/O = queue[i]
 
-		O.update_overlay()
-		O.needs_update = 0
+		if (QDELETED(O))
+			continue
 
-		processed_overlays += 1
-
-		if (no_mc_tick)
+		O.update()
+		O.needs_update = FALSE
+		if(init_tick_checks)
 			CHECK_TICK
 		else if (MC_TICK_CHECK)
 			break
+	if (i)
+		queue.Cut(1, i+1)
 
-	if (oq_idex > 1)
-		overlay_queue.Cut(1, oq_idex)
-		oq_idex = 1
+
+/datum/controller/subsystem/lighting/Recover()
+	initialized = SSlighting.initialized
+	..()

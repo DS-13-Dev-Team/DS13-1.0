@@ -15,8 +15,6 @@ var/list/flooring_cache = list()
 	var/has_smooth = 0 //This is just the has_border bitfield inverted for easier logic
 
 	if(lava)
-		if(permit_ao)
-			queue_ao(FALSE)
 		return
 
 	if(flooring)
@@ -132,10 +130,8 @@ var/list/flooring_cache = list()
 				var/n = rand(1,2)
 				overlays |= get_damage_overlay("scorched[n]-[plane]-[get_damagepercent()]", "burned[n]")
 
-	queue_ao(FALSE)
 	if(update_neighbors)
 		for(var/turf/simulated/floor/F in orange(1, src))
-			F.queue_ao(FALSE)
 			F.update_icon()
 
 	//Eris openspace handling, not currently used

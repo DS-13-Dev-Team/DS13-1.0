@@ -4,16 +4,6 @@
 /datum/uplink_item/item/grenades
 	category = /datum/uplink_category/grenades
 
-/datum/uplink_item/item/grenades/anti_photon
-	name = "1xPhoton Disruption Grenade"
-	item_cost = 4
-	path = /obj/item/weapon/grenade/anti_photon
-
-/datum/uplink_item/item/grenades/anti_photons
-	name = "5xPhoton Disruption Grenades"
-	item_cost = 16
-	path = /obj/item/weapon/storage/box/anti_photons
-
 /datum/uplink_item/item/grenades/smoke
 	name = "1xSmoke Grenade"
 	item_cost = 4

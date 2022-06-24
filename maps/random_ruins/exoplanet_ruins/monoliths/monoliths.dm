@@ -14,6 +14,8 @@
 	layer = ABOVE_HUMAN_LAYER
 	density = 1
 	anchored = 1
+	light_range = 2
+	light_power = 0.3
 	var/active = 0
 
 /obj/structure/monolith/Initialize()
@@ -33,10 +35,13 @@
 		var/image/I = image(icon,"[icon_state]decor")
 		I.appearance_flags = RESET_COLOR
 		I.color = get_random_colour(0, 150, 255)
-		I.layer = ABOVE_LIGHTING_LAYER
-		I.plane = EFFECTS_ABOVE_LIGHTING_PLANE
+		I.plane = ABOVE_LIGHTING_PLANE
+		I.layer = LIGHTING_SECONDARY_LAYER
 		overlays += I
-		set_light(0.3, 0.1, 2, l_color = I.color)
+		set_light_color(I.color)
+		set_light_on(TRUE)
+	else
+		set_light_on(FALSE)
 
 /obj/structure/monolith/attack_hand(mob/user)
 	visible_message("[user] touches \the [src].")

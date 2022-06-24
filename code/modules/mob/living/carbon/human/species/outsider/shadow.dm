@@ -7,8 +7,7 @@
 
 	language = LANGUAGE_GALCOM
 	unarmed_types = list(/datum/unarmed_attack/claws/strong, /datum/unarmed_attack/bite/sharp)
-	darksight_range = 8
-	darksight_tint = DARKTINT_MODERATE
+	lighting_alpha = LIGHTING_PLANE_ALPHA_NV_TRAIT
 	siemens_coefficient = 0
 
 	blood_color = "#cccccc"

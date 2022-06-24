@@ -46,9 +46,9 @@
 		if(I)
 			var/cache_key = "[last_eye_cache_key]-glow"
 			if(!human_icon_cache[cache_key])
-				var/image/eye_glow = image(I)
-				eye_glow.layer = EYE_GLOW_LAYER
-				eye_glow.plane = EFFECTS_ABOVE_LIGHTING_PLANE
+				var/mutable_appearance/eye_glow = mutable_appearance(I)
+				eye_glow.plane = ABOVE_LIGHTING_PLANE
+				eye_glow.layer = LIGHTING_SECONDARY_LAYER
 				human_icon_cache[cache_key] = eye_glow
 			return human_icon_cache[cache_key]
 
@@ -147,7 +147,7 @@
 	return mob_icon
 
 /obj/item/organ/external/head/proc/get_hair_icon()
-	var/image/res = image(species.icon_template,"")
+	var/mutable_appearance/res = mutable_appearance(species.icon_template,"")
 	//Future TODO: Cache the hairstyle in the head so that heads can have hair after severing
 	if (owner)
 		if(owner.f_style)

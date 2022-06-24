@@ -5,7 +5,7 @@
 /obj/machinery/camera/deactivate(user as mob, var/choice = 1)
 	..(user, choice)
 	if(!can_use())
-		set_light(0)
+		set_light_on(FALSE)
 	GLOB.cameranet.update_visibility(src)
 
 /obj/machinery/camera/Initialize()

@@ -16,7 +16,7 @@
 
 	biomass_reclamation_time	=	5 MINUTES
 	view_range = 6
-	darksight_tint = DARKTINT_POOR
+	lighting_alpha = LIGHTING_PLANE_ALPHA_NV_TRAIT
 
 	icon_template = 'icons/mob/necromorph/exploder/exploder_enhanced.dmi'
 	icon_lying = "_lying"

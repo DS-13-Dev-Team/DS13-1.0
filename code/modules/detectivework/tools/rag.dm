@@ -26,7 +26,9 @@
 	item_flags = ITEM_FLAG_NO_BLUDGEON
 	atom_flags = ATOM_FLAG_OPEN_CONTAINER
 	unacidable = 0
-
+	light_range = 2
+	light_power = 0.5
+	light_color = "#e38f46"
 	var/on_fire = 0
 	var/burn_time = 20 //if the rag burns for too long it turns to ashes
 
@@ -182,14 +184,14 @@
 		return
 
 	START_PROCESSING(SSobj, src)
-	set_light(0.5, 0.1, 2, 2, "#e38f46")
+	set_light_on(TRUE)
 	on_fire = 1
 	update_name()
 	update_icon()
 
 /obj/item/weapon/reagent_containers/glass/rag/proc/extinguish()
 	STOP_PROCESSING(SSobj, src)
-	set_light(0)
+	set_light_on(FALSE)
 	on_fire = 0
 
 	//rags sitting around with 1 second of burn time left is dumb.

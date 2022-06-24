@@ -45,7 +45,7 @@
 
 	//Vision
 	view_range = 9
-	darksight_tint = DARKTINT_EXCEPTIONAL	//It has psychic senses, can't hide in the dark
+	lighting_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE
 
 
 	//Audio

@@ -21,7 +21,8 @@
 	amount = 10
 	max_amount = 10
 	icon = 'icons/obj/mining.dmi'
-
+	light_range = 1
+	light_power = 0.2
 	var/upright = 0
 	var/fringe = null
 
@@ -94,10 +95,10 @@
 	anchored = 1
 	icon_state = "[initial(icon_state)]_open"
 	if(fringe)
-		set_light(0.2, 0.1, 1) // Very dim so the rest of the flag is barely visible - if the turf is completely dark, you can't see anything on it, no matter what
+		set_light_on(TRUE) // Very dim so the rest of the flag is barely visible - if the turf is completely dark, you can't see anything on it, no matter what
 		var/image/addon = image(icon = src.icon, icon_state = fringe) // Bright fringe
-		addon.layer = ABOVE_LIGHTING_LAYER
-		addon.plane = EFFECTS_ABOVE_LIGHTING_PLANE
+		addon.plane = ABOVE_LIGHTING_PLANE
+		addon.layer = LIGHTING_SECONDARY_LAYER
 		overlays += addon
 
 /obj/item/stack/flag/proc/knock_down()
@@ -107,4 +108,4 @@
 	anchored = 0
 	icon_state = initial(icon_state)
 	overlays.Cut()
-	set_light(0)
+	set_light_on(FALSE)

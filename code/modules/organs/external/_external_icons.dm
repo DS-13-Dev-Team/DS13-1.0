@@ -2,7 +2,7 @@ var/list/limb_icon_cache = list()
 
 
 /obj/item/organ/external/set_dir()
-	return
+	SHOULD_CALL_PARENT(FALSE)
 
 /obj/item/organ/external/proc/compile_icon()
 	overlays.Cut()

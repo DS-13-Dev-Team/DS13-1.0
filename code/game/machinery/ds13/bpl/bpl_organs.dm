@@ -30,6 +30,7 @@
 	.=..()
 
 /obj/item/organ/forming/Initialize()
+	.=..()
 	var/list/data = GLOB.bpl_growth_organs[template]
 	icon_state = data ["icon"]
 	name = data["name"]

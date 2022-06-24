@@ -1,9 +1,8 @@
-/*PROCESSING_*/SUBSYSTEM_DEF(dcs)
+PROCESSING_SUBSYSTEM_DEF(dcs)
 	name = "Datum Component System"
-	flags = SS_NO_INIT|SS_NO_FIRE //Remove SS_NO_FIRE if you decide to activate elements
+	flags = SS_NO_INIT
 	wait = 1 SECONDS
 
-/*
 	var/list/elements_by_type = list()
 
 /datum/controller/subsystem/processing/dcs/Recover()
@@ -53,4 +52,3 @@
 		named_arguments = sort_list(named_arguments)
 		fullid += named_arguments
 	return list2params(fullid)
-*/

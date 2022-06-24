@@ -34,10 +34,10 @@ var/list/gzn_check = list(NORTH, SOUTH, EAST, WEST, UP, DOWN)
 	} \
 	else if (B.z != A.z) { \
 		if (B.z < A.z) { \
-			ret = (A.z_flags & ZM_ALLOW_ATMOS) ? ZONE_BLOCKED : BLOCKED; \
+			ret = (A.turf_flags & TURF_PASS_ATMOS_Z) ? ZONE_BLOCKED : BLOCKED; \
 		} \
 		else { \
-			ret = (B.z_flags & ZM_ALLOW_ATMOS) ? ZONE_BLOCKED : BLOCKED; \
+			ret = (B.turf_flags & TURF_PASS_ATMOS_Z) ? ZONE_BLOCKED : BLOCKED; \
 		} \
 	} \
 	else if (A.blocks_air & ZONE_BLOCKED || B.blocks_air & ZONE_BLOCKED) { \
