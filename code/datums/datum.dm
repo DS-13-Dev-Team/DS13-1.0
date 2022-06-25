@@ -3,8 +3,27 @@
 	var/tmp/datum/controller/subsystem/processing/is_processing = FALSE
 	var/list/active_timers  //for SStimer
 	var/implements_dummy = FALSE	//If true, this datum has an argument named "dummy" in its new proc
-	var/dummy = FALSE	//Set true if this datum is a dummy and should not perform its normal functions
+
 	//Used by mob previews
+	var/dummy = FALSE	//Set true if this datum is a dummy and should not perform its normal functions
+
+	/// Status traits attached to this datum
+	var/list/status_traits
+
+	/**
+	  * Components attached to this datum
+	  *
+	  * Lazy associated list in the structure of `type:component/list of components`
+	  */
+	var/list/datum_components
+	/**
+	  * Any datum registered to receive signals from this datum is in this list
+	  *
+	  * Lazy associated list in the structure of `signal:registree/list of registrees`
+	  */
+	var/list/comp_lookup
+	/// Lazy associated list in the structure of `signals:proctype` that are run when the datum receives that signal
+	var/list/list/datum/callback/signal_procs
 
 	/// Datum level flags
 	var/datum_flags = NONE
