@@ -3,7 +3,7 @@
 // Edit: Sound environments added. Do not mess with these unless you know what they do. Missing sound_env is for area's is not a bad thing if they are inherited from their parent. - Lion / 24-Nov-2020
 
 /area/ishimura
-	icon = 'maps/DeadSpace/ishimura_areas.dmi'
+	icon = 'maps/USGIshimura/ishimura_areas.dmi'
 	ship_area = TRUE
 	ambience = list('sound/ambience/ishimura/corridor/shippa1.ogg','sound/ambience/ishimura/corridor/shippa2.ogg','sound/ambience/ishimura/corridor/shippa3.ogg', 'sound/ambience/ishimura/corridor/shippa4.ogg', 'sound/ambience/ishimura/corridor/shippa5.ogg', 'sound/ambience/ishimura/corridor/shippa6.ogg', 'sound/ambience/ishimura/corridor/shippa7.ogg', 'sound/ambience/ishimura/corridor/shippa8.ogg', 'sound/ambience/ishimura/corridor/shippa9.ogg', 'sound/ambience/ishimura/corridor/shippa10.ogg', 'sound/ambience/ishimura/corridor/shippa11.ogg')
 	forced_ambience = null

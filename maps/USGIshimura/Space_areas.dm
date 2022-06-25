@@ -1,6 +1,6 @@
 //ERT Areas//
 /area/ERT
-	icon = 'maps/DeadSpace/space_areas.dmi'
+	icon = 'maps/USGIshimura/space_areas.dmi'
 	requires_power = 0
 	dynamic_lighting = 1
 

@@ -2,7 +2,7 @@
 
 /area/aegis
 	name = "\improper Aegis VII"
-	icon = 'maps/DeadSpace/ishimura_areas.dmi'
+	icon = 'maps/USGIshimura/ishimura_areas.dmi'
 	icon_state = "aegis"
 	sound_env = ASTEROID
 

@@ -1,5 +1,6 @@
+#ifndef MAP_ISHIMURA
 #define USING_MAP_DATUM /datum/map/colony
-
+#endif
 //	#include "DeadSpace/job.dm"
 
 /datum/map/colony
