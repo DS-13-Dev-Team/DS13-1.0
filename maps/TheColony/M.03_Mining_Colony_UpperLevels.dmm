@@ -260,21 +260,13 @@
 /area/mining_colony/security/upper/bridge_corridor)
 "aQ" = (
 /obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2"
-	},
-/obj/structure/cable{
-	d1 = 2;
+	d1 = 4;
 	d2 = 8;
-	icon_state = "0-5"
+	icon_state = "4-8"
 	},
 /obj/structure/cable{
-	d2 = 8;
-	icon_state = "0-8"
-	},
-/obj/structure/cable{
-	d2 = 4;
-	icon_state = "0-4"
+	icon_state = "1-4";
+	dir = 8
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/upper/commandofficers)
@@ -2675,7 +2667,8 @@
 /obj/structure/cable{
 	d1 = 2;
 	d2 = 8;
-	icon_state = "4-10"
+	icon_state = "1-4";
+	dir = 8
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/upper/commandofficers)
@@ -2808,6 +2801,20 @@
 	dir = 1
 	},
 /area/mining_colony/security/upper/bridge_corridor)
+"uc" = (
+/obj/structure/cable{
+	icon_state = "1-4";
+	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/dank/tech{
+	dir = 4
+	},
+/area/mining_colony/security/upper/bridge_corridor)
 "ug" = (
 /obj/structure/table/reinforced,
 /obj/structure/window/reinforced{
@@ -2847,16 +2854,23 @@
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/upper/commandofficers)
 "va" = (
-/obj/structure/cable,
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/command{
+	name = "Bridge"
+	},
+/obj/machinery/door/blast/shutters/open{
+	dir = 2;
+	icon_state = "ishimura_shutter_open";
+	id = "bridge_shutters";
+	name = "Bridge Shutters"
+	},
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
-/turf/simulated/floor/dank/tech{
-	dir = 4
-	},
-/area/mining_colony/security/upper/bridge_corridor)
+/turf/simulated/floor/dank/mono,
+/area/mining_colony/security/upper/commandofficers)
 "vh" = (
 /obj/structure/bed/chair/office{
 	dir = 1
@@ -2920,21 +2934,17 @@
 /area/mining_colony/security/upper/bridge_corridor)
 "wi" = (
 /obj/machinery/door/firedoor,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/effect/wallframe_spawn/reinforced,
-/obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2"
-	},
 /obj/machinery/door/blast/shutters/open{
 	dir = 2;
 	icon_state = "ishimura_shutter_open";
 	id = "bridge_shutters";
 	name = "Bridge Shutters"
+	},
+/obj/structure/cable{
+	d2 = 2;
+	icon_state = "0-2";
+	dir = 1
 	},
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/security/upper/commandofficers)
@@ -3550,6 +3560,23 @@
 "LC" = (
 /turf/simulated/floor/dank/hardwood,
 /area/mining_colony/security/upper/fl_office)
+"LP" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	icon_state = "1-4";
+	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/dank/golf_brown,
+/area/mining_colony/security/upper/commandofficers)
 "LV" = (
 /obj/structure/closet/firecloset,
 /turf/simulated/floor/dank/slides{
@@ -13531,9 +13558,9 @@ aL
 dH
 aQ
 wi
-bB
-Up
-va
+ao
+RI
+SL
 dG
 zv
 ke
@@ -13731,11 +13758,11 @@ aE
 aL
 aM
 qz
-pR
-rU
-ao
-RI
-SL
+LP
+va
+bB
+Up
+uc
 dG
 Qn
 Qn
