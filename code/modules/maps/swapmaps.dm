@@ -339,7 +339,7 @@ swapmap
 				   M.x1>X2 || M.x2<X1 || M.x1>=X1+x2 ||\
 				   M.y1>Y2 || M.y2<Y1 || M.y1>=Y1+y2) continue
 				// look for sub-regions with a defined ceiling
-				var/nz2=Z2?(Z2):Z1+z2-1+M.z2-M.z1
+				var/nz2= Z2 ? Z2 : (Z1+z2-1+M.z2-M.z1)
 				if(M.x1>=X1+x2)
 					.=ConsiderRegion(X1,Y1,M.x1-1,Y2,Z1,nz2)
 					if(.) return

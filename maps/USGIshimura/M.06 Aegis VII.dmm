@@ -1593,7 +1593,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/aegis/colony/breakroom)
 "dZ" = (
-/turf/simulated/floor/holofloor/concrete,
+/turf/simulated/floor/concrete,
 /area/aegis)
 "ea" = (
 /obj/machinery/door/firedoor/border_only{
@@ -1700,7 +1700,7 @@
 "ek" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/mining/drill,
-/turf/simulated/floor/holofloor/concrete,
+/turf/simulated/floor/concrete,
 /area/aegis)
 "el" = (
 /obj/structure/cable/green{
@@ -1812,7 +1812,7 @@
 "eu" = (
 /obj/structure/ore_box,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/holofloor/concrete,
+/turf/simulated/floor/concrete,
 /area/aegis)
 "ev" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -1820,7 +1820,7 @@
 	dir = 1;
 	icon_state = "mining_brace"
 	},
-/turf/simulated/floor/holofloor/concrete,
+/turf/simulated/floor/concrete,
 /area/aegis)
 "ew" = (
 /obj/effect/floor_decal/corner/grey/mono,
@@ -1844,7 +1844,7 @@
 	master_tag = "aegis_airlock";
 	pixel_y = 24
 	},
-/turf/simulated/floor/holofloor/concrete,
+/turf/simulated/floor/concrete,
 /area/aegis)
 "ey" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -2025,7 +2025,7 @@
 /area/aegis/colony)
 "eT" = (
 /obj/machinery/floodlight/on,
-/turf/simulated/floor/holofloor/concrete,
+/turf/simulated/floor/concrete,
 /area/aegis)
 "eU" = (
 /turf/simulated/floor/plating,
@@ -3200,7 +3200,7 @@
 /obj/item/stack/flag/green,
 /obj/item/stack/flag/green,
 /obj/item/stack/flag/green,
-/turf/simulated/floor/holofloor/concrete,
+/turf/simulated/floor/concrete,
 /area/aegis)
 "he" = (
 /obj/effect/wallframe_spawn/reinforced,
@@ -3330,7 +3330,7 @@
 /obj/structure/table/standard,
 /obj/random/loot/usually,
 /obj/item/weapon/storage/box/glowsticks,
-/turf/simulated/floor/holofloor/concrete,
+/turf/simulated/floor/concrete,
 /area/aegis)
 "hr" = (
 /obj/machinery/atmospherics/portables_connector,
@@ -3343,7 +3343,7 @@
 /obj/item/stack/flag/yellow,
 /obj/item/stack/flag/yellow,
 /obj/item/stack/flag/yellow,
-/turf/simulated/floor/holofloor/concrete,
+/turf/simulated/floor/concrete,
 /area/aegis)
 "ht" = (
 /obj/structure/catwalk,
@@ -3376,7 +3376,7 @@
 /obj/item/stack/flag/red,
 /obj/item/stack/flag/red,
 /obj/item/stack/flag/red,
-/turf/simulated/floor/holofloor/concrete,
+/turf/simulated/floor/concrete,
 /area/aegis)
 "hw" = (
 /obj/structure/table/rack,
@@ -3418,7 +3418,7 @@
 /obj/item/weapon/storage/toolbox/electrical,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/random/loot/usually,
-/turf/simulated/floor/holofloor/concrete,
+/turf/simulated/floor/concrete,
 /area/aegis)
 "hB" = (
 /obj/structure/table/standard,
@@ -4027,7 +4027,7 @@
 /obj/item/weapon/storage/ore,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/random/loot/usually,
-/turf/simulated/floor/holofloor/concrete,
+/turf/simulated/floor/concrete,
 /area/aegis)
 "iD" = (
 /obj/structure/cable/green{
@@ -4304,7 +4304,7 @@
 /obj/structure/table/standard,
 /obj/item/weapon/tool/wrench,
 /obj/item/weapon/tool/wrench,
-/turf/simulated/floor/holofloor/concrete,
+/turf/simulated/floor/concrete,
 /area/aegis)
 "jl" = (
 /obj/structure/sign/science_2,
@@ -4650,7 +4650,7 @@
 /area/aegis)
 "kf" = (
 /obj/structure/anomaly_container,
-/turf/simulated/floor/holofloor/concrete,
+/turf/simulated/floor/concrete,
 /area/aegis)
 "kg" = (
 /obj/structure/anomaly_container,
@@ -4658,27 +4658,27 @@
 /area/aegis)
 "kh" = (
 /obj/structure/table/steel,
-/turf/simulated/floor/holofloor/concrete,
+/turf/simulated/floor/concrete,
 /area/aegis)
 "ki" = (
 /obj/structure/table/steel,
 /obj/random/toolbox,
-/turf/simulated/floor/holofloor/concrete,
+/turf/simulated/floor/concrete,
 /area/aegis)
 "kj" = (
 /obj/structure/table/steel,
 /obj/random/toolbox/low_chance,
-/turf/simulated/floor/holofloor/concrete,
+/turf/simulated/floor/concrete,
 /area/aegis)
 "kk" = (
 /obj/structure/table/steel,
 /obj/item/weapon/tool/pickaxe/laser,
-/turf/simulated/floor/holofloor/concrete,
+/turf/simulated/floor/concrete,
 /area/aegis)
 "kl" = (
 /obj/structure/table/steel,
 /obj/item/weapon/tool/saw/plasma,
-/turf/simulated/floor/holofloor/concrete,
+/turf/simulated/floor/concrete,
 /area/aegis)
 "km" = (
 /obj/machinery/door/airlock/external/glass{
@@ -4969,7 +4969,7 @@
 	master_tag = "aegis_sci_airlock";
 	pixel_x = 24
 	},
-/turf/simulated/floor/holofloor/concrete,
+/turf/simulated/floor/concrete,
 /area/aegis)
 "kN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
@@ -6001,17 +6001,17 @@
 "mL" = (
 /obj/structure/table/steel,
 /obj/random/loot/sometimes/some,
-/turf/simulated/floor/holofloor/concrete,
+/turf/simulated/floor/concrete,
 /area/aegis)
 "mM" = (
 /obj/structure/table/steel,
 /obj/random/loot/usually/many,
-/turf/simulated/floor/holofloor/concrete,
+/turf/simulated/floor/concrete,
 /area/aegis)
 "mN" = (
 /obj/structure/table/steel,
 /obj/random/loot/rarely/few,
-/turf/simulated/floor/holofloor/concrete,
+/turf/simulated/floor/concrete,
 /area/aegis)
 "mP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -6477,7 +6477,7 @@
 "nI" = (
 /obj/machinery/suspension_gen,
 /obj/item/weapon/tool/wrench,
-/turf/simulated/floor/holofloor/concrete,
+/turf/simulated/floor/concrete,
 /area/aegis)
 "nJ" = (
 /obj/machinery/suspension_gen,
@@ -6780,7 +6780,7 @@
 /obj/machinery/mining/brace{
 	dir = 4
 	},
-/turf/simulated/floor/holofloor/concrete,
+/turf/simulated/floor/concrete,
 /area/aegis)
 "Gg" = (
 /obj/structure/cable/green{
@@ -6855,7 +6855,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/holofloor/concrete,
+/turf/simulated/floor/concrete,
 /area/aegis)
 "JY" = (
 /obj/machinery/mineral/processing_unit_console{
@@ -7149,7 +7149,7 @@
 /obj/machinery/mining/brace{
 	dir = 8
 	},
-/turf/simulated/floor/holofloor/concrete,
+/turf/simulated/floor/concrete,
 /area/aegis)
 "XP" = (
 /obj/machinery/door/window/holowindoor{

@@ -31,6 +31,9 @@
 		if (!asset_cache_job)
 			return
 
+	if(href_list["open_vote_menu"])
+		SSvote.tgui_interact(mob)
+
 	#if defined(TOPIC_DEBUGGING)
 	log_debug("[src]'s Topic: [href] destined for [hsrc].")
 

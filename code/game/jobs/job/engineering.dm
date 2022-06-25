@@ -6,7 +6,11 @@
 	department_flag = COM|ENG
 	total_positions = 1
 	spawn_positions = 1
+#ifdef MAP_ISHIMURA
 	supervisors = "the Captain"
+	#else
+	supervisors = "the Colony Director"
+#endif
 	selection_color = "#7f6e2c"
 	req_admin_notify = 1
 	minimal_player_age = 18
@@ -22,22 +26,26 @@
 
 	min_skill = list(   SKILL_HAULING     = SKILL_BASIC,
 						SKILL_EVA	      = SKILL_ADEPT,
-	                    SKILL_COMPUTER    = SKILL_ADEPT,
-	                    SKILL_CONSTRUCTION= SKILL_EXPERT,
-	                    SKILL_ELECTRICAL  = SKILL_EXPERT,
-	                    SKILL_DEVICES	  = SKILL_BASIC)
+						SKILL_COMPUTER    = SKILL_ADEPT,
+						SKILL_CONSTRUCTION= SKILL_EXPERT,
+						SKILL_ELECTRICAL  = SKILL_EXPERT,
+						SKILL_DEVICES	  = SKILL_BASIC)
 
 	max_skill = list(   SKILL_BOTANY      = SKILL_EXPERT,
-	                    SKILL_COOKING     = SKILL_EXPERT,
-	                    SKILL_MEDICAL     = SKILL_EXPERT,
-	                    SKILL_ANATOMY     = SKILL_ADEPT,
-	                    SKILL_FORENSICS   = SKILL_ADEPT)
+						SKILL_COOKING     = SKILL_EXPERT,
+						SKILL_MEDICAL     = SKILL_EXPERT,
+						SKILL_ANATOMY     = SKILL_ADEPT,
+						SKILL_FORENSICS   = SKILL_ADEPT)
 	skill_points = 20
 
 	salary = SALARY_COMMAND
 
-datum/job/ce/get_description_blurb()
+/datum/job/ce/get_description_blurb()
+#ifdef MAP_ISHIMURA
 	return "You are the Chief Engineer. Your job is to keep the ship well-maintained and in one piece, along with directing the Technical Engineers. You are subordinate to the Captain and First Lieutenant."
+#else
+	return "You are the Chief Engineer. Your job is to keep the colony well-maintained and in one piece, along with directing the Technical Engineers. You are subordinate to the Colony Director and First Lieutenant."
+#endif
 
 /datum/job/tech_engineer
 	title = "Technical Engineer"
@@ -69,5 +77,9 @@ datum/job/ce/get_description_blurb()
 	                    SKILL_FORENSICS   = SKILL_ADEPT)
 	skill_points = 14
 
-datum/job/tech_engineer/get_description_blurb()
+/datum/job/tech_engineer/get_description_blurb()
+#ifdef MAP_ISHIMURA
 	return "You are a Technical Engineer. Your job is to maintain and clean the ship, keeping it in one piece and productive. You are subordinate to the Captain and First Lieutenant."
+#else
+	return "You are a Technical Engineer. Your job is to maintain and clean the colony, keeping it in one piece and productive. You are subordinate to the Captain and First Lieutenant."
+#endif

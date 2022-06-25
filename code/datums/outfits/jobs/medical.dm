@@ -26,3 +26,8 @@
 	uniform = /obj/item/clothing/under/deadspace/surgeon
 	glasses = /obj/item/clothing/glasses/hud/health
 	id_type = /obj/item/weapon/card/id/holo/medical/surgeon
+
+/decl/hierarchy/outfit/job/medical/psych
+	name = OUTFIT_JOB_NAME("Psychologist")
+	uniform = /obj/item/clothing/under/deadspace/doctor
+	id_type = /obj/item/weapon/card/id/holo/medical/psych

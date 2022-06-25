@@ -210,7 +210,7 @@
 
 	//Now setting the name and desc
 	var/obj/item/stack/I = required_type
-	var/name = (required_quantity > 1?initial(I.name):initial(I.singular_name))
+	var/name = (required_quantity > 1 ? initial(I.name) : initial(I.singular_name))
 
 	if (required_quantity == 1)
 		desc = "Apply [name]"

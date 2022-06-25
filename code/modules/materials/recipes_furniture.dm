@@ -20,7 +20,7 @@
 
 #define PADDED_CHAIR(color) /datum/stack_recipe/furniture/chair/padded/##color{\
 	result_type = /obj/structure/bed/chair/padded/##color;\
-	modifiers = list("padded", #color)\
+	modifiers = list("padded", #color);\
 	}
 PADDED_CHAIR(beige)
 PADDED_CHAIR(black)
@@ -53,7 +53,7 @@ PADDED_CHAIR(yellow)
 
 #define COMFY_OFFICE_CHAIR(color) /datum/stack_recipe/furniture/chair/office/comfy/##color{\
 	result_type = /obj/structure/bed/chair/office/comfy/##color;\
-	modifiers = list(#color, "comfy")\
+	modifiers = list(#color, "comfy");\
 	}
 COMFY_OFFICE_CHAIR(beige)
 COMFY_OFFICE_CHAIR(black)
@@ -72,7 +72,7 @@ COMFY_OFFICE_CHAIR(yellow)
 
 #define COMFY_CHAIR(color) /datum/stack_recipe/furniture/chair/comfy/##color{\
 	result_type = /obj/structure/bed/chair/comfy/##color;\
-	modifiers = list(#color)\
+	modifiers = list(#color);\
 	}
 COMFY_CHAIR(beige)
 COMFY_CHAIR(black)
@@ -91,7 +91,7 @@ COMFY_CHAIR(yellow)
 
 #define ARMCHAIR(color) /datum/stack_recipe/furniture/chair/arm/##color{\
 	result_type = /obj/structure/bed/chair/armchair/##color;\
-	modifiers = list(#color)\
+	modifiers = list(#color);\
 	}
 ARMCHAIR(beige)
 ARMCHAIR(black)

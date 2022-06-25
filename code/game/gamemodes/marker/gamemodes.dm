@@ -6,7 +6,11 @@ GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 */
 /datum/game_mode/marker/containment
 	name = "Containment"
+	#ifdef MAP_ISHIMURA
 	round_description = "The crew of the USG Ishimura has brought aboard a strange artifact and is tasked with discovering what its purpose is."
+	#else
+	round_description = "The staff of the Colony has brought a strange artifact and is tasked with discovering what its purpose is."
+	#endif
 	extended_round_description = "The crew must holdout until help arrives"
 	config_tag = "containment"
 	votable = TRUE//Debug TRUE

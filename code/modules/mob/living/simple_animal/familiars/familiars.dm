@@ -16,8 +16,8 @@
 
 	var/list/wizardy_spells = list()
 
-/mob/living/simple_animal/familiar/New()
-	..()
+/mob/living/simple_animal/familiar/Initialize()
+	.=..()
 	add_language(LANGUAGE_GALCOM)
 	for(var/spell in wizardy_spells)
 		src.add_spell(new spell, "const_spell_ready")

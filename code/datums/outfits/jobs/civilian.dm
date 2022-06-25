@@ -31,3 +31,13 @@
 	shoes = /obj/item/clothing/shoes/galoshes
 	id_type = /obj/item/weapon/card/id/holo/civilian/janitor
 	pda_type = /obj/item/modular_computer/pda
+
+/decl/hierarchy/outfit/job/service/chaplain
+	name = OUTFIT_JOB_NAME("Unitologist Chaplain")
+	uniform = /obj/item/clothing/under/rank/chaplain
+	suit = /obj/item/clothing/suit/chaplain_hoodie
+	l_ear = /obj/item/device/radio/headset
+	shoes = /obj/item/clothing/shoes/white
+	id_type = /obj/item/weapon/card/id/holo/civilian/chaplain
+	pda_type = /obj/item/modular_computer/pda
+	pda_slot = slot_l_store

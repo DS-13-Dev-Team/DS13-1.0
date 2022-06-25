@@ -59,7 +59,7 @@
 	combined_store_data = list()
 	var/existing_categories = list()
 
-	for(var/list/L in list(GLOB.unlimited_store_designs, GLOB.limited_store_designs))
+	for(var/list/L in list(GLOB.unlimited_store_designs, GLOB.limited_store_designs, GLOB.public_store_designs))
 		for(var/id in L)
 			var/datum/design/D = SSresearch.design_ids[id]
 			if(!(D.category in existing_categories))

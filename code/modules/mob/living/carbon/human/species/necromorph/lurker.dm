@@ -59,8 +59,6 @@
 	view_range = VIEW_RANGE_CLOSED
 	view_offset = VIEW_OFFSET_CLOSED
 
-	lighting_alpha = LIGHTING_PLANE_ALPHA_NV_TRAIT
-
 	has_limbs = list(
 	BP_CHEST =  list("path" = /obj/item/organ/external/chest/simple, "height" = new /vector2(0, 0.5)),	//Half a metre high
 	BP_L_ARM =  list("path" = /obj/item/organ/external/arm/tentacle/slim/lurker1, "height" = new /vector2(0.5, 1.5)),	//Tentacles extend one metre above the body

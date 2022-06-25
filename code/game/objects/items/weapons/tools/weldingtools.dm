@@ -30,7 +30,7 @@
 /obj/item/weapon/tool/weldingtool/improvised
 	name = "jury-rigged torch"
 	desc = "An assembly of pipes attached to a little gas tank. Serves capably as a welder, though a bit risky."
-	icon_state = "legacywelder"
+	icon_state = "welder_s"
 	item_state = "legacywelder"
 	switched_on_force = WEAPON_FORCE_PAINFUL * 0.8
 	max_fuel = 25

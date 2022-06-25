@@ -541,8 +541,6 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 			var/list/L = modifier_verbs[hotkey]
 			H.remove_modclick_verb(hotkey, L[1])
 
-	remove_verb(H, /mob/living/carbon/human/proc/toggle_darkvision)
-
 /datum/species/proc/add_inherent_verbs(mob/living/carbon/human/H)
 	if(inherent_verbs)
 		add_verb(H, inherent_verbs)
@@ -559,9 +557,6 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 			//We use input_args here since we're doing voodoo with passing arguments.
 			//Modclick takes key type, function name, function priority, and a list of extra arguments
 			H.add_modclick_verb(arglist(input_args))
-
-	if(lighting_alpha != LIGHTING_PLANE_ALPHA_VISIBLE)
-		add_verb(H, /mob/living/carbon/human/proc/toggle_darkvision)
 
 
 
@@ -640,6 +635,7 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 
 /datum/species/proc/handle_vision(var/mob/living/carbon/human/H)
 	H.lighting_alpha = H.equipment_lighting_alpha
+	H.lighting_alpha = min(H.equipment_lighting_alpha, H.species.lighting_alpha)
 	H.update_sight()
 	H.set_sight(H.sight|get_vision_flags(H)|H.equipment_vision_flags)
 

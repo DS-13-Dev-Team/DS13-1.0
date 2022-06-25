@@ -301,9 +301,6 @@
 		to_chat(user, "<span class='warning'>There's no place in [target] to fit \the [O.organ_tag].</span>")
 		return SURGERY_FAILURE
 
-	if(O.damage > (O.max_damage * 0.75))
-		to_chat(user, "<span class='warning'>\The [O.name] [o_is] in no state to be transplanted.</span>")
-		return SURGERY_FAILURE
 	if(O.w_class > affected.cavity_max_w_class)
 		to_chat(user, "<span class='warning'>\The [O.name] [o_is] too big for [affected.cavity_name] cavity!</span>")
 		return SURGERY_FAILURE

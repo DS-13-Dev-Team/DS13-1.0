@@ -25,7 +25,7 @@ mv "M.05 Ishimura (U)_nanomap_z1.png" "ishimura-5.png"
 mv "M.06 Aegis VII_nanomap_z1.png" "ishimura-6.png"
 mv "M.01_Mining_Colony_Underground_nanomap_z1.png" "colony-1.png"
 mv "M.02_Mining_Colony_nanomap_z1.png" "colony-2.png"
-mv "M.03_Mining_Colony_UpperLevels.dmm_nanomap_z1.png" "colony-3.png"
+mv "M.03_Mining_Colony_UpperLevels_nanomap_z1.png" "colony-3.png"
 
 cd "../../"
 cp data/nanomaps/ishimura-* "nano/images/ishimura"

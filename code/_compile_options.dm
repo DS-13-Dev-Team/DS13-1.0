@@ -27,9 +27,9 @@
 
 //Update this whenever the byond version is stable so people stop updating to hilariously broken versions
 #define MAX_COMPILER_VERSION 514
-#define MAX_COMPILER_BUILD 1575
+#define MAX_COMPILER_BUILD 1584
 #if DM_VERSION > MAX_COMPILER_VERSION || DM_BUILD > MAX_COMPILER_BUILD
-#warn WARNING! your byond version is over the recommended 514.1575! There may be unexpected byond bugs!
+#warn WARNING! your byond version is over the recommended 514.1584! There may be unexpected byond bugs!
 #endif
 
 //Don't load extools on 514
@@ -65,3 +65,5 @@
 #warn In order to build, run BUILD.bat in the root directory.
 #warn Consider switching to VSCode editor instead, where you can press Ctrl+Shift+B to build.
 #endif
+
+//#define MAP_ISHIMURA "Ishimura"

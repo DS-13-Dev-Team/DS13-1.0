@@ -1,7 +1,8 @@
 //ERT Areas//
 /area/ERT
-	icon = 'maps/DeadSpace/space_areas.dmi'
+	icon = 'maps/TheColony/space_areas.dmi'
 	requires_power = 0
+	base_lighting_alpha = 240
 
 //------------------USG Kellion------------------//
 /area/ERT/kellion

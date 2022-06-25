@@ -111,7 +111,8 @@
 	adjustments = (spawn_flags & CORPSE_SPAWNER_PLAIN_HEADSET) ? (adjustments|OUTFIT_ADJUSTMENT_PLAIN_HEADSET)      : adjustments
 
 	var/decl/hierarchy/outfit/corpse_outfit = outfit_by_type(pickweight(corpse_outfits))
-	corpse_outfit.equip(M, equip_adjustments = adjustments)
+	if(corpse_outfit)
+		corpse_outfit.equip(M, equip_adjustments = adjustments)
 
 /obj/effect/landmark/corpse/chef
 	name = "Chef"

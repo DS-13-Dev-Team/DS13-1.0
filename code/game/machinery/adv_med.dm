@@ -118,7 +118,7 @@
 		AS.occupant.client.perspective = MOB_PERSPECTIVE
 	AS.occupant.loc = src.loc
 	AS.occupant = null
-	icon_state = "body_scanner_1"
+	icon_state = "body_scanner_0"
 	SStgui.update_uis(src)
 	return
 

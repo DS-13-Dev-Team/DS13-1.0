@@ -235,7 +235,7 @@
 	if (spawns_ready <= 0)
 		return null
 	spawns_ready--
-	var/mob/living/L = new spawner_species.mob_type(loc)
+	var/mob/living/L = new spawner_species.mob_type(pick(clear_turfs_in_view(10)))
 	RegisterSignal(L, list(COMSIG_PARENT_QDELETING, COMSIG_LIVING_DEATH), .proc/start_growth)
 	L.biomass = 0	//This won't give anything when slain
 	return L

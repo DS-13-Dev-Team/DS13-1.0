@@ -13,11 +13,6 @@
 /turf/proc/post_change()
 	levelupdate()
 
-	//Rebuild blocking atoms
-	for (var/atom/movable/A in contents)
-		if (A.can_block_movement)
-			LAZYADD(movement_blocking_atoms, A)
-
 //Creates a new turf
 /turf/proc/ChangeTurf(turf/N, tell_universe = TRUE, force_lighting_update = FALSE, keep_air = FALSE)
 	if (!N)

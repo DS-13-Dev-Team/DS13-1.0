@@ -195,7 +195,7 @@ All of these properties combined make Step Strike tricky and disorienting to use
 
 	.= dodge_ability(_duration = TWITCHER_DODGE_DURATION, _cooldown = 8 SECONDS, _power = TWITCHER_DODGE_EVASION) //similar to enhanced slasher, only slightly longer duration, for a much longer cooldown
 
-/datum/species/necromorph/twitcher/oracle/get_ability_descriptions()
+/datum/species/necromorph/slasher/twitcher/oracle/get_ability_descriptions()
 	.= ""
 	. += TWITCHER_PASSIVE
 	. += "<hr>"

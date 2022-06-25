@@ -51,6 +51,7 @@ var/list/mining_floors = list()
 	icon = 'icons/turf/flooring/old_rock.dmi'
 
 /turf/simulated/mineral/New()
+	.=..()
 	health = max_health
 
 /turf/simulated/mineral/Initialize()
@@ -469,7 +470,7 @@ var/list/mining_floors = list()
 	icon = 'icons/turf/floors_outside_ds13.dmi'
 	icon_state = "wet_muddy"
 
-	initial_flooring = null
+	initial_flooring = /decl/flooring/asteroid_ds
 	initial_gas = list("oxygen" = MOLES_O2STANDARD, "nitrogen" = MOLES_N2STANDARD)
 	temperature = T20C
 	var/dug = 0       //0 = has not yet been dug, 1 = has already been dug
@@ -484,6 +485,7 @@ var/list/mining_floors = list()
 	name = "soil"
 	desc = "Dirt."
 	icon_state = "wet_soft"
+	initial_flooring = /decl/flooring/asteroid_ds
 
 /turf/simulated/floor/asteroid/outside_ds/firm
 	icon_state = "wet_firm"
@@ -507,6 +509,7 @@ var/list/mining_floors = list()
 	icon_state = "dry_cracked"
 
 /turf/simulated/floor/asteroid/New()
+	.=..()
 	if (!mining_floors["[src.z]"])
 		mining_floors["[src.z]"] = list()
 	mining_floors["[src.z]"] += src

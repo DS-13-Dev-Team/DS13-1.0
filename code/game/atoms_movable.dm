@@ -39,9 +39,6 @@
 
 
 /atom/movable/Initialize(var/mapload)
-	if (can_block_movement && isturf(loc))
-		var/turf/T = loc
-		LAZYDISTINCTADD(T.movement_blocking_atoms,src)
 	.=..()
 	switch(blocks_emissive)
 		if(EMISSIVE_BLOCK_GENERIC)
@@ -72,11 +69,6 @@
 
 /atom/movable/Destroy()
 	QDEL_NULL(em_block)
-	if (can_block_movement)
-		var/turf/T = get_turf(src)
-		if (T)
-			LAZYREMOVE(T.movement_blocking_atoms,src)
-
 	if(opacity)
 		RemoveElement(/datum/element/light_blocking)
 

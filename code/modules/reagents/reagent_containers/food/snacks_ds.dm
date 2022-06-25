@@ -102,9 +102,6 @@
 	desc = "A shifty lobster. You can try eating it, but its shell is extremely tough."
 	icon_state = "lobster_raw"
 	nutriment_amt = 5
-
-/obj/item/weapon/reagent_containers/food/snacks/lobster/New()
-	..()
 	bitesize = 0.1
 
 /obj/item/weapon/reagent_containers/food/snacks/lobstercooked
@@ -114,10 +111,10 @@
 	trash = /obj/item/trash/plate
 	nutriment_amt = 20
 	nutriment_desc = list("lemon" = 2, "lobster" = 5, "salad" = 2)
-
-/obj/item/weapon/reagent_containers/food/snacks/lobstercooked/New()
-	..()
 	bitesize = 5
+
+/obj/item/weapon/reagent_containers/food/snacks/lobstercooked/Initialize()
+	. = ..()
 	reagents.add_reagent(/datum/reagent/nutriment/protein, 20)
 
 /obj/item/weapon/reagent_containers/food/snacks/cuttlefish
@@ -125,9 +122,6 @@
 	desc = "It's an adorable squid! you can't possible be thinking about eating this right?"
 	icon_state = "cuttlefish_raw"
 	nutriment_amt = 5
-
-/obj/item/weapon/reagent_containers/food/snacks/cuttlefish/New()
-	..()
 	bitesize = 10
 
 /obj/item/weapon/reagent_containers/food/snacks/cuttlefishcooked
@@ -136,10 +130,10 @@
 	icon_state = "cuttlefish_cooked"
 	nutriment_amt = 20
 	nutriment_desc = list("cuttlefish" = 5, "rubber" = 5, "grease" = 1)
-
-/obj/item/weapon/reagent_containers/food/snacks/cuttlefishcooked/New()
-	..()
 	bitesize = 5
+
+/obj/item/weapon/reagent_containers/food/snacks/cuttlefishcooked/Initialize()
+	.=..()
 	reagents.add_reagent(/datum/reagent/nutriment/protein, 10)
 
 /obj/item/weapon/reagent_containers/food/snacks/sliceable/monkfish
@@ -152,9 +146,6 @@
 	slice_path = /obj/item/weapon/reagent_containers/food/snacks/monkfishfillet
 	slices_num = 6
 	trash = /obj/item/weapon/reagent_containers/food/snacks/sliceable/monkfishremains
-
-/obj/item/weapon/reagent_containers/food/snacks/sliceable/monkfish/New()
-	..()
 	bitesize = 2
 
 /obj/item/weapon/reagent_containers/food/snacks/monkfishfillet
@@ -162,10 +153,10 @@
 	desc = "It's a fillet sliced from a monkfish."
 	icon_state = "monkfish_fillet"
 	nutriment_amt = 5
-
-/obj/item/weapon/reagent_containers/food/snacks/monkfishfillet/New()
-	..()
 	bitesize = 3
+
+/obj/item/weapon/reagent_containers/food/snacks/monkfishfillet/Initialize()
+	.=..()
 	reagents.add_reagent(/datum/reagent/nutriment/protein, 1)
 
 /obj/item/weapon/reagent_containers/food/snacks/monkfishcooked
@@ -175,10 +166,10 @@
 	nutriment_amt = 10
 	nutriment_desc = list("fish" = 3, "oil" = 1, "sweet chili" = 3, "spring onion" = 2)
 	trash = /obj/item/trash/fancyplate
-
-/obj/item/weapon/reagent_containers/food/snacks/monkfishcooked/New()
-	..()
 	bitesize = 4
+
+/obj/item/weapon/reagent_containers/food/snacks/monkfishcooked/Initialize()
+	.=..()
 	reagents.add_reagent(/datum/reagent/nutriment/protein, 5)
 
 /obj/item/weapon/reagent_containers/food/snacks/sliceable/monkfishremains
@@ -189,10 +180,10 @@
 	nutriment_amt = 10
 	slice_path = /obj/item/clothing/head/fish
 	slices_num = 1
-
-/obj/item/weapon/reagent_containers/food/snacks/sliceable/monkfishremains/New()
-	..()
 	bitesize = 0.01 //impossible to eat
+
+/obj/item/weapon/reagent_containers/food/snacks/sliceable/monkfishremains/Initialize()
+	.=..()
 	reagents.add_reagent(/datum/reagent/carbon, 5)
 
 /obj/item/weapon/reagent_containers/food/snacks/sliceable/shark
@@ -204,9 +195,6 @@
 	w_class = ITEM_SIZE_HUGE
 	slice_path = /obj/item/weapon/reagent_containers/food/snacks/sliceable/sharkchunk
 	slices_num = 6
-
-/obj/item/weapon/reagent_containers/food/snacks/sliceable/shark/New()
-	..()
 	bitesize = 0.01
 
 /obj/item/weapon/reagent_containers/food/snacks/sliceable/sharkchunk
@@ -217,10 +205,10 @@
 	w_class = ITEM_SIZE_LARGE
 	slice_path = /obj/item/weapon/reagent_containers/food/snacks/sharkmeat
 	slices_num = 5
-
-/obj/item/weapon/reagent_containers/food/snacks/sliceable/sharkchunk/New()
-	..()
 	bitesize = 3
+
+/obj/item/weapon/reagent_containers/food/snacks/sliceable/sharkchunk/Initialize()
+	.=..()
 	reagents.add_reagent(/datum/reagent/nutriment/protein, 20)
 
 /obj/item/weapon/reagent_containers/food/snacks/sharkmeat
@@ -228,10 +216,10 @@
 	desc = "A raw cut of shark meat."
 	icon_state = "sharkmeat"
 	nutriment_amt = 2
-
-/obj/item/weapon/reagent_containers/food/snacks/sharkmeat/New()
-	..()
 	bitesize = 3
+
+/obj/item/weapon/reagent_containers/food/snacks/sharkmeat/Initialize()
+	.=..()
 	reagents.add_reagent(/datum/reagent/nutriment/protein, 2)
 
 /obj/item/weapon/reagent_containers/food/snacks/sharkmeatcooked
@@ -241,10 +229,10 @@
 	nutriment_amt = 5
 	trash = /obj/item/trash/plate
 	nutriment_desc = list("manliness" = 1, "fish oil" = 2, "shark" = 2)
-
-/obj/item/weapon/reagent_containers/food/snacks/sharkmeatcooked/New()
-	..()
 	bitesize = 3
+
+/obj/item/weapon/reagent_containers/food/snacks/sharkmeatcooked/Initialize()
+	.=..()
 	reagents.add_reagent(/datum/reagent/nutriment/protein, 8)
 
 /obj/item/weapon/reagent_containers/food/snacks/sharkmeatdip
@@ -254,10 +242,10 @@
 	nutriment_amt = 5
 	trash = /obj/item/trash/snack_bowl
 	nutriment_desc = list("salt" = 1, "fish oil" = 2, "spicy shark" = 2)
-
-/obj/item/weapon/reagent_containers/food/snacks/sharkmeatdip/New()
-	..()
 	bitesize = 3
+
+/obj/item/weapon/reagent_containers/food/snacks/sharkmeatdip/Initialize()
+	.=..()
 	reagents.add_reagent(/datum/reagent/capsaicin, 4)
 	reagents.add_reagent(/datum/reagent/nutriment/protein, 4)
 
@@ -268,10 +256,10 @@
 	nutriment_amt = 8
 	trash = /obj/item/trash/plate
 	nutriment_desc = list("viking spirit" = 1, "rot" = 2, "fermented sauce" = 2)
-
-/obj/item/weapon/reagent_containers/food/snacks/sharkmeatcubes/New()
-	..()
 	bitesize = 10
+
+/obj/item/weapon/reagent_containers/food/snacks/sharkmeatcubes/Initialize()
+	.=..()
 	reagents.add_reagent(/datum/reagent/drink/juice/potato, 30) // for people who want to get fat, FAST.
 
 /obj/item/weapon/reagent_containers/food/snacks/sliceable/jellycube
@@ -281,9 +269,6 @@
 	slice_path = /obj/random/necrojelly
 	nutriment_amt = 1
 	slices_num = 1
-
-/obj/item/weapon/reagent_containers/food/snacks/sliceable/sharkchunk/New()
-	..()
 	bitesize = 3
 
 /obj/random/necrojelly
@@ -312,132 +297,133 @@
 	icon_state = "necrojelly"
 	nutriment_amt = 10
 	nutriment_desc = list("Evil" = 10)
-
-/obj/item/weapon/reagent_containers/food/snacks/necrojelly/New()
-	..()
 	bitesize = 2
+
+/obj/item/weapon/reagent_containers/food/snacks/necrojelly/Initialize()
+	.=..()
 	reagents.add_reagent(/datum/reagent/drink/milk = 5)
 
 /obj/item/weapon/reagent_containers/food/snacks/necrojelly/tormentor
-		icon = 'icons/obj/food150x128.dmi'
-		icon_state = "tormentor"
-		name = "Obscenely Terrifying Jello"
-		desc = "Even the chef can't explain how this monstrosity came to be, much less how it might ever be reproduced."
-
-/obj/item/weapon/reagent_containers/food/snacks/necrojelly/tormentor/New()
-	..()
+	icon = 'icons/obj/food150x128.dmi'
+	icon_state = "tormentor"
+	name = "Obscenely Terrifying Jello"
+	desc = "Even the chef can't explain how this monstrosity came to be, much less how it might ever be reproduced."
 	bitesize = 2
+
+/obj/item/weapon/reagent_containers/food/snacks/necrojelly/tormentor/Initialize()
+	.=..()
 	reagents.add_reagent(/datum/reagent/nutriment/protein, 30)
 
 /obj/item/weapon/reagent_containers/food/snacks/necrojelly/cursed
-		icon = 'icons/obj/food48x48.dmi'
-		icon_state = "cursed"
-		name = "Cursed Jello"
-		desc = "A truly cursed creation, no one really knows what it's meant to represent."
-
-/obj/item/weapon/reagent_containers/food/snacks/necrojelly/cursed/New()
-	..()
+	icon = 'icons/obj/food48x48.dmi'
+	icon_state = "cursed"
+	name = "Cursed Jello"
+	desc = "A truly cursed creation, no one really knows what it's meant to represent."
 	bitesize = 2
+
+/obj/item/weapon/reagent_containers/food/snacks/necrojelly/cursed/Initialize()
+	.=..()
 	reagents.add_reagent(/datum/reagent/nutriment/protein, 5)
 
 /obj/item/weapon/reagent_containers/food/snacks/necrojelly/spitter
-		icon = 'icons/obj/food48x48.dmi'
-		icon_state = "spitter"
-		name = "Ill Mannered Jello"
-		desc = "You feel as if this jello might spit at you at any moment."
-
-/obj/item/weapon/reagent_containers/food/snacks/necrojelly/spitter/New()
-	..()
+	icon = 'icons/obj/food48x48.dmi'
+	icon_state = "spitter"
+	name = "Ill Mannered Jello"
+	desc = "You feel as if this jello might spit at you at any moment."
 	bitesize = 2
+
+/obj/item/weapon/reagent_containers/food/snacks/necrojelly/spitter/Initialize()
+	.=..()
 	reagents.add_reagent(/datum/reagent/nutriment/protein, 5)
 
 /obj/item/weapon/reagent_containers/food/snacks/necrojelly/puker
-		icon = 'icons/obj/food48x48.dmi'
-		icon_state = "puker"
-		name = "Disgusting Jello"
-		desc = "You don't see how anyone would be able to eat this without vomiting."
-
-/obj/item/weapon/reagent_containers/food/snacks/necrojelly/puker/New()
-	..()
+	icon = 'icons/obj/food48x48.dmi'
+	icon_state = "puker"
+	name = "Disgusting Jello"
+	desc = "You don't see how anyone would be able to eat this without vomiting."
 	bitesize = 2
+
+/obj/item/weapon/reagent_containers/food/snacks/necrojelly/puker/Initialize()
+	.=..()
 	reagents.add_reagent(/datum/reagent/nutriment/protein, 5)
 
 /obj/item/weapon/reagent_containers/food/snacks/necrojelly/enhancedslasher
-		icon = 'icons/obj/food48x48.dmi'
-		icon_state = "enhanced_slasher"
-		name = "Enhanced Cursed Jello"
-		desc = "The fear factor this jello inspires has been enhanced, freakishly enough."
-
-/obj/item/weapon/reagent_containers/food/snacks/necrojelly/enhancedslasher/New()
-	..()
+	icon = 'icons/obj/food48x48.dmi'
+	icon_state = "enhanced_slasher"
+	name = "Enhanced Cursed Jello"
+	desc = "The fear factor this jello inspires has been enhanced, freakishly enough."
 	bitesize = 2
+
+/obj/item/weapon/reagent_containers/food/snacks/necrojelly/enhancedslasher/Initialize()
+	.=..()
 	reagents.add_reagent(/datum/reagent/nutriment/protein, 5)
 
 /obj/item/weapon/reagent_containers/food/snacks/necrojelly/lurker
-		icon = 'icons/obj/food48x48.dmi'
-		icon_state = "lurker"
-		name = "Lurking Evil Jello"
-		desc = "Someone asked the chef to model this jello after their dog, little did they know the chef is a terrible artist."
-
-/obj/item/weapon/reagent_containers/food/snacks/necrojelly/lurker/New()
-	..()
+	icon = 'icons/obj/food48x48.dmi'
+	icon_state = "lurker"
+	name = "Lurking Evil Jello"
+	desc = "Someone asked the chef to model this jello after their dog, little did they know the chef is a terrible artist."
 	bitesize = 2
+
+/obj/item/weapon/reagent_containers/food/snacks/necrojelly/lurker/Initialize()
+	.=..()
 	reagents.add_reagent(/datum/reagent/nutriment/protein, 5)
 
 /obj/item/weapon/reagent_containers/food/snacks/necrojelly/exploder
-		icon = 'icons/obj/food48x48.dmi'
-		icon_state = "exploder"
-		name = "Explosive Jello"
-		desc = "This horrifying jello seems highly unstable, representing feelings of bottled anger within the chef."
-
-/obj/item/weapon/reagent_containers/food/snacks/necrojelly/exploder/New()
-	..()
+	icon = 'icons/obj/food48x48.dmi'
+	icon_state = "exploder"
+	name = "Explosive Jello"
+	desc = "This horrifying jello seems highly unstable, representing feelings of bottled anger within the chef."
 	bitesize = 2
+	reagent_flags = ATOM_FLAG_NO_REACT
+
+/obj/item/weapon/reagent_containers/food/snacks/necrojelly/exploder/Initialize()
+	.=..()
 	reagents.add_reagent(/datum/reagent/water, 1)
 	reagents.add_reagent(/datum/reagent/potassium, 1)
 
 /obj/item/weapon/reagent_containers/food/snacks/necrojelly/ubermorph
-		icon = 'icons/obj/food48x64.dmi'
-		icon_state = "ubermorph"
-		name = "Overwhelmingly Evil Jello"
-		desc = "Modern art, or simply the creation of a drugged up culinary expert, you decide."
-
-/obj/item/weapon/reagent_containers/food/snacks/necrojelly/ubermorph/New()
-	..()
+	icon = 'icons/obj/food48x64.dmi'
+	icon_state = "ubermorph"
+	name = "Overwhelmingly Evil Jello"
+	desc = "Modern art, or simply the creation of a drugged up culinary expert, you decide."
 	bitesize = 2
+
+/obj/item/weapon/reagent_containers/food/snacks/necrojelly/ubermorph/Initialize()
+	.=..()
 	reagents.add_reagent(/datum/reagent/nutriment/protein, 10)
 
 /obj/item/weapon/reagent_containers/food/snacks/necrojelly/divider
-		icon = 'icons/obj/food48x64.dmi'
-		icon_state = "divider"
-		name = "Spaghetti Monster Jello"
-		desc = "A decidedly italian iteration of the modern evil jello."
-
-/obj/item/weapon/reagent_containers/food/snacks/necrojelly/divider/New()
-	..()
+	icon = 'icons/obj/food48x64.dmi'
+	icon_state = "divider"
+	name = "Spaghetti Monster Jello"
+	desc = "A decidedly italian iteration of the modern evil jello."
 	bitesize = 2
+
+/obj/item/weapon/reagent_containers/food/snacks/necrojelly/divider/Initialize()
+	.=..()
 	reagents.add_reagent(/datum/reagent/nutriment/protein, 10)
 
 /obj/item/weapon/reagent_containers/food/snacks/necrojelly/infector
-		icon = 'icons/obj/food64x64.dmi'
-		icon_state = "infector"
-		name = "Infectiously Evil Jello"
-		desc = "A jello so wicked it almost makes you feel as evil as the chef who created it."
-
-/obj/item/weapon/reagent_containers/food/snacks/necrojelly/infector/New()
-	..()
+	icon = 'icons/obj/food64x64.dmi'
+	icon_state = "infector"
+	name = "Infectiously Evil Jello"
+	desc = "A jello so wicked it almost makes you feel as evil as the chef who created it."
 	bitesize = 2
+
+/obj/item/weapon/reagent_containers/food/snacks/necrojelly/infector/Initialize()
+	.=..()
 	reagents.add_reagent(/datum/reagent/nutriment/protein, 10)
 
 /obj/item/weapon/reagent_containers/food/snacks/necrojelly/tripod
-		icon = 'icons/obj/food96x96.dmi'
-		icon_state = "tripod"
-		name = "Terrifyingly Evil Jello"
-		desc = "Quite the monstrosity, it makes you question the creator."
-
-/obj/item/weapon/reagent_containers/food/snacks/necrojelly/tripod/New()
-	..()
+	icon = 'icons/obj/food96x96.dmi'
+	icon_state = "tripod"
+	name = "Terrifyingly Evil Jello"
+	desc = "Quite the monstrosity, it makes you question the creator."
 	bitesize = 2
+
+/obj/item/weapon/reagent_containers/food/snacks/necrojelly/tripod/Initialize()
+	.=..()
 	reagents.add_reagent(/datum/reagent/nutriment/protein, 15)
 
 /*
@@ -455,14 +441,15 @@
 	desc = "Goes great with Robust Coffee."
 	icon_state = "donut1"
 	nutriment_amt = 3
-/obj/item/weapon/reagent_containers/food/snacks/donut/normal/New()
-	..()
-	reagents.add_reagent(/datum/reagent/nutriment/sprinkles, 1)
 	bitesize = 3
+
+/obj/item/weapon/reagent_containers/food/snacks/donut/normal/Initialize()
+	.=..()
+	reagents.add_reagent(/datum/reagent/nutriment/sprinkles, 1)
 	if(prob(30))
 		icon_state = "donut2"
 		overlay_state = "box-donut2"
 		name = "frosted donut")
-	reagents.add_reagent(/datum/reagent/nutriment/sprinkles, 2)
-	center_of_mass = "x=19;y=16"
+		reagents.add_reagent(/datum/reagent/nutriment/sprinkles, 2)
+		center_of_mass = "x=19;y=16"
 	*/

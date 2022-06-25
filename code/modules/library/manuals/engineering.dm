@@ -4,8 +4,8 @@
 	author = "Engineering Encyclopedia"
 	title = "Engineering Textbook"
 
-/obj/item/weapon/book/manual/engineering_guide/New()
-	..()
+/obj/item/weapon/book/manual/engineering_guide/Initialize()
+	.=..()
 	dat = {"
 
 		<html><head>
@@ -167,7 +167,7 @@
 				  <li>Package Wrapper</li>
 				  <li>Destination Tagger</li>
 				</ul>
-				
+
 				<h3>Crisis Cyborg</h3>
 				The crisis cyborg module is prepared to handle a variety of non-surgical medical emergencies.<br>A medical cyborg comes with:
 				<ul>
@@ -306,8 +306,8 @@
 	author = "Engineering Encyclopedia"		 // Who wrote the thing, can be changed by pen or PC. It is not automatically assigned
 	title = "Repairs and Construction"
 
-/obj/item/weapon/book/manual/engineering_construction/New()
-	..()
+/obj/item/weapon/book/manual/engineering_construction/Initialize()
+	.=..()
 	dat = {"
 
 		<html><head>

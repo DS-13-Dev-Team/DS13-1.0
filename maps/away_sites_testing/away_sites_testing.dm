@@ -1,4 +1,4 @@
-#if !defined(using_map_DATUM)
+#if !defined(USING_MAP_DATUM)
 	#include "away_sites_testing_lobby.dm"
 	#include "away_sites_testing_unit_testing.dm"
 

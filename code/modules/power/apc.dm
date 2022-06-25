@@ -65,6 +65,9 @@
 /obj/machinery/power/apc/hyper
 	cell_type = /obj/item/weapon/cell/hyper
 
+/obj/machinery/power/apc/infinite
+	cell_type = /obj/item/weapon/cell/infinite
+
 // Main APC code
 /obj/machinery/power/apc
 	name = "area power controller"
@@ -79,6 +82,7 @@
 	layer = ABOVE_WINDOW_LAYER
 	light_range = 1
 	light_power = 0.8
+	var/storm_protected = FALSE
 	var/needs_powerdown_sound
 	var/area/area
 	var/areastring = null

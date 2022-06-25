@@ -94,12 +94,14 @@ var/list/organ_cache = list()
 	if (!species)
 		species = all_species[SPECIES_HUMAN]
 
-	create_reagents(5 * (w_class-1)**2)
-	reagents.add_reagent(/datum/reagent/nutriment/protein, reagents.maximum_volume)
-
 	setup_children()
 
 	update_icon()
+
+/obj/item/organ/Initialize()
+	.=..()
+	create_reagents(5 * (w_class-1)**2)
+	reagents.add_reagent(/datum/reagent/nutriment/protein, reagents.maximum_volume)
 
 //for overriding only
 /obj/item/organ/proc/setup_children()

@@ -285,7 +285,11 @@ var/list/flooring_types
 
 /decl/flooring/reinforced/plating/hull/get_plating_type(var/turf/location)
 	if (turf_is_lower_hull(location)) //Hull plating is only on the lowest level of the ship
-		return null
+		//Not ideal but works for now
+		if(istype(GLOB.using_map, /datum/map/ishimura))
+			return null
+		else
+			return /decl/flooring/reinforced/plating/hull
 	else if (turf_is_upper_hull(location))
 		return /decl/flooring/reinforced/plating/under
 	else
@@ -308,6 +312,15 @@ var/list/flooring_types
 	icon = 'icons/turf/flooring/asteroid.dmi'
 	icon_base = "asteroid"
 	flags = TURF_REMOVE_SHOVEL
+	build_type = null
+	step_priority = 2 //Soft surfaces have more distinctive sounds
+
+/decl/flooring/asteroid_ds
+	name = "soil"
+	desc = "Dirt."
+	flags = 0
+	icon = 'icons/turf/floors_outside_ds13.dmi'
+	icon_base = "wet_soft"
 	build_type = null
 	step_priority = 2 //Soft surfaces have more distinctive sounds
 
@@ -520,3 +533,11 @@ var/list/flooring_types
 
 /decl/flooring/reinforced/shuttle/black
 	icon_base = "floor7"
+
+/decl/flooring/water
+	name = "shallow water"
+	icon = 'icons/misc/beach.dmi'
+	icon_base = "seashallow"
+	flags = 0
+	footstep_sound = "water"
+	smooth_nothing = TRUE

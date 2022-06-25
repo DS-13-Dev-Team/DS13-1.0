@@ -41,7 +41,7 @@
 
 
 	//Vision
-	lighting_alpha = LIGHTING_PLANE_ALPHA_NV_TRAIT
+	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 
 	// Move intents
 	move_intents = list(/decl/move_intent/walk, /decl/move_intent/stalk)

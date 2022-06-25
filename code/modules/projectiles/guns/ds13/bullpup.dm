@@ -52,7 +52,7 @@
 	name = "SCAF universal ammo"
 	desc = "A pack of 20 rounds to fit the SCAF Bullpup Rifle."
 	icon = 'icons/obj/ammo.dmi'
-	icon_state = "bullpup"
+	icon_state = "bullpup-20"
 	caliber = "bullpup"
 	ammo_type = /obj/item/ammo_casing/bullpup
 	matter = list(MATERIAL_STEEL = 1260)

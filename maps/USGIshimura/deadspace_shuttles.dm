@@ -49,6 +49,7 @@
 
 
 //////// SUPPLY ELEVATOR \\\\\\\\
+
 /datum/shuttle/autodock/ferry/supply/drone
 	name = "Supply Drone"
 	location = 1

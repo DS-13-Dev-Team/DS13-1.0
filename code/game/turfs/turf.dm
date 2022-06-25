@@ -34,9 +34,6 @@
 	var/pathweight = 1          // How much does it cost to pathfind over this turf?
 	var/blessed = 0             // Has the turf been blessed?
 
-	//List of everything that could possibly block movement
-	var/list/movement_blocking_atoms = list()
-
 	var/list/decals
 
 	var/movement_delay
@@ -145,7 +142,7 @@
 	if(Adjacent(user))
 		attack_hand(user)
 
-turf/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/turf/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/weapon/storage))
 		var/obj/item/weapon/storage/S = W
 		if(S.use_to_pickup && S.collection_mode)
@@ -160,14 +157,14 @@ turf/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	var/turf/origin = mover.loc
 
 	//First, check objects to block exit . border or not
-	for(var/obj/obstacle in origin.movement_blocking_atoms)
+	for(var/obj/obstacle in origin.contents)
 		if((mover != obstacle) && (forget != obstacle))
 			if(!obstacle.CheckExit(mover, src))
 				return obstacle
 
 
 	//Next, check objects to block entry that are on the border
-	for(var/obj/border_obstacle in src.movement_blocking_atoms)
+	for(var/obj/border_obstacle in src.contents)
 		if(border_obstacle.atom_flags & ATOM_FLAG_CHECKS_BORDER)
 			if(!border_obstacle.CanPass(mover, mover.loc, 1, 0) && (forget != border_obstacle))
 				return border_obstacle
@@ -177,7 +174,7 @@ turf/attackby(obj/item/weapon/W as obj, mob/user as mob)
 		return src
 
 	//Finally, check objects/mobs to block entry that are not on the border
-	for(var/atom/movable/obstacle in src.movement_blocking_atoms)
+	for(var/atom/movable/obstacle in src.contents)
 		if(!(obstacle.atom_flags & ATOM_FLAG_CHECKS_BORDER))
 			if(!obstacle.CanPass(mover, mover.loc, 1, 0) && (forget != obstacle))
 				return obstacle
@@ -194,14 +191,14 @@ turf/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	var/turf/origin = mover.loc
 
 	//First, check objects to block exit . border or not
-	for(var/obj/obstacle in origin.movement_blocking_atoms)
+	for(var/obj/obstacle in origin.contents)
 		if((mover != obstacle) && (forget != obstacle))
 			if(!obstacle.CheckExit(mover, src))
 				mover.Bump(obstacle, 1)
 				return FALSE
 
 	//Next, check objects to block entry that are on the border
-	for(var/obj/border_obstacle in src.movement_blocking_atoms)
+	for(var/obj/border_obstacle in src.contents)
 		if(border_obstacle.atom_flags & ATOM_FLAG_CHECKS_BORDER)
 			if(!border_obstacle.CanPass(mover, mover.loc, 1, 0) && (forget != border_obstacle))
 				mover.Bump(border_obstacle, 1)
@@ -213,10 +210,7 @@ turf/attackby(obj/item/weapon/W as obj, mob/user as mob)
 		return FALSE
 
 	//Finally, check objects/mobs to block entry that are not on the border
-	for(var/atom/movable/obstacle in src.movement_blocking_atoms)
-		if (QDELETED(obstacle))
-			movement_blocking_atoms -= obstacle
-			continue
+	for(var/atom/movable/obstacle in src.contents)
 		if(!(obstacle.atom_flags & ATOM_FLAG_CHECKS_BORDER))
 			if(!obstacle.CanPass(mover, mover.loc, 1, 0) && (forget != obstacle))
 				mover.Bump(obstacle, 1)
@@ -228,9 +222,6 @@ var/const/enterloopsanity = 100
 /turf/Entered(atom/atom as mob|obj)
 
 	..()
-
-	if (atom.can_block_movement)
-		LAZYDISTINCTADD(movement_blocking_atoms,atom)
 
 	if(!istype(atom, /atom/movable))
 		return
@@ -268,10 +259,6 @@ var/const/enterloopsanity = 100
 			content_density_set(A.density)
 
 /turf/Exited(atom/atom as mob|obj)
-	if (atom.can_block_movement)
-
-		LAZYREMOVE(movement_blocking_atoms,atom)
-
 	.=..()
 
 	if(atom.density)

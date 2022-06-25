@@ -262,10 +262,9 @@
 		sleep(duration)
 
 
-
-
 /datum/execution_stage/finisher/skullbore/enter()
-
+	if(host.safety_check() == EXECUTION_CANCEL)
+		return
 
 	host.user.visible_message(SPAN_EXECUTION("[host.user] drives the [host.weapon] into [host.victim]'s forehead, with a sickening crunch."))
 

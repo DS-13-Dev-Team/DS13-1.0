@@ -300,7 +300,8 @@
 /datum/surgery_step/generic/amputate
 	allowed_tools = list(
 	/obj/item/weapon/tool/saw/circular = 100,	//The specific circular saw is best, but less delicate tools will do too
-	/obj/item/weapon/tool/saw = 75
+	/obj/item/weapon/tool/saw = 75,
+	/obj/item/weapon/tool/pickaxe/laser = 60
 	)
 
 	min_duration = 110

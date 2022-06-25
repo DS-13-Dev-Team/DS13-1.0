@@ -23,10 +23,6 @@
 	if (QDELETED(holder))
 		return
 
-	//Unregister old tiles
-	for (var/turf/T as anything in turfs_occupied)
-		LAZYREMOVE(T.movement_blocking_atoms,holder)
-
 	turfs_occupied = list()
 
 	var/atom/movable/A = holder
@@ -44,10 +40,6 @@
 
 	//Now we have both corners of the bounding box, lets get all the turfs in them
 	turfs_occupied = block(T1, T2)
-
-	for (var/turf/T as anything in turfs_occupied)
-		LAZYDISTINCTADD(T.movement_blocking_atoms,holder)
-
 
 /atom/movable/proc/set_bounds(width, height)
 	bound_width = width

@@ -50,7 +50,7 @@
 
 #define COLORED_FOLDER(color) /datum/stack_recipe/folder/##color{\
 	result_type = /obj/item/weapon/folder/##color;\
-	modifier = #color\
+	modifier = #color;\
 	}
 COLORED_FOLDER(blue)
 COLORED_FOLDER(red)
