@@ -11,8 +11,8 @@ export const Wires = (props, context) => {
 
   return (
     <Window
-      width={350}
-      height={150 + wires.length * 30}
+      width={360}
+      height={160 + wires.length * 30}
       resizable>
       <Window.Content>
         <Section>
