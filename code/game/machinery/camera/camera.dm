@@ -53,24 +53,6 @@
 	to_chat(user, "\The [src] has been upgraded. It now has X-Ray capability and EMP resistance.")
 	return 1
 
-/obj/machinery/camera/apply_visual(mob/living/carbon/human/M)
-	if(!M.client)
-		return
-	M.overlay_fullscreen("fishbed",/atom/movable/screen/fullscreen/fishbed)
-	M.overlay_fullscreen("scanlines",/atom/movable/screen/fullscreen/scanline)
-	M.overlay_fullscreen("whitenoise",/atom/movable/screen/fullscreen/noise)
-	M.machine_visual = src
-	return 1
-
-/obj/machinery/camera/remove_visual(mob/living/carbon/human/M)
-	if(!M.client)
-		return
-	M.clear_fullscreen("fishbed",0)
-	M.clear_fullscreen("scanlines")
-	M.clear_fullscreen("whitenoise")
-	M.machine_visual = null
-	return 1
-
 /obj/machinery/camera/New()
 	wires = new(src)
 	assembly = new(src)
@@ -104,7 +86,6 @@
 				if(C.number)
 					number = max(number, C.number+1)
 			c_tag = "[A.name][number == 1 ? "" : " #[number]"]"
-		invalidateCameraCache()
 
 
 /obj/machinery/camera/Destroy()
@@ -122,7 +103,24 @@
 		cancelCameraAlarm()
 		update_icon()
 		update_coverage()
-	return internal_process()
+	// motion camera event loop
+	if (stat & (EMPED|NOPOWER))
+		return
+	if(!isMotion())
+		. = PROCESS_KILL
+		return
+	if (detectTime > 0)
+		var/elapsed = world.time - detectTime
+		if (elapsed > alarm_delay)
+			triggerAlarm()
+	else if (detectTime == -1)
+		for (var/mob/target in motionTargets)
+			if (target.stat == DEAD)
+				lostTarget(target)
+			// See if the camera is still in range
+			if(!in_range(src, target))
+				// If they aren't in range, lose the target.
+				lostTarget(target)
 
 /obj/machinery/camera/proc/internal_process()
 	return
@@ -133,7 +131,6 @@
 			affected_by_emp_until = max(affected_by_emp_until, world.time + (90 SECONDS / severity))
 		else
 			stat |= EMPED
-			set_light(0)
 			triggerCameraAlarm()
 			update_icon()
 			update_coverage()
@@ -206,7 +203,7 @@
 				else
 					assembly.state = 1
 					to_chat(user, "<span class='notice'>You cut \the [src] free from the wall.</span>")
-					new /obj/item/stack/cable_coil(src.loc, length=2)
+					new /obj/item/stack/cable_coil(src.loc, 2)
 				assembly = null //so qdel doesn't eat it.
 			qdel(src)
 			return
@@ -274,7 +271,7 @@
 //Used when someone breaks a camera
 /obj/machinery/camera/proc/destroy()
 	stat |= BROKEN
-	wires.RandomCutAll()
+	wires.cut_all()
 
 	triggerCameraAlarm()
 	update_icon()
@@ -321,7 +318,7 @@
 	camera_alarm.triggerAlarm(loc, src, duration)
 
 /obj/machinery/camera/proc/cancelCameraAlarm()
-	if(wires.IsIndexCut(CAMERA_WIRE_ALARM))
+	if(wires.is_cut(WIRE_CAM_ALARM))
 		return
 
 	alarm_on = 0
@@ -459,7 +456,6 @@
 		return
 	if (stat & BROKEN) // Fix the camera
 		stat &= ~BROKEN
-	wires.CutAll()
-	wires.MendAll()
+	wires.repair()
 	update_icon()
 	update_coverage()

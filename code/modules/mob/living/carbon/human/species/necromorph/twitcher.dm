@@ -93,12 +93,15 @@
 	'sound/effects/footstep/twitcher_footstep_4.ogg')
 	)
 
+	lowest_money_drop = 4000
+	highest_money_drop = 5000
+
 	variants = null
 	outfits = null
 
 #define TWITCHER_PASSIVE	"<h2>PASSIVE: Temporal Displacement:</h2><br>\
 The twitcher is out of phase with normal time as a result of a stasis module embedded in their body. This causes them to randomly displace in a random direction periodically while moving<br>\
-
+\
 When hit by any attack, a defensive effect triggers, that attack deals 75% less damage, and the twitcher blinks one tile in a random direction. <br>\
 This defensive effect has a cooldown of 3 seconds."
 

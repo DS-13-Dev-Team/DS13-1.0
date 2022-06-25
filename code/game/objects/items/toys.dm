@@ -800,10 +800,9 @@
 	w_class = ITEM_SIZE_SMALL
 	force = 1
 	attack_verb = list("attacked", "whacked", "jabbed", "poked", "marshalled")
-
-/obj/item/weapon/marshalling_wand/Initialize()
-	set_light(0.6, 0.5, 2, 2, "#ff0000")
-	return ..()
+	light_range = 2
+	light_power = 0.6
+	light_color = "#ff0000"
 
 /obj/item/weapon/marshalling_wand/attack_self(mob/living/user as mob)
 	playsound(src.loc, 'sound/effects/rustle1.ogg', 100, 1)

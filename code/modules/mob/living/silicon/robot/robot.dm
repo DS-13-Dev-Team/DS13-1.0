@@ -7,7 +7,7 @@
 	icon_state = "robot"
 	max_health = 300
 	health = 300
-
+	blocks_emissive = EMISSIVE_BLOCK_UNIQUE
 	mob_bump_flag = ROBOT
 	mob_swap_flags = ROBOT|MONKEY|SLIME|SIMPLE_ANIMAL
 	mob_push_flags = ~HEAVY //trundle trundle
@@ -119,7 +119,7 @@
 		camera = new /obj/machinery/camera(src)
 		camera.c_tag = real_name
 		camera.replace_networks(list(NETWORK_EXODUS,NETWORK_ROBOTS))
-		if(wires.IsIndexCut(BORG_WIRE_CAMERA))
+		if(wires.is_cut(WIRE_BORG_CAMERA))
 			camera.status = 0
 
 	..() // Laws, among other things, are initialized in parent New()
@@ -427,11 +427,14 @@
 /mob/living/silicon/robot/proc/update_robot_light()
 	if(lights_on)
 		if(intenselight)
-			set_light(1, 2, 6)
+			set_light_range(6)
+			set_light_power(1)
 		else
-			set_light(0.75, 1, 4)
+			set_light_range(4)
+			set_light_power(0.75)
+		set_light_on(TRUE)
 	else
-		set_light(0)
+		set_light_on(FALSE)
 
 // this function displays jetpack pressure in the stat panel
 /mob/living/silicon/robot/proc/show_jetpack_pressure()
@@ -532,7 +535,7 @@
 					opened = 0
 					update_icon()
 
-			else if(wiresexposed && wires.IsAllCut())
+			else if(wiresexposed && wires.is_all_cut())
 				//Cell is out, wires are exposed, remove MMI, produce damaged chassis, baleet original mob.
 				if(!mmi)
 					to_chat(user, "\The [src] has no brain to remove.")
@@ -752,8 +755,8 @@
 			var/image/eye_overlay = eye_overlays[eye_icon_state]
 			if(!eye_overlay)
 				eye_overlay = image(icon, eye_icon_state)
-				eye_overlay.plane = EFFECTS_ABOVE_LIGHTING_PLANE
-				eye_overlay.layer = EYE_GLOW_LAYER
+				eye_overlay.plane = ABOVE_LIGHTING_PLANE
+				eye_overlay.layer = LIGHTING_SECONDARY_LAYER
 				eye_overlays[eye_icon_state] = eye_overlay
 			overlays += eye_overlay
 
@@ -956,7 +959,7 @@
 
 /mob/living/silicon/robot/proc/SetLockdown(var/state = 1)
 	// They stay locked down if their wire is cut.
-	if(wires.LockedCut())
+	if(wires.is_cut(WIRE_BORG_LOCKED))
 		state = 1
 	else if(has_zeroth_law())
 		state = 0

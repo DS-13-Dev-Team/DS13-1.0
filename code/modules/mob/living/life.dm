@@ -202,6 +202,7 @@
 		update_dead_sight()
 	else
 		update_living_sight()
+	sync_lighting_plane_alpha()
 
 /mob/living/proc/update_living_sight()
 	set_sight(sight&(~(SEE_TURFS|SEE_MOBS|SEE_OBJS)))

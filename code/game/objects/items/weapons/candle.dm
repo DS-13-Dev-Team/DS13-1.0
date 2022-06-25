@@ -5,6 +5,8 @@
 	icon_state = "candle1"
 	item_state = "candle1"
 	w_class = ITEM_SIZE_TINY
+	light_range = 4
+	light_power = 0.3
 	light_color = "#e09d37"
 	var/wax
 
@@ -39,7 +41,6 @@
 		src.lit = 1
 		//src.damtype = "fire"
 		src.visible_message("<span class='notice'>\The [user] lights the [name].</span>")
-		set_light(0.3, 0.1, 4, 2)
 		START_PROCESSING(SSobj, src)
 
 
@@ -59,4 +60,4 @@
 	if(lit)
 		lit = 0
 		update_icon()
-		set_light(0)
+		set_light_on(FALSE)

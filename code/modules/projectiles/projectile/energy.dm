@@ -50,8 +50,9 @@
 	brightness = 15
 
 /obj/item/projectile/energy/flash/flare/on_impact(var/atom/A)
-	light_colour = pick("#e58775", "#ffffff", "#90ff90", "#a09030")
-	set_light(1, 1, 4, 2, light_colour)
+	set_light_color(pick("#e58775", "#ffffff", "#90ff90", "#a09030"))
+	set_light_range(4)
+	set_light_power(1)
 	..() //initial flash
 
 	//residual illumination

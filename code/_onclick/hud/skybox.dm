@@ -1,11 +1,16 @@
 #define DEFAULT_SKYBOX_SIZE	736
 #define BASE_BUFFER_TILES	15
-/obj/skybox
+#define SKYBOX_PADDING	4	// How much larger we want the skybox image to be than client's screen (in turfs)
+#define SKYBOX_TURFS	(DEFAULT_SKYBOX_SIZE/WORLD_ICON_SIZE)
+/atom/movable/screen/skybox
 	name = "skybox"
 	mouse_opacity = 0
+	icon = null
+	appearance_flags = TILE_BOUND|PIXEL_SCALE
 	anchored = TRUE
 	simulated = FALSE
 	screen_loc = "CENTER:-224,CENTER:-224"
+	layer = OBJ_LAYER
 	plane = SKYBOX_PLANE
 	blend_mode = BLEND_MULTIPLY
 
@@ -19,8 +24,17 @@
 	//By default the skybox positions its own lowerleft corner where we point to. So we must additionally offset it by this in both directions to centre it
 	var/base_offset = -368
 
+/atom/movable/screen/skybox/proc/scale_to_view(var/view)
+	var/matrix/M = matrix()
+	// Translate to center the icon over us!
+	M.Translate(-(DEFAULT_SKYBOX_SIZE - WORLD_ICON_SIZE) / 2)
+	// Scale appropriately based on view size.  (7 results in scale of 1)
+	view = text2num(view) || 7 // Sanitize
+	M.Scale(((min(MAX_CLIENT_VIEW, view) + SKYBOX_PADDING) * 2 + 1) / SKYBOX_TURFS)
+	src.transform = M
+
 /client
-	var/obj/skybox/skybox
+	var/atom/movable/screen/skybox/skybox
 
 /client/proc/update_skybox(var/rebuild = FALSE)
 	if(!skybox)
@@ -76,7 +90,7 @@
 	if(. && client)
 		client.update_skybox(old_z != get_z(src))
 
-/mob/forceMove(atom/destination, var/special_event, glide_size_override=0)
+/mob/forceMove(atom/destination, hardforce, glide_size_override=0)
 	var/old_z = get_z(src)
 
 	. = ..()

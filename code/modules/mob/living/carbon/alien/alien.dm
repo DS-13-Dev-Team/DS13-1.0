@@ -1,5 +1,4 @@
 /mob/living/carbon/alien
-
 	name = "alien"
 	desc = "What IS that?"
 	icon = 'icons/mob/alien.dmi'
@@ -9,6 +8,7 @@
 	max_health = 100
 	mob_size = 4
 	species_language = "Xenophage"
+	blocks_emissive = EMISSIVE_BLOCK_UNIQUE
 
 	var/dead_icon
 	var/language

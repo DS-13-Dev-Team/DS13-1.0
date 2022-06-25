@@ -115,11 +115,10 @@
 	icon = 'icons/turf/flooring/lava.dmi'
 	icon_state = "lava"
 	movement_delay = 4
+	light_range = 2
+	light_power = 0.95
+	light_color = COLOR_ORANGE
 	var/list/victims
-
-/turf/simulated/floor/exoplanet/lava/Initialize()
-	. = ..()
-	set_light(0.95, 0.5, 2, l_color = COLOR_ORANGE)
 
 /turf/simulated/floor/exoplanet/lava/Destroy()
 	STOP_PROCESSING(SSobj, src)

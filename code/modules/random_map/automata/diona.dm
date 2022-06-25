@@ -51,10 +51,9 @@
 	name = "glow bulb"
 	desc = "A glowing bulb of some sort."
 	icon_state = "glowbulb"
-
-/obj/structure/diona/bulb/New(var/newloc)
-	..()
-	set_light(0.3, 0.1, 3, 2, "#557733")
+	light_range = 3
+	light_power = 0.3
+	light_color = "#557733"
 
 /datum/random_map/automata/diona
 	iterations = 3

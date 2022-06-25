@@ -107,7 +107,7 @@
 		static_inventory += inv_box
 
 		inv_box = new /atom/movable/screen/inventory/hand()
-		inv_box.setDir(EAST)
+		inv_box.set_dir(EAST)
 		inv_box.icon = ui_style
 		if(owner?.hand)	//This being 1 means the left hand is in use
 			inv_box.add_overlay("hand_active")

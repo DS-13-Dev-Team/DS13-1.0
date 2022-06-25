@@ -121,11 +121,9 @@
 	icon = 'riverturfs.dmi'
 	icon_state = "floor"
 	temperature = 233
-
-/turf/simulated/floor/away/blueriver/alienfloor/Initialize()
-	.=..()
-
-	set_light(0.7, 1, 5, l_color = "#0066ff")
+	light_range = 5
+	light_power = 0.7
+	light_color = "#0066ff"
 
 /turf/unsimulated/wall/away/blueriver/livingwall
 	name = "alien wall"
@@ -151,12 +149,13 @@
 	plane = EFFECTS_ABOVE_LIGHTING_PLANE
 	opacity = 0
 	dynamic_lighting = 0
+	light_range = 5
+	light_power = 0.7
+	light_color = "#0066ff"
 
 /turf/unsimulated/wall/supermatter/no_spread/Initialize()
 	.=..()
-
 	icon_state = "bluespacecrystal[rand(1,3)]"
-	set_light(0.7, 1, 5, l_color = "#0066ff")
 
 /turf/unsimulated/wall/supermatter/no_spread/Process()
 	return PROCESS_KILL

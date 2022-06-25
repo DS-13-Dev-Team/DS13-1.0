@@ -57,7 +57,7 @@
 
 	//Existing stuff i might replace
 	GLOB.player_list |= src
-	GLOB.key_to_mob[key] = src
+	GLOB.key_to_mob[ckey] = src
 
 
 /*

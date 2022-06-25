@@ -204,16 +204,16 @@ The Pulse Rifle is the standard-issue service rifle of the Earth Defense Force a
 //----------------------------
 /obj/effect/projectile/pulse/muzzle/light
 	icon_state = "muzzle_pulse_light"
-	light_max_bright = 1
+	light_power = 0.6
 	light_color = COLOR_DEEP_SKY_BLUE
 
 
 /obj/effect/projectile/pulse/muzzle/hv
 	icon_state = "muzzle_pulse_hv"
-	light_max_bright = 1
+	light_power = 0.6
 	light_color = COLOR_MARKER_RED
 
 /obj/effect/projectile/pulse/muzzle/df
 	icon_state = "muzzle_pulse_light"
-	light_max_bright = 1
+	light_power = 0.6
 	light_color = COLOR_YELLOW

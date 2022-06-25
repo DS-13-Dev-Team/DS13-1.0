@@ -11,6 +11,7 @@
 	anchored = 1 //There's a reason this is here, Mport. God fucking damn it -Agouri. Find&Fix by Pete. The reason this is here is to stop the curving of emitter shots.
 	pass_flags = PASS_FLAG_TABLE | PASS_FLAG_FLYING
 	mouse_opacity = 0
+	blocks_emissive = EMISSIVE_BLOCK_GENERIC
 	var/bumped = 0		//Prevents it from hitting more than one guy at once
 	var/def_zone = ""	//Aiming at
 	var/mob/firer = null//Who shot it
@@ -153,7 +154,7 @@
 	last_loc = loc
 	return ..()
 
-/obj/item/projectile/forceMove(atom/destination, var/special_event, glide_size_override=0)
+/obj/item/projectile/forceMove(atom/destination, hardforce, glide_size_override=0)
 	..()
 	if(!vacuum_traversal && istype(loc, /turf/space/) && istype(loc.loc, /area/space))
 		qdel(src)

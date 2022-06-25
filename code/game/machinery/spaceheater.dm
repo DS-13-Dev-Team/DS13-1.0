@@ -17,6 +17,8 @@
 	var/settableTemperatureRange = 30
 	clicksound = "switch"
 	interact_offline = TRUE
+	light_range = 3
+	light_power = 3
 
 /obj/machinery/space_heater/Initialize()
 	. = ..()
@@ -44,16 +46,16 @@
 /obj/machinery/space_heater/update_icon(var/rebuild_overlay = 0)
 	if(!on)
 		icon_state = "sheater-off"
-		set_light(0)
+		set_light_on(FALSE)
 	else if(active > 0)
 		icon_state = "sheater-heat"
-		set_light(3, 3, COLOR_SEDONA)
+		set_light_color(COLOR_SEDONA)
 	else if(active < 0)
 		icon_state = "sheater-cool"
-		set_light(3, 3, COLOR_DEEP_SKY_BLUE)
+		set_light_color(COLOR_DEEP_SKY_BLUE)
 	else
 		icon_state = "sheater-standby"
-		set_light(0)
+		set_light_on(FALSE)
 
 	if(rebuild_overlay)
 		cut_overlays()

@@ -70,7 +70,7 @@
 
 	//Vision
 	view_range = 8
-	darksight_tint = DARKTINT_GOOD
+	lighting_alpha = LIGHTING_PLANE_ALPHA_NV_TRAIT
 
 
 	//Audio
@@ -122,7 +122,8 @@
 	'sound/effects/creatures/necromorph/ubermorph/ubermorph_regen_2.ogg')
 	)
 
-
+	lowest_money_drop = 7500
+	highest_money_drop = 10000
 
 
 #define HUNTER_PASSIVE	"<h2>PASSIVE: Pseudo Immortal:</h2><br>\
@@ -189,8 +190,8 @@ Taunt has a very long possible duration, but it will terminate early if the hunt
 
 	//Lets do a little animation for the eyes lighting up
 	var/image/LR = image(eye_icon, newowner, "eyes_anim")
-	LR.plane = EFFECTS_ABOVE_LIGHTING_PLANE
-	LR.layer = EYE_GLOW_LAYER
+	LR.plane = ABOVE_LIGHTING_PLANE
+	LR.layer = LIGHTING_SECONDARY_LAYER
 	flick_overlay_source(LR, newowner, 3 SECONDS)
 
 	//Activate the actual glow

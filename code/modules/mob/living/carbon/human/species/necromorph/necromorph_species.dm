@@ -41,8 +41,7 @@
 
 
 	//Vision
-	darksight_range = -1
-	darksight_tint = DARKTINT_MODERATE
+	lighting_alpha = LIGHTING_PLANE_ALPHA_NV_TRAIT
 
 	// Move intents
 	move_intents = list(/decl/move_intent/walk, /decl/move_intent/stalk)
@@ -177,6 +176,9 @@
 
 	disarm_cooldown = 10
 
+	var/lowest_money_drop = 0
+	var/highest_money_drop = 0
+
 /datum/species/necromorph/psychosis_vulnerable()
 	return FALSE
 
@@ -259,6 +261,7 @@
 		remove_massive_atom(H)
 	GLOB.necrovision.remove_source(H)
 	SSnecromorph.major_vessels -= H
+	spawn_money(rand(lowest_money_drop, highest_money_drop), get_turf(H))
 
 //How much damage has this necromorph taken?
 //We'll loop through each organ tag in the species' initial health values list, which should definitely be populated already, and try to get the organ for each

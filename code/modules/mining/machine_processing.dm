@@ -81,7 +81,7 @@
 	icon_state = "furnace"
 	density = 1
 	anchored = 1
-	light_outer_range = 3
+	light_range = 3
 	circuit = /obj/item/weapon/circuitboard/ore_processing
 	var/obj/machinery/input/input
 	var/obj/machinery/mineral/output

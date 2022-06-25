@@ -251,7 +251,6 @@ var/list/worths = list(
 					/obj/item/weapon/circuitboard = 1000,
 //GRENADES,
 					/obj/item/weapon/grenade/fake = 50,
-					/obj/item/weapon/grenade/anti_photon = 200,
 					/obj/item/weapon/grenade/empgrenade = 180,
 					/obj/item/weapon/grenade/frag = 300,
 					/obj/item/weapon/grenade/spawnergrenade/manhacks = 600,

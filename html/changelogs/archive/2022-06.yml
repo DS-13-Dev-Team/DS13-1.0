@@ -5,3 +5,14 @@
 2022-06-17:
   DTraitor:
   - balance: Increased flamethrower prices to 2.5k for gasoline and 5k for hydrazine.
+2022-06-24:
+  DTraitor:
+  - refactor: Refactored lighting system. Now we use tg lighting without movables
+      system.
+  - rscadd: Added directional lights (used for flashlights for now). Thanks Nebula
+      for those.
+  - refactor: Camera and Suit monitoring apps and door wires now use TGUI.
+  - refactor: Refactored open spaces to use visual contents instead of what we used
+      (AAAAAAAAAAAAAAAAA!). Thanks to /tg/ for the code.
+  - rscadd: Added a clickbox to divider components, hitting them should be easier
+      now.

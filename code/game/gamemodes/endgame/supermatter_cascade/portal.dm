@@ -10,7 +10,7 @@
 	announce=0
 	cause_hell=0
 
-	layer=LIGHTING_LAYER+2 // ITS SO BRIGHT
+	layer=LIGHTING_SECONDARY_LAYER+2 // ITS SO BRIGHT
 
 	consume_range = 6
 
@@ -79,7 +79,7 @@
 	var/turf/T_mob = get_turf(src)
 	if((R.z == T_mob.z) && (get_dist(R,T_mob) <= (R.consume_range+10)) && !(R in view(T_mob)))
 		if(!riftimage)
-			riftimage = image('icons/obj/rift.dmi',T_mob,"rift",LIGHTING_LAYER+2,1)
+			riftimage = image('icons/obj/rift.dmi',T_mob,"rift",LIGHTING_SECONDARY_LAYER+2,1)
 			riftimage.mouse_opacity = 0
 
 		var/new_x = 32 * (R.x - T_mob.x) + R.pixel_x

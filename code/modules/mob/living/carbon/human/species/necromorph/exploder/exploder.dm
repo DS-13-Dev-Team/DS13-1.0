@@ -15,7 +15,7 @@
 
 	biomass_reclamation_time	=	5 MINUTES
 	view_range = 6
-	darksight_tint = DARKTINT_POOR
+	lighting_alpha = LIGHTING_PLANE_ALPHA_NV_TRAIT
 
 	icon_template = 'icons/mob/necromorph/exploder/exploder.dmi'
 	icon_lying = "_lying"
@@ -117,6 +117,9 @@
 	inherent_verbs = list(/atom/movable/proc/exploder_charge, /mob/living/carbon/human/proc/exploder_explode, /mob/proc/shout)
 	modifier_verbs = list(KEY_CTRLALT = list(/atom/movable/proc/exploder_charge),
 	KEY_CTRLSHIFT = list(/mob/living/carbon/human/proc/exploder_explode))
+
+	lowest_money_drop = 1500
+	highest_money_drop = 1750
 
 /datum/species/necromorph/exploder/classic
 	name = SPECIES_NECROMORPH_EXPLODER_CLASSIC
@@ -242,13 +245,10 @@ The last resort. The exploder screams and shakes violently for 3 seconds, before
 	joint = "left wrist"
 	amputation_point = "left wrist"
 	tendon_name = "carpal ligament"
+	//The pustule casts soft yellow light in a broad area
+	light_range = 9
+	light_power = 1
 	light_color = COLOR_NECRO_YELLOW
-
-//The pustule casts soft yellow light in a broad area
-/obj/item/organ/external/exploder_pustule/Initialize()
-	set_light(1, 1, 9, 2, light_color)
-	.=..()
-
 
 /obj/item/organ/external/exploder_pustule/right
 	organ_tag = BP_R_ARM

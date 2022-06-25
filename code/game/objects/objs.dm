@@ -1,6 +1,7 @@
 /obj
 	layer = OBJ_LAYER
-
+	//when this be added to vis_contents of something it inherit something.plane, important for visualisation of obj in openspace.
+	vis_flags = VIS_INHERIT_PLANE
 	var/obj_flags
 
 	//Defense

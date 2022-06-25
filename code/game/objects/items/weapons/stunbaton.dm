@@ -12,6 +12,9 @@
 	w_class = ITEM_SIZE_NORMAL
 	origin_tech = list(TECH_COMBAT = 2)
 	attack_verb = list("beaten")
+	light_range = 1
+	light_power = 0.4
+	light_color = "#ff6a00"
 	var/stunforce = 0
 	var/agonyforce = 30
 	var/status = 0		//whether the thing is on or not
@@ -56,9 +59,9 @@
 	update_wear_icon()
 
 	if(icon_state == "[initial(name)]_active")
-		set_light(0.4, 0.1, 1, 2, "#ff6a00")
+		set_light_on(TRUE)
 	else
-		set_light(0)
+		set_light_on(FALSE)
 
 /obj/item/weapon/melee/baton/examine(mob/user)
 	if(!..(user, 1))
@@ -237,14 +240,15 @@
 	name = "electrified arm"
 	icon = 'icons/obj/device.dmi'
 	icon_state = "electrified_arm"
+	light_color = "#006aff"
 
 /obj/item/weapon/melee/baton/robot/electrified_arm/update_icon()
 	if(status)
 		icon_state = "electrified_arm_active"
-		set_light(0.4, 0.1, 1, 2, "#006aff")
+		set_light_on(TRUE)
 	else
 		icon_state = "electrified_arm"
-		set_light(0)
+		set_light_on(FALSE)
 
 //Makeshift stun baton. Replacement for stun gloves.
 /obj/item/weapon/melee/baton/cattleprod

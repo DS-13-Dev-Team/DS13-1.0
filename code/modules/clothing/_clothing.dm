@@ -45,7 +45,7 @@
 	return flash_protection || tint
 
 /obj/item/clothing/get_mob_overlay(mob/user_mob, slot)
-	var/image/ret = ..()
+	var/mutable_appearance/ret = ..()
 
 	if(slot == slot_l_hand_str || slot == slot_r_hand_str)
 		return ret
@@ -53,7 +53,7 @@
 	if(ishuman(user_mob))
 		var/mob/living/carbon/human/user_human = user_mob
 		if(blood_DNA && user_human.species.blood_mask)
-			var/image/bloodsies	= overlay_image(user_human.species.blood_mask, blood_overlay_type, blood_color, RESET_COLOR)
+			var/mutable_appearance/bloodsies = overlay_image(user_human.species.blood_mask, blood_overlay_type, blood_color, RESET_COLOR)
 			ret.overlays	+= bloodsies
 
 		if (user_human.missing_limbs & body_parts_covered)
@@ -295,6 +295,7 @@ BLIND     // can't see anything
 	var/darkness_view = 0//Base human is 2
 	var/see_invisible = -1
 	var/light_protection = 0
+	var/lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
 
 /obj/item/clothing/glasses/get_icon_state(mob/user_mob, slot)
 	if(item_state_slots && item_state_slots[slot])
@@ -426,7 +427,9 @@ BLIND     // can't see anything
 	body_parts_covered = HEAD
 	slot_flags = SLOT_HEAD
 	w_class = ITEM_SIZE_SMALL
-
+	light_range = 4
+	light_power = 1
+	light_on = FALSE
 	var/light_overlay = "helmet_light"
 	var/light_applied
 	var/brightness_on
@@ -458,10 +461,10 @@ BLIND     // can't see anything
 
 /obj/item/clothing/head/proc/update_flashlight(var/mob/user = null)
 	if(on && !light_applied)
-		set_light(0.5, 1, 3)
+		set_light_on(TRUE)
 		light_applied = 1
 	else if(!on && light_applied)
-		set_light(0)
+		set_light_on(FALSE)
 		light_applied = 0
 	update_icon(user)
 	user.update_action_buttons()

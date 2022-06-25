@@ -12,7 +12,9 @@
 	throw_range = 2
 
 	matter = list(MATERIAL_STEEL = 750)
-
+	light_range = 12
+	light_power = 0.5
+	light_on = FALSE
 	origin_tech = list(TECH_POWER = 3, TECH_ILLEGAL = 5)
 	var/drain_rate = 1500000		// amount of power to drain per tick
 	var/apc_drain_rate = 5000 		// Max. amount drained from single APC. In Watts.
@@ -53,7 +55,7 @@
 			anchored = 0
 			mode = 0
 			src.visible_message("<span class='notice'>[user] detaches [src] from the cable!</span>")
-			set_light(0)
+			set_light_on(FALSE)
 			icon_state = "powersink0"
 
 			return
@@ -75,7 +77,7 @@
 		if(2)  //This switch option wasn't originally included. It exists now. --NeoFite
 			src.visible_message("<span class='notice'>[user] deactivates [src]!</span>")
 			mode = 1
-			set_light(0)
+			set_light_on(FALSE)
 			icon_state = "powersink0"
 			STOP_PROCESSING_POWER_OBJECT(src)
 
@@ -88,7 +90,6 @@
 	var/drained = 0
 	if(!PN)
 		return 1
-	set_light(0.5, 0.1, 12)
 	PN.trigger_warning()
 	// found a powernet, so drain up to max power from it
 	drained = PN.draw_power(drain_rate)

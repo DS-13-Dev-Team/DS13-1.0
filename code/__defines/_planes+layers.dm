@@ -68,14 +68,16 @@ What is the naming convention for planes or layers?
 #define SPACE_PLANE						-99
 #define SKYBOX_PLANE					-98
 
-#define GRAVITY_PULSE_PLANE				-11
-#define GRAVITY_PULSE_RENDER_TARGET 	"*GRAVPULSE_RENDER_TARGET"
-
 #define DUST_PLANE -97
 	#define DEBRIS_LAYER 1
 	#define DUST_LAYER 2
 
+#define OPENSPACE_PLANE -9 //Openspace plane below all turfs
+#define OPENSPACE_BACKDROP_PLANE -8 //Black square just over openspace plane to guaranteed cover all in openspace turf
+	#define OPENSPACE_LAYER 600 //Openspace layer over all
+
 #define FLOOR_PLANE						-7
+#define GAME_PLANE						-6
 
 #define DEFAULT_PLANE                   -4
 	#define PLATING_LAYER               1
@@ -104,7 +106,6 @@ What is the naming convention for planes or layers?
 	#define BLOOD_LAYER					2.11
 	#define MOUSETRAP_LAYER				2.12
 	#define PLANT_LAYER					2.13
-	#define AO_LAYER					2.14
 	//HIDING MOB
 	#define HIDING_MOB_LAYER			2.15
 	#define SHALLOW_FLUID_LAYER			2.16
@@ -128,8 +129,6 @@ What is the naming convention for planes or layers?
 	#define LYING_MOB_LAYER             3.07
 	#define LYING_HUMAN_LAYER           3.08
 	#define BASE_ABOVE_OBJ_LAYER        3.09
-	//HUMAN
-	#define BASE_HUMAN_LAYER            3.10
 	//MOB
 	#define MECH_UNDER_LAYER            3.11
 	// MOB_LAYER                        4
@@ -161,7 +160,6 @@ What is the naming convention for planes or layers?
 	#define ABOVE_PROJECTILE_LAYER      4.20
 	#define SINGULARITY_LAYER           4.21
 	#define POINTER_LAYER               4.22
-	#define MIMICED_LIGHTING_LAYER      4.23	// Z-Mimic-managed lighting
 
 	//FLY_LAYER                          5
 	//OBSERVER
@@ -172,20 +170,40 @@ What is the naming convention for planes or layers?
 
 #define BLACKNESS_PLANE					0 //To keep from conflicts with SEE_BLACKNESS internals
 
+#define AREA_PLANE						60
 #define MASSIVE_OBJ_PLANE				70
 #define OBSERVER_PLANE					80 // For observers and ghosts
 #define POINT_PLANE						90
 
-#define LIGHTING_PLANE					100 // For Lighting. - The highest plane (ignoring all other even higher planes)
+//---------- LIGHTING -------------
+///Normal 1 per turf dynamic lighting underlays
+#define LIGHTING_PLANE 100
 
-	#define LIGHTBULB_LAYER				0
-	#define LIGHTING_LAYER				1
-	#define ABOVE_LIGHTING_LAYER		2
+///Lighting objects that are "free floating"
+#define O_LIGHTING_VISUAL_PLANE 110
+#define O_LIGHTING_VISUAL_RENDER_TARGET "O_LIGHT_VISUAL_PLANE"
 
-#define EFFECTS_ABOVE_LIGHTING_PLANE	200 // For glowy eyes, laser beams, etc. that shouldn't be affected by darkness
-	#define EYE_GLOW_LAYER				1
-	#define BEAM_PROJECTILE_LAYER		2
-	#define SUPERMATTER_WALL_LAYER		3
+///Things that should render ignoring lighting
+#define ABOVE_LIGHTING_PLANE 120
+
+#define LIGHTING_PRIMARY_LAYER 15	//The layer for the main lights of the station
+#define LIGHTING_PRIMARY_DIMMER_LAYER 15.1	//The layer that dims the main lights of the station
+#define LIGHTING_SECONDARY_LAYER 16	//The colourful, usually small lights that go on top
+
+
+///visibility + hiding of things outside of light source range
+#define BYOND_LIGHTING_PLANE 130
+
+//---------- EMISSIVES -------------
+//Layering order of these is not particularly meaningful.
+//Important part is the seperation of the planes for control via plane_master
+
+/// This plane masks out lighting to create an "emissive" effect, ie for glowing lights in otherwise dark areas.
+#define EMISSIVE_PLANE 150
+/// The render target used by the emissive layer.
+#define EMISSIVE_RENDER_TARGET "*EMISSIVE_PLANE"
+/// The layer you should use if you _really_ don't want an emissive overlay to be blocked.
+#define EMISSIVE_LAYER_UNBLOCKABLE 9999
 
 #define OBSCURITY_PLANE					300 // For visualnets, such as the AI's static.
 
@@ -199,6 +217,9 @@ What is the naming convention for planes or layers?
 	#define BLIND_LAYER					3
 	#define CRIT_LAYER					4
 
+///Popup Chat Messages
+#define RUNECHAT_PLANE 501
+
 #define RENDER_PLANE_GAME				990
 #define RENDER_PLANE_NON_GAME			995
 #define RENDER_PLANE_MASTER				999
@@ -211,8 +232,8 @@ What is the naming convention for planes or layers?
 	#define HUD_ABOVE_ITEM_LAYER		3
 	#define HUD_TEXT_LAYER				4
 
-/atom
-	plane = DEFAULT_PLANE
+#define ABOVE_HUD_PLANE 1100
+	#define ABOVE_HUD_LAYER 1
 
 /image/proc/plating_decal_layerise()
 	plane = DEFAULT_PLANE
@@ -223,8 +244,8 @@ What is the naming convention for planes or layers?
 	layer = DECAL_LAYER
 
 /atom/proc/hud_layerise()
-	plane = HUD_PLANE
-	layer = HUD_ITEM_LAYER
+	plane = ABOVE_HUD_PLANE
+	layer = ABOVE_HUD_LAYER
 
 ///Plane master controller keys
 #define PLANE_MASTERS_GAME "plane_masters_game"

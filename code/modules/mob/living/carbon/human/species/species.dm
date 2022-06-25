@@ -30,7 +30,7 @@
 	//Thirdly, in single icon mode, it is the icon state for lying down
 	var/icon_lying = null
 	var/lying_rotation = 90 //How much to rotate the icon when lying down
-	var/layer = BASE_HUMAN_LAYER
+	var/layer = MOB_LAYER
 	var/layer_lying	=	LYING_HUMAN_LAYER
 
 	// Damage overlay and masks.
@@ -217,8 +217,7 @@
 	//Vision
 	var/view_offset = 0			  //How far forward the mob's view is offset, in pixels.
 	var/view_range = 7		  //Mob's vision radius, in tiles. It gets buggy with values below 7, but anything 7+ is flawless
-	var/darksight_range = 2       // Native darksight distance.
-	var/darksight_tint = DARKTINT_NONE // How shadows are tinted.
+	var/lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE // How shadows are tinted.
 	var/vision_flags = SEE_SELF               // Same flags as glasses.
 	var/short_sighted                         // Permanent weldervision.
 
@@ -420,7 +419,7 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 
 /datum/species/proc/setup_interaction(var/mob/living/carbon/human/H)
 	H.limited_click_arc = limited_click_arc
-	H.opacity = opacity
+	H.set_opacity(opacity)
 	H.reach = reach
 	H.set_attack_intent(H.a_intent || initial(H.a_intent) || I_HURT)
 
@@ -432,17 +431,9 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 	H.view_offset = view_offset
 	H.view_range = view_range
 
-	if (darksight_tint != DARKTINT_NONE)
-		H.set_darksight_color(darksight_tint)
-
-		//-1 range is a special value that means fullscreen
-		if (darksight_range == -1)
-			H.set_darksight_range(view_range)
-		else
-			H.set_darksight_range(darksight_range)
-
-
-
+	if(lighting_alpha != LIGHTING_PLANE_ALPHA_VISIBLE)
+		H.lighting_alpha = lighting_alpha
+		H.sync_lighting_plane_alpha()
 
 /datum/species/proc/sanitize_name(var/name)
 	return sanitizeName(name)
@@ -569,7 +560,7 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 			//Modclick takes key type, function name, function priority, and a list of extra arguments
 			H.add_modclick_verb(arglist(input_args))
 
-	if (darksight_tint != DARKTINT_NONE)
+	if(lighting_alpha != LIGHTING_PLANE_ALPHA_VISIBLE)
 		add_verb(H, /mob/living/carbon/human/proc/toggle_darkvision)
 
 
@@ -603,14 +594,8 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 
 // Used to update alien icons for aliens.
 /datum/species/proc/handle_login_special(var/mob/living/carbon/human/H)
-	if (H.l_general)
-		H.set_darksight_color(darksight_tint)
-		//-1 range is a special value that means fullscreen
-		if (darksight_range == -1)
-			H.set_darksight_range(view_range)
-		else
-			H.set_darksight_range(darksight_range)
-	return
+	H.lighting_alpha = lighting_alpha
+	H.sync_lighting_plane_alpha()
 
 // As above.
 /datum/species/proc/handle_logout_special(var/mob/living/carbon/human/H)
@@ -654,9 +639,9 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 	return
 
 /datum/species/proc/handle_vision(var/mob/living/carbon/human/H)
+	H.lighting_alpha = H.equipment_lighting_alpha
 	H.update_sight()
 	H.set_sight(H.sight|get_vision_flags(H)|H.equipment_vision_flags)
-
 
 
 
@@ -702,8 +687,9 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 		else
 			var/turf_brightness = 1
 			var/turf/T = get_turf(H)
-			if(T && T.lighting_overlay)
+			if(T?.lighting_object)
 				turf_brightness = min(1, T.get_lumcount())
+
 			if(turf_brightness < 0.33)
 				light = 0
 			else

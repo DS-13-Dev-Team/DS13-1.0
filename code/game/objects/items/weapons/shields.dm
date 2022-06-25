@@ -141,6 +141,10 @@
 	resistance = 8
 	max_health = 340
 	blocksound = 'sound/effects/impacts/shield_impact_1.ogg'
+	light_range = 1
+	light_power = 0.4
+	light_color ="#006aff"
+	light_on = FALSE
 
 /obj/item/weapon/shield/energy/can_block()
 	return active
@@ -185,9 +189,4 @@
 
 /obj/item/weapon/shield/energy/update_icon()
 	icon_state = "eshield[active]"
-	if(active)
-		set_light(0.4, 0.1, 1, 2, "#006aff")
-	else
-		set_light(0)
-
-
+	set_light_on(!!active)

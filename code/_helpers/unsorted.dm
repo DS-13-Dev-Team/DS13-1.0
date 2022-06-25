@@ -1056,10 +1056,12 @@ var/list/WALLITEMS = list(
 
 
 
-/atom/proc/get_light_and_color(var/atom/origin)
+/atom/proc/set_light_and_color(atom/origin)
 	if(origin)
 		color = origin.color
-		set_light(origin.light_max_bright, origin.light_inner_range, origin.light_outer_range, origin.light_falloff_curve)
+		set_light_range(origin.light_range)
+		set_light_power(origin.light_power)
+		set_light_color(origin.light_color)
 
 /mob/dview/Initialize()
 	. = ..()

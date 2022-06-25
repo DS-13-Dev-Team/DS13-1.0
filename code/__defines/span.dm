@@ -9,3 +9,4 @@
 #define SPAN_ROUND_HEADER(str) ("<span class='round_header'>" + str + "</span>")
 #define SPAN_ROLE_BODY(str) ("<span class='role_body'>" + str + "</span>")
 #define SPAN_ADMIN(str) ("<span class='admin'>" + str + "</span>")
+#define SPAN_USERDANGER(str) ("<span class='userdanger'>" + str + "</span>")

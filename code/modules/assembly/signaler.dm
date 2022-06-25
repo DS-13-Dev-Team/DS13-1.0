@@ -117,8 +117,8 @@
 
 
 /obj/item/device/assembly/signaler/pulse(var/radio = 0)
-	if(src.connected && src.wires)
-		connected.Pulse(src)
+	if(connected && wires)
+		connected.pulse_assembly(src)
 	else if(holder)
 		holder.process_activation(src, 1, 0)
 	else

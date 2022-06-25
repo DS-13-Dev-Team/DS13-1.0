@@ -16,7 +16,7 @@
 
 	biomass_reclamation_time	=	5 MINUTES
 	view_range = 6
-	darksight_tint = DARKTINT_POOR
+	lighting_alpha = LIGHTING_PLANE_ALPHA_NV_TRAIT
 
 	icon_template = 'icons/mob/necromorph/exploder/exploder_enhanced.dmi'
 	icon_lying = "_lying"
@@ -56,7 +56,8 @@
 	modifier_verbs = list(KEY_CTRLALT = list(/atom/movable/proc/exploder_enhanced_charge),
 	KEY_CTRLSHIFT = list(/mob/living/carbon/human/proc/exploder_explode))
 
-
+	lowest_money_drop = 3000
+	highest_money_drop = 3500
 
 #define EXPLODER_ENHANCED_PASSIVE	"<h2>PASSIVE: Burning Acid Pustule:</h2><br>\
 The Exploder's arm is a massive pustule full of flammable chemicals, which can create a devastating explosion when triggered.<br>\

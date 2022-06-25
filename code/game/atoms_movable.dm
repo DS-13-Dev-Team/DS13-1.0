@@ -22,7 +22,15 @@
 	var/does_spin = TRUE // Does the atom spin when thrown (of course it does :P)
 	var/mid_diag_move = FALSE // Whether the atom is in the first step of diagonal movement
 
+	/// Either FALSE, [EMISSIVE_BLOCK_GENERIC], or [EMISSIVE_BLOCK_UNIQUE]
+	var/blocks_emissive = FALSE
+	///Internal holder for emissive blocker object, do not use directly use blocks_emissive
+	var/atom/movable/emissive_blocker/em_block
 
+	///Lazylist to keep track on the sources of illumination.
+	var/list/affected_dynamic_lights
+	///Highest-intensity light affecting us, which determines our visibility.
+	var/affecting_dynamic_lumi = 0
 	//Mass is measured in kilograms. It should never be zero
 	var/mass = 1
 
@@ -34,15 +42,43 @@
 	if (can_block_movement && isturf(loc))
 		var/turf/T = loc
 		LAZYDISTINCTADD(T.movement_blocking_atoms,src)
-
 	.=..()
+	switch(blocks_emissive)
+		if(EMISSIVE_BLOCK_GENERIC)
+			var/mutable_appearance/gen_emissive_blocker = mutable_appearance(icon, icon_state, plane = EMISSIVE_PLANE, alpha = src.alpha)
+			gen_emissive_blocker.color = GLOB.em_block_color
+			gen_emissive_blocker.dir = dir
+			gen_emissive_blocker.appearance_flags |= appearance_flags
+			add_overlay(list(gen_emissive_blocker))
+		if(EMISSIVE_BLOCK_UNIQUE)
+			render_target = ref(src)
+			em_block = new(src, render_target)
+			add_overlay(list(em_block))
+	if(opacity)
+		AddElement(/datum/element/light_blocking)
+
+///Keeps track of the sources of dynamic luminosity and updates our visibility with the highest.
+/atom/movable/proc/update_dynamic_luminosity()
+	var/highest = 0
+	for(var/i in affected_dynamic_lights)
+		if(affected_dynamic_lights[i] <= highest)
+			continue
+		highest = affected_dynamic_lights[i]
+	if(highest == affecting_dynamic_lumi)
+		return
+	luminosity -= affecting_dynamic_lumi
+	affecting_dynamic_lumi = highest
+	luminosity += affecting_dynamic_lumi
 
 /atom/movable/Destroy()
+	QDEL_NULL(em_block)
 	if (can_block_movement)
 		var/turf/T = get_turf(src)
 		if (T)
 			LAZYREMOVE(T.movement_blocking_atoms,src)
 
+	if(opacity)
+		RemoveElement(/datum/element/light_blocking)
 
 	if(virtual_mob && !ispath(virtual_mob))
 		qdel(virtual_mob)
@@ -54,7 +90,7 @@
 	for(var/atom/movable/AM in src)
 		qdel(AM)
 
-	forceMove(null)
+	forceMove(null, hardforce = TRUE)
 	if (pulledby)
 		if (pulledby.pulling == src)
 			pulledby.pulling = null
@@ -63,10 +99,21 @@
 	if(LAZYLEN(movement_handlers) && !ispath(movement_handlers[1]))
 		QDEL_NULL_LIST(movement_handlers)
 
-	if (bound_overlay)
-		QDEL_NULL(bound_overlay)
+	vis_locs = null //clears this atom out of all viscontents
+	vis_contents.Cut()
 
-
+/atom/movable/proc/update_emissive_block()
+	if(!blocks_emissive)
+		return
+	else if (blocks_emissive == EMISSIVE_BLOCK_GENERIC)
+		var/mutable_appearance/gen_emissive_blocker = emissive_blocker(icon, icon_state, alpha = src.alpha, appearance_flags = src.appearance_flags)
+		gen_emissive_blocker.dir = dir
+		return gen_emissive_blocker
+	else if(blocks_emissive == EMISSIVE_BLOCK_UNIQUE)
+		if(!em_block && !QDELETED(src))
+			render_target = ref(src)
+			em_block = new(src, render_target)
+		return em_block
 
 /atom/movable/Bump(var/atom/A, yes)
 
@@ -83,13 +130,14 @@
 	..()
 	return
 
-/atom/movable/proc/forceMove(atom/destination, var/special_event, glide_size_override=0)
+/atom/movable/proc/forceMove(atom/destination, hardforce, glide_size_override=0)
 	if(loc == destination)
 		return FALSE
 
 	if (glide_size_override)
 		set_glide_size(glide_size_override)
 
+	SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_MOVE, loc, destination)
 	var/is_origin_turf = isturf(loc)
 	var/is_destination_turf = isturf(destination)
 	// It is a new area if:
@@ -116,8 +164,12 @@
 					AM.Crossed(src)
 			if(is_new_area && is_destination_turf)
 				destination.loc.Entered(src, origin)
-	return TRUE
 
+	if(opacity)
+		updateVisibility(src)
+
+	Moved(origin, NONE)
+	return TRUE
 
 //This proc should never be overridden elsewhere at /atom/movable to keep directions sane.
 /atom/movable/Move(NewLoc, direct = 0, step_x = 0, step_y = 0, glide_size_override = 0)
@@ -148,10 +200,8 @@
 	else
 		var/atom/A = src.loc
 
+		set_dir(direct)
 		. = ..()
-
-		if(direct != get_visual_dir())
-			set_dir(direct)
 
 		//This is an actual speed in metres per second
 		var/last_move_delta = world.time - src.l_move_time
@@ -166,7 +216,14 @@
 			src.last_move = get_dir(A, src.loc)
 
 	if(.)
-		SEND_SIGNAL(src, COMSIG_MOVABLE_MOVED, OldLoc, NewLoc)
+		if(opacity)
+			updateVisibility(src)
+		Moved(OldLoc, dir)
+
+/atom/movable/proc/Moved(atom/OldLoc, Dir)
+	SEND_SIGNAL(src, COMSIG_MOVABLE_MOVED, OldLoc, loc)
+	for (var/datum/light_source/light as anything in light_sources) // Cycle through the light sources on this atom and tell them to update.
+		light.source_atom.update_light()
 
 /atom/movable/proc/set_glide_size(glide_size_override = 0, var/min = 0.1, var/max = world.icon_size/1)
 	if (!glide_size_override || glide_size_override > max)

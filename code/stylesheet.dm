@@ -122,6 +122,7 @@ h1.alert, h2.alert		{color: #000000;}
 .objective		{font-weight: bold;}
 .objective_complete		{color: #666666; text-decoration: line-through;}
 .objective_fail		{color: #FF0000; text-decoration: line-through;}
+.userdanger				{color: #ff0000;	font-weight: bold;	font-size: 3;}
 
 BIG IMG.icon 			{width: 32px; height: 32px;}
 

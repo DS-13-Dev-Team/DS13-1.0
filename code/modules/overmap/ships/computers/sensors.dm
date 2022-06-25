@@ -3,6 +3,7 @@
 	icon_keyboard = "teleport_key"
 	icon_screen = "teleport"
 	light_color = "#77fff8"
+	light_power = 1
 	//circuit = /obj/item/weapon/circuitboard/sensors
 	var/obj/effect/overmap/ship/linked
 	var/obj/machinery/shipsensors/sensors
@@ -21,6 +22,7 @@
 	for(var/obj/machinery/shipsensors/S in SSmachines.machinery)
 		if (S.z in GetConnectedZlevels(z))
 			sensors = S
+			set_light_range(sensors.range)
 			break
 
 /obj/machinery/computer/sensors/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
@@ -111,9 +113,9 @@
 	if(!linked)
 		return
 	if(sensors && sensors.use_power && sensors.powered())
-		linked.set_light(1, sensors.range, sensors.range+1)
+		linked.set_light_on(TRUE)
 	else
-		linked.set_light(0)
+		linked.set_light_on(FALSE)
 
 /obj/machinery/shipsensors
 	name = "sensors suite"

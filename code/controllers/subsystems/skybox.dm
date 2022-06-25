@@ -37,13 +37,13 @@ SUBSYSTEM_DEF(skybox)
 	else
 		I = icon(skybox_icon)
 
-	var/image/res = image(I)
+	var/mutable_appearance/res = mutable_appearance(I)
 	res.appearance_flags = KEEP_TOGETHER
 
-	var/image/base = overlay_image(I, background_icon, background_color)
+	var/mutable_appearance/base = overlay_image(I, background_icon, background_color)
 
 	if(use_stars)
-		var/image/stars = overlay_image(I, star_state, flags = RESET_COLOR)
+		var/mutable_appearance/stars = overlay_image(I, star_state, flags = RESET_COLOR)
 		base.overlays += stars
 
 	res.overlays += base
@@ -52,7 +52,7 @@ SUBSYSTEM_DEF(skybox)
 	if(GLOB.using_map.skybox_foreground_objects)
 		for (var/typepath in GLOB.using_map.skybox_foreground_objects)
 			var/datum/skybox_foreground_object/SFO = get_foreground_datum(typepath)
-			var/image/foreground_image = image(SFO.icon, pick(SFO.icon_states))
+			var/mutable_appearance/foreground_image = mutable_appearance(SFO.icon, pick(SFO.icon_states))
 			foreground_image.appearance_flags = RESET_COLOR	//We do not want to inherit the background color tint of space
 			foreground_image.transform *= SFO.scale
 
@@ -78,7 +78,7 @@ SUBSYSTEM_DEF(skybox)
 	for(var/z in zlevels)
 		skybox_cache["[z]_[world.view]"] = generate_skybox(z)
 
-	for(var/client/C)
+	for(var/client/C in GLOB.clients)
 		C.update_skybox(1)
 
 //Update skyboxes. Called by universes, for now.
@@ -103,5 +103,5 @@ SUBSYSTEM_DEF(skybox)
 	if(need_rebuild)
 		skybox_cache.Cut()
 
-		for(var/client/C)
+		for(var/client/C in GLOB.clients)
 			C.update_skybox(1)

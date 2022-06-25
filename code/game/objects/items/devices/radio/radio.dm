@@ -136,8 +136,8 @@
 	if(cell)
 		var/charge = round(cell.percent())
 		data["charge"] = charge ? "[charge]%" : "NONE"
-	data["mic_cut"] = (wires.IsIndexCut(WIRE_TRANSMIT) || wires.IsIndexCut(WIRE_SIGNAL))
-	data["spk_cut"] = (wires.IsIndexCut(WIRE_RECEIVE) || wires.IsIndexCut(WIRE_SIGNAL))
+	data["mic_cut"] = (wires.is_cut(WIRE_RADIO_TRANSMIT) || wires.is_cut(WIRE_RADIO_SIGNAL))
+	data["spk_cut"] = (wires.is_cut(WIRE_RADIO_RECEIVER) || wires.is_cut(WIRE_RADIO_SIGNAL))
 
 	var/list/chanlist = list_channels(user)
 	if(islist(chanlist) && chanlist.len)
@@ -191,11 +191,6 @@
 /mob/dead/observer/ghost/has_internal_radio_channel_access(var/list/req_one_accesses)
 	return can_admin_interact()
 
-/obj/item/device/radio/proc/text_wires()
-	if (b_stat)
-		return wires.GetInteractWindow()
-	return
-
 /obj/item/device/radio/get_cell()
 	return cell
 
@@ -207,11 +202,11 @@
 			"}
 
 /obj/item/device/radio/proc/ToggleBroadcast()
-	broadcasting = !broadcasting && !(wires.IsIndexCut(WIRE_TRANSMIT) || wires.IsIndexCut(WIRE_SIGNAL))
+	broadcasting = !broadcasting && !(wires.is_cut(WIRE_RADIO_TRANSMIT) || wires.is_cut(WIRE_RADIO_SIGNAL))
 	update_active()
 
 /obj/item/device/radio/proc/ToggleReception()
-	listening = !listening && !(wires.IsIndexCut(WIRE_RECEIVE) || wires.IsIndexCut(WIRE_SIGNAL))
+	listening = !listening && !(wires.is_cut(WIRE_RADIO_RECEIVER) || wires.is_cut(WIRE_RADIO_SIGNAL))
 	update_active()
 
 /obj/item/device/radio/CanUseTopic()
@@ -318,7 +313,7 @@
 
 	//  Uncommenting this. To the above comment:
 	// 	The permacell radios aren't suppose to be able to transmit, this isn't a bug and this "fix" is just making radio wires useless. -Giacom
-	if(wires.IsIndexCut(WIRE_TRANSMIT)) // The device has to have all its wires and shit intact
+	if(wires.is_cut(WIRE_RADIO_TRANSMIT)) // The device has to have all its wires and shit intact
 		return 0
 
 	if(!radio_connection)
@@ -552,7 +547,7 @@
 	// what the range is in which mobs will hear the radio
 	// returns: -1 if can't receive, range otherwise
 
-	if (wires.IsIndexCut(WIRE_RECEIVE))
+	if (wires.is_cut(WIRE_RADIO_RECEIVER))
 		return -1
 	if(!listening)
 		return -1

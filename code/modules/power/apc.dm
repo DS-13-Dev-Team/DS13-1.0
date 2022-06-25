@@ -77,6 +77,8 @@
 	req_access = list(access_engineering)
 	clicksound = "button"
 	layer = ABOVE_WINDOW_LAYER
+	light_range = 1
+	light_power = 0.8
 	var/needs_powerdown_sound
 	var/area/area
 	var/areastring = null
@@ -287,12 +289,12 @@
 		status_overlays_lighting.len = 5
 		status_overlays_environ.len = 5
 
-		status_overlays_lock[1] = image(icon, "apcox-0")    // 0=blue 1=red
-		status_overlays_lock[2] = image(icon, "apcox-1")
+		status_overlays_lock[1] = mutable_appearance(icon, "apcox-0")    // 0=blue 1=red
+		status_overlays_lock[2] = mutable_appearance(icon, "apcox-1")
 
-		status_overlays_charging[1] = image(icon, "apco3-0")
-		status_overlays_charging[2] = image(icon, "apco3-1")
-		status_overlays_charging[3] = image(icon, "apco3-2")
+		status_overlays_charging[1] = mutable_appearance(icon, "apco3-0")
+		status_overlays_charging[2] = mutable_appearance(icon, "apco3-1")
+		status_overlays_charging[3] = mutable_appearance(icon, "apco3-2")
 
 		var/list/channel_overlays = list(status_overlays_equipment, status_overlays_lighting, status_overlays_environ)
 		var/channel = 0
@@ -362,21 +364,21 @@
 
 	if(update & 3)
 		if(update_state & (UPDATE_OPENED1|UPDATE_OPENED2|UPDATE_BROKE))
-			set_light(0)
+			set_light_on(FALSE)
 		else if(update_state & UPDATE_BLUESCREEN)
-			set_light(0.8, 0.1, 1, 2, "#00ecff")
+			set_light_color("#00ecff")
+			set_light_on(TRUE)
 		else if(!(stat & (BROKEN|MAINT)) && update_state & UPDATE_ALLGOOD)
-			var/color
 			switch(charging)
 				if(0)
-					color = "#f86060"
+					set_light_color("#f86060")
 				if(1)
-					color = "#a8b0f8"
+					set_light_color("#a8b0f8")
 				if(2)
-					color = "#82ff4c"
-			set_light(0.8, 0.1, 1, l_color = color)
+					set_light_color("#82ff4c")
+			set_light_on(TRUE)
 		else
-			set_light(0)
+			set_light_on(FALSE)
 
 /obj/machinery/power/apc/proc/check_updates()
 	if(!update_overlay_chan)
@@ -529,7 +531,7 @@
 		else if(hacker && !hacker.hacked_apcs_hidden)
 			to_chat(user, "<span class='warning'>Access denied.</span>")
 		else
-			if(src.allowed(usr) && !isWireCut(APC_WIRE_IDSCAN))
+			if(src.allowed(usr) && !wires.is_cut(WIRE_IDSCAN))
 				locked = !locked
 				to_chat(user, "You [ locked ? "lock" : "unlock"] the APC interface.")
 				update_icon()
@@ -712,7 +714,7 @@
 			user.visible_message("<span class='warning'>\The [user] slashes at \the [src]!</span>", "<span class='notice'>You slash at \the [src]!</span>")
 			playsound(src.loc, 'sound/weapons/slash.ogg', 100, 1)
 
-			var/allcut = wires.IsAllCut()
+			var/allcut = wires.is_all_cut()
 
 			if(beenhit >= pick(3, 4) && wiresexposed != 1)
 				wiresexposed = 1
@@ -720,7 +722,7 @@
 				src.visible_message("<span class='warning'>\The The [src]'s cover flies open, exposing the wires!</span>")
 
 			else if(wiresexposed == 1 && allcut == 0)
-				wires.CutAll()
+				wires.cut_all()
 				src.update_icon()
 				src.visible_message("<span class='warning'>\The [src]'s wires are shredded!</span>")
 			else
@@ -850,10 +852,6 @@
 			needs_powerdown_sound = FALSE
 		else
 			needs_powerdown_sound = TRUE
-
-/obj/machinery/power/apc/proc/isWireCut(var/wireIndex)
-	return wires.IsIndexCut(wireIndex)
-
 
 /obj/machinery/power/apc/proc/can_use(mob/user as mob, var/loud = 0) //used by attack_hand() and Topic()
 	if (user.stat)

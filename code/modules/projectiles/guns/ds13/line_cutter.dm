@@ -177,12 +177,15 @@
 
 /obj/effect/plasma_light/proc/flicker()
 	set waitfor = FALSE
+	set_light_range(3)
+	set_light_power(1)
+	set_light_power("#CCCC11")
 	while (!QDELETED(src))
-		set_light(1, 1, 3, 2, "#CCCC11")
+		set_light_on(TRUE)
 		sleep(2)
 		if (QDELETED(src))
 			return
-		set_light(0)
+		set_light_on(FALSE)
 		sleep(2)
 /*--------------------------
 	Ammo
