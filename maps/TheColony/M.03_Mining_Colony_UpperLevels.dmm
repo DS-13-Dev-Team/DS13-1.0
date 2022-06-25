@@ -2805,13 +2805,16 @@
 /area/mining_colony/security/upper/bridge_corridor)
 "uc" = (
 /obj/structure/cable{
-	icon_state = "1-4";
-	dir = 4
+	icon_state = "0-1"
 	},
 /obj/structure/cable{
-	d1 = 2;
 	d2 = 8;
-	icon_state = "1-4"
+	icon_state = "0-8"
+	},
+/obj/structure/cable{
+	d2 = 2;
+	icon_state = "0-2";
+	dir = 4
 	},
 /turf/simulated/floor/dank/tech{
 	dir = 4
@@ -4076,7 +4079,13 @@
 /area/mining_colony/security/upper/secstorage2)
 "Zq" = (
 /obj/structure/cable{
-	icon_state = "2-8";
+	d2 = 2;
+	icon_state = "0-2";
+	dir = 4
+	},
+/obj/structure/cable{
+	d2 = 2;
+	icon_state = "0-2";
 	dir = 1
 	},
 /turf/simulated/floor/dank/rectangles,

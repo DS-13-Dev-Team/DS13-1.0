@@ -217,7 +217,7 @@
 	name = "The Colony"
 	landmark_tag = "valor_landing"
 	base_turf = /turf/simulated/floor/plating
-	base_turf = /area/mining_colony
+	base_area = /area/mining_colony
 
 /obj/effect/shuttle_landmark/kellion/landing2
 	name = "Evacuation Site - Alpha #1"
