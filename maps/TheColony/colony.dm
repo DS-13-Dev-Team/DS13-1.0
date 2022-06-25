@@ -7,7 +7,7 @@
 	name = "Colony"
 	full_name = "Aegis Colony"
 	//WTF BAY USES IT FOR CHARACTER SAVES!?
-	path = "ishimura"
+	path = "colony"
 	station_levels = list(1,2,3)
 	contact_levels = list(1,2,3)
 	player_levels = list(1,2,3)
