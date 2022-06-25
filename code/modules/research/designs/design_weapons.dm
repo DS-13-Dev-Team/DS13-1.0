@@ -134,8 +134,8 @@ S	fuel tank (hydrazine)
 /datum/design/item/weapon/javelingun
 	name = "T15 Javelin Gun"
 	id = "javgun"
-	build_path = /obj/item/weapon/gun/projectile/javelin_gun
 	materials = list(MATERIAL_PLASTEEL = 4000, MATERIAL_STEEL = 35000, MATERIAL_PHORON = 4000)
+	build_path = /obj/item/weapon/gun/projectile/javelin_gun
 	price = 11000
 
 /datum/design/item/weapon/flamethrower
@@ -157,7 +157,7 @@ S	fuel tank (hydrazine)
 	id = "forcegun"
 	build_path = /obj/item/weapon/gun/energy/forcegun
 	materials = list(MATERIAL_STEEL = 5000, MATERIAL_PLASTIC = 3500, MATERIAL_GLASS = 500, MATERIAL_SILVER = 500)
-	price = 11000
+	price = 7000
 
 /datum/design/item/ammo
 	category = "Ammunition"
@@ -212,7 +212,7 @@ S	fuel tank (hydrazine)
 /datum/design/item/ammo/plasma_energy
 	name = "plasma energy"
 	id = "plasma_energy"
-	build_path =/obj/item/weapon/cell/plasmacutter
+	build_path = /obj/item/weapon/cell/plasmacutter
 	materials = list(MATERIAL_STEEL = 4000, MATERIAL_GLASS = 1000)
 	price = 1200
 

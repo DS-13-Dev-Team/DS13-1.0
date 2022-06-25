@@ -59,7 +59,7 @@
 	limited_click_arc = 90
 
 	//Vision
-	view_range = 4
+	view_range = 5
 	// view_offset = 3 * WORLD_ICON_SIZE // Just no.
 
 	//Brute Armor vars
@@ -112,6 +112,9 @@
 	variants = list(SPECIES_NECROMORPH_BRUTE = list(WEIGHT = 1),
 	SPECIES_NECROMORPH_BRUTE_FLESH = list(WEIGHT = 1))
 
+	// According to semiconductor prices in the game
+	lowest_money_drop = 600
+	highest_money_drop = 7000
 
 #define BRUTE_PASSIVE_1	"<h2>PASSIVE: Tunnel Vision:</h2><br>\
 The brute has extremely restricted vision, able only to see a few tiles infront of it, and none behind it. This makes it very vulnerable to flanking attacks. Keep the enemy infront of you!"

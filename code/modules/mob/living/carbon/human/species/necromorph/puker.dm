@@ -90,7 +90,8 @@
 	outfits = list(/decl/hierarchy/outfit/necromorph/puker_biosuit = list(PATRON = TRUE),
 	/decl/hierarchy/outfit/naked = list())
 
-
+	lowest_money_drop = 1500
+	highest_money_drop = 2000
 
 
 //Ancient version, formerly default, now uncommon

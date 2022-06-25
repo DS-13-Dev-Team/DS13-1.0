@@ -135,6 +135,8 @@
 	'sound/effects/creatures/necromorph/tripod/tripod_shout_long_6.ogg')
 	)
 
+	lowest_money_drop = 10000
+	highest_money_drop = 12500
 
 
 #define TRIPOD_PASSIVE_1	"<h2>PASSIVE: Personal Space:</h2><br>\

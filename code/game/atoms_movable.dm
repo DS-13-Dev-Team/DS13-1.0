@@ -192,9 +192,9 @@
 	else
 		var/atom/A = src.loc
 
+		set_dir(direct)
 		. = ..()
 
-		set_dir(direct)
 		//This is an actual speed in metres per second
 		var/last_move_delta = world.time - src.l_move_time
 		if (last_move_delta)

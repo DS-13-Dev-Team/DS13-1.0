@@ -63,6 +63,9 @@
 	'sound/effects/creatures/necromorph/spitter/spitter_speech_5.ogg')
 	)
 
+	lowest_money_drop = 1800
+	highest_money_drop = 2150
+
 /*
 	Unarmed Attacks
 */

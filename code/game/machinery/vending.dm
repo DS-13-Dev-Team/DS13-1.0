@@ -67,6 +67,7 @@
 	var/shoot_inventory = 0 //Fire items at customers! We're broken!
 	var/shooting_chance = 2 //The chance that items are being shot per tick
 
+	var/custom_not_enough_message
 	var/scan_id = 1
 	var/obj/item/weapon/coin/coin
 	var/datum/wires/vending/wires = null
@@ -470,7 +471,7 @@
 					src.status_error = 1
 					playsound(loc, 'sound/machines/vending_denied.ogg', VOLUME_LOW)
 				else
-					src.status_message = "Please swipe a card or insert cash to pay for the item."
+					src.status_message = custom_not_enough_message ? custom_not_enough_message : "Please swipe a card or insert cash to pay for the item."
 					src.status_error = 0
 
 		else if (href_list["cancelpurchase"])

@@ -3,11 +3,12 @@
 	var/tmp/datum/controller/subsystem/processing/is_processing = FALSE
 	var/list/active_timers  //for SStimer
 	var/implements_dummy = FALSE	//If true, this datum has an argument named "dummy" in its new proc
-	var/dummy = FALSE	//Set true if this datum is a dummy and should not perform its normal functions
-	//Used by mob previews
 
-	/// Datum level flags
-	var/datum_flags = NONE
+	//Used by mob previews
+	var/dummy = FALSE	//Set true if this datum is a dummy and should not perform its normal functions
+
+	/// Status traits attached to this datum
+	var/list/status_traits
 
 	/**
 	  * Components attached to this datum
@@ -23,6 +24,9 @@
 	var/list/comp_lookup
 	/// Lazy associated list in the structure of `signals:proctype` that are run when the datum receives that signal
 	var/list/list/datum/callback/signal_procs
+
+	/// Datum level flags
+	var/datum_flags = NONE
 
 	/// A weak reference to another datum
 	var/datum/weakref/weak_reference

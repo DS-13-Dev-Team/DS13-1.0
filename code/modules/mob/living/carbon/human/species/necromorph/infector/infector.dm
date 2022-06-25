@@ -119,6 +119,8 @@
 	//HUD Handling
 	hud_type = /datum/hud_data/necromorph/infector
 
+	lowest_money_drop = 2000
+	highest_money_drop = 2500
 
 #define INFECTOR_PASSIVE_1	"<h2>PASSIVE: Necrotoxin:</h2><br>\
 The infector's attacks, both melee and ranged, inject the victim with Necrotoxin, which slowly deals damage over time. \n\

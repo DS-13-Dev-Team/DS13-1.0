@@ -9,8 +9,7 @@ const pauseEvent = e => {
   e.returnValue = false;
   return false;
 };
-
-const zoomScale = config.map === "ishimura" ? 500 : 400;
+const zoomScale = 400;
 
 export class NanoMap extends Component {
   constructor(props) {

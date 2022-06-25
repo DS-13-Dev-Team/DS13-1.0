@@ -137,6 +137,8 @@
 
 
 /proc/spawn_money(sum, spawnloc, mob/living/carbon/human/H)
+	if(sum <= 0)
+		return
 	var/obj/item/weapon/spacecash/S = new(spawnloc)
 	S.worth = sum
 	S.update_icon()
