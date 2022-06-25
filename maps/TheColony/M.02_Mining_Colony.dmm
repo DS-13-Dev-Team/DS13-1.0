@@ -13542,6 +13542,7 @@
 /area/mining_colony/security)
 "aMe" = (
 /obj/effect/floor_decal/spline/fancy/wood,
+/obj/effect/landmark/marker/aegis,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/uni_church)
 "aMf" = (
