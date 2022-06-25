@@ -9,7 +9,7 @@ const pauseEvent = e => {
   e.returnValue = false;
   return false;
 };
-
+const { config } = useBackend(context);
 const zoomScale = config.map === "ishimura" ? 500 : 400;
 
 export class NanoMap extends Component {
