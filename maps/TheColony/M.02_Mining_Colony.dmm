@@ -11680,6 +11680,11 @@
 	id = "nuking_engi";
 	name = "Chief Enginieer Shutters"
 	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/enginieering/chief_engi)
 "aHu" = (
