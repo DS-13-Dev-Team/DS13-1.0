@@ -118,6 +118,9 @@
 	modifier_verbs = list(KEY_CTRLALT = list(/atom/movable/proc/exploder_charge),
 	KEY_CTRLSHIFT = list(/mob/living/carbon/human/proc/exploder_explode))
 
+	lowest_money_drop = 1500
+	highest_money_drop = 1750
+
 /datum/species/necromorph/exploder/classic
 	name = SPECIES_NECROMORPH_EXPLODER_CLASSIC
 	NECROMORPH_VISUAL_VARIANT

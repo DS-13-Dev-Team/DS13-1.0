@@ -78,12 +78,12 @@
 	'sound/effects/footstep/wall_climb_5.ogg',
 	'sound/effects/footstep/wall_climb_6.ogg'),
 	SOUND_PAIN = list('sound/effects/creatures/necromorph/leaper/leaper_pain_1.ogg',
-	 'sound/effects/creatures/necromorph/leaper/leaper_pain_2.ogg',
-	 'sound/effects/creatures/necromorph/leaper/leaper_pain_3.ogg',
-	 'sound/effects/creatures/necromorph/leaper/leaper_pain_4.ogg',
-	 'sound/effects/creatures/necromorph/leaper/leaper_pain_5.ogg',
-	 'sound/effects/creatures/necromorph/leaper/leaper_pain_6.ogg',
-	 'sound/effects/creatures/necromorph/leaper/leaper_pain_7.ogg'),
+	'sound/effects/creatures/necromorph/leaper/leaper_pain_2.ogg',
+	'sound/effects/creatures/necromorph/leaper/leaper_pain_3.ogg',
+	'sound/effects/creatures/necromorph/leaper/leaper_pain_4.ogg',
+	'sound/effects/creatures/necromorph/leaper/leaper_pain_5.ogg',
+	'sound/effects/creatures/necromorph/leaper/leaper_pain_6.ogg',
+	'sound/effects/creatures/necromorph/leaper/leaper_pain_7.ogg'),
 	SOUND_DEATH = list('sound/effects/creatures/necromorph/leaper/leaper_death_1.ogg',
 	'sound/effects/creatures/necromorph/leaper/leaper_death_2.ogg',
 	'sound/effects/creatures/necromorph/leaper/leaper_death_3.ogg'),
@@ -110,6 +110,9 @@
 	'sound/effects/creatures/necromorph/leaper/leaper_speech_3.ogg',
 	'sound/effects/creatures/necromorph/leaper/leaper_speech_4.ogg')
 	)
+
+	lowest_money_drop = 1000
+	highest_money_drop = 1250
 
 #define LEAPER_LEAP_DESC	"<h2>Leap:</h2><br>\
 <h3>Hotkey: Ctrl+Alt+Click </h3><br>\
@@ -172,6 +175,9 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 	KEY_CTRLSHIFT = list(/mob/living/proc/leaper_gallop),
 	KEY_ALT = list(/mob/living/carbon/human/proc/tailstrike_leaper_enhanced))
 
+	lowest_money_drop = 1500
+	highest_money_drop = 2000
+
 /datum/species/necromorph/leaper/hopper
 	name = SPECIES_NECROMORPH_LEAPER_HOPPER
 	name_plural =  "Hoppers"
@@ -200,7 +206,8 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 	view_range = 8
 	view_offset = (null)
 
-
+	lowest_money_drop = 750
+	highest_money_drop = 1000
 
 //Light claw attack, not its main means of damage
 /datum/unarmed_attack/claws/leaper

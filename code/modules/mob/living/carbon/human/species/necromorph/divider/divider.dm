@@ -77,6 +77,8 @@
 	KEY_CTRLALT = list(/mob/living/carbon/human/proc/divider_tongue),
 	KEY_ALT = list(/mob/living/carbon/human/proc/divider_arm_swing))
 
+	lowest_money_drop = 0
+	highest_money_drop = 0
 
 #define DIVIDER_PASSIVE_1	"<h2>PASSIVE: Gestalt Being:</h2><br>\
 The divider is a colony of smaller creatures working in tandem. <br>\

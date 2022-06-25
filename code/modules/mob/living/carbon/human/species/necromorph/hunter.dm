@@ -122,7 +122,8 @@
 	'sound/effects/creatures/necromorph/ubermorph/ubermorph_regen_2.ogg')
 	)
 
-
+	lowest_money_drop = 7500
+	highest_money_drop = 10000
 
 
 #define HUNTER_PASSIVE	"<h2>PASSIVE: Pseudo Immortal:</h2><br>\

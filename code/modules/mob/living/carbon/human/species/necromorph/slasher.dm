@@ -90,7 +90,8 @@
 	/decl/hierarchy/outfit/necromorph/mining = list(),
 	/decl/hierarchy/outfit/necromorph/engi = list())
 
-
+	lowest_money_drop = 750
+	highest_money_drop = 1000
 
 //Ancient version, formerly default, now uncommon
 /datum/species/necromorph/slasher/desiccated
@@ -206,7 +207,8 @@
 	'sound/effects/creatures/necromorph/slasher_enhanced/eslasher_speech_4.ogg')
 	)
 
-
+	lowest_money_drop = 1500
+	highest_money_drop = 2000
 
 /* Unarmed attacks*/
 /datum/unarmed_attack/blades

@@ -121,12 +121,12 @@
 	'sound/effects/footstep/lurker_footstep_6.ogg',
 	'sound/effects/footstep/lurker_footstep_7.ogg'),
 	SOUND_PAIN = list('sound/effects/creatures/necromorph/lurker/lurker_pain_1.ogg',
-	 'sound/effects/creatures/necromorph/lurker/lurker_pain_2.ogg',
-	 'sound/effects/creatures/necromorph/lurker/lurker_pain_3.ogg',
-	 'sound/effects/creatures/necromorph/lurker/lurker_pain_4.ogg',
-	 'sound/effects/creatures/necromorph/lurker/lurker_pain_5.ogg',
-	 'sound/effects/creatures/necromorph/lurker/lurker_pain_6.ogg',
-	 'sound/effects/creatures/necromorph/lurker/lurker_pain_7.ogg'),
+	'sound/effects/creatures/necromorph/lurker/lurker_pain_2.ogg',
+	'sound/effects/creatures/necromorph/lurker/lurker_pain_3.ogg',
+	'sound/effects/creatures/necromorph/lurker/lurker_pain_4.ogg',
+	'sound/effects/creatures/necromorph/lurker/lurker_pain_5.ogg',
+	'sound/effects/creatures/necromorph/lurker/lurker_pain_6.ogg',
+	'sound/effects/creatures/necromorph/lurker/lurker_pain_7.ogg'),
 	SOUND_SHOUT = list('sound/effects/creatures/necromorph/lurker/lurker_shout_1.ogg',
 	'sound/effects/creatures/necromorph/lurker/lurker_shout_2.ogg',
 	'sound/effects/creatures/necromorph/lurker/lurker_shout_3.ogg',
@@ -143,6 +143,8 @@
 	'sound/effects/creatures/necromorph/lurker/lurker_speech_4.ogg')
 	)
 
+	lowest_money_drop = 1250
+	highest_money_drop = 1750
 
 /datum/species/necromorph/lurker/malo
 	name = SPECIES_NECROMORPH_LURKER_MALO
