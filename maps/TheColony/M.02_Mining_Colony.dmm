@@ -27903,6 +27903,10 @@
 	dir = 1
 	},
 /area/mining_colony/interior/enginieering/supply_storage)
+"iml" = (
+/obj/machinery/vending/mining,
+/turf/simulated/floor/dank/maint_right,
+/area/mining_colony/interior/mining/processing)
 "iqv" = (
 /obj/structure/table/standard,
 /obj/random/loot/usually/many,
@@ -60068,7 +60072,7 @@ atQ
 auy
 avq
 bqL
-avq
+iml
 bqO
 avq
 bqR
