@@ -31,6 +31,8 @@
 	var/closing = FALSE
 	/// The status/visibility of the UI.
 	var/status = UI_INTERACTIVE
+	/// The map z-level to display.
+	var/map_z_level = 1
 	/// Topic state used to determine status/interactability.
 	var/datum/ui_state/state = null
 	/// Rate limit client refreshes to prevent DoS.
@@ -217,6 +219,8 @@
 		"title" = title,
 		"status" = status,
 		"interface" = interface,
+		"map" = (GLOB.using_map && GLOB.using_map.path) ? GLOB.using_map.path : "Unknown",
+		"mapZLevel" = map_z_level,
 		"window" = list(
 			"key" = window_key,
 			"size" = window_size,
@@ -285,6 +289,9 @@
 	var/prev_status = status
 	status = src_object.ui_status(user, state)
 	return prev_status != status
+
+/datum/tgui/proc/set_map_z_level(nz)
+	map_z_level = nz
 
 /**
  * private

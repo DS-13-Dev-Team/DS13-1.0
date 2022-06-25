@@ -4,9 +4,8 @@
 
 /obj/machinery/camera/deactivate(user as mob, var/choice = 1)
 	..(user, choice)
-	invalidateCameraCache()
 	if(!can_use())
-		set_light(0)
+		set_light_on(FALSE)
 	GLOB.cameranet.update_visibility(src)
 
 /obj/machinery/camera/Initialize()
@@ -33,8 +32,6 @@
 			GLOB.cameranet.add_source(src)
 	else
 		GLOB.cameranet.update_visibility(src)
-
-	invalidateCameraCache()
 
 // Mobs
 /mob/living/silicon/ai/New()

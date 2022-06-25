@@ -235,11 +235,9 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 			qdel(src)	//A signal shouldn't exist with nobody in it
 
 /mob/dead/observer/eye/signal/Destroy()
-
 	SSnecromorph.remove_from_necroqueue(src)
 	SSnecromorph.signals -= src
-	..()
-	return QDEL_HINT_HARDDEL_NOW
+	.=..()
 
 /mob/dead/observer/eye/signal/proc/join_necroqueue()
 	set name = "Join Necroqueue"

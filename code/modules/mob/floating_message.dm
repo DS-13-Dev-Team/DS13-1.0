@@ -42,7 +42,7 @@ GLOBAL_LIST_EMPTY(floating_chat_colors)
 	I.maptext_width = 80
 	I.maptext_height = 64
 	I.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA
-	I.plane = EFFECTS_ABOVE_LIGHTING_PLANE
+	I.plane = RUNECHAT_PLANE
 	I.pixel_x = -round(I.maptext_width/2) + 16
 
 	style = "font-family: 'Small Fonts'; -dm-text-outline: 1 black; font-size: [size]px; [style]"

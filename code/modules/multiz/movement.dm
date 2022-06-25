@@ -202,7 +202,7 @@
 
 /obj/item/pipe/can_fall(anchor_bypass = FALSE, turf/location_override = loc)
 	var/turf/simulated/open/below = loc
-	below = below.below
+	below = GetBelow(below)
 
 	. = ..()
 
@@ -276,12 +276,12 @@
 
 
 /mob/living/carbon/human/proc/climb_up(atom/A)
-	if(!isturf(loc) || !bound_overlay || bound_overlay.destruction_timer || is_physically_disabled())	// This destruction_timer check ideally wouldn't be required, but I'm not awake enough to refactor this to not need it.
+	var/turf/above = GetAbove(src)
+	if(!isturf(loc) || !isopenspace(above) || is_physically_disabled())	// This destruction_timer check ideally wouldn't be required, but I'm not awake enough to refactor this to not need it.
 		return FALSE
 
 	var/turf/T = get_turf(A)
-	var/turf/above = GetAbove(src)
-	if(above && T.Adjacent(bound_overlay) && above.CanZPass(src, UP)) //Certain structures will block passage from below, others not
+	if(above?.CanZPass(src, UP)) //Certain structures will block passage from below, others not
 		var/area/location = get_area(loc)
 		if(location.has_gravity && !can_overcome_gravity())
 			return FALSE
@@ -305,8 +305,8 @@
 			qdel(z_eye)
 			z_eye = null
 			return
-		var/turf/above = GetAbove(src)
-		if(istype(above) && above.z_flags & ZM_MIMIC_BELOW)
+		var/turf/simulated/open/above = GetAbove(src)
+		if(istype(above))
 			z_eye = new /atom/movable/z_observer/z_up(src, src)
 			to_chat(src, "<span class='notice'>You look up.</span>")
 			reset_view(z_eye)
@@ -326,8 +326,8 @@
 			qdel(z_eye)
 			z_eye = null
 			return
-		var/turf/T = get_turf(src)
-		if(T && (T.z_flags & ZM_MIMIC_BELOW) && HasBelow(T.z))
+		var/turf/simulated/open/T = get_turf(src)
+		if(isopenspace(T) && HasBelow(T.z))
 			z_eye = new /atom/movable/z_observer/z_down(src, src)
 			to_chat(src, "<span class='notice'>You look down.</span>")
 			reset_view(z_eye)
@@ -358,8 +358,8 @@
 /atom/movable/z_observer/z_up/follow()
 	forceMove(get_step(owner, UP))
 	if(isturf(src.loc))
-		var/turf/T = src.loc
-		if(T.z_flags & ZM_MIMIC_BELOW)
+		var/turf/simulated/open/T = src.loc
+		if(isopenspace(T))
 			return
 	owner.reset_view(null)
 	owner.z_eye = null
@@ -368,7 +368,7 @@
 /atom/movable/z_observer/z_down/follow()
 	forceMove(get_step(owner, DOWN))
 	var/turf/T = get_turf(owner)
-	if(T && (T.z_flags & ZM_MIMIC_BELOW))
+	if(isopenspace(T))
 		return
 	owner.reset_view(null)
 	owner.z_eye = null

@@ -37,13 +37,6 @@
 	SIGNAL_HANDLER
 	qdel(src)
 
-/atom/movable/forceMove(atom/destination, special_event, glide_size_override=0)
-	var/old_loc = loc
-	SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_MOVE, loc, destination)
-	.=..()
-	if(.)
-		SEND_SIGNAL(src, COMSIG_MOVABLE_MOVED, old_loc, destination)
-
 /turf/set_density(new_density)
 	. = ..()
 	content_density_set(density)
@@ -61,15 +54,6 @@
 	if(old_sight != new_sight)
 		sight = new_sight
 		SEND_SIGNAL(src, COMSIG_MOB_SIGHT_SET, old_sight, new_sight)
-
-/atom/proc/set_opacity(new_opacity)
-	if(new_opacity != opacity)
-		var/old_opacity = opacity
-		opacity = new_opacity
-		SEND_SIGNAL(src, COMSIG_TURF_OPACITY_SET, old_opacity, new_opacity)
-		return TRUE
-	else
-		return FALSE
 
 /atom/Entered(atom/movable/enterer, atom/old_loc)
 	.=..()

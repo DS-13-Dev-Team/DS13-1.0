@@ -11,7 +11,8 @@
 	slot_flags = SLOT_EARS | SLOT_MASK
 	attack_verb = list("attacked", "poked", "battered")
 	body_parts_covered = 0
-	var/brightness_on = 1
+	light_range = 1
+	light_power = 1
 	chem_volume = 0 //ecig has no storage on its own but has reagent container created by parent obj
 	item_state = "ecigoff"
 	var/icon_off
@@ -132,15 +133,15 @@ obj/item/clothing/mask/smokable/ecig/util/examine(mob/user)
 	if (active)
 		item_state = icon_on
 		icon_state = icon_on
-		set_light(0.6, 0.5, brightness_on)
+		set_light_on(TRUE)
 	else if (ec_cartridge)
-		set_light(0)
+		set_light_on(FALSE)
 		item_state = icon_off
 		icon_state = icon_off
 	else
 		icon_state = icon_empty
 		item_state = icon_empty
-		set_light(0)
+		set_light_on(FALSE)
 	if(ismob(loc))
 		var/mob/living/M = loc
 		M.update_inv_wear_mask(0)

@@ -110,7 +110,6 @@
 	..()
 
 	var/list/grenade_types = list(
-		/obj/item/weapon/grenade/anti_photon = 2,
 		/obj/item/weapon/grenade/smokebomb = 2,
 		/obj/item/weapon/grenade/chem_grenade/teargas = 2,
 		/obj/item/weapon/grenade/flashbang = 3,

@@ -141,7 +141,7 @@
 	if(buckled_mob)
 		buckled_mob.forceMove(src.loc, null, glide_size_override = glide_size_override || glide_size)
 
-/obj/structure/bed/forceMove(atom/destination, var/special_event, glide_size_override=0)
+/obj/structure/bed/forceMove(atom/destination, hardforce, glide_size_override=0)
 	. = ..()
 	if(buckled_mob)
 		if(isturf(src.loc))

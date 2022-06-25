@@ -1,8 +1,6 @@
 /obj/effect/projectile/tether/gravity
-
-
-	light_outer_range = 5
-	light_max_bright = 1
+	light_range = 5
+	light_power = 0.6
 	light_color = COLOR_DEEP_SKY_BLUE
 	icon = 'icons/effects/tethers.dmi'
 	icon_state = "gravity_tether"

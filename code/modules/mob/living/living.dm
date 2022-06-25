@@ -279,6 +279,8 @@ default behaviour is:
 	BITSET(hud_updateflag, LIFE_HUD)
 	ExtinguishMob()
 	fire_stacks = 0
+	// The signal is called after everything else so components can properly check the updated values
+	SEND_SIGNAL(src, COMSIG_LIVING_REVIVE)
 
 /mob/living/proc/rejuvenate()
 	if(reagents)

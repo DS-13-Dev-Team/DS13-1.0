@@ -19,9 +19,8 @@
 	desc = "A floating crystal that hums with an unearthly energy."
 	icon_state = "pylon"
 	var/isbroken = 0
-	light_max_bright = 0.5
-	light_inner_range = 1
-	light_outer_range = 13
+	light_power = 0.5
+	light_range = 13
 	light_color = "#3e0000"
 	var/obj/item/wepon = null
 
@@ -48,7 +47,7 @@
 			isbroken = 1
 			set_density(0)
 			icon_state = "pylon-broken"
-			set_light(0)
+			set_light_on(FALSE)
 		else
 			to_chat(user, "You hit the pylon!")
 			playsound(get_turf(src), 'sound/effects/Glasshit.ogg', 75, 1)
@@ -67,7 +66,7 @@
 		isbroken = 0
 		set_density(1)
 		icon_state = "pylon"
-		set_light(5)
+		set_light_on(TRUE)
 
 /obj/structure/cult/tome
 	name = "Desk"
@@ -95,7 +94,7 @@
 	var/spawnable = null
 
 /obj/effect/gateway/active
-	light_outer_range=5
+	light_range=5
 	light_color="#ff0000"
 	spawnable=list(
 		/mob/living/simple_animal/hostile/scarybat,
@@ -104,7 +103,7 @@
 	)
 
 /obj/effect/gateway/active/cult
-	light_outer_range=5
+	light_range=5
 	light_color="#ff0000"
 	spawnable=list(
 		/mob/living/simple_animal/hostile/scarybat/cult,

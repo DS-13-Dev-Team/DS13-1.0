@@ -28,10 +28,9 @@
 					access_external_airlocks, access_keycard_auth)
 	outfit_type = /decl/hierarchy/outfit/job/security/cseco
 
-	min_skill = list(   SKILL_WEAPONS     = SKILL_EXPERT,
-						SKILL_FORENSICS   = SKILL_EXPERT,
-						SKILL_COMBAT	  = SKILL_ADEPT,
-						SKILL_WEAPONS	  = SKILL_MAX,
+	min_skill = list(   SKILL_WEAPONS     = SKILL_PROF,
+						SKILL_FORENSICS   = SKILL_PROF,
+						SKILL_COMBAT	  = SKILL_PROF,
 						SKILL_DEVICES	  = SKILL_BASIC)
 
 	max_skill = list(   SKILL_BOTANY      = SKILL_EXPERT,
@@ -68,17 +67,16 @@
 	access = list(access_armory, access_security, access_maint_tunnels, access_external_airlocks)
 	outfit_type = /decl/hierarchy/outfit/job/security/sso
 
-	min_skill = list(   SKILL_WEAPONS     = SKILL_ADEPT,
-						SKILL_COMBAT	  = SKILL_ADEPT,
+	min_skill = list(   SKILL_WEAPONS     = SKILL_PROF,
+						SKILL_COMBAT	  = SKILL_PROF,
 						SKILL_FORENSICS   = SKILL_EXPERT,
-						SKILL_WEAPONS	  = SKILL_EXPERT,
 						SKILL_DEVICES	  = SKILL_ADEPT)
 
 	max_skill = list(   SKILL_BOTANY      = SKILL_EXPERT,
 						SKILL_COOKING     = SKILL_EXPERT,
 						SKILL_MEDICAL     = SKILL_EXPERT,
 						SKILL_ANATOMY     = SKILL_ADEPT)
-	skill_points = 16
+	skill_points = 18
 
 /datum/job/sso/get_description_blurb()
 #ifdef MAP_ISHIMURA
@@ -111,14 +109,13 @@
 	min_skill = list(   SKILL_WEAPONS     = SKILL_ADEPT,
 						SKILL_COMBAT	  = SKILL_ADEPT,
 						SKILL_FORENSICS   = SKILL_ADEPT,
-						SKILL_DEVICES	  = SKILL_BASIC,
-						SKILL_WEAPONS	  = SKILL_ADEPT)
+						SKILL_DEVICES	  = SKILL_BASIC)
 
 	max_skill = list(   SKILL_BOTANY      = SKILL_EXPERT,
 						SKILL_COOKING     = SKILL_EXPERT,
 						SKILL_MEDICAL     = SKILL_EXPERT,
 						SKILL_ANATOMY     = SKILL_ADEPT)
-	skill_points = 10
+	skill_points = 15
 
 /datum/job/security_officer/get_description_blurb()
 #ifdef MAP_ISHIMURA

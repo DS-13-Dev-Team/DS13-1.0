@@ -12,8 +12,6 @@
 // Called after turf replaces old one
 /turf/proc/post_change()
 	levelupdate()
-	if (above)
-		above.update_mimic()
 
 //Creates a new turf
 /turf/proc/ChangeTurf(turf/N, tell_universe = TRUE, force_lighting_update = FALSE, keep_air = FALSE)
@@ -28,12 +26,13 @@
 
 	var/old_air = air
 	var/old_fire = fire
-	var/old_opacity = opacity
-	var/old_dynamic_lighting = dynamic_lighting
-	var/old_affecting_lights = affecting_lights
-	var/old_lighting_overlay = lighting_overlay
-	var/old_corners = corners
-	var/old_ao_neighbors = ao_neighbors
+	var/old_lighting_object = lighting_object
+	var/old_lighting_corner_NE = lighting_corner_NE
+	var/old_lighting_corner_SE = lighting_corner_SE
+	var/old_lighting_corner_SW = lighting_corner_SW
+	var/old_lighting_corner_NW = lighting_corner_NW
+	var/old_dynamic_lumcount = dynamic_lumcount
+	var/old_directional_opacity = directional_opacity
 
 //	log_debug("Replacing [src.type] with [N]")
 
@@ -48,20 +47,13 @@
 		//Despite this being called a bunch during explosions,
 		//the zone will only really do heavy lifting once.
 		var/turf/simulated/S = src
-		if(S.zone) S.zone.rebuild()
+		if(S.zone)
+			S.zone.rebuild()
 
 	// Run the Destroy() chain.
 	qdel(src)
 
-	var/old_opaque_counter = opaque_counter
 	var/turf/simulated/W = new N(src)
-
-	if (permit_ao)
-		regenerate_ao()
-
-	W.opaque_counter = old_opaque_counter
-
-
 
 	if (keep_air)
 		W.air = old_air
@@ -85,20 +77,35 @@
 	W.post_change()
 	. = W
 
-	W.ao_neighbors = old_ao_neighbors
-	if(lighting_overlays_initialised)
-		lighting_overlay = old_lighting_overlay
-		affecting_lights = old_affecting_lights
-		corners = old_corners
-		if((old_opacity != opacity) || (dynamic_lighting != old_dynamic_lighting))
-			reconsider_lights()
-		if(dynamic_lighting != old_dynamic_lighting)
-			if(dynamic_lighting)
-				lighting_build_overlay()
-			else
-				lighting_clear_overlay()
+	lighting_corner_NE = old_lighting_corner_NE
+	lighting_corner_SE = old_lighting_corner_SE
+	lighting_corner_SW = old_lighting_corner_SW
+	lighting_corner_NW = old_lighting_corner_NW
 
-	for(var/turf/T in RANGE_TURFS(src, 1))
+	dynamic_lumcount = old_dynamic_lumcount
+
+	if(W.always_lit)
+		W.add_overlay(GLOB.fullbright_overlay)
+	else
+		W.cut_overlay(GLOB.fullbright_overlay)
+
+	if(SSlighting.initialized)
+		W.lighting_object = old_lighting_object
+
+		directional_opacity = old_directional_opacity
+		recalculate_directional_opacity()
+
+		if(lighting_object && !lighting_object.needs_update)
+			lighting_object.update()
+
+		for(var/turf/space/space_tile in RANGE_TURFS(src, 1))
+			space_tile.update_starlight()
+
+	var/area/thisarea = get_area(W)
+	if(thisarea.lighting_effect)
+		W.add_overlay(thisarea.lighting_effect)
+
+	for(var/turf/T as anything in RANGE_TURFS(src, 1))
 		T.update_icon()
 
 	INVOKE_ASYNC(GLOBAL_PROC, /proc/updateVisibility, W, FALSE)

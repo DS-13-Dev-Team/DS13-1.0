@@ -28,6 +28,7 @@
 	QDEL_NULL(touching)
 	QDEL_NULL(bloodstr)
 	// We will nullify reagents var later in the proc
+	QDEL_NULL_LIST(organs)
 	QDEL_NULL_LIST(internal_organs)
 	QDEL_NULL_LIST(stomach_contents)
 	QDEL_NULL_LIST(hallucinations)

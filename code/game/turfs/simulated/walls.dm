@@ -117,9 +117,9 @@
 			plant.pixel_y = 0
 		plant.get_neighbors()
 
-/turf/simulated/wall/ChangeTurf(newtype)
+/turf/simulated/wall/ChangeTurf(newtype, tell_universe = TRUE, force_lighting_update = FALSE, keep_air = FALSE)
 	clear_plants()
-	. = ..(newtype)
+	.=..()
 	var/turf/new_turf = .
 	for (var/turf/simulated/wall/W in RANGE_TURFS(new_turf, 1))
 		if (W == src)

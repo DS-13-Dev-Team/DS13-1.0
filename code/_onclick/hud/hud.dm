@@ -82,7 +82,7 @@
 
 	ability_master = new /atom/movable/screen/movable/ability_master(null,mymob)
 
-	for(var/mytype in subtypesof(/atom/movable/screen/plane_master))
+	for(var/mytype in subtypesof(/atom/movable/screen/plane_master)-/atom/movable/screen/plane_master/rendering_plate)
 		var/atom/movable/screen/plane_master/instance = new mytype()
 		plane_masters["[instance.plane]"] = instance
 		instance.backdrop(mymob)
@@ -94,6 +94,8 @@
 	for (var/typepath as anything in mymob.extensions)
 		var/datum/extension/E = mymob.extensions[typepath]
 		E.handle_hud(src)
+
+	owner.overlay_fullscreen("see_through_darkness", /atom/movable/screen/fullscreen/see_through_darkness)
 
 /datum/hud/Destroy()
 	if(mymob.hud_used == src)
@@ -128,10 +130,13 @@
 	action_intent = null
 	move_intent = null
 
+	QDEL_LIST(toggleable_inventory)
 	QDEL_LIST(static_inventory)
 	QDEL_LIST(infodisplay)
 	QDEL_LIST(hotkeybuttons)
 	QDEL_LIST_ASSOC_VAL(inv_slots)
+	QDEL_LIST_ASSOC_VAL(plane_masters)
+	QDEL_LIST_ASSOC_VAL(plane_master_controllers)
 
 	mymob = null
 
@@ -234,13 +239,24 @@
 				screenmob.client.screen -= infodisplay
 
 	screenmob.refresh_lighting_overlays()
-	screenmob.set_darksight_range(screenmob.client.view_radius)
 	hud_version = display_hud_version
 	persistent_inventory_update(screenmob)
 	screenmob.update_action_buttons()
 	screenmob.reload_fullscreens()
 
+	if(!viewmob)
+		plane_masters_update()
+	else if(viewmob.hud_used)
+		viewmob.hud_used.plane_masters_update()
+
 	return TRUE
+
+/datum/hud/proc/plane_masters_update()
+	// Plane masters are always shown to OUR mob, never to observers
+	for(var/thing in plane_masters)
+		var/atom/movable/screen/plane_master/PM = plane_masters[thing]
+		PM.backdrop(mymob)
+		mymob.client.screen += PM
 
 /datum/hud/proc/update_locked_slots()
 	return

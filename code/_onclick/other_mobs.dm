@@ -37,7 +37,7 @@
 
 /mob/living/carbon/human/RangedAttack(atom/A)
 	//Climbing up open spaces
-	if((istype(A, /turf/simulated/floor) || istype(A, /turf/unsimulated/floor) || istype(A, /obj/structure/lattice) || istype(A, /obj/structure/catwalk)) && isturf(loc) && bound_overlay && !is_physically_disabled()) //Climbing through openspace
+	if((istype(A, /turf/simulated/floor) || istype(A, /turf/unsimulated/floor) || istype(A, /obj/structure/lattice) || istype(A, /obj/structure/catwalk)) && isturf(loc) && isopenspace(GetAbove(src)) && !is_physically_disabled()) //Climbing through openspace
 		return climb_up(A)
 
 	if(!gloves && !mutations.len) return

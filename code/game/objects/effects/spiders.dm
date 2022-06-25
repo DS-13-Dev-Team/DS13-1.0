@@ -79,7 +79,7 @@
 		START_PROCESSING(SSobj, src)
 
 /obj/effect/spider/eggcluster/New(var/location, var/atom/parent)
-	get_light_and_color(parent)
+	set_light_and_color(parent)
 	..()
 
 /obj/effect/spider/eggcluster/Destroy()
@@ -135,7 +135,7 @@
 	else
 		START_PROCESSING(SSobj, src)
 
-	get_light_and_color(parent)
+	set_light_and_color(parent)
 	. = ..()
 
 /obj/effect/spider/spiderling/mundane

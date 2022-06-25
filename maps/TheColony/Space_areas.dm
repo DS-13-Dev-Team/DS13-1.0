@@ -2,7 +2,6 @@
 /area/ERT
 	icon = 'maps/TheColony/space_areas.dmi'
 	requires_power = 0
-	dynamic_lighting = 1
 
 //------------------USG Kellion------------------//
 /area/ERT/kellion
@@ -85,4 +84,3 @@
 	name = "\improper Evacuation Site - Alpha"
 	icon_state = "escapebase"
 	requires_power = 0
-	dynamic_lighting = 0

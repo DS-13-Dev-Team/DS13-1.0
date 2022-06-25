@@ -10,8 +10,8 @@
 	name = ""
 	icon = 'icons/hud/screen1.dmi'
 	plane = HUD_PLANE
-	layer = HUD_BASE_LAYER
-	appearance_flags = NO_CLIENT_COLOR
+	vis_flags = VIS_INHERIT_PLANE
+	appearance_flags = APPEARANCE_UI
 	var/obj/master = null    //A reference to the object in the slot. Grabs or items, generally.
 	var/globalscreen = FALSE //Global screens are not qdeled when the holding mob is destroyed.
 	can_block_movement = FALSE	//This can never be on a turf

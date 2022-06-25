@@ -327,7 +327,7 @@ var/list/flooring_types
 	icon_base = "brown"
 	build_type = /obj/item/stack/tile/carpet
 	damage_temperature = T0C+200
-	flags = TURF_HAS_CORNERS | TURF_REMOVE_CROWBAR | TURF_CAN_BURN
+	flags = TURF_HAS_CORNERS | TURF_REMOVE_CROWBAR | TURF_CAN_BURN | TURF_HIDES_THINGS
 	step_priority = 2 //Soft surfaces have more distinctive sounds
 	space_smooth = SMOOTH_NONE
 	floor_smooth = SMOOTH_NONE
@@ -375,7 +375,7 @@ var/list/flooring_types
 	icon_base = "lino"
 	can_paint = 1
 	build_type = /obj/item/stack/tile/linoleum
-	flags = TURF_REMOVE_SCREWDRIVER
+	flags = TURF_REMOVE_SCREWDRIVER | TURF_HIDES_THINGS
 
 /decl/flooring/tiling
 	name = "floor"
@@ -385,7 +385,7 @@ var/list/flooring_types
 	color = COLOR_DARK_GUNMETAL
 	has_damage_range = 4
 	damage_temperature = T0C+1400
-	flags = TURF_REMOVE_CROWBAR | TURF_CAN_BREAK | TURF_CAN_BURN
+	flags = TURF_REMOVE_CROWBAR | TURF_CAN_BREAK | TURF_CAN_BURN | TURF_HIDES_THINGS
 	build_type = /obj/item/stack/tile/floor
 	can_paint = 1
 
@@ -421,7 +421,7 @@ var/list/flooring_types
 	icon_base = "freezer"
 	color = null
 	has_damage_range = null
-	flags = TURF_REMOVE_CROWBAR
+	flags = TURF_REMOVE_CROWBAR | TURF_HIDES_THINGS
 	build_type = /obj/item/stack/tile/floor_freezer
 
 /decl/flooring/tiling/tech
@@ -471,14 +471,14 @@ var/list/flooring_types
 	damage_temperature = T0C+200
 	descriptor = "planks"
 	build_type = /obj/item/stack/tile/wood
-	flags = TURF_CAN_BREAK | TURF_IS_FRAGILE | TURF_REMOVE_SCREWDRIVER
+	flags = TURF_CAN_BREAK | TURF_IS_FRAGILE | TURF_REMOVE_SCREWDRIVER | TURF_HIDES_THINGS
 
 /decl/flooring/reinforced
 	name = "reinforced floor"
 	desc = "Heavily reinforced with steel plating."
 	icon = 'icons/turf/flooring/tiles.dmi'
 	icon_base = "reinforced"
-	flags = TURF_REMOVE_WRENCH | TURF_ACID_IMMUNE
+	flags = TURF_REMOVE_WRENCH | TURF_ACID_IMMUNE | TURF_HIDES_THINGS
 	build_type = /obj/item/stack/material/steel
 	build_cost = 1
 	build_time = 30
@@ -491,7 +491,7 @@ var/list/flooring_types
 	icon = 'icons/turf/flooring/circuit.dmi'
 	icon_base = "bcircuit"
 	build_type = null
-	flags = TURF_ACID_IMMUNE | TURF_CAN_BREAK | TURF_REMOVE_WRENCH
+	flags = TURF_ACID_IMMUNE | TURF_CAN_BREAK | TURF_REMOVE_WRENCH | TURF_HIDES_THINGS
 	can_paint = 1
 
 /decl/flooring/reinforced/circuit/green
@@ -499,14 +499,14 @@ var/list/flooring_types
 
 /decl/flooring/reinforced/circuit/red
 	icon_base = "rcircuit"
-	flags = TURF_ACID_IMMUNE
+	flags = TURF_ACID_IMMUNE | TURF_HIDES_THINGS
 	can_paint = 0
 
 /decl/flooring/reinforced/shuttle
 	name = "floor"
 	icon = 'icons/turf/shuttle.dmi'
 	build_type = null
-	flags = TURF_ACID_IMMUNE | TURF_CAN_BREAK | TURF_REMOVE_WRENCH
+	flags = TURF_ACID_IMMUNE | TURF_CAN_BREAK | TURF_REMOVE_WRENCH | TURF_HIDES_THINGS
 	can_paint = 1
 
 /decl/flooring/reinforced/shuttle/blue

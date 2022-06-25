@@ -23,3 +23,21 @@
 #define COMSIG_ITEM_EQUIPPED "item_equipped"
 #define COMSIG_ITEM_UNEQUIPPED "item_unequipped"
 #define COMSIG_GLOB_MOB_LOGGED_IN "glob_mob_logged_in"
+/// fires on the target datum when an element is attached to it (/datum/element)
+#define COMSIG_ELEMENT_ATTACH "element_attach"
+/// fires on the target datum when an element is attached to it  (/datum/element)
+#define COMSIG_ELEMENT_DETACH "element_detach"
+///from base of turf/multiz_turf_del(): (turf/source, direction)
+#define COMSIG_TURF_MULTIZ_DEL "turf_multiz_del"
+///from base of turf/multiz_turf_new: (turf/source, direction)
+#define COMSIG_TURF_MULTIZ_NEW "turf_multiz_new"
+///from base of obj/item/afterattack(): (atom/target, mob/user, proximity_flag, click_parameters)
+#define COMSIG_ITEM_AFTERATTACK "item_afterattack"
+/// when a component is added to a datum: (/datum/component)
+#define COMSIG_COMPONENT_ADDED "component_added"
+/// before a component is removed from a datum because of ClearFromParent: (/datum/component)
+#define COMSIG_COMPONENT_REMOVING "component_removing"
+///from base of atom/set_opacity(): (new_opacity)
+#define COMSIG_ATOM_SET_OPACITY "atom_set_opacity"
+///from base of mob/living/revive() (full_heal, admin_revive)
+#define COMSIG_LIVING_REVIVE "living_revive"

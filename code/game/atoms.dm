@@ -1,4 +1,7 @@
 /atom
+	layer = TURF_LAYER
+	plane = GAME_PLANE
+	appearance_flags = TILE_BOUND
 	var/level = 2
 	var/atom_flags
 	var/list/blood_DNA
@@ -10,6 +13,20 @@
 	var/germ_level = GERM_LEVEL_AMBIENT // The higher the germ level, the more germ on the atom.
 	var/simulated = 1 //filter for actions - used by lighting overlays
 	var/fluorescent // Shows up under a UV light.
+	///Range of the light in tiles. Zero means no light.
+	var/light_range = 0
+	///Intensity of the light. The stronger, the less shadows you will see on the lit area.
+	var/light_power = 1
+	///Hexadecimal RGB string representing the colour of the light. White by default.
+	var/light_color = COLOR_WHITE
+	// The angle that the light's emission should be restricted to. null for omnidirectional.
+	var/light_wedge = LIGHT_OMNI
+	///Boolean variable for toggleable lights. Has no effect without the proper light_system, light_range and light_power values.
+	var/light_on = TRUE
+	///Our light source. Don't fuck with this directly unless you have a good reason!
+	var/tmp/datum/light_source/light
+	///Any light sources that are "inside" of us, for example, if src here was a mob that's carrying a flashlight, that flashlight's light source would be part of this list.
+	var/tmp/list/light_sources
 	var/used_now = FALSE //For tools system, check for it should forbid to work on atom for more than one user at time
 
 	//Misc:
@@ -93,11 +110,12 @@
 //Must return an Initialize hint. Defined in __DEFINES/subsystems.dm
 
 /atom/proc/Initialize(mapload, ...)
+	SHOULD_CALL_PARENT(TRUE)
 	if(atom_flags & ATOM_FLAG_INITIALIZED)
 		crash_with("Warning: [src]([type]) initialized multiple times!")
 	atom_flags |= ATOM_FLAG_INITIALIZED
 
-	if(light_max_bright && light_outer_range)
+	if(light_power && light_range)
 		update_light()
 
 	return INITIALIZE_HINT_NORMAL
@@ -111,7 +129,9 @@
 
 	LAZYCLEARLIST(overlays)
 
-	. = ..()
+	QDEL_NULL(light)
+
+	.=..()
 
 /atom/proc/reveal_blood()
 	return
@@ -325,12 +345,14 @@ its easier to just keep the beam vertical.
 
 //called to set the atom's dir and used to add behaviour to dir-changes
 /atom/proc/set_dir(new_dir)
-	var/old_dir = dir
-	if(new_dir == old_dir)
-		return FALSE
-	dir = new_dir
-	SEND_SIGNAL(src, COMSIG_ATOM_DIR_CHANGE, old_dir, new_dir)
-	return TRUE
+	SHOULD_CALL_PARENT(TRUE)
+	. = new_dir != dir
+	if(.)
+		SEND_SIGNAL(src, COMSIG_ATOM_DIR_CHANGE, dir, new_dir)
+		dir = new_dir
+		// Cycle through the light sources on this atom and tell them to update.
+		for (var/datum/light_source/light as anything in light_sources)
+			light.source_atom.update_light()
 
 /atom/proc/set_icon_state(var/new_icon_state)
 	if(has_extension(src, /datum/extension/base_icon_state))
@@ -721,11 +743,6 @@ its easier to just keep the beam vertical.
 		var/mouseparams = list2params(paramslist)
 		usr_client.Click(src, loc, null, mouseparams)
 		return TRUE
-
-
-//Hook for running code when a dir change occurs
-/atom/proc/setDir(newdir)
-	dir = newdir
 
 //Update the screentip to reflect what we're hoverin over
 /atom/MouseEntered(location, control, params)

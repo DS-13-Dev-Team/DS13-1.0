@@ -4,7 +4,6 @@
 /area/necrospawn
 	var/active = FALSE	//Has this already been opened for spawning?
 	var/obj/structure/corruption_node/nest/event_spawn/spawner
-	dynamic_lighting = FALSE
 	var/datum/crew_objective/event
 
 /area/necrospawn/Entered(atom/movable/Obj,atom/OldLoc)

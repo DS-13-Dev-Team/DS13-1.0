@@ -13,6 +13,8 @@
 	icon_state = "control_standby"
 	anchored = 1
 	density = 0
+	light_range = 2
+	light_power = 1
 	var/enabled = 0
 	var/lethal = 0
 	var/locked = 1
@@ -244,17 +246,19 @@
 	..()
 	if(stat & NOPOWER)
 		icon_state = "control_off"
-		set_light(0)
-	else if (enabled)
-		if (lethal)
-			icon_state = "control_kill"
-			set_light(1, 0.5, 2, 2, "#990000")
-		else
-			icon_state = "control_stun"
-			set_light(1, 0.5, 2, 2, "#ff9900")
+		set_light_on(FALSE)
 	else
-		icon_state = "control_standby"
-		set_light(1, 0.5, 2, 2, "#003300")
+		if(enabled)
+			if(lethal)
+				icon_state = "control_kill"
+				set_light_color("#990000")
+			else
+				icon_state = "control_stun"
+				set_light_color("#ff9900")
+		else
+			icon_state = "control_standby"
+			set_light_color("#003300")
+		set_light_on(TRUE)
 
 /obj/machinery/turretid/emp_act(severity)
 	if(enabled)

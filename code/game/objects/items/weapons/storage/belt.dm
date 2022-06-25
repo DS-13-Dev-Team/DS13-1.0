@@ -32,7 +32,7 @@
 			overlays += image('icons/obj/clothing/belts_overlays.dmi', "[I.icon_state]")
 
 /obj/item/weapon/storage/belt/get_mob_overlay(mob/user_mob, slot)
-	var/image/ret = ..()
+	var/mutable_appearance/ret = ..()
 	if(slot == slot_belt_str && contents.len)
 		var/list/ret_overlays = list()
 		for(var/obj/item/I in contents)

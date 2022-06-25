@@ -40,10 +40,6 @@
 	plane = RENDER_PLANE_GAME
 	render_relay_plane = RENDER_PLANE_MASTER
 
-/atom/movable/screen/plane_master/rendering_plate/game_world/Initialize(mapload)
-	. = ..()
-	add_filter("displacer", 1, displacement_map_filter(render_source = GRAVITY_PULSE_RENDER_TARGET, size = 10))
-
 ///render plate for OOC stuff like ghosts, hud-screen effects, etc
 /atom/movable/screen/plane_master/rendering_plate/non_game
 	name = "non-game rendering plate"

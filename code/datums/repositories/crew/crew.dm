@@ -1,4 +1,4 @@
-var/global/datum/repository/crew/crew_repository = new()
+GLOBAL_DATUM_INIT(crew_repository, /datum/repository/crew, new)
 
 /datum/repository/crew
 	var/list/cache_data
@@ -52,12 +52,31 @@ var/global/datum/repository/crew/crew_repository = new()
 	for(var/obj/item/rig_module/healthbar/HB as anything in tracked)
 		var/turf/pos = get_turf(HB)
 		if(HB.tracking_level != RIG_SENSOR_OFF && pos?.z == z_level && HB.holder?.active)
+			if(istype(HB.holder?.wearer, /mob/living/carbon/human))
+				var/list/crewmemberData = list("stat"=0, "oxy"=-1, "tox"=-1, "fire"=-1, "brute"=-1, "area"="", "x"=-1, "y"=-1, "ref" = "\ref[HB.holder.wearer]")
 
-			var/list/crewmemberData = list("sensor_type"=HB.tracking_level, "stat"=HB.holder.wearer.stat, "area"="", "x"=-1, "y"=-1, "z"=-1, "ref"="\ref[HB.holder.wearer]", "name"=HB.holder.wearer.name)
-			if(!(run_queues(HB.holder.wearer, HB, pos, crewmemberData) & MOD_SUIT_SENSORS_REJECTED))
+				crewmemberData["sensor_type"] = HB.tracking_level
+				crewmemberData["name"] = HB.holder.wearer.get_authentification_name(if_no_id="Unknown")
+				crewmemberData["rank"] = HB.holder.wearer.get_authentification_rank(if_no_id="Unknown", if_no_job="No Job")
+				crewmemberData["assignment"] = HB.holder.wearer.get_assignment(if_no_id="Unknown", if_no_job="No Job")
+
+				if(HB.tracking_level >= RIG_SENSOR_BINARY)
+					crewmemberData["stat"] = HB.holder.wearer.stat
+
+				if(HB.tracking_level >= RIG_SENSOR_VITAL)
+					crewmemberData["oxy"] = round(HB.holder.wearer.getOxyLoss(), 1)
+					crewmemberData["tox"] = round(HB.holder.wearer.getToxLoss(), 1)
+					crewmemberData["fire"] = round(HB.holder.wearer.getFireLoss(), 1)
+					crewmemberData["brute"] = round(HB.holder.wearer.getBruteLoss(), 1)
+
+				if(HB.tracking_level >= RIG_SENSOR_TRACKING)
+					var/area/A = pos.loc
+					crewmemberData["area"] = sanitize(A.name)
+					crewmemberData["x"] = pos.x
+					crewmemberData["y"] = pos.y
+					crewmemberData["z"] = pos.z
+
 				crewmembers[++crewmembers.len] = crewmemberData
-				if (crewmemberData["alert"])
-					cache_data_alert[num2text(z_level)] = TRUE
 
 	crewmembers = sortByKey(crewmembers, "name")
 	cache_entry.timestamp = world.time + 5 SECONDS

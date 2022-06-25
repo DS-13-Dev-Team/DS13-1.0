@@ -18,8 +18,8 @@ Blank extension used to mark an object as being biomass absorbed.
 	set waitfor = FALSE //Animation proc, don't hold up the thread.
 	var/biomass_gain = O.get_biomass()
 	set_extension(O, /datum/extension/biomass_being_absorbed)
-	O.layer = EYE_GLOW_LAYER
-	O.plane = EFFECTS_ABOVE_LIGHTING_PLANE
+	O.plane = ABOVE_LIGHTING_PLANE
+	O.layer = LIGHTING_SECONDARY_LAYER
 	O.filters += filter(type="outline", size=1, color=COLOR_NECRO_YELLOW)
 	sleep(rand_between(0.4 SECONDS, 0.7 SECONDS))
 	var/vector2/offset = O.get_global_pixel_offset(target)

@@ -93,6 +93,10 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	name = "smokable item"
 	desc = "You're not sure what this is. You should probably ahelp it."
 	body_parts_covered = 0
+	light_on = FALSE
+	light_range = 2
+	light_power = 0.6
+	light_color = "#e38f46"
 	var/lit = 0
 	var/icon_on
 	var/type_butt = null
@@ -168,11 +172,11 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		update_icon()
 		var/turf/T = get_turf(src)
 		T.visible_message(flavor_text)
-		set_light(0.6, 0.5, 2, 2, "#e38f46")
+		set_light_on(TRUE)
 		START_PROCESSING(SSobj, src)
 
 /obj/item/clothing/mask/smokable/proc/die(var/nomessage = 0)
-	set_light(0)
+	set_light_on(FALSE)
 	lit = 0
 	STOP_PROCESSING(SSobj, src)
 	update_icon()
@@ -391,11 +395,11 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	return item_state
 
 /obj/item/clothing/mask/smokable/cigarette/get_mob_overlay(mob/user_mob, slot)
-	var/image/res = ..()
+	var/mutable_appearance/res = ..()
 	if(lit == 1)
-		var/image/ember = overlay_image(res.icon, "cigember", flags=RESET_COLOR)
-		ember.layer = ABOVE_LIGHTING_LAYER
-		ember.plane = EFFECTS_ABOVE_LIGHTING_PLANE
+		var/mutable_appearance/ember = overlay_image(res.icon, "cigember", flags=RESET_COLOR)
+		ember.plane = ABOVE_LIGHTING_PLANE
+		ember.layer = LIGHTING_SECONDARY_LAYER
 		res.overlays += ember
 	return res
 
@@ -1012,11 +1016,12 @@ obj/item/clothing/mask/chewable/Destroy()
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
 	slot_flags = SLOT_BELT
 	attack_verb = list("burnt", "singed")
+	light_range = 2
+	light_power = 0.6
 	var/max_fuel = 5
 
 /obj/item/weapon/flame/lighter/Initialize()
-	. = ..()
-
+	.=..()
 	create_reagents(max_fuel)
 	reagents.add_reagent(/datum/reagent/fuel, max_fuel)
 	set_extension(src, /datum/extension/base_icon_state, icon_state)
@@ -1026,7 +1031,7 @@ obj/item/clothing/mask/chewable/Destroy()
 	lit = 1
 	update_icon()
 	light_effects(user)
-	set_light(0.6, 0.5, 2)
+	set_light_on(TRUE)
 	START_PROCESSING(SSobj, src)
 
 /obj/item/weapon/flame/lighter/proc/light_effects(mob/living/carbon/user)
@@ -1048,7 +1053,7 @@ obj/item/clothing/mask/chewable/Destroy()
 		shutoff_effects(user)
 	else
 		visible_message("<span class='notice'>[src] goes out.</span>")
-	set_light(0)
+	set_light_on(FALSE)
 	STOP_PROCESSING(SSobj, src)
 
 /obj/item/weapon/flame/lighter/proc/shutoff_effects(mob/user)
@@ -1124,9 +1129,9 @@ obj/item/clothing/mask/chewable/Destroy()
 	if(reagents.has_reagent(/datum/reagent/fuel))
 		if(ismob(loc) && prob(10) && reagents.get_reagent_amount(/datum/reagent/fuel) < 1)
 			to_chat(loc, "<span class='warning'>[src]'s flame flickers.</span>")
-			set_light(0)
+			set_light_on(FALSE)
 			spawn(4)
-				set_light(0.6, 0.5, 2)
+				set_light_on(TRUE)
 		reagents.remove_reagent(/datum/reagent/fuel, 0.05)
 	else
 		shutoff()

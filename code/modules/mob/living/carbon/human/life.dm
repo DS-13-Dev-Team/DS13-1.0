@@ -221,10 +221,13 @@
 
 	if(!radiation)
 		if(species.appearance_flags & RADIATION_GLOWS)
-			set_light(0)
+			set_light_on(TRUE)
 	else
 		if(species.appearance_flags & RADIATION_GLOWS)
-			set_light(0.3, 0.1, max(1,min(20,radiation/20)), 2, species.get_flesh_colour(src))
+			set_light_range(max(1,min(20,radiation/20)))
+			set_light_power(0.3)
+			set_light_color(species.get_flesh_colour(src))
+			set_light_on(TRUE)
 		// END DOGSHIT SNOWFLAKE
 
 		var/obj/item/organ/internal/diona/nutrients/rad_organ = locate() in internal_organs

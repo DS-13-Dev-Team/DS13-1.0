@@ -79,7 +79,7 @@
 	var/suit_overlay_active             // If set, drawn over icon and mob when effect is active.
 	var/suit_overlay_inactive           // As above, inactive.
 	var/suit_overlay_used               // As above, when engaged.
-	var/suit_overlay_layer	=	BASE_HUMAN_LAYER
+	var/suit_overlay_layer	=	MOB_LAYER
 	var/suit_overlay_plane	=	DEFAULT_PLANE
 	var/suit_overlay_flags = 0
 

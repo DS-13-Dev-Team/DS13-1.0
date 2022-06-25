@@ -210,17 +210,4 @@ SUBSYSTEM_DEF(chunk)
 		if (!isturf(a))
 			things.Remove(a)
 
-/datum/chunk/proc/debug_mark(var/marktype = "all", var/duration = 20 SECONDS)
-	var/list/to_mark = list()
-	if (marktype == "all")
-		to_mark = turfs
-	if (marktype == "visible")
-		to_mark = visibleTurfs
-	if (marktype == "obscured")
-		to_mark = obscuredTurfs
-
-
-	for (var/T in to_mark)
-		debug_mark_turf(T, duration)
-
 #undef UPDATE_BUFFER

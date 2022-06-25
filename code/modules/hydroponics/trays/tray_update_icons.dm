@@ -73,9 +73,9 @@
 
 	// Update bioluminescence.
 	if(seed && seed.get_trait(TRAIT_BIOLUM))
-		set_light(0.5, 0.1, 3, l_color = seed.get_trait(TRAIT_BIOLUM_COLOUR))
-	else
-		set_light(0)
+		set_light_range(3)
+		set_light_power(0,5)
+		set_light_color(seed.get_trait(TRAIT_BIOLUM_COLOUR))
 
 /obj/machinery/portable_atmospherics/hydroponics/proc/get_overlay_stage()
 	. = 1

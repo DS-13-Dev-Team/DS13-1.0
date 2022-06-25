@@ -48,6 +48,7 @@
 	dna.species = SPECIES_NECROMORPH_DIVIDER
 	add_modclick_verb(KEY_ALT, /mob/living/simple_animal/necromorph/divider_component/proc/leap)
 	get_controlling_player()
+	AddComponent(/datum/component/clickbox, max_scale = 0.75)
 
 //Called when this atom starts charging at another, just before taking the first step
 /mob/living/simple_animal/necromorph/divider_component/charge_started(var/datum/extension/charge/charge)

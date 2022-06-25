@@ -1,7 +1,7 @@
 /turf
 	icon = 'icons/turf/floors.dmi'
 	level = 1
-
+	vis_flags = VIS_INHERIT_ID | VIS_INHERIT_PLANE// Important for interaction with and visualization of openspace.
 	var/turf_flags
 
 	var/holy = 0
@@ -40,6 +40,60 @@
 
 	var/tmp/changing_turf
 
+	///Lumcount added by sources other than lighting datum objects, such as the overlay lighting component.
+	var/dynamic_lumcount = 0
+
+	///Bool, whether this turf will always be illuminated no matter what area it is in
+	var/always_lit = FALSE
+
+	var/tmp/lighting_corners_initialised = FALSE
+
+	///Our lighting object.
+	var/tmp/datum/lighting_object/lighting_object
+	///Lighting Corner datums.
+	var/tmp/datum/lighting_corner/lighting_corner_NE
+	var/tmp/datum/lighting_corner/lighting_corner_SE
+	var/tmp/datum/lighting_corner/lighting_corner_SW
+	var/tmp/datum/lighting_corner/lighting_corner_NW
+
+
+	///Which directions does this turf block the vision of, taking into account both the turf's opacity and the movable opacity_sources.
+	var/directional_opacity = NONE
+	///Lazylist of movable atoms providing opacity sources.
+	var/list/atom/movable/opacity_sources
+
+/turf/Initialize(mapload)
+	SHOULD_CALL_PARENT(FALSE)
+	if(atom_flags & ATOM_FLAG_INITIALIZED)
+		crash_with("Warning: [src]([type]) initialized multiple times!")
+	atom_flags |= ATOM_FLAG_INITIALIZED
+
+	// by default, vis_contents is inherited from the turf that was here before
+	vis_contents.Cut()
+
+	levelupdate()
+
+	for(var/atom/movable/content as anything in src)
+		Entered(content, null)
+
+	var/area/our_area = loc
+	if(our_area.area_has_base_lighting && always_lit) //Only provide your own lighting if the area doesn't for you
+		add_overlay(GLOB.fullbright_overlay)
+
+	if (light_power && light_range)
+		update_light()
+
+	var/turf/T = GetAbove(src)
+	if(T)
+		T.multiz_turf_new(src, DOWN)
+	T = GetBelow(src)
+	if(T)
+		T.multiz_turf_new(src, UP)
+
+	if (opacity)
+		directional_opacity = ALL_CARDINALS
+
+	return INITIALIZE_HINT_NORMAL
 
 /turf/proc/has_wall()
 	if (is_wall)
@@ -51,22 +105,8 @@
 				return TRUE
 
 	return FALSE
-/turf/Initialize(mapload, ...)
-	. = ..()
-	if(dynamic_lighting)
-		luminosity = 0
-	else
-		luminosity = 1
 
-	if (mapload && permit_ao)
-		queue_ao()
-
-	if (z_flags & ZM_MIMIC_BELOW)
-		setup_zmimic(mapload)
-
-	return INITIALIZE_HINT_NORMAL
-
-/turf/Destroy()
+/turf/Destroy(force)
 	if (!changing_turf)
 		crash_with("Improper turf qdel. Do not qdel turfs directly.")
 
@@ -74,18 +114,21 @@
 
 	remove_cleanables()
 
-	if (ao_queued)
-		SSao.queue -= src
-		ao_queued = 0
-
-	if (z_flags & ZM_MIMIC_BELOW)
-		cleanup_zmimic()
-
-	if (bound_overlay)
-		QDEL_NULL(bound_overlay)
+	var/turf/T = GetAbove(src)
+	if(T)
+		T.multiz_turf_del(src, DOWN)
+	T = GetBelow(src)
+	if(T)
+		T.multiz_turf_del(src, UP)
 
 	..()
 	return QDEL_HINT_IWILLGC
+
+/turf/proc/multiz_turf_del(turf/T, dir)
+	SEND_SIGNAL(src, COMSIG_TURF_MULTIZ_DEL, T, dir)
+
+/turf/proc/multiz_turf_new(turf/T, dir)
+	SEND_SIGNAL(src, COMSIG_TURF_MULTIZ_NEW, T, dir)
 
 /turf/ex_act(severity)
 	return FALSE

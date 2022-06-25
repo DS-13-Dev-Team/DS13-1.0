@@ -195,7 +195,7 @@ var/global/list/robot_modules = list(
 	name = "medical robot module"
 	channels = list("Medical" = 1)
 	networks = list(NETWORK_MEDICAL)
-	subsystems = list(/datum/nano_module/crew_monitor)
+	subsystems = list(/datum/tgui_module/crew_monitor)
 	can_be_pushed = 0
 
 /obj/item/weapon/robot_module/medical/surgeon
@@ -410,7 +410,7 @@ var/global/list/robot_modules = list(
 	name = "security robot module"
 	channels = list("Security" = 1)
 	networks = list(NETWORK_SECURITY)
-	subsystems = list(/datum/nano_module/crew_monitor, /datum/nano_module/digitalwarrant)
+	subsystems = list(/datum/tgui_module/crew_monitor, /datum/nano_module/digitalwarrant)
 	can_be_pushed = 0
 	supported_upgrades = list(/obj/item/borg/upgrade/weaponcooler)
 

@@ -43,8 +43,7 @@
 		)
 
 /obj/item/clothing/mask/monitor/set_dir()
-	dir = SOUTH
-	return
+	SHOULD_CALL_PARENT(FALSE)
 
 /obj/item/clothing/mask/monitor/equipped()
 	..()
