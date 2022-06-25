@@ -309,6 +309,7 @@ Botany:
 	id = "super_cell"
 	materials = list(MATERIAL_STEEL = 700, MATERIAL_GLASS = 70)
 	build_path = /obj/item/weapon/cell/super
+	price = 1000
 
 /datum/design/item/powercell/hyper
 	name = "hyper-capacity power cell"
