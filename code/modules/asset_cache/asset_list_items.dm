@@ -167,9 +167,9 @@ proc/get_craft_item(path)
 		"ishimura-4.png"		= 'nano/images/ishimura/ishimura-4.png',
 		"ishimura-5.png"		= 'nano/images/ishimura/ishimura-5.png',
 		"ishimura-6.png"		= 'nano/images/ishimura/ishimura-6.png',
-		"colony-4.png"			= 'nano/images/colony/colony-1.png',
-		"colony-5.png"			= 'nano/images/colony/colony-2.png',
-		"colony-6.png"			= 'nano/images/colony/colony-3.png',
+		"colony-1.png"			= 'nano/images/colony/colony-1.png',
+		"colony-2.png"			= 'nano/images/colony/colony-2.png',
+		"colony-3.png"			= 'nano/images/colony/colony-3.png',
 	)
 
 /datum/asset/simple/patron_content/register()
