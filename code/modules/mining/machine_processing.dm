@@ -8,9 +8,8 @@
 	name = "processing unit console"
 	icon = 'icons/obj/machines/mining_machines.dmi'
 	icon_state = "console"
-	density = 1
+	density = FALSE
 	anchored = 1
-	can_block_movement = FALSE
 	var/obj/machinery/mineral/processing_unit/machine = null
 
 /obj/machinery/mineral/processing_unit_console/Initialize()

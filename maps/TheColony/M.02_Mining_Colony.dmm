@@ -7803,17 +7803,12 @@
 /obj/machinery/mineral/stacking_machine,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/mining/processing)
-"awp" = (
-/obj/machinery/mineral/stacking_unit_console,
-/turf/simulated/wall/r_wall,
-/area/mining_colony/interior/mining/processing)
 "awq" = (
 /obj/machinery/door/window,
+/obj/machinery/mineral/stacking_unit_console{
+	pixel_x = -32
+	},
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/interior/mining/processing)
-"awr" = (
-/obj/machinery/mineral/processing_unit_console,
-/turf/simulated/wall/r_wall,
 /area/mining_colony/interior/mining/processing)
 "aws" = (
 /obj/machinery/mineral/unloading_machine,
@@ -25403,6 +25398,9 @@
 "bol" = (
 /obj/machinery/light/small,
 /obj/effect/decal/cleanable/blood/oil,
+/obj/machinery/mineral/processing_unit_console{
+	pixel_y = -32
+	},
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/interior/mining/processing)
 "bom" = (
@@ -58863,7 +58861,7 @@ auW
 auW
 auW
 awl
-awp
+qUF
 bqH
 qUF
 qUF
@@ -59267,7 +59265,7 @@ avL
 auW
 auW
 bol
-awr
+qUF
 aww
 qUF
 qUF

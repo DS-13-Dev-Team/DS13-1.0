@@ -2665,10 +2665,12 @@
 	dir = 4
 	},
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "1-4";
-	dir = 8
+	d2 = 2;
+	icon_state = "0-2";
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "0-2"
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/upper/commandofficers)
@@ -3562,18 +3564,20 @@
 /area/mining_colony/security/upper/fl_office)
 "LP" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
+	icon_state = "0-1"
 	},
 /obj/structure/cable{
-	icon_state = "1-4";
+	d2 = 2;
+	icon_state = "0-2";
+	dir = 8
+	},
+/obj/structure/cable{
+	d2 = 2;
+	icon_state = "0-2";
 	dir = 4
 	},
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "1-4"
+	icon_state = "0-2"
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/upper/commandofficers)
