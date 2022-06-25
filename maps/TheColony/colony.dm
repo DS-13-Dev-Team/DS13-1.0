@@ -51,7 +51,7 @@
 	post_round_safe_areas = list (
 		/area/mining_colony/interior/shuttle_bay/shuttle_1,
 		/area/mining_colony/interior/shuttle_bay/shuttle_2,
-		/area/shuttle/executive_shuttle,
+		/area/shuttle/executive_shuttle_colony,
 		/area/ERT/deliverance,
 		/area/ERT/valor,
 		/area/ERT/kellion,

@@ -3,6 +3,7 @@
 	DO NOT MOVE, REMOVE OR RENAME THIS FILE WITHOUT FIXING THE SCRIPT OR THINGS WILL BREAK
 */
 #ifdef MAP_ISHIMURA
+	#include "USGIshimura\deadspace_shuttles.dm"
 	#include "USGIshimura\M.01 Ishimura (UT).dmm"
 	#include "USGIshimura\M.02 Ishimura (T).dmm"
 	#include "USGIshimura\M.03 Ishimura (L).dmm"
@@ -11,6 +12,7 @@
 	#include "USGIshimura\M.06 Aegis VII.dmm"
 	#include "USGIshimura\M.07 Space.dmm"
 #else
+	#include "TheColony\deadspace_shuttles.dm"
 	#include "TheColony\M.01_Mining_Colony_Underground.dmm"
 	#include "TheColony\M.02_Mining_Colony.dmm"
 	#include "TheColony\M.03_Mining_Colony_UpperLevels.dmm"
