@@ -33,10 +33,10 @@
 		C.prefs.loadout.set_prefs(C.prefs)
 
 /datum/player/proc/get_mob()
-	return mob.resolve()
+	return mob?.resolve()
 
 /datum/player/get_client()
-	return client.resolve()
+	return client?.resolve()
 
 /datum/player/proc/cache_location(var/atom/location)
 	last_location = list("x" = location.x, "y" = location.y, "z" = location.z)
