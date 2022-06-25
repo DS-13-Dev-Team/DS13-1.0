@@ -105,6 +105,7 @@
 
 /obj/effect/shuttle_landmark/escape3/end
 	name = "Docking Bay"
+	base_turf = /turf/simulated/floor/plating
 	base_area = /area/ERT/escapebase
 	landmark_tag = "colony_escape3_end"
 	escape = TRUE

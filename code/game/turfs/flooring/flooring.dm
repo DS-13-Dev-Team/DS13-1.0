@@ -285,7 +285,11 @@ var/list/flooring_types
 
 /decl/flooring/reinforced/plating/hull/get_plating_type(var/turf/location)
 	if (turf_is_lower_hull(location)) //Hull plating is only on the lowest level of the ship
-		return null
+		//Not ideal but works for now
+		if(istype(GLOB.using_map, /datum/map/ishimura))
+			return null
+		else
+			return /decl/flooring/reinforced/plating/hull
 	else if (turf_is_upper_hull(location))
 		return /decl/flooring/reinforced/plating/under
 	else
