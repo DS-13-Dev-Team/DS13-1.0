@@ -4055,16 +4055,10 @@
 /turf/simulated/floor/dank/hardwood,
 /area/mining_colony/security/upper/be_room4)
 "YA" = (
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "16-0"
-	},
 /obj/structure/lattice,
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "0-6"
+/obj/structure/cable/green{
+	d2 = 2;
+	icon_state = "32-6"
 	},
 /turf/simulated/open,
 /area/mining_colony/security/upper/commandofficers)

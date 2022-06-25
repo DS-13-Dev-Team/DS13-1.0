@@ -70,7 +70,6 @@
 
 	//Vision
 	view_range = 8
-	lighting_alpha = LIGHTING_PLANE_ALPHA_NV_TRAIT
 
 
 	//Audio

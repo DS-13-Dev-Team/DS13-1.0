@@ -28218,7 +28218,10 @@
 /obj/structure/cable{
 	d1 = 2;
 	d2 = 8;
-	icon_state = "32-9"
+	icon_state = "16-0"
+	},
+/obj/structure/cable{
+	icon_state = "0-9"
 	},
 /turf/simulated/floor/plating,
 /area/mining_colony/interior/plaza)
@@ -28242,17 +28245,13 @@
 /turf/simulated/floor/dank/grater,
 /area/shuttle/executive_shuttle)
 "lWK" = (
-/obj/structure/cable{
-	icon_state = "16-0"
-	},
-/obj/structure/cable{
-	d2 = 8;
-	icon_state = "0-8"
-	},
 /obj/machinery/camera/network/security{
 	dir = 8
 	},
 /obj/structure/lattice,
+/obj/structure/cable{
+	icon_state = "32-8"
+	},
 /turf/simulated/open,
 /area/mining_colony/security/interrogation_room)
 "maS" = (

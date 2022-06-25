@@ -19,7 +19,12 @@
 
 /obj/machinery/mineral/processing_unit_console/LateInitialize()
 	if(!machine)
-		qdel(src)
+		for(var/obj/machinery/mineral/processing_unit/unit in orange(2, src))
+			machine = unit
+			machine.console = src
+			break
+		if(!machine)
+			qdel(src)
 
 /obj/machinery/mineral/processing_unit_console/attack_hand(mob/user)
 	add_fingerprint(user)

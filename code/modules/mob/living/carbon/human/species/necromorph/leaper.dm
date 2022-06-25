@@ -39,8 +39,6 @@
 	view_range = 9
 	// view_offset = (WORLD_ICON_SIZE*3)	//Just no.
 
-	lighting_alpha = LIGHTING_PLANE_ALPHA_NV_TRAIT
-
 	has_limbs = list(
 	BP_CHEST =  list("path" = /obj/item/organ/external/chest/simple),
 	BP_HEAD =   list("path" = /obj/item/organ/external/head/simple),
