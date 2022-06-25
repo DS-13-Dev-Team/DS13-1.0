@@ -5642,12 +5642,18 @@
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/lower/medical)
 "rT" = (
-/obj/structure/cable{
-	icon_state = "32-8"
-	},
 /obj/machinery/light{
 	dir = 4;
 	icon_state = "tube_map"
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "16-0"
+	},
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/mining_colony/lower/securitystation)
