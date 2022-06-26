@@ -10,7 +10,7 @@ var/global/list/image/ghost_sightless_images = list() //this is a list of images
 	blinded = 0
 	anchored = 1	//  don't get pushed around
 	universal_speak = 1
-
+	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 	mob_flags = MOB_FLAG_HOLY_BAD
 	movement_handlers = list(/datum/movement_handler/mob/incorporeal)
 
@@ -29,7 +29,7 @@ var/global/list/image/ghost_sightless_images = list() //this is a list of images
 	var/anonsay = 0
 	var/ghostvision = 1 //is the ghost able to see things humans can't?
 	var/seedarkness = 1
-
+	var/static/obj/item/weapon/card/id/all_access/ghost_all_access
 	var/obj/item/weapon/tool/multitool/ghost/ghost_multitool
 	var/list/hud_images // A list of hud images
 

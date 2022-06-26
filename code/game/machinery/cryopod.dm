@@ -228,16 +228,7 @@
 			B.force_open()
 			break
 
-	var/list/possible_locations = list()
-	if(GLOB.using_map.use_overmap)
-		var/obj/effect/overmap/O = map_sectors["[z]"]
-		for(var/obj/effect/overmap/OO in range(O,2))
-			if(OO.in_space || istype(OO,/obj/effect/overmap/sector/exoplanet))
-				possible_locations |= text2num(level)
-
 	var/newz = GLOB.using_map.get_empty_zlevel()
-	if(possible_locations.len && prob(10))
-		newz = pick(possible_locations)
 	var/turf/nloc = locate(rand(TRANSITIONEDGE, world.maxx-TRANSITIONEDGE), rand(TRANSITIONEDGE, world.maxy-TRANSITIONEDGE),newz)
 	if(!istype(nloc, /turf/space))
 		nloc.explosion(3,1)

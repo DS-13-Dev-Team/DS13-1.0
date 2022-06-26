@@ -197,7 +197,7 @@
 	desc = "The headset of the chief box pusher."
 	icon_state = "cargo_headset"
 	item_state = "headset"
-	ks1type = /obj/item/device/encryptionkey/headset_deckofficer
+	ks1type = /obj/item/device/encryptionkey/heads/so
 
 /obj/item/device/radio/headset/heads/dom
 	name = "director of mining's headset"

@@ -76,7 +76,6 @@ var/list/admin_verbs_admin = list(
 	/datum/admins/proc/PlayerNotes,
 	/client/proc/cmd_mod_say,
 	/datum/admins/proc/show_player_info,
-	/client/proc/free_slot_submap,
 	/client/proc/free_slot_crew,			//frees slot for chosen job,
 	/client/proc/cmd_admin_change_custom_event,
 	/client/proc/toggleghostwriters,
@@ -193,9 +192,6 @@ var/list/admin_verbs_debug = list(
 	/client/proc/apply_random_map,
 	/client/proc/overlay_random_map,
 	/client/proc/delete_random_map,
-	/datum/admins/proc/map_template_load,
-	/datum/admins/proc/map_template_load_new_z,
-	/datum/admins/proc/map_template_upload,
 	/client/proc/show_plant_genes,
 	/client/proc/enable_debug_verbs,
 	/client/proc/callproc,
@@ -286,7 +282,6 @@ var/list/admin_verbs_hideable = list(
 	/client/proc/event_manager_panel,
 	/client/proc/empty_ai_core_toggle_latejoin,
 	/client/proc/empty_ai_core_toggle_latejoin,
-	/client/proc/free_slot_submap,
 	/client/proc/free_slot_crew,
 	/client/proc/cmd_admin_change_custom_event,
 	/datum/admins/proc/togglehubvisibility,
@@ -389,9 +384,6 @@ var/list/admin_verbs_hideable = list(
 	/client/proc/apply_random_map,
 	/client/proc/overlay_random_map,
 	/client/proc/delete_random_map,
-	/datum/admins/proc/map_template_load,
-	/datum/admins/proc/map_template_load_new_z,
-	/datum/admins/proc/map_template_upload,
 	/client/proc/show_plant_genes,
 	/client/proc/enable_debug_verbs,
 	/client/proc/callproc,
@@ -1002,30 +994,6 @@ var/list/admin_verbs_mentor = list(
 	if(holder)
 		holder.PlayerNotes()
 	return
-
-/client/proc/free_slot_submap()
-	set name = "Free Job Slot (Submap)"
-	set category = "Admin"
-	if(!holder) return
-
-	var/list/jobs = list()
-	for(var/thing in SSmapping.submaps)
-		var/datum/submap/submap = thing
-		for(var/otherthing in submap.jobs)
-			var/datum/job/submap/job = submap.jobs[otherthing]
-			if(!job.is_position_available())
-				jobs["[job.title] - [submap.name]"] = job
-
-	if(!LAZYLEN(jobs))
-		to_chat(usr, "There are no fully staffed offsite jobs.")
-		return
-
-	var/job_name = input("Please select job slot to free", "Free job slot")  as null|anything in jobs
-	if(job_name)
-		var/datum/job/submap/job = jobs[job_name]
-		if(istype(job) && !job.is_position_available())
-			job.make_position_available()
-			message_admins("An offsite job slot for [job_name] has been opened by [key_name_admin(usr)]")
 
 /client/proc/free_slot_crew()
 	set name = "Free Job Slot (Crew)"

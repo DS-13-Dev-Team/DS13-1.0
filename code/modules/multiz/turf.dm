@@ -104,6 +104,36 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 /turf/simulated/open/is_plating()
 	return TRUE
 
-
 /turf/simulated/open/take_damage(var/amount, var/damtype = BRUTE, var/user, var/used_weapon, var/bypass_resist = FALSE)
 	return 0	//You can't damage what doesn't exist
+
+/turf/simulated/open/attackby(obj/item/C, mob/user)
+	if (istype(C, /obj/item/stack/rods))
+		var/obj/structure/L = locate(/obj/structure/lattice, src) || locate(/obj/structure/catwalk, src)
+		if(L)
+			return L.attackby(C, user)
+		var/obj/item/stack/rods/R = C
+		if (R.use(1))
+			to_chat(user, "<span class='notice'>You lay down the support lattice.</span>")
+			playsound(src, 'sound/weapons/Genhit.ogg', 50, 1)
+			new /obj/structure/lattice(src)
+		return
+
+	if (istype(C, /obj/item/stack/tile))
+		var/obj/structure/lattice/L = locate(/obj/structure/lattice, src)
+		if(L)
+			var/obj/item/stack/tile/floor/S = C
+			if (!S.use(1))
+				return
+			qdel(L)
+			playsound(src, 'sound/weapons/Genhit.ogg', 50, 1)
+			ChangeTurf(/turf/simulated/floor/airless)
+			return
+		else
+			to_chat(user, "<span class='warning'>The plating is going to need some support.</span>")
+
+	//To lay cable.
+	if(isCoil(C))
+		var/obj/item/stack/cable_coil/coil = C
+		coil.turf_place(src, user)
+		return

@@ -161,6 +161,8 @@
 	slot_flags = SLOT_BELT
 	matter = list(MATERIAL_STEEL = 200,MATERIAL_GLASS = 100)
 	light_range = 6
+	light_color = "#d1a700"
+	light_wedge = LIGHT_OMNI
 
 /******************************Lantern*******************************/
 
@@ -216,6 +218,7 @@
 	activation_sound = 'sound/effects/flare.ogg'
 	light_color = "#e58775"
 	light_range = 5
+	light_wedge = LIGHT_OMNI
 
 //Subtype that enables on spawning
 /obj/item/device/flashlight/flare/active/Initialize()
@@ -300,6 +303,7 @@
 	activation_sound = null
 	color = "#49f37c"
 	light_range = 4
+	light_wedge = LIGHT_OMNI
 
 /obj/item/device/flashlight/flare/glowstick/Initialize()
 	. = ..()
@@ -363,6 +367,7 @@
 	w_class = ITEM_SIZE_TINY
 	on = 1 //Bio-luminesence has one setting, on.
 	light_range = 5
+	light_wedge = LIGHT_OMNI
 
 /obj/item/device/flashlight/slime/update_icon()
 	return
@@ -381,7 +386,7 @@
 	w_class = ITEM_SIZE_LARGE
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
 	light_range = 7
-
+	light_wedge = LIGHT_OMNI
 
 /obj/item/device/flashlight/floodlamp/verb/rotate()
 	set name = "Rotate Light"

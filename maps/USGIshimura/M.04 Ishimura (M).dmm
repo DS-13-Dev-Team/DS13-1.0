@@ -28906,7 +28906,7 @@
 	},
 /obj/item/weapon/paper_bin,
 /obj/item/weapon/pen/fancy,
-/obj/item/weapon/folder/nt/rd,
+/obj/item/weapon/folder/nt,
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/research/chief_science_office)
 "bes" = (

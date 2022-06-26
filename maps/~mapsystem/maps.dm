@@ -80,10 +80,6 @@ var/const/MAP_HAS_RANK = 2		//Rank system, also togglable
 	var/default_spawn = "Arrivals Shuttle"
 	var/flags = 0
 	var/evac_controller_type = /datum/evacuation_controller
-	var/use_overmap = 0		//If overmap should be used (including overmap space travel override)
-	var/overmap_size = 20		//Dimensions of overmap zlevel if overmap is used.
-	var/overmap_z = 0		//If 0 will generate overmap zlevel on init. Otherwise will populate the zlevel provided.
-	var/overmap_event_areas = 0 //How many event "clouds" will be generated
 
 	var/list/lobby_screens = list('icons/hud/lobby_screens/default_lobby.png')	// The list of lobby screen to pick() from. If left unset the first icon state is always selected.
 	var/current_lobby_screen
@@ -178,7 +174,6 @@ var/const/MAP_HAS_RANK = 2		//Rank system, also togglable
 
 //Called late in the load order after other subsystems are done
 /datum/map/proc/post_setup()
-	build_exoplanets()
 	if (powernode_rooms)
 		setup_powernode_rooms()
 	if (crew_objectives)
@@ -198,46 +193,6 @@ var/const/MAP_HAS_RANK = 2		//Rank system, also togglable
 
 /datum/map/proc/perform_map_generation()
 	return
-
-/datum/map/proc/build_away_sites()
-#ifdef UNIT_TEST
-	report_progress("Unit testing, so not loading away sites")
-	return // don't build away sites during unit testing
-#else
-	if (CONFIG_GET(flag/no_overmap))
-		return
-	report_progress("Loading away sites...")
-	var/list/sites_by_spawn_weight = list()
-	for (var/site_name in SSmapping.away_sites_templates)
-		var/datum/map_template/ruin/away_site/site = SSmapping.away_sites_templates[site_name]
-
-		if((site.template_flags & TEMPLATE_FLAG_SPAWN_GUARANTEED) && site.load_new_z()) // no check for budget, but guaranteed means guaranteed
-			report_progress("Loaded guaranteed away site [site]!")
-			away_site_budget -= site.cost
-			continue
-
-		sites_by_spawn_weight[site] = site.spawn_weight
-	while (away_site_budget > 0 && sites_by_spawn_weight.len)
-		var/datum/map_template/ruin/away_site/selected_site = pickweight(sites_by_spawn_weight)
-		if (!selected_site)
-			break
-		sites_by_spawn_weight -= selected_site
-		if(selected_site.cost > away_site_budget)
-			continue
-		if (selected_site.load_new_z())
-			report_progress("Loaded away site [selected_site]!")
-			away_site_budget -= selected_site.cost
-	report_progress("Finished loading away sites, remaining budget [away_site_budget], remaining sites [sites_by_spawn_weight.len]")
-#endif
-
-/datum/map/proc/build_exoplanets()
-	if(!use_overmap || CONFIG_GET(flag/no_overmap))
-		return
-
-	for(var/i = 0, i < num_exoplanets, i++)
-		var/exoplanet_type = pick(subtypesof(/obj/effect/overmap/sector/exoplanet))
-		var/obj/effect/overmap/sector/exoplanet/new_planet = new exoplanet_type(null, planet_size[1], planet_size[2])
-		new_planet.build_level()
 
 // Used to apply various post-compile procedural effects to the map.
 /datum/map/proc/refresh_mining_turfs(var/zlevel)

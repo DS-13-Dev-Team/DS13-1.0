@@ -9,6 +9,7 @@
 	pixel_x = -33
 	density = TRUE
 	anchored = TRUE
+	light_on = FALSE
 	light_range = 12
 	light_power = 1
 	light_color = COLOR_MARKER_RED
@@ -65,6 +66,7 @@
 	//Start spreading corruption
 	start_corruption()
 	update_icon()
+	set_light_on(TRUE)
 	set_traumatic_sight(TRUE, 5) //Marker is pretty hard to look at.
 
 	//If the marker is activated manually, tell the gamemode to activate itself too.

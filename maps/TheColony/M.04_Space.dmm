@@ -58,7 +58,6 @@
 /turf/simulated/floor,
 /area/ERT/kellion)
 "ah" = (
-/obj/machinery/computer/engines,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ERT/kellion)
 "ai" = (
@@ -301,11 +300,9 @@
 /turf/simulated/floor,
 /area/ERT/valor/helm)
 "aR" = (
-/obj/machinery/computer/engines,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ERT/valor/helm)
 "aS" = (
-/obj/machinery/computer/helm,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ERT/valor/helm)
 "aT" = (
@@ -2192,11 +2189,9 @@
 /turf/simulated/floor/dank/mono,
 /area/ERT/valor/medical)
 "eY" = (
-/obj/machinery/computer/engines,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ERT/valor/shuttle)
 "eZ" = (
-/obj/machinery/computer/engines,
 /obj/machinery/light{
 	dir = 4;
 	icon_state = "tube_map"
@@ -2994,10 +2989,6 @@
 /turf/simulated/floor/dank/mono,
 /area/ERT/valor/firingrange)
 "gN" = (
-/obj/machinery/computer/helm{
-	dir = 1;
-	icon_state = "computer"
-	},
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/monotile,
 /area/ERT/valor/hangar)

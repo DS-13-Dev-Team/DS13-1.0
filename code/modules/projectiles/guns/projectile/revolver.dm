@@ -126,6 +126,14 @@
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	ammo_type = /obj/item/ammo_casing/c44
 
+/obj/item/weapon/gun/projectile/revolver/webley/marooned
+	name = "worn-out revolver"
+
+/obj/item/weapon/gun/projectile/revolver/webley/marooned/Initialize()
+	. = ..()
+	consume_next_projectile()
+	handle_post_fire()
+
 /obj/item/weapon/gun/projectile/revolver/hr
 	name = "antique revolver"
 	desc = "An older .44 caliber revlover of unknown make and model. Despite the lack of identifying marks, the pistol appears lovingly cared for. 'Human Resources' has been carefully engraved on the receiver."

@@ -366,7 +366,6 @@
 	dat += "<table>"
 	dat += "<tr><td colspan = 3><b>[GLOB.using_map.station_name]:</b></td></tr>"
 
-	// TORCH JOBS
 	var/list/job_summaries = list()
 	for(var/datum/job/job in job_master.occupations)
 		var/summary = job.get_join_link(client, "byond://?src=\ref[src];SelectedJob=[job.title]", show_invalid_jobs)
@@ -376,24 +375,6 @@
 		dat += job_summaries
 	else
 		dat += "No available positions."
-	// END TORCH JOBS
-
-	// SUBMAP JOBS
-	for(var/thing in SSmapping.submaps)
-		var/datum/submap/submap = thing
-		if(submap && submap.available())
-			dat += "<tr><td colspan = 3><b>[submap.name] ([submap.archetype.descriptor]):</b></td></tr>"
-			job_summaries = list()
-			for(var/otherthing in submap.jobs)
-				var/datum/job/job = submap.jobs[otherthing]
-				var/summary = job.get_join_link(client, "byond://?src=\ref[submap];joining=\ref[src];join_as=[otherthing]", show_invalid_jobs)
-				if(summary && summary != "")
-					job_summaries += summary
-			if(LAZYLEN(job_summaries))
-				dat += job_summaries
-			else
-				dat += "No available positions."
-	// END SUBMAP JOBS
 
 	dat += "</table></center>"
 	src << browse(jointext(dat, null), "window=latechoices;size=450x640;can_close=1")
