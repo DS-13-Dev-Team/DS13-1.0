@@ -374,7 +374,6 @@
 		/obj/item/weapon/folder,
 		/obj/item/weapon/paper,
 		/obj/item/weapon/pen,
-		/obj/item/device/spaceflare,
 		/obj/item/device/radio/beacon,
 		/obj/item/weapon/pinpointer/radio,
 		/obj/item/device/taperecorder,

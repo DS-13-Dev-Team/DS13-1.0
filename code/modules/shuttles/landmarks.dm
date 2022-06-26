@@ -46,15 +46,8 @@
 		docking_controller = locate(docking_tag)
 		if(!istype(docking_controller))
 			log_debug("Could not find docking controller for shuttle waypoint '[name]', docking tag was '[docking_tag]'.")
-		if(GLOB.using_map.use_overmap)
-			var/obj/effect/overmap/location = map_sectors["[z]"]
-			if(location && location.docking_codes)
-				docking_controller.docking_codes = location.docking_codes
 
 	SSshuttle.register_landmark(landmark_tag, src)
-
-//Called when the landmark is added to an overmap sector.
-/obj/effect/shuttle_landmark/proc/sector_set(var/obj/effect/overmap/O)
 
 /obj/effect/shuttle_landmark/proc/is_valid(var/datum/shuttle/shuttle)
 	if(shuttle.current_location == src)
@@ -79,69 +72,3 @@
 			message_admins("Dense turf")
 			return TRUE //dense turf
 	return FALSE
-
-//Self-naming/numbering ones.
-/obj/effect/shuttle_landmark/automatic
-	name = "Navpoint"
-	landmark_tag = "navpoint"
-	autoset = 1
-	var/shuttle_restricted //name of the shuttle, null for generic waypoint
-
-/obj/effect/shuttle_landmark/automatic/Initialize()
-	landmark_tag += "-[x]-[y]-[z]"
-	return ..()
-
-/obj/effect/shuttle_landmark/automatic/sector_set(var/obj/effect/overmap/O)
-	..()
-	SetName("[O.name] - [name]")
-
-//Subtype that calls explosion on init to clear space for shuttles
-/obj/effect/shuttle_landmark/automatic/clearing
-	var/radius = 10
-
-/obj/effect/shuttle_landmark/automatic/clearing/Initialize()
-	..()
-	return INITIALIZE_HINT_LATELOAD
-
-/obj/effect/shuttle_landmark/automatic/clearing/LateInitialize()
-	for(var/turf/T in range(radius, src))
-		if(T.density)
-			T.ChangeTurf(get_base_turf_by_area(T))
-
-/obj/item/device/spaceflare
-	name = "bluespace flare"
-	desc = "Burst transmitter used to broadcast all needed information for shuttle navigation systems. Has a flare attached for marking the spot where you probably shouldn't be standing."
-	icon_state = "bluflare"
-	light_range = 6
-	light_power = 0.3
-	light_color = "#3728ff"
-	light_on = FALSE
-	var/active
-
-/obj/item/device/spaceflare/attack_self(var/mob/user)
-	if(!active)
-		visible_message("<span class='notice'>[user] pulls the cord, activating the [src].</span>")
-		activate()
-
-/obj/item/device/spaceflare/proc/activate()
-	if(active)
-		return
-	var/turf/T = get_turf(src)
-	var/mob/M = loc
-	if(istype(M) && !M.unEquip(src, T))
-		return
-
-	active = 1
-	anchored = 1
-
-	var/obj/effect/shuttle_landmark/automatic/mark = new(T)
-	mark.SetName("Beacon signal ([T.x],[T.y])")
-	T.hotspot_expose(1500, 5)
-	update_icon()
-
-/obj/item/device/spaceflare/update_icon()
-	if(active)
-		icon_state = "bluflare_on"
-		set_light_on(TRUE)
-	else
-		set_light_on(FALSE)

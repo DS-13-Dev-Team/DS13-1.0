@@ -44,6 +44,3 @@
 
 /datum/event_meta/extended_penalty/get_weight()
 	return ..() - (SSticker && istype(SSticker.mode, /datum/game_mode/extended) ? penalty : 0)
-
-/datum/event_meta/no_overmap/get_weight() //these events have overmap equivalents, and shouldn't fire randomly if overmap is used
-	return GLOB.using_map.use_overmap ? 0 : ..()

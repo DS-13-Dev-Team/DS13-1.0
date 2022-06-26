@@ -1003,30 +1003,6 @@ var/list/admin_verbs_mentor = list(
 		holder.PlayerNotes()
 	return
 
-/client/proc/free_slot_submap()
-	set name = "Free Job Slot (Submap)"
-	set category = "Admin"
-	if(!holder) return
-
-	var/list/jobs = list()
-	for(var/thing in SSmapping.submaps)
-		var/datum/submap/submap = thing
-		for(var/otherthing in submap.jobs)
-			var/datum/job/submap/job = submap.jobs[otherthing]
-			if(!job.is_position_available())
-				jobs["[job.title] - [submap.name]"] = job
-
-	if(!LAZYLEN(jobs))
-		to_chat(usr, "There are no fully staffed offsite jobs.")
-		return
-
-	var/job_name = input("Please select job slot to free", "Free job slot")  as null|anything in jobs
-	if(job_name)
-		var/datum/job/submap/job = jobs[job_name]
-		if(istype(job) && !job.is_position_available())
-			job.make_position_available()
-			message_admins("An offsite job slot for [job_name] has been opened by [key_name_admin(usr)]")
-
 /client/proc/free_slot_crew()
 	set name = "Free Job Slot (Crew)"
 	set category = "Admin"

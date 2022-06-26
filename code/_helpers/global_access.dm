@@ -155,8 +155,6 @@
 			return global.cable_list;
 		if("cached_icons")
 			return global.cached_icons;
-		if("cached_space")
-			return global.cached_space;
 		if("camera_alarm")
 			return global.camera_alarm;
 		if("camera_range_display_status")
@@ -401,8 +399,6 @@
 			return global.mannequins_;
 		if("map_count")
 			return global.map_count;
-		if("map_sectors")
-			return global.map_sectors;
 		if("maploader")
 			return global.maploader;
 		if("mark")
@@ -455,8 +451,6 @@
 			return global.mob_repository;
 		if("motion_alarm")
 			return global.motion_alarm;
-		if("moving_levels")
-			return global.moving_levels;
 		if("multi_point_spawns")
 			return global.multi_point_spawns;
 		if("name_to_material")
@@ -601,8 +595,6 @@
 			return global.sent_spiders_to_station;
 		if("severity_to_string")
 			return global.severity_to_string;
-		if("ship_engines")
-			return global.ship_engines;
 		if("side_effects")
 			return global.side_effects;
 		if("skin_styles_female_list")
@@ -898,8 +890,6 @@
 			global.cable_list=newval;
 		if("cached_icons")
 			global.cached_icons=newval;
-		if("cached_space")
-			global.cached_space=newval;
 		if("camera_alarm")
 			global.camera_alarm=newval;
 		if("camera_range_display_status")
@@ -1144,8 +1134,6 @@
 			global.mannequins_=newval;
 		if("map_count")
 			global.map_count=newval;
-		if("map_sectors")
-			global.map_sectors=newval;
 		if("maploader")
 			global.maploader=newval;
 		if("mark")
@@ -1198,8 +1186,6 @@
 			global.mob_repository=newval;
 		if("motion_alarm")
 			global.motion_alarm=newval;
-		if("moving_levels")
-			global.moving_levels=newval;
 		if("multi_point_spawns")
 			global.multi_point_spawns=newval;
 		if("name_to_material")
@@ -1344,8 +1330,6 @@
 			global.sent_spiders_to_station=newval;
 		if("severity_to_string")
 			global.severity_to_string=newval;
-		if("ship_engines")
-			global.ship_engines=newval;
 		if("side_effects")
 			global.side_effects=newval;
 		if("skin_styles_female_list")
@@ -1563,7 +1547,6 @@
 	"bomb_set",
 	"cable_list",
 	"cached_icons",
-	"cached_space",
 	"camera_alarm",
 	"camera_range_display_status",
 	"can_call_ert",
@@ -1693,7 +1676,6 @@
 	"maint_all_access",
 	"mannequins_",
 	"map_count",
-	"map_sectors",
 	"maploader",
 	"mark",
 	"master_controller",
@@ -1720,7 +1702,6 @@
 	"mob_hat_cache",
 	"mob_repository",
 	"motion_alarm",
-	"moving_levels",
 	"multi_point_spawns",
 	"name_to_material",
 	"narsie_behaviour",
@@ -1794,7 +1775,6 @@
 	"send_emergency_team",
 	"sent_spiders_to_station",
 	"severity_to_string",
-	"ship_engines",
 	"side_effects",
 	"skin_styles_female_list",
 	"skipped_unit_tests",

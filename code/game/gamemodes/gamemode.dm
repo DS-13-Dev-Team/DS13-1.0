@@ -450,12 +450,12 @@ GLOBAL_LIST(additional_antag_types)
 		text += "<br><center>There [surviving_humans>1 ? "were <b>[surviving_humans] survivors</b>" : "was <b>one survivor</b>"], with [escaped_humans>1 ? "<b>[escaped_total] managing to evacuate</b>" : "was <b>one evacuee</b>"]</center>"
 		SEND_SOUND(world, sound('sound/music/ds13/credits_violin.ogg', wait = 0, volume = 40, channel = GLOB.lobby_sound_channel))
 	else
-		sround_finished = "Survivor Major"
-		stext += "<br><h1><b><center><span class='success'>Survivor Major Victory!</span></center></b></h1>"
-		stext += "<br><center>A majority of the survivors managed to evacuate!</center>"
-		stext += "<br><center><b>And so ends the struggle on [station_name()]...</center></b>"
-		stext += "<br><center>There [surviving_humans>1 ? "were <b>[surviving_humans] survivors</b>" : "was <b>one survivor</b>"], with [escaped_humans>1 ? "<b>[escaped_total] managing to evacuate</b>" : "was <b>one evacuee</b>"]</center>"
-		sSEND_SOUND(world, sound('sound/music/ds13/credits_rock.ogg', wait = 0, volume = 40, channel = GLOB.lobby_sound_channel))
+		round_finished = "Survivor Major"
+		text += "<br><h1><b><center><span class='success'>Survivor Major Victory!</span></center></b></h1>"
+		text += "<br><center>A majority of the survivors managed to evacuate!</center>"
+		text += "<br><center><b>And so ends the struggle on [station_name()]...</center></b>"
+		text += "<br><center>There [surviving_humans>1 ? "were <b>[surviving_humans] survivors</b>" : "was <b>one survivor</b>"], with [escaped_humans>1 ? "<b>[escaped_total] managing to evacuate</b>" : "was <b>one evacuee</b>"]</center>"
+		SEND_SOUND(world, sound('sound/music/ds13/credits_rock.ogg', wait = 0, volume = 40, channel = GLOB.lobby_sound_channel))
 	if(escaped_necros > 0)
 		text += "<br><center>There [alive_necros>0 ? "were <b>[alive_necros] alive Necromorphs left</b>" : ""], with [escaped_necros>0 ? "<b>[escaped_necros] having left the Ishimura for greener pastures!</b>" : "<b>was one Necromorph that left the Ishimura for greener pastures!</b>"]</center>"
 		if(escaped_necros > 0 && escaped_necros < 4) // Between 1 and 3 Necro's escaped? Marker is displeased.
