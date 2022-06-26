@@ -2680,7 +2680,7 @@
 /turf/simulated/floor/plating,
 /area/mining_colony/lower)
 "iA" = (
-/turf/simulated/floor/wood/usedup,
+/turf/simulated/floor/wood,
 /area/mining_colony/lower/maints/room64)
 "iB" = (
 /obj/item/weapon/storage/chewables,
@@ -2698,7 +2698,7 @@
 /area/mining_colony/lower/maints/room61)
 "iD" = (
 /obj/random/trash,
-/turf/simulated/floor/wood/usedup,
+/turf/simulated/floor/wood,
 /area/mining_colony/lower/maints/room64)
 "iE" = (
 /obj/structure/table/woodentable,

@@ -26,5 +26,3 @@
 	name = "grim floor"
 	icon_state = "dank_tile_mono"
 	initial_flooring = /decl/flooring/tiling_ds/mono
-
-

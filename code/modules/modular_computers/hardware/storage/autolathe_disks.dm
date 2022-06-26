@@ -161,8 +161,6 @@
 		/datum/design/autolathe/circuit/airlockmodule,
 		/datum/design/autolathe/circuit/airalarm,
 		/datum/design/autolathe/circuit/firealarm,
-		/datum/design/autolathe/circuit/helm,
-		/datum/design/autolathe/circuit/nav
 	)
 
 

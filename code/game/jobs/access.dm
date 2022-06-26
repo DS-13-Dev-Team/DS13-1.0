@@ -184,9 +184,6 @@
 		"Emergency Response Team",
 		"Emergency Response Team Leader")
 
-/mob/dead/observer/ghost
-	var/static/obj/item/weapon/card/id/all_access/ghost_all_access
-
 /mob/dead/observer/ghost/GetIdCard()
 	if(!is_admin(src))
 		return

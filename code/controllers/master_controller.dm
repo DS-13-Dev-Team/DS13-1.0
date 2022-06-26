@@ -50,4 +50,3 @@ datum/controller/game_controller/proc/setup_objects()
 
 	initialization_stage |= INITIALIZATION_HAS_BEGUN
 
-

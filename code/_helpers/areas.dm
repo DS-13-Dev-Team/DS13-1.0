@@ -114,9 +114,6 @@
 /proc/is_maint_area(var/area/A)
 	. = istype(A,/area/maintenance)
 
-/proc/is_coherent_area(var/area/A)
-	return !is_type_in_list(A, GLOB.using_map.area_coherency_test_exempt_areas)
-
 /proc/area_corrupted(var/atom/A, var/require_support = TRUE)
 	var/area/T = get_area(A)
 	for (var/obj/effect/vine/corruption/C in T)

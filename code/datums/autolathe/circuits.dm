@@ -24,13 +24,5 @@
 	build_path = /obj/item/weapon/circuitboard/autolathe_disk_cloner
 */
 
-/datum/design/autolathe/circuit/helm
-	name = "helm control console"
-	build_path = /obj/item/weapon/circuitboard/helm
-
-/datum/design/autolathe/circuit/nav
-	name = "navigation console"
-	build_path = /obj/item/weapon/circuitboard/nav
-
 
 

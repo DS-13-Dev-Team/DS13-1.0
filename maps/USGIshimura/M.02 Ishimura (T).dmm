@@ -405,7 +405,9 @@
 /turf/simulated/floor/dank,
 /area/ishimura/tramdeck/tram/misc/disusedbotanics)
 "bg" = (
-/obj/structure/closet/secure_closet/hydroponics/hydro,
+/obj/structure/closet/secure_closet/hydroponics{
+	req_access = list()
+	},
 /obj/random/tool/low_chance,
 /turf/simulated/floor/dank,
 /area/ishimura/tramdeck/tram/misc/disusedbotanics)
@@ -436,7 +438,9 @@
 /turf/simulated/floor/dank,
 /area/ishimura/tramdeck/tram/misc/disusedbotanics)
 "bk" = (
-/obj/structure/closet/secure_closet/hydroponics/hydro,
+/obj/structure/closet/secure_closet/hydroponics{
+	req_access = list()
+	},
 /obj/random/tool_upgrade/rare,
 /obj/machinery/light{
 	dir = 1

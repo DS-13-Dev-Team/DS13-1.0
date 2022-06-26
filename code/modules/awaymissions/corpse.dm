@@ -165,3 +165,24 @@
 /obj/effect/landmark/corpse/syndicate/commando
 	name = "Syndicate Commando"
 	corpse_outfits = list(/decl/hierarchy/outfit/mercenary/syndicate/commando)
+
+/obj/effect/landmark/corpse/marooned_officer
+	name = "Horazy Warda"
+	corpse_outfits = list(/decl/hierarchy/outfit/marooned_officer)
+	spawn_flags = ~CORPSE_SPAWNER_RANDOM_NAME
+
+/decl/hierarchy/outfit/marooned_officer
+	name = "Dead Magnitka's fleet officer"
+	uniform = /obj/item/clothing/under/magintka_uniform
+	suit = /obj/item/clothing/suit/storage/hooded/wintercoat
+	shoes = /obj/item/clothing/shoes/jungleboots
+	gloves = /obj/item/clothing/gloves/thick
+	head = /obj/item/clothing/head/beret
+	l_pocket = /obj/item/weapon/material/butterfly/switchblade
+
+/obj/item/clothing/under/magintka_uniform
+	name = "officer uniform"
+	desc = "A dark uniform coat worn by Magnitka fleet officers."
+	icon_state = "magnitka_officer"
+	icon = 'icons/obj/clothing/marooned_icons.dmi'
+	item_icons = list(slot_w_uniform_str = 'icons/obj/clothing/marooned_icons.dmi')

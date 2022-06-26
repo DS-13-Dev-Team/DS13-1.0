@@ -1798,9 +1798,6 @@
 /turf/simulated/floor/dank/slides,
 /area/shuttle/executive_shuttle)
 "aeY" = (
-/obj/machinery/computer/engines{
-	dir = 1
-	},
 /turf/simulated/floor/dank/grater,
 /area/shuttle/executive_shuttle)
 "aeZ" = (
@@ -5135,7 +5132,7 @@
 /area/mining_colony/SCAF)
 "aou" = (
 /obj/structure/shuttle/engine/propulsion,
-/turf/simulated/floor/exoplanet/volcanic,
+/turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/SCAF)
 "aov" = (
 /obj/item/remains/human,
@@ -7878,7 +7875,7 @@
 /turf/simulated/floor/concrete,
 /area/mining_colony)
 "awE" = (
-/turf/simulated/floor/exoplanet/concrete,
+/turf/simulated/floor/concrete,
 /area/mining_colony)
 "awF" = (
 /obj/effect/floor_decal/industrial/warning,
@@ -7886,7 +7883,7 @@
 /area/mining_colony)
 "awG" = (
 /obj/effect/floor_decal/industrial/warning,
-/turf/simulated/floor/exoplanet/concrete,
+/turf/simulated/floor/concrete,
 /area/mining_colony)
 "awH" = (
 /turf/simulated/shuttle/wall{
@@ -12011,7 +12008,7 @@
 /turf/simulated/floor/tiled/dark/monotile,
 /area/mining_colony/interior/science/researchandev)
 "aIr" = (
-/turf/simulated/mineral/volcanic,
+/turf/unsimulated/mask,
 /area/mining_colony)
 "aIs" = (
 /obj/structure/table/standard,
@@ -14786,7 +14783,6 @@
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/interior/shuttle_bay/shuttle_1)
 "aPC" = (
-/obj/machinery/computer/engines,
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/interior/shuttle_bay/shuttle_1)
 "aPD" = (
@@ -14833,7 +14829,6 @@
 	},
 /area/mining_colony/security)
 "aPJ" = (
-/obj/machinery/computer/engines,
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/interior/shuttle_bay/shuttle_2)
 "aPK" = (

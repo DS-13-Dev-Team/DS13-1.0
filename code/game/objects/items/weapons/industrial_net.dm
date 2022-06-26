@@ -2,7 +2,7 @@
 /obj/structure/net//if you want to have fun, make them to be draggable as a whole unless at least one piece is attached to a non-space turf or anchored object
 	name = "industrial net"
 	desc = "A sturdy industrial net of synthetic belts reinforced with plasteel threads."
-	icon = 'maps/away/errant_pisces/errant_pisces_sprites.dmi'
+	icon = 'icons/obj/errant_pisces_sprites.dmi'
 	icon_state = "net_f"
 	anchored = 1
 	//on the floor
@@ -126,7 +126,7 @@
 	name = "industrial net roll"
 	desc = "Sturdy industrial net reinforced with plasteel threads."
 	singular_name = "industrial net"
-	icon = 'maps/away/errant_pisces/errant_pisces_sprites.dmi'
+	icon = 'icons/obj/errant_pisces_sprites.dmi'
 	icon_state = "net_roll"
 	w_class = ITEM_SIZE_LARGE
 	force = 3.0

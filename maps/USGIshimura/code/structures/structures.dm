@@ -1,7 +1,7 @@
 /obj/structure/casino/roulette
 	name = "roulette"
 	desc = "Spin the roulette to try your luck."
-	icon = 'maps/away/casino/casino_sprites.dmi'
+	icon = 'icons/obj/casino_sprites.dmi'
 	icon_state = "roulette_r"
 	density = 0
 	anchored = 1
@@ -33,7 +33,7 @@
 /obj/structure/casino/roulette_chart
 	name = "roulette chart"
 	desc = "Roulette chart. Place your bets! "
-	icon = 'maps/away/casino/casino_sprites.dmi'
+	icon = 'icons/obj/casino_sprites.dmi'
 	icon_state = "roulette_l"
 	density = 0
 	anchored = 1

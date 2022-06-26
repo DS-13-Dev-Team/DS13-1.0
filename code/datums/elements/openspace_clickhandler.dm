@@ -30,7 +30,7 @@
 
 /obj/item/stack/rods/handle_openspace_click(turf/target, mob/user, proximity_flag, click_parameters)
 	if(proximity_flag)
-		var/obj/structure/lattice/L = locate(/obj/structure/lattice, target)
+		var/obj/structure/L = locate(/obj/structure/lattice, target) || locate(/obj/structure/catwalk, target)
 		if(L)
 			return L.attackby(src, user)
 		if(use(1))

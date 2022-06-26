@@ -120,6 +120,16 @@
 	floor_type = /turf/simulated/floor/fixed/alium
 	list/blend_objects = newlist()
 
+/turf/simulated/floor/fixed/alium/ruin
+	name = "ancient alien plating"
+	desc = "This obviously wasn't made for your feet. Looks pretty old."
+	initial_gas = null
+
+/turf/simulated/floor/fixed/alium/ruin/Initialize()
+	. = ..()
+	if(prob(10))
+		ChangeTurf(get_base_turf_by_area(src))
+
 /turf/simulated/wall/alium/New(var/newloc)
 	..(newloc,"aliumium")
 
