@@ -64,7 +64,7 @@ GLOBAL_VAR_INIT(number_of_store_kiosks, 0)
 
 	overlays.Cut()
 	if (door_state == -1)
-		var/image/I = image(icon, src, "door_closed",ABOVE_HUMAN_LAYER )
+		var/mutable_appearance/I = mutable_appearance(icon, "door_closed", ABOVE_HUMAN_LAYER, DEFAULT_PLANE)
 		overlays += I
 		light = FALSE
 
