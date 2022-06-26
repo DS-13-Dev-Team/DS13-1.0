@@ -75,14 +75,14 @@
 /turf/space/attackby(obj/item/C as obj, mob/user as mob)
 
 	if (istype(C, /obj/item/stack/rods))
-		var/obj/structure/L = locate(/obj/structure/lattice, src) || locate(/obj/structure/catwalk, target)
+		var/obj/structure/L = locate(/obj/structure/lattice, src) || locate(/obj/structure/catwalk, src)
 		if(L)
 			return L.attackby(C, user)
 		var/obj/item/stack/rods/R = C
 		if (R.use(1))
 			to_chat(user, "<span class='notice'>Constructing support lattice ...</span>")
 			playsound(src, 'sound/weapons/Genhit.ogg', 50, 1)
-			ReplaceWithLattice(R.material.name)
+			ReplaceWithLattice()
 		return
 
 	if (istype(C, /obj/item/stack/tile/floor))

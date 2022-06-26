@@ -109,14 +109,14 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 
 /turf/simulated/open/attackby(obj/item/C, mob/user)
 	if (istype(C, /obj/item/stack/rods))
-		var/obj/structure/L = locate(/obj/structure/lattice, src) || locate(/obj/structure/catwalk, target)
+		var/obj/structure/L = locate(/obj/structure/lattice, src) || locate(/obj/structure/catwalk, src)
 		if(L)
 			return L.attackby(C, user)
 		var/obj/item/stack/rods/R = C
 		if (R.use(1))
 			to_chat(user, "<span class='notice'>You lay down the support lattice.</span>")
 			playsound(src, 'sound/weapons/Genhit.ogg', 50, 1)
-			new /obj/structure/lattice(locate(src.x, src.y, src.z), R.material.name)
+			new /obj/structure/lattice(src)
 		return
 
 	if (istype(C, /obj/item/stack/tile))
