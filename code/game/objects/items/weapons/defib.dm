@@ -382,7 +382,7 @@
 		if(H.mind)
 			var/mob/dead/observer/eye/signal/mob = H.mind.current
 			if(mob.client)
-				if(tgui_alert(H.mind.current, "Someone tries to resurrect you. Do you want to re-enter your corpse?","I love Defib!",list("Yes","No")) != "Yes")
+				if(tgui_alert(mob, "Someone tries to resurrect you. Do you want to re-enter your corpse?","I love Defib!",list("Yes","No")) != "Yes")
 					to_chat(user, SPAN_NOTICE("The soule refuses to come back!"))
 				else
 					if(istype(mob))

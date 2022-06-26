@@ -33,6 +33,11 @@ GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 	latejoin_antag_tags = list(MODE_UNITOLOGIST_SHARD)
 
 /datum/game_mode/marker/enemy_within/get_marker_location()
+	var/obj/structure/showcase/marker/fake = locate(/obj/structure/showcase/marker)
+	if(fake)
+		. = get_turf(fake)
+		qdel(fake)
+		return .
 	return pick(SSnecromorph.marker_spawns_aegis)
 
 /datum/game_mode/marker

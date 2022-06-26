@@ -2962,15 +2962,6 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 10
 	},
-/obj/structure/showcase{
-	bound_height = 64;
-	bound_width = 96;
-	desc = "A false replica of the marker for religious purpouses.";
-	icon = 'icons/obj/marker_giant.dmi';
-	icon_state = "marker_giant_dormant";
-	layer = 4.08;
-	name = "Marker"
-	},
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/uni_church)
 "aiq" = (
@@ -13542,7 +13533,7 @@
 /area/mining_colony/security)
 "aMe" = (
 /obj/effect/floor_decal/spline/fancy/wood,
-/obj/effect/landmark/marker/aegis,
+/obj/structure/showcase/marker,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/uni_church)
 "aMf" = (
