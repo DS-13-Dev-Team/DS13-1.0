@@ -1,4 +1,4 @@
-#define SALARY_INTERVAL	(30 MINUTES)
+#define SALARY_INTERVAL	(20 MINUTES)
 
 #define SALARY_UNSKILLED	500	//Minimum salary employees, civilians, miners, expendable people
 #define SALARY_SKILLED	750	//People who work with their hands, engineers mostly
