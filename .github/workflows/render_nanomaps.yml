@@ -9,7 +9,7 @@ on:
     branches:
       - dev
     paths:
-      - 'maps/**'
+      - 'maps/**/*.dmm'
 
 jobs:
   generate_maps:
