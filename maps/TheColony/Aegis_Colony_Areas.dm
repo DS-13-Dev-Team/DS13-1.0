@@ -9,6 +9,13 @@
 	sound_env = ASTEROID
 	ship_area = TRUE
 
+/area/mining_colony/surface
+	name = "\improper Aegis Surface"
+	icon = 'maps/TheColony/ishimura_areas.dmi'
+	icon_state = "aegis"
+	sound_env = ASTEROID
+	ship_area = TRUE
+
 // Abandoned areas of the colony outside
 
 /area/mining_colony/abandoned
@@ -475,6 +482,7 @@ area/mining_colony/interior/mining/hallway
 	name = "\improper Aegis Excavation Area - Marker Excavation Site A-7"
 	icon_state = "miscbase"
 	sound_env = ASTEROID
+	base_lighting_alpha = 90
 
 
 /area/mining_colony/interior/excavation/obs_room
@@ -709,24 +717,28 @@ area/mining_colony/interior/mining/hallway
 	icon_state = "maintbase"
 	sound_env = ASTEROID
 	is_maintenance = FALSE
+	base_lighting_alpha = 90
 
 /area/mining_colony/lower/mining_caves/shelter_1
 	name = "\improper Aegis Caves - Cave-In Shelter 1"
 	icon_state = "crewbase"
 	sound_env = ASTEROID
 	is_maintenance = FALSE
+	base_lighting_alpha = 0
 
 /area/mining_colony/lower/mining_caves/shelter_2
 	name = "\improper Aegis Caves - Cave-In Shelter 2"
 	icon_state = "crewbase"
 	sound_env = ASTEROID
 	is_maintenance = FALSE
+	base_lighting_alpha = 0
 
 /area/mining_colony/lower/mining_caves/shelter_3
 	name = "\improper Aegis Caves - Cave-In Shelter 3"
 	icon_state = "crewbase"
 	sound_env = ASTEROID
 	is_maintenance = FALSE
+	base_lighting_alpha = 0
 
 /area/mining_colony/lower/excav
 	name = "\improper Aegis Lower Level - Excavation Storage Area"

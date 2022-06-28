@@ -82,13 +82,10 @@
 /turf/simulated/floor/asteroid/get_footstep_sound()
 	return safepick(footstep_sounds[FOOTSTEP_ASTEROID])
 
-/turf/simulated/floor/exoplanet/get_footstep_sound()
-	return safepick(footstep_sounds[FOOTSTEP_CARPET])
+/turf/simulated/floor/water_shallow
+	initial_flooring = /decl/flooring/water
 
-/turf/simulated/floor/exoplanet/grass/get_footstep_sound()
-	return safepick(footstep_sounds[FOOTSTEP_GRASS])
-
-/turf/simulated/floor/exoplanet/water/shallow/get_footstep_sound()
+/turf/simulated/floor/water_shallow/get_footstep_sound()
 	return safepick(footstep_sounds[FOOTSTEP_WATER])
 
 /turf/simulated/floor/fixed/get_footstep_sound()
