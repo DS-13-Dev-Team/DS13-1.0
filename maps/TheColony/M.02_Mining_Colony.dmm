@@ -2,7 +2,7 @@
 "aaa" = (
 /obj/structure/bed/chair,
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aab" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/interior/science/airlock)
@@ -350,12 +350,6 @@
 "abj" = (
 /turf/simulated/floor/plating,
 /area/mining_colony/interior/apartament)
-"abk" = (
-/turf/unsimulated/mineral{
-	icon = 'icons/turf/flooring/lava.dmi';
-	icon_state = "rock"
-	},
-/area/space)
 "abl" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/abandoned/hydro)
@@ -402,7 +396,7 @@
 /area/mining_colony/interior/excavation/marker_excav)
 "abs" = (
 /turf/simulated/wall/titanium,
-/area/mining_colony)
+/area/mining_colony/surface)
 "abt" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
@@ -425,12 +419,12 @@
 "abw" = (
 /obj/machinery/floodlight/on,
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "abx" = (
 /obj/structure/table/steel_reinforced,
 /obj/random/loot/sometimes/many,
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aby" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1;
@@ -477,7 +471,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "abE" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/random/loot/sometimes/some,
@@ -504,7 +498,7 @@
 "abH" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor,
-/area/mining_colony)
+/area/mining_colony/surface)
 "abI" = (
 /obj/machinery/power/apc/infinite{
 	dir = 1;
@@ -512,7 +506,7 @@
 	name = "How the hell did you find me!?"
 	},
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "abJ" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/random/loot/usually/many,
@@ -526,7 +520,7 @@
 "abK" = (
 /obj/item/weapon/storage/toolbox/electrical,
 /turf/simulated/floor/concrete,
-/area/mining_colony)
+/area/mining_colony/surface)
 "abL" = (
 /obj/structure/largecrate/ds/green_diagonal_alt,
 /turf/simulated/floor/dank/rectangles,
@@ -546,7 +540,7 @@
 "abP" = (
 /obj/effect/landmark/marker/ishimura,
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "abQ" = (
 /obj/structure/largecrate/ds/green_vertical,
 /turf/simulated/floor/dank/rectangles,
@@ -568,7 +562,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/concrete,
-/area/mining_colony)
+/area/mining_colony/surface)
 "abU" = (
 /obj/structure/shuttle/engine/heater{
 	dir = 1
@@ -579,16 +573,16 @@
 "abV" = (
 /obj/item/weapon/light/tube,
 /turf/simulated/floor/concrete,
-/area/mining_colony)
+/area/mining_colony/surface)
 "abW" = (
 /obj/effect/decal/remains,
 /obj/item/clothing/suit/storage/toggle/labcoat,
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "abX" = (
 /obj/item/weapon/caution/cone,
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "abY" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -645,7 +639,7 @@
 "acg" = (
 /obj/machinery/light,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony)
+/area/mining_colony/surface)
 "ach" = (
 /obj/structure/railing/mapped{
 	dir = 8;
@@ -766,7 +760,7 @@
 /obj/effect/floor_decal/dank/outline,
 /obj/random/loot/often/few,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony)
+/area/mining_colony/surface)
 "acA" = (
 /turf/simulated/floor/asteroid/outside_ds/dry_firm,
 /area/mining_colony/interior/excavation/marker_excav)
@@ -797,7 +791,7 @@
 /obj/effect/decal/remains,
 /obj/item/weapon/rig/scaf/legionnaire,
 /turf/simulated/floor,
-/area/mining_colony)
+/area/mining_colony/surface)
 "acG" = (
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/dank/grater,
@@ -821,7 +815,7 @@
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/excavation/obs_room)
 "acJ" = (
-/turf/simulated/floor/exoplanet/water/shallow,
+/turf/simulated/floor/water_shallow,
 /area/mining_colony/interior)
 "acK" = (
 /obj/structure/railing/mapped{
@@ -885,7 +879,7 @@
 	icon_state = "platform_deco"
 	},
 /turf/simulated/open,
-/area/mining_colony)
+/area/mining_colony/surface)
 "acU" = (
 /obj/machinery/light{
 	dir = 4
@@ -930,7 +924,7 @@
 /area/mining_colony/interior/science/researchandev)
 "ada" = (
 /turf/simulated/floor,
-/area/mining_colony)
+/area/mining_colony/surface)
 "adb" = (
 /turf/simulated/floor/dank/rectangles,
 /area/mining_colony/interior/uni_church)
@@ -1185,22 +1179,22 @@
 "adG" = (
 /obj/item/weapon/tool/crowbar/brace_jack,
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "adH" = (
 /obj/effect/floor_decal/industrial/warning,
 /obj/effect/decal/remains,
 /obj/item/clothing/suit/storage/toggle/labcoat,
 /turf/simulated/floor,
-/area/mining_colony)
+/area/mining_colony/surface)
 "adI" = (
 /obj/effect/floor_decal/industrial/warning,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor,
-/area/mining_colony)
+/area/mining_colony/surface)
 "adJ" = (
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor,
-/area/mining_colony)
+/area/mining_colony/surface)
 "adK" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/table/rack,
@@ -1741,7 +1735,7 @@
 	})
 "aeQ" = (
 /turf/simulated/floor/tiled/dark,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aeR" = (
 /obj/structure/bed/chair/holochair{
 	dir = 1
@@ -1754,14 +1748,14 @@
 "aeS" = (
 /obj/effect/decal/remains,
 /turf/simulated/floor/tiled/dark,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aeT" = (
 /obj/machinery/door/blast/regular{
 	max_health = 900;
 	name = "Ancient Blast Door"
 	},
 /turf/unsimulated/mask,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aeU" = (
 /obj/item/weapon/reagent_containers/food/drinks/cans/speer,
 /obj/item/weapon/reagent_containers/food/drinks/cans/speer,
@@ -1965,7 +1959,7 @@
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/excavation/obs_room)
 "afx" = (
-/turf/simulated/floor/exoplanet/water/shallow,
+/turf/simulated/floor/water_shallow,
 /area/mining_colony/interior/plaza)
 "afy" = (
 /obj/machinery/light/small{
@@ -2041,7 +2035,7 @@
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/dank/grater,
-/area/mining_colony)
+/area/mining_colony/surface)
 "afI" = (
 /turf/simulated/floor/dank/slides_end,
 /area/mining_colony/security)
@@ -2083,7 +2077,7 @@
 "afN" = (
 /obj/structure/table/steel_reinforced,
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "afO" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -2127,12 +2121,12 @@
 /area/mining_colony/interior/apartament)
 "afV" = (
 /turf/simulated/floor/asteroid/outside_ds/dry_soft,
-/area/mining_colony)
+/area/mining_colony/surface)
 "afW" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/weapon/fossil/bone,
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "afX" = (
 /obj/machinery/light{
 	dir = 8
@@ -2143,7 +2137,7 @@
 	})
 "afY" = (
 /turf/simulated/floor/asteroid/outside_ds/dry_cracked,
-/area/mining_colony)
+/area/mining_colony/surface)
 "afZ" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
@@ -2155,7 +2149,7 @@
 /obj/structure/table/steel_reinforced,
 /obj/item/weapon/storage/excavation,
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "agb" = (
 /obj/machinery/door/airlock/civilian{
 	dir = 4;
@@ -2184,7 +2178,7 @@
 "age" = (
 /obj/machinery/portable_atmospherics/hydroponics,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony)
+/area/mining_colony/surface)
 "agf" = (
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/interior/mining)
@@ -2279,7 +2273,7 @@
 /obj/effect/floor_decal/dank/outline,
 /obj/random/loot/often/few,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony)
+/area/mining_colony/surface)
 "ags" = (
 /obj/structure/table/standard,
 /obj/item/weapon/storage/box/donkpockets,
@@ -2355,7 +2349,7 @@
 "agA" = (
 /obj/structure/sign/deck/ds,
 /turf/simulated/wall/r_wall,
-/area/mining_colony)
+/area/mining_colony/surface)
 "agB" = (
 /turf/simulated/floor/tiled/white,
 /area/mining_colony/interior/medbay)
@@ -2371,7 +2365,7 @@
 "agE" = (
 /obj/random/closet,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony)
+/area/mining_colony/surface)
 "agF" = (
 /obj/machinery/suit_storage_unit/standard_unit,
 /turf/simulated/floor/tiled/monotile,
@@ -2490,7 +2484,7 @@
 /obj/random/loot/usually/few,
 /obj/random/loot/usually/some,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aha" = (
 /obj/machinery/door/airlock/security{
 	dir = 8;
@@ -2519,7 +2513,7 @@
 	name = "ShuttleRepairPart"
 	},
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "ahf" = (
 /obj/machinery/firealarm{
 	pixel_y = 24
@@ -2868,7 +2862,7 @@
 	icon_state = "chair_preview"
 	},
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aic" = (
 /obj/structure/bed/chair/office{
 	dir = 8
@@ -3085,7 +3079,7 @@
 /area/mining_colony/interior/excavation/marker_excav)
 "aiI" = (
 /turf/simulated/floor/asteroid/outside_ds/cracked,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aiJ" = (
 /obj/machinery/light/small/red{
 	dir = 1;
@@ -3166,7 +3160,7 @@
 /obj/effect/floor_decal/dank/outline,
 /obj/random/loot/often/few,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aiT" = (
 /obj/structure/closet/hydrant{
 	pixel_y = -30
@@ -3211,7 +3205,7 @@
 	icon_state = "platform"
 	},
 /turf/simulated/floor/asteroid/outside_ds/dry_firm,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aiY" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/interior/excavation/interior)
@@ -3317,7 +3311,7 @@
 	icon_state = "platform_deco"
 	},
 /turf/simulated/floor/asteroid/outside_ds/dry_muddy,
-/area/mining_colony)
+/area/mining_colony/surface)
 "ajr" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -3342,7 +3336,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/dank/grater,
-/area/mining_colony)
+/area/mining_colony/surface)
 "ajv" = (
 /turf/simulated/floor/dank/heavy,
 /area/mining_colony/interior/apartament)
@@ -3369,7 +3363,7 @@
 	icon_state = "platform_deco"
 	},
 /turf/simulated/floor/asteroid/outside_ds/dry_firm,
-/area/mining_colony)
+/area/mining_colony/surface)
 "ajA" = (
 /obj/structure/platform,
 /obj/structure/platform{
@@ -3588,7 +3582,7 @@
 /area/mining_colony/SCAF)
 "akd" = (
 /turf/simulated/floor/plating,
-/area/mining_colony)
+/area/mining_colony/surface)
 "ake" = (
 /turf/simulated/floor/tiled/freezer,
 /area/mining_colony/interior/apartament)
@@ -3655,11 +3649,11 @@
 /turf/simulated/floor/dank/cable{
 	dir = 4
 	},
-/area/mining_colony)
+/area/mining_colony/surface)
 "akn" = (
 /obj/structure/inflatable/wall,
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "ako" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -3944,7 +3938,7 @@
 /obj/item/device/flashlight/flare,
 /obj/item/device/flashlight/flare,
 /turf/simulated/floor/asteroid/outside_ds/dry_firm,
-/area/mining_colony)
+/area/mining_colony/surface)
 "alb" = (
 /obj/machinery/light{
 	dir = 1
@@ -4231,7 +4225,7 @@
 "alS" = (
 /obj/structure/inflatable/door,
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "alT" = (
 /obj/machinery/light{
 	dir = 4
@@ -4418,7 +4412,7 @@
 "amu" = (
 /obj/structure/ladder,
 /turf/simulated/floor/plating,
-/area/mining_colony)
+/area/mining_colony/surface)
 "amv" = (
 /obj/machinery/firealarm{
 	dir = 4;
@@ -4447,7 +4441,7 @@
 "amy" = (
 /obj/structure/table/rack,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony)
+/area/mining_colony/surface)
 "amz" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -4460,7 +4454,7 @@
 /obj/structure/table/rack,
 /obj/random/common_loot,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony)
+/area/mining_colony/surface)
 "amB" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
@@ -4592,7 +4586,7 @@
 "amT" = (
 /obj/structure/ladder,
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "amU" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -4841,7 +4835,7 @@
 "anE" = (
 /obj/item/weapon/fossil/shell,
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "anF" = (
 /turf/simulated/open,
 /area/mining_colony/security)
@@ -5051,7 +5045,7 @@
 "aoi" = (
 /obj/structure/largecrate/ds/green_horizontal,
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aoj" = (
 /obj/machinery/camera/network/security{
 	dir = 4
@@ -5063,7 +5057,7 @@
 "aok" = (
 /obj/structure/reagent_dispensers/beerkeg,
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aol" = (
 /obj/structure/table/standard,
 /obj/item/weapon/pen/multi,
@@ -5212,7 +5206,7 @@
 /area/mining_colony/interior)
 "aoG" = (
 /turf/unsimulated/mask,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aoH" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/interior)
@@ -5247,7 +5241,7 @@
 	name = "ShuttleRepairPart"
 	},
 /turf/simulated/floor,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aoN" = (
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/interior/maint/storage)
@@ -5355,7 +5349,7 @@
 "apa" = (
 /obj/structure/girder,
 /turf/simulated/floor,
-/area/mining_colony)
+/area/mining_colony/surface)
 "apb" = (
 /obj/machinery/computer/fusion_fuel_control{
 	id_tag = "colonypower"
@@ -5528,7 +5522,7 @@
 "apx" = (
 /obj/machinery/vending/coffee,
 /turf/simulated/floor,
-/area/mining_colony)
+/area/mining_colony/surface)
 "apy" = (
 /obj/machinery/light,
 /turf/simulated/floor/dank/medical,
@@ -5536,7 +5530,7 @@
 "apz" = (
 /obj/machinery/vending/hotfood,
 /turf/simulated/floor,
-/area/mining_colony)
+/area/mining_colony/surface)
 "apA" = (
 /obj/structure/bed/roller,
 /obj/item/device/radio/intercom/department/medbay{
@@ -5570,7 +5564,7 @@
 "apF" = (
 /obj/machinery/vending/snack,
 /turf/simulated/floor,
-/area/mining_colony)
+/area/mining_colony/surface)
 "apG" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/power/apc{
@@ -5600,7 +5594,7 @@
 "apK" = (
 /obj/machinery/vending/cola,
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "apL" = (
 /turf/simulated/floor/tiled/white/monotile,
 /area/mining_colony/interior/medbay)
@@ -5883,7 +5877,7 @@
 "aqA" = (
 /obj/effect/wingrille_spawn/reinforced,
 /turf/simulated/floor,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aqB" = (
 /obj/machinery/door/window/brigdoor/northright{
 	id = "Cell 4"
@@ -6422,18 +6416,18 @@
 "asc" = (
 /obj/machinery/light,
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "asd" = (
 /obj/structure/girder/displaced,
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "ase" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/interior/enginieering/telecomms_control)
 "asf" = (
 /obj/structure/largecrate/ds/green_diagonal,
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "asg" = (
 /obj/effect/landmark/marker/ishimura,
 /turf/simulated/floor/dank/grater,
@@ -6442,19 +6436,19 @@
 /obj/item/weapon/reagent_containers/food/drinks/cans/artbru,
 /obj/item/weapon/reagent_containers/food/drinks/cans/artbru,
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "asi" = (
 /obj/structure/table/rack,
 /turf/simulated/floor,
-/area/mining_colony)
+/area/mining_colony/surface)
 "asj" = (
 /obj/structure/table/standard,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony)
+/area/mining_colony/surface)
 "ask" = (
 /obj/item/weapon/reagent_containers/food/drinks/cans/artbru,
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "asl" = (
 /obj/structure/table/rack,
 /obj/random/loot/usually/many,
@@ -6467,11 +6461,11 @@
 "asm" = (
 /obj/structure/reagent_dispensers/watertank,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony)
+/area/mining_colony/surface)
 "asn" = (
 /obj/effect/mine/stun,
 /turf/simulated/floor/asteroid/outside_ds/dry_cracked,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aso" = (
 /obj/effect/landmark{
 	name = "ShuttleRepairPart"
@@ -6482,37 +6476,37 @@
 /obj/structure/table/standard,
 /obj/item/weapon/storage/toolbox/mechanical,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony)
+/area/mining_colony/surface)
 "asq" = (
 /obj/machinery/portable_atmospherics/hydroponics,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony)
+/area/mining_colony/surface)
 "asr" = (
 /obj/structure/table/standard,
 /obj/item/tape/engineering,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony)
+/area/mining_colony/surface)
 "ass" = (
 /obj/structure/door_assembly{
 	anchored = 1
 	},
 /turf/simulated/floor,
-/area/mining_colony)
+/area/mining_colony/surface)
 "ast" = (
 /obj/structure/grille/broken,
 /turf/simulated/floor,
-/area/mining_colony)
+/area/mining_colony/surface)
 "asu" = (
 /obj/structure/grille,
 /turf/simulated/floor,
-/area/mining_colony)
+/area/mining_colony/surface)
 "asv" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
 	},
 /turf/simulated/floor/concrete,
-/area/mining_colony)
+/area/mining_colony/surface)
 "asw" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -6524,7 +6518,7 @@
 "asx" = (
 /obj/structure/barricade/wood,
 /turf/simulated/floor/concrete,
-/area/mining_colony)
+/area/mining_colony/surface)
 "asy" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/interior/kellion_arrival)
@@ -6573,7 +6567,7 @@
 "asI" = (
 /obj/effect/mine/stun,
 /turf/simulated/floor/asteroid/outside_ds/dry_muddy,
-/area/mining_colony)
+/area/mining_colony/surface)
 "asJ" = (
 /obj/structure/cable{
 	d2 = 2;
@@ -6653,7 +6647,7 @@
 	name = "ShuttleRepairPart"
 	},
 /turf/simulated/floor/dank/grater,
-/area/mining_colony)
+/area/mining_colony/surface)
 "asV" = (
 /obj/structure/table/rack,
 /obj/effect/landmark{
@@ -6664,7 +6658,7 @@
 "asW" = (
 /obj/effect/mine/stun,
 /turf/simulated/floor/asteroid/outside_ds/dry_firm,
-/area/mining_colony)
+/area/mining_colony/surface)
 "asX" = (
 /obj/effect/floor_decal/dank/outline,
 /obj/machinery/portable_atmospherics/powered/scrubber/huge,
@@ -6958,7 +6952,7 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/reagent_dispensers/watertank,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony)
+/area/mining_colony/surface)
 "atL" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/random/loot/sometimes/many,
@@ -6972,10 +6966,10 @@
 /obj/structure/table/rack/dark,
 /obj/random/loot/usually/few,
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "atN" = (
 /turf/simulated/open,
-/area/mining_colony)
+/area/mining_colony/surface)
 "atO" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -7070,7 +7064,7 @@
 /area/mining_colony/interior/mining/hallway)
 "aue" = (
 /turf/simulated/floor/concrete,
-/area/mining_colony)
+/area/mining_colony/surface)
 "auf" = (
 /obj/structure/ladder,
 /turf/simulated/floor/plating,
@@ -7294,7 +7288,7 @@
 	name = "\improper WARNING: RESTRICTED AREA"
 	},
 /turf/simulated/wall/r_wall,
-/area/mining_colony)
+/area/mining_colony/surface)
 "auO" = (
 /obj/machinery/power/apc{
 	dir = 1;
@@ -7494,7 +7488,7 @@
 /area/mining_colony/interior/excavation/control_room)
 "avt" = (
 /turf/simulated/floor/asteroid/outside_ds/dry_firm,
-/area/mining_colony)
+/area/mining_colony/surface)
 "avu" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/bed/chair/wheelchair,
@@ -7508,7 +7502,7 @@
 /area/mining_colony/interior/excavation/hangar)
 "avw" = (
 /turf/simulated/floor/asteroid/outside_ds/dry_muddy,
-/area/mining_colony)
+/area/mining_colony/surface)
 "avx" = (
 /obj/structure/platform_decoration{
 	dir = 1;
@@ -7857,34 +7851,27 @@
 	dir = 4
 	},
 /turf/simulated/floor/concrete,
-/area/mining_colony)
+/area/mining_colony/surface)
 "awB" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/mining/drill,
 /turf/simulated/floor/concrete,
-/area/mining_colony)
+/area/mining_colony/surface)
 "awC" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/mining/brace{
 	dir = 8
 	},
 /turf/simulated/floor/concrete,
-/area/mining_colony)
+/area/mining_colony/surface)
 "awD" = (
 /obj/structure/ore_box,
 /turf/simulated/floor/concrete,
-/area/mining_colony)
-"awE" = (
-/turf/simulated/floor/concrete,
-/area/mining_colony)
+/area/mining_colony/surface)
 "awF" = (
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/concrete,
-/area/mining_colony)
-"awG" = (
-/obj/effect/floor_decal/industrial/warning,
-/turf/simulated/floor/concrete,
-/area/mining_colony)
+/area/mining_colony/surface)
 "awH" = (
 /turf/simulated/shuttle/wall{
 	dir = 1;
@@ -7940,9 +7927,6 @@
 /obj/structure/closet/crate/bin,
 /turf/simulated/floor/dank/maint,
 /area/mining_colony/interior/enginieering/main_room)
-"awQ" = (
-/turf/simulated/floor/dank/grater,
-/area/shuttle/executive_shuttle)
 "awR" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/device/flashlight/maglight,
@@ -8532,7 +8516,7 @@
 /obj/structure/table/rack/dark,
 /obj/random/loot/rarely/few,
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "ayI" = (
 /obj/machinery/light{
 	dir = 8
@@ -9557,7 +9541,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aBB" = (
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/interior/cargo/officerarea)
@@ -9878,7 +9862,7 @@
 /area/mining_colony/interior/bartenderarea)
 "aCq" = (
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aCr" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -9953,7 +9937,7 @@
 /area/mining_colony/interior/enginieering/reactor)
 "aCB" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aCC" = (
 /obj/effect/floor_decal/spline/fancy/wood/cee{
 	dir = 4
@@ -10066,7 +10050,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/concrete,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aCR" = (
 /obj/structure/table/marble,
 /obj/item/weapon/storage/box/condimentbottles,
@@ -10823,7 +10807,7 @@
 "aFd" = (
 /obj/effect/wallframe_spawn/reinforced,
 /turf/simulated/floor/dank/mono,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aFe" = (
 /obj/machinery/light{
 	dir = 8
@@ -11584,7 +11568,7 @@
 /obj/random/drinkbottle,
 /obj/random/drinkbottle,
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aHk" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
@@ -11601,7 +11585,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aHm" = (
 /obj/random/junk,
 /obj/structure/cable{
@@ -12007,9 +11991,6 @@
 	},
 /turf/simulated/floor/tiled/dark/monotile,
 /area/mining_colony/interior/science/researchandev)
-"aIr" = (
-/turf/unsimulated/mask,
-/area/mining_colony)
 "aIs" = (
 /obj/structure/table/standard,
 /obj/item/weapon/stamp/mining,
@@ -12356,7 +12337,7 @@
 "aJi" = (
 /obj/structure/grille,
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aJj" = (
 /obj/machinery/power/apc/critical{
 	dir = 1;
@@ -12439,13 +12420,13 @@
 /area/mining_colony/interior/seccie_checkpoint_2)
 "aJs" = (
 /obj/machinery/light/small,
-/turf/simulated/floor/exoplanet/water/shallow,
+/turf/simulated/floor/water_shallow,
 /area/mining_colony/interior/plaza)
 "aJt" = (
 /obj/machinery/light/small{
 	dir = 4
 	},
-/turf/simulated/floor/exoplanet/water/shallow,
+/turf/simulated/floor/water_shallow,
 /area/mining_colony/interior/plaza)
 "aJu" = (
 /obj/structure/cable{
@@ -12469,18 +12450,18 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/turf/simulated/floor/exoplanet/water/shallow,
+/turf/simulated/floor/water_shallow,
 /area/mining_colony/interior/plaza)
 "aJx" = (
 /obj/effect/floor_decal/industrial/warning,
 /obj/effect/decal/remains,
 /turf/simulated/floor/tiled/dark,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aJy" = (
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/simulated/floor/exoplanet/water/shallow,
+/turf/simulated/floor/water_shallow,
 /area/mining_colony/interior/plaza)
 "aJz" = (
 /obj/machinery/biogenerator,
@@ -12521,7 +12502,7 @@
 /obj/structure/table/steel_reinforced,
 /obj/item/weapon/tool_modification/reinforcement/stick,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aJE" = (
 /obj/effect/landmark/start{
 	name = "Planet Cracker"
@@ -12569,7 +12550,7 @@
 "aJL" = (
 /obj/structure/grille/broken,
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aJM" = (
 /obj/structure/closet/secure_closet/guncabinet/sec_support,
 /obj/item/weapon/shield/riot,
@@ -13017,7 +12998,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aKO" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -13883,7 +13864,7 @@
 "aNc" = (
 /obj/structure/wall_frame,
 /turf/simulated/floor/plating,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aNd" = (
 /obj/effect/landmark/node_room,
 /turf/simulated/floor/wood,
@@ -13910,7 +13891,7 @@
 "aNg" = (
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled/dark,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aNh" = (
 /obj/structure/closet/secure_closet/brig{
 	id = "Cell 1";
@@ -14363,19 +14344,19 @@
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/concrete,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aOs" = (
 /obj/machinery/mining/drill,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/concrete,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aOt" = (
 /obj/machinery/mining/brace{
 	dir = 8
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/concrete,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aOu" = (
 /obj/machinery/vending/snix,
 /turf/simulated/floor/dank/mono,
@@ -14484,7 +14465,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/concrete,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aOM" = (
 /obj/structure/closet/secure_closet/personal/empty,
 /obj/item/clothing/head/chefhat,
@@ -14501,7 +14482,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aOO" = (
 /obj/machinery/power/apc{
 	dir = 1;
@@ -14714,7 +14695,7 @@
 	icon_state = "tube_map"
 	},
 /turf/simulated/floor/dank/golf_brown,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aPq" = (
 /turf/simulated/shuttle/wall{
 	dir = 5;
@@ -14753,7 +14734,7 @@
 	anchored = 1
 	},
 /turf/simulated/floor/dank/mono,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aPw" = (
 /turf/simulated/shuttle/wall{
 	dir = 5;
@@ -14775,9 +14756,6 @@
 "aPz" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/interior/enginieering/airlock)
-"aPA" = (
-/turf/simulated/floor/dank/golf_brown,
-/area/mining_colony/interior/shuttle_bay/shuttle_1)
 "aPB" = (
 /obj/machinery/computer/shuttle_control/escape1,
 /turf/simulated/floor/dank/golf_brown,
@@ -14808,9 +14786,6 @@
 /obj/item/clothing/under/casual_pants/camo,
 /turf/simulated/floor/dank/heavy,
 /area/mining_colony/interior/apartament)
-"aPH" = (
-/turf/simulated/floor/dank/golf_brown,
-/area/mining_colony/interior/shuttle_bay/shuttle_2)
 "aPI" = (
 /obj/machinery/power/apc/high{
 	dir = 1;
@@ -14974,7 +14949,7 @@
 /obj/item/weapon/spacecash/c20,
 /obj/item/weapon/spacecash/c50,
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aQf" = (
 /obj/machinery/portable_atmospherics/hydroponics,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -14983,12 +14958,12 @@
 "aQg" = (
 /obj/item/weapon/fossil/bone,
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aQh" = (
 /obj/item/weapon/haircomb/brush,
 /obj/item/weapon/mirror,
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aQi" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -15122,7 +15097,7 @@
 /obj/item/weapon/dice,
 /obj/item/weapon/storage/pill_bottle/dice_nerd,
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aQB" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -15146,7 +15121,7 @@
 "aQD" = (
 /obj/item/weapon/fossil,
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aQE" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -15478,14 +15453,14 @@
 /obj/item/stack/flag/green,
 /obj/effect/floor_decal/dank/outline,
 /turf/simulated/floor/concrete,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aRv" = (
 /obj/structure/table/rack,
 /obj/item/weapon/storage/box/greenglowsticks,
 /obj/item/weapon/storage/box/greenglowsticks,
 /obj/effect/floor_decal/dank/outline,
 /turf/simulated/floor/concrete,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aRw" = (
 /obj/structure/table/rack,
 /obj/item/stack/flag/red,
@@ -15493,14 +15468,14 @@
 /obj/item/stack/flag/red,
 /obj/effect/floor_decal/dank/outline,
 /turf/simulated/floor/concrete,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aRx" = (
 /obj/structure/table/rack,
 /obj/item/weapon/storage/box/glowsticks,
 /obj/item/weapon/storage/box/glowsticks,
 /obj/effect/floor_decal/dank/outline,
 /turf/simulated/floor/concrete,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aRy" = (
 /obj/structure/table/rack,
 /obj/item/stack/flag/yellow,
@@ -15508,7 +15483,7 @@
 /obj/item/stack/flag/yellow,
 /obj/effect/floor_decal/dank/outline,
 /turf/simulated/floor/concrete,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aRz" = (
 /obj/structure/table/rack,
 /obj/item/device/flashlight/flare/glowstick,
@@ -15519,7 +15494,7 @@
 /obj/item/device/flashlight/flare/glowstick,
 /obj/effect/floor_decal/dank/outline,
 /turf/simulated/floor/concrete,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aRA" = (
 /obj/machinery/firealarm{
 	dir = 4;
@@ -15922,7 +15897,7 @@
 "aSH" = (
 /obj/item/weapon/caution/cone,
 /turf/simulated/floor/concrete,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aSI" = (
 /obj/effect/floor_decal/corner/grey/border{
 	dir = 8;
@@ -15984,22 +15959,22 @@
 /obj/structure/table/steel_reinforced,
 /obj/random/loot/usually/many,
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aSQ" = (
 /obj/structure/table/steel_reinforced,
 /obj/random/cash_poor,
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aSR" = (
 /obj/machinery/light,
 /turf/simulated/floor/concrete,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aSS" = (
 /obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/concrete,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aST" = (
 /obj/effect/landmark/start{
 	name = "Medical Doctor"
@@ -17348,7 +17323,7 @@
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aVz" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -17356,7 +17331,7 @@
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aVA" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -17364,13 +17339,13 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/concrete,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aVB" = (
 /obj/item/weapon/storage/box/greenglowsticks,
 /obj/item/weapon/storage/box/greenglowsticks,
 /obj/structure/table/rack,
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aVC" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -17378,7 +17353,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aVD" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -17386,7 +17361,7 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aVE" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -17399,7 +17374,7 @@
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aVF" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -17407,7 +17382,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aVG" = (
 /obj/structure/cable/orange{
 	d1 = 1;
@@ -17420,7 +17395,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/concrete,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aVH" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -17433,7 +17408,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/concrete,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aVI" = (
 /obj/structure/cable/orange{
 	d1 = 1;
@@ -17441,7 +17416,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/concrete,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aVJ" = (
 /obj/effect/floor_decal/solarpanel,
 /obj/machinery/power/solar{
@@ -17452,7 +17427,7 @@
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/dank/grater,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aVK" = (
 /obj/structure/cable/orange{
 	d1 = 2;
@@ -17460,7 +17435,7 @@
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aVL" = (
 /obj/structure/cable/orange{
 	d1 = 2;
@@ -17473,7 +17448,7 @@
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/concrete,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aVM" = (
 /obj/effect/floor_decal/solarpanel,
 /obj/machinery/power/solar{
@@ -17484,7 +17459,7 @@
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/dank/grater,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aVN" = (
 /obj/structure/cable/orange{
 	d1 = 1;
@@ -17497,7 +17472,7 @@
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/concrete,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aVO" = (
 /obj/structure/cable/orange{
 	d1 = 2;
@@ -17515,7 +17490,7 @@
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/concrete,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aVP" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/interior/civ_hall{
@@ -17528,7 +17503,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/concrete,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aVR" = (
 /obj/structure/cable/orange{
 	d1 = 4;
@@ -17546,7 +17521,7 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/concrete,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aVS" = (
 /obj/structure/cable/orange{
 	d1 = 2;
@@ -17559,7 +17534,7 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/concrete,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aVT" = (
 /obj/structure/cable/orange{
 	d1 = 1;
@@ -17572,7 +17547,7 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/concrete,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aVU" = (
 /obj/structure/cable/orange{
 	d1 = 1;
@@ -17590,7 +17565,7 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/concrete,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aVV" = (
 /obj/structure/cable/orange{
 	d1 = 1;
@@ -17598,7 +17573,7 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aVW" = (
 /obj/structure/bed/chair,
 /turf/simulated/floor/dank/mono,
@@ -17684,7 +17659,7 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/concrete,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aWk" = (
 /obj/structure/table/standard,
 /obj/random/loot/often/few,
@@ -17835,10 +17810,10 @@
 /area/mining_colony/interior/shuttle_bay/hangar)
 "aWI" = (
 /turf/simulated/floor/dank/grater,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aWJ" = (
 /turf/simulated/floor/dank/mono,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aWK" = (
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/abandoned/mining_prep)
@@ -17849,7 +17824,7 @@
 "aWM" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/dank/mono,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aWN" = (
 /obj/structure/table/woodentable,
 /obj/item/weapon/flame/candle,
@@ -17863,7 +17838,7 @@
 	anchored = 1
 	},
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aWP" = (
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/plating,
@@ -17948,7 +17923,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aXe" = (
 /obj/random/loot/usually/few,
 /obj/structure/table/rack,
@@ -17963,7 +17938,7 @@
 /area/mining_colony/interior/janitor)
 "aXf" = (
 /turf/simulated/floor/asteroid/outside_ds/muddy,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aXg" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/random/loot/usually/few,
@@ -18091,7 +18066,7 @@
 /area/mining_colony/interior/plaza)
 "aXz" = (
 /turf/simulated/floor/asteroid/outside_ds/firm,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aXA" = (
 /obj/machinery/light{
 	dir = 4
@@ -18333,7 +18308,7 @@
 "aYp" = (
 /obj/random/rare_loot/usually,
 /turf/simulated/floor/tiled/dark,
-/area/mining_colony)
+/area/mining_colony/surface)
 "aYq" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/blast/shutters/open{
@@ -21214,7 +21189,7 @@
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/concrete,
-/area/mining_colony)
+/area/mining_colony/surface)
 "beb" = (
 /obj/machinery/door/airlock/external{
 	dir = 4
@@ -21427,7 +21402,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/concrete,
-/area/mining_colony)
+/area/mining_colony/surface)
 "bew" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -21435,7 +21410,7 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/concrete,
-/area/mining_colony)
+/area/mining_colony/surface)
 "bex" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -23163,21 +23138,21 @@
 /obj/random/loot/sometimes/few,
 /obj/random/maintenance,
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "bik" = (
 /obj/random/closet,
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "bil" = (
 /obj/structure/table/steel_reinforced,
 /obj/random/powercell,
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "bim" = (
 /obj/structure/table/steel_reinforced,
 /obj/random/maintenance/clean,
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "bin" = (
 /obj/structure/closet/medical_wall/filled{
 	pixel_y = 32
@@ -23192,27 +23167,27 @@
 /obj/random/drinkbottle,
 /obj/random/drinkbottle,
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "bip" = (
 /obj/structure/table/steel_reinforced,
 /obj/random/storage,
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "biq" = (
 /obj/structure/table/steel_reinforced,
 /obj/random/firstaid,
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "bir" = (
 /obj/structure/table/steel_reinforced,
 /obj/random/loot/usually/few,
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "bis" = (
 /obj/structure/table/steel_reinforced,
 /obj/random/toolbox,
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "bit" = (
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/dank/grater,
@@ -23947,23 +23922,23 @@
 	id = "conveyor_hell"
 	},
 /turf/simulated/floor/tiled/dark,
-/area/mining_colony)
+/area/mining_colony/surface)
 "bkq" = (
 /obj/machinery/conveyor{
 	dir = 8;
 	id = "conveyor_hell"
 	},
 /turf/simulated/floor/plating,
-/area/mining_colony)
+/area/mining_colony/surface)
 "bkr" = (
 /obj/effect/wallframe_spawn/reinforced,
 /turf/simulated/floor/plating,
-/area/mining_colony)
+/area/mining_colony/surface)
 "bks" = (
 /turf/unsimulated/mineral{
 	icon_state = "rock"
 	},
-/area/mining_colony)
+/area/mining_colony/surface)
 "bkt" = (
 /obj/structure/sign/chemistry,
 /turf/simulated/wall/r_wall,
@@ -24064,7 +24039,7 @@
 /obj/item/weapon/tool/crowbar,
 /obj/item/weapon/tool/screwdriver,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony)
+/area/mining_colony/surface)
 "bkN" = (
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/dank/golf_brown,
@@ -24428,7 +24403,7 @@
 /obj/item/clothing/head/welding/engie,
 /obj/item/weapon/tool/weldingtool,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony)
+/area/mining_colony/surface)
 "blR" = (
 /obj/machinery/vending/hydroseeds,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -25951,7 +25926,7 @@
 	id = "conveyor_hell"
 	},
 /turf/simulated/floor/dank/grater,
-/area/mining_colony)
+/area/mining_colony/surface)
 "bpK" = (
 /obj/structure/plasticflaps/mining,
 /obj/machinery/conveyor{
@@ -25959,21 +25934,21 @@
 	id = "conveyor_hell"
 	},
 /turf/simulated/floor/plating,
-/area/mining_colony)
+/area/mining_colony/surface)
 "bpL" = (
 /obj/machinery/conveyor{
 	dir = 4;
 	id = "conveyor_hell"
 	},
 /turf/simulated/floor/tiled/dark,
-/area/mining_colony)
+/area/mining_colony/surface)
 "bpM" = (
 /obj/machinery/conveyor{
 	dir = 4;
 	id = "conveyor_hell"
 	},
 /turf/simulated/floor/plating,
-/area/mining_colony)
+/area/mining_colony/surface)
 "bpN" = (
 /obj/structure/plasticflaps/mining,
 /obj/machinery/conveyor{
@@ -25981,7 +25956,7 @@
 	id = "conveyor_hell"
 	},
 /turf/simulated/floor/plating,
-/area/mining_colony)
+/area/mining_colony/surface)
 "bpO" = (
 /obj/structure/table/rack/dark,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -26343,13 +26318,13 @@
 /obj/item/device/camera_film,
 /obj/item/device/camera_film,
 /turf/simulated/floor/concrete,
-/area/mining_colony)
+/area/mining_colony/surface)
 "bqF" = (
 /obj/structure/table/steel_reinforced,
 /obj/random/drinkbottle,
 /obj/random/drinkbottle,
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "bqG" = (
 /obj/machinery/conveyor{
 	dir = 8;
@@ -26399,7 +26374,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/dank/grater,
-/area/mining_colony)
+/area/mining_colony/surface)
 "bqN" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/item/weapon/coin/diamond,
@@ -26417,7 +26392,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/dank/grater,
-/area/mining_colony)
+/area/mining_colony/surface)
 "bqQ" = (
 /obj/machinery/mineral/output,
 /obj/effect/floor_decal/industrial/hatch/yellow,
@@ -26591,7 +26566,7 @@
 /obj/random/lathe_disk/advanced/low_chance,
 /obj/random/lathe_disk/advanced/low_chance,
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "brr" = (
 /obj/effect/floor_decal/dank/outline,
 /obj/machinery/light_construct/small{
@@ -26599,7 +26574,7 @@
 	},
 /obj/random/closet,
 /turf/simulated/floor/plating,
-/area/mining_colony)
+/area/mining_colony/surface)
 "brs" = (
 /obj/effect/floor_decal/dank/outline,
 /obj/machinery/light_construct/small{
@@ -26608,38 +26583,38 @@
 /obj/random/closet,
 /obj/random/maintenance/clean,
 /turf/simulated/floor/plating,
-/area/mining_colony)
+/area/mining_colony/surface)
 "brt" = (
 /obj/machinery/suspension_gen,
 /obj/item/weapon/tool/wrench,
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/concrete,
-/area/mining_colony)
+/area/mining_colony/surface)
 "bru" = (
 /obj/structure/anomaly_container,
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/concrete,
-/area/mining_colony)
+/area/mining_colony/surface)
 "brv" = (
 /obj/item/weapon/storage/box/greenglowsticks,
 /obj/structure/table/steel,
 /obj/random/loot/usually/few,
 /turf/simulated/floor/concrete,
-/area/mining_colony)
+/area/mining_colony/surface)
 "brw" = (
 /obj/structure/table/steel,
 /obj/item/device/gps,
 /obj/item/device/gps,
 /obj/random/loot/usually/few,
 /turf/simulated/floor/concrete,
-/area/mining_colony)
+/area/mining_colony/surface)
 "brx" = (
 /obj/structure/table/steel,
 /obj/item/device/core_sampler,
 /obj/item/device/core_sampler,
 /obj/random/loot/usually/few,
 /turf/simulated/floor/concrete,
-/area/mining_colony)
+/area/mining_colony/surface)
 "bry" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -26888,7 +26863,7 @@
 /area/mining_colony/interior/shuttle_bay/shuttle_3)
 "bsk" = (
 /turf/simulated/floor/dank/golf_brown,
-/area/mining_colony)
+/area/mining_colony/surface)
 "bsl" = (
 /turf/simulated/shuttle/wall{
 	dir = 5;
@@ -26905,10 +26880,10 @@
 /obj/structure/bed/chair/tram,
 /obj/effect/floor_decal/dank/outline,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony)
+/area/mining_colony/surface)
 "bso" = (
 /turf/simulated/wall/tram,
-/area/mining_colony)
+/area/mining_colony/surface)
 "bsp" = (
 /obj/structure/shuttle/engine/heater{
 	dir = 8
@@ -27001,7 +26976,7 @@
 "bsG" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony)
+/area/mining_colony/surface)
 "bsH" = (
 /obj/structure/bed/chair/shuttle/black,
 /turf/simulated/floor/dank/golf_brown,
@@ -27009,7 +26984,7 @@
 "bsI" = (
 /obj/structure/table/steel,
 /turf/simulated/floor/dank/golf_brown,
-/area/mining_colony)
+/area/mining_colony/surface)
 "bsJ" = (
 /obj/structure/closet/walllocker/emerglocker/north,
 /turf/simulated/floor/dank/grater,
@@ -27038,19 +27013,19 @@
 /obj/random/material,
 /obj/random/material,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony)
+/area/mining_colony/surface)
 "bsP" = (
 /obj/effect/floor_decal/dank/outline,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony)
+/area/mining_colony/surface)
 "bsQ" = (
 /obj/structure/table/workbench,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony)
+/area/mining_colony/surface)
 "bsR" = (
 /obj/structure/computerframe,
 /turf/simulated/floor/plating,
-/area/mining_colony)
+/area/mining_colony/surface)
 "bsS" = (
 /obj/machinery/door/airlock/hatch{
 	dir = 8
@@ -27062,7 +27037,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/mining_colony)
+/area/mining_colony/surface)
 "bsU" = (
 /turf/simulated/floor/dank/maint{
 	dir = 4
@@ -27071,11 +27046,11 @@
 "bsV" = (
 /obj/structure/girder,
 /turf/simulated/floor/plating,
-/area/mining_colony)
+/area/mining_colony/surface)
 "bsW" = (
 /obj/structure/girder/displaced,
 /turf/simulated/floor/plating,
-/area/mining_colony)
+/area/mining_colony/surface)
 "bsX" = (
 /obj/effect/wallframe_spawn/reinforced,
 /obj/machinery/door/blast/regular/open{
@@ -27100,27 +27075,27 @@
 /obj/structure/table/steel_reinforced,
 /obj/item/weapon/tool/repairkit,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony)
+/area/mining_colony/surface)
 "bta" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/weapon/tool/wirecutters,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony)
+/area/mining_colony/surface)
 "btb" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/weapon/tool/saw/circular,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony)
+/area/mining_colony/surface)
 "btc" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/weapon/tool/tape_roll,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony)
+/area/mining_colony/surface)
 "btd" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/weapon/tool/wrench,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony)
+/area/mining_colony/surface)
 "bte" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/dank/outline,
@@ -27289,73 +27264,73 @@
 	icon_state = "officechair_preview"
 	},
 /turf/simulated/floor/dank/golf_brown,
-/area/mining_colony)
+/area/mining_colony/surface)
 "bty" = (
 /obj/structure/table/steel,
 /obj/random/snack,
 /turf/simulated/floor/dank/golf_brown,
-/area/mining_colony)
+/area/mining_colony/surface)
 "btz" = (
 /obj/structure/table/steel,
 /obj/random/smokes,
 /turf/simulated/floor/dank/golf_brown,
-/area/mining_colony)
+/area/mining_colony/surface)
 "btA" = (
 /obj/structure/table/steel_reinforced,
 /obj/random/material,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony)
+/area/mining_colony/surface)
 "btB" = (
 /obj/structure/largecrate/ds/green_horizontal,
 /obj/random/rare_loot/rarely,
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "btC" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony)
+/area/mining_colony/surface)
 "btD" = (
 /obj/machinery/door/airlock/civilian/tram{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/mining_colony)
+/area/mining_colony/surface)
 "btE" = (
 /obj/effect/floor_decal/dank/outline,
 /obj/random/closet,
 /obj/random/maintenance/clean,
 /turf/simulated/floor/plating,
-/area/mining_colony)
+/area/mining_colony/surface)
 "btF" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
-/area/mining_colony)
+/area/mining_colony/surface)
 "btG" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
 /turf/simulated/floor/dank/mono,
-/area/mining_colony)
+/area/mining_colony/surface)
 "btH" = (
 /obj/structure/reagent_dispensers/fueltank,
 /obj/effect/floor_decal/dank/outline,
 /turf/simulated/floor/plating,
-/area/mining_colony)
+/area/mining_colony/surface)
 "btI" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/simulated/floor/plating,
-/area/mining_colony)
+/area/mining_colony/surface)
 "btJ" = (
 /obj/machinery/door/airlock/civilian/tram,
 /turf/simulated/floor/plating,
-/area/mining_colony)
+/area/mining_colony/surface)
 "btK" = (
 /obj/random/rare_loot/sometimes,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
-/area/mining_colony)
+/area/mining_colony/surface)
 "btL" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/simulated/floor/dank/mono,
-/area/mining_colony)
+/area/mining_colony/surface)
 "btM" = (
 /obj/structure/bed/chair/shuttle/black{
 	dir = 4;
@@ -27397,7 +27372,7 @@
 	name = "Scrapping Observation"
 	},
 /turf/simulated/floor/dank/mono,
-/area/mining_colony)
+/area/mining_colony/surface)
 "btS" = (
 /obj/machinery/light{
 	dir = 1;
@@ -27405,24 +27380,24 @@
 	},
 /obj/structure/filingcabinet,
 /turf/simulated/floor/dank/golf_brown,
-/area/mining_colony)
+/area/mining_colony/surface)
 "btT" = (
 /obj/machinery/computer{
 	dir = 1
 	},
 /turf/simulated/floor/dank/golf_brown,
-/area/mining_colony)
+/area/mining_colony/surface)
 "btU" = (
 /obj/item/toy/balloon{
 	desc = "FUK CEC!11!"
 	},
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "btV" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/tape/engineering,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony)
+/area/mining_colony/surface)
 "btW" = (
 /obj/effect/floor_decal/corner/grey{
 	dir = 10
@@ -27439,20 +27414,20 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/mining_colony)
+/area/mining_colony/surface)
 "btY" = (
 /obj/item/toy/plushie/spider,
 /turf/simulated/floor/plating,
-/area/mining_colony)
+/area/mining_colony/surface)
 "btZ" = (
 /obj/random/loot/sometimes/many,
 /turf/simulated/floor/plating,
-/area/mining_colony)
+/area/mining_colony/surface)
 "bua" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/random/loot/sometimes/some,
 /turf/simulated/floor/plating,
-/area/mining_colony)
+/area/mining_colony/surface)
 "bub" = (
 /obj/structure/largecrate/ds/green_horizontal,
 /turf/simulated/floor/dank/grater,
@@ -27815,7 +27790,7 @@
 	info = "These are my last words, I'm heavily bleeding and there is no-one who could help me or at least turn on the sleeper. If someone will ever find this message - the ship is yours but the parts to the console are gon..."
 	},
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "gYE" = (
 /obj/effect/wallframe_spawn/reinforced,
 /obj/machinery/door/firedoor,
@@ -28520,7 +28495,7 @@
 "pXC" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "pYM" = (
 /obj/effect/wallframe_spawn/reinforced_phoron,
 /obj/machinery/door/blast/regular/open{
@@ -28575,7 +28550,7 @@
 "quZ" = (
 /obj/effect/shuttle_landmark/valor/landing,
 /turf/simulated/floor,
-/area/mining_colony)
+/area/mining_colony/surface)
 "qzN" = (
 /obj/item/device/radio/intercom{
 	dir = 4;
@@ -28604,7 +28579,7 @@
 /obj/item/weapon/pen/multi,
 /obj/effect/landmark/corpse/marooned_officer,
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony)
+/area/mining_colony/surface)
 "qNq" = (
 /obj/effect/wallframe_spawn/reinforced,
 /obj/machinery/door/firedoor,
@@ -28668,7 +28643,7 @@
 "sBK" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/simulated/floor/concrete,
-/area/mining_colony)
+/area/mining_colony/surface)
 "sDL" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1;
@@ -45928,7 +45903,7 @@ aPo
 aQq
 aQq
 aQq
-aPA
+aPC
 aQG
 aPo
 aQI
@@ -46124,8 +46099,8 @@ aPb
 aPh
 bsX
 aPE
-aPA
-aPA
+aPC
+aPC
 aoJ
 aQj
 aQj
@@ -46327,13 +46302,13 @@ aPh
 bsX
 aPB
 aPN
-aPA
+aPC
 aoK
-aPA
+aPC
 aQr
 aQr
 aQB
-aPA
+aPC
 aPo
 aQI
 aQM
@@ -46529,13 +46504,13 @@ aPh
 bsX
 aPC
 aPN
-aPA
+aPC
 aoK
-aPA
+aPC
 aQs
 aQs
 aQC
-aPA
+aPC
 aPo
 aQI
 aQM
@@ -46730,8 +46705,8 @@ aPb
 aPh
 bsX
 aPE
-aPA
-aPA
+aPC
+aPC
 aoJ
 aQk
 aQk
@@ -46938,7 +46913,7 @@ aPo
 aQt
 aQt
 aQt
-aPA
+aPC
 aQG
 aPo
 aQI
@@ -48554,7 +48529,7 @@ aPu
 aQu
 aQu
 aQu
-aPH
+aPJ
 aQH
 aPu
 aQJ
@@ -48750,8 +48725,8 @@ aPb
 aPh
 bsY
 aPK
-aPH
-aPH
+aPJ
+aPJ
 aoL
 aQn
 aQn
@@ -48953,13 +48928,13 @@ aPh
 bsY
 kmM
 aPR
-aPH
+aPJ
 apd
-aPH
+aPJ
 aQv
 aQv
 aQE
-aPH
+aPJ
 aPu
 aQJ
 aQP
@@ -49155,13 +49130,13 @@ aPh
 bsY
 aPJ
 aPR
-aPH
+aPJ
 apd
-aPH
+aPJ
 aQw
 aQw
 aQF
-aPH
+aPJ
 aPu
 aQJ
 aQP
@@ -49356,8 +49331,8 @@ aPb
 aPh
 bsY
 aPK
-aPH
-aPH
+aPJ
+aPJ
 aoL
 aQo
 aQo
@@ -49564,7 +49539,7 @@ aPu
 aQx
 aQx
 aQx
-aPH
+aPJ
 aQH
 aPu
 aQJ
@@ -62530,7 +62505,7 @@ awO
 awO
 awH
 bhu
-awQ
+aeY
 ayc
 aeY
 aza
@@ -62731,7 +62706,7 @@ awO
 awO
 wzl
 awW
-awQ
+aeY
 lVr
 ayc
 ayS
@@ -62934,7 +62909,7 @@ awO
 awO
 awH
 bhv
-awQ
+aeY
 ayc
 ayT
 aza
@@ -64704,8 +64679,8 @@ aWO
 aue
 aue
 aCq
-awE
-awG
+aue
+awF
 auj
 auj
 auo
@@ -65093,9 +65068,9 @@ aCq
 aCq
 aCq
 aCq
-aIr
-aIr
-aIr
+aoG
+aoG
+aoG
 aCq
 aCq
 aCq
@@ -65294,11 +65269,11 @@ aCq
 aCq
 aCq
 aCq
-aIr
-aIr
-aIr
-aIr
-aIr
+aoG
+aoG
+aoG
+aoG
+aoG
 aCq
 aiY
 aiY
@@ -65496,11 +65471,11 @@ aiY
 aiY
 aiY
 aCq
-aIr
-aIr
-aIr
-aIr
-aIr
+aoG
+aoG
+aoG
+aoG
+aoG
 aCq
 aiY
 bih
@@ -68822,7 +68797,7 @@ aWI
 aCq
 aCq
 azn
-abk
+azn
 aoG
 aoG
 aoG
