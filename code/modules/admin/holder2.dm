@@ -31,6 +31,8 @@ GLOBAL_LIST_EMPTY(admin_datums)
 	rank = initial_rank
 	rights = initial_rights
 	GLOB.admin_datums[ckey] = src
+	if(rights & R_DEBUG) //grant profile access, assuming admin profile access is enabled
+		world.SetConfig("APP/admin", ckey, "role=admin")
 
 /datum/admins/proc/associate(client/C)
 	if(istype(C))
