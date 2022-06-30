@@ -478,7 +478,7 @@ var/list/mining_floors = list()
 	has_resources = 1
 
 /turf/simulated/floor/asteroid/Initialize()
-	..()
+	.=..()
 	dir = pick(GLOB.alldirs)
 
 /turf/simulated/floor/asteroid/outside_ds

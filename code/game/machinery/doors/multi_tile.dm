@@ -21,7 +21,7 @@
 	assembly_type = /obj/structure/door_assembly/multi_tile
 
 /obj/machinery/door/airlock/multi_tile/Initialize()
-	..()
+	.=..()
 	update_bounds()
 	RegisterSignal(src, COMSIG_ATOM_DIR_CHANGE, .proc/update_bounds)
 

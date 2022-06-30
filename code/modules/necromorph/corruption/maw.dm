@@ -101,14 +101,14 @@
 
 		//If its dead or gone, stop processing
 		//Also stop if a player took control of it, they can try to free themselves
-		if (QDELETED(L) || L.stat == DEAD || L.loc != loc)
+		if (QDELETED(L) || L.loc != loc)
 			release_mob()
 		else if (prob(chomp_chance))
 			damage_mob(L)	//We'll periodically bite the victim
 
 
 		//Chance each tick that the mob will attempt to free itself
-		if (prob(struggle_prob) && !L.incapacitated() && !L.client)
+		if (prob(struggle_prob) && !L.incapacitated() && L.client)
 			attempt_release(L)
 
 	//If we're no longer eating anything, stop processing
@@ -173,7 +173,7 @@
 	can_buckle = initial(can_buckle)
 	update_icon()
 	STOP_PROCESSING(SSobj, src)
-	RegisterSignal(buckled_mob, COMSIG_MOB_HEALTH_CHANGED, .proc/check_grip)
+	UnregisterSignal(buckled_mob, COMSIG_MOB_HEALTH_CHANGED, .proc/check_grip)
 
 //Attempting to resist out of a maw will not work, and you'll get nothing but pain for trying
 /obj/structure/corruption_node/maw/resist_buckle(var/mob/user)
@@ -227,7 +227,7 @@
 /obj/structure/corruption_node/maw/proc/attack_mob(mob/living/L)
 	//Small mobs won't trigger the trap
 	//Imagine a mouse running harmlessly over it
-	if (!L )
+	if(!L || L.mob_size < MOB_SMALL)
 		return
 
 	if(L.lying)

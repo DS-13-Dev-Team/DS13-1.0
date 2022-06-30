@@ -420,7 +420,7 @@
 	center_of_mass = "x=17;y=3"
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/premiumvodka/Initialize()
-	..()
+	.=..()
 	reagents.add_reagent(/datum/reagent/ethanol/vodka/premium, 100)
 	var/namepick = pick("Four Stripes","Gilgamesh","Novaya Zemlya","Terran","STS-35")
 	var/typepick = pick("Absolut",MATERIAL_GOLD,"Quadruple Distilled","Platinum","Standard")
@@ -433,7 +433,7 @@
 	center_of_mass = "x=16;y=4"
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/premiumwine/Initialize()
-	..()
+	.=..()
 	reagents.add_reagent(/datum/reagent/ethanol/wine/premium, 100)
 	var/namepick = pick("Calumont","Sciacchemont","Recioto","Torcalota")
 	var/agedyear = rand(2350,2550)

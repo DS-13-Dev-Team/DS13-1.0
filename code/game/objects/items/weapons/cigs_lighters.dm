@@ -712,7 +712,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	ignitermes = "<span class='notice'>USER fiddles with FLAME, and manages to light their NAME with the power of science.</span>"
 
 /obj/item/clothing/mask/smokable/pipe/Initialize()
-	..()
+	.=..()
 	name = "empty [initial(name)]"
 
 /obj/item/clothing/mask/smokable/pipe/light(var/flavor_text = "[usr] lights the [name].")
@@ -815,7 +815,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	var/list/filling = list()
 
 /obj/item/clothing/mask/chewable/Initialize()
-	..()
+	.=..()
 	atom_flags |= ATOM_FLAG_NO_REACT // so it doesn't react until you light it
 	create_reagents(chem_volume) // making the cigarrete a chemical holder with a maximum volume of 15
 	for(var/R in filling)
@@ -942,7 +942,7 @@ obj/item/clothing/mask/chewable/Destroy()
 //	brand = "gum"
 
 /obj/item/clothing/mask/chewable/candy/gum/Initialize()
-	..()
+	.=..()
 	reagents.add_reagent(pick(list(
 				/datum/reagent/fuel,
 				/datum/reagent/drink/juice/grape,
@@ -964,7 +964,7 @@ obj/item/clothing/mask/chewable/Destroy()
 	item_state = "lollipop"
 //	brand = "unremarkable"
 /obj/item/clothing/mask/chewable/candy/lolli/Initialize()
-	..()
+	.=..()
 	reagents.add_reagent(pick(list(
 				/datum/reagent/fuel,
 				/datum/reagent/drink/juice/grape,
@@ -985,7 +985,7 @@ obj/item/clothing/mask/chewable/Destroy()
 	icon_state = "lollipop"
 
 /obj/item/clothing/mask/chewable/candy/lolli/meds/Initialize()
-	..()
+	.=..()
 	reagents.add_reagent(pick(list(
 				/datum/reagent/dexalinp,
 				/datum/reagent/tricordrazine,
