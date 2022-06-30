@@ -7,36 +7,36 @@ shopt -s globstar
 st=0
 
 echo "Checking for TGM formatting"
-if grep -El '^\".+\" = \(.+\)' maps/DeadSpace/*.dmm;	then
+if grep -El '^\".+\" = \(.+\)' maps/**/*.dmm;	then
     echo "Non-TGM formatted map detected. Please convert it using Map Merger!"
     st=1
 fi;
 echo "Checking for mapping tags"
-if grep -nP '^\ttag = \"icon' maps/DeadSpace/*.dmm;	then
+if grep -nP '^\ttag = \"icon' maps/**/*.dmm;	then
     echo "tag vars from icon state generation detected in maps, please remove them."
     st=1
 fi;
 echo "Checking for step_[xy]"
-if grep -nP 'step_[xy]' maps/DeadSpace/*.dmm;	then
+if grep -nP 'step_[xy]' maps/**/*.dmm;	then
     echo "step_x/step_y variables detected in maps, please remove them."
     st=1
 fi;
 echo "Checking for stacked cables"
-if grep -nP '"\w+" = \(\n([^)]+\n)*/obj/structure/cable,\n([^)]+\n)*/obj/structure/cable,\n([^)]+\n)*/area/.+\)' maps/DeadSpace/*.dmm;	then
+if grep -nP '"\w+" = \(\n([^)]+\n)*/obj/structure/cable,\n([^)]+\n)*/obj/structure/cable,\n([^)]+\n)*/area/.+\)' maps/**/*.dmm;	then
     echo "found multiple cables on the same tile, please remove them."
     st=1
 fi;
 echo "Checking for pixel_[xy]"
-if grep -nP 'pixel_[xy] = 0' maps/DeadSpace/*.dmm;	then
+if grep -nP 'pixel_[xy] = 0' maps/**/*.dmm;	then
     echo "pixel_x/pixel_y = 0 variables detected in maps, please review to ensure they are not dirty varedits."
 fi;
 echo "Checking for vareditted areas"
-if grep -nP '^/area/.+[\{]' maps/DeadSpace/*.dmm;	then
+if grep -nP '^/area/.+[\{]' maps/**/*.dmm;	then
     echo "Vareditted /area path use detected in maps, please replace with proper paths."
     st=1
 fi;
 echo "Checking for base /turf paths"
-if grep -nP '\W\/turf\s*[,\){]' maps/DeadSpace/*.dmm; then
+if grep -nP '\W\/turf\s*[,\){]' maps/**/*.dmm; then
     echo "base /turf path use detected in maps, please replace with proper paths."
     st=1
 fi;
