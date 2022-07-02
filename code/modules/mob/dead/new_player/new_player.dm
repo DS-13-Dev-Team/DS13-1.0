@@ -102,7 +102,7 @@
 			return
 
 		if(SSticker.current_state < GAME_STATE_PLAYING)
-			to_chat(src, SPAN_NOTICE("You can't join the game before round starts."))
+			to_chat(src, SPAN_NOTICE("You can't join the game before the round starts."))
 			return
 
 		if(!CONFIG_GET(number/respawn_delay) || client.holder || tgui_alert(src,"Are you sure you wish to observe? You will have to wait [CONFIG_GET(number/respawn_delay)] minute\s before being able to respawn!","Player Setup", list("Yes","No")) == "Yes")

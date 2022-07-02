@@ -37,6 +37,7 @@
 	power_change()		// all machines set to current power level, also updates lighting icon
 	if(ship_area)
 		GLOB.ship_areas += src
+	update_base_lighting()
 
 /area/proc/register_door(var/obj/machinery/door/D)
 	bordering_doors |= D

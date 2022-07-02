@@ -1,5 +1,12 @@
 #define SHOULD_SHOW_TO(mymob, myscreen) (!(mymob.stat == DEAD && !myscreen.show_when_dead))
 
+//Fullscreen overlay resolution in tiles for the clients view.
+/// The fullscreen overlay in tiles for x axis
+#define FULLSCREEN_OVERLAY_RESOLUTION_X 15
+/// The fullscreen overlay in tiles for y axis
+#define FULLSCREEN_OVERLAY_RESOLUTION_Y 15
+
+
 /mob
 	var/list/screens = list()
 
@@ -71,7 +78,7 @@
 /atom/movable/screen/fullscreen
 	icon = 'icons/hud/screen_full.dmi'
 	icon_state = "default"
-	screen_loc = "BOTTOMLEFT"
+	screen_loc = "CENTER-7,CENTER-7"
 	plane = FULLSCREEN_PLANE
 	mouse_opacity = 0
 	var/severity = 0
@@ -85,19 +92,10 @@
 	return ..()
 
 /atom/movable/screen/fullscreen/proc/update_for_view(client_view)
-	if (fs_view != client_view)
+	if (screen_loc == "CENTER-7,CENTER-7" && fs_view != client_view)
+		var/list/actualview = getviewsize(client_view)
 		fs_view = client_view
-		icon = get_or_create_fullscreen(client_view)
-
-/atom/movable/screen/fullscreen/proc/get_or_create_fullscreen(client_view)
-	var/list/view_list = getviewsize(client_view)
-	var/pixels_x = view_list[1]*world.icon_size
-	var/pixels_y = view_list[2]*world.icon_size
-	var/entry_name = "[pixels_x]x[pixels_y]"
-	if (!GLOB.fullscreen_icons[entry_name])
-		//If the icons isn't made yet, make it and set it in the global list
-		GLOB.fullscreen_icons[entry_name] = rescale_icon(icon, pixels_x, pixels_y)
-	return GLOB.fullscreen_icons[entry_name] //Then return it
+		transform = matrix(actualview[1]/FULLSCREEN_OVERLAY_RESOLUTION_X, 0, 0, 0, actualview[2]/FULLSCREEN_OVERLAY_RESOLUTION_Y, 0)
 
 /atom/movable/screen/fullscreen/brute
 	icon_state = "brutedamageoverlay"

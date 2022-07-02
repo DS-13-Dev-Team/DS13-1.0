@@ -43,6 +43,7 @@
 
 /obj/effect/shuttle_landmark/escape1/end
 	name = "Docking Bay"
+	base_turf = /turf/unsimulated/floor
 	base_area = /area/ERT/escapebase
 	landmark_tag = "colony_escape1_end"
 	escape = TRUE
@@ -74,6 +75,7 @@
 
 /obj/effect/shuttle_landmark/escape2/end
 	name =  "Docking Bay"
+	base_turf = /turf/unsimulated/floor
 	base_area = /area/ERT/escapebase
 	landmark_tag = "colony_escape2_end"
 	escape = TRUE
@@ -105,7 +107,7 @@
 
 /obj/effect/shuttle_landmark/escape3/end
 	name = "Docking Bay"
-	base_turf = /turf/simulated/floor/plating
+	base_turf = /turf/unsimulated/floor
 	base_area = /area/ERT/escapebase
 	landmark_tag = "colony_escape3_end"
 	escape = TRUE
@@ -131,6 +133,7 @@
 
 /obj/effect/shuttle_landmark/escape_fix/end
 	name = "Docking Bay"
+	base_turf = /turf/unsimulated/floor
 	base_area = /area/ERT/escapebase
 	landmark_tag = "colony_escape_fix_end"
 	escape = TRUE
@@ -190,7 +193,7 @@
 	name = "The Colony"
 	landmark_tag = "kellion_landing"
 	base_turf = /turf/simulated/floor/plating
-	base_area = /area/mining_colony/interior/kellion_arrival
+	base_area = /area/mining_colony/interior/kellion_arrival/arrivals
 
 /datum/shuttle/autodock/multi/antag/valor
 	name = "Valor"
@@ -217,25 +220,25 @@
 	name = "The Colony"
 	landmark_tag = "valor_landing"
 	base_turf = /turf/simulated/floor/plating
-	base_area = /area/mining_colony
+	base_area = /area/mining_colony/surface
 
 /obj/effect/shuttle_landmark/kellion/landing2
 	name = "Evacuation Site - Alpha #1"
 	landmark_tag = "kellion_landing2"
-	base_turf = /turf/simulated/floor/plating
+	base_turf = /turf/unsimulated/floor
 	base_area = /area/ERT/escapebase
 	escape = TRUE
 
 /obj/effect/shuttle_landmark/valor/landing2
 	name = "Evacuation Site - Alpha #2"
 	landmark_tag = "valor_landing2"
-	base_turf = /turf/simulated/floor/plating
+	base_turf = /turf/unsimulated/floor
 	base_area = /area/ERT/escapebase
 	escape = TRUE
 
 /obj/effect/shuttle_landmark/deliverance/landing2
 	name = "Evacuation Site - Alpha #3"
 	landmark_tag = "deliverance_landing2"
-	base_turf = /turf/simulated/floor/plating
+	base_turf = /turf/unsimulated/floor
 	base_area = /area/ERT/escapebase
 	escape = TRUE

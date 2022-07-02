@@ -5034,7 +5034,10 @@
 /turf/simulated/floor/dank/rectangles,
 /area/mining_colony/lower/excav/storage)
 "pV" = (
-/obj/machinery/door/blast/regular,
+/obj/machinery/door/blast/regular{
+	id = "caves_lower";
+	name = "Caves Passage Blast Door"
+	},
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/lower)
 "pW" = (
@@ -7033,8 +7036,13 @@
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room60)
 "Nb" = (
-/turf/simulated/floor/wood,
-/area/mining_colony/lower/maints/room64)
+/obj/machinery/button/remote/blast_door{
+	pixel_y = -24;
+	id = "caves_lower";
+	name = "Caves Passage"
+	},
+/turf/simulated/floor/asteroid/outside_ds,
+/area/mining_colony/lower/mining_caves)
 "Nf" = (
 /obj/structure/closet/emcloset,
 /turf/simulated/floor/plating,
@@ -7370,9 +7378,17 @@
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room55)
 "ST" = (
-/obj/effect/landmark/node_room/maintenance,
-/turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room38)
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1;
+	icon_state = "warning"
+	},
+/obj/machinery/button/remote/blast_door{
+	pixel_x = 24;
+	id = "caves_lower";
+	name = "Caves Passage"
+	},
+/turf/simulated/floor/dank/mono,
+/area/mining_colony/lower)
 "SV" = (
 /obj/effect/landmark/node_room,
 /turf/simulated/floor/dank/grater,
@@ -17673,7 +17689,7 @@ Qk
 uu
 le
 Ev
-ST
+Hl
 Hl
 hn
 hs
@@ -31789,7 +31805,7 @@ aq
 aq
 gA
 pV
-jb
+ST
 dY
 dY
 dY
@@ -31989,7 +32005,7 @@ aq
 aq
 aq
 aq
-aw
+Nb
 ar
 xw
 xw
@@ -34434,7 +34450,7 @@ dY
 dY
 dY
 LJ
-Nb
+iA
 iP
 Wf
 LJ

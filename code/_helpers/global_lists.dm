@@ -45,10 +45,6 @@ var/global/list/all_grabobjects[0]
 // Uplinks
 var/list/obj/item/device/uplink/world_uplinks = list()
 
-
-//HUD
-GLOBAL_LIST_EMPTY(fullscreen_icons)	//Used to store fullscreen icons in nondefault sizes
-
 //Preferences stuff
 //Hairstyles
 GLOBAL_LIST_EMPTY(hair_styles_list)        //stores /datum/sprite_accessory/hair indexed by name

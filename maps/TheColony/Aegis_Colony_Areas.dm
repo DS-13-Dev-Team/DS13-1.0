@@ -11,10 +11,9 @@
 
 /area/mining_colony/surface
 	name = "\improper Aegis Surface"
-	icon = 'maps/TheColony/ishimura_areas.dmi'
 	icon_state = "aegis"
 	sound_env = ASTEROID
-	ship_area = TRUE
+	base_lighting_alpha = 90
 
 // Abandoned areas of the colony outside
 

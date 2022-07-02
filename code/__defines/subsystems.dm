@@ -84,7 +84,6 @@
 #define SS_INIT_SHUTTLE         -12
 #define SS_INIT_LIGHTING        -14
 #define SS_INIT_OVERLAYS        -16
-#define SS_INIT_ZCOPY			-18
 #define SS_INIT_XENOARCH       -50
 #define SS_INIT_OPEN_SPACE    -150
 #define SS_INIT_BAY_LEGACY    -200

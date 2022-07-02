@@ -642,8 +642,7 @@
 /area/mining_colony/surface)
 "ach" = (
 /obj/structure/railing/mapped{
-	dir = 8;
-	pixel_w = 5
+	dir = 8
 	},
 /obj/structure/railing/mapped{
 	dir = 1
@@ -713,8 +712,7 @@
 /area/mining_colony/interior/excavation/marker_excav)
 "acq" = (
 /obj/structure/railing/mapped{
-	dir = 8;
-	pixel_w = 5
+	dir = 8
 	},
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/c12_deadspace)
@@ -993,8 +991,7 @@
 	dir = 8
 	},
 /obj/structure/railing/mapped{
-	dir = 8;
-	pixel_w = 5
+	dir = 8
 	},
 /turf/simulated/floor/dank/slides{
 	dir = 1
@@ -1113,8 +1110,7 @@
 /area/mining_colony/interior/enginieering/chief_engi)
 "adz" = (
 /obj/structure/railing/mapped{
-	dir = 8;
-	pixel_w = 5
+	dir = 8
 	},
 /obj/structure/railing/mapped{
 	dir = 4;
@@ -1376,8 +1372,7 @@
 	dir = 8
 	},
 /obj/structure/railing/mapped{
-	dir = 8;
-	pixel_w = 5
+	dir = 8
 	},
 /obj/machinery/light,
 /turf/simulated/floor/dank/slides{
@@ -1455,8 +1450,7 @@
 	dir = 8
 	},
 /obj/structure/railing/mapped{
-	dir = 8;
-	pixel_w = 5
+	dir = 8
 	},
 /obj/machinery/light/small,
 /turf/simulated/floor/dank/slides{
@@ -3259,8 +3253,7 @@
 	icon_state = "warning"
 	},
 /obj/structure/railing/mapped{
-	dir = 4;
-	pixel_w = -5
+	dir = 4
 	},
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/excavation/interior)
@@ -3278,8 +3271,7 @@
 	},
 /obj/structure/railing/mapped{
 	dir = 8;
-	icon_state = "railing0";
-	pixel_w = 5
+	icon_state = "railing0"
 	},
 /turf/simulated/floor/dank/slides{
 	dir = 1
@@ -3476,8 +3468,7 @@
 	icon_state = "warning"
 	},
 /obj/structure/railing/mapped{
-	dir = 4;
-	pixel_w = -5
+	dir = 4
 	},
 /turf/simulated/floor/dank/slides,
 /area/mining_colony/interior/excavation/interior)
@@ -3521,8 +3512,7 @@
 /area/mining_colony/interior/enginieering/telecomms)
 "ajW" = (
 /obj/structure/railing/mapped{
-	dir = 4;
-	pixel_w = -5
+	dir = 4
 	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4;
@@ -6782,8 +6772,7 @@
 	pixel_y = 24
 	},
 /obj/structure/railing/mapped{
-	dir = 4;
-	pixel_w = -5
+	dir = 4
 	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4;
@@ -8459,8 +8448,7 @@
 "ayA" = (
 /obj/structure/railing/mapped{
 	dir = 4;
-	icon_state = "railing0";
-	pixel_w = -5
+	icon_state = "railing0"
 	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
@@ -8641,8 +8629,7 @@
 	},
 /obj/structure/railing/mapped{
 	dir = 4;
-	icon_state = "railing0";
-	pixel_w = -5
+	icon_state = "railing0"
 	},
 /turf/simulated/floor/dank/slides,
 /area/mining_colony/c12_deadspace/interior)
@@ -8858,8 +8845,7 @@
 	},
 /obj/structure/railing/mapped{
 	dir = 4;
-	icon_state = "railing0";
-	pixel_w = -5
+	icon_state = "railing0"
 	},
 /obj/machinery/light,
 /turf/simulated/floor/dank/slides,
@@ -8949,7 +8935,6 @@
 /obj/structure/railing/mapped{
 	dir = 4;
 	icon_state = "railing0";
-	pixel_w = -5
 	},
 /obj/machinery/light/small,
 /turf/simulated/floor/dank/slides,
@@ -13722,8 +13707,7 @@
 	icon_state = "warning"
 	},
 /obj/structure/railing/mapped{
-	dir = 4;
-	pixel_w = -5
+	dir = 4
 	},
 /obj/machinery/light/small,
 /turf/simulated/floor/dank/slides,
@@ -13735,8 +13719,7 @@
 	},
 /obj/structure/railing/mapped{
 	dir = 8;
-	icon_state = "railing0";
-	pixel_w = 5
+	icon_state = "railing0"
 	},
 /obj/machinery/light/small,
 /turf/simulated/floor/dank/slides{
@@ -17705,7 +17688,7 @@
 /obj/machinery/button/remote/blast_door{
 	id = "excav_area_22";
 	name = "Mining Preparation Shutters";
-	pixel_w = 30
+	pixel_x = 30
 	},
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/abandoned/mining_prep)
@@ -22126,8 +22109,8 @@
 	dir = 4;
 	id = "shitcurity";
 	name = "Armory Shutters";
-	pixel_w = -22;
-	req_one_access = list(57,58,100)
+	req_one_access = list(57,58,100);
+	pixel_x = -22
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security)

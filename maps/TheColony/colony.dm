@@ -6,7 +6,6 @@
 /datum/map/colony
 	name = "Colony"
 	full_name = "Aegis Colony"
-	//WTF BAY USES IT FOR CHARACTER SAVES!?
 	path = "colony"
 	station_levels = list(1,2,3)
 	contact_levels = list(1,2,3)
@@ -14,6 +13,12 @@
 	sealed_levels = list(4)
 	admin_levels = list(4)
 	empty_levels = list()
+	base_turf_by_z = list(
+		1 = /turf/simulated/floor/asteroid/outside_ds,
+		2 = /turf/simulated/open,
+		3 = /turf/simulated/open,
+		4 = /turf/space,
+	)
 	accessible_z_levels = list("1"=1,"2"=1,"3"=1)
 	local_currency_name = "credits"
 	station_networks = list(
