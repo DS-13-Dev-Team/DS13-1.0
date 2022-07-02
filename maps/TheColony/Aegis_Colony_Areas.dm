@@ -145,7 +145,7 @@
 	sound_env = ASTEROID
 
 /area/mining_colony/interior/civ_hall
-	name = "\improper Aegis Civilian Mess Hall"
+	name = "\improper Aegis Civilian Assembly hall"
 	icon_state = "crewbase"
 	sound_env = ASTEROID
 

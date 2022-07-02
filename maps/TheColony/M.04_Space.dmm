@@ -73,12 +73,8 @@
 /area/ERT/kellion)
 "ak" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/firstaid/regular{
-	pixel_y = 0
-	},
-/obj/item/weapon/storage/firstaid/o2{
-	pixel_y = 0
-	},
+/obj/item/weapon/storage/firstaid/regular,
+/obj/item/weapon/storage/firstaid/o2,
 /obj/item/weapon/storage/firstaid/fire,
 /obj/machinery/light{
 	dir = 8

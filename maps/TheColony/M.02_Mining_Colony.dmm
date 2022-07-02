@@ -118,9 +118,7 @@
 /area/mining_colony/SCAF)
 "aaw" = (
 /turf/simulated/floor/dank/maint_left,
-/area/mining_colony/interior/civ_hall{
-	name = "Aegis Civilian Assembly hall"
-	})
+/area/mining_colony/interior/civ_hall)
 "aax" = (
 /obj/effect/floor_decal/spline/fancy/wood/corner,
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -1529,8 +1527,7 @@
 /obj/machinery/button/remote/blast_door{
 	id = "helpthepowergamersissac";
 	name = "Emergency Hangar Shutters";
-	pixel_x = 24;
-	pixel_y = 0
+	pixel_x = 24
 	},
 /turf/simulated/floor,
 /area/mining_colony/interior/kellion_arrival)
@@ -1686,18 +1683,14 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/dank/maint,
-/area/mining_colony/interior/civ_hall{
-	name = "Aegis Civilian Assembly hall"
-	})
+/area/mining_colony/interior/civ_hall)
 "aeM" = (
 /obj/machinery/light{
 	dir = 1;
 	icon_state = "tube_map"
 	},
 /turf/simulated/floor/dank/maint,
-/area/mining_colony/interior/civ_hall{
-	name = "Aegis Civilian Assembly hall"
-	})
+/area/mining_colony/interior/civ_hall)
 "aeN" = (
 /obj/machinery/cryopod{
 	dir = 4
@@ -1709,9 +1702,7 @@
 /area/mining_colony/interior/apartament)
 "aeO" = (
 /turf/simulated/floor/dank/maint_right,
-/area/mining_colony/interior/civ_hall{
-	name = "Aegis Civilian Assembly hall"
-	})
+/area/mining_colony/interior/civ_hall)
 "aeP" = (
 /obj/effect/floor_decal/dank/border_corner{
 	dir = 1
@@ -1724,9 +1715,7 @@
 	pixel_w = 0
 	},
 /turf/simulated/floor/dank/maint,
-/area/mining_colony/interior/civ_hall{
-	name = "Aegis Civilian Assembly hall"
-	})
+/area/mining_colony/interior/civ_hall)
 "aeQ" = (
 /turf/simulated/floor/tiled/dark,
 /area/mining_colony/surface)
@@ -1736,9 +1725,7 @@
 	},
 /obj/effect/floor_decal/industrial/outline/grey,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/interior/civ_hall{
-	name = "Aegis Civilian Assembly hall"
-	})
+/area/mining_colony/interior/civ_hall)
 "aeS" = (
 /obj/effect/decal/remains,
 /turf/simulated/floor/tiled/dark,
@@ -2126,9 +2113,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/dank/maint_left,
-/area/mining_colony/interior/civ_hall{
-	name = "Aegis Civilian Assembly hall"
-	})
+/area/mining_colony/interior/civ_hall)
 "afY" = (
 /turf/simulated/floor/asteroid/outside_ds/dry_cracked,
 /area/mining_colony/surface)
@@ -2153,22 +2138,16 @@
 	dir = 4
 	},
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/interior/civ_hall{
-	name = "Aegis Civilian Assembly hall"
-	})
+/area/mining_colony/interior/civ_hall)
 "agc" = (
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/interior/civ_hall{
-	name = "Aegis Civilian Assembly hall"
-	})
+/area/mining_colony/interior/civ_hall)
 "agd" = (
 /obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/interior/civ_hall{
-	name = "Aegis Civilian Assembly hall"
-	})
+/area/mining_colony/interior/civ_hall)
 "age" = (
 /obj/machinery/portable_atmospherics/hydroponics,
 /turf/simulated/floor/dank/grater,
@@ -2664,9 +2643,7 @@
 /area/mining_colony/interior/uni_church)
 "ahD" = (
 /turf/simulated/floor/dank/maint,
-/area/mining_colony/interior/civ_hall{
-	name = "Aegis Civilian Assembly hall"
-	})
+/area/mining_colony/interior/civ_hall)
 "ahE" = (
 /obj/structure/bed/chair/office{
 	dir = 8;
@@ -3034,9 +3011,7 @@
 	pixel_x = -24
 	},
 /turf/simulated/floor/dank/maint_left,
-/area/mining_colony/interior/civ_hall{
-	name = "Aegis Civilian Assembly hall"
-	})
+/area/mining_colony/interior/civ_hall)
 "aiE" = (
 /obj/machinery/light{
 	dir = 8
@@ -4324,15 +4299,11 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/dank/maint,
-/area/mining_colony/interior/civ_hall{
-	name = "Aegis Civilian Assembly hall"
-	})
+/area/mining_colony/interior/civ_hall)
 "ami" = (
 /obj/machinery/vending/coffee,
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/interior/civ_hall{
-	name = "Aegis Civilian Assembly hall"
-	})
+/area/mining_colony/interior/civ_hall)
 "amj" = (
 /obj/effect/floor_decal/corner/grey{
 	dir = 5
@@ -4350,9 +4321,7 @@
 "aml" = (
 /obj/machinery/vending/hotfood,
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/interior/civ_hall{
-	name = "Aegis Civilian Assembly hall"
-	})
+/area/mining_colony/interior/civ_hall)
 "amm" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -4706,9 +4675,7 @@
 	pixel_y = 21
 	},
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/interior/civ_hall{
-	name = "Aegis Civilian Assembly hall"
-	})
+/area/mining_colony/interior/civ_hall)
 "anl" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -4978,16 +4945,13 @@
 	dir = 4;
 	id = "fuck_you_kendra";
 	name = "Door Shutters Access";
-	pixel_x = 32;
-	pixel_y = 0
+	pixel_x = 32
 	},
 /turf/simulated/floor/dank/slides,
 /area/shuttle/executive_shuttle)
 "aoc" = (
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/interior/civ_hall{
-	name = "Aegis Civilian Assembly hall"
-	})
+/area/mining_colony/interior/civ_hall)
 "aod" = (
 /obj/effect/floor_decal/dank/border{
 	dir = 4
@@ -6541,9 +6505,7 @@
 "asF" = (
 /obj/structure/table/woodentable_reinforced,
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/interior/civ_hall{
-	name = "Aegis Civilian Assembly hall"
-	})
+/area/mining_colony/interior/civ_hall)
 "asG" = (
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 8;
@@ -11015,18 +10977,14 @@
 "aFL" = (
 /obj/machinery/vending/cola,
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/interior/civ_hall{
-	name = "Aegis Civilian Assembly hall"
-	})
+/area/mining_colony/interior/civ_hall)
 "aFM" = (
 /obj/machinery/door/airlock/civilian{
 	name = "Mess Hall"
 	},
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/interior/civ_hall{
-	name = "Aegis Civilian Assembly hall"
-	})
+/area/mining_colony/interior/civ_hall)
 "aFN" = (
 /obj/structure/closet/l3closet/scientist,
 /obj/structure/window/reinforced{
@@ -12370,9 +12328,7 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/dank/maint,
-/area/mining_colony/interior/civ_hall{
-	name = "Aegis Civilian Assembly hall"
-	})
+/area/mining_colony/interior/civ_hall)
 "aJo" = (
 /obj/effect/floor_decal/dank/border{
 	dir = 4
@@ -12381,9 +12337,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/dank/maint,
-/area/mining_colony/interior/civ_hall{
-	name = "Aegis Civilian Assembly hall"
-	})
+/area/mining_colony/interior/civ_hall)
 "aJp" = (
 /obj/machinery/seed_extractor,
 /turf/simulated/floor/dank/mono,
@@ -14302,9 +14256,7 @@
 "aOo" = (
 /obj/machinery/vending/snix,
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/interior/civ_hall{
-	name = "Aegis Civilian Assembly hall"
-	})
+/area/mining_colony/interior/civ_hall)
 "aOp" = (
 /obj/structure/railing/mapped{
 	dir = 8;
@@ -16529,7 +16481,6 @@
 	icon_state = "ishimura_shutter_open";
 	id = "foreman_metaman";
 	name = "Foreman's Office Shutters";
-	pixel_y = 0;
 	req_access = list(46)
 	},
 /obj/machinery/door/firedoor,
@@ -16567,9 +16518,7 @@
 "aTZ" = (
 /obj/effect/wallframe_spawn/reinforced,
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/interior/civ_hall{
-	name = "Aegis Civilian Assembly hall"
-	})
+/area/mining_colony/interior/civ_hall)
 "aUa" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -16628,9 +16577,7 @@
 "aUf" = (
 /obj/structure/bed/chair/armchair,
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/interior/civ_hall{
-	name = "Aegis Civilian Assembly hall"
-	})
+/area/mining_colony/interior/civ_hall)
 "aUg" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -16784,9 +16731,7 @@
 	},
 /obj/effect/floor_decal/industrial/outline/grey,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/interior/civ_hall{
-	name = "Aegis Civilian Assembly hall"
-	})
+/area/mining_colony/interior/civ_hall)
 "aUv" = (
 /obj/effect/floor_decal/dank/mono_tri{
 	dir = 8
@@ -16820,9 +16765,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/dank/maint,
-/area/mining_colony/interior/civ_hall{
-	name = "Aegis Civilian Assembly hall"
-	})
+/area/mining_colony/interior/civ_hall)
 "aUy" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -16876,9 +16819,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/interior/civ_hall{
-	name = "Aegis Civilian Assembly hall"
-	})
+/area/mining_colony/interior/civ_hall)
 "aUD" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -16886,9 +16827,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/interior/civ_hall{
-	name = "Aegis Civilian Assembly hall"
-	})
+/area/mining_colony/interior/civ_hall)
 "aUE" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -16896,9 +16835,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/dank/maint_left,
-/area/mining_colony/interior/civ_hall{
-	name = "Aegis Civilian Assembly hall"
-	})
+/area/mining_colony/interior/civ_hall)
 "aUF" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -16910,9 +16847,7 @@
 	},
 /obj/effect/floor_decal/industrial/outline/grey,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/interior/civ_hall{
-	name = "Aegis Civilian Assembly hall"
-	})
+/area/mining_colony/interior/civ_hall)
 "aUG" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/weapon/paper_bin{
@@ -17018,9 +16953,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/interior/civ_hall{
-	name = "Aegis Civilian Assembly hall"
-	})
+/area/mining_colony/interior/civ_hall)
 "aUW" = (
 /obj/structure/bed/chair{
 	dir = 4;
@@ -17050,9 +16983,7 @@
 	},
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/interior/civ_hall{
-	name = "Aegis Civilian Assembly hall"
-	})
+/area/mining_colony/interior/civ_hall)
 "aUZ" = (
 /obj/structure/bed/chair/office{
 	dir = 4;
@@ -17160,9 +17091,7 @@
 "aVj" = (
 /obj/structure/flora/pottedplant/minitree,
 /turf/simulated/floor/dank/maint_right,
-/area/mining_colony/interior/civ_hall{
-	name = "Aegis Civilian Assembly hall"
-	})
+/area/mining_colony/interior/civ_hall)
 "aVk" = (
 /obj/machinery/power/apc/high{
 	dir = 4;
@@ -17476,9 +17405,7 @@
 /area/mining_colony/surface)
 "aVP" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/interior/civ_hall{
-	name = "Aegis Civilian Assembly hall"
-	})
+/area/mining_colony/interior/civ_hall)
 "aVQ" = (
 /obj/structure/cable/orange{
 	d1 = 4;
@@ -20015,9 +19942,7 @@
 "bbV" = (
 /obj/structure/stairs_short/west,
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/interior/civ_hall{
-	name = "Aegis Civilian Assembly hall"
-	})
+/area/mining_colony/interior/civ_hall)
 "bbW" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -24191,9 +24116,7 @@
 "blq" = (
 /obj/structure/sign/deck/ds/red,
 /turf/simulated/wall/r_wall,
-/area/mining_colony/interior/civ_hall{
-	name = "Aegis Civilian Assembly hall"
-	})
+/area/mining_colony/interior/civ_hall)
 "blr" = (
 /obj/machinery/door/airlock/maintenance{
 	dir = 4
@@ -25775,9 +25698,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/dank/maint_left,
-/area/mining_colony/interior/civ_hall{
-	name = "Aegis Civilian Assembly hall"
-	})
+/area/mining_colony/interior/civ_hall)
 "bpq" = (
 /obj/machinery/washing_machine,
 /obj/machinery/camera/network/crew,
@@ -26262,15 +26183,11 @@
 	icon_state = "railing0"
 	},
 /turf/simulated/floor/dank/maint,
-/area/mining_colony/interior/civ_hall{
-	name = "Aegis Civilian Assembly hall"
-	})
+/area/mining_colony/interior/civ_hall)
 "bqB" = (
 /obj/machinery/light,
 /turf/simulated/floor/dank/maint,
-/area/mining_colony/interior/civ_hall{
-	name = "Aegis Civilian Assembly hall"
-	})
+/area/mining_colony/interior/civ_hall)
 "bqC" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/security{
@@ -27603,9 +27520,7 @@
 	},
 /obj/effect/floor_decal/industrial/outline/grey,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/interior/civ_hall{
-	name = "Aegis Civilian Assembly hall"
-	})
+/area/mining_colony/interior/civ_hall)
 "dlb" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/interior/medbay/CMOoffice)
@@ -27722,9 +27637,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/dank/maint,
-/area/mining_colony/interior/civ_hall{
-	name = "Aegis Civilian Assembly hall"
-	})
+/area/mining_colony/interior/civ_hall)
 "fOm" = (
 /obj/structure/table/standard,
 /obj/item/weapon/storage/toolbox/mechanical,
@@ -27814,8 +27727,7 @@
 /obj/machinery/door/blast/shutters/open{
 	icon_state = "ishimura_shutter_open";
 	id = "foreman_metaman";
-	name = "Foreman's Office Shutters";
-	pixel_y = 0
+	name = "Foreman's Office Shutters"
 	},
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/dank/mono,
@@ -27863,9 +27775,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/dank/maint,
-/area/mining_colony/interior/civ_hall{
-	name = "Aegis Civilian Assembly hall"
-	})
+/area/mining_colony/interior/civ_hall)
 "its" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/interior/science/scienceoffices)
@@ -28139,17 +28049,13 @@
 "lty" = (
 /obj/structure/flora/pottedplant/shoot,
 /turf/simulated/floor/dank/maint_left,
-/area/mining_colony/interior/civ_hall{
-	name = "Aegis Civilian Assembly hall"
-	})
+/area/mining_colony/interior/civ_hall)
 "lwi" = (
 /obj/effect/floor_decal/dank/border_corner_i{
 	dir = 1
 	},
 /turf/simulated/floor/dank/maint,
-/area/mining_colony/interior/civ_hall{
-	name = "Aegis Civilian Assembly hall"
-	})
+/area/mining_colony/interior/civ_hall)
 "lEJ" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/interior/science/lockeroom)
@@ -28318,9 +28224,7 @@
 	icon_state = "tube_map"
 	},
 /turf/simulated/floor/dank/maint_right,
-/area/mining_colony/interior/civ_hall{
-	name = "Aegis Civilian Assembly hall"
-	})
+/area/mining_colony/interior/civ_hall)
 "ntB" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -28666,9 +28570,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/dank/maint,
-/area/mining_colony/interior/civ_hall{
-	name = "Aegis Civilian Assembly hall"
-	})
+/area/mining_colony/interior/civ_hall)
 "teZ" = (
 /obj/effect/floor_decal/corner/grey/three_quarters{
 	dir = 4
@@ -28917,9 +28819,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/dank/maint,
-/area/mining_colony/interior/civ_hall{
-	name = "Aegis Civilian Assembly hall"
-	})
+/area/mining_colony/interior/civ_hall)
 "vWk" = (
 /obj/effect/wallframe_spawn/reinforced,
 /obj/machinery/door/firedoor,
