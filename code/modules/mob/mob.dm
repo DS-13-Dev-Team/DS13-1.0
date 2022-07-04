@@ -9,6 +9,8 @@
 		QDEL_NULL(skillset)
 	for(var/obj/item/grab/G in grabbed_by)
 		qdel(G)
+	if(buckled)
+		buckled.unbuckle_mob()
 	clear_fullscreen()
 	if(client)
 		for(var/atom/movable/AM in client.screen)
