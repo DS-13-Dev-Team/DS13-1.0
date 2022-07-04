@@ -433,28 +433,28 @@ GLOBAL_LIST(additional_antag_types)
 		text += "<br><h1><b><center><span class='danger'>Necromorph Major Victory!</h1></center></b></large>"
 		text += "<br><center>The Necromorphs have slain the entire crew!</center>"
 		text += "<br><br><center><b>And so ends another struggle on [station_name()]...</b></center>"
-		text += "<br><center>There [surviving_humans>1 ? "were <b>[surviving_humans] survivors</b>" : "was <b>one survivor</b>"] of which <b>none</b> managed to evacuate."
+		text += "<br><center>There [surviving_humans != 1 ? "were <b>[surviving_humans] survivors</b>" : "was <b>one survivor</b>"] of which <b>none</b> managed to evacuate."
 		SEND_SOUND(world, sound('sound/music/ds13/twinkle.ogg', wait = 0, volume = 40, channel = GLOB.lobby_sound_channel))
 	else if(escaped_humans < (GLOB.all_crew.len * 0.2))
 		round_finished = "Necromorph Minor"
 		text += "<br><h2><b><center><span class='danger'>Necromorph Minor Victory!</span></center></b></h2>"
 		text += "<br><center>Necromorphs have slain a majority of the crew!</center>"
 		text += "<br><b><center>And so ends the struggle on [station_name()]...</center></b>"
-		text += "<br><center>There [surviving_humans>1 ? "were <b>[surviving_humans] survivors</b>" : "was <b>one survivor</b>"], with [escaped_humans>1 ? "<b>[escaped_total] managing to evacuate</b>" : "was <b>one evacuee</b>"]</center>"
+		text += "<br><center>There [surviving_humans != 1 ? "were <b>[surviving_humans] survivors</b>" : "was <b>one survivor</b>"], with [escaped_humans>1 ? "<b>[escaped_total] managing to evacuate</b>" : "was <b>one evacuee</b>"]</center>"
 		SEND_SOUND(world, sound('sound/music/ds13/credits_violin.ogg', wait = 0, volume = 40, channel = GLOB.lobby_sound_channel))
 	else if(escaped_humans < (GLOB.all_crew.len * 0.5))
 		round_finished = "Survivor Minor"
 		text += "<br><h2><b><center><span class='success'>Survivor Minor Victory!</span></center></b></h2>"
 		text += "<br><center>Some survivors managed to evacuate!</center>"
 		text += "<br><b><cennter>And so ends the struggle on [station_name()]...</center></b>"
-		text += "<br><center>There [surviving_humans>1 ? "were <b>[surviving_humans] survivors</b>" : "was <b>one survivor</b>"], with [escaped_humans>1 ? "<b>[escaped_total] managing to evacuate</b>" : "was <b>one evacuee</b>"]</center>"
+		text += "<br><center>There [surviving_humans != 1 ? "were <b>[surviving_humans] survivors</b>" : "was <b>one survivor</b>"], with [escaped_humans>1 ? "<b>[escaped_total] managing to evacuate</b>" : "was <b>one evacuee</b>"]</center>"
 		SEND_SOUND(world, sound('sound/music/ds13/credits_violin.ogg', wait = 0, volume = 40, channel = GLOB.lobby_sound_channel))
 	else
 		round_finished = "Survivor Major"
 		text += "<br><h1><b><center><span class='success'>Survivor Major Victory!</span></center></b></h1>"
 		text += "<br><center>A majority of the survivors managed to evacuate!</center>"
 		text += "<br><center><b>And so ends the struggle on [station_name()]...</center></b>"
-		text += "<br><center>There [surviving_humans>1 ? "were <b>[surviving_humans] survivors</b>" : "was <b>one survivor</b>"], with [escaped_humans>1 ? "<b>[escaped_total] managing to evacuate</b>" : "was <b>one evacuee</b>"]</center>"
+		text += "<br><center>There [surviving_humans != 1 ? "were <b>[surviving_humans] survivors</b>" : "was <b>one survivor</b>"], with [escaped_humans>1 ? "<b>[escaped_total] managing to evacuate</b>" : "was <b>one evacuee</b>"]</center>"
 		SEND_SOUND(world, sound('sound/music/ds13/credits_rock.ogg', wait = 0, volume = 40, channel = GLOB.lobby_sound_channel))
 	if(escaped_necros > 0)
 		text += "<br><center>There [alive_necros>0 ? "were <b>[alive_necros] alive Necromorphs left</b>" : ""], with [escaped_necros>0 ? "<b>[escaped_necros] having left the Ishimura for greener pastures!</b>" : "<b>was one Necromorph that left the Ishimura for greener pastures!</b>"]</center>"

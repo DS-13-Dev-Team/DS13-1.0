@@ -63,7 +63,7 @@ GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 
 	//For it to trigger, there needs to have been at least this many crewmembers in total over the round
 	//This includes the living, and the dead
-	var/minimum_historic_crew	=	5
+	var/minimum_historic_crew	=	2
 	var/minimum_alive_percentage = 0.1 //0.1 = 10%
 
 /datum/game_mode/marker/post_setup() //Mr Gaeta. Start the clock.
