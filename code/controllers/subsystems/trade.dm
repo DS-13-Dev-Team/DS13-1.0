@@ -144,18 +144,13 @@ SUBSYSTEM_DEF(trade)
 		if (!H.client || (H.client.inactivity > (SALARY_INTERVAL * 0.5)))
 			continue
 
-		//Get the job datum, tells us how much to pay
-		var/rank = CR.get_job()
-		if (!rank)
+		var/rank = H.mind.role_alt_title ? H.mind.role_alt_title : H.mind.assigned_job
+		if(!rank)
 			continue
 
-		var/datum/job/job_datum = job_master.GetJob(rank)
-		if (!job_datum)
+		var/datum/job/job_datum = job_master.occupations_by_title[rank]
+		if(!job_datum)
 			continue
-
-
-		var/pay_amount = job_datum.salary
-		//Future TODO: Performance bonuses
 
 		//Alright we have finally concluded that this person is eligible to be paid, and how much to pay them. Now we need to find their account
 		var/datum/money_account/MA = H.mind.initial_account
@@ -165,5 +160,5 @@ SUBSYSTEM_DEF(trade)
 		//Okay now we record all this data
 		var/current_shares = isnum(department_shares[job_datum.department]) ? department_shares[job_datum.department] : 0
 		department_shares[job_datum.department] = current_shares + job_datum.bonus_shares
-		var/list/payee = list("mob" = H, "account" = MA, "wage" = pay_amount, "department" = job_datum.department, "shares" = job_datum.bonus_shares)
+		var/list/payee = list("mob" = H, "account" = MA, "wage" = job_datum.salary, "department" = job_datum.department, "shares" = job_datum.bonus_shares)
 		payroll_list += list(payee)

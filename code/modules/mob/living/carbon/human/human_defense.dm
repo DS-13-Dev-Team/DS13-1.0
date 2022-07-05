@@ -199,47 +199,71 @@ meteor_act
 	return standard_weapon_hit_effects(strike.used_item, strike.user, strike.get_final_damage(), strike.blocked, strike.target_zone)
 
 
-/mob/living/carbon/human/standard_weapon_hit_effects(obj/item/I, mob/living/user, var/effective_force, var/blocked, var/hit_zone)
+/mob/living/carbon/human/standard_weapon_hit_effects(obj/item/I, mob/living/user, effective_force, blocked, hit_zone)
+	if(status_flags & GODMODE)
+		return 0
 	var/obj/item/organ/external/affecting = get_organ(hit_zone)
 	if(!affecting)
 		return 0
 
-	// Handle striking to cripple.
-	if(user && user.a_intent == I_DISARM)
-		effective_force *= 0.66 //reduced effective force...
-		.=..(I, user, effective_force, blocked, hit_zone)
-		if(!.)
-			return
+	var/poise_damage
 
-		//set the dislocate mult less than the effective force mult so that
-		//dislocating limbs on disarm is a bit easier than breaking limbs on harm
-		attack_joint(affecting, I, effective_force, 0.5, blocked) //...but can dislocate joints
-	else
-		.=..(I, user, effective_force, blocked, hit_zone)
-		if(!.)
-			return
+	visible_message(SPAN_DANGER("[src] has been [I.attack_verb.len ? pick(I.attack_verb) : "attacked"] in the [affecting.name] with [I.name] by [user]!"))
 
-	effective_force = .
+	////////// Here goes the REAL armor processing.
+	effective_force -= blocked*0.05 // Flat armor (i.e. reduces damage by 2.5 if armor=50)
 
-	if(effective_force > 10 || effective_force >= 5 && prob(33))
-		forcesay(GLOB.hit_appends)	//forcesay checks stat already
-	if((I.damtype == BRUTE || I.damtype == PAIN) && prob(25 + (effective_force * 2)))
-		if(!stat)
-			if(headcheck(hit_zone))
-				//Harder to score a stun but if you do it lasts a bit longer
+	if(HULK in user.mutations)
+		effective_force *= 2
+
+	if(src.lying)
+		effective_force *= 1.5 // Well it's easier to beat a lying dude to death right?
+
+	effective_force *= round((100-blocked)/100, 0.01)
+
+	//Apply weapon damage
+	var/damage_flags = I.damage_flags()
+	if(prob(blocked)) //armour provides a chance to turn sharp/edge weapon attacks into blunt ones
+		damage_flags &= ~(DAM_SHARP|DAM_EDGE)
+
+	//Oh you've run outta poise? I see... You're wrecked, my boy.
+	if((I.damtype == BRUTE || I.damtype == PAIN) && !stat && prob(25 + (effective_force * 2)))
+		switch(hit_zone)
+			if(BP_HEAD, BP_EYES, BP_MOUTH) //Knocking your enemy out or making them dizzy
 				if(prob(effective_force))
-					apply_effect(20, PARALYZE, blocked)
-					if(lying)
-						visible_message("<span class='danger'>[src] [species.knockout_message]</span>")
-			else
-				//Easier to score a stun but lasts less time
-				if(prob(effective_force + 10))
-					apply_effect(6, WEAKEN, blocked)
-					if(lying)
-						visible_message("<span class='danger'>[src] has been knocked down!</span>")
+					if(!stat || (stat && !paralysis))
+						visible_message(SPAN_DANGER("[src] [species.knockout_message]"))
+						custom_pain("Your head's definitely gonna hurt tomorrow.", 30, affecting = affecting)
+					apply_effect(2, WEAKEN, (blocked/2))
+				else if(prob(effective_force*1.5))
+					visible_message(SPAN_DANGER("[src] looks momentarily disoriented."), SPAN_DANGER("You see stars."))
+					apply_effect(2, EYE_BLUR, blocked)
+			if(BP_CHEST, BP_GROIN, BP_L_ARM, BP_R_ARM, BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT) //Knock down
+				if(!stat && prob(effective_force))
+					visible_message(SPAN_DANGER("[src] has been knocked down!"))
+					apply_effect(2, WEAKEN, (blocked/2))
+			if(BP_L_HAND, BP_R_HAND) //Knocking someone down by smashing their hands? Hell no.
+				if(prob(effective_force))
+					visible_message(SPAN_DANGER("[user] disarms [src] with their [I.name]!"))
+					var/list/holding = list(src.get_active_hand() = 40, src.get_inactive_hand() = 20)
+					for(var/obj/item/D in holding)
+						unEquip(D)
+					playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 
 		//Apply blood
 		attack_bloody(I, user, effective_force, hit_zone)
+	if(effective_force <= 0)
+		show_message(SPAN_WARNING("Your armor absorbs the blow!"))
+		return 0
+
+	apply_damage(effective_force, I.damtype, hit_zone, blocked, damage_flags, used_weapon=I)
+
+	//////////
+
+	if(effective_force > 10 || effective_force >= 5 && prob(33))
+		forcesay(GLOB.hit_appends)	//forcesay checks stat already
+
+	return 1
 
 
 /mob/living/carbon/human/proc/attack_bloody(obj/item/W, mob/living/attacker, var/effective_force, var/hit_zone)
