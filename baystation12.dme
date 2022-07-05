@@ -1515,7 +1515,6 @@
 #include "code\modules\client\chat_icons.dm"
 #include "code\modules\client\client_defines.dm"
 #include "code\modules\client\client_procs.dm"
-#include "code\modules\client\movement.dm"
 #include "code\modules\client\patron.dm"
 #include "code\modules\client\player.dm"
 #include "code\modules\client\player_details.dm"

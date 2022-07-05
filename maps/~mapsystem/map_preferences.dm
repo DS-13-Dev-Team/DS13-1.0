@@ -2,7 +2,7 @@
 	var/load_legacy_saves = FALSE
 
 /datum/map/proc/character_save_path(var/slot)
-	return "/[path]/character[slot]"
+	return "/ishimura/character[slot]"
 
 /datum/map/proc/character_load_path(var/savefile/S, var/slot)
 	var/original_cd = S.cd

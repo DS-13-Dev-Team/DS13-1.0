@@ -294,21 +294,20 @@
 /obj/item/device/flashlight/flare/glowstick
 	name = "green glowstick"
 	desc = "A military-grade glowstick."
-	w_class = 2.0
+	w_class = ITEM_SIZE_SMALL
 	color = "#49f37c"
 	icon_state = "glowstick"
 	item_state = "glowstick"
 	randpixel = 12
 	produce_heat = 0
 	activation_sound = null
-	color = "#49f37c"
 	light_range = 4
 	light_wedge = LIGHT_OMNI
 
 /obj/item/device/flashlight/flare/glowstick/Initialize()
-	. = ..()
 	fuel = rand(3200, 4000)
 	set_light_color(color)
+	.=..()
 
 /obj/item/device/flashlight/flare/glowstick/update_brightness(mob/user)
 	item_state = "glowstick"

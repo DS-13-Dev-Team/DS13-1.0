@@ -70,6 +70,35 @@
 
 // ESCAPE SHUTTLES
 
+/datum/shuttle/autodock/ferry/executive
+	name = "Executive Shuttle"
+	warmup_time = 5	//Takes off quickly to keep the sacrifice element in play.
+	shuttle_area = /area/shuttle/executive_shuttle
+	dock_target = "executive_shuttle"
+	waypoint_station = "nav_executive_start"
+	waypoint_offsite = "nav_executive_out"
+	landmark_transition = "executive_transition"
+
+/obj/effect/shuttle_landmark/executive/start
+	name = "Executive Shuttle EVAC"
+	landmark_tag = "nav_executive_start"
+	//docking_controller = "executive_shuttle"
+	base_area = /area/centcom
+	base_turf = /turf/simulated/floor/plating
+
+/obj/effect/shuttle_landmark/executive/transit
+	landmark_tag = "executive_transition"
+
+/obj/effect/shuttle_landmark/executive/out
+	name = "Docking Bay"
+	landmark_tag = "nav_executive_out"
+	//docking_controller = "executive_dock_airlock"
+	escape = TRUE
+
+/area/shuttle/executive_shuttle
+	name = "\improper Executive Shuttle"
+	icon_state = "shuttlered"
+
 /datum/shuttle/autodock/ferry/escape_pod/ishimurapod
 	category = /datum/shuttle/autodock/ferry/escape_pod/ishimurapod
 	sound_takeoff = 'sound/effects/rocket.ogg'
