@@ -206,8 +206,6 @@ meteor_act
 	if(!affecting)
 		return 0
 
-	var/poise_damage
-
 	visible_message(SPAN_DANGER("[src] has been [I.attack_verb.len ? pick(I.attack_verb) : "attacked"] in the [affecting.name] with [I.name] by [user]!"))
 
 	////////// Here goes the REAL armor processing.
@@ -226,7 +224,6 @@ meteor_act
 	if(prob(blocked)) //armour provides a chance to turn sharp/edge weapon attacks into blunt ones
 		damage_flags &= ~(DAM_SHARP|DAM_EDGE)
 
-	//Oh you've run outta poise? I see... You're wrecked, my boy.
 	if((I.damtype == BRUTE || I.damtype == PAIN) && !stat && prob(25 + (effective_force * 2)))
 		switch(hit_zone)
 			if(BP_HEAD, BP_EYES, BP_MOUTH) //Knocking your enemy out or making them dizzy
