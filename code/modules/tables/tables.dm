@@ -313,7 +313,7 @@
 		icon_state = "blank"
 		overlays.Cut()
 
-		var/mutable_appearance/I
+		var/image/I
 
 		// Base frame shape. Mostly done for glass/diamond tables, where this is visible.
 		for(var/i = 1 to 4)
@@ -323,8 +323,8 @@
 		// Standard table image
 		if(material)
 			for(var/i = 1 to 4)
-				I = mutable_appearance(icon, "[material.table_icon_base]_[connections[i]]", TABLE_LAYER, DEFAULT_PLANE)
-				I.dir = 1<<(i-1)
+				I = image(icon, "[material.table_icon_base]_[connections[i]]", TABLE_LAYER, dir = 1<<(i-1))
+				I.plane = DEFAULT_PLANE
 				if(material.icon_colour)
 					I.color = material.icon_colour
 				I.alpha = 255 * material.opacity
