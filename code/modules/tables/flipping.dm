@@ -94,7 +94,6 @@
 		var/obj/structure/table/T = locate() in get_step(src,D)
 		if(T && T.can_connect() && T.flipped == 0 && material && T.material && T.material.name == material.name)
 			T.flip(direction)
-	take_damage(rand(5, 10))
 	update_connections(1)
 	update_icon()
 
