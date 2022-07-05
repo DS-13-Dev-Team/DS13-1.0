@@ -23,6 +23,7 @@
 	icon_state = "thunder"
 	requires_power = 0
 	sound_env = ARENA
+	base_lighting_alpha = 240
 
 /area/tdome/tdome1
 	name = "\improper Thunderdome (Team 1)"

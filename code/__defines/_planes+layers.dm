@@ -236,11 +236,11 @@ What is the naming convention for planes or layers?
 	#define ABOVE_HUD_LAYER 1
 
 /image/proc/plating_decal_layerise()
-	plane = DEFAULT_PLANE
+	plane = GAME_PLANE
 	layer = DECAL_PLATING_LAYER
 
 /image/proc/turf_decal_layerise()
-	plane = DEFAULT_PLANE
+	plane = GAME_PLANE
 	layer = DECAL_LAYER
 
 /atom/proc/hud_layerise()

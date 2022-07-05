@@ -64,7 +64,7 @@ GLOBAL_VAR_INIT(number_of_store_kiosks, 0)
 
 	overlays.Cut()
 	if (door_state == -1)
-		var/mutable_appearance/I = mutable_appearance(icon, "door_closed", ABOVE_HUMAN_LAYER, DEFAULT_PLANE)
+		var/mutable_appearance/I = mutable_appearance(icon, "door_closed", ABOVE_HUMAN_LAYER, GAME_PLANE)
 		overlays += I
 		light = FALSE
 
@@ -162,7 +162,7 @@ GLOBAL_VAR_INIT(number_of_store_kiosks, 0)
 		return
 
 	door_state = STORE_CLOSING
-	flick_overlay_icon(close_time, icon(src.icon, "door_closing"), override_layer = ABOVE_HUMAN_LAYER, override_plane = DEFAULT_PLANE)
+	flick_overlay_icon(close_time, icon(src.icon, "door_closing"), override_layer = ABOVE_HUMAN_LAYER, override_plane = GAME_PLANE)
 	playsound(src, sound_close, VOLUME_MID, TRUE)
 	spawn(close_time)
 		door_state = STORE_CLOSED
@@ -176,7 +176,7 @@ GLOBAL_VAR_INIT(number_of_store_kiosks, 0)
 
 	door_state = STORE_OPENING
 	update_icon()
-	flick_overlay_icon(open_time, icon(src.icon, "door_opening"), override_layer = ABOVE_HUMAN_LAYER, override_plane = DEFAULT_PLANE)
+	flick_overlay_icon(open_time, icon(src.icon, "door_opening"), override_layer = ABOVE_HUMAN_LAYER, override_plane = GAME_PLANE)
 	playsound(src, sound_open, VOLUME_MID, TRUE)
 	spawn(open_time)
 		door_state = STORE_OPEN
@@ -184,7 +184,7 @@ GLOBAL_VAR_INIT(number_of_store_kiosks, 0)
 
 /obj/machinery/store/proc/vertical_light_effect()
 	playsound(src, 'sound/machines/store/makeover.ogg', VOLUME_HIGH, FALSE, 5)
-	flick_overlay_icon(light_time, icon(src.icon, "light_overlay"), override_layer = ABOVE_HUMAN_LAYER, override_plane = DEFAULT_PLANE)
+	flick_overlay_icon(light_time, icon(src.icon, "light_overlay"), override_layer = ABOVE_HUMAN_LAYER, override_plane = GAME_PLANE)
 
 
 /obj/machinery/store/proc/makeover_animation()

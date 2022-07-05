@@ -6,7 +6,6 @@
 	density = 1
 	anchored = 1
 	atom_flags = ATOM_FLAG_CLIMBABLE
-	plane = DEFAULT_PLANE
 	layer = TABLE_LAYER
 	throwpass = 1
 	var/flipped = 0
@@ -324,7 +323,7 @@
 		if(material)
 			for(var/i = 1 to 4)
 				I = image(icon, "[material.table_icon_base]_[connections[i]]", TABLE_LAYER, dir = 1<<(i-1))
-				I.plane = DEFAULT_PLANE
+				I.plane = GAME_PLANE
 				if(material.icon_colour)
 					I.color = material.icon_colour
 				I.alpha = 255 * material.opacity
@@ -333,16 +332,16 @@
 		// Reinforcements
 		if(reinforced)
 			for(var/i = 1 to 4)
-				I = mutable_appearance(icon, "[reinforced.table_reinf]_[connections[i]]", TABLE_LAYER, DEFAULT_PLANE)
-				I.dir = 1<<(i-1)
+				I = image(icon, "[reinforced.table_reinf]_[connections[i]]", TABLE_LAYER, dir = 1<<(i-1))
+				I.plane = GAME_PLANE
 				I.color = reinforced.icon_colour
 				I.alpha = 255 * reinforced.opacity
 				overlays += I
 
 		if(carpeted)
 			for(var/i = 1 to 4)
-				I = mutable_appearance(icon, "carpet_[connections[i]]", TABLE_LAYER, DEFAULT_PLANE)
-				I.dir = 1<<(i-1)
+				I = image(icon, "carpet_[connections[i]]", TABLE_LAYER, dir = 1<<(i-1))
+				I.plane = GAME_PLANE
 				overlays += I
 	else
 		overlays.Cut()
@@ -363,7 +362,8 @@
 
 		icon_state = "flip[type]"
 		if(material)
-			var/mutable_appearance/I = mutable_appearance(icon, "[material.table_icon_base]_flip[type]", ABOVE_HUMAN_LAYER, DEFAULT_PLANE)
+			var/image/I = image(icon, "[material.table_icon_base]_flip[type]", dir != NORTH ? ABOVE_HUMAN_LAYER : TABLE_LAYER)
+			I.plane = GAME_PLANE
 			I.color = material.icon_colour
 			I.alpha = 255 * material.opacity
 			overlays += I
@@ -372,7 +372,8 @@
 			name = "table frame"
 
 		if(reinforced)
-			var/mutable_appearance/I = mutable_appearance(icon, "[reinforced.table_reinf]_flip[type]", ABOVE_HUMAN_LAYER, DEFAULT_PLANE)
+			var/image/I = image(icon, "[reinforced.table_reinf]_flip[type]", dir != NORTH ? ABOVE_HUMAN_LAYER : TABLE_LAYER)
+			I.plane = GAME_PLANE
 			I.color = reinforced.icon_colour
 			I.alpha = 255 * reinforced.opacity
 			overlays += I

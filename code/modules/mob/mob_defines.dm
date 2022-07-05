@@ -1,7 +1,7 @@
 /mob
 	datum_flags = DATUM_FLAG_WEAKREF_USE_TAG
 	density = TRUE
-	plane = DEFAULT_PLANE
+	plane = GAME_PLANE
 	layer = MOB_LAYER
 	blocks_emissive = EMISSIVE_BLOCK_GENERIC
 	appearance_flags = PIXEL_SCALE|LONG_GLIDE
