@@ -52,7 +52,7 @@
 		return TRUE
 	if(M.stat != DEAD)
 		return FALSE
-	if(isnewplayer(M))
+	if(isnewplayer(M) || issignal(M))
 		return FALSE
 	return TRUE
 
