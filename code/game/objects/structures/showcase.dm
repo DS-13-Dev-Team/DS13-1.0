@@ -11,7 +11,8 @@
 	name = "Marker"
 	icon = 'icons/obj/marker_giant.dmi'
 	icon_state = "marker_giant_dormant"
-	pixel_x = -33
+	atom_flags = ATOM_FLAG_INDESTRUCTIBLE
+	pixel_x = -32
 	density = TRUE
 	anchored = TRUE
 	bound_x = -32

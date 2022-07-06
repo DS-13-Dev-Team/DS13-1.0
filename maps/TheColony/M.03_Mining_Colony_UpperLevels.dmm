@@ -1772,8 +1772,7 @@
 "eq" = (
 /obj/machinery/door/airlock/command{
 	dir = 4;
-	name = "Colony Director's Office";
-	req_access = list(100)
+	name = "Colony Director's Office"
 	},
 /obj/structure/cable{
 	d1 = 4;

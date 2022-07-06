@@ -32,6 +32,8 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 	icon_state = "markersignal"
 	atom_flags = ATOM_FLAG_INTANGIBLE
 	plane = ABOVE_OBSCURITY_PLANE
+	invisibility = INVISIBILITY_MARKER
+	see_invisible = SEE_INVISIBLE_MARKER
 	var/energy_extension_type = /datum/extension/psi_energy/signal
 	var/datum/extension/psi_energy/psi_energy
 

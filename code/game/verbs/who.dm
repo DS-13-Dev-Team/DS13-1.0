@@ -10,7 +10,7 @@
 	var/columns_per_row = DEFAULT_WHO_CELLS_PER_ROW
 
 	if(holder)
-		if (check_rights(R_ADMIN,0) && isghost(src.mob))//If they have +ADMIN and are a ghost they can see players IC names and statuses.
+		if (check_rights(R_MOD,0) && isghost(src.mob))//If they have +MOD and are a ghost they can see players IC names and statuses.
 			columns_per_row = 1
 			var/mob/dead/observer/ghost/G = src.mob
 			if(!G.started_as_observer)//If you aghost to do this, KorPhaeron will deadmin you in your sleep.

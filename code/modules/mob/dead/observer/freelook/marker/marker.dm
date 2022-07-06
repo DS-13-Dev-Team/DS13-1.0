@@ -6,7 +6,7 @@
 	name = "Marker"
 	icon = 'icons/obj/marker_giant.dmi'
 	icon_state = "marker_giant_dormant"
-	pixel_x = -33
+	pixel_x = -32
 	density = TRUE
 	anchored = TRUE
 	light_on = FALSE

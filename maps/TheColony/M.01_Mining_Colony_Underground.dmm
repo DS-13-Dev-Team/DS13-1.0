@@ -52,26 +52,6 @@
 /obj/random/pouch,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room24)
-"ai" = (
-/obj/structure/table/rack{
-	desc = "A simple wooden altar covered in cloth.";
-	icon = 'icons/obj/cult.dmi';
-	icon_state = "churchaltar";
-	name = "wooden altar"
-	},
-/obj/random/gun_tool,
-/turf/simulated/floor/dank/mono,
-/area/mining_colony/lower)
-"aj" = (
-/obj/structure/table/rack{
-	desc = "A simple wooden altar covered in cloth.";
-	icon = 'icons/obj/cult.dmi';
-	icon_state = "churchaltar";
-	name = "wooden altar"
-	},
-/obj/random/rare_loot/sometimes,
-/turf/simulated/floor/dank/mono,
-/area/mining_colony/lower)
 "ak" = (
 /obj/effect/wallframe_spawn/reinforced,
 /obj/machinery/door/firedoor{
@@ -79,28 +59,8 @@
 	},
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/lower/securityevidence2)
-"al" = (
-/obj/effect/floor_decal/spline/fancy/wood,
-/turf/simulated/floor/lino,
-/area/mining_colony/lower)
-"am" = (
-/obj/effect/floor_decal/spline/fancy/wood/corner,
-/obj/effect/floor_decal/spline/fancy/wood/corner{
-	dir = 8
-	},
-/turf/simulated/floor/lino,
-/area/mining_colony/lower)
 "an" = (
 /obj/structure/ladder/up,
-/turf/simulated/floor/dank/mono,
-/area/mining_colony/lower)
-"ao" = (
-/obj/structure/table/standard,
-/obj/item/weapon/storage/bible/unitology,
-/obj/item/weapon/storage/bible/unitology,
-/obj/effect/floor_decal/spline/fancy/wood/corner{
-	dir = 4
-	},
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/lower)
 "ap" = (
@@ -602,10 +562,6 @@
 	},
 /turf/simulated/floor/dank/rectangles,
 /area/mining_colony/lower/excav/airlock)
-"bV" = (
-/obj/effect/floor_decal/spline/fancy/wood/corner,
-/turf/simulated/floor/dank/mono,
-/area/mining_colony/lower)
 "bW" = (
 /obj/machinery/light{
 	dir = 1;
@@ -779,20 +735,6 @@
 /obj/effect/floor_decal/dank/outline,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/lower/securityevidence2)
-"cz" = (
-/obj/random/cash,
-/obj/random/cash,
-/obj/structure/table/rack{
-	desc = "A simple wooden altar covered in cloth.";
-	icon = 'icons/obj/cult.dmi';
-	icon_state = "churchaltar";
-	name = "wooden altar"
-	},
-/obj/effect/floor_decal/spline/fancy/wood/corner{
-	dir = 8
-	},
-/turf/simulated/floor/dank/mono,
-/area/mining_colony/lower)
 "cA" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -1261,18 +1203,6 @@
 /obj/structure/flora/pottedplant/floorleaf,
 /turf/simulated/floor/tiled/dark,
 /area/mining_colony/lower/securitystation)
-"dM" = (
-/obj/effect/floor_decal/spline/fancy/wood/corner{
-	dir = 1
-	},
-/turf/simulated/floor/dank/mono,
-/area/mining_colony/lower)
-"dN" = (
-/obj/effect/floor_decal/spline/fancy/wood/corner{
-	dir = 4
-	},
-/turf/simulated/floor/dank/mono,
-/area/mining_colony/lower)
 "dO" = (
 /obj/structure/janitorialcart,
 /obj/item/weapon/mop,
@@ -1966,9 +1896,6 @@
 /obj/structure/largecrate/ds/green_horizontal,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/lower/maints/room66)
-"gb" = (
-/turf/simulated/floor/dank/mono,
-/area/mining_colony/lower)
 "gc" = (
 /obj/machinery/portable_atmospherics/hydroponics,
 /turf/simulated/floor/plating,
@@ -2045,81 +1972,15 @@
 	},
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/lower/securitystation)
-"gr" = (
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 1
-	},
-/turf/simulated/floor/lino,
-/area/mining_colony/lower)
 "gs" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/floor_decal/industrial/outline,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/lower/morgue)
-"gt" = (
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 4
-	},
-/turf/simulated/floor/lino,
-/area/mining_colony/lower)
-"gu" = (
-/obj/structure/bed/chair/wood{
-	dir = 8;
-	holographic = 1
-	},
-/turf/simulated/floor/carpet/red,
-/area/mining_colony/lower)
-"gv" = (
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 4
-	},
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 8
-	},
-/turf/simulated/floor/lino,
-/area/mining_colony/lower)
-"gw" = (
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 8
-	},
-/turf/simulated/floor/lino,
-/area/mining_colony/lower)
-"gx" = (
-/turf/simulated/floor/lino,
-/area/mining_colony/lower)
-"gy" = (
-/obj/structure/bed/chair/office{
-	dir = 4;
-	icon_state = "officechair_preview"
-	},
-/turf/simulated/floor/lino,
-/area/mining_colony/lower)
-"gz" = (
-/obj/structure/table/standard,
-/obj/item/weapon/storage/bible/unitology,
-/obj/item/weapon/storage/bible/unitology,
-/turf/simulated/floor/dank/mono,
-/area/mining_colony/lower)
 "gA" = (
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/lower/mining_caves)
-"gB" = (
-/obj/effect/floor_decal/spline/fancy/wood/corner{
-	dir = 4
-	},
-/obj/effect/floor_decal/spline/fancy/wood/corner{
-	dir = 1
-	},
-/turf/simulated/floor/lino,
-/area/mining_colony/lower)
-"gC" = (
-/obj/structure/ladder/up,
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 1
-	},
-/turf/simulated/floor/lino,
-/area/mining_colony/lower)
 "gD" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/weapon/storage/box/survival,
@@ -17247,7 +17108,7 @@ aw
 aw
 aw
 aw
-ar
+aw
 Rv
 Rv
 Rv
@@ -17443,13 +17304,13 @@ aq
 aw
 aw
 aw
-ar
-ar
-ar
-ar
-ar
-ar
-ar
+aw
+aw
+aw
+aw
+aw
+aw
+aw
 Rv
 el
 iF
@@ -17645,13 +17506,13 @@ aq
 aw
 aw
 aw
-ar
-ar
-ar
-ar
-ar
-ar
-ar
+aw
+aw
+aw
+aw
+aw
+aw
+aw
 Rv
 je
 hO
@@ -17847,13 +17708,13 @@ aq
 aw
 aw
 aw
-ar
-ar
-ai
-gr
-gx
-gx
-ar
+aw
+aw
+aw
+aw
+aw
+aw
+aw
 Rv
 Pn
 Pn
@@ -18049,13 +17910,13 @@ aw
 aw
 aw
 aw
-ar
-ar
-aj
-gr
-gy
-gx
-ar
+aw
+aw
+aw
+aw
+aw
+aw
+aw
 Rv
 IQ
 RO
@@ -18251,13 +18112,13 @@ aw
 aw
 aw
 aw
-ar
-ar
-ar
-ao
-gz
-gb
-ar
+aw
+aw
+aw
+aw
+aw
+aw
+aw
 Rv
 vL
 Rv
@@ -18453,13 +18314,13 @@ aw
 aw
 aw
 aw
-ar
-ar
-bV
-gt
-gt
-dM
-ar
+aw
+aw
+aw
+aw
+aw
+aw
+aw
 ar
 dY
 dY
@@ -18655,13 +18516,13 @@ aw
 aw
 aw
 aw
-ar
-ar
-al
-gu
-gu
-gr
-ar
+aw
+aw
+aw
+aw
+aw
+aw
+aw
 ar
 ei
 ei
@@ -18857,13 +18718,13 @@ aw
 aw
 aw
 aw
-ar
-ar
-am
-gv
-gv
-gB
-ar
+aw
+aw
+aw
+aw
+aw
+aw
+aw
 ar
 ei
 ev
@@ -19059,13 +18920,13 @@ aw
 aw
 aw
 aw
-ar
-ar
-al
-gu
-gu
-gC
-ar
+aw
+aw
+aw
+aw
+aw
+aw
+aw
 ar
 ar
 ar
@@ -19261,13 +19122,13 @@ aw
 aw
 aw
 aw
-ar
-ar
-cz
-gw
-gw
-dN
-ar
+aw
+aw
+aw
+aw
+aw
+aw
+aw
 ar
 ar
 ar
@@ -19463,13 +19324,13 @@ aw
 aw
 aw
 aw
-ar
-ar
-ar
-ar
-ar
-ar
-ar
+aw
+aw
+aw
+aw
+aw
+aw
+aw
 aw
 aw
 aw
@@ -19665,13 +19526,13 @@ aw
 aw
 aw
 aw
-ar
-ar
-ar
-ar
-ar
-ar
-ar
+aw
+aw
+aw
+aw
+aw
+aw
+aw
 aw
 aw
 aw
