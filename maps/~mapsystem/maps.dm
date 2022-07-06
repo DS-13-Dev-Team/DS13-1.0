@@ -174,9 +174,9 @@ var/const/MAP_HAS_RANK = 2		//Rank system, also togglable
 
 //Called late in the load order after other subsystems are done
 /datum/map/proc/post_setup()
-	if (powernode_rooms)
+	if(powernode_rooms)
 		setup_powernode_rooms()
-	if (crew_objectives)
+	if(length(crew_objectives))
 		setup_crew_objectives()
 
 //Gets a random lobby track, excluding a list of tracks we've already heard
@@ -287,6 +287,6 @@ var/const/MAP_HAS_RANK = 2		//Rank system, also togglable
 
 
 /datum/map/proc/setup_crew_objectives()
-	for (var/subtype in GLOB.all_crew_objectives)
+	for(var/subtype in crew_objectives)
 		var/datum/crew_objective/CO = GLOB.all_crew_objectives[subtype]
 		CO.Initialize()
