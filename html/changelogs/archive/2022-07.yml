@@ -1,3 +1,11 @@
 2022-07-06:
   DTraitor:
   - refactor: Humans (and necromorphs) won't be paralyzed when hit in the head anymore.
+2022-07-07:
+  DTraitor:
+  - bugfix: Fixed vitals monitor not playing sound when your heart stops.
+  - bugfix: Fixed ADS event being triggered on the Colony.
+  - bugfix: Fixed pulling things on the stairs.
+  - bugfix: Marker signals won't hear dead chat and won't see ghosts anymore.
+  - bugfix: Made fake Marker in the Church indestructible.
+  - admin: Some admin tools (like Player Panel) are accessible by moderators now.
