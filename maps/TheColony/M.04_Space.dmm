@@ -5208,6 +5208,19 @@
 	icon_state = "plating"
 	},
 /area/ERT/escapebase)
+"IJ" = (
+/obj/effect/step_trigger/teleporter/random{
+	affect_ghosts = 1;
+	name = "escapeshuttle_leave";
+	teleport_x = 3;
+	teleport_x_offset = 197;
+	teleport_y = 3;
+	teleport_y_offset = 197;
+	teleport_z = 2;
+	teleport_z_offset = 2
+	},
+/turf/space/bluespace,
+/area/space)
 "IW" = (
 /obj/machinery/vending/boozeomat,
 /turf/unsimulated/floor/rescue_base,
@@ -18464,7 +18477,7 @@ aa
 aa
 aa
 dQ
-dX
+IJ
 dX
 dX
 dX
@@ -18666,7 +18679,7 @@ aa
 aa
 aa
 dQ
-dX
+IJ
 hO
 hO
 hO
@@ -18868,7 +18881,7 @@ aa
 aa
 aa
 dQ
-dX
+IJ
 hO
 hO
 hO
@@ -19070,7 +19083,7 @@ aa
 aa
 aa
 dQ
-dX
+IJ
 hO
 hO
 hO
@@ -19272,7 +19285,7 @@ aa
 aa
 aa
 dQ
-dX
+IJ
 hO
 hO
 hO
@@ -19474,7 +19487,7 @@ aa
 aa
 aa
 dQ
-dX
+IJ
 hO
 hO
 hO
@@ -19676,7 +19689,7 @@ aa
 aa
 aa
 dQ
-dX
+IJ
 hO
 hO
 hO
@@ -19878,7 +19891,7 @@ aa
 aa
 aa
 dQ
-dX
+IJ
 hO
 hO
 hO
@@ -20080,7 +20093,7 @@ aa
 aa
 aa
 dQ
-dX
+IJ
 hO
 hO
 hO
@@ -20282,7 +20295,7 @@ aa
 aa
 aa
 dQ
-dX
+IJ
 dX
 dX
 dX
@@ -20686,7 +20699,7 @@ aa
 aa
 aa
 dQ
-dX
+IJ
 dX
 dX
 dX
@@ -20888,7 +20901,7 @@ aa
 aa
 aa
 dQ
-dX
+IJ
 hO
 hO
 hO
@@ -21090,7 +21103,7 @@ aa
 aa
 aa
 dQ
-dX
+IJ
 hO
 hO
 hO
@@ -21292,7 +21305,7 @@ aa
 aa
 aa
 dQ
-dX
+IJ
 hO
 hO
 hO
@@ -21494,7 +21507,7 @@ aa
 aa
 aa
 dQ
-dX
+IJ
 hO
 hO
 hO
@@ -21696,7 +21709,7 @@ aa
 aa
 aa
 dQ
-dX
+IJ
 hO
 hO
 hO
@@ -21898,7 +21911,7 @@ aa
 aa
 aa
 dQ
-dX
+IJ
 hO
 hO
 hO
@@ -22100,7 +22113,7 @@ aa
 aa
 aa
 dQ
-dX
+IJ
 hO
 hO
 hO
@@ -22302,7 +22315,7 @@ aa
 aa
 aa
 dQ
-dX
+IJ
 hO
 hO
 hO
@@ -22504,7 +22517,7 @@ aa
 aa
 aa
 dQ
-dX
+IJ
 dX
 dX
 dX
@@ -24335,8 +24348,8 @@ hO
 dQ
 dQ
 dQ
-dX
-dX
+IJ
+IJ
 dQ
 dQ
 aa
@@ -24538,8 +24551,8 @@ hO
 hO
 hO
 hO
-dX
-dX
+hO
+IJ
 dQ
 aa
 aa
@@ -24741,7 +24754,7 @@ hO
 hO
 hO
 hO
-dX
+IJ
 dQ
 aa
 aa
@@ -24943,7 +24956,7 @@ hO
 hO
 hO
 hO
-dX
+IJ
 dQ
 aa
 aa
@@ -25145,7 +25158,7 @@ hO
 hO
 hO
 hO
-dX
+IJ
 dQ
 aa
 aa
@@ -25347,7 +25360,7 @@ hO
 hO
 hO
 hO
-dX
+IJ
 dQ
 aa
 aa
@@ -25549,7 +25562,7 @@ hO
 hO
 hO
 hO
-dX
+IJ
 dQ
 aa
 aa
@@ -25750,8 +25763,8 @@ hO
 hO
 hO
 hO
-dX
-dX
+IJ
+IJ
 dQ
 aa
 aa
@@ -25951,8 +25964,8 @@ dQ
 dQ
 dQ
 dQ
-dX
-dX
+IJ
+IJ
 dQ
 dQ
 aa
@@ -30791,15 +30804,15 @@ aa
 aa
 aa
 dQ
-hK
-hK
-hK
-hK
-hK
-hK
-hK
-hK
-hK
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
+IJ
 dQ
 aa
 aa

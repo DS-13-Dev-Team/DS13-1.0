@@ -3384,16 +3384,6 @@
 /obj/machinery/door/airlock/mining,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/excavation/interior)
-"ajH" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 4;
-	icon_state = "warning"
-	},
-/obj/structure/railing/mapped{
-	dir = 4
-	},
-/turf/simulated/floor/dank/mono,
-/area/mining_colony/interior/excavation/interior)
 "ajI" = (
 /obj/machinery/light{
 	dir = 8
@@ -4081,9 +4071,6 @@
 	},
 /turf/simulated/floor/dank/maint_left,
 /area/mining_colony/interior/enginieering/gas_storage2)
-"alD" = (
-/turf/simulated/wall/r_wall,
-/area/mining_colony/interior/civ_hall)
 "alE" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -8896,7 +8883,7 @@
 	},
 /obj/structure/railing/mapped{
 	dir = 4;
-	icon_state = "railing0";
+	icon_state = "railing0"
 	},
 /obj/machinery/light/small,
 /turf/simulated/floor/dank/slides,
@@ -9341,6 +9328,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/structure/closet/crate/bin,
 /turf/simulated/floor/wood,
 /area/mining_colony/interior/messy_hall)
 "aBf" = (
@@ -19035,6 +19023,7 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
+/obj/structure/closet/crate/bin,
 /turf/simulated/floor/wood,
 /area/mining_colony/interior/messy_hall)
 "bao" = (
@@ -46351,10 +46340,10 @@ aYb
 aYb
 aYb
 aYb
-alD
-alD
-alD
-alD
+aVP
+aVP
+aVP
+aVP
 aVP
 agb
 aUC
@@ -68392,8 +68381,8 @@ aXg
 aXg
 aiY
 aZd
-ajH
-ajH
+aji
+aji
 aiY
 ajn
 ajY
