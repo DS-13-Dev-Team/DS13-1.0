@@ -327,6 +327,7 @@
 /obj/structure/stairs_short
 	icon = 'icons/obj/stairs_persp.dmi'
 	icon_state = "p_stair_full"
+	anchored = TRUE
 
 /obj/structure/stairs_short/north
 	dir = NORTH
