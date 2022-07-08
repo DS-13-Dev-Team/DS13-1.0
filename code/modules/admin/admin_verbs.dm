@@ -659,7 +659,7 @@ var/list/admin_verbs_mentor = list(
 #define AUTOBANTIME 10
 
 /client/proc/warn(warned_ckey)
-	if(!check_rights(R_ADMIN))	return
+	if(!check_rights(R_MOD))	return
 
 	if(!warned_ckey || !istext(warned_ckey))	return
 	if(warned_ckey in GLOB.admin_datums)
@@ -726,7 +726,7 @@ var/list/admin_verbs_mentor = list(
 			if(!force_cap)
 				force_cap = 3 //Default
 			epicenter.explosion(radius, force_cap)
-	log_and_message_admins("created an admin explosion at [epicenter.loc].")
+	log_and_message_staff("created an admin explosion at [epicenter.loc].")
 	feedback_add_details("admin_verb","DB") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/give_disease2(mob/T as mob in SSmobs.mob_list) // -- Giacom

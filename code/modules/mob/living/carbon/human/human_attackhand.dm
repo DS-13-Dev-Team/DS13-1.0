@@ -102,7 +102,7 @@
 			H.launch_unarmed_strike(src, attack)
 
 		if(I_DISARM)
-			if(H.species)
+			if(H.species && H != src)
 				admin_attack_log(M, src, "Disarmed their victim.", "Was disarmed.", "disarmed")
 				H.species.disarm_attackhand(H, src)
 

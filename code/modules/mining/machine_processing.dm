@@ -336,7 +336,7 @@
 			var/value = ore_datum.Value()
 			payout = value * ores_processed[oretype]
 		if(payout)
-			spawn_miner_money(payout, loc)
+			spawn_miner_money(payout, get_turf(console) ? get_turf(console) : get_turf(src))
 
 	console.updateUsrDialog()
 
