@@ -39,7 +39,7 @@ SUBSYSTEM_DEF(mapping)
 		var/old_config = config
 		config = global.config.defaultmap
 		if(!config || config.defaulted)
-			to_chat(world, SPAN_BOLDANNOUNCE("Unable to load next or default map config, defaulting to Meta Station."))
+			to_chat(world, SPAN_BOLDANNOUNCE("Unable to load next or default map config, defaulting to The Colony."))
 			config = old_config
 	loadWorld()
 	preloadTemplates()
@@ -95,7 +95,7 @@ SUBSYSTEM_DEF(mapping)
 	var/total_z = 0
 	var/list/parsed_maps = list()
 	for (var/file in files)
-		var/full_path = "_maps/[path]/[file]"
+		var/full_path = "maps/[path]/[file]"
 		var/datum/parsed_map/pm = new(file(full_path))
 		var/bounds = pm?.bounds
 		if (!bounds)
@@ -153,7 +153,7 @@ SUBSYSTEM_DEF(mapping)
 
 	// Custom maps are removed after station loading so the map files does not persist for no reason.
 	if(config.map_path == CUSTOM_MAP_PATH)
-		fdel("_maps/custom/[config.map_file]")
+		fdel("maps/custom/[config.map_file]")
 		// And as the file is now removed set the next map to default.
 		next_map_config = load_default_map_config()
 

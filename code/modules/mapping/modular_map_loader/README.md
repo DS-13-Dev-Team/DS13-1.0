@@ -30,10 +30,10 @@ This object is used only to determine the offsets to be used on loading, and has
 
 ### TOML configuration
 
-This TOML file is used to map between a list of `.dmm` files and a string key. The file consists of two parts. The first is a line 
+This TOML file is used to map between a list of `.dmm` files and a string key. The file consists of two parts. The first is a line
 
 ```
-directory = "_maps/etc/"
+directory = "maps/etc/"
 ```
 
 which points at a folder containing the `.dmm` files of the modules used in the map. The second is a series of tables
@@ -51,15 +51,15 @@ This is the unit test for modular map loading. It performs two checks on every s
 
 ## How-To
 
-This section will cover the basics of how to use map modules as a mapper. If you want a concrete example to look at, the space ruin `_maps/RandomRuins/SpaceRuins/DJstation.dmm` and its associated code, configuration and modules employ all the techniques covered in this tutorial.
+This section will cover the basics of how to use map modules as a mapper. If you want a concrete example to look at, the space ruin `maps/RandomRuins/SpaceRuins/DJstation.dmm` and its associated code, configuration and modules employ all the techniques covered in this tutorial.
 
 ### The Main Map
 
-First we need to create a map, as we usually would. Let's say we want to create a new space ruin `foobar.dmm`, and we put it in the appropriate folder as usual, `_maps/RandomRuins/SpaceRuins/foobar.dmm`. We now need to create three more things.
+First we need to create a map, as we usually would. Let's say we want to create a new space ruin `foobar.dmm`, and we put it in the appropriate folder as usual, `maps/RandomRuins/SpaceRuins/foobar.dmm`. We now need to create three more things.
 
 * `code/modules/ruins/spaceruin_code/foobar.dm` - A code file like would be used to store any code specific to this map.
 * `strings/modular_maps/foobar.toml`- A configuration file, this will be looked at in more detail later.
-* `_maps/RandomRuins/SpaceRuins/foobar/` - A new subfolder, which is where we will put the `.dmm` files for the modules.
+* `maps/RandomRuins/SpaceRuins/foobar/` - A new subfolder, which is where we will put the `.dmm` files for the modules.
 
 In `code/modules/ruins/spaceruin_code/foobar.dm` we need to add a small piece of code to define a new modular map root type for our map, which should look like this
 
@@ -74,7 +74,7 @@ When creating our main map, we place one of these roots in the location we want 
 
 ### Module Maps
 
-Now we need to make the modules to be placed on our roots. These will be saved in the folder we created earlier, `_maps/RandomRuins/SpaceRuins/foobar/`. Modules do not have to be the same size, so long as all modules will fit properly on the root without running into other parts of the map.
+Now we need to make the modules to be placed on our roots. These will be saved in the folder we created earlier, `maps/RandomRuins/SpaceRuins/foobar/`. Modules do not have to be the same size, so long as all modules will fit properly on the root without running into other parts of the map.
 
 When making a module, you need to include a connector object `/obj/modular_map_connector`. When the module is loaded, it will be offset so this connector is placed on top of the root on the main map.
 
@@ -87,7 +87,7 @@ If you wish, you can also place another root on a module, if for some reason tha
 Now we go back to our configuration file `strings/modular_maps/foobar.toml`. Say we ended up using three different sets of modules in our map, `vault`, `airlock` and `bathroom`, each of which have two variants. We want our `.toml` file to look like this
 
 ```
-directory = "_maps/RandomRuins/SpaceRuins/foobar/"
+directory = "maps/RandomRuins/SpaceRuins/foobar/"
 
 [rooms.vault]
 modules = ["vault_1.dmm", "vault_2.dmm"]
@@ -101,7 +101,7 @@ modules = ["bathroom_1.dmm", "bathroom_2.dmm"]
 
 Let's break down what is happening here.
 
-`directory = "_maps/RandomRuins/SpaceRuins/foobar/"` points to the folder where our modules are stored.
+`directory = "maps/RandomRuins/SpaceRuins/foobar/"` points to the folder where our modules are stored.
 
 `[rooms.vault]` identifies the following line as being the modules for a root with `key = vault`.
 

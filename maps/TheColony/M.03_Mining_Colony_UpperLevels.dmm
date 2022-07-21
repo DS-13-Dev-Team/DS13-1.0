@@ -1,12 +1,4 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"aa" = (
-/obj/effect/landmark/map_data{
-	height = 3
-	},
-/turf/unsimulated/mineral{
-	icon_state = "rock"
-	},
-/area/space)
 "ab" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/security/upper)
@@ -4410,7 +4402,7 @@ ew
 ew
 ew
 ew
-aa
+ew
 "}
 (2,1,1) = {"
 ew

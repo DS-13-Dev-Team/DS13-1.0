@@ -1,11 +1,9 @@
 //This file is used to contain unique properties of every map, and how we wish to alter them on a per-map basis.
 //Use JSON files that match the datum layout and you should be set from there.
-//Right now, we default to MetaStation to ensure something does indeed load by default.
-//  -san7890 (with regards to Cyberboss)
 
 /datum/map_config
 	// Metadata
-	var/config_filename = "maps/metastation.json"
+	var/config_filename = "maps/colony.json"
 	var/defaulted = TRUE  // set to FALSE by LoadConfig() succeeding
 	// Config from maps.txt
 	var/config_max_users = 0
@@ -14,16 +12,18 @@
 	var/votable = FALSE
 
 	// Config actually from the JSON - should default to Meta
-	var/map_name = "Meta Station"
-	var/map_path = "map_files/MetaStation"
-	var/map_file = "MetaStation.dmm"
+	var/map_name = "The Colony"
+	var/map_path = "TheColony"
+	var/map_file = list(
+		"M.01_Mining_Colony_Underground.dmm",
+		"M.02_Mining_Colony.dmm",
+		"M.03_Mining_Colony_UpperLevels.dmm",
+	)
 
 	var/traits = null
 
 	/// Dictionary of job sub-typepath to template changes dictionary
 	var/job_changes = list()
-	/// What message shows up when the orbit is shifted.
-	var/orbit_shift_replacement = "Attention crew, it appears that someone on your station has shifted your orbit into more dangerous territory."
 
 /**
  * Proc that simply loads the default map config, which should always be functional.
@@ -131,9 +131,6 @@
 	else if (!isnull(traits))
 		log_world("map_config traits is not a list!")
 		return
-
-	if("orbit_shift_replacement" in json)
-		orbit_shift_replacement = json["orbit_shift_replacement"]
 
 	if ("job_changes" in json)
 		if(!islist(json["job_changes"]))

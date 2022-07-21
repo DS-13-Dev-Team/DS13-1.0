@@ -2,12 +2,6 @@
 "aa" = (
 /turf/space,
 /area/space)
-"ab" = (
-/obj/effect/landmark/map_data{
-	height = 5
-	},
-/turf/space,
-/area/space)
 "ac" = (
 /obj/machinery/power/tracker,
 /obj/effect/floor_decal/industrial/hatch/yellow,
@@ -4250,7 +4244,7 @@ aa
 aa
 aa
 aa
-ab
+aa
 "}
 (2,1,1) = {"
 aa

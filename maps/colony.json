@@ -1,0 +1,27 @@
+{
+	"version": 1,
+	"map_name": "The Colony",
+	"map_path": "TheColony",
+	"map_file": [
+		"M.01_Mining_Colony_Underground.dmm",
+		"M.02_Mining_Colony.dmm",
+		"M.03_Mining_Colony_UpperLevels.dmm"
+	],
+	"traits": [
+		{
+			"Up": 1,
+			"Linkage": "Cross"
+		},
+		{
+			"Up": 1,
+			"Down": -1,
+			"Baseturf": "/turf/simulated/open",
+			"Linkage": "Cross"
+		},
+		{
+			"Down": -1,
+			"Baseturf": "/turf/simulated/open",
+			"Linkage": "Cross"
+		}
+	],
+}
