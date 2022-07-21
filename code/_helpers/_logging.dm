@@ -211,6 +211,13 @@
 		entry += "\n[message]"
 	WRITE_LOG(GLOB.tgui_log, entry)
 
+/// Logging for mapping errors
+/proc/log_mapping(text, skip_world_log)
+	WRITE_LOG(GLOB.world_map_error_log, text)
+	if(skip_world_log)
+		return
+	SEND_TEXT(world.log, text)
+
 /* For logging round startup. */
 /proc/start_log(log)
 	WRITE_LOG(log, "Starting up round ID [GLOB.round_id].\n-------------------------")

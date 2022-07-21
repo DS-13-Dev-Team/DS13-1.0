@@ -114,6 +114,12 @@ SUBSYSTEM_DEF(vote)
 						restart = TRUE
 					else
 						GLOB.master_mode = .
+			if("next_map")
+				var/datum/map_config/winning_map = config.maplist[.]
+				if(!istype(winning_map))
+					CRASH("[type] wasn't passed a valid winning map choice. (Got: [. || "null"] - [winning_map || "null"])")
+				SSmapping.changemap(winning_map)
+				SSmapping.map_voted = TRUE
 
 	if(restart)
 		var/active_admins = FALSE
@@ -183,6 +189,16 @@ SUBSYSTEM_DEF(vote)
 					if(players < mode.required_players)
 						continue
 					choices.Add(mode.config_tag)
+			if("next_map")
+				for(var/map in shuffle(config.maplist))
+					var/datum/map_config/possible_config = config.maplist[map]
+					if(!possible_config.votable)
+						continue
+					if(possible_config.config_min_users > 0 && GLOB.clients.len < possible_config.config_min_users)
+						continue
+					if(possible_config.config_max_users > 0 && GLOB.clients.len > possible_config.config_max_users)
+						continue
+					choices += possible_config.map_name
 			if("custom")
 				question = stripped_input(usr,"What is the vote for?")
 				if(!question)
@@ -282,16 +298,22 @@ SUBSYSTEM_DEF(vote)
 				CONFIG_SET(flag/allow_vote_restart, !CONFIG_GET(flag/allow_vote_restart))
 		if("restart")
 			if(CONFIG_GET(flag/allow_vote_restart) || usr.client.holder)
-				initiate_vote("restart",usr.key)
+				initiate_vote("restart", usr.key)
 		if("toggle_gamemode")
 			if(usr.client.holder && upper_admin)
 				CONFIG_SET(flag/allow_vote_mode, !CONFIG_GET(flag/allow_vote_mode))
+		if("toggle_next_map")
+			if(usr.client.holder && upper_admin)
+				CONFIG_SET(flag/allow_map_voting, !CONFIG_GET(flag/allow_map_voting))
 		if("gamemode")
 			if(CONFIG_GET(flag/allow_vote_mode) || usr.client.holder)
-				initiate_vote("gamemode",usr.key)
+				initiate_vote("gamemode", usr.key)
+		if("next_map")
+			if(CONFIG_GET(flag/allow_map_voting) || usr.client.holder)
+				initiate_vote("next_map", usr.key)
 		if("custom")
 			if(usr.client.holder)
-				initiate_vote("custom",usr.key)
+				initiate_vote("custom", usr.key)
 		if("vote")
 			submit_vote(round(text2num(params["index"])))
 	return TRUE

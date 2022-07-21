@@ -31,13 +31,18 @@ GLOBAL_LIST_INIT(ccw_dir, list( // ccw_dir[dir] = counter-clockwise rotation of 
 	48, 56, 52, 60, 49, 57, 53, 61, 50, 58, 54, 62, 51, 59, 55, 63  // UP+DOWN - Same as first line but +48
 ))
 
-GLOBAL_LIST_INIT(dir_to_string, list("1"	= "north",
-"2" = "south",
-"4" = "east",
-"5" = "northeast",
-"6" = "southeast",
-"8" = "west",
-"9" = "northwest",
-"10" = "southwest",
-"16" = "up",
-"32" = "down"))
+GLOBAL_LIST_INIT(dir_to_string, list(
+	"1"	= "north",
+	"2" = "south",
+	"4" = "east",
+	"5" = "northeast",
+	"6" = "southeast",
+	"8" = "west",
+	"9" = "northwest",
+	"10" = "southwest",
+	"16" = "up",
+	"32" = "down",
+))
+
+/// An association from typepath to area instance. Only includes areas with `unique` set.
+GLOBAL_LIST_EMPTY_TYPED(areas_by_type, /area)

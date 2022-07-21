@@ -636,6 +636,7 @@ var/world_topic_spam_protect_time = world.timeofday
 	GLOB.sql_error_log = "[GLOB.log_directory]/sql.log"
 	GLOB.world_telecomms_log = "[GLOB.log_directory]/telecomms.log"
 	GLOB.world_qdel_log = "[GLOB.log_directory]/qdel.log"
+	GLOB.world_map_error_log = "[GLOB.log_directory]/map_errors.log"
 	GLOB.world_runtime_log = "[GLOB.log_directory]/runtime.log"
 	GLOB.world_debug_log = "[GLOB.log_directory]/debug.log"
 	GLOB.tgui_log = "[GLOB.log_directory]/tgui.log"
@@ -652,6 +653,7 @@ var/world_topic_spam_protect_time = world.timeofday
 	start_log(GLOB.sql_error_log)
 	start_log(GLOB.world_telecomms_log)
 	start_log(GLOB.world_qdel_log)
+	start_log(GLOB.log_directory)
 	start_log(GLOB.world_runtime_log)
 	start_log(GLOB.world_debug_log)
 	start_log(GLOB.tgui_log)

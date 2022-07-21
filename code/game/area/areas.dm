@@ -19,6 +19,7 @@
 	var/ship_area = FALSE
 
 /area/New()
+	GLOB.areas_by_type[type] = src
 	icon_state = ""
 	uid = ++global_uid
 
@@ -27,6 +28,11 @@
 		power_equip = 0
 		power_environ = 0
 	..()
+
+/area/Destroy()
+	if(GLOB.areas_by_type[type] == src)
+		GLOB.areas_by_type[type] = null
+	.=..()
 
 /area/Initialize()
 	. = ..()
@@ -358,4 +364,20 @@ var/list/mob/living/forced_ambiance_list = new
 
 /area/proc/has_turfs()
 	return !!(locate(/turf) in src)
+
+/**
+ * Register this area as belonging to a z level
+ *
+ * Ensures the item is added to the SSmapping.areas_in_z list for this z
+ */
+/area/proc/reg_in_areas_in_z()
+	if(!length(contents))
+		return
+	var/list/areas_in_z = SSmapping.areas_in_z
+	if(!z)
+		WARNING("No z found for [src]")
+		return
+	if(!areas_in_z["[z]"])
+		areas_in_z["[z]"] = list()
+	areas_in_z["[z]"] += src
 

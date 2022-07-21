@@ -34,9 +34,6 @@ datum/controller/game_controller/New()
 	if(!syndicate_code_response)	syndicate_code_response	= generate_code_phrase()
 
 datum/controller/game_controller/proc/setup()
-	spawn(20)
-		createRandomZlevel()
-
 	setup_objects()
 	setupgenetics()
 

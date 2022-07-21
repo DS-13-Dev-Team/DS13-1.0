@@ -399,8 +399,6 @@
 			return global.mannequins_;
 		if("map_count")
 			return global.map_count;
-		if("maploader")
-			return global.maploader;
 		if("mark")
 			return global.mark;
 		if("master_controller")
@@ -637,22 +635,6 @@
 			return global.supply_methods_;
 		if("surgery_steps")
 			return global.surgery_steps;
-		if("swapmaps_byname")
-			return global.swapmaps_byname;
-		if("swapmaps_compiled_maxx")
-			return global.swapmaps_compiled_maxx;
-		if("swapmaps_compiled_maxy")
-			return global.swapmaps_compiled_maxy;
-		if("swapmaps_compiled_maxz")
-			return global.swapmaps_compiled_maxz;
-		if("swapmaps_iconcache")
-			return global.swapmaps_iconcache;
-		if("swapmaps_initialized")
-			return global.swapmaps_initialized;
-		if("swapmaps_loaded")
-			return global.swapmaps_loaded;
-		if("swapmaps_mode")
-			return global.swapmaps_mode;
 		if("syndicate_access")
 			return global.syndicate_access;
 		if("syndicate_code_phrase")
@@ -1134,8 +1116,6 @@
 			global.mannequins_=newval;
 		if("map_count")
 			global.map_count=newval;
-		if("maploader")
-			global.maploader=newval;
 		if("mark")
 			global.mark=newval;
 		if("master_controller")
@@ -1372,22 +1352,6 @@
 			global.supply_methods_=newval;
 		if("surgery_steps")
 			global.surgery_steps=newval;
-		if("swapmaps_byname")
-			global.swapmaps_byname=newval;
-		if("swapmaps_compiled_maxx")
-			global.swapmaps_compiled_maxx=newval;
-		if("swapmaps_compiled_maxy")
-			global.swapmaps_compiled_maxy=newval;
-		if("swapmaps_compiled_maxz")
-			global.swapmaps_compiled_maxz=newval;
-		if("swapmaps_iconcache")
-			global.swapmaps_iconcache=newval;
-		if("swapmaps_initialized")
-			global.swapmaps_initialized=newval;
-		if("swapmaps_loaded")
-			global.swapmaps_loaded=newval;
-		if("swapmaps_mode")
-			global.swapmaps_mode=newval;
 		if("syndicate_access")
 			global.syndicate_access=newval;
 		if("syndicate_code_phrase")
@@ -1676,7 +1640,6 @@
 	"maint_all_access",
 	"mannequins_",
 	"map_count",
-	"maploader",
 	"mark",
 	"master_controller",
 	"matchmaker",
@@ -1796,14 +1759,6 @@
 	"supply_drop",
 	"supply_methods_",
 	"surgery_steps",
-	"swapmaps_byname",
-	"swapmaps_compiled_maxx",
-	"swapmaps_compiled_maxy",
-	"swapmaps_compiled_maxz",
-	"swapmaps_iconcache",
-	"swapmaps_initialized",
-	"swapmaps_loaded",
-	"swapmaps_mode",
 	"syndicate_access",
 	"syndicate_code_phrase",
 	"syndicate_code_response",

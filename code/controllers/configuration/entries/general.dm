@@ -60,6 +60,14 @@ Basics, the most important.
 
 /datum/config_entry/flag/allow_vote_mode    //allow votes to change mode
 
+/datum/config_entry/flag/allow_map_voting
+	deprecated_by = /datum/config_entry/flag/preference_map_voting
+
+/datum/config_entry/flag/allow_map_voting/DeprecationUpdate(value)
+	return value
+
+/datum/config_entry/flag/preference_map_voting
+
 /datum/config_entry/flag/allow_admin_jump   //allows admin jumping
 	config_entry_value = TRUE
 

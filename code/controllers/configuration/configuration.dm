@@ -8,8 +8,8 @@
 	var/list/entries
 	var/list/entries_by_type
 
-	var/list/list/maplist
-	var/list/defaultmaps
+	var/list/datum/map_config/maplist
+	var/datum/map_config/defaultmap
 
 	/// If the configuration is loaded
 	var/loaded = FALSE
@@ -55,6 +55,7 @@
 				for(var/J in legacy_configs)
 					LoadEntries(J)
 				break
+	loadmaplist(CONFIG_MAPS_FILE)
 	LoadMOTD()
 
 	loaded = TRUE
@@ -67,14 +68,9 @@
 	if(check_rights(R_ADMIN))
 		return
 	entries_by_type.Cut()
-	QDEL_LIST_ASSOC_VAL(entries)
-	entries = null
-	for(var/list/L in maplist)
-		QDEL_LIST_ASSOC_VAL(L)
+	QDEL_LIST_ASSOC_VAL(maplist)
 	maplist = null
-	QDEL_LIST_ASSOC_VAL(defaultmaps)
-	defaultmaps = null
-
+	QDEL_NULL(defaultmap)
 
 /datum/controller/configuration/Destroy()
 	full_wipe()
@@ -192,6 +188,65 @@
 
 	++.
 
+
+/datum/controller/configuration/proc/loadmaplist(filename)
+	log_config("Loading config file [filename]...")
+	filename = "[directory]/[filename]"
+	var/list/Lines = world.file2list(filename)
+
+	var/datum/map_config/currentmap = null
+	for(var/t in Lines)
+		if(!t)
+			continue
+
+		t = trim(t)
+		if(length(t) == 0)
+			continue
+		else if(t[1] == "#")
+			continue
+
+		var/pos = findtext(t, " ")
+		var/command = null
+		var/data = null
+
+		if(pos)
+			command = lowertext(copytext(t, 1, pos))
+			data = copytext(t, pos + length(t[pos]))
+		else
+			command = lowertext(t)
+
+		if(!command)
+			continue
+
+		if (!currentmap && command != "map")
+			continue
+
+		switch (command)
+			if ("map")
+				currentmap = load_map_config(data, MAP_DIRECTORY_MAPS)
+				if(currentmap.defaulted)
+					var/error_message = "Failed to load map config for [data]!"
+					log_config(error_message)
+					log_mapping(error_message, TRUE)
+					currentmap = null
+			if ("minplayers","minplayer")
+				currentmap.config_min_users = text2num(data)
+			if ("maxplayers","maxplayer")
+				currentmap.config_max_users = text2num(data)
+			if ("weight","voteweight")
+				currentmap.voteweight = text2num(data)
+			if ("default","defaultmap")
+				defaultmap = currentmap
+			if ("votable")
+				currentmap.votable = TRUE
+			if ("endmap")
+				LAZYINITLIST(maplist)
+				maplist[currentmap.map_name] = currentmap
+				currentmap = null
+			if ("disabled")
+				currentmap = null
+			else
+				log_config("Unknown command in map vote config: '[command]'")
 
 /datum/controller/configuration/stat_entry(msg)
 	msg = "Edit"

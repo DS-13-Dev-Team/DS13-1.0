@@ -70,6 +70,9 @@
 //Subtracts value from the existing value of a key
 #define LAZYAMINUS(L,K,V) if(!L) { L = list(); } if (!L[K]) { L[K] = 0; } L[K] -= V;
 
+///Add an item to the list if not already present, if the list is null it will initialize it
+#define LAZYOR(L, I) if(!L) { L = list(); } L |= I;
+
 // Reads L or an empty list if L is not a list.  Note: Does NOT assign, L may be an expression.
 #define SANITIZE_LIST(L) ( islist(L) ? L : list() )
 
