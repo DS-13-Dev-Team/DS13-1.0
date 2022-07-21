@@ -80,12 +80,10 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 
 	var/turf/T = get_turf(body)
 	if(ismob(body))
-		key = body.key
+		body.mind?.transfer_to(src)
 		possess(src) //Possess thyself
 		SetName("[initial(name)] ([key])")
 		real_name = "[initial(name)] ([key])"
-
-		mind = body.mind	//we don't transfer the mind but we keep a reference to it.
 
 	add_verb(src, /mob/proc/prey_sightings)
 
@@ -106,9 +104,6 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 
 	var/mob/dead/observer/eye/signal/S = join_marker()	//This cannot fail, do safety checks first
 	S.jump_to_marker()
-	qdel(src)
-
-
 
 /mob/proc/join_marker()
 	message_necromorphs(SPAN_NOTICE("[key] has joined the necromorph horde."))
@@ -116,7 +111,6 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 	set_necromorph(TRUE)
 
 	return S
-
 
 /mob/dead/observer/eye/signal/verb/leave_marker_verb()
 	set name = "Leave Necromorph Horde"
@@ -167,7 +161,7 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 
 	//Seems clear
 	message_necromorphs(SPAN_NOTICE("[key] has taken control of [L]."))
-	L.key = key
+	mind.transfer_to(L)
 	L.client.init_verbs()
 	qdel(src)
 
