@@ -20,7 +20,9 @@
 		"M.03_Mining_Colony_UpperLevels.dmm",
 	)
 
-	var/traits = null
+	var/traits = list(
+
+	)
 
 	/// Dictionary of job sub-typepath to template changes dictionary
 	var/job_changes = list()

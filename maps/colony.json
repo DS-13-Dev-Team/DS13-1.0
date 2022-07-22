@@ -20,7 +20,7 @@
 		},
 		{
 			"Down": -1,
-			"Baseturf": "/turf/simulated/open",
+			"Baseturf": "/turf/simulated/floor",
 			"Linkage": "Cross"
 		}
 	]
