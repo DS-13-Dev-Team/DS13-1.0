@@ -41,6 +41,8 @@
 			"Linkage": "Cross"
 		},
 		{
+			"Mining": true,
+			"Linkage": null,
 			"Baseturf": "/turf/simulated/floor/asteroid/outside_ds"
 		}
 	]

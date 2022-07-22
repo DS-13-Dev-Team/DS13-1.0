@@ -25,13 +25,17 @@
 /proc/GetConnectedZlevels(z)
 	. = list(z)
 	var/level = z
-	while(SSmapping.multiz_levels.len <= level && SSmapping.multiz_levels.len > 0)
+	while(level > 0)
 		if(SSmapping.multiz_levels[level]["[DOWN]"])
-			. |= level--
+			. |= --level
+		else
+			break
 	level = z
-	while(SSmapping.multiz_levels.len <= level && SSmapping.multiz_levels.len > 0)
+	while(level <= SSmapping.multiz_levels.len)
 		if(SSmapping.multiz_levels[level]["[UP]"])
-			. |= level++
+			. |= ++level
+		else
+			break
 
 /proc/AreConnectedZLevels(zA, zB)
 	return zA == zB || (zB in GetConnectedZlevels(zA))

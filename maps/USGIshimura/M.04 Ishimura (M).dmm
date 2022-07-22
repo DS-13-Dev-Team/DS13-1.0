@@ -2097,7 +2097,7 @@
 	},
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/white/monotile,
-/area/ishimura/upper/medical)
+/area/ishimura/upper/medical/bpc)
 "afd" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
@@ -5861,9 +5861,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/structure/window/reinforced{
-	health = 1e+007
-	},
+/obj/structure/window/reinforced,
 /obj/effect/floor_decal/industrial/outline/grey,
 /obj/machinery/computer/station_alert/engineering{
 	dir = 1
@@ -12751,6 +12749,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/upper/medical/supply_storage)
 "aAP" = (
@@ -12827,7 +12826,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/ishimura/upper/research/chief_science_office)
+/area/ishimura/upper/research/biolab)
 "aAV" = (
 /obj/structure/sign/directions/evac{
 	pixel_y = 28
@@ -15457,6 +15456,9 @@
 /area/ishimura/upper/security/checkpoint/hangar)
 "aFA" = (
 /obj/machinery/smartfridge/chemistry,
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/white,
 /area/ishimura/upper/research/chemistry)
 "aFB" = (
@@ -15864,6 +15866,9 @@
 	dir = 8;
 	icon_state = "shutter0";
 	id = "research_lock"
+	},
+/obj/machinery/door/firedoor{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
 /area/ishimura/upper/research/chemistry)
@@ -17695,9 +17700,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/structure/window/reinforced{
-	health = 1e+007
-	},
+/obj/structure/window/reinforced,
 /obj/machinery/computer/station_alert/security{
 	dir = 1
 	},
@@ -20423,9 +20426,7 @@
 /area/ishimura/upper/medical/morgue/autopsy)
 "aOy" = (
 /obj/structure/table/standard,
-/obj/structure/window/reinforced{
-	health = 1e+007
-	},
+/obj/structure/window/reinforced,
 /obj/item/weapon/folder/blue,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/command/bridge)
@@ -27255,6 +27256,9 @@
 	icon_state = "shutter0";
 	id = "research_lock"
 	},
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/research)
 "bbe" = (
@@ -27290,6 +27294,9 @@
 	dir = 8;
 	icon_state = "shutter0";
 	id = "research_lock"
+	},
+/obj/machinery/door/firedoor{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/research)
@@ -29145,9 +29152,7 @@
 /area/ishimura/upper/engineering/engine_room)
 "beL" = (
 /obj/structure/table/standard,
-/obj/structure/window/reinforced{
-	health = 1e+007
-	},
+/obj/structure/window/reinforced,
 /obj/item/weapon/book/manual/earthgov_sop,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/command/bridge)
@@ -31300,6 +31305,10 @@
 "gPn" = (
 /turf/simulated/floor/dank/cable/start,
 /area/ishimura/upper/engineering/prep)
+"gVl" = (
+/obj/structure/foamedmetal,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/misc/hallway/fore)
 "gWM" = (
 /turf/simulated/floor/dank/slides{
 	dir = 8
@@ -40197,9 +40206,9 @@ aaa
 aaa
 aaa
 aaa
-bbF
-bbF
-bbF
+aah
+aah
+aah
 aah
 aad
 anW
@@ -40449,9 +40458,9 @@ aaa
 aaa
 aaa
 aaa
-bbF
-bbF
-bbF
+aah
+aah
+aah
 aah
 aad
 bgu
@@ -40701,9 +40710,9 @@ aaa
 aaa
 aaa
 aaa
-bbF
-bbF
-bbF
+aah
+aah
+aah
 aah
 aad
 afY
@@ -40953,9 +40962,9 @@ aaa
 aaa
 aaa
 aaa
-bbF
-bbF
-bbF
+aah
+aah
+aah
 aah
 aad
 asU
@@ -41205,9 +41214,9 @@ aaa
 aaa
 aaa
 aaa
-bbF
-bbF
-bbF
+aah
+aah
+aah
 aah
 aad
 asU
@@ -41457,9 +41466,9 @@ aaa
 aaa
 aaa
 aaa
-bbF
-bbF
-bbF
+aah
+aah
+aah
 aah
 aad
 afv
@@ -75742,13 +75751,13 @@ aFZ
 aHO
 aFY
 aGf
-aCP
+aGd
 aAU
 aAU
 aAU
 aAU
-aCP
-aCP
+aGd
+aGd
 aYy
 bcp
 lgW
@@ -78014,8 +78023,8 @@ aHb
 aFQ
 aOj
 aBz
-atk
-atk
+gVl
+gVl
 aec
 nfk
 bcp
@@ -78266,8 +78275,8 @@ aBz
 aMm
 aOk
 aBz
-atk
-atk
+gVl
+gVl
 aec
 nfk
 bcp
@@ -78763,7 +78772,7 @@ azU
 azU
 azU
 azU
-aBz
+aau
 aCM
 aAG
 axq
