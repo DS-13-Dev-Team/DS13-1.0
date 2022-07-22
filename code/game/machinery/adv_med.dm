@@ -231,8 +231,6 @@
 		occupantData["bodyTempC"] = H.bodytemperature-T0C
 		occupantData["bodyTempF"] = (((H.bodytemperature-T0C) * 1.8) + 32)
 
-		occupantData["hasBorer"] = H.has_brain_worms()
-
 		var/bloodData[0]
 		if(H.vessel)
 			var/blood_volume = round(H.vessel.get_reagent_amount(/datum/reagent/blood))
@@ -426,9 +424,6 @@
 		dat += "Body Temperature: [occupant.bodytemperature-T0C]&deg;C ([occupant.bodytemperature*1.8-459.67]&deg;F)<br>"
 
 		dat += "<hr>"
-
-		if(occupant.has_brain_worms())
-			dat += "Large growth detected in frontal lobe, possibly cancerous. Surgical removal is recommended.<br>"
 
 		if(occupant.vessel)
 			var/blood_volume = round(occupant.vessel.get_reagent_amount("blood"))

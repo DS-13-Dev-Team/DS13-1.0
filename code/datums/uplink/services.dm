@@ -43,8 +43,8 @@
 	item_cost = round(DEFAULT_TELECRYSTAL_AMOUNT / 2)
 
 	spawn(2)
-		name = "[command_name()] Update Announcement"
-		desc = "Causes a falsified [command_name()] Update."
+		name = "Concordance Extraction Corporation Update Announcement"
+		desc = "Causes a falsified Concordance Extraction Corporation Update."
 
 /***************
 * Service Item *
@@ -209,10 +209,6 @@
 		new_record.set_fingerprint(I.fingerprint_hash)
 		new_record.set_bloodtype(I.blood_type)
 		new_record.set_dna(I.dna_hash)
-		if(I.military_branch)
-			new_record.set_branch(I.military_branch.name)
-			if(I.military_rank)
-				new_record.set_rank(I.military_rank.name)
 	if(random_record)
 		COPY_VALUE(citizenship)
 		COPY_VALUE(faction)

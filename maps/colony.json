@@ -2,6 +2,7 @@
 	"version": 1,
 	"map_name": "The Colony",
 	"map_path": "TheColony",
+	"map_datum": "/datum/map/colony",
 	"map_file": [
 		"M.01_Mining_Colony_Underground.dmm",
 		"M.02_Mining_Colony.dmm",
@@ -10,6 +11,7 @@
 	"traits": [
 		{
 			"Up": 1,
+			"Baseturf": "/turf/simulated/floor/asteroid/outside_ds",
 			"Linkage": "Cross"
 		},
 		{
@@ -20,7 +22,7 @@
 		},
 		{
 			"Down": -1,
-			"Baseturf": "/turf/simulated/floor",
+			"Baseturf": "/turf/simulated/open",
 			"Linkage": "Cross"
 		}
 	]

@@ -140,7 +140,7 @@
 
 /proc/get_mob_by_key(var/key)
 	for(var/mob/M in SSmobs.mob_list)
-		if(M.ckey == lowertext(key))
+		if(M.ckey == ckey(key))
 			return M
 	return null
 

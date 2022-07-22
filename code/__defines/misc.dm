@@ -201,8 +201,6 @@
 
 #define PIXEL_MULTIPLIER WORLD_ICON_SIZE/32
 
-#define DEFAULT_SPAWNPOINT_ID "Default"
-
 
 //Virus badness defines
 #define VIRUS_MILD			1

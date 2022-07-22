@@ -150,7 +150,7 @@ var/global/list/obj/machinery/message_server/message_servers = list()
 		if(!pda)
 			continue
 
-		var/datum/job/J = job_master.GetJob(H.char_rank)
+		var/datum/job/J = job_master.GetJob(H.job)
 		if(!J)
 			continue
 

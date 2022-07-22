@@ -92,7 +92,7 @@
 
 //Plays lobby music in sequence
 /client/proc/playtitlemusic()
-	if (QDELETED(src))
+	if (QDELETED(src) || !GLOB.using_map)
 		return
 
 	if(!(get_preference_value(/datum/client_preference/play_lobby_music) == GLOB.PREF_YES))

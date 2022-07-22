@@ -212,17 +212,9 @@
 
 			BITSET(target.hud_updateflag, IMPLOYAL_HUD)
 
-			//Handle possessive brain borers.
-			if(istype(obj,/mob/living/simple_animal/borer))
-				var/mob/living/simple_animal/borer/worm = obj
-				if(worm.controlling)
-					target.release_control()
-				worm.detatch()
-				worm.leave_host()
-			else
-				affected.unembed(obj, silent = TRUE)
-				obj.add_blood(target)
-				obj.update_icon()
+			affected.unembed(obj, silent = TRUE)
+			obj.add_blood(target)
+			obj.update_icon()
 
 			playsound(target.loc, 'sound/effects/squelch1.ogg', 15, 1)
 		else

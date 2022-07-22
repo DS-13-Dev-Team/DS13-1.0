@@ -29,9 +29,11 @@
 
 ///Updates the viscontents or underlays below this tile.
 /datum/element/turf_z_transparency/proc/update_multi_z(turf/our_turf)
-	var/turf/below_turf = GetBelow(our_turf)
-	if(!below_turf)
-		our_turf.vis_contents.len = 0
+	var/turf/below_turf = our_turf.below()
+	if(below_turf) // If we actually have somethign below us, display it.
+		our_turf.vis_contents += below_turf
+	else
+		our_turf.vis_contents.len = 0 // Nuke the list
 		add_baseturf_underlay(our_turf)
 	return TRUE
 
@@ -53,13 +55,13 @@
 
 ///Called when there is no real turf below this turf
 /datum/element/turf_z_transparency/proc/add_baseturf_underlay(turf/our_turf)
-	our_turf.ChangeTurf(/turf/simulated/floor/plating, keep_air = TRUE)
-	var/turf/path = GLOB.using_map.base_floor_type || /turf/space
+	var/turf/path = SSmapping.level_trait(our_turf.z, ZTRAIT_BASETURF) || /turf/space
 	if(!ispath(path))
 		path = text2path(path)
 		if(!ispath(path))
-			warning("Z-level [our_turf.z] has invalid baseturf '[GLOB.using_map.base_floor_type]'")
+			warning("Z-level [our_turf.z] has invalid baseturf '[SSmapping.level_trait(our_turf.z, ZTRAIT_BASETURF)]'")
 			path = /turf/space
 	var/mutable_appearance/underlay_appearance = mutable_appearance(initial(path.icon), initial(path.icon_state), layer = TURF_LAYER-0.02, plane = SPACE_PLANE)
 	underlay_appearance.appearance_flags = RESET_ALPHA | RESET_COLOR
 	our_turf.underlays += underlay_appearance
+

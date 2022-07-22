@@ -26,7 +26,6 @@ SUBSYSTEM_DEF(mapping)
 	///list of lists, inner lists are of the form: list("up or down link direction" = TRUE)
 	var/list/multiz_levels = list()
 	var/datum/space_level/transit
-	var/datum/space_level/empty_space
 	var/num_of_res_levels = 1
 	/// True when in the process of adding a new Z-level, global locking
 	var/adding_new_zlevel = FALSE
@@ -41,7 +40,9 @@ SUBSYSTEM_DEF(mapping)
 		if(!config || config.defaulted)
 			to_chat(world, SPAN_BOLDANNOUNCE("Unable to load next or default map config, defaulting to The Colony."))
 			config = old_config
+	GLOB.using_map = GLOB.all_maps[config.map_datum]
 	loadWorld()
+	GLOB.using_map.setup_map()
 	preloadTemplates()
 
 	// Set up Z-level transitions.
@@ -83,7 +84,6 @@ SUBSYSTEM_DEF(mapping)
 	z_list = SSmapping.z_list
 	multiz_levels = SSmapping.multiz_levels
 
-#define INIT_ANNOUNCE(X) to_chat(world, SPAN_BOLDANNOUNCE("[X]")); log_world(X)
 /datum/controller/subsystem/mapping/proc/LoadGroup(list/errorList, name, path, files, list/traits, list/default_traits, silent = FALSE)
 	. = list()
 	var/start_time = REALTIMEOFDAY
@@ -108,7 +108,7 @@ SUBSYSTEM_DEF(mapping)
 		for (var/i in 1 to total_z)
 			traits += list(default_traits)
 	else if (total_z != traits.len)  // mismatch
-		INIT_ANNOUNCE("WARNING: [traits.len] trait sets specified for [total_z] z-levels in [path]!")
+		report_progress(SPAN_BOLDANNOUNCE("WARNING: [traits.len] trait sets specified for [total_z] z-levels in [path]!"))
 		if (total_z < traits.len)  // ignore extra traits
 			traits.Cut(total_z + 1)
 		while (total_z > traits.len)  // fall back to defaults on extra levels
@@ -127,7 +127,7 @@ SUBSYSTEM_DEF(mapping)
 		if (!pm.load(1, 1, start_z + parsed_maps[P], no_changeturf = TRUE))
 			errorList |= pm.original_path
 	if(!silent)
-		INIT_ANNOUNCE("Loaded [name] in [(REALTIMEOFDAY - start_time)/10]s!")
+		report_progress(SPAN_BOLDANNOUNCE("Loaded [name] in [(REALTIMEOFDAY - start_time)/10]s!"))
 	return parsed_maps
 
 /datum/controller/subsystem/mapping/proc/loadWorld()
@@ -139,7 +139,7 @@ SUBSYSTEM_DEF(mapping)
 
 	// load the station
 	station_start = world.maxz + 1
-	INIT_ANNOUNCE("Loading [config.map_name]...")
+	report_progress(SPAN_BOLDANNOUNCE("Loading [config.map_name]..."))
 	LoadGroup(FailedZs, "Station", config.map_path, config.map_file, config.traits, ZTRAITS_STATION)
 
 	if(LAZYLEN(FailedZs)) //but seriously, unless the server's filesystem is messed up this will never happen
@@ -148,8 +148,7 @@ SUBSYSTEM_DEF(mapping)
 			for(var/I in 2 to FailedZs.len)
 				msg += ", [FailedZs[I]]"
 		msg += ". Yell at your server host!"
-		INIT_ANNOUNCE(msg)
-#undef INIT_ANNOUNCE
+		report_progress(SPAN_BOLDANNOUNCE(msg))
 
 	// Custom maps are removed after station loading so the map files does not persist for no reason.
 	if(config.map_path == CUSTOM_MAP_PATH)

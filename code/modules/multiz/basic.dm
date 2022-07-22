@@ -6,10 +6,10 @@
 
 // Thankfully, no bitwise magic is needed here.
 /proc/GetAbove(atom/atom)
-	get_step_multiz(atom, UP)
+	return get_step_multiz(atom, UP)
 
 /proc/GetBelow(atom/atom)
-	get_step_multiz(atom, DOWN)
+	return get_step_multiz(atom, DOWN)
 
 /proc/GetSolidBelow(atom/atom)
 	var/turf/turf = get_turf(atom)
@@ -24,10 +24,14 @@
 
 /proc/GetConnectedZlevels(z)
 	. = list(z)
-	for(var/level = z, SSmapping.multiz_levels[level]["[DOWN]"], level--)
-		. |= level-1
-	for(var/level = z, SSmapping.multiz_levels[level]["[UP]"], level++)
-		. |= level+1
+	var/level = z
+	while(SSmapping.multiz_levels.len <= level && SSmapping.multiz_levels.len > 0)
+		if(SSmapping.multiz_levels[level]["[DOWN]"])
+			. |= level--
+	level = z
+	while(SSmapping.multiz_levels.len <= level && SSmapping.multiz_levels.len > 0)
+		if(SSmapping.multiz_levels[level]["[UP]"])
+			. |= level++
 
 /proc/AreConnectedZLevels(zA, zB)
 	return zA == zB || (zB in GetConnectedZlevels(zA))

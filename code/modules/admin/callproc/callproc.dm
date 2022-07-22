@@ -89,7 +89,7 @@
 		clear()
 		return
 
-	if(!target.CanProcCall(procname))
+	if(hastarget && !target.CanProcCall(procname))
 		clear()
 		return //CanCallProc protect datum.
 
@@ -99,6 +99,11 @@
 			clear()
 			return
 		if(!hascall(target, procname))
+			to_chat(usr, "\The [target] has no call [procname]()")
+			clear()
+			return
+	else
+		if(!hascall(global, procname))
 			to_chat(usr, "\The [target] has no call [procname]()")
 			clear()
 			return
@@ -231,7 +236,7 @@
 			returnval = call(target, procname)()
 	else
 		log_admin("[key_name(src)] called [procname]() with [arguments.len ? "the arguments [list2params(arguments)]" : "no arguments"].")
-		returnval = call(procname)(arglist(arguments))
+		returnval = call(global, procname)(arglist(arguments))
 
 	to_chat(usr, "<span class='info'>[procname]() returned: [json_encode(returnval)]</span>")
 	feedback_add_details("admin_verb","APC") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!

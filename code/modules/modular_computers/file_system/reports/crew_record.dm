@@ -39,8 +39,6 @@ GLOBAL_VAR_INIT(arrest_security_status, "Arrest")
 	set_age(H ? H.age : 30)
 	set_status(GLOB.default_physical_status)
 	set_species(H ? H.get_species() : SPECIES_HUMAN)
-	set_branch(H ? (H.char_branch && H.char_branch.name) : "None")
-	set_rank(H ? (H.char_rank && H.char_rank.name) : "None")
 
 	// Medical record
 	set_bloodtype(H ? H.b_type : "Unset")
@@ -150,11 +148,9 @@ FIELD_LIST("Sex", sex, record_genders(), null)
 FIELD_NUM("Age", age, null)
 FIELD_LIST_EDIT("Status", status, GLOB.physical_statuses, null, access_medical)
 
-FIELD_SHORT("Species",species, null)
-FIELD_LIST("Branch", branch, record_branches(), null)
-FIELD_LIST("Rank", rank, record_ranks(), null)
 
 // MEDICAL RECORDS
+FIELD_SHORT("Species",species, null)
 FIELD_LIST("Blood Type", bloodtype, GLOB.blood_types, null)
 FIELD_LONG("Medical Record", medRecord, access_medical)
 FIELD_SHORT("Religion", religion, access_medical)
@@ -172,31 +168,11 @@ FIELD_SHORT("Citizenship", citizenship, access_bridge)
 FIELD_SHORT("Faction", faction, access_bridge)
 FIELD_LONG("Qualifications", skillset, access_bridge)
 
-
-//Options builderes
-/datum/report_field/options/crew_record/rank/proc/record_ranks()
-	var/datum/computer_file/report/crew_record/record = owner
-	var/datum/mil_branch/branch = mil_branches.get_branch(record.get_branch())
-	if(!branch)
-		return
-	. = list()
-	. |= "Unset"
-	for(var/rank in branch.ranks)
-		var/datum/mil_rank/RA = branch.ranks[rank]
-		. |= RA.name
-
 /datum/report_field/options/crew_record/sex/proc/record_genders()
 	. = list()
 	. |= "Unset"
 	for(var/G in gender_datums)
 		. |= gender2text(G)
-
-/datum/report_field/options/crew_record/branch/proc/record_branches()
-	. = list()
-	. |= "Unset"
-	for(var/B in mil_branches.branches)
-		var/datum/mil_branch/BR = mil_branches.branches[B]
-		. |= BR.name
 
 #undef GETTER_SETTER
 #undef SETUP_FIELD

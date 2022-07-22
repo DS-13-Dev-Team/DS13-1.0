@@ -130,8 +130,6 @@
 	if(M.stat != DEAD)
 		if(M.HasMovementHandler(/datum/movement_handler/mob/transformation))
 			return
-		if(M.has_brain_worms())
-			return //Borer stuff - RR
 
 		if(iscultist(M)) return
 		if(!ishuman(M) && !isrobot(M)) return

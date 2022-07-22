@@ -106,7 +106,7 @@ SUBSYSTEM_DEF(ticker)
 				config.ooc_allowed = TRUE
 				config.dooc_allowed = TRUE
 				declare_completion(force_ending)
-				addtimer(CALLBACK(src, .proc/Reboot), CONFIG_GET(number/vote_period) * 3 + 9 SECONDS)
+				addtimer(CALLBACK(src, .proc/Reboot), CONFIG_GET(number/vote_period))
 				Master.SetRunLevel(RUNLEVEL_POSTGAME)
 
 /datum/controller/subsystem/ticker/proc/setup()

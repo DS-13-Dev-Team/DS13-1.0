@@ -522,9 +522,9 @@ var/list/ai_verbs_default = list(
 
 	var/input = tgui_alert(src, "Would you like to select a hologram based on a crew member or switch to unique avatar?", "Hologram ", list("Crew Member","Unique"))
 	if(input == "Crew Member")
-		var/personnel_list[] = list()
+		var/list/personnel_list = list()
 		for(var/datum/computer_file/report/crew_record/t in GLOB.all_crew_records)//Look in data core locked.
-			personnel_list["[t.get_name()]: [t.get_rank()]"] = t.photo_front//Pull names, rank, and image.
+			personnel_list[t.get_name()] = t.photo_front//Pull names, rank, and image.
 
 		if(personnel_list.len)
 			var/icon/character_icon = personnel_list[input("Select a crew member:") as null|anything in personnel_list]

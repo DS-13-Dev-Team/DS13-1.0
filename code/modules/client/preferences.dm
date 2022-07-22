@@ -76,11 +76,7 @@ var/list/preferences_datums = list()
 		save_character()
 
 /datum/preferences/proc/ShowChoices(mob/user)
-	if(!user || !user.client)	return
-
-	if(!get_mob_by_key(client_ckey))
-		to_chat(user, "<span class='danger'>No mob exists for the given client!</span>")
-		close_load_dialog(user)
+	if(!user || !user.client)
 		return
 
 	var/dat = "<html><body><center>"
@@ -279,10 +275,6 @@ var/list/preferences_datums = list()
 	character.update_underwear(0)
 	character.update_hair(0)
 	character.update_icons()
-
-	character.char_branch = mil_branches.get_branch(char_branch)
-	character.char_rank = mil_branches.get_rank(char_branch, char_rank)
-
 	if(is_preview_copy)
 		return
 
@@ -322,7 +314,7 @@ var/list/preferences_datums = list()
 		dat += "<b>Select a character slot to load</b><hr>"
 		var/name
 		for(var/i=1, i<= CONFIG_GET(number/character_slots), i++)
-			S.cd = GLOB.using_map.character_load_path(S, i)
+			S.cd =  "/ishimura/character[i]"
 			S["real_name"] >> name
 			if(!name)	name = "Character[i]"
 			if(i==default_slot)

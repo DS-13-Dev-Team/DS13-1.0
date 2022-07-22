@@ -147,7 +147,7 @@
 		return
 
 	if (H)
-		outfit_original = job.get_outfit(H, H.mind ? H.mind.role_alt_title : "", H.char_branch, H.char_rank)
+		outfit_original = job.get_outfit(H, H.mind ? H.mind.role_alt_title : "")
 	else
 		outfit_original = job.get_outfit()
 

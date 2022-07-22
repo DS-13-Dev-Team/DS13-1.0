@@ -55,10 +55,6 @@ GLOBAL_LIST_EMPTY(body_marking_styles_list)		//stores /datum/sprite_accessory/ma
 
 GLOBAL_DATUM_INIT(underwear, /datum/category_collection/underwear, new())
 
-var/global/list/exclude_jobs = list(/datum/job/ai,/datum/job/cyborg)
-
-
-
 // Runes
 var/global/list/rune_list = new()
 var/global/list/endgame_exits = list()
@@ -147,8 +143,7 @@ var/global/list/string_slot_flags = list(
 	sort_surgeries()
 
 	//List of job. I can't believe this was calculated multiple times per tick!
-	paths = typesof(/datum/job)-/datum/job
-	paths -= exclude_jobs
+	paths = subtypesof(/datum/job)
 	for(var/T in paths)
 		var/datum/job/J = new T
 		joblist[J.title] = J

@@ -216,8 +216,6 @@
 	prefs.sanitize_preferences()
 	fps = text2num(get_preference_value(/datum/client_preference/client_fps))
 
-	GLOB.using_map.map_info(src)
-
 	// Initialize tgui panel
 	src << browse(file('html/statbrowser.html'), "window=statbrowser")
 	addtimer(CALLBACK(src, .proc/check_panel_loaded), 30 SECONDS)
@@ -273,7 +271,7 @@
 	if(holder)
 		src.control_freak = 0 //Devs need 0 for profiler access
 
-	winset(src, null, "mainwindow.title='[CONFIG_GET(string/title)] - [GLOB.using_map.full_name]'")
+	winset(src, null, "mainwindow.title='[CONFIG_GET(string/title)] - [GLOB.using_map?.full_name]'")
 
 	//////////////
 	//DISCONNECT//

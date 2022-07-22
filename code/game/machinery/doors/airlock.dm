@@ -1384,13 +1384,7 @@ About the new airlock wires panel:
 		set_dir(assembly.dir)
 
 	//wires
-	var/turf/T = get_turf(newloc)
-	if(T && (T.z in GLOB.using_map.admin_levels))
-		secured_wires = 1
-	if (secured_wires)
-		wires = new/datum/wires/airlock/secure(src)
-	else
-		wires = new/datum/wires/airlock(src)
+	wires = new/datum/wires/airlock(src)
 
 /obj/machinery/door/airlock/Initialize()
 	if(src.closeOtherId != null)

@@ -27,6 +27,8 @@
 	/// Dictionary of job sub-typepath to template changes dictionary
 	var/job_changes = list()
 
+	var/map_datum
+
 /**
  * Proc that simply loads the default map config, which should always be functional.
  */
@@ -100,6 +102,8 @@
 		log_world("map_config has invalid version [json["version"]]!")
 		return
 
+	CHECK_EXISTS("map_datum")
+	map_datum = text2path(json["map_datum"])
 	CHECK_EXISTS("map_name")
 	map_name = json["map_name"]
 	CHECK_EXISTS("map_path")

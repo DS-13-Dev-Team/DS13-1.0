@@ -106,25 +106,22 @@ REAGENT SCANNER
 		if(!brain || H.stat == DEAD || (H.status_flags & FAKEDEATH))
 			brain_result = "<span class='scan_danger'>none, patient is braindead</span>"
 		else if(H.stat != DEAD)
-			if(H.has_brain_worms())
-				brain_result = "<span class='scan_danger'>ERROR - aberrant/unknown brainwave patterns, advanced scanner recommended</span>"
+			if(skill_level < SKILL_BASIC)
+				brain_result = "there's movement on the graph"
 			else
-				if(skill_level < SKILL_BASIC)
-					brain_result = "there's movement on the graph"
-				else
-					switch(brain.get_current_damage_threshold())
-						if(0)
-							brain_result = "<span class='scan_notice'>normal</span>"
-						if(1 to 2)
-							brain_result = "<span class='scan_notice'>minor brain damage</span>"
-						if(3 to 5)
-							brain_result = "<span class='scan_warning'>weak</span>"
-						if(6 to 8)
-							brain_result = "<span class='scan_danger'>extremely weak</span>"
-						if(9 to INFINITY)
-							brain_result = "<span class='scan_danger'>fading</span>"
-						else
-							brain_result = "<span class='scan_danger'>ERROR - Hardware fault</span>"
+				switch(brain.get_current_damage_threshold())
+					if(0)
+						brain_result = "<span class='scan_notice'>normal</span>"
+					if(1 to 2)
+						brain_result = "<span class='scan_notice'>minor brain damage</span>"
+					if(3 to 5)
+						brain_result = "<span class='scan_warning'>weak</span>"
+					if(6 to 8)
+						brain_result = "<span class='scan_danger'>extremely weak</span>"
+					if(9 to INFINITY)
+						brain_result = "<span class='scan_danger'>fading</span>"
+					else
+						brain_result = "<span class='scan_danger'>ERROR - Hardware fault</span>"
 	else
 		brain_result = "<span class='scan_danger'>ERROR - Nonstandard biology</span>"
 	dat += "<span class='scan_notice'>Brain activity:</span> [brain_result]."

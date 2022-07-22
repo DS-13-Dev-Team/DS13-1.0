@@ -53,6 +53,85 @@
 /datum/job/line_cook/get_description_blurb()
 	return "You are a Line Cook. Your job is to cook meals and feed any crewmember that show up to the Cafeteria. You are subordinate to the First Lieutenant."
 
+/datum/job/botanist
+	title = "Botanist"
+	abbreviation = "BOT"
+	department_flag = SRV
+	total_positions = 2
+	spawn_positions = 2
+	supervisors = "the First Lieutenant"
+	selection_color = "#006200"
+	minimal_player_age = 18
+	ideal_character_age = 30
+	starting_credits = 943
+
+	access = list(access_service, access_maint_tunnels)
+	outfit_type = /decl/hierarchy/outfit/job/service/botanist
+
+	min_skill = list(   SKILL_BOTANY 	  = SKILL_EXPERT)
+	max_skill = list(   SKILL_COOKING     = SKILL_EXPERT,
+						SKILL_MEDICAL     = SKILL_EXPERT,
+						SKILL_ANATOMY     = SKILL_ADEPT,
+						SKILL_FORENSICS   = SKILL_ADEPT)
+	skill_points = 20
+
+	salary = SALARY_SKILLED
+
+/datum/job/bar/get_description_blurb()
+	return "You are the Bartender. Your job is to serve drinks to any crewmember that show up at your bar. You don't have a department head and are subordinate to the Captain and First Lieutenant."
+
+/datum/job/janitor
+	title = "Janitor"
+	abbreviation = "JTR"
+	department_flag = SRV
+	total_positions = 3
+	spawn_positions = 3
+	supervisors = "the First Lieutenant"
+	selection_color = "#6c0864"
+	minimal_player_age = 18
+	ideal_character_age = 20
+	starting_credits = 943
+
+	access = list(access_maint_tunnels, access_service)
+	outfit_type = /decl/hierarchy/outfit/job/service/janitor
+
+	max_skill = list(	SKILL_BOTANY	= SKILL_ADEPT,
+						SKILL_MEDICAL	= SKILL_ADEPT,
+						SKILL_ANATOMY	= SKILL_ADEPT,
+						SKILL_FORENSICS	= SKILL_ADEPT)
+	skill_points = 20
+
+	salary = 500	//Miners and civilians are underpaid plebs
+
+/datum/job/janitor/get_description_blurb()
+	return "You are the Janitor. Your job is to clean the ship from the mess created by the crew. You are subordinate to the First Lieutenant."
+
+/datum/job/chaplain
+	title = "Unitologist Chaplain"
+	abbreviation = "CHP"
+	department_flag = CIV
+	total_positions = 1
+	spawn_positions = 1
+	supervisors = "the First Lieutenant"
+	selection_color = "#ac0e00"
+	minimal_player_age = 18
+	ideal_character_age = 30
+	starting_credits = 943
+
+	access = list(access_maint_tunnels, access_chaplain)
+	outfit_type = /decl/hierarchy/outfit/job/service/chaplain
+
+	max_skill = list(	SKILL_BOTANY	= SKILL_ADEPT,
+						SKILL_MEDICAL	= SKILL_ADEPT,
+						SKILL_ANATOMY	= SKILL_ADEPT,
+						SKILL_FORENSICS	= SKILL_ADEPT)
+	skill_points = 24
+
+	salary = 700 //Church pays you more than CEC to miners and civs...
+
+/datum/job/chaplain/get_description_blurb()
+	return "You are the Chaplain of the Unitologist Church. Your job is to carry faith in the Marker. You are subordinate to the First Lieutenant."
+
 /datum/job/so
 	title = "Supply Officer"
 	department = "Supply"
@@ -143,83 +222,3 @@
 /datum/job/salvage/get_description_blurb()
 	return "You are a Salvage Technician, part of CEC's reclamation project. Your job is to comb dark and abandoned areas, recovering valueable equipment. You recieve no salary, but may keep some of the things you recover\n\
 	You may enlist other cargo servicemen to help you when short staffed. You are subordinate to the Supply Officer."
-
-
-/datum/job/botanist
-	title = "Botanist"
-	abbreviation = "BOT"
-	department_flag = SRV
-	total_positions = 2
-	spawn_positions = 2
-	supervisors = "the First Lieutenant"
-	selection_color = "#006200"
-	minimal_player_age = 18
-	ideal_character_age = 30
-	starting_credits = 943
-
-	access = list(access_service, access_maint_tunnels)
-	outfit_type = /decl/hierarchy/outfit/job/service/botanist
-
-	min_skill = list(   SKILL_BOTANY 	  = SKILL_EXPERT)
-	max_skill = list(   SKILL_COOKING     = SKILL_EXPERT,
-						SKILL_MEDICAL     = SKILL_EXPERT,
-						SKILL_ANATOMY     = SKILL_ADEPT,
-						SKILL_FORENSICS   = SKILL_ADEPT)
-	skill_points = 20
-
-	salary = SALARY_SKILLED
-
-/datum/job/bar/get_description_blurb()
-	return "You are the Bartender. Your job is to serve drinks to any crewmember that show up at your bar. You don't have a department head and are subordinate to the Captain and First Lieutenant."
-
-/datum/job/janitor
-	title = "Janitor"
-	abbreviation = "JTR"
-	department_flag = SRV
-	total_positions = 3
-	spawn_positions = 3
-	supervisors = "the First Lieutenant"
-	selection_color = "#6c0864"
-	minimal_player_age = 18
-	ideal_character_age = 20
-	starting_credits = 943
-
-	access = list(access_maint_tunnels, access_service)
-	outfit_type = /decl/hierarchy/outfit/job/service/janitor
-
-	max_skill = list(	SKILL_BOTANY	= SKILL_ADEPT,
-						SKILL_MEDICAL	= SKILL_ADEPT,
-						SKILL_ANATOMY	= SKILL_ADEPT,
-						SKILL_FORENSICS	= SKILL_ADEPT)
-	skill_points = 20
-
-	salary = 500	//Miners and civilians are underpaid plebs
-
-/datum/job/janitor/get_description_blurb()
-	return "You are the Janitor. Your job is to clean the ship from the mess created by the crew. You are subordinate to the First Lieutenant."
-
-/datum/job/chaplain
-	title = "Unitologist Chaplain"
-	abbreviation = "CHP"
-	department_flag = CIV
-	total_positions = 1
-	spawn_positions = 1
-	supervisors = "the First Lieutenant"
-	selection_color = "#ac0e00"
-	minimal_player_age = 18
-	ideal_character_age = 30
-	starting_credits = 943
-
-	access = list(access_maint_tunnels, access_chaplain)
-	outfit_type = /decl/hierarchy/outfit/job/service/chaplain
-
-	max_skill = list(	SKILL_BOTANY	= SKILL_ADEPT,
-						SKILL_MEDICAL	= SKILL_ADEPT,
-						SKILL_ANATOMY	= SKILL_ADEPT,
-						SKILL_FORENSICS	= SKILL_ADEPT)
-	skill_points = 24
-
-	salary = 700 //Church pays you more than CEC to miners and civs...
-
-/datum/job/chaplain/get_description_blurb()
-	return "You are the Chaplain of the Unitologist Church. Your job is to carry faith in the Marker. You are subordinate to the First Lieutenant."

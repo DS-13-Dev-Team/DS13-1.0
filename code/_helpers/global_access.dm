@@ -187,8 +187,6 @@
 			return global.comm_message_listeners;
 		if("command_announcement")
 			return global.command_announcement;
-		if("command_name")
-			return global.command_name;
 		if("common_tools")
 			return global.common_tools;
 		if("contamination_overlay")
@@ -259,8 +257,6 @@
 			return global.event_last_fired;
 		if("eventchance")
 			return global.eventchance;
-		if("exclude_jobs")
-			return global.exclude_jobs;
 		if("failed_db_connections")
 			return global.failed_db_connections;
 		if("failed_old_db_connections")
@@ -433,8 +429,6 @@
 			return global.meteors_normal;
 		if("meteors_threatening")
 			return global.meteors_threatening;
-		if("mil_branches")
-			return global.mil_branches;
 		if("mining_floors")
 			return global.mining_floors;
 		if("mining_walls")
@@ -902,8 +896,6 @@
 			global.comm_message_listeners=newval;
 		if("command_announcement")
 			global.command_announcement=newval;
-		if("command_name")
-			global.command_name=newval;
 		if("common_tools")
 			global.common_tools=newval;
 		if("contamination_overlay")
@@ -974,8 +966,6 @@
 			global.event_last_fired=newval;
 		if("eventchance")
 			global.eventchance=newval;
-		if("exclude_jobs")
-			global.exclude_jobs=newval;
 		if("failed_db_connections")
 			global.failed_db_connections=newval;
 		if("failed_old_db_connections")
@@ -1148,8 +1138,6 @@
 			global.meteors_normal=newval;
 		if("meteors_threatening")
 			global.meteors_threatening=newval;
-		if("mil_branches")
-			global.mil_branches=newval;
 		if("mining_floors")
 			global.mining_floors=newval;
 		if("mining_walls")
@@ -1524,7 +1512,6 @@
 	"client_repository",
 	"comm_message_listeners",
 	"command_announcement",
-	"command_name",
 	"common_tools",
 	"contamination_overlay",
 	"controller_iteration",
@@ -1562,7 +1549,6 @@
 	"evacuation_controller",
 	"event_last_fired",
 	"eventchance",
-	"exclude_jobs",
 	"explosion_in_progress",
 	"explosion_turfs",
 	"failed_db_connections",
@@ -1653,7 +1639,6 @@
 	"meteors_moderate",
 	"meteors_normal",
 	"meteors_threatening",
-	"mil_branches",
 	"mining_floors",
 	"mining_walls",
 	"minor_air_alarms",

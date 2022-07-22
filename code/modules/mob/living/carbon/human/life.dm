@@ -865,12 +865,6 @@
 			holder.icon_state = "hudxeno"
 		else if(foundVirus)
 			holder.icon_state = "hudill"
-		else if(has_brain_worms())
-			var/mob/living/simple_animal/borer/B = has_brain_worms()
-			if(B.controlling)
-				holder.icon_state = "hudbrainworm"
-			else
-				holder.icon_state = "hudhealthy"
 		else
 			holder.icon_state = "hudhealthy"
 
@@ -881,8 +875,6 @@
 			holder2.icon_state = "huddead"
 		else if(status_flags & XENO_HOST)
 			holder2.icon_state = "hudxeno"
-		else if(has_brain_worms())
-			holder2.icon_state = "hudbrainworm"
 		else if(virus2.len)
 			holder2.icon_state = "hudill"
 		else
@@ -894,7 +886,7 @@
 	if (BITTEST(hud_updateflag, ID_HUD))
 		var/image/hud_overlay/holder = hud_list[ID_HUD]
 		if (!holder)
-			holder = new /image/hud_overlay(GLOB.using_map.id_hud_icons, src, "hudunknown")
+			holder = new /image/hud_overlay('icons/mob/hud.dmi', src, "hudunknown")
 		holder.icon_state = "hudunknown"
 		if(wear_id)
 			var/obj/item/weapon/card/id/I = wear_id.GetIdCard()

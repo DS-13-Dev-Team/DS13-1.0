@@ -44,7 +44,7 @@ Always compile, always use that verb, and always make sure that it works for wha
 #define TRANSITIONEDGE 1
 
 /// Path for the next_map.json file, if someone, for some messed up reason, wants to change it.
-#define PATH_TO_NEXT_MAP_JSON "maps/colony.json"
+#define PATH_TO_NEXT_MAP_JSON "data/next_map.json"
 
 /// List of directories we can load map .json files from
 #define MAP_DIRECTORY_MAPS "maps"

@@ -111,9 +111,6 @@
 	var/gen_record = ""
 	var/exploit_record = ""
 
-	var/datum/mil_branch/char_branch = null
-	var/datum/mil_rank/char_rank = null
-
 	var/stance_damage = 0 //Whether this mob's ability to stand has been affected
 
 	var/obj/machinery/machine_visual //machine that is currently applying visual effects to this mob. Only used for camera monitors currently.

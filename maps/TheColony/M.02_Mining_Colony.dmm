@@ -733,7 +733,7 @@
 /area/mining_colony/interior/excavation/obs_room)
 "acv" = (
 /obj/structure/sign/warning/fall,
-/turf/simulated/wall/r_wall,
+/turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/interior/excavation/marker_excav)
 "acw" = (
 /obj/structure/table/rack,
@@ -757,9 +757,6 @@
 /obj/random/loot/often/few,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/surface)
-"acA" = (
-/turf/simulated/floor/asteroid/outside_ds/dry_firm,
-/area/mining_colony/interior/excavation/marker_excav)
 "acB" = (
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/excavation/obs_room)
@@ -1215,7 +1212,7 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/turf/simulated/floor/asteroid/outside_ds/dry_firm,
+/turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/interior/excavation/marker_excav)
 "adO" = (
 /obj/machinery/light{
@@ -2100,9 +2097,6 @@
 "afU" = (
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/apartament)
-"afV" = (
-/turf/simulated/floor/asteroid/outside_ds/dry_soft,
-/area/mining_colony/surface)
 "afW" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/weapon/fossil/bone,
@@ -2114,9 +2108,6 @@
 	},
 /turf/simulated/floor/dank/maint_left,
 /area/mining_colony/interior/civ_hall)
-"afY" = (
-/turf/simulated/floor/asteroid/outside_ds/dry_cracked,
-/area/mining_colony/surface)
 "afZ" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
@@ -3036,16 +3027,6 @@
 	dir = 1
 	},
 /area/mining_colony/security/sec_resting)
-"aiH" = (
-/obj/structure/railing/mapped{
-	dir = 1
-	},
-/obj/structure/railing/mapped{
-	dir = 8;
-	pixel_w = 0
-	},
-/turf/simulated/floor/asteroid/outside_ds/dry_soft,
-/area/mining_colony/interior/excavation/marker_excav)
 "aiI" = (
 /turf/simulated/floor/asteroid/outside_ds/cracked,
 /area/mining_colony/surface)
@@ -3069,7 +3050,7 @@
 	dir = 8;
 	pixel_w = 0
 	},
-/turf/simulated/floor/asteroid/outside_ds/dry_cracked,
+/turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/interior/excavation/marker_excav)
 "aiL" = (
 /obj/machinery/light/small/red{
@@ -3101,7 +3082,7 @@
 	dir = 4;
 	icon_state = "bulb_map"
 	},
-/turf/simulated/floor/asteroid/outside_ds/dry_firm,
+/turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/interior/excavation/marker_excav)
 "aiP" = (
 /obj/structure/table/steel_reinforced,
@@ -3144,7 +3125,7 @@
 /obj/structure/railing/mapped{
 	dir = 1
 	},
-/turf/simulated/floor/asteroid/outside_ds/dry_firm,
+/turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/interior/excavation/marker_excav)
 "aiV" = (
 /obj/structure/table/steel_reinforced,
@@ -3152,7 +3133,7 @@
 /obj/structure/railing/mapped{
 	dir = 1
 	},
-/turf/simulated/floor/asteroid/outside_ds/dry_firm,
+/turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/interior/excavation/marker_excav)
 "aiW" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -3162,7 +3143,7 @@
 /obj/structure/railing/mapped{
 	dir = 1
 	},
-/turf/simulated/floor/asteroid/outside_ds/dry_firm,
+/turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/interior/excavation/marker_excav)
 "aiX" = (
 /obj/structure/platform{
@@ -3173,7 +3154,7 @@
 	dir = 8;
 	icon_state = "platform"
 	},
-/turf/simulated/floor/asteroid/outside_ds/dry_firm,
+/turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/surface)
 "aiY" = (
 /turf/simulated/wall/r_wall,
@@ -3277,7 +3258,7 @@
 	dir = 4;
 	icon_state = "platform_deco"
 	},
-/turf/simulated/floor/asteroid/outside_ds/dry_muddy,
+/turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/surface)
 "ajr" = (
 /obj/structure/cable{
@@ -3315,7 +3296,7 @@
 /obj/structure/railing/mapped{
 	dir = 1
 	},
-/turf/simulated/floor/asteroid/outside_ds/dry_firm,
+/turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/interior/excavation/marker_excav)
 "ajx" = (
 /turf/unsimulated/mask,
@@ -3324,20 +3305,13 @@
 /obj/machinery/store,
 /turf/simulated/floor/dank/rectangles,
 /area/mining_colony/interior/excavation/restandrelax)
-"ajz" = (
-/obj/structure/platform_decoration{
-	dir = 4;
-	icon_state = "platform_deco"
-	},
-/turf/simulated/floor/asteroid/outside_ds/dry_firm,
-/area/mining_colony/surface)
 "ajA" = (
 /obj/structure/platform,
 /obj/structure/platform{
 	dir = 8;
 	icon_state = "platform"
 	},
-/turf/simulated/floor/asteroid/outside_ds/dry_firm,
+/turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/interior/excavation/marker_excav)
 "ajB" = (
 /obj/structure/closet/crate/radiation,
@@ -3892,7 +3866,7 @@
 /obj/item/device/flashlight/flare,
 /obj/item/device/flashlight/flare,
 /obj/item/device/flashlight/flare,
-/turf/simulated/floor/asteroid/outside_ds/dry_firm,
+/turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/surface)
 "alb" = (
 /obj/machinery/light{
@@ -4613,7 +4587,7 @@
 /obj/structure/railing/mapped{
 	dir = 1
 	},
-/turf/simulated/floor/asteroid/outside_ds/dry_firm,
+/turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/interior/excavation/marker_excav)
 "ang" = (
 /obj/structure/closet/secure_closet/SMO,
@@ -6405,7 +6379,7 @@
 /area/mining_colony/surface)
 "asn" = (
 /obj/effect/mine/stun,
-/turf/simulated/floor/asteroid/outside_ds/dry_cracked,
+/turf/simulated/floor/asteroid/outside_ds/cracked,
 /area/mining_colony/surface)
 "aso" = (
 /obj/effect/landmark{
@@ -6505,7 +6479,7 @@
 /area/mining_colony/interior/enginieering/reactor_storage)
 "asI" = (
 /obj/effect/mine/stun,
-/turf/simulated/floor/asteroid/outside_ds/dry_muddy,
+/turf/simulated/floor/asteroid/outside_ds/muddy,
 /area/mining_colony/surface)
 "asJ" = (
 /obj/structure/cable{
@@ -6596,7 +6570,7 @@
 /area/mining_colony/interior/excavation/marker_excav)
 "asW" = (
 /obj/effect/mine/stun,
-/turf/simulated/floor/asteroid/outside_ds/dry_firm,
+/turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/surface)
 "asX" = (
 /obj/effect/floor_decal/dank/outline,
@@ -7424,9 +7398,6 @@
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/interior/excavation/control_room)
-"avt" = (
-/turf/simulated/floor/asteroid/outside_ds/dry_firm,
-/area/mining_colony/surface)
 "avu" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/bed/chair/wheelchair,
@@ -7438,15 +7409,12 @@
 /obj/random/loot/usually/few,
 /turf/simulated/floor/plating,
 /area/mining_colony/interior/excavation/hangar)
-"avw" = (
-/turf/simulated/floor/asteroid/outside_ds/dry_muddy,
-/area/mining_colony/surface)
 "avx" = (
 /obj/structure/platform_decoration{
 	dir = 1;
 	icon_state = "platform_deco"
 	},
-/turf/simulated/floor/asteroid/outside_ds/dry_firm,
+/turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/interior/excavation/marker_excav)
 "avy" = (
 /obj/structure/railing/mapped{
@@ -7706,7 +7674,7 @@
 /obj/structure/railing/mapped{
 	dir = 1
 	},
-/turf/simulated/floor/asteroid/outside_ds/dry_firm,
+/turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/interior/excavation/marker_excav)
 "awl" = (
 /obj/effect/wallframe_spawn/reinforced,
@@ -7734,19 +7702,13 @@
 /obj/machinery/mineral/unloading_machine,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/mining/processing)
-"awt" = (
-/obj/structure/railing/mapped{
-	dir = 1
-	},
-/turf/simulated/floor/asteroid/outside_ds/dry_muddy,
-/area/mining_colony/interior/excavation/marker_excav)
 "awu" = (
 /obj/machinery/power/apc{
 	dir = 4;
 	name = "east bump";
 	pixel_x = 24
 	},
-/turf/simulated/floor/asteroid/outside_ds/dry_soft,
+/turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/interior/excavation/marker_excav)
 "awv" = (
 /obj/effect/decal/cleanable/cobweb2,
@@ -7834,7 +7796,7 @@
 	},
 /area/shuttle/executive_shuttle)
 "awL" = (
-/turf/simulated/floor/asteroid/outside_ds/dry_muddy,
+/turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/interior/excavation/marker_excav)
 "awM" = (
 /obj/machinery/sleeper,
@@ -7868,7 +7830,7 @@
 "awR" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/device/flashlight/maglight,
-/turf/simulated/floor/asteroid/outside_ds/dry_firm,
+/turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/interior/excavation/marker_excav)
 "awS" = (
 /obj/machinery/light/small{
@@ -8187,7 +8149,7 @@
 	dir = 4;
 	icon_state = "warning"
 	},
-/turf/simulated/floor/asteroid/outside_ds/dry_firm,
+/turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/interior/excavation/marker_excav)
 "axT" = (
 /obj/structure/bed/chair,
@@ -8208,7 +8170,7 @@
 	dir = 8;
 	icon_state = "warning"
 	},
-/turf/simulated/floor/asteroid/outside_ds/dry_firm,
+/turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/interior/excavation/marker_excav)
 "axX" = (
 /obj/structure/bed/chair{
@@ -8541,7 +8503,7 @@
 	dir = 1;
 	icon_state = "bulb_map"
 	},
-/turf/simulated/floor/asteroid/outside_ds/dry_soft,
+/turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/interior/excavation/marker_excav)
 "ayS" = (
 /obj/machinery/computer/shuttle_control/repairable{
@@ -15876,7 +15838,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/asteroid/outside_ds/dry_muddy,
+/turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/interior/excavation/marker_excav)
 "aSP" = (
 /obj/structure/table/steel_reinforced,
@@ -17788,33 +17750,26 @@
 /area/mining_colony/interior/seccie_checkpoint_2)
 "aWX" = (
 /obj/machinery/light/small/red,
-/turf/simulated/floor/asteroid/outside_ds/dry_firm,
-/area/mining_colony/interior/excavation/marker_excav)
-"aWY" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 1;
-	icon_state = "warning"
-	},
-/turf/simulated/floor/asteroid/outside_ds/dry_soft,
+/turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/interior/excavation/marker_excav)
 "aWZ" = (
 /obj/machinery/conveyor,
-/turf/simulated/floor/asteroid/outside_ds/dry_firm,
+/turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/interior/excavation/marker_excav)
 "aXa" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1;
 	icon_state = "warning"
 	},
-/turf/simulated/floor/asteroid/outside_ds/dry_firm,
+/turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/interior/excavation/marker_excav)
 "aXb" = (
 /obj/machinery/light,
-/turf/simulated/floor/asteroid/outside_ds/dry_soft,
+/turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/interior/excavation/marker_excav)
 "aXc" = (
 /obj/effect/decal/cleanable/blood/oil,
-/turf/simulated/floor/asteroid/outside_ds/dry_firm,
+/turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/interior/excavation/marker_excav)
 "aXd" = (
 /obj/machinery/light{
@@ -17942,9 +17897,6 @@
 	},
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/excavation/marker_excav)
-"aXv" = (
-/turf/simulated/floor/asteroid/outside_ds/dry_soft,
-/area/mining_colony/interior/excavation/marker_excav)
 "aXw" = (
 /obj/structure/bed/chair,
 /obj/machinery/light{
@@ -18015,7 +17967,7 @@
 /turf/simulated/floor/plating,
 /area/mining_colony/interior/maint)
 "aXH" = (
-/turf/simulated/floor/asteroid/outside_ds/dry_cracked,
+/turf/simulated/floor/asteroid/outside_ds/cracked,
 /area/mining_colony/interior/excavation/marker_excav)
 "aXI" = (
 /obj/machinery/door/airlock/maintenance{
@@ -21592,7 +21544,7 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
-/turf/simulated/floor/asteroid/outside_ds/dry_firm,
+/turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/interior/excavation/marker_excav)
 "bfa" = (
 /obj/structure/cable{
@@ -21600,15 +21552,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/asteroid/outside_ds/dry_firm,
-/area/mining_colony/interior/excavation/marker_excav)
-"bfb" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/asteroid/outside_ds/dry_muddy,
+/turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/interior/excavation/marker_excav)
 "bfc" = (
 /obj/structure/cable{
@@ -23831,11 +23775,6 @@
 /obj/effect/wallframe_spawn/reinforced,
 /turf/simulated/floor/plating,
 /area/mining_colony/surface)
-"bks" = (
-/turf/unsimulated/mineral{
-	icon_state = "rock"
-	},
-/area/mining_colony/surface)
 "bkt" = (
 /obj/structure/sign/chemistry,
 /turf/simulated/wall/r_wall,
@@ -25203,7 +25142,7 @@
 	dir = 8;
 	pixel_w = 0
 	},
-/turf/simulated/floor/asteroid/outside_ds/dry_firm,
+/turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/interior/excavation/marker_excav)
 "boc" = (
 /obj/effect/decal/cleanable/generic,
@@ -38543,15 +38482,15 @@ aoG
 aoG
 aoG
 aoG
-bks
-bks
-bks
-bks
-bks
-bks
-bks
-bks
-bks
+aoG
+aoG
+aoG
+aoG
+aoG
+aoG
+aoG
+aoG
+aoG
 aoG
 aoG
 aoG
@@ -38741,11 +38680,6 @@ aoG
 aoG
 aoG
 aoG
-bks
-bks
-bks
-bks
-bks
 aoG
 aoG
 aoG
@@ -38753,11 +38687,16 @@ aoG
 aoG
 aoG
 aoG
-bks
-bks
-bks
-bks
-bks
+aoG
+aoG
+aoG
+aoG
+aoG
+aoG
+aoG
+aoG
+aoG
+aoG
 aoG
 aoG
 aoG
@@ -38940,10 +38879,6 @@ aoG
 aoG
 aoG
 aoG
-bks
-bks
-bks
-bks
 aoG
 aoG
 aoG
@@ -38959,8 +38894,12 @@ aoG
 aoG
 aoG
 aoG
-bks
-bks
+aoG
+aoG
+aoG
+aoG
+aoG
+aoG
 aoG
 aoG
 aoG
@@ -39140,9 +39079,9 @@ aoG
 aoG
 aoG
 aoG
-bks
-bks
-bks
+aoG
+aoG
+aoG
 aoG
 aoG
 aoG
@@ -39162,7 +39101,7 @@ aat
 aat
 aoG
 aoG
-bks
+aoG
 aoG
 aoG
 aoG
@@ -39341,8 +39280,8 @@ aoG
 aoG
 aoG
 aoG
-bks
-bks
+aoG
+aoG
 aoG
 aoG
 aoG
@@ -39364,7 +39303,7 @@ aat
 aot
 aou
 aoG
-bks
+aoG
 aoG
 aoG
 aoG
@@ -39542,15 +39481,15 @@ aoG
 aoG
 aoG
 aoG
-bks
-bks
 aoG
 aoG
 aoG
-avt
-avw
-avt
-avw
+aoG
+aoG
+aCq
+aiI
+aCq
+aiI
 aoG
 aoG
 aoG
@@ -39566,8 +39505,8 @@ aat
 aot
 aou
 aoG
-bks
-bks
+aoG
+aoG
 aoG
 aoG
 aoG
@@ -39744,17 +39683,17 @@ aoG
 aoG
 aoG
 aoG
-bks
 aoG
 aoG
 aoG
-avt
-avw
-afY
-afY
-afV
-afV
-avt
+aoG
+aCq
+aiI
+aiI
+aiI
+aXf
+aCq
+aCq
 aoG
 aoG
 aat
@@ -39769,7 +39708,7 @@ aat
 aoG
 aoG
 aoG
-bks
+aoG
 aoG
 aoG
 aoG
@@ -39945,18 +39884,18 @@ aoG
 aoG
 aoG
 aoG
-bks
-bks
 aoG
 aoG
-avw
-avw
-afY
-avt
-avt
-avt
-avt
-afV
+aoG
+aoG
+aiI
+aiI
+aiI
+aCq
+aCq
+aXf
+aXf
+aCq
 aoG
 aat
 aat
@@ -39971,7 +39910,7 @@ aos
 aoG
 aoG
 aoG
-bks
+aoG
 aoG
 aoG
 aoG
@@ -40147,19 +40086,19 @@ aoG
 aoG
 aoG
 aoG
-bks
 aoG
 aoG
 aoG
-avt
-avt
-avw
-avw
 aoG
-avt
-avt
-avw
-afY
+aCq
+aCq
+aiI
+aiI
+aoG
+aCq
+aXz
+aiI
+aiI
 aat
 akT
 aop
@@ -40173,7 +40112,7 @@ aat
 aoG
 aoG
 aoG
-bks
+aoG
 aoG
 aoG
 aoG
@@ -40349,7 +40288,6 @@ aoG
 aoG
 aoG
 aoG
-bks
 aoG
 aoG
 aoG
@@ -40359,10 +40297,11 @@ aoG
 aoG
 aoG
 aoG
-avt
-avt
-avt
-avw
+aoG
+aXz
+aXz
+aXz
+aiI
 akJ
 ako
 akB
@@ -40375,7 +40314,7 @@ aot
 aou
 aoG
 aoG
-bks
+aoG
 aoG
 aoG
 aoG
@@ -40550,8 +40489,8 @@ aoG
 aoG
 aoG
 aoG
-bks
-bks
+aoG
+aoG
 aoG
 aoG
 aoG
@@ -40562,9 +40501,9 @@ aat
 aat
 aoG
 aoG
-avt
-avw
-afY
+aCq
+aiI
+aiI
 akg
 akg
 aki
@@ -40577,7 +40516,7 @@ aot
 aou
 aoG
 aoG
-bks
+aoG
 aoG
 aoG
 aoG
@@ -40752,7 +40691,7 @@ aoG
 aoG
 aoG
 aoG
-bks
+aoG
 aoG
 aoG
 aat
@@ -40765,9 +40704,9 @@ aat
 aat
 aat
 akg
-avt
-afY
-avw
+aCq
+aCq
+aCq
 akK
 aat
 aat
@@ -40779,7 +40718,7 @@ aat
 aoG
 aoG
 aoG
-bks
+aoG
 aoG
 aoG
 aoG
@@ -40954,7 +40893,7 @@ aoG
 aoG
 aoG
 aoG
-bks
+aoG
 aoG
 aat
 aat
@@ -40967,9 +40906,9 @@ ako
 akz
 akE
 akg
-avw
-avt
-avw
+aXf
+aXf
+aXf
 aat
 aat
 aoG
@@ -40980,8 +40919,8 @@ aoG
 aoG
 aoG
 aoG
-bks
-bks
+aoG
+aoG
 aoG
 aoG
 aoG
@@ -41156,7 +41095,7 @@ aoG
 aoG
 aoG
 aoG
-bks
+aoG
 aoG
 aav
 adB
@@ -41169,9 +41108,9 @@ aat
 akN
 akF
 akg
-avt
-avw
-avw
+aCq
+aXf
+aXf
 asW
 aoG
 aoG
@@ -41182,7 +41121,7 @@ aoG
 aoG
 aoG
 aoG
-bks
+aoG
 aoG
 aoG
 aoG
@@ -41358,7 +41297,7 @@ aoG
 aoG
 aoG
 aoG
-bks
+aoG
 aoG
 aav
 ajp
@@ -41371,11 +41310,11 @@ aki
 akA
 akE
 akG
-afV
-asI
-avw
-avt
-avt
+aCq
+asW
+aXf
+aCq
+aCq
 aoG
 aoG
 aoG
@@ -41384,7 +41323,7 @@ aoG
 aoG
 aoG
 aoG
-bks
+aoG
 aoG
 aoG
 aoG
@@ -41560,7 +41499,7 @@ aoG
 aoG
 aoG
 aoG
-bks
+aoG
 aoG
 aav
 aka
@@ -41574,19 +41513,19 @@ akC
 aat
 aat
 aat
-afV
-avt
-afY
-avt
-avt
-avt
+aCq
+aCq
+aiI
+aCq
+aCq
+aCq
 aoG
 aoG
 aoG
 aoG
 aoG
-bks
-bks
+aoG
+aoG
 aoG
 aoG
 aoG
@@ -41762,7 +41701,7 @@ aoG
 aoG
 aoG
 aoG
-bks
+aoG
 aoG
 aav
 akb
@@ -41776,18 +41715,18 @@ akD
 aat
 aoG
 aoG
-avt
+aCq
 asI
-avt
-afY
-afY
-afY
+aCq
+aiI
+aiI
+aiI
 aoG
 aoG
 aoG
 aoG
-bks
-bks
+aoG
+aoG
 aoG
 aoG
 aoG
@@ -41964,7 +41903,7 @@ aoG
 aoG
 aoG
 aoG
-bks
+aoG
 aoG
 aat
 aat
@@ -41978,17 +41917,17 @@ aat
 aat
 aoG
 amu
-avw
-avw
-avw
-avw
-avt
+aCq
+aCq
+aCq
+aCq
+aCq
 aoG
 aoG
 aoG
 aoG
-bks
-bks
+aoG
+aoG
 aoG
 aoG
 aoG
@@ -42166,7 +42105,7 @@ aoG
 aoG
 aoG
 aoG
-bks
+aoG
 aoG
 aoG
 aat
@@ -42179,17 +42118,17 @@ aoC
 aat
 aoG
 aoG
-avt
-avt
-afY
-avt
-asn
-avt
+aXf
+aCq
+aCq
+aCq
+asW
+aCq
 aoG
 aoG
 aoG
-bks
-bks
+aoG
+aoG
 aoG
 aoG
 aoG
@@ -42368,8 +42307,8 @@ aoG
 aoG
 aoG
 aoG
-bks
-bks
+aoG
+aoG
 aoG
 aoG
 aoG
@@ -42381,16 +42320,16 @@ akM
 aat
 aoG
 ala
-avt
-afV
-afV
+aCq
+aXf
+aCq
 aoG
 aoG
 aoG
 aoG
-bks
-bks
-bks
+aoG
+aoG
+aoG
 aoG
 aoG
 aoG
@@ -42571,26 +42510,26 @@ aoG
 aoG
 aoG
 aoG
-bks
 aoG
 aoG
 aoG
 aoG
 aoG
 aoG
-avw
-afV
+aoG
+aiI
+aCq
 aoG
 aoG
-avt
+aCq
 asn
-afY
+aiI
 aoG
 aoG
 aoG
-bks
-bks
-bks
+aoG
+aoG
+aoG
 aoG
 aoG
 aoG
@@ -42773,24 +42712,24 @@ aoG
 aoG
 aoG
 aoG
-bks
-bks
-bks
-aoG
-aoG
-afV
-afV
-afV
-afV
-avt
-avt
-avt
 aoG
 aoG
 aoG
 aoG
-bks
-bks
+aoG
+aCq
+aXf
+aCq
+aCq
+aCq
+aXf
+aXf
+aoG
+aoG
+aoG
+aoG
+aoG
+aoG
 aoG
 aoG
 aoG
@@ -42977,21 +42916,21 @@ aoG
 aoG
 aoG
 aoG
-bks
-bks
-bks
-aoG
-avt
-avt
-avw
-avt
 aoG
 aoG
 aoG
 aoG
-bks
-bks
-bks
+aCq
+aXf
+aiI
+aCq
+aoG
+aoG
+aoG
+aoG
+aoG
+aoG
+aoG
 aoG
 aoG
 aoG
@@ -43181,17 +43120,17 @@ aoG
 aoG
 aoG
 aoG
-bks
-bks
-aoG
-avt
 aoG
 aoG
 aoG
+aCq
 aoG
-bks
-bks
-bks
+aoG
+aoG
+aoG
+aoG
+aoG
+aoG
 aoG
 aoG
 aoG
@@ -43384,14 +43323,14 @@ aoG
 aoG
 aoG
 aoG
-bks
-bks
-bks
 aoG
 aoG
-bks
-bks
-bks
+aoG
+aoG
+aoG
+aoG
+aoG
+aoG
 aoG
 aoG
 aoG
@@ -43588,10 +43527,10 @@ aoG
 aoG
 aoG
 aoG
-bks
-bks
-bks
-bks
+aoG
+aoG
+aoG
+aoG
 aoG
 aoG
 aoG
@@ -64112,8 +64051,8 @@ afw
 acu
 acu
 aiX
-avt
-avw
+aCq
+aCq
 aoG
 aoG
 atN
@@ -64313,10 +64252,10 @@ afr
 acu
 acu
 aiX
-ajz
-avw
-avt
-avt
+ajq
+aCq
+aCq
+aCq
 atN
 atN
 aoG
@@ -64506,8 +64445,8 @@ ajx
 ajx
 ajx
 ajx
-acA
-acA
+awL
+awL
 avx
 ajA
 acu
@@ -64515,9 +64454,9 @@ afs
 acu
 aiX
 ajq
-avt
-avt
-avt
+aCq
+aCq
+aCq
 atN
 atN
 atN
@@ -64704,9 +64643,9 @@ atN
 atN
 aoG
 aoG
-acA
-acA
-acA
+awL
+awL
+awL
 aiv
 aiv
 aiv
@@ -64905,10 +64844,10 @@ aCq
 atN
 atN
 aoG
-acA
-acA
+awL
+awL
 aiO
-acA
+awL
 aiv
 aiv
 aiv
@@ -65107,7 +65046,7 @@ atN
 atN
 aoG
 aoG
-acA
+awL
 aWX
 abR
 aiJ
@@ -65309,8 +65248,8 @@ atN
 aoG
 aoG
 aoG
-acA
-acA
+awL
+awL
 abS
 acj
 boa
@@ -65328,9 +65267,9 @@ abR
 bnZ
 boa
 boa
-acA
 awL
-acA
+awL
+awL
 aiY
 aiY
 aiY
@@ -65510,9 +65449,9 @@ atN
 atN
 aoG
 aoG
-acA
-acA
-acA
+awL
+awL
+awL
 abY
 ack
 ack
@@ -65711,10 +65650,10 @@ atN
 atN
 aoG
 aoG
-acA
-acA
-acA
-acA
+awL
+awL
+awL
+awL
 aca
 acj
 acr
@@ -65733,7 +65672,7 @@ acr
 acr
 acr
 awR
-acA
+awL
 bfa
 aiY
 ajf
@@ -65912,11 +65851,11 @@ atN
 atN
 atN
 aoG
-acA
-acA
-acA
-acA
-acA
+awL
+awL
+awL
+awL
+awL
 aci
 aiP
 aiv
@@ -65936,7 +65875,7 @@ aiv
 aiv
 acv
 ayR
-bfb
+bfa
 aiY
 ajg
 arE
@@ -66113,14 +66052,14 @@ aCq
 atN
 atN
 atN
-acA
-acA
-acA
-acA
-acA
-acA
-acA
-acA
+awL
+awL
+awL
+awL
+awL
+awL
+awL
+awL
 aiv
 aiv
 aiv
@@ -66315,9 +66254,9 @@ aCq
 atN
 aoG
 atN
-acA
-acA
-acA
+awL
+awL
+awL
 abr
 abA
 abA
@@ -66517,9 +66456,9 @@ aCq
 aoG
 aoG
 atN
-acA
-acA
-acA
+awL
+awL
+awL
 aby
 abB
 abB
@@ -66542,7 +66481,7 @@ aiv
 aiv
 aiv
 aiv
-aWY
+aXa
 ajb
 ajj
 ajj
@@ -66719,9 +66658,9 @@ aCq
 aoG
 aoG
 atN
-acA
-acA
-acA
+awL
+awL
+awL
 aby
 abB
 aZf
@@ -66921,9 +66860,9 @@ aCq
 aoG
 aoG
 atN
-acA
-acA
-acA
+awL
+awL
+awL
 aby
 abB
 abB
@@ -67123,9 +67062,9 @@ auN
 aoG
 aoG
 atN
-acA
-acA
-acA
+awL
+awL
+awL
 abz
 abC
 abC
@@ -67325,14 +67264,14 @@ aJi
 aoG
 aoG
 atN
-acA
-acA
-acA
-acA
-acA
-acA
-acA
-acA
+awL
+awL
+awL
+awL
+awL
+awL
+awL
+awL
 aiv
 aiv
 aiv
@@ -67349,7 +67288,7 @@ aiv
 aiv
 aiv
 anf
-acA
+awL
 awL
 aiY
 ajh
@@ -67524,17 +67463,17 @@ aCq
 aCq
 aJi
 aJi
-avt
+aCq
 aoG
 atN
 aiv
-acA
-acA
-acA
-acA
-acA
-acA
-acA
+awL
+awL
+awL
+awL
+awL
+awL
+awL
 aiv
 aiv
 aiv
@@ -67550,9 +67489,9 @@ aiv
 aiv
 aiv
 abM
-abR
+awL
 ayR
-acA
+awL
 aiY
 ajm
 ajX
@@ -67726,17 +67665,17 @@ aCq
 aJi
 aJi
 aCq
-afY
-avt
-avt
+aiI
+aCq
+aCq
 aiv
-acA
-acA
-acA
+awL
+awL
+awL
 aiN
 alF
-acA
-acA
+awL
+awL
 aiv
 aiv
 aiv
@@ -67753,7 +67692,7 @@ aiv
 aiv
 aiv
 awk
-acA
+awL
 aXb
 aiY
 ajn
@@ -67928,17 +67867,17 @@ aJi
 aJi
 aCq
 aCq
-afY
-avt
-avt
+aiI
+aCq
+aCq
 aiv
-acA
-acA
+awL
+awL
 aiK
 acl
 acj
 alF
-acA
+awL
 aiv
 aiv
 aiv
@@ -68130,12 +68069,12 @@ aJi
 aCq
 aCq
 aCq
-avt
-avt
-avt
-acA
-acA
-aiH
+aCq
+aCq
+aCq
+awL
+awL
+aiK
 acj
 acj
 acj
@@ -68156,9 +68095,9 @@ aiv
 aiv
 aiv
 aiv
-awt
-aXv
-acA
+awk
+awL
+awL
 ajd
 bgc
 aqN
@@ -68332,11 +68271,11 @@ aCq
 aCq
 aCq
 aCq
-afY
-avt
-avt
-acA
-acA
+aiI
+aCq
+aCq
+awL
+awL
 afj
 aXH
 acj
@@ -68360,7 +68299,7 @@ aiv
 aiv
 awk
 awu
-aXv
+awL
 ajd
 ajQ
 arD
@@ -68535,9 +68474,9 @@ aoG
 aCq
 aCq
 aCq
-afY
-avt
-acA
+aiI
+aCq
+awL
 acj
 acj
 acj
@@ -68545,11 +68484,11 @@ acw
 aiM
 asV
 ahs
-acA
-acA
+awL
+awL
 aiv
-acA
-acA
+awL
+awL
 aoG
 aoG
 aoG
@@ -68558,7 +68497,7 @@ aoG
 aoG
 awL
 awL
-acA
+awL
 awL
 aCB
 aCB
@@ -68739,7 +68678,7 @@ aCq
 aCq
 aCq
 aCq
-avt
+aCq
 aoG
 aoG
 aoG
@@ -68748,9 +68687,9 @@ aoG
 aoG
 aoG
 aoG
-acA
-acA
-acA
+awL
+awL
+awL
 aoG
 aoG
 aoG
@@ -68951,7 +68890,7 @@ aoG
 aoG
 aoG
 aoG
-acA
+awL
 aoG
 aoG
 aoG
