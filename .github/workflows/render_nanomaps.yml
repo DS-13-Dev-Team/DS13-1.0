@@ -7,7 +7,7 @@ name: 'Render Nanomaps'
 on:
   push:
     branches:
-      - mapping-attempt-2
+      - dev
     paths:
       - 'maps/**/*.dmm'
 
@@ -24,7 +24,7 @@ jobs:
         git fetch origin
         git branch -f nanomaps_generation
         git checkout nanomaps_generation
-        git reset --hard origin/mapping-attempt-2
+        git reset --hard origin/dev
 
     - name: Ensure +x on github-actions directory
       run: chmod -R +x ./tools/github-actions
@@ -44,7 +44,7 @@ jobs:
       uses: repo-sync/pull-request@v2
       with:
         source_branch: "nanomaps_generation"
-        destination_branch: "mapping-attempt-2"
+        destination_branch: "dev"
         pr_title: "Automatic NanoMap Update"
         pr_body: "This pull request updates the nanomap images to the latest version of the map."
         pr_label: "Infrastructure"
