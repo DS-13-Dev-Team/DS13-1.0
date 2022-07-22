@@ -1167,10 +1167,10 @@
 /obj/machinery/button/remote/blast_door{
 	id = "gethefuckoutofmyproperty";
 	name = "Underground Storage Shutter Control";
-	pixel_y = -10
+	pixel_y = -24
 	},
-/turf/simulated/wall/r_wall,
-/area/mining_colony/interior/cargo/storage_upper)
+/turf/simulated/floor/plating,
+/area/mining_colony/lower)
 "dH" = (
 /obj/structure/flora/pottedplant/tropical,
 /obj/effect/floor_decal/dank/border{
@@ -6400,6 +6400,14 @@
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room45)
+"CR" = (
+/obj/machinery/button/remote/blast_door{
+	id = "gethefuckoutofmyproperty";
+	name = "Underground Storage Shutter Control";
+	pixel_x = 24
+	},
+/turf/simulated/floor/dank/golf_brown,
+/area/mining_colony/interior/cargo/storage_upper)
 "CT" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -33116,7 +33124,7 @@ nP
 rJ
 rJ
 mU
-mp
+CR
 mp
 lU
 lZ
@@ -33311,14 +33319,14 @@ dY
 ar
 ar
 bi
-bi
+dG
 xk
 xk
 xk
 xk
 xk
 rW
-dG
+rW
 nO
 mp
 mp
