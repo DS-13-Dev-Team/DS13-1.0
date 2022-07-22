@@ -25,3 +25,4 @@ SUBSYSTEM_DEF(craft)
 		if(CR.result)
 			get_craft_item(CR.result)
 		CHECK_TICK
+	.=..()

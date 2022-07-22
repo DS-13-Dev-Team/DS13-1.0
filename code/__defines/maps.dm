@@ -41,7 +41,7 @@ Always compile, always use that verb, and always make sure that it works for wha
 #define MAP_CURRENT_VERSION 1
 
 /// Distance from edge to move to another z-level
-#define TRANSITIONEDGE 7
+#define TRANSITIONEDGE 1
 
 /// Path for the next_map.json file, if someone, for some messed up reason, wants to change it.
 #define PATH_TO_NEXT_MAP_JSON "data/next_map.json"
