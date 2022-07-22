@@ -22,13 +22,10 @@
 
 	level = 1
 
-/obj/machinery/atmospherics/pipe/zpipe/New()
-
-
-	if (isnull(initialize_directions))
+/obj/machinery/atmospherics/pipe/zpipe/Initialize(mapload, d)
+	. = ..()
+	if(isnull(initialize_directions))
 		initialize_directions = dir
-
-	..()
 
 /obj/machinery/atmospherics/pipe/zpipe/hide(i)
 	if(istype(loc, /turf/simulated))

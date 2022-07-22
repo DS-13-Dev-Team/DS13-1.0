@@ -757,6 +757,9 @@
 	},
 /obj/effect/floor_decal/corner/grey/mono,
 /obj/item/stack/power_node,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/research/virology)
 "abV" = (
@@ -3023,6 +3026,9 @@
 	pixel_y = 24
 	},
 /obj/random/medical/lite,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/research/virology)
 "agX" = (
@@ -4087,6 +4093,9 @@
 /obj/machinery/camera/network/research{
 	dir = 8
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/research/virology)
 "akm" = (
@@ -5058,11 +5067,11 @@
 /area/ishimura/upper/engineering/hub)
 "amn" = (
 /obj/structure/disposalpipe/segment{
-	dir = 4;
+	dir = 8;
 	icon_state = "pipe-c"
 	},
 /turf/simulated/wall/r_wall,
-/area/ishimura/upper/research/virology/entrance)
+/area/ishimura/upper/research/virology)
 "amo" = (
 /obj/machinery/alarm{
 	pixel_y = 23
@@ -10550,11 +10559,11 @@
 /area/ishimura/upper/research/virology/entrance)
 "awV" = (
 /obj/structure/disposalpipe/segment{
-	dir = 8;
+	dir = 4;
 	icon_state = "pipe-c"
 	},
 /turf/simulated/wall/r_wall,
-/area/ishimura/upper/research/virology/entrance)
+/area/ishimura/upper/research/virology)
 "awW" = (
 /obj/machinery/light{
 	dir = 1
@@ -10590,6 +10599,9 @@
 /obj/item/modular_computer/laptop/preset/records,
 /obj/structure/table/glass,
 /obj/effect/floor_decal/corner/grey/mono,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/research/virology)
 "awZ" = (
@@ -13168,7 +13180,6 @@
 	dir = 8;
 	id_tag = "med_exit";
 	name = "Clinic Main Entrance";
-	req_access = list();
 	req_one_access = list(2,3)
 	},
 /obj/machinery/door/firedoor{
@@ -16321,6 +16332,7 @@
 /turf/simulated/wall/r_wall,
 /area/ishimura/upper/engineering/spare_storage/starboard)
 "aHh" = (
+/obj/structure/foamedmetal,
 /turf/simulated/floor/plating,
 /area/ishimura/upper/command/bridge)
 "aHi" = (
@@ -17295,8 +17307,10 @@
 /area/ishimura/upper/command/bridge)
 "aIR" = (
 /obj/effect/landmark{
-	name = "lightsout"
+	name = "lightsout";
+	plane = -5
 	},
+/obj/structure/foamedmetal,
 /turf/simulated/floor/plating,
 /area/ishimura/upper/command/bridge)
 "aIS" = (
@@ -19806,7 +19820,6 @@
 	dir = 8;
 	id_tag = "med_exit";
 	name = "Clinic Main Entrance";
-	req_access = list();
 	req_one_access = list(2,3)
 	},
 /obj/machinery/door/blast/shutters/open{
@@ -40243,9 +40256,9 @@ bdh
 bdo
 aad
 aah
-bbF
-bbF
-bbF
+aah
+aah
+aah
 aaa
 aaa
 aaa
@@ -40495,9 +40508,9 @@ alV
 bgu
 aad
 aah
-bbF
-bbF
-bbF
+aah
+aah
+aah
 aaa
 aaa
 aaa
@@ -40747,9 +40760,9 @@ bgu
 bgu
 aad
 aah
-bbF
-bbF
-bbF
+aah
+aah
+aah
 aaa
 aaa
 aaa
@@ -40999,9 +41012,9 @@ bgu
 bgu
 aad
 aah
-bbF
-bbF
-bbF
+aah
+aah
+aah
 aaa
 aaa
 aaa
@@ -41251,9 +41264,9 @@ bgu
 bgu
 aad
 aah
-bbF
-bbF
-bbF
+aah
+aah
+aah
 aaa
 aaa
 aaa
@@ -41503,9 +41516,9 @@ aad
 aad
 aad
 aah
-bbF
-bbF
-bbF
+aah
+aah
+aah
 aaa
 aaa
 aaa
@@ -50070,10 +50083,10 @@ aUa
 aWy
 aQj
 aah
-bbF
-bbF
-bbF
-bbF
+aah
+aah
+aah
+aah
 aaa
 aaa
 aaa
@@ -50325,7 +50338,7 @@ avU
 avU
 avU
 avU
-bbF
+aah
 aaa
 aaa
 aaa
@@ -52089,7 +52102,7 @@ avU
 avU
 avU
 avU
-bbF
+aah
 aaa
 aaa
 aaa
@@ -52341,7 +52354,7 @@ aah
 aah
 aah
 aah
-bbF
+aah
 aaa
 aaa
 aaa
@@ -52593,7 +52606,7 @@ aah
 aah
 aah
 aah
-bbF
+aah
 aaa
 aaa
 aaa
@@ -52845,7 +52858,7 @@ avU
 avU
 avU
 avU
-bbF
+aah
 aaa
 aaa
 aaa
@@ -55869,7 +55882,7 @@ avU
 avU
 avU
 avU
-bbF
+aah
 aaa
 aaa
 aaa
@@ -56121,7 +56134,7 @@ aah
 aah
 aah
 aah
-bbF
+aah
 aaa
 aaa
 aaa
@@ -56373,7 +56386,7 @@ aah
 aah
 aah
 aah
-bbF
+aah
 aaa
 aaa
 aaa
@@ -56625,7 +56638,7 @@ avU
 avU
 avU
 avU
-bbF
+aah
 aaa
 aaa
 aaa
@@ -71243,7 +71256,7 @@ aRG
 bgb
 bfM
 aah
-bbF
+aah
 aaa
 aaa
 aaa
@@ -71495,7 +71508,7 @@ aRG
 bcX
 bfM
 aah
-bbF
+aah
 aaa
 aaa
 aaa
@@ -71747,7 +71760,7 @@ aRG
 bcX
 bfM
 aah
-bbF
+aah
 aaa
 aaa
 aaa
@@ -71999,7 +72012,7 @@ bfP
 bcX
 bfM
 aah
-bbF
+aah
 aaa
 aaa
 aaa
@@ -72251,7 +72264,7 @@ bda
 bfX
 bfM
 aah
-bbF
+aah
 aaa
 aaa
 aaa
@@ -72503,7 +72516,7 @@ bfZ
 bcX
 bfM
 aah
-bbF
+aah
 aaa
 aaa
 aaa
@@ -72755,7 +72768,7 @@ bge
 bcX
 bfM
 aah
-bbF
+aah
 aaa
 aaa
 aaa
@@ -73007,7 +73020,7 @@ bga
 bgc
 bfM
 aah
-bbF
+aah
 aaa
 aaa
 aaa
@@ -73259,7 +73272,7 @@ adp
 bcX
 bfM
 aah
-bbF
+aah
 aaa
 aaa
 aaa
@@ -73511,7 +73524,7 @@ adp
 bcX
 bfM
 aah
-bbF
+aah
 aaa
 aaa
 aaa
@@ -73763,7 +73776,7 @@ aCb
 bfL
 bfM
 aah
-bbF
+aah
 aaa
 aaa
 aaa
@@ -74015,7 +74028,7 @@ adp
 adp
 bfM
 aah
-bbF
+aah
 aaa
 aaa
 aaa
@@ -74267,7 +74280,7 @@ bgn
 bgq
 bfM
 aah
-bbF
+aah
 aaa
 aaa
 aaa
@@ -74519,7 +74532,7 @@ aaD
 aaD
 aaD
 aah
-bbF
+aah
 aaa
 aaa
 aaa
@@ -74771,7 +74784,7 @@ aGD
 aIc
 aaD
 aah
-bbF
+aah
 aaa
 aaa
 aaa
@@ -75023,7 +75036,7 @@ aHE
 aIe
 aaD
 aah
-bbF
+aah
 aaa
 aaa
 aaa
@@ -75275,7 +75288,7 @@ aaD
 aaD
 aaD
 aah
-bbF
+aah
 aaa
 aaa
 aaa
@@ -75527,7 +75540,7 @@ aHL
 aIc
 aaD
 aah
-bbF
+aah
 aaa
 aaa
 aaa
@@ -75779,7 +75792,7 @@ aHE
 aIe
 aaD
 aah
-bbF
+aah
 aaa
 aaa
 aaa
@@ -76031,7 +76044,7 @@ aaD
 aaD
 aaD
 aah
-bbF
+aah
 aaa
 aaa
 aaa
@@ -76283,7 +76296,7 @@ aHM
 aIc
 aaD
 aah
-bbF
+aah
 aaa
 aaa
 aaa
@@ -76535,7 +76548,7 @@ aHE
 aIh
 aaD
 aah
-bbF
+aah
 aaa
 aaa
 aaa
@@ -76787,7 +76800,7 @@ aaD
 aaD
 aaD
 aah
-bbF
+aah
 aaa
 aaa
 aaa
@@ -77039,7 +77052,7 @@ aHN
 aIc
 aaD
 aah
-bbF
+aah
 aaa
 aaa
 aaa
@@ -77291,7 +77304,7 @@ aHE
 aIe
 aaD
 aah
-bbF
+aah
 aaa
 aaa
 aaa
@@ -77543,7 +77556,7 @@ aaD
 aaD
 aaD
 aah
-bbF
+aah
 aaa
 aaa
 aaa
@@ -77795,7 +77808,7 @@ aHR
 aIc
 aaD
 aah
-bbF
+aah
 aaa
 aaa
 aaa
@@ -78047,7 +78060,7 @@ aHE
 aIe
 aaD
 aah
-bbF
+aah
 aaa
 aaa
 aaa
@@ -78258,8 +78271,8 @@ aaa
 aaa
 aaa
 aah
-amn
-awV
+aam
+awE
 aey
 aAb
 azX
@@ -78299,7 +78312,7 @@ aaD
 aaD
 aaD
 aah
-bbF
+aah
 aaa
 aaa
 aaa
@@ -78510,8 +78523,8 @@ aaa
 aaa
 aaa
 aah
-awE
 aam
+awE
 aam
 azL
 aAh
@@ -78551,7 +78564,7 @@ aHS
 aIc
 aaD
 aah
-bbF
+aah
 aaa
 aaa
 aaa
@@ -78762,7 +78775,7 @@ aaa
 aaa
 aaa
 aah
-awG
+adm
 abU
 azJ
 aAc
@@ -78803,7 +78816,7 @@ aHE
 aIe
 aaD
 aah
-bbF
+aah
 aaa
 aaa
 aaa
@@ -79014,7 +79027,7 @@ aaa
 aaa
 aaa
 aah
-awG
+adm
 awY
 afd
 aAf
@@ -79055,7 +79068,7 @@ aaD
 aaD
 aaD
 aah
-bbF
+aah
 aaa
 aaa
 aaa
@@ -79266,7 +79279,7 @@ aaa
 aaa
 aaa
 aah
-awG
+adm
 agW
 azV
 bgl
@@ -79307,7 +79320,7 @@ aaD
 aIl
 aaD
 aah
-bbF
+aah
 aaa
 aaa
 aaa
@@ -79559,7 +79572,7 @@ aaD
 aaD
 aaD
 aah
-bbF
+aah
 aaa
 aaa
 aaa
@@ -79770,8 +79783,8 @@ aaa
 aaa
 aaa
 aah
-awG
-adm
+awV
+amn
 azU
 bgp
 bgG
@@ -80061,7 +80074,7 @@ aeh
 aeh
 aeh
 aah
-bbF
+aah
 aaa
 aaa
 aaa
@@ -80273,7 +80286,7 @@ aaa
 aaa
 aaa
 aaa
-bbF
+aah
 axV
 aah
 azU
@@ -80313,7 +80326,7 @@ aIj
 avR
 aeh
 aah
-bbF
+aah
 aaa
 aaa
 aaa
@@ -80565,7 +80578,7 @@ anH
 aUb
 aeh
 aah
-bbF
+aah
 aaa
 aaa
 aaa
@@ -80817,7 +80830,7 @@ anI
 aeh
 aeh
 aah
-bbF
+aah
 aaa
 aaa
 aaa
@@ -81069,7 +81082,7 @@ anJ
 anR
 aeh
 aah
-bbF
+aah
 aaa
 aaa
 aaa
@@ -81321,7 +81334,7 @@ anP
 bbO
 aeh
 aah
-bbF
+aah
 aaa
 aaa
 aaa
@@ -81544,8 +81557,8 @@ anK
 aAo
 azU
 azU
-aav
-aav
+atk
+atk
 aaT
 aFe
 abq
@@ -81573,7 +81586,7 @@ aeh
 aeh
 aeh
 aah
-bbF
+aah
 aaa
 aaa
 aaa
@@ -81825,7 +81838,7 @@ aah
 aah
 aah
 aah
-bbF
+aah
 aaa
 aaa
 aaa
@@ -82070,13 +82083,13 @@ aaL
 aav
 ajT
 ajT
-bbF
-bbF
-bbF
-bbF
-bbF
-bbF
-bbF
+aah
+aah
+aah
+aah
+aah
+aah
+aah
 aaa
 aaa
 aaa

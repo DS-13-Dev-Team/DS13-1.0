@@ -5144,7 +5144,7 @@
 /area/space)
 "tx" = (
 /obj/effect/step_trigger/teleporter/random{
-	affect_ghosts = 1;
+	affect_ghosts = 0;
 	name = "escapeshuttle_leave";
 	teleport_x = 25;
 	teleport_x_offset = 245;
@@ -5167,28 +5167,11 @@
 /turf/unsimulated/floor/rescue_base,
 /area/ERT/escapebase)
 "vr" = (
-/obj/effect/step_trigger/teleporter/random{
-	affect_ghosts = 0;
-	name = "escapeshuttle_leave";
-	teleport_x = 3;
-	teleport_x_offset = 197;
-	teleport_y = 3;
-	teleport_y_offset = 197;
-	teleport_z = 3;
-	teleport_z_offset = 3
+/obj/machinery/door/airlock/multi_tile{
+	dir = 8
 	},
-/obj/effect/step_trigger/teleporter/random{
-	affect_ghosts = 0;
-	name = "escapeshuttle_leave";
-	teleport_x = 3;
-	teleport_x_offset = 197;
-	teleport_y = 3;
-	teleport_y_offset = 197;
-	teleport_z = 3;
-	teleport_z_offset = 3
-	},
-/turf/space,
-/area/space)
+/turf/unsimulated/floor/rescue_base,
+/area/ERT/escapebase)
 "xf" = (
 /obj/effect/shuttle_landmark/escape2/end,
 /turf/unsimulated/floor{
@@ -5204,7 +5187,7 @@
 /area/ERT/escapebase)
 "yk" = (
 /obj/effect/step_trigger/teleporter/random{
-	affect_ghosts = 1;
+	affect_ghosts = 0;
 	name = "escapeshuttle_leave";
 	teleport_x = 25;
 	teleport_x_offset = 245;
@@ -5281,7 +5264,7 @@
 /area/ERT/escapebase)
 "Ch" = (
 /obj/effect/step_trigger/teleporter/random{
-	affect_ghosts = 1;
+	affect_ghosts = 0;
 	name = "escapeshuttle_leave";
 	teleport_x = 25;
 	teleport_x_offset = 245;
@@ -5441,7 +5424,7 @@
 /area/space)
 "Mw" = (
 /obj/effect/step_trigger/teleporter/random{
-	affect_ghosts = 1;
+	affect_ghosts = 0;
 	name = "escapeshuttle_leave";
 	teleport_x = 3;
 	teleport_x_offset = 197;
@@ -5451,7 +5434,7 @@
 	teleport_z_offset = 3
 	},
 /obj/effect/step_trigger/teleporter/random{
-	affect_ghosts = 1;
+	affect_ghosts = 0;
 	name = "escapeshuttle_leave";
 	teleport_x = 3;
 	teleport_x_offset = 197;
@@ -5509,8 +5492,11 @@
 	},
 /area/space)
 "TR" = (
-/obj/machinery/door/airlock/external,
-/turf/space,
+/obj/machinery/door/blast/regular,
+/turf/unsimulated/floor{
+	icon = 'icons/turf/floors.dmi';
+	icon_state = "plating"
+	},
 /area/ERT/escapebase)
 "TY" = (
 /turf/space{
@@ -7068,7 +7054,7 @@ dQ
 dQ
 dQ
 dQ
-vr
+Mw
 aa
 Ch
 hO
@@ -12851,7 +12837,7 @@ xu
 xu
 xu
 Wo
-iR
+TR
 MM
 MM
 hR
@@ -12954,7 +12940,7 @@ xu
 xu
 xu
 xu
-iR
+TR
 MM
 MM
 hR
@@ -13057,7 +13043,7 @@ xu
 xu
 xu
 xu
-iR
+TR
 MM
 MM
 hR
@@ -13160,7 +13146,7 @@ xu
 xu
 xu
 xu
-iR
+TR
 MM
 MM
 hR
@@ -13263,7 +13249,7 @@ xu
 xu
 xu
 xu
-iR
+TR
 MM
 MM
 hR
@@ -13366,7 +13352,7 @@ xu
 xu
 xu
 xu
-iR
+TR
 MM
 MM
 hR
@@ -13469,7 +13455,7 @@ xu
 xu
 xu
 xu
-iR
+TR
 MM
 MM
 hR
@@ -13572,7 +13558,7 @@ xu
 xu
 xu
 xu
-iR
+TR
 MM
 MM
 hR
@@ -13675,7 +13661,7 @@ xu
 xu
 xu
 xu
-iR
+TR
 MM
 MM
 hR
@@ -13778,7 +13764,7 @@ xu
 xu
 xu
 xu
-iR
+TR
 MM
 MM
 hR
@@ -13881,7 +13867,7 @@ xu
 xu
 xu
 xu
-iR
+TR
 MM
 MM
 hR
@@ -14396,7 +14382,7 @@ xu
 xu
 xu
 qA
-iR
+TR
 MM
 MM
 hR
@@ -14499,7 +14485,7 @@ xu
 xu
 xu
 xu
-iR
+TR
 MM
 MM
 hR
@@ -14602,7 +14588,7 @@ xu
 xu
 xu
 xu
-iR
+TR
 MM
 MM
 hR
@@ -14705,7 +14691,7 @@ xu
 xu
 xu
 xu
-iR
+TR
 MM
 MM
 hR
@@ -14808,7 +14794,7 @@ xu
 xu
 xu
 xu
-iR
+TR
 MM
 MM
 hR
@@ -14911,7 +14897,7 @@ xu
 xu
 xu
 xu
-iR
+TR
 MM
 MM
 hR
@@ -15426,7 +15412,7 @@ xu
 xu
 xu
 xu
-TR
+iP
 MM
 MM
 hR
@@ -15529,7 +15515,7 @@ xu
 xu
 xu
 Yb
-iR
+TR
 MM
 MM
 hR
@@ -15632,7 +15618,7 @@ xu
 xu
 xu
 xu
-iR
+TR
 MM
 MM
 hR
@@ -15735,7 +15721,7 @@ xu
 xu
 xu
 xu
-iR
+TR
 MM
 MM
 hR
@@ -15838,7 +15824,7 @@ xu
 xu
 xu
 xu
-iR
+TR
 MM
 MM
 hR
@@ -15941,7 +15927,7 @@ xu
 xu
 xu
 xu
-iR
+TR
 MM
 MM
 hR
@@ -16044,7 +16030,7 @@ xu
 xu
 xu
 xu
-iR
+TR
 MM
 MM
 hR
@@ -16147,7 +16133,7 @@ xu
 xu
 xu
 xu
-iR
+TR
 MM
 MM
 hR
@@ -17553,8 +17539,8 @@ hR
 hR
 hR
 hR
-Lo
-Lo
+MM
+vr
 hR
 hR
 hR

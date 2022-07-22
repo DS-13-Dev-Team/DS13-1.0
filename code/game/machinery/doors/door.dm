@@ -83,7 +83,6 @@
 	else
 		layer = open_layer
 
-
 	if(width > 1)
 		if(dir in list(EAST, WEST))
 			bound_width = width * world.icon_size
@@ -94,19 +93,18 @@
 
 	health = max_health
 	resistance = min_force	//Todo: remove min force and roll everything into resistance
-	update_connections(1)
-	update_icon()
-
-	update_nearby_tiles(need_rebuild=1)
 
 /obj/machinery/door/Initialize(var/mapload)
+	update_connections(1)
+	update_icon()
+	update_nearby_tiles(need_rebuild=1)
 	set_extension(src, /datum/extension/penetration/proc_call, .proc/CheckPenetration)
 	if (isturf(loc))
 		if (mapload)
 			SSslow.doors_needing_areas.Add(src)	//Add ourselves for area updating later
 		else
 			update_areas()
-	. = ..()
+	.=..()
 
 //Since this is a crazy expensive proc to run, we space it out in random intervals over the first five minutes of the round
 /obj/machinery/door/proc/update_areas()

@@ -1,6 +1,6 @@
 /datum/random_map/automata/cave_system
 	iterations = 5
-	descriptor = "moon caves"
+	descriptor = "Aegis"
 	wall_type =  /turf/simulated/mineral
 	floor_type = /turf/simulated/floor/asteroid
 	target_turf_type = /turf/unsimulated/mask

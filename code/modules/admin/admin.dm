@@ -42,9 +42,9 @@ var/global/floorIsLava = 0
 					html = msg)
 
 /proc/admin_notice(message, rights)
-	for(var/mob/M in SSmobs.mob_list)
-		if(check_rights(rights, 0, M))
-			to_chat(M,
+	for(var/client/C in GLOB.clients)
+		if(check_rights(rights, 0, C))
+			to_chat(C,
 					type = MESSAGE_TYPE_DEBUG,
 					html = message)
 

@@ -819,7 +819,11 @@ area/mining_colony/interior/mining/hallway
 /area/mining_colony/lower/maints/room14
 /area/mining_colony/lower/maints/room15
 /area/mining_colony/lower/maints/room16
+
+//A room with 4 bolted doors leading to it
 /area/mining_colony/lower/maints/room17
+	is_maintenance = FALSE
+
 /area/mining_colony/lower/maints/room18
 /area/mining_colony/lower/maints/room19
 /area/mining_colony/lower/maints/room20

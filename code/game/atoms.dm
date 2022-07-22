@@ -83,19 +83,12 @@
 	if(datum_flags & DATUM_FLAG_WEAKREF_USE_TAG)
 		GenerateTag()
 
-	var/do_initialize = SSatoms.atom_init_stage
-	var/list/created = SSatoms.created_atoms
-	if(do_initialize > INITIALIZATION_INSSATOMS_LATE)
+	var/do_initialize = SSatoms.initialized
+	if(do_initialize != INITIALIZATION_INSSATOMS)
 		args[1] = do_initialize == INITIALIZATION_INNEW_MAPLOAD
-		if(SSatoms.InitAtom(src, args))
+		if(SSatoms.InitAtom(src, FALSE, args))
 			//we were deleted
 			return
-	else if(created)
-		var/list/argument_list
-		if(length(args) > 1)
-			argument_list = args.Copy(2)
-		if(argument_list || do_initialize == INITIALIZATION_INSSATOMS_LATE)
-			created[src] = argument_list
 
 	if(atom_flags & ATOM_FLAG_CLIMBABLE)
 		verbs |= /atom/proc/climb_on

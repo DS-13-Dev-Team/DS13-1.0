@@ -15,8 +15,8 @@
 	blend_objects = list(/obj/machinery/door, /turf/simulated/wall) // Objects which to blend with
 	noblend_objects = list(/obj/machinery/door/window)
 
-/obj/structure/grille/New()
-	. = ..()
+/obj/structure/grille/Initialize()
+	.=..()
 	update_connections(1)
 	update_icon()
 

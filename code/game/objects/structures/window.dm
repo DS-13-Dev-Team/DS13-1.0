@@ -307,6 +307,9 @@
 
 	ini_dir = dir
 
+/obj/structure/window/Initialize()
+	.=..()
+
 	update_connections(1)
 	update_icon()
 

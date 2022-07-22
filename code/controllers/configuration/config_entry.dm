@@ -36,7 +36,7 @@
 	return ..()
 
 /datum/config_entry/proc/VASProcCallGuard(str_val)
-	. = !((protection & CONFIG_ENTRY_LOCKED) && check_rights(R_ADMIN))
+	. = !((protection & CONFIG_ENTRY_LOCKED) && usr)
 	if(!.)
 		log_admin("Config set of [type] to [str_val] attempted by [key_name(usr)]")
 

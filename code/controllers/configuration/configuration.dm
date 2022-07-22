@@ -37,7 +37,6 @@
 	full_wipe()
 	Load(world.params[OVERRIDE_CONFIG_DIRECTORY_PARAMETER])
 
-
 /datum/controller/configuration/proc/Load(_directory)
 	if(check_rights(R_ADMIN)) //If admin proccall is detected down the line it will horribly break everything.
 		return
@@ -63,7 +62,6 @@
 	if(Master)
 		Master.OnConfigLoad()
 
-
 /datum/controller/configuration/proc/full_wipe()
 	if(check_rights(R_ADMIN))
 		return
@@ -77,7 +75,6 @@
 	config = null
 
 	return ..()
-
 
 /datum/controller/configuration/proc/InitEntries()
 	var/list/_entries = list()
@@ -99,11 +96,9 @@
 		_entries[esname] = E
 		_entries_by_type[I] = E
 
-
 /datum/controller/configuration/proc/RemoveEntry(datum/config_entry/CE)
 	entries -= CE.name
 	entries_by_type -= CE.type
-
 
 /datum/controller/configuration/proc/LoadEntries(filename, list/stack = list())
 	if(check_rights(R_ADMIN))
@@ -188,7 +183,6 @@
 
 	++.
 
-
 /datum/controller/configuration/proc/loadmaplist(filename)
 	log_config("Loading config file [filename]...")
 	filename = "[directory]/[filename]"
@@ -252,7 +246,6 @@
 	msg = "Edit"
 	return msg
 
-
 /datum/controller/configuration/proc/Get(entry_type)
 	var/datum/config_entry/E = entry_type
 	var/entry_is_abstract = initial(E.abstract_type) == entry_type
@@ -266,7 +259,6 @@
 		return
 	return E.config_entry_value
 
-
 /datum/controller/configuration/proc/Set(entry_type, new_val)
 	var/datum/config_entry/E = entry_type
 	var/entry_is_abstract = initial(E.abstract_type) == entry_type
@@ -275,11 +267,10 @@
 	E = entries_by_type[entry_type]
 	if(!E)
 		CRASH("Missing config entry for [entry_type]!")
-	if((E.protection & CONFIG_ENTRY_LOCKED) && check_rights(R_ADMIN))
-		log_admin("Config rewrite of [entry_type] to [new_val] attempted by [key_name(usr)]")
+	if((E.protection & CONFIG_ENTRY_LOCKED) && usr)
+		log_admin_private("Config rewrite of [entry_type] to [new_val] attempted by [key_name(usr)]")
 		return
 	return E.ValidateAndSet("[new_val]")
-
 
 /datum/controller/configuration/proc/LoadModes()
 	gamemode_cache = typecacheof(/datum/game_mode, TRUE)
@@ -340,8 +331,6 @@
 				currentmode = null
 			else
 				log_config("Unknown command in map vote config: '[command]'")
-
-
 
 /datum/controller/configuration/proc/LoadMOTD()
 	GLOB.motd = file2text("[directory]/motd.txt")
