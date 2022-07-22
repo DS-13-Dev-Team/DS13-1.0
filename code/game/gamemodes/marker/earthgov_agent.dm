@@ -24,11 +24,7 @@ GLOBAL_LIST_EMPTY(agents_list)
 /datum/antagonist/earthgov_agent
 	role_text = ROLETEXT_EARTHGOV_AGENT
 	role_text_plural = "EarthGov Agents"
-	#ifdef MAP_ISHIMURA
-	welcome_text = "You are a well-trained agent of the government of Earth, sent to spy on the illegal planet cracking operation in the Cygnus system. In addition, you are investigating a lead that the Church of Unitology has infiltrated the crew of the Ishimura. It is your assignment to report back to your superiors, investigate the situation surrounding the Church, and protect the interests of Earth. You have been provided a direct comm-link to <b>EarthGov Command</b>. Remember, EarthGov directives come before your own..."
-	#else
-	welcome_text = "You are a well-trained agent of the government of Earth, sent to spy on the illegal planet cracking operation in the Cygnus system. In addition, you are investigating a lead that the Church of Unitology has infiltrated the staff of the Colony. It is your assignment to report back to your superiors, investigate the situation surrounding the Church, and protect the interests of Earth. You have been provided a direct comm-link to <b>EarthGov Command</b>. Remember, EarthGov directives come before your own..."
-	#endif
+	welcome_text = "You are a well-trained agent of the government of Earth, sent to spy on the illegal planet cracking operation in the Cygnus system. In addition, you are investigating a lead that the Church of Unitology has infiltrated the crew. It is your assignment to report back to your superiors, investigate the situation surrounding the Church, and protect the interests of Earth. You have been provided a direct comm-link to <b>EarthGov Command</b>. Remember, EarthGov directives come before your own..."
 	id = MODE_EARTHGOV_AGENT
 	flags = ANTAG_SUSPICIOUS | ANTAG_RANDSPAWN | ANTAG_VOTABLE
 	skill_setter = /datum/antag_skill_setter/station

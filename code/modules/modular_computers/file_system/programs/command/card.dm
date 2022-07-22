@@ -209,7 +209,7 @@
 						access = get_centcom_access(t1)
 					else
 						var/datum/job/jobdatum
-						for(var/jobtype in typesof(/datum/job))
+						for(var/jobtype in subtypesof(/datum/job))
 							var/datum/job/J = new jobtype
 							if(ckey(J.title) == ckey(t1))
 								jobdatum = J

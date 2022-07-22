@@ -91,7 +91,7 @@
 
 
 	//strip away everything but the proc name
-	var/list/proclist = splittext(procname, "/")
+	var/list/proclist = splittext(procpath, "/")
 	if (!length(proclist))
 		return
 

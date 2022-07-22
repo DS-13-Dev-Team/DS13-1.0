@@ -40,6 +40,7 @@ const StartVoteOptions = (props, context) => {
   const {
     allow_vote_mode,
     allow_vote_restart,
+    allow_map_voting,
     vote_happening,
   } = data;
   return (
@@ -64,7 +65,7 @@ const StartVoteOptions = (props, context) => {
               </Stack.Item>
               <Stack.Item>
                 <Button
-                  disabled={vote_happening || !allow_vote_mode}
+                  disabled={vote_happening || !allow_map_voting}
                   onClick={() => act("next_map")}>
                   Next Map
                 </Button>

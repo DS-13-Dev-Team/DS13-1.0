@@ -602,7 +602,7 @@ var/world_topic_spam_protect_time = world.timeofday
 		return
 
 	var/discord_url = CONFIG_GET(string/discord_url)
-	var/mapname = GLOB.using_map.full_name
+	var/mapname = GLOB.using_map?.full_name
 
 	var/new_status = ""
 	new_status += "<b><a href='[discord_url ? discord_url : "#"]'>[server_name] &#8212; [mapname]</a></b>"

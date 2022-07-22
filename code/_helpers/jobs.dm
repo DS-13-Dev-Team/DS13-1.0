@@ -3,7 +3,7 @@
 
 /proc/get_job_datums()
 	var/list/occupations = list()
-	var/list/all_jobs = typesof(/datum/job)
+	var/list/all_jobs = subtypesof(/datum/job)
 
 	for(var/A in all_jobs)
 		var/datum/job/job = new A()
