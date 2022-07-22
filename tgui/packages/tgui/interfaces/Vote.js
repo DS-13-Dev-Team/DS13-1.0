@@ -121,20 +121,24 @@ const VoteOptions = (props, context) => {
             </Stack>
           </Stack.Item>
           <Stack.Item>
-            <Button disabled={!upper_admin} onClick={() => act("custom")}>
-              Create Custom Vote
-            </Button>
-          </Stack.Item>
-          <Stack.Item>
-            {!!upper_admin && (
-              <Button.Checkbox
-                mr={!allow_map_voting ? 1 : 1.6}
-                color="red"
-                checked={!!allow_map_voting}
-                onClick={() => act("toggle_next_map")}>
-                Next map vote is {allow_map_voting ? "enabled" : "disabled"}
-              </Button.Checkbox>
-            )}
+            <Stack vertical>
+              <Stack.Item>
+                <Button disabled={!upper_admin} onClick={() => act("custom")}>
+                  Create Custom Vote
+                </Button>
+              </Stack.Item>
+              <Stack.Item>
+                {!!upper_admin && (
+                  <Button.Checkbox
+                    mr={!allow_map_voting ? 1 : 1.6}
+                    color="red"
+                    checked={!!allow_map_voting}
+                    onClick={() => act("toggle_next_map")}>
+                    Next map vote is {allow_map_voting ? "enabled" : "disabled"}
+                  </Button.Checkbox>
+                )}
+              </Stack.Item>
+            </Stack>
           </Stack.Item>
         </Stack>
       </Collapsible>

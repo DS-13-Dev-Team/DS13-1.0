@@ -10,14 +10,19 @@ Thumbs.db
 *.backup
 *.before
 *.cache
-data/
-cfg/
 build_log.txt
 use_map
 stopserver
 reboot_called
 atupdate
 __pycache__
+
+#Ignore everything in datafolder and subdirectories
+/data/**/*
+/tmp/**/*
+
+#Ignore byond config folder.
+/cfg/**/*
 
 # ignore config, but not subdirs
 config/*
