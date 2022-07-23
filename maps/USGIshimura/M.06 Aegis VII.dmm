@@ -6639,6 +6639,10 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/aegis/colony/refinery)
+"wp" = (
+/obj/machinery/vending/mining,
+/turf/simulated/floor/tiled/steel_grid,
+/area/aegis/colony/refinery)
 "wz" = (
 /turf/simulated/wall/r_wall,
 /area/aegis/colony/charging_station)
@@ -35320,7 +35324,7 @@ CB
 on
 BC
 BC
-BC
+wp
 JY
 qW
 zE
