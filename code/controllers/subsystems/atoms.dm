@@ -61,7 +61,7 @@ SUBSYSTEM_DEF(atoms)
 			//I hate that we need this
 			if(QDELETED(A))
 				continue
-			A.LateInitialize()
+			A.LateInitialize(TRUE)
 		testing("Late initialized [late_loaders.len] atoms")
 		late_loaders.Cut()
 
@@ -131,7 +131,7 @@ SUBSYSTEM_DEF(atoms)
 				if(arguments[1]) //mapload
 					late_loaders += A
 				else
-					A.LateInitialize()
+					A.LateInitialize(arguments[1])
 			if(INITIALIZE_HINT_QDEL)
 				qdel(A)
 				qdeleted = TRUE

@@ -16987,7 +16987,7 @@
 /turf/simulated/floor,
 /area/ishimura/upper/security/brig)
 "aIm" = (
-/obj/effect/shuttle_landmark/valor/landing,
+/obj/effect/shuttle_landmark/valor/landing/ishimura,
 /turf/simulated/floor/plating,
 /area/space)
 "aIn" = (
@@ -20121,7 +20121,7 @@
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/upper/misc/hangar)
 "aNW" = (
-/obj/effect/shuttle_landmark/kellion/landing,
+/obj/effect/shuttle_landmark/kellion/landing/ishimura,
 /turf/simulated/floor/plating,
 /area/space)
 "aNX" = (
@@ -20210,7 +20210,7 @@
 	},
 /area/ishimura/upper/misc/hangar)
 "aOe" = (
-/obj/effect/shuttle_landmark/deliverance/landing,
+/obj/effect/shuttle_landmark/deliverance/landing/ishimura,
 /turf/simulated/floor/plating,
 /area/space)
 "aOf" = (

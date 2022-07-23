@@ -36,8 +36,8 @@
 			base_turf = T.type
 
 	//If the base area is null or a typepath after the above, lets initialize it
-	if (!istype(base_area))
-		base_area = locate(base_area || world.area)
+	if(!istype(base_area))
+		base_area = (GLOB.areas_by_type[base_area] || world.area)
 
 	SetName(name + " ([x],[y])")
 

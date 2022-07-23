@@ -169,6 +169,12 @@
 	base_turf = /turf/simulated/floor/plating
 	base_area = /area/mining_colony/interior/excavation/hangar
 
+/obj/effect/shuttle_landmark/deliverance/landing/ishimura
+	name = "USG Ishimura"
+	landmark_tag = "deliverance_landing"
+	base_turf = /turf/simulated/floor/plating
+	base_area = /area/space
+
 /datum/shuttle/autodock/multi/antag/kellion
 	name = "Kellion"
 	warmup_time = 10
@@ -194,6 +200,12 @@
 	landmark_tag = "kellion_landing"
 	base_turf = /turf/simulated/floor/plating
 	base_area = /area/mining_colony/interior/kellion_arrival/arrivals
+
+/obj/effect/shuttle_landmark/kellion/landing/ishimura
+	name = "USG Ishimura"
+	landmark_tag = "kellion_landing"
+	base_turf = /turf/simulated/floor/plating
+	base_area = /area/space
 
 /datum/shuttle/autodock/multi/antag/valor
 	name = "Valor"
@@ -222,6 +234,12 @@
 	base_turf = /turf/simulated/floor/plating
 	base_area = /area/mining_colony/surface
 
+/obj/effect/shuttle_landmark/valor/landing/ishimura
+	name = "USG Ishimura"
+	landmark_tag = "valor_landing"
+	base_turf = /turf/simulated/floor/plating
+	base_area = /area/space
+
 /obj/effect/shuttle_landmark/kellion/landing2
 	name = "Evacuation Site - Alpha #1"
 	landmark_tag = "kellion_landing2"
@@ -244,6 +262,7 @@
 	escape = TRUE
 
 //////// MINING SHUTTLES \\\\\\\\
+
 /datum/shuttle/autodock/ferry/mining_one
 	name = "Mining Shuttle One"
 	location = 1
@@ -266,7 +285,6 @@
 	docking_controller = "aegis_hangar_one"
 	base_area = /area/aegis/colony/hangar
 	base_turf = /turf/simulated/floor/plating
-
 
 /datum/shuttle/autodock/ferry/mining_two
 	name = "Mining Shuttle Two"
