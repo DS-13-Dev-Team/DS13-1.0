@@ -68,6 +68,8 @@ Basics, the most important.
 
 /datum/config_entry/flag/preference_map_voting
 
+/datum/config_entry/flag/maprotation
+
 /datum/config_entry/flag/allow_admin_jump   //allows admin jumping
 	config_entry_value = TRUE
 
