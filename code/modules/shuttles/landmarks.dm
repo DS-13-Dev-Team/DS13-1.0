@@ -37,7 +37,7 @@
 
 	//If the base area is null or a typepath after the above, lets initialize it
 	if(!istype(base_area))
-		base_area = (GLOB.areas_by_type[base_area] || world.area)
+		base_area = (GLOB.areas_by_type[base_area] || GLOB.areas_by_type[world.area])
 
 	SetName(name + " ([x],[y])")
 

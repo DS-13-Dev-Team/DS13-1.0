@@ -16987,7 +16987,7 @@
 /turf/simulated/floor,
 /area/ishimura/upper/security/brig)
 "aIm" = (
-/obj/effect/shuttle_landmark/valor/landing/ishimura,
+/obj/effect/shuttle_landmark/valor/start,
 /turf/simulated/floor/plating,
 /area/space)
 "aIn" = (
@@ -50588,7 +50588,7 @@ aae
 aae
 aae
 aae
-aae
+aIm
 aNH
 aaa
 aaa
@@ -51337,7 +51337,7 @@ aae
 aae
 aae
 aae
-aIm
+aae
 aae
 aae
 aae
@@ -53108,7 +53108,7 @@ aae
 aae
 aae
 aae
-aae
+aNW
 aNH
 aaa
 aaa
@@ -54361,7 +54361,7 @@ aae
 aae
 aae
 aae
-aNW
+aae
 aae
 aae
 aae
@@ -56888,7 +56888,7 @@ aae
 aae
 aae
 aae
-aae
+aOe
 aNH
 aaa
 aaa
@@ -57636,7 +57636,7 @@ aae
 aae
 aae
 aae
-aOe
+aae
 aae
 aae
 aae
