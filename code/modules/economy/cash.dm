@@ -155,7 +155,7 @@
 	else
 		var/obj/item/weapon/spacecash/minercash/cash = locate(/obj/item/weapon/spacecash/minercash)
 		if(cash)
-			cash += sum
+			cash.worth += sum
 			cash.update_icon()
 		else
 			var/obj/item/weapon/spacecash/minercash/S = new(spawnloc)
