@@ -28539,15 +28539,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/mining_colony/interior/uni_church)
-"sXz" = (
-/obj/structure/ladder{
-	desc = "A shady looking rack.";
-	icon = 'icons/obj/objects.dmi';
-	icon_state = "rack";
-	name = "rack"
-	},
-/turf/simulated/wall/r_wall,
-/area/mining_colony/interior/enginieering/telecomms_control)
 "sXS" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -40885,7 +40876,7 @@ aiu
 fVF
 aak
 ase
-sXz
+ase
 ase
 ase
 aoG
