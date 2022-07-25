@@ -114,9 +114,20 @@
 	icon_state = "2-8"
 	},
 /obj/structure/cable{
-	d1 = 4;
+	d1 = 1;
 	d2 = 8;
-	icon_state = "4-8"
+	icon_state = "1-8"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8";
+	dir = 4
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/upper/commandofficers)
@@ -2636,16 +2647,6 @@
 	dir = 2
 	},
 /area/mining_colony/security/upper/bridge_corridor)
-"ou" = (
-/obj/structure/stairs_short/east,
-/obj/structure/railing/mapped,
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/dank/rectangles,
-/area/mining_colony/security/upper/commandofficers)
 "oI" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -2691,20 +2692,6 @@
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/mining_colony/security/upper/director)
-"qz" = (
-/obj/effect/floor_decal/dank/border{
-	dir = 4
-	},
-/obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	dir = 4
-	},
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
-/turf/simulated/floor/dank/golf_brown,
-/area/mining_colony/security/upper/commandofficers)
 "qD" = (
 /obj/machinery/light{
 	dir = 1
@@ -2747,13 +2734,15 @@
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/upper/commandofficers)
 "rK" = (
-/obj/structure/railing/mapped,
+/obj/effect/floor_decal/dank/border{
+	dir = 4
+	},
 /obj/structure/cable{
 	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
+	d2 = 2;
+	icon_state = "1-2"
 	},
-/turf/simulated/floor/dank/rectangles,
+/turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/upper/commandofficers)
 "rU" = (
 /obj/machinery/door/firedoor,
@@ -2886,15 +2875,12 @@
 	},
 /area/mining_colony/security/upper/bridge_corridor)
 "uW" = (
-/obj/effect/floor_decal/dank/border_corner{
-	dir = 4
-	},
 /obj/structure/cable{
 	d1 = 2;
 	d2 = 8;
-	icon_state = "4-10"
+	icon_state = "2-8"
 	},
-/turf/simulated/floor/dank/golf_brown,
+/turf/simulated/floor/plating,
 /area/mining_colony/security/upper/commandofficers)
 "va" = (
 /obj/machinery/door/firedoor,
@@ -3078,9 +3064,9 @@
 /area/mining_colony/security/upper/bridge_corridor)
 "xX" = (
 /obj/structure/cable{
-	d1 = 2;
+	d1 = 1;
 	d2 = 8;
-	icon_state = "5-8"
+	icon_state = "1-8"
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/upper/commandofficers)
@@ -3633,20 +3619,20 @@
 /area/mining_colony/security/upper/fl_office)
 "LP" = (
 /obj/structure/cable{
-	icon_state = "0-1"
-	},
-/obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	dir = 8
-	},
-/obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8";
 	dir = 4
 	},
 /obj/structure/cable{
-	icon_state = "0-2"
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/upper/commandofficers)
@@ -3751,9 +3737,9 @@
 	req_access = list(1,11)
 	},
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "9-10"
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/dank/maint,
 /area/mining_colony/security/upper/commandofficers)
@@ -3990,11 +3976,6 @@
 /obj/effect/floor_decal/dank/border_corner_i{
 	dir = 1
 	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "5-8"
-	},
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/upper/commandofficers)
 "UC" = (
@@ -4163,7 +4144,7 @@
 /obj/structure/lattice,
 /obj/structure/cable/green{
 	d2 = 2;
-	icon_state = "32-6"
+	icon_state = "32-4"
 	},
 /turf/simulated/open,
 /area/mining_colony/security/upper/commandofficers)
@@ -4192,14 +4173,9 @@
 /area/mining_colony/security/upper/commandofficers)
 "Zq" = (
 /obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	dir = 4
-	},
-/obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	dir = 1
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
 	},
 /turf/simulated/floor/dank/rectangles,
 /area/mining_colony/security/upper/commandofficers)
@@ -13877,7 +13853,7 @@ bj
 aE
 aL
 aM
-qz
+dH
 LP
 va
 bB
@@ -14280,7 +14256,7 @@ eL
 bU
 al
 aL
-uW
+cz
 df
 aU
 dA
@@ -14482,7 +14458,7 @@ cb
 cb
 al
 aL
-ou
+aO
 dH
 CW
 JJ
@@ -14684,8 +14660,8 @@ eR
 Ka
 Ka
 Ka
+Dr
 rK
-dH
 au
 JJ
 ao
@@ -15891,7 +15867,7 @@ dA
 dR
 YA
 dA
-xX
+pR
 zd
 zd
 zd
@@ -16091,9 +16067,9 @@ YO
 YO
 dA
 dR
-vL
+uW
 Nu
-cI
+xX
 dA
 aP
 CI
