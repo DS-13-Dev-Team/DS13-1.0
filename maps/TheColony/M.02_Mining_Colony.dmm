@@ -219,11 +219,10 @@
 /obj/item/weapon/storage/fancy/candle_box,
 /obj/item/weapon/reagent_containers/spray/cleaner,
 /obj/item/weapon/reagent_containers/spray/cleaner,
-/obj/structure/ladder{
-	desc = "A shady looking rack.";
-	icon = 'icons/obj/objects.dmi';
-	icon_state = "rack";
-	name = "rack"
+/obj/structure/ladder,
+/obj/structure/closet/cabinet{
+	name = "inconspicuous supply cabinet";
+	desc = "Yep. Nothing odd going on here. This cabinet definetly isnt hiding something"
 	},
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/uni_church)
@@ -276,7 +275,8 @@
 /area/mining_colony/interior/uni_church)
 "aaW" = (
 /obj/machinery/door/airlock/civilian{
-	name = "Church Storage"
+	name = "Church Storage";
+	req_access = list(16)
 	},
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/dank/mono,
@@ -25575,7 +25575,10 @@
 /turf/simulated/floor/tiled/monotile,
 /area/mining_colony/interior/science/xenoarcheology)
 "bpc" = (
-/obj/structure/closet/cabinet,
+/obj/structure/closet/cabinet{
+	name = "inconspicuous supply cabinet";
+	desc = "Yep. Nothing odd going on here. This cabinet definetly isnt hiding something"
+	},
 /obj/item/weapon/storage/box/glasses,
 /obj/item/weapon/storage/box/glasses/cocktail,
 /obj/item/weapon/storage/box/glasses/mug,
