@@ -107,7 +107,7 @@ SUBSYSTEM_DEF(ticker)
 				config.dooc_allowed = TRUE
 				declare_completion(force_ending)
 				if(CONFIG_GET(flag/maprotation))
-					INVOKE_ASYNC(SSmapping, /datum/controller/subsystem/mapping/.proc/maprotate)
+					INVOKE_ASYNC(SSmapping, /datum/controller/subsystem/mapping/proc/mapvote)
 				addtimer(CALLBACK(src, .proc/Reboot), CONFIG_GET(number/vote_period))
 				Master.SetRunLevel(RUNLEVEL_POSTGAME)
 
