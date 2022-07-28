@@ -675,6 +675,12 @@ area/mining_colony/interior/mining/hallway
 	sound_env = ASTEROID
 	is_maintenance = TRUE
 
+/area/mining_colony/lower/unibase
+	name = "\improper Unitology Hideout"
+	icon_state = "crewbase"
+	sound_env = ASTEROID
+	is_maintenance = FALSE
+
 /area/mining_colony/lower/medical
 	name = "\improper Aegis Lower Medical Level"
 	icon_state = "medicalbase"

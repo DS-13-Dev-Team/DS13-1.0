@@ -1,15 +1,15 @@
 // Species flags.
-#define SPECIES_FLAG_NO_MINOR_CUT        0x0001  // Can step on broken glass with no ill-effects. Either thick skin (diona/vox), cut resistant (slimes) or incorporeal (shadows)
-#define SPECIES_FLAG_IS_PLANT            0x0002  // Is a treeperson.
-#define SPECIES_FLAG_NO_SCAN             0x0004  // Cannot be scanned in a DNA machine/genome-stolen.
-#define SPECIES_FLAG_NO_PAIN             0x0008  // Cannot suffer halloss/recieves deceptive health indicator.
-#define SPECIES_FLAG_NO_SLIP             0x0010  // Cannot fall over.
-#define SPECIES_FLAG_NO_POISON           0x0020  // Cannot not suffer toxloss.
-#define SPECIES_FLAG_NO_EMBED            0x0040  // Can step on broken glass with no ill-effects and cannot have shrapnel embedded in it.
-#define SPECIES_FLAG_NO_TANGLE           0x0080  // This species wont get tangled up in weeds
-#define SPECIES_FLAG_NO_BLOCK            0x0100  // Unable to block or defend itself from attackers.
-#define SPECIES_FLAG_NEED_DIRECT_ABSORB  0x0200  // This species can only have their DNA taken by direct absorption.
-#define SPECIES_FLAG_LOW_GRAV_ADAPTED           0x0400  // This species is used to lower than standard gravity, affecting stamina in high-grav
+#define SPECIES_FLAG_NO_MINOR_CUT        (1<<0)  // Can step on broken glass with no ill-effects. Either thick skin (diona/vox), cut resistant (slimes) or incorporeal (shadows)
+#define SPECIES_FLAG_IS_PLANT            (1<<1)  // Is a treeperson.
+#define SPECIES_FLAG_NO_SCAN             (1<<2)  // Cannot be scanned in a DNA machine/genome-stolen.
+#define SPECIES_FLAG_NO_PAIN             (1<<3)  // Cannot suffer halloss/recieves deceptive health indicator.
+#define SPECIES_FLAG_NO_SLIP             (1<<4)  // Cannot fall over.
+#define SPECIES_FLAG_NO_POISON           (1<<5)  // Cannot not suffer toxloss.
+#define SPECIES_FLAG_NO_EMBED            (1<<6)  // Can step on broken glass with no ill-effects and cannot have shrapnel embedded in it.
+#define SPECIES_FLAG_NO_TANGLE           (1<<7)  // This species wont get tangled up in weeds
+#define SPECIES_FLAG_NO_BLOCK            (1<<8)  // Unable to block or defend itself from attackers.
+#define SPECIES_FLAG_NEED_DIRECT_ABSORB  (1<<9)  // This species can only have their DNA taken by direct absorption.
+#define SPECIES_FLAG_LOW_GRAV_ADAPTED    (1<<10)  // This species is used to lower than standard gravity, affecting stamina in high-grav
 
 // unused: 0x8000 - higher than this will overflow
 

@@ -38,7 +38,7 @@ var/global/list/image/ghost_sightless_images = list() //this is a list of images
 
 	var/turf/T
 	if(ismob(body))
-		T = get_turf(body)               //Where is the body located?
+		T = get_turf(body) //Where is the body located?
 		if(!T)
 			T = pick(GLOB.latejoin | GLOB.latejoin_cryo | GLOB.latejoin_gateway) //Safety in case we cannot find the body's position
 		forceMove(T)
@@ -46,11 +46,11 @@ var/global/list/image/ghost_sightless_images = list() //this is a list of images
 
 		set_appearance(body)
 		if(body.mind)
-			mind = body.mind	//we don't transfer the mind but we keep a reference to it.
-			mind.ghost = src	//Register ourself on the mind too
+			body.mind.transfer_to(src)
 		else //new mind for the body
 			body.mind = new /datum/mind(key)
 			mind = body.mind
+			mind.active = TRUE
 			mind.current = body
 			mind.ghost = src
 		if(mind.name)
@@ -67,6 +67,7 @@ var/global/list/image/ghost_sightless_images = list() //this is a list of images
 	else
 		forceMove(pick(GLOB.latejoin | GLOB.latejoin_cryo | GLOB.latejoin_gateway))
 		mind = new /datum/mind(key)
+		mind.active = TRUE
 		mind.current = src
 		mind.ghost = src
 
@@ -160,7 +161,6 @@ Works together with spawning an observer, noted above.
 		var/mob/dead/observer/ghost/ghost = new(src)	//Transfer safety to observer spawning proc.
 		ghost.can_reenter_corpse = can_reenter_corpse
 		ghost.timeofdeath = src.stat == DEAD ? src.timeofdeath : world.time
-		ghost.key = key
 		if (ghost.client)		// For new ghosts we remove the verb from even showing up if it's not allowed.
 			if (!ghost.client.holder && !CONFIG_GET(flag/antag_hud_allowed))
 				remove_verb(ghost, /mob/dead/observer/ghost/verb/toggle_antagHUD)// Poor guys, don't know what they are missing!

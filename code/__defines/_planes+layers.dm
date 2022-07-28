@@ -205,6 +205,9 @@ What is the naming convention for planes or layers?
 /// The layer you should use if you _really_ don't want an emissive overlay to be blocked.
 #define EMISSIVE_LAYER_UNBLOCKABLE 9999
 
+///Popup Chat Messages
+#define RUNECHAT_PLANE					200
+
 #define OBSCURITY_PLANE					300 // For visualnets, such as the AI's static.
 
 #define ABOVE_OBSCURITY_PLANE			400	//For objects that are seen even on obscured tiles. Mainly AI/signal eye sprites
@@ -216,9 +219,6 @@ What is the naming convention for planes or layers?
 	#define IMPAIRED_LAYER				2
 	#define BLIND_LAYER					3
 	#define CRIT_LAYER					4
-
-///Popup Chat Messages
-#define RUNECHAT_PLANE 501
 
 #define RENDER_PLANE_GAME				990
 #define RENDER_PLANE_NON_GAME			995
