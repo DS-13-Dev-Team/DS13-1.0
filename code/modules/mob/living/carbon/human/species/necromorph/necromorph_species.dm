@@ -131,6 +131,8 @@
 	spawn_flags = SPECIES_IS_RESTRICTED|SPECIES_NO_FBP_CONSTRUCTION|SPECIES_NO_FBP_CHARGEN           // Flags that specify who can spawn as this specie
 	language = LANGUAGE_NECROCHAT
 	default_language = LANGUAGE_NECROCHAT
+	additional_langs = list(LANGUAGE_GALCOM)
+	only_species_language = TRUE
 
 	//Audio
 	step_volume = 60 //Necromorphs can't wear shoes, so their base footstep volumes are louder

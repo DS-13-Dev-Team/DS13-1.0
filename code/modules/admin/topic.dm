@@ -1103,7 +1103,7 @@
 
 		var/mob/M = locate(href_list["sendbacktolobby"])
 
-		if(!isobserver(M))
+		if(!isghost(M))
 			to_chat(usr, "<span class='notice'>You can only send ghost players back to the Lobby.</span>")
 			return
 
@@ -1118,7 +1118,7 @@
 		message_admins("[key_name(usr)] has sent [key_name(M)] back to the Lobby.")
 
 		var/mob/dead/new_player/NP = new /mob/dead/new_player()
-		NP.key = M.ckey
+		M.mind.transfer_to(NP)
 		qdel(M)
 
 	else if(href_list["tdome1"])

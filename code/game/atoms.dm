@@ -114,7 +114,7 @@
 	return INITIALIZE_HINT_NORMAL
 
 //called if Initialize returns INITIALIZE_HINT_LATELOAD
-/atom/proc/LateInitialize()
+/atom/proc/LateInitialize(mapload)
 	return
 
 /atom/Destroy()

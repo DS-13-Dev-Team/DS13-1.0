@@ -882,7 +882,7 @@
 
 	species = all_species[new_species]
 	species.handle_pre_spawn(src)
-
+	only_species_language = species.only_species_language
 	species.setup_defense(src)
 	species.setup_interaction(src)
 	species.setup_movement(src)

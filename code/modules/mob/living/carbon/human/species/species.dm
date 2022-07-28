@@ -94,6 +94,7 @@
 	var/num_alternate_languages = 0           // How many secondary languages are available to select at character creation
 	var/name_language = LANGUAGE_GALCOM       // The language to use when determining names for this species, or null to use the first name/last name generator
 	var/additional_langs                      // Any other languages the species always gets.
+	var/only_species_language				  // If we can speak other languages or just var/language
 
 	//Audio vars
 	var/step_volume = 30	//Base volume of ALL footstep sounds for this mob
