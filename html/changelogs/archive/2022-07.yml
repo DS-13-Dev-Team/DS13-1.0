@@ -14,3 +14,5 @@
   - rscadd: Ported map rotation from /tg/.
   - bugfix: Necromorphs have proper chat colours now.
   - rscadd: Necromorphs can hear english once again but they can't speak it.
+  - bugfix: Fixed divider components clickbox. Shooting and hitting them should be
+      easier now.
