@@ -154,16 +154,17 @@ Works together with spawning an observer, noted above.
 		if(G.admin_ghosted)
 			return
 	hide_fullscreens()
-	var/mob/dead/observer/ghost/ghost = new(src)	//Transfer safety to observer spawning proc.
-	SSnano.user_transferred(src, ghost)
-	SStgui.on_transfer(src, ghost)
-	ghost.can_reenter_corpse = can_reenter_corpse
-	ghost.timeofdeath = src.stat == DEAD ? src.timeofdeath : world.time
-	if (ghost.client)		// For new ghosts we remove the verb from even showing up if it's not allowed.
-		if (!ghost.client.holder && !CONFIG_GET(flag/antag_hud_allowed))
-			remove_verb(ghost, /mob/dead/observer/ghost/verb/toggle_antagHUD)// Poor guys, don't know what they are missing!
-		ghost.client.init_verbs()
-	return ghost
+	if(key)
+		var/mob/dead/observer/ghost/ghost = new(src)	//Transfer safety to observer spawning proc.
+		SSnano.user_transferred(src, ghost)
+		SStgui.on_transfer(src, ghost)
+		ghost.can_reenter_corpse = can_reenter_corpse
+		ghost.timeofdeath = src.stat == DEAD ? src.timeofdeath : world.time
+		if (ghost.client)		// For new ghosts we remove the verb from even showing up if it's not allowed.
+			if (!ghost.client.holder && !CONFIG_GET(flag/antag_hud_allowed))
+				remove_verb(ghost, /mob/dead/observer/ghost/verb/toggle_antagHUD)// Poor guys, don't know what they are missing!
+			ghost.client.init_verbs()
+		return ghost
 
 /mob/dead/observer/ghost/is_advanced_tool_user()
 	return TRUE
