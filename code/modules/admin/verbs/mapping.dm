@@ -151,7 +151,9 @@ var/list/debug_verbs = list (
 		/datum/admins/proc/setup_supermatter,
 		/client/proc/atmos_toggle_debug,
 		/client/proc/spawn_tanktransferbomb,
+		#ifdef TESTING
 		/client/proc/see_dirty_varedits,
+		#endif
 	)
 
 
