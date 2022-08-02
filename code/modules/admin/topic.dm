@@ -1118,7 +1118,7 @@
 		message_admins("[key_name(usr)] has sent [key_name(M)] back to the Lobby.")
 
 		var/mob/dead/new_player/NP = new /mob/dead/new_player()
-		M.mind.transfer_to(NP)
+		NP.ckey = M.ckey
 		qdel(M)
 
 	else if(href_list["tdome1"])
