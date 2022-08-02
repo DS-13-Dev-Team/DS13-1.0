@@ -18,7 +18,8 @@
 			if(istype(screenobj) && !screenobj.globalscreen)
 				qdel(screenobj)
 		client.screen = list()
-	if(mind && mind.current == src)
+	if(mind?.current == src)
+		mind.current = null
 		spellremove(src)
 	ghostize()
 	.=..()

@@ -80,7 +80,8 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 
 	var/turf/T = get_turf(body)
 	if(ismob(body))
-		body.mind?.transfer_to(src)
+		mind = body.mind
+		key = body.key
 		possess(src) //Possess thyself
 		SetName("[initial(name)] ([key])")
 		real_name = "[initial(name)] ([key])"

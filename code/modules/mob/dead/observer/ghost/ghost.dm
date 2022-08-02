@@ -45,14 +45,9 @@ var/global/list/image/ghost_sightless_images = list() //this is a list of images
 		attack_logs_ = body.attack_logs_ //preserve our attack logs by copying them to our ghost
 
 		set_appearance(body)
-		if(body.mind)
-			body.mind.transfer_to(src)
-		else //new mind for the body
-			body.mind = new /datum/mind(key)
-			mind = body.mind
-			mind.active = TRUE
-			mind.current = body
-			mind.ghost = src
+
+		mind = body.mind //we don't transfer the mind but we keep a reference to it.
+
 		if(mind.name)
 			name = mind.name
 		else
@@ -63,6 +58,8 @@ var/global/list/image/ghost_sightless_images = list() //this is a list of images
 					name = capitalize(pick(GLOB.first_names_male)) + " " + capitalize(pick(GLOB.last_names))
 				else
 					name = capitalize(pick(GLOB.first_names_female)) + " " + capitalize(pick(GLOB.last_names))
+
+		key = body.key
 
 	else
 		forceMove(pick(GLOB.latejoin | GLOB.latejoin_cryo | GLOB.latejoin_gateway))
