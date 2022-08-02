@@ -67,14 +67,15 @@
 #endif
 
 #ifdef ALL_MAPS
-	#include "map_files\Mining\Lavaland.dmm"
-	#include "map_files\debug\runtimestation.dmm"
-	#include "map_files\debug\multiz.dmm"
-	#include "map_files\Deltastation\DeltaStation2.dmm"
-	#include "map_files\KiloStation\KiloStation.dmm"
-	#include "map_files\MetaStation\MetaStation.dmm"
-	#include "map_files\IceBoxStation\IceBoxStation.dmm"
-	#include "map_files\IceBoxStation\IcemoonUnderground_Above.dmm"
-	#include "map_files\IceBoxStation\IcemoonUnderground_Below.dmm"
-	#include "map_files\tramstation\tramstation.dmm"
+	//Ishimura
+	#include "..\maps\USGIshimura\M.01 Ishimura (UT).dmm"
+	#include "..\maps\USGIshimura\M.02 Ishimura (T).dmm"
+	#include "..\maps\USGIshimura\M.03 Ishimura (L).dmm"
+	#include "..\maps\USGIshimura\M.04 Ishimura (M).dmm"
+	#include "..\maps\USGIshimura\M.05 Ishimura (U).dmm"
+	#include "..\maps\USGIshimura\M.06 Aegis VII.dmm"
+	//Colony
+	#include "..\maps\TheColony\M.01_Mining_Colony_Underground.dmm"
+	#include "..\maps\TheColony\M.02_Mining_Colony.dmm"
+	#include "..\maps\TheColony\M.03_Mining_Colony_UpperLevels.dmm"
 #endif
