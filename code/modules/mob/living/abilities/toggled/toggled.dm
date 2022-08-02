@@ -45,7 +45,7 @@
 
 /datum/extension/ability/toggled/Destroy()
 	if (status != STATUS_INACTIVE)
-		deactivate(FALSE, TRUE)
+		INVOKE_ASYNC(src, .proc/deactivate, FALSE, TRUE)
 	. = ..()
 
 
@@ -99,9 +99,8 @@
 	RegisterSignal(holder, COMSIG_MOB_STATCHANGE, .proc/stat_set)
 
 /datum/extension/ability/toggled/Destroy()
-
 	if (status == STATUS_ACTIVE)
-		deactivate()
+		INVOKE_ASYNC(src, .proc/deactivate)
 	. = ..()
 
 /datum/extension/ability/toggled/proc/toggle(var/can_fail = TRUE, var/instant)

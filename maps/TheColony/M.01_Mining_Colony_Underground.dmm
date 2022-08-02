@@ -991,8 +991,8 @@
 "dm" = (
 /obj/machinery/light,
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
+	d1 = 1;
+	d2 = 4;
 	icon_state = "1-4"
 	},
 /obj/structure/cable{
@@ -1260,6 +1260,11 @@
 	name = "Medical Maintenance Access";
 	req_access = list(3)
 	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/lower)
 "dY" = (
@@ -1484,6 +1489,11 @@
 	dir = 4;
 	name = "Walter's Lab"
 	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/lower/maints/room49)
 "eI" = (
@@ -1521,7 +1531,7 @@
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room49)
 "eN" = (
-/obj/machinery/chemical_dispenser,
+/obj/machinery/chemical_dispenser/full,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room49)
 "eO" = (
@@ -3392,8 +3402,8 @@
 	},
 /obj/machinery/door/firedoor,
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
+	d1 = 1;
+	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/dank/mono,
@@ -5492,6 +5502,11 @@
 /obj/effect/floor_decal/dank/border_corner{
 	dir = 8
 	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/dank/medical,
 /area/mining_colony/lower/medical)
 "rO" = (
@@ -5506,6 +5521,11 @@
 /obj/machinery/door/firedoor{
 	dir = 4
 	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/white/monotile,
 /area/mining_colony/lower/medical)
 "rQ" = (
@@ -5519,6 +5539,11 @@
 /area/mining_colony/interior/cargo/storage_upper)
 "rS" = (
 /obj/structure/bed/roller,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/lower/medical)
 "rT" = (
@@ -5586,8 +5611,8 @@
 /area/mining_colony/lower/medical)
 "sa" = (
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
+	d1 = 1;
+	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/structure/cable{
@@ -5895,8 +5920,8 @@
 /area/mining_colony/lower/maints/room20)
 "ti" = (
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
+	d1 = 1;
+	d2 = 4;
 	icon_state = "1-4"
 	},
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -6025,8 +6050,8 @@
 /area/mining_colony/lower/maints/room62)
 "vb" = (
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
+	d1 = 1;
+	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/dark,
@@ -6106,6 +6131,16 @@
 /obj/random/junk,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room41)
+"wr" = (
+/obj/effect/floor_decal/dank/border,
+/obj/machinery/light,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/dank/medical,
+/area/mining_colony/lower/medical)
 "ww" = (
 /obj/machinery/door/airlock/maintenance{
 	dir = 4
@@ -6236,6 +6271,14 @@
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room5)
+"yY" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating,
+/area/mining_colony/lower/maints/room49)
 "zb" = (
 /obj/structure/table/woodentable,
 /obj/item/weapon/paper_bin,
@@ -6354,6 +6397,14 @@
 "AY" = (
 /turf/simulated/floor/tiled/dark,
 /area/mining_colony/lower/maints/room41)
+"Bb" = (
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/lower)
 "Bk" = (
 /obj/structure/table/rack,
 /turf/simulated/floor/plating,
@@ -6398,6 +6449,14 @@
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room22)
+"BP" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating,
+/area/mining_colony/lower)
 "BR" = (
 /obj/machinery/power/apc{
 	dir = 4;
@@ -6441,6 +6500,15 @@
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/lower/maints/room54)
+"Cn" = (
+/obj/machinery/light/small,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/lower)
 "Cp" = (
 /obj/machinery/power/smes/batteryrack,
 /obj/structure/cable{
@@ -6492,6 +6560,17 @@
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room45)
+"CK" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/dank/mono,
+/area/mining_colony/lower)
 "CR" = (
 /obj/machinery/button/remote/blast_door{
 	id = "gethefuckoutofmyproperty";
@@ -6659,12 +6738,33 @@
 	},
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room56)
+"FY" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/dank/medical,
+/area/mining_colony/lower/medical)
 "FZ" = (
 /obj/structure/bed/chair/office/comfy/black{
 	dir = 1
 	},
 /turf/simulated/floor/carpet,
 /area/mining_colony/lower/unibase)
+"Ga" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/lower)
 "Gb" = (
 /obj/structure/closet/hydrant{
 	pixel_y = 32
@@ -6741,6 +6841,14 @@
 "Hl" = (
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room38)
+"Hn" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/lower)
 "Hp" = (
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/dank/mono,
@@ -6906,6 +7014,14 @@
 "Kw" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/lower/maints/room20)
+"Ky" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/lower)
 "KI" = (
 /obj/structure/barricade/wood,
 /turf/simulated/floor/plating,
@@ -6914,8 +7030,8 @@
 /obj/machinery/door/airlock/security,
 /obj/machinery/door/firedoor,
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
+	d1 = 1;
+	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/dark,
@@ -6935,6 +7051,17 @@
 /obj/random/loot/usually/few,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room2)
+"Lc" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/lower)
 "Ld" = (
 /obj/structure/table/rack,
 /turf/simulated/floor/plating,
@@ -7013,6 +7140,14 @@
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/lower/maints/room14)
+"Mf" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/lower/medical)
 "Mg" = (
 /obj/effect/landmark{
 	name = "ShuttleRepairPart"
@@ -7023,6 +7158,14 @@
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room2)
+"Mk" = (
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/lower)
 "Ml" = (
 /obj/random/closet,
 /obj/random/loot/usually/few,
@@ -7059,6 +7202,18 @@
 "MD" = (
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room16)
+"MP" = (
+/obj/machinery/power/apc{
+	dir = 1;
+	name = "north bump";
+	pixel_y = 15;
+	req_access = list(201)
+	},
+/obj/structure/cable{
+	icon_state = "0-2"
+	},
+/turf/simulated/floor/plating,
+/area/mining_colony/lower/maints/room49)
 "MU" = (
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room59)
@@ -7112,13 +7267,14 @@
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/lower/mining_caves/shelter_2)
 "Nw" = (
+/obj/effect/floor_decal/dank/border,
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
+	d1 = 1;
+	d2 = 4;
 	icon_state = "1-4"
 	},
-/turf/simulated/floor/tiled/dark,
-/area/mining_colony/lower/securitystation)
+/turf/simulated/floor/dank/medical,
+/area/mining_colony/lower/medical)
 "Ny" = (
 /obj/effect/landmark{
 	name = "ShuttleRepairPart"
@@ -7152,6 +7308,14 @@
 "Od" = (
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room58)
+"Of" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/plating,
+/area/mining_colony/lower/maints/room49)
 "Oi" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/dank/grater,
@@ -7505,6 +7669,17 @@
 "Tt" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/lower/maints/room55)
+"Tu" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/lower)
 "Tv" = (
 /obj/effect/landmark{
 	name = "ShuttleRepairPart"
@@ -7669,6 +7844,14 @@
 /obj/structure/ladder/up,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/lower/unibase)
+"VB" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/lower)
 "VK" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/lower/maints/room63)
@@ -7823,6 +8006,15 @@
 	},
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room49)
+"Yb" = (
+/obj/effect/floor_decal/dank/border,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/dank/medical,
+/area/mining_colony/lower/medical)
 "Yk" = (
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/lower/maints/room27)
@@ -9585,7 +9777,7 @@ ar
 ar
 aw
 aw
-aw
+ar
 ar
 ar
 ar
@@ -19480,7 +19672,7 @@ Qt
 QI
 cX
 Cx
-Nw
+tG
 xF
 aV
 aV
@@ -22312,8 +22504,8 @@ gp
 bD
 dx
 bo
-gS
-cp
+FY
+Nw
 jt
 eS
 jD
@@ -22515,7 +22707,7 @@ dP
 dZ
 fE
 qB
-co
+wr
 jt
 eS
 jD
@@ -22717,7 +22909,7 @@ bD
 dx
 bo
 bT
-cp
+Yb
 jt
 cG
 lu
@@ -22919,7 +23111,7 @@ bD
 dx
 bo
 bT
-cp
+Yb
 jt
 cG
 lv
@@ -23525,7 +23717,7 @@ qq
 qq
 jt
 DA
-dJ
+Mf
 ec
 jt
 jt
@@ -23929,7 +24121,7 @@ aw
 aw
 jt
 OJ
-dJ
+Mf
 dJ
 dJ
 jt
@@ -24333,8 +24525,8 @@ dY
 dY
 dY
 dY
-dY
-er
+Mk
+Tu
 dY
 Fn
 Fn
@@ -24536,7 +24728,7 @@ ei
 ei
 ei
 ei
-dY
+Hn
 dY
 Fn
 WP
@@ -24723,22 +24915,22 @@ zS
 zS
 dY
 ei
-dY
-dY
-dY
-dY
-ej
-dY
-dY
-dY
-ej
-dY
-dY
-dY
-ej
-dY
-dY
-dY
+Bb
+Ky
+Ky
+Ky
+Lc
+Ky
+Ky
+Ky
+Lc
+Ky
+Ky
+Ky
+Lc
+Ky
+Ky
+VB
 dY
 NF
 WP
@@ -24925,7 +25117,7 @@ zS
 zS
 dY
 ei
-dY
+Hn
 ar
 ar
 ar
@@ -25127,7 +25319,7 @@ zS
 zS
 dY
 ei
-fU
+Cn
 ar
 ar
 aw
@@ -25329,7 +25521,7 @@ ar
 ar
 dY
 ei
-dY
+Hn
 ar
 ar
 aw
@@ -25531,7 +25723,7 @@ ar
 ar
 dY
 ei
-dY
+Hn
 ar
 ar
 aw
@@ -25733,7 +25925,7 @@ bi
 eA
 dY
 ei
-dY
+Hn
 ar
 ar
 aw
@@ -25935,7 +26127,7 @@ bi
 eA
 dY
 ei
-dY
+Hn
 ar
 ar
 aw
@@ -26137,7 +26329,7 @@ bi
 eA
 dY
 ei
-dY
+Hn
 ar
 ar
 aw
@@ -26339,7 +26531,7 @@ bi
 eA
 dY
 ei
-dY
+Hn
 ar
 ar
 aw
@@ -26541,7 +26733,7 @@ Uf
 Uf
 dY
 ei
-dY
+Hn
 ar
 ar
 ar
@@ -26743,7 +26935,7 @@ TS
 Uf
 dY
 ei
-fU
+Cn
 ar
 ar
 ar
@@ -26945,16 +27137,16 @@ Ab
 Uf
 dY
 ei
-dY
-dY
-dY
-dY
-dY
-dY
-dY
-dY
-Pc
-dY
+Mk
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ga
 ei
 ei
 ei
@@ -27156,7 +27348,7 @@ ei
 ei
 ei
 Pc
-ei
+Hn
 ei
 ei
 ei
@@ -27358,7 +27550,7 @@ dY
 dY
 dY
 dY
-ei
+Hn
 ei
 ev
 dY
@@ -27560,7 +27752,7 @@ ar
 ar
 ar
 ei
-ei
+Hn
 dY
 ar
 ar
@@ -27762,7 +27954,7 @@ dY
 ei
 eC
 eC
-ei
+Hn
 ei
 ar
 ss
@@ -27964,7 +28156,7 @@ ei
 ei
 ei
 eF
-ei
+Hn
 ei
 ar
 ss
@@ -28166,7 +28358,7 @@ eC
 dY
 ei
 eC
-dY
+Hn
 dY
 ar
 ss
@@ -28368,7 +28560,7 @@ ar
 ar
 ar
 ar
-dU
+CK
 ar
 ar
 ss
@@ -28570,7 +28762,7 @@ bi
 bi
 eA
 eA
-bi
+BP
 ar
 ar
 ss
@@ -28772,7 +28964,7 @@ bi
 bi
 ar
 ar
-dU
+CK
 ar
 ar
 ar
@@ -28974,7 +29166,7 @@ bi
 bi
 ar
 jh
-bi
+BP
 gP
 ar
 ar
@@ -29176,7 +29368,7 @@ bi
 bi
 ar
 jh
-bi
+BP
 bi
 ar
 ar
@@ -29378,7 +29570,7 @@ br
 bi
 ar
 jh
-bi
+BP
 bi
 ar
 ar
@@ -29782,7 +29974,7 @@ bi
 bi
 Ge
 uJ
-uJ
+yY
 uJ
 uJ
 si
@@ -29983,8 +30175,8 @@ us
 bi
 bi
 Ge
-uJ
-uJ
+MP
+Of
 kt
 eN
 fY
