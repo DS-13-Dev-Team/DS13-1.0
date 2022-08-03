@@ -65,6 +65,7 @@ SUBSYSTEM_DEF(necromorph)
 			continue	//They don't wanna be this kind of necro, skip them
 
 		//If we get here, they'll do.
+		vessel.mind = M.key
 		vessel.key = M.key	//Move into the mob and delete the old
 		qdel(M)
 		GLOB.unitologists.add_antagonist(vessel.mind)
