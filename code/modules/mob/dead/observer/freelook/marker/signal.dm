@@ -162,7 +162,8 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 
 	//Seems clear
 	message_necromorphs(SPAN_NOTICE("[key] has taken control of [L]."))
-	mind.transfer_to(L)
+	L.mind = mind
+	L.key = key
 	L.client.init_verbs()
 	qdel(src)
 

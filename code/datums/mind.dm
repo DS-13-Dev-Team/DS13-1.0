@@ -597,11 +597,9 @@
 	else
 		mind = new /datum/mind(key)
 		mind.replace_original_mob(src)
-		if(SSticker)
-			GLOB.minds += mind
-		else
-			world.log << "## DEBUG: mind_initialize(): No ticker ready yet! Please inform Carn"
-	if(!mind.name)	mind.name = real_name
+		GLOB.minds += mind
+	if(!mind.name)
+		mind.name = real_name
 	mind.current = src
 	if(player_is_antag(mind))
 		add_verb(src.client, /client/proc/aooc)
