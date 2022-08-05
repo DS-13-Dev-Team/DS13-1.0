@@ -51,7 +51,6 @@ GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 	antag_templates = list(/datum/antagonist/unitologist, /datum/antagonist/earthgov_agent)
 	require_all_templates = FALSE
 	votable = FALSE
-	var/marker_setup_time = 60 MINUTES
 	var/marker_active = FALSE
 	antag_scaling_coeff = 8
 
@@ -70,9 +69,9 @@ GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 	if(!SSnecromorph.marker)
 		message_admins("There are no markers on this map!")
 		return
-	evacuation_controller.add_can_call_predicate(new /datum/evacuation_predicate/travel_points)
+	evacuation_controller.add_can_call_predicate(new /datum/evacuation_predicate/timer((1 HOUR + 40 MINUTES)*rand_between(0.95, 1.05)))
 	command_announcement.Announce("Delivery of alien artifact successful at [get_area(SSnecromorph.marker)].","Ishimura Deliveries Subsystem") //Placeholder
-	addtimer(CALLBACK(src, .proc/activate_marker), rand_between(0.85, 1.15)*marker_setup_time) //We have to spawn the marker quite late, so guess we'd best wait :)
+	addtimer(CALLBACK(src, .proc/activate_marker), rand_between(0.85, 1.15)*45 MINUTES) //We have to spawn the marker quite late, so guess we'd best wait :)
 
 
 /datum/game_mode/marker/proc/spawn_marker()
@@ -109,8 +108,6 @@ GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 	return FALSE
 
 /datum/game_mode/marker/proc/activate_marker()
-	//This handles preventing evac until we have enough points
-	charge_evac_points()
 	SSnecromorph.marker.make_active() //Allow controlling
 	pick_marker_player()
 	marker_active = TRUE

@@ -87,8 +87,8 @@
 /area/aegis/colony/hangar)
 "at" = (
 /obj/effect/landmark/random_gen/asteroid{
-	generation_height = 200;
-	generation_width = 200
+	generation_height = 250;
+	generation_width = 250
 	},
 /turf/unsimulated/mineral,
 /area/space)

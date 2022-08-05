@@ -693,22 +693,16 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		to_chat(usr, "<span class='warning'>Marker gamemode not found.</span>")
 		return
 
-	var/extra_time = input("Current approximate time until evacuation is [time2text(GM.get_time_until_evac(), "hh:mm:ss")].\nEnter the amount of time in minutes you want to add/remove:", text("Adjusting evacuation time")) as num
-	extra_time = extra_time
-	var/options = tgui_alert(src, "Do you want to INCREASE or DECREASE time until evacuation is available by [time2text(extra_time MINUTES, "mm:ss")] minutes? ", "Options", list("Increase", "Decrease", "Cancel"))
-	if(options != "Decrease" && options != "Increase")
-		return
-	else if(options == "Decrease")
-		extra_time *= -1
+	var/datum/evacuation_predicate/timer/timer = locate(/datum/evacuation_predicate/timer) in evacuation_controller.evacuation_predicates
 
-	GM.adjust_evac_threshold(extra_time)
+	var/extra_time = input("Current approximate time until evacuation is [time2text(timer.ready_at-world.time, "hh:mm:ss")].\nEnter the amount of time in seconds you want to add (negative values are also possible):", text("Adjusting evacuation time")) as num
+	extra_time *= 10
+
+	timer.ready_at += extra_time
 
 	feedback_add_details("admin_verb","DELAYSH")
-	if(options == "Increase")
-		log_and_message_admins("increased time until evacuation is available by [time2text(extra_time MINUTES, "mm:ss")].")
-	else
-		log_and_message_admins("decreased time until evacuation is available by [time2text(extra_time MINUTES * -1, "mm:ss")].")
-	return
+	log_and_message_admins("increased time until evacuation is available by [time2text(extra_time, "mm:ss")].")
+
 /*
 disabled while adding delay_shuttle since evac cancelling needs a complete rework
 /client/proc/admin_cancel_shuttle()

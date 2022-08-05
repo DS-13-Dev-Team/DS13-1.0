@@ -165,8 +165,8 @@
 				NM.using_access = user.GetAccess()
 		if(tguimodule_path)
 			TM = new tguimodule_path(src)
-			TM.using_access = user.GetAccess()
-			TM.tgui_interact(user)
+			if(user)
+				TM.using_access = user.GetAccess()
 		if(requires_ntnet && network_destination)
 			generate_network_log("Connection opened to [network_destination].")
 		program_state = PROGRAM_STATE_ACTIVE
