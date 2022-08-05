@@ -26,4 +26,4 @@
 	if(world.time >= ready_at)
 		return TRUE
 	else
-		to_chat(user, SPAN_DANGER("There is no viable site within range for evacuation at the present time. ETA: [time2text(ready_at-world.time, "hh:mm:ss")]"))
+		to_chat(user, SPAN_DANGER("There is no viable site within range for evacuation at the present time. ETA: [gameTimestamp("hh:mm:ss", ready_at-world.time)]"))
