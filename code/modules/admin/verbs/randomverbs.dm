@@ -701,7 +701,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	timer.ready_at += extra_time
 
 	feedback_add_details("admin_verb","DELAYSH")
-	log_and_message_admins("increased time until evacuation is available by [time2text(extra_time, "mm:ss")].")
+	log_and_message_admins("increased time until evacuation is available by [time2text(extra_time, "hh:mm:ss")]. Evacuation will be available in [time2text(timer.ready_at-world.time, "hh:mm:ss")].")
 
 /*
 disabled while adding delay_shuttle since evac cancelling needs a complete rework

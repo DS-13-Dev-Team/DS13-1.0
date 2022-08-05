@@ -19,6 +19,9 @@
 /datum/evacuation_predicate/timer/New(time)
 	ready_at = world.time + time
 
+/datum/evacuation_predicate/is_valid()
+	return TRUE
+
 /datum/evacuation_predicate/timer/can_call(user)
 	if(world.time >= ready_at)
 		return TRUE
