@@ -695,13 +695,14 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 	var/datum/evacuation_predicate/timer/timer = locate(/datum/evacuation_predicate/timer) in evacuation_controller.evacuation_predicates
 
-	var/extra_time = input("Current approximate time until evacuation is [gameTimestamp("hh:mm:ss", timer.ready_at-world.time)].\nEnter the amount of time in seconds you want to add (negative values are also possible):", text("Adjusting evacuation time")) as num
-	extra_time *= 10
+	var/extra_time = input("Current approximate time until evacuation is [gameTimestamp("hh:mm:ss", timer.ready_at-world.time)].\nEnter the amount of time in seconds you want to add (negative values are also possible):", text("Adjusting evacuation time")) as num|null
+	if(extra_time)
+		extra_time *= 10
 
-	timer.ready_at += extra_time
+		timer.ready_at += extra_time
 
-	feedback_add_details("admin_verb","DELAYSH")
-	log_and_message_admins("increased time until evacuation is available by [gameTimestamp("hh:mm:ss", extra_time)]. Evacuation will be available in [gameTimestamp("hh:mm:ss", timer.ready_at-world.time)].")
+		feedback_add_details("admin_verb","DELAYSH")
+		log_and_message_admins("increased time until evacuation is available by [gameTimestamp("hh:mm:ss", extra_time)]. Evacuation will be available in [gameTimestamp("hh:mm:ss", timer.ready_at-world.time)].")
 
 /*
 disabled while adding delay_shuttle since evac cancelling needs a complete rework
