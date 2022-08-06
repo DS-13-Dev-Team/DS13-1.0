@@ -969,11 +969,11 @@
 	if(client.prefs.ghost_candidacy)
 		to_chat(usr, "You have left the antag pool.")
 		client.prefs.ghost_candidacy = FALSE
-		client.prefs.save_preferences()
+		SScharacter_setup.queue_preferences_save(client.prefs)
 	else
 		to_chat(usr, "You have joined the antag pool. Make sure you have the needed role set to high!")
 		client.prefs.ghost_candidacy = TRUE
-		client.prefs.save_preferences()
+		SScharacter_setup.queue_preferences_save(client.prefs)
 
 /mob/proc/is_invisible_to(var/mob/viewer)
 	return (!alpha || !mouse_opacity || viewer.see_invisible < invisibility)

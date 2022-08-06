@@ -197,10 +197,9 @@
 	log_access("Login: [key_name(src)] from [address ? address : "localhost"]-[computer_id] || BYOND v[full_version]")
 
 	//preferences datum - also holds some persistant data for the client (because we may as well keep these datums to a minimum)
-	prefs = preferences_datums[ckey]
+	prefs = SScharacter_setup.preferences_datums[ckey]
 	if(!prefs)
 		prefs = new /datum/preferences(src)
-		preferences_datums[ckey] = prefs
 	prefs.last_ip = address				//these are gonna be used for banning
 	prefs.last_id = computer_id			//these are gonna be used for banning
 
@@ -213,7 +212,6 @@
 		GLOB.player_details[ckey] = player_details
 
 	. = ..()	//calls mob.Login()
-	prefs.sanitize_preferences()
 	fps = text2num(get_preference_value(/datum/client_preference/client_fps))
 
 	// Initialize tgui panel
