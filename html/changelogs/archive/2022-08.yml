@@ -4,3 +4,4 @@
   - balance: Decreased evaction time to 1 hour 40 minutes instead of over 2 hours.
   - balance: CEC raised salaries for all jobs.
   - bugfix: Jobs have proper names on Ishimura now.
+  - bugfix: Printers in modular computers print text on papers once again.
