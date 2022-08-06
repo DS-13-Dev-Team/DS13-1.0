@@ -162,13 +162,9 @@
 	return AS[num2text(id)]
 
 /proc/get_all_jobs()
-	var/list/all_jobs = list()
-	var/list/all_datums = subtypesof(/datum/job)
-	var/datum/job/jobdatum
-	for(var/jobtype in all_datums)
-		jobdatum = new jobtype
-		all_jobs.Add(jobdatum.title)
-	return all_jobs
+	. = list()
+	for(var/datum/job/jobdatum as anything in subtypesof(/datum/job))
+		. += initial(jobdatum.title)
 
 /proc/get_all_centcom_jobs()
 	return list("VIP Guest",

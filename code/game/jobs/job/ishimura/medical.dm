@@ -1,4 +1,4 @@
-/datum/job/smo
+/datum/job/smo/ishimura
 	title = "Senior Medical Officer"
 	head_position = 1
 	department = "Medical"
@@ -6,7 +6,7 @@
 	department_flag = COM|MED
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the Colony Director"
+	supervisors = "the Captain"
 	selection_color = "#026865"
 	req_admin_notify = 1
 	minimal_player_age = 18
@@ -33,10 +33,10 @@
 
 	salary = SALARY_COMMAND
 
-/datum/job/smo/get_description_blurb()
-	return "You are the Senior Medical Officer. You are chiefly responsible for the health and well-being of all workers in the colony. You are subordinate to the Captain and First Lieutenant."
+/datum/job/smo/ishimura/get_description_blurb()
+	return "You are the Senior Medical Officer. You are chiefly responsible for the health and well-being of all crewmembers aboard the ship. You are subordinate to the Captain and First Lieutenant."
 
-/datum/job/md
+/datum/job/md/ishimura
 	title = "Medical Doctor"
 	department = "Medical"
 	abbreviation = "MD"
@@ -48,7 +48,7 @@
 	minimal_player_age = 18
 	starting_credits = 3500
 
-	access = list(access_medical, access_chemistry, access_maint_tunnels)
+	access = list(access_medical, access_chemistry, access_research, access_maint_tunnels)
 
 	outfit_type = /decl/hierarchy/outfit/job/medical/md
 
@@ -64,10 +64,10 @@
 						SKILL_FORENSICS   = SKILL_EXPERT)
 	skill_points = 20
 
-/datum/job/md/get_description_blurb()
+/datum/job/md/ishimura/get_description_blurb()
 	return "You are a Medical Doctor. Your job is to treat and diagnose injured crewmembers, applying the appropriate skills and supplies to heal them. You may assist a Surgeon with surgery, if you have the appropriate skills. You are subordinate to the Senior Medical Officer."
 
-/datum/job/surg
+/datum/job/surg/ishimura
 	title = "Surgeon"
 	department = "Medical"
 	abbreviation = "SRG"
@@ -81,7 +81,7 @@
 
 	salary = SALARY_EDUCATED
 
-	access = list(access_medical, access_surgery, access_chemistry, access_maint_tunnels)
+	access = list(access_medical, access_surgery, access_chemistry, access_research, access_maint_tunnels)
 
 	outfit_type = /decl/hierarchy/outfit/job/medical/surg
 
@@ -94,10 +94,10 @@
 						SKILL_FORENSICS   = SKILL_EXPERT)
 	skill_points = 24
 
-/datum/job/surg/get_description_blurb()
+/datum/job/surg/ishimura/get_description_blurb()
 	return "You are a Surgeon. Your job is to perform surgery on any wounded crewmembers who require it and are one of the few people given access to the surgical suites. You are subordinate to the Senior Medical Officer."
 
-/datum/job/psychiatrist
+/datum/job/psychiatrist/ishimura
 	title = "Psychiatrist"
 	abbreviation = "PSY"
 	department_flag = MED
@@ -109,7 +109,7 @@
 	ideal_character_age = 30
 	starting_credits = 943
 
-	access = list(access_medical, access_psychiatrist, access_chemistry, access_maint_tunnels)
+	access = list(access_medical, access_psychiatrist, access_research, access_chemistry, access_maint_tunnels)
 
 	outfit_type = /decl/hierarchy/outfit/job/medical/psych
 
@@ -125,5 +125,5 @@
 
 	salary = SALARY_EDUCATED //Church pays you more than CEC to miners and civs...
 
-/datum/job/psychiatrist/get_description_blurb()
+/datum/job/psychiatrist/ishimura/get_description_blurb()
 	return "You are the Psychiatrist. Your job is to meet with clients to identify emotional, mental, and behavioral problems. You are subordinate to the Senior Medical Officer."

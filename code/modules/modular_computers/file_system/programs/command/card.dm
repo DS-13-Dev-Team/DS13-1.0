@@ -6,7 +6,7 @@
 	program_key_state = "id_key"
 	program_menu_icon = "key"
 	extended_desc = "Program for programming crew ID cards."
-	required_access = access_captain
+	required_access = access_keycard_modification
 	requires_ntnet = 0
 	size = 8
 
@@ -208,12 +208,7 @@
 					if(module.is_centcom)
 						access = get_centcom_access(t1)
 					else
-						var/datum/job/jobdatum
-						for(var/jobtype in subtypesof(/datum/job))
-							var/datum/job/J = new jobtype
-							if(ckey(J.title) == ckey(t1))
-								jobdatum = J
-								break
+						var/datum/job/jobdatum = joblist[t1]
 						if(!jobdatum)
 							to_chat(usr, "<span class='warning'>No log exists for this job: [t1]</span>")
 							return

@@ -12,7 +12,7 @@ var/global/pipe_processing_killed = 0
 
 var/global/initialization_stage = 0
 
-datum/controller/game_controller
+/datum/controller/game_controller
 	var/list/shuttle_list	                    // For debugging and VV
 	var/init_immediately = FALSE
 

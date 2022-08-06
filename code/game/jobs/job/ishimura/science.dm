@@ -1,4 +1,4 @@
-/datum/job/cscio
+/datum/job/cscio/ishimura
 	title = "Chief Science Officer"
 	head_position = 1
 	department = "Science"
@@ -6,7 +6,7 @@
 	department_flag = COM|SCI
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the Colony Director"
+	supervisors = "the Captain"
 	selection_color = "#ad6bad"
 	req_admin_notify = 1
 	minimal_player_age = 18
@@ -35,10 +35,10 @@
 						SKILL_FORENSICS   = SKILL_ADEPT)
 	skill_points = 20
 
-/datum/job/cscio/get_description_blurb()
-	return "You are the Chief Science Officer. You are in charge of the research department. Your job is to direct your assistants, do science, and further the scientific field. You are subordinate to the Colony Director and First Lieutenant."
+/datum/job/cscio/ishimura/get_description_blurb()
+	return "You are the Chief Science Officer. You are in charge of the research department. Your job is to direct your assistants, do science, and further the scientific field. You are subordinate to the Captain and First Lieutenant."
 
-/datum/job/ra
+/datum/job/ra/ishimura
 	title = "Research Assistant"
 	department = "Science"
 	abbreviation = "RA"
@@ -53,7 +53,7 @@
 
 	salary = SALARY_EDUCATED
 
-	access = list(access_research, access_maint_tunnels)
+	access = list(access_research, access_medical, access_maint_tunnels)
 
 	//This applies to all research
 	necro_conversion_options = list(SPECIES_NECROMORPH_DIVIDER = 3)
@@ -72,5 +72,5 @@
 						SKILL_FORENSICS   = SKILL_ADEPT)
 	skill_points = 20
 
-/datum/job/ra/get_description_blurb()
+/datum/job/ra/ishimura/get_description_blurb()
 	return "You are a Research Assistant. You are a member of the research department. Your job is to do science, assist the Chief Science Officer, and attempt to further your personal career. You are subodinate to the Chief Science Officer."

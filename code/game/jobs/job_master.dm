@@ -1,8 +1,7 @@
 var/global/datum/controller/occupations/job_master
 
 #define GET_RANDOM_JOB 0
-#define BE_ASSISTANT 1
-#define RETURN_TO_LOBBY 2
+#define RETURN_TO_LOBBY 1
 
 
 
@@ -25,9 +24,14 @@ var/global/datum/controller/occupations/job_master
 		occupations = list()
 		occupations_by_type = list()
 		occupations_by_title = list()
-		for(var/J in subtypesof(/datum/job))
+		var/list/all_jobs = GLOB.using_map.allowed_jobs
+		if(!length(all_jobs))
+			log_debug("<span class='warning'>Error setting up jobs, no job datums found!</span>")
+			return FALSE
+		for(var/J in all_jobs)
 			var/datum/job/job = decls_repository.get_decl(J)
-			if(!job)	continue
+			if(!job)
+				continue
 			occupations += job
 			occupations_by_type[job.type] = job
 			occupations_by_title[job.title] = job
@@ -370,12 +374,6 @@ var/global/datum/controller/occupations/job_master
 		Debug("DO, Standard Check end")
 
 		Debug("DO, Running AC2")
-
-		// For those who wanted to be assistant if their preferences were filled, here you go.
-		for(var/mob/dead/new_player/player in unassigned)
-			if(player.client.prefs.alternate_option == BE_ASSISTANT)
-				Debug("AC2 Assistant located, Player: [player]")
-				AssignRole(player, "Assistant")
 
 		//For ones returning to lobby
 		for(var/mob/dead/new_player/player in unassigned)

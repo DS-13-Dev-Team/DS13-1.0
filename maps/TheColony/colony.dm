@@ -74,6 +74,15 @@
 
 	crew_objectives = list(/datum/crew_objective/ads)
 
+	allowed_jobs = list(/datum/job/cap, /datum/job/fl, /datum/job/be, /datum/job/cseco,
+						/datum/job/sso, /datum/job/security_officer, /datum/job/smo,
+						/datum/job/md, /datum/job/surg, /datum/job/psychiatrist, /datum/job/cscio,
+						/datum/job/ra, /datum/job/ce, /datum/job/tech_engineer, /datum/job/so,
+						/datum/job/janitor, /datum/job/chaplain, /datum/job/serviceman,
+						/datum/job/salvage, /datum/job/dom, /datum/job/foreman, /datum/job/planet_cracker,
+						/datum/job/line_cook, /datum/job/bar, /datum/job/botanist
+						)
+
 	lobby_tracks = list(/music_track/ds13/twinkle,
 		/music_track/ds13/nicole,
 		/music_track/ds13/danik,

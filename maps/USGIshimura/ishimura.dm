@@ -1,8 +1,3 @@
-#ifdef MAP_ISHIMURA
-#define USING_MAP_DATUM /datum/map/ishimura
-#endif
-//	#include "DeadSpace/job.dm"
-
 /datum/map/ishimura
 	name = "Ishimura"
 	full_name = "USG Ishimura"
@@ -83,6 +78,15 @@
 		/area/ERT/escapebase,
 		/area/ishimura/lower/security/escape/adminshuttle
 	)
+
+	allowed_jobs = list(/datum/job/cap/ishimura, /datum/job/fl/ishimura, /datum/job/be/ishimura, /datum/job/cseco/ishimura,
+						/datum/job/sso/ishimura, /datum/job/security_officer/ishimura, /datum/job/smo/ishimura,
+						/datum/job/md/ishimura, /datum/job/surg/ishimura, /datum/job/psychiatrist/ishimura, /datum/job/cscio/ishimura,
+						/datum/job/ra/ishimura, /datum/job/ce/ishimura, /datum/job/tech_engineer/ishimura, /datum/job/so,
+						/datum/job/janitor, /datum/job/chaplain, /datum/job/serviceman,
+						/datum/job/salvage, /datum/job/dom/ishimura, /datum/job/foreman/ishimura, /datum/job/planet_cracker/ishimura,
+						/datum/job/line_cook, /datum/job/bar, /datum/job/botanist
+						)
 
 	evac_controller_type = /datum/evacuation_controller/starship
 

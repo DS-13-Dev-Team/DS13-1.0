@@ -477,7 +477,7 @@ var/const/NO_EMAG_ACT = -50
 	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to a Bridge Ensign."
 	icon_state = "holowarrant_filled"
 	item_state = "holowarrant_filled"
-	job_access_type = /datum/job/bo
+	job_access_type = /datum/job/be
 
 /obj/item/weapon/card/id/holo/command/captain
 	name = "holographic id"
@@ -554,7 +554,7 @@ var/const/NO_EMAG_ACT = -50
 	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to a Psychologist."
 	icon_state = "holowarrant_filled"
 	item_state = "holowarrant_filled"
-	job_access_type = /datum/job/psychologist
+	job_access_type = /datum/job/psychiatrist
 
 /obj/item/weapon/card/id/holo/science
 	name = "holographic id"

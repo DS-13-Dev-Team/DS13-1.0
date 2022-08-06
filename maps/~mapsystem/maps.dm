@@ -1,14 +1,14 @@
 GLOBAL_DATUM(using_map, /datum/map)
-GLOBAL_LIST_EMPTY(all_maps)
+GLOBAL_LIST_INIT(all_maps, initialise_bay_map_list())
 
-/hook/startup/proc/initialise_map_list()
+/proc/initialise_bay_map_list()
+	.=list()
 	for(var/type in subtypesof(/datum/map))
 		var/datum/map/M = new type
 		if(!M.path)
 			log_debug("Map '[M]' does not have a defined path, not adding to map list!")
 		else
-			GLOB.all_maps[M.type] = M
-	return 1
+			.[M.type] = M
 
 /datum/map
 	var/name = "Unnamed Map"
@@ -30,6 +30,15 @@ GLOBAL_LIST_EMPTY(all_maps)
 	var/list/usable_email_tlds = list("freemail.nt")
 	var/base_floor_type = /turf/simulated/floor/airless // The turf type used when generating floors between Z-levels at startup.
 	var/base_floor_area                                 // Replacement area, if a base_floor_type is generated. Leave blank to skip.
+
+	var/list/allowed_jobs = list(/datum/job/cap, /datum/job/fl, /datum/job/be, /datum/job/cseco,
+						/datum/job/sso, /datum/job/security_officer, /datum/job/smo,
+						/datum/job/md, /datum/job/surg, /datum/job/psychiatrist, /datum/job/cscio,
+						/datum/job/ra, /datum/job/ce, /datum/job/tech_engineer, /datum/job/so,
+						/datum/job/janitor, /datum/job/chaplain, /datum/job/serviceman,
+						/datum/job/salvage, /datum/job/dom, /datum/job/foreman, /datum/job/planet_cracker,
+						/datum/job/line_cook, /datum/job/bar, /datum/job/botanist
+						)
 
 	var/list/using_shuttles
 
@@ -220,10 +229,10 @@ GLOBAL_LIST_EMPTY(all_maps)
 	if(!station_account)
 		station_account = create_account("[station_name()] Primary Account", starting_money)
 
-	for(var/job in subtypesof(/datum/job))
-		var/datum/job/J = decls_repository.get_decl(job)
-		if(J.department)
-			station_departments |= J.department
+	for(var/datum/job/job as anything in allowed_jobs)
+		var/dep = initial(job.department)
+		if(dep)
+			station_departments |= dep
 
 	for(var/department in station_departments)
 		department_accounts[department] = create_account("[department] Account", department_money)
@@ -263,7 +272,6 @@ GLOBAL_LIST_EMPTY(all_maps)
 		num2text(SUP_FREQ)   = list(access_cargo),
 		num2text(SRV_FREQ)   = list(access_service),
 	)
-
 
 /datum/map/proc/setup_crew_objectives()
 	for(var/subtype in crew_objectives)

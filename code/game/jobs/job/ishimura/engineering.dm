@@ -1,4 +1,4 @@
-/datum/job/ce
+/datum/job/ce/ishimura
 	title = "Chief Engineer"
 	head_position = 1
 	department = "Engineering"
@@ -6,7 +6,7 @@
 	department_flag = COM|ENG
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the Colony Director"
+	supervisors = "the Captain"
 	selection_color = "#7f6e2c"
 	req_admin_notify = 1
 	minimal_player_age = 18
@@ -36,10 +36,10 @@
 
 	salary = SALARY_COMMAND
 
-/datum/job/ce/get_description_blurb()
-	return "You are the Chief Engineer. Your job is to keep the colony well-maintained and in one piece, along with directing the Technical Engineers. You are subordinate to the Colony Director and First Lieutenant."
+/datum/job/ce/ishimura/get_description_blurb()
+	return "You are the Chief Engineer. Your job is to keep the ship well-maintained and in one piece, along with directing the Technical Engineers. You are subordinate to the Captain and First Lieutenant."
 
-/datum/job/tech_engineer
+/datum/job/tech_engineer/ishimura
 	title = "Technical Engineer"
 	department = "Engineering"
 	abbreviation = "TE"
@@ -69,5 +69,5 @@
 						SKILL_FORENSICS   = SKILL_ADEPT)
 	skill_points = 14
 
-/datum/job/tech_engineer/get_description_blurb()
-	return "You are a Technical Engineer. Your job is to maintain and clean the colony, keeping it in one piece and productive. You are subordinate to the Captain and First Lieutenant."
+/datum/job/tech_engineer/ishimura/get_description_blurb()
+	return "You are a Technical Engineer. Your job is to maintain and clean the ship, keeping it in one piece and productive. You are subordinate to the Captain and First Lieutenant."

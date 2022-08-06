@@ -1,7 +1,7 @@
-/datum/job/cseco
-	title = "P-Sec Commander"
-	abbreviation = "PSC"
-	supervisors = "the Colony Director"
+/datum/job/cseco/ishimura
+	title = "Chief Security Officer"
+	abbreviation = "CSECO"
+	supervisors = "the Captain"
 	head_position = 1
 	department = "Security"
 	department_flag = SEC|COM
@@ -20,7 +20,6 @@
 
 	access = list(access_bridge, access_cseco, access_armory, access_security, access_maint_tunnels, access_cargo,
 					access_external_airlocks, access_keycard_auth, access_medical, access_research, access_mining)
-
 	outfit_type = /decl/hierarchy/outfit/job/security/cseco
 
 	min_skill = list(   SKILL_WEAPONS     = SKILL_PROF,
@@ -34,17 +33,17 @@
 						SKILL_ANATOMY	  = SKILL_ADEPT)
 	skill_points = 20
 
-/datum/job/cseco/get_description_blurb()
+/datum/job/cseco/ishimura/get_description_blurb()
 	return "You are the Chief Security Officer. You are the head of Planet Cracker Starship Ishimura Security, or P.C.S.I. Sec, and are in charge of keeping the crew safe and secure. You are expected to know the Law better than the average officer. You are subordinate to the Captain and First Lieutenant."
 
-/datum/job/sso
+/datum/job/sso/ishimura
 	title = "Senior Security Officer"
 	department = "Security"
 	abbreviation = "SSO"
 	department_flag = SEC
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the P-Sec Commander"
+	supervisors = "the Chief Security Officer"
 	selection_color = "#601c1c"
 	minimal_player_age = 18
 	starting_credits = 3400
@@ -65,17 +64,17 @@
 						SKILL_ANATOMY     = SKILL_ADEPT)
 	skill_points = 18
 
-/datum/job/sso/get_description_blurb()
-	return "You are the Senior Security Officer. You are the second-in-command to the Chief Security Officer and should they be incapacitated or are unavailable, you are to assume command of the Planetside Security, or P-Sec. You are expected to know the Law better than the average officer. You are typically in charge of foresnics investigations and lead security officers when the Chief Security Officer isn't present. You are subordinate to the P-Sec Commander."
+/datum/job/sso/ishimura/get_description_blurb()
+	return "You are the Senior Security Officer. You are the second-in-command to the Chief Security Officer and should they be incapacitated or are unavailable, you are to assume command of the Planet Cracker Starship Ishimura Security, or P.C.S.I. Sec. You are expected to know the Law better than the average officer. You are typically in charge of foresnics investigations and lead security officers when the Chief Security Officer isn't present. You are subordinate to the Chief Security Officer."
 
-/datum/job/security_officer
+/datum/job/security_officer/ishimura
 	title = "Security Officer"
 	department = "Security"
 	abbreviation = "SEC"
 	department_flag = SEC
 	total_positions = 4
 	spawn_positions = 4
-	supervisors = "the P-Sec Commander and Senior Security Officer"
+	supervisors = "the Chief Security Officer and Senior Security Officer"
 	selection_color = "#601c1c"
 	minimal_player_age = 18
 	starting_credits = 3072
@@ -96,5 +95,5 @@
 						SKILL_ANATOMY     = SKILL_ADEPT)
 	skill_points = 15
 
-/datum/job/security_officer/get_description_blurb()
-	return "You are a Security Officer. One of the many members of Planetside Security, or P-Sec, you are there to provide safety and order to the crew. You are expected to have a good understanding of the Law. You are subordinate to the P-Sec Commander and Senior Security Officer."
+/datum/job/security_officer/ishimura/get_description_blurb()
+	return "You are a Security Officer. One of the many members of Planet Cracker Starship Ishimura Security, or P.C.S.I. Sec, you are there to provide safety and order to the crew. You are expected to have a good understanding of the Law. You are subordinate to the Chief Security Officer and Senior Security Officer."

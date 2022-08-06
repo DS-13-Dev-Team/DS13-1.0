@@ -30,20 +30,21 @@ SUBSYSTEM_DEF(mapping)
 	/// True when in the process of adding a new Z-level, global locking
 	var/adding_new_zlevel = FALSE
 
-/datum/controller/subsystem/mapping/New()
-	..()
+/datum/controller/subsystem/mapping/PreInit()
 	config = load_map_config(error_if_missing = FALSE)
-
-/datum/controller/subsystem/mapping/Initialize(timeofday)
-	if(initialized)
-		return
 	if(config.defaulted)
 		var/old_config = config
 		config = global.config.defaultmap
 		if(!config || config.defaulted)
 			to_chat(world, SPAN_BOLDANNOUNCE("Unable to load next or default map config, defaulting to The Colony."))
 			config = old_config
-	GLOB.using_map = GLOB.all_maps[config.map_datum]
+	//Do it the same tick but after GLOB initializes
+	spawn(0)
+		GLOB.using_map = GLOB.all_maps[config.map_datum]
+
+/datum/controller/subsystem/mapping/Initialize(timeofday)
+	if(initialized)
+		return
 	loadWorld()
 	GLOB.using_map.setup_map()
 	preloadTemplates()

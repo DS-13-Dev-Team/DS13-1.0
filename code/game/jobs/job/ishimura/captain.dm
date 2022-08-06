@@ -1,8 +1,6 @@
-var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
-
-/datum/job/cap
-	title = "Colony Director"
-	abbreviation = "DIR"
+/datum/job/cap/ishimura
+	title = "Captain"
+	abbreviation = "CPT"
 	department = "Command"
 	head_position = 1
 	department_flag = COM
@@ -36,17 +34,17 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 						SKILL_FORENSICS   = SKILL_ADEPT)
 	skill_points = 20
 
-/datum/job/cap/get_description_blurb()
-	return "You are the Colony Director. You are in charge of the overall situation in the colony. You are there to ensure that, overall, the colony's operations are safe and productive. You only answer to the CEC."
+/datum/job/cap/ishimura/get_description_blurb()
+	return "You are the Captain. You are in charge of the overall situation aboard your ship. You are there to ensure that, overall, the ship's operations are safe and productive. You only answer to the CEC and work with the Director of Mining, normally."
 
-/datum/job/fl
+/datum/job/fl/ishimura
 	title = "First Lieutenant"
 	abbreviation = "FL"
 	department_flag = COM
 	head_position = 1
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the Colony Director"
+	supervisors = "the Captain"
 	selection_color = "#1d1d4f"
 	req_admin_notify = 1
 	minimal_player_age = 18
@@ -72,16 +70,16 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 						SKILL_FORENSICS   = SKILL_ADEPT)
 	skill_points = 20
 
-/datum/job/fl/get_description_blurb()
-	return "You are the First Lieutenant. You are the second-in-command to the Colony Director and, should the Colony Director be unavailable, inccapacitated, or killed, the person next in line to command the ship. Your job, normally, is organize department heads and hand out orders and directives from the Colony Director to the ship overall. You are subordinate to the Colony Director."
+/datum/job/fl/ishimura/get_description_blurb()
+	return "You are the First Lieutenant. You are the second-in-command to the Captain and, should the Captain be unavailable, inccapacitated, or killed, the person next in line to command the ship. Your job, normally, is organize department heads and hand out orders and directives from the Captain to the ship overall. You are subordinate to the Captain."
 
-/datum/job/be
+/datum/job/be/ishimura
 	title = "Bridge Ensign"
 	abbreviation = "BE"
 	department_flag = COM
 	total_positions = 4
 	spawn_positions = 4
-	supervisors = "the Colony Director"
+	supervisors = "the Captain and First Lieutenant"
 	selection_color = "#1d1d4f"
 	minimal_player_age = 18
 	ideal_character_age = 27
@@ -104,5 +102,5 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 						SKILL_FORENSICS   = SKILL_ADEPT)
 	skill_points = 20
 
-/datum/job/be/get_description_blurb()
-	return "You are a Bridge Ensign. You are the members of the crew that support Commmand and assist them in their endeavours. You are not in the line of succession if the Colony Director and First Lieutenant are unable to complete their duties. You are subordinate to the Colony Director and First Lieutenant."
+/datum/job/be/ishimura/get_description_blurb()
+	return "You are a Bridge Ensign. You are the members of the crew that support Commmand and assist them in their endeavours. You are not in the line of succession if the Captain and First Lieutenant are unable to complete their duties. You are subordinate to the Captain and First Lieutenant."
