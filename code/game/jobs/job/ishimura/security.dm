@@ -79,7 +79,7 @@
 	minimal_player_age = 18
 	starting_credits = 3072
 
-	salary = SALARY_UNSKILLED
+	salary = SALARY_SKILLED
 
 	access = list(access_security, access_maint_tunnels, access_external_airlocks)
 	outfit_type = /decl/hierarchy/outfit/job/security/officer

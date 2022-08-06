@@ -91,6 +91,7 @@
 	minimal_player_age = 18
 	ideal_character_age = 20
 	starting_credits = 943
+	salary = SALARY_UNSKILLED
 
 	access = list(access_maint_tunnels, access_service)
 	outfit_type = /decl/hierarchy/outfit/job/service/janitor
@@ -144,7 +145,7 @@
 	minimal_player_age = 18
 	ideal_character_age = 40
 	starting_credits = 2380
-	salary	= SALARY_UNSKILLED
+	salary = SALARY_COMMAND
 
 	access = list(access_so, access_bridge, access_cargo, access_maint_tunnels, access_keycard_auth)
 	outfit_type = /decl/hierarchy/outfit/job/cargo/so
@@ -174,7 +175,7 @@
 	selection_color = "#3b3b3b"
 	minimal_player_age = 18
 	starting_credits = 1970
-	salary	= SALARY_UNSKILLED	//Miners and civilians are underpaid plebs
+	salary = SALARY_SKILLED	//Miners and civilians are underpaid plebs
 
 	access = list(access_cargo, access_maint_tunnels)
 	outfit_type = /decl/hierarchy/outfit/job/cargo/serviceman

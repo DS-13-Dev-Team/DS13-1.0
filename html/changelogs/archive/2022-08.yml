@@ -2,3 +2,5 @@
   DTraitor:
   - balance: Decreased marker activation time to 45 minutes instead of 60.
   - balance: Decreased evaction time to 1 hour 40 minutes instead of over 2 hours.
+  - balance: CEC raised salaries for all jobs.
+  - bugfix: Jobs have proper names on Ishimura now.
