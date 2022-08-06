@@ -9,25 +9,29 @@
 	var/stored_paper = 5
 	var/max_paper = 10
 
-/obj/item/weapon/computer_hardware/nano_printer/diagnostics(var/mob/user)
+/obj/item/weapon/computer_hardware/nano_printer/diagnostics(mob/user)
 	..()
 	to_chat(user, "Paper buffer level: [stored_paper]/[max_paper]")
 
-/obj/item/weapon/computer_hardware/nano_printer/proc/print_text(var/text_to_print, var/paper_title = null)
+/obj/item/weapon/computer_hardware/nano_printer/proc/print_text(text_to_print, paper_title = null)
 	if(!stored_paper)
-		return 0
-	if(!enabled)
-		return 0
+		return FALSE
 	if(!check_functionality())
-		return 0
+		return FALSE
+
+	var/obj/item/weapon/paper/P = new/obj/item/weapon/paper(holder2.drop_location())
 
 	// Damaged printer causes the resulting paper to be somewhat harder to read.
 	if(damage > damage_malfunction)
-		text_to_print = stars(text_to_print, 100-malfunction_probability)
-	new/obj/item/weapon/paper(get_turf(holder2),text_to_print, paper_title)
-
+		P.info = stars(text_to_print, 100-malfunction_probability)
+	else
+		P.info = text_to_print
+	if(paper_title)
+		P.name = paper_title
+	P.update_icon()
 	stored_paper--
-	return 1
+	P = null
+	return TRUE
 
 /obj/item/weapon/computer_hardware/nano_printer/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/weapon/paper))

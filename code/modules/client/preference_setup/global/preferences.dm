@@ -197,6 +197,24 @@ var/list/_client_preferences_by_type
 	key = "TGUI_MONITOR"
 	options = list(GLOB.PREF_PRIMARY, GLOB.PREF_ALL)
 
+/datum/client_preference/use_tgui_inputs
+	description = "Use TGUI inputs"
+	key = "USE_TGUI_INPUTS"
+	options = list(GLOB.PREF_YES, GLOB.PREF_NO)
+	default_value = GLOB.PREF_YES
+
+/datum/client_preference/large_tgui_inputs
+	description = "Large TGUI inputs buttons"
+	key = "LARGE_TGUI_INPUTS"
+	options = list(GLOB.PREF_YES, GLOB.PREF_NO)
+	default_value = GLOB.PREF_NO
+
+/datum/client_preference/swap_tgui_inputs
+	description = "Swap Sumbmit/Cancle buttons"
+	key = "SWAP_TGUI_INPUTS"
+	options = list(GLOB.PREF_YES, GLOB.PREF_NO)
+	default_value = GLOB.PREF_YES
+
 /datum/client_preference/browser_style
 	description = "Fake NanoUI Browser Style"
 	key = "BROWSER_STYLED"

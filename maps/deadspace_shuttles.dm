@@ -13,6 +13,12 @@
 /obj/effect/shuttle_landmark/supply/ishimura
 	name = "Cargo Bay"
 	landmark_tag = "supply_elevator_up"
+	base_area = /area/ishimura/lower/cargo/bay
+	base_turf = /turf/simulated/floor/plating
+
+/obj/effect/shuttle_landmark/supply/colony
+	name = "Cargo Bay"
+	landmark_tag = "supply_elevator_up"
 	base_area = /area/mining_colony/interior/cargo/logistics
 	base_turf = /turf/simulated/floor/plating
 

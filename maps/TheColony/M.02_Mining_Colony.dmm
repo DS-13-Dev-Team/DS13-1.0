@@ -4601,7 +4601,6 @@
 	pixel_y = 15;
 	req_access = list(201)
 	},
-/obj/item/device/adv_health_analyzer,
 /obj/item/sign/medipolma,
 /obj/item/weapon/clipboard,
 /obj/structure/cable{
@@ -28658,7 +28657,7 @@
 /turf/simulated/wall/r_wall,
 /area/mining_colony/interior/mining/foremanoffice)
 "vbP" = (
-/obj/effect/shuttle_landmark/supply/ishimura,
+/obj/effect/shuttle_landmark/supply/colony,
 /turf/simulated/floor/plating,
 /area/mining_colony/interior/cargo/logistics)
 "vbR" = (
@@ -35818,9 +35817,9 @@ aDe
 aDu
 bkX
 bkX
-aae
-aae
-aae
+aqv
+aqv
+aqv
 bbX
 aqv
 aMZ

@@ -108,8 +108,6 @@
 		if(!CONFIG_GET(number/respawn_delay) || client.holder || tgui_alert(src,"Are you sure you wish to observe? You will have to wait [CONFIG_GET(number/respawn_delay)] minute\s before being able to respawn!","Player Setup", list("Yes","No")) == "Yes")
 			return make_observer(src)
 
-
-
 	if(href_list["late_join"])
 
 		if(!SSticker || SSticker.current_state != GAME_STATE_PLAYING)

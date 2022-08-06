@@ -122,7 +122,7 @@
 //		/obj/item/device/flash,
 		/obj/item/device/flashlight,
 		/obj/item/device/flashlight/pen,
-		/obj/item/device/healthanalyzer,
+		/obj/item/device/adv_health_analyzer,
 		/obj/item/weapon/storage/belt/medical,
 		/obj/item/clothing/glasses/hud/health,
 		/obj/item/weapon/reagent_containers/hypospray/vial,

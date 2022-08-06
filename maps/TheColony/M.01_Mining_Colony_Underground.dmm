@@ -6575,7 +6575,8 @@
 /obj/machinery/button/remote/blast_door{
 	id = "gethefuckoutofmyproperty";
 	name = "Underground Storage Shutter Control";
-	pixel_x = 24
+	pixel_x = 24;
+	pixel_y = 8
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/interior/cargo/storage_upper)

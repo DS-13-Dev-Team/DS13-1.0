@@ -109,7 +109,7 @@ datum/track/proc/GetTrack()
 /obj/machinery/media/jukebox/tgui_interact(mob/user, datum/tgui/ui = null)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "jukebox", "Your Media Library")
+		ui = new(user, src, "JukeBox", "Your Media Library")
 		ui.open()
 
 /obj/machinery/media/jukebox/ui_data()

@@ -16987,7 +16987,7 @@
 /turf/simulated/floor,
 /area/ishimura/upper/security/brig)
 "aIm" = (
-/obj/effect/shuttle_landmark/valor/start,
+/obj/effect/shuttle_landmark/valor/landing/ishimura,
 /turf/simulated/floor/plating,
 /area/space)
 "aIn" = (
@@ -31194,6 +31194,12 @@
 "cFo" = (
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/upper/security/checkpoint/bridge)
+"cPN" = (
+/obj/effect/floor_decal/industrial/outline/grey,
+/obj/structure/closet/body_bag,
+/obj/effect/landmark/corpse,
+/turf/simulated/floor/tiled/dark/monotile,
+/area/ishimura/upper/medical/morgue)
 "cWo" = (
 /turf/simulated/floor/dank/maint,
 /area/ishimura/upper/misc/escape)
@@ -71485,7 +71491,7 @@ ayf
 ayA
 azE
 ayI
-ayI
+cPN
 axK
 nfk
 bcp
@@ -71734,7 +71740,7 @@ afM
 ayN
 axK
 ayi
-ayI
+cPN
 azH
 ayI
 aLD
@@ -72490,7 +72496,7 @@ afM
 ayZ
 axK
 ayi
-ayI
+cPN
 azH
 ayI
 aGH

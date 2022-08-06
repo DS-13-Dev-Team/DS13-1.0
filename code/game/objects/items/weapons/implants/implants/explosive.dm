@@ -149,7 +149,7 @@
 
 /obj/item/weapon/implant/explosive/implanted(mob/target)
 	if(!elevel)
-		elevel = tgui_alert(usr, "What sort of explosion would you prefer?", "Implant Intent", list("Localized Limb", "Destroy Body", "Full Explosion"), canClose = FALSE)
+		elevel = alert(usr, "What sort of explosion would you prefer?", "Implant Intent", "Localized Limb", "Destroy Body", "Full Explosion")
 	if(!phrase)
 		phrase = sanitize_phrase(input("Choose activation phrase:") as text)
 	if(!code)

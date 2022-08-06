@@ -4,7 +4,7 @@ import { useBackend } from '../backend';
 import { Box, Button, Dropdown, Section, Knob, LabeledControls, LabeledList } from '../components';
 import { Window } from '../layouts';
 
-export const jukebox = (props, context) => {
+export const JukeBox = (props, context) => {
   const { act, data } = useBackend(context);
   const {
     active,

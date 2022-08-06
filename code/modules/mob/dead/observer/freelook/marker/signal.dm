@@ -270,7 +270,7 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 		to_chat(src, SPAN_DANGER("No living necromorphs found!"))
 		return
 
-	var/necro = input(src, "Choose necromorph to jump", "Jumping menu") as null|anything in SSnecromorph.major_vessels
+	var/necro = tgui_input_list(src, "Choose necromorph to jump", "Jumping menu", SSnecromorph.major_vessels)
 	if(necro)
 		forceMove(get_turf(necro))
 		return
