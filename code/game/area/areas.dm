@@ -45,6 +45,18 @@
 		GLOB.ship_areas += src
 	update_base_lighting()
 
+/**
+ * Causes a runtime error
+ */
+/area/AllowDrop()
+	CRASH("Bad op: area/AllowDrop() called")
+
+/**
+ * Causes a runtime error
+ */
+/area/drop_location()
+	CRASH("Bad op: area/drop_location() called")
+
 /area/proc/register_door(var/obj/machinery/door/D)
 	bordering_doors |= D
 

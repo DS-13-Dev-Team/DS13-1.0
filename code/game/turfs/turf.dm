@@ -136,7 +136,8 @@
 /turf/proc/is_solid_structure()
 	return TRUE
 
-
+/turf/AllowDrop()
+	return TRUE
 
 /turf/attack_robot(var/mob/user)
 	if(Adjacent(user))

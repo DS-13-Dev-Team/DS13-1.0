@@ -557,6 +557,8 @@
 	desc += " It appears to be broken."
 	return TRUE
 
+/obj/structure/closet/AllowDrop()
+	return TRUE
 
 //Closets weigh as much as everything in them
 /obj/structure/closet/get_mass()
