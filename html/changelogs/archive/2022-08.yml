@@ -5,3 +5,7 @@
   - balance: CEC raised salaries for all jobs.
   - bugfix: Jobs have proper names on Ishimura now.
   - bugfix: Printers in modular computers print text on papers once again.
+2022-08-07:
+  DTraitor:
+  - bugfix: Fixed admins not being able to answer faxes on the Colony.
+  - qol: Faxes and photocopiers use TGUI now.

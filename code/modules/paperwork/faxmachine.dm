@@ -1,5 +1,5 @@
 GLOBAL_LIST_EMPTY(allfaxes)
-GLOBAL_LIST_EMPTY(alldepartments)
+GLOBAL_LIST_EMPTY(all_fax_departments)
 
 GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
 
@@ -17,6 +17,8 @@ GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
 
 	var/obj/item/weapon/card/id/scan = null // identification
 	var/authenticated = 0
+	var/rank
+
 	var/sendcooldown = 0 // to avoid spamming fax messages
 	var/department = "Unknown" // our department
 	var/destination = null // the department we're sending to
@@ -36,118 +38,118 @@ GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
 		admin_departments = list("[GLOB.using_map.boss_name]", "Office of Civil Investigation and Enforcement", "[GLOB.using_map.boss_short] Supply") + GLOB.using_map.map_admin_faxes
 	GLOB.allfaxes += src
 	if(!destination) destination = "[GLOB.using_map.boss_name]"
-	if( !(("[department]" in GLOB.alldepartments) || ("[department]" in admin_departments)))
-		GLOB.alldepartments |= department
+	if( !(("[department]" in GLOB.all_fax_departments) || ("[department]" in admin_departments)))
+		GLOB.all_fax_departments |= department
 
 /obj/machinery/photocopier/faxmachine/attack_hand(mob/user as mob)
-	user.set_machine(src)
+	tgui_interact(user)
 
-	var/dat = "Fax Machine<BR>"
+/obj/machinery/photocopier/faxmachine/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "Fax", name)
+		ui.open()
 
-	var/scan_name
-	if(scan)
-		scan_name = scan.name
-	else
-		scan_name = "--------"
+/obj/machinery/photocopier/faxmachine/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+	var/list/data = ..()
+	data["scan"] = scan ? scan.name : null
+	data["authenticated"] = authenticated
+	data["rank"] = rank
+	data["isAI"] = isAI(user)
+	data["isRobot"] = isrobot(user)
 
-	dat += "Confirm Identity: <a href='byond://?src=\ref[src];scan=1'>[scan_name]</a><br>"
+	data["bossName"] = GLOB.using_map.boss_name
+	data["copyItem"] = copyitem
+	data["cooldown"] = sendcooldown
+	data["destination"] = destination
 
-	if(authenticated)
-		dat += "<a href='byond://?src=\ref[src];logout=1'>{Log Out}</a>"
-	else
-		dat += "<a href='byond://?src=\ref[src];auth=1'>{Log In}</a>"
+	return data
 
-	dat += "<hr>"
+/obj/machinery/photocopier/faxmachine/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	if(..())
+		return TRUE
 
-	if(authenticated)
-		dat += "<b>Logged in to:</b> [GLOB.using_map.boss_name] Quantum Entanglement Network<br><br>"
-
-		if(copyitem)
-			dat += "<a href='byond://?src=\ref[src];remove=1'>Remove Item</a><br><br>"
-
-			if(sendcooldown)
-				dat += "<b>Transmitter arrays realigning. Please stand by.</b><br>"
-
-			else
-
-				dat += "<a href='byond://?src=\ref[src];send=1'>Send</a><br>"
-				dat += "<b>Currently sending:</b> [copyitem.name]<br>"
-				dat += "<b>Sending to:</b> <a href='byond://?src=\ref[src];dept=1'>[destination]</a><br>"
-
-		else
-			if(sendcooldown)
-				dat += "Please insert paper to send via secure connection.<br><br>"
-				dat += "<b>Transmitter arrays realigning. Please stand by.</b><br>"
-			else
-				dat += "Please insert paper to send via secure connection.<br><br>"
-
-	else
-		dat += "Proper authentication is required to use this device.<br><br>"
-
-		if(copyitem)
-			dat += "<a href ='byond://?src=\ref[src];remove=1'>Remove Item</a><br>"
-
-	user << browse(dat, "window=copier")
-	onclose(user, "copier")
-	return
-
-/obj/machinery/photocopier/faxmachine/Topic(href, href_list)
-	if(href_list["send"])
-		if(copyitem)
-			if (destination in admin_departments)
-				send_admin_fax(usr, destination)
-				playsound(src, 'sound/machines/button2.ogg', VOLUME_MID_HIGH)
-			else
-				sendfax(destination)
-				playsound(src, 'sound/machines/button2.ogg', VOLUME_MID_HIGH)
-
-			if (sendcooldown)
-				spawn(sendcooldown) // cooldown time
-					sendcooldown = 0
-
-	else if(href_list["remove"])
-		if(copyitem)
-			copyitem.loc = usr.loc
-			usr.put_in_hands(copyitem)
-			to_chat(usr, "<span class='notice'>You take \the [copyitem] out of \the [src].</span>")
-			copyitem = null
-			updateUsrDialog()
-
-	if(href_list["scan"])
-		if (scan)
-			if(ishuman(usr))
-				scan.loc = usr.loc
-				if(!usr.get_active_hand())
+	switch(action)
+		if("scan")
+			if(scan)
+				scan.forceMove(loc)
+				if(ishuman(usr) && !usr.get_active_hand())
 					usr.put_in_hands(scan)
 				scan = null
 			else
-				scan.loc = src.loc
+				var/obj/item/I = usr.get_active_hand()
+				if(istype(I, /obj/item/weapon/card/id))
+					usr.drop_item()
+					I.forceMove(src)
+					scan = I
+			return TRUE
+		if("login")
+			if(istype(scan))
+				if(check_access(scan))
+					authenticated = scan.registered_name
+					rank = scan.assignment
+			else if(isAI(usr))
+				authenticated = usr.name
+				rank = "AI"
+			else if(isrobot(usr))
+				authenticated = usr.name
+				var/mob/living/silicon/robot/R = usr
+				rank = "[R.modtype] [R.braintype]"
+			return TRUE
+		if("logout")
+			if(scan)
+				scan.forceMove(loc)
+				if(ishuman(usr) && !usr.get_active_hand())
+					usr.put_in_hands(scan)
 				scan = null
-		else
-			var/obj/item/I = usr.get_active_hand()
-			if (istype(I, /obj/item/weapon/card/id) && usr.unEquip(I))
-				I.loc = src
-				scan = I
-		authenticated = 0
+			authenticated = null
+			return TRUE
+		if("remove")
+			if(copyitem)
+				if(get_dist(usr, src) >= 2)
+					to_chat(usr, "\The [copyitem] is too far away for you to remove it.")
+					return
+				copyitem.forceMove(loc)
+				usr.put_in_hands(copyitem)
+				to_chat(usr, "<span class='notice'>You take \the [copyitem] out of \the [src].</span>")
+				copyitem = null
 
-	if(href_list["dept"])
-		var/lastdestination = destination
-		destination = input(usr, "Which department?", "Choose a department", "") as null|anything in (GLOB.alldepartments + admin_departments)
-		if(!destination) destination = lastdestination
+	if(!authenticated)
+		return
 
-	if(href_list["auth"])
-		if ( (!( authenticated ) && (scan)) )
-			if (check_access(scan))
-				playsound(src, 'sound/machines/button2.ogg', VOLUME_MID_HIGH)
-				authenticated = 1
+	switch(action)
+		if("send")
+			if(copyitem)
+				if (destination in admin_departments)
+					send_admin_fax(usr, destination)
+				else
+					sendfax(destination)
 
-	if(href_list["logout"])
-		playsound(src, 'sound/machines/button2.ogg', VOLUME_MID_HIGH)
-		authenticated = 0
+				if (sendcooldown)
+					spawn(sendcooldown) // cooldown time
+						sendcooldown = 0
 
-	updateUsrDialog()
+		if("dept")
+			var/lastdestination = destination
+			destination = tgui_input_list(usr, "Which department?", "Choose a department", (GLOB.all_fax_departments + admin_departments))
+			if(!destination)
+				destination = lastdestination
 
-/obj/machinery/photocopier/faxmachine/proc/sendfax(var/destination)
+	return TRUE
+
+/obj/machinery/photocopier/faxmachine/attackby(obj/item/O as obj, mob/user as mob)
+	if(isMultitool(O) && panel_open)
+		var/input = tgui_input_text(usr, "What Department ID would you like to give this fax machine?", "Multitool-Fax Machine Interface", department)
+		if(!input)
+			to_chat(usr, "No input found. Please hang up and try your call again.")
+			return
+		department = input
+		if( !(("[department]" in GLOB.all_fax_departments) || ("[department]" in admin_departments)) && !(department == "Unknown"))
+			GLOB.all_fax_departments |= department
+
+	return ..()
+
+/obj/machinery/photocopier/faxmachine/proc/sendfax(destination)
 	if(stat & (BROKEN|NOPOWER))
 		return
 
@@ -156,7 +158,7 @@ GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
 	var/success = 0
 	for(var/obj/machinery/photocopier/faxmachine/F in GLOB.allfaxes)
 		if( F.department == destination )
-			success = F.recievefax(copyitem)
+			success = F.receivefax(copyitem)
 
 	if (success)
 		visible_message("[src] beeps, \"Message transmitted successfully.\"")
@@ -164,7 +166,7 @@ GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
 	else
 		visible_message("[src] beeps, \"Error transmitting message.\"")
 
-/obj/machinery/photocopier/faxmachine/proc/recievefax(var/obj/item/incoming)
+/obj/machinery/photocopier/faxmachine/proc/receivefax(obj/item/incoming)
 	if(stat & (BROKEN|NOPOWER))
 		return 0
 
@@ -172,7 +174,8 @@ GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
 		return 0	//You can't send faxes to "Unknown"
 
 	flick("faxreceive", src)
-	playsound(loc, "sound/machines/dotprinter.ogg", 50, 1)
+	playsound(src, "sound/machines/printer.ogg", 50, 1)
+
 
 	// give the sprite some time to flick
 	sleep(20)
@@ -189,12 +192,13 @@ GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
 	use_power(active_power_usage)
 	return 1
 
-/obj/machinery/photocopier/faxmachine/proc/send_admin_fax(var/mob/sender, var/destination)
+/obj/machinery/photocopier/faxmachine/proc/send_admin_fax(mob/sender, destination)
 	if(stat & (BROKEN|NOPOWER))
 		return
+
 	use_power(200)
 
-	//recieved copies should not use toner since it's being used by admins only.
+	//received copies should not use toner since it's being used by admins only.
 	var/obj/item/rcvdcopy
 	if (istype(copyitem, /obj/item/weapon/paper))
 		rcvdcopy = copy(copyitem, 0)
@@ -205,16 +209,11 @@ GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
 	else
 		visible_message("[src] beeps, \"Error transmitting message.\"")
 		return
-	if(sender.mind)
-		var/datum/extension/earthgov/earthgov = get_extension(sender.mind, /datum/extension/earthgov)
-		if(earthgov)
-			earthgov.on_admin_fax(copyitem, destination)
 
 	rcvdcopy.loc = null //hopefully this shouldn't cause trouble
 	GLOB.adminfaxes += rcvdcopy
 
 	var/mob/intercepted = check_for_interception()
-
 
 	//message badmins that a fax has arrived
 	if (destination == GLOB.using_map.boss_name)
@@ -232,8 +231,23 @@ GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
 	sleep(50)
 	visible_message("[src] beeps, \"Message transmitted successfully.\"")
 
+// Turns objects into just text.
+/obj/machinery/photocopier/faxmachine/proc/make_summary(obj/item/sent)
+	if(istype(sent, /obj/item/weapon/paper))
+		var/obj/item/weapon/paper/P = sent
+		return P.info
+	if(istype(sent, /obj/item/weapon/paper_bundle))
+		. = ""
+		var/obj/item/weapon/paper_bundle/B = sent
+		for(var/i in 1 to B.pages.len)
+			var/obj/item/weapon/paper/P = B.pages[i]
+			if(istype(P)) // Photos can show up here too.
+				if(.) // Space out different pages.
+					. += "<br>"
+				. += "PAGE [i] - [P.name]<br>"
+				. += P.info
 
-/obj/machinery/photocopier/faxmachine/proc/message_admins(var/mob/sender, var/faxname, var/obj/item/sent, var/reply_type, font_colour="#006100")
+/obj/machinery/photocopier/faxmachine/proc/message_admins(mob/sender, faxname, obj/item/sent, reply_type, font_colour="#006100")
 	var/msg = "<span class='notice'><b><font color='[font_colour]'>[faxname]: </font>[get_options_bar(sender, 2,1,1)]"
 	msg += "(<A HREF='?_src_=holder;take_ic=\ref[sender]'>TAKE</a>) (<a href='?_src_=holder;FaxReply=\ref[sender];originfax=\ref[src];replyorigin=[reply_type]'>REPLY</a>)</b>: "
 	msg += "Receiving '[sent.name]' via secure connection ... <a href='?_src_=holder;AdminFaxView=\ref[sent]'>view message</a></span>"

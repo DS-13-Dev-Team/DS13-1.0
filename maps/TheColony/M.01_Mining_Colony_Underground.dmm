@@ -2264,7 +2264,8 @@
 /area/mining_colony/lower/maints/room38)
 "hv" = (
 /obj/machinery/photocopier/faxmachine{
-	req_one_access = list()
+	req_one_access = list();
+	department = "Deprecated"
 	},
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room38)
@@ -2673,7 +2674,8 @@
 	},
 /obj/structure/table/woodentable,
 /obj/machinery/photocopier/faxmachine{
-	req_one_access = list()
+	req_one_access = list();
+	department = "Abandoned Detective Office"
 	},
 /turf/simulated/floor/wood,
 /area/mining_colony/lower/maints/room64)

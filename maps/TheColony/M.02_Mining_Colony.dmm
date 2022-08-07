@@ -2365,7 +2365,9 @@
 /area/mining_colony/security)
 "agL" = (
 /obj/structure/table/standard,
-/obj/machinery/photocopier/faxmachine,
+/obj/machinery/photocopier/faxmachine{
+	department = "SMO Office"
+	},
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/medbay/CMOoffice)
 "agM" = (
@@ -4236,7 +4238,9 @@
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/sec_resting)
 "amf" = (
-/obj/machinery/photocopier/faxmachine,
+/obj/machinery/photocopier/faxmachine{
+	department = "Security Entrance"
+	},
 /obj/structure/table/standard,
 /turf/simulated/floor/dank/golf_gray,
 /area/mining_colony/security)
@@ -9444,7 +9448,7 @@
 "aBC" = (
 /obj/structure/table/woodentable,
 /obj/machinery/photocopier/faxmachine{
-	department = "Supply Officer's Office"
+	department = "SO Office"
 	},
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/cargo/officerarea)
@@ -13416,7 +13420,9 @@
 /area/mining_colony/interior/uni_church)
 "aMh" = (
 /obj/structure/table/steel,
-/obj/machinery/photocopier/faxmachine,
+/obj/machinery/photocopier/faxmachine{
+	department = "CE Office"
+	},
 /obj/machinery/light{
 	dir = 8
 	},
@@ -22772,7 +22778,7 @@
 "bhP" = (
 /obj/structure/table/standard,
 /obj/machinery/photocopier/faxmachine{
-	department = "Director of Mining Office";
+	department = "DoM Office";
 	req_one_access = list(104)
 	},
 /turf/simulated/floor/dank/mono,
@@ -28684,7 +28690,9 @@
 /area/mining_colony/interior/enginieering/supply_storage)
 "vqG" = (
 /obj/structure/table/steel_reinforced,
-/obj/machinery/photocopier/faxmachine,
+/obj/machinery/photocopier/faxmachine{
+	department = "Security Checkpoint #2"
+	},
 /obj/effect/floor_decal/dank/mono_half{
 	dir = 4
 	},

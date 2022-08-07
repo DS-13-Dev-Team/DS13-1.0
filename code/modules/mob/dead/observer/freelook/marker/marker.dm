@@ -248,7 +248,7 @@
 //A mob was detected nearby, can we absorb it?
 /obj/machinery/marker/proc/nearby_movement(var/atom/movable/AM, var/atom/old_loc)
 
-	if (isliving(AM))
+	if (isliving(AM) && AM.get_biomass())
 		var/mob/living/L = AM
 		if (!L.is_necromorph())
 			//Yes we can

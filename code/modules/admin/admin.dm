@@ -1110,7 +1110,7 @@ var/global/floorIsLava = 0
 	set category = "Special Verbs"
 	set name = "Send Fax"
 	set desc = "Sends a fax to this machine"
-	var/department = input("Choose a fax", "Fax") as null|anything in GLOB.alldepartments
+	var/department = input("Choose a fax", "Fax") as null|anything in GLOB.all_fax_departments
 	for(var/obj/machinery/photocopier/faxmachine/sendto in GLOB.allfaxes)
 		if(sendto.department == department)
 
@@ -1166,9 +1166,7 @@ var/global/floorIsLava = 0
 	rcvdcopy.loc = null //hopefully this shouldn't cause trouble
 	GLOB.adminfaxes += rcvdcopy
 
-
-
-	if(destination.recievefax(P))
+	if(destination.receivefax(P))
 		to_chat(src.owner, "<span class='notice'>Message reply to transmitted successfully.</span>")
 		if(P.sender) // sent as a reply
 			log_admin("[key_name(src.owner)] replied to a fax message from [key_name(P.sender)]")

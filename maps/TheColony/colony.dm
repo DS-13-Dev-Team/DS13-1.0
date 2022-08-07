@@ -72,7 +72,7 @@
 
 	evac_controller_type = /datum/evacuation_controller/starship
 
-	crew_objectives = list(/datum/crew_objective/ads)
+	crew_objectives = list()
 
 	allowed_jobs = list(/datum/job/cap, /datum/job/fl, /datum/job/be, /datum/job/cseco,
 						/datum/job/sso, /datum/job/security_officer, /datum/job/smo,
