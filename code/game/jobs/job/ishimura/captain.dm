@@ -21,7 +21,7 @@
 				access_cargo, access_mining, access_engineering, access_bartender, access_chaplain,
 				access_external_airlocks, access_medical, access_research, access_psychiatrist,
 				access_chemistry, access_surgery, access_maint_tunnels, access_keycard_auth, access_keycard_modification)
-	outfit_type = /decl/hierarchy/outfit/job/command/cap
+	outfit_type = /decl/hierarchy/outfit/job/command/cap/ishimura
 
 	min_skill = list(   SKILL_HAULING     = SKILL_BASIC,
 						SKILL_WEAPONS     = SKILL_BASIC,
@@ -57,7 +57,7 @@
 
 	access = list(access_fl, access_bridge, access_security, access_armory, access_maint_tunnels,
 				access_keycard_auth, access_cargo, access_keycard_modification)
-	outfit_type = /decl/hierarchy/outfit/job/command/fl
+	outfit_type = /decl/hierarchy/outfit/job/command/fl/ishimura
 
 	min_skill = list(   SKILL_HAULING     = SKILL_ADEPT,
 						SKILL_WEAPONS     = SKILL_BASIC,
@@ -90,7 +90,7 @@
 	necro_conversion_options = list(SPECIES_NECROMORPH_DIVIDER = 3)
 
 	access = list(access_bridge, access_security, access_maint_tunnels)
-	outfit_type = /decl/hierarchy/outfit/job/command/bo
+	outfit_type = /decl/hierarchy/outfit/job/command/be/ishimura
 
 	min_skill = list(   SKILL_HAULING     = SKILL_BASIC,
 						SKILL_COMPUTER    = SKILL_EXPERT)

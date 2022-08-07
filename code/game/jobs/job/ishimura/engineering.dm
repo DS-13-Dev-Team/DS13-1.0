@@ -18,7 +18,7 @@
 	necro_conversion_options = list(SPECIES_NECROMORPH_DIVIDER = 3)
 
 	access = list(access_ce, access_bridge, access_engineering, access_maint_tunnels, access_external_airlocks, access_keycard_auth)
-	outfit_type = /decl/hierarchy/outfit/job/engineering/ce
+	outfit_type = /decl/hierarchy/outfit/job/engineering/ce/ishimura
 
 	min_skill = list(   SKILL_HAULING     = SKILL_BASIC,
 						SKILL_EVA	      = SKILL_ADEPT,
@@ -54,7 +54,7 @@
 
 	salary = SALARY_SKILLED
 	access = list(access_engineering, access_maint_tunnels, access_external_airlocks)
-	outfit_type = /decl/hierarchy/outfit/job/engineering/tech_engineer
+	outfit_type = /decl/hierarchy/outfit/job/engineering/tech_engineer/ishimura
 
 	min_skill = list(	SKILL_HAULING     = SKILL_BASIC,
 						SKILL_EVA	      = SKILL_ADEPT,

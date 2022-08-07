@@ -23,7 +23,7 @@
 	necro_conversion_compatibility = 1
 	necro_conversion_options = list(SPECIES_NECROMORPH_DIVIDER = 3)
 
-	outfit_type = /decl/hierarchy/outfit/job/mining/dom
+	outfit_type = /decl/hierarchy/outfit/job/mining/dom/ishimura
 
 	min_skill = list(	SKILL_COMPUTER	  = SKILL_BASIC,
 						SKILL_DEVICES	  = SKILL_BASIC)
@@ -54,7 +54,7 @@
 	bonus_shares = 2
 
 	access = list(access_mining, access_mf, access_maint_tunnels)
-	outfit_type = /decl/hierarchy/outfit/job/mining/foreman
+	outfit_type = /decl/hierarchy/outfit/job/mining/foreman/ishimura
 
 	min_skill = list(	SKILL_EVA		= SKILL_EXPERT,
 						SKILL_HAULING	= SKILL_ADEPT,
@@ -85,7 +85,7 @@
 	salary	= 0	//Miners are paid on commission for the ores they turn in
 
 	access = list(access_mining, access_maint_tunnels)
-	outfit_type = /decl/hierarchy/outfit/job/mining/planet_cracker
+	outfit_type = /decl/hierarchy/outfit/job/mining/planet_cracker/ishimura
 
 	min_skill = list(	SKILL_EVA		= SKILL_ADEPT,
 						SKILL_HAULING	= SKILL_ADEPT,

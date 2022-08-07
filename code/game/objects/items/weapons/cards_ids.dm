@@ -479,12 +479,33 @@ var/const/NO_EMAG_ACT = -50
 	item_state = "holowarrant_filled"
 	job_access_type = /datum/job/be
 
+/obj/item/weapon/card/id/holo/command/be
+	name = "holographic id"
+	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to a Bridge Ensign."
+	icon_state = "holowarrant_filled"
+	item_state = "holowarrant_filled"
+	job_access_type = /datum/job/be
+
+/obj/item/weapon/card/id/holo/command/be/ishimura
+	name = "holographic id"
+	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to a Bridge Ensign."
+	icon_state = "holowarrant_filled"
+	item_state = "holowarrant_filled"
+	job_access_type = /datum/job/be/ishimura
+
 /obj/item/weapon/card/id/holo/command/captain
 	name = "holographic id"
 	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to the Ishimura's Captain."
 	icon_state = "holowarrant_filled"
 	item_state = "holowarrant_filled"
 	job_access_type = /datum/job/cap
+
+/obj/item/weapon/card/id/holo/command/captain/ishimura
+	name = "holographic id"
+	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to the Ishimura's Captain."
+	icon_state = "holowarrant_filled"
+	item_state = "holowarrant_filled"
+	job_access_type = /datum/job/cap/ishimura
 
 /obj/item/weapon/card/id/holo/command/first_lieutenant
 	name = "holographic id"
@@ -493,12 +514,26 @@ var/const/NO_EMAG_ACT = -50
 	item_state = "holowarrant_filled"
 	job_access_type = /datum/job/fl
 
+/obj/item/weapon/card/id/holo/command/first_lieutenant/ishimura
+	name = "holographic id"
+	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to the Ishimura's First Lieutenant."
+	icon_state = "holowarrant_filled"
+	item_state = "holowarrant_filled"
+	job_access_type = /datum/job/fl/ishimura
+
 /obj/item/weapon/card/id/holo/mining
 	name = "holographic id"
 	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to a Planet Cracker."
 	icon_state = "holowarrant_filled"
 	item_state = "holowarrant_filled"
 	job_access_type = /datum/job/planet_cracker
+
+/obj/item/weapon/card/id/holo/mining/ishimura
+	name = "holographic id"
+	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to a Planet Cracker."
+	icon_state = "holowarrant_filled"
+	item_state = "holowarrant_filled"
+	job_access_type = /datum/job/planet_cracker/ishimura
 
 /obj/item/weapon/card/id/holo/mining/director
 	name = "holographic id"
@@ -507,12 +542,26 @@ var/const/NO_EMAG_ACT = -50
 	item_state = "holowarrant_filled"
 	job_access_type = /datum/job/dom
 
+/obj/item/weapon/card/id/holo/mining/director/ishimura
+	name = "holographic id"
+	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to the CEC Director of Mining."
+	icon_state = "holowarrant_filled"
+	item_state = "holowarrant_filled"
+	job_access_type = /datum/job/dom/ishimura
+
 /obj/item/weapon/card/id/holo/mining/foreman
 	name = "holographic id"
 	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to the Mining Foreman."
 	icon_state = "holowarrant_filled"
 	item_state = "holowarrant_filled"
 	job_access_type = /datum/job/foreman
+
+/obj/item/weapon/card/id/holo/mining/foreman/ishimura
+	name = "holographic id"
+	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to the Mining Foreman."
+	icon_state = "holowarrant_filled"
+	item_state = "holowarrant_filled"
+	job_access_type = /datum/job/foreman/ishimura
 
 /obj/item/weapon/card/id/holo/engineering
 	name = "holographic id"
@@ -521,12 +570,26 @@ var/const/NO_EMAG_ACT = -50
 	item_state = "holowarrant_filled"
 	job_access_type = /datum/job/tech_engineer
 
+/obj/item/weapon/card/id/holo/engineering/ishimura
+	name = "holographic id"
+	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to a Technical Engineer."
+	icon_state = "holowarrant_filled"
+	item_state = "holowarrant_filled"
+	job_access_type = /datum/job/tech_engineer/ishimura
+
 /obj/item/weapon/card/id/holo/engineering/chief_engineer
 	name = "holographic id"
 	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to the Ishimura's Chief Engineer."
 	icon_state = "holowarrant_filled"
 	item_state = "holowarrant_filled"
 	job_access_type = /datum/job/ce
+
+/obj/item/weapon/card/id/holo/engineering/chief_engineer/ishimura
+	name = "holographic id"
+	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to the Ishimura's Chief Engineer."
+	icon_state = "holowarrant_filled"
+	item_state = "holowarrant_filled"
+	job_access_type = /datum/job/ce/ishimura
 
 /obj/item/weapon/card/id/holo/medical
 	name = "holographic id"
@@ -535,12 +598,26 @@ var/const/NO_EMAG_ACT = -50
 	item_state = "holowarrant_filled"
 	job_access_type = /datum/job/md
 
+/obj/item/weapon/card/id/holo/medical/ishimura
+	name = "holographic id"
+	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to a Medical Doctor."
+	icon_state = "holowarrant_filled"
+	item_state = "holowarrant_filled"
+	job_access_type = /datum/job/md/ishimura
+
 /obj/item/weapon/card/id/holo/medical/smo
 	name = "holographic id"
 	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to the Ishimura's Senior Medical Officer."
 	icon_state = "holowarrant_filled"
 	item_state = "holowarrant_filled"
 	job_access_type = /datum/job/smo
+
+/obj/item/weapon/card/id/holo/medical/smo/ishimura
+	name = "holographic id"
+	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to the Ishimura's Senior Medical Officer."
+	icon_state = "holowarrant_filled"
+	item_state = "holowarrant_filled"
+	job_access_type = /datum/job/smo/ishimura
 
 /obj/item/weapon/card/id/holo/medical/surgeon
 	name = "holographic id"
@@ -549,12 +626,26 @@ var/const/NO_EMAG_ACT = -50
 	item_state = "holowarrant_filled"
 	job_access_type = /datum/job/surg
 
+/obj/item/weapon/card/id/holo/medical/surgeon/ishimura
+	name = "holographic id"
+	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to a Surgeon."
+	icon_state = "holowarrant_filled"
+	item_state = "holowarrant_filled"
+	job_access_type = /datum/job/surg/ishimura
+
 /obj/item/weapon/card/id/holo/medical/psych
 	name = "holographic id"
 	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to a Psychologist."
 	icon_state = "holowarrant_filled"
 	item_state = "holowarrant_filled"
 	job_access_type = /datum/job/psychiatrist
+
+/obj/item/weapon/card/id/holo/medical/psych/ishimura
+	name = "holographic id"
+	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to a Psychologist."
+	icon_state = "holowarrant_filled"
+	item_state = "holowarrant_filled"
+	job_access_type = /datum/job/psychiatrist/ishimura
 
 /obj/item/weapon/card/id/holo/science
 	name = "holographic id"
@@ -563,12 +654,26 @@ var/const/NO_EMAG_ACT = -50
 	item_state = "holowarrant_filled"
 	job_access_type = /datum/job/ra
 
+/obj/item/weapon/card/id/holo/science/ishimura
+	name = "holographic id"
+	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to a Research Assistant."
+	icon_state = "holowarrant_filled"
+	item_state = "holowarrant_filled"
+	job_access_type = /datum/job/ra/ishimura
+
 /obj/item/weapon/card/id/holo/science/cscio
 	name = "holographic id"
 	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to the Ishimura's Chief Science Officer."
 	icon_state = "holowarrant_filled"
 	item_state = "holowarrant_filled"
 	job_access_type = /datum/job/cscio
+
+/obj/item/weapon/card/id/holo/science/cscio/ishimura
+	name = "holographic id"
+	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to the Ishimura's Chief Science Officer."
+	icon_state = "holowarrant_filled"
+	item_state = "holowarrant_filled"
+	job_access_type = /datum/job/cscio/ishimura
 
 /obj/item/weapon/card/id/holo/security
 	name = "holographic id"
@@ -577,6 +682,13 @@ var/const/NO_EMAG_ACT = -50
 	item_state = "holowarrant_filled"
 	job_access_type = /datum/job/security_officer
 
+/obj/item/weapon/card/id/holo/security/ishimura
+	name = "holographic id"
+	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to a Ishimura Security Officer."
+	icon_state = "holowarrant_filled"
+	item_state = "holowarrant_filled"
+	job_access_type = /datum/job/security_officer/ishimura
+
 /obj/item/weapon/card/id/holo/security/cseco
 	name = "holographic id"
 	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to the Ishimura's Chief Security Officer."
@@ -584,12 +696,26 @@ var/const/NO_EMAG_ACT = -50
 	item_state = "holowarrant_filled"
 	job_access_type = /datum/job/cseco
 
+/obj/item/weapon/card/id/holo/security/cseco/ishimura
+	name = "holographic id"
+	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to the Ishimura's Chief Security Officer."
+	icon_state = "holowarrant_filled"
+	item_state = "holowarrant_filled"
+	job_access_type = /datum/job/cseco/ishimura
+
 /obj/item/weapon/card/id/holo/security/sso
 	name = "holographic id"
 	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to the Ishimura's Senior Security Officer."
 	icon_state = "holowarrant_filled"
 	item_state = "holowarrant_filled"
 	job_access_type = /datum/job/sso
+
+/obj/item/weapon/card/id/holo/security/sso/ishimura
+	name = "holographic id"
+	desc = "A holographic identification badge used in conjunction with RIG clothing. This one belongs to the Ishimura's Senior Security Officer."
+	icon_state = "holowarrant_filled"
+	item_state = "holowarrant_filled"
+	job_access_type = /datum/job/sso/ishimura
 
 
 //////////////////////////////////////////////////

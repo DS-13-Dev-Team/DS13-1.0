@@ -20,7 +20,7 @@
 
 	access = list(access_bridge, access_cseco, access_armory, access_security, access_maint_tunnels, access_cargo,
 					access_external_airlocks, access_keycard_auth, access_medical, access_research, access_mining)
-	outfit_type = /decl/hierarchy/outfit/job/security/cseco
+	outfit_type = /decl/hierarchy/outfit/job/security/cseco/ishimura
 
 	min_skill = list(   SKILL_WEAPONS     = SKILL_PROF,
 						SKILL_FORENSICS   = SKILL_PROF,
@@ -51,7 +51,7 @@
 	salary = SALARY_SUPERVISOR
 
 	access = list(access_armory, access_security, access_maint_tunnels, access_external_airlocks)
-	outfit_type = /decl/hierarchy/outfit/job/security/sso
+	outfit_type = /decl/hierarchy/outfit/job/security/sso/ishimura
 
 	min_skill = list(   SKILL_WEAPONS     = SKILL_PROF,
 						SKILL_COMBAT	  = SKILL_PROF,
@@ -82,7 +82,7 @@
 	salary = SALARY_SKILLED
 
 	access = list(access_security, access_maint_tunnels, access_external_airlocks)
-	outfit_type = /decl/hierarchy/outfit/job/security/officer
+	outfit_type = /decl/hierarchy/outfit/job/security/officer/ishimura
 
 	min_skill = list(   SKILL_WEAPONS     = SKILL_ADEPT,
 						SKILL_COMBAT	  = SKILL_ADEPT,

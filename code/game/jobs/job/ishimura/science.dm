@@ -21,7 +21,7 @@
 	necro_conversion_compatibility = 1
 	necro_conversion_options = list(SPECIES_NECROMORPH_DIVIDER = 3)
 
-	outfit_type = /decl/hierarchy/outfit/job/science/cscio
+	outfit_type = /decl/hierarchy/outfit/job/science/cscio/ishimura
 
 	min_skill = list(   SKILL_ANATOMY     = SKILL_BASIC,
 						SKILL_MEDICAL	  = SKILL_ADEPT,
@@ -58,7 +58,7 @@
 	//This applies to all research
 	necro_conversion_options = list(SPECIES_NECROMORPH_DIVIDER = 3)
 
-	outfit_type = /decl/hierarchy/outfit/job/science/ra
+	outfit_type = /decl/hierarchy/outfit/job/science/ra/ishimura
 
 	min_skill = list(   SKILL_ANATOMY     = SKILL_BASIC,
 						SKILL_MEDICAL	  = SKILL_BASIC,

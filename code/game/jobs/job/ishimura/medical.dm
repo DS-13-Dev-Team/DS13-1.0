@@ -19,7 +19,7 @@
 
 	access = list(access_smo, access_bridge, access_maint_tunnels, access_medical, access_surgery, access_research, access_chemistry,
 					access_psychiatrist, access_keycard_auth)
-	outfit_type = /decl/hierarchy/outfit/job/medical/smo
+	outfit_type = /decl/hierarchy/outfit/job/medical/smo/ishimura
 
 	min_skill = list(   SKILL_ANATOMY     = SKILL_MAX,
 						SKILL_MEDICAL	  = SKILL_MAX,
@@ -50,7 +50,7 @@
 
 	access = list(access_medical, access_chemistry, access_research, access_maint_tunnels)
 
-	outfit_type = /decl/hierarchy/outfit/job/medical/md
+	outfit_type = /decl/hierarchy/outfit/job/medical/md/ishimura
 
 	salary = SALARY_EDUCATED
 
@@ -83,7 +83,7 @@
 
 	access = list(access_medical, access_surgery, access_chemistry, access_research, access_maint_tunnels)
 
-	outfit_type = /decl/hierarchy/outfit/job/medical/surg
+	outfit_type = /decl/hierarchy/outfit/job/medical/surg/ishimura
 
 	min_skill = list(	SKILL_ANATOMY     = SKILL_EXPERT,
 						SKILL_MEDICAL	  = SKILL_EXPERT,
@@ -111,7 +111,7 @@
 
 	access = list(access_medical, access_psychiatrist, access_research, access_chemistry, access_maint_tunnels)
 
-	outfit_type = /decl/hierarchy/outfit/job/medical/psych
+	outfit_type = /decl/hierarchy/outfit/job/medical/psych/ishimura
 
 	min_skill = list(	SKILL_ANATOMY     = SKILL_BASIC,
 						SKILL_MEDICAL	  = SKILL_EXPERT,

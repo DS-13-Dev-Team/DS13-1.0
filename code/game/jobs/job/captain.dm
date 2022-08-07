@@ -92,7 +92,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	necro_conversion_options = list(SPECIES_NECROMORPH_DIVIDER = 3)
 
 	access = list(access_bridge, access_security, access_maint_tunnels)
-	outfit_type = /decl/hierarchy/outfit/job/command/bo
+	outfit_type = /decl/hierarchy/outfit/job/command/be
 
 	min_skill = list(   SKILL_HAULING     = SKILL_BASIC,
 						SKILL_COMPUTER    = SKILL_EXPERT)

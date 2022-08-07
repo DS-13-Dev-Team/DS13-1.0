@@ -1,8 +1,4 @@
-/decl/hierarchy/outfit/job/command
-	hierarchy_type = /decl/hierarchy/outfit/job/command
-	shoes = /obj/item/clothing/shoes/dutyboots
-
-/decl/hierarchy/outfit/job/command/cap
+/decl/hierarchy/outfit/job/command/cap/ishimura
 	name = OUTFIT_JOB_NAME("Captain")
 	uniform = /obj/item/clothing/under/deadspace/captain
 	l_ear = /obj/item/device/radio/headset/heads/captain
@@ -11,7 +7,7 @@
 	pda_type = /obj/item/modular_computer/pda/captain
 
 
-/decl/hierarchy/outfit/job/command/fl
+/decl/hierarchy/outfit/job/command/fl/ishimura
 	name = OUTFIT_JOB_NAME("First Lieutenant")
 	uniform = /obj/item/clothing/under/deadspace/first_lieutenant
 	l_ear = /obj/item/device/radio/headset/heads/fl
@@ -20,10 +16,10 @@
 	pda_type = /obj/item/modular_computer/pda/heads/fl
 
 
-/decl/hierarchy/outfit/job/command/be
+/decl/hierarchy/outfit/job/command/be/ishimura
 	name = OUTFIT_JOB_NAME("Bridge Ensign")
 	uniform = /obj/item/clothing/under/deadspace/bridge_officer
 	l_ear = /obj/item/device/radio/headset/headset_com
 	belt = /obj/item/weapon/storage/belt/holster/general/command
-	id_type = /obj/item/weapon/card/id/holo/command/be
+	id_type = /obj/item/weapon/card/id/holo/command/be/ishimura
 	pda_type = /obj/item/modular_computer/pda
