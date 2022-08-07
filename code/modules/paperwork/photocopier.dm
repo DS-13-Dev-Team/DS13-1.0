@@ -17,9 +17,9 @@
 	var/copying = FALSE // Is the printer busy with something? Sanity check variable.
 
 /obj/machinery/photocopier/examine(mob/user as mob)
-	. = ..()
+	.=..()
 	if(Adjacent(user))
-		. += "The screen shows there's [toner ? "[toner]" : "no"] toner left in the printer."
+		to_chat(user, "The screen shows there's [toner ? "[toner]" : "no"] toner left in the printer.")
 
 /obj/machinery/photocopier/meddle()
 	flick(insert_anim, src)
