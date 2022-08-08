@@ -75,8 +75,7 @@ const Options = (props, context) => {
             onDrag={(e, value) =>
               act('set_copies', {
                 num_copies: value,
-              })
-            }
+              })}
           />
         </Flex.Item>
         <Flex.Item>

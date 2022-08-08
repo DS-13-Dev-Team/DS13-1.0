@@ -43,8 +43,7 @@ export const LoginScreen = (_properties, context) => {
         onClick={() =>
           act('login', {
             login_type: 1,
-          })
-        }
+          })}
       />
       {!!isAI && (
         <Button
@@ -53,8 +52,7 @@ export const LoginScreen = (_properties, context) => {
           onClick={() =>
             act('login', {
               login_type: 2,
-            })
-          }
+            })}
         />
       )}
       {!!isRobot && (
@@ -64,8 +62,7 @@ export const LoginScreen = (_properties, context) => {
           onClick={() =>
             act('login', {
               login_type: 3,
-            })
-          }
+            })}
         />
       )}
     </FullscreenNotice>
