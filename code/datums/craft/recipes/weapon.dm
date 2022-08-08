@@ -108,10 +108,7 @@
 /datum/craft_recipe/weapon/ripper
 	name = "RC-DS Remote Control Disc Ripper"
 	result = /obj/item/weapon/gun/projectile/ripper
-	flags = CRAFT_ON_SURFACE
-	passive_steps = list(
-	list(CRAFT_PASSIVE, QUALITY_WORKBENCH, 1, 0)
-	)
+	flags = CRAFT_ON_WORKBENCH
 	time = 100
 	steps = list(
 	list(CRAFT_OBJECT, /obj/item/weapon/tool/wrench),
@@ -125,10 +122,7 @@
 /datum/craft_recipe/weapon/plasmacutter
 	name = "Plasma Cutter"
 	result = /obj/item/weapon/gun/energy/cutter/plasma
-	flags = CRAFT_ON_SURFACE
-	passive_steps = list(
-	list(CRAFT_PASSIVE, QUALITY_WORKBENCH, 1, 0)
-	)
+	flags = CRAFT_ON_WORKBENCH
 	time = 200
 	steps = list(
 	list(CRAFT_OBJECT, /obj/item/weapon/gun/energy/cutter, WORKTIME_NORMAL, FALSE, /obj/item/weapon/gun/energy/cutter/plasma),

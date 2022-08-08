@@ -3826,7 +3826,7 @@
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room14)
 "ms" = (
-/obj/structure/table/workbench,
+/obj/structure/workbench,
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/lower/maints/room51)
 "mt" = (
@@ -4033,7 +4033,7 @@
 "nb" = (
 /obj/item/weapon/cell/plasmacutter,
 /obj/item/weapon/cell/plasmacutter,
-/obj/structure/table/workbench,
+/obj/structure/workbench,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/lower/maints/room66)
 "nc" = (
@@ -5293,7 +5293,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/mining_colony/lower/maints/room41)
 "re" = (
-/obj/structure/table/workbench,
+/obj/structure/workbench,
 /turf/simulated/floor/tiled/dark,
 /area/mining_colony/lower/maints/room41)
 "rf" = (

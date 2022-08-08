@@ -14,12 +14,6 @@
 	return (T && !T.flipped) 	//If we are moving from a table, check if it is flipped.
 								//If the table we are standing on is not flipped, then we can move freely to another table.
 
-/obj/structure/table/is_surface()
-	if(can_plate && !material)
-		return FALSE
-	return TRUE
-
-
 //checks if projectile 'P' from turf 'from' can hit whatever is behind the table. Returns 1 if it can, 0 if bullet stops.
 /obj/structure/table/proc/check_cover(obj/item/projectile/P, turf/from)
 	var/turf/cover
@@ -119,7 +113,7 @@
 		break_to_parts()
 		return
 
-	if(!is_surface())
+	if(can_plate && !material)
 		to_chat(user, "<span class='warning'>There's nothing to put \the [W] on! Try adding plating to \the [src] first.</span>")
 		return
 

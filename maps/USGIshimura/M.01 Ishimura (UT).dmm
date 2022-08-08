@@ -4494,7 +4494,7 @@
 /area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "jq" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/structure/table/workbench,
+/obj/structure/workbench,
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "jr" = (

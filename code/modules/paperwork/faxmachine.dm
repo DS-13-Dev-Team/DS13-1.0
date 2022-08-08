@@ -151,6 +151,7 @@ GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
 
 /obj/machinery/photocopier/faxmachine/proc/sendfax(destination)
 	if(stat & (BROKEN|NOPOWER))
+		to_chat(usr, SPAN_NOTICE("[src] is unpowered."))
 		return
 
 	use_power(200)
@@ -168,6 +169,7 @@ GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
 
 /obj/machinery/photocopier/faxmachine/proc/receivefax(obj/item/incoming)
 	if(stat & (BROKEN|NOPOWER))
+		to_chat(usr, SPAN_NOTICE("[src] is unpowered."))
 		return 0
 
 	if(department == "Unknown")
@@ -194,6 +196,7 @@ GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
 
 /obj/machinery/photocopier/faxmachine/proc/send_admin_fax(mob/sender, destination)
 	if(stat & (BROKEN|NOPOWER))
+		to_chat(usr, SPAN_NOTICE("[src] is unpowered."))
 		return
 
 	use_power(200)

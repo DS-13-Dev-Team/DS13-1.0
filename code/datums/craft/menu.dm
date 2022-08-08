@@ -58,7 +58,8 @@
 			"icon" = sheet.icon_tag(sanitizeFileName(result_item["name"])),
 			"ref"  = "\ref[CR]",
 			"desc" = CR.get_description(),
-			"steps" = CR.get_step_descriptions()
+			"steps" = CR.get_step_descriptions(),
+			"workbench" = (CR.flags & CRAFT_ON_WORKBENCH),
 		)
 	var/list/items = list()
 	for(var/datum/craft_recipe/recipe in SScraft.categories[curr_category])

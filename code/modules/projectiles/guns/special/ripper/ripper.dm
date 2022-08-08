@@ -1,4 +1,3 @@
-
 /obj/item/weapon/gun/projectile/ripper
 	name = "RC-DS Remote Control Disc Ripper"
 	desc = "Suspends a spinning sawblade in the air with a mini gravity tether."

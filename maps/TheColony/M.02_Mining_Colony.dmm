@@ -7529,7 +7529,7 @@
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/mining/lockeroom)
 "avQ" = (
-/obj/structure/table/workbench,
+/obj/structure/workbench,
 /obj/machinery/firealarm{
 	dir = 8;
 	pixel_x = -24
@@ -10794,7 +10794,7 @@
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/abandoned/hydro)
 "aFp" = (
-/obj/structure/table/workbench,
+/obj/structure/workbench,
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/mining_colony/interior/science/researchandev)
@@ -15270,7 +15270,7 @@
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/c12_deadspace/lockeroom)
 "aRn" = (
-/obj/structure/table/workbench,
+/obj/structure/workbench,
 /obj/random/gun_tool,
 /obj/machinery/power/apc{
 	dir = 4;
@@ -17651,7 +17651,7 @@
 /turf/simulated/floor/plating,
 /area/mining_colony/interior/maint)
 "aWE" = (
-/obj/structure/table/workbench,
+/obj/structure/workbench,
 /turf/simulated/floor/plating,
 /area/mining_colony/interior/maint)
 "aWF" = (
@@ -21978,7 +21978,7 @@
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security)
 "bfY" = (
-/obj/structure/table/workbench,
+/obj/structure/workbench,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/maint/storage)
 "bfZ" = (
@@ -23068,7 +23068,7 @@
 	},
 /area/mining_colony/interior/enginieering/main_room)
 "bix" = (
-/obj/structure/table/workbench,
+/obj/structure/workbench,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/enginieering/main_room)
 "biy" = (
@@ -26855,7 +26855,7 @@
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/surface)
 "bsQ" = (
-/obj/structure/table/workbench,
+/obj/structure/workbench,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/surface)
 "bsR" = (

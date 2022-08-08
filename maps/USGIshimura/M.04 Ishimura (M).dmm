@@ -18345,7 +18345,7 @@
 /area/ishimura/upper/misc/hallway/central)
 "aKB" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/structure/table/workbench,
+/obj/structure/workbench,
 /turf/simulated/floor/dank/slides{
 	dir = 8
 	},
@@ -26815,7 +26815,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/ishimura/upper/research/biolab)
 "bah" = (
-/obj/structure/table/workbench,
+/obj/structure/workbench,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/research/biolab)
 "bai" = (
