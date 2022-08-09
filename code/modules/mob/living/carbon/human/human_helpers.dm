@@ -227,7 +227,7 @@
 // Returns true if, and only if, the human has gone from uncloaked to cloaked
 /mob/living/carbon/human/proc/add_cloaking_source(var/datum/cloaking_source)
 	var/has_uncloaked = clean_cloaking_sources()
-	LAZYDISTINCTADD(cloaking_sources, WEAKREF(cloaking_source))
+	LAZYOR(cloaking_sources, WEAKREF(cloaking_source))
 
 	// We don't present the cloaking message if the human was already cloaked just before cleanup.
 	if(!has_uncloaked && LAZYLEN(cloaking_sources) == 1)

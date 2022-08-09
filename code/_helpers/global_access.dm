@@ -653,8 +653,6 @@
 			return global.tickets;
 		if("total_unit_tests")
 			return global.total_unit_tests;
-		if("turbolifts")
-			return global.turbolifts;
 		if("turret_icons")
 			return global.turret_icons;
 		if("uniqueness_repository")
@@ -1360,8 +1358,6 @@
 			global.tickets=newval;
 		if("total_unit_tests")
 			global.total_unit_tests=newval;
-		if("turbolifts")
-			global.turbolifts=newval;
 		if("turret_icons")
 			global.turret_icons=newval;
 		if("uniqueness_repository")
@@ -1748,7 +1744,6 @@
 	"ticket_panels",
 	"tickets",
 	"total_unit_tests",
-	"turbolifts",
 	"turret_icons",
 	"uniqueness_repository",
 	"universe_has_ended",

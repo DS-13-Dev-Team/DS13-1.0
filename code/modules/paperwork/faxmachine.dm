@@ -125,10 +125,6 @@ GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
 				else
 					sendfax(destination)
 
-				if (sendcooldown)
-					spawn(sendcooldown) // cooldown time
-						sendcooldown = 0
-
 		if("dept")
 			var/lastdestination = destination
 			destination = tgui_input_list(usr, "Which department?", "Choose a department", (GLOB.all_fax_departments + admin_departments))
@@ -163,7 +159,6 @@ GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
 
 	if (success)
 		visible_message("[src] beeps, \"Message transmitted successfully.\"")
-		//sendcooldown = 600
 	else
 		visible_message("[src] beeps, \"Error transmitting message.\"")
 
@@ -196,8 +191,11 @@ GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
 
 /obj/machinery/photocopier/faxmachine/proc/send_admin_fax(mob/sender, destination)
 	if(stat & (BROKEN|NOPOWER))
-		to_chat(usr, SPAN_NOTICE("[src] is unpowered."))
+		to_chat(sender, SPAN_NOTICE("[src] is unpowered."))
 		return
+
+	if(sendcooldown)
+		to_chat(sender, SPAN_NOTICE("Transmitter arrays are still realigning."))
 
 	use_power(200)
 
@@ -231,6 +229,8 @@ GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
 		message_admins(sender, "[uppertext(destination)] FAX[intercepted ? "(Intercepted by [intercepted])" : null]", rcvdcopy, "UNKNOWN")
 
 	sendcooldown = 1800
+	spawn(sendcooldown)
+		sendcooldown = 0
 	sleep(50)
 	visible_message("[src] beeps, \"Message transmitted successfully.\"")
 

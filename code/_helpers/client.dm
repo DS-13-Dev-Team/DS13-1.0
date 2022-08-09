@@ -106,7 +106,7 @@
 
 	var/tracktype = GLOB.using_map.get_lobby_track(played_lobby_tracks)
 	var/music_track/MT = decls_repository.get_decl(tracktype)
-	LAZYDISTINCTADD(played_lobby_tracks,tracktype)
+	LAZYOR(played_lobby_tracks,tracktype)
 
 	MT.play_to(src, play_looped = FALSE)
 

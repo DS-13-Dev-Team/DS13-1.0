@@ -553,7 +553,7 @@ default behaviour is:
 		overlays |= auras
 
 /mob/living/proc/add_aura(var/obj/aura/aura)
-	LAZYDISTINCTADD(auras,aura)
+	LAZYOR(auras,aura)
 	update_icons()
 	return 1
 

@@ -376,13 +376,13 @@
 			var/new_rotation = rand(-45, 45)
 
 			if (mountee.dir != SOUTH)
-				LAZYASET(statmods, STATMOD_LAYER, mountpoint.layer + 0.1)
+				LAZYSET(statmods, STATMOD_LAYER, mountpoint.layer + 0.1)
 
 
 			user.default_rotation = new_rotation
 			user.default_pixel_y += 12
 			user.default_pixel_x -= 8
-			LAZYASET(statmods, STATMOD_SCALE,	-0.40)
+			LAZYSET(statmods, STATMOD_SCALE,	-0.40)
 			register_statmods(TRUE) //This will call animate_to_default and apply the changes we've recorded above
 
 
