@@ -105,7 +105,7 @@ NOTE: It checks usr by default. Supply the "user" argument if you wish to check 
 		return FALSE
 	if(!user.client)
 		return FALSE
-	if(!check_rights(R_ADMIN, FALSE, user.client)) // Are they allowed?
+	if(!check_rights(R_MOD|R_ADMIN, FALSE, user.client)) // Are they allowed?
 		return FALSE
 	return TRUE
 

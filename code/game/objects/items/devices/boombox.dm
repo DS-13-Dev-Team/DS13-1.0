@@ -45,7 +45,7 @@
 /obj/item/device/boombox/tgui_interact(mob/user, datum/tgui/ui = null)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "JukeBox", "Your Media Library")
+		ui = new(user, src, "JukeNotTheBox", "Your Media Library")
 		ui.open()
 
 /obj/item/device/boombox/ui_data()
