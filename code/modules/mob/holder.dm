@@ -95,6 +95,8 @@ var/list/holder_mob_icon_cache = list()
 	overlays |= M.overlays
 	var/mob/living/carbon/human/H = loc
 	last_holder = H
+	if(iscarbon(M))
+		w_class = ITEM_SIZE_NO_CONTAINER
 
 	update_held_icon()
 
