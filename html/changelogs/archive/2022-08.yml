@@ -9,3 +9,6 @@
   DTraitor:
   - bugfix: Fixed admins not being able to answer faxes on the Colony.
   - qol: Faxes and photocopiers use TGUI now.
+2022-08-09:
+  DTraitor:
+  - balance: Made monkeys too big for any containers to prevent pocket armies.
