@@ -72,6 +72,7 @@
 	return null
 
 /obj/machinery/atmospherics/valve/Destroy()
+	forceMove(null)
 	if(node1)
 		node1.disconnect(src)
 		qdel(network_node1)

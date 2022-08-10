@@ -34,6 +34,7 @@
 				initialize_directions = NORTH|SOUTH
 
 	Destroy()
+		forceMove(null)
 		if(node1)
 			node1.disconnect(src)
 			QDEL_NULL(network1)

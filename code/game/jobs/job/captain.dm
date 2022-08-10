@@ -35,6 +35,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 						SKILL_ANATOMY     = SKILL_ADEPT,
 						SKILL_FORENSICS   = SKILL_ADEPT)
 	skill_points = 20
+	salary = SALARY_HIGH_COMMAND
 
 /datum/job/cap/get_description_blurb()
 	return "You are the Colony Director. You are in charge of the overall situation in the colony. You are there to ensure that, overall, the colony's operations are safe and productive. You only answer to the CEC."
@@ -71,6 +72,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 						SKILL_ANATOMY     = SKILL_ADEPT,
 						SKILL_FORENSICS   = SKILL_ADEPT)
 	skill_points = 20
+	salary = SALARY_HIGH_COMMAND
 
 /datum/job/fl/get_description_blurb()
 	return "You are the First Lieutenant. You are the second-in-command to the Colony Director and, should the Colony Director be unavailable, inccapacitated, or killed, the person next in line to command the ship. Your job, normally, is organize department heads and hand out orders and directives from the Colony Director to the ship overall. You are subordinate to the Colony Director."
@@ -103,6 +105,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 						SKILL_ANATOMY     = SKILL_ADEPT,
 						SKILL_FORENSICS   = SKILL_ADEPT)
 	skill_points = 20
+	salary = SALARY_EDUCATED
 
 /datum/job/be/get_description_blurb()
 	return "You are a Bridge Ensign. You are the members of the crew that support Commmand and assist them in their endeavours. You are not in the line of succession if the Colony Director and First Lieutenant are unable to complete their duties. You are subordinate to the Colony Director and First Lieutenant."

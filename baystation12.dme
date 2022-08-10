@@ -3057,6 +3057,7 @@
 #include "code\modules\tram\tram_door.dm"
 #include "code\modules\tram\tram_landmark.dm"
 #include "code\modules\tram\tram_lift_master.dm"
+#include "code\modules\tram\tram_walls.dm"
 #include "code\modules\unitology\blade.dm"
 #include "code\modules\vehicles\bike.dm"
 #include "code\modules\vehicles\cargo_train.dm"

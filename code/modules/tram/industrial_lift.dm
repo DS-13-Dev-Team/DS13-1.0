@@ -8,8 +8,8 @@ GLOBAL_LIST_EMPTY(lifts)
 	density = FALSE
 	anchored = TRUE
 	max_health = 50
-	layer = LATTICE_LAYER //under pipes
 	plane = FLOOR_PLANE
+	layer = ABOVE_TILE_LAYER
 	appearance_flags = PIXEL_SCALE|KEEP_TOGETHER //no TILE_BOUND since we're potentially multitile
 
 	///ID used to determine what lift types we can merge with
@@ -63,6 +63,9 @@ GLOBAL_LIST_EMPTY(lifts)
 
 	set_movement_registrations()
 
+	var/turf/T = get_turf(src)
+	LAZYSET(T.zstructures, src, 2)
+
 	//since lift_master datums find all connected platforms when an industrial lift first creates it and then
 	//sets those platforms' lift_master_datum to itself, this check will only evaluate to true once per tram platform
 	if(!lift_master_datum && lift_master_type)
@@ -76,6 +79,8 @@ GLOBAL_LIST_EMPTY(lifts)
 /obj/structure/industrial_lift/Destroy()
 	GLOB.lifts.Remove(src)
 	lift_master_datum = null
+	var/turf/T = get_turf(src)
+	LAZYREMOVE(T.zstructures, src)
 	return ..()
 
 /obj/structure/industrial_lift/CanZPass(atom/A, direction)
@@ -92,12 +97,18 @@ GLOBAL_LIST_EMPTY(lifts)
 		RegisterSignal(turf_loc, COMSIG_ATOM_EXITED, .proc/UncrossedRemoveItemFromLift)
 		RegisterSignal(turf_loc, list(COMSIG_ATOM_ENTERED,COMSIG_ATOM_INITIALIZED_ON), .proc/AddItemOnLift)
 
+/obj/structure/industrial_lift/Moved(turf/OldLoc, Dir)
+	.=..()
+	LAZYREMOVE(OldLoc.zstructures, src)
+	var/turf/T = get_turf(src)
+	if(T)
+		LAZYSET(T.zstructures, src, 2)
+
 ///unset our movement registrations from turfs that no longer contain us (or every loc if turfs_to_unset is unspecified)
 /obj/structure/industrial_lift/proc/unset_movement_registrations(list/turfs_to_unset)
 	var/static/list/registrations = list(COMSIG_ATOM_ENTERED, COMSIG_ATOM_EXITED, COMSIG_ATOM_INITIALIZED_ON)
 	for(var/turf/turf_loc as anything in turfs_to_unset || locs)
 		UnregisterSignal(turf_loc, registrations)
-
 
 /obj/structure/industrial_lift/proc/UncrossedRemoveItemFromLift(datum/source, atom/movable/gone, direction)
 	SIGNAL_HANDLER

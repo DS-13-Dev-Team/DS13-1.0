@@ -9,6 +9,8 @@
 	standard 0 if fail
 */
 /mob/living/proc/apply_damage(var/damage = 0,var/damagetype = BRUTE, var/def_zone = null, var/blocked = 0, var/damage_flags = 0, var/used_weapon = null, var/allow_dismemberment = TRUE)
+	if(status_flags & GODMODE)
+		return
 	if(!damage || (blocked >= 100))	return 0
 
 	//Multiply the incoming damage

@@ -2,6 +2,7 @@
 	name = "floor"
 	icon = 'icons/turf/floors.dmi'
 	icon_state = "plating"
+	plane = FLOOR_PLANE
 
 /turf/unsimulated/floor/bluespace //non-doomsday version of bluespace for transit and wizden
 	name = "\improper bluespace"

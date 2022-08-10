@@ -23,7 +23,7 @@
 	var/silicate = 0 // number of units of silicate
 	var/on_frame = FALSE
 	var/material_color
-	blend_objects = list(/obj/machinery/door, /turf/simulated/wall) // Objects which to blend with
+	blend_objects = list(/obj/machinery/door, /turf/simulated/wall, /obj/structure/tramwall) // Objects which to blend with
 	noblend_objects = list(/obj/machinery/door/window)
 
 	atmos_canpass = CANPASS_PROC
@@ -323,8 +323,8 @@
 	var/turf/location = loc
 	. = ..()
 	for(var/obj/structure/window/W in orange(location, 1))
+		W.update_connections()
 		W.update_icon()
-
 
 /obj/structure/window/Move(NewLoc, Dir = 0, step_x = 0, step_y = 0, var/glide_size_override = 0)
 	var/ini_dir = dir

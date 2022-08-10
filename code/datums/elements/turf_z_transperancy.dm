@@ -1,4 +1,3 @@
-
 /datum/element/turf_z_transparency
 	element_flags = ELEMENT_DETACH
 

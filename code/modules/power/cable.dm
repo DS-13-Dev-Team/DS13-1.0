@@ -23,6 +23,7 @@ By design, d1 is the smallest direction and d2 is the highest
 */
 
 /obj/structure/cable
+	plane = FLOOR_PLANE
 	level = 1
 	anchored =1
 	var/datum/powernet/powernet

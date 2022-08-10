@@ -12,7 +12,7 @@
 	var/destroyed = 0
 	var/on_frame = FALSE
 
-	blend_objects = list(/obj/machinery/door, /turf/simulated/wall) // Objects which to blend with
+	blend_objects = list(/obj/machinery/door, /turf/simulated/wall, /obj/structure/tramwall) // Objects which to blend with
 	noblend_objects = list(/obj/machinery/door/window)
 
 /obj/structure/grille/Initialize()
@@ -20,6 +20,12 @@
 	update_connections(1)
 	update_icon()
 
+/obj/structure/grille/Destroy()
+	var/turf/location = loc
+	. = ..()
+	for(var/obj/structure/grille/W in orange(location, 1))
+		W.update_connections()
+		W.update_icon()
 
 /obj/structure/grille/update_icon()
 	update_onframe()

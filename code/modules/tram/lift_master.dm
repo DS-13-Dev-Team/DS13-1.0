@@ -12,6 +12,7 @@ GLOBAL_LIST_EMPTY(active_lifts_by_type)
 	var/static/list/ignored_smashthroughs = list(
 		/obj/machinery/power/supermatter,
 		/obj/machinery/holosign,
+		/obj/structure/lattice,
 		/obj/effect/shield,
 	)
 

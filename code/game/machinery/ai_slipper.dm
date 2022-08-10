@@ -5,6 +5,7 @@
 	anchored = 1.0
 	use_power = 1
 	idle_power_usage = 10
+	plane = FLOOR_PLANE
 	var/uses = 20
 	var/disabled = 1
 	var/lethal = 0

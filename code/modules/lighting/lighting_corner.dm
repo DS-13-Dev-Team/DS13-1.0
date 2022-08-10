@@ -109,6 +109,10 @@
 	if (largest_color_luminosity > 1)
 		. = 1 / largest_color_luminosity
 
+	var/old_r = cache_r
+	var/old_g = cache_g
+	var/old_b = cache_b
+
 	#if LIGHTING_SOFT_THRESHOLD != 0
 	else if (largest_color_luminosity < LIGHTING_SOFT_THRESHOLD)
 		. = 0 // 0 means soft lighting.
@@ -123,6 +127,9 @@
 	#endif
 
 	src.largest_color_luminosity = round(largest_color_luminosity, LIGHTING_ROUND_VALUE)
+
+	if(old_r == cache_r && old_g == cache_g && old_b == cache_b)
+		return
 
 	var/datum/lighting_object/lighting_object = master_NE?.lighting_object
 	if (lighting_object && !lighting_object.needs_update)

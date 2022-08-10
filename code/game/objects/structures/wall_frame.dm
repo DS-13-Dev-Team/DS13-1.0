@@ -18,13 +18,20 @@
 	max_health = 10
 	var/stripe_color
 
-	blend_objects = list(/obj/machinery/door, /turf/simulated/wall) // Objects which to blend with
+	blend_objects = list(/obj/machinery/door, /turf/simulated/wall, /obj/structure/tramwall) // Objects which to blend with
 	noblend_objects = list(/obj/machinery/door/window)
 
 /obj/structure/wall_frame/Initialize()
 	.=..()
 	update_connections(1)
 	update_icon()
+
+/obj/structure/wall_frame/Destroy()
+	var/turf/location = loc
+	. = ..()
+	for(var/obj/structure/wall_frame/W in orange(location, 1))
+		W.update_connections()
+		W.update_icon()
 
 /obj/structure/wall_frame/attackby(var/obj/item/W, var/mob/user)
 	src.add_fingerprint(user)

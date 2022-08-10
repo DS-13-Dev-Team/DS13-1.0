@@ -51,6 +51,7 @@ obj/machinery/atmospherics/trinary
 		return null
 
 	Destroy()
+		forceMove(null)
 		if(node1)
 			node1.disconnect(src)
 			qdel(network1)

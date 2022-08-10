@@ -226,6 +226,7 @@
 	return null
 
 /obj/machinery/atmospherics/omni/Destroy()
+	forceMove(null)
 	for(var/datum/omni_port/P in ports)
 		if(P.node)
 			P.node.disconnect(src)

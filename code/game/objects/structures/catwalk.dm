@@ -5,6 +5,7 @@
 	icon_state = "catwalk"
 	density = FALSE
 	anchored = TRUE
+	plane = FLOOR_PLANE
 	layer = CATWALK_LAYER
 	footstep_sounds = list(
 		'sound/effects/footstep/catwalk1.ogg',
@@ -44,7 +45,6 @@
 		if(L)
 			L.update_connections()
 			L.update_icon() //so siding get updated properly
-
 
 /obj/structure/catwalk/update_icon()
 	update_connections()
@@ -191,13 +191,3 @@
 /obj/effect/catwalk_plated/dank
 	icon_state = "catwalk_platedgrim"
 	plating_type = /decl/flooring/tiling/mono/dark
-
-
-
-
-/*
-	Rail for trams/monorail system
-*/
-/obj/structure/catwalk/rail
-	name = "rail"
-	simulated = FALSE	//This prevents it from being moved with the tram

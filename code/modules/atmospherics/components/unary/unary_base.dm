@@ -30,6 +30,7 @@
 		return null
 
 	Destroy()
+		forceMove(null)
 		if(node)
 			node.disconnect(src)
 			qdel(network)

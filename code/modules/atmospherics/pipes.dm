@@ -1,7 +1,7 @@
 #define SOUND_ID "pipe_leakage"
 
 /obj/machinery/atmospherics/pipe
-
+	plane = FLOOR_PLANE
 	var/datum/gas_mixture/air_temporary // used when reconstructing a pipeline that broke
 	var/datum/pipeline/parent
 	var/volume = 0
@@ -272,6 +272,7 @@
 		set_dir(4)
 
 /obj/machinery/atmospherics/pipe/simple/Destroy()
+	forceMove(null)
 	if(node1)
 		node1.disconnect(src)
 		node1 = null

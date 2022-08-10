@@ -90,10 +90,11 @@
 /obj/structure/table/Destroy()
 	material = null
 	reinforced = null
-	update_connections(1) // Update tables around us to ignore us (material=null forces no connections)
-	for(var/obj/structure/table/T in oview(src, 1))
-		T.update_icon()
+	var/turf/loc = get_turf(src)
 	. = ..()
+	for(var/obj/structure/table/T in oview(loc, 1))
+		T.update_connections()
+		T.update_icon()
 
 /obj/structure/table/examine(mob/user)
 	. = ..()
