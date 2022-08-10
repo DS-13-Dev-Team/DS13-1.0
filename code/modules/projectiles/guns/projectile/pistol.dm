@@ -1,4 +1,4 @@
-/obj/item/weapon/gun/projectile/colt
+/obj/item/gun/projectile/colt
 	name = "vintage .45 pistol"
 	desc = "A cheap Martian knock-off of a Colt M1911. Uses .45 rounds."
 	magazine_type = /obj/item/ammo_magazine/c45m
@@ -8,7 +8,7 @@
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	load_method = MAGAZINE
 
-/obj/item/weapon/gun/projectile/military
+/obj/item/gun/projectile/military
 	name = "military .45 pistol"
 	desc = "The WT45 - a mass produced kinetic sidearm in widespread service with the SCGDF. Uses .45 rounds."
 	magazine_type = /obj/item/ammo_magazine/c45mds/flash
@@ -20,14 +20,14 @@
 	accuracy = 5
 	fire_delay = 6.5
 
-/obj/item/weapon/gun/projectile/military/update_icon()
+/obj/item/gun/projectile/military/update_icon()
 	..()
 	if(ammo_magazine && ammo_magazine.stored_ammo.len)
 		icon_state = "usp"
 	else
 		icon_state = "usp-e"
 
-/obj/item/weapon/gun/projectile/sec
+/obj/item/gun/projectile/sec
 	name = ".45 pistol"
 	desc = "The NT Mk58 is a cheap, ubiquitous sidearm, produced by a NanoTrasen subsidiary. Found pretty much everywhere humans are. Uses .45 rounds."
 	icon_state = "secguncomp"
@@ -39,33 +39,33 @@
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	load_method = MAGAZINE
 
-/obj/item/weapon/gun/projectile/sec/update_icon()
+/obj/item/gun/projectile/sec/update_icon()
 	..()
 	if(ammo_magazine && ammo_magazine.stored_ammo.len)
 		icon_state = "secguncomp"
 	else
 		icon_state = "secguncomp-e"
 
-/obj/item/weapon/gun/projectile/sec/flash
+/obj/item/gun/projectile/sec/flash
 	name = ".45 signal pistol"
 
-/obj/item/weapon/gun/projectile/sec/wood
+/obj/item/gun/projectile/sec/wood
 	desc = "The NT Mk58 is a cheap, ubiquitous sidearm, produced by a NanoTrasen subsidiary. This one has a sweet wooden grip, among other modifications. Uses .45 rounds."
 	name = "custom .45 Pistol"
 	icon_state = "secgundark"
 	accuracy = 0
 
-/obj/item/weapon/gun/projectile/sec/wood/update_icon()
+/obj/item/gun/projectile/sec/wood/update_icon()
 	..()
 	if(ammo_magazine && ammo_magazine.stored_ammo.len)
 		icon_state = "secgundark"
 	else
 		icon_state = "secgundark-e"
 
-/obj/item/weapon/gun/projectile/sec/wood/lethal
+/obj/item/gun/projectile/sec/wood/lethal
 	magazine_type = /obj/item/ammo_magazine/c45m
 
-/obj/item/weapon/gun/projectile/silenced
+/obj/item/gun/projectile/silenced
 	name = "silenced pistol"
 	desc = "A handgun with an integral silencer. Uses .45 rounds."
 	icon_state = "silenced_pistol"
@@ -77,7 +77,7 @@
 	magazine_type = /obj/item/ammo_magazine/c45m
 	allowed_magazines = /obj/item/ammo_magazine/c45m
 
-/obj/item/weapon/gun/projectile/magnum_pistol
+/obj/item/gun/projectile/magnum_pistol
 	name = "antique heavy pistol"
 	desc = "An antique, heavy pistol with the manufacturer brand worn off from use. Despite it's age and use of non-pulse ammunition, it packs a powerful punch."
 	icon_state = "magnum"
@@ -92,14 +92,14 @@
 	mag_insert_sound = 'sound/weapons/guns/interaction/hpistol_magin.ogg'
 	mag_remove_sound = 'sound/weapons/guns/interaction/hpistol_magout.ogg'
 
-/obj/item/weapon/gun/projectile/magnum_pistol/update_icon()
+/obj/item/gun/projectile/magnum_pistol/update_icon()
 	..()
 	if(ammo_magazine && ammo_magazine.stored_ammo.len)
 		icon_state = "magnum"
 	else
 		icon_state = "magnum-e"
 
-/obj/item/weapon/gun/projectile/gyropistol
+/obj/item/gun/projectile/gyropistol
 	name = "gyrojet pistol"
 	desc = "A bulky pistol designed to fire self propelled rounds."
 	icon_state = "gyropistol"
@@ -115,14 +115,14 @@
 	mag_insert_sound = 'sound/weapons/guns/interaction/hpistol_magin.ogg'
 	mag_remove_sound = 'sound/weapons/guns/interaction/hpistol_magout.ogg'
 
-/obj/item/weapon/gun/projectile/gyropistol/update_icon()
+/obj/item/gun/projectile/gyropistol/update_icon()
 	..()
 	if(ammo_magazine)
 		icon_state = "gyropistolloaded"
 	else
 		icon_state = "gyropistol"
 
-/obj/item/weapon/gun/projectile/beretta
+/obj/item/gun/projectile/beretta
 	name = "9mm combat pistol"
 	desc = "The Lumoco Arms P9 Brigadier. A robust sidearm designed for military duty. Uses 9mm rounds."
 	magazine_type = /obj/item/ammo_magazine/mc9mmds
@@ -133,14 +133,14 @@
 	load_method = MAGAZINE
 	accuracy = 5
 
-/obj/item/weapon/gun/projectile/beretta/update_icon()
+/obj/item/gun/projectile/beretta/update_icon()
 	..()
 	if(ammo_magazine && ammo_magazine.stored_ammo.len)
 		icon_state = "92fs"
 	else
 		icon_state = "92fs-e"
 
-/obj/item/weapon/gun/projectile/pistol
+/obj/item/gun/projectile/pistol
 	name = "holdout pistol"
 	desc = "The Lumoco Arms P3 Whisper. A small, easily concealable gun. Uses 9mm rounds."
 	icon_state = "pistol"
@@ -154,11 +154,11 @@
 	magazine_type = /obj/item/ammo_magazine/mc9mm
 	allowed_magazines = /obj/item/ammo_magazine/mc9mm
 
-/obj/item/weapon/gun/projectile/pistol/flash
+/obj/item/gun/projectile/pistol/flash
 	name = "holdout signal pistol"
 	magazine_type = /obj/item/ammo_magazine/mc9mm/flash
 
-/obj/item/weapon/gun/projectile/pistol/attack_hand(mob/user as mob)
+/obj/item/gun/projectile/pistol/attack_hand(mob/user as mob)
 	if(user.get_inactive_hand() == src)
 		if(silenced)
 			if(user.l_hand != src && user.r_hand != src)
@@ -172,8 +172,8 @@
 			return
 	..()
 
-/obj/item/weapon/gun/projectile/pistol/attackby(obj/item/I as obj, mob/user as mob)
-	if(istype(I, /obj/item/weapon/silencer))
+/obj/item/gun/projectile/pistol/attackby(obj/item/I as obj, mob/user as mob)
+	if(istype(I, /obj/item/silencer))
 		if(user.l_hand != src && user.r_hand != src)	//if we're not in his hands
 			to_chat(user, "<span class='notice'>You'll need [src] in your hands to do that.</span>")
 			return
@@ -186,7 +186,7 @@
 		return
 	..()
 
-/obj/item/weapon/gun/projectile/pistol/update_icon()
+/obj/item/gun/projectile/pistol/update_icon()
 	..()
 	if(silenced)
 		icon_state = "pistol-silencer"
@@ -195,14 +195,14 @@
 	if(!(ammo_magazine && ammo_magazine.stored_ammo.len))
 		icon_state = "[icon_state]-e"
 
-/obj/item/weapon/silencer
+/obj/item/silencer
 	name = "silencer"
 	desc = "A silencer."
 	icon = 'icons/obj/gun.dmi'
 	icon_state = "silencer"
 	w_class = ITEM_SIZE_SMALL
 
-/obj/item/weapon/gun/projectile/pirate
+/obj/item/gun/projectile/pirate
 	name = "zip gun"
 	desc = "Little more than a barrel, handle, and firing mechanism, cheap makeshift firearms like this one are not uncommon in frontier systems."
 	icon_state = "zipgun"
@@ -227,10 +227,10 @@
 		/obj/item/ammo_casing/a556              = "5.56mm"
 		)
 
-/obj/item/weapon/gun/projectile/pirate/toggle_safety(var/mob/user)
+/obj/item/gun/projectile/pirate/toggle_safety(var/mob/user)
 	to_chat(user, "<span class='warning'>There's no safety on \the [src]!</span>")
 
-/obj/item/weapon/gun/projectile/pirate/New()
+/obj/item/gun/projectile/pirate/New()
 	ammo_type = pick(ammo_types)
 	desc += " Uses [ammo_types[ammo_type]] rounds."
 
@@ -239,17 +239,17 @@
 	..()
 
 // Zip gun construction.
-/obj/item/weapon/zipgunframe
+/obj/item/zipgunframe
 	name = "zip gun frame"
 	desc = "A half-finished zip gun."
 	icon_state = "zipgun0"
 	item_state = "zipgun-solid"
 	var/buildstate = 0
 
-/obj/item/weapon/zipgunframe/update_icon()
+/obj/item/zipgunframe/update_icon()
 	icon_state = "zipgun[buildstate]"
 
-/obj/item/weapon/zipgunframe/examine(mob/user)
+/obj/item/zipgunframe/examine(mob/user)
 	. = ..()
 	..(user)
 	switch(buildstate)
@@ -257,7 +257,7 @@
 		if(2) to_chat(user, "It has a barrel that has been secured to the stock with tape.")
 		if(3) to_chat(user, "It has a trigger and firing pin assembly loosely fitted into place.")
 
-/obj/item/weapon/zipgunframe/attackby(var/obj/item/thing, var/mob/user)
+/obj/item/zipgunframe/attackby(var/obj/item/thing, var/mob/user)
 	if(istype(thing,/obj/item/pipe) && buildstate == 0)
 		qdel(thing)
 		user.visible_message("<span class='notice'>\The [user] fits \the [thing] to \the [src] as a crude barrel.</span>")
@@ -271,7 +271,7 @@
 		buildstate++
 		update_icon()
 		return
-	else if(istype(thing,/obj/item/device/assembly/mousetrap) && buildstate == 2)
+	else if(istype(thing,/obj/item/assembly/mousetrap) && buildstate == 2)
 		qdel(thing)
 		user.visible_message("<span class='notice'>\The [user] takes apart \the [thing] and uses the parts to construct a crude trigger and firing mechanism inside the assembly.</span>")
 		add_fingerprint(user)
@@ -281,8 +281,8 @@
 	else if(isScrewdriver(thing) && buildstate == 3)
 		user.visible_message("<span class='notice'>\The [user] secures the trigger assembly with \the [thing].</span>")
 		playsound(loc, 'sound/items/Screwdriver.ogg', 50, 1)
-		var/obj/item/weapon/gun/projectile/pirate/zipgun
-		zipgun = new/obj/item/weapon/gun/projectile/pirate { starts_loaded = 0 } (loc)
+		var/obj/item/gun/projectile/pirate/zipgun
+		zipgun = new/obj/item/gun/projectile/pirate { starts_loaded = 0 } (loc)
 		if(ismob(loc))
 			var/mob/M = loc
 			M.drop_from_inventory(src)

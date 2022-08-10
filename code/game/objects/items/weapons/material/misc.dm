@@ -1,4 +1,4 @@
-/obj/item/weapon/material/harpoon
+/obj/item/material/harpoon
 	name = "harpoon"
 	sharp = 1
 	edge = 1
@@ -9,7 +9,7 @@
 	attack_verb = list("jabbed","stabbed","ripped")
 	unbreakable = 1
 
-/obj/item/weapon/material/hatchet
+/obj/item/material/hatchet
 	name = "hatchet"
 	desc = "A very sharp axe blade upon a short fibremetal handle. It has a long history of chopping things, but now it is used for chopping wood."
 	icon = 'icons/obj/weapons.dmi'
@@ -26,7 +26,7 @@
 	hitsound = "chop"
 	unbreakable = 1
 
-/obj/item/weapon/material/hatchet/tacknife
+/obj/item/material/hatchet/tacknife
 	name = "tactical knife"
 	desc = "You'd be killing loads of people if this was Medal of Valor: Heroes of Space."
 	icon = 'icons/obj/weapons.dmi'
@@ -37,7 +37,7 @@
 	applies_material_colour = 1
 	unbreakable = 1
 
-/obj/item/weapon/material/hatchet/machete
+/obj/item/material/hatchet/machete
 	name = "machete"
 	desc = "A long, sturdy blade with a rugged handle. Leading the way to cursed treasures since before space travel."
 	item_state = "machete"
@@ -49,20 +49,20 @@
 	unbreakable = 1
 	tool_qualities = list(QUALITY_SAWING = 30, QUALITY_CUTTING = 40, QUALITY_WIRE_CUTTING = 15)
 
-/obj/item/weapon/material/hatchet/machete/Initialize()
+/obj/item/material/hatchet/machete/Initialize()
 	icon_state = "machete[pick("","_red","_blue", "_black", "_olive")]"
 	. = ..()
 
-/obj/item/weapon/material/hatchet/machete/deluxe
+/obj/item/material/hatchet/machete/deluxe
 	name = "deluxe machete"
 	desc = "A fine example of a machete, with a polished blade, wooden handle and a leather cord loop."
 	tool_qualities = list(QUALITY_SAWING = 40, QUALITY_CUTTING = 45, , QUALITY_WIRE_CUTTING = 20)
 
-/obj/item/weapon/material/hatchet/machete/deluxe/Initialize()
+/obj/item/material/hatchet/machete/deluxe/Initialize()
 	. = ..()
 	icon_state = "machetedx"
 
-/obj/item/weapon/material/minihoe // -- Numbers
+/obj/item/material/minihoe // -- Numbers
 	name = "mini hoe"
 	desc = "It's used for removing weeds or scratching your back."
 	icon = 'icons/obj/weapons.dmi'
@@ -74,7 +74,7 @@
 	attack_verb = list("slashed", "sliced", "cut", "clawed")
 	unbreakable = 1
 
-/obj/item/weapon/material/scythe
+/obj/item/material/scythe
 	icon_state = "scythe0"
 	name = "scythe"
 	desc = "A sharp and curved blade on a long fibremetal handle, this tool makes it easy to reap what you sow."

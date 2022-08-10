@@ -1,38 +1,38 @@
 /datum/gear/cane
 	display_name = "cane"
-	path = /obj/item/weapon/cane
+	path = /obj/item/cane
 
 /datum/gear/dice
 	display_name = "dice pack"
-	path = /obj/item/weapon/storage/pill_bottle/dice
+	path = /obj/item/storage/pill_bottle/dice
 
 /datum/gear/dice/nerd
 	display_name = "dice pack (gaming)"
-	path = /obj/item/weapon/storage/pill_bottle/dice_nerd
+	path = /obj/item/storage/pill_bottle/dice_nerd
 
 /datum/gear/cards
 	display_name = "deck of cards"
-	path = /obj/item/weapon/deck/cards
+	path = /obj/item/deck/cards
 
 /datum/gear/tarot
 	display_name = "deck of tarot cards"
-	path = /obj/item/weapon/deck/tarot
+	path = /obj/item/deck/tarot
 
 /datum/gear/holder
 	display_name = "card holder"
-	path = /obj/item/weapon/deck/holder
+	path = /obj/item/deck/holder
 
 /datum/gear/cardemon_pack
 	display_name = "Cardemon booster pack"
-	path = /obj/item/weapon/pack/cardemon
+	path = /obj/item/pack/cardemon
 
 /datum/gear/spaceball_pack
 	display_name = "Spaceball booster pack"
-	path = /obj/item/weapon/pack/spaceball
+	path = /obj/item/pack/spaceball
 
 /datum/gear/flask
 	display_name = "flask"
-	path = /obj/item/weapon/reagent_containers/food/drinks/flask/barflask
+	path = /obj/item/reagent_containers/food/drinks/flask/barflask
 
 /datum/gear/flask/New()
 	..()
@@ -40,7 +40,7 @@
 
 /datum/gear/vacflask
 	display_name = "vacuum-flask"
-	path = /obj/item/weapon/reagent_containers/food/drinks/flask/vacuumflask
+	path = /obj/item/reagent_containers/food/drinks/flask/vacuumflask
 
 /datum/gear/vacflask/New()
 	..()
@@ -48,12 +48,12 @@
 
 /datum/gear/coffeecup
 	display_name = "coffee cup"
-	path = /obj/item/weapon/reagent_containers/food/drinks/coffeecup
+	path = /obj/item/reagent_containers/food/drinks/coffeecup
 	flags = GEAR_HAS_TYPE_SELECTION
 
 /datum/gear/boot_knife
 	display_name = "boot knife"
-	path = /obj/item/weapon/material/kitchen/utensil/knife/boot
+	path = /obj/item/material/kitchen/utensil/knife/boot
 	cost = 3
 
 
@@ -62,13 +62,13 @@
 	display_name = "lunchbox"
 	description = "A little lunchbox."
 	cost = 2
-	path = /obj/item/weapon/storage/lunchbox
+	path = /obj/item/storage/lunchbox
 
 /datum/gear/lunchbox/New()
 	..()
 	var/list/lunchboxes = list()
-	for(var/lunchbox_type in typesof(/obj/item/weapon/storage/lunchbox))
-		var/obj/item/weapon/storage/lunchbox/lunchbox = lunchbox_type
+	for(var/lunchbox_type in typesof(/obj/item/storage/lunchbox))
+		var/obj/item/storage/lunchbox/lunchbox = lunchbox_type
 		if(!initial(lunchbox.filled))
 			lunchboxes[initial(lunchbox.name)] = lunchbox_type
 	gear_tweaks += new/datum/gear_tweak/path(lunchboxes)
@@ -76,7 +76,7 @@
 
 /datum/gear/towel
 	display_name = "towel"
-	path = /obj/item/weapon/towel
+	path = /obj/item/towel
 	flags = GEAR_HAS_COLOR_SELECTION
 
 /datum/gear/plush_toy
@@ -96,16 +96,16 @@
 /datum/gear/mirror/
 	display_name = "handheld mirror"
 	sort_category = "Cosmetics"
-	path = /obj/item/weapon/mirror
+	path = /obj/item/mirror
 
 /datum/gear/lipstick
 	display_name = "lipstick selection"
-	path = /obj/item/weapon/lipstick
+	path = /obj/item/lipstick
 	flags = GEAR_HAS_TYPE_SELECTION
 
 /datum/gear/comb
 	display_name = "plastic comb"
-	path = /obj/item/weapon/haircomb
+	path = /obj/item/haircomb
 	flags = GEAR_HAS_COLOR_SELECTION
 
 /datum/gear/mask
@@ -123,23 +123,23 @@
 
 /datum/gear/matchbook
 	display_name = "matchbook"
-	path = /obj/item/weapon/storage/box/matches
+	path = /obj/item/storage/box/matches
 
 /datum/gear/lighter
 	display_name = "cheap lighter"
-	path = /obj/item/weapon/flame/lighter
+	path = /obj/item/flame/lighter
 
 /datum/gear/zippo
 	display_name = "zippo"
-	path = /obj/item/weapon/flame/lighter/zippo
+	path = /obj/item/flame/lighter/zippo
 
 /datum/gear/ashtray
 	display_name = "ashtray, plastic"
-	path = /obj/item/weapon/material/ashtray/plastic
+	path = /obj/item/material/ashtray/plastic
 
 /datum/gear/cigars
 	display_name = "fancy cigar case"
-	path = /obj/item/weapon/storage/fancy/cigar
+	path = /obj/item/storage/fancy/cigar
 	cost = 2
 
 /datum/gear/cigar

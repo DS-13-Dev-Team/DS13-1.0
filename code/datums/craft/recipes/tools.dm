@@ -9,12 +9,12 @@
 
 /datum/craft_recipe/tool/repairkit
 	name = "Repair Kit"
-	result = /obj/item/weapon/tool/repairkit
+	result = /obj/item/tool/repairkit
 	steps = list(
 		list(CRAFT_MATERIAL, MATERIAL_STEEL),
-		list(CRAFT_OBJECT, /obj/item/weapon/tool),
-		list(CRAFT_OBJECT, /obj/item/weapon/tool),
-		list(CRAFT_OBJECT, /obj/item/weapon/tool),
+		list(CRAFT_OBJECT, /obj/item/tool),
+		list(CRAFT_OBJECT, /obj/item/tool),
+		list(CRAFT_OBJECT, /obj/item/tool),
 		list(CRAFT_STACK, /obj/item/stack/cable_coil, 5)
 	)
 
@@ -29,7 +29,7 @@
 	desc = "This recipe is used to upgrade a tool's potential, unlocking an extra modification slot to allow more toolmods to be fitted onto it."
 	result = /obj/item/craft
 	steps = list(
-		list(CRAFT_OBJECT, /obj/item/weapon/tool),
+		list(CRAFT_OBJECT, /obj/item/tool),
 		list(CRAFT_STACK, /obj/item/stack/power_node, 1)
 	)
 
@@ -39,7 +39,7 @@
 */
 /datum/craft_recipe/tool/expansion/try_step(step, I, user, obj/item/craft/target)
 	if (istool(I))
-		var/obj/item/weapon/tool/T = I
+		var/obj/item/tool/T = I
 		if (T.max_modifications <= 0)
 			to_chat(user, SPAN_DANGER("The [I] cannot be modified."))
 			return FALSE
@@ -51,7 +51,7 @@
 	To complete, we move the tool out of the craft object, then delete that object.
 */
 /datum/craft_recipe/tool/expansion/spawn_result(obj/item/craft/C, mob/living/user)
-	var/obj/item/weapon/tool/T = locate() in C
+	var/obj/item/tool/T = locate() in C
 	if (!T)
 		return FALSE
 
@@ -75,7 +75,7 @@
 *************************/
 /datum/craft_recipe/tool/webtape
 	name = "Web tape"
-	result = /obj/item/weapon/tool/tape_roll/web
+	result = /obj/item/tool/tape_roll/web
 	steps = list(
 		list(CRAFT_STACK, /obj/item/stack/medical/bruise_pack/handmade, 3),
 		list(CRAFT_OBJECT, /obj/effect/spider/stickyweb)
@@ -84,16 +84,16 @@
 //A shard of glass wrapped in tape makes a crude sort of knife
 /datum/craft_recipe/tool/shiv
 	name = "Shiv"
-	result = /obj/item/weapon/tool/shiv
+	result = /obj/item/tool/shiv
 	steps = list(
-		list(CRAFT_OBJECT, /obj/item/weapon/material/shard),
+		list(CRAFT_OBJECT, /obj/item/material/shard),
 		list(CRAFT_TOOL, QUALITY_ADHESIVE, 15, 70)
 	)
 
 //A rod wrapped in tape makes a crude screwthing
 /datum/craft_recipe/tool/screwpusher
 	name = "Screwpusher"
-	result = /obj/item/weapon/tool/screwdriver/improvised
+	result = /obj/item/tool/screwdriver/improvised
 	steps = list(
 		list(CRAFT_STACK, /obj/item/stack/rods),
 		list(CRAFT_TOOL, QUALITY_ADHESIVE, 15, 70)
@@ -102,7 +102,7 @@
 //Rods bent into wierd shapes and held together with a screw
 /datum/craft_recipe/tool/wiremanglers
 	name = "Wiremanglers"
-	result = /obj/item/weapon/tool/wirecutters/improvised
+	result = /obj/item/tool/wirecutters/improvised
 	steps = list(
 		list(CRAFT_STACK, /obj/item/stack/rods, 1),
 		list(CRAFT_TOOL, QUALITY_PRYING, 10, 70),
@@ -115,7 +115,7 @@
 //A pair of rods laboriously twisted into a useful shape
 /datum/craft_recipe/tool/rebar
 	name = "Rebar"
-	result = /obj/item/weapon/tool/crowbar/improvised
+	result = /obj/item/tool/crowbar/improvised
 	steps = list(
 		list(CRAFT_STACK, /obj/item/stack/rods, 2, "time" = 300)
 	)
@@ -124,7 +124,7 @@
 //A metal sheet with some holes cut in it
 /datum/craft_recipe/tool/sheetspanner
 	name = "Sheet spanner"
-	result = /obj/item/weapon/tool/wrench/improvised
+	result = /obj/item/tool/wrench/improvised
 	steps = list(
 		list(CRAFT_MATERIAL, MATERIAL_STEEL),
 		list(CRAFT_TOOL,QUALITY_SAWING, 10, 70)
@@ -134,7 +134,7 @@
 //A rod and a sheet bound together with ducks
 /datum/craft_recipe/tool/junkshovel
 	name = "Junk shovel"
-	result = /obj/item/weapon/tool/shovel/improvised
+	result = /obj/item/tool/shovel/improvised
 	steps = list(
 		list(CRAFT_MATERIAL, MATERIAL_STEEL),
 		list(CRAFT_STACK,/obj/item/stack/rods, 1, 30),
@@ -145,7 +145,7 @@
 //A rod with bits of pointy shrapnel stuck to it. Good weapon
 /datum/craft_recipe/tool/choppa
 	name = "Choppa"
-	result = /obj/item/weapon/tool/saw/improvised
+	result = /obj/item/tool/saw/improvised
 	steps = list(
 		list(CRAFT_STACK, /obj/item/stack/rods, 1, 30),
 		list(CRAFT_STACK, /obj/item/stack/material/steel, 2, 30),
@@ -155,13 +155,13 @@
 //Some pipes duct taped together, attached to a tank and an igniter
 /datum/craft_recipe/tool/jurytorch
 	name = "Jury-rigged torch"
-	result = /obj/item/weapon/tool/weldingtool/improvised
+	result = /obj/item/tool/weldingtool/improvised
 	steps = list(
 		list(CRAFT_OBJECT,/obj/item/pipe, "time" = 60),
 		list(CRAFT_OBJECT,/obj/item/pipe, "time" = 60),
 		list(CRAFT_TOOL, QUALITY_ADHESIVE, 15, 150),
-		list(CRAFT_OBJECT,/obj/item/device/assembly/igniter),
-		list(CRAFT_OBJECT,/obj/item/weapon/tank/emergency/oxygen, 1)
+		list(CRAFT_OBJECT,/obj/item/assembly/igniter),
+		list(CRAFT_OBJECT,/obj/item/tank/emergency/oxygen, 1)
 	)
 
 /*************************
@@ -184,7 +184,7 @@
 	result = /obj/item/ammo_magazine/rivet/empty
 	steps = list(
 		list(CRAFT_MATERIAL, MATERIAL_PLASTIC, 4),
-		list(CRAFT_OBJECT, /obj/item/weapon/cell)
+		list(CRAFT_OBJECT, /obj/item/cell)
 	)
 
 
@@ -196,7 +196,7 @@
 //Metal rods reinforced with fiber tape
 /datum/craft_recipe/tool/brace
 	name = "Tool mod: Brace bar"
-	result = /obj/item/weapon/tool_modification/reinforcement/stick
+	result = /obj/item/tool_modification/reinforcement/stick
 	steps = list(
 		list(CRAFT_STACK, /obj/item/stack/rods, 1, 30),
 		list(CRAFT_STACK, /obj/item/stack/rods, 1, 30),
@@ -208,7 +208,7 @@
 //A metal plate with bolts drilled and wrenched into it
 /datum/craft_recipe/tool/plate
 	name = "Tool mod: reinforcement plate"
-	result = /obj/item/weapon/tool_modification/reinforcement/plating
+	result = /obj/item/tool_modification/reinforcement/plating
 	steps = list(
 		list(CRAFT_MATERIAL, MATERIAL_STEEL, 2),
 		list(CRAFT_TOOL,QUALITY_DRILLING, 10, 150),
@@ -220,7 +220,7 @@
 //An array of sharpened bits of metal to turn a tool into more of a weapon
 /datum/craft_recipe/tool/spikes
 	name = "Tool mod: Spikes"
-	result = /obj/item/weapon/tool_modification/augment/spikes
+	result = /obj/item/tool_modification/augment/spikes
 	steps = list(
 		list(CRAFT_STACK, /obj/item/stack/rods, 2, 30),
 		list(CRAFT_TOOL, QUALITY_WELDING, 10, 150),

@@ -17,7 +17,7 @@
 /obj/structure/closet/gmcloset/WillContain()
 	return list(
 		/obj/item/clothing/head/that = 2,
-		/obj/item/device/radio/headset/headset_service = 2,
+		/obj/item/radio/headset/headset_service = 2,
 		/obj/item/clothing/head/hairflower,
 		/obj/item/clothing/head/hairflower/pink,
 		/obj/item/clothing/head/hairflower/yellow,
@@ -40,8 +40,8 @@
 /obj/structure/closet/chefcloset/WillContain()
 	return list(
 		/obj/item/clothing/under/waiter = 2,
-		/obj/item/device/radio/headset/headset_service = 2,
-		/obj/item/weapon/storage/box/mousetraps = 2,
+		/obj/item/radio/headset/headset_service = 2,
+		/obj/item/storage/box/mousetraps = 2,
 		/obj/item/clothing/under/rank/chef,
 		/obj/item/clothing/head/chefhat
 	)
@@ -58,14 +58,14 @@
 /obj/structure/closet/jcloset/WillContain()
 	return list(
 		/obj/item/clothing/under/rank/janitor,
-		/obj/item/device/radio/headset/headset_service,
+		/obj/item/radio/headset/headset_service,
 		/obj/item/clothing/gloves/thick,
-		/obj/item/device/flashlight,
-		/obj/item/weapon/caution = 4,
-		/obj/item/device/lightreplacer,
-		/obj/item/weapon/storage/bag/trash,
+		/obj/item/flashlight,
+		/obj/item/caution = 4,
+		/obj/item/lightreplacer,
+		/obj/item/storage/bag/trash,
 		/obj/item/clothing/shoes/dutyboots,
-		/obj/item/weapon/soap,
+		/obj/item/soap,
 		/obj/random/tool)
 
 /*

@@ -92,11 +92,11 @@
 
 /obj/structure/catwalk/attackby(obj/item/C as obj, mob/user as mob)
 	if(isWelder(C))
-		var/obj/item/weapon/tool/weldingtool/WT = C
+		var/obj/item/tool/weldingtool/WT = C
 		if(WT.consume_resources(0, user))
 			deconstruct(user)
 		return
-	if(istype(C, /obj/item/weapon/gun/energy/cutter))
+	if(istype(C, /obj/item/gun/energy/cutter))
 		deconstruct(user)
 		return
 	if(isCrowbar(C) && plated_tile)

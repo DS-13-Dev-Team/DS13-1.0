@@ -3,7 +3,7 @@
 	desc = "Used to control a linked teleportation hub and station."
 	icon_keyboard = "teleport_key"
 	icon_screen = "teleport"
-	circuit = /obj/item/weapon/circuitboard/teleporter
+	circuit = /obj/item/circuitboard/teleporter
 	var/obj/machinery/teleport/station/station = null
 	var/obj/machinery/teleport/hub/hub = null
 	var/obj/item/locked = null
@@ -47,8 +47,8 @@
 
 
 /obj/machinery/computer/teleporter/attackby(var/obj/I, var/mob/living/user)
-	if(istype(I, /obj/item/weapon/card/data/))
-		var/obj/item/weapon/card/data/C = I
+	if(istype(I, /obj/item/card/data/))
+		var/obj/item/card/data/C = I
 		if(stat & (NOPOWER|BROKEN) & (C.function != "teleporter"))
 			attack_hand(user)
 
@@ -105,7 +105,7 @@
 	var/list/L = list()
 	var/list/areaindex = list()
 
-	for(var/obj/item/device/radio/beacon/R in world)
+	for(var/obj/item/radio/beacon/R in world)
 		var/turf/T = get_turf(R)
 		if (!T)
 			continue
@@ -118,7 +118,7 @@
 			areaindex[tmpname] = 1
 		L[tmpname] = R
 
-	for (var/obj/item/weapon/implant/tracking/I in world)
+	for (var/obj/item/implant/tracking/I in world)
 		if (!I.implanted || !ismob(I.loc))
 			continue
 		else
@@ -248,7 +248,7 @@
 	overlays.Cut()
 	overlays += image('icons/obj/stationobjs.dmi', icon_state = "controller-wires")
 
-/obj/machinery/teleport/station/attackby(var/obj/item/weapon/W, var/mob/user)
+/obj/machinery/teleport/station/attackby(var/obj/item/W, var/mob/user)
 	attack_hand(user)
 
 /obj/machinery/teleport/station/attack_ai(var/mob/user)

@@ -1,4 +1,4 @@
-/obj/item/weapon/extinguisher
+/obj/item/extinguisher
 	name = "fire extinguisher"
 	desc = "A traditional red fire extinguisher."
 	icon = 'icons/obj/items.dmi'
@@ -21,7 +21,7 @@
 	var/safety = 1
 	var/sprite_name = "fire_extinguisher"
 
-/obj/item/weapon/extinguisher/mini
+/obj/item/extinguisher/mini
 	name = "fire extinguisher"
 	desc = "A light and compact fibreglass-framed model fire extinguisher."
 	icon_state = "miniFE0"
@@ -34,25 +34,25 @@
 	max_water = 1000
 	sprite_name = "miniFE"
 
-/obj/item/weapon/extinguisher/Initialize()
+/obj/item/extinguisher/Initialize()
 	create_reagents(max_water)
 	reagents.add_reagent(/datum/reagent/water, max_water)
 
 	. = ..()
 
-/obj/item/weapon/extinguisher/examine(mob/user)
+/obj/item/extinguisher/examine(mob/user)
 	if(..(user, 0))
 		to_chat(user, text("\icon[] [] contains [] units of water left!", src, src.name, src.reagents.total_volume))
 	return
 
-/obj/item/weapon/extinguisher/attack_self(mob/user as mob)
+/obj/item/extinguisher/attack_self(mob/user as mob)
 	safety = !safety
 	src.icon_state = "[sprite_name][!safety]"
 	src.desc = "The safety is [safety ? "on" : "off"]."
 	to_chat(user, "The safety is [safety ? "on" : "off"].")
 	return
 
-/obj/item/weapon/extinguisher/attack(mob/living/M, mob/user)
+/obj/item/extinguisher/attack(mob/living/M, mob/user)
 	if(user.a_intent == I_HELP)
 		if(src.safety || (world.time < src.last_use + 20)) // We still catch help intent to not randomly attack people
 			return
@@ -69,7 +69,7 @@
 		return 1 // No afterattack
 	return ..()
 
-/obj/item/weapon/extinguisher/proc/propel_object(obj/O, mob/user, movementdirection)
+/obj/item/extinguisher/proc/propel_object(obj/O, mob/user, movementdirection)
 	if(O.anchored) return
 
 	var/obj/structure/bed/chair/C
@@ -87,7 +87,7 @@
 		O.Move(get_step(user,movementdirection), movementdirection)
 		sleep(3)
 
-/obj/item/weapon/extinguisher/afterattack(atom/target, mob/user, flag)
+/obj/item/extinguisher/afterattack(atom/target, mob/user, flag)
 	//TODO; Add support for reagents in water.
 
 	if( istype(target, /obj/structure/reagent_dispensers) && flag)
@@ -124,7 +124,7 @@
 		return ..()
 	return
 
-/obj/item/weapon/extinguisher/proc/do_spray(atom/Target)
+/obj/item/extinguisher/proc/do_spray(atom/Target)
 	var/turf/T = get_turf(Target)
 	var/per_particle = min(spray_amount, reagents.total_volume)/spray_particles
 	for(var/a = 1 to spray_particles)

@@ -224,7 +224,7 @@ proc/get_craft_item(path)
 		COLOR_PINK = "Pink",
 		COLOR_MAROON = "Brown"
 	)
-	var/obj/item/weapon/storage/pill_bottle/PB = new()
+	var/obj/item/storage/pill_bottle/PB = new()
 	var/icon/I = getFlatIcon(PB)
 	I.Scale(96, 96)
 	assets = list("Default_pill_bottle" = I)

@@ -11,7 +11,7 @@
 /*
  * Pens
  */
-/obj/item/weapon/pen
+/obj/item/pen
 	desc = "It's a normal black ink pen."
 	name = "pen"
 	icon = 'icons/obj/bureaucracy.dmi'
@@ -28,30 +28,30 @@
 	var/font = PEN_FONT
 
 
-/obj/item/weapon/pen/blue
+/obj/item/pen/blue
 	desc = "It's a normal blue ink pen."
 	icon_state = "pen_blue"
 	colour = "blue"
 	color_description = "blue ink"
 
-/obj/item/weapon/pen/red
+/obj/item/pen/red
 	desc = "It's a normal red ink pen."
 	icon_state = "pen_red"
 	colour = "red"
 	color_description = "red ink"
 
-/obj/item/weapon/pen/green
+/obj/item/pen/green
 	desc = "It's a normal green ink pen."
 	icon_state = "pen_green"
 	colour = "green"
 
-/obj/item/weapon/pen/multi
+/obj/item/pen/multi
 	desc = "It's a pen with multiple colors of ink!"
 	var/selectedColor = 1
 	var/colors = list("black","blue","red","green")
 	var/color_descriptions = list("black ink", "blue ink", "red ink", "green ink")
 
-/obj/item/weapon/pen/multi/attack_self(mob/user)
+/obj/item/pen/multi/attack_self(mob/user)
 	if(++selectedColor > length(colors))
 		selectedColor = 1
 
@@ -65,14 +65,14 @@
 
 	to_chat(user, "<span class='notice'>Changed color to '[colour].'</span>")
 
-/obj/item/weapon/pen/invisible
+/obj/item/pen/invisible
 	desc = "It's an invisble pen marker."
 	icon_state = "pen"
 	colour = "white"
 	color_description = "transluscent ink"
 
 
-/obj/item/weapon/pen/attack(atom/A, mob/user as mob, target_zone)
+/obj/item/pen/attack(atom/A, mob/user as mob, target_zone)
 	if(ismob(A))
 		var/mob/M = A
 		if(ishuman(A) && user.a_intent == I_HELP && target_zone == BP_HEAD)
@@ -92,15 +92,15 @@
  * Reagent pens
  */
 
-/obj/item/weapon/pen/reagent
+/obj/item/pen/reagent
 	atom_flags = ATOM_FLAG_OPEN_CONTAINER
 	origin_tech = list(TECH_MATERIAL = 2, TECH_ILLEGAL = 5)
 
-/obj/item/weapon/pen/reagent/New()
+/obj/item/pen/reagent/New()
 	..()
 	create_reagents(30)
 
-/obj/item/weapon/pen/reagent/attack(mob/living/M, mob/user, var/target_zone)
+/obj/item/pen/reagent/attack(mob/living/M, mob/user, var/target_zone)
 
 	if(!istype(M))
 		return
@@ -117,11 +117,11 @@
 /*
  * Sleepy Pens
  */
-/obj/item/weapon/pen/reagent/sleepy
+/obj/item/pen/reagent/sleepy
 	desc = "It's a black ink pen with a sharp point and a carefully engraved \"Waffle Co.\"."
 	origin_tech = list(TECH_MATERIAL = 2, TECH_ILLEGAL = 5)
 
-/obj/item/weapon/pen/reagent/sleepy/New()
+/obj/item/pen/reagent/sleepy/New()
 	..()
 	reagents.add_reagent(/datum/reagent/chloralhydrate, 15)	//Used to be 100 sleep toxin//30 Chloral seems to be fatal, reducing it to 22, reducing it further to 15 because fuck you OD code./N
 
@@ -129,10 +129,10 @@
 /*
  * Chameleon pen
  */
-/obj/item/weapon/pen/chameleon
+/obj/item/pen/chameleon
 	var/signature = ""
 
-/obj/item/weapon/pen/chameleon/attack_self(mob/user as mob)
+/obj/item/pen/chameleon/attack_self(mob/user as mob)
 	/*
 	// Limit signatures to official crew members
 	var/personnel_list[] = list()
@@ -146,13 +146,13 @@
 	*/
 	signature = sanitize(input("Enter new signature. Leave blank for 'Anonymous'", "New Signature", signature))
 
-/obj/item/weapon/pen/proc/get_signature(var/mob/user)
+/obj/item/pen/proc/get_signature(var/mob/user)
 	return (user && user.real_name) ? user.real_name : "Anonymous"
 
-/obj/item/weapon/pen/chameleon/get_signature(var/mob/user)
+/obj/item/pen/chameleon/get_signature(var/mob/user)
 	return signature ? signature : "Anonymous"
 
-/obj/item/weapon/pen/chameleon/verb/set_colour()
+/obj/item/pen/chameleon/verb/set_colour()
 	set name = "Change Pen Colour"
 	set category = "Object"
 
@@ -195,7 +195,7 @@
  * Crayons
  */
 
-/obj/item/weapon/pen/crayon
+/obj/item/pen/crayon
 	name = "crayon"
 	desc = "A colourful crayon. Please refrain from eating it or putting it in your nose."
 	icon = 'icons/obj/crayons.dmi'
@@ -209,11 +209,11 @@
 	var/colourName = "red" //for updateIcon purposes
 	color_description = "red crayon"
 
-/obj/item/weapon/pen/crayon/Initialize()
+/obj/item/pen/crayon/Initialize()
 	name = "[colourName] crayon"
 	. = ..()
 
-/obj/item/weapon/pen/fancy
+/obj/item/pen/fancy
 	name = "fancy pen"
 	desc = "A high quality traditional fountain pen with an internal reservoir and an extra fine gold-platinum nib. Guaranteed never to leak."
 	icon_state = "fancy"

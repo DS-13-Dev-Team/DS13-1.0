@@ -19,11 +19,11 @@
 	atom_flags = ATOM_FLAG_CLIMBABLE
 	obj_flags = OBJ_FLAG_ANCHORABLE
 	var/list/can_hold = list(
-		/obj/item/weapon/paper,
-		/obj/item/weapon/folder,
-		/obj/item/weapon/photo,
-		/obj/item/weapon/paper_bundle,
-		/obj/item/weapon/sample)
+		/obj/item/paper,
+		/obj/item/folder,
+		/obj/item/photo,
+		/obj/item/paper_bundle,
+		/obj/item/sample)
 	var/open_sound = 'sound/effects/locker_open.ogg'
 	var/close_sound = 'sound/effects/locker_close.ogg'
 
@@ -45,7 +45,7 @@
 
 /obj/structure/filingcabinet/Initialize()
 	for(var/obj/item/I in loc)
-		if(istype(I, /obj/item/weapon/paper) || istype(I, /obj/item/weapon/folder) || istype(I, /obj/item/weapon/photo) || istype(I, /obj/item/weapon/paper_bundle))
+		if(istype(I, /obj/item/paper) || istype(I, /obj/item/folder) || istype(I, /obj/item/photo) || istype(I, /obj/item/paper_bundle))
 			I.loc = src
 	. = ..()
 

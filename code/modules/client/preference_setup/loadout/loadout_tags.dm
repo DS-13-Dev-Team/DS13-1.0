@@ -42,13 +42,13 @@ GLOBAL_LIST_EMPTY(loadout_tag_cache)
 /*
 	RIGS
 */
-/obj/item/weapon/rig
+/obj/item/rig
 	loadout_tags = LOADOUT_TAG_SPECIAL
 
 /*
 	Rigs combine the tags of their modules
 */
-/obj/item/weapon/rig/get_loadout_tags()
+/obj/item/rig/get_loadout_tags()
 	var/list/tags = list(LOADOUT_TAG_RIG)
 	for (var/obj/item/rig_module/RM in installed_modules)
 		tags |= RM.get_loadout_tags()

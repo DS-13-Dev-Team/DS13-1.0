@@ -17,7 +17,7 @@
 /datum/uplink_item/item/hardsuit_modules/ewar_voice
 	name = "\improper Electrowarfare Suite and Voice Synthesiser"
 	item_cost = 24
-	path = /obj/item/weapon/storage/backpack/satchel/syndie_kit/ewar_voice
+	path = /obj/item/storage/backpack/satchel/syndie_kit/ewar_voice
 
 /datum/uplink_item/item/hardsuit_modules/ewar_voice/special
 	is_special = TRUE
@@ -26,14 +26,14 @@
 
 /datum/uplink_item/item/hardsuit_modules/zealot
 	name = "Zealot RIG"
-	path = /obj/item/weapon/rig/zealot
+	path = /obj/item/rig/zealot
 	item_cost = 23
 	is_special = TRUE
 	antag_roles = list(MODE_UNITOLOGIST, MODE_UNITOLOGIST_SHARD)
 
 /datum/uplink_item/item/hardsuit_modules/earthgov
 	name = "Earthgov RIG"
-	path = /obj/item/weapon/rig/marine/earthgov
+	path = /obj/item/rig/marine/earthgov
 	item_cost = 19
 	is_special = TRUE
 	antag_roles = list(MODE_EARTHGOV_AGENT)

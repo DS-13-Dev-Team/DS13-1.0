@@ -110,8 +110,8 @@
 
 	add_fingerprint(user, 0, I)
 
-	if(istype(I, /obj/item/weapon/storage))
-		var/obj/item/weapon/storage/T = I
+	if(istype(I, /obj/item/storage))
+		var/obj/item/storage/T = I
 		for(var/obj/item/O in T.contents)
 			if (is_valid(O, user))
 				T.remove_from_storage(O,src)
@@ -123,7 +123,7 @@
 	//With containers, you pour in the contents, assuming the container itself is non-organic
 	//Requires there to be some organic component in the contents
 	if (I.is_open_container() && !I.get_biomass() && I.reagents && I.reagents.get_biomass())
-		var/obj/item/weapon/reagent_containers/RC = I
+		var/obj/item/reagent_containers/RC = I
 		RC.standard_pour_into(user, src, I.reagents.maximum_volume)
 		turn_on()
 		return

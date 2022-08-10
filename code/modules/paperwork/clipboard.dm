@@ -1,4 +1,4 @@
-/obj/item/weapon/clipboard
+/obj/item/clipboard
 	name = "clipboard"
 	desc = "Useful for holding documents or pretending to look busy."
 	icon = 'icons/obj/bureaucracy.dmi'
@@ -8,8 +8,8 @@
 	w_class = ITEM_SIZE_SMALL
 
 	throw_range = 10
-	var/obj/item/weapon/pen/haspen		//The stored pen.
-	var/obj/item/weapon/toppaper	//The topmost piece of paper.
+	var/obj/item/pen/haspen		//The stored pen.
+	var/obj/item/toppaper	//The topmost piece of paper.
 	slot_flags = SLOT_BELT
 	matter = list(MATERIAL_STEEL = 70)
 
@@ -24,11 +24,11 @@
 	 */
 	var/datum/weakref/toppaper_ref
 
-/obj/item/weapon/clipboard/New()
+/obj/item/clipboard/New()
 	update_icon()
 
 /// Take out the topmost paper
-/obj/item/weapon/clipboard/proc/remove_paper(obj/item/paper/paper, mob/user)
+/obj/item/clipboard/proc/remove_paper(obj/item/paper/paper, mob/user)
 	if(!istype(paper))
 		return
 	paper.forceMove(user.loc)
@@ -44,14 +44,14 @@
 			toppaper_ref = null
 	update_icon()
 
-/obj/item/weapon/clipboard/proc/remove_pen(mob/user)
+/obj/item/clipboard/proc/remove_pen(mob/user)
 	haspen.forceMove(user.loc)
 	user.put_in_hands(haspen)
 	to_chat(user, "<span class='notice'>You remove [haspen] from [src].</span>")
 	haspen = null
 	update_icon()
 
-/obj/item/weapon/clipboard/AltClick(mob/user)
+/obj/item/clipboard/AltClick(mob/user)
 	..()
 	if(haspen)
 		if(integrated_pen)
@@ -59,7 +59,7 @@
 		else
 			remove_pen(user)
 
-/obj/item/weapon/clipboard/update_icon()
+/obj/item/clipboard/update_icon()
 	overlays.Cut()
 	if(toppaper)
 		overlays += toppaper.icon_state
@@ -69,15 +69,15 @@
 	overlays += "clipboard_over"
 	return
 
-/obj/item/weapon/clipboard/attackby(obj/item/weapon, mob/user, params)
-	var/obj/item/weapon/paper/toppaper = toppaper_ref?.resolve()
+/obj/item/clipboard/attackby(obj/item/weapon, mob/user, params)
+	var/obj/item/paper/toppaper = toppaper_ref?.resolve()
 	if(istype(weapon, /obj/item/paper))
 		//Add paper into the clipboard
 		if(!user.remove_from_mob(weapon, src))
 			return
 		toppaper_ref = WEAKREF(weapon)
 		to_chat(user, "<span class='notice'>You clip [weapon] onto [src].</span>")
-	else if(istype(weapon, /obj/item/weapon/pen) && !haspen)
+	else if(istype(weapon, /obj/item/pen) && !haspen)
 		//Add a pen into the clipboard, attack (write) if there is already one
 		if(!usr.remove_from_mob(weapon, src))
 			return
@@ -86,24 +86,24 @@
 	else if(toppaper)
 		toppaper.attackby(user.get_active_hand(), user)
 
-/obj/item/weapon/clipboard/attack_self(mob/user as mob)
+/obj/item/clipboard/attack_self(mob/user as mob)
 	add_fingerprint(usr)
 	tgui_interact(user)
 	return
 
-/obj/item/weapon/clipboard/tgui_interact(mob/user, datum/tgui/ui)
+/obj/item/clipboard/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "Clipboard")
 		ui.open()
 
-/obj/item/weapon/clipboard/ui_data(mob/user)
+/obj/item/clipboard/ui_data(mob/user)
 	// prepare data for TGUI
 	var/list/data = list()
 	data["pen"] = "[haspen]"
 	data["integrated_pen"] = integrated_pen
 
-	var/obj/item/weapon/paper/toppaper = toppaper_ref?.resolve()
+	var/obj/item/paper/toppaper = toppaper_ref?.resolve()
 	data["top_paper"] = "[toppaper]"
 	data["top_paper_ref"] = "[REF(toppaper)]"
 
@@ -117,7 +117,7 @@
 
 	return data
 
-/obj/item/weapon/clipboard/ui_act(action, params)
+/obj/item/clipboard/ui_act(action, params)
 	. = ..()
 	if(.)
 		return
@@ -157,7 +157,7 @@
 				. = TRUE
 		// Rename the paper (it's a verb)
 		if("rename_paper")
-			var/obj/item/weapon/paper/paper = locate(params["ref"]) in src
+			var/obj/item/paper/paper = locate(params["ref"]) in src
 			if(istype(paper))
 				paper.rename()
 				update_icon()

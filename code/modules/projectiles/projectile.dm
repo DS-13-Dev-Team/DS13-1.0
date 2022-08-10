@@ -96,7 +96,7 @@
 	//It should be false for small things like normal bullets, spines
 	//It should be false for non physical things, energy, lasers, etc
 
-	var/shrapnel_type = /obj/item/weapon/material/shard/shrapnel	//When this projectile embeds in a mob, what kind of shrapnel does it turn into?	The actual projectile will be deleted
+	var/shrapnel_type = /obj/item/material/shard/shrapnel	//When this projectile embeds in a mob, what kind of shrapnel does it turn into?	The actual projectile will be deleted
 
 
 /obj/item/projectile/New(var/atom/location)
@@ -256,7 +256,7 @@
 		QDEL_NULL_LIST(segments)
 
 //called to launch a projectile from a gun
-/obj/item/projectile/proc/launch_from_gun(atom/target, mob/user, obj/item/weapon/gun/launcher, var/target_zone, var/x_offset=0, var/y_offset=0)
+/obj/item/projectile/proc/launch_from_gun(atom/target, mob/user, obj/item/gun/launcher, var/target_zone, var/x_offset=0, var/y_offset=0)
 	src.launcher = launcher
 
 	if(user == target) //Shooting yourself

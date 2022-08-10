@@ -13,6 +13,3 @@ SUBSYSTEM_DEF(evac)
 
 /datum/controller/subsystem/evac/fire()
 	evacuation_controller.process()
-
-/datum/controller/subsystem/evac/stat_entry(msg)
-	return ("Click to debug!")

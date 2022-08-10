@@ -13,7 +13,8 @@
 
 
 /area/necrospawn/Exited(atom/movable/Obj,atom/OldLoc)
-	if (isliving(Obj))
+	.=..()
+	if(isliving(Obj))
 		remove_extension(Obj, /datum/extension/spawn_buff)
 
 /area/necrospawn/proc/open_spawner()

@@ -728,7 +728,7 @@
 /turf/simulated/floor/reinforced,
 /area/space)
 "bp" = (
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -944,8 +944,8 @@
 	pixel_y = 24
 	},
 /obj/structure/table/standard,
-/obj/item/weapon/storage/briefcase/inflatable,
-/obj/item/weapon/storage/briefcase/inflatable,
+/obj/item/storage/briefcase/inflatable,
+/obj/item/storage/briefcase/inflatable,
 /obj/structure/cable/orange{
 	d2 = 2;
 	icon_state = "0-2"
@@ -955,7 +955,7 @@
 "bP" = (
 /obj/structure/table/standard,
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
-/obj/item/weapon/storage/toolbox/emergency,
+/obj/item/storage/toolbox/emergency,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -968,7 +968,7 @@
 	dir = 4
 	},
 /obj/item/stack/material/glass/fifty,
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -1025,7 +1025,7 @@
 "bZ" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/weapon/storage/box/lights/mixed,
+/obj/item/storage/box/lights/mixed,
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/eva/supply)
 "ca" = (
@@ -1099,7 +1099,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/ishimura/eva/prep)
 "cm" = (
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/dark,
@@ -1112,7 +1112,7 @@
 /area/ishimura/eva/prep)
 "co" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/box/cups,
+/obj/item/storage/box/cups,
 /turf/simulated/floor/dank,
 /area/ishimura/eva)
 "cp" = (
@@ -1416,8 +1416,8 @@
 "cM" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/weapon/storage/belt/utility/full,
-/obj/item/weapon/storage/belt/utility/full,
+/obj/item/storage/belt/utility/full,
+/obj/item/storage/belt/utility/full,
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/eva/supply)
 "cN" = (
@@ -1525,10 +1525,10 @@
 /area/ishimura/eva)
 "da" = (
 /obj/structure/table/standard,
-/obj/item/weapon/spacecash/ewallet/random/c200{
+/obj/item/spacecash/ewallet/random/c200{
 	pixel_y = 4
 	},
-/obj/item/weapon/spacecash/ewallet/random/c200,
+/obj/item/spacecash/ewallet/random/c200,
 /turf/simulated/floor/dank,
 /area/ishimura/eva)
 "db" = (
@@ -1940,7 +1940,7 @@
 	frequency = 1380;
 	id_tag = "topdeck_airlock_pump"
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 8;
 	pixel_x = 22
 	},
@@ -2050,7 +2050,7 @@
 /turf/simulated/floor/reinforced,
 /area/ishimura/eva/airlock)
 "ea" = (
-/obj/item/weapon/stool,
+/obj/item/stool,
 /turf/simulated/floor/airless,
 /area/ishimura/eva/solar)
 "eb" = (
@@ -2181,7 +2181,7 @@
 /area/ishimura/eva)
 "et" = (
 /obj/structure/table/standard,
-/obj/item/weapon/deck/cards,
+/obj/item/deck/cards,
 /turf/simulated/floor/dank/mono,
 /area/ishimura/eva)
 "eu" = (
@@ -2356,7 +2356,7 @@
 /turf/simulated/floor/reinforced,
 /area/space)
 "eP" = (
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 1;
 	pixel_y = -28
 	},
@@ -2731,7 +2731,7 @@
 /area/ishimura/eva/solar)
 "fs" = (
 /obj/structure/table/standard,
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 1;
 	pixel_y = -28
 	},
@@ -2907,7 +2907,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 1;
 	pixel_y = -35
 	},
@@ -3018,7 +3018,7 @@
 /turf/simulated/floor/reinforced,
 /area/ishimura/hull)
 "fS" = (
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 8;
 	pixel_x = 22
 	},
@@ -3097,7 +3097,7 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/structure/table/reinforced,
 /obj/random/rare_loot/rarely,
-/obj/item/weapon/storage/box/lights/mixed,
+/obj/item/storage/box/lights/mixed,
 /turf/simulated/floor/tiled/dark,
 /area/ishimura/eva/prep/ADS)
 "gb" = (
@@ -3450,7 +3450,7 @@
 /turf/simulated/floor/dank,
 /area/ishimura/eva/ADS)
 "gO" = (
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 1;
 	pixel_y = -35
 	},
@@ -3491,8 +3491,8 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/item/weapon/paper_bin,
-/obj/item/weapon/pen,
+/obj/item/paper_bin,
+/obj/item/pen,
 /turf/simulated/floor/dank,
 /area/ishimura/eva/ADS)
 "gT" = (
@@ -3596,7 +3596,7 @@
 /area/ishimura/eva/ADS)
 "oW" = (
 /obj/structure/table/standard,
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 8;
 	pixel_x = 21
 	},
@@ -3741,7 +3741,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ishimura/eva/airlock/ADS)
 "yX" = (
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/dark,
@@ -3749,7 +3749,7 @@
 "Av" = (
 /obj/structure/closet/walllocker/emerglocker/north,
 /obj/effect/floor_decal/industrial/warning/full,
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 8;
 	pixel_x = 22
 	},

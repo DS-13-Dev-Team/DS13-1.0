@@ -18,7 +18,7 @@ var/bomb_set
 	var/code = ""
 	var/yes_code = 0
 	var/safety = 1
-	var/obj/item/weapon/disk/nuclear/auth = null
+	var/obj/item/disk/nuclear/auth = null
 	var/removal_stage = 0 // 0 is no removal, 1 is covers removed, 2 is covers open, 3 is sealant open, 4 is unwrenched, 5 is removed from bolts.
 	var/lastentered
 	var/previous_level = ""
@@ -45,7 +45,7 @@ var/bomb_set
 			INVOKE_ASYNC(src, .proc/explode)
 		SSnano.update_uis(src)
 
-/obj/machinery/nuclearbomb/attackby(obj/item/weapon/O as obj, mob/user as mob, params)
+/obj/machinery/nuclearbomb/attackby(obj/item/O as obj, mob/user as mob, params)
 	if(isScrewdriver(O))
 		add_fingerprint(user)
 		if(auth)
@@ -74,7 +74,7 @@ var/bomb_set
 		return attack_hand(user)
 
 	if(extended)
-		if(istype(O, /obj/item/weapon/disk/nuclear))
+		if(istype(O, /obj/item/disk/nuclear))
 			if(!user.unEquip(O, src))
 				return
 			auth = O
@@ -215,7 +215,7 @@ var/bomb_set
 			auth = null
 		else
 			var/obj/item/I = usr.get_active_hand()
-			if(istype(I, /obj/item/weapon/disk/nuclear))
+			if(istype(I, /obj/item/disk/nuclear))
 				if(!usr.unEquip(I, src))
 					return 1
 				auth = I
@@ -341,7 +341,7 @@ var/bomb_set
 		icon_state = "idle"
 
 //====The nuclear authentication disc====
-/obj/item/weapon/disk/nuclear
+/obj/item/disk/nuclear
 	name = "nuclear authentication disk"
 	desc = "Better keep this safe."
 	icon = 'icons/obj/items.dmi'
@@ -350,13 +350,13 @@ var/bomb_set
 	w_class = ITEM_SIZE_TINY
 
 
-/obj/item/weapon/disk/nuclear/Initialize()
+/obj/item/disk/nuclear/Initialize()
 	. = ..()
 	nuke_disks |= src
 	// Can never be quite sure that a game mode has been properly initiated or not at this point, so always register
 	RegisterSignal(src, COMSIG_MOVABLE_MOVED, .proc/check_z_level)
 
-/obj/item/weapon/disk/nuclear/proc/check_z_level()
+/obj/item/disk/nuclear/proc/check_z_level()
 	SIGNAL_HANDLER
 	if(!(SSticker && istype(SSticker.mode, /datum/game_mode/nuclear)))
 		UnregisterSignal(src, COMSIG_MOVABLE_MOVED) // However, when we are certain unregister if necessary
@@ -365,38 +365,38 @@ var/bomb_set
 	if(!T || isNotStationLevel(T.z))
 		qdel(src)
 
-/obj/item/weapon/disk/nuclear/Destroy()
+/obj/item/disk/nuclear/Destroy()
 	nuke_disks -= src
 	if(!nuke_disks.len)
 		var/turf/T = pick_area_turf(/area/maintenance, list(/proc/is_station_turf, /proc/not_turf_contains_dense_objects))
 		if(T)
-			var/obj/D = new /obj/item/weapon/disk/nuclear(T)
+			var/obj/D = new /obj/item/disk/nuclear(T)
 			log_and_message_admins("[src], the last authentication disk, has been destroyed. Spawning [D] at ([D.x], [D.y], [D.z]).", location = T)
 		else
 			log_and_message_admins("[src], the last authentication disk, has been destroyed. Failed to respawn disc!")
 	return ..()
 
 //====the nuclear football (holds the disk and instructions)====
-/obj/item/weapon/storage/secure/briefcase/nukedisk
+/obj/item/storage/secure/briefcase/nukedisk
 	desc = "A large briefcase with a digital locking system."
 	startswith = list(
-		/obj/item/weapon/disk/nuclear,
-		/obj/item/weapon/pinpointer,
-		/obj/item/weapon/folder/envelope/nuke_instructions,
+		/obj/item/disk/nuclear,
+		/obj/item/pinpointer,
+		/obj/item/folder/envelope/nuke_instructions,
 		/obj/item/modular_computer/laptop/preset/custom_loadout/cheap/
 	)
 
-/obj/item/weapon/storage/secure/briefcase/nukedisk/examine(var/user)
+/obj/item/storage/secure/briefcase/nukedisk/examine(var/user)
 	..()
 	to_chat(user,"On closer inspection, you see \a [GLOB.using_map.company_name] emblem is etched into the front of it.")
 
-/obj/item/weapon/folder/envelope/nuke_instructions
+/obj/item/folder/envelope/nuke_instructions
 	name = "instructions envelope"
 	desc = "A small envelope. The label reads 'open only in event of high emergency'."
 
-/obj/item/weapon/folder/envelope/nuke_instructions/Initialize()
+/obj/item/folder/envelope/nuke_instructions/Initialize()
 	. = ..()
-	var/obj/item/weapon/paper/R = new(src)
+	var/obj/item/paper/R = new(src)
 /*	R.set_content("<center><img src=sollogo.png><br><br>\
 	<b>Warning: Classified<br>[GLOB.using_map.station_name] Self-Destruct System - Instructions</b></center><br><br>\
 	In the event of a Delta-level emergency, this document will guide you through the activation of the vessel's \
@@ -422,7 +422,7 @@ var/bomb_set
 	//stamp the paper
 	var/image/stampoverlay = image('icons/obj/bureaucracy.dmi')
 	stampoverlay.icon_state = "paper_stamp-hos"
-	R.stamped += /obj/item/weapon/stamp
+	R.stamped += /obj/item/stamp
 	R.overlays += stampoverlay
 	R.stamps += "<HR><i>This paper has been stamped as 'Top Secret'.</i>"
 
@@ -455,7 +455,7 @@ var/bomb_set
 	for(var/obj/machinery/self_destruct/ch in get_area(src))
 		inserters += ch
 
-/obj/machinery/nuclearbomb/station/attackby(obj/item/weapon/O as obj, mob/user as mob)
+/obj/machinery/nuclearbomb/station/attackby(obj/item/O as obj, mob/user as mob)
 	if(isWrench(O))
 		return
 

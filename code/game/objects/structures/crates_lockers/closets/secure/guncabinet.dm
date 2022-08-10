@@ -11,8 +11,8 @@
 
 /obj/structure/closet/secure_closet/guncabinet/WillContain()
 	return list(
-		/obj/item/weapon/gun/projectile/automatic/pulse_rifle,
-		/obj/item/weapon/gun/projectile/shotgun/bola_lancher,
+		/obj/item/gun/projectile/automatic/pulse_rifle,
+		/obj/item/gun/projectile/shotgun/bola_lancher,
 		/obj/item/ammo_magazine/pulse = 2,
 		/obj/item/ammo_magazine/shotgun = 2,
 		/obj/item/clothing/suit/armor/riot,
@@ -35,10 +35,10 @@
 		/obj/item/clothing/suit/armor/riot,
 		/obj/item/clothing/head/helmet/riot)
 	if(prob(75))
-		things += /obj/item/weapon/gun/projectile/seeker/empty
+		things += /obj/item/gun/projectile/seeker/empty
 		things[/obj/item/ammo_magazine/seeker] = 4
 	else
-		things += /obj/item/weapon/gun/projectile/automatic/pulse_heavy
+		things += /obj/item/gun/projectile/automatic/pulse_heavy
 	return things
 
 /obj/structure/closet/secure_closet/guncabinet/military
@@ -54,16 +54,16 @@
 
 /obj/structure/closet/secure_closet/guncabinet/military/WillContain()
 	var/list/things = list(
-		/obj/item/weapon/gun/projectile/automatic/pulse_rifle/empty,
+		/obj/item/gun/projectile/automatic/pulse_rifle/empty,
 		/obj/item/ammo_magazine/pulse/hv = 6,
 		/obj/item/ammo_magazine/pulse/df = 8,
-		/obj/item/weapon/storage/belt/holster/security
+		/obj/item/storage/belt/holster/security
 	)
 	//Contains either an HPR or a seeker rifle
 	if (prob(50))
-		things += /obj/item/weapon/gun/projectile/automatic/pulse_heavy
+		things += /obj/item/gun/projectile/automatic/pulse_heavy
 	else
-		things += /obj/item/weapon/gun/projectile/seeker
+		things += /obj/item/gun/projectile/seeker
 		things[/obj/item/ammo_magazine/seeker] = 4
 
 	return things
@@ -87,10 +87,10 @@
 	else
 		var/lazors = 0
 		var/shottas = 0
-		for (var/obj/item/weapon/gun/G in contents)
-			if (istype(G, /obj/item/weapon/gun/energy))
+		for (var/obj/item/gun/G in contents)
+			if (istype(G, /obj/item/gun/energy))
 				lazors++
-			if (istype(G, /obj/item/weapon/gun/projectile/))
+			if (istype(G, /obj/item/gun/projectile/))
 				shottas++
 		for (var/i = 0 to 2)
 			if(lazors || shottas) // only make icons if we have one of the two types.

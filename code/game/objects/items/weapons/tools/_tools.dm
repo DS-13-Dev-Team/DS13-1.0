@@ -1,4 +1,4 @@
-/obj/item/weapon/tool
+/obj/item/tool
 	name = "tool"
 	icon = 'icons/obj/tools.dmi'
 	slot_flags = SLOT_BELT
@@ -14,7 +14,7 @@
 	var/eye_hazard = FALSE	//Set to TRUE should damage users eyes if they without eye protection
 
 	var/use_power_cost = 0	//For tool system, determinze how much power tool will drain from cells, 0 means no cell needed
-	var/obj/item/weapon/cell/cell = null
+	var/obj/item/cell/cell = null
 	var/passive_power_cost = 0
 	var/suitable_cell = null	//Dont forget to edit this for a tool, if you want in to consume cells
 
@@ -73,7 +73,7 @@
 //Simple form ideal for basic use. That proc will return TRUE only when everything was done right, and FALSE if something went wrong, ot user was unlucky.
 //Editionaly, handle_failure proc will be called for a critical failure roll.
 /obj/proc/use_tool(mob/living/user, atom/target, base_time, required_quality, fail_chance, required_stat, instant_finish_tier = 110, forced_sound = null, sound_repeat = 2.5 SECONDS, datum/callback/progress_proc, progress_proc_interval = 1 SECOND)
-	var/obj/item/weapon/tool/T
+	var/obj/item/tool/T
 	if (istool(src))
 		T = src
 		if (T.tool_in_use)
@@ -97,7 +97,7 @@
 //Use this proc if you want to handle all types of failure yourself. It used in surgery, for example, to deal damage to patient.
 /obj/proc/use_tool_extended(mob/living/user, atom/target, base_time, required_quality, fail_chance, required_stat = null, instant_finish_tier = 110, forced_sound = null, var/sound_repeat = 2.5 SECONDS, var/datum/callback/progress_proc, var/progress_proc_interval = 1 SECOND)
 
-	var/obj/item/weapon/tool/T
+	var/obj/item/tool/T
 	if(istool(src))
 
 		T = src
@@ -171,7 +171,7 @@
 
 		//Setup the periodic call to the progress proc, if one wasnt passed in to override it
 		if (!progress_proc && T)
-			progress_proc = CALLBACK(T, /obj/item/weapon/tool/proc/work_in_progress)
+			progress_proc = CALLBACK(T, /obj/item/tool/proc/work_in_progress)
 
 		if (!progress_proc_interval)
 			progress_proc_interval = T.progress_interval
@@ -240,12 +240,12 @@
 	/* Core Procs */
 *******************************/
 //Fuel and cell spawn
-/obj/item/weapon/tool/proc/consume_power(var/power_usage) // its time
+/obj/item/tool/proc/consume_power(var/power_usage) // its time
     if(!cell)
         return FALSE
     return cell.checked_use(power_usage)
 
-/obj/item/weapon/tool/Initialize()
+/obj/item/tool/Initialize()
 	if(!cell && suitable_cell)
 		cell = new suitable_cell(src)
 
@@ -259,7 +259,7 @@
 
 	base_max_modifications = max_modifications
 	for(var/modtype in preinstalled_mods)
-		var/obj/item/weapon/tool_modification/TU = new modtype(src)
+		var/obj/item/tool_modification/TU = new modtype(src)
 		TU.apply(src)
 		TU.removeable = FALSE //Preinstalled mods are permanant
 
@@ -270,7 +270,7 @@
 	.=..()
 
 //Fuel and cell spawn
-/obj/item/weapon/tool/Created()
+/obj/item/tool/Created()
 	QDEL_NULL(cell)
 	if(use_fuel_cost)
 		consume_fuel(max_fuel)
@@ -278,7 +278,7 @@
 
 
 //For killing processes like hot spots
-/obj/item/weapon/tool/Destroy()
+/obj/item/tool/Destroy()
 	QDEL_NULL(cell)
 	QDEL_NULL_LIST(modifications)
 	QDEL_NULL(reagents)
@@ -288,12 +288,12 @@
 
 
 //This is called periodically while a tool operation is in progress
-/obj/item/weapon/tool/proc/work_in_progress(var/mob/user, var/atom/target, var/delta)
+/obj/item/tool/proc/work_in_progress(var/mob/user, var/atom/target, var/delta)
 	last_progress_tick = world.time
 	return
 
 //Ignite plasma around, if we need it
-/obj/item/weapon/tool/Process()
+/obj/item/tool/Process()
 	if(switched_on)
 		if(create_hot_spot)
 			var/turf/location = get_turf(src)
@@ -313,14 +313,14 @@
 				turn_off()
 
 //Cell reload
-/obj/item/weapon/tool/MouseDrop(over_object)
+/obj/item/tool/MouseDrop(over_object)
 	if((src.loc == usr) && istype(over_object, /atom/movable/screen) && eject_item(cell, usr)) ///Formerly checked for /atom/movable/screeninventory/hand. Not sure how that fits with bay's UI system
 		cell = null
 		update_icon()
 	else
 		..()
 
-/obj/item/weapon/tool/attackby(obj/item/C, mob/living/user)
+/obj/item/tool/attackby(obj/item/C, mob/living/user)
 	if(istype(C, suitable_cell) && !cell && insert_item(C, user))
 		src.cell = C
 		update_icon()
@@ -331,11 +331,11 @@
 	//Using a laser guided stabilised screwdriver is recommended. Precision mods will make this easier
 	if (modifications.len && C.has_quality(QUALITY_SCREW_DRIVING))
 		var/list/possibles = modifications.Copy()
-		for (var/obj/item/weapon/tool_modification/TU in possibles)
+		for (var/obj/item/tool_modification/TU in possibles)
 			if (!TU.removeable)
 				possibles.Remove(TU) //Some mods cannot be removed
 		possibles += "Cancel"
-		var/obj/item/weapon/tool_modification/toremove = input("Which modification would you like to try to remove? The modification will probably be destroyed in the process","Removing modifications") in possibles
+		var/obj/item/tool_modification/toremove = input("Which modification would you like to try to remove? The modification will probably be destroyed in the process","Removing modifications") in possibles
 		if (toremove == "Cancel")
 			return
 
@@ -371,7 +371,7 @@
 
 
 //Turning it on/off
-/obj/item/weapon/tool/attack_self(mob/user)
+/obj/item/tool/attack_self(mob/user)
 	if(toggleable)
 		if (switched_on)
 			turn_off(user)
@@ -381,7 +381,7 @@
 	return
 
 //Damaged tools are worth less matter for recycling
-/obj/item/weapon/tool/get_matter()
+/obj/item/tool/get_matter()
 	if (!matter || !matter.len || !degradation)
 		return ..()
 
@@ -396,7 +396,7 @@
 
 	return tm
 
-/obj/item/weapon/tool/get_storage_cost()
+/obj/item/tool/get_storage_cost()
 	return (..() + extra_bulk)
 
 
@@ -411,10 +411,10 @@
 //Critical failure rolls. If you use use_tool_extended, you might want to call that proc as well.
 /obj/proc/handle_failure(var/mob/living/user, var/atom/target, var/required_stat, required_quality)
 	var/obj/item/I = src
-	var/obj/item/weapon/tool/T
+	var/obj/item/tool/T
 	if (istype(src, /obj/item))
 		I = src
-		if(istype(src, /obj/item/weapon/tool))
+		if(istype(src, /obj/item/tool))
 			T = src
 
 	var/crit_fail_chance = 10
@@ -462,7 +462,7 @@
 				failtypes["stab"] = 1
 */
 			//This one is limited to humans only since robots often can't remove/replace their device cells
-			if(locate(/obj/item/weapon/cell) in contents)
+			if(locate(/obj/item/cell) in contents)
 				failtypes["overload"] = 0.5
 
 	if(prob(crit_fail_chance))
@@ -541,13 +541,13 @@
 			if("break")
 				if(user)
 					to_chat(user, SPAN_DANGER("Your [src] broke beyond repair!"))
-					new /obj/item/weapon/material/shard/shrapnel(user.loc)
+					new /obj/item/material/shard/shrapnel(user.loc)
 				else
-					new /obj/item/weapon/material/shard/shrapnel(get_turf(src))
+					new /obj/item/material/shard/shrapnel(get_turf(src))
 
 				//To encourage using makeshift tools, modifications are preserved if the tool breaks
 				if (T)
-					for (var/obj/item/weapon/tool_modification/A in T.modifications)
+					for (var/obj/item/tool_modification/A in T.modifications)
 						A.forceMove(get_turf(src))
 						A.holder = null
 
@@ -572,11 +572,11 @@
 			//The cell explodes
 			//This can happen even with non-tools which contain a cell
 			if("overload")
-				var/obj/item/weapon/cell/C
+				var/obj/item/cell/C
 				if(T)
 					C = T.cell
 				else
-					C = locate(/obj/item/weapon/cell) in contents
+					C = locate(/obj/item/cell) in contents
 
 
 				if(user)
@@ -618,7 +618,7 @@
 
 //A special version of the above that also checks the switched on list
 //As a result, it checks what qualities the tool is ever capable of having, not just those it has right now
-/obj/item/weapon/tool/ever_has_quality(quality_id)
+/obj/item/tool/ever_has_quality(quality_id)
 	.=has_quality(quality_id)
 	if (!.)
 		if (quality_id in switched_on_qualities)
@@ -656,13 +656,13 @@
 	return 0
 
 
-/obj/item/weapon/tool/get_tool_precision()
+/obj/item/tool/get_tool_precision()
 	return precision
 
 
 
 
-/obj/item/weapon/tool/proc/turn_on(mob/user)
+/obj/item/tool/proc/turn_on(mob/user)
 	if(passive_power_cost || passive_fuel_cost) //handle tool consumption
 		if(!consume_resources(1 SECOND,user))
 			visible_message(SPAN_NOTICE("\The [src] splutters, and then goes quiet."))
@@ -678,7 +678,7 @@
 	update_icon()
 	update_wear_icon() //Too tied into eris' inventory system, need to find a better path to do this
 
-/obj/item/weapon/tool/proc/turn_off(mob/user)
+/obj/item/tool/proc/turn_off(mob/user)
 	switched_on = FALSE
 	STOP_PROCESSING(SSobj, src)
 	tool_qualities = switched_off_qualities
@@ -705,7 +705,7 @@
 
 	return
 
-/obj/item/weapon/tool/consume_resources(var/timespent, var/user)
+/obj/item/tool/consume_resources(var/timespent, var/user)
 	last_resource_consumption = world.time
 
 	if(use_power_cost)
@@ -731,7 +731,7 @@
 	return TRUE
 
 //Power and fuel drain, sparks spawn
-/obj/item/weapon/tool/proc/check_tool_effects(mob/living/user, var/time)
+/obj/item/tool/proc/check_tool_effects(mob/living/user, var/time)
 
 	if(use_power_cost)
 		if(!cell || !cell.check_charge(use_power_cost*time))
@@ -760,10 +760,10 @@
 	return TRUE
 
 //Returns the amount of fuel in tool
-/obj/item/weapon/tool/proc/get_fuel()
+/obj/item/tool/proc/get_fuel()
 	return reagents.get_reagent_amount(/datum/reagent/fuel)
 
-/obj/item/weapon/tool/proc/consume_fuel(var/volume)
+/obj/item/tool/proc/consume_fuel(var/volume)
 	//This will only happen if we're not finished initializing
 	if (!reagents)
 		return FALSE
@@ -774,7 +774,7 @@
 	return FALSE
 
 
-/obj/item/weapon/tool/proc/consume_stock(var/number)
+/obj/item/tool/proc/consume_stock(var/number)
 	if (stock >= number)
 		stock -= number
 	else
@@ -787,7 +787,7 @@
 /***************************
 	Tool modifications
 ****************************/
-/obj/item/weapon/tool/proc/refresh_modifications()
+/obj/item/tool/proc/refresh_modifications()
 //First of all, lets reset any var that could possibly be altered by an modification
 	degradation = initial(degradation) * 1.10 ** repair_frequency //Degradation gets slightly worse each time the tool is repaired
 	workspeed = initial(workspeed)
@@ -808,7 +808,7 @@
 	adjectives = list()
 
 	//Now lets have each modification reapply its modifications
-	for (var/obj/item/weapon/tool_modification/T in modifications)
+	for (var/obj/item/tool_modification/T in modifications)
 		T.apply_values()
 
 	//This sorts the adjectives into the correct order based on their type
@@ -822,7 +822,7 @@
 		reagents.maximum_volume = max_fuel
 
 
-/obj/item/weapon/tool/examine(mob/user)
+/obj/item/tool/examine(mob/user)
 	if(!..(user,2))
 		return
 
@@ -847,7 +847,7 @@
 
 	if (modifications.len)
 		to_chat(user, "It has the following modifications installed:")
-		for (var/obj/item/weapon/tool_modification/TU in modifications)
+		for (var/obj/item/tool_modification/TU in modifications)
 			to_chat(user, SPAN_NOTICE(TU.name))
 
 	if (unreliability)
@@ -868,7 +868,7 @@
 
 
 //Recharge the fuel at fueltank, also explode if switched on
-/obj/item/weapon/tool/afterattack(obj/O, mob/user, proximity)
+/obj/item/tool/afterattack(obj/O, mob/user, proximity)
 	if(use_fuel_cost)
 		if(!proximity) return
 		if ((istype(O, /obj/structure/reagent_dispensers/fueltank)) && get_dist(src,O) <= 1 && !switched_on)
@@ -894,7 +894,7 @@
 	if (has_quality(QUALITY_ADHESIVE) && proximity)
 		//Tape can be used to repair other tools
 		if (istool(O))
-			var/obj/item/weapon/tool/T = O
+			var/obj/item/tool/T = O
 			if (T.unreliability)
 				user.visible_message(SPAN_NOTICE("[user] begins repairing \the [O] with the [src]!"))
 				//Toolception!
@@ -917,7 +917,7 @@
 	return ..()
 
 //Triggers degradation and resource use upon attacks
-/obj/item/weapon/tool/resolve_attackby(atom/A, mob/user, params)
+/obj/item/tool/resolve_attackby(atom/A, mob/user, params)
 	.=..()
 	//If the parent return value is true, then there won't be an attackby
 	//If there will be an attackby, we'll handle it there
@@ -929,7 +929,7 @@
 
 //Decides whether or not to damage a player's eyes based on what they're wearing as protection
 //Note: This should probably be moved to mob
-/obj/item/weapon/tool/proc/eyecheck(mob/user as mob)
+/obj/item/tool/proc/eyecheck(mob/user as mob)
 	if(!iscarbon(user))
 		return TRUE
 	if(ishuman(user))
@@ -969,7 +969,7 @@
 					H.disabilities &= ~NEARSIGHTED
 
 // TODO: Figure out bay prosthetic repair then uncomment this
-/obj/item/weapon/tool/attack(mob/living/M, mob/living/user, var/target_zone)
+/obj/item/tool/attack(mob/living/M, mob/living/user, var/target_zone)
 	if ((user.a_intent == I_HELP) && ishuman(M))
 		var/mob/living/carbon/human/H = M
 		var/obj/item/organ/external/S = H.organs_by_name[get_zone_sel(user)]
@@ -1001,7 +1001,7 @@
 	return ..()
 
 
-/obj/item/weapon/tool/update_icon()
+/obj/item/tool/update_icon()
 	overlays.Cut()
 
 	if(switched_on && toggleable)
@@ -1028,11 +1028,11 @@
 ****************************/
 
 //Used by adhesive tools to stick an item to stuff
-/obj/item/weapon/tool/proc/stick(var/obj/item/target, var/mob/user)
+/obj/item/tool/proc/stick(var/obj/item/target, var/mob/user)
 	return
 
 
-/obj/item/weapon/tool/admin_debug
+/obj/item/tool/admin_debug
 	name = "Electric Boogaloo 3000"
 	icon_state = "omnitool"
 	item_state = "omnitool"
@@ -1057,15 +1057,15 @@
 
 
 //Tools take heavy damage from being soaked in acid
-/obj/item/weapon/tool/acid_act(var/datum/reagent/acid/acid, var/volume)
+/obj/item/tool/acid_act(var/datum/reagent/acid/acid, var/volume)
 	var/acid_damage = acid.power * volume
 	unreliability += rand_between(0, degradation*acid_damage)
 
 //1 point of repair fixes one second worth of degradation
-obj/item/weapon/tool/repair(var/repair_power, var/datum/repair_source, var/mob/user)
+obj/item/tool/repair(var/repair_power, var/datum/repair_source, var/mob/user)
 	unreliability = clamp(unreliability - degradation*repair_power, 0, 100)
 	updatehealth()
 	update_icon()
 
-obj/item/weapon/tool/repair_needed()
+obj/item/tool/repair_needed()
 	return unreliability / degradation

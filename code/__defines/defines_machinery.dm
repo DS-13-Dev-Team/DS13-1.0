@@ -115,3 +115,8 @@ var/list/restricted_camera_networks = list(NETWORK_ERT,NETWORK_MERCENARY,"Secret
 #define SCRUBBER_SIPHON   "siphon"
 #define SCRUBBER_SCRUB    "scrub"
 #define SCRUBBER_EXCHANGE "exchange"
+
+///Base global power consumption for idling machines
+#define BASE_MACHINE_IDLE_CONSUMPTION 100
+///Base global power consumption for active machines
+#define BASE_MACHINE_ACTIVE_CONSUMPTION (BASE_MACHINE_IDLE_CONSUMPTION * 10)

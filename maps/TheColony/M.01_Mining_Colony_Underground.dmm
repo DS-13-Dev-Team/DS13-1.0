@@ -4,9 +4,9 @@
 /area/mining_colony/lower/maints/room27)
 "ab" = (
 /obj/structure/closet/jcloset,
-/obj/item/weapon/reagent_containers/spray/cleaner,
-/obj/item/weapon/reagent_containers/spray/cleaner,
-/obj/item/weapon/reagent_containers/glass/bucket,
+/obj/item/reagent_containers/spray/cleaner,
+/obj/item/reagent_containers/spray/cleaner,
+/obj/item/reagent_containers/glass/bucket,
 /obj/random/loot/often/many,
 /obj/item/rig_module/fabricator/wf_sign,
 /obj/random/powercell,
@@ -135,11 +135,11 @@
 /obj/structure/closet/lasertag/blue,
 /obj/random/loot/sometimes/few,
 /obj/item/clothing/under/color/blue,
-/obj/item/weapon/gun/energy/lasertag,
+/obj/item/gun/energy/lasertag,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room58)
 "aE" = (
-/obj/item/device/radio/intercom/department/medbay{
+/obj/item/radio/intercom/department/medbay{
 	dir = 4;
 	pixel_x = -21
 	},
@@ -161,8 +161,8 @@
 /area/mining_colony/lower/mining_caves)
 "aH" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/box/gloves,
-/obj/item/weapon/storage/box/masks,
+/obj/item/storage/box/gloves,
+/obj/item/storage/box/masks,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room32)
 "aI" = (
@@ -171,21 +171,21 @@
 	icon_state = "cola";
 	name = "randomly spawned cola";
 	spawn_nothing_percentage = 50;
-	spawn_object = /obj/item/weapon/reagent_containers/food/drinks/cans/cola
+	spawn_object = /obj/item/reagent_containers/food/drinks/cans/cola
 	},
 /obj/random/single{
 	icon = 'icons/obj/drinks.dmi';
 	icon_state = "cola";
 	name = "randomly spawned cola";
 	spawn_nothing_percentage = 50;
-	spawn_object = /obj/item/weapon/reagent_containers/food/drinks/cans/cola
+	spawn_object = /obj/item/reagent_containers/food/drinks/cans/cola
 	},
 /obj/random/single{
 	icon = 'icons/obj/drinks.dmi';
 	icon_state = "cola";
 	name = "randomly spawned cola";
 	spawn_nothing_percentage = 50;
-	spawn_object = /obj/item/weapon/reagent_containers/food/drinks/cans/cola
+	spawn_object = /obj/item/reagent_containers/food/drinks/cans/cola
 	},
 /obj/random/closet,
 /turf/simulated/floor/plating,
@@ -301,8 +301,8 @@
 	dir = 4;
 	icon_state = "chair_preview"
 	},
-/obj/item/weapon/pen/fancy,
-/obj/item/weapon/clipboard,
+/obj/item/pen/fancy,
+/obj/item/clipboard,
 /turf/simulated/floor/wood,
 /area/mining_colony/lower/maints/room57)
 "be" = (
@@ -365,7 +365,7 @@
 /area/mining_colony/lower/medical)
 "bp" = (
 /obj/structure/table/standard,
-/obj/item/weapon/reagent_containers/food/drinks/glass2/fitnessflask/proteinshake,
+/obj/item/reagent_containers/food/drinks/glass2/fitnessflask/proteinshake,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room42)
 "bq" = (
@@ -440,7 +440,7 @@
 /obj/effect/floor_decal/dank/border_corner{
 	dir = 4
 	},
-/obj/item/device/radio/intercom/department/medbay{
+/obj/item/radio/intercom/department/medbay{
 	dir = 8;
 	pixel_x = 21
 	},
@@ -501,12 +501,12 @@
 "bN" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/dank/outline,
-/obj/item/device/flashlight/flare,
-/obj/item/device/flashlight/flare,
-/obj/item/device/flashlight/flare,
-/obj/item/device/flashlight/flare,
-/obj/item/device/flashlight/flare,
-/obj/item/device/flashlight/flare,
+/obj/item/flashlight/flare,
+/obj/item/flashlight/flare,
+/obj/item/flashlight/flare,
+/obj/item/flashlight/flare,
+/obj/item/flashlight/flare,
+/obj/item/flashlight/flare,
 /obj/effect/landmark{
 	name = "ShuttleRepairPart"
 	},
@@ -530,7 +530,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
-/obj/item/device/radio/intercom/department/security{
+/obj/item/radio/intercom/department/security{
 	dir = 4;
 	pixel_x = -21
 	},
@@ -648,7 +648,7 @@
 /area/mining_colony/lower/securityevidence2)
 "ci" = (
 /obj/structure/table/rack,
-/obj/item/weapon/reagent_containers/food/drinks/flask/shiny,
+/obj/item/reagent_containers/food/drinks/flask/shiny,
 /obj/effect/floor_decal/dank/outline,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/lower/securityevidence2)
@@ -662,8 +662,8 @@
 /area/mining_colony/lower/securitystation)
 "ck" = (
 /obj/structure/table/standard,
-/obj/item/weapon/deck/cards,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer,
+/obj/item/deck/cards,
+/obj/item/reagent_containers/food/drinks/bottle/small/beer,
 /turf/simulated/floor/tiled/dark,
 /area/mining_colony/lower/securitystation)
 "cl" = (
@@ -674,10 +674,10 @@
 /area/mining_colony/lower/securitystation)
 "cm" = (
 /obj/structure/table/rack/dark,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer,
+/obj/item/reagent_containers/food/drinks/bottle/small/beer,
+/obj/item/reagent_containers/food/drinks/bottle/small/beer,
+/obj/item/reagent_containers/food/drinks/bottle/small/beer,
+/obj/item/reagent_containers/food/drinks/bottle/small/beer,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/lower/maints/room66)
 "cn" = (
@@ -730,7 +730,7 @@
 /area/mining_colony/lower/mining_caves/shelter_3)
 "cy" = (
 /obj/structure/table/rack,
-/obj/item/weapon/gun/energy/cutter/empty,
+/obj/item/gun/energy/cutter/empty,
 /obj/structure/window/reinforced,
 /obj/effect/floor_decal/dank/outline,
 /turf/simulated/floor/dank/grater,
@@ -743,7 +743,7 @@
 /area/mining_colony/lower)
 "cB" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/weapon/storage/box/greenglowsticks,
+/obj/item/storage/box/greenglowsticks,
 /turf/simulated/floor/dank/slides{
 	dir = 8
 	},
@@ -755,7 +755,7 @@
 /obj/structure/closet/lasertag/red,
 /obj/random/loot/sometimes/few,
 /obj/item/clothing/under/color/red,
-/obj/item/weapon/gun/energy/lasertag,
+/obj/item/gun/energy/lasertag,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room58)
 "cE" = (
@@ -777,13 +777,13 @@
 "cI" = (
 /obj/effect/floor_decal/dank/outline,
 /obj/structure/table/rack,
-/obj/item/device/gps,
+/obj/item/gps,
 /turf/simulated/floor/dank/rectangles,
 /area/mining_colony/lower/excav/electronics)
 "cJ" = (
 /obj/effect/floor_decal/dank/outline,
 /obj/structure/table/rack,
-/obj/item/device/slime_scanner,
+/obj/item/slime_scanner,
 /obj/effect/landmark{
 	name = "ShuttleRepairPart"
 	},
@@ -798,7 +798,7 @@
 /area/mining_colony/lower/securitystation)
 "cL" = (
 /obj/structure/table/rack,
-/obj/item/weapon/reagent_containers/food/drinks/cans/speer,
+/obj/item/reagent_containers/food/drinks/cans/speer,
 /obj/effect/floor_decal/dank/outline,
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/lower/securityevidence2)
@@ -817,7 +817,7 @@
 	dir = 1;
 	icon_state = "tube_map"
 	},
-/obj/item/weapon/storage/lunchbox/cec/filled,
+/obj/item/storage/lunchbox/cec/filled,
 /turf/simulated/floor/dank/slides{
 	dir = 8
 	},
@@ -881,13 +881,13 @@
 /area/mining_colony/lower/securitystation)
 "cY" = (
 /obj/structure/table/standard,
-/obj/item/device/flashlight/lamp/green,
+/obj/item/flashlight/lamp/green,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room63)
 "cZ" = (
 /obj/effect/floor_decal/dank/outline,
 /obj/structure/table/rack,
-/obj/item/device/mass_spectrometer,
+/obj/item/mass_spectrometer,
 /turf/simulated/floor/dank/rectangles,
 /area/mining_colony/lower/excav/electronics)
 "da" = (
@@ -904,15 +904,15 @@
 /area/mining_colony/lower/biolab)
 "dc" = (
 /obj/structure/table/standard,
-/obj/item/weapon/reagent_containers/glass/bottle/stemcells,
-/obj/item/weapon/reagent_containers/glass/bottle/stemcells,
-/obj/item/weapon/reagent_containers/glass/bottle/stemcells,
-/obj/item/weapon/reagent_containers/glass/bottle/stemcells,
-/obj/item/weapon/reagent_containers/glass/bottle/stemcells,
-/obj/item/weapon/reagent_containers/glass/bottle/stemcells,
-/obj/item/weapon/reagent_containers/glass/bottle/stemcells,
-/obj/item/weapon/reagent_containers/glass/bottle/stemcells,
-/obj/item/weapon/reagent_containers/glass/bucket,
+/obj/item/reagent_containers/glass/bottle/stemcells,
+/obj/item/reagent_containers/glass/bottle/stemcells,
+/obj/item/reagent_containers/glass/bottle/stemcells,
+/obj/item/reagent_containers/glass/bottle/stemcells,
+/obj/item/reagent_containers/glass/bottle/stemcells,
+/obj/item/reagent_containers/glass/bottle/stemcells,
+/obj/item/reagent_containers/glass/bottle/stemcells,
+/obj/item/reagent_containers/glass/bottle/stemcells,
+/obj/item/reagent_containers/glass/bucket,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -1055,7 +1055,7 @@
 "dt" = (
 /obj/structure/table/standard,
 /obj/random/cash,
-/obj/item/weapon/storage/box/evidence,
+/obj/item/storage/box/evidence,
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
@@ -1089,8 +1089,8 @@
 "dy" = (
 /obj/structure/table/standard,
 /obj/random/loot/often/many,
-/obj/item/weapon/storage/fancy/nutricube_tray/filled,
-/obj/item/weapon/storage/box/monkeycubes,
+/obj/item/storage/fancy/nutricube_tray/filled,
+/obj/item/storage/box/monkeycubes,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
@@ -1148,15 +1148,15 @@
 	desc = "A bronze heart awarded to old military members for injury or death in the line of duty."
 	},
 /obj/item/clothing/gloves/tactical,
-/obj/item/weapon/storage/backpack/rucksack/tan,
+/obj/item/storage/backpack/rucksack/tan,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower)
 "dF" = (
 /obj/structure/reagent_dispensers/beerkeg,
 /obj/structure/safe/floor,
-/obj/item/weapon/reagent_containers/food/snacks/necrojelly,
-/obj/item/weapon/gun/projectile/revolver/webley/marooned,
-/obj/item/weapon/spacecash/ewallet/random/c5000,
+/obj/item/reagent_containers/food/snacks/necrojelly,
+/obj/item/gun/projectile/revolver/webley/marooned,
+/obj/item/spacecash/ewallet/random/c5000,
 /obj/item/clothing/head/beret/solgov/borderguard,
 /obj/item/ammo_magazine/c44,
 /obj/item/ammo_magazine/c44,
@@ -1204,7 +1204,7 @@
 /area/mining_colony/lower/securitystation)
 "dO" = (
 /obj/structure/janitorialcart,
-/obj/item/weapon/mop,
+/obj/item/mop,
 /turf/simulated/floor/dank/slides{
 	dir = 1
 	},
@@ -1224,7 +1224,7 @@
 /area/mining_colony/lower)
 "dR" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/firstaid/regular,
+/obj/item/storage/firstaid/regular,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room32)
 "dS" = (
@@ -1298,7 +1298,7 @@
 "ec" = (
 /obj/structure/closet/crate/med_crate/toxin,
 /obj/random/loot/often/many,
-/obj/item/weapon/storage/firstaid/surgery,
+/obj/item/storage/firstaid/surgery,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/lower/medical)
 "ed" = (
@@ -1389,7 +1389,7 @@
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/lower)
 "es" = (
-/obj/item/weapon/reagent_containers/glass/bucket,
+/obj/item/reagent_containers/glass/bucket,
 /turf/simulated/floor/water_shallow{
 	color = "";
 	desc = "Where all the Aegis VII liquid waste goes to.";
@@ -1436,7 +1436,7 @@
 /turf/simulated/floor/plating,
 /area/mining_colony/lower)
 "ey" = (
-/obj/item/weapon/mop,
+/obj/item/mop,
 /turf/simulated/floor/water_shallow{
 	color = "";
 	desc = "Where all the Aegis VII liquid waste goes to.";
@@ -1445,7 +1445,7 @@
 /area/mining_colony/lower)
 "ez" = (
 /obj/structure/table/standard,
-/obj/item/weapon/handcuffs/cable/tape,
+/obj/item/handcuffs/cable/tape,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room29)
 "eA" = (
@@ -1513,9 +1513,9 @@
 /area/mining_colony/lower)
 "eL" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/pill_bottle/zoom,
-/obj/item/weapon/storage/pill_bottle/happy,
-/obj/item/weapon/storage/firstaid/toxin,
+/obj/item/storage/pill_bottle/zoom,
+/obj/item/storage/pill_bottle/happy,
+/obj/item/storage/firstaid/toxin,
 /obj/random/medical/lite,
 /obj/random/medical,
 /turf/simulated/floor/plating,
@@ -1634,7 +1634,7 @@
 /area/mining_colony/lower/maints/room48)
 "fh" = (
 /obj/structure/table/standard,
-/obj/item/weapon/material/hatchet/machete,
+/obj/item/material/hatchet/machete,
 /obj/item/clothing/accessory/storage/holster/machete,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room48)
@@ -1725,7 +1725,7 @@
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room32)
 "fw" = (
-/obj/item/weapon/tool/tape_roll,
+/obj/item/tool/tape_roll,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room32)
 "fx" = (
@@ -1750,13 +1750,13 @@
 /turf/simulated/floor/dank/medical,
 /area/mining_colony/lower/morgue)
 "fA" = (
-/obj/item/weapon/storage/lunchbox/cec/filled,
+/obj/item/storage/lunchbox/cec/filled,
 /obj/structure/table/rack,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room20)
 "fB" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/firstaid/surgery,
+/obj/item/storage/firstaid/surgery,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room32)
 "fC" = (
@@ -1888,9 +1888,9 @@
 /area/mining_colony/lower)
 "fY" = (
 /obj/structure/table/standard,
-/obj/item/weapon/reagent_containers/pill/happy,
-/obj/item/weapon/reagent_containers/pill/happy,
-/obj/item/weapon/reagent_containers/pill/happy,
+/obj/item/reagent_containers/pill/happy,
+/obj/item/reagent_containers/pill/happy,
+/obj/item/reagent_containers/pill/happy,
 /obj/random/tool/advanced,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room49)
@@ -1954,7 +1954,7 @@
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room66)
 "gm" = (
-/obj/item/weapon/storage/toolbox/electrical,
+/obj/item/storage/toolbox/electrical,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room66)
 "gn" = (
@@ -1971,7 +1971,7 @@
 /area/mining_colony/lower/maints/room49)
 "gp" = (
 /obj/structure/table/standard,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer,
+/obj/item/reagent_containers/food/drinks/bottle/small/beer,
 /turf/simulated/floor/dank/medical,
 /area/mining_colony/lower/biolab)
 "gq" = (
@@ -1983,7 +1983,7 @@
 /area/mining_colony/lower/securitystation)
 "gr" = (
 /obj/structure/table/woodentable,
-/obj/item/weapon/storage/bible/unitology{
+/obj/item/storage/bible/unitology{
 	desc = "A series of codes and tenants compiled into one book, given to select members of the Unitologist faith. There are highlighted sections all over, someone has clearly spent quite a lot of time studying this book.";
 	name = "well studied accipiens lunam"
 	},
@@ -2009,9 +2009,9 @@
 /area/mining_colony/lower/mining_caves)
 "gD" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/weapon/storage/box/survival,
-/obj/item/weapon/storage/box/survival,
-/obj/item/weapon/storage/box/survival,
+/obj/item/storage/box/survival,
+/obj/item/storage/box/survival,
+/obj/item/storage/box/survival,
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
@@ -2070,9 +2070,9 @@
 /turf/simulated/floor/plating,
 /area/mining_colony/lower)
 "gN" = (
-/obj/item/weapon/reagent_containers/food/drinks/tea,
-/obj/item/weapon/reagent_containers/food/drinks/tea,
-/obj/item/weapon/reagent_containers/food/drinks/teapot,
+/obj/item/reagent_containers/food/drinks/tea,
+/obj/item/reagent_containers/food/drinks/tea,
+/obj/item/reagent_containers/food/drinks/teapot,
 /obj/structure/table/standard,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room5)
@@ -2159,8 +2159,8 @@
 /area/mining_colony/lower/maints/room57)
 "hb" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/fancy/nutricube_tray/filled,
-/obj/item/weapon/storage/fancy/nutricube_tray/filled,
+/obj/item/storage/fancy/nutricube_tray/filled,
+/obj/item/storage/fancy/nutricube_tray/filled,
 /turf/simulated/floor/dank/medical,
 /area/mining_colony/lower/biolab)
 "hc" = (
@@ -2232,7 +2232,7 @@
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room38)
 "hp" = (
-/obj/item/weapon/bikehorn/rubberducky,
+/obj/item/bikehorn/rubberducky,
 /turf/simulated/floor/water_shallow{
 	color = "";
 	desc = "Where all the Aegis VII liquid waste goes to.";
@@ -2322,8 +2322,8 @@
 /area/mining_colony/lower)
 "hG" = (
 /obj/structure/table/standard,
-/obj/item/weapon/tool/saw/plasma,
-/obj/item/weapon/storage/chewables/candy/medicallollis,
+/obj/item/tool/saw/plasma,
+/obj/item/storage/chewables/candy/medicallollis,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room32)
 "hH" = (
@@ -2331,11 +2331,11 @@
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room37)
 "hI" = (
-/obj/item/weapon/shield/tray,
+/obj/item/shield/tray,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower)
 "hJ" = (
-/obj/item/weapon/material/twohanded/spear,
+/obj/item/material/twohanded/spear,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower)
 "hK" = (
@@ -2349,7 +2349,7 @@
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room49)
 "hM" = (
-/obj/item/weapon/spacecash/ewallet/random/c500,
+/obj/item/spacecash/ewallet/random/c500,
 /obj/structure/table/gamblingtable,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room59)
@@ -2371,7 +2371,7 @@
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room59)
 "hR" = (
-/obj/item/weapon/storage/wallet/leather,
+/obj/item/storage/wallet/leather,
 /turf/simulated/floor/water_shallow{
 	color = "";
 	desc = "Where all the Aegis VII liquid waste goes to.";
@@ -2392,13 +2392,13 @@
 /area/mining_colony/lower/maints/room63)
 "hV" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/box/gloves,
-/obj/item/weapon/storage/box/gloves,
+/obj/item/storage/box/gloves,
+/obj/item/storage/box/gloves,
 /turf/simulated/floor/dank/bathr,
 /area/mining_colony/lower/morgue)
 "hW" = (
-/obj/item/weapon/storage/chewables,
-/obj/item/weapon/storage/chewables,
+/obj/item/storage/chewables,
+/obj/item/storage/chewables,
 /obj/structure/coatrack,
 /obj/item/clothing/under/blackjumpskirt,
 /turf/simulated/floor/plating,
@@ -2482,11 +2482,11 @@
 	},
 /area/mining_colony/lower)
 "im" = (
-/obj/item/weapon/stool/padded,
+/obj/item/stool/padded,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower)
 "in" = (
-/obj/item/weapon/dice,
+/obj/item/dice,
 /obj/random/cash,
 /obj/random/cash,
 /obj/structure/table/reinforced,
@@ -2506,7 +2506,7 @@
 /area/mining_colony/lower/maints/room21)
 "iq" = (
 /obj/structure/table/standard,
-/obj/item/weapon/reagent_containers/spray/cleaner,
+/obj/item/reagent_containers/spray/cleaner,
 /obj/item/clothing/accessory/stethoscope,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room32)
@@ -2533,8 +2533,8 @@
 /area/mining_colony/lower/maints/room40)
 "iu" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/box/beakers,
-/obj/item/weapon/storage/box/syringes,
+/obj/item/storage/box/beakers,
+/obj/item/storage/box/syringes,
 /obj/machinery/firealarm{
 	dir = 4;
 	icon_state = "fire0";
@@ -2571,7 +2571,7 @@
 /turf/simulated/floor/wood,
 /area/mining_colony/lower/maints/room64)
 "iB" = (
-/obj/item/weapon/storage/chewables,
+/obj/item/storage/chewables,
 /obj/item/clothing/under/skirt,
 /obj/structure/coatrack,
 /obj/effect/decal/cleanable/cobweb,
@@ -2591,8 +2591,8 @@
 "iE" = (
 /obj/structure/table/woodentable,
 /obj/item/toy/figure/detective,
-/obj/item/weapon/paper_bin,
-/obj/item/weapon/pen/multi,
+/obj/item/paper_bin,
+/obj/item/pen/multi,
 /turf/simulated/floor/wood,
 /area/mining_colony/lower/maints/room64)
 "iF" = (
@@ -2607,15 +2607,15 @@
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room21)
 "iH" = (
-/obj/item/weapon/book/manual/detective,
+/obj/item/book/manual/detective,
 /obj/structure/closet/secure_closet/personal/cabinet,
 /obj/item/clothing/head/det,
 /obj/item/clothing/under/det/black,
 /obj/item/clothing/suit/storage/det_trench,
-/obj/item/device/camera,
+/obj/item/camera,
 /obj/item/clothing/shoes/dutyboots,
-/obj/item/weapon/storage/briefcase/crimekit,
-/obj/item/weapon/storage/box/evidence,
+/obj/item/storage/briefcase/crimekit,
+/obj/item/storage/box/evidence,
 /obj/item/clothing/gloves/forensic,
 /obj/item/clothing/accessory/badge/PI,
 /obj/item/clothing/accessory/storage/holster/waist,
@@ -2636,7 +2636,7 @@
 /turf/simulated/floor/plating,
 /area/mining_colony/lower)
 "iL" = (
-/obj/item/weapon/stool/bar,
+/obj/item/stool/bar,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower)
 "iM" = (
@@ -2660,11 +2660,11 @@
 /turf/simulated/floor/plating,
 /area/mining_colony/lower)
 "iP" = (
-/obj/item/weapon/reagent_containers/food/drinks/flask/detflask,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/whiskey,
-/obj/item/weapon/reagent_containers/food/drinks/glass2/shot,
+/obj/item/reagent_containers/food/drinks/flask/detflask,
+/obj/item/reagent_containers/food/drinks/bottle/whiskey,
+/obj/item/reagent_containers/food/drinks/glass2/shot,
 /obj/structure/table/woodentable,
-/obj/item/weapon/flame/lighter/zippo,
+/obj/item/flame/lighter/zippo,
 /obj/random/smokes,
 /turf/simulated/floor/wood,
 /area/mining_colony/lower/maints/room64)
@@ -2684,9 +2684,9 @@
 /turf/simulated/floor/plating,
 /area/mining_colony/lower)
 "iS" = (
-/obj/item/weapon/reagent_containers/food/drinks/coffeecup/britcup,
-/obj/item/weapon/reagent_containers/food/drinks/coffeecup/britcup,
-/obj/item/weapon/reagent_containers/food/drinks/coffeecup/britcup,
+/obj/item/reagent_containers/food/drinks/coffeecup/britcup,
+/obj/item/reagent_containers/food/drinks/coffeecup/britcup,
+/obj/item/reagent_containers/food/drinks/coffeecup/britcup,
 /obj/structure/table/standard,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room5)
@@ -2730,13 +2730,13 @@
 /obj/structure/table/standard,
 /obj/random/toy,
 /obj/random/loot/often/few,
-/obj/item/weapon/storage/chewables,
+/obj/item/storage/chewables,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room44)
 "ja" = (
-/obj/item/weapon/forensics/sample_kit,
-/obj/item/weapon/forensics/sample_kit/powder,
-/obj/item/weapon/forensics/swab,
+/obj/item/forensics/sample_kit,
+/obj/item/forensics/sample_kit/powder,
+/obj/item/forensics/swab,
 /obj/structure/table/woodentable,
 /obj/effect/decal/cleanable/cobweb,
 /turf/simulated/floor/wood,
@@ -2754,7 +2754,7 @@
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room44)
 "jd" = (
-/obj/item/weapon/tool/saw,
+/obj/item/tool/saw,
 /obj/structure/table/steel,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower)
@@ -2764,14 +2764,14 @@
 	icon_state = "cola";
 	name = "randomly spawned cola";
 	spawn_nothing_percentage = 50;
-	spawn_object = /obj/item/weapon/reagent_containers/food/drinks/cans/cola
+	spawn_object = /obj/item/reagent_containers/food/drinks/cans/cola
 	},
 /obj/random/single{
 	icon = 'icons/obj/drinks.dmi';
 	icon_state = "cola";
 	name = "randomly spawned cola";
 	spawn_nothing_percentage = 50;
-	spawn_object = /obj/item/weapon/reagent_containers/food/drinks/cans/cola
+	spawn_object = /obj/item/reagent_containers/food/drinks/cans/cola
 	},
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room30)
@@ -2782,7 +2782,7 @@
 /area/mining_colony/lower)
 "jg" = (
 /obj/structure/table/woodentable,
-/obj/item/weapon/reagent_containers/food/drinks/glass2/shot,
+/obj/item/reagent_containers/food/drinks/glass2/shot,
 /obj/random/rare_loot/rarely,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower)
@@ -2798,7 +2798,7 @@
 /area/mining_colony/lower/maints/room20)
 "jj" = (
 /obj/structure/table/woodentable,
-/obj/item/weapon/reagent_containers/food/drinks/glass2/shot,
+/obj/item/reagent_containers/food/drinks/glass2/shot,
 /obj/random/loot/often/few,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower)
@@ -2823,7 +2823,7 @@
 /turf/simulated/floor/plating,
 /area/mining_colony/lower)
 "jo" = (
-/obj/item/weapon/shield/tray,
+/obj/item/shield/tray,
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower)
@@ -3067,20 +3067,20 @@
 /area/mining_colony/lower/maints/room29)
 "kb" = (
 /obj/structure/table/woodentable,
-/obj/item/weapon/reagent_containers/food/drinks/glass2/shot,
+/obj/item/reagent_containers/food/drinks/glass2/shot,
 /obj/random/single{
 	icon = 'icons/obj/drinks.dmi';
 	icon_state = "cola";
 	name = "randomly spawned cola";
 	spawn_nothing_percentage = 50;
-	spawn_object = /obj/item/weapon/reagent_containers/food/drinks/cans/cola
+	spawn_object = /obj/item/reagent_containers/food/drinks/cans/cola
 	},
 /obj/random/single{
 	icon = 'icons/obj/drinks.dmi';
 	icon_state = "cola";
 	name = "randomly spawned cola";
 	spawn_nothing_percentage = 50;
-	spawn_object = /obj/item/weapon/reagent_containers/food/drinks/cans/cola
+	spawn_object = /obj/item/reagent_containers/food/drinks/cans/cola
 	},
 /turf/simulated/floor/plating,
 /area/mining_colony/lower)
@@ -3091,7 +3091,7 @@
 /turf/simulated/floor/plating,
 /area/mining_colony/lower)
 "kd" = (
-/obj/item/weapon/storage/lunchbox/egov/filled,
+/obj/item/storage/lunchbox/egov/filled,
 /obj/structure/table/woodentable,
 /obj/machinery/light/small{
 	dir = 8
@@ -3172,11 +3172,11 @@
 /area/mining_colony/lower/maints/room1)
 "kq" = (
 /obj/structure/bed/psych,
-/obj/item/device/megaphone,
+/obj/item/megaphone,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room40)
 "kr" = (
-/obj/item/device/radio/intercom/department/security{
+/obj/item/radio/intercom/department/security{
 	dir = 8;
 	pixel_x = 21
 	},
@@ -3265,8 +3265,8 @@
 /area/mining_colony/lower/maints/room44)
 "kG" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/chewables/candy/gum,
-/obj/item/weapon/storage/chewables/candy/gum,
+/obj/item/storage/chewables/candy/gum,
+/obj/item/storage/chewables/candy/gum,
 /obj/random/storage,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room42)
@@ -3288,7 +3288,7 @@
 /area/mining_colony/lower/maints/room28)
 "kK" = (
 /obj/structure/table/standard,
-/obj/item/weapon/spacecash/ewallet/random/c500,
+/obj/item/spacecash/ewallet/random/c500,
 /obj/random/maintenance/clean,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower)
@@ -3390,7 +3390,7 @@
 "la" = (
 /obj/structure/table/standard,
 /obj/random/snack,
-/obj/item/weapon/storage/fancy/cigar,
+/obj/item/storage/fancy/cigar,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room63)
 "lb" = (
@@ -3475,7 +3475,7 @@
 "lp" = (
 /obj/effect/floor_decal/dank/outline,
 /obj/structure/table/rack,
-/obj/item/device/price_scanner,
+/obj/item/price_scanner,
 /turf/simulated/floor/dank/rectangles,
 /area/mining_colony/lower/excav/electronics)
 "lq" = (
@@ -3525,17 +3525,17 @@
 /area/mining_colony/lower/morgue)
 "lw" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/box/bodybags,
-/obj/item/weapon/storage/box/bodybags,
-/obj/item/weapon/storage/box/bodybags,
-/obj/item/weapon/storage/box/bodybags,
+/obj/item/storage/box/bodybags,
+/obj/item/storage/box/bodybags,
+/obj/item/storage/box/bodybags,
+/obj/item/storage/box/bodybags,
 /obj/effect/floor_decal/dank/outline,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/lower/morgue)
 "lx" = (
 /obj/effect/floor_decal/dank/outline,
 /obj/structure/table/rack,
-/obj/item/device/paicard,
+/obj/item/paicard,
 /turf/simulated/floor/dank/rectangles,
 /area/mining_colony/lower/excav/electronics)
 "ly" = (
@@ -3596,7 +3596,7 @@
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/lower/excav)
 "lH" = (
-/obj/item/weapon/stool/bar,
+/obj/item/stool/bar,
 /obj/machinery/light/small,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower)
@@ -3619,7 +3619,7 @@
 "lL" = (
 /obj/machinery/light,
 /obj/structure/table/standard,
-/obj/item/weapon/autopsy_scanner,
+/obj/item/autopsy_scanner,
 /turf/simulated/floor/dank/bathr,
 /area/mining_colony/lower/morgue)
 "lM" = (
@@ -3874,7 +3874,7 @@
 /area/mining_colony/lower)
 "mB" = (
 /obj/structure/table/standard,
-/obj/item/weapon/tool/scalpel,
+/obj/item/tool/scalpel,
 /turf/simulated/floor/dank/bathr,
 /area/mining_colony/lower/morgue)
 "mC" = (
@@ -4013,14 +4013,14 @@
 /area/mining_colony/lower/maints/room66)
 "mZ" = (
 /obj/structure/table/steel,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer,
+/obj/item/reagent_containers/food/drinks/bottle/small/beer,
 /obj/effect/decal/cleanable/blood/writing{
 	dir = 4;
 	message = "CUT OFF THEIR LIMBS";
 	pixel_x = -30;
 	pixel_y = -25
 	},
-/obj/item/weapon/material/ashtray{
+/obj/item/material/ashtray{
 	pixel_x = 9;
 	pixel_y = 10
 	},
@@ -4031,14 +4031,14 @@
 /turf/simulated/wall/r_wall,
 /area/mining_colony/lower/maints/room66)
 "nb" = (
-/obj/item/weapon/cell/plasmacutter,
-/obj/item/weapon/cell/plasmacutter,
+/obj/item/cell/plasmacutter,
+/obj/item/cell/plasmacutter,
 /obj/structure/workbench,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/lower/maints/room66)
 "nc" = (
 /obj/structure/table/rack/dark,
-/obj/item/weapon/tool/repairkit,
+/obj/item/tool/repairkit,
 /obj/effect/decal/cleanable/cobweb2{
 	dir = 1
 	},
@@ -4091,7 +4091,7 @@
 /area/mining_colony/lower)
 "nm" = (
 /obj/structure/safe/floor,
-/obj/item/weapon/gun/projectile/revolver/detective,
+/obj/item/gun/projectile/revolver/detective,
 /obj/item/ammo_magazine/c38,
 /obj/item/ammo_magazine/c38,
 /obj/item/ammo_magazine/c38,
@@ -4120,7 +4120,7 @@
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room56)
 "nr" = (
-/obj/item/weapon/material/butterfly/switchblade,
+/obj/item/material/butterfly/switchblade,
 /obj/structure/table/standard,
 /obj/random/loot/usually/few,
 /obj/random/suit,
@@ -4204,7 +4204,7 @@
 	},
 /area/mining_colony/lower/securityevidence1)
 "nG" = (
-/obj/item/device/radio/intercom/department/security{
+/obj/item/radio/intercom/department/security{
 	pixel_y = 20
 	},
 /obj/structure/cable{
@@ -4241,7 +4241,7 @@
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/lower/maints/room66)
 "nM" = (
-/obj/item/weapon/inflatable_duck,
+/obj/item/inflatable_duck,
 /turf/simulated/floor/water_shallow{
 	color = "";
 	desc = "Where all the Aegis VII liquid waste goes to.";
@@ -4510,7 +4510,7 @@
 /area/mining_colony/interior/cargo/storage_upper)
 "oK" = (
 /obj/effect/decal/remains,
-/obj/item/weapon/rig/mining,
+/obj/item/rig/mining,
 /turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/lower/mining_caves)
 "oL" = (
@@ -4541,14 +4541,14 @@
 /area/mining_colony/lower/mining_caves/shelter_3)
 "oQ" = (
 /obj/structure/table/rack,
-/obj/item/weapon/rig/emergency,
+/obj/item/rig/emergency,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/lower/mining_caves/shelter_3)
 "oR" = (
 /obj/structure/table/rack,
-/obj/item/weapon/tank/emergency/oxygen/double,
-/obj/item/weapon/tank/emergency/oxygen/double,
-/obj/item/weapon/tank/emergency/oxygen/double,
+/obj/item/tank/emergency/oxygen/double,
+/obj/item/tank/emergency/oxygen/double,
+/obj/item/tank/emergency/oxygen/double,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/lower/mining_caves/shelter_3)
 "oS" = (
@@ -4560,13 +4560,13 @@
 /area/mining_colony/lower/mining_caves/shelter_3)
 "oT" = (
 /obj/structure/table/rack,
-/obj/item/device/radio,
+/obj/item/radio,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/lower/mining_caves/shelter_3)
 "oU" = (
 /obj/random/loot/sometimes/few,
 /obj/structure/table/rack,
-/obj/item/weapon/beach_ball/holoball,
+/obj/item/beach_ball/holoball,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room3)
 "oV" = (
@@ -4574,7 +4574,7 @@
 /obj/item/stack/material/gold/ten,
 /obj/item/stack/material/silver/ten,
 /obj/item/stack/material/diamond/ten,
-/obj/item/weapon/spacecash/ewallet/random/c5000,
+/obj/item/spacecash/ewallet/random/c5000,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room59)
 "oW" = (
@@ -4585,12 +4585,12 @@
 /obj/machinery/door/airlock/maintenance{
 	dir = 4
 	},
-/obj/item/weapon/soap/syndie,
+/obj/item/soap/syndie,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/lower/maints/room59)
 "oY" = (
 /obj/structure/bed/roller,
-/obj/item/weapon/bedsheet/orange,
+/obj/item/bedsheet/orange,
 /obj/effect/floor_decal/dank/outline_striped,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/lower/mining_caves/shelter_3)
@@ -4652,7 +4652,7 @@
 /area/mining_colony/lower/mining_caves/shelter_1)
 "pi" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/weapon/storage/box/greenglowsticks,
+/obj/item/storage/box/greenglowsticks,
 /turf/simulated/floor/dank/slides{
 	dir = 8
 	},
@@ -4663,16 +4663,16 @@
 	dir = 1;
 	icon_state = "tube_map"
 	},
-/obj/item/weapon/storage/lunchbox/cec/filled,
+/obj/item/storage/lunchbox/cec/filled,
 /turf/simulated/floor/dank/slides{
 	dir = 8
 	},
 /area/mining_colony/lower/mining_caves/shelter_1)
 "pk" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/weapon/storage/box/survival,
-/obj/item/weapon/storage/box/survival,
-/obj/item/weapon/storage/box/survival,
+/obj/item/storage/box/survival,
+/obj/item/storage/box/survival,
+/obj/item/storage/box/survival,
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
@@ -4718,14 +4718,14 @@
 /area/mining_colony/lower/mining_caves/shelter_1)
 "pr" = (
 /obj/structure/table/rack,
-/obj/item/weapon/rig/emergency,
+/obj/item/rig/emergency,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/lower/mining_caves/shelter_1)
 "ps" = (
 /obj/structure/table/rack,
-/obj/item/weapon/tank/emergency/oxygen/double,
-/obj/item/weapon/tank/emergency/oxygen/double,
-/obj/item/weapon/tank/emergency/oxygen/double,
+/obj/item/tank/emergency/oxygen/double,
+/obj/item/tank/emergency/oxygen/double,
+/obj/item/tank/emergency/oxygen/double,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/lower/mining_caves/shelter_1)
 "pt" = (
@@ -4737,12 +4737,12 @@
 /area/mining_colony/lower/mining_caves/shelter_1)
 "pu" = (
 /obj/structure/table/rack,
-/obj/item/device/radio,
+/obj/item/radio,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/lower/mining_caves/shelter_1)
 "pv" = (
 /obj/structure/bed/roller,
-/obj/item/weapon/bedsheet/orange,
+/obj/item/bedsheet/orange,
 /obj/effect/floor_decal/dank/outline_striped,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/lower/mining_caves/shelter_1)
@@ -4768,12 +4768,12 @@
 /area/mining_colony/lower/excav/storage)
 "pA" = (
 /obj/structure/table/standard,
-/obj/item/device/hailer,
+/obj/item/hailer,
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/lower/excav/storage)
 "pB" = (
 /obj/structure/table/standard,
-/obj/item/device/flashlight/maglight,
+/obj/item/flashlight/maglight,
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/lower/excav/storage)
 "pC" = (
@@ -5069,13 +5069,13 @@
 /area/mining_colony/lower/mining_caves)
 "qs" = (
 /obj/structure/table/rack,
-/obj/item/device/flashlight/flare/glowstick,
-/obj/item/device/flashlight/flare/glowstick,
-/obj/item/device/flashlight/flare/glowstick,
+/obj/item/flashlight/flare/glowstick,
+/obj/item/flashlight/flare/glowstick,
+/obj/item/flashlight/flare/glowstick,
 /turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/lower/mining_caves)
 "qt" = (
-/obj/item/device/flashlight/flare/active,
+/obj/item/flashlight/flare/active,
 /turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/lower/mining_caves)
 "qu" = (
@@ -5087,15 +5087,15 @@
 /turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/lower/mining_caves)
 "qw" = (
-/obj/item/device/flashlight/flare/glowstick,
-/obj/item/device/flashlight/flare/glowstick,
-/obj/item/device/flashlight/flare/glowstick,
+/obj/item/flashlight/flare/glowstick,
+/obj/item/flashlight/flare/glowstick,
+/obj/item/flashlight/flare/glowstick,
 /obj/structure/table/rack,
 /turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/lower/mining_caves)
 "qx" = (
 /obj/structure/table/rack,
-/obj/item/weapon/material/star,
+/obj/item/material/star,
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/lower/securityevidence1)
 "qy" = (
@@ -5196,11 +5196,11 @@
 /obj/item/clothing/glasses/tacgoggles,
 /obj/item/clothing/gloves/thick/combat,
 /obj/item/clothing/mask/balaclava,
-/obj/item/weapon/gun/projectile/military,
+/obj/item/gun/projectile/military,
 /obj/item/ammo_magazine/c45mds,
-/obj/item/weapon/spacecash/ewallet/random/c1000,
-/obj/item/weapon/spacecash/ewallet/random/c1000,
-/obj/item/weapon/spacecash/ewallet/random/c10000,
+/obj/item/spacecash/ewallet/random/c1000,
+/obj/item/spacecash/ewallet/random/c1000,
+/obj/item/spacecash/ewallet/random/c10000,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room65)
 "qO" = (
@@ -5234,11 +5234,11 @@
 /area/mining_colony/lower/mining_caves)
 "qU" = (
 /obj/structure/table/rack,
-/obj/item/weapon/material/knife/hook,
+/obj/item/material/knife/hook,
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/lower/securityevidence1)
 "qV" = (
-/obj/item/weapon/reagent_containers/food/snacks/sliceable/monkfish,
+/obj/item/reagent_containers/food/snacks/sliceable/monkfish,
 /turf/simulated/floor/water_shallow{
 	color = "";
 	desc = "Where all the Aegis VII liquid waste goes to.";
@@ -5349,7 +5349,7 @@
 /area/mining_colony/lower/maints/room41)
 "rm" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/chewables,
+/obj/item/storage/chewables,
 /obj/random/loot/often/few,
 /obj/random/loot/often/few,
 /turf/simulated/floor/tiled/dark,
@@ -5417,7 +5417,7 @@
 /area/mining_colony/lower/maints/room41)
 "rw" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/chewables/candy/cookies,
+/obj/item/storage/chewables/candy/cookies,
 /turf/simulated/floor/tiled/dark,
 /area/mining_colony/lower/maints/room42)
 "rx" = (
@@ -5449,7 +5449,7 @@
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/lower/maints/room53)
 "rD" = (
-/obj/item/weapon/gun/energy/cutter/plasma,
+/obj/item/gun/energy/cutter/plasma,
 /obj/structure/table/steel,
 /obj/structure/sign/kiddieplaque{
 	desc = "An extremely long list of details about the  211-V Plasma Cutter.";
@@ -5607,7 +5607,7 @@
 /turf/simulated/floor/dank/medical,
 /area/mining_colony/lower/morgue)
 "rZ" = (
-/obj/item/weapon/tool/wrench,
+/obj/item/tool/wrench,
 /obj/structure/table/rack,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/lower/medical)
@@ -5753,9 +5753,9 @@
 	color = "red";
 	name = "Locker"
 	},
-/obj/item/weapon/material/hatchet,
-/obj/item/weapon/material/hatchet,
-/obj/item/weapon/material/hatchet,
+/obj/item/material/hatchet,
+/obj/item/material/hatchet,
+/obj/item/material/hatchet,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room67)
 "sv" = (
@@ -5806,8 +5806,8 @@
 	color = "red";
 	name = "Locker"
 	},
-/obj/item/weapon/beartrap,
-/obj/item/weapon/beartrap,
+/obj/item/beartrap,
+/obj/item/beartrap,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room67)
 "sG" = (
@@ -5815,7 +5815,7 @@
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room38)
 "sH" = (
-/obj/item/weapon/material/knife/hook,
+/obj/item/material/knife/hook,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room67)
 "sI" = (
@@ -5824,12 +5824,12 @@
 /area/mining_colony/lower/maints/room67)
 "sJ" = (
 /obj/structure/closet/crate,
-/obj/item/weapon/storage/firstaid/regular,
+/obj/item/storage/firstaid/regular,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room67)
 "sK" = (
 /obj/structure/closet/crate,
-/obj/item/weapon/storage/toolbox/mechanical,
+/obj/item/storage/toolbox/mechanical,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room67)
 "sL" = (
@@ -5948,7 +5948,7 @@
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/cargo/storage_upper)
 "tv" = (
-/obj/item/device/radio/intercom/department/medbay{
+/obj/item/radio/intercom/department/medbay{
 	dir = 1;
 	pixel_y = -30
 	},
@@ -6283,12 +6283,12 @@
 /area/mining_colony/lower/maints/room49)
 "zb" = (
 /obj/structure/table/woodentable,
-/obj/item/weapon/paper_bin,
-/obj/item/weapon/pen/multi,
+/obj/item/paper_bin,
+/obj/item/pen/multi,
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
 	},
-/obj/item/weapon/storage/chewables/candy/cookies,
+/obj/item/storage/chewables/candy/cookies,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/dank/maint_right,
 /area/mining_colony/lower/unibase)
@@ -6345,7 +6345,7 @@
 /area/mining_colony/lower/maints/room42)
 "zV" = (
 /obj/structure/table/rack,
-/obj/item/device/radio,
+/obj/item/radio,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/lower/mining_caves/shelter_2)
 "zW" = (
@@ -6606,7 +6606,7 @@
 /turf/simulated/floor/dank/maint,
 /area/mining_colony/lower/unibase)
 "DA" = (
-/obj/item/device/radio/intercom/department/medbay{
+/obj/item/radio/intercom/department/medbay{
 	pixel_y = 20
 	},
 /turf/simulated/floor/dank/grater,
@@ -6631,14 +6631,14 @@
 	desc = "Break in case of emergency. It looks flimsy enough to break in a few hits"
 	},
 /obj/structure/table/rack/dark,
-/obj/item/weapon/gun/projectile/divet,
+/obj/item/gun/projectile/divet,
 /obj/item/ammo_magazine/divet,
 /obj/random/single{
 	icon_state = "zealot_rig";
 	icon = 'icons/obj/rig_frames.dmi';
 	name = "randomly spawned zealot rig";
 	spawn_nothing_percentage = 50;
-	spawn_object = /obj/item/weapon/reagent_containers/food/drinks/cans/cola
+	spawn_object = /obj/item/reagent_containers/food/drinks/cans/cola
 	},
 /obj/machinery/light/small{
 	dir = 1
@@ -6793,7 +6793,7 @@
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room38)
 "GI" = (
-/obj/item/device/radio/intercom/department/medbay{
+/obj/item/radio/intercom/department/medbay{
 	dir = 8;
 	pixel_x = 21
 	},
@@ -6804,7 +6804,7 @@
 /area/mining_colony/lower/maints/room13)
 "GK" = (
 /obj/structure/table/rack,
-/obj/item/weapon/rig/emergency,
+/obj/item/rig/emergency,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/lower/mining_caves/shelter_2)
 "GM" = (
@@ -6815,7 +6815,7 @@
 /area/mining_colony/lower/maints/room52)
 "GX" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/weapon/storage/box/greenglowsticks,
+/obj/item/storage/box/greenglowsticks,
 /turf/simulated/floor/dank/slides{
 	dir = 8
 	},
@@ -6993,8 +6993,8 @@
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/room17)
 "Ka" = (
-/obj/item/weapon/tool/weldingtool/advanced,
-/obj/item/weapon/tool/crowbar,
+/obj/item/tool/weldingtool/advanced,
+/obj/item/tool/crowbar,
 /turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/lower/mining_caves)
 "Kd" = (
@@ -7103,7 +7103,7 @@
 	dir = 1;
 	icon_state = "tube_map"
 	},
-/obj/item/weapon/storage/lunchbox/cec/filled,
+/obj/item/storage/lunchbox/cec/filled,
 /turf/simulated/floor/dank/slides{
 	dir = 8
 	},
@@ -7259,7 +7259,7 @@
 /turf/simulated/wall/r_wall,
 /area/mining_colony/interior/maint/storage)
 "Nr" = (
-/obj/item/weapon/storage/toolbox,
+/obj/item/storage/toolbox,
 /turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/lower/mining_caves)
 "Ns" = (
@@ -7325,9 +7325,9 @@
 /area/mining_colony/lower/maints/room27)
 "Ol" = (
 /obj/structure/table/rack,
-/obj/item/weapon/tank/emergency/oxygen/double,
-/obj/item/weapon/tank/emergency/oxygen/double,
-/obj/item/weapon/tank/emergency/oxygen/double,
+/obj/item/tank/emergency/oxygen/double,
+/obj/item/tank/emergency/oxygen/double,
+/obj/item/tank/emergency/oxygen/double,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/lower/mining_caves/shelter_2)
 "Os" = (
@@ -7430,9 +7430,9 @@
 	icon_state = "marker_shard_dormant";
 	name = "Marker piece"
 	},
-/obj/item/weapon/storage/lunchbox/unitology/filled,
+/obj/item/storage/lunchbox/unitology/filled,
 /obj/effect/floor_decal/spline/fancy/wood,
-/obj/item/device/boombox,
+/obj/item/boombox,
 /turf/simulated/floor/dank/maint,
 /area/mining_colony/lower/unibase)
 "PL" = (
@@ -7440,12 +7440,12 @@
 /obj/random/junk,
 /obj/random/junk,
 /obj/random/junk,
-/obj/item/weapon/storage/lunchbox/egov,
+/obj/item/storage/lunchbox/egov,
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/storage/bible{
+/obj/item/storage/bible{
 	name = "old bible";
 	desc = "This bible clearly hasn't gotten alot of use recently."
 	},
@@ -7589,7 +7589,7 @@
 /area/mining_colony/lower/unibase)
 "Sj" = (
 /obj/structure/bed/roller,
-/obj/item/weapon/bedsheet/orange,
+/obj/item/bedsheet/orange,
 /obj/effect/floor_decal/dank/outline_striped,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/lower/mining_caves/shelter_2)
@@ -7729,7 +7729,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/obj/item/weapon/tool/wrench/big_wrench,
+/obj/item/tool/wrench/big_wrench,
 /turf/simulated/floor/dank/maint_left,
 /area/mining_colony/lower/unibase)
 "TS" = (
@@ -7970,7 +7970,7 @@
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/lower/maints/room57)
 "XG" = (
-/obj/item/weapon/storage/lunchbox/egov,
+/obj/item/storage/lunchbox/egov,
 /turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/lower/mining_caves)
 "XJ" = (
@@ -7981,8 +7981,8 @@
 /area/mining_colony/lower/maints/room25)
 "XK" = (
 /obj/structure/table/woodentable,
-/obj/item/device/flashlight/lamp/lava/red,
-/obj/item/weapon/material/knife/unitologist,
+/obj/item/flashlight/lamp/lava/red,
+/obj/item/material/knife/unitologist,
 /obj/effect/floor_decal/spline/fancy/wood/corner{
 	dir = 8
 	},
@@ -8068,9 +8068,9 @@
 /area/mining_colony/lower/maints/room23)
 "YY" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/weapon/storage/box/survival,
-/obj/item/weapon/storage/box/survival,
-/obj/item/weapon/storage/box/survival,
+/obj/item/storage/box/survival,
+/obj/item/storage/box/survival,
+/obj/item/storage/box/survival,
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";

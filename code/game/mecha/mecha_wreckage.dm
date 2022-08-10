@@ -28,7 +28,7 @@
 	return
 
 
-/obj/effect/decal/mecha_wreckage/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/effect/decal/mecha_wreckage/attackby(obj/item/W as obj, mob/user as mob)
 	if(isWelder(W))
 		if(salvage_num <= 0)
 			to_chat(user, "You don't see anything that can be cut with [W].")

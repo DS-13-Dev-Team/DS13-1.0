@@ -3,7 +3,7 @@ Divet pistol typedef & logic
 */
 #define DIVET_DAMAGE	17.5
 #define DIVET_DELAY	1
-/obj/item/weapon/gun/projectile/divet
+/obj/item/gun/projectile/divet
 	name = "divet pistol"
 	desc = "A Winchester Arms NK-series pistol capable of fully automatic fire."
 	icon_state = "divet"
@@ -29,17 +29,17 @@ Divet pistol typedef & logic
 
 		)
 
-/obj/item/weapon/gun/projectile/divet/update_icon()
+/obj/item/gun/projectile/divet/update_icon()
 	..()
 	if(ammo_magazine && ammo_magazine.stored_ammo.len)
 		icon_state = "divet"
 	else
 		icon_state = "divet_e"
 
-/obj/item/weapon/gun/projectile/divet/empty
+/obj/item/gun/projectile/divet/empty
 	magazine_type = null
 
-/obj/item/weapon/gun/projectile/divet/silenced
+/obj/item/gun/projectile/divet/silenced
 	name = "special ops divet pistol"
 	desc = "A modified version of the Winchester Arms NK-series pistol. An integrated suppressor lowers the audio profile, although this has a detrimental effect on power."
 	icon_state = "divet_spec"
@@ -47,7 +47,7 @@ Divet pistol typedef & logic
 	silenced = TRUE
 	damage_factor = 0.85	//Silencers reduce bullet speed, and hence damage output
 
-/obj/item/weapon/gun/projectile/divet/silenced/update_icon()
+/obj/item/gun/projectile/divet/silenced/update_icon()
 	..()
 	if(ammo_magazine && ammo_magazine.stored_ammo.len)
 		icon_state = "divet_spec"

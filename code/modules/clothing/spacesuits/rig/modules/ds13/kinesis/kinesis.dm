@@ -34,8 +34,8 @@
 
 	//The kinesis module tries to grab certain items in an order of priority
 	var/list/target_priority = list(/obj/item/projectile,
-	/obj/item/weapon/grenade,
-	/obj/item/weapon,
+	/obj/item/grenade,
+	/obj/item,
 	/obj/item/organ,
 	/mob,
 	/atom/movable)
@@ -885,11 +885,11 @@
 	remove_hotkeys(user)
 	.=..()
 
-/obj/item/rig_module/kinesis/installed(obj/item/weapon/rig/new_holder)
+/obj/item/rig_module/kinesis/installed(obj/item/rig/new_holder)
 	. = ..()
 	update_hotkeys()
 
-/obj/item/rig_module/kinesis/uninstalled(obj/item/weapon/rig/former, mob/living/user)
+/obj/item/rig_module/kinesis/uninstalled(obj/item/rig/former, mob/living/user)
 	remove_hotkeys(user)
 	.=..()
 

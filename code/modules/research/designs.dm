@@ -210,6 +210,6 @@ other types of metals and chemistry for reagents).
 
 /datum/design/autolathe/corrupted
 	name = "ERROR"
-	build_path = /obj/item/weapon/material/shard/shrapnel
+	build_path = /obj/item/material/shard/shrapnel
 
 

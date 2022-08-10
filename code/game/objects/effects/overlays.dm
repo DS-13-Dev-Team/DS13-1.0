@@ -54,3 +54,12 @@
 	..()
 	pixel_x += rand(-10, 10)
 	pixel_y += rand(-10, 10)
+
+/obj/effect/overlay/ai_detect_hud
+	name = ""
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	icon = 'icons/effects/alphacolors.dmi'
+	icon_state = ""
+	alpha = 100
+	layer = ABOVE_ALL_MOB_LAYER
+	plane = ABOVE_GAME_PLANE

@@ -123,10 +123,10 @@ Class Procs:
 	//The typepath of the circuitboard used by this machine, if any.
 	//This will be repurposed at runtime to create and store an instance of that type.
 	//The specified circuitboard will be created in Initialize
-	var/obj/item/weapon/circuitboard/circuit = null
+	var/obj/item/circuitboard/circuit = null
 
 
-	var/list/processing_parts // Component parts queued for processing by the machine. Expected type: /obj/item/weapon/stock_parts
+	var/list/processing_parts // Component parts queued for processing by the machine. Expected type: /obj/item/stock_parts
 	var/processing_flags         // What is being processed
 
 /obj/machinery/New(mapload, d, nocircuit = FALSE)
@@ -187,7 +187,7 @@ Class Procs:
 	/*
 	if(processing_flags & MACHINERY_PROCESS_COMPONENTS)
 		for(var/thing in processing_parts)
-			var/obj/item/weapon/stock_parts/part = thing
+			var/obj/item/stock_parts/part = thing
 			if(part.machine_process(src) == PROCESS_KILL)
 				part.stop_processing()
 
@@ -362,20 +362,20 @@ Class Procs:
 	update_icon()
 	return 1
 
-/obj/machinery/proc/default_part_replacement(var/mob/user, var/obj/item/weapon/storage/part_replacer/R)
+/obj/machinery/proc/default_part_replacement(var/mob/user, var/obj/item/storage/part_replacer/R)
 	if(!istype(R))
 		return 0
 	if(!component_parts)
 		return 0
 	if(panel_open)
-		var/obj/item/weapon/circuitboard/CB = locate(/obj/item/weapon/circuitboard) in component_parts
+		var/obj/item/circuitboard/CB = locate(/obj/item/circuitboard) in component_parts
 		var/P
-		for(var/obj/item/weapon/stock_parts/A in component_parts)
+		for(var/obj/item/stock_parts/A in component_parts)
 			for(var/T in CB.req_components)
 				if(ispath(A.type, T))
 					P = T
 					break
-			for(var/obj/item/weapon/stock_parts/B in R.contents)
+			for(var/obj/item/stock_parts/B in R.contents)
 				if(istype(B, P) && istype(A, P))
 					if(B.rating > A.rating)
 						R.remove_from_storage(B, src)

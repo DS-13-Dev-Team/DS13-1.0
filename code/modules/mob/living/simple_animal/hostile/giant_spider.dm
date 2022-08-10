@@ -15,7 +15,7 @@
 	emote_hear = list("chitters")
 	speak_chance = 5
 	turns_per_move = 5
-	meat_type = /obj/item/weapon/reagent_containers/food/snacks/xenomeat
+	meat_type = /obj/item/reagent_containers/food/snacks/xenomeat
 	response_help  = "pets"
 	response_disarm = "gently pushes aside"
 	response_harm   = "pokes"

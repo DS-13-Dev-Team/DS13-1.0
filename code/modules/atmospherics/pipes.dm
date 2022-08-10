@@ -104,13 +104,13 @@
 
 	. = ..()
 
-/obj/machinery/atmospherics/pipe/attackby(var/obj/item/weapon/W as obj, var/mob/user as mob)
+/obj/machinery/atmospherics/pipe/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	if (istype(src, /obj/machinery/atmospherics/pipe/tank))
 		return ..()
 	if (istype(src, /obj/machinery/atmospherics/pipe/vent))
 		return ..()
 
-	if(istype(W,/obj/item/device/pipe_painter))
+	if(istype(W,/obj/item/pipe_painter))
 		return 0
 
 	if(!isWrench(W))
@@ -1182,10 +1182,10 @@
 	return null
 
 /obj/machinery/atmospherics/pipe/tank/attackby(var/obj/item/W as obj, var/mob/user as mob)
-	if(istype(W, /obj/item/device/pipe_painter))
+	if(istype(W, /obj/item/pipe_painter))
 		return
 
-	if(istype(W, /obj/item/device/analyzer))
+	if(istype(W, /obj/item/analyzer))
 		return
 
 /obj/machinery/atmospherics/pipe/tank/air

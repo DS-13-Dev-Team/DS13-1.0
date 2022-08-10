@@ -8,7 +8,7 @@
 	density = 1
 	anchored = 1
 
-	var/list/loot = list(/obj/item/weapon/cell,/obj/item/stack/material/iron,/obj/item/stack/rods)
+	var/list/loot = list(/obj/item/cell,/obj/item/stack/material/iron,/obj/item/stack/rods)
 	var/lootleft = 1
 	var/emptyprob = 95
 	health = 40
@@ -66,7 +66,7 @@
 
 /obj/structure/rubble/attackby(var/obj/item/I, var/mob/user)
 	if(isPickaxe(I))
-		var/obj/item/weapon/tool/pickaxe/P = I
+		var/obj/item/tool/pickaxe/P = I
 		visible_message("[user] starts clearing away \the [src].")
 		if(P.use_tool(user = user, target =  src, base_time = WORKTIME_SLOW, required_quality = QUALITY_EXCAVATION, fail_chance = FAILCHANCE_HARD, required_stat = "construction"))
 			visible_message("[user] clears away \the [src].")
@@ -79,30 +79,30 @@
 
 
 /obj/structure/rubble/house
-	loot = list(/obj/item/weapon/archaeological_find/bowl,
-	/obj/item/weapon/archaeological_find/remains,
-	/obj/item/weapon/archaeological_find/bowl/urn,
-	/obj/item/weapon/archaeological_find/cutlery,
-	/obj/item/weapon/archaeological_find/statuette,
-	/obj/item/weapon/archaeological_find/instrument,
-	/obj/item/weapon/archaeological_find/container,
-	/obj/item/weapon/archaeological_find/mask,
-	/obj/item/weapon/archaeological_find/coin,
-	/obj/item/weapon/archaeological_find,
-	/obj/item/weapon/archaeological_find/material)
+	loot = list(/obj/item/archaeological_find/bowl,
+	/obj/item/archaeological_find/remains,
+	/obj/item/archaeological_find/bowl/urn,
+	/obj/item/archaeological_find/cutlery,
+	/obj/item/archaeological_find/statuette,
+	/obj/item/archaeological_find/instrument,
+	/obj/item/archaeological_find/container,
+	/obj/item/archaeological_find/mask,
+	/obj/item/archaeological_find/coin,
+	/obj/item/archaeological_find,
+	/obj/item/archaeological_find/material)
 
 /obj/structure/rubble/war
 	emptyprob = 95 //can't have piles upon piles of guns
-	loot = list(/obj/item/weapon/archaeological_find/knife,
-	/obj/item/weapon/archaeological_find/remains/xeno,
-	/obj/item/weapon/archaeological_find/remains/robot,
-	/obj/item/weapon/archaeological_find/remains,
-	/obj/item/weapon/archaeological_find/gun,
-	/obj/item/weapon/archaeological_find/laser,
-	/obj/item/weapon/archaeological_find/statuette,
-	/obj/item/weapon/archaeological_find/instrument,
-	/obj/item/weapon/archaeological_find/container,
-	/obj/item/weapon/archaeological_find/mask,
-	/obj/item/weapon/archaeological_find/sword,
-	/obj/item/weapon/archaeological_find/katana,
-	/obj/item/weapon/archaeological_find/trap)
+	loot = list(/obj/item/archaeological_find/knife,
+	/obj/item/archaeological_find/remains/xeno,
+	/obj/item/archaeological_find/remains/robot,
+	/obj/item/archaeological_find/remains,
+	/obj/item/archaeological_find/gun,
+	/obj/item/archaeological_find/laser,
+	/obj/item/archaeological_find/statuette,
+	/obj/item/archaeological_find/instrument,
+	/obj/item/archaeological_find/container,
+	/obj/item/archaeological_find/mask,
+	/obj/item/archaeological_find/sword,
+	/obj/item/archaeological_find/katana,
+	/obj/item/archaeological_find/trap)

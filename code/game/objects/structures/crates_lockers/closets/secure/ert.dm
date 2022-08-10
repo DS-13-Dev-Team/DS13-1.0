@@ -15,13 +15,13 @@
 /obj/structure/closet/secure_closet/kellion/leader/WillContain()
 	return list(
 	/obj/item/clothing/gloves/combat/kellion,
-	/obj/item/device/radio/headset/ert,
-	/obj/item/weapon/storage/belt/holster/security/tactical,
-	/obj/item/weapon/gun/projectile/automatic/pulse_rifle/empty,
+	/obj/item/radio/headset/ert,
+	/obj/item/storage/belt/holster/security/tactical,
+	/obj/item/gun/projectile/automatic/pulse_rifle/empty,
 	/obj/item/ammo_magazine/pulse = 3,
-	/obj/item/weapon/gun/projectile/divet/empty,
+	/obj/item/gun/projectile/divet/empty,
 	/obj/item/ammo_magazine/divet = 3,
-	/obj/item/weapon/rig/civilian
+	/obj/item/rig/civilian
 	)
 
 
@@ -38,13 +38,13 @@
 	return list(
 	/obj/item/clothing/suit/armor/vest/kellion,
 	/obj/item/clothing/gloves/combat/kellion,
-	/obj/item/device/radio/headset/ert,
-	/obj/item/weapon/storage/belt/holster/security/tactical,
-	/obj/item/weapon/gun/projectile/automatic/pulse_rifle/empty,
+	/obj/item/radio/headset/ert,
+	/obj/item/storage/belt/holster/security/tactical,
+	/obj/item/gun/projectile/automatic/pulse_rifle/empty,
 	/obj/item/ammo_magazine/pulse = 3,
-	/obj/item/weapon/gun/projectile/divet/empty,
+	/obj/item/gun/projectile/divet/empty,
 	/obj/item/ammo_magazine/divet = 3,
-	/obj/item/weapon/rig/civilian
+	/obj/item/rig/civilian
 	)
 
 
@@ -61,7 +61,7 @@
 	return list(
 	/obj/item/clothing/glasses/meson,
 	/obj/item/clothing/gloves/insulated,
-	/obj/item/weapon/storage/belt/utility/full
+	/obj/item/storage/belt/utility/full
 	)
 
 
@@ -76,10 +76,10 @@
 
 /obj/structure/closet/secure_closet/kellion/technician/WillContain()
 	return list(
-	/obj/item/weapon/storage/belt/holster,
-	/obj/item/weapon/gun/projectile/divet/empty,
+	/obj/item/storage/belt/holster,
+	/obj/item/gun/projectile/divet/empty,
 	/obj/item/ammo_magazine/divet = 3,
-	/obj/item/weapon/rig/civilian
+	/obj/item/rig/civilian
 	)
 
 
@@ -95,10 +95,10 @@
 
 /obj/structure/closet/secure_closet/deliverance/deacon/WillContain()
 	return list(
-	/obj/item/weapon/storage/belt/holster/security/tactical,
-	/obj/item/weapon/gun/projectile/automatic/bullpup,
+	/obj/item/storage/belt/holster/security/tactical,
+	/obj/item/gun/projectile/automatic/bullpup,
 	/obj/item/ammo_magazine/bullpup = 5,
-	/obj/item/weapon/storage/bible/unitology
+	/obj/item/storage/bible/unitology
 	)
 
 /obj/structure/closet/secure_closet/deliverance/faithful
@@ -112,8 +112,8 @@
 
 /obj/structure/closet/secure_closet/deliverance/faithful/WillContain()
 	return list(
-	/obj/item/weapon/storage/belt/holster/security/tactical,
-	/obj/item/weapon/gun/projectile/automatic/bullpup,
+	/obj/item/storage/belt/holster/security/tactical,
+	/obj/item/gun/projectile/automatic/bullpup,
 	/obj/item/ammo_magazine/bullpup = 5
 	)
 
@@ -128,8 +128,8 @@
 
 /obj/structure/closet/secure_closet/deliverance/berserker/WillContain()
 	return list(
-	/obj/item/weapon/storage/belt/holster/security/tactical,
-	/obj/item/weapon/gun/projectile/automatic/l6_saw,
+	/obj/item/storage/belt/holster/security/tactical,
+	/obj/item/gun/projectile/automatic/l6_saw,
 	/obj/item/ammo_magazine/box/a556 = 3
 	)
 
@@ -146,8 +146,8 @@
 /obj/structure/closet/secure_closet/deliverance/healer/WillContain()
 	return list(
 	/obj/item/clothing/glasses/hud/health,
-	/obj/item/weapon/storage/belt/medical,
-	/obj/item/weapon/gun/projectile/automatic/bullpup,
+	/obj/item/storage/belt/medical,
+	/obj/item/gun/projectile/automatic/bullpup,
 	/obj/item/ammo_magazine/bullpup = 5
 
 	)
@@ -164,8 +164,8 @@
 
 /obj/structure/closet/secure_closet/deliverance/mechanic/WillContain()
 	return list(
-	/obj/item/weapon/storage/belt/utility/full,
-	/obj/item/weapon/gun/projectile/automatic/bullpup,
+	/obj/item/storage/belt/utility/full,
+	/obj/item/gun/projectile/automatic/bullpup,
 	/obj/item/ammo_magazine/bullpup = 5,
 	/obj/item/clothing/glasses/meson,
 	/obj/item/clothing/glasses/welding,

@@ -1,4 +1,4 @@
-/obj/item/weapon/gun/projectile/ripper
+/obj/item/gun/projectile/ripper
 	name = "RC-DS Remote Control Disc Ripper"
 	desc = "Suspends a spinning sawblade in the air with a mini gravity tether."
 	w_class = ITEM_SIZE_HUGE
@@ -28,7 +28,7 @@
 
 	has_safety = TRUE	//This thing is too dangerous to lack safety
 
-/obj/item/weapon/gun/projectile/ripper/update_icon()
+/obj/item/gun/projectile/ripper/update_icon()
 	overlays.Cut()
 	var/ammonum = get_remaining_ammo()
 	if(ammonum > max_shells)
@@ -40,16 +40,16 @@
 	var/state = "ripper_[progress]"
 	overlays += image(icon,state)
 
-/obj/item/weapon/gun/projectile/ripper/loaded
+/obj/item/gun/projectile/ripper/loaded
 	ammo_type = /obj/item/ammo_casing/sawblade
 
-/obj/item/weapon/gun/projectile/ripper/loaded/diamond
+/obj/item/gun/projectile/ripper/loaded/diamond
 	ammo_type = /obj/item/ammo_casing/sawblade/diamond
 
 
 
 //Set the health of the projectile to the health of the ammo version. This ensures that picked up and reused blades dont get a free repair
-/obj/item/weapon/gun/projectile/ripper/consume_next_projectile()
+/obj/item/gun/projectile/ripper/consume_next_projectile()
 	.=..()
 	if (.)
 		var/obj/item/projectile/P = .

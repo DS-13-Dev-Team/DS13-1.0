@@ -212,6 +212,7 @@ area/space/atmosalert()
 	process()
 
 /area/beach/Entered(atom/movable/Obj,atom/OldLoc)
+	.=..()
 	if(ismob(Obj))
 		var/mob/M = Obj
 		if(M.client)

@@ -41,3 +41,15 @@
 #define COMSIG_ATOM_SET_OPACITY "atom_set_opacity"
 ///from base of mob/living/revive() (full_heal, admin_revive)
 #define COMSIG_LIVING_REVIVE "living_revive"
+///from base of atom/proc/Initialize(): sent any time a new atom is created in this atom
+#define COMSIG_ATOM_INITIALIZED_ON "atom_initialized_on"
+///from base of atom/Exited(): (atom/movable/gone, direction)
+#define COMSIG_ATOM_EXITED "atom_exited"
+///called when an industrial lift enters this turf
+#define COMSIG_TURF_INDUSTRIAL_LIFT_ENTER "turf_industrial_life_enter"
+/// Sent from /obj/structure/industrial_lift/tram when its travelling status updates. (travelling)
+#define COMSIG_TRAM_SET_TRAVELLING "tram_set_travelling"
+/// Sent from /obj/structure/industrial_lift/tram when it begins to travel. (obj/effect/landmark/tram/from_where, obj/effect/landmark/tram/to_where)
+#define COMSIG_TRAM_TRAVEL "tram_travel"
+///called when the movable's glide size is updated: (new_glide_size)
+#define COMSIG_MOVABLE_UPDATE_GLIDE_SIZE "movable_glide_size"

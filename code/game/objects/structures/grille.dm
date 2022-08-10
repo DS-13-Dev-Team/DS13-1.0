@@ -118,7 +118,7 @@
 
 	take_damage(damage*0.2, user = Proj.firer, used_weapon = Proj)
 
-/obj/structure/grille/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/structure/grille/attackby(obj/item/W as obj, mob/user as mob)
 	if(isWirecutter(W))
 		if(!shock(user, 100))
 			playsound(loc, 'sound/items/Wirecutter.ogg', 100, 1)

@@ -6,8 +6,8 @@
 
 /obj/structure/closet/secure_closet/personal/WillContain()
 	return list(
-		/obj/item/device/radio/headset,
-		/obj/item/weapon/rig/civilian
+		/obj/item/radio/headset,
+		/obj/item/rig/civilian
 	)
 
 /obj/structure/closet/secure_closet/personal/empty/WillContain()
@@ -27,12 +27,12 @@
 	icon_off = "cabinetdetective_broken"
 
 /obj/structure/closet/secure_closet/personal/cabinet/WillContain()
-	return list(/obj/item/weapon/storage/backpack/satchel/grey/withwallet, /obj/item/device/radio/headset)
+	return list(/obj/item/storage/backpack/satchel/grey/withwallet, /obj/item/radio/headset)
 
-/obj/structure/closet/secure_closet/personal/CanToggleLock(var/mob/user, var/obj/item/weapon/card/id/id_card)
+/obj/structure/closet/secure_closet/personal/CanToggleLock(var/mob/user, var/obj/item/card/id/id_card)
 	return ..() || (istype(id_card) && id_card.registered_name && (!registered_name || (registered_name == id_card.registered_name)))
 
-/obj/structure/closet/secure_closet/personal/togglelock(var/mob/user, var/obj/item/weapon/card/id/id_card)
+/obj/structure/closet/secure_closet/personal/togglelock(var/mob/user, var/obj/item/card/id/id_card)
 	if (..() && !src.registered_name)
 		id_card = id_card ? id_card : user.GetIdCard()
 		if (id_card)

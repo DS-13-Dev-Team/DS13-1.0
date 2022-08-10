@@ -11,7 +11,7 @@
 	blood_overlay_type = "armor"
 	body_parts_covered = 0
 	species_restricted = null
-	extra_allowed = list (/obj/item/weapon/reagent_containers/spray/plantbgone,/obj/item/device/analyzer/plant_analyzer,/obj/item/seeds,/obj/item/weapon/reagent_containers/glass/bottle,/obj/item/weapon/material/minihoe)
+	extra_allowed = list (/obj/item/reagent_containers/spray/plantbgone,/obj/item/analyzer/plant_analyzer,/obj/item/seeds,/obj/item/reagent_containers/glass/bottle,/obj/item/material/minihoe)
 
 //Chaplain
 /obj/item/clothing/suit/chaplain_hoodie
@@ -39,7 +39,7 @@
 	gas_transfer_coefficient = 0.90
 	permeability_coefficient = 0.50
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
-	extra_allowed = list (/obj/item/weapon/material/knife)
+	extra_allowed = list (/obj/item/material/knife)
 
 //Chef
 /obj/item/clothing/suit/chef/classic
@@ -60,7 +60,7 @@
 	valid_accessory_slots = list(ACCESSORY_SLOT_INSIGNIA)
 	blood_overlay_type = "coat"
 	body_parts_covered = UPPER_TORSO|ARMS
-	extra_allowed = list(/obj/item/weapon/storage/fancy/cigarettes,/obj/item/weapon/flame/lighter,/obj/item/device/taperecorder)
+	extra_allowed = list(/obj/item/storage/fancy/cigarettes,/obj/item/flame/lighter,/obj/item/taperecorder)
 	armor = list(melee = 50, bullet = 10, laser = 25, energy = 10, bomb = 0, bio = 0, rad = 0)
 
 /obj/item/clothing/suit/storage/det_trench/ft/

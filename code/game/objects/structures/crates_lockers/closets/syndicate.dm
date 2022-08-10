@@ -11,15 +11,15 @@
 
 /obj/structure/closet/syndicate/personal/New()
 	..()
-	new /obj/item/weapon/tank/jetpack/oxygen(src)
+	new /obj/item/tank/jetpack/oxygen(src)
 	new /obj/item/clothing/under/syndicate(src)
 	new /obj/item/clothing/head/helmet/space/void/merc(src)
 	new /obj/item/clothing/suit/space/void/merc(src)
-	new /obj/item/weapon/tool/crowbar/red(src)
-	new /obj/item/weapon/cell/high(src)
-	new /obj/item/weapon/card/id/syndicate(src)
-	new /obj/item/weapon/tool/multitool(src)
-	new /obj/item/weapon/shield/energy(src)
+	new /obj/item/tool/crowbar/red(src)
+	new /obj/item/cell/high(src)
+	new /obj/item/card/id/syndicate(src)
+	new /obj/item/tool/multitool(src)
+	new /obj/item/shield/energy(src)
 	new /obj/item/clothing/shoes/magboots(src)
 
 
@@ -28,7 +28,7 @@
 
 /obj/structure/closet/syndicate/suit/New()
 	..()
-	new /obj/item/weapon/tank/jetpack/oxygen(src)
+	new /obj/item/tank/jetpack/oxygen(src)
 	new /obj/item/clothing/shoes/magboots(src)
 	new /obj/item/clothing/suit/space/void/merc(src)
 	new /obj/item/clothing/head/helmet/space/void/merc(src)
@@ -45,19 +45,19 @@
 	new /obj/item/ammo_magazine/a10mm(src)
 	new /obj/item/ammo_magazine/a10mm(src)
 	new /obj/item/ammo_magazine/a10mm(src)
-	new /obj/item/weapon/storage/box/handcuffs(src)
-	new /obj/item/weapon/storage/box/flashbangs(src)
-	new /obj/item/weapon/gun/energy/gun(src)
-	new /obj/item/weapon/gun/energy/gun(src)
-	new /obj/item/weapon/gun/energy/gun(src)
-	new /obj/item/weapon/gun/energy/gun(src)
-	new /obj/item/weapon/gun/energy/gun(src)
-	new /obj/item/weapon/pinpointer/nukeop(src)
-	new /obj/item/weapon/pinpointer/nukeop(src)
-	new /obj/item/weapon/pinpointer/nukeop(src)
-	new /obj/item/weapon/pinpointer/nukeop(src)
-	new /obj/item/weapon/pinpointer/nukeop(src)
-	var/obj/item/device/radio/uplink/U = new(src)
+	new /obj/item/storage/box/handcuffs(src)
+	new /obj/item/storage/box/flashbangs(src)
+	new /obj/item/gun/energy/gun(src)
+	new /obj/item/gun/energy/gun(src)
+	new /obj/item/gun/energy/gun(src)
+	new /obj/item/gun/energy/gun(src)
+	new /obj/item/gun/energy/gun(src)
+	new /obj/item/pinpointer/nukeop(src)
+	new /obj/item/pinpointer/nukeop(src)
+	new /obj/item/pinpointer/nukeop(src)
+	new /obj/item/pinpointer/nukeop(src)
+	new /obj/item/pinpointer/nukeop(src)
+	var/obj/item/radio/uplink/U = new(src)
 	U.hidden_uplink.uses = 40
 	return
 
@@ -77,7 +77,7 @@
 
 		//Sad trombone
 		if(pickednum == 1)
-			var/obj/item/weapon/paper/P = new /obj/item/weapon/paper(src)
+			var/obj/item/paper/P = new /obj/item/paper(src)
 			P.SetName("IOU")
 			P.info = "Sorry man, we needed the money so we sold your stash. It's ok, we'll double our money for sure this time!"
 
@@ -115,7 +115,7 @@
 
 		//Jetpack (You hit the jackpot!)
 		if(pickednum == 50)
-			new /obj/item/weapon/tank/jetpack/carbondioxide(src)
+			new /obj/item/tank/jetpack/carbondioxide(src)
 
 		return
 

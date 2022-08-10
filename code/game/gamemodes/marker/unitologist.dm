@@ -58,7 +58,7 @@ GLOBAL_LIST_EMPTY(unitologists_list)
 	if(!..())
 		return FALSE
 
-	var/obj/item/weapon/tool/multitool/uplink/special/U = new(get_turf(player), player.mind, DEFAULT_TELECRYSTAL_AMOUNT)
+	var/obj/item/tool/multitool/uplink/special/U = new(get_turf(player), player.mind, DEFAULT_TELECRYSTAL_AMOUNT)
 	player.put_in_hands(U)
 	return TRUE
 
@@ -100,7 +100,7 @@ GLOBAL_DATUM_INIT(shardbearers, /datum/antagonist/unitologist/shardbearer, new)
 	if(!..())
 		return FALSE
 
-	var/obj/item/weapon/tool/multitool/uplink/special/U = new(get_turf(player), player.mind, DEFAULT_TELECRYSTAL_AMOUNT)
+	var/obj/item/tool/multitool/uplink/special/U = new(get_turf(player), player.mind, DEFAULT_TELECRYSTAL_AMOUNT)
 	player.put_in_hands(U)
 	return TRUE
 

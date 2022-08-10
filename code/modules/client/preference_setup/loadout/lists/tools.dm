@@ -9,19 +9,19 @@
 /datum/gear/tool/crowbar
 	display_name = "crowbar"
 	subcategory = SUBCATEGORY_DANGEROUS_TOOLS
-	path = /obj/item/weapon/tool/crowbar
+	path = /obj/item/tool/crowbar
 	cost = 2
 
 /datum/gear/tool/plasmasaw
 	display_name = "plasma saw"
 	subcategory = SUBCATEGORY_DANGEROUS_TOOLS
-	path = /obj/item/weapon/tool/saw/plasma
+	path = /obj/item/tool/saw/plasma
 	cost = 3
 
 /datum/gear/tool/laserpick
 	display_name = "laser pick"
 	subcategory =SUBCATEGORY_DANGEROUS_TOOLS
-	path = /obj/item/weapon/tool/pickaxe/laser
+	path = /obj/item/tool/pickaxe/laser
 	cost = 3
 
 
@@ -31,13 +31,13 @@
 /datum/gear/tool/tape
 	display_name = "duct tape"
 	subcategory = "Tools"
-	path = /obj/item/weapon/tool/tape_roll
+	path = /obj/item/tool/tape_roll
 	cost = 2
 
 /datum/gear/tool/cleanerspray
 	display_name = "space cleaner spray"
 	subcategory = "Tools"
-	path = /obj/item/weapon/reagent_containers/spray/cleaner
+	path = /obj/item/reagent_containers/spray/cleaner
 	cost = 1
 
 /*
@@ -46,20 +46,20 @@
 /datum/gear/tool/flashlight
 	display_name = "flashlight"
 	subcategory = "Illumination"
-	path = /obj/item/device/flashlight
+	path = /obj/item/flashlight
 	cost = 1
 
 
 /datum/gear/tool/flashlight2
 	display_name = "LED flashlight"
 	subcategory = "Illumination"
-	path = /obj/item/device/flashlight/upgraded
+	path = /obj/item/flashlight/upgraded
 	cost = 2
 
 /datum/gear/tool/flashlight3
 	display_name = "maglight"
 	subcategory = "Illumination"
-	path = /obj/item/device/flashlight/maglight
+	path = /obj/item/flashlight/maglight
 	cost = 3
 
 
@@ -70,19 +70,19 @@
 /datum/gear/tool/metalfoam
 	display_name = "metal foam grenade"
 	subcategory = "Consumables"
-	path = 	/obj/item/weapon/grenade/chem_grenade/metalfoam
+	path = 	/obj/item/grenade/chem_grenade/metalfoam
 	cost = 1
 
 /datum/gear/tool/cleaner
 	display_name = "cleaning grenade"
 	subcategory = "Consumables"
-	path = 	/obj/item/weapon/grenade/chem_grenade/cleaner
+	path = 	/obj/item/grenade/chem_grenade/cleaner
 	cost = 1
 
 /datum/gear/tool/oxycandle
 	display_name = "oxygen candle"
 	subcategory = "Consumables"
-	path = 	/obj/item/device/oxycandle
+	path = 	/obj/item/oxycandle
 	cost = 1
 
 

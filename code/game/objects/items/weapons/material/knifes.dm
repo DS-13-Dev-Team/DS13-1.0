@@ -1,4 +1,4 @@
-/obj/item/weapon/material/butterfly
+/obj/item/material/butterfly
 	name = "butterfly knife"
 	desc = "A basic metal blade concealed in a lightweight plasteel grip. Small enough when folded to fit in a pocket."
 	icon_state = "butterflyknife"
@@ -17,7 +17,7 @@
 	tool_qualities = list(QUALITY_CUTTING, 20)
 	unbreakable = 1
 
-/obj/item/weapon/material/butterfly/update_force()
+/obj/item/material/butterfly/update_force()
 	if(active)
 		edge = 1
 		sharp = 1
@@ -37,19 +37,19 @@
 		w_class = initial(w_class)
 		attack_verb = initial(attack_verb)
 
-/obj/item/weapon/material/butterfly/attack(mob/living/M, mob/user, var/target_zone)
+/obj/item/material/butterfly/attack(mob/living/M, mob/user, var/target_zone)
 	..()
 	if(ismob(M))
 		backstab(M, user, 60, BRUTE, DAM_SHARP, target_zone, TRUE)
 
 
-/obj/item/weapon/material/butterfly/switchblade
+/obj/item/material/butterfly/switchblade
 	name = "switchblade"
 	desc = "A classic switchblade with gold engraving. Just holding it makes you feel like a gangster."
 	icon_state = "switchblade"
 	unbreakable = 1
 
-/obj/item/weapon/material/butterfly/attack_self(mob/user)
+/obj/item/material/butterfly/attack_self(mob/user)
 	active = !active
 	if(active)
 		to_chat(user, "<span class='notice'>You flip out \the [src].</span>")
@@ -62,7 +62,7 @@
 /*
  * Kitchen knives
  */
-/obj/item/weapon/material/knife
+/obj/item/material/knife
 	name = "kitchen knife"
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "kitchenknife"
@@ -81,7 +81,7 @@
 	tool_qualities = list(QUALITY_CUTTING, 30)
 	unbreakable = 1
 
-/obj/item/weapon/material/knife/hook
+/obj/item/material/knife/hook
 	name = "meat hook"
 	desc = "A sharp, metal hook what sticks into things."
 	icon_state = "hook_knife"
@@ -89,7 +89,7 @@
 	tool_qualities = list(QUALITY_CUTTING = 10)
 	unbreakable = 1
 
-/obj/item/weapon/material/knife/ritual
+/obj/item/material/knife/ritual
 	name = "ritual knife"
 	desc = "The unearthly energies that once powered this blade are now dormant."
 	icon = 'icons/obj/wizard.dmi'
@@ -98,7 +98,7 @@
 	applies_material_colour = 0
 	unbreakable = 1
 
-/obj/item/weapon/material/knife/butch
+/obj/item/material/knife/butch
 	name = "butcher's cleaver"
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "butch"

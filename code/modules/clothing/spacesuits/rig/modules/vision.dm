@@ -175,7 +175,7 @@
 	..()
 	holder.visor = src
 
-/obj/item/rig_module/vision/uninstalled(obj/item/weapon/rig/former)
+/obj/item/rig_module/vision/uninstalled(obj/item/rig/former)
 	..()
 	former.visor = null
 

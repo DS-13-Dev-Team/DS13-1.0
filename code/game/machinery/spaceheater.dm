@@ -5,9 +5,9 @@
 	icon_state = "sheater0"
 	name = "space heater"
 	desc = "Made by Space Amish using traditional space techniques, this heater is guaranteed not to set the station on fire."
-	circuit = /obj/item/weapon/circuitboard/spaceheater
-	var/obj/item/weapon/cell/cell
-	var/cell_type = /obj/item/weapon/cell/high
+	circuit = /obj/item/circuitboard/spaceheater
+	var/obj/item/cell/cell
+	var/cell_type = /obj/item/cell/high
 	var/on = 0
 	var/targetTemperature = T0C + 20	//K
 	var/active = 0
@@ -29,9 +29,9 @@
 /obj/machinery/space_heater/RefreshParts()
 	var/laser = 0
 	var/cap = 0
-	for(var/obj/item/weapon/stock_parts/micro_laser/M in component_parts)
+	for(var/obj/item/stock_parts/micro_laser/M in component_parts)
 		laser += M.rating
-	for(var/obj/item/weapon/stock_parts/capacitor/M in component_parts)
+	for(var/obj/item/stock_parts/capacitor/M in component_parts)
 		cap += M.rating
 
 	heatingPower = laser * 20000
@@ -86,14 +86,14 @@
 	..(severity)
 
 /obj/machinery/space_heater/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/weapon/cell))
+	if(istype(I, /obj/item/cell))
 		if(panel_open)
 			if(cell)
 				to_chat(user, "There is already a power cell inside.")
 				return
 			else
 				// insert cell
-				var/obj/item/weapon/cell/C = usr.get_active_hand()
+				var/obj/item/cell/C = usr.get_active_hand()
 				if(istype(C))
 					user.drop_item()
 					cell = C
@@ -177,7 +177,7 @@
 
 		if("cellinstall")
 			if(!cell)
-				var/obj/item/weapon/cell/C = usr.get_active_hand()
+				var/obj/item/cell/C = usr.get_active_hand()
 				if(istype(C))
 					usr.drop_item()
 					cell = C

@@ -24,7 +24,7 @@
 	var/locked = 1			//if the turret's behaviour control access is locked
 	var/controllock = 0		//if the turret responds to control panels
 
-	var/installation = /obj/item/weapon/gun/energy/gun		//the type of weapon installed
+	var/installation = /obj/item/gun/energy/gun		//the type of weapon installed
 	var/gun_charge = 0		//the charge of the gun inserted
 	var/projectile = null	//holder for bullettype
 	var/eprojectile = null	//holder for the shot when emagged
@@ -98,7 +98,7 @@
 /obj/machinery/turret/stationary
 	ailock = 1
 	lethal = 1
-	installation = /obj/item/weapon/gun/energy/laser
+	installation = /obj/item/gun/energy/laser
 
 /obj/machinery/turret/malf_upgrade(var/mob/living/silicon/ai/user)
 	..()
@@ -211,13 +211,13 @@ var/list/turret_icons
 				if(prob(70))
 					to_chat(user, "<span class='notice'>You remove the turret and salvage some components.</span>")
 					if(installation)
-						var/obj/item/weapon/gun/energy/Gun = new installation(loc)
+						var/obj/item/gun/energy/Gun = new installation(loc)
 						Gun.power_supply.charge = gun_charge
 						Gun.update_icon()
 					if(prob(50))
 						new /obj/item/stack/material/steel(loc, rand(1,4))
 					if(prob(50))
-						new /obj/item/device/assembly/prox_sensor(loc)
+						new /obj/item/assembly/prox_sensor(loc)
 				else
 					to_chat(user, "<span class='notice'>You remove the turret but did not manage to salvage anything.</span>")
 				qdel(src) // qdel
@@ -256,7 +256,7 @@ var/list/turret_icons
 				update_icon()
 		wrenching = 0
 
-	else if(istype(I, /obj/item/weapon/card/id)||istype(I, /obj/item/modular_computer))
+	else if(istype(I, /obj/item/card/id)||istype(I, /obj/item/modular_computer))
 		//Behavior lock/unlock mangement
 		if(!embedded_controller)
 			embedded_controller = new(src)
@@ -466,11 +466,11 @@ var/list/turret_icons
 
 
 		if(3)
-			if(istype(I, /obj/item/weapon/gun/energy)) //the gun installation part
+			if(istype(I, /obj/item/gun/energy)) //the gun installation part
 
 				if(isrobot(user))
 					return
-				var/obj/item/weapon/gun/energy/E = I //typecasts the item to an energy gun
+				var/obj/item/gun/energy/E = I //typecasts the item to an energy gun
 				if(!user.unEquip(I))
 					to_chat(user, "<span class='notice'>\the [I] is stuck to your hand, you cannot put it in \the [src]</span>")
 					return
@@ -549,7 +549,7 @@ var/list/turret_icons
 				build_step = 6
 				return
 
-	if(istype(I, /obj/item/weapon/pen))	//you can rename turrets like bots!
+	if(istype(I, /obj/item/pen))	//you can rename turrets like bots!
 		var/t = sanitizeSafe(input(user, "Enter new turret name", name, finish_name) as text, MAX_NAME_LEN)
 		if(!t)
 			return
@@ -569,7 +569,7 @@ var/list/turret_icons
 				return
 			build_step = 3
 
-			var/obj/item/weapon/gun/energy/Gun = new installation(loc)
+			var/obj/item/gun/energy/Gun = new installation(loc)
 			Gun.power_supply.charge = gun_charge
 			Gun.update_icon()
 			installation = null
@@ -578,7 +578,7 @@ var/list/turret_icons
 
 		if(5)
 			to_chat(user, "<span class='notice'>You remove the prox sensor from the turret frame.</span>")
-			new /obj/item/device/assembly/prox_sensor(loc)
+			new /obj/item/assembly/prox_sensor(loc)
 			build_step = 4
 
 /obj/machinery/turret_construct/attack_ai()

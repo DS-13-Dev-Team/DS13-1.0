@@ -1,5 +1,3 @@
-
-
 #define TECH_MATERIAL "materials"
 #define TECH_ENGINEERING "engineering"
 #define TECH_PHORON "phorontech"

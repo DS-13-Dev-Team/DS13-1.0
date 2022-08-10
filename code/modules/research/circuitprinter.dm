@@ -12,7 +12,7 @@ using metal and glass, it uses glass and reagents (usually sulfuric acid).
 	var/efficiency_coeff
 	var/list/queue = list()
 	var/list/allowed_mats = list(MATERIAL_GLASS, MATERIAL_GOLD, MATERIAL_DIAMOND)
-	circuit = /obj/item/weapon/circuitboard/circuit_imprinter
+	circuit = /obj/item/circuitboard/circuit_imprinter
 
 /obj/machinery/r_n_d/circuit_imprinter/Initialize()
 	. = ..()
@@ -29,15 +29,15 @@ using metal and glass, it uses glass and reagents (usually sulfuric acid).
 
 /obj/machinery/r_n_d/circuit_imprinter/RefreshParts()
 	var/T = 0
-	for(var/obj/item/weapon/reagent_containers/glass/G in component_parts)
+	for(var/obj/item/reagent_containers/glass/G in component_parts)
 		T += G.reagents.maximum_volume
 	create_reagents(T)
 	T = 0
-	for(var/obj/item/weapon/stock_parts/matter_bin/M in component_parts)
+	for(var/obj/item/stock_parts/matter_bin/M in component_parts)
 		T += M.rating
 	max_material_storage = T * 75000
 	T = 0
-	for(var/obj/item/weapon/stock_parts/manipulator/M in component_parts)
+	for(var/obj/item/stock_parts/manipulator/M in component_parts)
 		T += M.rating
 	efficiency_coeff = 2 ** (T - 1)
 

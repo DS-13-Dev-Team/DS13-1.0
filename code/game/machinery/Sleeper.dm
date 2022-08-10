@@ -11,7 +11,7 @@
 	var/mob/living/carbon/human/occupant = null
 	var/list/available_chemicals = list(/datum/reagent/inaprovaline, /datum/reagent/soporific, /datum/reagent/paracetamol, /datum/reagent/dylovene, /datum/reagent/dexalin)
 	var/amounts = list(5, 10)
-	var/obj/item/weapon/reagent_containers/glass/beaker = null
+	var/obj/item/reagent_containers/glass/beaker = null
 	var/filtering = 0
 	var/pump
 	var/max_chem = 20
@@ -20,7 +20,7 @@
 	var/stasis = 0
 	var/controls_inside = FALSE
 	var/auto_eject_dead = FALSE
-	circuit = /obj/item/weapon/circuitboard/sleeper
+	circuit = /obj/item/circuitboard/sleeper
 
 	use_power = 1
 	idle_power_usage = 15
@@ -30,7 +30,7 @@
 	. = ..()
 	create_reagents(2000) // Doesn't really matter
 	if(mapload)
-		beaker = new /obj/item/weapon/reagent_containers/glass/beaker/large(src)
+		beaker = new /obj/item/reagent_containers/glass/beaker/large(src)
 	for(var/A in available_chemicals)
 		reagents.add_reagent(A, 1)	// Used only to get some info
 	update_icon()
@@ -235,7 +235,7 @@
 	return attack_hand(user)
 
 /obj/machinery/sleeper/attackby(var/obj/item/I, var/mob/user)
-	if(istype(I, /obj/item/weapon/reagent_containers/glass))
+	if(istype(I, /obj/item/reagent_containers/glass))
 		add_fingerprint(user)
 		if(!beaker)
 			if(!user.unEquip(I, src))

@@ -1,7 +1,7 @@
 //mostly stripped stuff from here, detective really isn't a role that lends itself well to dead space, security officers can investigate but extensive processes to ID a perp don't really mesh with the existential horror of dead space
 
 
-/obj/item/weapon/forensics
+/obj/item/forensics
 	icon = 'icons/obj/forensics.dmi'
 	w_class = ITEM_SIZE_TINY
 

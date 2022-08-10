@@ -31,7 +31,7 @@ var/list/mining_floors = list()
 	var/list/finds
 	var/next_rock = 0
 
-	var/obj/item/weapon/last_find
+	var/obj/item/last_find
 	var/datum/artifact_find/artifact_find
 
 	var/mining_done = FALSE
@@ -144,7 +144,7 @@ var/list/mining_floors = list()
 
 	else if(istype(AM,/mob/living/silicon/robot))
 		var/mob/living/silicon/robot/R = AM
-		if(istype(R.module_active,/obj/item/weapon/tool/pickaxe))
+		if(istype(R.module_active,/obj/item/tool/pickaxe))
 			attackby(R.module_active,R)
 
 	else if(istype(AM,/obj/mecha))
@@ -186,19 +186,19 @@ var/list/mining_floors = list()
 			return TRUE
 
 	//Archeology tools
-	if (istype(I, /obj/item/device/core_sampler))
+	if (istype(I, /obj/item/core_sampler))
 		geologic_data.UpdateNearbyArtifactInfo(src)
-		var/obj/item/device/core_sampler/C = I
+		var/obj/item/core_sampler/C = I
 		C.sample_item(src, user)
 		return
 
-	if (istype(I, /obj/item/device/depth_scanner))
-		var/obj/item/device/depth_scanner/C = I
+	if (istype(I, /obj/item/depth_scanner))
+		var/obj/item/depth_scanner/C = I
 		C.scan_atom(user, src)
 		return
 
-	if (istype(I, /obj/item/device/measuring_tape))
-		var/obj/item/device/measuring_tape/P = I
+	if (istype(I, /obj/item/measuring_tape))
+		var/obj/item/measuring_tape/P = I
 		user.visible_message("<span class='notice'>\The [user] extends [P] towards [src].</span>","<span class='notice'>You extend [P] towards [src].</span>")
 		if(do_after(user,10, src))
 			to_chat(user, "<span class='notice'>\The [src] has been excavated to a depth of [excavation_level()]cm.</span>")
@@ -211,7 +211,7 @@ var/list/mining_floors = list()
 /turf/simulated/mineral/AltClick(var/mob/user)
 	var/obj/item/I = user.get_active_hand()
 	if(I && isPickaxe(I))
-		var/obj/item/weapon/tool/pickaxe/P = I
+		var/obj/item/tool/pickaxe/P = I
 		return dig_with_tool(P, user, (!P.default_full_dig))
 	else
 		return .=..()
@@ -237,7 +237,7 @@ var/list/mining_floors = list()
 	if (isnull(full_dig))
 		full_dig = TRUE
 		if (isPickaxe(I))
-			var/obj/item/weapon/tool/pickaxe/P = I
+			var/obj/item/tool/pickaxe/P = I
 			full_dig = P.default_full_dig
 
 
@@ -426,12 +426,12 @@ var/list/mining_floors = list()
 			if(5)
 				var/quantity = rand(1,3)
 				for(var/i=0, i<quantity, i++)
-					new /obj/item/weapon/material/shard(src)
+					new /obj/item/material/shard(src)
 
 			if(6)
 				var/quantity = rand(1,3)
 				for(var/i=0, i<quantity, i++)
-					new /obj/item/weapon/material/shard/phoron(src)
+					new /obj/item/material/shard/phoron(src)
 
 			if(7)
 				var/obj/item/stack/material/uranium/R = new(src)
@@ -535,13 +535,13 @@ var/list/mining_floors = list()
 /turf/simulated/floor/asteroid/is_plating()
 	return !density
 
-/turf/simulated/floor/asteroid/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/turf/simulated/floor/asteroid/attackby(obj/item/W as obj, mob/user as mob)
 	if(!W || !user)
 		return 0
 
 	var/list/usable_tools = list(
-		/obj/item/weapon/tool/shovel,
-		/obj/item/weapon/tool/pickaxe
+		/obj/item/tool/shovel,
+		/obj/item/tool/pickaxe
 		)
 
 	var/valid_tool
@@ -567,8 +567,8 @@ var/list/mining_floors = list()
 		to_chat(user, "<span class='notice'>You dug a hole.</span>")
 		gets_dug()
 
-	else if(istype(W,/obj/item/weapon/storage/ore))
-		var/obj/item/weapon/storage/ore/S = W
+	else if(istype(W,/obj/item/storage/ore))
+		var/obj/item/storage/ore/S = W
 		if(S.collection_mode)
 			for(var/obj/item/stack/ore/O in contents)
 				//We assume there is only ore in the satchel
@@ -579,10 +579,10 @@ var/list/mining_floors = list()
 					if(!QDELING(O))
 						O.forceMove(src)
 				return
-	else if(istype(W,/obj/item/weapon/storage/bag/fossils))
-		var/obj/item/weapon/storage/bag/fossils/S = W
+	else if(istype(W,/obj/item/storage/bag/fossils))
+		var/obj/item/storage/bag/fossils/S = W
 		if(S.collection_mode)
-			for(var/obj/item/weapon/fossil/F in contents)
+			for(var/obj/item/fossil/F in contents)
 				F.attackby(W,user)
 				return
 
@@ -637,11 +637,11 @@ var/list/mining_floors = list()
 	if(istype(M,/mob/living/silicon/robot))
 		var/mob/living/silicon/robot/R = M
 		if(R.module)
-			if(istype(R.module_state_1,/obj/item/weapon/storage/ore))
+			if(istype(R.module_state_1,/obj/item/storage/ore))
 				attackby(R.module_state_1,R)
-			else if(istype(R.module_state_2,/obj/item/weapon/storage/ore))
+			else if(istype(R.module_state_2,/obj/item/storage/ore))
 				attackby(R.module_state_2,R)
-			else if(istype(R.module_state_3,/obj/item/weapon/storage/ore))
+			else if(istype(R.module_state_3,/obj/item/storage/ore))
 				attackby(R.module_state_3,R)
 			else
 				return

@@ -223,7 +223,7 @@
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/security/upper)
 "aI" = (
-/obj/item/weapon/bedsheet/hos,
+/obj/item/bedsheet/hos,
 /obj/structure/bed,
 /obj/effect/landmark/start{
 	name = "P-Sec Commander"
@@ -292,7 +292,7 @@
 /area/mining_colony/security/upper/sec_offices)
 "aS" = (
 /obj/item/modular_computer/tablet/lease/preset/command,
-/obj/item/device/megaphone,
+/obj/item/megaphone,
 /obj/effect/floor_decal/dank/outline,
 /obj/structure/closet/secure_closet/personal/empty,
 /obj/item/clothing/accessory/armorplate/tactical,
@@ -302,22 +302,22 @@
 /obj/item/clothing/under/suit_jacket/navy,
 /obj/item/clothing/under/suit_jacket/tan,
 /obj/item/clothing/suit/armor/vest,
-/obj/item/weapon/storage/belt/holster/security,
+/obj/item/storage/belt/holster/security,
 /turf/simulated/floor/dank/hardwood,
 /area/mining_colony/security/upper/be_room3)
 "aT" = (
 /obj/structure/closet/secure_closet/personal/cabinet,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/whiskey,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/vodka,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/vermouth,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/wine,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/rum,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/premiumvodka,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/goldschlager,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/kahlua,
-/obj/item/weapon/storage/box/glass_extras/sticks,
-/obj/item/weapon/storage/box/glasses/wine,
-/obj/item/weapon/storage/box/glasses/cocktail,
+/obj/item/reagent_containers/food/drinks/bottle/whiskey,
+/obj/item/reagent_containers/food/drinks/bottle/vodka,
+/obj/item/reagent_containers/food/drinks/bottle/vermouth,
+/obj/item/reagent_containers/food/drinks/bottle/wine,
+/obj/item/reagent_containers/food/drinks/bottle/rum,
+/obj/item/reagent_containers/food/drinks/bottle/premiumvodka,
+/obj/item/reagent_containers/food/drinks/bottle/goldschlager,
+/obj/item/reagent_containers/food/drinks/bottle/kahlua,
+/obj/item/storage/box/glass_extras/sticks,
+/obj/item/storage/box/glasses/wine,
+/obj/item/storage/box/glasses/cocktail,
 /turf/simulated/floor/dank/hardwood,
 /area/mining_colony/security/upper/fl_office)
 "aU" = (
@@ -407,8 +407,8 @@
 /area/mining_colony/security/upper/bridge_corridor)
 "be" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/paper_bin,
-/obj/item/weapon/pen/multi,
+/obj/item/paper_bin,
+/obj/item/pen/multi,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/security/upper)
 "bf" = (
@@ -458,10 +458,10 @@
 /area/mining_colony/security/upper)
 "bl" = (
 /obj/structure/closet/secure_closet/SSO,
-/obj/item/weapon/reagent_containers/food/drinks/flask/detflask,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/whiskey,
-/obj/item/weapon/storage/belt/holster/forensic,
-/obj/item/weapon/storage/box/fingerprints,
+/obj/item/reagent_containers/food/drinks/flask/detflask,
+/obj/item/reagent_containers/food/drinks/bottle/whiskey,
+/obj/item/storage/belt/holster/forensic,
+/obj/item/storage/box/fingerprints,
 /obj/item/clothing/accessory/badge{
 	badge_string = "Senior Security Officer"
 	},
@@ -469,7 +469,7 @@
 	desc = "An armored jacket often worn by Planetary Security Officers that combines style and protection."
 	},
 /obj/effect/floor_decal/dank/outline,
-/obj/item/weapon/reagent_containers/spray/luminol,
+/obj/item/reagent_containers/spray/luminol,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/security/upper/forensics)
 "bm" = (
@@ -483,9 +483,9 @@
 /area/mining_colony/security/upper)
 "bn" = (
 /obj/structure/table/standard,
-/obj/item/weapon/reagent_containers/food/snacks/squid,
-/obj/item/weapon/reagent_containers/food/snacks/sharkmeatdip,
-/obj/item/weapon/reagent_containers/food/drinks/cans/artbru,
+/obj/item/reagent_containers/food/snacks/squid,
+/obj/item/reagent_containers/food/snacks/sharkmeatdip,
+/obj/item/reagent_containers/food/drinks/cans/artbru,
 /obj/random/cash,
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/upper/commandofficers)
@@ -500,8 +500,8 @@
 /area/mining_colony/security/upper)
 "bp" = (
 /obj/structure/table/standard,
-/obj/item/weapon/book/manual/detective,
-/obj/item/weapon/reagent_containers/food/drinks/coffeecup/metal,
+/obj/item/book/manual/detective,
+/obj/item/reagent_containers/food/drinks/coffeecup/metal,
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/upper)
 "bq" = (
@@ -519,9 +519,9 @@
 /area/mining_colony/security/upper)
 "bt" = (
 /obj/structure/table/standard,
-/obj/item/weapon/book/manual/evaguide,
+/obj/item/book/manual/evaguide,
 /obj/machinery/light,
-/obj/item/weapon/reagent_containers/food/drinks/coffeecup/metal,
+/obj/item/reagent_containers/food/drinks/coffeecup/metal,
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/upper)
 "bu" = (
@@ -692,8 +692,8 @@
 /area/mining_colony/security/upper)
 "bM" = (
 /obj/structure/table/steel,
-/obj/item/weapon/paper_bin,
-/obj/item/weapon/pen/multi,
+/obj/item/paper_bin,
+/obj/item/pen/multi,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
@@ -749,8 +749,8 @@
 /area/mining_colony/security/upper/forensics)
 "bU" = (
 /obj/structure/table/standard,
-/obj/item/weapon/paper_bin,
-/obj/item/weapon/pen/multi,
+/obj/item/paper_bin,
+/obj/item/pen/multi,
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/upper/commandofficers)
 "bV" = (
@@ -795,7 +795,7 @@
 	dir = 4;
 	icon_state = "rwindow"
 	},
-/obj/item/weapon/gun/energy/taser,
+/obj/item/gun/energy/taser,
 /obj/item/clothing/accessory/badge{
 	badge_string = "Planetary Security"
 	},
@@ -827,9 +827,9 @@
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/upper/commandofficers)
 "cc" = (
-/obj/item/device/toner,
-/obj/item/device/toner,
-/obj/item/device/toner,
+/obj/item/toner,
+/obj/item/toner,
+/obj/item/toner,
 /obj/machinery/photocopier,
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/upper/commandofficers)
@@ -848,12 +848,12 @@
 /area/mining_colony/security/upper/forensics)
 "cg" = (
 /obj/structure/table/standard,
-/obj/item/weapon/reagent_containers/food/drinks/coffeecup/metal,
-/obj/item/weapon/reagent_containers/food/drinks/coffeecup/metal,
-/obj/item/weapon/reagent_containers/food/drinks/coffeecup/metal,
-/obj/item/weapon/reagent_containers/food/drinks/coffeecup/metal,
-/obj/item/weapon/reagent_containers/food/drinks/coffeecup/metal,
-/obj/item/weapon/reagent_containers/food/drinks/coffeecup/metal,
+/obj/item/reagent_containers/food/drinks/coffeecup/metal,
+/obj/item/reagent_containers/food/drinks/coffeecup/metal,
+/obj/item/reagent_containers/food/drinks/coffeecup/metal,
+/obj/item/reagent_containers/food/drinks/coffeecup/metal,
+/obj/item/reagent_containers/food/drinks/coffeecup/metal,
+/obj/item/reagent_containers/food/drinks/coffeecup/metal,
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
@@ -880,7 +880,7 @@
 /area/mining_colony/security/upper)
 "ci" = (
 /obj/structure/table/standard,
-/obj/item/weapon/folder/red,
+/obj/item/folder/red,
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/upper/commandofficers)
 "cj" = (
@@ -964,7 +964,7 @@
 /area/mining_colony/security/upper)
 "cs" = (
 /obj/structure/table/steel,
-/obj/item/weapon/book/manual/detective,
+/obj/item/book/manual/detective,
 /turf/simulated/floor/dank/medical,
 /area/mining_colony/security/upper/forensics)
 "ct" = (
@@ -978,8 +978,8 @@
 "cu" = (
 /obj/structure/table/reinforced,
 /obj/random/smokes,
-/obj/item/weapon/reagent_containers/food/drinks/cans/artbru,
-/obj/item/weapon/flame/lighter/zippo,
+/obj/item/reagent_containers/food/drinks/cans/artbru,
+/obj/item/flame/lighter/zippo,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/security/upper)
 "cv" = (
@@ -1021,9 +1021,9 @@
 /area/mining_colony/security/upper/commandofficers)
 "cA" = (
 /obj/structure/table/woodentable,
-/obj/item/weapon/paper_bin,
-/obj/item/weapon/pen/fancy,
-/obj/item/weapon/pen/multi,
+/obj/item/paper_bin,
+/obj/item/pen/fancy,
+/obj/item/pen/multi,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/security/upper/sec_commander)
 "cB" = (
@@ -1106,9 +1106,9 @@
 /area/mining_colony/security/upper/secstorage2)
 "cL" = (
 /obj/structure/table/woodentable,
-/obj/item/weapon/stamp/cseco,
-/obj/item/weapon/stamp/denied,
-/obj/item/weapon/folder/red,
+/obj/item/stamp/cseco,
+/obj/item/stamp/denied,
+/obj/item/folder/red,
 /obj/random/drinkbottle,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/security/upper/sec_commander)
@@ -1121,10 +1121,10 @@
 /area/mining_colony/security/upper/be_room1)
 "cN" = (
 /obj/structure/table/steel,
-/obj/item/weapon/storage/briefcase/crimekit,
-/obj/item/device/camera_film,
-/obj/item/device/camera_film,
-/obj/item/device/camera_film,
+/obj/item/storage/briefcase/crimekit,
+/obj/item/camera_film,
+/obj/item/camera_film,
+/obj/item/camera_film,
 /turf/simulated/floor/dank/medical,
 /area/mining_colony/security/upper/forensics)
 "cO" = (
@@ -1192,7 +1192,7 @@
 /area/mining_colony/security/upper/sec_offices)
 "cV" = (
 /obj/structure/table/steel,
-/obj/item/device/camera,
+/obj/item/camera,
 /turf/simulated/floor/dank/medical,
 /area/mining_colony/security/upper/forensics)
 "cW" = (
@@ -1205,10 +1205,10 @@
 /area/mining_colony/security/upper/director)
 "cX" = (
 /obj/structure/table/steel,
-/obj/item/weapon/storage/box/gloves,
-/obj/item/weapon/storage/box/evidence,
-/obj/item/weapon/storage/box/evidence,
-/obj/item/weapon/storage/box/fingerprints,
+/obj/item/storage/box/gloves,
+/obj/item/storage/box/evidence,
+/obj/item/storage/box/evidence,
+/obj/item/storage/box/fingerprints,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/security/upper/forensics)
 "cY" = (
@@ -1311,14 +1311,14 @@
 /area/mining_colony/security/upper/commandofficers)
 "dk" = (
 /obj/structure/table/steel,
-/obj/item/weapon/forensics/sample_kit/powder,
-/obj/item/weapon/forensics/sample_kit/powder,
-/obj/item/weapon/forensics/swab,
-/obj/item/weapon/forensics/swab,
-/obj/item/weapon/forensics/sample_kit,
-/obj/item/weapon/forensics/sample_kit,
-/obj/item/weapon/reagent_containers/spray/luminol,
-/obj/item/weapon/reagent_containers/spray/luminol,
+/obj/item/forensics/sample_kit/powder,
+/obj/item/forensics/sample_kit/powder,
+/obj/item/forensics/swab,
+/obj/item/forensics/swab,
+/obj/item/forensics/sample_kit,
+/obj/item/forensics/sample_kit,
+/obj/item/reagent_containers/spray/luminol,
+/obj/item/reagent_containers/spray/luminol,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/security/upper/forensics)
 "dl" = (
@@ -1523,7 +1523,7 @@
 /area/mining_colony/security/upper/director)
 "dJ" = (
 /obj/structure/bed,
-/obj/item/weapon/bedsheet/captain,
+/obj/item/bedsheet/captain,
 /obj/machinery/firealarm{
 	pixel_y = 24
 	},
@@ -1545,17 +1545,17 @@
 /area/mining_colony/security/upper/director)
 "dN" = (
 /obj/structure/closet/secure_closet/personal/cabinet,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/whiskey,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/vodka,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/vermouth,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/wine,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/rum,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/premiumvodka,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/goldschlager,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/kahlua,
-/obj/item/weapon/storage/box/glass_extras/sticks,
-/obj/item/weapon/storage/box/glasses/wine,
-/obj/item/weapon/storage/box/glasses/cocktail,
+/obj/item/reagent_containers/food/drinks/bottle/whiskey,
+/obj/item/reagent_containers/food/drinks/bottle/vodka,
+/obj/item/reagent_containers/food/drinks/bottle/vermouth,
+/obj/item/reagent_containers/food/drinks/bottle/wine,
+/obj/item/reagent_containers/food/drinks/bottle/rum,
+/obj/item/reagent_containers/food/drinks/bottle/premiumvodka,
+/obj/item/reagent_containers/food/drinks/bottle/goldschlager,
+/obj/item/reagent_containers/food/drinks/bottle/kahlua,
+/obj/item/storage/box/glass_extras/sticks,
+/obj/item/storage/box/glasses/wine,
+/obj/item/storage/box/glasses/cocktail,
 /turf/simulated/floor/dank/hardwood,
 /area/mining_colony/security/upper/director)
 "dO" = (
@@ -1725,10 +1725,10 @@
 /area/mining_colony/security/upper/director)
 "ej" = (
 /obj/structure/table/woodentable,
-/obj/item/weapon/paper_bin,
-/obj/item/weapon/pen/fancy,
-/obj/item/weapon/stamp/captain,
-/obj/item/weapon/stamp/denied,
+/obj/item/paper_bin,
+/obj/item/pen/fancy,
+/obj/item/stamp/captain,
+/obj/item/stamp/denied,
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
 	},
@@ -1747,7 +1747,7 @@
 /obj/effect/floor_decal/spline/fancy/wood/corner{
 	dir = 1
 	},
-/obj/item/device/radio/intercom/department/security{
+/obj/item/radio/intercom/department/security{
 	dir = 1;
 	pixel_y = -30
 	},
@@ -1835,7 +1835,7 @@
 /area/space)
 "ex" = (
 /obj/item/modular_computer/tablet/lease/preset/command,
-/obj/item/device/megaphone,
+/obj/item/megaphone,
 /obj/effect/floor_decal/dank/outline,
 /obj/structure/closet/secure_closet/personal/empty,
 /obj/item/clothing/accessory/armorplate/tactical,
@@ -1845,15 +1845,15 @@
 /obj/item/clothing/under/suit_jacket/navy,
 /obj/item/clothing/under/suit_jacket/tan,
 /obj/item/clothing/suit/armor/vest,
-/obj/item/weapon/gun/projectile/revolver/hr,
+/obj/item/gun/projectile/revolver/hr,
 /obj/item/ammo_magazine/c44,
 /obj/item/ammo_magazine/c44,
 /obj/item/ammo_magazine/c44,
 /obj/item/ammo_magazine/c44,
-/obj/item/weapon/storage/belt/holster/security,
+/obj/item/storage/belt/holster/security,
 /obj/item/ammo_magazine/c44/rubber,
 /obj/item/ammo_magazine/c44/rubber,
-/obj/item/weapon/melee/whip/chainofcommand,
+/obj/item/melee/whip/chainofcommand,
 /turf/simulated/floor/dank/hardwood,
 /area/mining_colony/security/upper/director)
 "ey" = (
@@ -1890,7 +1890,7 @@
 	dir = 4;
 	icon_state = "rwindow"
 	},
-/obj/item/weapon/gun/energy/taser,
+/obj/item/gun/energy/taser,
 /obj/item/clothing/accessory/badge{
 	badge_string = "Planetary Security"
 	},
@@ -1914,15 +1914,15 @@
 	name = "P-Sec Commander's locker"
 	},
 /obj/item/modular_computer/tablet/lease/preset/command,
-/obj/item/device/megaphone,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/goldschlager,
-/obj/item/weapon/reagent_containers/food/drinks/flask/detflask,
+/obj/item/megaphone,
+/obj/item/reagent_containers/food/drinks/bottle/goldschlager,
+/obj/item/reagent_containers/food/drinks/flask/detflask,
 /obj/effect/floor_decal/dank/outline,
-/obj/item/weapon/implanter/adrenalin,
+/obj/item/implanter/adrenalin,
 /obj/item/ammo_magazine/divet/hollow_point,
 /obj/item/ammo_magazine/divet/ap,
 /obj/item/ammo_magazine/divet/incendiary,
-/obj/item/weapon/gun/energy/stunrevolver/rifle,
+/obj/item/gun/energy/stunrevolver/rifle,
 /turf/simulated/floor/dank/hardwood,
 /area/mining_colony/security/upper/sec_commander)
 "eE" = (
@@ -1936,9 +1936,9 @@
 /area/mining_colony/security/upper/sec_commander)
 "eF" = (
 /obj/structure/table/standard,
-/obj/item/weapon/folder/red,
-/obj/item/weapon/reagent_containers/food/drinks/coffeecup/metal,
-/obj/item/weapon/reagent_containers/food/drinks/cans/artbru,
+/obj/item/folder/red,
+/obj/item/reagent_containers/food/drinks/coffeecup/metal,
+/obj/item/reagent_containers/food/drinks/cans/artbru,
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/upper)
 "eG" = (
@@ -1996,8 +1996,8 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/item/device/toner,
-/obj/item/device/toner,
+/obj/item/toner,
+/obj/item/toner,
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/upper)
 "eL" = (
@@ -2051,8 +2051,8 @@
 "eQ" = (
 /obj/structure/table/rack,
 /obj/machinery/light/small,
-/obj/item/weapon/storage/box/lights/tubes,
-/obj/item/weapon/storage/box/lights/tubes,
+/obj/item/storage/box/lights/tubes,
+/obj/item/storage/box/lights/tubes,
 /turf/simulated/floor/dank/rectangles,
 /area/mining_colony/security/upper/secstorage2)
 "eR" = (
@@ -2070,8 +2070,8 @@
 "eS" = (
 /obj/structure/table/rack,
 /obj/random/rare_loot/sometimes,
-/obj/item/weapon/storage/toolbox/mechanical,
-/obj/item/weapon/storage/toolbox/electrical,
+/obj/item/storage/toolbox/mechanical,
+/obj/item/storage/toolbox/electrical,
 /turf/simulated/floor/dank/rectangles,
 /area/mining_colony/security/upper/secstorage2)
 "eT" = (
@@ -2154,7 +2154,7 @@
 /obj/item/clothing/glasses/sunglasses/blindfold,
 /obj/item/clothing/glasses/sunglasses/blindfold,
 /obj/effect/floor_decal/dank/outline,
-/obj/item/device/rig_remover,
+/obj/item/rig_remover,
 /turf/simulated/floor/tiled/dark,
 /area/mining_colony/security/upper)
 "fb" = (
@@ -2306,7 +2306,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/item/weapon/gun/energy/taser,
+/obj/item/gun/energy/taser,
 /obj/item/clothing/accessory/badge{
 	badge_string = "Planetary Security"
 	},
@@ -2410,7 +2410,7 @@
 /area/mining_colony/security/upper/commandofficers)
 "ke" = (
 /obj/structure/bed,
-/obj/item/weapon/bedsheet/captain,
+/obj/item/bedsheet/captain,
 /obj/effect/landmark/start{
 	name = "Bridge Officer"
 	},
@@ -2429,7 +2429,7 @@
 /area/mining_colony/security/upper)
 "kz" = (
 /obj/structure/closet/secure_closet/security,
-/obj/item/weapon/gun/energy/taser,
+/obj/item/gun/energy/taser,
 /obj/item/clothing/accessory/badge{
 	badge_string = "Planetary Security"
 	},
@@ -2471,7 +2471,7 @@
 /area/mining_colony/security/upper/bridge_corridor)
 "lg" = (
 /obj/item/modular_computer/tablet/lease/preset/command,
-/obj/item/device/megaphone,
+/obj/item/megaphone,
 /obj/effect/floor_decal/dank/outline,
 /obj/structure/closet/secure_closet/personal/empty,
 /obj/item/clothing/accessory/armorplate/tactical,
@@ -2481,7 +2481,7 @@
 /obj/item/clothing/under/suit_jacket/navy,
 /obj/item/clothing/under/suit_jacket/tan,
 /obj/item/clothing/suit/armor/vest,
-/obj/item/weapon/storage/belt/holster/security,
+/obj/item/storage/belt/holster/security,
 /turf/simulated/floor/dank/hardwood,
 /area/mining_colony/security/upper/be_room2)
 "lm" = (
@@ -2595,7 +2595,7 @@
 /area/mining_colony/security/upper/bridge_corridor)
 "mK" = (
 /obj/structure/bed,
-/obj/item/weapon/bedsheet/captain,
+/obj/item/bedsheet/captain,
 /turf/simulated/floor/dank/hardwood,
 /area/mining_colony/security/upper/fl_office)
 "nq" = (
@@ -2608,8 +2608,8 @@
 /area/mining_colony/security/upper)
 "nx" = (
 /obj/structure/table/woodentable,
-/obj/item/weapon/pen/fancy,
-/obj/item/weapon/paper_bin,
+/obj/item/pen/fancy,
+/obj/item/paper_bin,
 /turf/simulated/floor/dank/hardwood,
 /area/mining_colony/security/upper/fl_office)
 "nF" = (
@@ -2759,17 +2759,17 @@
 /area/mining_colony/security/upper/commandofficers)
 "rX" = (
 /obj/structure/closet/secure_closet/personal/cabinet,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/whiskey,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/vodka,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/vermouth,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/wine,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/rum,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/premiumvodka,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/goldschlager,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/kahlua,
-/obj/item/weapon/storage/box/glass_extras/sticks,
-/obj/item/weapon/storage/box/glasses/wine,
-/obj/item/weapon/storage/box/glasses/cocktail,
+/obj/item/reagent_containers/food/drinks/bottle/whiskey,
+/obj/item/reagent_containers/food/drinks/bottle/vodka,
+/obj/item/reagent_containers/food/drinks/bottle/vermouth,
+/obj/item/reagent_containers/food/drinks/bottle/wine,
+/obj/item/reagent_containers/food/drinks/bottle/rum,
+/obj/item/reagent_containers/food/drinks/bottle/premiumvodka,
+/obj/item/reagent_containers/food/drinks/bottle/goldschlager,
+/obj/item/reagent_containers/food/drinks/bottle/kahlua,
+/obj/item/storage/box/glass_extras/sticks,
+/obj/item/storage/box/glasses/wine,
+/obj/item/storage/box/glasses/cocktail,
 /turf/simulated/floor/dank/hardwood,
 /area/mining_colony/security/upper/be_room4)
 "so" = (
@@ -2777,7 +2777,7 @@
 /area/mining_colony/security/upper/be_room1)
 "sE" = (
 /obj/structure/bed,
-/obj/item/weapon/bedsheet/captain,
+/obj/item/bedsheet/captain,
 /obj/effect/landmark/start{
 	name = "Bridge Officer"
 	},
@@ -2813,7 +2813,7 @@
 /area/mining_colony/security/upper/forensics)
 "tO" = (
 /obj/structure/bed,
-/obj/item/weapon/bedsheet/captain,
+/obj/item/bedsheet/captain,
 /obj/effect/landmark/start{
 	name = "Bridge Officer"
 	},
@@ -3011,7 +3011,7 @@
 /area/mining_colony/security/upper/bridge_corridor)
 "wD" = (
 /obj/item/modular_computer/tablet/lease/preset/command,
-/obj/item/device/megaphone,
+/obj/item/megaphone,
 /obj/effect/floor_decal/dank/outline,
 /obj/structure/closet/secure_closet/personal/empty,
 /obj/item/clothing/accessory/armorplate/tactical,
@@ -3021,7 +3021,7 @@
 /obj/item/clothing/under/suit_jacket/navy,
 /obj/item/clothing/under/suit_jacket/tan,
 /obj/item/clothing/suit/armor/vest,
-/obj/item/weapon/storage/belt/holster/security,
+/obj/item/storage/belt/holster/security,
 /turf/simulated/floor/dank/hardwood,
 /area/mining_colony/security/upper/fl_office)
 "xk" = (
@@ -3040,17 +3040,17 @@
 /area/mining_colony/security/upper/commandofficers)
 "xG" = (
 /obj/structure/closet/secure_closet/personal/cabinet,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/whiskey,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/vodka,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/vermouth,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/wine,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/rum,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/premiumvodka,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/goldschlager,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/kahlua,
-/obj/item/weapon/storage/box/glass_extras/sticks,
-/obj/item/weapon/storage/box/glasses/wine,
-/obj/item/weapon/storage/box/glasses/cocktail,
+/obj/item/reagent_containers/food/drinks/bottle/whiskey,
+/obj/item/reagent_containers/food/drinks/bottle/vodka,
+/obj/item/reagent_containers/food/drinks/bottle/vermouth,
+/obj/item/reagent_containers/food/drinks/bottle/wine,
+/obj/item/reagent_containers/food/drinks/bottle/rum,
+/obj/item/reagent_containers/food/drinks/bottle/premiumvodka,
+/obj/item/reagent_containers/food/drinks/bottle/goldschlager,
+/obj/item/reagent_containers/food/drinks/bottle/kahlua,
+/obj/item/storage/box/glass_extras/sticks,
+/obj/item/storage/box/glasses/wine,
+/obj/item/storage/box/glasses/cocktail,
 /turf/simulated/floor/dank/hardwood,
 /area/mining_colony/security/upper/be_room1)
 "xK" = (
@@ -3104,7 +3104,7 @@
 /area/mining_colony/security/upper/be_room2)
 "zx" = (
 /obj/item/modular_computer/tablet/lease/preset/command,
-/obj/item/device/megaphone,
+/obj/item/megaphone,
 /obj/effect/floor_decal/dank/outline,
 /obj/structure/closet/secure_closet/personal/empty,
 /obj/item/clothing/accessory/armorplate/tactical,
@@ -3114,11 +3114,11 @@
 /obj/item/clothing/under/suit_jacket/navy,
 /obj/item/clothing/under/suit_jacket/tan,
 /obj/item/clothing/suit/armor/vest,
-/obj/item/weapon/storage/belt/holster/security,
+/obj/item/storage/belt/holster/security,
 /turf/simulated/floor/dank/hardwood,
 /area/mining_colony/security/upper/be_room1)
 "zA" = (
-/obj/item/device/radio/intercom/department/security{
+/obj/item/radio/intercom/department/security{
 	dir = 1;
 	pixel_y = -30
 	},
@@ -3177,7 +3177,7 @@
 /obj/structure/sink{
 	pixel_y = -12
 	},
-/obj/item/weapon/storage/mirror{
+/obj/item/storage/mirror{
 	pixel_y = -31
 	},
 /turf/simulated/floor/tiled/freezer,
@@ -3189,7 +3189,7 @@
 /turf/simulated/floor/dank/hardwood,
 /area/mining_colony/security/upper/sec_offices)
 "BN" = (
-/obj/item/device/radio/intercom/department/security{
+/obj/item/radio/intercom/department/security{
 	dir = 8;
 	pixel_x = 21
 	},
@@ -3224,7 +3224,7 @@
 /turf/simulated/floor/dank/rivets,
 /area/mining_colony/security/upper/cryo_room)
 "Cw" = (
-/obj/item/device/radio/intercom/department/security{
+/obj/item/radio/intercom/department/security{
 	dir = 4;
 	pixel_x = -21
 	},
@@ -3296,7 +3296,7 @@
 /area/mining_colony/security/upper/commandofficers)
 "Dt" = (
 /obj/item/modular_computer/tablet/lease/preset/command,
-/obj/item/device/megaphone,
+/obj/item/megaphone,
 /obj/effect/floor_decal/dank/outline,
 /obj/structure/closet/secure_closet/personal/empty,
 /obj/item/clothing/accessory/armorplate/tactical,
@@ -3306,7 +3306,7 @@
 /obj/item/clothing/under/suit_jacket/navy,
 /obj/item/clothing/under/suit_jacket/tan,
 /obj/item/clothing/suit/armor/vest,
-/obj/item/weapon/storage/belt/holster/security,
+/obj/item/storage/belt/holster/security,
 /turf/simulated/floor/dank/hardwood,
 /area/mining_colony/security/upper/be_room4)
 "Dz" = (
@@ -3365,8 +3365,8 @@
 /obj/effect/floor_decal/industrial/outline/red,
 /obj/item/ammo_magazine/divet,
 /obj/item/ammo_magazine/divet,
-/obj/item/weapon/gun/projectile/divet/empty,
-/obj/item/weapon/gun/projectile/divet/empty,
+/obj/item/gun/projectile/divet/empty,
+/obj/item/gun/projectile/divet/empty,
 /obj/item/ammo_magazine/divet,
 /obj/item/ammo_magazine/divet,
 /obj/item/clothing/suit/armor/pcsi,
@@ -3396,24 +3396,24 @@
 /area/mining_colony/security/upper/bridge_corridor)
 "ER" = (
 /obj/structure/table/woodentable,
-/obj/item/weapon/folder/blue,
+/obj/item/folder/blue,
 /obj/random/rig_module/rare,
 /turf/simulated/floor/dank/hardwood,
 /area/mining_colony/security/upper/director)
 "Fd" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/red,
-/obj/item/weapon/storage/firstaid/adv,
+/obj/item/storage/firstaid/adv,
 /obj/item/stack/power_node,
-/obj/item/device/radio{
+/obj/item/radio{
 	pixel_x = -2;
 	pixel_y = -2
 	},
-/obj/item/device/radio{
+/obj/item/radio{
 	pixel_x = -2;
 	pixel_y = -2
 	},
-/obj/item/device/radio{
+/obj/item/radio{
 	pixel_x = -2;
 	pixel_y = -2
 	},
@@ -3457,7 +3457,7 @@
 /obj/item/ammo_magazine/pulse,
 /obj/item/ammo_magazine/pulse,
 /obj/item/ammo_magazine/pulse,
-/obj/item/weapon/gun/projectile/automatic/pulse_rifle,
+/obj/item/gun/projectile/automatic/pulse_rifle,
 /obj/item/clothing/suit/armor/pcsi,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/security/upper/commandofficers)
@@ -3586,7 +3586,7 @@
 /turf/simulated/floor/dank/hardwood,
 /area/mining_colony/security/upper/fl_office)
 "KH" = (
-/obj/item/device/radio/intercom/department/security{
+/obj/item/radio/intercom/department/security{
 	dir = 4;
 	pixel_x = -21
 	},
@@ -3680,9 +3680,9 @@
 /area/mining_colony/security/upper/sec_offices)
 "MS" = (
 /obj/structure/table/woodentable,
-/obj/item/weapon/folder/blue,
-/obj/item/weapon/stamp/fl,
-/obj/item/weapon/stamp/captain,
+/obj/item/folder/blue,
+/obj/item/stamp/fl,
+/obj/item/stamp/captain,
 /obj/machinery/camera/network/command{
 	dir = 1
 	},
@@ -3694,7 +3694,7 @@
 /obj/machinery/shower{
 	dir = 4
 	},
-/obj/item/weapon/towel,
+/obj/item/towel,
 /turf/simulated/floor/tiled/freezer,
 /area/mining_colony/security/upper/director)
 "MV" = (
@@ -4032,17 +4032,17 @@
 /area/mining_colony/security/upper/bridge_corridor)
 "VT" = (
 /obj/structure/closet/secure_closet/personal/cabinet,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/whiskey,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/vodka,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/vermouth,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/wine,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/rum,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/premiumvodka,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/goldschlager,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/kahlua,
-/obj/item/weapon/storage/box/glass_extras/sticks,
-/obj/item/weapon/storage/box/glasses/wine,
-/obj/item/weapon/storage/box/glasses/cocktail,
+/obj/item/reagent_containers/food/drinks/bottle/whiskey,
+/obj/item/reagent_containers/food/drinks/bottle/vodka,
+/obj/item/reagent_containers/food/drinks/bottle/vermouth,
+/obj/item/reagent_containers/food/drinks/bottle/wine,
+/obj/item/reagent_containers/food/drinks/bottle/rum,
+/obj/item/reagent_containers/food/drinks/bottle/premiumvodka,
+/obj/item/reagent_containers/food/drinks/bottle/goldschlager,
+/obj/item/reagent_containers/food/drinks/bottle/kahlua,
+/obj/item/storage/box/glass_extras/sticks,
+/obj/item/storage/box/glasses/wine,
+/obj/item/storage/box/glasses/cocktail,
 /turf/simulated/floor/dank/hardwood,
 /area/mining_colony/security/upper/be_room3)
 "VV" = (
@@ -4065,7 +4065,7 @@
 /area/mining_colony/security/upper/sec_offices)
 "Wl" = (
 /obj/structure/bed,
-/obj/item/weapon/bedsheet/captain,
+/obj/item/bedsheet/captain,
 /obj/effect/landmark/start{
 	name = "Bridge Officer"
 	},
@@ -4126,17 +4126,17 @@
 /area/mining_colony/security/upper/bridge_corridor)
 "Yo" = (
 /obj/structure/closet/secure_closet/personal/cabinet,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/whiskey,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/vodka,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/vermouth,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/wine,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/rum,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/premiumvodka,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/goldschlager,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/kahlua,
-/obj/item/weapon/storage/box/glass_extras/sticks,
-/obj/item/weapon/storage/box/glasses/wine,
-/obj/item/weapon/storage/box/glasses/cocktail,
+/obj/item/reagent_containers/food/drinks/bottle/whiskey,
+/obj/item/reagent_containers/food/drinks/bottle/vodka,
+/obj/item/reagent_containers/food/drinks/bottle/vermouth,
+/obj/item/reagent_containers/food/drinks/bottle/wine,
+/obj/item/reagent_containers/food/drinks/bottle/rum,
+/obj/item/reagent_containers/food/drinks/bottle/premiumvodka,
+/obj/item/reagent_containers/food/drinks/bottle/goldschlager,
+/obj/item/reagent_containers/food/drinks/bottle/kahlua,
+/obj/item/storage/box/glass_extras/sticks,
+/obj/item/storage/box/glasses/wine,
+/obj/item/storage/box/glasses/cocktail,
 /turf/simulated/floor/dank/hardwood,
 /area/mining_colony/security/upper/be_room2)
 "Yv" = (

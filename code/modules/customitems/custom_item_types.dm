@@ -2,7 +2,7 @@
 //Available to all patrons, loadout only
 /datum/patron_item/uni_knife
 	name = "unitology ritual blade"
-	item_path = /obj/item/weapon/material/knife/unitologist
+	item_path = /obj/item/material/knife/unitologist
 	loadout_cost = 3
 	loadout_access = ACCESS_PATRONS
 	description = "A pristine blade used for religious ceremonies in the Church of Unitology.\
@@ -23,7 +23,7 @@
 /datum/patron_item/rivet
 	name =  "711-MarkCL Rivet Gun"
 	id = "rivetgun"
-	item_path = /obj/item/weapon/gun/projectile/rivet
+	item_path = /obj/item/gun/projectile/rivet
 	store_cost = 2400
 	store_access = ACCESS_PATRONS
 	description = "The 711-MarkCL Rivet Gun is the latest refinement from Timson Tools' long line of friendly tools. Useful for rapid repairs at a distance!"
@@ -40,7 +40,7 @@
 /datum/patron_item/max_stone_rig
 	name = "modified advanced RIG"
 	description = "The latest in cutting-edge RIG technology. This one is a slightly older model, still using the standard engineering suit scheme. It has `Max S.` engraved next to the monitor lights."
-	item_path = /obj/item/weapon/rig/advanced/maxstone
+	item_path = /obj/item/rig/advanced/maxstone
 	id = "max_stone_rig"
 	store_cost = 12000
 	store_access = ACCESS_WHITELIST
@@ -50,13 +50,13 @@
 
 	loadout_modkit_cost = 2
 	modkit_access = ACCESS_WHITELIST
-	modkit_typelist = list(/obj/item/weapon/rig/advanced)
+	modkit_typelist = list(/obj/item/rig/advanced)
 
 //This is not my typo, his ckey is actually spelled like that
 /datum/patron_item/plaugewalker
 	name = "SCAF elite RIG"
 	description = "A lightweight and flexible armoured rig suit, designed for riot control and shipboard disciplinary enforcement."
-	item_path = /obj/item/weapon/rig/scaf/elite
+	item_path = /obj/item/rig/scaf/elite
 	id = "plaugewalker_rig"
 	store_cost = 6400
 	store_access = ACCESS_WHITELIST
@@ -66,13 +66,13 @@
 
 	loadout_modkit_cost = 3
 	modkit_access = ACCESS_WHITELIST
-	modkit_typelist = list(/obj/item/weapon/rig/security)
+	modkit_typelist = list(/obj/item/rig/security)
 
 
 /datum/patron_item/banditofdoom
 	name = "Evangelion RIG"
 	description = "A project many months in the works, created by an obsessive historical anime fan. Even incorporates a custom voice changer for impersonating TV characters."
-	item_path = /obj/item/weapon/rig/advanced/banditofdoom
+	item_path = /obj/item/rig/advanced/banditofdoom
 	id = "banditofdoom_rig"
 	store_cost = 10000
 	store_access = ACCESS_WHITELIST
@@ -82,12 +82,12 @@
 
 	loadout_modkit_cost = 2
 	modkit_access = ACCESS_WHITELIST
-	modkit_typelist = list(/obj/item/weapon/rig/advanced)
+	modkit_typelist = list(/obj/item/rig/advanced)
 
 
 /datum/patron_item/hacker_rig
 	name = "digital infiltration RIG"
-	item_path = /obj/item/weapon/rig/hacker
+	item_path = /obj/item/rig/hacker
 	id = "hacker_rig"
 
 	loadout_cost = 4
@@ -113,14 +113,14 @@
 /datum/patron_item/marshal_wrench
 	name =  "Colossal Wrench"
 	id = "marshal_wrench"
-	item_path = /obj/item/weapon/material/twohanded/fireaxe/bigwrench
+	item_path = /obj/item/material/twohanded/fireaxe/bigwrench
 
 	store_cost = 6000
 	store_access = ACCESS_WHITELIST
 
 	loadout_modkit_cost = 2
 	modkit_access = ACCESS_WHITELIST
-	modkit_typelist = list(/obj/item/weapon/tool/wrench/big_wrench)
+	modkit_typelist = list(/obj/item/tool/wrench/big_wrench)
 
 
 	category = CATEGORY_TOOLS
@@ -130,7 +130,7 @@
 /datum/patron_item/blackwolf
 	name = "wasp RIG"
 	description = "A lightweight and flexible armoured rig suit, offers good protection against light impacts"
-	item_path = /obj/item/weapon/rig/wasp
+	item_path = /obj/item/rig/wasp
 	id = "blackwolf_rig"
 	store_cost = 10000
 	store_access = ACCESS_PUBLIC
@@ -140,4 +140,4 @@
 
 	loadout_modkit_cost = 2
 	modkit_access = ACCESS_PUBLIC
-	modkit_typelist = list(/obj/item/weapon/rig/engineering)
+	modkit_typelist = list(/obj/item/rig/engineering)

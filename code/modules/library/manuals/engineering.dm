@@ -1,10 +1,10 @@
-/obj/item/weapon/book/manual/engineering_guide
+/obj/item/book/manual/engineering_guide
 	name = "Engineering Textbook"
 	icon_state ="bookEngineering2"
 	author = "Engineering Encyclopedia"
 	title = "Engineering Textbook"
 
-/obj/item/weapon/book/manual/engineering_guide/Initialize()
+/obj/item/book/manual/engineering_guide/Initialize()
 	.=..()
 	dat = {"
 
@@ -18,7 +18,7 @@
 
 		"}
 
-/obj/item/weapon/book/manual/robotics_cyborgs
+/obj/item/book/manual/robotics_cyborgs
 	name = "Cyborgs for Dummies"
 	icon_state = "borgbook"
 	author = "XISC"
@@ -300,13 +300,13 @@
 			</html>
 		"}
 
-/obj/item/weapon/book/manual/engineering_construction
+/obj/item/book/manual/engineering_construction
 	name = "Repairs and Construction"
 	icon_state ="bookEngineering"
 	author = "Engineering Encyclopedia"		 // Who wrote the thing, can be changed by pen or PC. It is not automatically assigned
 	title = "Repairs and Construction"
 
-/obj/item/weapon/book/manual/engineering_construction/Initialize()
+/obj/item/book/manual/engineering_construction/Initialize()
 	.=..()
 	dat = {"
 
@@ -321,13 +321,13 @@
 
 		"}
 
-/obj/item/weapon/book/manual/engineering_particle_accelerator
+/obj/item/book/manual/engineering_particle_accelerator
 	name = "Particle Accelerator User's Guide"
 	icon_state ="bookParticleAccelerator"
 	author = "Engineering Encyclopedia"		 // Who wrote the thing, can be changed by pen or PC. It is not automatically assigned
 	title = "Particle Accelerator User's Guide"
 
-/obj/item/weapon/book/manual/engineering_particle_accelerator/New()
+/obj/item/book/manual/engineering_particle_accelerator/New()
 	..()
 	dat = {"<html>
 				<head>
@@ -368,13 +368,13 @@
 			"}
 
 
-/obj/item/weapon/book/manual/supermatter_engine
+/obj/item/book/manual/supermatter_engine
 	name = "Supermatter Engine Operating Manual"
 	icon_state = "bookSupermatter"
 	author = "Central Engineering Division"
 	title = "Supermatter Engine Operating Manual"
 
-/obj/item/weapon/book/manual/supermatter_engine/New()
+/obj/item/book/manual/supermatter_engine/New()
 	..()
 	dat = {"<html>
 				<head>
@@ -445,13 +445,13 @@
 
 
 
-/obj/item/weapon/book/manual/rust_engine
+/obj/item/book/manual/rust_engine
 	name = "R-UST Operating Manual 2553"
 	icon_state = "bookMagazine"
 	author = "Cindy Crawfish"
 	title = "R-UST Operating Manual"
 
-/obj/item/weapon/book/manual/rust_engine/New()
+/obj/item/book/manual/rust_engine/New()
 	..()
 	dat = {"<html>
 				<head>
@@ -499,13 +499,13 @@
 				</body>
 			</html>"}
 
-/obj/item/weapon/book/manual/engineering_hacking
+/obj/item/book/manual/engineering_hacking
 	name = "Hacking"
 	icon_state ="bookHacking"
 	author = "Engineering Encyclopedia"		 // Who wrote the thing, can be changed by pen or PC. It is not automatically assigned
 	title = "Hacking"
 
-/obj/item/weapon/book/manual/engineering_hacking/New()
+/obj/item/book/manual/engineering_hacking/New()
 	..()
 	dat = {"
 
@@ -521,7 +521,7 @@
 		"}
 
 
-/obj/item/weapon/book/manual/engineering_singularity_safety
+/obj/item/book/manual/engineering_singularity_safety
 	name = "Singularity Safety in Special Circumstances"
 	icon_state ="bookEngineeringSingularitySafety"
 	author = "Engineering Encyclopedia"		 // Who wrote the thing, can be changed by pen or PC. It is not automatically assigned
@@ -572,7 +572,7 @@
 			</html>
 			"}
 
-/obj/item/weapon/book/manual/ripley_build_and_repair
+/obj/item/book/manual/ripley_build_and_repair
 	name = "APLU \"Ripley\" Construction and Operation Manual"
 	icon_state ="book"
 	author = "Randall Varn, Einstein Engines Senior Mechanic"		 // Who wrote the thing, can be changed by pen or PC. It is not automatically assigned
@@ -648,7 +648,7 @@
 			</html>
 			"}
 
-/obj/item/weapon/book/manual/atmospipes
+/obj/item/book/manual/atmospipes
 	name = "Pipes and You: Getting To Know Your Scary Tools"
 	icon_state = "pipingbook"
 	author = "Maria Crash, Senior Atmospherics Technician"
@@ -756,7 +756,7 @@
 			</html>
 			"}
 
-/obj/item/weapon/book/manual/evaguide
+/obj/item/book/manual/evaguide
 	name = "EVA Gear and You: Not Spending All Day Inside"
 	icon_state = "evabook"
 	author = "Maria Crash, Senior Atmospherics Technician"

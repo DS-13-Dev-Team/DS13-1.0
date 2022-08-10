@@ -26,7 +26,7 @@
 	update_connections(1)
 	update_icon()
 
-/obj/structure/wall_frame/attackby(var/obj/item/weapon/W, var/mob/user)
+/obj/structure/wall_frame/attackby(var/obj/item/W, var/mob/user)
 	src.add_fingerprint(user)
 
 	//grille placing begin

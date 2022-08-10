@@ -145,7 +145,7 @@
 			take_damage((Proj.damage / laser_resist) / fire_resist)
 	return 0
 
-/obj/effect/blob/attackby(var/obj/item/weapon/W, var/mob/user)
+/obj/effect/blob/attackby(var/obj/item/W, var/mob/user)
 	user.set_click_cooldown(DEFAULT_ATTACK_COOLDOWN)
 	user.do_attack_animation(src)
 	playsound(loc, 'sound/effects/attackblob.ogg', 50, 1)

@@ -1,4 +1,4 @@
-/obj/item/weapon/rig/special_forces
+/obj/item/rig/special_forces
 	name = "special forces RIG"
 	desc = "A heavily armoured rig suit, designed for military use."
 	icon_state = "special_forces_rig"
@@ -36,7 +36,7 @@
 	light_overlay = "special_forces_light"
 
 
-/obj/item/weapon/rig/carver
+/obj/item/rig/carver
 	name = "Carver's RIG"
 	desc = "A heavily armoured rig suit, designed for military use."
 	icon_state = "carver_rig"

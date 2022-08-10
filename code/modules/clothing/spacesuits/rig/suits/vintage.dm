@@ -1,4 +1,4 @@
-/obj/item/weapon/rig/vintage
+/obj/item/rig/vintage
 	name = "antique CEC RIG"
 	desc = "An extremely bulky, durable vintage suit that has mostly been replaced by sleeker modern designs. Some collectors still value the good old days though."
 	icon_state = "vintage_rig"
@@ -30,7 +30,7 @@
 /obj/item/clothing/shoes/magboots/rig/vintage
 
 
-/obj/item/weapon/rig/vintage/heavy
+/obj/item/rig/vintage/heavy
 	name = "antique heavy-duty CEC RIG"
 	desc = "The heavy-duty vintage CEC RIG is used in the most hazardous engineering operations aboard CEC vessels. Its heavier armor plating can withstand more blunt damage than most CEC suits, and can withstand radiation just as well. As working conditions on CEC ships have improved, this RIG has been discontinued, but some heavy variants can still be found on old planet crackers."
 	icon_state = "vintage_suit"

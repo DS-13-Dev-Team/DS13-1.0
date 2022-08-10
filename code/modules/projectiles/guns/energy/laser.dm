@@ -1,4 +1,4 @@
-/obj/item/weapon/gun/energy/laser
+/obj/item/gun/energy/laser
 	name = "laser carbine"
 	desc = "A Hephaestus Industries G40E carbine, designed to kill with concentrated energy blasts."
 	icon_state = "laser"
@@ -13,23 +13,23 @@
 	projectile_type = /obj/item/projectile/beam/midlaser
 	wielded_item_state = "laser-wielded"
 
-/obj/item/weapon/gun/energy/laser/mounted
+/obj/item/gun/energy/laser/mounted
 	self_recharge = 1
 	use_external_power = 1
 	one_hand_penalty = 0 //just in case
 	has_safety = FALSE
 
-/obj/item/weapon/gun/energy/laser/practice
+/obj/item/gun/energy/laser/practice
 	name = "practice laser carbine"
 	desc = "A modified version of the HI G40E, this one fires less concentrated energy bolts designed for target practice."
 	icon_state = "laserp"
 	projectile_type = /obj/item/projectile/beam/practice
 	charge_cost = 10 //How much energy is needed to fire.
 
-/obj/item/weapon/gun/energy/laser/practice/proc/hacked()
+/obj/item/gun/energy/laser/practice/proc/hacked()
 	return projectile_type != /obj/item/projectile/beam/practice
 
-/obj/item/weapon/gun/energy/laser/practice/emag_act(var/remaining_charges, var/mob/user, var/emag_source)
+/obj/item/gun/energy/laser/practice/emag_act(var/remaining_charges, var/mob/user, var/emag_source)
 	if(hacked())
 		return NO_EMAG_ACT
 	to_chat(user, "<span class='warning'>You disable the safeties on [src] and crank the output to the lethal levels.</span>")
@@ -39,7 +39,7 @@
 	max_shots = rand(3,6) //will melt down after those
 	return 1
 
-/obj/item/weapon/gun/energy/laser/practice/handle_post_fire(mob/user, atom/target, var/pointblank=0, var/reflex=0)
+/obj/item/gun/energy/laser/practice/handle_post_fire(mob/user, atom/target, var/pointblank=0, var/reflex=0)
 	..()
 	if(hacked())
 		max_shots--
@@ -48,7 +48,7 @@
 			desc += " The optical pathway is melted and useless."
 			projectile_type = null
 
-obj/item/weapon/gun/energy/retro
+obj/item/gun/energy/retro
 	name = "retro laser"
 	icon_state = "retro"
 	item_state = "retro"
@@ -58,7 +58,7 @@ obj/item/weapon/gun/energy/retro
 	projectile_type = /obj/item/projectile/beam
 	fire_delay = 15 //old technology, and a pistol
 
-/obj/item/weapon/gun/energy/captain
+/obj/item/gun/energy/captain
 	name = "antique laser gun"
 	icon_state = "caplaser"
 	item_state = "caplaser"
@@ -72,7 +72,7 @@ obj/item/weapon/gun/energy/retro
 	one_hand_penalty = 1 //a little bulky
 	self_recharge = 1
 
-/obj/item/weapon/gun/energy/lasercannon
+/obj/item/gun/energy/lasercannon
 	name = "laser cannon"
 	desc = "With the laser cannon, the lasing medium is enclosed in a tube lined with uranium-235 and subjected to high neutron flux in a nuclear reactor core. This incredible technology may help YOU achieve high excitation rates with small laser volumes!"
 	icon_state = "lasercannon"
@@ -88,7 +88,7 @@ obj/item/weapon/gun/energy/retro
 	fire_delay = 20
 	wielded_item_state = "gun_wielded"
 
-/obj/item/weapon/gun/energy/lasercannon/mounted
+/obj/item/gun/energy/lasercannon/mounted
 	name = "mounted laser cannon"
 	self_recharge = 1
 	use_external_power = 1
@@ -97,7 +97,7 @@ obj/item/weapon/gun/energy/retro
 	one_hand_penalty = 0
 	has_safety = FALSE
 
-/obj/item/weapon/gun/energy/xray
+/obj/item/gun/energy/xray
 	name = "x-ray laser carbine"
 	desc = "A high-power laser gun capable of emitting concentrated x-ray blasts, that are able to penetrate laser-resistant armor much more readily than standard photonic beams."
 	icon_state = "xray"
@@ -112,7 +112,7 @@ obj/item/weapon/gun/energy/retro
 	wielded_item_state = "gun_wielded"
 	combustion = 0
 
-/obj/item/weapon/gun/energy/xray/pistol
+/obj/item/gun/energy/xray/pistol
 	name = "x-ray laser gun"
 	icon_state = "oldxray"
 	item_state = "oldxray"
@@ -123,7 +123,7 @@ obj/item/weapon/gun/energy/retro
 	w_class = ITEM_SIZE_NORMAL
 	fire_delay = 10
 
-/obj/item/weapon/gun/energy/sniperrifle
+/obj/item/gun/energy/sniperrifle
 	name = "marksman energy rifle"
 	desc = "The HI DMR 9E is an older design of Hephaestus Industries. A designated marksman rifle capable of shooting powerful ionized beams, this is a weapon to kill from a distance."
 	icon_state = "sniper"
@@ -141,11 +141,11 @@ obj/item/weapon/gun/energy/retro
 	scoped_accuracy = 0
 	wielded_item_state = "gun_wielded"
 
-/obj/item/weapon/gun/energy/sniperrifle/update_icon()
+/obj/item/gun/energy/sniperrifle/update_icon()
 	..()
 	item_state_slots[slot_back_str] = icon_state //so that the on-back overlay uses the different charged states
 
-/obj/item/weapon/gun/energy/sniperrifle/verb/scope()
+/obj/item/gun/energy/sniperrifle/verb/scope()
 	set category = "Object"
 	set name = "Use Scope"
 	set popup_menu = 1
@@ -154,7 +154,7 @@ obj/item/weapon/gun/energy/retro
 
 ////////Laser Tag////////////////////
 
-/obj/item/weapon/gun/energy/lasertag
+/obj/item/gun/energy/lasertag
 	name = "laser tag gun"
 	item_state = "laser"
 	desc = "Standard issue weapon of the Imperial Guard."

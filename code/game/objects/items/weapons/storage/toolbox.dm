@@ -1,4 +1,4 @@
-/obj/item/weapon/storage/toolbox
+/obj/item/storage/toolbox
 	name = "toolbox"
 	desc = "Bright red toolboxes like these are one of the most common sights in maintenance corridors on virtually every ship in the galaxy."
 	description_info = "The toolbox is a general-purpose storage item with lots of space. With an item in your hand, click on it to store it inside."
@@ -20,36 +20,36 @@
 	attack_verb = list("robusted")
 	use_sound = 'sound/effects/storage/toolbox.ogg'
 
-/obj/item/weapon/storage/toolbox/emergency
+/obj/item/storage/toolbox/emergency
 	name = "emergency toolbox"
-	startswith = list(/obj/item/weapon/tool/crowbar/red, /obj/item/weapon/extinguisher/mini, /obj/item/device/radio, /obj/random/tool)
+	startswith = list(/obj/item/tool/crowbar/red, /obj/item/extinguisher/mini, /obj/item/radio, /obj/random/tool)
 
-/obj/item/weapon/storage/toolbox/emergency/Initialize()
+/obj/item/storage/toolbox/emergency/Initialize()
 	. = ..()
-	var/item = pick(list(/obj/item/device/flashlight, /obj/item/device/flashlight/flare,  /obj/item/device/flashlight/flare/glowstick/red))
+	var/item = pick(list(/obj/item/flashlight, /obj/item/flashlight/flare,  /obj/item/flashlight/flare/glowstick/red))
 	new item(src)
 
 
-/obj/item/weapon/storage/toolbox/mechanical
+/obj/item/storage/toolbox/mechanical
 	name = "mechanical toolbox"
 	desc = "Bright blue toolboxes like these are one of the most common sights in maintenance corridors on virtually every ship in the galaxy."
 	icon_state = "blue"
 	item_state = "toolbox_blue"
-	startswith = list( /obj/random/tool, /obj/item/weapon/tool/screwdriver, /obj/item/weapon/tool/wrench, /obj/item/weapon/tool/weldingtool, /obj/item/weapon/tool/crowbar, /obj/item/device/analyzer, /obj/item/weapon/tool/wirecutters)
+	startswith = list( /obj/random/tool, /obj/item/tool/screwdriver, /obj/item/tool/wrench, /obj/item/tool/weldingtool, /obj/item/tool/crowbar, /obj/item/analyzer, /obj/item/tool/wirecutters)
 
-/obj/item/weapon/storage/toolbox/mechanical/Initialize()
+/obj/item/storage/toolbox/mechanical/Initialize()
 	. = ..()
 	if (prob(40))
 		new /obj/random/tool_upgrade(src)
 
-/obj/item/weapon/storage/toolbox/electrical
+/obj/item/storage/toolbox/electrical
 	name = "electrical toolbox"
 	desc = "Bright yellow toolboxes like these are one of the most common sights in maintenance corridors on virtually every ship in the galaxy."
 	icon_state = "yellow"
 	item_state = "toolbox_yellow"
-	startswith = list( /obj/random/tool, /obj/item/weapon/tool/screwdriver, /obj/item/weapon/tool/wirecutters, /obj/item/device/t_scanner, /obj/item/weapon/tool/crowbar)
+	startswith = list( /obj/random/tool, /obj/item/tool/screwdriver, /obj/item/tool/wirecutters, /obj/item/t_scanner, /obj/item/tool/crowbar)
 
-/obj/item/weapon/storage/toolbox/electrical/Initialize()
+/obj/item/storage/toolbox/electrical/Initialize()
 	. = ..()
 	new /obj/item/stack/cable_coil/random(src,30)
 	new /obj/item/stack/cable_coil/random(src,30)
@@ -58,11 +58,11 @@
 	else
 		new /obj/item/stack/cable_coil/random(src,30)
 
-/obj/item/weapon/storage/toolbox/syndicate
+/obj/item/storage/toolbox/syndicate
 	name = "black and red toolbox"
 	desc = "A toolbox in black, with stylish red trim. This one feels particularly heavy, yet balanced."
 	icon_state = "syndicate"
 	item_state = "toolbox_syndi"
 	origin_tech = list(TECH_COMBAT = 1, TECH_ILLEGAL = 1)
 	attack_cooldown = 10
-	startswith = list(/obj/item/clothing/gloves/insulated, /obj/item/weapon/tool/screwdriver, /obj/item/weapon/tool/wrench, /obj/item/weapon/tool/weldingtool, /obj/item/weapon/tool/crowbar, /obj/item/weapon/tool/wirecutters, /obj/item/weapon/tool/multitool)
+	startswith = list(/obj/item/clothing/gloves/insulated, /obj/item/tool/screwdriver, /obj/item/tool/wrench, /obj/item/tool/weldingtool, /obj/item/tool/crowbar, /obj/item/tool/wirecutters, /obj/item/tool/multitool)

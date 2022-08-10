@@ -26,10 +26,10 @@ cause a ton of data to be lost, an admin can go send it back.
 	icon_keyboard = "rd_key"
 	icon_screen = "rdcomp"
 	light_color = "#a97faa"
-	circuit = /obj/item/weapon/circuitboard/rdconsole
+	circuit = /obj/item/circuitboard/rdconsole
 	var/datum/research/files							//Stores all the collected research data.
-	var/obj/item/weapon/disk/tech_disk/t_disk = null	//Stores the technology disk.
-	var/obj/item/weapon/disk/design_disk/d_disk = null	//Stores the design disk.
+	var/obj/item/disk/tech_disk/t_disk = null	//Stores the technology disk.
+	var/obj/item/disk/design_disk/d_disk = null	//Stores the design disk.
 
 	var/obj/machinery/r_n_d/destructive_analyzer/linked_destroy = null	//Linked Destructive Analyzer
 	var/obj/machinery/r_n_d/protolathe/linked_lathe = null				//Linked Protolathe
@@ -117,15 +117,15 @@ cause a ton of data to be lost, an admin can go send it back.
 		linked_destroy = null
 	return ..()
 
-/obj/machinery/computer/rdconsole/attackby(var/obj/item/weapon/D as obj, var/mob/user as mob)
-	if(istype(D, /obj/item/weapon/disk/research_points))
-		var/obj/item/weapon/disk/research_points/disk = D
+/obj/machinery/computer/rdconsole/attackby(var/obj/item/D as obj, var/mob/user as mob)
+	if(istype(D, /obj/item/disk/research_points))
+		var/obj/item/disk/research_points/disk = D
 		to_chat(user, "<span class='notice'>[name] received [disk.stored_points] research points from [disk.name]</span>")
 		files.research_points += disk.stored_points
 		user.remove_from_mob(disk)
 		qdel(disk)
 
-/*	else if(istype(D, /obj/item/device/science_tool))
+/*	else if(istype(D, /obj/item/science_tool))
 		var/research_points = files.experiments.read_science_tool(D)
 		if(research_points > 0)
 			to_chat(user, "<span class='notice'>[name] received [research_points] research points from uploaded data.</span>")

@@ -77,9 +77,9 @@
 /obj/item/stack/ore/hydrogen
 	ore = /ore/hydrogen
 
-/obj/item/stack/ore/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	if(istype(W,/obj/item/device/core_sampler))
-		var/obj/item/device/core_sampler/C = W
+/obj/item/stack/ore/attackby(obj/item/W as obj, mob/user as mob)
+	if(istype(W,/obj/item/core_sampler))
+		var/obj/item/core_sampler/C = W
 		C.sample_item(src, user)
 	else
 		return ..()

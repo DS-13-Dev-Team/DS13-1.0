@@ -1,12 +1,12 @@
 //Deposit box in store kiosks
-/obj/item/weapon/storage/internal/deposit
+/obj/item/storage/internal/deposit
 	max_w_class = ITEM_SIZE_GARGANTUAN
 	//Stores a total number of items
 	storage_slots = 30
 	var/list/ui_data = list()
 
 
-/obj/item/weapon/storage/internal/deposit/proc/update_ui_data()
+/obj/item/storage/internal/deposit/proc/update_ui_data()
 	ui_data = list()
 	for (var/obj/item/I in contents)
 		ui_data += list(list("name" = copytext(I.name, 1, 21), "value" = 0))
@@ -20,7 +20,7 @@
 
 
 
-/obj/item/weapon/storage/internal/deposit/prepare_ui()
+/obj/item/storage/internal/deposit/prepare_ui()
 	.=..()
 	update_ui_data()
 

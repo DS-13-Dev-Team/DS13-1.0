@@ -116,7 +116,7 @@
 	new /obj/item/clothing/gloves/chameleon(src.loc)
 	new /obj/item/clothing/suit/chameleon(src.loc)
 	new /obj/item/clothing/head/chameleon(src.loc)
-	new /obj/item/weapon/storage/backpack/chameleon(src.loc)
+	new /obj/item/storage/backpack/chameleon(src.loc)
 	delete_me = 1
 
 /obj/effect/landmark/costume/maid/New()
@@ -137,7 +137,7 @@
 	new /obj/item/clothing/glasses/monocle(src.loc)
 	new /obj/item/clothing/head/that(src.loc)
 	new /obj/item/clothing/shoes/black(src.loc)
-	new /obj/item/weapon/cane(src.loc)
+	new /obj/item/cane(src.loc)
 	new /obj/item/clothing/under/sl_suit(src.loc)
 	delete_me = 1
 
@@ -185,8 +185,9 @@
 		min_y = max(src.y, min_y)
 		max_y = min(src.y + generation_height, max_y)
 
-	new /datum/random_map/automata/cave_system(seed, min_x, min_y, src.z, max_x, max_y)
-	new /datum/random_map/noise/ore(seed, min_x, min_y, src.z, max_x, max_y)
+	spawn(0)
+		new /datum/random_map/automata/cave_system(seed, min_x, min_y, src.z, max_x, max_y)
+		new /datum/random_map/noise/ore(seed, min_x, min_y, src.z, max_x, max_y)
 
 	. = INITIALIZE_HINT_LATELOAD
 
@@ -347,7 +348,7 @@
 	shoes = /obj/item/clothing/shoes/jungleboots
 	gloves = /obj/item/clothing/gloves/thick
 	head = /obj/item/clothing/head/beret
-	l_pocket = /obj/item/weapon/material/butterfly/switchblade
+	l_pocket = /obj/item/material/butterfly/switchblade
 
 /obj/item/clothing/under/magintka_uniform
 	name = "officer uniform"

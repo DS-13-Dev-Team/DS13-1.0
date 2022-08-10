@@ -1,4 +1,4 @@
-/obj/item/weapon/rig/ert
+/obj/item/rig/ert
 	name = "emergency response command hardsuit control module"
 	desc = "A hardsuit used by many corporate and governmental emergency response forces. Has blue highlights. Armoured and space ready."
 	suit_type = "emergency response command"
@@ -12,10 +12,10 @@
 	//req_access = list(access_cent_specops)
 
 	armor = list(melee = 60, bullet = 50, laser = 50,energy = 15, bomb = 30, bio = 100, rad = 100)
-	allowed = list(/obj/item/device/flashlight, /obj/item/weapon/tank,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/handcuffs, /obj/item/device/t_scanner, /obj/item/weapon/rcd, /obj/item/weapon/tool/crowbar, \
-	/obj/item/weapon/tool/screwdriver, /obj/item/weapon/tool/weldingtool, /obj/item/weapon/tool/wirecutters, /obj/item/weapon/tool/wrench, /obj/item/weapon/tool/multitool, \
-	/obj/item/device/radio, /obj/item/device/analyzer,/obj/item/weapon/storage/briefcase/inflatable, /obj/item/weapon/melee/baton, /obj/item/weapon/gun, \
-	/obj/item/weapon/storage/firstaid, /obj/item/weapon/reagent_containers/hypospray, /obj/item/roller)
+	allowed = list(/obj/item/flashlight, /obj/item/tank,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/handcuffs, /obj/item/t_scanner, /obj/item/rcd, /obj/item/tool/crowbar, \
+	/obj/item/tool/screwdriver, /obj/item/tool/weldingtool, /obj/item/tool/wirecutters, /obj/item/tool/wrench, /obj/item/tool/multitool, \
+	/obj/item/radio, /obj/item/analyzer,/obj/item/storage/briefcase/inflatable, /obj/item/melee/baton, /obj/item/gun, \
+	/obj/item/storage/firstaid, /obj/item/reagent_containers/hypospray, /obj/item/roller)
 
 	initial_modules = list(
 		/obj/item/rig_module/ai_container,
@@ -40,7 +40,7 @@
 	species_restricted = list(SPECIES_HUMAN)
 
 
-/obj/item/weapon/rig/ert/engineer
+/obj/item/rig/ert/engineer
 	name = "emergency response engineering hardsuit control module"
 	desc = "A hardsuit used by many corporate and governmental emergency response forces. Has orange highlights. Armoured and space ready."
 	suit_type = "emergency response engineer"
@@ -60,7 +60,7 @@
 /obj/item/clothing/gloves/rig/ert/engineer
 	siemens_coefficient = 0
 
-/obj/item/weapon/rig/ert/medical
+/obj/item/rig/ert/medical
 	name = "emergency response medical hardsuit control module"
 	desc = "A hardsuit used by many corporate and governmental emergency response forces. Has white highlights. Armoured and space ready."
 	suit_type = "emergency response medic"
@@ -75,7 +75,7 @@
 		/obj/item/rig_module/healthbar
 		)
 
-/obj/item/weapon/rig/ert/security
+/obj/item/rig/ert/security
 	name = "emergency response security hardsuit control module"
 	desc = "A hardsuit used by many corporate and governmental emergency response forces. Has red highlights. Armoured and space ready."
 	suit_type = "emergency response security"
@@ -89,7 +89,7 @@
 		/obj/item/rig_module/healthbar
 		)
 
-/obj/item/weapon/rig/ert/assetprotection
+/obj/item/rig/ert/assetprotection
 	name = "heavy emergency response suit control module"
 	desc = "A heavy, modified version of a common emergency response hardsuit. Has blood red highlights.  Armoured and space ready."
 	suit_type = "heavy emergency response"

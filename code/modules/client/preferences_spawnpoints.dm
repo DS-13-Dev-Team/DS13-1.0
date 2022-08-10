@@ -203,7 +203,7 @@ GLOBAL_VAR(spawntypes)
 
 /datum/spawnpoint/maint/post_spawn(var/mob/living/spawner, var/turf/location)
 	.=..()
-	new /obj/item/device/flashlight/flare/active(location)
+	new /obj/item/flashlight/flare/active(location)
 	spawner.Paralyse(2)
 	spawn (20)
 		to_chat(spawner, SPAN_NOTICE("You don't remember making it back to your bunk last shift. Where are you...?"))

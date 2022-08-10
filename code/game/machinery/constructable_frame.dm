@@ -48,8 +48,8 @@
 						new /obj/item/stack/material/steel(src.loc, 8)
 						qdel(src)
 			if(2)
-				if(istype(P, /obj/item/weapon/circuitboard))
-					var/obj/item/weapon/circuitboard/B = P
+				if(istype(P, /obj/item/circuitboard))
+					var/obj/item/circuitboard/B = P
 					if(B.board_type == "machine")
 						if(!user.unEquip(P, src))
 							return
@@ -89,7 +89,7 @@
 						to_chat(user, "<span class='notice'>You remove the circuit board.</span>")
 					else
 						to_chat(user, "<span class='notice'>You remove the circuit board and other components.</span>")
-						for(var/obj/item/weapon/W in components)
+						for(var/obj/item/W in components)
 							W.loc = src.loc
 					desc = initial(desc)
 					req_components = null

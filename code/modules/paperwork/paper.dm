@@ -10,7 +10,7 @@
 #define MODE_WRITING 1
 #define MODE_STAMPING 2
 
-/obj/item/weapon/paper
+/obj/item/paper
 	name = "sheet of paper"
 	gender = NEUTER
 	icon = 'icons/obj/bureaucracy.dmi'
@@ -46,11 +46,11 @@
 	var/list/form_fields = list()
 	var/field_counter = 1
 
-/obj/item/weapon/paper/Destroy()
+/obj/item/paper/Destroy()
 	form_fields = null
 	. = ..()
 
-/obj/item/weapon/paper/update_icon()
+/obj/item/paper/update_icon()
 	if(icon_state == "paper_talisman")
 		return
 	else if(info)
@@ -58,7 +58,7 @@
 	else
 		icon_state = "paper"
 
-/obj/item/weapon/paper/examine(mob/user)
+/obj/item/paper/examine(mob/user)
 	. = ..()
 	if(name != "sheet of paper")
 		to_chat(user, "It's titled '[name]'.")
@@ -74,7 +74,7 @@
 		return UI_UPDATE
 	return ..()
 
-/obj/item/weapon/paper/verb/rename()
+/obj/item/paper/verb/rename()
 	set name = "Rename paper"
 	set category = "Object"
 	set src in usr
@@ -84,12 +84,12 @@
 		return
 	var/n_name = sanitizeSafe(input(usr, "What would you like to label the paper?", "Paper Labelling", null)  as text, MAX_NAME_LEN)
 
-	// We check loc one level up, so we can rename in clipboards and such. See also: /obj/item/weapon/photo/rename()
+	// We check loc one level up, so we can rename in clipboards and such. See also: /obj/item/photo/rename()
 	if((loc == usr || loc.loc && loc.loc == usr) && usr.stat == 0 && n_name)
 		SetName(n_name)
 		add_fingerprint(usr)
 
-/obj/item/weapon/paper/attack_self(mob/living/user as mob)
+/obj/item/paper/attack_self(mob/living/user as mob)
 	if(user.a_intent == I_HURT)
 		if(icon_state == "scrap")
 			user.show_message("<span class='warning'>\The [src] is already crumpled.</span>")
@@ -107,10 +107,10 @@
 			spawn(20)
 				spam_flag = 0
 
-/obj/item/weapon/paper/attack_ai(var/mob/living/silicon/ai/user)
+/obj/item/paper/attack_ai(var/mob/living/silicon/ai/user)
 	tgui_interact(user)
 
-/obj/item/weapon/paper/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
+/obj/item/paper/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
 	switch(get_zone_sel(user, TRUE))
 		if(BP_EYES)
 			user.visible_message("<span class='notice'>You show the paper to [M]. </span>", \
@@ -134,7 +134,7 @@
 						H.update_body()
 
 
-/obj/item/weapon/paper/proc/clearpaper()
+/obj/item/paper/proc/clearpaper()
 	info = null
 	stamps = null
 	free_space = MAX_PAPER_MESSAGE_LEN
@@ -142,16 +142,16 @@
 	overlays.Cut()
 	update_icon()
 
-/obj/item/weapon/paper/proc/get_signature(var/obj/item/weapon/pen/P, mob/user as mob)
-	if(P && istype(P, /obj/item/weapon/pen))
+/obj/item/paper/proc/get_signature(var/obj/item/pen/P, mob/user as mob)
+	if(P && istype(P, /obj/item/pen))
 		return P.get_signature(user)
 	return (user && user.real_name) ? user.real_name : "Anonymous"
 
-/obj/item/weapon/paper/proc/burn_with_object(obj/item/weapon/flame/P, mob/user)
+/obj/item/paper/proc/burn_with_object(obj/item/flame/P, mob/user)
 	var/class = "warning"
 
 	if(P.lit && !user.restrained())
-		if(istype(P, /obj/item/weapon/flame/lighter/zippo))
+		if(istype(P, /obj/item/flame/lighter/zippo))
 			class = "rose"
 
 		user.visible_message("<span class='[class]'>[user] holds \the [P] up to \the [src], it looks like \he's trying to burn it!</span>", \
@@ -168,26 +168,26 @@
 				to_chat(user, "<span class='warning'>You must hold \the [P] steady to burn \the [src].</span>")
 
 //We won't even bother with damage, paper exposed to fire is just gone
-/obj/item/weapon/paper/fire_act()
+/obj/item/paper/fire_act()
 	burn()
 
-/obj/item/weapon/paper/proc/burn()
+/obj/item/paper/proc/burn()
 	new /obj/effect/decal/cleanable/ash(get_turf(src))
 	qdel(src)
 
 
-/obj/item/weapon/paper/attackby(obj/item/P, mob/living/user, params)
+/obj/item/paper/attackby(obj/item/P, mob/living/user, params)
 	// Enable picking paper up by clicking on it with the clipboard or folder
-	if(istype(P, /obj/item/weapon/clipboard) || istype(P, /obj/item/weapon/folder))
+	if(istype(P, /obj/item/clipboard) || istype(P, /obj/item/folder))
 		P.attackby(src, user)
 		return
-	else if(istype(P, /obj/item/weapon/pen))
+	else if(istype(P, /obj/item/pen))
 		if(length(info) >= MAX_PAPER_LENGTH) // Sheet must have less than 1000 charaters
 			to_chat(user, "<span class='warning'>This sheet of paper is full!</span>")
 			return
 		tgui_interact(user)
 		return
-	else if(istype(P, /obj/item/weapon/stamp))
+	else if(istype(P, /obj/item/stamp))
 		to_chat(user, "<span class='notice'>You ready your stamp over the paper! </span>")
 		tgui_interact(user)
 		return /// Normaly you just stamp, you don't need to read the thing
@@ -197,12 +197,12 @@
 
 	return ..()
 
-/obj/item/weapon/paper/ui_assets(mob/user)
+/obj/item/paper/ui_assets(mob/user)
 	return list(
 		get_asset_datum(/datum/asset/spritesheet/simple/paper),
 	)
 
-/obj/item/weapon/paper/tgui_interact(mob/user, datum/tgui/ui)
+/obj/item/paper/tgui_interact(mob/user, datum/tgui/ui)
 	// Update the UI
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
@@ -210,7 +210,7 @@
 		ui.open()
 
 
-/obj/item/weapon/paper/ui_static_data(mob/user)
+/obj/item/paper/ui_static_data(mob/user)
 	. = list()
 	.["text"] = info
 	.["max_length"] = MAX_PAPER_LENGTH
@@ -219,27 +219,27 @@
 	.["stamps"] = stamps
 
 
-/obj/item/weapon/paper/ui_data(mob/user)
+/obj/item/paper/ui_data(mob/user)
 	var/list/data = list()
 	data["edit_usr"] = "[user]"
 
 	var/obj/holding = user.get_active_hand()
 	// Use a clipboard's pen, if applicable
-	if(istype(loc, /obj/item/weapon/clipboard))
-		var/obj/item/weapon/clipboard/clipboard = loc
+	if(istype(loc, /obj/item/clipboard))
+		var/obj/item/clipboard/clipboard = loc
 		// This is just so you can still use a stamp if you're holding one. Otherwise, it'll
 		// use the clipboard's pen, if applicable.
-		if(!istype(holding, /obj/item/weapon/stamp) && clipboard.haspen)
+		if(!istype(holding, /obj/item/stamp) && clipboard.haspen)
 			holding = clipboard.haspen
-	else if(istype(holding, /obj/item/weapon/pen))
-		var/obj/item/weapon/pen/PEN = holding
+	else if(istype(holding, /obj/item/pen))
+		var/obj/item/pen/PEN = holding
 		data["pen_font"] = PEN.font
 		data["pen_color"] = PEN.colour
 		data["edit_mode"] = MODE_WRITING
 		data["is_crayon"] = FALSE
 		data["stamp_class"] = "FAKE"
 		data["stamp_icon_state"] = "FAKE"
-	else if(istype(holding, /obj/item/weapon/stamp))
+	else if(istype(holding, /obj/item/stamp))
 		var/datum/asset/spritesheet/sheet = get_asset_datum(/datum/asset/spritesheet/simple/paper)
 		data["stamp_icon_state"] = holding.icon_state
 		data["stamp_class"] = sheet.icon_class_name(holding.icon_state)
@@ -263,7 +263,7 @@
 
 	return data
 
-/obj/item/weapon/paper/ui_act(action, params,datum/tgui/ui)
+/obj/item/paper/ui_act(action, params,datum/tgui/ui)
 	. = ..()
 	if(.)
 		return
@@ -322,56 +322,56 @@
 			. = TRUE
 
 //For supply.
-/obj/item/weapon/paper/manifest
+/obj/item/paper/manifest
 	name = "supply manifest"
 	var/is_copy = 1
 /*
  * Premade paper
  */
-/obj/item/weapon/paper/Court
+/obj/item/paper/Court
 	name = "Judgement"
 	info = "For crimes as specified, the offender is sentenced to:<BR>\n<BR>\n"
 
-/obj/item/weapon/paper/crumpled
+/obj/item/paper/crumpled
 	name = "paper scrap"
 	icon_state = "scrap"
 
-/obj/item/weapon/paper/crumpled/update_icon()
+/obj/item/paper/crumpled/update_icon()
 	return
 
-/obj/item/weapon/paper/crumpled/bloody
+/obj/item/paper/crumpled/bloody
 	icon_state = "scrap_bloodied"
 
-/obj/item/weapon/paper/exodus_armory
+/obj/item/paper/exodus_armory
 	name = "armory inventory"
 	info = "<center>\[logo]<BR><b><large>NSS Exodus</large></b><BR><i><date></i><BR><i>Armoury Inventory - Revision <field></i></center><hr><center>Armoury</center><list>\[*]<b>Deployable barriers</b>: 4\[*]<b>Biohazard suit(s)</b>: 1\[*]<b>Biohazard hood(s)</b>: 1\[*]<b>Face Mask(s)</b>: 1\[*]<b>Extended-capacity emergency oxygen tank(s)</b>: 1\[*]<b>Bomb suit(s)</b>: 1\[*]<b>Bomb hood(s)</b>: 1\[*]<b>Security officer's jumpsuit(s)</b>: 1\[*]<b>Brown shoes</b>: 1\[*]<b>Handcuff(s)</b>: 14\[*]<b>R.O.B.U.S.T. cartridges</b>: 7\[*]<b>Flash(s)</b>: 4\[*]<b>Can(s) of pepperspray</b>: 4\[*]<b>Gas mask(s)</b>: 6<field></list><hr><center>Secure Armoury</center><list>\[*]<b>LAEP90 Perun energy guns</b>: 4\[*]<b>Stun Revolver(s)</b>: 1\[*]<b>Taser Gun(s)</b>: 4\[*]<b>Stun baton(s)</b>: 4\[*]<b>Airlock Brace</b>: 3\[*]<b>Maintenance Jack</b>: 1\[*]<b>Stab Vest(s)</b>: 3\[*]<b>Riot helmet(s)</b>: 3\[*]<b>Riot shield(s)</b>: 3\[*]<b>Corporate security heavy armoured vest(s)</b>: 4\[*]<b>NanoTrasen helmet(s)</b>: 4\[*]<b>Portable flasher(s)</b>: 3\[*]<b>Tracking implant(s)</b>: 4\[*]<b>Chemical implant(s)</b>: 5\[*]<b>Implanter(s)</b>: 2\[*]<b>Implant pad(s)</b>: 2\[*]<b>Locator(s)</b>: 1<field></list><hr><center>Tactical Equipment</center><list>\[*]<b>Implanter</b>: 1\[*]<b>Death Alarm implant(s)</b>: 7\[*]<b>Security radio headset(s)</b>: 4\[*]<b>Ablative vest(s)</b>: 2\[*]<b>Ablative helmet(s)</b>: 2\[*]<b>Ballistic vest(s)</b>: 2\[*]<b>Ballistic helmet(s)</b>: 2\[*]<b>Tear Gas Grenade(s)</b>: 7\[*]<b>Flashbang(s)</b>: 7\[*]<b>Beanbag Shell(s)</b>: 7\[*]<b>Stun Shell(s)</b>: 7\[*]<b>Illumination Shell(s)</b>: 7\[*]<b>W-T Remmington 29x shotgun(s)</b>: 2\[*]<b>NT Mk60 EW Halicon ion rifle(s)</b>: 2\[*]<b>Hephaestus Industries G40E laser carbine(s)</b>: 4\[*]<b>Flare(s)</b>: 4<field></list><hr><b>Warden (print)</b>:<field><b>Signature</b>:<br>"
 
-/obj/item/weapon/paper/exodus_cmo
+/obj/item/paper/exodus_cmo
 	name = "outgoing CMO's notes"
 	info = "<I><center>To the incoming CMO of Exodus:</I></center><BR><BR>I wish you and your crew well. Do take note:<BR><BR><BR>The Medical Emergency Red Phone system has proven itself well. Take care to keep the phones in their designated places as they have been optimised for broadcast. The two handheld green radios (I have left one in this office, and one near the Emergency Entrance) are free to be used. The system has proven effective at alerting Medbay of important details, especially during power outages.<BR><BR>I think I may have left the toilet cubicle doors shut. It might be a good idea to open them so the staff and patients know they are not engaged.<BR><BR>The new syringe gun has been stored in secondary storage. I tend to prefer it stored in my office, but 'guidelines' are 'guidelines'.<BR><BR>Also in secondary storage is the grenade equipment crate. I've just realised I've left it open - you may wish to shut it.<BR><BR>There were a few problems with their installation, but the Medbay Quarantine shutters should now be working again  - they lock down the Emergency and Main entrances to prevent travel in and out. Pray you shan't have to use them.<BR><BR>The new version of the Medical Diagnostics Manual arrived. I distributed them to the shelf in the staff break room, and one on the table in the corner of this room.<BR><BR>The exam/triage room has the walking canes in it. I'm not sure why we'd need them - but there you have it.<BR><BR>Emergency Cryo bags are beside the emergency entrance, along with a kit.<BR><BR>Spare paper cups for the reception are on the left side of the reception desk.<BR><BR>I've fed Runtime. She should be fine.<BR><BR><BR><center>That should be all. Good luck!</center>"
 
-/obj/item/weapon/paper/exodus_bartender
+/obj/item/paper/exodus_bartender
 	name = "shotgun permit"
 	info = "This permit signifies that the Bartender is permitted to posess this firearm in the bar, and ONLY the bar. Failure to adhere to this permit will result in confiscation of the weapon and possibly arrest."
 
-/obj/item/weapon/paper/exodus_holodeck
+/obj/item/paper/exodus_holodeck
 	name = "holodeck disclaimer"
 	info = "Bruises sustained in the holodeck can be healed simply by sleeping."
 
-/obj/item/weapon/paper/workvisa
+/obj/item/paper/workvisa
 	name = "Sol Work Visa"
 	info = "<center><b><large>Work Visa of the Sol Central Government</large></b></center><br><center><img src = sollogo.png><br><br><i><small>Issued on behalf of the Secretary-General.</small></i></center><hr><BR>This paper hereby permits the carrier to travel unhindered through Sol territories, colonies, and space for the purpose of work and labor."
 	desc = "A flimsy piece of laminated cardboard issued by the Sol Central Government."
 
-/obj/item/weapon/paper/workvisa/New()
+/obj/item/paper/workvisa/New()
 	..()
 	icon_state = "workvisa" //Has to be here or it'll assume default paper sprites.
 
-/obj/item/weapon/paper/travelvisa
+/obj/item/paper/travelvisa
 	name = "Sol Travel Visa"
 	info = "<center><b><large>Travel Visa of the Sol Central Government</large></b></center><br><center><img src = sollogo.png><br><br><i><small>Issued on behalf of the Secretary-General.</small></i></center><hr><BR>This paper hereby permits the carrier to travel unhindered through Sol territories, colonies, and space for the purpose of pleasure and recreation."
 	desc = "A flimsy piece of laminated cardboard issued by the Sol Central Government."
 
-/obj/item/weapon/paper/travelvisa/New()
+/obj/item/paper/travelvisa/New()
 	..()
 	icon_state = "travelvisa"

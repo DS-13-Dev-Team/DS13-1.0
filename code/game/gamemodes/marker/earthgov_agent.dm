@@ -15,8 +15,8 @@ GLOBAL_LIST_EMPTY(agents_list)
 #define EARTHGOV_OBJECTIVES_OPTIONAL list(/datum/objective/collect_evidence/illegal_mining, /datum/objective/brig)
 //Anything that can be photographed and faxed as "evidence" of unitologists, illegal activity etc. As strict types, SUBTYPES NOT INCLUDED!
 
-#define EARTHGOV_UNITOLOGIST_EVIDENCE list(/obj/machinery/marker, /obj/item/weapon/storage/bible/unitology, /obj/item/weapon/storage/lunchbox/unitology)
-#define EARTHGOV_CRACKING_EVIDENCE list(/obj/item/weapon/card/id/holo/mining, /obj/item/weapon/card/id/holo/mining/director, /obj/item/weapon/card/id/holo/mining/foreman, /obj/item/clothing/under/deadspace/planet_cracker)
+#define EARTHGOV_UNITOLOGIST_EVIDENCE list(/obj/machinery/marker, /obj/item/storage/bible/unitology, /obj/item/storage/lunchbox/unitology)
+#define EARTHGOV_CRACKING_EVIDENCE list(/obj/item/card/id/holo/mining, /obj/item/card/id/holo/mining/director, /obj/item/card/id/holo/mining/foreman, /obj/item/clothing/under/deadspace/planet_cracker)
 
 //If you define more evidence lists, concatenate them here. This is what cameras search through to mark things as "suspicious"
 #define EARTHGOV_EVIDENCE_TYPES EARTHGOV_UNITOLOGIST_EVIDENCE + EARTHGOV_CRACKING_EVIDENCE
@@ -54,7 +54,7 @@ GLOBAL_LIST_EMPTY(agents_list)
 	if(!..())
 		return FALSE
 
-	var/obj/item/weapon/tool/multitool/uplink/special/U = new(get_turf(player), player.mind, DEFAULT_TELECRYSTAL_AMOUNT)
+	var/obj/item/tool/multitool/uplink/special/U = new(get_turf(player), player.mind, DEFAULT_TELECRYSTAL_AMOUNT)
 	player.put_in_hands(U)
 
 	return TRUE
@@ -88,7 +88,7 @@ GLOBAL_LIST_EMPTY(agents_list)
 /datum/extension/earthgov
 	name = "EarthGov Mission Handler"
 
-/datum/extension/earthgov/proc/on_admin_fax(obj/item/weapon/photo/target, destination)
+/datum/extension/earthgov/proc/on_admin_fax(obj/item/photo/target, destination)
 	var/datum/mind/M = holder
 	if(!istype(M))
 		message_admins("Earthgov extension was added to a non mind ([holder]), contact a coder please!")
@@ -141,7 +141,7 @@ GLOBAL_LIST_EMPTY(agents_list)
 		message_admins("BUG: Earthgov agent antagonist added to a mind with no body...?")
 		return FALSE
 	var/atom/movable/backpack = traitor.current.back
-	new /obj/item/device/camera(backpack) //Earthgov agents need a camera to collect evidence!
+	new /obj/item/camera(backpack) //Earthgov agents need a camera to collect evidence!
 	var/list/optional = EARTHGOV_OBJECTIVES_OPTIONAL
 	for(var/otype in optional)
 		message_admins(otype)

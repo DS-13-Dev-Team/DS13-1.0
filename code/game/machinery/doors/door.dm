@@ -352,8 +352,8 @@
 
 //psa to whoever coded this, there are plenty of objects that need to call attack() on doors without bludgeoning them.
 /obj/machinery/door/proc/check_force(obj/item/I as obj, mob/user as mob)
-	if(density &&  user.a_intent == I_HURT && istype(I, /obj/item/weapon) && !istype(I, /obj/item/weapon/card))
-		var/obj/item/weapon/W = I
+	if(density &&  user.a_intent == I_HURT && istype(I, /obj/item) && !istype(I, /obj/item/card))
+		var/obj/item/W = I
 		user.set_click_cooldown(DEFAULT_ATTACK_COOLDOWN)
 
 		if(W.damtype == BRUTE || W.damtype == BURN)

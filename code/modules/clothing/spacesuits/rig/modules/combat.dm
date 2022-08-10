@@ -16,7 +16,7 @@
 	icon_state = "flash"
 	interface_name = "mounted flash"
 	interface_desc = "Disorientates your target by blinding them with a bright light."
-	device_type = /obj/item/device/flash
+	device_type = /obj/item/flash
 	origin_tech = list(TECH_COMBAT = 2, TECH_MAGNET = 3, TECH_ENGINEERING = 5)
 	process_with_rig = FALSE
 
@@ -24,7 +24,7 @@
 
 /obj/item/rig_module/device/flash/advanced
 	name = "advanced mounted flash"
-	device_type = /obj/item/device/flash/advanced
+	device_type = /obj/item/flash/advanced
 	origin_tech = list(TECH_COMBAT = 3, TECH_MAGNET = 3, TECH_ENGINEERING = 5)
 
 /obj/item/rig_module/grenade_launcher
@@ -43,9 +43,9 @@
 	process_with_rig = FALSE
 
 	charges = list(
-		list("flashbang",   "flashbang",   /obj/item/weapon/grenade/flashbang,  3),
-		list("smoke bomb",  "smoke bomb",  /obj/item/weapon/grenade/smokebomb,  3),
-		list("EMP grenade", "EMP grenade", /obj/item/weapon/grenade/empgrenade, 3),
+		list("flashbang",   "flashbang",   /obj/item/grenade/flashbang,  3),
+		list("smoke bomb",  "smoke bomb",  /obj/item/grenade/smokebomb,  3),
+		list("EMP grenade", "EMP grenade", /obj/item/grenade/empgrenade, 3),
 		)
 
 /obj/item/rig_module/grenade_launcher/accepts_item(var/obj/item/input_device, var/mob/living/user)
@@ -96,7 +96,7 @@
 		return 0
 
 	charge.charges--
-	var/obj/item/weapon/grenade/new_grenade = new charge.product_type(get_turf(H))
+	var/obj/item/grenade/new_grenade = new charge.product_type(get_turf(H))
 	H.visible_message("<span class='danger'>[H] launches \a [new_grenade]!</span>")
 	new_grenade.activate(H)
 	new_grenade.throw_at(target,fire_force,fire_distance)
@@ -107,7 +107,7 @@
 	desc = "A shoulder-mounted micro-explosive dispenser designed only to accept standard cleaning foam grenades."
 
 	charges = list(
-		list("cleaning grenade",   "cleaning grenade",   /obj/item/weapon/grenade/chem_grenade/cleaner,  9),
+		list("cleaning grenade",   "cleaning grenade",   /obj/item/grenade/chem_grenade/cleaner,  9),
 		)
 
 
@@ -118,9 +118,9 @@
 	desc = "A shoulder-mounted micro-explosive dispenser designed to launch a variety of combat explosives."
 
 	charges = list(
-		list("fragmentation grenade",   "fragmentation grenade",   /obj/item/weapon/grenade/frag,  2),
-		list("smoke bomb",   "smoke bomb",   /obj/item/weapon/grenade/smokebomb,  4),
-		list("illumination grenade",   "illumination grenade",   /obj/item/weapon/grenade/light,  8)
+		list("fragmentation grenade",   "fragmentation grenade",   /obj/item/grenade/frag,  2),
+		list("smoke bomb",   "smoke bomb",   /obj/item/grenade/smokebomb,  4),
+		list("illumination grenade",   "illumination grenade",   /obj/item/grenade/light,  8)
 		)
 
 /obj/item/rig_module/grenade_launcher/smoke
@@ -129,7 +129,7 @@
 	desc = "A shoulder-mounted micro-explosive dispenser designed only to accept standard smoke grenades."
 
 	charges = list(
-		list("smoke bomb",   "smoke bomb",   /obj/item/weapon/grenade/smokebomb,  6),
+		list("smoke bomb",   "smoke bomb",   /obj/item/grenade/smokebomb,  6),
 		)
 
 /obj/item/rig_module/grenade_launcher/mfoam
@@ -138,7 +138,7 @@
 	desc = "A shoulder-mounted micro-explosive dispenser designed only to accept standard metal foam grenades."
 
 	charges = list(
-		list("metal foam grenade",   "metal foam grenade",   /obj/item/weapon/grenade/chem_grenade/metalfoam,  4),
+		list("metal foam grenade",   "metal foam grenade",   /obj/item/grenade/chem_grenade/metalfoam,  4),
 		)
 
 /obj/item/rig_module/grenade_launcher/light
@@ -147,7 +147,7 @@
 	desc = "A shoulder-mounted micro-explosive dispenser designed only to accept standard illumination grenades."
 
 	charges = list(
-		list("illumination grenade",   "illumination grenade",   /obj/item/weapon/grenade/light,  6),
+		list("illumination grenade",   "illumination grenade",   /obj/item/grenade/light,  6),
 		)
 
 /obj/item/rig_module/mounted
@@ -166,7 +166,7 @@
 	interface_name = "mounted laser cannon"
 	interface_desc = "A shoulder-mounted cell-powered laser cannon."
 
-	var/obj/item/weapon/gun/gun = /obj/item/weapon/gun/energy/lasercannon/mounted
+	var/obj/item/gun/gun = /obj/item/gun/energy/lasercannon/mounted
 
 /obj/item/rig_module/mounted/Initialize()
 	. = ..()
@@ -194,7 +194,7 @@
 	interface_name = "mounted energy gun"
 	interface_desc = "A forearm-mounted suit-powered energy gun."
 	origin_tech = list(TECH_POWER = 6, TECH_COMBAT = 6, TECH_ENGINEERING = 6)
-	gun = /obj/item/weapon/gun/energy/gun/mounted
+	gun = /obj/item/gun/energy/gun/mounted
 
 /obj/item/rig_module/mounted/taser
 
@@ -209,7 +209,7 @@
 	interface_name = "mounted taser"
 	interface_desc = "A palm-mounted, cell-powered taser."
 	origin_tech = list(TECH_POWER = 5, TECH_COMBAT = 5, TECH_ENGINEERING = 6)
-	gun = /obj/item/weapon/gun/energy/taser/mounted
+	gun = /obj/item/gun/energy/taser/mounted
 
 
 /obj/item/rig_module/mounted/energy_blade
@@ -233,12 +233,12 @@
 	active_power_cost = 500
 	passive_power_cost = 0
 
-	gun = /obj/item/weapon/gun/energy/crossbow/ninja
+	gun = /obj/item/gun/energy/crossbow/ninja
 
 /obj/item/rig_module/mounted/energy_blade/Process()
 
 	if(holder && holder.wearer)
-		if(!(locate(/obj/item/weapon/melee/energy/blade) in holder.wearer))
+		if(!(locate(/obj/item/melee/energy/blade) in holder.wearer))
 			deactivate()
 			return 0
 
@@ -256,7 +256,7 @@
 		deactivate()
 		return
 
-	var/obj/item/weapon/melee/energy/blade/blade = new(M)
+	var/obj/item/melee/energy/blade/blade = new(M)
 	blade.creator = M
 	M.put_in_hands(blade)
 
@@ -269,7 +269,7 @@
 	if(!M)
 		return
 
-	for(var/obj/item/weapon/melee/energy/blade/blade in M.contents)
+	for(var/obj/item/melee/energy/blade/blade in M.contents)
 		qdel(blade)
 
 /obj/item/rig_module/fabricator
@@ -286,7 +286,7 @@
 	interface_name = "death blossom launcher"
 	interface_desc = "An integrated microfactory that produces poisoned throwing stars from thin air and electricity."
 
-	var/fabrication_type = /obj/item/weapon/material/star/ninja
+	var/fabrication_type = /obj/item/material/star/ninja
 	var/fire_force = 30
 	var/fire_distance = 10
 
@@ -321,4 +321,4 @@
 	interface_name = "work saftey launcher"
 	interface_desc = "An integrated microfactory that produces wet floor signs from thin air and electricity."
 
-	fabrication_type = /obj/item/weapon/caution
+	fabrication_type = /obj/item/caution

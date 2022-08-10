@@ -202,7 +202,7 @@ GLOBAL_LIST_EMPTY(asteroids)
 	if (!QDELETED(src))
 		qdel(src)
 
-/obj/effect/meteor/attackby(obj/item/weapon/W as obj, mob/user as mob, params)
+/obj/effect/meteor/attackby(obj/item/W as obj, mob/user as mob, params)
 	if(isPickaxe(W))
 		qdel(src)
 		return

@@ -47,22 +47,22 @@
 						/obj/item/clothing/gloves/insulated/cheap = slot_gloves,
 						/obj/item/clothing/mask/gas = slot_wear_mask,
 						/obj/item/clothing/shoes/black = slot_shoes,
-						/obj/item/weapon/storage/toolbox/mechanical = slot_r_hand,
-						/obj/item/weapon/extinguisher = slot_l_hand)
+						/obj/item/storage/toolbox/mechanical = slot_r_hand,
+						/obj/item/extinguisher = slot_l_hand)
 
 /spell/toggle_armor/excalibur
 	name = "Toggle Sword"
 	invocation_type = SpI_EMOTE
 	invocation = "thrusts /his hand forward, and it is enveloped in golden embers!"
-	armor_pieces = list(/obj/item/weapon/excalibur = slot_r_hand)
+	armor_pieces = list(/obj/item/excalibur = slot_r_hand)
 	hud_state = "excalibur"
 
 /spell/toggle_armor/infil_items
 	name = "Toggle Counterfeit Kit"
 	invocation_type = SpI_EMOTE
 	invocation = "flicks /his wrists, one at a time"
-	armor_pieces = list(/obj/item/weapon/stamp/chameleon = slot_l_hand,
-						/obj/item/weapon/pen/chameleon = slot_r_hand)
+	armor_pieces = list(/obj/item/stamp/chameleon = slot_l_hand,
+						/obj/item/pen/chameleon = slot_r_hand)
 	hud_state = "forgery"
 
 /spell/toggle_armor/overseer

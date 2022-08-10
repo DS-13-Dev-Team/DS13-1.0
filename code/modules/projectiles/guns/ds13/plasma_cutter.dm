@@ -1,4 +1,4 @@
-/obj/item/weapon/gun/energy/cutter
+/obj/item/gun/energy/cutter
 	name = "210-V Mining Cutter"
 	desc = "A medium-power mining tool capable of splitting dense material with only a few directed blasts. Unsurprisingly, it is also an extremely deadly tool and should be handled with the utmost care. "
 	charge_meter = 0
@@ -15,7 +15,7 @@
 	max_shots = 10
 	charge_cost = 250
 
-	cell_type = /obj/item/weapon/cell/plasmacutter
+	cell_type = /obj/item/cell/plasmacutter
 	slot_flags = SLOT_BACK
 	charge_meter = FALSE	//if set, the icon state will be chosen based on the current charge
 	mag_insert_sound = 'sound/weapons/guns/interaction/force_magin.ogg'
@@ -24,10 +24,10 @@
 
 	safety_state = 1	//This thing is too dangerous to lack safety
 
-/obj/item/weapon/gun/energy/cutter/empty
+/obj/item/gun/energy/cutter/empty
 	cell_type = null
 
-/obj/item/weapon/gun/energy/cutter/plasma
+/obj/item/gun/energy/cutter/plasma
 	name = "211-V Plasma Cutter"
 	desc = "A high power plasma cutter designed to cut through tungsten reinforced bulkheads during engineering works. Also a rather hazardous improvised weapon, capable of severing limbs in a few shots."
 	projectile_type = /obj/item/projectile/beam/cutter/plasma
@@ -93,7 +93,7 @@
 	Ammo
 ---------------------------*/
 
-/obj/item/weapon/cell/plasmacutter
+/obj/item/cell/plasmacutter
 	name = "plasma energy"
 	desc = "A light power pack designed for use with high energy cutting tools."
 	origin_tech = list(TECH_POWER = 4)
@@ -103,6 +103,6 @@
 	maxcharge = 2500
 	matter = list(MATERIAL_STEEL = 700, MATERIAL_SILVER = 80)
 
-/obj/item/weapon/cell/plasmacutter/update_icon()
+/obj/item/cell/plasmacutter/update_icon()
 	return
 

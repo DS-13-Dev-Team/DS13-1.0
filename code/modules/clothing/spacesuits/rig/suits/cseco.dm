@@ -1,11 +1,11 @@
-/obj/item/weapon/rig/cseco
+/obj/item/rig/cseco
 	name = "P-Sec Commander RIG"
 	desc = "A lightweight and flexible armoured rig suit used by CEC shipboard security during crackdowns and for use in hazardous environments. This instance was designed specially for CSECO."
 	icon_state = "pcsi_riot_rig"
 	armor = list(melee = 70, bullet = 65, laser = 60, energy = 30, bomb = 75, bio = 100, rad = 60)
 	online_slowdown = RIG_MEDIUM
 	acid_resistance = 2	//Contains a fair bit of plastic
-	allowed = list(/obj/item/weapon/shield/riot)
+	allowed = list(/obj/item/shield/riot)
 
 	chest_type = /obj/item/clothing/suit/space/rig/cseco
 	helm_type =  /obj/item/clothing/head/helmet/space/rig/cseco
@@ -21,7 +21,7 @@
 		/obj/item/rig_module/vision/nvgsec
 		)
 
-/obj/item/weapon/rig/cseco/Initialize()
+/obj/item/rig/cseco/Initialize()
 	. = ..()
 	if(istype(GLOB.using_map, /datum/map/ishimura))
 		name = "P.C.S.I Commander RIG"

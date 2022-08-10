@@ -39,7 +39,7 @@
 	use_power = 1
 
 	var/sublimated_units_per_tick = 20
-	var/obj/item/weapon/reagent_containers/container
+	var/obj/item/reagent_containers/container
 
 /obj/machinery/portable_atmospherics/reagent_sublimator/New(atom/location, direction, nocircuit = FALSE)
 	. = ..()
@@ -102,10 +102,10 @@
 	user.visible_message("<span class='notice'>\The [user] switches \the [src] [use_power == 2 ? "on" : "off"].</span>")
 	update_icon()
 
-/obj/machinery/portable_atmospherics/reagent_sublimator/attackby(var/obj/item/weapon/thing, var/mob/user)
-	if(istype(thing, /obj/item/weapon/tank))
+/obj/machinery/portable_atmospherics/reagent_sublimator/attackby(var/obj/item/thing, var/mob/user)
+	if(istype(thing, /obj/item/tank))
 		to_chat(user, "<span class='warning'>\The [src] has no socket for a gas tank.</span>")
-	else if(istype(thing, /obj/item/weapon/reagent_containers))
+	else if(istype(thing, /obj/item/reagent_containers))
 		if(container)
 			to_chat(user, "<span class='warning'>\The [src] is already loaded with \the [container].</span>")
 		else if(user.unEquip(thing, src))

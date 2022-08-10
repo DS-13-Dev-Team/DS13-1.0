@@ -1,4 +1,4 @@
-/obj/item/weapon/spacecash
+/obj/item/spacecash
 	name = "credits"
 	desc = "It's worth something. Probably."
 	icon = 'icons/obj/items.dmi'
@@ -11,18 +11,18 @@
 	var/coin_icons = TRUE
 
 
-/obj/item/weapon/spacecash/minercash
+/obj/item/spacecash/minercash
 	name = "merits"
 	icon_state = "minercash"
 	coin_icons = FALSE
 
 
-/obj/item/weapon/spacecash/Destroy()
+/obj/item/spacecash/Destroy()
 	worth = 0
 	. = ..()
 
 
-/obj/item/weapon/spacecash/update_icon()
+/obj/item/spacecash/update_icon()
 	cut_overlays()
 	icon_state = initial(icon_state)
 	var/remaining_worth = worth
@@ -67,7 +67,7 @@
 		gender = NEUTER
 	icon_state = ""
 
-/obj/item/weapon/spacecash/attackby(obj/item/weapon/spacecash/S, mob/living/carbon/human/H)
+/obj/item/spacecash/attackby(obj/item/spacecash/S, mob/living/carbon/human/H)
 	if(ispath(S.type, type))
 		worth += S.worth
 		update_icon()
@@ -76,7 +76,7 @@
 		qdel(S)
 
 
-/obj/item/weapon/spacecash/attack_self(mob/user)
+/obj/item/spacecash/attack_self(mob/user)
 	var/amount = input(user, "How many credits do you want to take? (0 to [worth])", "Take Money", 20) as num
 	amount = round(CLAMP(amount, 0, worth))
 	if(!amount)
@@ -87,9 +87,9 @@
 		user.unEquip(src)
 		qdel(src)
 
-	var/obj/item/weapon/spacecash/S
-	if(istype(src, /obj/item/weapon/spacecash/minercash))
-		S = new /obj/item/weapon/spacecash/minercash(user.loc)
+	var/obj/item/spacecash/S
+	if(istype(src, /obj/item/spacecash/minercash))
+		S = new /obj/item/spacecash/minercash(user.loc)
 	else
 		S = new(user.loc)
 	S.worth = amount
@@ -98,48 +98,48 @@
 	update_icon()
 
 
-/obj/item/weapon/spacecash/Initialize()
+/obj/item/spacecash/Initialize()
 	. = ..()
 	update_icon()
 
 
-/obj/item/weapon/spacecash/proc/getMoneyImages()
+/obj/item/spacecash/proc/getMoneyImages()
 	if(icon_state)
 		return list(icon_state)
 
 
-/obj/item/weapon/spacecash/c1
+/obj/item/spacecash/c1
 	worth = 1
 
-/obj/item/weapon/spacecash/c10
+/obj/item/spacecash/c10
 	worth = 10
 
-/obj/item/weapon/spacecash/c20
+/obj/item/spacecash/c20
 	worth = 20
 
-/obj/item/weapon/spacecash/c50
+/obj/item/spacecash/c50
 	worth = 50
 
-/obj/item/weapon/spacecash/c100
+/obj/item/spacecash/c100
 	worth = 100
 
-/obj/item/weapon/spacecash/c200
+/obj/item/spacecash/c200
 	worth = 200
 
-/obj/item/weapon/spacecash/c500
+/obj/item/spacecash/c500
 	worth = 500
 
-/obj/item/weapon/spacecash/c1000
+/obj/item/spacecash/c1000
 	worth = 1000
 
-/obj/item/weapon/spacecash/c10000
+/obj/item/spacecash/c10000
 	worth = 10000
 
 
 /proc/spawn_money(sum, spawnloc, mob/living/carbon/human/H)
 	if(sum <= 0)
 		return
-	var/obj/item/weapon/spacecash/S = new(spawnloc)
+	var/obj/item/spacecash/S = new(spawnloc)
 	S.worth = sum
 	S.update_icon()
 	if(istype(H) && !H.get_active_hand())
@@ -148,16 +148,16 @@
 
 /proc/spawn_miner_money(sum, spawnloc, mob/living/carbon/human/H)
 	if(istype(H) && !H.get_active_hand())
-		var/obj/item/weapon/spacecash/minercash/S = new(spawnloc)
+		var/obj/item/spacecash/minercash/S = new(spawnloc)
 		S.worth = sum
 		S.update_icon()
 		H.put_in_hands(S)
 	else
-		var/obj/item/weapon/spacecash/minercash/cash = locate(/obj/item/weapon/spacecash/minercash)
+		var/obj/item/spacecash/minercash/cash = locate(/obj/item/spacecash/minercash)
 		if(cash)
 			cash.worth += sum
 			cash.update_icon()
 		else
-			var/obj/item/weapon/spacecash/minercash/S = new(spawnloc)
+			var/obj/item/spacecash/minercash/S = new(spawnloc)
 			S.worth = sum
 			S.update_icon()

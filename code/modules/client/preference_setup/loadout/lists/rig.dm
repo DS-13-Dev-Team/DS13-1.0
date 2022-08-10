@@ -25,7 +25,7 @@
 	.=..()
 	. += "\n\n"
 	. += "Included Modules:\n"
-	var/obj/item/weapon/rig/R = path
+	var/obj/item/rig/R = path
 	for (var/typepath in initial(R.initial_modules))
 		var/obj/item/rig_module/RM = typepath
 		. += "	-[initial(RM.name)]\n"
@@ -34,7 +34,7 @@
 
 /datum/gear/RIG/frame/civilian
 	display_name = "civilian RIG"
-	path = /obj/item/weapon/rig/civilian
+	path = /obj/item/rig/civilian
 
 	cost = 0
 

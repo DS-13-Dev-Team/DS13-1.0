@@ -1,4 +1,4 @@
-/obj/item/weapon/material/sword
+/obj/item/material/sword
 	name = "claymore"
 	desc = "What are you standing around staring at this for? Get to killing!"
 	icon_state = "claymore"
@@ -16,14 +16,14 @@
 	base_parry_chance = 50
 	melee_accuracy_bonus = 10
 
-/obj/item/weapon/material/sword/replica
+/obj/item/material/sword/replica
 	tool_qualities = list()
 	edge = 0
 	sharp = 0
 	force_divisor = 0.2
 	thrown_force_divisor = 0.2
 
-/obj/item/weapon/material/sword/katana
+/obj/item/material/sword/katana
 	name = "katana"
 	desc = "Woefully underpowered in D20. This one looks pretty sharp."
 	icon_state = "katana"
@@ -31,7 +31,7 @@
 	slot_flags = SLOT_BELT | SLOT_BACK
 	tool_qualities = list(QUALITY_CUTTING = 40, QUALITY_WIRE_CUTTING = 10)
 
-/obj/item/weapon/material/sword/katana/replica
+/obj/item/material/sword/katana/replica
 	tool_qualities = list()
 	edge = 0
 	sharp = 0

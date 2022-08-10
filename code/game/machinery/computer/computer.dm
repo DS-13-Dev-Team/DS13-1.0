@@ -94,12 +94,12 @@
 	text = replacetext(text, "\n", "<BR>")
 	return text
 
-/obj/machinery/computer/attackby(var/obj/item/I, user as mob)
+/obj/machinery/computer/attackby(var/obj/item/I, mob/user)
 	if(isScrewdriver(I) && circuit)
 		playsound(src.loc, 'sound/items/Screwdriver.ogg', 50, 1)
 		if(do_after(user, 20, src))
 			var/obj/structure/computerframe/A = new /obj/structure/computerframe( src.loc )
-			var/obj/item/weapon/circuitboard/M
+			var/obj/item/circuitboard/M
 			if(ispath(circuit))
 				M = new circuit( A )
 			else
@@ -112,7 +112,7 @@
 				C.dropInto(loc)
 			if (src.stat & BROKEN)
 				to_chat(user, "<span class='notice'>The broken glass falls out.</span>")
-				new /obj/item/weapon/material/shard( src.loc )
+				new /obj/item/material/shard( src.loc )
 				A.state = 3
 				A.icon_state = "3"
 			else

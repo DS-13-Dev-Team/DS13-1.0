@@ -1,4 +1,4 @@
-/obj/item/weapon/rig/mining
+/obj/item/rig/mining
 	name = "hazard mining RIG"
 	desc = "A cheaper version of the engineering suit. Commonly used during planet cracking operations."
 	icon_state = "ds_mining_rig"

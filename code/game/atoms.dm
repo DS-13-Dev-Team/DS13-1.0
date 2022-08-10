@@ -108,6 +108,9 @@
 		crash_with("Warning: [src]([type]) initialized multiple times!")
 	atom_flags |= ATOM_FLAG_INITIALIZED
 
+	if(loc)
+		SEND_SIGNAL(loc, COMSIG_ATOM_INITIALIZED_ON, src) /// Sends a signal that the new atom `src`, has been created at `loc`
+
 	if(light_power && light_range)
 		update_light()
 
@@ -153,6 +156,14 @@
 
 /atom/proc/Bumped(AM as mob|obj)
 	return
+
+/**
+ * An atom has exited this atom's contents
+ *
+ * Default behaviour is to send the [COMSIG_ATOM_EXITED]
+ */
+/atom/Exited(atom/movable/gone, direction)
+	SEND_SIGNAL(src, COMSIG_ATOM_EXITED, gone, direction)
 
 // Convenience procs to see if a container is open for chemistry handling
 // returns true if open
@@ -679,10 +690,10 @@ its easier to just keep the beam vertical.
 /atom/proc/is_organic()
 	return FALSE
 
-/atom/proc/register_shrapnel(obj/item/weapon/material/shard/shrapnel/SP)
+/atom/proc/register_shrapnel(obj/item/material/shard/shrapnel/SP)
 	return FALSE
 
-/atom/proc/unregister_shrapnel(obj/item/weapon/material/shard/shrapnel/SP)
+/atom/proc/unregister_shrapnel(obj/item/material/shard/shrapnel/SP)
 	return FALSE
 
 //Tell this atom to take an item inside it.

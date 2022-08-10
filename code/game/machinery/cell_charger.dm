@@ -8,10 +8,10 @@
 	idle_power_usage = 5
 	active_power_usage = 60 KILOWATTS	//This is the power drawn when charging
 	power_channel = EQUIP
-	var/obj/item/weapon/cell/charging = null
+	var/obj/item/cell/charging = null
 	var/chargelevel = -1
 	var/charge_comp = 1 // Used when trying to charge special weapon cells. So they don't charge too fast.
-	var/list/compensated_devices = list (/obj/item/weapon/cell/contact, /obj/item/weapon/cell/force)
+	var/list/compensated_devices = list (/obj/item/cell/contact, /obj/item/cell/force)
 
 /obj/machinery/cell_charger/update_icon()
 	icon_state = "ccharger[charging ? 1 : 0]"
@@ -39,7 +39,7 @@
 	if(charging)
 		to_chat(user, "Current charge: [charging.charge]")
 
-/obj/machinery/cell_charger/attackby(obj/item/weapon/W, mob/user)
+/obj/machinery/cell_charger/attackby(obj/item/W, mob/user)
 	if(stat & BROKEN)
 		return
 
@@ -47,7 +47,7 @@
 		if (istype(W, compensated_type)) charge_comp = 0.2
 		else charge_comp = 1
 
-	if(istype(W, /obj/item/weapon/cell) && anchored)
+	if(istype(W, /obj/item/cell) && anchored)
 		if(charging)
 			to_chat(user, "<span class='warning'>There is already a cell in the charger.</span>")
 			return

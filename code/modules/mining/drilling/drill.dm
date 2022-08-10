@@ -9,7 +9,7 @@
 	name = "mining drill head"
 	desc = "An enormous drill."
 	icon_state = "mining_drill"
-	circuit = /obj/item/weapon/circuitboard/miningdrill
+	circuit = /obj/item/circuitboard/miningdrill
 	var/braces_needed = 2
 	var/list/supports = list()
 	var/supported = 0
@@ -35,7 +35,7 @@
 	var/harvest_speed
 	var/capacity
 	var/dig_chance
-	var/obj/item/weapon/cell/cell = null
+	var/obj/item/cell/cell = null
 
 	//Flags
 	var/need_update_field = 0
@@ -144,7 +144,7 @@
 			return
 	if(!panel_open || active) return ..()
 
-	if(istype(O, /obj/item/weapon/cell))
+	if(istype(O, /obj/item/cell))
 		if(cell)
 			to_chat(user, "The drill already has a cell installed.")
 		else
@@ -204,16 +204,16 @@
 	dig_chance = 0
 	var/charge_multiplier = 0
 
-	for(var/obj/item/weapon/stock_parts/P in component_parts)
-		if(istype(P, /obj/item/weapon/stock_parts/micro_laser))
+	for(var/obj/item/stock_parts/P in component_parts)
+		if(istype(P, /obj/item/stock_parts/micro_laser))
 			harvest_speed = P.rating
-		if(istype(P, /obj/item/weapon/stock_parts/matter_bin))
+		if(istype(P, /obj/item/stock_parts/matter_bin))
 			capacity = 200 * P.rating
-		if(istype(P, /obj/item/weapon/stock_parts/capacitor))
+		if(istype(P, /obj/item/stock_parts/capacitor))
 			charge_multiplier += P.rating
-		if(istype(P, /obj/item/weapon/stock_parts/scanning_module))
+		if(istype(P, /obj/item/stock_parts/scanning_module))
 			dig_chance = 55 + (15*P.rating)
-	cell = locate(/obj/item/weapon/cell) in component_parts
+	cell = locate(/obj/item/cell) in component_parts
 	if(charge_multiplier)
 		actual_power_usage = base_power_usage / charge_multiplier
 	else
@@ -292,9 +292,9 @@
 	..()
 
 	component_parts = list()
-	component_parts += new /obj/item/weapon/circuitboard/miningdrillbrace(src)
+	component_parts += new /obj/item/circuitboard/miningdrillbrace(src)
 
-/obj/machinery/mining/brace/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/machinery/mining/brace/attackby(obj/item/W as obj, mob/user as mob)
 	if(connected && connected.active)
 		to_chat(user, "<span class='notice'>You can't work with the brace of a running drill!</span>")
 		return
@@ -365,7 +365,7 @@
 	src.set_dir(turn(src.dir, 90))
 	return 1
 
-/obj/machinery/mining/brace/default_deconstruction_crowbar(var/mob/user, var/obj/item/weapon/tool/crowbar/C)
+/obj/machinery/mining/brace/default_deconstruction_crowbar(var/mob/user, var/obj/item/tool/crowbar/C)
 	if(connected)
 		disconnect()
 	..()

@@ -26,7 +26,7 @@
 	var/coverage = null	//Calculate this at runtime
 
 	//If not null, this piece of clothing belongs to a rig frame
-	var/obj/item/weapon/rig/rig
+	var/obj/item/rig/rig
 	acid_resistance = 1.2
 	max_health = 150
 
@@ -317,7 +317,7 @@ BLIND     // can't see anything
 	icon = 'icons/obj/clothing/gloves.dmi'
 	siemens_coefficient = 0.75
 	var/wired = 0
-	var/obj/item/weapon/cell/cell = 0
+	var/obj/item/cell/cell = 0
 	var/clipped = 0
 	var/obj/item/clothing/ring/ring = null		//Covered ring
 	var/mob/living/carbon/human/wearer = null	//Used for covered rings when dropping
@@ -353,7 +353,7 @@ BLIND     // can't see anything
 /obj/item/clothing/gloves/proc/Touch(var/atom/A, var/proximity)
 	return 0 // return 1 to cancel attack_hand()
 
-/obj/item/clothing/gloves/attackby(obj/item/weapon/W, mob/user)
+/obj/item/clothing/gloves/attackby(obj/item/W, mob/user)
 	if(isWirecutter(W) || isScalpel(W))
 		if (clipped)
 			to_chat(user, "<span class='notice'>\The [src] have already been modified!</span>")
@@ -657,7 +657,7 @@ BLIND     // can't see anything
 	..()
 
 /obj/item/clothing/shoes/attackby(var/obj/item/I, var/mob/user)
-	if(can_hold_knife && is_type_in_list(I, list(/obj/item/weapon/material/shard, /obj/item/weapon/material/butterfly, /obj/item/weapon/material/kitchen/utensil, /obj/item/weapon/material/hatchet/tacknife)))
+	if(can_hold_knife && is_type_in_list(I, list(/obj/item/material/shard, /obj/item/material/butterfly, /obj/item/material/kitchen/utensil, /obj/item/material/hatchet/tacknife)))
 		if(holding)
 			to_chat(user, "<span class='warning'>\The [src] is already holding \a [holding].</span>")
 			return
@@ -696,16 +696,16 @@ BLIND     // can't see anything
 	var/fire_resist = T0C+100
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	var/extra_allowed
-	allowed = list(/obj/item/device,
-	/obj/item/weapon/tank,
-	/obj/item/weapon/storage/pouch,
-	/obj/item/weapon/gun,
-	/obj/item/weapon/tool,
-	/obj/item/weapon/melee,
+	allowed = list(/obj/item,
+	/obj/item/tank,
+	/obj/item/storage/pouch,
+	/obj/item/gun,
+	/obj/item/tool,
+	/obj/item/melee,
 	/obj/item/ammo_magazine,
 	/obj/item/ammo_casing,
-	/obj/item/weapon/handcuffs,
-	/obj/item/weapon/storage/ore)
+	/obj/item/handcuffs,
+	/obj/item/storage/ore)
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 	slot_flags = SLOT_OCLOTHING
 	blood_overlay_type = "suit"

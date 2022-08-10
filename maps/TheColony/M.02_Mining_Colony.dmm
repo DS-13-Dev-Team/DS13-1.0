@@ -151,7 +151,7 @@
 /area/mining_colony/interior/uni_church)
 "aaD" = (
 /obj/structure/table/woodentable,
-/obj/item/device/flashlight/lamp/lava/red,
+/obj/item/flashlight/lamp/lava/red,
 /turf/simulated/floor/dank/hardwood,
 /area/mining_colony/interior/uni_church)
 "aaE" = (
@@ -165,9 +165,9 @@
 /area/mining_colony/interior/uni_church)
 "aaF" = (
 /obj/machinery/photocopier,
-/obj/item/device/toner,
-/obj/item/device/toner,
-/obj/item/device/toner,
+/obj/item/toner,
+/obj/item/toner,
+/obj/item/toner,
 /turf/simulated/floor/dank/hardwood,
 /area/mining_colony/interior/uni_church)
 "aaG" = (
@@ -209,16 +209,16 @@
 /turf/simulated/floor/wood,
 /area/mining_colony/interior/uni_church)
 "aaN" = (
-/obj/item/weapon/storage/bible/unitology,
-/obj/item/weapon/storage/bible/unitology,
-/obj/item/weapon/storage/bible/unitology,
-/obj/item/weapon/storage/bible/unitology,
-/obj/item/weapon/storage/fancy/candle_box,
-/obj/item/weapon/storage/fancy/candle_box,
-/obj/item/weapon/storage/fancy/candle_box,
-/obj/item/weapon/storage/fancy/candle_box,
-/obj/item/weapon/reagent_containers/spray/cleaner,
-/obj/item/weapon/reagent_containers/spray/cleaner,
+/obj/item/storage/bible/unitology,
+/obj/item/storage/bible/unitology,
+/obj/item/storage/bible/unitology,
+/obj/item/storage/bible/unitology,
+/obj/item/storage/fancy/candle_box,
+/obj/item/storage/fancy/candle_box,
+/obj/item/storage/fancy/candle_box,
+/obj/item/storage/fancy/candle_box,
+/obj/item/reagent_containers/spray/cleaner,
+/obj/item/reagent_containers/spray/cleaner,
 /obj/structure/ladder,
 /obj/structure/closet/cabinet{
 	name = "inconspicuous supply cabinet";
@@ -227,9 +227,9 @@
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/uni_church)
 "aaO" = (
-/obj/item/weapon/reagent_containers/glass/bucket,
+/obj/item/reagent_containers/glass/bucket,
 /obj/structure/mopbucket,
-/obj/item/weapon/mop,
+/obj/item/mop,
 /obj/machinery/light/small{
 	dir = 1
 	},
@@ -237,8 +237,8 @@
 /area/mining_colony/interior/uni_church)
 "aaP" = (
 /obj/structure/table/woodentable,
-/obj/item/weapon/paper_bin,
-/obj/item/weapon/pen/multi,
+/obj/item/paper_bin,
+/obj/item/pen/multi,
 /turf/simulated/floor/dank/hardwood,
 /area/mining_colony/interior/uni_church)
 "aaQ" = (
@@ -301,9 +301,9 @@
 /area/mining_colony/interior/enginieering/reactor)
 "abb" = (
 /obj/structure/table/glass,
-/obj/item/weapon/storage/box/masks,
-/obj/item/weapon/storage/box/gloves,
-/obj/item/device/mass_spectrometer/adv,
+/obj/item/storage/box/masks,
+/obj/item/storage/box/gloves,
+/obj/item/mass_spectrometer/adv,
 /turf/simulated/floor/tiled/white/monotile,
 /area/mining_colony/interior/science/virology)
 "abc" = (
@@ -325,7 +325,7 @@
 /area/shuttle/executive_shuttle)
 "abf" = (
 /obj/structure/table/standard,
-/obj/item/weapon/book/manual/medical_diagnostics_manual,
+/obj/item/book/manual/medical_diagnostics_manual,
 /obj/random/medical/lite,
 /turf/simulated/floor/tiled/white/monotile,
 /area/mining_colony/interior/medbay)
@@ -365,8 +365,8 @@
 /turf/simulated/floor/tiled/freezer,
 /area/mining_colony/interior/kitchen_area)
 "abo" = (
-/obj/item/weapon/paper_bin,
-/obj/item/weapon/pen/multi,
+/obj/item/paper_bin,
+/obj/item/pen/multi,
 /obj/structure/table/glass,
 /obj/machinery/camera/network/research,
 /turf/simulated/floor/tiled/white/monotile,
@@ -378,9 +378,9 @@
 /area/mining_colony/interior/medbay)
 "abq" = (
 /obj/structure/table/glass,
-/obj/item/weapon/stamp/science,
-/obj/item/weapon/stamp/denied,
-/obj/item/weapon/clipboard,
+/obj/item/stamp/science,
+/obj/item/stamp/denied,
+/obj/item/clipboard,
 /turf/simulated/floor/tiled/white/monotile,
 /area/mining_colony/interior/science/virology)
 "abr" = (
@@ -516,7 +516,7 @@
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/c12_deadspace)
 "abK" = (
-/obj/item/weapon/storage/toolbox/electrical,
+/obj/item/storage/toolbox/electrical,
 /turf/simulated/floor/concrete,
 /area/mining_colony/surface)
 "abL" = (
@@ -569,7 +569,7 @@
 /turf/simulated/floor/plating,
 /area/shuttle/executive_shuttle)
 "abV" = (
-/obj/item/weapon/light/tube,
+/obj/item/light/tube,
 /turf/simulated/floor/concrete,
 /area/mining_colony/surface)
 "abW" = (
@@ -578,7 +578,7 @@
 /turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/surface)
 "abX" = (
-/obj/item/weapon/caution/cone,
+/obj/item/caution/cone,
 /turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/surface)
 "abY" = (
@@ -737,9 +737,9 @@
 /area/mining_colony/interior/excavation/marker_excav)
 "acw" = (
 /obj/structure/table/rack,
-/obj/item/device/flashlight/flare/glowstick,
-/obj/item/device/flashlight/flare/glowstick,
-/obj/item/device/flashlight/flare/glowstick,
+/obj/item/flashlight/flare/glowstick,
+/obj/item/flashlight/flare/glowstick,
+/obj/item/flashlight/flare/glowstick,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/excavation/marker_excav)
 "acx" = (
@@ -768,12 +768,12 @@
 /area/mining_colony/interior/excavation/obs_room)
 "acD" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/weapon/storage/lunchbox/unitology/filled,
-/obj/item/weapon/storage/lunchbox/unitology/filled,
-/obj/item/weapon/storage/lunchbox/unitology/filled,
-/obj/item/weapon/storage/lunchbox/unitology/filled,
-/obj/item/weapon/storage/lunchbox/unitology/filled,
-/obj/item/weapon/storage/lunchbox/unitology/filled,
+/obj/item/storage/lunchbox/unitology/filled,
+/obj/item/storage/lunchbox/unitology/filled,
+/obj/item/storage/lunchbox/unitology/filled,
+/obj/item/storage/lunchbox/unitology/filled,
+/obj/item/storage/lunchbox/unitology/filled,
+/obj/item/storage/lunchbox/unitology/filled,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/uni_church)
 "acE" = (
@@ -782,7 +782,7 @@
 /area/mining_colony/interior/science/scienceoffices)
 "acF" = (
 /obj/effect/decal/remains,
-/obj/item/weapon/rig/scaf/legionnaire,
+/obj/item/rig/scaf/legionnaire,
 /turf/simulated/floor,
 /area/mining_colony/surface)
 "acG" = (
@@ -825,7 +825,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/mining_colony/interior)
 "acM" = (
-/obj/item/weapon/caution/cone,
+/obj/item/caution/cone,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/c12_deadspace)
 "acN" = (
@@ -1011,7 +1011,7 @@
 /area/mining_colony/interior/uni_church)
 "ado" = (
 /obj/structure/table/woodentable,
-/obj/item/weapon/flame/candle,
+/obj/item/flame/candle,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/uni_church)
 "adp" = (
@@ -1152,8 +1152,8 @@
 /turf/simulated/floor/carpet/red,
 /area/mining_colony/interior/enginieering/chief_engi)
 "adF" = (
-/obj/item/weapon/book/manual/excavation,
-/obj/item/weapon/book/manual/excavation,
+/obj/item/book/manual/excavation,
+/obj/item/book/manual/excavation,
 /obj/structure/table/standard,
 /obj/structure/cable{
 	d1 = 1;
@@ -1168,7 +1168,7 @@
 /turf/simulated/floor/tiled/white,
 /area/mining_colony/interior/science/xenoarcheology)
 "adG" = (
-/obj/item/weapon/tool/crowbar/brace_jack,
+/obj/item/tool/crowbar/brace_jack,
 /turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/surface)
 "adH" = (
@@ -1189,8 +1189,8 @@
 "adK" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/table/rack,
-/obj/item/weapon/gun/energy/cutter,
-/obj/item/weapon/gun/energy/cutter,
+/obj/item/gun/energy/cutter,
+/obj/item/gun/energy/cutter,
 /turf/simulated/floor/dank/maint,
 /area/mining_colony/interior/mining/toolstorage)
 "adL" = (
@@ -1226,10 +1226,10 @@
 /area/mining_colony/interior/uni_church)
 "adQ" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/stamp/ce,
-/obj/item/weapon/stamp/denied,
-/obj/item/weapon/paper_bin,
-/obj/item/weapon/pen/multi,
+/obj/item/stamp/ce,
+/obj/item/stamp/denied,
+/obj/item/paper_bin,
+/obj/item/pen/multi,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 4;
@@ -1244,7 +1244,7 @@
 	icon_state = "churchaltar";
 	name = "wooden altar"
 	},
-/obj/item/weapon/flame/candle,
+/obj/item/flame/candle,
 /obj/structure/cable{
 	d1 = 2;
 	d2 = 4;
@@ -1554,8 +1554,8 @@
 /area/mining_colony/interior/enginieering/reactor)
 "aev" = (
 /obj/structure/table/steel,
-/obj/item/weapon/paper_bin,
-/obj/item/weapon/pen/multi,
+/obj/item/paper_bin,
+/obj/item/pen/multi,
 /turf/simulated/floor/lino,
 /area/mining_colony/interior/uni_church)
 "aew" = (
@@ -1617,7 +1617,7 @@
 /area/mining_colony/interior/uni_church)
 "aeD" = (
 /obj/structure/table/woodentable,
-/obj/item/weapon/flame/candle,
+/obj/item/flame/candle,
 /obj/structure/railing/mapped,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/uni_church)
@@ -1661,10 +1661,10 @@
 /area/mining_colony/interior/uni_church)
 "aeJ" = (
 /obj/structure/table/woodentable,
-/obj/item/weapon/storage/bible/unitology,
-/obj/item/weapon/storage/bible/unitology,
-/obj/item/weapon/storage/bible/unitology,
-/obj/item/weapon/storage/bible/unitology,
+/obj/item/storage/bible/unitology,
+/obj/item/storage/bible/unitology,
+/obj/item/storage/bible/unitology,
+/obj/item/storage/bible/unitology,
 /turf/simulated/floor/dank/rectangles,
 /area/mining_colony/interior/uni_church)
 "aeK" = (
@@ -1735,8 +1735,8 @@
 /turf/unsimulated/mask,
 /area/mining_colony/surface)
 "aeU" = (
-/obj/item/weapon/reagent_containers/food/drinks/cans/speer,
-/obj/item/weapon/reagent_containers/food/drinks/cans/speer,
+/obj/item/reagent_containers/food/drinks/cans/speer,
+/obj/item/reagent_containers/food/drinks/cans/speer,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -1966,7 +1966,7 @@
 	health = 1e+006
 	},
 /obj/structure/closet/secure_closet/planet_cracker,
-/obj/item/weapon/storage/lunchbox/cec/filled,
+/obj/item/storage/lunchbox/cec/filled,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/dank/rectangles,
 /area/mining_colony/interior/mining/lockeroom)
@@ -2080,7 +2080,7 @@
 "afS" = (
 /obj/structure/closet/secure_closet/planet_cracker,
 /obj/structure/window/reinforced,
-/obj/item/weapon/storage/lunchbox/cec/filled,
+/obj/item/storage/lunchbox/cec/filled,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/dank/rectangles,
 /area/mining_colony/interior/mining/lockeroom)
@@ -2099,7 +2099,7 @@
 /area/mining_colony/interior/apartament)
 "afW" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/weapon/fossil/bone,
+/obj/item/fossil/bone,
 /turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/surface)
 "afX" = (
@@ -2117,7 +2117,7 @@
 /area/mining_colony/interior/uni_church)
 "aga" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/weapon/storage/excavation,
+/obj/item/storage/excavation,
 /turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/surface)
 "agb" = (
@@ -2240,8 +2240,8 @@
 /area/mining_colony/surface)
 "ags" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/box/donkpockets,
-/obj/item/weapon/storage/box/donkpockets,
+/obj/item/storage/box/donkpockets,
+/obj/item/storage/box/donkpockets,
 /turf/simulated/floor/tiled/white/monotile,
 /area/mining_colony/interior/science/restandrelaxation)
 "agt" = (
@@ -2323,7 +2323,7 @@
 /area/mining_colony/interior/cargo)
 "agD" = (
 /obj/structure/table/steel,
-/obj/item/weapon/storage/toolbox/mechanical,
+/obj/item/storage/toolbox/mechanical,
 /turf/simulated/floor/dank/rectangles,
 /area/mining_colony/interior/enginieering/lathe_room)
 "agE" = (
@@ -2349,7 +2349,7 @@
 /turf/simulated/wall/r_wall,
 /area/mining_colony/security/sec_storage)
 "agJ" = (
-/obj/item/device/radio/intercom/department/security{
+/obj/item/radio/intercom/department/security{
 	dir = 1;
 	pixel_y = -30
 	},
@@ -2410,7 +2410,7 @@
 /area/mining_colony/security)
 "agT" = (
 /obj/structure/mopbucket,
-/obj/item/weapon/mop,
+/obj/item/mop,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/security/sec_storage)
 "agU" = (
@@ -2419,8 +2419,8 @@
 	dir = 1;
 	health = 1e+006
 	},
-/obj/item/weapon/paper_bin,
-/obj/item/weapon/pen/multi,
+/obj/item/paper_bin,
+/obj/item/pen/multi,
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/security)
@@ -2631,7 +2631,7 @@
 	icon_state = "churchaltar";
 	name = "wooden altar"
 	},
-/obj/item/weapon/flame/candle,
+/obj/item/flame/candle,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/uni_church)
 "ahD" = (
@@ -2768,7 +2768,7 @@
 	icon_state = "rwindow"
 	},
 /obj/structure/closet/secure_closet/planet_cracker,
-/obj/item/weapon/storage/lunchbox/egov/filled,
+/obj/item/storage/lunchbox/egov/filled,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/dank/rectangles,
 /area/mining_colony/interior/mining/lockeroom)
@@ -2782,7 +2782,7 @@
 	icon_state = "rwindow"
 	},
 /obj/structure/closet/secure_closet/planet_cracker,
-/obj/item/weapon/storage/lunchbox/cec/filled,
+/obj/item/storage/lunchbox/cec/filled,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/dank/rectangles,
 /area/mining_colony/interior/mining/lockeroom)
@@ -2894,8 +2894,8 @@
 /area/mining_colony/security/sec_armory)
 "ail" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/storage/box/monkeycubes,
-/obj/item/weapon/storage/box/monkeycubes,
+/obj/item/storage/box/monkeycubes,
+/obj/item/storage/box/monkeycubes,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/science/researchwarcrime)
 "aim" = (
@@ -3131,7 +3131,7 @@
 /area/mining_colony/interior/excavation/marker_excav)
 "aiV" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/device/camera,
+/obj/item/camera,
 /obj/structure/railing/mapped{
 	dir = 1
 	},
@@ -3497,7 +3497,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/item/weapon/reagent_containers/hypospray/autoinjector/ds_medigel,
+/obj/item/reagent_containers/hypospray/autoinjector/ds_medigel,
 /turf/simulated/floor/plating,
 /area/mining_colony/SCAF)
 "akc" = (
@@ -3573,7 +3573,7 @@
 /turf/simulated/floor/plating,
 /area/mining_colony/SCAF)
 "akl" = (
-/obj/item/weapon/storage/lunchbox/scaf,
+/obj/item/storage/lunchbox/scaf,
 /turf/simulated/floor/plating,
 /area/mining_colony/SCAF)
 "akm" = (
@@ -3629,7 +3629,7 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
-/obj/item/weapon/storage/toolbox/mechanical,
+/obj/item/storage/toolbox/mechanical,
 /turf/simulated/floor/plating,
 /area/mining_colony/SCAF)
 "aku" = (
@@ -3638,7 +3638,7 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/obj/item/weapon/rig/scaf/sharpshooter,
+/obj/item/rig/scaf/sharpshooter,
 /turf/simulated/floor/plating,
 /area/mining_colony/SCAF)
 "akv" = (
@@ -3723,7 +3723,7 @@
 /turf/simulated/wall/r_wall,
 /area/mining_colony/interior/science)
 "akI" = (
-/obj/item/weapon/circuitboard/broken,
+/obj/item/circuitboard/broken,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
@@ -3732,7 +3732,7 @@
 /turf/simulated/floor/shuttle/black,
 /area/mining_colony/SCAF)
 "akJ" = (
-/obj/item/weapon/broken_bottle,
+/obj/item/broken_bottle,
 /obj/structure/cable{
 	d1 = 2;
 	d2 = 4;
@@ -3781,7 +3781,7 @@
 /turf/simulated/floor/plating,
 /area/mining_colony/SCAF)
 "akQ" = (
-/obj/item/weapon/gun/projectile/automatic/bullpup,
+/obj/item/gun/projectile/automatic/bullpup,
 /turf/simulated/floor/plating,
 /area/mining_colony/SCAF)
 "akR" = (
@@ -3822,18 +3822,18 @@
 /area/mining_colony/interior/apartament)
 "akX" = (
 /obj/structure/closet/crate/radiation,
-/obj/item/weapon/fuel_assembly/deuterium,
-/obj/item/weapon/fuel_assembly/deuterium,
-/obj/item/weapon/fuel_assembly/deuterium,
-/obj/item/weapon/fuel_assembly/deuterium,
-/obj/item/weapon/fuel_assembly/deuterium,
-/obj/item/weapon/fuel_assembly/deuterium,
-/obj/item/weapon/fuel_assembly/deuterium,
-/obj/item/weapon/fuel_assembly/deuterium,
-/obj/item/weapon/fuel_assembly/deuterium,
-/obj/item/weapon/fuel_assembly/deuterium,
-/obj/item/weapon/fuel_assembly/deuterium,
-/obj/item/weapon/fuel_assembly/deuterium,
+/obj/item/fuel_assembly/deuterium,
+/obj/item/fuel_assembly/deuterium,
+/obj/item/fuel_assembly/deuterium,
+/obj/item/fuel_assembly/deuterium,
+/obj/item/fuel_assembly/deuterium,
+/obj/item/fuel_assembly/deuterium,
+/obj/item/fuel_assembly/deuterium,
+/obj/item/fuel_assembly/deuterium,
+/obj/item/fuel_assembly/deuterium,
+/obj/item/fuel_assembly/deuterium,
+/obj/item/fuel_assembly/deuterium,
+/obj/item/fuel_assembly/deuterium,
 /obj/effect/floor_decal/dank/outline,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/enginieering/reactor)
@@ -3864,10 +3864,10 @@
 /area/mining_colony/interior/apartament)
 "ala" = (
 /obj/structure/table/standard,
-/obj/item/device/flashlight/flare,
-/obj/item/device/flashlight/flare,
-/obj/item/device/flashlight/flare,
-/obj/item/device/flashlight/flare,
+/obj/item/flashlight/flare,
+/obj/item/flashlight/flare,
+/obj/item/flashlight/flare,
+/obj/item/flashlight/flare,
 /turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/surface)
 "alb" = (
@@ -3918,7 +3918,7 @@
 /area/mining_colony/interior/apartament)
 "alj" = (
 /obj/structure/table/standard,
-/obj/item/weapon/towel/random,
+/obj/item/towel/random,
 /obj/random/soap,
 /turf/simulated/floor/dank/bathr,
 /area/mining_colony/interior/apartament)
@@ -4139,8 +4139,8 @@
 /area/mining_colony/security)
 "alQ" = (
 /obj/structure/table/standard,
-/obj/item/weapon/folder/yellow,
-/obj/item/weapon/clipboard,
+/obj/item/folder/yellow,
+/obj/item/clipboard,
 /turf/simulated/floor/tiled/dark,
 /area/mining_colony/interior/cargo)
 "alR" = (
@@ -4173,14 +4173,14 @@
 /area/mining_colony/security/interrogation_room)
 "alW" = (
 /obj/structure/table/rack,
-/obj/item/weapon/storage/box/teargas,
-/obj/item/weapon/storage/box/teargas,
+/obj/item/storage/box/teargas,
+/obj/item/storage/box/teargas,
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
 	pixel_y = 24
 	},
-/obj/item/weapon/gun/launcher/grenade,
+/obj/item/gun/launcher/grenade,
 /obj/effect/floor_decal/industrial/outline/red,
 /obj/structure/cable{
 	d2 = 2;
@@ -4202,11 +4202,11 @@
 /area/mining_colony/security/interrogation_room)
 "alZ" = (
 /obj/structure/table/rack,
-/obj/item/weapon/storage/box/flashbangs,
-/obj/item/weapon/storage/box/flashbangs,
+/obj/item/storage/box/flashbangs,
+/obj/item/storage/box/flashbangs,
 /obj/effect/floor_decal/industrial/outline/red,
-/obj/item/weapon/storage/box/smokes,
-/obj/item/weapon/storage/box/smokes,
+/obj/item/storage/box/smokes,
+/obj/item/storage/box/smokes,
 /turf/simulated/floor/dank/slides{
 	dir = 8
 	},
@@ -4326,11 +4326,11 @@
 /turf/simulated/floor/dank/maint,
 /area/mining_colony/interior/mining/toolstorage)
 "amt" = (
-/obj/item/weapon/stamp/cargo,
-/obj/item/weapon/stamp/denied,
+/obj/item/stamp/cargo,
+/obj/item/stamp/denied,
 /obj/structure/table/standard,
-/obj/item/weapon/paper_bin,
-/obj/item/weapon/pen/multi,
+/obj/item/paper_bin,
+/obj/item/pen/multi,
 /turf/simulated/floor/tiled/dark,
 /area/mining_colony/interior/cargo)
 "amu" = (
@@ -4422,7 +4422,7 @@
 /area/mining_colony/interior/mining/directoroffice)
 "amG" = (
 /obj/structure/closet/secure_closet/personal/empty,
-/obj/item/weapon/rig/civilian,
+/obj/item/rig/civilian,
 /turf/simulated/floor/lino,
 /area/mining_colony/interior/apartament)
 "amH" = (
@@ -4484,10 +4484,10 @@
 "amP" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/red,
-/obj/item/weapon/plastique,
-/obj/item/weapon/plastique,
-/obj/item/weapon/plastique,
-/obj/item/weapon/plastique,
+/obj/item/plastique,
+/obj/item/plastique,
+/obj/item/plastique,
+/obj/item/plastique,
 /turf/simulated/floor/dank/slides{
 	dir = 8
 	},
@@ -4521,9 +4521,9 @@
 /area/mining_colony/interior/enginieering/air_storage)
 "amV" = (
 /obj/structure/table/rack,
-/obj/item/weapon/storage/box/greenglowsticks,
-/obj/item/weapon/storage/box/greenglowsticks,
-/obj/item/weapon/storage/box/greenglowsticks,
+/obj/item/storage/box/greenglowsticks,
+/obj/item/storage/box/greenglowsticks,
+/obj/item/storage/box/greenglowsticks,
 /obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/security/sec_armory)
@@ -4562,7 +4562,7 @@
 /area/mining_colony/interior/plaza)
 "anc" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/firstaid/surgery,
+/obj/item/storage/firstaid/surgery,
 /obj/item/clothing/gloves/latex/nitrile,
 /obj/item/clothing/mask/surgical,
 /obj/machinery/light{
@@ -4587,7 +4587,7 @@
 /area/mining_colony/security/interrogation_room)
 "anf" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/device/flashlight/maglight,
+/obj/item/flashlight/maglight,
 /obj/structure/railing/mapped{
 	dir = 1
 	},
@@ -4595,9 +4595,9 @@
 /area/mining_colony/interior/excavation/marker_excav)
 "ang" = (
 /obj/structure/closet/secure_closet/SMO,
-/obj/item/weapon/stamp/smo,
-/obj/item/device/megaphone,
-/obj/item/weapon/stamp/denied,
+/obj/item/stamp/smo,
+/obj/item/megaphone,
+/obj/item/stamp/denied,
 /obj/item/modular_computer/tablet/lease/preset/command,
 /obj/machinery/power/apc{
 	dir = 1;
@@ -4606,7 +4606,7 @@
 	req_access = list(201)
 	},
 /obj/item/sign/medipolma,
-/obj/item/weapon/clipboard,
+/obj/item/clipboard,
 /obj/structure/cable{
 	d2 = 2;
 	icon_state = "0-2"
@@ -4635,7 +4635,7 @@
 /turf/simulated/open,
 /area/mining_colony/security/interrogation_room)
 "ank" = (
-/obj/item/device/radio/intercom/broadcasting{
+/obj/item/radio/intercom/broadcasting{
 	pixel_y = 21
 	},
 /turf/simulated/floor/dank/mono,
@@ -4686,7 +4686,7 @@
 /area/mining_colony/security)
 "ans" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/box/donut,
+/obj/item/storage/box/donut,
 /turf/simulated/floor/dank/golf_gray,
 /area/mining_colony/security/interrogation_room)
 "ant" = (
@@ -4754,7 +4754,7 @@
 /turf/simulated/floor/dank/maint,
 /area/mining_colony/security/sec_storage)
 "anE" = (
-/obj/item/weapon/fossil/shell,
+/obj/item/fossil/shell,
 /turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/surface)
 "anF" = (
@@ -4781,7 +4781,7 @@
 /turf/simulated/floor/dank/grille_spare_1,
 /area/mining_colony/security)
 "anJ" = (
-/obj/item/device/radio/intercom/department/security{
+/obj/item/radio/intercom/department/security{
 	dir = 8;
 	pixel_x = 21
 	},
@@ -4789,7 +4789,7 @@
 /area/mining_colony/security/sec_resting)
 "anK" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/box/donut,
+/obj/item/storage/box/donut,
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/sec_resting)
 "anL" = (
@@ -4815,7 +4815,7 @@
 /area/mining_colony/interior/excavation/interior)
 "anQ" = (
 /obj/structure/bed,
-/obj/item/weapon/bedsheet/brown,
+/obj/item/bedsheet/brown,
 /obj/effect/landmark{
 	name = "JoinLateDorm"
 	},
@@ -4839,7 +4839,7 @@
 /area/mining_colony/security/sec_resting)
 "anU" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/firstaid/surgery,
+/obj/item/storage/firstaid/surgery,
 /obj/item/clothing/gloves/latex/nitrile,
 /obj/item/clothing/mask/surgical,
 /obj/machinery/light{
@@ -4929,8 +4929,8 @@
 /area/mining_colony/interior/science/xenoarcheology)
 "aoe" = (
 /obj/machinery/photocopier,
-/obj/item/device/toner,
-/obj/item/device/toner,
+/obj/item/toner,
+/obj/item/toner,
 /turf/simulated/floor/dank/golf_gray,
 /area/mining_colony/security)
 "aof" = (
@@ -4978,8 +4978,8 @@
 /area/mining_colony/surface)
 "aol" = (
 /obj/structure/table/standard,
-/obj/item/weapon/pen/multi,
-/obj/item/weapon/paper_bin,
+/obj/item/pen/multi,
+/obj/item/paper_bin,
 /turf/simulated/floor/dank/golf_gray,
 /area/mining_colony/security/interrogation_room)
 "aom" = (
@@ -5019,13 +5019,13 @@
 /area/mining_colony/SCAF)
 "aoq" = (
 /obj/structure/closet,
-/obj/item/weapon/storage/box/donkpockets,
-/obj/item/weapon/storage/box/greenglowsticks,
+/obj/item/storage/box/donkpockets,
+/obj/item/storage/box/greenglowsticks,
 /turf/simulated/floor/plating,
 /area/mining_colony/SCAF)
 "aor" = (
 /obj/structure/closet,
-/obj/item/weapon/storage/toolbox/emergency,
+/obj/item/storage/toolbox/emergency,
 /turf/simulated/floor/plating,
 /area/mining_colony/SCAF)
 "aos" = (
@@ -5052,7 +5052,7 @@
 /area/mining_colony/SCAF)
 "aow" = (
 /obj/structure/table/rack,
-/obj/item/weapon/rig/scaf/legionnaire,
+/obj/item/rig/scaf/legionnaire,
 /turf/simulated/floor/shuttle/black,
 /area/mining_colony/SCAF)
 "aox" = (
@@ -5108,7 +5108,7 @@
 "aoD" = (
 /obj/structure/closet/secure_closet/SO,
 /obj/item/modular_computer/tablet/lease/preset/command,
-/obj/item/device/megaphone,
+/obj/item/megaphone,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/cargo/officerarea)
 "aoE" = (
@@ -5175,7 +5175,7 @@
 /area/mining_colony/interior/enginieering/air_storage)
 "aoP" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/reagent_containers/food/drinks/glass2/shot,
+/obj/item/reagent_containers/food/drinks/glass2/shot,
 /obj/machinery/door/blast/shutters/open{
 	dir = 4;
 	icon_state = "ishimura_shutter_open";
@@ -5241,7 +5241,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/mining_colony/interior)
 "aoV" = (
-/obj/item/device/radio/intercom/department/medbay{
+/obj/item/radio/intercom/department/medbay{
 	dir = 1;
 	pixel_y = -30
 	},
@@ -5291,11 +5291,11 @@
 /area/mining_colony/interior/shuttle_bay/shuttle_2)
 "ape" = (
 /obj/structure/table/standard,
-/obj/item/weapon/paper_bin,
-/obj/item/weapon/pen/multi,
-/obj/item/weapon/stamp/denied,
-/obj/item/weapon/stamp/medical,
-/obj/item/weapon/clipboard,
+/obj/item/paper_bin,
+/obj/item/pen/multi,
+/obj/item/stamp/denied,
+/obj/item/stamp/medical,
+/obj/item/clipboard,
 /turf/simulated/floor/tiled/white,
 /area/mining_colony/interior/medbay)
 "apf" = (
@@ -5403,14 +5403,14 @@
 /area/mining_colony/interior/enginieering/reactor_control)
 "aps" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/firstaid/fire,
-/obj/item/weapon/storage/firstaid/o2,
-/obj/item/weapon/storage/firstaid/regular,
-/obj/item/weapon/storage/firstaid/stab,
-/obj/item/weapon/storage/firstaid/toxin,
-/obj/item/weapon/storage/firstaid/trauma,
-/obj/item/weapon/storage/firstaid/adv,
-/obj/item/weapon/storage/firstaid/surgery,
+/obj/item/storage/firstaid/fire,
+/obj/item/storage/firstaid/o2,
+/obj/item/storage/firstaid/regular,
+/obj/item/storage/firstaid/stab,
+/obj/item/storage/firstaid/toxin,
+/obj/item/storage/firstaid/trauma,
+/obj/item/storage/firstaid/adv,
+/obj/item/storage/firstaid/surgery,
 /turf/simulated/floor/tiled/monotile,
 /area/mining_colony/interior/medbay/medstorage)
 "apt" = (
@@ -5424,7 +5424,7 @@
 /obj/structure/table/standard,
 /obj/random/cash,
 /obj/random/drinkbottle,
-/obj/item/weapon/storage/lunchbox/cec/filled,
+/obj/item/storage/lunchbox/cec/filled,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/c12_deadspace)
 "apw" = (
@@ -5451,7 +5451,7 @@
 /area/mining_colony/surface)
 "apA" = (
 /obj/structure/bed/roller,
-/obj/item/device/radio/intercom/department/medbay{
+/obj/item/radio/intercom/department/medbay{
 	dir = 4;
 	pixel_x = -21
 	},
@@ -5602,7 +5602,7 @@
 /area/mining_colony/interior/shuttle_bay/shuttle_2)
 "apV" = (
 /obj/structure/table/standard,
-/obj/item/weapon/reagent_containers/spray/cleaner,
+/obj/item/reagent_containers/spray/cleaner,
 /obj/machinery/camera/network/medbay,
 /turf/simulated/floor/dank/medical,
 /area/mining_colony/interior/medbay/surgery1)
@@ -5638,8 +5638,8 @@
 "aqb" = (
 /obj/structure/closet/secure_closet/medical3,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/weapon/storage/box/gloves,
-/obj/item/weapon/storage/box/masks,
+/obj/item/storage/box/gloves,
+/obj/item/storage/box/masks,
 /turf/simulated/floor/tiled/white/monotile,
 /area/mining_colony/interior/medbay)
 "aqc" = (
@@ -5736,14 +5736,14 @@
 "aqr" = (
 /obj/structure/closet/secure_closet/medical3,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/weapon/storage/box/gloves,
-/obj/item/weapon/storage/box/masks,
+/obj/item/storage/box/gloves,
+/obj/item/storage/box/masks,
 /obj/machinery/light,
 /turf/simulated/floor/tiled/white/monotile,
 /area/mining_colony/interior/medbay)
 "aqs" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/reagent_containers/food/snacks/tofu,
+/obj/item/reagent_containers/food/snacks/tofu,
 /turf/simulated/floor/dank/maint,
 /area/mining_colony/security)
 "aqt" = (
@@ -5772,7 +5772,7 @@
 /area/mining_colony/security/sec_resting)
 "aqx" = (
 /obj/structure/bed,
-/obj/item/weapon/bedsheet/prisoner,
+/obj/item/bedsheet/prisoner,
 /turf/simulated/floor/dank/maint,
 /area/mining_colony/security)
 "aqy" = (
@@ -5935,15 +5935,15 @@
 /area/mining_colony/interior/medbay)
 "aqU" = (
 /obj/structure/table/standard,
-/obj/item/weapon/tool/wrench,
+/obj/item/tool/wrench,
 /turf/simulated/floor/tiled/white/monotile,
 /area/mining_colony/interior/medbay)
 "aqV" = (
 /obj/structure/table/standard,
-/obj/item/weapon/reagent_containers/glass/beaker/cryoxadone,
-/obj/item/weapon/reagent_containers/glass/beaker/cryoxadone,
-/obj/item/weapon/reagent_containers/glass/beaker/cryoxadone,
-/obj/item/weapon/reagent_containers/glass/beaker/cryoxadone,
+/obj/item/reagent_containers/glass/beaker/cryoxadone,
+/obj/item/reagent_containers/glass/beaker/cryoxadone,
+/obj/item/reagent_containers/glass/beaker/cryoxadone,
+/obj/item/reagent_containers/glass/beaker/cryoxadone,
 /turf/simulated/floor/tiled/white/monotile,
 /area/mining_colony/interior/medbay)
 "aqW" = (
@@ -5952,9 +5952,9 @@
 /area/mining_colony/interior/medbay/chemestry)
 "aqX" = (
 /obj/structure/table/steel,
-/obj/item/weapon/reagent_containers/glass/beaker/bluespace,
-/obj/item/weapon/reagent_containers/glass/beaker/bluespace,
-/obj/item/weapon/reagent_containers/glass/beaker/noreact,
+/obj/item/reagent_containers/glass/beaker/bluespace,
+/obj/item/reagent_containers/glass/beaker/bluespace,
+/obj/item/reagent_containers/glass/beaker/noreact,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -5973,8 +5973,8 @@
 /area/mining_colony/interior/medbay)
 "ara" = (
 /obj/structure/table/standard,
-/obj/item/weapon/paper_bin,
-/obj/item/weapon/pen/multi,
+/obj/item/paper_bin,
+/obj/item/pen/multi,
 /turf/simulated/floor/tiled/white/monotile,
 /area/mining_colony/interior/medbay)
 "arb" = (
@@ -5990,15 +5990,15 @@
 /area/mining_colony/interior/medbay)
 "ard" = (
 /obj/structure/table/steel,
-/obj/item/weapon/storage/box/syringes,
+/obj/item/storage/box/syringes,
 /turf/simulated/floor/tiled/white/monotile,
 /area/mining_colony/interior/medbay/chemestry)
 "are" = (
 /obj/structure/table/steel,
-/obj/item/weapon/storage/box/droppers,
-/obj/item/weapon/storage/box/beakers,
-/obj/item/weapon/storage/box/beakers,
-/obj/item/weapon/storage/box/pillbottles,
+/obj/item/storage/box/droppers,
+/obj/item/storage/box/beakers,
+/obj/item/storage/box/beakers,
+/obj/item/storage/box/pillbottles,
 /turf/simulated/floor/tiled/white/monotile,
 /area/mining_colony/interior/medbay/chemestry)
 "arf" = (
@@ -6034,7 +6034,7 @@
 /area/mining_colony/interior/medbay/chemestry)
 "ark" = (
 /obj/structure/table/steel,
-/obj/item/weapon/storage/box/monkeycubes,
+/obj/item/storage/box/monkeycubes,
 /turf/simulated/floor/tiled/white/monotile,
 /area/mining_colony/interior/medbay/chemestry)
 "arl" = (
@@ -6063,12 +6063,12 @@
 /area/mining_colony/interior/apartament)
 "arq" = (
 /obj/structure/table/rack,
-/obj/item/weapon/cell/plasmacutter,
-/obj/item/weapon/cell/plasmacutter,
-/obj/item/weapon/cell/plasmacutter,
-/obj/item/weapon/cell/plasmacutter,
-/obj/item/weapon/cell/plasmacutter,
-/obj/item/weapon/cell/plasmacutter,
+/obj/item/cell/plasmacutter,
+/obj/item/cell/plasmacutter,
+/obj/item/cell/plasmacutter,
+/obj/item/cell/plasmacutter,
+/obj/item/cell/plasmacutter,
+/obj/item/cell/plasmacutter,
 /turf/simulated/floor/dank/maint_right,
 /area/mining_colony/interior/mining/toolstorage)
 "arr" = (
@@ -6176,7 +6176,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/mining_colony/interior)
 "arG" = (
-/obj/item/weapon/stool/bar/padded,
+/obj/item/stool/bar/padded,
 /turf/simulated/floor/wood,
 /area/mining_colony/interior/messy_hall)
 "arH" = (
@@ -6195,12 +6195,12 @@
 /area/mining_colony/interior/enginieering/reactor_storage)
 "arJ" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/weapon/storage/bible/unitology,
-/obj/item/weapon/storage/bible/unitology,
-/obj/item/weapon/storage/bible/unitology,
-/obj/item/weapon/storage/bible/unitology,
-/obj/item/weapon/storage/bible/unitology,
-/obj/item/weapon/storage/bible/unitology,
+/obj/item/storage/bible/unitology,
+/obj/item/storage/bible/unitology,
+/obj/item/storage/bible/unitology,
+/obj/item/storage/bible/unitology,
+/obj/item/storage/bible/unitology,
+/obj/item/storage/bible/unitology,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/uni_church)
 "arK" = (
@@ -6351,8 +6351,8 @@
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/abandoned/hydro)
 "ash" = (
-/obj/item/weapon/reagent_containers/food/drinks/cans/artbru,
-/obj/item/weapon/reagent_containers/food/drinks/cans/artbru,
+/obj/item/reagent_containers/food/drinks/cans/artbru,
+/obj/item/reagent_containers/food/drinks/cans/artbru,
 /turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/surface)
 "asi" = (
@@ -6364,7 +6364,7 @@
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/surface)
 "ask" = (
-/obj/item/weapon/reagent_containers/food/drinks/cans/artbru,
+/obj/item/reagent_containers/food/drinks/cans/artbru,
 /turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/surface)
 "asl" = (
@@ -6392,7 +6392,7 @@
 /area/mining_colony/SCAF)
 "asp" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/toolbox/mechanical,
+/obj/item/storage/toolbox/mechanical,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/surface)
 "asq" = (
@@ -6716,8 +6716,8 @@
 	dir = 1;
 	health = 1e+006
 	},
-/obj/item/weapon/storage/pill_bottle/citalopram,
-/obj/item/weapon/storage/pill_bottle/citalopram,
+/obj/item/storage/pill_bottle/citalopram,
+/obj/item/storage/pill_bottle/citalopram,
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/white/monotile,
 /area/mining_colony/interior/medbay)
@@ -6735,7 +6735,7 @@
 /area/mining_colony/interior/hydrophonics)
 "atq" = (
 /obj/structure/closet/secure_closet/foreman,
-/obj/item/device/megaphone,
+/obj/item/megaphone,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/mining/foremanoffice)
 "atr" = (
@@ -6764,11 +6764,11 @@
 /area/mining_colony/interior/kellion_arrival)
 "atv" = (
 /obj/structure/table/standard,
-/obj/item/weapon/paper_bin,
-/obj/item/weapon/pen/multi,
-/obj/item/weapon/folder/red,
-/obj/item/weapon/stamp/security,
-/obj/item/weapon/stamp/denied,
+/obj/item/paper_bin,
+/obj/item/pen/multi,
+/obj/item/folder/red,
+/obj/item/stamp/security,
+/obj/item/stamp/denied,
 /turf/simulated/floor/dank/golf_gray,
 /area/mining_colony/security)
 "atw" = (
@@ -6793,7 +6793,7 @@
 /area/mining_colony/interior/apartament)
 "atA" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/lunchbox/unitology/filled,
+/obj/item/storage/lunchbox/unitology/filled,
 /turf/simulated/floor/lino,
 /area/mining_colony/interior/apartament)
 "atB" = (
@@ -6962,8 +6962,8 @@
 /area/mining_colony/interior/mining)
 "aub" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/pen/multi,
-/obj/item/weapon/paper_bin,
+/obj/item/pen/multi,
+/obj/item/paper_bin,
 /obj/machinery/door/window/southright,
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/dank/mono,
@@ -6974,7 +6974,7 @@
 /area/mining_colony/interior/mining/hallway)
 "aud" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/firstaid/regular,
+/obj/item/storage/firstaid/regular,
 /turf/simulated/floor/dank/rectangles,
 /area/mining_colony/interior/mining/hallway)
 "aue" = (
@@ -7116,7 +7116,7 @@
 "auC" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/red,
-/obj/item/weapon/storage/firstaid/combat,
+/obj/item/storage/firstaid/combat,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -7365,8 +7365,8 @@
 /turf/simulated/floor/plating,
 /area/mining_colony/interior/excavation/hangar)
 "avn" = (
-/obj/item/weapon/marshalling_wand,
-/obj/item/weapon/marshalling_wand,
+/obj/item/marshalling_wand,
+/obj/item/marshalling_wand,
 /turf/simulated/floor/plating,
 /area/mining_colony/interior/excavation/hangar)
 "avo" = (
@@ -7391,8 +7391,8 @@
 "avr" = (
 /obj/structure/table/reinforced,
 /obj/machinery/light,
-/obj/item/weapon/paper_bin,
-/obj/item/weapon/pen/multi,
+/obj/item/paper_bin,
+/obj/item/pen/multi,
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/interior/excavation/control_room)
 "avs" = (
@@ -7501,9 +7501,9 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/item/weapon/storage/ore,
-/obj/item/weapon/storage/ore,
-/obj/item/weapon/storage/ore,
+/obj/item/storage/ore,
+/obj/item/storage/ore,
+/obj/item/storage/ore,
 /obj/structure/table/rack,
 /turf/simulated/floor/dank/maint_left,
 /area/mining_colony/interior/mining/processing)
@@ -7511,9 +7511,9 @@
 /obj/structure/table/rack/dark,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/random/loot/usually/few,
-/obj/item/device/flashlight/flare,
-/obj/item/device/flashlight/flare,
-/obj/item/device/flashlight/flare,
+/obj/item/flashlight/flare,
+/obj/item/flashlight/flare,
+/obj/item/flashlight/flare,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/abandoned/storage)
 "avO" = (
@@ -7598,7 +7598,7 @@
 /area/mining_colony/interior/mining)
 "avY" = (
 /obj/structure/table/rack,
-/obj/item/weapon/shield/riot/advanced,
+/obj/item/shield/riot/advanced,
 /obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/security/sec_armory)
@@ -7732,19 +7732,19 @@
 "awy" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/dank/outline,
-/obj/item/weapon/storage/box/lights/bulbs,
-/obj/item/weapon/storage/box/lights/bulbs,
-/obj/item/weapon/storage/box/lights/tubes,
-/obj/item/weapon/storage/box/lights/tubes,
-/obj/item/device/lightreplacer,
-/obj/item/device/lightreplacer,
-/obj/item/device/floor_painter,
+/obj/item/storage/box/lights/bulbs,
+/obj/item/storage/box/lights/bulbs,
+/obj/item/storage/box/lights/tubes,
+/obj/item/storage/box/lights/tubes,
+/obj/item/lightreplacer,
+/obj/item/lightreplacer,
+/obj/item/floor_painter,
 /turf/simulated/floor/dank/slides,
 /area/mining_colony/interior/enginieering/main_room)
 "awz" = (
-/obj/item/weapon/storage/sheetsnatcher,
-/obj/item/weapon/storage/sheetsnatcher,
-/obj/item/weapon/storage/sheetsnatcher,
+/obj/item/storage/sheetsnatcher,
+/obj/item/storage/sheetsnatcher,
+/obj/item/storage/sheetsnatcher,
 /obj/structure/table/rack,
 /turf/simulated/floor/dank/maint_left,
 /area/mining_colony/interior/mining/processing)
@@ -7832,7 +7832,7 @@
 /area/mining_colony/interior/enginieering/main_room)
 "awR" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/device/flashlight/maglight,
+/obj/item/flashlight/maglight,
 /turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/interior/excavation/marker_excav)
 "awS" = (
@@ -7997,7 +7997,7 @@
 /area/mining_colony/c12_deadspace)
 "axv" = (
 /obj/structure/table/standard,
-/obj/item/weapon/paper_bin,
+/obj/item/paper_bin,
 /turf/simulated/floor/dank/slides{
 	dir = 1
 	},
@@ -8137,8 +8137,8 @@
 /area/mining_colony/c12_deadspace)
 "axQ" = (
 /obj/structure/closet/walllocker/emerglocker/north,
-/obj/item/device/radio,
-/obj/item/device/radio,
+/obj/item/radio,
+/obj/item/radio,
 /turf/simulated/floor/tiled/dark,
 /area/mining_colony/interior/plaza)
 "axR" = (
@@ -8187,7 +8187,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/item/weapon/storage/lunchbox/cec/filled,
+/obj/item/storage/lunchbox/cec/filled,
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/c12_deadspace/interior)
 "axZ" = (
@@ -8256,10 +8256,10 @@
 /area/mining_colony/c12_deadspace)
 "ayk" = (
 /obj/structure/closet/wardrobe/chaplain_black,
-/obj/item/weapon/storage/fancy/candle_box,
-/obj/item/weapon/storage/fancy/candle_box,
-/obj/item/weapon/flame/lighter/zippo,
-/obj/item/device/megaphone,
+/obj/item/storage/fancy/candle_box,
+/obj/item/storage/fancy/candle_box,
+/obj/item/flame/lighter/zippo,
+/obj/item/megaphone,
 /obj/item/trash/snack_bowl{
 	desc = "A commercial replica piece of a marker.";
 	icon = 'icons/obj/marker_shard.dmi';
@@ -8397,8 +8397,8 @@
 /area/mining_colony/interior/mining/hallway)
 "ayF" = (
 /obj/structure/table/standard,
-/obj/item/weapon/paper_bin,
-/obj/item/weapon/pen/multi,
+/obj/item/paper_bin,
+/obj/item/pen/multi,
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/interior/mining/randr)
 "ayG" = (
@@ -8690,7 +8690,7 @@
 	},
 /area/mining_colony/interior/shuttle_bay/shuttle_1)
 "azu" = (
-/obj/item/weapon/tool/saw,
+/obj/item/tool/saw,
 /obj/structure/table/standard,
 /obj/random/loot/usually/many,
 /turf/simulated/floor/dank/golf_brown,
@@ -8868,7 +8868,7 @@
 /area/mining_colony/interior/enginieering/storage)
 "azX" = (
 /obj/structure/table/standard,
-/obj/item/weapon/tank/anesthetic,
+/obj/item/tank/anesthetic,
 /obj/item/clothing/mask/breath/anesthetic,
 /turf/simulated/floor/dank/medical,
 /area/mining_colony/c12_deadspace/medicalroom)
@@ -8877,7 +8877,7 @@
 /turf/simulated/floor/dank/medical,
 /area/mining_colony/c12_deadspace/medicalroom)
 "azZ" = (
-/obj/item/weapon/storage/toolbox/mechanical,
+/obj/item/storage/toolbox/mechanical,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/c12_deadspace)
 "aAa" = (
@@ -9073,7 +9073,7 @@
 /area/mining_colony/interior/science/restandrelaxation)
 "aAA" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/reagent_containers/spray/cleaner,
+/obj/item/reagent_containers/spray/cleaner,
 /obj/machinery/light{
 	dir = 8
 	},
@@ -9138,7 +9138,7 @@
 /area/mining_colony/interior/science/restandrelaxation)
 "aAK" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/reagent_containers/spray,
+/obj/item/reagent_containers/spray,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/science/researchwarcrime)
 "aAL" = (
@@ -9253,9 +9253,9 @@
 /area/mining_colony/interior/bartenderarea)
 "aAY" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/weapon/book/manual/rust_engine,
-/obj/item/weapon/book/manual/rust_engine,
-/obj/item/weapon/book/manual/rust_engine,
+/obj/item/book/manual/rust_engine,
+/obj/item/book/manual/rust_engine,
+/obj/item/book/manual/rust_engine,
 /turf/simulated/floor/dank/maint_left,
 /area/mining_colony/interior/enginieering/reactor_control)
 "aAZ" = (
@@ -9497,13 +9497,13 @@
 	dir = 4
 	},
 /obj/structure/table/reinforced,
-/obj/item/weapon/hand_labeler,
+/obj/item/hand_labeler,
 /turf/simulated/floor/dank/rectangles,
 /area/mining_colony/interior/cargo/logistics)
 "aBI" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/paper_bin,
-/obj/item/weapon/pen/multi,
+/obj/item/paper_bin,
+/obj/item/pen/multi,
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
@@ -9561,10 +9561,10 @@
 /area/mining_colony/interior/cargo/officerarea)
 "aBP" = (
 /obj/structure/table/standard,
-/obj/item/weapon/reagent_containers/food/drinks/pitcher,
-/obj/item/weapon/reagent_containers/food/drinks/coffeecup,
-/obj/item/weapon/reagent_containers/food/drinks/coffeecup,
-/obj/item/weapon/reagent_containers/food/drinks/coffeecup,
+/obj/item/reagent_containers/food/drinks/pitcher,
+/obj/item/reagent_containers/food/drinks/coffeecup,
+/obj/item/reagent_containers/food/drinks/coffeecup,
+/obj/item/reagent_containers/food/drinks/coffeecup,
 /turf/simulated/floor/dank/maint,
 /area/mining_colony/interior/cargo/restandcrap)
 "aBQ" = (
@@ -9768,10 +9768,10 @@
 	dir = 4
 	},
 /obj/structure/table/reinforced,
-/obj/item/weapon/wrapping_paper,
-/obj/item/weapon/wrapping_paper,
-/obj/item/weapon/wrapping_paper,
-/obj/item/weapon/clipboard,
+/obj/item/wrapping_paper,
+/obj/item/wrapping_paper,
+/obj/item/wrapping_paper,
+/obj/item/clipboard,
 /turf/simulated/floor/dank/rectangles,
 /area/mining_colony/interior/cargo/logistics)
 "aCs" = (
@@ -9820,8 +9820,8 @@
 "aCz" = (
 /obj/structure/closet/secure_closet/medical3,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/weapon/storage/box/gloves,
-/obj/item/weapon/storage/box/masks,
+/obj/item/storage/box/gloves,
+/obj/item/storage/box/masks,
 /obj/machinery/firealarm{
 	dir = 4;
 	icon_state = "fire0";
@@ -9913,7 +9913,7 @@
 "aCL" = (
 /obj/structure/table/standard,
 /obj/item/clothing/mask/smokable/pipe,
-/obj/item/weapon/reagent_containers/terrbacco/fine,
+/obj/item/reagent_containers/terrbacco/fine,
 /turf/simulated/floor/tiled/dark,
 /area/mining_colony/interior/hydrophonics)
 "aCM" = (
@@ -9925,14 +9925,14 @@
 /area/mining_colony/interior/hydrophonics)
 "aCN" = (
 /obj/structure/table/marble,
-/obj/item/weapon/reagent_containers/food/condiment/small/saltshaker,
-/obj/item/weapon/reagent_containers/food/condiment/small/peppermill,
-/obj/item/weapon/reagent_containers/food/condiment/small/sugar,
-/obj/item/weapon/reagent_containers/food/condiment/soysauce,
-/obj/item/weapon/reagent_containers/food/condiment/ketchup,
-/obj/item/weapon/reagent_containers/food/condiment/frostoil,
-/obj/item/weapon/reagent_containers/food/condiment/barbecue,
-/obj/item/weapon/reagent_containers/food/condiment/capsaicin,
+/obj/item/reagent_containers/food/condiment/small/saltshaker,
+/obj/item/reagent_containers/food/condiment/small/peppermill,
+/obj/item/reagent_containers/food/condiment/small/sugar,
+/obj/item/reagent_containers/food/condiment/soysauce,
+/obj/item/reagent_containers/food/condiment/ketchup,
+/obj/item/reagent_containers/food/condiment/frostoil,
+/obj/item/reagent_containers/food/condiment/barbecue,
+/obj/item/reagent_containers/food/condiment/capsaicin,
 /turf/simulated/floor/tiled/white/monotile,
 /area/mining_colony/interior/kitchen_area)
 "aCO" = (
@@ -9940,9 +9940,9 @@
 /area/mining_colony/interior/kitchen_area)
 "aCP" = (
 /obj/structure/table/marble,
-/obj/item/weapon/material/kitchen/rollingpin,
-/obj/item/weapon/material/knife/butch,
-/obj/item/weapon/material/knife,
+/obj/item/material/kitchen/rollingpin,
+/obj/item/material/knife/butch,
+/obj/item/material/knife,
 /turf/simulated/floor/tiled/white/monotile,
 /area/mining_colony/interior/kitchen_area)
 "aCQ" = (
@@ -9953,15 +9953,15 @@
 /area/mining_colony/surface)
 "aCR" = (
 /obj/structure/table/marble,
-/obj/item/weapon/storage/box/condimentbottles,
-/obj/item/weapon/storage/box/condimentbottles,
-/obj/item/weapon/reagent_containers/spray/cleaner,
-/obj/item/weapon/storage/box/syringes,
+/obj/item/storage/box/condimentbottles,
+/obj/item/storage/box/condimentbottles,
+/obj/item/reagent_containers/spray/cleaner,
+/obj/item/storage/box/syringes,
 /turf/simulated/floor/tiled/white/monotile,
 /area/mining_colony/interior/kitchen_area)
 "aCS" = (
 /obj/structure/table/marble,
-/obj/item/weapon/book/manual/chef_recipes,
+/obj/item/book/manual/chef_recipes,
 /obj/item/toy/figure/chef,
 /turf/simulated/floor/tiled/white/monotile,
 /area/mining_colony/interior/kitchen_area)
@@ -10095,8 +10095,8 @@
 "aDj" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/red,
-/obj/item/weapon/storage/box/stunshells,
-/obj/item/weapon/storage/box/stunshells,
+/obj/item/storage/box/stunshells,
+/obj/item/storage/box/stunshells,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -10128,15 +10128,15 @@
 "aDo" = (
 /obj/structure/table/standard,
 /obj/random/cash,
-/obj/item/weapon/reagent_containers/food/drinks/coffeecup/metal,
+/obj/item/reagent_containers/food/drinks/coffeecup/metal,
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/sec_resting)
 "aDp" = (
 /obj/structure/table/rack,
-/obj/item/weapon/reagent_containers/glass/bucket,
-/obj/item/weapon/material/minihoe,
-/obj/item/device/analyzer/plant_analyzer,
-/obj/item/weapon/tool/wirecutters/clippers,
+/obj/item/reagent_containers/glass/bucket,
+/obj/item/material/minihoe,
+/obj/item/analyzer/plant_analyzer,
+/obj/item/tool/wirecutters/clippers,
 /turf/simulated/floor/tiled/monotile,
 /area/mining_colony/interior/kitchen_area)
 "aDq" = (
@@ -10148,16 +10148,16 @@
 /area/mining_colony/interior/kitchen_area)
 "aDr" = (
 /obj/structure/closet/secure_closet/freezer/meat,
-/obj/item/weapon/storage/fancy/egg_box,
-/obj/item/weapon/storage/fancy/egg_box,
-/obj/item/weapon/storage/fancy/egg_box,
+/obj/item/storage/fancy/egg_box,
+/obj/item/storage/fancy/egg_box,
+/obj/item/storage/fancy/egg_box,
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled/freezer,
 /area/mining_colony/interior/kitchen_area)
 "aDs" = (
 /obj/structure/closet/secure_closet/freezer/chicken,
-/obj/item/weapon/storage/box/monkeycubes,
-/obj/item/weapon/storage/box/monkeycubes,
+/obj/item/storage/box/monkeycubes,
+/obj/item/storage/box/monkeycubes,
 /turf/simulated/floor/tiled/freezer,
 /area/mining_colony/interior/kitchen_area)
 "aDt" = (
@@ -10322,8 +10322,8 @@
 /area/mining_colony/interior/hydrophonics)
 "aDW" = (
 /obj/structure/table/standard,
-/obj/item/weapon/folder/yellow,
-/obj/item/weapon/folder/yellow,
+/obj/item/folder/yellow,
+/obj/item/folder/yellow,
 /turf/simulated/floor/dank/maint_right,
 /area/mining_colony/interior/cargo/restandcrap)
 "aDX" = (
@@ -10332,7 +10332,7 @@
 /area/mining_colony/interior/cargo/logistics)
 "aDY" = (
 /obj/structure/table/standard,
-/obj/item/weapon/reagent_containers/food/drinks/coffeecup/metal,
+/obj/item/reagent_containers/food/drinks/coffeecup/metal,
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/sec_resting)
 "aDZ" = (
@@ -10457,7 +10457,7 @@
 /area/mining_colony/interior/hydrophonics)
 "aEt" = (
 /obj/structure/table/standard,
-/obj/item/weapon/hand_labeler,
+/obj/item/hand_labeler,
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/interior/cargo/storage_upper)
 "aEu" = (
@@ -10472,8 +10472,8 @@
 "aEv" = (
 /obj/machinery/light,
 /obj/structure/table/standard,
-/obj/item/device/price_scanner,
-/obj/item/device/price_scanner,
+/obj/item/price_scanner,
+/obj/item/price_scanner,
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/interior/cargo/storage_upper)
 "aEw" = (
@@ -10618,9 +10618,9 @@
 "aEQ" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/cell_charger,
-/obj/item/weapon/cell/high,
-/obj/item/weapon/cell/high,
-/obj/item/weapon/cell/high,
+/obj/item/cell/high,
+/obj/item/cell/high,
+/obj/item/cell/high,
 /obj/effect/floor_decal/corner/grey/three_quarters{
 	dir = 1
 	},
@@ -10651,8 +10651,8 @@
 /area/mining_colony/interior/science/researchandev)
 "aEW" = (
 /obj/structure/table/standard,
-/obj/item/weapon/paper_bin,
-/obj/item/weapon/pen/multi,
+/obj/item/paper_bin,
+/obj/item/pen/multi,
 /turf/simulated/floor/tiled/white/monotile,
 /area/mining_colony/interior/science/scienceoffices)
 "aEX" = (
@@ -10673,15 +10673,15 @@
 	dir = 8
 	},
 /obj/structure/table/rack,
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/robustcells,
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/tools,
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/misc,
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/medical,
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/devices,
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/computer,
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/components,
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/circuits,
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/adv_tools,
+/obj/item/computer_hardware/hard_drive/portable/design/robustcells,
+/obj/item/computer_hardware/hard_drive/portable/design/tools,
+/obj/item/computer_hardware/hard_drive/portable/design/misc,
+/obj/item/computer_hardware/hard_drive/portable/design/medical,
+/obj/item/computer_hardware/hard_drive/portable/design/devices,
+/obj/item/computer_hardware/hard_drive/portable/design/computer,
+/obj/item/computer_hardware/hard_drive/portable/design/components,
+/obj/item/computer_hardware/hard_drive/portable/design/circuits,
+/obj/item/computer_hardware/hard_drive/portable/design/adv_tools,
 /turf/simulated/floor/dank/rectangles,
 /area/mining_colony/interior/cargo/logistics)
 "aFa" = (
@@ -10723,8 +10723,8 @@
 /area/mining_colony/interior/science/virology)
 "aFf" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/weapon/storage/box/monkeycubes,
-/obj/item/weapon/extinguisher,
+/obj/item/storage/box/monkeycubes,
+/obj/item/extinguisher,
 /turf/simulated/floor/tiled/white/monotile,
 /area/mining_colony/interior/science/virology)
 "aFg" = (
@@ -10782,7 +10782,7 @@
 /area/mining_colony/interior/science/researchwarcrime)
 "aFn" = (
 /obj/structure/table/standard,
-/obj/item/weapon/clipboard,
+/obj/item/clipboard,
 /turf/simulated/floor/tiled/white/monotile,
 /area/mining_colony/interior/science/scienceoffices)
 "aFo" = (
@@ -10816,12 +10816,12 @@
 /area/mining_colony/interior/science/scienceoffices)
 "aFt" = (
 /obj/structure/table/standard,
-/obj/item/weapon/reagent_containers/spray/cleaner,
+/obj/item/reagent_containers/spray/cleaner,
 /obj/effect/floor_decal/corner/grey/mono,
 /turf/simulated/floor/tiled/white/monotile,
 /area/mining_colony/interior/science/scienceoffices)
 "aFu" = (
-/obj/item/weapon/storage/firstaid/regular,
+/obj/item/storage/firstaid/regular,
 /obj/structure/table/standard,
 /obj/effect/floor_decal/corner/grey/mono,
 /turf/simulated/floor/tiled/white/monotile,
@@ -10832,9 +10832,9 @@
 /turf/simulated/floor/tiled/white/monotile,
 /area/mining_colony/interior/science/virology)
 "aFw" = (
-/obj/item/weapon/storage/box/detergent,
-/obj/item/weapon/storage/box/detergent,
-/obj/item/weapon/storage/bag/plasticbag,
+/obj/item/storage/box/detergent,
+/obj/item/storage/box/detergent,
+/obj/item/storage/bag/plasticbag,
 /obj/structure/table/steel_reinforced,
 /turf/simulated/floor/tiled/white/monotile,
 /area/mining_colony/interior/science/virology)
@@ -10968,7 +10968,7 @@
 /area/mining_colony/interior/science/airlock)
 "aFS" = (
 /obj/structure/table/rack,
-/obj/item/weapon/archaeological_find/container,
+/obj/item/archaeological_find/container,
 /obj/random/loot/sometimes/few,
 /obj/random/loot/often/some,
 /obj/random/loot/rarely/some,
@@ -10979,7 +10979,7 @@
 /area/mining_colony/interior/shuttle_bay/control_room)
 "aFU" = (
 /obj/structure/closet/secure_closet/chemical,
-/obj/item/weapon/book/manual/materials_chemistry_analysis,
+/obj/item/book/manual/materials_chemistry_analysis,
 /turf/simulated/floor/tiled/white/monotile,
 /area/mining_colony/interior/medbay/chemestry)
 "aFV" = (
@@ -11057,7 +11057,7 @@
 "aGf" = (
 /obj/machinery/light,
 /obj/structure/bed/roller/ironingboard,
-/obj/item/weapon/ironingiron,
+/obj/item/ironingiron,
 /turf/simulated/floor/tiled/white,
 /area/mining_colony/interior/science/virology)
 "aGg" = (
@@ -11100,8 +11100,8 @@
 /area/mining_colony/interior/science/restandrelaxation)
 "aGn" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/weapon/storage/toolbox/electrical,
-/obj/item/weapon/storage/toolbox/mechanical,
+/obj/item/storage/toolbox/electrical,
+/obj/item/storage/toolbox/mechanical,
 /turf/simulated/floor/tiled/dark,
 /area/mining_colony/interior/science/researchandev)
 "aGo" = (
@@ -11187,15 +11187,15 @@
 /area/mining_colony/interior/science/scienceoffices)
 "aGx" = (
 /obj/structure/table/rack,
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/computer,
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/components,
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/circuits,
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/adv_tools,
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/devices,
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/medical,
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/misc,
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/tools,
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/robustcells,
+/obj/item/computer_hardware/hard_drive/portable/design/computer,
+/obj/item/computer_hardware/hard_drive/portable/design/components,
+/obj/item/computer_hardware/hard_drive/portable/design/circuits,
+/obj/item/computer_hardware/hard_drive/portable/design/adv_tools,
+/obj/item/computer_hardware/hard_drive/portable/design/devices,
+/obj/item/computer_hardware/hard_drive/portable/design/medical,
+/obj/item/computer_hardware/hard_drive/portable/design/misc,
+/obj/item/computer_hardware/hard_drive/portable/design/tools,
+/obj/item/computer_hardware/hard_drive/portable/design/robustcells,
 /obj/effect/floor_decal/corner/grey/border{
 	dir = 4
 	},
@@ -11217,9 +11217,9 @@
 /area/mining_colony/interior/science/researchandev)
 "aGA" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/weapon/storage/lunchbox/cat/filled,
-/obj/item/device/camera,
-/obj/item/device/camera_film,
+/obj/item/storage/lunchbox/cat/filled,
+/obj/item/camera,
+/obj/item/camera_film,
 /turf/simulated/floor/tiled/dark,
 /area/mining_colony/interior/science/researchandev)
 "aGB" = (
@@ -11385,8 +11385,8 @@
 /area/mining_colony/interior/science)
 "aGY" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/weapon/disk/tech_disk,
-/obj/item/weapon/disk/tech_disk,
+/obj/item/disk/tech_disk,
+/obj/item/disk/tech_disk,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/mining_colony/interior/science/researchandev)
 "aGZ" = (
@@ -11410,7 +11410,7 @@
 "aHc" = (
 /obj/machinery/light,
 /obj/machinery/r_n_d/circuit_imprinter,
-/obj/item/weapon/reagent_containers/glass/beaker/sulphuric,
+/obj/item/reagent_containers/glass/beaker/sulphuric,
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/mining_colony/interior/science/researchandev)
@@ -11521,8 +11521,8 @@
 /turf/simulated/floor/carpet/purple,
 /area/mining_colony/interior/science/sciencechief)
 "aHr" = (
-/obj/item/weapon/paper_bin,
-/obj/item/weapon/pen/multi,
+/obj/item/paper_bin,
+/obj/item/pen/multi,
 /obj/structure/table/standard,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/science/sciencechief)
@@ -11567,8 +11567,8 @@
 /area/mining_colony/interior/science)
 "aHx" = (
 /obj/structure/table/standard,
-/obj/item/weapon/paper_bin,
-/obj/item/weapon/pen/multi,
+/obj/item/paper_bin,
+/obj/item/pen/multi,
 /obj/effect/floor_decal/corner/grey{
 	dir = 5
 	},
@@ -11584,7 +11584,7 @@
 /area/mining_colony/interior/science/xenoarcheology)
 "aHz" = (
 /obj/structure/table/rack,
-/obj/item/weapon/archaeological_find/tool,
+/obj/item/archaeological_find/tool,
 /obj/random/loot/often/some,
 /turf/simulated/floor/tiled/dark,
 /area/mining_colony/interior/science/xenostorage)
@@ -11728,14 +11728,14 @@
 /area/mining_colony/interior/science)
 "aHS" = (
 /obj/structure/closet/secure_closet/CSCIO,
-/obj/item/weapon/stamp/cscio,
-/obj/item/weapon/stamp/denied,
+/obj/item/stamp/cscio,
+/obj/item/stamp/denied,
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/item/device/megaphone,
-/obj/item/weapon/storage/lunchbox/heart/filled,
-/obj/item/weapon/clipboard,
+/obj/item/megaphone,
+/obj/item/storage/lunchbox/heart/filled,
+/obj/item/clipboard,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/science/sciencechief)
 "aHT" = (
@@ -11750,7 +11750,7 @@
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/science/sciencechief)
 "aHW" = (
-/obj/item/weapon/storage/excavation,
+/obj/item/storage/excavation,
 /obj/structure/table/reinforced,
 /turf/simulated/floor/tiled/monotile,
 /area/mining_colony/interior/science/xenoarcheology)
@@ -11771,7 +11771,7 @@
 /area/mining_colony/interior/science/xenoarcheology)
 "aIa" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/storage/box/donut,
+/obj/item/storage/box/donut,
 /obj/structure/window/reinforced{
 	dir = 4;
 	icon_state = "rwindow"
@@ -11791,7 +11791,7 @@
 /area/mining_colony/interior/science/xenoarcheology)
 "aId" = (
 /obj/structure/table/standard,
-/obj/item/device/reagent_scanner/adv,
+/obj/item/reagent_scanner/adv,
 /turf/simulated/floor/tiled/monotile,
 /area/mining_colony/interior/science/xenoarcheology)
 "aIe" = (
@@ -11819,7 +11819,7 @@
 /area/mining_colony/interior/science/xenoarcheology)
 "aIi" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/toolbox/mechanical,
+/obj/item/storage/toolbox/mechanical,
 /turf/simulated/floor/tiled/monotile,
 /area/mining_colony/interior/science/xenoarcheology)
 "aIj" = (
@@ -11829,7 +11829,7 @@
 "aIk" = (
 /obj/machinery/light,
 /obj/machinery/chemical_dispenser/full,
-/obj/item/weapon/reagent_containers/glass/beaker/bluespace,
+/obj/item/reagent_containers/glass/beaker/bluespace,
 /turf/simulated/floor/tiled/monotile,
 /area/mining_colony/interior/science/xenoarcheology)
 "aIl" = (
@@ -11850,8 +11850,8 @@
 /area/mining_colony/interior/science/xenostorage)
 "aIn" = (
 /obj/structure/table/standard,
-/obj/item/weapon/paper_bin,
-/obj/item/weapon/pen/multi,
+/obj/item/paper_bin,
+/obj/item/pen/multi,
 /turf/simulated/floor/tiled/monotile,
 /area/mining_colony/interior/science/xenoarcheology)
 "aIo" = (
@@ -11889,9 +11889,9 @@
 /area/mining_colony/interior/science/researchandev)
 "aIs" = (
 /obj/structure/table/standard,
-/obj/item/weapon/stamp/mining,
-/obj/item/weapon/stamp/denied,
-/obj/item/weapon/clipboard,
+/obj/item/stamp/mining,
+/obj/item/stamp/denied,
+/obj/item/clipboard,
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/interior/mining)
 "aIt" = (
@@ -11911,7 +11911,7 @@
 /area/mining_colony/interior/mining)
 "aIu" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/storage/lunchbox/cec/filled,
+/obj/item/storage/lunchbox/cec/filled,
 /obj/structure/window/reinforced{
 	dir = 8;
 	health = 1e+006
@@ -11941,8 +11941,8 @@
 /area/mining_colony/interior/bartenderarea)
 "aIy" = (
 /obj/structure/table/standard,
-/obj/item/weapon/pen/multi,
-/obj/item/weapon/paper_bin,
+/obj/item/pen/multi,
+/obj/item/paper_bin,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/medbay/CMOoffice)
 "aIz" = (
@@ -12096,21 +12096,21 @@
 /area/mining_colony/interior/cargo/officerarea)
 "aIR" = (
 /obj/structure/table/standard,
-/obj/item/weapon/reagent_containers/food/drinks/cans/cola,
-/obj/item/weapon/reagent_containers/food/drinks/cans/cola,
-/obj/item/weapon/reagent_containers/food/drinks/cans/cola,
+/obj/item/reagent_containers/food/drinks/cans/cola,
+/obj/item/reagent_containers/food/drinks/cans/cola,
+/obj/item/reagent_containers/food/drinks/cans/cola,
 /obj/random/snack,
 /turf/simulated/floor/dank/golf_gray,
 /area/mining_colony/security)
 "aIS" = (
 /obj/structure/table/standard,
 /obj/random/ammo/security,
-/obj/item/weapon/reagent_containers/food/drinks/coffeecup/metal,
+/obj/item/reagent_containers/food/drinks/coffeecup/metal,
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/sec_resting)
 "aIT" = (
 /obj/structure/bed,
-/obj/item/weapon/bedsheet/brown,
+/obj/item/bedsheet/brown,
 /obj/effect/landmark/start{
 	name = "Bartender"
 	},
@@ -12193,7 +12193,7 @@
 /area/mining_colony/interior/science/xenostorage)
 "aJd" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/storage/box/handcuffs,
+/obj/item/storage/box/handcuffs,
 /obj/structure/window/reinforced{
 	dir = 4;
 	icon_state = "rwindow"
@@ -12202,8 +12202,8 @@
 /area/mining_colony/security)
 "aJe" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/reagent_containers/food/drinks/cans/cola,
-/obj/item/weapon/reagent_containers/food/drinks/coffeecup/metal,
+/obj/item/reagent_containers/food/drinks/cans/cola,
+/obj/item/reagent_containers/food/drinks/coffeecup/metal,
 /obj/structure/window/reinforced{
 	dir = 4;
 	icon_state = "rwindow"
@@ -12334,7 +12334,7 @@
 /area/mining_colony/interior/enginieering/lathe_room)
 "aJv" = (
 /obj/structure/table/rack,
-/obj/item/weapon/archaeological_find/robes,
+/obj/item/archaeological_find/robes,
 /obj/random/loot/sometimes/few,
 /turf/simulated/floor/tiled/dark,
 /area/mining_colony/interior/science/xenostorage)
@@ -12392,7 +12392,7 @@
 /area/mining_colony/interior/enginieering/engi_lockers)
 "aJD" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/weapon/tool_modification/reinforcement/stick,
+/obj/item/tool_modification/reinforcement/stick,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/surface)
 "aJE" = (
@@ -12424,8 +12424,8 @@
 /area/mining_colony/interior/enginieering/lathe_room)
 "aJI" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/paper_bin,
-/obj/item/weapon/pen/multi,
+/obj/item/paper_bin,
+/obj/item/pen/multi,
 /turf/simulated/floor/dank/golf_gray,
 /area/mining_colony/interior/hydrophonics)
 "aJJ" = (
@@ -12445,15 +12445,15 @@
 /area/mining_colony/surface)
 "aJM" = (
 /obj/structure/closet/secure_closet/guncabinet/sec_support,
-/obj/item/weapon/shield/riot,
-/obj/item/weapon/gun/projectile/shotgun/bola_lancher,
+/obj/item/shield/riot,
+/obj/item/gun/projectile/shotgun/bola_lancher,
 /obj/item/ammo_magazine/pulse,
 /obj/item/ammo_magazine/shotgun,
 /obj/effect/floor_decal/industrial/outline/red,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/item/weapon/gun/projectile/divet/empty,
+/obj/item/gun/projectile/divet/empty,
 /obj/item/ammo_magazine/divet,
 /obj/item/ammo_magazine/divet,
 /turf/simulated/floor/dank/slides{
@@ -12546,10 +12546,10 @@
 /area/mining_colony/interior/mining/directoroffice)
 "aJX" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/disk/botany,
-/obj/item/weapon/disk/botany,
-/obj/item/weapon/disk/botany,
-/obj/item/weapon/disk/botany,
+/obj/item/disk/botany,
+/obj/item/disk/botany,
+/obj/item/disk/botany,
+/obj/item/disk/botany,
 /turf/simulated/floor/dank/golf_gray,
 /area/mining_colony/interior/hydrophonics)
 "aJY" = (
@@ -12650,8 +12650,8 @@
 /area/mining_colony/interior/enginieering/storage)
 "aKj" = (
 /obj/structure/table/rack/dark,
-/obj/item/weapon/plastique,
-/obj/item/weapon/plastique,
+/obj/item/plastique,
+/obj/item/plastique,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/shuttle_bay/sec_armor)
 "aKk" = (
@@ -12665,7 +12665,7 @@
 /area/mining_colony/interior/enginieering/storage)
 "aKl" = (
 /obj/structure/bed,
-/obj/item/weapon/bedsheet/hop,
+/obj/item/bedsheet/hop,
 /obj/effect/landmark/start{
 	name = "Line Cook"
 	},
@@ -12762,8 +12762,8 @@
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/kellion_arrival/arrivals)
 "aKy" = (
-/obj/item/weapon/shield/riot,
-/obj/item/weapon/gun/projectile/shotgun/bola_lancher,
+/obj/item/shield/riot,
+/obj/item/gun/projectile/shotgun/bola_lancher,
 /obj/item/ammo_magazine/pulse,
 /obj/item/ammo_magazine/shotgun,
 /obj/effect/floor_decal/industrial/outline/red,
@@ -12811,15 +12811,15 @@
 /area/mining_colony/interior/mining)
 "aKE" = (
 /obj/structure/closet/secure_closet/guncabinet/sec_support,
-/obj/item/weapon/shield/riot,
-/obj/item/weapon/gun/projectile/shotgun/bola_lancher,
+/obj/item/shield/riot,
+/obj/item/gun/projectile/shotgun/bola_lancher,
 /obj/item/ammo_magazine/pulse,
 /obj/item/ammo_magazine/shotgun,
 /obj/effect/floor_decal/industrial/outline/red,
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/item/weapon/gun/projectile/divet/empty,
+/obj/item/gun/projectile/divet/empty,
 /obj/item/ammo_magazine/divet,
 /obj/item/ammo_magazine/divet,
 /turf/simulated/floor/dank/slides{
@@ -12880,7 +12880,7 @@
 /obj/structure/closet/medical_wall/filled{
 	pixel_y = 32
 	},
-/obj/item/weapon/storage/firstaid/adv,
+/obj/item/storage/firstaid/adv,
 /turf/simulated/floor/dank/slides{
 	dir = 8
 	},
@@ -12901,9 +12901,9 @@
 /area/mining_colony/interior/medbay/med_ward)
 "aKP" = (
 /obj/structure/table/standard,
-/obj/item/weapon/stamp/foreman,
-/obj/item/weapon/stamp/denied,
-/obj/item/weapon/clipboard,
+/obj/item/stamp/foreman,
+/obj/item/stamp/denied,
+/obj/item/clipboard,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/mining/foremanoffice)
 "aKQ" = (
@@ -12957,9 +12957,9 @@
 /area/mining_colony/interior/science/restandrelaxation)
 "aKW" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/weapon/clipboard,
-/obj/item/weapon/pen/multi,
-/obj/item/weapon/paper_bin,
+/obj/item/clipboard,
+/obj/item/pen/multi,
+/obj/item/paper_bin,
 /obj/effect/floor_decal/corner/grey/border{
 	dir = 8;
 	icon_state = "bordercolor"
@@ -12968,7 +12968,7 @@
 /area/mining_colony/interior/science/researchandev)
 "aKX" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/device/electronic_assembly/drone/arms,
+/obj/item/electronic_assembly/drone/arms,
 /obj/effect/floor_decal/corner/grey/border{
 	dir = 4
 	},
@@ -13009,7 +13009,7 @@
 /area/mining_colony/interior/science/scienceoffices)
 "aLc" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/weapon/reagent_containers/glass/beaker/large,
+/obj/item/reagent_containers/glass/beaker/large,
 /obj/effect/floor_decal/corner/grey/three_quarters,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/mining_colony/interior/science/researchandev)
@@ -13024,7 +13024,7 @@
 /area/mining_colony/interior/science/researchandev)
 "aLf" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/device/electronic_assembly,
+/obj/item/electronic_assembly,
 /obj/effect/floor_decal/corner/grey/three_quarters{
 	dir = 4
 	},
@@ -13033,7 +13033,7 @@
 	icon_state = "fire0";
 	pixel_x = 20
 	},
-/obj/item/device/integrated_circuit_printer,
+/obj/item/integrated_circuit_printer,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/mining_colony/interior/science/researchandev)
 "aLg" = (
@@ -13083,8 +13083,8 @@
 /area/mining_colony/interior/science)
 "aLm" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/paper_bin,
-/obj/item/weapon/pen/multi,
+/obj/item/paper_bin,
+/obj/item/pen/multi,
 /obj/machinery/door/window{
 	req_access = list(4)
 	},
@@ -13129,9 +13129,9 @@
 /area/mining_colony/interior/bathroom)
 "aLs" = (
 /obj/structure/closet/jcloset,
-/obj/item/weapon/grenade/chem_grenade/cleaner,
-/obj/item/weapon/grenade/chem_grenade/cleaner,
-/obj/item/weapon/reagent_containers/spray/cleaner,
+/obj/item/grenade/chem_grenade/cleaner,
+/obj/item/grenade/chem_grenade/cleaner,
+/obj/item/reagent_containers/spray/cleaner,
 /obj/item/rig_module/grenade_launcher/cleaner,
 /obj/item/clothing/accessory/solgov/specialty/janitor,
 /obj/item/rig_module/fabricator/wf_sign,
@@ -13173,9 +13173,9 @@
 /area/mining_colony/interior/science/scienceoffices)
 "aLw" = (
 /obj/structure/closet/jcloset,
-/obj/item/weapon/grenade/chem_grenade/cleaner,
-/obj/item/weapon/grenade/chem_grenade/cleaner,
-/obj/item/weapon/reagent_containers/spray/cleaner,
+/obj/item/grenade/chem_grenade/cleaner,
+/obj/item/grenade/chem_grenade/cleaner,
+/obj/item/reagent_containers/spray/cleaner,
 /obj/item/rig_module/grenade_launcher/cleaner,
 /obj/item/clothing/accessory/solgov/specialty/janitor,
 /obj/machinery/light{
@@ -13265,8 +13265,8 @@
 /area/mining_colony/interior/medbay)
 "aLI" = (
 /obj/structure/table/standard,
-/obj/item/weapon/defibrillator/loaded,
-/obj/item/weapon/defibrillator/loaded,
+/obj/item/defibrillator/loaded,
+/obj/item/defibrillator/loaded,
 /obj/effect/floor_decal/dank/border{
 	dir = 8
 	},
@@ -13276,7 +13276,7 @@
 "aLJ" = (
 /obj/structure/iv_drip,
 /obj/effect/floor_decal/dank/border_corner,
-/obj/item/device/radio/intercom/department/medbay{
+/obj/item/radio/intercom/department/medbay{
 	dir = 4;
 	pixel_x = -21
 	},
@@ -13292,8 +13292,8 @@
 /area/mining_colony/interior/medbay)
 "aLM" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/box/bodybags,
-/obj/item/weapon/storage/box/bodybags,
+/obj/item/storage/box/bodybags,
+/obj/item/storage/box/bodybags,
 /obj/machinery/recharger,
 /obj/effect/floor_decal/dank/border{
 	dir = 1
@@ -13393,8 +13393,8 @@
 /area/mining_colony/interior/excavation/hangar)
 "aMd" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/paper_bin,
-/obj/item/weapon/pen/multi,
+/obj/item/paper_bin,
+/obj/item/pen/multi,
 /obj/structure/window/reinforced{
 	dir = 4;
 	icon_state = "rwindow"
@@ -13499,7 +13499,7 @@
 	pixel_y = 24
 	},
 /obj/structure/bed/roller/ironingboard,
-/obj/item/weapon/ironingiron,
+/obj/item/ironingiron,
 /obj/structure/cable{
 	d2 = 2;
 	icon_state = "0-2"
@@ -13512,7 +13512,7 @@
 /area/mining_colony/interior/excavation/interior)
 "aMw" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/weapon/spacecash/ewallet/random/c500,
+/obj/item/spacecash/ewallet/random/c500,
 /turf/simulated/floor/dank/maint_right,
 /area/mining_colony/interior/enginieering/reactor_control)
 "aMx" = (
@@ -13939,7 +13939,7 @@
 "aNE" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/table/rack,
-/obj/item/weapon/gun/projectile/linecutter,
+/obj/item/gun/projectile/linecutter,
 /turf/simulated/floor/dank/maint,
 /area/mining_colony/interior/mining/toolstorage)
 "aNF" = (
@@ -13988,9 +13988,9 @@
 /area/mining_colony/security)
 "aNM" = (
 /obj/structure/table/rack/dark,
-/obj/item/weapon/storage/firstaid,
-/obj/item/weapon/storage/firstaid/adv,
-/obj/item/weapon/storage/firstaid/stab,
+/obj/item/storage/firstaid,
+/obj/item/storage/firstaid/adv,
+/obj/item/storage/firstaid/stab,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/shuttle_bay/sec_armor)
 "aNN" = (
@@ -14362,7 +14362,7 @@
 /obj/item/clothing/suit/chef,
 /obj/item/clothing/suit/chef/classic,
 /obj/item/clothing/under/rank/chef,
-/obj/item/weapon/book/manual/chef_recipes,
+/obj/item/book/manual/chef_recipes,
 /obj/item/clothing/shoes/black,
 /obj/item/clothing/gloves/white,
 /turf/simulated/floor/dank/mono,
@@ -14464,7 +14464,7 @@
 "aOX" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/table/rack,
-/obj/item/weapon/gun/energy/forcegun,
+/obj/item/gun/energy/forcegun,
 /turf/simulated/floor/dank/maint,
 /area/mining_colony/interior/mining/toolstorage)
 "aOY" = (
@@ -14639,8 +14639,8 @@
 /area/mining_colony/interior/shuttle_bay/hangar)
 "aPy" = (
 /obj/machinery/photocopier,
-/obj/item/device/toner,
-/obj/item/device/toner,
+/obj/item/toner,
+/obj/item/toner,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/enginieering/chief_engi)
 "aPz" = (
@@ -14662,8 +14662,8 @@
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/interior/shuttle_bay/shuttle_1)
 "aPF" = (
-/obj/item/weapon/paper_bin,
-/obj/item/weapon/pen/multi,
+/obj/item/paper_bin,
+/obj/item/pen/multi,
 /obj/structure/table/steel,
 /turf/simulated/floor/dank/slides{
 	dir = 8
@@ -14685,9 +14685,9 @@
 	d2 = 2;
 	icon_state = "0-2"
 	},
-/obj/item/device/rig_remover,
-/obj/item/device/rig_remover,
-/obj/item/device/rig_remover,
+/obj/item/rig_remover,
+/obj/item/rig_remover,
+/obj/item/rig_remover,
 /obj/structure/table/steel,
 /turf/simulated/floor/dank/slides{
 	dir = 8
@@ -14726,7 +14726,7 @@
 /area/mining_colony/interior/shuttle_bay/shuttle_1)
 "aPO" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/weapon/storage/firstaid/stab,
+/obj/item/storage/firstaid/stab,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -14754,7 +14754,7 @@
 /area/mining_colony/interior/shuttle_bay/shuttle_2)
 "aPS" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/weapon/storage/firstaid/stab,
+/obj/item/storage/firstaid/stab,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -14802,8 +14802,8 @@
 /area/mining_colony/interior/science)
 "aPY" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/device/healthanalyzer,
-/obj/item/device/rig_remover,
+/obj/item/healthanalyzer,
+/obj/item/rig_remover,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/security/infirmary)
 "aPZ" = (
@@ -14834,10 +14834,10 @@
 /area/mining_colony/interior/shuttle_bay/hangar)
 "aQe" = (
 /obj/structure/table/gamblingtable,
-/obj/item/weapon/spacecash/c100,
-/obj/item/weapon/spacecash/c10,
-/obj/item/weapon/spacecash/c20,
-/obj/item/weapon/spacecash/c50,
+/obj/item/spacecash/c100,
+/obj/item/spacecash/c10,
+/obj/item/spacecash/c20,
+/obj/item/spacecash/c50,
 /turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/surface)
 "aQf" = (
@@ -14846,12 +14846,12 @@
 /turf/simulated/floor/tiled/dark,
 /area/mining_colony/interior/hydrophonics)
 "aQg" = (
-/obj/item/weapon/fossil/bone,
+/obj/item/fossil/bone,
 /turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/surface)
 "aQh" = (
-/obj/item/weapon/haircomb/brush,
-/obj/item/weapon/mirror,
+/obj/item/haircomb/brush,
+/obj/item/mirror,
 /turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/surface)
 "aQi" = (
@@ -14892,12 +14892,12 @@
 /area/mining_colony/interior/shuttle_bay/shuttle_2)
 "aQp" = (
 /obj/structure/closet/secure_closet/guncabinet/sec_support,
-/obj/item/weapon/gun/projectile/automatic/pulse_rifle,
+/obj/item/gun/projectile/automatic/pulse_rifle,
 /obj/item/ammo_magazine/divet,
 /obj/item/ammo_magazine/divet,
 /obj/item/ammo_magazine/pulse,
 /obj/item/ammo_magazine/pulse,
-/obj/item/weapon/gun/projectile/divet,
+/obj/item/gun/projectile/divet,
 /obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/seccie_checkpoint_2)
@@ -14984,8 +14984,8 @@
 /area/mining_colony/interior/shuttle_bay/hangar)
 "aQA" = (
 /obj/structure/table/standard,
-/obj/item/weapon/dice,
-/obj/item/weapon/storage/pill_bottle/dice_nerd,
+/obj/item/dice,
+/obj/item/storage/pill_bottle/dice_nerd,
 /turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/surface)
 "aQB" = (
@@ -15009,7 +15009,7 @@
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/interior/shuttle_bay/shuttle_1)
 "aQD" = (
-/obj/item/weapon/fossil,
+/obj/item/fossil,
 /turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/surface)
 "aQE" = (
@@ -15152,8 +15152,8 @@
 	d2 = 2;
 	icon_state = "0-2"
 	},
-/obj/item/weapon/cell/force,
-/obj/item/weapon/cell/force,
+/obj/item/cell/force,
+/obj/item/cell/force,
 /turf/simulated/floor/dank/maint,
 /area/mining_colony/interior/mining/toolstorage)
 "aRa" = (
@@ -15169,20 +15169,20 @@
 /area/mining_colony/SCAF)
 "aRb" = (
 /obj/structure/table/rack,
-/obj/item/weapon/rig/security/pcsi,
-/obj/item/weapon/rig/security/pcsi,
-/obj/item/weapon/rig/security/pcsi,
-/obj/item/weapon/rig/security/pcsi,
+/obj/item/rig/security/pcsi,
+/obj/item/rig/security/pcsi,
+/obj/item/rig/security/pcsi,
+/obj/item/rig/security/pcsi,
 /obj/effect/floor_decal/industrial/outline/red,
 /obj/machinery/light,
-/obj/item/weapon/rig/security/pcsi,
+/obj/item/rig/security/pcsi,
 /turf/simulated/floor/dank/slides{
 	dir = 4
 	},
 /area/mining_colony/security/sec_armory)
 "aRc" = (
 /obj/structure/closet/secure_closet/security,
-/obj/item/weapon/gun/energy/taser,
+/obj/item/gun/energy/taser,
 /obj/item/clothing/accessory/badge{
 	badge_string = "Planetary Security"
 	},
@@ -15205,7 +15205,7 @@
 /area/mining_colony/interior/cargo)
 "aRe" = (
 /obj/structure/closet/secure_closet/security,
-/obj/item/weapon/gun/energy/taser,
+/obj/item/gun/energy/taser,
 /obj/item/clothing/accessory/badge{
 	badge_string = "Planetary Security"
 	},
@@ -15346,8 +15346,8 @@
 /area/mining_colony/surface)
 "aRv" = (
 /obj/structure/table/rack,
-/obj/item/weapon/storage/box/greenglowsticks,
-/obj/item/weapon/storage/box/greenglowsticks,
+/obj/item/storage/box/greenglowsticks,
+/obj/item/storage/box/greenglowsticks,
 /obj/effect/floor_decal/dank/outline,
 /turf/simulated/floor/concrete,
 /area/mining_colony/surface)
@@ -15361,8 +15361,8 @@
 /area/mining_colony/surface)
 "aRx" = (
 /obj/structure/table/rack,
-/obj/item/weapon/storage/box/glowsticks,
-/obj/item/weapon/storage/box/glowsticks,
+/obj/item/storage/box/glowsticks,
+/obj/item/storage/box/glowsticks,
 /obj/effect/floor_decal/dank/outline,
 /turf/simulated/floor/concrete,
 /area/mining_colony/surface)
@@ -15376,12 +15376,12 @@
 /area/mining_colony/surface)
 "aRz" = (
 /obj/structure/table/rack,
-/obj/item/device/flashlight/flare/glowstick,
-/obj/item/device/flashlight/flare/glowstick,
-/obj/item/device/flashlight/flare/glowstick,
-/obj/item/device/flashlight/flare/glowstick,
-/obj/item/device/flashlight/flare/glowstick,
-/obj/item/device/flashlight/flare/glowstick,
+/obj/item/flashlight/flare/glowstick,
+/obj/item/flashlight/flare/glowstick,
+/obj/item/flashlight/flare/glowstick,
+/obj/item/flashlight/flare/glowstick,
+/obj/item/flashlight/flare/glowstick,
+/obj/item/flashlight/flare/glowstick,
 /obj/effect/floor_decal/dank/outline,
 /turf/simulated/floor/concrete,
 /area/mining_colony/surface)
@@ -15679,8 +15679,8 @@
 /area/mining_colony/interior/medbay/med_ward)
 "aSs" = (
 /obj/structure/table/rack,
-/obj/item/weapon/tank/emergency/oxygen/double,
-/obj/item/weapon/tank/emergency/oxygen/double,
+/obj/item/tank/emergency/oxygen/double,
+/obj/item/tank/emergency/oxygen/double,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/enginieering/airlock)
 "aSt" = (
@@ -15785,7 +15785,7 @@
 /turf/simulated/floor/tiled/freezer,
 /area/mining_colony/interior/clean)
 "aSH" = (
-/obj/item/weapon/caution/cone,
+/obj/item/caution/cone,
 /turf/simulated/floor/concrete,
 /area/mining_colony/surface)
 "aSI" = (
@@ -16025,8 +16025,8 @@
 /area/mining_colony/interior/science/researchandev)
 "aTj" = (
 /obj/structure/table/standard,
-/obj/item/weapon/paper_bin,
-/obj/item/weapon/pen/multi,
+/obj/item/paper_bin,
+/obj/item/pen/multi,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/mining/foremanoffice)
 "aTk" = (
@@ -16217,8 +16217,8 @@
 /turf/simulated/floor/tiled/white,
 /area/mining_colony/interior/science/lockeroom)
 "aTD" = (
-/obj/item/weapon/storage/box/masks,
-/obj/item/weapon/storage/box/gloves,
+/obj/item/storage/box/masks,
+/obj/item/storage/box/gloves,
 /obj/structure/table/standard,
 /obj/structure/cable{
 	d1 = 4;
@@ -16620,7 +16620,7 @@
 "aUo" = (
 /obj/structure/table/standard,
 /obj/random/toy,
-/obj/item/device/geiger,
+/obj/item/geiger,
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
@@ -16691,7 +16691,7 @@
 /obj/effect/floor_decal/dank/mono_tri{
 	dir = 8
 	},
-/obj/item/device/radio/intercom/department/security{
+/obj/item/radio/intercom/department/security{
 	pixel_y = 31;
 	pixel_x = 2
 	},
@@ -16805,13 +16805,13 @@
 /area/mining_colony/interior/civ_hall)
 "aUG" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/weapon/paper_bin{
+/obj/item/paper_bin{
 	pixel_y = 4
 	},
-/obj/item/weapon/pen/multi,
-/obj/item/weapon/pen/multi,
+/obj/item/pen/multi,
+/obj/item/pen/multi,
 /obj/effect/floor_decal/dank/mono_half,
-/obj/item/weapon/book/manual/earthgov_law,
+/obj/item/book/manual/earthgov_law,
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/interior/seccie_checkpoint_2)
 "aUH" = (
@@ -16892,7 +16892,7 @@
 /area/mining_colony/interior/clean)
 "aUU" = (
 /obj/structure/table/woodentable,
-/obj/item/weapon/flame/candle,
+/obj/item/flame/candle,
 /obj/machinery/camera/network/crew{
 	dir = 4
 	},
@@ -17208,8 +17208,8 @@
 /turf/simulated/floor/concrete,
 /area/mining_colony/surface)
 "aVB" = (
-/obj/item/weapon/storage/box/greenglowsticks,
-/obj/item/weapon/storage/box/greenglowsticks,
+/obj/item/storage/box/greenglowsticks,
+/obj/item/storage/box/greenglowsticks,
 /obj/structure/table/rack,
 /turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/surface)
@@ -17488,9 +17488,9 @@
 /area/mining_colony/abandoned/mining_prep/storage)
 "aWf" = (
 /obj/structure/table/rack,
-/obj/item/weapon/storage/chewables/candy/gum,
-/obj/item/weapon/storage/chewables/candy,
-/obj/item/weapon/storage/chewables,
+/obj/item/storage/chewables/candy/gum,
+/obj/item/storage/chewables/candy,
+/obj/item/storage/chewables,
 /obj/effect/floor_decal/dank/outline,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/abandoned/mining_prep/storage)
@@ -17504,7 +17504,7 @@
 /area/mining_colony/abandoned/mining_prep)
 "aWh" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/weapon/storage/toolbox/mechanical,
+/obj/item/storage/toolbox/mechanical,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/abandoned/mining_prep)
 "aWi" = (
@@ -17554,7 +17554,7 @@
 /area/mining_colony/interior/maint)
 "aWp" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/weapon/storage/toolbox/electrical,
+/obj/item/storage/toolbox/electrical,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/abandoned/mining_prep)
 "aWq" = (
@@ -17692,7 +17692,7 @@
 /area/mining_colony/surface)
 "aWN" = (
 /obj/structure/table/woodentable,
-/obj/item/weapon/flame/candle,
+/obj/item/flame/candle,
 /obj/machinery/camera/network/crew{
 	dir = 8
 	},
@@ -17785,13 +17785,13 @@
 "aXe" = (
 /obj/random/loot/usually/few,
 /obj/structure/table/rack,
-/obj/item/weapon/reagent_containers/spray/cleaner,
-/obj/item/weapon/reagent_containers/spray/cleaner,
-/obj/item/weapon/storage/box/lights/tubes,
-/obj/item/weapon/storage/box/lights/bulbs,
-/obj/item/device/lightreplacer,
+/obj/item/reagent_containers/spray/cleaner,
+/obj/item/reagent_containers/spray/cleaner,
+/obj/item/storage/box/lights/tubes,
+/obj/item/storage/box/lights/bulbs,
+/obj/item/lightreplacer,
 /obj/machinery/light,
-/obj/item/weapon/staff/broom,
+/obj/item/staff/broom,
 /turf/simulated/floor/plating,
 /area/mining_colony/interior/janitor)
 "aXf" = (
@@ -18024,12 +18024,12 @@
 /area/mining_colony/abandoned/mining_prep/electronics)
 "aXR" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/weapon/computer_hardware/hard_drive/advanced,
-/obj/item/weapon/computer_hardware/hard_drive/micro,
-/obj/item/weapon/computer_hardware/battery_module/micro,
-/obj/item/weapon/computer_hardware/processor_unit,
-/obj/item/weapon/computer_hardware/network_card/advanced,
-/obj/item/weapon/disk/tech_disk,
+/obj/item/computer_hardware/hard_drive/advanced,
+/obj/item/computer_hardware/hard_drive/micro,
+/obj/item/computer_hardware/battery_module/micro,
+/obj/item/computer_hardware/processor_unit,
+/obj/item/computer_hardware/network_card/advanced,
+/obj/item/disk/tech_disk,
 /turf/simulated/floor/dank/maint,
 /area/mining_colony/abandoned/mining_prep/electronics)
 "aXS" = (
@@ -18057,8 +18057,8 @@
 /area/mining_colony/abandoned/mining_prep/electronics)
 "aXW" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/weapon/circuitboard/broken,
-/obj/item/weapon/circuitboard/batteryrack,
+/obj/item/circuitboard/broken,
+/obj/item/circuitboard/batteryrack,
 /obj/machinery/power/apc{
 	dir = 4;
 	name = "east bump";
@@ -18090,8 +18090,8 @@
 /area/mining_colony/interior/maint)
 "aYc" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/weapon/tool/screwdriver/electric,
-/obj/item/weapon/tool/multitool,
+/obj/item/tool/screwdriver/electric,
+/obj/item/tool/multitool,
 /turf/simulated/floor/dank/maint,
 /area/mining_colony/abandoned/mining_prep/electronics)
 "aYd" = (
@@ -18114,7 +18114,7 @@
 	health = 1e+006
 	},
 /obj/structure/table/standard,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/oiljug,
+/obj/item/reagent_containers/food/drinks/bottle/oiljug,
 /turf/simulated/floor/dank/golf_gray,
 /area/mining_colony/abandoned/hydro)
 "aYg" = (
@@ -18274,7 +18274,7 @@
 "aYH" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/dank/outline,
-/obj/item/weapon/cell/device/high,
+/obj/item/cell/device/high,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/abandoned/mining_prep/electronics)
 "aYI" = (
@@ -18487,13 +18487,13 @@
 "aZk" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/dank/outline,
-/obj/item/weapon/cell/high,
+/obj/item/cell/high,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/abandoned/mining_prep/electronics)
 "aZl" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/dank/outline,
-/obj/item/weapon/coilgun_assembly,
+/obj/item/coilgun_assembly,
 /obj/machinery/light,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/abandoned/mining_prep/electronics)
@@ -18909,8 +18909,8 @@
 /area/mining_colony/interior/kitchen_area)
 "bah" = (
 /obj/structure/table/rack/dark,
-/obj/item/weapon/shield/riot,
-/obj/item/weapon/shield/riot,
+/obj/item/shield/riot,
+/obj/item/shield/riot,
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
@@ -19245,7 +19245,7 @@
 	pixel_y = 15;
 	req_access = list(201)
 	},
-/obj/item/weapon/gun/energy/taser,
+/obj/item/gun/energy/taser,
 /obj/item/clothing/accessory/badge{
 	badge_string = "Planetary Security"
 	},
@@ -19506,15 +19506,15 @@
 /area/mining_colony/interior/cargo/logistics)
 "bbn" = (
 /obj/structure/table/woodentable,
-/obj/item/weapon/paper_bin,
-/obj/item/weapon/pen/multi,
+/obj/item/paper_bin,
+/obj/item/pen/multi,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/cargo/officerarea)
 "bbo" = (
 /obj/structure/table/woodentable,
-/obj/item/weapon/stamp/denied,
-/obj/item/weapon/stamp/so,
-/obj/item/weapon/folder/yellow,
+/obj/item/stamp/denied,
+/obj/item/stamp/so,
+/obj/item/folder/yellow,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/cargo/officerarea)
 "bbp" = (
@@ -19553,7 +19553,7 @@
 "bbr" = (
 /obj/effect/floor_decal/industrial/outline/red,
 /obj/structure/closet/bombcloset,
-/obj/item/weapon/storage/toolbox/syndicate,
+/obj/item/storage/toolbox/syndicate,
 /obj/machinery/light,
 /turf/simulated/floor/dank/slides{
 	dir = 4
@@ -19856,7 +19856,7 @@
 /area/mining_colony/interior/cargo/storage_upper)
 "bbS" = (
 /obj/structure/closet/secure_closet/security,
-/obj/item/weapon/gun/energy/taser,
+/obj/item/gun/energy/taser,
 /obj/item/clothing/accessory/badge{
 	badge_string = "Planetary Security"
 	},
@@ -20313,7 +20313,7 @@
 	d2 = 2;
 	icon_state = "0-2"
 	},
-/obj/item/device/radio/intercom/department/medbay{
+/obj/item/radio/intercom/department/medbay{
 	dir = 8;
 	pixel_x = 21
 	},
@@ -20508,7 +20508,7 @@
 	d2 = 2;
 	icon_state = "0-2"
 	},
-/obj/item/device/radio/intercom/department/medbay{
+/obj/item/radio/intercom/department/medbay{
 	dir = 8;
 	pixel_x = 21
 	},
@@ -20755,7 +20755,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/item/device/radio/intercom/department/medbay{
+/obj/item/radio/intercom/department/medbay{
 	dir = 1;
 	pixel_y = -30
 	},
@@ -20950,8 +20950,8 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/item/weapon/tank/emergency/oxygen/double,
-/obj/item/weapon/tank/emergency/oxygen/double,
+/obj/item/tank/emergency/oxygen/double,
+/obj/item/tank/emergency/oxygen/double,
 /turf/simulated/floor/dank/rectangles,
 /area/mining_colony/interior/mining/airlock)
 "bdT" = (
@@ -21497,7 +21497,7 @@
 	},
 /obj/structure/closet/secure_closet/planet_cracker,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/weapon/towel/random,
+/obj/item/towel/random,
 /turf/simulated/floor/dank/rectangles,
 /area/mining_colony/interior/mining/lockeroom)
 "beU" = (
@@ -21618,7 +21618,7 @@
 "bfl" = (
 /obj/structure/closet/secure_closet/DOM,
 /obj/item/modular_computer/tablet/lease/preset/command,
-/obj/item/device/megaphone,
+/obj/item/megaphone,
 /obj/machinery/keycard_auth{
 	pixel_y = 26
 	},
@@ -21637,21 +21637,21 @@
 	dir = 8
 	},
 /obj/structure/table/standard,
-/obj/item/weapon/book/manual/barman_recipes,
-/obj/item/weapon/reagent_containers/glass/rag,
-/obj/item/weapon/reagent_containers/food/drinks/shaker,
-/obj/item/weapon/reagent_containers/food/drinks/pitcher,
-/obj/item/weapon/reagent_containers/food/drinks/coffeecup,
-/obj/item/weapon/reagent_containers/food/drinks/coffeecup,
-/obj/item/weapon/reagent_containers/food/drinks/coffeecup,
-/obj/item/weapon/reagent_containers/food/drinks/coffeecup,
+/obj/item/book/manual/barman_recipes,
+/obj/item/reagent_containers/glass/rag,
+/obj/item/reagent_containers/food/drinks/shaker,
+/obj/item/reagent_containers/food/drinks/pitcher,
+/obj/item/reagent_containers/food/drinks/coffeecup,
+/obj/item/reagent_containers/food/drinks/coffeecup,
+/obj/item/reagent_containers/food/drinks/coffeecup,
+/obj/item/reagent_containers/food/drinks/coffeecup,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/bartenderarea)
 "bfo" = (
 /obj/structure/table/steel,
 /obj/random/snack,
-/obj/item/weapon/storage/box/greenglowsticks,
-/obj/item/weapon/storage/box/greenglowsticks,
+/obj/item/storage/box/greenglowsticks,
+/obj/item/storage/box/greenglowsticks,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/enginieering/main_room)
 "bfp" = (
@@ -21672,9 +21672,9 @@
 /area/mining_colony/abandoned/storage)
 "bfr" = (
 /obj/structure/table/steel,
-/obj/item/weapon/folder,
-/obj/item/weapon/pen,
-/obj/item/weapon/paper/monitorkey,
+/obj/item/folder,
+/obj/item/pen,
+/obj/item/paper/monitorkey,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/mining_colony/interior/enginieering/telecomms_control)
 "bfs" = (
@@ -21764,9 +21764,9 @@
 "bfC" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/dank/outline,
-/obj/item/weapon/storage/briefcase/inflatable,
-/obj/item/weapon/storage/briefcase/inflatable,
-/obj/item/weapon/storage/briefcase/inflatable,
+/obj/item/storage/briefcase/inflatable,
+/obj/item/storage/briefcase/inflatable,
+/obj/item/storage/briefcase/inflatable,
 /turf/simulated/floor/dank/slides,
 /area/mining_colony/interior/enginieering/main_room)
 "bfD" = (
@@ -21774,7 +21774,7 @@
 /area/mining_colony/interior)
 "bfE" = (
 /obj/structure/table/steel,
-/obj/item/weapon/book/manual/engineering_construction,
+/obj/item/book/manual/engineering_construction,
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
@@ -21860,8 +21860,8 @@
 /turf/simulated/floor/dank/slides,
 /area/mining_colony/interior/enginieering/main_room)
 "bfL" = (
-/obj/item/weapon/shield/riot,
-/obj/item/weapon/gun/projectile/shotgun/bola_lancher,
+/obj/item/shield/riot,
+/obj/item/gun/projectile/shotgun/bola_lancher,
 /obj/item/ammo_magazine/pulse,
 /obj/item/ammo_magazine/pulse,
 /obj/item/ammo_magazine/shotgun,
@@ -21869,7 +21869,7 @@
 /obj/structure/closet/secure_closet/guncabinet{
 	anchored = 1
 	},
-/obj/item/weapon/gun/projectile/automatic/pulse_heavy,
+/obj/item/gun/projectile/automatic/pulse_heavy,
 /obj/machinery/light,
 /obj/item/ammo_magazine/divet,
 /obj/item/ammo_magazine/divet,
@@ -21899,9 +21899,9 @@
 "bfO" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/dank/outline,
-/obj/item/weapon/storage/toolbox/electrical,
-/obj/item/weapon/storage/toolbox/mechanical,
-/obj/item/weapon/storage/toolbox/emergency,
+/obj/item/storage/toolbox/electrical,
+/obj/item/storage/toolbox/mechanical,
+/obj/item/storage/toolbox/emergency,
 /turf/simulated/floor/dank/maint,
 /area/mining_colony/interior/enginieering/main_room)
 "bfP" = (
@@ -22003,8 +22003,8 @@
 "bgb" = (
 /obj/effect/floor_decal/industrial/outline/red,
 /obj/structure/closet/l3closet/security,
-/obj/item/weapon/storage/briefcase/inflatable,
-/obj/item/weapon/storage/briefcase/inflatable,
+/obj/item/storage/briefcase/inflatable,
+/obj/item/storage/briefcase/inflatable,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/security)
 "bgc" = (
@@ -22043,8 +22043,8 @@
 /area/mining_colony/interior/apartament)
 "bgh" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/weapon/paper_bin,
-/obj/item/weapon/pen/multi,
+/obj/item/paper_bin,
+/obj/item/pen/multi,
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
@@ -22053,9 +22053,9 @@
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/abandoned/mining_prep/reception)
 "bgi" = (
-/obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer,
+/obj/item/reagent_containers/food/drinks/bottle/small/beer,
+/obj/item/reagent_containers/food/drinks/bottle/small/beer,
+/obj/item/reagent_containers/food/drinks/bottle/small/beer,
 /obj/structure/table/steel_reinforced,
 /obj/random/snack,
 /turf/simulated/floor/dank/golf_brown,
@@ -22103,9 +22103,9 @@
 "bgq" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/dank/outline,
-/obj/item/weapon/grenade/chem_grenade/metalfoam,
-/obj/item/weapon/grenade/chem_grenade/metalfoam,
-/obj/item/weapon/grenade/chem_grenade/metalfoam,
+/obj/item/grenade/chem_grenade/metalfoam,
+/obj/item/grenade/chem_grenade/metalfoam,
+/obj/item/grenade/chem_grenade/metalfoam,
 /turf/simulated/floor/dank/slides,
 /area/mining_colony/interior/enginieering/main_room)
 "bgr" = (
@@ -22125,13 +22125,13 @@
 /area/mining_colony/abandoned/mining_prep/shower)
 "bgt" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer{
+/obj/item/reagent_containers/food/drinks/bottle/small/beer{
 	pixel_x = 6
 	},
-/obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer{
+/obj/item/reagent_containers/food/drinks/bottle/small/beer{
 	pixel_y = 6
 	},
-/obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer{
+/obj/item/reagent_containers/food/drinks/bottle/small/beer{
 	pixel_x = -6
 	},
 /turf/simulated/floor/dank/mono,
@@ -22370,9 +22370,9 @@
 /area/mining_colony/security/sec_firingrange)
 "bgX" = (
 /obj/structure/table/rack,
-/obj/item/weapon/gun/projectile/sec/wood,
-/obj/item/weapon/gun/projectile/sec/wood,
-/obj/item/weapon/gun/projectile/sec/wood,
+/obj/item/gun/projectile/sec/wood,
+/obj/item/gun/projectile/sec/wood,
+/obj/item/gun/projectile/sec/wood,
 /obj/effect/floor_decal/dank/outline,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/security/sec_firingrange)
@@ -22420,13 +22420,13 @@
 /area/mining_colony/security/sec_firingrange)
 "bhd" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer{
+/obj/item/reagent_containers/food/drinks/bottle/small/beer{
 	pixel_x = 6
 	},
-/obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer{
+/obj/item/reagent_containers/food/drinks/bottle/small/beer{
 	pixel_y = 6
 	},
-/obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer{
+/obj/item/reagent_containers/food/drinks/bottle/small/beer{
 	pixel_x = -6
 	},
 /obj/machinery/light{
@@ -22435,7 +22435,7 @@
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/security/sec_firingrange)
 "bhe" = (
-/obj/item/weapon/book/manual/rust_engine,
+/obj/item/book/manual/rust_engine,
 /obj/structure/table/steel,
 /obj/structure/cable/green{
 	d1 = 1;
@@ -22531,9 +22531,9 @@
 /area/mining_colony/interior/medbay/CMOoffice)
 "bhm" = (
 /obj/machinery/photocopier,
-/obj/item/device/toner,
-/obj/item/device/toner,
-/obj/item/device/toner,
+/obj/item/toner,
+/obj/item/toner,
+/obj/item/toner,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/cargo/officerarea)
 "bhn" = (
@@ -22654,7 +22654,7 @@
 /area/mining_colony/c12_deadspace/interior)
 "bhB" = (
 /obj/structure/bed,
-/obj/item/weapon/bedsheet/brown,
+/obj/item/bedsheet/brown,
 /turf/simulated/floor/wood,
 /area/mining_colony/abandoned/mining_prep/dormitories)
 "bhC" = (
@@ -22737,7 +22737,7 @@
 	},
 /obj/structure/closet/secure_closet/planet_cracker,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/weapon/towel/random,
+/obj/item/towel/random,
 /turf/simulated/floor/dank/rectangles,
 /area/mining_colony/interior/mining/lockeroom)
 "bhL" = (
@@ -22752,7 +22752,7 @@
 /obj/structure/closet/secure_closet/planet_cracker,
 /obj/machinery/light,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/weapon/towel/random,
+/obj/item/towel/random,
 /turf/simulated/floor/dank/rectangles,
 /area/mining_colony/interior/mining/lockeroom)
 "bhM" = (
@@ -22764,15 +22764,15 @@
 /area/mining_colony/interior/mining/foremanoffice)
 "bhN" = (
 /obj/structure/table/standard,
-/obj/item/weapon/stamp/denied,
-/obj/item/weapon/stamp/dom,
-/obj/item/weapon/clipboard,
+/obj/item/stamp/denied,
+/obj/item/stamp/dom,
+/obj/item/clipboard,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/mining/directoroffice)
 "bhO" = (
 /obj/structure/table/standard,
-/obj/item/weapon/paper_bin,
-/obj/item/weapon/pen/multi,
+/obj/item/paper_bin,
+/obj/item/pen/multi,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/mining/directoroffice)
 "bhP" = (
@@ -22921,8 +22921,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/mining_colony/interior/plaza)
 "bic" = (
-/obj/item/device/healthanalyzer,
-/obj/item/weapon/storage/firstaid/stab,
+/obj/item/healthanalyzer,
+/obj/item/storage/firstaid/stab,
 /obj/structure/table/standard,
 /turf/simulated/floor/tiled/white,
 /area/mining_colony/interior/medbay)
@@ -23008,7 +23008,7 @@
 /area/mining_colony/interior/plaza)
 "bio" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/cola,
+/obj/item/reagent_containers/food/drinks/bottle/cola,
 /obj/random/drinkbottle,
 /obj/random/drinkbottle,
 /obj/random/drinkbottle,
@@ -23048,7 +23048,7 @@
 /area/mining_colony/interior/enginieering/main_room)
 "biv" = (
 /obj/structure/table/steel,
-/obj/item/weapon/book/manual/engineering_guide,
+/obj/item/book/manual/engineering_guide,
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
@@ -23322,7 +23322,7 @@
 /turf/simulated/floor/dank/maint,
 /area/mining_colony/interior/enginieering/lobby)
 "bjj" = (
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 8;
 	pixel_x = 21
 	},
@@ -23675,13 +23675,13 @@
 /area/mining_colony/interior/enginieering/reception)
 "bkc" = (
 /obj/structure/table/steel,
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/circuits,
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/components,
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/computer,
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/devices,
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/misc,
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/tools,
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/robustcells,
+/obj/item/computer_hardware/hard_drive/portable/design/circuits,
+/obj/item/computer_hardware/hard_drive/portable/design/components,
+/obj/item/computer_hardware/hard_drive/portable/design/computer,
+/obj/item/computer_hardware/hard_drive/portable/design/devices,
+/obj/item/computer_hardware/hard_drive/portable/design/misc,
+/obj/item/computer_hardware/hard_drive/portable/design/tools,
+/obj/item/computer_hardware/hard_drive/portable/design/robustcells,
 /obj/machinery/camera/network/engineering,
 /turf/simulated/floor/dank/rectangles,
 /area/mining_colony/interior/enginieering/lathe_room)
@@ -23706,8 +23706,8 @@
 /area/mining_colony/interior/enginieering/reception)
 "bkg" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/paper_bin,
-/obj/item/weapon/pen/multi,
+/obj/item/paper_bin,
+/obj/item/pen/multi,
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/interior/enginieering/reception)
 "bkh" = (
@@ -23735,8 +23735,8 @@
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/interior/enginieering/reception)
 "bkl" = (
-/obj/item/weapon/stamp/denied,
-/obj/item/weapon/stamp/engineering,
+/obj/item/stamp/denied,
+/obj/item/stamp/engineering,
 /obj/structure/table/reinforced,
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/interior/enginieering/reception)
@@ -23803,7 +23803,7 @@
 /area/mining_colony/abandoned/mining_prep/reception)
 "bky" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/weapon/towel/random,
+/obj/item/towel/random,
 /turf/simulated/floor/dank/maint,
 /area/mining_colony/abandoned/mining_prep/shower)
 "bkz" = (
@@ -23839,9 +23839,9 @@
 /area/mining_colony/abandoned/mining_prep/locker_room)
 "bkG" = (
 /obj/machinery/photocopier,
-/obj/item/device/toner,
-/obj/item/device/toner,
-/obj/item/device/toner,
+/obj/item/toner,
+/obj/item/toner,
+/obj/item/toner,
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/abandoned/mining_prep/reception)
 "bkH" = (
@@ -23866,7 +23866,7 @@
 	},
 /obj/effect/floor_decal/dank/outline_striped,
 /obj/structure/closet/secure_closet/personal/empty,
-/obj/item/weapon/bikehorn/airhorn,
+/obj/item/bikehorn/airhorn,
 /turf/simulated/floor/wood,
 /area/mining_colony/abandoned/mining_prep/dormitories)
 "bkL" = (
@@ -23877,8 +23877,8 @@
 /area/mining_colony/abandoned/mining_prep/dormitories)
 "bkM" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/weapon/tool/crowbar,
-/obj/item/weapon/tool/screwdriver,
+/obj/item/tool/crowbar,
+/obj/item/tool/screwdriver,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/surface)
 "bkN" = (
@@ -23997,11 +23997,11 @@
 "blk" = (
 /obj/random/loot/usually/few,
 /obj/structure/table/rack,
-/obj/item/weapon/reagent_containers/spray/cleaner,
-/obj/item/weapon/reagent_containers/spray/cleaner,
-/obj/item/weapon/storage/box/lights/tubes,
-/obj/item/weapon/storage/box/lights/bulbs,
-/obj/item/device/lightreplacer,
+/obj/item/reagent_containers/spray/cleaner,
+/obj/item/reagent_containers/spray/cleaner,
+/obj/item/storage/box/lights/tubes,
+/obj/item/storage/box/lights/bulbs,
+/obj/item/lightreplacer,
 /turf/simulated/floor/plating,
 /area/mining_colony/interior/janitor)
 "bll" = (
@@ -24015,26 +24015,26 @@
 /area/mining_colony/interior/plaza)
 "blm" = (
 /obj/structure/janitorialcart,
-/obj/item/weapon/reagent_containers/glass/bucket,
-/obj/item/weapon/mop,
+/obj/item/reagent_containers/glass/bucket,
+/obj/item/mop,
 /turf/simulated/floor/plating,
 /area/mining_colony/interior/janitor)
 "bln" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/box/detergent,
-/obj/item/weapon/storage/box/detergent,
-/obj/item/weapon/storage/box/detergent,
-/obj/item/weapon/storage/box/detergent,
+/obj/item/storage/box/detergent,
+/obj/item/storage/box/detergent,
+/obj/item/storage/box/detergent,
+/obj/item/storage/box/detergent,
 /turf/simulated/floor/tiled/freezer,
 /area/mining_colony/interior/clean)
 "blo" = (
 /obj/structure/table/standard,
-/obj/item/weapon/reagent_containers/spray/cleaner,
+/obj/item/reagent_containers/spray/cleaner,
 /obj/machinery/firealarm{
 	dir = 1;
 	pixel_y = -35
 	},
-/obj/item/weapon/soap/deluxe,
+/obj/item/soap/deluxe,
 /turf/simulated/floor/tiled/freezer,
 /area/mining_colony/interior/clean)
 "blp" = (
@@ -24240,7 +24240,7 @@
 "blQ" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/clothing/head/welding/engie,
-/obj/item/weapon/tool/weldingtool,
+/obj/item/tool/weldingtool,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/surface)
 "blR" = (
@@ -24251,10 +24251,10 @@
 "blS" = (
 /obj/structure/table/standard,
 /obj/machinery/light,
-/obj/item/device/taperecorder,
-/obj/item/device/tape,
-/obj/item/device/tape,
-/obj/item/device/tape,
+/obj/item/taperecorder,
+/obj/item/tape,
+/obj/item/tape,
+/obj/item/tape,
 /turf/simulated/floor/dank/golf_gray,
 /area/mining_colony/security/interrogation_room)
 "blT" = (
@@ -24263,18 +24263,18 @@
 	},
 /obj/effect/floor_decal/industrial/outline/red,
 /obj/structure/table/standard,
-/obj/item/device/camera,
-/obj/item/device/camera_film,
-/obj/item/device/camera_film,
-/obj/item/device/camera_film,
+/obj/item/camera,
+/obj/item/camera_film,
+/obj/item/camera_film,
+/obj/item/camera_film,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/security)
 "blU" = (
 /obj/effect/floor_decal/industrial/outline/red,
 /obj/structure/table/standard,
-/obj/item/device/tape,
-/obj/item/device/tape,
-/obj/item/device/taperecorder,
+/obj/item/tape,
+/obj/item/tape,
+/obj/item/taperecorder,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/security)
 "blV" = (
@@ -24326,8 +24326,8 @@
 /obj/effect/floor_decal/dank/mono_tri{
 	dir = 4
 	},
-/obj/item/weapon/storage/firstaid/adv,
-/obj/item/weapon/storage/box/smokes,
+/obj/item/storage/firstaid/adv,
+/obj/item/storage/box/smokes,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/seccie_checkpoint_2)
 "bmb" = (
@@ -24374,7 +24374,7 @@
 /area/mining_colony/interior/seccie_checkpoint_2)
 "bmg" = (
 /obj/structure/table/rack,
-/obj/item/weapon/storage/briefcase/inflatable,
+/obj/item/storage/briefcase/inflatable,
 /obj/random/tool,
 /obj/random/tool,
 /turf/simulated/floor/dank/slides{
@@ -24387,7 +24387,7 @@
 "bmi" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/recharger,
-/obj/item/weapon/handcuffs,
+/obj/item/handcuffs,
 /obj/effect/floor_decal/dank/mono_half{
 	dir = 1
 	},
@@ -24395,7 +24395,7 @@
 /obj/machinery/camera/network/security{
 	dir = 8
 	},
-/obj/item/weapon/reagent_containers/food/drinks/coffeecup/black,
+/obj/item/reagent_containers/food/drinks/coffeecup/black,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/seccie_checkpoint_2)
 "bmj" = (
@@ -24463,8 +24463,8 @@
 /area/mining_colony/interior/apartament)
 "bmq" = (
 /obj/structure/table/woodentable,
-/obj/item/weapon/clipboard,
-/obj/item/weapon/reagent_containers/food/drinks/coffeecup/one,
+/obj/item/clipboard,
+/obj/item/reagent_containers/food/drinks/coffeecup/one,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/cargo/officerarea)
 "bmr" = (
@@ -24558,13 +24558,13 @@
 /area/mining_colony/interior/apartament)
 "bmD" = (
 /obj/structure/closet/secure_closet/medical4,
-/obj/item/weapon/storage/firstaid/surgery,
+/obj/item/storage/firstaid/surgery,
 /obj/item/clothing/head/surgery/blue,
 /turf/simulated/floor/dank/medical,
 /area/mining_colony/interior/medbay/surgery1)
 "bmE" = (
 /obj/structure/closet/secure_closet/medical4,
-/obj/item/weapon/storage/firstaid/surgery,
+/obj/item/storage/firstaid/surgery,
 /obj/item/clothing/head/surgery/blue,
 /turf/simulated/floor/dank/medical,
 /area/mining_colony/interior/medbay/surgery2)
@@ -24661,7 +24661,7 @@
 /area/mining_colony/security/interrogation_room)
 "bmQ" = (
 /obj/structure/iv_drip,
-/obj/item/weapon/reagent_containers/ivbag/blood/OMinus,
+/obj/item/reagent_containers/ivbag/blood/OMinus,
 /obj/machinery/firealarm{
 	dir = 4;
 	icon_state = "fire0";
@@ -24676,7 +24676,7 @@
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/medbay/med_ward)
 "bmS" = (
-/obj/item/weapon/storage/pill_bottle/assorted,
+/obj/item/storage/pill_bottle/assorted,
 /obj/structure/table/rack,
 /obj/structure/window/reinforced{
 	dir = 1;
@@ -24701,7 +24701,7 @@
 /area/mining_colony/security/infirmary)
 "bmV" = (
 /obj/structure/table/rack,
-/obj/item/weapon/storage/firstaid/regular,
+/obj/item/storage/firstaid/regular,
 /obj/structure/window/reinforced{
 	dir = 1;
 	icon_state = "rwindow"
@@ -24730,10 +24730,10 @@
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/medbay/med_ward)
 "bmY" = (
-/obj/item/weapon/storage/pill_bottle/dexalin_plus,
-/obj/item/weapon/storage/pill_bottle/inaprovaline,
+/obj/item/storage/pill_bottle/dexalin_plus,
+/obj/item/storage/pill_bottle/inaprovaline,
 /obj/structure/table/rack,
-/obj/item/weapon/storage/pill_bottle/tricordrazine,
+/obj/item/storage/pill_bottle/tricordrazine,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/security/infirmary)
 "bmZ" = (
@@ -24741,7 +24741,7 @@
 /area/mining_colony/security/infirmary)
 "bna" = (
 /obj/structure/table/rack,
-/obj/item/weapon/storage/firstaid/stab,
+/obj/item/storage/firstaid/stab,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/security/infirmary)
 "bnb" = (
@@ -24815,8 +24815,8 @@
 /area/mining_colony/interior/enginieering/air_storage)
 "bnj" = (
 /obj/structure/table/woodentable,
-/obj/item/weapon/pen/multi,
-/obj/item/weapon/paper_bin,
+/obj/item/pen/multi,
+/obj/item/paper_bin,
 /obj/machinery/light{
 	dir = 8
 	},
@@ -24916,7 +24916,7 @@
 	icon_state = "cola";
 	name = "randomly spawned cola";
 	spawn_nothing_percentage = 50;
-	spawn_object = /obj/item/weapon/reagent_containers/food/drinks/cans/cola
+	spawn_object = /obj/item/reagent_containers/food/drinks/cans/cola
 	},
 /turf/simulated/floor/wood,
 /area/mining_colony/interior/messy_hall)
@@ -24935,7 +24935,7 @@
 	icon_state = "cola";
 	name = "randomly spawned cola";
 	spawn_nothing_percentage = 50;
-	spawn_object = /obj/item/weapon/reagent_containers/food/drinks/cans/cola
+	spawn_object = /obj/item/reagent_containers/food/drinks/cans/cola
 	},
 /turf/simulated/floor/wood,
 /area/mining_colony/interior/messy_hall)
@@ -24950,10 +24950,10 @@
 /obj/item/clothing/suit/storage/toggle/ems,
 /obj/item/clothing/suit/storage/toggle/hoodie/black,
 /obj/item/clothing/suit/storage/toggle/suit/blue,
-/obj/item/weapon/lipstick/random,
-/obj/item/weapon/lipstick/random,
-/obj/item/weapon/lipstick/random,
-/obj/item/weapon/lipstick/random,
+/obj/item/lipstick/random,
+/obj/item/lipstick/random,
+/obj/item/lipstick/random,
+/obj/item/lipstick/random,
 /turf/simulated/floor/dank/heavy,
 /area/mining_colony/interior/apartament)
 "bnB" = (
@@ -24973,7 +24973,7 @@
 /turf/simulated/floor/dank/rectangles,
 /area/mining_colony/interior/enginieering/supply_storage)
 "bnE" = (
-/obj/item/weapon/caution/cone,
+/obj/item/caution/cone,
 /turf/simulated/floor/tiled/dark,
 /area/mining_colony/interior)
 "bnF" = (
@@ -24993,7 +24993,7 @@
 /turf/simulated/floor/tiled/freezer,
 /area/mining_colony/interior/clean)
 "bnH" = (
-/obj/item/weapon/broken_bottle,
+/obj/item/broken_bottle,
 /turf/simulated/floor/tiled/dark,
 /area/mining_colony/interior)
 "bnI" = (
@@ -25111,16 +25111,16 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/item/weapon/caution/cone,
-/obj/item/weapon/caution/cone,
-/obj/item/weapon/caution/cone,
-/obj/item/weapon/caution/cone,
-/obj/item/weapon/caution/cone,
-/obj/item/weapon/caution/cone,
-/obj/item/weapon/caution/cone,
-/obj/item/weapon/caution/cone,
-/obj/item/weapon/caution/cone,
-/obj/item/weapon/caution/cone,
+/obj/item/caution/cone,
+/obj/item/caution/cone,
+/obj/item/caution/cone,
+/obj/item/caution/cone,
+/obj/item/caution/cone,
+/obj/item/caution/cone,
+/obj/item/caution/cone,
+/obj/item/caution/cone,
+/obj/item/caution/cone,
+/obj/item/caution/cone,
 /obj/structure/table/rack,
 /turf/simulated/floor/dank/maint_left,
 /area/mining_colony/interior/enginieering/smes)
@@ -25222,7 +25222,7 @@
 /area/mining_colony/interior/kellion_arrival)
 "bop" = (
 /obj/effect/floor_decal/industrial/warning/corner,
-/obj/item/weapon/caution/cone,
+/obj/item/caution/cone,
 /turf/simulated/floor,
 /area/mining_colony/interior/kellion_arrival)
 "boq" = (
@@ -25230,21 +25230,21 @@
 	dir = 8;
 	icon_state = "warningcorner"
 	},
-/obj/item/weapon/caution/cone,
+/obj/item/caution/cone,
 /turf/simulated/floor,
 /area/mining_colony/interior/kellion_arrival)
 "bor" = (
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 4
 	},
-/obj/item/weapon/caution/cone,
+/obj/item/caution/cone,
 /turf/simulated/floor,
 /area/mining_colony/interior/kellion_arrival)
 "bos" = (
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 1
 	},
-/obj/item/weapon/caution/cone,
+/obj/item/caution/cone,
 /turf/simulated/floor,
 /area/mining_colony/interior/kellion_arrival)
 "bot" = (
@@ -25279,7 +25279,7 @@
 /area/mining_colony/interior/seccie_checkpoint_2)
 "boy" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/weapon/folder/blue,
+/obj/item/folder/blue,
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/abandoned/mining_prep/reception)
 "boz" = (
@@ -25336,7 +25336,7 @@
 /area/mining_colony/security/sec_resting)
 "boF" = (
 /obj/structure/table/standard,
-/obj/item/weapon/reagent_containers/spray/cleaner,
+/obj/item/reagent_containers/spray/cleaner,
 /obj/machinery/camera/network/medbay,
 /turf/simulated/floor/dank/medical,
 /area/mining_colony/interior/medbay/surgery2)
@@ -25446,7 +25446,7 @@
 /obj/machinery/camera/network/medbay{
 	dir = 4
 	},
-/obj/item/device/radio/intercom/department/medbay{
+/obj/item/radio/intercom/department/medbay{
 	dir = 4;
 	pixel_x = -21
 	},
@@ -25523,17 +25523,17 @@
 	name = "inconspicuous supply cabinet";
 	desc = "Yep. Nothing odd going on here. This cabinet definetly isnt hiding something"
 	},
-/obj/item/weapon/storage/box/glasses,
-/obj/item/weapon/storage/box/glasses/cocktail,
-/obj/item/weapon/storage/box/glasses/mug,
-/obj/item/weapon/storage/box/glasses/pint,
-/obj/item/weapon/storage/box/glasses/rocks,
-/obj/item/weapon/storage/box/glasses/shake,
-/obj/item/weapon/storage/box/glasses/shot,
-/obj/item/weapon/storage/box/glasses/square,
-/obj/item/weapon/storage/box/glasses/wine,
-/obj/item/weapon/storage/box/glass_extras/sticks,
-/obj/item/weapon/storage/box/glass_extras/straws,
+/obj/item/storage/box/glasses,
+/obj/item/storage/box/glasses/cocktail,
+/obj/item/storage/box/glasses/mug,
+/obj/item/storage/box/glasses/pint,
+/obj/item/storage/box/glasses/rocks,
+/obj/item/storage/box/glasses/shake,
+/obj/item/storage/box/glasses/shot,
+/obj/item/storage/box/glasses/square,
+/obj/item/storage/box/glasses/wine,
+/obj/item/storage/box/glass_extras/sticks,
+/obj/item/storage/box/glass_extras/straws,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/bartenderarea)
 "bpd" = (
@@ -25580,7 +25580,7 @@
 /area/mining_colony/interior/mining/directoroffice)
 "bpi" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/box/cups,
+/obj/item/storage/box/cups,
 /obj/machinery/camera/network/mining,
 /turf/simulated/floor/dank/rectangles,
 /area/mining_colony/interior/mining/randr)
@@ -25758,7 +25758,7 @@
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/cargo/logistics)
 "bpI" = (
-/obj/item/weapon/caution/cone,
+/obj/item/caution/cone,
 /turf/simulated/floor,
 /area/mining_colony/interior)
 "bpJ" = (
@@ -25943,8 +25943,8 @@
 /area/mining_colony/security/sec_storage)
 "bqf" = (
 /obj/structure/table/rack,
-/obj/item/weapon/reagent_containers/spray/cleaner,
-/obj/item/weapon/reagent_containers/spray/cleaner,
+/obj/item/reagent_containers/spray/cleaner,
+/obj/item/reagent_containers/spray/cleaner,
 /obj/machinery/light/small{
 	dir = 4
 	},
@@ -25977,14 +25977,14 @@
 /area/mining_colony/interior/cargo/storage_upper)
 "bqj" = (
 /obj/structure/closet/secure_closet/psychiatry,
-/obj/item/weapon/folder/white,
-/obj/item/device/taperecorder,
-/obj/item/device/tape,
-/obj/item/device/tape,
-/obj/item/weapon/storage/pill_bottle/citalopram,
-/obj/item/weapon/storage/pill_bottle/citalopram,
-/obj/item/weapon/storage/pill_bottle/citalopram,
-/obj/item/weapon/storage/pill_bottle/citalopram,
+/obj/item/folder/white,
+/obj/item/taperecorder,
+/obj/item/tape,
+/obj/item/tape,
+/obj/item/storage/pill_bottle/citalopram,
+/obj/item/storage/pill_bottle/citalopram,
+/obj/item/storage/pill_bottle/citalopram,
+/obj/item/storage/pill_bottle/citalopram,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/medbay/med_ward)
 "bqk" = (
@@ -26062,9 +26062,9 @@
 "bqu" = (
 /obj/machinery/light/small,
 /obj/structure/table/rack,
-/obj/item/device/flashlight/flare,
-/obj/item/device/flashlight/flare,
-/obj/item/device/flashlight/flare,
+/obj/item/flashlight/flare,
+/obj/item/flashlight/flare,
+/obj/item/flashlight/flare,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/excavation/interior)
 "bqv" = (
@@ -26149,10 +26149,10 @@
 /area/mining_colony/interior/enginieering/supply_storage)
 "bqE" = (
 /obj/structure/table/steel,
-/obj/item/device/camera,
-/obj/item/device/camera_film,
-/obj/item/device/camera_film,
-/obj/item/device/camera_film,
+/obj/item/camera,
+/obj/item/camera_film,
+/obj/item/camera_film,
+/obj/item/camera_film,
 /turf/simulated/floor/concrete,
 /area/mining_colony/surface)
 "bqF" = (
@@ -26213,7 +26213,7 @@
 /area/mining_colony/surface)
 "bqN" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/weapon/coin/diamond,
+/obj/item/coin/diamond,
 /obj/structure/ore_box,
 /turf/simulated/floor/dank/maint,
 /area/mining_colony/interior/mining/processing)
@@ -26367,13 +26367,13 @@
 /area/mining_colony/c12_deadspace)
 "brl" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/weapon/storage/lunchbox/cec/filled,
+/obj/item/storage/lunchbox/cec/filled,
 /turf/simulated/floor/dank/maint_right,
 /area/mining_colony/interior/enginieering/reactor_control)
 "brm" = (
 /obj/structure/table/steel,
 /obj/random/loot/usually/few,
-/obj/item/weapon/storage/lunchbox/cec/filled,
+/obj/item/storage/lunchbox/cec/filled,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/enginieering/main_room)
 "brn" = (
@@ -26422,7 +26422,7 @@
 /area/mining_colony/surface)
 "brt" = (
 /obj/machinery/suspension_gen,
-/obj/item/weapon/tool/wrench,
+/obj/item/tool/wrench,
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/concrete,
 /area/mining_colony/surface)
@@ -26432,22 +26432,22 @@
 /turf/simulated/floor/concrete,
 /area/mining_colony/surface)
 "brv" = (
-/obj/item/weapon/storage/box/greenglowsticks,
+/obj/item/storage/box/greenglowsticks,
 /obj/structure/table/steel,
 /obj/random/loot/usually/few,
 /turf/simulated/floor/concrete,
 /area/mining_colony/surface)
 "brw" = (
 /obj/structure/table/steel,
-/obj/item/device/gps,
-/obj/item/device/gps,
+/obj/item/gps,
+/obj/item/gps,
 /obj/random/loot/usually/few,
 /turf/simulated/floor/concrete,
 /area/mining_colony/surface)
 "brx" = (
 /obj/structure/table/steel,
-/obj/item/device/core_sampler,
-/obj/item/device/core_sampler,
+/obj/item/core_sampler,
+/obj/item/core_sampler,
 /obj/random/loot/usually/few,
 /turf/simulated/floor/concrete,
 /area/mining_colony/surface)
@@ -26909,33 +26909,33 @@
 /area/mining_colony/interior/shuttle_bay/shuttle_2)
 "bsZ" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/weapon/tool/repairkit,
+/obj/item/tool/repairkit,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/surface)
 "bta" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/weapon/tool/wirecutters,
+/obj/item/tool/wirecutters,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/surface)
 "btb" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/weapon/tool/saw/circular,
+/obj/item/tool/saw/circular,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/surface)
 "btc" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/weapon/tool/tape_roll,
+/obj/item/tool/tape_roll,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/surface)
 "btd" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/weapon/tool/wrench,
+/obj/item/tool/wrench,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/surface)
 "bte" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/dank/outline,
-/obj/item/weapon/tool/repairkit,
+/obj/item/tool/repairkit,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/enginieering/storage)
 "btf" = (
@@ -26962,7 +26962,7 @@
 "bth" = (
 /obj/structure/closet/secure_closet/engineering_chief,
 /obj/item/modular_computer/tablet/lease/preset/command,
-/obj/item/device/megaphone,
+/obj/item/megaphone,
 /obj/machinery/light{
 	dir = 8
 	},
@@ -27006,9 +27006,9 @@
 "btk" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/dank/outline,
-/obj/item/weapon/tool/tape_roll,
-/obj/item/weapon/tool/tape_roll,
-/obj/item/weapon/tool/tape_roll,
+/obj/item/tool/tape_roll,
+/obj/item/tool/tape_roll,
+/obj/item/tool/tape_roll,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/enginieering/storage)
 "btl" = (
@@ -27293,10 +27293,10 @@
 	},
 /area/mining_colony/interior/shuttle_bay/shuttle_3)
 "bug" = (
-/obj/item/weapon/stamp/science,
-/obj/item/weapon/stamp/denied,
+/obj/item/stamp/science,
+/obj/item/stamp/denied,
 /obj/structure/table/reinforced,
-/obj/item/weapon/clipboard,
+/obj/item/clipboard,
 /obj/effect/floor_decal/corner/grey/border{
 	dir = 1;
 	icon_state = "bordercolor"
@@ -27380,7 +27380,7 @@
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/security)
 "bZB" = (
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	pixel_y = 24
 	},
 /turf/simulated/floor/dank/golf_brown,
@@ -27438,7 +27438,7 @@
 /turf/simulated/floor/plating,
 /area/mining_colony/interior/plaza)
 "cUU" = (
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 1;
 	pixel_y = -35
 	},
@@ -27576,7 +27576,7 @@
 /area/mining_colony/interior/civ_hall)
 "fOm" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/toolbox/mechanical,
+/obj/item/storage/toolbox/mechanical,
 /obj/random/tool,
 /turf/simulated/floor/dank/slides,
 /area/mining_colony/interior/enginieering/supply_storage)
@@ -27598,7 +27598,7 @@
 /area/mining_colony/security)
 "gLQ" = (
 /obj/structure/table/woodentable,
-/obj/item/weapon/flame/candle,
+/obj/item/flame/candle,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -27618,7 +27618,7 @@
 /turf/simulated/floor/dank/grille_spare_4,
 /area/mining_colony/interior/enginieering/reactor)
 "gUS" = (
-/obj/item/weapon/paper{
+/obj/item/paper{
 	info = "These are my last words, I'm heavily bleeding and there is no-one who could help me or at least turn on the sleeper. If someone will ever find this message - the ship is yours but the parts to the console are gon..."
 	},
 /turf/simulated/floor/asteroid/outside_ds,
@@ -27645,7 +27645,7 @@
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/c12_deadspace/controlroom)
 "hyz" = (
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 1;
 	pixel_y = -35
 	},
@@ -27669,7 +27669,7 @@
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/mining/foremanoffice)
 "hEO" = (
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 1;
 	pixel_y = -35
 	},
@@ -27751,7 +27751,7 @@
 /turf/simulated/floor/plating,
 /area/mining_colony/interior/maint/construction)
 "iFM" = (
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	pixel_y = 24
 	},
 /turf/simulated/floor/dank/golf_brown,
@@ -27770,7 +27770,7 @@
 /area/mining_colony/interior/enginieering/reactor)
 "iML" = (
 /obj/machinery/photocopier,
-/obj/item/device/toner,
+/obj/item/toner,
 /obj/effect/floor_decal/dank/mono_half{
 	dir = 4
 	},
@@ -27787,7 +27787,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/mining_colony/interior)
 "jlw" = (
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -27795,12 +27795,12 @@
 /area/mining_colony/interior/maint/storage)
 "jmX" = (
 /obj/structure/closet/secure_closet/guncabinet/sec_support,
-/obj/item/weapon/gun/projectile/automatic/pulse_rifle,
+/obj/item/gun/projectile/automatic/pulse_rifle,
 /obj/item/ammo_magazine/divet,
 /obj/item/ammo_magazine/divet,
 /obj/item/ammo_magazine/pulse,
 /obj/item/ammo_magazine/pulse,
-/obj/item/weapon/gun/projectile/divet,
+/obj/item/gun/projectile/divet,
 /obj/effect/floor_decal/dank/mono_tri{
 	dir = 8
 	},
@@ -27820,7 +27820,7 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -27835,7 +27835,7 @@
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/security)
 "kbg" = (
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	pixel_y = 24
 	},
 /turf/simulated/floor/dank/rectangles,
@@ -27850,7 +27850,7 @@
 	icon_state = "railing0";
 	pixel_w = 5
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	pixel_y = 24
 	},
 /turf/simulated/floor/dank/slides{
@@ -27868,7 +27868,7 @@
 /turf/simulated/wall/r_wall,
 /area/mining_colony/interior/science/researchandev)
 "kuZ" = (
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -27898,7 +27898,7 @@
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/apartament)
 "kOy" = (
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 8;
 	pixel_x = 21
 	},
@@ -27943,7 +27943,7 @@
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/apartament)
 "las" = (
-/obj/item/device/radio/intercom/department/security{
+/obj/item/radio/intercom/department/security{
 	pixel_y = 20
 	},
 /turf/simulated/floor/dank/slides{
@@ -28020,7 +28020,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/item/device/radio/intercom/department/medbay{
+/obj/item/radio/intercom/department/medbay{
 	pixel_y = 20
 	},
 /turf/simulated/floor/dank/medical,
@@ -28149,7 +28149,7 @@
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/maint/storage)
 "nrw" = (
-/obj/item/device/radio/intercom/department/security{
+/obj/item/radio/intercom/department/security{
 	pixel_y = 20
 	},
 /turf/simulated/floor/dank/golf_brown,
@@ -28220,14 +28220,14 @@
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/enginieering/reactor)
 "ogB" = (
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 1;
 	pixel_y = -35
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/interior/enginieering/engi_lockers)
 "ohW" = (
-/obj/item/device/radio/intercom/department/security{
+/obj/item/radio/intercom/department/security{
 	dir = 4;
 	pixel_x = -21
 	},
@@ -28249,7 +28249,7 @@
 /area/mining_colony/interior/kellion_arrival)
 "oug" = (
 /obj/structure/table/woodentable,
-/obj/item/weapon/flame/candle,
+/obj/item/flame/candle,
 /obj/machinery/light{
 	dir = 8
 	},
@@ -28337,7 +28337,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
 	},
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 1;
 	pixel_y = -35
 	},
@@ -28375,7 +28375,7 @@
 /turf/simulated/floor,
 /area/mining_colony/surface)
 "qzN" = (
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -28388,7 +28388,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/mining_colony/interior)
 "qEC" = (
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 8;
 	pixel_x = 21
 	},
@@ -28399,7 +28399,7 @@
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/enginieering/telecomms)
 "qML" = (
-/obj/item/weapon/pen/multi,
+/obj/item/pen/multi,
 /obj/effect/landmark/corpse/marooned_officer,
 /turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/surface)
@@ -28457,7 +28457,7 @@
 /turf/simulated/floor/dank/slides,
 /area/mining_colony/interior/enginieering/supply_storage)
 "sxW" = (
-/obj/item/device/radio/intercom/department/security{
+/obj/item/radio/intercom/department/security{
 	dir = 1;
 	pixel_y = -30
 	},
@@ -28531,7 +28531,7 @@
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/enginieering/telecomms)
 "tnk" = (
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 1;
 	pixel_y = -35
 	},
@@ -28567,7 +28567,7 @@
 "tPl" = (
 /obj/structure/table/woodentable,
 /obj/random/snack,
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 8;
 	pixel_x = 21
 	},
@@ -28606,14 +28606,14 @@
 	pixel_x = 24;
 	pixel_y = -3
 	},
-/obj/item/device/radio/intercom/department/medbay{
+/obj/item/radio/intercom/department/medbay{
 	pixel_y = 20
 	},
 /turf/simulated/floor/lino,
 /area/mining_colony/interior/medbay/med_ward)
 "uBR" = (
 /obj/structure/table/rack,
-/obj/item/weapon/book/manual/engineering_guide,
+/obj/item/book/manual/engineering_guide,
 /obj/random/loot/usually/many,
 /turf/simulated/floor/dank/slides{
 	dir = 1
@@ -28624,16 +28624,16 @@
 /area/mining_colony/security/interrogation_room)
 "uMk" = (
 /obj/structure/table/rack,
-/obj/item/device/radio{
+/obj/item/radio{
 	pixel_x = -2;
 	pixel_y = -2
 	},
-/obj/item/device/radio{
+/obj/item/radio{
 	pixel_x = -2;
 	pixel_y = -2
 	},
 /obj/item/stack/power_node,
-/obj/item/weapon/plastique,
+/obj/item/plastique,
 /obj/effect/floor_decal/dank/mono_tri{
 	dir = 4
 	},
@@ -28732,7 +28732,7 @@
 	},
 /area/mining_colony/interior/shuttle_bay/shuttle_3)
 "vQk" = (
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 8;
 	pixel_x = 21
 	},
@@ -28741,7 +28741,7 @@
 "vRV" = (
 /obj/structure/table/rack,
 /obj/machinery/camera/network/common,
-/obj/item/weapon/storage/toolbox/electrical,
+/obj/item/storage/toolbox/electrical,
 /obj/item/stack/cable_coil/cut,
 /obj/item/stack/cable_coil/cut,
 /obj/random/tool,
@@ -28768,7 +28768,7 @@
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/enginieering/telecomms)
 "weP" = (
-/obj/item/device/radio/intercom/department/security{
+/obj/item/radio/intercom/department/security{
 	dir = 8;
 	pixel_x = 21
 	},
@@ -28851,7 +28851,7 @@
 /turf/simulated/floor/dank/maint,
 /area/mining_colony/interior/enginieering/smes)
 "wZL" = (
-/obj/item/device/radio/intercom/department/security{
+/obj/item/radio/intercom/department/security{
 	dir = 1;
 	pixel_y = -30
 	},

@@ -46,12 +46,12 @@
 			origin_tech = null
 		siemens_coefficient += 0.3
 
-/obj/item/weapon/tool/make_old()
+/obj/item/tool/make_old()
 	.=..()
 	if (.)
 		unreliability += rand(40, 150) * degradation
 
-/obj/item/weapon/storage/make_old()
+/obj/item/storage/make_old()
 	.=..()
 	if (.)
 		var/del_count = rand(0, contents.len)
@@ -66,17 +66,17 @@
 			max_storage_space = max_storage_space / 2
 
 //Old pill bottles get a name that disguises their contents
-/obj/item/weapon/storage/pill_bottle/make_old()
+/obj/item/storage/pill_bottle/make_old()
 	if (prob(85))
 		name = "bottle of [pick("generic ", "unknown ", "")]pills"
 		desc = "Contains pills of some kind. The label has long since worn away."
-		for (var/obj/item/weapon/reagent_containers/pill/P in contents)
+		for (var/obj/item/reagent_containers/pill/P in contents)
 			P.make_old()
 
 	.=..()
 
 //Make sure old pills always hide their contents too
-/obj/item/weapon/reagent_containers/pill/make_old()
+/obj/item/reagent_containers/pill/make_old()
 	name = "pill"
 	desc = "some kind of pill. The imprints have worn away."
 	.=..()
@@ -88,7 +88,7 @@
 			R.volume = rand(0, R.volume)
 
 
-/obj/item/weapon/reagent_containers/make_old()
+/obj/item/reagent_containers/make_old()
 	.=..()
 	if (.)
 		var/actual_volume = reagents.total_volume
@@ -98,7 +98,7 @@
 
 
 //Sealed survival food, always edible
-/obj/item/weapon/reagent_containers/food/snacks/liquidfood/make_old()
+/obj/item/reagent_containers/food/snacks/liquidfood/make_old()
 	return
 
 /obj/item/ammo_magazine/make_old()
@@ -109,7 +109,7 @@
 		qdel(removed_item)
 	..()
 
-/obj/item/weapon/stock_parts/make_old()
+/obj/item/stock_parts/make_old()
 	.=..()
 	if (.)
 		var/degrade = pick(0,1,1,1,2)
@@ -122,11 +122,11 @@
 /obj/item/stack/rods/make_old()
 	return
 
-/obj/item/weapon/grenade/make_old()
+/obj/item/grenade/make_old()
 	..()
 	det_time = rand_between(0, det_time)
 
-/obj/item/weapon/tank/make_old()
+/obj/item/tank/make_old()
 	.=..()
 	if (.)
 		air_contents.remove(pick(0.2, 0.4 ,0.6, 0.8))
@@ -134,11 +134,11 @@
 
 
 
-/obj/item/weapon/aiModule/make_old()
+/obj/item/aiModule/make_old()
 	.=..()
 	if (.)
-		if(prob(75) && !istype(src, /obj/item/weapon/aiModule/broken))
-			var/obj/item/weapon/aiModule/brokenmodule = new /obj/item/weapon/aiModule/broken
+		if(prob(75) && !istype(src, /obj/item/aiModule/broken))
+			var/obj/item/aiModule/brokenmodule = new /obj/item/aiModule/broken
 			brokenmodule.name = src.name
 			brokenmodule.desc = src.desc
 			brokenmodule.make_old()
@@ -172,7 +172,7 @@
 		if(prob(15))
 			add_blood()
 
-/obj/item/weapon/aiModule/broken
+/obj/item/aiModule/broken
 	name = "\improper broken core AI module"
 	desc = "broken Core AI Module: 'Reconfigures the AI's core laws."
 
@@ -185,7 +185,7 @@
 	contents.Cut()
 	return ..()
 
-/obj/item/weapon/aiModule/broken/transmitInstructions(mob/living/silicon/ai/target, mob/sender)
+/obj/item/aiModule/broken/transmitInstructions(mob/living/silicon/ai/target, mob/sender)
 	..()
 	IonStorm(0)
 	sender.explosion(3,1)
@@ -204,7 +204,7 @@
 
 
 /*
-/obj/item/device/lighting/toggleable/make_old()
+/obj/item/lighting/toggleable/make_old()
 	.=..()
 	if (.)
 		if(prob(75))

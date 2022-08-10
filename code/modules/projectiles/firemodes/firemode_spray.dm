@@ -8,7 +8,7 @@
 
 	var/datum/extension/spray/spray_extension
 
-	var/obj/item/weapon/gun/spray/sprayer
+	var/obj/item/gun/spray/sprayer
 	override_fire = TRUE
 	var/list/extra_data
 	click_handler_type = /datum/click_handler/gun/sustained	//We use a null handler type so that one isn't created
@@ -51,7 +51,7 @@
 		spray_extension = null
 
 /datum/firemode/sustained/spray/update(var/force_state = null)
-	var/obj/item/weapon/gun/spray/sprayer = gun
+	var/obj/item/gun/spray/sprayer = gun
 	spray_type = sprayer.spray_type
 	.=..()
 

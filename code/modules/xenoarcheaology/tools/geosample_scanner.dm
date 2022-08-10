@@ -11,7 +11,7 @@
 	idle_power_usage = 20
 	active_power_usage = 300
 
-	//var/obj/item/weapon/reagent_containers/glass/coolant_container
+	//var/obj/item/reagent_containers/glass/coolant_container
 	var/scanning = 0
 	var/report_num = 0
 	//
@@ -77,17 +77,17 @@
 				return
 			else if (!choice)
 				return
-		if(istype(I, /obj/item/weapon/reagent_containers/glass))
+		if(istype(I, /obj/item/reagent_containers/glass))
 			var/choice = tgui_alert(user, "What do you want to do with the container?","Radiometric Scanner", list("Add coolant","Empty coolant","Scan container"))
 			if(choice == "Add coolant")
-				var/obj/item/weapon/reagent_containers/glass/G = I
+				var/obj/item/reagent_containers/glass/G = I
 				var/amount_transferred = min(src.reagents.maximum_volume - src.reagents.total_volume, G.reagents.total_volume)
 				G.reagents.trans_to(src, amount_transferred)
 				to_chat(user, "<span class='info'>You empty [amount_transferred]u of coolant into [src].</span>")
 				update_coolant()
 				return
 			else if(choice == "Empty coolant")
-				var/obj/item/weapon/reagent_containers/glass/G = I
+				var/obj/item/reagent_containers/glass/G = I
 				var/amount_transferred = min(G.reagents.maximum_volume - G.reagents.total_volume, src.reagents.total_volume)
 				src.reagents.trans_to(G, amount_transferred)
 				to_chat(user, "<span class='info'>You remove [amount_transferred]u of coolant from [src].</span>")
@@ -269,9 +269,9 @@
 
 	if(scanned_item)
 		//create report
-		var/obj/item/weapon/paper/P = new(src)
+		var/obj/item/paper/P = new(src)
 		P.SetName("[src] report #[++report_num]: [scanned_item.name]")
-		P.stamped = list(/obj/item/weapon/stamp)
+		P.stamped = list(/obj/item/stamp)
 		P.overlays = list("paper_stamped")
 
 		//work out data
@@ -283,15 +283,15 @@
 				if(O.geologic_data)
 					G = O.geologic_data
 
-			if(/obj/item/weapon/rocksliver)
-				var/obj/item/weapon/rocksliver/O = scanned_item
+			if(/obj/item/rocksliver)
+				var/obj/item/rocksliver/O = scanned_item
 				if(O.geological_data)
 					G = O.geological_data
 
-			if(/obj/item/weapon/archaeological_find)
+			if(/obj/item/archaeological_find)
 				data = " - Mundane object (archaic xenos origins)<br>"
 
-				var/obj/item/weapon/archaeological_find/A = scanned_item
+				var/obj/item/archaeological_find/A = scanned_item
 				if(A.talking_atom)
 					data = " - Exhibits properties consistent with sonic reproduction and audio capture technologies.<br>"
 

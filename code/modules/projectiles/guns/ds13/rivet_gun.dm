@@ -12,7 +12,7 @@
 		Easy to hit and reliable, but not powerful
 */
 
-/obj/item/weapon/gun/projectile/rivet
+/obj/item/gun/projectile/rivet
 	name = "711-MarkCL Rivet Gun"
 	desc = "The 711-MarkCL Rivet Gun is the latest refinement from Timson Tools' long line of friendly tools. Useful for rapid repairs at a distance!"
 	icon = 'icons/obj/weapons/ds13guns48x32.dmi'
@@ -43,7 +43,7 @@
 
 	safety_state = 1
 
-/obj/item/weapon/gun/projectile/rivet/update_icon()
+/obj/item/gun/projectile/rivet/update_icon()
 	..()
 	if(ammo_magazine)
 		icon_state = "rivetgun"
@@ -52,7 +52,7 @@
 
 
 //Adds a rivet to our internal tracking list so we can detonate it later
-/obj/item/weapon/gun/projectile/rivet/proc/register_rivet(var/obj/item/embedded_rivet/ER)
+/obj/item/gun/projectile/rivet/proc/register_rivet(var/obj/item/embedded_rivet/ER)
 	//If we have too many, delete them
 	if (rivets.len >= max_rivets)
 
@@ -64,13 +64,13 @@
 	rivets += ER
 
 //Remove from our list, called when a rivet is deleted. We don't actually delete it here though
-/obj/item/weapon/gun/projectile/rivet/proc/unregister_rivet(var/obj/item/embedded_rivet/ER)
+/obj/item/gun/projectile/rivet/proc/unregister_rivet(var/obj/item/embedded_rivet/ER)
 	rivets -= ER
 	if (ER.rivetgun == src)
 		ER.rivetgun = null
 
 
-/obj/item/weapon/gun/projectile/rivet/Destroy()
+/obj/item/gun/projectile/rivet/Destroy()
 	for (var/obj/item/embedded_rivet/r in rivets)
 		unregister_rivet(r)
 		if (!QDELETED(r))
@@ -78,7 +78,7 @@
 	.=..()
 
 
-/obj/item/weapon/gun/projectile/rivet/can_fire(atom/target, mob/living/user, clickparams, var/silent = FALSE)
+/obj/item/gun/projectile/rivet/can_fire(atom/target, mob/living/user, clickparams, var/silent = FALSE)
 	if (istype(current_firemode, /datum/firemode/rivet_frag))
 		//The fragmentation firemode doesnt need ammo
 		return TRUE
@@ -93,7 +93,7 @@
 	override_fire = TRUE
 
 /datum/firemode/rivet_frag/fire(var/atom/target, var/mob/living/user, var/clickparams, var/pointblank=0, var/reflex=0)
-	var/obj/item/weapon/gun/projectile/rivet/R = gun
+	var/obj/item/gun/projectile/rivet/R = gun
 	if (R.rivets.len)
 		var/detonated = 0
 		for (var/obj/item/embedded_rivet/ER in R.rivets)
@@ -208,7 +208,7 @@
 	default_scale = 0.6
 	name = "rivet"
 	mouse_opacity = 0
-	var/obj/item/weapon/gun/projectile/rivet/rivetgun
+	var/obj/item/gun/projectile/rivet/rivetgun
 	var/lifetime = 1 MINUTE
 	var/detonated = FALSE
 
@@ -216,7 +216,7 @@
 	layer = 0
 
 /obj/item/embedded_rivet/New(var/atom/location, var/obj/item/projectile/bullet/rivet/rivet)
-	if (istype(rivet.launcher, /obj/item/weapon/gun/projectile/rivet))
+	if (istype(rivet.launcher, /obj/item/gun/projectile/rivet))
 		rivetgun = rivet.launcher
 		rivetgun.register_rivet(src)
 	QDEL_IN(src, lifetime)

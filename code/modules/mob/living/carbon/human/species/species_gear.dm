@@ -16,5 +16,5 @@
 
 //Dynamically converting rigs to necromorphs is not currently supported. This is a bit of a complex problem
 //It will be added in future, for now rigs are simply unequpped
-/obj/item/weapon/rig/species_changed(var/mob/living/carbon/human/H, var/datum/species/S)
+/obj/item/rig/species_changed(var/mob/living/carbon/human/H, var/datum/species/S)
 	instant_unequip()

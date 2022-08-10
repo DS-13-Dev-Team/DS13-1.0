@@ -9,13 +9,13 @@
 
 /obj/structure/closet/secure_closet/hydroponics/WillContain()
 	return list(
-		/obj/item/weapon/storage/plants,
+		/obj/item/storage/plants,
 		/obj/item/clothing/under/deadspace/hydroponics,
-		/obj/item/device/analyzer/plant_analyzer,
-		/obj/item/device/radio/headset/headset_service,
-		/obj/item/weapon/material/minihoe,
-		/obj/item/weapon/material/hatchet,
-		/obj/item/weapon/tool/wirecutters/clippers,
-		/obj/item/weapon/reagent_containers/spray/plantbgone,
+		/obj/item/analyzer/plant_analyzer,
+		/obj/item/radio/headset/headset_service,
+		/obj/item/material/minihoe,
+		/obj/item/material/hatchet,
+		/obj/item/tool/wirecutters/clippers,
+		/obj/item/reagent_containers/spray/plantbgone,
 		/obj/item/clothing/gloves/thick/botany
 	)

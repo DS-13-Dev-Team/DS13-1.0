@@ -135,7 +135,7 @@
 	to_chat(target, "<span class='danger'>You now have a gun pointed at you. No sudden moves!</span>")
 	aiming_with = thing
 	aiming_at = target
-	if(istype(aiming_with, /obj/item/weapon/gun))
+	if(istype(aiming_with, /obj/item/gun))
 		playsound(get_turf(owner), 'sound/weapons/TargetOn.ogg', 50,1)
 
 	forceMove(get_turf(target))
@@ -174,7 +174,7 @@
 	SIGNAL_HANDLER
 	if(!aiming_with || !aiming_at)
 		return
-	if(istype(aiming_with, /obj/item/weapon/gun))
+	if(istype(aiming_with, /obj/item/gun))
 		playsound(get_turf(owner), 'sound/weapons/TargetOff.ogg', 50,1)
 	if(!no_message)
 		owner.visible_message("<span class='notice'>\The [owner] lowers \the [aiming_with].</span>")

@@ -1,4 +1,4 @@
-/obj/item/weapon/tool/multitool/hacktool
+/obj/item/tool/multitool/hacktool
 	var/is_hacking = 0
 	var/max_known_targets
 
@@ -7,27 +7,27 @@
 	var/list/supported_types
 	var/datum/topic_state/default/must_hack/hack_state
 
-/obj/item/weapon/tool/multitool/hacktool/New()
+/obj/item/tool/multitool/hacktool/New()
 	..()
 	known_targets = list()
 	max_known_targets = 5 + rand(1,3)
 	supported_types = list(/obj/machinery/door/airlock)
 	hack_state = new(src)
 
-/obj/item/weapon/tool/multitool/hacktool/Destroy()
+/obj/item/tool/multitool/hacktool/Destroy()
 	known_targets.Cut()
 	qdel(hack_state)
 	hack_state = null
 	return ..()
 
-/obj/item/weapon/tool/multitool/hacktool/attackby(var/obj/W, var/mob/user)
+/obj/item/tool/multitool/hacktool/attackby(var/obj/W, var/mob/user)
 	if(isScrewdriver(W))
 		in_hack_mode = !in_hack_mode
 		playsound(src.loc, 'sound/items/Screwdriver.ogg', 50, 1)
 	else
 		..()
 
-/obj/item/weapon/tool/multitool/hacktool/resolve_attackby(atom/A, mob/user)
+/obj/item/tool/multitool/hacktool/resolve_attackby(atom/A, mob/user)
 	sanity_check()
 
 	if(!in_hack_mode || !attempt_hack(user, A)) //will still show the unable to hack message, oh well
@@ -36,7 +36,7 @@
 	A.ui_interact(user, state = hack_state)
 	return 1
 
-/obj/item/weapon/tool/multitool/hacktool/proc/attempt_hack(var/mob/user, var/atom/target)
+/obj/item/tool/multitool/hacktool/proc/attempt_hack(var/mob/user, var/atom/target)
 	if(is_hacking)
 		to_chat(user, "<span class='warning'>You are already hacking!</span>")
 		return 1
@@ -63,7 +63,7 @@
 		to_chat(user, "<span class='warning'>Your hacking attempt failed!</span>")
 	return 1
 
-/obj/item/weapon/tool/multitool/hacktool/proc/sanity_check()
+/obj/item/tool/multitool/hacktool/proc/sanity_check()
 	if(max_known_targets < 1) max_known_targets = 1
 	// Cut away the oldest items if the capacity has been reached
 	if(known_targets.len > max_known_targets)
@@ -72,12 +72,12 @@
 			UnregisterSignal(A, COMSIG_PARENT_QDELETING)
 		known_targets.Cut(max_known_targets + 1)
 
-/obj/item/weapon/tool/multitool/hacktool/proc/on_target_destroy(var/target)
+/obj/item/tool/multitool/hacktool/proc/on_target_destroy(var/target)
 	SIGNAL_HANDLER
 	known_targets -= target
 
 /datum/topic_state/default/must_hack
-	var/obj/item/weapon/tool/multitool/hacktool/hacktool
+	var/obj/item/tool/multitool/hacktool/hacktool
 
 /datum/topic_state/default/must_hack/New(var/hacktool)
 	src.hacktool = hacktool

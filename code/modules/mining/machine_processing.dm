@@ -86,7 +86,7 @@
 	density = 1
 	anchored = 1
 	light_range = 3
-	circuit = /obj/item/weapon/circuitboard/ore_processing
+	circuit = /obj/item/circuitboard/ore_processing
 	var/obj/machinery/input/input
 	var/obj/machinery/mineral/output
 	var/obj/machinery/mineral/processing_unit_console/console
@@ -154,16 +154,16 @@
 /obj/machinery/mineral/processing_unit/RefreshParts()
 	sheets_per_tick = 0
 	ores_per_tick = 0
-	for(var/obj/item/weapon/stock_parts/manipulator/MP in component_parts)
+	for(var/obj/item/stock_parts/manipulator/MP in component_parts)
 		sheets_per_tick += MP.rating * 0.5
 
 	var/eff = 0
-	for(var/obj/item/weapon/stock_parts/micro_laser/ML in component_parts)
+	for(var/obj/item/stock_parts/micro_laser/ML in component_parts)
 		eff += ML.rating * 0.5
 	// Up to 9 per tick
 	sheets_per_tick *= eff
 
-	for(var/obj/item/weapon/stock_parts/scanning_module/SM in component_parts)
+	for(var/obj/item/stock_parts/scanning_module/SM in component_parts)
 		ores_per_tick += round(SM.rating * 1.5)
 	// Up to 6 ores per tick
 

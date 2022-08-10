@@ -27,7 +27,7 @@
 	name = "Protolathe"
 	icon_state = "protolathe"
 	atom_flags = ATOM_FLAG_OPEN_CONTAINER
-	circuit = /obj/item/weapon/circuitboard/protolathe
+	circuit = /obj/item/circuitboard/protolathe
 
 	var/max_material_storage = 100000
 	var/efficiency_coeff
@@ -69,15 +69,15 @@
 
 /obj/machinery/r_n_d/protolathe/RefreshParts()
 	var/T = 0
-	for(var/obj/item/weapon/reagent_containers/glass/G in component_parts)
+	for(var/obj/item/reagent_containers/glass/G in component_parts)
 		T += G.reagents.maximum_volume
 	create_reagents(T)
 	T = 0
-	for(var/obj/item/weapon/stock_parts/matter_bin/M in component_parts)
+	for(var/obj/item/stock_parts/matter_bin/M in component_parts)
 		T += M.rating
 	max_material_storage = T * 100000
 	T = 0
-	for(var/obj/item/weapon/stock_parts/manipulator/M in component_parts)
+	for(var/obj/item/stock_parts/manipulator/M in component_parts)
 		T += (M.rating/3)
 	efficiency_coeff = max(T, 1)
 

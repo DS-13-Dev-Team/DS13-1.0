@@ -23,7 +23,7 @@
 
 #define iscorgi(A) istype(A, /mob/living/simple_animal/corgi)
 
-#define iscredits(A) istype(A, /obj/item/weapon/spacecash/ewallet)
+#define iscredits(A) istype(A, /obj/item/spacecash/ewallet)
 
 #define is_drone(A) istype(A, /mob/living/silicon/robot/drone)
 #define isdatum(A) istype(A, /datum)
@@ -54,7 +54,7 @@
 
 #define isprojectile(A)	istype(A, /obj/item/projectile)
 
-#define isrig(A)	istype(A, /obj/item/weapon/rig)
+#define isrig(A)	istype(A, /obj/item/rig)
 
 #define issignal(A) istype(A, /mob/dead/observer/eye/signal)
 

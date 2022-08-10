@@ -1,7 +1,7 @@
 #define BELT_OVERLAY_ITEMS		1
 #define BELT_OVERLAY_HOLSTER	2
 
-/obj/item/weapon/storage/belt
+/obj/item/storage/belt
 	name = "belt"
 	desc = "Can hold various things."
 	icon = 'icons/obj/clothing/belts.dmi'
@@ -14,14 +14,14 @@
 	var/overlay_flags
 	attack_verb = list("whipped", "lashed", "disciplined")
 
-/obj/item/weapon/storage/belt/verb/toggle_layer()
+/obj/item/storage/belt/verb/toggle_layer()
 	set name = "Switch Belt Layer"
 	set category = "Object"
 
 	use_alt_layer = !use_alt_layer
 	update_icon()
 
-/obj/item/weapon/storage/belt/update_icon()
+/obj/item/storage/belt/update_icon()
 	if (ismob(src.loc))
 		var/mob/M = src.loc
 		M.update_inv_belt()
@@ -31,7 +31,7 @@
 		for(var/obj/item/I in contents)
 			overlays += image('icons/obj/clothing/belts_overlays.dmi', "[I.icon_state]")
 
-/obj/item/weapon/storage/belt/get_mob_overlay(mob/user_mob, slot)
+/obj/item/storage/belt/get_mob_overlay(mob/user_mob, slot)
 	var/mutable_appearance/ret = ..()
 	if(slot == slot_belt_str && contents.len)
 		var/list/ret_overlays = list()
@@ -45,7 +45,7 @@
 			ret.overlays += ret_overlays
 	return ret
 
-/obj/item/weapon/storage/belt/holster
+/obj/item/storage/belt/holster
 	name = "holster belt"
 	icon_state = "holsterbelt"
 	item_state = "holster"
@@ -56,33 +56,33 @@
 	var/sound_in = 'sound/effects/holster/holsterin.ogg'
 	var/sound_out = 'sound/effects/holster/holsterout.ogg'
 	can_hold = list(
-		/obj/item/weapon
+		/obj/item
 		)
 
-/obj/item/weapon/storage/belt/holster/Initialize()
+/obj/item/storage/belt/holster/Initialize()
 	. = ..()
 	set_extension(src, /datum/extension/holster, src, sound_in, sound_out, can_holster)
 
-/obj/item/weapon/storage/belt/holster/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/storage/belt/holster/attackby(obj/item/W as obj, mob/user as mob)
 	var/datum/extension/holster/H = get_extension(src, /datum/extension/holster)
 	if(H.holster(W, user))
 		return
 	else
 		. = ..(W, user)
 
-/obj/item/weapon/storage/belt/holster/attack_hand(mob/user as mob)
+/obj/item/storage/belt/holster/attack_hand(mob/user as mob)
 	var/datum/extension/holster/H = get_extension(src, /datum/extension/holster)
 	if(H.unholster(user))
 		return
 	else
 		. = ..(user)
 
-/obj/item/weapon/storage/belt/holster/examine(mob/user)
+/obj/item/storage/belt/holster/examine(mob/user)
 	. = ..(user)
 	var/datum/extension/holster/H = get_extension(src, /datum/extension/holster)
 	H.examine_holster(user)
 
-/obj/item/weapon/storage/belt/holster/update_icon()
+/obj/item/storage/belt/holster/update_icon()
 	if (ismob(src.loc))
 		var/mob/M = src.loc
 		M.update_inv_belt()
@@ -97,7 +97,7 @@
 			else if(overlay_flags & BELT_OVERLAY_ITEMS)
 				overlays += image('icons/obj/clothing/belts_overlays.dmi', "[I.icon_state]")
 
-/obj/item/weapon/storage/belt/utility
+/obj/item/storage/belt/utility
 	name = "tool belt"
 	desc = "A belt of durable leather, festooned with hooks, slots, and pouches."
 	description_info = "The tool-belt has enough slots to carry a full engineer's toolset: screwdriver, crowbar, wrench, welder, cable coil, and multitool. Simply click the belt to move a tool to one of its slots."
@@ -107,91 +107,91 @@
 	item_state = "utility"
 	overlay_flags = BELT_OVERLAY_ITEMS
 	can_hold = list(
-		/obj/item/weapon/tool,
-		/obj/item/weapon/melee,/obj/item/weapon/material,
-		/obj/item/weapon/tool/multitool,
-		/obj/item/device/flashlight,
+		/obj/item/tool,
+		/obj/item/melee,/obj/item/material,
+		/obj/item/tool/multitool,
+		/obj/item/flashlight,
 		/obj/item/stack/cable_coil,
-		/obj/item/device/t_scanner,
-		/obj/item/device/analyzer,
+		/obj/item/t_scanner,
+		/obj/item/analyzer,
 		/obj/item/taperoll/engineering,
-		/obj/item/device/robotanalyzer,
-		/obj/item/weapon/material/minihoe,
-		/obj/item/weapon/material/hatchet,
-		/obj/item/device/analyzer/plant_analyzer,
+		/obj/item/robotanalyzer,
+		/obj/item/material/minihoe,
+		/obj/item/material/hatchet,
+		/obj/item/analyzer/plant_analyzer,
 		/obj/item/taperoll,
-		/obj/item/weapon/extinguisher/mini,
-		/obj/item/weapon/marshalling_wand,
-		/obj/item/weapon/hand_labeler
+		/obj/item/extinguisher/mini,
+		/obj/item/marshalling_wand,
+		/obj/item/hand_labeler
 		)
 
 
-/obj/item/weapon/storage/belt/utility/full/New()
+/obj/item/storage/belt/utility/full/New()
 	..()
-	new /obj/item/weapon/tool/screwdriver(src)
-	new /obj/item/weapon/tool/wrench(src)
-	new /obj/item/weapon/tool/weldingtool(src)
-	new /obj/item/weapon/tool/crowbar(src)
-	new /obj/item/weapon/tool/wirecutters(src)
+	new /obj/item/tool/screwdriver(src)
+	new /obj/item/tool/wrench(src)
+	new /obj/item/tool/weldingtool(src)
+	new /obj/item/tool/crowbar(src)
+	new /obj/item/tool/wirecutters(src)
 	new /obj/item/stack/cable_coil(src,30,pick("red","yellow","orange"))
 	update_icon()
 
-/obj/item/weapon/storage/belt/utility/makeshift/New()
+/obj/item/storage/belt/utility/makeshift/New()
 	..()
-	new /obj/item/weapon/tool/screwdriver/improvised(src)
-	new /obj/item/weapon/tool/wrench/improvised(src)
-	new /obj/item/weapon/tool/weldingtool/improvised(src)
-	new /obj/item/weapon/tool/crowbar/improvised(src)
-	new /obj/item/weapon/tool/wirecutters/improvised(src)
-	new /obj/item/weapon/tool/saw/improvised(src)
+	new /obj/item/tool/screwdriver/improvised(src)
+	new /obj/item/tool/wrench/improvised(src)
+	new /obj/item/tool/weldingtool/improvised(src)
+	new /obj/item/tool/crowbar/improvised(src)
+	new /obj/item/tool/wirecutters/improvised(src)
+	new /obj/item/tool/saw/improvised(src)
 	update_icon()
 
 
-/obj/item/weapon/storage/belt/utility/atmostech/New()
+/obj/item/storage/belt/utility/atmostech/New()
 	..()
-	new /obj/item/weapon/tool/screwdriver(src)
-	new /obj/item/weapon/tool/wrench(src)
-	new /obj/item/weapon/tool/weldingtool(src)
-	new /obj/item/weapon/tool/crowbar(src)
-	new /obj/item/weapon/tool/wirecutters(src)
-	new /obj/item/device/t_scanner(src)
+	new /obj/item/tool/screwdriver(src)
+	new /obj/item/tool/wrench(src)
+	new /obj/item/tool/weldingtool(src)
+	new /obj/item/tool/crowbar(src)
+	new /obj/item/tool/wirecutters(src)
+	new /obj/item/t_scanner(src)
 	update_icon()
 
 
 
-/obj/item/weapon/storage/belt/medical
+/obj/item/storage/belt/medical
 	name = "medical belt"
 	desc = "Can hold various medical equipment."
 	icon_state = "medicalbelt"
 	item_state = "medical"
 	can_hold = list(
-		/obj/item/device/healthanalyzer,
-		/obj/item/device/adv_health_analyzer,
-		/obj/item/weapon/reagent_containers/dropper,
-		/obj/item/weapon/reagent_containers/glass/beaker,
-		/obj/item/weapon/reagent_containers/glass/bottle,
-		/obj/item/weapon/reagent_containers/pill,
-		/obj/item/weapon/reagent_containers/syringe,
-		/obj/item/weapon/flame/lighter/zippo,
-		/obj/item/weapon/storage/fancy/cigarettes,
-		/obj/item/weapon/storage/pill_bottle,
+		/obj/item/healthanalyzer,
+		/obj/item/adv_health_analyzer,
+		/obj/item/reagent_containers/dropper,
+		/obj/item/reagent_containers/glass/beaker,
+		/obj/item/reagent_containers/glass/bottle,
+		/obj/item/reagent_containers/pill,
+		/obj/item/reagent_containers/syringe,
+		/obj/item/flame/lighter/zippo,
+		/obj/item/storage/fancy/cigarettes,
+		/obj/item/storage/pill_bottle,
 		/obj/item/stack/medical,
-		/obj/item/device/flashlight/pen,
+		/obj/item/flashlight/pen,
 		/obj/item/clothing/mask/surgical,
 		/obj/item/clothing/head/surgery,
 		/obj/item/clothing/gloves/latex,
-		/obj/item/weapon/reagent_containers/hypospray,
+		/obj/item/reagent_containers/hypospray,
 		/obj/item/clothing/glasses/hud/health,
-		/obj/item/weapon/tool/crowbar,
-		/obj/item/device/flashlight,
+		/obj/item/tool/crowbar,
+		/obj/item/flashlight,
 		/obj/item/taperoll,
-		/obj/item/weapon/extinguisher/mini,
-		/obj/item/weapon/storage/med_pouch,
-		/obj/item/weapon/melee,/obj/item/weapon/material,
+		/obj/item/extinguisher/mini,
+		/obj/item/storage/med_pouch,
+		/obj/item/melee,/obj/item/material,
 		/obj/item/bodybag
 		)
 
-/obj/item/weapon/storage/belt/holster/security
+/obj/item/storage/belt/holster/security
 	name = "security holster belt"
 	desc = "Can hold security gear like handcuffs and flashes."
 	icon_state = "securitybelt"
@@ -199,63 +199,63 @@
 	storage_slots = 7
 	overlay_flags = BELT_OVERLAY_ITEMS|BELT_OVERLAY_HOLSTER
 	can_hold = list(
-		/obj/item/weapon/tool/crowbar,
-		/obj/item/weapon/grenade,
-		/obj/item/weapon/reagent_containers/spray/pepper,
-		/obj/item/weapon/handcuffs,
-		/obj/item/device/flash,
+		/obj/item/tool/crowbar,
+		/obj/item/grenade,
+		/obj/item/reagent_containers/spray/pepper,
+		/obj/item/handcuffs,
+		/obj/item/flash,
 		/obj/item/clothing/glasses,
 		/obj/item/clothing/mask/gas,
 		/obj/item/ammo_casing/shotgun,
 		/obj/item/ammo_magazine,
-		/obj/item/weapon/reagent_containers/food/snacks/donut/,
-		/obj/item/weapon/melee,/obj/item/weapon/material,
-		/obj/item/weapon/flame/lighter,
+		/obj/item/reagent_containers/food/snacks/donut/,
+		/obj/item/melee,/obj/item/material,
+		/obj/item/flame/lighter,
 		/obj/item/clothing/glasses/hud/security,
-		/obj/item/device/flashlight,
+		/obj/item/flashlight,
 		/obj/item/modular_computer/pda,
-		/obj/item/device/radio/headset,
-		/obj/item/device/hailer,
-		/obj/item/device/megaphone,
+		/obj/item/radio/headset,
+		/obj/item/hailer,
+		/obj/item/megaphone,
 		/obj/item/taperoll,
-		/obj/item/device/holowarrant,
-		/obj/item/weapon/magnetic_ammo,
-		/obj/item/device/binoculars
+		/obj/item/holowarrant,
+		/obj/item/magnetic_ammo,
+		/obj/item/binoculars
 		)
 
-/obj/item/weapon/storage/belt/general
+/obj/item/storage/belt/general
 	name = "equipment belt"
 	desc = "Can hold general equipment such as tablets, folders, and other office supplies."
 	icon_state = "gearbelt"
 	item_state = "gear"
 	overlay_flags = BELT_OVERLAY_ITEMS
 	can_hold = list(
-		/obj/item/device/flash,
-		/obj/item/device/taperecorder,
-		/obj/item/weapon/folder,
-		/obj/item/weapon/paper,
-		/obj/item/weapon/clipboard,
+		/obj/item/flash,
+		/obj/item/taperecorder,
+		/obj/item/folder,
+		/obj/item/paper,
+		/obj/item/clipboard,
 		/obj/item/modular_computer/tablet,
-		/obj/item/device/flash,
-		/obj/item/device/flashlight,
+		/obj/item/flash,
+		/obj/item/flashlight,
 		/obj/item/modular_computer/pda,
-		/obj/item/device/radio/headset,
-		/obj/item/device/megaphone,
+		/obj/item/radio/headset,
+		/obj/item/megaphone,
 		/obj/item/taperoll,
-		/obj/item/device/holowarrant,
-		/obj/item/device/radio,
-		/obj/item/device/tape,
-		/obj/item/weapon/pen,
-		/obj/item/weapon/stamp,
+		/obj/item/holowarrant,
+		/obj/item/radio,
+		/obj/item/tape,
+		/obj/item/pen,
+		/obj/item/stamp,
 		/obj/item/stack/package_wrap,
-		/obj/item/device/binoculars,
-		/obj/item/weapon/marshalling_wand,
-		/obj/item/device/camera,
-		/obj/item/weapon/hand_labeler,
-		/obj/item/device/destTagger
+		/obj/item/binoculars,
+		/obj/item/marshalling_wand,
+		/obj/item/camera,
+		/obj/item/hand_labeler,
+		/obj/item/destTagger
 		)
 
-/obj/item/weapon/storage/belt/holster/general
+/obj/item/storage/belt/holster/general
 	name = "holster belt"
 	desc = "Can hold general equipment such as tablets, folders, and other office supplies. Comes with a holster."
 	icon_state = "commandbelt"
@@ -263,32 +263,32 @@
 	storage_slots = 6
 	overlay_flags = BELT_OVERLAY_ITEMS|BELT_OVERLAY_HOLSTER
 	can_hold = list(
-		/obj/item/device/flash,
-		/obj/item/weapon/melee,/obj/item/weapon/material,
-		/obj/item/device/taperecorder,
-		/obj/item/weapon/folder,
-		/obj/item/weapon/paper,
-		/obj/item/weapon/clipboard,
+		/obj/item/flash,
+		/obj/item/melee,/obj/item/material,
+		/obj/item/taperecorder,
+		/obj/item/folder,
+		/obj/item/paper,
+		/obj/item/clipboard,
 		/obj/item/modular_computer/tablet,
-		/obj/item/device/flash,
-		/obj/item/device/flashlight,
+		/obj/item/flash,
+		/obj/item/flashlight,
 		/obj/item/modular_computer/pda,
-		/obj/item/device/radio/headset,
-		/obj/item/device/megaphone,
+		/obj/item/radio/headset,
+		/obj/item/megaphone,
 		/obj/item/taperoll,
-		/obj/item/device/holowarrant,
-		/obj/item/device/radio,
-		/obj/item/device/tape,
-		/obj/item/weapon/pen,
-		/obj/item/weapon/stamp,
+		/obj/item/holowarrant,
+		/obj/item/radio,
+		/obj/item/tape,
+		/obj/item/pen,
+		/obj/item/stamp,
 		/obj/item/stack/package_wrap,
-		/obj/item/device/binoculars,
-		/obj/item/weapon/marshalling_wand,
-		/obj/item/device/camera,
-		/obj/item/device/destTagger
+		/obj/item/binoculars,
+		/obj/item/marshalling_wand,
+		/obj/item/camera,
+		/obj/item/destTagger
 		)
 
-/obj/item/weapon/storage/belt/holster/general/command
+/obj/item/storage/belt/holster/general/command
 	name = "holster belt"
 	desc = "Can hold general equipment such as tablets, folders, and other office supplies. Comes with a holster."
 	icon_state = "commandbelt"
@@ -296,37 +296,37 @@
 	storage_slots = 6
 	overlay_flags = BELT_OVERLAY_ITEMS|BELT_OVERLAY_HOLSTER
 	can_hold = list(
-		/obj/item/device/flash,
-		/obj/item/device/taperecorder,
-		/obj/item/weapon/folder,
-		/obj/item/weapon/paper,
-		/obj/item/weapon/melee,/obj/item/weapon/material,
-		/obj/item/weapon/clipboard,
+		/obj/item/flash,
+		/obj/item/taperecorder,
+		/obj/item/folder,
+		/obj/item/paper,
+		/obj/item/melee,/obj/item/material,
+		/obj/item/clipboard,
 		/obj/item/modular_computer/tablet,
-		/obj/item/device/flash,
-		/obj/item/device/flashlight,
+		/obj/item/flash,
+		/obj/item/flashlight,
 		/obj/item/modular_computer/pda,
-		/obj/item/device/radio/headset,
-		/obj/item/device/megaphone,
+		/obj/item/radio/headset,
+		/obj/item/megaphone,
 		/obj/item/taperoll,
-		/obj/item/device/holowarrant,
-		/obj/item/device/radio,
-		/obj/item/device/tape,
-		/obj/item/weapon/pen,
-		/obj/item/weapon/stamp,
+		/obj/item/holowarrant,
+		/obj/item/radio,
+		/obj/item/tape,
+		/obj/item/pen,
+		/obj/item/stamp,
 		/obj/item/stack/package_wrap,
-		/obj/item/device/binoculars,
-		/obj/item/weapon/marshalling_wand,
-		/obj/item/device/camera,
-		/obj/item/device/destTagger
+		/obj/item/binoculars,
+		/obj/item/marshalling_wand,
+		/obj/item/camera,
+		/obj/item/destTagger
 		)
 
-/obj/item/weapon/storage/belt/holster/general/command/New()
+/obj/item/storage/belt/holster/general/command/New()
 	..()
-	new /obj/item/weapon/gun/projectile/divet(src)
+	new /obj/item/gun/projectile/divet(src)
 	update_icon()
 
-/obj/item/weapon/storage/belt/holster/forensic
+/obj/item/storage/belt/holster/forensic
 	name = "forensic belt"
 	desc = "Can hold forensic gear like fingerprint powder and luminol."
 	icon_state = "forensicbelt"
@@ -334,26 +334,26 @@
 	storage_slots = 7
 	overlay_flags = BELT_OVERLAY_HOLSTER
 	can_hold = list(
-		/obj/item/weapon/reagent_containers/spray/luminol,
-		/obj/item/device/uv_light,
-		/obj/item/weapon/reagent_containers/syringe,
-		/obj/item/weapon/forensics/swab,
-		/obj/item/weapon/sample/print,
-		/obj/item/weapon/sample/fibers,
-		/obj/item/device/taperecorder,
-		/obj/item/device/tape,
+		/obj/item/reagent_containers/spray/luminol,
+		/obj/item/uv_light,
+		/obj/item/reagent_containers/syringe,
+		/obj/item/forensics/swab,
+		/obj/item/sample/print,
+		/obj/item/sample/fibers,
+		/obj/item/taperecorder,
+		/obj/item/tape,
 		/obj/item/clothing/gloves/latex,
 		/obj/item/clothing/gloves/forensic,
-		/obj/item/weapon/folder,
-		/obj/item/weapon/paper,
-		/obj/item/weapon/forensics/sample_kit,
-		/obj/item/device/camera,
-		/obj/item/device/taperecorder,
-		/obj/item/device/tape,
-		/obj/item/weapon
+		/obj/item/folder,
+		/obj/item/paper,
+		/obj/item/forensics/sample_kit,
+		/obj/item/camera,
+		/obj/item/taperecorder,
+		/obj/item/tape,
+		/obj/item
 		)
 
-/obj/item/weapon/storage/belt/holster/machete
+/obj/item/storage/belt/holster/machete
 	name = "machete belt"
 	desc = "Can hold general surveying equipment used for exploration, as well as your very own machete."
 	icon_state = "machetebelt"
@@ -361,64 +361,64 @@
 	storage_slots = 6
 	overlay_flags = BELT_OVERLAY_HOLSTER
 	can_hold = list(
-		/obj/item/device/binoculars,
-		/obj/item/device/camera,
+		/obj/item/binoculars,
+		/obj/item/camera,
 		/obj/item/stack/flag,
-		/obj/item/device/geiger,
-		/obj/item/device/flashlight,
-		/obj/item/device/radio,
-		/obj/item/device/gps,
-		/obj/item/weapon/mining_scanner,
-		/obj/item/device/slime_scanner,
-		/obj/item/device/analyzer/plant_analyzer,
-		/obj/item/weapon/folder,
-		/obj/item/weapon/paper,
-		/obj/item/weapon/pen,
-		/obj/item/device/radio/beacon,
-		/obj/item/weapon/pinpointer/radio,
-		/obj/item/device/taperecorder,
-		/obj/item/device/tape,
-		/obj/item/device/analyzer
+		/obj/item/geiger,
+		/obj/item/flashlight,
+		/obj/item/radio,
+		/obj/item/gps,
+		/obj/item/mining_scanner,
+		/obj/item/slime_scanner,
+		/obj/item/analyzer/plant_analyzer,
+		/obj/item/folder,
+		/obj/item/paper,
+		/obj/item/pen,
+		/obj/item/radio/beacon,
+		/obj/item/pinpointer/radio,
+		/obj/item/taperecorder,
+		/obj/item/tape,
+		/obj/item/analyzer
 		)
-	can_holster = list(/obj/item/weapon/material/hatchet/machete)
+	can_holster = list(/obj/item/material/hatchet/machete)
 	sound_in = 'sound/effects/holster/sheathin.ogg'
 	sound_out = 'sound/effects/holster/sheathout.ogg'
 
-/obj/item/weapon/storage/belt/soulstone
+/obj/item/storage/belt/soulstone
 	name = "soul stone belt"
 	desc = "Designed for ease of access to the shards during a fight, as to not let a single enemy spirit slip away."
 	icon_state = "soulstonebelt"
 	item_state = "soulstonebelt"
 	storage_slots = 6
 	can_hold = list(
-		/obj/item/device/soulstone
+		/obj/item/soulstone
 		)
 
-/obj/item/weapon/storage/belt/soulstone/full/New()
+/obj/item/storage/belt/soulstone/full/New()
 	..()
-	new /obj/item/device/soulstone(src)
-	new /obj/item/device/soulstone(src)
-	new /obj/item/device/soulstone(src)
-	new /obj/item/device/soulstone(src)
-	new /obj/item/device/soulstone(src)
-	new /obj/item/device/soulstone(src)
+	new /obj/item/soulstone(src)
+	new /obj/item/soulstone(src)
+	new /obj/item/soulstone(src)
+	new /obj/item/soulstone(src)
+	new /obj/item/soulstone(src)
+	new /obj/item/soulstone(src)
 
 
-/obj/item/weapon/storage/belt/champion
+/obj/item/storage/belt/champion
 	name = "championship belt"
 	desc = "Proves to the world that you are the strongest!"
 	icon_state = "championbelt"
 	item_state = "champion"
 	storage_slots = 1
 
-/obj/item/weapon/storage/belt/holster/security/tactical
+/obj/item/storage/belt/holster/security/tactical
 	name = "combat belt"
 	desc = "Can hold security gear like handcuffs and flashes, with more pouches for more storage."
 	icon_state = "swatbelt"
 	item_state = "swatbelt"
 	storage_slots = 10
 
-/obj/item/weapon/storage/belt/waistpack
+/obj/item/storage/belt/waistpack
 	name = "waist pack"
 	desc = "A small bag designed to be worn on the waist. May make your butt look big."
 	icon_state = "fannypack_white"
@@ -428,7 +428,7 @@
 	max_storage_space = ITEM_SIZE_SMALL * 4
 	slot_flags = SLOT_BELT | SLOT_BACK
 
-/obj/item/weapon/storage/belt/waistpack/big
+/obj/item/storage/belt/waistpack/big
 	name = "large waist pack"
 	desc = "An bag designed to be worn on the waist. Definitely makes your butt look big."
 	icon_state = "fannypack_big_white"
@@ -437,6 +437,6 @@
 	max_w_class = ITEM_SIZE_NORMAL
 	max_storage_space = ITEM_SIZE_NORMAL * 4
 
-/obj/item/weapon/storage/belt/waistpack/big/New()
+/obj/item/storage/belt/waistpack/big/New()
 	..()
 	slowdown_per_slot[slot_belt] = 3

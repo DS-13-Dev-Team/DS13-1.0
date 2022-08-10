@@ -18,7 +18,7 @@ obj/structure/windoor_assembly
 	dir = NORTH
 	w_class = ITEM_SIZE_NORMAL
 
-	var/obj/item/weapon/airlock_electronics/electronics = null
+	var/obj/item/airlock_electronics/electronics = null
 
 	//Vars to help with the icon's name
 	var/facing = "l"	//Does the windoor open to the left or right?
@@ -155,7 +155,7 @@ obj/structure/windoor_assembly/Destroy()
 						src.SetName("Anchored Windoor Assembly")
 
 			//Adding airlock electronics for access. Step 6 complete.
-			else if(istype(W, /obj/item/weapon/airlock_electronics) && W:icon_state != "door_electronics_smoked")
+			else if(istype(W, /obj/item/airlock_electronics) && W:icon_state != "door_electronics_smoked")
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 100, 1)
 				user.visible_message("[user] installs the electronics into the airlock assembly.", "You start to install electronics into the airlock assembly.")
 
@@ -181,7 +181,7 @@ obj/structure/windoor_assembly/Destroy()
 						src.SetName("Secure Wired Windoor Assembly")
 					else
 						src.SetName("Wired Windoor Assembly")
-					var/obj/item/weapon/airlock_electronics/ae = electronics
+					var/obj/item/airlock_electronics/ae = electronics
 					electronics = null
 					ae.loc = src.loc
 

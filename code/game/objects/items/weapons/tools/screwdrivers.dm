@@ -1,4 +1,4 @@
-/obj/item/weapon/tool/screwdriver
+/obj/item/tool/screwdriver
 	name = "screwdriver"
 	desc = "You can use this to open panels and such things."
 	icon_state = "screwdriver"
@@ -13,23 +13,23 @@
 	attack_verb = list("stabbed")
 	tool_qualities = list(QUALITY_SCREW_DRIVING = 30, QUALITY_BONE_SETTING = 10)
 
-/obj/item/weapon/tool/screwdriver/improvised
+/obj/item/tool/screwdriver/improvised
 	name = "screwpusher"
 	desc = "A little metal rod wrapped in tape, barely qualifies as a tool."
 	icon_state = "impro_screwdriver"
 	tool_qualities = list(QUALITY_SCREW_DRIVING = 15)
 	degradation = DEGRADATION_FRAGILE
 
-/obj/item/weapon/tool/screwdriver/electric
+/obj/item/tool/screwdriver/electric
 	name = "electric screwdriver"
 	desc = "Screwdriver powered by S class cell."
 	icon_state = "e-screwdriver"
 	worksound = WORKSOUND_DRIVER_TOOL
 	tool_qualities = list(QUALITY_SCREW_DRIVING = 40, QUALITY_DRILLING = 10, QUALITY_BONE_SETTING = 10)
 	use_power_cost = 0.18
-	suitable_cell = /obj/item/weapon/cell
+	suitable_cell = /obj/item/cell
 
-/obj/item/weapon/tool/screwdriver/combi_driver
+/obj/item/tool/screwdriver/combi_driver
 	name = "combi driver"
 	desc = "Drive screws, drive bolts, drill bones, you can do everything with it."
 	icon_state = "combi_driver"
@@ -38,10 +38,10 @@
 	matter = list(MATERIAL_STEEL = 900, MATERIAL_PLASTIC = 600)
 	tool_qualities = list(QUALITY_SCREW_DRIVING = 50, QUALITY_BOLT_TURNING = 50, QUALITY_DRILLING = 20)
 	use_power_cost = 0.24
-	suitable_cell = /obj/item/weapon/cell
+	suitable_cell = /obj/item/cell
 	max_modifications = 4
 
-/obj/item/weapon/tool/screwdriver/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
+/obj/item/tool/screwdriver/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
 	if(!istype(M) || user.a_intent == "help")
 		return ..()
 	var/zone = get_zone_sel(user, TRUE)

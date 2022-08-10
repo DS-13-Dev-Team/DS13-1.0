@@ -61,4 +61,5 @@ SUBSYSTEM_DEF(shuttle)
 		shuttle = new shuttle()
 
 /datum/controller/subsystem/shuttle/stat_entry(msg)
-	return "S:[shuttles.len], L:[registered_shuttle_landmarks.len], Landmarks w/o Sector:[landmarks_awaiting_sector.len], Missing Landmarks:[landmarks_still_needed.len]"
+	msg ="|S:[shuttles.len]|L:[registered_shuttle_landmarks.len]|Landmarks w/o Sector:[landmarks_awaiting_sector.len]|Missing Landmarks:[landmarks_still_needed.len]"
+	return ..()

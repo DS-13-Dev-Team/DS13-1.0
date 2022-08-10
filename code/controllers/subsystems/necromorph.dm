@@ -33,9 +33,6 @@ SUBSYSTEM_DEF(necromorph)
 	//Under the mostly likely assumption that two people generally won't be jumping to shards at the same time
 	var/last_shard_jumped_to = 1
 
-/datum/controller/subsystem/necromorph/stat_entry(msg)
-	return ("Click to debug!")
-
 /datum/controller/subsystem/necromorph/proc/join_necroqueue(mob/dead/observer/eye/signal/M)
 	if (is_marker_master(M))
 		//The master may not queue. They can still possess things if really needed though

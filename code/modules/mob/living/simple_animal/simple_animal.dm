@@ -74,7 +74,8 @@
 
 /mob/living/simple_animal/Life()
 	..()
-	if(!living_observers_present(GetConnectedZlevels(z)))
+	var/turf/T = get_turf(src)
+	if(!living_observers_present(GetConnectedZlevels(T.z)))
 		return
 	//Health
 	if(stat == DEAD)

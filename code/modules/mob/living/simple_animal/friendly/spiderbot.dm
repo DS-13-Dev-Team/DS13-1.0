@@ -6,11 +6,11 @@
 	maxbodytemp = 500
 	mob_size = MOB_SMALL
 
-	var/obj/item/device/radio/borg/radio = null
+	var/obj/item/radio/borg/radio = null
 	var/mob/living/silicon/ai/connected_ai = null
-	var/obj/item/weapon/cell/cell = null
+	var/obj/item/cell/cell = null
 	var/obj/machinery/camera/camera = null
-	var/obj/item/device/mmi/mmi = null
+	var/obj/item/mmi/mmi = null
 	var/list/req_access = list(access_research) //Access needed to pop out the brain.
 	var/positronic
 
@@ -50,10 +50,10 @@
 
 /mob/living/simple_animal/spiderbot/attackby(var/obj/item/O as obj, var/mob/user as mob)
 
-	if(istype(O, /obj/item/device/mmi) || istype(O, /obj/item/organ/internal/posibrain))
+	if(istype(O, /obj/item/mmi) || istype(O, /obj/item/organ/internal/posibrain))
 		var/mob/living/carbon/brain/B
-		if(istype(O, /obj/item/device/mmi))
-			var/obj/item/device/mmi/M = O
+		if(istype(O, /obj/item/mmi))
+			var/obj/item/mmi/M = O
 			B = M.brainmob
 		else
 			var/obj/item/organ/internal/posibrain/P = O
@@ -108,12 +108,12 @@
 		else
 			to_chat(user, "<span class='danger'>You need more welding fuel for this task!</span>")
 			return
-	else if(istype(O, /obj/item/weapon/card/id)||istype(O, /obj/item/modular_computer))
+	else if(istype(O, /obj/item/card/id)||istype(O, /obj/item/modular_computer))
 		if (!mmi)
 			to_chat(user, "<span class='danger'>There's no reason to swipe your ID - \the [src] has no brain to remove.</span>")
 			return 0
 
-		var/obj/item/weapon/card/id/id_card = O.GetIdCard()
+		var/obj/item/card/id/id_card = O.GetIdCard()
 
 		if(id_card && (access_research in id_card.access))
 			to_chat(user, "<span class='notice'>You swipe your access card and pop the brain out of \the [src].</span>")
@@ -139,7 +139,7 @@
 		spawn(200)	to_chat(src, "<span class='danger'>Internal heat sensors are spiking! Something is badly wrong with your cell!</span>")
 		spawn(300)	src.explode()
 
-/mob/living/simple_animal/spiderbot/proc/transfer_personality(var/obj/item/device/mmi/M as obj)
+/mob/living/simple_animal/spiderbot/proc/transfer_personality(var/obj/item/mmi/M as obj)
 
 		src.mind = M.brainmob.mind
 		src.mind.key = M.brainmob.key
@@ -183,7 +183,7 @@
 
 /mob/living/simple_animal/spiderbot/New()
 
-	radio = new /obj/item/device/radio/borg(src)
+	radio = new /obj/item/radio/borg(src)
 	camera = new /obj/machinery/camera(src)
 	camera.c_tag = "spiderbot-[real_name]"
 	camera.replace_networks(list("SS13"))
@@ -216,11 +216,11 @@
 		to_chat(usr, "<span class='warning'>You have nothing to drop!</span>")
 		return 0
 
-	if(istype(held_item, /obj/item/weapon/grenade))
+	if(istype(held_item, /obj/item/grenade))
 		visible_message("<span class='danger'>\The [src] launches \the [held_item]!</span>", \
 			"<span class='danger'>You launch \the [held_item]!</span>", \
 			"You hear a skittering noise and a thump!")
-		var/obj/item/weapon/grenade/G = held_item
+		var/obj/item/grenade/G = held_item
 		G.loc = src.loc
 		G.detonate()
 		held_item = null

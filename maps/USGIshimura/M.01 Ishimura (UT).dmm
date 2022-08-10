@@ -26,7 +26,7 @@
 /area/ishimura/tramdeck/switchingstation/lower)
 "ah" = (
 /obj/structure/table/rack/dark,
-/obj/item/weapon/gun/energy/forcegun,
+/obj/item/gun/energy/forcegun,
 /turf/simulated/floor,
 /area/ishimura/tramdeck/switchingstation/lower)
 "ai" = (
@@ -163,7 +163,7 @@
 /turf/simulated/floor/dank/heavy,
 /area/ishimura/tramdeck/switchingstation/lower)
 "aE" = (
-/obj/item/weapon/stool,
+/obj/item/stool,
 /turf/simulated/floor/dank/heavy,
 /area/ishimura/tramdeck/switchingstation/lower)
 "aG" = (
@@ -221,7 +221,7 @@
 /area/ishimura/tramdeck/switchingstation/lower)
 "aT" = (
 /obj/structure/table/standard,
-/obj/item/weapon/deck/cards,
+/obj/item/deck/cards,
 /turf/simulated/floor/dank/heavy,
 /area/ishimura/tramdeck/switchingstation/lower)
 "aV" = (
@@ -249,7 +249,7 @@
 /area/ishimura/tramdeck/switchingstation/lower)
 "aZ" = (
 /obj/structure/table/standard,
-/obj/item/weapon/material/ashtray/plastic,
+/obj/item/material/ashtray/plastic,
 /turf/simulated/floor/dank/heavy,
 /area/ishimura/tramdeck/switchingstation/lower)
 "bc" = (
@@ -452,7 +452,7 @@
 "bB" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/constructable_frame,
-/obj/item/weapon/tool/weldingtool/improvised,
+/obj/item/tool/weldingtool/improvised,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor,
 /area/ishimura/tramdeck/switchingstation/lower)
@@ -815,7 +815,7 @@
 /turf/simulated/floor/dank/heavy,
 /area/ishimura/tramdeck/switchingstation/lower)
 "cs" = (
-/obj/item/weapon/material/shard,
+/obj/item/material/shard,
 /obj/effect/floor_decal/rust,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor,
@@ -2790,7 +2790,7 @@
 /area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "gq" = (
 /obj/structure/table/standard,
-/obj/item/weapon/material/ashtray/plastic,
+/obj/item/material/ashtray/plastic,
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "gr" = (
@@ -4194,19 +4194,19 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/item/weapon/storage/box/greenglowsticks,
+/obj/item/storage/box/greenglowsticks,
 /obj/random/tool_upgrade,
 /turf/simulated/floor/tiled/steel_grid,
 /area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "iH" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/toolbox/emergency{
+/obj/item/storage/toolbox/emergency{
 	pixel_y = 8
 	},
-/obj/item/weapon/storage/toolbox/electrical{
+/obj/item/storage/toolbox/electrical{
 	pixel_y = 4
 	},
-/obj/item/weapon/storage/toolbox/mechanical,
+/obj/item/storage/toolbox/mechanical,
 /turf/simulated/floor/tiled/steel_grid,
 /area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "iI" = (
@@ -4399,7 +4399,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "ji" = (
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 8;
 	pixel_x = 21
 	},
@@ -4502,21 +4502,21 @@
 /obj/item/stack/material/steel/fifty,
 /obj/random/lathe_disk,
 /obj/random/lathe_disk,
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/adv_tools,
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/circuits,
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/components,
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/computer,
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/devices,
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/misc,
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/robustcells,
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/robustcells,
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/tools,
+/obj/item/computer_hardware/hard_drive/portable/design/adv_tools,
+/obj/item/computer_hardware/hard_drive/portable/design/circuits,
+/obj/item/computer_hardware/hard_drive/portable/design/components,
+/obj/item/computer_hardware/hard_drive/portable/design/computer,
+/obj/item/computer_hardware/hard_drive/portable/design/devices,
+/obj/item/computer_hardware/hard_drive/portable/design/misc,
+/obj/item/computer_hardware/hard_drive/portable/design/robustcells,
+/obj/item/computer_hardware/hard_drive/portable/design/robustcells,
+/obj/item/computer_hardware/hard_drive/portable/design/tools,
 /turf/simulated/floor/tiled/steel_grid,
 /area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "js" = (
 /obj/structure/table/standard,
 /obj/item/stack/material/plasteel/random,
-/obj/item/weapon/storage/toolbox/mechanical,
+/obj/item/storage/toolbox/mechanical,
 /turf/simulated/floor/tiled/steel_grid,
 /area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "jt" = (
@@ -4619,7 +4619,7 @@
 	amount = 50
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/device/radio/intercom{
+/obj/item/radio/intercom{
 	dir = 4;
 	pixel_x = -22
 	},
@@ -5338,9 +5338,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "lq" = (
-/obj/item/weapon/reagent_containers/food/snacks/old/hamburger,
-/obj/item/weapon/reagent_containers/food/snacks/old/hamburger,
-/obj/item/weapon/reagent_containers/food/snacks/old/hotdog,
+/obj/item/reagent_containers/food/snacks/old/hamburger,
+/obj/item/reagent_containers/food/snacks/old/hamburger,
+/obj/item/reagent_containers/food/snacks/old/hotdog,
 /turf/simulated/floor/plating,
 /area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
 "lX" = (
@@ -5393,9 +5393,9 @@
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
 "nT" = (
-/obj/item/weapon/reagent_containers/food/snacks/old/burger,
-/obj/item/weapon/reagent_containers/food/snacks/old/fries,
-/obj/item/weapon/reagent_containers/food/snacks/old/hotdog,
+/obj/item/reagent_containers/food/snacks/old/burger,
+/obj/item/reagent_containers/food/snacks/old/fries,
+/obj/item/reagent_containers/food/snacks/old/hotdog,
 /turf/simulated/floor/plating,
 /area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
 "ow" = (
@@ -5432,7 +5432,7 @@
 /area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
 "rf" = (
 /obj/structure/table,
-/obj/item/weapon/tool/wrench,
+/obj/item/tool/wrench,
 /turf/simulated/floor/dank/heavy,
 /area/ishimura/tramdeck/switchingstation/lower)
 "rr" = (
@@ -5454,11 +5454,11 @@
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
 "rY" = (
-/obj/item/weapon/reagent_containers/food/snacks/old/hotdog,
+/obj/item/reagent_containers/food/snacks/old/hotdog,
 /turf/simulated/floor/plating,
 /area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
 "sr" = (
-/obj/item/weapon/reagent_containers/food/snacks/old/taco,
+/obj/item/reagent_containers/food/snacks/old/taco,
 /turf/simulated/floor/plating,
 /area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
 "sF" = (
@@ -5513,7 +5513,7 @@
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "xM" = (
-/obj/item/weapon/reagent_containers/food/snacks/old/hamburger,
+/obj/item/reagent_containers/food/snacks/old/hamburger,
 /turf/simulated/floor/plating,
 /area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
 "zE" = (
@@ -5546,8 +5546,8 @@
 /turf/simulated/floor/plating,
 /area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
 "CI" = (
-/obj/item/weapon/reagent_containers/food/snacks/old/burger,
-/obj/item/weapon/reagent_containers/food/snacks/old/fries,
+/obj/item/reagent_containers/food/snacks/old/burger,
+/obj/item/reagent_containers/food/snacks/old/fries,
 /turf/simulated/floor/plating,
 /area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
 "Dk" = (
@@ -5624,7 +5624,7 @@
 	},
 /area/ishimura/tramdeck/switchingstation/lower)
 "Hb" = (
-/obj/item/weapon/reagent_containers/food/snacks/old/burger,
+/obj/item/reagent_containers/food/snacks/old/burger,
 /turf/simulated/floor/plating,
 /area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
 "Hl" = (
@@ -5688,7 +5688,7 @@
 /area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "My" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/storage/toolbox/mechanical,
+/obj/item/storage/toolbox/mechanical,
 /obj/effect/floor_decal/rust,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor,
@@ -5703,7 +5703,7 @@
 /turf/simulated/floor,
 /area/ishimura/tramdeck/switchingstation/lower)
 "NJ" = (
-/obj/item/weapon/reagent_containers/food/snacks/old/fries,
+/obj/item/reagent_containers/food/snacks/old/fries,
 /turf/simulated/floor/plating,
 /area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
 "OH" = (
@@ -5752,7 +5752,7 @@
 /area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
 "SM" = (
 /obj/structure/foamedmetal,
-/obj/item/weapon/reagent_containers/food/snacks/old/burger,
+/obj/item/reagent_containers/food/snacks/old/burger,
 /turf/simulated/floor/plating,
 /area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
 "SP" = (
@@ -5779,7 +5779,7 @@
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
 "TV" = (
-/obj/item/weapon/reagent_containers/food/snacks/old/pizza,
+/obj/item/reagent_containers/food/snacks/old/pizza,
 /turf/simulated/floor/plating,
 /area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
 "Us" = (
@@ -5821,8 +5821,8 @@
 /turf/simulated/floor/plating,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
 "Yp" = (
-/obj/item/weapon/reagent_containers/food/snacks/old/hamburger,
-/obj/item/weapon/reagent_containers/food/snacks/old/hamburger,
+/obj/item/reagent_containers/food/snacks/old/hamburger,
+/obj/item/reagent_containers/food/snacks/old/hamburger,
 /turf/simulated/floor/plating,
 /area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
 "YH" = (

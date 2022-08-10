@@ -1,4 +1,4 @@
-/obj/item/device/rig_remover
+/obj/item/rig_remover
 	name = "RIG Retraction Device"
 	desc = "A hand held device for getting people inside heavy RIG suits out. Retracts the target's RIG through the Safe Retraction API."
 	icon = 'icons/obj/hacktool.dmi'
@@ -15,11 +15,11 @@
 	origin_tech = list(TECH_MAGNET = 1, TECH_BIO = 1)
 
 
-/obj/item/device/rig_remover/afterattack(var/mob/living/carbon/human/target, mob/user, proximity)
+/obj/item/rig_remover/afterattack(var/mob/living/carbon/human/target, mob/user, proximity)
 	if (!is_valid_target(target,user))
 		return
 
-	var/obj/item/weapon/rig/R = target.wearing_rig
+	var/obj/item/rig/R = target.wearing_rig
 
 	if (R.active)
 		to_chat("<span class='warning'>[user] begins to remove the [target]'s [R].</span>")
@@ -29,7 +29,7 @@
 		user.visible_message("<span class='warning'>[target]'s RIG is not active.</span>")
 
 
-/obj/item/device/rig_remover/proc/is_valid_target(var/mob/living/carbon/human/target, mob/user)
+/obj/item/rig_remover/proc/is_valid_target(var/mob/living/carbon/human/target, mob/user)
 	if (!istype(target))
 		return
 
@@ -37,7 +37,7 @@
 		to_chat(user, SPAN_WARNING("[target] is not wearing a RIG."))
 		return
 
-	var/obj/item/weapon/rig/R = target.wearing_rig
+	var/obj/item/rig/R = target.wearing_rig
 
 	//In process already
 	if (R.sealing)

@@ -86,7 +86,7 @@
 
 /datum/craft_recipe/furniture/stool
 	name = "stool"
-	result = /obj/item/weapon/stool
+	result = /obj/item/stool
 	time = 30
 	steps = list(
 		list(CRAFT_MATERIAL, MATERIAL_STEEL,1),

@@ -42,8 +42,8 @@
 	equipment = list(/obj/item/clothing/head/wizard = slot_head,
 					/obj/item/clothing/under/color/lightpurple = slot_w_uniform,
 					/obj/item/clothing/shoes/sandal = slot_shoes,
-					/obj/item/weapon/staff = slot_r_hand,
-					/obj/item/weapon/spellbook/student = slot_l_hand,
+					/obj/item/staff = slot_r_hand,
+					/obj/item/spellbook/student = slot_l_hand,
 					/obj/item/clothing/suit/wizrobe = slot_wear_suit)
 	spells = list(/spell/noclothes)
 
@@ -127,8 +127,8 @@
 	spiel = "Physicality is not something you are familiar with. Indeed, injuries cannot slow you down, but you can�t fight back, either! In addition to this, you can reach into the void and return the soul of a single departed crewmember via the revoke death verb, if so desired; this can even revive your Master, should they fall in combat before you do. Serve them well."
 	equipment = list(/obj/item/clothing/under/grimhoodie = slot_w_uniform,
 					/obj/item/clothing/shoes/sandal/grimboots = slot_shoes,
-					/obj/item/weapon/contract/wizard/xray = slot_l_hand,
-					/obj/item/weapon/contract/wizard/telepathy = slot_r_hand)
+					/obj/item/contract/wizard/xray = slot_l_hand,
+					/obj/item/contract/wizard/telepathy = slot_r_hand)
 	spells = list(/spell/toggle_armor/overseer,
 				/spell/targeted/ethereal_jaunt,
 				/spell/invisibility,
@@ -176,7 +176,7 @@
 	stype = null
 	return ..()
 
-/obj/item/weapon/summoning_stone
+/obj/item/summoning_stone
 	name = "summoning stone"
 	desc = "a small non-descript stone of dubious origin."
 	icon_state = "stone"
@@ -184,14 +184,14 @@
 	throw_range = 10
 	w_class = ITEM_SIZE_TINY
 
-/obj/item/weapon/summoning_stone/attack_self(var/mob/user)
+/obj/item/summoning_stone/attack_self(var/mob/user)
 	if(user.z in GLOB.using_map.admin_levels)
 		to_chat(user, "<span class='warning'>You cannot use \the [src] here.</span>")
 		return
 	user.set_machine(src)
 	interact(user)
 
-/obj/item/weapon/summoning_stone/interact(var/mob/user)
+/obj/item/summoning_stone/interact(var/mob/user)
 	var/list/types = subtypesof(/datum/spellbound_type) - /datum/spellbound_type/servant
 	if(user.mind && !GLOB.wizards.is_antagonist(user.mind))
 		use_type(pick(types),user)
@@ -203,7 +203,7 @@
 	show_browser(user,dat,"window=summoning")
 	onclose(user,"summoning")
 
-/obj/item/weapon/summoning_stone/proc/use_type(var/type, var/mob/user)
+/obj/item/summoning_stone/proc/use_type(var/type, var/mob/user)
 	new /obj/effect/cleanable/spellbound(get_turf(src),type)
 	if(prob(20))
 		var/list/base_areas = maintlocs //Have to do it this way as its a macro
@@ -223,7 +223,7 @@
 	show_browser(user, null, "window=summoning")
 	qdel(src)
 
-/obj/item/weapon/summoning_stone/OnTopic(user, href_list, state)
+/obj/item/summoning_stone/OnTopic(user, href_list, state)
 	if(href_list["type"])
 		use_type(href_list["type"],user)
 	return TOPIC_HANDLED

@@ -27,7 +27,6 @@
 		/datum/shuttle/autodock/multi/antag/deliverance,
 		/datum/shuttle/autodock/multi/antag/kellion,
 		/datum/shuttle/autodock/multi/antag/valor,
-		/datum/shuttle/autodock/multi/tram,
 	)
 
 	local_currency_name = "credits"

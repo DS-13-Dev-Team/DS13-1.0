@@ -134,7 +134,7 @@
 		rank = outfit.id_pda_assignment || rank
 		assignment = outfit.id_pda_assignment || assignment || rank
 		/*
-		var/obj/item/weapon/card/id/W = outfit.equip_id(H, rank, assignment, equip_adjustments)
+		var/obj/item/card/id/W = outfit.equip_id(H, rank, assignment, equip_adjustments)
 		if(W)
 			rank = W.rank
 			assignment = W.assignment*/
@@ -338,7 +338,7 @@
 
 
 	//Thirdly, we'll equip the ID, this may change our access, hence why we cut the gear list in two
-	var/obj/item/weapon/card/id/W = outfit.equip_id(H, rank, assignment, equip_adjustments, dummy = dummy)
+	var/obj/item/card/id/W = outfit.equip_id(H, rank, assignment, equip_adjustments, dummy = dummy)
 	if(W)
 		rank = W.rank
 		assignment = W.assignment

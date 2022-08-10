@@ -20,7 +20,7 @@
 	var/obj/item/clothing/suit/space/suit = null
 	var/obj/item/clothing/head/helmet/space/helmet = null
 	var/obj/item/clothing/shoes/magboots/boots = null
-	var/obj/item/weapon/tank/tank = null
+	var/obj/item/tank/tank = null
 	var/obj/item/clothing/mask/mask = null
 
 	var/suit_type = null
@@ -43,7 +43,7 @@
 /obj/machinery/suit_storage_unit/standard_unit
 	suit_type = /obj/item/clothing/suit/space
 	helmet_type = /obj/item/clothing/head/helmet/space
-	tank_type = /obj/item/weapon/tank/oxygen
+	tank_type = /obj/item/tank/oxygen
 	mask_type = /obj/item/clothing/mask/breath
 
 /obj/machinery/suit_storage_unit/atmos
@@ -51,7 +51,7 @@
 	suit_type = /obj/item/clothing/suit/space/void/atmos
 	helmet_type = /obj/item/clothing/head/helmet/space/void/atmos
 	boots_type = /obj/item/clothing/shoes/magboots
-	tank_type = /obj/item/weapon/tank/oxygen
+	tank_type = /obj/item/tank/oxygen
 	mask_type = /obj/item/clothing/mask/breath
 	req_access = list(access_engineering)
 	islocked = 1
@@ -61,7 +61,7 @@
 	suit_type = /obj/item/clothing/suit/space/void/engineering
 	helmet_type = /obj/item/clothing/head/helmet/space/void/engineering
 	boots_type = /obj/item/clothing/shoes/magboots
-	tank_type = /obj/item/weapon/tank/oxygen
+	tank_type = /obj/item/tank/oxygen
 	mask_type = /obj/item/clothing/mask/breath
 	req_access = list(access_engineering)
 	islocked = 1
@@ -82,7 +82,7 @@
 	suit_type = /obj/item/clothing/suit/space/void/medical
 	helmet_type = /obj/item/clothing/head/helmet/space/void/medical
 	boots_type = /obj/item/clothing/shoes/magboots
-	tank_type = /obj/item/weapon/tank/oxygen
+	tank_type = /obj/item/tank/oxygen
 	mask_type = /obj/item/clothing/mask/breath
 	req_access = list(access_medical)
 	islocked = 1
@@ -97,7 +97,7 @@
 	suit_type = /obj/item/clothing/suit/space/void/mining
 	helmet_type = /obj/item/clothing/head/helmet/space/void/mining
 	boots_type = /obj/item/clothing/shoes/magboots
-	tank_type = /obj/item/weapon/tank/oxygen
+	tank_type = /obj/item/tank/oxygen
 	mask_type = /obj/item/clothing/mask/breath
 	req_access = list(access_mining)
 	islocked = 1
@@ -112,7 +112,7 @@
 	suit_type = /obj/item/clothing/suit/space/void/security
 	helmet_type = /obj/item/clothing/head/helmet/space/void/security
 	boots_type = /obj/item/clothing/shoes/magboots
-	tank_type = /obj/item/weapon/tank/oxygen
+	tank_type = /obj/item/tank/oxygen
 	mask_type = /obj/item/clothing/mask/breath
 	req_access = list(access_security)
 	islocked = 1
@@ -127,7 +127,7 @@
 	suit_type = /obj/item/clothing/suit/space/void/merc
 	helmet_type = /obj/item/clothing/head/helmet/space/void/merc
 	boots_type = /obj/item/clothing/shoes/magboots
-	tank_type = /obj/item/weapon/tank/oxygen
+	tank_type = /obj/item/tank/oxygen
 	mask_type = /obj/item/clothing/mask/breath
 	islocked = 1
 
@@ -589,7 +589,7 @@
 	TRY_INSERT_SUIT_PIECE(suit, clothing/suit/space)
 	TRY_INSERT_SUIT_PIECE(helmet, clothing/head/helmet/space)
 	TRY_INSERT_SUIT_PIECE(boots, clothing/shoes/magboots)
-	TRY_INSERT_SUIT_PIECE(tank, weapon/tank)
+	TRY_INSERT_SUIT_PIECE(tank, tank)
 	TRY_INSERT_SUIT_PIECE(mask, clothing/mask)
 	update_icon()
 	updateUsrDialog()

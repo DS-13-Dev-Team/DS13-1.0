@@ -165,7 +165,7 @@ datum/objective/anti_revolution/brig
 
 /datum/objective/anti_revolution/demote/check_completion()
 	if(target && target.current && istype(target,/mob/living/carbon/human))
-		var/obj/item/weapon/card/id/I = target.current.GetIdCard()
+		var/obj/item/card/id/I = target.current.GetIdCard()
 
 		if(!istype(I)) return 1
 
@@ -431,7 +431,7 @@ datum/objective/steal
 	var/target_name
 
 	var/global/possible_items[] = list(
-		"a first contact protocol document" = /obj/item/weapon/paper/ishimura/fcprotocol,
+		"a first contact protocol document" = /obj/item/paper/ishimura/fcprotocol,
 	)
 
 	var/global/possible_items_special[] = list(
@@ -517,7 +517,7 @@ datum/objective/download
 			return 0
 
 		var/current_amount
-		var/obj/item/weapon/rig/S
+		var/obj/item/rig/S
 		if(istype(owner.current,/mob/living/carbon/human))
 			var/mob/living/carbon/human/H = owner.current
 			S = H.back
@@ -655,19 +655,19 @@ datum/objective/heist/loot
 				target_amount = 1
 				loot = "a nuclear bomb"
 			if(5)
-				target = /obj/item/weapon/gun
+				target = /obj/item/gun
 				target_amount = 6
 				loot = "six guns"
 			if(6)
-				target = /obj/item/weapon/gun/energy
+				target = /obj/item/gun/energy
 				target_amount = 4
 				loot = "four energy guns"
 			if(7)
-				target = /obj/item/weapon/gun/energy/laser
+				target = /obj/item/gun/energy/laser
 				target_amount = 2
 				loot = "two laser guns"
 			if(8)
-				target = /obj/item/weapon/gun/energy/ionrifle
+				target = /obj/item/gun/energy/ionrifle
 				target_amount = 1
 				loot = "an ion gun"
 

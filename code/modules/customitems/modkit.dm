@@ -51,7 +51,7 @@
 */
 /atom/proc/pre_modkit_transform(var/atom/replacement, var/obj/item/mod_kit/transformer, var/mob/user)
 
-/obj/item/weapon/rig/pre_modkit_transform(var/atom/replacement, var/obj/item/mod_kit/transformer, var/mob/user)
+/obj/item/rig/pre_modkit_transform(var/atom/replacement, var/obj/item/mod_kit/transformer, var/mob/user)
 	transfer_rig(replacement, src)
 /*
 	Special gear subtype

@@ -23,7 +23,7 @@
 /decl/hierarchy/outfit/necromorph/planet_cracker
 	name ="Planet Slasher"
 	uniform = /obj/item/clothing/under/deadspace/planet_cracker
-	id_type = /obj/item/weapon/card/id/holo/mining
+	id_type = /obj/item/card/id/holo/mining
 
 /obj/item/clothing/under/deadspace/planet_cracker
 	sprite_sheets = list(
@@ -36,7 +36,7 @@
 /decl/hierarchy/outfit/necromorph/security
 	name = "Slashity Officer"
 	uniform = /obj/item/clothing/under/deadspace/security
-	id_type = /obj/item/weapon/card/id/holo/security
+	id_type = /obj/item/card/id/holo/security
 
 
 //Science biosuits Uniform
@@ -44,26 +44,26 @@
 	name = "Bioslashard"
 	uniform = /obj/item/clothing/under/deadspace/doctor
 	suit = /obj/item/clothing/suit/bio_suit/ds
-	id_type = /obj/item/weapon/card/id/holo/science
+	id_type = /obj/item/card/id/holo/science
 
 
 /decl/hierarchy/outfit/necromorph/biosuit/earthgov
 	name = "G-Man"
 	uniform = /obj/item/clothing/under/deadspace/doctor
 	suit = /obj/item/clothing/suit/bio_suit/ds/black
-	id_type = /obj/item/weapon/card/id/holo/science
+	id_type = /obj/item/card/id/holo/science
 
 
 //Medical
 /decl/hierarchy/outfit/necromorph/doctor
 	name = "Doctor Slick"
 	uniform = /obj/item/clothing/under/deadspace/doctor
-	id_type = /obj/item/weapon/card/id/holo/medical
+	id_type = /obj/item/card/id/holo/medical
 
 /decl/hierarchy/outfit/necromorph/command
 	name = "Commander Slasher"
 	uniform = /obj/item/clothing/under/deadspace/captain
-	id_type = /obj/item/weapon/card/id/holo/command
+	id_type = /obj/item/card/id/holo/command
 
 /decl/hierarchy/outfit/necromorph/mining
 	name = "mining Slasher"

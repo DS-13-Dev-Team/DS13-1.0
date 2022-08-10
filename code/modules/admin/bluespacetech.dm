@@ -31,28 +31,28 @@
 		bst.change_hair_color(255,255,204)
 	//Items
 	bst.equip_to_slot_or_del(new /obj/item/clothing/under/assistantformal/bst(bst), slot_w_uniform)
-	bst.equip_to_slot_or_del(new /obj/item/device/radio/headset/ert/bst(bst), slot_l_ear)
-	bst.equip_to_slot_or_del(new /obj/item/weapon/storage/backpack/holding/bst(bst), slot_back)
-	bst.equip_to_slot_or_del(new /obj/item/weapon/storage/box/survival(bst.back), slot_in_backpack)
+	bst.equip_to_slot_or_del(new /obj/item/radio/headset/ert/bst(bst), slot_l_ear)
+	bst.equip_to_slot_or_del(new /obj/item/storage/backpack/holding/bst(bst), slot_back)
+	bst.equip_to_slot_or_del(new /obj/item/storage/box/survival(bst.back), slot_in_backpack)
 	bst.equip_to_slot_or_del(new /obj/item/clothing/shoes/black/bst(bst), slot_shoes)
 	bst.equip_to_slot_or_del(new /obj/item/clothing/head/beret(bst), slot_head)
 	bst.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/bst(bst), slot_glasses)
-	bst.equip_to_slot_or_del(new /obj/item/weapon/storage/belt/utility/full/bst(bst), slot_belt)
+	bst.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full/bst(bst), slot_belt)
 	bst.equip_to_slot_or_del(new /obj/item/clothing/gloves/color/white/bst(bst), slot_gloves)
 
-	bst.equip_to_slot_or_del(new /obj/item/weapon/storage/box/ids(bst.back), slot_in_backpack)
-	bst.equip_to_slot_or_del(new /obj/item/device/t_scanner(bst.back), slot_in_backpack)
+	bst.equip_to_slot_or_del(new /obj/item/storage/box/ids(bst.back), slot_in_backpack)
+	bst.equip_to_slot_or_del(new /obj/item/t_scanner(bst.back), slot_in_backpack)
 	bst.equip_to_slot_or_del(new /obj/item/modular_computer/pda/captain(bst.back), slot_in_backpack)
 	bst.equip_to_slot_or_del(new /obj/item/stack/power_node(bst.back, 3), slot_in_backpack)
 
-	var/obj/item/weapon/storage/box/pills = new /obj/item/weapon/storage/box(null, TRUE)
+	var/obj/item/storage/box/pills = new /obj/item/storage/box(null, TRUE)
 	pills.name = "adminordrazine"
 	for(var/i = 1, i < 12, i++)
-		new /obj/item/weapon/reagent_containers/pill/adminordrazine(pills)
+		new /obj/item/reagent_containers/pill/adminordrazine(pills)
 	bst.equip_to_slot_or_del(pills, slot_in_backpack)
 
 	//Sort out ID
-	var/obj/item/weapon/card/id/bst/id = new/obj/item/weapon/card/id/bst(bst)
+	var/obj/item/card/id/bst/id = new/obj/item/card/id/bst(bst)
 	id.registered_name = bst.real_name
 	id.assignment = "Bluespace Technician"
 	id.name = "[id.assignment]"
@@ -95,34 +95,34 @@
 		bst.change_hair_color(255,255,204)
 	//Items
 	bst.equip_to_slot_or_del(new /obj/item/clothing/under/assistantformal/bst(bst), slot_w_uniform)
-	bst.equip_to_slot_or_del(new /obj/item/device/radio/headset/ert/bst(bst), slot_l_ear)
+	bst.equip_to_slot_or_del(new /obj/item/radio/headset/ert/bst(bst), slot_l_ear)
 
 
 	//They get an engineering rig
-	var/obj/item/weapon/rig/advanced/rig = new(bst)
+	var/obj/item/rig/advanced/rig = new(bst)
 	rig.instant_equip(bst)
 	//Give the BSE a bunch of money in their rig
 	rig.charge_to_rig_account("Earthgov", "Expenses", "Terra", 999999)
 
-	bst.equip_to_slot_or_del(new /obj/item/weapon/storage/box/survival(bst.back), slot_in_backpack)
+	bst.equip_to_slot_or_del(new /obj/item/storage/box/survival(bst.back), slot_in_backpack)
 	bst.equip_to_slot_or_del(new /obj/item/clothing/shoes/black/bst(bst), slot_shoes)
 	bst.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/bst(bst), slot_glasses)
-	bst.equip_to_slot_or_del(new /obj/item/weapon/storage/belt/utility/full/bst(bst), slot_belt)
+	bst.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full/bst(bst), slot_belt)
 
-	bst.equip_to_slot_or_del(new /obj/item/weapon/storage/box/ids(bst.back), slot_in_backpack)
-	bst.equip_to_slot_or_del(new /obj/item/device/t_scanner(bst.back), slot_in_backpack)
+	bst.equip_to_slot_or_del(new /obj/item/storage/box/ids(bst.back), slot_in_backpack)
+	bst.equip_to_slot_or_del(new /obj/item/t_scanner(bst.back), slot_in_backpack)
 	bst.equip_to_slot_or_del(new /obj/item/modular_computer/pda/captain(bst.back), slot_in_backpack)
 	bst.equip_to_slot_or_del(new /obj/item/stack/power_node(bst.back, 3), slot_in_backpack)
 
 
-	var/obj/item/weapon/storage/box/pills = new /obj/item/weapon/storage/box(null, TRUE)
+	var/obj/item/storage/box/pills = new /obj/item/storage/box(null, TRUE)
 	pills.name = "adminordrazine"
 	for(var/i = 1, i < 12, i++)
-		new /obj/item/weapon/reagent_containers/pill/adminordrazine(pills)
+		new /obj/item/reagent_containers/pill/adminordrazine(pills)
 	bst.equip_to_slot_or_del(pills, slot_in_backpack)
 
 	//Sort out ID
-	var/obj/item/weapon/card/id/bst/id = new/obj/item/weapon/card/id/bst(bst)
+	var/obj/item/card/id/bst/id = new/obj/item/card/id/bst(bst)
 	id.registered_name = bst.real_name
 	id.assignment = "Bluespace Technician"
 	id.name = "[id.assignment]"
@@ -141,7 +141,7 @@
 	return 1
 
 
-/obj/item/weapon/rig/engineering/debug
+/obj/item/rig/engineering/debug
 	name = "debug engineering rig"
 	desc = "A lightweight and flexible armoured rig suit, designed for mining and shipboard engineering."
 
@@ -259,15 +259,15 @@
 /////////////////////////////////I T E M S/////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-/obj/item/weapon/storage/backpack/holding/bst
+/obj/item/storage/backpack/holding/bst
 	//worn_access = TRUE
 
-/obj/item/device/radio/headset/ert/bst
+/obj/item/radio/headset/ert/bst
 	name = "bluespace technician's headset"
 	desc = "A Bluespace Technician's headset. The letters 'BST' are stamped on the side."
 	translate_binary = TRUE
 
-/obj/item/device/radio/headset/ert/bst/attack_hand()
+/obj/item/radio/headset/ert/bst/attack_hand()
 	if(!usr)
 		return
 	if(!isbst(usr))
@@ -276,7 +276,7 @@
 	else
 		..()
 
-/obj/item/device/radio/headset/ert/bst/recalculateChannels(var/setDescription = FALSE)
+/obj/item/radio/headset/ert/bst/recalculateChannels(var/setDescription = FALSE)
 	..(setDescription)
 	translate_binary = TRUE
 	//translate_hive = TRUE
@@ -368,14 +368,14 @@
 
 	return TRUE //Because Bluespace
 
-/obj/item/weapon/card/id/bst
+/obj/item/card/id/bst
 	icon_state = "centcom"
 	desc = "An ID straight from Central Command. This one looks highly classified."
 
-/obj/item/weapon/card/id/bst/New()
+/obj/item/card/id/bst/New()
 	access = get_all_accesses()+get_all_centcom_access()+get_all_syndicate_access()
 
-/obj/item/weapon/card/id/bst/attack_hand()
+/obj/item/card/id/bst/attack_hand()
 	if(!usr)
 		return
 	if(!isbst(usr))
@@ -384,12 +384,12 @@
 	else
 		..()
 
-/obj/item/weapon/storage/belt/utility/full/bst
+/obj/item/storage/belt/utility/full/bst
 
-/obj/item/weapon/storage/belt/utility/full/bst/New()
+/obj/item/storage/belt/utility/full/bst/New()
 	..()
-	//new /obj/item/weapon/tool/multitool(src)
-	new /obj/item/weapon/tool/saw/plasma(src)
+	//new /obj/item/tool/multitool(src)
+	new /obj/item/tool/saw/plasma(src)
 
 /mob/living/carbon/human/bst/restrained()
 	if (status_flags & GODMODE)

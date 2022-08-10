@@ -20,7 +20,7 @@
 /obj/machinery/computer/asteroidcannon
 	name = "Asteroid Defense Mainframe"
 	desc = "A console used to control the ship's automated asteroid defense systems."
-	//circuit = /obj/item/weapon/circuitboard/asteroidcannon You know what. Gonna say no to this one. It'd be too easy to just decon the ADS console and dispose of the board.
+	//circuit = /obj/item/circuitboard/asteroidcannon You know what. Gonna say no to this one. It'd be too easy to just decon the ADS console and dispose of the board.
 	var/ui_template = "asteroidcannon.tmpl"
 	var/obj/structure/asteroidcannon/gun = null
 

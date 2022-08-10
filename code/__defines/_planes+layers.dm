@@ -79,6 +79,8 @@ What is the naming convention for planes or layers?
 #define FLOOR_PLANE						-7
 #define GAME_PLANE						-6
 
+#define ABOVE_GAME_PLANE -2
+
 #define DEFAULT_PLANE                   -4
 	#define PLATING_LAYER               1
 	//ABOVE PLATING
@@ -107,10 +109,11 @@ What is the naming convention for planes or layers?
 	#define MOUSETRAP_LAYER				2.12
 	#define PLANT_LAYER					2.13
 	//HIDING MOB
-	#define HIDING_MOB_LAYER			2.15
-	#define SHALLOW_FLUID_LAYER			2.16
-	#define MOB_SHADOW_LAYER			2.17
+	#define HIDING_MOB_LAYER			2.14
+	#define SHALLOW_FLUID_LAYER			2.15
+	#define MOB_SHADOW_LAYER			2.16
 	//OBJ
+	#define LOW_OBJ_LAYER				2.17
 	#define BELOW_DOOR_LAYER			2.18
 	#define OPEN_DOOR_LAYER				2.19
 	#define LADDER_LAYER				2.20
@@ -126,9 +129,10 @@ What is the naming convention for planes or layers?
 	#define FULL_WINDOW_LAYER           3.05
 	#define ABOVE_WINDOW_LAYER          3.06
 	//LYING MOB AND HUMAN
-	#define LYING_MOB_LAYER             3.07
-	#define LYING_HUMAN_LAYER           3.08
-	#define BASE_ABOVE_OBJ_LAYER        3.09
+	#define BELOW_MOB_LAYER				3.07
+	#define LYING_MOB_LAYER             3.08
+	#define LYING_HUMAN_LAYER           3.09
+	#define BASE_ABOVE_OBJ_LAYER        3.10
 	//MOB
 	#define MECH_UNDER_LAYER            3.11
 	// MOB_LAYER                        4
@@ -152,14 +156,18 @@ What is the naming convention for planes or layers?
 	#define BLOB_SHIELD_LAYER           4.13
 	#define BLOB_NODE_LAYER             4.14
 	#define BLOB_CORE_LAYER	            4.15
+
+	// Intermediate layer used by ABOVE_GAME_PLANE
+	#define ABOVE_ALL_MOB_LAYER			4.16
+
 	//EFFECTS BELOW LIGHTING
-	#define BELOW_PROJECTILE_LAYER      4.16
-	#define DEEP_FLUID_LAYER            4.17
-	#define FIRE_LAYER                  4.18
-	#define PROJECTILE_LAYER            4.19
-	#define ABOVE_PROJECTILE_LAYER      4.20
-	#define SINGULARITY_LAYER           4.21
-	#define POINTER_LAYER               4.22
+	#define BELOW_PROJECTILE_LAYER      4.17
+	#define DEEP_FLUID_LAYER            4.18
+	#define FIRE_LAYER                  4.19
+	#define PROJECTILE_LAYER            4.20
+	#define ABOVE_PROJECTILE_LAYER      4.21
+	#define SINGULARITY_LAYER           4.22
+	#define POINTER_LAYER               4.23
 
 	//FLY_LAYER                          5
 	//OBSERVER
@@ -234,6 +242,10 @@ What is the naming convention for planes or layers?
 
 #define ABOVE_HUD_PLANE 1100
 	#define ABOVE_HUD_LAYER 1
+
+#define RADIAL_BACKGROUND_LAYER 0
+///1000 is an unimportant number, it's just to normalize copied layers
+#define RADIAL_CONTENT_LAYER 1000
 
 /image/proc/plating_decal_layerise()
 	plane = GAME_PLANE

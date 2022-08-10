@@ -126,7 +126,7 @@
 
 /obj/item/projectile/bullet/shotgun/bola/on_impact(atom/movable/A)
 	..()
-	var/obj/item/weapon/legcuffs/bola/L = new (get_turf(src))
+	var/obj/item/legcuffs/bola/L = new (get_turf(src))
 	if(ishuman(A))
 		L.catch_human(A)
 

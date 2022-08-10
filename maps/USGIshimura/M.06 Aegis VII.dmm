@@ -674,9 +674,9 @@
 	dir = 1
 	},
 /obj/structure/table/reinforced,
-/obj/item/weapon/paper_bin,
-/obj/item/weapon/pen,
-/obj/item/weapon/pen,
+/obj/item/paper_bin,
+/obj/item/pen,
+/obj/item/pen,
 /turf/simulated/floor/tiled,
 /area/aegis/colony/security)
 "bV" = (
@@ -955,7 +955,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/aegis/colony/engineering)
 "cB" = (
-/obj/item/weapon/stool/padded,
+/obj/item/stool/padded,
 /obj/effect/floor_decal/industrial/outline,
 /turf/simulated/floor/tiled/monotile,
 /area/aegis/colony/spare_storage)
@@ -1191,7 +1191,7 @@
 	icon_state = "open"
 	},
 /obj/structure/table/standard,
-/obj/item/weapon/folder/red,
+/obj/item/folder/red,
 /obj/machinery/door/blast/shutters/open{
 	dir = 4;
 	icon_state = "shutter0";
@@ -1257,7 +1257,7 @@
 "de" = (
 /obj/structure/filingcabinet,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/device/radio/intercom/department/security{
+/obj/item/radio/intercom/department/security{
 	dir = 8;
 	pixel_x = 21
 	},
@@ -1963,7 +1963,7 @@
 /turf/simulated/floor/tiled,
 /area/aegis/colony/hangar/entrance/two)
 "eM" = (
-/obj/item/weapon/stool/bar/padded,
+/obj/item/stool/bar/padded,
 /turf/simulated/floor/tiled/monotile,
 /area/aegis/colony/breakroom)
 "eN" = (
@@ -2077,11 +2077,11 @@
 /area/aegis/colony/breakroom)
 "eY" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/stamp/denied{
+/obj/item/stamp/denied{
 	pixel_x = 2;
 	pixel_y = 2
 	},
-/obj/item/weapon/stamp/security,
+/obj/item/stamp/security,
 /turf/simulated/floor/tiled,
 /area/aegis/colony/security)
 "eZ" = (
@@ -2146,7 +2146,7 @@
 /turf/simulated/floor/tiled,
 /area/aegis/colony/hangar/entrance/one)
 "ff" = (
-/obj/item/weapon/stool/bar/padded,
+/obj/item/stool/bar/padded,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -2681,8 +2681,8 @@
 /area/aegis/colony/research/analysis)
 "gb" = (
 /obj/structure/table/steel,
-/obj/item/weapon/melee/baton/loaded,
-/obj/item/weapon/storage/toolbox/mechanical,
+/obj/item/melee/baton/loaded,
+/obj/item/storage/toolbox/mechanical,
 /obj/machinery/light{
 	dir = 8
 	},
@@ -2692,7 +2692,7 @@
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/random/loot/often,
-/obj/item/weapon/gun/projectile/linecutter,
+/obj/item/gun/projectile/linecutter,
 /obj/item/ammo_magazine/lineracks,
 /obj/item/ammo_magazine/lineracks,
 /obj/item/ammo_magazine/lineracks,
@@ -3163,7 +3163,7 @@
 "gZ" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/weapon/gun/energy/cutter,
+/obj/item/gun/energy/cutter,
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},
@@ -3183,13 +3183,13 @@
 /area/aegis/colony/breakroom)
 "hc" = (
 /obj/structure/table/reinforced,
-/obj/item/device/toner{
+/obj/item/toner{
 	pixel_y = -1
 	},
-/obj/item/device/toner{
+/obj/item/toner{
 	pixel_y = 8
 	},
-/obj/item/device/toner{
+/obj/item/toner{
 	pixel_y = 4
 	},
 /obj/random/loot/often,
@@ -3329,7 +3329,7 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/table/standard,
 /obj/random/loot/usually,
-/obj/item/weapon/storage/box/glowsticks,
+/obj/item/storage/box/glowsticks,
 /turf/simulated/floor/concrete,
 /area/aegis)
 "hr" = (
@@ -3384,8 +3384,8 @@
 	dir = 8;
 	pixel_x = 25
 	},
-/obj/item/weapon/storage/firstaid/regular,
-/obj/item/weapon/storage/firstaid/adv{
+/obj/item/storage/firstaid/regular,
+/obj/item/storage/firstaid/adv{
 	pixel_x = 2;
 	pixel_y = 2
 	},
@@ -3410,20 +3410,20 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/item/weapon/storage/box/mixedglasses,
+/obj/item/storage/box/mixedglasses,
 /turf/simulated/floor/lino,
 /area/aegis/colony/breakroom)
 "hA" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/toolbox/electrical,
+/obj/item/storage/toolbox/electrical,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/random/loot/usually,
 /turf/simulated/floor/concrete,
 /area/aegis)
 "hB" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/box/cups,
-/obj/item/weapon/storage/box/cups,
+/obj/item/storage/box/cups,
+/obj/item/storage/box/cups,
 /turf/simulated/floor/tiled,
 /area/aegis/colony)
 "hC" = (
@@ -4023,8 +4023,8 @@
 /area/aegis/colony/hangar)
 "iC" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/ore,
-/obj/item/weapon/storage/ore,
+/obj/item/storage/ore,
+/obj/item/storage/ore,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/random/loot/usually,
 /turf/simulated/floor/concrete,
@@ -4129,12 +4129,12 @@
 	icon_state = "corner_white"
 	},
 /obj/structure/table/standard,
-/obj/item/weapon/storage/firstaid/fire{
+/obj/item/storage/firstaid/fire{
 	pixel_x = -4;
 	pixel_y = -4
 	},
-/obj/item/weapon/storage/firstaid/regular,
-/obj/item/weapon/storage/firstaid/o2{
+/obj/item/storage/firstaid/regular,
+/obj/item/storage/firstaid/o2{
 	pixel_x = 4;
 	pixel_y = 4
 	},
@@ -4146,23 +4146,23 @@
 	dir = 1
 	},
 /obj/structure/table/standard,
-/obj/item/weapon/storage/box/masks{
+/obj/item/storage/box/masks{
 	pixel_y = 8
 	},
-/obj/item/weapon/storage/box/gloves,
+/obj/item/storage/box/gloves,
 /obj/random/loot/often,
 /turf/simulated/floor/tiled/white,
 /area/aegis/colony/medical)
 "iR" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/weapon/cell/force{
+/obj/item/cell/force{
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/obj/item/weapon/cell/force,
+/obj/item/cell/force,
 /obj/random/loot/often,
-/obj/item/weapon/gun/energy/forcegun,
+/obj/item/gun/energy/forcegun,
 /turf/simulated/floor/tiled/monotile,
 /area/aegis/colony/spare_storage)
 "iS" = (
@@ -4253,11 +4253,11 @@
 "je" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/grey,
-/obj/item/weapon/shield/riot{
+/obj/item/shield/riot{
 	pixel_x = -2;
 	pixel_y = -2
 	},
-/obj/item/weapon/shield/riot{
+/obj/item/shield/riot{
 	pixel_x = 2;
 	pixel_y = 2
 	},
@@ -4302,8 +4302,8 @@
 "jk" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/table/standard,
-/obj/item/weapon/tool/wrench,
-/obj/item/weapon/tool/wrench,
+/obj/item/tool/wrench,
+/obj/item/tool/wrench,
 /turf/simulated/floor/concrete,
 /area/aegis)
 "jl" = (
@@ -4337,9 +4337,9 @@
 /area/aegis/colony/research/analysis)
 "jq" = (
 /obj/structure/table/steel,
-/obj/item/weapon/storage/box/samplebags,
+/obj/item/storage/box/samplebags,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/item/weapon/storage/box/samplebags{
+/obj/item/storage/box/samplebags{
 	pixel_y = 12
 	},
 /turf/simulated/floor/dank/mono,
@@ -4353,9 +4353,9 @@
 /area/aegis/colony/research/airlock)
 "jt" = (
 /obj/structure/table/steel,
-/obj/item/weapon/storage/box/beakers,
+/obj/item/storage/box/beakers,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/item/device/reagent_scanner/adv,
+/obj/item/reagent_scanner/adv,
 /turf/simulated/floor/dank/mono,
 /area/aegis/colony/research/analysis)
 "ju" = (
@@ -4369,7 +4369,7 @@
 /area/aegis/colony/research/storage)
 "jw" = (
 /obj/machinery/chemical_dispenser/full,
-/obj/item/weapon/reagent_containers/glass/beaker/bluespace,
+/obj/item/reagent_containers/glass/beaker/bluespace,
 /turf/simulated/floor/dank/mono,
 /area/aegis/colony/research/analysis)
 "jx" = (
@@ -4672,12 +4672,12 @@
 /area/aegis)
 "kk" = (
 /obj/structure/table/steel,
-/obj/item/weapon/tool/pickaxe/laser,
+/obj/item/tool/pickaxe/laser,
 /turf/simulated/floor/concrete,
 /area/aegis)
 "kl" = (
 /obj/structure/table/steel,
-/obj/item/weapon/tool/saw/plasma,
+/obj/item/tool/saw/plasma,
 /turf/simulated/floor/concrete,
 /area/aegis)
 "km" = (
@@ -4889,8 +4889,8 @@
 /area/aegis/colony/research/lab)
 "kD" = (
 /obj/structure/table/steel,
-/obj/item/weapon/storage/box/masks,
-/obj/item/weapon/storage/box/gloves{
+/obj/item/storage/box/masks,
+/obj/item/storage/box/gloves{
 	pixel_y = 12
 	},
 /turf/simulated/floor/dank/mono,
@@ -4900,12 +4900,12 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/item/device/flashlight/lamp,
+/obj/item/flashlight/lamp,
 /turf/simulated/floor/dank/mono,
 /area/aegis/colony/research/lab)
 "kF" = (
 /obj/structure/table/steel,
-/obj/item/weapon/storage/box/samplebags,
+/obj/item/storage/box/samplebags,
 /turf/simulated/floor/dank/mono,
 /area/aegis/colony/research/lab)
 "kG" = (
@@ -4920,9 +4920,9 @@
 /area/aegis/colony/research/lab)
 "kH" = (
 /obj/structure/table/steel,
-/obj/item/device/camera,
-/obj/item/device/camera_film,
-/obj/item/device/camera_film,
+/obj/item/camera,
+/obj/item/camera_film,
+/obj/item/camera_film,
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 32
 	},
@@ -5275,7 +5275,7 @@
 /area/aegis/colony/research/lab)
 "lp" = (
 /obj/structure/table/steel,
-/obj/item/weapon/tool/weldingtool,
+/obj/item/tool/weldingtool,
 /turf/simulated/floor/dank/mono,
 /area/aegis/colony/research/lab)
 "lq" = (
@@ -5389,7 +5389,7 @@
 /area/aegis/colony/research/airlock/breakroom)
 "lD" = (
 /obj/structure/table/steel,
-/obj/item/device/flashlight/lamp,
+/obj/item/flashlight/lamp,
 /turf/simulated/floor/dank/mono,
 /area/aegis/colony/research/lab)
 "lE" = (
@@ -5510,17 +5510,17 @@
 /area/aegis/colony/research/locker)
 "lN" = (
 /obj/structure/closet/excavation,
-/obj/item/weapon/gun/energy/cutter,
-/obj/item/weapon/cell/plasmacutter{
+/obj/item/gun/energy/cutter,
+/obj/item/cell/plasmacutter{
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/obj/item/weapon/cell/plasmacutter{
+/obj/item/cell/plasmacutter{
 	pixel_x = 4;
 	pixel_y = 4
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/weapon/tool/pickaxe/laser,
+/obj/item/tool/pickaxe/laser,
 /turf/simulated/floor/dank/mono,
 /area/aegis/colony/research/locker)
 "lO" = (
@@ -5543,8 +5543,8 @@
 /area/aegis/colony/research/airlock/breakroom)
 "lR" = (
 /obj/structure/table/woodentable,
-/obj/item/weapon/storage/box/donkpockets,
-/obj/item/weapon/storage/box/donkpockets{
+/obj/item/storage/box/donkpockets,
+/obj/item/storage/box/donkpockets{
 	pixel_y = 12
 	},
 /obj/machinery/alarm{
@@ -5601,8 +5601,8 @@
 /area/aegis/colony/research/lab)
 "lY" = (
 /obj/structure/table/steel,
-/obj/item/weapon/storage/box/checkers/chess/red,
-/obj/item/weapon/storage/box/checkers/chess,
+/obj/item/storage/box/checkers/chess/red,
+/obj/item/storage/box/checkers/chess,
 /turf/simulated/floor/dank/mono,
 /area/aegis/colony/research/lab)
 "lZ" = (
@@ -5766,8 +5766,8 @@
 /obj/machinery/door/window/brigdoor/southleft{
 	req_access = list(4)
 	},
-/obj/item/weapon/paper_bin,
-/obj/item/weapon/pen,
+/obj/item/paper_bin,
+/obj/item/pen,
 /obj/machinery/light{
 	dir = 8
 	},
@@ -5787,7 +5787,7 @@
 /obj/machinery/door/window/brigdoor/southright{
 	req_access = list(4)
 	},
-/obj/item/weapon/clipboard,
+/obj/item/clipboard,
 /obj/machinery/door/firedoor/border_only,
 /turf/simulated/floor/dank/mono,
 /area/aegis/colony/research/lab)
@@ -5799,8 +5799,8 @@
 /area/aegis/colony/research/lab)
 "mu" = (
 /obj/structure/table/steel,
-/obj/item/weapon/paper_bin,
-/obj/item/weapon/pen,
+/obj/item/paper_bin,
+/obj/item/pen,
 /turf/simulated/floor/dank/mono,
 /area/aegis/colony/research/lab)
 "mv" = (
@@ -5938,7 +5938,7 @@
 /turf/simulated/floor/dank/mono,
 /area/aegis/colony/research/locker)
 "mH" = (
-/obj/item/weapon/stool/padded,
+/obj/item/stool/padded,
 /obj/effect/catwalk_plated/dank,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
@@ -6228,7 +6228,7 @@
 /area/aegis/colony/research)
 "ni" = (
 /obj/structure/reagent_dispensers/watertank,
-/obj/item/weapon/reagent_containers/glass/bucket,
+/obj/item/reagent_containers/glass/bucket,
 /obj/machinery/light,
 /turf/simulated/floor/dank/mono,
 /area/aegis/colony/research/lab)
@@ -6281,17 +6281,17 @@
 /area/aegis/colony/research/locker)
 "no" = (
 /obj/structure/table/steel,
-/obj/item/weapon/deck/cards,
+/obj/item/deck/cards,
 /turf/simulated/floor/dank/mono,
 /area/aegis/colony/research/lab)
 "np" = (
 /obj/structure/table/steel,
-/obj/item/weapon/board,
+/obj/item/board,
 /turf/simulated/floor/dank/mono,
 /area/aegis/colony/research/lab)
 "nq" = (
 /obj/structure/table/steel,
-/obj/item/weapon/clipboard,
+/obj/item/clipboard,
 /turf/simulated/floor/dank/mono,
 /area/aegis/colony/research/lab)
 "nr" = (
@@ -6361,7 +6361,7 @@
 "nw" = (
 /obj/structure/table/woodentable,
 /obj/machinery/chemical_dispenser/bar_coffee/full,
-/obj/item/weapon/storage/box/cups,
+/obj/item/storage/box/cups,
 /obj/machinery/light{
 	dir = 8
 	},
@@ -6370,7 +6370,7 @@
 "nx" = (
 /obj/structure/table/woodentable,
 /obj/machinery/chemical_dispenser/bar_soft/full,
-/obj/item/weapon/storage/box/cups,
+/obj/item/storage/box/cups,
 /turf/simulated/floor/wood,
 /area/aegis/colony/research/airlock/breakroom)
 "nz" = (
@@ -6476,12 +6476,12 @@
 /area/aegis/colony/research/airlock/hallway)
 "nI" = (
 /obj/machinery/suspension_gen,
-/obj/item/weapon/tool/wrench,
+/obj/item/tool/wrench,
 /turf/simulated/floor/concrete,
 /area/aegis)
 "nJ" = (
 /obj/machinery/suspension_gen,
-/obj/item/weapon/tool/wrench,
+/obj/item/tool/wrench,
 /turf/simulated/floor/asteroid/outside_ds,
 /area/aegis)
 "nK" = (
@@ -6496,28 +6496,28 @@
 "nM" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/weapon/cell/plasmacutter{
+/obj/item/cell/plasmacutter{
 	pixel_x = 8;
 	pixel_y = 8
 	},
-/obj/item/weapon/cell/plasmacutter{
+/obj/item/cell/plasmacutter{
 	pixel_x = 6;
 	pixel_y = 6
 	},
-/obj/item/weapon/cell/plasmacutter{
+/obj/item/cell/plasmacutter{
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/obj/item/weapon/cell/plasmacutter{
+/obj/item/cell/plasmacutter{
 	pixel_x = 2;
 	pixel_y = 2
 	},
-/obj/item/weapon/cell/plasmacutter,
-/obj/item/weapon/cell/plasmacutter{
+/obj/item/cell/plasmacutter,
+/obj/item/cell/plasmacutter{
 	pixel_x = -2;
 	pixel_y = -2
 	},
-/obj/item/weapon/cell/plasmacutter{
+/obj/item/cell/plasmacutter{
 	pixel_x = -4;
 	pixel_y = -4
 	},
@@ -6525,7 +6525,7 @@
 /area/aegis/colony/spare_storage)
 "nN" = (
 /obj/structure/table/standard,
-/obj/item/weapon/storage/toolbox/electrical,
+/obj/item/storage/toolbox/electrical,
 /turf/simulated/floor/tiled/monotile,
 /area/aegis/colony/spare_storage)
 "ok" = (
@@ -6958,16 +6958,16 @@
 "Pz" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/weapon/storage/ore{
+/obj/item/storage/ore{
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/obj/item/weapon/storage/ore,
-/obj/item/weapon/storage/ore{
+/obj/item/storage/ore,
+/obj/item/storage/ore{
 	pixel_x = -4;
 	pixel_y = -4
 	},
-/obj/item/weapon/storage/box/glowsticks,
+/obj/item/storage/box/glowsticks,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -6976,16 +6976,16 @@
 "PA" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/weapon/storage/ore{
+/obj/item/storage/ore{
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/obj/item/weapon/storage/ore,
-/obj/item/weapon/storage/ore{
+/obj/item/storage/ore,
+/obj/item/storage/ore{
 	pixel_x = -4;
 	pixel_y = -4
 	},
-/obj/item/weapon/storage/box/glowsticks,
+/obj/item/storage/box/glowsticks,
 /turf/simulated/floor/tiled/monotile,
 /area/aegis/colony/spare_storage)
 "PK" = (
