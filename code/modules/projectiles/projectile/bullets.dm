@@ -225,7 +225,7 @@
 	sharp = 0
 
 /obj/item/projectile/bullet/pistol/cap/Process()
-	loc = null
+	forceMove(null)
 	qdel(src)
 
 /obj/item/projectile/bullet/rock //spess dust

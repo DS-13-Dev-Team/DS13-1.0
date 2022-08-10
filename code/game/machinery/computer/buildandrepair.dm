@@ -53,7 +53,7 @@
 				to_chat(user, "<span class='notice'>You remove the circuit board.</span>")
 				src.state = 1
 				src.icon_state = "0"
-				circuit.loc = src.loc
+				circuit.forceMove(src.loc)
 				src.circuit = null
 		if(2)
 			if(isScrewdriver(P) && circuit)

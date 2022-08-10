@@ -44,7 +44,7 @@
 			to_chat(user, "<span class='notice'>You dismantle \the [src].</span>")
 			new/obj/item/stack/material/wood(get_turf(src), 5)
 			for(var/obj/item/book/b in contents)
-				b.loc = (get_turf(src))
+				b.forceMove(get_turf(src))
 			qdel(src)
 
 	else
@@ -61,7 +61,7 @@
 				if(!user.get_active_hand())
 					user.put_in_hands(choice)
 			else
-				choice.loc = get_turf(src)
+				choice.forceMove(get_turf(src))
 			update_icon()
 
 /obj/structure/bookcase/ex_act(severity)
@@ -73,14 +73,14 @@
 			return
 		if(2.0)
 			for(var/obj/item/book/b in contents)
-				if (prob(50)) b.loc = (get_turf(src))
+				if (prob(50)) b.forceMove((get_turf(src)))
 				else qdel(b)
 			qdel(src)
 			return
 		if(3.0)
 			if (prob(50))
 				for(var/obj/item/book/b in contents)
-					b.loc = (get_turf(src))
+					b.forceMove(get_turf(src))
 				qdel(src)
 			return
 		else
@@ -151,7 +151,7 @@
 	if(carved)
 		if(store)
 			to_chat(user, "<span class='notice'>[store] falls out of [title]!</span>")
-			store.loc = get_turf(src.loc)
+			store.forceMove(get_turf(src.loc))
 			store = null
 			return
 		else

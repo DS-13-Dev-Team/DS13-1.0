@@ -654,7 +654,7 @@ var/global/list/robot_modules = list(
 	var/id
 
 /obj/item/robot_module/syndicate/New(var/mob/living/silicon/robot/R)
-	loc = R
+	forceMove(R)
 	src.modules += new /obj/item/flash(src)
 	src.modules += new /obj/item/melee/energy/sword(src)
 	//src.modules += new /obj/item/gun/energy/pulse_rifle/destroyer(src)

@@ -63,5 +63,5 @@
 
 /obj/item/flame/hands/dropped()
 	..()
-	loc = null
+	forceMove(null)
 	qdel(src)

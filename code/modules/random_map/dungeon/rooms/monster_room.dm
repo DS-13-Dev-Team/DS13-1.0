@@ -14,5 +14,5 @@
 				return 0
 			var/type = pickweight(available_mobs)
 			var/mob/M = new type
-			M.loc = T
+			M.forceMove(T)
 	return 1

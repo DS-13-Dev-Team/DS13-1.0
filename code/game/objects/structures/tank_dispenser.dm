@@ -98,7 +98,7 @@
 					oxytanks.Remove(O)
 				else
 					O = new /obj/item/tank/oxygen(loc)
-				O.loc = loc
+				O.forceMove(loc)
 				to_chat(usr, "<span class='notice'>You take [O] out of [src].</span>")
 				playsound(loc, 'sound/machines/vending_purchase.ogg', VOLUME_LOW)
 				oxygentanks--
@@ -111,7 +111,7 @@
 					platanks.Remove(P)
 				else
 					P = new /obj/item/tank/phoron(loc)
-				P.loc = loc
+				P.forceMove(loc)
 				to_chat(usr, "<span class='notice'>You take [P] out of [src].</span>")
 				playsound(loc, 'sound/machines/vending_purchase.ogg', VOLUME_LOW)
 				phorontanks--

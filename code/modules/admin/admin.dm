@@ -1163,7 +1163,7 @@ var/global/floorIsLava = 0
 
 	var/obj/item/rcvdcopy
 	rcvdcopy = destination.copy(P)
-	rcvdcopy.loc = null //hopefully this shouldn't cause trouble
+	rcvdcopy.forceMove(null) //hopefully this shouldn't cause trouble)
 	GLOB.adminfaxes += rcvdcopy
 
 	if(destination.receivefax(P))

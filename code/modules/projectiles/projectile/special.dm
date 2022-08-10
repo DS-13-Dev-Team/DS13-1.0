@@ -59,7 +59,7 @@
 
 /obj/item/projectile/meteor/Bump(atom/A as mob|obj|turf|area, forced = 0)
 	if(A == firer)
-		loc = A.loc
+		forceMove(A.loc)
 		return
 
 	INVOKE_ASYNC(src, .proc/impact, A)

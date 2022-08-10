@@ -50,7 +50,7 @@
 		cache = null
 	if(href_list["eject"])
 		for(var/obj/item/book/B in contents)
-			B.loc = src.loc
+			B.forceMove(src.loc)
 	src.add_fingerprint(usr)
 	src.updateUsrDialog()
 	return

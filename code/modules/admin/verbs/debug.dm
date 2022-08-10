@@ -451,7 +451,7 @@
 				Phoron.air_contents.gas[MATERIAL_PHORON] = 70
 				Rad.drainratio = 0
 				Rad.P = Phoron
-				Phoron.loc = Rad
+				Phoron.forceMove(Rad)
 
 			if(!Rad.active)
 				Rad.toggle_power()

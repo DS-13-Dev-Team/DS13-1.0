@@ -857,17 +857,6 @@ proc/get_mob_with_client_list()
 	else if (zone == BP_R_FOOT) return "right foot"
 	else return zone
 
-/proc/get(atom/loc, type)
-	while(loc)
-		if(istype(loc, type))
-			return loc
-		loc = loc.loc
-	return null
-
-/proc/get_turf_or_move(turf/location)
-	return get_turf(location)
-
-
 //Quick type checks for some tools
 var/global/list/common_tools = list(
 /obj/item/stack/cable_coil,

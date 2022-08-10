@@ -219,7 +219,7 @@
 				new /obj/item/material/shard( src.loc )
 				var/obj/item/circuitboard/turbine_control/M = new /obj/item/circuitboard/turbine_control( A )
 				for (var/obj/C in src)
-					C.loc = src.loc
+					C.forceMove(src.loc)
 				M.id = src.id
 				A.circuit = M
 				A.state = 3
@@ -231,7 +231,7 @@
 				var/obj/structure/computerframe/A = new /obj/structure/computerframe( src.loc )
 				var/obj/item/circuitboard/turbine_control/M = new /obj/item/circuitboard/turbine_control( A )
 				for (var/obj/C in src)
-					C.loc = src.loc
+					C.forceMove(src.loc)
 				M.id = src.id
 				A.circuit = M
 				A.state = 4

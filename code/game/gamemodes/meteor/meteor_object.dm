@@ -105,7 +105,7 @@ GLOBAL_LIST_EMPTY(asteroids)
 				//Okay we have a problem, our target level has empty space but the zlevel we're on does not.
 				//At this point we have officially moved under the ship, and out of line of sight of the deck we were on. This asteroid is no longer shootable
 
-				loc = locate(x, y, z_target)	//We snap down to the deck we targeted and continue moving from there
+				forceMove(locate(x, y, z_target))	//We snap down to the deck we targeted and continue moving from there)
 
 				NewLoc = loc
 

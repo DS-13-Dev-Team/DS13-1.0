@@ -116,7 +116,7 @@
 	if (AS.occupant.client)
 		AS.occupant.client.eye = AS.occupant.client.mob
 		AS.occupant.client.perspective = MOB_PERSPECTIVE
-	AS.occupant.loc = src.loc
+	AS.occupant.forceMove(src.loc)
 	AS.occupant = null
 	icon_state = "body_scanner_0"
 	SStgui.update_uis(src)
@@ -126,7 +126,7 @@
 	switch(severity)
 		if(1.0)
 			for(var/atom/movable/A as mob|obj in src)
-				A.loc = src.loc
+				A.forceMove(src.loc)
 				ex_act(severity)
 				//Foreach goto(35)
 			//SN src = null
@@ -135,7 +135,7 @@
 		if(2.0)
 			if (prob(50))
 				for(var/atom/movable/A as mob|obj in src)
-					A.loc = src.loc
+					A.forceMove(src.loc)
 					ex_act(severity)
 					//Foreach goto(108)
 				//SN src = null
@@ -144,7 +144,7 @@
 		if(3.0)
 			if (prob(25))
 				for(var/atom/movable/A as mob|obj in src)
-					A.loc = src.loc
+					A.forceMove(src.loc)
 					ex_act(severity)
 					//Foreach goto(181)
 				//SN src = null

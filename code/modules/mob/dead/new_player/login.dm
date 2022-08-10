@@ -30,7 +30,7 @@
 		mind.active = 1
 		mind.current = src
 
-	loc = null
+	forceMove(null)
 	ShowTitleScreen()
 	my_client = client
 	set_sight(sight|SEE_TURFS)

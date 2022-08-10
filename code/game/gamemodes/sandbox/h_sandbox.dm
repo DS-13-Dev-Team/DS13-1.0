@@ -89,11 +89,11 @@ datum/hSB
 				if("hsbmetal")
 					var/obj/item/stack/sheet/hsb = new/obj/item/stack/sheet/metal
 					hsb.amount = 50
-					hsb.loc = usr.loc
+					hsb.forceMove(usr.loc)
 				if("hsbglass")
 					var/obj/item/stack/sheet/hsb = new/obj/item/stack/sheet/glass
 					hsb.amount = 50
-					hsb.loc = usr.loc
+					hsb.forceMove(usr.loc)
 				if("hsbairlock")
 					var/obj/machinery/door/hsb = new/obj/machinery/door/airlock
 
@@ -104,7 +104,7 @@ datum/hSB
 						if(tgui_alert(usr, "Will this airlock require [get_access_desc(A)] access?", "Sandbox", list("Yes", "No")) == "Yes")
 							hsb.req_access += A
 
-					hsb.loc = usr.loc
+					hsb.forceMove(usr.loc)
 					to_chat(usr, "<b>Sandbox:  Created an airlock.</b>")
 				if("hsbcanister")
 					var/list/hsbcanisters = typesof(/obj/machinery/portable_atmospherics/canister/) - /obj/machinery/portable_atmospherics/canister/
@@ -113,19 +113,19 @@ datum/hSB
 						new hsbcanister(usr.loc)
 				if("hsbfueltank")
 					//var/obj/hsb = new/obj/weldfueltank
-					//hsb.loc = usr.loc
+					//hsb.forceMove(usr.loc)
 				if("hsbwatertank")
 					//var/obj/hsb = new/obj/watertank
-					//hsb.loc = usr.loc
+					//hsb.forceMove(usr.loc)
 				if("hsbtoolbox")
 					var/obj/item/storage/hsb = new/obj/item/storage/toolbox/mechanical
 					for(var/obj/item/radio/T in hsb)
 						qdel(T)
 					new/obj/item/tool/crowbar (hsb)
-					hsb.loc = usr.loc
+					hsb.forceMove(usr.loc)
 				if("hsbmedkit")
 					var/obj/item/storage/firstaid/hsb = new/obj/item/storage/firstaid/regular
-					hsb.loc = usr.loc
+					hsb.forceMove(usr.loc)
 				if("hsbobj")
 					if(!hsboxspawn) return
 

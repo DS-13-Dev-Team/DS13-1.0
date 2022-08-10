@@ -43,14 +43,14 @@
 	switch(contains)
 		if(1)
 			for(var/obj/O in src)
-				O.loc = user.loc
+				O.forceMove(user.loc)
 			to_chat(user, "<span class='notice'>You take money out of \the [src].</span>")
 			contains = 0
 			update_icon()
 			return
 		if(2)
 			for(var/mob/M in src)
-				M.loc = user.loc
+				M.forceMove(user.loc)
 				user.visible_message("<span class='notice'>[user] releases [M] from \the [src].</span>", "<span class='notice'>You release [M] from \the [src].</span>")
 			contains = 0
 			update_icon()

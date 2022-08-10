@@ -24,7 +24,7 @@
 		icon_state = "[base_icon]_open"
 		if(held)
 			to_chat(user, "\The [held] falls out!")
-			held.loc = get_turf(user)
+			held.forceMove(get_turf(user))
 			src.held = null
 	else
 		icon_state = "[base_icon]"

@@ -266,7 +266,7 @@
 
 
 	last_loc = loc
-	loc = get_turf(user) //move the projectile out into the world
+	forceMove(get_turf(user)) //move the projectile out into the world)
 	altitude = get_aiming_height(user, target) //Set the height of the bullet
 
 	firer = user
@@ -309,7 +309,7 @@
 
 	//Before we redirect, move us into the bounceoff turf
 	last_loc = loc
-	loc = bounce_turf
+	forceMove(bounce_turf)
 
 	redirect(bounceoff.x + base_dir.x, bounceoff.y + base_dir.y, bounce_turf)
 	release_vector(base_dir)
@@ -396,7 +396,7 @@
 
 	if(A == firer)
 		last_loc = loc
-		loc = A.loc
+		forceMove(A.loc)
 		return 0 //cannot shoot yourself
 
 	if((bumped && !forced) || (A in permutated))
@@ -451,10 +451,10 @@
 		if(A)
 			if(istype(A, /turf))
 				last_loc = loc
-				loc = A
+				forceMove(A)
 			else
 				last_loc = loc
-				loc = A.loc
+				forceMove(A.loc)
 			permutated.Add(A)
 
 		bumped = 0 //reset bumped variable!

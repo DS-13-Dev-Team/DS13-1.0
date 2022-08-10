@@ -92,7 +92,7 @@
 		var/obj/item/reagent_containers/chem_disp_cartridge/C = remove_cartridge(label)
 		if(C)
 			to_chat(user, "<span class='notice'>You remove \the [C] from \the [src].</span>")
-			C.loc = loc
+			C.forceMove(loc)
 	else if(default_deconstruction_crowbar(user, W))
 		return
 	else if(default_part_replacement(user, W))
@@ -115,7 +115,7 @@
 
 		container =  RC
 		user.drop_from_inventory(RC)
-		RC.loc = src
+		RC.forceMove(src)
 		update_icon()
 		to_chat(user, "<span class='notice'>You set \the [RC] on \the [src].</span>")
 		SStgui.update_uis(src) // update all UIs attached to src

@@ -161,7 +161,7 @@
 
 	if (panel_open && cell && user.Adjacent(src))
 		to_chat(user, "You take out \the [cell].")
-		cell.loc = get_turf(user)
+		cell.forceMove(get_turf(user))
 		component_parts -= cell
 		cell = null
 		return

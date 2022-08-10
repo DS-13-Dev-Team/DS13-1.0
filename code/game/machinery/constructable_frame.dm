@@ -83,14 +83,14 @@
 				if(isCrowbar(P))
 					playsound(src.loc, 'sound/items/Crowbar.ogg', 50, 1)
 					state = 2
-					circuit.loc = src.loc
+					circuit.forceMove(src.loc)
 					circuit = null
 					if(components.len == 0)
 						to_chat(user, "<span class='notice'>You remove the circuit board.</span>")
 					else
 						to_chat(user, "<span class='notice'>You remove the circuit board and other components.</span>")
 						for(var/obj/item/W in components)
-							W.loc = src.loc
+							W.forceMove(src.loc)
 					desc = initial(desc)
 					req_components = null
 					components = null
@@ -113,9 +113,9 @@
 							src.circuit.construct(new_machine)
 
 							for(var/obj/O in src)
-								O.loc = null
+								O.forceMove(null)
 								new_machine.component_parts += O
-							circuit.loc = null
+							circuit.forceMove(null)
 
 							new_machine.RefreshParts()
 							qdel(src)

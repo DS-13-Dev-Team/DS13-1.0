@@ -74,7 +74,7 @@
 			return
 		loaded_item = O
 		user.drop_item()
-		O.loc = src
+		O.forceMove(src)
 		busy = TRUE
 		to_chat(user, "<span class='notice'>You add the [O.name] to the [src]!</span>")
 		flick("d_analyzer_la", src)

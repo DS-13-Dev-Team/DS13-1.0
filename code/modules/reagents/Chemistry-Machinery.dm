@@ -621,7 +621,7 @@
 		return
 
 	for(var/obj/item/O in holdingitems)
-		O.loc = src.loc
+		O.forceMove(src.loc)
 		holdingitems -= O
 		if(Adjacent(usr) && !issilicon(usr))
 			usr.put_in_hands(O)

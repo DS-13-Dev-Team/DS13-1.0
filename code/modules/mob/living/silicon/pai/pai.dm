@@ -78,7 +78,7 @@
 
 /mob/living/silicon/pai/New(var/obj/item/paicard)
 	status_flags |= NO_ANTAG
-	src.loc = paicard
+	forceMove(paicard)
 	card = paicard
 
 	//As a human made device, we'll understand sol common without the need of the translator
@@ -131,7 +131,7 @@
 	src.silence_time = world.timeofday + 120 * 10		// Silence for 2 minutes
 	to_chat(src, "<font color=green><b>Communication circuit overload. Shutting down and reloading communication circuits - speech and messaging functionality will be unavailable until the reboot is complete.</b></font>")
 	if(prob(20))
-		var/turf/T = get_turf_or_move(src.loc)
+		var/turf/T = get_turf(src.loc)
 		for (var/mob/M in viewers(T))
 			M.show_message("<span class='warning'>A shower of sparks spray from [src]'s inner workings.</span>", 3, "<span class='warning'>You hear and smell the ozone hiss of electrical sparks being expelled violently.</span>", 2)
 		return src.death(0)
@@ -323,8 +323,8 @@
 		src.forceMove(get_turf(src))
 
 	// Move us into the card and move the card to the ground.
-	src.loc = card
-	card.loc = get_turf(card)
+	src.forceMove(card)
+	card.forceMove(get_turf(card))
 	src.forceMove(card)
 	card.forceMove(card.loc)
 	resting = 0
