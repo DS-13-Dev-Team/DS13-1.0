@@ -297,7 +297,6 @@ var/list/mining_floors = list()
 	else
 		archaeo_overlay = image('icons/turf/walls.dmi', "overlay_archaeo[rand(1,3)]")
 		archaeo_overlay.appearance_flags = RESET_COLOR
-		archaeo_overlay.turf_decal_layerise()
 		archaeo_overlay.plane = GAME_PLANE
 		archaeo_overlay.layer = DECAL_LAYER
 		archaeo_overlay.rotate_random()
