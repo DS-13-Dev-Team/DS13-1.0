@@ -51,7 +51,7 @@
 	if(map_generator)
 		map_generator = new map_generator()
 		var/list/turfs = list()
-		for(var/turf/T in contents)
+		for(var/turf/unsimulated/genturf/T in contents)
 			turfs += T
 		map_generator.generate_terrain(turfs)
 

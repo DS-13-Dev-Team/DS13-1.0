@@ -2382,6 +2382,7 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
+/obj/structure/lattice,
 /turf/simulated/open,
 /area/ishimura/tramdeck/tram/tunnel)
 "fQ" = (
@@ -59543,7 +59544,7 @@ aS
 aS
 dS
 eS
-fS
+eS
 fP
 aS
 aS
@@ -59795,7 +59796,7 @@ JO
 aS
 aS
 dN
-fS
+dN
 aS
 aS
 JO

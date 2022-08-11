@@ -19,7 +19,8 @@ var/list/mining_floors = list()
 	opacity = 1
 	density = 1
 	blocks_air = 1
-	temperature = T0C
+	initial_gas = list("oxygen" = MOLES_O2STANDARD, "nitrogen" = MOLES_N2STANDARD)
+	temperature = T20C
 	var/mined_turf = /turf/simulated/floor/asteroid
 	var/ore/mineral
 	var/mined_ore = 0
@@ -90,7 +91,8 @@ var/list/mining_floors = list()
 			T.updateMineralOverlays()
 		else if(istype(turf_to_check,/turf/space) || istype(turf_to_check,/turf/simulated/floor))
 			var/image/rock_side = image(icon, "rock_side", dir = turn(direction, 180))
-			rock_side.turf_decal_layerise()
+			rock_side.plane = GAME_PLANE
+			rock_side.layer = DECAL_LAYER
 			switch(direction)
 				if(NORTH)
 					rock_side.pixel_y += world.icon_size
@@ -174,7 +176,8 @@ var/list/mining_floors = list()
 	clear_ore_effects()
 	ore_overlay = image('icons/obj/mining.dmi', "rock_[mineral.icon_tag]")
 	ore_overlay.appearance_flags = RESET_COLOR
-	ore_overlay.turf_decal_layerise()
+	ore_overlay.plane = GAME_PLANE
+	ore_overlay.layer = DECAL_LAYER
 	ore_overlay.rotate_random()
 	update_icon()
 
@@ -284,7 +287,8 @@ var/list/mining_floors = list()
 		var/excav_quadrant = round(excavation_level() / 50) + 1
 		excav_overlay = image('icons/turf/walls.dmi', "overlay_excv[excav_quadrant]_[rand(1,3)]")
 		excav_overlay.appearance_flags = RESET_COLOR
-		excav_overlay.turf_decal_layerise()
+		excav_overlay.plane = GAME_PLANE
+		excav_overlay.layer = DECAL_LAYER
 		excav_overlay.rotate_random()
 
 /turf/simulated/mineral/proc/update_archaeo_overlay()
@@ -294,6 +298,8 @@ var/list/mining_floors = list()
 		archaeo_overlay = image('icons/turf/walls.dmi', "overlay_archaeo[rand(1,3)]")
 		archaeo_overlay.appearance_flags = RESET_COLOR
 		archaeo_overlay.turf_decal_layerise()
+		archaeo_overlay.plane = GAME_PLANE
+		archaeo_overlay.layer = DECAL_LAYER
 		archaeo_overlay.rotate_random()
 
 

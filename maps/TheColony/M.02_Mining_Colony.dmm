@@ -497,14 +497,6 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor,
 /area/mining_colony/surface)
-"abI" = (
-/obj/machinery/power/apc/infinite{
-	dir = 1;
-	pixel_y = 16;
-	name = "How the hell did you find me!?"
-	},
-/turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony/surface)
 "abJ" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/random/loot/usually/many,
@@ -872,7 +864,7 @@
 	icon_state = "platform_deco"
 	},
 /turf/simulated/open,
-/area/mining_colony/surface)
+/area/mining_colony/interior/excavation/marker_excav)
 "acU" = (
 /obj/machinery/light{
 	dir = 4
@@ -3157,7 +3149,7 @@
 	icon_state = "platform"
 	},
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony/surface)
+/area/mining_colony/interior/excavation/marker_excav)
 "aiY" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/interior/excavation/interior)
@@ -3261,7 +3253,7 @@
 	icon_state = "platform_deco"
 	},
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony/surface)
+/area/mining_colony/interior/excavation/marker_excav)
 "ajr" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -3299,9 +3291,6 @@
 	dir = 1
 	},
 /turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony/interior/excavation/marker_excav)
-"ajx" = (
-/turf/unsimulated/genturf,
 /area/mining_colony/interior/excavation/marker_excav)
 "ajy" = (
 /obj/machinery/store,
@@ -3690,7 +3679,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/mining_colony/SCAF)
 "akC" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -64052,11 +64041,11 @@ afw
 acu
 acu
 aiX
-aCq
-aCq
+awL
+awL
 aoG
 aoG
-atN
+aiv
 aoG
 aoG
 aoG
@@ -64243,8 +64232,8 @@ aoG
 aoG
 aoG
 aoG
-ajx
-ajx
+aoG
+aoG
 avx
 ajA
 acu
@@ -64254,11 +64243,11 @@ acu
 acu
 aiX
 ajq
-aCq
-aCq
-aCq
-atN
-atN
+awL
+awL
+awL
+aiv
+aiv
 aoG
 aoG
 aoG
@@ -64442,10 +64431,10 @@ aoG
 aoG
 aoG
 aoG
-ajx
-ajx
-ajx
-ajx
+aoG
+aoG
+aoG
+aoG
 awL
 awL
 avx
@@ -64455,13 +64444,13 @@ afs
 acu
 aiX
 ajq
-aCq
-aCq
-aCq
-atN
-atN
-atN
-atN
+awL
+awL
+awL
+aiv
+aiv
+aiv
+aiv
 aoG
 aoG
 aoG
@@ -64656,15 +64645,15 @@ afj
 abZ
 ahs
 acT
-atN
-atN
-atN
-atN
-atN
-atN
-atN
-atN
-atN
+aiv
+aiv
+aiv
+aiv
+aiv
+aiv
+aiv
+aiv
+aiv
 aoG
 aoG
 aoG
@@ -64857,16 +64846,16 @@ aiv
 afj
 abZ
 ahs
-atN
-atN
-atN
-atN
-atN
-atN
-atN
-atN
-atN
-atN
+aiv
+aiv
+aiv
+aiv
+aiv
+aiv
+aiv
+aiv
+aiv
+aiv
 aoG
 aoG
 aoG
@@ -67467,7 +67456,7 @@ aJi
 aCq
 aoG
 aoG
-ajx
+aoG
 awL
 awL
 awL
@@ -67669,7 +67658,7 @@ aCq
 aiI
 aCq
 aCq
-ajx
+aoG
 awL
 awL
 awL
@@ -67871,7 +67860,7 @@ aCq
 aiI
 aCq
 aCq
-ajx
+aoG
 awL
 awL
 aiK
@@ -68500,9 +68489,9 @@ awL
 awL
 awL
 awL
-aCB
-aCB
-aCB
+abR
+abR
+abR
 ajd
 ajC
 arP
@@ -68765,7 +68754,7 @@ azn
 (198,1,1) = {"
 azn
 azn
-azn
+aoG
 aoG
 aoG
 aoG
@@ -68966,7 +68955,7 @@ azn
 "}
 (199,1,1) = {"
 azn
-abI
+azn
 azn
 azn
 azn

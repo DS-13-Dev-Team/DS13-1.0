@@ -14,6 +14,9 @@
 	icon_state = "aegis"
 	sound_env = ASTEROID
 	base_lighting_alpha = 90
+	area_flags = AREA_FLAG_CAVES_ALLOWED
+	map_generator = /datum/map_generator/cave_generator/aegis
+	requires_power = FALSE
 
 // Abandoned areas of the colony outside
 
@@ -668,7 +671,6 @@ area/mining_colony/interior/mining/hallway
 	sound_env = ASTEROID
 
 // Underground Levels of the colony, mining, morgue, maint tunnels and such
-
 /area/mining_colony/lower
 	name = "\improper Aegis Lower Level"
 	icon_state = "aegis"
@@ -723,27 +725,27 @@ area/mining_colony/interior/mining/hallway
 	sound_env = ASTEROID
 	is_maintenance = FALSE
 	base_lighting_alpha = 90
+	area_flags = AREA_FLAG_CAVES_ALLOWED
+	requires_power = FALSE
+	map_generator = /datum/map_generator/cave_generator/aegis
 
-/area/mining_colony/lower/mining_caves/shelter_1
+/area/mining_colony/lower/shelter_1
 	name = "\improper Aegis Caves - Cave-In Shelter 1"
 	icon_state = "crewbase"
 	sound_env = ASTEROID
 	is_maintenance = FALSE
-	base_lighting_alpha = 0
 
-/area/mining_colony/lower/mining_caves/shelter_2
+/area/mining_colony/lower/shelter_2
 	name = "\improper Aegis Caves - Cave-In Shelter 2"
 	icon_state = "crewbase"
 	sound_env = ASTEROID
 	is_maintenance = FALSE
-	base_lighting_alpha = 0
 
-/area/mining_colony/lower/mining_caves/shelter_3
+/area/mining_colony/lower/shelter_3
 	name = "\improper Aegis Caves - Cave-In Shelter 3"
 	icon_state = "crewbase"
 	sound_env = ASTEROID
 	is_maintenance = FALSE
-	base_lighting_alpha = 0
 
 /area/mining_colony/lower/excav
 	name = "\improper Aegis Lower Level - Excavation Storage Area"
@@ -808,77 +810,81 @@ area/mining_colony/interior/mining/hallway
 	icon_state = "aegis"
 	sound_env = ASTEROID
 	is_maintenance = TRUE
+	requires_power = FALSE
 
-/area/mining_colony/lower/maints/room1
-/area/mining_colony/lower/maints/room2
-/area/mining_colony/lower/maints/room3
-/area/mining_colony/lower/maints/room4
-/area/mining_colony/lower/maints/room5
-/area/mining_colony/lower/maints/room6
-/area/mining_colony/lower/maints/room7
-/area/mining_colony/lower/maints/room8
-/area/mining_colony/lower/maints/room9
-/area/mining_colony/lower/maints/room10
-/area/mining_colony/lower/maints/room11
-/area/mining_colony/lower/maints/room12
-/area/mining_colony/lower/maints/room13
-/area/mining_colony/lower/maints/room14
-/area/mining_colony/lower/maints/room15
-/area/mining_colony/lower/maints/room16
+/area/mining_colony/lower/maints/node
+	requires_power = TRUE
+
+/area/mining_colony/lower/maints/node/room1
+/area/mining_colony/lower/maints/node/room2
+/area/mining_colony/lower/maints/node/room3
+/area/mining_colony/lower/maints/node/room4
+/area/mining_colony/lower/maints/node/room5
+/area/mining_colony/lower/maints/node/room6
+/area/mining_colony/lower/maints/node/room7
+/area/mining_colony/lower/maints/node/room8
+/area/mining_colony/lower/maints/node/room9
+/area/mining_colony/lower/maints/node/room10
+/area/mining_colony/lower/maints/node/room11
+/area/mining_colony/lower/maints/node/room12
+/area/mining_colony/lower/maints/node/room13
+/area/mining_colony/lower/maints/node/room14
+/area/mining_colony/lower/maints/node/room15
+/area/mining_colony/lower/maints/node/room16
 
 //A room with 4 bolted doors leading to it
-/area/mining_colony/lower/maints/room17
+/area/mining_colony/lower/maints/node/room17
 	is_maintenance = FALSE
 
-/area/mining_colony/lower/maints/room18
-/area/mining_colony/lower/maints/room19
-/area/mining_colony/lower/maints/room20
-/area/mining_colony/lower/maints/room21
-/area/mining_colony/lower/maints/room22
-/area/mining_colony/lower/maints/room23
-/area/mining_colony/lower/maints/room24
-/area/mining_colony/lower/maints/room25
-/area/mining_colony/lower/maints/room26
-/area/mining_colony/lower/maints/room27
-/area/mining_colony/lower/maints/room28
-/area/mining_colony/lower/maints/room29
-/area/mining_colony/lower/maints/room30
-/area/mining_colony/lower/maints/room31
-/area/mining_colony/lower/maints/room32
-/area/mining_colony/lower/maints/room33
-/area/mining_colony/lower/maints/room34
-/area/mining_colony/lower/maints/room35
-/area/mining_colony/lower/maints/room36
-/area/mining_colony/lower/maints/room37
-/area/mining_colony/lower/maints/room38
-/area/mining_colony/lower/maints/room39
-/area/mining_colony/lower/maints/room40
-/area/mining_colony/lower/maints/room41
-/area/mining_colony/lower/maints/room42
-/area/mining_colony/lower/maints/room43
-/area/mining_colony/lower/maints/room44
-/area/mining_colony/lower/maints/room45
-/area/mining_colony/lower/maints/room46
-/area/mining_colony/lower/maints/room47
-/area/mining_colony/lower/maints/room48
-/area/mining_colony/lower/maints/room49
-/area/mining_colony/lower/maints/room50
-/area/mining_colony/lower/maints/room51
-/area/mining_colony/lower/maints/room52
-/area/mining_colony/lower/maints/room53
-/area/mining_colony/lower/maints/room54
-/area/mining_colony/lower/maints/room55
-/area/mining_colony/lower/maints/room56
-/area/mining_colony/lower/maints/room57
-/area/mining_colony/lower/maints/room58
-/area/mining_colony/lower/maints/room59
-/area/mining_colony/lower/maints/room60
-/area/mining_colony/lower/maints/room61
-/area/mining_colony/lower/maints/room62
-/area/mining_colony/lower/maints/room63
-/area/mining_colony/lower/maints/room64
-/area/mining_colony/lower/maints/room65
-/area/mining_colony/lower/maints/room66
-/area/mining_colony/lower/maints/room67
-/area/mining_colony/lower/maints/room68
-/area/mining_colony/lower/maints/room69
+/area/mining_colony/lower/maints/node/room18
+/area/mining_colony/lower/maints/node/room19
+/area/mining_colony/lower/maints/node/room20
+/area/mining_colony/lower/maints/node/room21
+/area/mining_colony/lower/maints/node/room22
+/area/mining_colony/lower/maints/node/room23
+/area/mining_colony/lower/maints/node/room24
+/area/mining_colony/lower/maints/node/room25
+/area/mining_colony/lower/maints/node/room26
+/area/mining_colony/lower/maints/node/room27
+/area/mining_colony/lower/maints/node/room28
+/area/mining_colony/lower/maints/node/room29
+/area/mining_colony/lower/maints/node/room30
+/area/mining_colony/lower/maints/node/room31
+/area/mining_colony/lower/maints/node/room32
+/area/mining_colony/lower/maints/node/room33
+/area/mining_colony/lower/maints/node/room34
+/area/mining_colony/lower/maints/node/room35
+/area/mining_colony/lower/maints/node/room36
+/area/mining_colony/lower/maints/node/room37
+/area/mining_colony/lower/maints/node/room38
+/area/mining_colony/lower/maints/node/room39
+/area/mining_colony/lower/maints/node/room40
+/area/mining_colony/lower/maints/node/room41
+/area/mining_colony/lower/maints/node/room42
+/area/mining_colony/lower/maints/node/room43
+/area/mining_colony/lower/maints/node/room44
+/area/mining_colony/lower/maints/node/room45
+/area/mining_colony/lower/maints/node/room46
+/area/mining_colony/lower/maints/node/room47
+/area/mining_colony/lower/maints/node/room48
+/area/mining_colony/lower/maints/node/room49
+/area/mining_colony/lower/maints/node/room50
+/area/mining_colony/lower/maints/node/room51
+/area/mining_colony/lower/maints/node/room52
+/area/mining_colony/lower/maints/node/room53
+/area/mining_colony/lower/maints/node/room54
+/area/mining_colony/lower/maints/node/room55
+/area/mining_colony/lower/maints/node/room56
+/area/mining_colony/lower/maints/node/room57
+/area/mining_colony/lower/maints/node/room58
+/area/mining_colony/lower/maints/node/room59
+/area/mining_colony/lower/maints/node/room60
+/area/mining_colony/lower/maints/node/room61
+/area/mining_colony/lower/maints/node/room62
+/area/mining_colony/lower/maints/node/room63
+/area/mining_colony/lower/maints/node/room64
+/area/mining_colony/lower/maints/node/room65
+/area/mining_colony/lower/maints/node/room66
+/area/mining_colony/lower/maints/node/room67
+/area/mining_colony/lower/maints/node/room68
+/area/mining_colony/lower/maints/node/room69

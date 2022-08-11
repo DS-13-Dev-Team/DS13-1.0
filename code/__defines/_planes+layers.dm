@@ -251,10 +251,6 @@ What is the naming convention for planes or layers?
 	plane = FLOOR_PLANE
 	layer = DECAL_PLATING_LAYER
 
-/image/proc/turf_decal_layerise()
-	plane = GAME_PLANE
-	layer = DECAL_LAYER
-
 /atom/proc/hud_layerise()
 	plane = ABOVE_HUD_PLANE
 	layer = ABOVE_HUD_LAYER

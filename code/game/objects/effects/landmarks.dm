@@ -102,10 +102,11 @@
 //Costume spawner landmarks
 /obj/effect/landmark/costume/New() //costume spawner, selects a random subclass and disappears
 	.=..()
-	var/list/options = typesof(/obj/effect/landmark/costume)
-	var/PICK= options[rand(1,options.len)]
-	new PICK(src.loc)
-	delete_me = 1
+	if(type == /obj/effect/landmark/costume)
+		var/list/options = subtypesof(/obj/effect/landmark/costume)
+		var/PICK= options[rand(1,options.len)]
+		new PICK(src.loc)
+		delete_me = 1
 
 //SUBCLASSES.  Spawn a bunch of items and disappear likewise
 /obj/effect/landmark/costume/chameleon/New()

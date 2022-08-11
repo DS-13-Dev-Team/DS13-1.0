@@ -1,7 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
 /turf/simulated/floor/dank/maint,
-/area/mining_colony/lower/maints/room27)
+/area/mining_colony/lower/maints/node/room27)
 "ab" = (
 /obj/structure/closet/jcloset,
 /obj/item/reagent_containers/spray/cleaner,
@@ -12,24 +12,24 @@
 /obj/random/powercell,
 /obj/random/maintenance/clean,
 /turf/simulated/floor/dank/slides,
-/area/mining_colony/lower/maints/room27)
+/area/mining_colony/lower/maints/node/room27)
 "ac" = (
 /obj/machinery/light/small{
 	dir = 4
 	},
 /turf/simulated/floor/dank/slides,
-/area/mining_colony/lower/maints/room27)
+/area/mining_colony/lower/maints/node/room27)
 "ad" = (
 /obj/effect/wallframe_spawn/reinforced,
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room38)
+/area/mining_colony/lower/maints/node/room38)
 "ae" = (
 /obj/structure/table/rack,
 /obj/random/loot/often/few,
 /obj/random/loot/often/few,
 /obj/random/rare_loot/rarely,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room24)
+/area/mining_colony/lower/maints/node/room24)
 "af" = (
 /obj/structure/safe/floor,
 /obj/random/rig_module/rare,
@@ -37,21 +37,21 @@
 /obj/random/cash,
 /obj/random/drinkbottle,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room24)
+/area/mining_colony/lower/maints/node/room24)
 "ag" = (
 /obj/structure/table/rack,
 /obj/random/loot/often/few,
 /obj/random/loot/often/few,
 /obj/random/suit,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room24)
+/area/mining_colony/lower/maints/node/room24)
 "ah" = (
 /obj/structure/table/rack,
 /obj/random/loot/often/few,
 /obj/random/loot/often/few,
 /obj/random/pouch,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room24)
+/area/mining_colony/lower/maints/node/room24)
 "ak" = (
 /obj/effect/wallframe_spawn/reinforced,
 /obj/machinery/door/firedoor{
@@ -67,7 +67,7 @@
 /obj/item/clothing/under/pj/blue,
 /obj/structure/bed,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room28)
+/area/mining_colony/lower/maints/node/room28)
 "aq" = (
 /turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/lower/mining_caves)
@@ -79,11 +79,11 @@
 /obj/random/maintenance/clean,
 /obj/random/loot/usually/few,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room28)
+/area/mining_colony/lower/maints/node/room28)
 "at" = (
 /obj/machinery/vending/snack,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room38)
+/area/mining_colony/lower/maints/node/room38)
 "au" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/lower/excav/airlock)
@@ -127,7 +127,7 @@
 "aB" = (
 /obj/structure/table/gamblingtable,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room59)
+/area/mining_colony/lower/maints/node/room59)
 "aC" = (
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/lower/biolab)
@@ -137,7 +137,7 @@
 /obj/item/clothing/under/color/blue,
 /obj/item/gun/energy/lasertag,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room58)
+/area/mining_colony/lower/maints/node/room58)
 "aE" = (
 /obj/item/radio/intercom/department/medbay{
 	dir = 4;
@@ -159,7 +159,7 @@
 /obj/item/storage/box/gloves,
 /obj/item/storage/box/masks,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room32)
+/area/mining_colony/lower/maints/node/room32)
 "aI" = (
 /obj/random/single{
 	icon = 'icons/obj/drinks.dmi';
@@ -184,11 +184,11 @@
 	},
 /obj/random/closet,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room33)
+/area/mining_colony/lower/maints/node/room33)
 "aJ" = (
 /obj/structure/bookcase,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room63)
+/area/mining_colony/lower/maints/node/room63)
 "aK" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/lower/excav)
@@ -215,7 +215,7 @@
 /obj/random/tool/modded,
 /obj/random/loot/often/few,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room63)
+/area/mining_colony/lower/maints/node/room63)
 "aP" = (
 /obj/effect/floor_decal/dank/outline,
 /obj/structure/dispenser/oxygen,
@@ -234,7 +234,7 @@
 /obj/effect/decal/cleanable/cobweb,
 /obj/random/loot/usually/some,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room45)
+/area/mining_colony/lower/maints/node/room45)
 "aT" = (
 /obj/structure/stairs/north,
 /turf/simulated/floor/dank/mono,
@@ -259,24 +259,24 @@
 /obj/random/firstaid,
 /obj/random/rare_loot/usually,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room45)
+/area/mining_colony/lower/maints/node/room45)
 "aX" = (
 /obj/random/hardsuit,
 /obj/structure/table/rack,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room17)
+/area/mining_colony/lower/maints/node/room17)
 "aY" = (
 /obj/random/armor,
 /obj/structure/table/rack,
 /obj/random/suit,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room17)
+/area/mining_colony/lower/maints/node/room17)
 "aZ" = (
 /obj/random/gun_security,
 /obj/random/ammo/security,
 /obj/structure/table/rack,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room17)
+/area/mining_colony/lower/maints/node/room17)
 "ba" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/dank/mono,
@@ -286,11 +286,11 @@
 /obj/random/loot/often/some,
 /obj/item/clothing/head/philosopher_wig,
 /turf/simulated/floor/wood,
-/area/mining_colony/lower/maints/room57)
+/area/mining_colony/lower/maints/node/room57)
 "bc" = (
 /obj/structure/plushie/ian,
 /turf/simulated/floor/wood,
-/area/mining_colony/lower/maints/room57)
+/area/mining_colony/lower/maints/node/room57)
 "bd" = (
 /obj/structure/bed/chair{
 	dir = 4;
@@ -299,23 +299,23 @@
 /obj/item/pen/fancy,
 /obj/item/clipboard,
 /turf/simulated/floor/wood,
-/area/mining_colony/lower/maints/room57)
+/area/mining_colony/lower/maints/node/room57)
 "be" = (
 /obj/structure/bed/psych,
 /turf/simulated/floor/wood,
-/area/mining_colony/lower/maints/room57)
+/area/mining_colony/lower/maints/node/room57)
 "bf" = (
 /obj/structure/barricade/wood,
 /turf/simulated/floor/wood,
-/area/mining_colony/lower/maints/room57)
+/area/mining_colony/lower/maints/node/room57)
 "bg" = (
 /obj/structure/filingcabinet,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room32)
+/area/mining_colony/lower/maints/node/room32)
 "bh" = (
 /obj/structure/flora/pottedplant/dead,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room32)
+/area/mining_colony/lower/maints/node/room32)
 "bi" = (
 /turf/simulated/floor/plating,
 /area/mining_colony/lower)
@@ -326,7 +326,7 @@
 "bk" = (
 /obj/item/clothing/mask/gas/poltergeist,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room44)
+/area/mining_colony/lower/maints/node/room44)
 "bl" = (
 /obj/random/accessory,
 /obj/random/accessory,
@@ -338,14 +338,14 @@
 /obj/item/clothing/shoes/black,
 /obj/item/clothing/gloves/color/white,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room40)
+/area/mining_colony/lower/maints/node/room40)
 "bm" = (
 /obj/structure/table/standard,
 /obj/random/toy,
 /obj/random/loot/often/few,
 /obj/random/loot/usually/few,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room44)
+/area/mining_colony/lower/maints/node/room44)
 "bn" = (
 /obj/effect/floor_decal/dank/border_corner{
 	dir = 1
@@ -362,7 +362,7 @@
 /obj/structure/table/standard,
 /obj/item/reagent_containers/food/drinks/glass2/fitnessflask/proteinshake,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room42)
+/area/mining_colony/lower/maints/node/room42)
 "bq" = (
 /obj/effect/wallframe_spawn/reinforced,
 /turf/simulated/floor/dank/mono,
@@ -513,14 +513,14 @@
 /obj/structure/table/rack,
 /obj/random/loot/usually/few,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room46)
+/area/mining_colony/lower/maints/node/room46)
 "bP" = (
 /obj/random/loot/often/few,
 /obj/structure/table/rack,
 /obj/random/material/rare,
 /obj/random/loot/usually/few,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room46)
+/area/mining_colony/lower/maints/node/room46)
 "bQ" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
@@ -622,7 +622,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/dank/golf_brown,
-/area/mining_colony/lower/maints/room66)
+/area/mining_colony/lower/maints/node/room66)
 "cg" = (
 /obj/structure/closet/secure_closet/brig/evidence,
 /obj/random/loot/usually/many,
@@ -674,7 +674,7 @@
 /obj/item/reagent_containers/food/drinks/bottle/small/beer,
 /obj/item/reagent_containers/food/drinks/bottle/small/beer,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/maints/room66)
+/area/mining_colony/lower/maints/node/room66)
 "cn" = (
 /obj/structure/flora/pottedplant/shoot,
 /obj/effect/floor_decal/dank/border_corner,
@@ -715,14 +715,14 @@
 /area/mining_colony/lower/mining_caves)
 "cw" = (
 /turf/simulated/wall/titanium,
-/area/mining_colony/lower/mining_caves/shelter_3)
+/area/mining_colony/lower/shelter_1)
 "cx" = (
 /obj/structure/closet/medical_wall/filled{
 	pixel_y = 32
 	},
 /obj/effect/floor_decal/dank/outline_striped,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/mining_caves/shelter_3)
+/area/mining_colony/lower/shelter_1)
 "cy" = (
 /obj/structure/table/rack,
 /obj/item/gun/energy/cutter/empty,
@@ -742,7 +742,7 @@
 /turf/simulated/floor/dank/slides{
 	dir = 8
 	},
-/area/mining_colony/lower/mining_caves/shelter_3)
+/area/mining_colony/lower/shelter_1)
 "cC" = (
 /turf/simulated/floor/dank/medical,
 /area/mining_colony/lower/morgue)
@@ -752,11 +752,11 @@
 /obj/item/clothing/under/color/red,
 /obj/item/gun/energy/lasertag,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room58)
+/area/mining_colony/lower/maints/node/room58)
 "cE" = (
 /obj/structure/largecrate/ds/green_horizontal,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/maints/room66)
+/area/mining_colony/lower/maints/node/room66)
 "cF" = (
 /obj/machinery/portable_atmospherics/powered/scrubber/huge,
 /obj/effect/floor_decal/dank/outline,
@@ -816,7 +816,7 @@
 /turf/simulated/floor/dank/slides{
 	dir = 8
 	},
-/area/mining_colony/lower/mining_caves/shelter_3)
+/area/mining_colony/lower/shelter_1)
 "cP" = (
 /obj/structure/bed/roller,
 /turf/simulated/floor/dank/medical,
@@ -878,7 +878,7 @@
 /obj/structure/table/standard,
 /obj/item/flashlight/lamp/green,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room63)
+/area/mining_colony/lower/maints/node/room63)
 "cZ" = (
 /obj/effect/floor_decal/dank/outline,
 /obj/structure/table/rack,
@@ -957,7 +957,7 @@
 /obj/item/clothing/under/casual_pants/blackjeans,
 /obj/item/clothing/mask/bandana/red,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room39)
+/area/mining_colony/lower/maints/node/room39)
 "di" = (
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/dank/medical,
@@ -1157,7 +1157,7 @@
 /obj/item/ammo_magazine/c44,
 /obj/item/ammo_magazine/c44,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room37)
+/area/mining_colony/lower/maints/node/room37)
 "dG" = (
 /obj/machinery/button/remote/blast_door{
 	id = "gethefuckoutofmyproperty";
@@ -1203,7 +1203,7 @@
 /turf/simulated/floor/dank/slides{
 	dir = 1
 	},
-/area/mining_colony/lower/maints/room27)
+/area/mining_colony/lower/maints/node/room27)
 "dP" = (
 /obj/effect/floor_decal/dank/border,
 /obj/structure/cable{
@@ -1221,7 +1221,7 @@
 /obj/structure/table/standard,
 /obj/item/storage/firstaid/regular,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room32)
+/area/mining_colony/lower/maints/node/room32)
 "dS" = (
 /obj/structure/table/rack,
 /obj/random/loot/often/few,
@@ -1229,11 +1229,11 @@
 /obj/random/material/rare,
 /obj/random/pouch,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room25)
+/area/mining_colony/lower/maints/node/room25)
 "dT" = (
 /obj/random/loot/often/some,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room32)
+/area/mining_colony/lower/maints/node/room32)
 "dU" = (
 /obj/machinery/door/airlock/maintenance{
 	dir = 4
@@ -1248,7 +1248,7 @@
 /turf/simulated/floor/dank/slides{
 	dir = 1
 	},
-/area/mining_colony/lower/maints/room27)
+/area/mining_colony/lower/maints/node/room27)
 "dX" = (
 /obj/machinery/door/airlock/maintenance{
 	dir = 4;
@@ -1281,7 +1281,7 @@
 /area/mining_colony/lower/biolab)
 "ea" = (
 /turf/simulated/floor/dank/slides,
-/area/mining_colony/lower/maints/room27)
+/area/mining_colony/lower/maints/node/room27)
 "eb" = (
 /obj/structure/table/standard,
 /obj/item/toy/figure/janitor,
@@ -1289,7 +1289,7 @@
 /turf/simulated/floor/dank/slides{
 	dir = 1
 	},
-/area/mining_colony/lower/maints/room27)
+/area/mining_colony/lower/maints/node/room27)
 "ec" = (
 /obj/structure/closet/crate/med_crate/toxin,
 /obj/random/loot/often/many,
@@ -1299,7 +1299,7 @@
 "ed" = (
 /obj/structure/closet/crate/trashcart,
 /turf/simulated/floor/dank/maint,
-/area/mining_colony/lower/maints/room27)
+/area/mining_colony/lower/maints/node/room27)
 "ee" = (
 /obj/structure/stairs/north,
 /turf/simulated/floor/dank/mono,
@@ -1307,7 +1307,7 @@
 "ef" = (
 /obj/structure/reagent_dispensers/watertank,
 /turf/simulated/floor/dank/slides,
-/area/mining_colony/lower/maints/room27)
+/area/mining_colony/lower/maints/node/room27)
 "eg" = (
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/plating,
@@ -1316,7 +1316,7 @@
 /obj/structure/ore_box/random,
 /obj/effect/decal/cleanable/cobweb2,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room45)
+/area/mining_colony/lower/maints/node/room45)
 "ei" = (
 /turf/simulated/floor/water_shallow{
 	color = "";
@@ -1334,11 +1334,11 @@
 /obj/structure/table/rack,
 /obj/random/cash,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room25)
+/area/mining_colony/lower/maints/node/room25)
 "el" = (
 /obj/item/clothing/head/beret/sec/corporate,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room30)
+/area/mining_colony/lower/maints/node/room30)
 "em" = (
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/dank/mono,
@@ -1366,7 +1366,7 @@
 /obj/random/rare_loot/pengless,
 /obj/random/tool_upgrade,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room45)
+/area/mining_colony/lower/maints/node/room45)
 "eq" = (
 /obj/structure/railing/mapped{
 	dir = 4;
@@ -1376,7 +1376,7 @@
 /obj/random/rare_loot/rarely,
 /obj/random/storage,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room45)
+/area/mining_colony/lower/maints/node/room45)
 "er" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -1442,7 +1442,7 @@
 /obj/structure/table/standard,
 /obj/item/handcuffs/cable/tape,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room29)
+/area/mining_colony/lower/maints/node/room29)
 "eA" = (
 /obj/structure/grille,
 /turf/simulated/floor/plating,
@@ -1450,7 +1450,7 @@
 "eB" = (
 /mob/living/simple_animal/mouse/white,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room29)
+/area/mining_colony/lower/maints/node/room29)
 "eC" = (
 /obj/structure/grille,
 /turf/simulated/floor/dank/grater,
@@ -1464,7 +1464,7 @@
 /obj/random/loot/usually/many,
 /obj/random/loot/often/few,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room26)
+/area/mining_colony/lower/maints/node/room26)
 "eF" = (
 /obj/structure/grille/broken,
 /turf/simulated/floor/water_shallow{
@@ -1478,7 +1478,7 @@
 /obj/random/loot/often/some,
 /obj/random/rare_loot/sometimes,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room49)
+/area/mining_colony/lower/maints/node/room49)
 "eH" = (
 /obj/machinery/door/airlock/maintenance{
 	dir = 4;
@@ -1490,18 +1490,18 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room49)
+/area/mining_colony/lower/maints/node/room49)
 "eI" = (
 /obj/structure/holohoop,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room3)
+/area/mining_colony/lower/maints/node/room3)
 "eJ" = (
 /obj/structure/sign/chemistry{
 	pixel_x = 30
 	},
 /obj/machinery/chem_master,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room49)
+/area/mining_colony/lower/maints/node/room49)
 "eK" = (
 /obj/structure/closet/emcloset,
 /turf/simulated/floor/plating,
@@ -1514,7 +1514,7 @@
 /obj/random/medical/lite,
 /obj/random/medical,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room49)
+/area/mining_colony/lower/maints/node/room49)
 "eM" = (
 /obj/structure/table/rack,
 /obj/item/clothing/under/rank/medical/scrubs/black,
@@ -1524,11 +1524,11 @@
 /obj/item/clothing/glasses/regular,
 /obj/item/clothing/accessory/wcoat,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room49)
+/area/mining_colony/lower/maints/node/room49)
 "eN" = (
 /obj/machinery/chemical_dispenser/full,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room49)
+/area/mining_colony/lower/maints/node/room49)
 "eO" = (
 /obj/structure/table/rack,
 /obj/random/loot/often/few,
@@ -1548,7 +1548,7 @@
 /obj/structure/closet/firecloset,
 /obj/random/rare_loot/rarely,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room26)
+/area/mining_colony/lower/maints/node/room26)
 "eS" = (
 /obj/structure/morgue{
 	dir = 2
@@ -1564,44 +1564,44 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room63)
+/area/mining_colony/lower/maints/node/room63)
 "eV" = (
 /obj/structure/table/standard,
 /obj/item/pizzabox/margherita,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room29)
+/area/mining_colony/lower/maints/node/room29)
 "eW" = (
 /obj/random/gun_tool,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room20)
+/area/mining_colony/lower/maints/node/room20)
 "eX" = (
 /obj/item/remains/mouse,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room29)
+/area/mining_colony/lower/maints/node/room29)
 "eY" = (
 /obj/structure/bed/chair/office{
 	dir = 4;
 	icon_state = "officechair_preview"
 	},
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room55)
+/area/mining_colony/lower/maints/node/room55)
 "eZ" = (
 /obj/structure/table/rack,
 /obj/random/loot/usually/many,
 /obj/random/loot/usually/few,
 /obj/random/medical/lite,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room49)
+/area/mining_colony/lower/maints/node/room49)
 "fa" = (
 /obj/structure/table/standard,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room55)
+/area/mining_colony/lower/maints/node/room55)
 "fb" = (
 /obj/structure/table/rack,
 /obj/random/junk,
 /obj/random/loot/usually/few,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room25)
+/area/mining_colony/lower/maints/node/room25)
 "fc" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4;
@@ -1612,12 +1612,12 @@
 "fd" = (
 /obj/structure/kitchenspike,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room48)
+/area/mining_colony/lower/maints/node/room48)
 "fe" = (
 /obj/random/closet,
 /obj/random/pouch,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room21)
+/area/mining_colony/lower/maints/node/room21)
 "ff" = (
 /obj/random/obstruction,
 /turf/simulated/floor/dank/grater,
@@ -1626,30 +1626,30 @@
 /obj/effect/decal/cleanable/blood,
 /obj/random/snack,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room48)
+/area/mining_colony/lower/maints/node/room48)
 "fh" = (
 /obj/structure/table/standard,
 /obj/item/material/hatchet/machete,
 /obj/item/clothing/accessory/storage/holster/machete,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room48)
+/area/mining_colony/lower/maints/node/room48)
 "fi" = (
 /obj/effect/decal/cleanable/blood/gibs,
 /obj/random/loot/sometimes/many,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room48)
+/area/mining_colony/lower/maints/node/room48)
 "fj" = (
 /obj/machinery/light/small/red{
 	dir = 4;
 	icon_state = "bulb_map"
 	},
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room48)
+/area/mining_colony/lower/maints/node/room48)
 "fk" = (
 /obj/structure/kitchenspike,
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room48)
+/area/mining_colony/lower/maints/node/room48)
 "fl" = (
 /obj/machinery/light/small/red{
 	dir = 4;
@@ -1658,26 +1658,26 @@
 /obj/item/clothing/suit/chef/classic,
 /obj/item/clothing/mask/spirit,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room48)
+/area/mining_colony/lower/maints/node/room48)
 "fm" = (
 /obj/random/loot/often/few,
 /obj/random/loot/often/few,
 /obj/structure/table/rack,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room25)
+/area/mining_colony/lower/maints/node/room25)
 "fn" = (
 /obj/structure/table/rack,
 /obj/random/loot/often/many,
 /obj/random/loot/often/few,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room25)
+/area/mining_colony/lower/maints/node/room25)
 "fo" = (
 /obj/structure/table/rack,
 /obj/random/loot/usually/few,
 /obj/random/maintenance/clean,
 /obj/random/maintenance/clean,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room26)
+/area/mining_colony/lower/maints/node/room26)
 "fp" = (
 /obj/structure/table/rack,
 /obj/machinery/light/small{
@@ -1685,18 +1685,18 @@
 	},
 /obj/random/loot/sometimes/some,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room25)
+/area/mining_colony/lower/maints/node/room25)
 "fq" = (
 /obj/random/rare_loot/rarely,
 /obj/random/loot/rarely/many,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room48)
+/area/mining_colony/lower/maints/node/room48)
 "fr" = (
 /obj/machinery/light/small{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room5)
+/area/mining_colony/lower/maints/node/room5)
 "fs" = (
 /obj/machinery/light/small{
 	dir = 4;
@@ -1706,23 +1706,23 @@
 	name = "ShuttleRepairPart"
 	},
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room39)
+/area/mining_colony/lower/maints/node/room39)
 "ft" = (
 /obj/structure/closet/body_bag,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room32)
+/area/mining_colony/lower/maints/node/room32)
 "fu" = (
 /obj/structure/closet/secure_closet/medical2,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room32)
+/area/mining_colony/lower/maints/node/room32)
 "fv" = (
 /obj/machinery/optable,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room32)
+/area/mining_colony/lower/maints/node/room32)
 "fw" = (
 /obj/item/tool/tape_roll,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room32)
+/area/mining_colony/lower/maints/node/room32)
 "fx" = (
 /obj/structure/closet/crate/medical,
 /obj/random/toolbox,
@@ -1730,11 +1730,11 @@
 /obj/random/medical,
 /obj/random/loot/usually/many,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room32)
+/area/mining_colony/lower/maints/node/room32)
 "fy" = (
 /obj/item/toy/therapy_blue,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room32)
+/area/mining_colony/lower/maints/node/room32)
 "fz" = (
 /obj/structure/morgue{
 	dir = 2
@@ -1748,20 +1748,20 @@
 /obj/item/storage/lunchbox/cec/filled,
 /obj/structure/table/rack,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room20)
+/area/mining_colony/lower/maints/node/room20)
 "fB" = (
 /obj/structure/table/standard,
 /obj/item/storage/firstaid/surgery,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room32)
+/area/mining_colony/lower/maints/node/room32)
 "fC" = (
 /obj/structure/inflatable/door,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room32)
+/area/mining_colony/lower/maints/node/room32)
 "fD" = (
 /obj/structure/iv_drip,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room32)
+/area/mining_colony/lower/maints/node/room32)
 "fE" = (
 /obj/effect/floor_decal/dank/border{
 	dir = 4
@@ -1780,18 +1780,18 @@
 /obj/random/medical/lite,
 /obj/random/medical/lite,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room32)
+/area/mining_colony/lower/maints/node/room32)
 "fG" = (
 /obj/structure/sign/greencross,
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room32)
+/area/mining_colony/lower/maints/node/room32)
 "fH" = (
 /obj/random/loot/usually/few,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room32)
+/area/mining_colony/lower/maints/node/room32)
 "fI" = (
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room69)
+/area/mining_colony/lower/maints/node/room69)
 "fJ" = (
 /obj/effect/floor_decal/dank/border{
 	dir = 1
@@ -1811,11 +1811,11 @@
 /obj/structure/closet/emcloset,
 /obj/random/lathe_disk/advanced,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room25)
+/area/mining_colony/lower/maints/node/room25)
 "fL" = (
 /obj/machinery/biogenerator,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room18)
+/area/mining_colony/lower/maints/node/room18)
 "fM" = (
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/lower/securitystation)
@@ -1825,18 +1825,18 @@
 /obj/random/loot/usually/many,
 /obj/structure/table/rack,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room17)
+/area/mining_colony/lower/maints/node/room17)
 "fO" = (
 /obj/random/common_loot,
 /obj/structure/table/rack,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room23)
+/area/mining_colony/lower/maints/node/room23)
 "fP" = (
 /obj/random/contraband,
 /obj/random/loot/usually/many,
 /obj/structure/table/rack,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room17)
+/area/mining_colony/lower/maints/node/room17)
 "fQ" = (
 /obj/machinery/floodlight,
 /turf/simulated/floor/water_shallow{
@@ -1872,7 +1872,7 @@
 "fV" = (
 /obj/effect/wallframe_spawn/reinforced,
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room55)
+/area/mining_colony/lower/maints/node/room55)
 "fW" = (
 /obj/effect/wallframe_spawn/reinforced,
 /turf/simulated/floor/plating,
@@ -1888,74 +1888,66 @@
 /obj/item/reagent_containers/pill/happy,
 /obj/random/tool/advanced,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room49)
+/area/mining_colony/lower/maints/node/room49)
 "fZ" = (
 /obj/structure/closet/crate/hydroponics/beekeeping,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room18)
+/area/mining_colony/lower/maints/node/room18)
 "ga" = (
 /obj/machinery/light/small{
 	dir = 4
 	},
 /obj/structure/largecrate/ds/green_horizontal,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/maints/room66)
+/area/mining_colony/lower/maints/node/room66)
 "gc" = (
 /obj/machinery/portable_atmospherics/hydroponics,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room18)
+/area/mining_colony/lower/maints/node/room18)
 "gd" = (
 /obj/structure/stairs/north,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/lower/excav)
 "ge" = (
 /turf/simulated/floor/tiled/dark,
-/area/mining_colony/lower/maints/room42)
+/area/mining_colony/lower/maints/node/room42)
 "gf" = (
 /obj/effect/wingrille_spawn/reinforced,
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room41)
+/area/mining_colony/lower/maints/node/room41)
 "gg" = (
 /obj/machinery/power/smes/batteryrack,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room66)
+/area/mining_colony/lower/maints/node/room66)
 "gh" = (
 /obj/structure/curtain{
 	color = "red"
 	},
 /turf/simulated/floor/wood,
 /area/mining_colony/lower)
-"gi" = (
-/obj/machinery/power/apc/infinite{
-	dir = 1;
-	pixel_y = 16;
-	name = "How the hell did you find me!?"
-	},
-/turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony/lower)
 "gj" = (
 /obj/machinery/power/smes/buildable,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room66)
+/area/mining_colony/lower/maints/node/room66)
 "gk" = (
 /obj/structure/table/standard,
 /obj/random/loot/usually/many,
 /obj/random/loot/usually/many,
 /obj/item/clothing/head/collectable/hardhat,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room66)
+/area/mining_colony/lower/maints/node/room66)
 "gl" = (
 /obj/machinery/vending/engivend,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room66)
+/area/mining_colony/lower/maints/node/room66)
 "gm" = (
 /obj/item/storage/toolbox/electrical,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room66)
+/area/mining_colony/lower/maints/node/room66)
 "gn" = (
 /obj/structure/table,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room66)
+/area/mining_colony/lower/maints/node/room66)
 "go" = (
 /obj/structure/bed/chair/office{
 	dir = 8;
@@ -1963,7 +1955,7 @@
 	},
 /obj/machinery/light/small,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room49)
+/area/mining_colony/lower/maints/node/room49)
 "gp" = (
 /obj/structure/table/standard,
 /obj/item/reagent_containers/food/drinks/bottle/small/beer,
@@ -2015,7 +2007,7 @@
 /turf/simulated/floor/dank/slides{
 	dir = 8
 	},
-/area/mining_colony/lower/mining_caves/shelter_3)
+/area/mining_colony/lower/shelter_1)
 "gE" = (
 /obj/structure/closet/body_bag,
 /obj/effect/floor_decal/industrial/outline,
@@ -2024,7 +2016,7 @@
 "gF" = (
 /obj/structure/casino/roulette,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room59)
+/area/mining_colony/lower/maints/node/room59)
 "gG" = (
 /obj/effect/wallframe_spawn/reinforced,
 /turf/simulated/floor/dank/mono,
@@ -2043,20 +2035,20 @@
 	name = "Tom"
 	},
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room29)
+/area/mining_colony/lower/maints/node/room29)
 "gK" = (
 /obj/item/remains/mouse{
 	name = "Jerry's remains"
 	},
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room29)
+/area/mining_colony/lower/maints/node/room29)
 "gL" = (
 /obj/structure/table/rack,
 /obj/random/loot/rarely/many,
 /obj/random/loot/sometimes/some,
 /obj/random/armor,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room25)
+/area/mining_colony/lower/maints/node/room25)
 "gM" = (
 /obj/structure/bed/chair{
 	dir = 4;
@@ -2070,14 +2062,14 @@
 /obj/item/reagent_containers/food/drinks/teapot,
 /obj/structure/table/standard,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room5)
+/area/mining_colony/lower/maints/node/room5)
 "gO" = (
 /obj/random/closet,
 /obj/random/loot/often/many,
 /obj/random/loot/often/few,
 /obj/random/lathe_disk/advanced,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room22)
+/area/mining_colony/lower/maints/node/room22)
 "gP" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -2088,13 +2080,13 @@
 /obj/item/clothing/head/flatcap,
 /obj/structure/table/standard,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room5)
+/area/mining_colony/lower/maints/node/room5)
 "gR" = (
 /obj/item/clothing/under/gentlesuit,
 /obj/structure/table/standard,
 /obj/effect/landmark/costume/prig,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room5)
+/area/mining_colony/lower/maints/node/room5)
 "gS" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -2111,7 +2103,7 @@
 /obj/random/medical/lite,
 /mob/living/simple_animal/mouse/brown,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room29)
+/area/mining_colony/lower/maints/node/room29)
 "gU" = (
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/plating,
@@ -2120,7 +2112,7 @@
 /obj/structure/table/standard,
 /obj/random/legguard,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room58)
+/area/mining_colony/lower/maints/node/room58)
 "gW" = (
 /obj/machinery/light{
 	dir = 8
@@ -2131,7 +2123,7 @@
 /obj/structure/table/standard,
 /obj/random/armguard,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room58)
+/area/mining_colony/lower/maints/node/room58)
 "gY" = (
 /obj/machinery/icecream_vat,
 /turf/simulated/floor/water_shallow{
@@ -2151,7 +2143,7 @@
 "ha" = (
 /obj/structure/filingcabinet,
 /turf/simulated/floor/wood,
-/area/mining_colony/lower/maints/room57)
+/area/mining_colony/lower/maints/node/room57)
 "hb" = (
 /obj/structure/table/standard,
 /obj/item/storage/fancy/nutricube_tray/filled,
@@ -2162,7 +2154,7 @@
 /obj/machinery/vending/sovietsoda,
 /obj/random/junk,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room38)
+/area/mining_colony/lower/maints/node/room38)
 "hd" = (
 /obj/item/modular_computer/console/preset/civilian{
 	dir = 8
@@ -2173,7 +2165,7 @@
 /obj/machinery/constructable_frame/machine_frame,
 /obj/random/junk,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room38)
+/area/mining_colony/lower/maints/node/room38)
 "hf" = (
 /obj/random/closet,
 /obj/random/loot/often/many,
@@ -2181,7 +2173,7 @@
 /obj/random/ammo,
 /obj/random/gloves,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room22)
+/area/mining_colony/lower/maints/node/room22)
 "hg" = (
 /obj/random/junk,
 /turf/simulated/floor/plating,
@@ -2189,7 +2181,7 @@
 "hh" = (
 /obj/machinery/computer/guestpass,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room38)
+/area/mining_colony/lower/maints/node/room38)
 "hi" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -2209,23 +2201,23 @@
 "hl" = (
 /obj/random/contraband,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room38)
+/area/mining_colony/lower/maints/node/room38)
 "hm" = (
 /obj/item/clothing/mask/bandana/purple,
 /obj/item/clothing/mask/bandana/skull,
 /obj/structure/table/woodentable,
 /obj/item/clothing/gloves/duty,
 /turf/simulated/floor/dank/hardwood,
-/area/mining_colony/lower/maints/room39)
+/area/mining_colony/lower/maints/node/room39)
 "hn" = (
 /obj/random/junk,
 /obj/structure/table,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room38)
+/area/mining_colony/lower/maints/node/room38)
 "ho" = (
 /obj/machinery/vending/sovietsoda,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room38)
+/area/mining_colony/lower/maints/node/room38)
 "hp" = (
 /obj/item/bikehorn/rubberducky,
 /turf/simulated/floor/water_shallow{
@@ -2242,28 +2234,28 @@
 /obj/machinery/washing_machine,
 /obj/random/junk,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room38)
+/area/mining_colony/lower/maints/node/room38)
 "hs" = (
 /obj/machinery/papershredder,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room38)
+/area/mining_colony/lower/maints/node/room38)
 "ht" = (
 /obj/machinery/microwave,
 /obj/random/junk,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room38)
+/area/mining_colony/lower/maints/node/room38)
 "hu" = (
 /obj/machinery/reagentgrinder,
 /obj/random/junk,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room38)
+/area/mining_colony/lower/maints/node/room38)
 "hv" = (
 /obj/machinery/photocopier/faxmachine{
 	req_one_access = list();
 	department = "Deprecated"
 	},
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room38)
+/area/mining_colony/lower/maints/node/room38)
 "hw" = (
 /obj/structure/curtain{
 	color = "red"
@@ -2273,18 +2265,18 @@
 "hx" = (
 /obj/random/drinkbottle,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room38)
+/area/mining_colony/lower/maints/node/room38)
 "hy" = (
 /obj/machinery/vending/snix,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room38)
+/area/mining_colony/lower/maints/node/room38)
 "hz" = (
 /obj/random/closet,
 /obj/random/loot/often/many,
 /obj/random/loot/often/few,
 /obj/random/hardsuit,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room22)
+/area/mining_colony/lower/maints/node/room22)
 "hA" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/dank/grater,
@@ -2292,11 +2284,11 @@
 "hB" = (
 /obj/structure/reagent_dispensers/watertank,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room37)
+/area/mining_colony/lower/maints/node/room37)
 "hC" = (
 /obj/structure/reagent_dispensers/water_cooler,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room37)
+/area/mining_colony/lower/maints/node/room37)
 "hD" = (
 /obj/random/shoes,
 /obj/random/clothing,
@@ -2306,11 +2298,11 @@
 /obj/random/glasses,
 /obj/item/clothing/under/confederacy,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room40)
+/area/mining_colony/lower/maints/node/room40)
 "hE" = (
 /obj/machinery/seed_storage/garden,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room38)
+/area/mining_colony/lower/maints/node/room38)
 "hF" = (
 /obj/machinery/door/unpowered/simple/wood,
 /turf/simulated/floor/plating,
@@ -2320,11 +2312,11 @@
 /obj/item/tool/saw/plasma,
 /obj/item/storage/chewables/candy/medicallollis,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room32)
+/area/mining_colony/lower/maints/node/room32)
 "hH" = (
 /obj/structure/reagent_dispensers/beerkeg,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room37)
+/area/mining_colony/lower/maints/node/room37)
 "hI" = (
 /obj/item/shield/tray,
 /turf/simulated/floor/plating,
@@ -2337,17 +2329,17 @@
 /obj/structure/table/standard,
 /obj/random/loot/sometimes/few,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room58)
+/area/mining_colony/lower/maints/node/room58)
 "hL" = (
 /obj/structure/closet/crate/freezer,
 /obj/random/rig_module,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room49)
+/area/mining_colony/lower/maints/node/room49)
 "hM" = (
 /obj/item/spacecash/ewallet/random/c500,
 /obj/structure/table/gamblingtable,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room59)
+/area/mining_colony/lower/maints/node/room59)
 "hN" = (
 /obj/random/junk,
 /turf/simulated/floor/wood,
@@ -2356,7 +2348,7 @@
 /obj/random/rare_loot/rarely,
 /obj/random/maintenance/clean,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room30)
+/area/mining_colony/lower/maints/node/room30)
 "hP" = (
 /turf/simulated/floor/dank/bathr,
 /area/mining_colony/lower/morgue)
@@ -2364,7 +2356,7 @@
 /obj/random/loot/sometimes/some,
 /obj/structure/table/gamblingtable,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room59)
+/area/mining_colony/lower/maints/node/room59)
 "hR" = (
 /obj/item/storage/wallet/leather,
 /turf/simulated/floor/water_shallow{
@@ -2376,15 +2368,15 @@
 "hS" = (
 /obj/structure/bookcase/manuals/medical,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room63)
+/area/mining_colony/lower/maints/node/room63)
 "hT" = (
 /obj/structure/bookcase/manuals/research_and_development,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room63)
+/area/mining_colony/lower/maints/node/room63)
 "hU" = (
 /obj/structure/bookcase/manuals/xenoarchaeology,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room63)
+/area/mining_colony/lower/maints/node/room63)
 "hV" = (
 /obj/structure/table/standard,
 /obj/item/storage/box/gloves,
@@ -2397,58 +2389,58 @@
 /obj/structure/coatrack,
 /obj/item/clothing/under/blackjumpskirt,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room44)
+/area/mining_colony/lower/maints/node/room44)
 "hX" = (
 /obj/structure/table/standard,
 /obj/random/loot/often/some,
 /turf/simulated/floor/wood,
-/area/mining_colony/lower/maints/room57)
+/area/mining_colony/lower/maints/node/room57)
 "hY" = (
 /obj/structure/table/standard,
 /obj/random/coin,
 /turf/simulated/floor/wood,
-/area/mining_colony/lower/maints/room57)
+/area/mining_colony/lower/maints/node/room57)
 "hZ" = (
 /obj/random/loot/sometimes/many,
 /obj/structure/closet/cabinet,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room6)
+/area/mining_colony/lower/maints/node/room6)
 "ia" = (
 /obj/structure/fitness/punchingbag,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room42)
+/area/mining_colony/lower/maints/node/room42)
 "ib" = (
 /obj/structure/fitness/weightlifter,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room42)
+/area/mining_colony/lower/maints/node/room42)
 "ic" = (
 /obj/random/loot/often/many,
 /obj/structure/table/rack,
 /obj/random/loot/often/few,
 /obj/random/loot/often/few,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room24)
+/area/mining_colony/lower/maints/node/room24)
 "id" = (
 /obj/random/loot/sometimes/few,
 /obj/structure/table/rack,
 /obj/random/maintenance/clean,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room3)
+/area/mining_colony/lower/maints/node/room3)
 "ie" = (
 /obj/structure/bed/chair{
 	dir = 8
 	},
 /obj/effect/decal/cleanable/cobweb2,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room44)
+/area/mining_colony/lower/maints/node/room44)
 "if" = (
 /obj/structure/reagent_dispensers/water_cooler,
 /turf/simulated/floor/tiled/dark,
-/area/mining_colony/lower/maints/room42)
+/area/mining_colony/lower/maints/node/room42)
 "ig" = (
 /obj/machinery/vending/fitness,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room42)
+/area/mining_colony/lower/maints/node/room42)
 "ih" = (
 /obj/item/clothing/head/flatcap,
 /turf/simulated/floor/dank/grater,
@@ -2457,7 +2449,7 @@
 /obj/random/light,
 /obj/structure/net/net_wall,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room38)
+/area/mining_colony/lower/maints/node/room38)
 "ij" = (
 /obj/structure/net/net_wall,
 /turf/simulated/floor/dank/grater,
@@ -2467,7 +2459,7 @@
 /obj/random/loot/rarely/few,
 /obj/structure/table/rack,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room2)
+/area/mining_colony/lower/maints/node/room2)
 "il" = (
 /obj/structure/net/net_wall,
 /turf/simulated/floor/water_shallow{
@@ -2492,19 +2484,19 @@
 /obj/random/loot/often/many,
 /obj/item/clothing/head/bandana/orange,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room66)
+/area/mining_colony/lower/maints/node/room66)
 "ip" = (
 /obj/structure/table/rack,
 /obj/random/loot/usually/few,
 /obj/random/loot/often/some,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room21)
+/area/mining_colony/lower/maints/node/room21)
 "iq" = (
 /obj/structure/table/standard,
 /obj/item/reagent_containers/spray/cleaner,
 /obj/item/clothing/accessory/stethoscope,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room32)
+/area/mining_colony/lower/maints/node/room32)
 "ir" = (
 /obj/random/armguard,
 /turf/simulated/floor/plating,
@@ -2514,7 +2506,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room44)
+/area/mining_colony/lower/maints/node/room44)
 "it" = (
 /obj/random/shoes,
 /obj/random/clothing,
@@ -2525,7 +2517,7 @@
 /obj/item/clothing/head/plaguedoctorhat,
 /obj/item/clothing/under/dress,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room40)
+/area/mining_colony/lower/maints/node/room40)
 "iu" = (
 /obj/structure/table/standard,
 /obj/item/storage/box/beakers,
@@ -2542,65 +2534,65 @@
 /obj/random/toy,
 /obj/random/loot/often/few,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room44)
+/area/mining_colony/lower/maints/node/room44)
 "iw" = (
 /obj/structure/bed/chair{
 	dir = 8
 	},
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room44)
+/area/mining_colony/lower/maints/node/room44)
 "ix" = (
 /obj/structure/table/standard,
 /obj/random/toy,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room44)
+/area/mining_colony/lower/maints/node/room44)
 "iy" = (
 /obj/random/trash,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room64)
+/area/mining_colony/lower/maints/node/room64)
 "iz" = (
 /obj/random/loot/often/few,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower)
 "iA" = (
 /turf/simulated/floor/wood,
-/area/mining_colony/lower/maints/room64)
+/area/mining_colony/lower/maints/node/room64)
 "iB" = (
 /obj/item/storage/chewables,
 /obj/item/clothing/under/skirt,
 /obj/structure/coatrack,
 /obj/effect/decal/cleanable/cobweb,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room44)
+/area/mining_colony/lower/maints/node/room44)
 "iC" = (
 /obj/structure/table/rack,
 /obj/random/loot/often/few,
 /obj/random/loot/often/few,
 /obj/random/powercell,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room61)
+/area/mining_colony/lower/maints/node/room61)
 "iD" = (
 /obj/random/trash,
 /turf/simulated/floor/wood,
-/area/mining_colony/lower/maints/room64)
+/area/mining_colony/lower/maints/node/room64)
 "iE" = (
 /obj/structure/table/woodentable,
 /obj/item/toy/figure/detective,
 /obj/item/paper_bin,
 /obj/item/pen/multi,
 /turf/simulated/floor/wood,
-/area/mining_colony/lower/maints/room64)
+/area/mining_colony/lower/maints/node/room64)
 "iF" = (
 /obj/item/remains/human,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room30)
+/area/mining_colony/lower/maints/node/room30)
 "iG" = (
 /obj/structure/table/rack,
 /obj/random/loot/usually/few,
 /obj/random/cash,
 /obj/random/loot/often/some,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room21)
+/area/mining_colony/lower/maints/node/room21)
 "iH" = (
 /obj/item/book/manual/detective,
 /obj/structure/closet/secure_closet/personal/cabinet,
@@ -2615,13 +2607,13 @@
 /obj/item/clothing/accessory/badge/PI,
 /obj/item/clothing/accessory/storage/holster/waist,
 /turf/simulated/floor/wood,
-/area/mining_colony/lower/maints/room64)
+/area/mining_colony/lower/maints/node/room64)
 "iI" = (
 /obj/structure/bed/chair/office{
 	dir = 1
 	},
 /turf/simulated/floor/wood,
-/area/mining_colony/lower/maints/room64)
+/area/mining_colony/lower/maints/node/room64)
 "iJ" = (
 /obj/machinery/recycling_tank,
 /turf/simulated/floor/dank/grater,
@@ -2638,14 +2630,14 @@
 /obj/machinery/door/airlock/maintenance,
 /obj/structure/barricade/steel,
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room64)
+/area/mining_colony/lower/maints/node/room64)
 "iN" = (
 /obj/random/loot/often/few,
 /obj/random/loot/often/few,
 /obj/structure/table/rack,
 /obj/random/maintenance/clean,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room25)
+/area/mining_colony/lower/maints/node/room25)
 "iO" = (
 /obj/structure/table/woodentable,
 /obj/random/snack,
@@ -2662,7 +2654,7 @@
 /obj/item/flame/lighter/zippo,
 /obj/random/smokes,
 /turf/simulated/floor/wood,
-/area/mining_colony/lower/maints/room64)
+/area/mining_colony/lower/maints/node/room64)
 "iQ" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -2673,7 +2665,7 @@
 	department = "Abandoned Detective Office"
 	},
 /turf/simulated/floor/wood,
-/area/mining_colony/lower/maints/room64)
+/area/mining_colony/lower/maints/node/room64)
 "iR" = (
 /obj/machinery/vending/boozeomat,
 /turf/simulated/floor/plating,
@@ -2684,14 +2676,14 @@
 /obj/item/reagent_containers/food/drinks/coffeecup/britcup,
 /obj/structure/table/standard,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room5)
+/area/mining_colony/lower/maints/node/room5)
 "iT" = (
 /obj/random/closet,
 /obj/random/loot/often/many,
 /obj/random/loot/often/few,
 /obj/random/contraband,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room22)
+/area/mining_colony/lower/maints/node/room22)
 "iU" = (
 /obj/random/obstruction,
 /turf/simulated/floor/plating,
@@ -2702,7 +2694,7 @@
 /obj/item/clothing/head/xenos,
 /obj/structure/closet/cabinet,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room60)
+/area/mining_colony/lower/maints/node/room60)
 "iW" = (
 /obj/machinery/light{
 	dir = 1
@@ -2714,7 +2706,7 @@
 /obj/random/drinkbottle,
 /obj/random/loot/sometimes/few,
 /turf/simulated/floor/wood,
-/area/mining_colony/lower/maints/room57)
+/area/mining_colony/lower/maints/node/room57)
 "iY" = (
 /obj/random/closet,
 /obj/random/loot/often/few,
@@ -2727,7 +2719,7 @@
 /obj/random/loot/often/few,
 /obj/item/storage/chewables,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room44)
+/area/mining_colony/lower/maints/node/room44)
 "ja" = (
 /obj/item/forensics/sample_kit,
 /obj/item/forensics/sample_kit/powder,
@@ -2735,7 +2727,7 @@
 /obj/structure/table/woodentable,
 /obj/effect/decal/cleanable/cobweb,
 /turf/simulated/floor/wood,
-/area/mining_colony/lower/maints/room64)
+/area/mining_colony/lower/maints/node/room64)
 "jb" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1;
@@ -2747,7 +2739,7 @@
 /obj/item/clothing/under/blackskirt,
 /obj/structure/coatrack,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room44)
+/area/mining_colony/lower/maints/node/room44)
 "jd" = (
 /obj/item/tool/saw,
 /obj/structure/table/steel,
@@ -2769,7 +2761,7 @@
 	spawn_object = /obj/item/reagent_containers/food/drinks/cans/cola
 	},
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room30)
+/area/mining_colony/lower/maints/node/room30)
 "jf" = (
 /obj/random/toolbox,
 /obj/structure/table/steel,
@@ -2790,7 +2782,7 @@
 /obj/random/loot/usually/many,
 /obj/random/gloves,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room20)
+/area/mining_colony/lower/maints/node/room20)
 "jj" = (
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/drinks/glass2/shot,
@@ -2803,12 +2795,12 @@
 	dir = 1
 	},
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room37)
+/area/mining_colony/lower/maints/node/room37)
 "jl" = (
 /obj/structure/reagent_dispensers,
 /obj/machinery/light/small,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room37)
+/area/mining_colony/lower/maints/node/room37)
 "jm" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/lower/securityevidence2)
@@ -2834,7 +2826,7 @@
 /obj/random/closet,
 /obj/random/loot/usually/few,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room54)
+/area/mining_colony/lower/maints/node/room54)
 "js" = (
 /obj/random/shoes,
 /obj/random/clothing,
@@ -2846,7 +2838,7 @@
 /obj/item/clothing/under/redpyjamas,
 /obj/item/clothing/under/bluepyjamas,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room40)
+/area/mining_colony/lower/maints/node/room40)
 "jt" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/lower/medical)
@@ -2855,19 +2847,19 @@
 /obj/random/toy,
 /obj/random/loot/usually/few,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room44)
+/area/mining_colony/lower/maints/node/room44)
 "jv" = (
 /obj/structure/table/rack,
 /obj/random/loot/usually/some,
 /obj/random/loot/often/few,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room26)
+/area/mining_colony/lower/maints/node/room26)
 "jw" = (
 /obj/structure/table/rack,
 /obj/random/loot/usually/few,
 /obj/random/loot/often/few,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room16)
+/area/mining_colony/lower/maints/node/room16)
 "jx" = (
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 8
@@ -2930,21 +2922,21 @@
 /obj/item/stack/material/phoron/ten,
 /obj/effect/floor_decal/industrial/outline/orange,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room66)
+/area/mining_colony/lower/maints/node/room66)
 "jH" = (
 /obj/machinery/power/port_gen/pacman,
 /obj/effect/floor_decal/industrial/outline/orange,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room66)
+/area/mining_colony/lower/maints/node/room66)
 "jI" = (
 /obj/structure/closet/emcloset,
 /turf/simulated/floor/tiled/dark,
-/area/mining_colony/lower/maints/room41)
+/area/mining_colony/lower/maints/node/room41)
 "jJ" = (
 /obj/structure/closet/firecloset,
 /obj/random/loot/usually/few,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room62)
+/area/mining_colony/lower/maints/node/room62)
 "jK" = (
 /obj/random/accessory,
 /obj/random/accessory,
@@ -2953,31 +2945,31 @@
 /obj/random/maintenance/clean,
 /obj/item/clothing/under/caretaker,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room40)
+/area/mining_colony/lower/maints/node/room40)
 "jL" = (
 /obj/structure/table/standard,
 /obj/random/loot/sometimes/few,
 /obj/random/ammo,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room58)
+/area/mining_colony/lower/maints/node/room58)
 "jM" = (
 /obj/structure/table/standard,
 /obj/random/loot/sometimes/few,
 /obj/random/common_loot,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room58)
+/area/mining_colony/lower/maints/node/room58)
 "jN" = (
 /obj/random/closet,
 /obj/random/loot/usually/few,
 /obj/random/rare,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room40)
+/area/mining_colony/lower/maints/node/room40)
 "jO" = (
 /obj/random/loot/sometimes/some,
 /obj/structure/table/gamblingtable,
 /obj/random/common_loot,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room59)
+/area/mining_colony/lower/maints/node/room59)
 "jP" = (
 /obj/structure/table/rack,
 /obj/random/loot/usually/few,
@@ -3024,7 +3016,7 @@
 /obj/random/loot/usually/few,
 /obj/random/firstaid,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room17)
+/area/mining_colony/lower/maints/node/room17)
 "jW" = (
 /obj/random/closet,
 /obj/structure/railing/mapped{
@@ -3034,13 +3026,13 @@
 /obj/random/cash,
 /obj/random/rare_loot/rarely,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room17)
+/area/mining_colony/lower/maints/node/room17)
 "jX" = (
 /obj/structure/table/rack,
 /obj/random/maintenance,
 /obj/random/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room2)
+/area/mining_colony/lower/maints/node/room2)
 "jY" = (
 /obj/structure/table/rack,
 /obj/random/loot/usually/few,
@@ -3059,7 +3051,7 @@
 /obj/random/loot/usually/few,
 /obj/random/rare_loot/rarely,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room29)
+/area/mining_colony/lower/maints/node/room29)
 "kb" = (
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/drinks/glass2/shot,
@@ -3093,83 +3085,83 @@
 	},
 /obj/random/ammo,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room64)
+/area/mining_colony/lower/maints/node/room64)
 "ke" = (
 /obj/random/loot/sometimes/few,
 /obj/structure/table/rack,
 /obj/random/ammo/security,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room3)
+/area/mining_colony/lower/maints/node/room3)
 "kf" = (
 /obj/random/loot/often/few,
 /obj/structure/table/rack,
 /obj/random/glasses,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room10)
+/area/mining_colony/lower/maints/node/room10)
 "kg" = (
 /obj/random/loot/often/few,
 /obj/structure/table/rack,
 /obj/random/lathe_disk,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room10)
+/area/mining_colony/lower/maints/node/room10)
 "kh" = (
 /obj/random/loot/often/few,
 /obj/structure/table/rack,
 /obj/random/rare_loot/rarely,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room13)
+/area/mining_colony/lower/maints/node/room13)
 "ki" = (
 /obj/random/closet,
 /obj/random/tool_upgrade,
 /obj/random/tool_upgrade,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room13)
+/area/mining_colony/lower/maints/node/room13)
 "kj" = (
 /obj/random/loot/often/few,
 /obj/structure/table/rack,
 /obj/random/hat,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room10)
+/area/mining_colony/lower/maints/node/room10)
 "kk" = (
 /obj/structure/closet/emcloset,
 /obj/random/loot/usually/few,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room62)
+/area/mining_colony/lower/maints/node/room62)
 "kl" = (
 /obj/random/loot/often/few,
 /obj/structure/table/rack,
 /obj/random/suit,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room11)
+/area/mining_colony/lower/maints/node/room11)
 "km" = (
 /obj/structure/table/rack,
 /obj/random/loot/usually/few,
 /obj/random/lathe_disk/advanced,
 /obj/random/loot/often/some,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room21)
+/area/mining_colony/lower/maints/node/room21)
 "kn" = (
 /obj/structure/table/standard,
 /obj/random/tool_upgrade,
 /obj/random/tool_upgrade,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room1)
+/area/mining_colony/lower/maints/node/room1)
 "ko" = (
 /obj/random/loot/often/few,
 /obj/structure/table/rack,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/maints/room11)
+/area/mining_colony/lower/maints/node/room11)
 "kp" = (
 /obj/random/loot/often/some,
 /obj/structure/table/rack,
 /obj/random/maintenance/clean,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room1)
+/area/mining_colony/lower/maints/node/room1)
 "kq" = (
 /obj/structure/bed/psych,
 /obj/item/megaphone,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room40)
+/area/mining_colony/lower/maints/node/room40)
 "kr" = (
 /obj/item/radio/intercom/department/security{
 	dir = 8;
@@ -3187,53 +3179,53 @@
 /obj/random/loot/rarely/few,
 /obj/random/tool/modded,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room49)
+/area/mining_colony/lower/maints/node/room49)
 "ku" = (
 /obj/structure/bed/padded,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room46)
+/area/mining_colony/lower/maints/node/room46)
 "kv" = (
 /obj/random/loot/rarely/few,
 /obj/random/loot/usually/few,
 /obj/structure/table/rack,
 /obj/random/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room19)
+/area/mining_colony/lower/maints/node/room19)
 "kw" = (
 /obj/structure/closet/gmcloset,
 /obj/random/maintenance/clean,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room33)
+/area/mining_colony/lower/maints/node/room33)
 "kx" = (
 /obj/random/loot/sometimes/many,
 /obj/random/loot/usually/few,
 /obj/structure/table/rack,
 /obj/random/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room19)
+/area/mining_colony/lower/maints/node/room19)
 "ky" = (
 /obj/random/loot/sometimes/many,
 /obj/random/loot/usually/few,
 /obj/structure/table/rack,
 /obj/random/tool/modded,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room19)
+/area/mining_colony/lower/maints/node/room19)
 "kz" = (
 /obj/structure/table/rack,
 /obj/random/tool_upgrade/rare,
 /obj/random/tool_upgrade,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room19)
+/area/mining_colony/lower/maints/node/room19)
 "kA" = (
 /obj/structure/table/rack,
 /obj/random/toolbox,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room19)
+/area/mining_colony/lower/maints/node/room19)
 "kB" = (
 /obj/structure/closet/lawcloset,
 /obj/random/maintenance/clean,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room33)
+/area/mining_colony/lower/maints/node/room33)
 "kC" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -3251,36 +3243,36 @@
 /obj/random/common_loot,
 /obj/random/hardsuit,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room61)
+/area/mining_colony/lower/maints/node/room61)
 "kF" = (
 /obj/structure/table/standard,
 /obj/random/toy,
 /obj/random/hardsuit,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room44)
+/area/mining_colony/lower/maints/node/room44)
 "kG" = (
 /obj/structure/table/standard,
 /obj/item/storage/chewables/candy/gum,
 /obj/item/storage/chewables/candy/gum,
 /obj/random/storage,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room42)
+/area/mining_colony/lower/maints/node/room42)
 "kH" = (
 /obj/structure/table/gamblingtable,
 /obj/random/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room38)
+/area/mining_colony/lower/maints/node/room38)
 "kI" = (
 /obj/random/closet,
 /obj/random/loot/often/many,
 /obj/random/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room38)
+/area/mining_colony/lower/maints/node/room38)
 "kJ" = (
 /obj/item/clothing/under/pj/red,
 /obj/structure/bed,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room28)
+/area/mining_colony/lower/maints/node/room28)
 "kK" = (
 /obj/structure/table/standard,
 /obj/item/spacecash/ewallet/random/c500,
@@ -3294,12 +3286,12 @@
 /obj/random/glasses,
 /obj/random/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room38)
+/area/mining_colony/lower/maints/node/room38)
 "kM" = (
 /obj/random/junk,
 /obj/random/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room38)
+/area/mining_colony/lower/maints/node/room38)
 "kN" = (
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/lower/excav/electronics)
@@ -3314,14 +3306,14 @@
 /obj/random/maintenance,
 /obj/structure/table/rack,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room50)
+/area/mining_colony/lower/maints/node/room50)
 "kQ" = (
 /obj/random/maintenance/clean,
 /obj/random/maintenance,
 /obj/random/loot/usually/few,
 /obj/structure/table/rack,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room50)
+/area/mining_colony/lower/maints/node/room50)
 "kR" = (
 /obj/machinery/door/airlock/security{
 	dir = 4;
@@ -3348,7 +3340,7 @@
 /obj/random/loot/sometimes/few,
 /obj/random/loot/rarely/few,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room14)
+/area/mining_colony/lower/maints/node/room14)
 "kU" = (
 /obj/machinery/icecream_vat,
 /obj/effect/floor_decal/dank/outline,
@@ -3361,14 +3353,14 @@
 /obj/random/loot/sometimes/few,
 /obj/random/loot/rarely/few,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room14)
+/area/mining_colony/lower/maints/node/room14)
 "kW" = (
 /obj/random/loot/rarely/few,
 /obj/random/loot/usually/few,
 /obj/structure/table/rack,
 /obj/random/rare_loot/rarely,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room19)
+/area/mining_colony/lower/maints/node/room19)
 "kX" = (
 /obj/random/legguard,
 /turf/simulated/floor/plating,
@@ -3387,7 +3379,7 @@
 /obj/random/snack,
 /obj/item/storage/fancy/cigar,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room63)
+/area/mining_colony/lower/maints/node/room63)
 "lb" = (
 /obj/random/hat,
 /obj/structure/table/rack,
@@ -3411,45 +3403,45 @@
 /obj/structure/table/rack,
 /obj/random/gloves,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room2)
+/area/mining_colony/lower/maints/node/room2)
 "le" = (
 /obj/machinery/constructable_frame/machine_frame,
 /obj/random/firstaid,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room38)
+/area/mining_colony/lower/maints/node/room38)
 "lf" = (
 /obj/random/loot/often/few,
 /obj/random/loot/rarely/few,
 /obj/random/loot/sometimes/few,
 /obj/structure/table/rack,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room12)
+/area/mining_colony/lower/maints/node/room12)
 "lg" = (
 /obj/random/rare_loot,
 /obj/structure/table/rack,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room12)
+/area/mining_colony/lower/maints/node/room12)
 "lh" = (
 /obj/machinery/autolathe,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room62)
+/area/mining_colony/lower/maints/node/room62)
 "li" = (
 /obj/random/loot/usually/some,
 /obj/random/maintenance/clean,
 /obj/structure/table/rack,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room62)
+/area/mining_colony/lower/maints/node/room62)
 "lj" = (
 /obj/random/loot/usually/some,
 /obj/random/medical/lite,
 /obj/structure/table/rack,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room62)
+/area/mining_colony/lower/maints/node/room62)
 "lk" = (
 /obj/random/material,
 /obj/structure/table/rack,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room62)
+/area/mining_colony/lower/maints/node/room62)
 "ll" = (
 /obj/machinery/vending/cola,
 /obj/effect/floor_decal/dank/outline,
@@ -3459,7 +3451,7 @@
 /obj/random/rare_loot/rarely,
 /obj/structure/table/rack,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room23)
+/area/mining_colony/lower/maints/node/room23)
 "ln" = (
 /obj/machinery/store,
 /turf/simulated/floor/dank/mono,
@@ -3496,7 +3488,7 @@
 /obj/random/rare_loot/rarely,
 /obj/random/maintenance/clean,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/maints/room1)
+/area/mining_colony/lower/maints/node/room1)
 "lt" = (
 /obj/structure/closet/hydrant{
 	pixel_y = 32
@@ -3504,7 +3496,7 @@
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /obj/effect/floor_decal/dank/outline_striped,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/mining_caves/shelter_3)
+/area/mining_colony/lower/shelter_1)
 "lu" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -3599,18 +3591,18 @@
 /obj/structure/closet/firecloset,
 /obj/random/loot/usually/many,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room36)
+/area/mining_colony/lower/maints/node/room36)
 "lJ" = (
 /obj/structure/closet/emcloset,
 /obj/random/loot/usually/many,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room36)
+/area/mining_colony/lower/maints/node/room36)
 "lK" = (
 /obj/structure/table/rack,
 /obj/random/loot/usually/few,
 /obj/random/loot/sometimes/few,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room15)
+/area/mining_colony/lower/maints/node/room15)
 "lL" = (
 /obj/machinery/light,
 /obj/structure/table/standard,
@@ -3623,7 +3615,7 @@
 /obj/random/lathe_disk/low_chance,
 /obj/random/lathe_disk/low_chance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room62)
+/area/mining_colony/lower/maints/node/room62)
 "lN" = (
 /obj/structure/ladder/up,
 /turf/simulated/floor/dank/grater,
@@ -3750,13 +3742,13 @@
 /obj/item/clothing/under/shorts/blue,
 /obj/structure/table/standard,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room3)
+/area/mining_colony/lower/maints/node/room3)
 "mg" = (
 /obj/random/loot/often/few,
 /obj/structure/table/rack,
 /obj/random/powercell,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room13)
+/area/mining_colony/lower/maints/node/room13)
 "mh" = (
 /obj/random/loot/usually/few,
 /obj/random/ammo,
@@ -3773,7 +3765,7 @@
 /obj/structure/table/rack,
 /obj/random/maintenance/clean,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room55)
+/area/mining_colony/lower/maints/node/room55)
 "mk" = (
 /obj/random/loot/usually/few,
 /obj/structure/table/rack,
@@ -3793,7 +3785,7 @@
 /obj/random/tool_upgrade,
 /obj/random/loot/usually/few,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room55)
+/area/mining_colony/lower/maints/node/room55)
 "mn" = (
 /obj/item/target,
 /turf/simulated/floor/plating,
@@ -3803,7 +3795,7 @@
 /obj/structure/table/rack,
 /obj/random/pouch,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room11)
+/area/mining_colony/lower/maints/node/room11)
 "mp" = (
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/interior/cargo/storage_upper)
@@ -3811,7 +3803,7 @@
 /obj/random/tool_upgrade,
 /obj/structure/table/standard,
 /turf/simulated/floor/dank/golf_brown,
-/area/mining_colony/lower/maints/room51)
+/area/mining_colony/lower/maints/node/room51)
 "mr" = (
 /obj/random/loot/often/few,
 /obj/structure/table/rack,
@@ -3819,11 +3811,11 @@
 /obj/random/loot/rarely/few,
 /obj/random/pouch,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room14)
+/area/mining_colony/lower/maints/node/room14)
 "ms" = (
 /obj/structure/workbench,
 /turf/simulated/floor/dank/golf_brown,
-/area/mining_colony/lower/maints/room51)
+/area/mining_colony/lower/maints/node/room51)
 "mt" = (
 /obj/structure/bed/chair{
 	dir = 4;
@@ -3836,23 +3828,23 @@
 /obj/structure/table/standard,
 /obj/random/tool/modded,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room55)
+/area/mining_colony/lower/maints/node/room55)
 "mv" = (
 /obj/structure/table/standard,
 /obj/random/snack,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room55)
+/area/mining_colony/lower/maints/node/room55)
 "mw" = (
 /obj/structure/table/rack,
 /obj/random/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room55)
+/area/mining_colony/lower/maints/node/room55)
 "mx" = (
 /obj/random/rare_loot/often,
 /obj/random/tool_upgrade/rare,
 /obj/random/tool_upgrade/rare,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room55)
+/area/mining_colony/lower/maints/node/room55)
 "my" = (
 /obj/effect/wallframe_spawn/reinforced,
 /turf/simulated/floor/dank/grater,
@@ -3862,7 +3854,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room46)
+/area/mining_colony/lower/maints/node/room46)
 "mA" = (
 /obj/structure/barricade/steel,
 /turf/simulated/floor/dank/grater,
@@ -3889,7 +3881,7 @@
 /obj/structure/table/rack,
 /obj/random/loot/usually/few,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room46)
+/area/mining_colony/lower/maints/node/room46)
 "mF" = (
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/dank/grater,
@@ -3899,41 +3891,41 @@
 	name = "Abandoned Break Room"
 	},
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room66)
+/area/mining_colony/lower/maints/node/room66)
 "mH" = (
 /obj/random/rare_loot/rarely,
 /obj/structure/table/rack,
 /obj/random/pouch,
 /obj/random/loot/usually/few,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room46)
+/area/mining_colony/lower/maints/node/room46)
 "mI" = (
 /obj/random/uncommon_loot,
 /obj/structure/table/rack,
 /obj/random/loot/usually/few,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room46)
+/area/mining_colony/lower/maints/node/room46)
 "mJ" = (
 /obj/random/loot/usually/few,
 /obj/random/loot/rarely/few,
 /obj/structure/table/standard,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room31)
+/area/mining_colony/lower/maints/node/room31)
 "mK" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/cobweb2{
 	dir = 1
 	},
 /turf/simulated/floor/dank/golf_brown,
-/area/mining_colony/lower/maints/room66)
+/area/mining_colony/lower/maints/node/room66)
 "mL" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/dank/golf_brown,
-/area/mining_colony/lower/maints/room66)
+/area/mining_colony/lower/maints/node/room66)
 "mM" = (
 /obj/effect/decal/cleanable/generic,
 /turf/simulated/floor/dank/golf_brown,
-/area/mining_colony/lower/maints/room66)
+/area/mining_colony/lower/maints/node/room66)
 "mN" = (
 /obj/random/uncommon_loot,
 /obj/structure/table/rack,
@@ -3942,11 +3934,11 @@
 	},
 /obj/random/loot/usually/few,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room46)
+/area/mining_colony/lower/maints/node/room46)
 "mO" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/maints/room66)
+/area/mining_colony/lower/maints/node/room66)
 "mP" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8;
@@ -3957,12 +3949,12 @@
 "mQ" = (
 /obj/effect/wingrille_spawn/reinforced,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room66)
+/area/mining_colony/lower/maints/node/room66)
 "mR" = (
 /mob/living/simple_animal/mouse/brown/Tom,
 /mob/living/simple_animal/mouse/gray,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room29)
+/area/mining_colony/lower/maints/node/room29)
 "mS" = (
 /obj/random/loot/usually/many,
 /obj/random/loot/often/few,
@@ -3970,11 +3962,11 @@
 /obj/random/rare,
 /obj/random/loot/usually/few,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room46)
+/area/mining_colony/lower/maints/node/room46)
 "mT" = (
 /obj/effect/decal/cleanable/cobweb,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/maints/room66)
+/area/mining_colony/lower/maints/node/room66)
 "mU" = (
 /obj/machinery/door/airlock/cargo{
 	name = "Underground Cargo Storage"
@@ -3990,22 +3982,22 @@
 	pixel_x = 4
 	},
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room66)
+/area/mining_colony/lower/maints/node/room66)
 "mW" = (
 /obj/effect/decal/cleanable/blood/tracks/footprints,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/maints/room66)
+/area/mining_colony/lower/maints/node/room66)
 "mX" = (
 /obj/random/loot/usually/many,
 /obj/random/loot/often/few,
 /obj/structure/table/rack,
 /obj/random/loot/usually/few,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room46)
+/area/mining_colony/lower/maints/node/room46)
 "mY" = (
 /obj/effect/floor_decal/dank,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/maints/room66)
+/area/mining_colony/lower/maints/node/room66)
 "mZ" = (
 /obj/structure/table/steel,
 /obj/item/reagent_containers/food/drinks/bottle/small/beer,
@@ -4020,17 +4012,17 @@
 	pixel_y = 10
 	},
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/maints/room66)
+/area/mining_colony/lower/maints/node/room66)
 "na" = (
 /obj/effect/floor_decal/dank/asylum_scratch,
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room66)
+/area/mining_colony/lower/maints/node/room66)
 "nb" = (
 /obj/item/cell/plasmacutter,
 /obj/item/cell/plasmacutter,
 /obj/structure/workbench,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/maints/room66)
+/area/mining_colony/lower/maints/node/room66)
 "nc" = (
 /obj/structure/table/rack/dark,
 /obj/item/tool/repairkit,
@@ -4038,40 +4030,40 @@
 	dir = 1
 	},
 /turf/simulated/floor/dank/golf_brown,
-/area/mining_colony/lower/maints/room66)
+/area/mining_colony/lower/maints/node/room66)
 "nd" = (
 /obj/structure/table/rack/dark,
 /obj/random/uncommon_loot,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/maints/room66)
+/area/mining_colony/lower/maints/node/room66)
 "ne" = (
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room34)
+/area/mining_colony/lower/maints/node/room34)
 "nf" = (
 /obj/random/loot/sometimes/many,
 /obj/structure/table/rack,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room34)
+/area/mining_colony/lower/maints/node/room34)
 "ng" = (
 /obj/random/storage,
 /obj/random/closet,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room35)
+/area/mining_colony/lower/maints/node/room35)
 "nh" = (
 /obj/random/material/rare,
 /obj/random/closet,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room35)
+/area/mining_colony/lower/maints/node/room35)
 "ni" = (
 /obj/random/powercell,
 /obj/structure/table/rack,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room35)
+/area/mining_colony/lower/maints/node/room35)
 "nj" = (
 /obj/random/snack,
 /obj/structure/table/rack,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room35)
+/area/mining_colony/lower/maints/node/room35)
 "nk" = (
 /obj/structure/table/rack,
 /obj/random/loot/usually/some,
@@ -4093,27 +4085,27 @@
 /obj/effect/decal/cleanable/cobweb2,
 /obj/item/clothing/under/wetsuit,
 /turf/simulated/floor/wood,
-/area/mining_colony/lower/maints/room64)
+/area/mining_colony/lower/maints/node/room64)
 "nn" = (
 /obj/random/maintenance/clean,
 /obj/structure/table/rack,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room56)
+/area/mining_colony/lower/maints/node/room56)
 "no" = (
 /obj/random/loot/usually/few,
 /obj/structure/table/rack,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room56)
+/area/mining_colony/lower/maints/node/room56)
 "np" = (
 /obj/random/light,
 /obj/structure/table/rack,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room56)
+/area/mining_colony/lower/maints/node/room56)
 "nq" = (
 /obj/random/medical,
 /obj/structure/table/rack,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room56)
+/area/mining_colony/lower/maints/node/room56)
 "nr" = (
 /obj/item/material/butterfly/switchblade,
 /obj/structure/table/standard,
@@ -4123,7 +4115,7 @@
 	name = "ShuttleRepairPart"
 	},
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room5)
+/area/mining_colony/lower/maints/node/room5)
 "ns" = (
 /obj/structure/table/rack,
 /obj/random/material,
@@ -4144,55 +4136,55 @@
 /obj/random/uncommon_loot,
 /obj/random/uncommon_loot,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room55)
+/area/mining_colony/lower/maints/node/room55)
 "nw" = (
 /obj/structure/bed/chair{
 	dir = 4
 	},
 /turf/simulated/floor/dank/golf_brown,
-/area/mining_colony/lower/maints/room51)
+/area/mining_colony/lower/maints/node/room51)
 "nx" = (
 /obj/random/toolbox,
 /obj/structure/table/reinforced,
 /turf/simulated/floor/dank/golf_brown,
-/area/mining_colony/lower/maints/room51)
+/area/mining_colony/lower/maints/node/room51)
 "ny" = (
 /obj/effect/floor_decal/dank,
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room66)
+/area/mining_colony/lower/maints/node/room66)
 "nz" = (
 /obj/random/closet,
 /obj/random/cash,
 /obj/random/loot/usually/few,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room54)
+/area/mining_colony/lower/maints/node/room54)
 "nA" = (
 /obj/structure/table/rack,
 /obj/random/loot/usually/many,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room54)
+/area/mining_colony/lower/maints/node/room54)
 "nB" = (
 /obj/random/loot/usually/few,
 /obj/random/closet,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room52)
+/area/mining_colony/lower/maints/node/room52)
 "nC" = (
 /obj/random/loot/rarely/many,
 /obj/random/closet,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room52)
+/area/mining_colony/lower/maints/node/room52)
 "nD" = (
 /obj/random/loot/rarely/many,
 /obj/random/closet,
 /obj/random/cash,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room52)
+/area/mining_colony/lower/maints/node/room52)
 "nE" = (
 /obj/random/closet,
 /obj/random/loot/rarely/some,
 /obj/random/loot/usually/few,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room53)
+/area/mining_colony/lower/maints/node/room53)
 "nF" = (
 /turf/simulated/floor/dank/slides{
 	dir = 1
@@ -4214,11 +4206,11 @@
 /obj/random/loot/sometimes/few,
 /obj/random/loot/rarely/few,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room53)
+/area/mining_colony/lower/maints/node/room53)
 "nI" = (
 /obj/random/trash,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/maints/room66)
+/area/mining_colony/lower/maints/node/room66)
 "nJ" = (
 /obj/machinery/light{
 	dir = 1
@@ -4230,11 +4222,11 @@
 	dir = 8
 	},
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room66)
+/area/mining_colony/lower/maints/node/room66)
 "nL" = (
 /obj/effect/decal/cleanable/blood/tracks/claw,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/maints/room66)
+/area/mining_colony/lower/maints/node/room66)
 "nM" = (
 /obj/item/inflatable_duck,
 /turf/simulated/floor/water_shallow{
@@ -4246,7 +4238,7 @@
 "nN" = (
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/dank/golf_brown,
-/area/mining_colony/lower/maints/room66)
+/area/mining_colony/lower/maints/node/room66)
 "nO" = (
 /obj/machinery/light{
 	dir = 1
@@ -4282,11 +4274,11 @@
 /obj/effect/decal/cleanable/blood/gibs/limb,
 /obj/effect/decal/cleanable/cobweb2,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/maints/room66)
+/area/mining_colony/lower/maints/node/room66)
 "nV" = (
 /obj/item/organ/external/arm/blade/slasher,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/maints/room66)
+/area/mining_colony/lower/maints/node/room66)
 "nW" = (
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/asteroid/outside_ds,
@@ -4330,7 +4322,7 @@
 /obj/random/loot/usually/few,
 /obj/random/ammo,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/mining_caves/shelter_3)
+/area/mining_colony/lower/shelter_1)
 "od" = (
 /obj/machinery/light{
 	dir = 4;
@@ -4443,7 +4435,7 @@
 /obj/random/loot/rarely/some,
 /obj/structure/table/rack,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room18)
+/area/mining_colony/lower/maints/node/room18)
 "oz" = (
 /obj/random/material,
 /obj/structure/table/rack,
@@ -4489,14 +4481,14 @@
 "oG" = (
 /obj/structure/filingcabinet/filingcabinet,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room55)
+/area/mining_colony/lower/maints/node/room55)
 "oH" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/lower/securityevidence1)
 "oI" = (
 /obj/item/clothing/head/wizard,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room46)
+/area/mining_colony/lower/maints/node/room46)
 "oJ" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/random/loot/sometimes/few,
@@ -4512,13 +4504,13 @@
 /turf/simulated/floor/dank/slides{
 	dir = 1
 	},
-/area/mining_colony/lower/mining_caves/shelter_3)
+/area/mining_colony/lower/shelter_1)
 "oM" = (
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/mining_caves/shelter_3)
+/area/mining_colony/lower/shelter_1)
 "oN" = (
 /turf/simulated/floor/dank/slides,
-/area/mining_colony/lower/mining_caves/shelter_3)
+/area/mining_colony/lower/shelter_1)
 "oO" = (
 /obj/machinery/light{
 	dir = 8
@@ -4526,44 +4518,44 @@
 /turf/simulated/floor/dank/slides{
 	dir = 1
 	},
-/area/mining_colony/lower/mining_caves/shelter_3)
+/area/mining_colony/lower/shelter_1)
 "oP" = (
 /obj/structure/table/rack,
 /obj/item/clothing/mask/gas,
 /obj/item/clothing/mask/gas,
 /obj/item/clothing/mask/gas,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/mining_caves/shelter_3)
+/area/mining_colony/lower/shelter_1)
 "oQ" = (
 /obj/structure/table/rack,
 /obj/item/rig/emergency,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/mining_caves/shelter_3)
+/area/mining_colony/lower/shelter_1)
 "oR" = (
 /obj/structure/table/rack,
 /obj/item/tank/emergency/oxygen/double,
 /obj/item/tank/emergency/oxygen/double,
 /obj/item/tank/emergency/oxygen/double,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/mining_caves/shelter_3)
+/area/mining_colony/lower/shelter_1)
 "oS" = (
 /obj/machinery/light{
 	dir = 4;
 	icon_state = "tube_map"
 	},
 /turf/simulated/floor/dank/slides,
-/area/mining_colony/lower/mining_caves/shelter_3)
+/area/mining_colony/lower/shelter_1)
 "oT" = (
 /obj/structure/table/rack,
 /obj/item/radio,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/mining_caves/shelter_3)
+/area/mining_colony/lower/shelter_1)
 "oU" = (
 /obj/random/loot/sometimes/few,
 /obj/structure/table/rack,
 /obj/item/beach_ball/holoball,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room3)
+/area/mining_colony/lower/maints/node/room3)
 "oV" = (
 /obj/structure/safe/floor,
 /obj/item/stack/material/gold/ten,
@@ -4571,24 +4563,24 @@
 /obj/item/stack/material/diamond/ten,
 /obj/item/spacecash/ewallet/random/c5000,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room59)
+/area/mining_colony/lower/maints/node/room59)
 "oW" = (
 /obj/structure/casino/roulette_chart,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room59)
+/area/mining_colony/lower/maints/node/room59)
 "oX" = (
 /obj/machinery/door/airlock/maintenance{
 	dir = 4
 	},
 /obj/item/soap/syndie,
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room59)
+/area/mining_colony/lower/maints/node/room59)
 "oY" = (
 /obj/structure/bed/roller,
 /obj/item/bedsheet/orange,
 /obj/effect/floor_decal/dank/outline_striped,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/mining_caves/shelter_3)
+/area/mining_colony/lower/shelter_1)
 "oZ" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/random/loot/usually/few,
@@ -4615,43 +4607,43 @@
 /turf/simulated/floor/dank/slides{
 	dir = 4
 	},
-/area/mining_colony/lower/mining_caves/shelter_3)
+/area/mining_colony/lower/shelter_1)
 "pd" = (
 /obj/structure/largecrate/ds/green_horizontal,
 /obj/effect/floor_decal/dank/outline_striped,
 /obj/random/loot/usually/few,
 /obj/random/ammo,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/mining_caves/shelter_1)
+/area/mining_colony/lower/shelter_3)
 "pe" = (
 /obj/machinery/door/airlock/external{
 	name = "Cave-In Shelter 3"
 	},
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/mining_caves/shelter_2)
+/area/mining_colony/lower/shelter_2)
 "pf" = (
 /obj/machinery/door/airlock/external{
 	name = "Cave-In Shelter 2"
 	},
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/mining_caves/shelter_3)
+/area/mining_colony/lower/shelter_1)
 "pg" = (
 /turf/simulated/wall/titanium,
-/area/mining_colony/lower/mining_caves/shelter_1)
+/area/mining_colony/lower/shelter_3)
 "ph" = (
 /obj/structure/closet/medical_wall/filled{
 	pixel_y = 32
 	},
 /obj/effect/floor_decal/dank/outline_striped,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/mining_caves/shelter_1)
+/area/mining_colony/lower/shelter_3)
 "pi" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/storage/box/greenglowsticks,
 /turf/simulated/floor/dank/slides{
 	dir = 8
 	},
-/area/mining_colony/lower/mining_caves/shelter_1)
+/area/mining_colony/lower/shelter_3)
 "pj" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/light{
@@ -4662,7 +4654,7 @@
 /turf/simulated/floor/dank/slides{
 	dir = 8
 	},
-/area/mining_colony/lower/mining_caves/shelter_1)
+/area/mining_colony/lower/shelter_3)
 "pk" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/storage/box/survival,
@@ -4676,7 +4668,7 @@
 /turf/simulated/floor/dank/slides{
 	dir = 8
 	},
-/area/mining_colony/lower/mining_caves/shelter_1)
+/area/mining_colony/lower/shelter_3)
 "pl" = (
 /obj/structure/closet/hydrant{
 	pixel_y = 32
@@ -4684,18 +4676,18 @@
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /obj/effect/floor_decal/dank/outline_striped,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/mining_caves/shelter_1)
+/area/mining_colony/lower/shelter_3)
 "pm" = (
 /turf/simulated/floor/dank/slides{
 	dir = 1
 	},
-/area/mining_colony/lower/mining_caves/shelter_1)
+/area/mining_colony/lower/shelter_3)
 "pn" = (
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/mining_caves/shelter_1)
+/area/mining_colony/lower/shelter_3)
 "po" = (
 /turf/simulated/floor/dank/slides,
-/area/mining_colony/lower/mining_caves/shelter_1)
+/area/mining_colony/lower/shelter_3)
 "pp" = (
 /obj/machinery/light{
 	dir = 8
@@ -4703,49 +4695,49 @@
 /turf/simulated/floor/dank/slides{
 	dir = 1
 	},
-/area/mining_colony/lower/mining_caves/shelter_1)
+/area/mining_colony/lower/shelter_3)
 "pq" = (
 /obj/structure/table/rack,
 /obj/item/clothing/mask/gas,
 /obj/item/clothing/mask/gas,
 /obj/item/clothing/mask/gas,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/mining_caves/shelter_1)
+/area/mining_colony/lower/shelter_3)
 "pr" = (
 /obj/structure/table/rack,
 /obj/item/rig/emergency,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/mining_caves/shelter_1)
+/area/mining_colony/lower/shelter_3)
 "ps" = (
 /obj/structure/table/rack,
 /obj/item/tank/emergency/oxygen/double,
 /obj/item/tank/emergency/oxygen/double,
 /obj/item/tank/emergency/oxygen/double,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/mining_caves/shelter_1)
+/area/mining_colony/lower/shelter_3)
 "pt" = (
 /obj/machinery/light{
 	dir = 4;
 	icon_state = "tube_map"
 	},
 /turf/simulated/floor/dank/slides,
-/area/mining_colony/lower/mining_caves/shelter_1)
+/area/mining_colony/lower/shelter_3)
 "pu" = (
 /obj/structure/table/rack,
 /obj/item/radio,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/mining_caves/shelter_1)
+/area/mining_colony/lower/shelter_3)
 "pv" = (
 /obj/structure/bed/roller,
 /obj/item/bedsheet/orange,
 /obj/effect/floor_decal/dank/outline_striped,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/mining_caves/shelter_1)
+/area/mining_colony/lower/shelter_3)
 "pw" = (
 /turf/simulated/floor/dank/slides{
 	dir = 4
 	},
-/area/mining_colony/lower/mining_caves/shelter_1)
+/area/mining_colony/lower/shelter_3)
 "px" = (
 /obj/structure/table/steel_reinforced,
 /obj/random/ammo,
@@ -4756,7 +4748,7 @@
 	name = "Cave-In-Shelter 1"
 	},
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/mining_caves/shelter_1)
+/area/mining_colony/lower/shelter_3)
 "pz" = (
 /obj/structure/table/standard,
 /turf/simulated/floor/dank/golf_brown,
@@ -4946,10 +4938,10 @@
 /obj/item/clothing/under/casual_pants/blackjeans,
 /obj/item/clothing/mask/bandana/red,
 /turf/simulated/floor/dank/hardwood,
-/area/mining_colony/lower/maints/room39)
+/area/mining_colony/lower/maints/node/room39)
 "pY" = (
 /turf/simulated/floor/dank/hardwood,
-/area/mining_colony/lower/maints/room39)
+/area/mining_colony/lower/maints/node/room39)
 "pZ" = (
 /obj/item/clothing/mask/balaclava,
 /obj/item/clothing/mask/bandana/orange,
@@ -4957,50 +4949,50 @@
 /obj/item/clothing/suit/storage/leather_jacket,
 /obj/item/clothing/under/color/black,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room39)
+/area/mining_colony/lower/maints/node/room39)
 "qa" = (
 /obj/random/drinkbottle,
 /turf/simulated/floor/dank/hardwood,
-/area/mining_colony/lower/maints/room39)
+/area/mining_colony/lower/maints/node/room39)
 "qb" = (
 /obj/structure/table/woodentable,
 /obj/item/clothing/glasses/sunglasses,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room39)
+/area/mining_colony/lower/maints/node/room39)
 "qc" = (
 /obj/structure/bed,
 /turf/simulated/floor/dank/hardwood,
-/area/mining_colony/lower/maints/room39)
+/area/mining_colony/lower/maints/node/room39)
 "qd" = (
 /obj/structure/table/woodentable,
 /obj/random/smokes,
 /obj/random/rare_loot/rarely,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room39)
+/area/mining_colony/lower/maints/node/room39)
 "qe" = (
 /obj/structure/bed/chair,
 /turf/simulated/floor/dank/hardwood,
-/area/mining_colony/lower/maints/room39)
+/area/mining_colony/lower/maints/node/room39)
 "qf" = (
 /obj/structure/bed/chair{
 	dir = 4;
 	icon_state = "chair_preview"
 	},
 /turf/simulated/floor/dank/hardwood,
-/area/mining_colony/lower/maints/room39)
+/area/mining_colony/lower/maints/node/room39)
 "qg" = (
 /obj/structure/table/woodentable,
 /obj/random/drinkbottle,
 /obj/random/snack,
 /turf/simulated/floor/dank/hardwood,
-/area/mining_colony/lower/maints/room39)
+/area/mining_colony/lower/maints/node/room39)
 "qh" = (
 /obj/structure/bed/chair{
 	dir = 8
 	},
 /obj/machinery/light/small,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room39)
+/area/mining_colony/lower/maints/node/room39)
 "qi" = (
 /obj/machinery/light{
 	dir = 4;
@@ -5018,14 +5010,6 @@
 /obj/machinery/light,
 /turf/simulated/floor/dank/slides,
 /area/mining_colony/lower/excav)
-"ql" = (
-/obj/machinery/power/apc/infinite{
-	dir = 1;
-	pixel_y = 16;
-	name = "How the hell did you find me!?"
-	},
-/turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony/lower/mining_caves)
 "qm" = (
 /obj/machinery/light/small/red{
 	dir = 8
@@ -5168,19 +5152,19 @@
 "qK" = (
 /obj/structure/bed,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room65)
+/area/mining_colony/lower/maints/node/room65)
 "qL" = (
 /obj/structure/table/rack,
 /obj/random/storage,
 /obj/random/loot/usually/some,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room65)
+/area/mining_colony/lower/maints/node/room65)
 "qM" = (
 /obj/structure/table/rack,
 /obj/random/toolbox,
 /obj/random/loot/usually/some,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room65)
+/area/mining_colony/lower/maints/node/room65)
 "qN" = (
 /obj/structure/safe,
 /obj/item/clothing/under/pcrc,
@@ -5197,24 +5181,24 @@
 /obj/item/spacecash/ewallet/random/c1000,
 /obj/item/spacecash/ewallet/random/c10000,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room65)
+/area/mining_colony/lower/maints/node/room65)
 "qO" = (
 /obj/structure/table/rack,
 /obj/random/loot/usually/some,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room65)
+/area/mining_colony/lower/maints/node/room65)
 "qP" = (
 /obj/structure/table/rack,
 /obj/random/shoes,
 /obj/random/loot/usually/some,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room65)
+/area/mining_colony/lower/maints/node/room65)
 "qQ" = (
 /obj/structure/table/rack,
 /obj/random/snack,
 /obj/random/loot/usually/some,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room65)
+/area/mining_colony/lower/maints/node/room65)
 "qR" = (
 /obj/random/drinkbottle,
 /turf/simulated/floor/asteroid/outside_ds,
@@ -5286,19 +5270,19 @@
 "rd" = (
 /obj/random/trash,
 /turf/simulated/floor/tiled/dark,
-/area/mining_colony/lower/maints/room41)
+/area/mining_colony/lower/maints/node/room41)
 "re" = (
 /obj/structure/workbench,
 /turf/simulated/floor/tiled/dark,
-/area/mining_colony/lower/maints/room41)
+/area/mining_colony/lower/maints/node/room41)
 "rf" = (
 /obj/structure/closet/firecloset,
 /turf/simulated/floor/tiled/dark,
-/area/mining_colony/lower/maints/room41)
+/area/mining_colony/lower/maints/node/room41)
 "rg" = (
 /obj/random/junk,
 /turf/simulated/floor/tiled/dark,
-/area/mining_colony/lower/maints/room41)
+/area/mining_colony/lower/maints/node/room41)
 "rh" = (
 /obj/structure/window/reinforced{
 	dir = 8;
@@ -5311,21 +5295,21 @@
 /obj/random/trash,
 /obj/random/maintenance,
 /turf/simulated/floor,
-/area/mining_colony/lower/maints/room41)
+/area/mining_colony/lower/maints/node/room41)
 "ri" = (
 /obj/structure/window/reinforced{
 	dir = 1
 	},
 /obj/random/trash,
 /turf/simulated/floor,
-/area/mining_colony/lower/maints/room41)
+/area/mining_colony/lower/maints/node/room41)
 "rj" = (
 /obj/structure/window/reinforced{
 	dir = 1
 	},
 /obj/random/closet,
 /turf/simulated/floor,
-/area/mining_colony/lower/maints/room41)
+/area/mining_colony/lower/maints/node/room41)
 "rk" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -5335,20 +5319,20 @@
 	},
 /obj/random/junk,
 /turf/simulated/floor,
-/area/mining_colony/lower/maints/room41)
+/area/mining_colony/lower/maints/node/room41)
 "rl" = (
 /obj/structure/table/rack,
 /obj/random/maintenance,
 /obj/random/loot/usually/few,
 /turf/simulated/floor/tiled/dark,
-/area/mining_colony/lower/maints/room41)
+/area/mining_colony/lower/maints/node/room41)
 "rm" = (
 /obj/structure/table/standard,
 /obj/item/storage/chewables,
 /obj/random/loot/often/few,
 /obj/random/loot/often/few,
 /turf/simulated/floor/tiled/dark,
-/area/mining_colony/lower/maints/room42)
+/area/mining_colony/lower/maints/node/room42)
 "rn" = (
 /obj/structure/window/reinforced{
 	dir = 8;
@@ -5356,31 +5340,31 @@
 	},
 /obj/random/junk,
 /turf/simulated/floor,
-/area/mining_colony/lower/maints/room41)
+/area/mining_colony/lower/maints/node/room41)
 "ro" = (
 /obj/random/junk,
 /obj/random/trash,
 /turf/simulated/floor,
-/area/mining_colony/lower/maints/room41)
+/area/mining_colony/lower/maints/node/room41)
 "rp" = (
 /obj/random/trash,
 /obj/random/rare_loot/rarely,
 /turf/simulated/floor,
-/area/mining_colony/lower/maints/room41)
+/area/mining_colony/lower/maints/node/room41)
 "rq" = (
 /obj/structure/window/reinforced{
 	dir = 4
 	},
 /obj/random/junk,
 /turf/simulated/floor,
-/area/mining_colony/lower/maints/room41)
+/area/mining_colony/lower/maints/node/room41)
 "rr" = (
 /obj/structure/table/rack,
 /obj/random/maintenance,
 /obj/random/common_loot,
 /obj/random/loot/usually/few,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room41)
+/area/mining_colony/lower/maints/node/room41)
 "rs" = (
 /obj/structure/window/reinforced{
 	dir = 8;
@@ -5389,11 +5373,11 @@
 /obj/structure/window/reinforced,
 /obj/random/trash,
 /turf/simulated/floor,
-/area/mining_colony/lower/maints/room41)
+/area/mining_colony/lower/maints/node/room41)
 "rt" = (
 /obj/random/maintenance,
 /turf/simulated/floor,
-/area/mining_colony/lower/maints/room41)
+/area/mining_colony/lower/maints/node/room41)
 "ru" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -5402,29 +5386,29 @@
 /obj/random/junk,
 /obj/random/trash,
 /turf/simulated/floor,
-/area/mining_colony/lower/maints/room41)
+/area/mining_colony/lower/maints/node/room41)
 "rv" = (
 /obj/structure/table/rack,
 /obj/random/maintenance,
 /obj/random/junk,
 /obj/random/loot/usually/few,
 /turf/simulated/floor/tiled/dark,
-/area/mining_colony/lower/maints/room41)
+/area/mining_colony/lower/maints/node/room41)
 "rw" = (
 /obj/structure/table/standard,
 /obj/item/storage/chewables/candy/cookies,
 /turf/simulated/floor/tiled/dark,
-/area/mining_colony/lower/maints/room42)
+/area/mining_colony/lower/maints/node/room42)
 "rx" = (
 /obj/structure/fitness/weightlifter,
 /turf/simulated/floor/tiled/dark,
-/area/mining_colony/lower/maints/room42)
+/area/mining_colony/lower/maints/node/room42)
 "ry" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Disposals"
 	},
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room41)
+/area/mining_colony/lower/maints/node/room41)
 "rz" = (
 /obj/structure/closet/body_bag,
 /obj/effect/floor_decal/industrial/outline,
@@ -5438,11 +5422,11 @@
 /area/mining_colony/lower/morgue)
 "rB" = (
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room42)
+/area/mining_colony/lower/maints/node/room42)
 "rC" = (
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room53)
+/area/mining_colony/lower/maints/node/room53)
 "rD" = (
 /obj/item/gun/energy/cutter/plasma,
 /obj/structure/table/steel,
@@ -5452,10 +5436,10 @@
 	pixel_y = -32
 	},
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/maints/room66)
+/area/mining_colony/lower/maints/node/room66)
 "rE" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room37)
+/area/mining_colony/lower/maints/node/room37)
 "rF" = (
 /obj/effect/mine/stun,
 /turf/simulated/floor/asteroid/outside_ds,
@@ -5463,10 +5447,10 @@
 "rG" = (
 /obj/machinery/portable_atmospherics/hydroponics,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/maints/room18)
+/area/mining_colony/lower/maints/node/room18)
 "rH" = (
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room29)
+/area/mining_colony/lower/maints/node/room29)
 "rI" = (
 /obj/machinery/portable_atmospherics/hydroponics,
 /obj/effect/floor_decal/dank/outline,
@@ -5509,7 +5493,7 @@
 "rO" = (
 /obj/structure/table,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room38)
+/area/mining_colony/lower/maints/node/room38)
 "rP" = (
 /obj/machinery/door/airlock/medical{
 	dir = 4;
@@ -5530,7 +5514,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room46)
+/area/mining_colony/lower/maints/node/room46)
 "rR" = (
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/cargo/storage_upper)
@@ -5576,7 +5560,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room27)
+/area/mining_colony/lower/maints/node/room27)
 "rW" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/interior/cargo/storage_upper)
@@ -5696,7 +5680,7 @@
 "si" = (
 /obj/structure/filingcabinet,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room49)
+/area/mining_colony/lower/maints/node/room49)
 "sj" = (
 /obj/machinery/power/apc{
 	name = "south bump";
@@ -5711,38 +5695,38 @@
 "sk" = (
 /obj/structure/foamedmetal,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room69)
+/area/mining_colony/lower/maints/node/room69)
 "sl" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room69)
+/area/mining_colony/lower/maints/node/room69)
 "sm" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room67)
+/area/mining_colony/lower/maints/node/room67)
 "sn" = (
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room67)
+/area/mining_colony/lower/maints/node/room67)
 "so" = (
 /obj/random/closet,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room67)
+/area/mining_colony/lower/maints/node/room67)
 "sp" = (
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room67)
+/area/mining_colony/lower/maints/node/room67)
 "sq" = (
 /obj/random/loot/sometimes/few,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room67)
+/area/mining_colony/lower/maints/node/room67)
 "sr" = (
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room38)
+/area/mining_colony/lower/maints/node/room38)
 "ss" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room48)
+/area/mining_colony/lower/maints/node/room48)
 "st" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room68)
+/area/mining_colony/lower/maints/node/room68)
 "su" = (
 /obj/structure/closet{
 	color = "red";
@@ -5752,50 +5736,50 @@
 /obj/item/material/hatchet,
 /obj/item/material/hatchet,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room67)
+/area/mining_colony/lower/maints/node/room67)
 "sv" = (
 /obj/random/trash,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room67)
+/area/mining_colony/lower/maints/node/room67)
 "sw" = (
 /obj/structure/table/rack,
 /obj/random/rare_loot/rarely,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room68)
+/area/mining_colony/lower/maints/node/room68)
 "sx" = (
 /obj/structure/table/rack,
 /obj/random/loot/usually/few,
 /obj/random/loot/usually/some,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room68)
+/area/mining_colony/lower/maints/node/room68)
 "sy" = (
 /obj/structure/table/rack,
 /obj/random/loot/usually/few,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room68)
+/area/mining_colony/lower/maints/node/room68)
 "sz" = (
 /obj/random/closet,
 /obj/random/loot/usually/some,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room68)
+/area/mining_colony/lower/maints/node/room68)
 "sA" = (
 /obj/effect/wallframe_spawn/reinforced,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/lower)
 "sB" = (
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room68)
+/area/mining_colony/lower/maints/node/room68)
 "sC" = (
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room68)
+/area/mining_colony/lower/maints/node/room68)
 "sD" = (
 /obj/effect/landmark/marker/ishimura,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room69)
+/area/mining_colony/lower/maints/node/room69)
 "sE" = (
 /obj/item/stack/material/wood,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room67)
+/area/mining_colony/lower/maints/node/room67)
 "sF" = (
 /obj/structure/closet{
 	color = "red";
@@ -5804,29 +5788,29 @@
 /obj/item/beartrap,
 /obj/item/beartrap,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room67)
+/area/mining_colony/lower/maints/node/room67)
 "sG" = (
 /obj/structure/table/rack,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room38)
+/area/mining_colony/lower/maints/node/room38)
 "sH" = (
 /obj/item/material/knife/hook,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room67)
+/area/mining_colony/lower/maints/node/room67)
 "sI" = (
 /obj/machinery/power/port_gen/pacman,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room67)
+/area/mining_colony/lower/maints/node/room67)
 "sJ" = (
 /obj/structure/closet/crate,
 /obj/item/storage/firstaid/regular,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room67)
+/area/mining_colony/lower/maints/node/room67)
 "sK" = (
 /obj/structure/closet/crate,
 /obj/item/storage/toolbox/mechanical,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room67)
+/area/mining_colony/lower/maints/node/room67)
 "sL" = (
 /obj/item/clothing/under/det/black,
 /obj/item/clothing/accessory/red,
@@ -5836,85 +5820,85 @@
 	},
 /obj/item/clothing/glasses/regular,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room67)
+/area/mining_colony/lower/maints/node/room67)
 "sM" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/portable_atmospherics/hydroponics,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room69)
+/area/mining_colony/lower/maints/node/room69)
 "sN" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room12)
+/area/mining_colony/lower/maints/node/room12)
 "sO" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room69)
+/area/mining_colony/lower/maints/node/room69)
 "sP" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room69)
+/area/mining_colony/lower/maints/node/room69)
 "sQ" = (
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room53)
+/area/mining_colony/lower/maints/node/room53)
 "sR" = (
 /obj/machinery/portable_atmospherics/hydroponics,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room69)
+/area/mining_colony/lower/maints/node/room69)
 "sS" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/growth_tank,
 /obj/machinery/growth_tank,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room69)
+/area/mining_colony/lower/maints/node/room69)
 "sT" = (
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room19)
+/area/mining_colony/lower/maints/node/room19)
 "sU" = (
 /obj/structure/bed/chair/office{
 	dir = 4;
 	icon_state = "officechair_preview"
 	},
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room20)
+/area/mining_colony/lower/maints/node/room20)
 "sV" = (
 /obj/effect/landmark{
 	name = "ShuttleRepairPart"
 	},
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room62)
+/area/mining_colony/lower/maints/node/room62)
 "sW" = (
 /obj/machinery/vending/snack,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room69)
+/area/mining_colony/lower/maints/node/room69)
 "sX" = (
 /obj/machinery/vending/hotfood,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room69)
+/area/mining_colony/lower/maints/node/room69)
 "sY" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room14)
+/area/mining_colony/lower/maints/node/room14)
 "sZ" = (
 /obj/machinery/vending/cola,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room69)
+/area/mining_colony/lower/maints/node/room69)
 "ta" = (
 /obj/machinery/vending/coffee,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room69)
+/area/mining_colony/lower/maints/node/room69)
 "tb" = (
 /obj/machinery/growth_tank,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room69)
+/area/mining_colony/lower/maints/node/room69)
 "tc" = (
 /obj/machinery/growth_tank,
 /obj/machinery/growth_tank,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room69)
+/area/mining_colony/lower/maints/node/room69)
 "td" = (
 /obj/structure/barricade/wood,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room20)
+/area/mining_colony/lower/maints/node/room20)
 "ti" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -5930,11 +5914,11 @@
 "tl" = (
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room65)
+/area/mining_colony/lower/maints/node/room65)
 "tp" = (
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room51)
+/area/mining_colony/lower/maints/node/room51)
 "tr" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1;
@@ -5952,7 +5936,7 @@
 "tx" = (
 /obj/effect/wallframe_spawn/reinforced,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room51)
+/area/mining_colony/lower/maints/node/room51)
 "ty" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/dank/grater,
@@ -5972,10 +5956,10 @@
 "tS" = (
 /obj/effect/landmark/node_room,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/mining_caves/shelter_1)
+/area/mining_colony/lower/shelter_3)
 "tW" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room65)
+/area/mining_colony/lower/maints/node/room65)
 "ub" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -5994,57 +5978,57 @@
 "uc" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room47)
+/area/mining_colony/lower/maints/node/room47)
 "ud" = (
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room12)
+/area/mining_colony/lower/maints/node/room12)
 "ug" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room56)
+/area/mining_colony/lower/maints/node/room56)
 "un" = (
 /obj/structure/grille,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room39)
+/area/mining_colony/lower/maints/node/room39)
 "us" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room5)
+/area/mining_colony/lower/maints/node/room5)
 "uu" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room38)
+/area/mining_colony/lower/maints/node/room38)
 "ux" = (
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room44)
+/area/mining_colony/lower/maints/node/room44)
 "uC" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room41)
+/area/mining_colony/lower/maints/node/room41)
 "uJ" = (
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room49)
+/area/mining_colony/lower/maints/node/room49)
 "uM" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/maints/room10)
+/area/mining_colony/lower/maints/node/room10)
 "uO" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room15)
+/area/mining_colony/lower/maints/node/room15)
 "uQ" = (
 /obj/structure/bed/chair{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room29)
+/area/mining_colony/lower/maints/node/room29)
 "uR" = (
 /obj/machinery/door/airlock/maintenance{
 	dir = 4
 	},
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room28)
+/area/mining_colony/lower/maints/node/room28)
 "uU" = (
 /obj/effect/wallframe_spawn/reinforced,
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room62)
+/area/mining_colony/lower/maints/node/room62)
 "vb" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -6055,17 +6039,17 @@
 /area/mining_colony/lower/securitystation)
 "vc" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room3)
+/area/mining_colony/lower/maints/node/room3)
 "vd" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room44)
+/area/mining_colony/lower/maints/node/room44)
 "vf" = (
 /obj/effect/landmark{
 	name = "ShuttleRepairPart"
 	},
 /turf/simulated/floor/wood,
-/area/mining_colony/lower/maints/room57)
+/area/mining_colony/lower/maints/node/room57)
 "vg" = (
 /obj/effect/landmark{
 	name = "ShuttleRepairPart"
@@ -6075,45 +6059,45 @@
 "vk" = (
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room60)
+/area/mining_colony/lower/maints/node/room60)
 "vp" = (
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room56)
+/area/mining_colony/lower/maints/node/room56)
 "vq" = (
 /obj/structure/barricade/wood,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room58)
+/area/mining_colony/lower/maints/node/room58)
 "vu" = (
 /obj/random/closet,
 /obj/random/loot/usually/few,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room40)
+/area/mining_colony/lower/maints/node/room40)
 "vz" = (
 /obj/effect/landmark{
 	name = "ShuttleRepairPart"
 	},
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/maints/room1)
+/area/mining_colony/lower/maints/node/room1)
 "vL" = (
 /obj/machinery/door/airlock/maintenance{
 	dir = 4
 	},
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room30)
+/area/mining_colony/lower/maints/node/room30)
 "vQ" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room57)
+/area/mining_colony/lower/maints/node/room57)
 "vR" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/lower/unibase)
 "vV" = (
 /obj/structure/barricade/wood,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room61)
+/area/mining_colony/lower/maints/node/room61)
 "vX" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room15)
+/area/mining_colony/lower/maints/node/room15)
 "we" = (
 /obj/item/modular_computer/console/preset/civilian,
 /obj/effect/floor_decal/spline/fancy/wood,
@@ -6123,11 +6107,11 @@
 "wf" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/wood,
-/area/mining_colony/lower/maints/room57)
+/area/mining_colony/lower/maints/node/room57)
 "wk" = (
 /obj/random/junk,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room41)
+/area/mining_colony/lower/maints/node/room41)
 "wr" = (
 /obj/effect/floor_decal/dank/border,
 /obj/machinery/light,
@@ -6143,11 +6127,11 @@
 	dir = 4
 	},
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room37)
+/area/mining_colony/lower/maints/node/room37)
 "wz" = (
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room15)
+/area/mining_colony/lower/maints/node/room15)
 "wA" = (
 /obj/random/loot/often/few,
 /obj/structure/table/rack,
@@ -6156,46 +6140,46 @@
 "wH" = (
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room13)
+/area/mining_colony/lower/maints/node/room13)
 "wL" = (
 /mob/living/simple_animal/mouse/gray,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room29)
+/area/mining_colony/lower/maints/node/room29)
 "wW" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room50)
+/area/mining_colony/lower/maints/node/room50)
 "xe" = (
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/maints/room66)
+/area/mining_colony/lower/maints/node/room66)
 "xi" = (
 /obj/effect/wingrille_spawn/reinforced,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room14)
+/area/mining_colony/lower/maints/node/room14)
 "xk" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room51)
+/area/mining_colony/lower/maints/node/room51)
 "xl" = (
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room37)
+/area/mining_colony/lower/maints/node/room37)
 "xs" = (
 /obj/structure/largecrate/ds/green_horizontal,
 /obj/effect/floor_decal/dank/outline_striped,
 /obj/random/loot/usually/few,
 /obj/random/ammo,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/mining_caves/shelter_2)
+/area/mining_colony/lower/shelter_2)
 "xu" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room64)
+/area/mining_colony/lower/maints/node/room64)
 "xw" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room58)
+/area/mining_colony/lower/maints/node/room58)
 "xy" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room39)
+/area/mining_colony/lower/maints/node/room39)
 "xE" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -6212,11 +6196,11 @@
 /area/mining_colony/lower/securitystation)
 "xJ" = (
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room63)
+/area/mining_colony/lower/maints/node/room63)
 "xQ" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room3)
+/area/mining_colony/lower/maints/node/room3)
 "xS" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4;
@@ -6229,45 +6213,45 @@
 	dir = 4
 	},
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room26)
+/area/mining_colony/lower/maints/node/room26)
 "yc" = (
 /turf/simulated/floor/dank/slides{
 	dir = 1
 	},
-/area/mining_colony/lower/mining_caves/shelter_2)
+/area/mining_colony/lower/shelter_2)
 "yh" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room61)
+/area/mining_colony/lower/maints/node/room61)
 "yo" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room53)
+/area/mining_colony/lower/maints/node/room53)
 "ys" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room52)
+/area/mining_colony/lower/maints/node/room52)
 "yz" = (
 /obj/random/loot/often/few,
 /obj/structure/table/rack,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room11)
+/area/mining_colony/lower/maints/node/room11)
 "yA" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/maints/room66)
+/area/mining_colony/lower/maints/node/room66)
 "yC" = (
 /turf/simulated/floor/dank/golf_brown,
-/area/mining_colony/lower/maints/room51)
+/area/mining_colony/lower/maints/node/room51)
 "yG" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room6)
+/area/mining_colony/lower/maints/node/room6)
 "yH" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room10)
+/area/mining_colony/lower/maints/node/room10)
 "yI" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room5)
+/area/mining_colony/lower/maints/node/room5)
 "yY" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -6275,7 +6259,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room49)
+/area/mining_colony/lower/maints/node/room49)
 "zb" = (
 /obj/structure/table/woodentable,
 /obj/item/paper_bin,
@@ -6291,30 +6275,30 @@
 /obj/random/closet,
 /obj/random/loot/usually/few,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room11)
+/area/mining_colony/lower/maints/node/room11)
 "zl" = (
 /obj/structure/closet/emcloset,
 /obj/random/loot/usually/few,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room43)
+/area/mining_colony/lower/maints/node/room43)
 "zm" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room32)
+/area/mining_colony/lower/maints/node/room32)
 "zp" = (
 /obj/random/trash,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room41)
+/area/mining_colony/lower/maints/node/room41)
 "zu" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room28)
+/area/mining_colony/lower/maints/node/room28)
 "zz" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room43)
+/area/mining_colony/lower/maints/node/room43)
 "zC" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room32)
+/area/mining_colony/lower/maints/node/room32)
 "zL" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8;
@@ -6328,72 +6312,72 @@
 "zM" = (
 /obj/structure/closet/firecloset,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room25)
+/area/mining_colony/lower/maints/node/room25)
 "zN" = (
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room45)
+/area/mining_colony/lower/maints/node/room45)
 "zQ" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room14)
+/area/mining_colony/lower/maints/node/room14)
 "zS" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room42)
+/area/mining_colony/lower/maints/node/room42)
 "zV" = (
 /obj/structure/table/rack,
 /obj/item/radio,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/mining_caves/shelter_2)
+/area/mining_colony/lower/shelter_2)
 "zW" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room62)
+/area/mining_colony/lower/maints/node/room62)
 "zY" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room48)
+/area/mining_colony/lower/maints/node/room48)
 "Ab" = (
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room43)
+/area/mining_colony/lower/maints/node/room43)
 "Ah" = (
 /obj/machinery/light/small{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room29)
+/area/mining_colony/lower/maints/node/room29)
 "Aj" = (
 /obj/structure/table/rack,
 /obj/random/loot/usually/few,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room55)
+/area/mining_colony/lower/maints/node/room55)
 "Av" = (
 /turf/simulated/floor/dank/slides{
 	dir = 4
 	},
-/area/mining_colony/lower/mining_caves/shelter_2)
+/area/mining_colony/lower/shelter_2)
 "Aw" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room18)
+/area/mining_colony/lower/maints/node/room18)
 "AB" = (
 /obj/machinery/door/airlock/maintenance{
 	dir = 4
 	},
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room63)
+/area/mining_colony/lower/maints/node/room63)
 "AE" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room24)
+/area/mining_colony/lower/maints/node/room24)
 "AR" = (
 /obj/random/trash,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room19)
+/area/mining_colony/lower/maints/node/room19)
 "AT" = (
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room2)
+/area/mining_colony/lower/maints/node/room2)
 "AY" = (
 /turf/simulated/floor/tiled/dark,
-/area/mining_colony/lower/maints/room41)
+/area/mining_colony/lower/maints/node/room41)
 "Bb" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -6405,31 +6389,31 @@
 "Bk" = (
 /obj/structure/table/rack,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room36)
+/area/mining_colony/lower/maints/node/room36)
 "Bq" = (
 /obj/effect/landmark{
 	name = "ShuttleRepairPart"
 	},
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room12)
+/area/mining_colony/lower/maints/node/room12)
 "Br" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room46)
+/area/mining_colony/lower/maints/node/room46)
 "Bt" = (
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room31)
+/area/mining_colony/lower/maints/node/room31)
 "Bu" = (
 /turf/simulated/wall/titanium,
-/area/mining_colony/lower/mining_caves/shelter_2)
+/area/mining_colony/lower/shelter_2)
 "Bv" = (
 /obj/random/trash,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room2)
+/area/mining_colony/lower/maints/node/room2)
 "BF" = (
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/maints/room66)
+/area/mining_colony/lower/maints/node/room66)
 "BI" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -6441,11 +6425,11 @@
 "BK" = (
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room1)
+/area/mining_colony/lower/maints/node/room1)
 "BM" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room22)
+/area/mining_colony/lower/maints/node/room22)
 "BP" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -6474,29 +6458,29 @@
 "Ca" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/maints/room11)
+/area/mining_colony/lower/maints/node/room11)
 "Cb" = (
 /obj/machinery/door/airlock/maintenance{
 	dir = 4
 	},
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room11)
+/area/mining_colony/lower/maints/node/room11)
 "Ch" = (
 /obj/machinery/light/small{
 	dir = 8
 	},
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/maints/room66)
+/area/mining_colony/lower/maints/node/room66)
 "Ci" = (
 /obj/effect/landmark{
 	name = "ShuttleRepairPart"
 	},
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room58)
+/area/mining_colony/lower/maints/node/room58)
 "Cm" = (
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room54)
+/area/mining_colony/lower/maints/node/room54)
 "Cn" = (
 /obj/machinery/light/small,
 /obj/structure/cable{
@@ -6525,7 +6509,7 @@
 "Cs" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room54)
+/area/mining_colony/lower/maints/node/room54)
 "Cx" = (
 /obj/machinery/power/apc{
 	dir = 1;
@@ -6541,18 +6525,18 @@
 "Cy" = (
 /obj/structure/grille,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room32)
+/area/mining_colony/lower/maints/node/room32)
 "Cz" = (
 /obj/structure/barricade/wood,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room65)
+/area/mining_colony/lower/maints/node/room65)
 "CB" = (
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/maints/room1)
+/area/mining_colony/lower/maints/node/room1)
 "CH" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room45)
+/area/mining_colony/lower/maints/node/room45)
 "CK" = (
 /obj/machinery/door/airlock/maintenance{
 	dir = 4
@@ -6578,16 +6562,16 @@
 	dir = 8
 	},
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room59)
+/area/mining_colony/lower/maints/node/room59)
 "Dh" = (
 /obj/machinery/door/airlock/maintenance{
 	dir = 4
 	},
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room62)
+/area/mining_colony/lower/maints/node/room62)
 "Dt" = (
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room54)
+/area/mining_colony/lower/maints/node/room54)
 "Du" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
@@ -6606,7 +6590,7 @@
 /obj/random/loot/often/few,
 /obj/structure/table/rack,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room13)
+/area/mining_colony/lower/maints/node/room13)
 "DG" = (
 /obj/random/loot/often/few,
 /obj/structure/table/rack,
@@ -6615,7 +6599,7 @@
 "DL" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room26)
+/area/mining_colony/lower/maints/node/room26)
 "DN" = (
 /obj/structure/window/basic{
 	name = "safety glass";
@@ -6639,7 +6623,7 @@
 "DV" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room34)
+/area/mining_colony/lower/maints/node/room34)
 "DW" = (
 /obj/structure/cable{
 	icon_state = "1-4"
@@ -6648,15 +6632,15 @@
 /area/mining_colony/lower/morgue)
 "Ee" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room2)
+/area/mining_colony/lower/maints/node/room2)
 "Eg" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room53)
+/area/mining_colony/lower/maints/node/room53)
 "El" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room12)
+/area/mining_colony/lower/maints/node/room12)
 "Em" = (
 /obj/structure/bed/roller,
 /obj/structure/cable{
@@ -6667,33 +6651,33 @@
 "Ev" = (
 /obj/random/junk,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room38)
+/area/mining_colony/lower/maints/node/room38)
 "Ez" = (
 /obj/machinery/door/airlock/maintenance{
 	dir = 4
 	},
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room31)
+/area/mining_colony/lower/maints/node/room31)
 "EA" = (
 /obj/machinery/door/airlock/maintenance{
 	dir = 4
 	},
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room5)
+/area/mining_colony/lower/maints/node/room5)
 "EE" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room24)
+/area/mining_colony/lower/maints/node/room24)
 "EF" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room22)
+/area/mining_colony/lower/maints/node/room22)
 "ES" = (
 /obj/structure/closet/firecloset,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room19)
+/area/mining_colony/lower/maints/node/room19)
 "ET" = (
 /obj/random/trash,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room44)
+/area/mining_colony/lower/maints/node/room44)
 "Fg" = (
 /obj/structure/bed/roller,
 /obj/structure/cable{
@@ -6710,28 +6694,28 @@
 /area/mining_colony/lower/morgue)
 "Fj" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room33)
+/area/mining_colony/lower/maints/node/room33)
 "Fn" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room47)
+/area/mining_colony/lower/maints/node/room47)
 "Fx" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room56)
+/area/mining_colony/lower/maints/node/room56)
 "FA" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room6)
+/area/mining_colony/lower/maints/node/room6)
 "FG" = (
 /obj/structure/bed/chair{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room5)
+/area/mining_colony/lower/maints/node/room5)
 "FK" = (
 /obj/effect/landmark{
 	name = "ShuttleRepairPart"
 	},
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room56)
+/area/mining_colony/lower/maints/node/room56)
 "FY" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -6766,23 +6750,23 @@
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /obj/effect/floor_decal/dank/outline_striped,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/mining_caves/shelter_2)
+/area/mining_colony/lower/shelter_2)
 "Ge" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room49)
+/area/mining_colony/lower/maints/node/room49)
 "Gg" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room11)
+/area/mining_colony/lower/maints/node/room11)
 "Gq" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room66)
+/area/mining_colony/lower/maints/node/room66)
 "Gx" = (
 /obj/effect/landmark{
 	name = "ShuttleRepairPart"
 	},
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room38)
+/area/mining_colony/lower/maints/node/room38)
 "GI" = (
 /obj/item/radio/intercom/department/medbay{
 	dir = 8;
@@ -6792,38 +6776,38 @@
 /area/mining_colony/lower/morgue)
 "GJ" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room13)
+/area/mining_colony/lower/maints/node/room13)
 "GK" = (
 /obj/structure/table/rack,
 /obj/item/rig/emergency,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/mining_caves/shelter_2)
+/area/mining_colony/lower/shelter_2)
 "GM" = (
 /obj/machinery/door/airlock/maintenance{
 	dir = 4
 	},
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room52)
+/area/mining_colony/lower/maints/node/room52)
 "GX" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/storage/box/greenglowsticks,
 /turf/simulated/floor/dank/slides{
 	dir = 8
 	},
-/area/mining_colony/lower/mining_caves/shelter_2)
+/area/mining_colony/lower/shelter_2)
 "GZ" = (
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room33)
+/area/mining_colony/lower/maints/node/room33)
 "Ha" = (
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room64)
+/area/mining_colony/lower/maints/node/room64)
 "Hh" = (
 /obj/machinery/door/airlock/maintenance{
 	dir = 4
 	},
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room44)
+/area/mining_colony/lower/maints/node/room44)
 "Hj" = (
 /obj/machinery/light/small{
 	dir = 4;
@@ -6831,10 +6815,10 @@
 	},
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room20)
+/area/mining_colony/lower/maints/node/room20)
 "Hl" = (
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room38)
+/area/mining_colony/lower/maints/node/room38)
 "Hn" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -6846,26 +6830,26 @@
 "Hp" = (
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room29)
+/area/mining_colony/lower/maints/node/room29)
 "Hq" = (
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room48)
+/area/mining_colony/lower/maints/node/room48)
 "Hx" = (
 /obj/structure/grille,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room29)
+/area/mining_colony/lower/maints/node/room29)
 "HH" = (
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room11)
+/area/mining_colony/lower/maints/node/room11)
 "HI" = (
 /obj/effect/wallframe_spawn/reinforced,
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room51)
+/area/mining_colony/lower/maints/node/room51)
 "HR" = (
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room23)
+/area/mining_colony/lower/maints/node/room23)
 "HS" = (
 /obj/random/loot/often/few,
 /obj/structure/table/rack,
@@ -6880,41 +6864,41 @@
 	dir = 4
 	},
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room10)
+/area/mining_colony/lower/maints/node/room10)
 "HZ" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/maints/room66)
+/area/mining_colony/lower/maints/node/room66)
 "Ig" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room19)
+/area/mining_colony/lower/maints/node/room19)
 "Ij" = (
 /obj/structure/bed/chair/office{
 	dir = 4;
 	icon_state = "officechair_preview"
 	},
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room49)
+/area/mining_colony/lower/maints/node/room49)
 "Iw" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room61)
+/area/mining_colony/lower/maints/node/room61)
 "Iz" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room17)
+/area/mining_colony/lower/maints/node/room17)
 "IA" = (
 /obj/effect/landmark{
 	name = "ShuttleRepairPart"
 	},
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/maints/room66)
+/area/mining_colony/lower/maints/node/room66)
 "II" = (
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room25)
+/area/mining_colony/lower/maints/node/room25)
 "IK" = (
 /obj/structure/table/rack,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room47)
+/area/mining_colony/lower/maints/node/room47)
 "IO" = (
 /obj/machinery/firealarm{
 	dir = 4;
@@ -6928,31 +6912,31 @@
 	dir = 4
 	},
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room45)
+/area/mining_colony/lower/maints/node/room45)
 "IQ" = (
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room30)
+/area/mining_colony/lower/maints/node/room30)
 "IT" = (
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room16)
+/area/mining_colony/lower/maints/node/room16)
 "Jd" = (
 /obj/machinery/door/airlock/maintenance{
 	dir = 4
 	},
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room39)
+/area/mining_colony/lower/maints/node/room39)
 "Jj" = (
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room33)
+/area/mining_colony/lower/maints/node/room33)
 "Jq" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room58)
+/area/mining_colony/lower/maints/node/room58)
 "JA" = (
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room42)
+/area/mining_colony/lower/maints/node/room42)
 "JC" = (
 /obj/effect/landmark{
 	name = "ShuttleRepairPart"
@@ -6960,7 +6944,7 @@
 /turf/simulated/floor/dank/slides{
 	dir = 4
 	},
-/area/mining_colony/lower/mining_caves/shelter_2)
+/area/mining_colony/lower/shelter_2)
 "JG" = (
 /obj/effect/floor_decal/spline/fancy/wood,
 /obj/effect/decal/cleanable/dirt,
@@ -6969,23 +6953,23 @@
 /area/mining_colony/lower/unibase)
 "JM" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room35)
+/area/mining_colony/lower/maints/node/room35)
 "JR" = (
 /obj/machinery/door/airlock/maintenance{
 	dir = 4
 	},
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room19)
+/area/mining_colony/lower/maints/node/room19)
 "JS" = (
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/maints/room10)
+/area/mining_colony/lower/maints/node/room10)
 "JV" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room42)
+/area/mining_colony/lower/maints/node/room42)
 "JX" = (
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room17)
+/area/mining_colony/lower/maints/node/room17)
 "Ka" = (
 /obj/item/tool/weldingtool/advanced,
 /obj/item/tool/crowbar,
@@ -6994,23 +6978,23 @@
 "Kd" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room65)
+/area/mining_colony/lower/maints/node/room65)
 "Kg" = (
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room55)
+/area/mining_colony/lower/maints/node/room55)
 "Ks" = (
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room13)
+/area/mining_colony/lower/maints/node/room13)
 "Kv" = (
 /obj/structure/table/rack,
 /obj/item/clothing/mask/gas,
 /obj/item/clothing/mask/gas,
 /obj/item/clothing/mask/gas,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/mining_caves/shelter_2)
+/area/mining_colony/lower/shelter_2)
 "Kw" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room20)
+/area/mining_colony/lower/maints/node/room20)
 "Ky" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -7022,7 +7006,7 @@
 "KI" = (
 /obj/structure/barricade/wood,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room45)
+/area/mining_colony/lower/maints/node/room45)
 "KN" = (
 /obj/machinery/door/airlock/security,
 /obj/machinery/door/firedoor,
@@ -7036,18 +7020,18 @@
 "KO" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room35)
+/area/mining_colony/lower/maints/node/room35)
 "KP" = (
 /obj/structure/bed/chair{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room45)
+/area/mining_colony/lower/maints/node/room45)
 "KQ" = (
 /obj/structure/closet/emcloset,
 /obj/random/loot/usually/few,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room2)
+/area/mining_colony/lower/maints/node/room2)
 "Lc" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -7062,14 +7046,14 @@
 "Ld" = (
 /obj/structure/table/rack,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room1)
+/area/mining_colony/lower/maints/node/room1)
 "Lg" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room21)
+/area/mining_colony/lower/maints/node/room21)
 "Lj" = (
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room52)
+/area/mining_colony/lower/maints/node/room52)
 "Lm" = (
 /obj/effect/landmark{
 	name = "ShuttleRepairPart"
@@ -7077,20 +7061,20 @@
 /turf/simulated/floor/dank/slides{
 	dir = 4
 	},
-/area/mining_colony/lower/mining_caves/shelter_1)
+/area/mining_colony/lower/shelter_3)
 "Ln" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room40)
+/area/mining_colony/lower/maints/node/room40)
 "Lp" = (
 /obj/effect/landmark{
 	name = "ShuttleRepairPart"
 	},
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room37)
+/area/mining_colony/lower/maints/node/room37)
 "Ls" = (
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/maints/room11)
+/area/mining_colony/lower/maints/node/room11)
 "Lw" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/light{
@@ -7101,16 +7085,16 @@
 /turf/simulated/floor/dank/slides{
 	dir = 8
 	},
-/area/mining_colony/lower/mining_caves/shelter_2)
+/area/mining_colony/lower/shelter_2)
 "Lz" = (
 /obj/effect/landmark{
 	name = "ShuttleRepairPart"
 	},
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room26)
+/area/mining_colony/lower/maints/node/room26)
 "LJ" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room64)
+/area/mining_colony/lower/maints/node/room64)
 "LO" = (
 /obj/item/modular_computer/console/preset/civilian{
 	dir = 4
@@ -7132,11 +7116,11 @@
 /area/mining_colony/lower/unibase)
 "Ma" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room52)
+/area/mining_colony/lower/maints/node/room52)
 "Me" = (
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room14)
+/area/mining_colony/lower/maints/node/room14)
 "Mf" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -7150,11 +7134,11 @@
 	name = "ShuttleRepairPart"
 	},
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room24)
+/area/mining_colony/lower/maints/node/room24)
 "Mj" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room2)
+/area/mining_colony/lower/maints/node/room2)
 "Mk" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -7167,10 +7151,10 @@
 /obj/random/closet,
 /obj/random/loot/usually/few,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room31)
+/area/mining_colony/lower/maints/node/room31)
 "Mn" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room40)
+/area/mining_colony/lower/maints/node/room40)
 "Mo" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -7184,21 +7168,21 @@
 /area/mining_colony/lower/unibase)
 "Mw" = (
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room62)
+/area/mining_colony/lower/maints/node/room62)
 "My" = (
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room46)
+/area/mining_colony/lower/maints/node/room46)
 "Mz" = (
 /obj/effect/wingrille_spawn/reinforced,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room15)
+/area/mining_colony/lower/maints/node/room15)
 "MB" = (
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room56)
+/area/mining_colony/lower/maints/node/room56)
 "MD" = (
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room16)
+/area/mining_colony/lower/maints/node/room16)
 "MP" = (
 /obj/machinery/power/apc{
 	dir = 1;
@@ -7210,18 +7194,18 @@
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room49)
+/area/mining_colony/lower/maints/node/room49)
 "MU" = (
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room59)
+/area/mining_colony/lower/maints/node/room59)
 "MY" = (
 /obj/random/obstruction,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room55)
+/area/mining_colony/lower/maints/node/room55)
 "MZ" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room60)
+/area/mining_colony/lower/maints/node/room60)
 "Nb" = (
 /obj/machinery/button/remote/blast_door{
 	pixel_y = -24;
@@ -7233,14 +7217,14 @@
 "Nf" = (
 /obj/structure/closet/emcloset,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room12)
+/area/mining_colony/lower/maints/node/room12)
 "Ni" = (
 /obj/machinery/light{
 	dir = 4;
 	icon_state = "tube_map"
 	},
 /turf/simulated/floor/dank/slides,
-/area/mining_colony/lower/mining_caves/shelter_2)
+/area/mining_colony/lower/shelter_2)
 "Np" = (
 /obj/structure/table/rack,
 /obj/random/loot/usually/few,
@@ -7248,7 +7232,7 @@
 	name = "ShuttleRepairPart"
 	},
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room54)
+/area/mining_colony/lower/maints/node/room54)
 "Nq" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/interior/maint/storage)
@@ -7262,7 +7246,7 @@
 	},
 /obj/effect/floor_decal/dank/outline_striped,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/mining_caves/shelter_2)
+/area/mining_colony/lower/shelter_2)
 "Nw" = (
 /obj/effect/floor_decal/dank/border,
 /obj/structure/cable{
@@ -7277,34 +7261,34 @@
 	name = "ShuttleRepairPart"
 	},
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room35)
+/area/mining_colony/lower/maints/node/room35)
 "NF" = (
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room47)
+/area/mining_colony/lower/maints/node/room47)
 "NH" = (
 /obj/structure/table/rack,
 /obj/random/loot/usually/few,
 /obj/random/loot/rarely/few,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room23)
+/area/mining_colony/lower/maints/node/room23)
 "NK" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room26)
+/area/mining_colony/lower/maints/node/room26)
 "NW" = (
 /obj/machinery/door/airlock/maintenance{
 	dir = 4
 	},
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room3)
+/area/mining_colony/lower/maints/node/room3)
 "Oa" = (
 /obj/structure/table/rack,
 /obj/random/loot/usually/few,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room26)
+/area/mining_colony/lower/maints/node/room26)
 "Od" = (
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room58)
+/area/mining_colony/lower/maints/node/room58)
 "Of" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -7312,36 +7296,36 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room49)
+/area/mining_colony/lower/maints/node/room49)
 "Oi" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/maints/room27)
+/area/mining_colony/lower/maints/node/room27)
 "Ol" = (
 /obj/structure/table/rack,
 /obj/item/tank/emergency/oxygen/double,
 /obj/item/tank/emergency/oxygen/double,
 /obj/item/tank/emergency/oxygen/double,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/mining_caves/shelter_2)
+/area/mining_colony/lower/shelter_2)
 "Os" = (
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room10)
+/area/mining_colony/lower/maints/node/room10)
 "Ow" = (
 /obj/machinery/door/airlock/maintenance{
 	dir = 4
 	},
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room40)
+/area/mining_colony/lower/maints/node/room40)
 "Oz" = (
 /obj/effect/landmark{
 	name = "ShuttleRepairPart"
 	},
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room32)
+/area/mining_colony/lower/maints/node/room32)
 "OE" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room34)
+/area/mining_colony/lower/maints/node/room34)
 "OJ" = (
 /obj/machinery/firealarm{
 	pixel_y = 24
@@ -7350,28 +7334,28 @@
 /area/mining_colony/lower/medical)
 "OK" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room59)
+/area/mining_colony/lower/maints/node/room59)
 "OV" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room23)
+/area/mining_colony/lower/maints/node/room23)
 "Pc" = (
 /turf/simulated/floor/water_shallow,
 /area/mining_colony/lower)
 "Pk" = (
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room24)
+/area/mining_colony/lower/maints/node/room24)
 "Pl" = (
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room12)
+/area/mining_colony/lower/maints/node/room12)
 "Pm" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room18)
+/area/mining_colony/lower/maints/node/room18)
 "Pn" = (
 /obj/effect/wallframe_spawn/reinforced,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room30)
+/area/mining_colony/lower/maints/node/room30)
 "Po" = (
 /obj/effect/wallframe_spawn/reinforced,
 /obj/machinery/door/firedoor{
@@ -7384,10 +7368,10 @@
 /area/mining_colony/lower/securityevidence2)
 "Ps" = (
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/maints/room18)
+/area/mining_colony/lower/maints/node/room18)
 "Pt" = (
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room24)
+/area/mining_colony/lower/maints/node/room24)
 "Pw" = (
 /obj/effect/floor_decal/spline/fancy/wood/corner,
 /obj/structure/showcase{
@@ -7408,14 +7392,14 @@
 /turf/simulated/floor/dank/slides{
 	dir = 1
 	},
-/area/mining_colony/lower/mining_caves/shelter_2)
+/area/mining_colony/lower/shelter_2)
 "PF" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room28)
+/area/mining_colony/lower/maints/node/room28)
 "PJ" = (
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/mining_caves/shelter_2)
+/area/mining_colony/lower/shelter_2)
 "PK" = (
 /obj/structure/table/woodentable,
 /obj/item/trash/snack_bowl{
@@ -7455,58 +7439,58 @@
 /area/mining_colony/lower/securityevidence1)
 "PS" = (
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room35)
+/area/mining_colony/lower/maints/node/room35)
 "PU" = (
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room65)
+/area/mining_colony/lower/maints/node/room65)
 "PZ" = (
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room32)
+/area/mining_colony/lower/maints/node/room32)
 "Qb" = (
 /obj/machinery/door/airlock/maintenance{
 	dir = 4
 	},
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room18)
+/area/mining_colony/lower/maints/node/room18)
 "Qe" = (
 /obj/structure/bed/chair{
 	dir = 4;
 	icon_state = "chair_preview"
 	},
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room5)
+/area/mining_colony/lower/maints/node/room5)
 "Qh" = (
 /obj/effect/landmark{
 	name = "ShuttleRepairPart"
 	},
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room40)
+/area/mining_colony/lower/maints/node/room40)
 "Qk" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room39)
+/area/mining_colony/lower/maints/node/room39)
 "Qp" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room17)
+/area/mining_colony/lower/maints/node/room17)
 "Qr" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room46)
+/area/mining_colony/lower/maints/node/room46)
 "Qt" = (
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room66)
+/area/mining_colony/lower/maints/node/room66)
 "Qy" = (
 /obj/structure/closet/firecloset,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room12)
+/area/mining_colony/lower/maints/node/room12)
 "QB" = (
 /obj/effect/landmark{
 	name = "ShuttleRepairPart"
 	},
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room49)
+/area/mining_colony/lower/maints/node/room49)
 "QF" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room29)
+/area/mining_colony/lower/maints/node/room29)
 "QH" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -7515,20 +7499,20 @@
 /area/mining_colony/lower/morgue)
 "QI" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room66)
+/area/mining_colony/lower/maints/node/room66)
 "QJ" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room50)
+/area/mining_colony/lower/maints/node/room50)
 "QN" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room62)
+/area/mining_colony/lower/maints/node/room62)
 "QR" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room16)
+/area/mining_colony/lower/maints/node/room16)
 "QX" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room21)
+/area/mining_colony/lower/maints/node/room21)
 "Rb" = (
 /obj/machinery/light,
 /obj/structure/cable{
@@ -7541,14 +7525,14 @@
 "Rn" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room29)
+/area/mining_colony/lower/maints/node/room29)
 "Rt" = (
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room35)
+/area/mining_colony/lower/maints/node/room35)
 "Rv" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room30)
+/area/mining_colony/lower/maints/node/room30)
 "Rx" = (
 /obj/effect/landmark/node_room,
 /turf/simulated/floor/dank/grater,
@@ -7563,21 +7547,21 @@
 /area/mining_colony/lower/unibase)
 "RJ" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room31)
+/area/mining_colony/lower/maints/node/room31)
 "RM" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room31)
+/area/mining_colony/lower/maints/node/room31)
 "RN" = (
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/maint/storage)
 "RO" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room30)
+/area/mining_colony/lower/maints/node/room30)
 "Sa" = (
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room48)
+/area/mining_colony/lower/maints/node/room48)
 "Sg" = (
 /turf/simulated/floor/carpet,
 /area/mining_colony/lower/unibase)
@@ -7586,50 +7570,50 @@
 /obj/item/bedsheet/orange,
 /obj/effect/floor_decal/dank/outline_striped,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/mining_caves/shelter_2)
+/area/mining_colony/lower/shelter_2)
 "Sl" = (
 /obj/structure/girder/reinforced,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room46)
+/area/mining_colony/lower/maints/node/room46)
 "Sm" = (
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room22)
+/area/mining_colony/lower/maints/node/room22)
 "Sq" = (
 /obj/structure/closet/firecloset,
 /obj/random/loot/usually/few,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room43)
+/area/mining_colony/lower/maints/node/room43)
 "Sv" = (
 /obj/structure/grille,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room46)
+/area/mining_colony/lower/maints/node/room46)
 "SC" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/maints/room1)
+/area/mining_colony/lower/maints/node/room1)
 "SF" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room19)
+/area/mining_colony/lower/maints/node/room19)
 "SG" = (
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/maint/storage)
 "SH" = (
 /obj/random/trash,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room22)
+/area/mining_colony/lower/maints/node/room22)
 "SJ" = (
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room26)
+/area/mining_colony/lower/maints/node/room26)
 "SL" = (
 /obj/structure/closet/firecloset,
 /obj/random/loot/usually/few,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room2)
+/area/mining_colony/lower/maints/node/room2)
 "SP" = (
 /obj/random/junk,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room55)
+/area/mining_colony/lower/maints/node/room55)
 "ST" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1;
@@ -7645,19 +7629,19 @@
 "SV" = (
 /obj/effect/landmark/node_room,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/mining_caves/shelter_2)
+/area/mining_colony/lower/shelter_2)
 "SX" = (
 /obj/machinery/beehive,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room18)
+/area/mining_colony/lower/maints/node/room18)
 "Th" = (
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room20)
+/area/mining_colony/lower/maints/node/room20)
 "Tj" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room13)
+/area/mining_colony/lower/maints/node/room13)
 "To" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -7665,7 +7649,7 @@
 /area/mining_colony/lower/unibase)
 "Tt" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room55)
+/area/mining_colony/lower/maints/node/room55)
 "Tu" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -7682,39 +7666,39 @@
 	name = "ShuttleRepairPart"
 	},
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room53)
+/area/mining_colony/lower/maints/node/room53)
 "Ty" = (
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room2)
+/area/mining_colony/lower/maints/node/room2)
 "Tz" = (
 /obj/random/trash,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room21)
+/area/mining_colony/lower/maints/node/room21)
 "TB" = (
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room61)
+/area/mining_colony/lower/maints/node/room61)
 "TD" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room1)
+/area/mining_colony/lower/maints/node/room1)
 "TE" = (
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room18)
+/area/mining_colony/lower/maints/node/room18)
 "TG" = (
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room23)
+/area/mining_colony/lower/maints/node/room23)
 "TJ" = (
 /turf/simulated/floor/dank/slides,
-/area/mining_colony/lower/mining_caves/shelter_2)
+/area/mining_colony/lower/shelter_2)
 "TM" = (
 /obj/machinery/door/airlock/maintenance{
 	dir = 4
 	},
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room58)
+/area/mining_colony/lower/maints/node/room58)
 "TN" = (
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room61)
+/area/mining_colony/lower/maints/node/room61)
 "TO" = (
 /obj/machinery/power/port_gen/pacman,
 /obj/item/stack/material/phoron/fifty,
@@ -7731,43 +7715,43 @@
 	dir = 1
 	},
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room43)
+/area/mining_colony/lower/maints/node/room43)
 "TU" = (
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room50)
+/area/mining_colony/lower/maints/node/room50)
 "TW" = (
 /obj/structure/table/rack,
 /obj/random/loot/often/few,
 /obj/random/loot/often/few,
 /obj/random/powercell,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room24)
+/area/mining_colony/lower/maints/node/room24)
 "TZ" = (
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room55)
+/area/mining_colony/lower/maints/node/room55)
 "Uf" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room43)
+/area/mining_colony/lower/maints/node/room43)
 "Ul" = (
 /obj/machinery/door/airlock/maintenance,
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room66)
+/area/mining_colony/lower/maints/node/room66)
 "Uo" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room63)
+/area/mining_colony/lower/maints/node/room63)
 "Uw" = (
 /obj/structure/table/standard,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room20)
+/area/mining_colony/lower/maints/node/room20)
 "Uy" = (
 /obj/machinery/door/airlock/maintenance{
 	dir = 4
 	},
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room22)
+/area/mining_colony/lower/maints/node/room22)
 "UA" = (
 /obj/structure/bed/chair/office/comfy/black{
 	dir = 4
@@ -7776,14 +7760,14 @@
 /area/mining_colony/lower/unibase)
 "UC" = (
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room3)
+/area/mining_colony/lower/maints/node/room3)
 "UE" = (
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room6)
+/area/mining_colony/lower/maints/node/room6)
 "UG" = (
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room40)
+/area/mining_colony/lower/maints/node/room40)
 "UI" = (
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/dank/mono,
@@ -7791,51 +7775,51 @@
 "UM" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room49)
+/area/mining_colony/lower/maints/node/room49)
 "UP" = (
 /obj/structure/barricade/wood,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room44)
+/area/mining_colony/lower/maints/node/room44)
 "UR" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room44)
+/area/mining_colony/lower/maints/node/room44)
 "US" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/tiled/dark,
-/area/mining_colony/lower/maints/room41)
+/area/mining_colony/lower/maints/node/room41)
 "UT" = (
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room50)
+/area/mining_colony/lower/maints/node/room50)
 "UU" = (
 /obj/effect/landmark{
 	name = "ShuttleRepairPart"
 	},
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room36)
+/area/mining_colony/lower/maints/node/room36)
 "Vb" = (
 /obj/effect/wingrille_spawn/reinforced,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room34)
+/area/mining_colony/lower/maints/node/room34)
 "Vf" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/dank/golf_brown,
-/area/mining_colony/lower/maints/room51)
+/area/mining_colony/lower/maints/node/room51)
 "Vi" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room33)
+/area/mining_colony/lower/maints/node/room33)
 "Vk" = (
 /obj/effect/landmark/node_room,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/mining_caves/shelter_3)
+/area/mining_colony/lower/shelter_1)
 "Vl" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room16)
+/area/mining_colony/lower/maints/node/room16)
 "Vm" = (
 /obj/machinery/door/airlock/external/bolted,
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room17)
+/area/mining_colony/lower/maints/node/room17)
 "Vs" = (
 /obj/machinery/light/small,
 /obj/structure/ladder/up,
@@ -7851,15 +7835,15 @@
 /area/mining_colony/lower)
 "VK" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room63)
+/area/mining_colony/lower/maints/node/room63)
 "VM" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room25)
+/area/mining_colony/lower/maints/node/room25)
 "VP" = (
 /obj/random/loot/rarely/few,
 /obj/structure/table/rack,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room34)
+/area/mining_colony/lower/maints/node/room34)
 "VR" = (
 /obj/effect/landmark{
 	name = "ShuttleRepairPart"
@@ -7867,69 +7851,69 @@
 /turf/simulated/floor/dank/slides{
 	dir = 4
 	},
-/area/mining_colony/lower/mining_caves/shelter_3)
+/area/mining_colony/lower/shelter_1)
 "VW" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room60)
+/area/mining_colony/lower/maints/node/room60)
 "Wc" = (
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room14)
+/area/mining_colony/lower/maints/node/room14)
 "Wd" = (
 /obj/machinery/door/airlock/maintenance{
 	dir = 4
 	},
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room38)
+/area/mining_colony/lower/maints/node/room38)
 "Wf" = (
 /obj/effect/landmark{
 	name = "ShuttleRepairPart"
 	},
 /turf/simulated/floor/wood,
-/area/mining_colony/lower/maints/room64)
+/area/mining_colony/lower/maints/node/room64)
 "Wh" = (
 /obj/effect/wingrille_spawn/reinforced,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room33)
+/area/mining_colony/lower/maints/node/room33)
 "Wi" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room36)
+/area/mining_colony/lower/maints/node/room36)
 "Wl" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room25)
+/area/mining_colony/lower/maints/node/room25)
 "Wn" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room59)
+/area/mining_colony/lower/maints/node/room59)
 "Wr" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room27)
+/area/mining_colony/lower/maints/node/room27)
 "Wt" = (
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room41)
+/area/mining_colony/lower/maints/node/room41)
 "Wy" = (
 /obj/structure/barricade/wood,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room38)
+/area/mining_colony/lower/maints/node/room38)
 "WD" = (
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room28)
+/area/mining_colony/lower/maints/node/room28)
 "WE" = (
 /obj/structure/closet/emcloset,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room19)
+/area/mining_colony/lower/maints/node/room19)
 "WH" = (
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room39)
+/area/mining_colony/lower/maints/node/room39)
 "WN" = (
 /obj/structure/table/rack,
 /obj/random/loot/usually/some,
 /obj/random/loot/often/few,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room16)
+/area/mining_colony/lower/maints/node/room16)
 "WP" = (
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room47)
+/area/mining_colony/lower/maints/node/room47)
 "Xc" = (
 /obj/structure/bookcase,
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -7950,19 +7934,19 @@
 	name = "ShuttleRepairPart"
 	},
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room59)
+/area/mining_colony/lower/maints/node/room59)
 "Xs" = (
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room21)
+/area/mining_colony/lower/maints/node/room21)
 "Xw" = (
 /obj/structure/table/rack,
 /obj/random/loot/usually/few,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room28)
+/area/mining_colony/lower/maints/node/room28)
 "Xz" = (
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room57)
+/area/mining_colony/lower/maints/node/room57)
 "XG" = (
 /obj/item/storage/lunchbox/egov,
 /turf/simulated/floor/asteroid/outside_ds,
@@ -7972,7 +7956,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room25)
+/area/mining_colony/lower/maints/node/room25)
 "XK" = (
 /obj/structure/table/woodentable,
 /obj/item/flashlight/lamp/lava/red,
@@ -7990,19 +7974,19 @@
 /obj/effect/wingrille_spawn/reinforced,
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room66)
+/area/mining_colony/lower/maints/node/room66)
 "XQ" = (
 /obj/machinery/door/airlock/maintenance{
 	dir = 4
 	},
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room21)
+/area/mining_colony/lower/maints/node/room21)
 "Ya" = (
 /obj/machinery/light/small{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room49)
+/area/mining_colony/lower/maints/node/room49)
 "Yb" = (
 /obj/effect/floor_decal/dank/border,
 /obj/structure/cable{
@@ -8014,7 +7998,7 @@
 /area/mining_colony/lower/medical)
 "Yk" = (
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/maints/room27)
+/area/mining_colony/lower/maints/node/room27)
 "Ym" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -8029,37 +8013,37 @@
 "Yo" = (
 /obj/machinery/beehive,
 /turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/maints/room18)
+/area/mining_colony/lower/maints/node/room18)
 "Yx" = (
 /obj/machinery/door/airlock/maintenance{
 	dir = 4
 	},
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room43)
+/area/mining_colony/lower/maints/node/room43)
 "Yz" = (
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room5)
+/area/mining_colony/lower/maints/node/room5)
 "YA" = (
 /obj/machinery/light/small{
 	dir = 8
 	},
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room39)
+/area/mining_colony/lower/maints/node/room39)
 "YG" = (
 /obj/random/trash,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room17)
+/area/mining_colony/lower/maints/node/room17)
 "YL" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room37)
+/area/mining_colony/lower/maints/node/room37)
 "YO" = (
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room15)
+/area/mining_colony/lower/maints/node/room15)
 "YP" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room23)
+/area/mining_colony/lower/maints/node/room23)
 "YY" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/storage/box/survival,
@@ -8073,24 +8057,24 @@
 /turf/simulated/floor/dank/slides{
 	dir = 8
 	},
-/area/mining_colony/lower/mining_caves/shelter_2)
+/area/mining_colony/lower/shelter_2)
 "YZ" = (
 /turf/simulated/floor/wood,
-/area/mining_colony/lower/maints/room57)
+/area/mining_colony/lower/maints/node/room57)
 "Zd" = (
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room36)
+/area/mining_colony/lower/maints/node/room36)
 "Zj" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room36)
+/area/mining_colony/lower/maints/node/room36)
 "Zn" = (
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room34)
+/area/mining_colony/lower/maints/node/room34)
 "Zo" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room45)
+/area/mining_colony/lower/maints/node/room45)
 "Zp" = (
 /obj/effect/landmark{
 	name = "ShuttleRepairPart"
@@ -8102,30 +8086,30 @@
 	dir = 4
 	},
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room20)
+/area/mining_colony/lower/maints/node/room20)
 "Zr" = (
 /obj/machinery/light/small{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room49)
+/area/mining_colony/lower/maints/node/room49)
 "Zs" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/lower/maints/room54)
+/area/mining_colony/lower/maints/node/room54)
 "Zv" = (
 /obj/random/trash,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room18)
+/area/mining_colony/lower/maints/node/room18)
 "Zx" = (
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room36)
+/area/mining_colony/lower/maints/node/room36)
 "ZE" = (
 /obj/machinery/light/small{
 	dir = 8
 	},
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room26)
+/area/mining_colony/lower/maints/node/room26)
 "ZK" = (
 /obj/machinery/firealarm{
 	dir = 1;
@@ -8136,7 +8120,7 @@
 "ZL" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/room55)
+/area/mining_colony/lower/maints/node/room55)
 "ZO" = (
 /obj/item/clothing/glasses/welding,
 /turf/simulated/floor/asteroid/outside_ds,
@@ -8151,7 +8135,7 @@
 "ZR" = (
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/maints/room32)
+/area/mining_colony/lower/maints/node/room32)
 "ZS" = (
 /obj/machinery/power/terminal{
 	dir = 1
@@ -8582,8 +8566,8 @@ Cr
 (3,1,1) = {"
 Cr
 Cr
-ql
-Cr
+aw
+aw
 aw
 aw
 aw
@@ -8784,8 +8768,8 @@ Cr
 (4,1,1) = {"
 Cr
 Cr
-Cr
-Cr
+aw
+aw
 aw
 aw
 aw
@@ -8986,8 +8970,8 @@ Cr
 (5,1,1) = {"
 Cr
 Cr
-gi
-Cr
+aw
+aw
 aw
 aw
 aw
@@ -9188,8 +9172,8 @@ Cr
 (6,1,1) = {"
 Cr
 Cr
-Cr
-Cr
+aw
+aw
 aw
 aw
 aw
