@@ -1,0 +1,7 @@
+2022-08-11:
+  nianoru:
+  - qol: Edited the color of necromorph text for it to be more visible in chat.
+  - bugfix: Toggable clothing (such as bomber jackets, leather jackets, etc.) are
+      now visible on the player when toggled open.
+  - balance: Surgeons may no longer instantly kill someone after buckling them down
+      to a seat/bed.

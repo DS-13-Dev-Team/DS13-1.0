@@ -119,7 +119,6 @@
 		/obj/item/clothing/accessory/stethoscope,
 		/obj/item/device/radio/headset/heads/smo,
 		/obj/item/taperoll/medical,
-//		/obj/item/device/flash,
 		/obj/item/device/flashlight,
 		/obj/item/device/flashlight/pen,
 		/obj/item/device/healthanalyzer,
