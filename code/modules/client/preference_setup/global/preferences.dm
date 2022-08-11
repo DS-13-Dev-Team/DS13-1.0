@@ -90,14 +90,14 @@ var/list/_client_preferences_by_type
 	description ="Play admin midis"
 	key = "SOUND_MIDI"
 
-/datum/client_preference/play_lobby_music
-	description ="Play lobby music"
-	key = "SOUND_LOBBY"
-
 /datum/client_preference/split_admins_tabs
 	description = "Split admins tabs"
 	key = "SPLIT_ADMINS_TABS"
 	options = list(GLOB.PREF_YES, GLOB.PREF_NO)
+
+/datum/client_preference/play_lobby_music
+	description ="Play lobby music"
+	key = "SOUND_LOBBY"
 
 /datum/client_preference/play_lobby_music/changed(var/mob/preference_mob, var/new_value)
 	if (preference_mob && preference_mob.client)
@@ -109,6 +109,9 @@ var/list/_client_preferences_by_type
 	else
 		SEND_SOUND(preference_mob, sound(null, repeat = 0, wait = 0, volume = 85, channel = GLOB.lobby_sound_channel))
 
+/datum/client_preference/play_instruments_sounds
+	description ="Play instruments sounds"
+	key = "SOUND_INSTRUMENTS"
 
 /datum/client_preference/play_ambiance
 	description ="Play ambience"

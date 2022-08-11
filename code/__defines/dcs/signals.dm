@@ -54,3 +54,13 @@
 #define COMSIG_TRAM_TRAVEL_ENDED "tram_travel_ended"
 ///called when the movable's glide size is updated: (new_glide_size)
 #define COMSIG_MOVABLE_UPDATE_GLIDE_SIZE "movable_glide_size"
+///sent to the instrument on /should_stop_playing(): (atom/player). Return values can be found in DEFINES/song.dm
+#define COMSIG_INSTRUMENT_SHOULD_STOP_PLAYING "instrument_should_stop_playing"
+///sent to the instrument (and player if available) when a song repeats (datum/song)
+#define COMSIG_INSTRUMENT_REPEAT "instrument_repeat"
+///sent to the instrument when tempo changes, skipped on new. (datum/song)
+#define COMSIG_INSTRUMENT_TEMPO_CHANGE "instrument_tempo_change"
+///from base of [/atom/update_icon]: (signalOut, did_anything)
+#define COMSIG_ATOM_UPDATED_ICON "atom_updated_icon"
+////from /mob/living/say(): ()
+#define COMSIG_MOB_SAY "mob_say"

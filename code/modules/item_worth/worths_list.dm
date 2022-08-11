@@ -523,7 +523,6 @@ var/list/worths = list(
 					/obj/structure/lattice = 1,
 					/obj/structure/morgue = 100,
 					/obj/structure/crematorium = 600,
-					/obj/structure/device/piano = 1200, //pianos are expensive,
 					/obj/structure/noticeboard = 15,
 					/obj/structure/safe/floor = 180,
 					/obj/structure/safe = 200,

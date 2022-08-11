@@ -62,6 +62,7 @@
 #define SS_INIT_PROFILER			101
 #define SS_INIT_GARBAGE				99
 #define SS_INIT_SERVER_MAINT		93
+#define SS_INIT_SOUNDS				80
 #define SS_INIT_TIMETRACK			46
 #define SS_INIT_ANTAGS				18
 #define SS_INIT_CHAR_SETUP			17
@@ -84,6 +85,7 @@
 #define SS_INIT_SHUTTLE				-12
 #define SS_INIT_LIGHTING			-14
 #define SS_INIT_OVERLAYS			-16
+#define SS_INIT_INSTRUMENTS			-20
 #define SS_INIT_XENOARCH			-50
 #define SS_INIT_BAY_LEGACY			-200
 #define SS_INIT_UNIT_TESTS			-250

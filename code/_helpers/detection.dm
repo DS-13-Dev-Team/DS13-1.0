@@ -189,10 +189,11 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 		if(get_turf(O) in hearturfs)
 			objs |= O
 
-
-
-
-
+/proc/get_hearers_in_view(range, turf/T)
+	.=list()
+	FOR_DVIEW(var/mob/hearer, range, T, INVISIBILITY_MAXIMUM)
+		. += hearer
+	END_FOR_DVIEW
 
 proc/isInSight(var/atom/A, var/atom/B)
 	var/turf/Aturf = get_turf(A)
