@@ -8,8 +8,8 @@
 	var/list/entries
 	var/list/entries_by_type
 
-	var/list/list/maplist
-	var/list/defaultmaps
+	var/list/datum/map_config/maplist
+	var/datum/map_config/defaultmap
 
 	/// If the configuration is loaded
 	var/loaded = FALSE
@@ -37,7 +37,6 @@
 	full_wipe()
 	Load(world.params[OVERRIDE_CONFIG_DIRECTORY_PARAMETER])
 
-
 /datum/controller/configuration/proc/Load(_directory)
 	if(check_rights(R_ADMIN)) //If admin proccall is detected down the line it will horribly break everything.
 		return
@@ -55,6 +54,7 @@
 				for(var/J in legacy_configs)
 					LoadEntries(J)
 				break
+	loadmaplist(CONFIG_MAPS_FILE)
 	LoadMOTD()
 
 	loaded = TRUE
@@ -62,26 +62,19 @@
 	if(Master)
 		Master.OnConfigLoad()
 
-
 /datum/controller/configuration/proc/full_wipe()
 	if(check_rights(R_ADMIN))
 		return
 	entries_by_type.Cut()
-	QDEL_LIST_ASSOC_VAL(entries)
-	entries = null
-	for(var/list/L in maplist)
-		QDEL_LIST_ASSOC_VAL(L)
+	QDEL_LIST_ASSOC_VAL(maplist)
 	maplist = null
-	QDEL_LIST_ASSOC_VAL(defaultmaps)
-	defaultmaps = null
-
+	QDEL_NULL(defaultmap)
 
 /datum/controller/configuration/Destroy()
 	full_wipe()
 	config = null
 
 	return ..()
-
 
 /datum/controller/configuration/proc/InitEntries()
 	var/list/_entries = list()
@@ -103,11 +96,9 @@
 		_entries[esname] = E
 		_entries_by_type[I] = E
 
-
 /datum/controller/configuration/proc/RemoveEntry(datum/config_entry/CE)
 	entries -= CE.name
 	entries_by_type -= CE.type
-
 
 /datum/controller/configuration/proc/LoadEntries(filename, list/stack = list())
 	if(check_rights(R_ADMIN))
@@ -192,11 +183,68 @@
 
 	++.
 
+/datum/controller/configuration/proc/loadmaplist(filename)
+	log_config("Loading config file [filename]...")
+	filename = "[directory]/[filename]"
+	var/list/Lines = world.file2list(filename)
+
+	var/datum/map_config/currentmap = null
+	for(var/t in Lines)
+		if(!t)
+			continue
+
+		t = trim(t)
+		if(length(t) == 0)
+			continue
+		else if(t[1] == "#")
+			continue
+
+		var/pos = findtext(t, " ")
+		var/command = null
+		var/data = null
+
+		if(pos)
+			command = lowertext(copytext(t, 1, pos))
+			data = copytext(t, pos + length(t[pos]))
+		else
+			command = lowertext(t)
+
+		if(!command)
+			continue
+
+		if (!currentmap && command != "map")
+			continue
+
+		switch (command)
+			if ("map")
+				currentmap = load_map_config(data, MAP_DIRECTORY_MAPS)
+				if(currentmap.defaulted)
+					var/error_message = "Failed to load map config for [data]!"
+					log_config(error_message)
+					log_mapping(error_message, TRUE)
+					currentmap = null
+			if ("minplayers","minplayer")
+				currentmap.config_min_users = text2num(data)
+			if ("maxplayers","maxplayer")
+				currentmap.config_max_users = text2num(data)
+			if ("weight","voteweight")
+				currentmap.voteweight = text2num(data)
+			if ("default","defaultmap")
+				defaultmap = currentmap
+			if ("votable")
+				currentmap.votable = TRUE
+			if ("endmap")
+				LAZYINITLIST(maplist)
+				maplist[currentmap.map_name] = currentmap
+				currentmap = null
+			if ("disabled")
+				currentmap = null
+			else
+				log_config("Unknown command in map vote config: '[command]'")
 
 /datum/controller/configuration/stat_entry(msg)
 	msg = "Edit"
 	return msg
-
 
 /datum/controller/configuration/proc/Get(entry_type)
 	var/datum/config_entry/E = entry_type
@@ -211,7 +259,6 @@
 		return
 	return E.config_entry_value
 
-
 /datum/controller/configuration/proc/Set(entry_type, new_val)
 	var/datum/config_entry/E = entry_type
 	var/entry_is_abstract = initial(E.abstract_type) == entry_type
@@ -220,11 +267,10 @@
 	E = entries_by_type[entry_type]
 	if(!E)
 		CRASH("Missing config entry for [entry_type]!")
-	if((E.protection & CONFIG_ENTRY_LOCKED) && check_rights(R_ADMIN))
-		log_admin("Config rewrite of [entry_type] to [new_val] attempted by [key_name(usr)]")
+	if((E.protection & CONFIG_ENTRY_LOCKED) && usr)
+		log_admin_private("Config rewrite of [entry_type] to [new_val] attempted by [key_name(usr)]")
 		return
 	return E.ValidateAndSet("[new_val]")
-
 
 /datum/controller/configuration/proc/LoadModes()
 	gamemode_cache = typecacheof(/datum/game_mode, TRUE)
@@ -285,8 +331,6 @@
 				currentmode = null
 			else
 				log_config("Unknown command in map vote config: '[command]'")
-
-
 
 /datum/controller/configuration/proc/LoadMOTD()
 	GLOB.motd = file2text("[directory]/motd.txt")

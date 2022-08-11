@@ -10,5 +10,5 @@ SUBSYSTEM_DEF(antags)
 	. = ..()
 
 /datum/controller/subsystem/antags/stat_entry(msg)
-	msg = "[GLOB.all_antag_types_.len] antag datums"
-	return msg
+	msg = "|[GLOB.all_antag_types_.len] antag datums"
+	return ..()

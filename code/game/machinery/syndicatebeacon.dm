@@ -9,7 +9,7 @@
 /obj/machinery/syndicate_beacon
 	name = "ominous beacon"
 	desc = "This looks suspicious..."
-	icon = 'icons/obj/device.dmi'
+	icon = 'icons/obj/items.dmi'
 	icon_state = "syndbeacon"
 
 	anchored = 1
@@ -131,7 +131,7 @@
 		return
 
 
-/obj/machinery/power/singularity_beacon/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/machinery/power/singularity_beacon/attackby(obj/item/W as obj, mob/user as mob)
 	if(isScrewdriver(W))
 		if(active)
 			to_chat(user, "<span class='danger'>You need to deactivate the beacon first!</span>")

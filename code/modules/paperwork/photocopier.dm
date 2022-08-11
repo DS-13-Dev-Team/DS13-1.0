@@ -1,142 +1,172 @@
 /obj/machinery/photocopier
 	name = "photocopier"
-	desc = "This machine scans and copies papers. Usually."
+	desc = "Copy all your important papers here!"
 	icon = 'icons/obj/library.dmi'
 	icon_state = "bigscanner"
 	var/insert_anim = "bigscanner1"
-	anchored = 1
-	density = 1
+	anchored = TRUE
+	density = TRUE
 	use_power = 1
 	idle_power_usage = 30
 	active_power_usage = 200
 	power_channel = EQUIP
-	atom_flags = ATOM_FLAG_CLIMBABLE
-	obj_flags = OBJ_FLAG_ANCHORABLE
 	var/obj/item/copyitem = null	//what's in the copier!
 	var/copies = 1	//how many copies to print!
 	var/toner = 30 //how much toner is left! woooooo~
 	var/maxcopies = 10	//how many copies can be copied at once- idea shamelessly stolen from bs12's copier!
-	clicksound = "button2"
+	var/copying = FALSE // Is the printer busy with something? Sanity check variable.
+
+/obj/machinery/photocopier/examine(mob/user as mob)
+	.=..()
+	if(Adjacent(user))
+		to_chat(user, "The screen shows there's [toner ? "[toner]" : "no"] toner left in the printer.")
+
+/obj/machinery/photocopier/meddle()
+	flick(insert_anim, src)
 
 /obj/machinery/photocopier/attack_ai(mob/user as mob)
 	return attack_hand(user)
 
 /obj/machinery/photocopier/attack_hand(mob/user as mob)
-	user.set_machine(src)
+	tgui_interact(user)
 
-	var/dat = "Photocopier<BR><BR>"
-	if(copyitem)
-		dat += "<a href='byond://?src=\ref[src];remove=1'>Remove Item</a><BR>"
-		if(toner)
-			dat += "<a href='byond://?src=\ref[src];copy=1'>Copy</a><BR>"
-			dat += "Printing: [copies] copies."
-			dat += "<a href='byond://?src=\ref[src];min=1'>-</a> "
-			dat += "<a href='byond://?src=\ref[src];add=1'>+</a><BR><BR>"
-	else if(toner)
-		dat += "Please insert something to copy.<BR><BR>"
-	if(istype(user,/mob/living/silicon))
-		dat += "<a href='byond://?src=\ref[src];aipic=1'>Print photo from database</a><BR><BR>"
-	dat += "Current toner level: [toner]"
-	if(!toner)
-		dat +="<BR>Please insert a new toner cartridge!"
-	user << browse(dat, "window=copier")
-	onclose(user, "copier")
-	return
+/obj/machinery/photocopier/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "Photocopier", name)
+		ui.open()
 
-/obj/machinery/photocopier/Topic(href, href_list)
-	if(href_list["copy"])
-		if(stat & (BROKEN|NOPOWER))
-			return
+/obj/machinery/photocopier/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+	var/list/data = ..()
 
-		for(var/i = 0, i < copies, i++)
-			if(toner <= 0)
-				break
+	data["has_item"] = copyitem
+	data["isAI"] = issilicon(user)
+	data["can_AI_print"] = (toner >= 5)
+	data["has_toner"] =	!!toner
+	data["current_toner"] = toner
+	data["max_toner"] = 40
+	data["num_copies"] = copies
+	data["max_copies"] = maxcopies
 
-			if (istype(copyitem, /obj/item/weapon/paper))
-				copy(copyitem)
-				playsound(src, 'sound/machines/tankbiorecycle.ogg', VOLUME_LOW)
-				sleep(15)
-			else if (istype(copyitem, /obj/item/weapon/photo))
-				photocopy(copyitem)
-				playsound(src, 'sound/machines/tankbiorecycle.ogg', VOLUME_LOW)
-				sleep(15)
-			else if (istype(copyitem, /obj/item/weapon/paper_bundle))
-				var/obj/item/weapon/paper_bundle/B = bundlecopy(copyitem)
-				playsound(src, 'sound/machines/tankbiorecycle.ogg', VOLUME_LOW)
-				sleep(15*B.pages.len)
-			else
-				to_chat(usr, "<span class='warning'>\The [copyitem] can't be copied by \the [src].</span>")
-				break
+	return data
 
-			use_power(active_power_usage)
-		updateUsrDialog()
-	else if(href_list["remove"])
-		if(copyitem)
-			copyitem.loc = usr.loc
-			usr.put_in_hands(copyitem)
-			to_chat(usr, "<span class='notice'>You take \the [copyitem] out of \the [src].</span>")
-			copyitem = null
-			updateUsrDialog()
-	else if(href_list["min"])
-		if(copies > 1)
-			copies--
-			updateUsrDialog()
-	else if(href_list["add"])
-		if(copies < maxcopies)
-			copies++
-			updateUsrDialog()
-	else if(href_list["aipic"])
-		if(!istype(usr,/mob/living/silicon)) return
-		if(stat & (BROKEN|NOPOWER)) return
+/obj/machinery/photocopier/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	if(..())
+		return TRUE
 
-		if(toner >= 5)
-			var/mob/living/silicon/tempAI = usr
-			var/obj/item/device/camera/siliconcam/camera = tempAI.silicon_camera
-
-			if(!camera)
+	switch(action)
+		if("make_copy")
+			copy_operation(usr)
+			. = TRUE
+		if("remove")
+			if(copyitem)
+				copyitem.forceMove(usr.loc)
+				usr.put_in_hands(copyitem)
+				to_chat(usr, "<span class='notice'>You take \the [copyitem] out of \the [src].</span>")
+				copyitem = null
+			. = TRUE
+		if("set_copies")
+			copies = clamp(text2num(params["num_copies"]), 1, maxcopies)
+			. = TRUE
+		if("ai_photo")
+			if(!issilicon(usr))
 				return
-			var/obj/item/weapon/photo/selection = camera.selectpicture()
-			if (!selection)
+			if(stat & (BROKEN|NOPOWER))
 				return
 
-			var/obj/item/weapon/photo/p = photocopy(selection)
-			if (p.desc == "")
-				p.desc += "Copied by [tempAI.name]"
-			else
-				p.desc += " - Copied by [tempAI.name]"
-			toner -= 5
-			sleep(15)
-		updateUsrDialog()
+			if(toner >= 5)
+				var/mob/living/silicon/tempAI = usr
+				var/obj/item/camera/siliconcam/camera = tempAI.silicon_camera
 
-/obj/machinery/photocopier/meddle()
-	flick(insert_anim, src)
+				if(!camera)
+					return
+				var/obj/item/photo/selection = camera.selectpicture()
+				if (!selection)
+					return
+
+				var/obj/item/photo/p = photocopy(selection)
+				if (p.desc == "")
+					p.desc += "Copied by [tempAI.name]"
+				else
+					p.desc += " - Copied by [tempAI.name]"
+				toner -= 5
+			. = TRUE
+
+/obj/machinery/photocopier/proc/copy_operation(var/mob/user)
+	if(copying)
+		return FALSE
+	copying = TRUE
+	for(var/i = 0, i < copies, i++)
+		if(toner <= 0)
+			break
+
+		if (istype(copyitem, /obj/item/paper))
+			playsound(src, 'sound/machines/copier.ogg', 100, 1)
+			sleep(11)
+			copy(copyitem)
+			audible_message("<span class='notice'>You can hear [src] whirring as it finishes printing.</span>")
+			playsound(src, 'sound/machines/buzzbeep.ogg', 30)
+		else if (istype(copyitem, /obj/item/photo))
+			playsound(src, 'sound/machines/copier.ogg', 100, 1)
+			sleep(11)
+			photocopy(copyitem)
+			audible_message("<span class='notice'>You can hear [src] whirring as it finishes printing.</span>")
+			playsound(src, 'sound/machines/buzzbeep.ogg', 30)
+		else if (istype(copyitem, /obj/item/paper_bundle))
+			sleep(11)
+			playsound(src, "sound/machines/copier.ogg", 100, 1)
+			var/obj/item/paper_bundle/B = bundlecopy(copyitem)
+			sleep(11*B.pages.len)
+			audible_message("<span class='notice'>You can hear [src] whirring as it finishes printing.</span>")
+			playsound(src, 'sound/machines/buzzbeep.ogg', 30)
+		else
+			to_chat(user, "<span class='warning'>\The [copyitem] can't be copied by [src].</span>")
+			playsound(src, 'sound/machines/buzz-two.ogg', 100)
+			break
+
+		use_power(active_power_usage)
+	copying = FALSE
 
 /obj/machinery/photocopier/attackby(obj/item/O as obj, mob/user as mob)
-	if(istype(O, /obj/item/weapon/paper) || istype(O, /obj/item/weapon/photo) || istype(O, /obj/item/weapon/paper_bundle))
+	if(istype(O, /obj/item/paper) || istype(O, /obj/item/photo) || istype(O, /obj/item/paper_bundle))
 		if(!copyitem)
-			if(!user.unEquip(O, src))
-				return
+			user.drop_item()
 			copyitem = O
+			O.forceMove(src)
 			to_chat(user, "<span class='notice'>You insert \the [O] into \the [src].</span>")
+			playsound(src, 'sound/machines/click.ogg', 100, 1)
 			flick(insert_anim, src)
-			updateUsrDialog()
+			SStgui.update_uis(src)
 		else
 			to_chat(user, "<span class='notice'>There is already something in \the [src].</span>")
-	else if(istype(O, /obj/item/device/toner))
+	else if(istype(O, /obj/item/toner))
 		if(toner <= 10) //allow replacing when low toner is affecting the print darkness
-			if(!user.unEquip(O, src))
-				return
+			user.drop_item()
 			to_chat(user, "<span class='notice'>You insert the toner cartridge into \the [src].</span>")
-			var/obj/item/device/toner/T = O
+			flick("photocopier_toner", src)
+			playsound(loc, 'sound/machines/click.ogg', 50, 1)
+			var/obj/item/toner/T = O
 			toner += T.toner_amount
 			qdel(O)
-			updateUsrDialog()
+			SStgui.update_uis(src)
 		else
 			to_chat(user, "<span class='notice'>This cartridge is not yet ready for replacement! Use up the rest of the toner.</span>")
-	..()
+			flick("photocopier_notoner", src)
+			playsound(loc, 'sound/machines/buzz-two.ogg', 75, 1)
+	else if(isWrench(O))
+		playsound(src, O.worksound, 50, 1)
+		anchored = !anchored
+		to_chat(user, "<span class='notice'>You [anchored ? "wrench" : "unwrench"] \the [src].</span>")
+	else if(default_deconstruction_screwdriver(user, O))
+		return
+	else if(default_deconstruction_crowbar(user, O))
+		return
+
 	return
 
 /obj/machinery/photocopier/ex_act(severity)
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	switch(severity)
 		if(1.0)
 			qdel(src)
@@ -154,8 +184,8 @@
 					toner = 0
 	return
 
-/obj/machinery/photocopier/proc/copy(var/obj/item/weapon/paper/copy, var/need_toner=1)
-	var/obj/item/weapon/paper/c = new /obj/item/weapon/paper (loc)
+/obj/machinery/photocopier/proc/copy(var/obj/item/paper/copy, var/need_toner=1)
+	var/obj/item/paper/c = new /obj/item/paper (loc)
 	if(toner > 10)	//lots of toner, make it dark
 		c.info = "<font color = #101010>"
 	else			//no toner? shitty copies for you!
@@ -165,7 +195,7 @@
 	copied = replacetext(copied, "<font face=\"[CRAYON_FONT]\" color=", "<font face=\"[CRAYON_FONT]\" nocolor=")	//This basically just breaks the existing color tag, which we need to do because the innermost tag takes priority.
 	c.info += copied
 	c.info += "</font>"//</font>
-	c.SetName(copy.name) // -- Doohl
+	c.name = copy.name // -- Doohl
 	c.fields = copy.fields
 	c.stamps = copy.stamps
 	c.stamped = copy.stamped
@@ -183,56 +213,64 @@
 			img = image('icons/obj/bureaucracy.dmi', "paper_stamp-dots")
 		img.pixel_x = copy.offset_x[j]
 		img.pixel_y = copy.offset_y[j]
-		c.overlays += img
+		c.add_overlay(img)
 	if(need_toner)
 		toner--
 	if(toner == 0)
+		playsound(src, 'sound/machines/buzz-sigh.ogg', 100)
 		visible_message("<span class='notice'>A red light on \the [src] flashes, indicating that it is out of toner.</span>")
-	c.update_icon()
 	return c
 
 
-/obj/machinery/photocopier/proc/photocopy(var/obj/item/weapon/photo/photocopy, var/need_toner=1)
-	var/obj/item/weapon/photo/p = photocopy.copy()
-	p.forceMove(get_turf(src))
+/obj/machinery/photocopier/proc/photocopy(var/obj/item/photo/photocopy, var/need_toner=1)
+	var/obj/item/photo/p = photocopy.copy()
+	p.forceMove(src.loc)
 
+	var/icon/I = icon(photocopy.icon, photocopy.icon_state)
 	if(toner > 10)	//plenty of toner, go straight greyscale
-		p.img.MapColors(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(0,0,0))//I'm not sure how expensive this is, but given the many limitations of photocopying, it shouldn't be an issue.
+		I.MapColors(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(0,0,0))		//I'm not sure how expensive this is, but given the many limitations of photocopying, it shouldn't be an issue.
+		p.img.MapColors(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(0,0,0))
 		p.update_icon()
 	else			//not much toner left, lighten the photo
+		I.MapColors(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(100,100,100))
 		p.img.MapColors(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(100,100,100))
 		p.update_icon()
+	p.icon = I
 	if(need_toner)
 		toner -= 5	//photos use a lot of ink!
 	if(toner < 0)
 		toner = 0
+		playsound(src, 'sound/machines/buzz-sigh.ogg', 100)
 		visible_message("<span class='notice'>A red light on \the [src] flashes, indicating that it is out of toner.</span>")
 
 	return p
 
 //If need_toner is 0, the copies will still be lightened when low on toner, however it will not be prevented from printing. TODO: Implement print queues for fax machines and get rid of need_toner
-/obj/machinery/photocopier/proc/bundlecopy(var/obj/item/weapon/paper_bundle/bundle, var/need_toner=1)
-	var/obj/item/weapon/paper_bundle/p = new /obj/item/weapon/paper_bundle (src)
-	for(var/obj/item/weapon/W in bundle.pages)
+/obj/machinery/photocopier/proc/bundlecopy(var/obj/item/paper_bundle/bundle, var/need_toner=1)
+	var/obj/item/paper_bundle/p = new /obj/item/paper_bundle (src)
+	for(var/obj/item/W in bundle.pages)
 		if(toner <= 0 && need_toner)
 			toner = 0
+			playsound(src, 'sound/machines/buzz-sigh.ogg', 100)
 			visible_message("<span class='notice'>A red light on \the [src] flashes, indicating that it is out of toner.</span>")
 			break
 
-		if(istype(W, /obj/item/weapon/paper))
+		if(istype(W, /obj/item/paper))
 			W = copy(W)
-		else if(istype(W, /obj/item/weapon/photo))
+		else if(istype(W, /obj/item/photo))
 			W = photocopy(W)
-		W.loc = p
+		W.forceMove(p)
 		p.pages += W
 
-	p.loc = src.loc
+	p.forceMove(src.loc)
 	p.update_icon()
 	p.icon_state = "paper_words"
-	p.SetName(bundle.name)
+	p.name = bundle.name
+	p.pixel_y = rand(-8, 8)
+	p.pixel_x = rand(-9, 9)
 	return p
 
-/obj/item/device/toner
+/obj/item/toner
 	name = "toner cartridge"
 	desc = "A component consumed by printing devices."
 	icon_state = "tonercartridge"

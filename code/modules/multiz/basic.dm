@@ -1,44 +1,15 @@
-// If you add a more comprehensive system, just untick this file.
-var/list/z_levels = list()// Each bit re... haha just kidding this is a list of bools now
-
-// If the height is more than 1, we mark all contained levels as connected.
-/obj/effect/landmark/map_data/New(turf/loc, _height)
-	..()
-	if(!istype(loc)) // Using loc.z is safer when using the maploader and New.
-		return
-	if(_height)
-		height = _height
-	for(var/i = (loc.z - height + 1) to (loc.z-1))
-		if (z_levels.len <i)
-			z_levels.len = i
-		z_levels[i] = TRUE
-
-/obj/effect/landmark/map_data/Initialize()
-	..()
-	return INITIALIZE_HINT_QDEL
-
 /proc/HasAbove(z)
-	if(z >= world.maxz || z < 1 || z > z_levels.len)
-		return 0
-	return z_levels[z]
+	return SSmapping.multiz_levels[z]["[UP]"]
 
 /proc/HasBelow(z)
-	if(z > world.maxz || z < 2 || (z-1) > z_levels.len)
-		return 0
-	return z_levels[z-1]
+	return SSmapping.multiz_levels[z]["[DOWN]"]
 
 // Thankfully, no bitwise magic is needed here.
 /proc/GetAbove(atom/atom)
-	var/turf/turf = get_turf(atom)
-	if(!turf)
-		return null
-	return HasAbove(turf.z) ? get_step(turf, UP) : null
+	return get_step_multiz(atom, UP)
 
 /proc/GetBelow(atom/atom)
-	var/turf/turf = get_turf(atom)
-	if(!turf)
-		return null
-	return HasBelow(turf.z) ? get_step(turf, DOWN) : null
+	return get_step_multiz(atom, DOWN)
 
 /proc/GetSolidBelow(atom/atom)
 	var/turf/turf = get_turf(atom)
@@ -53,10 +24,18 @@ var/list/z_levels = list()// Each bit re... haha just kidding this is a list of 
 
 /proc/GetConnectedZlevels(z)
 	. = list(z)
-	for(var/level = z, HasBelow(level), level--)
-		. |= level-1
-	for(var/level = z, HasAbove(level), level++)
-		. |= level+1
+	var/level = z
+	while(level > 0)
+		if(SSmapping.multiz_levels[level]["[DOWN]"])
+			. |= --level
+		else
+			break
+	level = z
+	while(level <= SSmapping.multiz_levels.len)
+		if(SSmapping.multiz_levels[level]["[UP]"])
+			. |= ++level
+		else
+			break
 
 /proc/AreConnectedZLevels(zA, zB)
 	return zA == zB || (zB in GetConnectedZlevels(zA))

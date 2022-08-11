@@ -3,7 +3,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Pack for holding pickaxes
 
-/obj/item/weapon/storage/excavation
+/obj/item/storage/excavation
 	name = "excavation pick set"
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "excavation"
@@ -13,42 +13,42 @@
 	storage_slots = 7
 	slot_flags = SLOT_BELT
 	w_class = ITEM_SIZE_NORMAL
-	can_hold = list(/obj/item/weapon/tool/pickaxe/xeno)
+	can_hold = list(/obj/item/tool/pickaxe/xeno)
 	max_storage_space = 18
 	max_w_class = ITEM_SIZE_NORMAL
 	use_to_pickup = 1
 	startswith = list(
-		/obj/item/weapon/tool/pickaxe/xeno/brush,
-		/obj/item/weapon/tool/pickaxe/xeno/one_pick,
-		/obj/item/weapon/tool/pickaxe/xeno/two_pick,
-		/obj/item/weapon/tool/pickaxe/xeno/three_pick,
-		/obj/item/weapon/tool/pickaxe/xeno/four_pick,
-		/obj/item/weapon/tool/pickaxe/xeno/five_pick,
-		/obj/item/weapon/tool/pickaxe/xeno/six_pick)
+		/obj/item/tool/pickaxe/xeno/brush,
+		/obj/item/tool/pickaxe/xeno/one_pick,
+		/obj/item/tool/pickaxe/xeno/two_pick,
+		/obj/item/tool/pickaxe/xeno/three_pick,
+		/obj/item/tool/pickaxe/xeno/four_pick,
+		/obj/item/tool/pickaxe/xeno/five_pick,
+		/obj/item/tool/pickaxe/xeno/six_pick)
 
-/obj/item/weapon/storage/excavation/handle_item_insertion()
+/obj/item/storage/excavation/handle_item_insertion()
 	..()
 	sort_picks()
 
-/obj/item/weapon/storage/excavation/proc/sort_picks()
-	var/list/obj/item/weapon/tool/pickaxe/xeno/picksToSort = list()
-	for(var/obj/item/weapon/tool/pickaxe/xeno/P in src)
+/obj/item/storage/excavation/proc/sort_picks()
+	var/list/obj/item/tool/pickaxe/xeno/picksToSort = list()
+	for(var/obj/item/tool/pickaxe/xeno/P in src)
 		picksToSort += P
-		P.loc = null
+		P.forceMove(null)
 	while(picksToSort.len)
 		var/min = 200 // No pick is bigger than 200
 		var/selected = 0
 		for(var/i = 1 to picksToSort.len)
-			var/obj/item/weapon/tool/pickaxe/xeno/current = picksToSort[i]
+			var/obj/item/tool/pickaxe/xeno/current = picksToSort[i]
 			if(current.get_tool_quality(QUALITY_DIGGING) <= min)
 				selected = i
 				min = current.get_tool_quality(QUALITY_DIGGING)
-		var/obj/item/weapon/tool/pickaxe/xeno/smallest = picksToSort[selected]
-		smallest.loc = src
+		var/obj/item/tool/pickaxe/xeno/smallest = picksToSort[selected]
+		smallest.forceMove(src)
 		picksToSort -= smallest
 	prepare_ui()
 
-/obj/item/weapon/tool/pickaxe/xeno/excavationdrill
+/obj/item/tool/pickaxe/xeno/excavationdrill
 	name = "excavation drill"
 	icon = 'icons/obj/xenoarchaeology.dmi'
 	icon_state = "excavationdrill0"
@@ -61,7 +61,7 @@
 	w_class = ITEM_SIZE_NORMAL
 	attack_verb = list("drills")
 
-/obj/item/weapon/tool/pickaxe/xeno/excavationdrill/attack_self(mob/user)
+/obj/item/tool/pickaxe/xeno/excavationdrill/attack_self(mob/user)
 	var/excavation_amount = input("Put the desired depth (1-30 centimeters).", "Set Depth", tool_qualities[QUALITY_DIGGING])
 	if(excavation_amount > 30 || excavation_amount < 1)
 		to_chat(user, "<span class='notice'>Invalid depth.</span>")
@@ -86,17 +86,17 @@
 	else
 		icon_state = "excavationdrill7"
 
-/obj/item/weapon/tool/pickaxe/xeno/excavationdrill/examine(mob/user)
+/obj/item/tool/pickaxe/xeno/excavationdrill/examine(mob/user)
 	..()
 	to_chat(user, "<span class='info'>It is currently set at [tool_qualities[QUALITY_DIGGING]]cm.</span>")
 
-/obj/item/weapon/tool/pickaxe/xeno/excavationdrill/adv
+/obj/item/tool/pickaxe/xeno/excavationdrill/adv
 	name = "diamond excavation drill"
 	icon_state = "Dexcavationdrill0"
 	item_state = "Dexcavationdrill"
 	desc = "Advanced archaeological drill combining ultrasonic excitation and bluespace manipulation to provide extreme precision. The diamond tip is adjustable from 1 to 100 cms."
 
-/obj/item/weapon/tool/pickaxe/xeno/excavationdrill/adv/attack_self(mob/user)
+/obj/item/tool/pickaxe/xeno/excavationdrill/adv/attack_self(mob/user)
 	var/excavation_amount = input("Put the desired depth (1-100 centimeters).", "Set Depth", tool_qualities[QUALITY_DIGGING])
 	if(excavation_amount > 100 || excavation_amount < 1)
 		to_chat(user, "<span class='notice'>Invalid depth.</span>")

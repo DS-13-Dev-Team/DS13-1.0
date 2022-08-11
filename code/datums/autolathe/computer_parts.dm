@@ -13,17 +13,17 @@
 /*
 /datum/design/autolathe/computer_part/gps
 	name = "GPS sensor"
-	build_path = /obj/item/weapon/computer_hardware/gps_sensor
+	build_path = /obj/item/computer_hardware/gps_sensor
 
 /datum/design/autolathe/computer_part/led
 	name = "light emitting diode"
-	build_path = /obj/item/weapon/computer_hardware/led
+	build_path = /obj/item/computer_hardware/led
 */
 
 /datum/design/autolathe/computer_part/scanner_paper
 	name = "paper scanner module"
-	build_path = /obj/item/weapon/computer_hardware/scanner/paper
+	build_path = /obj/item/computer_hardware/scanner/paper
 
 /datum/design/autolathe/computer_part/scanner_atmos
 	name = "atmospheric scanner module"
-	build_path = /obj/item/weapon/computer_hardware/scanner/atmos
+	build_path = /obj/item/computer_hardware/scanner/atmos

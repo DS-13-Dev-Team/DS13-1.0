@@ -1,5 +1,5 @@
 /datum/click_handler/rmb_aim
-	var/obj/item/weapon/gun/gun	//What gun are they aiming
+	var/obj/item/gun/gun	//What gun are they aiming
 
 	var/min_interval = 0.6 SECONDS	//Minimum time between changing states (zoom in/zoom out) to make things feel less janky
 	var/interval_timer_handle

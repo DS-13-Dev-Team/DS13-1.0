@@ -1,6 +1,6 @@
 /datum/wires/rig
 	randomize = TRUE
-	holder_type = /obj/item/weapon/rig
+	holder_type = /obj/item/rig
 	wire_count = 5
 	proper_name = "RIG"
 
@@ -17,7 +17,7 @@
 
 /datum/wires/rig/cut(wire, mend)
 
-	var/obj/item/weapon/rig/rig = holder
+	var/obj/item/rig/rig = holder
 	switch(wire)
 		if(WIRE_RIG_SECURITY)
 			if(mend)
@@ -29,7 +29,7 @@
 
 /datum/wires/rig/on_pulse(wire)
 
-	var/obj/item/weapon/rig/rig = holder
+	var/obj/item/rig/rig = holder
 	switch(wire)
 		if(WIRE_RIG_SECURITY)
 			rig.security_check_enabled = !rig.security_check_enabled
@@ -51,7 +51,7 @@
 			rig.shock(usr,100)
 
 /datum/wires/rig/interactable(mob/user)
-	var/obj/item/weapon/rig/rig = holder
+	var/obj/item/rig/rig = holder
 	if(rig.open)
 		return TRUE
 	return FALSE

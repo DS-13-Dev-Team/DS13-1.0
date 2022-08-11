@@ -63,11 +63,11 @@
 	var/canremove = 1 //Mostly for Ninja code at this point but basically will not allow the item to be removed if set to 0. /N
 	var/list/armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 	var/list/allowed = null //suit storage stuff.
-	var/obj/item/device/uplink/hidden_uplink = null // All items can have an uplink hidden inside, just remember to add the triggers.
+	var/obj/item/uplink/hidden_uplink = null // All items can have an uplink hidden inside, just remember to add the triggers.
 	var/zoomdevicename = null //name used for message when binoculars/scope is used
 	var/zoom = 0 //1 if item is actively being used to zoom. For scoped guns and binoculars.
 
-	var/base_parry_chance = 0	// Will allow weapon to parry melee attacks if non-zero
+	var/base_parry_chance = 25	// Will allow weapon to parry melee attacks if non-zero
 	var/icon_override = null  //Used to override hardcoded clothing dmis in human clothing proc.
 
 	var/use_alt_layer = FALSE // Use the slot's alternative layer when rendering on a mob
@@ -137,11 +137,8 @@
 		m.drop_from_inventory(src)
 		m.update_inv_r_hand()
 		m.update_inv_l_hand()
-		src.loc = null
+		src.forceMove(null)
 	return ..()
-
-/obj/item/device
-	icon = 'icons/obj/device.dmi'
 
 //Checks if the item is being held by a mob, and if so, updates the held icons
 /obj/item/proc/update_twohanding()
@@ -174,6 +171,8 @@
 	return FALSE
 
 /obj/item/ex_act(severity)
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	switch(severity)
 		if(1.0)
 			take_damage(500)
@@ -192,9 +191,9 @@
 
 	var/turf/T = src.loc
 
-	src.loc = null
+	src.forceMove(null)
 
-	src.loc = T
+	src.forceMove(T)
 
 /obj/item/examine(mob/user, var/distance = -1)
 	var/size
@@ -281,8 +280,8 @@
 	var/old_loc = src.loc
 
 	src.pickup(user)
-	if (istype(src.loc, /obj/item/weapon/storage))
-		var/obj/item/weapon/storage/S = src.loc
+	if (istype(src.loc, /obj/item/storage))
+		var/obj/item/storage/S = src.loc
 		S.remove_from_storage(src)
 
 	src.throwing = 0
@@ -327,7 +326,7 @@
 			dropped(user)
 
 /obj/item/attack_ai(mob/user as mob)
-	if (istype(src.loc, /obj/item/weapon/robot_module))
+	if (istype(src.loc, /obj/item/robot_module))
 		//If the item is part of a cyborg module, equip it
 		if(!isrobot(user))
 			return
@@ -335,9 +334,9 @@
 		R.activate_module(src)
 		R.hud_used.update_robot_modules_display()
 
-/obj/item/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/weapon/storage))
-		var/obj/item/weapon/storage/S = W
+/obj/item/attackby(obj/item/W as obj, mob/user as mob)
+	if(istype(W, /obj/item/storage))
+		var/obj/item/storage/S = W
 		if(S.use_to_pickup)
 			if(S.collection_mode) //Mode is set to collect all items
 				if(isturf(src.loc))
@@ -496,23 +495,23 @@ var/list/global/slot_flags_enumeration = list(
 				if(!disable_warning)
 					to_chat(usr, "<span class='warning'>You somehow have a suit with no defined allowed items for suit storage, stop that.</span>")
 				return 0
-			if( !(istype(src, /obj/item/modular_computer/pda) || istype(src, /obj/item/weapon/pen) || is_type_in_list(src, H.wear_suit.allowed)) )
+			if( !(istype(src, /obj/item/modular_computer/pda) || istype(src, /obj/item/pen) || is_type_in_list(src, H.wear_suit.allowed)) )
 				return 0
 		if(slot_handcuffed)
-			if(!istype(src, /obj/item/weapon/handcuffs))
+			if(!istype(src, /obj/item/handcuffs))
 				return 0
 		if(slot_legcuffed)
-			return !H.legcuffed && istype(src, /obj/item/weapon/legcuffs)
+			return !H.legcuffed && istype(src, /obj/item/legcuffs)
 		if(slot_in_backpack) //used entirely for equipping spawned mobs or at round start
 			var/allow = 0
 			if(H.back)
-				if(istype(H.back, /obj/item/weapon/storage/backpack))
-					var/obj/item/weapon/storage/backpack/B = H.back
+				if(istype(H.back, /obj/item/storage/backpack))
+					var/obj/item/storage/backpack/B = H.back
 					if(B.can_be_inserted(src,M,1))
 						allow = 1
 
-				else if(istype(H.back, /obj/item/weapon/rig))
-					var/obj/item/weapon/rig/rig = H.back
+				else if(istype(H.back, /obj/item/rig))
+					var/obj/item/rig/rig = H.back
 					if (rig.storage && rig.storage.container.can_be_inserted(src,M,1))
 						allow = 1
 			if(!allow)
@@ -676,7 +675,7 @@ var/list/global/slot_flags_enumeration = list(
 	if (!..())
 		return 0
 
-	if(istype(src, /obj/item/weapon/melee/energy))
+	if(istype(src, /obj/item/melee/energy))
 		return
 
 	//if we haven't made our blood_overlay already

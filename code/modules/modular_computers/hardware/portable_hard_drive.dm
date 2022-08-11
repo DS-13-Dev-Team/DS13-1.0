@@ -1,5 +1,5 @@
 // These are basically USB data sticks and may be used to transfer files between devices
-/obj/item/weapon/computer_hardware/hard_drive/portable
+/obj/item/computer_hardware/hard_drive/portable
 	name = "basic data crystal"
 	desc = "Small crystal with imprinted photonic circuits that can be used to store data. Its capacity is 16 GQ."
 	w_class = ITEM_SIZE_SMALL
@@ -15,7 +15,7 @@
 	var/disk_name
 	var/license = 0
 
-/obj/item/weapon/computer_hardware/hard_drive/portable/advanced
+/obj/item/computer_hardware/hard_drive/portable/advanced
 	name = "advanced data crystal"
 	desc = "Small crystal with imprinted high-density photonic circuits that can be used to store data. Its capacity is 64 GQ."
 	power_usage = 20
@@ -24,7 +24,7 @@
 	max_capacity = 64
 	origin_tech = list(TECH_DATA = 2)
 
-/obj/item/weapon/computer_hardware/hard_drive/portable/super
+/obj/item/computer_hardware/hard_drive/portable/super
 	name = "super data crystal"
 	desc = "Small crystal with imprinted ultra-density photonic circuits that can be used to store data. Its capacity is 256 GQ."
 	power_usage = 40
@@ -33,22 +33,22 @@
 	max_capacity = 256
 	origin_tech = list(TECH_DATA = 4)
 
-/obj/item/weapon/computer_hardware/hard_drive/portable/autorun
+/obj/item/computer_hardware/hard_drive/portable/autorun
 	name = "\improper autorun flash drive"
 	desc = "A flash drive that automatically runs when plugged in"
 	power_usage = 20
 	hardware_size = 1
 	max_capacity = 64
 
-/obj/item/weapon/computer_hardware/hard_drive/portable/autorun/manual/surgery
+/obj/item/computer_hardware/hard_drive/portable/autorun/manual/surgery
 	name = "\improper surgical flash drive"
 	desc = "A flash drive with step by step instructions for surgery."
 	default_files = list(/datum/computer_file/data/text/manual/surgery)
 
 //We don't want or need any default programs on this drive
-/obj/item/weapon/computer_hardware/hard_drive/portable/autorun/manual/install_default_programs()
+/obj/item/computer_hardware/hard_drive/portable/autorun/manual/install_default_programs()
 
-/obj/item/weapon/computer_hardware/hard_drive/portable/autorun/installed(var/obj/item/modular_computer/M)
+/obj/item/computer_hardware/hard_drive/portable/autorun/installed(var/obj/item/modular_computer/M)
 	//Find the word processor
 	var/datum/computer_file/program/wordprocessor/WP = M.hard_drive.find_file_by_name("wordprocessor")
 	var/size = 0
@@ -75,18 +75,18 @@
 	if(size < 2)
 		WP.open_file(lastfile)
 
-/obj/item/weapon/computer_hardware/hard_drive/portable/Initialize()
+/obj/item/computer_hardware/hard_drive/portable/Initialize()
 	. = ..()
 	if(disk_name)
 		SetName("[initial(name)] - '[disk_name]'")
 
-/obj/item/weapon/computer_hardware/hard_drive/portable/Destroy()
+/obj/item/computer_hardware/hard_drive/portable/Destroy()
 	if(holder2 && (holder2.portable_drive == src))
 		holder2.portable_drive = null
 	return ..()
 
-/obj/item/weapon/computer_hardware/hard_drive/portable/attackby(obj/item/I, mob/user, params)
-	if(istype(I, /obj/item/weapon/pen))
+/obj/item/computer_hardware/hard_drive/portable/attackby(obj/item/I, mob/user, params)
+	if(istype(I, /obj/item/pen))
 		var/new_name = input(user, "What would you like to label the disk?", "Tape labeling") as null|text
 		if(isnull(new_name)) return
 		new_name = sanitizeSafe(new_name)
@@ -100,7 +100,7 @@
 
 	..()
 
-/obj/item/weapon/computer_hardware/hard_drive/portable/install_default_files()
+/obj/item/computer_hardware/hard_drive/portable/install_default_files()
 	if(disk_name)
 		var/datum/computer_file/data/text/D = new
 		D.filename = "DISK_NAME"
@@ -109,7 +109,7 @@
 		store_file(D)
 	..()
 
-/obj/item/weapon/computer_hardware/hard_drive/portable/ui_data()
+/obj/item/computer_hardware/hard_drive/portable/ui_data()
 	var/list/data = ..()
 	data["license"] = license
 	return data
@@ -121,12 +121,12 @@
 // These are basically USB data sticks and may be used to transfer files between devices
 
 
-/obj/item/weapon/computer_hardware/hard_drive/portable/New()
+/obj/item/computer_hardware/hard_drive/portable/New()
 	..()
 	stored_files = list()
 	recalculate_size()
 
-/obj/item/weapon/computer_hardware/hard_drive/portable/Destroy()
+/obj/item/computer_hardware/hard_drive/portable/Destroy()
 	if(holder2 && (holder2.portable_drive == src))
 		holder2.portable_drive = null
 	return ..()

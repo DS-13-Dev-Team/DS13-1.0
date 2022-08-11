@@ -60,7 +60,7 @@
 		"cold"
 	)
 
-	blend_objects = list(/obj/machinery/door/firedoor, /obj/structure/wall_frame, /turf/unsimulated/wall, /obj/structure/window) // Objects which to blend with
+	blend_objects = list(/obj/machinery/door/firedoor, /obj/structure/wall_frame, /turf/unsimulated/wall, /obj/structure/window, /obj/structure/tramwall) // Objects which to blend with
 
 /obj/machinery/door/firedoor/Initialize()
 	. = ..()
@@ -191,7 +191,7 @@
 				nextstate = FIREDOOR_CLOSED
 				close()
 
-/obj/machinery/door/firedoor/attackby(obj/item/weapon/C as obj, mob/user as mob)
+/obj/machinery/door/firedoor/attackby(obj/item/C as obj, mob/user as mob)
 	add_fingerprint(user, 0, C)
 	if(operating)
 		return//Already doing something.
@@ -232,7 +232,7 @@
 		to_chat(user, "<span class='danger'>\The [src] is welded shut!</span>")
 		return
 
-	if(isCrowbar(C) || istype(C,/obj/item/weapon/material/twohanded/fireaxe))
+	if(isCrowbar(C) || istype(C,/obj/item/material/twohanded/fireaxe))
 		if(operating)
 			return
 
@@ -242,8 +242,8 @@
 			"You hear someone struggle and metal straining.")
 			return
 
-		if(istype(C,/obj/item/weapon/material/twohanded/fireaxe))
-			var/obj/item/weapon/material/twohanded/fireaxe/F = C
+		if(istype(C,/obj/item/material/twohanded/fireaxe))
+			var/obj/item/material/twohanded/fireaxe/F = C
 			if(!F.wielded)
 				return
 
@@ -273,9 +273,9 @@
 
 /obj/machinery/door/firedoor/deconstruct(mob/user, var/moved = FALSE)
 	if (stat & BROKEN)
-		new /obj/item/weapon/circuitboard/broken(src.loc)
+		new /obj/item/circuitboard/broken(src.loc)
 	else
-		new/obj/item/weapon/airalarm_electronics(src.loc)
+		new/obj/item/airalarm_electronics(src.loc)
 
 	var/obj/structure/firedoor_assembly/FA = new/obj/structure/firedoor_assembly(src.loc)
 	FA.anchored = !moved
@@ -427,7 +427,7 @@
 				var/cdir = GLOB.cardinal[d]
 				for(var/i=1;i<=ALERT_STATES.len;i++)
 					if(dir_alerts[d] & (1<<(i-1)))
-						overlays += new/icon(icon,"alert_[ALERT_STATES[i]]", dir=cdir)
+						overlays += icon(icon,"alert_[ALERT_STATES[i]]", dir=cdir)
 						do_set_light = TRUE
 	else
 		icon_state = "open"

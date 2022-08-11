@@ -85,8 +85,8 @@
 	build_type = /obj/item/stack/tile/tramwarning
 
 /decl/flooring/tiling_ds/tramgrating
-	name = "tram floor"
-	desc = "Scuffed from the passage of countless tram users."
+	name = "railway"
+	desc = "Scuffed from the countless tram uses."
 	icon_base = "tramgrating"
 	build_type = /obj/item/stack/tile/tramgrating
 

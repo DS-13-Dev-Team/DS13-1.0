@@ -5,7 +5,7 @@
 	icon_state = "empty"
 	density = 0
 	anchored = 1
-	var/obj/item/weapon/nuclear_cylinder/cylinder
+	var/obj/item/nuclear_cylinder/cylinder
 	var/armed = 0
 	var/damaged = 0
 
@@ -17,7 +17,7 @@
 				damaged = 0
 				user.visible_message("[user] repairs [src].", "You repair [src].")
 				return
-	if(istype(W, /obj/item/weapon/nuclear_cylinder))
+	if(istype(W, /obj/item/nuclear_cylinder))
 		if(damaged)
 			to_chat(user, "<span class='warning'>[src] is damaged, you cannot place the cylinder.</span>")
 			return
@@ -83,6 +83,8 @@
 	..()
 
 /obj/machinery/self_destruct/ex_act(severity)
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	switch(severity)
 		if(1)
 			set_damaged()

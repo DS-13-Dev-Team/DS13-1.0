@@ -80,7 +80,8 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 
 	var/turf/T = get_turf(body)
 	if(ismob(body))
-		body.mind?.transfer_to(src)
+		mind = body.mind
+		key = body.key
 		possess(src) //Possess thyself
 		SetName("[initial(name)] ([key])")
 		real_name = "[initial(name)] ([key])"
@@ -161,7 +162,8 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 
 	//Seems clear
 	message_necromorphs(SPAN_NOTICE("[key] has taken control of [L]."))
-	mind.transfer_to(L)
+	L.mind = mind
+	L.key = key
 	L.client.init_verbs()
 	qdel(src)
 
@@ -268,7 +270,7 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 		to_chat(src, SPAN_DANGER("No living necromorphs found!"))
 		return
 
-	var/necro = input(src, "Choose necromorph to jump", "Jumping menu") as null|anything in SSnecromorph.major_vessels
+	var/necro = tgui_input_list(src, "Choose necromorph to jump", "Jumping menu", SSnecromorph.major_vessels)
 	if(necro)
 		forceMove(get_turf(necro))
 		return

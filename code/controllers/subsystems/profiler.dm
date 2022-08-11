@@ -6,9 +6,6 @@ SUBSYSTEM_DEF(profiler)
 	runlevels = RUNLEVELS_DEFAULT | RUNLEVEL_LOBBY
 	wait = 600
 
-/datum/controller/subsystem/profiler/stat_entry(msg)
-	return "Click to debug!"
-
 /datum/controller/subsystem/profiler/Initialize()
 	if(CONFIG_GET(flag/auto_profile))
 		StartProfiling()

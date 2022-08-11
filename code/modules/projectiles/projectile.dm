@@ -96,7 +96,7 @@
 	//It should be false for small things like normal bullets, spines
 	//It should be false for non physical things, energy, lasers, etc
 
-	var/shrapnel_type = /obj/item/weapon/material/shard/shrapnel	//When this projectile embeds in a mob, what kind of shrapnel does it turn into?	The actual projectile will be deleted
+	var/shrapnel_type = /obj/item/material/shard/shrapnel	//When this projectile embeds in a mob, what kind of shrapnel does it turn into?	The actual projectile will be deleted
 
 
 /obj/item/projectile/New(var/atom/location)
@@ -256,7 +256,7 @@
 		QDEL_NULL_LIST(segments)
 
 //called to launch a projectile from a gun
-/obj/item/projectile/proc/launch_from_gun(atom/target, mob/user, obj/item/weapon/gun/launcher, var/target_zone, var/x_offset=0, var/y_offset=0)
+/obj/item/projectile/proc/launch_from_gun(atom/target, mob/user, obj/item/gun/launcher, var/target_zone, var/x_offset=0, var/y_offset=0)
 	src.launcher = launcher
 
 	if(user == target) //Shooting yourself
@@ -266,7 +266,7 @@
 
 
 	last_loc = loc
-	loc = get_turf(user) //move the projectile out into the world
+	forceMove(get_turf(user)) //move the projectile out into the world)
 	altitude = get_aiming_height(user, target) //Set the height of the bullet
 
 	firer = user
@@ -309,7 +309,7 @@
 
 	//Before we redirect, move us into the bounceoff turf
 	last_loc = loc
-	loc = bounce_turf
+	forceMove(bounce_turf)
 
 	redirect(bounceoff.x + base_dir.x, bounceoff.y + base_dir.y, bounce_turf)
 	release_vector(base_dir)
@@ -396,7 +396,7 @@
 
 	if(A == firer)
 		last_loc = loc
-		loc = A.loc
+		forceMove(A.loc)
 		return 0 //cannot shoot yourself
 
 	if((bumped && !forced) || (A in permutated))
@@ -451,10 +451,10 @@
 		if(A)
 			if(istype(A, /turf))
 				last_loc = loc
-				loc = A
+				forceMove(A)
 			else
 				last_loc = loc
-				loc = A.loc
+				forceMove(A.loc)
 			permutated.Add(A)
 
 		bumped = 0 //reset bumped variable!

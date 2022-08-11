@@ -14,6 +14,9 @@
 /// Passed into BINARY_INSERT to compare values
 #define COMPARE_VALUE __BIN_LIST[__BIN_LIST[__BIN_MID]]
 
+///Checks for specific types in specifically structured (Assoc "type" = TRUE|FALSE) lists ('typecaches')
+#define is_type_in_typecache(A, L) (A && length(L) && L[(ispath(A) ? A : A:type)])
+
 /****
 	* Binary search sorted insert
 	* INPUT: Object to be inserted
@@ -863,15 +866,25 @@ proc/dd_sortedTextList(list/incoming)
 
 	return L
 
-//Copies a list, and all lists inside it recusively
-//Does not copy any other reference type
-/proc/deepCopyList(list/l)
-	if(!islist(l))
-		return l
-	. = l.Copy()
-	for(var/i = 1 to l.len)
-		if(islist(.[i]))
-			.[i] = .(.[i])
+///Copies a list, and all lists inside it recusively
+///Does not copy any other reference type
+/proc/deep_copy_list(list/inserted_list)
+	if(!islist(inserted_list))
+		return inserted_list
+	. = inserted_list.Copy()
+	for(var/i in 1 to inserted_list.len)
+		var/key = .[i]
+		if(isnum(key))
+			// numbers cannot ever be associative keys
+			continue
+		var/value = .[key]
+		if(islist(value))
+			value = deep_copy_list(value)
+			.[key] = value
+		if(islist(key))
+			key = deep_copy_list(key)
+			.[i] = key
+			.[key] = value
 
 
 /*
@@ -989,3 +1002,24 @@ proc/dd_sortedTextList(list/incoming)
 
 /proc/sort_list(list/list_to_sort, cmp=/proc/cmp_text_asc)
 	return sortTim(list_to_sort.Copy(), cmp)
+
+/proc/popleft(list/L)
+	if(L.len)
+		. = L[1]
+		L.Cut(1,2)
+
+///replaces reverseList ~Carnie
+/proc/reverse_range(list/inserted_list, start = 1, end = 0)
+	if(inserted_list.len)
+		start = start % inserted_list.len
+		end = end % (inserted_list.len + 1)
+		if(start <= 0)
+			start += inserted_list.len
+		if(end <= 0)
+			end += inserted_list.len + 1
+
+		--end
+		while(start < end)
+			inserted_list.Swap(start++, end--)
+
+	return inserted_list

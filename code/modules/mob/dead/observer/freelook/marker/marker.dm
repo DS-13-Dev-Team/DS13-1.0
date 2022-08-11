@@ -248,7 +248,7 @@
 //A mob was detected nearby, can we absorb it?
 /obj/machinery/marker/proc/nearby_movement(var/atom/movable/AM, var/atom/old_loc)
 
-	if (isliving(AM))
+	if (isliving(AM) && AM.get_biomass())
 		var/mob/living/L = AM
 		if (!L.is_necromorph())
 			//Yes we can
@@ -370,13 +370,13 @@
 /obj/machinery/marker/bullet_act()
 	return null	//We do NOT break
 
-/obj/machinery/marker/default_deconstruction_crowbar(var/mob/user, var/obj/item/weapon/tool/crowbar/C)
+/obj/machinery/marker/default_deconstruction_crowbar(var/mob/user, var/obj/item/tool/crowbar/C)
 	return
 
-/obj/machinery/marker/default_deconstruction_screwdriver(var/mob/user, var/obj/item/weapon/tool/screwdriver/S)
+/obj/machinery/marker/default_deconstruction_screwdriver(var/mob/user, var/obj/item/tool/screwdriver/S)
 	return
 
-/obj/machinery/marker/default_part_replacement(var/mob/user, var/obj/item/weapon/storage/part_replacer/R)
+/obj/machinery/marker/default_part_replacement(var/mob/user, var/obj/item/storage/part_replacer/R)
 	return
 
 /obj/machinery/marker/dismantle()

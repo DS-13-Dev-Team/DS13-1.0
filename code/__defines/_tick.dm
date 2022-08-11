@@ -9,8 +9,10 @@
 #define TICK_USAGE world.tick_usage //for general usage
 #define TICK_USAGE_REAL world.tick_usage    //to be used where the result isn't checked
 
+/// Returns true if tick_usage is above the limit
 #define TICK_CHECK ( TICK_USAGE > Master.current_ticklimit )
-#define CHECK_TICK if TICK_CHECK stoplag()
+/// runs stoplag if tick_usage is above the limit
+#define CHECK_TICK ( TICK_CHECK ? stoplag() : 0 )
 
 //"fancy" math for calculating time in ms from tick_usage percentage and the length of ticks
 //percent_of_tick_used * (ticklag * 100(to convert to ms)) / 100(percent ratio)

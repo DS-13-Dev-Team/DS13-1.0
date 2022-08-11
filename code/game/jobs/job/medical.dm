@@ -6,11 +6,7 @@
 	department_flag = COM|MED
 	total_positions = 1
 	spawn_positions = 1
-#ifdef MAP_ISHIMURA
-	supervisors = "the Captain"
-#else
 	supervisors = "the Colony Director"
-#endif
 	selection_color = "#026865"
 	req_admin_notify = 1
 	minimal_player_age = 18
@@ -38,12 +34,7 @@
 	salary = SALARY_COMMAND
 
 /datum/job/smo/get_description_blurb()
-#ifdef MAP_ISHIMURA
-	return "You are the Senior Medical Officer. You are chiefly responsible for the health and well-being of all crewmembers aboard the ship. You are subordinate to the Captain and First Lieutenant."
-#else
 	return "You are the Senior Medical Officer. You are chiefly responsible for the health and well-being of all workers in the colony. You are subordinate to the Captain and First Lieutenant."
-#endif
-
 
 /datum/job/md
 	title = "Medical Doctor"
@@ -57,11 +48,7 @@
 	minimal_player_age = 18
 	starting_credits = 3500
 
-	#ifdef MAP_ISHIMURA
-	access = list(access_medical, access_chemistry, access_research, access_maint_tunnels)
-	#else
 	access = list(access_medical, access_chemistry, access_maint_tunnels)
-	#endif
 
 	outfit_type = /decl/hierarchy/outfit/job/medical/md
 
@@ -94,11 +81,7 @@
 
 	salary = SALARY_EDUCATED
 
-	#ifdef MAP_ISHIMURA
-	access = list(access_medical, access_surgery, access_chemistry, access_research, access_maint_tunnels)
-	#else
 	access = list(access_medical, access_surgery, access_chemistry, access_maint_tunnels)
-	#endif
 
 	outfit_type = /decl/hierarchy/outfit/job/medical/surg
 
@@ -114,7 +97,7 @@
 /datum/job/surg/get_description_blurb()
 	return "You are a Surgeon. Your job is to perform surgery on any wounded crewmembers who require it and are one of the few people given access to the surgical suites. You are subordinate to the Senior Medical Officer."
 
-/datum/job/psychologist
+/datum/job/psychiatrist
 	title = "Psychiatrist"
 	abbreviation = "PSY"
 	department_flag = MED
@@ -126,11 +109,8 @@
 	ideal_character_age = 30
 	starting_credits = 943
 
-	#ifdef MAP_ISHIMURA
-	access = list(access_medical, access_psychiatrist, access_research, access_chemistry, access_maint_tunnels)
-	#else
 	access = list(access_medical, access_psychiatrist, access_chemistry, access_maint_tunnels)
-	#endif
+
 	outfit_type = /decl/hierarchy/outfit/job/medical/psych
 
 	min_skill = list(	SKILL_ANATOMY     = SKILL_BASIC,
@@ -145,5 +125,5 @@
 
 	salary = SALARY_EDUCATED //Church pays you more than CEC to miners and civs...
 
-/datum/job/psychologist/get_description_blurb()
+/datum/job/psychiatrist/get_description_blurb()
 	return "You are the Psychiatrist. Your job is to meet with clients to identify emotional, mental, and behavioral problems. You are subordinate to the Senior Medical Officer."

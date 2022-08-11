@@ -196,7 +196,7 @@
 					disconnect_from_network()
 		return
 
-	if(istype(W, /obj/item/weapon/card/id) || istype(W, /obj/item/modular_computer))
+	if(istype(W, /obj/item/card/id) || istype(W, /obj/item/modular_computer))
 		if(emagged)
 			to_chat(user, "<span class='warning'>The lock seems to be broken.</span>")
 			return

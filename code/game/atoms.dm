@@ -78,24 +78,17 @@
 /atom/New(loc, ...)
 	//atom creation method that preloads variables at creation
 	if(GLOB.use_preloader && (src.type == GLOB._preloader.target_path))//in case the instanciated atom is creating other atoms in New()
-		GLOB._preloader.load(src)
+		world.preloader_load(src)
 
 	if(datum_flags & DATUM_FLAG_WEAKREF_USE_TAG)
 		GenerateTag()
 
-	var/do_initialize = SSatoms.atom_init_stage
-	var/list/created = SSatoms.created_atoms
-	if(do_initialize > INITIALIZATION_INSSATOMS_LATE)
+	var/do_initialize = SSatoms.initialized
+	if(do_initialize != INITIALIZATION_INSSATOMS)
 		args[1] = do_initialize == INITIALIZATION_INNEW_MAPLOAD
-		if(SSatoms.InitAtom(src, args))
+		if(SSatoms.InitAtom(src, FALSE, args))
 			//we were deleted
 			return
-	else if(created)
-		var/list/argument_list
-		if(length(args) > 1)
-			argument_list = args.Copy(2)
-		if(argument_list || do_initialize == INITIALIZATION_INSSATOMS_LATE)
-			created[src] = argument_list
 
 	if(atom_flags & ATOM_FLAG_CLIMBABLE)
 		verbs |= /atom/proc/climb_on
@@ -115,13 +108,16 @@
 		crash_with("Warning: [src]([type]) initialized multiple times!")
 	atom_flags |= ATOM_FLAG_INITIALIZED
 
+	if(loc)
+		SEND_SIGNAL(loc, COMSIG_ATOM_INITIALIZED_ON, src) /// Sends a signal that the new atom `src`, has been created at `loc`
+
 	if(light_power && light_range)
 		update_light()
 
 	return INITIALIZE_HINT_NORMAL
 
 //called if Initialize returns INITIALIZE_HINT_LATELOAD
-/atom/proc/LateInitialize()
+/atom/proc/LateInitialize(mapload)
 	return
 
 /atom/Destroy()
@@ -160,6 +156,14 @@
 
 /atom/proc/Bumped(AM as mob|obj)
 	return
+
+/**
+ * An atom has exited this atom's contents
+ *
+ * Default behaviour is to send the [COMSIG_ATOM_EXITED]
+ */
+/atom/Exited(atom/movable/gone, direction)
+	SEND_SIGNAL(src, COMSIG_ATOM_EXITED, gone, direction)
 
 // Convenience procs to see if a container is open for chemistry handling
 // returns true if open
@@ -350,9 +354,6 @@ its easier to just keep the beam vertical.
 	if(.)
 		SEND_SIGNAL(src, COMSIG_ATOM_DIR_CHANGE, dir, new_dir)
 		dir = new_dir
-		// Cycle through the light sources on this atom and tell them to update.
-		for (var/datum/light_source/light as anything in light_sources)
-			light.source_atom.update_light()
 
 /atom/proc/set_icon_state(var/new_icon_state)
 	if(has_extension(src, /datum/extension/base_icon_state))
@@ -686,10 +687,10 @@ its easier to just keep the beam vertical.
 /atom/proc/is_organic()
 	return FALSE
 
-/atom/proc/register_shrapnel(obj/item/weapon/material/shard/shrapnel/SP)
+/atom/proc/register_shrapnel(obj/item/material/shard/shrapnel/SP)
 	return FALSE
 
-/atom/proc/unregister_shrapnel(obj/item/weapon/material/shard/shrapnel/SP)
+/atom/proc/unregister_shrapnel(obj/item/material/shard/shrapnel/SP)
 	return FALSE
 
 //Tell this atom to take an item inside it.

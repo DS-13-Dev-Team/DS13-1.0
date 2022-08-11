@@ -1,4 +1,4 @@
-/obj/item/weapon/grenade/light
+/obj/item/grenade/light
 	name = "illumination grenade"
 	desc = "A grenade designed to illuminate an area without the use of a flame or electronics, regardless of the atmosphere."
 	icon_state = "lightgrenade"
@@ -8,7 +8,7 @@
 	light_power = 1
 	light_on = FALSE
 
-/obj/item/weapon/grenade/light/detonate()
+/obj/item/grenade/light/detonate()
 	..()
 	var/lifetime = rand(2 MINUTES, 4 MINUTES)
 	var/colour = pick("#49f37c", "#fc0f29", "#599dff", "#fa7c0b", "#fef923")

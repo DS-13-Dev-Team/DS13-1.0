@@ -8,7 +8,7 @@
 	use_power = 2
 	idle_power_usage = 10
 	active_power_usage = 2000
-	circuit = /obj/item/weapon/circuitboard/seed_extractor
+	circuit = /obj/item/circuitboard/seed_extractor
 
 obj/machinery/seed_extractor/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(default_deconstruction_screwdriver(user, O))
@@ -21,16 +21,16 @@ obj/machinery/seed_extractor/attackby(var/obj/item/O as obj, var/mob/user as mob
 		return
 
 	// Fruits and vegetables.
-	if(istype(O, /obj/item/weapon/reagent_containers/food/snacks/grown) || istype(O, /obj/item/weapon/grown))
+	if(istype(O, /obj/item/reagent_containers/food/snacks/grown) || istype(O, /obj/item/grown))
 		if(!user.unEquip(O))
 			return
 
 		var/datum/seed/new_seed_type
-		if(istype(O, /obj/item/weapon/grown))
-			var/obj/item/weapon/grown/F = O
+		if(istype(O, /obj/item/grown))
+			var/obj/item/grown/F = O
 			new_seed_type = plant_controller.seeds[F.plantname]
 		else
-			var/obj/item/weapon/reagent_containers/food/snacks/grown/F = O
+			var/obj/item/reagent_containers/food/snacks/grown/F = O
 			new_seed_type = plant_controller.seeds[F.plantname]
 
 		if(new_seed_type)
@@ -54,7 +54,7 @@ obj/machinery/seed_extractor/attackby(var/obj/item/O as obj, var/mob/user as mob
 			playsound(src, 'sound/machines/tankbiorecycle.ogg', VOLUME_LOW)
 			new /obj/item/seeds/grassseed(loc)
 
-	else if(istype(O, /obj/item/weapon/fossil/plant)) // Fossils
+	else if(istype(O, /obj/item/fossil/plant)) // Fossils
 		var/obj/item/seeds/random/R = new(get_turf(src))
 		to_chat(user, "\The [src] scans \the [O] and spits out \a [R].")
 		playsound(src, 'sound/machines/tankbiorecycle.ogg', VOLUME_LOW)

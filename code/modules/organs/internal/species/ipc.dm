@@ -65,7 +65,7 @@
 	src.searching = 0
 	icon_state = "posibrain"
 
-	var/turf/T = get_turf_or_move(src.loc)
+	var/turf/T = get_turf(src.loc)
 	for (var/mob/M in viewers(T))
 		M.show_message("<span class='notice'>The positronic brain buzzes quietly, and the golden lights fade away. Perhaps you could try again?</span>")
 

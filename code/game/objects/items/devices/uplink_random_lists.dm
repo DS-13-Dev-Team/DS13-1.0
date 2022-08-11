@@ -17,7 +17,7 @@
 	..()
 	items = list()
 
-/datum/uplink_random_selection/proc/get_random_item(var/telecrystals, obj/item/device/uplink/U, var/list/bought_items)
+/datum/uplink_random_selection/proc/get_random_item(var/telecrystals, obj/item/uplink/U, var/list/bought_items)
 	for(var/i = 1 to 50)
 		var/datum/uplink_random_item/RI = pick(items)
 		if(!prob(RI.keep_probability))
@@ -103,7 +103,6 @@ var/list/uplink_random_selections_
 			/datum/uplink_item/item/badassery,
 			/datum/uplink_item/item/telecrystal,
 			/datum/uplink_item/item/tools/teleporter,
-			/datum/uplink_item/item/tools/supply_beacon,
 			/datum/uplink_item/item/implants/imp_uplink,
 		)
 
@@ -118,7 +117,7 @@ var/list/uplink_random_selections_
 		var/new_thing = new/datum/uplink_random_item(uplink_item_type)
 		items += new_thing
 
-/datum/uplink_random_selection/blacklist/get_random_item(var/telecrystals, obj/item/device/uplink/U, var/list/bought_items)
+/datum/uplink_random_selection/blacklist/get_random_item(var/telecrystals, obj/item/uplink/U, var/list/bought_items)
 	for(var/i = 1 to 50)
 		var/datum/uplink_random_item/RI = pick(items)
 		if(!prob(RI.keep_probability))

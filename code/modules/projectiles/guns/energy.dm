@@ -1,14 +1,14 @@
 GLOBAL_LIST_INIT(registered_weapons, list())
 GLOBAL_LIST_INIT(registered_cyborg_weapons, list())
 
-/obj/item/weapon/gun/energy
+/obj/item/gun/energy
 	name = "energy gun"
 	desc = "A basic energy-based gun."
 	icon_state = "energy"
 	fire_sound = 'sound/weapons/Taser.ogg'
 	fire_sound_text = "laser blast"
 
-	var/obj/item/weapon/cell/power_supply //What type of power cell this uses
+	var/obj/item/cell/power_supply //What type of power cell this uses
 	var/removeable_cell = FALSE	//If true, the cell can be removed and replaced
 	var/charge_cost = 20 //How much energy is needed to fire.
 	var/max_shots = 10 //Determines the capacity of the weapon's power cell. Specifying a cell_type overrides this value.
@@ -25,7 +25,7 @@ GLOBAL_LIST_INIT(registered_cyborg_weapons, list())
 
 
 
-/obj/item/weapon/gun/energy/unload_ammo(mob/user, var/allow_dump)
+/obj/item/gun/energy/unload_ammo(mob/user, var/allow_dump)
 	if(power_supply && removeable_cell)
 		user.put_in_hands(power_supply)
 		user.visible_message("[user] removes [power_supply] from [src].", "<span class='notice'>You remove [power_supply] from [src].</span>")
@@ -33,8 +33,8 @@ GLOBAL_LIST_INIT(registered_cyborg_weapons, list())
 		power_supply.update_icon()
 		power_supply = null
 
-/obj/item/weapon/gun/energy/load_ammo(var/obj/item/A, mob/user)
-	if (istype(A, /obj/item/weapon/cell))
+/obj/item/gun/energy/load_ammo(var/obj/item/A, mob/user)
+	if (istype(A, /obj/item/cell))
 		if (power_supply)
 			return	//Already got a cell
 
@@ -49,45 +49,45 @@ GLOBAL_LIST_INIT(registered_cyborg_weapons, list())
 		power_supply = A
 		.=..()
 
-/obj/item/weapon/gun/energy/attackby(var/obj/item/A as obj, mob/user as mob)
+/obj/item/gun/energy/attackby(var/obj/item/A as obj, mob/user as mob)
 	load_ammo(A, user)
 
-/obj/item/weapon/gun/energy/attack_hand(mob/user as mob)
+/obj/item/gun/energy/attack_hand(mob/user as mob)
 	if(user.get_inactive_hand() == src && removeable_cell)
 		unload_ammo(user)
 	else
 		return ..()
 
 
-/obj/item/weapon/gun/energy/switch_firemodes()
+/obj/item/gun/energy/switch_firemodes()
 	. = ..()
 	if(.)
 		update_icon()
 
-/obj/item/weapon/gun/energy/emp_act(severity)
+/obj/item/gun/energy/emp_act(severity)
 	..()
 	update_icon()
 
-/obj/item/weapon/gun/energy/New()
+/obj/item/gun/energy/New()
 	..()
 	if(cell_type)
 		power_supply = new cell_type(src)
 	else
-		power_supply = new /obj/item/weapon/cell/device/variable(src, max_shots*charge_cost)
+		power_supply = new /obj/item/cell/device/variable(src, max_shots*charge_cost)
 	if(self_recharge)
 		START_PROCESSING(SSobj, src)
 	update_icon()
 
-/obj/item/weapon/gun/energy/Destroy()
+/obj/item/gun/energy/Destroy()
 	QDEL_NULL(power_supply)
 	if(self_recharge)
 		STOP_PROCESSING(SSobj, src)
 	.=..()
 
-/obj/item/weapon/gun/energy/get_cell()
+/obj/item/gun/energy/get_cell()
 	return power_supply
 
-/obj/item/weapon/gun/energy/Process()
+/obj/item/gun/energy/Process()
 	if(self_recharge) //Every [recharge_time] ticks, recharge a shot for the cyborg
 		charge_tick++
 		if(charge_tick < recharge_time) return 0
@@ -97,7 +97,7 @@ GLOBAL_LIST_INIT(registered_cyborg_weapons, list())
 			return 0 // check if we actually need to recharge
 
 		if(use_external_power)
-			var/obj/item/weapon/cell/external = get_external_power_supply()
+			var/obj/item/cell/external = get_external_power_supply()
 			if(!external || !external.use(charge_cost)) //Take power from the borg...
 				return 0
 
@@ -105,7 +105,7 @@ GLOBAL_LIST_INIT(registered_cyborg_weapons, list())
 		update_icon()
 	return 1
 
-/obj/item/weapon/gun/energy/consume_next_projectile()
+/obj/item/gun/energy/consume_next_projectile()
 	if(!power_supply) return null
 	if(!power_supply.checked_use(charge_cost)) return null
 	if (projectile_type)
@@ -113,7 +113,7 @@ GLOBAL_LIST_INIT(registered_cyborg_weapons, list())
 	else
 		return TRUE	//If this gun doesnt use a projectile, just return true to indicate we consumed the power
 
-/obj/item/weapon/gun/energy/proc/get_external_power_supply()
+/obj/item/gun/energy/proc/get_external_power_supply()
 	if(isrobot(src.loc))
 		var/mob/living/silicon/robot/R = src.loc
 		return R.cell
@@ -122,12 +122,12 @@ GLOBAL_LIST_INIT(registered_cyborg_weapons, list())
 		if(module.holder && module.holder.wearer)
 			var/mob/living/carbon/human/H = module.holder.wearer
 			if(istype(H) && H.back)
-				var/obj/item/weapon/rig/suit = H.back
+				var/obj/item/rig/suit = H.back
 				if(istype(suit))
 					return suit.cell
 	return null
 
-/obj/item/weapon/gun/energy/examine(mob/user)
+/obj/item/gun/energy/examine(mob/user)
 	. = ..(user)
 	if(!power_supply)
 		to_chat(user, "Seems like it's dead.")
@@ -136,13 +136,13 @@ GLOBAL_LIST_INIT(registered_cyborg_weapons, list())
 	to_chat(user, "Has [shots_remaining] shot\s remaining.")
 	return
 
-/obj/item/weapon/gun/energy/has_ammo()
+/obj/item/gun/energy/has_ammo()
 	if(!power_supply)
 		return FALSE
 	return (power_supply.charge >= charge_cost)
 
 
-/obj/item/weapon/gun/energy/update_icon()
+/obj/item/gun/energy/update_icon()
 	..()
 	if(charge_meter && power_supply)
 		var/ratio = power_supply.percent()

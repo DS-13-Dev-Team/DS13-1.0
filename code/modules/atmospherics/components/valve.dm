@@ -72,8 +72,7 @@
 	return null
 
 /obj/machinery/atmospherics/valve/Destroy()
-	loc = null
-
+	forceMove(null)
 	if(node1)
 		node1.disconnect(src)
 		qdel(network_node1)
@@ -280,7 +279,7 @@
 				open()
 
 
-/obj/machinery/atmospherics/valve/attackby(var/obj/item/weapon/W as obj, var/mob/user as mob)
+/obj/machinery/atmospherics/valve/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	if (!isWrench(W))
 		return ..()
 	var/datum/gas_mixture/int_air = return_air()

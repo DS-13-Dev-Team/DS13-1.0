@@ -175,7 +175,7 @@
 			take_posession(C)
 		else
 			//If not, we add ourselves as an alternative
-			LAZYDISTINCTADD(C.alternatives,"\ref[src]")
+			LAZYOR(C.alternatives,"\ref[src]")
 
 		//Make sure its awake again, however briefly
 		if (!C.is_processing)

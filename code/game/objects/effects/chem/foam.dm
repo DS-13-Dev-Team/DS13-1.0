@@ -147,6 +147,8 @@
 		icon_state = "ironfoam"
 
 /obj/structure/foamedmetal/ex_act(severity)
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	qdel(src)
 
 /obj/structure/foamedmetal/bullet_act()
@@ -164,7 +166,7 @@
 /obj/structure/foamedmetal/attackby(var/obj/item/I, var/mob/user)
 	if(istype(I, /obj/item/grab))
 		var/obj/item/grab/G = I
-		G.affecting.loc = src.loc
+		G.affecting.forceMove(src.loc)
 		visible_message("<span class='warning'>[G.assailant] smashes [G.affecting] through the foamed metal wall.</span>")
 		qdel(I)
 		qdel(src)

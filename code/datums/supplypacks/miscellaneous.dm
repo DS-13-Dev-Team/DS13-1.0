@@ -3,15 +3,15 @@
 
 /decl/hierarchy/supply_pack/miscellaneous/llamps
 	num_contained = 3
-	contains = list(/obj/item/device/flashlight/lamp/lava,
-					/obj/item/device/flashlight/lamp/lava/red,
-					/obj/item/device/flashlight/lamp/lava/orange,
-					/obj/item/device/flashlight/lamp/lava/yellow,
-					/obj/item/device/flashlight/lamp/lava/green,
-					/obj/item/device/flashlight/lamp/lava/cyan,
-					/obj/item/device/flashlight/lamp/lava/blue,
-					/obj/item/device/flashlight/lamp/lava/purple,
-					/obj/item/device/flashlight/lamp/lava/pink)
+	contains = list(/obj/item/flashlight/lamp/lava,
+					/obj/item/flashlight/lamp/lava/red,
+					/obj/item/flashlight/lamp/lava/orange,
+					/obj/item/flashlight/lamp/lava/yellow,
+					/obj/item/flashlight/lamp/lava/green,
+					/obj/item/flashlight/lamp/lava/cyan,
+					/obj/item/flashlight/lamp/lava/blue,
+					/obj/item/flashlight/lamp/lava/purple,
+					/obj/item/flashlight/lamp/lava/pink)
 	name = "Lava lamps"
 	cost = 10
 	containername = "\improper Lava lamp crate"
@@ -94,16 +94,16 @@
 
 /decl/hierarchy/supply_pack/miscellaneous/card_packs
 	num_contained = 5
-	contains = list(/obj/item/weapon/pack/cardemon,
-					/obj/item/weapon/pack/spaceball,
-					/obj/item/weapon/deck/holder)
+	contains = list(/obj/item/pack/cardemon,
+					/obj/item/pack/spaceball,
+					/obj/item/deck/holder)
 	name = "\improper Trading Card Crate"
 	cost = 20
 	containername = "\improper cards crate"
 	supply_method = /decl/supply_method/randomized
 
 /decl/hierarchy/supply_pack/miscellaneous/eftpos
-	contains = list(/obj/item/device/eftpos)
+	contains = list(/obj/item/eftpos)
 	name = "EFTPOS scanner"
 	cost = 10
 	containername = "\improper EFTPOS crate"
@@ -122,21 +122,21 @@
 					/obj/item/clothing/head/nun_hood,
 					/obj/item/clothing/suit/chaplain_hoodie,
 					/obj/item/clothing/head/chaplain_hood,
-					/obj/item/weapon/storage/backpack/cultpack,
-					/obj/item/weapon/storage/fancy/candle_box = 3)
+					/obj/item/storage/backpack/cultpack,
+					/obj/item/storage/fancy/candle_box = 3)
 	cost = 10
 	containername = "\improper Chaplain equipment crate"
 
 /decl/hierarchy/supply_pack/miscellaneous/mousetrap
 	num_contained = 3
-	contains = list(/obj/item/weapon/storage/box/mousetraps)
+	contains = list(/obj/item/storage/box/mousetraps)
 	name = "\improper Pest Control Crate"
 	cost = 10
 	containername = "\improper Pest Control Crate"
 
 /decl/hierarchy/supply_pack/miscellaneous/illuminate
 	name = "Illumination grenades"
-	contains = list(/obj/item/weapon/grenade/light = 8)
+	contains = list(/obj/item/grenade/light = 8)
 	cost = 20
 	containername = "\improper Illumination grenade crate"
 

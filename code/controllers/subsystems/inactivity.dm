@@ -25,4 +25,5 @@ SUBSYSTEM_DEF(inactivity)
 			return
 
 /datum/controller/subsystem/inactivity/stat_entry(msg)
-	return "Kicked: [number_kicked]"
+	msg = "|Kicked: [number_kicked]"
+	return ..()

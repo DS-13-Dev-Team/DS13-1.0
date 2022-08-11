@@ -1,7 +1,7 @@
 /*
 	Detonator Gun
 */
-/obj/item/weapon/gun/projectile/detonator
+/obj/item/gun/projectile/detonator
 	name = "detonator"
 	desc = "A unique gun that can place tripmines from a distance."
 	icon = 'icons/obj/weapons/ds13guns48x32.dmi'
@@ -26,13 +26,13 @@
 	load_sound = 'sound/weapons/guns/interaction/detonator_reload.ogg'
 
 
-/obj/item/weapon/gun/projectile/detonator/enable_aiming_mode()
+/obj/item/gun/projectile/detonator/enable_aiming_mode()
 	.=..()
 	if (.)
 		playsound(src, 'sound/weapons/guns/interaction/detonator_ready.ogg', VOLUME_MID, TRUE)
 		update_icon()
 
-/obj/item/weapon/gun/projectile/detonator/disable_aiming_mode()
+/obj/item/gun/projectile/detonator/disable_aiming_mode()
 	.=..()
 	if (.)
 		playsound(src, 'sound/weapons/guns/interaction/detonator_unready.ogg', VOLUME_MID, TRUE)
@@ -48,7 +48,7 @@
 	req_ammo = FALSE
 
 /datum/firemode/tripmine/fire(var/atom/target, var/mob/living/user, var/clickparams, var/pointblank=0, var/reflex=0)
-	var/obj/item/weapon/gun/projectile/detonator/R = gun
+	var/obj/item/gun/projectile/detonator/R = gun
 	if (R.deployed_mines.len)
 		var/obj/effect/mine/trip/M = R.deployed_mines[R.deployed_mines.len]
 		R.deployed_mines -= M
@@ -57,11 +57,11 @@
 		to_chat(user, "There are no active mines.")
 
 
-/obj/item/weapon/gun/projectile/detonator/loaded
+/obj/item/gun/projectile/detonator/loaded
 
 	ammo_type = /obj/item/ammo_casing/tripmine
 
-/obj/item/weapon/gun/projectile/detonator/update_icon()
+/obj/item/gun/projectile/detonator/update_icon()
 	if(get_remaining_ammo())
 		icon_state = "detonator_loaded"
 	else
@@ -151,7 +151,7 @@
 /obj/effect/mine/trip/New(var/atom/newloc, var/obj/item/projectile/deploy/projectile)
 
 	.=..()
-	var/obj/item/weapon/gun/projectile/detonator/D = projectile.launcher
+	var/obj/item/gun/projectile/detonator/D = projectile.launcher
 	D.deployed_mines += src
 	gunref = "\ref[D]"
 
@@ -183,7 +183,7 @@
 	qdel(src)
 
 /obj/effect/mine/trip/Destroy()
-	var/obj/item/weapon/gun/projectile/detonator/D 	= locate(gunref)
+	var/obj/item/gun/projectile/detonator/D 	= locate(gunref)
 	if (D)
 		D.deployed_mines -= src
 	gunref = null

@@ -15,6 +15,8 @@
 		explode()
 
 /obj/structure/reagent_dispensers/coolanttank/ex_act()
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	explode()
 
 /obj/structure/reagent_dispensers/coolanttank/proc/explode()

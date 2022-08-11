@@ -20,7 +20,7 @@
 -----------------------------*/
 //Actually creates and launches a wave.
 //Width should be an odd number or it will skew to the right
-/proc/launch_wave(var/atom/source, var/atom/target, var/projectile_type = /obj/item/projectile/wave, var/width = 3, var/mob/living/user, var/obj/item/weapon/gun/launcher)
+/proc/launch_wave(var/atom/source, var/atom/target, var/projectile_type = /obj/item/projectile/wave, var/width = 3, var/mob/living/user, var/obj/item/gun/launcher)
 
 	var/datum/projectile_wave/wave = new()
 

@@ -1,4 +1,4 @@
-/obj/item/device/flashlight
+/obj/item/flashlight
 	name = "flashlight"
 	desc = "A hand-held emergency light."
 	icon = 'icons/obj/lighting.dmi'
@@ -18,13 +18,13 @@
 	var/on = FALSE
 	var/activation_sound = 'sound/effects/flashlight.ogg'
 
-/obj/item/device/flashlight/Initialize(mapload)
+/obj/item/flashlight/Initialize(mapload)
 	. = ..()
 	if(icon_state == "[initial(icon_state)]-on")
 		on = TRUE
 	update_brightness()
 
-/obj/item/device/flashlight/proc/update_brightness(mob/user)
+/obj/item/flashlight/proc/update_brightness(mob/user)
 	if(on)
 		icon_state = "[initial(icon_state)]-on"
 	else
@@ -32,20 +32,20 @@
 	set_light_on(on)
 	update_light()
 
-/obj/item/device/flashlight/dropped(mob/user)
+/obj/item/flashlight/dropped(mob/user)
 	. = ..()
 	if(light_wedge)
 		set_dir(user.dir)
 		update_light()
 
-/obj/item/device/flashlight/throw_at()
+/obj/item/flashlight/throw_at()
 	. = ..()
 	if(light_wedge)
 		var/new_dir = pick(NORTH, SOUTH, EAST, WEST)
 		set_dir(new_dir)
 		update_light()
 
-/obj/item/device/flashlight/attack_self(mob/user)
+/obj/item/flashlight/attack_self(mob/user)
 	on = !on
 	if(on)
 		playsound(user, activation_sound, 40, TRUE)
@@ -53,7 +53,7 @@
 	user.update_action_buttons()
 	return 1
 
-/obj/item/device/flashlight/attack(mob/living/M as mob, mob/living/user as mob)
+/obj/item/flashlight/attack(mob/living/M as mob, mob/living/user as mob)
 	add_fingerprint(user)
 	if(on && get_zone_sel(user, TRUE) == BP_EYES)
 
@@ -88,7 +88,7 @@
 	else
 		return ..()
 
-/obj/item/device/flashlight/proc/inspect_vision(obj/item/organ/vision, mob/living/user)
+/obj/item/flashlight/proc/inspect_vision(obj/item/organ/vision, mob/living/user)
 	var/mob/living/carbon/human/H = vision.owner
 
 	if(H == user)	//can't look into your own eyes buster
@@ -119,14 +119,14 @@
 
 	//if someone wants to implement inspecting robot eyes here would be the place to do it.
 
-/obj/item/device/flashlight/upgraded
+/obj/item/flashlight/upgraded
 	name = "\improper LED flashlight"
 	desc = "An energy efficient flashlight."
 	icon_state = "biglight"
 	item_state = "biglight"
 	light_range = 6
 
-/obj/item/device/flashlight/pen
+/obj/item/flashlight/pen
 	name = "penlight"
 	desc = "A pen-sized light, used by medical staff."
 	icon_state = "penlight"
@@ -136,7 +136,7 @@
 	w_class = ITEM_SIZE_TINY
 	light_range = 3
 
-/obj/item/device/flashlight/maglight
+/obj/item/flashlight/maglight
 	name = "maglight"
 	desc = "A very, very heavy duty flashlight."
 	icon_state = "maglight"
@@ -148,7 +148,7 @@
 	light_range = 5
 
 /******************************Lantern*******************************/
-/obj/item/device/flashlight/lantern
+/obj/item/flashlight/lantern
 	name = "lantern"
 	desc = "A mining lantern."
 	icon = 'icons/obj/lighting.dmi'
@@ -166,7 +166,7 @@
 
 /******************************Lantern*******************************/
 
-/obj/item/device/flashlight/drone
+/obj/item/flashlight/drone
 	name = "low-power flashlight"
 	desc = "A miniature lamp, that might be used by small robots."
 	icon_state = "penlight"
@@ -176,7 +176,7 @@
 	light_range = 3
 
 // the desk lamps are a bit special
-/obj/item/device/flashlight/lamp
+/obj/item/flashlight/lamp
 	name = "desk lamp"
 	desc = "A desk lamp with an adjustable mount."
 	icon_state = "lamp"
@@ -188,13 +188,13 @@
 	light_wedge = LIGHT_OMNI
 
 // green-shaded desk lamp
-/obj/item/device/flashlight/lamp/green
+/obj/item/flashlight/lamp/green
 	desc = "A classic green-shaded desk lamp."
 	icon_state = "lampgreen"
 	item_state = "lampgreen"
 	light_color = "#ffc58f"
 
-/obj/item/device/flashlight/lamp/verb/toggle_light()
+/obj/item/flashlight/lamp/verb/toggle_light()
 	set name = "Toggle light"
 	set category = "Object"
 	set src in oview(1)
@@ -204,7 +204,7 @@
 
 // FLARES
 
-/obj/item/device/flashlight/flare
+/obj/item/flashlight/flare
 	name = "flare"
 	desc = "A red standard-issue flare. There are instructions on the side reading 'pull cord, make light'."
 	w_class = ITEM_SIZE_TINY
@@ -221,21 +221,21 @@
 	light_wedge = LIGHT_OMNI
 
 //Subtype that enables on spawning
-/obj/item/device/flashlight/flare/active/Initialize()
+/obj/item/flashlight/flare/active/Initialize()
 	.=..()
 	on = TRUE
 	update_brightness()
 	START_PROCESSING(SSobj, src)
 
-/obj/item/device/flashlight/flare/Initialize()
+/obj/item/flashlight/flare/Initialize()
 	. = ..()
 	fuel = rand(800, 1000) // Sorry for changing this so much but I keep under-estimating how long X number of ticks last in seconds.v
 
-/obj/item/device/flashlight/flare/Destroy()
+/obj/item/flashlight/flare/Destroy()
 	. = ..()
 	STOP_PROCESSING(SSobj, src)
 
-/obj/item/device/flashlight/flare/Process()
+/obj/item/flashlight/flare/Process()
 	if(produce_heat)
 		var/turf/T = get_turf(src)
 		if(T)
@@ -247,7 +247,7 @@
 			icon_state = "[initial(icon_state)]-empty"
 		STOP_PROCESSING(SSobj, src)
 
-/obj/item/device/flashlight/flare/proc/turn_off()
+/obj/item/flashlight/flare/proc/turn_off()
 	on = FALSE
 	force = initial(src.force)
 	damtype = initial(src.damtype)
@@ -257,14 +257,14 @@
 	else
 		update_brightness(null)
 
-/obj/item/device/flashlight/flare/update_brightness(mob/user)
+/obj/item/flashlight/flare/update_brightness(mob/user)
 	..()
 	if(on)
 		icon_state = "[initial(icon_state)]-on"
 	else
 		icon_state = initial(icon_state)
 
-/obj/item/device/flashlight/flare/attack_self(mob/user)
+/obj/item/flashlight/flare/attack_self(mob/user)
 
 	// Usual checks
 	if(fuel <= 0)
@@ -282,7 +282,7 @@
 		damtype = BURN
 		START_PROCESSING(SSobj, src)
 
-/obj/item/device/flashlight/flare/proc/update_damage()
+/obj/item/flashlight/flare/proc/update_damage()
 	if(on)
 		force = on_damage
 		damtype = BURN
@@ -291,7 +291,7 @@
 		damtype = initial(damtype)
 
 //Glowsticks
-/obj/item/device/flashlight/flare/glowstick
+/obj/item/flashlight/flare/glowstick
 	name = "green glowstick"
 	desc = "A military-grade glowstick."
 	w_class = ITEM_SIZE_SMALL
@@ -304,12 +304,12 @@
 	light_range = 4
 	light_wedge = LIGHT_OMNI
 
-/obj/item/device/flashlight/flare/glowstick/Initialize()
+/obj/item/flashlight/flare/glowstick/Initialize()
 	fuel = rand(3200, 4000)
 	set_light_color(color)
 	.=..()
 
-/obj/item/device/flashlight/flare/glowstick/update_brightness(mob/user)
+/obj/item/flashlight/flare/glowstick/update_brightness(mob/user)
 	item_state = "glowstick"
 	overlays.Cut()
 	if(!fuel)
@@ -331,32 +331,32 @@
 			M.update_inv_r_hand()
 	update_light()
 
-/obj/item/device/flashlight/flare/glowstick/red
+/obj/item/flashlight/flare/glowstick/red
 	name = "red glowstick"
 	color = "#fc0f29"
 
-/obj/item/device/flashlight/flare/glowstick/blue
+/obj/item/flashlight/flare/glowstick/blue
 	name = "blue glowstick"
 	color = "#599dff"
 
-/obj/item/device/flashlight/flare/glowstick/orange
+/obj/item/flashlight/flare/glowstick/orange
 	name = "orange glowstick"
 	color = "#fa7c0b"
 
-/obj/item/device/flashlight/flare/glowstick/yellow
+/obj/item/flashlight/flare/glowstick/yellow
 	name = "yellow glowstick"
 	color = "#fef923"
 
-/obj/item/device/flashlight/flare/glowstick/random
+/obj/item/flashlight/flare/glowstick/random
 	name = "glowstick"
 	desc = "A party-grade glowstick."
 	color = "#ff00ff"
 
-/obj/item/device/flashlight/flare/glowstick/random/New()
+/obj/item/flashlight/flare/glowstick/random/New()
 	color = rgb(rand(50,255),rand(50,255),rand(50,255))
 	..()
 
-/obj/item/device/flashlight/slime
+/obj/item/flashlight/slime
 	gender = PLURAL
 	name = "glowing slime extract"
 	desc = "A glowing ball of what appears to be amber."
@@ -368,15 +368,15 @@
 	light_range = 5
 	light_wedge = LIGHT_OMNI
 
-/obj/item/device/flashlight/slime/update_icon()
+/obj/item/flashlight/slime/update_icon()
 	return
 
-/obj/item/device/flashlight/slime/attack_self(mob/user)
+/obj/item/flashlight/slime/attack_self(mob/user)
 	return //Bio-luminescence does not toggle.
 
 //hand portable floodlights for emergencies. Less bulky than the large ones. But also less light. Unused green variant in the sheet.
 
-/obj/item/device/flashlight/lamp/floodlamp
+/obj/item/flashlight/lamp/floodlamp
 	name = "flood lamp"
 	desc = "A portable emergency flood light with a ultra-bright LED."
 	icon = 'icons/obj/machines/floodlight.dmi'
@@ -387,7 +387,7 @@
 	light_range = 7
 	light_wedge = LIGHT_OMNI
 
-/obj/item/device/flashlight/floodlamp/verb/rotate()
+/obj/item/flashlight/floodlamp/verb/rotate()
 	set name = "Rotate Light"
 	set category = "Object"
 	set src in oview(1)
@@ -405,11 +405,11 @@
 	src.set_dir(turn(src.dir, 90))
 	return
 
-/obj/item/device/flashlight/floodlamp/AltClick()
+/obj/item/flashlight/floodlamp/AltClick()
 	rotate()
 
 //Lava Lamps: Because we're already stuck in the 70ies with those fax machines.
-/obj/item/device/flashlight/lamp/lava
+/obj/item/flashlight/lamp/lava
 	name = "lava lamp"
 	desc = "A kitchy throwback decorative light. Noir Edition."
 	icon = 'icons/obj/lighting.dmi'
@@ -418,42 +418,42 @@
 	action_button_name = "Toggle lamp"
 	light_range = 3 //range of light when on
 
-/obj/item/device/flashlight/lamp/lava/red
+/obj/item/flashlight/lamp/lava/red
 	desc = "A kitchy red decorative light."
 	icon_state = "redlamp"
 	light_color = COLOR_RED
 
-/obj/item/device/flashlight/lamp/lava/blue
+/obj/item/flashlight/lamp/lava/blue
 	desc = "A kitchy blue decorative light"
 	icon_state = "bluelamp"
 	light_color = COLOR_BLUE
 
-/obj/item/device/flashlight/lamp/lava/cyan
+/obj/item/flashlight/lamp/lava/cyan
 	desc = "A kitchy cyan decorative light"
 	icon_state = "cyanlamp"
 	light_color = COLOR_CYAN
 
-/obj/item/device/flashlight/lamp/lava/green
+/obj/item/flashlight/lamp/lava/green
 	desc = "A kitchy green decorative light"
 	icon_state = "greenlamp"
 	light_color = COLOR_GREEN
 
-/obj/item/device/flashlight/lamp/lava/orange
+/obj/item/flashlight/lamp/lava/orange
 	desc = "A kitchy orange decorative light"
 	icon_state = "orangelamp"
 	light_color = COLOR_ORANGE
 
-/obj/item/device/flashlight/lamp/lava/purple
+/obj/item/flashlight/lamp/lava/purple
 	desc = "A kitchy purple decorative light"
 	icon_state = "purplelamp"
 	light_color = COLOR_PURPLE
 
-/obj/item/device/flashlight/lamp/lava/pink
+/obj/item/flashlight/lamp/lava/pink
 	desc = "A kitchy pink decorative light"
 	icon_state = "pinklamp"
 	light_color = COLOR_PINK
 
-/obj/item/device/flashlight/lamp/lava/yellow
+/obj/item/flashlight/lamp/lava/yellow
 	desc = "A kitchy yellow decorative light"
 	icon_state = "yellowlamp"
 	light_color = COLOR_YELLOW

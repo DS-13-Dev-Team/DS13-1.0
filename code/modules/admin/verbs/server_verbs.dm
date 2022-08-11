@@ -402,12 +402,12 @@
 	var/result = input(usr, "Select reboot method", "World Reboot", options[1]) as null|anything in options
 	if(result)
 		var/reason = input(usr, "Type restart reason", "Restart Reason") as null|text
-		to_chat(world, SPAN_BOLDANNOUNCE("Initiated by [usr.client.holder ? "Admin" : usr.key]."))
 		switch(result)
 			if("Regular Restart")
 				if(!(isnull(usr.client.address) || (usr.client.address in localhost_addresses)))
 					if(tgui_alert(usr, "Are you sure you want to restart the server?","This server is live",list("Restart","Cancel")) != "Restart")
 						return FALSE
+				to_chat(world, SPAN_BOLDANNOUNCE("Initiated by [usr.key]."))
 				SSticker.Reboot(reason, 10)
 			if("Regular Restart (with delay)")
 				var/delay = input("What delay should the restart have (in seconds)?", "Restart Delay", 5) as num|null
@@ -416,15 +416,16 @@
 				if(!(isnull(usr.client.address) || (usr.client.address in localhost_addresses)))
 					if(tgui_alert(usr,"Are you sure you want to restart the server?","This server is live",list("Restart","Cancel")) != "Restart")
 						return FALSE
+				to_chat(world, SPAN_BOLDANNOUNCE("Initiated by [usr.key]."))
 				SSticker.Reboot(reason, delay * 10)
 			if("Hard Restart (No Delay, No Feeback Reason)")
-				to_chat(world, "<span class='infoplain'>World reboot - Initiated by [usr.client.holder ? "Admin" : usr.key].</span>")
+				to_chat(world, "<span class='infoplain'>World reboot - Initiated by [usr.key].</span>")
 				world.Reboot()
 			if("Hardest Restart (No actions, just reboot)")
-				to_chat(world, "<span class='infoplain'>Hard world reboot - Initiated by [usr.client.holder ? "Admin" : usr.key].</span>")
+				to_chat(world, "<span class='infoplain'>Hard world reboot - Initiated by [usr.key].</span>")
 				world.Reboot(fast_track = TRUE)
 			if("Server Restart (Kill and restart DD)")
-				to_chat(world, "<span class='infoplain'>Server restart - Initiated by [usr.client.holder ? "Admin" : usr.key].</span>")
+				to_chat(world, "<span class='infoplain'>Server restart - Initiated by [usr.key].</span>")
 				world.TgsEndProcess()
 
 /datum/admins/proc/toggleooc()

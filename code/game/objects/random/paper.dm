@@ -7,7 +7,7 @@
 	max_amount = FEW
 
 /obj/random/paper/cec/item_to_spawn()
-	return pickweight(list(/obj/item/weapon/paper/ishimura/fcprotocol = 1))
+	return pickweight(list(/obj/item/paper/ishimura/fcprotocol = 1))
 
 /obj/random/paper/cec/low
 	name = "Random Paper - Low"
@@ -18,4 +18,4 @@
 	max_amount = FEW
 
 /obj/random/paper/cec/item_to_spawn()
-	return pickweight(list(/obj/item/weapon/paper/ishimura/fcprotocol = 1))
+	return pickweight(list(/obj/item/paper/ishimura/fcprotocol = 1))

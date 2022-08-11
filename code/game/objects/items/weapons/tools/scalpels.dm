@@ -1,4 +1,4 @@
-/obj/item/weapon/tool/scalpel
+/obj/item/tool/scalpel
 	name = "scalpel"
 	desc = "Cut, cut, and once more cut."
 	icon_state = "scalpel_t1"
@@ -16,7 +16,7 @@
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	tool_qualities = list(QUALITY_CUTTING = 30, QUALITY_WIRE_CUTTING = 10)
 
-/obj/item/weapon/tool/scalpel/advanced
+/obj/item/tool/scalpel/advanced
 	name = "advanced scalpel"
 	desc = "Made of more expensive materials, sharper and generally more reliable."
 	icon_state = "scalpel_t2"
@@ -25,7 +25,7 @@
 	degradation = DEGRADATION_WEAK_3
 	max_modifications = 4
 
-/obj/item/weapon/tool/scalpel/laser
+/obj/item/tool/scalpel/laser
 	name = "laser scalpel"
 	desc = "A scalpel augmented with a directed laser, for more precise cutting without blood entering the field."
 	icon_state = "scalpel_t3"
@@ -35,10 +35,10 @@
 	tool_qualities = list(QUALITY_CUTTING = 50, QUALITY_WIRE_CUTTING = 20, QUALITY_LASER_CUTTING = 40)
 	degradation = DEGRADATION_WEAK_2
 	use_power_cost = 0.12
-	suitable_cell = /obj/item/weapon/cell
+	suitable_cell = /obj/item/cell
 	max_modifications = 4
 
-/obj/item/weapon/tool/scalpel/manager
+/obj/item/tool/scalpel/manager
 	name = "incision management system"
 	desc = "A true extension of the surgeon's body, this marvel instantly and completely prepares an incision allowing for the immediate commencement of therapeutic steps."
 	icon_state = "scalpel_manager_on"
@@ -46,11 +46,11 @@
 	damtype = "fire"
 	tool_qualities = list(QUALITY_CUTTING = 100, QUALITY_WIRE_CUTTING = 20, QUALITY_LASER_CUTTING = 100, QUALITY_CLAMPING = 100, QUALITY_RETRACTING = 100)
 	use_power_cost = 0.16
-	suitable_cell = /obj/item/weapon/cell
+	suitable_cell = /obj/item/cell
 	max_modifications = 4
 
 //A makeshift knife, for doing all manner of cutting and stabbing tasks in a half-assed manner
-/obj/item/weapon/tool/shiv
+/obj/item/tool/shiv
 	name = "shiv"
 	desc = "A pointy piece of glass, abraded to an edge and wrapped in tape for a handle."
 	icon_state = "impro_shiv"

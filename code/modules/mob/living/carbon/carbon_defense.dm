@@ -41,8 +41,8 @@
 	.=..()
 
 /mob/living/carbon/electrocute_act(var/shock_damage, var/obj/source, var/siemens_coeff = 1.0, var/def_zone = null)
-
-	//if(status_flags & GODMODE)	return 0	//godmode
+	if(status_flags & GODMODE)
+		return
 	var/ID = rand(1, 99999)
 	shock_damage = apply_shock(shock_damage, def_zone, siemens_coeff, ID)
 	if(!shock_damage)

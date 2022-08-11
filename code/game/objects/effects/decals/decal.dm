@@ -1,5 +1,5 @@
 /obj/effect/decal
-
+	plane = FLOOR_PLANE
 	layer = DECAL_LAYER
 	biomass = 0	//Used for blood and other organic smears
 	anchored = TRUE	//Why was this not set true

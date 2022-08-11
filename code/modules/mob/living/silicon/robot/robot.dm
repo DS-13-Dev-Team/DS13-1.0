@@ -40,17 +40,17 @@
 	var/atom/movable/screen/robot_modules_background
 
 //3 Modules can be activated at any one time.
-	var/obj/item/weapon/robot_module/module = null
+	var/obj/item/robot_module/module = null
 	var/module_active = null
 	var/module_state_1 = null
 	var/module_state_2 = null
 	var/module_state_3 = null
 
-	silicon_camera = /obj/item/device/camera/siliconcam/robot_camera
-	silicon_radio = /obj/item/device/radio/borg
+	silicon_camera = /obj/item/camera/siliconcam/robot_camera
+	silicon_radio = /obj/item/radio/borg
 
 	var/mob/living/silicon/ai/connected_ai = null
-	var/obj/item/weapon/cell/cell = /obj/item/weapon/cell/high
+	var/obj/item/cell/cell = /obj/item/cell/high
 	var/obj/machinery/camera/camera = null
 
 	var/cell_emp_mult = 2.5
@@ -58,9 +58,9 @@
 	// Components are basically robot organs.
 	var/list/components = list()
 
-	var/obj/item/device/mmi/mmi = null
+	var/obj/item/mmi/mmi = null
 
-	var/obj/item/weapon/stock_parts/matter_bin/storage = null
+	var/obj/item/stock_parts/matter_bin/storage = null
 
 	var/opened = 0
 	var/emagged = 0
@@ -302,7 +302,7 @@
 
 	if(istype(mmi, /obj/item/organ/internal/posibrain))
 		braintype = "Robot"
-	else if(istype(mmi, /obj/item/device/mmi/digital/robot))
+	else if(istype(mmi, /obj/item/mmi/digital/robot))
 		braintype = "Drone"
 	else
 		braintype = "Cyborg"
@@ -439,7 +439,7 @@
 // this function displays jetpack pressure in the stat panel
 /mob/living/silicon/robot/proc/show_jetpack_pressure()
 	// if you have a jetpack, show the internal tank pressure
-	var/obj/item/weapon/tank/jetpack/current_jetpack = installed_jetpack()
+	var/obj/item/tank/jetpack/current_jetpack = installed_jetpack()
 	if (current_jetpack)
 		stat("Internal Atmosphere Info", current_jetpack.name)
 		stat("Tank Pressure", current_jetpack.air_contents.return_pressure())
@@ -448,7 +448,7 @@
 // this function returns the robots jetpack, if one is installed
 /mob/living/silicon/robot/proc/installed_jetpack()
 	if(module)
-		return (locate(/obj/item/weapon/tank/jetpack) in module.modules)
+		return (locate(/obj/item/tank/jetpack) in module.modules)
 	return 0
 
 
@@ -471,8 +471,8 @@
 	if(prob(75) && Proj.damage > 0) spark_system.start()
 	return 2
 
-/mob/living/silicon/robot/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	if (istype(W, /obj/item/weapon/handcuffs)) // fuck i don't even know why isrobot() in handcuff code isn't working so this will have to do
+/mob/living/silicon/robot/attackby(obj/item/W as obj, mob/user as mob)
+	if (istype(W, /obj/item/handcuffs)) // fuck i don't even know why isrobot() in handcuff code isn't working so this will have to do
 		return
 
 	if(opened) // Are they trying to insert something?
@@ -484,7 +484,7 @@
 				C.installed = 1
 				C.wrapped = W
 				C.install()
-				W.loc = null
+				W.forceMove(null)
 
 				var/obj/item/robot_parts/robot_component/WC = W
 				if(istype(WC))
@@ -572,7 +572,7 @@
 					I.brute = C.brute_damage
 					I.burn = C.electronics_damage
 
-				I.loc = src.loc
+				I.forceMove(src.loc)
 
 				if(C.installed == 1)
 					C.uninstall()
@@ -589,7 +589,7 @@
 					update_icon()
 
 	// If the robot is having something inserted which will remain inside it, self-inserting must be handled before exiting to avoid logic errors. Use the handle_selfinsert proc.
-	else if (istype(W, /obj/item/weapon/stock_parts/matter_bin) && opened) // Installing/swapping a matter bin
+	else if (istype(W, /obj/item/stock_parts/matter_bin) && opened) // Installing/swapping a matter bin
 		if(!user.unEquip(W, src))
 			return
 		if(storage)
@@ -602,7 +602,7 @@
 		handle_selfinsert(W, user)
 		recalculate_synth_capacities()
 
-	else if (istype(W, /obj/item/weapon/cell) && opened)	// trying to put a cell inside
+	else if (istype(W, /obj/item/cell) && opened)	// trying to put a cell inside
 		var/datum/robot_component/C = components["power cell"]
 		if(wiresexposed)
 			to_chat(user, "Close the panel first.")
@@ -638,12 +638,12 @@
 			to_chat(user, "Unable to locate a radio.")
 		update_icon()
 
-	else if(istype(W, /obj/item/device/encryptionkey/) && opened)
+	else if(istype(W, /obj/item/encryptionkey/) && opened)
 		if(silicon_radio)//sanityyyyyy
 			silicon_radio.attackby(W,user)//GTFO, you have your own procs
 		else
 			to_chat(user, "Unable to locate a radio.")
-	else if (istype(W, /obj/item/weapon/card/id)||istype(W, /obj/item/modular_computer)||istype(W, /obj/item/weapon/card/robot))			// trying to unlock the interface with an ID card
+	else if (istype(W, /obj/item/card/id)||istype(W, /obj/item/modular_computer)||istype(W, /obj/item/card/robot))			// trying to unlock the interface with an ID card
 		if(emagged)//still allow them to open the cover
 			to_chat(user, "The interface seems slightly damaged")
 		if(opened)
@@ -673,13 +673,13 @@
 				to_chat(usr, "Upgrade error!")
 
 	else
-		if( !(istype(W, /obj/item/device/robotanalyzer) || istype(W, /obj/item/device/healthanalyzer)) )
+		if( !(istype(W, /obj/item/robotanalyzer) || istype(W, /obj/item/healthanalyzer)) )
 			spark_system.start()
 		return ..()
 
 /mob/living/silicon/robot/proc/handle_selfinsert(obj/item/W, mob/user)
-	if ((user == src) && istype(get_active_hand(),/obj/item/weapon/gripper))
-		var/obj/item/weapon/gripper/H = get_active_hand()
+	if ((user == src) && istype(get_active_hand(),/obj/item/gripper))
+		var/obj/item/gripper/H = get_active_hand()
 		if (W.loc == H) //if this triggers something has gone very wrong, and it's safest to abort
 			return
 		else if (H.wrapped == W)
@@ -727,18 +727,18 @@
 			return 1
 	else if(istype(M, /mob/living/silicon/robot))
 		var/mob/living/silicon/robot/R = M
-		if(check_access(R.get_active_hand()) || istype(R.get_active_hand(), /obj/item/weapon/card/robot))
+		if(check_access(R.get_active_hand()) || istype(R.get_active_hand(), /obj/item/card/robot))
 			return 1
 	return 0
 
-/mob/living/silicon/robot/proc/check_access(obj/item/weapon/card/id/I)
+/mob/living/silicon/robot/proc/check_access(obj/item/card/id/I)
 	if(!istype(req_access, /list)) //something's very wrong
 		return 1
 
 	var/list/L = req_access
 	if(!L.len) //no requirements
 		return 1
-	if(!I || !istype(I, /obj/item/weapon/card/id) || !I.access) //not ID or no access
+	if(!I || !istype(I, /obj/item/card/id) || !I.access) //not ID or no access
 		return 0
 	for(var/req in req_access)
 		if(req in I.access) //have one of the required accesses
@@ -898,7 +898,7 @@
 	. = ..()
 
 	if(module)
-		if(module.type == /obj/item/weapon/robot_module/janitor)
+		if(module.type == /obj/item/robot_module/janitor)
 			var/turf/tile = loc
 			if(isturf(tile))
 				tile.clean_blood()
@@ -1121,7 +1121,7 @@
 					if(src.module)
 						var/rebuild = 0
 						if(rebuild)
-							src.module.modules += new /obj/item/weapon/tool/pickaxe/diamonddrill(src.module)
+							src.module.modules += new /obj/item/tool/pickaxe/diamonddrill(src.module)
 							src.module.rebuild()
 					update_icon()
 			else

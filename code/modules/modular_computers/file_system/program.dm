@@ -58,7 +58,7 @@
 
 // Used by programs that manipulate files.
 /datum/computer_file/program/proc/get_file(var/filename)
-	var/obj/item/weapon/computer_hardware/hard_drive/HDD = computer.hard_drive
+	var/obj/item/computer_hardware/hard_drive/HDD = computer.hard_drive
 	if(!HDD)
 		return
 	var/datum/computer_file/data/F = HDD.find_file_by_name(filename)
@@ -69,7 +69,7 @@
 /datum/computer_file/program/proc/create_file(var/newname, var/data = "", var/file_type = /datum/computer_file/data)
 	if(!newname)
 		return
-	var/obj/item/weapon/computer_hardware/hard_drive/HDD = computer.hard_drive
+	var/obj/item/computer_hardware/hard_drive/HDD = computer.hard_drive
 	if(!HDD)
 		return
 	if(get_file(newname))
@@ -136,7 +136,7 @@
 	if(!istype(user))
 		return 0
 
-	var/obj/item/weapon/card/id/I = user.GetIdCard()
+	var/obj/item/card/id/I = user.GetIdCard()
 	if(!I)
 		if(loud)
 			to_chat(user, "<span class='notice'>\The [computer] flashes an \"RFID Error - Unable to scan ID\" warning.</span>")
@@ -165,8 +165,8 @@
 				NM.using_access = user.GetAccess()
 		if(tguimodule_path)
 			TM = new tguimodule_path(src)
-			TM.using_access = user.GetAccess()
-			TM.tgui_interact(user)
+			if(user)
+				TM.using_access = user.GetAccess()
 		if(requires_ntnet && network_destination)
 			generate_network_log("Connection opened to [network_destination].")
 		program_state = PROGRAM_STATE_ACTIVE

@@ -202,11 +202,6 @@
 	return heat
 
 
-//Return true if this is a flat surface which people could work on
-/obj/proc/is_surface()
-	return FALSE
-
-
 //To be called from things that spill objects on the floor.
 //Makes an object move around randomly for a couple of tiles
 //Emerge var tells whether or not to remove the item from objects its currently inside

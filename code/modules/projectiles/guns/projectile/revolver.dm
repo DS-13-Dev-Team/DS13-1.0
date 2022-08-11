@@ -1,4 +1,4 @@
-/obj/item/weapon/gun/projectile/revolver
+/obj/item/gun/projectile/revolver
 	name = "revolver"
 	desc = "The Lumoco Arms HE Colt is a choice revolver for when you absolutely, positively need to put a hole in the other guy. Uses .357 ammo."
 	icon_state = "revolver"
@@ -13,11 +13,11 @@
 	mag_insert_sound = 'sound/weapons/guns/interaction/rev_magin.ogg'
 	mag_remove_sound = 'sound/weapons/guns/interaction/rev_magout.ogg'
 
-/obj/item/weapon/gun/projectile/revolver/AltClick()
+/obj/item/gun/projectile/revolver/AltClick()
 	if(CanPhysicallyInteract(usr))
 		spin_cylinder()
 
-/obj/item/weapon/gun/projectile/revolver/verb/spin_cylinder()
+/obj/item/gun/projectile/revolver/verb/spin_cylinder()
 	set name = "Spin cylinder"
 	set desc = "Fun when you're bored out of your skull."
 	set category = "Object"
@@ -30,24 +30,24 @@
 	if(rand(1,max_shells) > loaded.len)
 		chamber_offset = rand(0,max_shells - loaded.len)
 
-/obj/item/weapon/gun/projectile/revolver/consume_next_projectile()
+/obj/item/gun/projectile/revolver/consume_next_projectile()
 	if(chamber_offset)
 		chamber_offset--
 		return
 	return ..()
 
-/obj/item/weapon/gun/projectile/revolver/load_ammo(var/obj/item/A, mob/user)
+/obj/item/gun/projectile/revolver/load_ammo(var/obj/item/A, mob/user)
 	chamber_offset = 0
 	return ..()
 
-/obj/item/weapon/gun/projectile/revolver/mateba
+/obj/item/gun/projectile/revolver/mateba
 	name = "mateba"
 	icon_state = "mateba"
 	caliber = ".50"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	ammo_type = /obj/item/ammo_casing/a50
 
-/obj/item/weapon/gun/projectile/revolver/detective
+/obj/item/gun/projectile/revolver/detective
 	name = "revolver"
 	desc = "A cheap Martian knock-off of a Smith & Wesson Model 10. Uses .38-Special rounds."
 	icon_state = "detective"
@@ -56,7 +56,7 @@
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	ammo_type = /obj/item/ammo_casing/c38
 
-/obj/item/weapon/gun/projectile/revolver/detective/verb/rename_gun()
+/obj/item/gun/projectile/revolver/detective/verb/rename_gun()
 	set name = "Name Gun"
 	set category = "Object"
 	set desc = "Click to rename your gun. If you're the detective."
@@ -75,28 +75,28 @@
 		return 1
 
 // Blade Runner pistol.
-/obj/item/weapon/gun/projectile/revolver/deckard
+/obj/item/gun/projectile/revolver/deckard
 	name = "Deckard .44"
 	desc = "A custom-built revolver, based off the semi-popular Detective Special model."
 	icon_state = "deckard-empty"
 	ammo_type = /obj/item/ammo_magazine/c38/rubber
 
-/obj/item/weapon/gun/projectile/revolver/deckard/emp
+/obj/item/gun/projectile/revolver/deckard/emp
 	ammo_type = /obj/item/ammo_casing/c38/emp
 
-/obj/item/weapon/gun/projectile/revolver/deckard/update_icon()
+/obj/item/gun/projectile/revolver/deckard/update_icon()
 	..()
 	if(loaded.len)
 		icon_state = "deckard-loaded"
 	else
 		icon_state = "deckard-empty"
 
-/obj/item/weapon/gun/projectile/revolver/deckard/load_ammo(var/obj/item/A, mob/user)
+/obj/item/gun/projectile/revolver/deckard/load_ammo(var/obj/item/A, mob/user)
 	if(istype(A, /obj/item/ammo_magazine))
 		flick("deckard-reload",src)
 	..()
 
-/obj/item/weapon/gun/projectile/revolver/capgun
+/obj/item/gun/projectile/revolver/capgun
 	name = "cap gun"
 	desc = "Looks almost like the real thing! Ages 8 and up."
 	icon_state = "revolver-toy"
@@ -107,7 +107,7 @@
 	max_shells = 7
 	ammo_type = /obj/item/ammo_casing/cap
 
-/obj/item/weapon/gun/projectile/revolver/capgun/attackby(var/obj/item/W, mob/user)
+/obj/item/gun/projectile/revolver/capgun/attackby(var/obj/item/W, mob/user)
 	if(!isWirecutter(W) || icon_state == "revolver")
 		return ..()
 	to_chat(user, "<span class='notice'>You snip off the toy markings off the [src].</span>")
@@ -116,7 +116,7 @@
 	desc += " Someone snipped off the barrel's toy mark. How dastardly."
 	return 1
 
-/obj/item/weapon/gun/projectile/revolver/webley
+/obj/item/gun/projectile/revolver/webley
 	name = "service revolver"
 	desc = "The A&M W4. A rugged top break revolver produced by al-Maliki & Mosley. Based on the Webley model, with modern improvements. Uses .44 magnum rounds."
 	icon_state = "webley"
@@ -126,15 +126,15 @@
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	ammo_type = /obj/item/ammo_casing/c44
 
-/obj/item/weapon/gun/projectile/revolver/webley/marooned
+/obj/item/gun/projectile/revolver/webley/marooned
 	name = "worn-out revolver"
 
-/obj/item/weapon/gun/projectile/revolver/webley/marooned/Initialize()
+/obj/item/gun/projectile/revolver/webley/marooned/Initialize()
 	. = ..()
 	consume_next_projectile()
 	handle_post_fire()
 
-/obj/item/weapon/gun/projectile/revolver/hr
+/obj/item/gun/projectile/revolver/hr
 	name = "antique revolver"
 	desc = "An older .44 caliber revlover of unknown make and model. Despite the lack of identifying marks, the pistol appears lovingly cared for. 'Human Resources' has been carefully engraved on the receiver."
 	icon_state = "hrrevolver"
@@ -143,7 +143,7 @@
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	ammo_type = /obj/item/ammo_casing/c44
 
-/obj/item/weapon/gun/projectile/revolver/hr/update_icon()
+/obj/item/gun/projectile/revolver/hr/update_icon()
 	..()
 	if(loaded.len)
 		icon_state = "hrrevolver"

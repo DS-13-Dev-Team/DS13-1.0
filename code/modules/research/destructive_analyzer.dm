@@ -1,9 +1,9 @@
 /obj/machinery/r_n_d/destructive_analyzer
 	name = "Destructive Analyzer"
 	icon_state = "d_analyzer"
-	var/obj/item/weapon/loaded_item = null
+	var/obj/item/loaded_item = null
 	var/decon_mod = 0
-	circuit = /obj/item/weapon/circuitboard/destructive_analyzer
+	circuit = /obj/item/circuitboard/destructive_analyzer
 
 /obj/machinery/r_n_d/destructive_analyzer/Destroy()
 	. = ..()
@@ -14,7 +14,7 @@
 
 /obj/machinery/r_n_d/destructive_analyzer/RefreshParts()
 	var/T = 0
-	for(var/obj/item/weapon/stock_parts/S in component_parts)
+	for(var/obj/item/stock_parts/S in component_parts)
 		T += S.rating
 	decon_mod = T
 
@@ -38,7 +38,7 @@
 	if (shocked)
 		shock(user,50)
 
-	if (user.a_intent == I_HURT && istype(O, /obj/item/weapon/tool/screwdriver))
+	if (user.a_intent == I_HURT && istype(O, /obj/item/tool/screwdriver))
 		default_deconstruction_screwdriver(user, O)
 		update_icon()
 		if(linked_console)
@@ -74,7 +74,7 @@
 			return
 		loaded_item = O
 		user.drop_item()
-		O.loc = src
+		O.forceMove(src)
 		busy = TRUE
 		to_chat(user, "<span class='notice'>You add the [O.name] to the [src]!</span>")
 		flick("d_analyzer_la", src)

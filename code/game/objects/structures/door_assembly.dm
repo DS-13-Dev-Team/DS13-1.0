@@ -8,7 +8,7 @@
 	var/state = 0
 	var/base_icon_state = ""
 	var/base_name = "Airlock"
-	var/obj/item/weapon/airlock_electronics/electronics = null
+	var/obj/item/airlock_electronics/electronics = null
 	var/airlock_type = "" //the type path of the airlock once completed
 	var/glass_type = "/glass"
 	var/glass = 0 // 0 = glass can be installed. -1 = glass can't be installed. 1 = glass is already installed. Text = mineral plating is installed instead.
@@ -18,6 +18,7 @@
 	var/glass_icon = 'icons/obj/doors/station/fill_glass.dmi'
 
 	New()
+		.=..()
 		update_state()
 
 /obj/structure/door_assembly/door_assembly_hatch
@@ -61,6 +62,7 @@
 	glass_type = "/multi_tile/glass"
 
 	New()
+		.=..()
 		if(dir in list(EAST, WEST))
 			bound_width = width * world.icon_size
 			bound_height = world.icon_size
@@ -81,7 +83,7 @@
 
 
 /obj/structure/door_assembly/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/weapon/pen))
+	if(istype(W, /obj/item/pen))
 		var/t = sanitizeSafe(input(user, "Enter the name for the door.", src.name, src.created_name), MAX_NAME_LEN)
 		if(!t)	return
 		if(!in_range(src, usr) && src.loc != usr)	return
@@ -144,7 +146,7 @@
 			new/obj/item/stack/cable_coil(src.loc, 1)
 			src.state = 0
 
-	else if(istype(W, /obj/item/weapon/airlock_electronics) && state == 1)
+	else if(istype(W, /obj/item/airlock_electronics) && state == 1)
 		playsound(src.loc, 'sound/items/Screwdriver.ogg', 100, 1)
 		user.visible_message("[user] installs the electronics into the airlock assembly.", "You start to install electronics into the airlock assembly.")
 
@@ -172,7 +174,7 @@
 			to_chat(user, "<span class='notice'>You removed the airlock electronics!</span>")
 			src.state = 1
 			src.SetName("Wired Airlock Assembly")
-			electronics.loc = src.loc
+			electronics.forceMove(src.loc)
 			electronics = null
 
 	else if(istype(W, /obj/item/stack/material) && !glass)

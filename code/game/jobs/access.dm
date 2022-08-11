@@ -13,7 +13,7 @@
 	return check_access_list(M.GetAccess())
 
 /atom/proc/GetAccess()
-	var/obj/item/weapon/card/id/id = GetIdCard()
+	var/obj/item/card/id/id = GetIdCard()
 	return id ? id.GetAccess() : list()
 
 /atom/proc/GetIdCard()
@@ -162,14 +162,9 @@
 	return AS[num2text(id)]
 
 /proc/get_all_jobs()
-	var/list/all_jobs = list()
-	var/list/all_datums = typesof(/datum/job)
-	all_datums -= exclude_jobs
-	var/datum/job/jobdatum
-	for(var/jobtype in all_datums)
-		jobdatum = new jobtype
-		all_jobs.Add(jobdatum.title)
-	return all_jobs
+	. = list()
+	for(var/datum/job/jobdatum as anything in subtypesof(/datum/job))
+		. += initial(jobdatum.title)
 
 /proc/get_all_centcom_jobs()
 	return list("VIP Guest",
@@ -199,7 +194,7 @@
 /mob/living/carbon/human/GetIdCard()
 	for(var/item_slot in HUMAN_ID_CARDS)
 		var/obj/item/I = item_slot
-		var/obj/item/weapon/card/id = I ? I.GetIdCard() : null
+		var/obj/item/card/id = I ? I.GetIdCard() : null
 		if(id)
 			return id
 
@@ -217,7 +212,7 @@
 	return idcard
 
 /proc/FindNameFromID(var/mob/M, var/missing_id_name = "Unknown")
-	var/obj/item/weapon/card/id/C = M.GetIdCard()
+	var/obj/item/card/id/C = M.GetIdCard()
 	if(C)
 		return C.registered_name
 	return missing_id_name
@@ -226,7 +221,7 @@
 	return joblist + list("Prisoner")
 
 /obj/proc/GetJobName() //Used in secHUD icon generation
-	var/obj/item/weapon/card/id/I = GetIdCard()
+	var/obj/item/card/id/I = GetIdCard()
 
 	if(I)
 		var/job_icons = get_all_job_icons()

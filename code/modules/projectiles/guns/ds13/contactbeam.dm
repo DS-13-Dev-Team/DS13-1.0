@@ -10,7 +10,7 @@
 #define CHARGE_READY	2
 
 
-/obj/item/weapon/gun/energy/contact
+/obj/item/gun/energy/contact
 	name = "C99 Supercollider Contact Beam"
 	desc = "A heavy-duty energy pulse device, the Contact Beam is used for commercial destruction where a powerful but focused explosive force is needed. The alt-fire delivers a ground clearing-blast around the user."
 	icon = 'icons/obj/weapons/ds13guns48x32.dmi'
@@ -20,7 +20,7 @@
 	w_class = ITEM_SIZE_HUGE
 
 	charge_cost = 250 //Four shots per battery
-	cell_type = /obj/item/weapon/cell/contact
+	cell_type = /obj/item/cell/contact
 	projectile_type = null
 	slot_flags = SLOT_BACK
 	charge_meter = FALSE	//if set, the icon state will be chosen based on the current charge
@@ -53,14 +53,14 @@
 	//This is a precision weapon, not to be hipfired
 	require_aiming = TRUE
 
-/obj/item/weapon/gun/energy/contact/empty
+/obj/item/gun/energy/contact/empty
 	cell_type = null
 
 /*--------------------------------
 	Charge Handling
 --------------------------------*/
 //Called to fire a charged beam
-/obj/item/weapon/gun/energy/contact/proc/fire_charged(atom/_target, _clickparams)
+/obj/item/gun/energy/contact/proc/fire_charged(atom/_target, _clickparams)
 	fire_when_charged = TRUE
 
 	if (charge_status == EMPTY)
@@ -107,7 +107,7 @@
 		charge_status = EMPTY
 
 //Aborts a charged beam and returns us to normal state
-/obj/item/weapon/gun/energy/contact/proc/cancel_charged()
+/obj/item/gun/energy/contact/proc/cancel_charged()
 	charge_status = EMPTY
 	fire_params = null
 	fire_target = null
@@ -117,7 +117,7 @@
 	update_icon()
 
 //Starts the charging of a beam, disables autofire
-/obj/item/weapon/gun/energy/contact/proc/start_charging(atom/_target, _clickparams, var/mob/living/user)
+/obj/item/gun/energy/contact/proc/start_charging(atom/_target, _clickparams, var/mob/living/user)
 	if (!can_fire(_target, user, _clickparams))
 		return FALSE
 
@@ -188,12 +188,12 @@
 
 
 
-/obj/item/weapon/gun/energy/contact/disable_aiming_mode()
+/obj/item/gun/energy/contact/disable_aiming_mode()
 	.=..()
 	cancel_charged()	//On exiting aiming mode, we dismiss the charged shot
 
 
-/obj/item/weapon/gun/energy/contact/create_click_handlers()
+/obj/item/gun/energy/contact/create_click_handlers()
 	.=..()
 	var/datum/firemode/contact_beam/CB = current_firemode
 	var/mob/living/user = loc
@@ -208,7 +208,7 @@
 		CHC = fire_user.PushClickHandler(/datum/click_handler/contact)
 		CHC.gun = src
 
-/obj/item/weapon/gun/energy/contact/remove_click_handlers()
+/obj/item/gun/energy/contact/remove_click_handlers()
 	.=..()
 	if (CHC)
 		QDEL_NULL(CHC)
@@ -228,7 +228,7 @@
 	Contact Beam Click Handler
 */
 /datum/click_handler/contact
-	var/obj/item/weapon/gun/energy/contact/gun	//What gun are they aiming
+	var/obj/item/gun/energy/contact/gun	//What gun are they aiming
 
 /datum/click_handler/contact/MouseDown(object,location,control,params)
 	var/list/modifiers = params2list(params)
@@ -252,7 +252,7 @@
 	Ammo
 ---------------------------*/
 
-/obj/item/weapon/cell/contact
+/obj/item/cell/contact
 	name = "contact energy"
 	desc = "A heavy power pack designed for use with the C99 Supercollider Contact Beam."
 	origin_tech = list(TECH_POWER = 6)
@@ -262,7 +262,7 @@
 	maxcharge = 1000
 	matter = list(MATERIAL_STEEL = 700, MATERIAL_SILVER = 80)
 
-/obj/item/weapon/cell/contact/update_icon()
+/obj/item/cell/contact/update_icon()
 	return
 
 
@@ -289,7 +289,7 @@
 
 //Rather than a single effect, the focus mode uses a little spawner which creates multiple staggered effects
 /obj/effect/effect/repulse/New(var/atom/location, var/_lifespan = 2 SECOND, var/matrix/rotation, var/mob/living/user)
-
+	.=..()
 
 	playsound(src, pick(list('sound/weapons/guns/blast/contact_blast_1.ogg',
 	'sound/weapons/guns/blast/contact_blast_2.ogg',

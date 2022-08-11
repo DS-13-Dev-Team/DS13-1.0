@@ -92,7 +92,7 @@
 
 //Plays lobby music in sequence
 /client/proc/playtitlemusic()
-	if (QDELETED(src))
+	if (QDELETED(src) || !GLOB.using_map)
 		return
 
 	if(!(get_preference_value(/datum/client_preference/play_lobby_music) == GLOB.PREF_YES))
@@ -106,7 +106,7 @@
 
 	var/tracktype = GLOB.using_map.get_lobby_track(played_lobby_tracks)
 	var/music_track/MT = decls_repository.get_decl(tracktype)
-	LAZYDISTINCTADD(played_lobby_tracks,tracktype)
+	LAZYOR(played_lobby_tracks,tracktype)
 
 	MT.play_to(src, play_looped = FALSE)
 

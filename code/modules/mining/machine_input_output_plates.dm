@@ -8,6 +8,7 @@
 	anchored = 1.0
 	var/obj/machinery/master
 	New()
+		.=..()
 		icon_state = "blank"
 
 /obj/machinery/input/Crossed(O)
@@ -44,4 +45,5 @@
 	density = 0
 	anchored = 1.0
 	New()
+		.=..()
 		icon_state = "blank"

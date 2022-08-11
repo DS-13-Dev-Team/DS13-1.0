@@ -13,6 +13,7 @@
 	var/mob/living/swirlie = null	//the mob being given a swirlie
 
 /obj/structure/toilet/New()
+	.=..()
 	open = round(rand(0, 1))
 	update_icon()
 
@@ -31,7 +32,7 @@
 			if(ishuman(user))
 				user.put_in_hands(I)
 			else
-				I.loc = get_turf(src)
+				I.forceMove(get_turf(src))
 			to_chat(user, "<span class='notice'>You find \an [I] in the cistern.</span>")
 			w_items -= I.w_class
 			return
@@ -137,7 +138,7 @@
 	update_icon()
 
 /obj/machinery/shower/attackby(obj/item/I as obj, mob/user as mob)
-	if(I.type == /obj/item/device/analyzer)
+	if(I.type == /obj/item/analyzer)
 		to_chat(user, "<span class='notice'>The water temperature seems to be [watertemp].</span>")
 	if(isWrench(I))
 		var/newtemp = input(user, "What setting would you like to set the temperature valve to?", "Water Temperature Valve") in temperature_settings
@@ -314,7 +315,7 @@
 		else if(temperature <= H.species.cold_level_1)
 			to_chat(H, "<span class='warning'>The water is freezing cold!</span>")
 
-/obj/item/weapon/bikehorn/rubberducky
+/obj/item/bikehorn/rubberducky
 	name = "rubber ducky"
 	desc = "Rubber ducky you're so fine, you make bathtime lots of fuuun. Rubber ducky I'm awfully fooooond of yooooouuuu~"	//thanks doohl
 	icon = 'icons/obj/watercloset.dmi'
@@ -385,14 +386,14 @@
 		to_chat(user, "<span class='warning'>Someone's already washing here.</span>")
 		return
 
-	var/obj/item/weapon/reagent_containers/RG = O
-	if (istype(RG) && RG.is_open_container() && !istype(RG, /obj/item/weapon/reagent_containers/food/snacks/grown))
+	var/obj/item/reagent_containers/RG = O
+	if (istype(RG) && RG.is_open_container() && !istype(RG, /obj/item/reagent_containers/food/snacks/grown))
 		RG.reagents.add_reagent(/datum/reagent/water, min(RG.volume - RG.reagents.total_volume, RG.amount_per_transfer_from_this))
 		user.visible_message("<span class='notice'>[user] fills \the [RG] using \the [src].</span>","<span class='notice'>You fill \the [RG] using \the [src].</span>")
 		return 1
 
-	else if (istype(O, /obj/item/weapon/melee/baton))
-		var/obj/item/weapon/melee/baton/B = O
+	else if (istype(O, /obj/item/melee/baton))
+		var/obj/item/melee/baton/B = O
 		if(B.bcell)
 			if(B.bcell.charge > 0 && B.status == 1)
 				flick("baton_active", src)
@@ -408,7 +409,7 @@
 					"<span class='danger'>[user] was stunned by \his wet [O]!</span>", \
 					"<span class='userdanger'>[user] was stunned by \his wet [O]!</span>")
 				return 1
-	else if(istype(O, /obj/item/weapon/mop))
+	else if(istype(O, /obj/item/mop))
 		O.reagents.add_reagent(/datum/reagent/water, 5)
 		to_chat(user, "<span class='notice'>You wet \the [O] in \the [src].</span>")
 		playsound(loc, 'sound/effects/slosh.ogg', 25, 1)

@@ -26,7 +26,8 @@
 
 
 /obj/effect/accelerated_particle/New(loc, dir = 2)
-	src.loc = loc
+	.=..()
+	src.forceMove(loc)
 	src.set_dir(dir)
 	if(movement_range > 20)
 		movement_range = 20
@@ -47,14 +48,14 @@
 				if(collided_core.AddParticles(particle_type, 1 + additional_particles))
 					collided_core.owned_field.plasma_temperature += mega_energy
 					collided_core.owned_field.energy += energy
-					loc = null
+					forceMove(null)
 		else if(istype(A, /obj/effect/fusion_particle_catcher))
 			var/obj/effect/fusion_particle_catcher/PC = A
 			if(particle_type && particle_type != "neutron")
 				if(PC.parent.owned_core.AddParticles(particle_type, 1 + additional_particles))
 					PC.parent.plasma_temperature += mega_energy
 					PC.parent.energy += energy
-					loc = null
+					forceMove(null)
 	return
 
 
@@ -65,6 +66,8 @@
 
 
 /obj/effect/accelerated_particle/ex_act(severity)
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	qdel(src)
 	return
 
@@ -80,15 +83,15 @@
 	if(target)
 		if(movetotarget)
 			if(!step_towards(src,target))
-				src.loc = get_step(src, get_dir(src,target))
+				src.forceMove(get_step(src, get_dir(src,target)))
 			if(get_dist(src,target) < 1)
 				movetotarget = 0
 		else
 			if(!step(src, get_step_away(src,source)))
-				src.loc = get_step(src, get_step_away(src,source))
+				src.forceMove(get_step(src, get_step_away(src,source)))
 	else
 		if(!step(src,dir))
-			src.loc = get_step(src,dir)
+			src.forceMove(get_step(src,dir))
 	movement_range--
 	if(movement_range <= 0)
 		qdel(src)

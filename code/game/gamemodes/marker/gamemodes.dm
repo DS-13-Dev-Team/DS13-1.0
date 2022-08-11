@@ -6,11 +6,7 @@ GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 */
 /datum/game_mode/marker/containment
 	name = "Containment"
-	#ifdef MAP_ISHIMURA
-	round_description = "The crew of the USG Ishimura has brought aboard a strange artifact and is tasked with discovering what its purpose is."
-	#else
-	round_description = "The staff of the Colony has brought a strange artifact and is tasked with discovering what its purpose is."
-	#endif
+	round_description = "The crew has brought aboard a strange artifact and is tasked with discovering what its purpose is."
 	extended_round_description = "The crew must holdout until help arrives"
 	config_tag = "containment"
 	votable = TRUE//Debug TRUE
@@ -25,7 +21,7 @@ GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 
 /datum/game_mode/marker/enemy_within
 	name = "Enemy Within"
-	round_description = "The USG Ishimura has discovered a strange artifact on Aegis VII, but it is not whole. Some piece of it has been broken off and smuggled aboard"
+	round_description = "The USG Ishimura has discovered a strange artifact on Aegis VII, but it is not whole. Some piece of it has been broken off and stolen by people."
 	extended_round_description = "The crew must holdout until help arrives"
 	config_tag = "enemy_within"
 	votable = TRUE
@@ -55,7 +51,6 @@ GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 	antag_templates = list(/datum/antagonist/unitologist, /datum/antagonist/earthgov_agent)
 	require_all_templates = FALSE
 	votable = FALSE
-	var/marker_setup_time = 60 MINUTES
 	var/marker_active = FALSE
 	antag_scaling_coeff = 8
 
@@ -74,9 +69,9 @@ GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 	if(!SSnecromorph.marker)
 		message_admins("There are no markers on this map!")
 		return
-	evacuation_controller.add_can_call_predicate(new /datum/evacuation_predicate/travel_points)
+	evacuation_controller.add_can_call_predicate(new /datum/evacuation_predicate/timer((1 HOUR + 40 MINUTES)*rand_between(0.95, 1.05)))
 	command_announcement.Announce("Delivery of alien artifact successful at [get_area(SSnecromorph.marker)].","Ishimura Deliveries Subsystem") //Placeholder
-	addtimer(CALLBACK(src, .proc/activate_marker), rand_between(0.85, 1.15)*marker_setup_time) //We have to spawn the marker quite late, so guess we'd best wait :)
+	addtimer(CALLBACK(src, .proc/activate_marker), rand_between(0.85, 1.15)*45 MINUTES) //We have to spawn the marker quite late, so guess we'd best wait :)
 
 
 /datum/game_mode/marker/proc/spawn_marker()
@@ -113,8 +108,6 @@ GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 	return FALSE
 
 /datum/game_mode/marker/proc/activate_marker()
-	//This handles preventing evac until we have enough points
-	charge_evac_points()
 	SSnecromorph.marker.make_active() //Allow controlling
 	pick_marker_player()
 	marker_active = TRUE

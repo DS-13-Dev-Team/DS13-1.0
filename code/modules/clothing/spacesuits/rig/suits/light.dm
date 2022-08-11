@@ -1,5 +1,5 @@
 // Light rigs are not space-capable, but don't suffer excessive slowdown or sight issues when depowered.
-/obj/item/weapon/rig/light
+/obj/item/rig/light
 	name = "light suit control module"
 	desc = "A lighter, less armoured rig suit."
 	icon_state = "ninja_rig"

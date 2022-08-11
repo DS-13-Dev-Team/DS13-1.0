@@ -9,11 +9,11 @@ GLOBAL_LIST_INIT(peng_slogans, list("I Want More Peng!",
 "Everyone wants Peng",
 "Delicious Peng",
 "There's something about Peng"))
-GLOBAL_DATUM(peng, /obj/item/weapon/peng)
+GLOBAL_DATUM(peng, /obj/item/peng)
 #define PENG_BOUNTY	10000
 
 //Only one peng can exist at a time until it is claimed
-/obj/item/weapon/peng
+/obj/item/peng
 	name = "Peng"
 	icon = 'icons/obj/economy.dmi'
 
@@ -25,7 +25,7 @@ GLOBAL_DATUM(peng, /obj/item/weapon/peng)
 	attack_verb = list("smashed", "beaten", "slammed", "smacked", "struck", "battered", "bonked")
 	hitsound = 'sound/weapons/genhit3.ogg'
 
-/obj/item/weapon/peng/Initialize()
+/obj/item/peng/Initialize()
 	.=..()
 	//If there's an existing unclaimed peng, then cancel this
 	if (GLOB.peng && !GLOB.peng.claimed)
@@ -38,11 +38,11 @@ GLOBAL_DATUM(peng, /obj/item/weapon/peng)
 	icon_state = pick("peng1","peng2","peng3","peng4","peng5","peng6","peng7", "pengmatic")
 	log_admin("Peng spawned at [jumplink(src)]")
 
-/obj/item/weapon/peng/pickup(var/mob/living/user as mob)
+/obj/item/peng/pickup(var/mob/living/user as mob)
 	if (user)
 		claim(user)
 
-/obj/item/weapon/peng/proc/claim(var/mob/living/user)
+/obj/item/peng/proc/claim(var/mob/living/user)
 	if (claimed)
 		return
 
@@ -53,4 +53,4 @@ GLOBAL_DATUM(peng, /obj/item/weapon/peng)
 
 	//Lets make a new Peng
 	var/turf/T = pick(GLOB.loot_locations)
-	new /obj/item/weapon/peng(T)
+	new /obj/item/peng(T)

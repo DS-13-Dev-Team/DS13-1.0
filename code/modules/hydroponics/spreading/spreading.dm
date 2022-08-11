@@ -213,7 +213,7 @@
 	floor = 1
 	return 1
 
-/obj/effect/vine/attackby(var/obj/item/weapon/W, var/mob/user)
+/obj/effect/vine/attackby(var/obj/item/W, var/mob/user)
 	START_PROCESSING(SSvines, src)
 
 	if(W.edge && W.w_class < ITEM_SIZE_NORMAL && user.a_intent != I_HURT)
@@ -276,6 +276,8 @@
 		adjust_health(-aggression*5)
 
 /obj/effect/vine/ex_act(severity)
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	switch(severity)
 		if(1.0)
 			die_off()

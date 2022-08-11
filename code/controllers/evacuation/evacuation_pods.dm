@@ -40,18 +40,13 @@
 
 	state = EVAC_IN_TRANSIT
 
-	if (emergency_evacuation)
-		// Abondon Ship
-		for (var/datum/shuttle/autodock/ferry/escape_pod/pod in escape_pods) // Launch the pods!
-			if (!pod.arming_controller || pod.arming_controller.armed)
-				pod.move_time = (evac_transit_delay/10)
-				pod.launch(src)
+	// Abondon Ship
+	for (var/datum/shuttle/autodock/ferry/escape_pod/pod in escape_pods) // Launch the pods!
+		if (!pod.arming_controller || pod.arming_controller.armed)
+			pod.move_time = (evac_transit_delay/10)
+			pod.launch(src)
 
-		priority_announcement.Announce(replacetext(replacetext(GLOB.using_map.emergency_shuttle_leaving_dock, "%dock_name%", "[GLOB.using_map.dock_name]"),  "%ETA%", "[round(get_eta()/60,1)] minute\s"))
-	else
-		// Bluespace Jump
-		priority_announcement.Announce(replacetext(replacetext(GLOB.using_map.shuttle_leaving_dock, "%dock_name%", "[GLOB.using_map.dock_name]"),  "%ETA%", "[round(get_eta()/60,1)] minute\s"))
-		SetUniversalState(/datum/universal_state/bluespace_jump, arguments=list(GLOB.using_map.station_levels))
+	priority_announcement.Announce(replacetext(replacetext(GLOB.using_map.emergency_shuttle_leaving_dock, "%dock_name%", "[GLOB.using_map.dock_name]"),  "%ETA%", "[round(get_eta()/60,1)] minute\s"))
 
 /datum/evacuation_controller/starship/finish_evacuation()
 	..()

@@ -14,7 +14,7 @@
 	icon_state = "energykill100"
 
 /obj/random/gun_tech/item_to_spawn()
-	return pickweight(list(/obj/item/weapon/gun/energy/contact = 1))
+	return pickweight(list(/obj/item/gun/energy/contact = 1))
 
 
 /obj/random/gun_security
@@ -24,11 +24,11 @@
 	icon_state = "revolver"
 
 /obj/random/gun_security/item_to_spawn()
-	return pickweight(list(/obj/item/weapon/gun/projectile/automatic/pulse_rifle = 1.5,
-	///obj/item/weapon/gun/projectile/automatic/bullpup = 0.5,	//We dont want this to be used by security
-	/obj/item/weapon/gun/projectile/divet = 2,
-	/obj/item/weapon/gun/projectile/seeker = 1,
-	/obj/item/weapon/gun/projectile/shotgun/bola_lancher = 1))
+	return pickweight(list(/obj/item/gun/projectile/automatic/pulse_rifle = 1.5,
+	///obj/item/gun/projectile/automatic/bullpup = 0.5,	//We dont want this to be used by security
+	/obj/item/gun/projectile/divet = 2,
+	/obj/item/gun/projectile/seeker = 1,
+	/obj/item/gun/projectile/shotgun/bola_lancher = 1))
 
 /obj/random/gun_tool
 	name = "Random Projectile Weapon"
@@ -38,13 +38,13 @@
 
 /obj/random/gun_tool/item_to_spawn()
 	return pickweight(list(
-	/obj/item/weapon/gun/projectile/ripper = 0.5,
-	/obj/item/weapon/gun/energy/forcegun = 0.5,
-	/obj/item/weapon/gun/energy/cutter = 1,
-	/obj/item/weapon/gun/energy/cutter/plasma = 0.5,
-	/obj/item/weapon/gun/projectile/linecutter = 0.5,
-	/obj/item/weapon/gun/projectile/detonator/loaded = 1,
-	/obj/item/weapon/gun/spray/hydrazine_torch = 1))
+	/obj/item/gun/projectile/ripper = 0.5,
+	/obj/item/gun/energy/forcegun = 0.5,
+	/obj/item/gun/energy/cutter = 1,
+	/obj/item/gun/energy/cutter/plasma = 0.5,
+	/obj/item/gun/projectile/linecutter = 0.5,
+	/obj/item/gun/projectile/detonator/loaded = 1,
+	/obj/item/gun/spray/hydrazine_torch = 1))
 
 /obj/random/handgun
 	name = "Random Handgun"
@@ -53,7 +53,7 @@
 	icon_state = "secgundark"
 
 /obj/random/handgun/item_to_spawn()
-	return pickweight(list(/obj/item/weapon/gun/projectile/divet = 1))
+	return pickweight(list(/obj/item/gun/projectile/divet = 1))
 
 /obj/random/ammo
 	name = "Random Ammunition"
@@ -65,17 +65,17 @@
 	return pickweight(list(/obj/item/ammo_magazine/pulse = 2,
 	/obj/item/ammo_magazine/pulse/hv = 0.3,
 	/obj/item/ammo_magazine/pulse/df = 0.3,
-	/obj/item/weapon/cell/plasmacutter = 1.5,
+	/obj/item/cell/plasmacutter = 1.5,
 	/obj/item/ammo_magazine/sawblades = 1,
 	///obj/item/ammo_magazine/bullpup = 1,
-	/obj/item/weapon/cell/force = 0.75,
+	/obj/item/cell/force = 0.75,
 	/obj/item/ammo_magazine/seeker = 1,
-	/obj/item/weapon/cell/contact = 0.75,
+	/obj/item/cell/contact = 0.75,
 	/obj/item/ammo_magazine/divet = 1.5,
 	/obj/item/ammo_magazine/lineracks = 1,
 	/obj/item/ammo_casing/tripmine = 1,
-	/obj/item/weapon/reagent_containers/glass/fuel_tank/fuel = 1,
-	/obj/item/weapon/reagent_containers/glass/fuel_tank/hydrazine = 0.4,
+	/obj/item/reagent_containers/glass/fuel_tank/fuel = 1,
+	/obj/item/reagent_containers/glass/fuel_tank/hydrazine = 0.4,
 	/obj/item/ammo_magazine/shotgun = 1,
 	/obj/item/ammo_magazine/javelin = 0.5))
 

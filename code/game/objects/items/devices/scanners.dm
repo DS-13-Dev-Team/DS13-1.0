@@ -9,7 +9,7 @@ REAGENT SCANNER
 */
 
 
-/obj/item/device/healthanalyzer
+/obj/item/healthanalyzer
 	name = "health analyzer"
 	desc = "A hand-held body scanner able to distinguish vital signs of the subject."
 	icon_state = "health"
@@ -25,13 +25,13 @@ REAGENT SCANNER
 	origin_tech = list(TECH_MAGNET = 1, TECH_BIO = 1)
 	var/mode = 1
 
-/obj/item/device/healthanalyzer/do_surgery(mob/living/M, mob/living/user)
+/obj/item/healthanalyzer/do_surgery(mob/living/M, mob/living/user)
 	if(user.a_intent != I_HELP) //in case it is ever used as a surgery tool
 		return ..()
 	medical_scan_action(M, user, src, mode) //default surgery behaviour is just to scan as usual
 	return 1
 
-/obj/item/device/healthanalyzer/afterattack(atom/target, mob/user, proximity)
+/obj/item/healthanalyzer/afterattack(atom/target, mob/user, proximity)
 	if(!proximity)
 		return
 
@@ -106,25 +106,22 @@ REAGENT SCANNER
 		if(!brain || H.stat == DEAD || (H.status_flags & FAKEDEATH))
 			brain_result = "<span class='scan_danger'>none, patient is braindead</span>"
 		else if(H.stat != DEAD)
-			if(H.has_brain_worms())
-				brain_result = "<span class='scan_danger'>ERROR - aberrant/unknown brainwave patterns, advanced scanner recommended</span>"
+			if(skill_level < SKILL_BASIC)
+				brain_result = "there's movement on the graph"
 			else
-				if(skill_level < SKILL_BASIC)
-					brain_result = "there's movement on the graph"
-				else
-					switch(brain.get_current_damage_threshold())
-						if(0)
-							brain_result = "<span class='scan_notice'>normal</span>"
-						if(1 to 2)
-							brain_result = "<span class='scan_notice'>minor brain damage</span>"
-						if(3 to 5)
-							brain_result = "<span class='scan_warning'>weak</span>"
-						if(6 to 8)
-							brain_result = "<span class='scan_danger'>extremely weak</span>"
-						if(9 to INFINITY)
-							brain_result = "<span class='scan_danger'>fading</span>"
-						else
-							brain_result = "<span class='scan_danger'>ERROR - Hardware fault</span>"
+				switch(brain.get_current_damage_threshold())
+					if(0)
+						brain_result = "<span class='scan_notice'>normal</span>"
+					if(1 to 2)
+						brain_result = "<span class='scan_notice'>minor brain damage</span>"
+					if(3 to 5)
+						brain_result = "<span class='scan_warning'>weak</span>"
+					if(6 to 8)
+						brain_result = "<span class='scan_danger'>extremely weak</span>"
+					if(9 to INFINITY)
+						brain_result = "<span class='scan_danger'>fading</span>"
+					else
+						brain_result = "<span class='scan_danger'>ERROR - Hardware fault</span>"
 	else
 		brain_result = "<span class='scan_danger'>ERROR - Nonstandard biology</span>"
 	dat += "<span class='scan_notice'>Brain activity:</span> [brain_result]."
@@ -332,7 +329,7 @@ proc/get_wound_severity(var/damage_ratio, var/can_heal_overkill = 0)
 
 	return degree
 
-/obj/item/device/healthanalyzer/verb/toggle_mode()
+/obj/item/healthanalyzer/verb/toggle_mode()
 	set name = "Switch Verbosity"
 	set category = "Object"
 
@@ -342,7 +339,7 @@ proc/get_wound_severity(var/damage_ratio, var/can_heal_overkill = 0)
 	else
 		to_chat(usr, "The scanner no longer shows limb damage.")
 
-/obj/item/device/analyzer
+/obj/item/analyzer
 	name = "analyzer"
 	desc = "A hand-held environmental scanner which reports current gas levels."
 	icon_state = "atmos"
@@ -359,7 +356,7 @@ proc/get_wound_severity(var/damage_ratio, var/can_heal_overkill = 0)
 	origin_tech = list(TECH_MAGNET = 1, TECH_ENGINEERING = 1)
 	var/advanced_mode = 0
 
-/obj/item/device/analyzer/verb/verbosity(mob/user)
+/obj/item/analyzer/verb/verbosity(mob/user)
 	set name = "Toggle Advanced Gas Analysis"
 	set category = "Object"
 	set src in usr
@@ -368,7 +365,7 @@ proc/get_wound_severity(var/damage_ratio, var/can_heal_overkill = 0)
 		advanced_mode = !advanced_mode
 		to_chat(user, "You toggle advanced gas analysis [advanced_mode ? "on" : "off"].")
 
-/obj/item/device/analyzer/attack_self(mob/user)
+/obj/item/analyzer/attack_self(mob/user)
 
 	if (user.incapacitated())
 		return
@@ -378,7 +375,7 @@ proc/get_wound_severity(var/damage_ratio, var/can_heal_overkill = 0)
 	analyze_gases(user.loc, user,advanced_mode)
 	return 1
 
-/obj/item/device/analyzer/afterattack(obj/O, mob/user, proximity)
+/obj/item/analyzer/afterattack(obj/O, mob/user, proximity)
 	if(!proximity)
 		return
 	if (user.incapacitated())
@@ -388,7 +385,7 @@ proc/get_wound_severity(var/damage_ratio, var/can_heal_overkill = 0)
 	if(istype(O) && O.simulated)
 		analyze_gases(O, user, advanced_mode)
 
-/obj/item/device/mass_spectrometer
+/obj/item/mass_spectrometer
 	name = "mass spectrometer"
 	desc = "A hand-held mass spectrometer which identifies trace chemicals in a blood sample."
 	icon_state = "spectrometer"
@@ -407,19 +404,19 @@ proc/get_wound_severity(var/damage_ratio, var/can_heal_overkill = 0)
 	var/details = 0
 	var/recent_fail = 0
 
-/obj/item/device/mass_spectrometer/New()
+/obj/item/mass_spectrometer/New()
 	..()
 	create_reagents(5)
 
-/obj/item/device/mass_spectrometer/on_reagent_change()
+/obj/item/mass_spectrometer/on_reagent_change()
 	update_icon()
 
-/obj/item/device/mass_spectrometer/update_icon()
+/obj/item/mass_spectrometer/update_icon()
 	icon_state = initial(icon_state)
 	if(reagents.total_volume)
 		icon_state += "_s"
 
-/obj/item/device/mass_spectrometer/attack_self(mob/user as mob)
+/obj/item/mass_spectrometer/attack_self(mob/user as mob)
 	if (user.incapacitated())
 		return
 	if (!user.is_advanced_tool_user())
@@ -452,13 +449,13 @@ proc/get_wound_severity(var/damage_ratio, var/can_heal_overkill = 0)
 		reagents.clear_reagents()
 	return
 
-/obj/item/device/mass_spectrometer/adv
+/obj/item/mass_spectrometer/adv
 	name = "advanced mass spectrometer"
 	icon_state = "adv_spectrometer"
 	details = 1
 	origin_tech = list(TECH_MAGNET = 4, TECH_BIO = 2)
 
-/obj/item/device/reagent_scanner
+/obj/item/reagent_scanner
 	name = "reagent scanner"
 	desc = "A hand-held reagent scanner which identifies chemical agents."
 	icon_state = "spectrometer"
@@ -475,7 +472,7 @@ proc/get_wound_severity(var/damage_ratio, var/can_heal_overkill = 0)
 	var/details = 0
 	var/recent_fail = 0
 
-/obj/item/device/reagent_scanner/afterattack(obj/O, mob/user as mob, proximity)
+/obj/item/reagent_scanner/afterattack(obj/O, mob/user as mob, proximity)
 	if(!proximity)
 		return
 	if (user.incapacitated())
@@ -497,13 +494,13 @@ proc/get_wound_severity(var/damage_ratio, var/can_heal_overkill = 0)
 	for (var/datum/reagent/R in O.reagents.reagent_list)
 		. += "[R][details ? ": [R.volume / one_percent]%" : ""]"
 
-/obj/item/device/reagent_scanner/adv
+/obj/item/reagent_scanner/adv
 	name = "advanced reagent scanner"
 	icon_state = "adv_spectrometer"
 	details = 1
 	origin_tech = list(TECH_MAGNET = 4, TECH_BIO = 2)
 
-/obj/item/device/price_scanner
+/obj/item/price_scanner
 	name = "price scanner"
 	desc = "Using an up-to-date database of various costs and prices, this device estimates the market price of an item up to 0.001% accuracy."
 	icon_state = "price_scanner"
@@ -515,7 +512,7 @@ proc/get_wound_severity(var/damage_ratio, var/can_heal_overkill = 0)
 	throw_range = 3
 	matter = list(MATERIAL_STEEL = 25, MATERIAL_GLASS = 25)
 
-/obj/item/device/price_scanner/afterattack(atom/movable/target, mob/user as mob, proximity)
+/obj/item/price_scanner/afterattack(atom/movable/target, mob/user as mob, proximity)
 	if(!proximity)
 		return
 
@@ -523,7 +520,7 @@ proc/get_wound_severity(var/damage_ratio, var/can_heal_overkill = 0)
 	user.visible_message("\The [user] scans \the [target] with \the [src]")
 	user.show_message("Price estimation of \the [target]: [value ? value : "N/A"] Thalers")
 
-/obj/item/device/slime_scanner
+/obj/item/slime_scanner
 	name = "xenolife scanner"
 	desc = "Multipurpose organic life scanner. With spectral breath analyzer you can find out what snacks Ian had! Or what gasses alien life breathes."
 	icon_state = "xenobio"
@@ -534,13 +531,13 @@ proc/get_wound_severity(var/damage_ratio, var/can_heal_overkill = 0)
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
 	matter = list(MATERIAL_STEEL = 30,MATERIAL_GLASS = 20)
 
-/obj/item/device/slime_scanner/proc/list_gases(var/gases)
+/obj/item/slime_scanner/proc/list_gases(var/gases)
 	. = list()
 	for(var/g in gases)
 		. += "[gas_data.name[g]] ([gases[g]]%)"
 	return english_list(.)
 
-/obj/item/device/slime_scanner/afterattack(mob/target, mob/user, proximity)
+/obj/item/slime_scanner/afterattack(mob/target, mob/user, proximity)
 	if(!proximity)
 		return
 

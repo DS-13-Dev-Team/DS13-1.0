@@ -1,4 +1,4 @@
-/obj/item/weapon/gun/projectile/shotgun/pump
+/obj/item/gun/projectile/shotgun/pump
 	name = "shotgun"
 	desc = "The mass-produced W-T Remmington 29x shotgun is a favourite of police and security forces on many worlds. Useful for sweeping alleys."
 	icon_state = "shotgun"
@@ -18,17 +18,17 @@
 	wielded_item_state = "gun_wielded"
 	load_sound = 'sound/weapons/guns/interaction/shotgun_instert.ogg'
 
-/obj/item/weapon/gun/projectile/shotgun/pump/consume_next_projectile()
+/obj/item/gun/projectile/shotgun/pump/consume_next_projectile()
 	if(chambered)
 		return chambered.BB
 	return null
 
-/obj/item/weapon/gun/projectile/shotgun/pump/attack_self(mob/living/user as mob)
+/obj/item/gun/projectile/shotgun/pump/attack_self(mob/living/user as mob)
 	if(world.time >= recentpump + 10)
 		pump(user)
 		recentpump = world.time
 
-/obj/item/weapon/gun/projectile/shotgun/pump/proc/pump(mob/M as mob)
+/obj/item/gun/projectile/shotgun/pump/proc/pump(mob/M as mob)
 	playsound(M, 'sound/weapons/shotgunpump.ogg', 60, 1)
 
 	if(chambered)//We have a shell in the chamber
@@ -44,7 +44,7 @@
 
 	update_icon()
 
-/obj/item/weapon/gun/projectile/shotgun/pump/combat
+/obj/item/gun/projectile/shotgun/pump/combat
 	name = "combat shotgun"
 	desc = "Built for close quarters combat, the Hephaestus Industries KS-40 is widely regarded as a weapon of choice for repelling boarders."
 	icon_state = "cshotgun"
@@ -54,7 +54,7 @@
 	ammo_type = /obj/item/ammo_casing/shotgun
 	one_hand_penalty = -15 //a little heavier than the regular shotgun
 
-/obj/item/weapon/gun/projectile/shotgun/doublebarrel
+/obj/item/gun/projectile/shotgun/doublebarrel
 	name = "double-barreled shotgun"
 	desc = "A true classic."
 	icon_state = "dshotgun"
@@ -80,20 +80,20 @@
 		list(mode_name="fire both barrels at once", burst=2),
 		)
 
-/obj/item/weapon/gun/projectile/shotgun/doublebarrel/pellet
+/obj/item/gun/projectile/shotgun/doublebarrel/pellet
 	ammo_type = /obj/item/ammo_casing/shotgun/pellet
 
-/obj/item/weapon/gun/projectile/shotgun/doublebarrel/flare
+/obj/item/gun/projectile/shotgun/doublebarrel/flare
 	name = "signal shotgun"
 	desc = "A double-barreled shotgun meant to fire signal flash shells."
 	ammo_type = /obj/item/ammo_casing/shotgun/flash
 
-/obj/item/weapon/gun/projectile/shotgun/doublebarrel/unload_ammo(user, allow_dump)
+/obj/item/gun/projectile/shotgun/doublebarrel/unload_ammo(user, allow_dump)
 	..(user, allow_dump=1)
 
 //this is largely hacky and bad :(	-Pete
-/obj/item/weapon/gun/projectile/shotgun/doublebarrel/attackby(var/obj/item/A as obj, mob/user as mob)
-	if(w_class > 3 && (isSaw(A) || istype(A, /obj/item/weapon/melee/energy)))
+/obj/item/gun/projectile/shotgun/doublebarrel/attackby(var/obj/item/A as obj, mob/user as mob)
+	if(w_class > 3 && (isSaw(A) || istype(A, /obj/item/melee/energy)))
 		to_chat(user, "<span class='notice'>You begin to shorten the barrel of \the [src].</span>")
 		if(loaded.len)
 			for(var/i in 1 to max_shells)
@@ -114,7 +114,7 @@
 	else
 		..()
 
-/obj/item/weapon/gun/projectile/shotgun/doublebarrel/sawn
+/obj/item/gun/projectile/shotgun/doublebarrel/sawn
 	name = "sawn-off shotgun"
 	desc = "Omar's coming!"
 	icon_state = "sawnshotgun"
@@ -125,7 +125,7 @@
 	force = 5
 	one_hand_penalty = 0
 
-/obj/item/weapon/gun/projectile/shotgun/bola_lancher
+/obj/item/gun/projectile/shotgun/bola_lancher
 	name = "SCL Shotgun"
 	desc = "The SCL Shotgun is a close to medium-ranged weapon developed by the Sovereign Colonies Armed Forces and utilized by SCAF Legionaries. \
 	The shotgun has remained in use in private security and police departments as a riot-control tool, given its ability to fire bolas shells for capture and arrest, or lethal slugs in life-threatening situations. \
@@ -148,7 +148,7 @@
 		list(mode_name = "shotgun", fire_delay = 1 SECONDS),
 		list(mode_name = "bolas", projectile_type = /obj/item/projectile/bullet/shotgun/bola, fire_sound = 'sound/weapons/bolathrow.ogg', fire_delay = 1 SECONDS))
 
-/obj/item/weapon/gun/projectile/shotgun/bola_lancher/update_icon()
+/obj/item/gun/projectile/shotgun/bola_lancher/update_icon()
 	. = ..()
 	if(ammo_magazine)
 		icon_state = icon_loaded
@@ -156,7 +156,7 @@
 		icon_state = initial(icon_state)
 
 
-/obj/item/weapon/gun/projectile/shotgun/bola_lancher/MouseDrop(over_object)
+/obj/item/gun/projectile/shotgun/bola_lancher/MouseDrop(over_object)
 	if(ammo_magazine)
 		unload_ammo(usr)
 		return

@@ -1,4 +1,4 @@
-/obj/item/weapon/rig/wasp
+/obj/item/rig/wasp
 	name = "wasp RIG"
 	desc = "A lightweight and flexible armoured rig suit, offers good protection against light impacts"
 	icon_state = "wasp_rig"

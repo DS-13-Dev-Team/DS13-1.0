@@ -7,23 +7,23 @@
 /datum/uplink_item/item/tools/toolbox
 	name = "Fully Loaded Toolbox"
 	item_cost = 8
-	path = /obj/item/weapon/storage/toolbox/syndicate
+	path = /obj/item/storage/toolbox/syndicate
 
 /datum/uplink_item/item/tools/money
 	name = "Operations Funding"
 	item_cost = 50
-	path = /obj/item/weapon/storage/secure/briefcase/money
+	path = /obj/item/storage/secure/briefcase/money
 	desc = "A briefcase with 10,000 untraceable thalers for funding your sneaky activities."
 
 /datum/uplink_item/item/tools/clerical
 	name = "Morphic Clerical Kit"
 	item_cost = 16
-	path = /obj/item/weapon/storage/backpack/satchel/syndie_kit/clerical
+	path = /obj/item/storage/backpack/satchel/syndie_kit/clerical
 
 /datum/uplink_item/item/tools/plastique
 	name = "C-4 (Destroys walls)"
 	item_cost = 16
-	path = /obj/item/weapon/plastique
+	path = /obj/item/plastique
 
 /datum/uplink_item/item/tools/plastique/special
 	item_cost = 6
@@ -33,38 +33,38 @@
 /datum/uplink_item/item/tools/heavy_armor
 	name = "Heavy Armor Vest and Helmet"
 	item_cost = 16
-	path = /obj/item/weapon/storage/backpack/satchel/syndie_kit/armor
+	path = /obj/item/storage/backpack/satchel/syndie_kit/armor
 
 /datum/uplink_item/item/tools/encryptionkey_radio
 	name = "Encrypted Radio Channel Key"
 	item_cost = 1
-	path = /obj/item/device/encryptionkey/syndicate
+	path = /obj/item/encryptionkey/syndicate
 
 /datum/uplink_item/item/tools/shield_diffuser
 	name = "Handheld Shield Diffuser"
 	item_cost = 16
-	path = /obj/item/weapon/shield_diffuser
+	path = /obj/item/shield_diffuser
 
 /datum/uplink_item/item/tools/suit_sensor_mobile
 	name = "Suit Sensor Jamming Device"
 	desc = "This device will affect suit sensor data using method and radius defined by the user."
 	item_cost = 20
-	path = /obj/item/device/suit_sensor_jammer
+	path = /obj/item/suit_sensor_jammer
 
 /datum/uplink_item/item/tools/encryptionkey_binary
 	name = "Binary Translator Key"
 	item_cost = 20
-	path = /obj/item/device/encryptionkey/binary
+	path = /obj/item/encryptionkey/binary
 
 /datum/uplink_item/item/tools/emag
 	name = "Cryptographic Sequencer"
 	item_cost = 24
-	path = /obj/item/weapon/card/emag
+	path = /obj/item/card/emag
 
 /datum/uplink_item/item/tools/hacking_tool
 	name = "Door Hacking Tool"
 	item_cost = 24
-	path = /obj/item/weapon/tool/multitool/hacktool
+	path = /obj/item/tool/multitool/hacktool
 	desc = "Appears and functions as a standard multitool until the mode is toggled by applying a screwdriver appropriately. \
 			When in hacking mode this device will grant full access to any standard airlock within 20 to 40 seconds. \
 			This device will also be able to immediately access the last 6 to 8 hacked airlocks."
@@ -77,7 +77,7 @@
 /datum/uplink_item/item/tools/space_suit
 	name = "Space Suit"
 	item_cost = 28
-	path = /obj/item/weapon/storage/backpack/satchel/syndie_kit/space
+	path = /obj/item/storage/backpack/satchel/syndie_kit/space
 
 /datum/uplink_item/item/tools/thermal
 	name = "Thermal Imaging Glasses"
@@ -87,12 +87,12 @@
 /datum/uplink_item/item/tools/powersink
 	name = "Powersink (DANGER!)"
 	item_cost = 40
-	path = /obj/item/device/powersink
+	path = /obj/item/powersink
 
 /datum/uplink_item/item/tools/teleporter
 	name = "Teleporter Circuit Board"
 	item_cost = 40
-	path = /obj/item/weapon/circuitboard/teleporter
+	path = /obj/item/circuitboard/teleporter
 
 /datum/uplink_item/item/tools/teleporter/New()
 	..()
@@ -101,12 +101,7 @@
 /datum/uplink_item/item/tools/ai_module
 	name = "Hacked AI Upload Module"
 	item_cost = 52
-	path = /obj/item/weapon/aiModule/syndicate
-
-/datum/uplink_item/item/tools/supply_beacon
-	name = "Hacked Supply Beacon (DANGER!)"
-	item_cost = 52
-	path = /obj/item/supply_beacon
+	path = /obj/item/aiModule/syndicate
 
 /datum/uplink_item/item/tools/camera_mask
 	name = "Camera MIU"
@@ -117,5 +112,5 @@
 /datum/uplink_item/item/tools/interceptor
 	name = "Radio Interceptor"
 	item_cost = 30
-	path = /obj/item/device/radio/intercept
+	path = /obj/item/radio/intercept
 	desc = "A radio that can intercept secure radio channels. Doesn't fit in pockets."

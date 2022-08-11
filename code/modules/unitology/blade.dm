@@ -1,7 +1,7 @@
 /*
 	The ritual blade is a reskinned knife that has the same damage, but a few special properties
 */
-/obj/item/weapon/material/knife/unitologist
+/obj/item/material/knife/unitologist
 	name = "unitology ritual blade"
 	desc = "A clean, pristine blade used for spiritual and religious purposes"
 	icon = 'icons/obj/unitology32.dmi'
@@ -9,10 +9,16 @@
 	item_state = "unitology_ritual_blade"
 	applies_material_colour = 0
 	unbreakable = 1
-	wielded_verbs = list(/mob/living/carbon/human/proc/sacrifice_verb)
+	var/listwielded_verbs = list()
 
+/obj/item/material/knife/unitologist/equipped(mob/user, slot)
+	.=..()
+	if(is_held())
+		add_verb(user.client, /mob/living/carbon/human/proc/sacrifice_verb)
+	else
+		remove_verb(user.client, /mob/living/carbon/human/proc/sacrifice_verb)
 
-/obj/item/weapon/material/knife/unitologist/get_antag_weight(var/category)
+/obj/item/material/knife/unitologist/get_antag_weight(var/category)
 	if (category == CATEGORY_UNITOLOGY)
 		return 0.15
 
@@ -21,10 +27,6 @@
 /mob/living/carbon/human/proc/sacrifice_verb(var/mob/living/carbon/human/target)
 	set name = "Sacrifice"
 	set category = "Abilities"
-
-	if (target == usr)
-		to_chat(src, "You can't sacrifice yourself!")
-		return
 
 	mercer_execution(target)
 
@@ -52,7 +54,7 @@
 		return
 
 	var/list/held = get_held_items()
-	var/obj/item/weapon/material/knife/unitologist/blade = locate() in held
+	var/obj/item/material/knife/unitologist/blade = locate() in held
 	if (!blade)
 		to_chat(src, SPAN_DANGER("You must be holding your ritual blade."))
 		return
@@ -101,7 +103,7 @@
 		//Holding the blade is required up to the finisher stage. Retrieving it from the victim's skull is optional post-finisher stuff
 		if (status < STATUS_POST_FINISH)
 			var/list/held = user.get_held_items()
-			var/obj/item/weapon/material/knife/unitologist/blade = locate() in held
+			var/obj/item/material/knife/unitologist/blade = locate() in held
 			if (!blade)
 				to_chat(user, SPAN_DANGER("You must be holding your ritual blade."))
 				return EXECUTION_CANCEL

@@ -1,4 +1,4 @@
-/obj/item/weapon/gun/spray/hydrazine_torch
+/obj/item/gun/spray/hydrazine_torch
 	name = "PFM-100 Industrial Torch"
 	desc = "A heavy duty liquid-fuel flamethrower, designed to run on hydrazine and operate in a vacuum. It can also run on ordinary gasoline, at reduced effectiveness."
 	icon = 'icons/obj/weapons/ds13guns48x32.dmi'
@@ -11,7 +11,7 @@
 	//This gun has no safety switch
 	safety_state = FALSE
 
-	var/obj/item/weapon/reagent_containers/glass/fuel_tank/tank = /obj/item/weapon/reagent_containers/glass/fuel_tank
+	var/obj/item/reagent_containers/glass/fuel_tank/tank = /obj/item/reagent_containers/glass/fuel_tank
 
 	//25 Seconds continuous firing from a 400u fueltank
 	var/fuel_per_second = 16
@@ -52,21 +52,21 @@
 //Preloaded subtypes
 
 //Default starts with an empty tank
-/obj/item/weapon/gun/spray/hydrazine_torch/Initialize()
+/obj/item/gun/spray/hydrazine_torch/Initialize()
 	.=..()
 
 	tank = new tank(src)
 	update_fuel()
 	update_firemode()
 
-/obj/item/weapon/gun/spray/hydrazine_torch/fuel
-	tank = /obj/item/weapon/reagent_containers/glass/fuel_tank/fuel
+/obj/item/gun/spray/hydrazine_torch/fuel
+	tank = /obj/item/reagent_containers/glass/fuel_tank/fuel
 
-/obj/item/weapon/gun/spray/hydrazine_torch/hydrazine
-	tank = /obj/item/weapon/reagent_containers/glass/fuel_tank/hydrazine
+/obj/item/gun/spray/hydrazine_torch/hydrazine
+	tank = /obj/item/reagent_containers/glass/fuel_tank/hydrazine
 
 
-/obj/item/weapon/gun/spray/hydrazine_torch/examine(var/mob/user)
+/obj/item/gun/spray/hydrazine_torch/examine(var/mob/user)
 	.=..()
 	if (!tank)
 		to_chat(user, SPAN_WARNING("No fuel tank is installed."))
@@ -89,12 +89,12 @@
 		if (tank.contamination > 0)
 			to_chat(user, span("danger", "The fuel contamination warning light is blinking!"))
 
-/obj/item/weapon/gun/spray/hydrazine_torch/has_ammo()
+/obj/item/gun/spray/hydrazine_torch/has_ammo()
 	if(tank && tank.get_remaining_fuel() > 0)
 		return TRUE
 	return FALSE
 
-/obj/item/weapon/gun/spray/hydrazine_torch/can_fire(atom/target, mob/living/user, clickparams, var/silent = FALSE)
+/obj/item/gun/spray/hydrazine_torch/can_fire(atom/target, mob/living/user, clickparams, var/silent = FALSE)
 	.=..()
 
 	if (.)
@@ -117,7 +117,7 @@
 
 
 //If the pilot light isn't on when we fire, it will be turned on, at the cost of a significant time delay
-/obj/item/weapon/gun/spray/hydrazine_torch/pre_fire(var/atom/target, var/mob/living/user, var/clickparams, var/pointblank=0, var/reflex=0)
+/obj/item/gun/spray/hydrazine_torch/pre_fire(var/atom/target, var/mob/living/user, var/clickparams, var/pointblank=0, var/reflex=0)
 	//Specific check here, we're gonna set it to an interim value
 	if (pilot_light != TRUE)
 		toggle_pilot_light()
@@ -133,7 +133,7 @@
 		return user.left_mouse_down()
 	.=..()
 
-/obj/item/weapon/gun/spray/hydrazine_torch/update_icon()
+/obj/item/gun/spray/hydrazine_torch/update_icon()
 	var/former_itemstate = item_state
 
 	icon_state = "hydetorch"
@@ -153,7 +153,7 @@
 	if (former_itemstate != item_state)
 		update_wear_icon()
 
-/obj/item/weapon/gun/spray/hydrazine_torch/Process()
+/obj/item/gun/spray/hydrazine_torch/Process()
 	.=..()
 	if (firing)
 		sound_interval -= 2 //2 deciseconds is the delay of fast process
@@ -167,7 +167,7 @@
 
 
 //This proc creates particles and applies effects
-/obj/item/weapon/gun/spray/hydrazine_torch/started_firing()
+/obj/item/gun/spray/hydrazine_torch/started_firing()
 	.=..()
 	if (tank && tank.contamination && prob(tank.contamination))
 		//Tank goes boom
@@ -177,11 +177,11 @@
 	playsound(src, pick(fire_sound), VOLUME_MID, TRUE)
 
 //We don't need it
-/obj/item/weapon/gun/spray/hydrazine_torch/toggle_safety_verb()
+/obj/item/gun/spray/hydrazine_torch/toggle_safety_verb()
 	set hidden = TRUE
 	.=..()
 
-/obj/item/weapon/gun/spray/hydrazine_torch/verb/toggle_pilot_light()
+/obj/item/gun/spray/hydrazine_torch/verb/toggle_pilot_light()
 	set name = "Toggle Pilot Light"
 	set src in usr
 	set category = "Object"
@@ -216,7 +216,7 @@
 	return pilot_light
 
 
-/obj/item/weapon/gun/spray/hydrazine_torch/proc/set_pilot_light(var/state, var/update = TRUE)
+/obj/item/gun/spray/hydrazine_torch/proc/set_pilot_light(var/state, var/update = TRUE)
 	if (pilot_light == state)
 		return
 
@@ -237,7 +237,7 @@
 	START_PROCESSING(SSfastprocess, src)
 
 //The torch has no safety switch, that's routed to the pilot light instead
-/obj/item/weapon/gun/spray/hydrazine_torch/toggle_safety(var/mob/user)
+/obj/item/gun/spray/hydrazine_torch/toggle_safety(var/mob/user)
 	safety_state = FALSE
 	toggle_pilot_light()
 
@@ -248,15 +248,15 @@
 
 
 
-/obj/item/weapon/gun/spray/hydrazine_torch/can_stop_processing()
+/obj/item/gun/spray/hydrazine_torch/can_stop_processing()
 	if (pilot_light)
 		return FALSE
 
 	.=..()
 
 
-/obj/item/weapon/gun/spray/hydrazine_torch/load_ammo(A, var/mob/user)
-	if (istype(A, /obj/item/weapon/reagent_containers/glass/fuel_tank))
+/obj/item/gun/spray/hydrazine_torch/load_ammo(A, var/mob/user)
+	if (istype(A, /obj/item/reagent_containers/glass/fuel_tank))
 		if (tank && tank.loc == src)
 			to_chat(user, SPAN_WARNING("The [src] already has a tank installed, remove it first!"))
 			return
@@ -274,7 +274,7 @@
 
 	.=..()
 
-/obj/item/weapon/gun/spray/hydrazine_torch/unload_ammo(var/mob/user, allow_dump=0)
+/obj/item/gun/spray/hydrazine_torch/unload_ammo(var/mob/user, allow_dump=0)
 	if(tank)
 		user.put_in_hands(tank)
 		user.visible_message("[user] removes [tank] from [src].", "<span class='notice'>You remove [tank] from [src].</span>")
@@ -287,7 +287,7 @@
 
 
 
-/obj/item/weapon/gun/spray/hydrazine_torch/consume_projectiles(var/number = 1)
+/obj/item/gun/spray/hydrazine_torch/consume_projectiles(var/number = 1)
 	if (!tank)
 		return FALSE
 
@@ -306,7 +306,7 @@
 
 	return FALSE
 
-/obj/item/weapon/gun/spray/hydrazine_torch/get_remaining_ammo()
+/obj/item/gun/spray/hydrazine_torch/get_remaining_ammo()
 	if (!tank)
 		return 0
 
@@ -314,7 +314,7 @@
 
 
 
-/obj/item/weapon/gun/spray/hydrazine_torch/proc/consume_fuel(var/required_fuel)
+/obj/item/gun/spray/hydrazine_torch/proc/consume_fuel(var/required_fuel)
 	if (!tank)
 		fuel_depleted()
 		return FALSE
@@ -328,7 +328,7 @@
 	return TRUE
 
 
-/obj/item/weapon/gun/spray/hydrazine_torch/proc/update_fuel()
+/obj/item/gun/spray/hydrazine_torch/proc/update_fuel()
 	if (!tank || tank.fueltype == /datum/reagent/fuel)
 		spray_type = /datum/extension/spray/flame
 		radial_spray_type = /datum/extension/spray/flame/radial
@@ -344,7 +344,7 @@
 
 
 //If fuel runs out, everything stops
-/obj/item/weapon/gun/spray/hydrazine_torch/proc/fuel_depleted()
+/obj/item/gun/spray/hydrazine_torch/proc/fuel_depleted()
 	set_pilot_light(FALSE, FALSE) //Second var tells it not to update, we will do that seperately
 	stop_firing() //This will stop the processing
 	update_icon()
@@ -361,7 +361,7 @@
 /*
 	Fuel Tank
 */
-/obj/item/weapon/reagent_containers/glass/fuel_tank
+/obj/item/reagent_containers/glass/fuel_tank
 	name = "liquid fuel tank"
 	desc = "A tank designed to fit the PFM-100 Industrial Torch. A warning plate on the side instructs the user not to mix multiple types of fuel, and not to allow any non-fuel contaminants into the tank."
 	volume = 400	//four litres
@@ -385,21 +385,21 @@
 		/obj/structure/table,
 		/obj/structure/closet,
 		/obj/structure/sink,
-		/obj/item/weapon/grenade/chem_grenade,
-		/obj/item/weapon/storage/secure/safe,
+		/obj/item/grenade/chem_grenade,
+		/obj/item/storage/secure/safe,
 		/obj/machinery/disposal,
 		/obj/machinery/smartfridge/,
-		/obj/item/weapon/gun/spray/hydrazine_torch
+		/obj/item/gun/spray/hydrazine_torch
 	)
 
-/obj/item/weapon/reagent_containers/glass/fuel_tank/Initialize()
+/obj/item/reagent_containers/glass/fuel_tank/Initialize()
 	.=..()
 	.=INITIALIZE_HINT_LATELOAD
 
-/obj/item/weapon/reagent_containers/glass/fuel_tank/LateInitialize()
+/obj/item/reagent_containers/glass/fuel_tank/LateInitialize()
 	check_fuel_type_and_contamination()
 
-/obj/item/weapon/reagent_containers/glass/fuel_tank/examine(var/mob/user)
+/obj/item/reagent_containers/glass/fuel_tank/examine(var/mob/user)
 	.=..()
 	var/fuelname = "hydrazine"
 	if (fueltype == /datum/reagent/fuel)
@@ -421,7 +421,7 @@
 
 
 //To save processing, lets not recheck the fuel unless something other than our designated fuel went in or out
-/obj/item/weapon/reagent_containers/glass/fuel_tank/on_reagent_change(var/reagent_type, var/delta)
+/obj/item/reagent_containers/glass/fuel_tank/on_reagent_change(var/reagent_type, var/delta)
 	.=..()
 	if (reagent_type != fueltype)
 		check_fuel_type_and_contamination()
@@ -432,7 +432,7 @@
 
 	2. Determines how contaminated the tank is
 */
-/obj/item/weapon/reagent_containers/glass/fuel_tank/proc/check_fuel_type_and_contamination()
+/obj/item/reagent_containers/glass/fuel_tank/proc/check_fuel_type_and_contamination()
 	var/contaminants = reagents.total_volume
 
 	var/quantity_fuel = reagents.get_reagent_amount(/datum/reagent/fuel)
@@ -454,7 +454,7 @@
 	if (contaminants > 0)
 		contamination = (contaminants / reagents.maximum_volume) * 100
 
-/obj/item/weapon/reagent_containers/glass/fuel_tank/proc/get_remaining_fuel()
+/obj/item/reagent_containers/glass/fuel_tank/proc/get_remaining_fuel()
 	return reagents.get_reagent_amount(fueltype)
 
 
@@ -462,11 +462,11 @@
 /*
 	Prefilled subtypes
 */
-/obj/item/weapon/reagent_containers/glass/fuel_tank/fuel/Initialize()
+/obj/item/reagent_containers/glass/fuel_tank/fuel/Initialize()
 	.=..()
 	reagents.add_reagent(/datum/reagent/fuel, 400)		//Intentionally low since it is so strong. Still enough to knock someone out.
 
-/obj/item/weapon/reagent_containers/glass/fuel_tank/hydrazine/Initialize()
+/obj/item/reagent_containers/glass/fuel_tank/hydrazine/Initialize()
 	.=..()
 	reagents.add_reagent(/datum/reagent/hydrazine, 400)		//Intentionally low since it is so strong. Still enough to knock someone out.
 
@@ -486,41 +486,41 @@
 
 	The spray subtype is used for guns that project a constant cone of fire, acid, cold, lightning, etc
 */
-/obj/item/weapon/gun/spray
+/obj/item/gun/spray
 	var/spray_type = /datum/extension/spray
 
 	var/range =	4
 	var/angle = 30
 
-/obj/item/weapon/gun/spray/update_all(force_state)
+/obj/item/gun/spray/update_all(force_state)
 	if(force_state == FALSE)
 		stop_firing()
 	.=..()
 
 //How long it will take to windup before
-/obj/item/weapon/gun/spray/proc/get_windup()
+/obj/item/gun/spray/proc/get_windup()
 	return 0
 
-/obj/item/weapon/gun/spray/can_stop_processing()
+/obj/item/gun/spray/can_stop_processing()
 	if (firing)
 		return FALSE
 
 	.=..()
 
 
-/obj/item/weapon/gun/spray/Process()
+/obj/item/gun/spray/Process()
 	if (firing)
 		if (!consume_projectiles(0.2)) //0.2 is the delta of the fastprocess subsystem
 			stop_firing()
 
 
 //This proc creates particles and applies effects
-/obj/item/weapon/gun/spray/started_firing()
+/obj/item/gun/spray/started_firing()
 	firing = TRUE
 	START_PROCESSING(SSfastprocess, src)
 
 
-/obj/item/weapon/gun/spray/stop_firing()
+/obj/item/gun/spray/stop_firing()
 	.=..()
 	if (can_stop_processing())
 		STOP_PROCESSING(SSfastprocess, src)
@@ -541,13 +541,13 @@
 
 
 /datum/firemode/sustained/spray/update(var/forced_state)
-	var/obj/item/weapon/gun/spray/HT = gun
+	var/obj/item/gun/spray/HT = gun
 	range = HT.range
 	angle = HT.angle
 	.=..()
 
 /datum/firemode/sustained/spray/flame/update(var/forced_state)
-	var/obj/item/weapon/gun/spray/hydrazine_torch/HT = gun
+	var/obj/item/gun/spray/hydrazine_torch/HT = gun
 	extra_data = list("temperature" = HT.temperature)
 	.=..()
 
@@ -562,7 +562,7 @@
 	Fires an impact grenade which, on detonation, creates a radial fire spray for a few seconds, rather than an explosion
 */
 /datum/firemode/incendiary/update()
-	var/obj/item/weapon/gun/spray/hydrazine_torch/HT = gun
+	var/obj/item/gun/spray/hydrazine_torch/HT = gun
 	if (istype(HT))
 		gun.projectile_type = HT.blast_projectile
 
@@ -585,7 +585,7 @@
 /obj/item/projectile/bullet/impact_grenade/incendiary/detonate()
 	if (!exploded)
 		exploded = TRUE
-		var/obj/item/weapon/gun/spray/hydrazine_torch/HT = launcher
+		var/obj/item/gun/spray/hydrazine_torch/HT = launcher
 
 		var/spraytype = /datum/extension/spray/flame/radial
 		var/temperature = T0C + 2600

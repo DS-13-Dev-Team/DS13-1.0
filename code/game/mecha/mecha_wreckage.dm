@@ -19,16 +19,17 @@
 	var/salvage_num = 5
 
 /obj/effect/decal/mecha_wreckage/ex_act(severity)
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	if(severity < 2)
-		spawn
-			qdel(src)
+		qdel(src)
 	return
 
 /obj/effect/decal/mecha_wreckage/bullet_act(var/obj/item/projectile/Proj)
 	return
 
 
-/obj/effect/decal/mecha_wreckage/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/effect/decal/mecha_wreckage/attackby(obj/item/W as obj, mob/user as mob)
 	if(isWelder(W))
 		if(salvage_num <= 0)
 			to_chat(user, "You don't see anything that can be cut with [W].")
@@ -62,7 +63,7 @@
 		if(!isemptylist(crowbar_salvage))
 			var/obj/S = pick(crowbar_salvage)
 			if(S)
-				S.loc = get_turf(user)
+				S.forceMove(get_turf(user))
 				crowbar_salvage -= S
 				user.visible_message("[user] pries [S] from [src].", "You pry [S] from [src].")
 			return

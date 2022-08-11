@@ -669,7 +669,7 @@
 	desc = "An underfloor disposal pipe."
 	anchored = 1
 	density = 0
-
+	plane = FLOOR_PLANE
 	level = 1			// underfloor only
 	var/dpdir = 0		// bitmask of pipe directions
 	dir = 0				// dir will contain dominant direction for junction pipes
@@ -773,7 +773,7 @@
 	// Leaving it intact and sitting in a wall is stupid.
 	if(T.density)
 		for(var/atom/movable/AM in H)
-			AM.loc = T
+			AM.forceMove(T)
 			AM.pipe_eject(0)
 		qdel(H)
 		return
@@ -856,7 +856,8 @@
 
 // pipe affected by explosion
 /obj/structure/disposalpipe/ex_act(severity)
-
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	switch(severity)
 		if(1.0)
 			broken(0)
@@ -1153,8 +1154,8 @@
 		if(..())
 			return
 
-		if(istype(I, /obj/item/device/destTagger))
-			var/obj/item/device/destTagger/O = I
+		if(istype(I, /obj/item/destTagger))
+			var/obj/item/destTagger/O = I
 
 			if(O.currTag)// Tag set
 				sort_tag = O.currTag
@@ -1382,8 +1383,8 @@
 		if(..())
 			return
 
-		if(istype(I, /obj/item/device/destTagger))
-			var/obj/item/device/destTagger/O = I
+		if(istype(I, /obj/item/destTagger))
+			var/obj/item/destTagger/O = I
 
 			if(O.currTag)// Tag set
 				sortType = O.currTag

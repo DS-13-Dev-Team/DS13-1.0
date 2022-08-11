@@ -273,7 +273,7 @@
 	ui_interact(user)
 
 
-/obj/machinery/power/smes/attackby(var/obj/item/weapon/W as obj, var/mob/user as mob)
+/obj/machinery/power/smes/attackby(var/obj/item/W as obj, var/mob/user as mob)
 
 	if(default_deconstruction_screwdriver(user, W))
 		return
@@ -473,6 +473,8 @@
 		take_damage(Proj.damage)
 
 /obj/machinery/power/smes/ex_act(var/severity)
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	// Two strong explosions will destroy a SMES.
 	// Given the SMES creates another explosion on it's destruction it sounds fairly reasonable.
 	take_damage(250 / severity)

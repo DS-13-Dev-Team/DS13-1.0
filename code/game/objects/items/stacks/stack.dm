@@ -32,8 +32,8 @@
 /obj/item/stack/Destroy()
 
 	//When deleting inside stacks, remove us from them
-	if (istype(loc, /obj/item/weapon/storage) && !QDELETED(loc))
-		var/obj/item/weapon/storage/S = loc
+	if (istype(loc, /obj/item/storage) && !QDELETED(loc))
+		var/obj/item/storage/S = loc
 		S.remove_from_storage(src, get_turf(src))
 
 	if(uses_charge)

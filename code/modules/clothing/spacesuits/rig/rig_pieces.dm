@@ -57,7 +57,7 @@
 /obj/item/clothing/suit/space/rig/proc/can_support(var/mob/living/carbon/human/user)
 	if(user.wear_suit != src)
 		return 0 //not wearing the suit
-	var/obj/item/weapon/rig/rig = user.back
+	var/obj/item/rig/rig = user.back
 	if(!istype(rig) || rig.offline || rig.canremove)
 		return 0 //not wearing a rig control unit or it's offline or unsealed
 	return 1
@@ -97,7 +97,7 @@
 	if(!istype(H) || !H.back)
 		return 0
 
-	var/obj/item/weapon/rig/suit = H.back
+	var/obj/item/rig/suit = H.back
 	if(!suit || !istype(suit) || !suit.installed_modules.len)
 		return 0
 
@@ -163,7 +163,7 @@
 
 	.=..()
 
-/obj/item/weapon/rig/updatehealth()
+/obj/item/rig/updatehealth()
 	.=..()
 	if (health > 0)
 		var/healthpercent = health / max_health
@@ -173,11 +173,11 @@
 
 
 //RIGs don't get deleted when broken, but they go into a malfunctioning state forever
-/obj/item/weapon/rig/zero_health()
+/obj/item/rig/zero_health()
 	malfunctioning = INFINITY
 	malfunction_delay = INFINITY
 
-/obj/item/weapon/rig/repair(var/repair_power, var/datum/repair_source, var/mob/user)
+/obj/item/rig/repair(var/repair_power, var/datum/repair_source, var/mob/user)
 	.=..()
 	malfunctioning = 0
 	malfunction_delay = 0

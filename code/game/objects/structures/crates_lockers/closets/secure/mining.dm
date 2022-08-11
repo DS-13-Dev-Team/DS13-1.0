@@ -9,15 +9,15 @@
 
 /obj/structure/closet/secure_closet/DOM/WillContain()
 	return list(
-		/obj/item/device/radio/headset/heads/dom,
+		/obj/item/radio/headset/heads/dom,
 		/obj/item/clothing/under/suit_jacket/dom,
 		/obj/item/clothing/shoes/dress,
 		/obj/item/clothing/accessory/black,
-		/obj/item/weapon/storage/briefcase,
-		/obj/item/weapon/clipboard,
-		/obj/item/weapon/staff/gentcane,
-		/obj/item/weapon/rig/excavation,
-		/obj/item/device/flashlight/maglight
+		/obj/item/storage/briefcase,
+		/obj/item/clipboard,
+		/obj/item/staff/gentcane,
+		/obj/item/rig/excavation,
+		/obj/item/flashlight/maglight
 )
 
 /obj/structure/closet/secure_closet/foreman
@@ -31,21 +31,21 @@
 
 /obj/structure/closet/secure_closet/foreman/WillContain()
 		return list(
-		/obj/item/device/radio/headset/headset_cargo,
+		/obj/item/radio/headset/headset_cargo,
 		/obj/item/clothing/under/foreman,
 		/obj/item/clothing/shoes/dutyboots,
 		/obj/item/clothing/glasses/meson,
 		/obj/item/clothing/gloves/thick,
-		/obj/item/weapon/mining_scanner,
-		/obj/item/weapon/storage/ore,
-		/obj/item/weapon/tool/shovel,
-		/obj/item/weapon/tool/saw/plasma,
-		/obj/item/weapon/gun/energy/cutter,
-		/obj/item/weapon/cell/plasmacutter = 2,
-		/obj/item/weapon/rig/excavation,
-		/obj/item/device/flashlight/maglight,
+		/obj/item/mining_scanner,
+		/obj/item/storage/ore,
+		/obj/item/tool/shovel,
+		/obj/item/tool/saw/plasma,
+		/obj/item/gun/energy/cutter,
+		/obj/item/cell/plasmacutter = 2,
+		/obj/item/rig/excavation,
+		/obj/item/flashlight/maglight,
 // 		Replace with a unique RIG
-//		/obj/item/weapon/rig/vintage
+//		/obj/item/rig/vintage
 	)
 
 /obj/structure/closet/secure_closet/planet_cracker
@@ -59,23 +59,23 @@
 
 /obj/structure/closet/secure_closet/planet_cracker/WillContain()
 		return list(
-		/obj/item/device/radio/headset/headset_cargo,
+		/obj/item/radio/headset/headset_cargo,
 		/obj/item/clothing/under/deadspace/planet_cracker,
 		/obj/item/clothing/shoes/dutyboots,
 		/obj/item/clothing/glasses/meson,
 		/obj/item/clothing/gloves/thick,
-		/obj/item/weapon/mining_scanner,
-		/obj/item/weapon/storage/ore,
-		/obj/item/weapon/tool/shovel,
-		/obj/item/weapon/tool/saw/plasma,
-		/obj/item/weapon/tool/pickaxe/laser,
-		/obj/item/weapon/rig/mining,
-		/obj/item/device/flashlight/maglight
+		/obj/item/mining_scanner,
+		/obj/item/storage/ore,
+		/obj/item/tool/shovel,
+		/obj/item/tool/saw/plasma,
+		/obj/item/tool/pickaxe/laser,
+		/obj/item/rig/mining,
+		/obj/item/flashlight/maglight
 	)
 
 
 /obj/structure/closet/secure_closet/planet_cracker/New(var/atom/location)
 	if (prob(30))	//Not all planet crackers get a cutter
-		new /obj/item/weapon/gun/energy/cutter(src)
+		new /obj/item/gun/energy/cutter(src)
 
 	.=..()

@@ -121,7 +121,7 @@
 		return success_smash(user)
 	return fail_smash(user)
 
-/turf/simulated/wall/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/turf/simulated/wall/attackby(obj/item/W as obj, mob/user as mob)
 
 	user.set_click_cooldown(DEFAULT_ATTACK_COOLDOWN)
 
@@ -155,8 +155,8 @@
 				thermitemelt(user)
 				return
 
-		else if( istype(W, /obj/item/weapon/melee/energy/blade) )
-			var/obj/item/weapon/melee/energy/blade/EB = W
+		else if( istype(W, /obj/item/melee/energy/blade) )
+			var/obj/item/melee/energy/blade/EB = W
 
 			EB.spark_system.start()
 			to_chat(user, "<span class='notice'>You slash \the [src] with \the [EB]; the thermite ignites!</span>")
@@ -190,13 +190,13 @@
 
 			if(isWelder(W))
 				cut_delay *= 0.7
-			else if(istype(W,/obj/item/weapon/melee/energy/blade))
+			else if(istype(W,/obj/item/melee/energy/blade))
 				dismantle_sound = "sparks"
 				dismantle_verb = "slicing"
 				cut_delay *= 0.5
 			else if(isPickaxe(W))
 				req_quality = QUALITY_DIGGING
-				var/obj/item/weapon/tool/pickaxe/P = W
+				var/obj/item/tool/pickaxe/P = W
 				dismantle_verb = "digging"
 				dismantle_sound = P.worksound
 				cut_delay -= P.get_tool_quality(QUALITY_DIGGING)

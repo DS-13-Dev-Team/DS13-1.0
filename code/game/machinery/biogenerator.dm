@@ -13,7 +13,7 @@
 	anchored = 1
 	use_power = 1
 	idle_power_usage = 40
-	var/obj/item/weapon/reagent_containers/glass/beaker = null
+	var/obj/item/reagent_containers/glass/beaker = null
 	var/points = 0
 	var/state = BG_READY
 	var/denied = 0
@@ -23,19 +23,19 @@
 	var/capacity = 10   //How many ingredients can we store?
 	var/list/products = list(
 		"Food" = list(
-			/obj/item/weapon/reagent_containers/food/drinks/milk/smallcarton = 30,
-			/obj/item/weapon/reagent_containers/food/drinks/milk = 50,
-			/obj/item/weapon/reagent_containers/food/snacks/meat/syntiflesh = 50),
+			/obj/item/reagent_containers/food/drinks/milk/smallcarton = 30,
+			/obj/item/reagent_containers/food/drinks/milk = 50,
+			/obj/item/reagent_containers/food/snacks/meat/syntiflesh = 50),
 		"Nutrients" = list(
-			/obj/item/weapon/reagent_containers/glass/bottle/eznutrient = 60,
-			/obj/item/weapon/reagent_containers/glass/bottle/left4zed = 120,
-			/obj/item/weapon/reagent_containers/glass/bottle/robustharvest = 120),
+			/obj/item/reagent_containers/glass/bottle/eznutrient = 60,
+			/obj/item/reagent_containers/glass/bottle/left4zed = 120,
+			/obj/item/reagent_containers/glass/bottle/robustharvest = 120),
 		"Leather" = list(
-			/obj/item/weapon/storage/wallet/leather = 100,
+			/obj/item/storage/wallet/leather = 100,
 			/obj/item/clothing/gloves/thick/botany = 250,
-			/obj/item/weapon/storage/belt/utility = 300,
-			/obj/item/weapon/storage/backpack/satchel = 400,
-			/obj/item/weapon/storage/bag/cash = 400,
+			/obj/item/storage/belt/utility = 300,
+			/obj/item/storage/backpack/satchel = 400,
+			/obj/item/storage/bag/cash = 400,
 			/obj/item/clothing/shoes/workboots = 400,
 			/obj/item/clothing/shoes/leather = 400,
 			/obj/item/clothing/shoes/dress = 400,
@@ -46,12 +46,12 @@
 /obj/machinery/biogenerator/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
 	create_reagents(1000)
-	beaker = new /obj/item/weapon/reagent_containers/glass/bottle(src)
+	beaker = new /obj/item/reagent_containers/glass/bottle(src)
 
 	component_parts = list()
-	component_parts += new /obj/item/weapon/circuitboard/biogenerator(src)
-	component_parts += new /obj/item/weapon/stock_parts/matter_bin(src)
-	component_parts += new /obj/item/weapon/stock_parts/manipulator(src)
+	component_parts += new /obj/item/circuitboard/biogenerator(src)
+	component_parts += new /obj/item/stock_parts/matter_bin(src)
+	component_parts += new /obj/item/stock_parts/manipulator(src)
 
 	RefreshParts()
 
@@ -74,7 +74,7 @@
 		return
 	if(default_part_replacement(user, O))
 		return
-	if(istype(O, /obj/item/weapon/reagent_containers/glass))
+	if(istype(O, /obj/item/reagent_containers/glass))
 		if(beaker)
 			to_chat(user, "<span class='notice'>]The [src] is already loaded.</span>")
 		else if(user.unEquip(O, src))
@@ -85,10 +85,10 @@
 		to_chat(user, "<span class='notice'>\The [src] is currently processing .</span>")
 	else if(ingredients >= capacity)
 		to_chat(user, "<span class='notice'>\The [src] is already full! Activate it.</span>")
-	else if(istype(O, /obj/item/weapon/storage/plants))
-		var/obj/item/weapon/storage/plants/P = O
+	else if(istype(O, /obj/item/storage/plants))
+		var/obj/item/storage/plants/P = O
 		var/hadPlants = 0
-		for(var/obj/item/weapon/reagent_containers/food/snacks/grown/G in P.contents)
+		for(var/obj/item/reagent_containers/food/snacks/grown/G in P.contents)
 			hadPlants = 1
 			P.remove_from_storage(G, src, 1) //No UI updates until we are all done.
 			ingredients++
@@ -102,7 +102,7 @@
 			to_chat(user, "<span class='notice'>You empty \the [P] into \the [src].</span>")
 
 
-	else if(!istype(O, /obj/item/weapon/reagent_containers/food/snacks/grown))
+	else if(!istype(O, /obj/item/reagent_containers/food/snacks/grown))
 		to_chat(user, "<span class='notice'>You cannot put this in \the [src].</span>")
 	else if(user.unEquip(O, src))
 		ingredients++
@@ -185,7 +185,7 @@
 		return
 
 	var/S = 0
-	for(var/obj/item/weapon/reagent_containers/food/snacks/grown/I in contents)
+	for(var/obj/item/reagent_containers/food/snacks/grown/I in contents)
 		S += 5
 		ingredients--
 		if(I.reagents.get_reagent_amount(/datum/reagent/nutriment) < 0.1)
@@ -225,10 +225,10 @@
 	var/man_rating = 0
 	var/bin_rating = 0
 
-	for(var/obj/item/weapon/stock_parts/P in component_parts)
-		if(istype(P, /obj/item/weapon/stock_parts/matter_bin))
+	for(var/obj/item/stock_parts/P in component_parts)
+		if(istype(P, /obj/item/stock_parts/matter_bin))
 			bin_rating += P.rating
-		if(istype(P, /obj/item/weapon/stock_parts/manipulator))
+		if(istype(P, /obj/item/stock_parts/manipulator))
 			man_rating += P.rating
 
 	build_eff = man_rating

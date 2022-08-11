@@ -14,13 +14,13 @@ effective or pretty fucking useless.
 
 */
 
-/obj/item/device/batterer
+/obj/item/batterer
 	name = "mind batterer"
 	desc = "A strange device with twin antennas."
 	icon_state = "batterer"
 	throwforce = 5
 	w_class = ITEM_SIZE_TINY
-	
+
 	throw_range = 10
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
 	item_state = "electronic"
@@ -29,7 +29,7 @@ effective or pretty fucking useless.
 	var/times_used = 0 //Number of times it's been used.
 	var/max_uses = 2
 
-/obj/item/device/batterer/attack_self(mob/living/carbon/user as mob, flag = 0, emp = 0)
+/obj/item/batterer/attack_self(mob/living/carbon/user as mob, flag = 0, emp = 0)
 	if(!user) 	return
 	if(times_used >= max_uses)
 		to_chat(user, "<span class='warning'>The mind batterer has been burnt out!</span>")

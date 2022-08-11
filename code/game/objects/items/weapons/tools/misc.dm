@@ -1,4 +1,4 @@
-/obj/item/weapon/tool/omnitool
+/obj/item/tool/omnitool
 	name = "Asters \"Munchkin 5000\""
 	desc = "Fuel-powered monster of a tool. The advanced welding bit is spark and glow free, thus completely safe."
 	icon_state = "omnitool"

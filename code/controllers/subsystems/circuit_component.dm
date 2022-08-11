@@ -10,7 +10,8 @@ SUBSYSTEM_DEF(circuit_components)
 	var/position = 1                                 // Helper index to order newly activated components properly
 
 /datum/controller/subsystem/circuit_components/stat_entry(msg)
-	return "C:[queued_components.len]"
+	msg ="|C:[queued_components.len]"
+	return ..()
 
 /datum/controller/subsystem/circuit_components/fire(resumed = FALSE)
 	if(paused_ticks >= 10) // The likeliest fail mode, due to the fast tick rate, is that it can never clear the full queue, running resumed every tick and accumulating a backlog.

@@ -1,6 +1,6 @@
-#define CRAFT_ONE_PER_TURF 	1
-#define CRAFT_ON_FLOOR     	2
-#define CRAFT_ON_SURFACE	4
+#define CRAFT_ONE_PER_TURF 	(1<<0)
+#define CRAFT_ON_FLOOR     	(1<<1)
+#define CRAFT_ON_WORKBENCH	(1<<2)
 
 
 

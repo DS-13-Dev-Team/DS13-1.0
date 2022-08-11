@@ -5,6 +5,7 @@
  */
 
 export { AnimatedNumber } from './AnimatedNumber';
+export { Autofocus } from './Autofocus';
 export { Blink } from './Blink';
 export { BlockQuote } from './BlockQuote';
 export { Box } from './Box';
@@ -30,6 +31,7 @@ export { NanoMap } from './NanoMap';
 export { NoticeBox } from './NoticeBox';
 export { NumberInput } from './NumberInput';
 export { ProgressBar } from './ProgressBar';
+export { RestrictedInput } from './RestrictedInput';
 export { Popper } from './Popper';
 export { RoundGauge } from './RoundGauge';
 export { Section } from './Section';

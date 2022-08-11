@@ -14,9 +14,9 @@
 	idle_power_usage = 20
 	clicksound = "button"
 	clickvol = 20
-	circuit = /obj/item/weapon/circuitboard/chem_master
-	var/obj/item/weapon/reagent_containers/beaker = null
-	var/obj/item/weapon/storage/pill_bottle/loaded_pill_bottle = null
+	circuit = /obj/item/circuitboard/chem_master
+	var/obj/item/reagent_containers/beaker = null
+	var/obj/item/storage/pill_bottle/loaded_pill_bottle = null
 	var/mode = 0
 	var/condi = FALSE
 	var/useramount = 15 // Last used amount
@@ -45,6 +45,8 @@
 	create_reagents(1000)
 
 /obj/machinery/chem_master/ex_act(severity)
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	switch(severity)
 		if(1.0)
 			qdel(src)
@@ -62,7 +64,7 @@
 		beaker.forceMove(loc)
 	..()
 
-/obj/machinery/chem_master/attackby(var/obj/item/weapon/B as obj, var/mob/user as mob)
+/obj/machinery/chem_master/attackby(var/obj/item/B as obj, var/mob/user as mob)
 	if(default_deconstruction_screwdriver(user, B))
 		SStgui.update_uis(src)
 		return
@@ -71,7 +73,7 @@
 	if(default_part_replacement(user, B))
 		return
 
-	if(istype(B, /obj/item/weapon/reagent_containers/glass))
+	if(istype(B, /obj/item/reagent_containers/glass))
 		if(beaker)
 			to_chat(user, "A beaker is already loaded into the machine.")
 			return
@@ -81,7 +83,7 @@
 		to_chat(user, "You add the beaker to the machine!")
 		update_icon()
 
-	else if(istype(B, /obj/item/weapon/storage/pill_bottle))
+	else if(istype(B, /obj/item/storage/pill_bottle))
 		if(loaded_pill_bottle)
 			to_chat(user, "A pill bottle is already loaded into the machine.")
 			return
@@ -251,7 +253,7 @@
 						return
 					if(!length(answer))
 						answer = reagents.get_master_reagent_name()
-					var/obj/item/weapon/reagent_containers/pill/P = new(loc)
+					var/obj/item/reagent_containers/pill/P = new(loc)
 					P.name = "[answer] pack"
 					P.desc = "A small condiment pack. The label says it contains [answer]."
 					P.icon_state = "bouilloncube"//Reskinned monkey cube
@@ -272,7 +274,7 @@
 							to_chat(usr, "<span class='notice'>Not enough reagents to create these pills!</span>")
 							return
 
-						var/obj/item/weapon/reagent_containers/pill/P = new(loc)
+						var/obj/item/reagent_containers/pill/P = new(loc)
 						P.name = "[answer] pill"
 						P.pixel_x = rand(-7, 7) // Random position
 						P.pixel_y = rand(-7, 7)
@@ -306,7 +308,7 @@
 						if(reagents.total_volume <= 0)
 							to_chat(usr, "<span class='notice'>Not enough reagents to create these bottles!</span>")
 							return
-						var/obj/item/weapon/reagent_containers/glass/bottle/P = new(loc)
+						var/obj/item/reagent_containers/glass/bottle/P = new(loc)
 						P.name = "[answer] bottle"
 						P.pixel_x = rand(-7, 7) // random position
 						P.pixel_y = rand(-7, 7)
@@ -365,7 +367,7 @@
 			visible_message("<span class='notice'>[src] rattles and prints out a sheet of paper.</span>")
 			// playsound(loc, 'sound/goonstation/machines/printer_dotmatrix.ogg', 50, 1)
 
-			var/obj/item/weapon/paper/P = new /obj/item/weapon/paper(loc)
+			var/obj/item/paper/P = new /obj/item/paper(loc)
 			P.info = "<center><b>Chemical Analysis</b></center><br>"
 			P.info += "<b>Time of analysis:</b> [station_time()]<br><br>"
 			P.info += "<b>Chemical name:</b> [R.name]<br>"
@@ -440,7 +442,7 @@
 		if("create_condi_bottle")
 			if(!condi || !reagents.total_volume)
 				return
-			var/obj/item/weapon/reagent_containers/food/condiment/P = new(loc)
+			var/obj/item/reagent_containers/food/condiment/P = new(loc)
 			reagents.trans_to_obj(P, 50)
 		else
 			. = FALSE
@@ -478,22 +480,22 @@
 	idle_power_usage = 5
 	active_power_usage = 100
 	var/inuse = 0
-	var/obj/item/weapon/reagent_containers/beaker = null
+	var/obj/item/reagent_containers/beaker = null
 	var/limit = 10
 	var/list/holdingitems = list()
 
 /obj/machinery/reagentgrinder/New(var/atom/location, var/direction, var/nocircuit = FALSE)
 	..()
-	beaker = new /obj/item/weapon/reagent_containers/glass/beaker/large(src)
+	beaker = new /obj/item/reagent_containers/glass/beaker/large(src)
 
 /obj/machinery/reagentgrinder/update_icon()
 	icon_state = "juicer"+num2text(!isnull(beaker))
 
 /obj/machinery/reagentgrinder/attackby(var/obj/item/O as obj, var/mob/user as mob)
 
-	if (istype(O,/obj/item/weapon/reagent_containers/glass) || \
-		istype(O,/obj/item/weapon/reagent_containers/food/drinks/glass2) || \
-		istype(O,/obj/item/weapon/reagent_containers/food/drinks/shaker))
+	if (istype(O,/obj/item/reagent_containers/glass) || \
+		istype(O,/obj/item/reagent_containers/food/drinks/glass2) || \
+		istype(O,/obj/item/reagent_containers/food/drinks/shaker))
 
 		if (beaker)
 			return 1
@@ -512,8 +514,8 @@
 	if(!istype(O))
 		return
 
-	if(istype(O,/obj/item/weapon/storage/plants))
-		var/obj/item/weapon/storage/plants/bag = O
+	if(istype(O,/obj/item/storage/plants))
+		var/obj/item/storage/plants/bag = O
 		var/failed = 1
 		for(var/obj/item/G in O.contents)
 			if(!G.reagents || !G.reagents.total_volume)
@@ -621,7 +623,7 @@
 		return
 
 	for(var/obj/item/O in holdingitems)
-		O.loc = src.loc
+		O.forceMove(src.loc)
 		holdingitems -= O
 		if(Adjacent(usr) && !issilicon(usr))
 			usr.put_in_hands(O)

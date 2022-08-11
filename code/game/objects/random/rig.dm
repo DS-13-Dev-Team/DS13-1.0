@@ -5,16 +5,16 @@
 	icon_state = "generic"
 
 /obj/random/hardsuit/item_to_spawn()
-	return pickweight(list(/obj/item/weapon/rig/security,
-				/obj/item/weapon/rig/engineering,
-				/obj/item/weapon/rig/mining,
-				/obj/item/weapon/rig/excavation,
-				/obj/item/weapon/rig/vintage = 0.5,
-				/obj/item/weapon/rig/advanced = 0.5,
-				/obj/item/weapon/rig/patrol = 0.5,
-				/obj/item/weapon/rig/industrial,
-				/obj/item/weapon/rig/eva,
-				/obj/item/weapon/rig/civilian))
+	return pickweight(list(/obj/item/rig/security,
+				/obj/item/rig/engineering,
+				/obj/item/rig/mining,
+				/obj/item/rig/excavation,
+				/obj/item/rig/vintage = 0.5,
+				/obj/item/rig/advanced = 0.5,
+				/obj/item/rig/patrol = 0.5,
+				/obj/item/rig/industrial,
+				/obj/item/rig/eva,
+				/obj/item/rig/civilian))
 
 
 /obj/random/rig_module

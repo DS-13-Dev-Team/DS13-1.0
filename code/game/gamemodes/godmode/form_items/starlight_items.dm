@@ -44,13 +44,13 @@
 
 /obj/item/clothing/suit/armor/sunsuit
 	name = "knight's armor"
-	desc = "Now, you can be the knight in shining armor you’ve always wanted to be. With complementary sun insignia."
+	desc = "Now, you can be the knight in shining armor youï¿½ve always wanted to be. With complementary sun insignia."
 	icon_state = "star_champion"
 	armor = list(melee = 75, bullet = 50, laser = 55, energy = 40, bomb = 50, bio = 10, rad = 0)
 
 /obj/item/clothing/head/helmet/sunhelm
 	name = "knight's helm"
-	desc = "It’s a shiny metal helmet. It looks ripped straight out of the Dark Ages, actually."
+	desc = "Itï¿½s a shiny metal helmet. It looks ripped straight out of the Dark Ages, actually."
 	icon_state = "star_champion"
 	flags_inv = HIDEEARS | BLOCKHAIR
 
@@ -60,13 +60,13 @@
 	icon_state = "star_oracle"
 	armor = list(melee = 25, bullet = 20, laser = 45,energy = 40, bomb = 25, bio = 10, rad = 0)
 
-/obj/item/weapon/material/knife/ritual/shadow
+/obj/item/material/knife/ritual/shadow
 	name = "black death"
-	desc = "An obsidian dagger. The singed remains of a green cloth are wrapped around the “handle.”"
+	desc = "An obsidian dagger. The singed remains of a green cloth are wrapped around the ï¿½handle.ï¿½"
 	force_divisor = 0.3
 	var/charge = 5
 
-/obj/item/weapon/material/knife/ritual/shadow/attack(var/mob/living/M, var/mob/living/user, var/hit_zone)
+/obj/item/material/knife/ritual/shadow/attack(var/mob/living/M, var/mob/living/user, var/hit_zone)
 	. = ..()
 	if(.)
 		if(charge)
@@ -81,9 +81,9 @@
 				to_chat(user, "<span class='warning'>\The [src] appears to be out of power!</span>")
 			new /obj/effect/temporary(get_turf(user),3, 'icons/effects/effects.dmi', "fire_goon")
 
-/obj/item/weapon/gun/energy/staff/beacon
+/obj/item/gun/energy/staff/beacon
 	name = "holy beacon"
-	desc = "Look closely into its crystal; there’s a miniature sun. Or maybe that’s just some fancy LEDs. Either way, it looks thoroughly mystical."
+	desc = "Look closely into its crystal; thereï¿½s a miniature sun. Or maybe thatï¿½s just some fancy LEDs. Either way, it looks thoroughly mystical."
 	icon = 'icons/obj/wizard.dmi'
 	icon_state = "starstaff"
 	self_recharge = 0
@@ -91,7 +91,7 @@
 	projectile_type = /obj/item/projectile/energy/flash
 	required_antag_type = MODE_GODCULTIST
 
-/obj/item/weapon/material/sword/blazing
+/obj/item/material/sword/blazing
 	name = "blazing blade"
 	damtype = BURN
 	icon_state = "fireblade"
@@ -100,16 +100,16 @@
 	var/last_near_structure = 0
 	var/mob/living/deity/linked
 
-/obj/item/weapon/material/sword/blazing/Initialize(var/maploading, var/material, var/deity)
+/obj/item/material/sword/blazing/Initialize(var/maploading, var/material, var/deity)
 	. = ..()
 	START_PROCESSING(SSobj, src)
 	linked = deity
 
-/obj/item/weapon/material/sword/blazing/Destroy()
+/obj/item/material/sword/blazing/Destroy()
 	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
-/obj/item/weapon/material/sword/blazing/Process()
+/obj/item/material/sword/blazing/Process()
 	if(!linked || last_near_structure + 10 SECONDS > world.time)
 		return
 

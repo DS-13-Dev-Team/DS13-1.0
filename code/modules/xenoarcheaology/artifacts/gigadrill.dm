@@ -29,6 +29,6 @@
 			spawn(drill_time)
 				if(get_turf(src) == drilling_turf && active)
 					M.dig(500)
-					src.loc = M
+					src.forceMove(M)
 				drilling_turf = null
 				anchored = 0

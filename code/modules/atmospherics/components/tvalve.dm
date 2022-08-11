@@ -100,8 +100,7 @@
 	return null
 
 /obj/machinery/atmospherics/tvalve/Destroy()
-	loc = null
-
+	forceMove(null)
 	if(node1)
 		node1.disconnect(src)
 		qdel(network_node1)
@@ -339,7 +338,7 @@
 			else
 				go_to_side()
 
-/obj/machinery/atmospherics/tvalve/attackby(var/obj/item/weapon/W as obj, var/mob/user as mob)
+/obj/machinery/atmospherics/tvalve/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	if(!isWrench(W))
 		return ..()
 	if (istype(src, /obj/machinery/atmospherics/tvalve/digital))

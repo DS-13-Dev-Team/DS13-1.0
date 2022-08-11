@@ -7,27 +7,27 @@
 */
 #define RIG_ACCOUNT_CREATE	if (!account) account = create_account((wearer ? wearer.name : "Generic"))
 
-/obj/item/weapon/rig
+/obj/item/rig
 	var/datum/money_account/account
 
-/obj/item/weapon/rig/proc/get_account()
+/obj/item/rig/proc/get_account()
 	RIG_ACCOUNT_CREATE
 	return account
 
-/obj/item/weapon/rig/proc/get_account_balance()
+/obj/item/rig/proc/get_account_balance()
 	if (!account)
 		return 0
 	return account.money
 
-/obj/item/weapon/rig/proc/charge_to_rig_account(var/source, var/purpose, var/terminal_id, var/amount)
+/obj/item/rig/proc/charge_to_rig_account(var/source, var/purpose, var/terminal_id, var/amount)
 	RIG_ACCOUNT_CREATE
 	var/datum/money_account/current_account = get_account()
 	if(current_account)
 		charge_to_account(current_account.account_number, source, purpose, terminal_id, amount)
 		return TRUE
 
-/obj/item/weapon/rig/proc/handle_credit_chip(W, user)
-	var/obj/item/weapon/spacecash/ewallet/chip = W
+/obj/item/rig/proc/handle_credit_chip(W, user)
+	var/obj/item/spacecash/ewallet/chip = W
 	var/response = tgui_alert(user, "What are you trying to do with this chip?", "Credit Chip Interface", list("Deposit", "Withdraw", "Store"))
 	var/cashflow_direction = 0	//What direction are we trying to move money?
 		//1 = Deposit

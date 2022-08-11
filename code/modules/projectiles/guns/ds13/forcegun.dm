@@ -7,7 +7,7 @@
 */
 #define FORCE_FOCUS_WINDUP_TIME	15
 
-/obj/item/weapon/gun/energy/forcegun
+/obj/item/gun/energy/forcegun
 	name = "Handheld Graviton Accelerator"
 	desc = "A basic energy-based gun."
 	icon = 'icons/obj/weapons/ds13guns48x32.dmi'
@@ -16,7 +16,7 @@
 	w_class = ITEM_SIZE_BULKY
 
 	charge_cost = 200 //Five shots per battery
-	cell_type = /obj/item/weapon/cell/force
+	cell_type = /obj/item/cell/force
 	projectile_type = null
 	slot_flags = SLOT_BACK
 	charge_meter = FALSE	//if set, the icon state will be chosen based on the current charge
@@ -35,7 +35,7 @@
 	aiming_modes = list(/datum/extension/aim_mode/heavy)
 
 
-/obj/item/weapon/gun/energy/forcegun/empty
+/obj/item/gun/energy/forcegun/empty
 	cell_type = null
 
 /*
@@ -163,10 +163,11 @@
 	icon_state = null
 
 //Rather than a single effect, the focus mode uses a little spawner which creates multiple staggered effects
-/obj/effect/effect/forceblast_focus_spawner/New(var/atom/location, var/_lifespan = 2 SECOND, var/matrix/rotation)
+/obj/effect/effect/forceblast_focus_spawner/Initialize(mapload, _lifespan = 2 SECOND, matrix/rotation)
+	.=..()
 	spawn()
 		for (var/i in 1 to 7)
-			new /obj/effect/effect/forceblast/focus(location, _lifespan, rotation)
+			new /obj/effect/effect/forceblast/focus(loc, _lifespan, rotation)
 			sleep(rand_between(1,3))
 		qdel(src)
 
@@ -175,7 +176,7 @@
 	Ammo
 ---------------------------*/
 
-/obj/item/weapon/cell/force
+/obj/item/cell/force
 	name = "force energy"
 	desc = "A heavy power pack designed for use with the Handheld Graviton Accelerator."
 	origin_tech = list(TECH_POWER = 4)
@@ -185,7 +186,7 @@
 	maxcharge = 1000
 	matter = list(MATERIAL_STEEL = 700, MATERIAL_SILVER = 80)
 
-/obj/item/weapon/cell/force/update_icon()
+/obj/item/cell/force/update_icon()
 	overlays.Cut()
 	var/overlay_state
 	var/percentage = percent()

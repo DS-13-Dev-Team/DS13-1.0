@@ -33,13 +33,13 @@
 // All of these are null-safe, you can use them without knowing if the list var is initialized yet
 
 //Picks from the list, with some safeties, and returns the "default" arg if it fails
-#define DEFAULTPICK(L, default) ((istype(L, /list) && L:len) ? pick(L) : default)
+#define DEFAULTPICK(L, default) ((istype(L, /list) && length(L)) ? pick(L) : default)
 // Ensures L is initailized after this point
 #define LAZYINITLIST(L) if (!L) L = list()
 // Sets a L back to null iff it is empty
-#define UNSETEMPTY(L) if (L && !L.len) L = null
+#define UNSETEMPTY(L) if (L && !length(L)) L = null
 // Removes I from list L, and sets I to null if it is now empty
-#define LAZYREMOVE(L, I) if(L) { L -= I; if(!L.len) { L = null; } }
+#define LAZYREMOVE(L, I) if(L) { L -= I; if(!length(L)) { L = null; } }
 // Adds I to L, initalizing L if necessary
 #define LAZYADD(L, I) if(!L) { L = list(); } L += I;
 // Insert I into L at position X, initalizing L if necessary
@@ -49,7 +49,7 @@
 // Sets L[A] to I, initalizing L if necessary
 #define LAZYSET(L, A, I) if(!L) { L = list(); } L[A] = I;
 // Reads I from L safely - Works with both associative and traditional lists.
-#define LAZYACCESS(L, I) (L ? (isnum(I) ? (I > 0 && I <= L.len ? L[I] : null) : L[I]) : null)
+#define LAZYACCESS(L, I) (L ? (isnum(I) ? (I > 0 && I <= length(L) ? L[I] : null) : L[I]) : null)
 // Reads the length of L, returning 0 if null
 #define LAZYLEN(L) length(L)
 // Safely checks if I is in L
@@ -59,7 +59,7 @@
 
 #define LAZYLIMB(L) (L ? L.is_usable() : FALSE)
 
-#define	IS_EMPTY(L)	!(L?.len)
+#define	IS_EMPTY(L)	!length(L)
 
 //Sets the value of a key in an assoc list
 #define LAZYASET(L,K,V) if(!L) { L = list(); } L[K] = V;
@@ -70,11 +70,20 @@
 //Subtracts value from the existing value of a key
 #define LAZYAMINUS(L,K,V) if(!L) { L = list(); } if (!L[K]) { L[K] = 0; } L[K] -= V;
 
+///Add an item to the list if not already present, if the list is null it will initialize it
+#define LAZYOR(L, I) if(!L) { L = list(); } L |= I;
+
 // Reads L or an empty list if L is not a list.  Note: Does NOT assign, L may be an expression.
 #define SANITIZE_LIST(L) ( islist(L) ? L : list() )
 
+///This is used to add onto lazy assoc list when the value you're adding is a /list/. This one has extra safety over lazyaddassoc because the value could be null (and thus cant be used to += objects)
+#define LAZYADDASSOCLIST(L, K, V) if(!L) { L = list(); } L[K] += list(V);
+
+///Removes the value V from the item K, if the item K is empty will remove it from the list, if the list is empty will set the list to null
+#define LAZYREMOVEASSOC(L, K, V) if(L) { if(L[K]) { L[K] -= V; if(!length(L[K])) L -= K; } if(!length(L)) L = null; }
+
 // Insert an object A into a sorted list using cmp_proc (/code/_helpers/cmp.dm) for comparison.
-#define ADD_SORTED(list, A, cmp_proc) if(!list.len) {list.Add(A)} else {list.Insert(FindElementIndex(A, list, cmp_proc), A)}
+#define ADD_SORTED(list, A, cmp_proc) if(!length(list)) {list.Add(A)} else {list.Insert(FindElementIndex(A, list, cmp_proc), A)}
 
 //Currently used in SDQL2 stuff
 #define send_output(target, msg, control) target << output(msg, control)

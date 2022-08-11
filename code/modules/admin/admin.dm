@@ -42,9 +42,9 @@ var/global/floorIsLava = 0
 					html = msg)
 
 /proc/admin_notice(message, rights)
-	for(var/mob/M in SSmobs.mob_list)
-		if(check_rights(rights, 0, M))
-			to_chat(M,
+	for(var/client/C in GLOB.clients)
+		if(check_rights(rights, 0, C))
+			to_chat(C,
 					type = MESSAGE_TYPE_DEBUG,
 					html = message)
 
@@ -1110,7 +1110,7 @@ var/global/floorIsLava = 0
 	set category = "Special Verbs"
 	set name = "Send Fax"
 	set desc = "Sends a fax to this machine"
-	var/department = input("Choose a fax", "Fax") as null|anything in GLOB.alldepartments
+	var/department = input("Choose a fax", "Fax") as null|anything in GLOB.all_fax_departments
 	for(var/obj/machinery/photocopier/faxmachine/sendto in GLOB.allfaxes)
 		if(sendto.department == department)
 
@@ -1122,7 +1122,7 @@ var/global/floorIsLava = 0
 
 			var/replyorigin = input(src.owner, "Please specify who the fax is coming from", "Origin") as text|null
 
-			var/obj/item/weapon/paper/admin/P = new (null) //hopefully the null loc won't cause trouble for us
+			var/obj/item/paper/admin/P = new (null) //hopefully the null loc won't cause trouble for us
 			faxreply = P
 
 			P.admindatum = src
@@ -1131,9 +1131,9 @@ var/global/floorIsLava = 0
 
 			P.tgui_interact(owner.mob)
 
-/datum/admins/var/obj/item/weapon/paper/admin/faxreply // var to hold fax replies in
+/datum/admins/var/obj/item/paper/admin/faxreply // var to hold fax replies in
 
-/datum/admins/proc/faxCallback(obj/item/weapon/paper/admin/P, var/obj/machinery/photocopier/faxmachine/destination)
+/datum/admins/proc/faxCallback(obj/item/paper/admin/P, var/obj/machinery/photocopier/faxmachine/destination)
 	var/customname = input(src.owner, "Pick a title for the report", "Title") as text|null
 
 	P.SetName("[P.origin] - [customname]")
@@ -1158,17 +1158,15 @@ var/global/floorIsLava = 0
 
 			if(!P.stamped)
 				P.stamped = new
-			P.stamped += /obj/item/weapon/stamp/centcomm
+			P.stamped += /obj/item/stamp/centcomm
 			P.overlays += stampoverlay
 
 	var/obj/item/rcvdcopy
 	rcvdcopy = destination.copy(P)
-	rcvdcopy.loc = null //hopefully this shouldn't cause trouble
+	rcvdcopy.forceMove(null) //hopefully this shouldn't cause trouble)
 	GLOB.adminfaxes += rcvdcopy
 
-
-
-	if(destination.recievefax(P))
+	if(destination.receivefax(P))
 		to_chat(src.owner, "<span class='notice'>Message reply to transmitted successfully.</span>")
 		if(P.sender) // sent as a reply
 			log_admin("[key_name(src.owner)] replied to a fax message from [key_name(P.sender)]")

@@ -6,7 +6,7 @@
 	anchored = 1
 	atom_flags = ATOM_FLAG_OPEN_CONTAINER
 	volume = 100
-	circuit = /obj/item/weapon/circuitboard/hydro_tray
+	circuit = /obj/item/circuitboard/hydro_tray
 
 	var/mechanical = 1         // Set to 0 to stop it from drawing the alert lights.
 	var/base_name = "tray"
@@ -407,7 +407,7 @@
 	if (O.is_open_container())
 		return 0
 
-	if(isWirecutter(O) || istype(O, /obj/item/weapon/tool/scalpel))
+	if(isWirecutter(O) || istype(O, /obj/item/tool/scalpel))
 
 		if(!seed)
 			to_chat(user, "There is nothing to take a sample from in \the [src].")
@@ -435,9 +435,9 @@
 
 		return
 
-	else if(istype(O, /obj/item/weapon/reagent_containers/syringe))
+	else if(istype(O, /obj/item/reagent_containers/syringe))
 
-		var/obj/item/weapon/reagent_containers/syringe/S = O
+		var/obj/item/reagent_containers/syringe/S = O
 
 		if (S.mode == 1)
 			if(seed)
@@ -457,7 +457,7 @@
 
 		plant_seed(user, O)
 
-	else if (istype(O, /obj/item/weapon/material/minihoe))  // The minihoe
+	else if (istype(O, /obj/item/material/minihoe))  // The minihoe
 
 		if(weedlevel > 0)
 			user.visible_message("<span class='notice'>[user] starts uprooting the weeds.</span>", "<span class='notice'>You remove the weeds from the [src].</span>")
@@ -470,19 +470,19 @@
 		else
 			to_chat(user, "<span class='notice'>This plot is completely devoid of weeds. It doesn't need uprooting.</span>")
 
-	else if (istype(O, /obj/item/weapon/storage/plants))
+	else if (istype(O, /obj/item/storage/plants))
 
 		attack_hand(user)
 
-		var/obj/item/weapon/storage/plants/S = O
-		for (var/obj/item/weapon/reagent_containers/food/snacks/grown/G in locate(user.x,user.y,user.z))
+		var/obj/item/storage/plants/S = O
+		for (var/obj/item/reagent_containers/food/snacks/grown/G in locate(user.x,user.y,user.z))
 			if(!S.can_be_inserted(G, user))
 				return
 			S.handle_item_insertion(G, 1)
 
-	else if ( istype(O, /obj/item/weapon/plantspray) )
+	else if ( istype(O, /obj/item/plantspray) )
 
-		var/obj/item/weapon/plantspray/spray = O
+		var/obj/item/plantspray/spray = O
 		toxins += spray.toxicity
 		pestlevel -= spray.pest_kill_str
 		weedlevel -= spray.weed_kill_str

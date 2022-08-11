@@ -130,9 +130,6 @@ var/list/admin_verbs_fun = list(
 	/client/proc/toggle_random_events,
 	/client/proc/editappear,
 	/client/proc/roll_dices,
-	/datum/admins/proc/call_supply_drop,
-	/datum/admins/proc/call_drop_pod,
-	/client/proc/create_dungeon,
 	/datum/admins/proc/ai_hologram_set
 	)
 
@@ -167,7 +164,9 @@ var/list/admin_verbs_server = list(
 	/datum/admins/proc/toggle_space_ninja,
 	/client/proc/toggle_random_events,
 	/client/proc/check_customitem_activity,
-	/client/proc/nanomapgen_DumpImage
+	/client/proc/nanomapgen_DumpImage,
+	/client/proc/forcerandomrotate,
+	/client/proc/adminchangemap,
 	)
 var/list/admin_verbs_debug = list(
 	/client/proc/cmd_dev_bst,						//Spawn bluespace tech for testing
@@ -187,11 +186,6 @@ var/list/admin_verbs_debug = list(
 	/client/proc/reload_admins,
 	/client/proc/reload_mentors,
 	/client/proc/restart_controller,
-	/client/proc/print_random_map,
-	/client/proc/create_random_map,
-	/client/proc/apply_random_map,
-	/client/proc/overlay_random_map,
-	/client/proc/delete_random_map,
 	/client/proc/show_plant_genes,
 	/client/proc/enable_debug_verbs,
 	/client/proc/callproc,
@@ -352,9 +346,6 @@ var/list/admin_verbs_hideable = list(
 	/client/proc/toggle_random_events,
 	/client/proc/editappear,
 	/client/proc/roll_dices,
-	/datum/admins/proc/call_supply_drop,
-	/datum/admins/proc/call_drop_pod,
-	/client/proc/create_dungeon,
 	/datum/admins/proc/ai_hologram_set,
 	/datum/admins/proc/spawn_fruit,
 	/datum/admins/proc/spawn_plant,
@@ -379,11 +370,6 @@ var/list/admin_verbs_hideable = list(
 	/client/proc/reload_admins,
 	/client/proc/reload_mentors,
 	/client/proc/restart_controller,
-	/client/proc/print_random_map,
-	/client/proc/create_random_map,
-	/client/proc/apply_random_map,
-	/client/proc/overlay_random_map,
-	/client/proc/delete_random_map,
 	/client/proc/show_plant_genes,
 	/client/proc/enable_debug_verbs,
 	/client/proc/callproc,
@@ -650,7 +636,7 @@ var/list/admin_verbs_mentor = list(
 		prefs.ooccolor = input(src, "Please select your OOC colour.", "OOC colour") as color
 	else if(response == "Reset to default")
 		prefs.ooccolor = initial(prefs.ooccolor)
-	prefs.save_preferences()
+	SScharacter_setup.queue_preferences_save(prefs)
 
 	feedback_add_details("admin_verb","OC") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	return
@@ -669,7 +655,7 @@ var/list/admin_verbs_mentor = list(
 	var/datum/preferences/D
 	var/client/C = GLOB.ckey_directory[warned_ckey]
 	if(C)	D = C.prefs
-	else	D = preferences_datums[warned_ckey]
+	else	D = SScharacter_setup.preferences_datums[warned_ckey]
 
 	if(!D)
 		to_chat(src, "<font color='red'>Error: warn(): No such ckey found.</font>")

@@ -4,6 +4,12 @@ defined, then set up when it is created with New(). Then this same system can ju
 it needs to create more trails.A beaker could have a steam_trail_follow system set up, then the steam
 would spawn and follow the beaker, even if it is carried or thrown.
 */
+
+/proc/do_sparks(number, cardinal_only, datum/source)
+	var/datum/effect/effect/system/spark_spread/sparks = new
+	sparks.set_up(number, cardinal_only, source)
+	sparks.start()
+
 /obj/effect
 	can_block_movement = FALSE //Incorporeal generally
 	vis_flags = VIS_INHERIT_PLANE
@@ -88,7 +94,7 @@ steam.start() -- spawns the effect
 		direction = pick(GLOB.alldirs)
 	for(i=0, i<pick(1,2,3), i++)
 		sleep(5)
-		step(steam,direction)
+		steam.Move(get_step(steam, direction), direction)
 	QDEL_IN(steam, 2 SECONDS)
 
 /////////////////////////////////////////////
@@ -158,7 +164,7 @@ steam.start() -- spawns the effect
 		direction = pick(GLOB.alldirs)
 	for(i=0, i<pick(1,2,3), i++)
 		sleep(5)
-		step(sparks,direction)
+		sparks.Move(get_step(sparks, direction), direction)
 
 /////////////////////////////////////////////
 //// SMOKE SYSTEMS
@@ -344,7 +350,7 @@ steam.start() -- spawns the effect
 		if(QDELETED(smoke))
 			total_smoke--
 			return
-		step(smoke,direction)
+		smoke.Move(get_step(src, direction), direction)
 	QDEL_IN(smoke, smoke.time_to_live*0.75+rand(10,30))
 	total_smoke--
 

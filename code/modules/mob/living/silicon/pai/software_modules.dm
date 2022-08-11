@@ -67,7 +67,7 @@
 			// Check the carrier
 			var/answer = input(M, "[P] is requesting a DNA sample from you. Will you allow it to confirm your identity?", "[P] Check DNA", "No") in list("Yes", "No")
 			if(answer == "Yes")
-				var/turf/T = get_turf_or_move(P.loc)
+				var/turf/T = get_turf(P.loc)
 				for (var/mob/v in viewers(T))
 					v.show_message("<span class='notice'>[M] presses \his thumb against [P].</span>", 3, "<span class='notice'>[P] makes a sharp clicking sound as it extracts DNA material from [M].</span>", 2)
 				var/datum/dna/dna = M.dna
@@ -98,7 +98,7 @@
 			var/ch_stat = user.silicon_radio.channels[ch_name]
 			var/ch_dat[0]
 			ch_dat["name"] = ch_name
-			// FREQ_LISTENING is const in /obj/item/device/radio
+			// FREQ_LISTENING is const in /obj/item/radio
 			ch_dat["listening"] = !!(ch_stat & user.silicon_radio.FREQ_LISTENING)
 			channels[++channels.len] = ch_dat
 
@@ -173,16 +173,16 @@
 			P.hackdoor = null
 			return 1
 		else if(href_list["cable"])
-			var/turf/T = get_turf_or_move(P.loc)
+			var/turf/T = get_turf(P.loc)
 			P.hack_aborted = 0
-			P.cable = new /obj/item/weapon/pai_cable(T)
+			P.cable = new /obj/item/pai_cable(T)
 			for(var/mob/M in viewers(T))
 				M.show_message("<span class='warning'>A port on [P] opens to reveal [P.cable], which promptly falls to the floor.</span>", 3,
 				               "<span class='warning'>You hear the soft click of something light and hard falling to the ground.</span>", 2)
 			return 1
 
 /mob/living/silicon/pai/proc/hackloop()
-	var/turf/T = get_turf_or_move(src.loc)
+	var/turf/T = get_turf(src.loc)
 	for(var/mob/living/silicon/ai/AI in GLOB.player_list)
 		if(T.loc)
 			to_chat(AI, "<font color = red><b>Network Alert: Brute-force encryption crack in progress in [T.loc].</b></font>")
@@ -219,7 +219,7 @@
 	on_ui_interact(mob/living/silicon/pai/user, datum/nanoui/ui=null, force_open=1)
 		var/data[0]
 
-		var/turf/T = get_turf_or_move(user.loc)
+		var/turf/T = get_turf(user.loc)
 		if(!T)
 			data["reading"] = 0
 			data["pressure"] = 0

@@ -21,13 +21,13 @@
 	active_power_usage = 2000
 
 
-	circuit = /obj/item/weapon/circuitboard/autolathe
-	var/obj/item/weapon/computer_hardware/hard_drive/portable/disk = null
+	circuit = /obj/item/circuitboard/autolathe
+	var/obj/item/computer_hardware/hard_drive/portable/disk = null
 
 	var/list/stored_material =  list()
 	var/storage_capacity = 30 * SHEET_MATERIAL_AMOUNT
 
-	var/obj/item/weapon/reagent_containers/glass/container = null
+	var/obj/item/reagent_containers/glass/container = null
 	var/show_category = "All"
 
 	var/hacked = FALSE
@@ -199,7 +199,7 @@
 	if(default_part_replacement(I, user))
 		return
 
-	if(istype(I, /obj/item/weapon/computer_hardware/hard_drive/portable))
+	if(istype(I, /obj/item/computer_hardware/hard_drive/portable))
 		insert_disk(user)
 
 	if(istype(I,/obj/item/stack))
@@ -342,7 +342,7 @@
 	if(!istype(eating))
 		return
 
-	if(istype(eating, /obj/item/weapon/computer_hardware/hard_drive/portable))
+	if(istype(eating, /obj/item/computer_hardware/hard_drive/portable))
 		if(!have_disk)
 			return
 
@@ -364,7 +364,7 @@
 	if(!istype(eating))
 		return
 
-	if(istype(eating, /obj/item/weapon/reagent_containers/glass))
+	if(istype(eating, /obj/item/reagent_containers/glass))
 		if(container)
 			to_chat(user, SPAN_NOTICE("There's already \a [container] inside [src]."))
 			return
@@ -395,8 +395,8 @@
 		to_chat(user, SPAN_NOTICE("\The [eating] does not contain significant amounts of useful materials and cannot be accepted."))
 		return FALSE
 
-	if(istype(eating, /obj/item/weapon/computer_hardware/hard_drive/portable))
-		var/obj/item/weapon/computer_hardware/hard_drive/portable/disk = eating
+	if(istype(eating, /obj/item/computer_hardware/hard_drive/portable))
+		var/obj/item/computer_hardware/hard_drive/portable/disk = eating
 		if(disk.license)
 			to_chat(user, SPAN_NOTICE("\The [src] refuses to accept \the [eating] as it has non-null license."))
 			return
@@ -643,7 +643,7 @@
 
 	//And if there's any remainder, we eject that as a shard
 	if (remainder)
-		new /obj/item/weapon/material/shard(loc, material)
+		new /obj/item/material/shard(loc, material)
 
 	//The stored material gets the amount (whole+remainder) subtracted
 	stored_material[material] -= amount * SHEET_MATERIAL_AMOUNT
@@ -663,9 +663,9 @@
 	..()
 	var/mb_rating = 0
 	var/man_rating = 0
-	for(var/obj/item/weapon/stock_parts/matter_bin/MB in component_parts)
+	for(var/obj/item/stock_parts/matter_bin/MB in component_parts)
 		mb_rating += MB.rating
-	for(var/obj/item/weapon/stock_parts/manipulator/M in component_parts)
+	for(var/obj/item/stock_parts/manipulator/M in component_parts)
 		man_rating += M.rating
 
 	storage_capacity = round(initial(storage_capacity)*(mb_rating/3))

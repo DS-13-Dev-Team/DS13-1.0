@@ -398,7 +398,7 @@ There's no need to make this choice right now, if you cancel it will carry on gr
 
 
 
-/obj/item/weapon/reagent_containers/glass/bucket/infinite_biomass/Initialize()
+/obj/item/reagent_containers/glass/bucket/infinite_biomass/Initialize()
 	. = ..()
 	reagents.maximum_volume = 1000000
 	reagents.add_reagent(/datum/reagent/nutriment/biomass, 100000)

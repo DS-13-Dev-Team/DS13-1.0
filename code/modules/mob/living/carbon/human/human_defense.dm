@@ -264,6 +264,8 @@ meteor_act
 
 
 /mob/living/carbon/human/proc/attack_bloody(obj/item/W, mob/living/attacker, var/effective_force, var/hit_zone)
+	if(status_flags & GODMODE)
+		return
 	if(W.damtype != BRUTE)
 		return
 
@@ -300,6 +302,8 @@ meteor_act
 				bloody_body(src)
 
 /mob/living/carbon/human/proc/projectile_hit_bloody(obj/item/projectile/P, var/effective_force, var/hit_zone)
+	if(status_flags & GODMODE)
+		return
 	if(P.damage_type != BRUTE || P.nodamage)
 		return
 	if(!(P.sharp || prob(effective_force*4)))
@@ -324,6 +328,8 @@ meteor_act
 				bloody_body(src)
 
 /mob/living/carbon/human/proc/attack_joint(var/obj/item/organ/external/organ, var/obj/item/W, var/effective_force, var/dislocate_mult, var/blocked)
+	if(status_flags & GODMODE)
+		return
 	if(!organ || (organ.dislocated == 2) || (organ.dislocated == -1) || blocked >= 100)
 		return 0
 	if(W.damtype != BRUTE)
@@ -407,8 +413,8 @@ meteor_act
 	if(damtype != BURN && damtype != BRUTE) return
 
 	// The rig might soak this hit, if we're wearing one.
-	if(back && istype(back,/obj/item/weapon/rig))
-		var/obj/item/weapon/rig/rig = back
+	if(back && istype(back,/obj/item/rig))
+		var/obj/item/rig/rig = back
 		rig.take_hit(damage)
 
 	// We may also be taking a suit breach.
@@ -477,8 +483,8 @@ meteor_act
 //Removed the horrible safety parameter. It was only being used by ninja code anyways.
 //Now checks siemens_coefficient of the affected area by default
 /mob/living/carbon/human/electrocute_act(var/shock_damage, var/obj/source, var/base_siemens_coeff = 1.0, var/def_zone = null)
-
-	//if(status_flags & GODMODE)	return 0	//godmode
+	if(status_flags & GODMODE)
+		return
 
 	if(species.siemens_coefficient == -1)
 		if(stored_shock_by_ref["\ref[src]"])

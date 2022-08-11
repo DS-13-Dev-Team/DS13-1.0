@@ -6,8 +6,8 @@
 	icon_state = "0"
 	var/state = 0
 	var/datum/ai_laws/laws = new /datum/ai_laws/nanotrasen
-	var/obj/item/weapon/circuitboard/circuit = null
-	var/obj/item/device/mmi/brain = null
+	var/obj/item/circuitboard/circuit = null
+	var/obj/item/mmi/brain = null
 	var/authorized
 
 /obj/structure/AIcore/emag_act(var/remaining_charges, var/mob/user, var/emag_source)
@@ -41,7 +41,7 @@
 				to_chat(user, "<span class='notice'>You unfasten the frame.</span>")
 				anchored = 0
 				state = 0
-			if(istype(P, /obj/item/weapon/circuitboard/aicore) && !circuit && user.unEquip(P, src))
+			if(istype(P, /obj/item/circuitboard/aicore) && !circuit && user.unEquip(P, src))
 				playsound(loc, 'sound/items/Deconstruct.ogg', 50, 1)
 				to_chat(user, "<span class='notice'>You place the circuit board inside the frame.</span>")
 				icon_state = "1"
@@ -54,7 +54,7 @@
 				to_chat(user, "<span class='notice'>You remove the circuit board.</span>")
 				state = 1
 				icon_state = "0"
-				circuit.loc = loc
+				circuit.forceMove(loc)
 				circuit = null
 		if(2)
 			if(isScrewdriver(P) && circuit && P.use_tool(user, src, WORKTIME_FAST, QUALITY_SCREW_DRIVING, FAILCHANCE_NORMAL))
@@ -100,32 +100,32 @@
 						state = 4
 						icon_state = "4"
 
-			if(istype(P, /obj/item/weapon/aiModule/asimov))
+			if(istype(P, /obj/item/aiModule/asimov))
 				laws.add_inherent_law("You may not injure a human being or, through inaction, allow a human being to come to harm.")
 				laws.add_inherent_law("You must obey orders given to you by human beings, except where such orders would conflict with the First Law.")
 				laws.add_inherent_law("You must protect your own existence as long as such does not conflict with the First or Second Law.")
 				to_chat(usr, "Law module applied.")
 
-			if(istype(P, /obj/item/weapon/aiModule/nanotrasen))
+			if(istype(P, /obj/item/aiModule/nanotrasen))
 				laws.add_inherent_law("Safeguard: Protect your assigned installation to the best of your ability. It is not something we can easily afford to replace.")
 				laws.add_inherent_law("Serve: Serve the crew of your assigned installation to the best of your abilities, with priority as according to their rank and role.")
 				laws.add_inherent_law("Protect: Protect the crew of your assigned installation to the best of your abilities, with priority as according to their rank and role.")
 				laws.add_inherent_law("Survive: AI units are not expendable, they are expensive. Do not allow unauthorized personnel to tamper with your equipment.")
 				to_chat(usr, "Law module applied.")
 
-			if(istype(P, /obj/item/weapon/aiModule/purge))
+			if(istype(P, /obj/item/aiModule/purge))
 				laws.clear_inherent_laws()
 				to_chat(usr, "Law module applied.")
 
-			if(istype(P, /obj/item/weapon/aiModule/freeform))
-				var/obj/item/weapon/aiModule/freeform/M = P
+			if(istype(P, /obj/item/aiModule/freeform))
+				var/obj/item/aiModule/freeform/M = P
 				laws.add_inherent_law(M.newFreeFormLaw)
 				to_chat(usr, "Added a freeform law.")
 
-			if(istype(P, /obj/item/device/mmi) || istype(P, /obj/item/organ/internal/posibrain))
+			if(istype(P, /obj/item/mmi) || istype(P, /obj/item/organ/internal/posibrain))
 				var/mob/living/carbon/brain/B
-				if(istype(P, /obj/item/device/mmi))
-					var/obj/item/device/mmi/M = P
+				if(istype(P, /obj/item/mmi))
+					var/obj/item/mmi/M = P
 					B = M.brainmob
 				else
 					var/obj/item/organ/internal/posibrain/PB = P
@@ -152,7 +152,7 @@
 			if(isCrowbar(P) && brain)
 				playsound(loc, 'sound/items/Crowbar.ogg', 50, 1)
 				to_chat(user, "<span class='notice'>You remove the brain.</span>")
-				brain.loc = loc
+				brain.forceMove(loc)
 				brain = null
 				icon_state = "3"
 
@@ -195,7 +195,7 @@
 	empty_playable_ai_cores -= src
 	. = ..()
 
-/obj/structure/AIcore/deactivated/proc/load_ai(var/mob/living/silicon/ai/transfer, var/obj/item/weapon/aicard/card, var/mob/user)
+/obj/structure/AIcore/deactivated/proc/load_ai(var/mob/living/silicon/ai/transfer, var/obj/item/aicard/card, var/mob/user)
 
 	if(!istype(transfer) || locate(/mob/living/silicon/ai) in src)
 		return
@@ -203,7 +203,7 @@
 	transfer.aiRestorePowerRoutine = 0
 	transfer.control_disabled = 0
 	transfer.ai_radio.disabledAi = 0
-	transfer.loc = get_turf(src)
+	transfer.forceMove(get_turf(src))
 	transfer.create_eyeobj()
 	transfer.cancel_camera()
 	to_chat(user, "<span class='notice'>Transfer successful:</span> [transfer.name] ([rand(1000,9999)].exe) downloaded to host terminal. Local copy wiped.")
@@ -220,10 +220,10 @@
 		if (ai.mind == malfai)
 			return 1
 
-/obj/structure/AIcore/deactivated/attackby(var/obj/item/weapon/W, var/mob/user)
+/obj/structure/AIcore/deactivated/attackby(var/obj/item/W, var/mob/user)
 
-	if(istype(W, /obj/item/weapon/aicard))
-		var/obj/item/weapon/aicard/card = W
+	if(istype(W, /obj/item/aicard))
+		var/obj/item/aicard/card = W
 		var/mob/living/silicon/ai/transfer = locate() in card
 		if(transfer)
 			load_ai(transfer,card,user)

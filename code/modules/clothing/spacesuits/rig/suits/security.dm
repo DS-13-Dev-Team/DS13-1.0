@@ -1,6 +1,6 @@
 //Ishimura Sec RIGs
 //PCSI RIG
-/obj/item/weapon/rig/security/pcsi
+/obj/item/rig/security/pcsi
 	name = "PCSI RIG"
 	desc = "A lightweight and flexible armoured rig suit used by CEC shipboard security during crackdowns and for use in hazardous environments."
 	icon_state = "pcsi_rig"
@@ -33,7 +33,7 @@
 /obj/item/clothing/gloves/rig/security/pcsi
 
 //PCSI Riot RIG
-/obj/item/weapon/rig/security/pcsi/advanced
+/obj/item/rig/security/pcsi/advanced
 	name = "PCSI riot RIG"
 	desc = "A lightweight and flexible armoured rig suit used by CEC shipboard security during crackdowns and for use in hazardous environments."
 	icon_state = "pcsi_riot_rig"
@@ -68,7 +68,7 @@
 
 //Sprawl Sec RIGs
 //Titan Security RIG
-/obj/item/weapon/rig/security
+/obj/item/rig/security
 	name = "security RIG"
 	desc = "A lightweight and flexible armoured rig suit, designed for riot control and shipboard disciplinary enforcement."
 	icon_state = "ds_security_rig"

@@ -165,7 +165,7 @@
 		addtimer(CALLBACK(src,.proc/cancel_rift),time)
 
 /spell/targeted/heal_target/trance/Destroy()
-	cancel_rift()
+	INVOKE_ASYNC(src, .proc/cancel_rift)
 	return ..()
 
 /spell/targeted/heal_target/trance/proc/cancel_rift()

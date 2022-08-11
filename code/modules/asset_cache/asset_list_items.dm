@@ -161,15 +161,15 @@ proc/get_craft_item(path)
 /datum/asset/simple/nanomaps
 	keep_local_name = TRUE
 	assets = list(
-		"ishimura-1.png"		= 'nano/images/ishimura/ishimura-1.png',
 		"ishimura-2.png"		= 'nano/images/ishimura/ishimura-2.png',
 		"ishimura-3.png"		= 'nano/images/ishimura/ishimura-3.png',
 		"ishimura-4.png"		= 'nano/images/ishimura/ishimura-4.png',
 		"ishimura-5.png"		= 'nano/images/ishimura/ishimura-5.png',
 		"ishimura-6.png"		= 'nano/images/ishimura/ishimura-6.png',
-		"colony-1.png"			= 'nano/images/colony/colony-1.png',
+		"ishimura-7.png"		= 'nano/images/ishimura/ishimura-7.png',
 		"colony-2.png"			= 'nano/images/colony/colony-2.png',
 		"colony-3.png"			= 'nano/images/colony/colony-3.png',
+		"colony-4.png"			= 'nano/images/colony/colony-4.png',
 	)
 
 /datum/asset/simple/patron_content/register()
@@ -224,7 +224,7 @@ proc/get_craft_item(path)
 		COLOR_PINK = "Pink",
 		COLOR_MAROON = "Brown"
 	)
-	var/obj/item/weapon/storage/pill_bottle/PB = new()
+	var/obj/item/storage/pill_bottle/PB = new()
 	var/icon/I = getFlatIcon(PB)
 	I.Scale(96, 96)
 	assets = list("Default_pill_bottle" = I)

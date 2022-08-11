@@ -4,7 +4,7 @@
 	High quality all around. Lightweight, good protection, no real drawbacks. The next generation of awesome
 */
 
-/obj/item/weapon/rig/advanced
+/obj/item/rig/advanced
 	name = "advanced RIG"
 	desc = "The latest in cutting-edge RIG technology. Lightweight, tough, and packed with utilities"
 	icon_state = "ds_advanced_rig"
@@ -50,12 +50,12 @@
 /obj/item/clothing/head/helmet/space/rig/advanced
 	name = "helmet"
 
-/obj/item/weapon/rig/advanced/maxstone
+/obj/item/rig/advanced/maxstone
 	name = "modified advanced RIG"
 	desc = "The latest in cutting-edge RIG technology. This one is a slightly older model, still using the standard engineering suit scheme. It has `Max S.` engraved next to the monitor lights."
 	icon_state = "ds_advanced_rig_stone"
 
-/obj/item/weapon/rig/advanced/banditofdoom
+/obj/item/rig/advanced/banditofdoom
 	name = "Evangelion RIG"
 	desc = "A project many months in the works, created by an obsessive historical anime fan. Even incorporates a custom voice changer for impersonating TV characters."
 	icon_state = "banditofdoom_rig"

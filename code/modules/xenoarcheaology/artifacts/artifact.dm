@@ -188,9 +188,9 @@
 	if(secondary_effect && secondary_effect.effect == EFFECT_TOUCH && secondary_effect.activated)
 		secondary_effect.DoEffectTouch(user)
 
-/obj/machinery/artifact/attackby(obj/item/weapon/W as obj, mob/living/user as mob)
+/obj/machinery/artifact/attackby(obj/item/W as obj, mob/living/user as mob)
 
-	if (istype(W, /obj/item/weapon/reagent_containers/))
+	if (istype(W, /obj/item/reagent_containers/))
 		if(W.reagents.has_reagent(/datum/reagent/hydrazine, 1) || W.reagents.has_reagent(/datum/reagent/water, 1))
 			if(my_effect.trigger == TRIGGER_WATER)
 				my_effect.ToggleActivate()
@@ -211,17 +211,17 @@
 				my_effect.ToggleActivate()
 			if(secondary_effect && secondary_effect.trigger == TRIGGER_TOXIN && prob(25))
 				secondary_effect.ToggleActivate(0)
-	else if(istype(W,/obj/item/weapon/melee/baton) && W:status ||\
-			istype(W,/obj/item/weapon/melee/energy) ||\
-			istype(W,/obj/item/weapon/melee/cultblade) ||\
-			istype(W,/obj/item/weapon/card/emag) ||\
+	else if(istype(W,/obj/item/melee/baton) && W:status ||\
+			istype(W,/obj/item/melee/energy) ||\
+			istype(W,/obj/item/melee/cultblade) ||\
+			istype(W,/obj/item/card/emag) ||\
 			isMultitool(W))
 		if (my_effect.trigger == TRIGGER_ENERGY)
 			my_effect.ToggleActivate()
 		if(secondary_effect && secondary_effect.trigger == TRIGGER_ENERGY && prob(25))
 			secondary_effect.ToggleActivate(0)
 
-	else if (istype(W,/obj/item/weapon/flame) && W:lit ||\
+	else if (istype(W,/obj/item/flame) && W:lit ||\
 			isWelder(W))
 		if(my_effect.trigger == TRIGGER_HEAT)
 			my_effect.ToggleActivate()
@@ -283,8 +283,11 @@
 			secondary_effect.ToggleActivate(0)
 
 /obj/machinery/artifact/ex_act(severity)
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	switch(severity)
-		if(1.0) qdel(src)
+		if(1.0)
+			qdel(src)
 		if(2.0)
 			if (prob(50))
 				qdel(src)

@@ -17,7 +17,7 @@
 			in either case, any leftover modules will go into source if possible
 		dump is the place that leftover modules go after that. If none is provided they'll be dropped on the ground somewhere
 */
-/proc/transfer_rig(var/obj/item/weapon/rig/target, var/obj/item/weapon/rig/source, var/list/extra_modules, var/atom/dump, var/mob/living/carbon/human/user)
+/proc/transfer_rig(var/obj/item/rig/target, var/obj/item/rig/source, var/list/extra_modules, var/atom/dump, var/mob/living/carbon/human/user)
 
 	//to_chat(world, "Transfer T:[target]	S:[source]	Mod:[extra_modules]	D:[dump]	U:[user]")
 	//This is required
@@ -122,7 +122,7 @@
 
 
 
-/obj/item/weapon/rig/proc/instant_unequip()
+/obj/item/rig/proc/instant_unequip()
 	var/mob/living/carbon/human/user = loc
 
 	if (!canremove && istype(user))
@@ -139,7 +139,7 @@
 	user.drop_from_inventory(src, get_turf(user))
 
 //Future TODO: Add a force var that, if true, will unequip any blocking hats/gloves/boots/suits so deployment will succeed
-/obj/item/weapon/rig/proc/instant_equip(var/mob/living/carbon/human/target, var/deploy = TRUE)
+/obj/item/rig/proc/instant_equip(var/mob/living/carbon/human/target, var/deploy = TRUE)
 	var/cached_seal_delay = seal_delay
 	seal_delay = 0
 	if (wearer == target || target.equip_to_slot_if_possible(src, desired_slot, del_on_fail = FALSE, disable_warning = TRUE, redraw_mob = FALSE, force = TRUE)\

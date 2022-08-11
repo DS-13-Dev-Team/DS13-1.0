@@ -1,4 +1,4 @@
-/obj/item/weapon/tool/crowbar
+/obj/item/tool/crowbar
 	name = "crowbar"
 	desc = "A heavy crowbar of solid steel, good and solid in your hand."
 	description_info = "Crowbars have countless uses: click on floor tiles to pry them loose. Use alongside a screwdriver to install or remove windows. Force open emergency shutters, or depowered airlocks. Open the panel of an unlocked APC. Pry a computer's circuit board free. And much more!"
@@ -18,18 +18,18 @@
 	tool_qualities = list(QUALITY_PRYING = 25, QUALITY_DIGGING = 10)
 
 //Comes with preapplied red paint
-/obj/item/weapon/tool/crowbar/red
+/obj/item/tool/crowbar/red
 	icon_state = "red_crowbar"
 	item_state = "crowbar_red"
-	preinstalled_mods = list(/obj/item/weapon/tool_modification/productivity/red_paint)
+	preinstalled_mods = list(/obj/item/tool_modification/productivity/red_paint)
 	max_modifications = 4 //It gets an extra mod slot for the preinstalled red paint
 
 //This has red color baked into its sprite, so don't tint it
-/obj/item/weapon/tool/crowbar/red/refresh_modifications()
+/obj/item/tool/crowbar/red/refresh_modifications()
 	.=..()
 	color = "#ffffff"
 
-/obj/item/weapon/tool/crowbar/improvised
+/obj/item/tool/crowbar/improvised
 	name = "rebar"
 	desc = "A pair of metal rods laboriously twisted into a useful shape."
 	icon_state = "impro_crowbar"
@@ -39,7 +39,7 @@
 
 
 //A compact version of a crowbar which is pretty weak
-/obj/item/weapon/tool/crowbar/prybar
+/obj/item/tool/crowbar/prybar
 	name = "pry bar"
 	desc = "A steel bar with a wedge. It comes in a variety of configurations - collect them all."
 	icon_state = "prybar"
@@ -51,11 +51,11 @@
 	matter = list(MATERIAL_STEEL = 800)
 	tool_qualities = list(QUALITY_PRYING = 5, QUALITY_DIGGING = 5)
 
-/obj/item/weapon/tool/crowbar/prybar/Initialize()
+/obj/item/tool/crowbar/prybar/Initialize()
 	icon_state = "prybar[pick("","_red","_green","_aubergine","_blue")]"
 	. = ..()
 
-/obj/item/weapon/tool/crowbar/pneumatic
+/obj/item/tool/crowbar/pneumatic
 	name = "pneumatic crowbar"
 	desc = "When you realy need to crack open something."
 	icon_state = "pneumo_crowbar"
@@ -65,4 +65,4 @@
 	degradation = DEGRADATION_TOUGH_1
 	use_power_cost = 0.8
 	max_modifications = 4
-	suitable_cell = /obj/item/weapon/cell
+	suitable_cell = /obj/item/cell

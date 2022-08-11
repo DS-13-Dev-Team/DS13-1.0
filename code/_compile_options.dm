@@ -1,8 +1,6 @@
 //#define TESTING //By using the testing("message") proc you can create debug-feedback for people with this
 								//uncommented, but not visible in the release version)
 
-//#define MAP_ISHIMURA "Ishimura"
-
 // Comment this out if you are debugging problems that might be obscured by custom error handling in world/Error
 #ifdef DEBUG
 #define USE_CUSTOM_ERROR_HANDLER
@@ -29,7 +27,7 @@
 
 //Update this whenever the byond version is stable so people stop updating to hilariously broken versions
 #define MAX_COMPILER_VERSION 514
-#define MAX_COMPILER_BUILD 1584
+#define MAX_COMPILER_BUILD 1585
 #if DM_VERSION > MAX_COMPILER_VERSION || DM_BUILD > MAX_COMPILER_BUILD
 #warn WARNING! your byond version is over the recommended 514.1584! There may be unexpected byond bugs!
 #endif
@@ -66,4 +64,18 @@
 #warn Building with Dream Maker is no longer supported and will result in errors.
 #warn In order to build, run BUILD.bat in the root directory.
 #warn Consider switching to VSCode editor instead, where you can press Ctrl+Shift+B to build.
+#endif
+
+#ifdef ALL_MAPS
+	//Ishimura
+	#include "..\maps\USGIshimura\M.01 Ishimura (UT).dmm"
+	#include "..\maps\USGIshimura\M.02 Ishimura (T).dmm"
+	#include "..\maps\USGIshimura\M.03 Ishimura (L).dmm"
+	#include "..\maps\USGIshimura\M.04 Ishimura (M).dmm"
+	#include "..\maps\USGIshimura\M.05 Ishimura (U).dmm"
+	#include "..\maps\USGIshimura\M.06 Aegis VII.dmm"
+	//Colony
+	#include "..\maps\TheColony\M.01_Mining_Colony_Underground.dmm"
+	#include "..\maps\TheColony\M.02_Mining_Colony.dmm"
+	#include "..\maps\TheColony\M.03_Mining_Colony_UpperLevels.dmm"
 #endif

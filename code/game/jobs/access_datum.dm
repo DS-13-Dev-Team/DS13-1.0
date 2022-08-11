@@ -218,6 +218,12 @@
 	desc = "Keycode Auth. Device"
 	region = ACCESS_REGION_COMMAND
 
+/var/const/access_keycard_modification = 61
+/datum/access/keycard_modification
+	id = access_keycard_modification
+	desc = "ID Card Modification"
+	region = ACCESS_REGION_COMMAND
+
 /* ERT */
 
 // Kellion

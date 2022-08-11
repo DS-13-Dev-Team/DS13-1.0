@@ -2,7 +2,7 @@
 // - These are not intended to go anywhere but the store. Do not add them to random lists. - Snype
 
 //SCAF Elite RIG
-/obj/item/weapon/rig/scaf
+/obj/item/rig/scaf
 	name = "refurbished SCAF RIG"
 	desc = "A lightweight and flexible armoured rig suit, designed for riot control and shipboard disciplinary enforcement."
 	icon_state = "scaf_elite_rig"
@@ -35,13 +35,13 @@
 
 /obj/item/clothing/shoes/magboots/rig/scaf
 
-/obj/item/weapon/rig/scaf/elite
+/obj/item/rig/scaf/elite
 	name = "elite SCAF RIG"
 	icon_state = "scaf_elite_rig"
 
 
 //SCAF Legionnaire RIG
-/obj/item/weapon/rig/scaf/legionnaire
+/obj/item/rig/scaf/legionnaire
 	name = "refurbished SCAF expeditionary RIG"
 	desc = "A lightweight and flexible armoured rig suit, designed for riot control and shipboard disciplinary enforcement."
 	icon_state = "scaf_legionnaire_rig"
@@ -50,7 +50,7 @@
 
 
 //SCAF Sharpshooter RIG
-/obj/item/weapon/rig/scaf/sharpshooter
+/obj/item/rig/scaf/sharpshooter
 	name = "refurbished SCAF sharpshooter RIG"
 	desc = "A lightweight and flexible armoured rig suit, designed for riot control and shipboard disciplinary enforcement."
 	icon_state = "scaf_sharpshooter_rig"

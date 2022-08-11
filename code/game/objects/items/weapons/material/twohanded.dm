@@ -16,7 +16,7 @@
 /*
  * Twohanded
  */
-/obj/item/weapon/material/twohanded
+/obj/item/material/twohanded
 	w_class = ITEM_SIZE_HUGE
 	var/wielded = 0
 	var/force_wielded = 0
@@ -28,7 +28,7 @@
 	var/unwielded_force_divisor = 0.6 //This stacks multiplicatively with force divisor, so its 60% of what the wielded force is
 	var/wielded_parry_bonus = 25
 
-/obj/item/weapon/material/twohanded/update_twohanding()
+/obj/item/material/twohanded/update_twohanding()
 	var/mob/living/M = loc
 	if(istype(M) && M.can_wield_item(src) && is_held_twohanded(M))
 		wielded = 1
@@ -39,7 +39,7 @@
 	update_icon()
 	..()
 
-/obj/item/weapon/material/twohanded/update_force()
+/obj/item/material/twohanded/update_force()
 	..()
 	base_name = name
 	force_unwielded = round(force*unwielded_force_divisor)
@@ -48,16 +48,16 @@
 //	log_debug("[src] has unwielded force [force_unwielded], wielded force [force_wielded] and throwforce [throwforce] when made from default material [material.name]")
 
 
-/obj/item/weapon/material/twohanded/New()
+/obj/item/material/twohanded/New()
 	..()
 	update_icon()
 
-/obj/item/weapon/material/twohanded/get_block_chance(var/datum/strike/strike)
+/obj/item/material/twohanded/get_block_chance(var/datum/strike/strike)
 	. = ..()
 	if(wielded)
 		. += wielded_parry_bonus
 
-/obj/item/weapon/material/twohanded/update_icon()
+/obj/item/material/twohanded/update_icon()
 	icon_state = "[base_icon][wielded]"
 	item_state_slots[slot_l_hand_str] = icon_state
 	item_state_slots[slot_r_hand_str] = icon_state
@@ -65,7 +65,7 @@
 /*
  * Fireaxe
  */
-/obj/item/weapon/material/twohanded/fireaxe  // DEM AXES MAN, marker -Agouri
+/obj/item/material/twohanded/fireaxe  // DEM AXES MAN, marker -Agouri
 	icon_state = "fireaxe0"
 	base_icon = "fireaxe"
 	name = "fire axe"
@@ -83,7 +83,7 @@
 	applies_material_colour = 0
 	unbreakable = 1
 
-/obj/item/weapon/material/twohanded/fireaxe/afterattack(atom/A as mob|obj|turf|area, mob/user as mob, proximity)
+/obj/item/material/twohanded/fireaxe/afterattack(atom/A as mob|obj|turf|area, mob/user as mob, proximity)
 	if(!proximity) return
 	..()
 	if(A && wielded)
@@ -100,7 +100,7 @@
 
 
 //spears, bay edition
-/obj/item/weapon/material/twohanded/spear
+/obj/item/material/twohanded/spear
 	icon_state = "spearglass0"
 	base_icon = "spearglass"
 	name = "spear"
@@ -123,7 +123,7 @@
 	attack_noun = list("attack", "poke", "jab", "tear", "gore")
 	default_material = MATERIAL_GLASS
 
-/obj/item/weapon/material/twohanded/spear/shatter(var/consumed)
+/obj/item/material/twohanded/spear/shatter(var/consumed)
 	if(!consumed)
-		new /obj/item/weapon/material/wirerod(get_turf(src)) //give back the wired rod
+		new /obj/item/material/wirerod(get_turf(src)) //give back the wired rod
 	..()

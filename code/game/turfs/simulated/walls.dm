@@ -30,7 +30,7 @@
 	var/stripe_color
 	var/global/list/wall_stripe_cache = list()
 	var/list/blend_turfs = list(/turf/simulated/wall/cult)
-	var/list/blend_objects = list(/obj/machinery/door, /obj/structure/wall_frame, /obj/structure/grille, /obj/structure/window/reinforced/full, /obj/structure/window/reinforced/polarized/full, /obj/structure/window/shuttle, ,/obj/structure/window/phoronbasic/full, /obj/structure/window/phoronreinforced/full) // Objects which to blend with
+	var/list/blend_objects = list(/obj/machinery/door, /obj/structure/wall_frame, /obj/structure/grille, /obj/structure/window/reinforced/full, /obj/structure/window/reinforced/polarized/full, /obj/structure/window/shuttle, ,/obj/structure/window/phoronbasic/full, /obj/structure/window/phoronreinforced/full, /obj/structure/tramwall) // Objects which to blend with
 	var/list/noblend_objects = list(/obj/machinery/door/window) //Objects to avoid blending with (such as children of listed blend objects.
 
 
@@ -42,11 +42,10 @@
 	material = get_material_by_name(materialtype)
 	if(!isnull(rmaterialtype))
 		reinf_material = get_material_by_name(rmaterialtype)
-	update_material()
 	hitsound = material.hitsound
 
-
 /turf/simulated/wall/Initialize()
+	update_material()
 	set_extension(src, /datum/extension/penetration/proc_call, .proc/CheckPenetration)
 	START_PROCESSING(SSturf, src) //Used for radiation.
 	. = ..()
@@ -117,7 +116,7 @@
 			plant.pixel_y = 0
 		plant.get_neighbors()
 
-/turf/simulated/wall/ChangeTurf(newtype, tell_universe = TRUE, force_lighting_update = FALSE, keep_air = FALSE)
+/turf/simulated/wall/ChangeTurf(newtype, tell_universe = TRUE, force_lighting_update = FALSE, keep_air = FALSE, defer_change = FALSE)
 	clear_plants()
 	.=..()
 	var/turf/new_turf = .

@@ -21,11 +21,11 @@
 	color = COLOR_PINK
 
 
-/obj/item/weapon/reagent_containers/glass/bottle/stemcells
+/obj/item/reagent_containers/glass/bottle/stemcells
 	name = "Stem Cell Clinical Sample"
 	desc = "The essence of life"
 	icon_state = "bottle-4"
-/obj/item/weapon/reagent_containers/glass/bottle/stemcells/Initialize()
+/obj/item/reagent_containers/glass/bottle/stemcells/Initialize()
 	. = ..()
 
 	reagents.add_reagent(/datum/reagent/nutriment/stemcells, 10)

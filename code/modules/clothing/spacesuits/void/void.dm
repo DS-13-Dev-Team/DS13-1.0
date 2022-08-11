@@ -28,7 +28,7 @@
 	//Inbuilt devices.
 	var/obj/item/clothing/shoes/magboots/boots = null // Deployable boots, if any.
 	var/obj/item/clothing/head/helmet/helmet = null   // Deployable helmet, if any.
-	var/obj/item/weapon/tank/tank = null              // Deployable tank, if any.
+	var/obj/item/tank/tank = null              // Deployable tank, if any.
 
 	action_button_name = "Toggle Helmet"
 
@@ -44,7 +44,7 @@ else if(##equipment_var) {\
 	. = ..()
 	VOIDSUIT_INIT_EQUIPMENT(boots,  /obj/item/clothing/shoes/magboots)
 	VOIDSUIT_INIT_EQUIPMENT(helmet, /obj/item/clothing/head/helmet)
-	VOIDSUIT_INIT_EQUIPMENT(tank,   /obj/item/weapon/tank)
+	VOIDSUIT_INIT_EQUIPMENT(tank,   /obj/item/tank)
 
 #undef VOIDSUIT_INIT_EQUIPMENT
 
@@ -181,7 +181,7 @@ else if(##equipment_var) {\
 
 	if(!istype(user,/mob/living)) return
 
-	if(istype(W,/obj/item/clothing/accessory) || istype(W, /obj/item/weapon/hand_labeler))
+	if(istype(W,/obj/item/clothing/accessory) || istype(W, /obj/item/hand_labeler))
 		return ..()
 
 	if(user.get_inventory_slot(src) == slot_wear_suit)
@@ -226,10 +226,10 @@ else if(##equipment_var) {\
 			to_chat(user, "You attach \the [W] to \the [src]'s boot mounts.")
 			boots = W
 		return
-	else if(istype(W,/obj/item/weapon/tank))
+	else if(istype(W,/obj/item/tank))
 		if(tank)
 			to_chat(user, "\The [src] already has an airtank installed.")
-		else if(istype(W,/obj/item/weapon/tank/phoron))
+		else if(istype(W,/obj/item/tank/phoron))
 			to_chat(user, "\The [W] cannot be inserted into \the [src]'s storage compartment.")
 		else
 			if(!user.unEquip(W, src))

@@ -111,7 +111,7 @@
 				continue
 			src.throw_impact(A,speed)
 
-/atom/movable/proc/throw_at(atom/target, range = 7, speed = BASE_THROW_SPEED, thrower = null)
+/atom/movable/proc/throw_at(atom/target, range = 7, speed = BASE_THROW_SPEED, thrower = null, datum/callback/callback)
 	set waitfor = FALSE
 	if(!target || !src)
 		return FALSE
@@ -177,3 +177,4 @@
 	src.thrower = null
 	src.throw_source = null
 	fall()
+	callback?.Invoke()

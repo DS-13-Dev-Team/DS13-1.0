@@ -7,6 +7,8 @@
 	w_class = ITEM_SIZE_NORMAL
 
 /obj/structure/sign/ex_act(severity)
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	switch(severity)
 		if(1.0)
 			qdel(src)

@@ -121,14 +121,14 @@
 // Parameters: 2 (C - Item this object was clicked with, user - Mob which clicked this object)
 // Description: If we are clicked with crowbar or wielded fire axe, try to manually open the door.
 // This only works on broken doors or doors without power. Also allows repair with Plasteel.
-/obj/machinery/door/blast/attackby(obj/item/weapon/C as obj, mob/user as mob)
+/obj/machinery/door/blast/attackby(obj/item/C as obj, mob/user as mob)
 	src.add_fingerprint(user, 0, C)
 	//Attacking with empty hands
 	if (C == user)
 		check_unarmed_force(C)
 		return
 
-	if(isCrowbar(C) || (istype(C, /obj/item/weapon/material/twohanded/fireaxe) && C:wielded == 1))
+	if(isCrowbar(C) || (istype(C, /obj/item/material/twohanded/fireaxe) && C:wielded == 1))
 		if(((stat & NOPOWER) || (stat & BROKEN)) && !( src.operating ))
 			force_toggle()
 		else
@@ -203,13 +203,39 @@
 /obj/machinery/door/blast/regular/open
 	begins_closed = FALSE
 
+/obj/machinery/door/blast/regular/tram
+	var/specific_tram_id = MAIN_STATION_TRAM
+
+/obj/machinery/door/blast/regular/tram/Initialize()
+	..()
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/machinery/door/blast/regular/tram/LateInitialize(mapload)
+	find_trams()
+
+/obj/machinery/door/blast/regular/tram/proc/find_trams()
+	for(var/datum/lift_master/master as anything in GLOB.active_lifts_by_type[TRAM_LIFT_ID])
+		if(master.specific_lift_id == specific_tram_id)
+			RegisterSignal(master, COMSIG_TRAM_TRAVEL_STARTED, .proc/on_tram_travel_start)
+
+/obj/machinery/door/blast/regular/tram/proc/on_tram_travel_start(datum/lift_master/source, obj/effect/landmark/tram/travel_from, obj/effect/landmark/tram/travel_to)
+	SIGNAL_HANDLER
+	//If tram is moving through us
+	if(get_dir(src, travel_from) != get_dir(src, travel_to))
+		spawn(-1)
+			open()
+		RegisterSignal(source, COMSIG_TRAM_TRAVEL_ENDED, .proc/on_tram_travel_end)
+
+/obj/machinery/door/blast/regular/tram/proc/on_tram_travel_end(datum/lift_master/source)
+	SIGNAL_HANDLER
+	spawn(-1)
+		close()
+	UnregisterSignal(source, COMSIG_TRAM_TRAVEL_ENDED)
+
 // SUBTYPE: Shutters
 // Nicer looking, and also weaker, shutters. Found in kitchen and similar areas.
 /obj/machinery/door/blast/shutters
 	desc = "A set of mechanized shutters made of a pretty sturdy material."
-
-
-
 	icon_state_open = "ishimura_shutter_open"
 	icon_state_opening = "ishimura_shutter_opening"
 	icon_state_closed = "ishimura_shutter_closed"

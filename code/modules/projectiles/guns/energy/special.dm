@@ -1,4 +1,4 @@
-/obj/item/weapon/gun/energy/ionrifle
+/obj/item/gun/energy/ionrifle
 	name = "ion rifle"
 	desc = "The NT Mk60 EW Halicon is a man portable anti-armor weapon designed to disable mechanical threats, produced by NT. Not the best of its type."
 	icon_state = "ionrifle"
@@ -15,10 +15,10 @@
 	wielded_item_state = "ionrifle-wielded"
 	combustion = 0
 
-/obj/item/weapon/gun/energy/ionrifle/emp_act(severity)
+/obj/item/gun/energy/ionrifle/emp_act(severity)
 	..(max(severity, 2)) //so it doesn't EMP itself, I guess
 
-/obj/item/weapon/gun/energy/ionrifle/small
+/obj/item/gun/energy/ionrifle/small
 	name = "ion pistol"
 	desc = "The NT Mk72 EW Preston is a personal defense weapon designed to disable mechanical threats."
 	icon_state = "ionpistol"
@@ -32,7 +32,7 @@
 	max_shots = 6
 	projectile_type = /obj/item/projectile/ion/small
 
-/obj/item/weapon/gun/energy/decloner
+/obj/item/gun/energy/decloner
 	name = "biological demolecularisor"
 	desc = "A gun that discharges high amounts of controlled radiation to slowly break a target into component elements."
 	icon_state = "decloner"
@@ -42,7 +42,7 @@
 	projectile_type = /obj/item/projectile/energy/declone
 	combustion = 0
 
-/obj/item/weapon/gun/energy/floragun
+/obj/item/gun/energy/floragun
 	name = "floral somatoray"
 	desc = "A tool that discharges controlled radiation which induces mutation in plant cells."
 	icon_state = "floramut100"
@@ -62,7 +62,7 @@
 		list(mode_name="induce specific mutations", projectile_type=/obj/item/projectile/energy/floramut/gene, modifystate="floramut"),
 		)
 
-/obj/item/weapon/gun/energy/floragun/afterattack(obj/target, mob/user, adjacent_flag)
+/obj/item/gun/energy/floragun/afterattack(obj/target, mob/user, adjacent_flag)
 	//allow shooting into adjacent hydrotrays regardless of intent
 	if(adjacent_flag && istype(target,/obj/machinery/portable_atmospherics/hydroponics))
 		user.visible_message("<span class='danger'>\The [user] fires \the [src] into \the [target]!</span>")
@@ -70,7 +70,7 @@
 		return
 	..()
 
-/obj/item/weapon/gun/energy/floragun/verb/select_gene()
+/obj/item/gun/energy/floragun/verb/select_gene()
 	set name = "Select Gene"
 	set category = "Object"
 	set src in view(1)
@@ -87,13 +87,13 @@
 	return
 
 
-/obj/item/weapon/gun/energy/floragun/consume_next_projectile()
+/obj/item/gun/energy/floragun/consume_next_projectile()
 	. = ..()
 	var/obj/item/projectile/energy/floramut/gene/G = .
 	if(istype(G))
 		G.gene = gene
 
-/obj/item/weapon/gun/energy/meteorgun
+/obj/item/gun/energy/meteorgun
 	name = "meteor gun"
 	desc = "For the love of god, make sure you're aiming this the right way!"
 	icon_state = "riotgun"
@@ -101,13 +101,13 @@
 	slot_flags = SLOT_BELT|SLOT_BACK
 	w_class = ITEM_SIZE_HUGE
 	projectile_type = /obj/item/projectile/meteor
-	cell_type = /obj/item/weapon/cell/potato
+	cell_type = /obj/item/cell/potato
 	self_recharge = 1
 	recharge_time = 5 //Time it takes for shots to recharge (in ticks)
 	charge_meter = 0
 	combustion = 0
 
-/obj/item/weapon/gun/energy/meteorgun/pen
+/obj/item/gun/energy/meteorgun/pen
 	name = "meteor pen"
 	desc = "The pen is mightier than the sword."
 	icon = 'icons/obj/bureaucracy.dmi'
@@ -117,14 +117,14 @@
 	slot_flags = SLOT_BELT
 
 
-/obj/item/weapon/gun/energy/mindflayer
+/obj/item/gun/energy/mindflayer
 	name = "mind flayer"
 	desc = "A custom-built weapon of some kind."
 	icon_state = "xray"
 	origin_tech = list(TECH_COMBAT = 5, TECH_MAGNET = 4)
 	projectile_type = /obj/item/projectile/beam/mindflayer
 
-/obj/item/weapon/gun/energy/toxgun
+/obj/item/gun/energy/toxgun
 	name = "phoron pistol"
 	desc = "A specialized firearm designed to fire lethal bolts of phoron."
 	icon_state = "toxgun"
@@ -134,7 +134,7 @@
 
 /* Staves */
 
-/obj/item/weapon/gun/energy/staff
+/obj/item/gun/energy/staff
 	name = "staff of change"
 	desc = "An artefact that spits bolts of coruscating energy which cause the target's very form to reshape itself."
 	icon = 'icons/obj/gun.dmi'
@@ -152,7 +152,7 @@
 	charge_meter = 0
 	var/required_antag_type = MODE_WIZARD
 
-/obj/item/weapon/gun/energy/staff/special_check(var/mob/user)
+/obj/item/gun/energy/staff/special_check(var/mob/user)
 	if(required_antag_type)
 		var/datum/antagonist/antag = get_antag_data(required_antag_type)
 		if(user.mind && !antag.is_antagonist(user.mind))
@@ -161,21 +161,21 @@
 
 	return ..()
 
-/obj/item/weapon/gun/energy/staff/handle_click_empty(mob/user = null)
+/obj/item/gun/energy/staff/handle_click_empty(mob/user = null)
 	if (user)
 		user.visible_message("*fizzle*", "<span class='danger'>*fizzle*</span>")
 	else
 		src.visible_message("*fizzle*")
 	playsound(src.loc, 'sound/effects/sparks1.ogg', 100, 1)
 
-/obj/item/weapon/gun/energy/staff/animate
+/obj/item/gun/energy/staff/animate
 	name = "staff of animation"
 	desc = "An artefact that spits bolts of life-force which causes objects which are hit by it to animate and come to life! This magic doesn't affect machines."
 	max_shots = 5
 	recharge_time = 5 SECONDS
 	projectile_type = /obj/item/projectile/animate
 
-/obj/item/weapon/gun/energy/staff/focus
+/obj/item/gun/energy/staff/focus
 	name = "mental focus"
 	desc = "An artefact that channels the will of the user into destructive bolts of force. If you aren't careful with it, you might poke someone's brain out."
 	icon = 'icons/obj/wizard.dmi'

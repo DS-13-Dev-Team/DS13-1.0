@@ -49,7 +49,7 @@
 		new /obj/random/rare_loot(get_turf(src))
 
 
-/obj/machinery/store/proc/handle_peng(obj/item/weapon/peng/I, mob/user)
+/obj/machinery/store/proc/handle_peng(obj/item/peng/I, mob/user)
 	visible_message("Thank you for participating in the Peng cross-promotional scheme, [user.real_name]. Your account has been credited with [PENG_BOUNTY] credits")
 	occupant.recieve_credits(PENG_BOUNTY, machine_id, machine_id, "Peng Bounty")
 

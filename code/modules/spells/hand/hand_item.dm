@@ -14,6 +14,7 @@ Basically: I can use it to target things where I click. I can then pass these ta
 	var/spell/hand/hand_spell
 
 /obj/item/magic_hand/New(var/spell/hand/S)
+	.=..()
 	hand_spell = S
 	name = "[name] ([S.name])"
 	icon_state = S.hand_state
@@ -58,7 +59,7 @@ Basically: I can use it to target things where I click. I can then pass these ta
 
 /obj/item/magic_hand/dropped() //gets deleted on drop
 	..()
-	loc = null
+	forceMove(null)
 	qdel(src)
 
 /obj/item/magic_hand/Destroy() //better save than sorry.

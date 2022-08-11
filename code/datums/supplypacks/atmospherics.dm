@@ -5,27 +5,27 @@
 /decl/hierarchy/supply_pack/atmospherics/internals
 	name = "Internals crate"
 	contains = list(/obj/item/clothing/mask/gas = 3,
-					/obj/item/weapon/tank/air = 3)
+					/obj/item/tank/air = 3)
 	cost = 10
 	containername = "\improper Internals crate"
 
 /decl/hierarchy/supply_pack/atmospherics/evacuation
 	name = "Emergency equipment"
-	contains = list(/obj/item/weapon/storage/toolbox/emergency = 2,
+	contains = list(/obj/item/storage/toolbox/emergency = 2,
 					/obj/item/clothing/suit/storage/hazardvest = 2,
 					/obj/item/clothing/suit/armor/vest = 2,
-					/obj/item/weapon/tank/emergency/oxygen/engi = 4,
+					/obj/item/tank/emergency/oxygen/engi = 4,
 			 		/obj/item/clothing/suit/space/void = 4,
 					/obj/item/clothing/head/helmet/space/void = 4,
 					/obj/item/clothing/mask/gas = 4,
-					/obj/item/device/flashlight/flare/glowstick = 5)
+					/obj/item/flashlight/flare/glowstick = 5)
 	cost = 45
 
 	containername = "\improper Emergency crate"
 
 /decl/hierarchy/supply_pack/atmospherics/inflatable
 	name = "Inflatable barriers"
-	contains = list(/obj/item/weapon/storage/briefcase/inflatable = 3)
+	contains = list(/obj/item/storage/briefcase/inflatable = 3)
 	cost = 20
 	containertype = /obj/structure/closet/crate
 	containername = "\improper Inflatable Barrier Crate"
@@ -92,20 +92,20 @@
 
 /decl/hierarchy/supply_pack/atmospherics/fuel
 	name = "Fuel tank crate"
-	contains = list(/obj/item/weapon/tank/hydrogen = 4)
+	contains = list(/obj/item/tank/hydrogen = 4)
 	cost = 15
 	containername = "\improper Fuel tank crate"
 
 /decl/hierarchy/supply_pack/atmospherics/phoron
 	name = "Phoron tank crate"
-	contains = list(/obj/item/weapon/tank/phoron = 3)
+	contains = list(/obj/item/tank/phoron = 3)
 	cost = 30
 	containername = "\improper Phoron tank crate"
 
 
 /decl/hierarchy/supply_pack/atmospherics/scanner_module
 	name = "Atmospherics scanner module crate"
-	contains = list(/obj/item/weapon/computer_hardware/scanner/atmos = 4)
+	contains = list(/obj/item/computer_hardware/scanner/atmos = 4)
 	cost = 20
 	containername = "\improper Atmospherics scanner module crate"
 	containertype = /obj/structure/closet/crate/secure

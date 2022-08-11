@@ -1,12 +1,13 @@
 GLOBAL_VAR(spawntypes)
 
 /proc/spawntypes()
+	RETURN_TYPE(/list)
 	if(!GLOB.spawntypes)
 		GLOB.spawntypes = list()
 		for(var/type in typesof(/datum/spawnpoint)-/datum/spawnpoint)
 			var/datum/spawnpoint/S = type
 			var/display_name = initial(S.display_name)
-			if((display_name in GLOB.using_map.allowed_spawns) || initial(S.always_visible))
+			if((display_name in list(SPAWNPOINT_CRYO, SPAWNPOINT_DORM, SPAWNPOINT_MAINT)) || initial(S.always_visible))
 				GLOB.spawntypes[display_name] = new S
 	return GLOB.spawntypes
 
@@ -166,12 +167,6 @@ GLOBAL_VAR(spawntypes)
 	..()
 	turfs = GLOB.latejoin_cyborg
 
-/datum/spawnpoint/default
-	display_name = DEFAULT_SPAWNPOINT_ID
-	msg = "has arrived on the station"
-	always_visible = TRUE
-
-
 
 
 //Maintenance is the last-ditch fallback. It can't be selected and is used only if all other spawnpoints are unsafe
@@ -208,7 +203,7 @@ GLOBAL_VAR(spawntypes)
 
 /datum/spawnpoint/maint/post_spawn(var/mob/living/spawner, var/turf/location)
 	.=..()
-	new /obj/item/device/flashlight/flare/active(location)
+	new /obj/item/flashlight/flare/active(location)
 	spawner.Paralyse(2)
 	spawn (20)
 		to_chat(spawner, SPAN_NOTICE("You don't remember making it back to your bunk last shift. Where are you...?"))

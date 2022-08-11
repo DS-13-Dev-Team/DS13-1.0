@@ -63,7 +63,7 @@
 				to_chat(user, "<span class='notice'>You secured the girder!</span>")
 				reset_girder()
 
-	else if(istype(W, /obj/item/weapon/tool/pickaxe/diamonddrill))
+	else if(istype(W, /obj/item/tool/pickaxe/diamonddrill))
 		to_chat(user, "<span class='notice'>You drill through the girder!</span>")
 		dismantle()
 

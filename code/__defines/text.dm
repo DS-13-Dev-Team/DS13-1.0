@@ -2,8 +2,6 @@
 
 #define URL_HTTP_WWW	"hypertext"
 
-
-
 /*
 	Adjective Types
 	The rule is that multiple adjectives are always ranked accordingly: opinion, size, age, shape, colour, origin, material, purpose.
@@ -19,3 +17,9 @@
 
 /// Removes characters incompatible with file names.
 #define SANITIZE_FILENAME(text) (GLOB.filename_forbidden_chars.Replace(text, ""))
+
+/// Prepares a text to be used for maptext. Use this so it doesn't look hideous.
+#define MAPTEXT(text) {"<span class='maptext'>[##text]</span>"}
+
+/// Macro from Lummox used to get height from a MeasureText proc
+#define WXH_TO_HEIGHT(x) text2num(copytext(x, findtextEx(x, "x") + 1))

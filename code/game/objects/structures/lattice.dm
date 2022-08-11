@@ -7,6 +7,7 @@
 	anchored = 1.0
 	w_class = ITEM_SIZE_NORMAL
 	layer = LATTICE_LAYER
+	plane = FLOOR_PLANE
 	obj_flags = OBJ_FLAG_NOFALL
 
 /obj/structure/lattice/Initialize()
@@ -42,6 +43,8 @@
 	. = ..()
 
 /obj/structure/lattice/ex_act(severity)
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	switch(severity)
 		if(1.0)
 			qdel(src)

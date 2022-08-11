@@ -46,7 +46,7 @@
 	else if (health < 90)
 		to_chat(usr, "Few ribbons of \the [src] are cut away.")
 
-/obj/structure/net/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/structure/net/attackby(obj/item/W as obj, mob/user as mob)
 	if (istype(W, /obj/item/stack/net))
 		var/obj/item/stack/net/N = W
 		if (N.amount >= N.max_amount)
@@ -60,8 +60,8 @@
 			qdel(src)
 		return
 
-	if (istype(W, /obj/item/weapon/material)) //sharp objects can cut thorugh
-		var/obj/item/weapon/material/SH = W
+	if (istype(W, /obj/item/material)) //sharp objects can cut thorugh
+		var/obj/item/material/SH = W
 		if (!(SH.sharp) || (SH.sharp && SH.force < 10))//is not sharp enough or at all
 			to_chat(user,"<span class='warning'>You can't cut throught \the [src] with \the [W], it's too dull.</span>")
 			return

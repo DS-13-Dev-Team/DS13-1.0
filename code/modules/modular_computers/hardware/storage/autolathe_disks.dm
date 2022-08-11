@@ -1,4 +1,4 @@
-/obj/item/weapon/computer_hardware/hard_drive/portable/design
+/obj/item/computer_hardware/hard_drive/portable/design
 	name = "design disk"
 	icon = 'icons/obj/discs.dmi'
 	icon_state = "yellow"
@@ -8,7 +8,7 @@
 	matter = list(MATERIAL_STEEL = 1, MATERIAL_PLASTIC = 2, MATERIAL_GOLD = 0.5)
 	var/list/designs = list()
 
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/install_default_files()
+/obj/item/computer_hardware/hard_drive/portable/design/install_default_files()
 	..()
 	// Add design files to the disk
 	for(var/design_typepath in designs)
@@ -30,7 +30,7 @@
 
 
 // Asters
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/tools
+/obj/item/computer_hardware/hard_drive/portable/design/tools
 	disk_name = "Asters Basic Tool Pack"
 	icon_state = "guild"
 
@@ -59,7 +59,7 @@
 		/datum/design/autolathe/tool/sawblade/diamond
 	)
 
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/misc
+/obj/item/computer_hardware/hard_drive/portable/design/misc
 	disk_name = "Asters Miscellaneous Pack"
 	icon_state = "guild"
 
@@ -87,7 +87,7 @@
 		/datum/design/autolathe/misc/bulb,
 	)
 
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/devices
+/obj/item/computer_hardware/hard_drive/portable/design/devices
 	disk_name = "Asters Devices and Instruments"
 	icon_state = "guild"
 
@@ -107,7 +107,7 @@
 		/datum/design/autolathe/device/hand_labeler
 	)
 
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/robustcells
+/obj/item/computer_hardware/hard_drive/portable/design/robustcells
 	disk_name = "Asters Robustcells"
 	icon_state = "guild"
 
@@ -118,7 +118,7 @@
 
 
 // Technomancers
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/components
+/obj/item/computer_hardware/hard_drive/portable/design/components
 	disk_name = "Technomancers ARK-034 Components"
 	icon_state = "technomancers"
 
@@ -134,7 +134,7 @@
 		/datum/design/autolathe/part/laserguide,
 	)
 
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/adv_tools
+/obj/item/computer_hardware/hard_drive/portable/design/adv_tools
 	disk_name = "Technomancers IJIRO-451 Advanced Tools"
 	icon_state = "technomancers"
 
@@ -152,7 +152,7 @@
 		/datum/design/autolathe/part/diamondblade,
 	)
 
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/circuits
+/obj/item/computer_hardware/hard_drive/portable/design/circuits
 	disk_name = "Technomancers ESPO-830 Circuits"
 	icon_state = "technomancers"
 
@@ -165,7 +165,7 @@
 
 
 // Moebius
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/medical
+/obj/item/computer_hardware/hard_drive/portable/design/medical
 	disk_name = "Moebius Medical Designs"
 	icon_state = "moebius"
 
@@ -189,7 +189,7 @@
 		/datum/design/autolathe/container/syringegun_ammo,
 	)
 
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/computer
+/obj/item/computer_hardware/hard_drive/portable/design/computer
 	disk_name = "Moebius Computer Parts"
 	icon_state = "moebius"
 
@@ -219,7 +219,7 @@
 
 
 // NeoTheology
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/nt_old_guns
+/obj/item/computer_hardware/hard_drive/portable/design/nt_old_guns
 	disk_name = "NeoTheology Armory of the Old Testament"
 	icon_state = "neotheology"
 
@@ -231,7 +231,7 @@
 		/datum/design/autolathe/gun/sniperrifle
 	)
 
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/nt_new_guns
+/obj/item/computer_hardware/hard_drive/portable/design/nt_new_guns
 	disk_name = "NeoTheology Armory of the New Testament"
 	icon_state = "neotheology"
 
@@ -245,7 +245,7 @@
 
 
 // Ironhammer
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/security
+/obj/item/computer_hardware/hard_drive/portable/design/security
 	disk_name = "Ironhammer Miscellaneous Pack"
 	icon_state = "ironhammer"
 
@@ -262,7 +262,7 @@
 
 
 // Frozen Star
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/fs_cheap_guns
+/obj/item/computer_hardware/hard_drive/portable/design/fs_cheap_guns
 	disk_name = "Frozen Star Basic Civilian Pack"
 	icon_state = "frozenstar"
 
@@ -273,7 +273,7 @@
 		/datum/design/autolathe/gun/pump_shotgun,
 	)
 
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/fs_kinetic_guns //please, maintain general order (pistol>revolver>SMG>Other>Shotgun>GLs)+(smaller/less damaging caliber>bigger/more damaging caliber)
+/obj/item/computer_hardware/hard_drive/portable/design/fs_kinetic_guns //please, maintain general order (pistol>revolver>SMG>Other>Shotgun>GLs)+(smaller/less damaging caliber>bigger/more damaging caliber)
 	disk_name = "Frozen Star Ultimate Protection Pack"
 	icon_state = "frozenstar"
 
@@ -285,7 +285,7 @@
 		/datum/design/autolathe/gun/z8
 	)
 
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/fs_energy_guns
+/obj/item/computer_hardware/hard_drive/portable/design/fs_energy_guns
 	disk_name = "Frozen Star Void Warrior Pack"
 	icon_state = "frozenstar"
 
@@ -295,7 +295,7 @@
 	)
 
 /*
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/nonlethal_ammo //please, maintain general order (pistol>speedloaders>smg>other>shells)+(smaller/less damaging caliber>bigger/more damaging caliber)
+/obj/item/computer_hardware/hard_drive/portable/design/nonlethal_ammo //please, maintain general order (pistol>speedloaders>smg>other>shells)+(smaller/less damaging caliber>bigger/more damaging caliber)
 	disk_name = "Frozen Star Nonlethal Ammo Pack"
 	icon_state = "frozenstar"
 
@@ -307,7 +307,7 @@
 
 //This needs to be updated with proper ammo types
 /*
-/obj/item/weapon/computer_hardware/hard_drive/portable/design/lethal_ammo //please, maintain general order (pistol>speedloaders>smg>other>shells)+(smaller/less damaging caliber>bigger/more damaging caliber)
+/obj/item/computer_hardware/hard_drive/portable/design/lethal_ammo //please, maintain general order (pistol>speedloaders>smg>other>shells)+(smaller/less damaging caliber>bigger/more damaging caliber)
 	disk_name = "Frozen Star Lethal Ammo Pack"
 	icon_state = "frozenstar"
 

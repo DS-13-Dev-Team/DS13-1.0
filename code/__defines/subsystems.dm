@@ -62,36 +62,37 @@
 #define SS_INIT_PROFILER			101
 #define SS_INIT_GARBAGE				99
 #define SS_INIT_SERVER_MAINT		93
+#define SS_INIT_SOUNDS				80
 #define SS_INIT_TIMETRACK			46
-#define SS_INIT_MATERIALS        20
-#define SS_INIT_ANTAGS           18
-#define SS_INIT_PLANTS           16
-#define SS_INIT_SKYBOX           14
-#define SS_INIT_MAPPING          12
-#define SS_INIT_TICKER			 10
-#define SS_INIT_ATOMS            8
-#define SS_INIT_CIRCUIT          6
-#define SS_INIT_NECROMORPH       4
-#define SS_INIT_ICON_UPDATE      2
-#define SS_INIT_MACHINES         1
-#define SS_INIT_DEFAULT          0
-#define SS_INIT_AIR             -1
-#define SS_INIT_CRAFT			-2
-#define SS_INIT_ASSET			-4
-#define SS_INIT_MISC_LATE       -6
-#define SS_INIT_ALARM           -8
-#define SS_INIT_MISC_CODEX      -10
-#define SS_INIT_SHUTTLE         -12
-#define SS_INIT_LIGHTING        -14
-#define SS_INIT_OVERLAYS        -16
-#define SS_INIT_XENOARCH       -50
-#define SS_INIT_OPEN_SPACE    -150
-#define SS_INIT_BAY_LEGACY    -200
-#define SS_INIT_UNIT_TESTS    -250
-#define SS_INIT_STATPANEL		-499
-#define SS_INIT_CHAT			-500
-#define SS_INIT_SLOW		  -999	//Make this subsystem last, even after other things that think they should be last.
-									//It starts work that is intended to continue running after roundstart
+#define SS_INIT_ANTAGS				18
+#define SS_INIT_CHAR_SETUP			17
+#define SS_INIT_PLANTS				16
+#define SS_INIT_SKYBOX				14
+#define SS_INIT_TICKER				10
+#define SS_INIT_MAPPING				8
+#define SS_INIT_ATOMS				6
+#define SS_INIT_CIRCUIT				4
+#define SS_INIT_NECROMORPH			2
+#define SS_INIT_ICON_UPDATE			0
+#define SS_INIT_MACHINES			-2
+#define SS_INIT_DEFAULT				-4
+#define SS_INIT_AIR					-6
+#define SS_INIT_CRAFT				-2
+#define SS_INIT_ASSET				-4
+#define SS_INIT_MISC_LATE			-6
+#define SS_INIT_ALARM				-8
+#define SS_INIT_MISC_CODEX			-10
+#define SS_INIT_SHUTTLE				-12
+#define SS_INIT_LIGHTING			-14
+#define SS_INIT_OVERLAYS			-16
+#define SS_INIT_INSTRUMENTS			-20
+#define SS_INIT_XENOARCH			-50
+#define SS_INIT_BAY_LEGACY			-200
+#define SS_INIT_UNIT_TESTS			-250
+#define SS_INIT_STATPANEL			-499
+#define SS_INIT_CHAT				-500
+#define SS_INIT_SLOW				-999	//Make this subsystem last, even after other things that think they should be last.
+											//It starts work that is intended to continue running after roundstart
 
 // SS runlevels
 

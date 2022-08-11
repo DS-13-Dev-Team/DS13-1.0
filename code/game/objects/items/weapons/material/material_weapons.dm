@@ -1,7 +1,7 @@
 // SEE code/modules/materials/materials.dm FOR DETAILS ON INHERITED DATUM.
 // This class of weapons takes force and appearance data from a material datum.
 // They are also fragile based on material data and many can break/smash apart.
-/obj/item/weapon/material
+/obj/item/material
 	health = 100
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	gender = NEUTER
@@ -20,7 +20,7 @@
 	var/material/material
 	var/drops_debris = 1
 
-/obj/item/weapon/material/New(var/newloc, var/material_key)
+/obj/item/material/New(var/newloc, var/material_key)
 	..(newloc)
 	if(!material_key)
 		material_key = default_material
@@ -35,17 +35,17 @@
 			if(!isnull(matter[material_type]))
 				matter[material_type] *= force_divisor // May require a new var instead.
 
-/obj/item/weapon/material/get_material()
+/obj/item/material/get_material()
 	return material
 
-/obj/item/weapon/material/get_heat_limit()
+/obj/item/material/get_heat_limit()
 	var/material/M = get_material()
 	if (M)
 		return M.get_heat_limit()
 
 	.=..()
 
-/obj/item/weapon/material/proc/update_force()
+/obj/item/material/proc/update_force()
 	if(edge || sharp)
 		force = material.get_edge_damage()
 	else
@@ -54,7 +54,7 @@
 	throwforce = round(material.get_blunt_damage()*thrown_force_divisor)
 	attack_cooldown = material.get_attack_cooldown() + attack_cooldown_modifier
 
-/obj/item/weapon/material/proc/set_material(var/new_material)
+/obj/item/material/proc/set_material(var/new_material)
 	material = get_material_by_name(new_material)
 	if(!material)
 		qdel(src)
@@ -72,14 +72,14 @@
 			obj_flags &= (~OBJ_FLAG_CONDUCTIBLE)
 		update_force()
 
-/obj/item/weapon/material/Destroy()
+/obj/item/material/Destroy()
 	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
-/obj/item/weapon/material/zero_health()
+/obj/item/material/zero_health()
 	shatter()
 
-/obj/item/weapon/material/proc/shatter(var/consumed)
+/obj/item/material/proc/shatter(var/consumed)
 	var/turf/T = get_turf(src)
 	if (T)
 		T.visible_message("<span class='danger'>\The [src] [material.destruction_desc]!</span>")
@@ -90,7 +90,7 @@
 		qdel(src)
 /*
 Commenting this out pending rebalancing of radiation based on small objects.
-/obj/item/weapon/material/process()
+/obj/item/material/process()
 	if(!material.radioactivity)
 		return
 	for(var/mob/living/L in range(1,src))
@@ -99,17 +99,17 @@ Commenting this out pending rebalancing of radiation based on small objects.
 
 /*
 // Commenting this out while fires are so spectacularly lethal, as I can't seem to get this balanced appropriately.
-/obj/item/weapon/material/fire_act(var/datum/gas_mixture/air, var/exposed_temperature, var/exposed_volume, var/multiplier = 1)
+/obj/item/material/fire_act(var/datum/gas_mixture/air, var/exposed_temperature, var/exposed_volume, var/multiplier = 1)
 	TemperatureAct(exposed_temperature)
 
 // This might need adjustment. Will work that out later.
-/obj/item/weapon/material/proc/TemperatureAct(temperature)
+/obj/item/material/proc/TemperatureAct(temperature)
 	health -= material.combustion_effect(get_turf(src), temperature, 0.1)
 	check_health(1)
 
-/obj/item/weapon/material/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/item/material/attackby(obj/item/W as obj, mob/user as mob)
 	if(isWelder(W))
-		var/obj/item/weapon/tool/weldingtool/WT = W
+		var/obj/item/tool/weldingtool/WT = W
 		if(material.ignition_point && WT.remove_fuel(0, user))
 			TemperatureAct(150)
 	else

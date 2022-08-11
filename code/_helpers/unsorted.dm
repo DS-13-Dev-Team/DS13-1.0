@@ -857,41 +857,30 @@ proc/get_mob_with_client_list()
 	else if (zone == BP_R_FOOT) return "right foot"
 	else return zone
 
-/proc/get(atom/loc, type)
-	while(loc)
-		if(istype(loc, type))
-			return loc
-		loc = loc.loc
-	return null
-
-/proc/get_turf_or_move(turf/location)
-	return get_turf(location)
-
-
 //Quick type checks for some tools
 var/global/list/common_tools = list(
 /obj/item/stack/cable_coil,
-/obj/item/weapon/tool/wrench,
-/obj/item/weapon/tool/weldingtool,
-/obj/item/weapon/tool/screwdriver,
-/obj/item/weapon/tool/wirecutters,
-/obj/item/weapon/tool/multitool,
-/obj/item/weapon/tool/crowbar)
+/obj/item/tool/wrench,
+/obj/item/tool/weldingtool,
+/obj/item/tool/screwdriver,
+/obj/item/tool/wirecutters,
+/obj/item/tool/multitool,
+/obj/item/tool/crowbar)
 
 /proc/istool(O)
-	if (istype(O, /obj/item/weapon/tool))
+	if (istype(O, /obj/item/tool))
 		return TRUE
 	return FALSE
 
 //Deprecated. Use obj/is_hot instead where
 /proc/is_hot(obj/item/W)
-	if(istype(W, /obj/item/weapon/flame/lighter))
+	if(istype(W, /obj/item/flame/lighter))
 		if(W:lit)
 			return 1500
 		else
 			return 0
 
-	else if(istype(W, /obj/item/weapon/flame/match))
+	else if(istype(W, /obj/item/flame/match))
 		if(W:lit)
 			return 1000
 		else
@@ -903,7 +892,7 @@ var/global/list/common_tools = list(
 		else
 			return 0
 
-	else if(istype(W, /obj/item/weapon/melee/energy))
+	else if(istype(W, /obj/item/melee/energy))
 		return 3500
 
 	return W.is_hot()
@@ -927,22 +916,22 @@ var/global/list/common_tools = list(
 /obj/item/proc/can_puncture()
 	return src.sharp
 
-/obj/item/weapon/tool/screwdriver/can_puncture()
+/obj/item/tool/screwdriver/can_puncture()
 	return 1
 
-/obj/item/weapon/pen/can_puncture()
+/obj/item/pen/can_puncture()
 	return 1
 
-/obj/item/weapon/tool/weldingtool/can_puncture()
+/obj/item/tool/weldingtool/can_puncture()
 	return 1
 
-/obj/item/weapon/tool/screwdriver/can_puncture()
+/obj/item/tool/screwdriver/can_puncture()
 	return 1
 
-/obj/item/weapon/tool/shovel/can_puncture() //includes spades
+/obj/item/tool/shovel/can_puncture() //includes spades
 	return 1
 
-/obj/item/weapon/flame/can_puncture()
+/obj/item/flame/can_puncture()
 	return src.lit
 
 /obj/item/clothing/mask/smokable/cigarette/can_puncture()
@@ -995,12 +984,12 @@ var/global/list/common_tools = list(
 Checks if that loc and dir has a item on the wall
 */
 var/list/WALLITEMS = list(
-	/obj/machinery/power/apc, /obj/machinery/alarm, /obj/item/device/radio/intercom,
+	/obj/machinery/power/apc, /obj/machinery/alarm, /obj/item/radio/intercom,
 	/obj/structure/extinguisher_cabinet, /obj/structure/reagent_dispensers/peppertank,
 	/obj/machinery/status_display, /obj/machinery/requests_console, /obj/machinery/light_switch, /obj/structure/sign,
 	/obj/machinery/newscaster, /obj/machinery/firealarm, /obj/structure/noticeboard,
-	/obj/item/weapon/storage/secure/safe, /obj/machinery/door_timer, /obj/machinery/flasher, /obj/machinery/keycard_auth,
-	/obj/item/weapon/storage/mirror, /obj/structure/fireaxecabinet, /obj/structure/filingcabinet/wallcabinet
+	/obj/item/storage/secure/safe, /obj/machinery/door_timer, /obj/machinery/flasher, /obj/machinery/keycard_auth,
+	/obj/item/storage/mirror, /obj/structure/fireaxecabinet, /obj/structure/filingcabinet/wallcabinet
 	)
 /proc/gotwallitem(loc, dir)
 	for(var/obj/O in loc)
@@ -1150,7 +1139,7 @@ GLOBAL_REAL_VAR(list/stack_trace_storage)
 	return locate(tX, tY, tZ)
 
 //ultra range (no limitations on distance, faster than range for distances > 8); including areas drastically decreases performance
-/proc/urange(dist=0, atom/center=usr, orange=0, areas=0)
+/proc/urange(dist = 0, atom/center = usr, orange = FALSE, areas = FALSE)
 	if(!dist)
 		if(!orange)
 			return list(center)
@@ -1161,9 +1150,8 @@ GLOBAL_REAL_VAR(list/stack_trace_storage)
 	if(orange)
 		turfs -= get_turf(center)
 	. = list()
-	for(var/V in turfs)
-		var/turf/T = V
-		. += T
-		. += T.contents
+	for(var/turf/checked_turf as anything in turfs)
+		. += checked_turf
+		. += checked_turf.contents
 		if(areas)
-			. |= T.loc
+			. |= checked_turf.loc

@@ -4,7 +4,7 @@
 	category = DEITY_BLOOD_CRAFT
 	max_level = 1
 	base_cost = 75
-	var/list/recipes = list(/obj/item/weapon/melee/cultblade = 50,
+	var/list/recipes = list(/obj/item/melee/cultblade = 50,
 							/obj/item/clothing/head/culthood/alt = 10,
 							)
 

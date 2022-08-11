@@ -2,7 +2,7 @@
 //Rewritten version of TG's geiger counter
 //I opted to show exact radiation levels
 
-/obj/item/device/geiger
+/obj/item/geiger
 	name = "geiger counter"
 	desc = "A handheld device used for detecting and measuring radiation in an area."
 	description_info = "By using this item, you may toggle its scanning mode on and off. Examine it while it's on to check for ambient radiation."
@@ -14,17 +14,17 @@
 	var/scanning = 0
 	var/radiation_count = 0
 
-/obj/item/device/geiger/Destroy()
+/obj/item/geiger/Destroy()
 	. = ..()
 	STOP_PROCESSING(SSobj, src)
 
-/obj/item/device/geiger/Process()
+/obj/item/geiger/Process()
 	if(!scanning)
 		return
 	radiation_count = SSradiation.get_rads_at_turf(get_turf(src))
 	update_icon()
 
-/obj/item/device/geiger/examine(mob/user)
+/obj/item/geiger/examine(mob/user)
 	. = ..(user)
 	var/msg = "[scanning ? "ambient" : "stored"] Radiation level: [radiation_count ? radiation_count : "0"] Bq."
 	if(radiation_count > RAD_LEVEL_LOW)
@@ -32,7 +32,7 @@
 	else
 		to_chat(user, "<span class='notice'>[msg]</span>")
 
-/obj/item/device/geiger/attack_self(var/mob/user)
+/obj/item/geiger/attack_self(var/mob/user)
 	scanning = !scanning
 	if(scanning)
 		START_PROCESSING(SSobj, src)
@@ -41,7 +41,7 @@
 	update_icon()
 	to_chat(user, "<span class='notice'>\icon[src] You switch [scanning ? "on" : "off"] [src].</span>")
 
-/obj/item/device/geiger/update_icon()
+/obj/item/geiger/update_icon()
 	if(!scanning)
 		icon_state = "geiger_off"
 		return 1

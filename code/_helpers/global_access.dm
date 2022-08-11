@@ -187,8 +187,6 @@
 			return global.comm_message_listeners;
 		if("command_announcement")
 			return global.command_announcement;
-		if("command_name")
-			return global.command_name;
 		if("common_tools")
 			return global.common_tools;
 		if("contamination_overlay")
@@ -259,8 +257,6 @@
 			return global.event_last_fired;
 		if("eventchance")
 			return global.eventchance;
-		if("exclude_jobs")
-			return global.exclude_jobs;
 		if("failed_db_connections")
 			return global.failed_db_connections;
 		if("failed_old_db_connections")
@@ -397,18 +393,12 @@
 			return global.maint_all_access;
 		if("mannequins_")
 			return global.mannequins_;
-		if("map_count")
-			return global.map_count;
-		if("maploader")
-			return global.maploader;
 		if("mark")
 			return global.mark;
 		if("master_controller")
 			return global.master_controller;
 		if("matchmaker")
 			return global.matchmaker;
-		if("maze_cell_count")
-			return global.maze_cell_count;
 		if("mechas_list")
 			return global.mechas_list;
 		if("merged")
@@ -435,8 +425,6 @@
 			return global.meteors_normal;
 		if("meteors_threatening")
 			return global.meteors_threatening;
-		if("mil_branches")
-			return global.mil_branches;
 		if("mining_floors")
 			return global.mining_floors;
 		if("mining_walls")
@@ -521,8 +509,6 @@
 			return global.powerinstances;
 		if("powers")
 			return global.powers;
-		if("preferences_datums")
-			return global.preferences_datums;
 		if("priority_air_alarms")
 			return global.priority_air_alarms;
 		if("priority_announcement")
@@ -555,8 +541,6 @@
 			return global.radiochannels;
 		if("random_junk_")
 			return global.random_junk_;
-		if("random_maps")
-			return global.random_maps;
 		if("random_useful_")
 			return global.random_useful_;
 		if("recentmessages")
@@ -631,28 +615,10 @@
 			return global.string_part_flags;
 		if("string_slot_flags")
 			return global.string_slot_flags;
-		if("supply_drop")
-			return global.supply_drop;
 		if("supply_methods_")
 			return global.supply_methods_;
 		if("surgery_steps")
 			return global.surgery_steps;
-		if("swapmaps_byname")
-			return global.swapmaps_byname;
-		if("swapmaps_compiled_maxx")
-			return global.swapmaps_compiled_maxx;
-		if("swapmaps_compiled_maxy")
-			return global.swapmaps_compiled_maxy;
-		if("swapmaps_compiled_maxz")
-			return global.swapmaps_compiled_maxz;
-		if("swapmaps_iconcache")
-			return global.swapmaps_iconcache;
-		if("swapmaps_initialized")
-			return global.swapmaps_initialized;
-		if("swapmaps_loaded")
-			return global.swapmaps_loaded;
-		if("swapmaps_mode")
-			return global.swapmaps_mode;
 		if("syndicate_access")
 			return global.syndicate_access;
 		if("syndicate_code_phrase")
@@ -679,8 +645,6 @@
 			return global.tickets;
 		if("total_unit_tests")
 			return global.total_unit_tests;
-		if("turbolifts")
-			return global.turbolifts;
 		if("turret_icons")
 			return global.turret_icons;
 		if("uniqueness_repository")
@@ -729,8 +693,6 @@
 			return global.worths;
 		if("wrapped_species_by_ref")
 			return global.wrapped_species_by_ref;
-		if("z_levels")
-			return global.z_levels;
 		if("zone_blocked")
 			return global.zone_blocked;
 
@@ -922,8 +884,6 @@
 			global.comm_message_listeners=newval;
 		if("command_announcement")
 			global.command_announcement=newval;
-		if("command_name")
-			global.command_name=newval;
 		if("common_tools")
 			global.common_tools=newval;
 		if("contamination_overlay")
@@ -994,8 +954,6 @@
 			global.event_last_fired=newval;
 		if("eventchance")
 			global.eventchance=newval;
-		if("exclude_jobs")
-			global.exclude_jobs=newval;
 		if("failed_db_connections")
 			global.failed_db_connections=newval;
 		if("failed_old_db_connections")
@@ -1132,18 +1090,12 @@
 			global.maint_all_access=newval;
 		if("mannequins_")
 			global.mannequins_=newval;
-		if("map_count")
-			global.map_count=newval;
-		if("maploader")
-			global.maploader=newval;
 		if("mark")
 			global.mark=newval;
 		if("master_controller")
 			global.master_controller=newval;
 		if("matchmaker")
 			global.matchmaker=newval;
-		if("maze_cell_count")
-			global.maze_cell_count=newval;
 		if("mechas_list")
 			global.mechas_list=newval;
 		if("merged")
@@ -1170,8 +1122,6 @@
 			global.meteors_normal=newval;
 		if("meteors_threatening")
 			global.meteors_threatening=newval;
-		if("mil_branches")
-			global.mil_branches=newval;
 		if("mining_floors")
 			global.mining_floors=newval;
 		if("mining_walls")
@@ -1256,8 +1206,6 @@
 			global.powerinstances=newval;
 		if("powers")
 			global.powers=newval;
-		if("preferences_datums")
-			global.preferences_datums=newval;
 		if("priority_air_alarms")
 			global.priority_air_alarms=newval;
 		if("priority_announcement")
@@ -1290,8 +1238,6 @@
 			global.radiochannels=newval;
 		if("random_junk_")
 			global.random_junk_=newval;
-		if("random_maps")
-			global.random_maps=newval;
 		if("random_useful_")
 			global.random_useful_=newval;
 		if("recentmessages")
@@ -1366,28 +1312,10 @@
 			global.string_part_flags=newval;
 		if("string_slot_flags")
 			global.string_slot_flags=newval;
-		if("supply_drop")
-			global.supply_drop=newval;
 		if("supply_methods_")
 			global.supply_methods_=newval;
 		if("surgery_steps")
 			global.surgery_steps=newval;
-		if("swapmaps_byname")
-			global.swapmaps_byname=newval;
-		if("swapmaps_compiled_maxx")
-			global.swapmaps_compiled_maxx=newval;
-		if("swapmaps_compiled_maxy")
-			global.swapmaps_compiled_maxy=newval;
-		if("swapmaps_compiled_maxz")
-			global.swapmaps_compiled_maxz=newval;
-		if("swapmaps_iconcache")
-			global.swapmaps_iconcache=newval;
-		if("swapmaps_initialized")
-			global.swapmaps_initialized=newval;
-		if("swapmaps_loaded")
-			global.swapmaps_loaded=newval;
-		if("swapmaps_mode")
-			global.swapmaps_mode=newval;
 		if("syndicate_access")
 			global.syndicate_access=newval;
 		if("syndicate_code_phrase")
@@ -1414,8 +1342,6 @@
 			global.tickets=newval;
 		if("total_unit_tests")
 			global.total_unit_tests=newval;
-		if("turbolifts")
-			global.turbolifts=newval;
 		if("turret_icons")
 			global.turret_icons=newval;
 		if("uniqueness_repository")
@@ -1464,8 +1390,6 @@
 			global.worths=newval;
 		if("wrapped_species_by_ref")
 			global.wrapped_species_by_ref=newval;
-		if("z_levels")
-			global.z_levels=newval;
 		if("zone_blocked")
 			global.zone_blocked=newval;
 
@@ -1564,7 +1488,6 @@
 	"client_repository",
 	"comm_message_listeners",
 	"command_announcement",
-	"command_name",
 	"common_tools",
 	"contamination_overlay",
 	"controller_iteration",
@@ -1602,7 +1525,6 @@
 	"evacuation_controller",
 	"event_last_fired",
 	"eventchance",
-	"exclude_jobs",
 	"explosion_in_progress",
 	"explosion_turfs",
 	"failed_db_connections",
@@ -1675,12 +1597,9 @@
 	"magazine_icondata_states",
 	"maint_all_access",
 	"mannequins_",
-	"map_count",
-	"maploader",
 	"mark",
 	"master_controller",
 	"matchmaker",
-	"maze_cell_count",
 	"mechas_list",
 	"merged",
 	"message_delay",
@@ -1694,7 +1613,6 @@
 	"meteors_moderate",
 	"meteors_normal",
 	"meteors_threatening",
-	"mil_branches",
 	"mining_floors",
 	"mining_walls",
 	"minor_air_alarms",
@@ -1737,7 +1655,6 @@
 	"power_alarm",
 	"powerinstances",
 	"powers",
-	"preferences_datums",
 	"priority_air_alarms",
 	"priority_announcement",
 	"priv_all_access",
@@ -1754,7 +1671,6 @@
 	"radio_controller",
 	"radiochannels",
 	"random_junk_",
-	"random_maps",
 	"random_useful_",
 	"recentmessages",
 	"registered_macros_by_ckey_",
@@ -1793,17 +1709,8 @@
 	"stored_shock_by_ref",
 	"string_part_flags",
 	"string_slot_flags",
-	"supply_drop",
 	"supply_methods_",
 	"surgery_steps",
-	"swapmaps_byname",
-	"swapmaps_compiled_maxx",
-	"swapmaps_compiled_maxy",
-	"swapmaps_compiled_maxz",
-	"swapmaps_iconcache",
-	"swapmaps_initialized",
-	"swapmaps_loaded",
-	"swapmaps_mode",
 	"syndicate_access",
 	"syndicate_code_phrase",
 	"syndicate_code_response",
@@ -1817,7 +1724,6 @@
 	"ticket_panels",
 	"tickets",
 	"total_unit_tests",
-	"turbolifts",
 	"turret_icons",
 	"uniqueness_repository",
 	"universe_has_ended",
@@ -1842,5 +1748,4 @@
 	"world_uplinks",
 	"worths",
 	"wrapped_species_by_ref",
-	"z_levels",
 	"zone_blocked")

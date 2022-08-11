@@ -1,4 +1,4 @@
-/obj/item/weapon/tool/hemostat
+/obj/item/tool/hemostat
 	name = "hemostat"
 	desc = "A surgical clamp to stop bleeding."
 	icon_state = "hemostat"

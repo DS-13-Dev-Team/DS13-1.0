@@ -5,7 +5,7 @@
 	icon_state = "unloader"
 	density = 1
 	anchored = 1.0
-	circuit = /obj/item/weapon/circuitboard/unloading_machine
+	circuit = /obj/item/circuitboard/unloading_machine
 	var/obj/machinery/input/input = null
 	var/obj/machinery/mineral/output = null
 	var/max_unloads_per_tick = 0
@@ -33,11 +33,11 @@
 
 /obj/machinery/mineral/unloading_machine/RefreshParts()
 	max_unloads_per_tick = 0
-	for(var/obj/item/weapon/stock_parts/scanning_module/SM in component_parts)
+	for(var/obj/item/stock_parts/scanning_module/SM in component_parts)
 		max_unloads_per_tick += SM.rating * 0.5
 
 	var/eff = 0
-	for(var/obj/item/weapon/stock_parts/manipulator/MP in component_parts)
+	for(var/obj/item/stock_parts/manipulator/MP in component_parts)
 		eff += MP.rating * 0.5
 	// Up to 9 per tick
 	max_unloads_per_tick *= eff

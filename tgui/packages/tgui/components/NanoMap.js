@@ -113,7 +113,7 @@ export class NanoMap extends Component {
     const { children } = this.props;
 
     const mapUrl = config.map + "-" + config.mapZLevel + ".png";
-    // (x * zoom), x Needs to be double the turf- map size. (for virgo, 140x140)
+    // (x * zoom), x Needs to be double the turf- map size
     const mapSize = (zoomScale * zoom) + 'px';
     const newStyle = {
       width: mapSize,
@@ -209,7 +209,7 @@ const NanoMapZoomer = (props, context) => {
             .map(level => (
               <Button
                 key={level}
-                selected={~~level === ~~config.mapZLevel}
+                selected={level === config.mapZLevel}
                 content={level}
                 onClick={() => {
                   act("setZLevel", { "mapZLevel": level });

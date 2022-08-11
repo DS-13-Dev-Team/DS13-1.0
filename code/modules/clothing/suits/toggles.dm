@@ -90,7 +90,7 @@
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
 	action_button_name = "Toggle Winter Hood"
 	hoodtype = /obj/item/clothing/head/winterhood
-	extra_allowed = list(/obj/item/weapon/storage/fancy/cigarettes, /obj/item/weapon/storage/box/matches, /obj/item/weapon/reagent_containers/food/drinks/flask)
+	extra_allowed = list(/obj/item/storage/fancy/cigarettes, /obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask)
 	siemens_coefficient = 0.6
 
 /obj/item/clothing/head/winterhood

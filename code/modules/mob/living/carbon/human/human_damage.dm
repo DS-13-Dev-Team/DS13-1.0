@@ -1,5 +1,7 @@
 
 /mob/living/carbon/human/apply_damage(var/damage = 0, var/damagetype = BRUTE, var/def_zone = null, var/blocked = 0, var/damage_flags = 0, var/obj/used_weapon = null, var/obj/item/organ/external/given_organ = null, var/allow_dismemberment = TRUE)
+	if(status_flags & GODMODE)
+		return
 	SET_ARGS(species.handle_apply_damage(arglist(list(src)+args)))
 	var/obj/item/organ/external/organ = given_organ
 	if(!organ)
@@ -454,6 +456,8 @@ This function restores all organs.
 
 
 /mob/living/carbon/human/ex_act(severity, var/atom/epicentre)
+	if(status_flags & GODMODE || atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	if(!blinded)
 		flash_eyes()
 

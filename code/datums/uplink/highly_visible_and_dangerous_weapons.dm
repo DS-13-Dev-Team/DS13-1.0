@@ -7,27 +7,27 @@
 /datum/uplink_item/item/visible_weapons/dartgun
 	name = "Dart Gun"
 	item_cost = 20
-	path = /obj/item/weapon/gun/projectile/dartgun
+	path = /obj/item/gun/projectile/dartgun
 
 /datum/uplink_item/item/visible_weapons/crossbow
 	name = "Energy Crossbow"
 	item_cost = 24
-	path = /obj/item/weapon/gun/energy/crossbow
+	path = /obj/item/gun/energy/crossbow
 
 /datum/uplink_item/item/visible_weapons/energy_sword
 	name = "Energy Sword"
 	item_cost = 32
-	path = /obj/item/weapon/melee/energy/sword
+	path = /obj/item/melee/energy/sword
 
 /datum/uplink_item/item/visible_weapons/g9mm
 	name = "Silenced Holdout Pistol"
 	item_cost = 32
-	path = /obj/item/weapon/storage/box/syndie_kit/g9mm
+	path = /obj/item/storage/box/syndie_kit/g9mm
 
 /datum/uplink_item/item/badassery/money_cannon
 	name = "Modified Money Cannon"
 	item_cost = 48
-	path = /obj/item/weapon/gun/launcher/money/hacked
+	path = /obj/item/gun/launcher/money/hacked
 	desc = "Too much money? Not enough screaming? Try the Money Cannon."
 
 /datum/uplink_item/item/visible_weapons/riggedlaser
@@ -38,25 +38,25 @@
 /datum/uplink_item/item/visible_weapons/energy_gun
 	name = "Energy Gun"
 	item_cost = 32
-	path = /obj/item/weapon/gun/energy/gun
+	path = /obj/item/gun/energy/gun
 
 /datum/uplink_item/item/visible_weapons/revolver
 	name = "Revolver, .357"
 	item_cost = 56
 	antag_costs = list(MODE_MERCENARY = 14)
-	path = /obj/item/weapon/storage/backpack/satchel/syndie_kit/revolver
+	path = /obj/item/storage/backpack/satchel/syndie_kit/revolver
 
 /datum/uplink_item/item/visible_weapons/revolver2
 	name = "Revolver, .44"
 	item_cost = 48
 	antag_costs = list(MODE_MERCENARY = 5)
-	path = /obj/item/weapon/storage/backpack/satchel/syndie_kit/revolver2
+	path = /obj/item/storage/backpack/satchel/syndie_kit/revolver2
 
 /datum/uplink_item/item/visible_weapons/grenade_launcher
 	name = "Grenade Launcher"
 	item_cost = 60
 	antag_roles = list(MODE_MERCENARY = 12)
-	path = /obj/item/weapon/gun/launcher/grenade/loaded
+	path = /obj/item/gun/launcher/grenade/loaded
 
 //These are for traitors (or other antags, perhaps) to have the option of purchasing some merc gear.
 
@@ -64,75 +64,75 @@
 	name = "Assault Rifle"
 	item_cost = 60
 	antag_costs = list(MODE_MERCENARY = 9)
-	path = /obj/item/weapon/gun/projectile/automatic/sts35
+	path = /obj/item/gun/projectile/automatic/sts35
 
 /datum/uplink_item/item/visible_weapons/advanced_energy_gun
 	name = "Advanced Energy Gun"
 	item_cost = 60
-	path = /obj/item/weapon/gun/energy/gun/nuclear
+	path = /obj/item/gun/energy/gun/nuclear
 
 /datum/uplink_item/item/visible_weapons/heavysniper
 	name = "Anti-materiel Rifle with ammunition"
 	item_cost = 68
-	path = /obj/item/weapon/storage/secure/briefcase/heavysniper
+	path = /obj/item/storage/secure/briefcase/heavysniper
 
 /datum/uplink_item/item/visible_weapons/machine_pistol
 	name = "Machine Pistol"
 	item_cost = 45
 	antag_costs = list(MODE_MERCENARY = 10)
-	path = /obj/item/weapon/gun/projectile/automatic/machine_pistol
+	path = /obj/item/gun/projectile/automatic/machine_pistol
 
 /datum/uplink_item/item/visible_weapons/combat_shotgun
 	name = "Combat Shotgun"
 	item_cost = 52
-	path = /obj/item/weapon/gun/projectile/shotgun/pump/combat
+	path = /obj/item/gun/projectile/shotgun/pump/combat
 
 /datum/uplink_item/item/visible_weapons/sawnoff
 	name = "Sawnoff Shotgun"
 	item_cost = 45
-	path = /obj/item/weapon/gun/projectile/shotgun/doublebarrel/sawn
+	path = /obj/item/gun/projectile/shotgun/doublebarrel/sawn
 
 /datum/uplink_item/item/visible_weapons/deagle
 	name = "Magnum Pistol"
 	item_cost = 52
-	path = /obj/item/weapon/gun/projectile/magnum_pistol
+	path = /obj/item/gun/projectile/magnum_pistol
 
 /datum/uplink_item/item/visible_weapons/beretta
 	name = "9mm Pistol"
 	item_cost = 40
-	path = /obj/item/weapon/gun/projectile/beretta
+	path = /obj/item/gun/projectile/beretta
 
 /datum/uplink_item/item/visible_weapons/detective_revolver
 	name = "Holdout Revolver"
 	item_cost = 38
-	path = /obj/item/weapon/gun/projectile/revolver/detective
+	path = /obj/item/gun/projectile/revolver/detective
 
 /datum/uplink_item/item/visible_weapons/pulserifle
 	name = "Pulse Rifle"
 	item_cost = 15
-	path = /obj/item/weapon/gun/projectile/automatic/pulse_rifle
+	path = /obj/item/gun/projectile/automatic/pulse_rifle
 
 /datum/uplink_item/item/visible_weapons/flechetterifle
 	name = "Flechette Rifle"
 	item_cost = 60
 	antag_costs = list(MODE_MERCENARY = 20)
-	path = /obj/item/weapon/gun/magnetic/railgun/flechette
+	path = /obj/item/gun/magnetic/railgun/flechette
 
 /datum/uplink_item/item/visible_weapons/railgun // Like a semi-auto AMR
 	name = "Railgun"
 	item_cost = DEFAULT_TELECRYSTAL_AMOUNT
 	antag_costs = list(MODE_MERCENARY = DEFAULT_TELECRYSTAL_AMOUNT - (DEFAULT_TELECRYSTAL_AMOUNT - (DEFAULT_TELECRYSTAL_AMOUNT % 6)) / 6)
-	path = /obj/item/weapon/gun/magnetic/railgun
+	path = /obj/item/gun/magnetic/railgun
 
 /datum/uplink_item/item/visible_weapons/railguntcc // Only slightly better than the normal railgun; but cooler looking
 	name = "Advanced Railgun"
 	item_cost = DEFAULT_TELECRYSTAL_AMOUNT + (DEFAULT_TELECRYSTAL_AMOUNT - (DEFAULT_TELECRYSTAL_AMOUNT % 6)) / 6// Only available to traitors if they share TCs.
 	antag_costs = list(MODE_MERCENARY = DEFAULT_TELECRYSTAL_AMOUNT) // This, on the other hand, is to encourage usage specifically by mercs with high budgets.
-	path = /obj/item/weapon/gun/magnetic/railgun/tcc
+	path = /obj/item/gun/magnetic/railgun/tcc
 
 /datum/uplink_item/item/visible_weapons/divet
 	name = "Divet pistol"
 	item_cost = 7
-	path = /obj/item/weapon/gun/projectile/divet
+	path = /obj/item/gun/projectile/divet
 	is_special = TRUE
 	antag_roles = list(MODE_EARTHGOV_AGENT, MODE_UNITOLOGIST, MODE_UNITOLOGIST_SHARD)

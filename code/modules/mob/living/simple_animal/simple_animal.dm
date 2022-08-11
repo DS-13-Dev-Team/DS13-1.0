@@ -68,13 +68,23 @@
 	// contained in a cage
 	var/in_stasis = 0
 
+	var/datum/component/spawner/nest
+
 /mob/living/simple_animal/New(var/atom/location)
 	health = max_health
 	.=..()
 
+/mob/living/simple_animal/Destroy()
+	if(nest)
+		nest.spawned_mobs -= src
+		nest = null
+
+	return ..()
+
 /mob/living/simple_animal/Life()
 	..()
-	if(!living_observers_present(GetConnectedZlevels(z)))
+	var/turf/T = get_turf(src)
+	if(!living_observers_present(GetConnectedZlevels(T.z)))
 		return
 	//Health
 	if(stat == DEAD)
@@ -319,12 +329,17 @@
 
 
 /mob/living/simple_animal/death(gibbed, deathmessage = "dies!", show_dead_message)
+	if(nest)
+		nest.spawned_mobs -= src
+		nest = null
 	update_icon()
 	density = 0
 	walk_to(src,0)
 	.= ..(gibbed,deathmessage,show_dead_message)
 
 /mob/living/simple_animal/ex_act(severity)
+	if(status_flags & GODMODE || atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	if(!blinded)
 		flash_eyes()
 
@@ -383,7 +398,7 @@
 	return verb
 
 /mob/living/simple_animal/put_in_hands(var/obj/item/W) // No hands.
-	W.loc = get_turf(src)
+	W.forceMove(get_turf(src))
 	return 1
 
 // Harvest an animal's delicious byproducts

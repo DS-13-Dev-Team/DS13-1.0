@@ -1,4 +1,4 @@
-/obj/item/weapon/gun/projectile/linecutter
+/obj/item/gun/projectile/linecutter
 	name = "IM-822 Handheld Ore Cutter Line Gun"
 	desc = "A basic energy-based gun."
 	icon = 'icons/obj/weapons/ds13guns48x32.dmi'
@@ -34,19 +34,19 @@
 /*
 	Ironsight Handling
 */
-/obj/item/weapon/gun/projectile/linecutter/enable_aiming_mode()
+/obj/item/gun/projectile/linecutter/enable_aiming_mode()
 	.=..()
 	if (.)
 		playsound(src, 'sound/weapons/guns/interaction/line_open.ogg', VOLUME_MID, TRUE)
 		update_icon()
 
-/obj/item/weapon/gun/projectile/linecutter/disable_aiming_mode()
+/obj/item/gun/projectile/linecutter/disable_aiming_mode()
 	.=..()
 	if (.)
 		playsound(src, 'sound/weapons/guns/interaction/line_close.ogg', VOLUME_MID, TRUE)
 		update_icon()
 
-/obj/item/weapon/gun/projectile/linecutter/update_icon()
+/obj/item/gun/projectile/linecutter/update_icon()
 	if (active_aiming_mode)
 		icon_state = "linecutter_open"
 		item_state = "linecutter_open"
@@ -56,12 +56,12 @@
 
 	update_wear_icon()
 
-/obj/item/weapon/gun/projectile/linecutter/empty
+/obj/item/gun/projectile/linecutter/empty
 	ammo_type = null
 
 
 
-/obj/item/weapon/gun/projectile/linecutter/can_fire()
+/obj/item/gun/projectile/linecutter/can_fire()
 	.=..()
 	if (.)
 		if (!is_held_twohanded(loc))

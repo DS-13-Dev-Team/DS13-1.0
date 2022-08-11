@@ -20,18 +20,18 @@
 	if(.)
 		if(rigged)
 			visible_message("<span class='danger'>There are wires attached to the lid of [src]...</span>")
-			for(var/obj/item/device/assembly_holder/H in src)
+			for(var/obj/item/assembly_holder/H in src)
 				H.process_activation(usr)
-			for(var/obj/item/device/assembly/A in src)
+			for(var/obj/item/assembly/A in src)
 				A.activate()
 
 /obj/structure/closet/crate/examine(mob/user)
 	..()
 	if(rigged && opened)
 		var/list/devices = list()
-		for(var/obj/item/device/assembly_holder/H in src)
+		for(var/obj/item/assembly_holder/H in src)
 			devices += H
-		for(var/obj/item/device/assembly/A in src)
+		for(var/obj/item/assembly/A in src)
 			devices += A
 		to_chat(user,"There are some wires attached to the lid, connected to [english_list(devices)].")
 
@@ -49,7 +49,7 @@
 			to_chat(user, "<span class='notice'>You rig [src].</span>")
 			rigged = 1
 			return
-	else if(istype(W, /obj/item/device/assembly_holder) || istype(W, /obj/item/device/assembly))
+	else if(istype(W, /obj/item/assembly_holder) || istype(W, /obj/item/assembly))
 		if(rigged)
 			if(!user.unEquip(W, src))
 				return
@@ -131,8 +131,8 @@
 
 /obj/structure/closet/crate/rcd/WillContain()
 	return list(
-		/obj/item/weapon/rcd_ammo = 3,
-		/obj/item/weapon/rcd
+		/obj/item/rcd_ammo = 3,
+		/obj/item/rcd
 	)
 
 /obj/structure/closet/crate/solar
@@ -141,9 +141,9 @@
 /obj/structure/closet/crate/solar/WillContain()
 	return list(
 		/obj/item/solar_assembly = 14,
-		/obj/item/weapon/circuitboard/solar_control,
-		/obj/item/weapon/tracker_electronics,
-		/obj/item/weapon/paper/solar
+		/obj/item/circuitboard/solar_control,
+		/obj/item/tracker_electronics,
+		/obj/item/paper/solar
 	)
 
 /obj/structure/closet/crate/solar_assembly
@@ -179,14 +179,14 @@
 	desc = "A crate of emergency rations."
 
 /obj/structure/closet/crate/freezer/rations/WillContain()
-	return list(/obj/item/weapon/reagent_containers/food/snacks/liquidfood = 4)
+	return list(/obj/item/reagent_containers/food/snacks/liquidfood = 4)
 
 /obj/structure/closet/crate/freezer/chocolate
 	name = "chocolate bars"
 	desc = "A crate of chocolate bars."
 
 /obj/structure/closet/crate/freezer/chocolate/WillContain()
-	return list(/obj/item/weapon/reagent_containers/food/snacks/chocolatebar = 15)
+	return list(/obj/item/reagent_containers/food/snacks/chocolatebar = 15)
 
 /obj/structure/closet/crate/bin
 	name = "large bin"
@@ -307,12 +307,12 @@
 
 /obj/structure/closet/crate/hydroponics/prespawned/WillContain()
 	return list(
-		/obj/item/weapon/reagent_containers/spray/plantbgone = 2,
-		/obj/item/weapon/material/minihoe = 2,
-		/obj/item/weapon/storage/plants = 2,
-		/obj/item/weapon/material/hatchet = 2,
-		/obj/item/weapon/tool/wirecutters/clippers = 2,
-		/obj/item/device/analyzer/plant_analyzer = 2
+		/obj/item/reagent_containers/spray/plantbgone = 2,
+		/obj/item/material/minihoe = 2,
+		/obj/item/storage/plants = 2,
+		/obj/item/material/hatchet = 2,
+		/obj/item/tool/wirecutters/clippers = 2,
+		/obj/item/analyzer/plant_analyzer = 2
 	)
 
 /obj/structure/closet/crate/secure/biohazard
@@ -345,7 +345,7 @@
 	icon_closed = "plasticcrate"
 
 /obj/structure/closet/crate/paper_refill/WillContain()
-	return list(/obj/item/weapon/paper = 30)
+	return list(/obj/item/paper = 30)
 
 /obj/structure/closet/crate/uranium
 	name = "fissibles crate"

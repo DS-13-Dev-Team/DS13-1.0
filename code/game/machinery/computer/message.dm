@@ -6,7 +6,7 @@
 	icon_screen = "comm_logs"
 	light_color = "#00b000"
 	var/hack_icon = "error"
-	circuit = /obj/item/weapon/circuitboard/message_monitor
+	circuit = /obj/item/circuitboard/message_monitor
 	//Server linked to.
 	var/obj/machinery/message_server/linkedServer = null
 	//Sparks effect - For emag
@@ -23,7 +23,7 @@
 	var/message = "<span class='notice'>System bootup complete. Please select an option.</span>"	// The message that shows on the main menu.
 	var/auth = 0 // Are they authenticated?
 
-/obj/machinery/computer/message_monitor/attackby(obj/item/weapon/O as obj, mob/living/user as mob)
+/obj/machinery/computer/message_monitor/attackby(obj/item/O as obj, mob/living/user as mob)
 	if(stat & (NOPOWER|BROKEN))
 		..()
 		return
@@ -46,7 +46,7 @@
 			screen = 2
 			spark_system.set_up(5, 0, src)
 			src.spark_system.start()
-			var/obj/item/weapon/paper/monitorkey/MK = new/obj/item/weapon/paper/monitorkey
+			var/obj/item/paper/monitorkey/MK = new/obj/item/paper/monitorkey
 			MK.dropInto(loc)
 			// Will help make emagging the console not so easy to get away with.
 			MK.info += "<br><br><font color='red'>£%@%(*$%&(£&?*(%&£/{}</font>"
@@ -301,12 +301,12 @@
 	return src.attack_hand(usr)
 
 
-/obj/item/weapon/paper/monitorkey
+/obj/item/paper/monitorkey
 	//..()
 	name = "Monitor Decryption Key"
 	var/obj/machinery/message_server/server = null
 
-/obj/item/weapon/paper/monitorkey/New()
+/obj/item/paper/monitorkey/New()
 	..()
 	spawn(10)
 		if(message_servers)

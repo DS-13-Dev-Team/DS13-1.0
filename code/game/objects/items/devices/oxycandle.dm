@@ -1,7 +1,7 @@
-/obj/item/device/oxycandle
+/obj/item/oxycandle
 	name = "oxygen candle"
 	desc = "A steel tube with the words 'OXYGEN - PULL CORD TO IGNITE' stamped on the side. A small label warns against using the device underwater"
-	icon = 'icons/obj/device.dmi'
+	icon = 'icons/obj/items.dmi'
 	icon_state = "oxycandle"
 	item_state = "oxycandle"
 	w_class = ITEM_SIZE_SMALL // Should fit into internal's box or maybe pocket
@@ -15,11 +15,11 @@
 	light_power = 1
 	action_button_name = null
 
-/obj/item/device/oxycandle/New()
+/obj/item/oxycandle/New()
 	..()
 	update_icon()
 
-/obj/item/device/oxycandle/attack_self(mob/user)
+/obj/item/oxycandle/attack_self(mob/user)
 	if(!on)
 		to_chat(user, "<span class='notice'>You pull the cord and [src] ignites.</span>")
 		on = 1
@@ -33,7 +33,7 @@
 		START_PROCESSING(SSprocessing, src)
 
 // Process of Oxygen candles releasing air. Makes 200 volume of oxygen
-/obj/item/device/oxycandle/Process()
+/obj/item/oxycandle/Process()
 	if(!loc)
 		return
 	var/turf/pos = get_turf(src)
@@ -60,7 +60,7 @@
 	var/list/air_mix = list("oxygen" = 1 * (target_pressure * air_contents.volume) / (R_IDEAL_GAS_EQUATION * air_contents.temperature))
 	air_contents.adjust_multi("oxygen", air_mix["oxygen"])
 
-/obj/item/device/oxycandle/update_icon()
+/obj/item/oxycandle/update_icon()
 	if(on == 1)
 		icon_state = "oxycandle_on"
 		item_state = icon_state
@@ -75,7 +75,7 @@
 		set_light_on(FALSE)
 	update_held_icon()
 
-/obj/item/device/oxycandle/Destroy()
+/obj/item/oxycandle/Destroy()
 	QDEL_NULL(air_contents)
 	STOP_PROCESSING(SSprocessing, src)
 	. = ..()

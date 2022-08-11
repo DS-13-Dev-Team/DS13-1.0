@@ -44,7 +44,7 @@
 	melee_damage_upper = 10
 	speak_chance = 1//1% (1 in 100) chance every tick; So about once per 150 seconds, assuming an average tick is 1.5s
 	turns_per_move = 5
-	meat_type = /obj/item/weapon/reagent_containers/food/snacks/cracker/
+	meat_type = /obj/item/reagent_containers/food/snacks/cracker/
 
 	response_help  = "pets"
 	response_disarm = "gently moves aside"
@@ -64,7 +64,7 @@
 	var/list/available_channels = list()
 
 	//Headset for Poly to yell at engineers :)
-	var/obj/item/device/radio/headset/ears = null
+	var/obj/item/radio/headset/ears = null
 
 	//The thing the parrot is currently interested in. This gets used for items the parrot wants to pick up, mobs it wants to steal from,
 	//mobs it wants to attack or mobs that have attacked it
@@ -88,11 +88,11 @@
 /mob/living/simple_animal/parrot/New()
 	..()
 	if(!ears)
-		var/headset = pick(/obj/item/device/radio/headset/headset_sec, \
-						/obj/item/device/radio/headset/headset_eng, \
-						/obj/item/device/radio/headset/headset_med, \
-						/obj/item/device/radio/headset/headset_sci, \
-						/obj/item/device/radio/headset/headset_cargo)
+		var/headset = pick(/obj/item/radio/headset/headset_sec, \
+						/obj/item/radio/headset/headset_eng, \
+						/obj/item/radio/headset/headset_med, \
+						/obj/item/radio/headset/headset_sci, \
+						/obj/item/radio/headset/headset_cargo)
 		ears = new headset(src)
 
 	parrot_sleep_dur = parrot_sleep_max //In case someone decides to change the max without changing the duration var
@@ -106,7 +106,7 @@
 
 /mob/living/simple_animal/parrot/death(gibbed, deathmessage, show_dead_message)
 	if(held_item)
-		held_item.loc = src.loc
+		held_item.forceMove(src.loc)
 		held_item = null
 	walk(src,0)
 	..(gibbed, deathmessage, show_dead_message)
@@ -146,7 +146,7 @@
 							src.say("[pick(available_channels)] BAWWWWWK LEAVE THE HEADSET BAWKKKKK!")
 						else
 							src.say("BAWWWWWK LEAVE THE HEADSET BAWKKKKK!")
-						ears.loc = src.loc
+						ears.forceMove(src.loc)
 						ears = null
 						for(var/possible_phrase in speak)
 							if(copytext(possible_phrase,1,3) in department_radio_keys)
@@ -171,12 +171,12 @@
 						if(!item_to_add)
 							return
 
-						if( !istype(item_to_add,  /obj/item/device/radio/headset) )
+						if( !istype(item_to_add,  /obj/item/radio/headset) )
 							to_chat(usr, "<span class='warning'>This object won't fit.</span>")
 							return
 						if(!usr.unEquip(item_to_add, src))
 							return
-						var/obj/item/device/radio/headset/headset_to_add = item_to_add
+						var/obj/item/radio/headset/headset_to_add = item_to_add
 
 						src.ears = headset_to_add
 						to_chat(usr, "You fit the headset onto [src].")
@@ -399,7 +399,7 @@
 			else //This should ensure that we only grab the item we want, and make sure it's not already collected on our perch
 				if(!parrot_perch || parrot_interest.loc != parrot_perch.loc)
 					held_item = parrot_interest
-					parrot_interest.loc = src
+					parrot_interest.forceMove(src)
 					visible_message("[src] grabs the [held_item]!", "<span class='notice'>You grab the [held_item]!</span>", "You hear the sounds of wings flapping furiously.")
 
 			parrot_interest = null
@@ -418,7 +418,7 @@
 			return
 
 		if(in_range(src, parrot_perch))
-			src.loc = parrot_perch.loc
+			src.forceMove(parrot_perch.loc)
 			drop_held_item()
 			parrot_state = PARROT_PERCH
 			icon_state = "parrot_sit"
@@ -572,7 +572,7 @@
 				continue
 
 			held_item = I
-			I.loc = src
+			I.forceMove(src)
 			visible_message("[src] grabs the [held_item]!", "<span class='notice'>You grab the [held_item]!</span>", "You hear the sounds of wings flapping furiously.")
 			return held_item
 
@@ -633,9 +633,9 @@
 		return 0
 
 	if(!drop_gently)
-		if(istype(held_item, /obj/item/weapon/grenade))
-			var/obj/item/weapon/grenade/G = held_item
-			G.loc = src.loc
+		if(istype(held_item, /obj/item/grenade))
+			var/obj/item/grenade/G = held_item
+			G.forceMove(src.loc)
 			G.detonate()
 			to_chat(src, "You let go of the [held_item]!")
 			held_item = null
@@ -643,7 +643,7 @@
 
 	to_chat(src, "You drop the [held_item].")
 
-	held_item.loc = src.loc
+	held_item.forceMove(src.loc)
 	held_item = null
 	return 1
 
@@ -659,7 +659,7 @@
 		for(var/atom/movable/AM in view(src,1))
 			for(var/perch_path in desired_perches)
 				if(istype(AM, perch_path))
-					src.loc = AM.loc
+					src.forceMove(AM.loc)
 					icon_state = "parrot_sit"
 					return
 	to_chat(src, "<span class='warning'>There is no perch nearby to sit on.</span>")
@@ -674,7 +674,7 @@
 	speak = list("Poly wanna cracker!", ":e Check the singlo, you chucklefucks!",":e Wire the solars, you lazy bums!",":e WHO TOOK THE DAMN HARDSUITS?",":e OH GOD ITS FREE CALL THE SHUTTLE")
 
 /mob/living/simple_animal/parrot/Poly/New()
-	ears = new /obj/item/device/radio/headset/headset_eng(src)
+	ears = new /obj/item/radio/headset/headset_eng(src)
 	available_channels = list(":e")
 	..()
 
@@ -705,7 +705,7 @@
 
 	if(message_mode)
 		if(message_mode in radiochannels)
-			if(ears && istype(ears,/obj/item/device/radio))
+			if(ears && istype(ears,/obj/item/radio))
 				ears.talk_into(src,sanitize(message), message_mode, verb, null)
 
 

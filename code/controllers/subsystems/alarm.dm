@@ -42,5 +42,5 @@ SUBSYSTEM_DEF(alarm)
 	return active_alarm_cache.len
 
 /datum/controller/subsystem/alarm/stat_entry(msg)
-	msg = "[number_of_active_alarms()] alarm\s"
-	return msg
+	msg = "|[number_of_active_alarms()] alarm\s"
+	return ..()

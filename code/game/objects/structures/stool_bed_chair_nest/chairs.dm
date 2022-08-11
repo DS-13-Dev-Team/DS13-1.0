@@ -13,7 +13,7 @@
 
 	.=..()
 
-/obj/structure/bed/chair/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/structure/bed/chair/attackby(obj/item/W as obj, mob/user as mob)
 	..()
 	if(!padding_material && istype(W, /obj/item/assembly/shock_kit))
 		var/obj/item/assembly/shock_kit/SK = W
@@ -320,7 +320,7 @@
 	base_icon = "wooden_chair"
 	icon_state = "wooden_chair_preview"
 
-/obj/structure/bed/chair/wood/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/structure/bed/chair/wood/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/stack) || isWirecutter(W))
 		return
 	..()

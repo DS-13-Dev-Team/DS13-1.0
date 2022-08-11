@@ -5,7 +5,7 @@
 
 #define HP_BASE_DELAY 1.25
 
-/obj/item/weapon/gun/projectile/automatic/pulse_heavy
+/obj/item/gun/projectile/automatic/pulse_heavy
 	name = "Heavy Pulse Rifle"
 	desc = "A colossal weapon capable of firing infinitely, but requiring a significant cooldown period. It is optimised for continuous fire, and will overheat more quickly if used in bursts."
 	icon = 'icons/obj/weapons/ds13guns48x32.dmi'
@@ -68,16 +68,16 @@
 	//Firing delay is divided by 1 + (heat * this), making the gun speed up as it gets closer to max heat
 	var/heat_delay_multiplier = 1.85
 
-/obj/item/weapon/gun/projectile/automatic/pulse_heavy/Initialize()
+/obj/item/gun/projectile/automatic/pulse_heavy/Initialize()
 	.=..()
 	base_delay = current_firemode.settings["fire_delay"]
 
-/obj/item/weapon/gun/projectile/automatic/pulse_heavy/proc/overheat()
+/obj/item/gun/projectile/automatic/pulse_heavy/proc/overheat()
 	overheating = TRUE
 	playsound(src, 'sound/weapons/guns/misc/overheat.ogg', VOLUME_LOUD, FALSE)
 	set_audio_cooldown("gunclick", 3 SECONDS)
 
-/obj/item/weapon/gun/projectile/automatic/pulse_heavy/proc/gain_heat(var/quantity)
+/obj/item/gun/projectile/automatic/pulse_heavy/proc/gain_heat(var/quantity)
 	heat = clamp(heat + quantity, 0, max_heat)
 	START_PROCESSING(SSobj, src)
 
@@ -90,7 +90,7 @@
 		overheat()
 		return FALSE
 
-/obj/item/weapon/gun/projectile/automatic/pulse_heavy/proc/lose_heat(var/quantity)
+/obj/item/gun/projectile/automatic/pulse_heavy/proc/lose_heat(var/quantity)
 	heat = clamp(heat - quantity, 0, max_heat)
 
 	//The Heavy Pulse Rifle speeds up its firing speed based on heat level, 3* speed at max heat
@@ -105,40 +105,40 @@
 	if (!heat)
 		STOP_PROCESSING(SSobj, src)
 
-/obj/item/weapon/gun/projectile/automatic/pulse_heavy/Process()
+/obj/item/gun/projectile/automatic/pulse_heavy/Process()
 	var/heatloss = cooldown_per_second
 	if (overheating)
 		heatloss *= overheat_cooldown_mult
 	lose_heat(heatloss)
 
-/obj/item/weapon/gun/projectile/automatic/pulse_heavy/consume_next_projectile()
+/obj/item/gun/projectile/automatic/pulse_heavy/consume_next_projectile()
 	if (gain_heat(heat_per_shot))
 		return new projectile_type(src)	//If we're using a special projectile type, spawn it
 	else return null
 
 
-/obj/item/weapon/gun/projectile/automatic/pulse_heavy/can_fire(atom/target, mob/living/user, clickparams, var/silent = FALSE)
+/obj/item/gun/projectile/automatic/pulse_heavy/can_fire(atom/target, mob/living/user, clickparams, var/silent = FALSE)
 	if (overheating)
 		return FALSE
 
 	.=..()
 
 
-/obj/item/weapon/gun/projectile/automatic/pulse_heavy/has_ammo()
+/obj/item/gun/projectile/automatic/pulse_heavy/has_ammo()
 	return (overheating == FALSE)
 
 
-/obj/item/weapon/gun/projectile/automatic/pulse_heavy/get_remaining_ammo()
+/obj/item/gun/projectile/automatic/pulse_heavy/get_remaining_ammo()
 	return (max_heat - (heat + heat_per_burst)) / heat_per_shot
 
 
 //The heavy pulse rifle gains some heat whenever the user pulls the trigger, in addition to per shot
-/obj/item/weapon/gun/projectile/automatic/pulse_heavy/started_firing()
+/obj/item/gun/projectile/automatic/pulse_heavy/started_firing()
 	.=..()
 	gain_heat(heat_per_burst)
 
 
-/obj/item/weapon/gun/projectile/automatic/pulse_heavy/show_remaining_ammo(var/mob/living/user)
+/obj/item/gun/projectile/automatic/pulse_heavy/show_remaining_ammo(var/mob/living/user)
 	if (overheating)
 		to_chat(user, SPAN_DANGER("The heat meter reads [round(heat*100,1)]%"))
 		to_chat(user, SPAN_DANGER("It is overheating and will require several minutes to cool down."))
@@ -147,8 +147,8 @@
 		if(user.skill_check(SKILL_WEAPONS, SKILL_ADEPT))
 			to_chat(user, "It can fire approximately [get_remaining_ammo()] round\s.")
 
-/obj/item/weapon/gun/projectile/automatic/pulse_heavy/load_ammo(var/obj/item/A, mob/user)
+/obj/item/gun/projectile/automatic/pulse_heavy/load_ammo(var/obj/item/A, mob/user)
 	return
 
-/obj/item/weapon/gun/projectile/automatic/pulse_heavy/unload_ammo(mob/user, var/allow_dump=1)
+/obj/item/gun/projectile/automatic/pulse_heavy/unload_ammo(mob/user, var/allow_dump=1)
 	return

@@ -92,7 +92,7 @@
 		else if(prob(5)) //stun move
 			spellscast++
 			visible_message("<span class='cult'>\The [src]' fleece flashes with blinding light!</span>")
-			new /obj/item/weapon/grenade/flashbang/instant(src.loc) //lol
+			new /obj/item/grenade/flashbang/instant(src.loc) //lol
 
 		else if(prob(5)) //spawn adds
 			spellscast++
@@ -149,7 +149,7 @@
 	QDEL_NULL(boss_theme)
 	if(phase3)
 		visible_message("<span class='cult'>\The [src] shrieks as the seal on his power breaks and his wool sheds off!</span>")
-		new /obj/item/weapon/towel/fleece(src.loc)
+		new /obj/item/towel/fleece(src.loc)
 
 /mob/living/simple_animal/hostile/retaliate/goat/king/death()
 	..()

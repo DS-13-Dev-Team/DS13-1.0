@@ -13,6 +13,8 @@
 	. = ..()
 
 /obj/machinery/atmospherics/ex_act(severity,var/atom/epicentre)
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	for(var/atom/movable/A in src) //ventcrawling is serious business
 		A.ex_act(severity, epicentre)
 	. = ..()

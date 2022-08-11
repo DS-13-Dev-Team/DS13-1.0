@@ -1,5 +1,5 @@
 //Adminpaper - it's like paper, but more adminny!
-/obj/item/weapon/paper/admin
+/obj/item/paper/admin
 	name = "administrative paper"
 	desc = "If you see this, something has gone horribly wrong."
 	var/datum/admins/admindatum = null
@@ -19,11 +19,11 @@
 	var/logo_list = list("ceclogo.png")
 	var/logo = ""
 
-/obj/item/weapon/paper/admin/ui_data(mob/user)
+/obj/item/paper/admin/ui_data(mob/user)
 	.=..()
 	.["edit_mode"] = 1
 
-/obj/item/weapon/paper/admin/ui_close(mob/user)
+/obj/item/paper/admin/ui_close(mob/user)
 	if(tgui_alert(user, "Send Fax?", "Fax Paper", list("Yes", "No")) == "Yes")
 		admindatum.faxCallback(src, destination)
 	else

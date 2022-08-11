@@ -19,7 +19,7 @@
 	var/base_type = null
 
 	var/damage = 0
-	var/obj/item/weapon/rig/holder
+	var/obj/item/rig/holder
 
 	var/module_cooldown = 10
 	var/next_use = 0
@@ -209,7 +209,7 @@
 	. = ..()
 
 
-/obj/item/rig_module/proc/can_install(var/obj/item/weapon/rig/rig, var/mob/user , var/check_conflict = TRUE)
+/obj/item/rig_module/proc/can_install(var/obj/item/rig/rig, var/mob/user , var/check_conflict = TRUE)
 	if (!redundant && check_conflict)
 		if (get_conflicting(rig))
 			return FALSE
@@ -221,7 +221,7 @@
 	return TRUE
 
 //Returns any existing module which blocks the installation of this one
-/obj/item/rig_module/proc/get_conflicting(var/obj/item/weapon/rig/rig)
+/obj/item/rig_module/proc/get_conflicting(var/obj/item/rig/rig)
 	if (!redundant)
 		for (var/obj/item/rig_module/RM as anything in rig.installed_modules)
 			//Exact duplicates not allowed
@@ -246,7 +246,7 @@ Called when attempting to install this module into the target rig
 	-False if we were denied installation due to conflict with something better
 
 */
-/obj/item/rig_module/proc/resolve_installation_upgrade(var/obj/item/weapon/rig/rig, var/do_install = TRUE, var/force = FALSE)
+/obj/item/rig_module/proc/resolve_installation_upgrade(var/obj/item/rig/rig, var/do_install = TRUE, var/force = FALSE)
 	var/obj/item/rig_module/conflict
 	var/list/removed = list()
 	while ((conflict = get_conflicting(rig)))
@@ -289,11 +289,11 @@ Called when attempting to install this module into the target rig
 
 	Return false to block the replacement and deny the installation of the sucessor
 */
-/obj/item/rig_module/proc/pre_replace(var/obj/item/weapon/rig/rig, var/obj/item/rig_module/successor)
+/obj/item/rig_module/proc/pre_replace(var/obj/item/rig/rig, var/obj/item/rig_module/successor)
 	return TRUE
 
 // Called when the module is installed into a suit.
-/obj/item/rig_module/proc/installed(var/obj/item/weapon/rig/new_holder)
+/obj/item/rig_module/proc/installed(var/obj/item/rig/new_holder)
 	holder = new_holder
 	return
 
@@ -371,7 +371,7 @@ Called when attempting to install this module into the target rig
 	return 1
 
 // Called when the module is uninstalled from a suit.
-/obj/item/rig_module/proc/uninstalled(var/obj/item/weapon/rig/former, var/mob/living/user)
+/obj/item/rig_module/proc/uninstalled(var/obj/item/rig/former, var/mob/living/user)
 	deactivate()
 	former.installed_modules -= src
 	holder = null

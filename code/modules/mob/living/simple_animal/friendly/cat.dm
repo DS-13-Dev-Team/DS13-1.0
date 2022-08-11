@@ -12,7 +12,7 @@
 	emote_see = list("shakes their head", "shivers")
 	speak_chance = 1
 	turns_per_move = 5
-	meat_type = /obj/item/weapon/reagent_containers/food/snacks/meat
+	meat_type = /obj/item/reagent_containers/food/snacks/meat
 	response_help  = "pets"
 	response_disarm = "gently pushes aside"
 	response_harm   = "kicks"
@@ -21,7 +21,7 @@
 	var/mob/flee_target
 	minbodytemp = 223		//Below -50 Degrees Celcius
 	maxbodytemp = 323	//Above 50 Degrees Celcius
-	holder_type = /obj/item/weapon/holder/cat
+	holder_type = /obj/item/holder/cat
 	mob_size = MOB_SMALL
 	possession_candidate = 1
 	pass_flags = PASS_FLAG_TABLE
@@ -116,6 +116,8 @@
 		set_flee_target(M)
 
 /mob/living/simple_animal/cat/ex_act()
+	if(status_flags & GODMODE || atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	. = ..()
 	set_flee_target(src.loc)
 
@@ -227,7 +229,7 @@
 	gender = NEUTER
 
 // Leaving this here for now.
-/obj/item/weapon/holder/cat/fluff/bones
+/obj/item/holder/cat/fluff/bones
 	name = "Bones"
 	desc = "It's Bones! Meow."
 	gender = MALE
@@ -241,7 +243,7 @@
 	item_state = "cat3"
 	icon_living = "cat3"
 	icon_dead = "cat3_dead"
-	holder_type = /obj/item/weapon/holder/cat/fluff/bones
+	holder_type = /obj/item/holder/cat/fluff/bones
 	var/friend_name = "Erstatz Vryroxes"
 
 /mob/living/simple_animal/cat/kitten/New()

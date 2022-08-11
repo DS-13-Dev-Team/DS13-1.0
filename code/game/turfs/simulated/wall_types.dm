@@ -134,6 +134,8 @@
 	..(newloc,"aliumium")
 
 /turf/simulated/wall/alium/ex_act(severity)
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	if(prob(explosion_resistance))
 		return
 	..()

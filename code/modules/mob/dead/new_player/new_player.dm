@@ -108,8 +108,6 @@
 		if(!CONFIG_GET(number/respawn_delay) || client.holder || tgui_alert(src,"Are you sure you wish to observe? You will have to wait [CONFIG_GET(number/respawn_delay)] minute\s before being able to respawn!","Player Setup", list("Yes","No")) == "Yes")
 			return make_observer(src)
 
-
-
 	if(href_list["late_join"])
 
 		if(!SSticker || SSticker.current_state != GAME_STATE_PLAYING)
@@ -238,14 +236,6 @@
 				for(var/optionid = id_min; optionid <= id_max; optionid++)
 					if(!isnull(href_list["option_[optionid]"]))	//Test if this optionid was selected
 						vote_on_poll(pollid, optionid, 1)
-
-/mob/dead/new_player/proc/get_branch_pref()
-	if(client)
-		return client.prefs.char_branch
-
-/mob/dead/new_player/proc/get_rank_pref()
-	if(client)
-		return client.prefs.char_rank
 
 /mob/dead/new_player/proc/AttemptLateSpawn(var/datum/job/job, var/spawning_at)
 	if(src != usr)
@@ -393,7 +383,7 @@
 		chosen_species = all_species[client.prefs.species]
 
 	if(!spawn_turf)
-		var/datum/spawnpoint/spawnpoint = job_master.get_spawnpoint_for(client, get_rank_pref())
+		var/datum/spawnpoint/spawnpoint = job_master.get_spawnpoint_for(client, mind.assigned_role)
 		spawn_turf = pick(spawnpoint.turfs)
 
 	if(chosen_species)
@@ -538,7 +528,7 @@ mob/new_player/MayRespawn()
 /mob/dead/new_player/proc/ShowTitleScreen()
 	winset(client, "lobbybrowser", "is-disabled=false;is-visible=true")
 
-	show_browser(client, GLOB.using_map.current_lobby_screen, "file=titlescreen.png;display=0")
+	show_browser(client, 'icons/hud/lobby_screens/DS13_lobby.gif', "file=titlescreen.png;display=0")
 	show_browser(client, file('html/browser/lobby_titlescreen.html'), "window=lobbybrowser")
 
 /mob/dead/new_player/proc/HideTitleScreen()

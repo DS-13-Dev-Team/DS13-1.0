@@ -127,7 +127,7 @@
 	GLOB.changelog_tgui.tgui_interact(mob)
 	if(prefs.lastchangelog != GLOB.changelog_hash)
 		prefs.lastchangelog = GLOB.changelog_hash
-		prefs.save_preferences()
+		SScharacter_setup.queue_preferences_save(prefs)
 		winset(src, "infowindow.changelog", "font-style=;")
 
 /client/verb/hotkeys_help()
