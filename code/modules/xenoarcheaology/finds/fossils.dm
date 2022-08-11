@@ -10,6 +10,7 @@
 	var/animal = 1
 
 /obj/item/fossil/base/New()
+	.=..()
 	var/list/l = list(/obj/item/fossil/bone=9,/obj/item/fossil/skull=3,
 	/obj/item/fossil/skull/horned=2)
 	var/t = pickweight(l)
@@ -52,6 +53,7 @@
 	var/plaque_contents = "Unnamed alien creature"
 
 /obj/skeleton/New()
+	.=..()
 	src.breq = rand(6)+3
 	src.desc = "An incomplete skeleton, looks like it could use [src.breq-src.bnum] more bones."
 
@@ -99,4 +101,5 @@
 	animal = 0
 
 /obj/item/fossil/plant/New()
+	.=..()
 	icon_state = "plant[rand(1,4)]"

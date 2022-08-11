@@ -534,6 +534,8 @@
 // destroy the whole light fixture or just shatter it
 
 /obj/machinery/light/ex_act(severity)
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	switch(severity)
 		if(1)
 			qdel(src)
@@ -603,7 +605,7 @@
 
 	var/b_power = 1
 	var/b_range = 8
-	var/b_color = "#fffee0"
+	var/b_color = "#f3fffa"
 	var/list/lighting_modes = list()
 	var/sound_on
 
@@ -616,7 +618,7 @@
 	matter = list(MATERIAL_GLASS = 100)
 
 	b_range = 8
-	b_color = "#fffee0"
+	b_color = "#f3fffa"
 	lighting_modes = list(
 		LIGHTMODE_EMERGENCY = list(l_range = 4, l_power = 1, l_color = "#da0205"),
 		)
@@ -647,7 +649,7 @@
 
 	b_power = 1
 	b_range = 4
-	b_color = "#fcfcc7"
+	b_color = "#f3fffa"
 	lighting_modes = list(
 		LIGHTMODE_EMERGENCY = list(l_range = 3, l_power = 1, l_color = "#da0205"),
 		)

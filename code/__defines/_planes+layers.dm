@@ -248,7 +248,7 @@ What is the naming convention for planes or layers?
 #define RADIAL_CONTENT_LAYER 1000
 
 /image/proc/plating_decal_layerise()
-	plane = GAME_PLANE
+	plane = FLOOR_PLANE
 	layer = DECAL_PLATING_LAYER
 
 /image/proc/turf_decal_layerise()

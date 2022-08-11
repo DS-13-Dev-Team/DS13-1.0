@@ -4367,22 +4367,14 @@
 "kx" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/atmospherics/portables_connector{
-	dir = 1
+	dir = 8
 	},
 /obj/machinery/portable_atmospherics/canister/air,
 /turf/simulated/floor/dank/grater,
 /area/ERT/valor/engineering)
 "ky" = (
 /obj/machinery/power/port_gen/pacman,
-/obj/structure/cable/green{
-	d2 = 8;
-	icon_state = "0-8"
-	},
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
-	dir = 10;
-	icon_state = "intact"
-	},
 /turf/simulated/floor/dank/grater,
 /area/ERT/valor/engineering)
 "kz" = (

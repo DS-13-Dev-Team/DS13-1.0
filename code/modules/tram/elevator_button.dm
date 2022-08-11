@@ -7,140 +7,60 @@
 	density = 0
 	req_access = list()
 	atom_flags = ATOM_FLAG_INDESTRUCTIBLE
-	var/id = MAIN_STATION_TRAM
-	/// A weakref to the lift_master datum we control
-	var/datum/weakref/lift_weakref
 	COOLDOWN_DECLARE(activation)
+	///for finding the landmark initially - should be the exact same as the landmark's destination id.
+	var/initial_id
+	///ID to link to allow us to link to one specific tram in the world
+	var/specific_lift_id = MAIN_STATION_TRAM
+	///this is our destination's landmark, so we only have to find it the first time.
+	var/datum/weakref/to_where
 
 /obj/machinery/computer/tramswitch/Initialize(mapload)
-	. = ..()
-
-	if(mapload)
-		return INITIALIZE_HINT_LATELOAD
-
-	var/datum/lift_master/lift = get_lift()
-	if(!lift)
-		return
-
-	lift_weakref = WEAKREF(lift)
+	..()
+	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/computer/tramswitch/LateInitialize()
-	var/datum/lift_master/lift = get_lift()
-	if(!lift)
-		log_mapping("Elevator call button at [AREACOORD(src)] found no associated lift to link with, this may be a mapping error.")
-		return
+	. = ..()
+	//find where the tram needs to go to (our destination). only needs to happen the first time
+	for(var/obj/effect/landmark/tram/our_destination as anything in GLOB.tram_landmarks[specific_lift_id])
+		if(our_destination.destination_id == initial_id)
+			to_where = WEAKREF(our_destination)
+			break
 
-	lift_weakref = WEAKREF(lift)
+/obj/machinery/computer/tramswitch/Destroy()
+	to_where = null
+	return ..()
 
 /obj/machinery/computer/tramswitch/attack_hand(mob/user)
 	if(..())
 		return TRUE
 	activate()
 
-// Emagging elevator buttons will disable safeties
-/obj/machinery/computer/tramswitch/emag_act(mob/user, obj/item/card/emag/emag_card)
-	if(emagged)
-		return
-
-	var/datum/lift_master/lift = lift_weakref?.resolve()
-	if(!lift)
-		return
-
-	for(var/obj/structure/industrial_lift/lift_platform as anything in lift.lift_platforms)
-		lift_platform.violent_landing = TRUE
-		lift_platform.warns_on_down_movement = FALSE
-		lift_platform.elevator_vertical_speed = initial(lift_platform.elevator_vertical_speed) * 0.5
-
-	to_chat(user, SPAN_NOTICE("Safeties succesfully overriden."))
-	emagged = TRUE
-	return TRUE
-
-// Multitooling emagged elevator buttons will fix the safeties
-/obj/machinery/computer/tramswitch/attackby(obj/item/I, mob/user)
-	if(isMultitool(I))
-		if(!emagged)
-			return ..()
-
-		var/datum/lift_master/lift = lift_weakref?.resolve()
-		if(!lift)
-			return ..()
-
-		for(var/obj/structure/industrial_lift/lift_platform as anything in lift.lift_platforms)
-			lift_platform.violent_landing = initial(lift_platform.violent_landing)
-			lift_platform.warns_on_down_movement = initial(lift_platform.warns_on_down_movement)
-			lift_platform.elevator_vertical_speed = initial(lift_platform.elevator_vertical_speed)
-
-		// We can only be multitooled directly so just throw up the balloon alert
-		to_chat(user, SPAN_NOTICE("Safeties succesfully reset."))
-		emagged = FALSE
-		return TRUE
-	else
-		.=..()
-
 /obj/machinery/computer/tramswitch/proc/activate(mob/activator)
-	if(COOLDOWN_FINISHED(src, activation))
+	if(!COOLDOWN_FINISHED(src, activation))
 		return
 
 	COOLDOWN_START(src, activation, 2 SECONDS)
-	// Actually try to call the elevator - this sleeps.
-	// If we failed to call it, play a buzz sound.
-	if(!call_elevator(activator))
-		playsound(loc, 'sound/machines/buzz-two.ogg', 50, TRUE)
+	var/datum/lift_master/tram/tram
+	for(var/datum/lift_master/tram/possible_match as anything in GLOB.active_lifts_by_type[TRAM_LIFT_ID])
+		if(possible_match.specific_lift_id == specific_lift_id)
+			tram = possible_match
+			break
 
-/// Actually calls the elevator.
-/// Returns FALSE if we failed to setup the move.
-/// Returns TRUE if the move setup was a success, EVEN IF the move itself fails afterwards
-/obj/machinery/computer/tramswitch/proc/call_elevator(mob/activator)
-	// We can't call an elevator that doesn't exist
-	var/datum/lift_master/lift = lift_weakref?.resolve()
-	if(!lift)
-		to_chat(activator, SPAN_WARNING("There is no elevator connected!"))
-		return FALSE
+	if(!tram)
+		to_chat(activator, SPAN_WARNING("The tram is not responding to call signals. Please send a technician to repair the internals of the tram."))
+		return
+	if(tram.travelling) //in use
+		to_chat(activator, SPAN_NOTICE("The tram is already travelling to [tram.from_where]."))
+		return
+	if(!to_where)
+		return
+	var/obj/effect/landmark/tram/current_location = to_where.resolve()
+	if(!current_location)
+		return
+	if(tram.from_where == current_location) //already here
+		to_chat(activator, SPAN_NOTICE("The tram is already here. Please board the tram and select a destination."))
+		return
 
-	// We can't call an elevator that's moving. You may say "you totally can do that", but that's not modelled
-	if(lift.controls_locked == LIFT_PLATFORM_LOCKED)
-		to_chat(activator, SPAN_WARNING("Elevator is moving!"))
-		return FALSE
-
-	// We can't call an elevator if it's already at this destination
-	var/obj/structure/industrial_lift/prime_lift = lift.return_closest_platform_to_z(loc.z)
-	if(prime_lift.z == loc.z)
-		to_chat(activator, SPAN_WARNING("Elevator is already here!"))
-		return FALSE
-
-	// At this point, we can start moving.
-
-	// Give the user, if supplied, a balloon alert.
-	if(activator)
-		to_chat(activator, SPAN_NOTICE("Succesfully called elevator."))
-
-	// Actually try to move the lift. This will sleep.
-	if(!lift.move_to_zlevel(loc.z))
-		to_chat(activator, SPAN_WARNING("Elevator is out of service!"))
-		return FALSE
-
-	// From here on all returns are TRUE, as we successfully moved the lift, even if we maybe didn't reach our floor
-
-	// Our lift platform survived, but it didn't reach our landing z.
-	if(!QDELETED(prime_lift) && prime_lift.z != loc.z)
-		if(!QDELETED(activator))
-			to_chat(activator, SPAN_WARNING("Elevator is out of service!"))
-		playsound(loc, 'sound/machines/buzz-sigh.ogg', 50, TRUE)
-		return TRUE
-
-	// Everything went according to plan
-	playsound(loc, 'sound/machines/ping.ogg', 50, TRUE)
-	if(!QDELETED(activator))
-		to_chat(activator, SPAN_NOTICE("Elevator arrived."))
-
-	return TRUE
-
-/// Gets the lift associated with our switch
-/obj/machinery/computer/tramswitch/proc/get_lift()
-	for(var/datum/lift_master/possible_match as anything in GLOB.active_lifts_by_type[BASIC_LIFT_ID])
-		if(possible_match.specific_lift_id != id)
-			continue
-
-		return possible_match
-
-	return null
+	to_chat(activator, SPAN_NOTICE("The tram has been called to [current_location.name]. Please wait for its arrival."))
+	tram.tram_travel(current_location)

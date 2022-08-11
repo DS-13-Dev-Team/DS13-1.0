@@ -439,6 +439,8 @@
 
 
 /obj/machinery/door/ex_act(severity)
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	var/blast_divisor = 1 + (explosion_resistance * 0.1)
 	switch(severity)
 		if(1)

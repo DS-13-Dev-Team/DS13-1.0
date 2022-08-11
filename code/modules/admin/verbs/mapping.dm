@@ -27,6 +27,7 @@ var/intercom_range_display_status = 0
 	icon_state = "25percent"
 
 	New()
+		.=..()
 		src.pixel_x = -224
 		src.pixel_y = -224
 

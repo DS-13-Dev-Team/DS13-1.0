@@ -113,6 +113,8 @@
 	master.disrupt()
 
 /obj/effect/dummy/chameleon/ex_act()
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	for(var/mob/M in src)
 		to_chat(M, "<span class='warning'>Your chameleon-projector deactivates.</span>")
 	master.disrupt()

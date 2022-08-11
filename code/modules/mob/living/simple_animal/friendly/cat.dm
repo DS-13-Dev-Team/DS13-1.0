@@ -116,6 +116,8 @@
 		set_flee_target(M)
 
 /mob/living/simple_animal/cat/ex_act()
+	if(status_flags & GODMODE || atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	. = ..()
 	set_flee_target(src.loc)
 

@@ -32,7 +32,8 @@ SUBSYSTEM_DEF(wireless)
 	pending_connections += C
 
 /datum/controller/subsystem/wireless/stat_entry(msg)
-	return "RL:[receiver_list.len]|PC:[pending_connections.len]|RC:[retry_connections.len]|FC:[failed_connections.len]"
+	msg = "|RL:[receiver_list.len]|PC:[pending_connections.len]|RC:[retry_connections.len]|FC:[failed_connections.len]"
+	return ..()
 
 /datum/controller/subsystem/wireless/Recover()
 	if (istype(SSwireless.receiver_list))

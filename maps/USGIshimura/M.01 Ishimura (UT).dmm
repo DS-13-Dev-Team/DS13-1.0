@@ -188,9 +188,8 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/dank/tramgrating{
-	dir = 4
-	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/dank/trammiddle,
 /area/ishimura/tramdeck/switchingstation/lower)
 "aR" = (
 /turf/simulated/wall/r_wall/hull,
@@ -5513,6 +5512,13 @@
 	dir = 4
 	},
 /area/ishimura/tramdeck/switchingstation/lower)
+"Bs" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/dank/tramcorner{
+	dir = 1
+	},
+/area/ishimura/tramdeck/switchingstation/lower)
 "Cd" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/effect/decal/cleanable/dirt,
@@ -5599,9 +5605,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/door_assembly/door_assembly_tram,
-/turf/simulated/floor/dank/tramgrating{
-	dir = 4
-	},
+/turf/simulated/floor/dank/trammiddle,
 /area/ishimura/tramdeck/switchingstation/lower)
 "Hb" = (
 /obj/item/reagent_containers/food/snacks/old/burger,
@@ -42698,7 +42702,7 @@ aH
 bC
 cu
 aQ
-aY
+Bs
 Kj
 bl
 bo

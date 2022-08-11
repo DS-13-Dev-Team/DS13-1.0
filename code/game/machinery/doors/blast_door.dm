@@ -203,13 +203,39 @@
 /obj/machinery/door/blast/regular/open
 	begins_closed = FALSE
 
+/obj/machinery/door/blast/regular/tram
+	var/specific_tram_id = MAIN_STATION_TRAM
+
+/obj/machinery/door/blast/regular/tram/Initialize()
+	..()
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/machinery/door/blast/regular/tram/LateInitialize(mapload)
+	find_trams()
+
+/obj/machinery/door/blast/regular/tram/proc/find_trams()
+	for(var/datum/lift_master/master as anything in GLOB.active_lifts_by_type[TRAM_LIFT_ID])
+		if(master.specific_lift_id == specific_tram_id)
+			RegisterSignal(master, COMSIG_TRAM_TRAVEL_STARTED, .proc/on_tram_travel_start)
+
+/obj/machinery/door/blast/regular/tram/proc/on_tram_travel_start(datum/lift_master/source, obj/effect/landmark/tram/travel_from, obj/effect/landmark/tram/travel_to)
+	SIGNAL_HANDLER
+	//If tram is moving through us
+	if(get_dir(src, travel_from) != get_dir(src, travel_to))
+		spawn(-1)
+			open()
+		RegisterSignal(source, COMSIG_TRAM_TRAVEL_ENDED, .proc/on_tram_travel_end)
+
+/obj/machinery/door/blast/regular/tram/proc/on_tram_travel_end(datum/lift_master/source)
+	SIGNAL_HANDLER
+	spawn(-1)
+		close()
+	UnregisterSignal(source, COMSIG_TRAM_TRAVEL_ENDED)
+
 // SUBTYPE: Shutters
 // Nicer looking, and also weaker, shutters. Found in kitchen and similar areas.
 /obj/machinery/door/blast/shutters
 	desc = "A set of mechanized shutters made of a pretty sturdy material."
-
-
-
 	icon_state_open = "ishimura_shutter_open"
 	icon_state_opening = "ishimura_shutter_opening"
 	icon_state_closed = "ishimura_shutter_closed"

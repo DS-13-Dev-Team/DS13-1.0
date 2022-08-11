@@ -27077,12 +27077,6 @@
 	},
 /turf/simulated/floor/dank/slides,
 /area/ishimura/upper/misc/hallway/fore)
-"baJ" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 5
-	},
-/turf/simulated/wall/r_wall,
-/area/ishimura/upper/medical)
 "baK" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 8
@@ -67712,7 +67706,7 @@ aBw
 aNu
 ayV
 acf
-baJ
+acf
 aJd
 bcp
 lgW

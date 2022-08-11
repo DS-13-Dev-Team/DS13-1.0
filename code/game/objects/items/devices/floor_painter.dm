@@ -1,6 +1,6 @@
 /obj/item/floor_painter
 	name = "paintgun"
-	icon = 'icons/obj/device.dmi'
+	icon = 'icons/obj/items.dmi'
 	icon_state = "flpainter"
 	item_state = "fl_painter"
 	desc = "A slender and none-too-sophisticated device capable of painting, erasing, and applying decals to most types of floors. It can also paint walls."

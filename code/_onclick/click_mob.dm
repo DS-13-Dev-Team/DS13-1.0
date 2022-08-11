@@ -48,9 +48,6 @@
 	if(modifiers["middle"])
 		MiddleClickOn(A, params)
 		return 1
-	if(modifiers["right"])
-		RightClickOn(A, params)
-		return 1
 	if(modifiers["shift"])
 		ShiftClickOn(A, params)
 		return 0
@@ -62,6 +59,9 @@
 		return 1
 	if(modifiers["left"])
 		LeftClickOn(A, params)
+		return 1
+	if(modifiers["right"])
+		RightClickOn(A, params)
 		return 1
 
 

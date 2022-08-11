@@ -1139,7 +1139,7 @@ GLOBAL_REAL_VAR(list/stack_trace_storage)
 	return locate(tX, tY, tZ)
 
 //ultra range (no limitations on distance, faster than range for distances > 8); including areas drastically decreases performance
-/proc/urange(dist=0, atom/center=usr, orange=0, areas=0)
+/proc/urange(dist = 0, atom/center = usr, orange = FALSE, areas = FALSE)
 	if(!dist)
 		if(!orange)
 			return list(center)
@@ -1150,9 +1150,8 @@ GLOBAL_REAL_VAR(list/stack_trace_storage)
 	if(orange)
 		turfs -= get_turf(center)
 	. = list()
-	for(var/V in turfs)
-		var/turf/T = V
-		. += T
-		. += T.contents
+	for(var/turf/checked_turf as anything in turfs)
+		. += checked_turf
+		. += checked_turf.contents
 		if(areas)
-			. |= T.loc
+			. |= checked_turf.loc

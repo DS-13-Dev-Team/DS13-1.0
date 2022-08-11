@@ -140,6 +140,8 @@
 	take_damage(P.get_structure_damage())
 
 /obj/machinery/camera/ex_act(severity)
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	if(src.invuln)
 		return
 

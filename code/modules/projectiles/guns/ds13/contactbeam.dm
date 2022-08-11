@@ -289,7 +289,7 @@
 
 //Rather than a single effect, the focus mode uses a little spawner which creates multiple staggered effects
 /obj/effect/effect/repulse/New(var/atom/location, var/_lifespan = 2 SECOND, var/matrix/rotation, var/mob/living/user)
-
+	.=..()
 
 	playsound(src, pick(list('sound/weapons/guns/blast/contact_blast_1.ogg',
 	'sound/weapons/guns/blast/contact_blast_2.ogg',

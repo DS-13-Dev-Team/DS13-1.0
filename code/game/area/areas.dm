@@ -17,6 +17,8 @@
 	var/list/bordering_doors = list()
 	var/is_maintenance = FALSE
 	var/ship_area = FALSE
+	///This datum, if set, allows terrain generation behavior to be ran on Initialize()
+	var/datum/map_generator/map_generator
 
 /area/New()
 	GLOB.areas_by_type[type] = src
@@ -44,6 +46,14 @@
 	if(ship_area)
 		GLOB.ship_areas += src
 	update_base_lighting()
+
+/area/proc/RunGeneration()
+	if(map_generator)
+		map_generator = new map_generator()
+		var/list/turfs = list()
+		for(var/turf/T in contents)
+			turfs += T
+		map_generator.generate_terrain(turfs)
 
 /**
  * Causes a runtime error

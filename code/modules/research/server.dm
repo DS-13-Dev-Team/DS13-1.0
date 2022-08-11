@@ -69,6 +69,8 @@
 	..()
 
 /obj/machinery/r_n_d/server/ex_act(severity)
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	griefProtection()
 	..()
 

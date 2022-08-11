@@ -23,6 +23,8 @@
 		shed_nymph(forcefully = TRUE)
 
 /obj/structure/diona_gestalt/ex_act()
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	var/shed_count = rand(1,3)
 	while(shed_count && nymphs && nymphs.len)
 		shed_count--

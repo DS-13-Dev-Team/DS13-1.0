@@ -179,6 +179,8 @@
 	..()
 
 /obj/machinery/computer/HolodeckControl/ex_act(severity)
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	emergencyShutdown()
 	..()
 

@@ -25,6 +25,7 @@
 	var/datum/weakref/toppaper_ref
 
 /obj/item/clipboard/New()
+	.=..()
 	update_icon()
 
 /// Take out the topmost paper

@@ -24,6 +24,8 @@
 	return
 
 /obj/item/a_gift/ex_act()
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	qdel(src)
 	return
 

@@ -456,6 +456,8 @@ This function restores all organs.
 
 
 /mob/living/carbon/human/ex_act(severity, var/atom/epicentre)
+	if(status_flags & GODMODE || atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	if(!blinded)
 		flash_eyes()
 

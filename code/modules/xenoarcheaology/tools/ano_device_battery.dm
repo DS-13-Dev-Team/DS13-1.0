@@ -8,6 +8,7 @@
 	var/effect_id = ""
 
 /obj/item/anobattery/New()
+	.=..()
 	battery_effect = new()
 
 /obj/item/anobattery/proc/UpdateSprite()

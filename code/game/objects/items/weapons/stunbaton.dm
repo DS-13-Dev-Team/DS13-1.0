@@ -238,7 +238,7 @@
 // Traitor variant for Engineering synthetics.
 /obj/item/melee/baton/robot/electrified_arm
 	name = "electrified arm"
-	icon = 'icons/obj/device.dmi'
+	icon = 'icons/obj/items.dmi'
 	icon_state = "electrified_arm"
 	light_color = "#006aff"
 

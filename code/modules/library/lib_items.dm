@@ -65,6 +65,8 @@
 			update_icon()
 
 /obj/structure/bookcase/ex_act(severity)
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	switch(severity)
 		if(1.0)
 			for(var/obj/item/book/b in contents)

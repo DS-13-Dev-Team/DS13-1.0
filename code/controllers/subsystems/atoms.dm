@@ -35,8 +35,6 @@ SUBSYSTEM_DEF(atoms)
 
 	return ..()
 
-/datum/controller/subsystem/atoms/stat_entry()
-
 #ifdef PROFILE_MAPLOAD_INIT_ATOM
 #define PROFILE_INIT_ATOM_BEGIN(...) var/__profile_stat_time = TICK_USAGE
 #define PROFILE_INIT_ATOM_END(atom) mapload_init_times[##atom.type] += TICK_USAGE_TO_MS(__profile_stat_time)

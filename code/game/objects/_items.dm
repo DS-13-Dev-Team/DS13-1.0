@@ -140,9 +140,6 @@
 		src.forceMove(null)
 	return ..()
 
-/obj/item
-	icon = 'icons/obj/device.dmi'
-
 //Checks if the item is being held by a mob, and if so, updates the held icons
 /obj/item/proc/update_twohanding()
 	update_held_icon()
@@ -174,6 +171,8 @@
 	return FALSE
 
 /obj/item/ex_act(severity)
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	switch(severity)
 		if(1.0)
 			take_damage(500)

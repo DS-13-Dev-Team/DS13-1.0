@@ -373,13 +373,14 @@
 	desc = "An ID straight from Central Command. This one looks highly classified."
 
 /obj/item/card/id/bst/New()
+	.=..()
 	access = get_all_accesses()+get_all_centcom_access()+get_all_syndicate_access()
 
 /obj/item/card/id/bst/attack_hand()
 	if(!usr)
 		return
 	if(!isbst(usr))
-		to_chat(usr, span("alert", "Your hand seems to go right through the [src]. It's like it doesn't exist."))
+		to_chat(usr, SPAN_BOLDNOTICE("Your hand seems to go right through the [src]. It's like it doesn't exist."))
 		return
 	else
 		..()

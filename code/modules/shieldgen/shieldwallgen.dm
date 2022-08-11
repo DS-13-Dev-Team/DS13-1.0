@@ -60,6 +60,8 @@
 		return TOPIC_REFRESH
 
 /obj/machinery/shieldwallgen/ex_act(var/severity)
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	switch(severity)
 		if(1)
 			active = 0
@@ -324,6 +326,8 @@
 
 
 /obj/machinery/shieldwall/ex_act(severity)
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	if(needs_power)
 		var/obj/machinery/shieldwallgen/G = prob(50) ? gen_primary : gen_secondary
 		switch(severity)

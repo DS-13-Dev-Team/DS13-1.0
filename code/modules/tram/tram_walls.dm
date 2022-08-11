@@ -9,7 +9,8 @@
 	icon_state = "tram"
 	layer = LOW_OBJ_LAYER
 	density = TRUE
-	opacity = TRUE
+	// This is intended to lower SSlighting load
+	opacity = FALSE
 	atom_flags = ATOM_FLAG_INDESTRUCTIBLE
 
 /obj/structure/tramwall/Initialize()

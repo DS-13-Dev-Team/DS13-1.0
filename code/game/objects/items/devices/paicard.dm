@@ -315,6 +315,8 @@
 		M.emp_act(severity)
 
 /obj/item/paicard/ex_act(severity)
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	if(pai)
 		pai.ex_act(severity, src)
 	else

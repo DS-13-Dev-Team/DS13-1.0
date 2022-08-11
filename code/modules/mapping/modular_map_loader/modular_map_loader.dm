@@ -1,6 +1,6 @@
 /obj/modular_map_root
 	invisibility = INVISIBILITY_ABSTRACT
-	icon = 'icons/obj/device.dmi'
+	icon = 'icons/obj/items.dmi'
 	icon_state = "pinonclose"
 
 	atom_flags = ATOM_FLAG_INDESTRUCTIBLE|ATOM_FLAG_NO_BLOOD|ATOM_FLAG_INTANGIBLE|ATOM_FLAG_UNTARGETABLE
@@ -70,7 +70,7 @@ INITIALIZE_IMMEDIATE(/obj/modular_map_root)
 
 /obj/modular_map_connector
 	invisibility = INVISIBILITY_ABSTRACT
-	icon = 'icons/obj/device.dmi'
+	icon = 'icons/obj/items.dmi'
 	icon_state = "pinonclose"
 
 	atom_flags = ATOM_FLAG_INDESTRUCTIBLE|ATOM_FLAG_NO_BLOOD|ATOM_FLAG_INTANGIBLE|ATOM_FLAG_UNTARGETABLE

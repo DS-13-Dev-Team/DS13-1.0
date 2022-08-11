@@ -80,6 +80,7 @@
 	icon_state = "reinforced"
 
 /turf/simulated/floor/holofloor/space/New()
+	.=..()
 	icon_state = "[((x + y) ^ ~(x * y) + z) % 25]"
 
 /turf/simulated/floor/holofloor/beach
@@ -230,10 +231,12 @@
 
 /obj/item/holo/esword/green
 	New()
+		.=..()
 		item_color = "green"
 
 /obj/item/holo/esword/red
 	New()
+		.=..()
 		item_color = "red"
 
 /obj/item/holo/esword/handle_block(var/datum/strike/strike)
@@ -248,6 +251,7 @@
 	return active ? ..() : 0
 
 /obj/item/holo/esword/New()
+	.=..()
 	item_color = pick("red","blue","green","purple")
 
 /obj/item/holo/esword/attack_self(mob/living/user as mob)

@@ -222,6 +222,7 @@ obj/item/clothing/mask/smokable/ecig/util/examine(mob/user)
 	atom_flags = ATOM_FLAG_OPEN_CONTAINER
 
 /obj/item/reagent_containers/ecig_cartridge/New()
+	.=..()
 	create_reagents(volume)
 
 /obj/item/reagent_containers/ecig_cartridge/examine(mob/user as mob)//to see how much left

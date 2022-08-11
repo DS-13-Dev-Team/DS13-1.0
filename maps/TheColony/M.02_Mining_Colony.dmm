@@ -1732,7 +1732,7 @@
 	max_health = 900;
 	name = "Ancient Blast Door"
 	},
-/turf/unsimulated/mask,
+/turf/unsimulated/genturf,
 /area/mining_colony/surface)
 "aeU" = (
 /obj/item/reagent_containers/food/drinks/cans/speer,
@@ -3301,7 +3301,7 @@
 /turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/interior/excavation/marker_excav)
 "ajx" = (
-/turf/unsimulated/mask,
+/turf/unsimulated/genturf,
 /area/mining_colony/interior/excavation/marker_excav)
 "ajy" = (
 /obj/machinery/store,
@@ -5123,7 +5123,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/mining_colony/interior)
 "aoG" = (
-/turf/unsimulated/mask,
+/turf/unsimulated/genturf,
 /area/mining_colony/surface)
 "aoH" = (
 /turf/simulated/wall/r_wall,
@@ -28577,15 +28577,6 @@
 /obj/machinery/telecomms/broadcaster/preset_right,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/enginieering/telecomms)
-"ucz" = (
-/obj/effect/landmark/random_gen/asteroid{
-	generation_height = 200;
-	generation_width = 200
-	},
-/turf/unsimulated/mineral{
-	icon_state = "rock"
-	},
-/area/space)
 "umB" = (
 /obj/machinery/telecomms/relay/preset/telecomms,
 /turf/simulated/floor/dank/grater,
@@ -29177,7 +29168,7 @@ azn
 azn
 azn
 azn
-ucz
+azn
 "}
 (2,1,1) = {"
 azn
@@ -64445,11 +64436,11 @@ aoG
 aCq
 aCq
 aoG
-aCq
-aCq
-atN
-atN
-atN
+aoG
+aoG
+aoG
+aoG
+aoG
 aoG
 ajx
 ajx
@@ -64647,10 +64638,10 @@ aCq
 aCq
 aCq
 aCq
-aCq
-aCq
-atN
-atN
+aoG
+aoG
+aoG
+aoG
 aoG
 aoG
 awL
@@ -64849,10 +64840,10 @@ aCq
 aoG
 aoG
 aCq
-aCq
-aCq
-atN
-atN
+aoG
+aoG
+aoG
+aoG
 aoG
 awL
 awL
@@ -65051,9 +65042,9 @@ aoG
 aoG
 aoG
 aCq
-aCq
-atN
-atN
+aoG
+aoG
+aoG
 aoG
 aoG
 awL
@@ -65251,10 +65242,10 @@ aCq
 aCq
 aoG
 aoG
-aCq
-aCq
-aCq
-atN
+aoG
+aoG
+aoG
+aoG
 aoG
 aoG
 aoG
@@ -65453,10 +65444,10 @@ aoG
 aCq
 aCq
 aCq
-aCq
-aCq
-atN
-atN
+aoG
+aoG
+aoG
+aoG
 aoG
 aoG
 awL
@@ -65655,9 +65646,9 @@ aoG
 aoG
 aCq
 aCq
-atN
-atN
-atN
+aoG
+aoG
+aoG
 aoG
 aoG
 awL
@@ -65857,9 +65848,9 @@ aoG
 aoG
 aCq
 aCq
-atN
-atN
-atN
+aoG
+aoG
+aoG
 aoG
 awL
 awL
@@ -66059,9 +66050,9 @@ aoG
 aCq
 aCq
 aCq
-atN
-atN
-atN
+aoG
+aoG
+aoG
 awL
 awL
 awL
@@ -66261,9 +66252,9 @@ aCq
 aCq
 aCq
 aCq
-atN
 aoG
-atN
+aoG
+aoG
 awL
 awL
 awL
@@ -66465,7 +66456,7 @@ aCq
 aCq
 aoG
 aoG
-atN
+aoG
 awL
 awL
 awL
@@ -66667,7 +66658,7 @@ aCq
 aCq
 aoG
 aoG
-atN
+aoG
 awL
 awL
 awL
@@ -66869,7 +66860,7 @@ aCq
 aCq
 aoG
 aoG
-atN
+aoG
 awL
 awL
 awL
@@ -67071,7 +67062,7 @@ aCq
 auN
 aoG
 aoG
-atN
+aoG
 awL
 awL
 awL
@@ -67273,7 +67264,7 @@ aCq
 aJi
 aoG
 aoG
-atN
+aoG
 awL
 awL
 awL
@@ -67475,8 +67466,8 @@ aJi
 aJi
 aCq
 aoG
-atN
-aiv
+aoG
+ajx
 awL
 awL
 awL
@@ -67678,7 +67669,7 @@ aCq
 aiI
 aCq
 aCq
-aiv
+ajx
 awL
 awL
 awL
@@ -67880,7 +67871,7 @@ aCq
 aiI
 aCq
 aCq
-aiv
+ajx
 awL
 awL
 aiK

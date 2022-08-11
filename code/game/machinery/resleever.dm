@@ -240,6 +240,8 @@ obj/machinery/resleever/Process()
 
 
 /obj/machinery/resleever/ex_act(severity)
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	switch(severity)
 		if(1.0)
 			for(var/atom/movable/A as mob|obj in src)

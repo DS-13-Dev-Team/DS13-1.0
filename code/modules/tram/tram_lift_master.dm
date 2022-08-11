@@ -17,10 +17,10 @@
 
 	///decisecond delay between horizontal movement. cannot make the tram move faster than 1 movement per world.tick_lag.
 	///this var is poorly named its actually horizontal movement delay but whatever.
-	var/horizontal_speed = 0.5
+	var/horizontal_speed = 1
 
 	///version of horizontal_speed that gets set in init and is considered our base speed if our lift gets slowed down
-	var/base_horizontal_speed = 0.5
+	var/base_horizontal_speed = 1
 
 	///the world.time we should next move at. in case our speed is set to less than 1 movement per tick
 	var/next_move = INFINITY
@@ -95,11 +95,11 @@
 		return
 
 	travel_direction = get_dir(from_where, to_where)
-	travel_distance = get_dist(from_where, to_where)
+	travel_distance = GET_DIST_LONG(from_where, to_where)
+	SEND_SIGNAL(src, COMSIG_TRAM_TRAVEL_STARTED, from_where, to_where)
 	from_where = to_where
 	set_travelling(TRUE)
 	set_controls(LIFT_PLATFORM_LOCKED)
-	SEND_SIGNAL(src, COMSIG_TRAM_TRAVEL, from_where, to_where)
 
 	for(var/obj/structure/industrial_lift/tram/tram_part as anything in lift_platforms) //only thing everyone needs to know is the new location.
 		if(tram_part.travelling) //wee woo wee woo there was a double action queued. damn multi tile structs
@@ -109,11 +109,13 @@
 		tram_part.set_travelling(TRUE)
 
 	next_move = world.time + horizontal_speed
-
+	update_lift_doors(get_zs_we_are_on(), action = CLOSE_DOORS)
 	START_PROCESSING(SStramprocess, src)
 
 /datum/lift_master/tram/Process(delta_time)
 	if(!travel_distance)
+		SEND_SIGNAL(src, COMSIG_TRAM_TRAVEL_ENDED, from_where)
+		update_lift_doors(get_zs_we_are_on(), action = OPEN_DOORS)
 		addtimer(CALLBACK(src, .proc/unlock_controls), 3 SECONDS)
 		return PROCESS_KILL
 	else if(world.time >= next_move)

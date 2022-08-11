@@ -27,7 +27,8 @@
 	to_chat(user, "<span class='notice'>The neural suppressors are switched [suppressing ? "on" : "off"].</span>")
 
 /obj/machinery/optable/ex_act(severity)
-
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	switch(severity)
 		if(1.0)
 			//SN src = null

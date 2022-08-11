@@ -112,6 +112,8 @@
 	return
 
 /obj/structure/ore_box/ex_act(severity, var/atom/epicentre)
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	if(severity == 1.0 || (severity < 3.0 && prob(50)))
 		for (var/obj/item/stack/ore/O in contents)
 			O.forceMove(loc)

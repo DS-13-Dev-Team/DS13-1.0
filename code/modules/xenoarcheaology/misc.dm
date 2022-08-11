@@ -3,6 +3,7 @@
 	icon_state = "nboard05"
 
 /obj/structure/noticeboard/anomaly/New()
+	.=..()
 	var/obj/item/paper/P = new()
 	P.SetName("Memo RE: proper analysis procedure")
 	P.info = "<br>We keep test dummies in pens here for a reason, so standard procedure should be to activate newfound alien artifacts and place the two in close proximity. Promising items I might even approve monkey testing on."

@@ -99,6 +99,8 @@ var/global/list/stool_cache = list() //haha stool
 	..()
 
 /obj/item/stool/ex_act(severity)
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	switch(severity)
 		if(1.0)
 			qdel(src)

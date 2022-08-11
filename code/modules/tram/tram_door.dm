@@ -15,6 +15,9 @@
 	open_sound_unpowered = "doorheavyopen"
 	close_sound_powered = "doorheavyclose"
 	close_sound_unpowered = "doorheavyclose"
+	opacity = FALSE
+	lights = 0
+	glass = TRUE
 	var/id = MAIN_STATION_TRAM
 
 /obj/machinery/door/airlock/civilian/tram
@@ -27,7 +30,8 @@
 	lights_file = null
 	welded_file = 'icons/obj/doors/hazard/welded.dmi'
 	emag_file = null
-	opacity = 0
+	opacity = FALSE
+	glass = TRUE
 	lights = 0
 	open_sound_powered = "doorheavyopen"
 	open_sound_unpowered = "doorheavyopen"

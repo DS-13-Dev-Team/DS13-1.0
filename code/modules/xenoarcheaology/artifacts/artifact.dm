@@ -283,8 +283,11 @@
 			secondary_effect.ToggleActivate(0)
 
 /obj/machinery/artifact/ex_act(severity)
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	switch(severity)
-		if(1.0) qdel(src)
+		if(1.0)
+			qdel(src)
 		if(2.0)
 			if (prob(50))
 				qdel(src)

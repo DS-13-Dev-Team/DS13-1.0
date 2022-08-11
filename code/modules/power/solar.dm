@@ -143,6 +143,8 @@ var/list/solars_list = list()
 
 
 /obj/machinery/power/solar/ex_act(severity)
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	switch(severity)
 		if(1.0)
 			if(prob(15))
@@ -509,6 +511,8 @@ var/list/solars_list = list()
 
 
 /obj/machinery/power/solar_control/ex_act(severity)
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	switch(severity)
 		if(1.0)
 			//SN src = null

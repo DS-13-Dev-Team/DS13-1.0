@@ -7,7 +7,7 @@
 	var/consumed = FALSE
 
 
-	icon = 'icons/obj/device.dmi'
+	icon = 'icons/obj/items.dmi'
 	icon_state = "modkit"
 
 /obj/item/mod_kit/resolve_attackby(atom/A, mob/user, var/click_params)

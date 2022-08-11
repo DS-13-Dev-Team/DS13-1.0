@@ -198,6 +198,7 @@
 	var/cone_type
 
 /obj/item/reagent_containers/food/snacks/icecream/New()
+	.=..()
 	create_reagents(20)
 	reagents.add_reagent(/datum/reagent/nutriment, 5)
 

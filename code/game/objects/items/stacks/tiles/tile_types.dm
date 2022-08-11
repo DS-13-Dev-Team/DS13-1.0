@@ -405,8 +405,8 @@
 	amount = 50
 
 /obj/item/stack/tile/tramgrating
-	name = "tram floor"
-	desc = "Scuffed from the passage of countless tram users."
+	name = "railway"
+	desc = "Scuffed from the countless tram uses."
 	icon = 'icons/turf/floors_ds13.dmi'
 	icon_state = "rivets_held"
 	matter = list(MATERIAL_STEEL = 937.5)

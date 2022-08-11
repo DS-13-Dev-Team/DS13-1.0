@@ -49,6 +49,7 @@ SUBSYSTEM_DEF(mapping)
 	GLOB.using_map.setup_map()
 	preloadTemplates()
 
+	run_map_generation()
 	// Set up Z-level transitions.
 	setup_map_transitions()
 	generate_station_area_list()
@@ -175,6 +176,10 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 
 	if(!GLOB.the_station_areas.len)
 		log_world("ERROR: Station areas list failed to generate!")
+
+/datum/controller/subsystem/mapping/proc/run_map_generation()
+	for(var/area/A in world)
+		A.RunGeneration()
 
 /datum/controller/subsystem/mapping/proc/maprotate()
 	if(map_voted || SSmapping.next_map_config) //If voted or set by other means.

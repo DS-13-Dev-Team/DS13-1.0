@@ -163,10 +163,11 @@
 	icon_state = null
 
 //Rather than a single effect, the focus mode uses a little spawner which creates multiple staggered effects
-/obj/effect/effect/forceblast_focus_spawner/New(var/atom/location, var/_lifespan = 2 SECOND, var/matrix/rotation)
+/obj/effect/effect/forceblast_focus_spawner/Initialize(mapload, _lifespan = 2 SECOND, matrix/rotation)
+	.=..()
 	spawn()
 		for (var/i in 1 to 7)
-			new /obj/effect/effect/forceblast/focus(location, _lifespan, rotation)
+			new /obj/effect/effect/forceblast/focus(loc, _lifespan, rotation)
 			sleep(rand_between(1,3))
 		qdel(src)
 

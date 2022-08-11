@@ -199,6 +199,8 @@
 	return 0
 
 /obj/effect/energy_net/ex_act()
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	health = 0
 	healthcheck()
 

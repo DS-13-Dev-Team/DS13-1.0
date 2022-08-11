@@ -14,6 +14,7 @@
 
 
 /obj/item/mop/New()
+	.=..()
 	create_reagents(30)
 
 /obj/item/mop/afterattack(atom/A, mob/user, proximity)

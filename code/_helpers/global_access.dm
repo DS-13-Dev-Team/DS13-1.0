@@ -393,16 +393,12 @@
 			return global.maint_all_access;
 		if("mannequins_")
 			return global.mannequins_;
-		if("map_count")
-			return global.map_count;
 		if("mark")
 			return global.mark;
 		if("master_controller")
 			return global.master_controller;
 		if("matchmaker")
 			return global.matchmaker;
-		if("maze_cell_count")
-			return global.maze_cell_count;
 		if("mechas_list")
 			return global.mechas_list;
 		if("merged")
@@ -545,8 +541,6 @@
 			return global.radiochannels;
 		if("random_junk_")
 			return global.random_junk_;
-		if("random_maps")
-			return global.random_maps;
 		if("random_useful_")
 			return global.random_useful_;
 		if("recentmessages")
@@ -621,8 +615,6 @@
 			return global.string_part_flags;
 		if("string_slot_flags")
 			return global.string_slot_flags;
-		if("supply_drop")
-			return global.supply_drop;
 		if("supply_methods_")
 			return global.supply_methods_;
 		if("surgery_steps")
@@ -1098,16 +1090,12 @@
 			global.maint_all_access=newval;
 		if("mannequins_")
 			global.mannequins_=newval;
-		if("map_count")
-			global.map_count=newval;
 		if("mark")
 			global.mark=newval;
 		if("master_controller")
 			global.master_controller=newval;
 		if("matchmaker")
 			global.matchmaker=newval;
-		if("maze_cell_count")
-			global.maze_cell_count=newval;
 		if("mechas_list")
 			global.mechas_list=newval;
 		if("merged")
@@ -1250,8 +1238,6 @@
 			global.radiochannels=newval;
 		if("random_junk_")
 			global.random_junk_=newval;
-		if("random_maps")
-			global.random_maps=newval;
 		if("random_useful_")
 			global.random_useful_=newval;
 		if("recentmessages")
@@ -1326,8 +1312,6 @@
 			global.string_part_flags=newval;
 		if("string_slot_flags")
 			global.string_slot_flags=newval;
-		if("supply_drop")
-			global.supply_drop=newval;
 		if("supply_methods_")
 			global.supply_methods_=newval;
 		if("surgery_steps")
@@ -1613,11 +1597,9 @@
 	"magazine_icondata_states",
 	"maint_all_access",
 	"mannequins_",
-	"map_count",
 	"mark",
 	"master_controller",
 	"matchmaker",
-	"maze_cell_count",
 	"mechas_list",
 	"merged",
 	"message_delay",
@@ -1689,7 +1671,6 @@
 	"radio_controller",
 	"radiochannels",
 	"random_junk_",
-	"random_maps",
 	"random_useful_",
 	"recentmessages",
 	"registered_macros_by_ckey_",
@@ -1728,7 +1709,6 @@
 	"stored_shock_by_ref",
 	"string_part_flags",
 	"string_slot_flags",
-	"supply_drop",
 	"supply_methods_",
 	"surgery_steps",
 	"syndicate_access",

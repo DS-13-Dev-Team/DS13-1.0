@@ -101,7 +101,7 @@
 
 //Costume spawner landmarks
 /obj/effect/landmark/costume/New() //costume spawner, selects a random subclass and disappears
-
+	.=..()
 	var/list/options = typesof(/obj/effect/landmark/costume)
 	var/PICK= options[rand(1,options.len)]
 	new PICK(src.loc)
@@ -109,6 +109,7 @@
 
 //SUBCLASSES.  Spawn a bunch of items and disappear likewise
 /obj/effect/landmark/costume/chameleon/New()
+	.=..()
 	new /obj/item/clothing/mask/chameleon(src.loc)
 	new /obj/item/clothing/under/chameleon(src.loc)
 	new /obj/item/clothing/glasses/chameleon(src.loc)
@@ -120,6 +121,7 @@
 	delete_me = 1
 
 /obj/effect/landmark/costume/maid/New()
+	.=..()
 	new /obj/item/clothing/under/blackskirt(src.loc)
 	var/CHOICE = pick( /obj/item/clothing/head/beret , /obj/item/clothing/head/rabbitears )
 	new CHOICE(src.loc)
@@ -127,12 +129,14 @@
 	delete_me = 1
 
 /obj/effect/landmark/costume/butler/New()
+	.=..()
 	new /obj/item/clothing/accessory/wcoat(src.loc)
 	new /obj/item/clothing/under/suit_jacket(src.loc)
 	new /obj/item/clothing/head/that(src.loc)
 	delete_me = 1
 
 /obj/effect/landmark/costume/prig/New()
+	.=..()
 	new /obj/item/clothing/accessory/wcoat(src.loc)
 	new /obj/item/clothing/glasses/monocle(src.loc)
 	new /obj/item/clothing/head/that(src.loc)
@@ -142,11 +146,13 @@
 	delete_me = 1
 
 /obj/effect/landmark/costume/plaguedoctor/New()
+	.=..()
 	new /obj/item/clothing/suit/bio_suit/plaguedoctorsuit(src.loc)
 	new /obj/item/clothing/head/plaguedoctorhat(src.loc)
 	delete_me = 1
 
 /obj/effect/landmark/costume/waiter/New()
+	.=..()
 	new /obj/item/clothing/under/waiter(src.loc)
 	var/CHOICE= pick( /obj/item/clothing/head/rabbitears)
 	new CHOICE(src.loc)
@@ -154,45 +160,13 @@
 	delete_me = 1
 
 /obj/effect/landmark/costume/pirate/New()
+	.=..()
 	new /obj/item/clothing/under/pirate(src.loc)
 	new /obj/item/clothing/suit/pirate(src.loc)
 	var/CHOICE = pick( /obj/item/clothing/head/pirate , /obj/item/clothing/mask/bandana/red)
 	new CHOICE(src.loc)
 	new /obj/item/clothing/glasses/eyepatch(src.loc)
 	delete_me = 1
-
-/obj/effect/landmark/random_gen
-	var/generation_width
-	var/generation_height
-	var/seed
-	delete_me = TRUE
-
-/obj/effect/landmark/random_gen/asteroid/Initialize()
-	. = ..()
-
-	if (!CONFIG_GET(flag/generate_map))
-		return
-
-	var/min_x = 1
-	var/min_y = 1
-	var/max_x = world.maxx
-	var/max_y = world.maxy
-
-	if (generation_width)
-		min_x = max(src.x, min_x)
-		max_x = min(src.x + generation_width, max_x)
-	if (generation_height)
-		min_y = max(src.y, min_y)
-		max_y = min(src.y + generation_height, max_y)
-
-	spawn(0)
-		new /datum/random_map/automata/cave_system(seed, min_x, min_y, src.z, max_x, max_y)
-		new /datum/random_map/noise/ore(seed, min_x, min_y, src.z, max_x, max_y)
-
-	. = INITIALIZE_HINT_LATELOAD
-
-/obj/effect/landmark/random_gen/asteroid/LateInitialize()
-	GLOB.using_map.refresh_mining_turfs(src.z)
 
 #define CORPSE_SPAWNER_RANDOM_NAME       0x0001
 #define CORPSE_SPAWNER_CUT_SURVIVAL      0x0002

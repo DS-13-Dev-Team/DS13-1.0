@@ -67,7 +67,7 @@
 	//throwforce = 25
 	force = 20
 	throwforce = 10
-	
+
 	throw_range = 5
 	w_class = ITEM_SIZE_NORMAL
 	atom_flags = ATOM_FLAG_NO_BLOOD
@@ -100,7 +100,7 @@
 	active_throwforce = 20
 	force = 3
 	throwforce = 5
-	
+
 	throw_range = 5
 	w_class = ITEM_SIZE_SMALL
 	atom_flags = ATOM_FLAG_NO_BLOOD
@@ -116,18 +116,23 @@
 		deactivate(user)
 
 /obj/item/melee/energy/sword/New()
+	.=..()
 	blade_color = pick("red","blue","green","purple")
 
 /obj/item/melee/energy/sword/green/New()
+	.=..()
 	blade_color = "green"
 
 /obj/item/melee/energy/sword/red/New()
+	.=..()
 	blade_color = "red"
 
 /obj/item/melee/energy/sword/blue/New()
+	.=..()
 	blade_color = "blue"
 
 /obj/item/melee/energy/sword/purple/New()
+	.=..()
 	blade_color = "purple"
 
 /obj/item/melee/energy/sword/activate(mob/living/user)
@@ -178,7 +183,7 @@
 	edge = 1
 	anchored = 1    // Never spawned outside of inventory, should be fine.
 	throwforce = 1  //Throwing or dropping the item deletes it.
-	
+
 	throw_range = 1
 	w_class = ITEM_SIZE_TINY //technically it's just energy or something, I dunno
 	atom_flags = ATOM_FLAG_NO_BLOOD

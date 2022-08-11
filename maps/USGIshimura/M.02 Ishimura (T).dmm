@@ -206,8 +206,8 @@
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/forward)
 "aI" = (
-/turf/simulated/floor/dank/cable{
-	dir = 8
+/turf/simulated/floor/dank/tramgrating{
+	dir = 4
 	},
 /area/ishimura/tramdeck/tram/maintenance/midmaintenance)
 "aJ" = (
@@ -562,6 +562,7 @@
 /obj/structure/railing/mapped{
 	dir = 8
 	},
+/obj/machinery/computer/tramswitch,
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/amidships/north)
 "bz" = (
@@ -635,10 +636,9 @@
 /turf/simulated/open,
 /area/ishimura/tramdeck/tram/tunnel)
 "bH" = (
-/turf/simulated/floor/dank/cable{
-	dir = 4
-	},
-/area/ishimura/tramdeck/tram/tunnel)
+/obj/machinery/media/jukebox/old,
+/turf/simulated/floor,
+/area/ishimura/tramdeck/tram/maintenance/aftmaintenance)
 "bK" = (
 /obj/effect/wallframe_spawn/reinforced,
 /obj/machinery/door/firedoor/border_only,
@@ -784,9 +784,6 @@
 /area/ishimura/tramdeck/tram/station/forward)
 "cc" = (
 /obj/structure/closet/firecloset,
-/obj/machinery/light{
-	dir = 4
-	},
 /obj/structure/industrial_lift/tram{
 	icon = 'icons/turf/floors_ds13.dmi';
 	icon_state = "tramcorner";
@@ -844,7 +841,7 @@
 /turf/simulated/open,
 /area/ishimura/tramdeck/tram/tunnel)
 "ci" = (
-/turf/simulated/floor/dank/cable,
+/turf/simulated/floor/dank/tramgrating,
 /area/ishimura/tramdeck/switchingstation/upper)
 "cj" = (
 /obj/effect/decal/cleanable/dirt,
@@ -855,7 +852,7 @@
 	dir = 2;
 	name = "Tram Section Lockdown"
 	},
-/turf/simulated/floor/dank/cable,
+/turf/simulated/floor/dank/tramgrating,
 /area/ishimura/tramdeck/switchingstation/upper)
 "cl" = (
 /obj/structure/railing/mapped{
@@ -864,6 +861,9 @@
 /obj/effect/floor_decal/industrial/danger,
 /obj/effect/floor_decal/corner_steel_grid{
 	dir = 5
+	},
+/obj/machinery/computer/tramswitch{
+	initial_id = "left_part"
 	},
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/aft)
@@ -881,7 +881,7 @@
 /turf/simulated/open,
 /area/ishimura/tramdeck/tram/station/aft)
 "co" = (
-/turf/simulated/floor/dank/cable,
+/turf/simulated/floor/dank/tramgrating,
 /area/ishimura/tramdeck/tram/maintenance/midmaintenance)
 "cp" = (
 /obj/machinery/door/blast/regular{
@@ -971,7 +971,7 @@
 	dir = 4
 	},
 /obj/effect/wallframe_spawn/reinforced,
-/turf/simulated/floor/dank/cable{
+/turf/simulated/floor/dank/tramgrating{
 	dir = 4
 	},
 /area/ishimura/tramdeck/tram/tunnel)
@@ -1529,12 +1529,12 @@
 	dir = 2;
 	name = "Tram Section Lockdown"
 	},
-/turf/simulated/floor/dank/cable,
+/turf/simulated/floor/dank/tramgrating,
 /area/ishimura/tramdeck/tram/maintenance/midmaintenance)
 "dU" = (
-/obj/machinery/door/blast/regular{
-	dir = 4;
-	name = "Tram Section Lockdown"
+/obj/machinery/door/blast/regular/tram{
+	name = "Tram Section Lockdown";
+	dir = 4
 	},
 /turf/simulated/open,
 /area/ishimura/tramdeck/tram/maintenance/midmaintenance)
@@ -1698,11 +1698,11 @@
 /turf/simulated/open,
 /area/ishimura/tramdeck/tram/maintenance/midmaintenance)
 "es" = (
-/obj/machinery/door/blast/regular{
-	dir = 4;
-	name = "Tram Section Lockdown"
+/obj/machinery/door/blast/regular/tram{
+	name = "Tram Section Lockdown";
+	dir = 4
 	},
-/turf/simulated/floor/dank/cable{
+/turf/simulated/floor/dank/tramgrating{
 	dir = 4
 	},
 /area/ishimura/tramdeck/tram/tunnel)
@@ -1912,10 +1912,6 @@
 /area/ishimura/tramdeck/switchingstation/upper)
 "eZ" = (
 /obj/structure/bed/chair/tram,
-/obj/machinery/light{
-	dir = 1;
-	icon_state = "tube_map"
-	},
 /obj/structure/industrial_lift/tram{
 	icon = 'icons/turf/floors_ds13.dmi';
 	icon_state = "tramcorner";
@@ -1924,24 +1920,20 @@
 /turf/simulated/open,
 /area/ishimura/tramdeck/tram/tunnel)
 "fa" = (
-/obj/machinery/door/blast/regular{
-	dir = 4;
-	name = "Tram Section Lockdown"
+/obj/machinery/door/blast/regular/tram{
+	name = "Tram Section Lockdown";
+	dir = 4
 	},
-/turf/simulated/floor/dank/cable{
+/turf/simulated/floor/dank/tramgrating{
 	dir = 4
 	},
 /area/ishimura/tramdeck/tram/maintenance/midmaintenance)
 "fb" = (
-/obj/machinery/door/blast/regular{
-	dir = 4;
-	name = "Tram Section Lockdown"
+/obj/machinery/door/blast/regular/tram{
+	name = "Tram Section Lockdown";
+	dir = 4
 	},
-/obj/effect/floor_decal/borderfloorblack,
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 1
-	},
-/turf/simulated/floor/plating,
+/turf/simulated/open,
 /area/ishimura/tramdeck/tram/tunnel)
 "fc" = (
 /obj/structure/handrai,
@@ -2400,12 +2392,28 @@
 /turf/simulated/open,
 /area/ishimura/tramdeck/tram/tunnel)
 "fR" = (
-/obj/machinery/door/blast/regular{
-	dir = 4;
-	name = "Tram Section Lockdown"
+/obj/effect/floor_decal/corner_steel_grid{
+	dir = 10
 	},
-/turf/simulated/open,
-/area/ishimura/tramdeck/tram/tunnel)
+/obj/effect/floor_decal/industrial/danger{
+	dir = 1
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/computer/tramswitch{
+	initial_id = "right_part"
+	},
+/turf/simulated/floor/dank/mono,
+/area/ishimura/tramdeck/tram/station/forward)
 "fS" = (
 /turf/simulated/open,
 /area/ishimura/tramdeck/tram/tunnel)
@@ -2795,7 +2803,7 @@
 	icon_state = "trammiddle";
 	dir = 5
 	},
-/turf/simulated/floor/dank/cable{
+/turf/simulated/floor/dank/tramgrating{
 	dir = 4
 	},
 /area/ishimura/tramdeck/tram/tunnel)
@@ -2880,9 +2888,6 @@
 "gL" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/light{
-	dir = 8
-	},
 /obj/structure/industrial_lift/tram{
 	icon = 'icons/turf/floors_ds13.dmi';
 	icon_state = "tramcorner";
@@ -2995,7 +3000,7 @@
 	dir = 8
 	},
 /obj/effect/wallframe_spawn/reinforced,
-/turf/simulated/floor/dank/cable{
+/turf/simulated/floor/dank/tramgrating{
 	dir = 4
 	},
 /area/ishimura/tramdeck/tram/tunnel)
@@ -3204,6 +3209,9 @@
 	},
 /obj/machinery/light{
 	dir = 4
+	},
+/obj/machinery/computer/tramswitch{
+	initial_id = "middle_part"
 	},
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/amidships/north)
@@ -4679,18 +4687,11 @@
 /turf/simulated/floor/plating,
 /area/ishimura/tramdeck/tram/maintenance/aftmaintenance)
 "kB" = (
+/obj/structure/catwalk,
 /obj/structure/lattice,
-/obj/random/toolbox,
-/turf/simulated/open,
-/area/ishimura/tramdeck/tram/maintenance/midmaintenance)
-"kC" = (
-/obj/structure/lattice,
-/obj/item/tool/weldingtool,
-/turf/simulated/open,
-/area/ishimura/tramdeck/tram/maintenance/midmaintenance)
-"kD" = (
-/obj/structure/lattice,
-/obj/item/clothing/head/collectable/welding,
+/obj/machinery/door/airlock/maintenance{
+	name = "Switching Track"
+	},
 /turf/simulated/open,
 /area/ishimura/tramdeck/tram/maintenance/midmaintenance)
 "kE" = (
@@ -5718,8 +5719,8 @@
 /turf/simulated/floor/dank,
 /area/ishimura/tramdeck/tram/station/forward)
 "mQ" = (
-/turf/simulated/floor/dank/cable{
-	dir = 8
+/turf/simulated/floor/dank/tramgrating{
+	dir = 4
 	},
 /area/ishimura/tramdeck/tram/tunnel)
 "mR" = (
@@ -6563,8 +6564,8 @@
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/maintenance/foremaintenance)
 "pI" = (
-/turf/simulated/floor/dank/cable{
-	dir = 4
+/turf/simulated/floor/dank/tramgrating{
+	dir = 8
 	},
 /area/ishimura/tramdeck/switchingstation/upper)
 "qa" = (
@@ -6585,17 +6586,26 @@
 /area/ishimura/tramdeck/tram/tunnel)
 "qO" = (
 /obj/effect/landmark/tram/left_part,
-/turf/simulated/floor/dank/cable{
-	dir = 8
+/turf/simulated/floor/dank/tramgrating{
+	dir = 4
 	},
 /area/ishimura/tramdeck/tram/tunnel)
 "qU" = (
 /turf/simulated/wall/r_wall/hull,
 /area/ishimura/tramdeck/tram/misc/abandonedmeet)
+"rn" = (
+/obj/structure/lattice,
+/obj/structure/catwalk,
+/turf/simulated/open,
+/area/ishimura/tramdeck/tram/tunnel)
 "rF" = (
 /obj/structure/closet/crate/paper_refill,
 /obj/random/voidhelmet,
 /obj/random/voidsuit,
+/turf/simulated/floor,
+/area/ishimura/tramdeck/tram/maintenance/aftmaintenance)
+"rP" = (
+/obj/structure/device/piano,
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/maintenance/aftmaintenance)
 "sD" = (
@@ -6619,7 +6629,7 @@
 	icon_state = "trammiddle";
 	dir = 5
 	},
-/turf/simulated/floor/dank/cable{
+/turf/simulated/floor/dank/tramgrating{
 	dir = 4
 	},
 /area/ishimura/tramdeck/tram/tunnel)
@@ -6646,7 +6656,6 @@
 /obj/structure/bed/chair/tram{
 	dir = 1
 	},
-/obj/machinery/light,
 /obj/structure/industrial_lift/tram{
 	icon = 'icons/turf/floors_ds13.dmi';
 	icon_state = "tramcorner";
@@ -6666,7 +6675,7 @@
 	dir = 5
 	},
 /obj/effect/landmark/lift_id,
-/turf/simulated/floor/dank/cable{
+/turf/simulated/floor/dank/tramgrating{
 	dir = 4
 	},
 /area/ishimura/tramdeck/tram/tunnel)
@@ -6686,7 +6695,7 @@
 	icon_state = "trammiddle";
 	dir = 5
 	},
-/turf/simulated/floor/dank/cable{
+/turf/simulated/floor/dank/tramgrating{
 	dir = 4
 	},
 /area/ishimura/tramdeck/tram/tunnel)
@@ -6717,7 +6726,6 @@
 /obj/structure/bed/chair/tram{
 	dir = 1
 	},
-/obj/machinery/light,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/industrial_lift/tram{
 	icon = 'icons/turf/floors_ds13.dmi';
@@ -6730,6 +6738,7 @@
 /obj/structure/railing/mapped{
 	dir = 4
 	},
+/obj/structure/catwalk,
 /turf/simulated/open,
 /area/ishimura/tramdeck/tram/tunnel)
 "BR" = (
@@ -6742,7 +6751,7 @@
 	icon_state = "trammiddle";
 	dir = 5
 	},
-/turf/simulated/floor/dank/cable{
+/turf/simulated/floor/dank/tramgrating{
 	dir = 4
 	},
 /area/ishimura/tramdeck/tram/tunnel)
@@ -6753,7 +6762,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/dank/cable,
+/turf/simulated/floor/dank/tramgrating,
 /area/ishimura/tramdeck/tram/maintenance/midmaintenance)
 "Du" = (
 /obj/structure/table/steel,
@@ -6762,14 +6771,9 @@
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/maintenance/aftmaintenance)
 "DN" = (
-/obj/machinery/door/blast/regular{
-	dir = 4;
-	name = "Tram Section Lockdown"
-	},
-/turf/simulated/floor/dank/cable{
-	dir = 8
-	},
-/area/ishimura/tramdeck/tram/tunnel)
+/obj/effect/wallframe_spawn/reinforced,
+/turf/simulated/floor,
+/area/ishimura/tramdeck/tram/maintenance/aftmaintenance)
 "GC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -6782,7 +6786,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/dank/cable,
+/turf/simulated/floor/dank/tramgrating,
 /area/ishimura/tramdeck/tram/maintenance/midmaintenance)
 "GT" = (
 /obj/structure/handrai{
@@ -6810,7 +6814,7 @@
 	icon_state = "trammiddle";
 	dir = 5
 	},
-/turf/simulated/floor/dank/cable{
+/turf/simulated/floor/dank/tramgrating{
 	dir = 4
 	},
 /area/ishimura/tramdeck/tram/tunnel)
@@ -6854,7 +6858,7 @@
 	icon_state = "trammiddle";
 	dir = 5
 	},
-/turf/simulated/floor/dank/cable{
+/turf/simulated/floor/dank/tramgrating{
 	dir = 4
 	},
 /area/ishimura/tramdeck/tram/tunnel)
@@ -6914,7 +6918,7 @@
 	icon_state = "trammiddle";
 	dir = 5
 	},
-/turf/simulated/floor/dank/cable{
+/turf/simulated/floor/dank/tramgrating{
 	dir = 4
 	},
 /area/ishimura/tramdeck/tram/tunnel)
@@ -6938,14 +6942,14 @@
 	icon_state = "trammiddle";
 	dir = 5
 	},
-/turf/simulated/floor/dank/cable{
+/turf/simulated/floor/dank/tramgrating{
 	dir = 4
 	},
 /area/ishimura/tramdeck/tram/tunnel)
 "VC" = (
 /obj/effect/landmark/tram/middle_part,
-/turf/simulated/floor/dank/cable{
-	dir = 8
+/turf/simulated/floor/dank/tramgrating{
+	dir = 4
 	},
 /area/ishimura/tramdeck/tram/tunnel)
 "Wl" = (
@@ -13920,8 +13924,8 @@ aa
 aS
 aS
 dN
-fT
-fS
+rn
+dN
 aS
 aS
 aa
@@ -21980,16 +21984,16 @@ eu
 nd
 aS
 aT
-fR
-fR
-fR
-fR
-fR
-DN
-fR
-fR
-fR
-fR
+fb
+fb
+fb
+fb
+fb
+es
+fb
+fb
+fb
+fb
 hf
 aS
 jr
@@ -29036,16 +29040,16 @@ nd
 nd
 aS
 bm
-fR
-fR
-fR
-fR
-fR
-DN
-fR
-fR
-fR
-fR
+fb
+fb
+fb
+fb
+fb
+es
+fb
+fb
+fb
+fb
 hl
 aS
 nv
@@ -39872,16 +39876,16 @@ nd
 nd
 aS
 dE
-fR
-fR
-fR
-fR
-fR
-DN
-fR
-fR
-fR
-fR
+fb
+fb
+fb
+fb
+fb
+es
+fb
+fb
+fb
+fb
 mv
 aS
 ne
@@ -40613,9 +40617,9 @@ aa
 kx
 aa
 kx
-qU
+DN
 IG
-va
+rP
 ei
 gv
 ei
@@ -40633,7 +40637,7 @@ fS
 fS
 fS
 fS
-bH
+mQ
 fS
 fS
 fS
@@ -40865,9 +40869,9 @@ kx
 kx
 kx
 kx
-qU
-jr
-jr
+DN
+op
+op
 ei
 eD
 ei
@@ -41117,9 +41121,9 @@ aa
 kx
 aa
 kx
-qU
-jr
-jr
+DN
+oL
+bH
 ei
 gv
 ei
@@ -42897,14 +42901,14 @@ eu
 aS
 aq
 aS
-fR
-fR
-fR
-fR
-DN
-fR
-fR
-fR
+fb
+fb
+fb
+fb
+es
+fb
+fb
+fb
 aS
 fX
 aS
@@ -43148,16 +43152,16 @@ pw
 jP
 ep
 ki
-kr
+kB
 ku
 ku
 ku
 ku
 aI
+ku
+ku
+ku
 kB
-ku
-ku
-kr
 kF
 kK
 le
@@ -43406,7 +43410,7 @@ er
 er
 ku
 aI
-kC
+ku
 er
 er
 cp
@@ -43658,7 +43662,7 @@ er
 er
 ku
 aI
-kD
+ku
 er
 er
 cp
@@ -44130,7 +44134,7 @@ em
 em
 em
 em
-ci
+pI
 ci
 ci
 ci
@@ -44156,7 +44160,7 @@ co
 co
 co
 BS
-co
+dT
 co
 co
 co
@@ -44912,7 +44916,7 @@ iZ
 ha
 jX
 ko
-kr
+kB
 ku
 ku
 ku
@@ -44921,7 +44925,7 @@ aI
 ku
 ku
 ku
-kr
+kB
 kG
 jW
 kr
@@ -45421,7 +45425,7 @@ fS
 fS
 fS
 fS
-bH
+mQ
 fS
 fS
 fS
@@ -45673,7 +45677,7 @@ fT
 fT
 fT
 fT
-bH
+mQ
 fT
 fT
 fT
@@ -45925,7 +45929,7 @@ fS
 fS
 fS
 fS
-bH
+mQ
 fS
 fS
 fS
@@ -46177,7 +46181,7 @@ fS
 fS
 fS
 fS
-bH
+mQ
 fS
 fS
 fS
@@ -46429,7 +46433,7 @@ fS
 fS
 fS
 fS
-bH
+mQ
 fS
 fS
 fS
@@ -46681,7 +46685,7 @@ fS
 fS
 fS
 fS
-bH
+mQ
 fS
 fS
 fS
@@ -46933,7 +46937,7 @@ fS
 fS
 fS
 fS
-bH
+mQ
 fS
 fS
 fS
@@ -47185,7 +47189,7 @@ fS
 fS
 fS
 fS
-bH
+mQ
 fS
 fS
 fS
@@ -47437,7 +47441,7 @@ fS
 fS
 fS
 fS
-bH
+mQ
 fS
 fS
 fS
@@ -47689,7 +47693,7 @@ fT
 fT
 fT
 fT
-bH
+mQ
 fT
 fT
 fT
@@ -47941,7 +47945,7 @@ fS
 fS
 fS
 fS
-bH
+mQ
 fS
 fS
 fS
@@ -48193,7 +48197,7 @@ fS
 fS
 fS
 fS
-bH
+mQ
 fS
 fS
 fS
@@ -48445,7 +48449,7 @@ fS
 fS
 fS
 fS
-bH
+mQ
 fS
 fS
 fS
@@ -48697,7 +48701,7 @@ fS
 fS
 fS
 fS
-bH
+mQ
 fS
 fS
 fS
@@ -48949,7 +48953,7 @@ fS
 fS
 fS
 fS
-bH
+mQ
 fS
 fS
 fS
@@ -49201,7 +49205,7 @@ fS
 fS
 fS
 fS
-bH
+mQ
 fS
 fS
 fS
@@ -49453,7 +49457,7 @@ fS
 fS
 fS
 fS
-bH
+mQ
 fS
 fS
 fS
@@ -49705,7 +49709,7 @@ fT
 fT
 fT
 fT
-bH
+mQ
 fT
 fT
 fT
@@ -49957,7 +49961,7 @@ fS
 fS
 fS
 fS
-bH
+mQ
 fS
 fS
 fS
@@ -50205,14 +50209,14 @@ nd
 aS
 dG
 aS
-fR
-fR
-fR
-fR
+fb
+fb
+fb
+fb
 es
 fb
-fR
-fR
+fb
+fb
 aS
 gh
 aS
@@ -50461,7 +50465,7 @@ fS
 fS
 fS
 fS
-bH
+mQ
 fS
 fS
 fS
@@ -50713,7 +50717,7 @@ fS
 fS
 fS
 fS
-bH
+mQ
 fS
 fS
 fS
@@ -50965,7 +50969,7 @@ fT
 fT
 fT
 fT
-bH
+mQ
 fT
 fT
 fT
@@ -51217,7 +51221,7 @@ fS
 fS
 fS
 fS
-bH
+mQ
 fS
 fS
 fS
@@ -51469,7 +51473,7 @@ fS
 fS
 fS
 fS
-bH
+mQ
 fS
 fS
 fS
@@ -51721,7 +51725,7 @@ fS
 fS
 fS
 fS
-bH
+mQ
 fS
 fS
 fS
@@ -54498,7 +54502,7 @@ vl
 dp
 cF
 cF
-hj
+fR
 di
 ke
 ke
@@ -56005,7 +56009,7 @@ fS
 fS
 fS
 fS
-bH
+mQ
 fS
 fS
 fS
@@ -56257,7 +56261,7 @@ fS
 fS
 fS
 fS
-bH
+mQ
 fS
 fS
 fS
@@ -56509,7 +56513,7 @@ fS
 fS
 fS
 fS
-bH
+mQ
 fS
 fS
 fS
@@ -56761,7 +56765,7 @@ fT
 fT
 fT
 fT
-bH
+mQ
 fT
 fT
 fT
@@ -57013,7 +57017,7 @@ fS
 fS
 fS
 fS
-bH
+mQ
 fS
 fS
 fS
@@ -57265,7 +57269,7 @@ fS
 fS
 fS
 fS
-bH
+mQ
 fS
 fS
 fS
@@ -57517,7 +57521,7 @@ fS
 fS
 fS
 fS
-bH
+mQ
 fS
 fS
 fS
@@ -57769,7 +57773,7 @@ fS
 fS
 fS
 fS
-bH
+mQ
 fS
 fS
 fS
@@ -58021,7 +58025,7 @@ fS
 fS
 fS
 fS
-bH
+mQ
 fS
 fS
 fS
@@ -58273,7 +58277,7 @@ fS
 fS
 fS
 fS
-bH
+mQ
 fS
 fS
 fS
@@ -58525,7 +58529,7 @@ fS
 fS
 fS
 fS
-bH
+mQ
 fS
 fS
 fS
@@ -58777,7 +58781,7 @@ dQ
 fT
 fT
 fT
-bH
+mQ
 fT
 fT
 fO
@@ -59029,7 +59033,7 @@ dS
 dQ
 fS
 fS
-bH
+mQ
 fS
 fO
 fU
@@ -59281,7 +59285,7 @@ aS
 dS
 dQ
 fS
-bH
+mQ
 fO
 fU
 aS

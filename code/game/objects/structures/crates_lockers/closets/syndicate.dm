@@ -123,6 +123,7 @@
 	desc = "It's an emergency storage closet for repairs."
 
 	New()
+		.=..()
 		var/list/resources = list(
 		/obj/item/stack/material/steel,
 		/obj/item/stack/material/glass,

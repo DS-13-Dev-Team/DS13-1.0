@@ -33,6 +33,8 @@
 	return 0
 
 /obj/effect/blob/ex_act(var/severity)
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	switch(severity)
 		if(1)
 			take_damage(rand(100, 120) / brute_resist)

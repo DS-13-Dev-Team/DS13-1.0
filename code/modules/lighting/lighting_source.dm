@@ -62,10 +62,10 @@
 
 /datum/light_source/New(atom/owner, atom/top)
 	source_atom = owner // Set our new owner.
-	add_to_light_sources(source_atom.light_sources)
+	add_to_light_sources(source_atom)
 	top_atom = top
 	if (top_atom != source_atom)
-		add_to_light_sources(top_atom.light_sources)
+		add_to_light_sources(top_atom)
 
 	source_turf = top_atom
 	pixel_turf = get_turf_pixel(top_atom) || source_turf
@@ -82,10 +82,10 @@
 /datum/light_source/Destroy(force)
 	remove_lum()
 	if (source_atom)
-		remove_from_light_sources(source_atom.light_sources)
+		remove_from_light_sources(source_atom)
 
 	if (top_atom)
-		remove_from_light_sources(top_atom.light_sources)
+		remove_from_light_sources(top_atom)
 
 	if (needs_update)
 		SSlighting.sources_queue -= src
@@ -103,7 +103,7 @@
 		return FALSE
 	LAZYADD(new_atom_host.light_sources, src)
 	if(ismovable(new_atom_host) && new_atom_host == source_atom)
-		RegisterSignal(new_atom_host, COMSIG_MOVABLE_MOVED, .proc/update_host_lights)
+		RegisterSignal(new_atom_host, list(COMSIG_MOVABLE_MOVED, COMSIG_ATOM_DIR_CHANGE), .proc/update_host_lights)
 	return TRUE
 
 ///remove this light source from old_atom_host's light_sources list, unsetting movement registrations
@@ -113,7 +113,7 @@
 
 	LAZYREMOVE(old_atom_host.light_sources, src)
 	if(ismovable(old_atom_host) && old_atom_host == source_atom)
-		UnregisterSignal(old_atom_host, COMSIG_MOVABLE_MOVED)
+		UnregisterSignal(old_atom_host, COMSIG_MOVABLE_MOVED, COMSIG_ATOM_DIR_CHANGE)
 	return TRUE
 
 ///signal handler for when our host atom moves and we need to update our effects
@@ -139,13 +139,13 @@
 /datum/light_source/proc/update(atom/new_top_atom)
 	// This top atom is different.
 	if (new_top_atom && new_top_atom != top_atom)
-		if(top_atom != source_atom && top_atom.light_sources) 
-			remove_from_light_sources(top_atom.light_sources)
+		if(top_atom != source_atom && top_atom.light_sources)
+			remove_from_light_sources(top_atom)
 
 		top_atom = new_top_atom
 
 		if (top_atom != source_atom)
-			add_to_light_sources(top_atom.light_sources) 
+			add_to_light_sources(top_atom)
 
 	EFFECT_UPDATE(LIGHTING_CHECK_UPDATE)
 

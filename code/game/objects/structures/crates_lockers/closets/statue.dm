@@ -98,6 +98,8 @@
 			shatter(M)
 
 /obj/structure/closet/statue/ex_act(severity, var/atom/epicentre)
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	for(var/mob/M in src)
 		M.ex_act(severity, epicentre)
 		health -= 60 / severity

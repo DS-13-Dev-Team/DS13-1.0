@@ -26,6 +26,7 @@
 
 
 /obj/effect/accelerated_particle/New(loc, dir = 2)
+	.=..()
 	src.forceMove(loc)
 	src.set_dir(dir)
 	if(movement_range > 20)
@@ -65,6 +66,8 @@
 
 
 /obj/effect/accelerated_particle/ex_act(severity)
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	qdel(src)
 	return
 

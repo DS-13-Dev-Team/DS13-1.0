@@ -142,6 +142,8 @@ So, hopefully this is helpful if any more icons are to be added/changed/wonderin
 		investigate_log("was moved whilst active; it <font color='red'>powered down</font>.","singulo")
 
 /obj/structure/particle_accelerator/ex_act(severity)
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	switch(severity)
 		if(1.0)
 			qdel(src)
@@ -314,6 +316,8 @@ So, hopefully this is helpful if any more icons are to be added/changed/wonderin
 	return
 
 /obj/machinery/particle_accelerator/ex_act(severity)
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	switch(severity)
 		if(1.0)
 			qdel(src)

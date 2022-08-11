@@ -18,6 +18,7 @@
 	var/glass_icon = 'icons/obj/doors/station/fill_glass.dmi'
 
 	New()
+		.=..()
 		update_state()
 
 /obj/structure/door_assembly/door_assembly_hatch
@@ -61,6 +62,7 @@
 	glass_type = "/multi_tile/glass"
 
 	New()
+		.=..()
 		if(dir in list(EAST, WEST))
 			bound_width = width * world.icon_size
 			bound_height = world.icon_size

@@ -6,6 +6,12 @@
 	icon_state = "aegis"
 	sound_env = ASTEROID
 
+/area/aegis/outside
+	name = "\improper Aegis VII"
+	icon_state = "aegis"
+	sound_env = ASTEROID
+	base_lighting_alpha = 80
+
 /area/aegis/colony
 	name = "\improper Aegis Colony"
 	icon_state = "crewbase"

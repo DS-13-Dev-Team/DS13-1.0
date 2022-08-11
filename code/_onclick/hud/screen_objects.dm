@@ -221,6 +221,7 @@
 	var/intent = I_HELP
 
 /atom/movable/screen/intent/New(mob/C)
+	.=..()
 	if (C)
 		intent = C.a_intent
 		update_icon()

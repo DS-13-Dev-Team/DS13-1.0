@@ -7,7 +7,8 @@
 
 //EX act uses new damage type blast, which allows it to get burn AND damage overlays simultaneously
 /turf/simulated/floor/ex_act(severity)
-
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	//Eris shield handling removed, the dead space setting does not have energy shields
 
 	switch(severity)

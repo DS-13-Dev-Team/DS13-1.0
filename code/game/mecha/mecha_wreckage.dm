@@ -19,9 +19,10 @@
 	var/salvage_num = 5
 
 /obj/effect/decal/mecha_wreckage/ex_act(severity)
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	if(severity < 2)
-		spawn
-			qdel(src)
+		qdel(src)
 	return
 
 /obj/effect/decal/mecha_wreckage/bullet_act(var/obj/item/projectile/Proj)

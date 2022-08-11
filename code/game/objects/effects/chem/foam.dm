@@ -147,6 +147,8 @@
 		icon_state = "ironfoam"
 
 /obj/structure/foamedmetal/ex_act(severity)
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	qdel(src)
 
 /obj/structure/foamedmetal/bullet_act()

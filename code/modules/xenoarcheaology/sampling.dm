@@ -9,6 +9,7 @@
 	var/datum/geosample/geological_data
 
 /obj/item/rocksliver/New()
+	.=..()
 	icon_state = "sliver[rand(1, 3)]"
 
 /datum/geosample
@@ -81,7 +82,7 @@
 /obj/item/core_sampler
 	name = "core sampler"
 	desc = "Used to extract geological core samples."
-	icon = 'icons/obj/device.dmi'
+	icon = 'icons/obj/items.dmi'
 	icon_state = "sampler0"
 	item_state = "screwdriver_brown"
 	w_class = ITEM_SIZE_TINY

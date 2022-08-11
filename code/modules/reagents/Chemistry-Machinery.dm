@@ -45,6 +45,8 @@
 	create_reagents(1000)
 
 /obj/machinery/chem_master/ex_act(severity)
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	switch(severity)
 		if(1.0)
 			qdel(src)

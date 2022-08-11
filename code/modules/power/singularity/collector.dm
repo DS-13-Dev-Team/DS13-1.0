@@ -111,6 +111,8 @@ var/global/list/rad_collectors = list()
 		return 1
 
 /obj/machinery/power/rad_collector/ex_act(severity)
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	switch(severity)
 		if(2, 3)
 			eject()

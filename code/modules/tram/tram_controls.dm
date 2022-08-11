@@ -1,8 +1,9 @@
 /obj/machinery/computer/tram_controls
 	name = "tram controls"
 	desc = "An interface for the tram that lets you tell the tram where to go and hopefully it makes it there. I'm here to describe the controls to you, not to inspire confidence."
-	icon_screen = "tram"
-	icon_keyboard = "atmos_key"
+	icon_state = "tramterminal"
+	icon_keyboard = "tramkeyboard" //intentionally nothing
+	icon_screen = "tramscreen"
 	circuit = /obj/item/circuitboard/tram_controls
 	atom_flags = ATOM_FLAG_INDESTRUCTIBLE
 	light_range = 0 //we dont want to spam SSlighting with source updates every movement

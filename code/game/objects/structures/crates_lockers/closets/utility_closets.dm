@@ -71,6 +71,7 @@
 				new /obj/item/tool/tape_roll(src)
 
 /obj/structure/closet/emcloset/legacy/New()
+	.=..()
 	new /obj/item/tank/oxygen(src)
 	new /obj/item/clothing/mask/gas(src)
 

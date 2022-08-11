@@ -181,6 +181,8 @@
 
 // Explosions
 /obj/effect/shield/ex_act(var/severity)
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	if(!disabled_for)
 		take_damage(rand(10,15) / severity, SHIELD_DAMTYPE_PHYSICAL)
 

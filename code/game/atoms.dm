@@ -354,9 +354,6 @@ its easier to just keep the beam vertical.
 	if(.)
 		SEND_SIGNAL(src, COMSIG_ATOM_DIR_CHANGE, dir, new_dir)
 		dir = new_dir
-		// Cycle through the light sources on this atom and tell them to update.
-		for (var/datum/light_source/light as anything in light_sources)
-			light.source_atom.update_light()
 
 /atom/proc/set_icon_state(var/new_icon_state)
 	if(has_extension(src, /datum/extension/base_icon_state))

@@ -55,14 +55,12 @@ var/list/mining_floors = list()
 	health = max_health
 
 /turf/simulated/mineral/Initialize()
-
 	if (!mining_walls["[src.z]"])
 		mining_walls["[src.z]"] = list()
 	mining_walls["[src.z]"] += src
 	MineralSpread()
 	update_archaeo_overlay()
-	spawn()
-		update_icon(1)
+	update_icon(1)
 	.=..()
 
 /turf/simulated/mineral/Destroy()
@@ -83,7 +81,7 @@ var/list/mining_floors = list()
 	else
 		SetName("[mineral.display_name] deposit")
 
-	overlays.Cut()
+	cut_overlays()
 
 	for(var/direction in GLOB.cardinal)
 		var/turf/turf_to_check = get_step(src,direction)
@@ -102,18 +100,24 @@ var/list/mining_floors = list()
 					rock_side.pixel_x += world.icon_size
 				if(WEST)
 					rock_side.pixel_x -= world.icon_size
-			overlays += rock_side
+			add_overlay(rock_side)
 
 	if(ore_overlay)
-		overlays += ore_overlay
+		add_overlay(ore_overlay)
 
 	if(excav_overlay)
-		overlays += excav_overlay
+		add_overlay(excav_overlay)
 
 	if(archaeo_overlay)
-		overlays += archaeo_overlay
+		add_overlay(archaeo_overlay)
+
+	var/area/area = loc
+	if(area.area_has_base_lighting)
+		add_overlay(area.lighting_effect)
 
 /turf/simulated/mineral/ex_act(severity)
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	switch(severity)
 		if(3)
 			dig(rand(100,250))
@@ -522,6 +526,8 @@ var/list/mining_floors = list()
 	return ..()
 
 /turf/simulated/floor/asteroid/ex_act(severity)
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	switch(severity)
 		if(3.0)
 			return
@@ -603,34 +609,40 @@ var/list/mining_floors = list()
 
 /turf/simulated/floor/asteroid/proc/updateMineralOverlays(var/update_neighbors)
 
-	overlays.Cut()
+	cut_overlays()
 
 	var/list/step_overlays = list("n" = NORTH, "s" = SOUTH, "e" = EAST, "w" = WEST)
 	for(var/direction in step_overlays)
 
 		if(istype(get_step(src, step_overlays[direction]), /turf/space))
 			var/image/aster_edge = image('icons/turf/flooring/asteroid.dmi', "asteroid_edges", dir = step_overlays[direction])
-			aster_edge.turf_decal_layerise()
-			overlays += aster_edge
+			aster_edge.plane = FLOOR_PLANE
+			aster_edge.layer = DECAL_LAYER
+			add_overlay(aster_edge)
 
 		if(istype(get_step(src, step_overlays[direction]), /turf/simulated/mineral))
 			var/image/rock_wall = image('icons/turf/walls.dmi', "rock_side", dir = step_overlays[direction])
-			rock_wall.turf_decal_layerise()
-			overlays += rock_wall
+			rock_wall.plane = FLOOR_PLANE
+			rock_wall.layer = DECAL_LAYER
+			add_overlay(rock_wall)
 
 	//todo cache
 	if(overlay_detail)
 		var/image/floor_decal = image(icon = 'icons/turf/flooring/decals.dmi', icon_state = overlay_detail)
-		floor_decal.turf_decal_layerise()
-		overlays |= floor_decal
+		floor_decal.plane = FLOOR_PLANE
+		floor_decal.layer = DECAL_LAYER
+		add_overlay(floor_decal)
 
 	if(update_neighbors)
-		var/list/all_step_directions = list(NORTH,NORTHEAST,EAST,SOUTHEAST,SOUTH,SOUTHWEST,WEST,NORTHWEST)
-		for(var/direction in all_step_directions)
+		for(var/direction in GLOB.alldirs)
 			var/turf/simulated/floor/asteroid/A
 			if(istype(get_step(src, direction), /turf/simulated/floor/asteroid))
 				A = get_step(src, direction)
 				A.updateMineralOverlays()
+
+	var/area/area = loc
+	if(area.area_has_base_lighting)
+		add_overlay(area.lighting_effect)
 
 /turf/simulated/floor/asteroid/Entered(atom/movable/M as mob|obj)
 	..()

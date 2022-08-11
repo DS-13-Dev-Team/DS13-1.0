@@ -63,7 +63,7 @@ GLOBAL_LIST_EMPTY(lifts)
 
 	set_movement_registrations()
 
-	var/turf/T = get_turf(src)
+	var/turf/T = loc
 	LAZYSET(T.zstructures, src, 2)
 
 	//since lift_master datums find all connected platforms when an industrial lift first creates it and then
@@ -79,8 +79,8 @@ GLOBAL_LIST_EMPTY(lifts)
 /obj/structure/industrial_lift/Destroy()
 	GLOB.lifts.Remove(src)
 	lift_master_datum = null
-	var/turf/T = get_turf(src)
-	LAZYREMOVE(T.zstructures, src)
+	for(var/turf/T as anything in locs)
+		LAZYREMOVE(T.zstructures, src)
 	return ..()
 
 /obj/structure/industrial_lift/CanZPass(atom/A, direction)
@@ -125,7 +125,7 @@ GLOBAL_LIST_EMPTY(lifts)
 
 /obj/structure/industrial_lift/proc/AddItemOnLift(datum/source, atom/movable/new_lift_contents)
 	SIGNAL_HANDLER
-	var/static/list/blacklisted_types = typecacheof(list(/obj/structure/railing, /obj/effect/decal/cleanable, /obj/structure/industrial_lift))
+	var/static/list/blacklisted_types = typecacheof(list(/obj/structure/railing, /obj/effect/shield, /obj/structure/industrial_lift))
 	if(is_type_in_typecache(new_lift_contents, blacklisted_types) || new_lift_contents.invisibility == INVISIBILITY_ABSTRACT) //prevents the tram from stealing things like landmarks
 		return FALSE
 	if(new_lift_contents in lift_load)
@@ -249,6 +249,8 @@ GLOBAL_LIST_EMPTY(lifts)
 	var/turf/old_loc = loc
 
 	forceMove(locate(min_x, min_y, z))//move to the lower left corner
+	for(var/turf/T as anything in src.locs)
+		LAZYSET(T.zstructures, src, 2)
 	set_movement_registrations(locs - old_loc)
 	return TRUE
 
@@ -360,6 +362,20 @@ GLOBAL_LIST_EMPTY(lifts)
 						victim_structure.take_damage(rand(20, 25) * collision_lethality)
 						victim_structure.throw_at(throw_target, 200 * collision_lethality, 4 * collision_lethality)
 
+			for(var/obj/item/victim_item in dest_turf.contents)
+				if(QDELING(victim_item))
+					continue
+				if(!is_type_in_typecache(victim_item, lift_master_datum.ignored_smashthroughs) && victim_item.layer >= LOW_OBJ_LAYER)
+					if(victim_item.anchored && initial(victim_item.anchored) == TRUE)
+						visible_message(SPAN_USERDANGER("[src] smashes through [victim_item]!"))
+						qdel(victim_item)
+					else
+						if(!throw_target)
+							throw_target = get_edge_target_turf(src, turn(going, pick(45, -45)))
+						visible_message(SPAN_USERDANGER("[src] rams [victim_item] out of the way!"))
+						victim_item.take_damage(rand(20, 25) * collision_lethality)
+						victim_item.throw_at(throw_target, 200 * collision_lethality, 4 * collision_lethality)
+
 			for(var/obj/machinery/victim_machine in dest_turf.contents)
 				if(QDELING(victim_machine))
 					continue
@@ -420,7 +436,12 @@ GLOBAL_LIST_EMPTY(lifts)
 	if(glide_size != glide_size_override)
 		set_glide_size(glide_size_override)
 
+	var/list/old_locs = src.locs
 	forceMove(our_dest)
+	for(var/turf/T as anything in old_locs-src.locs)
+		LAZYREMOVE(T.zstructures, src)
+	for(var/turf/T as anything in src.locs-old_locs)
+		LAZYSET(T.zstructures, src, 2)
 	if(loc != our_dest || QDELETED(src))//check if our movement succeeded, if it didnt then the movers cant be moved
 		return FALSE
 

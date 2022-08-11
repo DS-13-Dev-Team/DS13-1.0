@@ -9,6 +9,8 @@
 
 //similar to weeds, but only barfed out by nurses manually
 /obj/effect/spider/ex_act(severity)
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	switch(severity)
 		if(1.0)
 			qdel(src)
@@ -51,6 +53,7 @@
 /obj/effect/spider/stickyweb
 	icon_state = "stickyweb1"
 	New()
+		.=..()
 		if(prob(50))
 			icon_state = "stickyweb2"
 
@@ -295,6 +298,7 @@
 	health = 60
 
 	New()
+		.=..()
 		icon_state = pick("cocoon1","cocoon2","cocoon3")
 
 /obj/effect/spider/cocoon/Destroy()
