@@ -20,7 +20,7 @@
 	if(!(anchored || can_play_unanchored) || !ismob(music_player))
 		return STOP_PLAYING
 	var/mob/user = music_player
-	if(!user.CanUseTopic(src)) //can play with TK and while resting because fun.
+	if(!user.CanUseTopic(usr)) //can play with TK and while resting because fun.
 		return STOP_PLAYING
 
 /obj/structure/musician/attack_hand(mob/user)

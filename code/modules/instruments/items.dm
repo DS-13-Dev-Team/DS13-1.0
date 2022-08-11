@@ -40,17 +40,14 @@ GLOBAL_LIST_INIT(all_instrumets_radial, generate_list_of_instruments_for_radial_
 	if(!user.is_advanced_tool_user())
 		to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
 		return TRUE
-	interact(user)
+	tgui_interact(user)
 
-/obj/item/instrument/interact(mob/user)
-	ui_interact(user)
-
-/obj/item/instrument/ui_interact(mob/living/user)
-	if(!isliving(user) || user.stat != CONSCIOUS || !ispAI(user))
+/obj/item/instrument/tgui_interact(mob/living/user)
+	if(!isliving(user) || user.stat != CONSCIOUS)
 		return
 
 	user.set_machine(src)
-	song.ui_interact(user)
+	song.tgui_interact(user)
 
 /obj/item/instrument/violin
 	name = "space violin"
@@ -182,9 +179,9 @@ GLOBAL_LIST_INIT(all_instrumets_radial, generate_list_of_instruments_for_radial_
 	hitsound = 'sound/items/bikehorn.ogg'
 
 /obj/structure/instrument_choice
-	name = "instrument delivery beacon"
+	name = "instrument delivery"
 	desc = "Summon your tool of art."
-	icon_state = "gangtool-red"
+	icon_state = "instruments-delivery"
 	anchored = TRUE
 	opacity = FALSE
 	density = TRUE
@@ -196,7 +193,6 @@ GLOBAL_LIST_INIT(all_instrumets_radial, generate_list_of_instruments_for_radial_
 	var/result = show_radial_menu(user, src, GLOB.all_instrumets_radial, custom_check = CALLBACK(src, .proc/check_menu, user), tooltips = TRUE)
 	var/path = GLOB.all_instruments_names[result]
 	if(path)
-		qdel(src)
 		var/obj/item/instrument/instrument = new path(get_turf(user))
 		user.put_in_hands(instrument)
 

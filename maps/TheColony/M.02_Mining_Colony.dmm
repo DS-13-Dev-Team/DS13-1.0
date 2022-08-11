@@ -9619,10 +9619,6 @@
 /turf/simulated/floor/tiled/monotile,
 /area/mining_colony/interior/bartenderarea)
 "aBY" = (
-/obj/structure/bed/chair{
-	dir = 8;
-	icon_state = "chair_preview"
-	},
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
@@ -27765,6 +27761,13 @@
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/interior/seccie_checkpoint_2)
+"iUH" = (
+/obj/structure/table/rack,
+/obj/random/loot/usually/some,
+/obj/effect/floor_decal/dank/outline,
+/obj/structure/musician/piano,
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/interior/maint/storage)
 "jiM" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/interior/medbay/chemestry)
@@ -28400,6 +28403,10 @@
 "qUF" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/interior/mining/processing)
+"qUM" = (
+/obj/structure/instrument_choice,
+/turf/simulated/floor/wood,
+/area/mining_colony/interior/messy_hall)
 "rcs" = (
 /obj/machinery/button/remote/blast_door{
 	id = "running_away";
@@ -28653,6 +28660,10 @@
 /obj/machinery/telecomms/receiver/preset_cent,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/enginieering/telecomms)
+"vkr" = (
+/obj/structure/musician/piano,
+/turf/simulated/floor/wood,
+/area/mining_colony/interior/messy_hall)
 "vnq" = (
 /obj/structure/table/standard,
 /obj/machinery/power/apc{
@@ -31349,7 +31360,7 @@ aoN
 aCZ
 auZ
 aoN
-aWQ
+iUH
 aoN
 aZN
 aZN
@@ -35177,7 +35188,7 @@ aaK
 aUA
 aAt
 bkD
-aid
+vkr
 arG
 arG
 arG
@@ -35379,7 +35390,7 @@ bof
 aUA
 aaK
 bkD
-bny
+aih
 arM
 aIE
 aCg
@@ -35783,12 +35794,12 @@ brE
 aUA
 aaK
 bkD
-aig
+qUM
 arM
 bnw
 aID
 bny
-arM
+aig
 bny
 arM
 aBV

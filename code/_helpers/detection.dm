@@ -191,7 +191,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 
 /proc/get_hearers_in_view(range, turf/T)
 	.=list()
-	FOR_DVIEW(var/mob/hearer, range, T, INVISIBILITY_MAXIMUM)
+	FOR_DVIEW(var/mob/hearer, range, get_turf(T), INVISIBILITY_MAXIMUM)
 		. += hearer
 	END_FOR_DVIEW
 

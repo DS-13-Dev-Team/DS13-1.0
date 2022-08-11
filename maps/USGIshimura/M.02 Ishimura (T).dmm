@@ -6614,7 +6614,7 @@
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/maintenance/aftmaintenance)
 "rP" = (
-/obj/structure/device/piano,
+/obj/structure/musician/piano,
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/maintenance/aftmaintenance)
 "sD" = (

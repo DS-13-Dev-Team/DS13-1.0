@@ -30,7 +30,7 @@
 	. += "<a href='?src=[REF(src)];togglesustainhold=1'>Sustain indefinitely last held note</a>: [full_sustain_held_note? "Enabled" : "Disabled"].<br>"
 	. += "</div>"
 
-/datum/song/ui_interact(mob/user)
+/datum/song/tgui_interact(mob/user)
 	var/list/dat = list()
 
 	dat += instrument_status_ui()
@@ -115,7 +115,7 @@
 		updateDialog(usr) // make sure updates when complete
 
 /datum/song/Topic(href, href_list)
-	if(!usr.CanUseTopic(parent))
+	if(!usr.CanUseTopic(usr))
 		usr << browse(null, "window=instrument")
 		usr.unset_machine()
 		return

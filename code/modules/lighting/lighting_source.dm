@@ -102,7 +102,7 @@
 	if(QDELETED(new_atom_host))
 		return FALSE
 	LAZYADD(new_atom_host.light_sources, src)
-	if(ismovable(new_atom_host) && new_atom_host == source_atom)
+	if(ismovable(new_atom_host))
 		RegisterSignal(new_atom_host, list(COMSIG_MOVABLE_MOVED, COMSIG_ATOM_DIR_CHANGE), .proc/update_host_lights)
 	return TRUE
 

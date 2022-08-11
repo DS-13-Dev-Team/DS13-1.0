@@ -81,7 +81,7 @@
 		do_hearcheck()
 	var/sound/music_played = sound(soundfile)
 	for(var/mob/M as anything in hearing_mobs)
-		if(!M?.client?.get_preference_value(/datum/client_preference/play_instruments_sounds) == GLOB.PREF_NO)
+		if(M?.client?.get_preference_value(/datum/client_preference/play_instruments_sounds) == GLOB.PREF_NO)
 			continue
 		M.playsound_local(source, music_played, volume * using_instrument.volume_multiplier)
 		// Could do environment and echo later but not for now

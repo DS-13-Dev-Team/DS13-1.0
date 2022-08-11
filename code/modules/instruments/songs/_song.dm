@@ -157,7 +157,7 @@
 	var/list/old = hearing_mobs.Copy()
 	hearing_mobs.len = 0
 	var/turf/source = get_turf(parent)
-	for(var/mob/M in get_hearers_in_view(instrument_range, source))
+	for(var/mob/M as anything in get_hearers_in_view(instrument_range, source))
 		hearing_mobs[M] = get_dist(M, source)
 	var/list/exited = old - hearing_mobs
 	for(var/i in exited)
@@ -328,7 +328,7 @@
  * Updates the window for our users. Override down the line.
  */
 /datum/song/proc/updateDialog(mob/user)
-	ui_interact(user)
+	tgui_interact(user)
 
 /datum/song/Process(wait)
 	if(!playing)
@@ -385,7 +385,7 @@
 /datum/song/handheld
 
 /datum/song/handheld/updateDialog(mob/user)
-	parent.ui_interact(user || usr)
+	parent.tgui_interact(user || usr)
 
 /datum/song/handheld/should_stop_playing(atom/player)
 	. = ..()
@@ -398,7 +398,7 @@
 /datum/song/stationary
 
 /datum/song/stationary/updateDialog(mob/user)
-	parent.ui_interact(user || usr)
+	parent.tgui_interact(user || usr)
 
 /datum/song/stationary/should_stop_playing(atom/player)
 	. = ..()

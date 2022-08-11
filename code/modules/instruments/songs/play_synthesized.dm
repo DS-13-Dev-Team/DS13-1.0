@@ -61,9 +61,9 @@
 	channels_playing[channel_text] = 100
 	last_channel_played = channel_text
 	for(var/mob/M as anything in hearing_mobs)
-		if(!M?.client?.get_preference_value(/datum/client_preference/play_instruments_sounds) == GLOB.PREF_NO)
+		if(M?.client?.get_preference_value(/datum/client_preference/play_instruments_sounds) == GLOB.PREF_NO)
 			continue
-		M.playsound_local(get_turf(parent), null, volume, FALSE, K.frequency, null, channel, null, copy)
+		M.playsound_local(get_turf(parent), copy, volume, FALSE, K.frequency, channel = channel)
 		// Could do environment and echo later but not for now
 
 /**

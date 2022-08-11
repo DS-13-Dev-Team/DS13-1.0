@@ -2376,6 +2376,9 @@
 	name = "Cafetria Shutter Control";
 	pixel_x = 24
 	},
+/obj/structure/bed/chair{
+	dir = 8
+	},
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/messhall)
 "afB" = (
@@ -4002,6 +4005,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/structure/musician/piano,
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/messhall)
 "aiH" = (
@@ -21755,6 +21759,7 @@
 	dir = 2;
 	icon_state = "pipe-c"
 	},
+/obj/structure/instrument_choice,
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/messhall)
 "aRb" = (
@@ -28114,10 +28119,6 @@
 /obj/random/tool,
 /turf/simulated/floor/dank,
 /area/ishimura/lower/misc/storagesmall)
-"jvF" = (
-/obj/structure/bed/chair,
-/turf/simulated/floor/dank/rectangles,
-/area/ishimura/lower/crew/messhall)
 "jxb" = (
 /turf/simulated/floor/dank/slides,
 /area/ishimura/lower/mining/mining_bay)
@@ -73920,8 +73921,8 @@ aaa
 aaa
 aam
 alK
-jvF
-aRZ
+amm
+xMj
 auS
 aGj
 aIx
