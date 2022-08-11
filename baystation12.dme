@@ -2077,7 +2077,6 @@
 #include "code\modules\mob\living\living_defines.dm"
 #include "code\modules\mob\living\living_powers.dm"
 #include "code\modules\mob\living\login.dm"
-#include "code\modules\mob\living\logout.dm"
 #include "code\modules\mob\living\psychosis_new.dm"
 #include "code\modules\mob\living\pull.dm"
 #include "code\modules\mob\living\say.dm"

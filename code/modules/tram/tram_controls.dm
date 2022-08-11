@@ -44,7 +44,7 @@
 	return ..()
 
 /obj/machinery/computer/tram_controls/attack_hand(mob/user)
-	if(..())
+	if(..() || !(user.is_advanced_tool_user()))
 		return TRUE
 	tgui_interact(user)
 

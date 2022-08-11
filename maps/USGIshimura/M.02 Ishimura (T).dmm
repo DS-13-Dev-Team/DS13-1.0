@@ -257,8 +257,8 @@
 "aP" = (
 /obj/structure/industrial_lift/tram{
 	icon = 'icons/turf/floors_ds13.dmi';
-	icon_state = "tramcorner";
-	dir = 10
+	icon_state = "tramcorner6";
+	dir = 5
 	},
 /obj/effect/wallframe_spawn/reinforced,
 /turf/simulated/open,
@@ -562,7 +562,9 @@
 /obj/structure/railing/mapped{
 	dir = 8
 	},
-/obj/machinery/computer/tramswitch,
+/obj/machinery/computer/tramswitch{
+	initial_id = "middle_part"
+	},
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/amidships/north)
 "bz" = (
@@ -708,8 +710,8 @@
 "bU" = (
 /obj/structure/industrial_lift/tram{
 	icon = 'icons/turf/floors_ds13.dmi';
-	icon_state = "tramwarning";
-	dir = 8
+	icon_state = "tramwarning4";
+	dir = 5
 	},
 /obj/machinery/door/airlock/multi_tile/civilian/tram{
 	name = "\improper Tram"
@@ -754,8 +756,8 @@
 "bZ" = (
 /obj/structure/industrial_lift/tram{
 	icon = 'icons/turf/floors_ds13.dmi';
-	icon_state = "tramwarning";
-	dir = 1
+	icon_state = "tramwarning8";
+	dir = 5
 	},
 /turf/simulated/open,
 /area/ishimura/tramdeck/tram/tunnel)
@@ -786,7 +788,7 @@
 /obj/structure/closet/firecloset,
 /obj/structure/industrial_lift/tram{
 	icon = 'icons/turf/floors_ds13.dmi';
-	icon_state = "tramcorner";
+	icon_state = "tramcorner7";
 	dir = 5
 	},
 /turf/simulated/open,
@@ -818,7 +820,7 @@
 "cg" = (
 /obj/structure/industrial_lift/tram{
 	icon = 'icons/turf/floors_ds13.dmi';
-	icon_state = "tramcorner";
+	icon_state = "tramcorner7";
 	dir = 5
 	},
 /turf/simulated/open,
@@ -927,8 +929,8 @@
 /obj/structure/bed/chair/tram,
 /obj/structure/industrial_lift/tram{
 	icon = 'icons/turf/floors_ds13.dmi';
-	icon_state = "tramcorner";
-	dir = 9
+	icon_state = "tramcorner8";
+	dir = 5
 	},
 /turf/simulated/open,
 /area/ishimura/tramdeck/tram/tunnel)
@@ -967,8 +969,8 @@
 "cy" = (
 /obj/structure/industrial_lift/tram{
 	icon = 'icons/turf/floors_ds13.dmi';
-	icon_state = "tramcorner";
-	dir = 4
+	icon_state = "tramcorner3";
+	dir = 5
 	},
 /obj/effect/wallframe_spawn/reinforced,
 /turf/simulated/floor/dank/tramgrating{
@@ -986,7 +988,8 @@
 "cD" = (
 /obj/structure/industrial_lift/tram{
 	icon = 'icons/turf/floors_ds13.dmi';
-	icon_state = "tramwarning"
+	icon_state = "tramwarning1";
+	dir = 5
 	},
 /obj/machinery/door/airlock/multi_tile/civilian/tram{
 	name = "\improper Tram"
@@ -1914,7 +1917,7 @@
 /obj/structure/bed/chair/tram,
 /obj/structure/industrial_lift/tram{
 	icon = 'icons/turf/floors_ds13.dmi';
-	icon_state = "tramcorner";
+	icon_state = "tramcorner7";
 	dir = 5
 	},
 /turf/simulated/open,
@@ -1939,7 +1942,7 @@
 /obj/structure/handrai,
 /obj/structure/industrial_lift/tram{
 	icon = 'icons/turf/floors_ds13.dmi';
-	icon_state = "tramcorner";
+	icon_state = "tramcorner7";
 	dir = 5
 	},
 /turf/simulated/open,
@@ -1948,7 +1951,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/industrial_lift/tram{
 	icon = 'icons/turf/floors_ds13.dmi';
-	icon_state = "tramcorner";
+	icon_state = "tramcorner7";
 	dir = 5
 	},
 /turf/simulated/open,
@@ -1970,7 +1973,7 @@
 "fg" = (
 /obj/structure/industrial_lift/tram{
 	icon = 'icons/turf/floors_ds13.dmi';
-	icon_state = "tramcorner";
+	icon_state = "tramcorner7";
 	dir = 5
 	},
 /obj/effect/wallframe_spawn/reinforced,
@@ -2634,7 +2637,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/industrial_lift/tram{
 	icon = 'icons/turf/floors_ds13.dmi';
-	icon_state = "tramcorner";
+	icon_state = "tramcorner7";
 	dir = 5
 	},
 /turf/simulated/open,
@@ -2683,8 +2686,8 @@
 "gl" = (
 /obj/structure/industrial_lift/tram{
 	icon = 'icons/turf/floors_ds13.dmi';
-	icon_state = "tramcorner";
-	dir = 6
+	icon_state = "tramcorner5";
+	dir = 5
 	},
 /obj/effect/wallframe_spawn/reinforced,
 /turf/simulated/open,
@@ -2777,8 +2780,8 @@
 "gx" = (
 /obj/structure/industrial_lift/tram{
 	icon = 'icons/turf/floors_ds13.dmi';
-	icon_state = "tramcorner";
-	dir = 9
+	icon_state = "tramcorner8";
+	dir = 5
 	},
 /obj/effect/wallframe_spawn/reinforced,
 /turf/simulated/open,
@@ -2812,7 +2815,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/industrial_lift/tram{
 	icon = 'icons/turf/floors_ds13.dmi';
-	icon_state = "tramcorner";
+	icon_state = "tramcorner7";
 	dir = 5
 	},
 /turf/simulated/open,
@@ -2836,8 +2839,8 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/industrial_lift/tram{
 	icon = 'icons/turf/floors_ds13.dmi';
-	icon_state = "tramcorner";
-	dir = 2
+	icon_state = "tramcorner1";
+	dir = 5
 	},
 /turf/simulated/open,
 /area/ishimura/tramdeck/tram/tunnel)
@@ -2886,12 +2889,17 @@
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/maintenance/foremaintenance)
 "gL" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/industrial_lift/tram{
 	icon = 'icons/turf/floors_ds13.dmi';
-	icon_state = "tramcorner";
-	dir = 9
+	icon_state = "tramcorner8";
+	dir = 5
+	},
+/obj/effect/decal{
+	icon = 'icons/turf/flooring/decals.dmi';
+	icon_state = "outline";
+	color = "#cfcf55";
+	plane = -6
 	},
 /turf/simulated/open,
 /area/ishimura/tramdeck/tram/tunnel)
@@ -2996,8 +3004,8 @@
 "gV" = (
 /obj/structure/industrial_lift/tram{
 	icon = 'icons/turf/floors_ds13.dmi';
-	icon_state = "tramcorner";
-	dir = 8
+	icon_state = "tramcorner4";
+	dir = 5
 	},
 /obj/effect/wallframe_spawn/reinforced,
 /turf/simulated/floor/dank/tramgrating{
@@ -6579,8 +6587,8 @@
 	},
 /obj/structure/industrial_lift/tram{
 	icon = 'icons/turf/floors_ds13.dmi';
-	icon_state = "tramcorner";
-	dir = 6
+	icon_state = "tramcorner5";
+	dir = 5
 	},
 /turf/simulated/open,
 /area/ishimura/tramdeck/tram/tunnel)
@@ -6636,8 +6644,8 @@
 "sU" = (
 /obj/structure/industrial_lift/tram{
 	icon = 'icons/turf/floors_ds13.dmi';
-	icon_state = "tramcorner";
-	dir = 2
+	icon_state = "tramcorner1";
+	dir = 5
 	},
 /turf/simulated/open,
 /area/ishimura/tramdeck/tram/tunnel)
@@ -6658,8 +6666,8 @@
 	},
 /obj/structure/industrial_lift/tram{
 	icon = 'icons/turf/floors_ds13.dmi';
-	icon_state = "tramcorner";
-	dir = 2
+	icon_state = "tramcorner1";
+	dir = 5
 	},
 /turf/simulated/open,
 /area/ishimura/tramdeck/tram/tunnel)
@@ -6680,12 +6688,17 @@
 	},
 /area/ishimura/tramdeck/tram/tunnel)
 "wS" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/industrial_lift/tram{
 	icon = 'icons/turf/floors_ds13.dmi';
-	icon_state = "tramcorner";
-	dir = 10
+	icon_state = "tramcorner6";
+	dir = 5
+	},
+/obj/effect/decal{
+	icon = 'icons/turf/flooring/decals.dmi';
+	icon_state = "outline";
+	color = "#cfcf55";
+	plane = -6
 	},
 /turf/simulated/open,
 /area/ishimura/tramdeck/tram/tunnel)
@@ -6717,8 +6730,8 @@
 "zu" = (
 /obj/structure/industrial_lift/tram{
 	icon = 'icons/turf/floors_ds13.dmi';
-	icon_state = "tramwarning";
-	dir = 4
+	icon_state = "tramwarning2";
+	dir = 5
 	},
 /turf/simulated/open,
 /area/ishimura/tramdeck/tram/tunnel)
@@ -6729,8 +6742,8 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/industrial_lift/tram{
 	icon = 'icons/turf/floors_ds13.dmi';
-	icon_state = "tramcorner";
-	dir = 2
+	icon_state = "tramcorner1";
+	dir = 5
 	},
 /turf/simulated/open,
 /area/ishimura/tramdeck/tram/tunnel)
@@ -6740,20 +6753,6 @@
 	},
 /obj/structure/catwalk,
 /turf/simulated/open,
-/area/ishimura/tramdeck/tram/tunnel)
-"BR" = (
-/obj/machinery/door/airlock/civilian/tram{
-	dir = 4;
-	name = "Tram Storage Compartment"
-	},
-/obj/structure/industrial_lift/tram{
-	icon = 'icons/turf/floors_ds13.dmi';
-	icon_state = "trammiddle";
-	dir = 5
-	},
-/turf/simulated/floor/dank/tramgrating{
-	dir = 4
-	},
 /area/ishimura/tramdeck/tram/tunnel)
 "BS" = (
 /obj/structure/lattice,
@@ -6794,8 +6793,8 @@
 	},
 /obj/structure/industrial_lift/tram{
 	icon = 'icons/turf/floors_ds13.dmi';
-	icon_state = "tramcorner";
-	dir = 2
+	icon_state = "tramcorner1";
+	dir = 5
 	},
 /turf/simulated/open,
 /area/ishimura/tramdeck/tram/tunnel)
@@ -6837,15 +6836,20 @@
 /turf/simulated/wall/r_wall/hull,
 /area/ishimura/tramdeck/tram/tunnel)
 "Ki" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/largecrate,
 /obj/random/loot/often/many,
 /obj/random/loot/often/many,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/industrial_lift/tram{
 	icon = 'icons/turf/floors_ds13.dmi';
-	icon_state = "tramcorner";
-	dir = 2
+	icon_state = "tramcorner1";
+	dir = 5
+	},
+/obj/effect/decal{
+	icon = 'icons/turf/flooring/decals.dmi';
+	icon_state = "outline";
+	color = "#cfcf55";
+	plane = -6
 	},
 /turf/simulated/open,
 /area/ishimura/tramdeck/tram/tunnel)
@@ -6888,15 +6892,20 @@
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/maintenance/aftmaintenance)
 "PY" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/largecrate,
 /obj/random/loot/often/many,
 /obj/random/loot/often/many,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/industrial_lift/tram{
 	icon = 'icons/turf/floors_ds13.dmi';
-	icon_state = "tramcorner";
+	icon_state = "tramcorner7";
 	dir = 5
+	},
+/obj/effect/decal{
+	icon = 'icons/turf/flooring/decals.dmi';
+	icon_state = "outline";
+	color = "#cfcf55";
+	plane = -6
 	},
 /turf/simulated/open,
 /area/ishimura/tramdeck/tram/tunnel)
@@ -6932,15 +6941,15 @@
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/maintenance/aftmaintenance)
 "Vm" = (
-/obj/machinery/door/airlock/civilian/tram{
-	dir = 4;
-	name = "Tram Maintenance Compartment";
-	req_access = list(5)
-	},
 /obj/structure/industrial_lift/tram{
 	icon = 'icons/turf/floors_ds13.dmi';
 	icon_state = "trammiddle";
 	dir = 5
+	},
+/obj/machinery/door/airlock/civilian/tram{
+	dir = 4;
+	name = "Tram Maintenance Compartment";
+	req_access = list(5)
 	},
 /turf/simulated/floor/dank/tramgrating{
 	dir = 4
@@ -6961,8 +6970,8 @@
 	},
 /obj/structure/industrial_lift/tram{
 	icon = 'icons/turf/floors_ds13.dmi';
-	icon_state = "tramcorner";
-	dir = 10
+	icon_state = "tramcorner6";
+	dir = 5
 	},
 /turf/simulated/open,
 /area/ishimura/tramdeck/tram/tunnel)
@@ -6978,14 +6987,11 @@
 /turf/simulated/open,
 /area/ishimura/tramdeck/tram/tunnel)
 "Yp" = (
-/obj/structure/handrai{
-	dir = 1
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/industrial_lift/tram{
 	icon = 'icons/turf/floors_ds13.dmi';
-	icon_state = "tramcorner";
-	dir = 2
+	icon_state = "tramcorner1";
+	dir = 5
 	},
 /turf/simulated/open,
 /area/ishimura/tramdeck/tram/tunnel)
@@ -55001,7 +55007,7 @@ fS
 fS
 dp
 dp
-BR
+Vm
 dp
 dp
 cF

@@ -32,9 +32,9 @@
 	return ..()
 
 /obj/machinery/computer/tramswitch/attack_hand(mob/user)
-	if(..())
+	if(..() || !(user.is_advanced_tool_user()))
 		return TRUE
-	activate()
+	activate(user)
 
 /obj/machinery/computer/tramswitch/proc/activate(mob/activator)
 	if(!COOLDOWN_FINISHED(src, activation))

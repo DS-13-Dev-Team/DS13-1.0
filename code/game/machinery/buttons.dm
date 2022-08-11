@@ -31,7 +31,8 @@
 	return attack_hand(user)
 
 /obj/machinery/button/attack_hand(mob/living/user)
-	if(..()) return 1
+	if(..() || !(user.is_advanced_tool_user()))
+		return 1
 	if(istype(user, /mob/living/carbon))
 		playsound(src, "button", VOLUME_MID)
 	activate(user)
