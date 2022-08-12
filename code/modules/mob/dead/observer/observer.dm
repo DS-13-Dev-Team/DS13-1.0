@@ -31,6 +31,15 @@ var/const/GHOST_IMAGE_ALL = ~GHOST_IMAGE_NONE
 		ghost_sightless_images |= ghost_image //so ghosts can see the eye when they disable ghost sight
 	updateallghostimages()
 
+/mob/dead/observer/movement_delay()
+	var/tally = 0.5 SECONDS
+	if (speed)
+		tally /= speed
+	if (move_speed_factor)
+		tally *= move_speed_factor
+	set_glide_size(DELAY2GLIDESIZE(tally))
+	return tally
+
 /mob/dead/observer/Destroy()
 	if (ghost_image)
 		ghost_darkness_images -= ghost_image
