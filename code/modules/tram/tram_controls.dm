@@ -4,7 +4,9 @@
 	icon_state = "tramterminal"
 	icon_keyboard = "tramkeyboard" //intentionally nothing
 	icon_screen = "tramscreen"
-	circuit = /obj/item/circuitboard/tram_controls
+	use_power = 0
+	idle_power_usage = 0
+	active_power_usage = 0
 	atom_flags = ATOM_FLAG_INDESTRUCTIBLE
 	light_range = 0 //we dont want to spam SSlighting with source updates every movement
 
