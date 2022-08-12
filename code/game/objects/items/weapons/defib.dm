@@ -326,7 +326,7 @@
 /obj/item/shockpaddles/proc/do_revive(mob/living/carbon/human/H, mob/living/user)
 	//beginning to place the paddles on patient's chest to allow some time for people to move away to stop the process
 	user.visible_message("<span class='warning'>\The [user] begins to place [src] on [H]'s chest.</span>", "<span class='warning'>You begin to place [src] on [H]'s chest...</span>")
-	if(!user.do_skilled(3 SECONDS, SKILL_MEDICAL, H))
+	if(!do_mob(user, H, 3 SECONDS))
 		return
 	user.visible_message("<span class='notice'>\The [user] places [src] on [H]'s chest.</span>", "<span class='warning'>You place [src] on [H]'s chest.</span>")
 	playsound(get_turf(src), 'sound/machines/defib_charge.ogg', 50, 0)
@@ -359,8 +359,6 @@
 	if(error)
 		make_announcement(error, "warning")
 		playsound(get_turf(src), 'sound/machines/defib_failed.ogg', 50, 0)
-		return
-	if(!user.skill_check(SKILL_MEDICAL, SKILL_BASIC) && !lowskill_revive(H, user))
 		return
 	H.apply_damage(burn_damage_amt, BURN, BP_CHEST)
 
@@ -411,24 +409,6 @@
 		var/obj/item/cell/C = potato.cell
 		C.give(chargecost)
 	log_and_message_admins("used \a [src] to revive [key_name(H)].")
-
-/obj/item/shockpaddles/proc/lowskill_revive(mob/living/carbon/human/H, mob/living/user)
-	if(prob(60))
-		playsound(get_turf(src), 'sound/machines/defib_zap.ogg', 100, 1, -1)
-		H.electrocute_act(burn_damage_amt*4, src, def_zone = BP_CHEST)
-		user.visible_message("<span class='warning'><i>The paddles were misaligned! \The [user] shocks [H] with \the [src]!</i></span>", "<span class='warning'>The paddles were misaligned! You shock [H] with \the [src]!</span>")
-		return 0
-	if(prob(50))
-		playsound(get_turf(src), 'sound/machines/defib_zap.ogg', 100, 1, -1)
-		if(istype(user, /mob/living/carbon))
-			var/mob/living/carbon/C = user
-			C.electrocute_act(burn_damage_amt*2, src, def_zone = BP_L_HAND)
-			C.electrocute_act(burn_damage_amt*2, src, def_zone = BP_R_HAND)
-		else
-			user.electrocute_act(burn_damage_amt*4, src)
-		user.visible_message("<span class='warning'><i>\The [user] shocks themselves with \the [src]!</i></span>", "<span class='warning'>You forget to move your hands away and shock yourself with \the [src]!</span>")
-		return 0
-	return 1
 
 /obj/item/shockpaddles/proc/do_electrocute(mob/living/carbon/human/H, mob/user, var/target_zone)
 	var/obj/item/organ/external/affecting = H.get_organ(target_zone)
