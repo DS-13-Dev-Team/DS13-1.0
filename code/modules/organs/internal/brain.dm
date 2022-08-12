@@ -147,6 +147,7 @@
 			target.languages = brainmob.languages.Copy()
 			target.default_language = brainmob.default_language
 			target.skillset.obtain_from_mob(brainmob)
+			target.timeofdeath = brainmob.timeofhostdeath
 
 	return 1
 

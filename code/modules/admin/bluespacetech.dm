@@ -184,7 +184,7 @@
 	s.set_up(5, 1, src)
 	s.start()
 	if(key)
-		var/mob/dead/observer/ghost/ghost = ghostize(CORPSE_CAN_REENTER)
+		var/mob/dead/observer/ghost/ghost = ghostize(CORPSE_CANT_REENTER)
 		ghost.name = "[ghost.key] BSTech"
 		ghost.real_name = "[ghost.key] BSTech"
 		ghost.voice_name = "[ghost.key] BSTech"
