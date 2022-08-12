@@ -554,7 +554,7 @@
 /area/ishimura/upper/command/bridge)
 "abu" = (
 /obj/structure/table/standard,
-/obj/item/melee/whip/chainofcommand,
+/obj/item/whip/chainofcommand,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
 	},

@@ -4,7 +4,7 @@
 	uniform = /obj/item/clothing/under/pirate
 	shoes = /obj/item/clothing/shoes/dutyboots
 	glasses = /obj/item/clothing/glasses/eyepatch
-	l_hand = /obj/item/melee/energy/sword/pirate
+	l_hand = /obj/item/energy/sword/pirate
 
 /decl/hierarchy/outfit/pirate/norm
 	name = "Pirate - Normal"

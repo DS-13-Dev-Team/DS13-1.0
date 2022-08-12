@@ -2987,9 +2987,6 @@
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/forward)
 "gT" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -5786,7 +5783,7 @@
 /area/ishimura/tramdeck/tram/misc/auxcargostor)
 "mW" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
-	dir = 4
+	dir = 1
 	},
 /obj/effect/catwalk_plated/dank,
 /obj/structure/closet/emcloset,

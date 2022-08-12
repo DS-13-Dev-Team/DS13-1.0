@@ -45,7 +45,7 @@
 	melee_damage_upper = 25
 	icon_state = "syndicatemelee"
 	icon_living = "syndicatemelee"
-	weapon1 = /obj/item/melee/energy/sword/red
+	weapon1 = /obj/item/energy/sword/red
 	weapon2 = /obj/item/shield/energy
 	attacktext = "slashed"
 	status_flags = 0

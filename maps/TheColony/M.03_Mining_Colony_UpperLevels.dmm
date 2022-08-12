@@ -1853,7 +1853,7 @@
 /obj/item/storage/belt/holster/security,
 /obj/item/ammo_magazine/c44/rubber,
 /obj/item/ammo_magazine/c44/rubber,
-/obj/item/melee/whip/chainofcommand,
+/obj/item/whip/chainofcommand,
 /turf/simulated/floor/dank/hardwood,
 /area/mining_colony/security/upper/director)
 "ey" = (

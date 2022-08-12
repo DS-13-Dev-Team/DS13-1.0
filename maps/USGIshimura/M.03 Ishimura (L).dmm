@@ -9207,7 +9207,7 @@
 	pixel_y = 21
 	},
 /obj/structure/closet/secure_closet/SO,
-/obj/item/melee/baton/cattleprod{
+/obj/item/baton/cattleprod{
 	desc = "An improvised stun baton, used for occasionally motivating lazy Cargo Servicemen.";
 	name = "Stick of Discipline"
 	},

@@ -61,7 +61,7 @@
 		finished = new /obj/item/material/twohanded/spear(get_turf(user), tmp_shard.material.name)
 		to_chat(user, "<span class='notice'>You fasten \the [I] to the top of the rod with the cable.</span>")
 	else if(isWirecutter(I))
-		finished = new /obj/item/melee/baton/cattleprod(get_turf(user))
+		finished = new /obj/item/baton/cattleprod(get_turf(user))
 		to_chat(user, "<span class='notice'>You fasten the wirecutters to the top of the rod with the cable, prongs outward.</span>")
 	if(finished)
 		qdel(I)

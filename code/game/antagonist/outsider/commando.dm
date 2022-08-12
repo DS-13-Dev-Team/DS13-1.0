@@ -22,7 +22,7 @@
 	player.equip_to_slot_or_del(new /obj/item/ammo_magazine/box/c45(player), slot_in_backpack)
 	player.equip_to_slot_or_del(new /obj/item/rig/merc(player), slot_back)
 	//player.equip_to_slot_or_del(new /obj/item/gun/energy/pulse_rifle(player), slot_r_hand)
-	player.equip_to_slot_or_del(new /obj/item/melee/energy/sword(player), slot_l_hand)
+	player.equip_to_slot_or_del(new /obj/item/energy/sword(player), slot_l_hand)
 
 	create_id("Commando", player)
 	create_radio(SYND_FREQ, player)

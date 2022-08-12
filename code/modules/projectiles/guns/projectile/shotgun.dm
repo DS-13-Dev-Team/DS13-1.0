@@ -93,7 +93,7 @@
 
 //this is largely hacky and bad :(	-Pete
 /obj/item/gun/projectile/shotgun/doublebarrel/attackby(var/obj/item/A as obj, mob/user as mob)
-	if(w_class > 3 && (isSaw(A) || istype(A, /obj/item/melee/energy)))
+	if(w_class > 3 && (isSaw(A) || istype(A, /obj/item/energy)))
 		to_chat(user, "<span class='notice'>You begin to shorten the barrel of \the [src].</span>")
 		if(loaded.len)
 			for(var/i in 1 to max_shells)

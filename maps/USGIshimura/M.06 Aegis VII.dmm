@@ -2679,7 +2679,7 @@
 /area/aegis/colony/research/analysis)
 "gb" = (
 /obj/structure/table/steel,
-/obj/item/melee/baton/loaded,
+/obj/item/baton/loaded,
 /obj/item/storage/toolbox/mechanical,
 /obj/machinery/light{
 	dir = 8

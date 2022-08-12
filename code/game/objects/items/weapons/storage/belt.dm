@@ -108,7 +108,7 @@
 	overlay_flags = BELT_OVERLAY_ITEMS
 	can_hold = list(
 		/obj/item/tool,
-		/obj/item/melee,/obj/item/material,
+		/obj/item,/obj/item/material,
 		/obj/item/tool/multitool,
 		/obj/item/flashlight,
 		/obj/item/stack/cable_coil,
@@ -187,7 +187,7 @@
 		/obj/item/taperoll,
 		/obj/item/extinguisher/mini,
 		/obj/item/storage/med_pouch,
-		/obj/item/melee,/obj/item/material,
+		/obj/item,/obj/item/material,
 		/obj/item/bodybag
 		)
 
@@ -209,7 +209,7 @@
 		/obj/item/ammo_casing/shotgun,
 		/obj/item/ammo_magazine,
 		/obj/item/reagent_containers/food/snacks/donut/,
-		/obj/item/melee,/obj/item/material,
+		/obj/item,/obj/item/material,
 		/obj/item/flame/lighter,
 		/obj/item/clothing/glasses/hud/security,
 		/obj/item/flashlight,
@@ -264,7 +264,7 @@
 	overlay_flags = BELT_OVERLAY_ITEMS|BELT_OVERLAY_HOLSTER
 	can_hold = list(
 		/obj/item/flash,
-		/obj/item/melee,/obj/item/material,
+		/obj/item,/obj/item/material,
 		/obj/item/taperecorder,
 		/obj/item/folder,
 		/obj/item/paper,
@@ -300,7 +300,7 @@
 		/obj/item/taperecorder,
 		/obj/item/folder,
 		/obj/item/paper,
-		/obj/item/melee,/obj/item/material,
+		/obj/item,/obj/item/material,
 		/obj/item/clipboard,
 		/obj/item/modular_computer/tablet,
 		/obj/item/flash,

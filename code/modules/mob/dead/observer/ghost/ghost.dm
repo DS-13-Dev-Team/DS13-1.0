@@ -12,7 +12,7 @@ var/global/list/image/ghost_sightless_images = list() //this is a list of images
 	universal_speak = 1
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 	mob_flags = MOB_FLAG_HOLY_BAD
-	movement_handlers = list(/datum/movement_handler/mob/incorporeal)
+	movement_handlers = list(/datum/movement_handler/mob/incorporeal, /datum/movement_handler/mob/delay)
 
 	var/is_manifest = FALSE
 	var/next_visibility_toggle = 0

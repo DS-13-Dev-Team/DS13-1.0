@@ -60,7 +60,7 @@
 
 
 /obj/item/shield/riot/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/melee/baton))
+	if(istype(W, /obj/item/baton))
 		if(cooldown < world.time - 25)
 			user.visible_message("<span class='warning'>[user] bashes [src] with [W]!</span>")
 			playsound(user.loc, 'sound/effects/shieldbash.ogg', 50, 1)
@@ -93,7 +93,7 @@
 	name = "round handmade shield"
 	desc = "A handmade stout shield, but with a small size."
 	icon_state = "buckler"
-
+	icon = 'icons/obj/weapons.dmi'
 	throw_range = 6
 	matter = list(MATERIAL_STEEL = 6)
 	base_block_chance = 65
@@ -106,8 +106,8 @@
 /obj/item/shield/tray
 	name = "tray shield"
 	desc = "A thin metal tray held on the arm, won't endure much punishment"
+	icon = 'icons/obj/weapons.dmi'
 	icon_state = "tray_shield"
-
 	throw_range = 4
 	matter = list(MATERIAL_STEEL = 4)
 	base_block_chance = 80

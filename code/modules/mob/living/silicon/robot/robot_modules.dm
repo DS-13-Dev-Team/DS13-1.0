@@ -183,12 +183,12 @@ var/global/list/robot_modules = list(
 
 /obj/item/robot_module/standard/New()
 	src.modules += new /obj/item/flash(src)
-	src.modules += new /obj/item/melee/baton/loaded(src)
+	src.modules += new /obj/item/baton/loaded(src)
 	src.modules += new /obj/item/extinguisher(src)
 	src.modules += new /obj/item/tool/wrench(src)
 	src.modules += new /obj/item/tool/crowbar(src)
 	src.modules += new /obj/item/healthanalyzer(src)
-	src.emag = new /obj/item/melee/energy/sword(src)
+	src.emag = new /obj/item/energy/sword(src)
 	..()
 
 /obj/item/robot_module/medical
@@ -355,7 +355,7 @@ var/global/list/robot_modules = list(
 	src.modules += new /obj/item/pipe_painter(src)
 	src.modules += new /obj/item/floor_painter(src)
 	src.modules += new /obj/item/inflatable_dispenser/robot(src)
-	src.emag = new /obj/item/melee/baton/robot/electrified_arm(src)
+	src.emag = new /obj/item/baton/robot/electrified_arm(src)
 
 	var/datum/matter_synth/metal = new /datum/matter_synth/metal(60000)
 	var/datum/matter_synth/glass = new /datum/matter_synth/glass(40000)
@@ -430,7 +430,7 @@ var/global/list/robot_modules = list(
 	src.modules += new /obj/item/flash(src)
 	src.modules += new /obj/item/borg/sight/hud/sec(src)
 	src.modules += new /obj/item/handcuffs/cyborg(src)
-	src.modules += new /obj/item/melee/baton/robot(src)
+	src.modules += new /obj/item/baton/robot(src)
 	src.modules += new /obj/item/gun/energy/gun/secure/mounted(src)
 	src.modules += new /obj/item/taperoll/police(src)
 	src.modules += new /obj/item/megaphone(src)
@@ -448,7 +448,7 @@ var/global/list/robot_modules = list(
 		else
 			T.charge_tick = 0
 
-	var/obj/item/melee/baton/robot/B = locate() in src.modules
+	var/obj/item/baton/robot/B = locate() in src.modules
 	if(B && B.bcell)
 		B.bcell.give(amount)
 
@@ -656,7 +656,7 @@ var/global/list/robot_modules = list(
 /obj/item/robot_module/syndicate/New(var/mob/living/silicon/robot/R)
 	forceMove(R)
 	src.modules += new /obj/item/flash(src)
-	src.modules += new /obj/item/melee/energy/sword(src)
+	src.modules += new /obj/item/energy/sword(src)
 	//src.modules += new /obj/item/gun/energy/pulse_rifle/destroyer(src)
 	src.modules += new /obj/item/card/emag(src)
 	var/jetpack = new/obj/item/tank/jetpack/carbondioxide(src)

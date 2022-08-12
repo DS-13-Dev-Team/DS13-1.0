@@ -277,7 +277,7 @@ Botany:
 	desc = "A stun baton for incapacitating people with."
 	id = "stunbaton"
 	materials = list(MATERIAL_STEEL = 3000, MATERIAL_GLASS = 500)
-	build_path = /obj/item/melee/baton/loaded
+	build_path = /obj/item/baton/loaded
 
 /datum/design/item/sec_eq/handcuffs
 	name = "handcuffs"

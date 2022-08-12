@@ -42,7 +42,8 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 	var/list/variations
 
 	movement_handlers = list(
-		/datum/movement_handler/mob/incorporeal/eye
+		/datum/movement_handler/mob/incorporeal/eye,
+		/datum/movement_handler/mob/delay,
 	)
 
 /mob/dead/observer/eye/signal/set_eyeobj(var/atom/new_eye)

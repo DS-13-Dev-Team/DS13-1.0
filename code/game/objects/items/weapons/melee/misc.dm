@@ -1,6 +1,7 @@
-/obj/item/melee/whip
+/obj/item/whip
 	name = "whip"
 	desc = "A generic whip."
+	icon = 'icons/obj/weapons.dmi'
 	icon_state = "chain"
 	item_state = "chain"
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
@@ -12,7 +13,7 @@
 	attack_verb = list("flicked", "whipped", "lashed")
 
 
-/obj/item/melee/whip/abyssal
+/obj/item/whip/abyssal
 	name = "abyssal whip"
 	desc = "A weapon from the abyss. Requires 70 attack to wield."
 	icon_state = "whip"
@@ -25,7 +26,7 @@
 	origin_tech = list(TECH_COMBAT = 4)
 	attack_verb = list("flicked", "whipped", "lashed")
 
-/obj/item/melee/whip/chainofcommand
+/obj/item/whip/chainofcommand
 	name = "chain of command"
 	desc = "A tool used by great men to placate the frothing masses."
 	attack_verb = list("flogged", "whipped", "lashed", "disciplined")
