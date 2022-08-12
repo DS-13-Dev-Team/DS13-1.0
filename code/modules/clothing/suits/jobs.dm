@@ -101,7 +101,7 @@
 	name = "suit jacket"
 	desc = "A snappy dress jacket."
 	icon_state = "suitjacket_open"
-	item_state = "suitjacket_open"
+	item_state_slots = list(slot_r_hand_str = "suitjacket", slot_l_hand_str = "suitjacket")
 	icon_open = "suitjacket_open"
 	icon_closed = "suitjacket"
 	blood_overlay_type = "coat"
@@ -124,7 +124,7 @@
 	name = "\improper EMS jacket"
 	desc = "A dark blue, martian-pattern, EMS jacket. It sports high-visibility reflective stripes and a star of life on the back."
 	icon_state = "ems_jacket_closed"
-	item_state = "ems_jacket_closed"
+	item_state_slots = list(slot_r_hand_str = "ems_jacket_closed", slot_l_hand_str = "ems_jacked_closed")
 	icon_open = "ems_jacket_open"
 	icon_closed = "ems_jacket_closed"
 	blood_overlay_type = "armor"

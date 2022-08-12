@@ -25,7 +25,6 @@
 	name = "chief medical officer's labcoat"
 	desc = "Bluer than the standard model."
 	icon_state = "labcoat_cmo_open"
-	//item_state = "labcoat_cmo"
 	icon_open = "labcoat_cmo_open"
 	icon_closed = "labcoat_cmo"
 

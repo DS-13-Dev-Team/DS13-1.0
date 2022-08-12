@@ -158,7 +158,7 @@
 	name = "bomber jacket"
 	desc = "A thick, well-worn WW2 leather bomber jacket."
 	icon_state = "bomber"
-	item_state = "bomber"
+	item_state_slots = list(slot_r_hand_str = "bomber", slot_l_hand_str = "bomber")
 	icon_open = "bomber_open"
 	icon_closed = "bomber"
 	body_parts_covered = UPPER_TORSO|ARMS
@@ -182,7 +182,7 @@
 	name = "leather jacket"
 	desc = "A brown leather coat."
 	icon_state = "brown_jacket"
-	item_state = "brown_jacket"
+	item_state_slots = list(slot_r_hand_str = "brown_jacket", slot_l_hand_str = "brown_jacket")
 	icon_open = "brown_jacket_open"
 	icon_closed = "brown_jacket"
 	body_parts_covered = UPPER_TORSO|ARMS
@@ -197,7 +197,7 @@
 	name = "agent jacket"
 	desc = "A black leather jacket belonging to an agent of the Office of Civil Investigation and Enforcement."
 	icon_state = "agent_jacket"
-	item_state = "agent_jacket"
+	item_state_slots = list(slot_r_hand_str = "agent_jacket", slot_l_hand_str = "agent_jacket")
 	icon_open = "agent_jacket_open"
 	icon_closed = "agent_jacket"
 	valid_accessory_slots = list(ACCESSORY_SLOT_INSIGNIA)
@@ -207,7 +207,7 @@
 	name = "hoodie"
 	desc = "A warm sweatshirt."
 	icon_state = "hoodie"
-	item_state = "hoodie"
+	item_state_slots = list(slot_r_hand_str = "hoodie", slot_l_hand_str = "hoodie")
 	icon_open = "hoodie_open"
 	icon_closed = "hoodie"
 	min_cold_protection_temperature = T0C - 20
@@ -222,7 +222,7 @@
 	name = "light jacket"
 	desc = "A thin, white and green jacket."
 	icon_state = "kelliontech_jacket"
-	item_state = "kelliontech_jacket"
+	item_state_slots = list(slot_r_hand_str = "kelliontech_jacket", slot_l_hand_str = "kelliontech_jacket")
 	icon_open = "kelliontech_open"
 	icon_closed = "kelliontech_jacket"
 
