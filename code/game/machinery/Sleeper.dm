@@ -32,6 +32,10 @@
 		beaker = new /obj/item/reagent_containers/glass/beaker/large(src)
 	update_icon()
 
+/obj/machinery/sleeper/Destroy()
+	go_out()
+	.=..()
+
 /obj/machinery/sleeper/Process()
 	if(stat & (NOPOWER|BROKEN))
 		return
@@ -167,11 +171,11 @@
 		var/caution = 0 // To make things clear that you're coming close to an overdose
 
 		if(occupant?.reagents)
-			reagent_amount = occupant.reagents.get_reagent_amount(R.type)
+			reagent_amount = occupant.reagents.get_reagent_amount(R)
 			// If they're mashing the highest concentration, they get one war`ning
-			if(R.overdose && reagent_amount + 10 > R.overdose)
+			if(initial(R.overdose) && reagent_amount + 10 > initial(R.overdose))
 				caution = 1
-			if(R.overdose && reagent_amount > R.overdose)
+			if(initial(R.overdose) && reagent_amount > initial(R.overdose))
 				overdosing = 1
 
 		pretty_amount = round(reagent_amount, 0.05)
