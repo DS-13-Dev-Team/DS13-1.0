@@ -1,6 +1,7 @@
 /obj/item/material/twohanded/baseballbat
 	name = "bat"
 	desc = "HOME RUN!"
+	icon = 'icons/obj/weapons.dmi'
 	icon_state = "metalbat0"
 	base_icon = "metalbat"
 	item_state = "metalbat"

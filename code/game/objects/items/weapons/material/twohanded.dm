@@ -17,6 +17,7 @@
  * Twohanded
  */
 /obj/item/material/twohanded
+	icon = 'icons/obj/weapons.dmi'
 	w_class = ITEM_SIZE_HUGE
 	var/wielded = 0
 	var/force_wielded = 0
