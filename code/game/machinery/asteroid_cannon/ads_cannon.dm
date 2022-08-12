@@ -75,7 +75,7 @@ You'll need two people to do this, one to man the gun while it goes down, one to
 	//Sets up the overlay
 	asteroidover = new(loc)
 	asteroidover.mouse_opacity = FALSE //Just a fluff overlay.
-	asteroidover.plane = plane + 0.1
+	asteroidover.plane = plane
 	asteroidover.layer = layer + 0.1
 	asteroidover.icon = icon
 	asteroidover.pixel_x = pixel_x
@@ -85,7 +85,7 @@ You'll need two people to do this, one to man the gun while it goes down, one to
 	//And the underlay
 	asteroidunder = new(loc)
 	asteroidunder.mouse_opacity = FALSE //Just a fluff overlay.
-	asteroidunder.plane = plane - 0.1
+	asteroidunder.plane = plane
 	asteroidunder.layer = layer - 0.1
 	asteroidunder.icon = icon
 	asteroidunder.pixel_x = pixel_x
