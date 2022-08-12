@@ -1,4 +1,4 @@
-/obj/item/weapon/rig/marine
+/obj/item/rig/marine
 	name = "advanced soldier RIG"
 	desc = "A heavily armoured rig suit, designed for military use."
 	icon_state = "adv_soldier"
@@ -36,7 +36,7 @@
 
 
 
-/obj/item/weapon/rig/marine/specialist
+/obj/item/rig/marine/specialist
 	name = "advanced specialist RIG"
 	desc = "A powerful yet flexible suit, designed for use by military and naval specialists or command staff."
 	icon_state = "adv_soldier_dark"
@@ -61,7 +61,7 @@
 		/obj/item/rig_module/maneuvering_jets
 		)
 
-/obj/item/weapon/rig/marine/earthgov //PLACEHOLDER RIG for earthgovs. Will be replaced by a special earthgov rig later.
+/obj/item/rig/marine/earthgov //PLACEHOLDER RIG for earthgovs. Will be replaced by a special earthgov rig later.
 	name = "advanced specialist RIG"
 	desc = "A powerful yet flexible suit, designed for use by military and naval specialists or command staff."
 	icon_state = "adv_soldier_dark"

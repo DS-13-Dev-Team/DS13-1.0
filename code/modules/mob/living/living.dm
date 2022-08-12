@@ -72,7 +72,7 @@ default behaviour is:
 
 			//Leaping mobs just land on the tile, no pushing, no anything.
 			if(status_flags & LEAPING)
-				loc = tmob.loc
+				forceMove(tmob.loc)
 				status_flags &= ~LEAPING
 				now_pushing = 0
 				return
@@ -99,11 +99,11 @@ default behaviour is:
 						to_chat(src, "<span class='danger'>You fail to push [tmob]'s fat ass out of the way.</span>")
 						now_pushing = 0
 						return
-				if(tmob.r_hand && istype(tmob.r_hand, /obj/item/weapon/shield/riot))
+				if(tmob.r_hand && istype(tmob.r_hand, /obj/item/shield/riot))
 					if(prob(99))
 						now_pushing = 0
 						return
-				if(tmob.l_hand && istype(tmob.l_hand, /obj/item/weapon/shield/riot))
+				if(tmob.l_hand && istype(tmob.l_hand, /obj/item/shield/riot))
 					if(prob(99))
 						now_pushing = 0
 						return
@@ -382,7 +382,7 @@ default behaviour is:
 
 /mob/living/proc/process_resist()
 	//Getting out of someone's inventory.
-	if(istype(src.loc, /obj/item/weapon/holder))
+	if(istype(src.loc, /obj/item/holder))
 		escape_inventory(src.loc)
 		return
 
@@ -397,7 +397,7 @@ default behaviour is:
 		spawn() C.mob_breakout(src)
 		return TRUE
 
-/mob/living/proc/escape_inventory(obj/item/weapon/holder/H)
+/mob/living/proc/escape_inventory(obj/item/holder/H)
 	if(H != src.loc) return
 
 	var/mob/M = H.loc //Get our mob holder (if any).
@@ -408,11 +408,10 @@ default behaviour is:
 		to_chat(src, "<span class='warning'>You wriggle out of \the [M]'s grip!</span>")
 
 		// Update whether or not this mob needs to pass emotes to contents.
-		for(var/atom/A in M.contents)
-			if(istype(A,/mob/living/simple_animal/borer) || istype(A,/obj/item/weapon/holder))
-				return
+		for(var/obj/item/holder/A in M.contents)
+			return
 		M.status_flags &= ~PASSEMOTES
-	else if(istype(H.loc,/obj/item/clothing/accessory/storage/holster) || istype(H.loc,/obj/item/weapon/storage/belt/holster))
+	else if(istype(H.loc,/obj/item/clothing/accessory/storage/holster) || istype(H.loc,/obj/item/storage/belt/holster))
 		var/datum/extension/holster/holster = get_extension(src, /datum/extension/holster)
 		if(holster.holstered == H)
 			holster.clear_holster()
@@ -554,7 +553,7 @@ default behaviour is:
 		overlays |= auras
 
 /mob/living/proc/add_aura(var/obj/aura/aura)
-	LAZYDISTINCTADD(auras,aura)
+	LAZYOR(auras,aura)
 	update_icons()
 	return 1
 
@@ -596,3 +595,26 @@ default behaviour is:
 
 /mob/living/is_organic()
 	return TRUE
+
+/**
+ * A proc triggered by callback when someone gets slammed by the tram and lands somewhere.
+ *
+ * This proc is used to force people to fall through things like lattice and unplated flooring at the expense of some
+ * extra damage, so jokers can't use half a stack of iron rods to make getting hit by the tram immediately lethal.
+ */
+/mob/living/proc/tram_slam_land()
+	if(!isopenspace(loc) && !istype(loc, /turf/space))
+		return
+
+	if(istype(loc, /turf/simulated/floor/plating))
+		var/turf/simulated/floor/smashed_plating = loc
+		visible_message(SPAN_DANGER("[src] is thrown violently into [smashed_plating], smashing through it and punching straight through!"),
+				SPAN_USERDANGER("You're thrown violently into [smashed_plating], smashing through it and punching straight through!"))
+		apply_damage(rand(5,20), BRUTE, BP_CHEST)
+		smashed_plating.make_plating()
+
+	for(var/obj/structure/lattice/lattice in loc)
+		visible_message(SPAN_DANGER("[src] is thrown violently into [lattice], smashing through it and punching straight through!"),
+			SPAN_USERDANGER("You're thrown violently into [lattice], smashing through it and punching straight through!"))
+		apply_damage(rand(5,10), BRUTE, BP_CHEST)
+		qdel(lattice)

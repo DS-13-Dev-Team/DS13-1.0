@@ -30,7 +30,7 @@
 		new T(src)
 
 /obj/item/strangerock/attackby(var/obj/item/I, var/mob/user)
-	if(istype(I, /obj/item/weapon/tool/pickaxe/xeno/brush))
+	if(istype(I, /obj/item/tool/pickaxe/xeno/brush))
 		var/obj/item/inside = locate() in src
 		if(inside)
 			inside.forceMove(get_turf(src))
@@ -49,8 +49,8 @@
 			visible_message("<span class='info'>\The [src] burns away into nothing.</span>")
 		qdel(src)
 
-	else if(istype(I, /obj/item/device/core_sampler))
-		var/obj/item/device/core_sampler/S = I
+	else if(istype(I, /obj/item/core_sampler))
+		var/obj/item/core_sampler/S = I
 		S.sample_item(src, user)
 		return
 

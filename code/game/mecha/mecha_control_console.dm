@@ -5,7 +5,7 @@
 	icon_screen = "mecha"
 	light_color = "#a97faa"
 	req_access = list(access_research)
-	circuit = /obj/item/weapon/circuitboard/mecha_control
+	circuit = /obj/item/circuitboard/mecha_control
 	var/list/located = list()
 	var/screen = 0
 	var/stored_data
@@ -67,7 +67,7 @@
 /obj/item/mecha_parts/mecha_tracking
 	name = "Exosuit tracking beacon"
 	desc = "Device used to transmit exosuit data."
-	icon = 'icons/obj/device.dmi'
+	icon = 'icons/obj/items.dmi'
 	icon_state = "motion2"
 	origin_tech = list(TECH_DATA = 2, TECH_MAGNET = 2)
 
@@ -94,6 +94,8 @@
 		return
 
 	ex_act()
+		if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+			return
 		qdel(src)
 		return
 

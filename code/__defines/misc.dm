@@ -4,10 +4,10 @@
 
 #define DEBUG
 // Turf-only flags.
-#define TURF_FLAG_NOJAUNT 1 // This is used in literally one place, turf.dm, to block ethereal jaunt.
-#define TURF_FLAG_NORUINS 2
+// This is used in literally one place, turf.dm, to block ethereal jaunt.
+#define TURF_FLAG_NO_JAUNT 1
+#define TURF_FLAG_NO_RUINS 2
 
-#define TRANSITIONEDGE 7 // Distance from edge to move to another z-level.
 #define RUIN_MAP_EDGE_PAD 15
 
 //Force the config directory to be something other than "config"
@@ -86,8 +86,17 @@
 #define DEFAULT_JOB_TYPE /datum/job/assistant
 
 //Area flags, possibly more to come
-#define AREA_FLAG_RAD_SHIELDED 1 // shielded from radiation, clearly
-#define AREA_FLAG_EXTERNAL     2 // External as in exposed to space, not outside in a nice, green, forest
+/// Shielded from radiation, clearly
+#define AREA_FLAG_RAD_SHIELDED	(1<<0)
+/// External as in exposed to space, not outside in a nice, green, forest
+#define AREA_FLAG_EXTERNAL		(1<<1)
+/// If mining tunnel generation is allowed in this area
+#define AREA_FLAG_CAVES_ALLOWED			(1<<2)
+/// If flora are allowed to spawn in this area randomly through tunnel generation
+#define AREA_FLAG_FLORA_ALLOWED			(1<<3)
+/// If mobs can be spawned by natural random generation
+#define AREA_FLAG_MOB_SPAWN_ALLOWED		(1<<4)
+
 
 //Map template flags
 #define TEMPLATE_FLAG_ALLOW_DUPLICATES 1 // Lets multiple copies of the template to be spawned
@@ -201,8 +210,6 @@
 #define CELLSIZE (world.icon_size/CELLS)	//Size of a cell in pixels
 
 #define PIXEL_MULTIPLIER WORLD_ICON_SIZE/32
-
-#define DEFAULT_SPAWNPOINT_ID "Default"
 
 
 //Virus badness defines

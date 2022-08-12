@@ -8,15 +8,10 @@
 		var/datum/gear/G = geartype
 		if(initial(G.base_type) == geartype)
 			continue
-		if(GLOB.using_map.loadout_blacklist && (geartype in GLOB.using_map.loadout_blacklist))
-			continue
 		G = new geartype()
 		register_gear(G)
 
-
 	sort_loadout_categories()
-
-
 
 	GLOB.loadout_datums_loaded = TRUE
 	if (LOADOUT_LOADED)
@@ -193,11 +188,6 @@
 		entry += "<td width = 10% style='vertical-align:top'>[G.cost]</td>"
 		entry += "<td><font size=2>[G.get_description(get_gear_metadata(G,1))]</font>"
 		var/allowed = 1
-		if(G.allowed_branches && pref.char_branch)
-			var/datum/mil_branch/player_branch = mil_branches.get_branch(pref.char_branch)
-			if(!(player_branch.type in G.allowed_branches))
-				entry += "<br><i><font color=cc5555>[player_branch.name]</font></i>"
-				allowed = 0
 		if(allowed && G.allowed_roles)
 			var/good_job = 0
 			var/bad_job = 0

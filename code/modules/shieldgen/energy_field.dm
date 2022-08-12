@@ -23,7 +23,9 @@
 	. = ..()
 
 /obj/effect/energy_field/ex_act(var/severity)
-	Stress(0.5 + severity)
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
+	Stress(1/severity)
 
 /obj/effect/energy_field/bullet_act(var/obj/item/projectile/Proj)
 	Stress(Proj.get_structure_damage() / 10)

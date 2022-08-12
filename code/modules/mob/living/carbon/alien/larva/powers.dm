@@ -51,8 +51,8 @@
 
 	var/obj/item/organ/external/E = pick(H.organs)
 	to_chat(src, "<span class='danger'>You burrow deeply into \the [H]'s [E.name]!</span>")
-	var/obj/item/weapon/holder/holder = new (loc)
-	src.loc = holder
+	var/obj/item/holder/holder = new (loc)
+	src.forceMove(holder)
 	holder.SetName(src.name)
 	E.embed(holder,0,"\The [src] burrows deeply into \the [H]'s [E.name]!")
 
@@ -93,7 +93,7 @@
 	if(!istype(H))
 		to_chat(src, "You are not inside a host.")
 		return
-	var/obj/item/weapon/holder/holder = loc
+	var/obj/item/holder/holder = loc
 	var/obj/item/organ/external/affected
 	if(istype(holder))
 		for(var/obj/item/organ/external/organ in H.organs) //Grab the organ holding the implant.
@@ -102,9 +102,9 @@
 					affected = organ
 					break
 		affected.implants -= holder
-		holder.loc = get_turf(holder)
+		holder.forceMove(get_turf(holder))
 	else
-		src.loc = get_turf(src)
+		src.forceMove(get_turf(src))
 	if(affected)
 		to_chat(src, "<span class='danger'>You crawl out of \the [H]'s [affected.name] and plop to the ground.</span>")
 	else

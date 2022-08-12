@@ -10,10 +10,10 @@
 
 /decl/hierarchy/supply_pack/science/phoron
 	name = "Phoron assembly crate"
-	contains = list(/obj/item/weapon/tank/phoron = 3,
-					/obj/item/device/assembly/igniter = 3,
-					/obj/item/device/assembly/prox_sensor = 3,
-					/obj/item/device/assembly/timer = 3)
+	contains = list(/obj/item/tank/phoron = 3,
+					/obj/item/assembly/igniter = 3,
+					/obj/item/assembly/prox_sensor = 3,
+					/obj/item/assembly/timer = 3)
 	cost = 10
 	containertype = /obj/structure/closet/crate/secure/phoron
 	containername = "\improper Phoron assembly crate"
@@ -21,6 +21,6 @@
 
 /decl/hierarchy/supply_pack/science/scanner_module
 	name = "Reagent scanner module crate"
-	contains = list(/obj/item/weapon/computer_hardware/scanner/reagent = 4)
+	contains = list(/obj/item/computer_hardware/scanner/reagent = 4)
 	cost = 20
 	containername = "\improper Reagent scanner module crate"

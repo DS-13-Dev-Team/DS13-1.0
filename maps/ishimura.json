@@ -1,0 +1,49 @@
+{
+	"version": 1,
+	"map_name": "USG Ishimura",
+	"map_path": "USGIshimura",
+	"map_datum": "/datum/map/ishimura",
+	"map_file": [
+		"M.01 Ishimura (UT).dmm",
+		"M.02 Ishimura (T).dmm",
+		"M.03 Ishimura (L).dmm",
+		"M.04 Ishimura (M).dmm",
+		"M.05 Ishimura (U).dmm",
+		"M.06 Aegis VII.dmm"
+	],
+	"traits": [
+		{
+			"Up": 1,
+			"Baseturf": "/turf/space",
+			"Linkage": "Cross"
+		},
+		{
+			"Up": 1,
+			"Down": -1,
+			"Baseturf": "/turf/simulated/open",
+			"Linkage": "Cross"
+		},
+		{
+			"Up": 1,
+			"Down": -1,
+			"Baseturf": "/turf/simulated/open",
+			"Linkage": "Cross"
+		},
+		{
+			"Up": 1,
+			"Down": -1,
+			"Baseturf": "/turf/simulated/open",
+			"Linkage": "Cross"
+		},
+		{
+			"Down": -1,
+			"Baseturf": "/turf/simulated/open",
+			"Linkage": "Cross"
+		},
+		{
+			"Mining": true,
+			"Linkage": null,
+			"Baseturf": "/turf/simulated/floor/asteroid/outside_ds"
+		}
+	]
+}

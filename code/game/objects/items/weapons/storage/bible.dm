@@ -1,4 +1,4 @@
-/obj/item/weapon/storage/bible
+/obj/item/storage/bible
 	name = "bible"
 	desc = "Apply to head repeatedly."
 	icon_state ="bible"
@@ -12,28 +12,28 @@
 	var/renamed = 0
 	var/icon_changed = 0
 
-/obj/item/weapon/storage/bible/booze
+/obj/item/storage/bible/booze
 	name = "bible"
 	desc = "To be applied to the head repeatedly."
 	icon_state ="bible"
 
 	startswith = list(
-		/obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer,
-		/obj/item/weapon/spacecash/ewallet/random/c200,
-		/obj/item/weapon/spacecash/ewallet/random/c200,
+		/obj/item/reagent_containers/food/drinks/bottle/small/beer,
+		/obj/item/spacecash/ewallet/random/c200,
+		/obj/item/spacecash/ewallet/random/c200,
 		)
 
-/obj/item/weapon/storage/bible/unitology
+/obj/item/storage/bible/unitology
 	name = "accipiens lunam"
 	desc = "A series of codes and tenants compiled into one book, given to select members of the Unitologist faith."
 	icon_state ="unitology"
 	deity_name = "Altman"
 
 	startswith = list(
-		/obj/item/weapon/storage/fancy/candle_box
+		/obj/item/storage/fancy/candle_box
 		)
 
-/obj/item/weapon/storage/bible/afterattack(atom/A, mob/user as mob, proximity)
+/obj/item/storage/bible/afterattack(atom/A, mob/user as mob, proximity)
 	if(!proximity) return
 	if(user.mind && (user.mind.assigned_role == "Chaplain"))
 		if(A.reagents && A.reagents.has_reagent(/datum/reagent/water)) //blesses all the water in the holder
@@ -42,12 +42,12 @@
 			A.reagents.del_reagent(/datum/reagent/water)
 			A.reagents.add_reagent(/datum/reagent/water/holywater,water2holy)
 
-/obj/item/weapon/storage/bible/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/item/storage/bible/attackby(obj/item/W as obj, mob/user as mob)
 	if (src.use_sound)
 		playsound(src.loc, src.use_sound, 50, 1, -5)
 	return ..()
 
-/obj/item/weapon/storage/bible/verb/rename_bible()
+/obj/item/storage/bible/verb/rename_bible()
 	set name = "Rename Bible"
 	set category = "Object"
 	set desc = "Click to rename your bible."
@@ -62,7 +62,7 @@
 			renamed = 1
 			return 1
 
-/obj/item/weapon/storage/bible/verb/set_icon()
+/obj/item/storage/bible/verb/set_icon()
 	set name = "Change Icon"
 	set category = "Object"
 	set desc = "Click to change your book's icon."

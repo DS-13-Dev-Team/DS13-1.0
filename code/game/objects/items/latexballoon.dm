@@ -6,12 +6,12 @@
 	force = 0
 	throwforce = 0
 	w_class = ITEM_SIZE_SMALL
-	
+
 	throw_range = 15
 	var/state
 	var/datum/gas_mixture/air_contents = null
 
-/obj/item/latexballon/proc/blow(obj/item/weapon/tank/tank)
+/obj/item/latexballon/proc/blow(obj/item/tank/tank)
 	if (icon_state == "latexballon_bursted")
 		return
 	src.air_contents = tank.remove_air_volume(3)
@@ -27,6 +27,8 @@
 	loc.assume_air(air_contents)
 
 /obj/item/latexballon/ex_act(severity)
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	burst()
 	switch(severity)
 		if (1)

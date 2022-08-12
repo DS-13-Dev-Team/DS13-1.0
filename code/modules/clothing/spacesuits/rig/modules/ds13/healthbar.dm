@@ -46,12 +46,12 @@
 /obj/item/rig_module/healthbar/rig_unequipped(var/mob/user, var/slot)
 	unregister_user()
 
-/obj/item/rig_module/healthbar/installed(obj/item/weapon/rig/new_holder)
+/obj/item/rig_module/healthbar/installed(obj/item/rig/new_holder)
 	. = ..()
 	if(new_holder.wearer)
 		register_user(new_holder.wearer)
 
-/obj/item/rig_module/healthbar/uninstalled(obj/item/weapon/rig/former, mob/living/user)
+/obj/item/rig_module/healthbar/uninstalled(obj/item/rig/former, mob/living/user)
 	unregister_user()
 	.=..()
 

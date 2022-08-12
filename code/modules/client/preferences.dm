@@ -1,7 +1,5 @@
 #define SAVE_RESET -1
 
-var/list/preferences_datums = list()
-
 /datum/preferences
 	//doohickeys for savefiles
 	var/path
@@ -48,6 +46,17 @@ var/list/preferences_datums = list()
 	var/datum/extension/loadout/loadout
 
 /datum/preferences/New(client/C)
+	if(istype(C))
+		client = C
+		client_ckey = C.ckey
+		SScharacter_setup.preferences_datums += src
+		if(SScharacter_setup.initialized)
+			setup()
+		else
+			SScharacter_setup.prefs_awaiting_setup += src
+	..()
+
+/datum/preferences/proc/setup()
 	reset_gear_list()
 	if(!length(GLOB.skills))
 		decls_repository.get_decl(/decl/hierarchy/skill)
@@ -56,13 +65,11 @@ var/list/preferences_datums = list()
 	real_name = random_name(gender,species)
 	b_type = RANDOM_BLOOD_TYPE
 
-	if(istype(C))
-		client = C
-		client_ckey = C.ckey
-		if(!IsGuestKey(C.key))
-			load_path(C.ckey)
-			load_preferences()
-			load_and_update_character()
+	if(client && !IsGuestKey(client.key))
+		load_path(client.ckey)
+		load_preferences()
+		load_and_update_character()
+	sanitize_preferences()
 
 /datum/preferences/proc/reset_gear_list()
 	gear_list = list()
@@ -72,15 +79,13 @@ var/list/preferences_datums = list()
 /datum/preferences/proc/load_and_update_character(var/slot)
 	load_character(slot)
 	if(update_setup(loaded_preferences, loaded_character))
-		save_preferences()
+		SScharacter_setup.queue_preferences_save(src)
 		save_character()
 
 /datum/preferences/proc/ShowChoices(mob/user)
-	if(!user || !user.client)	return
-
-	if(!get_mob_by_key(client_ckey))
-		to_chat(user, "<span class='danger'>No mob exists for the given client!</span>")
-		close_load_dialog(user)
+	if(!SScharacter_setup.initialized)
+		return
+	if(!user || !user.client)
 		return
 
 	var/dat = "<html><body><center>"
@@ -279,10 +284,6 @@ var/list/preferences_datums = list()
 	character.update_underwear(0)
 	character.update_hair(0)
 	character.update_icons()
-
-	character.char_branch = mil_branches.get_branch(char_branch)
-	character.char_rank = mil_branches.get_rank(char_branch, char_rank)
-
 	if(is_preview_copy)
 		return
 
@@ -322,7 +323,7 @@ var/list/preferences_datums = list()
 		dat += "<b>Select a character slot to load</b><hr>"
 		var/name
 		for(var/i=1, i<= CONFIG_GET(number/character_slots), i++)
-			S.cd = GLOB.using_map.character_load_path(S, i)
+			S.cd =  "/ishimura/character[i]"
 			S["real_name"] >> name
 			if(!name)	name = "Character[i]"
 			if(i==default_slot)

@@ -1,5 +1,5 @@
 /datum/design/autolathe/cell
-	build_path = /obj/item/weapon/cell/standard
+	build_path = /obj/item/cell/standard
 
 /datum/design/autolathe/cell/device
-	build_path = /obj/item/weapon/cell/device/standard
+	build_path = /obj/item/cell/device/standard

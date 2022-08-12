@@ -84,14 +84,22 @@
 	src.target = target
 	src.hastarget = hastarget
 
-	procname = input("Proc name", "Proc") as null|text
-	if(!procname)
+	var/procpath = input("Proc path, eg: /proc/fake_blood","Path:", null) as text|null
+	if(!procpath)
 		clear()
 		return
 
-	if(!target.CanProcCall(procname))
+
+	//strip away everything but the proc name
+	var/list/proclist = splittext(procpath, "/")
+	if (!length(proclist))
+		return
+
+	procname = proclist[proclist.len]
+	if(hastarget && !target.CanProcCall(procname))
 		clear()
 		return //CanCallProc protect datum.
+	var/proctype = ("verb" in proclist) ? "verb" :"proc"
 
 	if(hastarget)
 		if(!target)
@@ -99,8 +107,13 @@
 			clear()
 			return
 		if(!hascall(target, procname))
-			to_chat(usr, "\The [target] has no call [procname]()")
+			to_chat(usr, SPAN_WARNING("Error: callproc(): type [target.type] has no [proctype] named [procpath]."), confidential = TRUE)
 			clear()
+			return
+	else
+		procpath = "/[proctype]/[procname]"
+		if(!text2path(procpath))
+			to_chat(usr, SPAN_WARNING("Error: callproc(): [procpath] does not exist."), confidential = TRUE)
 			return
 
 	arguments = list()
@@ -231,7 +244,7 @@
 			returnval = call(target, procname)()
 	else
 		log_admin("[key_name(src)] called [procname]() with [arguments.len ? "the arguments [list2params(arguments)]" : "no arguments"].")
-		returnval = call(procname)(arglist(arguments))
+		returnval = call("/proc/[procname]")(arglist(arguments))
 
 	to_chat(usr, "<span class='info'>[procname]() returned: [json_encode(returnval)]</span>")
 	feedback_add_details("admin_verb","APC") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!

@@ -219,7 +219,7 @@
 		"title" = title,
 		"status" = status,
 		"interface" = interface,
-		"map" = (GLOB.using_map && GLOB.using_map.path) ? GLOB.using_map.path : "Unknown",
+		"map" = (GLOB.using_map?.path) ? GLOB.using_map.path : "Unknown",
 		"mapZLevel" = map_z_level,
 		"window" = list(
 			"key" = window_key,

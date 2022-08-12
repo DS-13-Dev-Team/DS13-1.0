@@ -132,7 +132,7 @@ GLOBAL_LIST_EMPTY(loot_locations)
 	/obj/random/material/rare = 1,
 	/obj/random/hardsuit = 0.5,
 	/obj/random/rig_module/rare = 1,
-	/obj/item/weapon/peng = 1)
+	/obj/item/peng = 1)
 
 //Subtype that cannot spawn power nodes
 /obj/random/rare_loot/nodeless
@@ -140,7 +140,7 @@ GLOBAL_LIST_EMPTY(loot_locations)
 
 
 /obj/random/rare_loot/pengless
-	exclusions = list(/obj/item/weapon/peng)
+	exclusions = list(/obj/item/peng)
 
 /obj/random/rare_loot/usually
 	spawn_nothing_percentage = USUALLY

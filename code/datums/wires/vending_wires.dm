@@ -42,7 +42,10 @@
 		if(WIRE_THROW_ITEM)
 			V.shoot_inventory = !mend
 		if(WIRE_CONTRABAND)
-			V.categories &= ~CAT_HIDDEN
+			if(mend)
+				V.categories &= CAT_HIDDEN
+			else
+				V.categories &= ~CAT_HIDDEN
 		if(WIRE_ELECTRIFY)
 			if(mend)
 				V.seconds_electrified = 0

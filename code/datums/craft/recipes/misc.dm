@@ -29,7 +29,7 @@
 
 /datum/craft_recipe/box
 	name = "box"
-	result = /obj/item/weapon/storage/box
+	result = /obj/item/storage/box
 	steps = list(
 		list(CRAFT_MATERIAL, MATERIAL_CARDBOARD)
 	)
@@ -37,7 +37,7 @@
 
 /datum/craft_recipe/plastic_bag
 	name = "plastic bag"
-	result = /obj/item/weapon/storage/bag/plasticbag
+	result = /obj/item/storage/bag/plasticbag
 	steps = list(
 		list(CRAFT_MATERIAL, MATERIAL_PLASTIC)
 	)
@@ -46,7 +46,7 @@
 
 /datum/craft_recipe/ashtray
 	name = "ashtray"
-	result = /obj/item/weapon/material/ashtray
+	result = /obj/item/material/ashtray
 	steps = list(
 		list(CRAFT_MATERIAL, MATERIAL_STEEL)
 	)
@@ -75,7 +75,7 @@
 
 /datum/craft_recipe/cannon_frame
 	name = "cannon frame"
-	result = /obj/item/weapon/cannonframe
+	result = /obj/item/cannonframe
 	flags = CRAFT_ON_FLOOR|CRAFT_ONE_PER_TURF
 	steps = list(
 		list(CRAFT_MATERIAL, MATERIAL_STEEL, 10)
@@ -85,26 +85,26 @@
 
 /datum/craft_recipe/folder
 	name = "grey folder"
-	result = /obj/item/weapon/folder
+	result = /obj/item/folder
 	steps = list(
 		list(CRAFT_MATERIAL, MATERIAL_CARDBOARD)
 	)
 
 /datum/craft_recipe/folder/blue
 	name = "blue folder"
-	result = /obj/item/weapon/folder/blue
+	result = /obj/item/folder/blue
 
 /datum/craft_recipe/folder/red
 	name = "red folder"
-	result = /obj/item/weapon/folder/red
+	result = /obj/item/folder/red
 
 /datum/craft_recipe/folder/white
 	name = "white folder"
-	result = /obj/item/weapon/folder/white
+	result = /obj/item/folder/white
 
 /datum/craft_recipe/folder/yellow
 	name = "yellow folder"
-	result = /obj/item/weapon/folder/yellow
+	result = /obj/item/folder/yellow
 
 
 
@@ -118,7 +118,7 @@
 
 /datum/craft_recipe/tray
 	name = "dinner tray"
-	result = /obj/item/weapon/tray
+	result = /obj/item/tray
 	steps = list(
 		list(CRAFT_MATERIAL, MATERIAL_STEEL),
 		list(CRAFT_TOOL, QUALITY_WIRE_CUTTING, 10, "time" = 120)
@@ -156,7 +156,7 @@
 //You get some article of clothing and shred it with a blade to make a mophead. Add in some metal rods for a handle
 /datum/craft_recipe/mop
 	name = "mop"
-	result = /obj/item/weapon/mop
+	result = /obj/item/mop
 	steps = list(
 		list(CRAFT_OBJECT, /obj/item/clothing),
 		list(CRAFT_TOOL, QUALITY_CUTTING, 10, 120),
@@ -166,7 +166,7 @@
 
 /datum/craft_recipe/brace
 	name = "airlock brace"
-	result = /obj/item/weapon/airlock_brace/directional
+	result = /obj/item/airlock_brace/directional
 	steps = list(
 		list(CRAFT_MATERIAL, MATERIAL_STEEL, 20),
 		list(CRAFT_TOOL, QUALITY_WELDING, 10, 60)

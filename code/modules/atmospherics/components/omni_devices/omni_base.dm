@@ -72,7 +72,7 @@
 		return 0
 	return 1
 
-/obj/machinery/atmospherics/omni/attackby(var/obj/item/weapon/W as obj, var/mob/user as mob)
+/obj/machinery/atmospherics/omni/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	if(!isWrench(W))
 		return ..()
 
@@ -226,8 +226,7 @@
 	return null
 
 /obj/machinery/atmospherics/omni/Destroy()
-	loc = null
-
+	forceMove(null)
 	for(var/datum/omni_port/P in ports)
 		if(P.node)
 			P.node.disconnect(src)

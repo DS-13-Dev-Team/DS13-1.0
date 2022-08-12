@@ -1,11 +1,11 @@
-/obj/item/weapon/book/manual/earthgov_law
+/obj/item/book/manual/earthgov_law
 	name = "Earth Government Law"
 	desc = "A brief overview of EarthGov Law."
 	icon_state = "bookSolGovLaw"
 	author = "The Earth Government Colonial Alliance"
 	title = "Earth Government Law"
 
-/obj/item/weapon/book/manual/earthgov_law/Initialize()
+/obj/item/book/manual/earthgov_law/Initialize()
 	. = ..()
 	dat = {"
 
@@ -20,14 +20,14 @@
 
 		"}
 
-/obj/item/weapon/book/manual/earthgov_sop
+/obj/item/book/manual/earthgov_sop
 	name = "Standard Operating Procedure"
 	desc = "SOP aboard the USG Ishimura."
 	icon_state = "booksolregs"
 	author = "The Earth Government Colonial Alliance"
 	title = "Standard Operating Procedure"
 
-/obj/item/weapon/book/manual/earthgov_sop/Initialize()
+/obj/item/book/manual/earthgov_sop/Initialize()
 	. = ..()
 	dat = {"
 

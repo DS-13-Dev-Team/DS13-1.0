@@ -39,7 +39,7 @@
 /datum/experiment_data/proc/get_object_research_value(obj/item/I, ignoreRepeat = FALSE)
 	var/item_tech_points = 0
 	var/has_new_tech = FALSE
-	var/is_board = istype(I, /obj/item/weapon/circuitboard)
+	var/is_board = istype(I, /obj/item/circuitboard)
 
 	for(var/T in I.origin_tech)
 		if(tech_points[T])
@@ -67,7 +67,7 @@
 			saved_tech_levels[T] |= I.origin_tech[T]
 
 // Returns ammount of research points received
-/*/datum/experiment_data/proc/read_science_tool(obj/item/device/science_tool/I)
+/*/datum/experiment_data/proc/read_science_tool(obj/item/science_tool/I)
 	var/points = 0
 
 	for(var/weapon in I.scanned_autopsy_weapons)
@@ -145,24 +145,24 @@
 
 
 // Grants research points when explosion happens nearby
-/obj/item/device/radio/beacon/explosion_watcher
+/obj/item/radio/beacon/explosion_watcher
 	name = "Kinetic Energy Scanner"
 	desc = "Scans the level of kinetic energy from explosions"
 
 	channels = list("Science" = 1)
 
-/*/obj/item/device/radio/beacon/explosion_watcher/ex_act(severity)
+/*/obj/item/radio/beacon/explosion_watcher/ex_act(severity)
 	return
 
-/obj/item/device/radio/beacon/explosion_watcher/Initialize()
+/obj/item/radio/beacon/explosion_watcher/Initialize()
 	. = ..()
 	explosion_watcher_list += src
 
-/obj/item/device/radio/beacon/explosion_watcher/Destroy()
+/obj/item/radio/beacon/explosion_watcher/Destroy()
 	explosion_watcher_list -= src
 	return ..()
 
-/obj/item/device/radio/beacon/explosion_watcher/proc/react_explosion(turf/epicenter, power)
+/obj/item/radio/beacon/explosion_watcher/proc/react_explosion(turf/epicenter, power)
 	power = round(power)
 	var/calculated_research_points = -1
 	for(var/obj/machinery/computer/rdconsole/RD in RDcomputer_list)
@@ -185,7 +185,7 @@
 		autosay("Detected explosion with power level [power], R&D console is missing or broken", name ,"Science", freq = radiochannels["Science"])
 */
 // Universal tool to get research points from autopsy reports, virus info reports, archeology reports, slime cores
-/obj/item/device/science_tool
+/obj/item/science_tool
 	name = "science tool"
 	icon_state = "science"
 	item_state = "sciencetool"
@@ -206,30 +206,30 @@
 	var/list/scanned_slimecores = list()
 	var/datablocks = 0
 
-/obj/item/device/science_tool/Initialize()
+/obj/item/science_tool/Initialize()
 	. = ..()
 	experiments = new
 
-/obj/item/device/science_tool/attack(mob/living/M, mob/living/user)
+/obj/item/science_tool/attack(mob/living/M, mob/living/user)
 	return
 
-/obj/item/device/science_tool/afterattack(obj/O, mob/living/user)
+/obj/item/science_tool/afterattack(obj/O, mob/living/user)
 	var/scanneddata = 0
 
-	if(istype(O, /obj/item/weapon/disk/research_points))
-		var/obj/item/weapon/disk/research_points/disk = O
+	if(istype(O, /obj/item/disk/research_points))
+		var/obj/item/disk/research_points/disk = O
 		to_chat(user, "<span class='notice'>[disk] stores approximately [disk.stored_points] research points</span>")
 		return
 
-/*	if(istype(O,/obj/item/weapon/paper/autopsy_report))
-		var/obj/item/weapon/paper/autopsy_report/report = O
+/*	if(istype(O,/obj/item/paper/autopsy_report))
+		var/obj/item/paper/autopsy_report/report = O
 		for(var/datum/autopsy_data/W in report.autopsy_data)
 			if(!(W.weapon in scanned_autopsy_weapons))
 				scanneddata += 1
 				scanned_autopsy_weapons += W.weapon
 
-	if(istype(O, /obj/item/weapon/paper/artifact_info))
-		var/obj/item/weapon/paper/artifact_info/report = O
+	if(istype(O, /obj/item/paper/artifact_info))
+		var/obj/item/paper/artifact_info/report = O
 		if(report.artifact_type)
 			for(var/list/artifact in scanned_artifacts)
 				if(artifact["type"] == report.artifact_type && artifact["first_effect"] == report.artifact_first_effect && artifact["second_effect"] == report.artifact_second_effect)
@@ -243,8 +243,8 @@
 			))
 			scanneddata += 1
 
-	if(istype(O, /obj/item/weapon/paper/virus_report))
-		var/obj/item/weapon/paper/virus_report/report = O
+	if(istype(O, /obj/item/paper/virus_report))
+		var/obj/item/paper/virus_report/report = O
 		for(var/symptom in report.symptoms)
 			if(!scanned_symptoms[symptom])
 				scanneddata += 1
@@ -260,14 +260,14 @@
 		else
 			to_chat(user, "<span class='notice'>[O] has no research value</span>")
 
-/obj/item/device/science_tool/proc/clear_data()
+/obj/item/science_tool/proc/clear_data()
 	scanned_autopsy_weapons = list()
 	scanned_artifacts = list()
 	scanned_symptoms = list()
 	scanned_slimecores = list()
 	datablocks = 0
 
-/obj/item/weapon/disk/research_points
+/obj/item/disk/research_points
 	name = "Important Disk"
 	desc = "Looks a disk with some important information stored. Scientists might know what to do with it"
 	icon = 'icons/obj/cloning.dmi'
@@ -277,14 +277,14 @@
 	matter = list(MATERIAL_STEEL = 30, MATERIAL_GLASS = 10)
 	var/stored_points
 
-/obj/item/weapon/disk/research_points/Initialize()
+/obj/item/disk/research_points/Initialize()
 	. = ..()
 	pixel_x = rand(-5.0, 5)
 	pixel_y = rand(-5.0, 5)
 
 	stored_points = rand(1,10)*1000
 
-/obj/item/weapon/disk/research_points/rare/Initialize()
+/obj/item/disk/research_points/rare/Initialize()
 	. = ..()
 
 	stored_points = rand(10, 20)*1000

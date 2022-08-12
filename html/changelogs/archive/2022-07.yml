@@ -9,3 +9,10 @@
   - bugfix: Marker signals won't hear dead chat and won't see ghosts anymore.
   - bugfix: Made fake Marker in the Church indestructible.
   - admin: Some admin tools (like Player Panel) are accessible by moderators now.
+2022-07-28:
+  DTraitor:
+  - rscadd: Ported map rotation from /tg/.
+  - bugfix: Necromorphs have proper chat colours now.
+  - rscadd: Necromorphs can hear english once again but they can't speak it.
+  - bugfix: Fixed divider components clickbox. Shooting and hitting them should be
+      easier now.

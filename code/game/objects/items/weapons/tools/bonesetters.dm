@@ -1,4 +1,4 @@
-/obj/item/weapon/tool/bonesetter
+/obj/item/tool/bonesetter
 	name = "bone setter"
 	desc = "Sets bones back to their healthy positions."
 	icon_state = "bone setter"

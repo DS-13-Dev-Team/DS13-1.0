@@ -1,4 +1,4 @@
-/obj/item/device/boombox
+/obj/item/boombox
 	name = "boombox"
 	desc = "A device used to emit rhythmical sounds, colloquialy refered to as a 'boombox'."
 	icon = 'icons/obj/boombox.dmi'
@@ -16,39 +16,39 @@
 	var/list/datum/track/tracks
 	var/sound_id
 
-/obj/item/device/boombox/Initialize()
+/obj/item/boombox/Initialize()
 	. = ..()
-	sound_id = "[/obj/item/device/boombox]_[sequential_id(/obj/item/device/boombox)]"
+	sound_id = "[/obj/item/boombox]_[sequential_id(/obj/item/boombox)]"
 	tracks = setup_music_tracks(tracks)
 
-/obj/item/device/boombox/Destroy()
+/obj/item/boombox/Destroy()
 	StopPlaying()
 	QDEL_NULL_LIST(tracks)
 	current_track = null
 	. = ..()
 
-/obj/item/device/boombox/equipped()
+/obj/item/boombox/equipped()
 	.=..()
 	if(!isturf(loc))
 		RegisterSignal(loc, COMSIG_MOVABLE_MOVED, .proc/on_holder_moved)
 
-/obj/item/device/boombox/dropped(mob/user)
+/obj/item/boombox/dropped(mob/user)
 	.=..()
 	UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
 
-/obj/item/device/boombox/proc/on_holder_moved(mob/user, OldLoc, NewLoc)
+/obj/item/boombox/proc/on_holder_moved(mob/user, OldLoc, NewLoc)
 	SEND_SIGNAL(src, COMSIG_MOVABLE_MOVED, OldLoc, NewLoc)
 
-/obj/item/device/boombox/update_icon()
+/obj/item/boombox/update_icon()
 	icon_state = active ? "on" : "off"
 
-/obj/item/device/boombox/tgui_interact(mob/user, datum/tgui/ui = null)
+/obj/item/boombox/tgui_interact(mob/user, datum/tgui/ui = null)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "jukebox", "Your Media Library")
+		ui = new(user, src, "JukeNotTheBox", "Your Media Library")
 		ui.open()
 
-/obj/item/device/boombox/ui_data()
+/obj/item/boombox/ui_data()
 	var/list/data = list()
 	data["active"] = active
 	data["songs"] = list()
@@ -66,7 +66,7 @@
 
 	return data
 
-/obj/item/device/boombox/ui_act(action, params)
+/obj/item/boombox/ui_act(action, params)
 	. = ..()
 	if(.)
 		return
@@ -113,16 +113,16 @@
 				AdjustVolume(text2num(new_volume))
 				return TRUE
 
-/obj/item/device/boombox/attack_self(var/mob/user)
+/obj/item/boombox/attack_self(var/mob/user)
 	tgui_interact(user)
 
-/obj/item/device/boombox/proc/StopPlaying()
+/obj/item/boombox/proc/StopPlaying()
 	active = 0
 	update_icon()
 	QDEL_NULL(sound_token)
 
 
-/obj/item/device/boombox/proc/StartPlaying()
+/obj/item/boombox/proc/StartPlaying()
 	StopPlaying()
 	if(!current_track)
 		return
@@ -133,7 +133,7 @@
 	active = 1
 	update_icon()
 
-/obj/item/device/boombox/proc/AdjustVolume(var/new_volume)
+/obj/item/boombox/proc/AdjustVolume(var/new_volume)
 	volume = Clamp(new_volume, 0, 50)
 	if(sound_token)
 		sound_token.SetVolume(volume)

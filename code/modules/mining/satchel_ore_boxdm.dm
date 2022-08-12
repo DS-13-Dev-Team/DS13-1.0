@@ -22,13 +22,13 @@
 	if(!QDELING(ore))
 		ore.forceMove(src)
 
-/obj/structure/ore_box/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/structure/ore_box/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/stack/ore))
 		//Move it to null instead of ore box to prevent bugs
 		if(user.unEquip(W, null))
 			pick_up_ore(W)
-	else if (istype(W, /obj/item/weapon/storage))
-		var/obj/item/weapon/storage/S = W
+	else if (istype(W, /obj/item/storage))
+		var/obj/item/storage/S = W
 		S.hide_from(usr)
 		var/list/new_ore = list()
 		for(var/obj/item/stack/ore/O in S.contents)
@@ -112,6 +112,8 @@
 	return
 
 /obj/structure/ore_box/ex_act(severity, var/atom/epicentre)
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	if(severity == 1.0 || (severity < 3.0 && prob(50)))
 		for (var/obj/item/stack/ore/O in contents)
 			O.forceMove(loc)

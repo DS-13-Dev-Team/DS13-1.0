@@ -34,7 +34,7 @@
 	if (!destroyed)
 		set_density(0)
 		destroyed = 1
-		new /obj/item/weapon/material/shard(loc)
+		new /obj/item/material/shard(loc)
 		for(var/atom/movable/AM in src)
 			AM.dropInto(loc)
 		playsound(src, "shatter", 70, 1)

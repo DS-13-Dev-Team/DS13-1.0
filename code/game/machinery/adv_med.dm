@@ -6,7 +6,7 @@
 	icon_state = "body_scanner_0"
 	density = 1
 	anchored = 1
-	circuit = /obj/item/weapon/circuitboard/body_scanner
+	circuit = /obj/item/circuitboard/body_scanner
 	idle_power_usage = 60
 	active_power_usage = 10000	//10 kW. It's a big all-body scanner.
 	light_color = "#00FF00"
@@ -116,17 +116,19 @@
 	if (AS.occupant.client)
 		AS.occupant.client.eye = AS.occupant.client.mob
 		AS.occupant.client.perspective = MOB_PERSPECTIVE
-	AS.occupant.loc = src.loc
+	AS.occupant.forceMove(src.loc)
 	AS.occupant = null
 	icon_state = "body_scanner_0"
 	SStgui.update_uis(src)
 	return
 
 /obj/machinery/bodyscanner/ex_act(severity)
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	switch(severity)
 		if(1.0)
 			for(var/atom/movable/A as mob|obj in src)
-				A.loc = src.loc
+				A.forceMove(src.loc)
 				ex_act(severity)
 				//Foreach goto(35)
 			//SN src = null
@@ -135,7 +137,7 @@
 		if(2.0)
 			if (prob(50))
 				for(var/atom/movable/A as mob|obj in src)
-					A.loc = src.loc
+					A.forceMove(src.loc)
 					ex_act(severity)
 					//Foreach goto(108)
 				//SN src = null
@@ -144,7 +146,7 @@
 		if(3.0)
 			if (prob(25))
 				for(var/atom/movable/A as mob|obj in src)
-					A.loc = src.loc
+					A.forceMove(src.loc)
 					ex_act(severity)
 					//Foreach goto(181)
 				//SN src = null
@@ -156,8 +158,8 @@
 /datum/advanced_scanner
 	var/mob/living/carbon/human/occupant
 	var/obj/machinery/bodyscanner/BS
-	var/obj/item/device/adv_health_analyzer/AHA
-	var/known_implants = list(/obj/item/weapon/implant/chem, /obj/item/weapon/implant/death_alarm, /obj/item/weapon/implant/tracking)
+	var/obj/item/adv_health_analyzer/AHA
+	var/known_implants = list(/obj/item/implant/chem, /obj/item/implant/death_alarm, /obj/item/implant/tracking)
 
 /datum/advanced_scanner/ui_host(mob/user)
 	if(BS)
@@ -230,8 +232,6 @@
 		occupantData["paralysisSeconds"] = round(H.paralysis / 4)
 		occupantData["bodyTempC"] = H.bodytemperature-T0C
 		occupantData["bodyTempF"] = (((H.bodytemperature-T0C) * 1.8) + 32)
-
-		occupantData["hasBorer"] = H.has_brain_worms()
 
 		var/bloodData[0]
 		if(H.vessel)
@@ -372,7 +372,7 @@
 		if("print_p")
 			BS.visible_message("<span class='notice'>[BS] rattles and prints out a sheet of paper.</span>")
 			playsound(BS, 'sound/machines/printer.ogg', 50, 1)
-			var/obj/item/weapon/paper/P = new /obj/item/weapon/paper(get_turf(BS))
+			var/obj/item/paper/P = new /obj/item/paper(get_turf(BS))
 			var/name = occupant ? occupant.name : "Unknown"
 			P.info = "<CENTER><B>Body Scan - [name]</B></CENTER><BR>"
 			P.info += "<b>Time of scan:</b> [station_time_timestamp()]<br><br>"
@@ -426,9 +426,6 @@
 		dat += "Body Temperature: [occupant.bodytemperature-T0C]&deg;C ([occupant.bodytemperature*1.8-459.67]&deg;F)<br>"
 
 		dat += "<hr>"
-
-		if(occupant.has_brain_worms())
-			dat += "Large growth detected in frontal lobe, possibly cancerous. Surgical removal is recommended.<br>"
 
 		if(occupant.vessel)
 			var/blood_volume = round(occupant.vessel.get_reagent_amount("blood"))
@@ -553,7 +550,7 @@
 
 	return dat
 
-/obj/item/device/adv_health_analyzer
+/obj/item/adv_health_analyzer
 	name = "advanced health analyzer"
 	desc = "A hand-held body scanner able to distinguish vital signs of the subject."
 	icon_state = "health_adv"
@@ -568,19 +565,19 @@
 	origin_tech = list(TECH_MAGNET = 3, TECH_BIO = 5)
 	var/datum/advanced_scanner/AS
 
-/obj/item/device/adv_health_analyzer/Initialize()
+/obj/item/adv_health_analyzer/Initialize()
 	. = ..()
 	AS = new /datum/advanced_scanner()
 	AS.AHA = src
 
-/obj/item/device/adv_health_analyzer/Destroy()
+/obj/item/adv_health_analyzer/Destroy()
 	QDEL_NULL(AS)
 	. = ..()
 
-/obj/item/device/adv_health_analyzer/attack_self(mob/user)
+/obj/item/adv_health_analyzer/attack_self(mob/user)
 	AS.tgui_interact(user)
 
-/obj/item/device/adv_health_analyzer/afterattack(atom/target, mob/user, proximity_flag)
+/obj/item/adv_health_analyzer/afterattack(atom/target, mob/user, proximity_flag)
 	if (!user.is_advanced_tool_user())
 		to_chat(user, "<span class='warning'>You are not nimble enough to use this device.</span>")
 		return

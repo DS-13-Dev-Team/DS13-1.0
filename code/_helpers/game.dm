@@ -48,11 +48,7 @@
 	if (isarea(A))
 		return A
 
-/proc/in_range(source, user)
-	if(get_dist(source, user) <= 1)
-		return 1
-
-	return 0 //not in range and not telekinetic
+#define in_range(source, user) (get_dist(source, user) <= 1 && (get_step(source, 0)?:z) == (get_step(user, 0)?:z))
 
 // Like view but bypasses luminosity check
 
@@ -140,7 +136,7 @@
 
 /proc/get_mob_by_key(var/key)
 	for(var/mob/M in SSmobs.mob_list)
-		if(M.ckey == lowertext(key))
+		if(M.ckey == ckey(key))
 			return M
 	return null
 

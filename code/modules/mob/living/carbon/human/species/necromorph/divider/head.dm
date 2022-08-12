@@ -223,8 +223,6 @@
 /datum/extension/divider_puppet/New(var/mob/newholder)
 	.=..()
 	H = newholder
-	if (H.client)
-		screen_rotation()
 
 	H.mutations.Add(CLUMSY)
 	RegisterSignal(H, COMSIG_MOVABLE_MOVED, .proc/holder_moved)
@@ -241,25 +239,6 @@
 	if (prob(10))
 		H.visible_message("[H] bumps into [obstacle] and staggers off")
 		H.lurch(get_dir(obstacle, H))
-
-/datum/extension/divider_puppet/proc/screen_rotation()
-	if (!H.client || screen_rotated)
-		return
-
-	screen_rotated = TRUE
-
-	//Lets do some cool camera tricks
-
-	H.client.dir = SOUTH
-	spawn(70)
-		if (H && H.client)
-			H.visible_message("[H] adjusts its head upon the new body")
-			H.client.dir = pick(list(EAST, WEST))
-			sleep(15)
-			H.client.dir = NORTH
-
-
-
 
 /*
 	Mounting

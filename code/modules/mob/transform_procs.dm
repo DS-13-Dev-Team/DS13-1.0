@@ -133,13 +133,13 @@
 	else
 		O.key = key
 
-	O.loc = loc
+	O.forceMove(loc)
 	O.job = "Robot"
 	if(O.mind.assigned_role == "Robot")
 		if(O.mind.role_alt_title == "Drone")
-			O.mmi = new /obj/item/device/mmi/digital/robot(O)
+			O.mmi = new /obj/item/mmi/digital/robot(O)
 		else if(O.mind.role_alt_title == "Cyborg")
-			O.mmi = new /obj/item/device/mmi(O)
+			O.mmi = new /obj/item/mmi(O)
 		else
 			O.mmi = new /obj/item/organ/internal/posibrain(O)
 

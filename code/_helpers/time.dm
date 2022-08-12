@@ -42,6 +42,7 @@ GLOBAL_VAR_INIT(rollovercheck_last_timeofday, 0)
 
 #undef DELTA_CALC
 
+#define UNTIL(X) while(!(X)) stoplag()
 
 /proc/descriptive_time(var/time, var/divider = ", ")
 	var/list/components = list()

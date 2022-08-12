@@ -1,5 +1,5 @@
 
-/obj/item/weapon/rig/patrol
+/obj/item/rig/patrol
 	name = "patrol RIG"
 	desc = "A very lightweight yet reasonably armoured suit, designed for long journeys on foot."
 	icon_state = "patrol"

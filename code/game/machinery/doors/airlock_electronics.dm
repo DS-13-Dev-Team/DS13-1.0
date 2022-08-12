@@ -1,6 +1,6 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
 
-/obj/item/weapon/airlock_electronics
+/obj/item/airlock_electronics
 	name = "airlock electronics"
 	icon = 'icons/obj/doors/door_assembly.dmi'
 	icon_state = "door_electronics"
@@ -18,7 +18,7 @@
 	var/lockable = 1
 
 
-/obj/item/weapon/airlock_electronics/attack_self(mob/user as mob)
+/obj/item/airlock_electronics/attack_self(mob/user as mob)
 	if (!ishuman(user) && !istype(user,/mob/living/silicon/robot))
 		return ..(user)
 
@@ -27,17 +27,17 @@
 
 
 //tgui interact code generously lifted from tgstation.
-/obj/item/weapon/airlock_electronics/tgui_interact(mob/user, datum/tgui/ui = null)
+/obj/item/airlock_electronics/tgui_interact(mob/user, datum/tgui/ui = null)
 
 	SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "airlock_electronics", src.name)
 		ui.open()
 
-/obj/item/weapon/airlock_electronics/ui_state(mob/user)
+/obj/item/airlock_electronics/ui_state(mob/user)
 	return GLOB.tgui_hands_state
 
-/obj/item/weapon/airlock_electronics/ui_static_data(mob/user)
+/obj/item/airlock_electronics/ui_static_data(mob/user)
 	var/list/data = list()
 
 	var/list/regions = list()
@@ -56,7 +56,7 @@
 	data["regions"] = regions
 	return data
 
-/obj/item/weapon/airlock_electronics/ui_data(mob/user)
+/obj/item/airlock_electronics/ui_data(mob/user)
 	var/list/data = list()
 
 	data["accesses"] = conf_access
@@ -66,7 +66,7 @@
 
 	return data
 
-/obj/item/weapon/airlock_electronics/ui_act(action, params)
+/obj/item/airlock_electronics/ui_act(action, params)
 	. = ..()
 	if(.)
 		return
@@ -109,9 +109,9 @@
 				last_configurator = usr.name
 				. = TRUE
 			else
-				var/obj/item/weapon/card/id/I = usr.get_active_hand()
+				var/obj/item/card/id/I = usr.get_active_hand()
 				I = I ? I.GetIdCard() : null
-				if(!istype(I, /obj/item/weapon/card/id))
+				if(!istype(I, /obj/item/card/id))
 					to_chat(usr, "<span class='warning'>[\src] flashes a yellow LED near the ID scanner. Did you remember to scan your ID or PDA?</span>")
 					return TRUE
 				if (check_access(I))
@@ -126,23 +126,23 @@
 			locked = 1
 			. = TRUE
 
-/obj/item/weapon/airlock_electronics/secure
+/obj/item/airlock_electronics/secure
 	name = "secure airlock electronics"
 	desc = "designed to be somewhat more resistant to hacking than standard electronics."
 	origin_tech = list(TECH_DATA = 2)
 	secure = 1
 
-/obj/item/weapon/airlock_electronics/brace
+/obj/item/airlock_electronics/brace
 	name = "airlock brace access circuit"
 	req_access = list()
 	locked = 0
 	lockable = 0
 
-/obj/item/weapon/airlock_electronics/brace/tgui_interact(mob/user, datum/tgui/ui = null)
+/obj/item/airlock_electronics/brace/tgui_interact(mob/user, datum/tgui/ui = null)
 	SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "airlock_electronics", src.name)
 		ui.open()
 
-/obj/item/weapon/airlock_electronics/brace/ui_state(mob/user)
+/obj/item/airlock_electronics/brace/ui_state(mob/user)
 	return GLOB.tgui_deep_inventory_state

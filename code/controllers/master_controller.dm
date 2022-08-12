@@ -12,11 +12,11 @@ var/global/pipe_processing_killed = 0
 
 var/global/initialization_stage = 0
 
-datum/controller/game_controller
+/datum/controller/game_controller
 	var/list/shuttle_list	                    // For debugging and VV
 	var/init_immediately = FALSE
 
-datum/controller/game_controller/New()
+/datum/controller/game_controller/New()
 	//There can be only one master_controller. Out with the old and in with the new.
 	if(master_controller != src)
 		log_debug("Rebuilding Master Controller")
@@ -30,13 +30,7 @@ datum/controller/game_controller/New()
 		job_master.LoadJobs("config/jobs.txt")
 		admin_notice("<span class='danger'>Job setup complete</span>", R_DEBUG)
 
-	if(!syndicate_code_phrase)		syndicate_code_phrase	= generate_code_phrase()
-	if(!syndicate_code_response)	syndicate_code_response	= generate_code_phrase()
-
 datum/controller/game_controller/proc/setup()
-	spawn(20)
-		createRandomZlevel()
-
 	setup_objects()
 	setupgenetics()
 

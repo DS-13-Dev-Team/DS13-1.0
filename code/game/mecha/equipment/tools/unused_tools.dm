@@ -68,7 +68,7 @@
 			if(chassis.occupant)
 				for(var/obj/effect/speech_bubble/B in range(1, chassis))
 					if(B.parent == chassis.occupant)
-						B.loc = chassis.loc
+						B.forceMove(chassis.loc)
 		if(move_result)
 			wait = 1
 			chassis.use_power(energy_drain)
@@ -127,7 +127,7 @@
 		chassis.proc_res["dynattackby"] = src
 		return
 
-	proc/dynattackby(obj/item/weapon/W as obj, mob/user as mob)
+	proc/dynattackby(obj/item/W as obj, mob/user as mob)
 		if(!action_checks(user) || !active)
 			return
 		user.electrocute_act(shock_damage, src)

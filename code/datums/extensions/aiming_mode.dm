@@ -11,7 +11,7 @@
 	flags = EXTENSION_FLAG_IMMEDIATE
 	base_type = /datum/extension/aim_mode
 	var/mob/living/user	//Who is aiming
-	var/obj/item/weapon/gun/gun	//What gun are they aiming
+	var/obj/item/gun/gun	//What gun are they aiming
 
 	var/active = FALSE	//Prevents double applying things
 	var/removed = FALSE	//Set during the process of deletion
@@ -29,7 +29,7 @@
 	auto_register_statmods = FALSE
 
 
-/datum/extension/aim_mode/New(var/atom/holder, var/obj/item/weapon/gun/_gun)
+/datum/extension/aim_mode/New(var/atom/holder, var/obj/item/gun/_gun)
 	.=..()
 	user = holder
 	gun = _gun

@@ -9,13 +9,13 @@
 	icon_off = "secureengoff"
 
 /obj/structure/closet/secure_closet/janitor/WillContain()
-	return list(/obj/item/weapon/reagent_containers/glass/bucket,
-				/obj/item/weapon/mop,
-				/obj/item/weapon/caution = 4,
-				/obj/item/weapon/storage/bag/trash,
-				/obj/item/device/lightreplacer,
+	return list(/obj/item/reagent_containers/glass/bucket,
+				/obj/item/mop,
+				/obj/item/caution = 4,
+				/obj/item/storage/bag/trash,
+				/obj/item/lightreplacer,
 				/obj/item/clothing/shoes/galoshes,
-				/obj/item/weapon/reagent_containers/spray/cleaner,
-				/obj/item/weapon/reagent_containers/glass/rag,
-				/obj/item/weapon/grenade/chem_grenade/cleaner = 3,
+				/obj/item/reagent_containers/spray/cleaner,
+				/obj/item/reagent_containers/glass/rag,
+				/obj/item/grenade/chem_grenade/cleaner = 3,
 				/obj/structure/mopbucket)

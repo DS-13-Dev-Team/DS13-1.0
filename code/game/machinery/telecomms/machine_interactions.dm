@@ -79,26 +79,26 @@
 					// Drop all the component stuff
 					if(contents.len > 0)
 						for(var/obj/x in src)
-							x.loc = user.loc
+							x.forceMove(user.loc)
 					else
 
 						// If the machine wasn't made during runtime, probably doesn't have components:
 						// manually find the components and drop them!
-						var/obj/item/weapon/circuitboard/C = new circuitboard
+						var/obj/item/circuitboard/C = new circuitboard
 						for(var/I in C.req_components)
 							for(var/i = 1, i <= C.req_components[I], i++)
 								var/obj/item/s = new I
-								s.loc = user.loc
+								s.forceMove(user.loc)
 								if(istype(P, /obj/item/stack/cable_coil))
 									var/obj/item/stack/cable_coil/A = P
 									A.amount = 1
 
 						// Drop a circuit board too
-						C.loc = user.loc
+						C.forceMove(user.loc)
 
 					// Create a machine frame and delete the current machine
 					var/obj/machinery/constructable_frame/machine_frame/F = new
-					F.loc = src.loc
+					F.forceMove(src.loc)
 					qdel(src)
 
 
@@ -116,7 +116,7 @@
 	if(stat & (BROKEN|NOPOWER))
 		return
 
-	var/obj/item/weapon/tool/multitool/P = get_multitool(user)
+	var/obj/item/tool/multitool/P = get_multitool(user)
 
 	user.set_machine(src)
 	var/dat
@@ -208,7 +208,7 @@
 
 /obj/machinery/telecomms/proc/get_multitool(mob/user as mob)
 
-	var/obj/item/weapon/tool/multitool/P = null
+	var/obj/item/tool/multitool/P = null
 	// Let's double check
 	var/obj/item/I = user.get_active_hand()
 	if(!issilicon(user) && isMultitool(I))
@@ -307,7 +307,7 @@
 	if(stat & (BROKEN|NOPOWER))
 		return
 
-	var/obj/item/weapon/tool/multitool/P = get_multitool(usr)
+	var/obj/item/tool/multitool/P = get_multitool(usr)
 
 	if(href_list["input"])
 		switch(href_list["input"])

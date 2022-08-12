@@ -1,4 +1,4 @@
-/obj/item/weapon/tool/pickaxe
+/obj/item/tool/pickaxe
 	name = "pickaxe"
 	desc = "The most basic of mining tools, for short excavations and small mineral extractions."
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
@@ -23,7 +23,7 @@
 	degradation = DEGRADATION_TOUGH_1
 	armor_penetration = 8
 
-/obj/item/weapon/tool/pickaxe/jackhammer
+/obj/item/tool/pickaxe/jackhammer
 	name = "jackhammer"
 	icon_state = "jackhammer"
 	item_state = "jackhammer"
@@ -32,9 +32,9 @@
 	origin_tech = list(TECH_MATERIAL = 3, TECH_POWER = 2, TECH_ENGINEERING = 2)
 	desc = "Cracks rocks with blasts, perfect for killing cave lizards."
 	use_power_cost = 0.6
-	suitable_cell = /obj/item/weapon/cell
+	suitable_cell = /obj/item/cell
 
-/obj/item/weapon/tool/pickaxe/drill
+/obj/item/tool/pickaxe/drill
 	name = "mining drill" // Can dig sand as well!
 	icon_state = "handdrill"
 	item_state = "jackhammer"
@@ -45,7 +45,7 @@
 	use_fuel_cost = 0.15
 	max_fuel = 100
 
-/obj/item/weapon/tool/pickaxe/diamonddrill
+/obj/item/tool/pickaxe/diamonddrill
 	name = "diamond-point mining drill"
 	icon_state = "diamonddrill"
 	item_state = "jackhammer"
@@ -59,11 +59,11 @@
 	use_fuel_cost = 0.15
 	max_fuel = 120
 
-/obj/item/weapon/tool/pickaxe/diamonddrill/rig
+/obj/item/tool/pickaxe/diamonddrill/rig
 	use_fuel_cost = 0
 	passive_fuel_cost = 0
 
-/obj/item/weapon/tool/pickaxe/excavation
+/obj/item/tool/pickaxe/excavation
 	name = "hand pickaxe"
 	icon_state = "pick_hand"
 	item_state = "syringe_0"
@@ -75,7 +75,7 @@
 	precision = 20
 
 
-/obj/item/weapon/tool/pickaxe/laser
+/obj/item/tool/pickaxe/laser
 	name = "rock saw"
 	desc = "An energised mining tool for surveying and retrieval of objects embedded in otherwise dense material. Very dangerous, will cut through flesh and bone with ease."
 	icon = 'icons/obj/weapons.dmi'
@@ -100,12 +100,12 @@
 	use_power_cost = 0.3
 	passive_power_cost = 0.075
 	passive_fuel_cost = 0
-	suitable_cell = /obj/item/weapon/cell
+	suitable_cell = /obj/item/cell
 	toggleable = TRUE
 	degradation = DEGRADATION_TOUGH_2
 	armor_penetration = 8
 
-/obj/item/weapon/tool/pickaxe/laser/update_icon()
+/obj/item/tool/pickaxe/laser/update_icon()
 	if (switched_on)
 		icon_state = "ds_rocksaw1"
 		item_state = "ds_rocksaw1"
@@ -114,18 +114,18 @@
 		item_state = "ds_rocksaw0"
 
 
-/obj/item/weapon/tool/pickaxe/laser/turn_on()
+/obj/item/tool/pickaxe/laser/turn_on()
 	.=..()
 	playsound(get_turf(src), 'sound/weapons/saberon.ogg', 20, 1, -2)
 
 
-/obj/item/weapon/tool/pickaxe/laser/turn_off()
+/obj/item/tool/pickaxe/laser/turn_off()
 	.=..()
 	playsound(get_turf(src), 'sound/weapons/saberoff.ogg', 20, 1, -2)
 
 
 
-/obj/item/weapon/tool/pickaxe/xeno
+/obj/item/tool/pickaxe/xeno
 	name = "master xenoarch pickaxe"
 	desc = "A miniature excavation tool for precise digging."
 	icon = 'icons/obj/xenoarchaeology.dmi'
@@ -142,11 +142,11 @@
 	default_full_dig = FALSE
 	precision = 100 //To prevent constant failing
 
-/obj/item/weapon/tool/pickaxe/xeno/examine()
+/obj/item/tool/pickaxe/xeno/examine()
 	..()
 	to_chat(usr, "This tool has a [get_tool_quality(QUALITY_DIGGING)] centimetre excavation depth.")
 
-/obj/item/weapon/tool/pickaxe/xeno/brush
+/obj/item/tool/pickaxe/xeno/brush
 	name = "wire brush"
 	icon_state = "pick_brush"
 	slot_flags = SLOT_EARS
@@ -157,37 +157,37 @@
 	worksound = 'sound/weapons/thudswoosh.ogg'
 	sharp = 0
 
-/obj/item/weapon/tool/pickaxe/xeno/one_pick
+/obj/item/tool/pickaxe/xeno/one_pick
 	name = "2cm pick"
 	icon_state = "pick1"
 	tool_qualities = list(QUALITY_DIGGING =  2)
 	worksound = 'sound/items/Screwdriver.ogg'
 
-/obj/item/weapon/tool/pickaxe/xeno/two_pick
+/obj/item/tool/pickaxe/xeno/two_pick
 	name = "4cm pick"
 	icon_state = "pick2"
 	tool_qualities = list(QUALITY_DIGGING =  4)
 	worksound = 'sound/items/Screwdriver.ogg'
 
-/obj/item/weapon/tool/pickaxe/xeno/three_pick
+/obj/item/tool/pickaxe/xeno/three_pick
 	name = "6cm pick"
 	icon_state = "pick3"
 	tool_qualities = list(QUALITY_DIGGING =  6)
 	worksound = 'sound/items/Screwdriver.ogg'
 
-/obj/item/weapon/tool/pickaxe/xeno/four_pick
+/obj/item/tool/pickaxe/xeno/four_pick
 	name = "8cm pick"
 	icon_state = "pick4"
 	tool_qualities = list(QUALITY_DIGGING =  8)
 	worksound = 'sound/items/Screwdriver.ogg'
 
-/obj/item/weapon/tool/pickaxe/xeno/five_pick
+/obj/item/tool/pickaxe/xeno/five_pick
 	name = "10cm pick"
 	icon_state = "pick5"
 	tool_qualities = list(QUALITY_DIGGING =  10)
 	worksound = 'sound/items/Screwdriver.ogg'
 
-/obj/item/weapon/tool/pickaxe/xeno/six_pick
+/obj/item/tool/pickaxe/xeno/six_pick
 	name = "12cm pick"
 	icon_state = "pick6"
 	tool_qualities = list(QUALITY_DIGGING =  12)

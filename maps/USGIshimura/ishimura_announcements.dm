@@ -1,4 +1,4 @@
-datum/map/ishimura
+/datum/map/ishimura
 	emergency_shuttle_docked_message = ""
 	emergency_shuttle_leaving_dock = "Attention all hands: the escape pods have been launched, arriving at rendezvous point in %ETA%."
 

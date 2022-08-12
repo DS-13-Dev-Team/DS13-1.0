@@ -23,6 +23,7 @@ FLOOR SAFES
 
 
 /obj/structure/safe/New()
+	.=..()
 	tumbler_1_pos = rand(0, 72)
 	tumbler_1_open = rand(0, 72)
 
@@ -163,7 +164,7 @@ FLOOR SAFES
 			return
 
 
-obj/structure/safe/ex_act(severity)
+/obj/structure/safe/ex_act(severity)
 	return
 
 //FLOOR SAFES

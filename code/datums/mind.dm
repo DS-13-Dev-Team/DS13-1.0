@@ -87,6 +87,7 @@
 		current.mind = null
 
 		SSnano.user_transferred(current, new_character) // transfer active NanoUI instances to new user
+		SStgui.on_transfer(current, new_character)
 	if(new_character.mind)		//remove any mind currently in our new body's mind variable
 		new_character.mind.current = null
 
@@ -385,7 +386,7 @@
 
 		switch(href_list["implant"])
 			if("remove")
-				for(var/obj/item/weapon/implant/loyalty/I in H.contents)
+				for(var/obj/item/implant/loyalty/I in H.contents)
 					for(var/obj/item/organ/external/organs in H.organs)
 						if(I in organs.implants)
 							qdel(I)
@@ -447,7 +448,7 @@
 				memory = null//Remove any memory they may have had.
 			if("crystals")
 				if (usr.client.holder.rights & R_FUN)
-					var/obj/item/device/uplink/suplink = find_syndicate_uplink()
+					var/obj/item/uplink/suplink = find_syndicate_uplink()
 					if(!suplink)
 						to_chat(usr, "<span class='warning'>Failed to find an uplink.</span>")
 						return
@@ -473,7 +474,7 @@
 	return null
 
 /datum/mind/proc/take_uplink()
-	var/obj/item/device/uplink/H = find_syndicate_uplink()
+	var/obj/item/uplink/H = find_syndicate_uplink()
 	if(H)
 		qdel(H)
 
@@ -590,17 +591,15 @@
 
 
 //Initialisation procs
-/mob/living/proc/mind_initialize()
+/mob/proc/mind_initialize()
 	if(mind)
 		mind.key = key
 	else
 		mind = new /datum/mind(key)
 		mind.replace_original_mob(src)
-		if(SSticker)
-			GLOB.minds += mind
-		else
-			world.log << "## DEBUG: mind_initialize(): No ticker ready yet! Please inform Carn"
-	if(!mind.name)	mind.name = real_name
+		GLOB.minds += mind
+	if(!mind.name)
+		mind.name = real_name
 	mind.current = src
 	if(player_is_antag(mind))
 		add_verb(src.client, /client/proc/aooc)

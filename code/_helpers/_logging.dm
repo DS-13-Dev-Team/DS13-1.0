@@ -211,6 +211,13 @@
 		entry += "\n[message]"
 	WRITE_LOG(GLOB.tgui_log, entry)
 
+/// Logging for mapping errors
+/proc/log_mapping(text, skip_world_log)
+	WRITE_LOG(GLOB.world_map_error_log, text)
+	if(skip_world_log)
+		return
+	SEND_TEXT(world.log, text)
+
 /* For logging round startup. */
 /proc/start_log(log)
 	WRITE_LOG(log, "Starting up round ID [GLOB.round_id].\n-------------------------")
@@ -324,12 +331,7 @@
 
 /proc/report_progress(progress_message)
 	log_world(progress_message)
-
-
-	//Checking world port here is used to prevent spamming a developer with duplicate reports when running in single user mode.
-	//Only do this log if port is nonzero, which means we are hosting through dream daemon
-	if (world.port)
-		admin_notice(progress_message, R_DEBUG)
+	admin_notice(progress_message, R_DEBUG)
 
 /proc/loc_name(atom/A)
 	if(!istype(A))

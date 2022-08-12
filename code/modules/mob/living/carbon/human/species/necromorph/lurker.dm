@@ -238,7 +238,7 @@ The Lurker can only fire spines while its shell is open"
 -----------------------------*/
 
 //Shrapnel version. Doctors can pull this out of patients
-/obj/item/weapon/arrow/spine
+/obj/item/arrow/spine
 	name = "spine"
 	desc = "A sharpened splinter of bone"
 	icon = 'icons/mob/necromorph/lurker.dmi'

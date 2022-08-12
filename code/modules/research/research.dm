@@ -200,7 +200,7 @@ The tech datums are the actual "tech trees" that you improve through researching
 **	Includes all the various technoliges and what they make.  **
 ***************************************************************/
 
-/obj/item/weapon/disk/tech_disk
+/obj/item/disk/tech_disk
 	name = "Empty Disk"
 	desc = "Wow. Is that a save icon?"
 	icon = 'icons/obj/cloning.dmi'
@@ -210,7 +210,7 @@ The tech datums are the actual "tech trees" that you improve through researching
 	matter = list(MATERIAL_STEEL = 30, MATERIAL_GLASS = 10)
 	var/datum/tech/stored
 
-/obj/item/weapon/disk/tech_disk/Initialize()
+/obj/item/disk/tech_disk/Initialize()
 	. = ..()
 	pixel_x = rand(-5.0, 5)
 	pixel_y = rand(-5.0, 5)

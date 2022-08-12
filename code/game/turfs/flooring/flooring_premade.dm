@@ -395,7 +395,7 @@
 	initial_flooring = /decl/flooring/tiling_ds/tramwarning
 
 /turf/simulated/floor/dank/tramgrating
-	name = "tram floor"
+	name = "railway"
 	icon_state = "tramgrating"
 	initial_flooring = /decl/flooring/tiling_ds/tramgrating
 

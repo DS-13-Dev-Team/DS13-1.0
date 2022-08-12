@@ -70,9 +70,9 @@ STATMOD_HEALTH_MULTIPLICATIVE	=	list(/datum/proc/update_max_health)
 	//Initialize the list
 	if (!LAZYACCESS(M.statmods, modtype))
 		//This will create the statmods list AND insert a key/value pair for modtype/list()
-		LAZYASET(M.statmods, modtype, list())
+		LAZYSET(M.statmods, modtype, list())
 
-	LAZYDISTINCTADD(M.statmods[modtype], src)
+	LAZYOR(M.statmods[modtype], src)
 
 	//Now lets make them update
 	if (update)

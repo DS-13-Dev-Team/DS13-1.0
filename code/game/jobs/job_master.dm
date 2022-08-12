@@ -1,8 +1,7 @@
 var/global/datum/controller/occupations/job_master
 
 #define GET_RANDOM_JOB 0
-#define BE_ASSISTANT 1
-#define RETURN_TO_LOBBY 2
+#define RETURN_TO_LOBBY 1
 
 
 
@@ -25,13 +24,14 @@ var/global/datum/controller/occupations/job_master
 		occupations = list()
 		occupations_by_type = list()
 		occupations_by_title = list()
-		var/list/all_jobs = list(/datum/job/assistant) | GLOB.using_map.allowed_jobs
-		if(!all_jobs.len)
+		var/list/all_jobs = GLOB.using_map.allowed_jobs
+		if(!length(all_jobs))
 			log_debug("<span class='warning'>Error setting up jobs, no job datums found!</span>")
 			return FALSE
 		for(var/J in all_jobs)
 			var/datum/job/job = decls_repository.get_decl(J)
-			if(!job)	continue
+			if(!job)
+				continue
 			occupations += job
 			occupations_by_type[job.type] = job
 			occupations_by_title[job.title] = job
@@ -319,17 +319,6 @@ var/global/datum/controller/occupations/job_master
 
 		HandleFeedbackGathering()
 
-		//People who wants to be assistants, sure, go on.
-		Debug("DO, Running Assistant Check 1")
-		var/datum/job/assist = new DEFAULT_JOB_TYPE ()
-		var/list/assistant_candidates = FindOccupationCandidates(assist, 3)
-		Debug("AC1, Candidates: [assistant_candidates.len]")
-		for(var/mob/dead/new_player/player in assistant_candidates)
-			Debug("AC1 pass, Player: [player]")
-			AssignRole(player, "Assistant")
-			assistant_candidates -= player
-		Debug("DO, AC1 end")
-
 		//Select one head
 		Debug("DO, Running Head Check")
 		FillHeadPosition()
@@ -386,16 +375,6 @@ var/global/datum/controller/occupations/job_master
 
 		Debug("DO, Running AC2")
 
-		// For those who wanted to be assistant if their preferences were filled, here you go.
-		for(var/mob/dead/new_player/player in unassigned)
-			if(player.client.prefs.alternate_option == BE_ASSISTANT)
-				Debug("AC2 Assistant located, Player: [player]")
-				if(GLOB.using_map.flags & MAP_HAS_BRANCH)
-					var/datum/mil_branch/branch = mil_branches.get_branch(player.get_branch_pref())
-					AssignRole(player, branch.assistant_job)
-				else
-					AssignRole(player, "Assistant")
-
 		//For ones returning to lobby
 		for(var/mob/dead/new_player/player in unassigned)
 			if(player.client.prefs.alternate_option == RETURN_TO_LOBBY)
@@ -428,20 +407,6 @@ var/global/datum/controller/occupations/job_master
 					else
 						loadout_taken_slots.Add(G.slot)
 
-		// do accessories last so they don't attach to a suit that will be replaced
-		if(H.char_rank && H.char_rank.accessory)
-			for(var/accessory_path in H.char_rank.accessory)
-				var/list/accessory_data = H.char_rank.accessory[accessory_path]
-				if(islist(accessory_data))
-					var/amt = accessory_data[1]
-					var/list/accessory_args = accessory_data.Copy()
-					accessory_args[1] = src
-					for(var/i in 1 to amt)
-						H.equip_to_slot_or_del(new accessory_path(arglist(accessory_args)), slot_tie)
-				else
-					for(var/i in 1 to (isnull(accessory_data)? 1 : accessory_data))
-						H.equip_to_slot_or_del(new accessory_path(src), slot_tie)
-
 		return spawn_in_storage
 
 	/*
@@ -462,14 +427,7 @@ var/global/datum/controller/occupations/job_master
 
 			// EMAIL GENERATION
 			if(rank != "Robot" && rank != "AI")		//These guys get their emails later.
-				var/domain
-				var/desired_name
-				if(H.char_branch && H.char_branch.email_domain)
-					domain = H.char_branch.email_domain
-				else
-					domain = "ishimura.cec"
-				desired_name = H.real_name
-				ntnet_global.create_email(H, desired_name, domain)
+				ntnet_global.create_email(H, H.real_name, "cec.corp")
 			// END EMAIL GENERATION
 
 		else
@@ -637,11 +595,8 @@ var/global/datum/controller/occupations/job_master
 	var/desired_spawnpoint = prefs.spawnpoint
 	var/datum/spawnpoint/current_spawnpoint
 
-	if(desired_spawnpoint == DEFAULT_SPAWNPOINT_ID)
-		desired_spawnpoint = GLOB.using_map.default_spawn
-
 	if(desired_spawnpoint)
-		if(!(desired_spawnpoint in GLOB.using_map.allowed_spawns))
+		if(!(desired_spawnpoint in list(SPAWNPOINT_CRYO, SPAWNPOINT_DORM, SPAWNPOINT_MAINT)))
 			if(H)
 				to_chat(H, "<span class='warning'>Your chosen spawnpoint ([desired_spawnpoint]) is unavailable for the current map. Spawning you at one of the enabled spawn points instead. To resolve this error head to your character's setup and choose a different spawn point.</span>")
 			current_spawnpoint = null
@@ -661,7 +616,7 @@ var/global/datum/controller/occupations/job_master
 
 	if(!current_spawnpoint)
 		// Step through all spawnpoints and pick first appropriate for job
-		for(var/spawntype in GLOB.using_map.allowed_spawns)
+		for(var/spawntype in list(SPAWNPOINT_CRYO, SPAWNPOINT_DORM, SPAWNPOINT_MAINT))
 			var/datum/spawnpoint/candidate = spawntypes()[spawntype]
 			if(candidate.check_job_spawning(rank))
 
@@ -675,7 +630,7 @@ var/global/datum/controller/occupations/job_master
 	if(!current_spawnpoint)
 		// Pick at random from all the (wrong) spawnpoints, just so we have one
 		warning("Could not find an appropriate spawnpoint for job [rank].")
-		current_spawnpoint = spawntypes()[pick(GLOB.using_map.allowed_spawns)]
+		current_spawnpoint = spawntypes()[pick(list(SPAWNPOINT_CRYO, SPAWNPOINT_DORM, SPAWNPOINT_MAINT))]
 
 	return current_spawnpoint
 

@@ -13,10 +13,10 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 */
 
 //For anything that can light stuff on fire
-/obj/item/weapon/flame
+/obj/item/flame
 	var/lit = 0
 
-/obj/item/weapon/flame/is_hot()
+/obj/item/flame/is_hot()
 	if (lit)
 		..()
 	else return T20C
@@ -26,20 +26,20 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	if (istype(A))
 		if(isWelder(A))
 			return TRUE
-		else if(istype(A, /obj/item/weapon/flame))
-			var/obj/item/weapon/flame/F = A
+		else if(istype(A, /obj/item/flame))
+			var/obj/item/flame/F = A
 			return (F.lit)
 		else if(istype(A, /obj/item/clothing/mask/smokable) && !istype(A, /obj/item/clothing/mask/smokable/pipe))
 			var/obj/item/clothing/mask/smokable/S = A
 			return (S.lit)
-		else if(istype(A, /obj/item/device/assembly/igniter))
+		else if(istype(A, /obj/item/assembly/igniter))
 			return 1
 	return 0
 
 ///////////
 //MATCHES//
 ///////////
-/obj/item/weapon/flame/match
+/obj/item/flame/match
 	name = "match"
 	desc = "A simple match stick, used for lighting fine smokables."
 	icon = 'icons/obj/cigarettes.dmi'
@@ -52,7 +52,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	attack_verb = list("burnt", "singed")
 	heat = 1000
 
-/obj/item/weapon/flame/match/Process()
+/obj/item/flame/match/Process()
 	if(isliving(loc))
 		var/mob/living/M = loc
 		M.IgniteMob()
@@ -65,7 +65,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		location.hotspot_expose(heat, 5)
 		return
 
-/obj/item/weapon/flame/match/dropped(mob/user as mob)
+/obj/item/flame/match/dropped(mob/user as mob)
 	//If dropped, put ourselves out
 	//not before lighting up the turf we land on, though.
 	if(lit)
@@ -76,7 +76,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			burn_out()
 	return ..()
 
-/obj/item/weapon/flame/match/proc/burn_out()
+/obj/item/flame/match/proc/burn_out()
 	lit = 0
 	burnt = 1
 	damtype = "brute"
@@ -181,19 +181,19 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	STOP_PROCESSING(SSobj, src)
 	update_icon()
 
-/obj/item/clothing/mask/smokable/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/item/clothing/mask/smokable/attackby(obj/item/W as obj, mob/user as mob)
 	..()
 	if(isflamesource(W))
 		var/text = matchmes
-		if(istype(W, /obj/item/weapon/flame/match))
+		if(istype(W, /obj/item/flame/match))
 			text = matchmes
-		else if(istype(W, /obj/item/weapon/flame/lighter/zippo))
+		else if(istype(W, /obj/item/flame/lighter/zippo))
 			text = zippomes
-		else if(istype(W, /obj/item/weapon/flame/lighter))
+		else if(istype(W, /obj/item/flame/lighter))
 			text = lightermes
 		else if(isWelder(W))
 			text = weldermes
-		else if(istype(W, /obj/item/device/assembly/igniter))
+		else if(istype(W, /obj/item/assembly/igniter))
 			text = ignitermes
 		text = replacetext(text, "USER", "[user]")
 		text = replacetext(text, "NAME", "[name]")
@@ -217,7 +217,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	w_class = ITEM_SIZE_TINY
 	slot_flags = SLOT_EARS | SLOT_MASK
 	attack_verb = list("burnt", "singed")
-	type_butt = /obj/item/weapon/cigbutt
+	type_butt = /obj/item/cigbutt
 	chem_volume = 5
 	smoketime = 300
 	matchmes = "<span class='notice'>USER lights their NAME with their FLAME.</span>"
@@ -265,10 +265,10 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_state = "cigmentol"
 	brand = "\improper Temperamento Menthol"
 	color = "#ddffe8"
-	type_butt = /obj/item/weapon/cigbutt/menthol
+	type_butt = /obj/item/cigbutt/menthol
 	filling = list(/datum/reagent/tobacco = 1, /datum/reagent/menthol = 1)
 
-/obj/item/weapon/cigbutt/menthol
+/obj/item/cigbutt/menthol
 	icon_state = "cigbuttmentol"
 
 /obj/item/clothing/mask/smokable/cigarette/luckystars
@@ -279,10 +279,10 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	brand = "\improper Jericho"
 	icon_state = "cigjer"
 	color = "#dcdcdc"
-	type_butt = /obj/item/weapon/cigbutt/jerichos
+	type_butt = /obj/item/cigbutt/jerichos
 	filling = list(/datum/reagent/tobacco/bad = 1.5)
 
-/obj/item/weapon/cigbutt/jerichos
+/obj/item/cigbutt/jerichos
 	icon_state = "cigbuttjer"
 
 /obj/item/clothing/mask/smokable/cigarette/carcinomas
@@ -294,10 +294,10 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	name = "thin cigarette"
 	brand = "\improper Professional"
 	icon_state = "cigpro"
-	type_butt = /obj/item/weapon/cigbutt/professionals
+	type_butt = /obj/item/cigbutt/professionals
 	filling = list(/datum/reagent/tobacco/bad = 1)
 
-/obj/item/weapon/cigbutt/professionals
+/obj/item/cigbutt/professionals
 	icon_state = "cigbuttpro"
 
 /obj/item/clothing/mask/smokable/cigarette/killthroat
@@ -314,7 +314,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	item_state = "cigaroff"
 	smoketime = 600
 	chem_volume = 10
-	type_butt = /obj/item/weapon/cigbutt/woodbutt
+	type_butt = /obj/item/cigbutt/woodbutt
 	filling = list(/datum/reagent/tobacco/fine = 2)
 
 /obj/item/clothing/mask/smokable/cigarette/trident/mint
@@ -341,17 +341,17 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_state = "cigarelloOr"
 	filling = list(/datum/reagent/tobacco/fine = 2, /datum/reagent/drink/juice/orange = 2)
 
-/obj/item/weapon/cigbutt/woodbutt
+/obj/item/cigbutt/woodbutt
 	name = "wooden tip"
 	desc = "A wooden mouthpiece from a cigar. Smells rather bad."
 	icon_state = "woodbutt"
 	matter = list("Wood" = 1)
 
-/obj/item/clothing/mask/smokable/cigarette/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/item/clothing/mask/smokable/cigarette/attackby(obj/item/W as obj, mob/user as mob)
 	..()
 
-	if(istype(W, /obj/item/weapon/melee/energy/sword))
-		var/obj/item/weapon/melee/energy/sword/S = W
+	if(istype(W, /obj/item/melee/energy/sword))
+		var/obj/item/melee/energy/sword/S = W
 		if(S.active)
 			light("<span class='warning'>[user] swings their [W], barely missing their nose. They light their [name] in the process.</span>")
 
@@ -368,7 +368,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		return 1
 	return ..()
 
-/obj/item/clothing/mask/smokable/cigarette/afterattack(obj/item/weapon/reagent_containers/glass/glass, mob/user as mob, proximity)
+/obj/item/clothing/mask/smokable/cigarette/afterattack(obj/item/reagent_containers/glass/glass, mob/user as mob, proximity)
 	..()
 	if(!proximity)
 		return
@@ -411,7 +411,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	desc = "A brown roll of tobacco and... well, you're not quite sure. This thing's huge!"
 	icon_state = "cigar2off"
 	icon_on = "cigar2on"
-	type_butt = /obj/item/weapon/cigbutt/cigarbutt
+	type_butt = /obj/item/cigbutt/cigarbutt
 
 	item_state = "cigaroff"
 	smoketime = 1500
@@ -438,7 +438,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	chem_volume = 20
 	filling = list(/datum/reagent/tobacco/fine = 10)
 
-/obj/item/weapon/cigbutt
+/obj/item/cigbutt
 	name = "cigarette butt"
 	desc = "A manky old cigarette butt."
 	icon = 'icons/obj/clothing/masks.dmi'
@@ -448,16 +448,16 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	slot_flags = SLOT_EARS
 	throwforce = 1
 
-/obj/item/weapon/cigbutt/Initialize()
+/obj/item/cigbutt/Initialize()
 	.=..()
 	transform = turn(transform,rand(0,360))
 
-/obj/item/weapon/cigbutt/cigarbutt
+/obj/item/cigbutt/cigarbutt
 	name = "cigar butt"
 	desc = "A manky old cigar butt."
 	icon_state = "cigarbutt"
 
-/obj/item/clothing/mask/smokable/cigarette/cigar/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/item/clothing/mask/smokable/cigarette/cigar/attackby(obj/item/W as obj, mob/user as mob)
 	..()
 
 	user.update_inv_wear_mask(0)
@@ -486,7 +486,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	w_class = ITEM_SIZE_TINY
 
 //tobacco sold seperately if you're too snobby to grow it yourself.
-/obj/item/weapon/reagent_containers/terrbacco
+/obj/item/reagent_containers/terrbacco
 	name = "tobacco"
 	desc = "A wad of carefully cured and dried tobacco. Ground into a mess."
 	icon = 'icons/obj/clothing/masks.dmi'
@@ -496,16 +496,16 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	var/dry = 1
 	var/list/filling = list(/datum/reagent/tobacco = 5)
 
-/obj/item/weapon/reagent_containers/terrbacco/Initialize()
+/obj/item/reagent_containers/terrbacco/Initialize()
 	.=..()
 	for(var/R in filling)
 		reagents.add_reagent(R, filling[R])
 
-/obj/item/weapon/reagent_containers/terrbacco/bad
+/obj/item/reagent_containers/terrbacco/bad
 	desc = "A wad of carefully cured and dried tobacco. Ground into a coarse mess."
 	filling = list(/datum/reagent/tobacco/bad = 5)
 
-/obj/item/weapon/reagent_containers/terrbacco/fine
+/obj/item/reagent_containers/terrbacco/fine
 	desc = "A wad of carefully cured and dried tobacco. Ground into a fine mess."
 	filling = list(/datum/reagent/tobacco/fine = 5)
 
@@ -513,8 +513,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/paper/cig/afterattack(atom/target, mob/user, proximity)
 	if(!proximity)
 		return
-	if(istype(target, /obj/item/weapon/reagent_containers/food/snacks/grown))
-		var/obj/item/weapon/reagent_containers/food/snacks/grown/G = target
+	if(istype(target, /obj/item/reagent_containers/food/snacks/grown))
+		var/obj/item/reagent_containers/food/snacks/grown/G = target
 		if(G.dry)
 			var/obj/item/clothing/mask/smokable/cigarette/rolled/R = new(user.loc)
 			R.chem_volume = target.reagents.total_volume
@@ -530,11 +530,11 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		..()
 
 //and if you are a savage you can just use a sheet of ordinary paper.
-/obj/item/weapon/paper/afterattack(atom/target, mob/user, proximity)
+/obj/item/paper/afterattack(atom/target, mob/user, proximity)
 	if(!proximity)
 		return
-	if(istype(target, /obj/item/weapon/reagent_containers/food/snacks/grown))
-		var/obj/item/weapon/reagent_containers/food/snacks/grown/G = target
+	if(istype(target, /obj/item/reagent_containers/food/snacks/grown))
+		var/obj/item/reagent_containers/food/snacks/grown/G = target
 		if(G.dry)
 			var/obj/item/clothing/mask/smokable/cigarette/rolled/R = new(user.loc)
 			R.chem_volume = target.reagents.total_volume
@@ -550,11 +550,11 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		..()
 
 //and finally a use for those magic scrolls that are left over from wizard antags.
-/obj/item/weapon/teleportation_scroll/afterattack(atom/target, mob/user, proximity)
+/obj/item/teleportation_scroll/afterattack(atom/target, mob/user, proximity)
 	if(!proximity)
 		return
-	if(istype(target, /obj/item/weapon/reagent_containers/food/snacks/grown))
-		var/obj/item/weapon/reagent_containers/food/snacks/grown/G = target
+	if(istype(target, /obj/item/reagent_containers/food/snacks/grown))
+		var/obj/item/reagent_containers/food/snacks/grown/G = target
 		if(G.dry)
 			var/obj/item/clothing/mask/smokable/cigarette/rolled/R = new(user.loc)
 			R.chem_volume = target.reagents.total_volume
@@ -573,8 +573,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/paper/cig/afterattack(atom/target, mob/user, proximity)
 	if(!proximity)
 		return
-	if(istype(target, /obj/item/weapon/reagent_containers/terrbacco))
-		var/obj/item/weapon/reagent_containers/terrbacco/Z = target
+	if(istype(target, /obj/item/reagent_containers/terrbacco))
+		var/obj/item/reagent_containers/terrbacco/Z = target
 		if(Z.dry)
 			var/obj/item/clothing/mask/smokable/cigarette/rolled/R = new(user.loc)
 			R.chem_volume = target.reagents.total_volume
@@ -589,11 +589,11 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	else
 		..()
 
-/obj/item/weapon/paper/afterattack(atom/target, mob/user, proximity)
+/obj/item/paper/afterattack(atom/target, mob/user, proximity)
 	if(!proximity)
 		return
-	if(istype(target, /obj/item/weapon/reagent_containers/terrbacco))
-		var/obj/item/weapon/reagent_containers/terrbacco/Z = target
+	if(istype(target, /obj/item/reagent_containers/terrbacco))
+		var/obj/item/reagent_containers/terrbacco/Z = target
 		if(Z.dry)
 			var/obj/item/clothing/mask/smokable/cigarette/rolled/R = new(user.loc)
 			R.chem_volume = target.reagents.total_volume
@@ -608,11 +608,11 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	else
 		..()
 
-/obj/item/weapon/teleportation_scroll/afterattack(atom/target, mob/user, proximity)
+/obj/item/teleportation_scroll/afterattack(atom/target, mob/user, proximity)
 	if(!proximity)
 		return
-	if(istype(target, /obj/item/weapon/reagent_containers/terrbacco))
-		var/obj/item/weapon/reagent_containers/terrbacco/Z = target
+	if(istype(target, /obj/item/reagent_containers/terrbacco))
+		var/obj/item/reagent_containers/terrbacco/Z = target
 		if(Z.dry)
 			var/obj/item/clothing/mask/smokable/cigarette/rolled/R = new(user.loc)
 			R.chem_volume = target.reagents.total_volume
@@ -650,7 +650,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	desc = "A hand rolled cigarette using dried plant matter."
 	icon_state = "cigroll"
 	item_state = "cigoff"
-	type_butt = /obj/item/weapon/cigbutt/rollbutt
+	type_butt = /obj/item/cigbutt/rollbutt
 	chem_volume = 50
 	brand = "handrolled"
 	filling = list()
@@ -668,7 +668,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_state = "cigoff"
 	brand = "handrolled with a filter"
 
-/obj/item/weapon/cigbutt/rollbutt
+/obj/item/cigbutt/rollbutt
 	name = "cigarette butt"
 	desc = "A cigarette butt."
 	icon_state = "rollbutt"
@@ -682,13 +682,13 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 	item_state = "cigaroff"
 	icon_on = "cigar3on"
-	type_butt = /obj/item/weapon/cigbutt/sausagebutt
+	type_butt = /obj/item/cigbutt/sausagebutt
 	chem_volume = 6
 	smoketime = 5000
 	brand = "sausage... wait what."
 	filling = list(/datum/reagent/nutriment/protein = 6)
 
-/obj/item/weapon/cigbutt/sausagebutt
+/obj/item/cigbutt/sausagebutt
 	name = "sausage butt"
 	desc = "A piece of burnt meat."
 	icon_state = "sausagebutt"
@@ -752,14 +752,14 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		reagents.clear_reagents()
 		SetName("empty [initial(name)]")
 
-/obj/item/clothing/mask/smokable/pipe/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/weapon/melee/energy/sword))
+/obj/item/clothing/mask/smokable/pipe/attackby(obj/item/W as obj, mob/user as mob)
+	if(istype(W, /obj/item/melee/energy/sword))
 		return
 
 	..()
 
-	if (istype(W, /obj/item/weapon/reagent_containers/food/snacks))
-		var/obj/item/weapon/reagent_containers/food/snacks/grown/G = W
+	if (istype(W, /obj/item/reagent_containers/food/snacks))
+		var/obj/item/reagent_containers/food/snacks/grown/G = W
 		if (!G.dry)
 			to_chat(user, "<span class='notice'>[G] must be dried before you stuff it into [src].</span>")
 			return
@@ -772,17 +772,17 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		SetName("[G.name]-packed [initial(name)]")
 		qdel(G)
 
-	else if(istype(W, /obj/item/weapon/flame/lighter))
-		var/obj/item/weapon/flame/lighter/L = W
+	else if(istype(W, /obj/item/flame/lighter))
+		var/obj/item/flame/lighter/L = W
 		if(L.lit)
 			light("<span class='notice'>[user] manages to light their [name] with [W].</span>")
 
-	else if(istype(W, /obj/item/weapon/flame/match))
-		var/obj/item/weapon/flame/match/M = W
+	else if(istype(W, /obj/item/flame/match))
+		var/obj/item/flame/match/M = W
 		if(M.lit)
 			light("<span class='notice'>[user] lights their [name] with their [W].</span>")
 
-	else if(istype(W, /obj/item/device/assembly/igniter))
+	else if(istype(W, /obj/item/assembly/igniter))
 		light("<span class='notice'>[user] fiddles with [W], and manages to light their [name] with the power of science.</span>")
 
 	user.update_inv_wear_mask(0)
@@ -859,14 +859,14 @@ obj/item/clothing/mask/chewable/Destroy()
 	desc = "A chewy wad of terbecco. Cut in long strands and treated with syrups so it doesn't taste like a ash-tray when you stuff it into your face."
 
 	icon_state = "chew"
-	type_butt = /obj/item/weapon/cigbutt/spitwad
+	type_butt = /obj/item/cigbutt/spitwad
 	w_class = ITEM_SIZE_TINY
 	slot_flags = SLOT_EARS | SLOT_MASK
 	chem_volume = 50
 	chewtime = 300
 	brand = "tobacco"
 
-/obj/item/weapon/cigbutt/spitwad
+/obj/item/cigbutt/spitwad
 	name = "spit wad"
 	desc = "A disgusting spitwad."
 	icon_state = "spit-chew"
@@ -901,7 +901,7 @@ obj/item/clothing/mask/chewable/Destroy()
 	name = "nicotine gum"
 	desc = "A chewy wad of synthetic rubber, laced with nicotine. Possibly the least disgusting method of nicotine delivery."
 	icon_state = "nic_gum"
-	type_butt = /obj/item/weapon/cigbutt/spitgum
+	type_butt = /obj/item/cigbutt/spitgum
 
 /obj/item/clothing/mask/chewable/tobacco/nico/Initialize()
 	.=..()
@@ -913,7 +913,7 @@ obj/item/clothing/mask/chewable/Destroy()
 	desc = "A chewy wad of wadding material."
 
 	icon_state = "chew"
-	type_butt = /obj/item/weapon/cigbutt/spitgum
+	type_butt = /obj/item/cigbutt/spitgum
 	w_class = ITEM_SIZE_TINY
 	slot_flags = SLOT_EARS | SLOT_MASK
 	chem_volume = 50
@@ -922,13 +922,13 @@ obj/item/clothing/mask/chewable/Destroy()
 	filling = list(/datum/reagent/sugar = 2)
 
 
-/obj/item/weapon/cigbutt/spitgum
+/obj/item/cigbutt/spitgum
 	name = "old gum"
 	desc = "A disgusting chewed up wad of gum."
 	icon_state = "spit-gum"
 
 
-/obj/item/weapon/cigbutt/lollibutt
+/obj/item/cigbutt/lollibutt
 	name = "popsicle stick"
 	desc = "A popsicle stick devoid of pop."
 	icon_state = "pop-stick"
@@ -959,7 +959,7 @@ obj/item/clothing/mask/chewable/Destroy()
 /obj/item/clothing/mask/chewable/candy/lolli
 	name = "lollipop"
 	desc = "A simple artificially flavored sphere of sugar on a handle. Colloquially known as a sucker. Allegedly one is born every minute."
-	type_butt = /obj/item/weapon/cigbutt/lollibutt
+	type_butt = /obj/item/cigbutt/lollibutt
 	icon_state = "lollipop"
 	item_state = "lollipop"
 //	brand = "unremarkable"
@@ -981,7 +981,7 @@ obj/item/clothing/mask/chewable/Destroy()
 /obj/item/clothing/mask/chewable/candy/lolli/meds
 	name = "lollipop"
 	desc = "A sucrose sphere on a small handle, it has been infused with medication."
-	type_butt = /obj/item/weapon/cigbutt/lollibutt
+	type_butt = /obj/item/cigbutt/lollibutt
 	icon_state = "lollipop"
 
 /obj/item/clothing/mask/chewable/candy/lolli/meds/Initialize()
@@ -1005,7 +1005,7 @@ obj/item/clothing/mask/chewable/Destroy()
 /////////
 //ZIPPO//
 /////////
-/obj/item/weapon/flame/lighter
+/obj/item/flame/lighter
 	name = "cheap lighter"
 	desc = "A cheap-as-free lighter."
 	icon = 'icons/obj/items.dmi'
@@ -1020,21 +1020,21 @@ obj/item/clothing/mask/chewable/Destroy()
 	light_power = 0.6
 	var/max_fuel = 5
 
-/obj/item/weapon/flame/lighter/Initialize()
+/obj/item/flame/lighter/Initialize()
 	.=..()
 	create_reagents(max_fuel)
 	reagents.add_reagent(/datum/reagent/fuel, max_fuel)
 	set_extension(src, /datum/extension/base_icon_state, icon_state)
 	update_icon()
 
-/obj/item/weapon/flame/lighter/proc/light(mob/user)
+/obj/item/flame/lighter/proc/light(mob/user)
 	lit = 1
 	update_icon()
 	light_effects(user)
 	set_light_on(TRUE)
 	START_PROCESSING(SSobj, src)
 
-/obj/item/weapon/flame/lighter/proc/light_effects(mob/living/carbon/user)
+/obj/item/flame/lighter/proc/light_effects(mob/living/carbon/user)
 	if(prob(95))
 		user.visible_message("<span class='notice'>After a few attempts, [user] manages to light the [src].</span>")
 	else
@@ -1046,7 +1046,7 @@ obj/item/clothing/mask/chewable/Destroy()
 		user.visible_message("<span class='notice'>After a few attempts, [user] manages to light the [src], they however burn their finger in the process.</span>")
 	playsound(src.loc, "light_bic", 100, 1, -4)
 
-/obj/item/weapon/flame/lighter/proc/shutoff(mob/user)
+/obj/item/flame/lighter/proc/shutoff(mob/user)
 	lit = 0
 	update_icon()
 	if(user)
@@ -1056,37 +1056,37 @@ obj/item/clothing/mask/chewable/Destroy()
 	set_light_on(FALSE)
 	STOP_PROCESSING(SSobj, src)
 
-/obj/item/weapon/flame/lighter/proc/shutoff_effects(mob/user)
+/obj/item/flame/lighter/proc/shutoff_effects(mob/user)
 	user.visible_message("<span class='notice'>[user] quietly shuts off the [src].</span>")
 
-/obj/item/weapon/flame/lighter/zippo
+/obj/item/flame/lighter/zippo
 	name = "\improper Zippo lighter"
 	desc = "The zippo."
 	icon_state = "zippo"
 	item_state = "zippo"
 	max_fuel = 10
 
-/obj/item/weapon/flame/lighter/zippo/light_effects(mob/user)
+/obj/item/flame/lighter/zippo/light_effects(mob/user)
 	user.visible_message("<span class='rose'>Without even breaking stride, [user] flips open and lights [src] in one smooth movement.</span>")
 	playsound(src.loc, 'sound/items/zippo_open.ogg', 100, 1, -4)
 
-/obj/item/weapon/flame/lighter/zippo/shutoff_effects(mob/user)
+/obj/item/flame/lighter/zippo/shutoff_effects(mob/user)
 	user.visible_message("<span class='rose'>You hear a quiet click, as [user] shuts off [src] without even looking at what they're doing.</span>")
 	playsound(src.loc, 'sound/items/zippo_close.ogg', 100, 1, -4)
 
-/obj/item/weapon/flame/lighter/zippo/afterattack(obj/O, mob/user, proximity)
+/obj/item/flame/lighter/zippo/afterattack(obj/O, mob/user, proximity)
 	if(!proximity) return
 	if (istype(O, /obj/structure/reagent_dispensers/fueltank) && !lit)
 		O.reagents.trans_to_obj(src, max_fuel)
 		to_chat(user, "<span class='notice'>You refuel [src] from \the [O]</span>")
 		playsound(src.loc, 'sound/effects/refill.ogg', 50, 1, -6)
 
-/obj/item/weapon/flame/lighter/random/Initialize()
+/obj/item/flame/lighter/random/Initialize()
 	icon_state = "lighter-[pick("r","c","y","g")]"
 	item_state = icon_state
 	.=..()
 
-/obj/item/weapon/flame/lighter/attack_self(mob/living/user)
+/obj/item/flame/lighter/attack_self(mob/living/user)
 	if(!lit)
 		if(reagents.has_reagent(/datum/reagent/fuel))
 			light(user)
@@ -1095,7 +1095,7 @@ obj/item/clothing/mask/chewable/Destroy()
 	else
 		shutoff(user)
 
-/obj/item/weapon/flame/lighter/update_icon()
+/obj/item/flame/lighter/update_icon()
 	var/datum/extension/base_icon_state/bis = get_extension(src, /datum/extension/base_icon_state)
 
 	if(lit)
@@ -1105,7 +1105,7 @@ obj/item/clothing/mask/chewable/Destroy()
 		icon_state = "[bis.base_icon_state]"
 		item_state = "[bis.base_icon_state]"
 
-/obj/item/weapon/flame/lighter/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
+/obj/item/flame/lighter/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
 	if(!istype(M, /mob))
 		return
 
@@ -1117,7 +1117,7 @@ obj/item/clothing/mask/chewable/Destroy()
 			if(M == user)
 				cig.attackby(src, user)
 			else
-				if(istype(src, /obj/item/weapon/flame/lighter/zippo))
+				if(istype(src, /obj/item/flame/lighter/zippo))
 					cig.light("<span class='rose'>[user] whips the [name] out and holds it for [M].</span>")
 				else
 					cig.light("<span class='notice'>[user] holds the [name] out for [M], and lights the [cig.name].</span>")
@@ -1125,7 +1125,7 @@ obj/item/clothing/mask/chewable/Destroy()
 
 	..()
 
-/obj/item/weapon/flame/lighter/Process()
+/obj/item/flame/lighter/Process()
 	if(reagents.has_reagent(/datum/reagent/fuel))
 		if(ismob(loc) && prob(10) && reagents.get_reagent_amount(/datum/reagent/fuel) < 1)
 			to_chat(loc, "<span class='warning'>[src]'s flame flickers.</span>")

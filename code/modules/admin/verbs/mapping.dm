@@ -27,6 +27,7 @@ var/intercom_range_display_status = 0
 	icon_state = "25percent"
 
 	New()
+		.=..()
 		src.pixel_x = -224
 		src.pixel_y = -224
 
@@ -115,7 +116,7 @@ var/intercom_range_display_status = 0
 		qdel(M)
 
 	if(intercom_range_display_status)
-		for(var/obj/item/device/radio/intercom/I in world)
+		for(var/obj/item/radio/intercom/I in world)
 			for(var/turf/T in orange(7,I))
 				var/obj/effect/debugging/marker/F = new/obj/effect/debugging/marker(T)
 				if (!(F in view(7,I.loc)))
@@ -123,34 +124,37 @@ var/intercom_range_display_status = 0
 	feedback_add_details("admin_verb","mIRD") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 var/list/debug_verbs = list (
-		/client/proc/do_not_use_these
-		,/client/proc/camera_view
-		,/client/proc/sec_camera_report
-		,/client/proc/intercom_view
-		,/client/proc/Cell
-		,/client/proc/atmosscan
-		,/client/proc/powerdebug
-		,/client/proc/count_objects_on_z_level
-		,/client/proc/count_objects_all
-		,/client/proc/cmd_assume_direct_control
-		,/client/proc/startSinglo
-		,/client/proc/ticklag
-		,/client/proc/cmd_admin_grantfullaccess
-		,/client/proc/cmd_admin_areatest
-		,/client/proc/cmd_admin_rejuvenate
-		,/datum/admins/proc/show_traitor_panel
-		,/client/proc/print_jobban_old
-		,/client/proc/print_jobban_old_filter
-		,/client/proc/forceEvent
-		,/client/proc/Zone_Info
-		,/client/proc/Test_ZAS_Connection
-		,/client/proc/rebootAirMaster
-		,/client/proc/hide_debug_verbs
-		,/client/proc/testZAScolors
-		,/client/proc/testZAScolors_remove
-		,/datum/admins/proc/setup_supermatter
-		,/client/proc/atmos_toggle_debug
-		,/client/proc/spawn_tanktransferbomb
+		/client/proc/do_not_use_these,
+		/client/proc/camera_view,
+		/client/proc/sec_camera_report,
+		/client/proc/intercom_view,
+		/client/proc/Cell,
+		/client/proc/atmosscan,
+		/client/proc/powerdebug,
+		/client/proc/count_objects_on_z_level,
+		/client/proc/count_objects_all,
+		/client/proc/cmd_assume_direct_control,
+		/client/proc/startSinglo,
+		/client/proc/ticklag,
+		/client/proc/cmd_admin_grantfullaccess,
+		/client/proc/cmd_admin_areatest,
+		/client/proc/cmd_admin_rejuvenate,
+		/datum/admins/proc/show_traitor_panel,
+		/client/proc/print_jobban_old,
+		/client/proc/print_jobban_old_filter,
+		/client/proc/forceEvent,
+		/client/proc/Zone_Info,
+		/client/proc/Test_ZAS_Connection,
+		/client/proc/rebootAirMaster,
+		/client/proc/hide_debug_verbs,
+		/client/proc/testZAScolors,
+		/client/proc/testZAScolors_remove,
+		/datum/admins/proc/setup_supermatter,
+		/client/proc/atmos_toggle_debug,
+		/client/proc/spawn_tanktransferbomb,
+		#ifdef TESTING
+		/client/proc/see_dirty_varedits,
+		#endif
 	)
 
 
@@ -334,3 +338,20 @@ var/list/debug_verbs = list (
 
 /proc/get_zas_image(var/turf/T, var/icon_state)
 	return image_repository.atom_image(T, 'icons/misc/debug_group.dmi', icon_state, , layer = ABOVE_TILE_LAYER)
+
+#ifdef TESTING
+GLOBAL_LIST_EMPTY(dirty_vars)
+
+/client/proc/see_dirty_varedits()
+	set category = "Mapping"
+	set name = "Dirty Varedits"
+
+	var/list/dat = list()
+	dat += "<h3>Abandon all hope ye who enter here</h3><br><br>"
+	for(var/thing in GLOB.dirty_vars)
+		dat += "[thing]<br>"
+		CHECK_TICK
+	var/datum/browser/popup = new(usr, "dirty_vars", "Dirty Varedits", 900, 750)
+	popup.set_content(dat.Join())
+	popup.open()
+#endif

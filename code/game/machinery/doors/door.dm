@@ -35,7 +35,7 @@
 	var/block_air_zones = 1 //If set, air zones cannot merge across the door even when it is opened.
 	var/close_door_at = 0 //When to automatically close the door, if possible
 	var/list/connections = list("0", "0", "0", "0")
-	var/list/blend_objects = list(/obj/structure/wall_frame, /obj/structure/window, /obj/structure/grille) // Objects which to blend with
+	var/list/blend_objects = list(/obj/structure/wall_frame, /obj/structure/window, /obj/structure/grille, /obj/structure/tramwall) // Objects which to blend with
 
 	//Multi-tile doors
 	dir = SOUTH
@@ -83,7 +83,6 @@
 	else
 		layer = open_layer
 
-
 	if(width > 1)
 		if(dir in list(EAST, WEST))
 			bound_width = width * world.icon_size
@@ -94,19 +93,18 @@
 
 	health = max_health
 	resistance = min_force	//Todo: remove min force and roll everything into resistance
-	update_connections(1)
-	update_icon()
-
-	update_nearby_tiles(need_rebuild=1)
 
 /obj/machinery/door/Initialize(var/mapload)
+	update_connections(1)
+	update_icon()
+	update_nearby_tiles(need_rebuild=1)
 	set_extension(src, /datum/extension/penetration/proc_call, .proc/CheckPenetration)
 	if (isturf(loc))
 		if (mapload)
 			SSslow.doors_needing_areas.Add(src)	//Add ourselves for area updating later
 		else
 			update_areas()
-	. = ..()
+	.=..()
 
 //Since this is a crazy expensive proc to run, we space it out in random intervals over the first five minutes of the round
 /obj/machinery/door/proc/update_areas()
@@ -291,7 +289,7 @@
 			else
 				repairing = stack.split(amount_needed, force=TRUE)
 				if (repairing)
-					repairing.loc = src
+					repairing.forceMove(src)
 					transfer = repairing.amount
 					repairing.uses_charge = FALSE //for clean robot door repair - stacks hint immortal if true
 
@@ -317,7 +315,7 @@
 		if(repairing && isCrowbar(I))
 			to_chat(user, "<span class='notice'>You remove \the [repairing].</span>")
 			playsound(loc, 'sound/items/Crowbar.ogg', 100, 1)
-			repairing.loc = user.loc
+			repairing.forceMove(user.loc)
 			repairing = null
 			return
 
@@ -354,8 +352,8 @@
 
 //psa to whoever coded this, there are plenty of objects that need to call attack() on doors without bludgeoning them.
 /obj/machinery/door/proc/check_force(obj/item/I as obj, mob/user as mob)
-	if(density &&  user.a_intent == I_HURT && istype(I, /obj/item/weapon) && !istype(I, /obj/item/weapon/card))
-		var/obj/item/weapon/W = I
+	if(density &&  user.a_intent == I_HURT && istype(I, /obj/item) && !istype(I, /obj/item/card))
+		var/obj/item/W = I
 		user.set_click_cooldown(DEFAULT_ATTACK_COOLDOWN)
 
 		if(W.damtype == BRUTE || W.damtype == BURN)
@@ -441,6 +439,8 @@
 
 
 /obj/machinery/door/ex_act(severity)
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	var/blast_divisor = 1 + (explosion_resistance * 0.1)
 	switch(severity)
 		if(1)

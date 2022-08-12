@@ -17,10 +17,6 @@
 	if(job && job.min_skill)
 		. = job.min_skill[S.type]
 	if(!.)
-		var/datum/mil_branch/branch = mil_branches.get_branch(char_branch)
-		if(branch && branch.min_skill)
-			. = branch.min_skill[S.type]
-	if(!.)
 		. = SKILL_MIN
 
 /datum/preferences/proc/get_spent_points(datum/job/job, decl/hierarchy/skill/S)
@@ -92,7 +88,7 @@
 
 		var/L = list()
 		var/sum = 0
-		
+
 		for(var/decl/hierarchy/skill/skill in GLOB.skills)
 			if(skill in input_skills)
 				var/min = get_min_skill(job, skill)
@@ -154,7 +150,7 @@
 	dat += "<b>Skill points remaining: [pref.points_by_job[job]].</b><hr>"
 	dat += "<hr>"
 	dat += "</center></tt>"
-	
+
 	dat += "<table>"
 	var/decl/hierarchy/skill/skill = decls_repository.get_decl(/decl/hierarchy/skill)
 	for(var/decl/hierarchy/skill/cat in skill.children)

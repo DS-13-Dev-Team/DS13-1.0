@@ -2,7 +2,7 @@
 	Shields are items held in hand which have tremendously high block chances and maximum block values, they are reliable protection until they break
 */
 
-/obj/item/weapon/shield
+/obj/item/shield
 	name = "shield"
 	var/base_block_chance = 80
 	var/max_block = 20
@@ -14,7 +14,7 @@
 
 
 
-/obj/item/weapon/shield/handle_block(var/datum/strike/strike)
+/obj/item/shield/handle_block(var/datum/strike/strike)
 	var/blocked_damage = min(max_block, min(health+resistance, strike.damage))
 	strike.blocked_damage += blocked_damage
 	strike.blocker = src
@@ -24,10 +24,10 @@
 	spawn()
 		take_damage(blocked_damage, strike.damage_type, strike.user, strike.used_weapon, bypass_resist = FALSE)
 
-/obj/item/weapon/shield/can_block(var/datum/strike/strike)
+/obj/item/shield/can_block(var/datum/strike/strike)
 	return (health > 0)
 
-/obj/item/weapon/shield/get_block_chance(var/datum/strike/strike)
+/obj/item/shield/get_block_chance(var/datum/strike/strike)
 	return base_block_chance
 
 
@@ -36,7 +36,7 @@
 
 
 
-/obj/item/weapon/shield/riot
+/obj/item/shield/riot
 	name = "combat shield"
 	desc = "A common combat shield adept at blocking blunt objects from connecting with the torso of the shield wielder."
 	icon = 'icons/obj/weapons.dmi'
@@ -59,8 +59,8 @@
 	resistance = 4
 
 
-/obj/item/weapon/shield/riot/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/weapon/melee/baton))
+/obj/item/shield/riot/attackby(obj/item/W as obj, mob/user as mob)
+	if(istype(W, /obj/item/melee/baton))
 		if(cooldown < world.time - 25)
 			user.visible_message("<span class='warning'>[user] bashes [src] with [W]!</span>")
 			playsound(user.loc, 'sound/effects/shieldbash.ogg', 50, 1)
@@ -68,7 +68,7 @@
 	else
 		..()
 
-/obj/item/weapon/shield/riot/advanced
+/obj/item/shield/riot/advanced
 	name = "advanced combat shield"
 	icon_state = "advanced"
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
@@ -89,7 +89,7 @@
  * Handmade shield
  */
 
-/obj/item/weapon/shield/buckler
+/obj/item/shield/buckler
 	name = "round handmade shield"
 	desc = "A handmade stout shield, but with a small size."
 	icon_state = "buckler"
@@ -103,7 +103,7 @@
 
 
 
-/obj/item/weapon/shield/tray
+/obj/item/shield/tray
 	name = "tray shield"
 	desc = "A thin metal tray held on the arm, won't endure much punishment"
 	icon_state = "tray_shield"
@@ -122,7 +122,7 @@
  * Energy Shield
  */
 
-/obj/item/weapon/shield/energy
+/obj/item/shield/energy
 	name = "energy combat shield"
 	desc = "A shield capable of stopping most projectile and melee attacks. It can be retracted, expanded, and stored anywhere."
 	icon = 'icons/obj/weapons.dmi'
@@ -146,10 +146,10 @@
 	light_color ="#006aff"
 	light_on = FALSE
 
-/obj/item/weapon/shield/energy/can_block()
+/obj/item/shield/energy/can_block()
 	return active
 
-/obj/item/weapon/shield/energy/handle_block(var/datum/strike/strike)
+/obj/item/shield/energy/handle_block(var/datum/strike/strike)
 	if(!active)
 		return 0 //turn it on first!
 	. = ..()
@@ -160,7 +160,7 @@
 		spark_system.start()
 		playsound(get_turf(src), 'sound/weapons/blade1.ogg', 50, 1)
 
-/obj/item/weapon/shield/energy/attack_self(mob/living/user as mob)
+/obj/item/shield/energy/attack_self(mob/living/user as mob)
 	if ((CLUMSY in user.mutations) && prob(50))
 		to_chat(user, "<span class='warning'>You beat yourself in the head with [src].</span>")
 		user.take_organ_damage(5)
@@ -187,6 +187,6 @@
 	add_fingerprint(user)
 	return
 
-/obj/item/weapon/shield/energy/update_icon()
+/obj/item/shield/energy/update_icon()
 	icon_state = "eshield[active]"
 	set_light_on(!!active)

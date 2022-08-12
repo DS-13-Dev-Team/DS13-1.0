@@ -11,7 +11,7 @@
 		/obj/item/clothing/under/shorts/red,
 		/obj/item/clothing/under/shorts/blue,
 		/obj/item/clothing/under/shorts/green,
-		/obj/item/weapon/towel = 2)
+		/obj/item/towel = 2)
 
 /obj/structure/closet/boxinggloves
 	name = "boxing gloves"

@@ -35,3 +35,5 @@
 	line += target
 
 	return line
+
+#define GET_DIST_LONG(A, B) (get_step(A, 0)?.z == get_step(B, 0)?.z ? max(abs(get_step(A, 0)?.x - get_step(B, 0)?.x), abs(get_step(A, 0)?.y - get_step(B, 0)?.y)) : INFINITY)

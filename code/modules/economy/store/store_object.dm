@@ -41,7 +41,7 @@ GLOBAL_VAR_INIT(number_of_store_kiosks, 0)
 	var/sound_vend = 'sound/machines/store/store_vend.ogg'
 	var/stall_time = 1 SECOND
 	//
-	var/obj/item/weapon/storage/internal/deposit/deposit_box
+	var/obj/item/storage/internal/deposit/deposit_box
 
 	var/datum/callback/transfer_callback
 
@@ -117,13 +117,13 @@ GLOBAL_VAR_INIT(number_of_store_kiosks, 0)
 /obj/machinery/store/attackby(var/obj/item/I, var/mob/user)
 	if (user == occupant)
 		playsound(src, 'sound/machines/deadspace/menu_neutral.ogg', VOLUME_MID, TRUE)
-		if (istype(I, /obj/item/weapon/spacecash/ewallet))
+		if (istype(I, /obj/item/spacecash/ewallet))
 			return insert_chip(I, user)
 
 		if (istype(I, /obj/item/store_schematic))
 			return handle_schematic(I, user)
 
-		if (istype(I, /obj/item/weapon/peng))
+		if (istype(I, /obj/item/peng))
 			return handle_peng(I, user)
 
 		//Items used on the store go into the deposit box
@@ -135,7 +135,7 @@ GLOBAL_VAR_INIT(number_of_store_kiosks, 0)
 		.=..()
 
 
-/obj/machinery/store/proc/insert_chip(var/obj/item/weapon/spacecash/ewallet/newchip, var/mob/user)
+/obj/machinery/store/proc/insert_chip(var/obj/item/spacecash/ewallet/newchip, var/mob/user)
 	if (!user && ismob(newchip.loc))
 		user = newchip.loc
 	if (chip)
@@ -235,10 +235,10 @@ GLOBAL_VAR_INIT(number_of_store_kiosks, 0)
 		They must be already wearing a rig for this, or it will fail with an error message to them
 		Their current rig will be used as target, no source. The modules in the box will be taken as
 */
-/obj/machinery/store/proc/start_transfer(var/obj/item/weapon/rig/target)
+/obj/machinery/store/proc/start_transfer(var/obj/item/rig/target)
 	if (!occupant)
 		return
-	var/obj/item/weapon/rig/source
+	var/obj/item/rig/source
 	if (!target)
 		if (!occupant.wearing_rig)
 			to_chat(occupant, "No rig found! You need to purchase or be wearing a rig to use this feature.")

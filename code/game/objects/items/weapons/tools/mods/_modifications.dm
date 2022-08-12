@@ -6,11 +6,11 @@
 */
 
 /*/client/verb/debugmodifications()
-	for (var/t in subtypesof(/obj/item/weapon/tool_modification))
+	for (var/t in subtypesof(/obj/item/tool_modification))
 		new t(usr.loc)
 */
 
-/obj/item/weapon/tool_modification
+/obj/item/tool_modification
 	name = "tool modification"
 	icon = 'icons/obj/tool_modifications.dmi'
 	force = WEAPON_FORCE_HARMLESS
@@ -29,7 +29,7 @@
 	//If true, can only be applied to tools that use a power cell
 	var/req_cell = FALSE
 
-	var/obj/item/weapon/tool/holder = null //The tool we're installed into
+	var/obj/item/tool/holder = null //The tool we're installed into
 	matter = list(MATERIAL_STEEL = 1)
 
 	//Actual effects of modifications
@@ -44,7 +44,7 @@
 	var/removeable = TRUE //Can this mod be uninstalled when removed. Set false to make it permanant
 	var/recoverable = TRUE //If removed, do you get this mod back? Set false to make it delete when removed
 
-/obj/item/weapon/tool_modification/examine(var/mob/user)
+/obj/item/tool_modification/examine(var/mob/user)
 	.=..()
 	if (precision > 0)
 		to_chat(user, SPAN_NOTICE("Enhances precision by [precision]."))
@@ -86,28 +86,28 @@
 ******************************/
 
 
-/obj/item/weapon/tool_modification/afterattack(obj/O, mob/user, proximity)
+/obj/item/tool_modification/afterattack(obj/O, mob/user, proximity)
 
 	if(!proximity) return
 	try_apply(O, user)
 
-/obj/item/weapon/tool_modification/proc/try_apply(var/obj/item/weapon/tool/O, var/mob/user)
+/obj/item/tool_modification/proc/try_apply(var/obj/item/tool/O, var/mob/user)
 	if (!can_apply(O, user))
 		return FALSE
 
 	return apply(O, user)
 
 
-/obj/item/weapon/tool_modification/proc/can_apply(var/obj/item/weapon/tool/T, var/mob/user)
+/obj/item/tool_modification/proc/can_apply(var/obj/item/tool/T, var/mob/user)
 	if (isrobot(T))
 		var/mob/living/silicon/robot/R = T
 		if(!R.opened)
 			to_chat(user, SPAN_WARNING("You need to open [R]'s panel to access its tools."))
 		var/list/robotools = list()
-		for(var/obj/item/weapon/tool/robotool in R.module.modules)
+		for(var/obj/item/tool/robotool in R.module.modules)
 			robotools.Add(robotool)
 		if(robotools.len)
-			var/obj/item/weapon/tool/chosen_tool = input(user,"Which tool are you trying to modify?","Tool Modification","Cancel") in robotools + "Cancel"
+			var/obj/item/tool/chosen_tool = input(user,"Which tool are you trying to modify?","Tool Modification","Cancel") in robotools + "Cancel"
 			if(chosen_tool == "Cancel")
 				return
 			try_apply(chosen_tool,user)
@@ -143,7 +143,7 @@
 		return
 
 	//No using multiples of the same modification
-	for (var/obj/item/weapon/tool_modification/U in T.modifications)
+	for (var/obj/item/tool_modification/U in T.modifications)
 		if (U.type == type)
 			to_chat(user, SPAN_WARNING("A modification of this type is already installed!"))
 			return
@@ -152,7 +152,7 @@
 
 
 //Applying an modification to a tool is a mildly difficult process
-/obj/item/weapon/tool_modification/proc/apply(var/obj/item/weapon/tool/T, var/mob/user)
+/obj/item/tool_modification/proc/apply(var/obj/item/tool/T, var/mob/user)
 
 	if (user)
 		user.visible_message(SPAN_NOTICE("[user] starts applying the [src] to [T]"), SPAN_NOTICE("You start applying the [src] to [T]"))
@@ -169,7 +169,7 @@
 
 //This does the actual numerical changes.
 //The tool itself asks us to call this, and it resets itself before doing so
-/obj/item/weapon/tool_modification/proc/apply_values()
+/obj/item/tool_modification/proc/apply_values()
 	if (!holder)
 		return
 

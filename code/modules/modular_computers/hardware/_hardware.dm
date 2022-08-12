@@ -1,4 +1,4 @@
-/obj/item/weapon/computer_hardware/
+/obj/item/computer_hardware/
 	name = "Hardware"
 	desc = "Unknown Hardware."
 	icon = 'icons/obj/modular_components.dmi'
@@ -14,7 +14,7 @@
 	var/malfunction_probability = 10// Chance of malfunction when the component is damaged
 	var/usage_flags = PROGRAM_ALL
 
-/obj/item/weapon/computer_hardware/attackby(var/obj/item/W as obj, var/mob/living/user as mob)
+/obj/item/computer_hardware/attackby(var/obj/item/W as obj, var/mob/living/user as mob)
 	// Multitool. Runs diagnostics
 	if(isMultitool(W))
 		to_chat(user, "***** DIAGNOSTICS REPORT *****")
@@ -44,22 +44,22 @@
 
 
 // Called on multitool click, prints diagnostic information to the user.
-/obj/item/weapon/computer_hardware/proc/diagnostics(var/mob/user)
+/obj/item/computer_hardware/proc/diagnostics(var/mob/user)
 	to_chat(user, "Hardware Integrity Test... (Corruption: [damage]/[max_damage]) [damage > damage_failure ? "FAIL" : damage > damage_malfunction ? "WARN" : "PASS"]")
 
-/obj/item/weapon/computer_hardware/New(var/obj/L)
+/obj/item/computer_hardware/New(var/obj/L)
 	.=..()
 	w_class = hardware_size
 	if(istype(L, /obj/item/modular_computer))
 		holder2 = L
 		return
 
-/obj/item/weapon/computer_hardware/Destroy()
+/obj/item/computer_hardware/Destroy()
 	holder2 = null
 	return ..()
 
 // Handles damage checks
-/obj/item/weapon/computer_hardware/proc/check_functionality()
+/obj/item/computer_hardware/proc/check_functionality()
 	// Turned off
 	if(!enabled)
 		return 0
@@ -73,7 +73,7 @@
 	// Good to go.
 	return 1
 
-/obj/item/weapon/computer_hardware/examine(var/mob/user)
+/obj/item/computer_hardware/examine(var/mob/user)
 	. = ..()
 	if(damage > damage_failure)
 		to_chat(user, "<span class='danger'>It seems to be severely damaged!</span>")
@@ -83,10 +83,10 @@
 		to_chat(user, "It seems to be slightly damaged.")
 
 // Damages the component. Contains necessary checks. Negative damage "heals" the component.
-/obj/item/weapon/computer_hardware/take_damage(var/amount, var/damtype = BRUTE, var/user, var/used_weapon, var/bypass_resist = FALSE)
+/obj/item/computer_hardware/take_damage(var/amount, var/damtype = BRUTE, var/user, var/used_weapon, var/bypass_resist = FALSE)
 	damage += round(amount) 					// We want nice rounded numbers here.
 	damage = between(0, damage, max_damage)		// Clamp the value.
 
 // This is called whenever hardware is inserted into a modular computer.
 // Currently only has a use for 'autorun' flash drives
-/obj/item/weapon/computer_hardware/proc/installed(var/obj/item/modular_computer/M)
+/obj/item/computer_hardware/proc/installed(var/obj/item/modular_computer/M)

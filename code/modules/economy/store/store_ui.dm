@@ -40,7 +40,7 @@
 		if (occupant_can_afford())
 			data["buy_enabled"] = TRUE
 
-		if(ispath(current_design.build_path, /obj/item/rig_module) || ispath(current_design.build_path, /obj/item/weapon/rig))
+		if(ispath(current_design.build_path, /obj/item/rig_module) || ispath(current_design.build_path, /obj/item/rig))
 			data["transfer_enabled"] = TRUE
 
 	if (chip)

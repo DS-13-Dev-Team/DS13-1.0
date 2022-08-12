@@ -1,7 +1,7 @@
 /*-----------------------
 	Gun
 ------------------------*/
-/obj/item/weapon/gun/projectile/automatic/bullpup
+/obj/item/gun/projectile/automatic/bullpup
 	name = "SCAF Bullpup Rifle"
 	desc = "The standard issued rifle of the Sovereign Colonies Armed Forces."
 	icon = 'icons/obj/weapons/ds13guns48x32.dmi'

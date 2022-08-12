@@ -1,4 +1,4 @@
-/obj/item/weapon/gun/projectile/seeker
+/obj/item/gun/projectile/seeker
 	name = "Seeker Rifle"
 	desc = "The Seeker Rifle is a riot control device that is meant for accuracy at long-range. Comes with a built-in scope."
 	icon = 'icons/obj/weapons/ds13guns48x32.dmi'
@@ -25,7 +25,7 @@
 		list(mode_name="semi-automatic",  fire_delay=12),
 		)
 
-/obj/item/weapon/gun/projectile/seeker/empty
+/obj/item/gun/projectile/seeker/empty
 	magazine_type = null
 
 /*-----------------------

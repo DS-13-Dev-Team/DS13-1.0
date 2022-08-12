@@ -5,6 +5,7 @@
 	icon_state = "catwalk"
 	density = FALSE
 	anchored = TRUE
+	plane = FLOOR_PLANE
 	layer = CATWALK_LAYER
 	footstep_sounds = list(
 		'sound/effects/footstep/catwalk1.ogg',
@@ -45,7 +46,6 @@
 			L.update_connections()
 			L.update_icon() //so siding get updated properly
 
-
 /obj/structure/catwalk/update_icon()
 	update_connections()
 	overlays.Cut()
@@ -61,6 +61,8 @@
 		overlays += I
 
 /obj/structure/catwalk/ex_act(severity)
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	switch(severity)
 		if(1)
 			new /obj/item/stack/rods(src.loc)
@@ -92,11 +94,11 @@
 
 /obj/structure/catwalk/attackby(obj/item/C as obj, mob/user as mob)
 	if(isWelder(C))
-		var/obj/item/weapon/tool/weldingtool/WT = C
+		var/obj/item/tool/weldingtool/WT = C
 		if(WT.consume_resources(0, user))
 			deconstruct(user)
 		return
-	if(istype(C, /obj/item/weapon/gun/energy/cutter))
+	if(istype(C, /obj/item/gun/energy/cutter))
 		deconstruct(user)
 		return
 	if(isCrowbar(C) && plated_tile)
@@ -191,13 +193,3 @@
 /obj/effect/catwalk_plated/dank
 	icon_state = "catwalk_platedgrim"
 	plating_type = /decl/flooring/tiling/mono/dark
-
-
-
-
-/*
-	Rail for trams/monorail system
-*/
-/obj/structure/catwalk/rail
-	name = "rail"
-	simulated = FALSE	//This prevents it from being moved with the tram

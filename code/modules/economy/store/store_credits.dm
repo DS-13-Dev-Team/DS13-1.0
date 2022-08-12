@@ -1,5 +1,5 @@
 /obj/machinery/store
-	var/obj/item/weapon/spacecash/ewallet/chip = null
+	var/obj/item/spacecash/ewallet/chip = null
 
 
 //How many credits are available for purchase in total, between inserted chip + rig account
@@ -11,7 +11,7 @@
 	if(occupant && occupant.wearing_rig)
 		. += occupant.wearing_rig.get_account_balance()
 
-	for(var/obj/item/weapon/spacecash/S in deposit_box.contents)
+	for(var/obj/item/spacecash/S in deposit_box.contents)
 		. += S.worth
 
 	var/datum/money_account/A = occupant?.get_account()
@@ -46,14 +46,14 @@
 
 	if(occupant && occupant.wearing_rig)
 		var/pay_amount = min(occupant.wearing_rig.get_account_balance(), left_to_pay)
-		var/obj/item/weapon/rig/R = occupant.wearing_rig
+		var/obj/item/rig/R = occupant.wearing_rig
 		R.charge_to_rig_account(src, "Store Purchase", machine_id, -pay_amount)
 		left_to_pay -= pay_amount
 
 	if(left_to_pay)
 		for(var/i in deposit_box.contents)
-			if(istype(i, /obj/item/weapon/spacecash))
-				var/obj/item/weapon/spacecash/S = i
+			if(istype(i, /obj/item/spacecash))
+				var/obj/item/spacecash/S = i
 				if(S.worth <= left_to_pay)
 					left_to_pay -= S.worth
 					qdel(S)
@@ -125,7 +125,7 @@
 	var/list/things = list() + buy_current()
 	if(occupant.back && !occupant.wearing_rig)
 		store_or_drop(occupant.back)
-	var/obj/item/weapon/rig/R = locate(/obj/item/weapon/rig) in things
+	var/obj/item/rig/R = locate(/obj/item/rig) in things
 	if(R) //If they bought a module, R will be null and it'll just attempt to install all the modules from the deposit box
 		start_transfer(R)
 		things -= R
@@ -150,23 +150,22 @@
 
 	var/available_balance = ECA.money
 
-	var/withdrawal_amount = input(user,"Welcome to the CEC Employee Checking Account withdrawal interface. \n\
+	var/withdrawal_amount = tgui_input_number(user,"Welcome to the CEC Employee Checking Account withdrawal interface. \n\
 	Currently Available Balance:	[available_balance]	credits \n\
 	Enter the amount you wish to withdraw. Please note, deposits are not available, this account is withdrawal-only."
-	,"CEC Employee Checking Account",available_balance) as num | null
+	,"CEC Employee Checking Account", available_balance, available_balance, 0)
 
 
 
-
+	var/question = 	list()
+	rig_account ? (question += "Withdraw to RIG") : null
+	chip ? (question += "Withdraw to Credit Chip") : null
+	question += "Cancel"
 	var/response = tgui_alert(user, "Welcome to the CEC Employee Checking Account withdrawal interface. \n\
 	Currently Available Balance:	[available_balance]	credits \n\
 	You are withdrawing: [withdrawal_amount] credits. Please select the location to withdraw to.",
 	"CEC Employee Checking Account",
-	list(
-	(rig_account ? "Withdraw to RIG" : null),
-	(chip ? "Withdraw to Credit Chip" : null),
-	"Cancel"
-	))
+	question)
 
 	//We need to recheck things to prevent exploits now
 	if (!ECA)

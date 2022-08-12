@@ -93,16 +93,16 @@ var/list/slot_equipment_priority = list( \
 //Only counts those directly on the mob, not nested storage
 /mob/proc/get_all_storages()
 	var/list/storages = list()
-	if(istype(src.back,/obj/item/weapon/storage))
+	if(istype(src.back,/obj/item/storage))
 		storages += back
 
 	//Else if
-	else if(istype(src.back,/obj/item/weapon/rig))
-		var/obj/item/weapon/rig/rig = src.back
+	else if(istype(src.back,/obj/item/rig))
+		var/obj/item/rig/rig = src.back
 		if (rig.storage)
 			storages += back
 
-	for (var/obj/item/weapon/storage/S in src)
+	for (var/obj/item/storage/S in src)
 		storages |= S
 
 	return storages

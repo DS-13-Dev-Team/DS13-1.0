@@ -23,7 +23,7 @@
 
 #define iscorgi(A) istype(A, /mob/living/simple_animal/corgi)
 
-#define iscredits(A) istype(A, /obj/item/weapon/spacecash/ewallet)
+#define iscredits(A) istype(A, /obj/item/spacecash/ewallet)
 
 #define is_drone(A) istype(A, /mob/living/silicon/robot/drone)
 #define isdatum(A) istype(A, /datum)
@@ -54,7 +54,7 @@
 
 #define isprojectile(A)	istype(A, /obj/item/projectile)
 
-#define isrig(A)	istype(A, /obj/item/weapon/rig)
+#define isrig(A)	istype(A, /obj/item/rig)
 
 #define issignal(A) istype(A, /mob/dead/observer/eye/signal)
 
@@ -84,35 +84,35 @@
 
 #define isopenspace(A) istype(A, /turf/simulated/open)
 
-#define isWrench(A) A.has_quality(QUALITY_BOLT_TURNING)
+#define isWrench(A) A?.has_quality(QUALITY_BOLT_TURNING)
 
-#define isWelder(A) A.has_quality(QUALITY_WELDING)
+#define isWelder(A) A?.has_quality(QUALITY_WELDING)
 
 #define isCoil(A) istype(A, /obj/item/stack/cable_coil)
 
 #define iswindow(A)	istype(A, /obj/structure/window)
 
-#define isWirecutter(A) A.has_quality(QUALITY_WIRE_CUTTING)
+#define isWirecutter(A) A?.has_quality(QUALITY_WIRE_CUTTING)
 
-#define isScrewdriver(A) A.has_quality(QUALITY_SCREW_DRIVING)
+#define isScrewdriver(A) A?.has_quality(QUALITY_SCREW_DRIVING)
 
-#define isMultitool(A) A.has_quality(QUALITY_PULSING)
+#define isMultitool(A) A?.has_quality(QUALITY_PULSING)
 
-#define isCrowbar(A) A.has_quality(QUALITY_PRYING)
+#define isCrowbar(A) A?.has_quality(QUALITY_PRYING)
 
-#define isPickaxe(A) A.has_quality(QUALITY_DIGGING)
+#define isPickaxe(A) A?.has_quality(QUALITY_DIGGING)
 
-#define isSaw(A) A.has_quality(QUALITY_SAWING)
+#define isSaw(A) A?.has_quality(QUALITY_SAWING)
 
-#define isShovel(A) A.has_quality(QUALITY_EXCAVATION)
+#define isShovel(A) A?.has_quality(QUALITY_EXCAVATION)
 
-#define isScalpel(A) (A.has_quality(QUALITY_CUTTING) || A.has_quality(QUALITY_LASER_CUTTING))
+#define isScalpel(A) (A?.has_quality(QUALITY_CUTTING) || A?.has_quality(QUALITY_LASER_CUTTING))
 
-#define isLaserScalpel(A) (A.has_quality(QUALITY_LASER_CUTTING))
+#define isLaserScalpel(A) (A?.has_quality(QUALITY_LASER_CUTTING))
 
-#define isAdhesive(A) (A.has_quality(QUALITY_ADHESIVE))
+#define isAdhesive(A) (A?.has_quality(QUALITY_ADHESIVE))
 
-#define isSealing(A) (A.has_quality(QUALITY_SEALING))
+#define isSealing(A) (A?.has_quality(QUALITY_SEALING))
 
 #define sequential_id(key) uniqueness_repository.Generate(/datum/uniqueness_generator/id_sequential, key)
 

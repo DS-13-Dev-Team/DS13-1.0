@@ -339,7 +339,7 @@ If this is needed in future, add new datum procs for adding allowed movers, and 
 	return MOVEMENT_STOP
 
 /datum/movement_handler/mob/relayed_movement/proc/AddAllowedMover(var/mover)
-	LAZYDISTINCTADD(allowed_movers, mover)
+	LAZYOR(allowed_movers, mover)
 
 /datum/movement_handler/mob/relayed_movement/proc/RemoveAllowedMover(var/mover)
 	LAZYREMOVE(allowed_movers, mover)

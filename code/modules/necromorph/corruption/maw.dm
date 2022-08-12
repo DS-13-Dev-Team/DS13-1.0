@@ -49,12 +49,12 @@
 //A mob was detected nearby, can we absorb it?
 /obj/structure/corruption_node/maw/proc/nearby_movement(var/atom/movable/AM, var/atom/old_loc)
 
-	if (isliving(AM) && get_marker())
+	if (isliving(AM) && get_marker() && AM.get_biomass())
 		var/mob/living/L = AM
 		if (!L.is_necromorph())
 			//Yes we can
 			var/obj/machinery/marker/marker = get_marker()
-			var/datum/biomass_source/S = marker.add_biomass_source(L, L.mass, 8 MINUTES, /datum/biomass_source/convergence)
+			var/datum/biomass_source/S = marker.add_biomass_source(L, L.get_biomass(), 8 MINUTES, /datum/biomass_source/convergence)
 			if (S)
 				eating |= S
 				animate_chomp()

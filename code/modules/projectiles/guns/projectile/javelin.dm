@@ -1,5 +1,5 @@
 #define JAVELIN_MAX_SHOCK_TIME	(3 SECONDS)
-/obj/item/weapon/gun/projectile/javelin_gun
+/obj/item/gun/projectile/javelin_gun
 	name = "T15 Javelin Gun"
 	desc = "The Javelin Gun is a telemetric survey tool manufactured by Timson Tools, designed to fire titanium javelins at high speeds with extreme accuracy and piercing power."
 	icon = 'icons/obj/weapons/ds13guns48x32.dmi'
@@ -29,15 +29,15 @@
 
 	safety_state = 1
 
-/obj/item/weapon/gun/projectile/javelin_gun/empty
+/obj/item/gun/projectile/javelin_gun/empty
 	magazine_type = null
 
-/obj/item/weapon/gun/projectile/javelin_gun/patreon
+/obj/item/gun/projectile/javelin_gun/patreon
 	icon_state = "javelin_p"
 	item_state = "javelin_p"
 	icon_loaded = "javelin_p_loaded"
 
-/obj/item/weapon/gun/projectile/javelin_gun/can_fire(atom/target, mob/living/user, clickparams, silent)
+/obj/item/gun/projectile/javelin_gun/can_fire(atom/target, mob/living/user, clickparams, silent)
 	. = ..()
 	if(.)
 		return current_firemode.can_fire(target, user)
@@ -47,44 +47,44 @@
 
 
 /datum/firemode/automatic/shock/on_fire(atom/target, mob/living/user, clickparams, pointblank, reflex, obj/projectile)
-	if(istype(gun, /obj/item/weapon/gun/projectile/javelin_gun))
-		var/obj/item/weapon/gun/projectile/javelin_gun/J = gun
+	if(istype(gun, /obj/item/gun/projectile/javelin_gun))
+		var/obj/item/gun/projectile/javelin_gun/J = gun
 		J.detonate_javelin(user)
 
 /datum/firemode/automatic/shock/can_fire(atom/target, mob/living/user)
 	. = ..()
-	if(. && istype(gun, /obj/item/weapon/gun/projectile/javelin_gun))
-		var/obj/item/weapon/gun/projectile/javelin_gun/J = gun
+	if(. && istype(gun, /obj/item/gun/projectile/javelin_gun))
+		var/obj/item/gun/projectile/javelin_gun/J = gun
 		if(!J.javelins.len)
 			to_chat(user, SPAN_WARNING("There is no charged javelin nearby."))
 			return FALSE
 
-/obj/item/weapon/gun/projectile/javelin_gun/stop_firing()
+/obj/item/gun/projectile/javelin_gun/stop_firing()
 	. = ..()
 
 	if(!.)
 		return
-	for(var/obj/item/weapon/material/shard/shrapnel/javelin/J in javelins)
+	for(var/obj/item/material/shard/shrapnel/javelin/J in javelins)
 		if(J.shock_count)
 			J.remove_from_launcher_list()
 
-/obj/item/weapon/gun/projectile/javelin_gun/update_icon()
+/obj/item/gun/projectile/javelin_gun/update_icon()
 	. = ..()
 	if(ammo_magazine && ammo_magazine.stored_ammo.len)
 		icon_state = icon_loaded
 	else
 		icon_state = initial(icon_state)
 
-/obj/item/weapon/gun/projectile/javelin_gun/proc/detonate_javelin(mob/living/user)
-	for(var/obj/item/weapon/material/shard/shrapnel/javelin/J in javelins)
+/obj/item/gun/projectile/javelin_gun/proc/detonate_javelin(mob/living/user)
+	for(var/obj/item/material/shard/shrapnel/javelin/J in javelins)
 		if(get_dist(src, J) > 7)
 			continue
 		J.process_shock()
 
-/obj/item/weapon/gun/projectile/javelin_gun/register_shrapnel(obj/item/weapon/material/shard/shrapnel/SP)
+/obj/item/gun/projectile/javelin_gun/register_shrapnel(obj/item/material/shard/shrapnel/SP)
 	javelins |= SP
 
-/obj/item/weapon/gun/projectile/javelin_gun/unregister_shrapnel(obj/item/weapon/material/shard/shrapnel/SP)
+/obj/item/gun/projectile/javelin_gun/unregister_shrapnel(obj/item/material/shard/shrapnel/SP)
 	javelins -= SP
 
 /obj/effect/overload
@@ -144,7 +144,7 @@
 	penetration_modifier = 50
 	embed_mult = 1000
 	muzzle_type = null
-	shrapnel_type = /obj/item/weapon/material/shard/shrapnel/javelin
+	shrapnel_type = /obj/item/material/shard/shrapnel/javelin
 	var/push_force = 600
 	var/turf/last_turf
 	fire_sound = 'sound/weapons/guns/fire/jav_fire.ogg'
@@ -159,11 +159,11 @@
 	target.embed(SP)
 	playsound(src, "fleshtear", VOLUME_MID, TRUE)
 	if(!M.buckled)
-		SP.RegisterSignal(M, COMSIG_MOVABLE_BUMP, /obj/item/weapon/material/shard/shrapnel/javelin/proc/on_target_collision)
+		SP.RegisterSignal(M, COMSIG_MOVABLE_BUMP, /obj/item/material/shard/shrapnel/javelin/proc/on_target_collision)
 
 		M.apply_push_impulse_from(last_turf, push_force)
 
-		addtimer(CALLBACK(SP, /obj/item/weapon/material/shard/shrapnel/javelin/proc/unregister_collision, M), 1.5 SECONDS)
+		addtimer(CALLBACK(SP, /obj/item/material/shard/shrapnel/javelin/proc/unregister_collision, M), 1.5 SECONDS)
 
 
 /obj/item/projectile/bullet/javelin/attack_atom(var/atom/A,  var/distance, var/miss_modifier=0)
@@ -172,34 +172,34 @@
 		new src.shrapnel_type(get_turf(A), src)
 
 
-/obj/item/weapon/material/shard/shrapnel/javelin
+/obj/item/material/shard/shrapnel/javelin
 	name = "javelin"
 	icon_state = "javelin"
 	icon = 'icons/obj/projectiles.dmi'
 	var/charged_icon = "javelin"
-	var/obj/item/weapon/gun/projectile/javelin_gun/javelin_gun
+	var/obj/item/gun/projectile/javelin_gun/javelin_gun
 	var/obj/effect/overload/tesla
 	var/shock_count
 	var/extension_type = /datum/extension/mount/self_delete
 
 
-/obj/item/weapon/material/shard/shrapnel/javelin/New(loc, obj/item/projectile/P)
+/obj/item/material/shard/shrapnel/javelin/New(loc, obj/item/projectile/P)
 	..()
 	javelin_gun = launcher
 	update_icon()
 
-/obj/item/weapon/material/shard/shrapnel/javelin/Destroy()
+/obj/item/material/shard/shrapnel/javelin/Destroy()
 	if(launcher)
 		remove_from_launcher_list()
 	return ..()
 
-/obj/item/weapon/material/shard/shrapnel/javelin/update_icon()
+/obj/item/material/shard/shrapnel/javelin/update_icon()
 	if(launcher && !shock_count)
 		icon_state = charged_icon
 	else
 		icon_state = initial(icon_state)
 
-/obj/item/weapon/material/shard/shrapnel/javelin/examine(mob/user, distance)
+/obj/item/material/shard/shrapnel/javelin/examine(mob/user, distance)
 	. = ..()
 	if(launcher)
 		if(shock_count)
@@ -207,12 +207,12 @@
 		else
 			to_chat(user, SPAN_WARNING("Its charged with electricity."))
 
-/obj/item/weapon/material/shard/shrapnel/javelin/proc/remove_from_launcher_list()
+/obj/item/material/shard/shrapnel/javelin/proc/remove_from_launcher_list()
 	launcher.unregister_shrapnel(src)
 	QDEL_NULL(tesla)
 	update_icon()
 
-/obj/item/weapon/material/shard/shrapnel/javelin/proc/process_shock()
+/obj/item/material/shard/shrapnel/javelin/proc/process_shock()
 	if(!shock_count)
 		var/datum/effect/effect/system/spark_spread/S = new
 		S.set_up(3, 1, get_turf(src))
@@ -221,7 +221,7 @@
 		addtimer(CALLBACK(src, .proc/remove_from_launcher_list), 4 SECONDS)
 	shock_count++
 
-/obj/item/weapon/material/shard/shrapnel/javelin/proc/on_target_collision(mob/user, atom/obstacle)
+/obj/item/material/shard/shrapnel/javelin/proc/on_target_collision(mob/user, atom/obstacle)
 	SIGNAL_HANDLER
 	var/list/implants = user.get_visible_implants(0, TRUE)
 	if(src in implants)
@@ -237,14 +237,14 @@
 
 	unregister_collision(user)
 
-/obj/item/weapon/material/shard/shrapnel/javelin/proc/unregister_collision(mob/M)
+/obj/item/material/shard/shrapnel/javelin/proc/unregister_collision(mob/M)
 	UnregisterSignal(M, COMSIG_MOVABLE_BUMP, .proc/on_target_collision)
 
 /obj/item/javelin
 	name = "javelin"
 	icon_state = "javelin"
 	icon = 'icons/obj/projectiles.dmi'
-	var/obj/item/weapon/material/shard/shrapnel/javelin/javelin
+	var/obj/item/material/shard/shrapnel/javelin/javelin
 
 /obj/item/javelin/update_icon()
 	javelin.update_icon()

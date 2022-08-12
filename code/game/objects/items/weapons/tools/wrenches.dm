@@ -1,4 +1,4 @@
-/obj/item/weapon/tool/wrench
+/obj/item/tool/wrench
 	name = "wrench"
 	desc = "A wrench with many common uses. Can be usually found in your hand."
 	icon_state = "wrench"
@@ -11,7 +11,7 @@
 	attack_verb = list("bashed", "battered", "bludgeoned", "whacked")
 	tool_qualities = list(QUALITY_BOLT_TURNING = 30)
 
-/obj/item/weapon/tool/wrench/improvised
+/obj/item/tool/wrench/improvised
 	name = "sheet spanner"
 	desc = "A flat bit of metal with some usefully shaped holes cut into it."
 	icon_state = "impro_wrench"
@@ -20,7 +20,7 @@
 	tool_qualities = list(QUALITY_BOLT_TURNING = 15)
 	matter = list(MATERIAL_STEEL = 1000)
 
-/obj/item/weapon/tool/wrench/big_wrench
+/obj/item/tool/wrench/big_wrench
 	name = "big wrench"
 	desc = "If everything else failed - bring a bigger wrench."
 	icon_state = "big-wrench"
@@ -33,7 +33,7 @@
 
 
 
-/obj/item/weapon/material/twohanded/fireaxe/bigwrench
+/obj/item/material/twohanded/fireaxe/bigwrench
 	name = "huge wrench"
 	desc = "If everything else failed - bring a bigger wrench."
 	base_icon = "big_wrench"

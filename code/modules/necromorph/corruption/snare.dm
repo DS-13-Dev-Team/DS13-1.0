@@ -108,7 +108,7 @@
 	.=..()
 
 //Trying to remove snares with your hands is a bad idea, they will latch on and pull you in or steal the tool you used
-/obj/structure/corruption_node/snare/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/structure/corruption_node/snare/attackby(obj/item/W as obj, mob/user as mob)
 	if (prob(25))
 		if (yank_item(user, W))
 			return

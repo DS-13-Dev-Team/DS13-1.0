@@ -185,13 +185,13 @@
 	I.reagents.add_reagent(., I.reagents.get_free_space())
 
 /datum/gear_tweak/tablet
-	var/list/ValidProcessors = list(/obj/item/weapon/computer_hardware/processor_unit/small)
-	var/list/ValidBatteries = list(/obj/item/weapon/computer_hardware/battery_module/nano, /obj/item/weapon/computer_hardware/battery_module/micro, /obj/item/weapon/computer_hardware/battery_module)
-	var/list/ValidHardDrives = list(/obj/item/weapon/computer_hardware/hard_drive/micro, /obj/item/weapon/computer_hardware/hard_drive/small, /obj/item/weapon/computer_hardware/hard_drive)
-	var/list/ValidNetworkCards = list(/obj/item/weapon/computer_hardware/network_card, /obj/item/weapon/computer_hardware/network_card/advanced)
-	var/list/ValidNanoPrinters = list(null, /obj/item/weapon/computer_hardware/nano_printer)
-	var/list/ValidCardSlots = list(null, /obj/item/weapon/computer_hardware/card_slot)
-	var/list/ValidTeslaLinks = list(null, /obj/item/weapon/computer_hardware/tesla_link)
+	var/list/ValidProcessors = list(/obj/item/computer_hardware/processor_unit/small)
+	var/list/ValidBatteries = list(/obj/item/computer_hardware/battery_module/nano, /obj/item/computer_hardware/battery_module/micro, /obj/item/computer_hardware/battery_module)
+	var/list/ValidHardDrives = list(/obj/item/computer_hardware/hard_drive/micro, /obj/item/computer_hardware/hard_drive/small, /obj/item/computer_hardware/hard_drive)
+	var/list/ValidNetworkCards = list(/obj/item/computer_hardware/network_card, /obj/item/computer_hardware/network_card/advanced)
+	var/list/ValidNanoPrinters = list(null, /obj/item/computer_hardware/nano_printer)
+	var/list/ValidCardSlots = list(null, /obj/item/computer_hardware/card_slot)
+	var/list/ValidTeslaLinks = list(null, /obj/item/computer_hardware/tesla_link)
 
 /datum/gear_tweak/tablet/get_contents(var/list/metadata)
 	var/list/names = list()
@@ -341,20 +341,20 @@
 	show_in_ui = FALSE
 //Replace any worn backpack
 /datum/gear_tweak/RIG/tweak_item(var/obj/item/I, var/metadata, var/spawn_location)
-	var/obj/item/weapon/rig/rig = I
+	var/obj/item/rig/rig = I
 	rig.seal_delay = 0	//We zero this to remove the equipping time
 
 
 
 /datum/gear_tweak/RIG/tweak_postequip(var/mob/living/carbon/human/H, var/obj/item/I, var/equip_slot)
-	var/obj/item/weapon/rig/rig = I
+	var/obj/item/rig/rig = I
 	rig.seal_delay = initial(rig.seal_delay)
 
 /*
 	RIG Activation
 */
 /datum/gear_tweak/RIG/active/tweak_postequip(var/mob/living/carbon/human/H, var/obj/item/I, var/equip_slot)
-	var/obj/item/weapon/rig/rig = I
+	var/obj/item/rig/rig = I
 	if (istype(rig))
 		rig.toggle_seals(H, TRUE)
 

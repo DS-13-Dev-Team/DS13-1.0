@@ -46,7 +46,7 @@ SUBSYSTEM_DEF(shuttle)
 
 //This is called by gameticker after all the machines and radio frequencies have been properly initialized
 /datum/controller/subsystem/shuttle/proc/initialize_shuttles()
-	for(var/shuttle_type in subtypesof(/datum/shuttle))
+	for(var/shuttle_type in GLOB.using_map.using_shuttles)
 		var/datum/shuttle/shuttle = shuttle_type
 		if((shuttle in shuttles_to_initialize) || !initial(shuttle.defer_initialisation))
 			initialise_shuttle(shuttle_type, TRUE)
@@ -61,4 +61,5 @@ SUBSYSTEM_DEF(shuttle)
 		shuttle = new shuttle()
 
 /datum/controller/subsystem/shuttle/stat_entry(msg)
-	return "S:[shuttles.len], L:[registered_shuttle_landmarks.len], Landmarks w/o Sector:[landmarks_awaiting_sector.len], Missing Landmarks:[landmarks_still_needed.len]"
+	msg ="|S:[shuttles.len]|L:[registered_shuttle_landmarks.len]|Landmarks w/o Sector:[landmarks_awaiting_sector.len]|Missing Landmarks:[landmarks_still_needed.len]"
+	return ..()

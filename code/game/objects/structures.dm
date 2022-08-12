@@ -142,6 +142,8 @@
 
 // When destroyed by explosions, properly handle contents.
 /obj/structure/ex_act(severity, var/atom/epicentre)
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	switch(severity)
 		if(1.0)
 			for(var/atom/movable/AM in contents)

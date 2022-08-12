@@ -1,23 +1,14 @@
-GLOBAL_DATUM_INIT(using_map, /datum/map, new USING_MAP_DATUM)
-GLOBAL_LIST_EMPTY(all_maps)
+GLOBAL_DATUM(using_map, /datum/map)
+GLOBAL_LIST_INIT(all_maps, initialise_bay_map_list())
 
-var/const/MAP_HAS_BRANCH = 1	//Branch system for occupations, togglable
-var/const/MAP_HAS_RANK = 2		//Rank system, also togglable
-
-/hook/startup/proc/initialise_map_list()
-	for(var/type in typesof(/datum/map) - /datum/map)
-		var/datum/map/M
-		if(type == GLOB.using_map.type)
-			M = GLOB.using_map
-			M.setup_map()
-		else
-			M = new type
+/proc/initialise_bay_map_list()
+	.=list()
+	for(var/type in subtypesof(/datum/map))
+		var/datum/map/M = new type
 		if(!M.path)
 			log_debug("Map '[M]' does not have a defined path, not adding to map list!")
 		else
-			GLOB.all_maps[M.path] = M
-	return 1
-
+			.[M.type] = M
 
 /datum/map
 	var/name = "Unnamed Map"
@@ -31,6 +22,8 @@ var/const/MAP_HAS_RANK = 2		//Rank system, also togglable
 	var/list/sealed_levels = list()  // Z-levels that don't allow random transit at edge
 	var/list/empty_levels = null     // Empty Z-levels that may be used for various things (currently used by bluespace jump)
 
+	var/list/accessible_z_levels = list()
+
 	var/list/map_levels              // Z-levels available to various consoles, such as the crew monitor. Defaults to station_levels if unset.
 
 	var/list/base_turf_by_z = list() // Custom base turf by Z-level. Defaults to world.turf for unlisted Z-levels
@@ -38,15 +31,16 @@ var/const/MAP_HAS_RANK = 2		//Rank system, also togglable
 	var/base_floor_type = /turf/simulated/floor/airless // The turf type used when generating floors between Z-levels at startup.
 	var/base_floor_area                                 // Replacement area, if a base_floor_type is generated. Leave blank to skip.
 
-	//This list contains the z-level numbers which can be accessed via space travel and the percentile chances to get there.
-	var/list/accessible_z_levels = list()
+	var/list/allowed_jobs = list(/datum/job/cap, /datum/job/fl, /datum/job/be, /datum/job/cseco,
+						/datum/job/sso, /datum/job/security_officer, /datum/job/smo,
+						/datum/job/md, /datum/job/surg, /datum/job/psychiatrist, /datum/job/cscio,
+						/datum/job/ra, /datum/job/ce, /datum/job/tech_engineer, /datum/job/so,
+						/datum/job/janitor, /datum/job/chaplain, /datum/job/serviceman,
+						/datum/job/salvage, /datum/job/dom, /datum/job/foreman, /datum/job/planet_cracker,
+						/datum/job/line_cook, /datum/job/bar, /datum/job/botanist
+						)
 
-	var/list/allowed_jobs	       //Job datums to use.
-	                               //Works a lot better so if we get to a point where three-ish maps are used
-	                               //We don't have to C&P ones that are only common between two of them
-	                               //That doesn't mean we have to include them with the rest of the jobs though, especially for map specific ones.
-	                               //Also including them lets us override already created jobs, letting us keep the datums to a minimum mostly.
-	                               //This is probably a lot longer explanation than it needs to be.
+	var/list/using_shuttles
 
 	var/station_name  = "USG Ishimura"
 	var/station_short = "Ishimura"
@@ -76,13 +70,8 @@ var/const/MAP_HAS_RANK = 2		//Rank system, also togglable
 	                                              // as defined in holodeck_programs
 	var/list/holodeck_restricted_programs = list() // as above... but EVIL!
 
-	var/allowed_spawns = list("Arrivals Shuttle","Gateway", "Cryogenic Storage", "Cyborg Storage")
-	var/default_spawn = "Arrivals Shuttle"
-	var/flags = 0
 	var/evac_controller_type = /datum/evacuation_controller
 
-	var/list/lobby_screens = list('icons/hud/lobby_screens/default_lobby.png')	// The list of lobby screen to pick() from. If left unset the first icon state is always selected.
-	var/current_lobby_screen
 	var/music_track/lobby_track                     							// The track that will play in the lobby screen.
 	var/list/lobby_tracks = list()                  							// The list of lobby tracks to pick() from. If left unset will randomly select among all available /music_track subtypes.
 	var/welcome_sound = 'sound/AI/welcome.ogg'									// Sound played on roundstart
@@ -90,15 +79,11 @@ var/const/MAP_HAS_RANK = 2		//Rank system, also togglable
 	var/default_law_type = /datum/ai_laws/nanotrasen  // The default lawset use by synth units, if not overriden by their laws var.
 	var/security_state = /decl/security_state/default // The default security state system to use.
 
-	var/id_hud_icons = 'icons/mob/hud.dmi' // Used by the ID HUD (primarily sechud) overlay.
-
 	var/num_exoplanets = 0
 	var/list/planet_size  //dimensions of planet zlevel, defaults to world size. Due to how maps are generated, must be (2^n+1) e.g. 17,33,65,129 etc. Map will just round up to those if set to anything other.
 	var/away_site_budget = 0
 
 	var/skybox_foreground_objects
-
-	var/list/loadout_blacklist	//list of types of loadout items that will not be pickable
 
 	//Economy stuff
 	var/starting_money = 75000		//Money in station account
@@ -147,11 +132,10 @@ var/const/MAP_HAS_RANK = 2		//Rank system, also togglable
 /datum/map/New()
 	if(!map_levels)
 		map_levels = station_levels.Copy()
-	if(!allowed_jobs)
-		allowed_jobs = subtypesof(/datum/job)
 	if(!planet_size)
 		planet_size = list(world.maxx, world.maxy)
-	current_lobby_screen = pick(lobby_screens)
+	if(!using_shuttles)
+		using_shuttles = subtypesof(/datum/shuttle)
 
 /datum/map/proc/setup_map()
 	var/lobby_track_type
@@ -171,6 +155,15 @@ var/const/MAP_HAS_RANK = 2		//Rank system, also togglable
 			if(A.z && (A.z in admin_levels))
 				post_round_safe_areas += A.type
 
+	for(var/client/client as anything in GLOB.clients)
+		client.playtitlemusic()
+		winset(client, null, "mainwindow.title='[CONFIG_GET(string/title)] - [full_name]'")
+
+	//It uses station location for the code too
+	if(!syndicate_code_phrase)
+		syndicate_code_phrase	= generate_code_phrase()
+	if(!syndicate_code_response)
+		syndicate_code_response	= generate_code_phrase()
 
 //Called late in the load order after other subsystems are done
 /datum/map/proc/post_setup()
@@ -189,9 +182,6 @@ var/const/MAP_HAS_RANK = 2		//Rank system, also togglable
 
 
 /datum/map/proc/send_welcome()
-	return
-
-/datum/map/proc/perform_map_generation()
 	return
 
 // Used to apply various post-compile procedural effects to the map.
@@ -239,18 +229,16 @@ var/const/MAP_HAS_RANK = 2		//Rank system, also togglable
 	if(!station_account)
 		station_account = create_account("[station_name()] Primary Account", starting_money)
 
-	for(var/job in allowed_jobs)
-		var/datum/job/J = decls_repository.get_decl(job)
-		if(J.department)
-			station_departments |= J.department
+	for(var/datum/job/job as anything in allowed_jobs)
+		var/dep = initial(job.department)
+		if(dep)
+			station_departments |= dep
+
 	for(var/department in station_departments)
 		department_accounts[department] = create_account("[department] Account", department_money)
 
 	department_accounts["Vendor"] = create_account("Vendor Account", 0)
 	vendor_account = department_accounts["Vendor"]
-
-/datum/map/proc/map_info(var/client/victim)
-	return
 
 /datum/map/proc/bolt_saferooms()
 	return // overriden by torch
@@ -284,7 +272,6 @@ var/const/MAP_HAS_RANK = 2		//Rank system, also togglable
 		num2text(SUP_FREQ)   = list(access_cargo),
 		num2text(SRV_FREQ)   = list(access_service),
 	)
-
 
 /datum/map/proc/setup_crew_objectives()
 	for(var/subtype in crew_objectives)

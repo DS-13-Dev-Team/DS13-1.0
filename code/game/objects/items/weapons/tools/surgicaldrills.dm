@@ -1,4 +1,4 @@
-/obj/item/weapon/tool/surgicaldrill
+/obj/item/tool/surgicaldrill
 	name = "surgical drill"
 	desc = "You can drill using this item. You dig?"
 	icon_state = "drill"
@@ -13,9 +13,9 @@
 	tool_qualities = list(QUALITY_DRILLING = 30)
 
 	use_power_cost = 0.24
-	suitable_cell = /obj/item/weapon/cell
+	suitable_cell = /obj/item/cell
 
 
-/obj/item/weapon/tool/shiv
+/obj/item/tool/shiv
 	name = "sharv"
 	desc = "A pointy piece of glass, abraded to an edge and wrapped in tape for a handle."

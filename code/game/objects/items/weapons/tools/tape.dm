@@ -1,4 +1,4 @@
-/obj/item/weapon/tool/tape_roll
+/obj/item/tool/tape_roll
 	name = "duct tape"
 	desc = "The astronaut's eternal friend. Fixes just about anything, for a while at least. Duct tape repairs are imperfect, and the thing will likely break again soon."
 	icon = 'icons/obj/tools.dmi'
@@ -13,7 +13,7 @@
 	item_flags = ITEM_FLAG_NO_BLUDGEON //Its not a weapon
 	max_modifications = 0 //These are consumable, so no wasting modifications on them
 
-/obj/item/weapon/tool/tape_roll/web
+/obj/item/tool/tape_roll/web
 	name = "web tape"
 	desc = "A strip of fabric covered in an all-natural adhesive. Holds things together with the power of thoughts and prayers."
 	icon_state = "webtape"
@@ -22,7 +22,7 @@
 	max_stock = 30
 	alpha = 150
 
-/obj/item/weapon/tool/tape_roll/fiber
+/obj/item/tool/tape_roll/fiber
 	name = "fiber tape"
 	desc = "A roll of flexible adhesive polymer mesh, which sets as strong as welded steel."
 	icon_state = "fiber_tape"
@@ -31,7 +31,7 @@
 	use_stock_cost = 0.10
 	max_stock = 100
 
-/obj/item/weapon/tool/tape_roll/attack(var/mob/living/carbon/human/H, var/mob/user)
+/obj/item/tool/tape_roll/attack(var/mob/living/carbon/human/H, var/mob/user)
 	if(istype(H))
 		if(get_zone_sel(user, TRUE) == BP_EYES)
 
@@ -86,7 +86,7 @@
 
 		else if(get_zone_sel(user) == BP_R_ARM || get_zone_sel(user) == BP_L_ARM)
 			if(use_tool(user, H, 90, QUALITY_ADHESIVE))
-				var/obj/item/weapon/handcuffs/cable/tape/T = new(user)
+				var/obj/item/handcuffs/cable/tape/T = new(user)
 				if(!T.place_handcuffs(H, user))
 					user.unEquip(T)
 					qdel(T)
@@ -94,7 +94,7 @@
 			return ..()
 		return 1
 
-/obj/item/weapon/tool/tape_roll/stick(var/obj/item/target, var/mob/user)
+/obj/item/tool/tape_roll/stick(var/obj/item/target, var/mob/user)
 	if (!istype(target) || target.anchored)
 		return
 
@@ -105,13 +105,13 @@
 		return
 	consume_resources(10, user)
 	user.drop_from_inventory(target)
-	var/obj/item/weapon/ducttape/tape = new(get_turf(src))
+	var/obj/item/ducttape/tape = new(get_turf(src))
 	tape.attach(target)
 	user.put_in_hands(tape)
 	return TRUE
 
 
-/obj/item/weapon/ducttape
+/obj/item/ducttape
 	name = "tape"
 	desc = "A piece of sticky tape."
 	icon = 'icons/obj/bureaucracy.dmi'
@@ -120,32 +120,32 @@
 	layer = 4
 	anchored = 1 //it's sticky, no you cant move it
 
-	var/obj/item/weapon/stuck = null
+	var/obj/item/stuck = null
 
-/obj/item/weapon/ducttape/New()
+/obj/item/ducttape/New()
 	..()
 	item_flags |= ITEM_FLAG_NO_BLUDGEON
 
 /*
-/obj/item/weapon/ducttape/update_plane()
+/obj/item/ducttape/update_plane()
 	..()
 	update_icon()
 */
 
-/obj/item/weapon/ducttape/examine(mob/user)
+/obj/item/ducttape/examine(mob/user)
 	return stuck.examine(user)
 
-/obj/item/weapon/ducttape/proc/attach(var/obj/item/weapon/W)
+/obj/item/ducttape/proc/attach(var/obj/item/W)
 	stuck = W
 	W.forceMove(src)
 	update_icon()
 	name = W.name + " (taped)"
 
-/obj/item/weapon/ducttape/update_icon()
+/obj/item/ducttape/update_icon()
 	if (!stuck)
 		return
 
-	if (istype(stuck, /obj/item/weapon/paper))
+	if (istype(stuck, /obj/item/paper))
 		icon_state = stuck.icon_state + "_taped"
 		overlays.Cut()
 		overlays = stuck.overlays
@@ -158,7 +158,7 @@
 		underlays.Cut()
 		underlays += MA
 
-/obj/item/weapon/ducttape/attack_self(mob/user)
+/obj/item/ducttape/attack_self(mob/user)
 	if(!stuck)
 		return
 
@@ -171,7 +171,7 @@
 	overlays = null
 	qdel(src)
 
-/obj/item/weapon/ducttape/afterattack(var/A, mob/user, flag, params)
+/obj/item/ducttape/afterattack(var/A, mob/user, flag, params)
 
 	if(!in_range(user, A) || istype(A, /obj/machinery/door) || !stuck)
 		return

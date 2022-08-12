@@ -24,6 +24,7 @@
 		. *= 3
 
 /turf/simulated/floor
+	plane = FLOOR_PLANE
 	explosion_resistance = 1
 
 /turf/simulated/mineral

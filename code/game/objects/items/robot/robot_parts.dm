@@ -70,7 +70,7 @@
 	model_info = 1
 	bp_tag = BP_CHEST
 	var/wires = 0.0
-	var/obj/item/weapon/cell/cell = null
+	var/obj/item/cell/cell = null
 
 /obj/item/robot_parts/chest/can_install(mob/user)
 	var/success = TRUE
@@ -89,8 +89,8 @@
 	part = list(BP_HEAD)
 	model_info = 1
 	bp_tag = BP_HEAD
-	var/obj/item/device/flash/flash1 = null
-	var/obj/item/device/flash/flash2 = null
+	var/obj/item/flash/flash1 = null
+	var/obj/item/flash/flash2 = null
 
 /obj/item/robot_parts/head/can_install(mob/user)
 	var/success = TRUE;
@@ -136,7 +136,7 @@
 	if(istype(W, /obj/item/stack/material) && W.get_material_name() == MATERIAL_STEEL && !parts[BP_L_ARM] && !parts[BP_R_ARM] && !parts[BP_L_LEG] && !parts[BP_R_LEG] && !parts[BP_CHEST] && !parts[BP_HEAD])
 		var/obj/item/stack/material/M = W
 		if (M.use(1))
-			var/obj/item/weapon/secbot_assembly/ed209_assembly/B = new /obj/item/weapon/secbot_assembly/ed209_assembly(get_turf(src))
+			var/obj/item/secbot_assembly/ed209_assembly/B = new /obj/item/secbot_assembly/ed209_assembly(get_turf(src))
 			to_chat(user, "<span class='notice'>You armed the robot frame.</span>")
 			if (user.get_inactive_hand()==src)
 				user.drop_from_inventory(src) //clears inactive hand; item will be deleted anyway.
@@ -154,10 +154,10 @@
 			src.parts[part.bp_tag] = part
 			src.update_icon()
 
-	if(istype(W, /obj/item/device/mmi) || istype(W, /obj/item/organ/internal/posibrain))
+	if(istype(W, /obj/item/mmi) || istype(W, /obj/item/organ/internal/posibrain))
 		var/mob/living/carbon/brain/B
-		if(istype(W, /obj/item/device/mmi))
-			var/obj/item/device/mmi/M = W
+		if(istype(W, /obj/item/mmi))
+			var/obj/item/mmi/M = W
 			B = M.brainmob
 		else
 			var/obj/item/organ/internal/posibrain/P = W
@@ -223,7 +223,7 @@
 		else
 			to_chat(user, "<span class='warning'>The MMI must go in after everything else!</span>")
 
-	if (istype(W, /obj/item/weapon/pen))
+	if (istype(W, /obj/item/pen))
 		var/t = sanitizeSafe(input(user, "Enter new robot name", src.name, src.created_name), MAX_NAME_LEN)
 		if (!t)
 			return
@@ -236,7 +236,7 @@
 
 /obj/item/robot_parts/chest/attackby(obj/item/W as obj, mob/user as mob)
 	..()
-	if(istype(W, /obj/item/weapon/cell))
+	if(istype(W, /obj/item/cell))
 		if(src.cell)
 			to_chat(user, "<span class='warning'>You have already inserted a cell!</span>")
 			return
@@ -317,7 +317,7 @@
 
 /obj/item/robot_parts/head/attackby(obj/item/W as obj, mob/user as mob)
 	..()
-	if(istype(W, /obj/item/device/flash))
+	if(istype(W, /obj/item/flash))
 		if(istype(user,/mob/living/silicon/robot))
 			var/current_module = user.get_active_hand()
 			if(current_module == W)
@@ -327,7 +327,7 @@
 				add_flashes(W,user)
 		else
 			add_flashes(W,user)
-	else if(istype(W, /obj/item/weapon/stock_parts/manipulator))
+	else if(istype(W, /obj/item/stock_parts/manipulator))
 		to_chat(user, "<span class='notice'>You install some manipulators and modify the head, creating a functional spider-bot!</span>")
 		new /mob/living/simple_animal/spiderbot(get_turf(loc))
 		qdel(W)

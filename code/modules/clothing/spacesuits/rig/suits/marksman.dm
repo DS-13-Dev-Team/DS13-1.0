@@ -1,4 +1,4 @@
-/obj/item/weapon/rig/marksman
+/obj/item/rig/marksman
 	name = "marksman RIG"
 	desc = "A RIG designed for usage by a vessel's forensics specialist."
 	icon_state = "marksman_rig"

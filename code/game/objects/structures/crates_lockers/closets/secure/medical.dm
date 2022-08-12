@@ -23,8 +23,8 @@
 
 /obj/structure/closet/secure_closet/medical1/WillContain()
 	return list(
-		/obj/item/weapon/storage/box/autoinjectors,
-		/obj/item/weapon/storage/box/syringes,
+		/obj/item/storage/box/autoinjectors,
+		/obj/item/storage/box/syringes,
 		/obj/random/firstaid = 3
 	)
 
@@ -40,9 +40,9 @@
 
 /obj/structure/closet/secure_closet/medical2/WillContain()
 	return list(
-		/obj/item/weapon/tank/anesthetic = 3,
+		/obj/item/tank/anesthetic = 3,
 		/obj/item/clothing/mask/breath/medical = 3,
-		/obj/item/device/rig_remover = 2
+		/obj/item/rig_remover = 2
 	)
 
 /obj/structure/closet/secure_closet/medical3
@@ -56,19 +56,19 @@
 
 /obj/structure/closet/secure_closet/medical3/WillContain()
 	return list(
-		new/datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack/medic, /obj/item/weapon/storage/backpack/satchel_med)),
-		new/datum/atom_creator/simple(/obj/item/weapon/storage/backpack/dufflebag/med, 50),
+		new/datum/atom_creator/weighted(list(/obj/item/storage/backpack/medic, /obj/item/storage/backpack/satchel_med)),
+		new/datum/atom_creator/simple(/obj/item/storage/backpack/dufflebag/med, 50),
 		/obj/item/clothing/under/deadspace/doctor,
 		/obj/item/clothing/shoes/white,
 		/obj/item/clothing/accessory/stethoscope,
-		/obj/item/device/flashlight,
-		/obj/item/device/flashlight/pen,
-		/obj/item/device/radio/headset/headset_med,
-		/obj/item/device/healthanalyzer,
+		/obj/item/flashlight,
+		/obj/item/flashlight/pen,
+		/obj/item/radio/headset/headset_med,
+		/obj/item/healthanalyzer,
 		/obj/item/taperoll/medical,
-		/obj/item/weapon/storage/belt/medical,
+		/obj/item/storage/belt/medical,
 		/obj/item/clothing/glasses/hud/health,
-		/obj/item/device/rig_remover
+		/obj/item/rig_remover
 	)
 
 /obj/structure/closet/secure_closet/medical4
@@ -82,19 +82,19 @@
 
 /obj/structure/closet/secure_closet/medical4/WillContain()
 	return list(
-		new/datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack/medic, /obj/item/weapon/storage/backpack/satchel_med)),
-		new/datum/atom_creator/simple(/obj/item/weapon/storage/backpack/dufflebag/med, 50),
+		new/datum/atom_creator/weighted(list(/obj/item/storage/backpack/medic, /obj/item/storage/backpack/satchel_med)),
+		new/datum/atom_creator/simple(/obj/item/storage/backpack/dufflebag/med, 50),
 		/obj/item/clothing/under/deadspace/surgeon,
 		/obj/item/clothing/shoes/white,
 		/obj/item/clothing/accessory/stethoscope,
-		/obj/item/device/flashlight,
-		/obj/item/device/flashlight/pen,
-		/obj/item/device/radio/headset/headset_med,
-		/obj/item/device/healthanalyzer,
+		/obj/item/flashlight,
+		/obj/item/flashlight/pen,
+		/obj/item/radio/headset/headset_med,
+		/obj/item/healthanalyzer,
 		/obj/item/taperoll/medical,
-		/obj/item/weapon/storage/belt/medical,
+		/obj/item/storage/belt/medical,
 		/obj/item/clothing/glasses/hud/health,
-		/obj/item/device/rig_remover
+		/obj/item/rig_remover
 	)
 
 /obj/structure/closet/secure_closet/SMO
@@ -108,8 +108,8 @@
 
 /obj/structure/closet/secure_closet/SMO/WillContain()
 	return list(
-		new/datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack/medic, /obj/item/weapon/storage/backpack/satchel_med)),
-		new/datum/atom_creator/simple(/obj/item/weapon/storage/backpack/dufflebag/med, 50),
+		new/datum/atom_creator/weighted(list(/obj/item/storage/backpack/medic, /obj/item/storage/backpack/satchel_med)),
+		new/datum/atom_creator/simple(/obj/item/storage/backpack/dufflebag/med, 50),
 		/obj/item/clothing/suit/bio_suit/cmo,
 		/obj/item/clothing/head/bio_hood/cmo,
 		/obj/item/clothing/shoes/white,
@@ -117,15 +117,16 @@
 		/obj/item/clothing/suit/storage/toggle/labcoat/cmo,
 		/obj/item/clothing/gloves/latex,
 		/obj/item/clothing/accessory/stethoscope,
-		/obj/item/device/radio/headset/heads/smo,
+		/obj/item/radio/headset/heads/smo,
 		/obj/item/taperoll/medical,
-		/obj/item/device/flashlight,
-		/obj/item/device/flashlight/pen,
-		/obj/item/device/healthanalyzer,
-		/obj/item/weapon/storage/belt/medical,
+//		/obj/item/flash,
+		/obj/item/flashlight,
+		/obj/item/flashlight/pen,
+		/obj/item/adv_health_analyzer,
+		/obj/item/storage/belt/medical,
 		/obj/item/clothing/glasses/hud/health,
-		/obj/item/weapon/reagent_containers/hypospray/vial,
-		/obj/item/device/rig_remover
+		/obj/item/reagent_containers/hypospray/vial,
+		/obj/item/rig_remover
 	)
 
 /obj/structure/closet/secure_closet/chemical
@@ -140,8 +141,8 @@
 
 /obj/structure/closet/secure_closet/chemical/WillContain()
 	return list(
-		/obj/item/weapon/storage/box/pillbottles = 2,
-		/obj/item/weapon/reagent_containers/glass/beaker/cryoxadone,
+		/obj/item/storage/box/pillbottles = 2,
+		/obj/item/reagent_containers/glass/beaker/cryoxadone,
 		/obj/random/medical = 12
 	)
 
@@ -176,23 +177,23 @@
 		/obj/item/clothing/under/rank/chaplain,
 		/obj/item/clothing/shoes/black,
 		/obj/item/clothing/suit/chaplain_hoodie,
-		/obj/item/weapon/storage/fancy/candle_box = 2,
-		/obj/item/weapon/deck/tarot,
-		/obj/item/weapon/reagent_containers/food/drinks/bottle/holywater,
-		/obj/item/weapon/nullrod,
-		/obj/item/weapon/storage/bible,
+		/obj/item/storage/fancy/candle_box = 2,
+		/obj/item/deck/tarot,
+		/obj/item/reagent_containers/food/drinks/bottle/holywater,
+		/obj/item/nullrod,
+		/obj/item/storage/bible,
 		/obj/item/clothing/suit/straight_jacket,
-		/obj/item/weapon/reagent_containers/glass/bottle/stoxin,
-		/obj/item/weapon/reagent_containers/syringe,
-		/obj/item/weapon/storage/pill_bottle/citalopram,
-		/obj/item/weapon/reagent_containers/pill/methylphenidate,
-		/obj/item/weapon/clipboard,
-		/obj/item/weapon/folder/white,
-		/obj/item/device/taperecorder,
-		/obj/item/device/tape/random = 3,
-		/obj/item/device/camera,
+		/obj/item/reagent_containers/glass/bottle/stoxin,
+		/obj/item/reagent_containers/syringe,
+		/obj/item/storage/pill_bottle/citalopram,
+		/obj/item/reagent_containers/pill/methylphenidate,
+		/obj/item/clipboard,
+		/obj/item/folder/white,
+		/obj/item/taperecorder,
+		/obj/item/tape/random = 3,
+		/obj/item/camera,
 		/obj/item/toy/therapy_blue,
-		/obj/item/weapon/storage/belt/general
+		/obj/item/storage/belt/general
 	)
 
 /obj/structure/closet/secure_closet/virology
@@ -206,20 +207,20 @@
 
 /obj/structure/closet/secure_closet/virology/WillContain()
 	return list(
-		/obj/item/weapon/storage/box/autoinjectors,
-		/obj/item/weapon/storage/box/syringes,
-		/obj/item/weapon/reagent_containers/dropper = 2,
-		/obj/item/weapon/reagent_containers/glass/beaker = 2,
-		/obj/item/weapon/reagent_containers/glass/bottle/inaprovaline,
-		/obj/item/weapon/storage/pill_bottle/spaceacillin,
-		/obj/item/weapon/reagent_containers/syringe/antiviral,
-		/obj/item/weapon/reagent_containers/glass/bottle/antitoxin,
-		/obj/item/weapon/storage/box/masks,
-		/obj/item/weapon/storage/box/gloves,
+		/obj/item/storage/box/autoinjectors,
+		/obj/item/storage/box/syringes,
+		/obj/item/reagent_containers/dropper = 2,
+		/obj/item/reagent_containers/glass/beaker = 2,
+		/obj/item/reagent_containers/glass/bottle/inaprovaline,
+		/obj/item/storage/pill_bottle/spaceacillin,
+		/obj/item/reagent_containers/syringe/antiviral,
+		/obj/item/reagent_containers/glass/bottle/antitoxin,
+		/obj/item/storage/box/masks,
+		/obj/item/storage/box/gloves,
 		/obj/item/clothing/under/rank/virologist,
 		/obj/item/clothing/shoes/white,
 		/obj/item/clothing/mask/surgical,
-		/obj/item/device/healthanalyzer,
+		/obj/item/healthanalyzer,
 		/obj/item/clothing/glasses/hud/health
 	)
 
@@ -236,11 +237,11 @@
 /obj/structure/closet/secure_closet/psychiatry/WillContain()
 	return list(
 		/obj/item/clothing/suit/straight_jacket,
-		/obj/item/weapon/reagent_containers/glass/bottle/stoxin,
-		/obj/item/weapon/reagent_containers/syringe,
-		/obj/item/weapon/storage/pill_bottle/citalopram,
-		/obj/item/weapon/storage/pill_bottle/methylphenidate,
-		/obj/item/weapon/storage/pill_bottle/paroxetine,
+		/obj/item/reagent_containers/glass/bottle/stoxin,
+		/obj/item/reagent_containers/syringe,
+		/obj/item/storage/pill_bottle/citalopram,
+		/obj/item/storage/pill_bottle/methylphenidate,
+		/obj/item/storage/pill_bottle/paroxetine,
 		/obj/item/clothing/under/rank/psych/sweater,
 		/obj/item/clothing/under/rank/psych
 	)

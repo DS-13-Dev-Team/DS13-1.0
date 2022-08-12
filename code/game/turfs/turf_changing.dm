@@ -15,7 +15,7 @@
 	levelupdate()
 
 //Creates a new turf
-/turf/proc/ChangeTurf(turf/N, tell_universe = TRUE, force_lighting_update = FALSE, keep_air = FALSE)
+/turf/proc/ChangeTurf(turf/N, tell_universe = TRUE, force_lighting_update = FALSE, keep_air = FALSE, defer_change = FALSE)
 	if (!N)
 		return
 
@@ -75,7 +75,8 @@
 	for(var/turf/space/S in range(W,1))
 		S.update_starlight()
 
-	W.post_change()
+	if(!defer_change)
+		W.post_change()
 	. = W
 
 	lighting_corner_NE = old_lighting_corner_NE

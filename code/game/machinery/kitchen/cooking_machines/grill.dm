@@ -8,4 +8,4 @@
 	on_icon = "grill_on"
 	off_icon = "grill_off"
 	can_burn_food = 1
-	circuit = /obj/item/weapon/circuitboard/grill
+	circuit = /obj/item/circuitboard/grill

@@ -145,22 +145,14 @@
 
 
 /datum/gear/proc/job_permitted(var/mob/living/carbon/human/H, var/datum/job/job)
-
-	var/permitted = 0
-	if(allowed_branches)
-		if(H.char_branch && (H.char_branch.type in allowed_branches))
+	var/permitted
+	if(allowed_roles)
+		if(job.type in allowed_roles)
 			permitted = 1
+		else
+			permitted = 0
 	else
 		permitted = 1
-
-	if(permitted)
-		if(allowed_roles)
-			if(job.type in allowed_roles)
-				permitted = 1
-			else
-				permitted = 0
-		else
-			permitted = 1
 
 	if(species_whitelist && (!(H.species.name in species_whitelist)))
 		permitted = 0

@@ -25,53 +25,54 @@
 	..()
 	new /obj/random/loot/often(src)
 	if (prob(20))
-		new /obj/item/device/rig_remover(src)
+		new /obj/item/rig_remover(src)
 	switch (pickweight(list("small" = 50, "aid" = 25, "tank" = 10, "large" = 5, "both" = 10)))
 		if ("small")
-			new /obj/item/weapon/tank/emergency/oxygen(src)
-			new /obj/item/weapon/tank/emergency/oxygen(src)
-			new /obj/item/weapon/rig/emergency(src)
+			new /obj/item/tank/emergency/oxygen(src)
+			new /obj/item/tank/emergency/oxygen(src)
+			new /obj/item/rig/emergency(src)
 			new /obj/item/clothing/mask/breath(src)
 			new /obj/item/clothing/mask/breath(src)
 			if (prob(70))
-				new /obj/item/weapon/tool/tape_roll(src)
+				new /obj/item/tool/tape_roll(src)
 		if ("aid")
-			new /obj/item/weapon/tank/emergency/oxygen(src)
-			new /obj/item/weapon/storage/toolbox/emergency(src)
-			new /obj/item/weapon/rig/emergency(src)
+			new /obj/item/tank/emergency/oxygen(src)
+			new /obj/item/storage/toolbox/emergency(src)
+			new /obj/item/rig/emergency(src)
 			new /obj/item/clothing/mask/breath(src)
-			new /obj/item/weapon/storage/firstaid/o2(src)
+			new /obj/item/storage/firstaid/o2(src)
 		if ("tank")
-			new /obj/item/weapon/tank/emergency/oxygen/engi(src)
-			new /obj/item/weapon/tank/emergency/oxygen/engi(src)
-			new /obj/item/weapon/rig/emergency(src)
+			new /obj/item/tank/emergency/oxygen/engi(src)
+			new /obj/item/tank/emergency/oxygen/engi(src)
+			new /obj/item/rig/emergency(src)
 			new /obj/item/clothing/mask/gas/half(src)
 			new /obj/item/clothing/mask/gas/half(src)
 			new /obj/random/tool_upgrade(src)
 		if ("large")
-			new /obj/item/weapon/tank/emergency/oxygen/double(src)
-			new /obj/item/weapon/tank/emergency/oxygen/double(src)
-			new /obj/item/weapon/rig/emergency(src)
+			new /obj/item/tank/emergency/oxygen/double(src)
+			new /obj/item/tank/emergency/oxygen/double(src)
+			new /obj/item/rig/emergency(src)
 			new /obj/item/clothing/mask/gas(src)
 			new /obj/item/clothing/mask/gas(src)
-			new /obj/item/device/oxycandle(src)
+			new /obj/item/oxycandle(src)
 		if ("both")
-			new /obj/item/weapon/storage/toolbox/emergency(src)
-			new /obj/item/weapon/tank/emergency/oxygen/engi(src)
-			new /obj/item/weapon/tank/emergency/oxygen/engi(src)
-			new /obj/item/weapon/rig/emergency(src)
+			new /obj/item/storage/toolbox/emergency(src)
+			new /obj/item/tank/emergency/oxygen/engi(src)
+			new /obj/item/tank/emergency/oxygen/engi(src)
+			new /obj/item/rig/emergency(src)
 			new /obj/item/clothing/mask/gas/half(src)
 			new /obj/item/clothing/mask/gas/half(src)
-			new /obj/item/weapon/storage/firstaid/o2(src)
-			new /obj/item/device/oxycandle(src)
+			new /obj/item/storage/firstaid/o2(src)
+			new /obj/item/oxycandle(src)
 			new /obj/random/tool_upgrade(src)
 			if (prob(50))
-				new /obj/item/weapon/tool/tape_roll(src)
+				new /obj/item/tool/tape_roll(src)
 			if (prob(50))
-				new /obj/item/weapon/tool/tape_roll(src)
+				new /obj/item/tool/tape_roll(src)
 
 /obj/structure/closet/emcloset/legacy/New()
-	new /obj/item/weapon/tank/oxygen(src)
+	.=..()
+	new /obj/item/tank/oxygen(src)
 	new /obj/item/clothing/mask/gas(src)
 
 /*
@@ -86,17 +87,17 @@
 
 /obj/structure/closet/firecloset/WillContain()
 	var/list/things = list(
-		/obj/item/weapon/storage/med_pouch/burn,
+		/obj/item/storage/med_pouch/burn,
 		/obj/item/clothing/suit/fire,
 		/obj/item/clothing/mask/gas,
-		/obj/item/device/flashlight,
-		/obj/item/weapon/tank/oxygen/red,
-		/obj/item/weapon/extinguisher,
+		/obj/item/flashlight,
+		/obj/item/tank/oxygen/red,
+		/obj/item/extinguisher,
 		/obj/item/clothing/head/hardhat/red,
 		/obj/random/armor,
 		/obj/random/loot/often)
 	if (prob(10))
-		things += /obj/item/weapon/rig/firesuit
+		things += /obj/item/rig/firesuit
 	return things
 
 /obj/structure/closet/firecloset/update_icon()
@@ -130,21 +131,21 @@
 	if(prob(40))
 		new /obj/item/clothing/suit/storage/hazardvest(src)
 	if(prob(50))
-		new /obj/item/device/flashlight(src)
+		new /obj/item/flashlight(src)
 	if(prob(50))
-		new /obj/item/weapon/tool/screwdriver(src)
+		new /obj/item/tool/screwdriver(src)
 	if(prob(50))
-		new /obj/item/weapon/tool/wrench(src)
+		new /obj/item/tool/wrench(src)
 	if(prob(50))
-		new /obj/item/weapon/tool/weldingtool(src)
+		new /obj/item/tool/weldingtool(src)
 	if(prob(50))
-		new /obj/item/weapon/tool/crowbar(src)
+		new /obj/item/tool/crowbar(src)
 	if(prob(50))
-		new /obj/item/weapon/tool/wirecutters(src)
+		new /obj/item/tool/wirecutters(src)
 	if(prob(50))
-		new /obj/item/device/t_scanner(src)
+		new /obj/item/t_scanner(src)
 	if(prob(20))
-		new /obj/item/weapon/storage/belt/utility(src)
+		new /obj/item/storage/belt/utility(src)
 	if(prob(30))
 		new /obj/item/stack/cable_coil/random(src)
 	if(prob(30))
@@ -152,7 +153,7 @@
 	if(prob(30))
 		new /obj/item/stack/cable_coil/random(src)
 	if(prob(20))
-		new /obj/item/weapon/tool/multitool(src)
+		new /obj/item/tool/multitool(src)
 	if(prob(5))
 		new /obj/item/clothing/gloves/insulated(src)
 	if(prob(40))
@@ -171,12 +172,12 @@
 
 /obj/structure/closet/radiation/WillContain()
 	return list(
-		/obj/item/weapon/storage/med_pouch/toxin = 2,
+		/obj/item/storage/med_pouch/toxin = 2,
 		/obj/item/clothing/suit/radiation,
 		/obj/item/clothing/head/radiation,
 		/obj/item/clothing/suit/radiation,
 		/obj/item/clothing/head/radiation,
-		/obj/item/device/geiger = 2,
+		/obj/item/geiger = 2,
 		/obj/random/tool)
 
 /obj/structure/closet/radiation/security
@@ -188,12 +189,12 @@
 
 /obj/structure/closet/radiation/WillContain()
 	return list(
-		/obj/item/weapon/storage/med_pouch/toxin = 2,
+		/obj/item/storage/med_pouch/toxin = 2,
 		/obj/item/clothing/suit/radiation,
 		/obj/item/clothing/head/radiation,
 		/obj/item/clothing/suit/radiation,
 		/obj/item/clothing/head/radiation,
-		/obj/item/device/geiger = 2)
+		/obj/item/geiger = 2)
 /*
  * Bombsuit closet
  */
@@ -241,12 +242,12 @@
 
 /obj/structure/closet/hydrant/WillContain()
 	return list(
-		/obj/item/weapon/storage/med_pouch/burn = 2,
+		/obj/item/storage/med_pouch/burn = 2,
 		/obj/item/clothing/suit/fire,
 		/obj/item/clothing/mask/gas/half,
-		/obj/item/device/flashlight,
-		/obj/item/weapon/tank/oxygen/red,
-		/obj/item/weapon/extinguisher,
+		/obj/item/flashlight,
+		/obj/item/tank/oxygen/red,
+		/obj/item/extinguisher,
 		/obj/item/clothing/head/hardhat/red,
 		/obj/random/armor = 1,
 		/obj/random/loot/often)
@@ -298,5 +299,5 @@
 /obj/structure/closet/shipping_wall/filled/WillContain()
 	return list(
 		/obj/item/stack/material/cardboard/ten,
-		/obj/item/device/destTagger,
+		/obj/item/destTagger,
 		/obj/item/stack/package_wrap/twenty_five)

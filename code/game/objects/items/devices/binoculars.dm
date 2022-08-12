@@ -1,4 +1,4 @@
-/obj/item/device/binoculars
+/obj/item/binoculars
 
 	name = "binoculars"
 	desc = "A pair of binoculars."
@@ -15,7 +15,7 @@
 	//matter = list(MATERIAL_STEEL = 50,MATERIAL_GLASS = 50)
 
 
-/obj/item/device/binoculars/attack_self(mob/user)
+/obj/item/binoculars/attack_self(mob/user)
 	if(zoom)
 		unzoom(user)
 	else

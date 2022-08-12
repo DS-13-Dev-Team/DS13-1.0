@@ -120,8 +120,7 @@ obj/machinery/atmospherics/binary
 		return null
 
 obj/machinery/atmospherics/binary/Destroy()
-	loc = null
-
+	forceMove(null)
 	if(node1)
 		node1.disconnect(src)
 		qdel(network1)

@@ -61,7 +61,7 @@
 
 /obj/item/grab/dropped()
 	..()
-	loc = null
+	forceMove(null)
 	if(!QDELETED(src))
 		qdel(src)
 

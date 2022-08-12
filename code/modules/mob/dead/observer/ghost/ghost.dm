@@ -29,8 +29,8 @@ var/global/list/image/ghost_sightless_images = list() //this is a list of images
 	var/anonsay = 0
 	var/ghostvision = 1 //is the ghost able to see things humans can't?
 	var/seedarkness = 1
-	var/static/obj/item/weapon/card/id/all_access/ghost_all_access
-	var/obj/item/weapon/tool/multitool/ghost/ghost_multitool
+	var/static/obj/item/card/id/all_access/ghost_all_access
+	var/obj/item/tool/multitool/ghost/ghost_multitool
 	var/list/hud_images // A list of hud images
 
 /mob/dead/observer/ghost/New(mob/body)
@@ -45,14 +45,9 @@ var/global/list/image/ghost_sightless_images = list() //this is a list of images
 		attack_logs_ = body.attack_logs_ //preserve our attack logs by copying them to our ghost
 
 		set_appearance(body)
-		if(body.mind)
-			body.mind.transfer_to(src)
-		else //new mind for the body
-			body.mind = new /datum/mind(key)
-			mind = body.mind
-			mind.active = TRUE
-			mind.current = body
-			mind.ghost = src
+
+		mind = body.mind //we don't transfer the mind but we keep a reference to it.
+
 		if(mind.name)
 			name = mind.name
 		else
@@ -63,6 +58,8 @@ var/global/list/image/ghost_sightless_images = list() //this is a list of images
 					name = capitalize(pick(GLOB.first_names_male)) + " " + capitalize(pick(GLOB.last_names))
 				else
 					name = capitalize(pick(GLOB.first_names_female)) + " " + capitalize(pick(GLOB.last_names))
+
+		key = body.key
 
 	else
 		forceMove(pick(GLOB.latejoin | GLOB.latejoin_cryo | GLOB.latejoin_gateway))
@@ -156,9 +153,11 @@ Works together with spawning an observer, noted above.
 		var/mob/dead/observer/ghost/G = teleop
 		if(G.admin_ghosted)
 			return
-	if (key)
-		hide_fullscreens()
+	hide_fullscreens()
+	if(key)
 		var/mob/dead/observer/ghost/ghost = new(src)	//Transfer safety to observer spawning proc.
+		SSnano.user_transferred(src, ghost)
+		SStgui.on_transfer(src, ghost)
 		ghost.can_reenter_corpse = can_reenter_corpse
 		ghost.timeofdeath = src.stat == DEAD ? src.timeofdeath : world.time
 		if (ghost.client)		// For new ghosts we remove the verb from even showing up if it's not allowed.
@@ -221,6 +220,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		to_chat(src, "<span class='warning'>Another consciousness is in your body... it is resisting you.</span>")
 		return
 	stop_following()
+	SSnano.user_transferred(src, mind.current)
+	SStgui.on_transfer(src, mind.current)
 	mind.current.key = key
 	mind.current.teleop = null
 	mind.current.reload_fullscreens()
@@ -608,14 +609,14 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 
 //special multitool used so admin ghosts can fiddle with doors
-/obj/item/weapon/tool/multitool/ghost
+/obj/item/tool/multitool/ghost
 	var/mob/dead/observer/ghost/ghost
 
-/obj/item/weapon/tool/multitool/ghost/New(var/mob/dead/observer/ghost/ghost)
+/obj/item/tool/multitool/ghost/New(var/mob/dead/observer/ghost/ghost)
 	src.ghost = ghost
 	.=..()
 
-/obj/item/weapon/tool/multitool/ghost/Destroy()
+/obj/item/tool/multitool/ghost/Destroy()
 	if (ghost && ghost.ghost_multitool == src)
 		ghost.ghost_multitool = null
 

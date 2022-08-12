@@ -8,7 +8,7 @@
 /datum/firemode
 	var/name = "default"
 	var/list/settings = list()
-	var/obj/item/weapon/gun/gun = null
+	var/obj/item/gun/gun = null
 	var/override_fire = FALSE	//If true, this firemode has its own firing proc which replaces that of the gun
 	var/list/original_vars = list()
 
@@ -19,7 +19,7 @@
 	var/atom/target
 	var/req_ammo = TRUE
 
-/datum/firemode/New(obj/item/weapon/gun/_gun, list/properties = null)
+/datum/firemode/New(obj/item/gun/_gun, list/properties = null)
 	..()
 	if(!properties) return
 
@@ -41,7 +41,7 @@
 	stop_firing()
 	.=..()
 
-/datum/firemode/proc/apply_to(obj/item/weapon/gun/_gun)
+/datum/firemode/proc/apply_to(obj/item/gun/_gun)
 	gun = _gun
 	gun.current_firemode = src
 	for(var/propname in settings)
@@ -50,7 +50,7 @@
 			gun.vars[propname] = settings[propname]
 
 
-/datum/firemode/proc/unapply_to(obj/item/weapon/gun/_gun)
+/datum/firemode/proc/unapply_to(obj/item/gun/_gun)
 	gun = _gun
 	if (gun.current_firemode == src)
 		gun.current_firemode = null

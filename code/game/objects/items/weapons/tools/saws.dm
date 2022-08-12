@@ -1,4 +1,4 @@
-/obj/item/weapon/tool/saw
+/obj/item/tool/saw
 	name = "hacksaw"
 	desc = "For cutting wood and other objects to pieces. Or sawing bones, in case of emergency."
 	icon_state = "metal_saw"
@@ -18,7 +18,7 @@
 
 	degradation = DEGRADATION_TOUGH_1
 
-/obj/item/weapon/tool/saw/improvised
+/obj/item/tool/saw/improvised
 	name = "choppa"
 	desc = "A wicked serrated blade made of whatever nasty sharp things you could find. It would make a pretty decent weapon."
 	icon_state = "impro_saw"
@@ -26,7 +26,7 @@
 	tool_qualities = list(QUALITY_SAWING = 15, QUALITY_CUTTING = 10, QUALITY_WIRE_CUTTING = 10)
 
 
-/obj/item/weapon/tool/saw/circular
+/obj/item/tool/saw/circular
 	name = "circular saw"
 	desc = "For heavy duty cutting."
 	icon_state = "saw"
@@ -37,9 +37,9 @@
 	tool_qualities = list(QUALITY_SAWING = 40, QUALITY_CUTTING = 30, QUALITY_WIRE_CUTTING = 30)
 
 	use_power_cost = 0.15
-	suitable_cell = /obj/item/weapon/cell
+	suitable_cell = /obj/item/cell
 
-/obj/item/weapon/tool/saw/advanced_circular
+/obj/item/tool/saw/advanced_circular
 	name = "advanced circular saw"
 	desc = "You think you can cut anything with it."
 	icon_state = "advanced_saw"
@@ -50,10 +50,10 @@
 	tool_qualities = list(QUALITY_SAWING = 50, QUALITY_CUTTING = 40, QUALITY_WIRE_CUTTING = 40)
 	degradation = 0.06
 	use_power_cost = 0.22
-	suitable_cell = /obj/item/weapon/cell
+	suitable_cell = /obj/item/cell
 	max_modifications = 4
 
-/obj/item/weapon/tool/saw/chain
+/obj/item/tool/saw/chain
 	name = "chainsaw"
 	desc = "You can cut trees, people walls and zombies with it, just watch out for fuel."
 	icon_state = "chainsaw"
@@ -66,7 +66,7 @@
 	use_fuel_cost = 0.1
 	max_fuel = 80
 
-/obj/item/weapon/tool/saw/plasma
+/obj/item/tool/saw/plasma
 	name = "SH-B1 Plasma Saw"
 	desc = "The SH-B1 Plasma Saw is designed for dissection of heavy duty materials in both on and off-site locations. Users are advised to always wear protective clothing when the saw is in use."
 	icon_state = "plasma_saw_off"
@@ -82,13 +82,13 @@
 	use_power_cost = 0.44
 	passive_power_cost = 0.06
 	passive_fuel_cost = 0
-	suitable_cell = /obj/item/weapon/cell
+	suitable_cell = /obj/item/cell
 	toggleable = TRUE
 	atom_flags = ATOM_FLAG_NO_BLOOD
 	item_flags = ITEM_FLAG_NO_EMBED
 	armor_penetration = 4.5
 
-/obj/item/weapon/tool/saw/plasma/update_icon()
+/obj/item/tool/saw/plasma/update_icon()
 	if (switched_on)
 		icon_state = "plasma_saw_on"
 		item_state = "plasma_saw_on"
@@ -97,12 +97,12 @@
 		item_state = "plasma_saw_off"
 
 
-/obj/item/weapon/tool/saw/plasma/turn_on()
+/obj/item/tool/saw/plasma/turn_on()
 	.=..()
 	if(.)
 		flick("plasma_saw_ignite", src)
 		playsound(get_turf(src), 'sound/weapons/saberon.ogg', 20, 1, -2)
 
-/obj/item/weapon/tool/saw/plasma/turn_off()
+/obj/item/tool/saw/plasma/turn_off()
 	.=..()
 	playsound(get_turf(src), 'sound/weapons/saberoff.ogg', 20, 1, -2)

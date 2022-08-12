@@ -1,4 +1,4 @@
-/obj/item/weapon/tool/shovel
+/obj/item/tool/shovel
 	name = "shovel"
 	desc = "A large tool for digging and moving dirt and rock."
 	icon_state = "shovel"
@@ -15,14 +15,14 @@
 	edge = 1
 	tool_qualities = list(QUALITY_SHOVELING = 30, QUALITY_DIGGING = 30, QUALITY_EXCAVATION = 10)
 
-/obj/item/weapon/tool/shovel/improvised
+/obj/item/tool/shovel/improvised
 	name = "junk shovel"
 	desc = "A large but fragile tool for moving dirt and rock."
 	icon_state = "impro_shovel"
 	degradation = DEGRADATION_FRAGILE
 	tool_qualities = list(QUALITY_SHOVELING = 25, QUALITY_DIGGING = 25, QUALITY_EXCAVATION = 10)
 
-/obj/item/weapon/tool/shovel/spade
+/obj/item/tool/shovel/spade
 	name = "spade"
 	desc = "A small tool for digging and moving dirt."
 	icon_state = "spade"

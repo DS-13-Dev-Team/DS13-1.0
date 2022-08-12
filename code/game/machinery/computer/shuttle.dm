@@ -8,7 +8,7 @@
 	var/list/authorized = list(  )
 
 
-/obj/machinery/computer/shuttle/attackby(var/obj/item/weapon/card/W as obj, var/mob/user as mob)
+/obj/machinery/computer/shuttle/attackby(var/obj/item/card/W as obj, var/mob/user as mob)
 	if(stat & (BROKEN|NOPOWER))	return
 
 	var/datum/evacuation_controller/shuttle/evac_control = evacuation_controller
@@ -16,10 +16,10 @@
 		to_chat(user, "<span class='danger'>This console should not in use on this map. Please report this to a developer.</span>")
 		return
 
-	if ((!( istype(W, /obj/item/weapon/card) ) || !( SSticker ) || evacuation_controller.has_evacuated() || !( user )))
+	if ((!( istype(W, /obj/item/card) ) || !( SSticker ) || evacuation_controller.has_evacuated() || !( user )))
 		return
 
-	if (istype(W, /obj/item/weapon/card/id)||istype(W, /obj/item/modular_computer))
+	if (istype(W, /obj/item/card/id)||istype(W, /obj/item/modular_computer))
 		if (istype(W, /obj/item/modular_computer))
 			W = W.GetIdCard()
 		if (!W:access) //no access
@@ -64,7 +64,7 @@
 				src.authorized.len = 0
 				src.authorized = list(  )
 
-	else if (istype(W, /obj/item/weapon/card/emag) && !emagged)
+	else if (istype(W, /obj/item/card/emag) && !emagged)
 		var/choice = tgui_alert(user, "Would you like to launch the shuttle?","Shuttle control", list("Launch", "Cancel"))
 
 		if(!emagged && !evacuation_controller.is_prepared() && user.get_active_hand() == W)

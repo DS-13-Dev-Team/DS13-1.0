@@ -48,79 +48,79 @@ S	fuel tank (hydrazine)
 	desc = "An advanced chem spraying device."
 	id = "chemsprayer"
 	materials = list(MATERIAL_STEEL = 5000, MATERIAL_GLASS = 1000)
-	build_path = /obj/item/weapon/reagent_containers/spray/chemsprayer
+	build_path = /obj/item/reagent_containers/spray/chemsprayer
 
 /datum/design/item/weapon/rapidsyringe
 	name = "large capacity syringe gun"
 	id = "rapidsyringe"
 	materials = list(MATERIAL_STEEL = 5000, MATERIAL_GLASS = 1000)
-	build_path = /obj/item/weapon/gun/launcher/syringe/rapid
+	build_path = /obj/item/gun/launcher/syringe/rapid
 
 /datum/design/item/weapon/large_grenade
 	name = "large chemical grenade case"
 	id = "large_grenade"
 	materials = list(MATERIAL_STEEL = 3000)
-	build_path = /obj/item/weapon/grenade/chem_grenade/large
+	build_path = /obj/item/grenade/chem_grenade/large
 
 /* Re-add when the flashes are reworked.
 /datum/design/item/weapon/advancedflash
 	name = "advanced flash"
 	id = "advancedflash"
 	materials = list(MATERIAL_STEEL = 2000, MATERIAL_GLASS = 2000, MATERIAL_SILVER = 500)
-	build_path = /obj/item/device/flash/advanced
+	build_path = /obj/item/flash/advanced
 */
 
 /datum/design/item/weapon/contactbeam
 	name = "C99 Supercollider Contact Beam"
 	id = "contactbeam"
 	materials = list(MATERIAL_STEEL = 2500, MATERIAL_GOLD = 1500, "uranium" = 1450)
-	build_path = /obj/item/weapon/gun/energy/contact
+	build_path = /obj/item/gun/energy/contact
 	price = 9000
 
 /datum/design/item/weapon/miningcutter
 	name = "210-V mining cutter"
 	id = "miningcutter"
 	materials = list(MATERIAL_STEEL = 7500, MATERIAL_GLASS = 2500)
-	build_path = /obj/item/weapon/gun/energy/cutter
+	build_path = /obj/item/gun/energy/cutter
 	price = 2000
 
 /datum/design/item/weapon/plasmacutter
 	name = "211-V plasma cutter"
 	id = "plasmacutter"
 	materials = list(MATERIAL_STEEL = 15000, MATERIAL_GLASS = 5000, "gold" = 400)
-	build_path = /obj/item/weapon/gun/energy/cutter/plasma
+	build_path = /obj/item/gun/energy/cutter/plasma
 	price = 4000
 
 /datum/design/item/weapon/advancedshield
 	name = "Advanced Combat Shield"
 	id = "advancedcombatshield"
 	materials = list(MATERIAL_PLASTEEL = 10000, MATERIAL_GLASS = 2000)
-	build_path = /obj/item/weapon/shield/riot/advanced
+	build_path = /obj/item/shield/riot/advanced
 
 /datum/design/item/weapon/divet
 	name = "Winchester NK Divet pistol"
 	id = "divet"
 	materials = list(MATERIAL_STEEL = 10000, MATERIAL_PLASTEEL = 4000)
-	build_path = /obj/item/weapon/gun/projectile/divet
+	build_path = /obj/item/gun/projectile/divet
 	price = 4000
 
 /datum/design/item/weapon/divet/silenced
 	name = "Silenced Divet Pistol"
 	id = "sdivet"
 	materials = list(MATERIAL_STEEL = 10000, MATERIAL_PLASTEEL = 4000, MATERIAL_PLASTIC = 1500)
-	build_path = /obj/item/weapon/gun/projectile/divet/silenced
+	build_path = /obj/item/gun/projectile/divet/silenced
 	build_type = PROTOLATHE		//Earth Gov Agent gun
 
 /datum/design/item/weapon/pulserifle
 	name = "SWS Motorized Pulse Rifle"
 	id = "pulserifle"
-	build_path = /obj/item/weapon/gun/projectile/automatic/pulse_rifle
+	build_path = /obj/item/gun/projectile/automatic/pulse_rifle
 	price = 7000
 
 /datum/design/item/weapon/ripper
 	name = "RC-DS Remote Control Disc Ripper"
 	id = "ripper"
-	build_path = /obj/item/weapon/gun/projectile/ripper
+	build_path = /obj/item/gun/projectile/ripper
 	materials = list(MATERIAL_STEEL = 2000, MATERIAL_GLASS = 500, MATERIAL_GOLD = 2000, MATERIAL_SILVER = 2000)
 	price = 8000
 
@@ -128,34 +128,34 @@ S	fuel tank (hydrazine)
 	name = "IM-822 Handheld Ore Cutter Line Gun"
 	id = "linecutter"
 	materials = list(MATERIAL_STEEL = 15000, MATERIAL_GLASS = 1000, MATERIAL_SILVER = 2000, MATERIAL_URANIUM = 2000)
-	build_path = /obj/item/weapon/gun/projectile/linecutter
+	build_path = /obj/item/gun/projectile/linecutter
 	price = 9000
 
 /datum/design/item/weapon/javelingun
 	name = "T15 Javelin Gun"
 	id = "javgun"
 	materials = list(MATERIAL_PLASTEEL = 4000, MATERIAL_STEEL = 35000, MATERIAL_PHORON = 4000)
-	build_path = /obj/item/weapon/gun/projectile/javelin_gun
+	build_path = /obj/item/gun/projectile/javelin_gun
 	price = 11000
 
 /datum/design/item/weapon/flamethrower
 	name = "PFM-100 Industrial Torch"
 	id = "flamethrower"
-	build_path = /obj/item/weapon/gun/spray/hydrazine_torch
+	build_path = /obj/item/gun/spray/hydrazine_torch
 	materials = list(MATERIAL_STEEL = 2500, MATERIAL_GLASS = 100, MATERIAL_GOLD = 4000, MATERIAL_SILVER = 4000)
 	price = 11000
 
 /datum/design/item/weapon/seeker
 	name = "Seeker Rifle"
 	id = "seeker"
-	build_path = /obj/item/weapon/gun/projectile/seeker
+	build_path = /obj/item/gun/projectile/seeker
 	materials = list(MATERIAL_STEEL = 12500, MATERIAL_PLASTEEL = 10000, MATERIAL_GLASS = 350, MATERIAL_DIAMOND = 800, MATERIAL_PLASTIC = 2000)
 	price = 15000
 
 /datum/design/item/weapon/forcegun
 	name = "Handheld Graviton Accelerator"
 	id = "forcegun"
-	build_path = /obj/item/weapon/gun/energy/forcegun
+	build_path = /obj/item/gun/energy/forcegun
 	materials = list(MATERIAL_STEEL = 5000, MATERIAL_PLASTIC = 3500, MATERIAL_GLASS = 500, MATERIAL_SILVER = 500)
 	price = 7000
 
@@ -212,7 +212,7 @@ S	fuel tank (hydrazine)
 /datum/design/item/ammo/plasma_energy
 	name = "plasma energy"
 	id = "plasma_energy"
-	build_path = /obj/item/weapon/cell/plasmacutter
+	build_path = /obj/item/cell/plasmacutter
 	materials = list(MATERIAL_STEEL = 4000, MATERIAL_GLASS = 1000)
 	price = 1200
 
@@ -268,14 +268,14 @@ S	fuel tank (hydrazine)
 	name = "fuel tank (gasoline)"
 	id = "fuel_tank"
 	build_type = STORE_SCHEMATICS
-	build_path = /obj/item/weapon/reagent_containers/glass/fuel_tank/fuel
+	build_path = /obj/item/reagent_containers/glass/fuel_tank/fuel
 	price = 2500
 
 /datum/design/item/ammo/hydrazine_tank
 	name = "fuel tank (hydrazine)"
 	id = "hydrazine_tank"
 	build_type = STORE_SCHEMATICS
-	build_path = /obj/item/weapon/reagent_containers/glass/fuel_tank/hydrazine
+	build_path = /obj/item/reagent_containers/glass/fuel_tank/hydrazine
 	price = 5000
 
 
@@ -308,12 +308,12 @@ S	fuel tank (hydrazine)
 	name = "force energy"
 	id = "force_energy"
 	materials = list(MATERIAL_STEEL = 1000, MATERIAL_SILVER = 500)
-	build_path = /obj/item/weapon/cell/force
+	build_path = /obj/item/cell/force
 	price = 2500
 
 /datum/design/item/ammo/contact_energy
 	name = "contact energy"
 	id = "contact_energy"
 	materials = list(MATERIAL_STEEL = 2500, MATERIAL_GOLD = 1200, "diamond" = 800)
-	build_path = /obj/item/weapon/cell/contact
+	build_path = /obj/item/cell/contact
 	price = 5000

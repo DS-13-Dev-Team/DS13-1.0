@@ -227,7 +227,7 @@ turf/proc/hotspot_expose(exposed_temperature, exposed_volume, soh = 0)
 		set_light_on(FALSE)
 
 		T.fire = null
-		loc = null
+		forceMove(null)
 	SSair.active_hotspots.Remove(src)
 
 

@@ -128,9 +128,6 @@ GLOBAL_VAR(restart_counter)
 	GLOB.timezoneOffset = text2num(time2text(0,"hh")) * 36000
 	master_controller = new /datum/controller/game_controller()
 
-	if(CONFIG_GET(flag/generate_map))
-		GLOB.using_map.perform_map_generation()
-
 	update_status()
 
 	if(fexists(RESTART_COUNTER_PATH))
@@ -605,7 +602,7 @@ var/world_topic_spam_protect_time = world.timeofday
 		return
 
 	var/discord_url = CONFIG_GET(string/discord_url)
-	var/mapname = GLOB.using_map.full_name
+	var/mapname = GLOB.using_map?.full_name
 
 	var/new_status = ""
 	new_status += "<b><a href='[discord_url ? discord_url : "#"]'>[server_name] &#8212; [mapname]</a></b>"
@@ -636,6 +633,7 @@ var/world_topic_spam_protect_time = world.timeofday
 	GLOB.sql_error_log = "[GLOB.log_directory]/sql.log"
 	GLOB.world_telecomms_log = "[GLOB.log_directory]/telecomms.log"
 	GLOB.world_qdel_log = "[GLOB.log_directory]/qdel.log"
+	GLOB.world_map_error_log = "[GLOB.log_directory]/map_errors.log"
 	GLOB.world_runtime_log = "[GLOB.log_directory]/runtime.log"
 	GLOB.world_debug_log = "[GLOB.log_directory]/debug.log"
 	GLOB.tgui_log = "[GLOB.log_directory]/tgui.log"
@@ -652,6 +650,7 @@ var/world_topic_spam_protect_time = world.timeofday
 	start_log(GLOB.sql_error_log)
 	start_log(GLOB.world_telecomms_log)
 	start_log(GLOB.world_qdel_log)
+	start_log(GLOB.log_directory)
 	start_log(GLOB.world_runtime_log)
 	start_log(GLOB.world_debug_log)
 	start_log(GLOB.tgui_log)

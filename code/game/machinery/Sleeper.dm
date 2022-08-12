@@ -9,9 +9,9 @@
 	clickvol = 30
 	atom_flags = ATOM_FLAG_NO_REACT
 	var/mob/living/carbon/human/occupant = null
-	var/list/available_chemicals = list(/datum/reagent/inaprovaline, /datum/reagent/soporific, /datum/reagent/paracetamol, /datum/reagent/dylovene, /datum/reagent/dexalin)
+	var/list/available_chemicals = list(/datum/reagent/inaprovaline, /datum/reagent/dylovene, /datum/reagent/soporific, /datum/reagent/paracetamol, /datum/reagent/dexalin)
 	var/amounts = list(5, 10)
-	var/obj/item/weapon/reagent_containers/glass/beaker = null
+	var/obj/item/reagent_containers/glass/beaker = null
 	var/filtering = 0
 	var/pump
 	var/max_chem = 20
@@ -20,7 +20,7 @@
 	var/stasis = 0
 	var/controls_inside = FALSE
 	var/auto_eject_dead = FALSE
-	circuit = /obj/item/weapon/circuitboard/sleeper
+	circuit = /obj/item/circuitboard/sleeper
 
 	use_power = 1
 	idle_power_usage = 15
@@ -28,11 +28,8 @@
 
 /obj/machinery/sleeper/Initialize(mapload)
 	. = ..()
-	create_reagents(2000) // Doesn't really matter
 	if(mapload)
-		beaker = new /obj/item/weapon/reagent_containers/glass/beaker/large(src)
-	for(var/A in available_chemicals)
-		reagents.add_reagent(A, 1)	// Used only to get some info
+		beaker = new /obj/item/reagent_containers/glass/beaker/large(src)
 	update_icon()
 
 /obj/machinery/sleeper/Process()
@@ -162,16 +159,14 @@
 	data["stasis"] = stasis
 
 	var/chemicals[0]
-	for(var/datum/reagent/R in reagents.reagent_list)
+	for(var/datum/reagent/R as anything in available_chemicals)
 		var/reagent_amount = 0
 		var/pretty_amount
 		var/injectable = occupant ? 1 : 0
 		var/overdosing = 0
 		var/caution = 0 // To make things clear that you're coming close to an overdose
-		// if(crisis && !(temp.id in emergency_chems))
-			// injectable = 0
 
-		if(occupant && occupant.reagents)
+		if(occupant?.reagents)
 			reagent_amount = occupant.reagents.get_reagent_amount(R.type)
 			// If they're mashing the highest concentration, they get one war`ning
 			if(R.overdose && reagent_amount + 10 > R.overdose)
@@ -181,7 +176,7 @@
 
 		pretty_amount = round(reagent_amount, 0.05)
 
-		chemicals.Add(list(list("title" = R.name, "id" = REF(R), "occ_amount" = reagent_amount, "pretty_amount" = pretty_amount, "injectable" = injectable, "overdosing" = overdosing, "od_warning" = caution)))
+		chemicals.Add(list(list("title" = initial(R.name), "id" = R, "occ_amount" = reagent_amount, "pretty_amount" = pretty_amount, "injectable" = injectable, "overdosing" = overdosing, "od_warning" = caution)))
 	data["chemicals"] = chemicals
 	return data
 
@@ -204,9 +199,9 @@
 				var/datum/gender/G = gender_datums[occupant.get_visible_gender()]
 				to_chat(usr, "<span class='danger'>This person has no life to preserve anymore. Take [G.him] to a department capable of reanimating [G.him].</span>")
 				return
-			var/datum/reagent/R = locate(params["chemid"]) in reagents.reagent_list
+			var/datum/reagent/R = text2path(params["chemid"])
 			var/amount = text2num(params["amount"])
-			if(!R || amount <= 0)
+			if(!(R in available_chemicals) || amount <= 0)
 				return
 			if(occupant.health > min_health) //|| (chemical in emergency_chems))
 				inject_chemical(usr, R, amount)
@@ -235,7 +230,7 @@
 	return attack_hand(user)
 
 /obj/machinery/sleeper/attackby(var/obj/item/I, var/mob/user)
-	if(istype(I, /obj/item/weapon/reagent_containers/glass))
+	if(istype(I, /obj/item/reagent_containers/glass))
 		add_fingerprint(user)
 		if(!beaker)
 			if(!user.unEquip(I, src))
@@ -313,7 +308,7 @@
 	else
 		visible_message("\The [user] starts putting [M] into \the [src].")
 
-	if(do_after(user, 20, src))
+	if(do_mob(user, M, 20))
 		if(occupant)
 			to_chat(user, "<span class='warning'>\The [src] is already occupied.</span>")
 			return
@@ -350,7 +345,7 @@
 		toggle_filter()
 		toggle_pump()
 
-/obj/machinery/sleeper/proc/inject_chemical(var/mob/living/user, var/datum/reagent/chemical, var/amount)
+/obj/machinery/sleeper/proc/inject_chemical(mob/living/user, datum/reagent/chemical_type, amount)
 	if(stat & (BROKEN|NOPOWER))
 		return
 
@@ -358,10 +353,10 @@
 		return
 
 	if(occupant && occupant.reagents)
-		if(occupant.reagents.get_reagent_amount(chemical.type) + amount <= max_chem)
+		if(occupant.reagents.get_reagent_amount(chemical_type) + amount <= max_chem)
 			use_power(amount * CHEM_SYNTH_ENERGY)
-			occupant.reagents.add_reagent(chemical.type, amount)
-			to_chat(user, "Occupant now has [occupant.reagents.get_reagent_amount(chemical.type)] unit\s of [chemical.name] in their bloodstream.")
+			occupant.reagents.add_reagent(chemical_type, amount)
+			to_chat(user, "Occupant now has [occupant.reagents.get_reagent_amount(chemical_type)] unit\s of [initial(chemical_type.name)] in their bloodstream.")
 		else
 			to_chat(user, "The subject has too many chemicals.")
 	else

@@ -40,6 +40,7 @@ const StartVoteOptions = (props, context) => {
   const {
     allow_vote_mode,
     allow_vote_restart,
+    allow_map_voting,
     vote_happening,
   } = data;
   return (
@@ -62,6 +63,13 @@ const StartVoteOptions = (props, context) => {
                   Gamemode
                 </Button>
               </Stack.Item>
+              <Stack.Item>
+                <Button
+                  disabled={vote_happening || !allow_map_voting}
+                  onClick={() => act("next_map")}>
+                  Next Map
+                </Button>
+              </Stack.Item>
             </Stack>
           </Stack.Item>
         </Stack>
@@ -79,6 +87,7 @@ const VoteOptions = (props, context) => {
   const {
     allow_vote_mode,
     allow_vote_restart,
+    allow_map_voting,
     upper_admin,
   } = data;
 
@@ -95,7 +104,7 @@ const VoteOptions = (props, context) => {
                     color="red"
                     checked={!!allow_vote_restart}
                     onClick={() => act("toggle_restart")}>
-                    Restart vote {allow_vote_restart ? "Enabled" : "Disabled"}
+                    Restart vote is {allow_vote_restart ? "enabled" : "disabled"}
                   </Button.Checkbox>
                 )}
               </Stack.Item>
@@ -106,16 +115,31 @@ const VoteOptions = (props, context) => {
                     color="red"
                     checked={!!allow_vote_mode}
                     onClick={() => act("toggle_gamemode")}>
-                    Gamemode vote {allow_vote_mode ? "Enabled" : "Disabled"}
+                    Gamemode vote is {allow_vote_mode ? "enabled" : "disabled"}
                   </Button.Checkbox>
                 )}
               </Stack.Item>
             </Stack>
           </Stack.Item>
           <Stack.Item>
-            <Button disabled={!upper_admin} onClick={() => act("custom")}>
-              Create Custom Vote
-            </Button>
+            <Stack vertical>
+              <Stack.Item>
+                <Button disabled={!upper_admin} onClick={() => act("custom")}>
+                  Create Custom Vote
+                </Button>
+              </Stack.Item>
+              <Stack.Item>
+                {!!upper_admin && (
+                  <Button.Checkbox
+                    mr={!allow_map_voting ? 1 : 1.6}
+                    color="red"
+                    checked={!!allow_map_voting}
+                    onClick={() => act("toggle_next_map")}>
+                    Next map vote is {allow_map_voting ? "enabled" : "disabled"}
+                  </Button.Checkbox>
+                )}
+              </Stack.Item>
+            </Stack>
           </Stack.Item>
         </Stack>
       </Collapsible>

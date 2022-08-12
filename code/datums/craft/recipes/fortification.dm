@@ -21,9 +21,9 @@
 
 /datum/craft_recipe/fortification/mechanical_trap
 	name = "makeshift mechanical trap"
-	result = /obj/item/weapon/beartrap/makeshift
+	result = /obj/item/beartrap/makeshift
 	steps = list(
-		list(CRAFT_OBJECT, /obj/item/weapon/tool/saw, "time" = 120),
+		list(CRAFT_OBJECT, /obj/item/tool/saw, "time" = 120),
 		list(CRAFT_TOOL, QUALITY_SCREW_DRIVING, 10, 70),
 		list(CRAFT_MATERIAL, MATERIAL_STEEL, 20),
 		list(CRAFT_TOOL, QUALITY_BOLT_TURNING, 10, 70),

@@ -1,7 +1,7 @@
 /*-----------------------
 	Gun
 ------------------------*/
-/obj/item/weapon/gun/projectile/automatic/pulse_rifle
+/obj/item/gun/projectile/automatic/pulse_rifle
 	name = "SWS Motorized Pulse Rifle"
 	desc = "The SWS Motorized Pulse Rifle is a military-grade, triple-barreled assault rifle, manufactured by Winchester Arms, is capable of a rapid rate of fire. \
 The Pulse Rifle is the standard-issue service rifle of the Earth Defense Force and is also common among corporate security officers. "
@@ -34,7 +34,7 @@ The Pulse Rifle is the standard-issue service rifle of the Earth Defense Force a
 		)
 
 
-/obj/item/weapon/gun/projectile/automatic/pulse_rifle/empty
+/obj/item/gun/projectile/automatic/pulse_rifle/empty
 	magazine_type = null
 
 /*-----------------------

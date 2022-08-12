@@ -2,7 +2,7 @@
 	The repair kit is a consumable tool used to repair other tools, weapons, suits, clothing, doors, etc.
 	It'll work on anything that can be repaired, by using the unified repair proc
 */
-/obj/item/weapon/tool/repairkit
+/obj/item/tool/repairkit
 	name = "repair kit"
 	desc = "An engineer's buddy, the repair kit can repair structural damage on almost anything. Tools, suits, barricades, weapons, shields, etc.\
 	Using a repair kit will also resolve any lasting damage caused by prior improper repairs, such as with duct tape."
@@ -21,7 +21,7 @@
 	//How many points of stock does it take to do one point of repair power on a target?
 	var/repair_cost = 1
 
-/obj/item/weapon/tool/repairkit/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+/obj/item/tool/repairkit/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	//Attempt to repair first, call parent only if we fail to do any fixing
 	.=attempt_repair(target, user)
 	if (. || QDELETED(src))
@@ -32,7 +32,7 @@
 
 
 //Try to repair a thing. Return true if we did any repairing on it
-/obj/item/weapon/tool/repairkit/proc/attempt_repair(var/atom/target, var/mob/user)
+/obj/item/tool/repairkit/proc/attempt_repair(var/atom/target, var/mob/user)
 	if (!target)
 		return FALSE
 
@@ -84,14 +84,14 @@
 
 		//We do NOT consume resources here, because the use tool operation already consumed them for this remaining time
 
-/obj/item/weapon/tool/repairkit/proc/get_repair_cost(var/mob/user, var/atom/target)
+/obj/item/tool/repairkit/proc/get_repair_cost(var/mob/user, var/atom/target)
 	var/cost_multiplier = repair_cost
 	//TODO Here: Factor character skills into this cost multiplier
 
 	return cost_multiplier
 
 //This routes to repair_tick. We consume the resources here to prevent a double consumption from the finishing
-/obj/item/weapon/tool/repairkit/work_in_progress(var/mob/user, var/atom/target, var/delta)
+/obj/item/tool/repairkit/work_in_progress(var/mob/user, var/atom/target, var/delta)
 	.=..()
 	var/timespent = repair_tick(user, target, delta)
 	if (timespent)
@@ -99,7 +99,7 @@
 
 //Here we actually do repairing on the thing
 //Timespent is in deciseconds
-/obj/item/weapon/tool/repairkit/proc/repair_tick(var/mob/user, var/atom/target, var/timespent)
+/obj/item/tool/repairkit/proc/repair_tick(var/mob/user, var/atom/target, var/timespent)
 	//First of all, we don't want to overspend, so lets see how much repairing is still needed
 
 	var/repair_needed = target.repair_needed()
@@ -131,7 +131,7 @@
 
 	//If the tool has been damaged by duct tape repairs, a proper repair kit fixes that
 	if (istool(target))
-		var/obj/item/weapon/tool/T = target
+		var/obj/item/tool/T = target
 		T.repair_frequency = clamp(T.repair_frequency-1, 0, INFINITY)
 
 	//We return the stock time, the caller will handle spending the resources

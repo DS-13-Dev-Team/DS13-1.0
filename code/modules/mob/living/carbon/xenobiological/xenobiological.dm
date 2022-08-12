@@ -154,8 +154,9 @@
 	..()
 
 /mob/living/carbon/slime/ex_act(severity)
+	if(status_flags & GODMODE || atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	..()
-
 	var/b_loss = null
 	var/f_loss = null
 	switch (severity)

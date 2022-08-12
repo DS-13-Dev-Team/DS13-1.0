@@ -16,7 +16,7 @@
 	use_power = 1
 	idle_power_usage = 2
 	active_power_usage = 500
-	circuit = /obj/item/weapon/circuitboard/gibber
+	circuit = /obj/item/circuitboard/gibber
 
 /obj/machinery/gibber/can_harvest_biomass()
 	return MASS_READY
@@ -207,7 +207,7 @@
 
 	var/slab_name = occupant.name
 	var/slab_count = 3
-	var/slab_type = /obj/item/weapon/reagent_containers/food/snacks/meat
+	var/slab_type = /obj/item/reagent_containers/food/snacks/meat
 	var/slab_nutrition = 20
 	if(iscarbon(occupant))
 		var/mob/living/carbon/C = occupant
@@ -231,7 +231,7 @@
 	slab_nutrition /= slab_count
 
 	for(var/i=1 to slab_count)
-		var/obj/item/weapon/reagent_containers/food/snacks/meat/new_meat = new slab_type(src, rand(3,8))
+		var/obj/item/reagent_containers/food/snacks/meat/new_meat = new slab_type(src, rand(3,8))
 		if(istype(new_meat))
 			new_meat.SetName("[slab_name] [new_meat.name]")
 			new_meat.reagents.add_reagent(/datum/reagent/nutriment,slab_nutrition)

@@ -103,7 +103,7 @@
 
 	if(istype(host, /obj/item/modular_computer))
 		var/obj/item/modular_computer/computer = host
-		var/obj/item/weapon/card/id/id = computer.GetIdCard()
+		var/obj/item/card/id/id = computer.GetIdCard()
 		if(!id && ismob(computer.loc))
 			var/mob/M = computer.loc
 			id = M.GetIdCard()

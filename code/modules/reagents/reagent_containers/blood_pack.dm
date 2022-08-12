@@ -1,10 +1,10 @@
-/obj/item/weapon/storage/box/bloodpacks
+/obj/item/storage/box/bloodpacks
 	name = "blood packs box"
 	desc = "This box contains blood packs."
 	icon_state = "sterile"
-	startswith = list(/obj/item/weapon/reagent_containers/ivbag = 7)
+	startswith = list(/obj/item/reagent_containers/ivbag = 7)
 
-/obj/item/weapon/reagent_containers/ivbag
+/obj/item/reagent_containers/ivbag
 	name = "\improper IV bag"
 	desc = "Flexible bag for IV injectors."
 	var/written_info
@@ -18,20 +18,20 @@
 
 	var/mob/living/carbon/human/attached
 
-/obj/item/weapon/reagent_containers/ivbag/Destroy()
+/obj/item/reagent_containers/ivbag/Destroy()
 	STOP_PROCESSING(SSobj,src)
 	attached = null
 	. = ..()
 
-/obj/item/weapon/reagent_containers/ivbag/on_reagent_change()
+/obj/item/reagent_containers/ivbag/on_reagent_change()
 	update_icon()
 	if(reagents.total_volume > volume/2)
 		w_class = ITEM_SIZE_NORMAL
 	else
 		w_class = ITEM_SIZE_SMALL
 
-/obj/item/weapon/reagent_containers/ivbag/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/weapon/pen))
+/obj/item/reagent_containers/ivbag/attackby(obj/item/W as obj, mob/user as mob)
+	if(istype(W, /obj/item/pen))
 		written_info = sanitize(input("Notes: ", text("IV Bag")))
 		if(written_info)
 			desc = "Flexible bag for IV injectors.\nA note is scribbled on the bag. \"[written_info]\""
@@ -40,7 +40,7 @@
 		return TRUE
 	. = ..()
 
-/obj/item/weapon/reagent_containers/ivbag/update_icon()
+/obj/item/reagent_containers/ivbag/update_icon()
 	overlays.Cut()
 	var/percent = round(reagents.total_volume / volume * 100)
 	if(reagents.total_volume)
@@ -51,7 +51,7 @@
 	if(attached)
 		overlays += image('icons/obj/bloodpack.dmi', "dongle")
 
-/obj/item/weapon/reagent_containers/ivbag/MouseDrop(over_object, src_location, over_location)
+/obj/item/reagent_containers/ivbag/MouseDrop(over_object, src_location, over_location)
 	if(!CanMouseDrop(over_object))
 		return
 	if(!ismob(loc))
@@ -67,7 +67,7 @@
 			START_PROCESSING(SSobj,src)
 	update_icon()
 
-/obj/item/weapon/reagent_containers/ivbag/Process()
+/obj/item/reagent_containers/ivbag/Process()
 	if(!ismob(loc))
 		return PROCESS_KILL
 
@@ -90,48 +90,48 @@
 	reagents.trans_to_mob(attached, amount_per_transfer_from_this, CHEM_BLOOD)
 	update_icon()
 
-/obj/item/weapon/reagent_containers/ivbag/nanoblood/Initialize()
+/obj/item/reagent_containers/ivbag/nanoblood/Initialize()
 	.=..()
 	reagents.add_reagent(/datum/reagent/nanoblood, volume)
 
-/obj/item/weapon/reagent_containers/ivbag/blood
+/obj/item/reagent_containers/ivbag/blood
 	name = "\improper blood pack"
 	var/blood_type = null
 
-/obj/item/weapon/reagent_containers/ivbag/blood/Initialize()
+/obj/item/reagent_containers/ivbag/blood/Initialize()
 	.=..()
 	if(blood_type)
 		name = "\improper blood pack [blood_type]"
 		reagents.add_reagent(/datum/reagent/blood, volume, list("donor" = null, "blood_DNA" = null, "blood_type" = blood_type, "trace_chem" = null, "virus2" = list(), "antibodies" = list()))
 
-/obj/item/weapon/reagent_containers/ivbag/blood/ABPlus
+/obj/item/reagent_containers/ivbag/blood/ABPlus
 	name = "\improper blood pack AB+"
 	blood_type = "AB+"
 
-/obj/item/weapon/reagent_containers/ivbag/blood/ABMinus
+/obj/item/reagent_containers/ivbag/blood/ABMinus
 	name = "\improper blood pack AB-"
 	blood_type = "AB-"
 
-/obj/item/weapon/reagent_containers/ivbag/blood/APlus
+/obj/item/reagent_containers/ivbag/blood/APlus
 	name = "\improper blood pack A+"
 	blood_type = "A+"
 
-/obj/item/weapon/reagent_containers/ivbag/blood/AMinus
+/obj/item/reagent_containers/ivbag/blood/AMinus
 	name = "\improper blood pack A-"
 	blood_type = "A-"
 
-/obj/item/weapon/reagent_containers/ivbag/blood/BPlus
+/obj/item/reagent_containers/ivbag/blood/BPlus
 	name = "\improper blood pack B+"
 	blood_type = "B+"
 
-/obj/item/weapon/reagent_containers/ivbag/blood/BMinus
+/obj/item/reagent_containers/ivbag/blood/BMinus
 	name = "\improper blood pack B-"
 	blood_type = "B-"
 
-/obj/item/weapon/reagent_containers/ivbag/blood/OPlus
+/obj/item/reagent_containers/ivbag/blood/OPlus
 	name = "\improper blood pack O+"
 	blood_type = "O+"
 
-/obj/item/weapon/reagent_containers/ivbag/blood/OMinus
+/obj/item/reagent_containers/ivbag/blood/OMinus
 	name = "\improper blood pack O-"
 	blood_type = "O-"

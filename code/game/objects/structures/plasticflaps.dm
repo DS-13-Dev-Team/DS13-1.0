@@ -48,6 +48,8 @@
 	else ..()
 
 /obj/structure/plasticflaps/ex_act(severity)
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	switch(severity)
 		if (1)
 			qdel(src)

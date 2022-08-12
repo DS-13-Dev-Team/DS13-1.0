@@ -3,7 +3,7 @@
 #define EJECT_CASINGS	2 //drop spent casings on the ground after firing
 #define CYCLE_CASINGS	3 //cycle casings, like a revolver. Also works for multibarrelled guns
 
-/obj/item/weapon/gun/projectile
+/obj/item/gun/projectile
 	name = "gun"
 	desc = "A gun that fires bullets."
 	icon_state = "revolver"
@@ -42,7 +42,7 @@
 	//var/list/icon_keys = list()		//keys
 	//var/list/ammo_states = list()	//values
 
-/obj/item/weapon/gun/projectile/Initialize()
+/obj/item/gun/projectile/Initialize()
 	.=..()
 	if (starts_loaded)
 		if(ispath(ammo_type) && (load_method & (SINGLE_CASING|SPEEDLOADER)))
@@ -52,12 +52,12 @@
 			ammo_magazine = new magazine_type(src)
 	update_icon()
 
-/obj/item/weapon/gun/projectile/Destroy()
+/obj/item/gun/projectile/Destroy()
 	QDEL_NULL_LIST(loaded)
 	QDEL_NULL(ammo_magazine)
 	.=..()
 
-/obj/item/weapon/gun/projectile/consume_next_projectile()
+/obj/item/gun/projectile/consume_next_projectile()
 	if (!handle_jamming())
 		return FALSE
 
@@ -93,7 +93,7 @@
 
 
 //Expends a specified number of rounds, deleting their casings, and returning their projectiles to be fired, if desired
-/obj/item/weapon/gun/projectile/consume_projectiles(var/number = 1)
+/obj/item/gun/projectile/consume_projectiles(var/number = 1)
 	if (get_remaining_ammo() < number)
 		return FALSE
 
@@ -145,7 +145,7 @@
 
 	return A
 
-/obj/item/weapon/gun/projectile/proc/handle_jamming()
+/obj/item/gun/projectile/proc/handle_jamming()
 	if(!is_jammed && prob(jam_chance))
 		src.visible_message("<span class='danger'>\The [src] jams!</span>")
 		is_jammed = 1
@@ -162,17 +162,17 @@
 
 	return TRUE
 
-/obj/item/weapon/gun/projectile/handle_post_fire()
+/obj/item/gun/projectile/handle_post_fire()
 	..()
 	if(chambered)
 		chambered.expend()
 		process_chambered()
 
-/obj/item/weapon/gun/projectile/handle_click_empty()
+/obj/item/gun/projectile/handle_click_empty()
 	..()
 	process_chambered()
 
-/obj/item/weapon/gun/projectile/proc/process_chambered()
+/obj/item/gun/projectile/proc/process_chambered()
 	if (!chambered) return
 	switch(handle_casings)
 		if(EJECT_CASINGS) //eject casing onto ground.
@@ -191,7 +191,7 @@
 
 //Attempts to load A into src, depending on the type of thing being loaded and the load_method
 //Maybe this should be broken up into separate procs for each load method?
-/obj/item/weapon/gun/projectile/load_ammo(var/obj/item/A, mob/user)
+/obj/item/gun/projectile/load_ammo(var/obj/item/A, mob/user)
 	if(istype(A, /obj/item/ammo_magazine))
 		var/obj/item/ammo_magazine/AM = A
 		if(!(load_method & AM.mag_type) || caliber != AM.caliber)
@@ -221,7 +221,7 @@
 					if(loaded.len >= max_shells)
 						break
 					if(C.caliber == caliber)
-						C.loc = src
+						C.forceMove(src)
 						loaded += C
 						AM.stored_ammo -= C //should probably go inside an ammo_magazine proc, but I guess less proc calls this way...
 						count++
@@ -250,7 +250,7 @@
 	update_icon()
 
 //attempts to unload src. If allow_dump is set to 0, the speedloader unloading method will be disabled
-/obj/item/weapon/gun/projectile/unload_ammo(mob/user, var/allow_dump=1)
+/obj/item/gun/projectile/unload_ammo(mob/user, var/allow_dump=1)
 	if(is_jammed)
 		user.visible_message("\The [user] begins to unjam [src].", "You clear the jam and unload [src]")
 		if(!do_after(user, 4, src))
@@ -270,7 +270,7 @@
 			var/turf/T = get_turf(user)
 			if(T)
 				for(var/obj/item/ammo_casing/C in loaded)
-					C.loc = T
+					C.forceMove(T)
 					count++
 				loaded.Cut()
 			if(count)
@@ -285,7 +285,7 @@
 	update_icon()
 
 
-/obj/item/weapon/gun/projectile/attack_self(mob/user as mob)
+/obj/item/gun/projectile/attack_self(mob/user as mob)
 	if(firemodes.len > 1)
 		..()
 	else
@@ -293,10 +293,10 @@
 
 
 
-/obj/item/weapon/gun/projectile/afterattack(atom/A, mob/living/user)
+/obj/item/gun/projectile/afterattack(atom/A, mob/living/user)
 	.=..()
 	if(auto_eject && ammo_magazine && ammo_magazine.stored_ammo && !ammo_magazine.stored_ammo.len)
-		ammo_magazine.loc = get_turf(src.loc)
+		ammo_magazine.forceMove(get_turf(src.loc))
 		user.visible_message(
 			"[ammo_magazine] falls out and clatters on the floor!",
 			"<span class='notice'>[ammo_magazine] falls out and clatters on the floor!</span>"
@@ -307,20 +307,20 @@
 		ammo_magazine = null
 		update_icon() //make sure to do this after unsetting ammo_magazine
 
-/obj/item/weapon/gun/projectile/examine(mob/user)
+/obj/item/gun/projectile/examine(mob/user)
 	. = ..(user)
 	if(is_jammed && user.skill_check(SKILL_WEAPONS, SKILL_BASIC))
 		to_chat(user, "<span class='warning'>It looks jammed.</span>")
 	show_remaining_ammo(user)
 	return
 
-/obj/item/weapon/gun/projectile/proc/show_remaining_ammo(var/mob/living/user)
+/obj/item/gun/projectile/proc/show_remaining_ammo(var/mob/living/user)
 	if(ammo_magazine)
 		to_chat(user, "It has \a [ammo_magazine] loaded.")
 	if(user.skill_check(SKILL_WEAPONS, SKILL_ADEPT))
 		to_chat(user, "Has [get_remaining_ammo()] round\s remaining.")
 
-/obj/item/weapon/gun/projectile/get_remaining_ammo()
+/obj/item/gun/projectile/get_remaining_ammo()
 	var/bullets = 0
 	if(loaded)
 		bullets += loaded.len
@@ -330,13 +330,13 @@
 		bullets += 1
 	return bullets
 
-/obj/item/weapon/gun/projectile/has_ammo()
+/obj/item/gun/projectile/has_ammo()
 	return (get_remaining_ammo() >= ammo_cost)
 
 
 /* Unneeded -- so far.
 //in case the weapon has firemodes and can't unload using attack_hand()
-/obj/item/weapon/gun/projectile/verb/unload_gun()
+/obj/item/gun/projectile/verb/unload_gun()
 	set name = "Unload Ammo"
 	set category = "Object"
 	set src in usr

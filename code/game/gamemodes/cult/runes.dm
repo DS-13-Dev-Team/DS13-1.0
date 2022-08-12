@@ -46,11 +46,11 @@
 		to_chat(user, "This is \a [cultname] rune.")
 
 /obj/effect/rune/attackby(var/obj/item/I, var/mob/living/user)
-	if(istype(I, /obj/item/weapon/book/tome) && iscultist(user))
+	if(istype(I, /obj/item/book/tome) && iscultist(user))
 		user.visible_message("<span class='notice'>[user] rubs \the [src] with \the [I], and \the [src] is absorbed by it.</span>", "You retrace your steps, carefully undoing the lines of \the [src].")
 		qdel(src)
 		return
-	else if(istype(I, /obj/item/weapon/nullrod))
+	else if(istype(I, /obj/item/nullrod))
 		user.visible_message("<span class='notice'>[user] hits \the [src] with \the [I], and it disappears, fizzling.</span>", "<span class='notice'>You disrupt the vile magic with the deadening field of \the [I].</span>", "You hear a fizzle.")
 		qdel(src)
 		return
@@ -227,7 +227,7 @@
 	cultname = "summon tome"
 
 /obj/effect/rune/tome/cast(var/mob/living/user)
-	new /obj/item/weapon/book/tome(get_turf(src))
+	new /obj/item/book/tome(get_turf(src))
 	speak_incantation(user, "N[pick("'","`")]ath reth sh'yro eth d'raggathnor!")
 	visible_message("<span class='notice'>\The [src] disappears with a flash of red light, and in its place now a book lies.</span>", "You hear a pop.")
 	qdel(src)
@@ -300,7 +300,7 @@
 		to_chat(user, "<span class='notice'>You touch \the [src]. It feels wet and becomes harder the further you push your arm.</span>")
 
 /obj/effect/cultwall/attackby(var/obj/item/I, var/mob/living/user)
-	if(istype(I, /obj/item/weapon/nullrod))
+	if(istype(I, /obj/item/nullrod))
 		user.visible_message("<span class='notice'>\The [user] touches \the [src] with \the [I], and it disappears.</span>", "<span class='notice'>You disrupt the vile magic with the deadening field of \the [I].</span>")
 		qdel(src)
 	else if(I.force)
@@ -404,7 +404,7 @@
 		sleep(40)
 	if(victim && victim.loc == T && victim.stat == DEAD)
 		GLOB.cult.add_cultiness(CULTINESS_PER_SACRIFICE)
-		var/obj/item/device/soulstone/full/F = new(get_turf(src))
+		var/obj/item/soulstone/full/F = new(get_turf(src))
 		for(var/mob/M in cultists | get_cultists())
 			to_chat(M, "<span class='warning'>The Geometer of Blood accepts this offering.</span>")
 		visible_message("<span class='notice'>\The [F] appears over \the [src].</span>")
@@ -589,7 +589,7 @@
 		to_chat(user, "<span class='warning'>This rune needs to be placed on the defiled ground.</span>")
 		return fizzle(user)
 	speak_incantation(user, "N'ath reth sh'yro eth d[pick("'","`")]raggathnor!")
-	user.put_in_hands(new /obj/item/weapon/melee/cultblade(user))
+	user.put_in_hands(new /obj/item/melee/cultblade(user))
 	qdel(src)
 
 /obj/effect/rune/shell
@@ -629,7 +629,7 @@
 	for(var/mob/living/M in viewers(src))
 		if(iscultist(M))
 			continue
-		var/obj/item/weapon/nullrod/N = locate() in M
+		var/obj/item/nullrod/N = locate() in M
 		if(N)
 			continue
 		affected |= M
@@ -650,7 +650,7 @@
 
 /obj/effect/rune/revive/cast(var/mob/living/user)
 	var/mob/living/carbon/human/target
-	var/obj/item/device/soulstone/source
+	var/obj/item/soulstone/source
 	for(var/mob/living/carbon/human/M in get_turf(src))
 		if(M.stat == DEAD)
 			if(iscultist(M))
@@ -659,7 +659,7 @@
 					break
 	if(!target)
 		return fizzle(user)
-	for(var/obj/item/device/soulstone/S in get_turf(src))
+	for(var/obj/item/soulstone/S in get_turf(src))
 		if(S.full && !S.shade.key)
 			source = S
 			break
@@ -690,7 +690,7 @@
 			if(iscultist(M))
 				continue
 			current |= M
-			var/obj/item/weapon/nullrod/N = locate() in M
+			var/obj/item/nullrod/N = locate() in M
 			if(N)
 				continue
 			M.take_overall_damage(5, 5)
@@ -785,9 +785,9 @@
 	var/papertype
 
 /obj/effect/rune/imbue/cast(var/mob/living/user)
-	var/obj/item/weapon/paper/target
+	var/obj/item/paper/target
 	var/tainted = 0
-	for(var/obj/item/weapon/paper/P in get_turf(src))
+	for(var/obj/item/paper/P in get_turf(src))
 		if(!P.info)
 			target = P
 			break
@@ -805,4 +805,4 @@
 
 /obj/effect/rune/imbue/emp
 	cultname = "destroy technology imbue"
-	papertype = /obj/item/weapon/paper/talisman/emp
+	papertype = /obj/item/paper/talisman/emp

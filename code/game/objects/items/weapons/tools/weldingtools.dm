@@ -1,4 +1,4 @@
-/obj/item/weapon/tool/weldingtool
+/obj/item/tool/weldingtool
 	name = "welding tool"
 	desc = "An industrial torch for cutting and welding."
 	icon_state = "welder"
@@ -27,7 +27,7 @@
 	heat = 2250
 
 
-/obj/item/weapon/tool/weldingtool/improvised
+/obj/item/tool/weldingtool/improvised
 	name = "jury-rigged torch"
 	desc = "An assembly of pipes attached to a little gas tank. Serves capably as a welder, though a bit risky."
 	icon_state = "welder_s"
@@ -39,10 +39,10 @@
 
 //The improvised welding tool is created with a full tank of fuel.
 //It's implied that it's burning the oxygen in the emergency tank that was used to create it
-/obj/item/weapon/tool/weldingtool/improvised/Created()
+/obj/item/tool/weldingtool/improvised/Created()
 	return
 
-/obj/item/weapon/tool/weldingtool/turn_on(mob/user)
+/obj/item/tool/weldingtool/turn_on(mob/user)
 	if (get_fuel() > passive_fuel_cost)
 		item_state = "[initial(item_state)]_on"
 		to_chat(user, SPAN_NOTICE("You switch [src] on."))
@@ -58,7 +58,7 @@
 
 
 
-/obj/item/weapon/tool/weldingtool/turn_off(mob/user)
+/obj/item/tool/weldingtool/turn_off(mob/user)
 	item_state = initial(item_state)
 	playsound(loc, 'sound/items/welderdeactivate.ogg', 50, 1)
 	to_chat(user, SPAN_NOTICE("You switch [src] off."))
@@ -66,7 +66,7 @@
 	damtype = initial(damtype)
 
 
-/obj/item/weapon/tool/weldingtool/advanced
+/obj/item/tool/weldingtool/advanced
 	name = "advanced welding tool"
 	desc = "An industrial torch for cutting and welding. This newer model has a better tank."
 	icon_state = "adv_welder"
@@ -80,6 +80,6 @@
 	max_modifications = 4
 	use_fuel_cost = 0.09 //Slightly lower fuel costs
 
-/obj/item/weapon/tool/weldingtool/is_hot()
+/obj/item/tool/weldingtool/is_hot()
 	if (damtype == BURN)
 		return heat

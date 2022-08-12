@@ -17,8 +17,11 @@
 	var/list/bordering_doors = list()
 	var/is_maintenance = FALSE
 	var/ship_area = FALSE
+	///This datum, if set, allows terrain generation behavior to be ran on Initialize()
+	var/datum/map_generator/map_generator
 
 /area/New()
+	GLOB.areas_by_type[type] = src
 	icon_state = ""
 	uid = ++global_uid
 
@@ -27,6 +30,11 @@
 		power_equip = 0
 		power_environ = 0
 	..()
+
+/area/Destroy()
+	if(GLOB.areas_by_type[type] == src)
+		GLOB.areas_by_type[type] = null
+	.=..()
 
 /area/Initialize()
 	. = ..()
@@ -38,6 +46,26 @@
 	if(ship_area)
 		GLOB.ship_areas += src
 	update_base_lighting()
+
+/area/proc/RunGeneration()
+	if(map_generator)
+		map_generator = new map_generator()
+		var/list/turfs = list()
+		for(var/turf/unsimulated/genturf/T in contents)
+			turfs += T
+		map_generator.generate_terrain(turfs)
+
+/**
+ * Causes a runtime error
+ */
+/area/AllowDrop()
+	CRASH("Bad op: area/AllowDrop() called")
+
+/**
+ * Causes a runtime error
+ */
+/area/drop_location()
+	CRASH("Bad op: area/drop_location() called")
 
 /area/proc/register_door(var/obj/machinery/door/D)
 	bordering_doors |= D
@@ -358,4 +386,20 @@ var/list/mob/living/forced_ambiance_list = new
 
 /area/proc/has_turfs()
 	return !!(locate(/turf) in src)
+
+/**
+ * Register this area as belonging to a z level
+ *
+ * Ensures the item is added to the SSmapping.areas_in_z list for this z
+ */
+/area/proc/reg_in_areas_in_z()
+	if(!length(contents))
+		return
+	var/list/areas_in_z = SSmapping.areas_in_z
+	if(!z)
+		WARNING("No z found for [src]")
+		return
+	if(!areas_in_z["[z]"])
+		areas_in_z["[z]"] = list()
+	areas_in_z["[z]"] += src
 

@@ -197,10 +197,9 @@
 	log_access("Login: [key_name(src)] from [address ? address : "localhost"]-[computer_id] || BYOND v[full_version]")
 
 	//preferences datum - also holds some persistant data for the client (because we may as well keep these datums to a minimum)
-	prefs = preferences_datums[ckey]
+	prefs = SScharacter_setup.preferences_datums[ckey]
 	if(!prefs)
 		prefs = new /datum/preferences(src)
-		preferences_datums[ckey] = prefs
 	prefs.last_ip = address				//these are gonna be used for banning
 	prefs.last_id = computer_id			//these are gonna be used for banning
 
@@ -213,10 +212,7 @@
 		GLOB.player_details[ckey] = player_details
 
 	. = ..()	//calls mob.Login()
-	prefs.sanitize_preferences()
 	fps = text2num(get_preference_value(/datum/client_preference/client_fps))
-
-	GLOB.using_map.map_info(src)
 
 	// Initialize tgui panel
 	src << browse(file('html/statbrowser.html'), "window=statbrowser")
@@ -273,7 +269,7 @@
 	if(holder)
 		src.control_freak = 0 //Devs need 0 for profiler access
 
-	winset(src, null, "mainwindow.title='[CONFIG_GET(string/title)] - [GLOB.using_map.full_name]'")
+	winset(src, null, "mainwindow.title='[CONFIG_GET(string/title)] - [GLOB.using_map?.full_name]'")
 
 	//////////////
 	//DISCONNECT//
@@ -463,8 +459,3 @@ client/proc/MayRespawn()
 	if(statbrowser_ready)
 		return
 	to_chat(src, "<span class='warning'>Statpanel failed to load, click <a href='?src=[REF(src)];reload_statbrowser=1'>here</a> to reload the panel</span>")
-
-//Hook, override it to run code when dir changes
-//Like for /atoms, but clients are their own snowflake FUCK
-/client/proc/setDir(newdir)
-	dir = newdir

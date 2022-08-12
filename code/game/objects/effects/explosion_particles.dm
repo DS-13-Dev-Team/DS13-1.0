@@ -30,7 +30,7 @@
 				sleep(1)
 				if(QDELING(expl))
 					break
-				step(expl,direct)
+				expl.Move(get_step(expl, direct), direct)
 
 /obj/effect/explosion
 	name = "explosive particles"

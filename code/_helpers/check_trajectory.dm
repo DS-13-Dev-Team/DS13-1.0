@@ -45,12 +45,17 @@
 		trace.obj_flags = obj_flags
 	trace.pass_flags = pass_flags
 
-	for (var/atom/A as anything in targets)
-		if (allow_sleep)
+	if(allow_sleep)
+		for(var/atom/A as anything in targets)
+			trace.result = null
+			trace.forceMove(origin)
+			targets[A] = trace.launch(A) //Test it!
 			CHECK_TICK
-		trace.result = null
-		trace.loc = origin
-		targets[A] = trace.launch(A) //Test it!
+	else
+		for(var/atom/A as anything in targets)
+			trace.result = null
+			trace.forceMove(origin)
+			targets[A] = trace.launch(A) //Test it!
 	QDEL_NULL(trace) //No need for it anymore
 	return targets //Send it back to the gun!
 
@@ -109,7 +114,7 @@
 		if (allow_sleep)
 			CHECK_TICK
 		trace.result = null
-		trace.loc = origin
+		trace.forceMove(origin)
 		var/output = trace.launch(A) //Test it!
 		targets[A] = list(output, get_turf(trace), trace.obstacle)
 	QDEL_NULL(trace) //No need for it anymore
@@ -136,7 +141,7 @@
 /obj/item/projectile/test/Bump(atom/A as mob|obj|turf|area, forced = 0)
 	if(A == firer)
 		last_loc = loc
-		loc = A.loc
+		forceMove(A.loc)
 		return //cannot shoot yourself
 	if(istype(A, /obj/item/projectile))
 		return
@@ -213,7 +218,7 @@
 			return TRUE
 
 		//If we get here, lets set our location to the newloc and ignore blockers
-		loc = newloc
+		forceMove(newloc)
 
 
 /obj/item/projectile/test/Destroy()

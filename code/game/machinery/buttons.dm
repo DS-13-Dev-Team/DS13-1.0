@@ -27,11 +27,12 @@
 /obj/machinery/button/attack_ai(mob/user as mob)
 	return attack_hand(user)
 
-/obj/machinery/button/attackby(obj/item/weapon/W, mob/user as mob)
+/obj/machinery/button/attackby(obj/item/W, mob/user as mob)
 	return attack_hand(user)
 
 /obj/machinery/button/attack_hand(mob/living/user)
-	if(..()) return 1
+	if(..() || !(user.is_advanced_tool_user()))
+		return 1
 	if(istype(user, /mob/living/carbon))
 		playsound(src, "button", VOLUME_MID)
 	activate(user)

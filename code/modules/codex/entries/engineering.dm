@@ -39,9 +39,9 @@
 	To remove these safely, use the 'deflate' verb.  Hitting these with any objects will probably puncture and break it forever."
 
 /datum/codex_entry/gripper
-	associated_paths = list(/obj/item/weapon/gripper)
+	associated_paths = list(/obj/item/gripper)
 	mechanics_text = "Click an item to pick it up with your gripper. Use it as you would normally use anything in your hand. The Drop Item verb will allow you to release the item."
 
 /datum/codex_entry/diffuser_item
-	associated_paths = list(/obj/item/weapon/shield_diffuser)
+	associated_paths = list(/obj/item/shield_diffuser)
 	mechanics_text = "This device disrupts shields on directly adjacent tiles (in a + shaped pattern), in a similar way the floor mounted variant does. It is, however, portable and run by an internal battery. Can be recharged with a regular recharger."

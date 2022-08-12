@@ -66,8 +66,6 @@
 
 /datum/config_entry/flag/allow_map_switching    //Whether map switching is allowed
 
-/datum/config_entry/flag/auto_map_vote  //Automatically call a map vote at end of round and switch to the selected map
-
 /datum/config_entry/number/radiation_decay_rate   //How much radiation is reduced by each tick
     config_entry_value = 1
 

@@ -130,17 +130,17 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 	return hear
 
 
-/proc/get_mobs_in_radio_ranges(var/list/obj/item/device/radio/radios)
+/proc/get_mobs_in_radio_ranges(var/list/obj/item/radio/radios)
 
 	set background = 1
 
 	. = list()
 	// Returns a list of mobs who can hear any of the radios given in @radios
 	var/list/speaker_coverage = list()
-	for(var/obj/item/device/radio/R in radios)
+	for(var/obj/item/radio/R in radios)
 		if(R)
 			//Cyborg checks. Receiving message uses a bit of cyborg's charge.
-			var/obj/item/device/radio/borg/BR = R
+			var/obj/item/radio/borg/BR = R
 			if(istype(BR) && BR.myborg)
 				var/mob/living/silicon/robot/borg = BR.myborg
 				var/datum/robot_component/CO = borg.get_component("radio")
@@ -189,10 +189,11 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 		if(get_turf(O) in hearturfs)
 			objs |= O
 
-
-
-
-
+/proc/get_hearers_in_view(range, turf/T)
+	.=list()
+	FOR_DVIEW(var/mob/hearer, range, get_turf(T), INVISIBILITY_MAXIMUM)
+		. += hearer
+	END_FOR_DVIEW
 
 proc/isInSight(var/atom/A, var/atom/B)
 	var/turf/Aturf = get_turf(A)

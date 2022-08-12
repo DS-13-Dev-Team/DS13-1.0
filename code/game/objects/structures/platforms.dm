@@ -46,7 +46,7 @@
 /obj/structure/platform/ex_act()
 	return
 
-obj/structure/platform_decoration
+/obj/structure/platform_decoration
 	name = "platform"
 	desc = "A square metal surface resting on four legs."
 	icon = 'icons/obj/platforms.dmi'

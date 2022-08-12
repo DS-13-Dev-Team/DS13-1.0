@@ -1,4 +1,4 @@
-/obj/item/weapon/rig/engineering
+/obj/item/rig/engineering
 	name = "engineering RIG"
 	desc = "A lightweight and flexible armoured rig suit, designed for mining and shipboard engineering."
 	icon_state = "ds_engineering_rig"

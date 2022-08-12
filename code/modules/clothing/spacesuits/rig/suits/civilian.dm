@@ -1,4 +1,4 @@
-/obj/item/weapon/rig/civilian
+/obj/item/rig/civilian
 	name = "CEC civilian RIG"
 	desc = "Resource Integrated Gear. Standard issue for all CEC employees"
 	icon_state = "ds_civilian_rig"
@@ -18,7 +18,7 @@
 		/obj/item/rig_module/storage/light
 		)
 
-/obj/item/weapon/rig/emergency
+/obj/item/rig/emergency
 	name = "emergency RIG"
 	desc = "A light, emergency rig for use by non-qualified personnel in the case of emergency decompression."
 	icon_state = "eva_suit"

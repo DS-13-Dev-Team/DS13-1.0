@@ -1,6 +1,6 @@
 // Papers that are of decent importance and/or fluff lore items.
 
-/obj/item/weapon/paper/ishimura/fcprotocol
+/obj/item/paper/ishimura/fcprotocol
 	name = "armory inventory"
 	info = "<center><logo><br><b> U.S.G. Ishimura - First Contact Protocol</b></center>\
 	<br>\

@@ -9,13 +9,13 @@
 
 /obj/structure/closet/secure_closet/scientist/WillContain()
 	return list(
-		new /datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack/messenger/tox, /obj/item/weapon/storage/backpack/satchel_tox)),
+		new /datum/atom_creator/weighted(list(/obj/item/storage/backpack/messenger/tox, /obj/item/storage/backpack/satchel_tox)),
 		/obj/item/clothing/under/deadspace/research_assistant,
 		/obj/item/clothing/suit/storage/toggle/labcoat,
 		/obj/item/clothing/shoes/white,
-		/obj/item/device/radio/headset/headset_sci,
+		/obj/item/radio/headset/headset_sci,
 		/obj/item/clothing/mask/gas,
-		/obj/item/weapon/clipboard,
+		/obj/item/clipboard,
 		/obj/random/tool
 	)
 
@@ -30,15 +30,15 @@
 
 /obj/structure/closet/secure_closet/xenobio/WillContain()
 	return list(
-		new /datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack/messenger/tox, /obj/item/weapon/storage/backpack/satchel_tox)),
+		new /datum/atom_creator/weighted(list(/obj/item/storage/backpack/messenger/tox, /obj/item/storage/backpack/satchel_tox)),
 		/obj/item/clothing/under/rank/scientist,
 		/obj/item/clothing/suit/storage/toggle/labcoat,
 		/obj/item/clothing/shoes/white,
-		/obj/item/device/radio/headset/headset_sci,
+		/obj/item/radio/headset/headset_sci,
 		/obj/item/clothing/mask/gas,
 		/obj/item/clothing/gloves/latex,
-		/obj/item/weapon/clipboard,
-		/obj/item/weapon/storage/belt/general,
+		/obj/item/clipboard,
+		/obj/item/storage/belt/general,
 		/obj/random/tool
 	)
 
@@ -59,9 +59,9 @@
 		/obj/item/clothing/shoes/white,
 		/obj/item/clothing/shoes/leather,
 		/obj/item/clothing/gloves/latex,
-		/obj/item/device/radio/headset/heads/cscio,
+		/obj/item/radio/headset/heads/cscio,
 		/obj/item/clothing/mask/gas,
-		/obj/item/device/flash,
-		/obj/item/weapon/clipboard,
+		/obj/item/flash,
+		/obj/item/clipboard,
 		/obj/item/clothing/suit/storage/toggle/labcoat/rd
 	)

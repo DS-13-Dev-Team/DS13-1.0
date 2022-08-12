@@ -653,8 +653,6 @@ proc/get_nt_opposed()
 	set name = "Check Round Info"
 	set category = "OOC"
 
-	GLOB.using_map.map_info(src)
-
 	if(!SSticker || !SSticker.mode)
 		to_chat(usr, "Something is terribly wrong; there is no gametype.")
 		return

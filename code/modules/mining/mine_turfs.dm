@@ -19,7 +19,8 @@ var/list/mining_floors = list()
 	opacity = 1
 	density = 1
 	blocks_air = 1
-	temperature = T0C
+	initial_gas = list("oxygen" = MOLES_O2STANDARD, "nitrogen" = MOLES_N2STANDARD)
+	temperature = T20C
 	var/mined_turf = /turf/simulated/floor/asteroid
 	var/ore/mineral
 	var/mined_ore = 0
@@ -31,7 +32,7 @@ var/list/mining_floors = list()
 	var/list/finds
 	var/next_rock = 0
 
-	var/obj/item/weapon/last_find
+	var/obj/item/last_find
 	var/datum/artifact_find/artifact_find
 
 	var/mining_done = FALSE
@@ -55,14 +56,12 @@ var/list/mining_floors = list()
 	health = max_health
 
 /turf/simulated/mineral/Initialize()
-
 	if (!mining_walls["[src.z]"])
 		mining_walls["[src.z]"] = list()
 	mining_walls["[src.z]"] += src
 	MineralSpread()
 	update_archaeo_overlay()
-	spawn()
-		update_icon(1)
+	update_icon(1)
 	.=..()
 
 /turf/simulated/mineral/Destroy()
@@ -83,7 +82,7 @@ var/list/mining_floors = list()
 	else
 		SetName("[mineral.display_name] deposit")
 
-	overlays.Cut()
+	cut_overlays()
 
 	for(var/direction in GLOB.cardinal)
 		var/turf/turf_to_check = get_step(src,direction)
@@ -92,7 +91,8 @@ var/list/mining_floors = list()
 			T.updateMineralOverlays()
 		else if(istype(turf_to_check,/turf/space) || istype(turf_to_check,/turf/simulated/floor))
 			var/image/rock_side = image(icon, "rock_side", dir = turn(direction, 180))
-			rock_side.turf_decal_layerise()
+			rock_side.plane = GAME_PLANE
+			rock_side.layer = DECAL_LAYER
 			switch(direction)
 				if(NORTH)
 					rock_side.pixel_y += world.icon_size
@@ -102,18 +102,24 @@ var/list/mining_floors = list()
 					rock_side.pixel_x += world.icon_size
 				if(WEST)
 					rock_side.pixel_x -= world.icon_size
-			overlays += rock_side
+			add_overlay(rock_side)
 
 	if(ore_overlay)
-		overlays += ore_overlay
+		add_overlay(ore_overlay)
 
 	if(excav_overlay)
-		overlays += excav_overlay
+		add_overlay(excav_overlay)
 
 	if(archaeo_overlay)
-		overlays += archaeo_overlay
+		add_overlay(archaeo_overlay)
+
+	var/area/area = loc
+	if(area.area_has_base_lighting)
+		add_overlay(area.lighting_effect)
 
 /turf/simulated/mineral/ex_act(severity)
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	switch(severity)
 		if(3)
 			dig(rand(100,250))
@@ -144,7 +150,7 @@ var/list/mining_floors = list()
 
 	else if(istype(AM,/mob/living/silicon/robot))
 		var/mob/living/silicon/robot/R = AM
-		if(istype(R.module_active,/obj/item/weapon/tool/pickaxe))
+		if(istype(R.module_active,/obj/item/tool/pickaxe))
 			attackby(R.module_active,R)
 
 	else if(istype(AM,/obj/mecha))
@@ -170,7 +176,8 @@ var/list/mining_floors = list()
 	clear_ore_effects()
 	ore_overlay = image('icons/obj/mining.dmi', "rock_[mineral.icon_tag]")
 	ore_overlay.appearance_flags = RESET_COLOR
-	ore_overlay.turf_decal_layerise()
+	ore_overlay.plane = GAME_PLANE
+	ore_overlay.layer = DECAL_LAYER
 	ore_overlay.rotate_random()
 	update_icon()
 
@@ -186,19 +193,19 @@ var/list/mining_floors = list()
 			return TRUE
 
 	//Archeology tools
-	if (istype(I, /obj/item/device/core_sampler))
+	if (istype(I, /obj/item/core_sampler))
 		geologic_data.UpdateNearbyArtifactInfo(src)
-		var/obj/item/device/core_sampler/C = I
+		var/obj/item/core_sampler/C = I
 		C.sample_item(src, user)
 		return
 
-	if (istype(I, /obj/item/device/depth_scanner))
-		var/obj/item/device/depth_scanner/C = I
+	if (istype(I, /obj/item/depth_scanner))
+		var/obj/item/depth_scanner/C = I
 		C.scan_atom(user, src)
 		return
 
-	if (istype(I, /obj/item/device/measuring_tape))
-		var/obj/item/device/measuring_tape/P = I
+	if (istype(I, /obj/item/measuring_tape))
+		var/obj/item/measuring_tape/P = I
 		user.visible_message("<span class='notice'>\The [user] extends [P] towards [src].</span>","<span class='notice'>You extend [P] towards [src].</span>")
 		if(do_after(user,10, src))
 			to_chat(user, "<span class='notice'>\The [src] has been excavated to a depth of [excavation_level()]cm.</span>")
@@ -211,7 +218,7 @@ var/list/mining_floors = list()
 /turf/simulated/mineral/AltClick(var/mob/user)
 	var/obj/item/I = user.get_active_hand()
 	if(I && isPickaxe(I))
-		var/obj/item/weapon/tool/pickaxe/P = I
+		var/obj/item/tool/pickaxe/P = I
 		return dig_with_tool(P, user, (!P.default_full_dig))
 	else
 		return .=..()
@@ -237,7 +244,7 @@ var/list/mining_floors = list()
 	if (isnull(full_dig))
 		full_dig = TRUE
 		if (isPickaxe(I))
-			var/obj/item/weapon/tool/pickaxe/P = I
+			var/obj/item/tool/pickaxe/P = I
 			full_dig = P.default_full_dig
 
 
@@ -280,7 +287,8 @@ var/list/mining_floors = list()
 		var/excav_quadrant = round(excavation_level() / 50) + 1
 		excav_overlay = image('icons/turf/walls.dmi', "overlay_excv[excav_quadrant]_[rand(1,3)]")
 		excav_overlay.appearance_flags = RESET_COLOR
-		excav_overlay.turf_decal_layerise()
+		excav_overlay.plane = GAME_PLANE
+		excav_overlay.layer = DECAL_LAYER
 		excav_overlay.rotate_random()
 
 /turf/simulated/mineral/proc/update_archaeo_overlay()
@@ -289,7 +297,8 @@ var/list/mining_floors = list()
 	else
 		archaeo_overlay = image('icons/turf/walls.dmi', "overlay_archaeo[rand(1,3)]")
 		archaeo_overlay.appearance_flags = RESET_COLOR
-		archaeo_overlay.turf_decal_layerise()
+		archaeo_overlay.plane = GAME_PLANE
+		archaeo_overlay.layer = DECAL_LAYER
 		archaeo_overlay.rotate_random()
 
 
@@ -426,12 +435,12 @@ var/list/mining_floors = list()
 			if(5)
 				var/quantity = rand(1,3)
 				for(var/i=0, i<quantity, i++)
-					new /obj/item/weapon/material/shard(src)
+					new /obj/item/material/shard(src)
 
 			if(6)
 				var/quantity = rand(1,3)
 				for(var/i=0, i<quantity, i++)
-					new /obj/item/weapon/material/shard/phoron(src)
+					new /obj/item/material/shard/phoron(src)
 
 			if(7)
 				var/obj/item/stack/material/uranium/R = new(src)
@@ -522,6 +531,8 @@ var/list/mining_floors = list()
 	return ..()
 
 /turf/simulated/floor/asteroid/ex_act(severity)
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	switch(severity)
 		if(3.0)
 			return
@@ -535,13 +546,13 @@ var/list/mining_floors = list()
 /turf/simulated/floor/asteroid/is_plating()
 	return !density
 
-/turf/simulated/floor/asteroid/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/turf/simulated/floor/asteroid/attackby(obj/item/W as obj, mob/user as mob)
 	if(!W || !user)
 		return 0
 
 	var/list/usable_tools = list(
-		/obj/item/weapon/tool/shovel,
-		/obj/item/weapon/tool/pickaxe
+		/obj/item/tool/shovel,
+		/obj/item/tool/pickaxe
 		)
 
 	var/valid_tool
@@ -567,8 +578,8 @@ var/list/mining_floors = list()
 		to_chat(user, "<span class='notice'>You dug a hole.</span>")
 		gets_dug()
 
-	else if(istype(W,/obj/item/weapon/storage/ore))
-		var/obj/item/weapon/storage/ore/S = W
+	else if(istype(W,/obj/item/storage/ore))
+		var/obj/item/storage/ore/S = W
 		if(S.collection_mode)
 			for(var/obj/item/stack/ore/O in contents)
 				//We assume there is only ore in the satchel
@@ -579,10 +590,10 @@ var/list/mining_floors = list()
 					if(!QDELING(O))
 						O.forceMove(src)
 				return
-	else if(istype(W,/obj/item/weapon/storage/bag/fossils))
-		var/obj/item/weapon/storage/bag/fossils/S = W
+	else if(istype(W,/obj/item/storage/bag/fossils))
+		var/obj/item/storage/bag/fossils/S = W
 		if(S.collection_mode)
-			for(var/obj/item/weapon/fossil/F in contents)
+			for(var/obj/item/fossil/F in contents)
 				F.attackby(W,user)
 				return
 
@@ -603,45 +614,51 @@ var/list/mining_floors = list()
 
 /turf/simulated/floor/asteroid/proc/updateMineralOverlays(var/update_neighbors)
 
-	overlays.Cut()
+	cut_overlays()
 
 	var/list/step_overlays = list("n" = NORTH, "s" = SOUTH, "e" = EAST, "w" = WEST)
 	for(var/direction in step_overlays)
 
 		if(istype(get_step(src, step_overlays[direction]), /turf/space))
 			var/image/aster_edge = image('icons/turf/flooring/asteroid.dmi', "asteroid_edges", dir = step_overlays[direction])
-			aster_edge.turf_decal_layerise()
-			overlays += aster_edge
+			aster_edge.plane = FLOOR_PLANE
+			aster_edge.layer = DECAL_LAYER
+			add_overlay(aster_edge)
 
 		if(istype(get_step(src, step_overlays[direction]), /turf/simulated/mineral))
 			var/image/rock_wall = image('icons/turf/walls.dmi', "rock_side", dir = step_overlays[direction])
-			rock_wall.turf_decal_layerise()
-			overlays += rock_wall
+			rock_wall.plane = FLOOR_PLANE
+			rock_wall.layer = DECAL_LAYER
+			add_overlay(rock_wall)
 
 	//todo cache
 	if(overlay_detail)
 		var/image/floor_decal = image(icon = 'icons/turf/flooring/decals.dmi', icon_state = overlay_detail)
-		floor_decal.turf_decal_layerise()
-		overlays |= floor_decal
+		floor_decal.plane = FLOOR_PLANE
+		floor_decal.layer = DECAL_LAYER
+		add_overlay(floor_decal)
 
 	if(update_neighbors)
-		var/list/all_step_directions = list(NORTH,NORTHEAST,EAST,SOUTHEAST,SOUTH,SOUTHWEST,WEST,NORTHWEST)
-		for(var/direction in all_step_directions)
+		for(var/direction in GLOB.alldirs)
 			var/turf/simulated/floor/asteroid/A
 			if(istype(get_step(src, direction), /turf/simulated/floor/asteroid))
 				A = get_step(src, direction)
 				A.updateMineralOverlays()
+
+	var/area/area = loc
+	if(area.area_has_base_lighting)
+		add_overlay(area.lighting_effect)
 
 /turf/simulated/floor/asteroid/Entered(atom/movable/M as mob|obj)
 	..()
 	if(istype(M,/mob/living/silicon/robot))
 		var/mob/living/silicon/robot/R = M
 		if(R.module)
-			if(istype(R.module_state_1,/obj/item/weapon/storage/ore))
+			if(istype(R.module_state_1,/obj/item/storage/ore))
 				attackby(R.module_state_1,R)
-			else if(istype(R.module_state_2,/obj/item/weapon/storage/ore))
+			else if(istype(R.module_state_2,/obj/item/storage/ore))
 				attackby(R.module_state_2,R)
-			else if(istype(R.module_state_3,/obj/item/weapon/storage/ore))
+			else if(istype(R.module_state_3,/obj/item/storage/ore))
 				attackby(R.module_state_3,R)
 			else
 				return

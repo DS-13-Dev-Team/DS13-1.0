@@ -15,7 +15,7 @@
 /mob/living/carbon/human/dummy/shielded/Initialize()
 	.=..()
 	equip_to_appropriate_slot(new /obj/item/clothing/suit/armor/riot(loc))
-	put_in_hands(new /obj/item/weapon/shield/riot(loc))
+	put_in_hands(new /obj/item/shield/riot(loc))
 
 
 /mob/living/carbon/human/dummy/mannequin/Initialize()

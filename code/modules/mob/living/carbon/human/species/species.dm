@@ -94,6 +94,7 @@
 	var/num_alternate_languages = 0           // How many secondary languages are available to select at character creation
 	var/name_language = LANGUAGE_GALCOM       // The language to use when determining names for this species, or null to use the first name/last name generator
 	var/additional_langs                      // Any other languages the species always gets.
+	var/only_species_language				  // If we can speak other languages or just var/language
 
 	//Audio vars
 	var/step_volume = 30	//Base volume of ALL footstep sounds for this mob
@@ -146,7 +147,7 @@
 	var/can_obliterate	=	TRUE			  // If false, this mob won't be deleted when gibbed. Though all their limbs will still be blasted off
 
 	// Death vars.
-	var/meat_type = /obj/item/weapon/reagent_containers/food/snacks/meat/human
+	var/meat_type = /obj/item/reagent_containers/food/snacks/meat/human
 	var/remains_type = /obj/item/remains/xeno
 	var/gibbed_anim = "gibbed-h"
 	var/dusted_anim = "dust-h"
@@ -441,9 +442,9 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 /datum/species/proc/equip_survival_gear(var/mob/living/carbon/human/H,var/extendedtank = 1)
 	var/list/survival_things = list()
 	if (extendedtank)
-		survival_things += /obj/item/weapon/storage/box/engineer
+		survival_things += /obj/item/storage/box/engineer
 	else
-		survival_things += /obj/item/weapon/storage/box/survival
+		survival_things += /obj/item/storage/box/survival
 
 	H.mass_equip_to_storage(survival_things)
 
@@ -730,7 +731,7 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 	var/list/holding = list(target.get_active_hand() = 40, target.get_inactive_hand() = 20)
 
 	//See if they have any guns that might go off
-	for(var/obj/item/weapon/gun/W in holding)
+	for(var/obj/item/gun/W in holding)
 		if(W && prob(holding[W]))
 			var/list/turfs = list()
 			for(var/turf/T in view())

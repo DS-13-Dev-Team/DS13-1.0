@@ -1,4 +1,4 @@
-/obj/item/weapon/rig/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/rig/attackby(obj/item/W as obj, mob/user as mob)
 
 	if(!istype(user,/mob/living)) return 0
 
@@ -60,7 +60,7 @@
 				to_chat(user, "You can't reach the wiring.")
 			return
 		// Air tank.
-		if(istype(W,/obj/item/weapon/tank)) //Todo, some kind of check for suits without integrated air supplies.
+		if(istype(W,/obj/item/tank)) //Todo, some kind of check for suits without integrated air supplies.
 
 			if(air_supply)
 				to_chat(user, "\The [src] already has a tank installed.")
@@ -78,7 +78,7 @@
 
 			return 1
 
-		else if(!cell && istype(W,/obj/item/weapon/cell))
+		else if(!cell && istype(W,/obj/item/cell))
 
 			if(!user.unEquip(W)) return
 			to_chat(user, "You jack \the [W] into \the [src]'s battery mount.")
@@ -166,7 +166,7 @@
 
 
 
-/obj/item/weapon/rig/attack_hand(var/mob/user)
+/obj/item/rig/attack_hand(var/mob/user)
 	if(electrified != 0)
 		if(shock(user)) //Handles removing charge from the cell, as well. No need to do that here.
 			return
@@ -180,7 +180,7 @@
 
 
 //For those pesky items which incur effects on the rigsuit, an altclick will force them to go in if possible
-/obj/item/weapon/rig/AltClick(var/mob/user)
+/obj/item/rig/AltClick(var/mob/user)
 	if (storage && user.get_active_hand())
 		if (user == loc || Adjacent(user)) //Rig must be on or near you
 			storage.accepts_item(user.get_active_hand())
@@ -188,12 +188,12 @@
 	.=..()
 
 //When not wearing a rig, you can drag it onto yourself to access the internal storage
-/obj/item/weapon/rig/MouseDrop(obj/over_object)
+/obj/item/rig/MouseDrop(obj/over_object)
 	if (storage && storage.handle_mousedrop(usr, over_object))
 		return TRUE
 	return ..()
 
-/obj/item/weapon/rig/emag_act(var/remaining_charges, var/mob/user)
+/obj/item/rig/emag_act(var/remaining_charges, var/mob/user)
 	if(!subverted)
 		req_access.Cut()
 		req_one_access.Cut()
@@ -210,7 +210,7 @@
 	force: If true, the module will be installed even if a superior version already exists	//Todo: refactor this
 	instant: Skip time delay
 */
-/obj/item/weapon/rig/proc/attempt_install(var/obj/item/rig_module/RM, var/mob/user, var/force = FALSE, var/instant = FALSE, var/delete_replaced = FALSE, var/selfchecks = TRUE)
+/obj/item/rig/proc/attempt_install(var/obj/item/rig_module/RM, var/mob/user, var/force = FALSE, var/instant = FALSE, var/delete_replaced = FALSE, var/selfchecks = TRUE)
 
 	if(selfchecks && is_worn() && !can_modify() && !force)
 		if(user)
@@ -244,7 +244,7 @@
 
 
 //This gives no feedback and cannot fail, do safety checks first
-/obj/item/weapon/rig/proc/install(var/obj/item/rig_module/RM)
+/obj/item/rig/proc/install(var/obj/item/rig_module/RM)
 	installed_modules |= RM
 	if (RM.process_with_rig)
 		processing_modules |= RM
@@ -253,7 +253,7 @@
 	update_icon()
 
 
-/obj/item/weapon/rig/proc/uninstall(obj/item/rig_module/RM, delete = FALSE, mob/user)
+/obj/item/rig/proc/uninstall(obj/item/rig_module/RM, delete = FALSE, mob/user)
 	processing_modules -= RM
 
 	RM.uninstalled(src, user)
@@ -265,7 +265,7 @@
 	update_icon()
 
 
-/obj/item/weapon/rig/proc/can_modify()
+/obj/item/rig/proc/can_modify()
 	if (is_worn() && !hotswap)
 		return FALSE
 
