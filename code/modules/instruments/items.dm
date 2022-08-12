@@ -22,7 +22,7 @@ GLOBAL_LIST_INIT(all_instrumets_radial, generate_list_of_instruments_for_radial_
 	/// Our allowed list of instrument ids. This is nulled on initialize.
 	var/list/allowed_instrument_ids
 	/// How far away our song datum can be heard.
-	var/instrument_range = 15
+	var/instrument_range = 7
 
 /obj/item/instrument/Initialize(mapload)
 	. = ..()

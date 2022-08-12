@@ -10,6 +10,7 @@ GLOBAL_LIST_EMPTY(lifts)
 	max_health = 50
 	plane = FLOOR_PLANE
 	layer = ABOVE_TILE_LAYER
+	obj_flags = OBJ_FLAG_NOFALL
 	appearance_flags = PIXEL_SCALE|KEEP_TOGETHER //no TILE_BOUND since we're potentially multitile
 
 	///ID used to determine what lift types we can merge with
@@ -99,9 +100,10 @@ GLOBAL_LIST_EMPTY(lifts)
 
 /obj/structure/industrial_lift/Moved(turf/OldLoc, Dir)
 	.=..()
-	LAZYREMOVE(OldLoc.zstructures, src)
-	var/turf/T = get_turf(src)
-	if(T)
+	var/list/old_turfs = block(OldLoc, locate(x+width, y+height, z))
+	for(var/turf/T as anything in old_turfs-locs)
+		LAZYREMOVE(T.zstructures, src)
+	for(var/turf/T as anything in locs-old_turfs)
 		LAZYSET(T.zstructures, src, 2)
 
 ///unset our movement registrations from turfs that no longer contain us (or every loc if turfs_to_unset is unspecified)
@@ -249,8 +251,6 @@ GLOBAL_LIST_EMPTY(lifts)
 	var/turf/old_loc = loc
 
 	forceMove(locate(min_x, min_y, z))//move to the lower left corner
-	for(var/turf/T as anything in src.locs)
-		LAZYSET(T.zstructures, src, 2)
 	set_movement_registrations(locs - old_loc)
 	return TRUE
 
@@ -436,12 +436,7 @@ GLOBAL_LIST_EMPTY(lifts)
 	if(glide_size != glide_size_override)
 		set_glide_size(glide_size_override)
 
-	var/list/old_locs = src.locs
 	forceMove(our_dest)
-	for(var/turf/T as anything in old_locs-src.locs)
-		LAZYREMOVE(T.zstructures, src)
-	for(var/turf/T as anything in src.locs-old_locs)
-		LAZYSET(T.zstructures, src, 2)
 	if(loc != our_dest || QDELETED(src))//check if our movement succeeded, if it didnt then the movers cant be moved
 		return FALSE
 

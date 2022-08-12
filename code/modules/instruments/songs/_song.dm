@@ -18,7 +18,7 @@
 	var/tempo = 5
 
 	/// How far we can be heard
-	var/instrument_range = 15
+	var/instrument_range = 7
 
 	/// Are we currently playing?
 	var/playing = FALSE

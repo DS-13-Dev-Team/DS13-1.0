@@ -11,7 +11,7 @@
 	///Weakref to the tram piece we control
 	var/datum/weakref/tram_ref
 
-	var/specific_lift_id = TRAM_LIFT_ID
+	var/specific_lift_id = MAIN_STATION_TRAM
 
 /obj/machinery/computer/tram_controls/Initialize(mapload, obj/item/circuitboard/C)
 	. = ..()
