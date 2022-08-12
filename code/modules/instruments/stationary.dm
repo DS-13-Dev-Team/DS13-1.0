@@ -26,7 +26,10 @@
 /obj/structure/musician/attack_hand(mob/user)
 	if(..() || !user.is_advanced_tool_user())
 		return TRUE
-	song.ui_interact(user)
+	tgui_interact(user)
+
+/obj/structure/musician/tgui_interact(mob/user)
+	song.tgui_interact(user)
 
 /obj/structure/musician/piano
 	name = "space piano"

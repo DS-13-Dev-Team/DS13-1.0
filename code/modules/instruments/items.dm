@@ -3,7 +3,7 @@ GLOBAL_LIST_INIT(all_instrumets_radial, generate_list_of_instruments_for_radial_
 
 /proc/generate_list_of_instruments_for_radial_menu()
 	. = list()
-	for(var/obj/item/instrument/instrument as anything in subtypesof(/obj/item/instrument))
+	for(var/obj/item/instrument/instrument as anything in subtypesof(/obj/item/instrument)-/obj/item/instrument/bikehorn)
 		.[initial(instrument.name)] = image(icon = initial(instrument.icon), icon_state = initial(instrument.icon_state))
 		GLOB.all_instruments_names[initial(instrument.name)] = instrument
 
@@ -13,6 +13,10 @@ GLOBAL_LIST_INIT(all_instrumets_radial, generate_list_of_instruments_for_radial_
 	force = 10
 	max_health = 100
 	icon = 'icons/obj/musician.dmi'
+	item_icons = list(
+		icon_l_hand = 'icons/mob/onmob/items/instruments_lefthand.dmi',
+		icon_r_hand = 'icons/mob/onmob/items/instruments_righthand.dmi',
+		)
 	/// Our song datum.
 	var/datum/song/handheld/song
 	/// Our allowed list of instrument ids. This is nulled on initialize.
@@ -56,12 +60,6 @@ GLOBAL_LIST_INIT(all_instrumets_radial, generate_list_of_instruments_for_radial_
 	item_state = "violin"
 	hitsound = "swing_hit"
 	allowed_instrument_ids = "violin"
-
-/obj/item/instrument/violin/golden
-	name = "golden violin"
-	desc = "A golden musical instrument with four strings and a bow. \"The devil went down to space, he was looking for an assistant to grief.\""
-	icon_state = "golden_violin"
-	item_state = "golden_violin"
 
 /obj/item/instrument/banjo
 	name = "banjo"
@@ -169,6 +167,7 @@ GLOBAL_LIST_INIT(all_instrumets_radial, generate_list_of_instruments_for_radial_
 /obj/item/instrument/bikehorn
 	name = "gilded bike horn"
 	desc = "An exquisitely decorated bike horn, capable of honking in a variety of notes."
+	icon = 'icons/obj/items.dmi'
 	icon_state = "bike_horn"
 	item_state = "bike_horn"
 	allowed_instrument_ids = list("bikehorn", "honk")
@@ -182,19 +181,34 @@ GLOBAL_LIST_INIT(all_instrumets_radial, generate_list_of_instruments_for_radial_
 	name = "instrument delivery"
 	desc = "Summon your tool of art."
 	icon_state = "instruments-delivery"
+	atom_flags = ATOM_FLAG_INDESTRUCTIBLE|ATOM_FLAG_CLIMBABLE
 	anchored = TRUE
 	opacity = FALSE
 	density = TRUE
+	COOLDOWN_DECLARE(giveaway)
+
+/obj/structure/instrument_choice/examine(mob/user, distance, infix, suffix)
+	. = ..()
+	if(!COOLDOWN_FINISHED(src, giveaway))
+		to_chat(user, SPAN_NOTICE("Cooldown timer shows [gameTimestamp("ss", COOLDOWN_TIMELEFT(src, giveaway))] seconds."))
 
 /obj/structure/instrument_choice/attack_hand(mob/user)
-	if(..())
+	if(..() || !user.is_advanced_tool_user())
+		return TRUE
+	if(!COOLDOWN_FINISHED(src, giveaway))
+		to_chat(user, SPAN_WARNING("[src] is on cooldown!"))
 		return TRUE
 
 	var/result = show_radial_menu(user, src, GLOB.all_instrumets_radial, custom_check = CALLBACK(src, .proc/check_menu, user), tooltips = TRUE)
 	var/path = GLOB.all_instruments_names[result]
 	if(path)
+		if(!COOLDOWN_FINISHED(src, giveaway))
+			to_chat(user, SPAN_WARNING("[src] is on cooldown!"))
+			return TRUE
+		COOLDOWN_START(src, giveaway, 10 SECONDS)
 		var/obj/item/instrument/instrument = new path(get_turf(user))
 		user.put_in_hands(instrument)
+
 
 /**
  * Checks if we are allowed to interact with a radial menu
@@ -209,5 +223,9 @@ GLOBAL_LIST_INIT(all_instrumets_radial, generate_list_of_instruments_for_radial_
 	if(user.incapacitated())
 		return FALSE
 	if(QDELING(src))
+		return FALSE
+	if(!in_range(src, user))
+		return FALSE
+	if(!user.is_advanced_tool_user())
 		return FALSE
 	return TRUE

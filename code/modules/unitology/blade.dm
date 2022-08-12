@@ -14,9 +14,9 @@
 /obj/item/material/knife/unitologist/equipped(mob/user, slot)
 	.=..()
 	if(is_held())
-		add_verb(user.client, /mob/living/carbon/human/proc/sacrifice_verb)
+		add_verb(user, /mob/living/carbon/human/proc/mercer_execution)
 	else
-		remove_verb(user.client, /mob/living/carbon/human/proc/sacrifice_verb)
+		remove_verb(user, /mob/living/carbon/human/proc/mercer_execution)
 
 /obj/item/material/knife/unitologist/get_antag_weight(var/category)
 	if (category == CATEGORY_UNITOLOGY)
@@ -24,18 +24,10 @@
 
 	.=..()
 
-/mob/living/carbon/human/proc/sacrifice_verb(var/mob/living/carbon/human/target)
-	set name = "Sacrifice"
-	set category = "Abilities"
-
-	mercer_execution(target)
-
-/*--------------------------------
-	Sacrifice
---------------------------------*/
-
-
 /*
+----------------------------------
+	Sacrifice
+----------------------------------
 	The unitology execution move.
 		-Approaches the target, step to infront or over them, depending on whether or not lying
 		-Grabs target
@@ -44,31 +36,41 @@
 		-Stab victim in head (finisher)
 		-Step back to admire handiwork
 */
-/mob/living/carbon/human/proc/mercer_execution(var/mob/living/carbon/human/target)
+
+/mob/living/carbon/human/proc/mercer_execution(var/mob/living/carbon/human/target as mob in GLOB.living_mob_list)
 	set name = "Sacrifice"
 	set desc = "A ritual which prepares the subject for uplifting."
 	set category = "Abilities"
 
-	if (!istype(target) || target.stat == DEAD)
+	if(!istype(target) || target.stat == DEAD)
 		to_chat(src, SPAN_DANGER("It is too late to sacrifice this one, they are lost."))
 		return
 
 	var/list/held = get_held_items()
 	var/obj/item/material/knife/unitologist/blade = locate() in held
-	if (!blade)
+	if(!blade)
 		to_chat(src, SPAN_DANGER("You must be holding your ritual blade."))
 		return
 
-	if (!has_free_hand())
+	if(!has_free_hand())
 		to_chat(src, SPAN_DANGER("You need a free hand."))
 		return
 
-	perform_execution(/datum/extension/execution/sacrifice, target, blade)
+	if(target != src)
+		perform_execution(/datum/extension/execution/sacrifice, target, blade)
+	else
+		visible_message(SPAN_DANGER("[src] starts to cut off his neck with [blade]!"), SPAN_DANGER("You start to cut off your neck with [blade]!"))
+		if(do_mob(src, target, 3 SECONDS))
+			visible_message(SPAN_DANGER("[src] cuts off his neck with [blade]!"), SPAN_DANGER("You cut off your neck with [blade]!"))
+			var/obj/item/organ/external/head/head = target.organs_by_name[BP_HEAD]
+			if(head)
+				head.take_external_damage(120, 0, DAM_SHARP, blade, TRUE)
 
-
-
-
-
+			for (var/mob/dead/observer/eye/signal/S in SSnecromorph.signals)
+				var/datum/extension/psi_energy/PE = get_energy_extension()
+				if (PE)
+					to_chat(S, SPAN_EXECUTION("You are invigorated by the spectacle before you, and gain 250 energy!"))
+					PE.energy += 250
 
 /datum/extension/execution/sacrifice
 	name = "Sacrifice"
@@ -80,18 +82,18 @@
 	reward_heal = 0
 	start_range = 7
 
-	statmods = list(STATMOD_EVASION = -100, STATMOD_VIEW_RANGE = -2, STATMOD_INCOMING_DAMAGE_MULTIPLICATIVE	=	EXECUTION_DAMAGE_VULNERABILITY)
+	statmods = list(STATMOD_EVASION = -100, STATMOD_INCOMING_DAMAGE_MULTIPLICATIVE = EXECUTION_DAMAGE_VULNERABILITY)
 
-	all_stages = list(/datum/execution_stage/approach,
-	/datum/execution_stage/cover_mouth,
-	/datum/execution_stage/gaze,
-	/datum/execution_stage/raise,
-	/datum/execution_stage/finisher/headspike,
-	/datum/execution_stage/retrieve_blade)
+	all_stages = list(
+		/datum/execution_stage/approach,
+		/datum/execution_stage/cover_mouth,
+		/datum/execution_stage/gaze,
+		/datum/execution_stage/raise,
+		/datum/execution_stage/finisher/headspike,
+		/datum/execution_stage/retrieve_blade,
+	)
 
 	require_grab = 2	//We require a grab from second stage onwards
-
-
 
 /datum/extension/execution/sacrifice/distribute_rewards()
 	.=..()

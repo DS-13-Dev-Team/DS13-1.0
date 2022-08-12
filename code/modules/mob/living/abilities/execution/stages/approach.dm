@@ -21,8 +21,7 @@
 	RegisterSignal(host.user, COMSIG_MOVABLE_MOVED, .proc/user_moved)
 	walk_to(host.user, target_turf, 0, SPEED_TO_DELAY(speed))
 	host.user.visible_message(SPAN_EXECUTION("[host.user] [speed  < 3 ? "slowly ":""]approaches [host.victim]"))
-	.=..()
-
+	return ..()
 
 /datum/execution_stage/approach/exit()
 	spawn(1)

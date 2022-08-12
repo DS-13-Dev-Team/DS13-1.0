@@ -532,9 +532,9 @@
 	operating = 1
 
 	close_door_at = 0
+	set_density(1)
 	do_animate("closing")
 	sleep(3)
-	set_density(1)
 	layer = closed_layer
 	update_nearby_tiles()
 	sleep(7)

@@ -202,6 +202,7 @@
 		prefs = new /datum/preferences(src)
 	prefs.last_ip = address				//these are gonna be used for banning
 	prefs.last_id = computer_id			//these are gonna be used for banning
+	fps = text2num(get_preference_value(/datum/client_preference/client_fps))
 
 	if(GLOB.player_details[ckey])
 		player_details = GLOB.player_details[ckey]
@@ -212,7 +213,6 @@
 		GLOB.player_details[ckey] = player_details
 
 	. = ..()	//calls mob.Login()
-	fps = text2num(get_preference_value(/datum/client_preference/client_fps))
 
 	// Initialize tgui panel
 	src << browse(file('html/statbrowser.html'), "window=statbrowser")

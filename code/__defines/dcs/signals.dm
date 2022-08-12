@@ -64,3 +64,5 @@
 #define COMSIG_ATOM_UPDATED_ICON "atom_updated_icon"
 ////from /mob/living/say(): ()
 #define COMSIG_MOB_SAY "mob_say"
+///from base of mob/create_mob_hud(): ()
+#define COMSIG_MOB_HUD_CREATED "mob_hud_created"

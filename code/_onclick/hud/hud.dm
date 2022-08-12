@@ -23,7 +23,6 @@
 	var/atom/movable/screen/intent/action_intent
 	var/atom/movable/screen/move_intent
 	var/atom/movable/screen/stamina/stamina_bar
-	var/atom/movable/screen/meter/health/hud_healthbar
 	var/list/atom/movable/screen/meter/resource/hud_resource = list()
 	var/atom/movable/screen/hands
 	var/atom/movable/screen/pullin
@@ -120,7 +119,6 @@
 	gun_setting_icon = null
 	ability_master = null
 	zone_sel = null
-	hud_healthbar = null
 	hud_resource = null
 	zone_sel = null
 	stamina_bar = null
@@ -146,6 +144,7 @@
 	if(!client || hud_used)
 		return
 	hud_used = new hud_type(src)
+	SEND_SIGNAL(src, COMSIG_MOB_HUD_CREATED)
 
 /datum/hud/proc/update_stamina()
 	if(mymob && stamina_bar)

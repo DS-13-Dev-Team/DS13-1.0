@@ -100,10 +100,11 @@
 /client/proc/get_preference_value(var/preference)
 	if(prefs)
 		var/datum/client_preference/cp = get_client_preference(preference)
-		if(cp && prefs.preference_values)
+		if(!cp)
+			return
+		if(prefs.preference_values)
 			return prefs.preference_values[cp.key]
-		else
-			return null
+		return cp.default_value
 	else
 		log_debug("Client is lacking preferences: [log_info_line(src)]")
 

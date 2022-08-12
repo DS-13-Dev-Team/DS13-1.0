@@ -16,8 +16,7 @@
 	fire.screen_loc = ui_fire
 	infodisplay += fire
 
-	hud_healthbar = new /atom/movable/screen/meter/health(owner, src)
-	infodisplay += hud_healthbar
+	owner.AddComponent(/datum/component/health_meter)
 
 	zone_sel = new /atom/movable/screen/zone_sel( null )
 	zone_sel.icon = ui_style

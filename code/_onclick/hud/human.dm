@@ -60,10 +60,7 @@
 		static_inventory += action_intent
 
 	if(hud_data.has_healthbar)
-
-		hud_healthbar = new /atom/movable/screen/meter/health(owner, src)
-		infodisplay += hud_healthbar
-
+		owner.AddComponent(/datum/component/health_meter)
 
 	if(hud_data.has_m_intent)
 		move_intent = new /atom/movable/screen/movement()
