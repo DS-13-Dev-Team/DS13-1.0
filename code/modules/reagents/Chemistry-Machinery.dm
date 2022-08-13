@@ -433,6 +433,8 @@
 		if("eject")
 			if(!beaker)
 				return
+			if(mode)
+				reagents.trans_to(beaker, reagents.total_volume)
 			beaker.forceMove(get_turf(src))
 			if(Adjacent(usr) && !issilicon(usr))
 				usr.put_in_hands(beaker)
