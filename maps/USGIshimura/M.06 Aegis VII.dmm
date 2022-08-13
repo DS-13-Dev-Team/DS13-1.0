@@ -3323,7 +3323,7 @@
 /obj/structure/table/standard,
 /obj/machinery/recharger,
 /obj/random/loot/usually,
-/turf/simulated/floor/airless,
+/turf/simulated/floor,
 /area/aegis/colony/charging_station)
 "hq" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -6602,7 +6602,7 @@
 	name = "east bump";
 	pixel_x = 24
 	},
-/turf/simulated/floor/airless,
+/turf/simulated/floor,
 /area/aegis/colony/charging_station)
 "rA" = (
 /obj/machinery/conveyor{
@@ -6820,7 +6820,7 @@
 "Em" = (
 /obj/structure/table/standard,
 /obj/machinery/recharger,
-/turf/simulated/floor/airless,
+/turf/simulated/floor,
 /area/aegis/colony/charging_station)
 "EB" = (
 /obj/machinery/conveyor{
@@ -6887,7 +6887,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/floor/airless,
+/turf/simulated/floor,
 /area/aegis/colony/charging_station)
 "Hz" = (
 /obj/structure/cable/green{
@@ -6924,7 +6924,7 @@
 /area/aegis/colony/refinery)
 "Jf" = (
 /obj/effect/wallframe_spawn/reinforced,
-/turf/simulated/floor/plating,
+/turf/simulated/floor,
 /area/aegis/colony/charging_station)
 "Jo" = (
 /obj/effect/landmark/marker/aegis,
@@ -6967,7 +6967,7 @@
 /turf/simulated/floor/dank/roller,
 /area/aegis/outside)
 "KH" = (
-/turf/simulated/floor/airless,
+/turf/simulated/floor,
 /area/aegis/colony/charging_station)
 "LH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -7158,7 +7158,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/airless,
+/turf/simulated/floor,
 /area/aegis/colony/charging_station)
 "RX" = (
 /obj/structure/plasticflaps/mining,
@@ -7254,7 +7254,7 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
-/turf/simulated/floor/airless,
+/turf/simulated/floor,
 /area/aegis/colony/charging_station)
 "Vz" = (
 /obj/effect/floor_decal/industrial/loading,
