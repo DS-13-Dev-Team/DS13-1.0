@@ -84,6 +84,7 @@
 
 		new_turf.turf_flags |= stored_flags
 
+		new_turf.resources = list()
 		// Deep metals
 		if(prob(10))
 			new_turf.resources[MATERIAL_URANIUM] =  rand(RESOURCE_LOW_MIN,  RESOURCE_LOW_MAX)
