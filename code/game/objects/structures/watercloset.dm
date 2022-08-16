@@ -392,8 +392,8 @@
 		user.visible_message("<span class='notice'>[user] fills \the [RG] using \the [src].</span>","<span class='notice'>You fill \the [RG] using \the [src].</span>")
 		return 1
 
-	else if (istype(O, /obj/item/melee/baton))
-		var/obj/item/melee/baton/B = O
+	else if (istype(O, /obj/item/baton))
+		var/obj/item/baton/B = O
 		if(B.bcell)
 			if(B.bcell.charge > 0 && B.status == 1)
 				flick("baton_active", src)

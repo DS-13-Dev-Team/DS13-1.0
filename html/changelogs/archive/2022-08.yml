@@ -12,4 +12,28 @@
 2022-08-09:
   DTraitor:
   - balance: Made monkeys too big for any containers to prevent pocket armies.
-
+2022-08-11:
+  nianoru:
+  - qol: Edited the color of necromorph text for it to be more visible in chat.
+  - bugfix: Toggable clothing (such as bomber jackets, leather jackets, etc.) are
+      now visible on the player when toggled open.
+  - balance: Surgeons may no longer instantly kill someone after buckling them down
+      to a seat/bed.
+2022-08-12:
+  DTraitor:
+  - rscadd: Ported animated tram from /tg/. It cannot be stopped! It cannot be slowed
+      down! You have no idea how good it is!
+  - rscadd: Ported music instruments from /tg/. Sitting in the middle of the nowhere
+      wasn't ever funnier before.
+  - rscadd: Added music instruments vendor in the Ishimura and the Colony bars. Music
+      is art! ART SHOULD BE FREE!
+  - rscadd: Now you can commit a suicide with unitologist ritual knife.
+  - bugfix: Fixed a bug that prevented signals from receiving additional psy points
+      after any execution.
+  - rscdel: Removed boombox from unitologist hideout.
+  - qol: Replaced current necromorph healthbar with a completely new one. It's not
+      from Minecraft anymore!
+  - qol: Tweaked light bulb colours. You don't live in a yellow world anymore.
+  - bugfix: Fixed a bug where if you join too early to the server your fps was 20
+      instead of 60 (or other number you've set).
+  - bugfix: Fixed a bug that prevented all removed organs from rotting.

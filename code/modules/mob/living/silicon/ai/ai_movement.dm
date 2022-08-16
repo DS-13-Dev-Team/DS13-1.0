@@ -4,5 +4,6 @@
 		/datum/movement_handler/mob/death,
 		/datum/movement_handler/mob/conscious,
 		/datum/movement_handler/mob/eye,
+		/datum/movement_handler/mob/delay,
 		/datum/movement_handler/move_relay
 	)

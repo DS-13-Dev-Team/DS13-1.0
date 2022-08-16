@@ -17,6 +17,7 @@
  * Twohanded
  */
 /obj/item/material/twohanded
+	icon = 'icons/obj/weapons.dmi'
 	w_class = ITEM_SIZE_HUGE
 	var/wielded = 0
 	var/force_wielded = 0
@@ -66,6 +67,7 @@
  * Fireaxe
  */
 /obj/item/material/twohanded/fireaxe  // DEM AXES MAN, marker -Agouri
+	icon = 'icons/obj/weapons.dmi'
 	icon_state = "fireaxe0"
 	base_icon = "fireaxe"
 	name = "fire axe"

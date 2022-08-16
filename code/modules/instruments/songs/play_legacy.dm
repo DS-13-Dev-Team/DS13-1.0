@@ -80,8 +80,9 @@
 	if((world.time - MUSICIAN_HEARCHECK_MINDELAY) > last_hearcheck)
 		do_hearcheck()
 	var/sound/music_played = sound(soundfile)
+	music_played.volume = volume * using_instrument.volume_multiplier
 	for(var/mob/M as anything in hearing_mobs)
 		if(M?.client?.get_preference_value(/datum/client_preference/play_instruments_sounds) == GLOB.PREF_NO)
 			continue
-		M.playsound_local(source, music_played, volume * using_instrument.volume_multiplier)
+		M.playsound_local(source, music_played)
 		// Could do environment and echo later but not for now

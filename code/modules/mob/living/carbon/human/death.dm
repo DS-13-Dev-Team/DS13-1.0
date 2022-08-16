@@ -46,7 +46,7 @@
 
 	callHook("death", list(src, gibbed))
 
-	if(SSticker && SSticker.mode)
+	if(SSticker?.mode)
 		sql_report_death(src)
 
 		SSticker.mode.check_win()
@@ -61,9 +61,8 @@
 
 	handle_hud_list()
 
-	if(SSticker && SSticker.mode)
-		//TODO Future: Check if this was actually a crewmember
-		SSticker.mode.on_crew_death(src)
+	//TODO Future: Check if this was actually a crewmember
+	SSticker?.mode?.on_crew_death(src)
 
 /mob/living/carbon/human/proc/ChangeToHusk()
 	if(HUSK in mutations)	return

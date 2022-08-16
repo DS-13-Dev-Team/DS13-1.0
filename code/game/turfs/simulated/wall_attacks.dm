@@ -155,8 +155,8 @@
 				thermitemelt(user)
 				return
 
-		else if( istype(W, /obj/item/melee/energy/blade) )
-			var/obj/item/melee/energy/blade/EB = W
+		else if( istype(W, /obj/item/energy/blade) )
+			var/obj/item/energy/blade/EB = W
 
 			EB.spark_system.start()
 			to_chat(user, "<span class='notice'>You slash \the [src] with \the [EB]; the thermite ignites!</span>")
@@ -190,7 +190,7 @@
 
 			if(isWelder(W))
 				cut_delay *= 0.7
-			else if(istype(W,/obj/item/melee/energy/blade))
+			else if(istype(W,/obj/item/energy/blade))
 				dismantle_sound = "sparks"
 				dismantle_verb = "slicing"
 				cut_delay *= 0.5

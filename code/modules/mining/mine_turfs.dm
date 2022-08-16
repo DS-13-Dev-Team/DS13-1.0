@@ -621,13 +621,13 @@ var/list/mining_floors = list()
 
 		if(istype(get_step(src, step_overlays[direction]), /turf/space))
 			var/image/aster_edge = image('icons/turf/flooring/asteroid.dmi', "asteroid_edges", dir = step_overlays[direction])
-			aster_edge.plane = FLOOR_PLANE
+			aster_edge.plane = GAME_PLANE
 			aster_edge.layer = DECAL_LAYER
 			add_overlay(aster_edge)
 
 		if(istype(get_step(src, step_overlays[direction]), /turf/simulated/mineral))
 			var/image/rock_wall = image('icons/turf/walls.dmi', "rock_side", dir = step_overlays[direction])
-			rock_wall.plane = FLOOR_PLANE
+			rock_wall.plane = GAME_PLANE
 			rock_wall.layer = DECAL_LAYER
 			add_overlay(rock_wall)
 

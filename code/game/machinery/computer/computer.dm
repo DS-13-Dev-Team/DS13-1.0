@@ -37,6 +37,8 @@
 	return 1
 
 /obj/machinery/computer/emp_act(severity)
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	if(prob(20/severity)) set_broken()
 	..()
 
@@ -65,6 +67,8 @@
 	return
 
 /obj/machinery/computer/bullet_act(var/obj/item/projectile/Proj)
+	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
+		return
 	if(prob(Proj.get_structure_damage()))
 		set_broken()
 	..()

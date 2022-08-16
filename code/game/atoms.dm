@@ -154,7 +154,7 @@
 /atom/proc/on_reagent_change(var/reagent_type, var/delta)
 	return
 
-/atom/proc/Bumped(AM as mob|obj)
+/atom/proc/Bumped(atom/movable/AM)
 	return
 
 /**

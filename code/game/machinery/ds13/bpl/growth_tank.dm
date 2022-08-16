@@ -44,6 +44,7 @@
 	for (var/obj/machinery/growth_tank/GT in loc)
 		if (GT != src && GT.upper == FALSE)
 			upper = TRUE
+			layer = ABOVE_OBJ_LAYER
 			default_pixel_y = 24
 			pixel_y = 24
 			break

@@ -701,7 +701,7 @@ BLIND     // can't see anything
 	/obj/item/storage/pouch,
 	/obj/item/gun,
 	/obj/item/tool,
-	/obj/item/melee,
+	/obj/item,
 	/obj/item/ammo_magazine,
 	/obj/item/ammo_casing,
 	/obj/item/handcuffs,

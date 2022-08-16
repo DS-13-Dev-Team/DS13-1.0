@@ -5,6 +5,7 @@
 //A fix for when a spell is created before a mob is created
 /mob/Login()
 	..()
+	mind?.active = 1		//indicates that the mind is currently synced with a client
 	if(mind)
 		if(!mind.learned_spells)
 			mind.learned_spells = list()

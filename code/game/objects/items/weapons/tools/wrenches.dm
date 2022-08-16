@@ -36,6 +36,7 @@
 /obj/item/material/twohanded/fireaxe/bigwrench
 	name = "huge wrench"
 	desc = "If everything else failed - bring a bigger wrench."
+	icon = 'icons/obj/weapons.dmi'
 	base_icon = "big_wrench"
 	edge = FALSE
 	sharp = FALSE

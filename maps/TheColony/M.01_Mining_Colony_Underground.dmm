@@ -4453,10 +4453,10 @@
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/lower/excav/storage)
 "oC" = (
-/obj/machinery/light/small{
-	dir = 8
+/obj/structure/bed/chair{
+	dir = 8;
+	icon_state = "chair_preview"
 	},
-/obj/structure/device/piano,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower)
 "oD" = (
@@ -6608,16 +6608,10 @@
 /obj/structure/table/rack/dark,
 /obj/item/gun/projectile/divet,
 /obj/item/ammo_magazine/divet,
-/obj/random/single{
-	icon_state = "zealot_rig";
-	icon = 'icons/obj/rig_frames.dmi';
-	name = "randomly spawned zealot rig";
-	spawn_nothing_percentage = 50;
-	spawn_object = /obj/item/reagent_containers/food/drinks/cans/cola
-	},
 /obj/machinery/light/small{
 	dir = 1
 	},
+/obj/item/rig/zealot,
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/lower/unibase)
 "DV" = (
@@ -7410,7 +7404,6 @@
 	},
 /obj/item/storage/lunchbox/unitology/filled,
 /obj/effect/floor_decal/spline/fancy/wood,
-/obj/item/boombox,
 /turf/simulated/floor/dank/maint,
 /area/mining_colony/lower/unibase)
 "PL" = (
@@ -7513,6 +7506,10 @@
 "QX" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/lower/maints/node/room21)
+"QZ" = (
+/obj/structure/musician/piano/minimoog,
+/turf/simulated/floor/wood,
+/area/mining_colony/lower)
 "Rb" = (
 /obj/machinery/light,
 /obj/structure/cable{
@@ -16589,7 +16586,7 @@ dY
 ar
 ar
 ar
-gH
+QZ
 gH
 gH
 gH
@@ -16791,7 +16788,7 @@ dY
 ar
 ar
 ar
-bi
+oC
 gH
 bi
 bi
@@ -32562,7 +32559,7 @@ hj
 bi
 hj
 ar
-oC
+cA
 bi
 bi
 cA
@@ -33533,8 +33530,8 @@ aw
 aw
 aw
 aw
-aq
-aq
+aw
+aw
 aw
 aw
 aw
@@ -33735,8 +33732,8 @@ aw
 aw
 aw
 aw
-aq
-aq
+aw
+aw
 aw
 aw
 aw

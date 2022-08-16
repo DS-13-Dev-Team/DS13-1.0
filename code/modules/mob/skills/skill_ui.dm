@@ -230,7 +230,7 @@ Admin version, with debugging options.
 		if(!job)
 			to_chat(usr, "Valid job not found.")
 			return 1
-		skillset.obtain_from_client(job, my_client)
+		skillset.obtain_from_client(job, my_client, TRUE)
 		log_and_message_admins("SKILLS: The job skills for [key_name_admin(skillset.owner)] have been imported.")
 		return 1
 	if(href_list["antag"])

@@ -17,8 +17,6 @@
 	config_entry_value = 0.25
 	integer = FALSE
 
-/datum/config_entry/flag/organs_decay
-
 //Paincrit knocks someone down once they hit 60 shock_stage, so by default make it so that close to 100 additional damage needs to be dealt,
 //so that it's similar to PAIN. Lowered it a bit since hitting paincrit takes much longer to wear off than a halloss stun.
 /datum/config_entry/number/organ_damage_spillover_multiplier

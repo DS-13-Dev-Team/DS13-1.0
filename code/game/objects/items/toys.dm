@@ -110,6 +110,7 @@
 /obj/item/toy/balloon/nanotrasen
 	name = "\improper 'motivational' balloon"
 	desc = "Man, I love NanoTrasen soooo much. I use only NT products. You have NO idea."
+	icon = 'icons/obj/weapons.dmi'
 	icon_state = "ntballoon"
 	item_state = "ntballoon"
 

@@ -333,8 +333,6 @@
 			return global.hivemind_bank;
 		if("holder_mob_icon_cache")
 			return global.holder_mob_icon_cache;
-		if("host")
-			return global.host;
 		if("href_logfile")
 			return global.href_logfile;
 		if("human_icon_cache")
@@ -1030,8 +1028,6 @@
 			global.hivemind_bank=newval;
 		if("holder_mob_icon_cache")
 			global.holder_mob_icon_cache=newval;
-		if("host")
-			global.host=newval;
 		if("href_logfile")
 			global.href_logfile=newval;
 		if("human_icon_cache")
@@ -1565,7 +1561,6 @@
 	"hazard_overlays",
 	"hivemind_bank",
 	"holder_mob_icon_cache",
-	"host",
 	"href_logfile",
 	"human_icon_cache",
 	"id_card_states",

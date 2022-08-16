@@ -211,9 +211,9 @@
 				my_effect.ToggleActivate()
 			if(secondary_effect && secondary_effect.trigger == TRIGGER_TOXIN && prob(25))
 				secondary_effect.ToggleActivate(0)
-	else if(istype(W,/obj/item/melee/baton) && W:status ||\
-			istype(W,/obj/item/melee/energy) ||\
-			istype(W,/obj/item/melee/cultblade) ||\
+	else if(istype(W,/obj/item/baton) && W:status ||\
+			istype(W,/obj/item/energy) ||\
+			istype(W,/obj/item/cultblade) ||\
 			istype(W,/obj/item/card/emag) ||\
 			isMultitool(W))
 		if (my_effect.trigger == TRIGGER_ENERGY)

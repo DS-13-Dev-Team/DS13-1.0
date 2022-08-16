@@ -239,7 +239,7 @@
 	max_w_class = ITEM_SIZE_BULKY
 
 	can_hold = list(
-		/obj/item/melee,
+		/obj/item,
 		/obj/item/tool/crowbar,
 		/obj/item/tool/pickaxe
 		)

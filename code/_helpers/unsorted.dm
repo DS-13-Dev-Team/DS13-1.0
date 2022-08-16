@@ -892,7 +892,7 @@ var/global/list/common_tools = list(
 		else
 			return 0
 
-	else if(istype(W, /obj/item/melee/energy))
+	else if(istype(W, /obj/item/energy))
 		return 3500
 
 	return W.is_hot()

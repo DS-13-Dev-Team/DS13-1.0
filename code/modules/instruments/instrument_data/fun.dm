@@ -2,6 +2,7 @@
 	name = "Generic Fun Instrument"
 	category = "Fun"
 	abstract_type = /datum/instrument/fun
+	admin_only = TRUE
 
 /datum/instrument/fun/honk
 	name = "!!HONK!!"

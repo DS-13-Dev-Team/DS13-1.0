@@ -155,8 +155,8 @@
 	release_vector(starting_direction)
 	var/atom/A = holder
 	if (effect.inherit_order)
+		effect.plane = A.plane
 		effect.layer = A.layer+0.1
-		effect.plane = A.plane+0.1
 
 	animate(effect, transform = effect.transform.Turn(turn_angle), time = duration, easing = CIRCULAR_EASING)
 

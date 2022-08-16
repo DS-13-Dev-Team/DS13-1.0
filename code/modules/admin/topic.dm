@@ -1686,7 +1686,7 @@ Status: [status ? status : "Unknown"] | Damage: [health ? health : "None"]
 			else if(!ispath(path, /obj) && !ispath(path, /turf) && !ispath(path, /mob))
 				removed_paths += dirty_path
 				continue
-			else if(ispath(path, /obj/item/melee/energy/blade))//Not an item one should be able to spawn./N
+			else if(ispath(path, /obj/item/energy/blade))//Not an item one should be able to spawn./N
 				if(!check_rights(R_FUN,0))
 					removed_paths += dirty_path
 					continue

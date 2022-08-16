@@ -1,3 +1,10 @@
+#define RESOURCE_HIGH_MAX 4
+#define RESOURCE_HIGH_MIN 2
+#define RESOURCE_MID_MAX 3
+#define RESOURCE_MID_MIN 1
+#define RESOURCE_LOW_MAX 1
+#define RESOURCE_LOW_MIN 0
+
 /datum/map_generator/cave_generator
 	var/name = "Cave Generator"
 	///Weighted list of the types that spawns if the turf is open
@@ -71,11 +78,43 @@
 		if(gen_turf.turf_flags & TURF_FLAG_NO_RUINS)
 			stored_flags |= TURF_FLAG_NO_RUINS
 
-		var/turf/new_turf = pickweight(closed ? closed_turf_types : open_turf_types)
+		var/turf/simulated/new_turf = pickweight(closed ? closed_turf_types : open_turf_types)
 
 		new_turf = gen_turf.ChangeTurf(new_turf, defer_change = TRUE)
 
 		new_turf.turf_flags |= stored_flags
+
+		new_turf.resources = list()
+		// Deep metals
+		if(prob(10))
+			new_turf.resources[MATERIAL_URANIUM] =  rand(RESOURCE_LOW_MIN,  RESOURCE_LOW_MAX)
+			new_turf.resources[MATERIAL_DIAMOND] =  rand(RESOURCE_LOW_MIN,  RESOURCE_LOW_MAX)
+			new_turf.resources[MATERIAL_PHORON] =   rand(RESOURCE_HIGH_MIN, RESOURCE_HIGH_MAX)
+			new_turf.resources[MATERIAL_OSMIUM] =   rand(RESOURCE_HIGH_MIN, RESOURCE_HIGH_MAX)
+			new_turf.resources[MATERIAL_MHYDROGEN] = rand(RESOURCE_MID_MIN,  RESOURCE_MID_MAX)
+			new_turf.resources[MATERIAL_IRON] =     0
+			new_turf.resources[MATERIAL_GOLD] =     0
+			new_turf.resources[MATERIAL_SILVER] =   0
+		// Rare metals
+		else if(prob(30))
+			new_turf.resources[MATERIAL_GOLD] =		rand(RESOURCE_MID_MIN,  RESOURCE_MID_MAX)
+			new_turf.resources[MATERIAL_SILVER] =   rand(RESOURCE_MID_MIN,  RESOURCE_MID_MAX)
+			new_turf.resources[MATERIAL_URANIUM] =  rand(RESOURCE_MID_MIN,  RESOURCE_MID_MAX)
+			new_turf.resources[MATERIAL_PHORON] =   rand(RESOURCE_MID_MIN,  RESOURCE_MID_MAX)
+			new_turf.resources[MATERIAL_OSMIUM] =   rand(RESOURCE_MID_MIN,  RESOURCE_MID_MAX)
+			new_turf.resources[MATERIAL_MHYDROGEN] = 0
+			new_turf.resources[MATERIAL_DIAMOND] =  0
+			new_turf.resources[MATERIAL_IRON] =     0
+		// Surface metals
+		else
+			new_turf.resources[MATERIAL_IRON] =		rand(RESOURCE_HIGH_MIN, RESOURCE_HIGH_MAX)
+			new_turf.resources[MATERIAL_GOLD] =     rand(RESOURCE_LOW_MIN,  RESOURCE_LOW_MAX)
+			new_turf.resources[MATERIAL_SILVER] =	rand(RESOURCE_LOW_MIN,  RESOURCE_LOW_MAX)
+			new_turf.resources[MATERIAL_URANIUM] =	rand(RESOURCE_LOW_MIN,  RESOURCE_LOW_MAX)
+			new_turf.resources[MATERIAL_DIAMOND] =	0
+			new_turf.resources[MATERIAL_PHORON] =	0
+			new_turf.resources[MATERIAL_OSMIUM] =	0
+			new_turf.resources[MATERIAL_MHYDROGEN] =	0
 
 		if(!closed)//Open turfs have some special behavior related to spawning flora and mobs.
 
@@ -139,3 +178,10 @@
 		CHECK_TICK
 
 	report_progress(SPAN_BOLDANNOUNCE("[name] finished in [(REALTIMEOFDAY - start_time)/10]s!"))
+
+#undef RESOURCE_HIGH_MAX
+#undef RESOURCE_HIGH_MIN
+#undef RESOURCE_MID_MAX
+#undef RESOURCE_MID_MIN
+#undef RESOURCE_LOW_MAX
+#undef RESOURCE_LOW_MIN

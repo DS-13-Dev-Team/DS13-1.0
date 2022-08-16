@@ -1,6 +1,7 @@
 /obj/item/material/butterfly
 	name = "butterfly knife"
 	desc = "A basic metal blade concealed in a lightweight plasteel grip. Small enough when folded to fit in a pocket."
+	icon = 'icons/obj/weapons.dmi'
 	icon_state = "butterflyknife"
 	item_state = null
 	hitsound = null
@@ -46,6 +47,7 @@
 /obj/item/material/butterfly/switchblade
 	name = "switchblade"
 	desc = "A classic switchblade with gold engraving. Just holding it makes you feel like a gangster."
+	icon = 'icons/obj/weapons.dmi'
 	icon_state = "switchblade"
 	unbreakable = 1
 

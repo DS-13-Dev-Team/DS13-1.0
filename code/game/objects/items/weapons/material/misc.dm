@@ -3,6 +3,7 @@
 	sharp = 1
 	edge = 1
 	desc = "Tharr she blows!"
+	icon = 'icons/obj/weapons.dmi'
 	icon_state = "harpoon"
 	item_state = "harpoon"
 	force_divisor = 0.4 // 18 with hardness 60 (steel)
@@ -75,6 +76,7 @@
 	unbreakable = 1
 
 /obj/item/material/scythe
+	icon = 'icons/obj/weapons.dmi'
 	icon_state = "scythe0"
 	name = "scythe"
 	desc = "A sharp and curved blade on a long fibremetal handle, this tool makes it easy to reap what you sow."

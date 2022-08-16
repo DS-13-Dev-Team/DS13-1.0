@@ -179,8 +179,8 @@
 /obj/item/summoning_stone
 	name = "summoning stone"
 	desc = "a small non-descript stone of dubious origin."
+	icon = 'icons/obj/weapons.dmi'
 	icon_state = "stone"
-
 	throw_range = 10
 	w_class = ITEM_SIZE_TINY
 

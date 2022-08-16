@@ -28,7 +28,7 @@
 	var/is_ranged = 0
 	var/awaiting_surrender = 0
 
-	var/obj/item/melee/baton/stun_baton
+	var/obj/item/baton/stun_baton
 	var/obj/item/handcuffs/cyborg/handcuffs
 
 	var/list/threat_found_sounds = list('sound/voice/bcriminal.ogg', 'sound/voice/bjustice.ogg', 'sound/voice/bfreeze.ogg')
@@ -223,7 +223,7 @@
 	Sa.overlays += image('icons/mob/bot/secbot.dmi', "hs_hole")
 	Sa.created_name = name
 	new /obj/item/assembly/prox_sensor(Tsec)
-	new /obj/item/melee/baton(Tsec)
+	new /obj/item/baton(Tsec)
 	if(prob(50))
 		new /obj/item/robot_parts/l_arm(Tsec)
 
@@ -300,7 +300,7 @@
 		overlays += image('icons/mob/bot/secbot.dmi', "hs_arm")
 		qdel(O)
 
-	else if(istype(O, /obj/item/melee/baton) && build_step == 3)
+	else if(istype(O, /obj/item/baton) && build_step == 3)
 		to_chat(user, "You complete the Securitron! Beep boop.")
 		var/mob/living/bot/secbot/S = new /mob/living/bot/secbot(get_turf(src))
 		S.SetName(created_name)

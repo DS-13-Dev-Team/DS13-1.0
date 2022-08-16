@@ -33,7 +33,7 @@
 	allowed_tools = list(
 	/obj/item/tool/scalpel/laser = 95, \
 	/obj/item/tool/scalpel/advanced = 85, \
-	/obj/item/melee/energy/sword = 5
+	/obj/item/energy/sword = 5
 	)
 	priority = 2
 	min_duration = 90

@@ -71,10 +71,10 @@ var/list/_client_preferences_by_type
 	if(!default_value)
 		default_value = options[1]
 
-/datum/client_preference/proc/may_set(var/mob/preference_mob)
+/datum/client_preference/proc/may_set(mob/preference_mob)
 	return TRUE
 
-/datum/client_preference/proc/changed(var/mob/preference_mob, var/new_value)
+/datum/client_preference/proc/changed(mob/preference_mob, new_value)
 	return
 
 /*********************

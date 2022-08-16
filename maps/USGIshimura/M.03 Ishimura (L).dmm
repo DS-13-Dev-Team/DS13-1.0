@@ -818,12 +818,11 @@
 /turf/simulated/floor/dank/grater,
 /area/ishimura/lower/engineering/bay)
 "aci" = (
-/obj/structure/sign/warning/engineering_access{
-	dir = 4;
-	pixel_x = -32
+/obj/machinery/light{
+	dir = 1
 	},
-/turf/simulated/floor/dank/slides_end,
-/area/ishimura/lower/misc/hallway/aft)
+/turf/simulated/floor/dank/rectangles,
+/area/ishimura/lower/engineering/bay)
 "acj" = (
 /obj/machinery/door/firedoor/border_only,
 /obj/effect/wallframe_spawn/reinforced,
@@ -1954,6 +1953,10 @@
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
+	},
+/obj/structure/sign/warning/engineering_access{
+	dir = 4;
+	pixel_x = -32
 	},
 /turf/simulated/floor/dank/rivets,
 /area/ishimura/lower/engineering/bay)
@@ -7590,14 +7593,14 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
 /obj/machinery/door/airlock/engineering{
 	dir = 8;
 	name = "Lower Engineering Bay"
 	},
-/obj/machinery/door/firedoor/border_only{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/dank/grater,
 /area/ishimura/lower/engineering/bay)
 "apL" = (
 /obj/structure/disposalpipe/segment,
@@ -9204,7 +9207,7 @@
 	pixel_y = 21
 	},
 /obj/structure/closet/secure_closet/SO,
-/obj/item/melee/baton/cattleprod{
+/obj/item/baton/cattleprod{
 	desc = "An improvised stun baton, used for occasionally motivating lazy Cargo Servicemen.";
 	name = "Stick of Discipline"
 	},
@@ -24125,7 +24128,7 @@
 	dir = 1;
 	pixel_y = -24
 	},
-/turf/simulated/floor/dank/rivets,
+/turf/simulated/wall/r_wall,
 /area/ishimura/lower/engineering/bay)
 "aVR" = (
 /obj/structure/railing/mapped{
@@ -27424,6 +27427,13 @@
 	dir = 8
 	},
 /area/ishimura/lower/misc/hallway/central)
+"bRX" = (
+/obj/structure/sign/directions/supply{
+	dir = 4;
+	pixel_y = -34
+	},
+/turf/simulated/floor/dank/rectangles,
+/area/ishimura/lower/engineering/bay)
 "bSf" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -27544,6 +27554,13 @@
 	dir = 8
 	},
 /area/ishimura/lower/misc/hallway/central)
+"ddD" = (
+/obj/structure/sign/warning/engineering_access{
+	dir = 4;
+	pixel_x = -32
+	},
+/turf/simulated/floor/dank/rivets,
+/area/ishimura/lower/engineering/bay)
 "dod" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/machinery/door/firedoor/border_only,
@@ -27614,6 +27631,12 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/dank/cable,
 /area/ishimura/lower/crew/sleepblock/commons)
+"ecc" = (
+/obj/structure/sign/directions/supply{
+	pixel_x = 34
+	},
+/turf/simulated/floor/dank/tech,
+/area/ishimura/lower/misc/hallway/aft)
 "efw" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
@@ -27912,6 +27935,12 @@
 	dir = 4
 	},
 /area/ishimura/lower/misc/hallway/central)
+"hmS" = (
+/obj/structure/sign/directions/supply{
+	pixel_x = 30
+	},
+/turf/simulated/floor/dank/tech,
+/area/ishimura/lower/misc/hallway/aft)
 "hrI" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -27958,6 +27987,15 @@
 	dir = 1
 	},
 /area/ishimura/lower/crew/messhall)
+"hFs" = (
+/obj/structure/railing/mapped{
+	dir = 1
+	},
+/obj/structure/railing/mapped{
+	dir = 4
+	},
+/turf/simulated/open,
+/area/ishimura/lower/engineering/bay)
 "hKl" = (
 /turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/executive)
@@ -28062,10 +28100,24 @@
 	},
 /turf/simulated/floor/dank/slides_end,
 /area/ishimura/lower/misc/hallway/aft)
+"jaN" = (
+/obj/structure/railing/mapped,
+/obj/structure/railing/mapped{
+	dir = 4
+	},
+/turf/simulated/open,
+/area/ishimura/lower/engineering/bay)
 "jfP" = (
 /turf/simulated/floor/dank/tech{
 	dir = 8
 	},
+/area/ishimura/lower/misc/hallway/aft)
+"jhh" = (
+/obj/structure/sign/directions/supply{
+	dir = 4;
+	pixel_y = -34
+	},
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/misc/hallway/aft)
 "jjM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -28528,6 +28580,17 @@
 	dir = 1
 	},
 /area/ishimura/lower/mining/mining_bay)
+"oFD" = (
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 4
+	},
+/obj/structure/sign/directions/supply{
+	pixel_x = -30
+	},
+/turf/simulated/floor/dank/tech{
+	dir = 1
+	},
+/area/ishimura/lower/misc/hallway/aft)
 "oFH" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/structure/disposalpipe/segment{
@@ -29223,6 +29286,13 @@
 "vBT" = (
 /obj/machinery/light,
 /turf/simulated/floor/dank/rectangles,
+/area/ishimura/lower/misc/hallway/aft)
+"vDa" = (
+/obj/structure/sign/directions/supply{
+	dir = 4;
+	pixel_y = -34
+	},
+/turf/simulated/floor/dank/slides_end,
 /area/ishimura/lower/misc/hallway/aft)
 "vWw" = (
 /turf/simulated/floor/dank/slides,
@@ -40666,8 +40736,8 @@ ain
 ain
 akd
 akd
-acx
-afT
+aac
+apK
 aVQ
 aal
 abM
@@ -40920,7 +40990,7 @@ aYu
 ajR
 aeD
 acv
-acx
+ddD
 aal
 bdu
 bds
@@ -41674,9 +41744,9 @@ akd
 aqV
 ara
 ajW
-amN
+jaN
 afT
-aVR
+hFs
 aal
 ayu
 aas
@@ -41926,9 +41996,9 @@ akd
 akd
 akd
 akd
-aac
-apK
-aac
+aci
+afT
+bRX
 aal
 ayP
 aas
@@ -42178,9 +42248,9 @@ adg
 apg
 aae
 iOJ
-aci
+kEE
 arz
-lnc
+iOJ
 aal
 azF
 aas
@@ -43187,7 +43257,7 @@ aYr
 aYy
 aDV
 apf
-kEE
+vDa
 aaf
 aar
 aaw
@@ -45456,7 +45526,7 @@ abe
 aaN
 bbX
 ayS
-iOJ
+jhh
 aay
 aBl
 abV
@@ -47220,7 +47290,7 @@ aNf
 aoq
 apA
 ayN
-iOJ
+jhh
 aaq
 abu
 acp
@@ -48241,7 +48311,7 @@ eLD
 eLD
 eLD
 aNe
-aPd
+oFD
 bbZ
 bca
 eLD
@@ -48731,7 +48801,7 @@ sQv
 aPa
 hLN
 iOJ
-tDn
+ecc
 tDn
 tDn
 bbP
@@ -48740,7 +48810,7 @@ tDn
 adk
 tDn
 tDn
-tDn
+hmS
 tDn
 aKK
 tDn

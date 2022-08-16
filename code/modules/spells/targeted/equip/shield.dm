@@ -25,6 +25,7 @@
 
 /spell/targeted/equip_item/shield/summon_item(var/new_type)
 	var/obj/item/shield/I = new new_type()
+	I.icon = 'icons/obj/weapons.dmi'
 	I.icon_state = "buckler"
 	I.color = item_color
 	I.SetName("Wizard's Shield")

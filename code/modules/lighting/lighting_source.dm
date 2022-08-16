@@ -112,8 +112,8 @@
 		return FALSE
 
 	LAZYREMOVE(old_atom_host.light_sources, src)
-	if(ismovable(old_atom_host) && old_atom_host == source_atom)
-		UnregisterSignal(old_atom_host, COMSIG_MOVABLE_MOVED, COMSIG_ATOM_DIR_CHANGE)
+	if(ismovable(old_atom_host))
+		UnregisterSignal(old_atom_host, list(COMSIG_MOVABLE_MOVED, COMSIG_ATOM_DIR_CHANGE))
 	return TRUE
 
 ///signal handler for when our host atom moves and we need to update our effects
@@ -122,8 +122,8 @@
 
 	if(QDELETED(host))
 		return
-
-	host.update_light()
+	//This can also be triggered by top_atom
+	source_atom.update_light()
 
 // Yes this doesn't align correctly on anything other than 4 width tabs.
 // If you want it to go switch everybody to elastic tab stops.
@@ -135,7 +135,7 @@
 		needs_update = level;    \
 
 
-// This proc will cause the light source to update the top atom, and add itself to the update queue.
+/// This proc will cause the light source to update the top atom, and add itself to the update queue.
 /datum/light_source/proc/update(atom/new_top_atom)
 	// This top atom is different.
 	if (new_top_atom && new_top_atom != top_atom)

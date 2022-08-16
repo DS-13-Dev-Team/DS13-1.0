@@ -512,13 +512,13 @@ proc/is_blind(A)
 		threatcount += 4
 
 	if(auth_weapons && !access_obj.allowed(src))
-		if(istype(l_hand, /obj/item/gun) || istype(l_hand, /obj/item/melee))
+		if(istype(l_hand, /obj/item/gun) || istype(l_hand, /obj/item))
 			threatcount += 4
 
-		if(istype(r_hand, /obj/item/gun) || istype(r_hand, /obj/item/melee))
+		if(istype(r_hand, /obj/item/gun) || istype(r_hand, /obj/item))
 			threatcount += 4
 
-		if(istype(belt, /obj/item/gun) || istype(belt, /obj/item/melee))
+		if(istype(belt, /obj/item/gun) || istype(belt, /obj/item))
 			threatcount += 2
 
 		if(species.name != SPECIES_HUMAN)

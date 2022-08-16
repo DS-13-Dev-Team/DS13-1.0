@@ -13,7 +13,7 @@ obj/machinery/recharger
 	var/obj/item/charging = null
 	var/recharge_coeff = 1
 	var/charge_comp = 1 // Used when trying to charge special weapon cells. So they don't charge too fast.
-	var/list/allowed_devices = list(/obj/item/gun/energy, /obj/item/gun/magnetic/railgun, /obj/item/melee/baton, /obj/item/cell, /obj/item/modular_computer/, /obj/item/suit_sensor_jammer, /obj/item/computer_hardware/battery_module, /obj/item/shield_diffuser, /obj/item/clothing/mask/smokable/ecig, /obj/item/radio)
+	var/list/allowed_devices = list(/obj/item/gun/energy, /obj/item/gun/magnetic/railgun, /obj/item/baton, /obj/item/cell, /obj/item/modular_computer/, /obj/item/suit_sensor_jammer, /obj/item/computer_hardware/battery_module, /obj/item/shield_diffuser, /obj/item/clothing/mask/smokable/ecig, /obj/item/radio)
 	var/list/compensated_devices = list (/obj/item/cell/contact, /obj/item/cell/force)
 	var/icon_state_charged = "recharger2"
 	var/icon_state_charging = "recharger1"
@@ -127,7 +127,7 @@ obj/machinery/recharger/wallcharger
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "wrecharger0"
 	active_power_usage = 70 KILOWATTS	//It's more specialized than the standalone recharger (guns and batons only) so make it more powerful
-	allowed_devices = list(/obj/item/gun/magnetic/railgun, /obj/item/gun/energy, /obj/item/melee/baton)
+	allowed_devices = list(/obj/item/gun/magnetic/railgun, /obj/item/gun/energy, /obj/item/baton)
 	icon_state_charged = "wrecharger2"
 	icon_state_charging = "wrecharger1"
 	icon_state_idle = "wrecharger0"

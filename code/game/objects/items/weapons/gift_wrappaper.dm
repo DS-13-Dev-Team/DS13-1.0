@@ -92,7 +92,6 @@
 		/obj/item/reagent_containers/food/snacks/grown/ambrosiadeus,
 		/obj/item/reagent_containers/food/snacks/grown/ambrosiavulgaris,
 		/obj/item/paicard,
-		/obj/item/violin,
 		/obj/item/storage/belt/utility/full,
 		/obj/item/clothing/accessory/horrible)
 

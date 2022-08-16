@@ -4,14 +4,16 @@
 	icon_state = "tramterminal"
 	icon_keyboard = "tramkeyboard" //intentionally nothing
 	icon_screen = "tramscreen"
-	circuit = /obj/item/circuitboard/tram_controls
+	use_power = 0
+	idle_power_usage = 0
+	active_power_usage = 0
 	atom_flags = ATOM_FLAG_INDESTRUCTIBLE
 	light_range = 0 //we dont want to spam SSlighting with source updates every movement
 
 	///Weakref to the tram piece we control
 	var/datum/weakref/tram_ref
 
-	var/specific_lift_id = TRAM_LIFT_ID
+	var/specific_lift_id = MAIN_STATION_TRAM
 
 /obj/machinery/computer/tram_controls/Initialize(mapload, obj/item/circuitboard/C)
 	. = ..()

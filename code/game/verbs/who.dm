@@ -22,7 +22,12 @@
 				else
 					entry += " - Playing as [C.mob.real_name]"
 					switch(C.mob.stat)
+						if(CONSCIOUS)
+							if(C.mob.is_necromorph())
+								entry += " - <font color='red'><b>Necromorph</b></font>"
 						if(UNCONSCIOUS)
+							if(C.mob.is_necromorph())
+								entry += " - <font color='red'><b>Necromorph</b></font>"
 							entry += " - <font color='darkgray'><b>Unconscious</b></font>"
 						if(DEAD)
 							if(isghost(C.mob))

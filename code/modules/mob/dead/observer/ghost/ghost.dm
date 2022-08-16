@@ -12,7 +12,7 @@ var/global/list/image/ghost_sightless_images = list() //this is a list of images
 	universal_speak = 1
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 	mob_flags = MOB_FLAG_HOLY_BAD
-	movement_handlers = list(/datum/movement_handler/mob/incorporeal)
+	movement_handlers = list(/datum/movement_handler/mob/incorporeal, /datum/movement_handler/mob/delay)
 
 	var/is_manifest = FALSE
 	var/next_visibility_toggle = 0
@@ -47,6 +47,7 @@ var/global/list/image/ghost_sightless_images = list() //this is a list of images
 		set_appearance(body)
 
 		mind = body.mind //we don't transfer the mind but we keep a reference to it.
+		mind.ghost = src
 
 		if(mind.name)
 			name = mind.name
@@ -213,7 +214,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set category = "Ghost"
 	set name = "Re-enter Corpse"
 	if(!client)	return
-	if(!(mind && mind.current && can_reenter_corpse))
+	if(!(mind?.current && !QDELETED(mind.current) && can_reenter_corpse))
 		to_chat(src, "<span class='warning'>You have no body.</span>")
 		return
 	if(mind.current.key && copytext(mind.current.key,1,2)!="@")	//makes sure we don't accidentally kick any clients
