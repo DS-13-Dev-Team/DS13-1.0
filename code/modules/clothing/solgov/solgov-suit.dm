@@ -175,7 +175,6 @@
 	name = "clasped dress jacket"
 	desc = "A uniform dress jacket with gold toggles."
 	icon_state = "whitedress"
-	//item_state = "labcoat"
 	icon_open = "whitedress_open"
 	icon_closed = "whitedress"
 	icon = 'icons/obj/clothing/solgov-suit.dmi'
@@ -191,7 +190,6 @@
 	name = "fleet officer's dress jacket"
 	desc = "A navy blue SCG Fleet dress jacket dripping with gold accents."
 	icon_state = "whitedress_com"
-	//item_state = "labcoat"
 	icon_open = "whitedress_com_open"
 	icon_closed = "whitedress_com"
 	blood_overlay_type = "coat"
