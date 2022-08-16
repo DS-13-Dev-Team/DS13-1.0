@@ -1,15 +1,17 @@
 /datum/technology/data
+	tech_type = TECH_DATA
+	icon = 'icons/obj/modular_components.dmi'
+
+/datum/technology/data/basic
 	name = "Basic Modular Computers"
 	desc = "Basic Modular Computers"
 	id = "basic_modular"
-	tech_type = TECH_DATA
 
-	x = 0.5
-	y = 0.3
-	icon = "cpu"
+	x = 12
+	y = 9
+	icon_state = "cpu_normal"
 
 	required_technologies = list()
-	required_tech_levels = list()
 	cost = 0
 
 	unlocks_designs = list("hdd_basic", "netcard_basic", "bat_normal", "portadrive_basic", "cpu_normal")
@@ -19,12 +21,12 @@
 	desc = "Modular Computers Frames"
 	id = "frames"
 
-	x = 0.5
-	y = 0.2
-	icon = "tablet_frame"
+	x = 12
+	y = 10.5
+	icon = 'icons/obj/modular_tablet.dmi'
+	icon_state = "tabletsol"
 
 	required_technologies = list("basic_modular")
-	required_tech_levels = list()
 	cost = 750
 
 	unlocks_designs = list("pda_frame", "tablet_frame", "laptop_frame", "telescreen_frame")
@@ -34,12 +36,11 @@
 	desc = "Power effective HDD's"
 	id = "ms_hdd"
 
-	x = 0.5
-	y = 0.4
-	icon = "hdd64"
+	x = 12
+	y = 7.5
+	icon_state = "hdd_small"
 
 	required_technologies = list("basic_modular")
-	required_tech_levels = list()
 	cost = 250
 
 	unlocks_designs = list("hdd_micro", "hdd_small")
@@ -49,12 +50,11 @@
 	desc = "Advanced HDD"
 	id = "adv_hdd"
 
-	x = 0.5
-	y = 0.5
-	icon = "hdd256"
+	x = 12
+	y = 6
+	icon_state = "hdd_advanced"
 
 	required_technologies = list("ms_hdd")
-	required_tech_levels = list()
 	cost = 500
 
 	unlocks_designs = list("hdd_advanced", "portadrive_advanced")
@@ -64,12 +64,11 @@
 	desc = "Super HDD"
 	id = "sup_hdd"
 
-	x = 0.5
-	y = 0.6
-	icon = "hdd512"
+	x = 12
+	y = 4.5
+	icon_state = "hdd_super"
 
 	required_technologies = list("adv_hdd")
-	required_tech_levels = list()
 	cost = 750
 
 	unlocks_designs = list("hdd_super", "portadrive_super")
@@ -79,12 +78,11 @@
 	desc = "Cluster HDD"
 	id = "cls_hdd"
 
-	x = 0.5
-	y = 0.7
-	icon = "hdd2048"
+	x = 12
+	y = 3
+	icon_state = "hdd_cluster"
 
 	required_technologies = list("sup_hdd")
-	required_tech_levels = list()
 	cost = 1250
 
 	unlocks_designs = list("hdd_cluster")
@@ -94,12 +92,11 @@
 	desc = "Wired Netcard"
 	id = "netcard_w"
 
-	x = 0.4
-	y = 0.4
-	icon = "netcard_w"
+	x = 10.5
+	y = 7.5
+	icon_state = "netcard_ethernet"
 
 	required_technologies = list("basic_modular")
-	required_tech_levels = list()
 	cost = 500
 
 	unlocks_designs = list("netcard_wired")
@@ -109,12 +106,11 @@
 	desc = "Advanced Netcard"
 	id = "netcard_adv"
 
-	x = 0.4
-	y = 0.5
-	icon = "netcard_adv"
+	x = 10.5
+	y = 6
+	icon_state = "netcard_advanced"
 
 	required_technologies = list("netcard_w", "solnet_relay")
-	required_tech_levels = list()
 	cost = 1250
 
 	unlocks_designs = list("netcard_advanced")
@@ -124,12 +120,11 @@
 	desc = "Computer Microprocessor Unit"
 	id = "cpu_small"
 
-	x = 0.7
-	y = 0.4
-	icon = "cpu_small"
+	x = 15
+	y = 7.5
+	icon_state = "cpu_small"
 
 	required_technologies = list("basic_modular")
-	required_tech_levels = list()
 	cost = 250
 
 	unlocks_designs = list("cpu_small")
@@ -139,12 +134,11 @@
 	desc = "Computer Photonic Microprocessor Unit"
 	id = "pcpu_small"
 
-	x = 0.7
-	y = 0.5
-	icon = "pcpu_small"
+	x = 15
+	y = 6
+	icon_state = "cpu_small_photonic"
 
 	required_technologies = list("cpu_small")
-	required_tech_levels = list()
 	cost = 500
 
 	unlocks_designs = list("pcpu_small")
@@ -154,12 +148,11 @@
 	desc = "Computer Photonic Processor Unit"
 	id = "pcpu_normal"
 
-	x = 0.7
-	y = 0.6
-	icon = "pcpu"
+	x = 15
+	y = 4.5
+	icon_state = "cpu_normal_photonic"
 
 	required_technologies = list("pcpu_small")
-	required_tech_levels = list()
 	cost = 100
 
 	unlocks_designs = list("pcpu_normal")
@@ -169,12 +162,11 @@
 	desc = "Small Battery Module's"
 	id = "modular_bat_micro"
 
-	x = 0.6
-	y = 0.4
-	icon = "modular_bat_micro"
+	x = 13.5
+	y = 7.5
+	icon_state = "battery_normal"
 
 	required_technologies = list("basic_modular")
-	required_tech_levels = list()
 	cost = 250
 
 	unlocks_designs = list("bat_nano", "bat_micro")
@@ -184,12 +176,11 @@
 	desc = "Advanced Battery Module"
 	id = "modular_bat_advanced"
 
-	x = 0.6
-	y = 0.5
-	icon = "modular_bat_advanced"
+	x = 13.5
+	y = 6
+	icon_state = "battery_advanced"
 
 	required_technologies = list("modular_bat_micro", "adv_power")
-	required_tech_levels = list()
 	cost = 500
 
 	unlocks_designs = list("bat_advanced")
@@ -199,12 +190,11 @@
 	desc = "Super Battery Module"
 	id = "modular_bat_super"
 
-	x = 0.6
-	y = 0.6
-	icon = "modular_bat_super"
+	x = 13.5
+	y = 4.5
+	icon_state = "battery_super"
 
 	required_technologies = list("modular_bat_advanced", "sup_power")
-	required_tech_levels = list()
 	cost = 750
 
 	unlocks_designs = list("bat_super")
@@ -214,12 +204,11 @@
 	desc = "Ultra Battery Module"
 	id = "modular_bat_ultra"
 
-	x = 0.6
-	y = 0.7
-	icon = "modular_bat_ultra"
+	x = 13.5
+	y = 3
+	icon_state = "battery_ultra"
 
 	required_technologies = list("modular_bat_super", "hyp_power")
-	required_tech_levels = list()
 	cost = 1250
 
 	unlocks_designs = list("bat_ultra")
@@ -229,12 +218,11 @@
 	desc = "Tesla Link"
 	id = "tesla_link"
 
-	x = 0.6
-	y = 0.2
-	icon = "tesla_link"
+	x = 13.5
+	y = 10.5
+	icon_state = "teslalink"
 
 	required_technologies = list("basic_modular")
-	required_tech_levels = list()
 	cost = 500
 
 	unlocks_designs = list("teslalink")
@@ -244,12 +232,11 @@
 	desc = "Nanoprinter"
 	id = "nanoprinter"
 
-	x = 0.7
-	y = 0.2
-	icon = "nanoprinter"
+	x = 15
+	y = 10.5
+	icon_state = "printer"
 
 	required_technologies = list("basic_modular")
-	required_tech_levels = list()
 	cost = 500
 
 	unlocks_designs = list("nanoprinter", "scan_paper")
@@ -259,12 +246,11 @@
 	desc = "RFID Card Slot"
 	id = "rfid"
 
-	x = 0.4
-	y = 0.2
-	icon = "rfid"
+	x = 10.5
+	y = 10.5
+	icon_state = "cardreader"
 
 	required_technologies = list("basic_modular")
-	required_tech_levels = list()
 	cost = 750
 
 	unlocks_designs = list("cardslot")
@@ -274,12 +260,11 @@
 	desc = "Medical Scanning Modules"
 	id = "med_scanners"
 
-	x = 0.3
-	y = 0.3
-	icon = "nanoprinter"
+	x = 9
+	y = 9
+	icon_state = "printer"
 
 	required_technologies = list("basic_modular", "add_med_tools")
-	required_tech_levels = list()
 	cost = 750
 
 	unlocks_designs = list("scan_reagent", "scan_medical")
@@ -289,12 +274,11 @@
 	desc = "Atmos Scanning Module"
 	id = "atmos_scanners"
 
-	x = 0.8
-	y = 0.3
-	icon = "nanoprinter"
+	x = 16.5
+	y = 9
+	icon_state = "printer"
 
 	required_technologies = list("basic_modular", "gas_heat")
-	required_tech_levels = list()
 	cost = 750
 
 	unlocks_designs = list("scan_atmos")

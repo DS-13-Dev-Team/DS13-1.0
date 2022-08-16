@@ -15,13 +15,12 @@
 	req_access = list(access_cscio) //Only the R&D can change server settings.
 	circuit = /obj/item/circuitboard/rdserver
 
-/obj/machinery/r_n_d/server/New(var/atom/location, var/direction, var/nocircuit = FALSE)
-	..()
-	GLOB.rnd_server_list += src
+/obj/machinery/r_n_d/server/Initialize()
+	.=..()
+	SSresearch.servers += src
 
 /obj/machinery/r_n_d/server/Destroy()
-	GLOB.rnd_server_list -= src
-	griefProtection()
+	SSresearch.servers -= src
 	.=..()
 
 /obj/machinery/r_n_d/server/RefreshParts()
@@ -56,28 +55,12 @@
 		if((T20C + 20) to (T0C + 70))
 			health = max(0, health - 1)
 	if(health <= 0)
-		griefProtection() //I dont like putting this in process() but it's the best I can do without re-writing a chunk of rd servers.
 		files.forget_random_technology()
 	if(delay)
 		delay--
 	else
 		produce_heat()
 		delay = initial(delay)
-
-/obj/machinery/r_n_d/server/emp_act(severity)
-	griefProtection()
-	..()
-
-/obj/machinery/r_n_d/server/ex_act(severity)
-	if(atom_flags & ATOM_FLAG_INDESTRUCTIBLE)
-		return
-	griefProtection()
-	..()
-
-//Backup files to centcomm to help admins recover data after greifer attacks
-/obj/machinery/r_n_d/server/proc/griefProtection()
-	for(var/obj/machinery/r_n_d/server/centcom/C in SSmachines.machinery)
-		C.files.download_from(files)
 
 /obj/machinery/r_n_d/server/proc/produce_heat()
 	if(!produces_heat)
@@ -110,35 +93,6 @@
 	if(default_part_replacement(user, O))
 		return
 
-/obj/machinery/r_n_d/server/centcom
-	name = "Central R&D Database"
-	server_id = -1
-
-/obj/machinery/r_n_d/server/centcom/proc/update_connections()
-	var/list/no_id_servers = list()
-	var/list/server_ids = list()
-	for(var/obj/machinery/r_n_d/server/S in SSmachines.machinery)
-		switch(S.server_id)
-			if(-1)
-				continue
-			if(0)
-				no_id_servers += S
-			else
-				server_ids += S.server_id
-
-	for(var/obj/machinery/r_n_d/server/S in no_id_servers)
-		var/num = 1
-		while(!S.server_id)
-			if(num in server_ids)
-				num++
-			else
-				S.server_id = num
-				server_ids += num
-		no_id_servers -= S
-
-/obj/machinery/r_n_d/server/centcom/Process()
-	return PROCESS_KILL //don't need process()
-
 /obj/machinery/computer/rdservercontrol
 	name = "R&D Server Controller"
 	icon_keyboard = "rd_key"
@@ -166,7 +120,7 @@
 		temp_server = null
 		consoles = list()
 		servers = list()
-		for(var/obj/machinery/r_n_d/server/S in SSmachines.machinery)
+		for(var/obj/machinery/r_n_d/server/S as anything in SSresearch.servers)
 			if(S.server_id == text2num(href_list["access"]) || S.server_id == text2num(href_list["data"]) || S.server_id == text2num(href_list["transfer"]))
 				temp_server = S
 				break
@@ -179,7 +133,7 @@
 			screen = 2
 		else if(href_list["transfer"])
 			screen = 3
-			for(var/obj/machinery/r_n_d/server/S in SSmachines.machinery)
+			for(var/obj/machinery/r_n_d/server/S as anything in SSresearch.servers)
 				if(S == src)
 					continue
 				servers += S
@@ -210,7 +164,7 @@
 		var/choice = tgui_alert(user, "Techology Deletion", "Are you sure you want to delete this techology? Data lost cannot be recovered.", list("Continue", "Cancel"))
 
 		if(choice == "Continue" && CanUseTopic(user, state))
-			temp_server.files.forget_techology( temp_server.files.researched_tech[href_list["reset_design"]] )
+			temp_server.files.forget_techology( SSresearch.all_technologies[href_list["reset_design"]] )
 
 	updateUsrDialog()
 
@@ -224,9 +178,7 @@
 		if(0) //Main Menu
 			dat += "Connected Servers:<BR><BR>"
 
-			for(var/obj/machinery/r_n_d/server/S in SSmachines.machinery)
-				if(istype(S, /obj/machinery/r_n_d/server/centcom) && !badmin)
-					continue
+			for(var/obj/machinery/r_n_d/server/S as anything in SSresearch.servers)
 				dat += "[S.name] || "
 				dat += "<A href='?src=\ref[src];access=[S.server_id]'> Access Rights</A> | "
 				dat += "<A href='?src=\ref[src];data=[S.server_id]'>Data Management</A>"
@@ -256,13 +208,13 @@
 		if(2) //Data Management menu
 			dat += "[temp_server.name] Data ManagementP<BR><BR>"
 			dat += "Known Tech Trees<BR>"
-			for(var/tech_tree in temp_server.files.tech_trees)
-				var/datum/tech/T = temp_server.files.tech_trees[tech_tree]
+			for(var/tech_tree in temp_server.files.tech_trees_shown)
+				var/datum/tech/T = SSresearch.tech_trees[tech_tree]
 				dat += "* [T.name] "
 				dat += "<A href='?src=\ref[src];reset_tech=[T.id]'>(Reset)</A><BR>" //FYI, these are all strings.
 			dat += "Known Technologies<BR>"
 			for(var/techology_id in temp_server.files.researched_tech)
-				var/datum/technology/T = temp_server.files.researched_tech[techology_id]
+				var/datum/technology/T = SSresearch.all_technologies[techology_id]
 				dat += "* [T.name] "
 				dat += "<A href='?src=\ref[src];reset_techology=[T.id]'>(Delete)</A><BR>"
 			dat += "<HR><A href='?src=\ref[src];main=1'>Main Menu</A>"

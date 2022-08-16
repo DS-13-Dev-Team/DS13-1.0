@@ -1,28 +1,3 @@
-/datum/rnd_material
-	var/name
-	var/amount
-	var/sheet_size
-	var/sheet_type
-
-/datum/rnd_material/New(Name, obj/item/stack/material/Sheet_type)
-	name = Name
-	amount = 0
-	sheet_type = Sheet_type
-	sheet_size = initial(Sheet_type.perunit)
-
-/datum/rnd_queue_design
-	var/name
-	var/datum/design/design
-	var/amount
-
-/datum/rnd_queue_design/New(datum/design/D, Amount)
-	name = D.name
-	if(Amount > 1)
-		name = "[name] x[Amount]"
-
-	design = D
-	amount = Amount
-
 /obj/machinery/r_n_d/protolathe
 	name = "Protolathe"
 	icon_state = "protolathe"
@@ -32,40 +7,33 @@
 	var/max_material_storage = 100000
 	var/efficiency_coeff
 	var/list/queue = list()
-	var/list/allowed_mats = list(MATERIAL_STEEL,
-	MATERIAL_GLASS,
-	MATERIAL_PLASTIC,
-	MATERIAL_PLASTEEL,
-	MATERIAL_SILVER,
-	MATERIAL_GOLD,
-	MATERIAL_DIAMOND,
-	MATERIAL_URANIUM,
-	MATERIAL_PHORON)
 
 /obj/machinery/r_n_d/protolathe/Initialize()
 	. = ..()
-	materials[MATERIAL_STEEL]	= new /datum/rnd_material("Steel",    /obj/item/stack/material/steel)
-	materials[MATERIAL_GLASS]	= new /datum/rnd_material("Glass",    /obj/item/stack/material/glass)
-	materials[MATERIAL_PLASTIC]	= new /datum/rnd_material("Plastic",  /obj/item/stack/material/plastic)
-	materials[MATERIAL_PLASTEEL]= new /datum/rnd_material("Plasteel", /obj/item/stack/material/plasteel)
-	materials[MATERIAL_SILVER]	= new /datum/rnd_material("Silver",   /obj/item/stack/material/silver)
-	materials[MATERIAL_GOLD]	= new /datum/rnd_material("Gold",     /obj/item/stack/material/gold)
-	materials[MATERIAL_DIAMOND]	= new /datum/rnd_material("Diamond",  /obj/item/stack/material/diamond)
-	materials[MATERIAL_URANIUM]	= new /datum/rnd_material("Uranium",  /obj/item/stack/material/uranium)
-	materials[MATERIAL_PHORON]	= new /datum/rnd_material("Phoron",   /obj/item/stack/material/phoron)
+	materials[MATERIAL_STEEL]	= list("name" = "Steel", "amount" = 0, "sheet_type" = /obj/item/stack/material/steel)
+	materials[MATERIAL_GLASS]	= list("name" = "Glass", "amount" = 0, "sheet_type" = /obj/item/stack/material/glass)
+	materials[MATERIAL_PLASTIC]	= list("name" = "Plastic", "amount" = 0, "sheet_type" = /obj/item/stack/material/plastic)
+	materials[MATERIAL_PLASTEEL]= list("name" = "Plasteel", "amount" = 0, "sheet_type" = /obj/item/stack/material/plasteel)
+	materials[MATERIAL_SILVER]	= list("name" = "Silver", "amount" = 0, "sheet_type" = /obj/item/stack/material/silver)
+	materials[MATERIAL_GOLD]	= list("name" = "Gold", "amount" = 0, "sheet_type" = /obj/item/stack/material/gold)
+	materials[MATERIAL_URANIUM]	= list("name" = "Uranium", "amount" = 0, "sheet_type" = /obj/item/stack/material/uranium)
+	materials[MATERIAL_DIAMOND]	= list("name" = "Diamond", "amount" = 0, "sheet_type" = /obj/item/stack/material/diamond)
+	materials[MATERIAL_PHORON]	= list("name" = "Phoron", "amount" = 0, "sheet_type" = /obj/item/stack/material/phoron)
+
+	for(var/A in materials)
+		var/obj/item/stack/material/M = materials[A]["sheet_type"]
+		materials[A] += list("sheet_size" = initial(M.perunit))
 
 /obj/machinery/r_n_d/protolathe/Destroy()
 	. = ..()
 	if(linked_console)
 		linked_console.linked_lathe = null
-		linked_console.update_open_uis()
+		if(linked_console.cats[4] == PROTOLATHE)
+			linked_console.cats[4] = 1
+			SStgui.update_uis(linked_console, TRUE)
+		else
+			SStgui.update_uis(linked_console)
 		linked_console = null
-
-/obj/machinery/r_n_d/protolathe/TotalMaterials() //returns the total of all the stored materials. Makes code neater.
-	var/am = 0
-	for(var/M in materials)
-		am += materials[M].amount
-	return am
 
 /obj/machinery/r_n_d/protolathe/RefreshParts()
 	var/T = 0
@@ -92,7 +60,7 @@
 /obj/machinery/r_n_d/protolathe/proc/check_mat(datum/design/being_built, M)
 	var/A = 0
 	if(materials[M])
-		A = materials[M].amount
+		A = materials[M]["amount"]
 		A /= max(1 , (being_built.materials[M]/efficiency_coeff))
 		return A
 	else
@@ -108,7 +76,11 @@
 		update_icon()
 		if(linked_console)
 			linked_console.linked_lathe = null
-			linked_console.update_open_uis()
+			if(linked_console.cats[4] == PROTOLATHE)
+				linked_console.cats[4] = 1
+				SStgui.update_uis(linked_console, TRUE)
+			else
+				SStgui.update_uis(linked_console)
 			linked_console = null
 		return
 	if(default_deconstruction_crowbar(user, O))
@@ -116,6 +88,8 @@
 	if(default_part_replacement(user, O))
 		return
 	if(O.is_open_container())
+		spawn(0)
+			SStgui.update_uis(linked_console, TRUE)
 		return FALSE
 	if(panel_open)
 		to_chat(user, "<span class='notice'>You can't load \the [src] while it's opened.</span>")
@@ -132,7 +106,7 @@
 		return FALSE
 	var/obj/item/stack/material/stack = O
 	if(istype(O, /obj/item/stack/material))
-		if(!(stack.default_type in allowed_mats))
+		if(!materials[stack.default_type])
 			to_chat(user, "<span class='notice'>You cannot insert this material into the [src]!</span>")
 			return
 
@@ -151,24 +125,29 @@
 	if(t)
 		if(do_after(user, 18, src))
 			for(var/M in materials)
-				if(stack.stacktype == materials[M].sheet_type)
+				if(stack.stacktype == materials[M]["sheet_type"])
 					if(stack.use(amount))
-						materials[M].amount += amount * stack.perunit
+						materials[M]["amount"] += amount * stack.perunit
 						break
 	overlays -= "protolathe_[t]"
 	busy = FALSE
 	update_icon()
 	if(linked_console)
-		linked_console.update_open_uis()
+		SStgui.update_uis(linked_console, TRUE)
 
 /obj/machinery/r_n_d/protolathe/proc/queue_design(datum/design/D, amount)
-	var/datum/rnd_queue_design/RNDD = new /datum/rnd_queue_design(D, amount)
+	var/list/RNDD = list()
+	RNDD["name"] = D.name
+	if(amount > 1)
+		RNDD["name"] = "[RNDD["name"]] x[amount]"
 
-	if(queue.len) // Something is already being created, put us into queue
-		queue += RNDD
-	else if(!busy)
-		queue += RNDD
-		produce_design(RNDD)
+	RNDD["design"] = D.id
+	RNDD["amount"] = amount
+	// We need unique name in the list
+	var/list_name = "[D.id]_x[RNDD["amount"]]_[world.time]"
+	queue[list_name] = RNDD
+	if(!busy)
+		produce_design(list_name)
 
 /obj/machinery/r_n_d/protolathe/proc/clear_queue()
 	queue = list()
@@ -177,19 +156,20 @@
 	if(queue.len && !busy)
 		produce_design(queue[1])
 
-/obj/machinery/r_n_d/protolathe/proc/produce_design(datum/rnd_queue_design/RNDD)
-	var/datum/design/D = RNDD.design
-	var/amount = RNDD.amount
+/obj/machinery/r_n_d/protolathe/proc/produce_design(P)
+	var/RNDD = queue[P]
+	var/datum/design/D = SSresearch.designs_by_id[RNDD["design"]]
+	var/amount = RNDD["amount"]
 	var/power = 2000
 	amount = max(1, min(10, amount))
 	for(var/M in D.materials)
 		power += round(D.materials[M] * amount / 5)
 	power = max(2000, power)
-	if(busy)
-		to_chat(usr, "<span class='warning'>The [name] is busy right now</span>")
+	if (busy)
+		to_chat(usr, SPAN_WARNING("The [name] is busy right now"))
 		return
 	if (!(D.build_type & PROTOLATHE))
-		message_admins("Protolathe exploit attempted by [key_name(usr, usr.client)]!")
+		log_and_message_admins("Protolathe exploit attempted! Tried to print non-protolathe design!", usr, usr.loc)
 		return
 
 	busy = TRUE
@@ -198,37 +178,27 @@
 
 	for(var/M in D.materials)
 		if(check_mat(D, M) < amount)
-			visible_message("<span class='warning'>The [name] beeps, \"Not enough materials to complete prototype.\"</span>")
+			to_chat(usr, SPAN_WARNING("Not enough materials to complete design."))
 			busy = FALSE
 			update_icon()
 			return
+
 	for(var/M in D.materials)
-		materials[M].amount = max(0, (materials[M].amount - (D.materials[M] / efficiency_coeff)))
+		materials[M]["amount"] = max(0, (materials[M]["amount"] - (D.materials[M]*amount / efficiency_coeff)))
 	for(var/C in D.chemicals)
 		reagents.remove_reagent(C, D.chemicals[C]/efficiency_coeff)
-	addtimer(CALLBACK(src, .proc/create_design, RNDD), D.time * amount / efficiency_coeff)
+	addtimer(CALLBACK(src, .proc/create_design, RNDD["design"], amount), (D.time / efficiency_coeff) * amount)
 
-/obj/machinery/r_n_d/protolathe/proc/create_design(datum/rnd_queue_design/RNDD)
-	var/datum/design/D = RNDD.design
-	var/amount = RNDD.amount
+/obj/machinery/r_n_d/protolathe/proc/create_design(P, amount)
+	var/datum/design/D = SSresearch.designs_by_id[P]
 	for(var/i = 1 to amount)
 		new D.build_path(loc)
 	busy = FALSE
 	update_icon()
-	queue -= RNDD
+	queue -= P
 
 	if(queue.len)
 		produce_design(queue[1])
 
 	if(linked_console)
-		linked_console.update_open_uis()
-
-/obj/machinery/r_n_d/protolathe/eject_sheet(sheet_type, amount)
-	if(materials[sheet_type])
-		var/available_num_sheets = Floor(materials[sheet_type].amount / materials[sheet_type].sheet_size)
-		if(available_num_sheets > 0)
-			var/S = materials[sheet_type].sheet_type
-			var/obj/item/stack/material/M = new S(loc)
-			var/sheet_ammount = min(available_num_sheets, amount)
-			M.set_amount(sheet_ammount)
-			materials[sheet_type].amount = max(0, materials[sheet_type].amount - sheet_ammount * materials[sheet_type].sheet_size)
+		SStgui.update_uis(linked_console, TRUE)

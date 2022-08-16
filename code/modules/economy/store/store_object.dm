@@ -16,9 +16,13 @@ GLOBAL_VAR_INIT(number_of_store_kiosks, 0)
 	// Power
 	use_power = 1
 	idle_power_usage = 50
+
+	buckle_pixel_shift = "x=0;y=8"
+
 	light_range = 4
 	light_power = 0.8
 	light_color = COLOR_DEEP_SKY_BLUE
+	light_on = FALSE
 
 	var/vend_power_usage = 450 //actuators and stuff
 
@@ -32,7 +36,6 @@ GLOBAL_VAR_INIT(number_of_store_kiosks, 0)
 	var/close_time = 1.4 SECONDS
 	var/light_time = 7 SECONDS
 	var/bolt_time = 1 SECONDS
-	buckle_pixel_shift = "x=0;y=8"
 
 	//Sounds
 	var/sound_open = 'sound/machines/store/store_door_open.ogg'
@@ -52,8 +55,6 @@ GLOBAL_VAR_INIT(number_of_store_kiosks, 0)
 	deposit_box = new(src)
 	machine_id = "[station_name()] Store #[GLOB.number_of_store_kiosks++]"
 
-
-
 /obj/machinery/store/update_icon()
 	var/light = TRUE
 	if (operable())
@@ -64,7 +65,7 @@ GLOBAL_VAR_INIT(number_of_store_kiosks, 0)
 
 	overlays.Cut()
 	if (door_state == -1)
-		var/mutable_appearance/I = mutable_appearance(icon, "door_closed", ABOVE_HUMAN_LAYER, GAME_PLANE)
+		var/image/I = image(icon, src, "door_closed",ABOVE_HUMAN_LAYER )
 		overlays += I
 		light = FALSE
 
@@ -162,7 +163,7 @@ GLOBAL_VAR_INIT(number_of_store_kiosks, 0)
 		return
 
 	door_state = STORE_CLOSING
-	flick_overlay_icon(close_time, icon(src.icon, "door_closing"), override_layer = ABOVE_HUMAN_LAYER, override_plane = GAME_PLANE)
+	flick_overlay_icon(close_time, icon(src.icon, "door_closing"), override_layer = ABOVE_HUMAN_LAYER)
 	playsound(src, sound_close, VOLUME_MID, TRUE)
 	spawn(close_time)
 		door_state = STORE_CLOSED
@@ -176,7 +177,7 @@ GLOBAL_VAR_INIT(number_of_store_kiosks, 0)
 
 	door_state = STORE_OPENING
 	update_icon()
-	flick_overlay_icon(open_time, icon(src.icon, "door_opening"), override_layer = ABOVE_HUMAN_LAYER, override_plane = GAME_PLANE)
+	flick_overlay_icon(open_time, icon(src.icon, "door_opening"), override_layer = ABOVE_HUMAN_LAYER)
 	playsound(src, sound_open, VOLUME_MID, TRUE)
 	spawn(open_time)
 		door_state = STORE_OPEN
@@ -184,7 +185,7 @@ GLOBAL_VAR_INIT(number_of_store_kiosks, 0)
 
 /obj/machinery/store/proc/vertical_light_effect()
 	playsound(src, 'sound/machines/store/makeover.ogg', VOLUME_HIGH, FALSE, 5)
-	flick_overlay_icon(light_time, icon(src.icon, "light_overlay"), override_layer = ABOVE_HUMAN_LAYER, override_plane = GAME_PLANE)
+	flick_overlay_icon(light_time, icon(src.icon, "light_overlay"), override_layer = ABOVE_HUMAN_LAYER)
 
 
 /obj/machinery/store/proc/makeover_animation()
@@ -264,8 +265,6 @@ GLOBAL_VAR_INIT(number_of_store_kiosks, 0)
 
 	//Time to start animating!
 	makeover_animation()
-
-
 
 /obj/machinery/store/proc/get_box_modules()
 	.=list()

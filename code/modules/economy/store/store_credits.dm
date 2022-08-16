@@ -150,22 +150,23 @@
 
 	var/available_balance = ECA.money
 
-	var/withdrawal_amount = tgui_input_number(user,"Welcome to the CEC Employee Checking Account withdrawal interface. \n\
+	var/withdrawal_amount = input(user,"Welcome to the CEC Employee Checking Account withdrawal interface. \n\
 	Currently Available Balance:	[available_balance]	credits \n\
 	Enter the amount you wish to withdraw. Please note, deposits are not available, this account is withdrawal-only."
-	,"CEC Employee Checking Account", available_balance, available_balance, 0)
+	,"CEC Employee Checking Account",available_balance) as num | null
 
 
 
-	var/question = 	list()
-	rig_account ? (question += "Withdraw to RIG") : null
-	chip ? (question += "Withdraw to Credit Chip") : null
-	question += "Cancel"
+
 	var/response = tgui_alert(user, "Welcome to the CEC Employee Checking Account withdrawal interface. \n\
 	Currently Available Balance:	[available_balance]	credits \n\
 	You are withdrawing: [withdrawal_amount] credits. Please select the location to withdraw to.",
 	"CEC Employee Checking Account",
-	question)
+	list(
+	(rig_account ? "Withdraw to RIG" : null),
+	(chip ? "Withdraw to Credit Chip" : null),
+	"Cancel"
+	))
 
 	//We need to recheck things to prevent exploits now
 	if (!ECA)

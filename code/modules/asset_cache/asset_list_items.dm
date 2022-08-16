@@ -59,58 +59,6 @@ proc/get_craft_item(path)
 		qdel(A)
 		return GLOB.craftitems[path]
 
-/datum/asset/simple/research_designs
-	keep_local_name = TRUE
-
-/datum/asset/simple/research_designs/register()
-	for(var/R in subtypesof(/datum/design))
-		var/datum/design/design = new R
-
-		register_design(design)
-
-	SSresearch.generate_integrated_circuit_designs()
-
-	for(var/D in SSresearch.design_ids)
-		var/datum/design/design = SSresearch.design_ids[D]
-		var/datum/computer_file/binary/design/design_file = new
-		design_file.design = design
-		design_file.on_design_set()
-		design.file = design_file
-
-	SSresearch.designs_initialized = TRUE
-
-	// Initialize design files that were created before
-	for(var/file in SSresearch.design_files_to_init)
-		SSresearch.initialize_design_file(file)
-	SSresearch.design_files_to_init = list()
-
-	. = ..()
-
-/proc/register_research_design(var/datum/design/design)
-	var/datum/asset/simple/research_designs/RD = GLOB.asset_datums[/datum/asset/simple/research_designs]
-	RD.register_design(design)
-
-/datum/asset/simple/research_designs/proc/register_design(var/datum/design/design)
-	design.AssembleDesignInfo()
-
-	if(!design.build_path)
-		return
-
-	//Cache the icons
-	var/filename = sanitizeFileName("[design.build_path].png")
-	var/icon/I = getFlatTypeIcon(design.build_path)
-	assets[filename] = I
-
-	design.ui_data["icon"] = filename
-	design.ui_data["icon_width"] = I.Width()
-	design.ui_data["icon_height"] = I.Height()
-
-	SSresearch.all_designs += design
-
-	// Design ID is string
-	SSresearch.design_ids["[design.id]"] = design
-
-
 /datum/asset/simple/jquery
 	legacy = TRUE
 	assets = list(
@@ -235,4 +183,27 @@ proc/get_craft_item(path)
 		I.Scale(96, 96)
 		assets["[pill_bottle_wrappers[A]]_pill_bottle"] = I
 	qdel(PB)
+	.=..()
+
+/datum/asset/spritesheet/research_designs
+	name = "rnd_designs"
+
+/datum/asset/spritesheet/research_designs/register()
+	for(var/datum/design/D as anything in SSresearch.designs_by_id)
+		D = SSresearch.designs_by_id[D]
+		var/icon/I
+		I := getFlatTypeIcon(D.build_path)
+		I.Scale(I.Width()*3, I.Height()*3)
+		Insert(D.id, I)
+	.=..()
+
+/datum/asset/spritesheet/research_technologies
+	name = "rdtech"
+
+/datum/asset/spritesheet/research_technologies/register()
+	for(var/datum/technology/T as anything in SSresearch.all_technologies)
+		T = SSresearch.all_technologies[T]
+		var/icon/icon = T.generate_icon()
+		icon.Scale(icon.Width()*3, icon.Height()*3)
+		Insert(T.id, icon)
 	.=..()

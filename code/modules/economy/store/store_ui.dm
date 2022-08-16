@@ -59,9 +59,9 @@
 	combined_store_data = list()
 	var/existing_categories = list()
 
-	for(var/list/L in list(GLOB.unlimited_store_designs, GLOB.limited_store_designs, GLOB.public_store_designs))
+	for(var/list/L in list(GLOB.unlimited_store_designs, GLOB.limited_store_designs))
 		for(var/id in L)
-			var/datum/design/D = SSresearch.design_ids[id]
+			var/datum/design/D = SSresearch.designs_by_id[id]
 			if(!(D.category in existing_categories))
 				existing_categories += D.category
 				combined_store_data[D.category] = list()
@@ -73,7 +73,7 @@
 	var/list/data = ui_data(user, ui_key)
 	ui = SSnano.try_update_ui(user, src, ui_key, ui, data)
 	if (!ui)
-		var/datum/asset/assets = get_asset_datum(/datum/asset/simple/research_designs)
+		var/datum/asset/assets = get_asset_datum(/datum/asset/spritesheet/research_designs)
 		assets.send(user)
 		// the ui does not exist, so we'll create a new() one
 		// for a list of parameters and their descriptions see the code docs in \code\modules\nano\nanoui.dm
@@ -105,7 +105,7 @@
 
 
 	if(href_list["select_item"])
-		var/datum/design/D = SSresearch.design_ids[href_list["select_item"]]
+		var/datum/design/D = SSresearch.designs_by_id[href_list["select_item"]]
 		//TODO: Check that D is in our valid designs
 		if (istype(D))
 			current_design = D

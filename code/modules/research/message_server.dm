@@ -147,10 +147,10 @@ var/global/list/obj/machinery/message_server/message_servers = list()
 
 	for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
 		var/obj/item/modular_computer/pda/pda = locate() in H
-		if(!pda)
+		if(!pda?.card_slot?.stored_card)
 			continue
 
-		var/datum/job/J = job_master.GetJob(H.job)
+		var/datum/job/J = job_master.GetJobByType(pda.card_slot.stored_card.job_access_type)
 		if(!J)
 			continue
 
