@@ -242,6 +242,7 @@
 /obj/item/zipgunframe
 	name = "zip gun frame"
 	desc = "A half-finished zip gun."
+	icon = 'icons/obj/weapons.dmi'
 	icon_state = "zipgun0"
 	item_state = "zipgun-solid"
 	var/buildstate = 0

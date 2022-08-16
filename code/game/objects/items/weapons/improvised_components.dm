@@ -43,6 +43,7 @@
 /obj/item/material/wirerod
 	name = "wired rod"
 	desc = "A rod with some wire wrapped around the top. It'd be easy to attach something to the top bit."
+	icon = 'icons/obj/weapons.dmi'
 	icon_state = "wiredrod"
 	item_state = "rods"
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
