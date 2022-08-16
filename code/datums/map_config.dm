@@ -27,7 +27,7 @@
 	/// Dictionary of job sub-typepath to template changes dictionary
 	var/job_changes = list()
 
-	var/map_datum = "/datum/map/colony"
+	var/map_datum = /datum/map/colony
 
 /**
  * Proc that simply loads the default map config, which should always be functional.
