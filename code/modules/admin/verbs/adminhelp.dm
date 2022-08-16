@@ -65,11 +65,10 @@
 	set name = "Adminhelp"
 
 // Select a category
-	var/msg
-	var/list/type = list ("Mentors: Gameplay/Job Inquiries", "Mods/Admins: Rule Issue")
-	var/selected_type = input("Pick a category.", "Admin Help", null, null) as null|anything in type
-	if(selected_type)
-		msg = input("Please enter your message:", "Admin Help", null, null) as text
+	var/selected_type = tgui_input_list(mob, "Pick a category", "Admin Help", list("Mentors: Gameplay/Job Inquiries", "Mods/Admins: Rule Issue", "Developers: Game Bug"))
+	if(!selected_type)
+		return
+	var/msg = tgui_input_text(mob, "Please enter your message:", "Admin Help")
 
 	//handle muting and automuting
 	if(prefs.muted & MUTE_ADMINHELP)
@@ -80,9 +79,6 @@
 
 
 	//clean the input msg
-	if(!msg)
-		return
-	msg = sanitize(msg)
 	if(!msg)
 		return
 	var/original_msg = msg
@@ -126,46 +122,46 @@
 	var/list/mentorholders = list()
 	var/list/modholders = list()
 	var/list/adminholders = list()
+	var/list/devholders = list()
 	for(var/client/X in GLOB.admins)
-		if(R_MENTOR & X.holder.rights && !(R_ADMIN & X.holder.rights)) // we don't want to count admins twice. This list should be JUST mentors
+		if(check_rights(R_MENTOR, FALSE, X)) // we don't want to count admins twice. This list should be JUST mentors
 			mentorholders += X
 			if(X.is_afk())
 				admin_number_afk++
-		if(R_MOD & X.holder.rights || R_BAN & X.holder.rights) // Looking for anyone with +Ban which will be full mods and admins.
-			if(!(R_ADMIN & X.holder.rights))
-				modholders += X
-				if(X.is_afk())
-					admin_number_afk++
-		if(R_ADMIN & X.holder.rights || R_ADMIN & X.holder.rights) // just admins here please
+		if(check_rights(R_MOD|R_BAN, FALSE, X)) // Looking for anyone with +Ban which will be full mods and admins.
+			modholders += X
+			if(X.is_afk())
+				admin_number_afk++
+		if(check_rights(R_ADMIN, FALSE, X)) // just admins here please
 			adminholders += X
 			if(X.is_afk())
 				admin_number_afk++
-
-
+		if(check_rights(R_DEBUG|R_RUNTIMES, FALSE, X))
+			devholders += X
+			if(X.is_afk())
+				admin_number_afk++
+	mentorholders -= adminholders
 
 	switch(selected_type)
 		if("Mentors: Gameplay/Job Inquiries")
-			if(mentorholders.len)
-				for(var/client/X in mentorholders) // Mentors get a message without buttons and no character name
-					if(X.get_preference_value(/datum/client_preference/staff/play_adminhelp_ping))
-						X << 'sound/effects/adminhelp_new.ogg'
-					to_chat(X, mentor_msg)
-			if(adminholders.len)
-				for(var/client/X in adminholders) // Admins get the full monty
-					if(X.get_preference_value(/datum/client_preference/staff/play_adminhelp_ping))
-						X << 'sound/effects/adminhelp_new.ogg'
-					to_chat(X, msg)
+			for(var/client/X in mentorholders) // Mentors get a message without buttons and no character name
+				if(X.get_preference_value(/datum/client_preference/staff/play_adminhelp_ping))
+					X << 'sound/effects/adminhelp_new.ogg'
+				to_chat(X, mentor_msg)
+			for(var/client/X in adminholders) // Admins get the full monty
+				if(X.get_preference_value(/datum/client_preference/staff/play_adminhelp_ping))
+					X << 'sound/effects/adminhelp_new.ogg'
+				to_chat(X, msg)
 		if("Mods/Admins: Rule Issue")
-			if(mentorholders.len)
-				for(var/client/X in mentorholders) // Mentors get a message without buttons and no character name
-					if(X.get_preference_value(/datum/client_preference/staff/play_adminhelp_ping))
-						X << 'sound/effects/adminhelp_new.ogg'
-					to_chat(X, mentor_msg)
-			if(adminholders.len)
-				for(var/client/X in adminholders) // Mods
-					if(X.get_preference_value(/datum/client_preference/staff/play_adminhelp_ping))
-						X << 'sound/effects/adminhelp_new.ogg'
-					to_chat(X, msg)
+			for(var/client/X in (modholders | adminholders))
+				if(X.get_preference_value(/datum/client_preference/staff/play_adminhelp_ping))
+					X << 'sound/effects/adminhelp_new.ogg'
+				to_chat(X, msg)
+		if("Developers: Game Bug")
+			for(var/client/X in (devholders | adminholders))
+				if(X.get_preference_value(/datum/client_preference/staff/play_adminhelp_ping))
+					X << 'sound/effects/adminhelp_new.ogg'
+				to_chat(X, msg)
 
 	//show it to the person adminhelping too
 	to_chat(src, "<span class='adminhelp'><font color='blue'>PM to-<b>Staff</b> (<a href='?src=\ref[usr];close_ticket=\ref[ticket]'>CLOSE</a>): [original_msg]</font></span>")
