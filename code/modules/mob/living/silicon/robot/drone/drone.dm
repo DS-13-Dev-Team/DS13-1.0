@@ -72,10 +72,10 @@ var/list/mob_hat_cache = list()
 		hat = null
 	.=..()
 
-/mob/living/silicon/robot/drone/proc/on_moved(var/atom/movable/am, var/turf/old_loc, var/turf/new_loc)
+/mob/living/silicon/robot/drone/proc/on_moved(atom/movable/AM, turf/old_loc, dir)
 	SIGNAL_HANDLER
 	old_loc = get_turf(old_loc)
-	new_loc = get_turf(new_loc)
+	var/turf/new_loc = get_turf(AM)
 
 	if(!(old_loc && new_loc)) // Allows inventive admins to move drones between non-adjacent Z-levels by moving them to null space first I suppose
 		return

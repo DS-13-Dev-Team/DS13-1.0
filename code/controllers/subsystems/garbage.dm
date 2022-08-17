@@ -5,6 +5,7 @@ SUBSYSTEM_DEF(garbage)
 	flags = SS_POST_FIRE_TIMING|SS_BACKGROUND|SS_NO_INIT
 	runlevels = RUNLEVELS_DEFAULT | RUNLEVEL_LOBBY
 	init_order = SS_INIT_GARBAGE
+	init_stage = INITSTAGE_EARLY
 
 	var/list/collection_timeout = list(0, 2 MINUTES, 10 SECONDS)	// deciseconds to wait before moving something up in the queue to the next level
 
@@ -364,7 +365,7 @@ SUBSYSTEM_DEF(garbage)
 
 /datum/proc/find_references(skip_alert)
 	running_find_references = type
-	if(usr && usr.client)
+	if(usr?.client)
 		if(usr.client.running_find_references)
 			testing("CANCELLED search for references to a [usr.client.running_find_references].")
 			usr.client.running_find_references = null
@@ -374,15 +375,14 @@ SUBSYSTEM_DEF(garbage)
 			SSgarbage.next_fire = world.time + world.tick_lag
 			return
 
-		if(!skip_alert)
-			if(tgui_alert(usr, "Running this will lock everything up for about 5 minutes.  Would you like to begin the search?", "Find References", list("Yes", "No")) != "Yes")
-				running_find_references = null
-				return
+		if(!skip_alert && tgui_alert(usr,"Running this will lock everything up for about 5 minutes.  Would you like to begin the search?", "Find References", list("Yes", "No")) != "Yes")
+			running_find_references = null
+			return
 
 	//this keeps the garbage collector from failing to collect objects being searched for in here
 	SSgarbage.can_fire = 0
 
-	if(usr && usr.client)
+	if(usr?.client)
 		usr.client.running_find_references = type
 
 	testing("Beginning search for references to a [type].")

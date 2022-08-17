@@ -18,7 +18,7 @@ export const JukeNotTheBox = (props, context) => {
   return (
     <Window
       width={370}
-      height={315}>
+      height={313}>
       <Window.Content>
         <Section
           title="Song Player"

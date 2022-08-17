@@ -147,14 +147,10 @@ other types of metals and chemistry for reagents).
 		"category" = category,
 		"price" = price)
 
-	var/icon/I = icon()
-	I := getFlatTypeIcon(temp.type)
+	var/icon/I = icon(getFlatTypeIcon(temp.type))
 
-	I.Scale(I.Width()*3, I.Height()*3)
-
-	ui_data["icon"] = I
-	ui_data["icon_width"] = I.Width()
-	ui_data["icon_height"] = I.Height()
+	ui_data["icon_width"] = I.Width()*3
+	ui_data["icon_height"] = I.Height()*3
 
 /datum/design/proc/AssembleDesignFile()
 	var/datum/computer_file/binary/design/design_file = new

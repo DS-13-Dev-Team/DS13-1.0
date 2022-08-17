@@ -16,7 +16,7 @@
 	required_technologies = list("super_parts")
 	cost = 750
 
-	unlocks_designs = list("s-ansible", "s-filter", "s-amplifier", "s-treatment", "s-analyzer", "s-crystal", "s-transmitter")
+	unlocks_designs = list("s-filter", "s-amplifier", "s-treatment", "s-analyzer", "s-crystal", "s-transmitter")
 
 /datum/technology/tcom/monitoring
 	name = "Monitoring Consoles"
@@ -30,7 +30,7 @@
 	required_technologies = list("telecomm_parts")
 	cost = 1250
 
-	unlocks_designs = list("comm_monitor", "comm_server", "comm_traffic", "message_monitor")
+	unlocks_designs = list("comm_monitor", "comm_server", "message_monitor")
 
 /datum/technology/tcom/monitoring/generate_icon()
 	var/icon/ret = icon('icons/obj/computer.dmi', "computer")
@@ -70,7 +70,7 @@
 	required_technologies = list("telecomm_parts")
 	cost = 1500
 
-	unlocks_designs = list("tcom-server", "tcom-bus", "tcom-hub", "tcom-relay")
+	unlocks_designs = list("tcom-server", "tcom-bus", "tcom-hub", "tcom-relay", "comm_traffic")
 
 /datum/technology/tcom/solnet_relay
 	name = "SolNet Quantum Relay"
@@ -88,7 +88,7 @@
 
 /datum/technology/tcom/subspace
 	name = "Subspace Broadcaster/Reciever"
-	desc = "Subspace Broadcaster/Reciever"
+	desc = "Almost the same as the radio tower! Except it's not a radio tower."
 	id = "subspace"
 
 	x = 13.5
@@ -98,7 +98,7 @@
 	required_technologies = list("telecomm_parts")
 	cost = 1500
 
-	unlocks_designs = list("tcom-broadcaster", "tcom-receiver")
+	unlocks_designs = list("tcom-broadcaster", "tcom-receiver", "s-ansible")
 
 /datum/technology/tcom/processor
 	name = "Processor Unit"

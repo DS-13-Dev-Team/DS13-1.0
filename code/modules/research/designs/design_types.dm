@@ -381,7 +381,7 @@ Botany:
 
 /datum/design/item/mining/rocksaw
 	name = "Rock Saw"
-	id = "Rock Saw"
+	id = "rock_saw"
 	materials = list(MATERIAL_STEEL = 2000, MATERIAL_PLASTEEL = 1300, MATERIAL_GLASS = 500, MATERIAL_DIAMOND = 750)
 	build_path = /obj/item/tool/pickaxe/laser
 	price = 2000
@@ -762,7 +762,7 @@ Botany:
 
 /datum/design/item/tool/plasmasaw
 	name = "SH-B1 Plasma Saw"
-	id = "SH-B1 Plasma Saw"
+	id = "plasma_saw"
 	materials = list(MATERIAL_STEEL = 1500, MATERIAL_GLASS = 500, MATERIAL_DIAMOND = 500)
 	build_path = /obj/item/tool/saw/plasma
 	price = 1000

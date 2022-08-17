@@ -26,7 +26,7 @@ Make sure to add new items to this list if you document new components.
   - [`Flex`](#flex)
   - [`Flex.Item`](#flexitem)
   - [`Grid`](#grid)
-  - [`Grid.Cell`](#gridcell)
+  - [`Grid.Column`](#gridcolumn)
   - [`Icon`](#icon)
   - [`Icon.Stack`](#iconstack)
   - [`Input`](#input)
@@ -76,8 +76,6 @@ to understand what this is about.
 - Lower case names are native browser events and should be used sparingly,
 for example when you need an explicit IE8 support. **DO NOT** use
 lowercase event handlers unless you really know what you are doing.
-- [Button](#button) component does not support the lowercase `onclick` event.
-Use the camel case `onClick` instead.
 
 ## `tgui/components`
 
@@ -229,6 +227,10 @@ the baseline alignment.
 over the button.
 - `children: any` - Content to render inside the button.
 - `onClick: function` - Called when element is clicked.
+- `verticalAlignContent: string` - Align content vertically using flex. Use lineHeight if the height is static.
+  - `top` - align content to the ceiling of the button box.
+  - `middle` - align content on the middle of the button box.
+  - `bottom` - align content on the ground of the button box.
 
 ### `Button.Checkbox`
 
@@ -473,53 +475,40 @@ align-items) to be overridden for individual flex items. See: [Flex](#flex).
 
 ### `Grid`
 
-Works similar to `display: grid` but uses 2 for loops to generate needed amount
-of empty cells.
+> **Deprecated:** This component is no longer recommended due to the variety
+> of bugs that come with table-based layouts.
+> We recommend using [Flex](#flex) instead.
+
+Helps you to divide horizontal space into two or more equal sections.
+It is essentially a single-row `Table`, but with some extra features.
 
 Example:
 
 ```jsx
-<Grid
-  columns={3}
-  rows={4}
-  gridSize="12px">
-  <Grid.Cell
-    firstColumn={2}
-    firstRow={2}
-    secondColumn={3}>
-    <Button>
-      Hello!
-    </Button>
-  </Grid.Cell>
-  <Grid.Cell
-    firstColumn={1}
-    firstRow={3}
-    secondRow={4}>
-    <Button>
-      Goodbye!
-    </Button>
-  </Grid.Cell>
+<Grid>
+  <Grid.Column>
+    <Section title="Section 1">
+      Hello world!
+    </Section>
+  </Grid.Column>
+  <Grid.Column size={2}>
+    <Section title="Section 2">
+      Hello world!
+    </Section>
+  </Grid.Column>
 </Grid>
 ```
 
 **Props:**
 
-- See inherited props: [Box](#box)
-- `columns: number` - Amount of empty columns to generate.
-- `rows: number` - Amount of empty rows to generate.
-- `gridSize: string | number` - Width and height of one cell
+- See inherited props: [Table](#table)
 
-### `Grid.Cell`
-
-[Box](#box) positioned on the grid.
+### `Grid.Column`
 
 **Props:**
 
-- See inherited props: [Box](#box)
-- `firstColumn` - Column to position left corner of the [Box](#box)
-- `firstRow` - Row to position top corner of the [Box](#box)
-- `secondColumn` - Column to position right corner of the [Box](#box)
-- `secondRow` - Row to position bottom corner of the [Box](#box)
+- See inherited props: [Table.Cell](#tablecell)
+- `size: number` (default: 1) - Size of the column relative to other columns.
 
 ### `Icon`
 
@@ -675,7 +664,7 @@ to perform some sort of action), there is a way to do that:
 
 **Props:**
 
-- `label: string` - Item label.
+- `label: string|InfernoNode` - Item label.
 - `color: string` - Sets the color of the text.
 - `buttons: any` - Buttons to render aside the content.
 - `children: any` - Content of this labeled item.
@@ -792,7 +781,11 @@ percentage and how filled the bar is.
 - `maxValue: number` - Highest possible value.
 - `ranges: { color: [from, to] }` - Applies a `color` to the progress bar
 based on whether the value lands in the range between `from` and `to`.
-- `color: string` - Color of the progress bar.
+- `color: string` - Color of the progress bar. Can take any of the following formats:
+  - `#ffffff` - Hex format
+  - `rgb(r,g,b) / rgba(r,g,b,a)` - RGB format
+  - `<name>` - the name of a `color-<name>` CSS class. See `CSS_COLORS` in `constants.js`.
+  - `<name>` - the name of a base CSS color, if not overridden by the definitions above.
 - `children: any` - Content to render inside the progress bar.
 
 ### `RoundGauge`
@@ -823,7 +816,8 @@ The alert on the gauge is optional, and will only be shown if the `alertAfter` p
 - `minValue: number` (default: 0) - The lower bound of the guage.
 - `maxValue: number` (default: 1) - The upper bound of the guage.
 - `ranges: { color: [from, to] }` (default: `{ "good": [0, 1] }`) - Provide regions of the guage to color between two specified values of the metric.
-- `alertAfter: number` (optional) - When provided, will cause an alert symbol on the gauge to begin flashing in the color upon which the needle currently rest, as defined in `ranges`.
+- `alertAfter: number` (optional) - When provided, will cause an alert symbol on the gauge to begin flashing in the color upon which the needle currently rests, as defined in `ranges`.
+- `alertBefore: number` (optional) - As with alertAfter, but alerts below a value. If both are set, and alertAfter comes earlier, the alert will only flash when the needle is between both values. Otherwise, the alert will flash when on the active side of either threshold.
 - `format: function(value) => string` (optional) - When provided, will be used to format the value of the metric for display.
 - `size: number` (default: 1) - When provided scales the gauge.
 

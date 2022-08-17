@@ -54,14 +54,14 @@
 		target_turf = T
 
 //We will recalculate the position after each step, in case the host.victim is trying to escape us
-/datum/execution_stage/approach/proc/user_moved(var/mover, var/oldloc, var/newloc)
+/datum/execution_stage/approach/proc/user_moved(atom/movable/mover, atom/oldloc, dir)
 	SIGNAL_HANDLER
 	if (host.victim.loc != victim_last_loc)
 		get_target_turf()
 		walk_to(host.user, target_turf, 0, SPEED_TO_DELAY(speed))
 
 
-	if (newloc == target_turf)
+	if (mover.loc == target_turf)
 		advance()
 
 

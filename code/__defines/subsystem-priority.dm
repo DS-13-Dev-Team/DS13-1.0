@@ -36,6 +36,7 @@
 #define SS_PRIORITY_TRADE          10  // Adds/removes traders.
 #define SS_PRIORITY_GHOST_IMAGES   10  // Updates ghost client images.
 #define SS_PRIORITY_INSTRUMENTS		10
+#define SS_PRIORITY_PING			10
 
 // SS_BACKGROUND
 #define SS_PRIORITY_OBJECTS       100	// processing_objects processing.

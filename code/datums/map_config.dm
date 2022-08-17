@@ -20,12 +20,24 @@
 		"M.03_Mining_Colony_UpperLevels.dmm",
 	)
 
-	var/traits = list(
-
+	var/list/traits = list(
+		list(
+			"Up" = 1,
+			"Baseturf" = /turf/simulated/floor/asteroid/outside_ds,
+			"Linkage" = "Cross"
+		),
+		list(
+			"Up" = 1,
+			"Down"= -1,
+			"Baseturf" = /turf/simulated/open,
+			"Linkage" = "Cross"
+		),
+		list(
+			"Down" = -1,
+			"Baseturf" = /turf/simulated/open,
+			"Linkage"= "Cross"
+		)
 	)
-
-	/// Dictionary of job sub-typepath to template changes dictionary
-	var/job_changes = list()
 
 	var/map_datum = /datum/map/colony
 
@@ -142,7 +154,6 @@
 		if(!islist(json["job_changes"]))
 			log_world("map_config \"job_changes\" field is missing or invalid!")
 			return
-		job_changes = json["job_changes"]
 
 	defaulted = FALSE
 	return TRUE

@@ -7,6 +7,8 @@
 		"stylemistake.auto-comment-blocks",
 		"oderwat.indent-rainbow",
 		"platymuus.dm-langclient",
-		"EditorConfig.EditorConfig"
+		"EditorConfig.EditorConfig",
+		"anturk.dmi-editor",
+		"esbenp.prettier-vscode"
 	]
 }

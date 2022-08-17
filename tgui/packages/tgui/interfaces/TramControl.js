@@ -155,7 +155,8 @@ export const TramControl = (props, context) => {
                   onClick={() =>
                     act('send', {
                       destination: destinations[transitIndex].id,
-                    })}
+                    })
+                  }
                 />
               </Stack.Item>
             </Stack>

@@ -20,16 +20,16 @@
 	SEND_SIGNAL(src, COMSIG_ATOM_INVISIBILITY_SET, invisibility, amount)
 	invisibility = amount
 
-/atom/movable/proc/move_to_turf(atom/movable/am, old_loc, new_loc)
+/atom/movable/proc/move_to_turf(atom/movable/AM, old_loc, dir)
 	SIGNAL_HANDLER
-	var/turf/T = get_turf(new_loc)
+	var/turf/T = get_turf(AM)
 	if(T && T != loc)
 		forceMove(T)
 
 // Similar to above but we also follow into nullspace
-/atom/movable/proc/move_to_turf_or_null(atom/movable/am, old_loc, new_loc)
+/atom/movable/proc/move_to_turf_or_null(atom/movable/AM, old_loc, dir)
 	SIGNAL_HANDLER
-	var/turf/T = get_turf(new_loc)
+	var/turf/T = get_turf(AM)
 	if(T != loc)
 		forceMove(T)
 

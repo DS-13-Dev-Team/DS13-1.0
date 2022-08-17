@@ -85,7 +85,7 @@
 
 /datum/technology/engineering/res_tech
 	name = "Research Technologies"
-	desc = ""
+	desc = "Make sure sec won't find your illegal researches!"
 	id = "res_tech"
 
 	x = 7
@@ -161,9 +161,11 @@
 	required_technologies = list("res_tech")
 	cost = 1000
 
-	unlocks_designs = list("miningcutter", "Rock_Saw", "plasma_energy")
+	unlocks_designs = list("miningcutter", "rock_saw", "plasma_energy")
 
-/*/datum/technology/engineering/ore_proc
+/*
+Add ore smelting machines here. They should be connected to consoles so I decided to left this tech undone
+/datum/technology/engineering/ore_proc
 	name = "Ore Processing"
 	desc = "Ore Processing"
 	id = "ore_proc"
@@ -176,7 +178,8 @@
 	required_technologies = list("basic_mining")
 	cost = 1000
 
-	unlocks_designs = list()	Add ore smelting machines here. They should be connected to consoles so I decided to left this tech undone*/
+	unlocks_designs = list()
+*/
 
 /datum/technology/engineering/advanced_mining
 	name = "Advanced Mining"
@@ -266,7 +269,7 @@
 	required_technologies = list("adv_eng")
 	cost = 2000
 
-	unlocks_designs = list("SH-B1_Plasma_Saw", "pneum_crow", "combi_driver", "experimental_welder", "price_scanner")
+	unlocks_designs = list("plasma_saw", "pneum_crow", "combi_driver", "experimental_welder", "price_scanner")
 
 /datum/technology/engineering/airlock_brace
 	name = "Airlock Brace"

@@ -127,7 +127,7 @@
 		deploy_timer = addtimer(CALLBACK(src, /obj/item/marker_shard/proc/attempt_deploy),  deploy_time, TIMER_STOPPABLE)
 
 //Whenever we move, reset the timer
-/obj/item/marker_shard/moved(mob/user as mob, old_loc as turf)
+/obj/item/marker_shard/moved(/obj/item/marker_shard/source, atom/old_loc)
 	last_moved = world.time
 	undeploy()
 	last_known_location = loc

@@ -191,8 +191,7 @@ proc/get_craft_item(path)
 /datum/asset/spritesheet/research_designs/register()
 	for(var/datum/design/D as anything in SSresearch.designs_by_id)
 		D = SSresearch.designs_by_id[D]
-		var/icon/I
-		I := getFlatTypeIcon(D.build_path)
+		var/icon/I = icon(getFlatTypeIcon(D.build_path))
 		I.Scale(I.Width()*3, I.Height()*3)
 		Insert(D.id, I)
 	.=..()

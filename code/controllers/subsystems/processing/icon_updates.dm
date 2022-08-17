@@ -8,7 +8,7 @@ PROCESSING_SUBSYSTEM_DEF(icon_update)
 	var/list/queue = list()
 
 /datum/controller/subsystem/processing/icon_update/stat_entry(msg)
-	msg = "|QU:[queue.len]"
+	msg = "|QU:[length(queue)]"
 	return ..()
 
 /datum/controller/subsystem/processing/icon_update/Initialize()
@@ -18,8 +18,8 @@ PROCESSING_SUBSYSTEM_DEF(icon_update)
 /datum/controller/subsystem/processing/icon_update/fire(resumed = FALSE, no_mc_tick = FALSE)
 	var/list/curr = queue
 
-	if (!curr.len)
-		suspend()
+	if (!length(curr))
+		can_fire = FALSE
 		return
 
 	while (curr.len)
@@ -38,5 +38,5 @@ PROCESSING_SUBSYSTEM_DEF(icon_update)
 			return
 
 /atom/proc/queue_icon_update(...)
-	SSicon_update.queue[src] = args.len ? args : TRUE
-	SSicon_update.wake()
+	SSicon_update.queue[src] = length(args) ? args : TRUE
+	SSicon_update.can_fire = TRUE

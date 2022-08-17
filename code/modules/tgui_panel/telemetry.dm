@@ -60,19 +60,25 @@
 		message_admins("[key_name(client)] was kicked for sending a huge telemetry payload")
 		qdel(client)
 		return
+
 	var/list/found
+
 	for(var/i in 1 to len)
 		if(QDELETED(client))
 			// He got cleaned up before we were done
 			return
 		var/list/row = telemetry_connections[i]
+
 		// Check for a malformed history object
 		if (!row || row.len < 3 || (!row["ckey"] || !row["address"] || !row["computer_id"]))
 			return
+
 		if (world.IsBanned(row["ckey"], row["address"], row["computer_id"]))
 			found = row
 			break
+
 		CHECK_TICK
+
 	// This fucker has a history of playing on a banned account.
 	if(found)
 		var/msg = "[key_name(client)] has a banned account in connection history! (Matched: [found["ckey"]], [found["address"]], [found["computer_id"]])"
