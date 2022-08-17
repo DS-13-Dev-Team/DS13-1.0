@@ -1964,12 +1964,12 @@
 	pixel_y = 39
 	},
 /obj/machinery/button/remote/blast_door{
-	id = "46";
+	id = "bridge_shutters";
 	name = "Bridge Lockdown";
 	pixel_y = 31
 	},
 /obj/machinery/button/remote/blast_door{
-	id = "47";
+	id = "bridge_hallway_shutters";
 	name = "Bridge Hallway Lockdown";
 	pixel_y = 23
 	},
@@ -2371,7 +2371,7 @@
 /obj/machinery/door/blast/shutters/open{
 	dir = 8;
 	icon_state = "ishimura_shutter_open";
-	id = "bridge_shutters";
+	id = "bridge_hallway_shutters";
 	name = "Bridge shutters"
 	},
 /turf/simulated/floor/dank/mono,
@@ -2521,7 +2521,7 @@
 /obj/machinery/door/blast/shutters/open{
 	dir = 8;
 	icon_state = "ishimura_shutter_open";
-	id = "bridge_shutters";
+	id = "bridge_hallway_shutters";
 	name = "Bridge Shutters"
 	},
 /turf/simulated/floor/dank/mono,
@@ -2588,7 +2588,7 @@
 /obj/machinery/door/blast/shutters/open{
 	dir = 8;
 	icon_state = "ishimura_shutter_open";
-	id = "bridge_shutters";
+	id = "bridge_hallway_shutters";
 	name = "Bridge shutters"
 	},
 /turf/simulated/floor/dank/mono,
@@ -3775,7 +3775,7 @@
 /obj/machinery/door/blast/shutters/open{
 	dir = 8;
 	icon_state = "ishimura_shutter_open";
-	id = "bridge_shutters";
+	id = "bridge_hallway_shutters";
 	name = "Bridge shutters"
 	},
 /turf/simulated/floor/dank/mono,

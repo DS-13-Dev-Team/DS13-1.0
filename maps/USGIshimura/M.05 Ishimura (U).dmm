@@ -1336,11 +1336,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/eva/prep/ADS)
 "cD" = (
@@ -3059,15 +3054,6 @@
 /obj/machinery/camera/network/engineering{
 	dir = 8
 	},
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24
-	},
-/obj/structure/cable/green{
-	d2 = 2;
-	icon_state = "0-2"
-	},
 /turf/simulated/floor/tiled/dark,
 /area/ishimura/eva/prep/ADS)
 "fY" = (
@@ -3081,18 +3067,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/wall,
 /area/ishimura/eva/ADS)
-"fZ" = (
-/obj/structure/cable/green{
-	d2 = 2;
-	icon_state = "0-2"
-	},
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/ishimura/eva/airlock/ADS)
 "ga" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/structure/table/reinforced,
@@ -3161,18 +3135,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/ishimura/eva/prep/ADS)
-"gh" = (
-/obj/structure/cable/green{
-	d2 = 8;
-	icon_state = "0-8"
-	},
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24
-	},
-/turf/simulated/floor/dank,
-/area/ishimura/eva/ADS)
 "gi" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
@@ -3182,21 +3144,6 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
-	},
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
 	},
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/dank,
@@ -3211,18 +3158,6 @@
 /obj/machinery/vending/engivend,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/monotile,
-/area/ishimura/eva/ADS)
-"gl" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/structure/disposalpipe/segment,
-/turf/simulated/floor/dank,
 /area/ishimura/eva/ADS)
 "gm" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -3250,11 +3185,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/dank,
 /area/ishimura/eva/ADS)
@@ -3268,11 +3198,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/machinery/light{
 	dir = 8
 	},
@@ -3310,24 +3235,10 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/eva/ADS)
-"gw" = (
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/ishimura/eva/airlock/ADS)
 "gx" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/machinery/access_button{
 	command = "cycle_interior";
 	frequency = 1380;
@@ -3345,11 +3256,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/dank,
 /area/ishimura/eva/ADS)
@@ -3519,14 +3425,6 @@
 	locked = 1
 	},
 /turf/simulated/floor/reinforced,
-/area/ishimura/eva/airlock/ADS)
-"ij" = (
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/turf/simulated/floor/tiled/techfloor,
 /area/ishimura/eva/airlock/ADS)
 "iq" = (
 /turf/simulated/floor/reinforced,
@@ -3985,11 +3883,6 @@
 	frequency = 1380;
 	id_tag = "ADS_airlock_inner";
 	locked = 1
-	},
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/eva/airlock/ADS)
@@ -50481,8 +50374,8 @@ GM
 mi
 Ud
 Lz
-fZ
-ij
+rI
+rI
 PU
 kq
 Lz
@@ -50734,7 +50627,7 @@ mi
 gs
 Lz
 Av
-gw
+uu
 pG
 pA
 Lz
@@ -51234,7 +51127,7 @@ UC
 fW
 fY
 gi
-gl
+gz
 gp
 gr
 gx
@@ -51485,7 +51378,7 @@ hu
 UC
 UC
 kY
-gh
+gn
 gn
 gn
 gn

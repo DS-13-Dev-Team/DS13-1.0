@@ -20,8 +20,23 @@
 		"M.03_Mining_Colony_UpperLevels.dmm",
 	)
 
-	var/traits = list(
-
+	var/list/traits = list(
+		list(
+			"Up" = 1,
+			"Baseturf" = /turf/simulated/floor/asteroid/outside_ds,
+			"Linkage" = "Cross"
+		),
+		list(
+			"Up" = 1,
+			"Down" = -1,
+			"Baseturf" = /turf/simulated/open,
+			"Linkage" = "Cross"
+		),
+		list(
+			"Down" = -1,
+			"Baseturf" = /turf/simulated/open,
+			"Linkage" = "Cross"
+		)
 	)
 
 	/// Dictionary of job sub-typepath to template changes dictionary
