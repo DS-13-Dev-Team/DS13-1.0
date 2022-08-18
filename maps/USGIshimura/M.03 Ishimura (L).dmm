@@ -19300,7 +19300,8 @@
 "aLK" = (
 /obj/machinery/door/airlock/freezer{
 	dir = 8;
-	name = "Cafeteria Freezer"
+	name = "Cafeteria Freezer";
+	req_access = list(6)
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/crew/messhall/kitchen/freezer)
