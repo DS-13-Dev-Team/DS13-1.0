@@ -57,6 +57,15 @@
 	containername = "\improper Pizza crate"
 	supply_method = /decl/supply_method/randomized
 
+/decl/hierarchy/supply_pack/hospitality/donkpocket
+	name = "Donk pocket crate"
+	contains = list(
+			/obj/item/storage/box/donkpockets,
+			/obj/item/storage/box/donkpockets,
+			/obj/item/storage/box/donkpockets
+			)
+	cost = 10
+	containername = "\improper crate of donk pockets"
 
 /decl/hierarchy/supply_pack/hospitality/bacon
 	name = "Bacon crate"

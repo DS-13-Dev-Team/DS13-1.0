@@ -295,6 +295,12 @@
 	icon_state = "id"
 	startswith = list(/obj/item/card/id = 7)
 
+/obj/item/storage/box/holoids
+	name = "box of spare IDs"
+	desc = "Has so many replacement IDs."
+	icon_state = "id"
+	startswith = list(/obj/item/card/id/holo/civilian = 7)
+
 /obj/item/storage/box/large/ids
 	name = "box of spare IDs"
 	desc = "Has so, so many empty IDs."

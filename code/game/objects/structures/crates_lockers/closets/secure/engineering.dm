@@ -9,9 +9,9 @@
 
 /obj/structure/closet/secure_closet/engineering_chief/WillContain()
 	return list(
-		new/datum/atom_creator/weighted(list(/obj/item/clothing/accessory/storage/brown_vest = 70, /obj/item/clothing/accessory/storage/webbing = 30)),
 		new/datum/atom_creator/weighted(list(/obj/item/storage/backpack/industrial, /obj/item/storage/backpack/satchel_eng)),
 		new/datum/atom_creator/simple(/obj/item/storage/backpack/dufflebag/eng, 50),
+		/obj/item/clothing/accessory/storage/brown_vest,
 		/obj/item/blueprints,
 		/obj/item/rig/advanced,
 		/obj/item/clothing/under/deadspace/engineer,
@@ -90,6 +90,7 @@
 		/obj/item/taperoll/engineering,
 		/obj/item/flashlight,
 		/obj/item/storage/belt/utility/full,
+		/obj/item/tool/multitool,
 		/obj/item/rig/engineering
 	)
 

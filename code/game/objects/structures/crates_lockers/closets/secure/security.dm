@@ -86,7 +86,7 @@
 		/obj/item/clothing/gloves/combat/pcsi,
 		/obj/item/clothing/accessory/storage/webbing/security,
 		/obj/item/radio/headset/heads/cseco,
-		/obj/item/storage/belt/holster/security,
+		/obj/item/storage/belt/holster/security/tactical,
 		/obj/item/gun/projectile/divet,
 		/obj/item/ammo_magazine/divet = 2,
 		/obj/item/ammo_magazine/divet/rb = 2,
