@@ -65,7 +65,7 @@
 			/obj/item/storage/box/donkpockets
 			)
 	cost = 10
-	containername = "\improper crate of donk pockets"
+	containername = "\improper Crate of Donk-pockets"
 
 /decl/hierarchy/supply_pack/hospitality/bacon
 	name = "Bacon crate"
