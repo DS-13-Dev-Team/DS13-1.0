@@ -123,7 +123,7 @@ export const CameraConsoleSearch = (props, context) => {
                 'Button--ellipsis',
                 activeCamera
                   && camera.name === activeCamera.name
-                  && 'Button--selected',
+                  && 'Button--color--selected',
               ])}
               onClick={() => {
                 act('switch_camera', {

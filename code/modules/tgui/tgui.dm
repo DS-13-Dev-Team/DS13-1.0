@@ -32,7 +32,7 @@
 	/// The status/visibility of the UI.
 	var/status = UI_INTERACTIVE
 	/// The map z-level to display.
-	var/map_z_level = 1
+	var/map_z_level = 2
 	/// Timed refreshing state
 	var/refreshing = FALSE
 	/// Topic state used to determine status/interactability.
@@ -200,10 +200,10 @@
  * optional custom_data list Custom data to send instead of ui_data.
  * optional force bool Send an update even if UI is not interactive.
  */
-/datum/tgui/proc/send_full_update(custom_data, force)
+/datum/tgui/proc/send_full_update(custom_data, force, ignore_cooldown)
 	if(!user.client || !initialized || closing)
 		return
-	if(!COOLDOWN_FINISHED(src, refresh_cooldown))
+	if(!ignore_cooldown && !COOLDOWN_FINISHED(src, refresh_cooldown))
 		refreshing = TRUE
 		addtimer(CALLBACK(src, .proc/send_full_update), TGUI_REFRESH_FULL_UPDATE_COOLDOWN, TIMER_UNIQUE)
 		return

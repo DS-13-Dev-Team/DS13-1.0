@@ -59,6 +59,7 @@ export const RDConsole = (props, context) => {
           <Tabs textAlign="center">
             <Tabs.Tab
               selected={console_tab === 4}
+              mr="4px"
               onClick={() => {
                 if (!(console_tab === 4)) {
                   act("change_tab", { "machine": 4, "tab": 4 });
@@ -69,6 +70,7 @@ export const RDConsole = (props, context) => {
             {can_research ? (
               <Tabs.Tab
                 selected={console_tab === 3}
+                mr="4px"
                 onClick={() => {
                   if (!(console_tab === 3)) {
                     act("change_tab", { "machine": 4, "tab": 3 });
@@ -80,6 +82,7 @@ export const RDConsole = (props, context) => {
             {has_protolathe ? (
               <Tabs.Tab
                 selected={console_tab === 2}
+                mr="4px"
                 disabled={!has_protolathe}
                 onClick={() => {
                   if (!(console_tab === 2)) {
@@ -815,6 +818,7 @@ export class TechTree extends Component {
             <Tabs.Tab
               key={tech_tree.id}
               selected={tech_tree.id === tech_cat}
+              mr="4px"
               onClick={() => {
                 if (!(tech_tree.id === tech_cat)) {
                   act("change_tab", { "machine": 3, "tab": tech_tree.id });
@@ -849,7 +853,7 @@ export class TechTree extends Component {
                   p={0}
                   width="36px"
                   height="36px"
-                  color={(selected_tech && tech.id===selected_tech.id?"caution":(tech.isresearched?"selected":(tech.canresearch?"default":"danger")))}
+                  color={(selected_tech && selected_tech.id===tech.id?"caution":(tech.isresearched?"selected":(tech.canresearch?"default":"danger")))}
                   tooltip={
                     <Box>
                       {tech.name}
@@ -860,7 +864,7 @@ export class TechTree extends Component {
                   tooltipPosition="bottom-start"
                   onDblClick={() => act('research_tech', { tech_id: tech.id })}
                   onClick={() => act('set_selected_tech', { tech_id: tech.id })}>
-                  <Box mt="2px" ml="2px" className={"rdtech96x96 "+tech.id+" sciScale32"} />
+                  <Box mt="2px" ml="2px" className={"rdtech96x96 "+tech.id+" "} />
                 </Button>
               </Grid.Item>
             ))}

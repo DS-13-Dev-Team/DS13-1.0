@@ -62,8 +62,8 @@ export const Button = (props) => {
       className={classes([
         'Button',
         fluid && 'Button--fluid',
-        disabled && 'Button--disabled',
-        selected && 'Button--selected',
+        disabled && 'Button--color--disabled',
+        selected && 'Button--color--selected',
         hasContent && 'Button--hasContent',
         ellipsis && 'Button--ellipsis',
         circular && 'Button--circular',
