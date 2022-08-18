@@ -864,7 +864,7 @@ export class TechTree extends Component {
                   tooltipPosition="bottom-start"
                   onDblClick={() => act('research_tech', { tech_id: tech.id })}
                   onClick={() => act('set_selected_tech', { tech_id: tech.id })}>
-                  <Box mt="2px" ml="2px" className={"rdtech96x96 "+tech.id+" "} />
+                  <Box mt="2px" ml="2px" className={"rdtech96x96 "+tech.id+" sciScale32"} />
                 </Button>
               </Grid.Item>
             ))}
