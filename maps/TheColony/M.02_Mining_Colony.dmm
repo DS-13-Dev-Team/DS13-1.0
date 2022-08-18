@@ -327,6 +327,9 @@
 /obj/structure/table/standard,
 /obj/item/book/manual/medical_diagnostics_manual,
 /obj/random/medical/lite,
+/obj/item/computer_hardware/hard_drive/portable/autorun/manual/surgery{
+	pixel_y = 10
+	},
 /turf/simulated/floor/tiled/white/monotile,
 /area/mining_colony/interior/medbay)
 "abg" = (
@@ -2314,8 +2317,15 @@
 /turf/simulated/floor/tiled/dark,
 /area/mining_colony/interior/cargo)
 "agD" = (
-/obj/structure/table/steel,
-/obj/item/storage/toolbox/mechanical,
+/obj/structure/table/rack,
+/obj/effect/floor_decal/dank/outline,
+/obj/item/circuitboard/telecomms/broadcaster,
+/obj/item/circuitboard/telecomms/bus,
+/obj/item/circuitboard/telecomms/hub,
+/obj/item/circuitboard/telecomms/processor,
+/obj/item/circuitboard/telecomms/receiver,
+/obj/item/circuitboard/telecomms/relay,
+/obj/item/circuitboard/telecomms/server,
 /turf/simulated/floor/dank/rectangles,
 /area/mining_colony/interior/enginieering/lathe_room)
 "agE" = (
@@ -10996,6 +11006,8 @@
 /obj/effect/floor_decal/corner/grey/border{
 	dir = 4
 	},
+/obj/item/stack/material/steel/fifty,
+/obj/item/stack/material/steel/fifty,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/mining_colony/interior/science/researchandev)
 "aFZ" = (
@@ -18445,9 +18457,6 @@
 /obj/item/stack/material/plastic{
 	amount = 30
 	},
-/obj/item/stack/material/steel{
-	amount = 30
-	},
 /obj/item/stack/material/silver/ten{
 	amount = 3
 	},
@@ -22930,6 +22939,9 @@
 /obj/item/roller,
 /obj/structure/table/standard,
 /obj/machinery/recharger,
+/obj/item/computer_hardware/hard_drive/portable/autorun/manual/surgery{
+	pixel_y = 10
+	},
 /turf/simulated/floor/tiled/white,
 /area/mining_colony/interior/medbay)
 "bif" = (
@@ -28503,6 +28515,13 @@
 	},
 /turf/simulated/floor/dank/maint,
 /area/mining_colony/interior/civ_hall)
+"teO" = (
+/obj/structure/table/standard,
+/obj/item/reagent_containers/glass/bucket{
+	pixel_y = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/mining_colony/interior/hydrophonics)
 "teZ" = (
 /obj/effect/floor_decal/corner/grey/three_quarters{
 	dir = 4
@@ -28533,6 +28552,11 @@
 	},
 /turf/simulated/floor/tiled/kafel_full,
 /area/mining_colony/interior/kitchen_area)
+"tzw" = (
+/obj/structure/table/steel,
+/obj/item/storage/toolbox/mechanical,
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/interior/enginieering/lathe_room)
 "tDW" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -32777,7 +32801,7 @@ aAo
 aAZ
 aQf
 aYN
-aAZ
+teO
 aAo
 atp
 atp
@@ -46864,7 +46888,7 @@ aCq
 aBp
 aCF
 aJq
-aJK
+tzw
 aNB
 aSq
 aTr

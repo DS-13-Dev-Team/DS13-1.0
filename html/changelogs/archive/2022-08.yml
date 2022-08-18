@@ -43,3 +43,11 @@
   - balance: Leaper's leap ability speed is now slightly increased.
   - bugfix: 'USG Ishimura: EVA ADS is now fully indestructable.'
   - bugfix: 'The Colony: all bridge shutter controls are fixed.'
+2022-08-18:
+  nianoru:
+  - rscadd: 'The Colony: crew monitoring console has been added to bridge.'
+  - rscadd: 'The Colony: a bucket has been added to botany.'
+  - rscadd: 'The Colony: medbay now has flashdrives for surgery.'
+  - rscadd: 'The Colony: tcomms circuit boards added to engineer fabricator room.'
+  - balance: 'The Colony: research and development now starts with two fifty-stack
+      steel total.'

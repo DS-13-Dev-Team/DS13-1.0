@@ -3743,6 +3743,10 @@
 	},
 /turf/simulated/floor/dank/maint,
 /area/mining_colony/security/upper/commandofficers)
+"NF" = (
+/obj/machinery/computer/crew,
+/turf/simulated/floor/dank/golf_brown,
+/area/mining_colony/security/upper/commandofficers)
 "NL" = (
 /obj/machinery/light{
 	dir = 4;
@@ -12439,7 +12443,7 @@ Vv
 Vv
 Vv
 dA
-ae
+NF
 aW
 dA
 aB
