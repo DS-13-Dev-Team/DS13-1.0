@@ -26,7 +26,7 @@
 
 	var/base_damage = 15
 	var/fail_damage = 4
-	var/base_difficulty = 85
+	var/base_difficulty = 60
 	var/time_to_escape = 40
 	var/target_zone
 	var/struggle_prob = 2
@@ -211,7 +211,7 @@
 	if (difficulty)
 		to_chat(user, SPAN_NOTICE("You failed break free. There was a [round(100 - difficulty)]% chance of success"))
 		if (user == buckled_mob)
-			to_chat(user, SPAN_NOTICE("Freeing yourself is very difficult. Perhaps you should call for help?"))
+			to_chat(user, SPAN_NOTICE("Freeing yourself is very difficult. Perhaps you should call for help, or try to pry yourself out with a tool?"))
 
 
 /obj/structure/corruption_node/maw/proc/damage_mob(var/mob/living/L)
@@ -292,7 +292,7 @@
 			return
 
 		//But they can attempt to struggle out on their own. At a very low success rate
-		difficulty = 96
+		difficulty = 80
 		/*This will generally not work, and repeated attempts will result in the creature bleeding to
 		death as it tries to escape
 		Such is nature*/
@@ -305,7 +305,7 @@
 		if (istype(I))
 			//Using a crowbar helps
 			to_chat(user, SPAN_NOTICE("\The [I] gives you extra leverage"))
-			var/reduction = I.get_tool_quality(QUALITY_PRYING)*0.5
+			var/reduction = 10+I.get_tool_quality(QUALITY_PRYING)*0.6
 			if (user == buckled_mob)
 				reduction *= 0.66 //But it helps less if you don't have good leverage
 			difficulty -= reduction

@@ -722,6 +722,21 @@
 	icon_state = "beepskyplushie"
 	phrase = "Ping!"
 
+/obj/structure/plushie/peng
+	name = "plush Peng"
+	desc = "A plushie of the eluding Peng! Sadly this isn't the real deal, but it is still rare! Might make viewers yell \"PENG\"!"
+	icon = 'icons/obj/economy.dmi'
+	icon_state = "pengmatic"
+	phrase = "PENG!"
+
+/obj/structure/plushie/crow
+	name = "plush crow"
+	desc = "A plushie of a devious crow! It looks a bit ominous and seems to stare into your soul. Looking at it some more, you can't help but think that it feels familiar."
+	icon = 'icons/mob/crow.dmi'
+	icon_state = "crow"
+	phrase = "Caw!"
+
+
 //Small plushies.
 /obj/item/toy/plushie
 	name = "generic small plush"

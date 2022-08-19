@@ -30,19 +30,19 @@
 #define WORKTIME_FAST					60
 #define WORKTIME_NORMAL					90
 #define WORKTIME_SLOW					120
-#define WORKTIME_VERY_SLOW					170
+#define WORKTIME_VERY_SLOW				170
 #define WORKTIME_EXTREMELY_LONG			250
 
 //Fail chance for tool system calculated in that way: basic chance - tool level - stat check.
 //Basic tools will give -30% on fail chance, and people on right job should have -20% at least.
 #define FAILCHANCE_ZERO					0
-#define FAILCHANCE_VERY_EASY			15
-#define FAILCHANCE_EASY					35
-#define FAILCHANCE_NORMAL				45
-#define FAILCHANCE_HARD					65
-#define FAILCHANCE_CHALLENGING			75
-#define FAILCHANCE_VERY_HARD			105
-#define FAILCHANCE_IMPOSSIBLE			135
+#define FAILCHANCE_VERY_EASY			0 //15
+#define FAILCHANCE_EASY					0 //35
+#define FAILCHANCE_NORMAL				0 //45
+#define FAILCHANCE_HARD					0 //65
+#define FAILCHANCE_CHALLENGING			0 //75
+#define FAILCHANCE_VERY_HARD			0 //105
+#define FAILCHANCE_IMPOSSIBLE			0 //135
 
 //Sounds for working with tools
 #define NO_WORKSOUND					-1
