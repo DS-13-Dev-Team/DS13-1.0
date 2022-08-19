@@ -141,9 +141,10 @@ using metal and glass, it uses glass and reagents (usually sulfuric acid).
 	RNDD["design"] = D.id
 	RNDD["amount"] = amount
 	// We need unique name in the list
-	queue["[RNDD["name"]]_[D.id]_[world.time]"] = RNDD
+	var/list_name = "[D.id]_x[RNDD["amount"]]_[world.time]"
+	queue[list_name] = RNDD
 	if(!busy)
-		produce_design("[RNDD["name"]]_[D.id]_[world.time]")
+		produce_design(list_name)
 
 /obj/machinery/r_n_d/circuit_imprinter/proc/clear_queue()
 	queue = list()
@@ -184,12 +185,11 @@ using metal and glass, it uses glass and reagents (usually sulfuric acid).
 	for(var/C in D.chemicals)
 		reagents.remove_reagent(C, D.chemicals[C]/efficiency_coeff)
 
-	addtimer(CALLBACK(src, .proc/create_design, P), D.time)
+	addtimer(CALLBACK(src, .proc/create_design, P, amount), (D.time / efficiency_coeff) * amount)
 
-/obj/machinery/r_n_d/circuit_imprinter/proc/create_design(P)
+/obj/machinery/r_n_d/circuit_imprinter/proc/create_design(P, amount)
 	var/RNDD = queue[P]
 	var/datum/design/D = SSresearch.designs_by_id[RNDD["design"]]
-	var/amount = RNDD["amount"]
 	for(var/i = 1 to amount)
 		new D.build_path(loc)
 	busy = FALSE

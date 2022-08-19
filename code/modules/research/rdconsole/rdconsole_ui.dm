@@ -67,7 +67,7 @@
 		data["imprinter_queue_data"] = list()
 		data["imprinter_can_restart_queue"] = (linked_imprinter.queue.len && !linked_imprinter.busy)
 		for(var/RNDD in linked_imprinter.queue)
-			data["imprinter_queue_data"] += list("item" = RNDD, "name" = linked_imprinter.queue[RNDD]["name"])
+			data["imprinter_queue_data"] += list(list("item" = RNDD, "name" = linked_imprinter.queue[RNDD]["name"]))
 
 		data["imprinter_possible_designs"] = get_possible_designs_data(IMPRINTER)
 		data["imprinter_all_cats"] = files.design_categories_imprinter
