@@ -518,7 +518,7 @@ const MachineTab = (props, context) => {
                             <Stack.Item grow>
                               <Flex vertical>
                                 <Flex.Item>
-                                  {design.can_create >= 5 && (
+                                  {design.can_create >= 1 && (
                                     <Button
                                       icon="wrench"
                                       onClick={() => act("build",
