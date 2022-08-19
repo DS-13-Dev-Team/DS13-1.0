@@ -55,9 +55,14 @@
 	return TRUE
 
 
-/datum/computer_file/binary/design/ui_data()
-	var/list/old_data = design.ui_data()
-	var/list/data = old_data.Copy()
+/datum/computer_file/binary/design/ui_data(mat_efficiency)
+	var/list/data = design.ui_data.Copy()
 	data["copy_protected"] = copy_protected
 	data["filename"] = filename
+	var/datum/asset/spritesheet/sheet = get_asset_datum(/datum/asset/spritesheet/research_designs)
+	data["icon"] = sheet.icon_tag(design.id, "autolatheIcon")
+	for(var/M in design.materials)
+		data["materials"] += list(list("name" = capitalize(M), "amount" = round(design.materials[M]*mat_efficiency, 0.01)))
+	for(var/datum/reagent/R as anything in design.chemicals)
+		data["chemicals"] += list(list("name" = initial(R.name), "amount" = design.chemicals[R]))
 	return data

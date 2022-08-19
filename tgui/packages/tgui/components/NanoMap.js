@@ -1,4 +1,4 @@
-import { Component } from 'inferno';
+import { Component, linkEvent } from 'inferno';
 import { Box, Button, Icon, Tooltip, LabeledList, Slider } from '.';
 import { useBackend } from "../backend";
 
@@ -9,7 +9,6 @@ const pauseEvent = e => {
   e.returnValue = false;
   return false;
 };
-const zoomScale = 400;
 
 export class NanoMap extends Component {
   constructor(props) {
@@ -71,14 +70,14 @@ export class NanoMap extends Component {
       pauseEvent(e);
     };
 
-    this.handleOnClick = e => {
-      let byondX = (e.offsetX/this.state.zoom)/zoomScale;
-      let byondY = 1-(e.offsetY/this.state.zoom)/zoomScale;
+    this.handleOnClick = (zoomScale, event) => {
+      let byondX = (event.offsetX/this.state.zoom)/zoomScale;
+      let byondY = 1-(event.offsetY/this.state.zoom)/zoomScale;
 
-      e.byondX = byondX;
-      e.byondY = byondY;
+      event.byondX = byondX;
+      event.byondY = byondY;
       if (typeof(this.props.onClick) === "function") {
-        this.props.onClick(e);
+        this.props.onClick(event);
       }
     };
 
@@ -114,7 +113,7 @@ export class NanoMap extends Component {
 
     const mapUrl = config.map + "-" + config.mapZLevel + ".png";
     // (x * zoom), x Needs to be double the turf- map size
-    const mapSize = (zoomScale * zoom) + 'px';
+    const mapSize = (config.mapSize * zoom) + 'px';
     const newStyle = {
       width: mapSize,
       height: mapSize,
@@ -135,7 +134,7 @@ export class NanoMap extends Component {
           style={newStyle}
           textAlign="center"
           onMouseDown={this.handleDragStart}
-          onClick={this.handleOnClick}>
+          onClick={linkEvent(config.mapSize, this.handleOnClick)}>
           <Box>
             {children}
           </Box>

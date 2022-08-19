@@ -65,8 +65,9 @@ other types of metals and chemistry for reagents).
 	var/starts_unlocked = FALSE
 
 //These procs are used in subtypes for assigning names and descriptions dynamically
-/datum/design/proc/AssembleDesignInfo()
-	var/atom/movable/temp_atom = Fabricate()
+/datum/design/proc/AssembleDesignInfo(atom/movable/temp_atom)
+	if(!temp_atom)
+		temp_atom = Fabricate()
 
 	AssembleDesignName(temp_atom)
 	AssembleDesignDesc(temp_atom)
@@ -77,6 +78,38 @@ other types of metals and chemistry for reagents).
 
 	if (temp_atom)
 		qdel(temp_atom)
+
+/datum/design/autolathe/AssembleDesignInfo(atom/movable/temp_atom)
+	temp_atom = Fabricate()
+	if(istype(temp_atom, /obj))
+		for(var/obj/O in temp_atom.GetAllContents(includeSelf = TRUE))
+			AddObjectMaterials(O)
+	return ..()
+
+//Add materials and reagents from object to the recipe
+/datum/design/proc/AddObjectMaterials(obj/O)
+	var/multiplier = 1
+
+	// If stackable, we want to multiply materials by amount
+	if(istype(O, /obj/item/stack))
+		var/obj/item/stack/stack = O
+		multiplier = stack.get_amount()
+
+	var/list/mats = O.matter
+	if (mats && mats.len)
+
+		for(var/a in mats)
+
+			var/amount = mats[a] * multiplier
+			if(amount)
+				LAZYAPLUS(materials, a, amount)
+
+	mats = O.matter_reagents
+	if (mats && mats.len)
+		for(var/a in mats)
+			var/amount = mats[a] * multiplier
+			if(amount)
+				LAZYAPLUS(chemicals, a, amount)
 
 /datum/design/proc/get_price(var/mob/user)
 	.=price
@@ -145,7 +178,9 @@ other types of metals and chemistry for reagents).
 		"desc" = desc,
 		"full_desc" = full_desc,
 		"category" = category,
-		"price" = price)
+		"price" = price,
+		"time" = time,
+	)
 
 	var/icon/I = icon(getFlatTypeIcon(temp.type))
 

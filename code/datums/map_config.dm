@@ -40,6 +40,8 @@
 	)
 
 	var/map_datum = /datum/map/colony
+	//Size of the map *2
+	var/map_size = 400
 
 /**
  * Proc that simply loads the default map config, which should always be functional.

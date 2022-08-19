@@ -72,7 +72,9 @@ export const Store = (props, context) => {
               <Stack.Item grow>
                 <Section fill scrollable title="Store Items" buttons={
                   <Input
-                    placeholder="Search for a camera"
+                    placeholder="Enter design name"
+                    value={searchText}
+                    width={20}
                     onInput={(e, value) => setSearchText(value)} />
                 }>
                   <Stack vertical>

@@ -569,20 +569,19 @@
 				if(build_type == IMPRINTER)
 					t = linked_imprinter.check_mat(D, M)
 
-				design_data["mats"] += list(list("name" = capitalize(M), "amount" = D.materials[M]*coeff, "can_make" = t >= 1 ? TRUE:FALSE))
+				design_data["mats"] += list(list("name" = capitalize(M), "amount" = D.materials[M]/coeff, "can_make" = t >= 1 ? TRUE:FALSE))
 
 				c = min(t,c)
 
-			if(D.chemicals.len)
-				for(var/R as anything in D.chemicals)
-					if(build_type == PROTOLATHE)
-						t = linked_lathe.check_mat(D, R)
-					if(build_type == IMPRINTER)
-						t = linked_imprinter.check_mat(D, R)
+			for(var/R as anything in D.chemicals)
+				if(build_type == PROTOLATHE)
+					t = linked_lathe.check_mat(D, R)
+				if(build_type == IMPRINTER)
+					t = linked_imprinter.check_mat(D, R)
 
-					design_data["chems"] += list(list("name" = CallReagentName(R), "amount" = D.chemicals[R]*coeff, "can_make" = t >= 1 ? TRUE:FALSE))
+				design_data["chems"] += list(list("name" = CallReagentName(R), "amount" = D.chemicals[R]/coeff, "can_make" = t >= 1 ? TRUE:FALSE))
 
-					c = min(t,c)
+				c = min(t,c)
 
 			design_data["can_create"] = c
 			designs_list += list(design_data)

@@ -247,6 +247,7 @@
 		"refreshing" = refreshing,
 		"map" = (GLOB.using_map?.path) ? GLOB.using_map.path : "Unknown",
 		"mapZLevel" = map_z_level,
+		"mapSize" = SSmapping.config.map_size,
 		"window" = list(
 			"key" = window_key,
 			"size" = window_size,

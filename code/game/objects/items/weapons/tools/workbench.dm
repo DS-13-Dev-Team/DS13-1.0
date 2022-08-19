@@ -6,6 +6,8 @@
 	icon_state = "deadspace_workbench"
 	resistance = 10
 	max_health = 200 //Hard to break
+	density = TRUE
+	anchored = TRUE
 
 //Quick ways to open crafting menu at this workbench
 /obj/structure/workbench/attack_hand(mob/user)
