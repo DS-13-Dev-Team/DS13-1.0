@@ -30,7 +30,7 @@ export const RDConsole = (props, context) => {
   return (
     <Window
       width={970}
-      height={675}
+      height={685}
       theme="rdconsole">
       {!locked ? (
         <Window.Content
