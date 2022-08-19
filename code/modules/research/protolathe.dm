@@ -187,15 +187,15 @@
 		materials[M]["amount"] = max(0, (materials[M]["amount"] - (D.materials[M]*amount / efficiency_coeff)))
 	for(var/C in D.chemicals)
 		reagents.remove_reagent(C, D.chemicals[C]/efficiency_coeff)
-	addtimer(CALLBACK(src, .proc/create_design, RNDD["design"], amount), (D.time / efficiency_coeff) * amount)
+	addtimer(CALLBACK(src, .proc/create_design, RNDD, amount), (D.time / efficiency_coeff) * amount)
 
-/obj/machinery/r_n_d/protolathe/proc/create_design(P, amount)
-	var/datum/design/D = SSresearch.designs_by_id[P]
+/obj/machinery/r_n_d/protolathe/proc/create_design(RNDD, amount)
+	var/datum/design/D = SSresearch.designs_by_id[RNDD["design"]]
 	for(var/i = 1 to amount)
 		new D.build_path(loc)
 	busy = FALSE
 	update_icon()
-	queue -= P
+	queue -= RNDD
 
 	if(queue.len)
 		produce_design(queue[1])
