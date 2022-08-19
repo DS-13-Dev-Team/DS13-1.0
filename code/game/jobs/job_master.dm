@@ -24,6 +24,7 @@ var/global/datum/controller/occupations/job_master
 
 	proc/SetupOccupations(var/setup_titles = 0)
 		occupations = list()
+		occupations_map = list()
 		occupations_by_type = list()
 		occupations_by_title = list()
 		if(!length(GLOB.using_map.allowed_jobs))
