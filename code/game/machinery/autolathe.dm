@@ -182,11 +182,10 @@
 
 	ui = SSnano.try_update_ui(user, src, ui_key, ui, data)
 	if (!ui)
-		var/datum/asset/assets = get_asset_datum(/datum/asset/spritesheet/research_designs)
-		assets.send(user)
 		// the ui does not exist, so we'll create a new() one
 		// for a list of parameters and their descriptions see the code docs in \code\modules\nano\nanoui.dm
 		ui = new(user, src, ui_key, "autolathe.tmpl", "Autolathe", 550, 655)
+		var/datum/asset/assets = get_asset_datum(/datum/asset/spritesheet/research_designs)
 		ui.add_stylesheet(assets)
 		// when the ui is first opened this is the data it will use
 		ui.set_initial_data(data)

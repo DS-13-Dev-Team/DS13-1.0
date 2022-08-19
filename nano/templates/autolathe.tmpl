@@ -167,7 +167,7 @@ Used In File(s): \code\game\machinery\autolathe.dm
 					<div class="item">
 						<div class="itemLabelWidest">Materials</div>
 						{{for data.current.materials :material:material_i}}
-							<div class="itemContentWidest">{{:material.name}}: {{:material.req}}</div>
+							<div class="itemContentWidest">{{:material.name}}: {{:material.amount}}</div>
 						{{/for}}
 					</div>
 					{{/if}}
@@ -175,7 +175,7 @@ Used In File(s): \code\game\machinery\autolathe.dm
 					<div class="item">
 						<div class="itemLabelWidest">Reagents</div>
 						{{for data.current.chemicals :chemical:chemical_i}}
-							<div class="itemContentWidest">{{:chemical.name}}: {{:chemical.req}}</div>
+							<div class="itemContentWidest">{{:chemical.name}}: {{:chemical.amount}}</div>
 						{{/for}}
 					</div>
 					{{/if}}
