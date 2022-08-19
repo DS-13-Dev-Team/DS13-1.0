@@ -76,7 +76,7 @@
 			try
 				if(!D.PI.can_buy_in_store(occupant))
 					continue
-			catch(exception/E)
+			catch(var/exception/E)
 				crash_with("Crashed! Type: [D.type]. ID: [A]. Type 2: [D.PI]")
 				continue
 		var/list/design_data = D.ui_data.Copy()
