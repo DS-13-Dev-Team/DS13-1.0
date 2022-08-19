@@ -195,17 +195,6 @@
 	containername = "\improper painting supplies crate"
 	containertype = /obj/structure/closet/crate
 
-// /decl/hierarchy/supply_pack/engineering/bluespacerelay
-// 	name = "Emergency Bluespace Relay Assembly Kit"
-// 	contains = list(/obj/item/circuitboard/bluespacerelay,
-// 					/obj/item/stock_parts/manipulator,
-// 					/obj/item/stock_parts/manipulator,
-// 					/obj/item/stock_parts/subspace/filter,
-// 					/obj/item/stock_parts/subspace/crystal,
-// 					/obj/item/storage/toolbox/electrical)
-// 	cost = 75
-// 	containername = "\improper emergency bluespace relay assembly kit"
-
 /decl/hierarchy/supply_pack/engineering/tcomms
 	name = "Telecommunications Parts Crate"
 	contains = list(/obj/item/stock_parts/subspace/ansible,
