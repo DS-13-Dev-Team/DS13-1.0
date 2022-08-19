@@ -205,7 +205,7 @@
 	name = "The Colony"
 	landmark_tag = "kellion_landing"
 	base_turf = /turf/simulated/floor/plating
-	base_area = /area/mining_colony/interior/kellion_arrival/arrivals
+	base_area = /area/mining_colony/interior/kellion_arrival
 
 /obj/effect/shuttle_landmark/kellion/landing/ishimura
 	name = "USG Ishimura"

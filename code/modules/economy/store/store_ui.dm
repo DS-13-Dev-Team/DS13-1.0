@@ -69,8 +69,16 @@
 	data["categories"] = list("All")
 	for(var/A in (GLOB.public_store_designs|GLOB.unlimited_store_designs|GLOB.limited_store_designs))
 		var/datum/design/D = SSresearch.designs_by_id[A]
-		if(D.PI && !D.PI.can_buy_in_store(occupant))
+		if(!D)
+			crash_with("Found one, id: [A]")
 			continue
+		if(D.PI)
+			try
+				if(!D.PI.can_buy_in_store(occupant))
+					continue
+			catch(exception/E)
+				crash_with("Crashed! Type: [D.type]. ID: [A]. Type 2: [D.PI]")
+				continue
 		var/list/design_data = D.ui_data.Copy()
 		data["designs"] += list(design_data)
 		data["categories"] |= D.category
