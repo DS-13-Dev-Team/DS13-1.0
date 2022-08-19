@@ -947,6 +947,7 @@ area/ishimura/upper/medical/bpc
 /area/ishimura/tramdeck/tram/tunnel
 	name = "\improper Ishimura Tram Tunnel"
 	icon_state = "tramtunnel"
+	requires_power = FALSE
 
 /area/ishimura/tramdeck/tram/tunnel/aft
 	name = "\improper Ishimura Aft Tram Tunnel"
