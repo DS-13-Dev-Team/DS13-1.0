@@ -11,8 +11,6 @@ var/global/datum/controller/occupations/job_master
 	var/list/occupations = list()
 	//Associative list of all jobs, by type
 	var/list/occupations_by_type
-	//Associative list of all jobs, by title
-	var/list/occupations_by_title
 	//Players who need jobs
 	var/list/unassigned = list()
 	//Debug info
@@ -26,7 +24,6 @@ var/global/datum/controller/occupations/job_master
 		occupations = list()
 		occupations_map = list()
 		occupations_by_type = list()
-		occupations_by_title = list()
 		if(!length(GLOB.using_map.allowed_jobs))
 			log_debug("<span class='warning'>Error setting up jobs, no job datums found!</span>")
 			return FALSE
@@ -38,10 +35,7 @@ var/global/datum/controller/occupations/job_master
 				occupations_map += job
 			occupations += job
 			occupations_by_type[job.type] = job
-			occupations_by_title[job.title] = job
 			job.current_positions = 0
-			for(var/alt_title in job.alt_titles)
-				occupations_by_title[alt_title] = job
 			if(!setup_titles) continue
 			if(job.department_flag & COM)
 				GLOB.command_positions |= job.title
@@ -81,11 +75,19 @@ var/global/datum/controller/occupations/job_master
 
 
 	proc/GetJob(var/rank)
-		if(!rank)	return null
-		for(var/datum/job/J in occupations)
-			if(!J)	continue
-			if(J.title == rank)	return J
-		return null
+		if(!rank)
+			return
+		for(var/datum/job/J in occupations_map)
+			if(!J)
+				continue
+			if(J.title == rank)
+				return J
+		for(var/datum/job/J in occupations-occupations_map)
+			if(!J)
+				continue
+			if(J.title == rank)
+				return J
+		return
 
 	proc/ShouldCreateRecords(var/rank)
 		if(!rank) return FALSE

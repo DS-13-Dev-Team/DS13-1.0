@@ -77,7 +77,7 @@
 /datum/preferences/proc/sanitize_skills(var/list/input)
 	. = list()
 	var/datum/species/S = all_species[species]
-	for(var/datum/job/job as anything in job_master.occupations_map)
+	for(var/datum/job/job as anything in job_master.occupations)
 		var/input_skills = list()
 		if((job in input) && istype(input[job], /list))
 			input_skills = input[job]
