@@ -137,6 +137,9 @@ GLOBAL_LIST_INIT(all_maps, initialise_bay_map_list())
 	if(!using_shuttles)
 		using_shuttles = subtypesof(/datum/shuttle)
 
+	for(var/job in allowed_jobs)
+		allowed_jobs[job] = TRUE
+
 /datum/map/proc/setup_map()
 	var/lobby_track_type
 	if(lobby_tracks.len)

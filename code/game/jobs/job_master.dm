@@ -7,31 +7,34 @@ var/global/datum/controller/occupations/job_master
 
 
 /datum/controller/occupations
-		//List of all jobs
+	//List of all jobs
 	var/list/occupations = list()
-		//Associative list of all jobs, by type
+	//Associative list of all jobs, by type
 	var/list/occupations_by_type
 	//Associative list of all jobs, by title
 	var/list/occupations_by_title
-		//Players who need jobs
+	//Players who need jobs
 	var/list/unassigned = list()
-		//Debug info
+	//Debug info
 	var/list/job_debug = list()
-		//Cache of icons for job info window
+	//Cache of icons for job info window
 	var/list/job_icons = list()
+	//List of all jobs
+	var/list/occupations_map = list()
 
 	proc/SetupOccupations(var/setup_titles = 0)
 		occupations = list()
 		occupations_by_type = list()
 		occupations_by_title = list()
-		var/list/all_jobs = GLOB.using_map.allowed_jobs
-		if(!length(all_jobs))
+		if(!length(GLOB.using_map.allowed_jobs))
 			log_debug("<span class='warning'>Error setting up jobs, no job datums found!</span>")
 			return FALSE
-		for(var/J in all_jobs)
+		for(var/J in subtypesof(/datum/job))
 			var/datum/job/job = decls_repository.get_decl(J)
 			if(!job)
 				continue
+			if(GLOB.using_map.allowed_jobs[J])
+				occupations_map += job
 			occupations += job
 			occupations_by_type[job.type] = job
 			occupations_by_title[job.title] = job
