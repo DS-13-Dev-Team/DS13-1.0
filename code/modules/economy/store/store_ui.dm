@@ -72,13 +72,8 @@
 		if(!D)
 			crash_with("Found one, id: [A]")
 			continue
-		if(D.PI)
-			try
-				if(!D.PI.can_buy_in_store(occupant))
-					continue
-			catch(var/exception/E)
-				crash_with("Crashed! Type: [D.type]. ID: [A]. Type 2: [D.PI]")
-				continue
+		if(D.PI && !D.PI.can_buy_in_store(occupant))
+			continue
 		var/list/design_data = D.ui_data.Copy()
 		data["designs"] += list(design_data)
 		data["categories"] |= D.category
