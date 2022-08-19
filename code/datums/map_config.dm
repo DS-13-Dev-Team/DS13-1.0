@@ -20,23 +20,8 @@
 		"M.03_Mining_Colony_UpperLevels.dmm",
 	)
 
-	var/list/traits = list(
-		list(
-			"Up" = 1,
-			"Baseturf" = /turf/simulated/floor/asteroid/outside_ds,
-			"Linkage" = "Cross"
-		),
-		list(
-			"Up" = 1,
-			"Down"= -1,
-			"Baseturf" = /turf/simulated/open,
-			"Linkage" = "Cross"
-		),
-		list(
-			"Down" = -1,
-			"Baseturf" = /turf/simulated/open,
-			"Linkage"= "Cross"
-		)
+	var/traits = list(
+
 	)
 
 	var/map_datum = /datum/map/colony
