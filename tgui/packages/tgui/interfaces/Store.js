@@ -145,7 +145,7 @@ export const Store = (props, context) => {
                       RIG: {credits_rig}
                     </Stack.Item>
                     <Stack.Item>
-                      Chip: {chip ? chip_worth : "Not Inserted"}
+                      Chip: {chip ? (<Box>{chip_worth} <Button onClick={() => act('eject_chip')}>Eject Chip</Button></Box>) : "Not Inserted"}
                     </Stack.Item>
                     <Stack.Item>
                       Deposit Cash: {cash_stored}
