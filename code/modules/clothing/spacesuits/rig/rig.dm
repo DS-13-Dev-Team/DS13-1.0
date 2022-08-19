@@ -106,13 +106,13 @@
 						/obj/item/rig/verb/select_module, /obj/item/rig/verb/toggle_module,
 						/obj/item/rig/verb/engage_module)
 
-/obj/item/rig/examine()
+/obj/item/rig/examine(mob/user)
 	. = ..()
 	if(wearer)
 		for(var/obj/item/piece in list(helmet,gloves,chest,boots))
 			if(!piece || piece.loc != wearer)
 				continue
-			to_chat(usr, "[icon2html(piece)] \The [piece] [piece.gender == PLURAL ? "are" : "is"] deployed.")
+			to_chat(usr, "[icon2html(piece, user)] \The [piece] [piece.gender == PLURAL ? "are" : "is"] deployed.")
 
 	if(src.loc == usr)
 		to_chat(usr, "The access panel is [locked? "locked" : "unlocked"].")

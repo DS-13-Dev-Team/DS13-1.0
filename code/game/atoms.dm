@@ -337,7 +337,7 @@ its easier to just keep the beam vertical.
 		else
 			f_name += "oil-stained [name][infix]."
 
-	to_chat(user, "[icon2html(src)] That's [f_name] [suffix]")
+	to_chat(user, "[icon2html(src, user)] That's [f_name] [suffix]")
 	to_chat(user, desc)
 
 	return distance == -1 || (get_dist(src, user) <= distance)
@@ -467,7 +467,7 @@ its easier to just keep the beam vertical.
 	var/turf/T = get_turf(src)
 	var/list/mobs = list()
 	var/list/objs = list()
-	get_mobs_and_objs_in_view_fast(T,range, mobs, objs, checkghosts)
+	get_mobs_and_objs_in_view_fast(T, range, mobs, objs, checkghosts)
 
 	for(var/o in objs)
 		var/obj/O = o
