@@ -233,6 +233,12 @@ a.popt {
   font-weight: bold;
 }
 
+img.text_tag {
+  width: 32px;
+  height: 10px;
+  padding: 1px;
+}
+
 /* ADD HERE FOR ITALIC */
 
 .italic,
@@ -295,11 +301,7 @@ em {
   font-weight: bold;
 }
 
-.say,
-.emote,
-.infoplain,
-.oocplain,
-.warningplain {
+.say, .emote, .infoplain, .oocplain, .warningplain {
 }
 
 .deadsay {
@@ -314,8 +316,7 @@ em {
   color: #00ff00;
 }
 
-.binarysay a:active,
-.binarysay a:visited {
+.binarysay a:active, .binarysay a:visited {
   color: #88ff88;
 }
 
@@ -358,10 +359,6 @@ em {
   color: #8f4a4b;
 }
 
-.gangradio {
-  color: #ac2ea1;
-}
-
 .centcomradio {
   color: #2681a5;
 }
@@ -400,11 +397,6 @@ em {
   font-size: 185%;
 }
 
-.bolddanger {
-  color: #c51e1e;
-  font-weight: bold;
-}
-
 .danger {
   color: #c51e1e;
 }
@@ -415,7 +407,7 @@ em {
 }
 
 .alertwarning {
-  color: #ff0000;
+  color: #FF0000;
   font-weight: bold;
 }
 
@@ -512,12 +504,8 @@ em {
   color: #059223;
 }
 
-.grey {
-  color: #838383;
-}
-
 .red {
-  color: #ff0000;
+  color: #FF0000;
 }
 
 .blue {
@@ -526,11 +514,6 @@ em {
 
 .nicegreen {
   color: #059223;
-}
-
-.boldnicegreen {
-  color: #059223;
-  font-weight: bold;
 }
 
 .cult {
@@ -573,7 +556,7 @@ em {
 }
 
 .colossus {
-  color: #7f282a;
+  color: #7F282A;
   font-size: 310%;
 }
 
@@ -638,6 +621,21 @@ em {
   font-weight: bold;
 }
 
+.necromorph {
+  color: #834b83;
+  font-weight: bold;
+}
+
+.necrosignal {
+  color: #834b83;
+}
+
+.necromarker {
+  color: #834b83;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
 .alien {
   color: #855d85;
 }
@@ -657,7 +655,7 @@ em {
 }
 
 .alertsyndie {
-  color: #ff0000;
+  color: #FF0000;
   font-size: 185%;
   font-weight: bold;
 }
@@ -668,25 +666,61 @@ em {
   font-size: 185%;
 }
 
+.role_header{
+  color: #db0000;
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  font-family: trebuchet-ms;
+  font-size: 1.5em;
+}
+.role_body{
+  color: #5a5abd;
+  display: block;
+  text-align: center;
+}
+
+.round_setup{
+  color: #db0000;
+  font-family: impact;
+  font-size: 1.25em;
+}
+.round_header{
+  color: #db0000;
+  display: block;
+  text-align: center;
+  font-family: courier;
+  font-weight: bold;
+  font-size: 2em;
+}
+.round_body	{
+  color: #6685f5;
+  display: block;
+  text-align: center;
+  font-family: trebuchet-ms;
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
 .interface {
   color: #750e75;
 }
 
 .sans {
-  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-family: "Comic Sans MS", cursive, sans-serif;
 }
 
 .papyrus {
-  font-family: 'Papyrus', cursive, sans-serif;
+  font-family: "Papyrus", cursive, sans-serif;
 }
 
 .robot {
-  font-family: 'Courier New', cursive, sans-serif;
+  font-family: "Courier New", cursive, sans-serif;
 }
 
 .tape_recorder {
-  color: #ff0000;
-  font-family: 'Courier New', cursive, sans-serif;
+  color: #FF0000;
+  font-family: "Courier New", cursive, sans-serif;
 }
 
 .command_headset {
@@ -723,18 +757,18 @@ em {
 .clown {
   color: #ff70c1;
   font-size: 160%;
-  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-family: "Comic Sans MS", cursive, sans-serif;
   font-weight: bold;
 }
 
 .singing {
-  font-family: 'Trebuchet MS', cursive, sans-serif;
+  font-family: "Trebuchet MS", cursive, sans-serif;
   font-style: italic;
 }
 
 .his_grace {
-  color: #15d512;
-  font-family: 'Courier New', cursive, sans-serif;
+  color: #15D512;
+  font-family: "Courier New", cursive, sans-serif;
   font-style: italic;
 }
 
@@ -819,7 +853,7 @@ em {
 }
 
 .slime {
-  color: #00ced1;
+  color: #00CED1;
 }
 
 .drone {
@@ -831,11 +865,11 @@ em {
 }
 
 .swarmer {
-  color: #2c75ff;
+  color: #2C75FF;
 }
 
 .resonate {
-  color: #298f85;
+  color: #298F85;
 }
 
 .monkeyhive {
@@ -847,8 +881,7 @@ em {
   font-size: 80%;
 }
 
-.connectionClosed,
-.fatalError {
+.connectionClosed, .fatalError {
   background: red;
   color: white;
   padding: 5px;
@@ -863,7 +896,10 @@ em {
   font-weight: bold;
 }
 
+
+
 /* HELPER CLASSES */
+
 
 .text-normal {
   font-weight: normal;
@@ -887,36 +923,8 @@ em {
   margin-left: 3em;
 }
 
-.examine_block {
-  background: #1b1c1e;
-  border: 1px solid #a4bad6;
-  margin: 0.5em;
-  padding: 0.5em 0.75em;
-}
-
-.tooltip {
-  font-style: italic;
-  border-bottom: 1px dashed #fff;
-}
-
-.execution {
-  color: #cc0033;
+.userdanger {
+  color: #c51e1e;
   font-weight: bold;
-  font-size: 14px;
-  font-family: 'Cambria';
-}
-
-.necromorph {
-  color: #800080;
-  font-weight: bold;
-}
-
-.necrosignal {
-  color: #800080;
-}
-
-.necromarker {
-  color: #800080;
-  font-weight: bold;
-  font-size: 12px;
+  font-size: 185%;
 }

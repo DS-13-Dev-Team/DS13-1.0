@@ -1,10 +1,10 @@
 @use 'sass:color';
 @use 'sass:meta';
 
-$nanotrasen: #175fb1;
+$nanotrasen: #242f93;
 
 @use '../colors.scss' with (
-  $primary: #0cc4d1,
+  $primary: #107880,
   $fg-map-keys: (),
   $bg-map-keys: (),
 );
