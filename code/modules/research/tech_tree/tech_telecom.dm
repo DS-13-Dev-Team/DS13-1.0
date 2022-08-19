@@ -9,7 +9,7 @@
 	tech_type = TECH_BLUESPACE
 
 	x = 12
-	y = 8
+	y = 6
 	icon = 'icons/obj/stock_parts.dmi'
 	icon_state = "subspace_ansible"
 
@@ -24,7 +24,7 @@
 	id = "tcom_monitoring"
 
 	x = 12
-	y = 6.5
+	y = 4.5
 	//special way to generate an icon
 
 	required_technologies = list("telecomm_parts")
@@ -44,7 +44,7 @@
 	id = "rcon"
 
 	x = 12
-	y = 5
+	y = 3
 	//special way to generate an icon
 
 	required_technologies = list("tcom_monitoring", "adv_power_storage")
@@ -64,7 +64,7 @@
 	id = "mainframes"
 
 	x = 10.5
-	y = 6.5
+	y = 4.5
 	icon_state = "relay"
 
 	required_technologies = list("telecomm_parts")
@@ -78,7 +78,7 @@
 	id = "solnet_relay"
 
 	x = 9
-	y = 6.5
+	y = 4.5
 	icon_state = "bus"
 
 	required_technologies = list("telecomm_parts")
@@ -92,7 +92,7 @@
 	id = "subspace"
 
 	x = 13.5
-	y = 6.5
+	y = 4.5
 	icon_state = "broadcaster_send"
 
 	required_technologies = list("telecomm_parts")
@@ -106,7 +106,7 @@
 	id = "processor"
 
 	x = 15
-	y = 6.5
+	y = 4.5
 	icon_state = "processor"
 
 	required_technologies = list("telecomm_parts")
@@ -120,7 +120,7 @@
 	id = "energy_shield_ship"
 
 	x = 12
-	y = 9.5
+	y = 7.5
 	no_lines = TRUE
 	icon = 'icons/obj/machines/shielding.dmi'
 	icon_state = "generator1"

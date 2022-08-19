@@ -30,11 +30,12 @@
 
 /obj/machinery/store/proc/handle_schematic(obj/item/store_schematic/I, mob/user)
 	GLOB.unlimited_store_designs += I.design_id
+	for(var/obj/machinery/store/store_kiosk as anything in GLOB.store_kiosks)
+		SStgui.update_uis(store_kiosk, TRUE)
 	visible_message("Thank you for participating in the CEC Data Recovery programme, [user.real_name]. Your account has been credited with [REWARD_SCHEMATIC] credits")
 	occupant.recieve_credits(REWARD_SCHEMATIC, machine_id, machine_id, "Schematic Bounty")
 	occupant.remove_item(I)
 	qdel(I)
-
 
 /obj/item/store_schematic/proc/get_design()
 	if(length(GLOB.public_store_designs))
@@ -44,14 +45,14 @@
 		design_id = D.id
 		name = "Store Schematic ([design_name])"
 		GLOB.public_store_designs -= id
+		for(var/obj/machinery/store/store_kiosk as anything in GLOB.store_kiosks)
+			SStgui.update_uis(store_kiosk, TRUE)
 	else // There are no unknown designs left? We'll just have to delete ourselves
 		QDEL_IN(src, 1)
 		new /obj/random/rare_loot(get_turf(src))
 
-
 /obj/machinery/store/proc/handle_peng(obj/item/peng/I, mob/user)
 	visible_message("Thank you for participating in the Peng cross-promotional scheme, [user.real_name]. Your account has been credited with [PENG_BOUNTY] credits")
 	occupant.recieve_credits(PENG_BOUNTY, machine_id, machine_id, "Peng Bounty")
-
 	occupant.remove_item(I)
 	qdel(I)

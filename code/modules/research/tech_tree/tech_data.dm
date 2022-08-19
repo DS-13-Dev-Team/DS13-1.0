@@ -8,7 +8,7 @@
 	id = "basic_modular"
 
 	x = 12
-	y = 9
+	y = 7
 	icon_state = "cpu_normal"
 
 	required_technologies = list()
@@ -22,7 +22,7 @@
 	id = "frames"
 
 	x = 12
-	y = 10.5
+	y = 8.5
 	icon = 'icons/obj/modular_tablet.dmi'
 	icon_state = "tabletsol"
 
@@ -37,7 +37,7 @@
 	id = "ms_hdd"
 
 	x = 12
-	y = 7.5
+	y = 5.5
 	icon_state = "hdd_small"
 
 	required_technologies = list("basic_modular")
@@ -51,7 +51,7 @@
 	id = "adv_hdd"
 
 	x = 12
-	y = 6
+	y = 4
 	icon_state = "hdd_advanced"
 
 	required_technologies = list("ms_hdd")
@@ -65,7 +65,7 @@
 	id = "sup_hdd"
 
 	x = 12
-	y = 4.5
+	y = 2.5
 	icon_state = "hdd_super"
 
 	required_technologies = list("adv_hdd")
@@ -79,7 +79,7 @@
 	id = "cls_hdd"
 
 	x = 12
-	y = 3
+	y = 1
 	icon_state = "hdd_cluster"
 
 	required_technologies = list("sup_hdd")
@@ -93,7 +93,7 @@
 	id = "netcard_w"
 
 	x = 10.5
-	y = 7.5
+	y = 5.5
 	icon_state = "netcard_ethernet"
 
 	required_technologies = list("basic_modular")
@@ -107,7 +107,7 @@
 	id = "netcard_adv"
 
 	x = 10.5
-	y = 6
+	y = 4
 	icon_state = "netcard_advanced"
 
 	required_technologies = list("netcard_w", "solnet_relay")
@@ -121,7 +121,7 @@
 	id = "cpu_small"
 
 	x = 15
-	y = 7.5
+	y = 5.5
 	icon_state = "cpu_small"
 
 	required_technologies = list("basic_modular")
@@ -135,7 +135,7 @@
 	id = "pcpu_small"
 
 	x = 15
-	y = 6
+	y = 4
 	icon_state = "cpu_small_photonic"
 
 	required_technologies = list("cpu_small")
@@ -149,7 +149,7 @@
 	id = "pcpu_normal"
 
 	x = 15
-	y = 4.5
+	y = 2.5
 	icon_state = "cpu_normal_photonic"
 
 	required_technologies = list("pcpu_small")
@@ -163,7 +163,7 @@
 	id = "modular_bat_micro"
 
 	x = 13.5
-	y = 7.5
+	y = 5.5
 	icon_state = "battery_normal"
 
 	required_technologies = list("basic_modular")
@@ -177,7 +177,7 @@
 	id = "modular_bat_advanced"
 
 	x = 13.5
-	y = 6
+	y = 4
 	icon_state = "battery_advanced"
 
 	required_technologies = list("modular_bat_micro", "adv_power")
@@ -191,7 +191,7 @@
 	id = "modular_bat_super"
 
 	x = 13.5
-	y = 4.5
+	y = 2.5
 	icon_state = "battery_super"
 
 	required_technologies = list("modular_bat_advanced", "sup_power")
@@ -205,7 +205,7 @@
 	id = "modular_bat_ultra"
 
 	x = 13.5
-	y = 3
+	y = 1
 	icon_state = "battery_ultra"
 
 	required_technologies = list("modular_bat_super", "hyp_power")
@@ -219,7 +219,7 @@
 	id = "tesla_link"
 
 	x = 13.5
-	y = 10.5
+	y = 8.5
 	icon_state = "teslalink"
 
 	required_technologies = list("basic_modular")
@@ -233,7 +233,7 @@
 	id = "nanoprinter"
 
 	x = 15
-	y = 10.5
+	y = 8.5
 	icon_state = "printer"
 
 	required_technologies = list("basic_modular")
@@ -247,7 +247,7 @@
 	id = "rfid"
 
 	x = 10.5
-	y = 10.5
+	y = 8.5
 	icon_state = "cardreader"
 
 	required_technologies = list("basic_modular")
@@ -261,7 +261,7 @@
 	id = "med_scanners"
 
 	x = 9
-	y = 9
+	y = 7
 	icon_state = "printer"
 
 	required_technologies = list("basic_modular", "add_med_tools")
@@ -275,7 +275,7 @@
 	id = "atmos_scanners"
 
 	x = 16.5
-	y = 9
+	y = 7
 	icon_state = "printer"
 
 	required_technologies = list("basic_modular", "gas_heat")

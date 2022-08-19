@@ -5,7 +5,7 @@
 	tech_type = TECH_ILLEGAL
 
 	x = 12
-	y = 5.5
+	y = 5
 	icon = 'icons/obj/gun.dmi'
 	icon_state = "divet_spec"
 
@@ -21,7 +21,7 @@
 	tech_type = TECH_ILLEGAL
 
 	x = 12
-	y = 4
+	y = 3.5
 	icon = 'icons/obj/ammo.dmi'
 	icon_state = "icds"
 
@@ -37,7 +37,7 @@
 	tech_type = TECH_ILLEGAL
 
 	x = 10.5
-	y = 5.5
+	y = 5
 	icon = 'icons/obj/ammo.dmi'
 	icon_state = "hpds"
 
@@ -53,7 +53,7 @@
 	tech_type = TECH_ILLEGAL
 
 	x = 13.5
-	y = 5.5
+	y = 5
 	icon = 'icons/obj/ammo.dmi'
 	icon_state = "apds"
 
@@ -69,7 +69,7 @@
 	tech_type = TECH_ILLEGAL
 
 	x = 12
-	y = 7
+	y = 6.5
 	icon = 'icons/obj/items.dmi'
 	icon_state = "implantcase-r"
 
@@ -85,7 +85,7 @@
 	tech_type = TECH_ILLEGAL
 
 	x = 13.5
-	y = 7
+	y = 6.5
 	icon = 'icons/obj/items.dmi'
 	icon_state = "implantcase-r"
 
@@ -101,7 +101,7 @@
 	tech_type = TECH_ILLEGAL
 
 	x = 10.5
-	y = 7
+	y = 6.5
 	icon = 'icons/obj/items.dmi'
 	icon_state = "implantcase-r"
 
@@ -117,7 +117,7 @@
 	tech_type = TECH_ILLEGAL
 
 	x = 12
-	y = 8.5
+	y = 8
 	icon = 'icons/obj/items.dmi'
 	icon_state = "implantcase-r"
 

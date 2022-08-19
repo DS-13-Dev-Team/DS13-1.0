@@ -29,8 +29,8 @@ export const RDConsole = (props, context) => {
 
   return (
     <Window
-      width={1000}
-      height={800}
+      width={970}
+      height={670}
       theme="rdconsole">
       {!locked ? (
         <Window.Content
@@ -104,6 +104,15 @@ export const RDConsole = (props, context) => {
                 Circuit Imprinter
               </Tabs.Tab>
             ):null}
+            <Button mr={0} ml="auto" icon="question" my="0.2em" tooltipPosition="left-start" tooltip={
+              <Box>
+                Hotkeys help:<br />
+                <Divider />
+                1-4 changes current tab<br />
+                Arrow Left and Arrow Right changes current sub tab<br />
+                Double click a technology to unlock it
+              </Box>
+            } />
           </Tabs>
           {console_tab === 4 && (
             <MainTab />
@@ -247,8 +256,8 @@ const DestructiveAnalyzer = (props, context) => {
         <Box>
           {destroy_data.loading_item ? (
             <Box textAlign="center">
-              <Icon mt={4} name="spinner" size={18} spin />
-              <Box fontSize={7} mt={2.3}>Item is being loaded</Box>
+              <Icon mt={4} name="spinner" size={14} spin />
+              <Box fontSize={6} mt={2.3}>Item is being loaded</Box>
             </Box>
           ):(
             <Box>
@@ -256,17 +265,14 @@ const DestructiveAnalyzer = (props, context) => {
                 <Box>
                   {destroy_data.is_processing ? (
                     <Box textAlign="center">
-                      <Icon mt={4} name="spinner" size={18} spin />
-                      <Box fontSize={6}>Item is being deconstructed</Box>
+                      <Icon mt={4} name="spinner" size={14} spin />
+                      <Box fontSize={5}>Item is being deconstructed</Box>
                     </Box>
                   ):(
                     <Stack vertical fontSize={1.3}>
                       <Stack.Item pr={3}>
                         <Stack>
-                          <Stack.Item>
-                            <img src={"da_"+destroy_data.icon_path+".png"} class="sciDeconIcon" />
-                          </Stack.Item>
-                          <Stack.Item width="80%">
+                          <Stack.Item ml={3} width="80%">
                             <Stack vertical>
                               <Stack.Item bold>
                                 {destroy_data.item_name}
@@ -322,8 +328,8 @@ const DestructiveAnalyzer = (props, context) => {
                 </Box>
               ):(
                 <Box align="center">
-                  <Icon mt={6} name="low-vision" size={18} />
-                  <Box fontSize={8}>No item loaded</Box>
+                  <Icon mt={6} name="low-vision" size={14} />
+                  <Box fontSize={6}>No item loaded</Box>
                 </Box>
               )}
             </Box>
@@ -331,8 +337,8 @@ const DestructiveAnalyzer = (props, context) => {
         </Box>
       ):(
         <Box textAlign="center" textColor="red">
-          <Icon name="unlink" color="white" size={20} mt={3} />
-          <Box fontSize={6}>
+          <Icon name="unlink" color="white" size={15} mt={3} />
+          <Box fontSize={4}>
             No Destructive Analyzer Linked
           </Box>
         </Box>
@@ -384,7 +390,7 @@ const Research = (props, context) => {
             <Box bold fontSize="14px"> Cost: <Box inline color="orange">{selected_tech.cost}</Box></Box>
           }>
             <Stack fill>
-              <Stack.Item width="45%" mr={2}>
+              <Stack.Item grow={1.5}>
                 <Stack>
                   <Stack.Item>
                     <div class={"rdtech96x96 "+selected_tech.id} />
@@ -394,7 +400,7 @@ const Research = (props, context) => {
                   </Stack.Item>
                 </Stack>
               </Stack.Item>
-              <Stack.Item width="23.5%">
+              <Stack.Item grow>
                 <Box bold>
                   Unlocks Designs:
                 </Box>
@@ -405,7 +411,7 @@ const Research = (props, context) => {
                   </Box>
                 ))}
               </Stack.Item>
-              <Stack.Item width="20%">
+              <Stack.Item grow>
                 <Box bold>
                   Required Technology:
                 </Box>
@@ -422,10 +428,10 @@ const Research = (props, context) => {
                   </Box>
                 ))}
               </Stack.Item>
-              <Stack.Item width="25%">
+              <Stack.Item grow>
                 <Button
                   fluid
-                  disabled={selected_tech.isresearched || selected_tech.canresearch}
+                  disabled={selected_tech.isresearched || !selected_tech.canresearch}
                   fontSize={2.4}
                   textAlign="center"
                   onClick={() => act('research_tech', { tech_id: selected_tech.id })}>

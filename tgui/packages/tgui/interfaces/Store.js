@@ -1,7 +1,10 @@
-import { useBackend } from '../backend';
+import { useBackend, useLocalState } from '../backend';
 import { Window } from '../layouts';
-import { Section, Button, Tabs, Stack, Divider, Box } from '../components';
+import { Section, Button, Tabs, Stack, Divider, Box, Input } from '../components';
 import { Fragment } from 'inferno';
+import { filter, sortBy } from 'common/collections';
+import { flow } from 'common/fp';
+import { createSearch } from 'common/string';
 
 export const Store = (props, context) => {
   const { act, data } = useBackend(context);
@@ -10,13 +13,35 @@ export const Store = (props, context) => {
     credits_rig,
     chip,
     chip_worth,
+    cash_stored,
     credits_total,
     selected_category,
     categories,
-    selected_design,
+    selected_design_id,
+    selected_design_can_afford,
     designs,
     deposit,
   } = data;
+  const [
+    searchText,
+    setSearchText,
+  ] = useLocalState(context, 'searchText', '');
+  let selected_design;
+  let designs_in_category = [];
+
+  designs.forEach(design => {
+    if(design.id === selected_design_id) {
+      selected_design = design;
+    }
+    if(selected_category === "All" || design.category === selected_category) {
+      designs_in_category.push(design);
+    }
+  });
+  const designs_to_display = flow([
+    sortBy(design => design.name),
+    filter(createSearch(searchText, design => design.name)),
+  ])(designs_in_category);
+
   return (
     <Window
       width={900}
@@ -27,30 +52,31 @@ export const Store = (props, context) => {
           <Stack.Item grow basis={0}>
             <Stack vertical fill>
               <Stack.Item>
-                <Tabs>
-                  <Stack wrap="wrap" textAlign="center">
-                    {categories && categories.map((cat, i) => (
-                      <Stack.Item key={cat}>
-                        <Tabs.Tab
-                          key={cat}
-                          my={0.5}
-                          selected={selected_category === cat}
-                          onClick={() => {
-                            if (!(selected_category === cat)) {
-                              act("category", { "category": cat });
-                            }
-                          }}>
-                          {cat}
-                        </Tabs.Tab>
-                      </Stack.Item>
-                    ))}
-                  </Stack>
+                <Tabs textAlign="center" style={{ "flex-wrap": "wrap" }}>
+                  {categories && categories.map((cat, i) => (
+                    <Tabs.Tab
+                      key={cat}
+                      my={0.1}
+                      mx={0.1}
+                      selected={selected_category === cat}
+                      onClick={() => {
+                        if (!(selected_category === cat)) {
+                          act("category", { "category": cat });
+                        }
+                      }}>
+                      {cat}
+                    </Tabs.Tab>
+                  ))}
                 </Tabs>
               </Stack.Item>
               <Stack.Item grow>
-                <Section fill scrollable title="Store Items">
+                <Section fill scrollable title="Store Items" buttons={
+                  <Input
+                    placeholder="Search for a camera"
+                    onInput={(e, value) => setSearchText(value)} />
+                }>
                   <Stack vertical>
-                    {designs && designs.map((design, i) => (
+                    {designs_to_display && designs_to_display.map((design, i) => (
                       <Stack.Item key={design.id}>
                         <Stack>
                           <Stack.Item width="45%">
@@ -110,13 +136,17 @@ export const Store = (props, context) => {
                 <Section title="Credits">
                   <Stack vertical>
                     <Stack.Item>
-                      Account: {credits_account} <Button>Withdraw</Button>
+                      Account: {credits_account} {typeof credits_account === 'number' ?
+                        <Button onClick={() => act('withdraw')}>Withdraw</Button> : null}
                     </Stack.Item>
                     <Stack.Item>
                       RIG: {credits_rig}
                     </Stack.Item>
                     <Stack.Item>
                       Chip: {chip ? chip_worth : "Not Inserted"}
+                    </Stack.Item>
+                    <Stack.Item>
+                      Deposit Cash: {cash_stored}
                     </Stack.Item>
                     <Divider />
                     <Stack.Item>
@@ -126,13 +156,17 @@ export const Store = (props, context) => {
                 </Section>
               </Stack.Item>
               <Stack.Item grow>
-                <Section fill title="Deposit Box" scrollable>
+                <Section fill title="Deposit Box" scrollable buttons={
+                  <Button onClick={() => act('eject_all')}>Eject All</Button>
+                }>
                   <Stack vertical>
-                    {deposit && deposit.map((item, i) => (
-                      <Stack.Item key={item}>
-                        <Box fontSize={1.2}>{item}<Button onClick={() => act("eject", { "eject": item })} ml={1} icon="eject" /></Box>
+                    {deposit ? deposit.map((item, i) => (
+                      <Stack.Item key={item.name}>
+                        <Box fontSize={1.2}>{item.name}<Button onClick={() => act("eject", { "item_to_eject": item.name })} ml={1} icon="eject" /></Box>
                       </Stack.Item>
-                    ))}
+                    )) : (
+                      <Box>Deposit box is empty...</Box>
+                    )}
                   </Stack>
                 </Section>
               </Stack.Item>
@@ -140,14 +174,14 @@ export const Store = (props, context) => {
                 <Section fill fontSize={2}>
                   <Stack vertical>
                     <Stack.Item>
-                      <Button disabled={!selected_design.buy_enabled} fluid onClick={() => act("buy", { "buy": 1 })}>Buy</Button>
+                      <Button disabled={!selected_design_can_afford} fluid onClick={() => act("buy", { "buy": 1 })}>Buy</Button>
                     </Stack.Item>
                     <Stack.Item>
-                      <Button disabled={!selected_design.buy_enabled} fluid onClick={() => act("buy", { "buy": 2 })}>Buy to Deposit Box</Button>
+                      <Button disabled={!selected_design_can_afford} fluid onClick={() => act("buy", { "buy": 2 })}>Buy to Deposit Box</Button>
                     </Stack.Item>
                     {selected_design && selected_design.transfer_enabled && (
                       <Stack.Item>
-                        <Button disabled={!selected_design.buy_enabled} fluid onClick={() => act("buy", { "buy": 3 })}>Buy and Transfer</Button>
+                        <Button disabled={!selected_design_can_afford} fluid onClick={() => act("buy", { "buy": 3 })}>Buy and Transfer</Button>
                       </Stack.Item>
                     )}
                   </Stack>

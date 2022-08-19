@@ -7,7 +7,7 @@
 
 /obj/machinery/computer/rdconsole/attack_hand(mob/user as mob)
 	if(..())
-		return
+		return TRUE
 	tgui_interact(user)
 
 /obj/machinery/computer/rdconsole/attack_ai(mob/user)
@@ -293,8 +293,18 @@
 			if("change_tab")
 				if(params["machine"] && params["tab"])
 					if(cats[text2num(params["machine"])] != params["tab"])
-						cats[text2num(params["machine"])] = params["tab"]
-						playsound(src, get_sfx("keyboard"), VOLUME_HIGH)
+						switch(text2num(params["tab"]))
+							if(IMPRINTER_TAB)
+								if(linked_imprinter)
+									cats[text2num(params["machine"])] = params["tab"]
+									playsound(src, get_sfx("keyboard"), VOLUME_HIGH)
+							if(PROTOLATHE_TAB)
+								if(linked_lathe)
+									cats[text2num(params["machine"])] = params["tab"]
+									playsound(src, get_sfx("keyboard"), VOLUME_HIGH)
+							else
+								cats[text2num(params["machine"])] = params["tab"]
+								playsound(src, get_sfx("keyboard"), VOLUME_HIGH)
 
 			if("set_selected_tech")
 				if(cats[5] != params["tech_id"])

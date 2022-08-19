@@ -2528,7 +2528,6 @@
 #include "code\modules\multiz\pipes.dm"
 #include "code\modules\multiz\structures.dm"
 #include "code\modules\multiz\turf.dm"
-#include "code\modules\nano\nano_helpers.dm"
 #include "code\modules\nano\nanoexternal.dm"
 #include "code\modules\nano\nanomapgen.dm"
 #include "code\modules\nano\nanoui.dm"

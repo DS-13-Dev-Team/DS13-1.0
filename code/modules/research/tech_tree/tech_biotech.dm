@@ -68,7 +68,7 @@
 
 /datum/technology/bio/food_process
 	name = "Food Processing"
-	desc = "Quick guide how to cook some delicious humans"
+	desc = "Don't forget to add some spices"
 	id = "food_process"
 
 	x = 4
@@ -79,7 +79,22 @@
 	required_technologies = list("hydroponics")
 	cost = 500
 
-	unlocks_designs = list("deepfryer", "microwave", "oven", "grill", "candymaker", "cereal", "gibber")
+	unlocks_designs = list("microwave", "oven", "candymaker", "cereal")
+
+/datum/technology/bio/food_process_adv
+	name = "Advanced Food Processing"
+	desc = "Don't ask the chef where the meat came from"
+	id = "food_process_adv"
+
+	x = 4
+	y = 8
+	icon = 'icons/obj/kitchen.dmi'
+	icon_state = "grinder"
+
+	required_technologies = list("food_process")
+	cost = 750
+
+	unlocks_designs = list("deepfryer", "grill", "gibber")
 
 /datum/technology/bio/implants
 	name = "Implants"

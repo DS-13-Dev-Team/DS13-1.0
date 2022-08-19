@@ -3,14 +3,15 @@
 #define STORE_CLOSED	-1
 #define STORE_CLOSING	0
 
-GLOBAL_VAR_INIT(number_of_store_kiosks, 0)
+GLOBAL_LIST_EMPTY(store_kiosks)
 
 /obj/machinery/store
 	name = "Store Kiosk"
+	desc = "Series of vending-like machines located throughout EarthGov installations, ships, and colonies."
 	icon = 'icons/obj/machines/store.dmi'
 	icon_state = "kiosk_on"
 
-	layer = ABOVE_WINDOW_LAYER	//Above windows but below humans
+	layer = BELOW_OBJ_LAYER
 	anchored = TRUE
 
 	// Power
@@ -53,7 +54,12 @@ GLOBAL_VAR_INIT(number_of_store_kiosks, 0)
 /obj/machinery/store/Initialize()
 	.=..()
 	deposit_box = new(src)
-	machine_id = "[station_name()] Store #[GLOB.number_of_store_kiosks++]"
+	GLOB.store_kiosks += src
+	machine_id = "[station_name()] Store #[length(GLOB.store_kiosks)]"
+
+/obj/machinery/store/Destroy()
+	.=..()
+	GLOB.store_kiosks -= src
 
 /obj/machinery/store/update_icon()
 	var/light = TRUE
@@ -108,7 +114,6 @@ GLOBAL_VAR_INIT(number_of_store_kiosks, 0)
 			return
 		remove_occupant()
 	occupant = O
-	update_occupant_data()
 
 
 /obj/machinery/store/proc/remove_occupant()
@@ -130,6 +135,7 @@ GLOBAL_VAR_INIT(number_of_store_kiosks, 0)
 		//Items used on the store go into the deposit box
 
 		deposit_box.store_item(I, user)
+		SStgui.update_uis(src)
 		return TRUE
 	else
 		playsound(src, 'sound/machines/deadspace/menu_negative.ogg', VOLUME_MID, TRUE)
@@ -148,8 +154,7 @@ GLOBAL_VAR_INIT(number_of_store_kiosks, 0)
 		user.unEquip(newchip)
 	newchip.forceMove(src)
 	chip = newchip
-
-	update_open_uis()
+	SStgui.update_uis(src)
 
 /obj/machinery/store/proc/eject_chip()
 	chip.forceMove(loc)
@@ -205,7 +210,7 @@ GLOBAL_VAR_INIT(number_of_store_kiosks, 0)
 
 	//Things may have just been removed from the deposit box
 	deposit_box.update_ui_data()
-	update_open_uis()
+	SStgui.update_uis(src)
 
 	sleep(stall_time*2)
 	open()

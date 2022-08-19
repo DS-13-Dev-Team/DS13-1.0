@@ -56,7 +56,7 @@ SUBSYSTEM_DEF(research)
 	.=..()
 
 /datum/controller/subsystem/research/stat_entry(msg)
-	msg = "|Research Files: [research_files.len]|Tech Trees: [tech_trees.len]|Technologies: [all_technologies.len]|Designs: [designs_by_id.len]"
+	msg = "|Research Files: [length(research_files)]|Tech Trees: [length(tech_trees)]|Technologies: [length(all_technologies)]|Designs: [length(designs_by_id)]"
 	return ..()
 
 /datum/controller/subsystem/research/proc/initialize_research_file(datum/research/R)

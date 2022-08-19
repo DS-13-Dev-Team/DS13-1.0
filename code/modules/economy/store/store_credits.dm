@@ -12,7 +12,8 @@
 		. += occupant.wearing_rig.get_account_balance()
 
 	for(var/obj/item/spacecash/S in deposit_box.contents)
-		. += S.worth
+		if(!istype(S, /obj/item/spacecash/minercash))
+			. += S.worth
 
 	var/datum/money_account/A = occupant?.get_account()
 	if(A)
@@ -20,10 +21,11 @@
 
 //Can the occupant afford to pay a cost ? True/false
 /obj/machinery/store/proc/occupant_can_afford(var/cost)
-	if (!occupant)
+	if(!occupant)
 		return FALSE
 
-	if (cost == null && current_design)
+	var/datum/design/current_design = SSresearch.designs_by_id[current_design_id]
+	if(isnull(cost) && current_design)
 		cost = current_design.get_price(occupant)
 
 	return (get_available_credits() >= cost)
@@ -73,6 +75,7 @@
 
 //Buys and returns the current item, don't call this directly
 /obj/machinery/store/proc/buy_current()
+	var/datum/design/current_design = SSresearch.designs_by_id[current_design_id]
 	if(!occupant || !occupant_pay_credits(current_design.get_price(occupant)))
 		return
 

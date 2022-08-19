@@ -174,26 +174,49 @@ export class ChangeLog extends Component {
 
     const header = (
       <Section>
-        <h1>Traditional Games Space Station 13</h1>
+        <h1>DS13 Changelog</h1>
         <p>
-          <b>Thanks to: </b>
-          Baystation 12, /vg/station, NTstation, CDK Station devs,
-          FacepunchStation, GoonStation devs, the original Space Station 13
-          developers, Invisty for the title image and the countless others who
-          have contributed to the game, issue tracker or wiki over the years.
+          <b>Thanks to:</b> The developers of Baystation 12,
+          /tg/station 13, the original Space Station 13
+          and Visceral Games.
+        </p>
+        <h3>DS13 Development Team</h3>
+        <p>
+          <b>Hosts: </b>
+          Westhybrid (founder), Snypehunter007
         </p>
         <p>
-          {'Current project maintainers can be found '}
-          <a href="https://github.com/tgstation?tab=members">here</a>
-          {', recent GitHub contributors can be found '}
-          <a href="https://github.com/tgstation/tgstation/pulse/monthly">
+          <b>Coders: </b>
+          Nanako, KMC2000, TheLion1675, DTraitor
+        </p>
+        <p>
+          <b>Mappers: </b>
+          Snypehunter007, TheLion1675, Scott45
+        </p>
+        <p>
+          <b>Spriters: </b>
+          Ketrai, Xeirla, Snypehunter007, Don1155,
+          Meyhazah, Triiodine, Spicy Fly, cre
+        </p>
+        <p>
+          {'Recent GitHub contributors can be found '}
+          <a href="https://github.com/DeadLineSS13/DS13/pulse/monthly">
             here
+          </a>.
+        </p>
+        <p>
+          <b>Sound Provider: </b>
+          TheLion1675, REsident55,
+          {} {}
+          <a href="https://www.youtube.com/channel/UCd9iHQmcR93LguEv_xkpBTg">
+            Jacob Danik
           </a>
-          .
         </p>
         <p>
           {'You can also join our discord '}
-          <a href="https://tgstation13.org/phpBB/viewforum.php?f=60">here</a>.
+          <a href="https://discord.gg/T6YfAfu">
+            here
+          </a>.
         </p>
         {dateDropdown}
       </Section>
@@ -210,14 +233,8 @@ export class ChangeLog extends Component {
         </p>
         <p>
           <b>Spriters: </b>
-          Supernorn, Haruhi, Stuntwaffle, Pantaloons, Rho, SynthOrange, I Said
-          No
-        </p>
-        <p>
-          Traditional Games Space Station 13 is thankful to the GoonStation 13
-          Development Team for its work on the game up to the
-          {' r4407 release. The changelog for changes up to r4407 can be seen '}
-          <a href="https://wiki.ss13.co/Changelog#April_2010">here</a>.
+          Supernorn, Haruhi, Stuntwaffle, Pantaloons, Rho, SynthOrange,
+          I Said No
         </p>
         <p>
           {'Except where otherwise noted, Goon Station 13 is licensed under a '}
@@ -228,57 +245,13 @@ export class ChangeLog extends Component {
           <a href="http://forums.somethingawful.com/">SomethingAwful Goons</a>
           {' only.'}
         </p>
-        <h3>Traditional Games Space Station 13 License</h3>
+        <h3>DS13 License</h3>
         <p>
-          {'All code after '}
-          <a
-            href={
-              'https://github.com/tgstation/tgstation/commit/' +
-              '333c566b88108de218d882840e61928a9b759d8f'
-            }>
-            commit 333c566b88108de218d882840e61928a9b759d8f on 2014/31/12 at
-            4:38 PM PST
+          {'This is a fork based off the 2018 version of Baystation12. To see the original, GPL repo, go'}
+          <a href={'https://github.com/Baystation12/Baystation12'}>
+            here
           </a>
-          {' is licensed under '}
-          <a href="https://www.gnu.org/licenses/agpl-3.0.html">GNU AGPL v3</a>
-          {'. All code before that commit is licensed under '}
-          <a href="https://www.gnu.org/licenses/gpl-3.0.html">GNU GPL v3</a>
-          {', including tools unless their readme specifies otherwise. See '}
-          <a href="https://github.com/tgstation/tgstation/blob/master/LICENSE">
-            LICENSE
-          </a>
-          {' and '}
-          <a href="https://github.com/tgstation/tgstation/blob/master/GPLv3.txt">
-            GPLv3.txt
-          </a>
-          {' for more details.'}
-        </p>
-        <p>
-          The TGS DMAPI API is licensed as a subproject under the MIT license.
-          {' See the footer of '}
-          <a
-            href={
-              'https://github.com/tgstation/tgstation/blob/master' +
-              '/code/__DEFINES/tgs.dm'
-            }>
-            code/__DEFINES/tgs.dm
-          </a>
-          {' and '}
-          <a
-            href={
-              'https://github.com/tgstation/tgstation/blob/master' +
-              '/code/modules/tgs/LICENSE'
-            }>
-            code/modules/tgs/LICENSE
-          </a>
-          {' for the MIT license.'}
-        </p>
-        <p>
-          {'All assets including icons and sound are under a '}
-          <a href="https://creativecommons.org/licenses/by-sa/3.0/">
-            Creative Commons 3.0 BY-SA license
-          </a>
-          {' unless otherwise indicated.'}
+          {'Code and other contributions are licensed under AGPL unless otherwise specified below'}
         </p>
       </Section>
     );
