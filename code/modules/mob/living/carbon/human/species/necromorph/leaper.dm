@@ -280,7 +280,7 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 	else
 		H.play_species_audio(H, SOUND_SHOUT, 100, 1, 3)
 
-	return leap_attack(A, _cooldown = 6 SECONDS, _delay = 1.2 SECONDS, _speed = 7, _maxrange = 11,_lifespan = 8 SECONDS, _maxrange = 20)
+	return leap_attack(A, _cooldown = 6 SECONDS, _delay = 1.2 SECONDS, _speed = 10, _maxrange = 11,_lifespan = 8 SECONDS)
 
 
 /atom/movable/proc/leaper_leap_enhanced(var/mob/living/A)

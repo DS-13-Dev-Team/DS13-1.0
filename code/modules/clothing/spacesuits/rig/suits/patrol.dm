@@ -14,6 +14,7 @@
 	initial_modules = list(
 		/obj/item/rig_module/healthbar,
 		/obj/item/rig_module/storage/heavy,
+		/obj/item/rig_module/maneuvering_jets,
 		/obj/item/rig_module/extension/speedboost
 		)
 

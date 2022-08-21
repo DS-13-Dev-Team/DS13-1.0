@@ -2483,12 +2483,7 @@
 /area/ishimura/lower/engineering/bay)
 "afO" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/structure/table/rack{
-	dir = 8
-	},
-/obj/random/loot/sometimes/few,
-/obj/random/rare_loot/rarely,
-/obj/random/loot/usually/many,
+/obj/structure/workbench,
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/lower/misc/storagesmall)
 "afP" = (
@@ -4259,7 +4254,7 @@
 	name = "Hydroponics Bay";
 	req_access = list(6)
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/crew/hydroponics)
 "ajg" = (
 /obj/structure/table/standard,
@@ -7100,7 +7095,7 @@
 /obj/effect/floor_decal/industrial/loading{
 	dir = 4
 	},
-/turf/simulated/floor/dank/golf_brown,
+/turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/hydroponics)
 "aoN" = (
 /obj/machinery/light/small,
@@ -19303,8 +19298,12 @@
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/lower/crew/gym)
 "aLK" = (
-/obj/machinery/smartfridge,
-/turf/simulated/floor/tiled/monotile,
+/obj/machinery/door/airlock/freezer{
+	dir = 8;
+	name = "Cafeteria Freezer";
+	req_access = list(6)
+	},
+/turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/crew/messhall/kitchen/freezer)
 "aLL" = (
 /obj/machinery/light{
@@ -19904,6 +19903,9 @@
 	dir = 4
 	},
 /obj/structure/table/rack,
+/obj/item/storage/box/lights/tubes/random{
+	pixel_y = 2
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/ishimura/lower/engineering/bay)
 "aMU" = (
@@ -20459,7 +20461,7 @@
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/cargo/bay)
 "aNV" = (
-/obj/effect/wallframe_spawn/reinforced,
+/obj/machinery/smartfridge,
 /turf/simulated/floor/plating,
 /area/ishimura/lower/crew/messhall/kitchen/freezer)
 "aNW" = (
@@ -25098,6 +25100,18 @@
 	d1 = 1;
 	d2 = 8;
 	icon_state = "1-8"
+	},
+/obj/structure/table/standard,
+/obj/item/reagent_containers/spray{
+	pixel_y = 2;
+	pixel_x = -4
+	},
+/obj/item/reagent_containers/spray{
+	pixel_y = 2;
+	pixel_x = 4
+	},
+/obj/item/reagent_containers/spray{
+	pixel_y = 2
 	},
 /turf/simulated/floor/dank/golf_gray,
 /area/ishimura/lower/engineering/storage_closet/paint)
@@ -68197,8 +68211,8 @@ awC
 afP
 aUs
 qlc
+afC
 aoM
-jux
 afP
 arB
 avC
