@@ -256,6 +256,12 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 	report_progress("Initializations complete within [time] second[time == 1 ? "" : "s"]!")
 
+#ifdef UNIT_TESTS
+	world.sleep_offline = FALSE
+#else
+	world.sleep_offline = TRUE
+#endif
+
 	// Set world options.
 	world.change_fps(CONFIG_GET(number/fps))
 	var/initialized_tod = REALTIMEOFDAY
