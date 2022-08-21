@@ -36,8 +36,8 @@
 	.=..()
 	UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
 
-/obj/item/boombox/proc/on_holder_moved(mob/user, OldLoc, NewLoc)
-	SEND_SIGNAL(src, COMSIG_MOVABLE_MOVED, OldLoc, NewLoc)
+/obj/item/boombox/proc/on_holder_moved(mob/user, OldLoc, dir, old_locs)
+	SEND_SIGNAL(src, COMSIG_MOVABLE_MOVED, OldLoc, dir, old_locs)
 
 /obj/item/boombox/update_icon()
 	icon_state = active ? "on" : "off"

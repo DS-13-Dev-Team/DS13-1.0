@@ -187,9 +187,9 @@ steam.start() -- spawns the effect
 	pixel_x = -32
 	pixel_y = -32
 
-/obj/effect/effect/smoke/New()
-	..()
+/obj/effect/effect/smoke/Initialize()
 	QDEL_IN(src, time_to_live)
+	return ..()
 
 /obj/effect/effect/smoke/Crossed(mob/living/carbon/M as mob )
 	..()

@@ -212,6 +212,12 @@ var/list/_client_preferences_by_type
 	options = list(GLOB.PREF_YES, GLOB.PREF_NO)
 	default_value = GLOB.PREF_NO
 
+/datum/client_preference/fast_mc_refresh
+	description = "Fast MC Refresh"
+	key = "FAST_MC_REFRESH"
+	options = list(GLOB.PREF_YES, GLOB.PREF_NO)
+	default_value = GLOB.PREF_NO
+
 /datum/client_preference/swap_tgui_inputs
 	description = "Swap Sumbmit/Cancle buttons"
 	key = "SWAP_TGUI_INPUTS"

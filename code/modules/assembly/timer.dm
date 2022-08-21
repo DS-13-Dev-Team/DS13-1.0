@@ -39,7 +39,9 @@
 	if(!secured)	return 0
 	pulse(0)
 	if(!holder)
-		visible_message("[icon2html(src)] *beep* *beep*", "*beep* *beep*")
+		var/list/mobs = list()
+		get_mobs_and_objs_in_view_fast(get_turf(src), world.view, mobs, list())
+		visible_message("[icon2html(src, mobs)] *beep* *beep*", "*beep* *beep*")
 	cooldown = 2
 	spawn(10)
 		process_cooldown()

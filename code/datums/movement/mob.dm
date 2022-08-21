@@ -486,7 +486,7 @@ If this is needed in future, add new datum procs for adding allowed movers, and 
 /datum/movement_handler/mob/delay/DoMove(var/direction, var/mover, var/is_external)
 	if(is_external)
 		return
-	next_move = world.time + max(1, mob.movement_delay()-overflow)
+	next_move = world.time + (mob.movement_delay()-overflow)
 
 /datum/movement_handler/mob/delay/MayMove(var/mover, var/is_external)
 	if(IS_NOT_SELF(mover) && is_external)

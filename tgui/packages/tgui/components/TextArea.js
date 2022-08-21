@@ -52,8 +52,8 @@ export class TextArea extends Component {
     };
     this.handleKeyDown = (e) => {
       const { editing } = this.state;
-      const { ignoreKeyEnter, onChange, onInput, onEnter, onKey } = this.props;
-      if (!ignoreKeyEnter && e.keyCode === KEY_ENTER) {
+      const { onChange, onInput, onEnter, onKey } = this.props;
+      if (e.keyCode === KEY_ENTER) {
         this.setEditing(false);
         if (onChange) {
           onChange(e, e.target.value);
@@ -95,10 +95,10 @@ export class TextArea extends Component {
         if (keyCode === KEY_TAB) {
           e.preventDefault();
           const { value, selectionStart, selectionEnd } = e.target;
-          e.target.value
-            = value.substring(0, selectionStart)
-            + '\t'
-            + value.substring(selectionEnd);
+          e.target.value =
+            value.substring(0, selectionStart) +
+            '\t' +
+            value.substring(selectionEnd);
           e.target.selectionEnd = selectionStart + 1;
           if (onInput) {
             onInput(e, e.target.value);

@@ -38,10 +38,11 @@ export const TextInputModal = (props, context) => {
     setInput(value);
   };
   // Dynamically changes the window height based on the message.
-  const windowHeight = 135
-    + (message.length > 30 ? Math.ceil(message.length / 4) : 0)
-    + (multiline || input.length >= 30 ? 75 : 0)
-    + (message.length && large_buttons ? 5 : 0);
+  const windowHeight =
+    135 +
+    (message.length > 30 ? Math.ceil(message.length / 4) : 0) +
+    (multiline || input.length >= 30 ? 75 : 0) +
+    (message.length && large_buttons ? 5 : 0);
 
   return (
     <Window title={title} width={325} height={windowHeight}>
@@ -49,7 +50,7 @@ export const TextInputModal = (props, context) => {
       <Window.Content
         onKeyDown={(event) => {
           const keyCode = window.event ? event.which : event.keyCode;
-          if (!multiline && keyCode === KEY_ENTER) {
+          if (keyCode === KEY_ENTER) {
             act('submit', { entry: input });
           }
           if (keyCode === KEY_ESCAPE) {
@@ -87,7 +88,6 @@ const InputArea = (props, context) => {
     <TextArea
       autoFocus
       autoSelect
-      ignoreKeyEnter={multiline}
       height={multiline || input.length >= 30 ? '100%' : '1.8rem'}
       maxLength={max_length}
       onEscape={() => act('cancel')}

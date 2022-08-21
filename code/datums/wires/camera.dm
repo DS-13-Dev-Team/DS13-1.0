@@ -57,7 +57,9 @@
 			C.light_disabled = !C.light_disabled
 
 		if(WIRE_CAM_ALARM)
-			C.visible_message("[icon2html(C)] *beep*", "[icon2html(C)] *beep*")
+			var/list/mobs = list()
+			get_mobs_and_objs_in_view_fast(get_turf(C), world.view, mobs, list())
+			C.visible_message("[icon2html(C, mobs)] *beep*", "[icon2html(C, mobs)] *beep*")
 	..()
 
 /datum/wires/camera/proc/CanDeconstruct()

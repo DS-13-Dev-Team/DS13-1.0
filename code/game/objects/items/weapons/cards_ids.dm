@@ -131,9 +131,6 @@ var/const/NO_EMAG_ACT = -50
 
 	var/job_access_type     // Job type to acquire access rights from, if any
 
-	var/datum/mil_branch/military_branch = null //Vars for tracking branches and ranks on multi-crewtype maps
-	var/datum/mil_rank/military_rank = null
-
 /obj/item/card/id/New()
 	..()
 	if(job_access_type)
@@ -178,8 +175,8 @@ var/const/NO_EMAG_ACT = -50
 		. += ", [assignment]"
 
 /obj/item/card/id/proc/set_id_photo(var/mob/M)
-	front = getFlatIcon(M, SOUTH, always_use_defdir = 1)
-	side = getFlatIcon(M, WEST, always_use_defdir = 1)
+	front = getFlatIcon(M, SOUTH)
+	side = getFlatIcon(M, WEST)
 
 /mob/proc/set_id_info(var/obj/item/card/id/id_card)
 	if(!id_card)

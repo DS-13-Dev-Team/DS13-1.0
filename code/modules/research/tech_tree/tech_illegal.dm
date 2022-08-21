@@ -4,28 +4,28 @@
 	id = "sdivet"
 	tech_type = TECH_ILLEGAL
 
-	x = 0.5
-	y = 0.5
-	icon = "sdivet"
+	x = 12
+	y = 5
+	icon = 'icons/obj/gun.dmi'
+	icon_state = "divet_spec"
 
 	required_technologies = list("divet")
-	required_tech_levels = list()
 	cost = 1250
 
 	unlocks_designs = list("sdivet")
 
 /datum/technology/icds
-	name = " Incendiary Divet Magazine"
+	name = "Incendiary Divet Magazine"
 	desc = "Incendiary Divet Magazine"
 	id = "icds"
 	tech_type = TECH_ILLEGAL
 
-	x = 0.5
-	y = 0.6
-	icon = "icds"
+	x = 12
+	y = 3.5
+	icon = 'icons/obj/ammo.dmi'
+	icon_state = "icds"
 
 	required_technologies = list("divet")
-	required_tech_levels = list()
 	cost = 1500
 
 	unlocks_designs = list("icds")
@@ -36,12 +36,12 @@
 	id = "hpds"
 	tech_type = TECH_ILLEGAL
 
-	x = 0.6
-	y = 0.5
-	icon = "hpds"
+	x = 10.5
+	y = 5
+	icon = 'icons/obj/ammo.dmi'
+	icon_state = "hpds"
 
 	required_technologies = list("divet")
-	required_tech_levels = list()
 	cost = 1500
 
 	unlocks_designs = list("hpds")
@@ -52,12 +52,12 @@
 	id = "apds"
 	tech_type = TECH_ILLEGAL
 
-	x = 0.4
-	y = 0.5
-	icon = "apds"
+	x = 13.5
+	y = 5
+	icon = 'icons/obj/ammo.dmi'
+	icon_state = "apds"
 
 	required_technologies = list("divet")
-	required_tech_levels = list()
 	cost = 1500
 
 	unlocks_designs = list("apds")
@@ -68,12 +68,12 @@
 	id = "freedom_implant"
 	tech_type = TECH_ILLEGAL
 
-	x = 0.5
-	y = 0.4
-	icon = "implant"
+	x = 12
+	y = 6.5
+	icon = 'icons/obj/items.dmi'
+	icon_state = "implantcase-r"
 
 	required_technologies = list("implants")
-	required_tech_levels = list()
 	cost = 1250
 
 	unlocks_designs = list("implant_free")
@@ -84,12 +84,12 @@
 	id = "imprinting_implant"
 	tech_type = TECH_ILLEGAL
 
-	x = 0.4
-	y = 0.4
-	icon = "implant"
+	x = 13.5
+	y = 6.5
+	icon = 'icons/obj/items.dmi'
+	icon_state = "implantcase-r"
 
 	required_technologies = list("implants")
-	required_tech_levels = list()
 	cost = 1250
 
 	unlocks_designs = list("implant_imprinting")
@@ -100,12 +100,12 @@
 	id = "explosive_implant"
 	tech_type = TECH_ILLEGAL
 
-	x = 0.6
-	y = 0.4
-	icon = "implant"
+	x = 10.5
+	y = 6.5
+	icon = 'icons/obj/items.dmi'
+	icon_state = "implantcase-r"
 
 	required_technologies = list("implants")
-	required_tech_levels = list()
 	cost = 1250
 
 	unlocks_designs = list("implant_explosive")
@@ -116,12 +116,12 @@
 	id = "chem_implant"
 	tech_type = TECH_ILLEGAL
 
-	x = 0.5
-	y = 0.3
-	icon = "implant"
+	x = 12
+	y = 8
+	icon = 'icons/obj/items.dmi'
+	icon_state = "implantcase-r"
 
 	required_technologies = list("implants")
-	required_tech_levels = list()
 	cost = 1250
 
 	unlocks_designs = list("implant_chem")

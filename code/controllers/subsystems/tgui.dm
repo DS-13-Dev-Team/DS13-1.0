@@ -28,6 +28,10 @@ SUBSYSTEM_DEF(tgui)
 
 /datum/controller/subsystem/tgui/PreInit()
 	basehtml = file2text('tgui/public/tgui.html')
+	// Inject inline polyfills
+	var/polyfill = file2text('tgui/public/tgui-polyfill.min.js')
+	polyfill = "<script>\n[polyfill]\n</script>"
+	basehtml = replacetextEx(basehtml, "<!-- tgui:inline-polyfill -->", polyfill)
 
 /datum/controller/subsystem/tgui/Shutdown()
 	close_all_uis()
@@ -211,13 +215,13 @@ SUBSYSTEM_DEF(tgui)
 	// No UIs opened for this src_object
 	if(isnull(open_uis_by_src[key]) || !istype(open_uis_by_src[key], /list))
 		return count
-	for(var/datum/tgui/ui in open_uis_by_src[key])
+	for(var/datum/tgui/ui as anything in open_uis_by_src[key])
 		// Check if UI is valid.
 		if(ui?.src_object && ui.user && ui.src_object.ui_host(ui.user))
 			if(!update_static_data)
 				ui.Process(wait * 0.1, force = 1)
 			else
-				ui.send_full_update()
+				ui.send_full_update(ignore_cooldown = TRUE)
 			count++
 	return count
 

@@ -46,7 +46,7 @@ nanoui is used to open and update nano browser uis
 	// show the map ui, this is used by the default layout
 	var/show_map = 0
 	// the map z level to display
-	var/map_z_level = 1
+	var/map_z_level = 2
 	// initial data, containing the full data structure, must be sent to the ui (the data structure cannot be extended later on)
 	var/list/initial_data[0]
 	// set to 1 to update the ui automatically every master_controller tick
@@ -59,7 +59,7 @@ nanoui is used to open and update nano browser uis
 	var/list/datum/nanoui/children = list()
 	var/datum/topic_state/state = null
 
- /**
+/**
   * Create a new nanoui instance.
   *
   * @param nuser /mob The mob who has opened/owns this ui

@@ -451,7 +451,7 @@
 		unmount_to_floor()
 
 
-/datum/extension/wallrun/proc/on_move(var/atom/mover, var/oldloc, var/newloc)
+/datum/extension/wallrun/proc/on_move(var/atom/mover, var/oldloc, var/dir)
 	SIGNAL_HANDLER
 	var/mounted = FALSE
 	//We have a next target? Try mounting to it
@@ -476,7 +476,7 @@
 			//3. We failed to hang onto our existing point
 
 		//In any case, we must now find and connect to a new point, or drop to floor
-		var/atom/next = find_mountpoint(newloc)
+		var/atom/next = find_mountpoint(mover.loc)
 		if (next && attempt_connect(next))
 			mounted = TRUE
 

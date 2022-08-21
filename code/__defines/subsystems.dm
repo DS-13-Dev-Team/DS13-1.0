@@ -71,6 +71,7 @@
 #define SS_INIT_TICKER				10
 #define SS_INIT_MAPPING				8
 #define SS_INIT_ATOMS				6
+#define SS_INIT_RESEARCH			5
 #define SS_INIT_CIRCUIT				4
 #define SS_INIT_NECROMORPH			2
 #define SS_INIT_ICON_UPDATE			0

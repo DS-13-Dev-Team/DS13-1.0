@@ -149,7 +149,7 @@ SUBSYSTEM_DEF(trade)
 		if(!rank)
 			continue
 
-		var/datum/job/job_datum = job_master.occupations_by_title[rank]
+		var/datum/job/job_datum = job_master.GetJob(rank)
 		if(!job_datum)
 			continue
 

@@ -1,15 +1,7 @@
 import { classes } from 'common/react';
 import { useBackend } from '../backend';
 import { Component, Fragment } from 'inferno';
-import {
-  Box,
-  Button,
-  Dropdown,
-  Icon,
-  Section,
-  Stack,
-  Table,
-} from '../components';
+import { Box, Button, Dropdown, Icon, Section, Stack, Table } from '../components';
 import { Window } from '../layouts';
 import { resolveAsset } from '../assets';
 import dateformat from 'dateformat';
@@ -69,37 +61,38 @@ export class ChangeLog extends Component {
     const maxAttempts = 6;
 
     if (attemptNumber > maxAttempts) {
-      return this.setData('Failed to load data after ' + maxAttempts + ' attempts');
+      return this.setData(
+        'Failed to load data after ' + maxAttempts + ' attempts'
+      );
     }
 
     act('get_month', { date });
 
-    fetch(resolveAsset(date + '.yml'))
-      .then(async (changelogData) => {
-        const result = await changelogData.text();
-        const errorRegex = /^Cannot find/;
+    fetch(resolveAsset(date + '.yml')).then(async (changelogData) => {
+      const result = await changelogData.text();
+      const errorRegex = /^Cannot find/;
 
-        if (errorRegex.test(result)) {
-          const timeout = 50 + attemptNumber * 50;
+      if (errorRegex.test(result)) {
+        const timeout = 50 + attemptNumber * 50;
 
-          self.setData(
-            'Loading changelog data' + '.'.repeat(attemptNumber + 3)
-          );
-          setTimeout(() => {
-            self.getData(date, attemptNumber + 1);
-          }, timeout);
-        } else {
-          self.setData(yaml.load(result, { schema: yaml.CORE_SCHEMA }));
-        }
-      });
-  }
+        self.setData('Loading changelog data' + '.'.repeat(attemptNumber + 3));
+        setTimeout(() => {
+          self.getData(date, attemptNumber + 1);
+        }, timeout);
+      } else {
+        self.setData(yaml.load(result, { schema: yaml.CORE_SCHEMA }));
+      }
+    });
+  };
 
   componentDidMount() {
-    const { data: { dates = [] } } = useBackend(this.context);
+    const {
+      data: { dates = [] },
+    } = useBackend(this.context);
 
     if (dates) {
-      dates.forEach(
-        date => this.dateChoices.push(dateformat(date, 'mmmm yyyy', true))
+      dates.forEach((date) =>
+        this.dateChoices.push(dateformat(date, 'mmmm yyyy', true))
       );
       this.setSelectedDate(this.dateChoices[0]);
       this.getData(dates[0]);
@@ -108,7 +101,9 @@ export class ChangeLog extends Component {
 
   render() {
     const { data, selectedDate, selectedIndex } = this.state;
-    const { data: { dates } } = useBackend(this.context);
+    const {
+      data: { dates },
+    } = useBackend(this.context);
     const { dateChoices } = this;
 
     const dateDropdown = dateChoices.length > 0 && (
@@ -126,17 +121,18 @@ export class ChangeLog extends Component {
               this.setSelectedDate(dateChoices[index]);
               window.scrollTo(
                 0,
-                document.body.scrollHeight
-                || document.documentElement.scrollHeight
+                document.body.scrollHeight ||
+                  document.documentElement.scrollHeight
               );
               return this.getData(dates[index]);
-            }} />
+            }}
+          />
         </Stack.Item>
         <Stack.Item>
           <Dropdown
             displayText={selectedDate}
             options={dateChoices}
-            onSelected={value => {
+            onSelected={(value) => {
               const index = dateChoices.indexOf(value);
 
               this.setData('Loading changelog data...');
@@ -144,13 +140,14 @@ export class ChangeLog extends Component {
               this.setSelectedDate(value);
               window.scrollTo(
                 0,
-                document.body.scrollHeight
-                || document.documentElement.scrollHeight
+                document.body.scrollHeight ||
+                  document.documentElement.scrollHeight
               );
               return this.getData(dates[index]);
             }}
             selected={selectedDate}
-            width={'150px'} />
+            width={'150px'}
+          />
         </Stack.Item>
         <Stack.Item>
           <Button
@@ -165,11 +162,12 @@ export class ChangeLog extends Component {
               this.setSelectedDate(dateChoices[index]);
               window.scrollTo(
                 0,
-                document.body.scrollHeight
-                || document.documentElement.scrollHeight
+                document.body.scrollHeight ||
+                  document.documentElement.scrollHeight
               );
               return this.getData(dates[index]);
-            }} />
+            }}
+          />
         </Stack.Item>
       </Stack>
     );
@@ -189,16 +187,16 @@ export class ChangeLog extends Component {
         </p>
         <p>
           <b>Coders: </b>
-          Nanako, KMC2000, TheLion1675
+          Nanako, KMC2000, TheLion1675, DTraitor
         </p>
         <p>
           <b>Mappers: </b>
-          Snypehunter007, TheLion1675
+          Snypehunter007, TheLion1675, Scott45
         </p>
         <p>
           <b>Spriters: </b>
           Ketrai, Xeirla, Snypehunter007, Don1155,
-          Meyhazah, Triiodine, Spicy Fly
+          Meyhazah, Triiodine, Spicy Fly, cre
         </p>
         <p>
           {'Recent GitHub contributors can be found '}
@@ -209,6 +207,7 @@ export class ChangeLog extends Component {
         <p>
           <b>Sound Provider: </b>
           TheLion1675, REsident55,
+          {} {}
           <a href="https://www.youtube.com/channel/UCd9iHQmcR93LguEv_xkpBTg">
             Jacob Danik
           </a>
@@ -257,52 +256,54 @@ export class ChangeLog extends Component {
       </Section>
     );
 
-    const changes = typeof data === 'object' && Object.keys(data).length > 0 && (
-      Object.entries(data).reverse().map(([date, authors]) => (
-        <Section key={date} title={dateformat(date, 'd mmmm yyyy', true)}>
-          <Box ml={3}>
-            {Object.entries(authors).map(([name, changes]) => (
-              <Fragment key={name}>
-                <h4>{name} changed:</h4>
-                <Box ml={3}>
-                  <Table>
-                    {changes.map(change => {
-                      const changeType = Object.keys(change)[0];
-                      return (
-                        <Table.Row key={changeType + change[changeType]}>
-                          <Table.Cell
-                            className={classes([
-                              'Changelog__Cell',
-                              'Changelog__Cell--Icon',
-                            ])}
-                          >
-                            <Icon
-                              color={
-                                icons[changeType]
-                                  ? icons[changeType].color
-                                  : icons['unknown'].color
-                              }
-                              name={
-                                icons[changeType]
-                                  ? icons[changeType].icon
-                                  : icons['unknown'].icon
-                              }
-                            />
-                          </Table.Cell>
-                          <Table.Cell className="Changelog__Cell">
-                            {change[changeType]}
-                          </Table.Cell>
-                        </Table.Row>
-                      );
-                    })}
-                  </Table>
-                </Box>
-              </Fragment>
-            ))}
-          </Box>
-        </Section>
-      ))
-    );
+    const changes =
+      typeof data === 'object' &&
+      Object.keys(data).length > 0 &&
+      Object.entries(data)
+        .reverse()
+        .map(([date, authors]) => (
+          <Section key={date} title={dateformat(date, 'd mmmm yyyy', true)}>
+            <Box ml={3}>
+              {Object.entries(authors).map(([name, changes]) => (
+                <Fragment key={name}>
+                  <h4>{name} changed:</h4>
+                  <Box ml={3}>
+                    <Table>
+                      {changes.map((change) => {
+                        const changeType = Object.keys(change)[0];
+                        return (
+                          <Table.Row key={changeType + change[changeType]}>
+                            <Table.Cell
+                              className={classes([
+                                'Changelog__Cell',
+                                'Changelog__Cell--Icon',
+                              ])}>
+                              <Icon
+                                color={
+                                  icons[changeType]
+                                    ? icons[changeType].color
+                                    : icons['unknown'].color
+                                }
+                                name={
+                                  icons[changeType]
+                                    ? icons[changeType].icon
+                                    : icons['unknown'].icon
+                                }
+                              />
+                            </Table.Cell>
+                            <Table.Cell className="Changelog__Cell">
+                              {change[changeType]}
+                            </Table.Cell>
+                          </Table.Row>
+                        );
+                      })}
+                    </Table>
+                  </Box>
+                </Fragment>
+              ))}
+            </Box>
+          </Section>
+        ));
 
     return (
       <Window title="Changelog" width={675} height={650}>

@@ -4,8 +4,8 @@ import { classes } from 'common/react';
 import { createSearch } from 'common/string';
 import { Fragment } from 'inferno';
 import { useBackend, useLocalState } from '../backend';
-import { Button, ByondUi, Input, Section, Dropdown, Flex, Stack } from '../components';
-import { refocusLayout, Window } from '../layouts';
+import { Button, ByondUi, Input, Section, Dropdown, Stack } from '../components';
+import { Window } from '../layouts';
 
 /**
  * Camera selector.
@@ -123,10 +123,9 @@ export const CameraConsoleSearch = (props, context) => {
                 'Button--ellipsis',
                 activeCamera
                   && camera.name === activeCamera.name
-                  && 'Button--selected',
+                  && 'Button--color--selected',
               ])}
               onClick={() => {
-                refocusLayout();
                 act('switch_camera', {
                   name: camera.name,
                 });

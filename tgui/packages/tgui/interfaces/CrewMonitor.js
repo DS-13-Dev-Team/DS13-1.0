@@ -164,7 +164,7 @@ const CrewMonitorMapView = (props, context) => {
     <Box height="526px" mb="0.5rem" overflow="hidden">
       <NanoMap onZoom={v => setZoom(v)}>
         {data.crewmembers.filter(x =>
-          (x.sensor_type === 3 && x.z === config.mapZLevel)
+          (x.sensor_type === 3 && ~~x.z === ~~config.mapZLevel)
         ).map(cm => (
           <NanoMap.Marker
             key={cm.ref}

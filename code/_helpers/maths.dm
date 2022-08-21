@@ -1,4 +1,5 @@
 // Macro functions.
+#define ISINTEGER(x) (round(x) == x)
 #define RAND_F(LOW, HIGH) (rand()*(HIGH-LOW) + LOW)
 #define ceil(x) (-round(-(x)))
 #define CEILING(x, y) ( -round(-(x) / (y)) * (y) )

@@ -225,11 +225,14 @@ datum/sound_token/proc/Mute()
 
 	listeners += listener
 
-	RegisterSignal(listener, COMSIG_MOVABLE_MOVED, .proc/PrivUpdateListenerLoc)
+	RegisterSignal(listener, COMSIG_MOVABLE_MOVED, .proc/OnListenerMove)
 	if(listener != source)
 		RegisterSignal(listener, COMSIG_PARENT_QDELETING, .proc/PrivRemoveListener)
 
 	PrivUpdateListenerLoc(listener, FALSE)
+
+/datum/sound_token/proc/OnListenerMove(atom/listener)
+	PrivUpdateListenerLoc(listener)
 
 /datum/sound_token/proc/PrivRemoveListener(atom/listener, force_state, sound/null_sound)
 	SIGNAL_HANDLER

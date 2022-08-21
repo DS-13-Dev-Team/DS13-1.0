@@ -32,7 +32,7 @@ var/const/GHOST_IMAGE_ALL = ~GHOST_IMAGE_NONE
 	updateallghostimages()
 
 /mob/dead/observer/movement_delay()
-	var/tally = WALK_DELAY
+	var/tally = 0.6
 	if (move_speed_factor)
 		tally /= move_speed_factor
 	set_glide_size(DELAY2GLIDESIZE(tally))

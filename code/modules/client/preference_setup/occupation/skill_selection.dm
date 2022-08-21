@@ -53,9 +53,7 @@
 		decls_repository.get_decl(/decl/hierarchy/skill)
 
 	pref.skills_allocated = list()
-	var/jobs_by_type = decls_repository.get_decls(GLOB.using_map.allowed_jobs)
-	for(var/job_type in jobs_by_type)
-		var/datum/job/job = jobs_by_type[job_type]
+	for(var/datum/job/job as anything in job_master.occupations)
 		if("[job.type]" in pref.skills_saved)
 			var/S = pref.skills_saved["[job.type]"]
 			var/L = list()
@@ -79,9 +77,7 @@
 /datum/preferences/proc/sanitize_skills(var/list/input)
 	. = list()
 	var/datum/species/S = all_species[species]
-	var/jobs_by_type = decls_repository.get_decls(GLOB.using_map.allowed_jobs)
-	for(var/job_type in jobs_by_type)
-		var/datum/job/job = jobs_by_type[job_type]
+	for(var/datum/job/job as anything in job_master.occupations)
 		var/input_skills = list()
 		if((job in input) && istype(input[job], /list))
 			input_skills = input[job]

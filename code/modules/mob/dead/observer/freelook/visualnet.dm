@@ -142,10 +142,10 @@
 		update_visibility(source, opacity_check)
 	return TRUE
 
-/datum/visualnet/proc/source_moved(var/atom/movable/source, var/old_loc, var/new_loc)
+/datum/visualnet/proc/source_moved(var/atom/movable/source, var/old_loc, var/dir)
 	SIGNAL_HANDLER
 	var/turf/old_turf = get_turf(old_loc)
-	var/turf/new_turf = get_turf(new_loc)
+	var/turf/new_turf = get_turf(source)
 
 	if(old_turf == new_turf)
 		return

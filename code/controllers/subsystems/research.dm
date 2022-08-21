@@ -1,97 +1,109 @@
-//Ported from eris as a dependancy for autolathe code. Most of the stuff here isn't needed and has been disabled
-//Loading of designs is currently done through asset_cache.dm instead
-//~Nanako
 SUBSYSTEM_DEF(research)
 	name = "Research"
 	flags = SS_NO_FIRE
-	init_order = SS_PRIORITY_DEFAULT
+	init_order = SS_INIT_RESEARCH
 
-	// Design datums:
-	var/list/design_ids = list()	// id = datum
-	var/list/all_designs = list()	// just datums
+	var/list/datum/design/designs_by_id = list()		// id = datum
+	var/list/tech_trees = list()		// id = datum
+	var/list/all_technologies = list()	// id = datum
+	var/list/servers = list()			// obj list
 
 	var/designs_initialized = FALSE
-
-	// If a research holder or a design file is created before SS is initialized, put it here and initialize it later.
-	var/list/research_holders_to_init = list()
+	var/list/late_designs_init = list()	// In case custom items system decides to add new design before SSresearch init
 	var/list/design_files_to_init = list()
+	var/list/research_files = list()
 
 /datum/controller/subsystem/research/Initialize()
+	for(var/A in subtypesof(/datum/design))
+		var/datum/design/D = new A
+		if(!D.build_path)
+			qdel(D)
+		else
+			D.AssembleDesignInfo()
+			designs_by_id[D.id] = D
 
+	for(var/A in subtypesof(/datum/technology))
+		var/datum/technology/T = new A
+		if(T.id)
+			all_technologies[T.id] = T
+		else
+			qdel(T)
 
-	// Initialize research holders that were created before
-	/*
-	for(var/research in research_holders_to_init)
-		initialize_designs(research)
-	research_holders_to_init = list()
-	*/
+	for(var/A in subtypesof(/datum/tech))
+		var/datum/tech/T = new A
+		tech_trees[T.id] = T
 
+		for(var/C in all_technologies)
+			var/datum/technology/TC = all_technologies[C]
+			if(TC.tech_type == T.id)
+				T.maxlevel += 1
 
+	designs_initialized = TRUE
 
+	for(var/A in late_designs_init)
+		register_research_design(A)
+
+	late_designs_init = null
+
+	for(var/A in design_files_to_init)
+		initialize_design_file(A)
+
+	design_files_to_init = null
+
+	for(var/A in research_files)
+		initialize_research_file(A)
+
+	.=..()
+
+/datum/controller/subsystem/research/stat_entry(msg)
+	msg = "|Research Files: [length(research_files)]|Tech Trees: [length(tech_trees)]|Technologies: [length(all_technologies)]|Designs: [length(designs_by_id)]"
 	return ..()
 
-
-
-/datum/controller/subsystem/research/proc/generate_integrated_circuit_designs()
-	/*
-	for(var/obj/item/integrated_circuit/IC in all_integrated_circuits)
-		if(!(IC.spawn_flags & IC_SPAWN_RESEARCH))
-			continue
-		var/datum/design/design = new /datum/design/research/circuit(src)
-		design.name = "Custom circuitry \[[IC.category_text]\] ([IC.name])"
-		design.id = "ic-[lowertext(IC.name)]"
-		design.build_path = IC.type
-
-		if(length(IC.origin_tech))
-			design.req_tech = IC.origin_tech.Copy()
-		else
-			design.req_tech = list(TECH_ENGINEERING = 2, TECH_DATA = 2)
-
-		design.AssembleDesignInfo()
-
-
-		all_designs += design
-
-		// Design ID is string or path.
-		// If path, make it accessible in both path and text form.
-		design_ids[design.id] = design
-		design_ids["[design.id]"] = design
-		*/
-
-
-/datum/controller/subsystem/research/proc/initialize_designs(datum/research/research)
+/datum/controller/subsystem/research/proc/initialize_research_file(datum/research/R)
 	// If designs are already generated, initialized right away.
-	// If not, add them to the list to be initialized later
-	/*
+	// If not, add them to the list to be initialized later.
 	if(designs_initialized)
-		for(var/datum/design/D in all_designs)
-			if(!D.req_tech)
-				continue
 
-			research.possible_designs += D
-			research.possible_design_ids[D.id] = D
-			research.possible_design_ids["[D.id]"] = D
-		research.RefreshResearch()
-	else
-		research_holders_to_init += research
-	*/
+		for(var/I in SSresearch.designs_by_id)
+			var/datum/design/D = SSresearch.designs_by_id[I]
+			if(D.starts_unlocked)
+				R.AddDesign2Known(D)
+
+		for(var/I in SSresearch.tech_trees)
+			var/datum/tech/T = SSresearch.tech_trees[I]
+			if(T.shown)
+				R.tech_trees_shown[I] = 0
+			else
+				R.tech_trees_hidden |= I
+
+		for(var/I in SSresearch.all_technologies)
+			var/datum/technology/T = SSresearch.all_technologies[I]
+			R.all_technologies |= I
+			if(T.cost <= 0 && !T.required_technologies.len)
+				R.UnlockTechology(T, TRUE)
+
+	research_files |= R
 
 /datum/controller/subsystem/research/proc/initialize_design_file(datum/computer_file/binary/design/design_file)
 	// If designs are already generated, initialized right away.
 	// If not, add them to the list to be initialized later.
 	if(designs_initialized)
-		var/datum/design/design = design_ids[get_design_id_from_type(design_file.design)]
+		var/datum/design/design = designs_by_id[get_design_id_from_type(design_file.design)]
 		if(design)
 			design_file.design = design
 			design_file.on_design_set()
 		else
-			log_debug("Incorrect design ID or path: [design_file.design]")
+			CRASH("Incorrect design ID or path: [design_file.design]")
 
 	else
-		design_files_to_init += design_file
+		design_files_to_init |= design_file
 
-
-
-
-
-/atom/research_design_initializer
+/datum/controller/subsystem/research/proc/register_research_design(datum/design/D)
+	if(designs_initialized)
+		if(!D.build_path)
+			CRASH("Tried to late register design with invalid build path!")
+		else
+			D.AssembleDesignInfo()
+			designs_by_id[D.id] = D
+	else
+		late_designs_init += D

@@ -14,6 +14,12 @@
 /// runs stoplag if tick_usage is above the limit
 #define CHECK_TICK ( TICK_CHECK ? stoplag() : 0 )
 
+/// Returns true if tick usage is above 95, for high priority usage
+#define TICK_CHECK_HIGH_PRIORITY ( TICK_USAGE > 95 )
+/// runs stoplag if tick_usage is above 95, for high priority usage
+#define CHECK_TICK_HIGH_PRIORITY ( TICK_CHECK_HIGH_PRIORITY? stoplag() : 0 )
+
+
 //"fancy" math for calculating time in ms from tick_usage percentage and the length of ticks
 //percent_of_tick_used * (ticklag * 100(to convert to ms)) / 100(percent ratio)
 //collapsed to percent_of_tick_used * tick_lag

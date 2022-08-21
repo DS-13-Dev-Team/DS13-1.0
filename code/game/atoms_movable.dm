@@ -166,6 +166,7 @@
 //This proc should never be overridden elsewhere at /atom/movable to keep directions sane.
 /atom/movable/Move(NewLoc, direct = 0, step_x = 0, step_y = 0, glide_size_override = 0)
 	var/OldLoc = loc
+	var/list/old_locs = locs
 	SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_MOVE, loc, NewLoc)
 	if (glide_size_override > 0)
 		set_glide_size(glide_size_override)
@@ -210,10 +211,10 @@
 	if(.)
 		if(opacity)
 			updateVisibility(src)
-		Moved(OldLoc, dir)
+		Moved(OldLoc, dir, old_locs)
 
-/atom/movable/proc/Moved(atom/OldLoc, Dir)
-	SEND_SIGNAL(src, COMSIG_MOVABLE_MOVED, OldLoc, loc)
+/atom/movable/proc/Moved(atom/OldLoc, Dir, old_locs)
+	SEND_SIGNAL(src, COMSIG_MOVABLE_MOVED, OldLoc, Dir, old_locs)
 
 /atom/movable/proc/set_glide_size(glide_size_override = 0, var/min = 0.1, var/max = world.icon_size/1)
 	SEND_SIGNAL(src, COMSIG_MOVABLE_UPDATE_GLIDE_SIZE, glide_size_override)

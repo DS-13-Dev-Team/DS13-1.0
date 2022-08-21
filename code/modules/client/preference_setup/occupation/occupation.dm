@@ -60,9 +60,7 @@
 
 	pref.skills_allocated = pref.sanitize_skills(pref.skills_allocated)		//this proc also automatically computes and updates points_by_job
 
-	var/jobs_by_type = decls_repository.get_decls(GLOB.using_map.allowed_jobs)
-	for(var/job_type in jobs_by_type)
-		var/datum/job/job = jobs_by_type[job_type]
+	for(var/datum/job/job as anything in job_master.occupations)
 		var/alt_title = pref.player_alt_titles[job.title]
 		if(alt_title && !(alt_title in job.alt_titles))
 			pref.player_alt_titles -= job.title
@@ -83,11 +81,11 @@
 	. += "<table width='100%' cellpadding='1' cellspacing='0'>"
 	var/index = -1
 	if(splitLimit)
-		limit = round((job_master.occupations.len+1)/2)
+		limit = round((length(job_master.occupations_map)+1)/2)
 
 	//The job before the current job. I only use this to get the previous jobs color when I'm filling in blank rows.
 	var/datum/job/lastJob
-	for(var/datum/job/job as anything in job_master.occupations)
+	for(var/datum/job/job as anything in job_master.occupations_map)
 		var/unspent = pref.points_by_job[job]
 		var/current_level = JOB_LEVEL_NEVER
 		if(pref.job_high == job.title)
@@ -330,9 +328,7 @@
  */
 /datum/category_item/player_setup_item/proc/prune_job_prefs()
 	var/allowed_titles = list()
-	var/jobs_by_type = decls_repository.get_decls(GLOB.using_map.allowed_jobs)
-	for(var/job_type in jobs_by_type)
-		var/datum/job/job = jobs_by_type[job_type]
+	for(var/datum/job/job as anything in job_master.occupations_map)
 		allowed_titles += job.title
 
 		if(job.title == pref.job_high)

@@ -39,10 +39,9 @@
 		)
 	)
 
-	/// Dictionary of job sub-typepath to template changes dictionary
-	var/job_changes = list()
-
 	var/map_datum = /datum/map/colony
+	//Size of the map *2
+	var/map_size = 400
 
 /**
  * Proc that simply loads the default map config, which should always be functional.
@@ -157,7 +156,6 @@
 		if(!islist(json["job_changes"]))
 			log_world("map_config \"job_changes\" field is missing or invalid!")
 			return
-		job_changes = json["job_changes"]
 
 	defaulted = FALSE
 	return TRUE

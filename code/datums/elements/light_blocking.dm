@@ -28,7 +28,7 @@
 
 
 ///Updates old and new turf loc opacities.
-/datum/element/light_blocking/proc/on_target_move(atom/movable/source, atom/old_loc, dir, forced, list/old_locs)
+/datum/element/light_blocking/proc/on_target_move(atom/movable/source, atom/old_loc, dir, list/old_locs)
 	SIGNAL_HANDLER
 	if(isturf(old_loc))
 		if(old_locs)

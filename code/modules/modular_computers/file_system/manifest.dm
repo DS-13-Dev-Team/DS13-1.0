@@ -52,7 +52,7 @@
 		else
 			isactive[name] = CR.get_status()
 
-		var/datum/job/job = job_master.occupations_by_title[rank]
+		var/datum/job/job = job_master.GetJob(rank)
 		var/found_place = 0
 		if(job)
 			for(var/list/department in dept_data)

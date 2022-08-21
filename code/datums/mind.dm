@@ -214,13 +214,11 @@
 		if(antag) antag.place_mob(src.current)
 
 	else if (href_list["role_edit"])
-		var/new_role = input("Select new role", "Assigned role", assigned_role) as null|anything in job_master.occupations_by_title
-		if (!new_role) return
-		var/datum/job/job = job_master.occupations_by_title[new_role]
+		var/datum/job/job = tgui_input_list(usr, "Select a new role", "Assigned role", job_master.occupations)
 		if(job)
 			assigned_role = job.title
 			assigned_job = job
-			role_alt_title = new_role
+			role_alt_title = job.title
 			if(current)
 				current.skillset.obtain_from_client(job, current.client)
 

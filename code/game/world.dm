@@ -136,7 +136,6 @@ GLOBAL_VAR(restart_counter)
 
 	Master.Initialize(10, FALSE, TRUE)
 
-
 /world/proc/InitTgs()
 	TgsNew(new /datum/tgs_event_handler/impl, TGS_SECURITY_TRUSTED)
 	GLOB.revdata.load_tgs_info()
@@ -639,10 +638,6 @@ var/world_topic_spam_protect_time = world.timeofday
 	GLOB.tgui_log = "[GLOB.log_directory]/tgui.log"
 	GLOB.world_paper_log = "[GLOB.log_directory]/paper.log"
 
-#ifdef UNIT_TESTS
-	GLOB.test_log = "[GLOB.log_directory]/tests.log"
-	start_log(GLOB.test_log)
-#endif
 	start_log(GLOB.world_game_log)
 	start_log(GLOB.world_attack_log)
 	start_log(GLOB.world_href_log)

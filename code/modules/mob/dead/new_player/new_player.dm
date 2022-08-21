@@ -357,7 +357,7 @@
 	dat += "<tr><td colspan = 3><b>[GLOB.using_map.station_name]:</b></td></tr>"
 
 	var/list/job_summaries = list()
-	for(var/datum/job/job in job_master.occupations)
+	for(var/datum/job/job in job_master.occupations_map)
 		var/summary = job.get_join_link(client, "byond://?src=\ref[src];SelectedJob=[job.title]", show_invalid_jobs)
 		if(summary && summary != "")
 			job_summaries += summary

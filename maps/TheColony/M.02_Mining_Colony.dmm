@@ -21694,7 +21694,6 @@
 /obj/machinery/button/remote/blast_door{
 	id = "cope_mc_neil";
 	name = "P-Sec Entrace Shutters";
-	pixel_x = 0;
 	pixel_y = 32;
 	req_access = list(2)
 	},
