@@ -263,6 +263,10 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	if(tgs_prime)
 		world.TgsInitializationComplete()
 
+#ifdef UNIT_TESTS
+	sleep_offline_after_initializations = FALSE
+#endif
+
 	if(sleep_offline_after_initializations)
 		world.sleep_offline = TRUE
 	sleep(1)

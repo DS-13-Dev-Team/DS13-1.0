@@ -136,10 +136,6 @@ GLOBAL_VAR(restart_counter)
 
 	Master.Initialize(10, FALSE, TRUE)
 
-	#ifdef UNIT_TESTS
-	HandleTestRun()
-	#endif
-
 /world/proc/InitTgs()
 	TgsNew(new /datum/tgs_event_handler/impl, TGS_SECURITY_TRUSTED)
 	GLOB.revdata.load_tgs_info()
@@ -499,27 +495,6 @@ var/world_topic_spam_protect_time = world.timeofday
 	else
 		hub_password = "SORRYNOPASSWORD"
 
-/world/proc/FinishTestRun()
-	set waitfor = FALSE
-	var/list/fail_reasons
-	if(GLOB)
-		if(GLOB.total_runtimes != 0)
-			fail_reasons = list("Total runtimes: [GLOB.total_runtimes]")
-#ifdef UNIT_TESTS
-		if(GLOB.failed_any_test)
-			LAZYADD(fail_reasons, "Unit Tests failed!")
-#endif
-		if(!GLOB.log_directory)
-			LAZYADD(fail_reasons, "Missing GLOB.log_directory!")
-	else
-		fail_reasons = list("Missing GLOB!")
-	if(!fail_reasons)
-		text2file("Success!", "[GLOB.log_directory]/clean_run.lk")
-	else
-		log_world("Test run failed!\n[fail_reasons.Join("\n")]")
-	sleep(0) //yes, 0, this'll let Reboot finish and prevent byond memes
-	qdel(src) //shut it down
-
 /world/Reboot(reason = 0, fast_track = FALSE, ping = FALSE)
 	if (reason || fast_track) //special reboot, do none of the normal stuff
 		if (usr)
@@ -529,11 +504,6 @@ var/world_topic_spam_protect_time = world.timeofday
 	else
 		to_chat(world, "<span class='boldannounce'>Rebooting world...</span>")
 		Master.Shutdown() //run SS shutdowns
-
-	#ifdef UNIT_TESTS
-	FinishTestRun()
-	return
-	#endif
 
 	if(ping)
 		send2chat("GAME: <@&830623957727182869>", "game") //Don't forget change id channel and id role for you server!!!!!
@@ -668,10 +638,6 @@ var/world_topic_spam_protect_time = world.timeofday
 	GLOB.tgui_log = "[GLOB.log_directory]/tgui.log"
 	GLOB.world_paper_log = "[GLOB.log_directory]/paper.log"
 
-#ifdef UNIT_TESTS
-	GLOB.test_log = "[GLOB.log_directory]/tests.log"
-	start_log(GLOB.test_log)
-#endif
 	start_log(GLOB.world_game_log)
 	start_log(GLOB.world_attack_log)
 	start_log(GLOB.world_href_log)
@@ -697,19 +663,6 @@ var/world_topic_spam_protect_time = world.timeofday
 	// but those are both private, so let's put the commit info in the runtime
 	// log which is ultimately public.
 	log_runtime(GLOB.revdata.get_log_message())
-
-/world/proc/HandleTestRun()
-	//trigger things to run the whole process
-	Master.sleep_offline_after_initializations = FALSE
-	SSticker.start_immediately = TRUE
-	CONFIG_SET(number/round_end_countdown, 0)
-	var/datum/callback/cb
-#ifdef UNIT_TESTS
-	cb = CALLBACK(GLOBAL_PROC, /proc/RunUnitTests)
-#else
-	cb = VARSET_CALLBACK(SSticker, force_ending, TRUE)
-#endif
-	SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, /proc/_addtimer, cb, 10 SECONDS))
 
 /world/proc/change_fps(new_value = 20)
 	if(new_value <= 0)
