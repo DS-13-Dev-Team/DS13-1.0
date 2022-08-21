@@ -31,7 +31,6 @@
 
 	max_health = 2500	//These are tough since they tank hits for the whole thing
 
-	var/equipment_overlay_icon = 'icons/mob/onmob/rig_modules.dmi'
 	var/hides_uniform = 1 	//used to determinate if uniform should be visible whenever the suit is sealed or not
 
 	var/interface_path = "RIGSuit"
@@ -500,19 +499,15 @@
 			species_icon =  sprite_sheets[wearer.species.get_bodytype(wearer)]
 		mob_icon = image("icon" = species_icon, "icon_state" = "[icon_state]")
 
-
 	if(wearer)
-		if(equipment_overlay_icon && LAZYLEN(installed_modules))
+		if(LAZYLEN(installed_modules))
 			for(var/obj/item/rig_module/module in installed_modules)
 				if(module.suit_overlay)
-					var/image/overlay = image("icon" = equipment_overlay_icon, "icon_state" = "[module.suit_overlay]", "dir" = SOUTH, layer = module.suit_overlay_layer)
-					overlay.plane = module.suit_overlay_plane
-					overlay.appearance_flags = module.suit_overlay_flags
 					if (chest)
 						//Some rigs dont have a chestpiece
-						chest.overlays += overlay
+						chest.overlays += module.suit_overlay
 					else
-						src.overlays += overlay
+						src.overlays += module.suit_overlay
 		wearer.update_inv_shoes()
 		wearer.update_inv_gloves()
 		wearer.update_inv_head()
@@ -523,17 +518,14 @@
 	return
 
 /obj/item/rig/get_mob_overlay(mob/user_mob, slot)
-	var/image/ret = ..()
+	var/mutable_appearance/ret = ..()
 	if(is_held() || offline)
 		return ret
 
-	if(equipment_overlay_icon && LAZYLEN(installed_modules))
+	if(LAZYLEN(installed_modules))
 		for(var/obj/item/rig_module/module in installed_modules)
 			if(module.suit_overlay)
-				var/image/overlay = image("icon" = equipment_overlay_icon, "icon_state" = "[module.suit_overlay]", layer = module.suit_overlay_layer)
-				overlay.plane = module.suit_overlay_plane
-				overlay.appearance_flags = module.suit_overlay_flags
-				ret.overlays += overlay
+				ret.overlays += module.suit_overlay
 	return ret
 
 /obj/item/rig/proc/check_suit_access(mob/living/carbon/human/user, do_message = TRUE)

@@ -6,17 +6,15 @@
 	icon_state = "healthbar"
 	use_power_cost = 0
 	origin_tech = list(TECH_MAGNET = 3, TECH_BIO = 3, TECH_ENGINEERING = 5)
-	suit_overlay_inactive = "healthbar_100"
 	suit_overlay_active = "healthbar_100"
+	suit_overlay_inactive = "healthbar_100"
 	suit_overlay_used = "healthbar_100"
-	suit_overlay = "healthbar_100"
-	var/mob/living/carbon/human/user
-	process_with_rig = FALSE
-
-	suit_overlay_plane = ABOVE_LIGHTING_PLANE
-	suit_overlay_layer = LIGHTING_SECONDARY_LAYER
+	suit_overlay_plane = GAME_PLANE
+	suit_overlay_layer = MOB_LAYER
 	suit_overlay_flags = KEEP_APART
 
+	var/mob/living/carbon/human/user
+	process_with_rig = FALSE
 	module_tags = list(LOADOUT_TAG_RIG_HEALTHBAR = 1)
 
 	base_type = /obj/item/rig_module/healthbar
@@ -26,6 +24,11 @@
 
 /obj/item/rig_module/healthbar/Initialize()
 	. = ..()
+	var/mutable_appearance/emissive = emissive_appearance('icons/mob/onmob/rig_modules.dmi', "healthbar_100", MOB_LAYER)
+	suit_overlay_active.overlays += emissive
+	suit_overlay_inactive.overlays += emissive
+	suit_overlay_used.overlays += emissive
+	emissive = null
 	tracking_mode = pick(RIG_SENSOR_MANUAL, RIG_SENSOR_AUTOMATIC)
 
 	if(tracking_mode == RIG_SENSOR_AUTOMATIC)
@@ -89,10 +92,10 @@
 	else
 		percentage = round(percentage, 10)
 
-	suit_overlay = "healthbar_[percentage]"
-	suit_overlay_inactive = "healthbar_[percentage]"
-	suit_overlay_active = "healthbar_[percentage]"
-	suit_overlay_used = "healthbar_[percentage]"
+	suit_overlay.icon_state = "healthbar_[percentage]"
+	suit_overlay_inactive.icon_state = "healthbar_[percentage]"
+	suit_overlay_active.icon_state = "healthbar_[percentage]"
+	suit_overlay_used.icon_state = "healthbar_[percentage]"
 	holder.update_wear_icon()
 
 

@@ -53,7 +53,6 @@
 	. = opacity
 	opacity = new_opacity
 
-
 /atom/movable/set_opacity(new_opacity)
 	. = ..()
 	if(isnull(.) || !isturf(loc))

@@ -75,12 +75,12 @@
 	var/charge_selected                 // Currently selected option used for charge dispensing.
 
 	// Icons.
-	var/suit_overlay
-	var/suit_overlay_active             // If set, drawn over icon and mob when effect is active.
-	var/suit_overlay_inactive           // As above, inactive.
-	var/suit_overlay_used               // As above, when engaged.
+	var/mutable_appearance/suit_overlay
+	var/mutable_appearance/suit_overlay_active             // If set, drawn over icon and mob when effect is active.
+	var/mutable_appearance/suit_overlay_inactive           // As above, inactive.
+	var/mutable_appearance/suit_overlay_used               // As above, when engaged.
+	var/suit_overlay_plane	=	GAME_PLANE
 	var/suit_overlay_layer	=	MOB_LAYER
-	var/suit_overlay_plane	=	DEFAULT_PLANE
 	var/suit_overlay_flags = 0
 
 	//Display fluff
@@ -104,15 +104,6 @@
 
 	//If true, this module requires the rig to have a chest piece, IE a suit. Meaning it can't be installed in back-only rigs, like the civilian RIG
 	var/require_suit = FALSE
-
-/obj/item/rig_module/Initialize()
-	.=..()
-	if (!interface_name)
-		interface_name = name
-
-	if (!interface_desc)
-		interface_desc = desc
-
 
 /obj/item/rig_module/examine()
 	. = ..()
@@ -170,6 +161,21 @@
 
 /obj/item/rig_module/Initialize()
 	. =..()
+	if(suit_overlay_active)
+		suit_overlay_active = mutable_appearance('icons/mob/onmob/rig_modules.dmi', icon_state = suit_overlay_active, layer = suit_overlay_layer, plane = suit_overlay_plane, appearance_flags = suit_overlay_flags)
+
+	if(suit_overlay_inactive)
+		suit_overlay_inactive = mutable_appearance('icons/mob/onmob/rig_modules.dmi', icon_state = suit_overlay_inactive, layer = suit_overlay_layer, plane = suit_overlay_plane, appearance_flags = suit_overlay_flags)
+
+	if(suit_overlay_used)
+		suit_overlay_used = mutable_appearance('icons/mob/onmob/rig_modules.dmi', icon_state = suit_overlay_used, layer = suit_overlay_layer, plane = suit_overlay_plane, appearance_flags = suit_overlay_flags)
+
+	if (!interface_name)
+		interface_name = name
+
+	if (!interface_desc)
+		interface_desc = desc
+
 	if(suit_overlay_inactive)
 		suit_overlay = suit_overlay_inactive
 
