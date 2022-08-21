@@ -240,6 +240,7 @@
 				/obj/item/reagent_containers/hypospray/autoinjector = 3,
 				/obj/item/storage/pill_bottle/kelotane = 2,
 				/obj/item/storage/pill_bottle/antitox = 2,
+				/obj/item/storage/pill_bottle/inaprovaline = 2,
 				/obj/item/storage/med_pouch/trauma = 2,
 				/obj/item/storage/med_pouch/burn = 2,
 				/obj/item/storage/med_pouch/toxin = 2,

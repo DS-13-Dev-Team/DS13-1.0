@@ -72,3 +72,9 @@
 	contains = list(/obj/item/modular_computer/pda = 3)
 	cost = 10
 	containername = "\improper Spare PDA crate"
+
+/decl/hierarchy/supply_pack/supply/spare_id
+	name = "Spare IDs"
+	contains = list(/obj/item/storage/box/holoids = 3)
+	cost = 10
+	containername = "\improper Spare ID crate"

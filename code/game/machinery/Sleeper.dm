@@ -9,7 +9,7 @@
 	clickvol = 30
 	atom_flags = ATOM_FLAG_NO_REACT
 	var/mob/living/carbon/human/occupant = null
-	var/list/available_chemicals = list(/datum/reagent/inaprovaline, /datum/reagent/dylovene, /datum/reagent/soporific, /datum/reagent/paracetamol, /datum/reagent/dexalin)
+	var/list/available_chemicals = list(/datum/reagent/inaprovaline, /datum/reagent/dylovene, /datum/reagent/soporific, /datum/reagent/paracetamol, /datum/reagent/dexalin, /datum/reagent/iron)
 	var/amounts = list(5, 10)
 	var/obj/item/reagent_containers/glass/beaker = null
 	var/filtering = 0

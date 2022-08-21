@@ -269,7 +269,7 @@
 /datum/craft_step/tool
 	var/required_quality
 	var/required_level = 1
-	var/difficulty = FAILCHANCE_NORMAL
+	var/difficulty = 0 //FAILCHANCE_NORMAL
 	var/required_skill = SKILL_CONSTRUCTION
 
 /datum/craft_step/tool/load_params(var/list/params)

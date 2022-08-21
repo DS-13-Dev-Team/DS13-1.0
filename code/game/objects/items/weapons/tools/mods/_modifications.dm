@@ -156,7 +156,7 @@
 
 	if (user)
 		user.visible_message(SPAN_NOTICE("[user] starts applying the [src] to [T]"), SPAN_NOTICE("You start applying the [src] to [T]"))
-		if (!use_tool(user = user, target =  T, base_time = WORKTIME_NORMAL, required_quality = null, fail_chance = FAILCHANCE_EASY+T.unreliability, required_stat = "construction", forced_sound = WORKSOUND_WRENCHING))
+		if (!use_tool(user = user, target =  T, base_time = WORKTIME_NORMAL, required_quality = null, fail_chance = FAILCHANCE_EASY, required_stat = "construction", forced_sound = WORKSOUND_WRENCHING))
 			return FALSE
 		to_chat(user, SPAN_NOTICE("You have successfully installed [src] in [T]"))
 		user.drop_from_inventory(src)

@@ -142,12 +142,14 @@
 		/obj/item/tool/bonesetter,
 		/obj/item/tool/cautery,
 		/obj/item/tool/saw/circular,
+		/obj/item/tool/saw/advanced_circular,
 		/obj/item/tool/hemostat,
 		/obj/item/tool/retractor,
 		/obj/item/tool/scalpel,
 		/obj/item/tool/surgicaldrill,
 		/obj/item/bonegel,
 		/obj/item/FixOVein,
+		/obj/item/reagent_containers/dropper,
 		/obj/item/stack/medical/advanced/bruise_pack,
 		/obj/item/stack/nanopaste
 		)

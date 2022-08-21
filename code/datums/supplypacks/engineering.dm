@@ -195,16 +195,39 @@
 	containername = "\improper painting supplies crate"
 	containertype = /obj/structure/closet/crate
 
-/decl/hierarchy/supply_pack/engineering/bluespacerelay
-	name = "Emergency Bluespace Relay Assembly Kit"
-	contains = list(/obj/item/circuitboard/bluespacerelay,
-					/obj/item/stock_parts/manipulator,
-					/obj/item/stock_parts/manipulator,
-					/obj/item/stock_parts/subspace/filter,
+/decl/hierarchy/supply_pack/engineering/tcomms
+	name = "Telecommunications Parts Crate"
+	contains = list(/obj/item/stock_parts/subspace/ansible,
+					/obj/item/stock_parts/subspace/filter = 9,
+					/obj/item/stock_parts/subspace/treatment = 2,
+					/obj/item/stock_parts/subspace/analyzer,
+					/obj/item/stock_parts/subspace/amplifier,
 					/obj/item/stock_parts/subspace/crystal,
+					/obj/item/stock_parts/micro_laser/high = 3,
+					/obj/item/stock_parts/manipulator = 15,
+					/obj/item/tool/multitool,
 					/obj/item/storage/toolbox/electrical)
 	cost = 75
-	containername = "\improper emergency bluespace relay assembly kit"
+	containername = "\improper telecommunications parts crate"
+	containertype = /obj/structure/closet/crate/secure/large
+	access = access_engineering
+
+/decl/hierarchy/supply_pack/engineering/tcommscircuitboard
+	name = "Telecommunications Circuit Board Crate"
+	contains = list(/obj/item/circuitboard/comm_monitor,
+					/obj/item/circuitboard/comm_server,
+					/obj/item/circuitboard/comm_traffic,
+					/obj/item/circuitboard/telecomms/receiver,
+					/obj/item/circuitboard/telecomms/hub,
+					/obj/item/circuitboard/telecomms/relay,
+					/obj/item/circuitboard/telecomms/bus,
+					/obj/item/circuitboard/telecomms/processor,
+					/obj/item/circuitboard/telecomms/server,
+					/obj/item/circuitboard/telecomms/broadcaster)
+	cost = 50
+	containername = "\improper telecommunications circuit board crate"
+	containertype = /obj/structure/closet/crate/secure/large
+	access = access_engineering
 
 /decl/hierarchy/supply_pack/engineering/firefighter
 	name = "Firefighting equipment"

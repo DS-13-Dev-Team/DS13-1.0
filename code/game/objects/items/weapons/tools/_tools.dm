@@ -70,8 +70,8 @@
 	/* Tool Usage */
 *******************************/
 
-//Simple form ideal for basic use. That proc will return TRUE only when everything was done right, and FALSE if something went wrong, ot user was unlucky.
-//Editionaly, handle_failure proc will be called for a critical failure roll.
+//Simple form ideal for basic use. That proc will return TRUE only when everything was done right, and FALSE if something went wrong, or user was unlucky.
+//Additionaly, handle_failure proc will be called for a critical failure roll.
 /obj/proc/use_tool(mob/living/user, atom/target, base_time, required_quality, fail_chance, required_stat, instant_finish_tier = 110, forced_sound = null, sound_repeat = 2.5 SECONDS, datum/callback/progress_proc, progress_proc_interval = 1 SECOND)
 	var/obj/item/tool/T
 	if (istool(src))
@@ -88,9 +88,9 @@
 	switch(result)
 		if(TOOL_USE_CANCEL)
 			return FALSE
-		if(TOOL_USE_FAIL)
-			handle_failure(user, target, required_stat = required_stat, required_quality = required_quality)	//We call it here because extended proc mean to be used only when you need to handle tool fail by yourself
-			return FALSE
+		// if(TOOL_USE_FAIL)
+		// 	handle_failure(user, target, required_stat = required_stat, required_quality = required_quality)	//We call it here because extended proc mean to be used only when you need to handle tool fail by yourself
+		// 	return FALSE
 		if(TOOL_USE_SUCCESS)
 			return TRUE
 
@@ -118,7 +118,8 @@
 		var/mob/living/carbon/human/H = user
 		if(H.shock_stage >= 30)
 			to_chat(user, SPAN_WARNING("Pain distracts you from your task."))
-			fail_chance += round(H.shock_stage/120 * 40)
+			if(fail_chance > 0)
+				fail_chance += round(H.shock_stage/120 * 40)
 			base_time += round(H.shock_stage/120 * 40)
 
 
@@ -210,12 +211,14 @@
 	var/stat_modifer = user.get_skill_percentage_bonus(required_stat)
 
 
-	fail_chance = fail_chance - get_tool_quality(required_quality) - stat_modifer
+	if(fail_chance > 0)
+		fail_chance = fail_chance - get_tool_quality(required_quality) - stat_modifer
 
 	//Unreliability increases failure rates, and precision reduces it
 	if (T)
-		fail_chance += T.unreliability
-		fail_chance -= T.precision
+		if(fail_chance > 0)
+			fail_chance += T.unreliability
+			fail_chance -= T.precision
 
 	if (fail_chance < 0)
 		fail_chance = 0
@@ -409,184 +412,184 @@
 *******************************/
 
 //Critical failure rolls. If you use use_tool_extended, you might want to call that proc as well.
-/obj/proc/handle_failure(var/mob/living/user, var/atom/target, var/required_stat, required_quality)
-	var/obj/item/I = src
-	var/obj/item/tool/T
-	if (istype(src, /obj/item))
-		I = src
-		if(istype(src, /obj/item/tool))
-			T = src
+// /obj/proc/handle_failure(var/mob/living/user, var/atom/target, var/required_stat, required_quality)
+// 	var/obj/item/I = src
+// 	var/obj/item/tool/T
+// 	if (istype(src, /obj/item))
+// 		I = src
+// 		if(istype(src, /obj/item/tool))
+// 			T = src
 
-	var/crit_fail_chance = 10
-	if (T)
-		crit_fail_chance = crit_fail_chance += T.unreliability//At high unreliability, critical failures are more common
-		if (T.degradation)
-			T.unreliability += 15*T.degradation //Failing incurs 30 uses worth of damage
-	if(required_stat)
-		crit_fail_chance = crit_fail_chance - 30// TODO: Bay stats here: user.stats.getStat(required_stat)
-
-
-
-
-	if (crit_fail_chance <= 0)
-		return
-
-	//This list initially contains the fail types that are always valid, even for robots
-	var/list/failtypes = list()
-
-	if(T && T.use_fuel_cost)
-		//Robots can do this one too
-		failtypes["burn"] = 0.5
+// 	var/crit_fail_chance = 10
+// 	if (T)
+// 		crit_fail_chance = crit_fail_chance += T.unreliability//At high unreliability, critical failures are more common
+// 		if (T.degradation)
+// 			T.unreliability += 15*T.degradation //Failing incurs 30 uses worth of damage
+// 	if(required_stat)
+// 		crit_fail_chance = crit_fail_chance - 30// TODO: Bay stats here: user.stats.getStat(required_stat)
 
 
 
 
-	if(I.canremove)
-		failtypes["throw"] = 1
+// 	if (crit_fail_chance <= 0)
+// 		return
 
-		if(T && T.degradation)
-			failtypes["damage"] = 2.5
-			if(T.unreliability >= 3)
-				failtypes["break"] = T.unreliability * 0.1 // Damaged tools are more likely to break.
-		else
-			failtypes["break"] = 0.5
+// 	//This list initially contains the fail types that are always valid, even for robots
+// 	var/list/failtypes = list()
 
-	if(user)
-		failtypes["slip"] = 2
-		failtypes["swing"] = 1
-		if(ishuman(user))
-			if(I.canremove)
-				failtypes["drop"] = 2
-/*DS13: too much damage
-			if (I.sharp)
-				failtypes["stab"] = 1
-*/
-			//This one is limited to humans only since robots often can't remove/replace their device cells
-			if(locate(/obj/item/cell) in contents)
-				failtypes["overload"] = 0.5
-
-	if(prob(crit_fail_chance))
-		var/fail_type = pickweight(failtypes)
-
-		switch(fail_type)
-			//Drop the tool on the floor
-			if("damage")
-				if(user)
-					to_chat(user, SPAN_DANGER("Your hand slips and you damage [src] a bit."))
-				T.unreliability += 5
-				return
-
-			//Drop the tool on the floor
-			if("drop")
-				if(user)
-					to_chat(user, SPAN_DANGER("You drop [src] on the floor."))
-					user.drop_from_inventory(src)
-				else if(istype(loc, /obj/machinery/door/airlock))
-					//var/obj/machinery/door/airlock/AD = loc
-					//AD.take_out_wedged_item() //Airlock tool wedging system, not ported yet
-				else
-					forceMove(get_turf(src))
-				return
-
-			//Hit yourself
-			if("slip")
-				var/mob/living/carbon/human/H = user
-				to_chat(user, SPAN_DANGER("Your hand slips while working with [src]!"))
-				I.attack(H, H, H.get_holding_hand(src))
-				return
-
-			//Hit a random atom around you
-			if("swing")
-				var/list/targets = list()
-				for (var/atom/movable/AM in orange(user, 1))
-					targets.Add(AM)
-				if (!targets.len)
-					return
-
-				var/newtarget = pick(targets)
-				var/mob/living/carbon/human/H = user
-
-				to_chat(user, SPAN_DANGER("Your hand slips and you hit [target] with [src]!"))
-				spawn()
-					H.ClickOn(newtarget)
-				return
-
-			//Throw the tool in a random direction
-			if("throw")
-				if(user)
-					var/mob/living/carbon/human/H = user
-					var/throw_target = pick(trange(6, user))
-					to_chat(user, SPAN_DANGER("Your [src] flies away!"))
-					H.unEquip(src)
-					throw_at(throw_target, src.throw_range, src.throw_speed, H)
-					return
-				if(istype(loc, /obj/machinery/door/airlock))
-					//var/obj/machinery/door/airlock/AD = loc
-					//AD.take_out_wedged_item() //Airlock tool wedging system, not ported yet
-				else
-					forceMove(get_turf(src))
-				var/throw_target = pick(trange(6, src))
-				throw_at(throw_target, src.throw_range, src.throw_speed)
-				return
-
-			//Stab yourself in the hand so hard your tool embeds
-			if("stab")
-				var/mob/living/carbon/human/H = user
-				to_chat(user, SPAN_DANGER("You accidentally stuck [src] in your hand!"))
-				var/obj/item/organ/external/hand  = H.get_organ(H.get_holding_hand(src))
-				hand.embed(src)
-				return
-
-			//The tool completely breaks, permanantly gone
-			if("break")
-				if(user)
-					to_chat(user, SPAN_DANGER("Your [src] broke beyond repair!"))
-					new /obj/item/material/shard/shrapnel(user.loc)
-				else
-					new /obj/item/material/shard/shrapnel(get_turf(src))
-
-				//To encourage using makeshift tools, modifications are preserved if the tool breaks
-				if (T)
-					for (var/obj/item/tool_modification/A in T.modifications)
-						A.forceMove(get_turf(src))
-						A.holder = null
-
-				//Airlock tool wedging system, not ported yet
-				//if(istype(loc, /obj/machinery/door/airlock))
-					//var/obj/machinery/door/airlock/AD = loc
-					//AD.take_out_wedged_item()
-
-				qdel(src)
-				return
-
-			//The fuel in the tool ignites and sets you aflame
-			if("burn")
-				to_chat(user, SPAN_DANGER("You ignite the fuel of the [src]!"))
-				var/fuel = T.get_fuel()
-				T.consume_fuel(fuel)
-				user.adjust_fire_stacks(fuel/10)
-				user.IgniteMob()
-				T.update_icon()
-				return
-
-			//The cell explodes
-			//This can happen even with non-tools which contain a cell
-			if("overload")
-				var/obj/item/cell/C
-				if(T)
-					C = T.cell
-				else
-					C = locate(/obj/item/cell) in contents
+// 	if(T && T.use_fuel_cost)
+// 		//Robots can do this one too
+// 		failtypes["burn"] = 0.5
 
 
-				if(user)
-					to_chat(user, SPAN_DANGER("You overload the cell in the [src]!"))
-				C.explode()
-				if (T)
-					T.cell = null
 
-				update_icon()
-				return
+
+// 	if(I.canremove)
+// 		failtypes["throw"] = 1
+
+// 		if(T && T.degradation)
+// 			failtypes["damage"] = 2.5
+// 			if(T.unreliability >= 3)
+// 				failtypes["break"] = T.unreliability * 0.1 // Damaged tools are more likely to break.
+// 		else
+// 			failtypes["break"] = 0.5
+
+// 	if(user)
+// 		failtypes["slip"] = 2
+// 		failtypes["swing"] = 1
+// 		if(ishuman(user))
+// 			if(I.canremove)
+// 				failtypes["drop"] = 2
+// /*DS13: too much damage
+// 			if (I.sharp)
+// 				failtypes["stab"] = 1
+// */
+// 			//This one is limited to humans only since robots often can't remove/replace their device cells
+// 			if(locate(/obj/item/cell) in contents)
+// 				failtypes["overload"] = 0.5
+
+// 	if(prob(crit_fail_chance))
+// 		var/fail_type = pickweight(failtypes)
+
+// 		switch(fail_type)
+// 			//Drop the tool on the floor
+// 			if("damage")
+// 				if(user)
+// 					to_chat(user, SPAN_DANGER("Your hand slips and you damage [src] a bit."))
+// 				T.unreliability += 5
+// 				return
+
+// 			//Drop the tool on the floor
+// 			if("drop")
+// 				if(user)
+// 					to_chat(user, SPAN_DANGER("You drop [src] on the floor."))
+// 					user.drop_from_inventory(src)
+// 				else if(istype(loc, /obj/machinery/door/airlock))
+// 					//var/obj/machinery/door/airlock/AD = loc
+// 					//AD.take_out_wedged_item() //Airlock tool wedging system, not ported yet
+// 				else
+// 					forceMove(get_turf(src))
+// 				return
+
+// 			//Hit yourself
+// 			if("slip")
+// 				var/mob/living/carbon/human/H = user
+// 				to_chat(user, SPAN_DANGER("Your hand slips while working with [src]!"))
+// 				I.attack(H, H, H.get_holding_hand(src))
+// 				return
+
+// 			//Hit a random atom around you
+// 			if("swing")
+// 				var/list/targets = list()
+// 				for (var/atom/movable/AM in orange(user, 1))
+// 					targets.Add(AM)
+// 				if (!targets.len)
+// 					return
+
+// 				var/newtarget = pick(targets)
+// 				var/mob/living/carbon/human/H = user
+
+// 				to_chat(user, SPAN_DANGER("Your hand slips and you hit [target] with [src]!"))
+// 				spawn()
+// 					H.ClickOn(newtarget)
+// 				return
+
+// 			//Throw the tool in a random direction
+// 			if("throw")
+// 				if(user)
+// 					var/mob/living/carbon/human/H = user
+// 					var/throw_target = pick(trange(6, user))
+// 					to_chat(user, SPAN_DANGER("Your [src] flies away!"))
+// 					H.unEquip(src)
+// 					throw_at(throw_target, src.throw_range, src.throw_speed, H)
+// 					return
+// 				if(istype(loc, /obj/machinery/door/airlock))
+// 					//var/obj/machinery/door/airlock/AD = loc
+// 					//AD.take_out_wedged_item() //Airlock tool wedging system, not ported yet
+// 				else
+// 					forceMove(get_turf(src))
+// 				var/throw_target = pick(trange(6, src))
+// 				throw_at(throw_target, src.throw_range, src.throw_speed)
+// 				return
+
+// 			//Stab yourself in the hand so hard your tool embeds
+// 			if("stab")
+// 				var/mob/living/carbon/human/H = user
+// 				to_chat(user, SPAN_DANGER("You accidentally stuck [src] in your hand!"))
+// 				var/obj/item/organ/external/hand  = H.get_organ(H.get_holding_hand(src))
+// 				hand.embed(src)
+// 				return
+
+// 			//The tool completely breaks, permanantly gone
+// 			if("break")
+// 				if(user)
+// 					to_chat(user, SPAN_DANGER("Your [src] broke beyond repair!"))
+// 					new /obj/item/material/shard/shrapnel(user.loc)
+// 				else
+// 					new /obj/item/material/shard/shrapnel(get_turf(src))
+
+// 				//To encourage using makeshift tools, modifications are preserved if the tool breaks
+// 				if (T)
+// 					for (var/obj/item/tool_modification/A in T.modifications)
+// 						A.forceMove(get_turf(src))
+// 						A.holder = null
+
+// 				//Airlock tool wedging system, not ported yet
+// 				//if(istype(loc, /obj/machinery/door/airlock))
+// 					//var/obj/machinery/door/airlock/AD = loc
+// 					//AD.take_out_wedged_item()
+
+// 				qdel(src)
+// 				return
+
+// 			//The fuel in the tool ignites and sets you aflame
+// 			if("burn")
+// 				to_chat(user, SPAN_DANGER("You ignite the fuel of the [src]!"))
+// 				var/fuel = T.get_fuel()
+// 				T.consume_fuel(fuel)
+// 				user.adjust_fire_stacks(fuel/10)
+// 				user.IgniteMob()
+// 				T.update_icon()
+// 				return
+
+// 			//The cell explodes
+// 			//This can happen even with non-tools which contain a cell
+// 			if("overload")
+// 				var/obj/item/cell/C
+// 				if(T)
+// 					C = T.cell
+// 				else
+// 					C = locate(/obj/item/cell) in contents
+
+
+// 				if(user)
+// 					to_chat(user, SPAN_DANGER("You overload the cell in the [src]!"))
+// 				C.explode()
+// 				if (T)
+// 					T.cell = null
+
+// 				update_icon()
+// 				return
 
 
 
@@ -911,8 +914,8 @@
 	//Triggers degradation and resource use upon attacks
 	if (!(item_flags & ITEM_FLAG_NO_BLUDGEON) && (world.time - last_tooluse) > 2)
 		consume_resources(5,user)
-		if (prob(unreliability))
-			handle_failure(user, O)
+		// if (prob(unreliability))
+		// 	handle_failure(user, O)
 
 	return ..()
 
@@ -924,8 +927,8 @@
 	//Checking the last tooluse time prevents consuming twice for a tool action
 	if (. && loc == user && (!(item_flags & ITEM_FLAG_NO_BLUDGEON)) && (world.time - last_tooluse) > 2)
 		consume_resources(5,user)
-		if (prob(unreliability))
-			handle_failure(user, A)
+		// if (prob(unreliability))
+		// 	handle_failure(user, A)
 
 //Decides whether or not to damage a player's eyes based on what they're wearing as protection
 //Note: This should probably be moved to mob
