@@ -226,6 +226,7 @@ STATMOD_HEALTH_MULTIPLICATIVE	=	list(/datum/proc/update_max_health)
 	view_range = range
 	if (client)
 		client.change_view(view_range)
+	SEND_SIGNAL(src, COMSIG_MOB_VIEW_CHANGED)
 
 
 

@@ -62,6 +62,11 @@
 	///Lazylist of movable atoms providing opacity sources.
 	var/list/atom/movable/opacity_sources
 
+	var/footstep
+	var/barefootstep
+	var/clawfootstep
+	var/heavyfootstep
+
 /turf/Initialize(mapload)
 	SHOULD_CALL_PARENT(FALSE)
 	if(atom_flags & ATOM_FLAG_INITIALIZED)

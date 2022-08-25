@@ -12,6 +12,7 @@
 	desc = "This is used to lie in, sleep in or strap on."
 	icon = 'icons/obj/furniture.dmi'
 	icon_state = "bed"
+	plane = GAME_PLANE_FOV_HIDDEN
 	anchored = 1
 	can_buckle = 1
 	buckle_dir = SOUTH

@@ -182,12 +182,12 @@
 		if (direct & 4)
 			hor_dir = EAST
 
-		if (step(src, vert_dir))
+		if(Move(get_step(src, vert_dir), vert_dir))
 			src.mid_diag_move = FALSE
-			step(src, hor_dir)
-		else if (step(src, hor_dir))
+			Move(get_step(src, hor_dir), hor_dir)
+		else if(Move(get_step(src, hor_dir), hor_dir))
 			src.mid_diag_move = FALSE
-			step(src, vert_dir)
+			Move(get_step(src, vert_dir), vert_dir)
 
 		src.mid_diag_move = FALSE // In case diagonal movement does not actually happen
 	else
@@ -226,9 +226,8 @@
 	for (var/atom/movable/AM in contents)
 		AM.set_glide_size(glide_size, min, max)
 
-/proc/step_glide(var/atom/movable/am, var/dir, var/glide_size_override)
-	am.set_glide_size(glide_size_override)
-	return step(am, dir)
+/proc/step_glide(atom/movable/AM, dir, glide_size)
+	return AM.Move(get_step(AM, dir), dir, glide_size_override = glide_size)
 
 //Overlays
 /atom/movable/overlay

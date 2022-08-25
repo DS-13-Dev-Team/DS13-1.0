@@ -5,6 +5,7 @@
 	name = "projectile"
 	icon = 'icons/obj/projectiles.dmi'
 	icon_state = "bullet"
+	plane = GAME_PLANE_FOV_HIDDEN
 	density = 1
 	can_block_movement = FALSE	//Projectiles don't recieve collisions usually, they move into other things
 	unacidable = 1
@@ -538,6 +539,7 @@
 	// plot the initial trajectory
 	trajectory = new()
 	trajectory.setup(starting, original, pixel_x, pixel_y, angle_offset=offset)
+	play_fov_effect(startloc, 6, "gunfire", dir = NORTH, angle = trajectory.return_angle())
 
 	location = trajectory.return_location(location)
 

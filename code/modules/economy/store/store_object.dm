@@ -11,7 +11,7 @@ GLOBAL_LIST_EMPTY(store_kiosks)
 	icon = 'icons/obj/machines/store.dmi'
 	icon_state = "kiosk_on"
 
-	layer = BELOW_OBJ_LAYER
+	layer = ABOVE_WINDOW_LAYER
 	anchored = TRUE
 
 	// Power

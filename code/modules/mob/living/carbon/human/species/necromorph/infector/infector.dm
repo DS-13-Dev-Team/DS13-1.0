@@ -88,7 +88,12 @@
 	pain_audio_threshold = 0.03 //Gotta set this low to compensate for his high health
 
 
-
+	special_step_sounds = list(
+		'sound/effects/footstep/infector_footstep_1.ogg',
+		'sound/effects/footstep/infector_footstep_2.ogg',
+		'sound/effects/footstep/infector_footstep_3.ogg',
+		'sound/effects/footstep/infector_footstep_4.ogg'
+	)
 
 	species_audio = list(SOUND_FOOTSTEP = list('sound/effects/footstep/infector_footstep_1.ogg',
 	'sound/effects/footstep/infector_footstep_2.ogg',

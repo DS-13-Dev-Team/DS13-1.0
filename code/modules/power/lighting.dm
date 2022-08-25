@@ -22,8 +22,8 @@
 	icon = 'icons/obj/lighting.dmi'
 	icon_state = "tube-construct-stage1"
 	anchored = 1
+	plane = GAME_PLANE_UPPER
 	layer = ABOVE_HUMAN_LAYER
-
 	var/stage = 1
 	var/fixture_type = /obj/machinery/light
 	var/sheets_refunded = 2
@@ -159,6 +159,7 @@
 	icon_state = "tube_map"
 	desc = "A lighting fixture."
 	anchored = 1
+	plane = GAME_PLANE_UPPER
 	layer = ABOVE_HUMAN_LAYER  					// They were appearing under mobs which is a little weird - Ostaf
 	use_power = 2
 	idle_power_usage = 2

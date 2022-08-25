@@ -248,6 +248,8 @@
 	else if(viewmob.hud_used)
 		viewmob.hud_used.plane_masters_update()
 
+	SEND_SIGNAL(screenmob, COMSIG_MOB_ON_HUD_SHOWN)
+
 	return TRUE
 
 /datum/hud/proc/plane_masters_update()

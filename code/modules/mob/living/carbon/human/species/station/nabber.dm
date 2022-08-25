@@ -129,6 +129,7 @@
 		slot_belt_str = list(NORTH = list("x" = 0, "y" = 0), EAST = list("x" = 8, "y" = 0), SOUTH = list("x" = 0, "y" = 0), WEST = list("x" = -8, "y" = 0)),
 	)
 	*/
+	silent_steps = TRUE
 
 /datum/species/nabber/get_blood_name()
 	return "haemolymph"
@@ -207,7 +208,7 @@
 
 	var/armor = affecting.run_armor_check(BP_CHEST, "melee")
 	affecting.apply_damage(15, BRUTE, BP_CHEST, armor, DAM_SHARP, "organic punctures")
-	affecting.visible_message("<span class='danger'>[assailant]'s spikes dig in PAINFULy!</span>")
+	affecting.visible_message("<span class='danger'>[assailant]'s spikes dig in PAINFULY!</span>")
 	affecting.Stun(10)
 
 /datum/species/nabber/update_skin(var/mob/living/carbon/human/H)

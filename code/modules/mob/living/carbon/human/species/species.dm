@@ -97,15 +97,24 @@
 	var/only_species_language				  // If we can speak other languages or just var/language
 
 	//Audio vars
-	var/step_volume = 30	//Base volume of ALL footstep sounds for this mob
-	var/step_range = -1		//Base volume of ALL footstep sounds for this mob. Each point of range adds or subtracts two tiles from the actual audio distance
-	var/step_priority = 0	//Base priority of species-specific footstep sounds. Zero disables them
-	var/pain_audio_threshold = 0	//If a mob takes damage equal to this portion of its total health, (and audio files exist), it will scream in pain
-	var/list/species_audio = list()	//An associative list of lists, in the format SOUND_TYPE = list(sound_1, sound_2)
+	//Base volume of ALL footstep sounds for this mob
+	var/step_volume = 30
+	//Base volume of ALL footstep sounds for this mob. Each point of range adds or subtracts two tiles from the actual audio distance
+	var/step_range = 0
+	//Base priority of species-specific footstep sounds. Zero disables them
+	var/step_priority = 0
+	//If a mob takes damage equal to this portion of its total health, (and audio files exist), it will scream in pain
+	var/pain_audio_threshold = 0
+	///Sounds to override barefeet walking
+	var/list/special_step_sounds
+	//An associative list of lists, in the format SOUND_TYPE = list(sound_1, sound_2)
 		//In addition, the list of sounds supports weighted picking (default weight 1 if unspecified).
 		//For example: (sound_1, sound_2 = 0.5) will result in sound_2 being played half as often as sound_1
-	var/list/speech_chance                    // The likelihood of a speech sound playing.
-	var/list/species_audio_volume = list()		//An associative list, in the format SOUND_TYPE = VOLUME_XXX. Values set here will override the volume of species audio files
+	var/list/species_audio = list()
+	// The likelihood of a speech sound playing.
+	var/list/speech_chance
+	//An associative list, in the format SOUND_TYPE = VOLUME_XXX. Values set here will override the volume of species audio files
+	var/list/species_audio_volume = list()
 
 	// Health and Defense
 	var/total_health = 120                   // Point at which the mob will enter crit.
@@ -337,6 +346,10 @@
 	var/job_skill_buffs = list()				// A list containing jobs (/datum/job), with values the extra points that job recieves.
 
 	var/disarm_cooldown = 0
+
+	var/silent_steps = FALSE
+
+	var/play_bare_footsteps = TRUE
 
 /*
 These are all the things that can be adjusted for equipping stuff and

@@ -79,7 +79,7 @@
 	var/mutable_appearance/suit_overlay_active             // If set, drawn over icon and mob when effect is active.
 	var/mutable_appearance/suit_overlay_inactive           // As above, inactive.
 	var/mutable_appearance/suit_overlay_used               // As above, when engaged.
-	var/suit_overlay_plane	=	GAME_PLANE
+	var/suit_overlay_plane	=	GAME_PLANE_FOV_HIDDEN
 	var/suit_overlay_layer	=	MOB_LAYER
 	var/suit_overlay_flags = 0
 

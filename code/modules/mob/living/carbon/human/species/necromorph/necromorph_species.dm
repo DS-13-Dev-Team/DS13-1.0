@@ -181,6 +181,8 @@
 	var/lowest_money_drop = 0
 	var/highest_money_drop = 0
 
+	play_bare_footsteps = FALSE
+
 /datum/species/necromorph/psychosis_vulnerable()
 	return FALSE
 

@@ -103,7 +103,8 @@ var/list/admin_verbs_admin = list(
 	/client/proc/remove_trader,
 	/datum/admins/proc/sendFax,
 	/client/proc/patrons,	//Edit patron subscriptions, host only
-	/client/proc/admin_communicate
+	/client/proc/admin_communicate,
+	/client/proc/cmd_admin_toggle_fov
 )
 var/list/admin_verbs_ban = list(
 	/client/proc/unban_panel,
@@ -211,7 +212,8 @@ var/list/admin_verbs_debug = list(
 	/client/proc/debug_vectorpool,
 //	/client/proc/cmd_display_overlay_log,
 	/client/proc/activate_marker,
-	/client/proc/dummy_crowd
+	/client/proc/dummy_crowd,
+	/client/proc/cmd_admin_toggle_fov
 	)
 
 var/list/admin_verbs_paranoid_debug = list(
@@ -387,7 +389,8 @@ var/list/admin_verbs_hideable = list(
 	/client/proc/cmd_analyse_health_context,
 	/client/proc/cmd_analyse_health_panel,
 	/client/proc/visualpower,
-	/client/proc/visualpower_remove
+	/client/proc/visualpower_remove,
+	/client/proc/cmd_admin_toggle_fov
 	)
 var/list/admin_verbs_mod = list(
 	/datum/admins/proc/paralyze_mob,

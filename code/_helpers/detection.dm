@@ -189,11 +189,16 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 		if(get_turf(O) in hearturfs)
 			objs |= O
 
+//Not the most optimized code but it works and used only in 2 places. Wish we had SSspatial_grid
 /proc/get_hearers_in_view(range, turf/T)
 	.=list()
-	FOR_DVIEW(var/mob/hearer, range, get_turf(T), INVISIBILITY_MAXIMUM)
-		. += hearer
+	var/list/visible_turfs = list()
+	FOR_DVIEW(var/turf/turf, range, get_turf(T), INVISIBILITY_MAXIMUM)
+		visible_turfs += turf
 	END_FOR_DVIEW
+	for(var/mob/M as anything in GLOB.player_list)
+		if(get_turf(M) in visible_turfs)
+			. += M
 
 proc/isInSight(var/atom/A, var/atom/B)
 	var/turf/Aturf = get_turf(A)

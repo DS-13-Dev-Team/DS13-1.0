@@ -209,7 +209,7 @@ const NanoMapZoomer = (props, context) => {
               <Button
                 key={level}
                 selected={level === config.mapZLevel}
-                content={level}
+                content={level-1}
                 onClick={() => {
                   act("setZLevel", { "mapZLevel": level });
                 }} />

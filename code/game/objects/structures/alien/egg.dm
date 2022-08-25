@@ -6,6 +6,7 @@
 	icon_state = "egg_growing"
 	density = 0
 	anchored = 1
+	plane = GAME_PLANE_FOV_HIDDEN
 	var/progress = 0
 
 /obj/structure/alien/egg/Initialize()

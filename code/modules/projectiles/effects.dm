@@ -1,7 +1,7 @@
 /obj/effect/projectile
 	icon = 'icons/effects/projectiles.dmi'
 	icon_state = "bolt"
-	plane = ABOVE_LIGHTING_PLANE
+	plane = GAME_PLANE_FOV_HIDDEN
 	layer = LIGHTING_SECONDARY_LAYER //Muzzle flashes would be above the lighting plane anyways.
 	//Standard compiletime light vars aren't working here, so we've made some of our own.
 	light_range = 2

@@ -12,7 +12,7 @@
 	var/list/stance_limbs
 	var/list/grasp_limbs
 
-/mob/living/carbon/human/New(var/new_loc, var/new_species = null)
+/mob/living/carbon/human/Initialize(mapload, new_species)
 	grasp_limbs = list()
 	stance_limbs = list()
 
@@ -45,7 +45,9 @@
 	hud_list[LIFE_HUD]	      = new /image/hud_overlay('icons/mob/hud.dmi', src, "hudhealthy")
 
 	GLOB.human_mob_list |= src
-	..()
+	.=..()
+
+	AddElement(/datum/element/footstep, FOOTSTEP_MOB_HUMAN, 1)
 
 	if(dna)
 		dna.ready_dna(src)
@@ -784,12 +786,12 @@
 /mob/living/carbon/human/proc/jostle_internal_object(var/obj/item/organ/external/organ, var/obj/item/O)
 	// All kinds of embedded objects cause bleeding.
 	if(!can_feel_pain())
-		to_chat(src, "<span class='warning'>You feel [O] moving inside your [organ.name].</span>")
+		to_chat(src, "<span class='warning'>You feel [O] moving inside your [organ.name]!</span>")
 	else
 		var/msg = pick( \
-			"<span class='warning'>A spike of pain jolts your [organ.name] as you bump [O] inside.</span>", \
-			"<span class='warning'>Your movement jostles [O] in your [organ.name] PAINFULy.</span>", \
-			"<span class='warning'>Your movement jostles [O] in your [organ.name] PAINFULy.</span>")
+			"<span class='warning'>A spike of pain jolts your [organ.name] as you bump [O] inside!</span>", \
+			"<span class='warning'>Your movement jostles [O] in your [organ.name] PAINFULY!</span>", \
+			"<span class='warning'>Your movement jostles [O] in your [organ.name] PAINFULY!</span>")
 		custom_pain(msg,40,affecting = organ)
 
 	organ.take_external_damage(rand(1,3), 0, 0)

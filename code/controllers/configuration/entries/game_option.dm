@@ -111,3 +111,5 @@
 /datum/config_entry/string/admin_irc
 
 /datum/config_entry/flag/announce_shuttle_dock_to_irc
+
+/datum/config_entry/flag/native_fov

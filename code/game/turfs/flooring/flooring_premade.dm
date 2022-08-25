@@ -275,6 +275,10 @@
 	name = "lava"
 	icon = 'icons/turf/flooring/lava.dmi'
 	icon_state = "lava"
+	footstep = FOOTSTEP_LAVA
+	barefootstep = FOOTSTEP_LAVA
+	clawfootstep = FOOTSTEP_LAVA
+	heavyfootstep = FOOTSTEP_LAVA
 
 /turf/simulated/floor/ice
 	name = "ice"

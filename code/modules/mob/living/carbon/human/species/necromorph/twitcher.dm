@@ -93,6 +93,13 @@
 	'sound/effects/footstep/twitcher_footstep_4.ogg')
 	)
 
+	special_step_sounds = list(
+		'sound/effects/footstep/twitcher_footstep_1.ogg',
+		'sound/effects/footstep/twitcher_footstep_2.ogg',
+		'sound/effects/footstep/twitcher_footstep_3.ogg',
+		'sound/effects/footstep/twitcher_footstep_4.ogg'
+	)
+
 	lowest_money_drop = 4000
 	highest_money_drop = 5000
 

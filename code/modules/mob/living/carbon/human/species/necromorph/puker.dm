@@ -42,6 +42,17 @@
 	//This actually determines what clothing we can wear
 	hud_type = /datum/hud_data/necromorph/slasher
 
+	special_step_sounds = list(
+		'sound/effects/creatures/necromorph/puker/puker_footstep_1.ogg',
+		'sound/effects/creatures/necromorph/puker/puker_footstep_2.ogg',
+		'sound/effects/creatures/necromorph/puker/puker_footstep_3.ogg',
+		'sound/effects/creatures/necromorph/puker/puker_footstep_4.ogg',
+		'sound/effects/creatures/necromorph/puker/puker_footstep_5.ogg',
+		'sound/effects/creatures/necromorph/puker/puker_footstep_6.ogg',
+		'sound/effects/creatures/necromorph/puker/puker_footstep_7.ogg',
+		'sound/effects/creatures/necromorph/puker/puker_footstep_8.ogg',
+		'sound/effects/creatures/necromorph/puker/puker_footstep_9.ogg'
+	)
 	species_audio = list(
 	SOUND_ATTACK = list('sound/effects/creatures/necromorph/puker/puker_attack_1.ogg',
 	'sound/effects/creatures/necromorph/puker/puker_attack_2.ogg',

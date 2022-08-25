@@ -28,7 +28,6 @@
 	//If true, corruption cannot spread to this turf
 	var/incorruptible = FALSE
 
-
 /turf/simulated/floor/Entered(var/atom/movable/AM, var/atom/old_loc)
 	..(AM, old_loc)
 	if (flooring)
@@ -135,3 +134,6 @@
 
 /turf/simulated/floor/is_floor()
 	return TRUE
+
+/turf/simulated/floor/water_shallow
+	initial_flooring = /decl/flooring/water

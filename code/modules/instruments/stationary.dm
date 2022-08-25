@@ -19,8 +19,7 @@
 /obj/structure/musician/proc/should_stop_playing(atom/music_player)
 	if(!(anchored || can_play_unanchored) || !ismob(music_player))
 		return STOP_PLAYING
-	var/mob/user = music_player
-	if(!user.CanUseTopic(usr)) //can play with TK and while resting because fun.
+	if(!CanUseTopic(music_player)) //can play with TK and while resting because fun.
 		return STOP_PLAYING
 
 /obj/structure/musician/attack_hand(mob/user)

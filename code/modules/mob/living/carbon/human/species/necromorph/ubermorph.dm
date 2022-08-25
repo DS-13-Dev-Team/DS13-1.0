@@ -53,6 +53,12 @@
 	step_range = 4
 	step_priority = 5
 	pain_audio_threshold = 0.03 //Gotta set this low to compensate for his high health
+	special_step_sounds = list(
+		'sound/effects/footstep/ubermorph_footstep_1.ogg',
+		'sound/effects/footstep/ubermorph_footstep_2.ogg',
+		'sound/effects/footstep/ubermorph_footstep_3.ogg',
+		'sound/effects/footstep/ubermorph_footstep_4.ogg'
+	)
 	species_audio = list(SOUND_FOOTSTEP = list('sound/effects/footstep/ubermorph_footstep_1.ogg',
 	'sound/effects/footstep/ubermorph_footstep_2.ogg',
 	'sound/effects/footstep/ubermorph_footstep_3.ogg',
@@ -285,7 +291,7 @@ Best used near the end, when all seems quiet, to help the necromorphs hunt down 
 			ubermorph.launch_strike(L, 30, ubermorph, damage_flags = DAM_SHARP, armor_penetration = 30)//Huge armor penetration to punch through resistance
 
 			//Next, we will also deal damage to one internal organ within the target area, if such exists
-			var/obj/item/organ/internal/I = safepick(found_organ.internal_organs)
+			var/obj/item/organ/internal/I = pick(found_organ.internal_organs)
 
 			if (istype(I))
 				I.take_internal_damage(30)	//Heavy damage to an internal organ is often fatal. Try surviving this!

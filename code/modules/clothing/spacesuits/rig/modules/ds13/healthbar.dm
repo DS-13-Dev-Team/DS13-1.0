@@ -9,8 +9,6 @@
 	suit_overlay_active = "healthbar_100"
 	suit_overlay_inactive = "healthbar_100"
 	suit_overlay_used = "healthbar_100"
-	suit_overlay_plane = GAME_PLANE
-	suit_overlay_layer = MOB_LAYER
 	suit_overlay_flags = KEEP_APART
 
 	var/mob/living/carbon/human/user

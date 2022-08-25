@@ -14,7 +14,10 @@
 	flags = TURF_REMOVE_CROWBAR | TURF_CAN_BREAK | TURF_CAN_BURN | TURF_HIDES_THINGS
 	build_type = /obj/item/stack/tile/dank
 	can_paint = 1
-
+	footstep = FOOTSTEP_FLOOR
+	barefootstep = FOOTSTEP_HARD_BAREFOOT
+	clawfootstep = FOOTSTEP_HARD_CLAW
+	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 /decl/flooring/tiling_ds/roller
 	name = "roller"
 	desc = "Scuffed from the passage of countless greyshirts."
@@ -47,6 +50,10 @@
 
 /decl/flooring/complex/tiling_ds
 	icon = 'icons/turf/floors_ds13.dmi'
+	footstep = FOOTSTEP_FLOOR
+	barefootstep = FOOTSTEP_HARD_BAREFOOT
+	clawfootstep = FOOTSTEP_HARD_CLAW
+	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 
 /decl/flooring/complex/tiling_ds/rivets
 	name = "riveted plating"

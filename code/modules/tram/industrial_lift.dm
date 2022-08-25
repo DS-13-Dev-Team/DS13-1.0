@@ -790,6 +790,10 @@ GLOBAL_LIST_EMPTY(lifts)
 		return
 
 	for(var/atom/movable/glider as anything in lift_load)
+		if(isnull(glider))
+			crash_with("Somehow null got into lift_load")
+			lift_load -= glider
+			continue
 		if(travelling)
 			glider.set_glide_size(glide_size_override)
 			RegisterSignal(glider, COMSIG_MOVABLE_UPDATE_GLIDE_SIZE, .proc/on_changed_glide_size)
