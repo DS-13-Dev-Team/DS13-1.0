@@ -57,3 +57,4 @@ delete-after: True
 changes:
   - rscadd: "Added FOV to all mobs. Watch your back!"
   - refactor: "Refactored the way footsteps are handled."
+  - rscadd: "Added button down shirt with short sleeves. Thanks to Spike Lee for the sprites."

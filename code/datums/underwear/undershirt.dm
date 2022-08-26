@@ -125,6 +125,11 @@
 	name = "Longsleeve Striped Shirt, Blue"
 	icon_state = "longstripe_blue"
 
+/datum/category_item/underwear/undershirt/shirt_button_short_sleeves
+	name = "Button Down Shirt, Short Sleeves"
+	icon_state = "shirt_long_s_short_sleeves"
+	has_color = TRUE
+
 /datum/category_item/underwear/undershirt/blouse_female
 	name = "Women's Dress Shirt"
 	icon_state = "blouse_female_s"
@@ -186,3 +191,8 @@
 /datum/category_item/underwear/undershirt/polo_nt
 	name = "Polo, NanoTrasen"
 	icon_state = "ntpolo"
+
+/datum/category_item/underwear/undershirt/shirt_long_female_short_sleeves
+	name = "Button Down Shirt, Short Sleeves, Female"
+	icon_state = "shirt_long_female_s_short_sleeves"
+	has_color = TRUE
