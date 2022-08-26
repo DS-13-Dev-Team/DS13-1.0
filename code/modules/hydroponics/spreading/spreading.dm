@@ -40,7 +40,7 @@
 	anchored = 1
 	icon = 'icons/obj/hydroponics_growing.dmi'
 	icon_state = ""
-	plane = GAME_PLANE_FOV_HIDDEN
+	plane = GAME_PLANE
 	pass_flags = PASS_FLAG_TABLE
 	mouse_opacity = 1
 
