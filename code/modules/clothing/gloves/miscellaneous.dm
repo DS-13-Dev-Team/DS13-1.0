@@ -152,6 +152,13 @@
 	item_state = "pcsi"
 	armor = list(melee = 45, bullet = 45, laser = 50, energy = 40, bomb = 30, bio = 10, rad = 0)
 
+/obj/item/clothing/gloves/combat/titansec
+	desc = "A pair of thick, armored gloves designed to protect the wearer and stains off."
+	name = "titan work gloves"
+	icon_state = "titansec_workgloves"
+	item_state = "titansec_workgloves"
+	armor = list(melee = 35, bullet = 25, laser = 30, energy = 25, bomb = 20, bio = 10, rad = 0)
+
 /obj/item/clothing/gloves/combat/kellion
 	desc = "A pair of thick, armored gloves designed to protect the wearer and stains off."
 	name = "armored gloves"

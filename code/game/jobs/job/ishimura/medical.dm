@@ -23,7 +23,7 @@
 
 	min_skill = list(   SKILL_ANATOMY     = SKILL_MAX,
 						SKILL_MEDICAL	  = SKILL_MAX,
-						SKILL_HAULING     = SKILL_BASIC,
+						SKILL_HAULING     = SKILL_ADEPT,
 						SKILL_DEVICES	  = SKILL_ADEPT)
 
 	max_skill = list(	SKILL_BOTANY      = SKILL_EXPERT,
@@ -56,7 +56,7 @@
 
 	min_skill = list(   SKILL_ANATOMY     = SKILL_BASIC,
 						SKILL_MEDICAL	  = SKILL_EXPERT,
-						SKILL_HAULING     = SKILL_BASIC,
+						SKILL_HAULING     = SKILL_ADEPT,
 						SKILL_DEVICES	  = SKILL_BASIC)
 
 	max_skill = list(	SKILL_BOTANY      = SKILL_EXPERT,
@@ -87,10 +87,12 @@
 
 	min_skill = list(	SKILL_ANATOMY     = SKILL_EXPERT,
 						SKILL_MEDICAL	  = SKILL_EXPERT,
+						SKILL_HAULING     = SKILL_ADEPT,
 						SKILL_DEVICES	  = SKILL_BASIC)
 
 	max_skill = list(	SKILL_BOTANY      = SKILL_EXPERT,
 						SKILL_COOKING     = SKILL_EXPERT,
+						SKILL_COMBAT      = SKILL_EXPERT,
 						SKILL_FORENSICS   = SKILL_EXPERT)
 	skill_points = 24
 
@@ -120,6 +122,7 @@
 
 	max_skill = list(	SKILL_BOTANY      = SKILL_EXPERT,
 						SKILL_COOKING     = SKILL_EXPERT,
+						SKILL_COMBAT      = SKILL_EXPERT,
 						SKILL_FORENSICS   = SKILL_EXPERT)
 	skill_points = 25
 

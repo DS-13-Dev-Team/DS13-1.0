@@ -12,6 +12,7 @@ Medical:
 +	Cryo Cell
 +	Sleeper
 +	Body Scanner
++   Prosthetic organ fabricator
 RnD:
 +	R&D control console
 +	destructive analyzer
@@ -139,6 +140,11 @@ Food:
 	name = "Body Scanner"
 	id = "body_scanner"
 	build_path = /obj/item/circuitboard/body_scanner
+
+/datum/design/circuit/medical/roboprinter
+	name = "Prosthetic Organ Fabricator"
+	id = "prosthetic_organ_fabricator"
+	build_path = /obj/item/circuitboard/roboprinter
 
 /datum/design/circuit/research
 	category = "RnD"

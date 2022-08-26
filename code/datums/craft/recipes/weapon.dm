@@ -62,6 +62,63 @@
 	)
 
 
+/datum/craft_recipe/weapon/zipgun
+	name = "zip gun frame"
+	result = /obj/item/zipgunframe
+	steps = list(
+		list(CRAFT_MATERIAL, MATERIAL_WOOD, 12),
+		list(CRAFT_TOOL, QUALITY_SAWING, 10, 90)
+	)
+
+/datum/craft_recipe/weapon/doublebarrel
+	name = "double-barreled shotgun"
+	result = /obj/item/gun/projectile/shotgun/doublebarrel
+	steps = list(
+		list(CRAFT_OBJECT, /obj/item/pipe, 20),
+		list(CRAFT_TOOL, QUALITY_SAWING, 10, 60),
+		list(CRAFT_TOOL, QUALITY_WELDING, 20, 90),
+		list(CRAFT_MATERIAL, MATERIAL_STEEL, 8),
+		list(CRAFT_STACK, /obj/item/stack/cable_coil, 8, "time" = 120),
+		list(CRAFT_TOOL, QUALITY_WIRE_CUTTING, 10, WORKTIME_NORMAL, FAILCHANCE_NORMAL, SKILL_ELECTRICAL),
+		list(CRAFT_TOOL, QUALITY_WELDING, 20, 100),
+		list(CRAFT_MATERIAL, MATERIAL_WOOD, 12),
+		list(CRAFT_TOOL, QUALITY_SAWING, 10, 60)
+	)
+
+/datum/craft_recipe/weapon/cane
+	name = "cane"
+	result = /obj/item/cane
+	steps = list(
+		list(CRAFT_MATERIAL, MATERIAL_WOOD, 2),
+		list(CRAFT_TOOL, QUALITY_SAWING, 10, 120),
+	)
+
+/datum/craft_recipe/weapon/caneknife
+	name = "concealed cane sword"
+	result = /obj/item/cane/concealed
+	steps = list(
+		list(CRAFT_OBJECT, /obj/item/cane, 30),
+		list(CRAFT_OBJECT, /obj/item/material/butterfly, 30),
+		list(CRAFT_TOOL, QUALITY_SAWING, 10, 120),
+		list(CRAFT_TOOL, QUALITY_SCREW_DRIVING, 10, 60)
+	)
+
+/datum/craft_recipe/weapon/star
+	name = "shuriken"
+	result = /obj/item/material/star
+	steps = list(
+		list(CRAFT_MATERIAL, MATERIAL_STEEL, 1),
+		list(CRAFT_TOOL, QUALITY_SAWING, 10, 50)
+	)
+
+/datum/craft_recipe/weapon/bola
+	name = "bola"
+	result = /obj/item/projectile/bullet/shotgun/bola
+	steps = list(
+		list(CRAFT_OBJECT, /obj/item/handcuffs/cable, 60),
+		list(CRAFT_MATERIAL, MATERIAL_STEEL, 6),
+	)
+
 
 /datum/craft_recipe/weapon/handmade_shield
 	name = "handmade shield"

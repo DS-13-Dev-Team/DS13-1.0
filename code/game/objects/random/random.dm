@@ -366,7 +366,8 @@
 	return pickweight(list(/obj/item/toy/plushie/nymph,
 				/obj/item/toy/plushie/mouse,
 				/obj/item/toy/plushie/kitten,
-				/obj/item/toy/plushie/lizard))
+				/obj/item/toy/plushie/lizard,
+				/obj/item/toy/plushie/spider))
 
 /obj/random/plushie/large
 	name = "random large plushie"
@@ -378,7 +379,10 @@
 	return pickweight(list(/obj/structure/plushie/ian,
 				/obj/structure/plushie/drone,
 				/obj/structure/plushie/carp,
-				/obj/structure/plushie/beepsky))
+				/obj/structure/plushie/beepsky,
+				/obj/structure/plushie/crow,
+				/obj/structure/plushie/peng
+				))
 
 /obj/random/junk //Broken items, or stuff that could be picked up
 	name = "random junk"
@@ -936,18 +940,18 @@ obj/random/obstruction/item_to_spawn()
 
 
 
-/obj/random/hostile
-	name = "Random Hostile Mob"
-	desc = "This is a random hostile mob."
-	icon = 'icons/mob/amorph.dmi'
-	icon_state = "standing"
-	spawn_nothing_percentage = 80
+// /obj/random/hostile
+// 	name = "Random Hostile Mob"
+// 	desc = "This is a random hostile mob."
+// 	icon = 'icons/mob/amorph.dmi'
+// 	icon_state = "standing"
+// 	spawn_nothing_percentage = 80
 
-obj/random/hostile/item_to_spawn()
-	return pickweight(list(/mob/living/simple_animal/hostile/viscerator,
-				/mob/living/simple_animal/hostile/carp,
-				/mob/living/simple_animal/hostile/carp/pike,
-				/mob/living/simple_animal/hostile/vagrant/swarm))
+// obj/random/hostile/item_to_spawn()
+// 	return pickweight(list(/mob/living/simple_animal/hostile/viscerator,
+// 				/mob/living/simple_animal/hostile/carp,
+// 				/mob/living/simple_animal/hostile/carp/pike,
+// 				/mob/living/simple_animal/hostile/vagrant/swarm))
 
 /*
 	Selects one spawn point out of a group of points with the same ID and asks it to generate its items

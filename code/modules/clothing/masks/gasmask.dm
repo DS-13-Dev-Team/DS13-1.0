@@ -67,6 +67,24 @@
 	icon_state = "death"
 	item_state = "death"
 
+
+/obj/item/clothing/mask/gas/hunk
+	name = "HUNK gas mask and helmet"
+	desc = "It's headwear specifically designed to protect against biohazards close range attacks."
+	icon_state = "hunk_helmet"
+	item_state = "hunk_helmet"
+	valid_accessory_slots = null
+	item_flags = ITEM_FLAG_THICKMATERIAL
+	body_parts_covered = HEAD|FACE|EYES
+	armor = list(melee = 70, bullet = 60, laser = 30, energy = 10, bomb = 40, bio = 100, rad = 0)
+	flags_inv = HIDEEARS|BLOCKHEADHAIR|HIDEEYES|HIDEFACE
+	cold_protection = HEAD
+	min_cold_protection_temperature = HELMET_MIN_COLD_PROTECTION_TEMPERATURE
+	heat_protection = HEAD
+	max_heat_protection_temperature = HELMET_MAX_HEAT_PROTECTION_TEMPERATURE
+	siemens_coefficient = 1
+
+
 //Plague Dr suit can be found in clothing/suits/bio.dm
 /obj/item/clothing/mask/gas/plaguedoctor
 	name = "plague doctor mask"

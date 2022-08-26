@@ -210,8 +210,8 @@
 	unlocks_designs = list("scalpel_manager")
 
 /datum/technology/bio/adv_health_scanner
-	name = "Advanced Health Scanner"
-	desc = "Advanced Health Scanner"
+	name = "Adv Health Scanner and Prosthetics"
+	desc = "Adv Health Scanner and Prosthetics"
 	id = "adv_health_scanner"
 
 	x = 0.8
@@ -222,7 +222,7 @@
 	required_tech_levels = list()
 	cost = 3000
 
-	unlocks_designs = list("adv_health_analyzer")
+	unlocks_designs = list("adv_health_analyzer", "prosthetic_organ_fabricator")
 
 /datum/technology/bio/beakers
 	name = "Special Beakers"

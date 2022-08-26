@@ -1,14 +1,14 @@
 /obj/item/stack/nanopaste
 	name = "nanopaste"
 	singular_name = "nanite swarm"
-	desc = "A tube of paste containing swarms of repair nanites. Very effective in repairing robotic machinery."
+	desc = "A tube of paste containing swarms of repair nanites. Very effective in repairing robotic machinery. Potentially made from the power of inap."
 	icon = 'icons/obj/nanopaste.dmi'
 	icon_state = "tube"
 	origin_tech = list(TECH_MATERIAL = 4, TECH_ENGINEERING = 3)
 	amount = 10
 
 
-/obj/item/stack/nanopaste/attack(mob/living/M as mob, mob/user as mob)
+/obj/item/stack/nanopaste/afterattack(mob/living/M, mob/user)
 	if (!istype(M) || !istype(user))
 		return 0
 	if (istype(M,/mob/living/silicon/robot))	//Repairing cyborgs

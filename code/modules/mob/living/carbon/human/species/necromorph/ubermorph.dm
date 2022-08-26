@@ -116,6 +116,7 @@ The Ubermorph starts shaking and screaming in pain, as it regrows a missing limb
 
 #define UBERMORPH_LUNGE_DESC	"<h2>Lunge:</h2><br>\
 <h3>Hotkey: Alt+Click </h3><br>\
+<h3>Cooldown: 5 seconds</h3><br>\
 The user rears back for half a second, then stabs forward up to two tiles, punching through any human in the way. The victim takes 30 brute damage, and also heavy damage to an internal organ.<br>\
 Targeted at the chest or head, this will cause an injury that will usually result in inevitable death. It can also be used to deal heavy damage to obstacles, enabling doors and walls to be quickly broken down"
 

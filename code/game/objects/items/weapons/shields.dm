@@ -68,6 +68,11 @@
 	else
 		..()
 
+/obj/item/shield/riot/titan
+	name = "titan combat shield"
+	desc = "A common combat shield adept at blocking blunt objects from connecting with the torso of the shield wielder. This one is made for Titan Station."
+	icon_state = "titanriot"
+
 /obj/item/shield/riot/advanced
 	name = "advanced combat shield"
 	icon_state = "advanced"

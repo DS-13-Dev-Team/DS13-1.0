@@ -8,6 +8,15 @@
 	flags = CRAFT_ON_FLOOR|CRAFT_ONE_PER_TURF
 
 
+/datum/craft_recipe/wall_frame
+	name = "low wall"
+	result = /obj/structure/wall_frame
+	time = WORKTIME_SLOW
+	steps = list(
+		list(CRAFT_MATERIAL, MATERIAL_STEEL, 4)
+	)
+	flags = CRAFT_ON_FLOOR|CRAFT_ONE_PER_TURF
+
 
 /datum/craft_recipe/kitchen_spike
 	name = "Meat spike"

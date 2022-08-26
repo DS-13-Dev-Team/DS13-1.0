@@ -37,6 +37,15 @@
 	permeability_coefficient = 0.50
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 10, rad = 0)
 
+/obj/item/clothing/under/deadspace/director
+	name = "director's uniform"
+	desc = "A neatly pressed, green and white uniform. Isn't all to fancy."
+	item_state = "ds_director"
+	worn_state = "ds_director"
+	icon_state = "ds_director"
+	permeability_coefficient = 0.50
+	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 10, rad = 0)
+
 
 /*
  * Engineering
@@ -48,6 +57,14 @@
 	item_state = "ds_engineer"
 	worn_state = "ds_engineer"
 	icon_state = "ds_engineer"
+	permeability_coefficient = 0.50
+
+/obj/item/clothing/under/deadspace/mechanic
+	name = "mechanic's uniform"
+	desc = "A dirty, tan uniform issued to mechanics department. Typically, a vest and belt is worn over top of this uniform."
+	item_state = "ds_mechanic"
+	worn_state = "ds_mechanic"
+	icon_state = "ds_mechanic"
 	permeability_coefficient = 0.50
 
 /*
@@ -117,6 +134,32 @@
 	worn_state = "cargo_jumpsuit"
 	icon_state = "cargo_jumpsuit"
 
+/obj/item/clothing/under/deadspace/whitegrey
+	name = "plain uniform"
+	desc = "A white-grey uniform, plain and unassuming. Has a bit of a hood to use."
+	item_state = "jumpsuit_v2"
+	worn_state = "jumpsuit_v2"
+	icon_state = "jumpsuit_v2"
+
+/obj/item/clothing/under/deadspace/whitegrey/medic
+	name = "plain medic uniform"
+	desc = "A white-grey uniform, plain and unassuming. Has a bit of a hood to use. This one has a couple of red crosses, being a uniform for medical staff."
+	item_state = "medic_jumpsuit"
+	worn_state = "medic_jumpsuit"
+	icon_state = "medic_jumpsuit"
+
+/obj/item/clothing/under/deadspace/hunk
+	name = "HUNK armored uniform"
+	desc = "A dark black tactical uniform, with padding."
+	item_state = "hunk_jumpsuit"
+	worn_state = "hunk_jumpsuit"
+	icon_state = "hunk_jumpsuit"
+	armor = list(melee = 30, bullet = 15, laser = 10, energy = 10, bomb = 10, bio = 30, rad = 0)
+
+
+
+
+
 /*
  * Mining
  */
@@ -170,6 +213,14 @@
 	icon_state = "ds_securityjumpsuit_old"
 	permeability_coefficient = 0.25
 
+/obj/item/clothing/under/deadspace/security/titansec
+	name = "titan station security uniform"
+	desc = "A dark uniform that is issued to titan station officers."
+	item_state = "titansec"
+	worn_state = "titansec"
+	icon_state = "titansec"
+	permeability_coefficient = 0.25
+
 
 
 /*
@@ -183,6 +234,22 @@
 	icon_state = "ds_hydro_bot"
 	permeability_coefficient = 0.50
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
+
+
+
+/*
+* Church
+*/
+
+/obj/item/clothing/under/deadspace/clergy
+	name = "clergy uniform"
+	item_state = "clergy"
+	worn_state = "clergy"
+	icon_state = "clergy"
+	permeability_coefficient = 0.50
+	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
+
+
 
 /*
  * ERT Uniforms

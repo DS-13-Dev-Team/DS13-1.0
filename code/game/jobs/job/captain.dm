@@ -25,7 +25,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 				access_chemistry, access_surgery, access_maint_tunnels, access_keycard_auth, access_keycard_modification)
 	outfit_type = /decl/hierarchy/outfit/job/command/cap
 
-	min_skill = list(   SKILL_HAULING     = SKILL_BASIC,
+	min_skill = list(   SKILL_HAULING     = SKILL_ADEPT,
 						SKILL_WEAPONS     = SKILL_BASIC,
 						SKILL_COMPUTER    = SKILL_ADEPT)
 
@@ -103,6 +103,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 						SKILL_COOKING     = SKILL_EXPERT,
 						SKILL_MEDICAL     = SKILL_EXPERT,
 						SKILL_ANATOMY     = SKILL_ADEPT,
+						SKILL_COMBAT      = SKILL_EXPERT,
 						SKILL_FORENSICS   = SKILL_ADEPT)
 	skill_points = 20
 	salary = SALARY_EDUCATED

@@ -277,19 +277,19 @@
 	icon = 'icons/obj/food.dmi'
 	icon_state = "necrojelly"
 
-/obj/random/necrojelly/item_to_spawn() //7,61% to be not jelly
-	return pickweight(list(/obj/item/reagent_containers/food/snacks/necrojelly = 9239,
-				/obj/item/reagent_containers/food/snacks/necrojelly/tormentor = 1,
+/obj/random/necrojelly/item_to_spawn() //20% to be not jelly
+	return pickweight(list(/obj/item/reagent_containers/food/snacks/necrojelly = 4000,
+				/obj/item/reagent_containers/food/snacks/necrojelly/tormentor = 10,
 				/obj/item/reagent_containers/food/snacks/necrojelly/spitter = 100,
-				/obj/item/reagent_containers/food/snacks/necrojelly/cursed = 100,
-				/obj/item/reagent_containers/food/snacks/necrojelly/lurker = 100,
+				/obj/item/reagent_containers/food/snacks/necrojelly/cursed = 200,
+				/obj/item/reagent_containers/food/snacks/necrojelly/lurker = 125,
 				/obj/item/reagent_containers/food/snacks/necrojelly/exploder = 100,
 				/obj/item/reagent_containers/food/snacks/necrojelly/puker = 100,
 				/obj/item/reagent_containers/food/snacks/necrojelly/ubermorph = 50,
-				/obj/item/reagent_containers/food/snacks/necrojelly/infector = 50,
-				/obj/item/reagent_containers/food/snacks/necrojelly/tripod = 10,
+				/obj/item/reagent_containers/food/snacks/necrojelly/infector = 75,
+				/obj/item/reagent_containers/food/snacks/necrojelly/tripod = 40,
 				/obj/item/reagent_containers/food/snacks/necrojelly/divider = 50,
-				/obj/item/reagent_containers/food/snacks/necrojelly/enhancedslasher = 100))
+				/obj/item/reagent_containers/food/snacks/necrojelly/enhancedslasher = 150))
 
 /obj/item/reagent_containers/food/snacks/necrojelly
 	name = "suspicious jello"

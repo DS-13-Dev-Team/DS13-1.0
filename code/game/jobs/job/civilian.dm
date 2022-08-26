@@ -17,6 +17,7 @@
 	max_skill = list(	SKILL_BOTANY      = SKILL_EXPERT,
 						SKILL_MEDICAL     = SKILL_EXPERT,
 						SKILL_ANATOMY     = SKILL_ADEPT,
+						SKILL_COMBAT      = SKILL_EXPERT,
 						SKILL_FORENSICS   = SKILL_ADEPT)
 	skill_points = 20
 
@@ -42,10 +43,10 @@
 	outfit_type = /decl/hierarchy/outfit/job/service/line_cook
 
 	min_skill = list(   SKILL_COOKING     = SKILL_EXPERT,
+						SKILL_COMBAT      = SKILL_BASIC,
 						SKILL_HAULING     = SKILL_BASIC)
 
-	max_skill = list(	SKILL_BOTANY      = SKILL_EXPERT,
-						SKILL_MEDICAL     = SKILL_EXPERT,
+	max_skill = list(	SKILL_MEDICAL     = SKILL_EXPERT,
 						SKILL_ANATOMY     = SKILL_ADEPT,
 						SKILL_FORENSICS   = SKILL_ADEPT)
 	skill_points = 20
@@ -69,9 +70,9 @@
 	outfit_type = /decl/hierarchy/outfit/job/service/botanist
 
 	min_skill = list(   SKILL_BOTANY 	  = SKILL_EXPERT)
-	max_skill = list(   SKILL_COOKING     = SKILL_EXPERT,
-						SKILL_MEDICAL     = SKILL_EXPERT,
+	max_skill = list(   SKILL_MEDICAL     = SKILL_EXPERT,
 						SKILL_ANATOMY     = SKILL_ADEPT,
+						SKILL_COMBAT      = SKILL_EXPERT,
 						SKILL_FORENSICS   = SKILL_ADEPT)
 	skill_points = 20
 
@@ -96,6 +97,7 @@
 	access = list(access_maint_tunnels, access_service)
 	outfit_type = /decl/hierarchy/outfit/job/service/janitor
 
+	min_skill = list(   SKILL_HAULING 	= SKILL_EXPERT)
 	max_skill = list(	SKILL_BOTANY	= SKILL_ADEPT,
 						SKILL_MEDICAL	= SKILL_ADEPT,
 						SKILL_ANATOMY	= SKILL_ADEPT,
@@ -125,6 +127,7 @@
 	max_skill = list(	SKILL_BOTANY	= SKILL_ADEPT,
 						SKILL_MEDICAL	= SKILL_ADEPT,
 						SKILL_ANATOMY	= SKILL_ADEPT,
+						SKILL_COMBAT    = SKILL_EXPERT,
 						SKILL_FORENSICS	= SKILL_ADEPT)
 	skill_points = 24
 

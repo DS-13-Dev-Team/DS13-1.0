@@ -2,17 +2,29 @@
 	The scry spell allows temporary viewing of a remote location which doesn't have corruption
 	It lasts for one minute, and can be cast onto blackspace
 */
+//
 /datum/signal_ability/scry
 	name = "Scry"
 	id = "scry"
-	desc = "Reveals a targeted area in a 6 tile radius for a duration of 1 minute. Creates a spooky ethereal glow there too."
+	desc = "Reveals a targeted area in a 6 tile radius for a duration of 1 minute. Creates a spooky ethereal glow there too. This spell becomes a bit more expensive once the marker is active"
 	target_string = "any blackspace outside the necrovision network"
-	energy_cost = 20
+	energy_cost = 10 //So cheap since it is before marker activation, allows signals to look around easy and look on things
 	require_corruption = FALSE
 	require_necrovision = FALSE
 	autotarget_range = 0
 
 	targeting_method	=	TARGET_CLICK
+
+	marker_active_required = -1
+
+/datum/signal_ability/scry/marker
+	name = "Scry"
+	id = "scry"
+	desc = "Reveals a targeted area in a 6 tile radius for a duration of 1 minute. Creates a spooky ethereal glow there too."
+	energy_cost = 15 //a bit cheaper than 20, so as to help navigate and find people a bit easier
+	autotarget_range = 0
+
+	marker_active_required = TRUE
 
 
 //Because obscuring overlays block clicks, we have to override here to do things
