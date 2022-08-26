@@ -85,6 +85,7 @@
 				A.throw_at(pick(targets),1,1)
 
 	set_dir(direction)
+	plane = GAME_PLANE_FOV_HIDDEN
 	if(dir != NORTH)
 		layer = ABOVE_HUMAN_LAYER
 	atom_flags &= ~ATOM_FLAG_CLIMBABLE //flipping tables allows them to be used as makeshift barriers
