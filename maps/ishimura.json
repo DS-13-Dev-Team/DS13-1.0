@@ -3,6 +3,7 @@
 	"map_name": "USG Ishimura",
 	"map_path": "USGIshimura",
 	"map_datum": "/datum/map/ishimura",
+	"map_size": 500,
 	"map_file": [
 		"M.01 Ishimura (UT).dmm",
 		"M.02 Ishimura (T).dmm",

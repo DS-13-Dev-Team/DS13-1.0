@@ -17,6 +17,7 @@
 		/obj/item/rig_module/device/paperdispenser,	//For warrants and paperwork
 		/obj/item/rig_module/device/pen,
 		/obj/item/rig_module/vision/nvgsec,
+		/obj/item/rig_module/maneuvering_jets,
 		/obj/item/rig_module/hotswap
 		)
 

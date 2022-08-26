@@ -169,7 +169,7 @@
 	//TODO: Icons not working
 	//TODO: Multiselection is happening
 
-	register_research_design(D)
+	SSresearch.register_research_design(D)
 
 
 /*

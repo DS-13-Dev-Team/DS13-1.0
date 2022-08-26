@@ -8,7 +8,7 @@ SUBSYSTEM_DEF(inactivity)
 
 /datum/controller/subsystem/inactivity/fire(resumed = FALSE)
 	if (!CONFIG_GET(number/kick_inactive))
-		suspend()
+		can_fire = FALSE
 		return
 	if (!resumed)
 		client_list = GLOB.clients.Copy()

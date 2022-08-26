@@ -51,6 +51,7 @@
 	weak_reference = null //ensure prompt GCing of weakref.
 
 	SSnano?.close_uis(src)
+	SStgui?.close_uis(src)
 	var/list/timers = active_timers
 	active_timers = null
 	for(var/thing in timers)

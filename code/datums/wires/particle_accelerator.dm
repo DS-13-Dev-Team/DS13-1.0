@@ -26,7 +26,9 @@
 			C.interface_control = !C.interface_control
 
 		if(WIRE_PARTICLE_POWER_LIMIT)
-			C.visible_message("[icon2html(C)]<b>[C]</b> makes a large whirring noise.")
+			var/list/mobs = list()
+			get_mobs_and_objs_in_view_fast(get_turf(C), world.view, mobs, list())
+			C.visible_message("[icon2html(C, mobs)]<b>[C]</b> makes a large whirring noise.")
 
 /datum/wires/particle_acc/control_box/on_cut(wire, mend)
 	var/obj/machinery/particle_accelerator/control_box/C = holder

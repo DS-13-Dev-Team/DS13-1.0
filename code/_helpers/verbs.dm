@@ -15,12 +15,7 @@
 		mob_target = target
 		target = mob_target.client
 	else if(!istype(target, /client))
-		//Things that aren't a client or mob don't do fancy handling
-		if (isatom(target))
-			var/atom/D = target
-			D.verbs += verb_or_list_to_add
-			return TRUE
-		CRASH("add_verb called on a non datum")
+		CRASH("add_verb called on a non-mob and non-client")
 	var/list/verbs_list = list()
 	if(!islist(verb_or_list_to_add))
 		verbs_list += verb_or_list_to_add
@@ -46,9 +41,8 @@
 	for(var/thing in verbs_list)
 		var/procpath/verb_to_add = thing
 		output_list[++output_list.len] = list(verb_to_add.category, verb_to_add.name)
-	output_list = url_encode(json_encode(output_list))
 
-	target << output("[output_list];", "statbrowser:add_verb_list")
+	target.stat_panel.send_message("add_verb_list", output_list)
 
 /**
  * handles removing verb and sending it to browser to update, use this for removing verbs
@@ -59,18 +53,12 @@
  * * verb - typepath to a verb, or a list of verbs, supports lists of lists
  */
 /proc/remove_verb(client/target, verb_or_list_to_remove)
-
 	var/mob/mob_target = null
 	if(ismob(target))
 		mob_target = target
 		target = mob_target.client
 	else if(!istype(target, /client))
-		//Things that aren't a client or mob don't do fancy handling
-		if (isatom(target))
-			var/atom/D = target
-			D.verbs -= verb_or_list_to_remove
-			return TRUE
-		CRASH("remove_verb called on a non datum")
+		CRASH("remove_verb called on a non-mob and non-client")
 
 	var/list/verbs_list = list()
 	if(!islist(verb_or_list_to_remove))
@@ -97,6 +85,5 @@
 	for(var/thing in verbs_list)
 		var/procpath/verb_to_remove = thing
 		output_list[++output_list.len] = list(verb_to_remove.category, verb_to_remove.name)
-	output_list = url_encode(json_encode(output_list))
 
-	target << output("[output_list];", "statbrowser:remove_verb_list")
+	target.stat_panel.send_message("remove_verb_list", output_list)

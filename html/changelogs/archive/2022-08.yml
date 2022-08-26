@@ -37,3 +37,44 @@
   - bugfix: Fixed a bug where if you join too early to the server your fps was 20
       instead of 60 (or other number you've set).
   - bugfix: Fixed a bug that prevented all removed organs from rotting.
+2022-08-22:
+  DTraitor:
+  - rscadd: Updated TGUI to the latest version from tg.
+  - rscadd: Converted RnD console to TGUI.
+  - rscadd: Converted Store to TGUI.
+  - qol: Added search bar to the store UI.
+  - qol: All items in the store are sorted now.
+  - qol: Added some hotkeys to make navigating RnD console easier.
+  - bugfix: Using a autolathe or the store won't send you hundres of icons freezing
+      your game for a few seconds.
+  - bugfix: Made it so merits (miner cash) can't be used in the store.
+  - bugfix: Printing x10 items using a protolathe will consume x10 resources.
+  - bugfix: Printing time is now properly calculated and will be different depending
+      on amount of used resources.
+  Viz:
+  - rscadd: More orderable stuff at cargo/supply. Spare IDs, telecommunications circuit
+      boards and parts, and some tasty donk pockets!
+  - rscadd: Surgical kit can now store the advanced circular saw and dropper.
+  - rscadd: Inaprovaline pill bottles can be found in first aid wall lockers.
+  - rscadd: CSECO locker will have a combat security belt instead of a normal security
+      belt. 10 slots > 7 slots.
+  nianoru:
+  - bugfix: All security tier RIGs now have a manuervable jetpack.
+  - balance: Leaper's leap ability speed is now slightly increased.
+  - bugfix: 'The Colony: all bridge shutter controls are fixed.'
+  - rscadd: 'The Colony: crew monitoring console has been added to bridge.'
+  - rscadd: 'The Colony: a bucket has been added to botany.'
+  - rscadd: 'The Colony: medbay now has flashdrives for surgery.'
+  - rscadd: 'The Colony: tcomms circuit boards added to engineer fabricator room.'
+  - balance: 'The Colony: RnD in science now starts with more steel.'
+  - bugfix: 'USG Ishimura: EVA ADS is now fully indestructable.'
+  - rscadd: 'USG Ishimura: CE office now has an engineering and command console.'
+  - rscdel: 'USG Ishimura: removed useless atmosphere alert and supermatter core console
+      from CE office.'
+  - rscadd: 'USG Ishimura: TE office/reception now has an engineering console.'
+  - rscadd: 'USG Ishimura: added a box of colored light boxes to lower engineering.'
+  - rscadd: 'USG Ishimura: added empty spray bottles to paint storage.'
+  - rscadd: 'USG Ishimura: workbench added to upper-deck hallway engineer supply room
+      and lower-deck hallway storage.'
+  - rscadd: 'USG Ishimura: new shortcut between kitchen''s freezer and botany.'
+  - balance: 'USG Ishimura: engineering and science now start with more materials.'

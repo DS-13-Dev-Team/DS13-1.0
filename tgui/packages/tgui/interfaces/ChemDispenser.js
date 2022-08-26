@@ -1,6 +1,6 @@
 import { Fragment } from 'inferno';
 import { useBackend } from "../backend";
-import { Box, Button, LabeledList, Stack, Slider, Section, ProgressBar, AnimatedNumber } from "../components";
+import { Box, Button, LabeledList, Stack, Slider, Section, AnimatedNumber } from "../components";
 import { BeakerContents } from "../interfaces/common/BeakerContents";
 import { Window } from "../layouts";
 

@@ -1,90 +1,98 @@
 /datum/technology/combat
-	name = "Security Equipment"
-	desc = "Security Equipment"
-	id = "sec_eq"
 	tech_type = TECH_COMBAT
+	icon = 'icons/obj/ammo.dmi'
 
-	x = 0.1
-	y = 0.5
-	icon = "stunbaton"
+/datum/technology/combat/security
+	name = "Security Equipment"
+	desc = "Basic shitcurity kit"
+	id = "sec_eq"
+
+	x = 2
+	y = 5
+	icon = 'icons/obj/weapons.dmi'
+	icon_state = "stunbaton_active"
 
 	required_technologies = list()
-	required_tech_levels = list()
 	cost = 0
 
 	unlocks_designs = list("stunbaton", "handcuffs")
 
 /datum/technology/combat/pris_man
 	name = "Prisoner Managment"
-	desc = "Prisoner Managment"
+	desc = "Make sure prisoners won't escape from Alcatraz"
 	id = "pris_man"
 
-	x = 0.1
-	y = 0.6
-	icon = "seccomputer"
+	x = 2
+	y = 3.5
+	//special way to generate an icon
 
 	required_technologies = list("sec_eq")
-	required_tech_levels = list()
 	cost = 250
 
 	unlocks_designs = list("prisonmanage")
 
+/datum/technology/combat/pris_man/generate_icon()
+	var/icon/ret = icon('icons/obj/computer.dmi', "computer")
+	ret.Blend(icon('icons/obj/computer.dmi', "explosive"), ICON_OVERLAY)
+	ret.Blend(icon('icons/obj/computer.dmi', "security_key"), ICON_OVERLAY)
+	return ret
+
 /datum/technology/combat/add_eq
 	name = "Additional Security Equipment"
-	desc = "Additional Security Equipment"
+	desc = "I am the law!"
 	id = "add_eq"
 
-	x = 0.2
-	y = 0.5
-	icon = "add_sec_eq"
+	x = 4
+	y = 5
+	icon = 'icons/obj/clothing/glasses.dmi'
+	icon_state = "securityhud"
 
 	required_technologies = list("sec_eq")
-	required_tech_levels = list()
 	cost = 500
 
 	unlocks_designs = list("security_hud", "megaphone")
 
 /datum/technology/combat/nleth_eq
 	name = "Non-lethal Eqiupment"
-	desc = "Additional Security Equipment"
+	desc = "Taser and flash for your RIG"
 	id = "nleth_eq"
 
-	x = 0.3
-	y = 0.5
-	icon = "rigtaser"
+	x = 6
+	y = 5
+	icon = 'icons/obj/rig_modules.dmi'
+	icon_state = "taser"
 
 	required_technologies = list("add_eq")
-	required_tech_levels = list()
 	cost = 750
 
 	unlocks_designs = list("rig_flash", "rig_taser")
 
 /datum/technology/combat/recharger
 	name = "Recharger"
-	desc = "Recharger"
+	desc = "Finally a way to recharge your... Uh... RIG cell?"
 	id = "recharger"
 
-	x = 0.4
-	y = 0.5
-	icon = "recharger"
+	x = 8
+	y = 5
+	icon = 'icons/obj/stationobjs.dmi'
+	icon_state = "recharger0"
 
 	required_technologies = list("nleth_eq", "sup_power")
-	required_tech_levels = list()
 	cost = 1250
 
-	unlocks_designs = list("recharger", "force_energy")
+	unlocks_designs = list("recharger")
 
 /datum/technology/combat/shield
 	name = "Advanced Combat"
-	desc = "Advanced Combat"
+	desc = "SWAT "
 	id = "shield"
 
-	x = 0.4
-	y = 0.4
-	icon = "shield"
+	x = 8
+	y = 6.5
+	icon = 'icons/obj/weapons.dmi'
+	icon_state = "advanced"
 
 	required_technologies = list("recharger")
-	required_tech_levels = list()
 	cost = 1000
 
 	unlocks_designs = list("advancedcombatshield", "tactical_goggles")
@@ -94,12 +102,12 @@
 	desc = "Winchester NK Divet Pistol"
 	id = "divet"
 
-	x = 0.5
-	y = 0.5
-	icon = "divet"
+	x = 10
+	y = 5
+	icon = 'icons/obj/gun.dmi'
+	icon_state = "divet"
 
 	required_technologies = list("recharger")
-	required_tech_levels = list()
 	cost = 1500
 
 	unlocks_designs = list("divet", "divetslug")
@@ -109,27 +117,25 @@
 	desc = "Speed Loader (.44 Magnum)"
 	id = "speedloader"
 
-	x = 0.5
-	y = 0.6
-	icon = "speedloader"
+	x = 10
+	y = 3.5
+	icon_state = "38"
 
 	required_technologies = list("divet")
-	required_tech_levels = list()
 	cost = 750
 
-	unlocks_designs = list("44cal")
+	unlocks_designs = list("speedloader")
 
 /datum/technology/combat/pulse
 	name = "SWS Motorized Pulse Rifle"
 	desc = "SWS Motorized Pulse Rifle"
 	id = "pulse"
 
-	x = 0.6
-	y = 0.5
-	icon = "pulse"
+	x = 12
+	y = 5
+	icon_state = "pulse_rounds"
 
 	required_technologies = list("divet")
-	required_tech_levels = list()
 	cost = 2500
 
 	unlocks_designs = list("pulserifle", "pulseslug")
@@ -139,12 +145,11 @@
 	desc = "High Velocity Pulse Rounds"
 	id = "pulsehv"
 
-	x = 0.6
-	y = 0.6
-	icon = "pulsehv"
+	x = 12
+	y = 3.5
+	icon_state = "pulse_rounds_hv"
 
 	required_technologies = list("pulse")
-	required_tech_levels = list()
 	cost = 1500
 
 	unlocks_designs = list("pulsehighvel")
@@ -154,12 +159,12 @@
 	desc = "RC-DS Remote Control Disc Ripper"
 	id = "ripper"
 
-	x = 0.6
-	y = 0.4
-	icon = "ripper"
+	x = 12
+	y = 6.5
+	icon = 'icons/obj/gun.dmi'
+	icon_state = "ripper"
 
 	required_technologies = list("pulse")
-	required_tech_levels = list()
 	cost = 1500
 
 	unlocks_designs = list("ripper", "ripper_blades")
@@ -169,12 +174,11 @@
 	desc = "Diamond Blades"
 	id = "dblades"
 
-	x = 0.7
-	y = 0.4
-	icon = "dblades"
+	x = 14
+	y = 6.5
+	icon_state = "diamondblade"
 
 	required_technologies = list("ripper")
-	required_tech_levels = list()
 	cost = 750
 
 	unlocks_designs = list("diamond_blades")
@@ -184,12 +188,11 @@
 	desc = "T15 Javelin Gun"
 	id = "javeline"
 
-	x = 0.7
-	y = 0.6
-	icon = "javeline"
+	x = 14
+	y = 3.5
+	icon_state = "javelin-6"
 
 	required_technologies = list("pulse")
-	required_tech_levels = list()
 	cost = 2000
 
 	unlocks_designs = list("javgun", "javelin_rack")
@@ -199,12 +202,16 @@
 	desc = "Seeker Rifle"
 	id = "seeker"
 
-	x = 0.8
-	y = 0.5
-	icon = "seeker"
+	x = 16
+	y = 5
+	icon_state = "seekerclip"
 
 	required_technologies = list("pulse")
-	required_tech_levels = list()
 	cost = 3500
 
 	unlocks_designs = list("seeker", "seeker_ammo")
+
+/datum/technology/combat/seeker/generate_icon()
+	var/icon/ret = ..()
+	ret.Blend(icon('icons/obj/ammo.dmi', "sc-5"), ICON_OVERLAY)
+	return ret

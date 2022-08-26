@@ -204,7 +204,7 @@ S	fuel tank (hydrazine)
 
 /datum/design/item/ammo/fiftycal/ammo
 	name = "speed loader (.44 magnum)"
-	id = "44cal"
+	id = "speedloader"
 	materials = list(MATERIAL_STEEL = 750)
 	build_path = /obj/item/ammo_magazine/c44
 	price = 1200

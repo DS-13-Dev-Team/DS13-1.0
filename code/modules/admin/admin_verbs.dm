@@ -986,7 +986,7 @@ var/list/admin_verbs_mentor = list(
 	set category = "Admin"
 	if(holder)
 		var/list/jobs = list()
-		for (var/datum/job/J in job_master.occupations)
+		for (var/datum/job/J in job_master.occupations_map)
 			if(!J.is_position_available())
 				jobs += J.title
 		if (!jobs.len)

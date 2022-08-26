@@ -3,6 +3,7 @@
 	"map_name": "The Colony",
 	"map_path": "TheColony",
 	"map_datum": "/datum/map/colony",
+	"map_size": 400,
 	"map_file": [
 		"M.01_Mining_Colony_Underground.dmm",
 		"M.02_Mining_Colony.dmm",

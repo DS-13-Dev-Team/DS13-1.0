@@ -49,6 +49,7 @@
 /area/ishimura/eva/ADS
 	name = "\improper Asteroid Defense System"
 	icon_state = "engibase"
+	requires_power = FALSE
 	sound_env = SMALL_ENCLOSED
 
 /area/ishimura/eva/airlock
@@ -57,6 +58,7 @@
 
 /area/ishimura/eva/airlock/ADS
 	name = "\improper Asteroid Defense Airlock"
+	requires_power = FALSE
 
 /area/ishimura/eva/prep
 	name = "\improper EVA Equipment Prep"
@@ -64,6 +66,7 @@
 
 /area/ishimura/eva/prep/ADS
 	name = "\improper ADS Airlock Tank Bay"
+	requires_power = FALSE
 
 /area/ishimura/eva/solar
 	name = "\improper Solar Control"
@@ -947,6 +950,7 @@ area/ishimura/upper/medical/bpc
 /area/ishimura/tramdeck/tram/tunnel
 	name = "\improper Ishimura Tram Tunnel"
 	icon_state = "tramtunnel"
+	requires_power = FALSE
 
 /area/ishimura/tramdeck/tram/tunnel/aft
 	name = "\improper Ishimura Aft Tram Tunnel"

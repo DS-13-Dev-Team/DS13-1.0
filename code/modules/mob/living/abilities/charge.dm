@@ -337,7 +337,7 @@
 
 
 
-/datum/extension/charge/proc/moved(var/atom/mover, var/oldloc, var/newloc)
+/datum/extension/charge/proc/moved(var/atom/mover, var/oldloc)
 	SIGNAL_HANDLER
 	.=TRUE
 
@@ -375,7 +375,7 @@
 	//Update the nomove timer when we move
 	deltimer(nomove_timer)
 	nomove_timer = addtimer(CALLBACK(src, .proc/stop_peter_out), nomove_timeout, TIMER_STOPPABLE)
-	update_blur_filter(mover,oldloc,newloc)
+	update_blur_filter(mover,oldloc)
 
 /datum/extension/charge/proc/get_total_power()
 	var/total = power
@@ -475,7 +475,7 @@
 
 //Visual Filters
 //------------------------
-/datum/extension/charge/proc/update_blur_filter(var/atom/mover,	var/atom/oldloc,	var/atom/newloc)
+/datum/extension/charge/proc/update_blur_filter(var/atom/mover,	var/atom/oldloc)
 	if (stopped_at || !blur_filter_strength)
 		return
 
@@ -484,7 +484,7 @@
 		mover.filters.Add(newfilter)
 		blur = mover.filters[mover.filters.len]
 
-	var/vector2/direction = Vector2.DirectionBetween(oldloc, newloc)
+	var/vector2/direction = Vector2.DirectionBetween(oldloc, mover.loc)
 	direction *= blur_filter_strength
 
 	blur:x = direction.x

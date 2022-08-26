@@ -8,6 +8,7 @@
 	atom_flags = ATOM_FLAG_CLIMBABLE
 	layer = TABLE_LAYER
 	throwpass = 1
+	blocks_emissive = EMISSIVE_BLOCK_UNIQUE
 	var/flipped = 0
 	max_health = 30
 
@@ -383,6 +384,8 @@
 
 		if(carpeted)
 			overlays += "carpet_flip[type]"
+
+		overlays += update_emissive_block()
 
 /obj/structure/table/proc/can_connect()
 	return TRUE

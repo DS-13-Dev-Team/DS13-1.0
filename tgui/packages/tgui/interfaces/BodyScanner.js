@@ -288,6 +288,13 @@ const BodyScannerMainAbnormalities = props => {
     || occupant.nearsighted
     || occupant.hasVirus;
 
+  /* VOREStation Add */
+  hasAbnormalities = hasAbnormalities
+    || occupant.humanPrey
+    || occupant.livingPrey
+    || occupant.objectPrey;
+  /* VOREStation Add End */
+
   if (!hasAbnormalities) {
     return (
       <Section title="Abnormalities">

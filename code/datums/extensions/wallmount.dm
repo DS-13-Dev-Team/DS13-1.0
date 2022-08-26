@@ -201,13 +201,13 @@
 	dismount()
 
 //Called when the atom we are mounted to moves
-/datum/extension/mount/proc/on_mountpoint_move(var/atom/mover, var/oldloc, var/newloc)
+/datum/extension/mount/proc/on_mountpoint_move(var/atom/mover, var/oldloc, var/dir)
 	SIGNAL_HANDLER
 	if (mounted)
 		ignore_mountee_move = TRUE
 		mountee.forceMove(locate(mountpoint.x + offset.x, mountpoint.y + offset.y, mountpoint.z))
 
-/datum/extension/mount/proc/on_mountee_move(var/atom/mover, var/oldloc, var/newloc)
+/datum/extension/mount/proc/on_mountee_move(var/atom/mover, var/oldloc, var/dir)
 	SIGNAL_HANDLER
 	if (ignore_mountee_move)
 		ignore_mountee_move = FALSE

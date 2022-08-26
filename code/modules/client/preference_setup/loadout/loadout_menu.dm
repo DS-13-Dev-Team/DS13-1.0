@@ -152,7 +152,7 @@
 	var/jobs = list()
 	if(job_master)
 		for(var/job_title in (pref.job_medium|pref.job_low|pref.job_high))
-			var/datum/job/J = job_master.occupations_by_title[job_title]
+			var/datum/job/J = job_master.GetJob(job_title)
 			if(J)
 				dd_insertObjectList(jobs, J)
 

@@ -136,10 +136,10 @@ var/const/PROXIMITY_EXCLUDE_HOLDER_TURF = 1 // When acquiring turfs to monitor, 
 
 	seen_turfs_ = new_seen_turfs_
 
-/datum/proximity_trigger/proc/on_holder_moved(var/holder, var/old_loc, var/new_loc)
+/datum/proximity_trigger/proc/on_holder_moved(holder, old_loc, dir)
 	SIGNAL_HANDLER
 	var/old_turf = get_turf(old_loc)
-	var/new_turf = get_turf(new_loc)
+	var/new_turf = get_turf(holder)
 	if(old_turf == new_turf)
 		return
 	if (on_turf_entered)	//Don't try to call a proc if we didn't register one

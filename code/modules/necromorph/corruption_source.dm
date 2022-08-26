@@ -125,7 +125,7 @@
 	return TRUE
 
 
-/datum/extension/corruption_source/proc/source_moved(var/atom/movable/mover, var/old_loc, var/new_loc)
+/datum/extension/corruption_source/proc/source_moved(atom/movable/mover, old_loc, dir)
 	SIGNAL_HANDLER
 	sourceturf = get_turf(source)
 	update_vines()

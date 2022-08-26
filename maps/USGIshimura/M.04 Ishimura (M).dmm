@@ -1215,7 +1215,7 @@
 /obj/machinery/keycard_auth{
 	pixel_y = 24
 	},
-/obj/machinery/computer/general_air_control/supermatter_core{
+/obj/item/modular_computer/console/preset/command{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -4498,13 +4498,13 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ishimura/upper/engineering/atmospherics)
 "akX" = (
-/obj/machinery/computer/atmos_alert{
-	dir = 4
-	},
 /obj/machinery/light{
 	dir = 8
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/item/modular_computer/console/preset/engineering{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/upper/engineering/chief_office)
 "akY" = (
@@ -7605,6 +7605,9 @@
 	pixel_y = -23
 	},
 /obj/structure/cable/green,
+/obj/structure/filingcabinet{
+	pixel_x = 11
+	},
 /turf/simulated/floor/dank/hardwood,
 /area/ishimura/upper/engineering/lobby)
 "arq" = (
@@ -8403,13 +8406,14 @@
 /area/ishimura/upper/engineering/spare_storage)
 "asX" = (
 /obj/structure/table/rack,
-/obj/item/stack/material/steel/ten,
 /obj/item/stack/material/steel/fifty,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/firealarm{
 	pixel_y = 24
 	},
 /obj/random/loot/often/few,
+/obj/item/stack/material/steel/fifty,
+/obj/item/stack/material/steel/fifty,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/engineering/spare_storage)
 "asY" = (
@@ -8843,8 +8847,10 @@
 /turf/simulated/floor/dank/rivets,
 /area/ishimura/upper/engineering/hub)
 "atO" = (
-/obj/structure/filingcabinet,
 /obj/machinery/light,
+/obj/item/modular_computer/console/preset/engineering{
+	dir = 1
+	},
 /turf/simulated/floor/dank/hardwood,
 /area/ishimura/upper/engineering/lobby)
 "atP" = (
@@ -21175,6 +21181,7 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/item/storage/box/lights/mixed,
 /obj/item/lightreplacer,
+/obj/item/storage/briefcase/inflatable,
 /turf/simulated/floor/dank/golf_gray,
 /area/ishimura/upper/engineering/spare_storage/tool)
 "aPW" = (
@@ -21699,15 +21706,12 @@
 	d2 = 4;
 	icon_state = "0-4"
 	},
-/obj/structure/table/rack{
-	dir = 8
-	},
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/storage/briefcase/inflatable,
 /obj/structure/cable/green{
 	d2 = 4;
 	icon_state = "0-4"
 	},
+/obj/structure/workbench,
 /turf/simulated/floor/dank/golf_gray,
 /area/ishimura/upper/engineering/spare_storage/tool)
 "aQY" = (
@@ -21835,7 +21839,8 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/random/material/rare,
 /obj/random/material,
-/obj/random/material,
+/obj/item/stack/material/steel/fifty,
+/obj/item/stack/material/steel/fifty,
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/research/biolab)
 "aRg" = (
@@ -21843,15 +21848,15 @@
 	dir = 4
 	},
 /obj/structure/table/rack,
-/obj/item/stack/material/steel/ten,
-/obj/item/stack/material/steel/ten,
 /obj/item/stack/material/glass/reinforced/ten,
 /obj/item/stack/material/glass/ten,
 /obj/effect/floor_decal/corner/grey/mono,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/random/material/rare,
 /obj/random/material,
-/obj/random/material,
+/obj/item/stack/material/glass/ten,
+/obj/item/stack/material/plasteel/ten,
+/obj/item/stack/material/plastic/ten,
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/research/biolab)
 "aRh" = (
@@ -32084,6 +32089,10 @@
 	dir = 8
 	},
 /area/ishimura/upper/security/brig)
+"tpq" = (
+/obj/structure/bed/chair/office/light,
+/turf/simulated/floor/dank/hardwood,
+/area/ishimura/upper/engineering/lobby)
 "tDP" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -48808,7 +48817,7 @@ ceq
 asR
 anB
 asQ
-afC
+tpq
 atO
 aoY
 aoY

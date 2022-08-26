@@ -64,7 +64,7 @@
 
 
 
-/datum/extension/tripod_evasion/proc/holder_moved(var/atom/movable/am, var/atom/old_loc, var/atom/new_loc)
+/datum/extension/tripod_evasion/proc/holder_moved(atom/movable/AM, atom/old_loc, dir)
 	SIGNAL_HANDLER
 	if (updating)
 		return

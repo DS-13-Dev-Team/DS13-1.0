@@ -328,19 +328,9 @@
 
 
 
-
-
-
-
-
-
 /mob/proc/TurfAdjacent(var/turf/T)
 	return T.AdjacentQuick(src)
 
-/mob/dead/observer/ghost/TurfAdjacent(var/turf/T)
-	if(!isturf(loc) || !client)
-		return FALSE
-	return z == T.z && (get_dist(loc, T) <= client.view)
 
 /*
 	Control+Shift click

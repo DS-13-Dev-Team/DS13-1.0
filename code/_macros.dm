@@ -5,6 +5,8 @@
 
 #define get_turf(A) get_step(A,0)
 
+#define get_area(A) (isarea(A) ? A : get_step(A, 0)?.loc)
+
 #define show_browser(target, browser_content, browser_name) target << browse(browser_content, browser_name)
 #define close_browser(target, browser_name)                 target << browse(null, browser_name)
 #define send_rsc(target, rsc_content, rsc_name)             target << browse_rsc(rsc_content, rsc_name)

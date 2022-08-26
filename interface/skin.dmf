@@ -1113,28 +1113,6 @@ window "preferences_window"
 		right-click = true
 		saved-params = "zoom;letterbox;zoom-mode"
 
-window "statwindow"
-	elem "statwindow"
-		type = MAIN
-		pos = 372,0
-		size = 640x480
-		anchor1 = -1,-1
-		anchor2 = -1,-1
-		background-color = none
-		saved-params = "pos;size;is-minimized;is-maximized"
-		is-pane = true
-		outer-size = 658x549
-		inner-size = 640x502
-	elem "statbrowser"
-		type = BROWSER
-		pos = 0,0
-		size = 640x480
-		anchor1 = 0,0
-		anchor2 = 100,100
-		background-color = none
-		is-visible = false
-		saved-params = ""
-
 window "Telecomms IDE"
 	elem "Telecomms IDE"
 		type = MAIN
@@ -1338,3 +1316,20 @@ window "chemdispenser_reagents"
 		image = 'icons\\reagentname_bg.png'
 		image-mode = stretch
 
+window "statwindow"
+	elem "statwindow"
+		type = MAIN
+		pos = 281,0
+		size = 640x480
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		saved-params = "pos;size;is-minimized;is-maximized"
+		is-pane = true
+	elem "statbrowser"
+		type = BROWSER
+		pos = 0,0
+		size = 640x480
+		anchor1 = 0,0
+		anchor2 = 100,100
+		is-visible = false
+		saved-params = ""

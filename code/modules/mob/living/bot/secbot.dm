@@ -138,7 +138,7 @@
 	playsound(src.loc, pick(preparing_arrest_sounds), 50)
 	RegisterSignal(target, COMSIG_MOVABLE_MOVED, .proc/target_moved)
 
-/mob/living/bot/secbot/proc/target_moved(atom/movable/moving_instance, atom/old_loc, atom/new_loc)
+/mob/living/bot/secbot/proc/target_moved(atom/movable/moving_instance, atom/old_loc, dir)
 	SIGNAL_HANDLER
 	if(get_dist(get_turf(src), get_turf(target)) >= 1)
 		awaiting_surrender = INFINITY
