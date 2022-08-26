@@ -65,7 +65,36 @@
 	)
 
 
+//Airlocks
+/datum/craft_recipe/machinery/airlock
+	name = "standard airlock assembly"
+	result = /obj/structure/door_assembly
+	steps = list(
+		list(CRAFT_MATERIAL, MATERIAL_STEEL, 10),
+	)
 
+/datum/craft_recipe/machinery/airlock/external
+	name = "external airlock assembly"
+	result = /obj/structure/door_assembly/door_assembly_ext
+
+/datum/craft_recipe/machinery/airlock/airtight
+	name = "airtight hatch assembly"
+	result = /obj/structure/door_assembly/door_assembly_hatch
+
+/datum/craft_recipe/machinery/airlock/high_security
+	name = "high security airlock assembly"
+	result = /obj/structure/door_assembly/door_assembly_highsecurity
+
+/datum/craft_recipe/machinery/airlock/emergency_shutter
+	name = "emergency shutter"
+	result = /obj/structure/firedoor_assembly
+
+/datum/craft_recipe/machinery/airlock/multitile
+	name = "multi-tile airlock assembly"
+	result = /obj/structure/door_assembly/multi_tile
+	steps = list(
+		list(CRAFT_MATERIAL, 20, MATERIAL_STEEL),
+	)
 
 
 //wall or small you know them req only 2 list
@@ -100,4 +129,136 @@
 	result = /obj/structure/AIcore
 	steps = list(
 		list(CRAFT_MATERIAL, MATERIAL_PLASTEEL, 10),
+	)
+
+
+
+/datum/craft_recipe/machinery/robot_limb
+	time = 120
+	flags = CRAFT_ON_WORKBENCH
+	icon_state = "electronic"
+
+/datum/craft_recipe/machinery/robot_limb/l_arm
+	name = "robotic left arm"
+	result = /obj/item/robot_parts/l_arm
+	steps = list(
+		list(CRAFT_STACK, /obj/item/stack/rods, 5),
+		list(CRAFT_MATERIAL, MATERIAL_STEEL, 10), //Rough frame
+		list(CRAFT_TOOL, QUALITY_SAWING, 10),
+		list(CRAFT_TOOL, QUALITY_WELDING, 30),
+		list(CRAFT_MATERIAL, MATERIAL_PLASTEEL, 10),//Base frame to build on
+		list(CRAFT_TOOL, QUALITY_BOLT_TURNING, 10),
+		list(CRAFT_TOOL, QUALITY_WELDING, 30),
+		list(CRAFT_OBJECT, /obj/item/stock_parts/matter_bin),//Extra materials "awaiting construction"
+		list(CRAFT_OBJECT, /obj/item/stock_parts/manipulator, 30),
+		list(CRAFT_OBJECT, /obj/item/stock_parts/manipulator, 30),//Motors for the joints (shoulder, elbow, wrist)
+		list(CRAFT_OBJECT, /obj/item/stock_parts/manipulator, 30),
+		list(CRAFT_OBJECT, /obj/item/stock_parts/manipulator/nano, 30),
+		list(CRAFT_OBJECT, /obj/item/stock_parts/manipulator/nano, 30),//Fine, more advanced manipulators, for the fingers
+		list(CRAFT_OBJECT, /obj/item/stock_parts/manipulator/nano, 30),
+		list(CRAFT_OBJECT, /obj/item/stock_parts/scanning_module/adv, 30),//Sensor for feeling with hand, and movement
+		list(CRAFT_OBJECT, /obj/item/computer_hardware/hard_drive, 30),
+		list(CRAFT_OBJECT, /obj/item/computer_hardware/processor_unit, 30),//Console parts, controls and processes rest of parts.
+		list(CRAFT_TOOL, QUALITY_SCREW_DRIVING, 10),
+		list(CRAFT_STACK, /obj/item/stack/cable_coil, 20),//Wiring parts together
+		list(CRAFT_TOOL, QUALITY_WIRE_CUTTING, 10),
+		list(CRAFT_STACK, /obj/item/stack/power_node, 1),//Powers the arm
+		list(CRAFT_TOOL, QUALITY_PULSING, 10),//Uploading program from bench, linking parts
+		list(CRAFT_MATERIAL, MATERIAL_STEEL, 10),
+		list(CRAFT_MATERIAL, MATERIAL_PLASTIC, 10),//Final covers
+		list(CRAFT_TOOL, QUALITY_SCREW_DRIVING, 10),
+	)
+
+/datum/craft_recipe/machinery/robot_limb/r_arm
+	name = "robotic right arm"
+	result = /obj/item/robot_parts/r_arm
+	steps = list(
+		list(CRAFT_STACK, /obj/item/stack/rods, 5),
+		list(CRAFT_MATERIAL, MATERIAL_STEEL, 10),
+		list(CRAFT_TOOL, QUALITY_SAWING, 10),
+		list(CRAFT_TOOL, QUALITY_WELDING, 30),
+		list(CRAFT_MATERIAL, MATERIAL_PLASTEEL, 10),
+		list(CRAFT_TOOL, QUALITY_BOLT_TURNING, 10),
+		list(CRAFT_TOOL, QUALITY_WELDING, 30),
+		list(CRAFT_OBJECT, /obj/item/stock_parts/matter_bin),
+		list(CRAFT_OBJECT, /obj/item/stock_parts/manipulator, 30),
+		list(CRAFT_OBJECT, /obj/item/stock_parts/manipulator, 30),
+		list(CRAFT_OBJECT, /obj/item/stock_parts/manipulator, 30),
+		list(CRAFT_OBJECT, /obj/item/stock_parts/manipulator/nano, 30),
+		list(CRAFT_OBJECT, /obj/item/stock_parts/manipulator/nano, 30),
+		list(CRAFT_OBJECT, /obj/item/stock_parts/manipulator/nano, 30),
+		list(CRAFT_OBJECT, /obj/item/stock_parts/scanning_module/adv, 30),
+		list(CRAFT_OBJECT, /obj/item/computer_hardware/hard_drive, 30),
+		list(CRAFT_OBJECT, /obj/item/computer_hardware/processor_unit, 30),
+		list(CRAFT_TOOL, QUALITY_SCREW_DRIVING, 10),
+		list(CRAFT_STACK, /obj/item/stack/cable_coil, 20),
+		list(CRAFT_TOOL, QUALITY_WIRE_CUTTING, 10),
+		list(CRAFT_STACK, /obj/item/stack/power_node, 1),
+		list(CRAFT_TOOL, QUALITY_PULSING, 10),
+		list(CRAFT_MATERIAL, MATERIAL_STEEL, 10),
+		list(CRAFT_MATERIAL, MATERIAL_PLASTIC, 10),
+		list(CRAFT_TOOL, QUALITY_SCREW_DRIVING, 10),
+	)
+
+
+/datum/craft_recipe/machinery/robot_limb/l_leg
+	name = "robotic left leg"
+	result = /obj/item/robot_parts/l_leg
+	steps = list(
+		list(CRAFT_STACK, /obj/item/stack/rods, 5),
+		list(CRAFT_MATERIAL, MATERIAL_STEEL, 10),
+		list(CRAFT_TOOL, QUALITY_SAWING, 10),
+		list(CRAFT_TOOL, QUALITY_WELDING, 30),
+		list(CRAFT_MATERIAL, MATERIAL_PLASTEEL, 10),
+		list(CRAFT_TOOL, QUALITY_BOLT_TURNING, 10),
+		list(CRAFT_TOOL, QUALITY_WELDING, 30),
+		list(CRAFT_OBJECT, /obj/item/stock_parts/matter_bin),
+		list(CRAFT_OBJECT, /obj/item/stock_parts/manipulator, 30),
+		list(CRAFT_OBJECT, /obj/item/stock_parts/manipulator, 30),
+		list(CRAFT_OBJECT, /obj/item/stock_parts/manipulator, 30),
+		list(CRAFT_OBJECT, /obj/item/stock_parts/manipulator/nano, 30),
+		list(CRAFT_OBJECT, /obj/item/stock_parts/manipulator/nano, 30),
+		list(CRAFT_OBJECT, /obj/item/stock_parts/manipulator/nano, 30),
+		list(CRAFT_OBJECT, /obj/item/stock_parts/scanning_module/adv, 30),
+		list(CRAFT_OBJECT, /obj/item/computer_hardware/hard_drive, 30),
+		list(CRAFT_OBJECT, /obj/item/computer_hardware/processor_unit, 30),
+		list(CRAFT_TOOL, QUALITY_SCREW_DRIVING, 10),
+		list(CRAFT_STACK, /obj/item/stack/cable_coil, 20),
+		list(CRAFT_TOOL, QUALITY_WIRE_CUTTING, 10),
+		list(CRAFT_STACK, /obj/item/stack/power_node, 1),
+		list(CRAFT_TOOL, QUALITY_PULSING, 10),
+		list(CRAFT_MATERIAL, MATERIAL_STEEL, 10),
+		list(CRAFT_MATERIAL, MATERIAL_PLASTIC, 10),
+		list(CRAFT_TOOL, QUALITY_SCREW_DRIVING, 10),
+	)
+
+/datum/craft_recipe/machinery/robot_limb/r_leg
+	name = "robotic right leg"
+	result = /obj/item/robot_parts/r_leg
+	steps = list(
+		list(CRAFT_STACK, /obj/item/stack/rods, 5),
+		list(CRAFT_MATERIAL, MATERIAL_STEEL, 10),
+		list(CRAFT_TOOL, QUALITY_SAWING, 10),
+		list(CRAFT_TOOL, QUALITY_WELDING, 30),
+		list(CRAFT_MATERIAL, MATERIAL_PLASTEEL, 10),
+		list(CRAFT_TOOL, QUALITY_BOLT_TURNING, 10),
+		list(CRAFT_TOOL, QUALITY_WELDING, 30),
+		list(CRAFT_OBJECT, /obj/item/stock_parts/matter_bin),
+		list(CRAFT_OBJECT, /obj/item/stock_parts/manipulator, 30),
+		list(CRAFT_OBJECT, /obj/item/stock_parts/manipulator, 30),
+		list(CRAFT_OBJECT, /obj/item/stock_parts/manipulator, 30),
+		list(CRAFT_OBJECT, /obj/item/stock_parts/manipulator/nano, 30),
+		list(CRAFT_OBJECT, /obj/item/stock_parts/manipulator/nano, 30),
+		list(CRAFT_OBJECT, /obj/item/stock_parts/manipulator/nano, 30),
+		list(CRAFT_OBJECT, /obj/item/stock_parts/scanning_module/adv, 30),
+		list(CRAFT_OBJECT, /obj/item/computer_hardware/hard_drive, 30),
+		list(CRAFT_OBJECT, /obj/item/computer_hardware/processor_unit, 30),
+		list(CRAFT_TOOL, QUALITY_SCREW_DRIVING, 10),
+		list(CRAFT_STACK, /obj/item/stack/cable_coil, 20),
+		list(CRAFT_TOOL, QUALITY_WIRE_CUTTING, 10),
+		list(CRAFT_STACK, /obj/item/stack/power_node, 1),
+		list(CRAFT_TOOL, QUALITY_PULSING, 10),
+		list(CRAFT_MATERIAL, MATERIAL_STEEL, 10),
+		list(CRAFT_MATERIAL, MATERIAL_PLASTIC, 10),
+		list(CRAFT_TOOL, QUALITY_SCREW_DRIVING, 10),
 	)
