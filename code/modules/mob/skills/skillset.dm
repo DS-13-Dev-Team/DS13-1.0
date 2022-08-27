@@ -62,7 +62,7 @@
 
 	for(var/decl/hierarchy/skill/S in GLOB.skills)
 		var/min = job.min_skill[S.type]
-		skill_list[S.type] = min(min, SKILL_MAX)
+		skill_list[S.type] = min(max(min+background_value(given_client, S.ID),SKILL_MIN), SKILL_MAX)
 
 	update_verbs()
 	refresh_uis()

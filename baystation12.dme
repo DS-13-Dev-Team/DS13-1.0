@@ -2425,6 +2425,7 @@
 #include "code\modules\mob\living\simple_animal\hostile\retaliate\king_of_goats.dm"
 #include "code\modules\mob\living\simple_animal\hostile\retaliate\retaliate.dm"
 #include "code\modules\mob\skills\antag_skill_setter.dm"
+#include "code\modules\mob\skills\background.dm"
 #include "code\modules\mob\skills\helpers.dm"
 #include "code\modules\mob\skills\skill.dm"
 #include "code\modules\mob\skills\skill_buffs.dm"
