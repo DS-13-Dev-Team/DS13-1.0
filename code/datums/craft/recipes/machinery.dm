@@ -151,11 +151,9 @@
 		list(CRAFT_TOOL, QUALITY_WELDING, 30),
 		list(CRAFT_OBJECT, /obj/item/stock_parts/matter_bin),//Extra materials "awaiting construction"
 		list(CRAFT_OBJECT, /obj/item/stock_parts/manipulator, 30),
-		list(CRAFT_OBJECT, /obj/item/stock_parts/manipulator, 30),//Motors for the joints (shoulder, elbow, wrist)
-		list(CRAFT_OBJECT, /obj/item/stock_parts/manipulator, 30),
+		list(CRAFT_OBJECT, /obj/item/stock_parts/manipulator, 30),//Motors for the joints (shoulder, elbow)
 		list(CRAFT_OBJECT, /obj/item/stock_parts/manipulator/nano, 30),
-		list(CRAFT_OBJECT, /obj/item/stock_parts/manipulator/nano, 30),//Fine, more advanced manipulators, for the fingers
-		list(CRAFT_OBJECT, /obj/item/stock_parts/manipulator/nano, 30),
+		list(CRAFT_OBJECT, /obj/item/stock_parts/manipulator/nano, 30),//Fine, more advanced manipulators, for the fingers and wrist
 		list(CRAFT_OBJECT, /obj/item/stock_parts/scanning_module/adv, 30),//Sensor for feeling with hand, and movement
 		list(CRAFT_OBJECT, /obj/item/computer_hardware/hard_drive, 30),
 		list(CRAFT_OBJECT, /obj/item/computer_hardware/processor_unit, 30),//Console parts, controls and processes rest of parts.
@@ -183,8 +181,6 @@
 		list(CRAFT_OBJECT, /obj/item/stock_parts/matter_bin),
 		list(CRAFT_OBJECT, /obj/item/stock_parts/manipulator, 30),
 		list(CRAFT_OBJECT, /obj/item/stock_parts/manipulator, 30),
-		list(CRAFT_OBJECT, /obj/item/stock_parts/manipulator, 30),
-		list(CRAFT_OBJECT, /obj/item/stock_parts/manipulator/nano, 30),
 		list(CRAFT_OBJECT, /obj/item/stock_parts/manipulator/nano, 30),
 		list(CRAFT_OBJECT, /obj/item/stock_parts/manipulator/nano, 30),
 		list(CRAFT_OBJECT, /obj/item/stock_parts/scanning_module/adv, 30),
@@ -215,8 +211,6 @@
 		list(CRAFT_OBJECT, /obj/item/stock_parts/matter_bin),
 		list(CRAFT_OBJECT, /obj/item/stock_parts/manipulator, 30),
 		list(CRAFT_OBJECT, /obj/item/stock_parts/manipulator, 30),
-		list(CRAFT_OBJECT, /obj/item/stock_parts/manipulator, 30),
-		list(CRAFT_OBJECT, /obj/item/stock_parts/manipulator/nano, 30),
 		list(CRAFT_OBJECT, /obj/item/stock_parts/manipulator/nano, 30),
 		list(CRAFT_OBJECT, /obj/item/stock_parts/manipulator/nano, 30),
 		list(CRAFT_OBJECT, /obj/item/stock_parts/scanning_module/adv, 30),
@@ -246,8 +240,6 @@
 		list(CRAFT_OBJECT, /obj/item/stock_parts/matter_bin),
 		list(CRAFT_OBJECT, /obj/item/stock_parts/manipulator, 30),
 		list(CRAFT_OBJECT, /obj/item/stock_parts/manipulator, 30),
-		list(CRAFT_OBJECT, /obj/item/stock_parts/manipulator, 30),
-		list(CRAFT_OBJECT, /obj/item/stock_parts/manipulator/nano, 30),
 		list(CRAFT_OBJECT, /obj/item/stock_parts/manipulator/nano, 30),
 		list(CRAFT_OBJECT, /obj/item/stock_parts/manipulator/nano, 30),
 		list(CRAFT_OBJECT, /obj/item/stock_parts/scanning_module/adv, 30),

@@ -18,7 +18,7 @@
 	marker_active_required = -1
 
 /datum/signal_ability/scry/marker
-	name = "Scry"
+	name = "Scry "
 	id = "scry"
 	desc = "Reveals a targeted area in a 6 tile radius for a duration of 1 minute. Creates a spooky ethereal glow there too."
 	energy_cost = 15 //a bit cheaper than 20, so as to help navigate and find people a bit easier

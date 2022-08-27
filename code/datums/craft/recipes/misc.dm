@@ -36,6 +36,15 @@
 		list(CRAFT_MATERIAL, MATERIAL_STEEL)
 	)
 
+/datum/craft_recipe/pipe
+	name = "metal pipe"
+	result = /obj/item/pipe
+	time = 120
+	steps = list(
+		list(CRAFT_MATERIAL, MATERIAL_STEEL, 1),
+		list(CRAFT_TOOL, QUALITY_WELDING, 10)
+	)
+
 /datum/craft_recipe/box
 	name = "box"
 	result = /obj/item/storage/box
