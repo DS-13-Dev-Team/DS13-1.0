@@ -1578,7 +1578,6 @@
 #include "code\modules\client\preference_setup\necromorph\custom_species.dm"
 #include "code\modules\client\preference_setup\necromorph\customisation.dm"
 #include "code\modules\client\preference_setup\occupation\occupation.dm"
-#include "code\modules\client\preference_setup\occupation\skill_selection.dm"
 #include "code\modules\client\verbs\ooc.dm"
 #include "code\modules\client\verbs\ping.dm"
 #include "code\modules\clothing\_clothing.dm"
