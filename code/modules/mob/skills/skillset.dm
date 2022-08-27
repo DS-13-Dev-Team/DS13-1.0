@@ -58,6 +58,11 @@
 	if(!given_client)
 		return
 
+	skill_list = list()
+
+	for(var/decl/hierarchy/skill/S in GLOB.skills)
+		var/min = job.min_skill[S.type]
+		skill_list[S.type] = min(min, SKILL_MAX)
 
 	update_verbs()
 	refresh_uis()
