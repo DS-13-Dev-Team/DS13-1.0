@@ -159,20 +159,19 @@
 	//cache for sanic speed (lists are references anyways)
 	var/static/list/footstep_sounds = GLOB.footstep
 	///list returned by playsound() filled by client mobs who heard the footstep. given to play_fov_effect()
-	var/list/heard_clients
 
 	if((source.wear_suit?.body_parts_covered | source.w_uniform?.body_parts_covered | source.shoes?.body_parts_covered) & FEET)
 		// we are wearing shoes
 
-		heard_clients = playsound(source_loc, pick(footstep_sounds[turf_footstep][1]),
+		playsound(source_loc, pick(footstep_sounds[turf_footstep][1]),
 			footstep_sounds[turf_footstep][2] * volume * volume_multiplier,
 			sound_vary,
 			footstep_sounds[turf_footstep][3] + e_range + range_adjustment)
 	else
 		if(source.species.special_step_sounds)
-			heard_clients = playsound(source_loc, pick(source.species.special_step_sounds), 50, sound_vary)
+			playsound(source_loc, pick(source.species.special_step_sounds), 50, sound_vary)
 		else if(!source.species.play_bare_footsteps)
-			heard_clients = playsound(source_loc, pick(footstep_sounds[turf_footstep][1]),
+			playsound(source_loc, pick(footstep_sounds[turf_footstep][1]),
 				footstep_sounds[turf_footstep][2] * volume * volume_multiplier,
 				sound_vary,
 				footstep_sounds[turf_footstep][3] + e_range + range_adjustment)
@@ -186,7 +185,7 @@
 			if(!footstep)
 				return
 
-			heard_clients = playsound(source_loc, pick(bare_footstep_sounds[footstep][1]),
+			playsound(source_loc, pick(bare_footstep_sounds[footstep][1]),
 				bare_footstep_sounds[footstep][2] * volume * volume_multiplier,
 				sound_vary,
 				bare_footstep_sounds[footstep][3] + e_range + range_adjustment)
