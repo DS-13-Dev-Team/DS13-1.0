@@ -191,10 +191,6 @@
 				sound_vary,
 				bare_footstep_sounds[footstep][3] + e_range + range_adjustment)
 
-	if(length(heard_clients))
-		play_fov_effect(source, 5, "footstep", direction, ignore_self = TRUE, override_list = heard_clients)
-
-
 ///Prepares a footstep for machine walking
 /datum/element/footstep/proc/play_simplestep_machine(atom/movable/source)
 	SIGNAL_HANDLER

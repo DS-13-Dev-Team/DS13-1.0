@@ -33,7 +33,7 @@
 		return
 	var/indicator = (faction_indicator && (other in faction_members)) ? faction_indicator : antag_indicator
 	var/image/I = image('icons/mob/hud.dmi', loc = other.current, icon_state = indicator, layer = ABOVE_HUMAN_LAYER)
-	I.plane = GAME_PLANE_FOV_HIDDEN
+	I.plane = GAME_PLANE
 	if(ishuman(other.current))
 		var/mob/living/carbon/human/H = other.current
 		I.pixel_x = H.species.antaghud_offset_x

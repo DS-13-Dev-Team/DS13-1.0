@@ -1,5 +1,4 @@
 
-
 $include dbconfig.txt
 $include game_options.txt
 $include debug.txt
@@ -412,6 +411,3 @@ ABANDON_ALLOWED
 
 ## Enable automatic profiling - Byond 513.1506 and newer only.
 #AUTO_PROFILE
-
-## Whether native FoV is enabled for all people.
-NATIVE_FOV

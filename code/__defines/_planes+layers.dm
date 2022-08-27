@@ -63,10 +63,6 @@ What is the naming convention for planes or layers?
 //NEVER HAVE ANYTHING BELOW THIS PLANE ADJUST IF YOU NEED MORE SPACE
 #define LOWEST_EVER_PLANE				-200
 
-#define FIELD_OF_VISION_BLOCKER_PLANE	-199
-#define FIELD_OF_VISION_BLOCKER_RENDER_TARGET "*FIELD_OF_VISION_BLOCKER_RENDER_TARGET"
-#define FOV_EFFECTS_LAYER				10000 //Blindness effects are not layer 4, they lie to you
-
 #define CLICKCATCHER_PLANE				-100
 
 #define SPACE_PLANE						-99
@@ -82,9 +78,7 @@ What is the naming convention for planes or layers?
 
 #define FLOOR_PLANE						-7
 #define GAME_PLANE						-6
-#define GAME_PLANE_FOV_HIDDEN			-5
 #define GAME_PLANE_UPPER				-4
-#define GAME_PLANE_UPPER_FOV_HIDDEN		-3
 
 #define ABOVE_GAME_PLANE -2
 

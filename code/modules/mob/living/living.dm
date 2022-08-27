@@ -4,7 +4,6 @@
 		add_to_dead_mob_list()
 	else
 		add_to_living_mob_list()
-	update_fov()
 
 //mob verbs are faster than object verbs. See above.
 /mob/living/pointed(atom/A as mob|obj|turf in view())

@@ -198,8 +198,6 @@ note dizziness decrements automatically in the mob's Life() proc.
 	if(!direction) // Attacked self?!
 		I.pixel_z = 16
 
-	play_fov_effect(A, 5, "attack")
-
 	// And animate the attack!
 	animate(I, alpha = 175, pixel_x = 0, pixel_y = 0, pixel_z = 0, time = 3,flags = ANIMATION_PARALLEL)
 
