@@ -19,7 +19,7 @@
 
 /datum/signal_ability/scry2
 	name = "Scry "
-	id = "scry "
+	id = "scry2"
 	desc = "Reveals a targeted area in a 6 tile radius for a duration of 1 minute. Creates a spooky ethereal glow there too."
 	energy_cost = 15 //a bit cheaper than 20, so as to help navigate and find people a bit easier
 	autotarget_range = 0
