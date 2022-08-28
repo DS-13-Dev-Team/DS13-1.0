@@ -118,7 +118,7 @@
 
 	CHECK_EXISTS("map_datum")
 	map_datum = text2path(json["map_datum"])
-	CHECK_EXISTS("map_size")
+	//CHECK_EXISTS("map_size")
 	map_size = json["map_size"]
 	CHECK_EXISTS("map_name")
 	map_name = json["map_name"]
