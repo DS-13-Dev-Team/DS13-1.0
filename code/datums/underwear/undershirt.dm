@@ -194,7 +194,7 @@
 
 /datum/category_item/underwear/undershirt/shirt_long_female_short_sleeves
 	name = "Button Down Shirt, Short Sleeves, Female"
-	icon_state = "shirt_long_female_s_short_sleeves"
+	icon_state = "undershirt_long_female_short_sleeves"
 	has_color = TRUE
 
 /datum/category_item/underwear/undershirt/shortstripe_black
