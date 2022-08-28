@@ -940,22 +940,6 @@ obj/random/obstruction/item_to_spawn()
 
 
 
-// /obj/random/hostile
-// 	name = "Random Hostile Mob"
-// 	desc = "This is a random hostile mob."
-// 	icon = 'icons/mob/amorph.dmi'
-// 	icon_state = "standing"
-// 	spawn_nothing_percentage = 80
-
-// obj/random/hostile/item_to_spawn()
-// 	return pickweight(list(/mob/living/simple_animal/hostile/viscerator,
-// 				/mob/living/simple_animal/hostile/carp,
-// 				/mob/living/simple_animal/hostile/carp/pike,
-// 				/mob/living/simple_animal/hostile/vagrant/swarm))
-
-/*
-	Selects one spawn point out of a group of points with the same ID and asks it to generate its items
-*/
 var/list/multi_point_spawns
 
 /obj/random_multi

@@ -131,7 +131,7 @@
 
 	charges = list(
 		list("inaprovaline",  "inaprovaline",  /datum/reagent/inaprovaline,      80),
-		list("dylovene",      "dylovene",      /datum/reagent/dylovene,          80),
+		list("dylovene",      "dylovene",      /datum/reagent/dylovene,          40),
 		list("bicaridine",    "bicaridine",    /datum/reagent/bicaridine,        80),
 		list("kelotane",      "kelotane",      /datum/reagent/kelotane,          40),
 		list("tramadol",      "tramadol",      /datum/reagent/tramadol,          40),

@@ -2032,7 +2032,6 @@
 		M.adjustToxLoss(removed)
 
 
-// New recipes as of 26th August, 2022. - Viz
 /datum/chemical_reaction/lean
 	name = "LEAN"
 	result = /datum/reagent/ethanol/lean
