@@ -192,12 +192,12 @@
 	icon_state = "shirt_long_s_short_sleeves"
 	has_color = TRUE
 
-/datum/category_item/underwear/undershirt/shirt_long_female_short_sleeves
-	name = "Button Down Shirt, Short Sleeves, Female"
-	icon_state = "undershirt_long_female_short_sleeves"
-	has_color = TRUE
-
 /datum/category_item/underwear/undershirt/shortstripe_black
 	name = "Shortsleeve Striped Shirt, Black"
 	underwear_name = "short johns"
 	icon_state = "shirt_stripes_s"
+
+/datum/category_item/underwear/undershirt/shirt_long_female
+	name = "Button Down Shirt, Short Sleeves, Female"
+	icon_state = "shirt_short_female_s"
+	has_color = TRUE
