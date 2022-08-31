@@ -1076,10 +1076,10 @@ GLOBAL_REAL_VAR(list/stack_trace_storage)
 		var/mob/M = user.pulling
 		var/atom/movable/t = M.pulling
 		M.stop_pulling()
-		user.pulling.Move(A, get_dir(user.pulling.loc, A))
+		user.pulling.Move(get_turf(A), get_dir(user.pulling.loc, A))
 		M.start_pulling(t)
 	else
-		user.pulling.Move(A, get_dir(user.pulling.loc, A))
+		user.pulling.Move(get_turf(A), get_dir(user.pulling.loc, A))
 
 /proc/REF(input)
 	if(istype(input, /datum))

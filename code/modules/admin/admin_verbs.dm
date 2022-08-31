@@ -749,7 +749,7 @@ var/list/admin_verbs_mentor = list(
 	set name = "Toggle Build Mode Self"
 	set category = "Special Verbs"
 
-	if(!check_rights(R_ADMIN))
+	if(!check_rights(R_BUILDMODE))
 		return
 
 	var/datum/click_handler/handler = mob.GetClickHandler()
@@ -817,7 +817,8 @@ var/list/admin_verbs_mentor = list(
 	set name = "Rename Silicon"
 	set category = "Admin"
 
-	if(!check_rights(R_ADMIN)) return
+	if(!check_rights(R_MOD))
+		return
 
 	var/mob/living/silicon/S = input("Select silicon.", "Rename Silicon.") as null|anything in GLOB.silicon_mob_list
 	if(!S) return
@@ -832,7 +833,8 @@ var/list/admin_verbs_mentor = list(
 	set name = "Manage Silicon Laws"
 	set category = "Admin"
 
-	if(!check_rights(R_ADMIN)) return
+	if(!check_rights(R_MOD))
+		return
 
 	var/mob/living/silicon/S = input("Select silicon.", "Manage Silicon Laws") as null|anything in GLOB.silicon_mob_list
 	if(!S) return
@@ -884,7 +886,8 @@ var/list/admin_verbs_mentor = list(
 	set desc = "Sets the security level"
 	set category = "Admin"
 
-	if(!check_rights(R_ADMIN))	return
+	if(!check_rights(R_MOD))
+		return
 
 	var/decl/security_state/security_state = decls_repository.get_decl(GLOB.using_map.security_state)
 

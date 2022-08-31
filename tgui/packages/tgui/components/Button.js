@@ -20,6 +20,7 @@ export const Button = (props) => {
     fluid,
     icon,
     iconRotation,
+    iconSize,
     iconSpin,
     iconColor,
     iconPosition,
@@ -100,6 +101,7 @@ export const Button = (props) => {
           name={icon}
           color={iconColor}
           rotation={iconRotation}
+          size={iconSize}
           spin={iconSpin}
         />
       )}
@@ -110,6 +112,7 @@ export const Button = (props) => {
           name={icon}
           color={iconColor}
           rotation={iconRotation}
+          size={iconSize}
           spin={iconSpin}
         />
       )}
@@ -241,6 +244,7 @@ export class ButtonInput extends Component {
       content,
       icon,
       iconRotation,
+      iconSize,
       iconSpin,
       tooltip,
       tooltipPosition,
@@ -259,7 +263,7 @@ export class ButtonInput extends Component {
         ])}
         {...rest}
         onClick={() => this.setInInput(true)}>
-        {icon && <Icon name={icon} rotation={iconRotation} spin={iconSpin} />}
+        {icon && <Icon name={icon} rotation={iconRotation} size={iconSize} spin={iconSpin} />}
         <div>{content}</div>
         <input
           ref={this.inputRef}
