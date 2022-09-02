@@ -50,7 +50,7 @@
 
 /obj/item/rig/clown
 	name = "clown RIG"
-	desc = "honk honk."
+	desc = "Honk honk."
 	icon_state = "clown_rig"
 	armor = list(melee = 25, bullet = 25, laser = 25, energy = 25, bomb = 25, bio = 25, rad = 25)
 	offline_slowdown = 1
