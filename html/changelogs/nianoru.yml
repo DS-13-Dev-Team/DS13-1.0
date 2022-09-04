@@ -4,3 +4,4 @@ delete-after: True
 
 changes:
   - rscadd: "Medical RIG available to medical staff, and SMO receives a special variant. "
+  - qol: "Visual adjustment for Medical RIG."
