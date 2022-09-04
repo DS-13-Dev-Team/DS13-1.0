@@ -13570,8 +13570,7 @@
 /obj/machinery/door/airlock/security{
 	dir = 4;
 	name = "Primary Armory";
-	req_access = list(2);
-	req_one_access = newlist()
+	req_access = list(2)
 	},
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/security/armory)
@@ -14240,8 +14239,7 @@
 /obj/machinery/door/airlock/security{
 	dir = 4;
 	name = "Primary Armory";
-	req_access = list(2);
-	req_one_access = newlist()
+	req_access = list(2)
 	},
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/security/armory)
