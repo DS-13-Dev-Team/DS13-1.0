@@ -26,6 +26,29 @@
 	cost = 15
 	containername = "\improper Office toys crate"
 
+/decl/hierarchy/supply_pack/miscellaneous/plushies
+	name = "Plushie toys"
+	contains = list(
+					/obj/random/plushie/large,
+					/obj/random/plushie/large,
+					/obj/random/plushie/large,
+					/obj/random/plushie,
+					/obj/random/plushie,
+					/obj/random/plushie
+					)
+	cost = 30
+	containername = "\improper plushie toys crate"
+
+/decl/hierarchy/supply_pack/miscellaneous/water_balloons
+	name = "Water balloons"
+	contains = list(
+					/obj/item/storage/box/water_balloon,
+					/obj/item/storage/box/water_balloon,
+					/obj/item/storage/box/water_balloon
+	)
+	cost = 15
+	containername = "\improper water balloon crate"
+
 /decl/hierarchy/supply_pack/miscellaneous/carpetbrown
 	name = "Brown carpet"
 	contains = list(/obj/item/stack/tile/carpet/fifty)

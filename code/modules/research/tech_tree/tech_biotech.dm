@@ -232,8 +232,8 @@
 	unlocks_designs = list("scalpel_manager")
 
 /datum/technology/bio/adv_health_scanner
-	name = "Advanced Health Scanner"
-	desc = "7/5 doctos recommend using advanced health scanner"
+	name = "Adv Health Scanner and Prosthetics"
+	desc = "Adv Health Scanner and Prosthetics"
 	id = "adv_health_scanner"
 
 	x = 16
@@ -243,7 +243,7 @@
 	required_technologies = list("chemicals")
 	cost = 3000
 
-	unlocks_designs = list("adv_health_analyzer")
+	unlocks_designs = list("adv_health_analyzer", "prosthetic_organ_fabricator")
 
 /datum/technology/bio/beakers
 	name = "Special Beakers"

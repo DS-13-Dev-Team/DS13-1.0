@@ -6,7 +6,7 @@
 	<br>\
 	After it wears off, the same door cannot be affected again for four minutes"
 	target_string = "Any airlock with a bolting or locking mechanism"
-	energy_cost = 70
+	energy_cost = 80
 	cooldown = 60 SECONDS
 	autotarget_range = 1
 	target_types = list(/obj/machinery/door/airlock)
@@ -35,8 +35,8 @@
 	Best used to combine with a necromorph assault, preventing the escape of human victims, and forcing them to fight to the death.<br>\
 	This effect lasts for three minutes, but only if there is a live necromorph in the room. If there are none, the lockdown duration is halved."
 	target_string = "A tile in the target area or room"
-	energy_cost = 1000
-	cooldown = 300 SECONDS
+	energy_cost = 600
+	cooldown = 480 SECONDS
 	target_types = list(/turf)
 	marker_only = TRUE
 

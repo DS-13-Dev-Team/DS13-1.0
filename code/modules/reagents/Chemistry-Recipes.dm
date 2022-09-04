@@ -2030,3 +2030,10 @@
 
 	if(M.chem_doses[type] > 1 * threshold)
 		M.adjustToxLoss(removed)
+
+
+/datum/chemical_reaction/lean
+	name = "LEAN"
+	result = /datum/reagent/ethanol/lean
+	required_reagents = list(/datum/reagent/drink/sodawater = 3, /datum/reagent/ethanol = 1, /datum/reagent/antidexafen = 1, /datum/reagent/inaprovaline = 3, /datum/reagent/paracetamol = 1, /datum/reagent/space_drugs = 1)
+	result_amount = 10

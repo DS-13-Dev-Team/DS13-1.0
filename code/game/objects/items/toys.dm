@@ -38,6 +38,7 @@
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "waterballoon-e"
 	item_state = "balloon-empty"
+	w_class = ITEM_SIZE_SMALL
 
 /obj/item/toy/water_balloon/New()
 	create_reagents(10)
@@ -48,7 +49,7 @@
 
 /obj/item/toy/water_balloon/afterattack(atom/A as mob|obj, mob/user as mob, proximity)
 	if(!proximity) return
-	if (istype(A, /obj/structure/reagent_dispensers/watertank) && get_dist(src,A) <= 1)
+	if (istype(A, /obj/structure/reagent_dispensers) || istype(A, /obj/structure/sink) && get_dist(src,A) <= 1)
 		A.reagents.trans_to_obj(src, 10)
 		to_chat(user, "<span class='notice'>You fill the balloon with the contents of [A].</span>")
 		src.desc = "A translucent balloon with some form of liquid sloshing around in it."
@@ -56,7 +57,7 @@
 	return
 
 /obj/item/toy/water_balloon/attackby(obj/O as obj, mob/user as mob)
-	if(istype(O, /obj/item/reagent_containers/glass))
+	if(istype(O, /obj/item/reagent_containers/glass) || istype(O, /obj/item/reagent_containers/chem_disp_cartridge))
 		if(O.reagents)
 			if(O.reagents.total_volume < 1)
 				to_chat(user, "The [O] is empty.")
@@ -88,9 +89,11 @@
 	if(src.reagents.total_volume >= 1)
 		icon_state = "waterballoon"
 		item_state = "balloon"
+		w_class = ITEM_SIZE_NORMAL
 	else
 		icon_state = "waterballoon-e"
 		item_state = "balloon-empty"
+		w_class = ITEM_SIZE_SMALL
 
 /obj/item/toy/balloon
 	name = "\improper 'criminal' balloon"

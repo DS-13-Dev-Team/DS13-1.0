@@ -21,6 +21,13 @@
 	item_state = "chaplain_hoodie"
 	body_parts_covered = UPPER_TORSO|ARMS
 
+/obj/item/clothing/suit/clergyover
+	name = "clergy robe"
+	desc = "Worship in style."
+	icon_state = "clergyover"
+	item_state = "clergyover"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+
 //Chaplain
 /obj/item/clothing/suit/nun
 	name = "nun robe"
@@ -129,6 +136,26 @@
 	icon_closed = "ems_jacket_closed"
 	blood_overlay_type = "armor"
 	body_parts_covered = UPPER_TORSO|ARMS
+
+/obj/item/clothing/suit/storage/toggle/medvest
+	name = "medical vest"
+	desc = "A light blue vest, for medical personnel."
+	icon_state = "med_coat_closed"
+	item_state_slots = list(slot_r_hand_str = "med_coat_closed", slot_l_hand_str = "med_coat_closed")
+	item_icons = list(
+		slot_l_hand_str = 'icons/mob/onmob/items/lefthand_suits.dmi',
+		slot_r_hand_str = 'icons/mob/onmob/items/righthand_suits.dmi',
+		)
+	icon_open = "med_coat_open"
+	icon_closed = "med_coat_closed"
+	body_parts_covered = UPPER_TORSO|ARMS
+
+/obj/item/clothing/suit/storage/toggle/medvest/chief
+	name = "chief medical vest"
+	desc = "A large light blue vest, for medical personnel. This one is larger, for the SMO."
+	icon_state = "med_coat_chief_closed"
+	icon_open = "med_coat_chief_open"
+	icon_closed = "med_coat_chief_closed"
 
 
 //Security

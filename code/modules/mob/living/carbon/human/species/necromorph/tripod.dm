@@ -47,6 +47,7 @@
 	reach = 2
 
 	//Implacable
+	stability = 2
 	stun_mod = 0.5
 	weaken_mod = 0.3
 	paralysis_mod = 0.3
@@ -117,10 +118,10 @@
 	'sound/effects/creatures/necromorph/tripod/tripod_death_3.ogg',
 	'sound/effects/creatures/necromorph/tripod/tripod_death_4.ogg'),
 	SOUND_PAIN = list('sound/effects/creatures/necromorph/tripod/tripod_pain_1.ogg',
-	 'sound/effects/creatures/necromorph/tripod/tripod_pain_2.ogg',
-	 'sound/effects/creatures/necromorph/tripod/tripod_pain_3.ogg',
-	 'sound/effects/creatures/necromorph/tripod/tripod_pain_4.ogg',
-	 'sound/effects/creatures/necromorph/tripod/tripod_pain_5.ogg',),
+	'sound/effects/creatures/necromorph/tripod/tripod_pain_2.ogg',
+	'sound/effects/creatures/necromorph/tripod/tripod_pain_3.ogg',
+	'sound/effects/creatures/necromorph/tripod/tripod_pain_4.ogg',
+	'sound/effects/creatures/necromorph/tripod/tripod_pain_5.ogg',),
 	SOUND_SHOUT = list('sound/effects/creatures/necromorph/tripod/tripod_shout_1.ogg',
 	'sound/effects/creatures/necromorph/tripod/tripod_shout_2.ogg',
 	'sound/effects/creatures/necromorph/tripod/tripod_shout_3.ogg',
@@ -176,7 +177,7 @@ the tongue strikes much more quickly, can hit downed targets, and most important
 <h3>Hotkey: Ctrl+Shift+Click</h3><br>\
 <h3>Cooldown: 1 minute</h3><br>\
 An elaborate finishing move performed on a downed victim. The tripod forces its tongue down the victim's throat, tearing their head off from inside, and ripping their body in two.<br>\
-If performed successfully on a live crewman, it yields a bonus of 10kg biomass for the marker, "
+If performed successfully on a live crewman, it yields a bonus of 50kg biomass for the marker, "
 
 /datum/species/necromorph/tripod/get_ability_descriptions()
 	.= ""
@@ -630,7 +631,7 @@ If performed successfully on a live crewman, it yields a bonus of 10kg biomass f
 	base_type = /datum/extension/execution/tripod_kiss
 	cooldown = 1 MINUTE
 
-	reward_biomass = 10
+	reward_biomass = 50
 	reward_energy = 150
 	reward_heal = 40
 

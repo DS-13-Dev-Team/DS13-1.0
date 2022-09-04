@@ -247,6 +247,14 @@ S	fuel tank (hydrazine)
 	build_path = /obj/item/ammo_magazine/pulse/hv
 	build_type = PROTOLATHE
 
+
+/datum/design/item/ammo/shotgun
+	name = "shotgun shell"
+	id = "shotgun_ammo"
+	materials = list(MATERIAL_PLASTIC = 2500, MATERIAL_STEEL = 3000)
+	build_path = /obj/item/ammo_magazine/shotgun
+	price = 750
+
 /datum/design/item/ammo/seeker_ammo
 	name = "seeker shell"
 	id = "seeker_ammo"

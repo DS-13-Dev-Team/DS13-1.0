@@ -24,6 +24,12 @@
 /datum/design/item/rig/fire
 	build_path = /obj/item/rig/firesuit
 
+/datum/design/item/rig/medical
+	build_path = /obj/item/rig/medical
+
+/datum/design/item/rig/excavation
+	build_path = /obj/item/rig/excavation
+
 //This one is cheap and shoddy
 /datum/design/item/rig/mining
 	build_path = /obj/item/rig/mining
@@ -44,7 +50,7 @@
 
 /datum/design/item/rig/vintage
 	build_path = /obj/item/rig/vintage
-	price = 10000	//Its outdated and has drawbacks
+	price = 12000	//Its outdated and has drawbacks
 
 /datum/design/item/rig/advanced
 	build_path = /obj/item/rig/advanced
@@ -52,4 +58,8 @@
 
 /datum/design/item/rig/marksman
 	build_path = /obj/item/rig/marksman
+	price = 9000
+
+/datum/design/item/rig/pcsi
+	build_path = /obj/item/rig/security/pcsi
 	price = 9000

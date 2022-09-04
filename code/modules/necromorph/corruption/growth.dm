@@ -67,10 +67,10 @@
 
 
 /datum/signal_ability/placement/corruption/branch
-	name = "branch"
+	name = "Branch"
 	id = "branch"
 	desc = ""
-	energy_cost = 135
+	energy_cost = 120
 	placement_atom = /obj/structure/corruption_node/growth/branch
 
 
@@ -97,7 +97,7 @@
 	. = "This node acts as a specialised source for corruption spread, it has a massive radius of [range] tiles, and grows [speed] times as fast as normal.<br>\
 	However, it has a limit of [limit] on the number of corruption tiles it can support, which is far less than other nodes would normally get. <br>\
 	<br>\
-	Root is optimised for snaking corruption through long, narrow spaces, like maintenance corridors. It will not perform well if placed in an open space like a large room. Generally, root should be used in areas that are only 1-2 tiles wide."
+	Root is optimised for snaking corruption through long, narrow spaces, like maintenance corridors. It will not perform well if placed in an open space like a large room. Generally, root should be used in areas that are a few tiles wide or less."
 
 /datum/signal_ability/placement/corruption/root
 	name = "Root"

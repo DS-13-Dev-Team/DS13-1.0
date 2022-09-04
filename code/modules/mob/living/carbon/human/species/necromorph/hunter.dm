@@ -147,6 +147,7 @@ The Hunter starts shaking and screaming in pain, as it regrows a missing limb an
 
 #define HUNTER_LUNGE_DESC	"<h2>Hookblade:</h2><br>\
 <h3>Hotkey: Alt+Click </h3><br>\
+<h3>Cooldown: 6 seconds</h3><br>\
 The hunter springs forwards up to two tiles, and swings its claws in a wide arc. Any victims hit will suffer 15 damage, and be pulled in"
 
 
