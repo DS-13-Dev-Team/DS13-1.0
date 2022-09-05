@@ -180,8 +180,13 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 			hearturfs += get_turf(AM)
 
 	for(var/mob/M in GLOB.player_list)
-		if(checkghosts && M.stat == DEAD && M.get_preference_value(checkghosts) != GLOB.PREF_NEARBY)
-			mobs |= M
+		if(checkghosts)
+			if(issignal(M))
+				var/mob/dead/observer/eye/signal/signal = M
+				if(signal.visualnet.is_visible(T))
+					mobs |= M
+			else if(M.stat == DEAD && M.get_preference_value(checkghosts) != GLOB.PREF_NEARBY)
+				mobs |= M
 		else if(get_turf(M) in hearturfs)
 			mobs |= M
 
