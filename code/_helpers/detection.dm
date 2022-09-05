@@ -172,7 +172,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 	var/list/hearturfs = list()
 
 	for(var/atom/movable/AM in hear)
-		if(ismob(AM)
+		if(ismob(AM))
 			if(checkghosts && issignal(AM)))
 				continue
 			mobs += AM
