@@ -172,7 +172,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 	var/list/hearturfs = list()
 
 	for(var/atom/movable/AM in hear)
-		if(ismob(AM) && !issignal(AM))
+		if(ismob(AM) && !(check_ghosts && !issignal(AM)))
 			mobs += AM
 			hearturfs += get_turf(AM)
 		else if(isobj(AM))
@@ -181,7 +181,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 
 	for(var/mob/M in GLOB.player_list)
 		if(checkghosts)
-			if(issignal(M))
+			if(issignal(M) && M.get_preference_value(checkghosts) != GLOB.PREF_NEARBY)
 				var/mob/dead/observer/eye/signal/signal = M
 				if(signal.visualnet.is_visible(T))
 					mobs |= M
