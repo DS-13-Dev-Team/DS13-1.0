@@ -173,7 +173,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 
 	for(var/atom/movable/AM in hear)
 		if(ismob(AM))
-			if(checkghosts && issignal(AM)))
+			if(checkghosts && issignal(AM))
 				continue
 			mobs += AM
 			hearturfs += get_turf(AM)
