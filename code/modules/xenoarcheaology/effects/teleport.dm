@@ -13,7 +13,8 @@
 		sparks.set_up(3, 0, get_turf(user))
 		sparks.start()
 
-		user.Move(pick(RANGE_TURFS(get_turf(holder), 50)))
+		var/turf/centre = get_turf(src)
+		user.Move(pick(RANGE_TURFS(centre, 50)))
 
 		sparks = new /datum/effect/effect/system/spark_spread()
 		sparks.set_up(3, 0, user.loc)
