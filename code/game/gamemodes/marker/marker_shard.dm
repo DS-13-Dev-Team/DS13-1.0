@@ -102,7 +102,7 @@
 
 //The shard reveals an area around it, seeing through walls
 /obj/item/marker_shard/get_visualnet_tiles(var/datum/visualnet/network)
-	return trange(visualnet_range, get_turf(src))
+	return RANGE_TURFS(get_turf(src), visualnet_range)
 
 /*
 	Activation and timer

@@ -640,8 +640,9 @@
 	set name = "Spawn Dummy Crowd"
 	set desc = "Makes a bunch of dummies for testing AOE attacks"
 
-	for (var/turf/T in trange(1, mob))
-		new /mob/living/carbon/human/dummy(T)
+	if(tgui_alert(mob, "Spawn dummy crowd?", "Dummy Crowd", list("Yes", "No")) == "Yes")
+		for(var/turf/T as anything in RANGE_TURFS(mob, 1))
+			new /mob/living/carbon/human/dummy(T)
 
 /// A debug verb to check the sources of currently running timers
 /client/proc/check_timer_sources()

@@ -49,7 +49,7 @@
 	var/list/points_for_spawn = list()
 	var/list/spawns = list()
 	if (spread_range && istype(loc, /turf))
-		for(var/turf/T in trange(spread_range, src.loc))
+		for(var/turf/T in RANGE_TURFS(src.loc, spread_range))
 			//if (!T.is_wall && !T.is_hole)
 			points_for_spawn += T
 	else

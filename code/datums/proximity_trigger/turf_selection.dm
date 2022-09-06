@@ -14,10 +14,10 @@
 
 /decl/turf_selection/square/get_turfs(var/atom/origin, var/range)
 	. = list()
-	var/center = get_turf(origin)
+	var/turf/center = get_turf(origin)
 	if(!center)
 		return
-	for(var/turf/T in trange(range, center))
+	for(var/turf/T as anything in RANGE_TURFS(center, range))
 		. += T
 
 

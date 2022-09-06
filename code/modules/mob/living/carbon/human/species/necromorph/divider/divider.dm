@@ -204,7 +204,7 @@ Reanimate can be used to take control of any already-headless corpse on the grou
 		var/mob/living/L = E.create_divider_component(H, deletion_delay = 1 SECOND)
 
 		//And then throw the newly created creature
-		L.throw_at(pick(trange(3, H)), speed = (BASE_THROW_SPEED / 2))
+		L.throw_at(pick(RANGE_TURFS(H, 3)), speed = (BASE_THROW_SPEED / 2))
 
 
 /datum/species/necromorph/divider/handle_death(var/mob/living/carbon/human/H) //Handles any species-specific death events (such as dionaea nymph spawns).

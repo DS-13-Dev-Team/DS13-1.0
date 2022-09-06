@@ -113,7 +113,7 @@
 		return TRUE
 
 	if(Check_Shoegrip())	//scaling hull with magboots
-		for(var/turf/simulated/T in trange(1,src))
+		for(var/turf/simulated/T in RANGE_TURFS(src, 1))
 			if(T.density)
 				return TRUE
 
@@ -121,7 +121,7 @@
 	if(Allow_Spacemove()) //Checks for active jetpack
 		return TRUE
 
-	for(var/turf/simulated/T in trange(1,src)) //Robots get "magboots"
+	for(var/turf/simulated/T in RANGE_TURFS(src, 1)) //Robots get "magboots"
 		if(T.density)
 			return TRUE
 

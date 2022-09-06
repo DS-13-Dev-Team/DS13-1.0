@@ -274,7 +274,7 @@
 
 //The marker reveals an area around it, seeing through walls
 /obj/machinery/marker/get_visualnet_tiles(var/datum/visualnet/network)
-	return trange(visualnet_range, src)
+	return RANGE_TURFS(src, visualnet_range)
 
 //Spawnpoints
 /obj/machinery/marker/proc/add_spawnpoint(var/atom/source, var/datum/crew_objective/event)

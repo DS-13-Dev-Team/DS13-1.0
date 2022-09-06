@@ -337,9 +337,9 @@ All of them except New Growth require corruption to build upon\
 		cooldown	*= 1 + FLAP_SINGLE_WING_IMPAIRMENT
 		//Target a random tile around the target
 		if (prob(80))
-			A = pick(trange(1, A))
+			A = pick(RANGE_TURFS(A, 1))
 		else
-			A = pick(trange(2, A))
+			A = pick(RANGE_TURFS(A, 2))
 
 	//Do a chargeup animation. Pulls back and down, and then launches forwards
 	//The time is equal to the windup time of the attack, plus 0.5 seconds to prevent a brief stop and ensure launching is a fluid motion

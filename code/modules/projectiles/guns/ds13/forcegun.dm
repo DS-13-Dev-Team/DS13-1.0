@@ -105,7 +105,7 @@
 	//TODO: Make the weapon be launched out of your hands if not held twohanded
 	if (!held_twohanded)
 		user.unEquip(gun)
-		gun.throw_at(pick(trange(8, user)), 8, 1, null)
+		gun.throw_at(pick(RANGE_TURFS(user, 8)), 8, 1, null)
 		user.visible_message(SPAN_DANGER("The [gun] goes flying out of [user]'s weak grip!"),SPAN_DANGER("The [gun] goes flying out of your weak grip!"))
 
 

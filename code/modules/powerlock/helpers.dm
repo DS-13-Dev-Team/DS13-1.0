@@ -38,7 +38,7 @@
 
 	if (perimeter)
 		for (var/turf/T in .)
-			for (var/turf/T2 in trange(1, T))
+			for (var/turf/T2 in RANGE_TURFS(T, 1))
 				//Dont check if its already in the list
 				if ((T2 in .))
 					continue
