@@ -130,7 +130,8 @@ var/list/admin_verbs_fun = list(
 	/client/proc/toggle_random_events,
 	/client/proc/editappear,
 	/client/proc/roll_dices,
-	/datum/admins/proc/ai_hologram_set
+	/datum/admins/proc/ai_hologram_set,
+	/client/proc/drop_bomb
 	)
 
 var/list/admin_verbs_spawn = list(
@@ -226,7 +227,6 @@ var/list/admin_verbs_possess = list(
 	)
 var/list/admin_verbs_permissions = list(
 	/client/proc/edit_admin_permissions,
-	/client/proc/drop_bomb
 	)
 var/list/admin_verbs_rejuv = list(
 	/client/proc/respawn_character,
