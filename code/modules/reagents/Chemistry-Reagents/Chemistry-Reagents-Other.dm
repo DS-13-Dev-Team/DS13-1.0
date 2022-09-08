@@ -174,6 +174,83 @@
 	M.add_chemical_effect(CE_STABLE)
 	M.add_chemical_effect(CE_PAINKILLER, 10)
 
+
+
+/datum/reagent/ethanol/lean
+	name = "Lean"
+	description = "A popular purple drink made by mixing soda, cough syrup, and other things like alcohol or drugs."
+	taste_description = "sweet cough syrup"
+	reagent_state = LIQUID
+	color = "#8a0278"
+	strength = 15
+	overdose = 15
+	metabolism = 0.1
+	scannable = 1
+	flags = IGNORE_MOB_SIZE
+
+/datum/reagent/ethanol/lean/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	if(alien != IS_DIONA)
+		M.add_chemical_effect(CE_STABLE)
+		M.add_chemical_effect(CE_PAINKILLER, 20)
+		M.add_chemical_effect(CE_ANTIVIRAL, 1)
+
+//There is a TON of effects, generally getting quicker and more frequently when you OD a fair bit
+/datum/reagent/ethanol/lean/overdose(var/mob/living/carbon/M, var/alien)
+	M.add_chemical_effect(CE_SLOWDOWN, 1)
+	M.add_chemical_effect(CE_TOXIN, 1)
+	M.add_chemical_effect(CE_PAINKILLER, 10)
+	M.hallucination(60, 20)
+	if(prob(8))
+		M.slurring = max(M.slurring, 10)
+	if(prob(3))
+		M.drowsyness = max(M.drowsyness, 5)
+	M.druggy = max(M.druggy, 15)
+	if(prob(10))
+		M.SelfMove(pick(GLOB.cardinal))
+	if(prob(15))
+		M.emote(pick("twitch", "drool", "moan", "giggle", "mumble about lean"))
+	M.add_chemical_effect(CE_PULSE, -1)
+	M.add_chemical_effect(CE_MIND, -1)
+
+	var/drug_strength = 3
+	M.make_dizzy(drug_strength)
+	M.confused = max(M.confused, drug_strength * 5)
+
+	var/threshold = 1
+	if(M.chem_doses[type] < 1 * threshold)
+		M.apply_effect(3, STUTTER)
+		M.make_dizzy(5)
+		if(prob(5))
+			M.emote(pick("twitch", "giggle"))
+	else if(M.chem_doses[type] < 2 * threshold)
+		M.add_chemical_effect(CE_MIND, -1)
+		M.apply_effect(3, STUTTER)
+		M.make_jittery(5)
+		M.make_dizzy(5)
+		M.druggy = max(M.druggy, 35)
+		if(prob(10))
+			M.emote(pick("twitch", "giggle"))
+	else
+		M.add_chemical_effect(CE_MIND, -2)
+		M.apply_effect(3, STUTTER)
+		if(prob(95))
+			M.SelfMove(pick(GLOB.cardinal))
+		M.make_jittery(10)
+		M.make_dizzy(10)
+		M.druggy = max(M.druggy, 40)
+		M.hallucination(50, 50)
+		if(prob(45))
+			M.emote(pick("twitch", "laugh", "giggle"))
+
+/datum/reagent/deletrathol/affect_blood(var/mob/living/carbon/human/H, var/alien, var/removed)
+	H.add_chemical_effect(CE_PAINKILLER, 80)
+	if(prob(75))
+		H.drowsyness++
+	if(prob(25))
+		H.confused++
+
+
+
 /datum/reagent/gold
 	name = MATERIAL_GOLD
 	description = "Gold is a dense, soft, shiny metal and the most malleable and ductile metal known."

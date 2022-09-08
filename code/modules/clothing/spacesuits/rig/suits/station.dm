@@ -224,13 +224,21 @@
 
 /obj/item/rig/medical
 
-	name = "rescue suit control module"
+	name = "medical RIG"
 	suit_type = "rescue hardsuit"
-	desc = "A durable suit designed for medical rescue in high risk areas."
+	desc = "A durable RIG designed for medical rescue in high risk areas, and protecting the wearer against acids."
 	icon_state = "medical_rig"
-	armor = list(melee = 30, bullet = 15, laser = 25, energy = 60, bomb = 30, bio = 100, rad = 100)
+	armor = list(melee = 30, bullet = 15, laser = 85, energy = 60, bomb = 30, bio = 100, rad = 100)//Good against acid
 	online_slowdown = 1
 	offline_vision_restriction = TINT_HEAVY
+
+	initial_modules = list(
+		/obj/item/rig_module/healthbar,
+		/obj/item/rig_module/storage,
+		/obj/item/rig_module/maneuvering_jets,
+		/obj/item/rig_module/device/healthscanner,
+		/obj/item/rig_module/vision/medhud,
+		)
 
 	chest_type = /obj/item/clothing/suit/space/rig/medical
 	helm_type = /obj/item/clothing/head/helmet/space/rig/medical
@@ -256,17 +264,18 @@
 	species_restricted = list(SPECIES_HUMAN)
 
 /obj/item/rig/medical/equipped
-
+	name = "senior medical officer RIG"
+	suit_type = "rescue hardsuit"
+	desc = "A durable RIG designed for medical rescue in high risk areas, and protecting the wearer against acids. This one was made for the SMO and is well taken care of."
 	req_access = list(access_medical)
 
 	initial_modules = list(
 		/obj/item/rig_module/healthbar,
-		/obj/item/rig_module/storage,
+		/obj/item/rig_module/storage/heavy,
 		/obj/item/rig_module/chem_dispenser/injector,
 		/obj/item/rig_module/maneuvering_jets,
 		/obj/item/rig_module/device/healthscanner,
 		/obj/item/rig_module/vision/medhud,
-		/obj/item/rig_module/cooling_unit
 		)
 
 /obj/item/rig/hazard

@@ -109,6 +109,70 @@
 	)
 	armor = list(melee = 40, bullet = 50, laser = 30,energy = 30, bomb = 20, bio = 100, rad = 30)
 
+/////////////////////
+////TITAN OUTFITS////
+/////////////////////
+
+/obj/item/clothing/head/helmet/space/titan_helm
+	name = "titan station security helmet"
+	icon_state = "titan_helmet"
+	item_state = "titan_helmet"
+	item_state_slots = list(
+		slot_l_hand_str = "titan_helmet",
+		slot_r_hand_str = "titan_helmet",
+	)
+	desc = "A blue helmet with a bright light blue visor that hides the face. Goes with the matching suit, has a bit of armor"
+	armor = list(melee = 40, bullet = 25, laser = 20, energy = 30, bomb = 30, bio = 100, rad = 10)
+	siemens_coefficient = 1
+
+/obj/item/clothing/suit/space/titan_suit
+	name = "titan station security suit"
+	icon_state = "titan_suit"
+	item_state_slots = list(
+		slot_l_hand_str = "titan_suit",
+		slot_r_hand_str = "titan_suit",
+	)
+	item_state = "titan_suit"
+	desc = "Standard issue suit, typically given to all of security or law enforcement personnel. These suits are used commonly in day to day operations."
+	w_class = ITEM_SIZE_LARGE
+	armor = list(melee = 40, bullet = 25, laser = 20, energy = 30, bomb = 30, bio = 100, rad = 10)
+	flags_inv = 0
+	siemens_coefficient = 1
+
+
+
+//Professionally manufactured and well maintained, this suit of armor gleams as it catches the light.
+//Colonel suits next if this works
+
+////////////////////
+////MISC OUTFITS////
+////////////////////
+
+/obj/item/clothing/head/helmet/space/doom
+	name = "DOOM Helmet"
+	icon_state = "doom_helm"
+	item_state = "doom_helm"
+	desc = "A blocky, green helmet with a black visor."
+	armor = list(melee = 90, bullet = 90, laser = 80,energy = 90, bomb = 90, bio = 100, rad = 90)
+	siemens_coefficient = 1
+
+/obj/item/clothing/suit/space/doom
+	name = "DOOM Suit"
+	icon_state = "doom_suit_on"
+	icon = 'icons/obj/clothing/suits.dmi'
+	item_state = "doom_suit"
+	desc = "A heavy military green suit, that looks strong enough to take on nearly anything. Professionally manufactured and well maintained, this suit of armor gleams as it catches the light."
+	w_class = ITEM_SIZE_HUGE
+	armor = list(melee = 90, bullet = 90, laser = 80,energy = 90, bomb = 90, bio = 100, rad = 90)
+	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
+	siemens_coefficient = 1
+
+
+
+
+
+
+
 ///////////////////
 ////EDF OUTFITS////
 ///////////////////

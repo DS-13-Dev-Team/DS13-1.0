@@ -25,6 +25,13 @@
 	flags_inv = BLOCKHAIR
 	body_parts_covered = HEAD
 
+/obj/item/clothing/head/clergyhood
+	name = "clergy hood"
+	desc = "It's hood that covers the head. It is made whole with the clergy robe and outfit."
+	icon_state = "clergyhood"
+	flags_inv = BLOCKHAIR
+	body_parts_covered = HEAD
+
 //Chaplain
 /obj/item/clothing/head/nun_hood
 	name = "nun hood"

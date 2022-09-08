@@ -335,6 +335,14 @@
 	can_hold = list(/obj/item/toy/snappop)
 	startswith = list(/obj/item/toy/snappop = 8)
 
+/obj/item/storage/box/water_balloon
+	name = "bag of water balloons"
+	desc = "A baggie of water balloons. Fill them up with water and drench your foes!"
+	icon = 'icons/obj/trash.dmi'
+	icon_state = "plasticbag"
+	can_hold = list(/obj/item/toy/water_balloon)
+	startswith = list(/obj/item/toy/water_balloon = 7)
+
 /obj/item/storage/box/matches
 	name = "matchbox"
 	desc = "A small box of 'Space-Proof' premium matches."

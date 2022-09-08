@@ -27,6 +27,34 @@
 
 
 
+/datum/craft_recipe/furniture/wheelchair
+	name = "wheelchair"
+	result = /obj/structure/bed/chair/wheelchair
+	steps = list(
+		list(CRAFT_STACK, /obj/item/stack/rods, 5),
+		list(CRAFT_TOOL, QUALITY_WELDING, 20, 60),
+		list(CRAFT_MATERIAL, MATERIAL_STEEL, 5),
+		list(CRAFT_TOOL, QUALITY_SAWING, 10, 60),
+		list(CRAFT_STACK, /obj/item/stack/rods, 5),
+		list(CRAFT_TOOL, QUALITY_WELDING, 20, 60),
+		list(CRAFT_MATERIAL, MATERIAL_PLASTIC, 5),
+		list(CRAFT_TOOL, QUALITY_SCREW_DRIVING, 10, 40),
+	)
+
+/datum/craft_recipe/furniture/minimoog
+	name = "space minimoog"
+	result = /obj/structure/musician/piano/minimoog
+	steps = list(
+		list(CRAFT_MATERIAL, MATERIAL_WOOD, 5),
+		list(CRAFT_MATERIAL, MATERIAL_STEEL, 5),
+		list(CRAFT_MATERIAL, MATERIAL_PLASTIC, 5),
+		list(CRAFT_TOOL, QUALITY_SAWING, 10, 120),
+		list(CRAFT_STACK, /obj/item/stack/cable_coil, 10, "time" = 100),
+		list(CRAFT_TOOL, QUALITY_WIRE_CUTTING, 10, WORKTIME_NORMAL),
+		list(CRAFT_TOOL, QUALITY_SCREW_DRIVING, 10, 60),
+		list(CRAFT_OBJECT, /obj/item/cell, 40)
+	)
+
 
 /datum/craft_recipe/furniture/closet
 	name = "closet"

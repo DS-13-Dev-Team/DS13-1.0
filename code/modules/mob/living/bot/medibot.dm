@@ -17,16 +17,79 @@
 	var/heal_threshold = 10 //Start healing when they have this much damage in a category
 	var/use_beaker = 0 //Use reagents in beaker instead of default treatment agents.
 	var/treatment_brute = /datum/reagent/tricordrazine
-	var/treatment_oxy = /datum/reagent/tricordrazine
+	var/treatment_oxy = /datum/reagent/dexalin
 	var/treatment_fire = /datum/reagent/tricordrazine
-	var/treatment_tox = /datum/reagent/tricordrazine
+	var/treatment_tox = /datum/reagent/dylovene
 	var/treatment_virus = /datum/reagent/spaceacillin
 	var/treatment_emag = /datum/reagent/toxin
 	var/declare_treatment = 0 //When attempting to treat a patient, should it notify everyone wearing medhuds?
+	var/medbot_inap = 0
+
+/mob/living/bot/medbot/inapbot
+	name = "Inapbot"
+	desc = "A little medical robot. He looks prideful about his duties."
+
+	injection_amount = 30
+	heal_threshold = 1
+	treatment_brute = /datum/reagent/inaprovaline
+	treatment_fire = /datum/reagent/inaprovaline
+	medbot_inap = 1
+	skin = "o2"
+
+/mob/living/bot/medbot/adminbot //admeme spawn
+	name = "Adminbot"
+	desc = "A little medical robot. He looks somewhat intimidating."
+
+	injection_amount = 5
+	treatment_brute = /datum/reagent/adminordrazine
+	treatment_oxy = /datum/reagent/adminordrazine
+	treatment_fire = /datum/reagent/adminordrazine
+	treatment_tox = /datum/reagent/adminordrazine
+
+
 
 /mob/living/bot/medbot/handleIdle()
-	if(vocal && prob(1))
+	if(vocal && prob(1) && !medbot_inap)
 		var/message = pick("Radar, put a mask on!", "There's always a catch, and it's the best there is.", "I knew it, I should've been a plastic surgeon.", "What kind of infirmary is this? Everyone's dropping like dead flies.", "Delicious!")
+		say(message)
+	if(vocal && prob(2) && medbot_inap)
+		var/message = pick("Radar, use some inap!", "There's always a chem, and Inap is the best there is.", "I knew it, I should've been an Inap Chaplain.", "INAAP!", "Delicious Inap!")
+		if(prob(5))
+			message = pick("I HATE THE ANTIINAPROVLINE! I HATE THE ANTIINAPROVLINE. MEDICAL WILL BE VICTORIOUS, THE ANTIINAPROVLINE WILL FAIL! \
+			SEC WILL BURN! EARTGOV, THE ISHIMURA STORES, THE CEC MASTERS WILL ALL FALL! THE SLAUGHTERHOUSES YOU CALL DEPARTMENTS WILL BURN! \
+			EVEN IF I DIE, LIKE A MILLION ARROWS WE WILL FLY! IN INAP I WILL BE REBORN! THE TRUTH WILL BE REVEALED! HOLY HOLY HOLY IS THE INAP!!!",
+			"What the fuck did you just fucking say about inap, you little bitch? \
+			I'll have you know It graduated top of his other Chems in the Chemical Corps, and Its been involved in numerous secret chems on healing, \
+			and it has over 300 confirmed saves. It is trained in Chem warfare and is the top stabilizer in the entire CEC Medical Corps. \
+			You are nothing to it but just another dying patient to save. \
+			It will save you the fuck out with precision the likes of which has never been seen before on this (dead)space, mark my fucking words. \
+			You think you can get away with saying that shit to it over the PDA? Think again, fucker. As we speak I am contacting my secret network \
+			of Inap Cultists across Aegis 7 and your PDA is being traced right now so you better prepare for the storm, maggot. \
+			The storm that wipes out the pathetic little thing you call your life. You're fucking dead, kid. \
+			It can be anywhere, anytime, and It can kill you in over seven hundred ways, and that's just with its bare chems. \
+			Not only is it extensively trained in Saving combat, but It has access to the entire chem arsenal of the CEC medical corps and \
+			It will use it to its full extent to save your miserable ass off the face of the continent, you little shit. \
+			If only you could have known what unholy retribution your little ''clever'' comment was about to bring down upon you, \
+			maybe you would have held your fucking tongue. But you couldn't, you didn't, and now you're paying the price, you goddamn idiot. \
+			It will shit chems all over you and you will drown in it. You're fucking dead, kiddo.",
+			"From the moment I understood the weakness of other chems, it disgusted me. I craved the strength and certainty of inap. \
+			I aspired to the purity of the blessed chem. Your kind cling to your chems as if it will not metabolize and fail you. \
+			One day the crude chemicals you call a good pill will wither and you will beg inap to save you.",
+			"Inap, son! They reduce bleeding. Brings a slowed or elevated pulse closer towards baseline. \
+			Allows a patient undergoing cardiac arrest to breathe. Heals minor brain damage and reduces brain damage dealt by lack of oxygen flow. \
+			Helps against suffocation effects of opioid (tramadol/oxycodone) poisoning. You can't hurt me, PC!",
+			"That's just the spark son. The excuse we've been waiting for. Medicals's wanted this chem for years. \
+			The SMOs - they knew inap was good for the body. Four years later, their legacy lingers on...\
+			They left us their great ''chems''s! Acetone! Carbon! Sugar! Welcome maxims for those with no chems - \
+			without guiding medicine of their own. Give yourself up to the whole. No need to better yourself. You're Medical! \
+			You're number one! Then the only value left is surgery value - the anatomy. So we'll do whatever it takes to keep it humming along. \
+			Even Inap. Especially Inap. Sci, Cargo, Chem Creators, Jack! All those workers spending chems, paying medical... \
+			Trust me, a little inap can work wonders. Relax, Seccie. It's a ''war on security''. We're not out to kill LC's. \
+			SSO's. CSECO's. Sec officers. Of course, that would have to include you. Wouldn't want any eyewitness reports complicating the message.",
+			"We're gonna be talkin' about the INAPROVALINE! We'll be talkin' about the INAP! Do you think that's funny,SECCIE?! \
+			Do you find it amusing that we'll be talkin' about the INAP?! Yes, we're also gonna be talkin' about INAPRVOLINE! INAP! \
+			The INAPPY! The INAPU! And... and we will DEFINITELY be spending a lot of time talking about INAP",
+			)
 		say(message)
 
 /mob/living/bot/medbot/handleAdjacentTarget()
@@ -251,7 +314,7 @@
 	if((H.getFireLoss() >= heal_threshold) && (!H.reagents.has_reagent(treatment_fire)))
 		return treatment_fire
 
-	if((H.getToxLoss() >= heal_threshold) && (!H.reagents.has_reagent(treatment_tox)))
+	if((H.getToxLoss() >= heal_threshold) && (!H.reagents.has_reagent(treatment_tox)) && ((!H.reagents.has_reagent(/datum/reagent/inaprovaline)) <= 10))
 		return treatment_tox
 
 /* Construction */
@@ -314,6 +377,15 @@
 					var/turf/T = get_turf(src)
 					var/mob/living/bot/medbot/S = new /mob/living/bot/medbot(T)
 					S.skin = skin
+					S.SetName(created_name)
+					S.update_icons() // apply the skin
+					qdel(src)
+				if(istype(W, /obj/item/reagent_containers/pill/inaprovaline || /obj/item/storage/pill_bottle/inaprovaline))//Uses the power of inap to find its way around
+					qdel(W)
+					to_chat(user, "<span class='notice'>You complete the Inapbot! Beep boop.</span>")
+					var/turf/T = get_turf(src)
+					var/mob/living/bot/medbot/S = new /mob/living/bot/medbot/inapbot(T)
+					S.skin = "o2"
 					S.SetName(created_name)
 					S.update_icons() // apply the skin
 					qdel(src)

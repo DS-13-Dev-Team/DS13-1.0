@@ -8,6 +8,7 @@
  * /obj/item/rig_module/maneuvering_jets
  * /obj/item/rig_module/chem_dispenser
  * /obj/item/rig_module/chem_dispenser/combat
+ * /obj/item/rig_module/chem_dispenser/inaprovaline
  * /obj/item/rig_module/chem_dispenser/injector
  * /obj/item/rig_module/voice
  * /obj/item/rig_module/device/paperdispenser
@@ -121,7 +122,7 @@
 	selectable = 0
 	toggleable = 0
 	disruptive = 0
-	use_power_cost = 500
+	use_power_cost = 5000
 
 	engage_string = "Inject"
 
@@ -129,14 +130,14 @@
 	interface_desc = "Dispenses loaded chemicals directly into the wearer's bloodstream."
 
 	charges = list(
-		list("tricordrazine", "tricordrazine", /datum/reagent/tricordrazine,     80),
-		list("dramadol",      "tramadol",      /datum/reagent/tramadol,          80),
-		list("dexalin plus",  "dexalin plus",  /datum/reagent/dexalinp,          80),
-		list("antibiotics",   "antibiotics",   /datum/reagent/spaceacillin,      80),
-		list("antitoxins",    "antitoxins",    /datum/reagent/dylovene,          80),
-		list("glucose",       "glucose",       /datum/reagent/nutriment/glucose, 80),
-		list("hyronalin",     "hyronalin",     /datum/reagent/hyronalin,         80),
-		list("radium",        "radium",        /datum/reagent/radium,            80)
+		list("inaprovaline",  "inaprovaline",  /datum/reagent/inaprovaline,      80),
+		list("dylovene",      "dylovene",      /datum/reagent/dylovene,          40),
+		list("bicaridine",    "bicaridine",    /datum/reagent/bicaridine,        80),
+		list("kelotane",      "kelotane",      /datum/reagent/kelotane,          40),
+		list("tramadol",      "tramadol",      /datum/reagent/tramadol,          40),
+		list("dexalin plus",  "dexalin plus",  /datum/reagent/dexalinp,          40),
+		list("antibiotics",   "antibiotics",   /datum/reagent/spaceacillin,      40),
+		list("iron",          "iron",          /datum/reagent/iron,              40)
 		)
 
 	var/max_reagent_volume = 80 //Used when refilling.
@@ -146,14 +147,14 @@
 
 	//just over a syringe worth of each. Want more? Go refill. Gives the ninja another reason to have to show their face.
 	charges = list(
-		list("tricordrazine", "tricordrazine", /datum/reagent/tricordrazine,     20),
+		list("inaprovaline",  "inaprovaline",  /datum/reagent/inaprovaline,      20),
+		list("dylovene",      "dylovene",      /datum/reagent/dylovene,          20),
+		list("bicaridine",    "bicaridine",    /datum/reagent/bicaridine,        20),
+		list("kelotane",      "kelotane",      /datum/reagent/kelotane,          20),
 		list("tramadol",      "tramadol",      /datum/reagent/tramadol,          20),
 		list("dexalin plus",  "dexalin plus",  /datum/reagent/dexalinp,          20),
 		list("antibiotics",   "antibiotics",   /datum/reagent/spaceacillin,      20),
-		list("antitoxins",    "antitoxins",    /datum/reagent/dylovene,          20),
-		list("glucose",       "glucose",       /datum/reagent/nutriment/glucose, 80),
-		list("hyronalin",     "hyronalin",     /datum/reagent/hyronalin,         20),
-		list("radium",        "radium",        /datum/reagent/radium,            20)
+		list("iron",          "iron",          /datum/reagent/iron,              20)
 		)
 
 /obj/item/rig_module/chem_dispenser/accepts_item(var/obj/item/input_item, var/mob/living/user)
@@ -237,14 +238,30 @@
 	desc = "A complex web of tubing and needles suitable for RIG use."
 
 	charges = list(
-		list("synaptizine", "synaptizine", /datum/reagent/synaptizine,       120),
-		list("hyperzine",   "hyperzine",   /datum/reagent/hyperzine,         30),
-		list("oxycodone",   "oxycodone",   /datum/reagent/tramadol/oxycodone,         120),
-		list("glucose",     "glucose",     /datum/reagent/nutriment/glucose, 200),
+		list("bicaridine",   "bicaridine",   /datum/reagent/bicaridine,            80),
+		list("dermaline",    "dermaline",    /datum/reagent/dermaline,             80),
+		list("dexalinp",     "dexalinp",     /datum/reagent/dexalinp,              40),
+		list("oxycodone",    "oxycodone",    /datum/reagent/tramadol/oxycodone,    80),
+		list("nanoblood",    "nanoblood",    /datum/reagent/nanoblood,             40),
+		list("synaptizine",  "synaptizine",  /datum/reagent/synaptizine,           20),
+		list("medgel",       "medgel",       /datum/reagent/ds_medicalgelreagent,  10),
 		)
 
 	interface_name = "combat chem dispenser"
 	interface_desc = "Dispenses loaded chemicals directly into the bloodstream."
+
+
+/obj/item/rig_module/chem_dispenser/inaprovaline
+
+	name = "inaprovaline chemical dispensor"
+	desc = "A complex web of tubing and needles suitable for RIG use."
+
+	charges = list(
+		list("inaprovaline",   "inaprovaline",   /datum/reagent/inaprovaline,    1000),
+		)
+
+	interface_name = "inaprovaline chem dispenser"
+	interface_desc = "Dispenses inaprovaline directly into the bloodstream."
 
 
 /obj/item/rig_module/chem_dispenser/injector
@@ -254,9 +271,29 @@
 	usable = 0
 	selectable = 1
 	disruptive = 1
+	use_power_cost = 10000//looks like a lot but only reduces the RIG power by 7 or so on each use
+
+	charges = list(
+		list("inaprovaline",  "inaprovaline",  /datum/reagent/inaprovaline,      160),
+		list("dylovene",      "dylovene",      /datum/reagent/dylovene,          40),
+		list("bicaridine",    "bicaridine",    /datum/reagent/bicaridine,        40),
+		list("kelotane",      "kelotane",      /datum/reagent/kelotane,          20),
+		list("tramadol",      "tramadol",      /datum/reagent/tramadol,          20),
+		list("dexalin plus",  "dexalin plus",  /datum/reagent/dexalinp,          20),
+		list("antibiotics",   "antibiotics",   /datum/reagent/spaceacillin,      20),
+		list("iron",          "iron",          /datum/reagent/iron,              20)
+		)
 
 	interface_name = "mounted chem injector"
 	interface_desc = "Dispenses loaded chemicals via an arm-mounted injector."
+
+/obj/item/rig_module/chem_dispenser/injector/inap
+	name = "mounted inaprovaline injector"
+	use_power_cost = 1000
+	charges = list(
+		list("inaprovaline",  "inaprovaline",  /datum/reagent/inaprovaline,   2000),
+		)
+	interface_name = "mounted inap injector"
 
 /obj/item/rig_module/voice
 

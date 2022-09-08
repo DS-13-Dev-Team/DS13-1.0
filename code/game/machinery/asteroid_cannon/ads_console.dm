@@ -32,19 +32,21 @@
 	var/repair_step_interval = 30 SECONDS
 
 	var/progress = 0
-	var/progress_per_tick = 1 / ((10 MINUTES) / (MACHINE_PROCESS_INTERVAL))
+	var/progress_per_tick = 1 / ((5 MINUTES) / (MACHINE_PROCESS_INTERVAL))
 
 	/*
 		Things that a user can do to help repair the console
 		Note that these are not executed in order, they are picked at random and can repeat
 	*/
 	var/list/repair_steps = list(
-	list("text" = "Tighten Magnetic Accelerators", "tool" = QUALITY_BOLT_TURNING),
-	list("text" = "Loosen Magnetic Accelerators", "tool" = QUALITY_BOLT_TURNING),
+	list("text" = "Tighten Magnetic Accelerators Bolts", "tool" = QUALITY_BOLT_TURNING),
+	list("text" = "Loosen Magnetic Accelerators Bolts", "tool" = QUALITY_BOLT_TURNING),
 	list("text" = "Reset Flux Alignment Matrix", "tool" = QUALITY_PULSING),
 	list("text" = "Recalibrate Targeting Sensors", "tool" = QUALITY_PULSING),
 	list("text" = "Cut Earthing Cable", "tool" = QUALITY_WIRE_CUTTING),
 	list("text" = "Cut Shorted Wire", "tool" = QUALITY_WIRE_CUTTING),
+	list("text" = "Weld Coolant Pipe", "tool" = QUALITY_WELDING),
+	list("text" = "Dislodge Access Panel", "tool" = QUALITY_PRYING),
 	list("text" = "Tighten Signal Wire", "tool" = QUALITY_SCREW_DRIVING)
 	)
 
@@ -131,7 +133,7 @@
 	var/quality = I.get_tool_quality(required_quality)
 	var/precision = I.get_tool_precision()	//Precision improves it too. 1 point of precision = 1% bonus
 	var/effective_quality = quality * (1 + (precision*0.01))
-	effective_quality *= 0.15 //Finally, we use 15% of this total
+	effective_quality *= 0.25 //Finally, we use 25% of this total
 	effectiveness += effective_quality
 
 

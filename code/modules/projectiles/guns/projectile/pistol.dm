@@ -214,17 +214,19 @@
 	w_class = ITEM_SIZE_NORMAL
 
 	var/global/list/ammo_types = list(
-		/obj/item/ammo_casing/a357              = ".357",
+		///obj/item/ammo_casing/a357              = ".357",
 		/obj/item/ammo_casing/shotgun           = "12 gauge",
 		/obj/item/ammo_casing/shotgun           = "12 gauge",
+		/obj/item/ammo_casing/shotgun/pellet    = "12 gauge",
 		/obj/item/ammo_casing/shotgun/pellet    = "12 gauge",
 		/obj/item/ammo_casing/shotgun/pellet    = "12 gauge",
 		/obj/item/ammo_casing/shotgun/pellet    = "12 gauge",
 		/obj/item/ammo_casing/shotgun/beanbag   = "12 gauge",
 		/obj/item/ammo_casing/shotgun/stunshell = "12 gauge",
 		/obj/item/ammo_casing/shotgun/flash     = "12 gauge",
-		/obj/item/ammo_casing/a762              = "7.62mm",
-		/obj/item/ammo_casing/a556              = "5.56mm"
+		/obj/item/ammo_casing/seeker            = "12 gauge",///1 in 10 chance that the zip gun is made, and only can fire seeker ammo
+		///obj/item/ammo_casing/a762              = "7.62mm",
+		//obj/item/ammo_casing/a556              = "5.56mm"
 		)
 
 /obj/item/gun/projectile/pirate/toggle_safety(var/mob/user)
@@ -272,12 +274,15 @@
 		buildstate++
 		update_icon()
 		return
-	else if(istype(thing,/obj/item/assembly/mousetrap) && buildstate == 2)
-		qdel(thing)
-		user.visible_message("<span class='notice'>\The [user] takes apart \the [thing] and uses the parts to construct a crude trigger and firing mechanism inside the assembly.</span>")
-		add_fingerprint(user)
-		buildstate++
-		update_icon()
+	else if(isCoil(thing) && buildstate == 2)
+		var/obj/item/stack/cable_coil/C = thing
+		if(C.use(5))
+			to_chat(user, "<span class='notice'>You wire and construct a crude trigger and firing mechanism inside the assembly.</span>")
+			buildstate++
+			add_fingerprint(user)
+			update_icon()
+		else
+			to_chat(user, "<span class='notice'>You need at least five segments of cable coil to complete this task.</span>")
 		return
 	else if(isScrewdriver(thing) && buildstate == 3)
 		user.visible_message("<span class='notice'>\The [user] secures the trigger assembly with \the [thing].</span>")

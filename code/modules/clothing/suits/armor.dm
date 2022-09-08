@@ -199,6 +199,19 @@
 	item_state = "tacwebvest"
 	armor = list(melee = 35, bullet = 40, laser = 60, energy = 35, bomb = 30, bio = 0, rad = 0)
 
+/obj/item/clothing/suit/storage/vest/hunk
+	name = "HUNK armored vest"
+	desc = "A heavy armored vest in a fetching black. Used to protect the wearer from dangerous, unknown biohazards. It is surprisingly flexible and light, even with the extra webbing and advanced ceramic plates."
+	icon = 'icons/obj/clothing/modular_armor.dmi'
+	item_icons = list(slot_wear_suit_str = 'icons/mob/onmob/modular_armor.dmi')
+	icon_state = "hunk_armor"
+	valid_accessory_slots = list(ACCESSORY_SLOT_INSIGNIA, ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L)
+	restricted_accessory_slots = list(ACCESSORY_SLOT_INSIGNIA, ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L)
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+	armor = list(melee = 70, bullet = 45, laser = 60, energy = 35, bomb = 60, bio = 70, rad = 0)
+	siemens_coefficient = 0.8
+	blood_overlay_type = "armor"
+	starting_accessories = list(/obj/item/clothing/accessory/armguards/merc, /obj/item/clothing/accessory/legguards/merc)
 
 //Modular plate carriers
 /obj/item/clothing/suit/armor/pcarrier
@@ -325,6 +338,12 @@
 
 /obj/item/clothing/suit/armor/pcsi/vest
 	starting_accessories = list()
+
+/obj/item/clothing/suit/armor/pcsi/cec
+	name = "CEC standard vest"
+	desc = "The Concordance Extraction Corporation's standard issue vest, doesn't offer as much protection as a P.S.C.I officer's vest."
+	icon_state = "cecvest"
+	armor = list(melee = 30, bullet = 15, laser = 30, energy = 20, bomb = 20, bio = 10, rad = 0)
 
 /* - Plan on using this for something later - Snype
 /obj/item/clothing/suit/armor/tactical

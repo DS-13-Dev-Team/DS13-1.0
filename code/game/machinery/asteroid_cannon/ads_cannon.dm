@@ -112,7 +112,7 @@ You'll need two people to do this, one to man the gun while it goes down, one to
 
 		if(C.has_quality(QUALITY_WIRE_CUTTING))
 			user.visible_message(SPAN_DANGER("[user] starts cutting cables under the [src]"))
-			if(C.use_tool(user, src, WORKTIME_SLOW, QUALITY_WIRE_CUTTING, FAILCHANCE_IMPOSSIBLE, required_stat = SKILL_ELECTRICAL))
+			if(C.use_tool(user, src, WORKTIME_SLOW, QUALITY_WIRE_CUTTING, 80, required_stat = SKILL_ELECTRICAL)) //FAILCHANCE_IMPOSSIBLE => 80
 				to_chat(user, "<span class='notice'>You have carefully sabotaged the Asteroid Defense System, it will surely break down soon...</span>")
 				CO.sabotage()
 

@@ -57,7 +57,9 @@
 /obj/structure/closet/secure_closet/medical3/WillContain()
 	return list(
 		new/datum/atom_creator/weighted(list(/obj/item/storage/backpack/medic, /obj/item/storage/backpack/satchel_med)),
+		new/datum/atom_creator/weighted(list(/obj/item/clothing/suit/storage/toggle/labcoat, /obj/item/clothing/suit/storage/toggle/labcoat/blue)),
 		new/datum/atom_creator/simple(/obj/item/storage/backpack/dufflebag/med, 50),
+		/obj/item/rig/medical,
 		/obj/item/clothing/under/deadspace/doctor,
 		/obj/item/clothing/shoes/white,
 		/obj/item/clothing/accessory/stethoscope,
@@ -83,7 +85,9 @@
 /obj/structure/closet/secure_closet/medical4/WillContain()
 	return list(
 		new/datum/atom_creator/weighted(list(/obj/item/storage/backpack/medic, /obj/item/storage/backpack/satchel_med)),
+		new/datum/atom_creator/weighted(list(/obj/item/clothing/suit/storage/toggle/labcoat, /obj/item/clothing/suit/storage/toggle/labcoat/blue)),
 		new/datum/atom_creator/simple(/obj/item/storage/backpack/dufflebag/med, 50),
+		/obj/item/rig/medical,
 		/obj/item/clothing/under/deadspace/surgeon,
 		/obj/item/clothing/shoes/white,
 		/obj/item/clothing/accessory/stethoscope,
@@ -110,6 +114,7 @@
 	return list(
 		new/datum/atom_creator/weighted(list(/obj/item/storage/backpack/medic, /obj/item/storage/backpack/satchel_med)),
 		new/datum/atom_creator/simple(/obj/item/storage/backpack/dufflebag/med, 50),
+		/obj/item/rig/medical/equipped,
 		/obj/item/clothing/suit/bio_suit/cmo,
 		/obj/item/clothing/head/bio_hood/cmo,
 		/obj/item/clothing/shoes/white,
