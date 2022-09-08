@@ -74,7 +74,7 @@
 
 /atom/movable/screen/plane_master/game_world_upper
 	name = "upper game world plane master"
-	plane = DEFAULT_PLANE
+	plane = GAME_PLANE_UPPER
 	render_relay_plane = GAME_PLANE
 	appearance_flags = PLANE_MASTER //should use client color
 	blend_mode = BLEND_OVERLAY
@@ -205,6 +205,12 @@
 	appearance_flags = PLANE_MASTER
 	blend_mode = BLEND_OVERLAY
 	render_relay_plane = RENDER_PLANE_NON_GAME
+
+/atom/movable/screen/plane_master/runechat/backdrop(mob/mymob)
+	. = ..()
+	remove_filter("AO")
+	if(istype(mymob) && mymob.client)
+		add_filter("AO", 1, drop_shadow_filter(x = 0, y = -2, size = 4, color = "#04080FAA"))
 
 /atom/movable/screen/plane_master/hud
 	name = "HUD plane"

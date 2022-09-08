@@ -17,6 +17,8 @@ obj/item/organ/external/take_general_damage(var/amount, var/silent = FALSE)
 	take_external_damage(amount)
 
 /obj/item/organ/external/proc/take_external_damage(var/brute = 0, var/burn = 0, var/damage_flags = 0, var/used_weapon = null, var/allow_dismemberment = TRUE)
+	if(owner?.status_flags & GODMODE)
+		return
 	//We no longer exist, no damage allowed
 	if (QDELETED(src))
 		return

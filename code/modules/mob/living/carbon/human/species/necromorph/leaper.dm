@@ -64,6 +64,13 @@
 	//Leaper has no legs, it moves with arms and tail
 	locomotion_limbs = list(BP_R_ARM, BP_L_ARM, BP_TAIL)
 
+	special_step_sounds = list(
+		'sound/effects/footstep/leaper_footstep_1.ogg',
+		'sound/effects/footstep/leaper_footstep_2.ogg',
+		'sound/effects/footstep/leaper_footstep_3.ogg',
+		'sound/effects/footstep/leaper_footstep_4.ogg',
+		'sound/effects/footstep/leaper_footstep_5.ogg'
+	)
 	species_audio = list(SOUND_FOOTSTEP = list('sound/effects/footstep/leaper_footstep_1.ogg',
 	'sound/effects/footstep/leaper_footstep_2.ogg',
 	'sound/effects/footstep/leaper_footstep_3.ogg',

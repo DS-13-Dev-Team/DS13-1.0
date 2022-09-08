@@ -108,7 +108,8 @@
 	START_PROCESSING(SSfastprocess, src)
 
 /obj/effect/overload/Process()
-	for(var/turf/T in trange(2, get_turf(src)))
+	var/turf/centre = get_turf(src)
+	for(var/turf/T in RANGE_TURFS(centre, 2))
 		for(var/mob/living/L in T)
 			L.electrocute_act(shock_damage * (FAST_PROCESS_INTERVAL * 0.1), src, 1, BP_OVERALL)
 

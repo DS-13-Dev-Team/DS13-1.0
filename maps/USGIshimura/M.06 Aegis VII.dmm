@@ -5126,7 +5126,7 @@
 /area/aegis/colony/research/atmos)
 "lb" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
-	dir = 4;
+	dir = 1;
 	icon_state = "map_scrubber_on"
 	},
 /obj/effect/catwalk_plated/dank,

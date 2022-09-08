@@ -185,8 +185,8 @@
 //This finds a list of all existing corruption vines that we could possibly reach, whether they're ours or not
 /datum/extension/corruption_source/proc/get_reachable()
 	.=list()
-	for (var/turf/T in trange(range, sourceturf))
-		for (var/obj/effect/vine/corruption/C in T)
+	for(var/turf/T as anything in RANGE_TURFS(sourceturf, range))
+		for(var/obj/effect/vine/corruption/C in T)
 			.+=C
 
 

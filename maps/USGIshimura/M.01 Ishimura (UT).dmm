@@ -4385,33 +4385,15 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "jj" = (
-/obj/structure/cable/cyan{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
+/obj/structure/disposalpipe/broken{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "jk" = (
-/obj/structure/cable/cyan{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 5
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /turf/simulated/floor/tiled/steel_grid,
 /area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "jl" = (
@@ -4420,30 +4402,20 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "jm" = (
-/obj/structure/cable/cyan{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /obj/structure/cable/cyan{
 	d1 = 1;
 	d2 = 8;
-	icon_state = "1-8"
+	icon_state = "1-8";
+	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
@@ -4453,12 +4425,10 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 4
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/steel_grid,
 /area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "jo" = (
@@ -5287,7 +5257,7 @@
 	name = "Machining Room Storage"
 	},
 /turf/simulated/floor,
-/area/ishimura/tramdeck/tram/undertunnel/underforemaintenance)
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "kM" = (
 /obj/structure/table/rack,
 /turf/simulated/floor/plating,
@@ -5362,15 +5332,6 @@
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/uttt)
-"nH" = (
-/obj/effect/catwalk_plated/dank,
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/simulated/floor,
-/area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
 "nT" = (
 /obj/item/reagent_containers/food/snacks/old/burger,
 /obj/item/reagent_containers/food/snacks/old/fries,
@@ -5400,15 +5361,12 @@
 "pG" = (
 /turf/simulated/wall/r_wall/hull,
 /area/ishimura/tramdeck/tram/undertunnel/utama)
-"qO" = (
-/obj/effect/catwalk_plated/dank,
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
+"qN" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
 	},
-/turf/simulated/floor,
-/area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
+/turf/simulated/floor/tiled/steel_grid,
+/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
 "rf" = (
 /obj/structure/table,
 /obj/item/tool/wrench,
@@ -5505,7 +5463,7 @@
 /area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
 "AW" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/handrai{
+/obj/structure/handrail{
 	dir = 8
 	},
 /turf/simulated/floor/dank/tramcorner{
@@ -5538,7 +5496,7 @@
 /area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
 "Dk" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/handrai{
+/obj/structure/handrail{
 	dir = 1
 	},
 /turf/simulated/floor/dank/tramcorner,
@@ -5643,23 +5601,22 @@
 	},
 /turf/simulated/floor/dank/heavy,
 /area/ishimura/tramdeck/switchingstation/lower)
+"IL" = (
+/obj/effect/landmark/node_room/maintenance,
+/turf/simulated/floor,
+/area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
 "Kj" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/dank/trammiddle,
 /area/ishimura/tramdeck/switchingstation/lower)
 "Kv" = (
 /obj/machinery/door/airlock/civilian,
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
 "KC" = (
 /obj/effect/decal/cleanable/blood/gibs/robot/down,
 /turf/simulated/floor,
-/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
+/area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
 "Ll" = (
 /obj/machinery/vending/cola,
 /turf/simulated/floor/plating,
@@ -5669,7 +5626,7 @@
 	dir = 4
 	},
 /turf/simulated/floor,
-/area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
+/area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
 "My" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/storage/toolbox/mechanical,
@@ -5681,7 +5638,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/floor_decal/rust,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/handrai{
+/obj/structure/handrail{
 	dir = 4
 	},
 /turf/simulated/floor,
@@ -5699,23 +5656,6 @@
 	dir = 10
 	},
 /area/ishimura/tramdeck/switchingstation/lower)
-"OO" = (
-/obj/effect/catwalk_plated/dank,
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/simulated/floor,
-/area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
-"OQ" = (
-/obj/effect/catwalk_plated/dank,
-/obj/structure/cable/green{
-	d2 = 8;
-	icon_state = "0-8"
-	},
-/turf/simulated/floor,
-/area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
 "Pf" = (
 /obj/effect/floor_decal/rust,
 /obj/effect/decal/cleanable/dirt,
@@ -22581,9 +22521,9 @@ eF
 dN
 hV
 Kv
-OO
-OO
-qO
+ib
+ib
+ib
 ib
 ib
 dN
@@ -22835,7 +22775,7 @@ hV
 dN
 ib
 ib
-nH
+ib
 ib
 mg
 dN
@@ -23087,7 +23027,7 @@ hV
 dN
 mu
 ib
-nH
+ib
 ib
 ib
 dN
@@ -23339,7 +23279,7 @@ hV
 dN
 GW
 ib
-OQ
+ib
 ib
 mg
 dN
@@ -44001,8 +43941,8 @@ hS
 cf
 KC
 Mk
-kO
-ck
+IL
+dN
 io
 io
 io
@@ -44250,20 +44190,20 @@ eU
 eF
 cf
 hS
-cf
 ck
 ck
 ck
 ck
-dN
-dN
-dN
-dN
-dN
-dN
-dN
-dN
-dN
+ck
+ck
+ck
+ck
+ck
+ck
+ck
+ck
+ck
+ck
 dN
 dN
 dN
@@ -44502,7 +44442,7 @@ eU
 eF
 cf
 hS
-cf
+ck
 iD
 iL
 iO
@@ -44754,7 +44694,7 @@ eU
 eF
 cf
 hS
-cf
+ck
 iE
 iM
 iP
@@ -45006,13 +44946,13 @@ eU
 eF
 cf
 hS
-cf
+ck
 iF
 iN
 iQ
 iX
 jf
-jl
+qN
 jq
 jv
 jz
@@ -45258,7 +45198,7 @@ eU
 eF
 cf
 hS
-cf
+ck
 iG
 iN
 iR
@@ -45510,7 +45450,7 @@ eU
 eF
 cf
 hS
-cf
+ck
 iH
 iN
 iQ
@@ -45762,7 +45702,7 @@ eU
 ga
 cf
 hS
-cf
+ck
 iI
 iN
 iQ
@@ -46013,8 +45953,8 @@ fs
 eU
 eF
 cf
-hS
-cf
+kr
+ck
 iJ
 iN
 iT
@@ -46265,7 +46205,7 @@ fs
 eU
 eF
 cf
-kr
+hS
 kL
 iK
 iN
@@ -46518,7 +46458,7 @@ eU
 eF
 cf
 hS
-cf
+ck
 ck
 ck
 ck

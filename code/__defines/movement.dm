@@ -2,6 +2,12 @@
 #define ADD_TRANSFORMATION_MOVEMENT_HANDLER(X) X.AddMovementHandler(/datum/movement_handler/mob/transformation)
 #define DEL_TRANSFORMATION_MOVEMENT_HANDLER(X) X.RemoveMovementHandler(/datum/movement_handler/mob/transformation)
 
+// Quick and deliberate movements are not necessarily mutually exclusive
+#define MOVE_INTENT_DELIBERATE (1<<0)
+#define MOVE_INTENT_EXERTIVE   (1<<1)
+#define MOVE_INTENT_QUICK      (1<<2)
+#define MOVE_INTENT_SILENT	   (1<<3)
+
 #define MOVING_DELIBERATELY(X) (X.move_intent.flags & MOVE_INTENT_DELIBERATE)
 #define MOVING_QUICKLY(X) (X.move_intent.flags & MOVE_INTENT_QUICK)
 #define MOVING_SILENT(X) (X.move_intent.flags & MOVE_INTENT_SILENT)
@@ -36,9 +42,6 @@ GLOBAL_VAR_INIT(glide_size_multiplier, 1.0)
 #define RELEASE_DROP	"drop"	//Drop on the floor right below us
 #define RELEASE_THROW	"throw"	//Inherit velocity and continue flying
 #define RELEASE_LAUNCH	"launch"	//Explicitly launched with a powerful burst of force. Like throw but faster, and rougher start
-
-
-
 
 #define RUN_DELAY 1.6
 #define WALK_DELAY 2.95

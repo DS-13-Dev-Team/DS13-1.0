@@ -88,7 +88,12 @@
 	pain_audio_threshold = 0.03 //Gotta set this low to compensate for his high health
 
 
-
+	special_step_sounds = list(
+		'sound/effects/footstep/infector_footstep_1.ogg',
+		'sound/effects/footstep/infector_footstep_2.ogg',
+		'sound/effects/footstep/infector_footstep_3.ogg',
+		'sound/effects/footstep/infector_footstep_4.ogg'
+	)
 
 	species_audio = list(SOUND_FOOTSTEP = list('sound/effects/footstep/infector_footstep_1.ogg',
 	'sound/effects/footstep/infector_footstep_2.ogg',
@@ -332,9 +337,9 @@ All of them except New Growth require corruption to build upon\
 		cooldown	*= 1 + FLAP_SINGLE_WING_IMPAIRMENT
 		//Target a random tile around the target
 		if (prob(80))
-			A = pick(trange(1, A))
+			A = pick(RANGE_TURFS(A, 1))
 		else
-			A = pick(trange(2, A))
+			A = pick(RANGE_TURFS(A, 2))
 
 	//Do a chargeup animation. Pulls back and down, and then launches forwards
 	//The time is equal to the windup time of the attack, plus 0.5 seconds to prevent a brief stop and ensure launching is a fluid motion

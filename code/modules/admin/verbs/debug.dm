@@ -213,15 +213,22 @@
 	set category = "Debug"
 	set name = "Del-All"
 
-	// to prevent REALLY stupid deletions
-	var/blocked = list(/obj, /mob, /mob/living, /mob/living/carbon, /mob/living/carbon/human, /mob/dead/observer, /mob/living/silicon, /mob/living/silicon/robot, /mob/living/silicon/ai)
-	var/hsbitem = input(usr, "Choose an object to delete.", "Delete:") as null|anything in typesof(/obj) + typesof(/mob) - blocked
-	if(hsbitem)
+	var/searching_type = input(usr, "Enter type of an object to delete.", "Delete:") as null|text
+	if(!searching_type)
+		return
+	var/list/matches = list()
+	for(var/path in (subtypesof(/obj)|subtypesof(/mob)))
+		if(findtext("[path]", searching_type))
+			matches += path
+	if(!length(matches))
+		return
+	var/type_to_del = input(usr, "Choose type to delete.", "Delete:") as null|anything in matches
+	if(type_to_del)
 		for(var/atom/O in world)
-			if(istype(O, hsbitem))
+			if(istype(O, type_to_del))
 				qdel(O)
-		log_admin("[key_name(src)] has deleted all instances of [hsbitem].")
-		message_admins("[key_name_admin(src)] has deleted all instances of [hsbitem].", 0)
+		log_admin("[key_name(src)] has deleted all instances of [type_to_del].")
+		message_admins("[key_name_admin(src)] has deleted all instances of [type_to_del].", 0)
 	feedback_add_details("admin_verb","DELA") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/cmd_debug_make_powernets()
@@ -603,7 +610,7 @@
 		var/netcolor = rgb(rand(100,255),rand(100,255),rand(100,255))
 		for(var/obj/structure/cable/C in PN.cables)
 			var/image/I = image('icons/effects/lighting_object.dmi', get_turf(C), "lighting_transparent")
-			I.plane = DEFAULT_PLANE
+			I.plane = GAME_PLANE_UPPER
 			I.layer = EXPOSED_WIRE_LAYER
 			I.alpha = 127
 			I.color = netcolor
@@ -633,8 +640,9 @@
 	set name = "Spawn Dummy Crowd"
 	set desc = "Makes a bunch of dummies for testing AOE attacks"
 
-	for (var/turf/T in trange(1, mob))
-		new /mob/living/carbon/human/dummy(T)
+	if(tgui_alert(mob, "Spawn dummy crowd?", "Dummy Crowd", list("Yes", "No")) == "Yes")
+		for(var/turf/T as anything in RANGE_TURFS(mob, 1))
+			new /mob/living/carbon/human/dummy(T)
 
 /// A debug verb to check the sources of currently running timers
 /client/proc/check_timer_sources()

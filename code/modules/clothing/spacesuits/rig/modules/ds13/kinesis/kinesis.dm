@@ -278,8 +278,7 @@
 		//This is fairly permissive, we can grab it if we have LOS to any of the tiles around it
 		else
 			//First we get a list of turfs in range 1 around the atom
-			var/list/raytrace_turfs = trange(1, AM)
-
+			var/list/raytrace_turfs = RANGE_TURFS(AM, 1)
 
 			//Second, we see which of those have a clear line of sight to the atom, possibly creating a reduced list
 			raytrace_turfs = check_trajectory_mass_verbose(raytrace_turfs, AM, pass_flags=PASS_FLAG_TABLE|PASS_FLAG_FLYING, allow_sleep = FALSE)

@@ -65,11 +65,7 @@ GLOBAL_LIST_INIT(bubble_small_sound,list('sound/machines/tanksmallbubble1.ogg','
 GLOBAL_LIST_INIT(fleshtear_sound, list('sound/effects/organic/flesh_tear_1.ogg','sound/effects/organic/flesh_tear_2.ogg','sound/effects/organic/flesh_tear_3.ogg',))
 
 
-/proc/playsound(var/atom/source, soundin, vol as num, vary, extrarange as num, falloff, var/is_global, var/frequency, var/is_ambiance = 0)
-
-
-
-
+/proc/playsound(atom/source, soundin, vol as num, vary, extrarange, falloff, is_global, frequency, is_ambiance = FALSE)
 	if(istext(soundin))
 		soundin = get_sfx(soundin) // same sound for everyone
 
@@ -79,23 +75,25 @@ GLOBAL_LIST_INIT(fleshtear_sound, list('sound/effects/organic/flesh_tear_1.ogg',
 	frequency = vary && isnull(frequency) ? get_rand_frequency() : frequency // Same frequency for everybody
 	var/turf/turf_source = get_turf(source)
 
+	. = list()
+
+	var/max_distance = (world.view + extrarange) * 2
+	if(max_distance <= 0)
+		return
+
  	// Looping through the player list has the added bonus of working for mobs inside containers
-	for (var/P in GLOB.player_list)
-		var/mob/M = P
+	for(var/mob/M as anything in GLOB.player_list)
 		if(!M || !M.client)
 			continue
-		if(get_dist(M, turf_source) <= (world.view + extrarange) * 2)
+		if(get_dist(M, turf_source) <= max_distance)
 			var/turf/T = get_turf(M)
 			if(T && T.z == turf_source.z && (!is_ambiance || M.get_preference_value(/datum/client_preference/play_ambiance) == GLOB.PREF_YES))
 				M.playsound_local(turf_source, soundin, vol, vary, frequency, falloff, is_global, extrarange)
+				. += M
 
-var/const/FALLOFF_SOUNDS = 0.5
-
-/mob/proc/playsound_local(var/turf/turf_source, soundin, vol as num, vary, frequency, falloff, is_global, extrarange, channel)
-
-
-
-	if(!src.client || ear_deaf > 0)	return
+/mob/proc/playsound_local(turf/turf_source, soundin, vol as num, vary, frequency, falloff, is_global, extrarange, channel)
+	if(!src.client || ear_deaf > 0)
+		return
 	var/sound/S = soundin
 	if(!istype(S))
 		soundin = get_sfx(soundin)
@@ -119,10 +117,7 @@ var/const/FALLOFF_SOUNDS = 0.5
 		//sound volume falloff with distance
 		var/distance = get_dist(T, turf_source)
 
-
-
 		S.volume -= max(distance - (world.view + extrarange), 0) * 2 //multiplicative falloff to add on top of natural audio falloff.
-
 
 		var/datum/gas_mixture/hearer_env = T.return_air()
 		var/datum/gas_mixture/source_env = turf_source.return_air()
@@ -150,7 +145,7 @@ var/const/FALLOFF_SOUNDS = 0.5
 		S.z = dz
 		// The y value is for above your head, but there is no ceiling in 2d spessmens.
 		S.y = 1
-		S.falloff = (falloff ? falloff : FALLOFF_SOUNDS)
+		S.falloff = falloff || 0.5
 
 	if(!is_global)
 

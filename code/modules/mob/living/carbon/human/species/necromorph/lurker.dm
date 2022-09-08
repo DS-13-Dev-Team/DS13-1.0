@@ -93,6 +93,15 @@
 	//HUD Handling. This is needed to allow shell to be equipped
 	hud_type = /datum/hud_data/necromorph/lurker
 
+	special_step_sounds = list(
+		'sound/effects/footstep/lurker_footstep_1.ogg',
+		'sound/effects/footstep/lurker_footstep_2.ogg',
+		'sound/effects/footstep/lurker_footstep_3.ogg',
+		'sound/effects/footstep/lurker_footstep_4.ogg',
+		'sound/effects/footstep/lurker_footstep_5.ogg',
+		'sound/effects/footstep/lurker_footstep_6.ogg',
+		'sound/effects/footstep/lurker_footstep_7.ogg'
+	)
 	species_audio = list(SOUND_ATTACK = list('sound/effects/creatures/necromorph/lurker/lurker_attack_1.ogg',
 	'sound/effects/creatures/necromorph/lurker/lurker_attack_2.ogg',
 	'sound/effects/creatures/necromorph/lurker/lurker_attack_3.ogg',

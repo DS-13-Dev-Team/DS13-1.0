@@ -148,209 +148,24 @@
 	for(var/A in pill_bottle_wrappers)
 		colors += pill_bottle_wrappers[A]
 	// Transfer modal information if there is one
-	.["modal"] = ui_modal_data(src)
 	.["pill_bottle_colors"] = colors
-
-/**
-  * Called in tgui_act() to process modal actions
-  *
-  * Arguments:
-  * * action - The action passed by tgui
-  * * params - The params passed by tgui
-  */
-/obj/machinery/chem_master/proc/ui_act_modal(action, params, datum/tgui/ui, datum/ui_state/state)
-	. = TRUE
-	var/id = params["id"] // The modal's ID
-	var/list/arguments = istext(params["arguments"]) ? json_decode(params["arguments"]) : params["arguments"]
-	switch(ui_modal_act(src, action, params))
-		if(TGUI_MODAL_OPEN)
-			switch(id)
-				if("analyze")
-					var/idx = text2num(arguments["idx"]) || 0
-					var/from_beaker = text2num(arguments["beaker"]) || FALSE
-					var/reagent_list = from_beaker ? beaker.reagents.reagent_list : reagents.reagent_list
-					if(idx < 1 || idx > length(reagent_list))
-						return
-
-					var/datum/reagent/R = reagent_list[idx]
-					var/list/result = list("idx" = idx, "name" = R.name, "desc" = R.description)
-					if(!condi && istype(R, /datum/reagent/blood))
-						var/datum/reagent/blood/B = R
-						result["blood_type"] = B.data["blood_type"]
-						result["blood_dna"] = B.data["blood_DNA"]
-
-					arguments["analysis"] = result
-					ui_modal_message(src, id, "", null, arguments)
-				if("addcustom")
-					if(!beaker || !beaker.reagents.total_volume)
-						return
-					ui_modal_input(src, id, "Please enter the amount to transfer to buffer:", null, arguments, useramount)
-				if("removecustom")
-					if(!reagents.total_volume)
-						return
-					ui_modal_input(src, id, "Please enter the amount to transfer to [mode ? "beaker" : "disposal"]:", null, arguments, useramount)
-				if("create_condi_pack")
-					if(!condi || !reagents.total_volume)
-						return
-					ui_modal_input(src, id, "Please name your new condiment pack:", null, arguments, reagents.get_master_reagent_name(), MAX_CUSTOM_NAME_LEN)
-				if("create_pill")
-					if(condi || !reagents.total_volume)
-						return
-					var/num = round(text2num(arguments["num"] || 1))
-					if(!num)
-						return
-					arguments["num"] = num
-					var/amount_per_pill = CLAMP(reagents.total_volume / num, 0, MAX_UNITS_PER_PILL)
-					var/default_name = "[reagents.get_master_reagent_name()] ([amount_per_pill]u)"
-					var/pills_text = num == 1 ? "new pill" : "[num] new pills"
-					ui_modal_input(src, id, "Please name your [pills_text]:", null, arguments, default_name, MAX_CUSTOM_NAME_LEN)
-				if("create_pill_multiple")
-					if(condi || !reagents.total_volume)
-						return
-					ui_modal_input(src, id, "Please enter the amount of pills to make (max [MAX_MULTI_AMOUNT] at a time):", null, arguments, pillamount, 5)
-				if("change_pill_style")
-					var/list/choices = list()
-					for(var/i = 1 to MAX_PILL_SPRITE)
-						choices += "pill[i].png"
-					ui_modal_bento(src, id, "Please select the new style for pills:", null, arguments, pillsprite, choices)
-				if("create_bottle")
-					if(condi || !reagents.total_volume)
-						return
-					var/num = round(text2num(arguments["num"] || 1))
-					if(!num)
-						return
-					arguments["num"] = num
-					var/amount_per_bottle = CLAMP(reagents.total_volume / num, 0, MAX_UNITS_PER_BOTTLE)
-					var/default_name = "[reagents.get_master_reagent_name()]"
-					var/bottles_text = num == 1 ? "new bottle" : "[num] new bottles"
-					ui_modal_input(src, id, "Please name your [bottles_text] ([amount_per_bottle]u in bottle):", null, arguments, default_name, MAX_CUSTOM_NAME_LEN)
-				if("create_bottle_multiple")
-					if(condi || !reagents.total_volume)
-						return
-					ui_modal_input(src, id, "Please enter the amount of bottles to make (max [MAX_MULTI_AMOUNT] at a time):", null, arguments, pillamount / 5, 5)
-				if("change_bottle_style")
-					var/list/choices = list()
-					for(var/i = 1 to MAX_BOTTLE_SPRITE)
-						choices += "bottle-[i].png"
-					ui_modal_bento(src, id, "Please select the new style for bottles:", null, arguments, bottlesprite, choices)
-				else
-					return FALSE
-		if(TGUI_MODAL_ANSWER)
-			var/answer = params["answer"]
-			switch(id)
-				if("addcustom")
-					var/amount = isgoodnumber(text2num(answer))
-					if(!amount || !arguments["id"])
-						return
-					ui_act("add", list("id" = arguments["id"], "amount" = amount), ui, state)
-				if("removecustom")
-					var/amount = isgoodnumber(text2num(answer))
-					if(!amount || !arguments["id"])
-						return
-					ui_act("remove", list("id" = arguments["id"], "amount" = amount), ui, state)
-				if("create_condi_pack")
-					if(!condi || !reagents.total_volume)
-						return
-					if(!length(answer))
-						answer = reagents.get_master_reagent_name()
-					var/obj/item/reagent_containers/pill/P = new(loc)
-					P.name = "[answer] pack"
-					P.desc = "A small condiment pack. The label says it contains [answer]."
-					P.icon_state = "bouilloncube"//Reskinned monkey cube
-					reagents.trans_to_obj(P, 10)
-				if("create_pill")
-					if(condi || !reagents.total_volume)
-						return
-					var/ans = text2num(arguments["num"])
-					var/count = CLAMP(round(ans), 0, MAX_MULTI_AMOUNT)
-					if(!count)
-						return
-
-					if(!length(answer))
-						answer = reagents.get_master_reagent_name()
-					var/amount_per_pill = CLAMP(reagents.total_volume / count, 0, MAX_UNITS_PER_PILL)
-					while(count--)
-						if(reagents.total_volume <= 0)
-							to_chat(usr, "<span class='notice'>Not enough reagents to create these pills!</span>")
-							return
-
-						var/obj/item/reagent_containers/pill/P = new(loc)
-						P.name = "[answer] pill"
-						P.pixel_x = rand(-7, 7) // Random position
-						P.pixel_y = rand(-7, 7)
-						P.icon_state = "pill[pillsprite]"
-						if(P.icon_state in list("pill1", "pill2", "pill3", "pill4")) // if using greyscale, take colour from reagent
-							P.color = reagents.get_color()
-						reagents.trans_to_obj(P, amount_per_pill)
-						// Load the pills in the bottle if there's one loaded
-						if(istype(loaded_pill_bottle) && length(loaded_pill_bottle.contents) < loaded_pill_bottle.max_storage_space)
-							P.forceMove(loaded_pill_bottle)
-				if("create_pill_multiple")
-					if(condi || !reagents.total_volume)
-						return
-					ui_act("modal_open", list("id" = "create_pill", "arguments" = list("num" = answer)), ui, state)
-				if("change_pill_style")
-					var/new_style = CLAMP(text2num(answer) || 0, 0, MAX_PILL_SPRITE)
-					if(!new_style)
-						return
-					pillsprite = new_style
-				if("create_bottle")
-					if(condi || !reagents.total_volume)
-						return
-					var/count = CLAMP(round(text2num(arguments["num"]) || 0), 0, MAX_MULTI_AMOUNT)
-					if(!count)
-						return
-
-					if(!length(answer))
-						answer = reagents.get_master_reagent_name()
-					var/amount_per_bottle = CLAMP(reagents.total_volume / count, 0, MAX_UNITS_PER_BOTTLE)
-					while(count--)
-						if(reagents.total_volume <= 0)
-							to_chat(usr, "<span class='notice'>Not enough reagents to create these bottles!</span>")
-							return
-						var/obj/item/reagent_containers/glass/bottle/P = new(loc)
-						P.name = "[answer] bottle"
-						P.pixel_x = rand(-7, 7) // random position
-						P.pixel_y = rand(-7, 7)
-						P.icon_state = "bottle-[bottlesprite]" || "bottle-1"
-						reagents.trans_to_obj(P, amount_per_bottle)
-						P.update_icon()
-				if("create_bottle_multiple")
-					if(condi || !reagents.total_volume)
-						return
-					ui_act("modal_open", list("id" = "create_bottle", "arguments" = list("num" = answer)), ui, state)
-				if("change_bottle_style")
-					var/new_style = CLAMP(text2num(answer) || 0, 0, MAX_BOTTLE_SPRITE)
-					if(!new_style)
-						return
-					bottlesprite = new_style
-				else
-					return FALSE
-		if(TGUI_MODAL_CLOSE)
-			update_static_data(usr, ui)
-		else
-			return FALSE
 
 /obj/machinery/chem_master/ui_act(action, params, datum/tgui/ui, datum/ui_state/state)
 	if(..())
-		return TRUE
-
-	if(ui_act_modal(action, params, ui, state))
-		update_static_data(usr, ui)
-		SStgui.update_uis(src)
-		return TRUE
+		return
 
 	add_fingerprint(usr)
-	. = TRUE
 	switch(action)
 		if("toggle")
 			mode = !mode
+			return TRUE
 		if("ejectp")
 			if(loaded_pill_bottle)
 				loaded_pill_bottle.forceMove(get_turf(src))
 				if(Adjacent(usr) && !issilicon(usr))
 					usr.put_in_hands(loaded_pill_bottle)
 				loaded_pill_bottle = null
+			return TRUE
 		if("print")
 			if(printing || condi)
 				return
@@ -380,47 +195,38 @@
 			P.name = "Chemical Analysis - [R.name]"
 			spawn(50)
 				printing = FALSE
-		else
-			. = FALSE
-
-	if(loaded_pill_bottle)
-		switch(action)
-			if("change_pill_bottle_style")
-				if(!pill_bottle_wrappers) // wat?
-					return
-				var/color = "CLEAR"
-				for(var/col in pill_bottle_wrappers)
-					var/col_name = pill_bottle_wrappers[col]
-					if(col_name == params["color"])
-						color = col
-						break
-				if(color && color != "CLEAR")
-					loaded_pill_bottle.wrapper_color = color
-				else
-					loaded_pill_bottle.wrapper_color = null
-				loaded_pill_bottle.update_icon()
-			if("change_pill_bottle_name")
-				if(!loaded_pill_bottle)
-					return
-				var/answer = replace_characters(params["name"], list("(" = "", ")" =""))
-				if(!answer || !replace_characters(answer, list(" " = "")))
-					loaded_pill_bottle.name = "pill bottle"
-				else
-					loaded_pill_bottle.name = "pill bottle ([answer])"
-
-	if(. || !beaker)
-		SStgui.update_uis(src)
-		return
-
-	. = TRUE
-	var/datum/reagents/R = beaker.reagents
-	switch(action)
+			return TRUE
+		if("change_pill_bottle_style")
+			if(!loaded_pill_bottle || !pill_bottle_wrappers)
+				return
+			var/color = "CLEAR"
+			for(var/col in pill_bottle_wrappers)
+				var/col_name = pill_bottle_wrappers[col]
+				if(col_name == params["color"])
+					color = col
+					break
+			if(color && color != "CLEAR")
+				loaded_pill_bottle.wrapper_color = color
+			else
+				loaded_pill_bottle.wrapper_color = null
+			loaded_pill_bottle.update_icon()
+			return TRUE
+		if("change_pill_bottle_name")
+			if(!loaded_pill_bottle || !pill_bottle_wrappers)
+				return
+			var/answer = replace_characters(params["name"], list("(" = "", ")" =""))
+			if(!answer || !replace_characters(answer, list(" " = "")))
+				loaded_pill_bottle.name = "pill bottle"
+			else
+				loaded_pill_bottle.name = "pill bottle ([answer])"
+			return TRUE
 		if("add")
 			var/id = text2path(params["id"])
 			var/amount = text2num(params["amount"])
 			if(!id || !amount)
 				return
-			R.trans_type_to(src, id, amount)
+			beaker.reagents.trans_type_to(src, id, amount)
+			return TRUE
 		if("remove")
 			var/id = text2path(params["id"])
 			var/amount = text2num(params["amount"])
@@ -430,6 +236,7 @@
 				reagents.trans_type_to(beaker, id, amount)
 			else
 				reagents.remove_reagent(id, amount)
+			return TRUE
 		if("eject")
 			if(!beaker)
 				return
@@ -441,15 +248,192 @@
 			beaker = null
 			reagents.clear_reagents()
 			update_icon()
+			return TRUE
 		if("create_condi_bottle")
 			if(!condi || !reagents.total_volume)
 				return
 			var/obj/item/reagent_containers/food/condiment/P = new(loc)
 			reagents.trans_to_obj(P, 50)
-		else
-			. = FALSE
+			return TRUE
+		if("analyze")
+			var/idx = text2num(params["idx"]) || 0
+			var/from_beaker = text2num(params["beaker"]) || FALSE
+			var/reagent_list = from_beaker ? beaker.reagents.reagent_list : reagents.reagent_list
+			if(idx < 1 || idx > length(reagent_list))
+				return
 
-	SStgui.update_uis(src)
+			var/datum/reagent/R = reagent_list[idx]
+			var/output ="Reagent Name: [R.name]\n\
+						Reagent Desc: [R.description]"
+			if(!condi && istype(R, /datum/reagent/blood))
+				var/datum/reagent/blood/B = R
+				output += "\nBlood Type: [B.data["blood_type"]]\
+							\nBlood DNA: [B.data["blood_DNA"]]"
+			tgui_alert(usr, output, src, list("Ok"))
+		if("addcustom")
+			if(!beaker || !beaker.reagents.total_volume)
+				return
+			var/idx = text2num(params["idx"]) || 0
+			var/reagent_list = params["beaker"] ? beaker.reagents.reagent_list : reagents.reagent_list
+			if(idx < 1 || idx > length(reagent_list))
+				return
+			var/datum/reagent/R = reagent_list[idx]
+			if(!R)
+				return
+			var/amount = tgui_input_number(usr, "Please enter the amount to transfer to buffer:", src, 0, R.volume, 0)
+			if(!amount)
+				return
+			beaker.reagents.trans_type_to(src, R.type, amount)
+			return TRUE
+		if("removecustom")
+			if(!reagents.total_volume)
+				return
+			var/idx = text2num(params["idx"]) || 0
+			var/reagent_list = params["beaker"] ? beaker.reagents.reagent_list : reagents.reagent_list
+			if(idx < 1 || idx > length(reagent_list))
+				return
+			var/datum/reagent/R = reagent_list[idx]
+			if(!R)
+				return
+			var/amount = tgui_input_number(usr, "Please enter the amount to transfer to [mode ? "beaker" : "disposal"]:", src, 0, R.volume, 0)
+			if(!amount)
+				return
+			if(mode)
+				reagents.trans_type_to(beaker, R.type, amount)
+			else
+				reagents.remove_reagent(R.type, amount)
+			return TRUE
+		if("create_condi_pack")
+			if(!condi || !reagents.total_volume)
+				return
+			var/condi_name = tgui_input_text(usr, "Please name your new condiment pack:", src, reagents.get_master_reagent_name(), MAX_CUSTOM_NAME_LEN)
+			if(isnull(condi_name))
+				return
+			if(!condi_name)
+				condi_name = reagents.get_master_reagent_name()
+			var/obj/item/reagent_containers/pill/P = new(loc)
+			P.name = "[condi_name] pack"
+			P.desc = "A small condiment pack. The label says it contains [condi_name]."
+			P.icon_state = "bouilloncube"//Reskinned monkey cube
+			reagents.trans_to_obj(P, 10)
+			return TRUE
+		if("create_pill")
+			if(condi || !reagents.total_volume)
+				return
+			var/amount_per_pill = CLAMP(reagents.total_volume, 0, MAX_UNITS_PER_PILL)
+			var/default_name = "[reagents.get_master_reagent_name()] ([amount_per_pill]u)"
+			var/pills_name = tgui_input_text(usr, "Please name your pill:", src, default_name, MAX_CUSTOM_NAME_LEN)
+			if(isnull(pills_name))
+				return
+			if(!pills_name)
+				pills_name = default_name
+
+			if(reagents.total_volume <= 0)
+				to_chat(usr, "<span class='notice'>Not enough reagents to create these pills!</span>")
+				return
+
+			var/obj/item/reagent_containers/pill/P = new(loc)
+			P.name = "[pills_name] pill"
+			P.pixel_x = rand(-7, 7) // Random position
+			P.pixel_y = rand(-7, 7)
+			P.icon_state = "pill[pillsprite]"
+			if(P.icon_state in list("pill1", "pill2", "pill3", "pill4")) // if using greyscale, take colour from reagent
+				P.color = reagents.get_color()
+			reagents.trans_to_obj(P, amount_per_pill)
+			// Load the pills in the bottle if there's one loaded
+			if(istype(loaded_pill_bottle) && length(loaded_pill_bottle.contents) < loaded_pill_bottle.max_storage_space)
+				P.forceMove(loaded_pill_bottle)
+			return TRUE
+		if("create_pill_multiple")
+			if(condi || !reagents.total_volume)
+				return
+			var/pills_amount = tgui_input_number(usr, "Please enter the amount of pills to make (max [MAX_MULTI_AMOUNT] at a time):", src, 5, MAX_MULTI_AMOUNT, 0)
+			if(!pills_amount)
+				return
+			var/amount_per_pill = CLAMP(reagents.total_volume/pills_amount, 0, MAX_UNITS_PER_PILL)
+			var/default_name = "[reagents.get_master_reagent_name()] ([amount_per_pill]u)"
+			var/pills_name = tgui_input_text(usr, "Please name your pills:", src, default_name, MAX_CUSTOM_NAME_LEN)
+			if(isnull(pills_name))
+				return
+			if(!pills_name)
+				pills_name = default_name
+
+			if(reagents.total_volume <= 0)
+				to_chat(usr, "<span class='notice'>Not enough reagents to create these pills!</span>")
+				return
+
+			for(var/i=1 to pills_amount)
+				var/obj/item/reagent_containers/pill/P = new(loc)
+				P.name = "[pills_name] pill"
+				P.pixel_x = rand(-7, 7) // Random position
+				P.pixel_y = rand(-7, 7)
+				P.icon_state = "pill[pillsprite]"
+				if(P.icon_state in list("pill1", "pill2", "pill3", "pill4")) // if using greyscale, take colour from reagent
+					P.color = reagents.get_color()
+				reagents.trans_to_obj(P, amount_per_pill)
+				// Load the pills in the bottle if there's one loaded
+				if(istype(loaded_pill_bottle) && length(loaded_pill_bottle.contents) < loaded_pill_bottle.max_storage_space)
+					P.forceMove(loaded_pill_bottle)
+			return TRUE
+		if("create_bottle")
+			if(condi || !reagents.total_volume)
+				return
+			var/amount_per_bottle = CLAMP(reagents.total_volume, 0, MAX_UNITS_PER_PILL)
+			var/default_name = "[reagents.get_master_reagent_name()] ([amount_per_bottle]u)"
+			var/bottle_name = tgui_input_text(usr, "Please name your bottle ([amount_per_bottle]u in the bottle):", src, default_name, MAX_CUSTOM_NAME_LEN)
+			if(isnull(bottle_name))
+				return
+			if(!bottle_name)
+				bottle_name = default_name
+			if(reagents.total_volume <= 0)
+				to_chat(usr, "<span class='notice'>Not enough reagents to create these bottles!</span>")
+				return
+			var/obj/item/reagent_containers/glass/bottle/P = new(loc)
+			P.name = "[bottle_name] bottle"
+			P.pixel_x = rand(-7, 7) // random position
+			P.pixel_y = rand(-7, 7)
+			P.icon_state = "bottle-[bottlesprite]" || "bottle-1"
+			reagents.trans_to_obj(P, amount_per_bottle)
+			P.update_icon()
+			return TRUE
+		if("create_bottle_multiple")
+			if(condi || !reagents.total_volume)
+				return
+			var/bottles_amount = tgui_input_number(usr, "Please enter the amount of bottles to make (max [MAX_MULTI_AMOUNT] at a time):", src, 5, MAX_MULTI_AMOUNT, 0)
+			if(!bottles_amount)
+				return
+			var/amount_per_bottle = CLAMP(reagents.total_volume/bottles_amount, 0, MAX_UNITS_PER_PILL)
+			var/default_name = "[reagents.get_master_reagent_name()] ([amount_per_bottle]u)"
+			var/bottle_name = tgui_input_text(usr, "Please name your bottles ([amount_per_bottle]u in the bottle):", src, default_name, MAX_CUSTOM_NAME_LEN)
+			if(isnull(bottle_name))
+				return
+			if(!bottle_name)
+				bottle_name = default_name
+			if(reagents.total_volume <= 0)
+				to_chat(usr, "<span class='notice'>Not enough reagents to create these bottles!</span>")
+				return
+
+			for(var/i=1 to bottles_amount)
+				var/obj/item/reagent_containers/glass/bottle/P = new(loc)
+				P.name = "[bottle_name] bottle"
+				P.pixel_x = rand(-7, 7) // random position
+				P.pixel_y = rand(-7, 7)
+				P.icon_state = "bottle-[bottlesprite]" || "bottle-1"
+				reagents.trans_to_obj(P, amount_per_bottle)
+				P.update_icon()
+			return TRUE
+		if("change_pill_style")
+			var/pill_style = round(text2num(params["new_pill_style"]))
+			if(pill_style < 1 || pill_style > MAX_PILL_SPRITE)
+				return
+			pillsprite = pill_style
+			return TRUE
+		if("change_bottle_style")
+			var/bottle_style = round(text2num(params["new_bottle_style"]))
+			if(bottle_style < 1 || bottle_style > MAX_BOTTLE_SPRITE)
+				return
+			bottlesprite = bottle_style
+			return TRUE
 
 /obj/machinery/chem_master/attack_ai(mob/user)
 	return attack_hand(user)
@@ -590,10 +574,10 @@
 		data["beakerCurrentVolume"] = beaker.reagents.total_volume
 		data["beakerMaxVolume"] = beaker.reagents.maximum_volume
 
-	var/beakerContents[0]
-	if(beaker && beaker.reagents && beaker.reagents.reagent_list.len)
+	var/list/beakerContents = list()
+	if(length(beaker?.reagents?.reagent_list))
 		for(var/datum/reagent/R in beaker.reagents.reagent_list)
-			beakerContents.Add(list(list("name" = R.name, "volume" = R.volume)))
+			beakerContents.Add(list(list("name" = R.name, "volume" = R.volume, "id" = R.type)))
 	data["beakerContents"] = beakerContents
 
 	return data

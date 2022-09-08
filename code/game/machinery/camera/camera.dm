@@ -6,6 +6,7 @@
 	use_power = 2
 	idle_power_usage = 5
 	active_power_usage = 10
+	plane = GAME_PLANE_UPPER
 	layer = CAMERA_LAYER
 
 	var/list/network = list(NETWORK_EXODUS)

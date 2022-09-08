@@ -186,7 +186,7 @@
 
 
 /datum/mind/Topic(href, href_list)
-	if(!check_rights(R_ADMIN))
+	if(!check_rights(R_MOD))
 		return
 
 	if(href_list["add_antagonist"])

@@ -25,7 +25,11 @@ var/list/flooring_types
 
 	var/step_priority
 
-	var/footstep_sound = "floor"
+	var/footstep = null
+	var/barefootstep = null
+	var/clawfootstep = null
+	var/heavyfootstep = null
+
 	var/hit_sound = null
 
 	var/has_base_range
@@ -142,7 +146,10 @@ var/list/flooring_types
 	can_paint = 1
 	plating_type = /decl/flooring/reinforced/plating
 	is_plating = TRUE
-	footstep_sound = "asteroid"
+	footstep = FOOTSTEP_FLOOR
+	barefootstep = FOOTSTEP_HARD_BAREFOOT
+	clawfootstep = FOOTSTEP_HARD_CLAW
+	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 	space_smooth = FALSE
 	removal_time = 150
 	health = 100
@@ -160,7 +167,10 @@ var/list/flooring_types
 	can_paint = 1
 	plating_type = /decl/flooring/reinforced/plating/under
 	is_plating = TRUE
-	footstep_sound = "plating"
+	footstep = FOOTSTEP_PLATING
+	barefootstep = FOOTSTEP_HARD_BAREFOOT
+	clawfootstep = FOOTSTEP_HARD_CLAW
+	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 	space_smooth = FALSE
 	removal_time = 150
 	health = 100
@@ -202,7 +212,10 @@ var/list/flooring_types
 	health = 275
 	has_base_range = 0
 	resistance = RESISTANCE_VAULT
-	footstep_sound = "catwalk"
+	footstep = FOOTSTEP_CATWALK
+	barefootstep = FOOTSTEP_HARD_BAREFOOT
+	clawfootstep = FOOTSTEP_HARD_CLAW
+	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 	space_smooth = SMOOTH_ALL
 	floor_smooth = SMOOTH_NONE
 	smooth_movable_atom = SMOOTH_NONE
@@ -273,7 +286,10 @@ var/list/flooring_types
 	health = 800	//Virtually indestructible
 	resistance = RESISTANCE_UNBREAKABLE
 	removal_time = 1.5 MINUTES //Cutting through the hull is very slow work
-	footstep_sound = "hull"
+	footstep = FOOTSTEP_PLATING
+	barefootstep = FOOTSTEP_HARD_BAREFOOT
+	clawfootstep = FOOTSTEP_HARD_CLAW
+	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 	wall_smooth = SMOOTH_ALL
 	space_smooth = SMOOTH_NONE
 	smooth_movable_atom = SMOOTH_NONE
@@ -314,6 +330,10 @@ var/list/flooring_types
 	flags = TURF_REMOVE_SHOVEL
 	build_type = null
 	step_priority = 2 //Soft surfaces have more distinctive sounds
+	footstep = FOOTSTEP_SAND
+	barefootstep = FOOTSTEP_SAND
+	clawfootstep = FOOTSTEP_SAND
+	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 
 /decl/flooring/asteroid_ds
 	name = "soil"
@@ -380,6 +400,10 @@ var/list/flooring_types
 	can_paint = 1
 	build_type = /obj/item/stack/tile/linoleum
 	flags = TURF_REMOVE_SCREWDRIVER | TURF_HIDES_THINGS
+	footstep = FOOTSTEP_CARPET
+	barefootstep = FOOTSTEP_CARPET_BAREFOOT
+	clawfootstep = FOOTSTEP_CARPET_BAREFOOT
+	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 
 /decl/flooring/tiling
 	name = "floor"
@@ -392,6 +416,10 @@ var/list/flooring_types
 	flags = TURF_REMOVE_CROWBAR | TURF_CAN_BREAK | TURF_CAN_BURN | TURF_HIDES_THINGS
 	build_type = /obj/item/stack/tile/floor
 	can_paint = 1
+	footstep = FOOTSTEP_FLOOR
+	barefootstep = FOOTSTEP_HARD_BAREFOOT
+	clawfootstep = FOOTSTEP_HARD_CLAW
+	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 
 /decl/flooring/tiling/mono
 	icon_base = "monotile"
@@ -476,6 +504,10 @@ var/list/flooring_types
 	descriptor = "planks"
 	build_type = /obj/item/stack/tile/wood
 	flags = TURF_CAN_BREAK | TURF_IS_FRAGILE | TURF_REMOVE_SCREWDRIVER | TURF_HIDES_THINGS
+	footstep = FOOTSTEP_WOOD
+	barefootstep = FOOTSTEP_WOOD_BAREFOOT
+	clawfootstep = FOOTSTEP_WOOD_CLAW
+	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 
 /decl/flooring/reinforced
 	name = "reinforced floor"
@@ -489,6 +521,11 @@ var/list/flooring_types
 	apply_thermal_conductivity = 0.025
 	apply_heat_capacity = 325000
 	can_paint = 1
+	footstep = FOOTSTEP_PLATING
+	barefootstep = FOOTSTEP_HARD_BAREFOOT
+	clawfootstep = FOOTSTEP_HARD_CLAW
+	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
+
 
 /decl/flooring/reinforced/circuit
 	name = "processing strata"
@@ -539,5 +576,8 @@ var/list/flooring_types
 	icon = 'icons/misc/beach.dmi'
 	icon_base = "seashallow"
 	flags = 0
-	footstep_sound = "water"
+	footstep = FOOTSTEP_WATER
+	barefootstep = FOOTSTEP_WATER
+	clawfootstep = FOOTSTEP_WATER
+	heavyfootstep = FOOTSTEP_WATER
 	smooth_nothing = TRUE

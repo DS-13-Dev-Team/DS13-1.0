@@ -40,7 +40,7 @@ Blank extension used to mark an object as being biomass absorbed.
 
 	var/total_gain = 0
 	var/total_objects = 0
-	for (var/turf/T in trange(2, target))
+	for (var/turf/T in RANGE_TURFS(target, 2))
 		if (!near_marker && !turf_near_corrupted(T, 3))
 			continue
 		for (var/obj/O in T)

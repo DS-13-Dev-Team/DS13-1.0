@@ -1939,7 +1939,7 @@
 /turf/simulated/open,
 /area/ishimura/tramdeck/tram/tunnel)
 "fc" = (
-/obj/structure/handrai,
+/obj/structure/handrail,
 /obj/structure/industrial_lift/tram{
 	icon = 'icons/turf/floors_ds13.dmi';
 	icon_state = "tramcorner7";
@@ -6031,7 +6031,7 @@
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/maintenance/aftmaintenance)
 "nO" = (
-/obj/structure/handrai{
+/obj/structure/handrail{
 	dir = 1
 	},
 /turf/simulated/floor,
@@ -6345,7 +6345,7 @@
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/maintenance/midmaintenance)
 "oZ" = (
-/obj/structure/handrai,
+/obj/structure/handrail,
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/maintenance/aftmaintenance)
 "pa" = (
@@ -6786,7 +6786,7 @@
 /turf/simulated/floor/dank/tramgrating,
 /area/ishimura/tramdeck/tram/maintenance/midmaintenance)
 "GT" = (
-/obj/structure/handrai{
+/obj/structure/handrail{
 	dir = 1
 	},
 /obj/structure/industrial_lift/tram{
@@ -6852,7 +6852,7 @@
 /turf/simulated/open,
 /area/ishimura/tramdeck/tram/tunnel)
 "KK" = (
-/obj/structure/handrai{
+/obj/structure/handrail{
 	dir = 8
 	},
 /obj/structure/industrial_lift/tram{
@@ -6917,7 +6917,7 @@
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/maintenance/aftmaintenance)
 "SD" = (
-/obj/structure/handrai{
+/obj/structure/handrail{
 	dir = 4
 	},
 /obj/structure/industrial_lift/tram{
@@ -6994,7 +6994,7 @@
 /turf/simulated/open,
 /area/ishimura/tramdeck/tram/tunnel)
 "Zk" = (
-/obj/structure/handrai,
+/obj/structure/handrail,
 /obj/structure/closet/crate/trashcart,
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/maintenance/aftmaintenance)

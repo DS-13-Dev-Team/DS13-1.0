@@ -287,5 +287,4 @@
 	SSnecromorph.marker.add_spawnpoint(src, event = src.event)
 
 /obj/structure/corruption_node/nest/event_spawn/get_visualnet_tiles(var/datum/visualnet/network)
-
-	return trange(visualnet_range, src)
+	return RANGE_TURFS(src, visualnet_range)

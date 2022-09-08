@@ -267,7 +267,7 @@
 		if(!safety() && prob(5) && !user.skill_check(SKILL_WEAPONS, SKILL_BASIC) && can_fire(null, user, TRUE))
 			to_chat(user, "<span class='warning'>[src] fires on its own!</span>")
 			var/list/targets = list(user)
-			targets += trange(2, src)
+			targets += RANGE_TURFS(src, 2)
 			afterattack(pick(targets), user)
 	if (stop_firing_when_dropped)
 		stop_firing()

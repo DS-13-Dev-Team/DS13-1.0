@@ -16,8 +16,9 @@
 	..()
 	user = holder
 
-	var/list/turfs_buff = trange(range_buff, get_turf(user))
-	var/list/turfs_sense = trange(range_sense, get_turf(user))
+	var/turf/centre = get_turf(user)
+	var/list/turfs_buff = RANGE_TURFS(centre, range_buff)
+	var/list/turfs_sense = RANGE_TURFS(centre, range_sense)
 	for (var/mob/living/L in GLOB.living_mob_list)
 		if (L.stat == DEAD)
 			continue	//Gotta be alive to see or be seen

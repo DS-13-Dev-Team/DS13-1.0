@@ -27,6 +27,7 @@
 /mob/Initialize()
 	GLOB.mob_list += src
 	. = ..()
+	update_emotes()
 	skillset = new skillset(src)
 	if(!move_intent)
 		move_intent = move_intents[1]
@@ -275,6 +276,9 @@
 			else
 				client.perspective = EYE_PERSPECTIVE
 				client.eye = loc
+
+		/// Signal sent after the eye has been successfully updated, with the client existing.
+		SEND_SIGNAL(src, COMSIG_MOB_RESET_VIEW)
 
 		if (ismob(client.eye))
 			var/mob/M = client.eye

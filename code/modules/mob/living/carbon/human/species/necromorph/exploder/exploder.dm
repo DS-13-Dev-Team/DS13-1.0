@@ -63,6 +63,15 @@
 	//Only one of the exploder's arms ends in a hand
 	grasping_limbs = list(BP_R_ARM)
 
+	special_step_sounds = list(
+		'sound/effects/footstep/exploder_footstep_1.ogg',
+		'sound/effects/footstep/exploder_footstep_2.ogg',
+		'sound/effects/footstep/exploder_footstep_3.ogg',
+		'sound/effects/footstep/exploder_footstep_4.ogg',
+		'sound/effects/footstep/exploder_footstep_5.ogg',
+		'sound/effects/footstep/exploder_footstep_6.ogg',
+		'sound/effects/footstep/exploder_footstep_7.ogg',
+	)
 
 	species_audio = list(
 	SOUND_ATTACK = list('sound/effects/creatures/necromorph/exploder/exploder_attack_1.ogg',

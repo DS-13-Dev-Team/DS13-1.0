@@ -3,57 +3,8 @@ import { useBackend } from "../backend";
 import { Box, Button, Dropdown, Stack, Icon, LabeledList, Section, Input } from "../components";
 import { Window } from "../layouts";
 import { BeakerContents } from './common/BeakerContents';
-import { ComplexModal, modalOpen, modalRegisterBodyOverride } from './common/ComplexModal';
 
 const transferAmounts = [1, 5, 10, 30, 60];
-
-const analyzeModalBodyOverride = (modal, context) => {
-  const { act, data } = useBackend(context);
-  const result = modal.args.analysis;
-  return (
-    <Section
-      level={2}
-      m="-1rem"
-      pb="1rem"
-      title={data.condi ? "Condiment Analysis" : "Reagent Analysis"}>
-      <Box mx="0.5rem">
-        <LabeledList>
-          <LabeledList.Item label="Name">
-            {result.name}
-          </LabeledList.Item>
-          <LabeledList.Item label="Description">
-            {(result.desc || "").length > 0 ? result.desc : "N/A"}
-          </LabeledList.Item>
-          {result.blood_type && (
-            <Fragment>
-              <LabeledList.Item label="Blood type">
-                {result.blood_type}
-              </LabeledList.Item>
-              <LabeledList.Item
-                label="Blood DNA"
-                className="LabeledList__breakContents">
-                {result.blood_dna}
-              </LabeledList.Item>
-            </Fragment>
-          )}
-          {!data.condi && (
-            <Button
-              icon={data.printing ? 'spinner' : 'print'}
-              disabled={data.printing}
-              iconSpin={!!data.printing}
-              ml="0.5rem"
-              content="Print"
-              onClick={() => act('print', {
-                idx: result.idx,
-                beaker: modal.args.beaker,
-              })}
-            />
-          )}
-        </LabeledList>
-      </Box>
-    </Section>
-  );
-};
 
 export const ChemMaster = (props, context) => {
   const { data } = useBackend(context);
@@ -69,7 +20,6 @@ export const ChemMaster = (props, context) => {
       width={575}
       height={550}
       resizable>
-      <ComplexModal />
       <Window.Content scrollable className="Layout__content--flexColumn">
         <ChemMasterBeaker
           beaker={beaker}
@@ -130,7 +80,7 @@ const ChemMasterBeaker = (props, context) => {
                 <Button
                   content="Analyze"
                   mb="0"
-                  onClick={() => modalOpen(context, 'analyze', {
+                  onClick={() => act('analyze', {
                     idx: i + 1,
                     beaker: 1,
                   })}
@@ -155,10 +105,11 @@ const ChemMasterBeaker = (props, context) => {
                   })}
                 />
                 <Button
-                  content="Custom.."
+                  content="Custom"
                   mb="0"
-                  onClick={() => modalOpen(context, 'addcustom', {
-                    id: chemical.id,
+                  onClick={() => act('addcustom', {
+                    idx: i + 1,
+                    beaker: 1,
                   })}
                 />
               </Box>
@@ -207,7 +158,7 @@ const ChemMasterBuffer = (props, context) => {
                 <Button
                   content="Analyze"
                   mb="0"
-                  onClick={() => modalOpen(context, 'analyze', {
+                  onClick={() => act('analyze', {
                     idx: i + 1,
                     beaker: 0,
                   })}
@@ -234,8 +185,8 @@ const ChemMasterBuffer = (props, context) => {
                 <Button
                   content="Custom.."
                   mb="0"
-                  onClick={() => modalOpen(context, 'removecustom', {
-                    id: chemical.id,
+                  onClick={() => act('removecustom', {
+                    idx: i + 1,
                   })}
                 />
               </Box>
@@ -288,7 +239,7 @@ const ChemMasterProduction = (props, context) => {
 };
 
 const ChemMasterProductionChemical = (props, context) => {
-  const { data } = useBackend(context);
+  const { data, act } = useBackend(context);
   return (
     <LabeledList>
       <LabeledList.Item label="Pills">
@@ -296,27 +247,37 @@ const ChemMasterProductionChemical = (props, context) => {
           icon="circle"
           content="One (60u max)"
           mr="0.5rem"
-          onClick={() => modalOpen(context, 'create_pill')}
+          onClick={() => act('create_pill')}
         />
         <Button
           icon="plus-circle"
           content="Multiple"
           mb="0.5rem"
-          onClick={() => modalOpen(context, 'create_pill_multiple')}
+          onClick={() => act('create_pill_multiple')}
         /><br />
-        <Button
-          onClick={() => modalOpen(context, 'change_pill_style')}>
-          <div style={
-            "display: inline-block;"
-            + "width: 16px;"
-            + "height: 16px;"
-            + "vertical-align: middle;"
-            + "background: url(pill" + data.pillsprite + ".png);"
-            + "background-size: 200%;"
-            + "background-position: left -10px bottom -6px;"
-          } />
-          Style
-        </Button>
+        <Stack>
+          <Stack.Item>
+            <Button
+              icon="chevron-left"
+              iconSize={3.1}
+              onClick={() => act('change_pill_style', { "new_pill_style": data.pillsprite <= 1 ? 25 : data.pillsprite-1 })}
+            />
+          </Stack.Item>
+          <Stack.Item>
+            <Button>
+              <Box
+                as="img" style={{ "transform": "scale(1.5);", "-ms-interpolation-mode": "nearest-neighbor;" }}
+                src={"pill"+data.pillsprite+".png"} />
+            </Button>
+          </Stack.Item>
+          <Stack.Item>
+            <Button
+              icon="chevron-right"
+              iconSize={3.1}
+              onClick={() => act('change_pill_style', { "new_pill_style": data.pillsprite >= 25 ? 1 : data.pillsprite+1 })}
+            />
+          </Stack.Item>
+        </Stack>
       </LabeledList.Item>
       <LabeledList.Item label="Bottle">
         <Button
@@ -324,26 +285,36 @@ const ChemMasterProductionChemical = (props, context) => {
           content="Create bottle (60u max)"
           mr="0.5rem"
           mb="0.5rem"
-          onClick={() => modalOpen(context, 'create_bottle')}
+          onClick={() => act('create_bottle')}
         />
         <Button
           icon="plus-square"
           content="Multiple"
-          onClick={() => modalOpen(context, 'create_bottle_multiple')}
+          onClick={() => act('create_bottle_multiple')}
         /><br />
-        <Button
-          onClick={() => modalOpen(context, 'change_bottle_style')}>
-          <div style={
-            "display: inline-block;"
-            + "width: 16px;"
-            + "height: 16px;"
-            + "vertical-align: middle;"
-            + "background: url(bottle-" + data.bottlesprite + ".png);"
-            + "background-size: 200%;"
-            + "background-position: left -10px bottom -6px;"
-          } />
-          Style
-        </Button>
+        <Stack>
+          <Stack.Item>
+            <Button
+              icon="chevron-left"
+              iconSize={3.1}
+              onClick={() => act('change_bottle_style', { "new_bottle_style": data.bottlesprite <= 1 ? 4 : data.bottlesprite-1 })}
+            />
+          </Stack.Item>
+          <Stack.Item>
+            <Button>
+              <Box
+                as="img" style={{ "transform": "scale(1.5);", "-ms-interpolation-mode": "nearest-neighbor;" }}
+                src={"bottle-"+data.bottlesprite+".png"} />
+            </Button>
+          </Stack.Item>
+          <Stack.Item>
+            <Button
+              icon="chevron-right"
+              iconSize={3.1}
+              onClick={() => act('change_bottle_style', { "new_bottle_style": data.bottlesprite >= 4 ? 1 : data.bottlesprite+1 })}
+            />
+          </Stack.Item>
+        </Stack>
       </LabeledList.Item>
     </LabeledList>
   );
@@ -357,7 +328,7 @@ const ChemMasterProductionCondiment = (props, context) => {
         icon="box"
         content="Create condiment pack (10u max)"
         mb="0.5rem"
-        onClick={() => modalOpen(context, 'create_condi_pack')}
+        onClick={() => act('create_condi_pack')}
       /><br />
       <Button
         icon="wine-bottle"
@@ -425,5 +396,3 @@ const ChemMasterCustomization = (props, context) => {
     </Section>
   );
 };
-
-modalRegisterBodyOverride('analyze', analyzeModalBodyOverride);

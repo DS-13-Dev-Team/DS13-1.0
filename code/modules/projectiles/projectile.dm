@@ -5,6 +5,7 @@
 	name = "projectile"
 	icon = 'icons/obj/projectiles.dmi'
 	icon_state = "bullet"
+	plane = GAME_PLANE
 	density = 1
 	can_block_movement = FALSE	//Projectiles don't recieve collisions usually, they move into other things
 	unacidable = 1

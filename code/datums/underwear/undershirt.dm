@@ -48,7 +48,7 @@
 /datum/category_item/underwear/undershirt/tank_top_stripes
 	name = "Tank top, striped"
 	underwear_name = "tank top"
-	icon_state = "tank_stripes_s"
+	icon_state = "tank_stripes_s_blue"
 
 /datum/category_item/underwear/undershirt/tank_top_sun
 	name = "Tank top, sun"
@@ -108,7 +108,7 @@
 
 /datum/category_item/underwear/undershirt/shirt_blue_striped
 	name = "Shirt, blue stripes"
-	icon_state = "shirt_stripes_s"
+	icon_state = "shirt_stripes_s_blue"
 
 /datum/category_item/underwear/undershirt/longjon
 	name = "Long John Shirt"
@@ -186,3 +186,18 @@
 /datum/category_item/underwear/undershirt/polo_nt
 	name = "Polo, NanoTrasen"
 	icon_state = "ntpolo"
+
+/datum/category_item/underwear/undershirt/shirt_button_short_sleeves
+	name = "Button Down Shirt, Short Sleeves"
+	icon_state = "shirt_long_s_short_sleeves"
+	has_color = TRUE
+
+/datum/category_item/underwear/undershirt/shortstripe_black
+	name = "Shortsleeve Striped Shirt, Black"
+	underwear_name = "short johns"
+	icon_state = "shirt_stripes_s"
+
+/datum/category_item/underwear/undershirt/shirt_long_female
+	name = "Button Down Shirt, Short Sleeves, Female"
+	icon_state = "shirt_short_female_s"
+	has_color = TRUE

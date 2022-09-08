@@ -285,7 +285,7 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 /* Visualnet Handling */
 //-------------------
 /obj/effect/vine/corruption/get_visualnet_tiles(var/datum/visualnet/network)
-	return trange(1, src)
+	return RANGE_TURFS(src, 1)
 
 /obj/effect/vine/corruption/watched_tile_updated(var/turf/T)
 	if (source)

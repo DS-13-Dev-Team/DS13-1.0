@@ -96,7 +96,7 @@
 	//Items
 	bst.equip_to_slot_or_del(new /obj/item/clothing/under/assistantformal/bst(bst), slot_w_uniform)
 	bst.equip_to_slot_or_del(new /obj/item/radio/headset/ert/bst(bst), slot_l_ear)
-
+	bst.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/bst(bst), slot_glasses)
 
 	//They get an engineering rig
 	var/obj/item/rig/advanced/rig = new(bst)
