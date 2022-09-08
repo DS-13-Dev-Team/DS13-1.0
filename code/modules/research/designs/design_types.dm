@@ -384,7 +384,7 @@ Botany:
 	id = "rock_saw"
 	materials = list(MATERIAL_STEEL = 2000, MATERIAL_PLASTEEL = 1300, MATERIAL_GLASS = 500, MATERIAL_DIAMOND = 750)
 	build_path = /obj/item/tool/pickaxe/laser
-	price = 2000
+	price = 2500
 
 /datum/design/item/mining/excavation_drill
 	name = "Excavation Drill"
@@ -524,6 +524,14 @@ Botany:
 	materials = list(MATERIAL_STEEL = 12500, MATERIAL_GLASS = 7500, MATERIAL_SILVER = 2000, MATERIAL_GOLD = 1500)
 	build_path = /obj/item/tool/scalpel/laser
 	price = 1500
+
+/datum/design/item/surgery/advanced_circular
+	name = "Advanced Circular Saw"
+	desc = "You think you can cut anything with it."
+	id = "advanced_circular"
+	materials = list(MATERIAL_STEEL = 1200, MATERIAL_PLASTIC = 800)
+	build_path = /obj/item/tool/saw/advanced_circular
+	price = 2500
 
 /datum/design/item/surgery/scalpel_manager
 	name = "Incision Management System"
@@ -680,6 +688,13 @@ Botany:
 /datum/design/item/tool
 	category = "Tools"
 
+/datum/design/item/tool/mechanical
+	name = "mechanical toolbox"
+	desc = "Bright blue toolboxes like these are one of the most common sights in maintenance corridors on virtually every ship in the galaxy."
+	id = "mechanical"
+	build_path = /obj/item/storage/toolbox/mechanical
+	price = 1500
+
 /datum/design/item/tool/welding_mask
 	name = "Welding Mask"
 	desc = "A head-mounted face cover designed to protect the wearer completely from space-arc eye."
@@ -749,7 +764,7 @@ Botany:
 	id = "experimental_welder"
 	materials = list(MATERIAL_STEEL = 120, MATERIAL_GLASS = 50)
 	build_path = /obj/item/tool/weldingtool/advanced
-	price = 250
+	price = 450
 
 /datum/design/item/tool/oxycandle
 	name = "oxycandle"
@@ -758,7 +773,7 @@ Botany:
 	materials = list(MATERIAL_STEEL = 3000)
 	chemicals = list(/datum/reagent/sodiumchloride = 20, /datum/reagent/acetone = 20)
 	build_path = /obj/item/oxycandle
-	price = 500
+	price = 250
 
 /datum/design/item/tool/plasmasaw
 	name = "SH-B1 Plasma Saw"

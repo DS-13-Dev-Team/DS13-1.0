@@ -132,7 +132,8 @@ GLOBAL_LIST_EMPTY(loot_locations)
 	/obj/random/material/rare = 1,
 	/obj/random/hardsuit = 0.5,
 	/obj/random/rig_module/rare = 1,
-	/obj/item/peng = 1)
+	/obj/item/peng = 1,
+	/obj/item/rig/clown = 0.15)
 
 //Subtype that cannot spawn power nodes
 /obj/random/rare_loot/nodeless
