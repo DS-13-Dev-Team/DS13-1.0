@@ -136,8 +136,9 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 	//Lets not look like an eye after we become a ghost
 	icon = 'icons/mob/mob.dmi'
 	icon_state = "ghost"
-	message_necromorphs(SPAN_NOTICE("[key] has left the necromorph horde."))
-	set_necromorph(FALSE)
+	if(key)
+		message_necromorphs(SPAN_NOTICE("[key] has left the necromorph horde."))
+		set_necromorph(FALSE)
 	return ..()
 
 
