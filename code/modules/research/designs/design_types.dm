@@ -384,7 +384,7 @@ Botany:
 	id = "rock_saw"
 	materials = list(MATERIAL_STEEL = 2000, MATERIAL_PLASTEEL = 1300, MATERIAL_GLASS = 500, MATERIAL_DIAMOND = 750)
 	build_path = /obj/item/tool/pickaxe/laser
-	price = 2500
+	price = 4000
 
 /datum/design/item/mining/excavation_drill
 	name = "Excavation Drill"
