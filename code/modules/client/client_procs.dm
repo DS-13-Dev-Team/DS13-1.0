@@ -301,6 +301,8 @@
 	return ..()
 
 /client/Destroy()
+	if(SSnecromorph.marker?.player == ckey)
+		SSnecromorph.marker.vacate_master_signal(FALSE)
 	ticket_panels -= src
 	if(src && watched_variables_window)
 		STOP_PROCESSING(SSprocessing, watched_variables_window)

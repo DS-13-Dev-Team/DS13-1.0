@@ -197,10 +197,10 @@
 		return
 	if (!M || !M.key)
 		return
-	if (player != ckey(M.key))
+	if (player != M.ckey)
 		message_necromorphs(SPAN_NOTICE("[M.key] has taken charge of the marker."))
 
-	player = ckey(M.key)
+	player = M.ckey
 
 	//Get rid of the old energy handler
 	var/datum/player/P = get_or_create_player(M.key)
