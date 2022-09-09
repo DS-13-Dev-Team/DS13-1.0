@@ -27613,13 +27613,14 @@
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/interior/seccie_checkpoint_2)
 "etF" = (
-/obj/machinery/light{
-	dir = 1;
-	light_color = "#33cccc";
-	color = COLOR_PINK
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled/dark,
-/area/mining_colony/interior/uni_church)
+/obj/effect/landmark/node_room,
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/interior/enginieering/paint_storage)
 "euh" = (
 /obj/effect/wallframe_spawn/reinforced,
 /obj/machinery/door/firedoor,
@@ -28398,15 +28399,6 @@
 	},
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/enginieering/reactor)
-"nMC" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/effect/landmark/node_room,
-/turf/simulated/floor/dank/grater,
-/area/mining_colony/interior/enginieering/paint_storage)
 "ogB" = (
 /obj/item/radio/intercom{
 	dir = 1;
@@ -38272,7 +38264,7 @@ aaB
 add
 adi
 aaB
-etF
+mpd
 adv
 adv
 adP
@@ -46749,7 +46741,7 @@ aWB
 aSo
 dyZ
 hSg
-nMC
+etF
 hSg
 cxu
 ePZ
