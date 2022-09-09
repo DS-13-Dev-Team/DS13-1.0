@@ -19,7 +19,8 @@
 				/obj/item/rig/light/internalaffairs = 0.01,
 				/obj/item/rig/ce = 0.01,
 				/obj/item/rig/hazmat = 0.01,
-				/obj/item/rig/hazard = 0.01))
+				/obj/item/rig/hazard = 0.01
+				/obj/item/rig/clown = 0.01))
 
 
 /obj/random/rig_module
