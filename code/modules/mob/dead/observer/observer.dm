@@ -45,7 +45,7 @@ var/const/GHOST_IMAGE_ALL = ~GHOST_IMAGE_NONE
 		qdel(ghost_image)
 		ghost_image = null
 		updateallghostimages()
-	. = ..()
+	return ..()
 
 //Observers of all kinds can jump to things, since they have inherent teleporting and incorporeal movement
 /mob/dead/observer/can_jump_to_link()
