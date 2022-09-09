@@ -68,11 +68,16 @@
 	// contained in a cage
 	var/in_stasis = 0
 
+	///What kind of footstep this mob should have. Null if it shouldn't have any.
+	var/footstep_type
+
 	var/datum/component/spawner/nest
 
-/mob/living/simple_animal/New(var/atom/location)
+/mob/living/simple_animal/Initialize()
 	health = max_health
-	.=..()
+	if(footstep_type)
+		AddElement(/datum/element/footstep, footstep_type)
+	return ..()
 
 /mob/living/simple_animal/Destroy()
 	if(nest)

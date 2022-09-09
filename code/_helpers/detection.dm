@@ -173,6 +173,8 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 
 	for(var/atom/movable/AM in hear)
 		if(ismob(AM))
+			if(checkghosts && issignal(AM))
+				continue
 			mobs += AM
 			hearturfs += get_turf(AM)
 		else if(isobj(AM))
@@ -180,8 +182,13 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 			hearturfs += get_turf(AM)
 
 	for(var/mob/M in GLOB.player_list)
-		if(checkghosts && M.stat == DEAD && M.get_preference_value(checkghosts) != GLOB.PREF_NEARBY)
-			mobs |= M
+		if(checkghosts)
+			if(issignal(M) && M.get_preference_value(checkghosts) != GLOB.PREF_NEARBY)
+				var/mob/dead/observer/eye/signal/signal = M
+				if(signal.visualnet.is_visible(T))
+					mobs |= M
+			else if(M.stat == DEAD && M.get_preference_value(checkghosts) != GLOB.PREF_NEARBY)
+				mobs |= M
 		else if(get_turf(M) in hearturfs)
 			mobs |= M
 
@@ -189,11 +196,16 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 		if(get_turf(O) in hearturfs)
 			objs |= O
 
+//Not the most optimized code but it works and used only in 2 places. Wish we had SSspatial_grid
 /proc/get_hearers_in_view(range, turf/T)
 	.=list()
-	FOR_DVIEW(var/mob/hearer, range, get_turf(T), INVISIBILITY_MAXIMUM)
-		. += hearer
+	var/list/visible_turfs = list()
+	FOR_DVIEW(var/turf/turf, range, get_turf(T), INVISIBILITY_MAXIMUM)
+		visible_turfs += turf
 	END_FOR_DVIEW
+	for(var/mob/M as anything in GLOB.player_list)
+		if(get_turf(M) in visible_turfs)
+			. += M
 
 proc/isInSight(var/atom/A, var/atom/B)
 	var/turf/Aturf = get_turf(A)
@@ -279,14 +291,6 @@ proc
 
 	//turfs += centerturf
 	return atoms
-
-/proc/trange(rad = 0, turf/centre = null) //alternative to range (ONLY processes turfs and thus less intensive)
-	if(!centre)
-		return
-
-	var/turf/x1y1 = locate(((centre.x-rad)<1 ? 1 : centre.x-rad),((centre.y-rad)<1 ? 1 : centre.y-rad),centre.z)
-	var/turf/x2y2 = locate(((centre.x+rad)>world.maxx ? world.maxx : centre.x+rad),((centre.y+rad)>world.maxy ? world.maxy : centre.y+rad),centre.z)
-	return block(x1y1,x2y2)
 
 /proc/get_dist_euclidian(atom/Loc1 as turf|mob|obj,atom/Loc2 as turf|mob|obj)
 	var/dx = Loc1.x - Loc2.x

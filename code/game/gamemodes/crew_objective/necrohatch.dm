@@ -61,7 +61,7 @@
 
 /obj/effect/necrohatch/proc/get_landing_turf()
 	var/list/shortlist = list()
-	for (var/turf/T as anything in trange(1, epicentre))
+	for (var/turf/T as anything in RANGE_TURFS(epicentre, 1))
 		if (turf_clear(T))
 			shortlist += T
 

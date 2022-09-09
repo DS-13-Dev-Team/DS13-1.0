@@ -66,3 +66,5 @@
 #define COMSIG_MOB_SAY "mob_say"
 ///from base of mob/create_mob_hud(): ()
 #define COMSIG_MOB_HUD_CREATED "mob_hud_created"
+#define COMSIG_MOB_RESET_VIEW "mob_reset_view"
+#define COMSIG_MOB_ON_HUD_SHOWN "mob_on_hud_shown"

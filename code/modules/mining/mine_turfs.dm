@@ -478,7 +478,10 @@ var/list/mining_floors = list()
 	name = "soil"
 	icon = 'icons/turf/floors_outside_ds13.dmi'
 	icon_state = "wet_muddy"
-
+	footstep = FOOTSTEP_SAND
+	barefootstep = FOOTSTEP_SAND
+	clawfootstep = FOOTSTEP_SAND
+	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 	initial_flooring = /decl/flooring/asteroid_ds
 	initial_gas = list("oxygen" = MOLES_O2STANDARD, "nitrogen" = MOLES_N2STANDARD)
 	temperature = T20C

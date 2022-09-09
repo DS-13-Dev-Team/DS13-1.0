@@ -395,7 +395,7 @@ var/datum/callback/proc_to_call, var/proc_interval = 10)
 //User:			Who is doing the searching? This is used for is_allied. If not passed, all mobs will be considered?
 //Reach:		Target must be within Reach tiles of the user
 /proc/autotarget_enemy_mob(var/atom/origin, var/searchrange = 1, var/mob/living/user = null, var/reach = 0)
-	var/list/search_tiles = trange(searchrange, origin)
+	var/list/search_tiles = RANGE_TURFS(origin, searchrange)
 	var/list/prime_targets = list()	//Main targets, we pick one
 	var/list/secondary_targets	=	list()	//Used only if there are no prime targets
 	for (var/t in search_tiles)

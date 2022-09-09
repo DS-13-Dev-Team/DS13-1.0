@@ -1,12 +1,5 @@
 #define SHOULD_SHOW_TO(mymob, myscreen) (!(mymob.stat == DEAD && !myscreen.show_when_dead))
 
-//Fullscreen overlay resolution in tiles for the clients view.
-/// The fullscreen overlay in tiles for x axis
-#define FULLSCREEN_OVERLAY_RESOLUTION_X 15
-/// The fullscreen overlay in tiles for y axis
-#define FULLSCREEN_OVERLAY_RESOLUTION_Y 15
-
-
 /mob
 	var/list/screens = list()
 
@@ -66,9 +59,8 @@
 
 /mob/proc/reload_fullscreens()
 	if(client)
-		var/atom/movable/screen/fullscreen/screen
-		for(var/category in screens)
-			screen = screens[category]
+		for(var/atom/movable/screen/fullscreen/screen in screens)
+			screen = screens[screen]
 			if(SHOULD_SHOW_TO(src, screen))
 				screen.update_for_view(client.view)
 				client.screen |= screen

@@ -51,6 +51,6 @@
 			continue
 		var/sent_message = "[create_text_tag("ooc", "OOC:", target)] <EM>[sender_override ? sender_override : C.key]:</EM> <span class='message'>[message]</span>"
 		if(can_badmin)
-			receive_communication(A, target, "<font color='[ooc_color]'><span class='ooc'>[sent_message]</font></span>")
+			receive_communication(A, target, "<span class='ooc'><font color='[ooc_color]'>[sent_message]</font></span>")
 		else
 			receive_communication(A, target, "<span class='ooc'><span class='[ooc_style]'>[sent_message]</span></span>")

@@ -49,7 +49,7 @@
 		if(!istype(S, /obj/item/spacecash/minercash))
 			data["cash_stored"] += S.worth
 
-	data["credits_total"] = data["chip_worth"] + data["cash_stored"] + credits_rig + data["credits_account"]
+	data["credits_total"] = data["chip_worth"] + data["cash_stored"] + credits_rig + (ECA ? ECA.money : 0)
 
 	data["selected_category"] = current_category
 	if(current_design_id)

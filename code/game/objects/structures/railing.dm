@@ -60,7 +60,7 @@
 	anchored = FALSE
 	atom_flags = 0
 	broken = TRUE
-	for(var/thing in trange(1, src))
+	for(var/thing in RANGE_TURFS(src, 1))
 		var/turf/T = thing
 		for(var/obj/structure/railing/R in T.contents)
 			R.update_icon()

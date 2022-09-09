@@ -21,7 +21,7 @@
 
 /obj/mecha/combat/melee_action(target as obj|mob|turf)
 	if(internal_damage&MECHA_INT_CONTROL_LOST)
-		target = safepick(oview(1,src))
+		target = pick(oview(1,src))
 	if(!melee_can_hit || !istype(target, /atom)) return
 	if(istype(target, /mob/living))
 		var/mob/living/M = target

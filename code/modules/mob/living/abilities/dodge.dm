@@ -44,7 +44,7 @@
 
 	if (!QDELETED(user))
 
-		var/list/possible_turfs = trange(1, user)
+		var/list/possible_turfs = RANGE_TURFS(user, 1)
 		possible_turfs -= get_turf(user)
 		possible_turfs -= get_step(user, user.dir)
 		possible_turfs -= get_step(user, GLOB.reverse_dir[user.dir])

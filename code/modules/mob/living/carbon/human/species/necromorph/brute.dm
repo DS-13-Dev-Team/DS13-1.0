@@ -89,6 +89,14 @@
 	step_range = 4
 	step_priority = 5
 	pain_audio_threshold = 0.03 //Gotta set this low to compensate for his high health
+	special_step_sounds = list(
+		'sound/effects/footstep/brute_step_1.ogg',
+		'sound/effects/footstep/brute_step_2.ogg',
+		'sound/effects/footstep/brute_step_3.ogg',
+		'sound/effects/footstep/brute_step_4.ogg',
+		'sound/effects/footstep/brute_step_5.ogg',
+		'sound/effects/footstep/brute_step_6.ogg'
+	)
 	species_audio = list(SOUND_FOOTSTEP = list('sound/effects/footstep/brute_step_1.ogg',
 	'sound/effects/footstep/brute_step_2.ogg',
 	'sound/effects/footstep/brute_step_3.ogg',
@@ -96,9 +104,9 @@
 	'sound/effects/footstep/brute_step_5.ogg',
 	'sound/effects/footstep/brute_step_6.ogg'),
 	SOUND_PAIN = list('sound/effects/creatures/necromorph/brute/brute_pain_1.ogg',
-	 'sound/effects/creatures/necromorph/brute/brute_pain_2.ogg',
-	 'sound/effects/creatures/necromorph/brute/brute_pain_3.ogg',
-	 'sound/effects/creatures/necromorph/brute/brute_pain_extreme.ogg' = 0.2),
+	'sound/effects/creatures/necromorph/brute/brute_pain_2.ogg',
+	'sound/effects/creatures/necromorph/brute/brute_pain_3.ogg',
+	'sound/effects/creatures/necromorph/brute/brute_pain_extreme.ogg' = 0.2),
 	SOUND_DEATH = list('sound/effects/creatures/necromorph/brute/brute_death.ogg'),
 	SOUND_ATTACK = list('sound/effects/creatures/necromorph/brute/brute_attack_1.ogg',
 	'sound/effects/creatures/necromorph/brute/brute_attack_2.ogg',

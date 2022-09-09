@@ -98,6 +98,14 @@
 	step_range = 4
 	step_priority = 5
 	pain_audio_threshold = 0.03 //Gotta set this low to compensate for his high health
+	special_step_sounds = list(
+		'sound/effects/footstep/tripod_footstep_1.ogg',
+		'sound/effects/footstep/tripod_footstep_2.ogg',
+		'sound/effects/footstep/tripod_footstep_3.ogg',
+		'sound/effects/footstep/tripod_footstep_4.ogg',
+		'sound/effects/footstep/tripod_footstep_5.ogg',
+		'sound/effects/footstep/tripod_footstep_6.ogg'
+	)
 	species_audio = list(SOUND_FOOTSTEP = list('sound/effects/footstep/tripod_footstep_1.ogg',
 	'sound/effects/footstep/tripod_footstep_2.ogg',
 	'sound/effects/footstep/tripod_footstep_3.ogg',

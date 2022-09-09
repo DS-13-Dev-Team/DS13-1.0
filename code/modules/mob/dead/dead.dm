@@ -21,7 +21,7 @@
 		. += "Time To Start: DELAYED"
 	else
 		. += "Time To Start: SOON"
-	. += "Players: [SSticker.totalPlayers]"
+	. += "Players: [length(GLOB.clients)]"
 	. += "Players Ready: [SSticker.totalPlayersReady]"
 	for(var/i in GLOB.new_player_list)
 		var/mob/dead/new_player/player = i

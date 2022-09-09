@@ -319,20 +319,20 @@
 
 /* Construction */
 
-/obj/item/storage/firstaid/attackby(var/obj/item/robot_parts/S, mob/user as mob)
-	if ((!istype(S, /obj/item/robot_parts/l_arm)) && (!istype(S, /obj/item/robot_parts/r_arm)))
-		..()
-		return
+/obj/item/storage/firstaid/attackby(obj/item/organ/external/arm/arm, mob/user)
+	//Need a robotic or at least assited arm to contniue
+	if(!istype(arm, /obj/item/organ/external/arm) || !(arm.status & (ORGAN_ASSISTED|ORGAN_ROBOTIC)))
+		return ..()
 
-	if(contents.len >= 1)
+	if(length(contents) >= 1)
 		to_chat(user, "<span class='notice'>You need to empty [src] out first.</span>")
 		return
 
-	var/obj/item/firstaid_arm_assembly/A = new /obj/item/firstaid_arm_assembly
+	qdel(arm)
 
-	A.skin = icon_state
-	qdel(S)
-	user.put_in_hands(A)
+	var/obj/item/firstaid_arm_assembly/assembly = new /obj/item/firstaid_arm_assembly
+	assembly.skin = icon_state
+	user.put_in_hands(assembly)
 	to_chat(user, "<span class='notice'>You add the robot arm to the first aid kit.</span>")
 	qdel(src)
 

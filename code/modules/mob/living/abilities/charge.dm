@@ -78,9 +78,6 @@
 	var/stopped_at
 	var/range_left = null //Null value means we're not using range limits
 
-	var/step_interval = 1	//Replaces the user's step interval for the duration of the charge
-	var/cached_step_interval
-
 	var/blur_filter_strength = 2
 	var/dm_filter/blur
 	var/starting_locomotion_limbs = 0	//How many legs or similar appendages we had when we started. We will abort the charge if this value decreases
@@ -178,10 +175,6 @@
 
 	//If we are currently wallcrawling, stop it
 	user.unmount_from_wall()
-	if (ishuman(user))
-		var/mob/living/carbon/human/H = user
-		cached_step_interval = H.step_interval
-		H.step_interval = src.step_interval
 	if (start_timer)
 		deltimer(start_timer)
 
@@ -236,9 +229,6 @@
 
 /datum/extension/charge/proc/stop()
 	if (isliving(user))
-		if (ishuman(user))
-			var/mob/living/carbon/human/H = user
-			H.step_interval = cached_step_interval
 		L.enable()
 
 	UnregisterSignal(holder, COMSIG_MOVABLE_BUMP)

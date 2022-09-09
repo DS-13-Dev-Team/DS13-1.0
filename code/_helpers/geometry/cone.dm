@@ -21,11 +21,11 @@
 
 		//And from this halfpoint, lets get a square area of turfs which is every possible turf that could be in the cone
 		//We use half the distance as radius, +1 to account for any rounding errors. Its not a big deal if we get some unnecessary turfs in here
-		turfs = trange(((distance*0.5) + 1), halfpoint)
+		turfs = RANGE_TURFS(halfpoint, ((distance*0.5) + 1))
 
 	else
 		//Optimisation
-		turfs = trange(distance, origin)
+		turfs = RANGE_TURFS(origin, distance)
 
 	//Alright next up, we loop through the turfs. for each one:
 	if (angle < 360)

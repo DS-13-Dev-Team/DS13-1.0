@@ -21,6 +21,7 @@
 	health = 40
 	melee_damage_lower = 1
 	melee_damage_upper = 5
+	footstep_type = FOOTSTEP_MOB_SHOE
 	var/datum/reagents/udder = null
 
 /mob/living/simple_animal/hostile/retaliate/goat/New()
@@ -104,12 +105,12 @@
 	response_harm   = "kicks"
 	attacktext = "kicked"
 	health = 50
+	footstep_type = FOOTSTEP_MOB_SHOE
 	var/datum/reagents/udder = null
 
-/mob/living/simple_animal/cow/New()
-	udder = new(50)
-	udder.my_atom = src
-	..()
+/mob/living/simple_animal/cow/Initialize()
+	udder = create_reagents(50)
+	return..()
 
 /mob/living/simple_animal/cow/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	var/obj/item/reagent_containers/glass/G = O
@@ -168,6 +169,7 @@
 	var/amount_grown = 0
 	pass_flags = PASS_FLAG_TABLE | PASS_FLAG_GRILLE
 	mob_size = MOB_MINISCULE
+	footstep_type = FOOTSTEP_MOB_CLAW
 
 /mob/living/simple_animal/chick/New()
 	..()
@@ -210,6 +212,7 @@ var/global/chicken_count = 0
 	var/body_color
 	pass_flags = PASS_FLAG_TABLE
 	mob_size = MOB_SMALL
+	footstep_type = FOOTSTEP_MOB_CLAW
 
 /mob/living/simple_animal/chicken/New()
 	..()

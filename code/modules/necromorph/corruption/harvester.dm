@@ -258,7 +258,7 @@
 		for (var/obj/structure/corruption_node/harvester/H in range(4, candidate))
 			return "Cannot be placed within 4 tiles of an existing harvester."
 
-		for (var/turf/T in trange(1, candidate))
+		for (var/turf/T in RANGE_TURFS(candidate, 1))
 			if (!turf_clear(T, TRUE))
 				return "Requires a 3x3 clear area to place within."
 

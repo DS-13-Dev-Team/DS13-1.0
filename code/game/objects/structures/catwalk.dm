@@ -7,12 +7,6 @@
 	anchored = TRUE
 	plane = FLOOR_PLANE
 	layer = CATWALK_LAYER
-	footstep_sounds = list(
-		'sound/effects/footstep/catwalk1.ogg',
-		'sound/effects/footstep/catwalk2.ogg',
-		'sound/effects/footstep/catwalk3.ogg',
-		'sound/effects/footstep/catwalk4.ogg',
-		'sound/effects/footstep/catwalk5.ogg')
 	obj_flags = OBJ_FLAG_NOFALL
 	var/hatch_open = FALSE
 	var/obj/item/stack/tile/mono/plated_tile

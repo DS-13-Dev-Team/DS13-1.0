@@ -103,7 +103,7 @@ var/list/admin_verbs_admin = list(
 	/client/proc/remove_trader,
 	/datum/admins/proc/sendFax,
 	/client/proc/patrons,	//Edit patron subscriptions, host only
-	/client/proc/admin_communicate
+	/client/proc/admin_communicate,
 )
 var/list/admin_verbs_ban = list(
 	/client/proc/unban_panel,
@@ -130,7 +130,8 @@ var/list/admin_verbs_fun = list(
 	/client/proc/toggle_random_events,
 	/client/proc/editappear,
 	/client/proc/roll_dices,
-	/datum/admins/proc/ai_hologram_set
+	/datum/admins/proc/ai_hologram_set,
+	/client/proc/drop_bomb
 	)
 
 var/list/admin_verbs_spawn = list(
@@ -211,7 +212,7 @@ var/list/admin_verbs_debug = list(
 	/client/proc/debug_vectorpool,
 //	/client/proc/cmd_display_overlay_log,
 	/client/proc/activate_marker,
-	/client/proc/dummy_crowd
+	/client/proc/dummy_crowd,
 	)
 
 var/list/admin_verbs_paranoid_debug = list(
@@ -226,7 +227,6 @@ var/list/admin_verbs_possess = list(
 	)
 var/list/admin_verbs_permissions = list(
 	/client/proc/edit_admin_permissions,
-	/client/proc/drop_bomb
 	)
 var/list/admin_verbs_rejuv = list(
 	/client/proc/respawn_character,
@@ -387,7 +387,7 @@ var/list/admin_verbs_hideable = list(
 	/client/proc/cmd_analyse_health_context,
 	/client/proc/cmd_analyse_health_panel,
 	/client/proc/visualpower,
-	/client/proc/visualpower_remove
+	/client/proc/visualpower_remove,
 	)
 var/list/admin_verbs_mod = list(
 	/datum/admins/proc/paralyze_mob,
@@ -749,7 +749,7 @@ var/list/admin_verbs_mentor = list(
 	set name = "Toggle Build Mode Self"
 	set category = "Special Verbs"
 
-	if(!check_rights(R_ADMIN))
+	if(!check_rights(R_BUILDMODE))
 		return
 
 	var/datum/click_handler/handler = mob.GetClickHandler()
@@ -817,7 +817,8 @@ var/list/admin_verbs_mentor = list(
 	set name = "Rename Silicon"
 	set category = "Admin"
 
-	if(!check_rights(R_ADMIN)) return
+	if(!check_rights(R_MOD))
+		return
 
 	var/mob/living/silicon/S = input("Select silicon.", "Rename Silicon.") as null|anything in GLOB.silicon_mob_list
 	if(!S) return
@@ -832,7 +833,8 @@ var/list/admin_verbs_mentor = list(
 	set name = "Manage Silicon Laws"
 	set category = "Admin"
 
-	if(!check_rights(R_ADMIN)) return
+	if(!check_rights(R_MOD))
+		return
 
 	var/mob/living/silicon/S = input("Select silicon.", "Manage Silicon Laws") as null|anything in GLOB.silicon_mob_list
 	if(!S) return
@@ -884,7 +886,8 @@ var/list/admin_verbs_mentor = list(
 	set desc = "Sets the security level"
 	set category = "Admin"
 
-	if(!check_rights(R_ADMIN))	return
+	if(!check_rights(R_MOD))
+		return
 
 	var/decl/security_state/security_state = decls_repository.get_decl(GLOB.using_map.security_state)
 

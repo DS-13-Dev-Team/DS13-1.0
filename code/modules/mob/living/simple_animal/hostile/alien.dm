@@ -29,6 +29,9 @@
 	heat_damage_per_tick = 20
 	can_escape = 1
 
+/mob/living/simple_animal/hostile/alien/Initialize()
+	. = ..()
+	AddElement(/datum/element/footstep, FOOTSTEP_MOB_CLAW, 0.5, -1)
 
 /mob/living/simple_animal/hostile/alien/drone
 	name = "alien drone"

@@ -10,7 +10,7 @@
 
 /decl/teleport/proc/teleport_target(var/atom/movable/target, var/atom/destination, var/precision)
 	var/list/possible_turfs = circlerangeturfs(destination, precision)
-	destination = safepick(possible_turfs)
+	destination = pick(possible_turfs)
 
 	target.forceMove(destination)
 	if(isliving(target))
@@ -34,7 +34,7 @@
 		return 0
 
 	for(var/type in teleport_blacklist)
-		if(!isemptylist(target.search_contents_for(type)))
+		if(!!length(target.search_contents_for(type)))
 			return 0
 	return 1
 
