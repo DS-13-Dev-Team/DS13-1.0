@@ -29,7 +29,8 @@
 	allowed_tools = list(
 	/obj/item/stack/medical/advanced/bruise_pack= 100,		\
 	/obj/item/stack/medical/bruise_pack = 40,	\
-	/obj/item/tool/tape_roll = 20
+	/obj/item/tool/tape_roll = 20,
+	/obj/item/gun/energy/cutter = 50 //Canonically a surgery tool anyway
 	)
 
 	min_duration = 70

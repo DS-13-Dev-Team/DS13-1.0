@@ -2171,11 +2171,8 @@
 /area/ERT/valor/medical)
 "eX" = (
 /obj/structure/table/standard,
-/obj/item/storage/firstaid/empty,
-/obj/item/storage/firstaid/empty{
-	pixel_y = 5
-	},
 /obj/effect/floor_decal/industrial/outline/blue,
+/obj/item/tool/wrench,
 /turf/simulated/floor/dank/mono,
 /area/ERT/valor/medical)
 "eY" = (
@@ -3458,6 +3455,7 @@
 "hT" = (
 /obj/structure/table/steel,
 /obj/item/reagent_containers/spray/sterilizine,
+/obj/item/reagent_containers/food/snacks/monkeycube/wrapped,
 /turf/unsimulated/floor/rescue_base,
 /area/ERT/escapebase)
 "hU" = (
@@ -3465,8 +3463,10 @@
 /turf/unsimulated/floor/rescue_base,
 /area/ERT/escapebase)
 "hV" = (
-/obj/item/storage/firstaid/surgery,
 /obj/structure/table/steel,
+/obj/item/clothing/gloves/latex/nitrile,
+/obj/item/clothing/mask/surgical,
+/obj/item/storage/firstaid/surgery,
 /turf/unsimulated/floor/rescue_base,
 /area/ERT/escapebase)
 "hW" = (
@@ -3476,6 +3476,7 @@
 /obj/item/reagent_containers/pill/adminordrazine,
 /obj/item/reagent_containers/pill/adminordrazine,
 /obj/item/reagent_containers/pill/adminordrazine,
+/obj/item/storage/pill_bottle/inaprovaline,
 /turf/unsimulated/floor/rescue_base,
 /area/ERT/escapebase)
 "hX" = (
@@ -3502,7 +3503,8 @@
 /turf/simulated/floor/dank/golf_gray,
 /area/ERT/valor)
 "ia" = (
-/obj/machinery/vending/medical,
+/obj/structure/table/woodentable,
+/obj/item/reagent_containers/food/snacks/sliceable/pizza/meatpizza,
 /turf/unsimulated/floor/rescue_base,
 /area/ERT/escapebase)
 "ib" = (
@@ -3675,10 +3677,8 @@
 /turf/unsimulated/floor/rescue_base,
 /area/ERT/escapebase)
 "iw" = (
-/obj/machinery/sleeper{
-	dir = 1;
-	icon_state = "sleeper_0"
-	},
+/obj/structure/bed/chair/wheelchair,
+/obj/structure/bed/chair/wheelchair,
 /turf/unsimulated/floor/rescue_base,
 /area/ERT/escapebase)
 "ix" = (
@@ -5086,6 +5086,11 @@
 "mv" = (
 /turf/unsimulated/wall,
 /area/ERT/escapebase)
+"mL" = (
+/obj/structure/table/woodentable,
+/obj/item/reagent_containers/food/snacks/muffin,
+/turf/unsimulated/floor/rescue_base,
+/area/ERT/escapebase)
 "mQ" = (
 /obj/effect/shuttle_landmark/escape_pod/transit/pod5,
 /turf/space/bluespace,
@@ -5095,7 +5100,7 @@
 /turf/unsimulated/floor/rescue_base,
 /area/ERT/escapebase)
 "on" = (
-/obj/item/reagent_containers/food/drinks/golden_cup,
+/obj/machinery/vending/games,
 /turf/unsimulated/floor/rescue_base,
 /area/ERT/escapebase)
 "os" = (
@@ -5111,6 +5116,11 @@
 /obj/effect/shuttle_landmark/escape_pod/transit/pod6,
 /turf/space/bluespace,
 /area/space)
+"pv" = (
+/obj/structure/table/woodentable,
+/obj/item/reagent_containers/food/snacks/onionrings,
+/turf/unsimulated/floor/rescue_base,
+/area/ERT/escapebase)
 "qA" = (
 /obj/effect/shuttle_landmark/valor/landing2,
 /turf/unsimulated/floor{
@@ -5138,6 +5148,12 @@
 /obj/effect/shuttle_landmark/escape_pod/transit/pod7,
 /turf/space/bluespace,
 /area/space)
+"th" = (
+/obj/machinery/vending/medical{
+	req_access = newlist()
+	},
+/turf/unsimulated/floor/rescue_base,
+/area/ERT/escapebase)
 "tx" = (
 /obj/effect/step_trigger/teleporter/random{
 	affect_ghosts = 0;
@@ -5153,10 +5169,33 @@
 	icon_state = "black"
 	},
 /area/space)
+"tQ" = (
+/obj/structure/table/woodentable,
+/obj/item/reagent_containers/food/snacks/deluxebaconcheeseburger,
+/turf/unsimulated/floor/rescue_base,
+/area/ERT/escapebase)
 "tW" = (
 /obj/effect/shuttle_landmark/escape_pod/transit/pod8,
 /turf/space/bluespace,
 /area/space)
+"uf" = (
+/obj/item/reagent_containers/glass/paint/random,
+/turf/unsimulated/floor/rescue_base,
+/area/ERT/escapebase)
+"uD" = (
+/obj/structure/table/standard,
+/obj/item/storage/firstaid/adv,
+/obj/item/storage/firstaid/stab,
+/obj/item/storage/pill_bottle/inaprovaline,
+/obj/item/storage/pill_bottle/inaprovaline,
+/obj/item/storage/pill_bottle/inaprovaline,
+/turf/unsimulated/floor/rescue_base,
+/area/ERT/escapebase)
+"uS" = (
+/obj/structure/table/woodentable,
+/obj/item/reagent_containers/food/drinks/golden_cup,
+/turf/unsimulated/floor/rescue_base,
+/area/ERT/escapebase)
 "uT" = (
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/snacks/fishburger,
@@ -5212,6 +5251,16 @@
 	},
 /turf/unsimulated/floor/rescue_base,
 /area/ERT/escapebase)
+"zQ" = (
+/obj/structure/table/woodentable,
+/obj/item/reagent_containers/food/snacks/cheesiehonkers,
+/turf/unsimulated/floor/rescue_base,
+/area/ERT/escapebase)
+"zZ" = (
+/obj/structure/table/woodentable,
+/obj/item/reagent_containers/food/snacks/donut,
+/turf/unsimulated/floor/rescue_base,
+/area/ERT/escapebase)
 "Ag" = (
 /obj/effect/shuttle_landmark/escape_pod/out/pod7,
 /turf/unsimulated/floor{
@@ -5237,6 +5286,12 @@
 	icon = 'icons/turf/floors.dmi';
 	icon_state = "plating"
 	},
+/area/ERT/escapebase)
+"AH" = (
+/obj/machinery/sleeper{
+	dir = 8
+	},
+/turf/unsimulated/floor/rescue_base,
 /area/ERT/escapebase)
 "Bh" = (
 /turf/unsimulated/floor{
@@ -5369,6 +5424,11 @@
 /obj/machinery/vending/boozeomat,
 /turf/unsimulated/floor/rescue_base,
 /area/ERT/escapebase)
+"Jj" = (
+/obj/structure/iv_drip,
+/obj/item/reagent_containers/ivbag/nanoblood,
+/turf/unsimulated/floor/rescue_base,
+/area/ERT/escapebase)
 "Kl" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
@@ -5412,6 +5472,20 @@
 /area/ERT/escapebase)
 "Lo" = (
 /obj/machinery/door/airlock,
+/turf/unsimulated/floor/rescue_base,
+/area/ERT/escapebase)
+"Ls" = (
+/obj/structure/table/woodentable,
+/obj/item/reagent_containers/food/snacks/enchiladas,
+/turf/unsimulated/floor/rescue_base,
+/area/ERT/escapebase)
+"LP" = (
+/obj/structure/table/woodentable,
+/obj/item/reagent_containers/food/snacks/applepie,
+/turf/unsimulated/floor/rescue_base,
+/area/ERT/escapebase)
+"Md" = (
+/obj/machinery/vending/cigarette,
 /turf/unsimulated/floor/rescue_base,
 /area/ERT/escapebase)
 "Me" = (
@@ -5499,6 +5573,13 @@
 	icon_state = "black"
 	},
 /area/space)
+"Ug" = (
+/obj/structure/table/standard,
+/obj/item/defibrillator/compact/loaded,
+/obj/item/defibrillator/compact/loaded,
+/obj/item/defibrillator/compact/loaded,
+/turf/unsimulated/floor/rescue_base,
+/area/ERT/escapebase)
 "UG" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -5537,6 +5618,11 @@
 	icon_state = "plating"
 	},
 /area/ERT/escapebase)
+"XQ" = (
+/obj/structure/table/woodentable,
+/obj/item/reagent_containers/food/snacks/loadedsteak,
+/turf/unsimulated/floor/rescue_base,
+/area/ERT/escapebase)
 "Yb" = (
 /obj/effect/shuttle_landmark/deliverance/landing2,
 /turf/unsimulated/floor{
@@ -5544,11 +5630,23 @@
 	icon_state = "plating"
 	},
 /area/ERT/escapebase)
+"YI" = (
+/obj/structure/table/standard,
+/obj/item/roller,
+/obj/item/roller,
+/obj/item/roller,
+/turf/unsimulated/floor/rescue_base,
+/area/ERT/escapebase)
 "YW" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8;
 	icon_state = "warning"
 	},
+/turf/unsimulated/floor/rescue_base,
+/area/ERT/escapebase)
+"Zz" = (
+/obj/structure/table/woodentable,
+/obj/item/reagent_containers/food/snacks/cheesyfries,
 /turf/unsimulated/floor/rescue_base,
 /area/ERT/escapebase)
 
@@ -16761,7 +16859,7 @@ Bh
 Bi
 hR
 MM
-MM
+uf
 hR
 mv
 aa
@@ -17628,15 +17726,15 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
+gK
+gK
+gK
+gK
 mv
 hR
 iy
 MM
-FR
+uS
 iG
 MM
 MM
@@ -17732,10 +17830,10 @@ mv
 mv
 mv
 mv
-mv
-mv
-mv
-mv
+hR
+hR
+hR
+hR
 hR
 iz
 MM
@@ -17836,9 +17934,9 @@ hR
 hR
 hR
 hR
-hR
-hR
-hR
+uD
+MM
+Ug
 hR
 iA
 MM
@@ -17848,7 +17946,7 @@ MM
 MM
 iH
 iH
-hR
+iL
 MM
 MM
 os
@@ -17935,13 +18033,13 @@ aa
 aa
 mv
 ow
-MM
+Jj
 hU
 MM
 hR
 Vu
 MM
-iw
+YI
 hR
 iB
 MM
@@ -17950,7 +18048,7 @@ iG
 MM
 MM
 FR
-An
+tQ
 hR
 MM
 MM
@@ -18052,8 +18150,8 @@ FR
 iG
 MM
 MM
-uT
 FR
+Ls
 hR
 MM
 MM
@@ -18145,13 +18243,13 @@ hT
 hV
 hW
 hR
-hY
+MM
 MM
 MM
 hR
 MM
 MM
-rD
+LP
 iG
 MM
 MM
@@ -18250,11 +18348,11 @@ hR
 hR
 MM
 MM
-MM
+AH
 hR
 MM
 iC
-FR
+zZ
 iG
 MM
 MM
@@ -18349,11 +18447,11 @@ mv
 mv
 mv
 mv
-mv
 hR
-ia
+th
 MM
 MM
+iu
 hR
 MM
 MM
@@ -18457,13 +18555,13 @@ hR
 MM
 MM
 MM
-hR
-MM
+ix
 MM
 MM
 iH
 iH
-MM
+iH
+iH
 MM
 MM
 hX
@@ -18557,16 +18655,16 @@ hT
 hV
 hW
 hR
-iu
-MM
-MM
-ix
 MM
 MM
 MM
-An
-uT
+Lo
 MM
+MM
+zQ
+Zz
+FR
+FR
 MM
 MM
 iL
@@ -18666,10 +18764,10 @@ MM
 Lo
 MM
 MM
-MM
 FR
+ia
+XQ
 FR
-MM
 MM
 MM
 hX
@@ -18759,20 +18857,20 @@ aa
 aa
 mv
 ow
-MM
+Jj
 hU
 MM
 hR
-iv
 MM
 MM
-Lo
 MM
+hR
 MM
 MM
 iI
 iI
-MM
+iI
+iI
 MM
 MM
 hR
@@ -18866,11 +18964,11 @@ hR
 hR
 hR
 hR
+iv
+AH
+hY
 hR
-hR
-hR
-hR
-MM
+Md
 MM
 MM
 MM
@@ -18968,10 +19066,10 @@ mv
 mv
 mv
 mv
-mv
-mv
-mv
-mv
+hR
+hR
+hR
+hR
 hR
 QZ
 MM
@@ -19070,10 +19168,10 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
+gK
+gK
+gK
+gK
 mv
 hR
 Cj
@@ -19082,7 +19180,7 @@ MM
 uT
 FR
 MM
-uT
+mL
 An
 hR
 MM
@@ -19183,7 +19281,7 @@ Cj
 MM
 MM
 FR
-An
+pv
 MM
 FR
 FR
@@ -19290,7 +19388,7 @@ iI
 MM
 iI
 iI
-hR
+iL
 MM
 MM
 MM

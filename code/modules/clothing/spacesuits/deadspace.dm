@@ -153,17 +153,16 @@
 	icon_state = "doom_helm"
 	item_state = "doom_helm"
 	desc = "A blocky, green helmet with a black visor."
-	armor = list(melee = 90, bullet = 90, laser = 80,energy = 90, bomb = 90, bio = 100, rad = 90)
+	armor = list(melee = 90, bullet = 90, laser = 80, energy = 90, bomb = 90, bio = 100, rad = 90)
 	siemens_coefficient = 1
 
 /obj/item/clothing/suit/space/doom
 	name = "DOOM Suit"
-	icon_state = "doom_suit_on"
-	icon = 'icons/obj/clothing/suits.dmi'
+	icon_state = "doom_suit"
 	item_state = "doom_suit"
 	desc = "A heavy military green suit, that looks strong enough to take on nearly anything. Professionally manufactured and well maintained, this suit of armor gleams as it catches the light."
 	w_class = ITEM_SIZE_HUGE
-	armor = list(melee = 90, bullet = 90, laser = 80,energy = 90, bomb = 90, bio = 100, rad = 90)
+	armor = list(melee = 90, bullet = 90, laser = 80, energy = 90, bomb = 90, bio = 100, rad = 90)
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
 	siemens_coefficient = 1
 

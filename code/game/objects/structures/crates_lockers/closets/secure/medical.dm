@@ -98,7 +98,9 @@
 		/obj/item/taperoll/medical,
 		/obj/item/storage/belt/medical,
 		/obj/item/clothing/glasses/hud/health,
-		/obj/item/rig_remover
+		/obj/item/clothing/head/surgery/blue,
+		/obj/item/rig_remover,
+		/obj/item/storage/firstaid/surgery
 	)
 
 /obj/structure/closet/secure_closet/SMO
@@ -131,7 +133,8 @@
 		/obj/item/storage/belt/medical,
 		/obj/item/clothing/glasses/hud/health,
 		/obj/item/reagent_containers/hypospray/vial,
-		/obj/item/rig_remover
+		/obj/item/rig_remover,
+		/obj/item/storage/firstaid/surgery
 	)
 
 /obj/structure/closet/secure_closet/chemical

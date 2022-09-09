@@ -517,15 +517,17 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
-/obj/item/paper_bin,
 /obj/machinery/button/remote/blast_door{
 	dir = 8;
 	id = "m_reception2";
 	name = "Reception Door Lockdown";
 	pixel_x = 24
 	},
-/obj/item/folder/white,
-/obj/item/pen,
+/obj/item/stamp/medical,
+/obj/item/stamp/denied{
+	pixel_x = 2;
+	pixel_y = 2
+	},
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/medical/lobby/reception)
 "abs" = (
@@ -557,9 +559,6 @@
 /obj/item/whip/chainofcommand,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
-	},
-/obj/machinery/light{
-	dir = 1
 	},
 /obj/item/stack/power_node,
 /obj/item/stack/power_node,
@@ -774,6 +773,8 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
+/obj/item/clothing/gloves/latex/nitrile,
+/obj/item/clothing/mask/surgical,
 /turf/simulated/floor/dank/mono,
 /area/ishimura/upper/medical/surgery/one)
 "abX" = (
@@ -788,6 +789,8 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 8
 	},
+/obj/item/clothing/gloves/latex/nitrile,
+/obj/item/clothing/mask/surgical,
 /turf/simulated/floor/dank/mono,
 /area/ishimura/upper/medical/surgery/two)
 "abZ" = (
@@ -996,13 +999,16 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
-/obj/machinery/light,
 /obj/item/stamp/denied{
 	pixel_x = 2;
 	pixel_y = 2
 	},
 /obj/machinery/keycard_auth{
 	pixel_x = -30
+	},
+/obj/item/radio/intercom{
+	dir = 1;
+	pixel_y = -28
 	},
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/command/bridge)
@@ -2273,6 +2279,7 @@
 /obj/item/tool/wrench,
 /obj/effect/floor_decal/corner/grey/mono,
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/item/tool/screwdriver,
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/medical)
 "afv" = (
@@ -2285,18 +2292,12 @@
 /area/ishimura/upper/engineering/engine_room)
 "afw" = (
 /obj/structure/table/standard,
-/obj/item/toner{
-	pixel_y = -1
-	},
-/obj/item/toner{
-	pixel_y = 8
-	},
-/obj/item/toner{
-	pixel_y = 4
-	},
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/item/paper_bin,
+/obj/item/folder/white,
+/obj/item/pen,
 /turf/simulated/floor/tiled/white,
 /area/ishimura/upper/medical/lobby/reception)
 "afx" = (
@@ -4145,6 +4146,8 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
+/obj/effect/floor_decal/dank/outline,
+/obj/machinery/portable_atmospherics/canister/air,
 /turf/simulated/floor/tiled/techfloor,
 /area/ishimura/upper/engineering/atmospherics)
 "akr" = (
@@ -4176,12 +4179,16 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/obj/effect/floor_decal/dank/outline,
 /turf/simulated/floor/tiled/techfloor,
 /area/ishimura/upper/engineering/atmospherics)
 "akt" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 5
 	},
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/obj/effect/floor_decal/dank/outline,
 /turf/simulated/floor/tiled/techfloor,
 /area/ishimura/upper/engineering/atmospherics)
 "aku" = (
@@ -8438,6 +8445,7 @@
 	pixel_x = 25
 	},
 /obj/random/loot/often/few,
+/obj/item/tool/repairkit,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/engineering/spare_storage)
 "atb" = (
@@ -9005,10 +9013,9 @@
 /area/ishimura/upper/engineering/breakroom)
 "aug" = (
 /obj/structure/table/gamblingtable,
-/obj/item/spacecash/ewallet/random/c10000,
-/obj/item/spacecash/ewallet/random/c10000,
 /obj/item/spacecash/ewallet/random/c200,
 /obj/item/spacecash/ewallet/random/c200,
+/obj/item/spacecash/ewallet/random/c1000,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/misc/janitorcloset/aft)
 "auh" = (
@@ -10931,12 +10938,8 @@
 	id = "m_reception";
 	name = "Reception Shutter Control"
 	},
-/obj/item/stamp/medical,
-/obj/item/stamp/denied{
-	pixel_x = 2;
-	pixel_y = 2
-	},
 /obj/effect/floor_decal/corner/grey/mono,
+/obj/item/storage/pill_bottle/citalopram,
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/medical/lobby/reception)
 "axE" = (
@@ -11474,6 +11477,7 @@
 	},
 /obj/structure/table/standard,
 /obj/effect/floor_decal/corner/grey/mono,
+/obj/machinery/recharger,
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/medical)
 "ayG" = (
@@ -11729,6 +11733,7 @@
 /obj/effect/floor_decal/corner/grey/mono,
 /obj/item/defibrillator/loaded,
 /obj/item/defibrillator/loaded,
+/obj/machinery/recharger,
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/medical)
 "ayZ" = (
@@ -11959,6 +11964,15 @@
 /obj/effect/floor_decal/corner/grey/mono,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/camera/network/medbay,
+/obj/item/toner{
+	pixel_y = 8
+	},
+/obj/item/toner{
+	pixel_y = 4
+	},
+/obj/item/toner{
+	pixel_y = -1
+	},
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/medical/lobby/reception)
 "azu" = (
@@ -12868,9 +12882,9 @@
 	d2 = 2;
 	icon_state = "0-2"
 	},
-/obj/item/stack/material/phoron/ten,
 /obj/item/reagent_containers/glass/beaker/bluespace,
 /obj/effect/floor_decal/corner/grey/mono,
+/obj/item/reagent_containers/glass/beaker/bluespace,
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/research/chemistry)
 "aAX" = (
@@ -12881,12 +12895,12 @@
 /obj/machinery/alarm{
 	pixel_y = 23
 	},
-/obj/structure/table/steel,
 /obj/item/storage/box/beakers,
 /obj/item/storage/box/rxglasses,
 /obj/effect/floor_decal/corner/grey/mono,
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/item/storage/box/droppers,
+/obj/structure/closet/secure_closet/chemical,
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/research/chemistry)
 "aAY" = (
@@ -13186,7 +13200,7 @@
 	dir = 8;
 	id_tag = "med_exit";
 	name = "Clinic Main Entrance";
-	req_one_access = list(2,3)
+	req_access = newlist()
 	},
 /obj/machinery/door/firedoor{
 	dir = 4
@@ -13729,7 +13743,10 @@
 	dir = 4
 	},
 /obj/structure/table/standard,
-/obj/item/storage/box/ids,
+/obj/item/storage/box/holoids,
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/command/bridge)
 "aCw" = (
@@ -15722,9 +15739,9 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/obj/structure/bed/roller,
 /obj/effect/floor_decal/corner/grey/mono,
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/structure/closet/crate/med_crate/burn,
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/medical/supply_storage)
 "aGc" = (
@@ -15769,8 +15786,8 @@
 /obj/structure/table/steel,
 /obj/item/storage/box/pillbottles,
 /obj/item/storage/box/pillbottles,
-/obj/item/storage/backpack/satchel_chem,
 /obj/effect/floor_decal/corner/grey/mono,
+/obj/item/stack/material/phoron/ten,
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/research/chemistry)
 "aGh" = (
@@ -16006,6 +16023,10 @@
 /obj/structure/table/standard,
 /obj/effect/floor_decal/corner/grey/mono,
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/item/storage/firstaid/stab{
+	pixel_x = 6;
+	pixel_y = 6
+	},
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/medical/supply_storage)
 "aGD" = (
@@ -16169,9 +16190,17 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/structure/bed/roller,
 /obj/effect/floor_decal/corner/grey/mono,
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/structure/bed/chair/wheelchair{
+	dir = 8
+	},
+/obj/structure/bed/chair/wheelchair{
+	dir = 8
+	},
+/obj/structure/bed/chair/wheelchair{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/medical/supply_storage)
 "aGV" = (
@@ -16218,8 +16247,8 @@
 /obj/effect/floor_decal/corner/grey{
 	dir = 10
 	},
-/obj/structure/closet/secure_closet/medical_wall{
-	pixel_y = -32
+/obj/structure/closet/medical_wall/filled{
+	pixel_y = -30
 	},
 /turf/simulated/floor/tiled/white,
 /area/ishimura/upper/medical)
@@ -17761,11 +17790,9 @@
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/upper/security/checkpoint/bridge)
 "aJB" = (
-/obj/structure/bed/chair/wheelchair{
-	dir = 8
-	},
 /obj/effect/floor_decal/corner/grey/mono,
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/structure/bed/roller,
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/medical/supply_storage)
 "aJC" = (
@@ -19159,10 +19186,7 @@
 	},
 /obj/structure/table/standard,
 /obj/item/megaphone,
-/obj/item/radio/intercom{
-	dir = 1;
-	pixel_y = -28
-	},
+/obj/machinery/light,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/command/bridge)
 "aMl" = (
@@ -19182,6 +19206,7 @@
 "aMn" = (
 /obj/machinery/r_n_d/circuit_imprinter,
 /obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/item/reagent_containers/glass/beaker/sulphuric,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/research/biolab)
 "aMo" = (
@@ -19826,7 +19851,7 @@
 	dir = 8;
 	id_tag = "med_exit";
 	name = "Clinic Main Entrance";
-	req_one_access = list(2,3)
+	req_access = newlist()
 	},
 /obj/machinery/door/blast/shutters/open{
 	dir = 8;
@@ -22808,6 +22833,7 @@
 /obj/effect/floor_decal/corner/grey/mono,
 /obj/item/storage/box/syringes,
 /obj/item/storage/box/syringes,
+/obj/item/reagent_containers/spray/cleaner,
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/medical)
 "aSV" = (
@@ -22929,11 +22955,7 @@
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/upper/misc/hallway/central)
 "aTg" = (
-/obj/item/radio/intercom{
-	pixel_y = 24
-	},
-/obj/structure/table/standard,
-/obj/item/storage/toolbox/emergency,
+/obj/machinery/store,
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/upper/misc/hallway/central)
 "aTh" = (
@@ -23865,8 +23887,8 @@
 /obj/machinery/camera/network/medbay{
 	dir = 1
 	},
-/obj/structure/closet/secure_closet/medical_wall{
-	pixel_y = -32
+/obj/structure/closet/medical_wall/filled{
+	pixel_y = -30
 	},
 /turf/simulated/floor/dank/hardwood/alt,
 /area/ishimura/upper/medical/lobby)
@@ -24810,6 +24832,8 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
+/obj/structure/table/standard,
+/obj/item/storage/toolbox/emergency,
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/upper/misc/hallway/central)
 "aWD" = (
@@ -24818,6 +24842,10 @@
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
+	},
+/obj/item/radio/intercom{
+	dir = 8;
+	pixel_x = 21
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/upper/misc/hallway/central)
@@ -26771,11 +26799,13 @@
 /turf/simulated/floor/dank/grater,
 /area/ishimura/upper/security/brig)
 "bad" = (
-/obj/machinery/portable_atmospherics/canister/oxygen/prechilled,
-/obj/effect/floor_decal/corner/grey/mono,
-/obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/tiled/white/monotile,
-/area/ishimura/upper/medical/supply_storage)
+/obj/effect/floor_decal/techfloor{
+	dir = 9
+	},
+/obj/effect/floor_decal/dank/outline,
+/obj/machinery/portable_atmospherics/canister/air,
+/turf/simulated/floor/tiled/techfloor,
+/area/ishimura/upper/engineering/atmospherics)
 "bae" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
@@ -27184,7 +27214,9 @@
 "baU" = (
 /obj/structure/table/standard,
 /obj/effect/floor_decal/corner/grey/mono,
-/obj/item/reagent_containers/spray/cleaner,
+/obj/item/roller,
+/obj/item/roller,
+/obj/item/roller,
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/medical)
 "baV" = (
@@ -27226,6 +27258,7 @@
 "bbb" = (
 /obj/structure/table/standard,
 /obj/effect/floor_decal/corner/grey/mono,
+/obj/item/reagent_containers/spray/cleaner,
 /obj/item/reagent_containers/spray/cleaner,
 /obj/item/reagent_containers/spray/cleaner,
 /turf/simulated/floor/tiled/white/monotile,
@@ -27980,6 +28013,7 @@
 	dir = 4
 	},
 /obj/structure/table/standard,
+/obj/item/storage/box/monkeycubes,
 /turf/simulated/floor/dank/medical,
 /area/ishimura/upper/medical/bpc)
 "bcF" = (
@@ -28399,8 +28433,13 @@
 /area/ishimura/upper/medical)
 "bdv" = (
 /obj/structure/table/standard,
-/obj/item/reagent_containers/spray/cleaner,
 /obj/effect/floor_decal/corner/grey/mono,
+/obj/item/roller,
+/obj/item/roller,
+/obj/item/roller,
+/obj/item/roller,
+/obj/item/roller,
+/obj/item/roller,
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/medical)
 "bdw" = (
@@ -28454,6 +28493,8 @@
 	dir = 1;
 	pixel_y = -30
 	},
+/obj/structure/iv_drip,
+/obj/structure/iv_drip,
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/medical/supply_storage)
 "bdA" = (
@@ -28473,6 +28514,7 @@
 /obj/effect/floor_decal/corner/grey/mono,
 /obj/item/reagent_containers/spray/cleaner,
 /obj/item/reagent_containers/spray/cleaner,
+/obj/item/storage/pill_bottle/citalopram,
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/research)
 "bdD" = (
@@ -30937,8 +30979,8 @@
 /obj/effect/floor_decal/corner/grey{
 	dir = 10
 	},
-/obj/structure/closet/secure_closet/medical_wall{
-	pixel_y = -32
+/obj/structure/closet/medical_wall/filled{
+	pixel_y = -30
 	},
 /turf/simulated/floor/tiled/white,
 /area/ishimura/upper/medical)
@@ -47826,7 +47868,7 @@ aSR
 aTm
 ara
 ajG
-aki
+bad
 akI
 akK
 amz
@@ -70738,7 +70780,7 @@ aBF
 aGb
 aGU
 aJB
-bad
+aJB
 ayE
 nfk
 bcp

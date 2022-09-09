@@ -926,7 +926,7 @@
 					/obj/item/storage/pill_bottle/inaprovaline = 5, /obj/item/storage/pill_bottle/sugariron = 2,
 					/obj/item/reagent_containers/syringe = 12,
 					/obj/item/healthanalyzer = 5, /obj/item/stack/medical/advanced/bruise_pack = 5, /obj/item/stack/medical/advanced/ointment = 5,
-					/obj/item/stack/medical/bruise_pack = 10, /obj/item/stack/medical/ointment = 10, /obj/item/defibrillator/loaded = 2, /obj/item/defibrillator/compact/loaded = 1,
+					/obj/item/stack/medical/bruise_pack = 10, /obj/item/stack/medical/ointment = 10, /obj/item/defibrillator/loaded = 1, /obj/item/defibrillator/compact/loaded = 2,
 					/obj/item/stack/medical/splint = 2, /obj/item/reagent_containers/hypospray/autoinjector/pain = 4, /obj/item/storage/pill_bottle/peridaxon = 1)
 	contraband = list(/obj/item/clothing/mask/chewable/candy/lolli/meds = 8, /obj/item/storage/pill_bottle/dermaline = 4,
 					/obj/item/reagent_containers/pill/tox = 3,/obj/item/reagent_containers/pill/stox = 4,/obj/item/reagent_containers/pill/antitox = 6,
@@ -1047,7 +1047,7 @@
 					/obj/item/seeds/cabbageseed = 3,/obj/item/seeds/grapeseed = 3,/obj/item/seeds/pumpkinseed = 3,/obj/item/seeds/cherryseed = 3,/obj/item/seeds/plastiseed = 3,/obj/item/seeds/riceseed = 3,/obj/item/seeds/lavenderseed = 3,
 					/obj/item/seeds/tobaccoseed = 3, /obj/item/seeds/finetobaccoseed = 3, /obj/item/seeds/puretobaccoseed = 3)
 	contraband = list(/obj/item/seeds/amanitamycelium = 2,/obj/item/seeds/glowshroom = 2,/obj/item/seeds/libertymycelium = 2,/obj/item/seeds/mtearseed = 2,
-					  /obj/item/seeds/nettleseed = 2,/obj/item/seeds/reishimycelium = 2,/obj/item/seeds/reishimycelium = 2,/obj/item/seeds/shandseed = 2,)
+					/obj/item/seeds/nettleseed = 2,/obj/item/seeds/reishimycelium = 2,/obj/item/seeds/reishimycelium = 2,/obj/item/seeds/shandseed = 2,)
 	premium = list(/obj/item/reagent_containers/spray/waterflower = 1)
 	var/queued = FALSE
 
@@ -1241,7 +1241,17 @@
 	product_slogans = "Escape to a fantasy world!;Fuel your gambling addiction!;Ruin your friendships!"
 	product_ads = "Elves and dwarves!;Totally not satanic!;Fun times forever!"
 	icon_state = "games"
-	products = list(/obj/item/toy/blink = 5, /obj/item/toy/spinningtoy = 2, /obj/item/deck/cards = 5, /obj/item/deck/tarot = 5, /obj/item/pack/cardemon = 6, /obj/item/pack/spaceball = 6, /obj/item/storage/pill_bottle/dice_nerd = 5, /obj/item/storage/pill_bottle/dice = 5, /obj/item/storage/box/checkers = 2, /obj/item/storage/box/checkers/chess/red = 2, /obj/item/storage/box/checkers/chess = 2)
+	products = list(/obj/item/toy/blink = 5,
+					/obj/item/toy/spinningtoy = 2,
+					/obj/item/deck/cards = 5,
+					/obj/item/deck/tarot = 5,
+					/obj/item/pack/cardemon = 6,
+					/obj/item/pack/spaceball = 6,
+					/obj/item/storage/pill_bottle/dice_nerd = 5,
+					/obj/item/storage/pill_bottle/dice = 5,
+					/obj/item/storage/box/checkers = 2,
+					/obj/item/storage/box/checkers/chess/red = 2,
+					/obj/item/storage/box/checkers/chess = 2)
 	prices = list(/obj/item/toy/blink = 3, /obj/item/toy/spinningtoy = 10, /obj/item/deck/tarot = 3, /obj/item/deck/cards = 3, /obj/item/pack/cardemon = 5, /obj/item/pack/spaceball = 5, /obj/item/storage/pill_bottle/dice_nerd = 6, /obj/item/storage/pill_bottle/dice = 6, /obj/item/storage/box/checkers = 10, /obj/item/storage/box/checkers/chess/red = 10, /obj/item/storage/box/checkers/chess = 10)
 	premium = list(/obj/item/gun/projectile/revolver/capgun = 1, /obj/item/ammo_magazine/caps = 4)
 	contraband = list(/obj/item/reagent_containers/spray/waterflower = 2, /obj/item/storage/box/snappops = 3)
@@ -1265,15 +1275,15 @@
 					)
 	premium = list(/obj/item/soap/gold = 1)
 	contraband = list(/obj/item/soap/syndie = 4,
-					  /obj/item/inflatable_duck = 1)
+					/obj/item/inflatable_duck = 1)
 	prices = list(/obj/item/soap = 20,
-				  /obj/item/soap/nanotrasen = 30,
-				  /obj/item/soap/deluxe = 60,
-				  /obj/item/soap/syndie = 10,
-				  /obj/item/mirror = 40,
-				  /obj/item/haircomb/random = 40,
-				  /obj/item/haircomb/brush = 80,
-				  /obj/item/towel/random = 50
+					/obj/item/soap/nanotrasen = 30,
+					/obj/item/soap/deluxe = 60,
+					/obj/item/soap/syndie = 10,
+					/obj/item/mirror = 40,
+					/obj/item/haircomb/random = 40,
+					/obj/item/haircomb/brush = 80,
+					/obj/item/towel/random = 50
 					)
 
 //a food variant of the boda machine, only has one item currently.

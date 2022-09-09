@@ -205,6 +205,7 @@
 /area/ishimura/tramdeck/switchingstation/lower)
 "aV" = (
 /obj/effect/wallframe_spawn/reinforced/hull,
+/obj/machinery/door/firedoor/border_only,
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/underforemaintenance)
 "aW" = (
@@ -5499,6 +5500,12 @@
 /obj/structure/table/steel,
 /turf/simulated/floor/dank/heavy,
 /area/ishimura/tramdeck/switchingstation/lower)
+"zK" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/airlock/civilian,
+/turf/simulated/floor,
+/area/ishimura/tramdeck/tram/undertunnel/underforemaintenance)
 "Aa" = (
 /obj/machinery/vending/hotfood,
 /turf/simulated/floor/plating,
@@ -5543,6 +5550,16 @@
 	},
 /turf/simulated/floor/dank/tramcorner,
 /area/ishimura/tramdeck/switchingstation/lower)
+"Eb" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/door/airlock/civilian,
+/turf/simulated/floor,
+/area/ishimura/tramdeck/tram/undertunnel/underforemaintenance)
 "ES" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -5686,6 +5703,12 @@
 	},
 /turf/simulated/floor,
 /area/ishimura/tramdeck/switchingstation/lower)
+"Nv" = (
+/obj/machinery/alarm{
+	pixel_y = 23
+	},
+/turf/simulated/floor,
+/area/ishimura/tramdeck/tram/undertunnel/underforemaintenance)
 "NJ" = (
 /obj/item/reagent_containers/food/snacks/old/fries,
 /turf/simulated/floor/plating,
@@ -44485,7 +44508,7 @@ cS
 cS
 cS
 cS
-cS
+zK
 cS
 kk
 cS
@@ -51534,7 +51557,7 @@ aa
 iq
 cf
 cf
-cz
+Eb
 cf
 tq
 tq
@@ -53806,7 +53829,7 @@ aa
 aa
 iq
 cf
-ci
+Nv
 db
 cf
 tq

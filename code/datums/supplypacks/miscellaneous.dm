@@ -145,8 +145,13 @@
 					/obj/item/clothing/head/nun_hood,
 					/obj/item/clothing/suit/chaplain_hoodie,
 					/obj/item/clothing/head/chaplain_hood,
+					/obj/item/clothing/under/deadspace/clergy,
+					/obj/item/clothing/suit/clergyover,
+					/obj/item/clothing/head/clergyhood,
 					/obj/item/storage/backpack/cultpack,
-					/obj/item/storage/fancy/candle_box = 3)
+					/obj/item/megaphone,
+					/obj/item/flame/lighter/zippo,
+					/obj/item/storage/fancy/candle_box = 4)
 	cost = 10
 	containername = "\improper Chaplain equipment crate"
 

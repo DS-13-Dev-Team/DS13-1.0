@@ -36,7 +36,7 @@
 /area/mining_colony/security)
 "aag" = (
 /turf/simulated/wall/r_wall,
-/area/mining_colony/interior/enginieering)
+/area/mining_colony/interior/enginieering/paint_storage)
 "aah" = (
 /obj/structure/bed/chair,
 /turf/simulated/floor/dank/mono,
@@ -330,6 +330,7 @@
 /obj/item/computer_hardware/hard_drive/portable/autorun/manual/surgery{
 	pixel_y = 10
 	},
+/obj/item/reagent_containers/spray/cleaner,
 /turf/simulated/floor/tiled/white/monotile,
 /area/mining_colony/interior/medbay)
 "abg" = (
@@ -377,6 +378,10 @@
 "abp" = (
 /obj/effect/wallframe_spawn/reinforced,
 /obj/machinery/door/firedoor,
+/obj/machinery/door/blast/shutters/open{
+	icon_state = "shutter0";
+	id = "med_lock"
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/mining_colony/interior/medbay)
 "abq" = (
@@ -5211,6 +5216,10 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/firedoor,
+/obj/machinery/door/blast/shutters/open{
+	icon_state = "shutter0";
+	id = "med_lock"
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/mining_colony/interior/medbay)
 "aoT" = (
@@ -5409,7 +5418,9 @@
 /obj/item/storage/firstaid/toxin,
 /obj/item/storage/firstaid/trauma,
 /obj/item/storage/firstaid/adv,
-/obj/item/storage/firstaid/surgery,
+/obj/machinery/light/small{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/mining_colony/interior/medbay/medstorage)
 "apt" = (
@@ -5497,6 +5508,11 @@
 /obj/effect/floor_decal/dank/frame_tiled_large{
 	dir = 8
 	},
+/obj/machinery/button/holosign{
+	id = "surgery_1";
+	pixel_x = -24;
+	pixel_y = 3
+	},
 /turf/simulated/floor/dank/medical,
 /area/mining_colony/interior/medbay/surgery1)
 "apI" = (
@@ -5559,6 +5575,7 @@
 "apR" = (
 /obj/structure/closet/crate/med_crate/trauma,
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/item/storage/firstaid/surgery,
 /turf/simulated/floor/tiled/monotile,
 /area/mining_colony/interior/medbay/medstorage)
 "apS" = (
@@ -5654,6 +5671,11 @@
 "aqe" = (
 /obj/effect/floor_decal/dank/frame_tiled_large{
 	dir = 8
+	},
+/obj/machinery/button/holosign{
+	id = "surgery_2";
+	pixel_x = -24;
+	pixel_y = 3
 	},
 /turf/simulated/floor/dank/medical,
 /area/mining_colony/interior/medbay/surgery2)
@@ -5935,6 +5957,7 @@
 "aqU" = (
 /obj/structure/table/standard,
 /obj/item/tool/wrench,
+/obj/item/tool/screwdriver,
 /turf/simulated/floor/tiled/white/monotile,
 /area/mining_colony/interior/medbay)
 "aqV" = (
@@ -5943,6 +5966,7 @@
 /obj/item/reagent_containers/glass/beaker/cryoxadone,
 /obj/item/reagent_containers/glass/beaker/cryoxadone,
 /obj/item/reagent_containers/glass/beaker/cryoxadone,
+/obj/item/reagent_containers/spray/cleaner,
 /turf/simulated/floor/tiled/white/monotile,
 /area/mining_colony/interior/medbay)
 "aqW" = (
@@ -6029,6 +6053,7 @@
 	dir = 8
 	},
 /obj/item/stack/material/phoron/ten,
+/obj/item/reagent_containers/spray/cleaner,
 /turf/simulated/floor/tiled/white/monotile,
 /area/mining_colony/interior/medbay/chemestry)
 "ark" = (
@@ -6058,6 +6083,7 @@
 /obj/item/clothing/shoes/brown,
 /obj/item/clothing/shoes/dutyboots,
 /obj/item/clothing/shoes/leather,
+/obj/item/clothing/shoes/slippers_worn,
 /turf/simulated/floor/dank/heavy,
 /area/mining_colony/interior/apartament)
 "arq" = (
@@ -6718,6 +6744,7 @@
 /obj/item/storage/pill_bottle/citalopram,
 /obj/item/storage/pill_bottle/citalopram,
 /obj/machinery/door/firedoor,
+/obj/item/storage/pill_bottle/noexcutite,
 /turf/simulated/floor/tiled/white/monotile,
 /area/mining_colony/interior/medbay)
 "ato" = (
@@ -7737,7 +7764,6 @@
 /obj/item/storage/box/lights/tubes,
 /obj/item/lightreplacer,
 /obj/item/lightreplacer,
-/obj/item/floor_painter,
 /turf/simulated/floor/dank/slides,
 /area/mining_colony/interior/enginieering/main_room)
 "awz" = (
@@ -8255,10 +8281,6 @@
 /area/mining_colony/c12_deadspace)
 "ayk" = (
 /obj/structure/closet/wardrobe/chaplain_black,
-/obj/item/storage/fancy/candle_box,
-/obj/item/storage/fancy/candle_box,
-/obj/item/flame/lighter/zippo,
-/obj/item/megaphone,
 /obj/item/trash/snack_bowl{
 	desc = "A commercial replica piece of a marker.";
 	icon = 'icons/obj/marker_shard.dmi';
@@ -11359,8 +11381,8 @@
 "aGU" = (
 /obj/structure/cable{
 	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
+	d2 = 8;
+	icon_state = "2-8"
 	},
 /turf/simulated/floor/dank/maint,
 /area/mining_colony/interior/enginieering/telecomms)
@@ -13126,12 +13148,6 @@
 /area/mining_colony/interior/bathroom)
 "aLs" = (
 /obj/structure/closet/jcloset,
-/obj/item/grenade/chem_grenade/cleaner,
-/obj/item/grenade/chem_grenade/cleaner,
-/obj/item/reagent_containers/spray/cleaner,
-/obj/item/rig_module/grenade_launcher/cleaner,
-/obj/item/clothing/accessory/solgov/specialty/janitor,
-/obj/item/rig_module/fabricator/wf_sign,
 /turf/simulated/floor/plating,
 /area/mining_colony/interior/janitor)
 "aLt" = (
@@ -13170,15 +13186,9 @@
 /area/mining_colony/interior/science/scienceoffices)
 "aLw" = (
 /obj/structure/closet/jcloset,
-/obj/item/grenade/chem_grenade/cleaner,
-/obj/item/grenade/chem_grenade/cleaner,
-/obj/item/reagent_containers/spray/cleaner,
-/obj/item/rig_module/grenade_launcher/cleaner,
-/obj/item/clothing/accessory/solgov/specialty/janitor,
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/item/rig_module/fabricator/wf_sign,
 /turf/simulated/floor/plating,
 /area/mining_colony/interior/janitor)
 "aLx" = (
@@ -13261,22 +13271,22 @@
 /turf/simulated/floor/tiled/white,
 /area/mining_colony/interior/medbay)
 "aLI" = (
-/obj/structure/table/standard,
-/obj/item/defibrillator/loaded,
-/obj/item/defibrillator/loaded,
-/obj/effect/floor_decal/dank/border{
-	dir = 8
+/obj/machinery/light/small{
+	dir = 4;
+	icon_state = "bulb1"
 	},
-/obj/machinery/recharger,
-/turf/simulated/floor/tiled/white,
-/area/mining_colony/interior/medbay)
+/turf/simulated/floor/tiled/dark,
+/area/mining_colony/interior)
 "aLJ" = (
-/obj/structure/iv_drip,
 /obj/effect/floor_decal/dank/border_corner,
 /obj/item/radio/intercom/department/medbay{
 	dir = 4;
 	pixel_x = -21
 	},
+/obj/structure/table/standard,
+/obj/machinery/recharger,
+/obj/item/storage/box/bodybags,
+/obj/item/storage/box/bodybags,
 /turf/simulated/floor/tiled/white,
 /area/mining_colony/interior/medbay)
 "aLK" = (
@@ -13288,15 +13298,15 @@
 /turf/simulated/floor/tiled/white,
 /area/mining_colony/interior/medbay)
 "aLM" = (
-/obj/structure/table/standard,
-/obj/item/storage/box/bodybags,
-/obj/item/storage/box/bodybags,
-/obj/machinery/recharger,
-/obj/effect/floor_decal/dank/border{
+/obj/effect/floor_decal/dank/outline,
+/obj/structure/table/rack,
+/obj/item/reagent_containers/glass/paint/red,
+/obj/item/reagent_containers/glass/paint/red,
+/obj/item/reagent_containers/glass/paint/red,
+/turf/simulated/floor/dank/slides{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/white,
-/area/mining_colony/interior/medbay)
+/area/mining_colony/interior/enginieering/paint_storage)
 "aLN" = (
 /obj/effect/floor_decal/dank/border_corner,
 /turf/simulated/floor/tiled/white,
@@ -17046,12 +17056,12 @@
 /area/mining_colony/interior/civ_hall)
 "aVk" = (
 /obj/machinery/power/apc/high{
-	dir = 4;
-	pixel_x = 24
+	dir = 1;
+	pixel_y = 24
 	},
 /obj/structure/cable{
-	d2 = 8;
-	icon_state = "0-8"
+	d2 = 2;
+	icon_state = "0-2"
 	},
 /turf/simulated/floor/dank/maint,
 /area/mining_colony/interior/enginieering/telecomms)
@@ -17564,13 +17574,13 @@
 /turf/simulated/floor/plating,
 /area/mining_colony/interior/maint)
 "aWs" = (
-/obj/machinery/button/remote/blast_door{
-	id = "excav_area_22";
-	name = "Mining Preparation Shutters";
-	pixel_x = 30
-	},
-/turf/simulated/floor/dank/grater,
-/area/mining_colony/abandoned/mining_prep)
+/obj/structure/table/rack,
+/obj/effect/floor_decal/dank/outline,
+/obj/item/reagent_containers/glass/paint/random,
+/obj/item/reagent_containers/glass/paint/random,
+/obj/item/reagent_containers/glass/paint/random,
+/turf/simulated/floor/dank/slides,
+/area/mining_colony/interior/enginieering/paint_storage)
 "aWt" = (
 /obj/machinery/door/airlock/maintenance{
 	dir = 4;
@@ -18452,7 +18462,6 @@
 /obj/item/stack/material/glass{
 	amount = 20
 	},
-/obj/item/stack/material/osmium/ten,
 /obj/item/stack/material/plasteel/ten,
 /obj/item/stack/material/plastic{
 	amount = 30
@@ -18463,6 +18472,8 @@
 /obj/effect/floor_decal/corner/grey/border{
 	dir = 4
 	},
+/obj/item/stack/material/glass/ten,
+/obj/random/material/rare,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/mining_colony/interior/science/researchandev)
 "aZh" = (
@@ -20361,6 +20372,9 @@
 /obj/machinery/door/firedoor{
 	dir = 4
 	},
+/obj/machinery/holosign/surgery{
+	id = "surgery_1"
+	},
 /turf/simulated/floor/tiled/white/monotile,
 /area/mining_colony/interior/medbay/surgery1)
 "bcS" = (
@@ -20533,6 +20547,9 @@
 	},
 /obj/machinery/door/firedoor{
 	dir = 4
+	},
+/obj/machinery/holosign/surgery{
+	id = "surgery_2"
 	},
 /turf/simulated/floor/tiled/white/monotile,
 /area/mining_colony/interior/medbay/surgery2)
@@ -21174,6 +21191,11 @@
 /area/mining_colony/interior/mining/hallway)
 "beo" = (
 /obj/effect/decal/cleanable/blood/oil,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/enginieering/main_room)
 "bep" = (
@@ -21757,9 +21779,11 @@
 "bfC" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/dank/outline,
-/obj/item/storage/briefcase/inflatable,
-/obj/item/storage/briefcase/inflatable,
-/obj/item/storage/briefcase/inflatable,
+/obj/item/stack/material/wood/ten,
+/obj/item/stack/material/leather{
+	amount = 20
+	},
+/obj/item/stack/rods/fifty,
 /turf/simulated/floor/dank/slides,
 /area/mining_colony/interior/enginieering/main_room)
 "bfD" = (
@@ -21890,23 +21914,22 @@
 /turf/simulated/floor/dank/maint,
 /area/mining_colony/interior/enginieering/main_room)
 "bfO" = (
-/obj/structure/table/rack,
 /obj/effect/floor_decal/dank/outline,
-/obj/item/storage/toolbox/electrical,
-/obj/item/storage/toolbox/mechanical,
-/obj/item/storage/toolbox/emergency,
-/turf/simulated/floor/dank/maint,
-/area/mining_colony/interior/enginieering/main_room)
-"bfP" = (
 /obj/structure/table/rack,
-/obj/effect/floor_decal/dank/outline,
-/obj/item/stack/rods/fifty,
-/obj/item/stack/material/leather{
-	amount = 20
+/obj/item/reagent_containers/glass/paint/purple,
+/obj/item/reagent_containers/glass/paint/purple,
+/obj/item/reagent_containers/glass/paint/purple,
+/turf/simulated/floor/dank/slides{
+	dir = 1
 	},
-/obj/item/stack/material/wood/ten,
-/turf/simulated/floor/dank/maint,
-/area/mining_colony/interior/enginieering/main_room)
+/area/mining_colony/interior/enginieering/paint_storage)
+"bfP" = (
+/obj/machinery/light{
+	dir = 4;
+	icon_state = "tube_map"
+	},
+/turf/simulated/floor/lino,
+/area/mining_colony/interior/apartament)
 "bfQ" = (
 /obj/machinery/light,
 /turf/simulated/floor/dank/grater,
@@ -22925,24 +22948,10 @@
 /turf/simulated/floor/tiled/white,
 /area/mining_colony/interior/medbay)
 "bie" = (
-/obj/effect/floor_decal/dank/border{
-	dir = 8
-	},
-/obj/item/roller,
-/obj/item/roller,
-/obj/item/roller,
-/obj/item/roller,
-/obj/item/roller,
-/obj/item/roller,
-/obj/item/roller,
-/obj/item/roller,
-/obj/structure/table/standard,
-/obj/machinery/recharger,
-/obj/item/computer_hardware/hard_drive/portable/autorun/manual/surgery{
-	pixel_y = 10
-	},
-/turf/simulated/floor/tiled/white,
-/area/mining_colony/interior/medbay)
+/obj/effect/wallframe_spawn/reinforced,
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/dank/mono,
+/area/mining_colony/interior/enginieering/paint_storage)
 "bif" = (
 /turf/simulated/floor/tiled/dark,
 /area/mining_colony/security)
@@ -24216,6 +24225,10 @@
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/random/clothing,
+/obj/random/clothing,
+/obj/random/clothing,
+/obj/random/clothing,
 /turf/simulated/floor/dank/heavy,
 /area/mining_colony/interior/apartament)
 "blO" = (
@@ -24543,6 +24556,8 @@
 /obj/item/clothing/head/hairflower/bow,
 /obj/item/clothing/head/hairflower,
 /obj/item/clothing/head/ushanka,
+/obj/random/gloves,
+/obj/random/gloves,
 /turf/simulated/floor/dank/heavy,
 /area/mining_colony/interior/apartament)
 "bmC" = (
@@ -24554,14 +24569,10 @@
 /area/mining_colony/interior/apartament)
 "bmD" = (
 /obj/structure/closet/secure_closet/medical4,
-/obj/item/storage/firstaid/surgery,
-/obj/item/clothing/head/surgery/blue,
 /turf/simulated/floor/dank/medical,
 /area/mining_colony/interior/medbay/surgery1)
 "bmE" = (
 /obj/structure/closet/secure_closet/medical4,
-/obj/item/storage/firstaid/surgery,
-/obj/item/clothing/head/surgery/blue,
 /turf/simulated/floor/dank/medical,
 /area/mining_colony/interior/medbay/surgery2)
 "bmF" = (
@@ -25416,6 +25427,12 @@
 /obj/machinery/camera/network/medbay{
 	dir = 1
 	},
+/obj/machinery/button/remote/blast_door{
+	id = "med_lock";
+	name = "Medical Lockdown";
+	pixel_x = 1;
+	pixel_y = -26
+	},
 /turf/simulated/floor/carpet/blue2,
 /area/mining_colony/interior/medbay/CMOoffice)
 "boR" = (
@@ -25980,7 +25997,11 @@
 /obj/item/storage/pill_bottle/citalopram,
 /obj/item/storage/pill_bottle/citalopram,
 /obj/item/storage/pill_bottle/citalopram,
-/obj/item/storage/pill_bottle/citalopram,
+/obj/item/storage/pill_bottle/methylphenidate,
+/obj/item/storage/pill_bottle/methylphenidate,
+/obj/item/storage/pill_bottle/paroxetine,
+/obj/item/storage/pill_bottle/noexcutite,
+/obj/item/storage/pill_bottle/noexcutite,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/medbay/med_ward)
 "bqk" = (
@@ -26042,6 +26063,10 @@
 	req_access = list()
 	},
 /obj/machinery/door/firedoor,
+/obj/machinery/door/blast/shutters/open{
+	icon_state = "shutter0";
+	id = "med_lock"
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/mining_colony/interior/medbay)
 "bqs" = (
@@ -26997,6 +27022,9 @@
 	color = "blue"
 	},
 /obj/item/clothing/head/bandana/orange,
+/obj/random/hat,
+/obj/random/hat,
+/obj/random/hat,
 /turf/simulated/floor/dank/heavy,
 /area/mining_colony/interior/apartament)
 "btk" = (
@@ -27375,6 +27403,16 @@
 /obj/structure/closet/firecloset,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/security)
+"bVZ" = (
+/obj/effect/floor_decal/dank/outline,
+/obj/structure/table/rack,
+/obj/item/reagent_containers/glass/paint/green,
+/obj/item/reagent_containers/glass/paint/green,
+/obj/item/reagent_containers/glass/paint/green,
+/turf/simulated/floor/dank/slides{
+	dir = 1
+	},
+/area/mining_colony/interior/enginieering/paint_storage)
 "bZB" = (
 /obj/item/radio/intercom{
 	pixel_y = 24
@@ -27395,6 +27433,19 @@
 /obj/machinery/telecomms/server/presets/common,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/enginieering/telecomms)
+"cqH" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/dank/maint,
+/area/mining_colony/interior/enginieering/main_room)
 "cuq" = (
 /obj/effect/wallframe_spawn/reinforced,
 /obj/machinery/door/firedoor,
@@ -27413,6 +27464,15 @@
 	},
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/enginieering/reactor_storage)
+"cxu" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/interior/enginieering/paint_storage)
 "cLH" = (
 /obj/structure/stairs/south,
 /obj/machinery/light{
@@ -27420,6 +27480,14 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/mining_colony/interior)
+"cSZ" = (
+/obj/structure/table/rack,
+/obj/item/storage/toolbox/emergency,
+/obj/item/storage/toolbox/electrical,
+/obj/item/storage/toolbox/mechanical,
+/obj/effect/floor_decal/dank/outline,
+/turf/simulated/floor/dank/maint,
+/area/mining_colony/interior/enginieering/main_room)
 "cUK" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -27464,6 +27532,17 @@
 	},
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/enginieering/reactor_storage)
+"dvT" = (
+/obj/effect/floor_decal/dank/border,
+/obj/structure/table/standard,
+/obj/machinery/recharger,
+/obj/item/defibrillator/loaded,
+/obj/item/defibrillator/loaded,
+/obj/item/computer_hardware/hard_drive/portable/autorun/manual/surgery{
+	pixel_y = 10
+	},
+/turf/simulated/floor/tiled/white,
+/area/mining_colony/interior/medbay)
 "dwa" = (
 /obj/effect/wallframe_spawn/reinforced,
 /obj/machinery/door/firedoor{
@@ -27484,6 +27563,23 @@
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/mining_colony/interior/enginieering/reactor)
+"dyZ" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/engineering,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/dank/mono,
+/area/mining_colony/interior/enginieering/paint_storage)
+"dAC" = (
+/obj/item/reagent_containers/food/drinks/cans/artbru,
+/obj/effect/landmark{
+	name = "ShuttleRepairPart"
+	},
+/turf/simulated/floor/asteroid/outside_ds,
+/area/mining_colony/surface)
 "dAL" = (
 /obj/effect/floor_decal/dank/mono_half{
 	dir = 4
@@ -27516,6 +27612,14 @@
 /obj/structure/closet/secure_closet/security,
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/interior/seccie_checkpoint_2)
+"etF" = (
+/obj/machinery/light{
+	dir = 1;
+	light_color = "#33cccc";
+	color = COLOR_PINK
+	},
+/turf/simulated/floor/tiled/dark,
+/area/mining_colony/interior/uni_church)
 "euh" = (
 /obj/effect/wallframe_spawn/reinforced,
 /obj/machinery/door/firedoor,
@@ -27532,6 +27636,18 @@
 "eNd" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/c12_deadspace/lockeroom)
+"ePZ" = (
+/obj/structure/cable,
+/obj/machinery/power/apc{
+	pixel_y = -30
+	},
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/interior/enginieering/paint_storage)
+"eTR" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/spacecash/ewallet/random/c200,
+/turf/simulated/floor/dank/mono,
+/area/mining_colony/interior/uni_church)
 "eVR" = (
 /obj/machinery/store,
 /turf/simulated/floor/dank/golf_brown,
@@ -27624,6 +27740,20 @@
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/dank/maint,
 /area/mining_colony/interior/enginieering/telecomms_control)
+"hfw" = (
+/obj/effect/floor_decal/dank/outline,
+/obj/structure/table/rack,
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = -24
+	},
+/obj/item/reagent_containers/glass/paint/yellow,
+/obj/item/reagent_containers/glass/paint/yellow,
+/obj/item/reagent_containers/glass/paint/yellow,
+/turf/simulated/floor/dank/slides{
+	dir = 1
+	},
+/area/mining_colony/interior/enginieering/paint_storage)
 "hjJ" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -27632,6 +27762,24 @@
 	},
 /turf/simulated/floor/dank/maint,
 /area/mining_colony/interior/enginieering/smes)
+"hmA" = (
+/obj/structure/table/rack,
+/obj/effect/floor_decal/dank/outline,
+/obj/item/floor_painter,
+/obj/item/reagent_containers/spray{
+	pixel_y = 2;
+	pixel_x = 4
+	},
+/obj/item/reagent_containers/spray{
+	pixel_y = 2
+	},
+/obj/item/reagent_containers/spray{
+	pixel_y = 2;
+	pixel_x = -4
+	},
+/obj/item/reagent_containers/glass/rag,
+/turf/simulated/floor/dank/slides,
+/area/mining_colony/interior/enginieering/paint_storage)
 "hoR" = (
 /obj/structure/bed/chair/office{
 	dir = 8;
@@ -27675,6 +27823,14 @@
 /obj/machinery/telecomms/server/presets/command,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/enginieering/telecomms)
+"hSg" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/interior/enginieering/paint_storage)
 "ids" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -28087,6 +28243,10 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/mining_colony/interior/uni_church)
+"mpH" = (
+/obj/machinery/telecomms/server/presets/science,
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/interior/enginieering/telecomms)
 "mqH" = (
 /obj/structure/cable/green{
 	d1 = 2;
@@ -28098,6 +28258,14 @@
 "mrT" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/abandoned/mining_prep/storage)
+"msR" = (
+/obj/structure/table/rack,
+/obj/item/storage/briefcase/inflatable,
+/obj/item/storage/briefcase/inflatable,
+/obj/item/storage/briefcase/inflatable,
+/obj/effect/floor_decal/dank/outline,
+/turf/simulated/floor/dank/slides,
+/area/mining_colony/interior/enginieering/main_room)
 "mvB" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/security/sec_armory)
@@ -28146,6 +28314,14 @@
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/interior/seccie_checkpoint_2)
+"nkg" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/dank/maint,
+/area/mining_colony/interior/enginieering/telecomms)
 "nqe" = (
 /obj/effect/floor_decal/dank/outline,
 /obj/structure/closet/firecloset,
@@ -28222,6 +28398,15 @@
 	},
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/enginieering/reactor)
+"nMC" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/effect/landmark/node_room,
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/interior/enginieering/paint_storage)
 "ogB" = (
 /obj/item/radio/intercom{
 	dir = 1;
@@ -28258,6 +28443,18 @@
 	},
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/uni_church)
+"ouq" = (
+/obj/structure/table/rack,
+/obj/effect/floor_decal/dank/outline,
+/obj/item/reagent_containers/glass/paint/random,
+/obj/item/reagent_containers/glass/paint/random,
+/obj/item/reagent_containers/glass/paint/random,
+/obj/machinery/light/small{
+	dir = 4;
+	icon_state = "bulb1"
+	},
+/turf/simulated/floor/dank/slides,
+/area/mining_colony/interior/enginieering/paint_storage)
 "oEl" = (
 /obj/structure/cable{
 	icon_state = "5-10"
@@ -28386,6 +28583,15 @@
 	dir = 1
 	},
 /area/mining_colony/interior/excavation/interior)
+"qBf" = (
+/obj/structure/table/rack,
+/obj/effect/floor_decal/dank/outline,
+/obj/item/reagent_containers/glass/paint/black,
+/obj/item/reagent_containers/glass/paint/black,
+/obj/item/reagent_containers/glass/paint/black,
+/obj/item/reagent_containers/glass/paint/black,
+/turf/simulated/floor/dank/slides,
+/area/mining_colony/interior/enginieering/paint_storage)
 "qEe" = (
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/monotile,
@@ -28463,6 +28669,15 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/dank/slides,
 /area/mining_colony/interior/enginieering/supply_storage)
+"sud" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/vending/tool,
+/turf/simulated/floor/dank/mono,
+/area/mining_colony/interior/enginieering/main_room)
 "sxW" = (
 /obj/item/radio/intercom/department/security{
 	dir = 1;
@@ -28600,6 +28815,16 @@
 /obj/machinery/telecomms/relay/preset/telecomms,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/enginieering/telecomms)
+"urw" = (
+/obj/effect/floor_decal/dank/outline,
+/obj/structure/table/rack,
+/obj/item/reagent_containers/glass/paint/blue,
+/obj/item/reagent_containers/glass/paint/blue,
+/obj/item/reagent_containers/glass/paint/blue,
+/turf/simulated/floor/dank/slides{
+	dir = 1
+	},
+/area/mining_colony/interior/enginieering/paint_storage)
 "uzN" = (
 /obj/effect/floor_decal/dank/mono_half,
 /obj/structure/cable{
@@ -28737,6 +28962,10 @@
 /obj/structure/railing/mapped,
 /turf/simulated/floor/plating,
 /area/mining_colony/interior/plaza)
+"vGu" = (
+/obj/machinery/vending/games,
+/turf/simulated/floor/tiled/dark,
+/area/mining_colony/interior)
 "vIs" = (
 /obj/machinery/computer/shuttle_control/escape3{
 	dir = 8
@@ -28781,6 +29010,24 @@
 /obj/machinery/telecomms/relay/preset,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/enginieering/telecomms)
+"wes" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/effect/floor_decal/dank/border{
+	dir = 1
+	},
+/obj/structure/table/standard,
+/obj/item/roller,
+/obj/item/roller,
+/obj/item/roller,
+/obj/item/roller,
+/obj/item/roller,
+/obj/item/roller,
+/obj/item/roller,
+/obj/item/roller,
+/turf/simulated/floor/tiled/white,
+/area/mining_colony/interior/medbay)
 "weP" = (
 /obj/item/radio/intercom/department/security{
 	dir = 8;
@@ -28788,6 +29035,15 @@
 	},
 /turf/simulated/floor/dank/slides,
 /area/mining_colony/security)
+"wgE" = (
+/obj/structure/table/rack,
+/obj/effect/floor_decal/dank/outline,
+/obj/item/reagent_containers/glass/paint/white,
+/obj/item/reagent_containers/glass/paint/white,
+/obj/item/reagent_containers/glass/paint/white,
+/obj/item/reagent_containers/glass/paint/white,
+/turf/simulated/floor/dank/slides,
+/area/mining_colony/interior/enginieering/paint_storage)
 "wjH" = (
 /obj/machinery/telecomms/relay/preset/bridge,
 /turf/simulated/floor/dank/grater,
@@ -32951,7 +33207,7 @@ alg
 alq
 abi
 aAU
-alN
+bfP
 alN
 anQ
 abi
@@ -32959,7 +33215,7 @@ alg
 alq
 abi
 aAU
-alN
+bfP
 alN
 anQ
 abi
@@ -32973,7 +33229,7 @@ alg
 alq
 abi
 aAU
-alN
+bfP
 alN
 anQ
 abi
@@ -32981,7 +33237,7 @@ alg
 alq
 abi
 aAU
-alN
+bfP
 alN
 anQ
 abi
@@ -34053,7 +34309,7 @@ aoG
 aQh
 aHl
 aCq
-ask
+dAC
 aCq
 aCq
 aCq
@@ -35520,7 +35776,7 @@ aXM
 aXM
 aSb
 aWi
-aWs
+aOl
 aXJ
 aXJ
 aXJ
@@ -36385,7 +36641,7 @@ alg
 bnv
 abi
 aAU
-alN
+bfP
 auV
 anQ
 abi
@@ -36393,7 +36649,7 @@ alg
 alq
 abi
 aAU
-alN
+bfP
 auV
 anQ
 abi
@@ -36407,7 +36663,7 @@ alg
 bnv
 abi
 aAU
-alN
+bfP
 auV
 anQ
 abi
@@ -36415,7 +36671,7 @@ alg
 bnv
 abi
 aAU
-alN
+bfP
 auV
 anQ
 abi
@@ -38016,7 +38272,7 @@ aaB
 add
 adi
 aaB
-mpd
+etF
 adv
 adv
 adP
@@ -40019,12 +40275,12 @@ anO
 anO
 anO
 aak
-aiu
-aiu
-aiu
-aiu
-aiu
-aiu
+aVk
+aQi
+aQi
+aQi
+aQi
+nkg
 aiu
 aak
 aoG
@@ -40223,10 +40479,10 @@ anO
 aak
 joc
 aiu
-aSa
+mpH
 aiu
 sYx
-aiu
+ahm
 paD
 aak
 aoG
@@ -40428,7 +40684,7 @@ aiu
 aSa
 aiu
 pnm
-aiu
+ahm
 oUV
 aak
 aoG
@@ -40630,7 +40886,7 @@ aiu
 iMj
 aiu
 qJe
-aiu
+ahm
 mxh
 aak
 aoG
@@ -40832,7 +41088,7 @@ aKg
 kSm
 aiu
 wjH
-aiu
+ahm
 fVF
 aak
 ase
@@ -41236,7 +41492,7 @@ aiu
 hHH
 aiu
 aiu
-ahm
+aiu
 ajV
 ase
 ase
@@ -41438,7 +41694,7 @@ aiu
 cnq
 aiu
 aiu
-ahm
+aiu
 aiu
 gYE
 kzh
@@ -41457,7 +41713,7 @@ biZ
 aaB
 arJ
 aaB
-adX
+eTR
 aaB
 aoH
 aaK
@@ -41640,7 +41896,7 @@ aiu
 tmr
 aiu
 aiu
-ahm
+aiu
 aiu
 gYE
 pjk
@@ -41685,7 +41941,7 @@ aoR
 aLA
 agB
 bcl
-aLK
+dvT
 awg
 aoR
 aqj
@@ -41842,7 +42098,7 @@ aKg
 aiu
 aiu
 aiu
-aVk
+aiu
 pTY
 gYE
 xcR
@@ -41888,8 +42144,8 @@ aLB
 agB
 bcl
 aLL
-aLM
-aLF
+aLH
+wes
 bdo
 bdt
 aLH
@@ -42896,8 +43152,8 @@ bdE
 aLz
 bcQ
 aLG
-aLI
-bie
+aLE
+aLE
 bcQ
 aLG
 boS
@@ -45481,7 +45737,7 @@ aUP
 aZj
 aZj
 aUP
-bhI
+sud
 bfi
 bke
 bkk
@@ -46086,7 +46342,7 @@ aSy
 aUP
 bfo
 bfB
-aSp
+bfN
 bfs
 bfi
 bfi
@@ -46288,13 +46544,13 @@ aSz
 aUP
 bfp
 bfp
-bfN
-bfs
-aag
-aag
-aag
-aag
-aag
+aSp
+bie
+hfw
+bVZ
+urw
+bfO
+aLM
 aag
 aag
 aYb
@@ -46486,17 +46742,17 @@ aJq
 aJK
 aNB
 aSp
-aSy
-aUP
+cqH
+aWB
 beo
-aUP
-bfO
-bfs
-aag
-aag
-aag
-aag
-aag
+aWB
+aSo
+dyZ
+hSg
+nMC
+hSg
+cxu
+ePZ
 aag
 aag
 aYb
@@ -46687,18 +46943,18 @@ bkc
 aJq
 aJK
 aNB
-aSp
+cSZ
 aSy
 aUP
 aUP
 aUP
-bfP
-bfs
-aag
-aag
-aag
-aag
-aag
+aSp
+bie
+qBf
+wgE
+ouq
+aWs
+hmA
 aag
 aag
 aYb
@@ -46889,13 +47145,13 @@ aCF
 aJq
 tzw
 aNB
-aSq
+msR
 aTr
 aSq
 awy
 bfC
 bgq
-bfs
+aag
 aag
 aag
 aag
@@ -47097,7 +47353,7 @@ aPz
 bfs
 bfs
 bfs
-bfs
+aFg
 aFg
 aFg
 aFg
@@ -51769,7 +52025,7 @@ aaK
 aAt
 aoH
 aoH
-aRi
+vGu
 aaK
 aaK
 bnt
@@ -53590,7 +53846,7 @@ aoH
 bpG
 bnE
 aUA
-aaK
+aLI
 aUA
 bpG
 aaK
