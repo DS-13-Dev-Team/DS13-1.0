@@ -1,0 +1,7 @@
+2022-09-09:
+  DTraitor:
+  - rscadd: Added FOV to all mobs. Watch your back!
+  - refactor: Refactored the way footsteps are handled.
+  - rscadd: Added button down shirt with short sleeves. Thanks to Spike Lee for the
+      sprites.
+  - balance: Necromorph signals won't hear humans that are outside of their visualnet.
