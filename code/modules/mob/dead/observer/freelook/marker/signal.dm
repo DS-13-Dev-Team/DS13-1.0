@@ -34,6 +34,7 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 	plane = ABOVE_OBSCURITY_PLANE
 	invisibility = INVISIBILITY_MARKER
 	see_invisible = SEE_INVISIBLE_MARKER
+	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 	var/energy_extension_type = /datum/extension/psi_energy/signal
 	var/datum/extension/psi_energy/psi_energy
 
@@ -132,8 +133,6 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 
 //Signals don't leave behind ghosts if they are clientless
 /mob/dead/observer/eye/signal/ghostize(var/can_reenter_corpse = CORPSE_CAN_REENTER)
-	if(!ckey)
-		return null
 	//Lets not look like an eye after we become a ghost
 	icon = 'icons/mob/mob.dmi'
 	icon_state = "ghost"
@@ -232,8 +231,10 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 /mob/dead/observer/eye/signal/Logout()
 	if (!istype(src, /mob/dead/observer/eye/signal/master))
 		SSnecromorph.remove_from_necroqueue(src)
-	qdel(src)	//A signal shouldn't exist with nobody in it
-	return ..()
+	.=..()
+	spawn()
+		if(!QDELETED(src))
+			qdel(src)	//A signal shouldn't exist with nobody in it
 
 /mob/dead/observer/eye/signal/Destroy()
 	SSnecromorph.remove_from_necroqueue(src)

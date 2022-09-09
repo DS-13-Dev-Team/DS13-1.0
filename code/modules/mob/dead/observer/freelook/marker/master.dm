@@ -16,6 +16,10 @@
 	//Lets remove some verbs that don't make sense here, you get these back if you downgrade to signal
 	remove_verb(src, list(/mob/dead/observer/eye/signal/verb/become_master_signal_verb, /mob/dead/observer/eye/signal/verb/leave_marker_verb))
 
+/mob/dead/observer/eye/signal/master/Destroy()
+	SSnecromorph.marker.vacate_master_signal(FALSE)
+	return ..()
+
 /mob/dead/observer/eye/signal/master/apply_customisation(datum/preferences/prefs)
 	return
 

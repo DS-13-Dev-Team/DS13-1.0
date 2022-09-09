@@ -217,7 +217,7 @@
 	return S
 
 
-/obj/machinery/marker/proc/vacate_master_signal()
+/obj/machinery/marker/proc/vacate_master_signal(delete_mob = TRUE)
 	if (playermob)
 
 		//Get rid of the old player's energy handler
@@ -227,12 +227,13 @@
 				remove_extension(P, /datum/extension/psi_energy/marker)//Remove the handler
 
 		message_necromorphs(SPAN_NOTICE("[player] has stepped down, nobody is controlling the marker now."))
-		var/mob/dead/observer/eye/signal/S = new(playermob)
+		if(playermob.client)
+			new /mob/dead/observer/eye/signal(playermob)
 		//GLOB.unitologists.remove_antagonist(playermob.mind)
 		player = null
-		QDEL_NULL(playermob)
+		if(delete_mob)
+			QDEL_NULL(playermob)
 		update_icon()
-		return S
 	else
 		//Just vacate the player slot so someone else can join
 		player = null
