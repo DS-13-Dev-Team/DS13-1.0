@@ -237,16 +237,6 @@ var/global/list/string_slot_flags = list(
 		//We do NOT do that here. It is done in map post_setup, its a per-map thing
 		//
 
-	//education
-	init_backgrounds_subtypes(/datum/background/education, GLOB.education_list)
-	GLOB.education_list					= sortList(GLOB.education_list)
-	//lifestyle
-	init_backgrounds_subtypes(/datum/background/lifestyle, GLOB.lifestyle_list)
-	GLOB.lifestyle_list					= sortList(GLOB.lifestyle_list)
-	//hobby
-	init_backgrounds_subtypes(/datum/background/hobby, GLOB.hobby_list)
-	GLOB.hobby_list					= sortList(GLOB.hobby_list)
-
 	return 1
 
 /* // Uncomment to debug chemical reaction list.
