@@ -147,7 +147,7 @@
 		speaker_name = "unknown"
 
 	//Abbreviation Prefix
-	if(speaker)
+	if(ishuman(speaker))
 		var/mob/living/carbon/human/R = speaker
 		var/datum/job/J = job_master.GetJob(R.get_assignment())
 		var/title = ""
