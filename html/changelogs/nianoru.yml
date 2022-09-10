@@ -1,0 +1,13 @@
+author: "nianoru"
+
+delete-after: True
+
+changes:
+  - rscadd: "Medical RIGs now available to medical staff, and SMO receives a special variant."
+  - rscadd: "Advanced circular saw is now available in the "medical" category of store kiosk for 2500 credits."
+  - rscadd: "Mechanical toolbox is now available in the tools "category" of store kiosk for 1500 credits."
+  - rscadd: "Good news for SO! The "security" catalog has been revamped for the crew (including code green/blue/red tier unlocks)."
+  - rscadd: "The "weapons" category in the store kiosk now features a weaker shield for 8000 credits."
+  - balance: "Weaponry and ammunition prices in the store kiosk have been adjusted. The rock saw price has slightly increased."
+  - experimental: "The honkmother's worshippers are in the crew somewhere..."
+  - qol: "Visual adjustment for the Medical RIG."

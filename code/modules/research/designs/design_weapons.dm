@@ -75,14 +75,14 @@ S	fuel tank (hydrazine)
 	id = "contactbeam"
 	materials = list(MATERIAL_STEEL = 2500, MATERIAL_GOLD = 1500, "uranium" = 1450)
 	build_path = /obj/item/gun/energy/contact
-	price = 9000
+	price = 11000
 
 /datum/design/item/weapon/miningcutter
 	name = "210-V mining cutter"
 	id = "miningcutter"
 	materials = list(MATERIAL_STEEL = 7500, MATERIAL_GLASS = 2500)
 	build_path = /obj/item/gun/energy/cutter
-	price = 2000
+	price = 2500
 
 /datum/design/item/weapon/plasmacutter
 	name = "211-V plasma cutter"
@@ -91,18 +91,26 @@ S	fuel tank (hydrazine)
 	build_path = /obj/item/gun/energy/cutter/plasma
 	price = 4000
 
+/datum/design/item/weapon/riot
+	name = "Combat Shield"
+	id = "riot"
+	materials = list(MATERIAL_STEEL = 7500, MATERIAL_PLASTEEL = 1000)
+	build_path = /obj/item/shield/riot
+	price = 8000
+
 /datum/design/item/weapon/advancedshield
 	name = "Advanced Combat Shield"
 	id = "advancedcombatshield"
 	materials = list(MATERIAL_PLASTEEL = 10000, MATERIAL_GLASS = 2000)
 	build_path = /obj/item/shield/riot/advanced
+	price = 10000
 
 /datum/design/item/weapon/divet
 	name = "Winchester NK Divet pistol"
 	id = "divet"
 	materials = list(MATERIAL_STEEL = 10000, MATERIAL_PLASTEEL = 4000)
 	build_path = /obj/item/gun/projectile/divet
-	price = 4000
+	price = 5000
 
 /datum/design/item/weapon/divet/silenced
 	name = "Silenced Divet Pistol"
@@ -115,21 +123,21 @@ S	fuel tank (hydrazine)
 	name = "SWS Motorized Pulse Rifle"
 	id = "pulserifle"
 	build_path = /obj/item/gun/projectile/automatic/pulse_rifle
-	price = 7000
+	price = 10000
 
 /datum/design/item/weapon/ripper
 	name = "RC-DS Remote Control Disc Ripper"
 	id = "ripper"
 	build_path = /obj/item/gun/projectile/ripper
 	materials = list(MATERIAL_STEEL = 2000, MATERIAL_GLASS = 500, MATERIAL_GOLD = 2000, MATERIAL_SILVER = 2000)
-	price = 8000
+	price = 8500
 
 /datum/design/item/weapon/linecutter
 	name = "IM-822 Handheld Ore Cutter Line Gun"
 	id = "linecutter"
 	materials = list(MATERIAL_STEEL = 15000, MATERIAL_GLASS = 1000, MATERIAL_SILVER = 2000, MATERIAL_URANIUM = 2000)
 	build_path = /obj/item/gun/projectile/linecutter
-	price = 9000
+	price = 11000
 
 /datum/design/item/weapon/javelingun
 	name = "T15 Javelin Gun"
@@ -143,7 +151,7 @@ S	fuel tank (hydrazine)
 	id = "flamethrower"
 	build_path = /obj/item/gun/spray/hydrazine_torch
 	materials = list(MATERIAL_STEEL = 2500, MATERIAL_GLASS = 100, MATERIAL_GOLD = 4000, MATERIAL_SILVER = 4000)
-	price = 11000
+	price = 13000
 
 /datum/design/item/weapon/seeker
 	name = "Seeker Rifle"
@@ -157,7 +165,7 @@ S	fuel tank (hydrazine)
 	id = "forcegun"
 	build_path = /obj/item/gun/energy/forcegun
 	materials = list(MATERIAL_STEEL = 5000, MATERIAL_PLASTIC = 3500, MATERIAL_GLASS = 500, MATERIAL_SILVER = 500)
-	price = 7000
+	price = 9000
 
 /datum/design/item/ammo
 	category = "Ammunition"
@@ -170,7 +178,7 @@ S	fuel tank (hydrazine)
 	id = "divetslug"
 	materials = list(MATERIAL_STEEL = 4000)
 	build_path = /obj/item/ammo_magazine/divet
-	price = 1200
+	price = 1300
 
 /datum/design/item/ammo/icds
 	name = "Incendiary Divet Magazine"
@@ -207,14 +215,14 @@ S	fuel tank (hydrazine)
 	id = "speedloader"
 	materials = list(MATERIAL_STEEL = 750)
 	build_path = /obj/item/ammo_magazine/c44
-	price = 1200
+	price = 1300
 
 /datum/design/item/ammo/plasma_energy
 	name = "plasma energy"
 	id = "plasma_energy"
 	build_path = /obj/item/cell/plasmacutter
 	materials = list(MATERIAL_STEEL = 4000, MATERIAL_GLASS = 1000)
-	price = 1200
+	price = 1250
 
 /datum/design/item/ammo/rivet_bolts
 	name = "rivet bolts"
@@ -231,7 +239,7 @@ S	fuel tank (hydrazine)
 	id = "pulseslug"
 	materials = list(MATERIAL_STEEL = 7500, MATERIAL_DIAMOND = 1500)
 	build_path = /obj/item/ammo_magazine/pulse
-	price = 1250
+	price = 1500
 
 /datum/design/item/ammo/pulsedeflect
 	name = "deflection pulse rounds"
@@ -260,7 +268,7 @@ S	fuel tank (hydrazine)
 	id = "seeker_ammo"
 	materials = list(MATERIAL_PLASTEEL = 5000, MATERIAL_DIAMOND = 1250, MATERIAL_URANIUM = 500)
 	build_path = /obj/item/ammo_magazine/seeker
-	price = 1750
+	price = 2000
 
 
 /datum/design/item/ammo/jav_ammo
