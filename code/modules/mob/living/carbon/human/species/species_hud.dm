@@ -9,6 +9,7 @@
 	var/has_hands = TRUE     // Set to draw hands.
 	var/has_drop = TRUE      // Set to draw drop button.
 	var/has_throw = TRUE     // Set to draw throw button.
+	var/has_rest = TRUE
 	var/has_resist = TRUE    // Set to draw resist button.
 	var/has_internals = TRUE // Set to draw the internals toggle button.
 	var/has_guns	=	TRUE	//Set to draw the gun/aiming toggle buttons

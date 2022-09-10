@@ -49,6 +49,7 @@
 	/obj/item/clipboard,
 	/obj/item/cell,
 	/obj/item/tool/saw/circular,
+	/obj/item/tool/saw/advanced_circular,
 	/obj/item/material/hatchet,
 	/obj/item/handcuffs,
 	/obj/item/tool/hemostat,
