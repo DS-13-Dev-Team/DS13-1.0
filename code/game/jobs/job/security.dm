@@ -54,9 +54,9 @@
 	access = list(access_armory, access_security, access_maint_tunnels, access_external_airlocks)
 	outfit_type = /decl/hierarchy/outfit/job/security/sso
 
-	min_skill = list(   SKILL_WEAPONS     = SKILL_PROF,
-						SKILL_COMBAT	  = SKILL_PROF,
-						SKILL_FORENSICS   = SKILL_EXPERT,
+	min_skill = list(   SKILL_WEAPONS     = SKILL_EXPERT,
+						SKILL_COMBAT	  = SKILL_EXPERT,
+						SKILL_FORENSICS   = SKILL_PROF,
 						SKILL_DEVICES	  = SKILL_ADEPT)
 
 	max_skill = list(   SKILL_BOTANY      = SKILL_EXPERT,

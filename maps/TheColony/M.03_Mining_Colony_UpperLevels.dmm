@@ -1907,6 +1907,7 @@
 /area/mining_colony/security/upper)
 "eC" = (
 /obj/structure/table/standard,
+/obj/item/storage/box/holoids,
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/upper/commandofficers)
 "eD" = (
@@ -2832,16 +2833,15 @@
 /area/mining_colony/security/upper/bridge_corridor)
 "uc" = (
 /obj/structure/cable{
-	icon_state = "0-1"
-	},
-/obj/structure/cable{
+	d1 = 2;
 	d2 = 8;
-	icon_state = "0-8"
+	icon_state = "2-8";
+	dir = 1
 	},
 /obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	dir = 4
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
 	},
 /turf/simulated/floor/dank/tech{
 	dir = 4
@@ -16069,8 +16069,8 @@ dn
 LV
 CI
 CI
-CI
 uJ
+CI
 as
 YO
 YO

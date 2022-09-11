@@ -64,8 +64,17 @@
 		/obj/item/caution = 4,
 		/obj/item/lightreplacer,
 		/obj/item/storage/bag/trash,
-		/obj/item/clothing/shoes/dutyboots,
+		/obj/item/clothing/shoes/galoshes,
+		/obj/item/clothing/accessory/solgov/specialty/janitor,
+		/obj/item/reagent_containers/glass/rag,
 		/obj/item/soap,
+		/obj/item/mop,
+		/obj/item/reagent_containers/glass/bucket,
+		/obj/item/grenade/chem_grenade/cleaner,
+		/obj/item/grenade/chem_grenade/cleaner,
+		/obj/item/reagent_containers/spray/cleaner,
+		/obj/item/rig_module/grenade_launcher/cleaner,
+		/obj/item/rig_module/fabricator/wf_sign,
 		/obj/random/tool)
 
 /*

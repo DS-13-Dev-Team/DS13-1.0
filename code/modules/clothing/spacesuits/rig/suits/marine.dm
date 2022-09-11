@@ -16,6 +16,8 @@
 		/obj/item/rig_module/healthbar/advanced,
 		/obj/item/rig_module/storage/heavy,
 		/obj/item/rig_module/grenade_launcher/military,	//These grenades are lethal weapons
+		/obj/item/rig_module/kinesis,
+		/obj/item/rig_module/hotswap,
 		/obj/item/rig_module/vision/nvgsec,
 		/obj/item/rig_module/maneuvering_jets
 		)

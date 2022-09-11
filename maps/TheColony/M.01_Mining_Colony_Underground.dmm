@@ -1261,7 +1261,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower)
+/area/mining_colony/lower/medical)
 "dY" = (
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/lower)
@@ -24299,12 +24299,12 @@ ar
 ar
 ar
 ar
-ar
-ar
+jt
+jt
 dX
-ar
-ar
-ar
+jt
+jt
+jt
 cG
 cG
 cG

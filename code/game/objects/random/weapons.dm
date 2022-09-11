@@ -3,9 +3,10 @@
 	desc = "This is a random gun."
 	icon = 'icons/obj/gun.dmi'
 	icon_state = "energykill100"
+	spawn_nothing_percentage = USUALLY
 
 /obj/random/gun/item_to_spawn()
-	return pickweight(list(/obj/random/gun_tech = 1, /obj/random/gun_security = 1.5, /obj/random/gun_tool = 2))
+	return pickweight(list(/obj/random/gun_tech = 1, /obj/random/gun_security = 1.5, /obj/random/gun_tool = 3))
 
 /obj/random/gun_tech
 	name = "Random Energy Weapon"
@@ -27,7 +28,7 @@
 	return pickweight(list(/obj/item/gun/projectile/automatic/pulse_rifle = 1.5,
 	///obj/item/gun/projectile/automatic/bullpup = 0.5,	//We dont want this to be used by security
 	/obj/item/gun/projectile/divet = 2,
-	/obj/item/gun/projectile/seeker = 1,
+	/obj/item/gun/projectile/seeker = 0.8,
 	/obj/item/gun/projectile/shotgun/bola_lancher = 1))
 
 /obj/random/gun_tool
@@ -38,13 +39,13 @@
 
 /obj/random/gun_tool/item_to_spawn()
 	return pickweight(list(
-	/obj/item/gun/projectile/ripper = 0.5,
-	/obj/item/gun/energy/forcegun = 0.5,
-	/obj/item/gun/energy/cutter = 1,
-	/obj/item/gun/energy/cutter/plasma = 0.5,
+	/obj/item/gun/projectile/ripper = 0.6,
+	/obj/item/gun/energy/forcegun = 0.8,
+	/obj/item/gun/energy/cutter = 1.2,
+	/obj/item/gun/energy/cutter/plasma = 0.8,
 	/obj/item/gun/projectile/linecutter = 0.5,
 	/obj/item/gun/projectile/detonator/loaded = 1,
-	/obj/item/gun/spray/hydrazine_torch = 1))
+	/obj/item/gun/spray/hydrazine_torch = 0.5))
 
 /obj/random/handgun
 	name = "Random Handgun"

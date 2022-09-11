@@ -90,6 +90,9 @@
 	reagents.trans_to_mob(attached, amount_per_transfer_from_this, CHEM_BLOOD)
 	update_icon()
 
+/obj/item/reagent_containers/ivbag/nanoblood
+	name = "\improper nanoblood pack"
+
 /obj/item/reagent_containers/ivbag/nanoblood/Initialize()
 	.=..()
 	reagents.add_reagent(/datum/reagent/nanoblood, volume)

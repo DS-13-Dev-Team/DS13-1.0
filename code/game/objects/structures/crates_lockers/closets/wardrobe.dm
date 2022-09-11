@@ -75,8 +75,15 @@
 	new /obj/item/clothing/suit/chaplain_hoodie(src)
 	new /obj/item/clothing/head/chaplain_hood(src)
 	new /obj/item/storage/backpack/cultpack (src)
+	new /obj/item/clothing/under/deadspace/clergy(src)
+	new /obj/item/clothing/suit/clergyover(src)
+	new /obj/item/clothing/head/clergyhood(src)
 	new /obj/item/storage/fancy/candle_box(src)
 	new /obj/item/storage/fancy/candle_box(src)
+	new /obj/item/storage/fancy/candle_box(src)
+	new /obj/item/storage/fancy/candle_box(src)
+	new /obj/item/megaphone(src)
+	new /obj/item/flame/lighter/zippo(src)
 	new /obj/item/deck/tarot(src)
 	return
 
