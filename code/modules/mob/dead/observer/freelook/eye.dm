@@ -26,7 +26,7 @@
 	release(owner)
 	owner = null
 	visualnet = null
-	. = ..()
+	return ..()
 
 /mob/dead/observer/eye/Move(n, direct)
 	if(owner == src)

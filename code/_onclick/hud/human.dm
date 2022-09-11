@@ -136,7 +136,15 @@
 		using.alpha = ui_alpha
 		hotkeybuttons += using
 
-
+	if(hud_data.has_rest)
+		using = new /atom/movable/screen()
+		using.SetName("rest")
+		using.icon = ui_style
+		using.icon_state = "act_rest[owner.resting ? 1 : 0]"
+		using.screen_loc = ui_pull_rest
+		using.color = ui_color
+		using.alpha = ui_alpha
+		hotkeybuttons += using
 
 	if(hud_data.has_throw)
 		throw_icon = new /atom/movable/screen()

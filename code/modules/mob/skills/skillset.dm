@@ -58,12 +58,12 @@
 	if(!given_client)
 		return
 
-	var/allocation = given_client.prefs.skills_allocated[job] || list()
 	skill_list = list()
 
 	for(var/decl/hierarchy/skill/S in GLOB.skills)
-		var/min = given_client.prefs.get_min_skill(job, S)
-		skill_list[S.type] = min + (allocation[S] || 0)
+		var/min = job.min_skill[S.type]
+		skill_list[S.type] = min(max(min+background_value(given_client, S.ID),SKILL_MIN), SKILL_MAX)
+
 	update_verbs()
 	refresh_uis()
 

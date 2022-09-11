@@ -219,17 +219,20 @@
 
 /decl/hierarchy/supply_pack/medical/surgery
 	name = "Surgery crate"
-	contains = list(/obj/item/tool/cautery,
-					/obj/item/tool/surgicaldrill,
-					/obj/item/clothing/mask/breath/medical,
-					/obj/item/tank/anesthetic,
-					/obj/item/FixOVein,
-					/obj/item/tool/hemostat,
-					/obj/item/tool/scalpel,
-					/obj/item/bonegel,
-					/obj/item/tool/retractor,
-					/obj/item/tool/bonesetter,
-					/obj/item/tool/saw/circular)
+	contains = list(
+		/obj/item/tool/cautery,
+		/obj/item/tool/surgicaldrill,
+		/obj/item/clothing/mask/breath/medical,
+		/obj/item/tank/anesthetic,
+		/obj/item/FixOVein,
+		/obj/item/tool/hemostat,
+		/obj/item/tool/scalpel,
+		/obj/item/bonegel,
+		/obj/item/tool/retractor,
+		/obj/item/tool/bonesetter,
+		/obj/item/tool/saw/circular,
+		/obj/item/tool/saw/advanced_circular,
+		)
 	cost = 25
 	containertype = /obj/structure/closet/crate/secure
 	containername = "\improper Surgery crate"

@@ -147,7 +147,7 @@
 		return
 
 	var/turf_footstep = source_loc.footstep
-	if(isfloor(source_loc))
+	if(istype(source_loc, /turf/simulated/floor))
 		var/turf/simulated/floor/floor = source_loc
 		if(floor.flooring?.footstep)
 			turf_footstep = floor.flooring?.footstep
