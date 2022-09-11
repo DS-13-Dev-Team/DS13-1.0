@@ -1165,7 +1165,7 @@
 	pixel_y = -24
 	},
 /turf/simulated/floor/plating,
-/area/mining_colony/lower)
+/area/mining_colony/interior/cargo/storage_upper)
 "dH" = (
 /obj/structure/flora/pottedplant/tropical,
 /obj/effect/floor_decal/dank/border{
@@ -6003,6 +6003,9 @@
 "uC" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/lower/maints/node/room41)
+"uH" = (
+/turf/simulated/floor/plating,
+/area/mining_colony/interior/cargo/storage_upper)
 "uJ" = (
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/node/room49)
@@ -33178,7 +33181,7 @@ dY
 ar
 ar
 bi
-bi
+uH
 rW
 rW
 rW
@@ -33380,7 +33383,7 @@ dY
 bi
 bi
 bi
-bi
+uH
 mU
 rJ
 rJ
@@ -33582,7 +33585,7 @@ dY
 bi
 bi
 bi
-bi
+uH
 mU
 rJ
 nP
@@ -33785,7 +33788,7 @@ ar
 ar
 bi
 dG
-xk
+rW
 xk
 xk
 xk
