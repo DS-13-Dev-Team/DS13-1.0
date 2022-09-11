@@ -4,17 +4,23 @@
 	price = 8000
 
 
-//Tier 0, unarmored/empty rigs
+//Tier 0: civilian grade rigs (no modules/little to no armor)
 /datum/design/item/rig/civ
 	build_path = /obj/item/rig/civilian
 	price = 500
+
+/datum/design/item/rig/clown
+	name = "ERROR_404_RIG_NOT_FOUND"
+	desc = "//ERROR_404_DESCRIPTION_NOT_FOUND"
+	build_path = /obj/item/rig/clown
+	price = 42069
 
 //Here, alternative civ rig visual styles would go, if we had some
 
 
 
 
-//Tier I
+//Tier I: standard protection and modules
 /datum/design/item/rig/sec
 	build_path = /obj/item/rig/security
 
@@ -30,16 +36,15 @@
 /datum/design/item/rig/excavation
 	build_path = /obj/item/rig/excavation
 
-//This one is cheap and shoddy
 /datum/design/item/rig/mining
 	build_path = /obj/item/rig/mining
-	price = 4000
+	price = 4000 //cheaper, lower stats
 
 
 
 
 
-//Tier II: Advanced rigs with fancy modules or armor
+//Tier II: high protection and advanced modules
 /datum/design/item/rig/patrol
 	build_path = /obj/item/rig/patrol
 	price = 12000

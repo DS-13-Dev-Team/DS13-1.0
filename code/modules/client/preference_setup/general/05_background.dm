@@ -11,6 +11,11 @@
 	var/faction = "None"                //Antag faction/general associated faction.
 	var/religion = "None"               //Religious association.
 
+	//Background Skills
+	var/education = "Military college"
+	var/lifestyle = "Lazy"
+	var/hobby = "Smart"
+
 /datum/category_item/player_setup_item/general/background
 	name = "Background"
 	sort_order = 5
@@ -25,6 +30,9 @@
 	READ_FILE(S["religion"],pref.religion)
 	READ_FILE(S["nanotrasen_relation"],pref.nanotrasen_relation)
 	READ_FILE(S["memory"],pref.memory)
+	READ_FILE(S["education"],pref.education)
+	READ_FILE(S["lifestyle"],pref.lifestyle)
+	READ_FILE(S["hobby"],pref.hobby)
 
 /datum/category_item/player_setup_item/general/background/save_character(var/savefile/S)
 	WRITE_FILE(S["med_record"],pref.med_record)
@@ -36,12 +44,18 @@
 	WRITE_FILE(S["religion"],pref.religion)
 	WRITE_FILE(S["nanotrasen_relation"],pref.nanotrasen_relation)
 	WRITE_FILE(S["memory"],pref.memory)
+	WRITE_FILE(S["education"],pref.education)
+	WRITE_FILE(S["lifestyle"],pref.lifestyle)
+	WRITE_FILE(S["hobby"],pref.hobby)
 
 /datum/category_item/player_setup_item/general/background/sanitize_character()
 	if(!pref.home_system) pref.home_system = "Unset"
 	if(!pref.citizenship) pref.citizenship = "None"
 	if(!pref.faction)     pref.faction =     "None"
 	if(!pref.religion)    pref.religion =    "None"
+	if(!pref.education)	  pref.education = 	 "Military college"
+	if(!pref.lifestyle)   pref.lifestyle =   "Lazy"
+	if(!pref.hobby)		  pref.hobby = 		 "Smart"
 
 	pref.nanotrasen_relation = sanitize_inlist(pref.nanotrasen_relation, COMPANY_ALIGNMENTS, initial(pref.nanotrasen_relation))
 
@@ -52,6 +66,9 @@
 	. += "Citizenship: <a href='?src=\ref[src];citizenship=1'>[pref.citizenship]</a><br/>"
 	. += "Faction: <a href='?src=\ref[src];faction=1'>[pref.faction]</a><br/>"
 	. += "Religion: <a href='?src=\ref[src];religion=1'>[pref.religion]</a><br/>"
+	. += "Education: <a href='?src=\ref[src];education=1'>[pref.education]</a> <a href ='?src=\ref[src];e_info=1'>\[?\]</a><br/>"
+	. += "Lifestyle: <a href='?src=\ref[src];lifestyle=1'>[pref.lifestyle]</a> <a href ='?src=\ref[src];l_info=1'>\[?\]</a><br/>"
+	. += "Hobby: <a href='?src=\ref[src];hobby=1'>[pref.hobby]</a> <a href ='?src=\ref[src];h_info=1'>\[?\]</a><br/>"
 
 	. += "<br/><b>Records</b>:<br/>"
 	if(jobban_isbanned(user, "Records"))
@@ -144,5 +161,38 @@
 		if(!isnull(memes) && CanUseTopic(user))
 			pref.memory = memes
 		return TOPIC_REFRESH
+
+	else if(href_list["education"])
+		var/new_education = input(user, "Your education is...", "Backgrounds") as null|anything in GLOB.education_list
+		if(new_education)
+			pref.education = new_education
+		return TOPIC_REFRESH
+
+	else if(href_list["lifestyle"])
+		var/new_lifestyle = input(user, "Your lifestyle is...", "Backgrounds") as null|anything in GLOB.lifestyle_list
+		if(new_lifestyle)
+			pref.lifestyle = new_lifestyle
+		return TOPIC_REFRESH
+
+	else if(href_list["hobby"])
+		var/new_hobby = input(user, "Your hobby is...", "Backgrounds") as null|anything in GLOB.hobby_list
+		if(new_hobby)
+			pref.hobby = new_hobby
+		return TOPIC_REFRESH
+
+	else if(href_list["e_info"])
+		var/datum/background/education/E = GLOB.education_list[pref.education]
+		to_chat(user, "<span class='info'><b>Education: [E.name]</b><br>\
+							[E.info]</span>")
+
+	else if(href_list["l_info"])
+		var/datum/background/lifestyle/L = GLOB.lifestyle_list[pref.lifestyle]
+		to_chat(user,"<span class='info'><b>Lifestyle: [L.name]</b><br>\
+							[L.info]</span>")
+
+	else if(href_list["h_info"])
+		var/datum/background/hobby/H = GLOB.hobby_list[pref.hobby]
+		to_chat(user,"<span class='info'><b>Hobby: [H.name]</b><br>\
+							[H.info]</span>")
 
 	return ..()

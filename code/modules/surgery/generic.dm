@@ -299,6 +299,7 @@
 //////////////////////////////////////////////////////////////////
 /datum/surgery_step/generic/amputate
 	allowed_tools = list(
+	/obj/item/tool/saw/advanced_circular = 120,
 	/obj/item/tool/saw/circular = 100,	//The specific circular saw is best, but less delicate tools will do too
 	/obj/item/tool/saw = 75,
 	/obj/item/tool/pickaxe/laser = 60

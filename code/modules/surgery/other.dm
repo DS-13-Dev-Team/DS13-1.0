@@ -99,6 +99,7 @@
 /datum/surgery_step/hardsuit
 	allowed_tools = list(
 		/obj/item/tool/weldingtool = 80,
+		/obj/item/tool/saw/advanced_circular = 70,
 		/obj/item/tool/saw/circular = 60
 		)
 

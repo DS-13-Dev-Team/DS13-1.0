@@ -47,3 +47,33 @@
 
 /obj/item/clothing/head/helmet/space/rig/emergency
 	name = "helmet"
+
+/obj/item/rig/clown
+	name = "clown RIG"
+	desc = "Honk honk."
+	icon_state = "clown_rig"
+	armor = list(melee = 25, bullet = 25, laser = 25, energy = 25, bomb = 25, bio = 25, rad = 25)
+	offline_slowdown = 1
+	online_slowdown = RIG_VERY_LIGHT
+
+	chest_type = /obj/item/clothing/suit/space/rig/clown
+	helm_type =  /obj/item/clothing/head/helmet/space/rig/clown
+	boot_type =  /obj/item/clothing/shoes/magboots/rig/clown
+	glove_type = /obj/item/clothing/gloves/rig/clown
+
+	initial_modules = list(
+		/obj/item/rig_module/healthbar,
+		/obj/item/rig_module/storage/light
+		)
+
+/obj/item/clothing/suit/space/rig/clown
+	name = "clown suit"
+
+/obj/item/clothing/gloves/rig/clown
+	name = "clown gloves"
+
+/obj/item/clothing/shoes/magboots/rig/clown
+	name = "clown shoes"
+
+/obj/item/clothing/head/helmet/space/rig/clown
+	name = "clown wig"
