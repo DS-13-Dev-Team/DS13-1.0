@@ -81,12 +81,82 @@ GLOBAL_LIST_EMPTY(hobby_list)
 	var/botany = 0
 	var/cooking = 0
 
+/datum/background/New()
+	if(rig_zero_gravity > 0)
+		info += "<br>Increases EVA by [rig_zero_gravity] points."
+	else if(rig_zero_gravity < 0)
+		info += "<br>Reduces EVA by [rig_zero_gravity] points."
+
+	if(hauling > 0)
+		info += "<br>Increases hauling by [hauling] points."
+	else if(hauling < 0)
+		info += "<br>Reduces hauling by [hauling] points."
+
+	if(atletics > 0)
+		info += "<br>Increases athletics by [atletics] points."
+	else if(atletics < 0)
+		info += "<br>Reduces athletics by [atletics] points."
+
+	if(information_technology > 0)
+		info += "<br>Increases IT by [information_technology] points."
+	else if(information_technology < 0)
+		info += "<br>Reduces IT by [information_technology] points."
+
+	if(complex_devices > 0)
+		info += "<br>Increases complex devices by [complex_devices] points."
+	else if(complex_devices < 0)
+		info += "<br>Reduces complex devices by [complex_devices] points."
+
+	if(cooking > 0)
+		info += "<br>Increases cooking by [cooking] points."
+	else if(cooking < 0)
+		info += "<br>Reduces cooking by [cooking] points."
+
+	if(botany > 0)
+		info += "<br>Increases botany by [botany] points."
+	else if(botany < 0)
+		info += "<br>Reduces botany by [botany] points."
+
+	if(close_combat > 0)
+		info += "<br>Increases close combat by [close_combat] points."
+	else if(close_combat < 0)
+		info += "<br>Reduces close combat by [close_combat] points."
+
+	if(weapon_expertise > 0)
+		info += "<br>Increases weapon expertise by [weapon_expertise] points."
+	else if(weapon_expertise < 0)
+		info += "<br>Reduces IT by [weapon_expertise] points."
+
+	if(forensics > 0)
+		info += "<br>Increases forensics by [forensics] points."
+	else if(forensics < 0)
+		info += "<br>Reduces forensics by [forensics] points."
+
+	if(construction > 0)
+		info += "<br>Increases construction by [construction] points."
+	else if(construction < 0)
+		info += "<br>Reduces construction by [construction] points."
+
+	if(electrical_engineering > 0)
+		info += "<br>Increases electrical engineering by [electrical_engineering] points."
+	else if(electrical_engineering < 0)
+		info += "<br>Reduces electrical engineering by [electrical_engineering] points."
+
+	if(medicine > 0)
+		info += "<br>Increases medicine by [medicine] points."
+	else if(medicine < 0)
+		info += "<br>Reduces medicine by [medicine] points."
+
+	if(anatomy > 0)
+		info += "<br>Increases anatomy by [anatomy] points."
+	else if(anatomy < 0)
+		info += "<br>Reduces anatomy by [anatomy] points."
 
 // EDUCATION
 
 /datum/background/education/student
 	name = "Diligent student"
-	info = "You have studied well, gaining knowledge of many subjects, although you aren't very proficient in anything specific. Maybe some of that knowledge will be useful in Zone."
+	info = "You have studied well, gaining knowledge of many subjects, although you aren't very proficient in anything specific."
 	rig_zero_gravity = 1
 	information_technology = 2
 	complex_devices = 1
@@ -219,7 +289,7 @@ GLOBAL_LIST_EMPTY(hobby_list)
 /datum/background/hobby/gunnut
 	name = "Gun nut"
 	info = "You have experience with different firearms, gained from the shooting clubs and simulators. You have slightly improved skills with most guns."
-	weapon_expertise = 6
+	weapon_expertise = 4
 
 /datum/background/hobby/heavyhand
 	name = "Heavy hand"

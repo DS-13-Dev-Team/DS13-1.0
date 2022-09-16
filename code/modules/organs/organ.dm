@@ -71,8 +71,9 @@ var/list/organ_cache = list()
 	return (damage >= min_broken_damage || (status & ORGAN_CUT_AWAY) || (status & ORGAN_BROKEN))
 
 //Second argument may be a dna datum; if null will be set to holder's dna.
-/obj/item/organ/New(var/mob/living/carbon/holder, var/datum/dna/given_dna)
-	..(holder)
+/obj/item/organ/Initialize(mapload, datum/dna/given_dna)
+	. = ..()
+	var/mob/living/carbon/holder = loc
 	if(!istype(given_dna))
 		given_dna = null
 
