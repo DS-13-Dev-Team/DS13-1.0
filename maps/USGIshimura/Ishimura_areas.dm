@@ -6,10 +6,11 @@
 	icon = 'maps/USGIshimura/ishimura_areas.dmi'
 	ship_area = TRUE
 	ambience = list('sound/ambience/ishimura/corridor/shippa1.ogg','sound/ambience/ishimura/corridor/shippa2.ogg','sound/ambience/ishimura/corridor/shippa3.ogg', 'sound/ambience/ishimura/corridor/shippa4.ogg', 'sound/ambience/ishimura/corridor/shippa5.ogg', 'sound/ambience/ishimura/corridor/shippa6.ogg', 'sound/ambience/ishimura/corridor/shippa7.ogg', 'sound/ambience/ishimura/corridor/shippa8.ogg', 'sound/ambience/ishimura/corridor/shippa9.ogg', 'sound/ambience/ishimura/corridor/shippa10.ogg', 'sound/ambience/ishimura/corridor/shippa11.ogg')
-	forced_ambience = null
+	forced_ambience = list('sound/ambience/ishimura/forced_ambience/ishimura_general.ogg')
 
 /area/ishimura/hull
 	name = "\improper Ishimura Hull"
+	forced_ambience = null
 
 /area/supply/dock
 	name = "Supply Shuttle"
@@ -45,6 +46,7 @@
 	name = "\improper EVA Deck"
 	icon_state = "engibase"
 	sound_env = LARGE_ENCLOSED
+	forced_ambience = list('sound/ambience/ishimura/forced_ambience/ishimura_eva.ogg')
 
 /area/ishimura/eva/ADS
 	name = "\improper Asteroid Defense System"
@@ -108,7 +110,8 @@
 	power_environ = 0
 	has_gravity = 0
 	area_flags = AREA_FLAG_EXTERNAL
-	ambience = list('sound/ambience/ambispace.ogg','sound/music/title2.ogg','sound/music/space.ogg','sound/music/main.ogg','sound/music/traitor.ogg')
+	ambience = null
+	forced_ambience = list('sound/ambience/ishimura/forced_ambience/ishimura_spacewalk.ogg')
 
 //The channel area is cut in two for objective tracking purposes
 /area/ishimura/external/channel
@@ -252,7 +255,7 @@
 	area_flags = AREA_FLAG_RAD_SHIELDED
 	sound_env = TUNNEL_ENCLOSED
 	turf_initializer = /decl/turf_initializer/maintenance
-	forced_ambience = list('sound/ambience/ishimura/forced_ambience/maint.ogg')
+	forced_ambience = list('sound/ambience/ishimura/forced_ambience/ishimura_maint.ogg')
 	ambience = list('sound/ambience/ishimura/maint/noise1.ogg','sound/ambience/ishimura/maint/noise2.ogg','sound/ambience/ishimura/maint/noise3.ogg','sound/ambience/ishimura/maint/noise4.ogg','sound/ambience/ishimura/maint/noise5.ogg','sound/ambience/ishimura/maint/noise6.ogg','sound/ambience/ishimura/maint/noise7.ogg')
 	name = "\improper Maintenance"
 	icon_state = "maintbase"
@@ -698,7 +701,7 @@ area/ishimura/upper/medical/bpc
 	area_flags = AREA_FLAG_RAD_SHIELDED
 	sound_env = TUNNEL_ENCLOSED
 	turf_initializer = /decl/turf_initializer/maintenance
-	forced_ambience = list('sound/ambience/ishimura/forced_ambience/maint.ogg')
+	forced_ambience = list('sound/ambience/ishimura/forced_ambience/ishimura_maint.ogg')
 	ambience = list('sound/ambience/ishimura/maint/noise1.ogg','sound/ambience/ishimura/maint/noise2.ogg','sound/ambience/ishimura/maint/noise3.ogg','sound/ambience/ishimura/maint/noise4.ogg','sound/ambience/ishimura/maint/noise5.ogg','sound/ambience/ishimura/maint/noise6.ogg','sound/ambience/ishimura/maint/noise7.ogg')
 	name = "\improper Maintenance"
 	icon_state = "maintbase"
@@ -920,11 +923,11 @@ area/ishimura/upper/medical/bpc
 /area/shuttle/tram
 	name = "\improper Ishimura Tram"
 	icon_state = "tram"
-	forced_ambience = list('sound/ambience/ishimura/forced_ambience/tramstation.ogg')
+	forced_ambience = list('sound/ambience/ishimura/forced_ambience/ishimura_tramstation.ogg')
 	ambience = null
 
 /area/ishimura/tramdeck
-	forced_ambience = list('sound/ambience/ishimura/forced_ambience/tramstation.ogg')
+	forced_ambience = list('sound/ambience/ishimura/forced_ambience/ishimura_tramstation.ogg')
 	ambience = list('sound/ambience/ishimura/undertram/noise1.ogg','sound/ambience/ishimura/undertram/noise2.ogg','sound/ambience/ishimura/undertram/noise3.ogg','sound/ambience/ishimura/undertram/noise4.ogg','sound/ambience/ishimura/undertram/noise5.ogg')
 
 /area/ishimura/tramdeck/tram

@@ -5,6 +5,8 @@
 	icon = 'maps/USGIshimura/ishimura_areas.dmi'
 	icon_state = "aegis"
 	sound_env = ASTEROID
+	ambience = null
+	forced_ambience = list('sound/ambience/ishimura/forced_ambience/ishimura_asteroid.ogg')
 
 /area/aegis/outside
 	name = "\improper Aegis VII"
@@ -17,6 +19,8 @@
 	name = "\improper Aegis Colony"
 	icon_state = "crewbase"
 	sound_env = LARGE_ENCLOSED
+	ambience = null
+	forced_ambience = list('sound/ambience/ishimura/forced_ambience/ishimura_colony.ogg')
 
 /area/aegis/colony/airlock
 	name = "\improper Aegis Colony External Airlock"
