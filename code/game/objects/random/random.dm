@@ -884,9 +884,9 @@ obj/random/obstruction/item_to_spawn()
 /obj/random/cash/item_to_spawn()
 	return pickweight(list(/obj/item/spacecash/ewallet/random/c200 = 8,
 				/obj/item/spacecash/ewallet/random/c500 = 6,
-				/obj/item/spacecash/ewallet/random/c1000 = 4,
-				/obj/item/spacecash/ewallet/random/c5000 = 2,
-				/obj/item/spacecash/ewallet/random/c10000 = 1))
+				/obj/item/spacecash/ewallet/random/c1000 = 3,
+				/obj/item/spacecash/ewallet/random/c5000 = 0.1,
+				/obj/item/spacecash/ewallet/random/c10000 = 0.05))
 
 /obj/random/cash_poor
 	name = "lesser random currency"

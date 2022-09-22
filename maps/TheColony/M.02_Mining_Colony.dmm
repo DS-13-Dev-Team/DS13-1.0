@@ -3501,7 +3501,6 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/item/reagent_containers/hypospray/autoinjector/ds_medigel,
 /turf/simulated/floor/plating,
 /area/mining_colony/SCAF)
 "akc" = (
@@ -3693,6 +3692,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/effect/mine/stun,
 /turf/simulated/floor/plating,
 /area/mining_colony/SCAF)
 "akC" = (
@@ -3714,6 +3714,7 @@
 /area/mining_colony/SCAF)
 "akF" = (
 /obj/structure/inflatable/door,
+/obj/effect/mine/stun,
 /turf/simulated/floor/plating,
 /area/mining_colony/SCAF)
 "akG" = (
@@ -10956,11 +10957,11 @@
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/civ_hall)
 "aFN" = (
-/obj/structure/closet/l3closet/scientist,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
 /obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/structure/closet/l3closet/virology,
 /turf/simulated/floor/tiled/white/monotile,
 /area/mining_colony/interior/science/scienceoffices)
 "aFO" = (
@@ -11666,7 +11667,7 @@
 	id = "extractiongame";
 	name = "Hangar Bay Armory";
 	pixel_y = 30;
-	req_access = list(57,58,100)
+	req_one_access = list(57,58,100)
 	},
 /obj/structure/cable{
 	d1 = 2;
@@ -12465,16 +12466,13 @@
 "aJM" = (
 /obj/structure/closet/secure_closet/guncabinet/sec_support,
 /obj/item/shield/riot,
-/obj/item/gun/projectile/shotgun/bola_lancher,
-/obj/item/ammo_magazine/pulse,
-/obj/item/ammo_magazine/shotgun,
+/obj/item/gun/projectile/divet/empty,
+/obj/item/ammo_magazine/divet,
+/obj/item/ammo_magazine/divet,
 /obj/effect/floor_decal/industrial/outline/red,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/item/gun/projectile/divet/empty,
-/obj/item/ammo_magazine/divet,
-/obj/item/ammo_magazine/divet,
 /turf/simulated/floor/dank/slides{
 	dir = 4
 	},
@@ -12782,15 +12780,13 @@
 /area/mining_colony/interior/kellion_arrival/arrivals)
 "aKy" = (
 /obj/item/shield/riot,
-/obj/item/gun/projectile/shotgun/bola_lancher,
-/obj/item/ammo_magazine/pulse,
-/obj/item/ammo_magazine/shotgun,
-/obj/effect/floor_decal/industrial/outline/red,
 /obj/structure/closet/secure_closet/guncabinet{
 	anchored = 1
 	},
+/obj/item/gun/projectile/divet/empty,
 /obj/item/ammo_magazine/divet,
 /obj/item/ammo_magazine/divet,
+/obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/dank/slides{
 	dir = 4
 	},
@@ -12831,16 +12827,13 @@
 "aKE" = (
 /obj/structure/closet/secure_closet/guncabinet/sec_support,
 /obj/item/shield/riot,
-/obj/item/gun/projectile/shotgun/bola_lancher,
-/obj/item/ammo_magazine/pulse,
-/obj/item/ammo_magazine/shotgun,
+/obj/item/gun/projectile/divet/empty,
+/obj/item/ammo_magazine/divet,
+/obj/item/ammo_magazine/divet,
 /obj/effect/floor_decal/industrial/outline/red,
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/item/gun/projectile/divet/empty,
-/obj/item/ammo_magazine/divet,
-/obj/item/ammo_magazine/divet,
 /turf/simulated/floor/dank/slides{
 	dir = 4
 	},
@@ -14898,12 +14891,9 @@
 /turf/simulated/floor/dank/maint_right,
 /area/mining_colony/interior/shuttle_bay/shuttle_2)
 "aQp" = (
-/obj/structure/closet/secure_closet/guncabinet/sec_support,
-/obj/item/gun/projectile/automatic/pulse_rifle,
+/obj/structure/closet/secure_closet/guncabinet,
 /obj/item/ammo_magazine/divet,
 /obj/item/ammo_magazine/divet,
-/obj/item/ammo_magazine/pulse,
-/obj/item/ammo_magazine/pulse,
 /obj/item/gun/projectile/divet,
 /obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/dank/grater,
@@ -15180,19 +15170,15 @@
 /obj/item/rig/security/pcsi,
 /obj/item/rig/security/pcsi,
 /obj/item/rig/security/pcsi,
+/obj/item/rig/security/pcsi,
 /obj/effect/floor_decal/industrial/outline/red,
 /obj/machinery/light,
-/obj/item/rig/security/pcsi,
 /turf/simulated/floor/dank/slides{
 	dir = 4
 	},
 /area/mining_colony/security/sec_armory)
 "aRc" = (
 /obj/structure/closet/secure_closet/security,
-/obj/item/gun/energy/taser,
-/obj/item/clothing/accessory/badge{
-	badge_string = "Planetary Security"
-	},
 /obj/effect/floor_decal/dank/outline,
 /obj/item/clothing/suit/storage/toggle/cseco{
 	desc = "An armored jacket often worn by Planetary Security Officers that combines style and protection."
@@ -15212,10 +15198,6 @@
 /area/mining_colony/interior/cargo)
 "aRe" = (
 /obj/structure/closet/secure_closet/security,
-/obj/item/gun/energy/taser,
-/obj/item/clothing/accessory/badge{
-	badge_string = "Planetary Security"
-	},
 /obj/effect/floor_decal/dank/outline,
 /obj/item/clothing/suit/storage/toggle/cseco{
 	desc = "An armored jacket often worn by Planetary Security Officers that combines style and protection."
@@ -19250,10 +19232,6 @@
 	pixel_y = 15;
 	req_access = list(201)
 	},
-/obj/item/gun/energy/taser,
-/obj/item/clothing/accessory/badge{
-	badge_string = "Planetary Security"
-	},
 /obj/effect/floor_decal/dank/outline,
 /obj/item/clothing/suit/storage/toggle/cseco{
 	desc = "An armored jacket often worn by Planetary Security Officers that combines style and protection."
@@ -19557,8 +19535,8 @@
 /area/mining_colony/interior/cargo/officerarea)
 "bbr" = (
 /obj/effect/floor_decal/industrial/outline/red,
-/obj/structure/closet/bombcloset,
 /obj/item/storage/toolbox/syndicate,
+/obj/structure/closet/bombcloset,
 /obj/machinery/light,
 /turf/simulated/floor/dank/slides{
 	dir = 4
@@ -19861,10 +19839,6 @@
 /area/mining_colony/interior/cargo/storage_upper)
 "bbS" = (
 /obj/structure/closet/secure_closet/security,
-/obj/item/gun/energy/taser,
-/obj/item/clothing/accessory/badge{
-	badge_string = "Planetary Security"
-	},
 /obj/effect/floor_decal/dank/outline,
 /obj/item/clothing/suit/storage/toggle/cseco{
 	desc = "An armored jacket often worn by Planetary Security Officers that combines style and protection."
@@ -21878,11 +21852,6 @@
 /area/mining_colony/interior/enginieering/main_room)
 "bfL" = (
 /obj/item/shield/riot,
-/obj/item/gun/projectile/shotgun/bola_lancher,
-/obj/item/ammo_magazine/pulse,
-/obj/item/ammo_magazine/pulse,
-/obj/item/ammo_magazine/shotgun,
-/obj/effect/floor_decal/industrial/outline/red,
 /obj/structure/closet/secure_closet/guncabinet{
 	anchored = 1
 	},
@@ -21890,6 +21859,7 @@
 /obj/machinery/light,
 /obj/item/ammo_magazine/divet,
 /obj/item/ammo_magazine/divet,
+/obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/dank/slides{
 	dir = 4
 	},
@@ -27433,6 +27403,10 @@
 /obj/machinery/telecomms/server/presets/common,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/enginieering/telecomms)
+"cnQ" = (
+/obj/effect/landmark/marker/ishimura,
+/turf/unsimulated/genturf,
+/area/mining_colony/surface)
 "cqH" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -27954,12 +27928,9 @@
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/maint/storage)
 "jmX" = (
-/obj/structure/closet/secure_closet/guncabinet/sec_support,
-/obj/item/gun/projectile/automatic/pulse_rifle,
+/obj/structure/closet/secure_closet/guncabinet,
 /obj/item/ammo_magazine/divet,
 /obj/item/ammo_magazine/divet,
-/obj/item/ammo_magazine/pulse,
-/obj/item/ammo_magazine/pulse,
 /obj/item/gun/projectile/divet,
 /obj/effect/floor_decal/dank/mono_tri{
 	dir = 8
@@ -28566,6 +28537,11 @@
 /obj/effect/shuttle_landmark/valor/landing,
 /turf/simulated/floor,
 /area/mining_colony/surface)
+"qxG" = (
+/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/structure/closet/l3closet/virology,
+/turf/simulated/floor/tiled/white/monotile,
+/area/mining_colony/interior/science/scienceoffices)
 "qzN" = (
 /obj/item/radio/intercom{
 	dir = 4;
@@ -28799,6 +28775,18 @@
 	},
 /turf/simulated/floor/wood,
 /area/mining_colony/interior/messy_hall)
+"tTI" = (
+/obj/item/shield/riot,
+/obj/item/ammo_magazine/divet,
+/obj/item/ammo_magazine/divet,
+/obj/structure/closet/secure_closet/guncabinet{
+	anchored = 1
+	},
+/obj/effect/floor_decal/industrial/outline/red,
+/turf/simulated/floor/dank/slides{
+	dir = 4
+	},
+/area/mining_colony/security/sec_armory)
 "ubj" = (
 /obj/machinery/telecomms/broadcaster/preset_right,
 /turf/simulated/floor/dank/grater,
@@ -30071,7 +30059,7 @@ aoG
 aoG
 aoG
 aoG
-aoG
+cnQ
 aoG
 aoG
 aoG
@@ -37904,7 +37892,7 @@ aKM
 aik
 amX
 bbI
-aKy
+tTI
 mvB
 aae
 aae
@@ -51391,7 +51379,7 @@ bkB
 aRY
 aES
 aET
-aFQ
+qxG
 aGw
 aGQ
 aEW

@@ -754,11 +754,11 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 				target.visible_message("<span class='danger'>[target]'s [W] goes off during the struggle!</span>")
 				return W.afterattack(shoot_to,target)
 
-	var/skill_mod = 10 * attacker.get_skill_difference(SKILL_COMBAT, target)
+	var/skill_mod = 4 * attacker.get_skill_difference(SKILL_COMBAT, target)
 	var/state_mod = attacker.melee_accuracy_mods() - target.melee_accuracy_mods()
 
 	var/randn = rand(1, 100) - skill_mod + state_mod
-	if(!(species_flags & SPECIES_FLAG_NO_SLIP) && randn <= 25)
+	if(!(species_flags & SPECIES_FLAG_NO_SLIP) && randn <= 20)
 		var/armor_check = target.run_armor_check(affecting, "melee")
 		target.apply_effect(3, WEAKEN, armor_check)
 		playsound(target.loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)

@@ -1165,7 +1165,7 @@
 	pixel_y = -24
 	},
 /turf/simulated/floor/plating,
-/area/mining_colony/interior/cargo/storage_upper)
+/area/mining_colony/lower)
 "dH" = (
 /obj/structure/flora/pottedplant/tropical,
 /obj/effect/floor_decal/dank/border{
@@ -1261,7 +1261,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/dank/mono,
-/area/mining_colony/lower/medical)
+/area/mining_colony/lower)
 "dY" = (
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/lower)
@@ -1887,6 +1887,7 @@
 /obj/item/reagent_containers/pill/happy,
 /obj/item/reagent_containers/pill/happy,
 /obj/random/tool/advanced,
+/obj/item/reagent_containers/glass/bucket,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/node/room49)
 "fZ" = (
@@ -6003,9 +6004,6 @@
 "uC" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/lower/maints/node/room41)
-"uH" = (
-/turf/simulated/floor/plating,
-/area/mining_colony/interior/cargo/storage_upper)
 "uJ" = (
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/node/room49)
@@ -6614,7 +6612,6 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/item/rig/zealot,
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/lower/unibase)
 "DV" = (
@@ -24302,12 +24299,12 @@ ar
 ar
 ar
 ar
-jt
-jt
+ar
+ar
 dX
-jt
-jt
-jt
+ar
+ar
+ar
 cG
 cG
 cG
@@ -33181,7 +33178,7 @@ dY
 ar
 ar
 bi
-uH
+bi
 rW
 rW
 rW
@@ -33383,7 +33380,7 @@ dY
 bi
 bi
 bi
-uH
+bi
 mU
 rJ
 rJ
@@ -33585,7 +33582,7 @@ dY
 bi
 bi
 bi
-uH
+bi
 mU
 rJ
 nP
@@ -33788,7 +33785,7 @@ ar
 ar
 bi
 dG
-rW
+xk
 xk
 xk
 xk

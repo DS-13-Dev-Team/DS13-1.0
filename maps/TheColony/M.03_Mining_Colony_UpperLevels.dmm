@@ -795,10 +795,6 @@
 	dir = 4;
 	icon_state = "rwindow"
 	},
-/obj/item/gun/energy/taser,
-/obj/item/clothing/accessory/badge{
-	badge_string = "Planetary Security"
-	},
 /obj/effect/floor_decal/dank/outline,
 /obj/item/clothing/suit/storage/toggle/cseco{
 	desc = "An armored jacket often worn by Planetary Security Officers that combines style and protection."
@@ -1890,10 +1886,6 @@
 	dir = 4;
 	icon_state = "rwindow"
 	},
-/obj/item/gun/energy/taser,
-/obj/item/clothing/accessory/badge{
-	badge_string = "Planetary Security"
-	},
 /obj/effect/floor_decal/dank/outline,
 /obj/item/clothing/suit/storage/toggle/cseco{
 	desc = "An armored jacket often worn by Planetary Security Officers that combines style and protection."
@@ -2307,10 +2299,6 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/item/gun/energy/taser,
-/obj/item/clothing/accessory/badge{
-	badge_string = "Planetary Security"
-	},
 /obj/effect/floor_decal/dank/outline,
 /obj/item/clothing/suit/storage/toggle/cseco{
 	desc = "An armored jacket often worn by Planetary Security Officers that combines style and protection."
@@ -2430,10 +2418,6 @@
 /area/mining_colony/security/upper)
 "kz" = (
 /obj/structure/closet/secure_closet/security,
-/obj/item/gun/energy/taser,
-/obj/item/clothing/accessory/badge{
-	badge_string = "Planetary Security"
-	},
 /obj/effect/floor_decal/dank/outline,
 /obj/item/clothing/suit/storage/toggle/cseco{
 	desc = "An armored jacket often worn by Planetary Security Officers that combines style and protection."
@@ -3361,7 +3345,7 @@
 	},
 /area/mining_colony/security/upper/bridge_corridor)
 "EI" = (
-/obj/structure/closet/secure_closet/guncabinet/sec_support,
+/obj/structure/closet/secure_closet/guncabinet,
 /obj/effect/floor_decal/industrial/outline/red,
 /obj/item/ammo_magazine/divet,
 /obj/item/ammo_magazine/divet,
@@ -3452,12 +3436,8 @@
 /turf/simulated/floor/dank/hardwood,
 /area/mining_colony/security/upper/be_room2)
 "Gz" = (
-/obj/structure/closet/secure_closet/guncabinet/sec_support,
+/obj/structure/closet/secure_closet/guncabinet,
 /obj/effect/floor_decal/industrial/outline/red,
-/obj/item/ammo_magazine/pulse,
-/obj/item/ammo_magazine/pulse,
-/obj/item/ammo_magazine/pulse,
-/obj/item/gun/projectile/automatic/pulse_rifle,
 /obj/item/clothing/suit/armor/pcsi,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/security/upper/commandofficers)

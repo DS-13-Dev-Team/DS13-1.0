@@ -13,7 +13,7 @@
 	return list(
 		/obj/item/gun/projectile/automatic/pulse_rifle,
 		/obj/item/gun/projectile/shotgun/bola_lancher,
-		/obj/item/ammo_magazine/pulse = 2,
+		/obj/item/ammo_magazine/pulse = 3,
 		/obj/item/ammo_magazine/shotgun = 2,
 		/obj/item/clothing/suit/armor/riot,
 		/obj/item/clothing/head/helmet/riot

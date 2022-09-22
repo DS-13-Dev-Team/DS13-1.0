@@ -681,6 +681,7 @@ area/mining_colony/interior/mining/hallway
 	icon_state = "aegis"
 	sound_env = ASTEROID
 	is_maintenance = TRUE
+	requires_power = FALSE
 
 /area/mining_colony/lower/unibase
 	name = "\improper Unitology Hideout"

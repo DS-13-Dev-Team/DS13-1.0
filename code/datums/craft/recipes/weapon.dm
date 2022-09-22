@@ -72,7 +72,7 @@
 
 /datum/craft_recipe/weapon/doublebarrel
 	name = "double-barreled shotgun"
-	result = /obj/item/gun/projectile/shotgun/doublebarrel
+	result = /obj/item/gun/projectile/shotgun/doublebarrel/pellet
 	steps = list(
 		list(CRAFT_OBJECT, /obj/item/pipe, 20),
 		list(CRAFT_TOOL, QUALITY_SAWING, 10, 60),

@@ -817,12 +817,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/dank/grater,
 /area/ishimura/lower/engineering/bay)
-"aci" = (
-/obj/machinery/light{
-	dir = 1
-	},
-/turf/simulated/floor/dank/rectangles,
-/area/ishimura/lower/engineering/bay)
 "acj" = (
 /obj/machinery/door/firedoor/border_only,
 /obj/effect/wallframe_spawn/reinforced,
@@ -946,7 +940,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/dank/grater,
-/area/ishimura/lower/engineering/bay)
+/area/ishimura/lower/misc/hallway/aft)
 "acw" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
@@ -1959,7 +1953,7 @@
 	pixel_x = -32
 	},
 /turf/simulated/floor/dank/grater,
-/area/ishimura/lower/engineering/bay)
+/area/ishimura/lower/misc/hallway/aft)
 "aeE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
@@ -6159,7 +6153,7 @@
 "amN" = (
 /obj/structure/railing/mapped,
 /turf/simulated/open,
-/area/ishimura/lower/engineering/bay)
+/area/ishimura/lower/misc/hallway/aft)
 "amO" = (
 /obj/machinery/firealarm{
 	pixel_y = 24
@@ -24139,7 +24133,7 @@
 	dir = 1
 	},
 /turf/simulated/open,
-/area/ishimura/lower/engineering/bay)
+/area/ishimura/lower/misc/hallway/aft)
 "aVS" = (
 /obj/structure/disposalpipe/down,
 /obj/machinery/atmospherics/pipe/zpipe/down/scrubbers,
@@ -27447,13 +27441,6 @@
 	dir = 8
 	},
 /area/ishimura/lower/misc/hallway/central)
-"bRX" = (
-/obj/structure/sign/directions/supply{
-	dir = 4;
-	pixel_y = -34
-	},
-/turf/simulated/floor/dank/rectangles,
-/area/ishimura/lower/engineering/bay)
 "bSf" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -27585,7 +27572,7 @@
 	pixel_x = -32
 	},
 /turf/simulated/floor/dank/grater,
-/area/ishimura/lower/engineering/bay)
+/area/ishimura/lower/misc/hallway/aft)
 "dod" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/machinery/door/firedoor/border_only,
@@ -28051,7 +28038,7 @@
 	dir = 4
 	},
 /turf/simulated/open,
-/area/ishimura/lower/engineering/bay)
+/area/ishimura/lower/misc/hallway/aft)
 "hKl" = (
 /turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/executive)
@@ -28178,7 +28165,7 @@
 	dir = 4
 	},
 /turf/simulated/open,
-/area/ishimura/lower/engineering/bay)
+/area/ishimura/lower/misc/hallway/aft)
 "jfP" = (
 /turf/simulated/floor/dank/tech{
 	dir = 8
@@ -28451,7 +28438,7 @@
 "mTI" = (
 /obj/machinery/light,
 /turf/simulated/floor/dank/grater,
-/area/ishimura/lower/engineering/bay)
+/area/ishimura/lower/misc/hallway/aft)
 "nfn" = (
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/mining/shuttlebay/port)
@@ -28614,7 +28601,7 @@
 /area/ishimura/lower/misc/hallway/central)
 "onU" = (
 /turf/simulated/floor/dank/grater,
-/area/ishimura/lower/engineering/bay)
+/area/ishimura/lower/misc/hallway/aft)
 "oqL" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -41429,7 +41416,7 @@ aWL
 aYv
 ajW
 onU
-afT
+arz
 mTI
 aal
 aau
@@ -41681,7 +41668,7 @@ aOm
 aYw
 ajW
 amN
-afT
+arz
 aVR
 aal
 aaJ
@@ -41933,7 +41920,7 @@ aqV
 ara
 ajW
 jaN
-afT
+arz
 hFs
 aal
 ayu
@@ -42184,9 +42171,9 @@ akd
 akd
 akd
 akd
-aci
-afT
-bRX
+aNf
+arz
+jhh
 aal
 ayP
 aas
@@ -65145,27 +65132,27 @@ aGI
 aGL
 aoH
 azs
-aak
-aak
-aak
-aak
-aak
-aak
-aak
-aak
-aak
-aak
-aak
-aak
-aak
-aak
-aak
-aak
-aak
-aak
-aak
-aak
-aak
+azs
+azs
+azs
+azs
+azs
+azs
+azs
+azs
+azs
+azs
+azs
+azs
+azs
+azs
+azs
+azs
+azs
+azs
+azs
+azs
+azs
 awC
 awC
 aaa
@@ -65418,7 +65405,7 @@ baQ
 bbs
 bbg
 azs
-aak
+azs
 awC
 aaa
 aaa

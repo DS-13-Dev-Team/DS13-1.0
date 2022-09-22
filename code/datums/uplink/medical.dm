@@ -16,7 +16,14 @@
 
 /datum/uplink_item/item/medical/medigel
 	name = "medical gel injector"
-	item_cost = 8
+	item_cost = 12
 	path = /obj/item/reagent_containers/hypospray/autoinjector/ds_medigel
+	is_special = TRUE
+	antag_roles = list(MODE_EARTHGOV_AGENT, MODE_UNITOLOGIST, MODE_UNITOLOGIST_SHARD)
+
+/datum/uplink_item/item/medical/medigel_small
+	name = "small medical gel injector"
+	item_cost = 8
+	path = /obj/item/reagent_containers/hypospray/autoinjector/ds_medigel/small
 	is_special = TRUE
 	antag_roles = list(MODE_EARTHGOV_AGENT, MODE_UNITOLOGIST, MODE_UNITOLOGIST_SHARD)
