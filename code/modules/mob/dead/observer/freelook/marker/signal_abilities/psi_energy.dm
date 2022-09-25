@@ -190,7 +190,7 @@
 
 	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
-		ui = new(user, src, ui_key, "signal_abilities.tmpl", "Abilities Menu", 600, 600, state = GLOB.interactive_state)
+		ui = new(user, src, ui_key, "signal_abilities.tmpl", "Abilities Menu", 600, 625, state = GLOB.interactive_state)
 		ui.set_initial_data(data)
 		ui.set_auto_update(TRUE)
 		ui.open()
