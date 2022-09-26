@@ -241,8 +241,8 @@
 	allowed_tools = list(
 	/obj/item/tool/cautery = 100,			\
 	/obj/item/clothing/mask/smokable/cigarette = 75,	\
-	/obj/item/flame/lighter = 50,			\
-	/obj/item/tool/weldingtool = 25
+	/obj/item/flame/lighter = 60,			\
+	/obj/item/tool/weldingtool = 35
 	)
 
 	min_duration = 70
