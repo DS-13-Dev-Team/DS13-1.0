@@ -4,9 +4,11 @@
 #define	FLAP_MINIMUM_RANGE	3
 
 #define FLAP_COOLDOWN	(3 SECONDS)
+#define FLAP_COOLDOWN_ENHANCED	(2.4 SECONDS)
 #define FLAP_SINGLE_WING_IMPAIRMENT	(0.4)
 
 #define INFECTOR_STING_DAMAGE	9
+#define INFECTOR_STING_DAMAGE_ENHANCED	12
 
 /datum/species/necromorph/infector
 	name = SPECIES_NECROMORPH_INFECTOR
@@ -127,6 +129,38 @@
 	lowest_money_drop = 2000
 	highest_money_drop = 2500
 
+/datum/species/necromorph/infector/enhanced
+	name = SPECIES_NECROMORPH_INFECTOR_ENHANCED
+	mob_type	=	/mob/living/carbon/human/necromorph/infector/enhanced
+	name_plural =  "Enhanced Infectors"
+	blurb = "Unlike the more fragile counterpart, this infector is a capable fighter. However, nothing compares to its supportive capabilities."
+	total_health = 225
+	limb_health_factor = 1.5
+	slowdown = 4
+
+	icon_template = 'icons/mob/necromorph/infector_enhanced.dmi'
+
+	biomass = 290
+	biomass_reclamation_time	=	9 MINUTES //Lets not cripple necromorphs for loosing one too bad either
+	require_total_biomass	=	BIOMASS_REQ_T2
+
+	strength    = STR_MEDIUM //hits the gym
+
+	lowest_money_drop = 2000
+	highest_money_drop = 5500
+
+	modifier_verbs = list(
+	KEY_CTRLALT = list(/mob/living/carbon/human/proc/use_selected_essence_ability),
+	KEY_ALT = list(/mob/living/carbon/human/proc/infector_flap),
+	KEY_MIDDLE = list(/mob/living/carbon/human/proc/infector_sting_enhanced),
+	KEY_CTRLSHIFT = list(/mob/living/carbon/human/proc/infector_execution))
+
+	has_limbs = list(BP_CHEST =  list("path" = /obj/item/organ/external/chest/simple, "height" = new /vector2(0, 2.5)),
+	BP_HEAD = list("path" = /obj/item/organ/external/arm/tentacle/proboscis/enhanced, "height" = new /vector2(1.5, 2.5)),
+	BP_L_ARM =  list("path" = /obj/item/organ/external/arm/wing, "height" = new /vector2(0, 2.0)),
+	BP_R_ARM =  list("path" = /obj/item/organ/external/arm/right/wing, "height" = new /vector2(0, 2.0))
+	)
+
 #define INFECTOR_PASSIVE_1	"<h2>PASSIVE: Necrotoxin:</h2><br>\
 The infector's attacks, both melee and ranged, inject the victim with Necrotoxin, which slowly deals damage over time. \n\
 If this poison kills the victim, they will automatically be reanimated as a necromorph shortly after death. \n\
@@ -205,6 +239,9 @@ All of them except New Growth require corruption to build upon\
 	icon_name = "proboscis"
 	retracted = TRUE
 	parent_organ = BP_CHEST
+
+/obj/item/organ/external/arm/tentacle/proboscis/enhanced
+
 /*
 //The tongue has a slithering noise for when it goes in and out
 /obj/item/organ/external/arm/tentacle/proboscis/retract()
@@ -252,6 +289,11 @@ All of them except New Growth require corruption to build upon\
 	sharp = TRUE
 	edge = FALSE
 
+/datum/unarmed_attack/proboscis/enhanced
+
+	armor_penetration = 6
+	delay = 2.5 SECONDS
+
 /datum/unarmed_attack/proboscis/execution
 	//Special version of our unarmed attack only used during the execution move, not normally triggerable
 	delay = 0
@@ -291,6 +333,20 @@ All of them except New Growth require corruption to build upon\
 /obj/item/projectile/bullet/spine/venomous
 	damage = 9
 
+/mob/living/carbon/human/proc/infector_sting_enhanced(var/atom/A)
+	set name = "Scatter Sting"
+	set category = "Abilities"
+	set desc = "Four extremely weak projectiles which poisons the victim, has a windup. HK: Alt+Click"
+
+	face_atom(A)
+
+	.= shoot_ability(/datum/extension/shoot/longshot/spine, A , /obj/item/projectile/bullet/spine/venomous/enhanced, accuracy = 25, dispersion = list(0,2,2.5), num = 4, windup_time = 1 SECONDS, fire_sound = null, cooldown = 12 SECONDS)
+	if (.)
+		play_species_audio(src, SOUND_ATTACK, VOLUME_MID, 1, 3)
+
+/obj/item/projectile/bullet/spine/venomous/enhanced
+	damage = 4
+
 //Poisons the victim on impact but only if their armor didn't stop the hit
 /obj/item/projectile/bullet/spine/venomous/on_hit(var/atom/target, var/blocked = 0, var/def_zone = null)
 	if (isliving(target) && !blocked)
@@ -311,6 +367,12 @@ All of them except New Growth require corruption to build upon\
 
 
 	var/mob/living/carbon/human/H = src
+	var/cooldown = FLAP_COOLDOWN
+	var/speed = 3.25
+
+	if (istype(H.species, /datum/species/necromorph/infector/enhanced))
+		cooldown = FLAP_COOLDOWN_ENHANCED
+		speed = 4
 
 	if (!can_charge(A))
 		return
@@ -323,10 +385,6 @@ All of them except New Growth require corruption to build upon\
 
 	if (!H.has_organ(BP_L_ARM))
 		missing++
-
-
-	var/cooldown = FLAP_COOLDOWN
-	var/speed = 3.25
 
 	if (missing >= 2)
 		to_chat(src, SPAN_DANGER("You need at least one wing to flap!"))
@@ -352,8 +410,6 @@ All of them except New Growth require corruption to build upon\
 
 
 	return leap_attack(A, subtype = /datum/extension/charge/leap/flap, _cooldown = cooldown, _delay = 0.3 SECONDS, _speed = speed, _maxrange = 9,_lifespan = 3 SECONDS)
-
-
 
 /datum/extension/charge/leap/flap
 	verb_action = "soars"

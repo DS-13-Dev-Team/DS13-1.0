@@ -11,6 +11,17 @@
 	"Forming: Harvester" = /datum/extension/ability/construction/corruption/harvester,
 	"Forming: Bioluminescence" = /datum/extension/ability/construction/corruption/light)
 
+/datum/species/necromorph/infector/enhanced
+	essence_abilities = list("Reanimate"	= /datum/extension/ability/domob/reanimate,
+	"Engorge+"	= /datum/extension/ability/domob/engorge/enhanced,
+	"Mend"	=	/datum/extension/ability/domob/mend,
+	"Forming: Maw" = /datum/extension/ability/construction/corruption/maw,
+	"Forming: Eye+" = /datum/extension/ability/construction/corruption/eye/enhanced,
+	"Forming: Snare+" = /datum/extension/ability/construction/corruption/snare/enhanced,
+	"Forming: Propagator" = /datum/extension/ability/construction/corruption/branch/enhanced,
+	"Forming: New Growth+" = /datum/extension/ability/construction/corruption/newgrowth/enhanced,
+	"Forming: Harvester" = /datum/extension/ability/construction/corruption/harvester,
+	"Forming: Bioluminescence+" = /datum/extension/ability/construction/corruption/light/enhanced)
 
 //Once, on species creation, lets do some runtime processing on the essence abilities list
 //This is here because I could not find a way to do this at compiletime
@@ -35,7 +46,10 @@
 	.=..()
 	set_extension(H, /datum/extension/resource/essence)
 
-
+/datum/species/necromorph/infector/enhanced/setup_interaction(var/mob/living/carbon/human/H)
+	.=..()
+	remove_extension(H, /datum/extension/resource/essence)
+	set_extension(H, /datum/extension/resource/essence/enhanced)
 
 /datum/extension/resource/essence
 	name = "Essence"
@@ -45,8 +59,13 @@
 	meter_type = /atom/movable/screen/meter/resource/essence
 	var/list/selected_essence_ability	//Used by infector, this is a list containing the type and parameters of the essence ability we have selected
 
+/datum/extension/resource/essence/enhanced
+	current_value = 7.5 //7.5 points free to start with
+	max_value = 30
+	regen = (1 SECOND) / (45 SECONDS)	//One point regenerated per minute
 
 //Regenerates faster when over 37.5%, to encourage cautious allocation
+
 /datum/extension/resource/essence/get_regen_amount()
 	.=..()
 	if (current_value >= max_value * 0.375)
@@ -134,9 +153,18 @@
 	resource_cost_type	=	RESOURCE_ESSENCE
 	resource_cost_quantity = 2
 
+/datum/extension/ability/domob/engorge/enhanced
+	name = "Enhanced Engorge"
+	resource_cost_quantity = 1.9
+
 /datum/extension/ability/domob/engorge/apply_effect()
 	if (!has_extension(target, /datum/extension/engorge))
 		set_extension(target, /datum/extension/engorge)
+		user.consume_resource(resource_cost_type, (target.biomass * 0.005))
+
+/datum/extension/ability/domob/engorge/enhanced/apply_effect()
+	if (!has_extension(target, /datum/extension/engorge))
+		set_extension(target, /datum/extension/engorge/enhanced)
 		user.consume_resource(resource_cost_type, (target.biomass * 0.005))
 
 /datum/extension/ability/domob/engorge/is_valid_target(var/datum/potential_target, var/mob/potential_user)
@@ -169,10 +197,12 @@
 	STATMOD_HEALTH_MULTIPLICATIVE = 0.15,
 	STATMOD_VIEW_RANGE = 1)
 
-
-
-
-
+/datum/extension/engorge/enhanced
+	statmods = list(STATMOD_SCALE	=	0.15,
+	STATMOD_MOVESPEED_MULTIPLICATIVE = 1.1,
+	STATMOD_HEALTH = 15,
+	STATMOD_HEALTH_MULTIPLICATIVE = 0.2,
+	STATMOD_VIEW_RANGE = 1)
 
 #define MEND_HEAL_PER_TICK	5
 #define MEND_COST_PER_TICK	0.1
@@ -266,6 +296,11 @@
 	construction_time = 10	//Seconds
 	resource_cost_quantity = 1
 
+/datum/extension/ability/construction/corruption/eye/enhanced
+	name = "Forming: Eye+"
+	blurb = "Constructs an Eye, used to detect humans and reveal an area. This version is upgraded."
+	construction_time = 5	//Seconds
+	resource_cost_quantity = 0.9
 
 /datum/extension/ability/construction/corruption/snare
 	name = "Forming: Snare"
@@ -274,6 +309,11 @@
 	construction_time = 5	//Seconds
 	resource_cost_quantity = 0.6
 
+/datum/extension/ability/construction/corruption/snare/enhanced
+	name = "Forming: Snare+"
+	blurb = "Constructs a Snare, used as a floor trap. This version is upgraded."
+	construction_time = 2.5	//Seconds
+	resource_cost_quantity = 0.55
 
 /datum/extension/ability/construction/corruption/branch
 	name = "Forming: Branch"
@@ -282,6 +322,11 @@
 	construction_time = 15	//Seconds
 	resource_cost_quantity = 2
 
+/datum/extension/ability/construction/corruption/branch/enhanced
+	name = "Forming: Branch+"
+	blurb = "Constructs a Branch, used to spread corruption. This version is upgraded."
+	construction_time = 10	//Seconds
+	resource_cost_quantity = 1.8
 
 /datum/extension/ability/construction/corruption/newgrowth
 	name = "Forming: New Growth"
@@ -293,6 +338,13 @@
 	deposit = 0.05	//1.5 base deposit
 	require_corruption = FALSE
 
+/datum/extension/ability/construction/corruption/newgrowth/enhanced
+	name = "Forming: New Growth+"
+	blurb = "Constructs a tiny node without requiring existing corruption, allowing an entirely new place to be corrupted. \n\
+	This is very slow and expensive, multiple Infectors should work together. This version of the ability is upgraded."
+	result_path = /obj/structure/corruption_node/growth/mini/enhanced
+	construction_time = 120	//Seconds
+	resource_cost_quantity = 8
 
 /datum/extension/ability/construction/corruption/harvester
 	name = "Forming: Harvester"
@@ -309,3 +361,9 @@
 	result_path = /obj/structure/corruption_node/bioluminescence
 	construction_time = 10	//Seconds
 	resource_cost_quantity = 0.5
+
+/datum/extension/ability/construction/corruption/light/enhanced
+	name = "Forming: Bioluminescence+"
+	blurb = "Constructs a Bioluminescent node, used to illuminate an area. This version is upgraded"
+	construction_time = 2	//Seconds
+	resource_cost_quantity = 0.25

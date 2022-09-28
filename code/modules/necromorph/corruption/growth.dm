@@ -120,3 +120,7 @@
 	falloff = 0.025
 	limit = 4
 	randpixel = 4
+
+/obj/structure/corruption_node/growth/mini/enhanced
+	range = 3
+	speed = 1
