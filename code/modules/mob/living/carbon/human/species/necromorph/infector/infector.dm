@@ -242,7 +242,6 @@ All of them except New Growth require corruption to build upon\
 	parent_organ = BP_CHEST
 
 /obj/item/organ/external/arm/tentacle/proboscis/enhanced
-	airlock_force_power = 1.1
 
 /*
 //The tongue has a slithering noise for when it goes in and out
@@ -293,6 +292,7 @@ All of them except New Growth require corruption to build upon\
 
 /datum/unarmed_attack/proboscis/enhanced
 
+	airlock_force_power = 1.1
 	armor_penetration = 6
 	delay = 2.5 SECONDS
 
