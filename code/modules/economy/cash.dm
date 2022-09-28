@@ -68,13 +68,20 @@
 	icon_state = ""
 
 /obj/item/spacecash/attackby(obj/item/spacecash/S, mob/living/carbon/human/H)
-	if(ispath(S.type, type))
+	if(istype(S, /obj/item/spacecash) && !istype(S, /obj/item/spacecash/minercash))
 		worth += S.worth
 		update_icon()
 		to_chat(H, SPAN_NOTICE("You add [S.name] to the bundle.<br>It holds [name] now."))
 		H.unEquip(S)
 		qdel(S)
 
+/obj/item/spacecash/minercash/attackby(obj/item/spacecash/S, mob/living/carbon/human/H)
+	if(istype(S, /obj/item/spacecash/minercash))
+		worth += S.worth
+		update_icon()
+		to_chat(H, SPAN_NOTICE("You add [S.name] to the bundle.<br>It holds [name] now."))
+		H.unEquip(S)
+		qdel(S)
 
 /obj/item/spacecash/attack_self(mob/user)
 	var/amount = input(user, "How many credits do you want to take? (0 to [worth])", "Take Money", 20) as num
