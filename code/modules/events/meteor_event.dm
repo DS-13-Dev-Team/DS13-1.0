@@ -112,7 +112,7 @@
 			return meteors_minor
 
 /var/list/meteors_minor = list(
-	/obj/effect/meteor/medium     = 80,
+	/obj/effect/meteor/medium     = 40,
 	/obj/effect/meteor/dust       = 30,
 	/obj/effect/meteor/irradiated = 30,
 	/obj/effect/meteor/big        = 30,
@@ -122,7 +122,7 @@
 )
 
 /var/list/meteors_moderate = list(
-	/obj/effect/meteor/medium     = 80,
+	/obj/effect/meteor/medium     = 60,
 	/obj/effect/meteor/big        = 30,
 	/obj/effect/meteor/dust       = 30,
 	/obj/effect/meteor/irradiated = 30,
@@ -141,7 +141,7 @@
 	/obj/effect/meteor/flaming    = 10,
 	/obj/effect/meteor/golden     = 10,
 	/obj/effect/meteor/silver     = 10,
-	///obj/effect/meteor/tunguska   = 1,	//This thing is too much
+	/obj/effect/meteor/tunguska   = 1, //Just blows bridge windows
 )
 
 

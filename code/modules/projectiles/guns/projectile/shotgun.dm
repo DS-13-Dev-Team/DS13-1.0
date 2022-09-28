@@ -65,7 +65,7 @@
 	handle_casings = CYCLE_CASINGS
 	max_shells = 2
 	w_class = ITEM_SIZE_HUGE
-	force = 10
+	force = 15
 	obj_flags =  OBJ_FLAG_CONDUCTIBLE
 	slot_flags = SLOT_BACK
 	caliber = "shotgun"
@@ -122,7 +122,7 @@
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
 	ammo_type = /obj/item/ammo_casing/shotgun/pellet
 	w_class = ITEM_SIZE_NORMAL
-	force = 5
+	force = 10
 	one_hand_penalty = 0
 
 /obj/item/gun/projectile/shotgun/bola_lancher

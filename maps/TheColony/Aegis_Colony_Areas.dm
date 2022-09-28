@@ -280,6 +280,11 @@
 	icon_state = "engibase"
 	sound_env = ASTEROID
 
+/area/mining_colony/interior/enginieering/paint_storage
+	name = "\improper Aegic Enginieering - Paint Storage"
+	icon_state = "storage"
+	sound_env = ASTEROID
+
 
 //Shuttle Area for the unlucky Kellion, which should be more safe now i hope - Asi
 
@@ -676,6 +681,7 @@ area/mining_colony/interior/mining/hallway
 	icon_state = "aegis"
 	sound_env = ASTEROID
 	is_maintenance = TRUE
+	requires_power = FALSE
 
 /area/mining_colony/lower/unibase
 	name = "\improper Unitology Hideout"

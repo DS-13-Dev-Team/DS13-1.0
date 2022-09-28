@@ -1,6 +1,6 @@
 /obj/item/rig/wasp
 	name = "wasp RIG"
-	desc = "A lightweight and flexible armoured rig suit, offers good protection against light impacts"
+	desc = "A lightweight and flexible armoured rig suit, offers good protection against light impacts. Use kit on an Engineering RIG."
 	icon_state = "wasp_rig"
 	armor = list(melee = 40, bullet = 55, laser = 55, energy = 30, bomb = 65, bio = 100, rad = 80)
 	offline_slowdown = 4
@@ -18,7 +18,8 @@
 		/obj/item/rig_module/grenade_launcher/light,	//These grenades are harmless illumination
 		/obj/item/rig_module/maneuvering_jets,
 		/obj/item/rig_module/kinesis,
-		/obj/item/rig_module/hotswap
+		/obj/item/rig_module/hotswap,
+		/obj/item/rig_module/power_sink
 		)
 
 /obj/item/clothing/suit/space/rig/wasp

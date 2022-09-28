@@ -159,7 +159,7 @@
 	var/mob/living/carbon/human/occupant
 	var/obj/machinery/bodyscanner/BS
 	var/obj/item/adv_health_analyzer/AHA
-	var/known_implants = list(/obj/item/implant/chem, /obj/item/implant/death_alarm, /obj/item/implant/tracking)
+	var/known_implants = list(/obj/item/implant/chem, /obj/item/implant/death_alarm, /obj/item/implant/tracking, /obj/item/implant/adrenalin)
 
 /datum/advanced_scanner/ui_host(mob/user)
 	if(BS)

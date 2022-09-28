@@ -542,3 +542,9 @@
 
 /obj/item/reagent_containers/hypospray/autoinjector/ds_medigel/update_icon()
 	return
+
+/obj/item/reagent_containers/hypospray/autoinjector/ds_medigel/small
+	name = "small medical pack"
+	desc = "A small medi-gel container to treat life threatening injuries."
+	starts_with = list(/datum/reagent/ds_medicalgelreagent = 5)
+	volume = 5

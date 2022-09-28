@@ -517,15 +517,17 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
-/obj/item/paper_bin,
 /obj/machinery/button/remote/blast_door{
 	dir = 8;
 	id = "m_reception2";
 	name = "Reception Door Lockdown";
 	pixel_x = 24
 	},
-/obj/item/folder/white,
-/obj/item/pen,
+/obj/item/stamp/medical,
+/obj/item/stamp/denied{
+	pixel_x = 2;
+	pixel_y = 2
+	},
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/medical/lobby/reception)
 "abs" = (
@@ -557,9 +559,6 @@
 /obj/item/whip/chainofcommand,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
-	},
-/obj/machinery/light{
-	dir = 1
 	},
 /obj/item/stack/power_node,
 /obj/item/stack/power_node,
@@ -774,6 +773,8 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
+/obj/item/clothing/gloves/latex/nitrile,
+/obj/item/clothing/mask/surgical,
 /turf/simulated/floor/dank/mono,
 /area/ishimura/upper/medical/surgery/one)
 "abX" = (
@@ -788,6 +789,8 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 8
 	},
+/obj/item/clothing/gloves/latex/nitrile,
+/obj/item/clothing/mask/surgical,
 /turf/simulated/floor/dank/mono,
 /area/ishimura/upper/medical/surgery/two)
 "abZ" = (
@@ -996,13 +999,16 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
-/obj/machinery/light,
 /obj/item/stamp/denied{
 	pixel_x = 2;
 	pixel_y = 2
 	},
 /obj/machinery/keycard_auth{
 	pixel_x = -30
+	},
+/obj/item/radio/intercom{
+	dir = 1;
+	pixel_y = -28
 	},
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/command/bridge)
@@ -2273,6 +2279,7 @@
 /obj/item/tool/wrench,
 /obj/effect/floor_decal/corner/grey/mono,
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/item/tool/screwdriver,
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/medical)
 "afv" = (
@@ -2285,18 +2292,12 @@
 /area/ishimura/upper/engineering/engine_room)
 "afw" = (
 /obj/structure/table/standard,
-/obj/item/toner{
-	pixel_y = -1
-	},
-/obj/item/toner{
-	pixel_y = 8
-	},
-/obj/item/toner{
-	pixel_y = 4
-	},
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/item/paper_bin,
+/obj/item/folder/white,
+/obj/item/pen,
 /turf/simulated/floor/tiled/white,
 /area/ishimura/upper/medical/lobby/reception)
 "afx" = (
@@ -4020,9 +4021,12 @@
 /turf/simulated/floor/dank/rivets,
 /area/ishimura/upper/security/checkpoint/engineering)
 "akd" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/atmospherics/portables_connector{
 	dir = 4
+	},
+/obj/effect/floor_decal/industrial/outline/blue,
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 9
 	},
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/engineering/atmospherics)
@@ -4030,11 +4034,17 @@
 /obj/machinery/atmospherics/binary/pump{
 	dir = 8
 	},
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/ishimura/upper/engineering/atmospherics)
 "akf" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/black{
 	dir = 4
+	},
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/ishimura/upper/engineering/atmospherics)
@@ -4046,6 +4056,7 @@
 	sensors = list("n2_sensor"="Tank")
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/green,
+/obj/effect/floor_decal/corner/red/mono,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/engineering/atmospherics)
 "akh" = (
@@ -4056,6 +4067,7 @@
 	sensors = list("o2_sensor"="Tank")
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/green,
+/obj/effect/floor_decal/corner/blue/mono,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/engineering/atmospherics)
 "aki" = (
@@ -4079,6 +4091,8 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 5
 	},
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/techfloor,
 /area/ishimura/upper/engineering/atmospherics)
 "akl" = (
@@ -4145,6 +4159,8 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
+/obj/machinery/portable_atmospherics/canister/air,
+/obj/effect/floor_decal/industrial/outline/grey,
 /turf/simulated/floor/tiled/techfloor,
 /area/ishimura/upper/engineering/atmospherics)
 "akr" = (
@@ -4176,12 +4192,16 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
+/obj/effect/floor_decal/industrial/outline/red,
+/obj/machinery/portable_atmospherics/canister/nitrogen,
 /turf/simulated/floor/tiled/techfloor,
 /area/ishimura/upper/engineering/atmospherics)
 "akt" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 5
 	},
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/techfloor,
 /area/ishimura/upper/engineering/atmospherics)
 "aku" = (
@@ -4685,14 +4705,14 @@
 /turf/simulated/floor/reinforced/n20,
 /area/ishimura/upper/engineering/atmospherics)
 "alq" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/portable_atmospherics/canister/air,
 /obj/machinery/atmospherics/portables_connector,
+/obj/effect/floor_decal/industrial/outline/grey,
 /turf/simulated/floor/tiled/techfloor,
 /area/ishimura/upper/engineering/atmospherics)
 "alr" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/atmospherics/pipe/tank/air,
+/obj/effect/floor_decal/industrial/outline/grey,
 /turf/simulated/floor/tiled/techfloor,
 /area/ishimura/upper/engineering/atmospherics)
 "als" = (
@@ -5235,7 +5255,7 @@
 /obj/machinery/door/airlock/security{
 	name = "Engineering Security Station"
 	},
-/obj/machinery/door/blast/shutters{
+/obj/machinery/door/blast/shutters/open{
 	icon_state = "shutter0";
 	id = "e_security"
 	},
@@ -5253,7 +5273,7 @@
 	},
 /area/ishimura/upper/engineering/lobby)
 "amG" = (
-/obj/machinery/door/blast/shutters{
+/obj/machinery/door/blast/shutters/open{
 	icon_state = "shutter0";
 	id = "e_security"
 	},
@@ -5267,7 +5287,7 @@
 /area/ishimura/upper/security/checkpoint/engineering)
 "amH" = (
 /obj/structure/table/reinforced,
-/obj/machinery/door/blast/shutters{
+/obj/machinery/door/blast/shutters/open{
 	icon_state = "shutter0";
 	id = "e_security"
 	},
@@ -5469,7 +5489,7 @@
 /turf/simulated/floor/dank/grater,
 /area/ishimura/upper/engineering/atmospherics/storage)
 "anf" = (
-/obj/machinery/door/blast/shutters{
+/obj/machinery/door/blast/shutters/open{
 	dir = 4;
 	icon_state = "shutter0";
 	id = "engineering_lobby"
@@ -6119,7 +6139,7 @@
 	dir = 8;
 	name = "Hangar Entrance Hallway"
 	},
-/obj/machinery/door/blast/shutters{
+/obj/machinery/door/blast/shutters/open{
 	dir = 4;
 	icon_state = "shutter0";
 	id = "h_security2"
@@ -6545,7 +6565,7 @@
 /turf/simulated/floor/plating,
 /area/ishimura/upper/maintenance/fore_port)
 "apj" = (
-/obj/machinery/door/blast/shutters{
+/obj/machinery/door/blast/shutters/open{
 	icon_state = "shutter0";
 	id = "engineering_reception"
 	},
@@ -6826,6 +6846,9 @@
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/ishimura/upper/engineering/atmospherics)
 "apM" = (
@@ -6872,6 +6895,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 6
 	},
+/obj/effect/floor_decal/corner/black/border,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/ishimura/upper/engineering/atmospherics)
 "apS" = (
@@ -6897,12 +6921,14 @@
 	sensors = list("co2_sensor"="Tank")
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/green,
+/obj/effect/floor_decal/corner/black/mono,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/engineering/atmospherics)
 "apV" = (
 /obj/machinery/atmospherics/binary/pump{
 	dir = 4
 	},
+/obj/effect/floor_decal/corner/black/border,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/ishimura/upper/engineering/atmospherics)
 "apW" = (
@@ -6914,6 +6940,10 @@
 	sensors = list("n2o_sensor"="Tank")
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/green,
+/obj/effect/floor_decal/corner/white/diagonal,
+/obj/effect/floor_decal/corner/paleblue/diagonal{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/engineering/atmospherics)
 "apX" = (
@@ -8365,7 +8395,7 @@
 /area/ishimura/upper/engineering/lobby)
 "asR" = (
 /obj/structure/table/reinforced,
-/obj/machinery/door/blast/shutters{
+/obj/machinery/door/blast/shutters/open{
 	icon_state = "shutter0";
 	id = "engineering_reception"
 	},
@@ -8438,6 +8468,7 @@
 	pixel_x = 25
 	},
 /obj/random/loot/often/few,
+/obj/item/tool/repairkit,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/engineering/spare_storage)
 "atb" = (
@@ -9005,10 +9036,9 @@
 /area/ishimura/upper/engineering/breakroom)
 "aug" = (
 /obj/structure/table/gamblingtable,
-/obj/item/spacecash/ewallet/random/c10000,
-/obj/item/spacecash/ewallet/random/c10000,
 /obj/item/spacecash/ewallet/random/c200,
 /obj/item/spacecash/ewallet/random/c200,
+/obj/item/spacecash/ewallet/random/c1000,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/misc/janitorcloset/aft)
 "auh" = (
@@ -9119,7 +9149,7 @@
 	dir = 8;
 	name = "Hangar Entrance Hallway"
 	},
-/obj/machinery/door/blast/shutters{
+/obj/machinery/door/blast/shutters/open{
 	dir = 4;
 	icon_state = "shutter0";
 	id = "h_security2"
@@ -9314,7 +9344,7 @@
 /obj/machinery/door/airlock/engineering{
 	name = "Engineering Lobby"
 	},
-/obj/machinery/door/blast/shutters{
+/obj/machinery/door/blast/shutters/open{
 	icon_state = "shutter0";
 	id = "engineering_reception"
 	},
@@ -10931,12 +10961,8 @@
 	id = "m_reception";
 	name = "Reception Shutter Control"
 	},
-/obj/item/stamp/medical,
-/obj/item/stamp/denied{
-	pixel_x = 2;
-	pixel_y = 2
-	},
 /obj/effect/floor_decal/corner/grey/mono,
+/obj/item/storage/pill_bottle/citalopram,
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/medical/lobby/reception)
 "axE" = (
@@ -11474,6 +11500,7 @@
 	},
 /obj/structure/table/standard,
 /obj/effect/floor_decal/corner/grey/mono,
+/obj/machinery/recharger,
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/medical)
 "ayG" = (
@@ -11729,6 +11756,7 @@
 /obj/effect/floor_decal/corner/grey/mono,
 /obj/item/defibrillator/loaded,
 /obj/item/defibrillator/loaded,
+/obj/machinery/recharger,
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/medical)
 "ayZ" = (
@@ -11959,6 +11987,15 @@
 /obj/effect/floor_decal/corner/grey/mono,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/camera/network/medbay,
+/obj/item/toner{
+	pixel_y = 8
+	},
+/obj/item/toner{
+	pixel_y = 4
+	},
+/obj/item/toner{
+	pixel_y = -1
+	},
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/medical/lobby/reception)
 "azu" = (
@@ -12868,9 +12905,9 @@
 	d2 = 2;
 	icon_state = "0-2"
 	},
-/obj/item/stack/material/phoron/ten,
 /obj/item/reagent_containers/glass/beaker/bluespace,
 /obj/effect/floor_decal/corner/grey/mono,
+/obj/item/reagent_containers/glass/beaker/bluespace,
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/research/chemistry)
 "aAX" = (
@@ -12881,12 +12918,12 @@
 /obj/machinery/alarm{
 	pixel_y = 23
 	},
-/obj/structure/table/steel,
 /obj/item/storage/box/beakers,
 /obj/item/storage/box/rxglasses,
 /obj/effect/floor_decal/corner/grey/mono,
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/item/storage/box/droppers,
+/obj/structure/closet/secure_closet/chemical,
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/research/chemistry)
 "aAY" = (
@@ -13186,7 +13223,7 @@
 	dir = 8;
 	id_tag = "med_exit";
 	name = "Clinic Main Entrance";
-	req_one_access = list(2,3)
+	req_access = newlist()
 	},
 /obj/machinery/door/firedoor{
 	dir = 4
@@ -13728,7 +13765,10 @@
 	dir = 4
 	},
 /obj/structure/table/standard,
-/obj/item/storage/box/ids,
+/obj/item/storage/box/holoids,
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/command/bridge)
 "aCw" = (
@@ -14495,7 +14535,7 @@
 	},
 /area/ishimura/upper/engineering/lobby)
 "aDL" = (
-/obj/machinery/door/blast/shutters{
+/obj/machinery/door/blast/shutters/open{
 	dir = 4;
 	icon_state = "shutter0";
 	id = "engineering_lobby"
@@ -15325,7 +15365,7 @@
 	dir = 8;
 	name = "Hangar Flight Reception"
 	},
-/obj/machinery/door/blast/shutters{
+/obj/machinery/door/blast/shutters/open{
 	dir = 4;
 	icon_state = "shutter0";
 	id = "h_security2"
@@ -15720,9 +15760,9 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/obj/structure/bed/roller,
 /obj/effect/floor_decal/corner/grey/mono,
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/structure/closet/crate/med_crate/burn,
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/medical/supply_storage)
 "aGc" = (
@@ -15767,8 +15807,8 @@
 /obj/structure/table/steel,
 /obj/item/storage/box/pillbottles,
 /obj/item/storage/box/pillbottles,
-/obj/item/storage/backpack/satchel_chem,
 /obj/effect/floor_decal/corner/grey/mono,
+/obj/item/stack/material/phoron/ten,
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/research/chemistry)
 "aGh" = (
@@ -16004,6 +16044,10 @@
 /obj/structure/table/standard,
 /obj/effect/floor_decal/corner/grey/mono,
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/item/storage/firstaid/stab{
+	pixel_x = 6;
+	pixel_y = 6
+	},
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/medical/supply_storage)
 "aGD" = (
@@ -16167,9 +16211,17 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/structure/bed/roller,
 /obj/effect/floor_decal/corner/grey/mono,
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/structure/bed/chair/wheelchair{
+	dir = 8
+	},
+/obj/structure/bed/chair/wheelchair{
+	dir = 8
+	},
+/obj/structure/bed/chair/wheelchair{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/medical/supply_storage)
 "aGV" = (
@@ -16216,8 +16268,8 @@
 /obj/effect/floor_decal/corner/grey{
 	dir = 10
 	},
-/obj/structure/closet/secure_closet/medical_wall{
-	pixel_y = -32
+/obj/structure/closet/medical_wall/filled{
+	pixel_y = -30
 	},
 /turf/simulated/floor/tiled/white,
 /area/ishimura/upper/medical)
@@ -16343,7 +16395,7 @@
 /obj/machinery/door/firedoor/border_only{
 	dir = 4
 	},
-/obj/machinery/door/blast/shutters{
+/obj/machinery/door/blast/shutters/open{
 	dir = 4;
 	icon_state = "shutter0";
 	id = "engineering_lobby"
@@ -17757,11 +17809,9 @@
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/upper/security/checkpoint/bridge)
 "aJB" = (
-/obj/structure/bed/chair/wheelchair{
-	dir = 8
-	},
 /obj/effect/floor_decal/corner/grey/mono,
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/structure/bed/roller,
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/medical/supply_storage)
 "aJC" = (
@@ -18981,11 +19031,14 @@
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/command/bridge)
 "aLU" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/atmospherics/portables_connector{
 	dir = 4
 	},
 /obj/structure/closet/walllocker/emerglocker/north,
+/obj/effect/floor_decal/industrial/outline/red,
+/obj/effect/floor_decal/corner/red/border{
+	dir = 9
+	},
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/engineering/atmospherics)
 "aLV" = (
@@ -19152,10 +19205,7 @@
 	},
 /obj/structure/table/standard,
 /obj/item/megaphone,
-/obj/item/radio/intercom{
-	dir = 1;
-	pixel_y = -28
-	},
+/obj/machinery/light,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/command/bridge)
 "aMl" = (
@@ -19167,14 +19217,15 @@
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/research/biolab)
 "aMm" = (
-/obj/structure/closet/l3closet/scientist,
 /obj/effect/floor_decal/corner/grey/mono,
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/structure/closet/l3closet/virology,
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/research/storage)
 "aMn" = (
 /obj/machinery/r_n_d/circuit_imprinter,
 /obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/item/reagent_containers/glass/beaker/sulphuric,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/research/biolab)
 "aMo" = (
@@ -19819,7 +19870,7 @@
 	dir = 8;
 	id_tag = "med_exit";
 	name = "Clinic Main Entrance";
-	req_one_access = list(2,3)
+	req_access = newlist()
 	},
 /obj/machinery/door/blast/shutters/open{
 	dir = 8;
@@ -21383,6 +21434,7 @@
 /obj/effect/floor_decal/industrial/outline/grey,
 /obj/item/rig/security/pcsi,
 /obj/item/rig/security/pcsi,
+/obj/item/rig/security/pcsi,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/security/armory)
 "aQt" = (
@@ -22801,6 +22853,7 @@
 /obj/effect/floor_decal/corner/grey/mono,
 /obj/item/storage/box/syringes,
 /obj/item/storage/box/syringes,
+/obj/item/reagent_containers/spray/cleaner,
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/medical)
 "aSV" = (
@@ -22922,11 +22975,7 @@
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/upper/misc/hallway/central)
 "aTg" = (
-/obj/item/radio/intercom{
-	pixel_y = 24
-	},
-/obj/structure/table/standard,
-/obj/item/storage/toolbox/emergency,
+/obj/machinery/store,
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/upper/misc/hallway/central)
 "aTh" = (
@@ -23858,8 +23907,8 @@
 /obj/machinery/camera/network/medbay{
 	dir = 1
 	},
-/obj/structure/closet/secure_closet/medical_wall{
-	pixel_y = -32
+/obj/structure/closet/medical_wall/filled{
+	pixel_y = -30
 	},
 /turf/simulated/floor/dank/hardwood/alt,
 /area/ishimura/upper/medical/lobby)
@@ -24803,6 +24852,8 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
+/obj/structure/table/standard,
+/obj/item/storage/toolbox/emergency,
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/upper/misc/hallway/central)
 "aWD" = (
@@ -24811,6 +24862,10 @@
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
+	},
+/obj/item/radio/intercom{
+	dir = 8;
+	pixel_x = 21
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/upper/misc/hallway/central)
@@ -26764,11 +26819,13 @@
 /turf/simulated/floor/dank/grater,
 /area/ishimura/upper/security/brig)
 "bad" = (
-/obj/machinery/portable_atmospherics/canister/oxygen/prechilled,
-/obj/effect/floor_decal/corner/grey/mono,
-/obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/tiled/white/monotile,
-/area/ishimura/upper/medical/supply_storage)
+/obj/effect/floor_decal/techfloor{
+	dir = 9
+	},
+/obj/machinery/portable_atmospherics/canister/air,
+/obj/effect/floor_decal/industrial/outline/grey,
+/turf/simulated/floor/tiled/techfloor,
+/area/ishimura/upper/engineering/atmospherics)
 "bae" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
@@ -27177,7 +27234,9 @@
 "baU" = (
 /obj/structure/table/standard,
 /obj/effect/floor_decal/corner/grey/mono,
-/obj/item/reagent_containers/spray/cleaner,
+/obj/item/roller,
+/obj/item/roller,
+/obj/item/roller,
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/medical)
 "baV" = (
@@ -27219,6 +27278,7 @@
 "bbb" = (
 /obj/structure/table/standard,
 /obj/effect/floor_decal/corner/grey/mono,
+/obj/item/reagent_containers/spray/cleaner,
 /obj/item/reagent_containers/spray/cleaner,
 /obj/item/reagent_containers/spray/cleaner,
 /turf/simulated/floor/tiled/white/monotile,
@@ -27522,7 +27582,7 @@
 	dir = 8;
 	name = "Hangar Flight Reception"
 	},
-/obj/machinery/door/blast/shutters{
+/obj/machinery/door/blast/shutters/open{
 	dir = 4;
 	icon_state = "shutter0";
 	id = "h_security2"
@@ -27574,7 +27634,7 @@
 /area/ishimura/upper/security/isolation)
 "bbM" = (
 /obj/structure/table/reinforced,
-/obj/machinery/door/blast/shutters{
+/obj/machinery/door/blast/shutters/open{
 	icon_state = "shutter0";
 	id = "engineering_reception"
 	},
@@ -27973,6 +28033,7 @@
 	dir = 4
 	},
 /obj/structure/table/standard,
+/obj/item/storage/box/monkeycubes,
 /turf/simulated/floor/dank/medical,
 /area/ishimura/upper/medical/bpc)
 "bcF" = (
@@ -28392,8 +28453,13 @@
 /area/ishimura/upper/medical)
 "bdv" = (
 /obj/structure/table/standard,
-/obj/item/reagent_containers/spray/cleaner,
 /obj/effect/floor_decal/corner/grey/mono,
+/obj/item/roller,
+/obj/item/roller,
+/obj/item/roller,
+/obj/item/roller,
+/obj/item/roller,
+/obj/item/roller,
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/medical)
 "bdw" = (
@@ -28447,6 +28513,8 @@
 	dir = 1;
 	pixel_y = -30
 	},
+/obj/structure/iv_drip,
+/obj/structure/iv_drip,
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/medical/supply_storage)
 "bdA" = (
@@ -28466,6 +28534,7 @@
 /obj/effect/floor_decal/corner/grey/mono,
 /obj/item/reagent_containers/spray/cleaner,
 /obj/item/reagent_containers/spray/cleaner,
+/obj/item/storage/pill_bottle/citalopram,
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/research)
 "bdD" = (
@@ -30930,8 +30999,8 @@
 /obj/effect/floor_decal/corner/grey{
 	dir = 10
 	},
-/obj/structure/closet/secure_closet/medical_wall{
-	pixel_y = -32
+/obj/structure/closet/medical_wall/filled{
+	pixel_y = -30
 	},
 /turf/simulated/floor/tiled/white,
 /area/ishimura/upper/medical)
@@ -31173,6 +31242,13 @@
 "ceq" = (
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/upper/engineering/lobby)
+"clz" = (
+/obj/machinery/atmospherics/portables_connector{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/outline/grey,
+/turf/simulated/floor/tiled/dark/monotile,
+/area/ishimura/upper/engineering/atmospherics)
 "cBc" = (
 /obj/machinery/light,
 /turf/simulated/floor/dank/tech{
@@ -31280,6 +31356,15 @@
 	icon_state = "p_wall2"
 	},
 /area/shuttle/escape_pod2/station)
+"fib" = (
+/obj/machinery/atmospherics/pipe/manifold/visible/black{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/ishimura/upper/engineering/atmospherics)
 "flg" = (
 /turf/simulated/floor/dank/tech{
 	dir = 4
@@ -31338,6 +31423,20 @@
 	dir = 4
 	},
 /area/ishimura/upper/misc/hallway/central)
+"gGu" = (
+/obj/machinery/atmospherics/pipe/simple/visible/black{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/white/bordercorner,
+/obj/effect/floor_decal/corner/white/bordercorner2,
+/obj/effect/floor_decal/corner/paleblue/bordercorner2{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/paleblue/bordercorner{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/ishimura/upper/engineering/atmospherics)
 "gGL" = (
 /obj/structure/closet/secure_closet/engineering_electrical,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -31347,9 +31446,29 @@
 /turf/simulated/floor/dank/cable/start,
 /area/ishimura/upper/engineering/prep)
 "gVl" = (
-/obj/structure/foamedmetal,
-/turf/simulated/floor/plating,
-/area/ishimura/upper/misc/hallway/fore)
+/obj/machinery/atmospherics/portables_connector{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/floor_decal/corner/white/bordercorner,
+/obj/effect/floor_decal/corner/white/bordercorner2,
+/obj/effect/floor_decal/corner/paleblue/bordercorner2{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/paleblue/bordercorner2{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/white/bordercorner2{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/paleblue/bordercorner{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/paleblue/bordercorner{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark/monotile,
+/area/ishimura/upper/engineering/atmospherics)
 "gWM" = (
 /turf/simulated/floor/dank/slides{
 	dir = 8
@@ -31385,6 +31504,11 @@
 "hop" = (
 /turf/simulated/floor/dank/grater,
 /area/ishimura/upper/security/brig)
+"hox" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/vending/coffee,
+/turf/simulated/floor/tiled/monotile,
+/area/ishimura/upper/misc/hallway/fore)
 "hpw" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -31489,6 +31613,21 @@
 "iqZ" = (
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/upper/misc/hallway/fore)
+"iEh" = (
+/obj/machinery/atmospherics/binary/pump{
+	dir = 4
+	},
+/obj/machinery/light,
+/obj/effect/floor_decal/corner/white/bordercorner,
+/obj/effect/floor_decal/corner/white/bordercorner2,
+/obj/effect/floor_decal/corner/paleblue/bordercorner2{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/paleblue/bordercorner{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/ishimura/upper/engineering/atmospherics)
 "iHj" = (
 /turf/simulated/floor/dank/grater,
 /area/ishimura/upper/engineering/bay)
@@ -31972,7 +32111,7 @@
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/upper/misc/hallway/central)
 "pFY" = (
-/obj/machinery/door/blast/shutters{
+/obj/machinery/door/blast/shutters/open{
 	dir = 4;
 	icon_state = "shutter0";
 	id = "engineering_lobby"
@@ -32087,6 +32226,16 @@
 "sII" = (
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/upper/misc/hallway/aft)
+"sKh" = (
+/obj/machinery/atmospherics/portables_connector{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/floor_decal/corner/black/border{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/dark/monotile,
+/area/ishimura/upper/engineering/atmospherics)
 "sVW" = (
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/upper/misc/hangar)
@@ -32127,6 +32276,11 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/upper/misc/hallway/aft)
+"tHt" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/vending/cigarette,
+/turf/simulated/floor/tiled/monotile,
+/area/ishimura/upper/misc/hallway/fore)
 "uvY" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/machinery/door/blast/shutters/open{
@@ -32170,6 +32324,14 @@
 	dir = 8
 	},
 /area/ishimura/upper/misc/hallway/aft)
+"uQl" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 9
+	},
+/obj/effect/floor_decal/industrial/outline/red,
+/obj/machinery/portable_atmospherics/canister/nitrogen,
+/turf/simulated/floor/tiled/techfloor,
+/area/ishimura/upper/engineering/atmospherics)
 "uWX" = (
 /turf/simulated/floor/dank/tech,
 /area/ishimura/upper/misc/hallway/aft)
@@ -44569,7 +44731,7 @@ aDf
 ajG
 ajM
 ajR
-akf
+fib
 akw
 atZ
 awa
@@ -46081,7 +46243,7 @@ aLq
 ajG
 ajG
 alD
-aki
+uQl
 akC
 auk
 awg
@@ -47598,7 +47760,7 @@ akH
 als
 amy
 apI
-apT
+sKh
 ajG
 ajG
 ajG
@@ -47845,7 +48007,7 @@ aSR
 aTm
 ara
 ajG
-aki
+bad
 akI
 akK
 amz
@@ -48099,10 +48261,10 @@ ara
 ajG
 akq
 akJ
-akd
+clz
 amA
 apd
-apR
+gGu
 alg
 alo
 ajG
@@ -48354,7 +48516,7 @@ akK
 alu
 amB
 alv
-apS
+iEh
 ajG
 alp
 ajG
@@ -48606,7 +48768,7 @@ avN
 asA
 axO
 akP
-apT
+gVl
 ajG
 ajG
 ajG
@@ -49070,7 +49232,7 @@ aah
 aah
 aah
 aah
-bbF
+aah
 aah
 auJ
 axp
@@ -70757,7 +70919,7 @@ aBF
 aGb
 aGU
 aJB
-bad
+aJB
 ayE
 nfk
 bcp
@@ -71032,7 +71194,7 @@ aRG
 bcX
 bfM
 aah
-aaa
+aah
 aaa
 aaa
 aaa
@@ -78064,9 +78226,9 @@ aHb
 aFQ
 aOj
 aBz
-gVl
-gVl
 aec
+aec
+tHt
 nfk
 bcp
 aLu
@@ -78316,9 +78478,9 @@ aBz
 aMm
 aOk
 aBz
-gVl
-gVl
 aec
+aec
+hox
 nfk
 bcp
 lgW
@@ -82332,12 +82494,12 @@ aaa
 aaa
 aaa
 aaa
-bbF
-bbF
-bbF
-bbF
-bbF
-bbF
+aah
+aah
+aah
+aah
+aah
+aah
 ajT
 aav
 aav

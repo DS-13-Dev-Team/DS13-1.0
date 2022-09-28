@@ -1887,6 +1887,7 @@
 /obj/item/reagent_containers/pill/happy,
 /obj/item/reagent_containers/pill/happy,
 /obj/random/tool/advanced,
+/obj/item/reagent_containers/glass/bucket,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/node/room49)
 "fZ" = (
@@ -6611,7 +6612,6 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/item/rig/zealot,
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/lower/unibase)
 "DV" = (

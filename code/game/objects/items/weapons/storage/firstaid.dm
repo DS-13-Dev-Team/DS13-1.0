@@ -320,6 +320,13 @@
 	startswith = list(/obj/item/reagent_containers/pill/paroxetine = 21)
 	wrapper_color = COLOR_GRAY
 
+/obj/item/storage/pill_bottle/noexcutite
+	name = "pill bottle (Noexcutite)"
+	desc = "Anticonvulsant and antipsychotic. Prevents convulsions and jitters. 10u dose per pill."
+
+	startswith = list(/obj/item/reagent_containers/pill/noexcutite = 21)
+	wrapper_color = COLOR_GRAY
+
 /obj/item/storage/pill_bottle/antidexafen
 	name = "pill bottle (cold medicine)"
 	desc = "All-in-one cold medicine. 15u dose per pill. Safe for babies like you!"
@@ -344,8 +351,8 @@
 			/obj/item/reagent_containers/pill/sugariron = 2,
 			/obj/item/reagent_containers/pill/tramadol = 2,
 			/obj/item/reagent_containers/pill/dexalin = 2,
-			/obj/item/reagent_containers/pill/kelotane = 2,
-			/obj/item/reagent_containers/pill/hyronalin
+			/obj/item/reagent_containers/pill/bicaridine = 2,
+			/obj/item/reagent_containers/pill/kelotane = 1
 		)
 
 /obj/item/storage/pill_bottle/nanoblood

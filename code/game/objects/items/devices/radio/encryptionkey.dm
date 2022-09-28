@@ -95,7 +95,7 @@
 /obj/item/encryptionkey/heads/cmo
 	name = "chief medical officer's encryption key"
 	icon_state = "cmo_cypherkey"
-	channels = list("Medical" = 1, "Command" = 1)
+	channels = list("Medical" = 1, "Command" = 1, "Science" = 1)
 
 /obj/item/encryptionkey/heads/so
 	name = "supply officer's encryption key"

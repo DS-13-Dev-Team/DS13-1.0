@@ -175,7 +175,6 @@
 	M.add_chemical_effect(CE_PAINKILLER, 10)
 
 
-
 /datum/reagent/ethanol/lean
 	name = "Lean"
 	description = "A popular purple drink made by mixing soda, cough syrup, and other things like alcohol or drugs."
@@ -241,13 +240,6 @@
 		M.hallucination(50, 50)
 		if(prob(45))
 			M.emote(pick("twitch", "laugh", "giggle"))
-
-/datum/reagent/deletrathol/affect_blood(var/mob/living/carbon/human/H, var/alien, var/removed)
-	H.add_chemical_effect(CE_PAINKILLER, 80)
-	if(prob(75))
-		H.drowsyness++
-	if(prob(25))
-		H.confused++
 
 
 

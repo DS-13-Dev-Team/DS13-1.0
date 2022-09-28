@@ -27,6 +27,9 @@
 	allowed_tools = list(
 	/obj/item/tool/saw/advanced_circular = 120,
 	/obj/item/tool/saw/circular = 100,
+	/obj/item/tool/saw/plasma = 80,
+	/obj/item/tool/saw = 60,
+	/obj/item/tool/pickaxe/laser = 50,
 	/obj/item/material/knife = 50,
 	/obj/item/material/hatchet = 75
 	)

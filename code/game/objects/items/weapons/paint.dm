@@ -66,6 +66,11 @@ var/global/list/cached_icons = list()
 	icon_state = "paint_white"
 	paint_hex = "#f0f8ff"
 
+/obj/item/reagent_containers/glass/paint/gold
+	name = "gold paint bucket"
+	icon_state = "paint_yellow"
+	paint_hex = "#ffcc00"
+
 /obj/item/reagent_containers/glass/paint/random
 	name = "odd paint bucket"
 	icon_state = "paint_neutral"

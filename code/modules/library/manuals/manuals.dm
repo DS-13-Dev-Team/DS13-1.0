@@ -22,35 +22,46 @@
 				Here is a guide on basic food recipes and also how to not poison your customers accidentally.
 
 				<h3>Basics:</h3>
-				Knead an egg and some flour along with some water to make dough. Bake that to make a bun or flatten and cut it.
+				Most machines in the kitchen are essentially devices that you put a food item into, wait awhile, and get a modified version of that item as a result - grilled, fried, etc.<br>
+				You can use a food item in each machine only once, preventing grilled grilled grilled grilled results. You can, however, make a candied box of grilled deep-fried baked diona nymph cereal sandwich.<br>
+				The oven only accepts single ingredients, but produces whatever you select beforehand while empty. For an example, selecting "cake" will give you carrot cake if you stick a carrot in, cacao cake for a cacao pod, etc.<br>
+				Careful with leaving food in the oven for too long as it will burn, covering your whole kitchen in smoke.
+				If you happen to break the microwave, just use a spray bottle of space cleaner on it to clean it up.
+
+				<h3>Dough:</h3>
+				Knead 10 units of flour and water in a mixing vessel (beaker or bowl), together with an egg to make dough. Bake that to make a bun or flatten and cut it.
+
+				<h3>Batter:</h3>
+				Mix together an egg, 10 units of flour, and 10 units of milk to make batter. To make cake batter, mix the batter with some sugar.
 
 				<h3>Burger:</h3>
-				Put a bun and some meat into the microwave and turn it on. Then wait.
+				Put a bun and a cutlet (not raw) into the microwave and turn it on. Then wait. You can also make burgers with cheese, bacon, and other variations.
 
 				<h3>Bread:</h3>
-				Put some dough and an egg into the microwave and then wait.
-
-				<h3>Waffles:</h3>
-				Add two lumps of dough and 10 units of sugar to the microwave and then wait.
+				Put an egg and a couple of balls of dough into the microwave and then wait. There is also banana nut, cream cheese, meat, and other bread.
 
 				<h3>Popcorn:</h3>
-				Add 1 corn to the microwave and wait.
+				Add 1 corn and a 5 units of salt to the microwave and wait.
 
 				<h3>Meat Steak:</h3>
-				Put a slice of meat, 1 unit of salt, and 1 unit of pepper into the microwave and wait.
+				Put a cutlet, 1 unit of salt, and 1 unit of pepper into the microwave and wait.
 
 				<h3>Meat Pie:</h3>
-				Put a flattened piece of dough and some meat into the microwave and wait.
+				Put a flattened ball of dough and a cutlet into the microwave and wait. Can also make other pies like apple, cherry, banana, and pumpkin.
 
 				<h3>Boiled Spaghetti:</h3>
-				Put the spaghetti (processed flour) and 5 units of water into the microwave and wait.
-
-				<h3>Donuts:</h3>
-				Add some dough and 5 units of sugar to the microwave and wait.
+				Slice dough into slices, then slice those slices for spaghetti. Put a pack and 10 units of water into the microwave and wait.<br>
+				You can add a couple of cooked meatballs, or even 4 of them for spesslaw. Or add a couple of tomatoes instead.
 
 				<h3>Fries:</h3>
-				Add one potato to the processor, then bake them in the microwave.
+				Add one potato to the processor, then bake them in the microwave. Add a cheese wedge with it for cheese fries, or make carrot fries alternative.
 
+				<h3>Donuts:</h3>
+				Add a ball of dough and 5 units of sugar to the microwave and wait.<br>
+				Add 5 units of berry juice or cherry jelly for jelly donuts, or 5 units of hotsauce and frost oil for chaos donuts.
+
+				<h3>Waffles:</h3>
+				Add 20 units of cake batter to the microwave and then wait. Alternatively put 10 units cake batter in, for a muffin.
 
 				</body>
 			</html>

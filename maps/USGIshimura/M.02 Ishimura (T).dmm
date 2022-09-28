@@ -917,6 +917,9 @@
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/structure/disposalpipe/trunk,
+/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/machinery/disposal,
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/aft)
 "ct" = (
@@ -1696,7 +1699,7 @@
 	},
 /obj/machinery/door/firedoor/border_only,
 /turf/simulated/floor,
-/area/ishimura/tramdeck/tram/station/amidships/north)
+/area/ishimura/tramdeck/tram/misc)
 "er" = (
 /turf/simulated/open,
 /area/ishimura/tramdeck/tram/maintenance/midmaintenance)
@@ -1817,6 +1820,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 8
 	},
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/aft)
 "eN" = (
@@ -2101,12 +2105,11 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/aft)
 "fw" = (
-/obj/machinery/disposal,
-/obj/structure/disposalpipe/trunk,
-/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/effect/wallframe_spawn/reinforced,
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/aft)
 "fx" = (
@@ -2501,10 +2504,10 @@
 /obj/effect/floor_decal/corner/grey{
 	dir = 10
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /obj/structure/cable/green{
@@ -2512,8 +2515,11 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/simulated/floor/dank/mono,
-/area/ishimura/tramdeck/tram/station/amidships/north)
+/area/ishimura/tramdeck/tram/station/aft)
 "ga" = (
 /obj/effect/floor_decal/corner/grey{
 	dir = 10
@@ -3485,7 +3491,7 @@
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/forward)
 "hT" = (
-/obj/structure/disposalpipe/segment,
+/obj/machinery/light,
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/forward)
 "hU" = (
@@ -3539,12 +3545,9 @@
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/amidships/north)
 "ia" = (
-/obj/machinery/light{
-	dir = 8
-	},
-/obj/structure/bed/chair,
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/dank/mono,
-/area/ishimura/tramdeck/tram/station/amidships/north)
+/area/ishimura/tramdeck/tram/station/aft)
 "ib" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -3878,12 +3881,7 @@
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/forward)
 "iM" = (
-/obj/machinery/disposal,
-/obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/structure/disposalpipe/trunk{
-	dir = 1
-	},
-/obj/machinery/light,
+/obj/effect/wallframe_spawn/reinforced,
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/forward)
 "iN" = (
@@ -4907,17 +4905,17 @@
 "kU" = (
 /obj/item/stack/material/steel,
 /turf/simulated/floor,
-/area/ishimura/tramdeck/tram/maintenance/aftmaintenance)
+/area/ishimura/tramdeck/tram/misc)
 "kV" = (
 /obj/structure/table/rack,
 /obj/random/ammo,
 /turf/simulated/floor,
-/area/ishimura/tramdeck/tram/maintenance/aftmaintenance)
+/area/ishimura/tramdeck/tram/misc)
 "kW" = (
 /obj/structure/table/rack,
 /obj/random/gun,
 /turf/simulated/floor,
-/area/ishimura/tramdeck/tram/maintenance/aftmaintenance)
+/area/ishimura/tramdeck/tram/misc)
 "kX" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/cobweb,
@@ -6610,10 +6608,22 @@
 /obj/random/voidsuit,
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/maintenance/aftmaintenance)
+"rG" = (
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
+/turf/simulated/floor/dank/mono,
+/area/ishimura/tramdeck/tram/station/amidships/north)
 "rP" = (
 /obj/structure/musician/piano,
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/maintenance/aftmaintenance)
+"sl" = (
+/obj/machinery/door/firedoor{
+	dir = 4
+	},
+/turf/simulated/floor/dank/mono,
+/area/ishimura/tramdeck/tram/station/forward)
 "sD" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -6647,6 +6657,26 @@
 	},
 /turf/simulated/open,
 /area/ishimura/tramdeck/tram/tunnel)
+"uS" = (
+/obj/effect/floor_decal/corner/grey{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/simulated/floor/dank/mono,
+/area/ishimura/tramdeck/tram/station/amidships/north)
 "uX" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -6685,6 +6715,21 @@
 	dir = 4
 	},
 /area/ishimura/tramdeck/tram/tunnel)
+"vO" = (
+/obj/machinery/light/spot{
+	dir = 1
+	},
+/turf/simulated/floor/dank/mono,
+/area/ishimura/tramdeck/tram/misc/auxcargostor)
+"wp" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/disposalpipe/segment,
+/turf/simulated/floor/dank/mono,
+/area/ishimura/tramdeck/tram/station/forward)
+"wC" = (
+/obj/structure/disposalpipe/segment,
+/turf/simulated/floor/dank/mono,
+/area/ishimura/tramdeck/tram/station/aft)
 "wS" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/industrial_lift/tram{
@@ -6700,6 +6745,13 @@
 	},
 /turf/simulated/open,
 /area/ishimura/tramdeck/tram/tunnel)
+"xj" = (
+/obj/structure/bed/chair,
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/dank/mono,
+/area/ishimura/tramdeck/tram/station/amidships/north)
 "xy" = (
 /obj/structure/industrial_lift/tram{
 	icon = 'icons/turf/floors_ds13.dmi';
@@ -6719,6 +6771,9 @@
 /obj/structure/foamedmetal,
 /turf/simulated/floor/plating,
 /area/ishimura/tramdeck/tram/misc/abandonedmeet)
+"yF" = (
+/turf/simulated/floor,
+/area/ishimura/tramdeck/tram/misc)
 "yU" = (
 /obj/random/junk,
 /obj/random/junk,
@@ -6761,6 +6816,15 @@
 	},
 /turf/simulated/floor/dank/tramgrating,
 /area/ishimura/tramdeck/tram/maintenance/midmaintenance)
+"Cu" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/structure/disposalpipe/trunk{
+	dir = 1
+	},
+/obj/machinery/disposal,
+/turf/simulated/floor/dank/mono,
+/area/ishimura/tramdeck/tram/station/forward)
 "Du" = (
 /obj/structure/table/steel,
 /obj/random/clothing,
@@ -6864,6 +6928,16 @@
 	dir = 4
 	},
 /area/ishimura/tramdeck/tram/tunnel)
+"Lj" = (
+/obj/structure/closet/emcloset,
+/turf/simulated/floor/dank/mono,
+/area/ishimura/tramdeck/tram/station/aft)
+"LH" = (
+/obj/effect/floor_decal/corner/grey{
+	dir = 5
+	},
+/turf/simulated/wall/r_wall,
+/area/ishimura/tramdeck/tram/station/amidships/north)
 "Ol" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -17721,7 +17795,7 @@ jr
 jr
 Ol
 mg
-ms
+vO
 mr
 mV
 pn
@@ -18205,9 +18279,9 @@ lD
 af
 cs
 eM
-al
+wC
 fv
-fH
+fJ
 cf
 cn
 cn
@@ -18459,7 +18533,7 @@ dy
 fm
 fm
 kd
-fH
+fZ
 cf
 cn
 cn
@@ -18711,7 +18785,7 @@ ar
 af
 ar
 af
-fH
+fZ
 gD
 cn
 cn
@@ -18963,7 +19037,7 @@ dv
 af
 dv
 af
-fH
+fZ
 cf
 cn
 cn
@@ -18981,7 +19055,7 @@ TE
 TE
 OE
 mg
-ms
+vO
 mr
 mV
 pn
@@ -19215,7 +19289,7 @@ fn
 ao
 fn
 fw
-fJ
+fZ
 cl
 cB
 cB
@@ -19466,7 +19540,7 @@ af
 al
 al
 al
-al
+ia
 ax
 fS
 fS
@@ -19715,10 +19789,10 @@ er
 er
 lD
 af
+Lj
 al
 al
-al
-al
+ia
 ax
 fS
 fS
@@ -20493,7 +20567,7 @@ jr
 jJ
 jr
 mg
-ms
+vO
 mr
 mr
 pe
@@ -29307,7 +29381,7 @@ fS
 fS
 fS
 hm
-ah
+aS
 jr
 ny
 jr
@@ -29559,7 +29633,7 @@ fS
 fS
 fS
 hh
-ah
+aS
 iC
 jr
 jr
@@ -29811,11 +29885,11 @@ fS
 fS
 fS
 hg
-ah
-ja
-ja
-ja
-ja
+ld
+ld
+ld
+ld
+ld
 nX
 nX
 ja
@@ -30063,11 +30137,11 @@ fS
 fS
 fS
 hh
-ah
+ld
 kU
-jr
+yF
 kW
-ja
+ld
 jr
 jr
 ja
@@ -30315,11 +30389,11 @@ fS
 fS
 fS
 hg
-ah
+ld
 kV
-jr
+yF
 kV
-ja
+ld
 jr
 nL
 ja
@@ -30567,11 +30641,11 @@ fS
 fS
 fS
 hh
-ah
+ld
 kW
-jr
+yF
 kV
-ja
+ld
 nL
 of
 ja
@@ -30819,12 +30893,12 @@ fS
 fS
 fS
 hg
-ah
-ja
-jr
-ja
-ja
-ja
+ld
+ld
+yF
+ld
+ld
+ld
 ja
 ja
 jr
@@ -32583,7 +32657,7 @@ fT
 fT
 fT
 hh
-ah
+ld
 ld
 ld
 ld
@@ -32836,13 +32910,13 @@ fS
 fS
 hg
 ah
-kA
-kA
-kA
+nd
+nd
+nd
 is
 mk
 eu
-ja
+eu
 eu
 mD
 mT
@@ -33088,13 +33162,13 @@ fS
 fS
 hh
 ah
-kA
-kA
-kA
+nd
+nd
+nd
 is
 mk
 eu
-ne
+nf
 eu
 mD
 mT
@@ -33346,7 +33420,7 @@ ah
 is
 mk
 eu
-ne
+nf
 eu
 kz
 mU
@@ -33598,7 +33672,7 @@ ah
 ks
 ml
 eu
-ne
+nf
 eu
 gP
 oN
@@ -34079,11 +34153,11 @@ nd
 ah
 ai
 ai
-eP
-aj
-aj
-fz
-fY
+ah
+rG
+rG
+ah
+uS
 by
 bC
 bC
@@ -34095,10 +34169,10 @@ fS
 bC
 bC
 cK
-gF
-aj
-aj
-ia
+LH
+rG
+rG
+ah
 it
 eP
 iP
@@ -34334,8 +34408,8 @@ aj
 eP
 ak
 aj
-dr
-fZ
+fz
+fY
 bz
 bD
 bD
@@ -34347,10 +34421,10 @@ fS
 bD
 bD
 cK
-dh
+gF
 aj
 aj
-ak
+xj
 it
 eP
 aj
@@ -53500,9 +53574,9 @@ cF
 cF
 hj
 di
-hE
-hS
-hS
+hF
+wp
+Cu
 dj
 dz
 he
@@ -53752,7 +53826,7 @@ cF
 cF
 hj
 di
-hE
+dm
 dm
 dm
 dj
@@ -54004,7 +54078,7 @@ cF
 cF
 hj
 hv
-hE
+dm
 dm
 dm
 dj
@@ -54256,14 +54330,14 @@ cF
 cF
 hj
 hv
-hF
-hT
+dm
+dm
 hT
 hd
 iM
 aR
-dm
-dm
+sl
+sl
 aR
 aR
 aR

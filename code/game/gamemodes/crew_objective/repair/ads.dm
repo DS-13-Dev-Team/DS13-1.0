@@ -33,10 +33,10 @@
 
 
 	biomass_payouts = list(
-		list("quantity" = OBJECTIVE_BIOMASS_MED, threshold = 0),
+		list("quantity" = OBJECTIVE_BIOMASS_VERY_LOW, threshold = 0),
 		list("quantity" = OBJECTIVE_BIOMASS_LOW, threshold = 0.25),
 		list("quantity" = OBJECTIVE_BIOMASS_LOW, threshold = 0.51),
-		list("quantity" = OBJECTIVE_BIOMASS_LOW, threshold = 0.75))
+		list("quantity" = OBJECTIVE_BIOMASS_MED, threshold = 0.75))
 
 
 /datum/crew_objective/ads/on_activate()
