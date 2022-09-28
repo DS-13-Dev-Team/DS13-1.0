@@ -122,5 +122,6 @@
 	randpixel = 4
 
 /obj/structure/corruption_node/growth/mini/enhanced
-	range = 3
+	range = 4
 	speed = 1
+	limit = 8

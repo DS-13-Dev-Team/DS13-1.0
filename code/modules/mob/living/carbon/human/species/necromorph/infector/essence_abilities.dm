@@ -12,7 +12,7 @@
 	"Forming: Bioluminescence" = /datum/extension/ability/construction/corruption/light)
 
 /datum/species/necromorph/infector/enhanced
-	essence_abilities = list("Reanimate"	= /datum/extension/ability/domob/reanimate,
+	essence_abilities = list("Reanimate"	= /datum/extension/ability/domob/reanimate/enhanced,
 	"Engorge+"	= /datum/extension/ability/domob/engorge/enhanced,
 	"Mend"	=	/datum/extension/ability/domob/mend,
 	"Forming: Maw" = /datum/extension/ability/construction/corruption/maw,
@@ -46,11 +46,6 @@
 	.=..()
 	set_extension(H, /datum/extension/resource/essence)
 
-/datum/species/necromorph/infector/enhanced/setup_interaction(var/mob/living/carbon/human/H)
-	.=..()
-	remove_extension(H, /datum/extension/resource/essence)
-	set_extension(H, /datum/extension/resource/essence/enhanced)
-
 /datum/extension/resource/essence
 	name = "Essence"
 	current_value = 5 //5 points free to start with
@@ -58,11 +53,6 @@
 	regen = (1 SECOND) / (1 MINUTE)	//One point regenerated per minute
 	meter_type = /atom/movable/screen/meter/resource/essence
 	var/list/selected_essence_ability	//Used by infector, this is a list containing the type and parameters of the essence ability we have selected
-
-/datum/extension/resource/essence/enhanced
-	current_value = 7.5 //7.5 points free to start with
-	max_value = 30
-	regen = (1 SECOND) / (45 SECONDS)	//One point regenerated per minute
 
 //Regenerates faster when over 37.5%, to encourage cautious allocation
 
@@ -121,6 +111,12 @@
 	resource_cost_type	=	RESOURCE_ESSENCE
 	resource_cost_quantity = 3.5
 
+/datum/extension/ability/domob/reanimate/enhanced
+	name = "Reanimate+"
+	blurb = "Resurrects a target corpse as a new necromorph. This version is upgraded"
+	resource_cost_quantity = 2.25
+	duration = 11 SECONDS
+
 /datum/extension/ability/domob/reanimate/apply_start_effect()
 	var/mob/living/L = target
 	spawn()
@@ -155,7 +151,7 @@
 
 /datum/extension/ability/domob/engorge/enhanced
 	name = "Enhanced Engorge"
-	resource_cost_quantity = 1.9
+	resource_cost_quantity = 1.25
 
 /datum/extension/ability/domob/engorge/apply_effect()
 	if (!has_extension(target, /datum/extension/engorge))
@@ -343,8 +339,8 @@
 	blurb = "Constructs a tiny node without requiring existing corruption, allowing an entirely new place to be corrupted. \n\
 	This is very slow and expensive, multiple Infectors should work together. This version of the ability is upgraded."
 	result_path = /obj/structure/corruption_node/growth/mini/enhanced
-	construction_time = 120	//Seconds
-	resource_cost_quantity = 8
+	construction_time = 90	//Seconds
+	resource_cost_quantity = 7.5
 
 /datum/extension/ability/construction/corruption/harvester
 	name = "Forming: Harvester"
