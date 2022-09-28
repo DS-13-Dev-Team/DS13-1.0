@@ -122,6 +122,12 @@
 	spawn()
 		L.start_necromorph_conversion()
 
+/datum/extension/ability/domob/reanimate/enhanced/apply_start_effect()
+	var/enhanced_bonus_modifier = 1
+	var/mob/living/L = target
+	spawn()
+		L.start_necromorph_conversion(enhanced_bonus = enhanced_bonus_modifier)
+
 /datum/extension/ability/domob/reanimate/stop()
 	var/mob/living/L = target
 	DEL_TRANSFORMATION_MOVEMENT_HANDLER(L)	//This handler is checked for during the loop, so it will stop it
