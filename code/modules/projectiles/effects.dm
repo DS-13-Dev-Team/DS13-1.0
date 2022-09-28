@@ -124,12 +124,15 @@
 	icon_state = "impact_u_laser"
 
 //----------------------------
-// Pulse muzzle effect only
+// Pulse rifle ffects
 //----------------------------
 /obj/effect/projectile/pulse/muzzle
 	icon_state = "muzzle_pulse"
 	light_power = 0.7
 	light_color = COLOR_DEEP_SKY_BLUE
+
+/obj/effect/projectile/pulse/impact
+	icon_state = "pulse_hit"
 
 //----------------------------
 // Treye beam
