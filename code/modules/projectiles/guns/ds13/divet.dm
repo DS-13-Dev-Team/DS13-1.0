@@ -99,6 +99,7 @@ Ammo casings for the mags
 	desc = "A .45 bullet casing."
 	caliber = "slug"
 	projectile_type = /obj/item/projectile/bullet/ls_slug
+	impact_type = /obj/effect/projectile/divet/impact
 
 /obj/item/ammo_casing/ls_slug/hollow_point
 	projectile_type = /obj/item/projectile/bullet/ls_slug/hollow_point

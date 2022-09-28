@@ -124,7 +124,7 @@
 	icon_state = "impact_u_laser"
 
 //----------------------------
-// Pulse rifle ffects
+// Pulse rifle effects
 //----------------------------
 /obj/effect/projectile/pulse/muzzle
 	icon_state = "muzzle_pulse"
@@ -133,6 +133,20 @@
 
 /obj/effect/projectile/pulse/impact
 	icon_state = "pulse_hit"
+
+//----------------------------
+// Shotgun effects
+//----------------------------
+
+/obj/effect/projectile/shotgun/impact
+	icon_state = "shotgun_hit"
+
+//----------------------------
+// divet effects
+//----------------------------
+
+/obj/effect/projectile/divet/impact
+	icon_state = "divet_hit"
 
 //----------------------------
 // Treye beam
