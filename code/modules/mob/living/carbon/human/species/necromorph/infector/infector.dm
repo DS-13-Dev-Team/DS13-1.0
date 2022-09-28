@@ -141,7 +141,7 @@
 
 	icon_template = 'icons/mob/necromorph/infector_enhanced.dmi'
 
-	biomass = 290
+	biomass = 275
 	biomass_reclamation_time	=	9 MINUTES //Lets not cripple necromorphs for loosing one too bad either
 	require_total_biomass	=	BIOMASS_REQ_T2
 
@@ -242,6 +242,7 @@ All of them except New Growth require corruption to build upon\
 	parent_organ = BP_CHEST
 
 /obj/item/organ/external/arm/tentacle/proboscis/enhanced
+	airlock_force_power = 1.1
 
 /*
 //The tongue has a slithering noise for when it goes in and out
