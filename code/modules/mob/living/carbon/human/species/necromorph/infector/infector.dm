@@ -24,7 +24,7 @@
 
 	icon_template = 'icons/mob/necromorph/infector.dmi'
 	icon_lying = "_lying"
-	pixel_offset_x = -4
+	pixel_offset_x = -8
 	single_icon = FALSE
 	//health_doll_offset	= 56
 
@@ -137,6 +137,7 @@
 	total_health = 225
 	limb_health_factor = 1.5
 	slowdown = 4
+	view_range = 8
 
 	icon_template = 'icons/mob/necromorph/infector_enhanced.dmi'
 
