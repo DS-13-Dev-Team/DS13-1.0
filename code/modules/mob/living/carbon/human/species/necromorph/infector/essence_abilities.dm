@@ -160,12 +160,12 @@
 	resource_cost_quantity = 1.25
 
 /datum/extension/ability/domob/engorge/apply_effect()
-	if (!has_extension(target, /datum/extension/engorge))
+	if (!has_extension(target, /datum/extension/engorge) && !has_extension(target, /datum/extension/engorge/enhanced))
 		set_extension(target, /datum/extension/engorge)
 		user.consume_resource(resource_cost_type, (target.biomass * 0.005))
 
 /datum/extension/ability/domob/engorge/enhanced/apply_effect()
-	if (!has_extension(target, /datum/extension/engorge))
+	if (!has_extension(target, /datum/extension/engorge) && !has_extension(target, /datum/extension/engorge/enhanced))
 		set_extension(target, /datum/extension/engorge/enhanced)
 		user.consume_resource(resource_cost_type, (target.biomass * 0.005))
 
