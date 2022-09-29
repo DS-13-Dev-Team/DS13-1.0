@@ -183,7 +183,7 @@
 			to_chat(potential_user, "Target must be Necromorph")
 			return FALSE
 
-		if (has_extension(L, /datum/extension/engorge))
+		if (has_extension(L, /datum/extension/engorge) || has_extension(L, /datum/extension/engorge/enhanced))
 			to_chat(potential_user, "Target is already engorged")
 			return FALSE
 
