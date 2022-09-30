@@ -327,8 +327,9 @@
 /datum/extension/ability/construction/corruption/branch/enhanced
 	name = "Forming: Branch+"
 	blurb = "Constructs a Branch, used to spread corruption. This version is upgraded."
-	construction_time = 10	//Seconds
-	resource_cost_quantity = 1.8
+	construction_time = 2	//Seconds
+	result_path = /obj/structure/corruption_node/growth/branch/enhanced
+	resource_cost_quantity = 0.5
 
 /datum/extension/ability/construction/corruption/newgrowth
 	name = "Forming: New Growth"
