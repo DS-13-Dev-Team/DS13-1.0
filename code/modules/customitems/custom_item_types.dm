@@ -132,7 +132,7 @@
 	description = "A lightweight and flexible armoured rig suit, offers good protection against light impacts"
 	item_path = /obj/item/rig/wasp
 	id = "blackwolf_rig"
-	store_cost = 10000
+	store_cost = 9000
 	store_access = ACCESS_PUBLIC
 
 	category = CATEGORY_RIG

@@ -2,7 +2,7 @@
 	name = "advanced soldier RIG"
 	desc = "A heavily armoured rig suit, designed for military use."
 	icon_state = "adv_soldier"
-	armor = list(melee = 72.5, bullet = 75, laser = 75, energy = 40, bomb = 75, bio = 100, rad = 75)
+	armor = list(melee = 72.5, bullet = 75, laser = 72.5, energy = 40, bomb = 75, bio = 100, rad = 75)
 	offline_slowdown = 4
 	online_slowdown = RIG_HEAVY
 	acid_resistance = 1.75	//Contains a fair bit of plastic

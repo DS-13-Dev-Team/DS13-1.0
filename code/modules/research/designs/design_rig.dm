@@ -51,11 +51,11 @@
 
 /datum/design/item/rig/riot
 	build_path = /obj/item/rig/riot
-	price = 15000
+	price = 12000
 
 /datum/design/item/rig/vintage
 	build_path = /obj/item/rig/vintage
-	price = 12000	//Its outdated and has drawbacks
+	price = 15000	//slower than riot but better stats overall
 
 /datum/design/item/rig/advanced
 	build_path = /obj/item/rig/advanced
@@ -63,7 +63,7 @@
 
 /datum/design/item/rig/marksman
 	build_path = /obj/item/rig/marksman
-	price = 9000
+	price = 10000
 
 /datum/design/item/rig/pcsi
 	build_path = /obj/item/rig/security/pcsi
