@@ -347,7 +347,7 @@
 	This is very slow and expensive, multiple Infectors should work together. This version of the ability is upgraded."
 	result_path = /obj/structure/corruption_node/growth/mini/enhanced
 	construction_time = 90	//Seconds
-	resource_cost_quantity = 7.5
+	resource_cost_quantity = 5
 
 /datum/extension/ability/construction/corruption/harvester
 	name = "Forming: Harvester"
