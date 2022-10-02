@@ -147,6 +147,7 @@
 	require_total_biomass	=	BIOMASS_REQ_T2
 
 	strength    = STR_MEDIUM //hits the gym
+	unarmed_types = list(/datum/unarmed_attack/proboscis/enhanced)
 
 	lowest_money_drop = 2000
 	highest_money_drop = 5500
