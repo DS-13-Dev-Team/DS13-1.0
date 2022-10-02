@@ -4,7 +4,7 @@
 	icon_state = "ds_hacker_rig"
 
 	//Similar resistances as firesuit
-	armor = list(melee = 35, bullet = 35, laser = 40, energy = 40, bomb = 40, bio = 80, rad = 60) //less protective, but a lot faster
+	armor = list(melee = 37.5, bullet = 35, laser = 40, energy = 40, bomb = 40, bio = 80, rad = 60) //less protective, but a lot faster
 
 	offline_slowdown = 2
 	online_slowdown = RIG_LIGHT

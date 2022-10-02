@@ -12,7 +12,7 @@
 	name = "T1 Weaponry - Divet Pistol"
 	contains = list(/obj/item/ammo_magazine/divet = 2,
 	/obj/item/gun/projectile/divet/empty = 1)
-	cost = 50
+	cost = 40
 	containertype = /obj/structure/closet/crate/secure/weapon
 	containername = "\improper divet pistol crate"
 	access = access_security
@@ -30,7 +30,7 @@
 /decl/hierarchy/supply_pack/security/ammo_dsmag
 	name = "T1 Ammunition - Divet Slugs Magazines"
 	contains = list(/obj/item/ammo_magazine/divet = 3)
-	cost = 45
+	cost = 30
 	containertype = /obj/structure/closet/crate/secure
 	containername = "\improper ds magazine crate"
 	access = access_security
@@ -38,7 +38,7 @@
 /decl/hierarchy/supply_pack/security/ammo_drbmag
 	name = "T1 Ammunition - Divet RB Magazines"
 	contains = list(/obj/item/ammo_casing/ls_slug/rb = 3)
-	cost = 40
+	cost = 25
 	containertype = /obj/structure/closet/crate/secure
 	containername = "\improper drb magazine crate"
 	access = access_security
@@ -47,7 +47,7 @@
 	name = "T1 Armor Kit - Light"
 	contains = list(/obj/item/clothing/suit/armor/pcarrier/light = 4,
 					/obj/item/clothing/head/helmet = 4)
-	cost = 30
+	cost = 20
 	containertype = /obj/structure/closet/crate/secure
 	containername = "\improper light armor kit crate"
 	access = access_security
@@ -56,7 +56,7 @@
 	name = "T1 Armor Kit - Ballistic"
 	contains = list(/obj/item/clothing/head/helmet/ballistic = 4,
 					/obj/item/clothing/suit/armor/bulletproof = 4)
-	cost = 60
+	cost = 40
 	containertype = /obj/structure/closet/crate/secure
 	containername = "\improper ballistic armor kit crate"
 	access = access_security
@@ -86,7 +86,7 @@
 					/obj/item/storage/photo_album,
 					/obj/item/reagent_scanner,
 					/obj/item/storage/briefcase/crimekit = 2)
-	cost = 40
+	cost = 30
 	containertype = /obj/structure/closet/crate/secure
 	containername = "\improper investigation equipment crate"
 	access = access_security
@@ -119,7 +119,7 @@
 /decl/hierarchy/supply_pack/security/ammo_dhpmag
 	name = "T2 Ammunition - Divet HP Magazines"
 	contains = list(/obj/item/ammo_magazine/divet/hollow_point = 3)
-	cost = 55
+	cost = 45
 	containertype = /obj/structure/closet/crate/secure
 	containername = "\improper dhp magazine crate"
 	access = access_security
@@ -137,7 +137,7 @@
 /decl/hierarchy/supply_pack/security/shield_combat
 	name = "T2 Shield Kit - Combat"
 	contains = list(/obj/item/shield/riot = 2)
-	cost = 145
+	cost = 140
 	containertype = /obj/structure/closet/crate/secure
 	containername = "\improper shield kit crate"
 	access = access_security
@@ -147,7 +147,7 @@
 	name = "T2 Armor Kit - Unmarked"
 	contains = list(/obj/item/clothing/suit/armor/pcarrier/medium = 2,
 					/obj/item/clothing/head/helmet =2)
-	cost = 20
+	cost = 30
 	containertype = /obj/structure/closet/crate/secure
 	containername = "\improper unmarked armor kit crate"
 	access = access_security
@@ -168,7 +168,7 @@
 /decl/hierarchy/supply_pack/security/rig_security
 	name = "T2 RIG - Security"
 	contains = list(/obj/item/rig/security = 1)
-	cost = 140
+	cost = 150
 	containertype = /obj/structure/closet/crate/secure/large
 	containername = "\improper security RIG crate"
 	access = access_security
@@ -177,7 +177,7 @@
 /decl/hierarchy/supply_pack/security/rig_patrol
 	name = "T2 RIG - Patrol"
 	contains = list(/obj/item/rig/patrol = 1)
-	cost = 140
+	cost = 150
 	containertype = /obj/structure/closet/crate/secure/large
 	containername = "\improper patrol RIG crate"
 	access = access_armory
@@ -217,7 +217,7 @@
 	name = "T3 Weaponry - Seeker Rifle"
 	contains = list(/obj/item/ammo_magazine/seeker = 4,
 	/obj/item/gun/projectile/seeker/empty = 1)
-	cost = 100
+	cost = 130
 	containertype = /obj/structure/closet/crate/secure/weapon
 	containername = "\improper seeker rifle crate"
 	security_level = SUPPLY_SECURITY_HIGH
@@ -234,7 +234,7 @@
 /decl/hierarchy/supply_pack/security/ammo_pulsernds
 	name = "T3 Ammunition - Pulse Rounds"
 	contains = list(/obj/item/ammo_magazine/pulse = 4)
-	cost = 80
+	cost = 75
 	containertype = /obj/structure/closet/crate/secure
 	containername = "\improper pulse rounds crate"
 	security_level = SUPPLY_SECURITY_HIGH
@@ -250,7 +250,7 @@
 /decl/hierarchy/supply_pack/security/shield_advcombat
 	name = "T3 Shield Kit - Advanced Combat"
 	contains = list(/obj/item/shield/riot/advanced = 1)
-	cost = 200
+	cost = 160
 	containertype = /obj/structure/closet/crate/secure
 	containername = "\improper advanced shield kit crate"
 	security_level = SUPPLY_SECURITY_HIGH
@@ -258,7 +258,7 @@
 /decl/hierarchy/supply_pack/security/rig_vintage
 	name = "T3 RIG - Antique CEC"
 	contains = list(/obj/item/rig/vintage = 1)
-	cost = 240
+	cost = 200
 	containertype = /obj/structure/closet/crate/secure/large
 	containername = "\improper antique CEC RIG crate"
 	security_level = SUPPLY_SECURITY_HIGH
@@ -266,7 +266,7 @@
 /decl/hierarchy/supply_pack/security/rig_advanced
 	name = "T3 RIG - Advanced"
 	contains = list(/obj/item/rig/advanced = 1)
-	cost = 260
+	cost = 190
 	containertype = /obj/structure/closet/crate/secure/large
 	containername = "\improper advanced RIG crate"
 	security_level = SUPPLY_SECURITY_HIGH
@@ -274,7 +274,7 @@
 /decl/hierarchy/supply_pack/security/rig_riot
 	name = "T3 RIG - Riot"
 	contains = list(/obj/item/rig/riot = 1)
-	cost = 300
+	cost = 180
 	containertype = /obj/structure/closet/crate/secure/large
 	containername = "\improper riot RIG crate"
 	security_level = SUPPLY_SECURITY_HIGH

@@ -2,7 +2,7 @@
 	name = "hazard mining RIG"
 	desc = "A cheaper version of the engineering suit. Commonly used during planet cracking operations."
 	icon_state = "ds_mining_rig"
-	armor = list(melee = 32.5, bullet = 42.5, laser = 42.5, energy = 15, bomb = 70, bio = 100, rad = 50)
+	armor = list(melee = 43.5, bullet = 42.5, laser = 42.5, energy = 15, bomb = 70, bio = 100, rad = 50)
 	online_slowdown = RIG_HEAVY
 
 	chest_type = /obj/item/clothing/suit/space/rig/mining

@@ -228,8 +228,8 @@
 	suit_type = "rescue hardsuit"
 	desc = "A durable RIG designed for medical rescue in high risk areas, and protecting the wearer against acids."
 	icon_state = "medical_rig"
-	armor = list(melee = 30, bullet = 15, laser = 85, energy = 60, bomb = 30, bio = 100, rad = 100)//Good against acid
-	online_slowdown = 1
+	armor = list(melee = 37.5, bullet = 15, laser = 70, energy = 70, bomb = 30, bio = 100, rad = 70)//Good against acid
+	online_slowdown = RIG_LIGHT
 	offline_vision_restriction = TINT_HEAVY
 
 	initial_modules = list(
