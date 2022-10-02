@@ -138,6 +138,7 @@
 	limb_health_factor = 1.5
 	slowdown = 4
 	view_range = 8
+	reach = 2
 
 	icon_template = 'icons/mob/necromorph/infector_enhanced.dmi'
 
@@ -292,9 +293,10 @@ All of them except New Growth require corruption to build upon\
 
 /datum/unarmed_attack/proboscis/enhanced
 
+	damage = 22.5
 	airlock_force_power = 1.1
 	armor_penetration = 6
-	delay = 2.5 SECONDS
+	delay = 7 SECONDS
 
 /datum/unarmed_attack/proboscis/execution
 	//Special version of our unarmed attack only used during the execution move, not normally triggerable
