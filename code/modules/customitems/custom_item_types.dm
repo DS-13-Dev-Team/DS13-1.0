@@ -148,11 +148,11 @@
 	item_path = /obj/item/rig/vintage/sea
 	id = "sea_rig"
 	store_cost = 14000
-	store_access = ACCESS_WHITELIST
+	store_access = ACCESS_PATRONS
 
 	category = CATEGORY_RIG
 	subcategory = SUBCATEGORY_FRAMES
 
 	loadout_modkit_cost = 2
-	modkit_access = ACCESS_WHITELIST
+	modkit_access = ACCESS_PATRONS
 	modkit_typelist = list(/obj/item/rig/vintage)
