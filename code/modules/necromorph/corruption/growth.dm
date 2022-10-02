@@ -64,9 +64,10 @@
 /obj/structure/corruption_node/growth/branch/enhanced
 	name = "Bulging Growth"
 
+	icon_state = "enhanced"
 	range = 4
 	speed = 3
-	limit = 20
+	limit = 27
 
 
 /obj/structure/corruption_node/growth/branch/get_blurb()

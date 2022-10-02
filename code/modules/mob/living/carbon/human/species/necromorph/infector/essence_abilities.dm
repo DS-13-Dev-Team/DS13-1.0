@@ -6,7 +6,7 @@
 	"Forming: Maw" = /datum/extension/ability/construction/corruption/maw,
 	"Forming: Eye" = /datum/extension/ability/construction/corruption/eye,
 	"Forming: Snare" = /datum/extension/ability/construction/corruption/snare,
-	"Forming: Propagator" = /datum/extension/ability/construction/corruption/branch,
+	"Forming: Branch" = /datum/extension/ability/construction/corruption/branch,
 	"Forming: New Growth" = /datum/extension/ability/construction/corruption/newgrowth,
 	"Forming: Harvester" = /datum/extension/ability/construction/corruption/harvester,
 	"Forming: Bioluminescence" = /datum/extension/ability/construction/corruption/light)
@@ -18,7 +18,7 @@
 	"Forming: Maw" = /datum/extension/ability/construction/corruption/maw,
 	"Forming: Eye+" = /datum/extension/ability/construction/corruption/eye/enhanced,
 	"Forming: Snare+" = /datum/extension/ability/construction/corruption/snare/enhanced,
-	"Forming: Propagator" = /datum/extension/ability/construction/corruption/branch/enhanced,
+	"Forming: Bulging Growth" = /datum/extension/ability/construction/corruption/branch/enhanced,
 	"Forming: New Growth+" = /datum/extension/ability/construction/corruption/newgrowth/enhanced,
 	"Forming: Harvester" = /datum/extension/ability/construction/corruption/harvester,
 	"Forming: Bioluminescence+" = /datum/extension/ability/construction/corruption/light/enhanced)
