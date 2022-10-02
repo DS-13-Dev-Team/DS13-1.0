@@ -141,3 +141,18 @@
 	loadout_modkit_cost = 2
 	modkit_access = ACCESS_PUBLIC
 	modkit_typelist = list(/obj/item/rig/engineering)
+
+/datum/patron_item/sea_rig
+	name = "heavy CEC diving rig"
+	description = "An extremely bulky, durable diving suit. Designed for deep diving in the icy seas of Europa, able to whitstand extreme undersea pressure."
+	item_path = /obj/item/rig/vintage/sea
+	id = "sea_rig"
+	store_cost = 14000
+	store_access = ACCESS_WHITELIST
+
+	category = CATEGORY_RIG
+	subcategory = SUBCATEGORY_FRAMES
+
+	loadout_modkit_cost = 2
+	modkit_access = ACCESS_WHITELIST
+	modkit_typelist = list(/obj/item/rig/vintage)

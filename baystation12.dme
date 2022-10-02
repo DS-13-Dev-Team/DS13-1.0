@@ -1664,6 +1664,7 @@
 #include "code\modules\clothing\spacesuits\rig\suits\patrol.dm"
 #include "code\modules\clothing\spacesuits\rig\suits\riot.dm"
 #include "code\modules\clothing\spacesuits\rig\suits\scaf.dm"
+#include "code\modules\clothing\spacesuits\rig\suits\sea.dm"
 #include "code\modules\clothing\spacesuits\rig\suits\security.dm"
 #include "code\modules\clothing\spacesuits\rig\suits\specialforces.dm"
 #include "code\modules\clothing\spacesuits\rig\suits\station.dm"
