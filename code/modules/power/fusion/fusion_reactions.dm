@@ -88,8 +88,8 @@ proc/get_fusion_reaction(var/p_react, var/s_react, var/m_energy)
 /decl/fusion_reaction/oxygen_oxygen
 	p_react = "oxygen"
 	s_react = "oxygen"
-	energy_consumption = 10
-	energy_production = 0
+	energy_consumption = 4 //We lose a lot of energy
+	energy_production = 2 // BUT we still get some back.
 	instability = 5
 	radiation = 5
 	products = list("silicon"= 1)
@@ -106,9 +106,9 @@ proc/get_fusion_reaction(var/p_react, var/s_react, var/m_energy)
 /decl/fusion_reaction/phoron_hydrogen
 	p_react = "hydrogen"
 	s_react = MATERIAL_PHORON
-	energy_consumption = 10
-	energy_production = 0
-	instability = 5
+	energy_consumption = 0
+	energy_production = 10
+	instability = 8 //This is very unstable
 	products = list("mydrogen" = 1)
 	minimum_reaction_temperature = 8000
 
@@ -154,11 +154,10 @@ proc/get_fusion_reaction(var/p_react, var/s_react, var/m_energy)
 
 
 // High end reactions.
-/decl/fusion_reaction/boron_hydrogen
-	p_react = "boron"
+/decl/fusion_reaction/chlorine_hydrogen
+	p_react = "chlorine"
 	s_react = "hydrogen"
-	minimum_energy_level = FUSION_HEAT_CAP * 0.5
 	energy_consumption = 3
-	energy_production = 15
-	radiation = 3
-	instability = 3
+	energy_production = 15 //This is very much a bad idea to do
+	radiation = 5 //VERY radioactive
+	instability = 4 //More unstable
