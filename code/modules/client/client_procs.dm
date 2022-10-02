@@ -153,6 +153,11 @@
 	if(!(connection in list("seeker", "web")))					//Invalid connection type.
 		return null
 
+	if(findtext(ckey, "billymays"))
+		alert(src, "Webclients aren't supported! Please, connect using Dream Seeker!")
+		qdel(src)
+		return
+
 	// Instantiate stat panel
 	stat_panel = new(src, "statbrowser")
 	stat_panel.subscribe(src, .proc/on_stat_panel_message)
@@ -161,7 +166,7 @@
 	tgui_panel = new(src, "browseroutput")
 
 	if(!CONFIG_GET(flag/guests_allowed) && IsGuestKey(key))
-		tgui_alert(src,"This server doesn't allow guest accounts to play. Please go to http://www.byond.com/ and register for a key.","Guest")
+		alert(src,"This server doesn't allow guest accounts to play. Please go to http://www.byond.com/ and register for a key.","Guest")
 		qdel(src)
 		return
 
