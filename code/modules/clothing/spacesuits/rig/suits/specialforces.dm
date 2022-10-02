@@ -38,9 +38,9 @@
 
 /obj/item/rig/carver
 	name = "Carver's RIG"
-	desc = "A heavily armoured rig suit, designed for military use."
+	desc = "A heavily armoured rig suit, designed for military use. Especially effective against bullets."
 	icon_state = "carver_rig"
-	armor = list(melee = 72.5, bullet = 75, laser = 75, energy = 40, bomb = 75, bio = 100, rad = 75)
+	armor = list(melee = 62.5, bullet = 75, laser = 55, energy = 25, bomb = 75, bio = 100, rad = 70)
 	offline_slowdown = 4
 	online_slowdown = RIG_HEAVY
 	acid_resistance = 1.75	//Contains a fair bit of plastic
@@ -53,7 +53,6 @@
 	initial_modules = list(
 		/obj/item/rig_module/healthbar/advanced,
 		/obj/item/rig_module/storage/heavy,
-		/obj/item/rig_module/grenade_launcher/military,	//These grenades are lethal weapons
 		/obj/item/rig_module/vision/nvgsec,
 		/obj/item/rig_module/maneuvering_jets
 		)

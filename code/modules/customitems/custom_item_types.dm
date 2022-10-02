@@ -144,9 +144,24 @@
 
 /datum/patron_item/sea_rig
 	name = "heavy CEC diving rig"
-	description = "An extremely bulky, durable diving suit. Designed for deep diving in the icy seas of Europa, able to whitstand extreme undersea pressure."
+	description = "An extremely bulky, durable diving suit. Designed for deep diving in the icy seas of Europa, able to whitstand extreme undersea pressure. Use it on a vintage rig to convert, or buy it in the store directly!"
 	item_path = /obj/item/rig/vintage/sea
 	id = "sea_rig"
+	store_cost = 14000
+	store_access = ACCESS_PATRONS
+
+	category = CATEGORY_RIG
+	subcategory = SUBCATEGORY_FRAMES
+
+	loadout_modkit_cost = 2
+	modkit_access = ACCESS_PATRONS
+	modkit_typelist = list(/obj/item/rig/vintage)
+
+/datum/patron_item/sea_rig
+	name = "carver's RIG"
+	description = "A heavily armoured rig suit, designed for military use. Especially effective against bullets. Use it on a vintage rig to convert, or buy it in the store directly!"
+	item_path = /obj/item/rig/carver
+	id = "carver_rig"
 	store_cost = 14000
 	store_access = ACCESS_PATRONS
 
