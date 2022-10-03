@@ -62,3 +62,4 @@ changes:
   - balance: Exploders refund slower now, cost increased from 65 -> 70 biomass.
   - balance: Dividers are now more maneuvrable and swing faster, but have their top speed reduced. They have gotten a hefty health increase. Cost decreased from 150 -> 145 biomass.
   - balance: Tripods swing slightly faster now. They are more maneuvrable as well, but their top speed is reduced.
+  - balance: Hunters are now faster as well.
