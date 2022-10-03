@@ -12,11 +12,11 @@
 	mob_type = /mob/living/carbon/human/necromorph/slasher
 	blurb = "The frontline soldier of the necromorph horde. Slow when not charging, but its blade arms make for powerful melee attacks"
 	unarmed_types = list(/datum/unarmed_attack/blades, /datum/unarmed_attack/bite/weak) //Bite attack is a backup if blades are severed
-	total_health = 100
+	total_health = 90
 	biomass = 50
 	mass = 70
 
-	biomass_reclamation_time	=	7 MINUTES
+	biomass_reclamation_time	=	5.5 MINUTES
 
 	icon_template = 'icons/mob/necromorph/slasher/fleshy.dmi'
 	damage_mask = 'icons/mob/necromorph/slasher/damage_mask.dmi' // This is badly implemented and should be fixed down the line.

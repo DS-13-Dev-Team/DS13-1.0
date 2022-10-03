@@ -27,7 +27,7 @@
 	single_icon = FALSE
 	spawner_spawnable = FALSE
 	virus_immune = 1
-	biomass	=	120
+	biomass	=	150
 	require_total_biomass	=	BIOMASS_REQ_T2
 	lying_rotation = 90
 	total_health = 110
@@ -269,7 +269,7 @@ All of these properties combined make Step Strike tricky and disorienting to use
 	set category = "Abilities"
 
 
-	.= step_strike_ability(A, _distance = 2, _cooldown = 3 SECONDS)
+	.= step_strike_ability(A, _distance = 2, _cooldown = 4 SECONDS)
 	if (.)
 		play_species_audio(src, SOUND_ATTACK, VOLUME_MID, 1, 3)
 

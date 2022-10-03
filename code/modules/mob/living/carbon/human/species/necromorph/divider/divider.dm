@@ -4,8 +4,8 @@
 	mob_type = /mob/living/carbon/human/necromorph/divider
 	blurb = "A bizarre walking horrorshow, slow but extremely durable. On death, it splits into five smaller creatures, in an attempt to find a new body to control. The divider is hard to kill, and has several abilities which excel at pinning down a lone target."
 	unarmed_types = list(/datum/unarmed_attack/claws/strong/divider)
-	total_health = 264
-	biomass = 150
+	total_health = 300
+	biomass = 145
 	require_total_biomass	=	BIOMASS_REQ_T2
 	mass = 120
 	limb_health_factor = 1.15
@@ -35,11 +35,9 @@
 	single_icon = FALSE
 	spawner_spawnable = FALSE
 
-
-	slowdown = 5.5
-
 	//hud_type = /datum/hud_data/necromorph/divider
 
+	slowdown = 3
 
 	species_audio = list(
 	SOUND_ATTACK = list('sound/effects/creatures/necromorph/divider/divider_attack_1.ogg',
@@ -69,8 +67,6 @@
 
 
 	species_audio_volume = list(SOUND_SHOUT_LONG = VOLUME_MAX, SOUND_SPEECH = VOLUME_HIGH, SOUND_SHOUT = VOLUME_MID)
-
-	slowdown = 3.5
 
 	inherent_verbs = list(/mob/living/carbon/human/proc/divider_divide, /mob/living/carbon/human/proc/divider_tongue, /mob/living/carbon/human/proc/divider_arm_swing, /mob/proc/shout, /mob/proc/shout_long)
 	modifier_verbs = list(KEY_CTRLSHIFT = list(/mob/living/carbon/human/proc/divider_divide),
@@ -230,8 +226,8 @@ Reanimate can be used to take control of any already-headless corpse on the grou
 	set_extension(H, /datum/extension/cadence/divider)
 
 /datum/extension/cadence/divider
-	max_speed_buff = 1
-	max_steps = 10
+	max_speed_buff = 0.75
+	max_steps = 8
 
 /datum/extension/cadence/divider/max_speed_reached()
 	var/turf/T = get_turf(user)
@@ -287,8 +283,8 @@ Reanimate can be used to take control of any already-headless corpse on the grou
 	target = target,
 	angle = 130,
 	range = 3,
-	duration = 0.85 SECOND,
-	windup = 0.3 SECONDS,
+	duration = 0.75 SECOND,
+	windup = 0.1 SECONDS,
 	cooldown = 3.5 SECONDS,
 	damage = 20,
 	damage_flags = DAM_EDGE,
