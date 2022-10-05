@@ -718,6 +718,7 @@
 /area/mining_colony/interior/excavation/marker_excav)
 "acs" = (
 /obj/machinery/conveyor,
+/obj/structure/lattice,
 /turf/simulated/floor/plating,
 /area/mining_colony/interior/excavation/marker_excav)
 "act" = (
