@@ -20178,7 +20178,7 @@
 /obj/machinery/light,
 /obj/structure/flora/pottedplant/stoutbush,
 /obj/structure/sign/directions/bridge{
-	pixel_y = -33
+	pixel_y = -24
 	},
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior)
@@ -22105,7 +22105,7 @@
 /obj/machinery/light,
 /obj/structure/flora/pottedplant/stoutbush,
 /obj/structure/sign/directions/bridge{
-	pixel_y = -33
+	pixel_y = -24
 	},
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior)
@@ -48371,7 +48371,7 @@ oDb
 suY
 aPi
 mLB
-mLB
+rRV
 mLB
 mLB
 mLB
@@ -48573,7 +48573,7 @@ baE
 aPb
 aPj
 aPd
-aPd
+aQa
 aPj
 aPd
 aPd
@@ -48775,7 +48775,7 @@ baE
 aPb
 aPj
 aPd
-aPd
+aPW
 aPj
 aPd
 aPd
@@ -48977,7 +48977,7 @@ baF
 imO
 aPg
 aPm
-aPm
+vno
 aPm
 aPm
 aPm
@@ -62528,7 +62528,7 @@ aCq
 aCq
 aCq
 aCq
-aCq
+qEi
 lZB
 aCq
 aCq
