@@ -7621,6 +7621,10 @@
 /turf/simulated/floor/dank/maint,
 /area/mining_colony/interior/apartament)
 "awc" = (
+/obj/machinery/door/airlock/command{
+	dir = 4;
+	name = "Control Room"
+	},
 /obj/machinery/door/blast/shutters{
 	dir = 4;
 	id = "extractiongame";
@@ -18875,6 +18879,10 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/machinery/door/airlock/command{
+	dir = 4;
+	name = "Control Room"
+	},
 /obj/machinery/door/blast/shutters{
 	dir = 4;
 	id = "extractiongame";
@@ -19942,7 +19950,7 @@
 	},
 /obj/structure/flora/pottedplant/stoutbush,
 /obj/structure/sign/directions/engineering{
-	pixel_y = 32;
+	pixel_y = 24;
 	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
@@ -25822,9 +25830,6 @@
 /area/mining_colony/interior/cargo/officerarea)
 "bpR" = (
 /obj/random/trash,
-/obj/machinery/light{
-	dir = 1
-	},
 /obj/structure/sign/directions/bridge{
 	pixel_y = 40;
 	dir = 8
@@ -26526,7 +26531,7 @@
 	},
 /obj/structure/flora/pottedplant/stoutbush,
 /obj/structure/sign/directions/bridge{
-	pixel_y = 33;
+	pixel_y = 24;
 	dir = 1
 	},
 /turf/simulated/floor/dank/mono,
@@ -28985,6 +28990,13 @@
 /obj/structure/flora/pottedplant/dead,
 /obj/structure/sign/directions/science{
 	pixel_y = 31;
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/mining_colony/interior)
+"qbV" = (
+/obj/random/junk,
+/obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
@@ -49753,7 +49765,7 @@ khC
 khC
 khC
 khC
-bnO
+qbV
 aUA
 aaK
 bnk
