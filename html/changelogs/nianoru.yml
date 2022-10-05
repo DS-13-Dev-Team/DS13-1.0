@@ -27,4 +27,5 @@ changes:
   - feature: "Colony: added department signs."
   - feature: "Colony and Ishimura: more clothing for fashionistas (totally HRP)."
   - rscadd: "Colony: new marker spawn in mining near the scrapper shuttle."
+  - rscdel: "Colony: removed north-west marker spawns that were usually stuck in a rock."
   - rscdel: "Colony: removed garuanteed rig and weapon spawns in the north-west area outside."
