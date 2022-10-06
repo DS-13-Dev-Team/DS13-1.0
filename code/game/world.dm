@@ -144,7 +144,31 @@ var/world_topic_spam_protect_ip = "0.0.0.0"
 var/world_topic_spam_protect_time = world.timeofday
 
 /world/Topic(T, addr, master, key)
-	TGS_TOPIC
+	TGS_TOPIC	//*THIS NEEDS TO BE AT THE TOP OF /world/Topic()* - Redirect to server tools if necessary
+
+	var/list/response[] = list()
+
+	if(length(T) > CONFIG_GET(number/topic_max_size))
+		response["statuscode"] = 413
+		response["response"] = "Payload too large"
+		return json_encode(response)
+
+	if(SSfail2topic?.IsRateLimited(addr))
+		response["statuscode"] = 429
+		response["response"] = "Rate limited"
+		return json_encode(response)
+
+	var/logging = CONFIG_GET(flag/log_world_topic)
+	var/topic_decoded = rustg_url_decode(T)
+	if(!rustg_json_is_valid(topic_decoded))
+		if(logging)
+			log_topic("(NON-JSON) \"[topic_decoded]\", from:[addr], master:[master], key:[key]")
+		// Fallback check for spacestation13.com requests
+		if(topic_decoded == "ping")
+			return length(GLOB.clients)
+		response["statuscode"] = 400
+		response["response"] = "Bad Request - Invalid JSON format"
+		return json_encode(response)
 
 	log_topic("\"[T]\", from:[addr], master:[master], key:[key]")
 

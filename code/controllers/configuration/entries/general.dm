@@ -50,6 +50,8 @@ Basics, the most important.
 
 /datum/config_entry/flag/log_world_output   //log world.log << messages
 
+/datum/config_entry/flag/log_world_topic	// log all world.Topic() calls
+
 /datum/config_entry/flag/sql_enabled    //for sql switching
 
 /datum/config_entry/flag/allow_admin_ooccolor   //Allows admins with relevant permissions to have their own ooc colour
@@ -273,4 +275,34 @@ Basics, the most important.
 
 /datum/config_entry/number/rounds_until_hard_restart
 	default = -1
+	min_val = 0
+
+//Fail2Topic settings.
+/datum/config_entry/number/topic_rate_limit
+	config_entry_value = 5
+	min_val = 1
+	protection = CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/number/topic_max_fails
+	config_entry_value = 5
+	min_val = 1
+	protection = CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/string/topic_rule_name
+	config_entry_value = "_DD_Fail2topic"
+	protection = CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/number/topic_max_size
+	config_entry_value = 500
+	protection = CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/flag/topic_enabled
+	protection = CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/number/minute_topic_limit
+	config_entry_value = null
+	min_val = 0
+
+/datum/config_entry/number/second_topic_limit
+	config_entry_value = null
 	min_val = 0

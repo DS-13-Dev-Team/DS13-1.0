@@ -8,8 +8,8 @@
 /cfg/**/*
 
 # ignore config, but not subdirs
-!config/*/
 config/*
+!config/*/
 !config/maps.txt
 sql/test_db
 
