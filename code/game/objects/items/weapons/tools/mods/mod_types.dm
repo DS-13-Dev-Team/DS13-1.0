@@ -101,7 +101,7 @@
 	adjective = "sharpened"
 	workspeed = 0.15
 	precision = 5
-	force_mult = 1.15
+	force_mult = 1.075
 	recoverable = FALSE
 	removeable = FALSE
 
@@ -115,7 +115,7 @@
 	//price_tag = 300
 	workspeed = 0.25
 	degradation_mult = 0.85
-	force_mult = 1.10
+	force_mult = 1.075
 	matter = list(MATERIAL_STEEL = 1, MATERIAL_DIAMOND = 1)
 	adjective_type = ADJECTIVE_TYPE_MATERIAL
 
@@ -135,8 +135,8 @@
 	required_qualities = list(QUALITY_WELDING)
 	adjective = "oxyjet"
 	workspeed = 0.20
-	force_mult = 1.15
-	degradation_mult = 1.15
+	force_mult = 1.10
+	degradation_mult = 1.10
 	adjective_type = ADJECTIVE_TYPE_PURPOSE
 
 
@@ -148,11 +148,11 @@
 	required_qualities = list(QUALITY_SCREW_DRIVING, QUALITY_DRILLING, QUALITY_SAWING, QUALITY_DIGGING, QUALITY_EXCAVATION)
 	adjective = "high-power"
 	workspeed = 0.50
-	force_mult = 1.15
+	force_mult = 1.10
 
-	degradation_mult = 1.15
-	powercost_mult = 1.35
-	fuelcost_mult = 1.35
+	degradation_mult = 1.10
+	powercost_mult = 1.25
+	fuelcost_mult = 1.25
 	precision = -10
 
 /obj/item/tool_modification/productivity/motor/can_apply(var/obj/item/tool/T, var/mob/user)
@@ -298,7 +298,7 @@
 	icon_state = "spike"
 	desc = "An array of sharp bits of metal, seemingly adapted for easy affixing to a tool. Would make it into a better weapon, but won't do much for productivity."
 	adjective = "spiked"
-	force_mod = 4
+	force_mod = 3
 	precision = -5
 	degradation_mult = 1.15
 	workspeed = -0.15
