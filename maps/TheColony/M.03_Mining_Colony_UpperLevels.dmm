@@ -16,7 +16,11 @@
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/upper/commandofficers)
 "af" = (
-/obj/structure/filingcabinet,
+/obj/structure/table/standard,
+/obj/item/paper_bin{
+	pixel_y = 3
+	},
+/obj/item/pen/multi,
 /turf/simulated/floor/dank/rectangles,
 /area/mining_colony/security/upper/commandofficers)
 "ag" = (
@@ -177,7 +181,8 @@
 /area/mining_colony/security/upper/commandofficers)
 "aC" = (
 /obj/structure/bed/chair/office{
-	dir = 1
+	dir = 1;
+	pixel_y = 13
 	},
 /turf/simulated/floor/dank/rectangles,
 /area/mining_colony/security/upper/commandofficers)
@@ -342,7 +347,8 @@
 /area/mining_colony/security/upper)
 "aW" = (
 /obj/structure/bed/chair/office{
-	dir = 1
+	dir = 1;
+	pixel_y = 13
 	},
 /obj/machinery/camera/network/command{
 	dir = 4
@@ -446,7 +452,8 @@
 "bj" = (
 /obj/structure/bed/chair/office{
 	dir = 4;
-	icon_state = "officechair_preview"
+	icon_state = "officechair_preview";
+	pixel_x = 5
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/upper/commandofficers)
@@ -749,8 +756,6 @@
 /area/mining_colony/security/upper/forensics)
 "bU" = (
 /obj/structure/table/standard,
-/obj/item/paper_bin,
-/obj/item/pen/multi,
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/upper/commandofficers)
 "bV" = (
@@ -1081,6 +1086,7 @@
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/upper/commandofficers)
 "cI" = (
+/obj/structure/filingcabinet,
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/upper/commandofficers)
 "cJ" = (
@@ -2782,6 +2788,14 @@
 /obj/machinery/light,
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/upper/commandofficers)
+"tk" = (
+/obj/structure/bed/chair/office{
+	dir = 4;
+	icon_state = "officechair_preview";
+	pixel_x = 4
+	},
+/turf/simulated/floor/dank/golf_brown,
+/area/mining_colony/security/upper/commandofficers)
 "tv" = (
 /obj/machinery/light{
 	dir = 1
@@ -3878,6 +3892,13 @@
 	},
 /turf/simulated/floor/dank/hardwood,
 /area/mining_colony/security/upper/be_room1)
+"Sw" = (
+/obj/structure/bed/chair/office{
+	dir = 8;
+	pixel_x = -5
+	},
+/turf/simulated/floor/dank/golf_brown,
+/area/mining_colony/security/upper/commandofficers)
 "Sz" = (
 /obj/structure/bed/chair/office{
 	dir = 4;
@@ -3994,7 +4015,8 @@
 /area/mining_colony/security/upper/sec_offices)
 "Vg" = (
 /obj/structure/bed/chair/office{
-	dir = 1
+	dir = 1;
+	pixel_y = 12
 	},
 /obj/machinery/camera/network/command{
 	dir = 8
@@ -13436,7 +13458,7 @@ ah
 eV
 al
 cb
-cb
+Sw
 aJ
 aL
 aO
@@ -13839,7 +13861,7 @@ Vv
 ah
 ci
 al
-bj
+tk
 bj
 aE
 aL
@@ -14243,7 +14265,7 @@ Vv
 ah
 ka
 al
-eL
+bU
 bU
 al
 aL
@@ -14445,8 +14467,8 @@ Vv
 ah
 ae
 aC
-cb
-cb
+Sw
+Sw
 al
 aL
 aO

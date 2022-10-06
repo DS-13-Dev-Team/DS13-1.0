@@ -12625,10 +12625,6 @@
 /obj/machinery/door/firedoor/border_only,
 /turf/simulated/floor/dank/rivets,
 /area/ishimura/lower/engineering/bay)
-"azw" = (
-/obj/structure/grille,
-/turf/simulated/floor/plating,
-/area/ishimura/lower/maintenance/fore_central)
 "azx" = (
 /obj/machinery/vending/cola,
 /turf/simulated/floor/dank/hardwood,
@@ -13364,10 +13360,6 @@
 	},
 /turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/sleepblock/commons)
-"aBb" = (
-/obj/structure/catwalk,
-/turf/simulated/floor/plating,
-/area/ishimura/lower/maintenance/fore_central)
 "aBc" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -20875,10 +20867,25 @@
 /turf/simulated/floor/plating,
 /area/ishimura/lower/maintenance/fore_central)
 "aOP" = (
-/obj/structure/closet/crate/internals,
-/obj/random/loot/often/few,
-/obj/random/loot/often/few,
-/turf/simulated/floor/plating,
+/obj/structure/table/rack,
+/obj/item/clothing/suit/storage/toggle/hoodie{
+	pixel_x = -1
+	},
+/obj/item/clothing/under/grimhoodie{
+	pixel_y = -4;
+	pixel_x = -1
+	},
+/obj/item/clothing/suit/storage/toggle/hoodie/black{
+	pixel_x = 4;
+	pixel_y = -1
+	},
+/obj/item/clothing/suit/storage/toggle/hoodie/black{
+	pixel_x = 4;
+	pixel_y = -1
+	},
+/obj/item/clothing/suit/storage/toggle/hoodie,
+/obj/effect/floor_decal/dank/outline,
+/turf/simulated/floor/dank/heavy,
 /area/ishimura/lower/maintenance/fore_central)
 "aOQ" = (
 /obj/structure/table/standard,
@@ -22851,11 +22858,6 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
 	},
-/obj/random/trash,
-/turf/simulated/floor/plating,
-/area/ishimura/lower/maintenance/fore_central)
-"aTw" = (
-/obj/structure/grille/broken,
 /obj/random/trash,
 /turf/simulated/floor/plating,
 /area/ishimura/lower/maintenance/fore_central)
@@ -27617,12 +27619,20 @@
 /turf/simulated/floor/dank/maint,
 /area/ishimura/lower/maintenance/starboard)
 "dJS" = (
-/obj/item/clothing/under/color/pink,
-/obj/item/clothing/under/color/red,
-/obj/item/clothing/under/color/yellow,
-/obj/item/clothing/under/color/green,
-/obj/item/clothing/under/color/lightpurple,
-/obj/structure/closet/wardrobe,
+/obj/structure/table/rack,
+/obj/effect/floor_decal/dank/outline,
+/obj/item/clothing/suit/storage/toggle/suit/purple,
+/obj/item/clothing/suit/storage/toggle/suit/blue,
+/obj/item/clothing/suit/storage/toggle/track,
+/obj/item/clothing/suit/storage/toggle/track/white,
+/obj/item/clothing/suit/storage/toggle/track/tcc,
+/obj/item/clothing/suit/storage/toggle/track/red,
+/obj/item/clothing/suit/storage/toggle/track/green,
+/obj/item/clothing/suit/storage/toggle/track/blue,
+/obj/item/clothing/suit/storage/toggle/track,
+/obj/machinery/light/small{
+	dir = 1
+	},
 /turf/simulated/floor/dank/heavy,
 /area/ishimura/lower/maintenance/fore_central)
 "dKx" = (
@@ -27633,6 +27643,26 @@
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/misc/hallway/central)
+"dQx" = (
+/obj/structure/table/rack,
+/obj/item/clothing/under/formal_pants,
+/obj/item/clothing/under/formal_pants/black{
+	pixel_x = 6
+	},
+/obj/item/clothing/under/casual_pants/camo{
+	pixel_x = -6
+	},
+/obj/item/clothing/under/formal_pants/khaki{
+	pixel_x = 5;
+	pixel_y = 3
+	},
+/obj/item/clothing/under/formal_pants/red{
+	pixel_x = -6;
+	pixel_y = 3
+	},
+/obj/effect/floor_decal/dank/outline,
+/turf/simulated/floor/dank/heavy,
+/area/ishimura/lower/maintenance/fore_central)
 "dQP" = (
 /obj/item/radio/intercom{
 	pixel_y = 21
@@ -27849,16 +27879,6 @@
 	dir = 8
 	},
 /area/ishimura/lower/misc/hallway/central)
-"fNV" = (
-/obj/structure/table/rack,
-/obj/item/clothing/shoes/leather,
-/obj/item/clothing/shoes/dutyboots,
-/obj/item/clothing/shoes/brown,
-/obj/item/clothing/shoes/slippers_worn,
-/obj/random/gloves,
-/obj/random/gloves,
-/turf/simulated/floor/dank/heavy,
-/area/ishimura/lower/maintenance/fore_central)
 "fSC" = (
 /turf/simulated/floor/plating,
 /turf/simulated/shuttle/wall/corner/pod1{
@@ -28066,14 +28086,20 @@
 /area/ishimura/lower/cargo/bay)
 "ibl" = (
 /obj/structure/table/rack,
-/obj/item/lipstick/random,
-/obj/item/lipstick/random,
-/obj/item/lipstick/random,
-/obj/item/lipstick/random,
-/obj/random/clothing,
-/obj/random/clothing,
-/obj/random/clothing,
-/obj/random/clothing,
+/obj/item/clothing/under/casual_pants/track/blue{
+	pixel_y = 8;
+	pixel_x = 2
+	},
+/obj/item/clothing/under/casual_pants/track/green{
+	pixel_y = 7
+	},
+/obj/item/clothing/under/casual_pants/track/red{
+	pixel_y = 12
+	},
+/obj/item/clothing/under/casual_pants/track/white{
+	pixel_y = 10
+	},
+/obj/effect/floor_decal/dank/outline,
 /turf/simulated/floor/dank/heavy,
 /area/ishimura/lower/maintenance/fore_central)
 "igR" = (
@@ -28233,6 +28259,26 @@
 "jxb" = (
 /turf/simulated/floor/dank/slides,
 /area/ishimura/lower/mining/mining_bay)
+"jyh" = (
+/obj/structure/table/rack,
+/obj/item/clothing/under/casual_pants,
+/obj/item/clothing/under/casual_pants/baggy/blackjeans,
+/obj/item/clothing/under/casual_pants/baggy/camo,
+/obj/item/clothing/under/casual_pants/baggy/classicjeans,
+/obj/item/clothing/under/casual_pants/baggy/greyjeans,
+/obj/item/clothing/under/casual_pants/baggy/mustangjeans,
+/obj/item/clothing/under/casual_pants/baggy/track,
+/obj/item/clothing/under/casual_pants/baggy/youngfolksjeans,
+/obj/item/clothing/under/casual_pants/blackjeans,
+/obj/item/clothing/under/casual_pants/camo,
+/obj/item/clothing/under/casual_pants/classicjeans,
+/obj/item/clothing/under/casual_pants/greyjeans,
+/obj/item/clothing/under/casual_pants/mustangjeans,
+/obj/item/clothing/under/casual_pants/track,
+/obj/item/clothing/under/casual_pants/youngfolksjeans,
+/obj/effect/floor_decal/dank/outline,
+/turf/simulated/floor/dank/heavy,
+/area/ishimura/lower/maintenance/fore_central)
 "jTa" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/machinery/door/firedoor/border_only,
@@ -28263,6 +28309,20 @@
 "kEE" = (
 /turf/simulated/floor/dank/slides_end,
 /area/ishimura/lower/misc/hallway/aft)
+"kKw" = (
+/obj/structure/table/rack,
+/obj/item/clothing/suit/storage/hooded/wintercoat,
+/obj/item/clothing/suit/storage/toggle/bomber,
+/obj/item/clothing/suit/storage/leather_jacket,
+/obj/item/clothing/suit/storage/hooded/wintercoat/solgov/fleet,
+/obj/item/clothing/suit/storage/hooded/wintercoat/solgov/marine,
+/obj/item/clothing/suit/storage/hooded/wintercoat/solgov,
+/obj/effect/floor_decal/dank/outline,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/dank/heavy,
+/area/ishimura/lower/maintenance/fore_central)
 "kMn" = (
 /turf/simulated/shuttle/wall/pod/two{
 	dir = 1;
@@ -28412,16 +28472,6 @@
 	},
 /turf/simulated/floor/dank/maint_right,
 /area/ishimura/lower/maintenance/starboard)
-"mtq" = (
-/obj/structure/table/rack,
-/obj/item/clothing/under/lawyer/black,
-/obj/item/clothing/under/lawyer/oldman,
-/obj/item/clothing/under/lawyer/bluesuit,
-/obj/item/clothing/under/suit_jacket/navy,
-/obj/item/clothing/under/suit_jacket/tan,
-/obj/item/clothing/under/waiter,
-/turf/simulated/floor/dank/heavy,
-/area/ishimura/lower/maintenance/fore_central)
 "mtG" = (
 /obj/machinery/light,
 /turf/simulated/floor/dank/rectangles,
@@ -28785,23 +28835,13 @@
 	},
 /area/shuttle/executive_shuttle)
 "pJE" = (
-/obj/item/clothing/head/bandana/orange,
-/obj/item/clothing/head/beret/plaincolor{
-	color = "green"
-	},
-/obj/item/clothing/head/beret/plaincolor{
-	color = "yellow"
-	},
-/obj/item/clothing/head/beret/plaincolor{
-	color = "purple"
-	},
-/obj/item/clothing/head/beret/plaincolor{
-	color = "blue"
-	},
-/obj/random/hat,
-/obj/random/hat,
-/obj/random/hat,
-/obj/structure/closet/wardrobe,
+/obj/structure/table/rack,
+/obj/item/clothing/under/color/green,
+/obj/item/clothing/under/color/yellow,
+/obj/item/clothing/under/color/red,
+/obj/item/clothing/under/color/pink,
+/obj/effect/floor_decal/dank/outline,
+/obj/item/clothing/under/pj/blue,
 /turf/simulated/floor/dank/heavy,
 /area/ishimura/lower/maintenance/fore_central)
 "pLC" = (
@@ -28821,16 +28861,6 @@
 	},
 /turf/simulated/floor/dank/grater,
 /area/ishimura/lower/crew/sleepblock/commons)
-"pMZ" = (
-/obj/structure/table/rack,
-/obj/item/clothing/suit/storage/hooded/hoodie,
-/obj/item/clothing/suit/storage/leather_jacket,
-/obj/item/clothing/suit/storage/mbill,
-/obj/item/clothing/suit/storage/toggle/bomber,
-/obj/item/clothing/suit/storage/toggle/hoodie/black,
-/obj/item/clothing/suit/storage/toggle/ems,
-/turf/simulated/floor/dank/heavy,
-/area/ishimura/lower/maintenance/fore_central)
 "pTh" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -28856,14 +28886,26 @@
 /area/ishimura/lower/misc/hallway/central)
 "pXX" = (
 /obj/structure/table/rack,
-/obj/item/clothing/accessory/toggleable/hawaii/random,
-/obj/item/clothing/accessory/toggleable/navy_jacket,
-/obj/item/clothing/accessory/toggleable/tan_jacket,
-/obj/item/clothing/accessory/toggleable/burgundy_jacket,
-/obj/item/clothing/accessory/toggleable/vest,
-/obj/machinery/light/small{
-	dir = 1
+/obj/item/clothing/shoes/black{
+	pixel_y = 4
 	},
+/obj/item/clothing/shoes/slippers_worn,
+/obj/item/clothing/shoes/leather,
+/obj/item/clothing/shoes/dutyboots{
+	pixel_y = -2
+	},
+/obj/item/clothing/shoes/brown{
+	pixel_y = -6
+	},
+/obj/item/clothing/shoes/leather{
+	pixel_y = 2
+	},
+/obj/item/clothing/shoes/flats,
+/obj/item/clothing/shoes/chameleon,
+/obj/item/clothing/shoes/orange,
+/obj/item/clothing/shoes/workboots,
+/obj/item/clothing/shoes/sandal/grimboots,
+/obj/effect/floor_decal/dank/outline,
 /turf/simulated/floor/dank/heavy,
 /area/ishimura/lower/maintenance/fore_central)
 "pYS" = (
@@ -29360,6 +29402,9 @@
 	dir = 4;
 	pixel_x = -25
 	},
+/obj/structure/closet/crate/internals,
+/obj/random/loot/often/few,
+/obj/random/loot/often/few,
 /turf/simulated/floor/plating,
 /area/ishimura/lower/maintenance/fore_central)
 "uEK" = (
@@ -29469,6 +29514,56 @@
 	},
 /turf/simulated/floor/dank/slides_end,
 /area/ishimura/lower/misc/hallway/aft)
+"vKw" = (
+/obj/item/clothing/accessory/toggleable/hawaii/random,
+/obj/item/clothing/accessory/toggleable/burgundy_jacket,
+/obj/item/clothing/accessory/toggleable/vest,
+/obj/structure/table/rack,
+/obj/item/clothing/accessory/toggleable/navy_jacket,
+/obj/item/clothing/accessory/toggleable/tan_jacket,
+/obj/item/clothing/accessory/toggleable/flannel,
+/obj/item/clothing/accessory/toggleable/checkered_jacket,
+/obj/item/clothing/accessory/toggleable/charcoal_jacket,
+/obj/item/clothing/accessory/toggleable/burgundy_jacket,
+/obj/item/clothing/suit/wizrobe/gentlecoat,
+/obj/item/clothing/accessory/toggleable/flannel,
+/obj/item/clothing/suit/storage/det_trench,
+/obj/item/clothing/suit/storage/det_trench/grey,
+/obj/effect/floor_decal/dank/outline,
+/turf/simulated/floor/dank/heavy,
+/area/ishimura/lower/maintenance/fore_central)
+"vLd" = (
+/obj/structure/table/rack,
+/obj/effect/floor_decal/dank/outline,
+/obj/item/clothing/head/beret/plaincolor{
+	color = "green"
+	},
+/obj/item/clothing/head/beret/plaincolor{
+	color = "yellow"
+	},
+/obj/item/clothing/head/beret/plaincolor{
+	color = "purple"
+	},
+/obj/item/clothing/head/beret/plaincolor{
+	color = "blue"
+	},
+/obj/item/clothing/head/bandana/orange,
+/obj/random/hat,
+/obj/random/hat,
+/obj/random/hat,
+/obj/item/clothing/head/hairflower,
+/obj/item/clothing/head/ushanka,
+/obj/item/clothing/head/hairflower/bow,
+/obj/item/lipstick/random,
+/obj/item/lipstick/random,
+/obj/item/lipstick/random,
+/obj/item/lipstick/random,
+/obj/random/clothing,
+/obj/random/clothing,
+/obj/random/clothing,
+/obj/random/clothing,
+/turf/simulated/floor/dank/heavy,
+/area/ishimura/lower/maintenance/fore_central)
 "vWw" = (
 /turf/simulated/floor/dank/slides,
 /area/ishimura/lower/crew/sleepblock/commons)
@@ -29578,6 +29673,24 @@
 	},
 /turf/simulated/floor/dank/grater,
 /area/ishimura/lower/misc/storagesmall)
+"wPF" = (
+/obj/structure/table/rack,
+/obj/item/clothing/under/waiter,
+/obj/item/clothing/under/suit_jacket/tan,
+/obj/item/clothing/under/suit_jacket/navy,
+/obj/item/clothing/under/lawyer/black,
+/obj/item/clothing/under/lawyer/bluesuit,
+/obj/item/clothing/under/lawyer/oldman,
+/obj/item/clothing/under/librarian,
+/obj/item/clothing/under/sl_suit,
+/obj/item/clothing/under/suit_jacket/female,
+/obj/item/clothing/under/suit_jacket/really_black,
+/obj/item/clothing/under/suit_jacket/nt,
+/obj/item/clothing/under/suit_jacket/tan,
+/obj/item/clothing/under/suit_jacket/checkered,
+/obj/effect/floor_decal/dank/outline,
+/turf/simulated/floor/dank/heavy,
+/area/ishimura/lower/maintenance/fore_central)
 "xah" = (
 /obj/machinery/light,
 /turf/simulated/floor/dank/cable{
@@ -29702,6 +29815,29 @@
 	},
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/misc/hallway/central)
+"yag" = (
+/obj/structure/table/rack,
+/obj/item/clothing/under/shorts,
+/obj/item/clothing/under/shorts/black{
+	pixel_y = -3
+	},
+/obj/item/clothing/under/shorts/blue{
+	pixel_x = -4;
+	pixel_y = 3
+	},
+/obj/item/clothing/under/shorts/green{
+	pixel_y = 2;
+	pixel_x = 5
+	},
+/obj/item/clothing/under/shorts/grey{
+	pixel_x = -6
+	},
+/obj/item/clothing/under/shorts/red{
+	pixel_x = 7
+	},
+/obj/effect/floor_decal/dank/outline,
+/turf/simulated/floor/dank/heavy,
+/area/ishimura/lower/maintenance/fore_central)
 "yaZ" = (
 /obj/machinery/light{
 	dir = 1
@@ -60330,9 +60466,9 @@ adS
 adS
 akR
 axQ
-aiy
+uCk
 uEI
-aiy
+aNZ
 aiy
 adS
 oma
@@ -60834,8 +60970,8 @@ ajm
 ajm
 ajm
 azq
-aBb
 aTx
+ajr
 ajr
 ajr
 adS
@@ -61085,10 +61221,10 @@ ajr
 ajr
 ajr
 aOS
-azw
-aTw
 ajr
 ajr
+dQx
+jyh
 ibl
 adS
 bVR
@@ -61337,11 +61473,11 @@ agG
 agG
 agG
 ajr
-uCk
-aiy
 ajr
-fNV
+kKw
 aBe
+aBe
+yag
 adS
 oma
 bRM
@@ -61589,11 +61725,11 @@ auk
 ayV
 agG
 ajr
-aNZ
-aOP
 ajr
-pMZ
+aOP
 aBe
+aBe
+vLd
 adS
 hhT
 bRM
@@ -61842,9 +61978,9 @@ ayY
 agG
 ajr
 ajr
-ajr
-ajr
-mtq
+vKw
+aBe
+aBe
 aBe
 bCK
 oma
@@ -62348,7 +62484,7 @@ aLh
 aLi
 ahj
 dJS
-aBe
+wPF
 pJE
 bCK
 oma
