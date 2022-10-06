@@ -10,17 +10,17 @@
 	blurb = "An expendable suicide bomber, the exploder's sole purpose is to go out in a blaze of glory, and hopefully take a few people with it."
 	unarmed_types = list(/datum/unarmed_attack/bite/weak/exploder) //Bite attack is a backup if blades are severed
 	total_health = 94	//It has high health for the sake of making it a bit harder to destroy without targeting the pustule. Exploding the pustule is always an instakill
-	biomass = 65
+	biomass = 70
 	mass = 50
 
-	biomass_reclamation_time	=	5 MINUTES
+	biomass_reclamation_time	=	5.5 MINUTES
 	view_range = 6
 
 	icon_template = 'icons/mob/necromorph/exploder/exploder.dmi'
 	icon_lying = "_lying"
 	pixel_offset_x = -8
 	single_icon = FALSE
-	evasion = 5	//Awkward movemetn makes it a tricky target
+	evasion = 5	//Awkward movement makes it a tricky target
 	spawner_spawnable = TRUE
 	virus_immune = 1
 

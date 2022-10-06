@@ -21,7 +21,7 @@
 /obj/item/projectile/bullet/on_hit(var/atom/target, var/blocked = 0)
 	if (..(target, blocked))
 		var/mob/living/L = target
-		shake_camera(L, 3, 2)
+		shake_camera(L, 3, 0.25)
 
 /obj/item/projectile/bullet/attack_mob(var/mob/living/target_mob, var/distance, var/miss_modifier)
 	if(penetrating > 0 && damage > 20 && prob(damage))

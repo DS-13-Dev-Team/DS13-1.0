@@ -59,7 +59,7 @@
 	KEY_CTRLSHIFT = list(/mob/living/proc/leaper_gallop),
 	KEY_ALT = list(/mob/living/carbon/human/proc/tailstrike_leaper))
 
-	slowdown = 4.2
+	slowdown = 3
 
 	//Leaper has no legs, it moves with arms and tail
 	locomotion_limbs = list(BP_R_ARM, BP_L_ARM, BP_TAIL)
@@ -164,7 +164,7 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 	mob_type	=	/mob/living/carbon/human/necromorph/leaper/enhanced
 	icon_template = 'icons/mob/necromorph/leaper_enhanced.dmi'
 	unarmed_types = list(/datum/unarmed_attack/claws/strong)
-	slowdown = 3
+	slowdown = 2.25
 	total_health = 225
 	limb_health_factor = 1.6
 	evasion = 30
@@ -191,7 +191,7 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 	unarmed_types = list(/datum/unarmed_attack/claws/monkey)
 	icon_template = 'icons/mob/necromorph/leaper_hopper.dmi'
 
-	slowdown = 2.5
+	slowdown = 1.5
 	total_health = 65
 	evasion = 21
 	stun = 0.75
@@ -355,14 +355,14 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 /datum/species/necromorph/leaper/charge_impact(var/datum/extension/charge/leap/charge)
 	.=..()	//We call the parent charge impact too, all the following effects are in addition to the default behaviour
 	var/mob/living/carbon/human/H = charge.user
-	shake_camera(charge.user,5,3)
+	shake_camera(charge.user,5,1)
 	.=TRUE //We stop on the first hit either way
 	//To be considered a success, we must leap onto a mob, and they must be the one we intended to hit
 	if (isliving(charge.last_obstacle))
 		var/mob/living/L = charge.last_obstacle
 		L.Weaken(stun) //Down they go!
 		L.apply_damage(leap_damage*(charge.distance_travelled+1), used_weapon = charge.user) //We apply damage based on the distance. We add 1 to the distance because we're moving into their tile too
-		shake_camera(L,5,3)
+		shake_camera(L,5,1)
 		//And lets also land ontop of them
 		H.play_species_audio(H, SOUND_SHOUT, 100, 1, 3) //Victory scream
 		.=FALSE

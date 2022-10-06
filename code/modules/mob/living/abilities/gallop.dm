@@ -104,10 +104,9 @@
 	user.play_species_audio(user, SOUND_FOOTSTEP, VOLUME_QUIET)
 
 /datum/extension/gallop/proc/stop_crash(var/stopper)
-	shake_camera(user, 20,4)
+	shake_camera(user, 20,1)
 	crashed = TRUE
-	user.Weaken(5)
-	user.Stun(1)
+	user.Weaken(1)
 	user.take_overall_damage(5, 0,0,0, stopper)
 	stop()
 
