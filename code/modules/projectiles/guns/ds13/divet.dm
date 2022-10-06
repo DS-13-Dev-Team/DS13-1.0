@@ -120,6 +120,7 @@ Projectile logic
 	damage = DIVET_DAMAGE
 	expiry_method = EXPIRY_FADEOUT
 	muzzle_type = /obj/effect/projectile/pulse/muzzle/light
+	impact_type = /obj/effect/projectile/divet/impact
 	fire_sound='sound/weapons/guns/fire/divet_fire.ogg'
 	armor_penetration = 7.5
 	structure_damage_factor = 1.5

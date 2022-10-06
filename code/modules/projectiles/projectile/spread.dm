@@ -5,6 +5,7 @@
 	var/pellet_type = /obj/item/projectile/bullet/pulse/spread
 	var/spread_angle	=	22.5	//This is either side of the centre, the actual width of the cone is twice this value
 	var/pellet_quantity = 10
+	impact_type = /obj/effect/projectile/shotgun/impact
 
 /obj/item/projectile/spread/launch(atom/target, var/target_zone, var/x_offset=0, var/y_offset=0, var/angle_offset=0)
 
