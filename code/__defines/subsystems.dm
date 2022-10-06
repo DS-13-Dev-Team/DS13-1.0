@@ -58,7 +58,7 @@
 // The numbers just define the ordering, they are meaningless otherwise.
 
 
-
+#define SS_INIT_FAIL2TOPIC			102
 #define SS_INIT_PROFILER			101
 #define SS_INIT_GARBAGE				99
 #define SS_INIT_SERVER_MAINT		93

@@ -29,6 +29,8 @@
 
 	var/static/regex/ic_filter_regex
 
+	var/list/fail2topic_whitelisted_ips
+
 /datum/controller/configuration/proc/admin_reload()
 	if(check_rights(R_ADMIN))
 		return
@@ -55,6 +57,7 @@
 					LoadEntries(J)
 				break
 	loadmaplist(CONFIG_MAPS_FILE)
+	LoadTopicRateWhitelist()
 	LoadMOTD()
 
 	loaded = TRUE
@@ -350,6 +353,22 @@ Example config:
 	"Ash Walker" : "Kill all spacemans"
 }
 */
+
+/datum/controller/configuration/proc/LoadTopicRateWhitelist()
+	LAZYINITLIST(fail2topic_whitelisted_ips)
+	if(!fexists("[directory]/topic_rate_limit_whitelist.txt"))
+		log_config("Error 404: topic_rate_limit_whitelist.txt not found!")
+		return
+
+	log_config("Loading config file topic_rate_limit_whitelist.txt...")
+
+	for(var/line in world.file2list("[directory]/topic_rate_limit_whitelist.txt"))
+		if(!line)
+			continue
+		if(findtextEx(line,"#",1,2))
+			continue
+
+		fail2topic_whitelisted_ips[line] = 1
 
 /datum/controller/configuration/proc/pick_mode(mode_name)
 	for(var/T in gamemode_cache)
