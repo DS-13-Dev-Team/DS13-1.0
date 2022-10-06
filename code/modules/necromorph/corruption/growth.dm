@@ -61,6 +61,14 @@
 	falloff = 0.15
 	randpixel = 4
 
+/obj/structure/corruption_node/growth/branch/enhanced
+	name = "Bulging Growth"
+
+	icon_state = "enhanced"
+	range = 4
+	speed = 3
+	limit = 27
+
 
 /obj/structure/corruption_node/growth/branch/get_blurb()
 	. = "This node acts as a smaller source for corruption spread, allowing it to extend out up to [range] tiles in all directions from the node. It must be placed on existing corruption from another propagator node, or from the marker."
@@ -120,3 +128,8 @@
 	falloff = 0.025
 	limit = 4
 	randpixel = 4
+
+/obj/structure/corruption_node/growth/mini/enhanced
+	range = 4
+	speed = 1
+	limit = 8
