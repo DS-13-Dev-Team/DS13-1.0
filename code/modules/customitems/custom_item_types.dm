@@ -157,7 +157,7 @@
 	modkit_access = ACCESS_PATRONS
 	modkit_typelist = list(/obj/item/rig/vintage)
 
-/datum/patron_item/sea_rig
+/datum/patron_item/carver
 	name = "carver's RIG"
 	description = "A heavily armoured rig suit, designed for military use. Especially effective against bullets. Use it on a vintage rig to convert, or buy it in the store directly!"
 	item_path = /obj/item/rig/carver
