@@ -25,17 +25,24 @@
 	READ_FILE(S["job_medium"],			pref.job_medium)
 	READ_FILE(S["job_low"],				pref.job_low)
 	READ_FILE(S["player_alt_titles"],	pref.player_alt_titles)
+	READ_FILE(S["skills_saved"],		pref.skills_saved)
+
+	load_skills()
 
 /datum/category_item/player_setup_item/occupation/save_character(var/savefile/S)
+	save_skills()
+
 	WRITE_FILE(S["alternate_option"],		pref.alternate_option)
 	WRITE_FILE(S["job_high"],				pref.job_high)
 	WRITE_FILE(S["job_medium"],			pref.job_medium)
 	WRITE_FILE(S["job_low"],				pref.job_low)
 	WRITE_FILE(S["player_alt_titles"],		pref.player_alt_titles)
+	WRITE_FILE(S["skills_saved"],			pref.skills_saved)
 
 /datum/category_item/player_setup_item/occupation/sanitize_character()
 	if(!istype(pref.job_medium)) 		pref.job_medium = list()
 	if(!istype(pref.job_low))    		pref.job_low = list()
+	if(!istype(pref.skills_saved))		pref.skills_saved = list()
 
 	pref.alternate_option	= sanitize_integer(pref.alternate_option, 0, 2, initial(pref.alternate_option))
 	pref.job_high	        = sanitize(pref.job_high, null)
@@ -50,6 +57,8 @@
 	// We could have something like Captain set to high while on a non-rank map,
 	// so we prune here to make sure we don't spawn as a PFC captain
 	prune_job_prefs()
+
+	pref.skills_allocated = pref.sanitize_skills(pref.skills_allocated)		//this proc also automatically computes and updates points_by_job
 
 	for(var/datum/job/job as anything in job_master.occupations)
 		var/alt_title = pref.player_alt_titles[job.title]
@@ -77,6 +86,7 @@
 	//The job before the current job. I only use this to get the previous jobs color when I'm filling in blank rows.
 	var/datum/job/lastJob
 	for(var/datum/job/job as anything in job_master.occupations_map)
+		var/unspent = pref.points_by_job[job]
 		var/current_level = JOB_LEVEL_NEVER
 		if(pref.job_high == job.title)
 			current_level = JOB_LEVEL_HIGH
@@ -120,6 +130,7 @@
 			. += "<a href='?src=\ref[src];set_skills=[rank]'><del>[rank]</del></a></td><td>[bad_message]</td></tr>"
 			continue
 
+		. += (unspent && (current_level != JOB_LEVEL_NEVER) ? "<a class='Points' href='?src=\ref[src];set_skills=[rank]'>" : "<a href='?src=\ref[src];set_skills=[rank]'>")
 		if((rank in GLOB.command_positions) || (rank == "AI"))//Bold head jobs
 			. += "<b>[rank]</b>"
 		else
@@ -180,6 +191,25 @@
 
 	else if(href_list["set_job"] && href_list["set_level"])
 		if(SetJob(user, href_list["set_job"], text2num(href_list["set_level"]))) return (pref.equip_preview_mob ? TOPIC_REFRESH_UPDATE_PREVIEW : TOPIC_REFRESH)
+
+	else if(href_list["set_skills"])
+		var/rank = href_list["set_skills"]
+		var/datum/job/job = job_master.GetJob(rank)
+		open_skill_setup(user, job)
+
+	//From the skills popup
+
+	else if(href_list["hit_skill_button"])
+		var/decl/hierarchy/skill/S = locate(href_list["hit_skill_button"])
+		var/datum/job/J = locate(href_list["at_job"])
+		if(!istype(S) || !istype(J))
+			return
+		var/value = text2num(href_list["newvalue"])
+		update_skill_value(J, S, value)
+		pref.ShowChoices(user) //Manual refresh to allow us to focus the panel, not the main window.
+		panel.set_content(generate_skill_content(J))
+		panel.open()
+		winset(user, panel.window_id, "focus=1") //Focuses the panel.
 
 	else if(href_list["skillinfo"])
 		var/decl/hierarchy/skill/S = locate(href_list["skillinfo"])
