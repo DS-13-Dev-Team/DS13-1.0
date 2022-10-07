@@ -1178,12 +1178,6 @@
 "dJ" = (
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/lower/medical)
-"dK" = (
-/obj/structure/bed/chair/office{
-	dir = 8
-	},
-/turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/medical)
 "dL" = (
 /obj/machinery/light,
 /obj/structure/flora/pottedplant/floorleaf,
@@ -1241,19 +1235,6 @@
 	dir = 1
 	},
 /area/mining_colony/lower/maints/node/room27)
-"dX" = (
-/obj/machinery/door/airlock/maintenance{
-	dir = 4;
-	name = "Medical Maintenance Access";
-	req_access = list(3)
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/dank/mono,
-/area/mining_colony/lower)
 "dY" = (
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/lower)
@@ -5499,6 +5480,11 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/white/monotile,
 /area/mining_colony/lower/medical)
 "rQ" = (
@@ -5511,13 +5497,12 @@
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/cargo/storage_upper)
 "rS" = (
-/obj/structure/bed/roller,
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/dank/grater,
+/turf/simulated/wall/r_wall,
 /area/mining_colony/lower/medical)
 "rT" = (
 /obj/machinery/light{
@@ -5577,11 +5562,6 @@
 	},
 /turf/simulated/floor/dank/medical,
 /area/mining_colony/lower/morgue)
-"rZ" = (
-/obj/item/tool/wrench,
-/obj/structure/table/rack,
-/turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/medical)
 "sa" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -5966,6 +5946,12 @@
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/lower/maints/node/room60)
+"vn" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/lower)
 "vp" = (
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/node/room56)
@@ -6309,6 +6295,15 @@
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/node/room24)
+"AH" = (
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "1-4";
+	dir = 8
+	},
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/lower)
 "AO" = (
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/lower/mining_caves)
@@ -6543,6 +6538,7 @@
 /obj/item/radio/intercom/department/medbay{
 	pixel_y = 20
 	},
+/obj/structure/bed/roller,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/lower/medical)
 "DE" = (
@@ -6735,11 +6731,25 @@
 	},
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/lower/mining_caves)
+"Gj" = (
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "1-4";
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/mining_colony/lower/maints/node/room66)
 "Gp" = (
 /turf/unsimulated/mineral,
 /area/mining_colony/lower/mining_caves)
 "Gq" = (
 /obj/effect/landmark/node_room/maintenance,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/node/room66)
 "Gx" = (
@@ -7137,14 +7147,6 @@
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/lower/maints/node/room14)
-"Mf" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/medical)
 "Mg" = (
 /obj/effect/landmark{
 	name = "ShuttleRepairPart"
@@ -7278,6 +7280,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/node/room35)
+"Nz" = (
+/obj/structure/ladder/up,
+/turf/simulated/floor/plating,
+/area/mining_colony/lower/maints/node/room58)
 "NF" = (
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/dank/mono,
@@ -7345,12 +7351,6 @@
 "OE" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/lower/maints/node/room34)
-"OJ" = (
-/obj/machinery/firealarm{
-	pixel_y = 24
-	},
-/turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/medical)
 "OK" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/lower/maints/node/room59)
@@ -7526,6 +7526,13 @@
 "QJ" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/lower/maints/node/room50)
+"QM" = (
+/obj/machinery/light/small,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/lower)
 "QN" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/lower/maints/node/room62)
@@ -7610,6 +7617,15 @@
 /obj/random/loot/usually/few,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/node/room43)
+"Su" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4";
+	dir = 1
+	},
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/lower)
 "Sv" = (
 /obj/structure/grille,
 /turf/simulated/floor/plating,
@@ -7677,17 +7693,6 @@
 "Tt" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/lower/maints/node/room55)
-"Tu" = (
-/obj/machinery/light/small{
-	dir = 8
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/turf/simulated/floor/dank/grater,
-/area/mining_colony/lower)
 "Tv" = (
 /obj/effect/landmark{
 	name = "ShuttleRepairPart"
@@ -7763,6 +7768,11 @@
 "Ul" = (
 /obj/machinery/door/airlock/maintenance,
 /obj/machinery/door/firedoor,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/lower/maints/node/room66)
 "Uo" = (
@@ -7941,6 +7951,14 @@
 "WP" = (
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/node/room47)
+"WU" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plating,
+/area/mining_colony/lower/maints/node/room66)
 "Xc" = (
 /obj/structure/bookcase,
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -8193,6 +8211,13 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/mining_colony/lower/securityevidence2)
+"ZY" = (
+/obj/structure/cable{
+	d2 = 4;
+	icon_state = "0-4"
+	},
+/turf/simulated/floor/plating,
+/area/mining_colony/lower/maints/node/room66)
 
 (1,1,1) = {"
 Cr
@@ -19077,7 +19102,7 @@ dY
 XP
 Qt
 Qt
-Qt
+ZY
 Qt
 QI
 jm
@@ -19275,11 +19300,11 @@ ej
 dY
 dY
 ei
-dY
+AH
 Ul
-Qt
+WU
 Gq
-Qt
+Gj
 gm
 QI
 jm
@@ -19477,7 +19502,7 @@ ar
 ar
 dY
 ei
-dY
+vn
 XP
 jG
 Qt
@@ -19679,7 +19704,7 @@ ar
 ar
 dY
 ei
-dY
+vn
 QI
 jH
 Qt
@@ -19881,7 +19906,7 @@ ar
 ar
 dY
 ei
-dY
+vn
 QI
 QI
 QI
@@ -20083,7 +20108,7 @@ ar
 ar
 dY
 ei
-fU
+QM
 ar
 ar
 ar
@@ -20285,7 +20310,7 @@ ar
 ar
 dY
 ei
-dY
+vn
 ar
 ar
 aw
@@ -20487,7 +20512,7 @@ ar
 ar
 dY
 ei
-dY
+vn
 ar
 ar
 aw
@@ -20689,7 +20714,7 @@ ar
 ar
 dY
 ei
-dY
+vn
 ar
 ar
 aw
@@ -20891,7 +20916,7 @@ ar
 ar
 dY
 ei
-dY
+vn
 ar
 ar
 aw
@@ -21093,7 +21118,7 @@ uC
 uC
 dY
 ei
-dY
+vn
 ar
 ar
 aw
@@ -21295,7 +21320,7 @@ Wt
 gf
 dY
 ei
-dY
+vn
 ar
 ar
 aw
@@ -21497,7 +21522,7 @@ rd
 ry
 dY
 ei
-dY
+vn
 ar
 ar
 aw
@@ -21699,7 +21724,7 @@ AY
 gf
 dY
 ei
-dY
+vn
 ar
 ar
 aw
@@ -21901,7 +21926,7 @@ Wt
 gf
 dY
 ei
-dY
+vn
 ar
 ar
 aw
@@ -22103,7 +22128,7 @@ Wt
 gf
 dY
 ei
-dY
+vn
 ar
 ar
 aw
@@ -22305,7 +22330,7 @@ Wt
 gf
 dY
 ei
-fU
+QM
 ar
 ar
 aw
@@ -22507,7 +22532,7 @@ zp
 gf
 dY
 ei
-dY
+vn
 ar
 ar
 aw
@@ -22709,7 +22734,7 @@ Wt
 gf
 dY
 ei
-dY
+vn
 ar
 ar
 aw
@@ -22911,7 +22936,7 @@ AY
 ry
 dY
 ei
-dY
+vn
 ar
 ar
 aw
@@ -23113,7 +23138,7 @@ Wt
 gf
 dY
 ei
-dY
+vn
 ar
 ar
 aw
@@ -23315,7 +23340,7 @@ uC
 uC
 dY
 ei
-dY
+vn
 ar
 ar
 aw
@@ -23517,7 +23542,7 @@ zS
 zS
 dY
 ei
-dY
+vn
 ar
 ar
 aw
@@ -23533,7 +23558,7 @@ jt
 qA
 rP
 jt
-cG
+jt
 lw
 hP
 hP
@@ -23719,7 +23744,7 @@ zS
 zS
 dY
 ei
-dY
+vn
 ar
 ar
 aw
@@ -23733,10 +23758,10 @@ qq
 qq
 jt
 DA
-Mf
+dJ
 ec
 jt
-jt
+cG
 hV
 kC
 hP
@@ -23921,7 +23946,7 @@ zS
 zS
 dY
 ei
-dY
+vn
 ar
 ar
 aw
@@ -23934,11 +23959,11 @@ qq
 qq
 qq
 jt
-dK
-rS
-dJ
-rZ
 jt
+rS
+jt
+jt
+cG
 iW
 hP
 hP
@@ -24123,7 +24148,7 @@ zS
 zS
 dY
 ei
-fU
+QM
 ar
 ar
 aw
@@ -24135,12 +24160,12 @@ aw
 aw
 aw
 aw
-jt
-OJ
-Mf
-dJ
-dJ
-jt
+aw
+aw
+aw
+aw
+aw
+cG
 jE
 kD
 GI
@@ -24325,7 +24350,7 @@ ge
 JA
 dY
 ei
-dY
+vn
 ar
 ar
 ar
@@ -24339,10 +24364,10 @@ ar
 ar
 ar
 ar
-dX
 ar
 ar
 ar
+cG
 cG
 cG
 cG
@@ -24527,22 +24552,22 @@ ge
 JA
 dY
 ei
-dY
-dY
-dY
-dY
-dY
-dY
-dY
-dY
-dY
-dY
-dY
-dY
-dY
-dY
-Mk
-Tu
+Su
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ky
+Ga
 dY
 Fn
 Fn
@@ -32985,7 +33010,7 @@ aw
 aw
 ar
 xw
-Od
+Nz
 Od
 Od
 vq

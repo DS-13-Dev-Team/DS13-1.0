@@ -28684,6 +28684,10 @@
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/interior/seccie_checkpoint_2)
+"ncL" = (
+/obj/structure/ladder,
+/turf/simulated/floor/plating,
+/area/mining_colony/interior/maint)
 "njC" = (
 /obj/structure/table/rack,
 /turf/simulated/floor/dank/grater,
@@ -37369,7 +37373,7 @@ alg
 bnv
 abi
 aAU
-alN
+bfP
 auV
 anQ
 abi
@@ -37377,7 +37381,7 @@ alg
 alq
 abi
 aAU
-alN
+bfP
 auV
 anQ
 abi
@@ -54766,7 +54770,7 @@ aUh
 aHs
 akH
 aYb
-aFG
+ncL
 aWm
 aWm
 aYb
