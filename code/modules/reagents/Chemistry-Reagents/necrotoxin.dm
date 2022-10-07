@@ -13,17 +13,17 @@
 	extension_type = /datum/extension/reagent/necrotoxin
 	metabolism = REM * 0.125	//Slow acting poison, but really strong
 
-/datum/reagent/toxin/necro/affect_blood(var/mob/living/carbon/M, var/alien, var/removed) // Overdose effect. Doesn't happen instantly.
+/datum/reagent/toxin/necro/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	. = ..()
 	if(volume > 45) // Short lived effect, warns the player that they've taken too much necrotox in a short period of time.
 		M.add_chemical_effect(CE_SLOWDOWN, 2)
-		holder.remove_reagent(/datum/reagent/toxin/necro, 1)
-		holder.add_reagent(/datum/reagent/toxin/necro/lethal, 0.5)
+		M.reagents.remove_reagent(/datum/reagent/toxin/necro, 50 * removed) //Rapidly converts necrotoxin into a worse variant
+		M.reagents.add_reagent(/datum/reagent/toxin/necro_lethal, 25 * removed)
 		if(prob(25))
 			M.emote("scream");
 			to_chat(M, "<span class='notice'>Your insides briefly twist and burn! Something's wrong!.</span>")
 
-/datum/reagent/toxin/necro/lethal
+/datum/reagent/toxin/necro_lethal
 	name = "Necrax toxin"
 	description = "A much deadlier variant of the enigmatic, corrupting substance."
 	taste_description = "corpse bile"
@@ -32,20 +32,61 @@
 	strength = 10
 	overdose = 7.5 //Technically it takes 65 necrotox to get a deadly dose here! Difficult to cure without dialysis
 	extension_type = /datum/extension/reagent/necrotoxin/lethal
+	metabolism = REM * 0.125
 
-/datum/reagent/toxin/necro/lethal/overdose(var/mob/living/carbon/M, var/alien)
-	M.add_chemical_effect(CE_TOXIN, 22.5) // Stops dylovene and natural poison decay!
+/datum/reagent/toxin/necro_lethal/overdose(var/mob/living/carbon/M, var/alien)
+	M.add_chemical_effect(CE_TOXIN, 1.5) // damages the liver directly, should the liver die, recovery is unlikely
 	M.heal_organ_damage(0.25, 0.25) //heals you! This makes a necro conversion far more likely.
-	M.adjustToxLoss(REM)
+	M.adjustToxLoss(REM * 4) // 500% base strength, or 10x as strong as normal necrotoxin
+	M.reagents.remove_reagent(/datum/reagent/dylovene, 0.25) // Purges dylovene slowly
 	if (effect_extension)
 		effect_extension.overdose()
 	return
+
+/datum/reagent/toxin/necro_monkey
+	name = "Necrotoxin Simianis"
+	description = "A malformed vile corruption, appears to struggle to survive in any body except that of a monkey."
+	taste_description = "rotting flesh"
+	reagent_state = LIQUID
+	color = "#4c3b34"
+	strength = 5
+	overdose = 100
+	extension_type = /datum/extension/reagent/necrotoxin/monkey
+	metabolism = REM * 0.125
+
+/datum/reagent/toxin/necro_monkey/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	. = ..()
+	if(volume < 4)
+		M.reagents.remove_reagent(/datum/reagent/toxin/necro_monkey, 50 * removed) //doesn't work in low doses! No powergaming with blood extraction!
+	if(!istype(M, /mob/living/carbon/human/monkey))
+		M.reagents.remove_reagent(/datum/reagent/toxin/necro_monkey, 500 * removed) //doesn't work on humans, only monkeys!
+	else
+		M.adjustBrainLoss(REM * 10) //Absolutely murders monkeys
+		M.adjustToxLoss(REM * 15)
+
+/obj/item/reagent_containers/hypospray/autoinjector/necro // adminspawn only
+	name = "Rugged Autoinjector"
+	desc = "A special model autoinjector, what goodies does this contain?"
+	icon_state = "unitologist"
+	amount_per_transfer_from_this = 15
+	volume = 15
+	starts_with = list(/datum/reagent/toxin/necro = 15)
+
+/obj/item/reagent_containers/hypospray/autoinjector/necro/lethal // adminspawn only
+	starts_with = list(/datum/reagent/toxin/necro_lethal = 15)
+
+/obj/item/reagent_containers/hypospray/autoinjector/necro/monkey
+	desc = "A special model autoinjector, what goodies does this contain? It has a tiny sticker of a cartoony monkey head on the handle."
+	starts_with = list(/datum/reagent/toxin/necro_monkey = 15)
 
 /datum/extension/reagent/necrotoxin
 	linger = 20 MINUTES
 
 /datum/extension/reagent/necrotoxin/lethal
-	linger = 2 MINUTES //Can be treated with dialysis
+	linger = 2 MINUTES //Can be treated with dialysis. Note, this extends to the OD effect, hence it's so short.
+
+/datum/extension/reagent/necrotoxin/monkey
+	linger = 1 SECOND // Won't linger at all, pretty much. Mostly so you can't use it on humans at all.
 
 /datum/extension/reagent/necrotoxin/Initialize()
 	RegisterSignal(holder, COMSIG_LIVING_DEATH, .proc/victim_died)

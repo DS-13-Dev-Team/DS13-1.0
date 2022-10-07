@@ -353,12 +353,12 @@ All of them except New Growth require corruption to build upon\
 	damage = 4
 
 //Poisons the victim on impact but only if their armor didn't stop the hit
-/obj/item/projectile/bullet/spine/venomous/on_hit(var/atom/target, var/blocked = 0, var/def_zone = null, var/strength = 9)
+/obj/item/projectile/bullet/spine/venomous/on_hit(var/atom/target, var/blocked = 0, var/def_zone = null, var/strength = 8.5)
 	if (isliving(target) && !blocked)
 		inject_necrotoxin(target, strength)
 	. = ..()
 
-/obj/item/projectile/bullet/spine/venomous/enhanced/on_hit(atom/target, blocked = 0, def_zone = null, strength = 5.5)
+/obj/item/projectile/bullet/spine/venomous/enhanced/on_hit(atom/target, blocked = 0, def_zone = null, strength = 5.75)
 	. = ..()
 
 /datum/extension/shoot/longshot/spine
