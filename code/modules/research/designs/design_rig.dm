@@ -29,16 +29,17 @@
 
 /datum/design/item/rig/fire
 	build_path = /obj/item/rig/firesuit
-
+	price = 4000
 /datum/design/item/rig/medical
 	build_path = /obj/item/rig/medical
+	price = 6500
 
 /datum/design/item/rig/excavation
 	build_path = /obj/item/rig/excavation
 
 /datum/design/item/rig/mining
 	build_path = /obj/item/rig/mining
-	price = 4000 //cheaper, lower stats
+	price = 5000 //cheaper, lower stats
 
 
 

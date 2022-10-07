@@ -381,7 +381,7 @@
 /area/ishimura/tramdeck/tram/misc/disusedbotanics)
 "bd" = (
 /turf/simulated/floor/reinforced,
-/area/ishimura/tramdeck/tram/misc/disusedbotanics)
+/area/space)
 "be" = (
 /obj/effect/wallframe_spawn/reinforced,
 /turf/simulated/floor,
@@ -2136,9 +2136,6 @@
 	d1 = 2;
 	d2 = 4;
 	icon_state = "2-4"
-	},
-/obj/effect/decal/cleanable/cobweb2{
-	dir = 4
 	},
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/maintenance/aftmaintenance)
@@ -6614,6 +6611,16 @@
 	},
 /turf/simulated/floor/dank/mono,
 /area/ishimura/tramdeck/tram/station/amidships/north)
+"rM" = (
+/obj/effect/wallframe_spawn/reinforced,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/turf/simulated/floor,
+/area/ishimura/tramdeck/tram/maintenance/aftmaintenance)
 "rP" = (
 /obj/structure/musician/piano,
 /turf/simulated/floor,
@@ -6963,6 +6970,10 @@
 	},
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/maintenance/aftmaintenance)
+"Pf" = (
+/obj/machinery/portable_atmospherics/hydroponics,
+/turf/simulated/floor,
+/area/ishimura/tramdeck/tram/maintenance/aftmaintenance)
 "PY" = (
 /obj/structure/largecrate,
 /obj/random/loot/often/many,
@@ -6988,6 +6999,10 @@
 "Sn" = (
 /obj/random/junk,
 /obj/structure/closet/crate/trashcart,
+/turf/simulated/floor,
+/area/ishimura/tramdeck/tram/maintenance/aftmaintenance)
+"Sx" = (
+/obj/effect/landmark/marker/ishimura,
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/maintenance/aftmaintenance)
 "SD" = (
@@ -7058,6 +7073,14 @@
 	},
 /turf/simulated/open,
 /area/ishimura/tramdeck/tram/tunnel)
+"XL" = (
+/obj/structure/table/marble,
+/obj/random/loot/sometimes/few,
+/obj/effect/decal/cleanable/cobweb2{
+	dir = 4
+	},
+/turf/simulated/floor,
+/area/ishimura/tramdeck/tram/maintenance/aftmaintenance)
 "Yp" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/industrial_lift/tram{
@@ -7067,6 +7090,17 @@
 	},
 /turf/simulated/open,
 /area/ishimura/tramdeck/tram/tunnel)
+"Zj" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/door/airlock/civilian,
+/turf/simulated/floor,
+/area/ishimura/tramdeck/tram/maintenance/aftmaintenance)
 "Zk" = (
 /obj/structure/handrail,
 /obj/structure/closet/crate/trashcart,
@@ -13985,12 +14019,12 @@ aa
 aa
 cR
 ja
-ja
+XL
+Pf
 jr
 jr
-lU
-lU
-lU
+jr
+jr
 ja
 cR
 cR
@@ -14237,13 +14271,13 @@ aa
 aa
 cR
 ja
-fj
+lU
 jr
 jr
 jr
+Sx
 jr
 jr
-ja
 ja
 cR
 cR
@@ -14496,7 +14530,7 @@ jr
 jr
 jr
 jr
-ja
+Pf
 ja
 cR
 cR
@@ -14748,8 +14782,8 @@ jr
 jr
 jr
 jr
+jr
 nD
-ja
 ja
 cR
 af
@@ -14996,9 +15030,9 @@ ja
 fj
 jr
 jr
-ja
-lm
-ja
+jr
+jr
+jr
 ja
 ja
 ja
@@ -15245,13 +15279,13 @@ aa
 aa
 cR
 ja
-ja
+fj
 jr
 jr
-ja
+jr
 fy
 jA
-jA
+Zj
 jA
 jA
 jA
@@ -15498,12 +15532,12 @@ aa
 cR
 cR
 ja
-ja
+Pf
 jr
-ja
+jr
 jo
 jr
-jr
+ja
 jr
 jr
 jr
@@ -16006,7 +16040,7 @@ cR
 ja
 ja
 jo
-jr
+Pf
 ja
 ma
 jr
@@ -17517,8 +17551,8 @@ er
 er
 er
 ja
-ja
-ja
+rM
+rM
 jK
 af
 gT
