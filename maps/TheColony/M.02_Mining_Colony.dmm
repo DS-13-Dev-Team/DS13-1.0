@@ -14545,7 +14545,7 @@
 	dir = 4;
 	icon_state = "diagonalWall3"
 	},
-/area/mining_colony/interior/shuttle_bay/hangar)
+/area/mining_colony/interior/shuttle_bay/shuttle_1)
 "aPs" = (
 /turf/simulated/shuttle/wall{
 	dir = 8;
@@ -27834,13 +27834,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/mining_colony/security/sec_firingrange)
-"fZN" = (
-/obj/effect/floor_decal/industrial/loading{
-	dir = 8;
-	icon_state = "loadingarea"
-	},
-/turf/simulated/floor/plating,
-/area/mining_colony/interior/shuttle_bay/shuttle_1)
 "gfx" = (
 /obj/effect/wallframe_spawn/reinforced,
 /obj/machinery/door/firedoor,
@@ -28324,7 +28317,7 @@
 	dir = 5;
 	icon_state = "wall3"
 	},
-/area/mining_colony/interior/shuttle_bay/hangar)
+/area/mining_colony/interior/shuttle_bay/shuttle_1)
 "kmM" = (
 /obj/machinery/computer/shuttle_control/escape2,
 /turf/simulated/floor/dank/golf_brown,
@@ -28356,21 +28349,6 @@
 	},
 /turf/simulated/floor/dank/cable/start,
 /area/mining_colony/interior/shuttle_bay)
-"kvB" = (
-/obj/machinery/door/airlock/external{
-	dir = 4;
-	name = "Evac Shuttle 1"
-	},
-/obj/machinery/door/blast/regular/open{
-	dir = 4;
-	icon_state = "pdoor0";
-	id = "evac_1"
-	},
-/obj/machinery/door/firedoor{
-	dir = 4
-	},
-/turf/simulated/floor/dank/mono,
-/area/mining_colony/interior/shuttle_bay/hangar)
 "kzh" = (
 /obj/machinery/computer/telecomms/traffic,
 /obj/structure/sign/warning/secure_area{
@@ -28798,15 +28776,6 @@
 	},
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/enginieering/reactor)
-"ocr" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 4
-	},
-/obj/structure/railing/mapped{
-	dir = 4
-	},
-/turf/simulated/floor/plating,
-/area/mining_colony/interior/shuttle_bay/shuttle_1)
 "ogB" = (
 /obj/item/radio/intercom{
 	dir = 1;
@@ -28887,12 +28856,6 @@
 /obj/machinery/telecomms/processor/preset_three,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/enginieering/telecomms)
-"oVY" = (
-/turf/simulated/shuttle/wall{
-	dir = 1;
-	icon_state = "wall3"
-	},
-/area/mining_colony/interior/shuttle_bay/hangar)
 "paD" = (
 /obj/machinery/telecomms/bus/preset_four,
 /obj/machinery/light,
@@ -46549,19 +46512,19 @@ aYx
 baE
 aPb
 aPg
-ocr
-ocr
-ocr
-ocr
-ocr
-ocr
-ocr
-ocr
-fZN
-fZN
-ocr
-ocr
-ocr
+aPm
+aPm
+aPm
+aPm
+aPm
+aPm
+aPm
+aPm
+aQz
+aQz
+aPm
+aPm
+aPm
 aQS
 aQW
 aQY
@@ -48166,17 +48129,17 @@ baE
 aPb
 aPh
 kkL
-oVY
-oVY
-oVY
-oVY
-oVY
-oVY
-oVY
-kvB
-kvB
-oVY
-oVY
+aPo
+aPo
+aPo
+aPo
+aPo
+aPo
+aPo
+apn
+apn
+aPo
+aPo
 aPr
 aQT
 aQW
