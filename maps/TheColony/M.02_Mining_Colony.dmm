@@ -27807,9 +27807,6 @@
 /obj/random/ammo/security,
 /turf/simulated/floor/plating,
 /area/mining_colony/security/sec_firingrange)
-"fsN" = (
-/turf/simulated/mineral,
-/area/space)
 "fIw" = (
 /obj/effect/floor_decal/dank/border_corner_i{
 	dir = 4
@@ -30533,8 +30530,8 @@ aoG
 aoG
 aoG
 aoG
-lZB
-lZB
+aoG
+aoG
 lZB
 lZB
 lZB
@@ -41256,8 +41253,8 @@ aak
 lZB
 lZB
 lZB
-lZB
-lZB
+pvN
+pvN
 aaB
 aaB
 aaB
@@ -41458,8 +41455,8 @@ aak
 lZB
 lZB
 lZB
-lZB
-lZB
+pvN
+pvN
 aaB
 aaB
 aaB
@@ -41660,8 +41657,8 @@ aak
 lZB
 lZB
 lZB
-lZB
-lZB
+pvN
+pvN
 aaB
 aaB
 aaB
@@ -41863,7 +41860,7 @@ ase
 ase
 ase
 ase
-lZB
+pvN
 biZ
 biZ
 biZ
@@ -42065,7 +42062,7 @@ auw
 rGb
 bgp
 ase
-lZB
+pvN
 biZ
 biZ
 bth
@@ -42267,7 +42264,7 @@ ase
 ase
 bnf
 ase
-lZB
+pvN
 biZ
 biZ
 aNU
@@ -42469,7 +42466,7 @@ kzh
 bfr
 eZZ
 ase
-lZB
+pvN
 biZ
 biZ
 bjm
@@ -42671,7 +42668,7 @@ pjk
 nEu
 akY
 ase
-lZB
+pvN
 biZ
 biZ
 boO
@@ -42873,7 +42870,7 @@ xcR
 bkZ
 aCC
 ase
-lZB
+pvN
 biZ
 biZ
 bjo
@@ -70051,14 +70048,14 @@ azn
 azn
 azn
 azn
-fsN
-fsN
-fsN
-fsN
-fsN
-fsN
-fsN
-fsN
+azn
+azn
+azn
+azn
+azn
+azn
+azn
+azn
 azn
 azn
 azn
@@ -70253,14 +70250,14 @@ azn
 azn
 azn
 azn
-fsN
-fsN
-fsN
-fsN
-fsN
-fsN
-fsN
-fsN
+azn
+azn
+azn
+azn
+azn
+azn
+azn
+azn
 azn
 azn
 azn
