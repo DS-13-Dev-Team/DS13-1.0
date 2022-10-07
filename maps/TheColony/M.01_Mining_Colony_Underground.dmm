@@ -6178,12 +6178,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/node/room49)
-"za" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/growth_tank,
-/obj/machinery/growth_tank,
-/turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/node/room67)
 "zb" = (
 /obj/structure/table/woodentable,
 /obj/item/paper_bin,
@@ -8149,10 +8143,6 @@
 /obj/random/trash,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/node/room18)
-"Zw" = (
-/obj/machinery/growth_tank,
-/turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/node/room67)
 "Zx" = (
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/dank/mono,
@@ -10632,8 +10622,8 @@ sp
 sp
 sp
 sp
-wE
-wE
+sp
+sp
 sp
 sv
 sp
@@ -10830,7 +10820,7 @@ dY
 Pc
 dY
 sm
-za
+Gf
 Gf
 sp
 Gf
@@ -11041,7 +11031,7 @@ sp
 sp
 sp
 Gf
-Zw
+sp
 ar
 Gp
 Cr
