@@ -244,7 +244,7 @@
 	Mounting
 */
 /mob/living/simple_animal/necromorph/divider_component/head/charge_impact(var/datum/extension/charge/leap/charge)
-	shake_camera(charge.user,5,3)
+	shake_camera(charge.user,5,2)
 	.=TRUE
 	if (isliving(charge.last_obstacle))
 		var/mob/living/L = charge.last_obstacle

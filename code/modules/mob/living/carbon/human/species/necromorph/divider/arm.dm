@@ -47,7 +47,7 @@
 	set_extension(src, /datum/extension/wallrun)
 
 /mob/living/simple_animal/necromorph/divider_component/arm/charge_impact(var/datum/extension/charge/leap/charge)
-	shake_camera(charge.user,5,3)
+	shake_camera(charge.user,5,2)
 	.=TRUE
 	if (isliving(charge.last_obstacle))
 		//Lets make mount parameters for posterity. We're just using the default settings at time of writing, but maybe they'll change in future

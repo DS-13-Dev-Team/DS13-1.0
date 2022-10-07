@@ -17,8 +17,13 @@
 	cooldown = 1 SECOND
 
 
-
 /datum/signal_ability/meddle/on_cast(var/mob/user, var/obj/target, var/list/data)
+
+	if (istype(target, /obj/machinery/vending))
+		cooldown = 40 SECONDS
+	else
+		cooldown = 1 SECOND
+
 	target.meddle(user)
 
 
@@ -32,5 +37,4 @@
 
 /obj/proc/meddle(var/mob/user)
 	shake_animation()
-
 

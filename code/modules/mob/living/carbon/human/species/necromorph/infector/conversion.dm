@@ -2,7 +2,7 @@
 	Used for necrotoxin and reanimate, but not for parasite leap
 	The corpse starts shaking and twitching, notifying everyone nearby what's about to happen
 */
-/mob/living/proc/start_necromorph_conversion(var/duration = 12)
+/mob/living/proc/start_necromorph_conversion(var/duration = 12, enhanced_bonus = 0)
 	ADD_TRANSFORMATION_MOVEMENT_HANDLER(src)
 	var/intensity_step = 1 / duration
 	var/intensity = 0
@@ -34,13 +34,13 @@
 	DEL_TRANSFORMATION_MOVEMENT_HANDLER(src)
 
 	//Actually do it
-	necromorph_conversion()
+	necromorph_conversion(enh_bonus = enhanced_bonus)
 
 
 /*
 	The place where converting actually happens, this is instant, no sleeps here
 */
-/mob/living/proc/necromorph_conversion(var/compatibility = 1)
+/mob/living/proc/necromorph_conversion(var/compatibility = 1, enh_bonus = 0)
 
 
 	//Final
@@ -52,6 +52,7 @@
 
 
 	//Animal conversion doesnt use species, we just spawn a new mob and delete the old one
+	compatibility += enh_bonus
 	var/list/options = get_necromorph_conversion_possibilities(compatibility)
 	var/newtype = pick(options)
 	var/mob/living/necro = new newtype(loc)
@@ -65,7 +66,7 @@
 
 //TODO: Fix necromorphs wearing rigs
 
-/mob/living/carbon/human/necromorph_conversion(var/compatibility = 1)
+/mob/living/carbon/human/necromorph_conversion(var/compatibility = 1, enh_bonus = 0)
 	var/biomass_before = biomass
 
 	//Final
@@ -77,6 +78,7 @@
 
 	ADD_TRANSFORMATION_MOVEMENT_HANDLER(src)
 
+	compatibility += enh_bonus
 	compatibility += get_bonus_conversion_compatibility()
 
 	var/list/options = get_necromorph_conversion_possibilities(compatibility)

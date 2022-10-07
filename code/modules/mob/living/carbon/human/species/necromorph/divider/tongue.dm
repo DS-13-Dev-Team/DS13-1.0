@@ -404,7 +404,7 @@
 			continue
 
 		//The victim and their camera shake wildly as they struggle
-		shake_camera(host.victim, 2, 3)
+		shake_camera(host.victim, 2, 2)
 		host.victim.shake_animation(12)
 		host.user.shake_animation(12)
 

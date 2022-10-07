@@ -39,12 +39,12 @@
 //The leg's leap impact is a dropkick, both victim and leg are propelled away from each other wildly
 //The victim recieves a heavy blunt hit
 /mob/living/simple_animal/necromorph/divider_component/leg/charge_impact(var/datum/extension/charge/leap/charge)
-	shake_camera(charge.user,5,3)
+	shake_camera(charge.user,5,2)
 	.=TRUE
 	if (isliving(charge.last_obstacle))
 		var/mob/living/L = charge.last_obstacle
 		L.shake_animation(15)
-		shake_camera(L,10,6) //Smack
+		shake_camera(L,10,2) //Smack
 		launch_strike(L, damage = 22, used_weapon = src, damage_flags = 0, armor_penetration = 10, damage_type = BRUTE, armor_type = "melee", target_zone = get_zone_sel(src), difficulty = 50)
 		//We are briefly stunned
 		Stun(1)

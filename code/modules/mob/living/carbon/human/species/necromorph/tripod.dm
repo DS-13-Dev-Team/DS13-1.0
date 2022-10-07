@@ -3,7 +3,7 @@
 #define LEAP_CONE_WEAKEN	3
 #define LEAP_REDUCED_COOLDOWN	3 SECONDS
 #define TONGUE_EXTEND_TIME 5 SECONDS	//How long the tongue stays out and visible after any tongue move
-#define ARM_SWING_RANGE_TRIPOD 4
+#define ARM_SWING_RANGE_TRIPOD 3
 
 //These are used to position the arm sprite during swing
 #define TONGUE_OFFSETS	list(S_NORTH = new /vector2(6, 16), S_SOUTH = new /vector2(-2, 8), S_EAST = new /vector2(26, 10), S_WEST = new /vector2(-14, 10))
@@ -69,7 +69,7 @@
 
 	unarmed_types = list(/datum/unarmed_attack/punch/tripod)
 
-	slowdown = 4.5 //Note, this is a terribly awful way to do speed, bay's entire speed code needs redesigned
+	slowdown = 3 //Note, this is a terribly awful way to do speed, bay's entire speed code needs redesigned
 
 	//Vision
 	view_range = 12
@@ -238,8 +238,8 @@ If performed successfully on a live crewman, it yields a bonus of 50kg biomass f
 
 
 /datum/extension/cadence/tripod
-	max_speed_buff = 2.25
-	max_steps = 6
+	max_speed_buff = 1.5
+	max_steps = 5
 
 
 /*--------------------------------
@@ -368,7 +368,7 @@ If performed successfully on a live crewman, it yields a bonus of 50kg biomass f
 	target = target,
 	angle = 150,
 	range = ARM_SWING_RANGE_TRIPOD,
-	duration = 0.7 SECOND,
+	duration = 0.6 SECOND,
 	windup = 0.6 SECONDS,
 	cooldown = 3.5 SECONDS,
 	damage = 20,

@@ -69,6 +69,7 @@ The Pulse Rifle is the standard-issue service rifle of the Earth Defense Force a
 	step_delay = 1.3
 	expiry_method = EXPIRY_FADEOUT
 	muzzle_type = /obj/effect/projectile/pulse/muzzle/light
+	impact_type = /obj/effect/projectile/pulse/impact
 	fire_sound='sound/weapons/guns/fire/pulse_shot.ogg'
 
 /obj/item/ammo_magazine/pulse

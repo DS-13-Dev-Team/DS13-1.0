@@ -66,7 +66,7 @@
 	swap_flags 	= ALLMOBS	// What can we swap place with?
 	evasion = -5	//Big target, easier to shoot
 
-	slowdown = 4 //Modest speed, but he has no charge ability
+	slowdown = 3.5 //Modest speed, but he has no charge ability
 
 	//Vision
 	view_range = 8
