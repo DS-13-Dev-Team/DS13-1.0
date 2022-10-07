@@ -30,7 +30,7 @@ changes:
   - feature: "Colony: added pipe dispensers to engineering."
   - feature: "Colony: added ladder near excavation site."
   - feature: "Colony and Ishimura: more clothing for fashionistas (totally HRP)."
-  - rscadd: "Ishimura: new eastern marker spawn."
+  - rscadd: "Ishimura: new western marker spawn in tram area."
   - rscadd: "Colony: new marker spawn in mining near the scrapper shuttle."
   - rscadd: "Colony: new marker spawn underground outside the sewers."
   - rscdel: "Colony: removed north-west marker spawns that were usually stuck in a rock."
