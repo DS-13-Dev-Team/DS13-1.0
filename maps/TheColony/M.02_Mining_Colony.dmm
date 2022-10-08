@@ -19029,6 +19029,10 @@
 	d2 = 2;
 	icon_state = "0-2"
 	},
+/obj/effect/floor_decal/industrial/loading{
+	dir = 8;
+	icon_state = "loadingarea"
+	},
 /turf/simulated/floor/plating,
 /area/mining_colony/interior/shuttle_bay/hangar)
 "baz" = (
@@ -19057,6 +19061,9 @@
 	icon_state = "1-2"
 	},
 /obj/structure/railing/mapped,
+/obj/structure/railing/mapped{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/mining_colony/interior/shuttle_bay/hangar)
 "baC" = (
@@ -19072,9 +19079,6 @@
 	d1 = 1;
 	d2 = 4;
 	icon_state = "1-4"
-	},
-/obj/effect/floor_decal/industrial/loading{
-	dir = 4
 	},
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/shuttle_bay/hangar)
@@ -24542,9 +24546,6 @@
 /turf/simulated/floor/dank/medical,
 /area/mining_colony/interior/medbay/surgery2)
 "bmF" = (
-/obj/machinery/light{
-	dir = 8
-	},
 /obj/structure/window/reinforced{
 	dir = 4;
 	icon_state = "rwindow"
@@ -27527,6 +27528,7 @@
 /area/mining_colony/interior/enginieering/engi_lockers)
 "cvA" = (
 /obj/structure/table/rack,
+/obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/plating,
 /area/mining_colony/security/sec_firingrange)
 "cxt" = (
@@ -27684,6 +27686,15 @@
 /obj/random/loot/usually/some,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/shuttle_bay/hangar)
+"dGV" = (
+/obj/structure/table/reinforced,
+/obj/item/flashlight/lamp/lava{
+	pixel_y = 9;
+	pixel_x = -3;
+	light_on = 1
+	},
+/turf/simulated/floor/dank/bathr,
+/area/mining_colony/interior/medbay/med_ward)
 "dHw" = (
 /obj/item/rig/clown,
 /turf/unsimulated/mineral,
@@ -27800,11 +27811,16 @@
 /obj/machinery/door/firedoor{
 	dir = 4
 	},
+/obj/machinery/door/airlock/security{
+	dir = 4;
+	name = "P-Sec Firing Range"
+	},
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/security/sec_firingrange)
 "fqP" = (
 /obj/structure/table/rack,
 /obj/random/ammo/security,
+/obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/plating,
 /area/mining_colony/security/sec_firingrange)
 "fIw" = (
@@ -27832,6 +27848,8 @@
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/item/storage/box/bodybags,
 /turf/simulated/floor/plating,
 /area/mining_colony/security/sec_firingrange)
 "gfx" = (
@@ -27878,6 +27896,14 @@
 /obj/random/loot/usually/many,
 /turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/surface)
+"gXp" = (
+/obj/structure/table/rack,
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/plating,
+/area/mining_colony/security/sec_firingrange)
 "gYE" = (
 /obj/effect/wallframe_spawn/reinforced,
 /obj/machinery/door/firedoor,
@@ -28029,6 +28055,16 @@
 	dir = 8
 	},
 /turf/simulated/floor/dank/medical,
+/area/mining_colony/interior/medbay/med_ward)
+"igB" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	icon_state = "rwindow"
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/medbay/med_ward)
 "ijA" = (
 /obj/machinery/light{
@@ -28340,6 +28376,7 @@
 "kuP" = (
 /obj/structure/table/rack,
 /obj/random/loot/usually/few,
+/obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/plating,
 /area/mining_colony/security/sec_firingrange)
 "kuZ" = (
@@ -28356,6 +28393,10 @@
 	},
 /turf/simulated/floor/tiled/dark/monotile,
 /area/mining_colony/interior/enginieering/telecomms_control)
+"kBW" = (
+/obj/structure/closet/crate/bin,
+/turf/simulated/floor/plating,
+/area/mining_colony/security/sec_firingrange)
 "kCN" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -28490,13 +28531,6 @@
 	},
 /turf/simulated/floor/dank/maint,
 /area/mining_colony/interior/civ_hall)
-"lDE" = (
-/obj/machinery/door/airlock/security{
-	dir = 4;
-	name = "P-Sec Firing Range"
-	},
-/turf/simulated/floor/dank/mono,
-/area/mining_colony/security/sec_firingrange)
 "lEJ" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/interior/science/lockeroom)
@@ -28848,6 +28882,7 @@
 "oDT" = (
 /obj/structure/table/rack,
 /obj/random/common_loot,
+/obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/plating,
 /area/mining_colony/security/sec_firingrange)
 "oEl" = (
@@ -29000,6 +29035,10 @@
 "quZ" = (
 /obj/effect/shuttle_landmark/valor/landing,
 /turf/simulated/floor,
+/area/mining_colony/surface)
+"qvC" = (
+/obj/item/material/kitchen/utensil/spoon,
+/turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/surface)
 "qxG" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
@@ -29161,6 +29200,12 @@
 	},
 /turf/simulated/floor/dank/maint,
 /area/mining_colony/interior/enginieering/telecomms)
+"saS" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/dank/medical,
+/area/mining_colony/interior/medbay/med_ward)
 "scW" = (
 /obj/machinery/light/small{
 	dir = 4;
@@ -29475,6 +29520,10 @@
 "uId" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/security/interrogation_room)
+"uIY" = (
+/obj/structure/barricade/steel,
+/turf/simulated/floor/light,
+/area/mining_colony/interior/medbay/med_ward)
 "uKM" = (
 /obj/effect/landmark/marker/ishimura,
 /turf/simulated/floor/dank/grater,
@@ -35221,7 +35270,7 @@ bgN
 bgN
 bgN
 bhb
-lDE
+bgV
 aVx
 kuP
 bgv
@@ -38657,7 +38706,7 @@ blK
 aqs
 aae
 aae
-fYa
+gXp
 bgv
 oCS
 aVx
@@ -38859,7 +38908,7 @@ aap
 anI
 aae
 aae
-vcF
+kBW
 bgv
 vcF
 aVx
@@ -41081,8 +41130,8 @@ kPj
 kPj
 kPj
 lZB
-lZB
-lZB
+aCq
+aCq
 lZB
 lZB
 lZB
@@ -41283,9 +41332,9 @@ bmY
 kPj
 kPj
 lZB
-lZB
-lZB
-lZB
+aCq
+pvN
+pvN
 lZB
 lZB
 azn
@@ -41485,10 +41534,10 @@ bmZ
 kPj
 kPj
 lZB
-lZB
-lZB
-lZB
-lZB
+pvN
+pvN
+pvN
+pvN
 lZB
 azn
 azn
@@ -41688,9 +41737,9 @@ kPj
 kPj
 lZB
 lZB
-lZB
-lZB
-lZB
+pvN
+pvN
+pvN
 lZB
 azn
 azn
@@ -41890,9 +41939,9 @@ kPj
 kPj
 lZB
 lZB
-lZB
-lZB
-lZB
+pvN
+pvN
+pvN
 lZB
 azn
 azn
@@ -42091,10 +42140,10 @@ kPj
 kPj
 kPj
 lZB
-lZB
-lZB
-lZB
-lZB
+pvN
+pvN
+pvN
+pvN
 lZB
 azn
 azn
@@ -42293,9 +42342,9 @@ kPj
 kPj
 kPj
 lZB
-lZB
-lZB
-lZB
+pvN
+pvN
+pvN
 lZB
 lZB
 azn
@@ -42494,10 +42543,10 @@ lZB
 lZB
 lZB
 lZB
-lZB
-lZB
-lZB
-lZB
+pvN
+pvN
+pvN
+pvN
 lZB
 lZB
 azn
@@ -42695,10 +42744,10 @@ lZB
 lZB
 lZB
 lZB
-lZB
-lZB
-lZB
-lZB
+pvN
+pvN
+pvN
+pvN
 lZB
 lZB
 lZB
@@ -42895,11 +42944,11 @@ lZB
 lZB
 lZB
 lZB
-lZB
-lZB
-lZB
-lZB
-lZB
+aCq
+pvN
+pvN
+pvN
+pvN
 lZB
 lZB
 lZB
@@ -43096,11 +43145,11 @@ lZB
 lZB
 lZB
 lZB
+aCq
+aCq
+pvN
 lZB
-lZB
-lZB
-lZB
-lZB
+pvN
 lZB
 lZB
 lZB
@@ -43298,8 +43347,8 @@ lZB
 lZB
 lZB
 lZB
-lZB
-lZB
+qvC
+aCq
 lZB
 lZB
 lZB
@@ -43500,7 +43549,7 @@ vxs
 vxs
 vxs
 vxs
-vxs
+uIY
 vxs
 vxs
 vxs
@@ -43698,7 +43747,7 @@ vxs
 vxs
 vxs
 vxs
-bmF
+igB
 vxs
 vxs
 vxs
@@ -43903,7 +43952,7 @@ bnz
 blI
 bmL
 vxs
-bnz
+dGV
 blI
 bmL
 vxs
@@ -44908,17 +44957,17 @@ aqq
 jiM
 aTd
 bsB
-aTd
+saS
 blJ
 bom
 bmN
-aTd
+saS
 aTd
 aHK
 aTd
+saS
 aTd
 aTd
-ids
 ids
 ids
 vxs
@@ -45118,9 +45167,9 @@ vxs
 vxs
 vxs
 vxs
+vxs
 bne
 bmR
-vxs
 vxs
 vxs
 vxs
@@ -46312,7 +46361,7 @@ aCd
 bax
 pTH
 baD
-suY
+aPb
 aQV
 aWH
 aPd
@@ -46511,10 +46560,10 @@ aMT
 aMT
 baq
 aFO
-aQz
-aYx
-baE
-aPb
+aWH
+cqE
+oDb
+suY
 aPg
 aPm
 aPm
@@ -47321,8 +47370,8 @@ bar
 aNV
 aPd
 aQW
-jUf
-kVn
+baE
+aPb
 aPh
 bsX
 aPB
@@ -47521,8 +47570,8 @@ aMX
 aMX
 aMT
 aNV
-aPx
-cqE
+aPd
+aQW
 baE
 aPb
 aPh
@@ -48329,10 +48378,10 @@ aMY
 aMY
 aIL
 aNV
-aPd
-aQW
-oDb
-suY
+aWH
+cqE
+jUf
+kVn
 aPi
 mLB
 rRV
@@ -48733,8 +48782,8 @@ aFO
 aFO
 aFO
 aFO
-aQz
-aYx
+aPd
+aQW
 baE
 aPb
 aPj
@@ -49743,8 +49792,8 @@ bac
 aFT
 bkn
 vWk
-aPx
-cqE
+aPd
+aQW
 baE
 njC
 aPh
