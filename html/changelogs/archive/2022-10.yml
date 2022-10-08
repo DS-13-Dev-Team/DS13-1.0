@@ -74,3 +74,7 @@
   - rscdel: 'Colony: removed garuanteed rig and weapon spawns in the north-west area
       outside.'
   - bugfix: 'Colony: hangar armory shutters now work.'
+2022-10-08:
+  Ketrai:
+  - balance: Stop signals from relentlessly hounding vending machines for treats,
+      and killing people in a similar manner.
