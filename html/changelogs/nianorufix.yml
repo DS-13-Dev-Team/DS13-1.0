@@ -4,9 +4,11 @@ delete-after: True
 
 changes:
   - balance: "Colony: adjusted trash-dump marker spawn location in sewers."
+  - balance: "Colony: lower medical now requires a brute/exploder in the old closet area to break through."
   - feature: "Colony: added pipe dispensers to engineering."
   - feature: "Colony: added ladder near excavation site."
+  - feature: "Colony: added ladder to the right of science (in maints)."
+  - balance: "Colony: adjusted trash-dump marker spawn location in sewers."
   - rscadd: "Ishimura: new western marker spawn in tram area."
   - rscadd: "Colony: new marker spawn underground outside the sewers."
-  - bugfix: "Colony: hangar armory shutters now work."
   - qol: "You can now tell the difference between impassable and normal rock visually."
