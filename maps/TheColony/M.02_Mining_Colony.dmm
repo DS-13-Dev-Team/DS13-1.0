@@ -28619,7 +28619,7 @@
 "mlB" = (
 /obj/machinery/door/airlock/security{
 	dir = 4;
-	name = "P-Sec Firing Range"
+	name = "P-Sec Maintenance"
 	},
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/security)
@@ -28786,7 +28786,7 @@
 /area/mining_colony/interior/uni_church)
 "nCN" = (
 /obj/machinery/door/airlock/security{
-	name = "P-Sec Stairs Access"
+	name = "P-Sec Maintenance"
 	},
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/dank/grater,
