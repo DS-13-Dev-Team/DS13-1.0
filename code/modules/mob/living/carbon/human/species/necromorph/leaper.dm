@@ -211,8 +211,8 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 	view_range = 8
 	view_offset = (null)
 
-	lowest_money_drop = 750
-	highest_money_drop = 1000
+	lowest_money_drop = 250
+	highest_money_drop = 700
 
 //Light claw attack, not its main means of damage
 /datum/unarmed_attack/claws/leaper
