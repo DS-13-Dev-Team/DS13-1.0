@@ -24550,9 +24550,6 @@
 	dir = 4;
 	icon_state = "rwindow"
 	},
-/obj/machinery/light/small{
-	dir = 1
-	},
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/medbay/med_ward)
 "bmG" = (
@@ -27859,6 +27856,12 @@
 /obj/machinery/telecomms/server/presets/supply,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/enginieering/telecomms)
+"fQl" = (
+/obj/machinery/floodlight/on{
+	dir = 4
+	},
+/turf/simulated/floor/asteroid/outside_ds,
+/area/mining_colony/surface)
 "fVF" = (
 /obj/machinery/telecomms/relay/preset/station,
 /turf/simulated/floor/dank/grater,
@@ -43183,7 +43186,7 @@ lZB
 lZB
 lZB
 lZB
-aCq
+fQl
 aCq
 pvN
 lZB
