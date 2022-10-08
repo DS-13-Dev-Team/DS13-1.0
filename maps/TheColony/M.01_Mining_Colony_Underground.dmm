@@ -6232,6 +6232,14 @@
 "zu" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/lower/maints/node/room28)
+"zx" = (
+/obj/structure/barricade/wood,
+/turf/simulated/floor/water_shallow{
+	color = "";
+	desc = "Where all the Aegis VII liquid waste goes to.";
+	name = "waste water"
+	},
+/area/mining_colony/lower)
 "zz" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
@@ -6289,10 +6297,6 @@
 /obj/random/loot/usually/few,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/node/room55)
-"Ar" = (
-/obj/machinery/vending/cola,
-/turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/node/room67)
 "Av" = (
 /turf/simulated/floor/dank/slides{
 	dir = 4
@@ -6435,6 +6439,10 @@
 	},
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/lower/maints/node/room11)
+"Cg" = (
+/obj/structure/barricade/wood,
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/lower)
 "Ch" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -11577,7 +11585,7 @@ sp
 sp
 sp
 sp
-Ar
+sp
 ar
 Gp
 Cr
@@ -11756,8 +11764,8 @@ dY
 dY
 dY
 dY
+Cg
 dY
-ij
 dY
 dY
 dY
@@ -11958,9 +11966,9 @@ ei
 ei
 ei
 ei
+zx
+zx
 ei
-ei
-il
 ei
 ei
 ei
@@ -12161,7 +12169,7 @@ dY
 dY
 dY
 ej
-ij
+Cg
 dY
 dY
 dY
@@ -14988,7 +14996,7 @@ dY
 dY
 dY
 dY
-dY
+ij
 dY
 dY
 dY
@@ -15191,7 +15199,7 @@ ei
 ei
 ei
 ei
-ei
+il
 ei
 ei
 ei
@@ -15392,7 +15400,7 @@ dY
 dY
 dY
 dY
-dY
+ij
 dY
 dY
 et
