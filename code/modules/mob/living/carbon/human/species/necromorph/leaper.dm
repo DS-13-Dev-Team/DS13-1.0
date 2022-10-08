@@ -455,7 +455,7 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 		return
 
 
-	if (gallop_ability(_duration = 4 SECONDS, _cooldown = 5 SECONDS, _power = 0.75))
+	if (gallop_ability(_duration = 4 SECONDS, _cooldown = 5 SECONDS, _power = 0.65))
 		H.play_species_audio(H, SOUND_SHOUT, VOLUME_MID, 1, 3)
 
 //Wallrunning
