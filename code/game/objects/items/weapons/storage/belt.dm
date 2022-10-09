@@ -449,7 +449,7 @@
 	storage_slots = 3
 	overlay_flags = BELT_OVERLAY_ITEMS|BELT_OVERLAY_HOLSTER
 	can_holster = list(
-		/obj/item/material/sword/muramasa
+		/obj/item/tool/pickaxe/muramasa
 	)
 	can_hold = list(
 		/obj/item/ammo_magazine,
