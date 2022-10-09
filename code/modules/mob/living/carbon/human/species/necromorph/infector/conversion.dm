@@ -57,7 +57,7 @@
 	var/newtype = pick(options)
 	var/mob/living/necro = new newtype(loc)
 	necro.sleeping = 0
-	necro.status = CONSCIOUS
+	necro.stat = CONSCIOUS
 	necro.set_biomass(src.biomass)
 	gib()
 
