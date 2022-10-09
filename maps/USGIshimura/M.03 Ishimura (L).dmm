@@ -28274,9 +28274,6 @@
 /obj/item/clothing/under/casual_pants/track,
 /obj/item/clothing/under/casual_pants/youngfolksjeans,
 /obj/effect/floor_decal/dank/outline,
-/obj/machinery/light{
-	dir = 8
-	},
 /turf/simulated/floor/dank/heavy,
 /area/ishimura/lower/maintenance/fore_central)
 "jTa" = (
@@ -29686,9 +29683,6 @@
 /obj/item/clothing/under/suit_jacket/tan,
 /obj/item/clothing/under/suit_jacket/checkered,
 /obj/effect/floor_decal/dank/outline,
-/obj/machinery/light{
-	dir = 4
-	},
 /turf/simulated/floor/dank/heavy,
 /area/ishimura/lower/maintenance/fore_central)
 "xah" = (
