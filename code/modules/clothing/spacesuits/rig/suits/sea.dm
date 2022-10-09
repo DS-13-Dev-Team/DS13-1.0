@@ -1,4 +1,4 @@
-// Patreon rig
+// Former patreon rig
 
 /obj/item/rig/vintage/sea
 	name = "heavy CEC diving suit"
@@ -18,3 +18,23 @@
 /obj/item/clothing/gloves/rig/sea
 
 /obj/item/clothing/shoes/magboots/rig/sea
+
+// Patreon rig
+
+/obj/item/rig/vintage/sea/dad
+	name = "Elite diving rig"
+	desc = "An extremely durable, bulky elite diving suit. Designed for combat and deep sea diving in the North Atlantic Ocean, able to withstand extreme undersea pressure."
+	icon_state = "dad_rig"
+
+	chest_type = /obj/item/clothing/suit/space/rig/sea/dad
+	helm_type =  /obj/item/clothing/head/helmet/space/rig/sea/dad
+	boot_type =  /obj/item/clothing/shoes/magboots/rig/sea/dad
+	glove_type = /obj/item/clothing/gloves/rig/sea/dad
+
+/obj/item/clothing/head/helmet/space/rig/sea/dad
+
+/obj/item/clothing/suit/space/rig/sea/dad
+
+/obj/item/clothing/gloves/rig/sea/dad
+
+/obj/item/clothing/shoes/magboots/rig/sea/dad
