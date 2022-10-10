@@ -18,3 +18,5 @@
 	health = 300
 	base_parry_chance = 30
 	melee_accuracy_bonus = 0
+	structure_damage_factor = 1
+	hitsound = 'sound/weapons/bladeslice.ogg'

@@ -203,3 +203,16 @@
 
 	category = CATEGORY_TOOLS
 	subcategory = SUBCATEGORY_DANGEROUS_TOOLS
+
+/datum/patron_item/muramasa_sheath
+	name =  "Ceremonial Sheath"
+	id = "muramasa sheath"
+	item_path = /obj/item/storage/belt/holster/muramasa
+	store_cost = 1500
+	store_access = ACCESS_PATRONS
+	description = "A lavishly decorated ceremonial sheath, looks oddly gun-shaped."
+	loadout_cost = 1
+	loadout_access = ACCESS_PATRONS
+
+	category = CATEGORY_TOOLS
+	subcategory = SUBCATEGORY_DANGEROUS_TOOLS
