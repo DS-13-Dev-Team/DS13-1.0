@@ -92,7 +92,7 @@
 
 
 	resurrect(200) //Revive
-	sleeping = 0
+	sleeping = 0 //Hacky fix to stop humans being hardstuck not able to move after conversion
 	stat = CONSCIOUS
 	spawn(2)
 		regenerate_icons(TRUE)
