@@ -191,7 +191,7 @@
 	name =  "Experimental Ceremonial Sword"
 	description = "Use on a rock saw to obtain! A blade passed down through generations of a dedicated unitologist family, the Higgins. Sam had it modified into a experimental ceremonial blade, enhancing the already astonishing properties of the original metal and giving it an ominous crimson glow that matches the Marker. An explosive charge housed in the scabbard enables a lightning-quick draw."
 	id = "muramasa"
-	item_path = /obj/item/tool/pickaxe/muramasa
+	item_path = /obj/item/material/twohanded/muramasa
 
 	store_cost = 4000
 	store_access = ACCESS_PATRONS
