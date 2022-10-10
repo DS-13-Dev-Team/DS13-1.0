@@ -128,7 +128,7 @@
 		user.launch_strike(L, damage, user.get_organ(BP_TAIL), damage_flags = DAM_SHARP | DAM_EDGE)
 
 	else
-		victim.ex_act(2)
+		victim.ex_act(3)
 
 	user.visible_message(SPAN_DANGER("[user] [attack_verb] [victim] with their tail!"))
 
