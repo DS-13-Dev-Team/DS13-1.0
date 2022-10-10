@@ -92,6 +92,8 @@
 
 
 	resurrect(200) //Revive
+	sleeping = 0
+	stat = CONSCIOUS
 	spawn(2)
 		regenerate_icons(TRUE)
 
