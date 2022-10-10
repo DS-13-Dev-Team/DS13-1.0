@@ -56,8 +56,6 @@
 	var/list/options = get_necromorph_conversion_possibilities(compatibility)
 	var/newtype = pick(options)
 	var/mob/living/necro = new newtype(loc)
-	necro.sleeping = 0
-	necro.stat = CONSCIOUS
 	necro.set_biomass(src.biomass)
 	gib()
 
@@ -92,9 +90,6 @@
 
 
 	resurrect(200) //Revive
-	oxygen_alert = 0 // Please work already
-	sleeping = 0 //Hacky fix to stop humans being hardstuck not able to move after conversion
-	stat = CONSCIOUS
 	spawn(2)
 		regenerate_icons(TRUE)
 
