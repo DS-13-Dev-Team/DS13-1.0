@@ -22,7 +22,7 @@
 // Patreon rig
 
 /obj/item/rig/vintage/sea/dad
-	name = "Elite diving rig"
+	name = "Elite diving RIG"
 	desc = "An extremely durable, bulky elite diving suit. Designed for combat and deep sea diving in the North Atlantic Ocean, able to withstand extreme undersea pressure."
 	icon_state = "dad_rig"
 
