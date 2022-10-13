@@ -8,25 +8,19 @@
 	id = "scry"
 	desc = "Reveals a targeted area in a 6 tile radius for a duration of 1 minute. Creates a spooky ethereal glow there too. This spell becomes a bit more expensive once the marker is active"
 	target_string = "any blackspace outside the necrovision network"
-	energy_cost = 15 //So cheap since it is before marker activation, allows signals to look around easy and look on things
+	energy_cost = 1 //So cheap since it is before marker activation, allows signals to look around easy and look on things
 	require_corruption = FALSE
 	require_necrovision = FALSE
 	autotarget_range = 0
 
 	targeting_method	=	TARGET_CLICK
+	marker_active_required = -1
 
-//	marker_active_required = -1
+/datum/signal_ability/scry/marker
+	energy_cost = 15
+	id = "scry_postmarker"
 
-//Work in progress
-// /datum/signal_ability/scry2
-// 	name = "Scry "
-// 	id = "scry2"
-// 	desc = "Reveals a targeted area in a 6 tile radius for a duration of 1 minute. Creates a spooky ethereal glow there too."
-// 	energy_cost = 15 //a bit cheaper than 20, so as to help navigate and find people a bit easier
-// 	autotarget_range = 0
-
-// 	marker_active_required = TRUE
-
+	marker_active_required = TRUE
 
 //Because obscuring overlays block clicks, we have to override here to do things
 /datum/signal_ability/scry/target_click(var/mob/user, var/atom/target, var/params)
