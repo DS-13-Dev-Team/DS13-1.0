@@ -57,3 +57,6 @@ delete-after: True
 changes:
   - rscadd: "Traitorous goodies for unitologist, check the stealth tab!."
   - balance: "You can OD on necrotoxin now, treat it with dylovene if you get attacked a lot by infectors."
+  - qol: "Necromorph vision abilities and whisper are now considerably cheaper pre-activation, costs as normal after activation."
+  - balance: "Tracer cost reduced post activation, 110 => 70."
+  - balance: "Branch cost reduced 120 => 90."
