@@ -3,7 +3,7 @@
 	name_plural = "Monkeys"
 	blurb = "Ook."
 	mass = 7
-	biomass	= 7	//Based on Rhesus Macaqueue, a fairly light monkey
+	biomass	= 1	//Based on Rhesus Macaqueue, a fairly light monkey
 
 	icobase =         'icons/mob/human_races/species/monkey/monkey_body.dmi'
 	deform =          'icons/mob/human_races/species/monkey/monkey_body.dmi'
@@ -30,8 +30,8 @@
 
 	rarity_value = 0.1
 	total_health = 150
-	brute_mod = 1.5
-	burn_mod = 1.5
+	brute_mod = 0.95 // no longer needed with lower limb health, and to make sure they don't get utterly wrecked :(
+	burn_mod = 0.95
 
 	spawn_flags = SPECIES_IS_RESTRICTED | SPECIES_IS_WHITELISTED | SPECIES_NO_FBP_CONSTRUCTION
 
@@ -41,7 +41,33 @@
 
 	pass_flags = PASS_FLAG_TABLE
 	holder_type = /obj/item/holder
-	override_limb_types = list(BP_HEAD = /obj/item/organ/external/head/no_eyes)
+
+	has_limbs = list(
+		BP_CHEST =  list("path" = /obj/item/organ/external/chest),
+		BP_GROIN =  list("path" = /obj/item/organ/external/groin/monkey),
+		BP_HEAD =   list("path" = /obj/item/organ/external/head/no_eyes/monkey),
+		BP_L_ARM =  list("path" = /obj/item/organ/external/arm/monkey),
+		BP_L_HAND = list("path" = /obj/item/organ/external/hand/monkey),
+		BP_R_ARM =  list("path" = /obj/item/organ/external/arm/right/monkey),
+		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right/monkey),
+		BP_R_LEG =  list("path" = /obj/item/organ/external/leg/right/monkey),
+		BP_L_LEG =  list("path" = /obj/item/organ/external/leg/monkey),
+		BP_L_FOOT = list("path" = /obj/item/organ/external/foot/monkey),
+		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right/monkey)
+		)
+
+	limb_health_factor = 0.35 //Enjoy having worse limbs
+	// override_limb_types = list(BP_HEAD = /obj/item/organ/external/head/no_eyes)
+
+// Enjoy having worse organs too
+	has_organ = list(
+		BP_HEART =    /obj/item/organ/internal/heart/monkey,
+		BP_LUNGS =    /obj/item/organ/internal/lungs/monkey,
+		BP_LIVER =    /obj/item/organ/internal/liver/monkey,
+		BP_KIDNEYS =  /obj/item/organ/internal/kidneys/monkey,
+		BP_BRAIN =    /obj/item/organ/internal/brain,
+		BP_EYES =     /obj/item/organ/internal/eyes,
+		)
 
 /datum/species/monkey/handle_npc(var/mob/living/carbon/human/H)
 	if(H.stat != CONSCIOUS)
