@@ -200,7 +200,7 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 	pixel_offset_x = null
 	pixel_offset_y = null
 
-	biomass = 2
+	biomass = 3.75 // small bonus for infecting them.
 	spawner_spawnable = FALSE
 
 	inherent_verbs = list(/atom/movable/proc/leaper_leap_monkey, /mob/living/carbon/human/proc/tailstrike_leaper_monkey, /mob/living/proc/leaper_gallop_monkey)
