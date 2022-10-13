@@ -171,8 +171,8 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 	L.key = key
 	L.client.init_verbs()
 
-	L.stat = CONSCIOUS
-	L.sleeping = 0
+	L.set_stat(CONSCIOUS)
+	L.SetSleeping(0)
 	L.eye_blurry = 0
 	L.eye_blind = 0
 
