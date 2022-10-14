@@ -75,7 +75,7 @@
 /obj/effect/mine/proc/triggerstun(obj)
 	if(ismob(obj))
 		var/mob/M = obj
-		M.Stun(30)
+		M.Stun(2)
 	var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread()
 	s.set_up(3, 1, src)
 	s.start()
@@ -117,28 +117,28 @@
 		qdel(src)
 
 /obj/effect/mine/dnascramble
-	name = "Radiation Mine"
-	icon_state = "uglymine"
+	name = "Mine"
+	icon_state = "uglyminearmed"
 	triggerproc = "triggerrad"
 
 /obj/effect/mine/phoron
-	name = "Phoron Mine"
-	icon_state = "uglymine"
+	name = "Mine"
+	icon_state = "uglyminearmed"
 	triggerproc = "triggerphoron"
 
 /obj/effect/mine/kick
-	name = "Kick Mine"
-	icon_state = "uglymine"
+	name = "Mine"
+	icon_state = "uglyminearmed"
 	triggerproc = "triggerkick"
 
 /obj/effect/mine/n2o
-	name = "N2O Mine"
-	icon_state = "uglymine"
+	name = "Mine"
+	icon_state = "uglyminearmed"
 	triggerproc = "triggern2o"
 
 /obj/effect/mine/stun
-	name = "Stun Mine"
-	icon_state = "uglymine"
+	name = "Mine"
+	icon_state = "uglyminearmed"
 	triggerproc = "triggerstun"
 
 

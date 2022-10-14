@@ -21,26 +21,25 @@
 
 
 //Tier I: standard protection and modules
-/datum/design/item/rig/sec
-	build_path = /obj/item/rig/security
-
-/datum/design/item/rig/eng
-	build_path = /obj/item/rig/engineering
-
 /datum/design/item/rig/fire
 	build_path = /obj/item/rig/firesuit
 	price = 4000
+
+/datum/design/item/rig/mining
+	build_path = /obj/item/rig/mining
+	price = 6000
+
 /datum/design/item/rig/medical
 	build_path = /obj/item/rig/medical
 	price = 6500
 
 /datum/design/item/rig/excavation
 	build_path = /obj/item/rig/excavation
+	price = 7000
 
-/datum/design/item/rig/mining
-	build_path = /obj/item/rig/mining
-	price = 5000 //cheaper, lower stats
-
+/datum/design/item/rig/eng
+	build_path = /obj/item/rig/engineering
+	price = 8000
 
 
 
@@ -48,11 +47,23 @@
 //Tier II: high protection and advanced modules
 /datum/design/item/rig/patrol
 	build_path = /obj/item/rig/patrol
+	price = 9500
+
+/datum/design/item/rig/sec
+	build_path = /obj/item/rig/security
+	price = 10000
+
+/datum/design/item/rig/pcsi
+	build_path = /obj/item/rig/security/pcsi
+	price = 11000
+
+/datum/design/item/rig/marksman
+	build_path = /obj/item/rig/marksman
 	price = 12000
 
 /datum/design/item/rig/riot
 	build_path = /obj/item/rig/riot
-	price = 12000
+	price = 13000
 
 /datum/design/item/rig/vintage
 	build_path = /obj/item/rig/vintage
@@ -61,11 +72,3 @@
 /datum/design/item/rig/advanced
 	build_path = /obj/item/rig/advanced
 	price = 15000
-
-/datum/design/item/rig/marksman
-	build_path = /obj/item/rig/marksman
-	price = 10000
-
-/datum/design/item/rig/pcsi
-	build_path = /obj/item/rig/security/pcsi
-	price = 9000

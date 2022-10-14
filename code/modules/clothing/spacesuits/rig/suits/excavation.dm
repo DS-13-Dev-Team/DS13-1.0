@@ -2,7 +2,7 @@
 	name = "excavation RIG"
 	desc = "A modified, lightweight version of the engineering suit. Perfect for quick operations."
 	icon_state = "excavation_rig"
-	armor = list(melee = 43.5, bullet = 40, laser = 40, energy = 15, bomb = 60, bio = 100, rad = 50)
+	armor = list(melee = 44, bullet = 44, laser = 40, energy = 15, bomb = 60, bio = 100, rad = 50)
 	online_slowdown = RIG_FLEXIBLE
 
 	chest_type = /obj/item/clothing/suit/space/rig/excavation

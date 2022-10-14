@@ -222,14 +222,14 @@ S	fuel tank (hydrazine)
 	id = "plasma_energy"
 	build_path = /obj/item/cell/plasmacutter
 	materials = list(MATERIAL_STEEL = 4000, MATERIAL_GLASS = 1000)
-	price = 1250
+	price = 1600
 
 /datum/design/item/ammo/rivet_bolts
 	name = "rivet bolts"
 	id = "rivet_bolts"
 	build_path = /obj/item/ammo_magazine/rivet
 	materials = list(MATERIAL_STEEL = 2700, MATERIAL_GLASS = 200, MATERIAL_PLASTIC = 4000)
-	price = 500
+	price = 2000
 
 
 
@@ -239,7 +239,7 @@ S	fuel tank (hydrazine)
 	id = "pulseslug"
 	materials = list(MATERIAL_STEEL = 7500, MATERIAL_DIAMOND = 1500)
 	build_path = /obj/item/ammo_magazine/pulse
-	price = 1500
+	price = 2500
 
 /datum/design/item/ammo/pulsedeflect
 	name = "deflection pulse rounds"
@@ -261,14 +261,14 @@ S	fuel tank (hydrazine)
 	id = "shotgun_ammo"
 	materials = list(MATERIAL_PLASTIC = 2500, MATERIAL_STEEL = 3000)
 	build_path = /obj/item/ammo_magazine/shotgun
-	price = 750
+	price = 1800
 
 /datum/design/item/ammo/seeker_ammo
 	name = "seeker shell"
 	id = "seeker_ammo"
 	materials = list(MATERIAL_PLASTEEL = 5000, MATERIAL_DIAMOND = 1250, MATERIAL_URANIUM = 500)
 	build_path = /obj/item/ammo_magazine/seeker
-	price = 2000
+	price = 3000
 
 
 /datum/design/item/ammo/jav_ammo
@@ -277,7 +277,7 @@ S	fuel tank (hydrazine)
 	id = "javelin_rack"
 	materials = list(MATERIAL_PLASTEEL = 4000, MATERIAL_PHORON = 2500)
 	build_path = /obj/item/ammo_magazine/javelin
-	price = 2000	// 400 per 2 spears, same as in DS2
+	price = 2800	// 400 per 2 spears, same as in DS2
 
 
 /datum/design/item/ammo/fuel_tank
@@ -285,7 +285,7 @@ S	fuel tank (hydrazine)
 	id = "fuel_tank"
 	build_type = STORE_SCHEMATICS
 	build_path = /obj/item/reagent_containers/glass/fuel_tank/fuel
-	price = 2500
+	price = 3000
 
 /datum/design/item/ammo/hydrazine_tank
 	name = "fuel tank (hydrazine)"
@@ -301,7 +301,7 @@ S	fuel tank (hydrazine)
 	id = "ripper_blades"
 	materials = list(MATERIAL_STEEL = 5000)
 	build_path = /obj/item/ammo_magazine/sawblades
-	price = 1800
+	price = 2300
 
 
 /datum/design/item/ammo/diamond_blades
@@ -318,18 +318,18 @@ S	fuel tank (hydrazine)
 	id = "line_rack"
 	materials = list(MATERIAL_STEEL = 2500, MATERIAL_GLASS = 500)
 	build_path = /obj/item/ammo_magazine/lineracks
-	price = 4000
+	price = 3000
 
 /datum/design/item/ammo/force_energy
 	name = "force energy"
 	id = "force_energy"
 	materials = list(MATERIAL_STEEL = 1000, MATERIAL_SILVER = 500)
 	build_path = /obj/item/cell/force
-	price = 2500
+	price = 2800
 
 /datum/design/item/ammo/contact_energy
 	name = "contact energy"
 	id = "contact_energy"
 	materials = list(MATERIAL_STEEL = 2500, MATERIAL_GOLD = 1200, "diamond" = 800)
 	build_path = /obj/item/cell/contact
-	price = 5000
+	price = 3500
