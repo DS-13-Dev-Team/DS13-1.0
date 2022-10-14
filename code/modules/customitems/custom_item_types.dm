@@ -108,6 +108,7 @@
 	id = "mouse"
 	store_cost = 1000
 	store_access = ACCESS_WHITELIST
+	loadout_access = ACCESS_WHITELIST
 
 
 /datum/patron_item/marshal_wrench
@@ -163,13 +164,13 @@
 	item_path = /obj/item/rig/carver
 	id = "carver_rig"
 	store_cost = 14000
-	store_access = ACCESS_PATRONS
+	store_access = ACCESS_WHITELIST
 
 	category = CATEGORY_RIG
 	subcategory = SUBCATEGORY_FRAMES
 
 	loadout_modkit_cost = 2
-	modkit_access = ACCESS_PATRONS
+	modkit_access = ACCESS_WHITELIST
 	modkit_typelist = list(/obj/item/rig/vintage)
 
 /datum/patron_item/dad_rig
@@ -178,13 +179,13 @@
 	item_path = /obj/item/rig/vintage/sea/dad
 	id = "dad_rig"
 	store_cost = 14000
-	store_access = ACCESS_PATRONS
+	store_access = ACCESS_WHITELIST
 
 	category = CATEGORY_RIG
 	subcategory = SUBCATEGORY_FRAMES
 
 	loadout_modkit_cost = 2
-	modkit_access = ACCESS_PATRONS
+	modkit_access = ACCESS_WHITELIST
 	modkit_typelist = list(/obj/item/rig/vintage)
 
 /datum/patron_item/muramasa
@@ -194,10 +195,10 @@
 	item_path = /obj/item/material/twohanded/muramasa
 
 	store_cost = 4000
-	store_access = ACCESS_PATRONS
+	store_access = ACCESS_WHITELIST
 
 	loadout_modkit_cost = 2
-	modkit_access = ACCESS_PATRONS
+	modkit_access = ACCESS_WHITELIST
 	modkit_typelist = list(/obj/item/tool/pickaxe/laser)
 
 
@@ -206,13 +207,13 @@
 
 /datum/patron_item/muramasa_sheath
 	name =  "Ceremonial Sheath"
-	id = "muramasa sheath"
+	id = "muramasa_sheath"
 	item_path = /obj/item/storage/belt/holster/muramasa
 	store_cost = 1500
-	store_access = ACCESS_PATRONS
+	store_access = ACCESS_WHITELIST
 	description = "A lavishly decorated ceremonial sheath, looks oddly gun-shaped."
 	loadout_cost = 1
-	loadout_access = ACCESS_PATRONS
+	loadout_access = ACCESS_WHITELIST
 
 	category = CATEGORY_TOOLS
 	subcategory = SUBCATEGORY_DANGEROUS_TOOLS

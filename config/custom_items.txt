@@ -7,6 +7,9 @@
 # Ckeys are NOT case sensitive, but the spelling must be otherwise correct
 ##
 max_stone_rig{MrMischief2015}
-mouse{nanakoac}
+mouse{ketrai}
 plaugewalker_rig{plaugewalker}
 banditofdoom_rig{banditofdoom}
+muramasa{mh22mm}
+muramasa_sheath{mh22mm}
+dad_rig{Blackwolf602}
