@@ -14,4 +14,5 @@ changes:
   - rscadd: "Colony: new cave system on the northern part of the map."
   - rscadd: "Ishimura: new western marker spawn in tram area."
   - rscadd: "Colony: new marker spawn underground outside the sewers."
+  - rscadd: "Evac: store kiosk added."
   - qol: "You can now tell the difference between impassable and normal rock visually."

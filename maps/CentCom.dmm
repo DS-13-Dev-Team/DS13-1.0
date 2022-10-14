@@ -5222,6 +5222,10 @@
 	},
 /turf/space/transit/east,
 /area/space)
+"yp" = (
+/obj/machinery/store,
+/turf/unsimulated/floor/rescue_base,
+/area/ERT/escapebase)
 "yH" = (
 /obj/effect/shuttle_landmark/escape_pod/out/pod3,
 /turf/unsimulated/floor{
@@ -5326,6 +5330,13 @@
 	icon_state = "plating"
 	},
 /area/space)
+"CY" = (
+/obj/structure/railing/mapped{
+	dir = 4;
+	pixel_w = -5
+	},
+/turf/unsimulated/floor/rescue_base,
+/area/ERT/escapebase)
 "EB" = (
 /obj/effect/shuttle_landmark/escape_pod/out/pod8,
 /turf/unsimulated/floor{
@@ -5619,11 +5630,24 @@
 	icon_state = "plating"
 	},
 /area/ERT/escapebase)
+"Yp" = (
+/obj/effect/floor_decal/industrial/loading{
+	dir = 1
+	},
+/turf/unsimulated/floor/rescue_base,
+/area/ERT/escapebase)
 "YI" = (
 /obj/structure/table/standard,
 /obj/item/roller,
 /obj/item/roller,
 /obj/item/roller,
+/turf/unsimulated/floor/rescue_base,
+/area/ERT/escapebase)
+"YN" = (
+/obj/effect/floor_decal/industrial/loading{
+	dir = 8;
+	icon_state = "loadingarea"
+	},
 /turf/unsimulated/floor/rescue_base,
 /area/ERT/escapebase)
 "YW" = (
@@ -18854,7 +18878,7 @@ MM
 MM
 MM
 hR
-MM
+Md
 MM
 iI
 iI
@@ -18957,7 +18981,7 @@ iv
 AH
 hY
 hR
-Md
+QZ
 MM
 MM
 MM
@@ -19060,7 +19084,7 @@ hR
 hR
 hR
 hR
-QZ
+Cj
 MM
 MM
 iH
@@ -19266,7 +19290,7 @@ aa
 aa
 mv
 hR
-Cj
+Qr
 MM
 MM
 FR
@@ -19369,7 +19393,7 @@ aa
 aa
 mv
 hR
-Qr
+on
 MM
 MM
 iI
@@ -19472,10 +19496,10 @@ aa
 aa
 mv
 hR
-on
-MM
-MM
-MM
+YN
+CY
+CY
+CY
 MM
 MM
 MM
@@ -19575,10 +19599,10 @@ aa
 aa
 mv
 hR
+yp
 MM
 MM
-MM
-MM
+Yp
 MM
 MM
 MM

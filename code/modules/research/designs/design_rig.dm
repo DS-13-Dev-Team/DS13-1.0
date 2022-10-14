@@ -23,23 +23,23 @@
 //Tier I: standard protection and modules
 /datum/design/item/rig/fire
 	build_path = /obj/item/rig/firesuit
-	price = 4000
+	price = 4000 //weaker, good against burns
 
 /datum/design/item/rig/mining
 	build_path = /obj/item/rig/mining
-	price = 6000
+	price = 6000 //standard
 
 /datum/design/item/rig/medical
 	build_path = /obj/item/rig/medical
-	price = 6500
+	price = 6500 //good against burns/toxins
 
 /datum/design/item/rig/excavation
 	build_path = /obj/item/rig/excavation
-	price = 7000
+	price = 7000 //decent
 
 /datum/design/item/rig/eng
 	build_path = /obj/item/rig/engineering
-	price = 8000
+	price = 8000 //good
 
 
 
@@ -47,23 +47,23 @@
 //Tier II: high protection and advanced modules
 /datum/design/item/rig/patrol
 	build_path = /obj/item/rig/patrol
-	price = 9500
+	price = 10000 //worse sec rig basically
 
 /datum/design/item/rig/sec
 	build_path = /obj/item/rig/security
-	price = 10000
+	price = 11000 //standard security rig
 
 /datum/design/item/rig/pcsi
 	build_path = /obj/item/rig/security/pcsi
-	price = 11000
+	price = 12000 //armory rig
 
 /datum/design/item/rig/marksman
 	build_path = /obj/item/rig/marksman
-	price = 12000
+	price = 13000 //SSO
 
 /datum/design/item/rig/riot
 	build_path = /obj/item/rig/riot
-	price = 13000
+	price = 14000 //for melee combat, kinda worse at everything else
 
 /datum/design/item/rig/vintage
 	build_path = /obj/item/rig/vintage
@@ -71,4 +71,4 @@
 
 /datum/design/item/rig/advanced
 	build_path = /obj/item/rig/advanced
-	price = 15000
+	price = 15000 //good all-rounder, comes with great modules
