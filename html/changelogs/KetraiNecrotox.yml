@@ -55,8 +55,9 @@ delete-after: True
 # Also, this gets changed to [] after reading.  Just remove the brackets when you add new shit.
 # Please surround your changes in  double quotes ("). It works without them, but if you use certain characters it screws up compiling. The quotes will not show up in the changelog.
 changes:
-  - rscadd: "Traitorous goodies for unitologist, check the stealth tab!."
+  - rscadd: "Traitorous goodies for unitologist, check the stealth tab!"
   - balance: "You can OD on necrotoxin now, treat it with dylovene if you get attacked a lot by infectors."
   - qol: "Necromorph vision abilities and whisper are now considerably cheaper pre-activation, costs as normal after activation."
   - balance: "Tracer cost reduced post activation, 110 => 70."
   - balance: "Branch cost reduced 120 => 90."
+  - balance: "Necrotox is more taxing on dylovene now, requiring more of it to stay consistently protected."
