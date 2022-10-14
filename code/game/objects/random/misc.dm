@@ -122,5 +122,5 @@ obj/random/mines/item_to_spawn()
 
 obj/random/zealotrig/item_to_spawn()
 	return pickweight(list(
-	obj/item/rig/zealot = 1
+	/obj/item/rig/zealot = 1
 	))
