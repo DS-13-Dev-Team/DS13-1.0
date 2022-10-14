@@ -15,6 +15,7 @@
 
 /datum/reagent/toxin/necro/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	. = ..()
+	M.reagents.remove_reagent(/datum/reagent/dylovene, removed) // Requires the occasional extra dose of dylovene
 	if(volume > 45) // Short lived effect, warns the player that they've taken too much necrotox in a short period of time.
 		M.add_chemical_effect(CE_SLOWDOWN, 2)
 		M.reagents.remove_reagent(/datum/reagent/toxin/necro, 50 * removed) //Rapidly converts necrotoxin into a worse variant
@@ -30,7 +31,7 @@
 	reagent_state = LIQUID
 	color = "#bd3c3c"
 	strength = 10
-	overdose = 7.5 //Technically it takes 65 necrotox to get a deadly dose here! Difficult to cure without dialysis
+	overdose = 6 //Technically it takes 62+ necrotox to get a deadly dose here! Difficult to cure without dialysis
 	extension_type = /datum/extension/reagent/necrotoxin/lethal
 	metabolism = REM * 0.125
 
@@ -58,8 +59,8 @@
 	. = ..()
 	if(volume < 4)
 		M.reagents.remove_reagent(/datum/reagent/toxin/necro_monkey, 50 * removed) //doesn't work in low doses! No powergaming with blood extraction!
-	if(!istype(M, /mob/living/carbon/human/monkey))
-		M.reagents.remove_reagent(/datum/reagent/toxin/necro_monkey, 500 * removed) //doesn't work on humans, only monkeys!
+	if(M.species.name != "Monkey")
+		M.reagents.del_reagent(/datum/reagent/toxin/necro_monkey) //doesn't work on humans, only monkeys!
 	else
 		M.adjustBrainLoss(REM * 10) //Absolutely murders monkeys
 		M.adjustToxLoss(REM * 15)
