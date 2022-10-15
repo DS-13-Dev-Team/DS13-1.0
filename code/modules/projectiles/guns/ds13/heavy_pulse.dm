@@ -45,19 +45,19 @@
 	heat = 0
 
 	//Enters overheating state when heat gets this high
-	var/max_heat = 1.15
+	var/max_heat = 0.56 // 140 bullets before overheating, it cools down fast.
 
 	//When true, cannot fire
 	var/overheating = FALSE
 
 	//While we're overheating, we cooldown this much faster
-	var/overheat_cooldown_mult = 1.75
+	var/overheat_cooldown_mult = 1.6
 
 	//When overheating, we exit the overheat state if heat drops below this value
 	var/overheat_min = 0.8625 //75%
 
-	//Loses this much heat per second. Approx 200 seconds to cooldown completely
-	var/cooldown_per_second	=	0.00575
+	//Loses this much heat per second. Approx 120 seconds to cooldown completely
+	var/cooldown_per_second	=	0.00475
 
 	//Heat gained per bullet fired
 	var/heat_per_shot = 0.004
