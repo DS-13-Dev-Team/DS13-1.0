@@ -142,7 +142,7 @@
 
 	icon_template = 'icons/mob/necromorph/infector_enhanced.dmi'
 
-	biomass = 275
+	biomass = 240
 	biomass_reclamation_time	=	9 MINUTES //Lets not cripple necromorphs for loosing one too bad either
 	require_total_biomass	=	BIOMASS_REQ_T2
 
