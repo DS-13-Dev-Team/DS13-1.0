@@ -86,7 +86,7 @@
 				center_of_mass = "x=16;y=6"
 			if(/datum/reagent/capsaicin)
 				name = "Hotsauce"
-				desc = "You can almost TASTE the stomach ulcers now!"
+				desc = "A can of delicious hot sauce."
 				icon_state = "hotsauce"
 				center_of_mass = "x=16;y=6"
 			if(/datum/reagent/enzyme)
@@ -96,8 +96,7 @@
 				center_of_mass = "x=16;y=6"
 			if(/datum/reagent/nutriment/soysauce)
 				name = "Soy Sauce"
-				desc = "A 
-				y soy-based flavoring."
+				desc = "A soy-based flavoring."
 				icon_state = "soysauce"
 				center_of_mass = "x=16;y=6"
 			if(/datum/reagent/frostoil)
