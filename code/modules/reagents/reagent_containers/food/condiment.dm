@@ -96,7 +96,7 @@
 				center_of_mass = "x=16;y=6"
 			if(/datum/reagent/nutriment/soysauce)
 				name = "Soy Sauce"
-				desc = "A soy-based flavoring."
+				desc = "A salty soy-based flavoring."
 				icon_state = "soysauce"
 				center_of_mass = "x=16;y=6"
 			if(/datum/reagent/frostoil)
