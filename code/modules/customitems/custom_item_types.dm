@@ -149,13 +149,13 @@
 	item_path = /obj/item/rig/vintage/sea
 	id = "sea_rig"
 	store_cost = 14000
-	store_access = ACCESS_PATRONS
+	store_access = ACCESS_WHITELIST
 
 	category = CATEGORY_RIG
 	subcategory = SUBCATEGORY_FRAMES
 
 	loadout_modkit_cost = 2
-	modkit_access = ACCESS_PATRONS
+	modkit_access = ACCESS_WHITELIST
 	modkit_typelist = list(/obj/item/rig/vintage)
 
 /datum/patron_item/carver
@@ -174,7 +174,7 @@
 	modkit_typelist = list(/obj/item/rig/vintage)
 
 /datum/patron_item/dad_rig
-	name = "Elite diving rig"
+	name = "Elite diving RIG"
 	description = "An extremely durable, bulky elite diving suit. Designed for combat and deep sea diving in the North Atlantic Ocean, able to withstand extreme undersea pressure. Use it on a vintage rig to convert, or buy it in the store directly!"
 	item_path = /obj/item/rig/vintage/sea/dad
 	id = "dad_rig"
