@@ -116,11 +116,12 @@ obj/random/mines/item_to_spawn()
 		/obj/effect/mine/stun = 90
 	))
 
-/obj/random/zealotrig
-	name = "possible zealot rig spawn"
+/obj/random/antagrig
+	name = "possible antag rig spawn"
 	spawn_nothing_percentage = 90
 
 obj/random/zealotrig/item_to_spawn()
 	return pickweight(list(
-	/obj/item/rig/zealot = 1
+	/obj/item/rig/zealot = 50,
+	/obj/item/rig/marine/earthgov = 50
 	))

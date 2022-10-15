@@ -779,7 +779,7 @@
 /area/mining_colony/interior/science/scienceoffices)
 "acF" = (
 /obj/effect/decal/remains,
-/obj/item/rig/scaf/legionnaire,
+/obj/random/scaf,
 /turf/simulated/floor,
 /area/mining_colony/surface)
 "acG" = (
@@ -27489,6 +27489,10 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/mining_colony/interior/uni_church)
+"ceI" = (
+/obj/structure/table/steel_reinforced,
+/turf/unsimulated/genturf,
+/area/mining_colony/surface)
 "cgV" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/abandoned/mining_prep/reception)
@@ -28615,6 +28619,12 @@
 /obj/machinery/telecomms/relay/preset/mining,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/enginieering/telecomms)
+"loy" = (
+/obj/structure/sign/warning/fall{
+	pixel_y = -33
+	},
+/turf/simulated/floor/asteroid/outside_ds/dry_firm,
+/area/mining_colony/surface)
 "lpE" = (
 /obj/structure/sign/deck/ds,
 /turf/simulated/wall/r_wall,
@@ -28941,12 +28951,6 @@
 /obj/structure/grille/cult,
 /turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/surface)
-"ofl" = (
-/obj/machinery/deployable/barrier{
-	req_access = null
-	},
-/turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony/surface)
 "ogB" = (
 /obj/item/radio/intercom{
 	dir = 1;
@@ -29224,7 +29228,9 @@
 /turf/simulated/floor/tiled/monotile,
 /area/mining_colony/interior)
 "qEi" = (
-/obj/machinery/deployable/barrier,
+/obj/machinery/deployable/barrier{
+	req_access = list()
+	},
 /turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/surface)
 "qEj" = (
@@ -29444,19 +29450,23 @@
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/security/sec_firingrange)
 "sAR" = (
-/obj/random/zealotrig,
+/obj/random/antagrig,
 /turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/surface)
 "sBC" = (
 /obj/effect/decal/remains{
 	pixel_x = 3;
-	name = "Woodworth's remains"
+	name = "Woodworth's remains";
+	pixel_y = -5
 	},
 /obj/item/material/knife/unitologist{
-	pixel_y = 8;
-	pixel_x = -8
+	pixel_y = 4;
+	pixel_x = -13
 	},
-/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood{
+	pixel_y = -1;
+	pixel_x = -3
+	},
 /obj/item/clothing/head/beret{
 	pixel_x = 5;
 	pixel_y = 4
@@ -29638,13 +29648,27 @@
 	dir = 4
 	},
 /area/mining_colony/security/sec_armory)
+"tUn" = (
+/obj/item/trash/candle,
+/obj/effect/decal/remains{
+	pixel_x = -7;
+	name = "Jim's remains";
+	pixel_y = 10
+	},
+/obj/item/reagent_containers/food/drinks/bottle/specialwhiskey{
+	pixel_y = 16;
+	pixel_x = 7
+	},
+/turf/simulated/floor/asteroid/outside_ds,
+/area/mining_colony/surface)
 "ubj" = (
 /obj/machinery/telecomms/broadcaster/preset_right,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/enginieering/telecomms)
 "ulX" = (
 /obj/item/paper/crumpled/bloody{
-	name = "Woodworth's final writing"
+	name = "Woodworth's final writing";
+	desc = "It seems like a blood offering."
 	},
 /turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/surface)
@@ -29890,6 +29914,12 @@
 /obj/structure/railing/mapped,
 /turf/simulated/floor/plating,
 /area/mining_colony/interior/plaza)
+"vBc" = (
+/obj/structure/sign/warning/fall{
+	pixel_y = 32
+	},
+/turf/simulated/floor/asteroid/outside_ds,
+/area/mining_colony/surface)
 "vFz" = (
 /obj/structure/railing/mapped,
 /turf/simulated/floor/dank/mono,
@@ -39417,7 +39447,7 @@ aoG
 aoG
 aoG
 aoG
-aoG
+lZB
 lZB
 lZB
 aCB
@@ -39622,7 +39652,7 @@ aoG
 lZB
 lZB
 lZB
-lZB
+pvN
 dxK
 emC
 dxK
@@ -39820,11 +39850,11 @@ aoG
 aoG
 aoG
 aoG
-aoG
 lZB
 lZB
 lZB
 lZB
+pvN
 aCq
 aCq
 aCq
@@ -40026,7 +40056,7 @@ lZB
 lZB
 lZB
 lZB
-lZB
+pvN
 pvN
 aCq
 aCq
@@ -42990,7 +43020,7 @@ lZB
 lZB
 lZB
 lZB
-ddm
+tUn
 uoL
 lZB
 lZB
@@ -43191,7 +43221,7 @@ lZB
 lZB
 lZB
 lZB
-ofl
+qEi
 deE
 sAR
 ddm
@@ -43392,7 +43422,7 @@ lZB
 lZB
 lZB
 lZB
-ofl
+qEi
 uTD
 jTy
 lZB
@@ -43658,7 +43688,7 @@ aCq
 aoG
 aoG
 aoG
-aoG
+lZB
 lZB
 lZB
 pvN
@@ -43795,7 +43825,7 @@ lZB
 lZB
 lZB
 lZB
-ofl
+qEi
 aCq
 aCq
 lZB
@@ -43826,7 +43856,7 @@ aoG
 aoG
 lZB
 lZB
-aoG
+lZB
 aoG
 aoG
 aoG
@@ -43860,7 +43890,7 @@ aoG
 aoG
 aoG
 aoG
-aoG
+lZB
 lZB
 lZB
 lZB
@@ -44062,7 +44092,7 @@ aoG
 aoG
 aoG
 aoG
-aoG
+lZB
 lZB
 lZB
 lZB
@@ -45612,7 +45642,7 @@ lZB
 lZB
 oBV
 aCq
-aCq
+afN
 aCq
 uTD
 uTD
@@ -45814,7 +45844,7 @@ lZB
 lZB
 pkw
 aCq
-aCq
+afN
 aCq
 uTD
 lZB
@@ -46016,7 +46046,7 @@ lZB
 lZB
 aCq
 aCq
-aCq
+afN
 aCq
 rEq
 lZB
@@ -46086,7 +46116,7 @@ aCq
 lZB
 lZB
 lZB
-pvN
+lZB
 pvN
 pvN
 pvN
@@ -46218,7 +46248,7 @@ lZB
 lZB
 aCq
 aCq
-aCq
+afN
 aCq
 aiI
 uTD
@@ -46241,7 +46271,7 @@ aoG
 aoG
 aoG
 aoG
-aoG
+ceI
 aoG
 aoG
 aCB
@@ -46288,7 +46318,7 @@ aoG
 lZB
 lZB
 lZB
-pvN
+lZB
 pvN
 pvN
 pvN
@@ -46487,11 +46517,11 @@ aCq
 aCq
 aoG
 aoG
+aCq
 lZB
 lZB
 lZB
-pvN
-pvN
+lZB
 pvN
 pvN
 aCq
@@ -46689,14 +46719,14 @@ aCq
 aCq
 aoG
 aoG
+aCq
+lZB
+lZB
 lZB
 lZB
 lZB
 pvN
-lZB
-lZB
-lZB
-lZB
+pvN
 aCq
 uTD
 aCq
@@ -46891,14 +46921,14 @@ aCq
 aCq
 aCq
 aCq
+aCq
 lZB
 lZB
 lZB
 lZB
 lZB
 lZB
-lZB
-lZB
+pvN
 aCq
 aCq
 aCq
@@ -47101,7 +47131,7 @@ lZB
 lZB
 lZB
 lZB
-lZB
+pvN
 aCq
 aCq
 aCq
@@ -47303,7 +47333,7 @@ lZB
 lZB
 lZB
 lZB
-lZB
+pvN
 aCq
 aCq
 aCq
@@ -47506,7 +47536,7 @@ aCq
 lZB
 lZB
 lZB
-lZB
+pvN
 aCq
 aCq
 aCq
@@ -47709,8 +47739,8 @@ aCq
 lZB
 lZB
 lZB
-lZB
-lZB
+pvN
+pvN
 aCq
 uTD
 aCq
@@ -47911,7 +47941,7 @@ aCq
 aCq
 lZB
 lZB
-lZB
+pvN
 aCq
 aCq
 aCq
@@ -48114,7 +48144,7 @@ aCq
 lZB
 lZB
 lZB
-lZB
+pvN
 aCq
 aCq
 uTD
@@ -48317,7 +48347,7 @@ aCq
 lZB
 lZB
 lZB
-lZB
+pvN
 aCq
 uTD
 uTD
@@ -48455,7 +48485,7 @@ qTL
 aCq
 nUy
 aCq
-aoG
+aCq
 aoG
 aoG
 aoG
@@ -48520,8 +48550,8 @@ lZB
 lZB
 lZB
 lZB
-lZB
-lZB
+pvN
+pvN
 aCq
 aJL
 aCq
@@ -48657,7 +48687,7 @@ uTD
 aCq
 aJL
 aCq
-aoG
+aCq
 aoG
 aoG
 aoG
@@ -48724,7 +48754,7 @@ lZB
 lZB
 lZB
 lZB
-lZB
+pvN
 aJi
 aCq
 aCq
@@ -48859,8 +48889,8 @@ aCq
 aJL
 aCq
 aCq
-aoG
-aoG
+aCq
+aCq
 aoG
 aoG
 aoG
@@ -48921,7 +48951,7 @@ aCq
 aCq
 aCq
 uTD
-uTD
+aCq
 lZB
 lZB
 lZB
@@ -49061,8 +49091,8 @@ aCq
 eus
 aCq
 aCq
-aoG
-aoG
+aCq
+aCq
 aoG
 aoG
 aoG
@@ -49264,7 +49294,7 @@ eus
 aCq
 aCq
 aCq
-aoG
+aCq
 aoG
 aoG
 aoG
@@ -49467,7 +49497,7 @@ aCq
 aCq
 aCq
 aCq
-aCq
+aoG
 aoG
 aoG
 aoG
@@ -49664,13 +49694,13 @@ lZB
 lZB
 lZB
 lZB
-aoG
+lZB
+aCq
+aCq
 aCq
 aoG
 aoG
 aoG
-aCq
-aCq
 aoG
 aoG
 aoG
@@ -49866,14 +49896,14 @@ lZB
 lZB
 lZB
 lZB
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
+lZB
 aCq
 aCq
+aCq
+aoG
+aoG
+aoG
+aoG
 aoG
 aoG
 aoG
@@ -50068,16 +50098,16 @@ lZB
 lZB
 lZB
 lZB
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
+lZB
 aCq
 aCq
 aCq
+aoG
+aoG
+aoG
+aoG
+aoG
+aoG
 aoG
 aoG
 aoG
@@ -50271,16 +50301,16 @@ lZB
 lZB
 lZB
 lZB
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
-aoG
 aCq
-aCq
+aoG
+aoG
+aoG
+aoG
+aoG
+aoG
+aoG
+aoG
+aoG
 aoG
 aoG
 aoG
@@ -50482,8 +50512,8 @@ aoG
 aoG
 aoG
 aoG
-aCq
-aCq
+aoG
+aoG
 aoG
 aoG
 aoG
@@ -50685,8 +50715,8 @@ aoG
 aoG
 aoG
 aoG
-aCq
-aCq
+aoG
+aoG
 aoG
 aoG
 aoG
@@ -50888,8 +50918,8 @@ aoG
 aoG
 aoG
 aoG
-aCq
-aCq
+aoG
+aoG
 aoG
 aoG
 aoG
@@ -51091,7 +51121,7 @@ aoG
 aoG
 aoG
 aoG
-aCq
+aoG
 aoG
 aoG
 aoG
@@ -51293,8 +51323,8 @@ lZB
 aoG
 aoG
 aoG
-aCq
-aCq
+aoG
+aoG
 aoG
 aoG
 aoG
@@ -51496,8 +51526,8 @@ aoG
 aoG
 aoG
 aoG
-aCq
-aCq
+aoG
+aoG
 aoG
 aoG
 aoG
@@ -51699,7 +51729,7 @@ aoG
 aoG
 aoG
 aoG
-aCq
+aoG
 aoG
 aoG
 aoG
@@ -51901,7 +51931,7 @@ lZB
 aoG
 aoG
 aoG
-aCq
+aoG
 aoG
 aoG
 aoG
@@ -52103,8 +52133,8 @@ aoG
 aoG
 aoG
 aoG
-aCq
-aCq
+aoG
+aoG
 aoG
 aoG
 aoG
@@ -52306,7 +52336,7 @@ aoG
 aoG
 aoG
 aoG
-aCq
+aoG
 aoG
 aoG
 aCq
@@ -52504,7 +52534,7 @@ lZB
 lZB
 lZB
 lZB
-aCq
+aoG
 aoG
 aoG
 aoG
@@ -52901,7 +52931,7 @@ aCB
 aoG
 aoG
 aoG
-aCq
+aoG
 lZB
 lZB
 lZB
@@ -53104,14 +53134,14 @@ aoG
 aoG
 aoG
 aoG
-aCq
+aoG
 lZB
 lZB
 lZB
 lZB
 lZB
 lZB
-aCq
+aoG
 aCq
 aCq
 aCq
@@ -53306,7 +53336,7 @@ aoG
 aoG
 aoG
 aoG
-aCq
+aoG
 lZB
 lZB
 lZB
@@ -53314,7 +53344,7 @@ lZB
 lZB
 lZB
 lZB
-aCq
+aoG
 aCq
 aCq
 aoG
@@ -53509,14 +53539,14 @@ aoG
 aoG
 aoG
 aoG
-aCq
+aoG
 lZB
 lZB
 lZB
 lZB
 lZB
 lZB
-aCq
+aoG
 aCq
 aCq
 aCq
@@ -53718,7 +53748,7 @@ lZB
 lZB
 lZB
 lZB
-aCq
+aoG
 aCq
 aoG
 aoG
@@ -53919,7 +53949,7 @@ lZB
 lZB
 lZB
 lZB
-aCq
+aoG
 aCq
 aoG
 aoG
@@ -54114,14 +54144,14 @@ aoG
 aoG
 aoG
 aoG
-aCq
+aoG
 lZB
 lZB
 lZB
 lZB
 lZB
 lZB
-aCq
+aoG
 aoG
 aoG
 aoG
@@ -54323,7 +54353,7 @@ lZB
 lZB
 lZB
 lZB
-aCq
+aoG
 aoG
 aoG
 aCq
@@ -54525,7 +54555,7 @@ lZB
 lZB
 lZB
 lZB
-aCq
+aoG
 aCq
 aoG
 aCq
@@ -54726,7 +54756,7 @@ lZB
 lZB
 lZB
 lZB
-aCq
+aoG
 aCq
 aCq
 aCq
@@ -54923,7 +54953,7 @@ aoG
 aoG
 aoG
 aoG
-aCq
+aoG
 lZB
 lZB
 lZB
@@ -55125,7 +55155,7 @@ aoG
 aoG
 aoG
 aoG
-aCq
+aoG
 lZB
 lZB
 lZB
@@ -55327,7 +55357,7 @@ aoG
 aoG
 aoG
 aoG
-aCq
+aoG
 lZB
 lZB
 lZB
@@ -55530,10 +55560,10 @@ aoG
 aoG
 aoG
 aoG
-aCq
+aoG
 lZB
 lZB
-aCq
+aoG
 aCq
 aCq
 aCq
@@ -55735,7 +55765,7 @@ aoG
 aoG
 lZB
 lZB
-aCq
+aoG
 aCq
 aCq
 aCq
@@ -55937,7 +55967,7 @@ aoG
 aoG
 lZB
 lZB
-aCq
+aoG
 aCq
 aCq
 aCq
@@ -56136,10 +56166,10 @@ aoG
 aoG
 aoG
 aoG
-aCq
+aoG
 lZB
-aCq
-aCq
+aoG
+aoG
 aCq
 aCq
 aCq
@@ -56336,12 +56366,12 @@ aoG
 aoG
 aoG
 aoG
-aCq
-aCq
-aCq
+aoG
+aoG
+aoG
 lZB
-aCq
-aCq
+aoG
+aoG
 aCq
 aCq
 aCq
@@ -56537,12 +56567,12 @@ aoG
 aoG
 aoG
 aoG
-aCq
-aCq
-aCq
-aCq
-aCq
-aCq
+aoG
+aoG
+aoG
+aoG
+aoG
+aoG
 aoG
 aoG
 aoG
@@ -56741,10 +56771,10 @@ aoG
 aoG
 aoG
 aoG
-aCq
 aoG
 aoG
-aCq
+aoG
+aoG
 aoG
 aoG
 aoG
@@ -56943,8 +56973,8 @@ aoG
 aoG
 aoG
 aoG
-aCq
-aCq
+aoG
+aoG
 aoG
 aoG
 aoG
@@ -58715,13 +58745,13 @@ lZB
 lZB
 lZB
 lZB
+aCB
+vBc
 aCq
 aCq
 aCq
-aCq
-aCq
-uTD
-aCq
+loy
+aCB
 lZB
 lZB
 lZB
