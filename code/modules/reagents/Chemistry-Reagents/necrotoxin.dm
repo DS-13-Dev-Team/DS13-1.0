@@ -59,7 +59,7 @@
 	. = ..()
 	if(volume < 4)
 		M.reagents.remove_reagent(/datum/reagent/toxin/necro_monkey, 50 * removed) //doesn't work in low doses! No powergaming with blood extraction!
-	if(M.species.name != "Monkey")
+	if (!istype(M.species, /datum/species/monkey))
 		M.reagents.del_reagent(/datum/reagent/toxin/necro_monkey) //doesn't work on humans, only monkeys!
 	else
 		M.adjustBrainLoss(REM * 10) //Absolutely murders monkeys
