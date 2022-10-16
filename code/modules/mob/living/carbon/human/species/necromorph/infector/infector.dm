@@ -29,9 +29,9 @@
 	//health_doll_offset	= 56
 
 
-	biomass = 105
+	biomass = 100
 	mass = 30
-	biomass_reclamation_time	=	10 MINUTES
+	biomass_reclamation_time	=	6 MINUTES
 	marker_spawnable = TRUE
 
 
@@ -134,7 +134,7 @@
 	mob_type	=	/mob/living/carbon/human/necromorph/infector/enhanced
 	name_plural =  "Enhanced Infectors"
 	blurb = "Unlike the more fragile counterpart, this infector is a capable fighter. However, nothing compares to its supportive capabilities."
-	total_health = 225
+	total_health = 205
 	limb_health_factor = 1.5
 	slowdown = 4
 	view_range = 8
@@ -142,7 +142,7 @@
 
 	icon_template = 'icons/mob/necromorph/infector_enhanced.dmi'
 
-	biomass = 240
+	biomass = 225
 	biomass_reclamation_time	=	9 MINUTES //Lets not cripple necromorphs for loosing one too bad either
 	require_total_biomass	=	BIOMASS_REQ_T2
 
@@ -292,12 +292,16 @@ All of them except New Growth require corruption to build upon\
 	sharp = TRUE
 	edge = FALSE
 
+	var/necrotoxin_amount = 7
+
 /datum/unarmed_attack/proboscis/enhanced
 
 	damage = 22.5
 	airlock_force_power = 1.1
-	armor_penetration = 6
+	armor_penetration = 14
 	delay = 7 SECONDS
+
+	necrotoxin_amount = 14
 
 /datum/unarmed_attack/proboscis/execution
 	//Special version of our unarmed attack only used during the execution move, not normally triggerable
@@ -308,7 +312,7 @@ All of them except New Growth require corruption to build upon\
 //This is only applied if the attack lands cleanly, and isnt blocked
 /datum/unarmed_attack/proboscis/apply_effects(var/datum/strike/strike)
 	.=..()
-	inject_necrotoxin(strike.target, 5)
+	inject_necrotoxin(strike.target, necrotoxin_amount)
 
 
 //This is a proc so it can be used in another place later

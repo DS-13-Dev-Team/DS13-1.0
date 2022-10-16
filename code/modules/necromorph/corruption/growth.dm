@@ -65,10 +65,9 @@
 	name = "Bulging Growth"
 
 	icon_state = "enhanced"
-	range = 4
+	range = 5
 	speed = 3
-	limit = 27
-
+	limit = 36
 
 /obj/structure/corruption_node/growth/branch/get_blurb()
 	. = "This node acts as a smaller source for corruption spread, allowing it to extend out up to [range] tiles in all directions from the node. It must be placed on existing corruption from another propagator node, or from the marker."

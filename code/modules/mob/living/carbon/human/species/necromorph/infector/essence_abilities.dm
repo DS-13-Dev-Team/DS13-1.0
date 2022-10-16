@@ -12,7 +12,7 @@
 	"Forming: Bioluminescence" = /datum/extension/ability/construction/corruption/light)
 
 /datum/species/necromorph/infector/enhanced
-	essence_abilities = list("Reanimate"	= /datum/extension/ability/domob/reanimate/enhanced,
+	essence_abilities = list("Reanimate+"	= /datum/extension/ability/domob/reanimate/enhanced,
 	"Engorge+"	= /datum/extension/ability/domob/engorge/enhanced,
 	"Mend"	=	/datum/extension/ability/domob/mend,
 	"Forming: Maw" = /datum/extension/ability/construction/corruption/maw,
@@ -20,6 +20,7 @@
 	"Forming: Snare+" = /datum/extension/ability/construction/corruption/snare/enhanced,
 	"Forming: Bulging Growth" = /datum/extension/ability/construction/corruption/branch/enhanced,
 	"Forming: New Growth+" = /datum/extension/ability/construction/corruption/newgrowth/enhanced,
+	"Forming: Propagator" = /datum/extension/ability/construction/corruption/propagator,
 	"Forming: Harvester" = /datum/extension/ability/construction/corruption/harvester,
 	"Forming: Bioluminescence+" = /datum/extension/ability/construction/corruption/light/enhanced)
 
@@ -157,7 +158,7 @@
 
 /datum/extension/ability/domob/engorge/enhanced
 	name = "Enhanced Engorge"
-	resource_cost_quantity = 1.25
+	resource_cost_quantity = 0.75 //Most of the cost here is based on the necromorph's cost anyways
 
 /datum/extension/ability/domob/engorge/apply_effect()
 	if (!has_extension(target, /datum/extension/engorge) && !has_extension(target, /datum/extension/engorge/enhanced))
@@ -329,7 +330,14 @@
 	blurb = "Constructs a Branch, used to spread corruption. This version is upgraded."
 	construction_time = 2	//Seconds
 	result_path = /obj/structure/corruption_node/growth/branch/enhanced
-	resource_cost_quantity = 0.5
+	resource_cost_quantity = 0.4
+
+/datum/extension/ability/construction/corruption/propagator
+	name = "Forming: Propagator"
+	blurb = "Constructs a propagator, capable of spreading corruption far"
+	construction_time = 8	//Seconds
+	result_path = /obj/structure/corruption_node/growth
+	resource_cost_quantity = 3
 
 /datum/extension/ability/construction/corruption/newgrowth
 	name = "Forming: New Growth"
@@ -356,7 +364,6 @@
 	construction_time = 180	//Seconds
 	resource_cost_quantity = 12
 	deposit = 0.1
-
 
 /datum/extension/ability/construction/corruption/light
 	name = "Forming: Bioluminescence"
