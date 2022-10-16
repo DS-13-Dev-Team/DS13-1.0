@@ -13474,10 +13474,6 @@
 /obj/item/spacecash/ewallet/random/c500,
 /turf/simulated/floor/dank/maint_right,
 /area/mining_colony/interior/enginieering/reactor_control)
-"aMx" = (
-/obj/effect/landmark/node_room,
-/turf/simulated/floor/dank/bathr,
-/area/mining_colony/interior/medbay/med_ward)
 "aMy" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/largecrate,
@@ -24034,10 +24030,6 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/mining_colony/interior)
-"blt" = (
-/obj/effect/landmark/node_room/maintenance,
-/turf/simulated/floor/dank/heavy,
-/area/mining_colony/interior/apartament)
 "blu" = (
 /obj/effect/landmark/node_room,
 /turf/simulated/floor/dank/golf_brown,
@@ -34452,7 +34444,7 @@ abi
 abi
 abi
 abd
-blt
+ajv
 blO
 abi
 abi
@@ -44403,7 +44395,7 @@ blI
 boI
 vxs
 blH
-aMx
+blI
 boI
 vxs
 bnh
