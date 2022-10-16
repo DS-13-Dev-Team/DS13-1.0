@@ -18,7 +18,7 @@
 
 /datum/extension/rig_speedboost
 	flags = EXTENSION_FLAG_IMMEDIATE
-	statmods = list(STATMOD_MOVESPEED_ADDITIVE = 0.75)
+	statmods = list(STATMOD_MOVESPEED_ADDITIVE = 0.075)
 
 /datum/extension/rig_speedboost/advanced
 	statmods = list(STATMOD_MOVESPEED_ADDITIVE = 0.1)
