@@ -54,7 +54,7 @@
 	var/overheat_cooldown_mult = 1.6
 
 	//When overheating, we exit the overheat state if heat drops below this value
-	var/overheat_min = 0.8625 //75%
+	var/overheat_min = 0.42 //75%
 
 	//Loses this much heat per second. Approx 120 seconds to cooldown completely
 	var/cooldown_per_second	=	0.00475
@@ -66,7 +66,7 @@
 	var/heat_per_burst = 0.04
 
 	//Firing delay is divided by 1 + (heat * this), making the gun speed up as it gets closer to max heat
-	var/heat_delay_multiplier = 1.85
+	var/heat_delay_multiplier = 1.75
 
 /obj/item/gun/projectile/automatic/pulse_heavy/Initialize()
 	.=..()
