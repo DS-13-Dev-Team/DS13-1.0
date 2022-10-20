@@ -905,10 +905,12 @@
 /obj/item/reagent_containers/glass/bottle/stemcells,
 /obj/item/reagent_containers/glass/bottle/stemcells,
 /obj/item/reagent_containers/glass/bottle/stemcells,
-/obj/item/reagent_containers/glass/bucket,
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/item/storage/box/freezer,
+/obj/item/storage/box/freezer,
+/obj/item/reagent_containers/glass/bucket,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/lower/biolab)
 "dd" = (
