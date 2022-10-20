@@ -277,7 +277,7 @@ S	fuel tank (hydrazine)
 	id = "javelin_rack"
 	materials = list(MATERIAL_PLASTEEL = 4000, MATERIAL_PHORON = 2500)
 	build_path = /obj/item/ammo_magazine/javelin
-	price = 2800	// 400 per 2 spears, same as in DS2
+	price = 2800
 
 
 /datum/design/item/ammo/fuel_tank
