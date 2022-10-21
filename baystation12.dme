@@ -1671,6 +1671,7 @@
 #include "code\modules\clothing\spacesuits\rig\suits\security.dm"
 #include "code\modules\clothing\spacesuits\rig\suits\specialforces.dm"
 #include "code\modules\clothing\spacesuits\rig\suits\station.dm"
+#include "code\modules\clothing\spacesuits\rig\suits\tarnished.dm"
 #include "code\modules\clothing\spacesuits\rig\suits\unitologist.dm"
 #include "code\modules\clothing\spacesuits\rig\suits\vintage.dm"
 #include "code\modules\clothing\spacesuits\rig\suits\wasp.dm"

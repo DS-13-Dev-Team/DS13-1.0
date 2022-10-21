@@ -178,7 +178,14 @@ S	fuel tank (hydrazine)
 	id = "divetslug"
 	materials = list(MATERIAL_STEEL = 4000)
 	build_path = /obj/item/ammo_magazine/divet
-	price = 1300
+	price = 1200
+
+/datum/design/item/ammo/extds
+	name = "divet magazine extended"
+	id = "extds"
+	materials = list(MATERIAL_STEEL = 5000)
+	build_path = /obj/item/ammo_magazine/divet/extended
+	price = 1500
 
 /datum/design/item/ammo/icds
 	name = "Incendiary Divet Magazine"
