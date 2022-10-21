@@ -40,6 +40,8 @@
 
 	var/ongoing_timer
 
+	var/ubermorph = FALSE
+
 
 /datum/extension/regenerate/New(var/datum/holder, var/duration, var/cooldown)
 	..()
@@ -103,6 +105,7 @@
 
 	user.shake_animation(30)
 	user.Stun(Ceiling(duration/10), TRUE)
+	user.Weaken(Ceiling(duration/10))
 
 	//And lets start our timer
 	tick_timer = addtimer(CALLBACK(src, .proc/tick), tick_interval, TIMER_STOPPABLE)
@@ -201,13 +204,16 @@
 /datum/extension/regenerate/proc/stop()
 	stopped_at = world.time
 	user.stunned = 0
+	user.weakened = 0
+
+	if (ubermorph && !has_extension(user, /datum/extension/regenerate_afterbuff))
+		set_extension(user, /datum/extension/regenerate_afterbuff)
 
 	//When we finish, we go on cooldown
 	if (cooldown && cooldown > 0)
 		addtimer(CALLBACK(src, .proc/finish_cooldown), cooldown)
 	else
 		finish_cooldown() //If there's no cooldown timer call it now
-
 
 /datum/extension/regenerate/proc/finish_cooldown()
 	remove_self()
@@ -253,3 +259,52 @@
 	set_extension(src, subtype, _duration, _cooldown)
 
 	return TRUE
+
+// Buffs a necromorph after regenerating
+/datum/extension/regenerate_afterbuff
+
+	var/duration = 8 SECONDS
+	var/started_at
+	var/stopped_at
+
+	var/ongoing_timer
+
+	expected_type = /mob/living/carbon/human
+	base_type = null
+	flags = EXTENSION_FLAG_IMMEDIATE
+	var/mob/living/carbon/human/user
+
+	statmods = list(
+	STATMOD_ATTACK_SPEED = 1.1,
+	STATMOD_MOVESPEED_MULTIPLICATIVE = 1.25,
+	STATMOD_INCOMING_DAMAGE_MULTIPLICATIVE = 0.6,)
+
+	var/dm_filter/outline
+
+/datum/extension/regenerate_afterbuff/New(var/datum/holder, var/duration)
+	..()
+	user = holder
+	if (duration)
+		src.duration = duration
+
+	INVOKE_ASYNC(src, .proc/start)
+
+/datum/extension/regenerate_afterbuff/proc/start()
+	started_at	=	world.time
+	user.Weaken(0.2) // sluggish to get going again, disinsentivises spamming
+
+	if (!outline)
+		var/newfilter = filter(type="outline", size = 1, color = rgb(255,0,0,128))
+		user.filters.Add(newfilter)
+		outline = user.filters[user.filters.len]
+
+	ongoing_timer = addtimer(CALLBACK(src, /datum/extension/taunt/proc/stop), duration, TIMER_STOPPABLE)
+
+/datum/extension/regenerate_afterbuff/proc/stop()
+	deltimer(ongoing_timer)
+	stopped_at = world.time
+	if (outline)
+		user.filters.Remove(outline)
+		outline = null
+
+	remove_self()

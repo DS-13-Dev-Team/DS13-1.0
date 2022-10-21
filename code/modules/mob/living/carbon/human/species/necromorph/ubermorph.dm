@@ -19,9 +19,8 @@
 
 
 	icon_template = 'icons/mob/necromorph/ubermorph.dmi'
+	icon_lying = "_lying"
 	single_icon = FALSE
-	lying_rotation = 90
-	icon_lying = null//Ubermorph doesnt have a lying icon, due to complexity from regen animations
 	pixel_offset_x = -16
 	layer = LARGE_MOB_LAYER
 
@@ -195,6 +194,7 @@ Best used near the end, when all seems quiet, to help the necromorphs hunt down 
 
 /datum/extension/regenerate/ubermorph
 	max_limbs = 2
+	ubermorph = TRUE
 
 
 /*
