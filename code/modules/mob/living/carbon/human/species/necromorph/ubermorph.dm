@@ -21,7 +21,7 @@
 	icon_template = 'icons/mob/necromorph/ubermorph.dmi'
 	icon_lying = "_lying"
 	single_icon = FALSE
-	pixel_offset_x = -16
+	pixel_offset_x = -8
 	layer = LARGE_MOB_LAYER
 
 	unarmed_types = list(/datum/unarmed_attack/claws/ubermorph, /datum/unarmed_attack/bite/strong) //Bite attack is a backup if blades are severed
