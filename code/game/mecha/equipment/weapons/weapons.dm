@@ -301,3 +301,10 @@
 
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/flashbang/clusterbang/limited/rearm()
 	return//Extra bit of security
+
+/obj/item/material/twohanded/muramasa/plasmasword
+	icon_state = "plasmasword0"
+	base_icon = "plasmasword"
+
+	name = "experimental plasma sword"
+	desc = "A weird mining experiment gone wrong, seems unwieldy unless two-handed."
