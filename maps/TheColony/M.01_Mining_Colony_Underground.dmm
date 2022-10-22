@@ -3356,11 +3356,6 @@
 /obj/random/armor,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower)
-"kZ" = (
-/obj/effect/floor_decal/dank/outline,
-/obj/machinery/vending/cola,
-/turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/excav)
 "la" = (
 /obj/structure/table/standard,
 /obj/random/snack,
@@ -3429,11 +3424,6 @@
 /obj/structure/table/rack,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/node/room62)
-"ll" = (
-/obj/machinery/vending/cola,
-/obj/effect/floor_decal/dank/outline,
-/turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/excav)
 "lm" = (
 /obj/random/rare_loot/rarely,
 /obj/structure/table/rack,
@@ -3527,16 +3517,6 @@
 	},
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/lower/excav/electronics)
-"lA" = (
-/obj/effect/floor_decal/dank/outline,
-/obj/machinery/vending/coffee,
-/turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/excav)
-"lB" = (
-/obj/machinery/vending/coffee,
-/obj/effect/floor_decal/dank/outline,
-/turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/excav)
 "lC" = (
 /obj/machinery/door/airlock/civilian{
 	name = "Storage Room"
@@ -3566,7 +3546,8 @@
 /area/mining_colony/lower/excav)
 "lG" = (
 /obj/effect/floor_decal/dank/outline,
-/obj/machinery/portable_atmospherics/hydroponics,
+/obj/structure/largecrate,
+/obj/random/loot/often/many,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/lower/excav)
 "lH" = (
@@ -4355,11 +4336,6 @@
 /obj/structure/ladder/up,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/excav)
-"om" = (
-/obj/effect/floor_decal/dank/outline,
-/obj/machinery/cooker/oven,
-/turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/excav)
 "on" = (
 /obj/machinery/light/small/red{
 	dir = 1;
@@ -4979,13 +4955,6 @@
 /obj/machinery/light/small,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/node/room39)
-"qi" = (
-/obj/machinery/light{
-	dir = 4;
-	icon_state = "tube_map"
-	},
-/turf/simulated/floor/dank/rectangles,
-/area/mining_colony/lower/excav)
 "qj" = (
 /obj/machinery/light,
 /turf/simulated/floor/dank/slides{
@@ -47605,9 +47574,9 @@ bs
 bs
 bs
 bs
-kZ
 bs
-lA
+bs
+bs
 aK
 lG
 lG
@@ -47803,13 +47772,13 @@ aK
 bs
 bs
 bs
-bs
 bj
 bs
 bs
-ll
 bs
-lB
+bs
+bs
+bs
 aK
 lG
 lG
@@ -48204,13 +48173,13 @@ HW
 HW
 HW
 aK
+bG
 bH
 bH
 bG
 bX
 bX
 bG
-gI
 gI
 gI
 bG
@@ -48227,7 +48196,7 @@ ra
 ra
 aK
 bs
-om
+bs
 bs
 bs
 ok
@@ -48406,13 +48375,13 @@ HW
 HW
 HW
 aK
+bG
 bH
 bH
 bG
 bX
 bX
-qi
-gI
+bG
 gI
 gI
 bG
@@ -48429,7 +48398,7 @@ gd
 oh
 oh
 bs
-om
+bs
 bs
 od
 bs
