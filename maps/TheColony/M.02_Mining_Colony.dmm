@@ -29284,6 +29284,12 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/surface)
+"pxU" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/dank/mono,
+/area/mining_colony/surface)
 "pCN" = (
 /obj/structure/inflatable/door,
 /obj/structure/cable{
@@ -29404,6 +29410,14 @@
 	},
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/enginieering/reactor_control)
+"quU" = (
+/obj/machinery/portable_atmospherics/hydroponics,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/dank/mono,
+/area/mining_colony/interior/hydrophonics)
 "quV" = (
 /obj/machinery/door/airlock/mining,
 /obj/machinery/door/firedoor,
@@ -29941,12 +29955,6 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/abandoned/hydro)
-"tXF" = (
-/obj/machinery/light/small{
-	dir = 4
-	},
-/turf/simulated/floor/dank/grater,
-/area/mining_colony/interior/kitchen_area)
 "ubj" = (
 /obj/machinery/telecomms/broadcaster/preset_right,
 /turf/simulated/floor/dank/grater,
@@ -35223,7 +35231,7 @@ aAo
 qlj
 fnX
 nbl
-tXF
+lLs
 lLs
 xoJ
 bkX
@@ -35617,9 +35625,9 @@ aaY
 aaY
 aOc
 atp
-aOc
+quU
 bcA
-aOc
+quU
 atp
 aOc
 anC
@@ -44210,8 +44218,8 @@ mLI
 aWI
 aWJ
 rXR
-jHv
 ngT
+jHv
 dPY
 aCB
 aoG
@@ -45419,7 +45427,7 @@ aue
 aCq
 aCB
 rnX
-aWJ
+pxU
 aWJ
 oFa
 nMl
