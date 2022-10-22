@@ -10254,7 +10254,7 @@
 /turf/simulated/floor/dank/maint,
 /area/mining_colony/interior/cargo/restandcrap)
 "aEa" = (
-/obj/structure/table/standard,
+/obj/machinery/media/jukebox/old,
 /turf/simulated/floor/dank/maint_right,
 /area/mining_colony/interior/cargo/restandcrap)
 "aEb" = (
@@ -29682,6 +29682,12 @@
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/interior/shuttle_bay)
+"shR" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/structure/table/rack,
+/obj/item/storage/toolbox/mechanical,
+/turf/simulated/floor/dank/maint,
+/area/mining_colony/interior/mining/toolstorage)
 "snl" = (
 /obj/machinery/vending/engineering,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -61272,7 +61278,7 @@ pvf
 aQZ
 avT
 amq
-adL
+shR
 pvf
 atP
 atT
