@@ -27514,25 +27514,6 @@
 "dlb" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/interior/medbay/CMOoffice)
-"dot" = (
-/obj/machinery/door/airlock/civilian{
-	name = "Hydroponics Bay";
-	req_access = list(6);
-	dir = 4
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/door/firedoor{
-	dir = 4
-	},
-/obj/structure/sign/hydro{
-	pixel_x = -32
-	},
-/turf/simulated/floor/tiled/dark,
-/area/mining_colony/interior/hydrophonics)
 "dsz" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -28145,10 +28126,6 @@
 /obj/item/reagent_containers/food/drinks/bottle/oiljug,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/surface)
-"ijm" = (
-/obj/effect/wallframe_spawn/reinforced,
-/turf/simulated/floor/dank/grater,
-/area/mining_colony/interior/kitchen_area)
 "ikc" = (
 /obj/structure/cable{
 	d2 = 4;
@@ -34638,7 +34615,7 @@ atp
 aCJ
 aAo
 aAo
-ijm
+ogZ
 lLs
 dQW
 aDk
@@ -36650,7 +36627,7 @@ aoP
 aGO
 aZY
 aGO
-dot
+mdC
 bkX
 bkX
 bkX
