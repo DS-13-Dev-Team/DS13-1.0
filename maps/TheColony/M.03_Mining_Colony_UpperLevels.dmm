@@ -2286,6 +2286,16 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/mining_colony/security/upper)
+"fI" = (
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/dank/tech{
+	dir = 4
+	},
+/area/mining_colony/security/upper/bridge_corridor)
 "fK" = (
 /obj/machinery/door/airlock/command{
 	name = "Bridge"
@@ -2819,12 +2829,6 @@
 	},
 /area/mining_colony/security/upper/bridge_corridor)
 "uc" = (
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8";
-	dir = 1
-	},
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 8;
@@ -3834,6 +3838,21 @@
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/upper/commandofficers)
+"QD" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/dank/tech{
+	dir = 8
+	},
+/area/mining_colony/security/upper/bridge_corridor)
 "QP" = (
 /obj/structure/railing/mapped,
 /obj/machinery/firealarm{
@@ -3972,6 +3991,16 @@
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/upper/commandofficers)
+"Uw" = (
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/dank/tech{
+	dir = 8
+	},
+/area/mining_colony/security/upper/bridge_corridor)
 "UC" = (
 /obj/effect/floor_decal/industrial/outline/red,
 /obj/machinery/deployable/barrier,
@@ -13851,7 +13880,7 @@ dH
 LP
 va
 bB
-Up
+QD
 uc
 dG
 Qn
@@ -14053,8 +14082,8 @@ Uu
 hD
 dA
 ro
-RI
-SL
+Uw
+fI
 Aa
 Qn
 FG
