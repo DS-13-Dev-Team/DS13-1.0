@@ -18,10 +18,7 @@
 	id_type = /obj/item/card/id/holo/engineering/chief_engineer
 	pda_type = /obj/item/modular_computer/pda/heads/ce
 	back = /obj/item/rig/advanced
-
-/decl/hierarchy/outfit/job/engineering/ce/New()
-	..()
-	backpack_overrides = list() //we have a RIG
+	flags = OUTFIT_EXTENDED_SURVIVAL
 
 /decl/hierarchy/outfit/job/engineering/tech_engineer
 	name = OUTFIT_JOB_NAME("Technical Engineer")
