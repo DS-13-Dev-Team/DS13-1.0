@@ -25,7 +25,7 @@
 	uniform = /obj/item/clothing/under/rigunder
 	l_ear = /obj/item/radio/headset/ert
 	back = /obj/item/rig/engineering
-	shoes = /obj/item/clothing/shoes/workboots
+	shoes = /obj/item/clothing/shoes/dutyboots
 
 	id_slot = slot_wear_id
 	id_type = /obj/item/card/id/holo/isaac

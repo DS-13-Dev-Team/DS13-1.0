@@ -20,5 +20,5 @@
 /decl/hierarchy/outfit/job/mining/planet_cracker
 	name = OUTFIT_JOB_NAME("Planet Cracker")
 	uniform = /obj/item/clothing/under/deadspace/planet_cracker
-	shoes = /obj/item/clothing/shoes/black
+	shoes = /obj/item/clothing/shoes/dutyboots
 	id_type = /obj/item/card/id/holo/mining
