@@ -30458,6 +30458,10 @@
 	},
 /turf/simulated/floor/dank/golf_gray,
 /area/mining_colony/security)
+"xaB" = (
+/obj/machinery/telecomms/server/presets/science,
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/interior/enginieering/telecomms)
 "xcR" = (
 /obj/machinery/computer/telecomms/server,
 /turf/simulated/floor/tiled/dark/monotile,
@@ -41847,7 +41851,7 @@ anO
 aak
 joc
 aiu
-aSa
+xaB
 aiu
 sYx
 aiu
