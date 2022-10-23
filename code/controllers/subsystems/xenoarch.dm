@@ -1,4 +1,4 @@
-#define XENOARCH_SPAWN_CHANCE 0.5
+#define XENOARCH_SPAWN_CHANCE 15 //Buffs this up to prob(15)
 #define DIGSITESIZE_LOWER 4
 #define DIGSITESIZE_UPPER 12
 #define ARTIFACTSPAWNNUM_LOWER 6
@@ -90,8 +90,8 @@ SUBSYSTEM_DEF(xenoarch)
 					archeo_turf.archaeo_overlay = "overlay_archaeo[rand(1,3)]"
 					archeo_turf.update_icon()
 
-			//have a chance for an artifact to spawn here, but not in animal or plant digsites
-			if(isnull(M.artifact_find) && digsite != DIGSITE_GARDEN && digsite != DIGSITE_ANIMAL)
+			//TROLLGE (Allows artifacts to bypass the usual restriction of not spawning on plant or animal finds.)
+			if(isnull(M.artifact_find))
 				artifact_spawning_turfs.Add(archeo_turf)
 
 	//create artifact machinery
