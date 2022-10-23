@@ -23,11 +23,11 @@
 //Tier I: standard protection and modules
 /datum/design/item/rig/fire
 	build_path = /obj/item/rig/firesuit
-	price = 4000 //weaker, good against burns
+	price = 4000 //weak, good against burns
 
 /datum/design/item/rig/mining
 	build_path = /obj/item/rig/mining
-	price = 6000 //standard
+	price = 6000
 
 /datum/design/item/rig/medical
 	build_path = /obj/item/rig/medical
@@ -35,11 +35,11 @@
 
 /datum/design/item/rig/excavation
 	build_path = /obj/item/rig/excavation
-	price = 7000 //decent
+	price = 7000
 
 /datum/design/item/rig/eng
 	build_path = /obj/item/rig/engineering
-	price = 8000 //good
+	price = 8000 //moderate protection
 
 
 
@@ -47,7 +47,7 @@
 //Tier II: high protection and advanced modules
 /datum/design/item/rig/patrol
 	build_path = /obj/item/rig/patrol
-	price = 10000 //worse sec rig basically
+	price = 11000 //standard security rig for patrol
 
 /datum/design/item/rig/sec
 	build_path = /obj/item/rig/security
@@ -67,7 +67,7 @@
 
 /datum/design/item/rig/vintage
 	build_path = /obj/item/rig/vintage
-	price = 15000	//slower than riot but better stats overall
+	price = 15000	//tanky rig, slow
 
 /datum/design/item/rig/advanced
 	build_path = /obj/item/rig/advanced
