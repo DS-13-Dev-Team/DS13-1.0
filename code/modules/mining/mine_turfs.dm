@@ -360,7 +360,7 @@ var/list/mining_floors = list()
 
 	var/obj/structure/boulder/B
 	if(artifact_find)
-		if(prob(15))
+		if(prob(60)) //Massively buffs this up as a test for more dangerous xenoarch.
 			//boulder with an artifact inside
 			B = new(src)
 			if(artifact_find)
