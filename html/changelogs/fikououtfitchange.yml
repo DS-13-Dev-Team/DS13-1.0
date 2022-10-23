@@ -57,4 +57,3 @@ delete-after: True
 changes:
   - qol: "Engineers and miners start with duty boots. Removes the blue hardhat from the engineer."
   - qol: "Adds thick gloves to engineering lockers."
-  - qol: "The Chief Engineer starts with their RIG."
