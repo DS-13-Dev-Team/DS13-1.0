@@ -330,7 +330,7 @@ S	fuel tank (hydrazine)
 	id = "sheath"
 	materials = list(MATERIAL_STEEL = 4000)
 	build_path = /obj/item/storage/belt/holster/sheath
-	price = 1500
+	price = 3000
 
 //Support Weapons
 /datum/design/item/ammo/line_rack
