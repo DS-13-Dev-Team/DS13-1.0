@@ -5,7 +5,8 @@
 
 /datum/artifact_effect/radiate/New()
 	..()
-	radiation_strength = rand(10, 50)
+	radiation_range = rand(5,15) //This used to NOT have a limit thus would irradiate entire Z-levels
+	radiation_strength = rand(50, 150) //You're GOING to die VERY fast without immediate medical attention
 	effect_type = pick(EFFECT_PARTICLE, EFFECT_ORGANIC)
 
 /datum/artifact_effect/radiate/DoEffectTouch(var/mob/living/user)

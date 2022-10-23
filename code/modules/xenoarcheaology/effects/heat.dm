@@ -1,4 +1,5 @@
 //inverse of /datum/artifact_effect/cold, the two effects split up for neatness' sake
+/* Disabled due to atmos grief concerns.
 /datum/artifact_effect/heat
 	name = "heat"
 	var/target_temp
@@ -21,3 +22,4 @@
 		var/datum/gas_mixture/env = holder.loc.return_air()
 		if(env && env.temperature < target_temp)
 			env.temperature += pick(0, 0, 1)
+*/

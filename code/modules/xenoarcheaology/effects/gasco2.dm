@@ -1,3 +1,5 @@
+/* - Disabled due to atmos grief concerns
+
 /datum/artifact_effect/gasco2
 	name = "CO2 creation"
 
@@ -17,3 +19,4 @@
 		var/turf/holder_loc = holder.loc
 		if(istype(holder_loc))
 			holder_loc.assume_gas("carbon_dioxide", pick(0, 0, 0.1, rand()))
+*/

@@ -1,3 +1,4 @@
+/* - Disabled due to atmos grief concerns
 /datum/artifact_effect/gasnitro
 	name = "N2 creation"
 
@@ -17,3 +18,4 @@
 		var/turf/holder_loc = holder.loc
 		if(istype(holder_loc))
 			holder_loc.assume_gas("nitrogen", pick(0, 0, 0.1, rand()))
+*/
