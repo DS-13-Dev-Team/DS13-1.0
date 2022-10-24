@@ -9,7 +9,7 @@ var/global/defer_powernet_rebuild = 0      // True if net rebuild will be called
 #define CELLRATE (1 / ( 3600 / MACHINERY_TICKRATE )) // Multiplier for charge units. Converts cell charge units(watthours) to joules. Takes into consideration that our machinery ticks once per two seconds.
 
 // Doors!
-#define DOOR_CRUSH_DAMAGE 40
+#define DOOR_CRUSH_DAMAGE 10
 #define ALIEN_SELECT_AFK_BUFFER  1    // How many minutes that a person can be AFK before not being allowed to be an alien.
 
 // Channel numbers for power.

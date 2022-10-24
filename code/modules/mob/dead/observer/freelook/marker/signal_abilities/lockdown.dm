@@ -6,12 +6,21 @@
 	<br>\
 	After it wears off, the same door cannot be affected again for four minutes"
 	target_string = "Any airlock with a bolting or locking mechanism"
-	energy_cost = 80
-	cooldown = 60 SECONDS
+	energy_cost = 20
+	cooldown = 30 SECONDS
+	var/duration = 5 SECONDS
 	autotarget_range = 1
 	target_types = list(/obj/machinery/door/airlock)
 
 	targeting_method	=	TARGET_CLICK
+	marker_active_required = -1
+
+/datum/signal_ability/lock/marker
+	id = "lock_postmarker"
+	energy_cost = 80
+	cooldown = 60 SECONDS
+	duration = 2 MINUTES
+	marker_active_required = TRUE
 
 
 /datum/signal_ability/lock/on_cast(var/mob/user, var/atom/target, var/list/data)
@@ -20,7 +29,7 @@
 		refund(user)
 		return
 
-	var/datum/extension/lockdown/lock = set_extension(target, /datum/extension/lockdown, 2 MINUTES, 1)
+	var/datum/extension/lockdown/lock = set_extension(target, /datum/extension/lockdown, duration, 1)
 	if (!lock.start())
 		remove_extension(target, /datum/extension/lockdown)
 		refund(user)
