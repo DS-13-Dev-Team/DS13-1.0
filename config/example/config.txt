@@ -425,12 +425,3 @@ TOPIC_RULE_NAME "_DD_Fail2topic"
 TOPIC_MAX_SIZE 500
 ## Uncomment to enable Fail2Topic, comment-out to disable
 #TOPIC_ENABLED
-
-## TOPIC RATE LIMITING
-## This allows you to limit how many topic calls (clicking on an interface window) the client can do in any given game second and/or game minute.
-## Admins are exempt from these limits.
-## Hitting the minute limit notifies admins.
-## Set to 0 or comment out to disable.
-SECOND_TOPIC_LIMIT 10
-
-MINUTE_TOPIC_LIMIT 180
