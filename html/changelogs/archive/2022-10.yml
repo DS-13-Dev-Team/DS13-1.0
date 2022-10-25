@@ -78,3 +78,10 @@
   Ketrai:
   - balance: Stop signals from relentlessly hounding vending machines for treats,
       and killing people in a similar manner.
+2022-10-25:
+  Ketrai:
+  - balance: Nerfed monkey organ health.
+  - balance: Nerfed monkey limb health.
+  - balance: Nerfed monkey & hopper biomass bounties for limbs, corpses, and hoppers
+      themselves.
+  - balance: Indirectly nerfs Keener.
