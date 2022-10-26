@@ -253,10 +253,10 @@
 		'sound/effects/footstep/footstep_wet_2.ogg',
 		'sound/effects/footstep/footstep_wet_3.ogg'))
 		playsound(src, sound, VOLUME_QUIET, TRUE)
-		var/transfer_volume = 1
+		var/transfer_volume = 4
 		var/mob/living/L = mover
 		if (L.lying)
-			transfer_volume = 3
+			transfer_volume = 6
 		R.trans_to(mover, min(transfer_volume, R.total_volume))
 		set_rotation()
 		update_icon()

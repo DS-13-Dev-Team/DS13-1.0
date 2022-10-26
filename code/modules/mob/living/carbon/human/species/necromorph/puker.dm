@@ -252,7 +252,7 @@ Be warned that friendly fire is fully active, it can harm other necromorphs as m
 /mob/living/carbon/human/proc/puker_vomit(var/atom/A)
 	set name = "Vomit"
 	set category = "Abilities"
-	set desc = "A powerful projectile for longrange shooting. HK: Alt+Click"
+	set desc = "A close range attack that covers a large area for area denial. HK: Alt+Ctrl+Click"
 
 	if (!can_spray())
 		return
@@ -282,7 +282,7 @@ Be warned that friendly fire is fully active, it can harm other necromorphs as m
 //Snapshot projectile. Lower damage, limited range
 /obj/item/projectile/bullet/acid/puker_snap
 	icon_state = "acid_small"
-	damage = 15
+	damage = 13.5
 	step_delay = 1.25
 	kill_count = PUKER_SNAPSHOT_RANGE
 	impact_type = /obj/effect/projectile/acid/impact/small
@@ -293,7 +293,7 @@ Be warned that friendly fire is fully active, it can harm other necromorphs as m
 	name = "acid blast"
 	icon_state = "acid_large"
 	step_delay = 1.75
-	damage = 30
+	damage = 25
 	grippable = TRUE
 
 

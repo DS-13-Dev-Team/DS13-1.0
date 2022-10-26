@@ -23,7 +23,7 @@
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	max_heat_protection_temperature = SPACE_SUIT_MAX_HEAT_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0.2
-	permeability_coefficient = 0.0
+	permeability_coefficient = 0.35
 	var/permeability_threshold = 0.7
 	unacidable = FALSE
 	acid_resistance = 2

@@ -126,7 +126,7 @@ obj/item/organ/external/take_general_damage(var/amount, var/silent = FALSE)
 				var/total_damage = brute_dam + burn_dam + brute + burn + spillover
 				var/threshold = max_damage * CONFIG_GET(number/organ_health_multiplier)
 				if(total_damage > threshold)
-					if(attempt_dismemberment(pure_brute, burn, edge, used_weapon, spillover, total_damage > threshold*3))
+					if(attempt_dismemberment(pure_brute, burn, edge, used_weapon, spillover, total_damage > threshold*20))
 						return
 
 		if(owner && update_damstate())
@@ -322,7 +322,7 @@ obj/item/organ/external/take_general_damage(var/amount, var/silent = FALSE)
 	if((edge_eligible && brute >= max_damage / DROPLIMB_THRESHOLD_EDGE) && prob(brute))
 		droplimb(0, DROPLIMB_EDGE, cutter = used_weapon)
 		return TRUE
-	else if((burn >= max_damage / DROPLIMB_THRESHOLD_DESTROY) && prob(burn/3))
+	else if((damage >= max_damage / DROPLIMB_THRESHOLD_BURN) && prob(burn/5))
 		droplimb(0, DROPLIMB_BURN, cutter = used_weapon)
 		return TRUE
 	else if((brute >= max_damage / DROPLIMB_THRESHOLD_DESTROY) && prob(brute))
@@ -334,16 +334,21 @@ obj/item/organ/external/take_general_damage(var/amount, var/silent = FALSE)
 	else
 		//Lets handle cumulative damage. No probabilities, guaranteed effect if enough damage accumulates
 		//Any edge weapon can cut off a limb if its been thoroughly broken
-		if (edge && damage >= max_damage * DROPLIMB_CUMULATIVE_TEAROFF)
+		if (edge && brute >= max_damage * DROPLIMB_CUMULATIVE_TEAROFF)
 			droplimb(0, DROPLIMB_EDGE, cutter = used_weapon)
 			return TRUE
 
 		//Non-edged weapons can snap off limbs with enough hits
-		else if (damage >= max_damage * DROPLIMB_CUMULATIVE_BREAKOFF)
+		else if (brute >= max_damage * DROPLIMB_CUMULATIVE_BREAKOFF)
 			droplimb(0, DROPLIMB_EDGE, cutter = used_weapon)
 			return TRUE
 
 		//Any limb can be beaten to a pulp with enough repeated hits. This is fairly uncommon since it will usually breakoff first
-		else if (damage >= max_damage * DROPLIMB_CUMULATIVE_DESTROY)
+		else if (brute >= max_damage * DROPLIMB_CUMULATIVE_DESTROY)
 			droplimb(0, DROPLIMB_BLUNT, cutter = used_weapon)
+			return TRUE
+		
+		// Shitshow of snowflake checks, but this should make burn delimbs less stupid.
+		else if (damage >= max_damage * DROPLIMB_CUMULATIVE_BURN)
+			droplimb(0, DROPLIMB_BURN, cutter = used_weapon)
 			return TRUE
