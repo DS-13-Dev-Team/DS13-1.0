@@ -108,6 +108,7 @@
 	id = "mouse"
 	store_cost = 1000
 	store_access = ACCESS_WHITELIST
+	loadout_access = ACCESS_WHITELIST
 
 
 /datum/patron_item/marshal_wrench
@@ -148,13 +149,13 @@
 	item_path = /obj/item/rig/vintage/sea
 	id = "sea_rig"
 	store_cost = 14000
-	store_access = ACCESS_PATRONS
+	store_access = ACCESS_WHITELIST
 
 	category = CATEGORY_RIG
 	subcategory = SUBCATEGORY_FRAMES
 
 	loadout_modkit_cost = 2
-	modkit_access = ACCESS_PATRONS
+	modkit_access = ACCESS_WHITELIST
 	modkit_typelist = list(/obj/item/rig/vintage)
 
 /datum/patron_item/carver
@@ -163,11 +164,56 @@
 	item_path = /obj/item/rig/carver
 	id = "carver_rig"
 	store_cost = 14000
-	store_access = ACCESS_PATRONS
+	store_access = ACCESS_WHITELIST
 
 	category = CATEGORY_RIG
 	subcategory = SUBCATEGORY_FRAMES
 
 	loadout_modkit_cost = 2
-	modkit_access = ACCESS_PATRONS
+	modkit_access = ACCESS_WHITELIST
 	modkit_typelist = list(/obj/item/rig/vintage)
+
+/datum/patron_item/dad_rig
+	name = "Elite diving RIG"
+	description = "An extremely durable, bulky elite diving suit. Designed for combat and deep sea diving in the North Atlantic Ocean, able to withstand extreme undersea pressure. Use it on a vintage rig to convert, or buy it in the store directly!"
+	item_path = /obj/item/rig/vintage/sea/dad
+	id = "dad_rig"
+	store_cost = 14000
+	store_access = ACCESS_WHITELIST
+
+	category = CATEGORY_RIG
+	subcategory = SUBCATEGORY_FRAMES
+
+	loadout_modkit_cost = 2
+	modkit_access = ACCESS_WHITELIST
+	modkit_typelist = list(/obj/item/rig/vintage)
+
+/datum/patron_item/muramasa
+	name =  "Experimental Ceremonial Sword"
+	description = "Use on a rock saw to obtain! A blade passed down through generations of a dedicated unitologist family, the Higgins. Sam had it modified into a experimental ceremonial blade, enhancing the already astonishing properties of the original metal and giving it an ominous crimson glow that matches the Marker. An explosive charge housed in the scabbard enables a lightning-quick draw."
+	id = "muramasa"
+	item_path = /obj/item/material/twohanded/muramasa
+
+	store_cost = 4000
+	store_access = ACCESS_WHITELIST
+
+	loadout_modkit_cost = 2
+	modkit_access = ACCESS_WHITELIST
+	modkit_typelist = list(/obj/item/tool/pickaxe/laser)
+
+
+	category = CATEGORY_TOOLS
+	subcategory = SUBCATEGORY_DANGEROUS_TOOLS
+
+/datum/patron_item/muramasa_sheath
+	name =  "Ceremonial Sheath"
+	id = "muramasa_sheath"
+	item_path = /obj/item/storage/belt/holster/muramasa
+	store_cost = 1500
+	store_access = ACCESS_WHITELIST
+	description = "A lavishly decorated ceremonial sheath, looks oddly gun-shaped."
+	loadout_cost = 1
+	loadout_access = ACCESS_WHITELIST
+
+	category = CATEGORY_TOOLS
+	subcategory = SUBCATEGORY_DANGEROUS_TOOLS

@@ -440,3 +440,18 @@
 /obj/item/storage/belt/waistpack/big/New()
 	..()
 	slowdown_per_slot[slot_belt] = 3
+
+/obj/item/storage/belt/holster/muramasa
+	name = "ceremonial sheath"
+	desc = "A lavishly decorated ceremonial sheath, looks oddly gun-shaped."
+	icon_state = "mura_sheath"
+	item_state = "mura_sheath"
+	storage_slots = 3
+	overlay_flags = BELT_OVERLAY_ITEMS|BELT_OVERLAY_HOLSTER
+	can_holster = list(
+		/obj/item/material/twohanded/muramasa
+	)
+	can_hold = list(
+		/obj/item/ammo_magazine,
+		/obj/item/reagent_containers/food/snacks,
+		)
