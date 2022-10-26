@@ -5742,6 +5742,19 @@
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/node/room14)
+"sZ" = (
+/obj/machinery/door/airlock/civilian{
+	name = "Church Storage";
+	req_access = list(16);
+	dir = 8
+	},
+/obj/machinery/door/blast/shutters{
+	dir = 4;
+	id = "chaplain";
+	name = "Shutters"
+	},
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/lower/unibase)
 "td" = (
 /obj/structure/barricade/wood,
 /turf/simulated/floor/plating,
@@ -5756,6 +5769,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/spline/fancy/wood,
+/obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/dank/maint,
 /area/mining_colony/lower/unibase)
 "tl" = (
@@ -6043,6 +6057,7 @@
 /obj/item/modular_computer/console/preset/civilian,
 /obj/effect/floor_decal/spline/fancy/wood,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/dank/maint,
 /area/mining_colony/lower/unibase)
 "wf" = (
@@ -6125,6 +6140,11 @@
 /obj/structure/gravemarker/random,
 /turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/lower/mining_caves)
+"wU" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/small,
+/turf/simulated/floor/dank/maint,
+/area/mining_colony/lower/unibase)
 "wW" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
@@ -6136,6 +6156,12 @@
 "xe" = (
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/lower/maints/node/room66)
+"xf" = (
+/obj/structure/table/rack/dark,
+/obj/random/loot/sometimes/few,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/lower/unibase)
 "xi" = (
 /obj/effect/wingrille_spawn/reinforced,
 /turf/simulated/floor/plating,
@@ -6392,6 +6418,14 @@
 "Ab" = (
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/node/room43)
+"Ag" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/small{
+	dir = 4
+	},
+/obj/machinery/vending/games,
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/lower/unibase)
 "Ah" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -6546,23 +6580,19 @@
 /turf/simulated/floor/plating,
 /area/mining_colony/lower)
 "BR" = (
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "east bump";
-	pixel_x = 24
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
 	},
 /obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	dir = 8
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
-/obj/effect/floor_decal/spline/fancy/wood/corner{
-	dir = 4
-	},
+/turf/simulated/floor/dank/maint,
+/area/mining_colony/lower/unibase)
+"BW" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/closet/body_bag,
-/obj/random/unihideoutbodies,
-/obj/random/unihideoutbodies,
 /turf/simulated/floor/dank/maint_right,
 /area/mining_colony/lower/unibase)
 "Ca" = (
@@ -6746,6 +6776,16 @@
 	},
 /turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/lower/mining_caves)
+"Dn" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/lower/unibase)
 "Dr" = (
 /obj/machinery/conveyor{
 	dir = 4;
@@ -6765,6 +6805,8 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/spline/fancy/wood/corner,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/dank/maint,
 /area/mining_colony/lower/unibase)
@@ -6811,17 +6853,23 @@
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/node/room26)
+"DM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/chair/office/comfy/black{
+	dir = 4
+	},
+/turf/simulated/floor/carpet,
+/area/mining_colony/lower/unibase)
 "DN" = (
 /obj/structure/window/basic{
 	name = "safety glass";
 	desc = "Break in case of emergency. It looks flimsy enough to break in a few hits"
 	},
-/obj/structure/table/rack/dark,
-/obj/item/gun/projectile/divet,
-/obj/item/ammo_magazine/divet,
 /obj/machinery/light/small{
 	dir = 1
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/lower/unibase)
 "DS" = (
@@ -6859,6 +6907,21 @@
 	},
 /turf/simulated/floor/dank/medical,
 /area/mining_colony/lower/morgue)
+"Es" = (
+/obj/structure/window/basic{
+	name = "safety glass";
+	desc = "Break in case of emergency. It looks flimsy enough to break in a few hits"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/dank/golf_brown,
+/area/mining_colony/lower/unibase)
+"Eu" = (
+/obj/effect/floor_decal/spline/fancy/wood,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/dank/maint,
+/area/mining_colony/lower/unibase)
 "Ev" = (
 /obj/random/junk,
 /turf/simulated/floor/plating,
@@ -6991,6 +7054,8 @@
 /obj/structure/bed/chair/office/comfy/black{
 	dir = 1
 	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/carpet,
 /area/mining_colony/lower/unibase)
 "Ga" = (
@@ -7028,6 +7093,20 @@
 	},
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/node/room66)
+"Gk" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/dank/maint,
+/area/mining_colony/lower/unibase)
 "Gp" = (
 /turf/unsimulated/mineral,
 /area/mining_colony/lower/mining_caves)
@@ -7046,6 +7125,18 @@
 /obj/random/uncommon_loot,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/node/room69)
+"Gw" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/button/remote/blast_door{
+	dir = 4;
+	id = "chaplain";
+	name = "Shutters";
+	req_one_access = list(57,58,100);
+	pixel_x = -22
+	},
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/lower/unibase)
 "Gx" = (
 /obj/effect/landmark{
 	name = "ShuttleRepairPart"
@@ -7141,6 +7232,11 @@
 /obj/structure/grille,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/node/room29)
+"Hz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/lower/unibase)
 "HH" = (
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/node/room11)
@@ -7279,6 +7375,7 @@
 /obj/effect/floor_decal/spline/fancy/wood,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
+/obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/dank/maint,
 /area/mining_colony/lower/unibase)
 "JM" = (
@@ -7476,6 +7573,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/dank/maint_left,
 /area/mining_colony/lower/unibase)
 "LR" = (
@@ -7498,7 +7596,6 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/carpet,
 /area/mining_colony/lower/unibase)
@@ -7566,6 +7663,14 @@
 "MF" = (
 /turf/simulated/floor/asteroid/outside_ds/dry_firm,
 /area/mining_colony/lower/mining_caves)
+"MM" = (
+/obj/machinery/door/airlock/civilian{
+	name = "Church Storage";
+	req_access = list(16);
+	dir = 8
+	},
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/lower/unibase)
 "MP" = (
 /obj/machinery/power/apc{
 	dir = 1;
@@ -7835,6 +7940,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/dank/maint_left,
 /area/mining_colony/lower/unibase)
 "Py" = (
@@ -7876,6 +7982,8 @@
 	},
 /obj/item/storage/lunchbox/unitology/filled,
 /obj/effect/floor_decal/spline/fancy/wood,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/dank/maint,
 /area/mining_colony/lower/unibase)
 "PL" = (
@@ -8023,10 +8131,7 @@
 "RI" = (
 /obj/structure/closet/firecloset,
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/light/small{
-	dir = 4
-	},
-/turf/simulated/floor/dank/maint_right,
+/turf/simulated/floor/dank/maint,
 /area/mining_colony/lower/unibase)
 "RJ" = (
 /turf/simulated/wall/r_wall,
@@ -8042,6 +8147,23 @@
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/node/room30)
+"RP" = (
+/obj/machinery/power/apc{
+	dir = 4;
+	name = "east bump";
+	pixel_x = 24
+	},
+/obj/structure/cable{
+	d2 = 2;
+	icon_state = "0-2";
+	dir = 8
+	},
+/obj/effect/floor_decal/spline/fancy/wood/corner{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/dank/maint_right,
+/area/mining_colony/lower/unibase)
 "RQ" = (
 /obj/effect/decal/cleanable/cobweb,
 /turf/simulated/floor/dank/grater,
@@ -8051,12 +8173,13 @@
 /obj/machinery/conveyor,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/excav)
+"RY" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/lower/unibase)
 "Sa" = (
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/node/room48)
-"Sg" = (
-/turf/simulated/floor/carpet,
-/area/mining_colony/lower/unibase)
 "Sj" = (
 /obj/structure/bed/roller,
 /obj/item/bedsheet/orange,
@@ -8109,6 +8232,11 @@
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/lower/maints/node/room1)
+"SD" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/vending/games,
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/lower/unibase)
 "SF" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
@@ -8128,6 +8256,11 @@
 /obj/random/loot/usually/few,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/node/room2)
+"SN" = (
+/obj/effect/floor_decal/spline/fancy/wood,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/dank/maint,
+/area/mining_colony/lower/unibase)
 "SP" = (
 /obj/random/junk,
 /turf/simulated/floor/plating,
@@ -8172,6 +8305,17 @@
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/node/room13)
+"Tn" = (
+/obj/structure/window/basic{
+	name = "safety glass";
+	desc = "Break in case of emergency. It looks flimsy enough to break in a few hits"
+	},
+/obj/item/gun/projectile/divet,
+/obj/structure/table/rack/dark,
+/obj/item/ammo_magazine/divet,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/dank/golf_brown,
+/area/mining_colony/lower/unibase)
 "To" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -8299,12 +8443,6 @@
 	},
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/lower/maints/node/room22)
-"UA" = (
-/obj/structure/bed/chair/office/comfy/black{
-	dir = 4
-	},
-/turf/simulated/floor/carpet,
-/area/mining_colony/lower/unibase)
 "UC" = (
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/node/room3)
@@ -8344,6 +8482,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/node/room36)
+"UZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/lower/unibase)
 "Vb" = (
 /obj/effect/wingrille_spawn/reinforced,
 /turf/simulated/floor/plating,
@@ -8371,6 +8515,12 @@
 /obj/machinery/light/small,
 /obj/structure/ladder/up,
 /turf/simulated/floor/dank/mono,
+/area/mining_colony/lower/unibase)
+"Vt" = (
+/obj/random/unihideoutbodies,
+/obj/structure/closet/body_bag,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/dank/grater,
 /area/mining_colony/lower/unibase)
 "VB" = (
 /obj/structure/cable{
@@ -8673,6 +8823,13 @@
 	},
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/node/room39)
+"YD" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/lower/unibase)
 "YG" = (
 /obj/random/trash,
 /turf/simulated/floor/plating,
@@ -8716,6 +8873,13 @@
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/node/room36)
+"Zk" = (
+/obj/structure/table/rack/dark,
+/obj/random/loot/sometimes/few,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/lower/unibase)
 "Zn" = (
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/dank/mono,
@@ -8812,6 +8976,7 @@
 /obj/effect/floor_decal/spline/fancy/wood/corner{
 	dir = 1
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/dank/maint_left,
 /area/mining_colony/lower/unibase)
 "ZT" = (
@@ -19463,8 +19628,8 @@ aw
 vR
 DN
 JG
+Xd
 To
-Sg
 Mo
 ti
 Vs
@@ -19663,9 +19828,9 @@ aw
 aw
 aw
 vR
-vR
+Tn
 PK
-UA
+Xd
 Xd
 To
 ub
@@ -19865,21 +20030,21 @@ aw
 aw
 aw
 vR
-vR
-XK
-gr
-zb
-PL
+Es
+SN
+Xd
+Xd
+Xd
 BR
 RI
 vR
 ar
+dY
+ej
+dY
 ei
-ev
-ei
-ei
-ei
-ei
+dY
+dY
 ei
 ev
 ei
@@ -20068,17 +20233,17 @@ aw
 aw
 vR
 vR
+Eu
+DM
+Xd
+Xd
+Gk
+wU
 vR
 vR
+sZ
 vR
 vR
-vR
-vR
-vR
-ar
-ar
-ar
-ar
 ar
 ar
 ar
@@ -20270,17 +20435,17 @@ aw
 aw
 vR
 vR
+XK
+gr
+zb
+PL
+RP
+BW
 vR
 vR
+YD
+Gw
 vR
-vR
-vR
-vR
-vR
-ar
-ar
-ar
-ar
 ar
 ar
 ar
@@ -20470,21 +20635,21 @@ aw
 aw
 aw
 aw
-aw
-aw
-aw
-aw
-aw
-aw
-aw
-aw
-aw
-aw
-aw
-aw
-aw
-aw
-aw
+vR
+vR
+vR
+vR
+vR
+vR
+vR
+MM
+vR
+vR
+Hz
+UZ
+SD
+vR
+vR
 aw
 ar
 RJ
@@ -20672,21 +20837,21 @@ aw
 aw
 aw
 aw
-aw
-aw
-aw
-aw
-aw
-aw
-aw
-aw
-aw
-aw
-aw
-aw
-aw
-aw
-aw
+vR
+vR
+vR
+vR
+vR
+vR
+Hz
+Hz
+UZ
+RY
+Hz
+UZ
+Zk
+vR
+vR
 aw
 ar
 RJ
@@ -20878,17 +21043,17 @@ aw
 aw
 aw
 aw
-aw
-aw
-aw
-aw
-aw
-aw
-aw
-aw
-aw
-aw
-aw
+vR
+vR
+Dn
+RY
+Hz
+Hz
+Hz
+RY
+xf
+vR
+vR
 aw
 ar
 RJ
@@ -21081,15 +21246,15 @@ aw
 aw
 aw
 aw
-aw
-aw
-aw
-aw
-aw
-aw
-aw
-aw
-aw
+vR
+vR
+vR
+Vt
+Vt
+Ag
+vR
+vR
+vR
 aw
 aw
 ar
@@ -21284,13 +21449,13 @@ aw
 aw
 aw
 aw
-aw
-aw
-aw
-aw
-aw
-aw
-aw
+vR
+vR
+vR
+vR
+vR
+vR
+vR
 aw
 aw
 aw
@@ -21488,9 +21653,9 @@ aw
 aw
 aw
 aw
-aw
-aw
-aw
+vR
+vR
+vR
 aw
 aw
 aw

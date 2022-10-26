@@ -17789,14 +17789,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/mining_colony/interior/shuttle_bay/hangar)
-"aXG" = (
-/obj/structure/table/rack,
-/obj/machinery/light/small{
-	dir = 1
-	},
-/obj/random/common_loot,
-/turf/simulated/floor/plating,
-/area/mining_colony/interior/maint)
 "aXH" = (
 /turf/simulated/floor/asteroid/outside_ds/cracked,
 /area/mining_colony/interior/excavation/marker_excav)
@@ -23284,9 +23276,6 @@
 /turf/simulated/floor/dank/rectangles,
 /area/mining_colony/interior/enginieering/lobby)
 "bjF" = (
-/obj/structure/bed/chair{
-	dir = 1
-	},
 /obj/machinery/light,
 /turf/simulated/floor/dank/slides,
 /area/mining_colony/interior/enginieering/lobby)
@@ -27494,6 +27483,10 @@
 	},
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/excavation/interior)
+"dbk" = (
+/obj/effect/wallframe_spawn/reinforced,
+/turf/simulated/floor/dank/mono,
+/area/mining_colony/interior/enginieering/paint_storage)
 "dci" = (
 /obj/structure/table/rack,
 /obj/random/loot/usually/few,
@@ -27542,6 +27535,11 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/mining_colony/interior)
+"duo" = (
+/obj/structure/table/rack,
+/obj/random/common_loot,
+/turf/simulated/floor/plating,
+/area/mining_colony/interior/maint)
 "dvT" = (
 /obj/effect/floor_decal/dank/border,
 /obj/structure/table/standard,
@@ -27784,6 +27782,9 @@
 	},
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/security/sec_firingrange)
+"fjz" = (
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/interior/enginieering/paint_storage)
 "fkM" = (
 /obj/structure/table/steel,
 /obj/structure/table/steel,
@@ -27879,6 +27880,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/mining_colony/security/sec_firingrange)
+"ger" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/mining_colony/interior/enginieering/lobby)
 "gfx" = (
 /obj/effect/wallframe_spawn/reinforced,
 /obj/machinery/door/firedoor,
@@ -28995,6 +29002,10 @@
 /obj/structure/table/rack,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/shuttle_bay/hangar)
+"nkY" = (
+/obj/machinery/door/airlock/engineering,
+/turf/simulated/floor/dank/mono,
+/area/mining_colony/interior/enginieering/paint_storage)
 "nmc" = (
 /obj/machinery/botany/extractor,
 /turf/simulated/floor/dank/mono,
@@ -41656,7 +41667,7 @@ aiu
 aiu
 aiu
 aak
-lZB
+pvN
 lZB
 aaB
 aaB
@@ -41858,10 +41869,10 @@ sYx
 aiu
 paD
 aak
-lZB
-lZB
-lZB
 pvN
+lZB
+lZB
+lZB
 pvN
 aaB
 aaB
@@ -42060,10 +42071,10 @@ pnm
 aiu
 oUV
 aak
-lZB
-lZB
-lZB
 pvN
+lZB
+lZB
+lZB
 pvN
 aaB
 aaB
@@ -42262,9 +42273,9 @@ qJe
 aiu
 mxh
 aak
-lZB
-lZB
-lZB
+pvN
+pvN
+pvN
 pvN
 pvN
 aaB
@@ -47724,7 +47735,7 @@ bfi
 biH
 biH
 biH
-biH
+ger
 biH
 aoH
 aoH
@@ -47925,11 +47936,11 @@ urw
 bfO
 aLM
 aag
-aag
-aYb
-aYb
-aYb
-aYb
+aWm
+aWm
+aWm
+duo
+aWl
 aYb
 aYb
 aVP
@@ -48127,9 +48138,9 @@ hSg
 cxu
 ePZ
 aag
-aag
-aYb
-aWl
+aYP
+aWm
+aWm
 aWm
 aWr
 aZb
@@ -48323,15 +48334,15 @@ aUP
 aUP
 aSp
 bie
-qBf
-wgE
-ouq
-aWs
-hmA
-aag
-aag
-aYb
-aXG
+fjz
+fjz
+fjz
+fjz
+fjz
+nkY
+aWm
+aWm
+aWm
 aWm
 aWu
 aWm
@@ -48524,15 +48535,15 @@ aSq
 awy
 bfC
 bgq
-aag
-aag
-aag
-aag
-aag
-aag
-aag
+dbk
+qBf
+wgE
+ouq
+aWs
+hmA
 aag
 aYb
+aWS
 bnM
 aWm
 bps
