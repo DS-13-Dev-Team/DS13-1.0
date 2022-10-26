@@ -5855,6 +5855,10 @@
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/lower/maints/node/room12)
+"uf" = (
+/obj/effect/landmark/marker/ishimura,
+/turf/simulated/floor/plating,
+/area/mining_colony/lower/maints/node/room67)
 "ug" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
@@ -6556,6 +6560,9 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/body_bag,
+/obj/random/unihideoutbodies,
+/obj/random/unihideoutbodies,
 /turf/simulated/floor/dank/maint_right,
 /area/mining_colony/lower/unibase)
 "Ca" = (
@@ -6652,6 +6659,11 @@
 	},
 /turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/lower/mining_caves)
+"CE" = (
+/obj/machinery/portable_atmospherics/hydroponics,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/plating,
+/area/mining_colony/lower/maints/node/room67)
 "CH" = (
 /obj/effect/landmark/node_room/maintenance,
 /turf/simulated/floor/plating,
@@ -6949,11 +6961,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/node/room5)
-"FH" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/portable_atmospherics/hydroponics,
-/turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/node/room67)
 "FK" = (
 /obj/effect/landmark{
 	name = "ShuttleRepairPart"
@@ -7238,11 +7245,6 @@
 /obj/item/remains,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/lower/mining_caves)
-"Ja" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/marker/ishimura,
-/turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/node/room67)
 "Jd" = (
 /obj/machinery/door/airlock/maintenance{
 	dir = 4
@@ -7777,11 +7779,6 @@
 "Pc" = (
 /turf/simulated/floor/water_shallow,
 /area/mining_colony/lower)
-"Ph" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/foamedmetal,
-/turf/simulated/floor/plating,
-/area/mining_colony/lower/maints/node/room67)
 "Pk" = (
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/dank/mono,
@@ -8596,10 +8593,6 @@
 	},
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/lower/maints/node/room21)
-"XS" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/mining_caves)
 "Ya" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -10440,16 +10433,16 @@ aw
 aw
 ar
 sm
-Ph
-Gf
-sp
-sp
-sp
 CX
-sp
-sp
+CX
+CX
+CX
 Gf
 wE
+CX
+CX
+CX
+CX
 ar
 aw
 Cr
@@ -10642,16 +10635,16 @@ ar
 ar
 ar
 sm
-FH
+CX
+CX
+wE
+sp
+sp
+sp
 sp
 CX
-sp
-sp
-sp
-sp
 CX
-sp
-Gf
+CX
 ar
 aw
 Cr
@@ -10844,16 +10837,16 @@ ar
 ar
 ar
 sm
+wE
+sp
+sp
+sv
 sp
 sp
 sp
+wS
 CX
 CX
-sp
-CX
-CX
-sp
-Gf
 ar
 aw
 Cr
@@ -11046,16 +11039,16 @@ dY
 Pc
 dY
 sm
-sv
+sp
+sp
+sp
 wS
 sp
-vJ
-CX
-CX
-CX
-vJ
 sp
 sp
+sp
+wE
+CX
 ar
 aw
 Cr
@@ -11249,15 +11242,15 @@ Pc
 dY
 sm
 sp
+CX
+wE
 sp
-sp
-sp
-sp
-sp
+Gf
 sp
 sv
 sp
-wS
+vJ
+CX
 ar
 aw
 Cr
@@ -11450,16 +11443,16 @@ dY
 Pc
 dY
 sm
-Gf
-Gf
-sp
-Gf
-sp
-sp
-sp
-sp
 sp
 CX
+sp
+Gf
+Gf
+uf
+sp
+sp
+sp
+Gf
 ar
 aw
 Cr
@@ -11653,15 +11646,15 @@ Pc
 dY
 sn
 sp
-Gf
+sp
 CX
 Gf
+sp
+sp
+sp
+sp
+sv
 Gf
-sp
-sp
-sp
-Gf
-CX
 ar
 aw
 Cr
@@ -11855,15 +11848,15 @@ Pc
 dY
 sm
 sp
+sp
 CX
+wE
 sp
 sp
 sp
 sp
-Ja
 sp
-sp
-vJ
+CE
 ar
 aw
 Cr
@@ -12056,16 +12049,16 @@ dY
 Pc
 dY
 sm
+CX
 sp
+CX
+CX
+vJ
 sp
+wS
 sp
-sp
-sp
-sp
-sp
-sp
-sp
-sp
+Gf
+CX
 ar
 aw
 Cr
@@ -12258,16 +12251,16 @@ dY
 Pc
 dY
 sm
-sp
 CX
 sp
-sv
+sp
+sp
+sp
 sp
 sp
 sp
 Gf
-sp
-sp
+CX
 ar
 aw
 Cr
@@ -12460,16 +12453,16 @@ ei
 ei
 dY
 sm
-sp
 CX
+CX
+vJ
+Gf
+Gf
 sp
-sp
-sp
-sp
-sp
-sp
-sp
+sv
 wE
+CX
+CX
 ar
 aw
 Cr
@@ -12662,16 +12655,16 @@ dY
 ei
 dY
 sm
-Gf
 CX
-sp
-sp
+CX
+CX
+CX
+CX
+CE
 wE
-wS
-vJ
-sp
-sp
-sp
+CX
+CX
+CX
 ar
 aw
 Cr
@@ -24127,7 +24120,7 @@ aw
 Dy
 aq
 AO
-XS
+DH
 DH
 DH
 DH

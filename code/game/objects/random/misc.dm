@@ -125,3 +125,12 @@ obj/random/zealotrig/item_to_spawn()
 	/obj/item/rig/zealot = 50,
 	/obj/item/rig/marine/earthgov = 50
 	))
+
+/obj/random/unihideoutbodies
+	name = "possible preserved corpses"
+	spawn_nothing_percentage = 75
+
+obj/random/unihideoutbodies/item_to_spawn()
+	return pickweight(list(
+		/obj/effect/landmark/corpse = 1
+	))

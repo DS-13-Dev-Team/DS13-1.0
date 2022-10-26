@@ -15,5 +15,6 @@ changes:
   - rscadd: "Colony: new cave system on the northern part of the map."
   - rscadd: "Ishimura: new western marker spawn in tram area."
   - rscadd: "Colony: new marker spawn underground outside the sewers."
-  - rscadd: "Evac: store kiosk added."
+  - rscadd: "Evac: revamped, now known as CEC Recovery Ship instead of Evacuation Site Alpha."
+  - rscadd: "New slim variant of the CEC Civilian Rig."
   - qol: "You can now tell the difference between impassable and normal rock visually."

@@ -53,6 +53,12 @@
 	icon_state = "wood"
 	initial_flooring = /decl/flooring/wood
 
+/turf/unsimulated/floor/wood
+	name = "wooden floor"
+	icon = 'icons/turf/flooring/wood.dmi'
+	icon_state = "wood"
+	initial_flooring = /decl/flooring/wood
+
 /turf/simulated/floor/grass
 	name = "grass patch"
 	icon = 'icons/turf/flooring/grass.dmi'
@@ -145,7 +151,18 @@
 	icon_state = "steel"
 	initial_flooring = /decl/flooring/tiling
 
+/turf/unsimulated/floor/tiled
+	name = "steel floor"
+	icon = 'icons/turf/flooring/tiles.dmi'
+	icon_state = "steel"
+	initial_flooring = /decl/flooring/tiling
+
 /turf/simulated/floor/tiled/dark
+	name = "dark floor"
+	icon_state = "dark"
+	initial_flooring = /decl/flooring/tiling/dark
+
+/turf/unsimulated/floor/tiled/dark
 	name = "dark floor"
 	icon_state = "dark"
 	initial_flooring = /decl/flooring/tiling/dark
@@ -159,6 +176,11 @@
 	initial_gas = null
 
 /turf/simulated/floor/tiled/white
+	name = "white floor"
+	icon_state = "white"
+	initial_flooring = /decl/flooring/tiling/white
+
+/turf/unsimulated/floor/tiled/white
 	name = "white floor"
 	icon_state = "white"
 	initial_flooring = /decl/flooring/tiling/white
@@ -183,6 +205,11 @@
 	icon_state = "freezer"
 	initial_flooring = /decl/flooring/tiling/freezer
 
+/turf/unsimulated/floor/tiled/freezer
+	name = "tiles"
+	icon_state = "freezer"
+	initial_flooring = /decl/flooring/tiling/freezer
+
 /turf/simulated/floor/tiled/techmaint
 	name = "floor"
 	icon = 'icons/turf/flooring/tiles.dmi'
@@ -195,6 +222,12 @@
 	initial_flooring = /decl/flooring/tiling/new_tile/monofloor
 
 /turf/simulated/floor/tiled/techfloor
+	name = "floor"
+	icon = 'icons/turf/flooring/techfloor.dmi'
+	icon_state = "techfloor_gray"
+	initial_flooring = /decl/flooring/tiling/tech
+
+/turf/unsimulated/floor/tiled/techfloor
 	name = "floor"
 	icon = 'icons/turf/flooring/techfloor.dmi'
 	icon_state = "techfloor_gray"
@@ -358,12 +391,22 @@
 	icon_state = "dank_tile_medical"
 	initial_flooring = /decl/flooring/tiling_ds/medical
 
+/turf/unsimulated/floor/dank/medical
+	name = "grim medical floor"
+	icon_state = "dank_tile_medical"
+	initial_flooring = /decl/flooring/tiling_ds/medical
+
 /turf/simulated/floor/dank/mono
 	name = "grim floor"
 	icon_state = "dank_tile_mono"
 	initial_flooring = /decl/flooring/tiling_ds/mono
 
 /turf/simulated/floor/dank/bathr
+	name = "bathroom tiles"
+	icon_state = "bathroom"
+	initial_flooring = /decl/flooring/tiling_ds/bathroom
+
+/turf/unsimulated/floor/dank/bathr
 	name = "bathroom tiles"
 	icon_state = "bathroom"
 	initial_flooring = /decl/flooring/tiling_ds/bathroom
@@ -409,6 +452,11 @@
 	icon_state = "tech"
 	initial_flooring = /decl/flooring/complex/tiling_ds/tech
 
+/turf/unsimulated/floor/dank/tech
+	name = "tech plating"
+	icon_state = "tech"
+	initial_flooring = /decl/flooring/complex/tiling_ds/tech
+
 /turf/simulated/floor/dank/hardwood
 	name = "hardwood"
 	icon_state = "hardwood"
@@ -428,6 +476,11 @@
 	icon_state = "golf_brown"
 	initial_flooring = /decl/flooring/complex/tiling_ds/golf_brown
 
+/turf/unsimulated/floor/dank/golf_brown
+	name = "golf brown"
+	icon_state = "golf_brown"
+	initial_flooring = /decl/flooring/complex/tiling_ds/golf_brown
+
 /turf/simulated/floor/dank/maint_left
 	name = "maint left"
 	icon_state = "maint_left"
@@ -439,6 +492,21 @@
 	initial_flooring = /decl/flooring/complex/tiling_ds/maint
 
 /turf/simulated/floor/dank/maint_right
+	name = "maint right"
+	icon_state = "maint_right"
+	initial_flooring = /decl/flooring/complex/tiling_ds/maint/right
+
+/turf/unsimulated/floor/dank/maint_left
+	name = "maint left"
+	icon_state = "maint_left"
+	initial_flooring = /decl/flooring/complex/tiling_ds/maint/left
+
+/turf/unsimulated/floor/dank/maint
+	name = "maint central"
+	icon_state = "maint_center"
+	initial_flooring = /decl/flooring/complex/tiling_ds/maint
+
+/turf/unsimulated/floor/dank/maint_right
 	name = "maint right"
 	icon_state = "maint_right"
 	initial_flooring = /decl/flooring/complex/tiling_ds/maint/right
@@ -488,6 +556,11 @@
 	icon_state = "rectangles"
 	initial_flooring = /decl/flooring/complex/tiling_ds/rectangles
 
+/turf/unsimulated/floor/dank/rectangles
+	name = "rectangles"
+	icon_state = "rectangles"
+	initial_flooring = /decl/flooring/complex/tiling_ds/rectangles
+
 /turf/simulated/floor/dank/slides
 	name = "slides"
 	icon_state = "slides"
@@ -498,12 +571,32 @@
 	icon_state = "slides_end"
 	initial_flooring = /decl/flooring/complex/tiling_ds/slides/end
 
+/turf/unsimulated/floor/dank/slides
+	name = "slides"
+	icon_state = "slides"
+	initial_flooring = /decl/flooring/complex/tiling_ds/slides
+
+/turf/unsimulated/floor/dank/slides_end
+	name = "slides_end"
+	icon_state = "slides_end"
+	initial_flooring = /decl/flooring/complex/tiling_ds/slides/end
+
 /turf/simulated/floor/dank/grate
 	name = "grate"
 	icon_state = "grate"
 	initial_flooring = /decl/flooring/complex/tiling_ds/grate
 
+/turf/unsimulated/floor/dank/grate
+	name = "grate"
+	icon_state = "grate"
+	initial_flooring = /decl/flooring/complex/tiling_ds/grate
+
 /turf/simulated/floor/dank/grater
+	name = "grater"
+	icon_state = "grater"
+	initial_flooring = /decl/flooring/complex/tiling_ds/grater
+
+/turf/unsimulated/floor/dank/grater
 	name = "grater"
 	icon_state = "grater"
 	initial_flooring = /decl/flooring/complex/tiling_ds/grater
@@ -519,6 +612,21 @@
 	initial_flooring = /decl/flooring/complex/tiling_ds/cable/start
 
 /turf/simulated/floor/dank/cable/end
+	name = "cable_end"
+	icon_state = "cable_end"
+	initial_flooring = /decl/flooring/complex/tiling_ds/cable/end
+
+/turf/unsimulated/floor/dank/cable
+	name = "cable"
+	icon_state = "cable"
+	initial_flooring = /decl/flooring/complex/tiling_ds/cable
+
+/turf/unsimulated/floor/dank/cable/start
+	name = "cable_start"
+	icon_state = "cable_start"
+	initial_flooring = /decl/flooring/complex/tiling_ds/cable/start
+
+/turf/unsimulated/floor/dank/cable/end
 	name = "cable_end"
 	icon_state = "cable_end"
 	initial_flooring = /decl/flooring/complex/tiling_ds/cable/end

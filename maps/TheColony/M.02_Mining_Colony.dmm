@@ -1349,7 +1349,7 @@
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/uni_church)
 "adX" = (
-/obj/structure/table/steel_reinforced,
+/obj/machinery/vending/games,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/uni_church)
 "adY" = (
@@ -13268,6 +13268,7 @@
 "aMe" = (
 /obj/effect/floor_decal/spline/fancy/wood,
 /obj/structure/showcase/marker,
+/obj/effect/landmark/marker/ishimura,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/uni_church)
 "aMf" = (
@@ -34131,7 +34132,7 @@ aZl
 aXL
 bfG
 bit
-bkR
+bkE
 bkR
 bkR
 bla

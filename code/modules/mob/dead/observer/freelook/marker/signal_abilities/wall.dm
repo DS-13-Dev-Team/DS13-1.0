@@ -13,6 +13,7 @@
 	LOS_block = FALSE
 	placement_atom = /obj/structure/corruption_node/wall/visible
 	distance_blocked = 1	//Small minimum distance
+	cooldown = 1.5 SECOND
 
 
 /*
