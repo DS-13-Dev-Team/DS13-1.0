@@ -1,4 +1,4 @@
-#define XENOARCH_SPAWN_CHANCE 15 //Buffs this up to prob(15)
+#define XENOARCH_SPAWN_CHANCE 4 //Bumps this down to prob(4)
 #define DIGSITESIZE_LOWER 4
 #define DIGSITESIZE_UPPER 12
 #define ARTIFACTSPAWNNUM_LOWER 6

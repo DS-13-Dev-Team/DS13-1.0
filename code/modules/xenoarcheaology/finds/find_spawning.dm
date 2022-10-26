@@ -153,7 +153,7 @@
 
 /obj/item/archaeological_find/statuette/spawn_item()
 	var/obj/item/new_item
-	if(prob(25))
+	if(prob(15)) //NOPE
 		new_item = new /obj/item/vampiric(loc)
 	else
 		new_item = new(loc)
