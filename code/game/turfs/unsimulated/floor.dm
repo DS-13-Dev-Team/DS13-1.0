@@ -35,6 +35,14 @@
 	name = "dark floor"
 	icon_state = "dark"
 
+/turf/unsimulated/floor/tiled/white/monotile
+	name = "floor"
+	icon_state = "monotile"
+
+/turf/unsimulated/floor/tiled/monotile
+	name = "floor"
+	icon_state = "steel_monotile"
+
 /turf/unsimulated/floor/tiled/white
 	name = "white floor"
 	icon_state = "white"
@@ -47,6 +55,11 @@
 	name = "floor"
 	icon = 'icons/turf/flooring/techfloor.dmi'
 	icon_state = "techfloor_gray"
+
+/turf/unsimulated/floor/dank
+	name = "grim floor"
+	icon = 'icons/turf/floors_ds13.dmi'
+	icon_state = "dank_tile"
 
 /turf/unsimulated/floor/dank/medical
 	name = "grim medical floor"
