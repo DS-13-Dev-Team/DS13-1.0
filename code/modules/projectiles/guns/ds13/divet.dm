@@ -122,8 +122,8 @@ Ammo casings for the mags
 /obj/item/ammo_casing/ls_slug/incendiary
 	projectile_type = /obj/item/projectile/bullet/ls_slug/incendiary
 
-	/obj/item/ammo_casing/ls_slug/extended
-/obj/item/projectile/bullet/ls_slug/extended
+/obj/item/ammo_casing/ls_slug/extended
+	projectile_type = /obj/item/projectile/bullet/ls_slug/extended
 
 /**
 Projectile logic
