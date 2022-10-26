@@ -69,7 +69,7 @@ changes:
   - balance: "Enhanced infector HP reduced from 225 => 205 to give low armed humans more of a chance against one alone."
   - balance: "Makes human arms significantly harder to break, or to amputate. Aim for the legs!"
   - balance: "You can now overdose on dylovene at 30+ units, causing burns."
-  - balance: "Necromorphs will now spawn within 3 tiles of spawners like the marker, nests."
+  - balance: "Necromorphs will now spawn within 3 tiles of spawners like the marker, nests. (Previously 10)"
   - balance: "Femorals have been heavily nerfed from 15/22.5% to 7.5/10%"
   - balance: "Femorals now purchaseable at 4000 credits, advanced at 6000"
   - balance: "Hauling skill is now 15~% less effective at reducing slowdown"
