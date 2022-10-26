@@ -9,10 +9,6 @@
 	build_path = /obj/item/rig/civilian
 	price = 500
 
-/datum/design/item/rig/civ/slim
-	build_path = /obj/item/rig/civilian/slim
-	price = 500
-
 /datum/design/item/rig/clown
 	name = "ERROR_404_RIG_NOT_FOUND"
 	desc = "//ERROR_404_DESCRIPTION_NOT_FOUND"
