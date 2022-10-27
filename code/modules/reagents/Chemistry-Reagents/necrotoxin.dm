@@ -20,7 +20,7 @@
 		M.add_chemical_effect(CE_SLOWDOWN, 2)
 		M.reagents.remove_reagent(/datum/reagent/toxin/necro, 50 * removed) //Rapidly converts necrotoxin into a worse variant
 		M.reagents.add_reagent(/datum/reagent/toxin/necro_lethal, 25 * removed)
-		if(prob(25))
+		if(prob(75))
 			M.emote("scream");
 			to_chat(M, "<span class='notice'>Your insides briefly twist and burn! Something's wrong!.</span>")
 
