@@ -350,5 +350,5 @@ obj/item/organ/external/take_general_damage(var/amount, var/silent = FALSE)
 		
 		// Shitshow of snowflake checks, but this should make burn delimbs less stupid.
 		else if (damage >= max_damage * DROPLIMB_CUMULATIVE_BURN)
-			droplimb(0, DROPLIMB_EDGE, cutter = used_weapon)
+			droplimb(0, DROPLIMB_BURN, cutter = used_weapon)
 			return TRUE
