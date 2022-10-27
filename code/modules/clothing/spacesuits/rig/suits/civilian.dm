@@ -1,6 +1,6 @@
 /obj/item/rig/civilian
 	name = "CEC civilian RIG"
-	desc = "Resource Integrated Gear. Standard issue for all CEC employees."
+	desc = "Resource Integrated Gear. Standard issue for all CEC employees"
 	icon_state = "ds_civilian_rig"
 	armor = list(melee = 10, bullet = 10, laser = 10, energy = 10, bomb = 10, bio = 10, rad = 10)
 	offline_slowdown = 1
