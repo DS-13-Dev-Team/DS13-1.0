@@ -46,9 +46,9 @@
 	item_state = "trashbag"
 
 	w_class = ITEM_SIZE_SMALL
-	max_w_class = ITEM_SIZE_HUGE //can fit a backpack inside a trash bag, seems right
+	max_w_class = ITEM_SIZE_HUGE
 	max_storage_space = DEFAULT_BACKPACK_STORAGE
-	can_hold = list() // any
+	can_hold = list(/obj/item/trash) // lol
 
 /obj/item/storage/bag/trash/update_w_class()
 	..()
