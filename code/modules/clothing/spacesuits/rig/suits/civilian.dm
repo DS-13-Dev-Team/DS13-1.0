@@ -18,11 +18,6 @@
 		/obj/item/rig_module/storage/light
 		)
 
-
-
-
-
-
 /obj/item/rig/emergency
 	name = "emergency RIG"
 	desc = "A light, emergency rig for use by non-qualified personnel in the case of emergency decompression."
