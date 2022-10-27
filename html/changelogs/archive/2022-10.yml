@@ -85,3 +85,8 @@
   - balance: Nerfed monkey & hopper biomass bounties for limbs, corpses, and hoppers
       themselves.
   - balance: Indirectly nerfs Keener.
+2022-10-27:
+  Ketrai:
+  - balance: HPR ammo before overheating 287 => 140.
+  - balance: HPR overheat duration from 200 seconds to 120 seconds. This is still
+      a nerf, the lower overheat limit reduces ammo regeneration.
