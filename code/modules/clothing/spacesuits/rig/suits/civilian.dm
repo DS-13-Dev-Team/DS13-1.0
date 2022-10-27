@@ -18,21 +18,6 @@
 		/obj/item/rig_module/storage/light
 		)
 
-/obj/item/rig/civilian/slim
-	name = "CEC slim civilian RIG"
-	desc = "Slim variant of the Resource Integrated Gear. Standard issue for all CEC employees."
-	icon_state = "ds_civilian_slim_rig"
-	armor = list(melee = 10, bullet = 10, laser = 10, energy = 10, bomb = 10, bio = 10, rad = 10)
-	offline_slowdown = 1
-	online_slowdown = RIG_VERY_LIGHT
-
-	max_health = 1500
-
-	chest_type = null
-	helm_type =  null
-	boot_type =  null
-	glove_type = null
-
 /obj/item/rig/emergency
 	name = "emergency RIG"
 	desc = "A light, emergency rig for use by non-qualified personnel in the case of emergency decompression."

@@ -38,12 +38,6 @@
 
 	cost = 0
 
-/datum/gear/RIG/frame/civilian/slim
-	display_name = "slim civilian RIG"
-	path = /obj/item/rig/civilian/slim
-
-	cost = 0
-
 
 
 
