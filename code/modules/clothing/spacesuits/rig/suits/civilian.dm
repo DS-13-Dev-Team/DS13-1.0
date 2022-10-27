@@ -21,7 +21,7 @@
 /obj/item/rig/civilian/slim
 	name = "CEC slim civilian RIG"
 	desc = "Slim variant of the Resource Integrated Gear. Standard issue for all CEC employees."
-	icon_state = "ds_civilian_slim_rig"
+	icon_state = "ds_civilian_rig_slim"
 	armor = list(melee = 10, bullet = 10, laser = 10, energy = 10, bomb = 10, bio = 10, rad = 10)
 	offline_slowdown = 1
 	online_slowdown = RIG_VERY_LIGHT
