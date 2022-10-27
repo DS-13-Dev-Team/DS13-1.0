@@ -6606,13 +6606,13 @@
 /area/ERT/escapebase)
 "UM" = (
 /obj/machinery/door/airlock/security{
-	name = "Evacuation Alpha Armory";
+	name = "Armory";
 	req_access = list(2)
 	},
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "evacarmory";
-	name = "Security Armory Shutters"
+	name = "Armory Shutters"
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/ERT/escapebase)
