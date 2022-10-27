@@ -154,7 +154,7 @@ All of these properties combined make Step Strike tricky and disorienting to use
 	name_plural = "Twitchers"
 	blurb = "Extremely rare twitcher variant achieved by infecting an oracle operative."
 	icon_template = 'icons/mob/necromorph/twitcher_oracle.dmi'
-	biomass	=	360
+	biomass	=	320
 	require_total_biomass	=	BIOMASS_REQ_T3
 	layer = LARGE_MOB_LAYER
 	biomass_reclamation_time	=	14 MINUTES
@@ -185,10 +185,10 @@ All of these properties combined make Step Strike tricky and disorienting to use
 	blink_damage_mult = 0.15 	//When the twitcher dodges an attack, the incoming damage is multiplied by this value
 
 /datum/unarmed_attack/blades/oracle // Fast and deadly thanks to the armor penetration
-	damage = 12
+	damage = 13
 	delay = 7
 	airlock_force_power = 3
-	armor_penetration = 8
+	armor_penetration = 10
 
 /datum/species/necromorph/slasher/twitcher/oracle/add_inherent_verbs(var/mob/living/carbon/human/H)
 	.=..()
@@ -278,7 +278,7 @@ All of these properties combined make Step Strike tricky and disorienting to use
 	set category = "Abilities"
 
 
-	.= step_strike_ability(A, _distance = 3, _cooldown = 2 SECONDS)
+	.= step_strike_ability(A, _distance = 1, _cooldown = 3 SECONDS)
 	if (.)
 		play_species_audio(src, SOUND_ATTACK, VOLUME_MID, 1, 3)
 

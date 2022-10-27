@@ -78,3 +78,6 @@ changes:
   - balance: "Acid shots and vomit tiles will now damage rigged people over time, though wearing a rig offers increased protection. If you don't wear shoes, expect to suffer."
   - balance: "Crushing people with doors now does 10 damage instead of 40"
   - balance: "Signal lock is now cheaper pre-activation with a lower cooldown, but locks doors for only 5 seconds instead of 60"
+  - balance: "Oracle twitcher cost from 360 => 320"
+  - balance: "Oracle twitchers can only step strike adjacent targets now, with a slightly longer cooldown."
+  - balance: "Oracle twitchers hit slightly harder again"
