@@ -5054,6 +5054,10 @@
 /obj/structure/closet/crate/trashcart,
 /turf/simulated/floor/tiled/freezer,
 /area/ERT/escapebase)
+"oV" = (
+/obj/item/bikehorn/rubberducky,
+/turf/unsimulated/floor/dank/bathr,
+/area/ERT/escapebase)
 "pe" = (
 /obj/structure/closet/crate/bin,
 /turf/simulated/floor/tiled/freezer,
@@ -6336,6 +6340,10 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/ERT/escapebase)
+"Pu" = (
+/obj/item/toy/plushie/spider,
+/turf/unsimulated/floor/tiled/dark,
+/area/ERT/escapebase)
 "PA" = (
 /obj/structure/railing/mapped,
 /obj/structure/closet/crate/bin,
@@ -6418,6 +6426,10 @@
 /turf/simulated/floor/dank/slides{
 	dir = 1
 	},
+/area/ERT/escapebase)
+"Rg" = (
+/obj/structure/plushie/ian,
+/turf/unsimulated/floor/tiled/dark,
 /area/ERT/escapebase)
 "Rj" = (
 /obj/effect/shuttle_landmark/escape_pod/transit/pod2,
@@ -20201,7 +20213,7 @@ hR
 wI
 wI
 wI
-wI
+UT
 hR
 Ym
 Ym
@@ -20304,7 +20316,7 @@ hR
 wI
 wI
 wI
-UT
+wI
 MZ
 Ym
 Ym
@@ -22051,7 +22063,7 @@ wI
 wI
 wI
 wI
-wI
+Rg
 hR
 mv
 hR
@@ -22246,7 +22258,7 @@ wj
 wj
 wj
 hR
-wI
+Pu
 wI
 wI
 wI
@@ -22343,7 +22355,7 @@ aa
 gK
 hR
 wj
-wj
+oV
 wj
 wj
 wj
