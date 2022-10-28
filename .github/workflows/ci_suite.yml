@@ -7,7 +7,7 @@ on:
     branches:
     - dev
 jobs:
-  run_linters:  
+  run_linters:
     if: "!contains(github.event.head_commit.message, '[ci skip]')"
     name: Run Linters
     runs-on: ubuntu-20.04
@@ -41,7 +41,7 @@ jobs:
           tools/build/build --ci lint tgui-test
           ~/dreamchecker > ${GITHUB_WORKSPACE}/output-annotations.txt 2>&1
       - name: Annotate Lints
-        uses: yogstation13/DreamAnnotate@v1
+        uses: yogstation13/DreamAnnotate@v2
         if: always()
         with:
           outputFile: output-annotations.txt
@@ -61,7 +61,7 @@ jobs:
           bash tools/ci/install_byond.sh
           source $HOME/BYOND/byond/bin/byondsetup
           tools/build/build --ci dm -DCIBUILDING -DCITESTING -DALL_MAPS
-          
+
         env:
           CBT_BUILD_MODE : ALL_MAPS
   run_all_tests:

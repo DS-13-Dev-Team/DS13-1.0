@@ -2610,6 +2610,7 @@
 #include "code\modules\organs\internal\species\fbp.dm"
 #include "code\modules\organs\internal\species\golem.dm"
 #include "code\modules\organs\internal\species\ipc.dm"
+#include "code\modules\organs\internal\species\monkey.dm"
 #include "code\modules\organs\internal\species\nabber.dm"
 #include "code\modules\organs\internal\species\promethean.dm"
 #include "code\modules\organs\internal\species\starborn.dm"

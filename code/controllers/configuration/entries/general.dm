@@ -298,11 +298,3 @@ Basics, the most important.
 
 /datum/config_entry/flag/topic_enabled
 	protection = CONFIG_ENTRY_LOCKED
-
-/datum/config_entry/number/minute_topic_limit
-	config_entry_value = null
-	min_val = 0
-
-/datum/config_entry/number/second_topic_limit
-	config_entry_value = null
-	min_val = 0

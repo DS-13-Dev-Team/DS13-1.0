@@ -86,7 +86,7 @@
 				center_of_mass = "x=16;y=6"
 			if(/datum/reagent/capsaicin)
 				name = "Hotsauce"
-				desc = "You can almost TASTE the stomach ulcers now!"
+				desc = "A can of delicious hot sauce."
 				icon_state = "hotsauce"
 				center_of_mass = "x=16;y=6"
 			if(/datum/reagent/enzyme)
@@ -238,12 +238,12 @@
 
 /obj/item/reagent_containers/food/condiment/salt
 	name = "big bag of salt"
-	desc = "A nonsensically large bag of salt. Carefully refined from countless shifts."
+	desc = "A nonsensically large sack of salt that's seen some heavy use. Carefully refined from countless shifts. A label reads, 'CAUTION: EXCESSIVE CONSUMPTION MAY RESULT IN ILLNESS, AND IN SEVERE CASES, DEATH. "
 	icon = 'icons/obj/food.dmi'
 	icon_state = "salt"
 	item_state = "flour"
 	randpixel = 10
-	volume = 500
+	volume = 50
 	w_class = ITEM_SIZE_LARGE
 
 /obj/item/reagent_containers/food/condiment/salt/on_reagent_change()
