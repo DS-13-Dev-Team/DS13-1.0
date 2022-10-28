@@ -101,6 +101,7 @@
 
 /datum/reagent/dylovene/overdose(var/mob/living/carbon/M, var/alien)
 	M.adjustFireLoss(REM)
+	M.adjustBruteLoss(REM*0.5) // Since fireloss does basically nothing
 	if (effect_extension)
 		effect_extension.overdose()
 	return
