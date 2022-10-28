@@ -25,7 +25,7 @@
 	aiming_modes = list(/datum/extension/aim_mode/rifle)
 
 	firemodes = list(
-		FULL_AUTO_300,
+		FULL_AUTO_600, //fuller auto
 		list(mode_name="3-round bursts", burst=3, fire_delay=2, burst_delay=0.5),
 		list(mode_name="semi-automatic", burst=1, fire_delay=2)
 		)
