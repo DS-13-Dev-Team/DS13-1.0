@@ -38,6 +38,7 @@
 
 //An invisible object that allows the necrovision to see around it. Deletes itself after 1 minute
 /obj/effect/scry_eye
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	atom_flags = ATOM_FLAG_INTANGIBLE
 	visualnet_range = 6
 	light_range = 6
