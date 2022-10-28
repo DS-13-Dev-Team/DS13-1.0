@@ -14,7 +14,7 @@
 	allowed_magazines = /obj/item/ammo_magazine/bullpup
 	load_method = MAGAZINE
 	caliber = "bullpup"
-	screen_shake = 0.20
+	screen_shake = 0
 	slot_flags = SLOT_BACK
 	ammo_type = /obj/item/ammo_casing/pulse
 	mag_insert_sound = 'sound/weapons/guns/interaction/smg_magin.ogg'
@@ -26,8 +26,8 @@
 
 	firemodes = list(
 		FULL_AUTO_300,
-		list(mode_name="3-round bursts", burst=3, fire_delay=2, burst_delay=0.5, screen_shake = 0.10),
-		list(mode_name="semi-automatic", burst=1, fire_delay=2, screen_shake = 0.20)
+		list(mode_name="3-round bursts", burst=3, fire_delay=2, burst_delay=0.5),
+		list(mode_name="semi-automatic", burst=1, fire_delay=2)
 		)
 
 
