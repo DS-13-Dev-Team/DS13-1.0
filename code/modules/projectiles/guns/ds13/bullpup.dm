@@ -71,7 +71,7 @@
 
 /datum/extension/aim_mode/rifle/bullpup_long
 	name = "2x Zoom"
-	damage_mod = 0.8 //slightly less effective when scoped
+	damage_mod = -0.2 //slightly less effective when scoped
 	view_offset = 8*WORLD_ICON_SIZE //long range
 	view_range = -2
 	statmods = list(STATMOD_MOVESPEED_ADDITIVE = -0.65,
