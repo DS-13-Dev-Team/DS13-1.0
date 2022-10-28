@@ -124,9 +124,11 @@ obj/item/organ/external/take_general_damage(var/amount, var/silent = FALSE)
 		if(allow_dismemberment && loc == owner && !is_stump())
 			if((limb_flags & ORGAN_FLAG_CAN_AMPUTATE) && CONFIG_GET(flag/limbs_can_break))
 				var/total_damage = brute_dam + burn_dam + brute + burn + spillover
+				var/total_brute = brute_dam + brute
+				var/total_burn = burn_dam + burn
 				var/threshold = max_damage * CONFIG_GET(number/organ_health_multiplier)
 				if(total_damage > threshold)
-					if(attempt_dismemberment(pure_brute, burn, edge, used_weapon, spillover, total_damage > threshold*20))
+					if(attempt_dismemberment(pure_brute, burn, edge, used_weapon, spillover, total_damage > threshold*20, total_brute, total_burn))
 						return
 
 		if(owner && update_damstate())
@@ -301,7 +303,7 @@ obj/item/organ/external/take_general_damage(var/amount, var/silent = FALSE)
 //2. If the damage amount dealt exceeds the disintegrate threshold, the organ is completely obliterated.
 //3. If the organ has already reached or would be put over it's max damage amount (currently redundant),
 //   and the brute damage dealt exceeds the tearoff threshold, the organ is torn off.
-/obj/item/organ/external/proc/attempt_dismemberment(brute, burn, edge, used_weapon, spillover, force_droplimb)
+/obj/item/organ/external/proc/attempt_dismemberment(brute, burn, edge, used_weapon, spillover, force_droplimb, total_brute, total_burn)
 	//Check edge eligibility
 	var/edge_eligible = 0
 	if(edge)
@@ -332,23 +334,27 @@ obj/item/organ/external/take_general_damage(var/amount, var/silent = FALSE)
 		droplimb(0, DROPLIMB_EDGE, cutter = used_weapon)
 		return TRUE
 	else
+
+		//Stupid safety check to stop shrapnel, dragging, fire DoT, acid DoT from delimbing people.
+		if (!(brute > 3) || !(burn > 3))
+			return
 		//Lets handle cumulative damage. No probabilities, guaranteed effect if enough damage accumulates
 		//Any edge weapon can cut off a limb if its been thoroughly broken
-		if (edge && brute >= max_damage * DROPLIMB_CUMULATIVE_TEAROFF)
+		if (edge && total_brute >= max_damage * DROPLIMB_CUMULATIVE_TEAROFF)
 			droplimb(0, DROPLIMB_EDGE, cutter = used_weapon)
 			return TRUE
 
 		//Non-edged weapons can snap off limbs with enough hits
-		else if (brute >= max_damage * DROPLIMB_CUMULATIVE_BREAKOFF)
+		else if (total_brute >= max_damage * DROPLIMB_CUMULATIVE_BREAKOFF)
 			droplimb(0, DROPLIMB_EDGE, cutter = used_weapon)
 			return TRUE
 
 		//Any limb can be beaten to a pulp with enough repeated hits. This is fairly uncommon since it will usually breakoff first
-		else if (brute >= max_damage * DROPLIMB_CUMULATIVE_DESTROY)
+		else if (total_brute >= max_damage * DROPLIMB_CUMULATIVE_DESTROY)
 			droplimb(0, DROPLIMB_EDGE, cutter = used_weapon)
 			return TRUE
 		
 		// Shitshow of snowflake checks, but this should make burn delimbs less stupid.
-		else if (damage >= max_damage * DROPLIMB_CUMULATIVE_BURN)
+		else if (total_burn >= max_damage * DROPLIMB_CUMULATIVE_BURN)
 			droplimb(0, DROPLIMB_BURN, cutter = used_weapon)
 			return TRUE
