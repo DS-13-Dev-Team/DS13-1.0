@@ -115,7 +115,7 @@
 	//Alright now we want to figure out if the poison actually caused their death. This is a complicated problem
 	//We're going to go with a simple solution which is not 100% foolproof, but will cover most use cases:
 	//IF their toxloss is higher than their total violent damage (brute+burn) then they probably died of poison. If not, violence
-	var/violence = (L.getBruteLoss() + L.getFireLoss()) * 0.75 //It's actually pretty hard to trigger this, this will make it a bit easier
+	var/violence = (L.getBruteLoss() + L.getFireLoss()) * 0.5 //It's actually pretty hard to trigger this, this will make it a bit easier
 	if (L.getToxLoss()	<=	violence)
 		return
 
