@@ -52,7 +52,8 @@
 	/mob/living/carbon/human/proc/infector_execution,
 	/mob/living/carbon/human/proc/select_essence_ability,
 	/mob/living/carbon/human/proc/use_selected_essence_ability,
-	/mob/proc/shout,/mob/proc/shout_long)
+	/mob/proc/shout,/mob/proc/shout_long,
+	/mob/infector/proc/infector_sense)
 
 	modifier_verbs = list(
 	KEY_CTRLALT = list(/mob/living/carbon/human/proc/use_selected_essence_ability),
@@ -443,3 +444,12 @@ All of them except New Growth require corruption to build upon\
 	'sound/effects/creatures/necromorph/infector/infector_flap_5.ogg')), VOLUME_MID, TRUE)
 	.=..()
 
+/mob/infector/proc/infector_sense()
+	set name = "Sense"
+	set category = "Abilities"
+	set desc = "Reveals nearby living creatures around you, to yourself and allies."
+	var/datum/extension/sense/S = get_extension(src, /datum/extension/sense)
+	if (S)
+		return
+	set_extension(src, /datum/extension/sense, 9, 9, FACTION_NECROMORPH, 4 SECONDS, 20 SECONDS)
+	play_species_audio(src, SOUND_SPEECH, VOLUME_MID, 1, 3)

@@ -627,6 +627,9 @@ If performed successfully on a live crewman, it yields a bonus of 50kg biomass f
 
 		if (!target)
 			return
+	
+	if (target.is_necromorph())
+		return
 
 	perform_execution(/datum/extension/execution/tripod_kiss, target)
 
