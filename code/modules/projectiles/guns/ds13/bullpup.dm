@@ -23,7 +23,7 @@
 	one_hand_penalty = 6	//Don't try to fire this with one hand
 	dispersion = list()
 
-	aiming_modes = list(/datum/extension/aim_mode/rifle)
+	aiming_modes = list(/datum/extension/aim_mode/rifle, /datum/extension/aim_mode/rifle/bullpup_long)
 
 	firemodes = list(
 		FULL_AUTO_600, //fuller auto
@@ -64,3 +64,15 @@
 	max_ammo = 30
 	multiple_sprites = TRUE
 	mag_type = MAGAZINE
+
+/*-----------------------
+	Zoom
+------------------------*/
+
+/datum/extension/aim_mode/rifle/bullpup_long
+	name = "2x Zoom"
+	damage_mod = 0.8 //slightly less effective when scoped
+	view_offset = 8*WORLD_ICON_SIZE //long range
+	view_range = -2
+	statmods = list(STATMOD_MOVESPEED_ADDITIVE = -0.65,
+	STATMOD_RANGED_ACCURACY = 5)
