@@ -15,7 +15,7 @@
 	load_method = MAGAZINE
 	caliber = "bullpup"
 	screen_shake = 0
-	accuracy = 50 //this is a low-ammo precision rifle
+	accuracy = 20 //this is a low-ammo precision rifle
 	slot_flags = SLOT_BACK
 	ammo_type = /obj/item/ammo_casing/pulse
 	mag_insert_sound = 'sound/weapons/guns/interaction/smg_magin.ogg'
@@ -75,4 +75,4 @@
 	view_offset = 8*WORLD_ICON_SIZE //long range
 	view_range = -2
 	statmods = list(STATMOD_MOVESPEED_ADDITIVE = -0.65,
-	STATMOD_RANGED_ACCURACY = 5)
+	STATMOD_RANGED_ACCURACY = 25)
