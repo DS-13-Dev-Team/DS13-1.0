@@ -239,14 +239,14 @@ S	fuel tank (hydrazine)
 	id = "pulseslug"
 	materials = list(MATERIAL_STEEL = 7500, MATERIAL_DIAMOND = 1500)
 	build_path = /obj/item/ammo_magazine/pulse
-	price = 2500
+	price = 2000
 
 /datum/design/item/ammo/pulsedeflect
 	name = "deflection pulse rounds"
 	id = "pulsedeflect"
 	materials = list(MATERIAL_PLASTEEL = 5000, MATERIAL_DIAMOND = 2000, MATERIAL_PHORON = 500)
 	build_path = /obj/item/ammo_magazine/pulse/df
-	price = 4000
+	price = 3000
 
 /datum/design/item/ammo/pulsehighvel
 	name = "high velocity pulse rounds"
@@ -261,7 +261,7 @@ S	fuel tank (hydrazine)
 	id = "shotgun_ammo"
 	materials = list(MATERIAL_PLASTIC = 2500, MATERIAL_STEEL = 3000)
 	build_path = /obj/item/ammo_magazine/shotgun
-	price = 1800
+	price = 1500
 
 /datum/design/item/ammo/seeker_ammo
 	name = "seeker shell"
@@ -309,7 +309,7 @@ S	fuel tank (hydrazine)
 	id = "diamond_blades"
 	materials = list(MATERIAL_STEEL = 4000, MATERIAL_DIAMOND = 1000)
 	build_path = /obj/item/ammo_magazine/sawblades/diamond
-	price = 3600
+	price = 2900
 
 
 //Support Weapons
