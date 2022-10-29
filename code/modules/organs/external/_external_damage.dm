@@ -126,9 +126,10 @@ obj/item/organ/external/take_general_damage(var/amount, var/silent = FALSE)
 				var/total_damage = brute_dam + burn_dam + brute + burn + spillover
 				var/total_brute = brute_dam
 				var/total_burn = burn_dam
+				var/dealt_damage = brute + burn
 				var/threshold = max_damage * CONFIG_GET(number/organ_health_multiplier)
 				if(total_damage > threshold)
-					if(attempt_dismemberment(pure_brute, burn, edge, used_weapon, spillover, total_damage > threshold*20, total_brute, total_burn))
+					if(attempt_dismemberment(pure_brute, burn, edge, used_weapon, spillover, total_damage > threshold*20, total_brute, total_burn, dealt_damage))
 						return
 
 		if(owner && update_damstate())
@@ -303,7 +304,7 @@ obj/item/organ/external/take_general_damage(var/amount, var/silent = FALSE)
 //2. If the damage amount dealt exceeds the disintegrate threshold, the organ is completely obliterated.
 //3. If the organ has already reached or would be put over it's max damage amount (currently redundant),
 //   and the brute damage dealt exceeds the tearoff threshold, the organ is torn off.
-/obj/item/organ/external/proc/attempt_dismemberment(brute, burn, edge, used_weapon, spillover, force_droplimb, total_brute, total_burn)
+/obj/item/organ/external/proc/attempt_dismemberment(brute, burn, edge, used_weapon, spillover, force_droplimb, total_brute, total_burn, dealt_damage)
 	//Check edge eligibility
 	var/edge_eligible = 0
 	if(edge)
@@ -336,9 +337,7 @@ obj/item/organ/external/take_general_damage(var/amount, var/silent = FALSE)
 	else
 
 		//Stupid safety check to stop shrapnel, dragging, fire DoT, acid DoT from delimbing people.
-		if (brute > 3 || burn > 3)
-			var/helpmeplease
-		else
+		if (dealt_damage < 3)
 			return
 
 		//Lets handle cumulative damage. No probabilities, guaranteed effect if enough damage accumulates
