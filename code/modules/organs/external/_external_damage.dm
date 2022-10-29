@@ -124,8 +124,8 @@ obj/item/organ/external/take_general_damage(var/amount, var/silent = FALSE)
 		if(allow_dismemberment && loc == owner && !is_stump())
 			if((limb_flags & ORGAN_FLAG_CAN_AMPUTATE) && CONFIG_GET(flag/limbs_can_break))
 				var/total_damage = brute_dam + burn_dam + brute + burn + spillover
-				var/total_brute = brute_dam + brute
-				var/total_burn = burn_dam + burn
+				var/total_brute = brute_dam
+				var/total_burn = burn_dam
 				var/threshold = max_damage * CONFIG_GET(number/organ_health_multiplier)
 				if(total_damage > threshold)
 					if(attempt_dismemberment(pure_brute, burn, edge, used_weapon, spillover, total_damage > threshold*20, total_brute, total_burn))
@@ -336,8 +336,11 @@ obj/item/organ/external/take_general_damage(var/amount, var/silent = FALSE)
 	else
 
 		//Stupid safety check to stop shrapnel, dragging, fire DoT, acid DoT from delimbing people.
-		if (!(brute > 3) || !(burn > 3))
+		if (brute > 3 || burn > 3)
+			var/helpmeplease
+		else
 			return
+
 		//Lets handle cumulative damage. No probabilities, guaranteed effect if enough damage accumulates
 		//Any edge weapon can cut off a limb if its been thoroughly broken
 		if (edge && total_brute >= max_damage * DROPLIMB_CUMULATIVE_TEAROFF)
