@@ -38,11 +38,11 @@
 	RIG suits
 */
 /datum/patron_item/max_stone_rig
-	name = "modified advanced RIG"
-	description = "The latest in cutting-edge RIG technology. This one is a slightly older model, still using the standard engineering suit scheme. It has `Max S.` engraved next to the monitor lights."
-	item_path = /obj/item/rig/advanced/maxstone
+	name = "modified engineering RIG"
+	desc = "A lightweight and flexible armoured rig suit, designed for mining and shipboard engineering. This one is a heavily customized model, nonetheless donning a standard color scheme. It has `Max S.` engraved next to the monitor lights."
+	item_path = /obj/item/rig/engineering/maxstone
 	id = "max_stone_rig"
-	store_cost = 12000
+	store_cost = 6000
 	store_access = ACCESS_WHITELIST
 
 	category = CATEGORY_RIG
@@ -50,7 +50,7 @@
 
 	loadout_modkit_cost = 2
 	modkit_access = ACCESS_WHITELIST
-	modkit_typelist = list(/obj/item/rig/advanced)
+	modkit_typelist = list(/obj/item/rig/engineering)
 
 //This is not my typo, his ckey is actually spelled like that
 /datum/patron_item/plaugewalker
@@ -58,7 +58,7 @@
 	description = "A lightweight and flexible armoured rig suit, designed for riot control and shipboard disciplinary enforcement."
 	item_path = /obj/item/rig/scaf/elite
 	id = "plaugewalker_rig"
-	store_cost = 6400
+	store_cost = 6000
 	store_access = ACCESS_WHITELIST
 
 	category = CATEGORY_RIG
@@ -68,13 +68,12 @@
 	modkit_access = ACCESS_WHITELIST
 	modkit_typelist = list(/obj/item/rig/security)
 
-
 /datum/patron_item/banditofdoom
 	name = "Evangelion RIG"
 	description = "A project many months in the works, created by an obsessive historical anime fan. Even incorporates a custom voice changer for impersonating TV characters."
-	item_path = /obj/item/rig/advanced/banditofdoom
+	item_path = /obj/item/rig/engineering/banditofdoom
 	id = "banditofdoom_rig"
-	store_cost = 10000
+	store_cost = 6000
 	store_access = ACCESS_WHITELIST
 
 	category = CATEGORY_RIG
@@ -82,8 +81,7 @@
 
 	loadout_modkit_cost = 2
 	modkit_access = ACCESS_WHITELIST
-	modkit_typelist = list(/obj/item/rig/advanced)
-
+	modkit_typelist = list(/obj/item/rig/engineering)
 
 /datum/patron_item/hacker_rig
 	name = "digital infiltration RIG"
@@ -101,7 +99,6 @@
 	exclusion_tags = list(LOADOUT_TAG_RIG)
 	equip_adjustments = OUTFIT_ADJUSTMENT_SKIP_BACKPACK
 
-
 /datum/patron_item/mouse
 	name = "mouse"
 	item_path = /mob/living/simple_animal/mouse
@@ -109,7 +106,6 @@
 	store_cost = 1000
 	store_access = ACCESS_WHITELIST
 	loadout_access = ACCESS_WHITELIST
-
 
 /datum/patron_item/marshal_wrench
 	name =  "Colossal Wrench"
