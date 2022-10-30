@@ -776,9 +776,24 @@ proc/is_blind(A)
 		set_move_cooldown(turntime * 0.75) //100% is too harsh
 		set_click_cooldown(max((turntime * 0.75),DEFAULT_ATTACK_COOLDOWN))
 
+SUBSYSTEM_DEF(spin)
+	name = "Spin"
+	flags = SS_TICKER|SS_NO_INIT
+	wait = 1
+	priority = SS_PRIORITY_OVERLAYS
+
+	var/list/spinning = list()
+
+/datum/controller/subsystem/spin/fire(resumed, mc_check)
+	spinning.Cut()
+
 //Mobs with offset view should update it every time they turn
 /mob/set_dir(new_dir)
 	.=..()
+	if(SSspin.spinning[src])
+		SSspin.spinning[src]++
+	else
+		SSspin.spinning[src] = 1
 	if (. && view_offset)
 		reset_view(null)	//Possible future consideration, should this call handle_vision instead?
 							//Seems pointlessly expensive for now, but consider it if there are problems
