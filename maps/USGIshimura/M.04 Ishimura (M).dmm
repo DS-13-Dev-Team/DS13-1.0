@@ -70,9 +70,8 @@
 /obj/machinery/door/firedoor/border_only{
 	dir = 4
 	},
-/obj/machinery/door/blast/regular/open{
+/obj/machinery/door/blast/regular{
 	dir = 4;
-	icon_state = "pdoor0";
 	id = "bridge_windows"
 	},
 /turf/simulated/floor/plating,
@@ -87,6 +86,7 @@
 /obj/structure/sign/warning/secure_area{
 	pixel_y = 34
 	},
+/obj/structure/corruption_node/growth/branch,
 /turf/simulated/floor/dank/rivets,
 /area/ishimura/upper/engineering/hub)
 "aau" = (
@@ -105,39 +105,8 @@
 /turf/simulated/floor/plating,
 /area/ishimura/upper/maintenance/fore_central)
 "aay" = (
-/obj/machinery/light/small{
-	dir = 8
-	},
-/obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod{
-	dir = 1;
-	frequency = 1380;
-	icon_state = "pod_control_standby";
-	id_tag = "escape_pod_3";
-	layer = 4;
-	name = "escape pod three controller";
-	pixel_y = -24;
-	tag_door = "escape_pod_3_hatch"
-	},
-/obj/structure/bed/chair/pod/yellow,
-/turf/simulated/floor/shuttle/pod,
-/area/shuttle/escape_pod3/station)
-"aaz" = (
-/obj/machinery/light/small{
-	dir = 8
-	},
-/obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod{
-	dir = 1;
-	frequency = 1380;
-	icon_state = "pod_control_standby";
-	id_tag = "escape_pod_2";
-	layer = 4;
-	name = "escape pod two controller";
-	pixel_y = -24;
-	tag_door = "escape_pod_2_hatch"
-	},
-/obj/structure/bed/chair/pod/yellow,
-/turf/simulated/floor/shuttle/pod,
-/area/shuttle/escape_pod2/station)
+/turf/simulated/wall/r_wall/hull,
+/area/ishimura/upper/maintenance/aft_port)
 "aaA" = (
 /obj/machinery/computer/crew,
 /turf/simulated/floor/tiled/dark/monotile,
@@ -372,6 +341,7 @@
 /obj/structure/table/standard,
 /obj/item/deck/cards,
 /obj/random/smokes,
+/obj/item/gun/projectile/rivet,
 /turf/simulated/floor/dank/hardwood,
 /area/ishimura/upper/engineering/breakroom)
 "abd" = (
@@ -589,6 +559,7 @@
 /area/ishimura/upper/security/checkpoint/bridge)
 "abx" = (
 /obj/machinery/camera/network/common,
+/obj/structure/corruption_node/maw,
 /turf/simulated/floor/dank/tech{
 	dir = 8
 	},
@@ -598,6 +569,7 @@
 	dir = 1
 	},
 /obj/machinery/store,
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/dank/hardwood,
 /area/ishimura/upper/security/checkpoint/bridge)
 "abz" = (
@@ -1103,6 +1075,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/dank/rivets,
 /area/ishimura/upper/security/checkpoint/bridge)
 "acJ" = (
@@ -1137,9 +1110,6 @@
 "acQ" = (
 /obj/structure/bed/chair/comfy/red{
 	dir = 4
-	},
-/obj/effect/landmark/start{
-	name = "Chief Security Officer"
 	},
 /turf/simulated/floor/dank/hardwood/alt,
 /area/ishimura/upper/security/chiefsoffice)
@@ -1367,6 +1337,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
+/obj/effect/shuttle_landmark/kellion/landing/ishimura,
 /turf/simulated/floor/dank/mono,
 /area/ishimura/upper/security/forensics)
 "adu" = (
@@ -1598,9 +1569,6 @@
 "adX" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 8
-	},
-/obj/effect/landmark/start{
-	name = "Senior Security Officer"
 	},
 /turf/simulated/floor/dank/mono,
 /area/ishimura/upper/security/forensics)
@@ -2445,6 +2413,7 @@
 	icon_state = "pipe-c"
 	},
 /obj/effect/catwalk_plated/white,
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/plating,
 /area/ishimura/upper/medical/lobby/reception)
 "afK" = (
@@ -2514,6 +2483,7 @@
 /obj/effect/floor_decal/corner/grey{
 	dir = 5
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/tiled/white,
 /area/ishimura/upper/medical)
 "afR" = (
@@ -2534,6 +2504,7 @@
 /obj/effect/floor_decal/corner/grey{
 	dir = 5
 	},
+/obj/structure/barricade/wood,
 /turf/simulated/floor/tiled/white,
 /area/ishimura/upper/medical)
 "afT" = (
@@ -2554,7 +2525,7 @@
 /obj/effect/floor_decal/corner/grey/mono,
 /obj/item/computer_hardware/hard_drive/portable/autorun/manual/surgery,
 /obj/item/computer_hardware/hard_drive/portable/autorun/manual/surgery,
-/turf/simulated/floor/tiled/white/monotile,
+/turf/simulated/floor/plating,
 /area/ishimura/upper/medical)
 "afV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -2762,6 +2733,7 @@
 	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/segment,
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/dank/grater,
 /area/ishimura/upper/engineering/atmospherics/storage)
 "agt" = (
@@ -3009,9 +2981,22 @@
 /turf/simulated/floor/dank/rivets,
 /area/ishimura/upper/security/checkpoint/engineering)
 "agV" = (
-/obj/structure/table/rack,
-/obj/random/firstaid,
-/obj/random/loot/sometimes/few,
+/obj/item/reagent_containers/pill/adminordrazine{
+	desc = "An odd pill only issued to the Church of Unitology's most venerated members. It smells like rotting flesh.";
+	name = "gold-banded pill";
+	pixel_y = 8
+	},
+/obj/item/reagent_containers/pill/adminordrazine{
+	desc = "An odd pill only issued to the Church of Unitology's most venerated members. It smells like rotting flesh.";
+	name = "gold-banded pill";
+	pixel_x = 4
+	},
+/obj/item/reagent_containers/pill/adminordrazine{
+	desc = "An odd pill only issued to the Church of Unitology's most venerated members. It smells like rotting flesh.";
+	name = "gold-banded pill";
+	pixel_x = -7;
+	pixel_y = -10
+	},
 /turf/simulated/floor/plating,
 /area/ishimura/upper/maintenance/aft_port)
 "agW" = (
@@ -3294,11 +3279,10 @@
 /turf/simulated/floor/dank/rivets,
 /area/ishimura/upper/engineering/hub)
 "ahU" = (
-/obj/structure/table/rack,
-/obj/random/assembly,
-/obj/random/loot/usually,
-/obj/random/rare_loot/rarely,
-/obj/random/loot/sometimes/few,
+/obj/machinery/door/airlock/maintenance{
+	dir = 8;
+	name = "rusted door"
+	},
 /turf/simulated/floor/plating,
 /area/ishimura/upper/maintenance/aft_port)
 "ahV" = (
@@ -3306,6 +3290,7 @@
 	dir = 8;
 	icon_state = "map_scrubber_on"
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/tiled/dark,
 /area/ishimura/upper/engineering/atmospherics/storage)
 "ahW" = (
@@ -3465,9 +3450,6 @@
 /obj/structure/bed/chair/comfy/beige{
 	dir = 4
 	},
-/obj/effect/landmark/start{
-	name = "Technical Engineer"
-	},
 /turf/simulated/floor/dank/hardwood,
 /area/ishimura/upper/engineering/breakroom)
 "aiD" = (
@@ -3588,9 +3570,6 @@
 "aiQ" = (
 /obj/structure/bed/chair/comfy/beige{
 	dir = 8
-	},
-/obj/effect/landmark/start{
-	name = "Technical Engineer"
 	},
 /turf/simulated/floor/dank/hardwood,
 /area/ishimura/upper/engineering/breakroom)
@@ -4141,11 +4120,8 @@
 /turf/simulated/floor/tiled,
 /area/ishimura/upper/engineering/chief_office)
 "ako" = (
-/obj/structure/closet/firecloset,
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/random/loot/sometimes/few,
-/turf/simulated/floor/plating,
-/area/ishimura/upper/maintenance/aft_port)
+/turf/simulated/floor/plating/under,
+/area/space)
 "akp" = (
 /obj/machinery/alarm{
 	pixel_y = 23
@@ -4515,6 +4491,7 @@
 /obj/effect/floor_decal/techfloor/corner{
 	dir = 4
 	},
+/obj/structure/corruption_node/growth/branch,
 /turf/simulated/floor/tiled/techfloor,
 /area/ishimura/upper/engineering/atmospherics)
 "akX" = (
@@ -4548,9 +4525,6 @@
 /area/ishimura/upper/engineering/atmospherics)
 "ala" = (
 /obj/structure/bed/chair/comfy/yellow,
-/obj/effect/landmark/start{
-	name = "Chief Engineer"
-	},
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/upper/engineering/chief_office)
@@ -5004,9 +4978,38 @@
 /turf/simulated/floor/dank/rivets,
 /area/ishimura/upper/engineering/atmospherics/storage)
 "amd" = (
-/obj/structure/closet/emcloset,
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/random/loot/sometimes/few,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/light/small,
+/obj/structure/table/steel_reinforced,
+/obj/item/clothing/shoes/dutyboots{
+	color = "#FB84CD";
+	name = "heavy boots";
+	pixel_y = 2
+	},
+/obj/item/clothing/gloves/thick/swat{
+	color = "#FB84CD";
+	name = "custom gloves";
+	pixel_y = 7
+	},
+/obj/item/clothing/glasses/tacgoggles{
+	name = "modified work goggles";
+	pixel_y = 7
+	},
+/obj/item/clothing/under/deadspace/clergy{
+	color = "#FB84CD";
+	pixel_y = 3
+	},
 /turf/simulated/floor/plating,
 /area/ishimura/upper/maintenance/aft_port)
 "ame" = (
@@ -5204,6 +5207,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/structure/corruption_node/growth/branch,
 /turf/simulated/floor/tiled/techfloor,
 /area/ishimura/upper/engineering/atmospherics)
 "amA" = (
@@ -5308,6 +5312,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/structure/barricade/wood,
 /turf/simulated/floor/dank/hardwood/alt,
 /area/ishimura/upper/medical/lobby)
 "amJ" = (
@@ -5373,6 +5378,7 @@
 	dir = 4;
 	pixel_x = -22
 	},
+/obj/item/stack/material/wood,
 /turf/simulated/floor/dank/rivets,
 /area/ishimura/upper/engineering/hub)
 "amR" = (
@@ -5433,6 +5439,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/dank/medical,
 /area/ishimura/upper/medical/bpc)
 "amY" = (
@@ -5455,6 +5462,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/item/gun/energy/cutter/plasma,
 /turf/simulated/floor/tiled,
 /area/ishimura/upper/engineering/chief_office)
 "anb" = (
@@ -5498,6 +5506,7 @@
 	dir = 4
 	},
 /obj/effect/wallframe_spawn/reinforced,
+/obj/structure/barricade/wood,
 /turf/simulated/floor/dank/slides{
 	dir = 4
 	},
@@ -5578,6 +5587,7 @@
 /area/ishimura/upper/medical/bpc)
 "ano" = (
 /obj/structure/table/standard,
+/obj/item/cell/plasmacutter,
 /turf/simulated/floor/dank/slides,
 /area/ishimura/upper/engineering/lobby)
 "anp" = (
@@ -5839,6 +5849,7 @@
 	dir = 6
 	},
 /obj/structure/disposalpipe/segment,
+/obj/item/cell/plasmacutter,
 /turf/simulated/floor/tiled,
 /area/ishimura/upper/engineering/chief_office)
 "anN" = (
@@ -5862,6 +5873,7 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
+/obj/structure/barricade/wood,
 /turf/simulated/floor/dank/tech{
 	dir = 4
 	},
@@ -5889,11 +5901,6 @@
 "anS" = (
 /obj/structure/window/reinforced{
 	dir = 4
-	},
-/obj/structure/window/reinforced,
-/obj/effect/floor_decal/industrial/outline/grey,
-/obj/machinery/computer/station_alert/engineering{
-	dir = 1
 	},
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/command/bridge)
@@ -6025,6 +6032,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/item/stack/material/wood,
 /turf/simulated/floor/dank/slides{
 	dir = 8
 	},
@@ -6074,6 +6082,9 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/closet/firecloset,
 /obj/machinery/light,
+/obj/item/cell/plasmacutter,
+/obj/item/cell/plasmacutter,
+/obj/item/gun/projectile/rivet,
 /turf/simulated/floor/dank/rivets,
 /area/ishimura/upper/engineering/hub)
 "aok" = (
@@ -6269,6 +6280,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/disposalpipe/segment,
+/obj/item/stack/material/wood,
 /turf/simulated/floor/dank/grater,
 /area/ishimura/upper/engineering/hub)
 "aoA" = (
@@ -6287,6 +6299,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/structure/barricade/wood,
 /turf/simulated/floor/dank/rivets,
 /area/ishimura/upper/engineering/hub)
 "aoD" = (
@@ -6444,6 +6457,7 @@
 /obj/structure/closet/medical_wall/filled{
 	pixel_x = 32
 	},
+/obj/item/stack/material/wood,
 /turf/simulated/floor/dank/rivets,
 /area/ishimura/upper/engineering/hub)
 "aoY" = (
@@ -6676,6 +6690,7 @@
 /obj/effect/floor_decal/corner/grey{
 	dir = 5
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/tiled/white,
 /area/ishimura/upper/medical)
 "apv" = (
@@ -6694,6 +6709,7 @@
 	dir = 8;
 	icon_state = "pipe-c"
 	},
+/obj/structure/corruption_node/growth/branch,
 /turf/simulated/floor/dank/grater,
 /area/ishimura/upper/engineering/hub)
 "apw" = (
@@ -6709,11 +6725,8 @@
 /turf/simulated/floor/dank/grater,
 /area/ishimura/upper/engineering/hub)
 "apx" = (
-/obj/effect/wallframe_spawn/reinforced,
-/obj/machinery/door/firedoor{
-	dir = 4
-	},
-/turf/simulated/floor/plating,
+/obj/structure/girder/reinforced,
+/turf/simulated/floor/plating/under,
 /area/ishimura/upper/misc/hallway/central)
 "apy" = (
 /obj/machinery/atmospherics/pipe/simple/visible/green{
@@ -6738,6 +6751,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/structure/corruption_node/growth,
 /turf/simulated/floor/tiled/white,
 /area/ishimura/upper/medical)
 "apA" = (
@@ -7127,6 +7141,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/dank/mono,
 /area/ishimura/upper/security/forensics)
 "aqm" = (
@@ -7134,6 +7149,7 @@
 	dir = 4;
 	icon_state = "wooden_chair_wings"
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/upper/maintenance/central)
 "aqn" = (
@@ -7257,6 +7273,8 @@
 /obj/random/rare_loot/rarely,
 /obj/random/loot/usually,
 /obj/random/loot/often/few,
+/obj/item/cell/plasmacutter,
+/obj/item/cell/plasmacutter,
 /turf/simulated/floor/dank/slides{
 	dir = 1
 	},
@@ -7613,13 +7631,6 @@
 "arm" = (
 /turf/simulated/floor/plating,
 /area/ishimura/upper/maintenance/aft_starboard)
-"arn" = (
-/obj/item/radio/intercom{
-	pixel_y = 24
-	},
-/obj/random/trash,
-/turf/simulated/floor/plating,
-/area/ishimura/upper/maintenance/fore_central)
 "aro" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -7859,6 +7870,7 @@
 /area/ishimura/upper/engineering/machining_room)
 "arL" = (
 /obj/effect/decal/cleanable/blood,
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/plating,
 /area/ishimura/upper/maintenance/central)
 "arM" = (
@@ -7913,6 +7925,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/dank/medical,
 /area/ishimura/upper/medical/bpc)
 "arP" = (
@@ -7998,7 +8011,7 @@
 /turf/simulated/floor/dank/grater,
 /area/ishimura/upper/engineering/machining_room)
 "arY" = (
-/obj/machinery/power/smes/buildable/preset/torch/engine_main,
+/obj/machinery/power/smes/buildable/preset/torch/substation,
 /obj/structure/cable/green,
 /obj/structure/cable/green{
 	d2 = 2;
@@ -8107,6 +8120,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/item/stack/material/wood,
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/upper/engineering/bay)
 "asl" = (
@@ -8116,6 +8130,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/structure/barricade/wood,
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/upper/engineering/bay)
 "asm" = (
@@ -8202,18 +8217,9 @@
 	},
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/upper/engineering/machining_room)
-"asw" = (
-/obj/structure/table/standard,
-/obj/random/smokes,
-/turf/simulated/floor/plating,
-/area/ishimura/upper/maintenance/fore_central)
 "asx" = (
-/obj/structure/closet,
-/obj/random/tech_supply,
-/obj/random/tech_supply,
-/obj/effect/decal/cleanable/cobweb2,
-/obj/random/lathe_disk/advanced/low_chance,
-/turf/simulated/floor/plating,
+/obj/structure/lattice,
+/turf/simulated/open,
 /area/ishimura/upper/maintenance/fore_central)
 "asy" = (
 /obj/machinery/disposal,
@@ -8469,6 +8475,7 @@
 	},
 /obj/random/loot/often/few,
 /obj/item/tool/repairkit,
+/obj/item/ammo_magazine/lineracks,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/engineering/spare_storage)
 "atb" = (
@@ -8658,6 +8665,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/red,
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/dank/rivets,
 /area/ishimura/upper/engineering/hub)
 "atw" = (
@@ -8687,6 +8695,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/dank/cable/end,
 /area/ishimura/upper/engineering/bay)
 "aty" = (
@@ -8707,6 +8716,7 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
+/obj/item/stack/material/wood,
 /turf/simulated/floor/dank/rivets,
 /area/ishimura/upper/engineering/hub)
 "atA" = (
@@ -8773,6 +8783,7 @@
 /obj/item/storage/box/lights/mixed,
 /obj/item/storage/box/lights/mixed,
 /obj/machinery/light,
+/obj/item/gun/projectile/rivet,
 /turf/simulated/floor/dank/rivets,
 /area/ishimura/upper/engineering/hub)
 "atH" = (
@@ -9128,6 +9139,7 @@
 	icon_state = "1-2"
 	},
 /obj/effect/catwalk_plated/dark,
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/plating,
 /area/ishimura/upper/command/bridge)
 "aus" = (
@@ -9329,6 +9341,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor,
 /area/ishimura/upper/maintenance/fore_port)
 "auI" = (
@@ -9380,14 +9393,12 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/effect/landmark/start{
-	name = "Technical Engineer"
-	},
 /turf/simulated/floor/dank/hardwood,
 /area/ishimura/upper/engineering/breakroom)
 "auN" = (
 /obj/structure/table/standard,
 /obj/item/flashlight/lamp,
+/obj/item/cell/plasmacutter,
 /turf/simulated/floor/dank/hardwood,
 /area/ishimura/upper/engineering/breakroom)
 "auO" = (
@@ -9554,6 +9565,7 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 8
 	},
+/obj/item/stack/material/wood,
 /turf/simulated/floor/dank/rivets,
 /area/ishimura/upper/engineering/hub)
 "avj" = (
@@ -9623,6 +9635,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/structure/corruption_node/growth/branch,
 /turf/simulated/floor/tiled,
 /area/ishimura/upper/engineering/chief_office)
 "avq" = (
@@ -9718,7 +9731,7 @@
 /turf/simulated/floor/plating,
 /area/ishimura/upper/maintenance/aft_starboard)
 "avw" = (
-/obj/machinery/power/smes/buildable/preset/torch/substation_full,
+/obj/machinery/power/smes/buildable/preset/torch/substation,
 /obj/structure/cable/cyan{
 	d2 = 2;
 	icon_state = "0-2"
@@ -9757,6 +9770,7 @@
 "avB" = (
 /obj/structure/closet/firecloset,
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/item/ammo_magazine/rivet,
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/upper/engineering/bay)
 "avC" = (
@@ -9788,6 +9802,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/item/stack/material/wood,
 /turf/simulated/floor/dank/hardwood,
 /area/ishimura/upper/security/brig)
 "avE" = (
@@ -9979,6 +9994,7 @@
 	dir = 4
 	},
 /obj/item/measuring_tape,
+/obj/item/cell/plasmacutter,
 /turf/simulated/floor/dank/rivets,
 /area/ishimura/upper/engineering/hub)
 "avX" = (
@@ -10207,6 +10223,7 @@
 	dir = 10
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/red,
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/tiled/techfloor,
 /area/ishimura/upper/engineering/atmospherics)
 "awn" = (
@@ -10276,6 +10293,9 @@
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/item/ammo_magazine/rivet,
+/obj/item/ammo_magazine/rivet,
+/obj/item/ammo_magazine/rivet,
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/upper/engineering/bay)
 "awv" = (
@@ -10386,6 +10406,7 @@
 /obj/effect/floor_decal/corner/grey{
 	dir = 5
 	},
+/obj/structure/barricade/wood,
 /turf/simulated/floor/tiled/white,
 /area/ishimura/upper/medical)
 "awE" = (
@@ -10433,6 +10454,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
+/obj/structure/barricade/wood,
 /turf/simulated/floor/tiled/white,
 /area/ishimura/upper/medical)
 "awI" = (
@@ -10678,6 +10700,7 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
+/obj/item/stack/material/wood,
 /turf/simulated/floor/tiled/white,
 /area/ishimura/upper/medical)
 "axc" = (
@@ -10747,7 +10770,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/white,
+/turf/simulated/floor/plating,
 /area/ishimura/upper/medical)
 "axh" = (
 /obj/structure/cable/green{
@@ -10764,7 +10787,7 @@
 /obj/structure/disposalpipe/junction{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/white,
+/turf/simulated/floor/plating,
 /area/ishimura/upper/medical)
 "axi" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -10786,14 +10809,6 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
 /turf/simulated/floor/tiled/white,
 /area/ishimura/upper/medical)
 "axk" = (
@@ -10857,6 +10872,7 @@
 /obj/machinery/status_display{
 	pixel_y = 32
 	},
+/obj/structure/corruption_node/growth/branch,
 /turf/simulated/floor/dank/tech{
 	dir = 8
 	},
@@ -10937,6 +10953,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/dank/hardwood/alt,
 /area/ishimura/upper/medical/lobby)
 "axC" = (
@@ -10974,6 +10991,8 @@
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/effect/gibspawner/human,
+/obj/item/stack/material/wood,
 /turf/simulated/floor/tiled/white,
 /area/ishimura/upper/medical)
 "axF" = (
@@ -11045,6 +11064,7 @@
 /obj/structure/closet/medical_wall/filled{
 	pixel_y = -25
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/upper/engineering/prep)
 "axO" = (
@@ -11237,6 +11257,7 @@
 /obj/effect/floor_decal/corner/grey{
 	dir = 9
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/tiled/white,
 /area/ishimura/upper/medical)
 "aye" = (
@@ -11277,22 +11298,7 @@
 /turf/simulated/floor/dank/medical,
 /area/ishimura/upper/medical/bpc)
 "ayh" = (
-/obj/structure/catwalk,
-/obj/structure/cable/green{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 10
-	},
-/obj/machinery/light/small{
-	dir = 1
-	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/plating/under,
 /area/ishimura/upper/maintenance/fore_central)
 "ayi" = (
 /obj/structure/morgue{
@@ -11301,17 +11307,8 @@
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/medical/morgue)
 "ayj" = (
-/obj/structure/morgue{
-	dir = 2
-	},
-/obj/machinery/light{
-	dir = 1
-	},
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/medical/morgue)
-"ayk" = (
-/turf/simulated/wall/r_wall,
-/area/ishimura/upper/medical/morgue/autopsy)
 "ayl" = (
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -11327,6 +11324,10 @@
 	},
 /obj/machinery/alarm{
 	pixel_y = 23
+	},
+/obj/machinery/door/blast/regular{
+	dir = 4;
+	id = "zealot_gaming"
 	},
 /turf/simulated/floor/plating,
 /area/ishimura/upper/maintenance/central)
@@ -11370,6 +11371,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/dank/rivets,
 /area/ishimura/upper/security/checkpoint/medical)
 "ayq" = (
@@ -11406,6 +11408,7 @@
 	dir = 8;
 	pixel_x = 25
 	},
+/obj/item/cell/plasmacutter,
 /turf/simulated/floor/dank/hardwood,
 /area/ishimura/upper/engineering/breakroom)
 "ayu" = (
@@ -11415,6 +11418,7 @@
 /area/ishimura/upper/medical/bpc)
 "ayv" = (
 /obj/structure/bed/chair/office/light,
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/tiled/white,
 /area/ishimura/upper/medical/lobby/reception)
 "ayw" = (
@@ -11533,8 +11537,7 @@
 /area/ishimura/upper/medical/morgue)
 "ayJ" = (
 /obj/effect/floor_decal/industrial/outline/grey,
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
-/turf/simulated/floor/tiled/dark/monotile,
+/turf/simulated/floor/plating,
 /area/ishimura/upper/medical/morgue)
 "ayK" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -11548,6 +11551,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/tiled/white,
 /area/ishimura/upper/research)
 "ayL" = (
@@ -11576,15 +11580,6 @@
 	},
 /turf/simulated/floor/dank/hardwood/alt,
 /area/ishimura/upper/medical/lobby)
-"ayM" = (
-/obj/effect/wallframe_spawn/reinforced/polarized{
-	id = "morgue"
-	},
-/obj/machinery/door/firedoor{
-	dir = 4
-	},
-/turf/simulated/floor/plating,
-/area/ishimura/upper/medical/morgue/autopsy)
 "ayN" = (
 /obj/structure/bed/roller,
 /obj/effect/floor_decal/corner/grey/mono,
@@ -11641,18 +11636,6 @@
 	},
 /turf/simulated/floor/dank/grater,
 /area/ishimura/upper/engineering/hub)
-"ayQ" = (
-/obj/machinery/disposal,
-/obj/structure/disposalpipe/trunk{
-	dir = 8
-	},
-/obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/machinery/camera/autoname{
-	dir = 8;
-	pixel_y = -20
-	},
-/turf/simulated/floor/tiled/dark/monotile,
-/area/ishimura/upper/medical/morgue/autopsy)
 "ayR" = (
 /obj/effect/floor_decal/industrial/outline/grey,
 /obj/machinery/camera/network/security{
@@ -11760,13 +11743,7 @@
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/medical)
 "ayZ" = (
-/obj/structure/bed/roller,
-/obj/machinery/status_display{
-	pixel_y = -32
-	},
-/obj/effect/floor_decal/corner/grey/mono,
-/obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/tiled/white/monotile,
+/turf/simulated/floor/plating,
 /area/ishimura/upper/medical)
 "aza" = (
 /obj/effect/wallframe_spawn/reinforced/polarized{
@@ -12061,16 +12038,6 @@
 	},
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/research/virology/entrance)
-"azz" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
-	dir = 8
-	},
-/obj/machinery/firealarm{
-	dir = 4;
-	pixel_x = 20
-	},
-/turf/simulated/floor/tiled/dark,
-/area/ishimura/upper/medical/morgue/autopsy)
 "azA" = (
 /obj/random/closet,
 /obj/random/maintenance,
@@ -12170,10 +12137,6 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
-/obj/effect/catwalk_plated/dark,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /turf/simulated/floor/plating,
 /area/ishimura/upper/medical/morgue)
 "azJ" = (
@@ -12244,6 +12207,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/structure/barricade/wood,
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/upper/security/brig)
 "azR" = (
@@ -12256,11 +12220,9 @@
 /turf/simulated/floor/tiled/white,
 /area/ishimura/upper/research/storage)
 "azS" = (
-/obj/structure/disposalpipe/segment,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 6
-	},
-/turf/simulated/floor/tiled/dark,
+/obj/structure/lattice,
+/obj/item/stack/rods,
+/turf/simulated/open,
 /area/ishimura/upper/medical/morgue/autopsy)
 "azT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -12387,6 +12349,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/tiled/white,
 /area/ishimura/upper/research/virology)
 "aAg" = (
@@ -12461,7 +12424,6 @@
 /turf/simulated/floor/tiled/white,
 /area/ishimura/upper/research/virology/quarantine)
 "aAm" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/medical)
 "aAn" = (
@@ -12538,12 +12500,8 @@
 /turf/simulated/floor/tiled/white,
 /area/ishimura/upper/research)
 "aAs" = (
-/obj/machinery/optable,
-/obj/effect/floor_decal/industrial/outline/grey,
-/obj/machinery/light{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/dark/monotile,
+/obj/item/stack/material/steel,
+/turf/simulated/floor/plating,
 /area/ishimura/upper/medical/morgue/autopsy)
 "aAt" = (
 /obj/structure/bed/chair{
@@ -12565,6 +12523,7 @@
 /obj/effect/floor_decal/dank/mono_half{
 	dir = 4
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/dank/medical,
 /area/ishimura/upper/medical/bpc)
 "aAv" = (
@@ -12609,6 +12568,7 @@
 	icon_state = "0-4"
 	},
 /obj/effect/landmark/node_room,
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/tiled/dark,
 /area/ishimura/upper/engineering/smes/solar_connect)
 "aAy" = (
@@ -12673,18 +12633,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/white,
+/turf/simulated/floor/plating,
 /area/ishimura/upper/medical)
 "aAE" = (
 /obj/structure/closet/secure_closet/scientist,
@@ -12805,6 +12754,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/firedoor,
+/obj/structure/barricade/wood,
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/upper/medical/supply_storage)
 "aAP" = (
@@ -12982,6 +12932,7 @@
 /obj/effect/floor_decal/corner/grey{
 	dir = 9
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/tiled/white,
 /area/ishimura/upper/research/storage)
 "aBd" = (
@@ -13130,17 +13081,12 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/tiled/white,
 /area/ishimura/upper/research/virology/quarantine)
 "aBq" = (
 /obj/structure/bed/chair/comfy/purple{
 	dir = 1
-	},
-/obj/effect/landmark/start{
-	name = "Chief Science Officer"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 10
 	},
 /turf/simulated/floor/carpet/purple,
 /area/ishimura/upper/research/chief_science_office)
@@ -13196,6 +13142,7 @@
 	layer = 2.4;
 	level = 2
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/dank/hardwood/alt,
 /area/ishimura/upper/medical/lobby)
 "aBv" = (
@@ -13333,15 +13280,6 @@
 /obj/item/storage/firstaid/surgery,
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/medical/supply_storage)
-"aBG" = (
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/tiled/dark,
-/area/ishimura/upper/medical/morgue/autopsy)
 "aBH" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 6
@@ -13609,6 +13547,7 @@
 	name = "Primary Armory";
 	req_access = list(2)
 	},
+/obj/structure/barricade/wood,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/security/armory)
 "aCf" = (
@@ -14039,6 +13978,7 @@
 	dir = 2;
 	icon_state = "pipe-c"
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/tiled/white,
 /area/ishimura/upper/research/storage)
 "aCW" = (
@@ -14088,8 +14028,9 @@
 /area/ishimura/upper/maintenance/fore_central)
 "aDb" = (
 /obj/structure/catwalk,
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/plating,
-/area/ishimura/upper/maintenance/fore_central)
+/area/ishimura/upper/maintenance/aft_port)
 "aDc" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/machinery/store,
@@ -14143,6 +14084,7 @@
 	layer = 2.4;
 	level = 2
 	},
+/obj/item/stack/material/wood,
 /turf/simulated/floor/dank/slides{
 	dir = 4
 	},
@@ -14206,6 +14148,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/item/stack/material/wood,
 /turf/simulated/floor/dank/slides{
 	dir = 8
 	},
@@ -14281,6 +14224,7 @@
 	name = "Primary Armory";
 	req_access = list(2)
 	},
+/obj/structure/barricade/wood,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/security/armory)
 "aDs" = (
@@ -14382,6 +14326,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/item/stack/material/wood,
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/upper/security/brig)
 "aDB" = (
@@ -14511,6 +14456,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/dank/tech{
 	dir = 4
 	},
@@ -14544,6 +14490,7 @@
 /obj/machinery/door/firedoor/border_only{
 	dir = 4
 	},
+/obj/structure/barricade/wood,
 /turf/simulated/floor/dank/tech{
 	dir = 8
 	},
@@ -14582,6 +14529,7 @@
 /obj/machinery/door_timer/cell_6{
 	pixel_y = -32
 	},
+/obj/item/stack/material/wood,
 /turf/simulated/floor/dank/grater,
 /area/ishimura/upper/security/brig)
 "aDP" = (
@@ -14674,6 +14622,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/dank/slides{
 	dir = 1
 	},
@@ -14690,6 +14639,7 @@
 /obj/machinery/door_timer/cell_4{
 	pixel_y = -32
 	},
+/obj/structure/barricade/wood,
 /turf/simulated/floor/dank/grater,
 /area/ishimura/upper/security/brig)
 "aEb" = (
@@ -14728,21 +14678,6 @@
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/upper/security/brig)
-"aEe" = (
-/obj/structure/catwalk,
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 5
-	},
-/turf/simulated/floor/plating,
-/area/ishimura/upper/maintenance/fore_central)
 "aEf" = (
 /obj/structure/table/standard,
 /obj/machinery/alarm{
@@ -14784,6 +14719,7 @@
 /obj/machinery/camera/network/security{
 	dir = 1
 	},
+/obj/structure/barricade/wood,
 /turf/simulated/floor/dank/grater,
 /area/ishimura/upper/security/brig)
 "aEl" = (
@@ -14850,6 +14786,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/dank/hardwood,
 /area/ishimura/upper/security/checkpoint/bridge)
 "aEp" = (
@@ -14935,6 +14872,7 @@
 "aEx" = (
 /obj/structure/table/steel,
 /obj/item/material/ashtray/bronze,
+/obj/item/gun/projectile/automatic/l6_saw/mag,
 /turf/simulated/floor/dank/hardwood/alt,
 /area/ishimura/upper/security/chiefsoffice)
 "aEy" = (
@@ -15040,6 +14978,7 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/dank/grater,
 /area/ishimura/upper/security/brig)
 "aEH" = (
@@ -15682,12 +15621,41 @@
 /turf/simulated/floor/tiled/white,
 /area/ishimura/upper/medical/supply_storage)
 "aFT" = (
-/obj/structure/bed/chair/office/light,
-/obj/effect/landmark/start{
-	name = "Security Officer"
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
 	},
-/turf/simulated/floor/dank/hardwood,
-/area/ishimura/upper/security/brig)
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/table/steel_reinforced,
+/obj/item/clothing/suit/space/unitologist/berserker{
+	desc = "A heavy, outdated voidsuit made for traversing a zero-gravity environment without a RIG. This one's been heavily modified with metal plates and odd runes.";
+	icon_state = "zealot_rig";
+	name = "reinforced voidsuit";
+	pixel_x = 8;
+	pixel_y = 3
+	},
+/obj/item/rig/civilian{
+	color = "#BC5758";
+	desc = "The Unitologists never were ones to dress shabby.";
+	name = "blood-soaked RIG";
+	pixel_x = -8;
+	pixel_y = 1
+	},
+/obj/item/clothing/head/helmet/space/unitologist/berserker{
+	desc = "Do you like hurting people?";
+	icon_state = "zealot_rig_sealed";
+	name = "bloodied helmet";
+	pixel_y = 4
+	},
+/turf/simulated/floor/plating,
+/area/ishimura/upper/maintenance/aft_port)
 "aFU" = (
 /obj/effect/floor_decal/corner/grey{
 	dir = 6
@@ -15698,7 +15666,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled/white,
+/turf/simulated/floor/plating,
 /area/ishimura/upper/medical)
 "aFW" = (
 /obj/machinery/light/small{
@@ -15894,7 +15862,7 @@
 /obj/structure/disposalpipe/junction/yjunction{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/white,
+/turf/simulated/floor/plating,
 /area/ishimura/upper/medical)
 "aGo" = (
 /obj/structure/morgue,
@@ -15902,12 +15870,8 @@
 /area/ishimura/upper/medical/morgue)
 "aGp" = (
 /obj/effect/floor_decal/industrial/outline/grey,
-/obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 1;
-	layer = 2.4;
-	level = 2
-	},
-/turf/simulated/floor/tiled/dark/monotile,
+/obj/structure/girder/displaced,
+/turf/simulated/floor/plating,
 /area/ishimura/upper/medical/morgue)
 "aGq" = (
 /obj/effect/floor_decal/corner/grey{
@@ -15928,19 +15892,8 @@
 /turf/simulated/floor/tiled/white,
 /area/ishimura/upper/research/chemistry)
 "aGs" = (
-/obj/structure/table/standard,
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "east bump";
-	pixel_x = 24
-	},
-/obj/structure/cable/green{
-	d2 = 8;
-	icon_state = "0-8"
-	},
-/obj/item/autopsy_scanner,
-/obj/item/tool/scalpel,
-/turf/simulated/floor/tiled/dark/monotile,
+/obj/structure/girder/displaced,
+/turf/simulated/floor/plating/under,
 /area/ishimura/upper/medical/morgue/autopsy)
 "aGt" = (
 /obj/effect/wallframe_spawn/reinforced,
@@ -16012,6 +15965,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/item/stack/material/wood,
 /turf/simulated/floor/dank/hardwood/alt,
 /area/ishimura/upper/medical/lobby)
 "aGA" = (
@@ -16056,6 +16010,7 @@
 	id = "Cell 6";
 	pixel_x = -24
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/dank/maint_left,
 /area/ishimura/upper/security/brig)
 "aGE" = (
@@ -16079,6 +16034,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/structure/barricade/steel,
 /turf/simulated/floor/plating,
 /area/ishimura/upper/command/bridge)
 "aGG" = (
@@ -16188,6 +16144,7 @@
 	name = "Clinic";
 	req_access = newlist()
 	},
+/obj/structure/barricade/wood,
 /turf/simulated/floor/dank/hardwood/alt,
 /area/ishimura/upper/medical/lobby)
 "aGS" = (
@@ -16624,16 +16581,6 @@
 /obj/structure/flora/pottedplant,
 /turf/simulated/floor/dank/rivets,
 /area/ishimura/upper/security/checkpoint/ladders)
-"aHA" = (
-/obj/machinery/alarm{
-	pixel_y = 23
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/ishimura/upper/medical/morgue/autopsy)
 "aHB" = (
 /obj/machinery/light{
 	dir = 8
@@ -16665,6 +16612,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/dank/maint,
 /area/ishimura/upper/security/brig)
 "aHF" = (
@@ -16780,6 +16728,7 @@
 	id = "Cell 5";
 	pixel_x = -24
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/dank/maint_left,
 /area/ishimura/upper/security/brig)
 "aHM" = (
@@ -16788,6 +16737,7 @@
 	id = "Cell 4";
 	pixel_x = -24
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/dank/maint_left,
 /area/ishimura/upper/security/brig)
 "aHN" = (
@@ -16796,6 +16746,7 @@
 	id = "Cell 3";
 	pixel_x = -24
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/dank/maint_left,
 /area/ishimura/upper/security/brig)
 "aHO" = (
@@ -16835,6 +16786,7 @@
 	id = "Cell 2";
 	pixel_x = -24
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/dank/maint_left,
 /area/ishimura/upper/security/brig)
 "aHS" = (
@@ -16843,6 +16795,7 @@
 	id = "Cell 1";
 	pixel_x = -24
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/dank/maint_left,
 /area/ishimura/upper/security/brig)
 "aHT" = (
@@ -16881,6 +16834,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/item/stack/material/wood,
 /turf/simulated/floor/dank/grater,
 /area/ishimura/upper/security/brig)
 "aHW" = (
@@ -16901,15 +16855,13 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
-/obj/effect/landmark/start{
-	name = "Senior Medical Officer"
-	},
 /turf/simulated/floor/carpet/green,
 /area/ishimura/upper/medical/senior_medical_office)
 "aHY" = (
 /obj/structure/closet/medical_wall/filled{
 	pixel_x = -30
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/tiled/dark,
 /area/ishimura/upper/security/armory)
 "aHZ" = (
@@ -16939,6 +16891,7 @@
 /area/ishimura/upper/security/armory)
 "aIc" = (
 /obj/structure/table/reinforced,
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/dank/maint_left,
 /area/ishimura/upper/security/brig)
 "aId" = (
@@ -16973,6 +16926,7 @@
 	dir = 1
 	},
 /obj/item/bedsheet/prisoner,
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/dank/maint,
 /area/ishimura/upper/security/brig)
 "aIf" = (
@@ -16994,6 +16948,7 @@
 	},
 /obj/structure/bed,
 /obj/item/bedsheet/prisoner,
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/dank/maint,
 /area/ishimura/upper/security/brig)
 "aIi" = (
@@ -17043,9 +16998,9 @@
 /turf/simulated/floor,
 /area/ishimura/upper/security/brig)
 "aIm" = (
-/obj/effect/shuttle_landmark/valor/landing/ishimura,
-/turf/simulated/floor/plating,
-/area/space)
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/tiled/dark,
+/area/ishimura/upper/engineering/atmospherics/storage)
 "aIn" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -17147,6 +17102,7 @@
 "aIw" = (
 /obj/machinery/door/firedoor/border_only,
 /obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/structure/barricade/spike,
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/upper/misc/hallway/central)
 "aIx" = (
@@ -17156,16 +17112,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
-	},
-/turf/simulated/floor/tiled/white,
+/turf/simulated/floor/plating,
 /area/ishimura/upper/medical)
 "aIy" = (
 /obj/machinery/light,
@@ -17214,16 +17161,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/firedoor/border_only,
 /obj/effect/floor_decal/industrial/hatch/yellow,
-/turf/simulated/floor/dank/rectangles,
-/area/ishimura/upper/misc/hallway/central)
-"aID" = (
-/obj/machinery/door/firedoor/border_only{
-	dir = 4
-	},
-/obj/effect/floor_decal/industrial/hatch/yellow,
-/turf/simulated/floor/dank/tech{
-	dir = 8
-	},
+/obj/structure/barricade/spike,
+/turf/simulated/floor/plating,
 /area/ishimura/upper/misc/hallway/central)
 "aIE" = (
 /obj/machinery/firealarm{
@@ -17385,6 +17324,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/item/stack/material/plasteel,
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/medical)
 "aIT" = (
@@ -17412,6 +17352,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/command/bridge)
 "aIV" = (
@@ -17516,6 +17457,7 @@
 	control_area = "Bridge Checkpoint";
 	pixel_x = -32
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/plating,
 /area/ishimura/upper/command/bridge)
 "aJf" = (
@@ -17540,6 +17482,7 @@
 	dir = 8;
 	name = "Bridge"
 	},
+/obj/item/stack/material/wood,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/command/bridge)
 "aJg" = (
@@ -17560,6 +17503,8 @@
 /obj/machinery/firealarm{
 	pixel_y = 24
 	},
+/obj/item/stack/material/steel,
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/command/bridge)
 "aJh" = (
@@ -17729,11 +17674,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/disposalpipe/segment,
-/turf/simulated/floor/dank/slides{
-	dir = 4
-	},
+/turf/simulated/floor/plating,
 /area/ishimura/upper/misc/hallway/central)
 "aJu" = (
 /obj/structure/closet/hydrant{
@@ -17774,7 +17715,6 @@
 /obj/machinery/computer/station_alert/security{
 	dir = 1
 	},
-/obj/effect/floor_decal/industrial/outline/grey,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/command/bridge)
 "aJy" = (
@@ -17834,29 +17774,6 @@
 /obj/effect/floor_decal/corner/grey/mono,
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/research/virology/quarantine)
-"aJF" = (
-/obj/machinery/door/firedoor/border_only{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/effect/floor_decal/industrial/hatch/yellow,
-/turf/simulated/floor/dank/tech{
-	dir = 4
-	},
-/area/ishimura/upper/misc/hallway/central)
 "aJG" = (
 /obj/structure/bed/chair/office/light{
 	dir = 8
@@ -18012,6 +17929,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/item/stack/material/wood,
 /turf/simulated/floor/dank/hardwood,
 /area/ishimura/upper/security/checkpoint/bridge)
 "aJV" = (
@@ -18033,16 +17951,7 @@
 /area/ishimura/upper/security/checkpoint/ladders)
 "aJW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/structure/disposalpipe/segment,
-/turf/simulated/floor/dank/tech{
-	dir = 8
-	},
+/turf/simulated/floor/plating/under,
 /area/ishimura/upper/misc/hallway/central)
 "aJX" = (
 /obj/structure/closet/firecloset,
@@ -18058,29 +17967,12 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
 	},
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/structure/cable/green{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
 /turf/simulated/floor/plating,
 /area/ishimura/upper/command/bridge)
 "aKa" = (
 /obj/effect/catwalk_plated/dark,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 9
-	},
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
+/obj/structure/girder/displaced,
 /turf/simulated/floor/plating,
 /area/ishimura/upper/command/bridge)
 "aKb" = (
@@ -18105,16 +17997,13 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/dark/monotile,
+/turf/simulated/floor/plating,
 /area/ishimura/upper/command/bridge)
 "aKd" = (
-/obj/structure/bed/chair/office/light,
-/obj/structure/window/reinforced{
-	dir = 8;
-	health = 1e+006
-	},
-/turf/simulated/floor/tiled/dark/monotile,
-/area/ishimura/upper/command/bridge)
+/obj/effect/landmark/node_room,
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/tiled/dark,
+/area/ishimura/upper/engineering/atmospherics/storage)
 "aKe" = (
 /obj/machinery/status_display{
 	pixel_y = 32
@@ -18159,6 +18048,7 @@
 /obj/structure/closet/hydrant{
 	pixel_y = 32
 	},
+/obj/structure/barricade/wood,
 /turf/simulated/floor/dank/cable/end,
 /area/ishimura/upper/security/checkpoint/bridge)
 "aKk" = (
@@ -18194,6 +18084,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/item/stack/material/steel,
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/upper/security/checkpoint/bridge)
 "aKm" = (
@@ -18325,26 +18216,6 @@
 	dir = 4
 	},
 /area/ishimura/upper/misc/hallway/central)
-"aKu" = (
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/obj/structure/disposalpipe/junction/yjunction{
-	dir = 1
-	},
-/turf/simulated/floor/dank/tech{
-	dir = 4
-	},
-/area/ishimura/upper/misc/hallway/central)
 "aKw" = (
 /obj/machinery/door/firedoor/border_only{
 	dir = 4
@@ -18366,28 +18237,9 @@
 /area/ishimura/upper/misc/hallway/central)
 "aKy" = (
 /obj/machinery/light,
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/dank/slides{
 	dir = 8
-	},
-/area/ishimura/upper/misc/hallway/central)
-"aKz" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
-	},
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 5
-	},
-/turf/simulated/floor/dank/cable{
-	dir = 4
 	},
 /area/ishimura/upper/misc/hallway/central)
 "aKA" = (
@@ -18398,6 +18250,9 @@
 "aKB" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/workbench,
+/obj/item/rig_module/device/drill{
+	pixel_y = 4
+	},
 /turf/simulated/floor/dank/slides{
 	dir = 8
 	},
@@ -18411,12 +18266,14 @@
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/upper/misc/hallway/hangar)
 "aKD" = (
-/obj/machinery/alarm{
-	dir = 8;
-	pixel_x = 25
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/tiled/dark,
-/area/ishimura/upper/command/bridge)
+/area/ishimura/upper/misc/janitorcloset/aft)
 "aKE" = (
 /obj/structure/grille/broken,
 /obj/random/trash,
@@ -18488,18 +18345,6 @@
 /turf/simulated/floor/plating,
 /area/ishimura/upper/command/bridge)
 "aKL" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 9
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9
-	},
-/obj/effect/catwalk_plated/dark,
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
 /turf/simulated/floor/plating,
 /area/ishimura/upper/command/bridge)
 "aKM" = (
@@ -18523,9 +18368,6 @@
 	dir = 4;
 	pixel_x = -21
 	},
-/obj/effect/landmark/start{
-	name = "Security Officer"
-	},
 /turf/simulated/floor/dank/slides,
 /area/ishimura/upper/security/equipment)
 "aKP" = (
@@ -18539,6 +18381,11 @@
 	icon_state = "1-2"
 	},
 /obj/effect/catwalk_plated/dark,
+/obj/effect/gibspawner/human,
+/obj/item/gun/energy/laser/dogan{
+	max_shots = 80;
+	name = "prototype las-carbine"
+	},
 /turf/simulated/floor/plating,
 /area/ishimura/upper/command/bridge)
 "aKQ" = (
@@ -18559,10 +18406,12 @@
 /obj/machinery/camera/network/security{
 	dir = 1
 	},
+/obj/structure/barricade/wood,
 /turf/simulated/floor/dank/cable/start,
 /area/ishimura/upper/security/checkpoint/bridge)
 "aKT" = (
 /obj/structure/disposalpipe/segment,
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/dank/slides{
 	dir = 1
 	},
@@ -18573,6 +18422,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/structure/corruption_node/growth,
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/upper/security/checkpoint/bridge)
 "aKV" = (
@@ -18686,14 +18536,7 @@
 /area/ishimura/upper/command/bridge)
 "aLi" = (
 /obj/machinery/light,
-/turf/simulated/floor/tiled/dark,
-/area/ishimura/upper/command/bridge)
-"aLj" = (
-/obj/item/radio/intercom{
-	dir = 1;
-	pixel_y = -28
-	},
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/floor/plating,
 /area/ishimura/upper/command/bridge)
 "aLl" = (
 /obj/structure/cable/green{
@@ -18951,10 +18794,7 @@
 	dir = 8;
 	health = 1e+006
 	},
-/obj/machinery/computer/station_alert/engineering{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/dark/monotile,
+/turf/simulated/floor/plating/under,
 /area/ishimura/upper/command/bridge)
 "aLM" = (
 /obj/machinery/light{
@@ -18966,6 +18806,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/dank/cable{
 	dir = 4
 	},
@@ -18994,15 +18835,6 @@
 /obj/effect/wallframe_spawn/reinforced,
 /turf/simulated/floor/plating,
 /area/ishimura/upper/engineering/spare_storage)
-"aLQ" = (
-/obj/structure/bed/chair/office/light{
-	dir = 1
-	},
-/obj/effect/landmark/start{
-	name = "Technical Engineer"
-	},
-/turf/simulated/floor/dank/hardwood,
-/area/ishimura/upper/engineering/lobby)
 "aLS" = (
 /obj/item/radio/intercom{
 	dir = 1;
@@ -19143,11 +18975,41 @@
 	},
 /area/ishimura/upper/misc/hallway/central)
 "aMd" = (
-/obj/structure/closet/walllocker/emerglocker/north,
-/turf/simulated/floor/dank/tech{
-	dir = 8
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
 	},
-/area/ishimura/upper/misc/hallway/aft)
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/table/steel_reinforced,
+/obj/item/material/knife/butch{
+	color = "#AE3F3F";
+	default_material = MATERIAL_DIAMOND;
+	desc = "A massive cleaver made out of materials shaved off of a red marker. This one is engraved with the Unitologist symbol for the word 'faith'.";
+	force = 30;
+	name = "faith";
+	pixel_x = 2;
+	pixel_y = 1;
+	throwforce = 30
+	},
+/obj/item/material/knife/butch{
+	color = "#AE3F3F";
+	default_material = MATERIAL_DIAMOND;
+	desc = "A massive cleaver made out of materials shaved off of a red marker. This one is engraved with the Unitologist symbol for the word 'freedom'.";
+	force = 30;
+	name = "freedom";
+	pixel_x = 3;
+	pixel_y = 5;
+	throwforce = 30
+	},
+/turf/simulated/floor/plating,
+/area/ishimura/upper/maintenance/aft_port)
 "aMe" = (
 /obj/structure/table/rack{
 	dir = 8
@@ -19258,6 +19120,7 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/dank/cable{
 	dir = 4
 	},
@@ -19296,8 +19159,7 @@
 /turf/simulated/floor/dank/bathr,
 /area/ishimura/upper/misc/bathroom)
 "aMs" = (
-/obj/structure/dispenser/oxygen,
-/obj/machinery/light/small,
+/obj/item/stack/rods,
 /turf/simulated/floor/plating,
 /area/ishimura/upper/maintenance/fore_central)
 "aMt" = (
@@ -19445,6 +19307,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/dank/golf_gray,
 /area/ishimura/upper/engineering/spare_storage/tool)
 "aMJ" = (
@@ -19580,6 +19443,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/research)
 "aMU" = (
@@ -19685,6 +19549,7 @@
 	dir = 2;
 	icon_state = "pipe-c"
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/upper/security/brig)
 "aNd" = (
@@ -19986,6 +19851,10 @@
 "aNE" = (
 /obj/effect/wallframe_spawn/reinforced,
 /obj/machinery/door/firedoor/border_only,
+/obj/machinery/door/blast/regular{
+	dir = 4;
+	id = "zealot_gaming"
+	},
 /turf/simulated/floor/plating,
 /area/ishimura/upper/misc/hangar)
 "aNF" = (
@@ -20171,9 +20040,8 @@
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/upper/misc/hangar)
 "aNW" = (
-/obj/effect/shuttle_landmark/kellion/landing/ishimura,
 /turf/simulated/floor/plating,
-/area/space)
+/area/ishimura/upper/misc/hangar)
 "aNX" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -20244,6 +20112,7 @@
 	dir = 8;
 	name = "Secondary Supply Storage"
 	},
+/obj/structure/barricade/wood,
 /turf/simulated/floor/dank/golf_gray,
 /area/ishimura/upper/engineering/spare_storage/tool)
 "aOc" = (
@@ -20260,9 +20129,21 @@
 	},
 /area/ishimura/upper/misc/hangar)
 "aOe" = (
-/obj/effect/shuttle_landmark/deliverance/landing/ishimura,
-/turf/simulated/floor/plating,
-/area/space)
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/catwalk,
+/obj/effect/gibspawner/human,
+/turf/simulated/floor,
+/area/ishimura/upper/maintenance/fore_port)
 "aOf" = (
 /obj/machinery/light{
 	dir = 4
@@ -20346,6 +20227,7 @@
 /obj/machinery/status_display{
 	pixel_y = 32
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/tiled/white,
 /area/ishimura/upper/research)
 "aOn" = (
@@ -20366,6 +20248,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/dank/grater,
 /area/ishimura/upper/misc/hallway/fore)
 "aOo" = (
@@ -20462,30 +20345,9 @@
 /turf/simulated/floor/dank/bathr,
 /area/ishimura/upper/misc/bathroom)
 "aOx" = (
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/machinery/door/firedoor{
-	dir = 4
-	},
-/obj/machinery/door/airlock/medical{
-	dir = 8;
-	name = "Autopsy Room";
-	req_access = list();
-	req_one_access = list(2,3)
-	},
-/turf/simulated/floor/tiled/dark/monotile,
+/obj/structure/lattice,
+/obj/item/shuttle_part,
+/turf/simulated/open,
 /area/ishimura/upper/medical/morgue/autopsy)
 "aOy" = (
 /obj/structure/table/standard,
@@ -20624,6 +20486,7 @@
 	dir = 4;
 	pixel_y = 30
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/upper/misc/hallway/escape)
 "aOT" = (
@@ -20712,6 +20575,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/upper/misc/hallway/escape)
 "aPb" = (
@@ -21021,6 +20885,7 @@
 /obj/structure/closet/hydrant{
 	pixel_y = 32
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/upper/misc/hallway/hangar)
 "aPG" = (
@@ -21135,17 +21000,9 @@
 /turf/simulated/floor/plating,
 /area/ishimura/upper/maintenance/aft_starboard)
 "aPP" = (
-/obj/machinery/button/windowtint{
-	id = "morgue";
-	pixel_y = -24
-	},
-/obj/structure/table/standard,
-/obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 1;
-	layer = 2.4;
-	level = 2
-	},
-/turf/simulated/floor/tiled/dark/monotile,
+/obj/structure/lattice,
+/obj/structure/girder/displaced,
+/turf/simulated/open,
 /area/ishimura/upper/medical/morgue/autopsy)
 "aPQ" = (
 /obj/structure/cable/green{
@@ -21348,19 +21205,7 @@
 /turf/simulated/floor/plating,
 /area/ishimura/upper/maintenance/fore_port)
 "aQl" = (
-/obj/structure/table/standard,
-/obj/item/storage/box/bodybags{
-	pixel_x = 1;
-	pixel_y = 2
-	},
-/obj/item/storage/box/bodybags{
-	pixel_x = 1;
-	pixel_y = 2
-	},
-/obj/machinery/camera/network/medbay{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/dark/monotile,
+/turf/simulated/floor/plating,
 /area/ishimura/upper/medical/morgue/autopsy)
 "aQm" = (
 /obj/structure/table/rack,
@@ -21612,6 +21457,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/dank/bathr,
 /area/ishimura/upper/misc/bathroom)
 "aQL" = (
@@ -22315,6 +22161,7 @@
 	pixel_x = -22
 	},
 /obj/random/loot/often/some,
+/obj/item/cell/plasmacutter,
 /turf/simulated/floor/tiled,
 /area/ishimura/upper/engineering/bay)
 "aRU" = (
@@ -22643,6 +22490,7 @@
 /obj/machinery/camera/network/security{
 	dir = 4
 	},
+/obj/structure/barricade/wood,
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/upper/security/brig)
 "aSz" = (
@@ -22670,6 +22518,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/plating,
 /area/ishimura/upper/maintenance/fore_central)
 "aSB" = (
@@ -22823,9 +22672,8 @@
 /obj/structure/bed/chair/office/light{
 	dir = 8
 	},
-/obj/effect/landmark/start{
-	name = "Security Officer"
-	},
+/obj/effect/gibspawner/human,
+/obj/item/stack/material/wood,
 /turf/simulated/floor/dank/hardwood,
 /area/ishimura/upper/security/brig)
 "aSR" = (
@@ -22836,6 +22684,9 @@
 /obj/item/flashlight/maglight,
 /obj/item/flashlight/maglight,
 /obj/item/flashlight/maglight,
+/obj/item/cell/plasmacutter,
+/obj/item/ammo_magazine/rivet,
+/obj/item/ammo_magazine/rivet,
 /turf/simulated/floor/dank/slides,
 /area/ishimura/upper/engineering/prep)
 "aSS" = (
@@ -22946,13 +22797,6 @@
 	},
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/upper/security/checkpoint)
-"aTc" = (
-/obj/structure/flora/pottedplant/minitree,
-/obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/dank/slides{
-	dir = 4
-	},
-/area/ishimura/upper/misc/hallway/central)
 "aTd" = (
 /obj/machinery/light{
 	dir = 8
@@ -23023,6 +22867,7 @@
 /obj/item/camera_film,
 /obj/item/camera_film,
 /obj/item/camera,
+/obj/item/ammo_magazine/rivet,
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/upper/engineering/prep)
 "aTn" = (
@@ -23103,6 +22948,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/item/ammo_magazine/rivet,
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/upper/engineering/bay)
 "aTt" = (
@@ -23153,9 +22999,6 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/obj/effect/landmark/start{
-	name = "Janitor"
-	},
 /turf/simulated/floor/dank/golf_gray,
 /area/ishimura/upper/misc/janitorcloset/fore_port)
 "aTw" = (
@@ -23232,6 +23075,7 @@
 	dir = 8;
 	name = "Power Storage"
 	},
+/obj/structure/barricade/wood,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/engineering/spare_storage/starboard)
 "aTD" = (
@@ -23271,38 +23115,36 @@
 /obj/random/loot/sometimes/few,
 /turf/simulated/floor/plating,
 /area/ishimura/upper/maintenance/aft_starboard)
-"aTI" = (
-/turf/simulated/floor/plating,
-/turf/simulated/shuttle/wall/corner/pod1{
-	dir = 8;
-	icon_state = "corner_pod1"
-	},
-/area/shuttle/escape_pod3/station)
 "aTJ" = (
-/obj/effect/floor_decal/pod,
-/obj/machinery/door/airlock/shuttle{
-	frequency = 1380;
-	id_tag = "escape_pod_3_hatch";
-	name = "Escape Pod Door"
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
 	},
-/turf/simulated/floor/shuttle/pod,
-/area/shuttle/escape_pod3/station)
-"aTK" = (
-/turf/simulated/floor/plating,
-/turf/simulated/shuttle/wall/corner/pod1{
-	dir = 8;
-	icon_state = "corner_pod1"
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
 	},
-/area/shuttle/escape_pod2/station)
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/wall/r_wall/hull,
+/area/ishimura/upper/maintenance/aft_port)
 "aTL" = (
-/obj/effect/floor_decal/pod,
-/obj/machinery/door/airlock/shuttle{
-	frequency = 1380;
-	id_tag = "escape_pod_2_hatch";
-	name = "Escape Pod Door"
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
 	},
-/turf/simulated/floor/shuttle/pod,
-/area/shuttle/escape_pod2/station)
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/maintenance/aft_port)
 "aTM" = (
 /obj/machinery/light,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -23329,13 +23171,6 @@
 /obj/machinery/space_heater,
 /turf/simulated/floor/plating,
 /area/ishimura/upper/maintenance/fore_central)
-"aTO" = (
-/turf/simulated/floor/plating,
-/turf/simulated/shuttle/wall/corner/pod1{
-	dir = 8;
-	icon_state = "corner_pod1"
-	},
-/area/shuttle/escape_pod1/station)
 "aTP" = (
 /obj/structure/table/standard,
 /obj/item/deck/cards,
@@ -23345,6 +23180,7 @@
 /obj/effect/wallframe_spawn/reinforced,
 /obj/machinery/door/firedoor/border_only,
 /obj/structure/cable/green,
+/obj/structure/barricade/wood,
 /turf/simulated/floor/plating,
 /area/ishimura/upper/security/checkpoint)
 "aTR" = (
@@ -23412,6 +23248,7 @@
 	dir = 4
 	},
 /obj/machinery/light,
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/dank/bathr,
 /area/ishimura/upper/misc/bathroom)
 "aTY" = (
@@ -23474,6 +23311,7 @@
 	id_tag = "sec_ent_outer";
 	name = "Security Entrance"
 	},
+/obj/structure/barricade/wood,
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/upper/security/checkpoint)
 "aUd" = (
@@ -23516,6 +23354,7 @@
 	icon_state = "shutter0";
 	id = "sec_entrance"
 	},
+/obj/structure/barricade/wood,
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/upper/security/checkpoint)
 "aUh" = (
@@ -23570,21 +23409,10 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/upper/security/checkpoint)
-"aUo" = (
-/obj/effect/floor_decal/pod,
-/obj/machinery/door/airlock/shuttle{
-	frequency = 1380;
-	id_tag = "escape_pod_1_hatch";
-	name = "Escape Pod Door"
-	},
-/turf/simulated/floor/shuttle/pod,
-/area/shuttle/escape_pod1/station)
 "aUp" = (
-/turf/simulated/shuttle/wall/pod{
-	dir = 8;
-	icon_state = "p_wall1"
-	},
-/area/shuttle/escape_pod3/station)
+/obj/effect/wingrille_spawn/reinforced/indestructible,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/misc/hallway/aft)
 "aUq" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -23597,13 +23425,12 @@
 /obj/effect/floor_decal/corner/grey{
 	dir = 6
 	},
+/obj/structure/barricade/wood,
 /turf/simulated/floor/tiled/white,
 /area/ishimura/upper/medical)
 "aUr" = (
-/obj/effect/shuttle_landmark/escape_pod/start/pod3,
-/obj/structure/bed/chair/pod/yellow,
-/turf/simulated/floor/shuttle/pod,
-/area/shuttle/escape_pod3/station)
+/turf/simulated/wall/r_wall/hull,
+/area/ishimura/upper/misc/hallway/aft)
 "aUs" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/green{
@@ -23630,11 +23457,24 @@
 /turf/simulated/floor/tiled/white,
 /area/ishimura/upper/research/biolab)
 "aUv" = (
-/turf/simulated/shuttle/wall/pod{
-	dir = 8;
-	icon_state = "p_wall1"
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
 	},
-/area/shuttle/escape_pod2/station)
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/simulated/floor/dank/cable{
+	dir = 4
+	},
+/area/ishimura/upper/misc/hallway/aft)
 "aUw" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -23668,21 +23508,11 @@
 /obj/item/radio/intercom{
 	pixel_y = 24
 	},
+/obj/structure/corruption_node/growth/branch,
 /turf/simulated/floor/dank/tech{
 	dir = 8
 	},
 /area/ishimura/upper/misc/hallway/central)
-"aUA" = (
-/obj/effect/shuttle_landmark/escape_pod/start/pod2,
-/obj/structure/bed/chair/pod/yellow,
-/turf/simulated/floor/shuttle/pod,
-/area/shuttle/escape_pod2/station)
-"aUB" = (
-/turf/simulated/shuttle/wall/pod{
-	dir = 8;
-	icon_state = "p_wall1"
-	},
-/area/shuttle/escape_pod1/station)
 "aUC" = (
 /obj/effect/wallframe_spawn/reinforced,
 /obj/machinery/door/firedoor/border_only{
@@ -23746,6 +23576,7 @@
 	layer = 2.4;
 	level = 2
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/dank/grater,
 /area/ishimura/upper/security/brig)
 "aUI" = (
@@ -23790,11 +23621,6 @@
 	},
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/security/checkpoint)
-"aUK" = (
-/obj/effect/shuttle_landmark/escape_pod/start/pod1,
-/obj/structure/bed/chair/pod/yellow,
-/turf/simulated/floor/shuttle/pod,
-/area/shuttle/escape_pod1/station)
 "aUL" = (
 /obj/item/radio/intercom{
 	pixel_y = 24
@@ -24091,16 +23917,14 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/turf/simulated/floor/dank/cable{
-	dir = 4
-	},
+/turf/simulated/floor/plating,
 /area/ishimura/upper/misc/hallway/central)
 "aVp" = (
 /obj/machinery/status_display{
 	pixel_y = 32
+	},
+/obj/structure/barricade/spike{
+	dir = 4
 	},
 /turf/simulated/floor/dank/slides{
 	dir = 4
@@ -24148,6 +23972,7 @@
 /obj/item/storage/bible/unitology,
 /obj/item/flame/match,
 /obj/item/flame/candle,
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/upper/maintenance/central)
 "aVv" = (
@@ -24263,6 +24088,7 @@
 /turf/simulated/floor/plating,
 /area/ishimura/upper/maintenance/central)
 "aVE" = (
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/upper/maintenance/central)
 "aVF" = (
@@ -24487,6 +24313,8 @@
 /obj/item/storage/toolbox/electrical{
 	pixel_y = 6
 	},
+/obj/item/cell/plasmacutter,
+/obj/item/cell/plasmacutter,
 /turf/simulated/floor/dank/slides,
 /area/ishimura/upper/engineering/prep)
 "aVW" = (
@@ -24519,6 +24347,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
+	},
+/obj/machinery/door/blast/regular{
+	dir = 4;
+	id = "zealot_gaming"
 	},
 /turf/simulated/floor/plating,
 /area/ishimura/upper/maintenance/central)
@@ -24593,6 +24425,7 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/plating,
 /area/ishimura/upper/maintenance/central)
 "aWd" = (
@@ -24700,6 +24533,7 @@
 	dir = 1
 	},
 /obj/structure/closet/walllocker/emerglocker/south,
+/obj/item/stack/material/wood,
 /turf/simulated/floor/dank/slides{
 	dir = 8
 	},
@@ -24753,6 +24587,7 @@
 	dir = 8;
 	holographic = 1
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/plating,
 /area/ishimura/upper/maintenance/central)
 "aWq" = (
@@ -24815,6 +24650,7 @@
 /obj/item/stack/cable_coil/random,
 /obj/item/stack/cable_coil/random,
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/item/gun/projectile/linecutter,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/engineering/spare_storage)
 "aWy" = (
@@ -24827,6 +24663,7 @@
 /area/ishimura/upper/maintenance/aft_starboard)
 "aWz" = (
 /obj/item/flashlight/lantern,
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/plating,
 /area/ishimura/upper/maintenance/central)
 "aWA" = (
@@ -24886,6 +24723,7 @@
 /obj/machinery/camera/network/engineering{
 	dir = 8
 	},
+/obj/item/gun/energy/cutter/plasma,
 /turf/simulated/floor/dank/slides{
 	dir = 1
 	},
@@ -24900,6 +24738,7 @@
 	d2 = 4;
 	icon_state = "0-4"
 	},
+/obj/structure/barricade/wood,
 /turf/simulated/floor/dank/slides,
 /area/ishimura/upper/engineering/bay)
 "aWH" = (
@@ -25008,6 +24847,8 @@
 /obj/structure/disposalpipe/junction/yjunction{
 	dir = 8
 	},
+/obj/item/marker_shard,
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/dank/cable{
 	dir = 4
 	},
@@ -25041,6 +24882,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/structure/barricade/wood,
 /turf/simulated/floor/dank/grater,
 /area/ishimura/upper/engineering/bay)
 "aWV" = (
@@ -25225,15 +25067,6 @@
 	},
 /turf/simulated/floor/dank/grater,
 /area/ishimura/upper/engineering/tcomms/control)
-"aXr" = (
-/obj/structure/bed/chair/office/light{
-	dir = 1
-	},
-/obj/effect/landmark/start{
-	name = "Security Officer"
-	},
-/turf/simulated/floor/dank/hardwood,
-/area/ishimura/upper/security/brig)
 "aXs" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -25563,8 +25396,6 @@
 /area/ishimura/upper/maintenance/fore_port)
 "aXS" = (
 /obj/item/modular_computer/console/preset/medical,
-/obj/effect/floor_decal/corner/grey/mono,
-/obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/research/chief_science_office)
 "aXT" = (
@@ -25673,6 +25504,7 @@
 /obj/structure/table/rack,
 /obj/item/stack/rods/fifty,
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/item/ammo_magazine/lineracks,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/engineering/spare_storage)
 "aYa" = (
@@ -25901,24 +25733,6 @@
 /obj/machinery/light/small,
 /turf/simulated/floor/plating,
 /area/ishimura/upper/maintenance/aft_port)
-"aYt" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/structure/catwalk,
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/door/firedoor/border_only{
-	dir = 4
-	},
-/turf/simulated/floor/plating,
-/area/ishimura/upper/maintenance/aft_port)
 "aYu" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
@@ -25982,6 +25796,7 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/plating,
 /area/ishimura/upper/maintenance/fore_port)
 "aYy" = (
@@ -26344,6 +26159,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/lino,
 /area/ishimura/upper/engineering/tcomms/control)
 "aZg" = (
@@ -26392,6 +26208,7 @@
 	dir = 8
 	},
 /obj/structure/closet/secure_closet/engineering_personal,
+/obj/item/ammo_magazine/rivet,
 /turf/simulated/floor/dank/slides{
 	dir = 1
 	},
@@ -26594,17 +26411,16 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ishimura/upper/engineering/tcomms)
 "aZI" = (
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "east bump";
-	pixel_x = 24
-	},
 /obj/structure/cable/green{
 	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/effect/floor_decal/corner_techfloor_grid{
 	dir = 6
+	},
+/obj/machinery/power/apc/high/inactive{
+	dir = 4;
+	pixel_x = 24
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ishimura/upper/engineering/tcomms)
@@ -26710,6 +26526,7 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/dank/maint,
 /area/ishimura/upper/misc/escape)
 "aZS" = (
@@ -26736,6 +26553,7 @@
 /obj/structure/closet/medical_wall/filled{
 	pixel_y = -30
 	},
+/obj/item/stack/material/wood,
 /turf/simulated/floor/dank/grater,
 /area/ishimura/upper/security/brig)
 "aZV" = (
@@ -27026,6 +26844,9 @@
 /obj/item/grenade/chem_grenade/metalfoam,
 /obj/item/grenade/chem_grenade/metalfoam,
 /obj/item/grenade/chem_grenade/metalfoam,
+/obj/item/cell/plasmacutter,
+/obj/item/ammo_magazine/rivet,
+/obj/item/ammo_magazine/rivet,
 /turf/simulated/floor/dank/slides,
 /area/ishimura/upper/engineering/prep)
 "baw" = (
@@ -27052,9 +26873,7 @@
 "baz" = (
 /obj/machinery/door/firedoor/border_only,
 /obj/effect/wallframe_spawn/reinforced/hull,
-/obj/machinery/door/blast/regular/open{
-	dir = 2;
-	icon_state = "pdoor0";
+/obj/machinery/door/blast/regular{
 	id = "bridge_windows"
 	},
 /turf/simulated/floor/plating,
@@ -27133,10 +26952,8 @@
 /turf/simulated/floor/dank/slides,
 /area/ishimura/upper/misc/hallway/fore)
 "baK" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/dark,
+/obj/item/stack/material/plasteel,
+/turf/simulated/floor/plating,
 /area/ishimura/upper/command/bridge)
 "baL" = (
 /obj/effect/decal/cleanable/blood/oil,
@@ -27231,20 +27048,28 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/ishimura/upper/research/chief_science_office)
-"baU" = (
-/obj/structure/table/standard,
-/obj/effect/floor_decal/corner/grey/mono,
-/obj/item/roller,
-/obj/item/roller,
-/obj/item/roller,
-/turf/simulated/floor/tiled/white/monotile,
-/area/ishimura/upper/medical)
 "baV" = (
 /obj/machinery/pipedispenser,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/ishimura/upper/engineering/atmospherics)
 "baW" = (
-/obj/machinery/portable_atmospherics/powered/pump/filled,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/light/small,
+/obj/effect/gibspawner/human,
+/obj/structure/closet/secure_closet/guncabinet/military{
+	req_access = list()
+	},
 /turf/simulated/floor/plating,
 /area/ishimura/upper/maintenance/aft_port)
 "baX" = (
@@ -27272,17 +27097,9 @@
 /turf/simulated/floor/tiled/white,
 /area/ishimura/upper/medical)
 "bba" = (
-/obj/machinery/portable_atmospherics/powered/scrubber,
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/plating,
 /area/ishimura/upper/maintenance/aft_port)
-"bbb" = (
-/obj/structure/table/standard,
-/obj/effect/floor_decal/corner/grey/mono,
-/obj/item/reagent_containers/spray/cleaner,
-/obj/item/reagent_containers/spray/cleaner,
-/obj/item/reagent_containers/spray/cleaner,
-/turf/simulated/floor/tiled/white/monotile,
-/area/ishimura/upper/medical)
 "bbc" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -27348,6 +27165,7 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/plating,
 /area/ishimura/upper/maintenance/fore_port)
 "bbg" = (
@@ -27395,6 +27213,7 @@
 	},
 /obj/structure/catwalk,
 /obj/effect/decal/cleanable/blood/oil,
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/plating,
 /area/ishimura/upper/maintenance/fore_port)
 "bbj" = (
@@ -27474,7 +27293,6 @@
 "bbr" = (
 /obj/machinery/computer/crew,
 /obj/effect/floor_decal/corner/grey/mono,
-/obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/research/chief_science_office)
 "bbs" = (
@@ -27517,6 +27335,7 @@
 	layer = 2.4;
 	level = 2
 	},
+/obj/structure/barricade/wood,
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/upper/security/brig)
 "bby" = (
@@ -27569,11 +27388,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/dank/maint_right,
 /area/ishimura/upper/misc/escape)
-"bbF" = (
-/turf/simulated/wall/r_wall/hull,
-/area/space)
 "bbG" = (
 /obj/machinery/door/firedoor/border_only{
 	dir = 4
@@ -27766,6 +27583,7 @@
 	},
 /obj/structure/table/standard,
 /obj/item/storage/belt/utility/full,
+/obj/item/cell/plasmacutter,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/ishimura/upper/engineering/atmospherics)
 "bcb" = (
@@ -27837,6 +27655,7 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/dank/maint,
 /area/ishimura/upper/misc/escape)
 "bck" = (
@@ -28221,6 +28040,7 @@
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/plating,
 /area/ishimura/upper/maintenance/fore_starboard)
 "bcX" = (
@@ -28435,6 +28255,7 @@
 /obj/effect/floor_decal/corner/grey{
 	dir = 6
 	},
+/obj/item/stack/material/wood,
 /turf/simulated/floor/tiled/white,
 /area/ishimura/upper/medical)
 "bdu" = (
@@ -28555,6 +28376,7 @@
 /obj/machinery/camera/network/common{
 	dir = 1
 	},
+/obj/item/stack/material/plasteel,
 /turf/simulated/floor/dank/tech{
 	dir = 4
 	},
@@ -28620,6 +28442,9 @@
 	},
 /obj/structure/closet/hydrant{
 	pixel_y = -30
+	},
+/obj/structure/closet/secure_closet/guncabinet/military{
+	req_access = list()
 	},
 /turf/simulated/floor/dank/maint_right,
 /area/ishimura/upper/misc/escape)
@@ -28811,26 +28636,11 @@
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/item/stack/material/steel,
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/upper/misc/hallway/central)
 "bed" = (
-/obj/structure/cable/green{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/obj/structure/disposalpipe/junction/yjunction{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 4
-	},
-/turf/simulated/floor/dank/tech{
-	dir = 8
-	},
+/turf/simulated/floor/plating,
 /area/ishimura/upper/misc/hallway/central)
 "bee" = (
 /obj/structure/disposalpipe/segment{
@@ -28868,6 +28678,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
+/obj/item/stack/material/steel,
 /turf/simulated/floor/dank/hardwood,
 /area/ishimura/upper/security/checkpoint/bridge)
 "beh" = (
@@ -28891,6 +28702,7 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
+/obj/structure/barricade/steel,
 /turf/simulated/floor/dank/hardwood,
 /area/ishimura/upper/security/checkpoint/bridge)
 "bej" = (
@@ -28935,17 +28747,6 @@
 	},
 /area/ishimura/upper/misc/hallway/fore)
 "beo" = (
-/obj/machinery/firealarm{
-	dir = 8;
-	pixel_x = -20
-	},
-/obj/effect/floor_decal/corner/grey{
-	dir = 9
-	},
-/obj/structure/closet/secure_closet/CSCIO,
-/obj/item/stack/power_node,
-/obj/item/contraband/poster,
-/obj/item/modular_computer/tablet/lease/preset/command,
 /turf/simulated/floor/tiled/white,
 /area/ishimura/upper/research/chief_science_office)
 "bep" = (
@@ -28967,27 +28768,6 @@
 "ber" = (
 /obj/effect/floor_decal/corner/grey/mono,
 /obj/structure/table/steel,
-/obj/item/stamp/denied{
-	pixel_x = 2;
-	pixel_y = 2
-	},
-/obj/item/stamp/cscio,
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
-	},
-/obj/machinery/power/apc{
-	dir = 8;
-	name = "west bump";
-	pixel_x = -24
-	},
-/obj/structure/cable/green{
-	d2 = 4;
-	icon_state = "0-4"
-	},
-/obj/item/paper_bin,
-/obj/item/pen/fancy,
-/obj/item/folder/nt,
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/research/chief_science_office)
 "bes" = (
@@ -29076,33 +28856,8 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/ishimura/upper/research)
-"bex" = (
-/obj/item/radio/intercom/department/medbay{
-	dir = 1;
-	pixel_y = -30
-	},
-/obj/machinery/disposal,
-/obj/effect/floor_decal/corner/grey/mono,
-/obj/machinery/alarm{
-	dir = 4;
-	pixel_x = -21
-	},
-/obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/structure/disposalpipe/trunk{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/white/monotile,
-/area/ishimura/upper/research/chief_science_office)
 "bey" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 4;
-	layer = 2.4;
-	level = 2
-	},
-/obj/effect/floor_decal/corner/grey{
-	dir = 9
-	},
-/turf/simulated/floor/tiled/white,
+/turf/simulated/floor/plating,
 /area/ishimura/upper/research/chief_science_office)
 "bez" = (
 /obj/machinery/door/airlock/external{
@@ -29226,8 +28981,6 @@
 /area/ishimura/upper/engineering/engine_room)
 "beL" = (
 /obj/structure/table/standard,
-/obj/structure/window/reinforced,
-/obj/item/book/manual/earthgov_sop,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/command/bridge)
 "beM" = (
@@ -29266,12 +29019,14 @@
 	d2 = 2;
 	icon_state = "0-2"
 	},
+/obj/structure/barricade/wood,
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/upper/security/brig)
 "beQ" = (
 /obj/structure/closet/hydrant{
 	pixel_y = 32
 	},
+/obj/structure/barricade/wood,
 /turf/simulated/floor/dank/tech{
 	dir = 8
 	},
@@ -29316,6 +29071,7 @@
 /obj/structure/disposalpipe/junction{
 	dir = 8
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/tiled/white,
 /area/ishimura/upper/research)
 "beU" = (
@@ -29391,6 +29147,7 @@
 	icon_state = "2-4"
 	},
 /obj/effect/floor_decal/dank/border,
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/dank/mono,
 /area/ishimura/upper/medical/bpc)
 "beZ" = (
@@ -29495,23 +29252,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/ishimura/upper/security/checkpoint/medical)
-"bfg" = (
-/obj/machinery/light/small{
-	dir = 8
-	},
-/obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod{
-	dir = 1;
-	frequency = 1380;
-	icon_state = "pod_control_standby";
-	id_tag = "escape_pod_1";
-	layer = 4;
-	name = "escape pod one controller";
-	pixel_y = -24;
-	tag_door = "escape_pod_1_hatch"
-	},
-/obj/structure/bed/chair/pod/yellow,
-/turf/simulated/floor/shuttle/pod,
-/area/shuttle/escape_pod1/station)
 "bfh" = (
 /obj/machinery/door/firedoor/border_only{
 	dir = 4
@@ -29609,6 +29349,7 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
+/obj/structure/barricade/wood,
 /turf/simulated/floor/dank/slides{
 	dir = 8
 	},
@@ -29741,10 +29482,6 @@
 	dir = 1
 	},
 /area/ishimura/upper/misc/hallway/fore)
-"bfv" = (
-/turf/simulated/floor/plating,
-/turf/simulated/shuttle/wall/corner/pod2,
-/area/shuttle/escape_pod3/station)
 "bfw" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/structure/closet/medical_wall/filled{
@@ -29778,10 +29515,6 @@
 /obj/machinery/door/firedoor/border_only,
 /turf/simulated/floor/plating,
 /area/ishimura/upper/security/equipment)
-"bfB" = (
-/obj/structure/shuttle/window/pod,
-/turf/simulated/floor/airless,
-/area/shuttle/escape_pod3/station)
 "bfC" = (
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/security{
@@ -29804,43 +29537,6 @@
 	},
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/security/equipment)
-"bfE" = (
-/turf/simulated/floor/plating,
-/turf/simulated/shuttle/wall/corner/pod2{
-	dir = 4;
-	icon_state = "corner_pod2"
-	},
-/area/shuttle/escape_pod3/station)
-"bfF" = (
-/turf/simulated/floor/plating,
-/turf/simulated/shuttle/wall/corner/pod2,
-/area/shuttle/escape_pod2/station)
-"bfG" = (
-/obj/structure/shuttle/window/pod,
-/turf/simulated/floor/airless,
-/area/shuttle/escape_pod2/station)
-"bfH" = (
-/turf/simulated/floor/plating,
-/turf/simulated/shuttle/wall/corner/pod2{
-	dir = 4;
-	icon_state = "corner_pod2"
-	},
-/area/shuttle/escape_pod2/station)
-"bfI" = (
-/turf/simulated/floor/plating,
-/turf/simulated/shuttle/wall/corner/pod2,
-/area/shuttle/escape_pod1/station)
-"bfJ" = (
-/obj/structure/shuttle/window/pod,
-/turf/simulated/floor/airless,
-/area/shuttle/escape_pod1/station)
-"bfK" = (
-/turf/simulated/floor/plating,
-/turf/simulated/shuttle/wall/corner/pod2{
-	dir = 4;
-	icon_state = "corner_pod2"
-	},
-/area/shuttle/escape_pod1/station)
 "bfL" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -29873,6 +29569,7 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
+/obj/item/stack/material/wood,
 /turf/simulated/floor/dank/grater,
 /area/ishimura/upper/misc/hallway/fore)
 "bfO" = (
@@ -29942,6 +29639,7 @@
 	dir = 1;
 	pixel_y = -22
 	},
+/obj/effect/shuttle_landmark/valor/landing/ishimura,
 /turf/simulated/floor/dank/slides{
 	dir = 8
 	},
@@ -30674,6 +30372,7 @@
 	dir = 8;
 	pixel_x = 25
 	},
+/obj/structure/barricade/wood,
 /turf/simulated/floor/dank/tech,
 /area/ishimura/upper/misc/hallway/fore)
 "bhw" = (
@@ -30767,11 +30466,12 @@
 /turf/simulated/floor/plating,
 /area/ishimura/upper/maintenance/fore_central)
 "bhG" = (
-/obj/machinery/alarm{
-	pixel_y = 23
+/obj/machinery/door/blast/regular{
+	dir = 4;
+	id = "zealot_gaming"
 	},
 /turf/simulated/floor/plating,
-/area/ishimura/upper/maintenance/fore_central)
+/area/ishimura/upper/maintenance/aft_port)
 "bhH" = (
 /obj/random/assembly,
 /obj/structure/table/standard,
@@ -30915,6 +30615,7 @@
 	dir = 4;
 	pixel_x = -21
 	},
+/obj/structure/barricade/wood,
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/upper/security/checkpoint/bridge)
 "bhX" = (
@@ -30996,13 +30697,7 @@
 /turf/simulated/floor/tiled/white,
 /area/ishimura/upper/medical)
 "bid" = (
-/obj/effect/floor_decal/corner/grey{
-	dir = 10
-	},
-/obj/structure/closet/medical_wall/filled{
-	pixel_y = -30
-	},
-/turf/simulated/floor/tiled/white,
+/turf/simulated/floor/plating/under,
 /area/ishimura/upper/medical)
 "bie" = (
 /obj/structure/ladder,
@@ -31019,6 +30714,7 @@
 /obj/machinery/newscaster{
 	pixel_x = -32
 	},
+/obj/structure/barricade/steel,
 /turf/simulated/floor/tiled/dark,
 /area/ishimura/upper/command/bridge)
 "bih" = (
@@ -31040,26 +30736,10 @@
 /obj/machinery/newscaster{
 	pixel_y = 32
 	},
-/turf/simulated/floor/tiled/dark/monotile,
+/turf/simulated/floor/plating,
 /area/ishimura/upper/command/bridge)
 "bik" = (
-/obj/structure/cable/green{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 10
-	},
-/obj/effect/catwalk_plated/dark,
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 9
-	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/plating/under,
 /area/ishimura/upper/medical/morgue/autopsy)
 "bil" = (
 /obj/machinery/door/firedoor/border_only{
@@ -31146,12 +30826,18 @@
 	dir = 8
 	},
 /area/ishimura/upper/misc/hallway/central)
+"bma" = (
+/turf/simulated/floor/plating/under,
+/area/ishimura/upper/medical/morgue)
 "bon" = (
-/turf/simulated/shuttle/wall/pod{
-	dir = 1;
-	icon_state = "p_wall1"
+/obj/structure/cable/cyan{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
-/area/shuttle/escape_pod1/station)
+/obj/structure/corruption_node/growth/branch,
+/turf/simulated/floor/dank/rivets,
+/area/ishimura/upper/engineering/engine_room)
 "bpx" = (
 /obj/machinery/light{
 	dir = 1
@@ -31182,6 +30868,7 @@
 /obj/machinery/door/firedoor/border_only{
 	dir = 4
 	},
+/obj/item/stack/material/wood,
 /turf/simulated/floor/dank/tech{
 	dir = 4
 	},
@@ -31196,12 +30883,72 @@
 	},
 /turf/simulated/floor/dank/grater,
 /area/ishimura/upper/security/brig)
+"bxm" = (
+/obj/structure/corruption_node/growth/branch,
+/turf/simulated/floor/dank/rivets,
+/area/ishimura/upper/engineering/engine_room)
 "bxw" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/upper/misc/hallway/central)
+"bxN" = (
+/obj/structure/girder/reinforced,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/maintenance/fore_central)
+"bBH" = (
+/obj/item/stack/material/wood,
+/turf/simulated/floor/dank/golf_brown,
+/area/ishimura/upper/security/brig)
+"bDm" = (
+/obj/structure/girder/displaced,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/medical)
+"bFx" = (
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/engineering/waste_tank_room)
+"bFH" = (
+/turf/simulated/floor/plating,
+/area/ishimura/upper/misc/hallway/fore)
+"bGv" = (
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/tiled/white,
+/area/ishimura/upper/medical)
+"bHe" = (
+/obj/item/stack/material/steel,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/maintenance/fore_central)
+"bJV" = (
+/obj/machinery/door/blast/regular{
+	dir = 4;
+	id = "zealot_gaming"
+	},
+/turf/simulated/floor/dank/rectangles,
+/area/ishimura/upper/misc/hangar)
+"bLU" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/item/stack/material/wood,
+/turf/simulated/floor/dank/grater,
+/area/ishimura/upper/security/brig)
+"bOZ" = (
+/obj/structure/barricade/wood,
+/turf/simulated/floor/dank/rectangles,
+/area/ishimura/upper/misc/hallway/escape)
 "bTf" = (
 /obj/machinery/door/firedoor/border_only{
 	dir = 4
@@ -31229,10 +30976,17 @@
 /turf/simulated/floor/dank/grater,
 /area/ishimura/upper/misc/hallway/escape)
 "caT" = (
+/obj/item/stack/material/wood,
 /turf/simulated/floor/dank/slides{
 	dir = 8
 	},
 /area/ishimura/upper/security/brig)
+"cbE" = (
+/obj/item/stack/material/steel,
+/turf/simulated/floor/dank/slides{
+	dir = 4
+	},
+/area/ishimura/upper/misc/hallway/central)
 "ccj" = (
 /obj/machinery/light,
 /turf/simulated/floor/dank/slides{
@@ -31240,21 +30994,78 @@
 	},
 /area/ishimura/upper/misc/hallway/aft)
 "ceq" = (
+/obj/item/stack/material/wood,
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/upper/engineering/lobby)
+"ceQ" = (
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/medical)
+"ciD" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating,
+/area/ishimura/upper/misc/hallway/central)
+"ckM" = (
+/obj/item/paper/crumpled/bloody{
+	info = "barnes tells me that whatever this module thingamajig is, it needs a shitload of power to use. could lift and throw half the ishimua with it, if we actually could power it. archell says he might've found something, we're gonna go head over to check it out in a second"
+	},
+/turf/simulated/floor/dank/tramcorner{
+	dir = 5
+	},
+/area/ishimura/upper/misc/hangar)
 "clz" = (
 /obj/machinery/atmospherics/portables_connector{
 	dir = 4
 	},
 /obj/effect/floor_decal/industrial/outline/grey,
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/engineering/atmospherics)
+"cny" = (
+/obj/effect/floor_decal/industrial/outline/grey,
+/obj/structure/closet/body_bag,
+/obj/effect/landmark/corpse,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/medical/morgue)
+"cud" = (
+/turf/simulated/floor/dank/tramcorner,
+/area/ishimura/upper/misc/hangar)
+"cwS" = (
+/turf/simulated/floor/dank/tramcorner{
+	dir = 6
+	},
+/area/ishimura/upper/misc/hangar)
+"cxO" = (
+/obj/structure/corruption_node/growth/branch,
+/turf/simulated/floor/tiled/white,
+/area/ishimura/upper/medical)
+"cym" = (
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/dank/slides{
+	dir = 1
+	},
+/area/ishimura/upper/misc/hallway/fore)
+"cAC" = (
+/obj/machinery/door/firedoor/border_only,
+/obj/effect/wallframe_spawn/reinforced/hull,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/command/bridge)
 "cBc" = (
 /obj/machinery/light,
 /turf/simulated/floor/dank/tech{
 	dir = 1
 	},
 /area/ishimura/upper/misc/hallway/fore)
+"cDu" = (
+/turf/space,
+/area/ishimura/upper/command/bridge)
 "cEn" = (
 /obj/machinery/light,
 /turf/simulated/floor/dank/rivets,
@@ -31262,15 +31073,69 @@
 "cFo" = (
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/upper/security/checkpoint/bridge)
+"cOD" = (
+/obj/item/stack/material/plasteel,
+/turf/simulated/floor/tiled/dark/monotile,
+/area/ishimura/upper/command/bridge)
 "cPN" = (
 /obj/effect/floor_decal/industrial/outline/grey,
 /obj/structure/closet/body_bag,
 /obj/effect/landmark/corpse,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/medical/morgue)
+"cRv" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/maintenance/aft_port)
+"cUn" = (
+/obj/structure/bed/chair/tram{
+	dir = 1;
+	layer = 2;
+	pixel_y = -11
+	},
+/turf/simulated/floor/dank/tramcorner{
+	dir = 10;
+	layer = 1.9
+	},
+/area/ishimura/upper/misc/hangar)
+"cVg" = (
+/obj/item/stack/material/steel,
+/turf/simulated/floor/plating/under,
+/area/ishimura/upper/misc/hallway/fore)
 "cWo" = (
 /turf/simulated/floor/dank/maint,
 /area/ishimura/upper/misc/escape)
+"cWK" = (
+/obj/effect/wallframe_spawn/reinforced,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/misc/hangar)
+"dcI" = (
+/obj/machinery/door/airlock/external{
+	dir = 8;
+	locked = 1
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/ishimura/upper/misc/hangar)
+"ddP" = (
+/turf/simulated/floor/dank/tramcorner{
+	dir = 6;
+	layer = 1.9
+	},
+/area/ishimura/upper/misc/hangar)
+"dfd" = (
+/obj/item/stack/rods,
+/turf/simulated/floor/dank/tech{
+	dir = 4
+	},
+/area/ishimura/upper/misc/hallway/fore)
 "dnN" = (
 /turf/simulated/floor/dank/slides,
 /area/ishimura/upper/security/brig)
@@ -31285,6 +31150,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/dank/cable,
 /area/ishimura/upper/misc/hallway/aft)
+"dzW" = (
+/obj/effect/floor_decal/corner/grey/mono,
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/tiled/white/monotile,
+/area/ishimura/upper/medical)
 "dAh" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -31295,9 +31165,6 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
 /turf/simulated/floor/dank/cable{
@@ -31317,6 +31184,31 @@
 	dir = 4
 	},
 /area/ishimura/upper/misc/hallway/fore)
+"dDz" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating,
+/area/ishimura/upper/misc/hallway/fore)
+"dGH" = (
+/obj/structure/barricade/wood,
+/turf/simulated/floor/dank/slides{
+	dir = 4
+	},
+/area/ishimura/upper/misc/hallway/aft)
+"dHu" = (
+/obj/item/stack/material/plasteel,
+/turf/simulated/floor/plating/under,
+/area/ishimura/upper/misc/hallway/central)
+"dJx" = (
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/tiled/dark,
+/area/ishimura/upper/command/bridge)
 "dJS" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -31333,6 +31225,79 @@
 	dir = 1
 	},
 /area/ishimura/upper/misc/escape)
+"dKl" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/corruption_node/growth/branch,
+/turf/simulated/floor/dank/tech{
+	dir = 4
+	},
+/area/ishimura/upper/misc/hallway/central)
+"dNt" = (
+/obj/item/stack/rods,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/command/bridge)
+"dOI" = (
+/obj/item/gun/projectile/automatic/bullpup,
+/turf/simulated/floor/dank/cable,
+/area/ishimura/upper/misc/escape)
+"dUh" = (
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/maintenance/central)
+"dXh" = (
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/item/stack/material/wood,
+/turf/simulated/floor/dank/golf_brown,
+/area/ishimura/upper/security/checkpoint/bridge)
+"dZA" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 1
+	},
+/obj/structure/corruption_node/maw,
+/turf/simulated/floor/dank/cable{
+	dir = 4
+	},
+/area/ishimura/upper/misc/hallway/aft)
+"dZJ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/cyan{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/dank/grater,
+/area/ishimura/upper/engineering/hub)
+"ebr" = (
+/turf/simulated/wall/tram{
+	layer = 2.2
+	},
+/area/ishimura/upper/misc/hangar)
 "egB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -31350,12 +31315,129 @@
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/upper/security/checkpoint/bridge)
-"eJh" = (
-/turf/simulated/shuttle/wall/pod/two{
-	dir = 1;
-	icon_state = "p_wall2"
+"eig" = (
+/obj/structure/corruption_node/growth/branch,
+/turf/simulated/floor/dank/hardwood,
+/area/ishimura/upper/misc/hangar/reception)
+"eoW" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/red{
+	dir = 4
 	},
-/area/shuttle/escape_pod2/station)
+/obj/item/stack/material/wood,
+/turf/simulated/floor/dank/rivets,
+/area/ishimura/upper/engineering/hub)
+"epp" = (
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/machinery/door/blast/shutters/open{
+	dir = 8;
+	icon_state = "shutter0";
+	id = "upforelock"
+	},
+/turf/simulated/floor/plating,
+/area/ishimura/upper/misc/hallway/fore)
+"epE" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/item/stack/rods,
+/turf/simulated/floor/dank/tech{
+	dir = 4
+	},
+/area/ishimura/upper/misc/hallway/central)
+"etz" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/item/stack/material/wood,
+/turf/simulated/floor/dank/golf_brown,
+/area/ishimura/upper/security/brig)
+"ewa" = (
+/obj/structure/barricade/wood,
+/turf/simulated/floor/dank/rectangles,
+/area/ishimura/upper/engineering/lobby)
+"ewF" = (
+/obj/structure/girder/displaced,
+/turf/simulated/floor/plating/under,
+/area/ishimura/upper/medical/morgue)
+"eyO" = (
+/turf/simulated/floor/dank/trammiddle,
+/area/space)
+"eEP" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/cyan{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/disposalpipe/segment,
+/obj/item/cell/plasmacutter,
+/turf/simulated/floor/dank/grater,
+/area/ishimura/upper/engineering/hub)
+"eFi" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/item/stack/material/steel,
+/turf/simulated/floor/dank/golf_brown,
+/area/ishimura/upper/security/checkpoint/bridge)
+"eLg" = (
+/obj/item/shuttle_part,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/maintenance/fore_central)
+"eMy" = (
+/obj/structure/girder/displaced,
+/turf/simulated/floor/plating/under,
+/area/ishimura/upper/command/bridge)
+"eZC" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/barricade/wood,
+/turf/simulated/floor/dank/hardwood,
+/area/ishimura/upper/security/brig)
+"fan" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/light/small,
+/obj/structure/closet/secure_closet/guncabinet/military{
+	req_access = list()
+	},
+/turf/simulated/floor/plating,
+/area/ishimura/upper/maintenance/aft_port)
+"fav" = (
+/obj/structure/lattice,
+/obj/item/stack/material/plasteel,
+/turf/simulated/open,
+/area/ishimura/upper/medical/morgue/autopsy)
 "fib" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/black{
 	dir = 4
@@ -31379,11 +31461,29 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/ishimura/upper/engineering/atmospherics/storage)
+"ftx" = (
+/turf/unsimulated/wall{
+	hitsound = null;
+	icon = 'icons/turf/space.dmi';
+	icon_state = "default";
+	name = "\proper space";
+	opacity = 0
+	},
+/area/space)
+"fuw" = (
+/obj/structure/inflatable/door,
+/turf/simulated/floor/dank/tech,
+/area/ishimura/upper/misc/hangar)
 "fxx" = (
+/obj/item/stack/material/wood,
 /turf/simulated/floor/dank/slides{
 	dir = 1
 	},
 /area/ishimura/upper/security/checkpoint/bridge)
+"fEX" = (
+/obj/structure/girder/displaced,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/misc/hallway/central)
 "fFR" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -31401,22 +31501,185 @@
 	},
 /turf/simulated/floor/dank/grater,
 /area/ishimura/upper/misc/hallway/escape)
+"fIV" = (
+/obj/structure/bed/chair/tram{
+	dir = 1
+	},
+/turf/simulated/floor/dank/trammiddle,
+/area/ishimura/upper/misc/hangar)
+"fNL" = (
+/turf/simulated/floor/plating,
+/area/ishimura/upper/medical/morgue)
+"fNY" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/corruption_node/growth/branch,
+/turf/simulated/floor/dank/cable{
+	dir = 4
+	},
+/area/ishimura/upper/misc/hallway/aft)
+"fOe" = (
+/obj/item/stack/material/steel,
+/turf/simulated/floor/tiled/dark,
+/area/ishimura/upper/command/bridge)
+"fXJ" = (
+/obj/structure/girder/displaced,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/command/bridge)
 "fYM" = (
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/upper/misc/hallway/central)
+"gaY" = (
+/obj/structure/corruption_node/growth/branch,
+/turf/simulated/floor/plating,
+/area/space)
+"gcf" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/dank/hardwood,
+/area/ishimura/upper/misc/hangar/reception)
+"gen" = (
+/obj/structure/barricade/wood,
+/turf/simulated/floor/dank/tech{
+	dir = 4
+	},
+/area/ishimura/upper/misc/hallway/fore)
+"gfO" = (
+/obj/structure/bed/chair/tram{
+	dir = 1;
+	layer = 2;
+	pixel_y = -11
+	},
+/turf/simulated/floor/dank/tramcorner{
+	layer = 1.9
+	},
+/area/ishimura/upper/misc/hangar)
+"ggy" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/dank/cable{
+	dir = 4
+	},
+/area/ishimura/upper/misc/hallway/aft)
+"gjP" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/door/blast/regular{
+	dir = 4;
+	id = "zealot_gaming"
+	},
+/turf/simulated/floor/plating,
+/area/ishimura/upper/maintenance/aft_port)
 "glA" = (
 /turf/simulated/floor/dank/cable/start{
 	dir = 4
 	},
 /area/ishimura/upper/misc/hallway/aft)
+"goi" = (
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
+/obj/structure/grille,
+/obj/item/material/shard,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/engineering/chief_office)
+"goH" = (
+/obj/structure/inflatable/door,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/misc/hangar)
+"goI" = (
+/obj/item/stack/material/steel,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/command/bridge)
 "guq" = (
 /turf/simulated/floor/dank/cable,
 /area/ishimura/upper/misc/escape)
+"gwh" = (
+/obj/effect/floor_decal/corner/grey{
+	dir = 5
+	},
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/tiled/white,
+/area/ishimura/upper/medical)
 "gxf" = (
 /turf/simulated/floor/dank/tech{
 	dir = 8
 	},
 /area/ishimura/upper/misc/hallway/central)
+"gxX" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
+	},
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/dank/cable/end,
+/area/ishimura/upper/misc/hallway/aft)
+"gyv" = (
+/turf/unsimulated/wall{
+	hitsound = null;
+	icon = 'icons/turf/space.dmi';
+	icon_state = "default";
+	name = "\proper space";
+	opacity = 0
+	},
+/area/ishimura/upper/command/bridge)
+"gAT" = (
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/dank/tech,
+/area/ishimura/upper/misc/hallway/fore)
+"gDt" = (
+/obj/structure/girder/reinforced,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/medical/morgue/autopsy)
 "gDA" = (
 /obj/machinery/light,
 /turf/simulated/floor/dank/tech{
@@ -31442,9 +31705,59 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/upper/engineering/bay)
+"gKt" = (
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/dank/tech{
+	dir = 4
+	},
+/area/ishimura/upper/misc/hallway/aft)
+"gLz" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/corruption_node/growth/branch,
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/dank/rectangles,
+/area/ishimura/upper/engineering/bay)
+"gMX" = (
+/obj/item/cell/infinite,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/maintenance/aft_port)
 "gPn" = (
 /turf/simulated/floor/dank/cable/start,
 /area/ishimura/upper/engineering/prep)
+"gUy" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/structure/closet/firecloset,
+/obj/item/gun/projectile/rivet,
+/turf/simulated/floor/dank/rivets,
+/area/ishimura/upper/engineering/hub)
+"gUE" = (
+/obj/structure/bed/chair/tram{
+	dir = 8;
+	layer = 2.25;
+	pixel_y = 16
+	},
+/obj/structure/bed/chair/tram{
+	dir = 8;
+	layer = 2.25;
+	pixel_y = -2
+	},
+/turf/simulated/floor/dank/tramcorner{
+	dir = 4
+	},
+/area/ishimura/upper/misc/hangar)
 "gVl" = (
 /obj/machinery/atmospherics/portables_connector{
 	dir = 8
@@ -31492,15 +31805,25 @@
 	},
 /area/ishimura/upper/security/brig)
 "haL" = (
-/turf/simulated/floor/dank/cable/start{
-	dir = 4
-	},
+/obj/structure/lattice,
+/turf/simulated/open,
 /area/ishimura/upper/misc/hallway/central)
 "hdr" = (
 /turf/simulated/floor/dank/slides{
 	dir = 1
 	},
 /area/ishimura/upper/security/brig)
+"hll" = (
+/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/tiled/white/monotile,
+/area/ishimura/upper/medical)
+"hnM" = (
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/dank/tech{
+	dir = 8
+	},
+/area/ishimura/upper/misc/hallway/aft)
 "hop" = (
 /turf/simulated/floor/dank/grater,
 /area/ishimura/upper/security/brig)
@@ -31509,6 +31832,10 @@
 /obj/machinery/vending/coffee,
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/upper/misc/hallway/fore)
+"hpv" = (
+/obj/structure/girder/reinforced,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/security/forensics)
 "hpw" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -31542,6 +31869,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/structure/corruption_node/growth/branch,
 /turf/simulated/floor/dank/tech{
 	dir = 4
 	},
@@ -31552,6 +31880,10 @@
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/upper/security/brig)
+"hBJ" = (
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/dank/rivets,
+/area/ishimura/upper/engineering/engine_room)
 "hCN" = (
 /turf/simulated/floor/dank/tech{
 	dir = 1
@@ -31566,12 +31898,45 @@
 	},
 /turf/simulated/floor/dank/rivets,
 /area/ishimura/upper/engineering/hub)
+"hLn" = (
+/obj/item/stack/material/steel,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/misc/hallway/fore)
+"hNs" = (
+/obj/effect/catwalk_plated/dark,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/item/stack/material/steel,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/command/bridge)
 "hOJ" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /turf/simulated/floor/dank/tech,
 /area/ishimura/upper/misc/hallway/fore)
+"hRR" = (
+/obj/structure/corruption_node/growth/branch,
+/turf/simulated/floor/dank/grille_spare_4,
+/area/ishimura/upper/engineering/engine_room)
+"hWe" = (
+/obj/structure/inflatable/door,
+/turf/simulated/floor/dank/tech{
+	dir = 1
+	},
+/area/ishimura/upper/misc/hangar)
+"idk" = (
+/obj/effect/gibspawner/human,
+/obj/structure/corruption_node/cyst,
+/turf/simulated/floor/dank/tech{
+	dir = 8
+	},
+/area/ishimura/upper/misc/hallway/aft)
 "idD" = (
 /obj/machinery/fusion_fuel_injector/mapped{
 	dir = 1;
@@ -31613,6 +31978,42 @@
 "iqZ" = (
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/upper/misc/hallway/fore)
+"ism" = (
+/obj/item/gun/projectile/automatic/pulse_rifle/empty,
+/turf/simulated/floor/dank/tramcorner,
+/area/ishimura/upper/misc/hangar)
+"iwC" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/dank/hardwood/alt,
+/area/ishimura/upper/security/chiefsoffice)
+"iBR" = (
+/obj/item/gun/projectile/automatic/wt550,
+/turf/simulated/floor/dank/tech,
+/area/ishimura/upper/misc/hallway/fore)
+"iCi" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/dank/grater,
+/area/ishimura/upper/misc/hallway/escape)
 "iEh" = (
 /obj/machinery/atmospherics/binary/pump{
 	dir = 4
@@ -31628,6 +32029,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/ishimura/upper/engineering/atmospherics)
+"iED" = (
+/obj/structure/table/steel_reinforced,
+/turf/simulated/floor/dank/trammiddle,
+/area/ishimura/upper/misc/hangar)
 "iHj" = (
 /turf/simulated/floor/dank/grater,
 /area/ishimura/upper/engineering/bay)
@@ -31640,13 +32045,6 @@
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/upper/misc/hallway/aft)
-"iJP" = (
-/obj/structure/flora/pottedplant/minitree,
-/obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/dank/slides{
-	dir = 8
-	},
-/area/ishimura/upper/misc/hallway/central)
 "iOk" = (
 /obj/machinery/light{
 	dir = 1
@@ -31658,11 +32056,31 @@
 "iTN" = (
 /turf/simulated/floor/dank/tech,
 /area/ishimura/upper/misc/hallway/fore)
+"iUY" = (
+/obj/structure/corruption_node/growth/branch,
+/turf/simulated/floor/dank/slides{
+	dir = 8
+	},
+/area/ishimura/upper/misc/hallway/aft)
+"jhC" = (
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/dank/tech{
+	dir = 8
+	},
+/area/ishimura/upper/misc/hallway/fore)
+"jkc" = (
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/tiled/dark,
+/area/ishimura/upper/security/equipment)
 "joI" = (
 /turf/simulated/floor/dank/slides{
 	dir = 1
 	},
 /area/ishimura/upper/engineering/bay)
+"jpa" = (
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/dank/rectangles,
+/area/ishimura/upper/misc/hallway/escape)
 "jsF" = (
 /obj/item/radio/intercom{
 	pixel_y = 24
@@ -31671,12 +32089,37 @@
 	dir = 4
 	},
 /area/ishimura/upper/misc/hallway/aft)
-"juU" = (
-/turf/simulated/shuttle/wall/pod/two{
-	dir = 1;
-	icon_state = "p_wall2"
+"jtl" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/structure/closet/secure_closet/engineering_personal,
+/obj/item/ammo_magazine/rivet,
+/obj/item/ammo_magazine/rivet,
+/turf/simulated/floor/dank/slides{
+	dir = 1
 	},
-/area/shuttle/escape_pod1/station)
+/area/ishimura/upper/engineering/prep)
+"jxg" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/barricade/spike{
+	dir = 4
+	},
+/turf/simulated/floor/dank/tech{
+	dir = 4
+	},
+/area/ishimura/upper/misc/hallway/aft)
 "jzY" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -31688,18 +32131,67 @@
 	},
 /turf/simulated/floor/dank/hardwood,
 /area/ishimura/upper/engineering/lobby)
+"jBy" = (
+/obj/structure/girder/displaced,
+/turf/simulated/floor/tiled/dark,
+/area/ishimura/upper/command/bridge)
+"jBN" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/effect/catwalk_plated/dark,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/command/bridge)
 "jDM" = (
 /obj/machinery/camera/network/common,
 /turf/simulated/floor/dank/slides{
 	dir = 4
 	},
 /area/ishimura/upper/misc/hallway/aft)
-"jEi" = (
-/turf/simulated/shuttle/wall/pod{
-	dir = 1;
-	icon_state = "p_wall1"
+"jFy" = (
+/obj/structure/bed/chair/tram{
+	dir = 4;
+	layer = 2.25;
+	pixel_y = 16
 	},
-/area/shuttle/escape_pod3/station)
+/obj/structure/bed/chair/tram{
+	dir = 4;
+	layer = 2.25;
+	pixel_y = -2
+	},
+/turf/simulated/floor/dank/tramcorner{
+	dir = 8
+	},
+/area/ishimura/upper/misc/hangar)
+"jGm" = (
+/obj/machinery/door/firedoor/border_only,
+/obj/machinery/door/blast/shutters/open{
+	icon_state = "shutter0";
+	id = "b_security2"
+	},
+/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/item/stack/material/wood,
+/turf/simulated/floor/dank/rectangles,
+/area/ishimura/upper/security/checkpoint/bridge)
+"jHQ" = (
+/obj/structure/bed/chair/tram{
+	dir = 8
+	},
+/turf/simulated/floor/dank/tramcorner{
+	dir = 4
+	},
+/area/ishimura/upper/misc/hangar)
+"jHU" = (
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/tiled/white,
+/area/ishimura/upper/research)
+"jTX" = (
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/dank/hardwood,
+/area/ishimura/upper/engineering/breakroom)
 "jYG" = (
 /turf/simulated/floor/dank/cable/end,
 /area/ishimura/upper/engineering/prep)
@@ -31711,6 +32203,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/structure/barricade/wood,
 /turf/simulated/floor/dank/slides{
 	dir = 4
 	},
@@ -31726,6 +32219,10 @@
 	},
 /turf/simulated/floor/dank/grille_spare_4,
 /area/ishimura/upper/engineering/engine_room)
+"kem" = (
+/obj/structure/girder/reinforced,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/research/chief_science_office)
 "kfm" = (
 /turf/simulated/floor/dank/tech{
 	dir = 1
@@ -31744,6 +32241,11 @@
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/ishimura/upper/engineering/engine_room)
+"kiB" = (
+/turf/simulated/floor/dank/tramcorner{
+	dir = 10
+	},
+/area/ishimura/upper/misc/hangar)
 "klQ" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -31755,6 +32257,19 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/dank/grater,
 /area/ishimura/upper/misc/hallway/aft)
+"knv" = (
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/plating,
+/area/space)
+"knJ" = (
+/obj/machinery/door/blast/regular{
+	dir = 4;
+	id = "zealot_gaming"
+	},
+/turf/simulated/floor/dank/tech{
+	dir = 8
+	},
+/area/ishimura/upper/misc/hallway/aft)
 "kqk" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
@@ -31765,6 +32280,22 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/dank/cable/start,
+/area/ishimura/upper/engineering/bay)
+"kDh" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/structure/closet/firecloset,
+/obj/item/cell/plasmacutter,
+/turf/simulated/floor/dank/rivets,
+/area/ishimura/upper/engineering/hub)
+"kDI" = (
+/obj/machinery/door/airlock/multi_tile/civilian/tram{
+	dir = 8
+	},
+/turf/simulated/floor/dank/trammiddle,
+/area/ishimura/upper/misc/hangar)
+"kKi" = (
+/obj/structure/barricade/wood,
+/turf/simulated/floor/dank/grater,
 /area/ishimura/upper/engineering/bay)
 "kPY" = (
 /obj/structure/cable/green{
@@ -31781,6 +32312,61 @@
 	},
 /turf/simulated/floor/dank/cable/start,
 /area/ishimura/upper/misc/hallway/aft)
+"kQa" = (
+/obj/effect/floor_decal/industrial/warning/corner{
+	dir = 8
+	},
+/obj/structure/closet/hydrant{
+	pixel_y = -30
+	},
+/obj/item/ammo_magazine/bullpup,
+/turf/simulated/floor/dank/maint_right,
+/area/ishimura/upper/misc/escape)
+"kQx" = (
+/obj/effect/floor_decal/corner/grey{
+	dir = 6
+	},
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/tiled/white,
+/area/ishimura/upper/research)
+"kVf" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/catwalk,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/maintenance/fore_central)
+"kXo" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/effect/catwalk_plated/dark,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/medical/morgue)
+"lbP" = (
+/obj/item/shuttle_part,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/command/bridge)
+"lcp" = (
+/turf/simulated/floor/plating,
+/area/ishimura/upper/misc/breakroom)
 "lgW" = (
 /turf/simulated/floor/dank/tech{
 	dir = 4
@@ -31789,6 +32375,24 @@
 "lsj" = (
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/upper/misc/hallway/aft)
+"lum" = (
+/obj/structure/bed/roller,
+/obj/effect/floor_decal/corner/grey/mono,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/medical)
+"luD" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/catwalk,
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/maintenance/fore_port)
 "lvk" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -31813,9 +32417,34 @@
 	dir = 8
 	},
 /area/ishimura/upper/misc/hallway/central)
+"lAU" = (
+/obj/item/ammo_magazine/bullpup,
+/turf/simulated/floor/dank/tech,
+/area/ishimura/upper/misc/hallway/fore)
 "lDq" = (
 /turf/simulated/floor/dank/cable/start,
 /area/ishimura/upper/engineering/bay)
+"lDL" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/dank/golf_gray,
+/area/ishimura/upper/misc/janitorcloset/fore_port)
+"lER" = (
+/obj/effect/catwalk_plated/dark,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/ishimura/upper/command/bridge)
 "lGz" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable/green{
@@ -31829,13 +32458,116 @@
 	dir = 8
 	},
 /area/ishimura/upper/misc/hallway/aft)
+"lKN" = (
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/tiled/dark,
+/area/ishimura/upper/security/armory)
+"lMI" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/effect/gibspawner/human,
+/obj/structure/closet/secure_closet/guncabinet/military{
+	req_access = list()
+	},
+/turf/simulated/floor/plating,
+/area/ishimura/upper/maintenance/aft_port)
+"lRL" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/item/stack/material/wood,
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/dank/golf_brown,
+/area/ishimura/upper/security/checkpoint/bridge)
+"lVy" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/catwalk,
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/maintenance/fore_port)
 "lWa" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/closet/secure_closet/engineering_personal,
+/obj/item/ammo_magazine/rivet,
 /turf/simulated/floor/dank/slides{
 	dir = 1
 	},
 /area/ishimura/upper/engineering/prep)
+"mbB" = (
+/obj/item/stack/rods,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/medical/morgue/autopsy)
+"men" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/corruption_node/growth/branch,
+/turf/simulated/floor/dank/rectangles,
+/area/ishimura/upper/misc/hangar)
+"meU" = (
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/tiled/dark/monotile,
+/area/ishimura/upper/command/bridge)
+"mfb" = (
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/dank/slides{
+	dir = 4
+	},
+/area/ishimura/upper/misc/hangar)
+"mfu" = (
+/obj/structure/bed/chair/tram{
+	dir = 1
+	},
+/turf/simulated/floor/dank/tramcorner{
+	dir = 4
+	},
+/area/ishimura/upper/misc/hangar)
+"mfy" = (
+/obj/machinery/door/airlock/civilian/tram,
+/turf/simulated/floor/dank/trammiddle,
+/area/ishimura/upper/misc/hangar)
 "mgr" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -31847,6 +32579,23 @@
 	},
 /turf/simulated/floor/dank/grater,
 /area/ishimura/upper/misc/hallway/fore)
+"mnh" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
+/obj/item/stack/material/wood,
+/turf/simulated/floor/dank/hardwood/alt,
+/area/ishimura/upper/medical/lobby)
+"mrm" = (
+/turf/simulated/floor/dank/tramcorner{
+	dir = 9
+	},
+/area/ishimura/upper/misc/hangar)
 "mti" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -31860,11 +32609,37 @@
 	},
 /area/ishimura/upper/misc/hallway/central)
 "mAD" = (
-/turf/simulated/shuttle/wall/pod{
-	dir = 1;
-	icon_state = "p_wall1"
+/obj/structure/corruption_node/growth/branch,
+/turf/simulated/floor/dank/tech{
+	dir = 4
 	},
-/area/shuttle/escape_pod2/station)
+/area/ishimura/upper/misc/hallway/aft)
+"mKZ" = (
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/dank/tramcorner{
+	dir = 1
+	},
+/area/ishimura/upper/misc/hangar)
+"mMr" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/dank/slides{
+	dir = 8
+	},
+/area/ishimura/upper/security/brig)
 "mMF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
@@ -31884,11 +32659,57 @@
 	dir = 1
 	},
 /area/ishimura/upper/security/brig)
+"mTe" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 1
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/item/gun/energy/stunrevolver/secure,
+/turf/simulated/floor/dank/slides{
+	dir = 8
+	},
+/area/ishimura/upper/security/brig)
+"mVt" = (
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 4
+	},
+/obj/item/stack/material/wood,
+/turf/simulated/floor/dank/rivets,
+/area/ishimura/upper/engineering/hub)
+"mVx" = (
+/obj/structure/girder/reinforced,
+/turf/simulated/floor/tiled/dark/monotile,
+/area/ishimura/upper/command/bridge)
+"mXw" = (
+/obj/machinery/door/blast/regular{
+	dir = 4;
+	id = "zealot_gaming"
+	},
+/turf/simulated/wall/r_wall,
+/area/ishimura/upper/misc/hangar)
+"neK" = (
+/obj/machinery/door/firedoor/border_only,
+/turf/simulated/floor/plating/under,
+/area/ishimura/upper/command/bridge)
 "nfk" = (
 /turf/simulated/floor/dank/tech{
 	dir = 8
 	},
 /area/ishimura/upper/misc/hallway/fore)
+"nfC" = (
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/maintenance/fore_port)
 "ngj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
@@ -31901,8 +32722,19 @@
 /turf/simulated/floor/dank/cable/end,
 /area/ishimura/upper/engineering/bay)
 "nle" = (
+/obj/item/ammo_magazine/bullpup,
 /turf/simulated/floor/dank/maint_right,
 /area/ishimura/upper/misc/escape)
+"nls" = (
+/obj/item/stack/material/steel,
+/turf/simulated/floor/plating/under,
+/area/ishimura/upper/medical/morgue)
+"npu" = (
+/obj/structure/bed/chair/tram,
+/turf/simulated/floor/dank/tramcorner{
+	dir = 1
+	},
+/area/ishimura/upper/misc/hangar)
 "npV" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -31916,13 +32748,27 @@
 	dir = 8
 	},
 /area/ishimura/upper/misc/hallway/fore)
-"nqJ" = (
-/turf/simulated/floor/plating,
-/turf/simulated/shuttle/wall/corner/pod1{
-	dir = 1;
-	icon_state = "corner_pod1"
+"nqX" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
-/area/shuttle/escape_pod3/station)
+/obj/structure/corruption_node/growth/branch,
+/turf/simulated/floor/dank/tech{
+	dir = 8
+	},
+/area/ishimura/upper/misc/hallway/central)
+"nro" = (
+/obj/item/stack/rods,
+/turf/simulated/floor/tiled/dark,
+/area/ishimura/upper/command/bridge)
+"nrB" = (
+/obj/structure/barricade/wood,
+/turf/simulated/floor/dank/rectangles,
+/area/ishimura/upper/misc/hallway/aft)
 "nrU" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -31949,30 +32795,93 @@
 	},
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/upper/misc/hallway/fore)
+"ntL" = (
+/obj/effect/floor_decal/corner/grey/mono,
+/obj/effect/floor_decal/industrial/loading,
+/obj/structure/corruption_node/growth/branch,
+/turf/simulated/floor/tiled/white/monotile,
+/area/ishimura/upper/medical)
 "nxI" = (
+/turf/simulated/floor/plating/under,
+/area/ishimura/upper/misc/hallway/central)
+"nyw" = (
+/obj/machinery/door/airlock/civilian/tram{
+	dir = 4
+	},
+/turf/simulated/floor/dank/trammiddle,
+/area/ishimura/upper/misc/hangar)
+"nGh" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/catwalk,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/maintenance/aft_starboard)
+"nLa" = (
+/obj/item/marker_shard,
+/turf/simulated/floor/dank/rivets,
+/area/ishimura/upper/engineering/hub)
+"nMI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/effect/catwalk_plated/dark,
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/simulated/floor/dank/tech{
-	dir = 4
-	},
-/area/ishimura/upper/misc/hallway/central)
+/obj/item/stack/material/steel,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/command/bridge)
 "nQB" = (
 /turf/simulated/floor/dank/slides{
 	dir = 8
 	},
 /area/ishimura/upper/misc/hangar)
+"nYN" = (
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/dank/rectangles,
+/area/ishimura/upper/engineering/bay)
+"oha" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/item/ammo_magazine/bullpup,
+/turf/simulated/floor/dank/grater,
+/area/ishimura/upper/misc/hallway/escape)
+"ohO" = (
+/obj/item/stack/rods,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/research/chief_science_office)
+"oiS" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/plating/under,
+/area/ishimura/upper/command/bridge)
+"ojv" = (
+/turf/simulated/floor/plating/under,
+/area/ishimura/upper/misc/hallway/fore)
 "oln" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -31990,6 +32899,51 @@
 	dir = 4
 	},
 /area/ishimura/upper/misc/hallway/hangar)
+"orS" = (
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/girder/displaced,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/maintenance/fore_central)
+"osR" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/ishimura/upper/medical)
+"oEl" = (
+/obj/structure/bed/chair/tram{
+	dir = 4
+	},
+/turf/simulated/floor/dank/tramcorner{
+	dir = 8
+	},
+/area/ishimura/upper/misc/hangar)
+"oEo" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/barricade/wood,
+/turf/simulated/floor/dank/grater,
+/area/ishimura/upper/misc/hallway/escape)
 "oEt" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -32013,14 +32967,50 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/item/stack/material/wood,
 /turf/simulated/floor/dank/cable,
 /area/ishimura/upper/security/checkpoint/bridge)
+"oFa" = (
+/obj/structure/corruption_node/growth,
+/turf/simulated/floor/tiled/dark,
+/area/ishimura/upper/command/bridge)
+"oGH" = (
+/obj/structure/table/standard,
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/item/paper_bin,
+/turf/simulated/floor/tiled/dark/monotile,
+/area/ishimura/upper/command/bridge)
+"oIm" = (
+/obj/machinery/button/remote/blast_door{
+	id = "zealot_gaming";
+	name = "hangar bay blast doors";
+	pixel_y = 22;
+	req_one_access = list(57,58,100)
+	},
+/turf/simulated/floor/plating,
+/area/ishimura/upper/maintenance/aft_port)
+"oKT" = (
+/obj/structure/morgue{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/ishimura/upper/medical/morgue)
+"oLD" = (
+/obj/structure/corruption_node/nest,
+/turf/simulated/floor/tiled/white,
+/area/ishimura/upper/medical)
 "oMI" = (
 /obj/structure/table/standard,
 /obj/machinery/recharger,
 /obj/machinery/camera/network/security,
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/upper/security/equipment)
+"oNx" = (
+/obj/effect/shuttle_landmark/deliverance/landing/ishimura,
+/turf/simulated/wall/r_wall,
+/area/ishimura/upper/security/armory)
 "oPu" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
@@ -32029,6 +33019,26 @@
 	dir = 8
 	},
 /area/ishimura/upper/misc/hallway/aft)
+"oSb" = (
+/obj/item/gun/projectile/automatic/pulse_rifle/empty,
+/turf/simulated/floor/dank/trammiddle,
+/area/ishimura/upper/misc/hangar)
+"oSc" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/command/bridge)
+"oTJ" = (
+/obj/structure/bed/chair/office/light,
+/obj/item/stack/material/wood,
+/turf/simulated/floor/dank/hardwood,
+/area/ishimura/upper/security/brig)
 "oZg" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -32048,24 +33058,13 @@
 	dir = 8
 	},
 /area/ishimura/upper/engineering/lobby)
+"pbZ" = (
+/obj/item/stack/material/steel,
+/turf/simulated/floor/plating/under,
+/area/ishimura/upper/medical)
 "pcB" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/simulated/floor/dank/tech{
-	dir = 8
-	},
+/obj/item/stack/material/plasteel,
+/turf/simulated/floor/plating,
 /area/ishimura/upper/misc/hallway/central)
 "pgo" = (
 /obj/structure/disposalpipe/segment,
@@ -32078,6 +33077,29 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/dank/cable/end,
 /area/ishimura/upper/misc/hallway/aft)
+"phV" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/ishimura/upper/command/bridge)
+"pmf" = (
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/misc/hangar)
+"pmS" = (
+/obj/structure/barricade/wood,
+/turf/simulated/floor/dank/slides{
+	dir = 1
+	},
+/area/ishimura/upper/security/brig)
+"ppt" = (
+/obj/item/stack/material/steel,
+/turf/simulated/floor/dank/golf_brown,
+/area/ishimura/upper/security/checkpoint/bridge)
 "pqC" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable/green{
@@ -32089,6 +33111,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/dank/cable/start,
 /area/ishimura/upper/misc/hallway/aft)
+"psg" = (
+/obj/structure/girder/reinforced,
+/turf/simulated/floor/plating/under,
+/area/ishimura/upper/maintenance/fore_central)
 "puw" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -32104,12 +33130,26 @@
 	},
 /turf/simulated/floor/dank/cable/end,
 /area/ishimura/upper/misc/hallway/aft)
+"pva" = (
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/dank/golf_brown,
+/area/ishimura/upper/security/equipment)
 "pvt" = (
+/obj/item/stack/material/wood,
 /turf/simulated/floor/dank/cable,
 /area/ishimura/upper/engineering/bay)
 "pzB" = (
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/upper/misc/hallway/central)
+"pCf" = (
+/obj/structure/bed/chair/tram{
+	dir = 8;
+	layer = 2.25;
+	pixel_y = 16
+	},
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/misc/hangar)
 "pFY" = (
 /obj/machinery/door/blast/shutters/open{
 	dir = 4;
@@ -32124,16 +33164,51 @@
 	dir = 8
 	},
 /area/ishimura/upper/engineering/lobby)
+"pOH" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/dank/slides{
+	dir = 8
+	},
+/area/ishimura/upper/security/brig)
 "pRY" = (
 /turf/simulated/floor/dank/slides{
 	dir = 4
 	},
 /area/ishimura/upper/misc/hallway/aft)
+"pTA" = (
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/dank/slides{
+	dir = 8
+	},
+/area/ishimura/upper/misc/hangar)
 "pUO" = (
 /turf/simulated/floor/dank/slides{
 	dir = 8
 	},
 /area/ishimura/upper/engineering/machining_room)
+"pWR" = (
+/obj/structure/corruption_node/cyst,
+/turf/simulated/floor/dank/tech{
+	dir = 8
+	},
+/area/ishimura/upper/misc/hallway/aft)
+"pXW" = (
+/obj/effect/floor_decal/industrial/outline/grey,
+/obj/structure/closet/body_bag,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/medical/morgue)
 "pYK" = (
 /obj/machinery/light{
 	dir = 8
@@ -32147,6 +33222,51 @@
 	dir = 1
 	},
 /area/ishimura/upper/misc/hallway/aft)
+"pYM" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/maintenance/fore_port)
+"qbh" = (
+/obj/machinery/computer{
+	desc = "You have no idea how this thing works, and the layer of dust covering the screens tells you that you couldn't even if you did.";
+	icon_state = "tramterminal";
+	name = "makeshift ship control terminal"
+	},
+/turf/simulated/floor/dank/tramcorner{
+	dir = 1
+	},
+/area/ishimura/upper/misc/hangar)
+"qiN" = (
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/dank/tech,
+/area/ishimura/upper/misc/hallway/aft)
+"qjB" = (
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/dank/tech{
+	dir = 4
+	},
+/area/ishimura/upper/misc/hallway/fore)
+"qjQ" = (
+/obj/structure/door_assembly/door_assembly_tram{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/ishimura/upper/misc/hangar)
+"qkX" = (
+/turf/simulated/floor/plating/under,
+/area/ishimura/upper/misc/hangar)
 "qow" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -32155,23 +33275,148 @@
 /obj/random/loot/sometimes/few,
 /turf/simulated/floor/plating,
 /area/ishimura/upper/maintenance/fore_port)
+"qpA" = (
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/effect/catwalk_plated/dark,
+/obj/structure/corruption_node/growth,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/command/bridge)
+"qpH" = (
+/obj/structure/disposalpipe/segment,
+/obj/item/stack/material/steel,
+/turf/simulated/floor/tiled/dark,
+/area/ishimura/upper/command/bridge)
+"qrC" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/machinery/door/blast/shutters/open{
+	dir = 8;
+	icon_state = "shutter0";
+	id = "upforelock"
+	},
+/turf/simulated/floor/plating,
+/area/ishimura/upper/misc/hallway/fore)
+"qtF" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/dank/grater,
+/area/ishimura/upper/engineering/hub)
+"qxR" = (
+/obj/effect/floor_decal/corner/grey{
+	dir = 10
+	},
+/obj/item/stack/rods,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/medical)
+"qzY" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/rig_module/kinesis/advanced{
+	desc = "An experimental scraptech modification of a once-standard kinesis module, with mechanical scavenged from the surface of Tau Volantis supercharging the output beam. Draws an extreme volume of power, and is exceptionally dangerous to the user and those around them.";
+	drop_range = 11;
+	force_power_cost = 100;
+	grip_power_cost = 250;
+	icon_state = "rcd";
+	launch_force = 250;
+	launch_power_cost = 25000;
+	max_force = 200;
+	max_launch_speed = 200;
+	max_speed = 15;
+	min_impact_speed = 0.1;
+	name = "P.H.A.E.R.O.N prototype kinesis module";
+	pixel_x = -4;
+	pixel_y = 2;
+	range = 10;
+	sustain_power_cost = 1000
+	},
+/turf/simulated/floor/dank/trammiddle,
+/area/ishimura/upper/misc/hangar)
+"qDS" = (
+/obj/structure/bed/chair/office/light{
+	dir = 4
+	},
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/tiled/dark/monotile,
+/area/ishimura/upper/command/bridge)
 "qGj" = (
 /turf/simulated/floor/dank/slides{
 	dir = 4
 	},
 /area/ishimura/upper/misc/hallway/central)
-"qHI" = (
-/turf/simulated/shuttle/wall/pod/two{
-	dir = 1;
-	icon_state = "p_wall2"
+"qHb" = (
+/obj/structure/barricade/wood,
+/turf/simulated/floor/tiled/white,
+/area/ishimura/upper/medical)
+"qWK" = (
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/dank/hardwood,
+/area/ishimura/upper/security/checkpoint/bridge)
+"qXa" = (
+/obj/structure/table/rack,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/item/stack/material/wood/fifty,
+/obj/random/loot/often/few,
+/obj/item/ammo_magazine/lineracks,
+/turf/simulated/floor/tiled/dark/monotile,
+/area/ishimura/upper/engineering/spare_storage)
+"rcV" = (
+/obj/effect/catwalk_plated/dark,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
 	},
-/area/shuttle/escape_pod3/station)
-"qYp" = (
-/turf/simulated/shuttle/wall/pod/two{
-	dir = 8;
-	icon_state = "p_wall2"
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
 	},
-/area/shuttle/escape_pod1/station)
+/obj/item/stack/rods,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/command/bridge)
+"rdC" = (
+/obj/structure/corruption_node/growth/branch,
+/turf/simulated/floor/dank/tech{
+	dir = 8
+	},
+/area/ishimura/upper/misc/hallway/aft)
+"rhK" = (
+/obj/structure/bed/chair/tram,
+/turf/simulated/floor/dank/tramcorner{
+	dir = 9
+	},
+/area/ishimura/upper/misc/hangar)
 "rjP" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable/green{
@@ -32183,6 +33428,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/upper/misc/hallway/aft)
+"ryj" = (
+/obj/item/stack/material/wood,
+/turf/simulated/floor/tiled/white,
+/area/ishimura/upper/medical)
 "ryv" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -32193,6 +33442,28 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/upper/misc/hallway/escape)
+"ryW" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/closet/secure_closet/guncabinet/military{
+	req_access = list()
+	},
+/turf/simulated/floor/plating,
+/area/ishimura/upper/maintenance/aft_port)
+"rCU" = (
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/dank/medical,
+/area/ishimura/upper/medical/bpc)
 "rEO" = (
 /turf/simulated/floor/dank/slides,
 /area/ishimura/upper/engineering/bay)
@@ -32205,6 +33476,10 @@
 	},
 /turf/simulated/floor/dank/grille_spare_4,
 /area/ishimura/upper/engineering/engine_room)
+"rJD" = (
+/obj/item/stack/material/steel,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/misc/hallway/central)
 "rKH" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -32216,8 +33491,57 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/dank/cable,
 /area/ishimura/upper/engineering/bay)
+"rSN" = (
+/obj/effect/gibspawner/human,
+/obj/structure/ladder,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/maintenance/aft_port)
 "scD" = (
 /turf/simulated/floor/dank/hardwood,
+/area/ishimura/upper/security/brig)
+"shd" = (
+/obj/structure/barricade/wood,
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/dank/golf_brown,
+/area/ishimura/upper/security/checkpoint/bridge)
+"shL" = (
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/dank/rivets,
+/area/ishimura/upper/security/checkpoint/bridge)
+"snD" = (
+/obj/machinery/door/blast/regular{
+	dir = 4;
+	id = "zealot_gaming"
+	},
+/turf/simulated/floor/dank/tech{
+	dir = 4
+	},
+/area/ishimura/upper/misc/hallway/aft)
+"srE" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/tiled/white,
+/area/ishimura/upper/research/virology/quarantine)
+"stK" = (
+/obj/item/gun/projectile/automatic/pulse_heavy,
+/turf/simulated/floor/dank/rivets,
+/area/ishimura/upper/security/checkpoint/bridge)
+"svq" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/disposalpipe/segment,
+/obj/item/stack/material/wood,
+/turf/simulated/floor/dank/golf_brown,
 /area/ishimura/upper/security/brig)
 "sCm" = (
 /obj/machinery/light,
@@ -32236,6 +33560,43 @@
 	},
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/engineering/atmospherics)
+"sLe" = (
+/obj/item/stack/material/wood,
+/turf/simulated/floor/dank/tech{
+	dir = 8
+	},
+/area/ishimura/upper/misc/hallway/aft)
+"sMQ" = (
+/turf/simulated/floor/dank/tramcorner{
+	dir = 1
+	},
+/area/ishimura/upper/misc/hangar)
+"sRN" = (
+/turf/simulated/floor/dank/tramcorner{
+	dir = 4
+	},
+/area/ishimura/upper/misc/hangar)
+"sSs" = (
+/obj/machinery/computer{
+	desc = "You have no idea how this thing works, and the layer of dust covering the screens tells you that you couldn't even if you did.";
+	icon_state = "tramterminal";
+	name = "makeshift ship control terminal"
+	},
+/turf/simulated/floor/dank/tramcorner{
+	dir = 5
+	},
+/area/ishimura/upper/misc/hangar)
+"sSx" = (
+/obj/structure/barricade/wood,
+/turf/simulated/floor/dank/rectangles,
+/area/ishimura/upper/engineering/bay)
+"sVU" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/structure/barricade/wood,
+/turf/simulated/floor/dank/rivets,
+/area/ishimura/upper/engineering/hub)
 "sVW" = (
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/upper/misc/hangar)
@@ -32261,10 +33622,83 @@
 	dir = 8
 	},
 /area/ishimura/upper/security/brig)
+"tfQ" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/obj/structure/catwalk,
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/maintenance/fore_port)
+"tlb" = (
+/obj/structure/table/steel_reinforced,
+/turf/simulated/floor/dank/tramcorner{
+	dir = 8
+	},
+/area/ishimura/upper/misc/hangar)
 "tpq" = (
 /obj/structure/bed/chair/office/light,
 /turf/simulated/floor/dank/hardwood,
 /area/ishimura/upper/engineering/lobby)
+"trT" = (
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 1;
+	layer = 2.4;
+	level = 2
+	},
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/dank/rectangles,
+/area/ishimura/upper/misc/hallway/escape)
+"tsR" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
+/obj/item/stack/material/wood,
+/turf/simulated/floor/dank/rectangles,
+/area/ishimura/upper/engineering/bay)
+"tAc" = (
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/dank/hardwood,
+/area/ishimura/upper/misc/hangar/reception)
+"tAf" = (
+/obj/effect/catwalk_plated/dark,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/item/marker_shard,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/command/bridge)
+"tCv" = (
+/obj/item/stack/rods,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/misc/hallway/fore)
+"tCK" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/medical)
 "tDP" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -32281,6 +33715,77 @@
 /obj/machinery/vending/cigarette,
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/upper/misc/hallway/fore)
+"tOy" = (
+/obj/structure/bed/chair/tram{
+	dir = 8
+	},
+/turf/simulated/floor/dank/tramcorner{
+	dir = 5
+	},
+/area/ishimura/upper/misc/hangar)
+"tRr" = (
+/obj/effect/floor_decal/corner/grey,
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/tiled/white,
+/area/ishimura/upper/medical)
+"tSd" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/structure/corruption_node/growth/branch,
+/turf/simulated/floor/dank/tech,
+/area/ishimura/upper/misc/hangar)
+"tUY" = (
+/obj/item/stack/material/wood,
+/turf/simulated/floor/dank/golf_brown,
+/area/ishimura/upper/security/checkpoint/bridge)
+"tVw" = (
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/ishimura/upper/maintenance/fore_central)
+"tZH" = (
+/turf/simulated/floor/plating/under,
+/area/ishimura/upper/command/bridge)
+"uex" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/disposalpipe/segment,
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/dank/grater,
+/area/ishimura/upper/engineering/hub)
+"ukg" = (
+/obj/structure/girder/displaced,
+/turf/simulated/floor/plating/under,
+/area/ishimura/upper/misc/hallway/central)
+"unj" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/effect/catwalk_plated/dank,
+/obj/structure/corruption_node/growth/branch,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/engineering/engine_room)
+"usq" = (
+/obj/item/stack/material/wood,
+/turf/simulated/floor/dank/grater,
+/area/ishimura/upper/engineering/bay)
 "uvY" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/machinery/door/blast/shutters/open{
@@ -32295,12 +33800,24 @@
 	dir = 4
 	},
 /area/ishimura/upper/misc/hallway/aft)
-"uye" = (
-/turf/simulated/shuttle/wall/pod/two{
-	dir = 8;
-	icon_state = "p_wall2"
+"uwe" = (
+/obj/structure/corruption_node/nest,
+/turf/simulated/floor/dank/tech{
+	dir = 4
 	},
-/area/shuttle/escape_pod2/station)
+/area/ishimura/upper/misc/hallway/aft)
+"uyg" = (
+/obj/structure/barricade/spike{
+	dir = 4
+	},
+/turf/simulated/floor/dank/slides{
+	dir = 8
+	},
+/area/ishimura/upper/misc/hallway/aft)
+"uzB" = (
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/maintenance/fore_central)
 "uGx" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/structure/cable/cyan{
@@ -32310,6 +33827,15 @@
 	},
 /turf/simulated/floor/dank/grille_spare_4,
 /area/ishimura/upper/engineering/engine_room)
+"uHI" = (
+/obj/machinery/space_heater,
+/obj/item/stack/material/steel,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/maintenance/fore_central)
+"uHL" = (
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/dank/trammiddle,
+/area/ishimura/upper/misc/hangar)
 "uHO" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/machinery/door/blast/shutters/open{
@@ -32332,9 +33858,43 @@
 /obj/machinery/portable_atmospherics/canister/nitrogen,
 /turf/simulated/floor/tiled/techfloor,
 /area/ishimura/upper/engineering/atmospherics)
+"uSJ" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/item/gun/projectile/automatic/wt550,
+/turf/simulated/floor/dank/grater,
+/area/ishimura/upper/misc/hallway/escape)
+"uVq" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/misc/hallway/aft)
+"uWJ" = (
+/turf/simulated/floor/dank/trammiddle,
+/area/ishimura/upper/misc/hangar)
 "uWX" = (
 /turf/simulated/floor/dank/tech,
 /area/ishimura/upper/misc/hallway/aft)
+"uYo" = (
+/turf/simulated/wall/tram,
+/area/ishimura/upper/misc/hangar)
 "vbj" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -32343,11 +33903,63 @@
 	dir = 8
 	},
 /area/ishimura/upper/misc/hallway/central)
+"vcb" = (
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/dank/cable{
+	dir = 4
+	},
+/area/ishimura/upper/misc/hallway/central)
+"vcL" = (
+/obj/item/stack/material/plasteel,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/maintenance/fore_central)
+"vdX" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/dank/cable{
+	dir = 4
+	},
+/area/ishimura/upper/misc/hallway/fore)
+"vfa" = (
+/obj/structure/lattice,
+/turf/simulated/open,
+/area/ishimura/upper/medical/morgue)
+"voi" = (
+/obj/structure/barricade/wood,
+/turf/simulated/floor/dank/tech{
+	dir = 1
+	},
+/area/ishimura/upper/misc/hallway/fore)
 "vtz" = (
 /turf/simulated/floor/dank/tech{
 	dir = 1
 	},
 /area/ishimura/upper/misc/hallway/fore)
+"vua" = (
+/obj/effect/floor_decal/industrial/warning/corner{
+	dir = 8
+	},
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/dank/rivets,
+/area/ishimura/upper/engineering/hub)
+"vul" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/girder/displaced,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/command/bridge)
 "vAZ" = (
 /obj/machinery/light{
 	dir = 8
@@ -32359,6 +33971,57 @@
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/upper/misc/hallway/aft)
+"vFq" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/door/blast/regular{
+	dir = 4;
+	id = "zealot_gaming"
+	},
+/turf/simulated/floor/dank/cable{
+	dir = 4
+	},
+/area/ishimura/upper/misc/hallway/aft)
+"vHx" = (
+/obj/item/stack/rods,
+/turf/simulated/floor/plating/under,
+/area/ishimura/upper/command/bridge)
+"vHQ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plating,
+/area/ishimura/upper/command/bridge)
+"vQt" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/ishimura/upper/misc/hallway/central)
+"vUZ" = (
+/obj/machinery/light,
+/obj/effect/floor_decal/corner/grey{
+	dir = 10
+	},
+/obj/structure/barricade/wood,
+/turf/simulated/floor/tiled/white,
+/area/ishimura/upper/medical)
 "vWr" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -32370,6 +34033,52 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/dank/cable/start,
 /area/ishimura/upper/misc/hallway/aft)
+"vXK" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 1
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/item/stack/material/wood,
+/turf/simulated/floor/dank/slides{
+	dir = 8
+	},
+/area/ishimura/upper/security/brig)
+"vYE" = (
+/obj/machinery/atmospherics/pipe/simple/visible/red{
+	dir = 4
+	},
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/tiled/techfloor,
+/area/ishimura/upper/engineering/atmospherics)
+"vYF" = (
+/turf/simulated/floor/dank/tramcorner{
+	dir = 8
+	},
+/area/ishimura/upper/misc/hangar)
+"vZI" = (
+/obj/machinery/computer{
+	desc = "You have no idea how this thing works, and the layer of dust covering the screens tells you that you couldn't even if you did.";
+	icon_state = "tramterminal";
+	name = "makeshift ship control terminal"
+	},
+/turf/simulated/floor/dank/tramcorner{
+	dir = 9
+	},
+/area/ishimura/upper/misc/hangar)
+"wax" = (
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/dank/golf_brown,
+/area/ishimura/upper/security/brig)
 "wbY" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -32399,6 +34108,54 @@
 "wgd" = (
 /turf/simulated/floor/dank/cable/end,
 /area/ishimura/upper/engineering/bay)
+"wis" = (
+/obj/structure/lattice,
+/turf/simulated/open,
+/area/ishimura/upper/medical/morgue/autopsy)
+"wlv" = (
+/obj/item/material/shard,
+/turf/simulated/floor/dank/rivets,
+/area/ishimura/upper/engineering/hub)
+"wnq" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/item/stack/material/wood,
+/turf/simulated/floor/dank/cable{
+	dir = 4
+	},
+/area/ishimura/upper/misc/hallway/fore)
+"www" = (
+/obj/machinery/light,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/misc/hallway/fore)
+"wxp" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/obj/structure/catwalk,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 5
+	},
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/maintenance/fore_central)
 "wzV" = (
 /obj/machinery/light{
 	dir = 4
@@ -32408,13 +34165,19 @@
 	},
 /turf/simulated/floor/dank/tech,
 /area/ishimura/upper/misc/hallway/aft)
-"wHC" = (
+"wEi" = (
+/obj/machinery/door/firedoor/border_only,
+/obj/structure/grille/broken,
 /turf/simulated/floor/plating,
-/turf/simulated/shuttle/wall/corner/pod1{
-	dir = 1;
-	icon_state = "corner_pod1"
+/area/ishimura/upper/engineering/chief_office)
+"wKx" = (
+/obj/structure/closet/secure_closet/guncabinet/military{
+	req_access = list()
 	},
-/area/shuttle/escape_pod1/station)
+/turf/simulated/floor/dank/tramcorner{
+	dir = 9
+	},
+/area/ishimura/upper/misc/hangar)
 "wKV" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 10
@@ -32423,12 +34186,30 @@
 /turf/simulated/floor/reinforced/airless,
 /area/ishimura/upper/engineering/engine_room)
 "wNh" = (
+/turf/space,
 /turf/simulated/floor/plating,
-/turf/simulated/shuttle/wall/corner/pod1{
-	dir = 1;
-	icon_state = "corner_pod1"
+/area/space)
+"wTK" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
-/area/shuttle/escape_pod2/station)
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/barricade/wood,
+/turf/simulated/floor/dank/grater,
+/area/ishimura/upper/engineering/hub)
 "wUq" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1;
@@ -32446,15 +34227,54 @@
 	dir = 8
 	},
 /area/ishimura/upper/misc/hallway/fore)
+"xcK" = (
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/dank/tramcorner{
+	dir = 10
+	},
+/area/ishimura/upper/misc/hangar)
+"xdd" = (
+/obj/item/stack/material/wood,
+/turf/simulated/floor/dank/tech,
+/area/ishimura/upper/misc/hallway/fore)
+"xfo" = (
+/obj/structure/bed/chair/tram{
+	dir = 1
+	},
+/turf/simulated/floor/dank/tramcorner{
+	dir = 8
+	},
+/area/ishimura/upper/misc/hangar)
 "xmt" = (
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/upper/security/brig)
-"xtb" = (
-/turf/simulated/shuttle/wall/pod/two{
-	dir = 8;
-	icon_state = "p_wall2"
+"xoL" = (
+/obj/structure/girder/reinforced,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/medical/morgue)
+"xpa" = (
+/obj/item/stack/material/plasteel,
+/turf/simulated/floor/tiled/dark,
+/area/ishimura/upper/command/bridge)
+"xvI" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/rig_module/fabricator/energy_net{
+	pixel_x = 4
 	},
-/area/shuttle/escape_pod3/station)
+/turf/simulated/floor/dank/tramcorner{
+	dir = 8
+	},
+/area/ishimura/upper/misc/hangar)
+"xxc" = (
+/obj/structure/girder/reinforced,
+/turf/simulated/floor/plating,
+/area/ishimura/upper/misc/hallway/central)
+"xxi" = (
+/obj/structure/corruption_node/maw,
+/turf/simulated/floor/dank/tech{
+	dir = 1
+	},
+/area/ishimura/upper/misc/hallway/aft)
 "xzo" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -32472,6 +34292,24 @@
 	},
 /turf/simulated/floor/dank/tech,
 /area/ishimura/upper/misc/hallway/fore)
+"xBV" = (
+/obj/effect/floor_decal/corner/grey{
+	dir = 5
+	},
+/turf/simulated/floor/plating,
+/area/ishimura/upper/medical)
+"xEv" = (
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/dank/grille_spare_4,
+/area/ishimura/upper/engineering/engine_room)
+"xGm" = (
+/obj/structure/bed/chair/tram{
+	dir = 4
+	},
+/turf/simulated/floor/dank/tramcorner{
+	dir = 9
+	},
+/area/ishimura/upper/misc/hangar)
 "xJc" = (
 /turf/simulated/floor/dank/slides{
 	dir = 8
@@ -32479,6 +34317,38 @@
 /area/ishimura/upper/misc/hallway/central)
 "xKW" = (
 /turf/simulated/floor/dank/grater,
+/area/ishimura/upper/misc/hallway/aft)
+"xPL" = (
+/obj/structure/corruption_node/growth/branch,
+/turf/simulated/floor/dank/rivets,
+/area/ishimura/upper/engineering/hub)
+"xRb" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/item/gun/energy/cutter/plasma,
+/turf/simulated/floor/dank/grater,
+/area/ishimura/upper/engineering/bay)
+"xTG" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/dank/hardwood,
+/area/ishimura/upper/security/brig)
+"ydJ" = (
+/obj/structure/barricade/wood,
+/turf/simulated/floor/dank/tech{
+	dir = 8
+	},
 /area/ishimura/upper/misc/hallway/aft)
 "yfG" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
@@ -32494,6 +34364,9 @@
 	dir = 4
 	},
 /area/ishimura/upper/misc/hallway/aft)
+"ygX" = (
+/turf/simulated/wall/tram,
+/area/space)
 
 (1,1,1) = {"
 aaa
@@ -38430,7 +40303,7 @@ aZP
 bdi
 aad
 bgu
-bgu
+bxm
 aad
 aah
 aaa
@@ -38925,7 +40798,7 @@ bgu
 bgu
 bgu
 bgu
-bgu
+hBJ
 bgu
 asU
 rIk
@@ -39161,7 +41034,7 @@ ahl
 asU
 bhp
 bhp
-bhp
+xEv
 bhp
 bhp
 bhp
@@ -39170,7 +41043,7 @@ bgu
 bhp
 bhp
 bhp
-bhp
+hRR
 bgu
 bhp
 bhp
@@ -40164,7 +42037,7 @@ aah
 aad
 aly
 agw
-agZ
+bon
 bgu
 asU
 bhp
@@ -40182,7 +42055,7 @@ bgu
 bgu
 bhp
 bhp
-bhp
+xEv
 bhp
 bhp
 bhp
@@ -40438,7 +42311,7 @@ bgL
 bgQ
 bgQ
 bgQ
-bgQ
+unj
 bgR
 bgu
 agZ
@@ -42441,14 +44314,14 @@ ahj
 ajJ
 alz
 akM
-anN
+gUy
 alc
 bgX
 atP
 atP
 bhi
 alc
-anN
+kDh
 hCS
 awr
 aNy
@@ -42458,7 +44331,7 @@ anq
 anq
 asI
 anq
-anq
+bFx
 anq
 ajW
 atk
@@ -42675,7 +44548,7 @@ aah
 aak
 aer
 abL
-arb
+aKd
 agh
 aak
 akj
@@ -42955,7 +44828,7 @@ agm
 agm
 agm
 aBx
-avi
+vua
 aag
 aag
 aag
@@ -43201,11 +45074,11 @@ amw
 aol
 aol
 amt
-agm
+nLa
 bhl
 agm
 agm
-avH
+mVt
 aBx
 agm
 agm
@@ -43220,7 +45093,7 @@ agm
 agm
 agm
 avH
-agm
+xPL
 ahT
 agm
 agm
@@ -43445,11 +45318,11 @@ agK
 aiE
 agK
 agK
-agK
+uex
 akU
 alH
 amC
-aom
+eEP
 aom
 aom
 apa
@@ -43468,7 +45341,7 @@ aVm
 aVm
 aVm
 aVm
-aVm
+dZJ
 aVm
 aVm
 avV
@@ -43946,18 +45819,18 @@ aak
 aak
 aak
 agm
-ajc
+qtF
 agm
 agG
 agG
 agG
-acE
+goi
 acE
 acE
 agG
 aoC
-apb
-apC
+wTK
+eoW
 aty
 alc
 aov
@@ -44458,7 +46331,7 @@ ala
 atT
 amT
 amZ
-aep
+wEi
 agm
 ape
 apE
@@ -44690,7 +46563,7 @@ aah
 aah
 aak
 abD
-abL
+aIm
 arb
 fnE
 aiM
@@ -44711,7 +46584,7 @@ amK
 amS
 ana
 aFD
-agm
+wlv
 aph
 apE
 atD
@@ -44733,7 +46606,7 @@ ajM
 ajR
 fib
 akw
-atZ
+vYE
 awa
 awi
 bdU
@@ -44979,7 +46852,7 @@ aLP
 aWx
 aSs
 aTF
-aDU
+qXa
 ajG
 ajN
 ajX
@@ -46224,7 +48097,7 @@ anF
 aor
 aoA
 aoX
-ajI
+sVU
 aqG
 atW
 alc
@@ -46491,7 +48364,7 @@ aHl
 arv
 aZj
 lWa
-lWa
+jtl
 arv
 ara
 ajG
@@ -46738,7 +48611,7 @@ ajb
 rEO
 rEO
 rEO
-ajb
+nYN
 aHl
 arw
 arJ
@@ -47213,14 +49086,14 @@ axp
 abO
 adG
 aie
-ani
+aKD
 aug
 auP
 avb
 baB
 alx
 ark
-aux
+jTX
 auN
 abc
 aws
@@ -47234,7 +49107,7 @@ aoK
 atx
 mMF
 aWV
-aoK
+tsR
 ngj
 mMF
 kqk
@@ -47242,7 +49115,7 @@ atI
 wgd
 pvt
 lDq
-ajb
+sSx
 ara
 asJ
 jYG
@@ -47485,14 +49358,14 @@ iHj
 ajb
 avu
 iHj
-iHj
+usq
 ajb
-iHj
+kKi
 iHj
 iHj
 atJ
 atB
-atK
+xRb
 atK
 asl
 aFB
@@ -47742,7 +49615,7 @@ gGL
 aue
 ash
 joI
-aqY
+gLz
 joI
 joI
 joI
@@ -48217,7 +50090,7 @@ aah
 auJ
 abo
 axp
-baM
+aDb
 baM
 axp
 aXE
@@ -48479,7 +50352,7 @@ aYg
 aYp
 aYH
 aYK
-aYK
+cRv
 aZV
 aan
 auy
@@ -48994,7 +50867,7 @@ aNz
 anw
 aDI
 aVs
-ceq
+ewa
 asR
 anB
 asQ
@@ -49246,9 +51119,9 @@ amF
 amu
 aDK
 paQ
-ceq
+ewa
 bbM
-aLQ
+anB
 atn
 aeD
 azK
@@ -49997,9 +51870,9 @@ abn
 aas
 arc
 vAZ
-lsj
-pRY
-afB
+nrB
+dGH
+sLe
 aHd
 gWM
 aas
@@ -50012,7 +51885,7 @@ aQm
 aPL
 aPR
 aPU
-aPU
+nGh
 aQa
 aQe
 aPK
@@ -50756,8 +52629,8 @@ aas
 aas
 pRY
 afB
-aHd
-gWM
+jxg
+uyg
 avU
 aIu
 aNV
@@ -50778,7 +52651,7 @@ aae
 aae
 aae
 aae
-aIm
+aae
 aNH
 aaa
 aaa
@@ -51259,7 +53132,7 @@ axp
 baw
 aas
 aVp
-afB
+ydJ
 aHd
 bfU
 avU
@@ -51272,7 +53145,7 @@ aae
 aae
 aae
 aae
-aae
+gaY
 aae
 aae
 aae
@@ -51517,7 +53390,7 @@ uHO
 avU
 aOd
 aPm
-nQB
+pTA
 aNE
 aae
 aae
@@ -51528,7 +53401,7 @@ aae
 aae
 aae
 aae
-aae
+knv
 aae
 aae
 aae
@@ -51773,7 +53646,7 @@ nQB
 aNE
 aae
 aae
-aae
+knv
 aae
 aae
 aae
@@ -52267,14 +54140,14 @@ beH
 xKW
 lsj
 pRY
-afB
+rdC
 aHd
 ccj
 avU
 aZW
 aZX
 baa
-avU
+mXw
 avU
 avU
 avU
@@ -52514,26 +54387,26 @@ aWA
 adr
 aeW
 rjP
-puw
+gxX
 dqN
 pqC
 rjP
 aDM
 lGz
 aHe
-gWM
+iUY
 avU
 bbm
 aPm
 nQB
-sVW
+bJV
 aNF
 kfm
 kfm
 kfm
 kfm
 kfm
-kfm
+hWe
 kfm
 kfm
 aNF
@@ -52759,8 +54632,8 @@ aaa
 aaa
 aah
 auJ
-axp
-aYm
+bhG
+gjP
 aas
 afB
 auD
@@ -52772,20 +54645,20 @@ xKW
 lsj
 aDP
 afB
-flg
+gKt
 gWM
 avU
 bcl
 aPm
 nQB
-sVW
+bJV
 imE
 imE
 imE
-aOf
+tSd
 imE
 bbB
-imE
+fuw
 imE
 imE
 imE
@@ -53030,6 +54903,7 @@ aap
 aNM
 aPm
 nQB
+mXw
 avU
 avU
 avU
@@ -53037,9 +54911,8 @@ avU
 avU
 avU
 avU
-avU
-aNG
-aNG
+dcI
+dcI
 avU
 avU
 avU
@@ -53263,9 +55136,9 @@ aaa
 aaa
 aah
 auJ
-axp
-aYm
-aas
+aay
+aTJ
+aUr
 afB
 auD
 flg
@@ -53283,21 +55156,21 @@ aNB
 aPm
 nQB
 aNE
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
+aNW
+aNW
+aNW
+aNW
+aNW
+aNW
+aNW
+aNW
+aNW
+goH
+aNW
+goH
+aNW
+aNW
+aNW
 aNW
 aNH
 aaa
@@ -53516,16 +55389,16 @@ aaa
 aah
 auJ
 agV
-aYs
-aas
+amd
+aUr
 afB
 auD
-flg
+mAD
 aap
 amN
+tAc
 axT
-axT
-axT
+eig
 aFu
 axT
 aPu
@@ -53535,23 +55408,23 @@ bdD
 aPm
 nQB
 aNE
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aNH
+aNW
+aNW
+aNW
+aNW
+aNW
+aNW
+aNW
+aNW
+aNW
+goH
+aNW
+goH
+aNW
+aNW
+aNW
+aNW
+aNW
 aaa
 aaa
 aaa
@@ -53767,10 +55640,10 @@ aaa
 aaa
 aah
 auJ
-ahU
-aYm
-aas
-afB
+axp
+aMd
+aUr
+hnM
 auD
 flg
 aap
@@ -53787,27 +55660,27 @@ aIt
 aPm
 nQB
 aNE
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aNH
+aNW
+aNW
+aNW
+uYo
+uYo
+uYo
+uYo
+uYo
+uYo
+uYo
+uYo
+uYo
+uWJ
+kDI
+uYo
+uYo
+uYo
+ygX
+ahH
 aaa
-aaa
-aaa
-aaa
+ahH
 aaa
 aaa
 aaa
@@ -54019,10 +55892,10 @@ aaa
 aaa
 aah
 auJ
-bba
-aYm
-aas
-aWA
+gMX
+aFT
+aUr
+afB
 auD
 flg
 aap
@@ -54035,34 +55908,34 @@ aFi
 aFi
 aNC
 aOa
-aIu
+mfb
 aPm
 nQB
 aNE
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aNH
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+aNW
+uYo
+uYo
+uYo
+xcK
+uYo
+rhK
+tlb
+tlb
+xvI
+cUn
+ebr
+mrm
+kiB
+uYo
+wKx
+aNW
+ako
+ahH
+ako
+ahH
+ahH
+ako
+ahH
 aaa
 aaa
 aaa
@@ -54271,9 +56144,9 @@ aaa
 aaa
 aah
 auJ
-axp
-aYm
-aas
+ahU
+aTJ
+aUr
 aiG
 bdS
 asg
@@ -54283,7 +56156,7 @@ aus
 aap
 aFo
 aIp
-aIp
+gcf
 aIp
 aNP
 aPl
@@ -54291,28 +56164,28 @@ aPj
 aPI
 nQB
 aNE
+aNW
+cWK
+vZI
+xfo
+cud
+uYo
+npu
+qzY
+iED
+iED
+gfO
+ebr
+sMQ
+cud
+uYo
+mKZ
+qkX
 aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aNH
+ako
+ahH
 aaa
-aaa
-aaa
-aaa
-aaa
+ahH
 aaa
 aaa
 aaa
@@ -54523,10 +56396,10 @@ aaa
 aaa
 aah
 auJ
-axp
-aYm
-aas
-auC
+bba
+fan
+aUr
+afB
 auD
 flg
 acL
@@ -54543,28 +56416,28 @@ aIu
 aQv
 nQB
 aNE
+aNW
+cWK
+sMQ
+uWJ
+cud
+uYo
+ckM
+sRN
+sRN
+sRN
+ddP
+ebr
+sMQ
+ism
+uYo
+aNW
+uWJ
+ahH
 aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aNH
 aaa
-aaa
-aaa
-aaa
-aaa
+aae
+eyO
 aaa
 aaa
 aaa
@@ -54775,19 +56648,19 @@ aaa
 aaa
 aah
 auJ
-baW
+axp
 aYm
-aas
-axt
+aUp
+afB
 auD
-flg
+mAD
 acL
 aIE
 aNJ
 aEq
 axT
 axT
-axT
+eig
 aZZ
 aPw
 aap
@@ -54795,28 +56668,28 @@ aIt
 aQv
 nQB
 aNE
+aNW
+cWK
+qbh
+fIV
+cud
+uYo
+uYo
+uYo
+nyw
+uYo
+uYo
+uYo
+qjQ
+cud
+uYo
+qkX
+aNW
 aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aNH
-aaa
-aaa
-aaa
-aaa
-aaa
+ahH
+ako
+ako
+ahH
 aaa
 aaa
 aaa
@@ -55027,10 +56900,10 @@ aaa
 aaa
 aah
 auJ
-auJ
-aYt
-aas
-abx
+axp
+aTL
+aUp
+afB
 auD
 aWE
 acL
@@ -55047,30 +56920,30 @@ aLw
 aQv
 nQB
 aNE
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aNH
+aNW
+cWK
+sMQ
+uHL
+cud
+uYo
+xGm
+jFy
+vYF
+oEl
+jFy
+aNW
+qkX
+uWJ
+aNW
+aNW
+qkX
+ako
+ako
+knv
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+ako
+ahH
+ahH
 aaa
 aaa
 aaa
@@ -55279,11 +57152,11 @@ aaa
 aaa
 aah
 auJ
-axp
+oIm
 aYm
-aas
-aMd
-auD
+aUp
+afB
+aUv
 flg
 acL
 anc
@@ -55299,29 +57172,29 @@ aRP
 aQw
 nQB
 aNE
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aNH
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+aNW
+cWK
+sSs
+mfu
+cud
+mfy
+sMQ
+uWJ
+uWJ
+oSb
+uWJ
+uWJ
+aNW
+pmf
+qkX
+uWJ
+qkX
+ahH
+eyO
+ahH
+ahH
+ahH
+ako
 aaa
 aaa
 aaa
@@ -55533,7 +57406,7 @@ aah
 auJ
 axp
 aYm
-aas
+aUp
 afB
 auD
 flg
@@ -55551,27 +57424,27 @@ aNM
 aQv
 nQB
 aNE
+aNW
+uYo
+uYo
+uYo
+cwS
+uYo
+tOy
+gUE
+sRN
+jHQ
+pCf
+aNW
+aNW
+qkX
+aNW
+aNW
+qkX
+ahH
+ako
 aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aNH
-aaa
-aaa
-aaa
-aaa
+ako
 aaa
 aaa
 aaa
@@ -55783,9 +57656,9 @@ aaa
 aaa
 aah
 auJ
-axp
+bba
 aYm
-aas
+aUp
 afB
 auD
 flg
@@ -55803,29 +57676,29 @@ aNM
 aQv
 nQB
 aNE
+aNW
+aNW
+aNW
+uYo
+uYo
+uYo
+uYo
+uYo
+uYo
+uYo
+uYo
+uYo
+uYo
+uYo
+uYo
+aNW
+uYo
 aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aae
-aNH
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+ygX
+ygX
+ahH
+ahH
+ahH
 aaa
 aaa
 aaa
@@ -56036,8 +57909,8 @@ aaa
 aah
 auJ
 axp
-aYm
-aas
+baW
+aUr
 afB
 auD
 flg
@@ -56053,7 +57926,8 @@ aEW
 adc
 aNN
 aQv
-nQB
+pTA
+mXw
 avU
 avU
 avU
@@ -56061,9 +57935,8 @@ avU
 avU
 avU
 avU
-avU
-aNG
-aNG
+dcI
+dcI
 avU
 avU
 avU
@@ -56287,12 +58160,12 @@ aaa
 aaa
 aah
 auJ
-axp
-aYs
-aas
-aWA
+ahU
+aTJ
+aUr
+afB
 auD
-flg
+gKt
 acL
 aIF
 aPo
@@ -56306,14 +58179,14 @@ adc
 bcm
 aQv
 nQB
-sVW
+bJV
 kfm
 kfm
 kfm
 aNF
 kfm
 aLC
-kfm
+hWe
 kfm
 kfm
 kfm
@@ -56539,9 +58412,9 @@ aaa
 aaa
 aah
 auJ
-aeV
-aYm
-aas
+axp
+lMI
+aUr
 aiG
 bdS
 asg
@@ -56556,16 +58429,16 @@ aVz
 aVG
 avU
 bcG
-aQv
+men
 nQB
-sVW
+bJV
 aOf
 imE
 imE
 imE
 imE
 imE
-imE
+fuw
 imE
 imE
 aOf
@@ -56792,8 +58665,8 @@ aaa
 aah
 auJ
 axp
-aYm
-aas
+ryW
+aUr
 afB
 auD
 flg
@@ -56803,14 +58676,14 @@ aPo
 aPC
 acL
 ase
-aVG
+dUh
 aVz
 aKq
 avU
 aOd
 aZY
 bef
-avU
+mXw
 avU
 avU
 avU
@@ -57043,9 +58916,9 @@ aaa
 aaa
 aah
 auJ
-bbS
-aYm
-aas
+rSN
+fan
+aUr
 afB
 auD
 aeX
@@ -57078,7 +58951,7 @@ aae
 aae
 aae
 aae
-aOe
+aae
 aNH
 aaa
 aaa
@@ -57295,10 +59168,10 @@ aaa
 aaa
 aah
 auJ
-ako
-aYm
-aas
-afB
+aay
+aTJ
+aUr
+rdC
 aeQ
 aeY
 aoe
@@ -57316,7 +59189,7 @@ aQx
 nQB
 aNE
 aae
-aae
+gaY
 aae
 aae
 aae
@@ -57547,7 +59420,7 @@ aaa
 aaa
 aah
 auJ
-amd
+axp
 aYm
 aas
 afB
@@ -57828,7 +59701,7 @@ aae
 aae
 aae
 aae
-aae
+knv
 aae
 aae
 aae
@@ -58052,10 +59925,10 @@ aaa
 aah
 auJ
 axp
-aYm
+aTL
 aas
 afB
-auD
+ggy
 flg
 atU
 sII
@@ -58083,7 +59956,7 @@ aae
 aae
 aae
 aae
-aae
+gaY
 aae
 aae
 aae
@@ -58558,7 +60431,7 @@ auJ
 aYm
 axp
 aas
-afB
+rdC
 auD
 flg
 avj
@@ -59062,9 +60935,9 @@ auJ
 aYo
 aYF
 aas
-afB
-auD
-flg
+knJ
+vFq
+snD
 aas
 aas
 aas
@@ -59314,9 +61187,9 @@ auJ
 axp
 aYm
 aas
-afB
-auD
-flg
+knJ
+vFq
+snD
 aas
 aqm
 aVE
@@ -59567,11 +61440,11 @@ axp
 aYm
 aas
 anE
-bdS
+dZA
 asg
 aas
 aVu
-aVG
+dUh
 aVJ
 aWv
 aDV
@@ -59599,7 +61472,7 @@ aMi
 axq
 aRF
 aSF
-aSE
+wxp
 bfV
 aau
 aah
@@ -59818,12 +61691,12 @@ auJ
 axp
 aYm
 aas
-afB
+idk
 auD
-flg
+mAD
 aas
 arL
-aVG
+dUh
 aVJ
 aVZ
 aDV
@@ -59837,12 +61710,12 @@ bfo
 bfq
 aDt
 aUz
-aFq
+vcb
 gDA
 aDV
 aMu
 axq
-aRJ
+kVf
 axq
 aHg
 aHg
@@ -60067,12 +61940,12 @@ aaa
 aaa
 aah
 auJ
-axp
+bba
 aYm
 aas
 auC
 auD
-flg
+uwe
 aas
 aWp
 aVE
@@ -60333,10 +62206,10 @@ aWa
 aVv
 aRk
 aMc
-mti
+dKl
 aRm
 oln
-aRk
+nqX
 aRE
 bjs
 aRm
@@ -60579,7 +62452,7 @@ auD
 flg
 aas
 aWp
-aVG
+dUh
 aVJ
 aVZ
 aDV
@@ -60826,7 +62699,7 @@ auJ
 axp
 aYm
 aas
-afB
+pWR
 auD
 flg
 aas
@@ -60849,7 +62722,7 @@ aeU
 aDV
 aDV
 axq
-axq
+uzB
 atR
 bhK
 aHg
@@ -60860,7 +62733,7 @@ aSL
 aHg
 aSJ
 aSZ
-axq
+uzB
 aau
 aah
 aaa
@@ -61349,8 +63222,8 @@ bdW
 bcC
 aDV
 axq
-atR
-axq
+tVw
+bHe
 aau
 aau
 aau
@@ -61596,11 +63469,11 @@ aVD
 aIa
 aDV
 aNg
-gxf
+bed
 aKt
 wcg
 aDV
-axq
+aMs
 atR
 axq
 aMe
@@ -61849,11 +63722,11 @@ aas
 aDV
 iOk
 gxf
-aKt
-aKy
-aDV
-apf
-atR
+epE
+bed
+apx
+axq
+axq
 axq
 aNt
 aau
@@ -62099,14 +63972,14 @@ aWi
 pYK
 hCN
 anA
-qGj
+cbE
 gxf
-aKt
-xJc
-aDV
-aVa
-atR
-aSz
+ciD
+bed
+xxc
+axq
+ayh
+axq
 aMs
 aau
 aSI
@@ -62336,30 +64209,30 @@ aaa
 aah
 abv
 aeM
-aXL
+pYM
 aas
-afB
-auD
+pWR
+fNY
 flg
 lsj
 aWK
 uWX
 uWX
 uWX
-uWX
+qiN
 aWj
 aWK
 uWX
 aIw
 qGj
-gxf
-aKt
-xJc
-aDV
-arn
-atR
+fEX
+vQt
+nxI
+ukg
+ayh
+asx
 axq
-aMu
+axq
 aau
 bhF
 bim
@@ -62371,7 +64244,7 @@ bTI
 aSg
 aUV
 arP
-aRJ
+kVf
 aXx
 aau
 aah
@@ -62601,17 +64474,17 @@ klQ
 pgo
 aWL
 kPY
-klQ
+uVq
 aIC
 aJt
 aJW
-aKu
-aKy
-aDV
-asd
-atR
+bed
+dHu
+apx
+ayh
 axq
-aSw
+psg
+axq
 aau
 bhM
 bhy
@@ -62850,22 +64723,22 @@ aWH
 aTq
 hCN
 hCN
-hCN
+xxi
 hCN
 aWH
 hCN
 aIw
 qGj
-gxf
+bed
 nxI
-xJc
-aDV
-asw
-atR
+haL
+nxI
+asx
+ayh
 axq
+ayh
 axq
-aau
-aaw
+uHI
 bhy
 axq
 aPy
@@ -63100,22 +64973,22 @@ aHp
 bbo
 wzV
 aTr
-uWX
+qiN
 aNO
 uWX
 uWX
 wzV
 uWX
 anA
-aTc
-gxf
+bed
+bed
+ukg
 nxI
-iJP
-aDV
+haL
 asx
-atR
+asx
 axq
-aRF
+axq
 aau
 asd
 bhy
@@ -63360,15 +65233,15 @@ aDV
 aDV
 aDV
 apx
-aID
-aJF
-apx
-aDV
-aDV
-atR
-aDb
-aXz
-aau
+nxI
+bed
+nxI
+haL
+nxI
+vcL
+axq
+eLg
+bxN
 bhD
 bhz
 bhA
@@ -63376,7 +65249,7 @@ bhA
 arR
 ryv
 aRb
-aSS
+jpa
 arP
 arP
 aRJ
@@ -63611,15 +65484,15 @@ aKx
 aTd
 aWC
 bby
-fYM
-pzB
+bed
+nxI
 pcB
 haL
-aKA
-aDV
+bed
+bed
 ayh
-aEe
-aMv
+aMs
+lcp
 aMv
 aMv
 aMv
@@ -63851,10 +65724,10 @@ qow
 aXM
 aXI
 aQk
-aQk
+luD
 atq
 aYv
-aYv
+lDL
 aTv
 aTz
 aJa
@@ -63864,13 +65737,13 @@ fYM
 aTe
 bbz
 fYM
-pzB
-pcB
-aFq
-gDA
-aDV
-bhG
-atR
+bed
+bed
+fEX
+rJD
+nxI
+axq
+orS
 aMv
 aMy
 aNe
@@ -63878,7 +65751,7 @@ aNv
 aQS
 aMv
 aOC
-aSS
+jpa
 fFR
 aSa
 arP
@@ -64118,9 +65991,9 @@ bbA
 bec
 bxw
 bed
-aKz
-aKA
-aDV
+bed
+bed
+xxc
 aTR
 atR
 aMv
@@ -64136,7 +66009,7 @@ aSS
 arP
 aSw
 aau
-aRJ
+kVf
 aau
 aah
 aaa
@@ -64369,7 +66242,7 @@ aWD
 fYM
 fYM
 pzB
-gxf
+bed
 aVo
 aKA
 aDV
@@ -64384,7 +66257,7 @@ aRK
 aOH
 aSS
 aRc
-aSS
+bOZ
 arP
 aTD
 aau
@@ -64622,8 +66495,8 @@ aGt
 bfb
 axA
 aKw
-aLp
-bTf
+qrC
+epp
 aec
 axq
 atR
@@ -64875,7 +66748,7 @@ aBi
 axA
 aRC
 bcp
-lgW
+dfd
 aec
 aax
 aIi
@@ -65391,10 +67264,10 @@ aRw
 aMv
 aOC
 aSS
-aRy
+iCi
 aSS
 arP
-axq
+uzB
 aUQ
 aXJ
 aau
@@ -65864,7 +67737,7 @@ aaa
 aah
 abv
 afb
-aXP
+lVy
 arT
 bbV
 avO
@@ -65904,7 +67777,7 @@ aUi
 aUi
 aUi
 aah
-bbF
+aah
 aaa
 aaa
 aaa
@@ -66146,8 +68019,8 @@ aEQ
 aEQ
 aEQ
 aEQ
-aSS
-aRy
+bOZ
+oEo
 aSS
 aUi
 aUi
@@ -66400,17 +68273,17 @@ aOs
 aEQ
 aOW
 aQP
-aSg
+trT
 aUY
 aVh
 aYS
 aUk
 bcI
 aUi
-aTI
-jEi
-aUp
-bfv
+wNh
+aae
+aae
+wNh
 aaa
 aaa
 aaa
@@ -66631,7 +68504,7 @@ aiX
 ayL
 aDo
 aya
-axC
+mnh
 ayW
 aBv
 aUU
@@ -66659,10 +68532,10 @@ oZg
 bbw
 bcK
 bez
-aTJ
-aUr
-aay
-bfB
+aae
+aae
+aae
+aae
 aaa
 aaa
 aaa
@@ -66911,10 +68784,10 @@ aZv
 bbE
 bdJ
 aUi
-nqJ
-qHI
-xtb
-bfE
+wNh
+aae
+aae
+wNh
 aaa
 aaa
 aaa
@@ -67142,7 +69015,7 @@ aGA
 aGR
 iqZ
 nfk
-bcp
+vdX
 lgW
 aec
 axq
@@ -67415,10 +69288,10 @@ aYS
 aUk
 bcV
 aUi
-aTK
-mAD
-aUv
-bfF
+wNh
+aae
+aae
+wNh
 aaa
 aaa
 aaa
@@ -67627,7 +69500,7 @@ aaa
 aaa
 aah
 abv
-adS
+nfC
 ajw
 adS
 aLG
@@ -67667,10 +69540,10 @@ aZR
 cWo
 bcK
 beI
-aTL
-aUA
-aaz
-bfG
+aae
+aae
+aae
+aae
 aaa
 aaa
 aaa
@@ -67911,7 +69784,7 @@ aRZ
 aTY
 aEQ
 aPf
-aRy
+oha
 aUj
 aVg
 aVR
@@ -67920,9 +69793,9 @@ nle
 bcY
 aUi
 wNh
-eJh
-uye
-bfH
+aae
+aae
+wNh
 aaa
 aaa
 aaa
@@ -68145,7 +70018,7 @@ aBM
 azg
 aNj
 aAL
-azf
+dzW
 bdv
 aSU
 acf
@@ -68163,12 +70036,12 @@ aEQ
 aEQ
 aEQ
 aPg
-aRy
+uSJ
 aSS
 aUi
 aVS
 bau
-guq
+dOI
 bcU
 aUi
 aah
@@ -68393,13 +70266,13 @@ ayC
 apz
 afM
 axz
-afM
+cxO
 axz
-aAm
+hll
 aAB
 aAI
-afM
-baZ
+ryj
+vUZ
 acf
 aUL
 bcp
@@ -68423,10 +70296,10 @@ baN
 bbI
 bdG
 aUi
-aTO
-bon
-aUB
-bfI
+wNh
+aae
+aae
+wNh
 aaa
 aaa
 aaa
@@ -68645,7 +70518,7 @@ ayC
 aqa
 afM
 afM
-afM
+oLD
 axy
 aUq
 bdt
@@ -68667,7 +70540,7 @@ arH
 arP
 arP
 bpx
-aRy
+iCi
 aSS
 aUY
 aVi
@@ -68675,10 +70548,10 @@ bbc
 bcj
 bcK
 beN
-aUo
-aUK
-bfg
-bfJ
+aae
+aae
+aae
+aae
 aaa
 aaa
 aaa
@@ -68925,12 +70798,12 @@ aUY
 aWt
 bbj
 bck
-bdJ
+kQa
 aUi
-wHC
-juU
-qYp
-bfK
+wNh
+aae
+aae
+wNh
 aaa
 aaa
 aaa
@@ -69140,7 +71013,7 @@ aah
 abv
 aiO
 aQk
-aXR
+tfQ
 acr
 adv
 adN
@@ -69148,7 +71021,7 @@ afj
 auF
 aqx
 awJ
-axG
+ntL
 ayD
 aDk
 ayx
@@ -69398,7 +71271,7 @@ acr
 acr
 acr
 acr
-axR
+gwh
 awK
 afM
 afM
@@ -69666,14 +71539,14 @@ bcp
 lgW
 iqZ
 iTN
-iTN
+xdd
 iTN
 xzo
 iTN
 iTN
 iTN
-iTN
-iTN
+xdd
+lAU
 iTN
 bcN
 sCm
@@ -69904,7 +71777,7 @@ afn
 afI
 afM
 awK
-ayz
+tRr
 aGV
 aJL
 ayx
@@ -70146,7 +72019,7 @@ aaa
 aaa
 aah
 abv
-aqo
+aOe
 bcd
 aQG
 aXD
@@ -70166,11 +72039,11 @@ ayE
 ayE
 ayE
 aAY
-bcp
+vdX
 lgW
 iqZ
 vtz
-vtz
+voi
 bfO
 vtz
 aQz
@@ -70426,11 +72299,11 @@ bhv
 bcS
 iTN
 hOJ
-iTN
+iBR
 iTN
 iTN
 bhQ
-iTN
+gAT
 bcR
 bdO
 bfM
@@ -70658,7 +72531,7 @@ acf
 adO
 afp
 afM
-afM
+bGv
 awL
 axQ
 aAO
@@ -71666,7 +73539,7 @@ acn
 acg
 abG
 afS
-afM
+qHb
 axe
 afM
 ayH
@@ -71920,11 +73793,11 @@ afx
 afR
 aqJ
 axf
-afM
+bGv
 ayN
 axK
 ayi
-cPN
+cny
 azH
 ayI
 aLD
@@ -72173,25 +74046,25 @@ afU
 afM
 axg
 afM
-ayN
+lum
 axK
 aHy
-ayI
+ayJ
 azH
-ayI
-aGH
+ayj
+ayj
 axK
 nfk
-bcp
-aLu
+vdX
+www
 aaJ
 aqn
 aDv
 bbN
 aaJ
-afA
+wax
 gXM
-aHQ
+bLU
 aRL
 aUd
 aUF
@@ -72424,18 +74297,18 @@ abN
 afT
 aqK
 axh
-afM
+ayZ
 baZ
-axK
+xoL
 ayj
 ayJ
 azI
 aGp
-aGH
+oKT
 axK
-nfk
+bFH
 dAh
-lgW
+hLn
 aaJ
 asc
 aFE
@@ -72674,20 +74547,20 @@ afa
 adx
 abN
 agP
-afM
+ayZ
 axe
-afM
+ceQ
 ayZ
 axK
 ayi
-cPN
-azH
-ayI
+pXW
+kXo
+fNL
 aGH
-axK
-nfk
-bcp
-lgW
+xoL
+ojv
+dDz
+ojv
 aaU
 aaU
 aaU
@@ -72926,21 +74799,21 @@ acm
 adA
 afK
 afR
-aqJ
+tCK
 axj
-afM
-ayN
-axK
-ayi
-ayI
-azH
-ayI
-aGH
-axK
-ben
-beh
-bhX
-aaU
+pbZ
+bDm
+fNL
+vfa
+ewF
+nls
+vfa
+bma
+bma
+ojv
+bFH
+lgW
+hpv
 abp
 adq
 apc
@@ -73178,20 +75051,20 @@ aco
 adB
 abN
 apu
-afM
-awJ
-afM
-baU
-axK
-ayk
-ayM
+ayZ
+osR
+ayZ
+bid
+bma
+mbB
+bik
 aOx
-ayM
-ayM
-ayk
-nfk
-bcp
-lgW
+fav
+wis
+wis
+cVg
+bFH
+bFH
 aaU
 acx
 adt
@@ -73431,19 +75304,19 @@ adP
 abN
 aAd
 aAm
-aAB
-aAI
-bbb
-ayk
-aHA
+afM
+bDm
+bid
+aQl
+bik
 azS
 bik
-aBG
+bik
 aPP
-ayk
-aRC
-bcp
-lgW
+aQl
+ojv
+bFH
+tCv
 aaU
 acy
 adu
@@ -73454,7 +75327,7 @@ acK
 aUD
 bbx
 afA
-aUP
+mMr
 bac
 aaD
 bfY
@@ -73681,22 +75554,22 @@ abN
 abN
 abN
 abN
-axR
+xBV
 afM
 aAD
-afM
+ayZ
 bid
-ayk
-ayQ
-azz
+gDt
+aQl
+aQl
 aAs
 aGs
 aQl
-ayk
-nfk
-bcp
+gDt
+bFH
+bFH
 bdF
-aaU
+hpv
 acz
 adX
 aql
@@ -73704,8 +75577,8 @@ asM
 aBZ
 afA
 aML
-afA
-afA
+wax
+bBH
 aUP
 bfx
 aaD
@@ -73937,17 +75810,17 @@ beX
 aFV
 aGn
 aIx
-beC
+qxR
 aCP
 aCP
+kem
 aCP
+ohO
+kem
 aCP
-aCP
-aCP
-aCP
-nfk
+bFH
 bcp
-lgW
+bFH
 aaU
 acF
 aes
@@ -73957,7 +75830,7 @@ aBZ
 afA
 aNc
 aSD
-aSD
+svq
 aUR
 btU
 bde
@@ -74195,11 +76068,11 @@ aXS
 bey
 beo
 ber
-bex
+bey
 aCP
 beQ
-bcp
-lgW
+wnq
+gen
 aaU
 acH
 aet
@@ -74436,7 +76309,7 @@ axk
 azv
 abP
 abP
-axR
+gwh
 aCi
 beC
 alW
@@ -74714,7 +76587,7 @@ aFM
 aOR
 aaq
 bhr
-tdg
+pOH
 wUq
 aaD
 aaD
@@ -74937,7 +76810,7 @@ aex
 afG
 beW
 axk
-axk
+rCU
 beR
 awO
 axR
@@ -75459,7 +77332,7 @@ beD
 alW
 nfk
 bcp
-lgW
+qjB
 aaY
 aaY
 aaY
@@ -75703,7 +77576,7 @@ aAA
 aOm
 aXF
 aXH
-aXH
+kQx
 awA
 aXH
 aXH
@@ -76219,13 +78092,13 @@ aLm
 aLo
 acA
 adY
-aeP
+jkc
 aeP
 aCg
 aCg
 aSh
 acA
-afA
+wax
 aUP
 aDS
 aaD
@@ -76477,7 +78350,7 @@ acA
 acA
 acA
 acA
-bbK
+etz
 aUP
 hop
 aEI
@@ -76719,7 +78592,7 @@ ban
 aGd
 nfk
 bcp
-lgW
+gen
 acA
 aDd
 aee
@@ -76730,7 +78603,7 @@ aPc
 aSk
 bfA
 afA
-aDj
+mTe
 aDN
 aER
 bdx
@@ -76976,7 +78849,7 @@ acA
 acY
 aen
 aen
-aen
+pva
 aen
 aen
 aSo
@@ -77203,7 +79076,7 @@ aaa
 aah
 alW
 awW
-axa
+jHU
 axa
 aub
 beE
@@ -77485,7 +79358,7 @@ aOZ
 aQF
 bfz
 bfA
-afA
+bBH
 aDj
 aDN
 aES
@@ -78229,7 +80102,7 @@ aBz
 aec
 aec
 tHt
-nfk
+jhC
 bcp
 aLu
 acv
@@ -78486,11 +80359,11 @@ bcp
 lgW
 acv
 aRp
-aEA
+iwC
 aEy
 aFF
 avl
-aFT
+aeJ
 asN
 aTP
 aCT
@@ -78994,11 +80867,11 @@ aEB
 aEx
 aHU
 auu
-aeJ
+oTJ
 aZS
 aCw
-aXr
-aDj
+aCT
+vXK
 aDN
 aEZ
 bdx
@@ -79486,7 +81359,7 @@ aVa
 aec
 aEr
 aDY
-aEr
+cym
 aGj
 aSn
 aVd
@@ -79498,9 +81371,9 @@ aED
 aEE
 aEE
 aEF
-aCH
+xTG
 avD
-aCH
+eZC
 aCH
 aDF
 aEG
@@ -79752,7 +81625,7 @@ aGh
 acv
 mRn
 avE
-hdr
+pmS
 hdr
 xmt
 aEH
@@ -79990,10 +81863,10 @@ abs
 aCj
 awF
 aEo
-aDy
+qWK
 aJC
-aJD
-cFo
+jGm
+ppt
 bhW
 cFo
 cFo
@@ -80246,7 +82119,7 @@ aIq
 beg
 aKb
 wbY
-wbY
+dXh
 aKk
 aKQ
 aaT
@@ -80483,7 +82356,7 @@ azU
 aAj
 aBo
 aAk
-aBt
+srE
 aCB
 aCB
 azU
@@ -80497,7 +82370,7 @@ aJU
 aDy
 bei
 aJD
-cFo
+tUY
 cFo
 aKl
 cFo
@@ -81263,7 +83136,7 @@ acN
 aCc
 aCR
 aDl
-adf
+lKN
 acN
 aek
 anx
@@ -81502,15 +83375,15 @@ aEf
 aEJ
 aEJ
 aIL
-aEJ
+stK
 aKX
 aEJ
 bfj
 aKU
 bfl
-aKU
+eFi
 aMZ
-acN
+oNx
 acN
 aIb
 aKg
@@ -81752,15 +83625,15 @@ atk
 aaT
 aFe
 abq
-aEJ
+shL
 acI
 aJR
 aKF
 aMY
 bfk
 egN
-aKl
-cFo
+lRL
+shd
 aVe
 acN
 acN
@@ -82256,7 +84129,7 @@ aJN
 aBQ
 bcx
 aav
-aaF
+meU
 aIU
 aav
 aav
@@ -82264,7 +84137,7 @@ aav
 aav
 aav
 aJg
-aaF
+meU
 aav
 aaF
 aKM
@@ -82516,7 +84389,7 @@ aLT
 aMj
 aPE
 aJi
-abe
+qpH
 big
 aaO
 aaO
@@ -82525,7 +84398,7 @@ bdK
 aav
 aav
 ajT
-aaa
+ftx
 aaa
 aaa
 aaa
@@ -82751,20 +84624,20 @@ aaa
 aaa
 aaa
 aaa
-aaa
+ftx
 ajT
 aav
 aJh
 aZa
 aZa
-aZa
+dJx
 aZa
 aZa
 aZa
 aIX
 aEs
 aZa
-aZa
+dJx
 aZa
 aQM
 aGF
@@ -82772,12 +84645,12 @@ aZa
 aZa
 aZa
 aZa
-aZa
+nro
 aZa
 aJh
 aav
 ajT
-aaa
+ftx
 aaa
 aaa
 aaa
@@ -83003,7 +84876,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+ftx
 ajT
 aav
 aJh
@@ -83020,16 +84893,16 @@ aZa
 aZa
 bcu
 aJj
+nro
 aZa
-aZa
-aZa
+fOe
 aZa
 aJp
 aZa
 aJh
 aav
 ajT
-aaa
+ftx
 aaa
 aaa
 aaa
@@ -83255,7 +85128,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+ftx
 ajT
 aav
 aav
@@ -83268,8 +85141,8 @@ aaZ
 aJk
 aEu
 aLb
-aEu
-aIY
+qpA
+oSc
 aIY
 aJr
 egB
@@ -83281,7 +85154,7 @@ aLi
 aav
 aav
 ajT
-aaa
+ftx
 aaa
 aaa
 aaa
@@ -83507,7 +85380,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+ftx
 baz
 aaA
 aaG
@@ -83521,7 +85394,7 @@ aZa
 aLe
 aIQ
 aLd
-aKD
+aZa
 aLe
 aZa
 aZa
@@ -83533,7 +85406,7 @@ aZa
 aIV
 aKh
 baz
-aaa
+ftx
 aaa
 aaa
 aaa
@@ -83759,7 +85632,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+ftx
 baz
 atr
 aZa
@@ -83780,12 +85653,12 @@ aZa
 aZa
 aZa
 aZa
-aKK
-aZa
-aZa
+nMI
+aKL
+xpa
 aUS
-baz
-aaa
+cAC
+ftx
 aaa
 aaa
 aaa
@@ -84011,7 +85884,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+ftx
 baz
 ats
 aZa
@@ -84031,13 +85904,13 @@ aav
 aJz
 aIV
 aJx
-aZa
+dNt
 aKK
-aZa
+jBy
 aZa
 aSl
 baz
-aaa
+ftx
 aaa
 aaa
 aaa
@@ -84263,7 +86136,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+ftx
 baz
 aaC
 aaI
@@ -84281,15 +86154,15 @@ aHh
 aHh
 aav
 aLg
-aaF
+cOD
 aOy
-aZa
-aKK
+aKL
+jBN
 aZa
 aKc
 anT
-baz
-aaa
+neK
+ftx
 aaa
 aaa
 aaa
@@ -84515,7 +86388,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+ftx
 baz
 aaE
 aaK
@@ -84533,15 +86406,15 @@ aav
 aav
 aav
 bij
-aaF
+aKL
 beL
-aZa
-aKK
-aZa
-aKd
+aKL
+phV
+aKL
+aaF
 aLL
-baz
-aaa
+aKL
+ftx
 aaa
 aaa
 aaa
@@ -84767,7 +86640,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+ftx
 baz
 ats
 aZa
@@ -84784,16 +86657,16 @@ aJe
 aJq
 acw
 aav
+aKL
 aaF
-aIV
 anS
 aZa
-aKK
-aZa
-aZa
-ats
-baz
-aaa
+oiS
+aKL
+eMy
+goI
+tZH
+ftx
 aaa
 aaa
 aaa
@@ -85019,7 +86892,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+ftx
 baz
 atr
 aZa
@@ -85036,16 +86909,16 @@ bhT
 aJv
 aKP
 aMQ
-abl
+vHQ
 aJZ
-aaZ
-aaZ
 aKL
-aZa
-aZa
-atr
-baz
-aaa
+vul
+aKL
+fOe
+aKL
+tZH
+gyv
+ftx
 aaa
 aaa
 aaa
@@ -85271,11 +87144,11 @@ aaa
 aaa
 aaa
 aaa
-aaa
+ftx
 baz
 aaA
 aaG
-aZa
+dJx
 aZa
 aZa
 aZa
@@ -85288,16 +87161,16 @@ aJn
 aJw
 aMk
 aav
-aZa
-abi
-aZa
-aZa
-aZa
-aZa
-aIV
-aKh
-baz
-aaa
+aKL
+rcV
+aKL
+tZH
+aKL
+tZH
+vHx
+tZH
+gyv
+ftx
 aaa
 aaa
 aaa
@@ -85523,7 +87396,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+ftx
 ajT
 aav
 aav
@@ -85532,24 +87405,24 @@ aZa
 aZa
 aZa
 abi
+xpa
 aZa
 aZa
 aZa
 aZa
 aZa
 aZa
-aZa
-aZa
-aZa
-abi
-aZa
-aZa
-aZa
-aLj
-aav
-aav
-ajT
-aaa
+jBy
+aKL
+lER
+tZH
+aKL
+fXJ
+baK
+tZH
+gyv
+cDu
+ftx
 aaa
 aaa
 aaa
@@ -85775,33 +87648,33 @@ aaa
 aaa
 aaa
 aaa
-aaa
+ftx
 ajT
 ajT
 aav
 aIJ
 aZa
-aZa
+oFa
 aZa
 abk
 abm
 abm
 abm
 abm
+tAf
 abm
-abm
-abm
+hNs
 abm
 abm
 aKa
-aZa
-aZa
-aZa
-aLi
-aav
-ajT
-ajT
-aaa
+tZH
+lbP
+eMy
+tZH
+gyv
+gyv
+cDu
+ftx
 aaa
 aaa
 aaa
@@ -86027,9 +87900,9 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
+ftx
+ftx
+ftx
 baz
 aZa
 aZa
@@ -86038,22 +87911,22 @@ aZa
 abz
 aZa
 aaS
-aaS
+qDS
 aZa
 aeo
-aZa
-aaS
+nro
+aaF
 aaS
 aZa
 baK
-aZa
-aZa
-aZa
-aZa
-baz
-aaa
-aaa
-aaa
+goI
+fOe
+tZH
+gyv
+gyv
+ftx
+ftx
+ftx
 aaa
 aaa
 aaa
@@ -86281,7 +88154,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+ftx
 baz
 aZa
 aZa
@@ -86295,15 +88168,15 @@ aOK
 aav
 ats
 bct
-abd
-aGN
+aaF
+oGH
 aav
-aZa
-aZa
-aZa
-aZa
-baz
-aaa
+tZH
+dNt
+gyv
+gyv
+cDu
+ftx
 aaa
 aaa
 aaa
@@ -86533,7 +88406,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+ftx
 baz
 aaF
 aaS
@@ -86550,12 +88423,12 @@ aar
 aar
 aav
 aav
-aLg
-aaS
-aaS
-aaF
-baz
-aaa
+mVx
+tZH
+gyv
+cDu
+cDu
+ftx
 aaa
 aaa
 aaa
@@ -86785,7 +88658,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+ftx
 baz
 aoQ
 bcv
@@ -86793,21 +88666,21 @@ bct
 ats
 aav
 ajT
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+ftx
+ftx
+ftx
+ftx
+ftx
+ftx
+ftx
 ajT
 aav
-ats
-bct
-bcv
-aoQ
-baz
-aaa
+tZH
+gyv
+cDu
+cDu
+cDu
+ftx
 aaa
 aaa
 aaa
@@ -87037,7 +88910,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+ftx
 ajT
 aar
 aar
@@ -87045,21 +88918,21 @@ aar
 aar
 ajT
 ajT
+ftx
 aaa
 aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-ajT
-ajT
-aar
-aar
-aar
-aar
-ajT
-aaa
+ftx
+gyv
+gyv
+gyv
+cDu
+cDu
+cDu
+cDu
+ftx
 aaa
 aaa
 aaa
@@ -87289,29 +89162,29 @@ aaa
 aaa
 aaa
 aaa
+ftx
+ftx
+ftx
+ftx
+ftx
+ftx
+ftx
+ftx
+ftx
 aaa
 aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+ftx
+ftx
+ftx
+ftx
+ftx
+ftx
+ftx
+ftx
+ftx
 aaa
 aaa
 aaa
