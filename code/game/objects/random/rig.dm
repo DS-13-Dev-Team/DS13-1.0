@@ -10,7 +10,6 @@
 				/obj/item/rig/mining,
 				/obj/item/rig/excavation,
 				/obj/item/rig/vintage = 0.2,
-				/obj/item/rig/advanced = 0.1, //At 0.5, they are still very common, shouldn't even be "misplaced" anyway.
 				/obj/item/rig/patrol = 0.1,
 				/obj/item/rig/industrial,
 				/obj/item/rig/eva,

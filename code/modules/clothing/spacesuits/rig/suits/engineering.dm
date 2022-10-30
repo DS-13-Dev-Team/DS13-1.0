@@ -36,3 +36,25 @@
 
 /obj/item/clothing/head/helmet/space/rig/engineering
 	name = "helmet"
+
+/obj/item/rig/engineering/chief //CE variant of engineer rig, just has better modules to start
+	initial_modules = list(
+		/obj/item/rig_module/healthbar/advanced,
+		/obj/item/rig_module/storage/heavy,
+		/obj/item/rig_module/grenade_launcher/light,
+		/obj/item/rig_module/maneuvering_jets,
+		/obj/item/rig_module/vision/meson,
+		/obj/item/rig_module/kinesis/advanced,
+		/obj/item/rig_module/hotswap,
+		/obj/item/rig_module/power_sink
+		)
+
+/obj/item/rig/engineering/maxstone
+	name = "modified engineering RIG"
+	desc = "A lightweight and flexible armoured rig suit, designed for mining and shipboard engineering. This one is a heavily customized model, nonetheless donning a standard color scheme. It has `Max S.` engraved next to the monitor lights."
+	icon_state = "ds_advanced_rig_stone"
+
+/obj/item/rig/engineering/banditofdoom
+	name = "Evangelion RIG"
+	desc = "A project many months in the works, created by an obsessive historical anime fan. Even incorporates a custom voice changer for impersonating TV characters."
+	icon_state = "banditofdoom_rig"

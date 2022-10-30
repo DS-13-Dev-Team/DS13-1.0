@@ -33,8 +33,8 @@
 
 /datum/uplink_item/item/hardsuit_modules/earthgov
 	name = "Earthgov RIG"
-	path = /obj/item/rig/marine/earthgov
-	item_cost = 19
+	path = /obj/item/rig/marine/specialist
+	item_cost = 25
 	is_special = TRUE
 	antag_roles = list(MODE_EARTHGOV_AGENT)
 

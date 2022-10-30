@@ -263,14 +263,6 @@
 	containername = "\improper antique CEC RIG crate"
 	security_level = SUPPLY_SECURITY_HIGH
 
-/decl/hierarchy/supply_pack/security/rig_advanced
-	name = "T3 RIG - Advanced"
-	contains = list(/obj/item/rig/advanced = 1)
-	cost = 190
-	containertype = /obj/structure/closet/crate/secure/large
-	containername = "\improper advanced RIG crate"
-	security_level = SUPPLY_SECURITY_HIGH
-
 /decl/hierarchy/supply_pack/security/rig_riot
 	name = "T3 RIG - Riot"
 	contains = list(/obj/item/rig/riot = 1)

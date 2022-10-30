@@ -1,18 +1,17 @@
-A/*
+/*
 	Advanced RIG
 
-	High quality all around. Lightweight, good protection, no real drawbacks. The next generation of awesome
+	High quality all around. Extremely lightweight, comes with effective modules, exclusive to the EDF Marine Lieutenant
 */
 
 /obj/item/rig/advanced
 	name = "advanced RIG"
-	desc = "The latest in cutting-edge RIG technology. Lightweight, tough, and packed with utilities"
+	desc = "The latest in cutting-edge RIG technology, manufactured by Earthgov laboraties for use in special forces applications. A self-resealing bodysuit mitigates the would-be weight of any armor."
 	icon_state = "ds_advanced_rig"
-
-	//Armor values are slightly higher than security rig in all categories
-	armor = list(melee = 60, bullet = 60, laser = 60, energy = 30, bomb = 65, bio = 100, rad = 95)
+	armor = list(melee = 75, bullet = 75, laser = 75, energy = 40, bomb = 75, bio = 100, rad = 75)
+	cell_type =  /obj/item/cell/hyper
 	offline_slowdown = RIG_VERY_HEAVY
-	online_slowdown = RIG_LIGHT
+	online_slowdown = RIG_VERY_LIGHT //flexible bodysuit, incredibly easy to move around in so long as it's powered
 	acid_resistance = 3	//Contains a fair bit of plastic
 
 	seal_delay = 45
@@ -26,12 +25,16 @@ A/*
 	initial_modules = list(
 		/obj/item/rig_module/healthbar/advanced,
 		/obj/item/rig_module/storage/heavy,
-		/obj/item/rig_module/grenade_launcher/light,	//These grenades are harmless illumination
+		/obj/item/rig_module/grenade_launcher/military,
+		/obj/item/rig_module/chem_dispenser/combat, //how do you think isaac got outta the sprawl in one piece? drugs.
+		/obj/item/rig_module/extension/speedboost/advanced,
 		/obj/item/rig_module/maneuvering_jets,
-		/obj/item/rig_module/vision/meson,
+		/obj/item/rig_module/vision/multi,
 		/obj/item/rig_module/kinesis/advanced,
+		/obj/item/rig_module/electrowarfare_suite,
 		/obj/item/rig_module/hotswap,
-		/obj/item/rig_module/power_sink
+		/obj/item/rig_module/power_sink,
+		/obj/item/rig_module/self_destruct,
 		)
 
 /obj/item/clothing/suit/space/rig/advanced
@@ -49,26 +52,3 @@ A/*
 
 /obj/item/clothing/head/helmet/space/rig/advanced
 	name = "helmet"
-
-/obj/item/rig/advanced/maxstone
-	name = "modified advanced RIG"
-	desc = "The latest in cutting-edge RIG technology. This one is a slightly older model, still using the standard engineering suit scheme. It has `Max S.` engraved next to the monitor lights."
-	icon_state = "ds_advanced_rig_stone"
-
-/obj/item/rig/advanced/banditofdoom
-	name = "Evangelion RIG"
-	desc = "A project many months in the works, created by an obsessive historical anime fan. Even incorporates a custom voice changer for impersonating TV characters."
-	icon_state = "banditofdoom_rig"
-	online_slowdown = RIG_FLEXIBLE
-
-	initial_modules = list(
-		/obj/item/rig_module/healthbar/advanced,
-		/obj/item/rig_module/storage/heavy,
-		/obj/item/rig_module/grenade_launcher/light,	//These grenades are harmless illumination
-		/obj/item/rig_module/maneuvering_jets,
-		/obj/item/rig_module/vision/meson,
-		/obj/item/rig_module/kinesis/advanced,
-		/obj/item/rig_module/hotswap,
-		/obj/item/rig_module/power_sink,
-		/obj/item/rig_module/voice
-		)
