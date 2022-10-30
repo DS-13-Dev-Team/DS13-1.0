@@ -48,4 +48,13 @@
 		/obj/item/rig_module/hotswap,
 		/obj/item/rig_module/power_sink
 		)
-	
+
+/obj/item/rig/engineering/maxstone
+	name = "modified engineering RIG"
+	desc = "A lightweight and flexible armoured rig suit, designed for mining and shipboard engineering. This one is a heavily customized model, nonetheless donning a standard color scheme. It has `Max S.` engraved next to the monitor lights."
+	icon_state = "ds_advanced_rig_stone"
+
+/obj/item/rig/engineering/banditofdoom
+	name = "Evangelion RIG"
+	desc = "A project many months in the works, created by an obsessive historical anime fan. Even incorporates a custom voice changer for impersonating TV characters."
+	icon_state = "banditofdoom_rig"
