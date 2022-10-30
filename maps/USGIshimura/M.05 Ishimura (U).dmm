@@ -3131,7 +3131,7 @@
 "fV" = (
 /obj/structure{
 	anchored = 1;
-	desc = "A massively aged, dysfunctional Asteroid Defense System autocannon.;
+	desc = "A massively aged, dysfunctional Asteroid Defense System autocannon.";
 	health = 9999;
 	icon = 'icons/obj/asteroidcannon_centred.dmi';
 	icon_state = "asteroidgun";
