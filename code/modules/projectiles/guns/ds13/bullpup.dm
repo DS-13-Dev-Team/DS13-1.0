@@ -26,8 +26,8 @@
 	aiming_modes = list(/datum/extension/aim_mode/rifle, /datum/extension/aim_mode/rifle/bullpup_long)
 
 	firemodes = list(
-		FULL_AUTO_600, //fuller auto
-		list(mode_name="3-round bursts", burst=3, fire_delay=2, burst_delay=0.5),
+		FULL_AUTO_300, 
+		list(mode_name="3-round bursts", burst=3, fire_delay=2.5, burst_delay=1.5),
 		list(mode_name="semi-automatic", burst=1, fire_delay=2)
 		)
 
@@ -46,10 +46,8 @@
 	projectile_type  = /obj/item/projectile/bullet/bullpup
 
 /obj/item/projectile/bullet/bullpup
-	damage = 20
-	armor_penetration = 30
+	damage = 17.5 //same damage as the divet
 	structure_damage_factor = 2
-	penetration_modifier = 1.5
 	step_delay = 1
 	expiry_method = EXPIRY_FADEOUT
 
@@ -71,8 +69,7 @@
 
 /datum/extension/aim_mode/rifle/bullpup_long
 	name = "2x Zoom"
-	damage_mod = -0.2 //slightly less effective when scoped
+	damage_mod = 0.2 //more damage when scoped!!
 	view_offset = 8*WORLD_ICON_SIZE //long range
-	view_range = -2
 	statmods = list(STATMOD_MOVESPEED_ADDITIVE = -0.65,
 	STATMOD_RANGED_ACCURACY = 25)
