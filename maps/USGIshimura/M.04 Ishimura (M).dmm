@@ -846,7 +846,16 @@
 /area/ishimura/upper/medical)
 "acg" = (
 /obj/machinery/firealarm{
-	dir = 1;
+	dir = 8;
+	pixel_x = -24
+	},
+/obj/machinery/button/holosign{
+	id = "surgery_1";
+	pixel_x = -2;
+	pixel_y = -24
+	},
+/obj/machinery/light_switch{
+	pixel_x = 4;
 	pixel_y = -24
 	},
 /turf/simulated/floor/dank/mono,
@@ -1393,7 +1402,16 @@
 /area/ishimura/upper/medical/surgery/two)
 "adB" = (
 /obj/machinery/firealarm{
-	dir = 1;
+	dir = 4;
+	pixel_x = 24
+	},
+/obj/machinery/button/holosign{
+	id = "surgery_2";
+	pixel_x = -4;
+	pixel_y = -24
+	},
+/obj/machinery/light_switch{
+	pixel_x = 4;
 	pixel_y = -24
 	},
 /turf/simulated/floor/dank/mono,
@@ -31843,15 +31861,6 @@
 	dir = 4;
 	pixel_x = 11
 	},
-/obj/machinery/button/holosign{
-	id = "surgery_1";
-	pixel_x = -2;
-	pixel_y = -24
-	},
-/obj/machinery/light_switch{
-	pixel_x = 4;
-	pixel_y = -24
-	},
 /turf/simulated/floor/dank/mono,
 /area/ishimura/upper/medical/surgery/one)
 "oln" = (
@@ -32051,15 +32060,6 @@
 /obj/structure/sink{
 	dir = 8;
 	pixel_x = -11
-	},
-/obj/machinery/button/holosign{
-	id = "surgery_2";
-	pixel_x = -4;
-	pixel_y = -24
-	},
-/obj/machinery/light_switch{
-	pixel_x = 4;
-	pixel_y = -24
 	},
 /turf/simulated/floor/dank/mono,
 /area/ishimura/upper/medical/surgery/two)
@@ -72103,7 +72103,7 @@ aca
 ack
 hxg
 ojb
-abG
+hxg
 abG
 afU
 afM
@@ -72607,7 +72607,7 @@ acb
 afa
 cAW
 qSi
-abN
+cAW
 abN
 agP
 afM
