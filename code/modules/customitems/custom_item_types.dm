@@ -58,7 +58,7 @@
 	description = "A lightweight and flexible armoured rig suit, designed for riot control and shipboard disciplinary enforcement."
 	item_path = /obj/item/rig/scaf/elite
 	id = "plaugewalker_rig"
-	store_cost = 6000
+	store_cost = 6400
 	store_access = ACCESS_WHITELIST
 
 	category = CATEGORY_RIG
