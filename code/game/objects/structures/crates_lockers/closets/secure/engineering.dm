@@ -13,7 +13,7 @@
 		new/datum/atom_creator/simple(/obj/item/storage/backpack/dufflebag/eng, 50),
 		/obj/item/clothing/accessory/storage/brown_vest,
 		/obj/item/blueprints,
-		/obj/item/rig/advanced,
+		/obj/item/rig/engineering/chief,
 		/obj/item/clothing/under/deadspace/engineer,
 		/obj/item/clothing/head/hardhat/white,
 		/obj/item/clothing/head/welding,
