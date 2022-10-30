@@ -39,7 +39,7 @@
 */
 /datum/patron_item/max_stone_rig
 	name = "modified engineering RIG"
-	desc = "A lightweight and flexible armoured rig suit, designed for mining and shipboard engineering. This one is a heavily customized model, nonetheless donning a standard color scheme. It has `Max S.` engraved next to the monitor lights."
+	description = "A lightweight and flexible armoured rig suit, designed for mining and shipboard engineering. This one is a heavily customized model, nonetheless donning a standard color scheme. It has `Max S.` engraved next to the monitor lights."
 	item_path = /obj/item/rig/engineering/maxstone
 	id = "max_stone_rig"
 	store_cost = 6000
