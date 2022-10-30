@@ -1,4 +1,4 @@
-A/*
+/*
 	Advanced RIG
 
 	High quality all around. Extremely lightweight, comes with effective modules, exclusive to the EDF Marine Lieutenant
