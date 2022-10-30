@@ -9,6 +9,7 @@
 	desc = "The latest in cutting-edge RIG technology, manufactured by Earthgov laboraties for use in special forces applications. A self-resealing bodysuit mitigates the would-be weight of any armor."
 	icon_state = "ds_advanced_rig"
 	armor = list(melee = 75, bullet = 75, laser = 75, energy = 40, bomb = 75, bio = 100, rad = 75)
+	cell_type =  /obj/item/cell/hyper
 	offline_slowdown = RIG_VERY_HEAVY
 	online_slowdown = RIG_VERY_LIGHT //flexible bodysuit, incredibly easy to move around in so long as it's powered
 	acid_resistance = 3	//Contains a fair bit of plastic
