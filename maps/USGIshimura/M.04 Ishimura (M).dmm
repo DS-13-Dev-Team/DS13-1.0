@@ -1331,18 +1331,6 @@
 	dir = 4
 	},
 /area/ishimura/upper/misc/hallway/aft)
-"ads" = (
-/obj/machinery/button/holosign{
-	id = "surgery_1";
-	pixel_x = -2;
-	pixel_y = -24
-	},
-/obj/machinery/light_switch{
-	pixel_x = 4;
-	pixel_y = -24
-	},
-/turf/simulated/wall/r_wall,
-/area/ishimura/upper/medical/surgery/one)
 "adt" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -1384,18 +1372,6 @@
 	},
 /turf/simulated/floor/tiled/white/monotile,
 /area/ishimura/upper/medical/lobby/reception)
-"adx" = (
-/obj/machinery/button/holosign{
-	id = "surgery_2";
-	pixel_x = -4;
-	pixel_y = -24
-	},
-/obj/machinery/light_switch{
-	pixel_x = 4;
-	pixel_y = -24
-	},
-/turf/simulated/wall/r_wall,
-/area/ishimura/upper/medical/surgery/two)
 "ady" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/closet/secure_closet/security,
@@ -31867,6 +31843,15 @@
 	dir = 4;
 	pixel_x = 11
 	},
+/obj/machinery/button/holosign{
+	id = "surgery_1";
+	pixel_x = -2;
+	pixel_y = -24
+	},
+/obj/machinery/light_switch{
+	pixel_x = 4;
+	pixel_y = -24
+	},
 /turf/simulated/floor/dank/mono,
 /area/ishimura/upper/medical/surgery/one)
 "oln" = (
@@ -32066,6 +32051,15 @@
 /obj/structure/sink{
 	dir = 8;
 	pixel_x = -11
+	},
+/obj/machinery/button/holosign{
+	id = "surgery_2";
+	pixel_x = -4;
+	pixel_y = -24
+	},
+/obj/machinery/light_switch{
+	pixel_x = 4;
+	pixel_y = -24
 	},
 /turf/simulated/floor/dank/mono,
 /area/ishimura/upper/medical/surgery/two)
@@ -72109,7 +72103,7 @@ aca
 ack
 hxg
 ojb
-ads
+abG
 abG
 afU
 afM
@@ -72613,7 +72607,7 @@ acb
 afa
 cAW
 qSi
-adx
+abN
 abN
 agP
 afM
