@@ -36,3 +36,16 @@
 
 /obj/item/clothing/head/helmet/space/rig/engineering
 	name = "helmet"
+
+/obj/item/rig/engineering/chief //CE variant of engineer rig, just has better modules to start
+	initial_modules = list(
+		/obj/item/rig_module/healthbar/advanced,
+		/obj/item/rig_module/storage/heavy,
+		/obj/item/rig_module/grenade_launcher/light,
+		/obj/item/rig_module/maneuvering_jets,
+		/obj/item/rig_module/vision/meson,
+		/obj/item/rig_module/kinesis/advanced,
+		/obj/item/rig_module/hotswap,
+		/obj/item/rig_module/power_sink
+		)
+	
