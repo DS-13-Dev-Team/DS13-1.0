@@ -9,6 +9,7 @@
 
 /obj/structure/showcase/marker
 	name = "Marker"
+	desc = "A perfect showcase of the artifact known as Red Marker."
 	icon = 'icons/obj/marker_giant.dmi'
 	icon_state = "marker_giant_dormant"
 	atom_flags = ATOM_FLAG_INDESTRUCTIBLE

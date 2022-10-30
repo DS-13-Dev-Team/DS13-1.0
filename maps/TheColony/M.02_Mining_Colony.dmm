@@ -3399,7 +3399,7 @@
 	dir = 8
 	},
 /obj/machinery/cooker/oven,
-/obj/effect/floor_decal/dank/outline,
+/obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/excavation/interior)
 "ajP" = (
@@ -3426,8 +3426,8 @@
 /turf/simulated/floor/dank/rectangles,
 /area/mining_colony/interior/excavation/restandrelax)
 "ajS" = (
-/obj/structure/largecrate,
-/obj/random/loot/often/many,
+/obj/machinery/cooker/grill,
+/obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/excavation/interior)
 "ajT" = (
@@ -13346,11 +13346,6 @@
 "aMr" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/vending/dinnerware,
-/turf/simulated/floor/plating,
-/area/mining_colony/interior/excavation/hangar)
-"aMs" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/vending/snix,
 /turf/simulated/floor/plating,
 /area/mining_colony/interior/excavation/hangar)
 "aMt" = (
@@ -27476,8 +27471,6 @@
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/civ_hall)
 "dac" = (
-/obj/structure/largecrate,
-/obj/random/loot/often/many,
 /obj/machinery/light{
 	dir = 8
 	},
@@ -27627,7 +27620,7 @@
 /area/mining_colony/interior/plaza)
 "dJB" = (
 /obj/machinery/cooker/oven,
-/obj/effect/floor_decal/dank/outline,
+/obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/excavation/interior)
 "dPY" = (
@@ -29234,6 +29227,11 @@
 /obj/machinery/light,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/enginieering/telecomms)
+"phr" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/food_replicator,
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/interior/excavation/interior)
 "pjk" = (
 /obj/machinery/computer/telecomms/monitor,
 /turf/simulated/floor/tiled/dark/monotile,
@@ -29912,6 +29910,11 @@
 /obj/structure/flora/pottedplant/decorative,
 /turf/simulated/floor/tiled/dark,
 /area/mining_colony/interior/hydrophonics)
+"tIK" = (
+/obj/machinery/cooker/fryer,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/interior/excavation/interior)
 "tJY" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8;
@@ -30260,6 +30263,11 @@
 /obj/machinery/vending/games,
 /turf/simulated/floor/tiled/dark,
 /area/mining_colony/interior)
+"vHr" = (
+/obj/machinery/portable_atmospherics/hydroponics,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/plating,
+/area/mining_colony/interior/excavation/hangar)
 "vIs" = (
 /obj/machinery/computer/shuttle_control/escape3{
 	dir = 8
@@ -30449,6 +30457,12 @@
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/interior/seccie_checkpoint_2)
+"wXw" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/vending/snix,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/plating,
+/area/mining_colony/interior/excavation/hangar)
 "wYY" = (
 /obj/structure/railing/mapped,
 /obj/effect/floor_decal/industrial/warning,
@@ -42074,7 +42088,7 @@ aak
 pvN
 lZB
 lZB
-lZB
+pvN
 pvN
 aaB
 aaB
@@ -43139,13 +43153,13 @@ aoR
 aoR
 aoR
 lZB
-lZB
-lZB
-lZB
-lZB
-lZB
-lZB
-lZB
+pvN
+pvN
+pvN
+pvN
+pvN
+pvN
+pvN
 pvN
 pvN
 pvN
@@ -43341,12 +43355,12 @@ aoR
 aoR
 aoR
 lZB
-lZB
-lZB
-lZB
-lZB
-lZB
-lZB
+pvN
+pvN
+pvN
+pvN
+pvN
+pvN
 pvN
 pvN
 pvN
@@ -43544,9 +43558,9 @@ aoR
 aoR
 lZB
 lZB
-lZB
-lZB
-lZB
+pvN
+pvN
+pvN
 aCq
 pvN
 pvN
@@ -43746,8 +43760,8 @@ aoR
 aoR
 lZB
 lZB
-lZB
-lZB
+pvN
+pvN
 fQl
 aCq
 pvN
@@ -43948,8 +43962,8 @@ aoR
 aoR
 lZB
 lZB
-lZB
-lZB
+pvN
+pvN
 qvC
 aCq
 lZB
@@ -57270,11 +57284,11 @@ avS
 ayP
 aYK
 aYK
-lZB
-lZB
-lZB
-lZB
-lZB
+pvN
+pvN
+pvN
+pvN
+pvN
 akR
 akR
 aEp
@@ -57472,11 +57486,11 @@ avV
 ahP
 aYK
 aYK
-lZB
-lZB
-lZB
-lZB
-lZB
+pvN
+pvN
+pvN
+pvN
+pvN
 akR
 akR
 akR
@@ -57674,11 +57688,11 @@ avS
 ahR
 aYK
 aYK
-lZB
-lZB
-lZB
-lZB
-lZB
+pvN
+pvN
+pvN
+pvN
+pvN
 akR
 akR
 akR
@@ -57876,8 +57890,8 @@ avS
 ahR
 aYK
 aYK
-lZB
-lZB
+pvN
+pvN
 lZB
 lZB
 lZB
@@ -58078,8 +58092,8 @@ avS
 ahP
 aYK
 aYK
-lZB
-lZB
+pvN
+pvN
 lZB
 lZB
 lZB
@@ -58280,8 +58294,8 @@ avS
 ahV
 aYK
 aYK
-lZB
-lZB
+pvN
+pvN
 lZB
 lZB
 lZB
@@ -58482,8 +58496,8 @@ avS
 ahR
 aYK
 aYK
-lZB
-lZB
+pvN
+pvN
 lZB
 lZB
 lZB
@@ -58684,8 +58698,8 @@ avS
 bhL
 aYK
 aYK
-lZB
-lZB
+pvN
+pvN
 lZB
 lZB
 lZB
@@ -58886,8 +58900,8 @@ avS
 ahW
 aYK
 aYK
-lZB
-lZB
+pvN
+pvN
 lZB
 lZB
 lZB
@@ -59088,8 +59102,8 @@ avS
 ahR
 aYK
 aYK
-lZB
-lZB
+pvN
+pvN
 lZB
 lZB
 lZB
@@ -59290,8 +59304,8 @@ avV
 ahP
 aYK
 aYK
-lZB
-lZB
+pvN
+pvN
 lZB
 lZB
 lZB
@@ -59492,8 +59506,8 @@ bpm
 awj
 aYK
 aYK
-lZB
-lZB
+pvN
+pvN
 lZB
 lZB
 lZB
@@ -62119,7 +62133,7 @@ aoG
 aoG
 aoG
 aoG
-aoG
+pvN
 lZB
 lZB
 lZB
@@ -62321,7 +62335,7 @@ aoG
 aoG
 aoG
 aoG
-aoG
+pvN
 lZB
 lZB
 lZB
@@ -62524,7 +62538,7 @@ aoG
 aoG
 aoG
 aoG
-aoG
+pvN
 lZB
 lZB
 lZB
@@ -62726,7 +62740,7 @@ aoG
 aoG
 aoG
 aoG
-aoG
+pvN
 lZB
 lZB
 lZB
@@ -62928,7 +62942,7 @@ aoG
 aoG
 aoG
 aoG
-aoG
+pvN
 lZB
 lZB
 lZB
@@ -63130,7 +63144,7 @@ aoG
 aoG
 aoG
 aoG
-aoG
+pvN
 lZB
 lZB
 lZB
@@ -63332,7 +63346,7 @@ aCq
 aoG
 aoG
 aoG
-aoG
+pvN
 lZB
 lZB
 lZB
@@ -63534,7 +63548,7 @@ aCq
 aoG
 aoG
 aoG
-aoG
+pvN
 lZB
 lZB
 lZB
@@ -67184,7 +67198,7 @@ aLW
 aLW
 aLW
 auH
-auH
+aMo
 auH
 brp
 aMn
@@ -67342,11 +67356,11 @@ aiY
 ajf
 ajn
 aiY
-ajn
+phr
 dac
-ajS
-ajS
 ajn
+ajS
+tIK
 ajO
 dJB
 aiY
@@ -67386,7 +67400,7 @@ aLX
 aLX
 aLX
 auH
-auH
+wXw
 auH
 aMn
 aMn
@@ -68197,7 +68211,7 @@ auH
 aMb
 aQK
 auH
-aMo
+auH
 aiY
 aiY
 azn
@@ -68399,7 +68413,7 @@ auH
 auX
 aQK
 auH
-aMp
+auH
 aiY
 aiY
 azn
@@ -68601,7 +68615,7 @@ auH
 aMc
 aQK
 auH
-aMq
+auH
 aiY
 aiY
 azn
@@ -68803,7 +68817,7 @@ aMc
 bjw
 auH
 auH
-aMr
+auH
 aiY
 aiY
 azn
@@ -69005,7 +69019,7 @@ aQK
 auH
 auH
 auH
-aMs
+auH
 aiY
 aiY
 azn
@@ -69598,15 +69612,15 @@ avk
 avr
 aug
 beW
+vHr
+vHr
+vHr
+vHr
 auH
 auH
-auH
-auH
-auH
-auH
-auH
-auH
-auH
+aMq
+aMp
+aMr
 auH
 aMj
 aMl

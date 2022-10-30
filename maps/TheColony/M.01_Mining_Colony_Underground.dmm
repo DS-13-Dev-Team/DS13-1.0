@@ -3316,11 +3316,6 @@
 	},
 /turf/simulated/floor/tiled/white/monotile,
 /area/mining_colony/lower/securitystation)
-"kS" = (
-/obj/machinery/food_replicator,
-/obj/effect/floor_decal/dank/outline,
-/turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/excav)
 "kT" = (
 /obj/random/loot/often/few,
 /obj/structure/table/rack,
@@ -4317,14 +4312,9 @@
 "oh" = (
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/lower/excav)
-"oi" = (
-/obj/effect/floor_decal/dank/outline,
-/obj/machinery/cooker/grill,
-/turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/excav)
 "oj" = (
-/obj/effect/floor_decal/dank/outline,
-/obj/machinery/cooker/fryer,
+/obj/structure/largecrate,
+/obj/random/loot/often/many,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/lower/excav)
 "ok" = (
@@ -5393,11 +5383,6 @@
 "rH" = (
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/node/room29)
-"rI" = (
-/obj/machinery/portable_atmospherics/hydroponics,
-/obj/effect/floor_decal/dank/outline,
-/turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/excav)
 "rJ" = (
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/cargo/storage_upper)
@@ -5815,7 +5800,7 @@
 /area/mining_colony/lower/excav/storage)
 "tz" = (
 /obj/machinery/door/blast/regular,
-/turf/simulated/wall/r_wall,
+/turf/simulated/floor/plating,
 /area/mining_colony/lower/excav)
 "tE" = (
 /obj/effect/landmark/marker/aegis,
@@ -6437,6 +6422,11 @@
 /obj/random/loot/usually/few,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/node/room55)
+"Al" = (
+/obj/effect/floor_decal/dank/outline,
+/obj/machinery/icecream_vat,
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/lower/excav)
 "Av" = (
 /turf/simulated/floor/dank/slides{
 	dir = 4
@@ -6718,9 +6708,9 @@
 /turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/lower/mining_caves)
 "CN" = (
-/obj/machinery/door/blast/regular,
 /obj/machinery/conveyor,
-/turf/simulated/wall/r_wall,
+/obj/machinery/door/blast/regular,
+/turf/simulated/floor/plating,
 /area/mining_colony/lower/excav)
 "CO" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -7084,6 +7074,14 @@
 "Gg" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/lower/maints/node/room11)
+"Gi" = (
+/obj/structure/largecrate,
+/obj/random/loot/often/many,
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/lower/excav)
 "Gj" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -7232,6 +7230,10 @@
 /obj/structure/grille,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/node/room29)
+"Hy" = (
+/obj/effect/floor_decal/dank/outline,
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/lower/excav)
 "Hz" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -44902,9 +44904,9 @@ aR
 aR
 bq
 bs
-cF
 bs
-kS
+bs
+bs
 bs
 bs
 aK
@@ -45106,7 +45108,7 @@ au
 bs
 cF
 bs
-kU
+Al
 bs
 bs
 aK
@@ -45320,8 +45322,8 @@ of
 of
 of
 aK
-oi
 oj
+Gi
 oj
 aK
 bs
@@ -45720,13 +45722,13 @@ bs
 bs
 bs
 bs
-rI
-rI
-rI
 bs
-rI
-rI
-rI
+bs
+bs
+bs
+bs
+bs
+bs
 bs
 bs
 bs
@@ -48332,8 +48334,8 @@ HW
 HW
 aK
 bG
-bH
-bH
+Hy
+Hy
 bG
 bX
 bX
