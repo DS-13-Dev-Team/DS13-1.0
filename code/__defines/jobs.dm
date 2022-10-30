@@ -1,5 +1,5 @@
 #define JOBS_SECURITY /datum/job/cseco, /datum/job/sso, /datum/job/security_officer
-#define JOBS_COMMAND /datum/job/cap, /datum/job/fl, /datum/job/cscio, /datum/job/dom
+#define JOBS_HEADS /datum/job/cap, /datum/job/fl, /datum/job/cseco, /datum/job/smo, /datum/job/cscio, /datum/job/ce, /datum/job/dom, /datum/job/so
 
 #define ENG (1<<0)
 #define SEC (1<<1)
