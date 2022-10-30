@@ -25,7 +25,7 @@
 	uniform = /obj/item/clothing/under/rigunder
 	l_ear = /obj/item/radio/headset/ert
 	belt = /obj/item/storage/belt/holster/security/tactical
-	back = /obj/item/rig/marine/specialist
+	back = /obj/item/rig/advanced //has... everything
 	shoes = /obj/item/clothing/shoes/dutyboots
 
 	id_slot = slot_wear_id
@@ -48,7 +48,7 @@
 /decl/hierarchy/outfit/edf_engie
 	name = "EDF Engineer"
 	uniform = /obj/item/clothing/under/rigunder
-	l_ear = /obj/item/radio/headset/ert
+	l_ear = /obj/item/rig/marine/specialist //has advanced kinesis
 	belt = /obj/item/storage/belt/holster/security/tactical
 	back = /obj/item/rig/marine
 	shoes = /obj/item/clothing/shoes/dutyboots
