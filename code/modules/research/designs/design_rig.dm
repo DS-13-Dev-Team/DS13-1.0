@@ -57,10 +57,6 @@
 	build_path = /obj/item/rig/vintage
 	price = 15000	//slower than riot but better stats overall
 
-/datum/design/item/rig/advanced
-	build_path = /obj/item/rig/advanced
-	price = 15000
-
 /datum/design/item/rig/marksman
 	build_path = /obj/item/rig/marksman
 	price = 10000
