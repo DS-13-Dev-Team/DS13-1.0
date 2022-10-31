@@ -90,3 +90,8 @@
   - balance: HPR ammo before overheating 287 => 140.
   - balance: HPR overheat duration from 200 seconds to 120 seconds. This is still
       a nerf, the lower overheat limit reduces ammo regeneration.
+2022-10-31:
+  Fikou:
+  - qol: Engineers and miners start with duty boots. Removes the blue hardhat from
+      the engineer.
+  - qol: Adds thick gloves to engineering lockers.
