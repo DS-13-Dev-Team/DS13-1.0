@@ -29,9 +29,9 @@
 	//health_doll_offset	= 56
 
 
-	biomass = 105
+	biomass = 100
 	mass = 30
-	biomass_reclamation_time	=	10 MINUTES
+	biomass_reclamation_time	=	6 MINUTES
 	marker_spawnable = TRUE
 
 
@@ -52,7 +52,8 @@
 	/mob/living/carbon/human/proc/infector_execution,
 	/mob/living/carbon/human/proc/select_essence_ability,
 	/mob/living/carbon/human/proc/use_selected_essence_ability,
-	/mob/proc/shout,/mob/proc/shout_long)
+	/mob/proc/shout,/mob/proc/shout_long,
+	/mob/infector/proc/infector_sense)
 
 	modifier_verbs = list(
 	KEY_CTRLALT = list(/mob/living/carbon/human/proc/use_selected_essence_ability),
@@ -134,7 +135,7 @@
 	mob_type	=	/mob/living/carbon/human/necromorph/infector/enhanced
 	name_plural =  "Enhanced Infectors"
 	blurb = "Unlike the more fragile counterpart, this infector is a capable fighter. However, nothing compares to its supportive capabilities."
-	total_health = 225
+	total_health = 205
 	limb_health_factor = 1.5
 	slowdown = 4
 	view_range = 8
@@ -142,7 +143,7 @@
 
 	icon_template = 'icons/mob/necromorph/infector_enhanced.dmi'
 
-	biomass = 275
+	biomass = 225
 	biomass_reclamation_time	=	9 MINUTES //Lets not cripple necromorphs for loosing one too bad either
 	require_total_biomass	=	BIOMASS_REQ_T2
 
@@ -292,12 +293,16 @@ All of them except New Growth require corruption to build upon\
 	sharp = TRUE
 	edge = FALSE
 
+	var/necrotoxin_amount = 7
+
 /datum/unarmed_attack/proboscis/enhanced
 
 	damage = 22.5
 	airlock_force_power = 1.1
-	armor_penetration = 6
+	armor_penetration = 14
 	delay = 7 SECONDS
+
+	necrotoxin_amount = 14
 
 /datum/unarmed_attack/proboscis/execution
 	//Special version of our unarmed attack only used during the execution move, not normally triggerable
@@ -308,7 +313,7 @@ All of them except New Growth require corruption to build upon\
 //This is only applied if the attack lands cleanly, and isnt blocked
 /datum/unarmed_attack/proboscis/apply_effects(var/datum/strike/strike)
 	.=..()
-	inject_necrotoxin(strike.target, 5)
+	inject_necrotoxin(strike.target, necrotoxin_amount)
 
 
 //This is a proc so it can be used in another place later
@@ -352,10 +357,13 @@ All of them except New Growth require corruption to build upon\
 /obj/item/projectile/bullet/spine/venomous/enhanced
 	damage = 4
 
-//Poisons the victim on impact but only if their armor didn't stop the hit
-/obj/item/projectile/bullet/spine/venomous/on_hit(var/atom/target, var/blocked = 0, var/def_zone = null)
-	if (isliving(target) && !blocked)
-		inject_necrotoxin(target)
+//Poisons the victim on impact regardless of armor.
+/obj/item/projectile/bullet/spine/venomous/on_hit(var/atom/target, var/blocked = 0, var/def_zone = null, var/strength = 8.5)
+	if (isliving(target))
+		inject_necrotoxin(target, strength)
+	. = ..()
+
+/obj/item/projectile/bullet/spine/venomous/enhanced/on_hit(atom/target, blocked = 0, def_zone = null, strength = 5.75)
 	. = ..()
 
 /datum/extension/shoot/longshot/spine
@@ -436,3 +444,12 @@ All of them except New Growth require corruption to build upon\
 	'sound/effects/creatures/necromorph/infector/infector_flap_5.ogg')), VOLUME_MID, TRUE)
 	.=..()
 
+/mob/infector/proc/infector_sense()
+	set name = "Sense"
+	set category = "Abilities"
+	set desc = "Reveals nearby living creatures around you, to yourself and allies."
+	var/datum/extension/sense/S = get_extension(src, /datum/extension/sense)
+	if (S)
+		return
+	set_extension(src, /datum/extension/sense, 9, 9, FACTION_NECROMORPH, 4 SECONDS, 20 SECONDS)
+	play_species_audio(src, SOUND_SPEECH, VOLUME_MID, 1, 3)

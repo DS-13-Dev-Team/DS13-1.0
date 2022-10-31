@@ -1,6 +1,6 @@
 #define ENCUMBRANCE_TO_MOVESPEED	0.1	//10% slowdown per point
 #define ENCUMBRANCE_TO_ATTACKSPEED	0.05	//5% slowdown per point
-#define ENCUMBRANCE_REDUCTION_FACTOR	0.3	//Each point of hauling skill reduces encumbrance by this much
+#define ENCUMBRANCE_REDUCTION_FACTOR	0.25	//Each point of hauling skill reduces encumbrance by this much
 
 /datum/extension/updating/encumbrance
 	flags = EXTENSION_FLAG_IMMEDIATE

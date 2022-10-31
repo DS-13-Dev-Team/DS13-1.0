@@ -191,7 +191,7 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 	unarmed_types = list(/datum/unarmed_attack/claws/monkey)
 	icon_template = 'icons/mob/necromorph/leaper_hopper.dmi'
 
-	slowdown = 1.5
+	slowdown = 1
 	total_health = 65
 	evasion = 21
 	stun = 0.75
@@ -211,8 +211,8 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 	view_range = 8
 	view_offset = (null)
 
-	lowest_money_drop = 750
-	highest_money_drop = 1000
+	lowest_money_drop = 250
+	highest_money_drop = 700
 
 //Light claw attack, not its main means of damage
 /datum/unarmed_attack/claws/leaper
@@ -455,7 +455,7 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 		return
 
 
-	if (gallop_ability(_duration = 2 SECONDS, _cooldown = 8 SECONDS, _power = 0.75))
+	if (gallop_ability(_duration = 4 SECONDS, _cooldown = 5 SECONDS, _power = 0.65))
 		H.play_species_audio(H, SOUND_SHOUT, VOLUME_MID, 1, 3)
 
 //Wallrunning

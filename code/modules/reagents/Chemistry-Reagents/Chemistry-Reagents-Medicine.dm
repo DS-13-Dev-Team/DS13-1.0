@@ -84,6 +84,7 @@
 	description = "Dylovene is a broad-spectrum antitoxin used to neutralize poisons before they can do significant harm."
 	taste_description = "a roll of gauze"
 	reagent_state = LIQUID
+	overdose = REAGENTS_OVERDOSE
 	color = "#00a000"
 	scannable = 1
 	flags = IGNORE_MOB_SIZE
@@ -98,6 +99,12 @@
 	var/removing = (3 * removed)
 	M.reagents.remove_reagents_of_type(/datum/reagent/toxin, removing)
 
+/datum/reagent/dylovene/overdose(var/mob/living/carbon/M, var/alien)
+	M.adjustFireLoss(REM)
+	M.adjustBruteLoss(REM*0.5) // Since fireloss does basically nothing
+	if (effect_extension)
+		effect_extension.overdose()
+	return
 
 /datum/reagent/dexalin
 	name = "Dexalin"

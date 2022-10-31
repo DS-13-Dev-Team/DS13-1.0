@@ -40,3 +40,17 @@
 	path = /obj/item/gun/projectile/divet/silenced
 	is_special = TRUE
 	antag_roles = list(MODE_EARTHGOV_AGENT)
+
+/datum/uplink_item/item/stealthy_weapons/necro_injector
+	name = "Simianis Necrotoxin Injector"
+	item_cost = 4
+	path = /obj/item/reagent_containers/hypospray/autoinjector/necro/monkey
+	is_special = TRUE
+	antag_roles = list(MODE_UNITOLOGIST, MODE_UNITOLOGIST_SHARD)
+
+/datum/uplink_item/item/stealthy_weapons/monkeycubes
+	name = "Simian Distraction Cubes"
+	item_cost = 10
+	path = /obj/item/storage/box/monkeycubes
+	is_special = TRUE
+	antag_roles = list(MODE_UNITOLOGIST, MODE_UNITOLOGIST_SHARD)

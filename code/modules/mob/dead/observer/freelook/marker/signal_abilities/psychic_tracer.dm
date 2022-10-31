@@ -17,13 +17,20 @@
 	<br>\
 	Casting it again on a target who already has a tracer will refresh the duration and range"
 	target_string = "any living mob or crewmember"
-	energy_cost = 110
+	energy_cost = 10
 	require_corruption = FALSE
 	require_necrovision = TRUE
 	autotarget_range = 1
 	target_types = list(/mob/living)
 
 	targeting_method	=	TARGET_CLICK
+	marker_active_required = -1
+
+/datum/signal_ability/psychic_tracer/marker
+	energy_cost = 70
+	id = "psychic_tracer_postmarker"
+
+	marker_active_required = TRUE
 
 
 /datum/signal_ability/psychic_tracer/on_cast(var/mob/user, var/atom/target, var/list/data)

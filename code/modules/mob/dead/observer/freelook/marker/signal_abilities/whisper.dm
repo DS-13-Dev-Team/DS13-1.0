@@ -6,11 +6,18 @@ GLOBAL_LIST_INIT(whispered, list())
 	<br>\
 	Please remember that subliminal messages are in-character communication. You are a spooky voice in their head that they might just be imagining. Roleplay appropriately, no memes. Admins are watching"
 	target_string = "a zealot or similarly mentally open target"
-	energy_cost = 30
+	energy_cost = 5
 	require_corruption = FALSE
 	autotarget_range = 1
 	target_types = list(/mob/living)
 
+	marker_active_required = -1
+
+/datum/signal_ability/whisper/marker
+	energy_cost = 30
+	id = "whisper_postmarker"
+
+	marker_active_required = TRUE
 
 //This is kinda inefficient, but it shouldnt be used too often
 /datum/signal_ability/whisper/proc/get_possible_targets()

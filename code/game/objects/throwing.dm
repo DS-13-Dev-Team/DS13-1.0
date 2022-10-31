@@ -14,14 +14,16 @@
 
 	var/throw_range = item.throw_range
 	var/itemsize
+	var/mobpenalty = 1
 	if (istype(item, /obj/item/grab))
 		var/obj/item/grab/G = item
 		item = G.throw_held() //throw the person instead of the grab
 		if(ismob(item))
 			var/mob/M = item
+			mobpenalty = 0.2
 
 			//limit throw range by relative mob size
-			throw_range = round(M.throw_range * min(src.mob_size/M.mob_size, 1))
+			throw_range = round(M.throw_range * min(src.mob_size/M.mob_size, 1)/2)
 			itemsize = round(M.mob_size/4)
 			var/turf/start_T = get_turf(loc) //Get the start and target tile for the descriptors
 			var/turf/end_T = get_turf(target)
@@ -70,7 +72,7 @@
 		src.inertia_dir = get_dir(target, src)
 		step(src, inertia_dir)
 
-	item.throw_at(target, throw_range, item.throw_speed * skill_mod, src)
+	item.throw_at(target, throw_range, (item.throw_speed * skill_mod) * mobpenalty, src)
 
 
 

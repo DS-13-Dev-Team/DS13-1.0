@@ -143,11 +143,12 @@
 
 /datum/design/item/rig_module/speedboost
 	name = "Femoral Exoskeleton"
+	price = 4000
 	build_path = /obj/item/rig_module/extension/speedboost
 
 /datum/design/item/rig_module/speedboost_adv
 	name = "Advanced Femoral Exoskeleton"
-	price = 5000
+	price = 6000
 	build_path = /obj/item/rig_module/extension/speedboost/advanced
 
 /datum/design/item/rig_module/adv_healthbar
