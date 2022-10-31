@@ -2319,7 +2319,10 @@
 	},
 /obj/structure/sign/directions/supply{
 	dir = 8;
-	pixel_y = 34
+	pixel_y = 32
+	},
+/obj/structure/sign/directions/science{
+	pixel_y = 38
 	},
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/misc/hallway/central)
@@ -8732,7 +8735,11 @@
 	},
 /obj/structure/sign/directions/supply{
 	dir = 8;
-	pixel_y = 34
+	pixel_y = 32
+	},
+/obj/structure/sign/directions/science{
+	dir = 8;
+	pixel_y = 38
 	},
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/crew/sleepblock/commons)
@@ -10987,7 +10994,11 @@
 	},
 /obj/structure/sign/directions/supply{
 	dir = 8;
-	pixel_y = -34
+	pixel_y = -32
+	},
+/obj/structure/sign/directions/science{
+	dir = 1;
+	pixel_y = -38
 	},
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/misc/hallway/central)
@@ -27520,7 +27531,11 @@
 	},
 /obj/structure/sign/directions/supply{
 	dir = 8;
-	pixel_y = -34
+	pixel_y = -32
+	},
+/obj/structure/sign/directions/science{
+	dir = 8;
+	pixel_y = -38
 	},
 /turf/simulated/floor/dank/slides{
 	dir = 8
@@ -27926,7 +27941,11 @@
 	},
 /obj/structure/sign/directions/supply{
 	dir = 8;
-	pixel_y = 34
+	pixel_y = 32
+	},
+/obj/structure/sign/directions/science{
+	dir = 8;
+	pixel_y = 38
 	},
 /turf/simulated/floor/dank/slides{
 	dir = 4
