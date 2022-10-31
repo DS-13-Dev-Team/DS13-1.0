@@ -66,7 +66,7 @@ Magazine type definitions
 	ammo_type = /obj/item/ammo_casing/ls_slug
 	matter = list(MATERIAL_STEEL = 525) //metal costs are very roughly based around 1 .45 casing = 75 metal
 	caliber = "slug"
-	max_ammo = 10
+	max_ammo = 12
 	multiple_sprites = 1
 
 /obj/item/ammo_magazine/divet/hollow_point
@@ -90,6 +90,16 @@ Magazine type definitions
 	icon_state = "icds"
 	ammo_type = /obj/item/ammo_casing/ls_slug/incendiary
 
+/obj/item/ammo_magazine/divet/extended
+	name = "divet magazine (extended)"
+	icon_state = "extds"
+	max_ammo = 21
+	ammo_type = /obj/item/ammo_casing/ls_slug/extended
+
+/obj/item/ammo_magazine/divet/extended/extendeder
+	name = "divet magazine (expaandeed)"
+	icon_state = "exterds"
+	max_ammo = 60
 
 /**
 Ammo casings for the mags
@@ -111,6 +121,9 @@ Ammo casings for the mags
 
 /obj/item/ammo_casing/ls_slug/incendiary
 	projectile_type = /obj/item/projectile/bullet/ls_slug/incendiary
+
+/obj/item/ammo_casing/ls_slug/extended
+	projectile_type = /obj/item/projectile/bullet/ls_slug/extended
 
 /**
 Projectile logic
@@ -161,6 +174,9 @@ Projectile logic
 /obj/item/projectile/bullet/ls_slug/incendiary
 	icon_state = "divet_incend"
 	armor_penetration = 9
+
+/obj/item/projectile/bullet/ls_slug/extended
+	damage = DIVET_DAMAGE * 0.9
 
 
 /obj/item/projectile/bullet/ls_slug/incendiary/on_impact(var/mob/living/L)

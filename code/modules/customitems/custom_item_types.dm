@@ -217,3 +217,18 @@
 
 	category = CATEGORY_TOOLS
 	subcategory = SUBCATEGORY_DANGEROUS_TOOLS
+
+/datum/patron_item/tarnished
+	name = "Tarnished RIG"
+	description = "Use on an advanced rig to obtain! Or buy from the store directly. A rig made from the reforged armor of his family that was passed from generation to generations for decades."
+	item_path = /obj/item/rig/advanced/tarnished
+	id = "tarnished"
+	store_cost = 15000
+	store_access = ACCESS_WHITELIST
+
+	category = CATEGORY_RIG
+	subcategory = SUBCATEGORY_FRAMES
+
+	loadout_modkit_cost = 2
+	modkit_access = ACCESS_WHITELIST
+	modkit_typelist = list(/obj/item/rig/advanced)

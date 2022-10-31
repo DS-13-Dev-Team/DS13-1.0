@@ -455,3 +455,18 @@
 		/obj/item/ammo_magazine,
 		/obj/item/reagent_containers/food/snacks,
 		)
+
+/obj/item/storage/belt/holster/sheath
+	name = "lavish sheath"
+	desc = "A sheath wrapped in a gold ribbon, someone went wacko in the workshop for sure to make this."
+	icon_state = "sheath"
+	item_state = "sheath"
+	storage_slots = 3
+	overlay_flags = BELT_OVERLAY_ITEMS|BELT_OVERLAY_HOLSTER
+	can_holster = list(
+		/obj/item/material/twohanded/muramasa/plasmasword
+	)
+	can_hold = list(
+		/obj/item/ammo_magazine,
+		/obj/item/reagent_containers/food/snacks,
+		)

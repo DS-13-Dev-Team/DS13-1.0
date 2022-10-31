@@ -90,6 +90,7 @@
 		/obj/item/gun/projectile/divet,
 		/obj/item/ammo_magazine/divet = 2,
 		/obj/item/ammo_magazine/divet/rb = 2,
+		/obj/item/ammo_magazine/divet/extended/extendeder,
 		/obj/item/reagent_containers/spray/pepper,
 		/obj/item/storage/box/holobadge,
 		/obj/item/baton/loaded,
