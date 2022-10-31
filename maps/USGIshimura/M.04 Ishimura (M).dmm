@@ -18242,11 +18242,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/ishimura/upper/command/bridge)
-"aKE" = (
-/obj/structure/grille/broken,
-/obj/random/trash,
-/turf/simulated/floor/plating,
-/area/ishimura/upper/maintenance/fore_port)
 "aKF" = (
 /obj/structure/closet/walllocker/emerglocker/east,
 /turf/simulated/floor/dank/rivets,
@@ -27499,11 +27494,6 @@
 /obj/structure/reagent_dispensers/watertank,
 /turf/simulated/floor/plating,
 /area/ishimura/upper/maintenance/fore_port)
-"bcd" = (
-/obj/structure/grille/broken,
-/obj/random/junk,
-/turf/simulated/floor/plating,
-/area/ishimura/upper/maintenance/fore_port)
 "bce" = (
 /obj/random/junk,
 /turf/simulated/floor/plating,
@@ -31185,6 +31175,9 @@
 	dir = 4
 	},
 /obj/structure/catwalk,
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/ishimura/upper/misc/hallway/escape)
 "gks" = (
@@ -31460,6 +31453,9 @@
 /obj/machinery/door/airlock/maintenance{
 	dir = 4;
 	name = "Power Storage Maintenance"
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/ishimura/upper/misc/hallway/escape)
@@ -69778,7 +69774,7 @@ aaa
 aaa
 aah
 abv
-adS
+bcb
 adS
 uOi
 acr
@@ -70030,7 +70026,7 @@ aaa
 aaa
 aah
 abv
-bcb
+bcc
 bbQ
 xck
 kWq
@@ -70282,8 +70278,8 @@ aaa
 aaa
 aah
 abv
-bcc
-adS
+aXD
+aQG
 adS
 uOi
 acf
@@ -70534,9 +70530,9 @@ aaa
 aaa
 aah
 abv
-aXD
+adS
 aQG
-bcd
+bce
 mgZ
 acf
 adO
@@ -70786,9 +70782,9 @@ aaa
 aaa
 aah
 abv
-adS
-adS
-aKE
+bbY
+aQG
+aQG
 mgZ
 acf
 adO
@@ -71038,9 +71034,9 @@ aaa
 aaa
 aah
 abv
-adS
-adS
-aXD
+agi
+aWS
+aQG
 aYn
 acf
 adO
@@ -71290,8 +71286,8 @@ aaa
 aaa
 aah
 abv
-agi
-bbY
+aXD
+aXD
 aXD
 bUU
 hgn

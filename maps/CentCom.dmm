@@ -5882,6 +5882,13 @@
 /obj/effect/decal/cleanable/generic,
 /turf/unsimulated/floor/wood,
 /area/ERT/escapebase)
+"Fe" = (
+/obj/structure/sign/warning/biohazard{
+	pixel_y = 4;
+	pixel_x = 32
+	},
+/turf/unsimulated/floor/tiled/monotile,
+/area/ERT/escapebase)
 "Fi" = (
 /turf/unsimulated/floor/tiled/techfloor,
 /area/ERT/escapebase)
@@ -5915,6 +5922,13 @@
 /area/ERT/escapebase)
 "FQ" = (
 /turf/simulated/floor/tiled/freezer,
+/area/ERT/escapebase)
+"Gc" = (
+/obj/structure/sign/warning/biohazard{
+	pixel_y = 4;
+	pixel_x = -32
+	},
+/turf/unsimulated/floor/tiled/monotile,
 /area/ERT/escapebase)
 "Gk" = (
 /obj/structure/railing/mapped{
@@ -6322,12 +6336,6 @@
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/snacks/loadedsteak,
 /turf/simulated/floor/carpet/blue2,
-/area/ERT/escapebase)
-"Pn" = (
-/obj/structure/sign/warning/biohazard{
-	pixel_y = 4
-	},
-/turf/simulated/wall/titanium,
 /area/ERT/escapebase)
 "Ps" = (
 /obj/machinery/door/airlock/medical{
@@ -18768,10 +18776,10 @@ qi
 Kr
 Yy
 hR
-Mi
+Fe
 Fa
 Fa
-Mi
+Fe
 xD
 sO
 sO
@@ -18871,10 +18879,10 @@ Yy
 Kr
 Yy
 hR
-Pn
+hR
 Kr
 BP
-Pn
+hR
 hR
 sO
 sO
@@ -19386,10 +19394,10 @@ qi
 Kr
 Yy
 hR
-Pn
+hR
 Kr
 BP
-Pn
+hR
 hR
 Rp
 sO
@@ -19489,10 +19497,10 @@ qi
 Kr
 Yy
 hR
-Mi
+Gc
 Fa
 Fa
-Mi
+Gc
 hR
 BQ
 mZ
