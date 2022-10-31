@@ -11095,9 +11095,8 @@
 /obj/structure/disposalpipe/trunk,
 /obj/machinery/button/remote/blast_door{
 	id = "morgue";
-	name = "Morgue Shutter Control";
-	pixel_y = 25;
-	req_one_access = list(57,58,100)
+	name = "Morgue Door Control";
+	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/medical/morgue)
