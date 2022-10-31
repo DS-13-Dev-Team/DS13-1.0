@@ -344,6 +344,27 @@ var/list/flooring_types
 	build_type = null
 	step_priority = 2 //Soft surfaces have more distinctive sounds
 
+/decl/flooring/asteroid_ds/firm
+    icon_base = "wet_firm"
+
+/decl/flooring/asteroid_ds/muddy
+    icon_base = "wet_muddy"
+
+/decl/flooring/asteroid_ds/cracked
+    icon_base = "wet_cracked"
+
+/decl/flooring/asteroid_ds/dry_soft
+    icon_base = "dry_soft"
+
+/decl/flooring/asteroid_ds/dry_firm
+    icon_base = "dry_firm"
+
+/decl/flooring/asteroid_ds/dry_muddy
+    icon_base = "dry_muddy"
+
+/decl/flooring/asteroid_ds/dry_cracked
+    icon_base = "dry_cracked"
+
 /decl/flooring/carpet
 	name = "brown carpet"
 	desc = "Comfy and fancy carpeting."

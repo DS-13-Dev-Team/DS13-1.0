@@ -1,8 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/turf/unsimulated/mineral{
-	icon_state = "rock"
-	},
+/turf/unsimulated/mineral,
 /area/space)
 "ac" = (
 /obj/machinery/power/port_gen/pacman,

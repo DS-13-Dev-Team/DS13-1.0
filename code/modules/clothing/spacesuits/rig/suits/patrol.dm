@@ -3,7 +3,7 @@
 	name = "patrol RIG"
 	desc = "A very lightweight yet reasonably armoured suit, designed for long journeys on foot."
 	icon_state = "patrol"
-	armor = list(melee = 57.5, bullet = 60, laser = 60, energy = 25, bomb = 60, bio = 100, rad = 60)
+	armor = list(melee = 54.5, bullet = 54.5, laser = 60, energy = 25, bomb = 50, bio = 100, rad = 60)
 	online_slowdown = RIG_FLEXIBLE
 
 	chest_type = /obj/item/clothing/suit/space/rig/patrol
@@ -15,7 +15,6 @@
 		/obj/item/rig_module/healthbar,
 		/obj/item/rig_module/storage/heavy,
 		/obj/item/rig_module/maneuvering_jets,
-		/obj/item/rig_module/extension/speedboost
 		)
 
 	/*

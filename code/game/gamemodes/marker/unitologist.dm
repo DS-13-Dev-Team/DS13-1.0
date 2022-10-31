@@ -18,7 +18,7 @@ GLOBAL_LIST_EMPTY(unitologists_list)
 	skill_setter = /datum/antag_skill_setter/station
 	antaghud_indicator = "hudunitologist" // Used by the ghost antagHUD.
 	antag_indicator = "hudunitologist"// icon_state for icons/mob/mob.dm visual indicator.
-	restricted_jobs = list(JOBS_SECURITY)
+	restricted_jobs = list(JOBS_SECURITY, JOBS_HEADS)
 	preference_candidacy_toggle = TRUE
 
 	// Spawn values (autotraitor and game mode)

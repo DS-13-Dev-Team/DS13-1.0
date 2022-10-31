@@ -87,3 +87,50 @@ something, make sure it's not in one of the other lists.*/
 	name = "low chance random pouch"
 	icon_state = "box-green-low"
 	spawn_nothing_percentage = 80
+
+/obj/random/scaf
+	name = "possible scaf equipment"
+	spawn_nothing_percentage = 20
+
+obj/random/scaf/item_to_spawn() //total weight = 100
+	return pickweight(list(
+	/obj/item/rig/scaf = 1.25,
+	/obj/item/rig/scaf/elite = 1.25,
+	/obj/item/rig/scaf/legionnaire = 1.25,
+	/obj/item/rig/scaf/sharpshooter = 1.25,
+	/obj/item/gun/projectile/automatic/bullpup = 2.5,
+	/obj/item/ammo_magazine/bullpup = 2.5,
+	/obj/random/medical = 22.5,
+	/obj/random/tool = 22.5,
+	/obj/random/trash = 22.5,
+	/obj/random/junk = 22.5
+	))
+
+/obj/random/mines
+	name = "possible mine deployments"
+	spawn_nothing_percentage = 60
+
+obj/random/mines/item_to_spawn()
+	return pickweight(list(
+		/obj/effect/mine = 10,
+		/obj/effect/mine/stun = 90
+	))
+
+/obj/random/antagrig
+	name = "possible antag rig spawn"
+	spawn_nothing_percentage = 90
+
+obj/random/zealotrig/item_to_spawn()
+	return pickweight(list(
+	/obj/item/rig/zealot = 50,
+	/obj/item/rig/marine/earthgov = 50
+	))
+
+/obj/random/unihideoutbodies
+	name = "possible preserved corpses"
+	spawn_nothing_percentage = 75
+
+obj/random/unihideoutbodies/item_to_spawn()
+	return pickweight(list(
+		/obj/effect/landmark/corpse = 1
+	))

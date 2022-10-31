@@ -2,7 +2,7 @@
 	name = "wasp RIG"
 	desc = "A lightweight and flexible armoured rig suit, offers good protection against light impacts. Use kit on an Engineering RIG."
 	icon_state = "wasp_rig"
-	armor = list(melee = 47.5, bullet = 55, laser = 55, energy = 30, bomb = 65, bio = 100, rad = 80)
+	armor = list(melee = 47.5, bullet = 53, laser = 55, energy = 30, bomb = 65, bio = 100, rad = 80)
 	offline_slowdown = 4
 	online_slowdown = RIG_MEDIUM
 	acid_resistance = 2	//Contains a fair bit of plastic

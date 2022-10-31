@@ -181,8 +181,7 @@
 /area/mining_colony/security/upper/commandofficers)
 "aC" = (
 /obj/structure/bed/chair/office{
-	dir = 1;
-	pixel_y = 13
+	dir = 1
 	},
 /turf/simulated/floor/dank/rectangles,
 /area/mining_colony/security/upper/commandofficers)
@@ -347,8 +346,7 @@
 /area/mining_colony/security/upper)
 "aW" = (
 /obj/structure/bed/chair/office{
-	dir = 1;
-	pixel_y = 13
+	dir = 1
 	},
 /obj/machinery/camera/network/command{
 	dir = 4
@@ -452,8 +450,7 @@
 "bj" = (
 /obj/structure/bed/chair/office{
 	dir = 4;
-	icon_state = "officechair_preview";
-	pixel_x = 5
+	icon_state = "officechair_preview"
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/upper/commandofficers)
@@ -2289,6 +2286,16 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/mining_colony/security/upper)
+"fI" = (
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/dank/tech{
+	dir = 4
+	},
+/area/mining_colony/security/upper/bridge_corridor)
 "fK" = (
 /obj/machinery/door/airlock/command{
 	name = "Bridge"
@@ -2788,14 +2795,6 @@
 /obj/machinery/light,
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/upper/commandofficers)
-"tk" = (
-/obj/structure/bed/chair/office{
-	dir = 4;
-	icon_state = "officechair_preview";
-	pixel_x = 4
-	},
-/turf/simulated/floor/dank/golf_brown,
-/area/mining_colony/security/upper/commandofficers)
 "tv" = (
 /obj/machinery/light{
 	dir = 1
@@ -2830,12 +2829,6 @@
 	},
 /area/mining_colony/security/upper/bridge_corridor)
 "uc" = (
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8";
-	dir = 1
-	},
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 8;
@@ -3845,6 +3838,21 @@
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/upper/commandofficers)
+"QD" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/dank/tech{
+	dir = 8
+	},
+/area/mining_colony/security/upper/bridge_corridor)
 "QP" = (
 /obj/structure/railing/mapped,
 /obj/machinery/firealarm{
@@ -3892,13 +3900,6 @@
 	},
 /turf/simulated/floor/dank/hardwood,
 /area/mining_colony/security/upper/be_room1)
-"Sw" = (
-/obj/structure/bed/chair/office{
-	dir = 8;
-	pixel_x = -5
-	},
-/turf/simulated/floor/dank/golf_brown,
-/area/mining_colony/security/upper/commandofficers)
 "Sz" = (
 /obj/structure/bed/chair/office{
 	dir = 4;
@@ -3990,6 +3991,16 @@
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/upper/commandofficers)
+"Uw" = (
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/dank/tech{
+	dir = 8
+	},
+/area/mining_colony/security/upper/bridge_corridor)
 "UC" = (
 /obj/effect/floor_decal/industrial/outline/red,
 /obj/machinery/deployable/barrier,
@@ -4015,8 +4026,7 @@
 /area/mining_colony/security/upper/sec_offices)
 "Vg" = (
 /obj/structure/bed/chair/office{
-	dir = 1;
-	pixel_y = 12
+	dir = 1
 	},
 /obj/machinery/camera/network/command{
 	dir = 8
@@ -13458,7 +13468,7 @@ ah
 eV
 al
 cb
-Sw
+cb
 aJ
 aL
 aO
@@ -13861,7 +13871,7 @@ Vv
 ah
 ci
 al
-tk
+bj
 bj
 aE
 aL
@@ -13870,7 +13880,7 @@ dH
 LP
 va
 bB
-Up
+QD
 uc
 dG
 Qn
@@ -14072,8 +14082,8 @@ Uu
 hD
 dA
 ro
-RI
-SL
+Uw
+fI
 Aa
 Qn
 FG
@@ -14467,8 +14477,8 @@ Vv
 ah
 ae
 aC
-Sw
-Sw
+cb
+cb
 al
 aL
 aO

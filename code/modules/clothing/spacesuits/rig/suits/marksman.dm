@@ -2,7 +2,7 @@
 	name = "marksman RIG"
 	desc = "A RIG designed for usage by a vessel's forensics specialist."
 	icon_state = "marksman_rig"
-	armor = list(melee = 60, bullet = 66, laser = 60, energy = 25, bomb = 60, bio = 100, rad = 60)
+	armor = list(melee = 62, bullet = 66, laser = 60, energy = 25, bomb = 60, bio = 100, rad = 60)
 	online_slowdown = RIG_MEDIUM
 
 	chest_type = /obj/item/clothing/suit/space/rig/marksman

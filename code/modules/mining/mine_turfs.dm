@@ -501,24 +501,31 @@ var/list/mining_floors = list()
 
 /turf/simulated/floor/asteroid/outside_ds/firm
 	icon_state = "wet_firm"
+	initial_flooring = /decl/flooring/asteroid_ds/firm
 
 /turf/simulated/floor/asteroid/outside_ds/muddy
 	icon_state = "wet_muddy"
+	initial_flooring = /decl/flooring/asteroid_ds/muddy
 
 /turf/simulated/floor/asteroid/outside_ds/cracked
 	icon_state = "wet_cracked"
+	initial_flooring = /decl/flooring/asteroid_ds/cracked
 
 /turf/simulated/floor/asteroid/outside_ds/dry_soft
 	icon_state = "dry_soft"
+	initial_flooring = /decl/flooring/asteroid_ds/dry_soft
 
 /turf/simulated/floor/asteroid/outside_ds/dry_firm
 	icon_state = "dry_firm"
+	initial_flooring = /decl/flooring/asteroid_ds/dry_firm
 
 /turf/simulated/floor/asteroid/outside_ds/dry_muddy
 	icon_state = "dry_muddy"
+	initial_flooring = /decl/flooring/asteroid_ds/dry_muddy
 
 /turf/simulated/floor/asteroid/outside_ds/dry_cracked
 	icon_state = "dry_cracked"
+	initial_flooring = /decl/flooring/asteroid_ds/dry_cracked
 
 /turf/simulated/floor/asteroid/New()
 	.=..()

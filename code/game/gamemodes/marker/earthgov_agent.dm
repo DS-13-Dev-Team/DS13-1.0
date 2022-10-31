@@ -38,7 +38,7 @@ GLOBAL_LIST_EMPTY(agents_list)
 	hard_cap_round = 2                  // As above but 'core' round antags ie. roundstart.
 	initial_spawn_req = 0               // Gamemode using this template won't start without this # candidates.
 	initial_spawn_target = 2            // Gamemode will attempt to spawn this many antags.
-	restricted_jobs = list(JOBS_COMMAND)
+	restricted_jobs = list(JOBS_SECURITY, JOBS_HEADS)
 
 
 /datum/antagonist/earthgov_agent/create_objectives(var/datum/mind/player, var/override=0)

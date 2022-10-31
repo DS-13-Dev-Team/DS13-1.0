@@ -341,6 +341,7 @@
 	landmark_tag = "nav_executive_out"
 	//docking_controller = "executive_dock_airlock"
 	escape = TRUE
+	base_area = /area/ERT/escapebase
 
 /area/shuttle/executive_shuttle
 	name = "\improper Executive Shuttle"
@@ -398,6 +399,7 @@
 	base_turf =/turf/simulated/floor/airless
 /obj/effect/shuttle_landmark/escape_pod/out/pod1
 	number = 1
+	base_area = /area/ERT/escapebase
 /obj/effect/shuttle_landmark/escape_pod/transit/pod1
 	number = 1
 
@@ -411,6 +413,7 @@
 	base_turf =/turf/simulated/floor/airless
 /obj/effect/shuttle_landmark/escape_pod/out/pod2
 	number = 2
+	base_area = /area/ERT/escapebase
 /obj/effect/shuttle_landmark/escape_pod/transit/pod2
 	number = 2
 
@@ -423,6 +426,7 @@
 	base_turf =/turf/simulated/floor/airless
 /obj/effect/shuttle_landmark/escape_pod/out/pod3
 	number = 3
+	base_area = /area/ERT/escapebase
 /obj/effect/shuttle_landmark/escape_pod/transit/pod3
 	number = 3
 
@@ -435,6 +439,7 @@
 	base_turf =/turf/simulated/floor/airless
 /obj/effect/shuttle_landmark/escape_pod/out/pod4
 	number = 4
+	base_area = /area/ERT/escapebase
 /obj/effect/shuttle_landmark/escape_pod/transit/pod4
 	number = 4
 
@@ -447,6 +452,7 @@
 	base_turf =/turf/simulated/floor/airless
 /obj/effect/shuttle_landmark/escape_pod/out/pod5
 	number = 5
+	base_area = /area/ERT/escapebase
 /obj/effect/shuttle_landmark/escape_pod/transit/pod5
 	number = 5
 
@@ -459,6 +465,7 @@
 	base_turf =/turf/simulated/floor/airless
 /obj/effect/shuttle_landmark/escape_pod/out/pod6
 	number = 6
+	base_area = /area/ERT/escapebase
 /obj/effect/shuttle_landmark/escape_pod/transit/pod6
 	number = 6
 
@@ -471,6 +478,7 @@
 	base_turf =/turf/simulated/floor/airless
 /obj/effect/shuttle_landmark/escape_pod/out/pod7
 	number = 7
+	base_area = /area/ERT/escapebase
 /obj/effect/shuttle_landmark/escape_pod/transit/pod7
 	number = 7
 
@@ -483,6 +491,7 @@
 	base_turf =/turf/simulated/floor/airless
 /obj/effect/shuttle_landmark/escape_pod/out/pod8
 	number = 8
+	base_area = /area/ERT/escapebase
 /obj/effect/shuttle_landmark/escape_pod/transit/pod8
 	number = 8
 
@@ -495,5 +504,6 @@
 	base_turf =/turf/simulated/floor/airless
 /obj/effect/shuttle_landmark/escape_pod/out/pod9
 	number = 9
+	base_area = /area/ERT/escapebase
 /obj/effect/shuttle_landmark/escape_pod/transit/pod9
 	number = 9

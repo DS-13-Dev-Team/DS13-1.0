@@ -14,8 +14,8 @@
 	biomass_reclamation = 1
 	reclamation_time = 5 MINUTES
 
-	max_health = 50
-	resistance = 12	//Gotta bring a tough weapon
+	max_health = 70
+	resistance = 5	//Gotta bring a tough weapon
 
 	pixel_y = -16	//So that mobs trapped in it appear to be standing in the hole
 

@@ -4,7 +4,7 @@
 	name = "PCSI RIG"
 	desc = "A lightweight and flexible armoured rig suit used by CEC shipboard security during crackdowns and for use in hazardous environments."
 	icon_state = "pcsi_rig"
-	armor = list(melee = 57.5, bullet = 65, laser = 60, energy = 0, bomb = 60, bio = 100, rad = 60)
+	armor = list(melee = 60, bullet = 64, laser = 60, energy = 0, bomb = 60, bio = 100, rad = 60)
 	online_slowdown = RIG_MEDIUM
 	acid_resistance = 1.75	//Contains a fair bit of plastic
 
@@ -74,7 +74,7 @@
 	name = "security RIG"
 	desc = "A lightweight and flexible armoured rig suit, designed for riot control and shipboard disciplinary enforcement."
 	icon_state = "ds_security_rig"
-	armor = list(melee = 57.5, bullet = 60, laser = 60, energy = 25, bomb = 60, bio = 100, rad = 60)
+	armor = list(melee = 56.5, bullet = 60, laser = 60, energy = 25, bomb = 60, bio = 100, rad = 60)
 	online_slowdown = RIG_MEDIUM
 	acid_resistance = 1.75	//Contains a fair bit of plastic
 

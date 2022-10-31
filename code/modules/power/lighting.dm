@@ -192,6 +192,9 @@
 /obj/machinery/light/small/red
 	light_type = /obj/item/light/bulb/red
 
+/obj/machinery/light/small/yellow
+	light_type = /obj/item/light/bulb/yellow
+
 /obj/machinery/light/spot
 	name = "spotlight"
 	desc = "A more robust socket for light tubes that demand more power."
@@ -658,6 +661,10 @@
 /obj/item/light/bulb/red
 	color = "#da0205"
 	b_color = "#da0205"
+
+/obj/item/light/bulb/yellow
+	color = "#fcd466"
+	b_color = "#fcd466"
 
 /obj/item/light/bulb/red/readylight
 	lighting_modes = list(
