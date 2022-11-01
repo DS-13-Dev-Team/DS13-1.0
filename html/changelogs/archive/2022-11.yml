@@ -1,0 +1,66 @@
+2022-11-01:
+  Ketrai:
+  - rscadd: Traitorous goodies for unitologist, check the stealth tab!
+  - balance: You can OD on necrotoxin now, treat it with dylovene if you get attacked
+      a lot by infectors.
+  - qol: Necromorph vision abilities and whisper are now considerably cheaper pre-activation,
+      costs as normal after activation.
+  - balance: Tracer cost reduced post activation, 110 => 70.
+  - balance: Branch cost reduced 120 => 90.
+  - balance: Necrotox is more taxing on dylovene now, requiring more of it to stay
+      consistently protected.
+  - balance: Infector melee attacks will inject more necrotoxin now.
+  - balance: Infector cost reduced from 105 => 100
+  - balance: Enhanced infector cost reduced from 270 to 225 to be more inline with
+      enhanced costs in general.
+  - balance: Infectors will now actually inject toxin through rigs, rigs don't magically
+      stop most poison anymore.
+  - balance: Cost of some abilities reduced for enhanced infectors, notably engorge,
+      and growths, they can build propagators at a premium
+  - balance: Enhanced infector HP reduced from 225 => 205 to give low armed humans
+      more of a chance against one alone.
+  - balance: Makes human arms significantly harder to break, or to amputate. Aim for
+      the legs!
+  - balance: You can now overdose on dylovene at 30+ units, causing burns.
+  - balance: Necromorphs will now spawn within 3 tiles of spawners like the marker,
+      nests. (Previously 10)
+  - balance: Femorals have been heavily nerfed from 15/22.5% to 7.5/10%
+  - balance: Femorals now purchaseable at 4000 credits, advanced at 6000
+  - balance: Hauling skill is now 15~% less effective at reducing slowdown
+  - balance: Burn damage in general (this includes puke) will now take SIGNIFICANTLY
+      longer to delimb, sorry, dragging a person can still delimb them. Didn't fix
+      that one yet.
+  - balance: Puker & spitter shots deal less damage up front. Especially puker longshot
+  - balance: Acid shots and vomit tiles will now damage rigged people over time, though
+      wearing a rig offers increased protection. If you don't wear shoes, expect to
+      suffer.
+  - balance: Crushing people with doors now does 10 damage instead of 40
+  - balance: Signal lock is now cheaper pre-activation with a lower cooldown, but
+      locks doors for only 5 seconds instead of 60
+  - balance: Oracle twitcher cost from 360 => 320
+  - balance: Oracle twitchers can only step strike adjacent targets now, with a slightly
+      longer cooldown.
+  - balance: Oracle twitchers hit slightly harder again
+  - balance: Ubermorph is temporarily stronger after regenerating.
+  nianoru:
+  - balance: 'Colony: adjusted trash-dump marker spawn location in sewers.'
+  - balance: 'Colony: lower medical now requires a brute/exploder in the old closet
+      area to break through.'
+  - feature: 'Colony: added pipe dispensers to engineering.'
+  - feature: 'Colony: added ladder near excavation site.'
+  - feature: 'Colony: added ladder to the right of science (in maints).'
+  - feature: 'Colony: the SCAF shuttle now requires an underground entry only, filled
+      with land mines.'
+  - feature: 'Colony: hydroponics hallway entrance removed, now replaced in the dining
+      area.'
+  - balance: 'Colony: the marker doesn''t spawn in the church now on EW but afar,
+      although can on Containment.'
+  - balance: 'Colony: changed biomass points outside of the Colony, along with a new
+      marker spawn.'
+  - rscadd: 'Colony: new cave system on the northern part of the map.'
+  - rscadd: 'Ishimura: new western marker spawn in tram area.'
+  - rscadd: 'Colony: new marker spawn underground outside the sewers.'
+  - rscadd: 'Evac: revamped, now known as CEC Recovery Ship instead of Evacuation
+      Site Alpha.'
+  - rscadd: New slim variant of the CEC Civilian Rig.
+  - qol: You can now tell the difference between impassable and normal rock visually.
