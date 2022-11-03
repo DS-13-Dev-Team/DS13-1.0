@@ -232,3 +232,33 @@
 	loadout_modkit_cost = 2
 	modkit_access = ACCESS_WHITELIST
 	modkit_typelist = list(/obj/item/rig/advanced)
+
+/datum/patron_item/arctic_suit //public for all patrons
+	name = "Arctic Survival RIG"
+	description = "Use on an advanced rig to obtain, or buy the suit directly from the store. A standard-issue Sovereign Colonies RIG used for exploring and generally weathering harsh environments otherwise hostile to human life, from space to an icy alien tundra."
+	item_path = /obj/item/rig/arctic
+	id = "tarnished"
+	store_cost = 15000 //same as advanced rig
+	store_access = ACCESS_PATRONS
+
+	category = CATEGORY_RIG
+	subcategory = SUBCATEGORY_FRAMES
+
+	loadout_modkit_cost = 2
+	modkit_access = ACCESS_PATRONS
+	modkit_typelist = list(/obj/item/rig/advanced)
+
+/datum/patron_item/witness
+	name = "Arctic Survival RIG"
+	description = "Use on an advanced rig to obtain, or buy the suit directly from the store. A Sovereign Colonies all-purpose survival RIG painted in a mesmerizing fashion as a tribute to the Church of Unitology and the general faith they hold."
+	item_path = /obj/item/rig/arctic/witness
+	id = "tarnished"
+	store_cost = 15000
+	store_access = ACCESS_WHITELIST
+
+	category = CATEGORY_RIG
+	subcategory = SUBCATEGORY_FRAMES
+
+	loadout_modkit_cost = 2
+	modkit_access = ACCESS_WHITELIST
+	modkit_typelist = list(/obj/item/rig/advanced, /obj/item/rig/arctic) //these rigs are the same stat and module-wise
