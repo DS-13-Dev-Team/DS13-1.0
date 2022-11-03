@@ -6,7 +6,7 @@
 	offline_slowdown = RIG_VERY_HEAVY //this thing's a winter coat and armor at the same time!
 	online_slowdown = RIG_LIGHT //but it's also purpose-built for staying mobile
 	acid_resistance = 3
- 	seal_delay = 45
+	seal_delay = 45
 
 	chest_type = /obj/item/clothing/suit/space/rig/arctic
 	helm_type =  /obj/item/clothing/head/helmet/space/rig/arctic
