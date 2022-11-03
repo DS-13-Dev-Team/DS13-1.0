@@ -249,7 +249,7 @@
 	modkit_typelist = list(/obj/item/rig/advanced)
 
 /datum/patron_item/witness
-	name = "Arctic Survival RIG"
+	name = "Witness RIG"
 	description = "Use on an advanced rig to obtain, or buy the suit directly from the store. A Sovereign Colonies all-purpose survival RIG painted in a mesmerizing fashion as a tribute to the Church of Unitology and the general faith they hold."
 	item_path = /obj/item/rig/arctic/witness
 	id = "tarnished"
@@ -261,4 +261,4 @@
 
 	loadout_modkit_cost = 2
 	modkit_access = ACCESS_WHITELIST
-	modkit_typelist = list(/obj/item/rig/advanced, /obj/item/rig/arctic) //these rigs are the same stat and module-wise
+	modkit_typelist = list(/obj/item/rig/advanced) //these rigs are the same stat and module-wise
