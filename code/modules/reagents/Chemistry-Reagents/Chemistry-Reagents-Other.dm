@@ -341,7 +341,7 @@
 	taste_description = "sweet tasting metal"
 	reagent_state = SOLID
 	color = "#673910"
-	touch_met = 50
+	touch_met = 5
 
 /datum/reagent/thermite/touch_turf(var/turf/T)
 	if(volume >= 5)
