@@ -182,7 +182,7 @@
 	origin_tech = list(TECH_POWER = 4)
 	icon = 'icons/obj/ammo.dmi'
 	icon_state = "forcebattery"
-	w_class = ITEM_SIZE_NORMAL
+	w_class = ITEM_SIZE_SMALL
 	maxcharge = 1000
 	matter = list(MATERIAL_STEEL = 700, MATERIAL_SILVER = 80)
 

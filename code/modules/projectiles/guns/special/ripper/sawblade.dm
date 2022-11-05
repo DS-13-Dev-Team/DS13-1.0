@@ -171,7 +171,7 @@
 	desc = "Oh god, run, RUN!"
 	damage_type = BRUTE
 	//The compile time damage var is only used for blade launch mode. It will be replaced with a calculated value in remote control mode
-	damage = 35
+	damage = 40.25
 	sharp = 1
 	edge = 1
 	icon = 'icons/effects/projectiles.dmi'

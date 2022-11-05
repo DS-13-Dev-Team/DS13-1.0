@@ -224,7 +224,7 @@ meteor_act
 	if(prob(blocked)) //armour provides a chance to turn sharp/edge weapon attacks into blunt ones
 		damage_flags &= ~(DAM_SHARP|DAM_EDGE)
 
-	if((I.damtype == BRUTE || I.damtype == PAIN) && !stat && prob(25 + (effective_force * 2)))
+	if((I.damtype == BRUTE || I.damtype == PAIN) && !stat && prob(25 + (effective_force * 2)) && src.mob_size < MOB_LARGE)
 		switch(hit_zone)
 			if(BP_HEAD, BP_EYES, BP_MOUTH) //Knocking your enemy out or making them dizzy
 				if(prob(effective_force))

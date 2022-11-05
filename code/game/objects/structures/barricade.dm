@@ -6,7 +6,8 @@
 	icon_state = "barricade"
 	anchored = 1.0
 	density = 1
-	max_health = 100
+	max_health = 110
+	explosion_resistance = 6
 	var/material/material
 	atom_flags = ATOM_FLAG_CLIMBABLE
 	layer = ABOVE_WINDOW_LAYER

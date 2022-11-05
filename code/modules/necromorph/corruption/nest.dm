@@ -235,9 +235,11 @@
 	if (spawns_ready <= 0)
 		return null
 	spawns_ready--
-	var/mob/living/L = new spawner_species.mob_type(pick(clear_turfs_in_view(10)))
+	var/mob/living/L = new spawner_species.mob_type(pick(clear_turfs_in_view(1)))
 	RegisterSignal(L, list(COMSIG_PARENT_QDELETING, COMSIG_LIVING_DEATH), .proc/start_growth)
+	var/spawn_incentive = (1 + (L.biomass * 0.05))* -1
 	L.biomass = 0	//This won't give anything when slain
+	SSnecromorph.marker.pay_biomass("spawning incentive", spawn_incentive , TRUE) // small biomass gain when nests are used to incentivise using them more!
 	return L
 
 /obj/structure/corruption_node/nest/attack_signal(var/mob/dead/observer/eye/signal/user)
