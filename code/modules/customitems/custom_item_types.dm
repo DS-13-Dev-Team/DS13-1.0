@@ -264,8 +264,8 @@
 	modkit_typelist = list(/obj/item/rig/advanced) //these rigs are the same stat and module-wise
 
 /datum/patron_item/survivor
-	name = "PSCI survivor RIG"
-	description = "Use on an psci rig to obtain, or buy the suit directly from the store. The RIG remains battered and beaten, dented and missing pieces. The blood remains permanently rusted to the frame. The will of the survivor remains unbroken."
+	name = "PCSI survivor RIG"
+	description = "Use on an pcsi rig to obtain, or buy the suit directly from the store. The RIG remains battered and beaten, dented and missing pieces. The blood remains permanently rusted to the frame. The will of the survivor remains unbroken."
 	item_path = /obj/item/rig/security/pcsi/ruined
 	id = "psci_survivor"
 	store_cost = 12000
