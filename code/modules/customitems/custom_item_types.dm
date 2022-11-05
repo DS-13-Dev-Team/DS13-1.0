@@ -42,7 +42,7 @@
 	description = "The latest in cutting-edge RIG technology. This one is a slightly older model, still using the standard engineering suit scheme. It has `Max S.` engraved next to the monitor lights."
 	item_path = /obj/item/rig/advanced/maxstone
 	id = "max_stone_rig"
-	store_cost = 12000
+	store_cost = 15000
 	store_access = ACCESS_WHITELIST
 
 	category = CATEGORY_RIG
@@ -58,7 +58,7 @@
 	description = "A lightweight and flexible armoured rig suit, designed for riot control and shipboard disciplinary enforcement."
 	item_path = /obj/item/rig/scaf/elite
 	id = "plaugewalker_rig"
-	store_cost = 6400
+	store_cost = 10000
 	store_access = ACCESS_WHITELIST
 
 	category = CATEGORY_RIG
@@ -74,7 +74,7 @@
 	description = "A project many months in the works, created by an obsessive historical anime fan. Even incorporates a custom voice changer for impersonating TV characters."
 	item_path = /obj/item/rig/advanced/banditofdoom
 	id = "banditofdoom_rig"
-	store_cost = 10000
+	store_cost = 15000
 	store_access = ACCESS_WHITELIST
 
 	category = CATEGORY_RIG
@@ -148,7 +148,7 @@
 	description = "An extremely bulky, durable diving suit. Designed for deep diving in the icy seas of Europa, able to whitstand extreme undersea pressure. Use it on a vintage rig to convert, or buy it in the store directly!"
 	item_path = /obj/item/rig/vintage/sea
 	id = "sea_rig"
-	store_cost = 14000
+	store_cost = 15000
 	store_access = ACCESS_WHITELIST
 
 	category = CATEGORY_RIG
@@ -163,7 +163,7 @@
 	description = "A heavily armoured rig suit, designed for military use. Especially effective against bullets. Use it on a vintage rig to convert, or buy it in the store directly!"
 	item_path = /obj/item/rig/carver
 	id = "carver_rig"
-	store_cost = 14000
+	store_cost = 15000
 	store_access = ACCESS_WHITELIST
 
 	category = CATEGORY_RIG
@@ -178,7 +178,7 @@
 	description = "An extremely durable, bulky elite diving suit. Designed for combat and deep sea diving in the North Atlantic Ocean, able to withstand extreme undersea pressure. Use it on a vintage rig to convert, or buy it in the store directly!"
 	item_path = /obj/item/rig/vintage/sea/dad
 	id = "dad_rig"
-	store_cost = 14000
+	store_cost = 15000
 	store_access = ACCESS_WHITELIST
 
 	category = CATEGORY_RIG
@@ -232,3 +232,33 @@
 	loadout_modkit_cost = 2
 	modkit_access = ACCESS_WHITELIST
 	modkit_typelist = list(/obj/item/rig/advanced)
+
+/datum/patron_item/arctic_suit //public for all patrons
+	name = "Arctic Survival RIG"
+	description = "Use on an advanced rig to obtain, or buy the suit directly from the store. A standard-issue Sovereign Colonies RIG used for exploring and generally weathering harsh environments otherwise hostile to human life, from space to an icy alien tundra."
+	item_path = /obj/item/rig/arctic
+	id = "tarnished"
+	store_cost = 15000 //same as advanced rig
+	store_access = ACCESS_PATRONS
+
+	category = CATEGORY_RIG
+	subcategory = SUBCATEGORY_FRAMES
+
+	loadout_modkit_cost = 2
+	modkit_access = ACCESS_PATRONS
+	modkit_typelist = list(/obj/item/rig/advanced)
+
+/datum/patron_item/witness
+	name = "Witness RIG"
+	description = "Use on an advanced rig to obtain, or buy the suit directly from the store. A Sovereign Colonies all-purpose survival RIG painted in a mesmerizing fashion as a tribute to the Church of Unitology and the general faith they hold."
+	item_path = /obj/item/rig/arctic/witness
+	id = "tarnished"
+	store_cost = 15000
+	store_access = ACCESS_WHITELIST
+
+	category = CATEGORY_RIG
+	subcategory = SUBCATEGORY_FRAMES
+
+	loadout_modkit_cost = 2
+	modkit_access = ACCESS_WHITELIST
+	modkit_typelist = list(/obj/item/rig/advanced) //these rigs are the same stat and module-wise

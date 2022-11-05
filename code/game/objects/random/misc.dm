@@ -92,25 +92,24 @@ something, make sure it's not in one of the other lists.*/
 	name = "possible scaf equipment"
 	spawn_nothing_percentage = 20
 
-obj/random/scaf/item_to_spawn() //total weight = 100
+/obj/random/scaf/item_to_spawn() //total weight = 100
 	return pickweight(list(
-	/obj/item/rig/scaf = 1.25,
-	/obj/item/rig/scaf/elite = 1.25,
-	/obj/item/rig/scaf/legionnaire = 1.25,
-	/obj/item/rig/scaf/sharpshooter = 1.25,
-	/obj/item/gun/projectile/automatic/bullpup = 2.5,
-	/obj/item/ammo_magazine/bullpup = 2.5,
-	/obj/random/medical = 22.5,
-	/obj/random/tool = 22.5,
-	/obj/random/trash = 22.5,
-	/obj/random/junk = 22.5
+	/obj/item/rig/arctic = 4,
+	/obj/item/rig/scaf/elite = 4,
+	/obj/item/rig/scaf/legionnaire = 4,
+	/obj/item/gun/projectile/automatic/bullpup = 10,
+	/obj/item/ammo_magazine/bullpup = 18,
+	/obj/random/medical = 15,
+	/obj/random/tool = 15,
+	/obj/random/trash = 15,
+	/obj/random/junk = 15
 	))
 
 /obj/random/mines
 	name = "possible mine deployments"
 	spawn_nothing_percentage = 60
 
-obj/random/mines/item_to_spawn()
+/obj/random/mines/item_to_spawn()
 	return pickweight(list(
 		/obj/effect/mine = 10,
 		/obj/effect/mine/stun = 90
@@ -120,7 +119,7 @@ obj/random/mines/item_to_spawn()
 	name = "possible antag rig spawn"
 	spawn_nothing_percentage = 90
 
-obj/random/zealotrig/item_to_spawn()
+/obj/random/zealotrig/item_to_spawn()
 	return pickweight(list(
 	/obj/item/rig/zealot = 50,
 	/obj/item/rig/marine/earthgov = 50
@@ -130,7 +129,7 @@ obj/random/zealotrig/item_to_spawn()
 	name = "possible preserved corpses"
 	spawn_nothing_percentage = 75
 
-obj/random/unihideoutbodies/item_to_spawn()
+/obj/random/unihideoutbodies/item_to_spawn()
 	return pickweight(list(
 		/obj/effect/landmark/corpse = 1
 	))
