@@ -237,7 +237,7 @@
 	name = "Arctic Survival RIG"
 	description = "Use on an advanced rig to obtain, or buy the suit directly from the store. A standard-issue Sovereign Colonies RIG used for exploring and generally weathering harsh environments otherwise hostile to human life, from space to an icy alien tundra."
 	item_path = /obj/item/rig/arctic
-	id = "tarnished"
+	id = "arctic"
 	store_cost = 15000 //same as advanced rig
 	store_access = ACCESS_PATRONS
 
@@ -252,7 +252,7 @@
 	name = "Witness RIG"
 	description = "Use on an advanced rig to obtain, or buy the suit directly from the store. A Sovereign Colonies all-purpose survival RIG painted in a mesmerizing fashion as a tribute to the Church of Unitology and the general faith they hold."
 	item_path = /obj/item/rig/arctic/witness
-	id = "tarnished"
+	id = "witness"
 	store_cost = 15000
 	store_access = ACCESS_WHITELIST
 
@@ -262,3 +262,33 @@
 	loadout_modkit_cost = 2
 	modkit_access = ACCESS_WHITELIST
 	modkit_typelist = list(/obj/item/rig/advanced) //these rigs are the same stat and module-wise
+
+/datum/patron_item/survivor
+	name = "PSCI survivor RIG"
+	description = "Use on an psci rig to obtain, or buy the suit directly from the store. The RIG remains battered and beaten, dented and missing pieces. The blood remains permanently rusted to the frame. The will of the survivor remains unbroken."
+	item_path = /obj/item/rig/security/pcsi/ruined
+	id = "psci_survivor"
+	store_cost = 12000
+	store_access = ACCESS_WHITELIST
+
+	category = CATEGORY_RIG
+	subcategory = SUBCATEGORY_FRAMES
+
+	loadout_modkit_cost = 2
+	modkit_access = ACCESS_WHITELIST
+	modkit_typelist = list(/obj/item/rig/security/pcsi) //these rigs are the same stat and module-wise
+
+/datum/patron_item/forged
+	name = "forged engineering RIG"
+	description = "Use on an engineering rig to obtain, or buy the suit directly from the store. A lightweight and flexible armoured rig suit, designed for mining and shipboard engineering."
+	item_path = /obj/item/rig/engineering/forged
+	id = "forged"
+	store_cost = 8000
+	store_access = ACCESS_WHITELIST
+
+	category = CATEGORY_RIG
+	subcategory = SUBCATEGORY_FRAMES
+
+	loadout_modkit_cost = 2
+	modkit_access = ACCESS_WHITELIST
+	modkit_typelist = list(/obj/item/rig/engineering) //these rigs are the same stat and module-wise

@@ -16,3 +16,5 @@ dad_rig{Blackwolf602}
 sea_rig{Blackwolf602}
 tarnished{Bruholic}
 witness{DawsonKeyes}
+psci_survivor{Dr.Lance}
+forged{ToroidalZer0}
