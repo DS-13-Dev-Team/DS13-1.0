@@ -33,7 +33,7 @@
 
 	var/upgrade_level = 1
 
-	var/list/upgrade_multipliers = list(1, 0.9, 0.75)
+	var/list/upgrade_multipliers = list(0.9, 0.8, 0.70)
 	var/growth_timer_handle
 
 	can_block_movement = TRUE
