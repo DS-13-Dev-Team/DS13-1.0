@@ -43,10 +43,10 @@
 	boot_type =  /obj/item/clothing/shoes/magboots/rig/security/pcsi/ruined
 	glove_type = /obj/item/clothing/gloves/rig/security/pcsi/ruined
 
-	/obj/item/clothing/head/helmet/space/rig/security/pcsi/ruined
-	/obj/item/clothing/suit/space/rig/security/pcsi/ruined
-	/obj/item/clothing/shoes/magboots/rig/security/pcsi/ruined
-	/obj/item/clothing/gloves/rig/security/pcsi/ruined
+/obj/item/clothing/head/helmet/space/rig/security/pcsi/ruined
+/obj/item/clothing/suit/space/rig/security/pcsi/ruined
+/obj/item/clothing/shoes/magboots/rig/security/pcsi/ruined
+/obj/item/clothing/gloves/rig/security/pcsi/ruined
 
 //PCSI Riot RIG
 /obj/item/rig/security/pcsi/advanced

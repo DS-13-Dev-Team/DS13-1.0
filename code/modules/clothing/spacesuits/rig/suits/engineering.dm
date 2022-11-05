@@ -46,7 +46,7 @@
 	boot_type =  /obj/item/clothing/shoes/magboots/rig/engineering/forged
 	glove_type = /obj/item/clothing/gloves/rig/engineering/forged
 
-	/obj/item/clothing/suit/space/rig/engineering/forged
-	/obj/item/clothing/gloves/rig/engineering/forged
-	/obj/item/clothing/shoes/magboots/rig/engineering/forged
-	/obj/item/clothing/head/helmet/space/rig/engineering/forged
+/obj/item/clothing/suit/space/rig/engineering/forged
+/obj/item/clothing/gloves/rig/engineering/forged
+/obj/item/clothing/shoes/magboots/rig/engineering/forged
+/obj/item/clothing/head/helmet/space/rig/engineering/forged
