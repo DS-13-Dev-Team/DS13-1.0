@@ -6924,10 +6924,6 @@
 /obj/effect/wallframe_spawn/reinforced,
 /turf/simulated/floor,
 /area/aegis/colony/charging_station)
-"Jo" = (
-/obj/effect/landmark/marker/aegis,
-/turf/simulated/floor/dank/roller,
-/area/aegis/outside)
 "Jt" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 9
@@ -34730,7 +34726,7 @@ ag
 ag
 yC
 OA
-Jo
+KB
 iS
 Un
 ag

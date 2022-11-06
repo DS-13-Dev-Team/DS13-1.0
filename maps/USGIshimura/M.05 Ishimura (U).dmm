@@ -25,7 +25,7 @@
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/reinforced,
-/area/ishimura/hull)
+/area/space)
 "ag" = (
 /obj/machinery/access_button{
 	frequency = 1380;
@@ -33,13 +33,13 @@
 	pixel_x = 24
 	},
 /turf/simulated/floor/reinforced,
-/area/ishimura/hull)
+/area/space)
 "ai" = (
 /turf/simulated/floor/reinforced,
 /area/space)
 "aj" = (
 /turf/simulated/floor/reinforced/airless,
-/area/ishimura/hull)
+/area/space)
 "ak" = (
 /obj/effect/floor_decal/solarpanel,
 /obj/machinery/power/solar{
@@ -124,7 +124,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/reinforced,
-/area/ishimura/hull)
+/area/space)
 "as" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/structure/cable/yellow{
@@ -152,7 +152,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/reinforced,
-/area/ishimura/hull)
+/area/space)
 "au" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/structure/cable/yellow{
@@ -218,7 +218,7 @@
 	icon_state = "pipe-c"
 	},
 /turf/simulated/floor/reinforced,
-/area/ishimura/hull)
+/area/space)
 "aA" = (
 /obj/effect/floor_decal/solarpanel,
 /obj/machinery/power/solar{
@@ -259,7 +259,7 @@
 	icon_state = "pipe-c"
 	},
 /turf/simulated/floor/reinforced,
-/area/ishimura/hull)
+/area/space)
 "aF" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -277,7 +277,7 @@
 	icon_state = "pipe-c"
 	},
 /turf/simulated/floor/reinforced,
-/area/ishimura/hull)
+/area/space)
 "aG" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -340,7 +340,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/reinforced,
-/area/ishimura/hull)
+/area/space)
 "aJ" = (
 /obj/structure/closet/emcloset,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -377,6 +377,13 @@
 /obj/machinery/alarm{
 	pixel_y = 23
 	},
+/obj/structure/table/standard,
+/obj/item/clothing/suit/space/unitologist/deacon{
+	armor = list("melee"=60,"bullet"=60,"laser"=60,"energy"=60,"bomb"=100,"bio"=100,"rad"=30);
+	desc = "An ornate, gray voidsuit, modified with deep grey plating and red runes. Several protective pieces have been added on and modified with an odd, flexible material, alongside the addition of a sash and buckle on the left shoulder, though you suspect this suit is nonetheless airtight and space-proof.";
+	name = "makeshift combat suit";
+	pixel_y = 4
+	},
 /turf/simulated/floor/plating,
 /area/ishimura/eva/substation)
 "aN" = (
@@ -388,6 +395,11 @@
 /obj/structure/cable/orange{
 	d2 = 8;
 	icon_state = "0-8"
+	},
+/obj/structure/table/standard,
+/obj/item/material/knife/unitologist{
+	pixel_x = -2;
+	pixel_y = 4
 	},
 /turf/simulated/floor/plating,
 /area/ishimura/eva/substation)
@@ -415,7 +427,7 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/reinforced,
-/area/ishimura/hull)
+/area/space)
 "aS" = (
 /obj/effect/wallframe_spawn/reinforced/hull,
 /obj/machinery/door/firedoor/border_only,
@@ -477,6 +489,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/dank,
 /area/ishimura/eva)
 "ba" = (
@@ -908,16 +921,22 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
 	},
+/obj/structure/table/standard,
+/obj/item/rig/zealot{
+	pixel_y = 2
+	},
 /turf/simulated/floor/plating,
 /area/ishimura/eva/substation)
 "bI" = (
 /obj/machinery/door/firedoor/border_only,
+/obj/structure/barricade/wood,
 /turf/simulated/floor/dank/mono,
 /area/ishimura/eva)
 "bJ" = (
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/item/stack/material/wood,
 /turf/simulated/floor/dank/mono,
 /area/ishimura/eva)
 "bK" = (
@@ -1050,6 +1069,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/dank,
 /area/ishimura/eva/prep)
 "cf" = (
@@ -1096,17 +1116,24 @@
 /obj/machinery/camera/network/engineering{
 	dir = 8
 	},
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/simulated/floor/tiled/dark,
 /area/ishimura/eva/prep)
 "cm" = (
 /obj/item/radio/intercom{
 	pixel_y = 24
 	},
+/obj/effect/decal/cleanable/blood,
+/obj/item/ammo_casing/shotgun/pellet,
 /turf/simulated/floor/tiled/dark,
 /area/ishimura/eva/prep)
 "cn" = (
 /obj/machinery/light{
 	dir = 1
+	},
+/obj/item/ammo_casing/shotgun/flash{
+	pixel_x = -4;
+	pixel_y = -3
 	},
 /turf/simulated/floor/tiled/dark,
 /area/ishimura/eva/prep)
@@ -1322,6 +1349,7 @@
 	},
 /obj/machinery/door/airlock/engineering{
 	dir = 8;
+	locked = 1;
 	name = "Airlock Pressure Room"
 	},
 /turf/simulated/floor/tiled/dark/monotile,
@@ -1345,6 +1373,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/item/ammo_casing/shotgun/pellet{
+	pixel_x = -6;
+	pixel_y = 3
+	},
 /turf/simulated/floor/tiled/dark,
 /area/ishimura/eva/prep)
 "cE" = (
@@ -1363,6 +1395,7 @@
 	dir = 8;
 	pixel_x = 25
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/tiled/dark,
 /area/ishimura/eva/prep)
 "cG" = (
@@ -1385,6 +1418,7 @@
 	layer = 2.4;
 	level = 2
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/dank,
 /area/ishimura/eva)
 "cJ" = (
@@ -1413,6 +1447,7 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/item/storage/belt/utility/full,
 /obj/item/storage/belt/utility/full,
+/obj/item/ammo_magazine/rivet,
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/eva/supply)
 "cN" = (
@@ -1498,6 +1533,8 @@
 /area/ishimura/eva/prep)
 "cW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/effect/decal/cleanable/blood,
+/obj/item/rig_module/grenade_launcher/military,
 /turf/simulated/floor/tiled/dark,
 /area/ishimura/eva/prep)
 "cX" = (
@@ -1505,11 +1542,16 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/simulated/floor/tiled/dark,
 /area/ishimura/eva/prep)
 "cY" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 8
+	},
+/obj/item/ammo_casing/shotgun/flash{
+	pixel_x = 4;
+	pixel_y = 5
 	},
 /turf/simulated/floor/tiled/dark,
 /area/ishimura/eva/prep)
@@ -1574,6 +1616,18 @@
 /obj/machinery/portable_atmospherics/canister/air/airlock,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/eva/prep)
+"dg" = (
+/obj/structure/bed/chair/comfy{
+	dir = 4;
+	icon_state = "comfychair_preview"
+	},
+/obj/effect/landmark/start{
+	name = "Director of Mining"
+	},
+/turf/simulated/floor/dank/slides{
+	dir = 1
+	},
+/area/shuttle/executive_shuttle)
 "dh" = (
 /obj/structure/sign/warning/server_room{
 	dir = 4;
@@ -1736,6 +1790,7 @@
 	d2 = 2;
 	icon_state = "0-2"
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/tiled/techfloor,
 /area/ishimura/eva/airlock)
 "dD" = (
@@ -1812,6 +1867,10 @@
 /area/ishimura/eva/substation)
 "dK" = (
 /obj/structure/table/standard,
+/obj/item/ammo_magazine/rivet{
+	pixel_x = 2;
+	pixel_y = -3
+	},
 /turf/simulated/floor/dank/mono,
 /area/ishimura/eva)
 "dL" = (
@@ -2054,6 +2113,9 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
+/obj/item/paper/crumpled/bloody{
+	info = "I'm the last one, I think. We came here as a squad of nine, fancy new rifles inhand, supposedly just on our way to fix the ship's power issues. Guess we were wrong. I didn't even see them, not at all, but they grabbed Michaels and Johnny, and I got split up trying to run. I heard screams from under the floor as I stumbled out of that airlock. Whatever's left on this ship isn't happy, and better yet our riglinks aren't working. Bounced radios should, but all I can hear from the other end is something wet. If anyone finds this, and I didn't make it out, do yourself a favor - we weren't ready for what was here, and you shouldn't be here either. If I die, I'd rather it be to hunger than to whatever got the others.             god it's so cold"
+	},
 /turf/simulated/floor/airless,
 /area/ishimura/eva/solar)
 "ec" = (
@@ -2062,6 +2124,20 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
+	},
+/obj/effect/landmark/corpse/syndicate{
+	corpse_outfits = list(/decl/hierarchy/outfit/job/security/officer);
+	name = "unknown"
+	},
+/obj/item/gun/projectile/shotgun/doublebarrel/sawn{
+	ammo_type = /obj/item/ammo_casing/shotgun;
+	desc = "An old-Earth style sawn-off shotgun. Omar's coming!";
+	starts_loaded = 0
+	},
+/obj/item/ammo_casing/shotgun/pellet,
+/obj/item/ammo_casing/shotgun/pellet{
+	pixel_x = 3;
+	pixel_y = 9
 	},
 /turf/simulated/floor/tiled/dark,
 /area/ishimura/eva/prep)
@@ -2157,6 +2233,10 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
+/obj/effect/landmark/corpse/syndicate{
+	corpse_outfits = list(/decl/hierarchy/outfit/edf_commander);
+	name = "unknown"
+	},
 /turf/simulated/floor/airless,
 /area/ishimura/eva/solar)
 "eq" = (
@@ -2183,6 +2263,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/dank,
 /area/ishimura/eva)
 "ev" = (
@@ -2205,6 +2286,7 @@
 /obj/machinery/status_display{
 	pixel_y = -32
 	},
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/tiled/techfloor,
 /area/ishimura/eva/airlock)
 "ey" = (
@@ -2306,6 +2388,7 @@
 	master_tag = "topdeck_airlock";
 	pixel_x = -24
 	},
+/obj/item/ammo_magazine/rivet/empty,
 /turf/simulated/floor/reinforced,
 /area/space)
 "eI" = (
@@ -2722,6 +2805,10 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/item/gun/energy/laser/dogan{
+	max_shots = 80;
+	name = "prototype las-carbine"
+	},
 /turf/simulated/floor/airless,
 /area/ishimura/eva/solar)
 "fs" = (
@@ -2888,7 +2975,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/reinforced,
-/area/ishimura/hull)
+/area/space)
 "fH" = (
 /obj/machinery/access_button{
 	frequency = 1380;
@@ -2905,6 +2992,13 @@
 /obj/item/radio/intercom{
 	dir = 1;
 	pixel_y = -35
+	},
+/obj/structure/table/standard,
+/obj/item/gun/energy/laser/dogan{
+	max_shots = 80;
+	name = "prototype las-carbine";
+	pixel_x = 6;
+	pixel_y = 2
 	},
 /turf/simulated/floor/plating,
 /area/ishimura/eva/substation)
@@ -2986,7 +3080,7 @@
 	icon_state = "pipe-c"
 	},
 /turf/simulated/floor/reinforced,
-/area/ishimura/hull)
+/area/space)
 "fQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -2998,7 +3092,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/reinforced,
-/area/ishimura/hull)
+/area/space)
 "fR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
@@ -3011,7 +3105,7 @@
 	icon_state = "pipe-c"
 	},
 /turf/simulated/floor/reinforced,
-/area/ishimura/hull)
+/area/space)
 "fS" = (
 /obj/item/radio/intercom{
 	dir = 8;
@@ -3035,7 +3129,17 @@
 /turf/simulated/floor/dank,
 /area/ishimura/eva)
 "fV" = (
-/obj/structure/asteroidcannon,
+/obj/structure{
+	anchored = 1;
+	desc = "A massively aged, dysfunctional Asteroid Defense System autocannon.";
+	health = 9999;
+	icon = 'icons/obj/asteroidcannon_centred.dmi';
+	icon_state = "asteroidgun";
+	max_health = 9999;
+	name = "Asteroid Defense System";
+	pixel_x = -144;
+	pixel_y = -64
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/ishimura/eva/ADS)
 "fW" = (
@@ -3108,6 +3212,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
+	},
+/obj/item/ammo_casing/shotgun/pellet{
+	pixel_x = 3;
+	pixel_y = 9
 	},
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/eva/prep)
@@ -3270,7 +3378,7 @@
 /area/ishimura/eva/ADS)
 "gC" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/computer/asteroidcannon,
+/obj/item/modular_computer/console/preset/sysadmin,
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/eva/ADS)
 "gD" = (
@@ -3409,14 +3517,35 @@
 /turf/simulated/floor/dank,
 /area/ishimura/eva/ADS)
 "gU" = (
-/turf/simulated/wall/r_wall/hull,
-/area/necrospawn/ads/channel_port)
-"gV" = (
-/turf/simulated/floor/reinforced,
-/area/necrospawn/ads/channel_port)
+/turf/simulated/floor/plating,
+/area/space)
+"hr" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/structure/bed/chair/comfy,
+/obj/effect/landmark/start{
+	name = "Botanist"
+	},
+/turf/simulated/floor/dank/maint_left,
+/area/shuttle/executive_shuttle)
 "hu" = (
-/turf/simulated/floor/reinforced,
-/area/necrospawn/ads/cannon_housing)
+/obj/item/stack/rods,
+/turf/space,
+/area/space)
+"hz" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/structure/bed/chair/comfy{
+	dir = 8;
+	icon_state = "comfychair_preview"
+	},
+/obj/effect/landmark/start{
+	name = "Mining Foreman"
+	},
+/turf/simulated/floor/dank/slides,
+/area/shuttle/executive_shuttle)
 "hS" = (
 /obj/machinery/door/airlock/external/glass{
 	dir = 8;
@@ -3426,6 +3555,12 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/ishimura/eva/airlock/ADS)
+"ic" = (
+/obj/effect/landmark/start{
+	name = "Security Officer"
+	},
+/turf/simulated/floor/dank/maint,
+/area/shuttle/executive_shuttle)
 "iq" = (
 /turf/simulated/floor/reinforced,
 /area/ishimura/external/channel/second)
@@ -3433,12 +3568,20 @@
 /obj/machinery/store,
 /turf/simulated/floor/dank,
 /area/ishimura/eva)
+"jo" = (
+/obj/item/ammo_magazine/rivet,
+/turf/simulated/floor/reinforced,
+/area/ishimura/external/channel/second)
 "jK" = (
 /obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ishimura/eva/airlock/ADS)
+"jS" = (
+/obj/item/ammo_magazine/rivet/empty,
+/turf/simulated/floor/plating,
+/area/ishimura/external/channel/second)
 "ke" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8
@@ -3453,14 +3596,33 @@
 /turf/simulated/wall,
 /area/ishimura/eva/ADS)
 "lg" = (
-/turf/simulated/wall/r_wall/hull,
-/area/necrospawn/ads/channel_starboard)
+/obj/item/stack/material/plasteel,
+/turf/space,
+/area/space)
 "ln" = (
 /obj/structure/sign/warning/engineering_access{
 	dir = 8;
 	pixel_x = 35
 	},
 /turf/simulated/floor/reinforced,
+/area/ishimura/external/channel/second)
+"lq" = (
+/obj/structure/bed/chair/shuttle,
+/turf/simulated/floor/dank/maint_right,
+/area/shuttle/executive_shuttle)
+"lW" = (
+/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/structure/cable/orange{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/item/ammo_magazine/rivet/empty,
+/turf/simulated/floor/reinforced,
+/area/space)
+"lY" = (
+/obj/structure/wall_frame/hull,
+/turf/simulated/floor/plating,
 /area/ishimura/external/channel/second)
 "mi" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
@@ -3472,6 +3634,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/ishimura/eva/substation/transfer)
+"mR" = (
+/obj/effect/landmark/start{
+	name = "Psychiatrist"
+	},
+/turf/simulated/floor/dank/maint_left,
+/area/shuttle/executive_shuttle)
 "ne" = (
 /obj/machinery/floodlight/on,
 /obj/structure/window/reinforced{
@@ -3484,6 +3652,43 @@
 /obj/structure/window/reinforced,
 /turf/simulated/floor/reinforced,
 /area/ishimura/external/channel/second)
+"nJ" = (
+/obj/structure/barricade/wood,
+/turf/simulated/floor/dank,
+/area/ishimura/eva)
+"nO" = (
+/obj/machinery/button/remote/blast_door{
+	dir = 4;
+	id = "fuck_you_kendra";
+	name = "Door Shutters Access";
+	pixel_x = 32
+	},
+/obj/structure/table/rack/dark,
+/obj/item/rig/scaf/legionnaire{
+	pixel_x = 7;
+	pixel_y = 5
+	},
+/obj/item/rig/marine{
+	pixel_x = -4;
+	pixel_y = 5
+	},
+/obj/item/rig/engineering{
+	pixel_x = 2;
+	pixel_y = 4
+	},
+/obj/item/clothing/mask/breath,
+/obj/item/clothing/mask/breath,
+/obj/item/clothing/mask/breath,
+/obj/item/clothing/mask/breath,
+/obj/item/tank/oxygen/yellow,
+/obj/item/tank/oxygen/yellow,
+/obj/item/tank/oxygen/yellow,
+/obj/item/tank/oxygen/yellow,
+/turf/simulated/floor/dank/slides,
+/area/shuttle/executive_shuttle)
+"nS" = (
+/turf/simulated/floor/plating,
+/area/shuttle/executive_shuttle)
 "oi" = (
 /obj/structure/railing/mapped,
 /obj/structure/railing/mapped{
@@ -3500,6 +3705,9 @@
 	},
 /turf/simulated/floor/plating,
 /area/ishimura/eva/substation/transfer)
+"pb" = (
+/turf/simulated/floor/dank/maint_right,
+/area/shuttle/executive_shuttle)
 "ps" = (
 /obj/machinery/door/airlock/external{
 	dir = 4;
@@ -3528,12 +3736,66 @@
 /obj/machinery/atmospherics/pipe/manifold4w/hidden,
 /turf/simulated/floor/tiled/techfloor,
 /area/ishimura/eva/airlock/ADS)
+"pM" = (
+/obj/structure/girder/reinforced,
+/obj/item/stack/material/steel,
+/turf/simulated/floor/plating/under,
+/area/space)
+"pR" = (
+/obj/item/stack/material/plasteel,
+/obj/item/stack/material/steel,
+/turf/simulated/floor/plating,
+/area/space)
 "pZ" = (
 /turf/simulated/wall/r_wall/hull,
 /area/ishimura/eva/airlock/ADS)
+"qD" = (
+/turf/simulated/floor/plating,
+/area/ishimura/external/channel/second)
+"qJ" = (
+/obj/item/ammo_magazine/rivet,
+/turf/simulated/floor/reinforced,
+/area/space)
+"rn" = (
+/obj/item/stack/material/steel,
+/turf/simulated/floor/plating/under,
+/area/space)
 "rI" = (
 /turf/simulated/floor/tiled/techfloor,
 /area/ishimura/eva/airlock/ADS)
+"rP" = (
+/turf/simulated/floor/dank/slides,
+/area/shuttle/executive_shuttle)
+"rY" = (
+/obj/effect/landmark/start{
+	name = "Unitologist Chaplain"
+	},
+/turf/simulated/floor/dank/maint_right,
+/area/shuttle/executive_shuttle)
+"sk" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/clothing/head/helmet/space/unitologist/deacon{
+	desc = "A unique-looking helmet taken off of a Titan Station patrol RIG. Whilst a bona-fide piece of history, and also a collector's item, this helmet's mechanical parts have been mostly removed to have it better suited in an environment where electromagnetic pulses can hit at nearly any time.";
+	icon_state = "patrol_sealed";
+	layer = 3.1;
+	name = "scavenged patrol helmet";
+	pixel_x = -1;
+	pixel_y = 3
+	},
+/turf/simulated/floor/dank/tech,
+/area/shuttle/executive_shuttle)
+"sm" = (
+/obj/item/stack/material/wood,
+/turf/simulated/floor/dank,
+/area/ishimura/eva)
+"st" = (
+/obj/structure/girder/displaced,
+/turf/simulated/floor/reinforced,
+/area/ishimura/external/channel/first)
+"sw" = (
+/obj/structure/girder/displaced,
+/turf/simulated/floor/reinforced,
+/area/ishimura/external/channel/second)
 "sB" = (
 /obj/structure/railing/mapped{
 	dir = 8
@@ -3548,16 +3810,50 @@
 /turf/simulated/floor/tiled/dark,
 /area/ishimura/eva/prep/ADS)
 "sF" = (
-/obj/effect/necrohatch{
-	dir = 1
+/obj/item/stack/material/steel,
+/turf/space,
+/area/space)
+"sH" = (
+/obj/effect/landmark/start{
+	name = "Research Assistant"
 	},
-/turf/simulated/floor/reinforced,
-/area/necrospawn/ads/channel_starboard)
+/turf/simulated/floor/dank/maint,
+/area/shuttle/executive_shuttle)
+"sM" = (
+/obj/structure/closet/hydrant{
+	pixel_y = 32
+	},
+/obj/effect/landmark/start{
+	name = "Surgeon"
+	},
+/turf/simulated/floor/dank/maint_left,
+/area/shuttle/executive_shuttle)
 "sO" = (
 /turf/simulated/floor/hull{
 	initial_gas = null
 	},
 /area/ishimura/hull)
+"tf" = (
+/obj/item/stack/material/plasteel,
+/turf/simulated/wall/r_wall/hull,
+/area/ishimura/external/channel/first)
+"to" = (
+/obj/structure/girder/reinforced,
+/obj/item/stack/material/plasteel,
+/turf/simulated/floor/plating,
+/area/space)
+"tA" = (
+/turf/simulated/shuttle/wall{
+	dir = 1;
+	icon_state = "wall3"
+	},
+/area/shuttle/executive_shuttle)
+"tJ" = (
+/obj/effect/landmark/start{
+	name = "Captain"
+	},
+/turf/simulated/floor/dank/maint_left,
+/area/shuttle/executive_shuttle)
 "tR" = (
 /obj/effect/wallframe_spawn/reinforced/hull,
 /obj/machinery/door/firedoor/border_only{
@@ -3565,6 +3861,21 @@
 	},
 /turf/simulated/floor/plating,
 /area/ishimura/eva/ADS)
+"tY" = (
+/obj/machinery/door/airlock/external{
+	dir = 4;
+	name = "transport shuttle"
+	},
+/obj/machinery/door/blast/shutters/open{
+	begins_closed = 1;
+	dir = 4;
+	id = "fuck_you_kendra";
+	name = "transport shuttle shutters"
+	},
+/turf/simulated/floor/dank/rectangles{
+	blocks_air = 1
+	},
+/area/shuttle/executive_shuttle)
 "ud" = (
 /obj/machinery/status_display{
 	pixel_y = -32
@@ -3583,14 +3894,102 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/ishimura/eva/prep/ADS)
+"us" = (
+/obj/item/stack/rods,
+/turf/simulated/floor/plating,
+/area/space)
 "uu" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled/techfloor,
 /area/ishimura/eva/airlock/ADS)
+"uE" = (
+/obj/structure/sign/warning/server_room{
+	dir = 4;
+	pixel_x = -35
+	},
+/obj/structure/barricade/wood,
+/turf/simulated/floor/dank,
+/area/ishimura/eva)
+"uL" = (
+/obj/structure/table/rack/dark,
+/obj/item/rig/scaf{
+	pixel_x = -6;
+	pixel_y = 5
+	},
+/obj/item/rig/security/pcsi/advanced{
+	pixel_x = 3;
+	pixel_y = 5
+	},
+/obj/item/rig/emergency{
+	pixel_x = 10;
+	pixel_y = 3
+	},
+/obj/item/rig/emergency{
+	pixel_x = 4
+	},
+/obj/item/clothing/mask/breath,
+/obj/item/clothing/mask/breath,
+/obj/item/clothing/mask/breath,
+/obj/item/clothing/mask/breath,
+/obj/item/tank/oxygen/yellow,
+/obj/item/tank/oxygen/yellow,
+/obj/item/tank/oxygen/yellow,
+/obj/item/tank/oxygen/yellow,
+/turf/simulated/floor/dank/slides{
+	dir = 1
+	},
+/area/shuttle/executive_shuttle)
+"uN" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/structure/bed/chair/comfy{
+	dir = 4;
+	icon_state = "comfychair_preview"
+	},
+/obj/effect/landmark/start{
+	name = "Chief Science Officer"
+	},
+/turf/simulated/floor/dank/slides{
+	dir = 1
+	},
+/area/shuttle/executive_shuttle)
+"uO" = (
+/turf/simulated/shuttle/wall{
+	icon_state = "diagonalWall3"
+	},
+/area/shuttle/executive_shuttle)
+"vi" = (
+/obj/structure/girder/displaced,
+/obj/item/stack/rods,
+/turf/space,
+/area/space)
+"vm" = (
+/obj/structure/bed/chair/comfy{
+	dir = 8;
+	icon_state = "comfychair_preview"
+	},
+/obj/effect/landmark/start{
+	name = "Senior Medical Officer"
+	},
+/turf/simulated/floor/dank/slides,
+/area/shuttle/executive_shuttle)
+"vt" = (
+/obj/effect/landmark/start{
+	name = "Cargo Serviceman"
+	},
+/turf/simulated/floor/dank/maint,
+/area/shuttle/executive_shuttle)
+"vR" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/structure/bed/chair/comfy,
+/turf/simulated/floor/dank/maint_right,
+/area/shuttle/executive_shuttle)
 "wC" = (
-/obj/effect/necrohatch,
-/turf/simulated/floor/reinforced,
-/area/necrospawn/ads/channel_port)
+/turf/simulated/floor/plating/under,
+/area/space)
 "wF" = (
 /obj/effect/floor_decal/industrial/warning/full,
 /obj/structure/closet/walllocker/emerglocker/north,
@@ -3614,13 +4013,48 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/ishimura/external/channel/second)
+"wY" = (
+/obj/structure/closet/secure_closet/guncabinet/military{
+	req_access = list()
+	},
+/obj/item/gun/projectile/automatic/bullpup,
+/obj/item/gun/projectile/automatic/bullpup,
+/obj/item/ammo_magazine/bullpup,
+/obj/item/ammo_magazine/bullpup,
+/obj/item/ammo_magazine/bullpup,
+/obj/item/ammo_magazine/bullpup,
+/obj/item/ammo_magazine/bullpup,
+/obj/item/ammo_magazine/bullpup,
+/obj/item/ammo_magazine/bullpup,
+/obj/item/ammo_magazine/bullpup,
+/obj/item/ammo_magazine/bullpup,
+/obj/item/ammo_magazine/bullpup,
+/turf/simulated/floor/dank/tech{
+	dir = 1
+	},
+/area/shuttle/executive_shuttle)
+"xo" = (
+/obj/item/stack/material/plasteel,
+/turf/simulated/floor/plating/under,
+/area/space)
 "xr" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/reinforced,
 /area/space)
-"xH" = (
+"xs" = (
+/obj/structure/bed/chair/comfy,
+/turf/simulated/floor/dank/slides_end,
+/area/shuttle/executive_shuttle)
+"xI" = (
+/obj/item/stack/rods,
 /turf/simulated/floor/reinforced,
-/area/ishimura/hull)
+/area/ishimura/external/channel/second)
+"xY" = (
+/obj/machinery/door/airlock/hatch{
+	name = "\improper Executive Shuttle Controls"
+	},
+/turf/simulated/floor/dank/maint,
+/area/shuttle/executive_shuttle)
 "yd" = (
 /obj/effect/floor_decal/industrial/warning/full,
 /obj/machinery/embedded_controller/radio/airlock/airlock_controller{
@@ -3638,12 +4072,48 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ishimura/eva/airlock/ADS)
+"yB" = (
+/obj/machinery/button/remote/blast_door{
+	id = "nicolebestwaifu";
+	name = "Shuttle Window shutters"
+	},
+/obj/structure/table/steel_reinforced,
+/turf/simulated/floor/dank/slides,
+/area/shuttle/executive_shuttle)
+"yC" = (
+/obj/machinery/power/apc{
+	dir = 8;
+	name = "west bump";
+	pixel_x = -24;
+	storm_protected = 1
+	},
+/obj/structure/bed/chair/comfy,
+/obj/effect/landmark/start{
+	name = "Bartender"
+	},
+/turf/simulated/floor/dank/slides_end{
+	dir = 1
+	},
+/area/shuttle/executive_shuttle)
 "yX" = (
 /obj/item/radio/intercom{
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/dark,
 /area/ishimura/eva/prep/ADS)
+"zx" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/item/ammo_casing/shotgun/pellet{
+	pixel_x = -6;
+	pixel_y = 3
+	},
+/obj/item/ammo_casing/shotgun/pellet,
+/obj/item/ammo_casing/shotgun/pellet{
+	pixel_x = 3;
+	pixel_y = 9
+	},
+/turf/simulated/floor/tiled/dark,
+/area/ishimura/eva/prep)
 "Av" = (
 /obj/structure/closet/walllocker/emerglocker/north,
 /obj/effect/floor_decal/industrial/warning/full,
@@ -3657,6 +4127,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ishimura/eva/airlock/ADS)
+"AQ" = (
+/obj/item/stack/material/plasteel,
+/turf/simulated/floor/reinforced,
+/area/ishimura/external/channel/first)
 "AR" = (
 /turf/simulated/floor/reinforced,
 /area/ishimura/external/channel/first)
@@ -3664,9 +4138,28 @@
 /obj/machinery/store,
 /turf/simulated/floor/plating,
 /area/ishimura/eva/substation/transfer)
+"Br" = (
+/obj/structure/girder/displaced,
+/turf/simulated/floor/plating,
+/area/ishimura/external/channel/second)
 "Bv" = (
 /turf/simulated/wall,
 /area/ishimura/eva/prep/ADS)
+"Bz" = (
+/obj/item/stack/material/steel,
+/turf/simulated/floor/reinforced,
+/area/ishimura/external/channel/first)
+"BQ" = (
+/obj/structure/bed/chair/shuttle,
+/turf/simulated/floor/dank/maint_left,
+/area/shuttle/executive_shuttle)
+"Cc" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/structure/barricade/wood,
+/turf/simulated/floor/dank,
+/area/ishimura/eva)
 "Cj" = (
 /obj/effect/floor_decal/industrial/warning/full,
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
@@ -3676,6 +4169,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ishimura/eva/airlock/ADS)
+"CN" = (
+/obj/item/beartrap/makeshift/armed{
+	icon_state = "sawtrap1"
+	},
+/turf/simulated/floor/dank,
+/area/ishimura/eva)
 "CU" = (
 /turf/simulated/wall/r_wall/hull,
 /area/ishimura/external/channel/second)
@@ -3695,9 +4194,45 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/ishimura/eva/solar/port)
+"EQ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/effect/catwalk_plated/dank,
+/obj/item/stack/material/wood,
+/turf/simulated/floor/plating,
+/area/ishimura/eva)
 "EV" = (
 /turf/simulated/wall/r_wall/hull,
 /area/ishimura/eva/ADS)
+"Fw" = (
+/obj/structure/cable/orange{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/effect/catwalk_plated/dank,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/item/beartrap/makeshift/armed{
+	icon_state = "sawtrap1"
+	},
+/turf/simulated/floor/plating,
+/area/ishimura/eva)
+"FM" = (
+/obj/effect/landmark/start{
+	name = "Chief Engineer"
+	},
+/turf/simulated/floor/dank/tech{
+	dir = 1
+	},
+/area/shuttle/executive_shuttle)
 "FW" = (
 /obj/machinery/access_button{
 	command = "cycle_exterior";
@@ -3707,6 +4242,33 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/ishimura/external/channel/second)
+"FZ" = (
+/turf/unsimulated/wall{
+	desc = "An inflated membrane. This one is puncture-resistant!";
+	hitsound = null;
+	icon = 'icons/obj/inflatable.dmi';
+	icon_state = "wall";
+	name = "inflatable wall"
+	},
+/area/shuttle/executive_shuttle)
+"Gm" = (
+/obj/effect/landmark/start{
+	name = "Senior Security Officer"
+	},
+/turf/simulated/floor/dank/maint,
+/area/shuttle/executive_shuttle)
+"Go" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/dank/slides,
+/area/shuttle/executive_shuttle)
+"GG" = (
+/obj/effect/landmark/start{
+	name = "Technical Engineer"
+	},
+/turf/simulated/floor/dank/maint_left,
+/area/shuttle/executive_shuttle)
 "GM" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 1
@@ -3719,6 +4281,51 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/ishimura/eva/prep/ADS)
+"HB" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/effect/landmark/start{
+	name = "Chief Security Officer"
+	},
+/turf/simulated/floor/dank/tech,
+/area/shuttle/executive_shuttle)
+"HE" = (
+/obj/item/gun/projectile/rivet{
+	color = "#9c8686";
+	desc = "The 711-MarkCL Rivet Gun remains dependable in the modern age, capable of repairing machinery from safe distances, but you suspect this one has a not-impossible chance of jamming when in use.";
+	jam_chance = 20;
+	name = "rusted 711-MarkCL Rivet Gun";
+	pixel_x = -8
+	},
+/turf/simulated/floor/reinforced,
+/area/ishimura/external/channel/second)
+"HK" = (
+/obj/structure/bed/chair/shuttle,
+/turf/simulated/floor/dank/maint,
+/area/shuttle/executive_shuttle)
+"HP" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/effect/catwalk_plated/dank,
+/obj/item/beartrap/makeshift/armed{
+	icon_state = "sawtrap1"
+	},
+/turf/simulated/floor/plating,
+/area/ishimura/eva)
+"Ia" = (
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/dank,
+/area/ishimura/eva)
+"Ib" = (
+/obj/item/modular_computer/console/preset/command{
+	dir = 1
+	},
+/obj/item/modular_computer/console/preset/command{
+	dir = 1
+	},
+/turf/simulated/floor/dank/grater,
+/area/shuttle/executive_shuttle)
 "Ii" = (
 /obj/machinery/floodlight/on,
 /obj/structure/window/reinforced{
@@ -3734,8 +4341,27 @@
 /turf/simulated/floor/reinforced,
 /area/ishimura/external/channel/first)
 "IC" = (
-/turf/simulated/floor/reinforced,
-/area/necrospawn/ads/channel_starboard)
+/obj/item/stack/material/plasteel,
+/obj/item/stack/rods,
+/turf/space,
+/area/space)
+"Jo" = (
+/obj/effect/landmark/start{
+	name = "First Lieutenant"
+	},
+/turf/simulated/floor/dank/slides{
+	dir = 1
+	},
+/area/shuttle/executive_shuttle)
+"JP" = (
+/obj/structure/table/standard,
+/obj/item/ammo_magazine/rivet,
+/obj/item/ammo_magazine/rivet{
+	pixel_x = -4;
+	pixel_y = 7
+	},
+/turf/simulated/floor/dank/mono,
+/area/ishimura/eva)
 "JS" = (
 /obj/machinery/camera/network/engineering{
 	dir = 1
@@ -3745,16 +4371,86 @@
 	},
 /turf/simulated/floor/dank/mono,
 /area/ishimura/eva/ADS)
+"JT" = (
+/obj/effect/wallframe_spawn/reinforced/shuttle,
+/obj/machinery/door/blast/shutters{
+	id = "nicolebestwaifu"
+	},
+/turf/simulated/floor/dank/mono,
+/area/shuttle/executive_shuttle)
 "Ku" = (
 /turf/simulated/floor/reinforced,
 /area/ishimura/eva/solar/port)
+"Kz" = (
+/obj/item/modular_computer/console/preset/security{
+	dir = 1
+	},
+/turf/simulated/floor/dank/grater,
+/area/shuttle/executive_shuttle)
+"KD" = (
+/obj/machinery/light/small,
+/obj/structure/table/rack/dark,
+/obj/item/rig/mining{
+	pixel_x = -7;
+	pixel_y = 5
+	},
+/obj/item/rig/mining{
+	pixel_x = -1;
+	pixel_y = 6
+	},
+/obj/item/rig/mining{
+	pixel_x = 7;
+	pixel_y = 5
+	},
+/obj/item/clothing/mask/breath,
+/obj/item/clothing/mask/breath,
+/obj/item/clothing/mask/breath,
+/obj/item/clothing/mask/breath,
+/obj/item/tank/oxygen/yellow,
+/obj/item/tank/oxygen/yellow,
+/obj/item/tank/oxygen/yellow,
+/obj/item/tank/oxygen/yellow,
+/turf/simulated/floor/dank/maint_right,
+/area/shuttle/executive_shuttle)
+"KN" = (
+/obj/structure/girder/reinforced,
+/turf/simulated/floor/plating/under,
+/area/space)
 "Lp" = (
-/obj/effect/necrohatch,
+/obj/structure/girder/displaced,
+/turf/space,
+/area/space)
+"Ly" = (
+/obj/item/stack/material/steel,
 /turf/simulated/floor/reinforced,
-/area/necrospawn/ads/cannon_housing)
+/area/ishimura/external/channel/second)
 "Lz" = (
 /turf/simulated/wall,
 /area/ishimura/eva/airlock/ADS)
+"Me" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/gun/energy/contact{
+	burst = 3;
+	cell_type = /obj/item/cell/infinite;
+	charge_cost = 0;
+	charge_projectile_type = /obj/item/projectile/beam/cutter/plasma;
+	desc = "A modified C99 Supercollider Contact Beam, this beast of a weapon makes use of an esoteric charging mechanism that grants it unlimited energy, but limits the strength of the projectiles, resulting in the tool instead firing off plasma cutter-like blasts. Nonetheless requires charging for each attack. The repulse thumper module has been entirely stripped out to fit a rotator cuff to the front end.";
+	fire_delay = 40;
+	firemodes = list("mode_name"="charge beam","mode_type"=/datum/firemode/contact_beam,"fire_delay"=7);
+	max_shots = 9999;
+	name = "DL18 Ferromagnetic Plasma Cannon";
+	pixel_x = -20;
+	pixel_y = 8;
+	removeable_cell = 0;
+	require_aiming = 0
+	},
+/turf/simulated/floor/dank/tech{
+	dir = 1
+	},
+/area/shuttle/executive_shuttle)
+"MC" = (
+/turf/simulated/floor/plating/under,
+/area/ishimura/external/channel/second)
 "MH" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/structure/cable/yellow{
@@ -3770,6 +4466,34 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/ishimura/eva/solar/port)
+"MX" = (
+/obj/structure/closet/secure_closet/guncabinet/military{
+	req_access = list()
+	},
+/obj/item/gun/projectile/automatic/bullpup,
+/obj/item/gun/projectile/automatic/bullpup,
+/obj/item/ammo_magazine/bullpup,
+/obj/item/ammo_magazine/bullpup,
+/obj/item/ammo_magazine/bullpup,
+/obj/item/ammo_magazine/bullpup,
+/obj/item/ammo_magazine/bullpup,
+/obj/item/ammo_magazine/bullpup,
+/obj/item/ammo_magazine/bullpup,
+/obj/item/ammo_magazine/bullpup,
+/obj/item/ammo_magazine/bullpup,
+/obj/item/ammo_magazine/bullpup,
+/turf/simulated/floor/dank/tech,
+/area/shuttle/executive_shuttle)
+"Oc" = (
+/obj/effect/landmark/start{
+	name = "Janitor"
+	},
+/turf/simulated/floor/dank/maint_left,
+/area/shuttle/executive_shuttle)
+"OA" = (
+/obj/item/ammo_magazine/rivet,
+/turf/simulated/floor/plating,
+/area/space)
 "OQ" = (
 /turf/simulated/wall/r_wall/hull,
 /area/ishimura/external/channel/first)
@@ -3783,10 +4507,58 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/ishimura/eva/prep/ADS)
+"OT" = (
+/obj/structure/girder/displaced,
+/obj/item/stack/material/plasteel,
+/turf/space,
+/area/space)
+"Pg" = (
+/obj/item/stack/material/plasteel,
+/turf/simulated/floor/plating,
+/area/space)
+"Pn" = (
+/obj/effect/landmark/start{
+	name = "Medical Doctor"
+	},
+/turf/simulated/floor/dank/maint,
+/area/shuttle/executive_shuttle)
+"Pp" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/clothing/head/helmet/space/unitologist/deacon{
+	desc = "A mechanical helmet taken off of an older model EDF marine RIG, stripped of mechanical parts and fitted with a new vacuum seal. You feel like you'd rather wear the real thing, but in an age of irreparable electronics, this helmet gets the job done.";
+	icon_state = "adv_soldier_dark_sealed";
+	name = "refitted edf helmet";
+	pixel_x = -2;
+	pixel_y = 2
+	},
+/obj/item/storage/briefcase/inflatable,
+/obj/item/storage/briefcase/inflatable,
+/obj/item/inflatable_dispenser,
+/turf/simulated/floor/dank/slides{
+	dir = 1
+	},
+/area/shuttle/executive_shuttle)
 "Pr" = (
 /obj/structure/closet/medical_wall/filled,
 /turf/simulated/wall,
 /area/ishimura/eva/substation/transfer)
+"PB" = (
+/obj/structure/girder/reinforced,
+/turf/simulated/floor/plating,
+/area/space)
+"PI" = (
+/obj/item/stack/material/steel,
+/turf/simulated/floor/plating,
+/area/ishimura/external/channel/second)
+"PL" = (
+/obj/structure/closet/medical_wall/filled{
+	pixel_y = 32
+	},
+/obj/effect/landmark/start{
+	name = "Supply Officer"
+	},
+/turf/simulated/floor/dank/maint_right,
+/area/shuttle/executive_shuttle)
 "PU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -3797,6 +4569,10 @@
 /obj/structure/bed/chair,
 /turf/simulated/floor/plating,
 /area/ishimura/eva/substation/transfer)
+"Qc" = (
+/obj/machinery/store,
+/turf/simulated/floor/dank/maint,
+/area/shuttle/executive_shuttle)
 "Qg" = (
 /obj/effect/wallframe_spawn/reinforced,
 /obj/machinery/door/firedoor/border_only{
@@ -3809,6 +4585,20 @@
 /obj/random/loot/often/many,
 /turf/simulated/floor/plating,
 /area/ishimura/eva/substation/transfer)
+"QY" = (
+/obj/item/gun/projectile/rivet{
+	color = "#9c8686";
+	desc = "The 711-MarkCL Rivet Gun remains dependable in the modern age, capable of repairing machinery from safe distances, but you suspect this one has a not-impossible chance of jamming when in use.";
+	jam_chance = 20;
+	name = "rusted 711-MarkCL Rivet Gun";
+	pixel_x = -8
+	},
+/turf/simulated/floor/reinforced,
+/area/space)
+"Rk" = (
+/obj/item/ammo_magazine/rivet,
+/turf/simulated/floor/reinforced,
+/area/ishimura/external/channel/first)
 "RG" = (
 /obj/effect/floor_decal/industrial/warning/full,
 /obj/machinery/airlock_sensor{
@@ -3823,9 +4613,60 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ishimura/eva/airlock/ADS)
+"SB" = (
+/obj/item/stack/material/steel,
+/turf/simulated/floor/plating,
+/area/space)
+"SE" = (
+/turf/simulated/shuttle/wall{
+	dir = 8;
+	icon_state = "diagonalWall3"
+	},
+/area/shuttle/executive_shuttle)
+"SZ" = (
+/obj/effect/landmark/start{
+	name = "Planet Cracker"
+	},
+/turf/simulated/floor/dank/slides{
+	dir = 1
+	},
+/area/shuttle/executive_shuttle)
+"Tj" = (
+/obj/machinery/computer/shuttle_control/repairable{
+	dir = 1
+	},
+/turf/simulated/floor/dank/grater,
+/area/shuttle/executive_shuttle)
+"Tv" = (
+/obj/effect/landmark/start{
+	name = "Line Cook"
+	},
+/turf/simulated/floor/dank/maint,
+/area/shuttle/executive_shuttle)
+"Ty" = (
+/obj/effect/shuttle_landmark/escape_fix/start,
+/turf/simulated/shuttle/wall{
+	dir = 1;
+	icon_state = "wall3"
+	},
+/area/shuttle/executive_shuttle)
+"Tz" = (
+/obj/structure/girder/reinforced,
+/obj/item/stack/material/steel,
+/turf/simulated/floor/plating,
+/area/space)
+"TF" = (
+/turf/simulated/floor/plating,
+/area/ishimura/hull)
 "TG" = (
 /turf/simulated/floor/tiled/techmaint,
 /area/ishimura/eva/ADS)
+"Ua" = (
+/obj/structure/shuttle/engine/propulsion{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/executive_shuttle)
 "Ud" = (
 /obj/machinery/light,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -3835,9 +4676,34 @@
 /obj/machinery/portable_atmospherics/canister/air/airlock,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/eva/prep/ADS)
+"Ul" = (
+/obj/structure/girder/reinforced,
+/obj/item/stack/rods,
+/turf/simulated/floor/plating/under,
+/area/space)
+"UB" = (
+/obj/structure/girder/displaced,
+/turf/simulated/floor/plating/under,
+/area/space)
 "UC" = (
 /turf/simulated/wall/r_wall/hull,
 /area/ishimura/hull)
+"UI" = (
+/obj/item/stack/material/plasteel,
+/turf/simulated/floor/reinforced,
+/area/ishimura/external/channel/second)
+"UK" = (
+/obj/item/stack/rods,
+/turf/simulated/floor/plating/under,
+/area/space)
+"US" = (
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/reinforced,
+/area/space)
+"Vs" = (
+/obj/item/stack/rods,
+/turf/simulated/floor/plating,
+/area/ishimura/external/channel/second)
 "WD" = (
 /obj/structure/wall_frame/hull,
 /turf/simulated/floor/reinforced,
@@ -3851,6 +4717,14 @@
 	},
 /turf/simulated/floor/dank/mono,
 /area/ishimura/eva/ADS)
+"Xj" = (
+/obj/structure/inflatable/door{
+	desc = "An inflated membrane. This one is puncture-resistant!";
+	health = 99999;
+	max_health = 99999
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/executive_shuttle)
 "Xp" = (
 /obj/structure/sign/warning/bomb_range{
 	name = "\improper ASTEROID DEFENSE GUN";
@@ -3858,10 +4732,41 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/ishimura/external/channel/second)
+"Xu" = (
+/obj/machinery/light/small,
+/obj/structure/table/rack/dark,
+/obj/item/rig/emergency{
+	pixel_y = 6
+	},
+/obj/item/rig/vintage/heavy{
+	pixel_x = 5;
+	pixel_y = 3
+	},
+/obj/item/rig/special_forces{
+	pixel_x = -5;
+	pixel_y = 4
+	},
+/obj/item/clothing/mask/breath,
+/obj/item/clothing/mask/breath,
+/obj/item/clothing/mask/breath,
+/obj/item/clothing/mask/breath,
+/obj/item/tank/oxygen/yellow,
+/obj/item/tank/oxygen/yellow,
+/obj/item/tank/oxygen/yellow,
+/obj/item/tank/oxygen/yellow,
+/turf/simulated/floor/dank/maint_left,
+/area/shuttle/executive_shuttle)
 "XJ" = (
 /obj/structure/wall_frame/hull,
 /turf/simulated/floor/reinforced,
 /area/ishimura/external/channel/first)
+"XV" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 1
+	},
+/obj/structure/window/reinforced,
+/turf/simulated/floor/plating,
+/area/shuttle/executive_shuttle)
 "Yg" = (
 /obj/machinery/floodlight/on,
 /obj/structure/window/reinforced{
@@ -3877,6 +4782,23 @@
 "YJ" = (
 /turf/simulated/wall/r_wall/hull,
 /area/ishimura/eva)
+"YU" = (
+/obj/structure/girder/reinforced,
+/obj/item/stack/material/plasteel,
+/turf/simulated/floor/plating/under,
+/area/space)
+"Zd" = (
+/obj/effect/landmark/start{
+	name = "Bridge Officer"
+	},
+/turf/simulated/floor/dank/slides{
+	dir = 1
+	},
+/area/shuttle/executive_shuttle)
+"Zp" = (
+/obj/structure/girder/reinforced,
+/turf/simulated/floor/plating,
+/area/ishimura/external/channel/second)
 "Zv" = (
 /obj/machinery/door/airlock/external{
 	dir = 4;
@@ -8274,44 +9196,44 @@ aa
 aa
 aa
 aa
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
 aa
 aa
 aa
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-aa
-aa
-aa
-aa
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 aa
 aa
 aa
 aa
-xH
-xH
-xH
-xH
-xH
-xH
-xH
 aa
 aa
 aa
-xH
-xH
-xH
-xH
-xH
+aa
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+aa
+aa
+aa
+ai
+ai
+ai
+ai
+ai
 aa
 aa
 aa
@@ -8525,22 +9447,22 @@ aa
 aa
 aa
 aa
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 aa
 aa
 aa
@@ -8549,21 +9471,21 @@ aa
 aa
 aa
 aa
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 aj
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
 aa
 aa
 aa
@@ -8777,21 +9699,21 @@ aa
 aa
 aa
 aa
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 aa
 aa
 aa
@@ -8802,21 +9724,21 @@ aa
 aa
 aa
 aa
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 aa
 aa
 aa
@@ -9029,21 +9951,21 @@ aa
 aa
 aa
 aa
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 aa
 aa
 aa
@@ -9054,21 +9976,21 @@ aa
 aa
 aa
 aa
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 aa
 aa
 aa
@@ -9281,21 +10203,21 @@ aa
 aa
 aa
 aa
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 aa
 aa
 aa
@@ -9306,21 +10228,21 @@ aa
 aa
 aa
 aa
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 aa
 aa
 aa
@@ -9533,21 +10455,21 @@ aa
 aa
 aa
 aa
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 aa
 aa
 aa
@@ -9558,21 +10480,21 @@ aa
 aa
 aa
 aa
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 aa
 aa
 aa
@@ -9785,22 +10707,22 @@ aa
 aa
 aa
 aa
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 aa
 aa
 aa
@@ -9809,22 +10731,22 @@ aa
 aa
 aa
 aa
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 aa
 aa
 aa
@@ -10037,46 +10959,46 @@ aa
 aa
 aa
 aa
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 aa
 aa
 aa
@@ -10289,46 +11211,46 @@ aa
 aa
 aa
 aa
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 aa
 aa
 aa
@@ -10541,46 +11463,46 @@ aa
 aa
 aa
 aa
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 aa
 aa
 aa
@@ -10793,46 +11715,46 @@ aa
 aa
 aa
 aa
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 aa
 aa
 aa
@@ -11045,46 +11967,46 @@ aa
 aa
 aa
 aa
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 aa
 aa
 aa
@@ -11297,46 +12219,46 @@ aa
 aa
 aa
 aa
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 aa
 aa
 aa
@@ -11549,46 +12471,46 @@ aa
 aa
 aa
 aa
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 aa
 aa
 aa
@@ -11801,46 +12723,46 @@ aa
 aa
 aa
 aa
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 aa
 aa
 aa
@@ -12053,46 +12975,46 @@ aa
 aa
 aa
 aa
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 aa
 aa
 aa
@@ -12306,44 +13228,44 @@ aa
 aa
 aa
 aa
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 aa
 aa
 aa
@@ -12558,44 +13480,44 @@ aa
 aa
 aa
 aa
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 aa
 aa
 aa
@@ -12810,31 +13732,31 @@ aa
 aa
 aa
 aa
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 ai
 ai
 ai
@@ -13062,31 +13984,31 @@ aa
 aa
 aa
 aa
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
 ao
 ao
 ao
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 ai
 ai
 ai
@@ -13313,32 +14235,32 @@ aa
 aa
 aa
 aa
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
 aS
 bD
 fM
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 ai
 ai
 ai
@@ -13565,32 +14487,32 @@ aa
 aa
 aa
 aa
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
 af
 aX
 fl
 fN
 fG
 fP
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 ai
 ai
 ai
@@ -13811,38 +14733,38 @@ aa
 aa
 aa
 aa
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 at
 ao
 ao
 ao
-xH
+ai
 fQ
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 YJ
 YJ
 YJ
 YJ
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
 ai
 ai
 ai
@@ -14063,26 +14985,26 @@ aa
 aa
 aa
 aa
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 at
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
 fQ
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
 YJ
 YJ
 YJ
@@ -14315,26 +15237,26 @@ aa
 aa
 aa
 aa
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 at
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
 fQ
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
 YJ
 aw
 aw
@@ -14567,26 +15489,26 @@ aa
 aa
 aa
 aa
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 at
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
 fQ
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
 YJ
 aw
 aw
@@ -14819,26 +15741,26 @@ aa
 aa
 aa
 aa
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 at
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
 fQ
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
 YJ
 aw
 aw
@@ -15071,14 +15993,14 @@ aa
 aa
 aa
 aa
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 az
 aI
 aR
@@ -15087,10 +16009,10 @@ fG
 fG
 fG
 fR
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
 YJ
 aw
 aw
@@ -15323,26 +16245,26 @@ aa
 aa
 aa
 aa
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 ar
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 YJ
 aw
 aw
@@ -15575,16 +16497,16 @@ aa
 aa
 aa
 aa
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 ar
-xH
+ai
 YJ
 YJ
 YJ
@@ -15827,16 +16749,16 @@ aa
 aa
 aa
 aa
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 ar
-xH
+ai
 YJ
 aw
 aw
@@ -15850,7 +16772,7 @@ aw
 aw
 aw
 aw
-dh
+uE
 bX
 es
 es
@@ -16079,16 +17001,16 @@ aa
 aa
 aa
 aa
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 ar
-xH
+ai
 YJ
 aw
 aB
@@ -16102,10 +17024,10 @@ bX
 aC
 cG
 cZ
-aC
+nJ
 dv
 dK
-dK
+JP
 er
 aC
 aB
@@ -16329,18 +17251,18 @@ aa
 aa
 aa
 aa
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 ar
-xH
+ai
 YJ
 aw
 do
@@ -16351,11 +17273,11 @@ aC
 bI
 aC
 aC
-aC
+sm
 cI
 aC
-aC
-aC
+nJ
+sm
 dL
 dL
 aC
@@ -16581,18 +17503,18 @@ aa
 aa
 aa
 aa
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 ar
-xH
+ai
 YJ
 aw
 aD
@@ -16606,11 +17528,11 @@ bM
 bM
 cJ
 bM
-bM
-bM
+EQ
+HP
 dM
 aC
-aC
+Ia
 aC
 eP
 aw
@@ -16833,18 +17755,18 @@ aa
 aa
 aa
 aa
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 ar
-xH
+ai
 YJ
 aw
 do
@@ -16854,12 +17776,12 @@ bs
 aC
 bI
 aC
-aC
+CN
 aC
 cK
 aC
-aC
-aC
+sm
+sm
 dN
 aC
 aC
@@ -17085,18 +18007,18 @@ aa
 aa
 aa
 aa
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 ar
-xH
+ai
 YJ
 aw
 aJ
@@ -17110,8 +18032,8 @@ bY
 co
 cL
 da
-aC
-aC
+nJ
+nJ
 dN
 aC
 aC
@@ -17337,18 +18259,18 @@ aa
 aa
 aa
 aa
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 ar
-xH
+ai
 YJ
 aw
 aw
@@ -17362,7 +18284,7 @@ aw
 dO
 dO
 aw
-do
+Cc
 aC
 dN
 aC
@@ -17589,18 +18511,18 @@ aa
 aa
 aa
 aa
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 ar
-xH
+ai
 YJ
 YJ
 YJ
@@ -17841,24 +18763,24 @@ aa
 aa
 aa
 aa
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 ar
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 YJ
 bK
 dj
@@ -17869,7 +18791,7 @@ bK
 iv
 aC
 fe
-aC
+CN
 dL
 eF
 aw
@@ -18093,24 +19015,24 @@ aa
 aa
 aa
 aa
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 ar
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 YJ
 bK
 bO
@@ -18345,24 +19267,24 @@ aa
 aa
 aa
 aa
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 ar
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 YJ
 bK
 bP
@@ -18597,24 +19519,24 @@ aa
 aa
 aa
 aa
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 ar
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 YJ
 bK
 bQ
@@ -18849,24 +19771,24 @@ aa
 aa
 aa
 aa
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 ar
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 YJ
 bK
 bR
@@ -19101,24 +20023,24 @@ aa
 aa
 aa
 aa
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 ar
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 YJ
 bL
 bS
@@ -19128,7 +20050,7 @@ cQ
 bL
 do
 aC
-dQ
+Fw
 aC
 aC
 eJ
@@ -19353,16 +20275,16 @@ aa
 aa
 aa
 aa
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 aE
 aI
 aI
@@ -19370,7 +20292,7 @@ aI
 aI
 aI
 aF
-xH
+ai
 YJ
 bL
 bT
@@ -19605,24 +20527,24 @@ aa
 aa
 aa
 aa
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 ag
 ar
-xH
+ai
 YJ
 bL
 bV
@@ -19857,21 +20779,21 @@ aa
 aa
 aa
 aa
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 aT
 aG
 aT
@@ -20109,18 +21031,18 @@ aa
 aa
 aa
 aa
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 ao
 ao
 ao
@@ -20361,18 +21283,18 @@ aa
 aa
 aa
 aa
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 ao
 ax
 ax
@@ -20613,18 +21535,18 @@ aa
 aa
 aa
 aa
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 ao
 ax
 aK
@@ -20866,17 +21788,17 @@ aa
 aa
 aa
 aa
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
-xH
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 ao
 ax
 aL
@@ -21140,7 +22062,7 @@ fI
 bL
 cn
 cD
-cW
+zx
 de
 dq
 dD
@@ -22407,8 +23329,8 @@ ai
 bn
 xr
 ai
-ai
-ai
+US
+qJ
 ai
 ai
 ai
@@ -22659,7 +23581,7 @@ fj
 fk
 xr
 ai
-ai
+QY
 ai
 ai
 ai
@@ -22913,7 +23835,7 @@ xr
 ai
 ai
 ai
-ai
+qJ
 ai
 ai
 ai
@@ -23916,7 +24838,7 @@ ai
 ai
 ai
 ai
-cx
+lW
 xr
 ai
 ai
@@ -34238,12 +35160,12 @@ eA
 cq
 ai
 UC
-gU
-gU
-gU
-gU
-gU
-gU
+UC
+UC
+UC
+UC
+UC
+UC
 OQ
 OQ
 OQ
@@ -34253,12 +35175,12 @@ AR
 OQ
 OQ
 OQ
-lg
-lg
-lg
-lg
-lg
-lg
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -34490,12 +35412,12 @@ ai
 cq
 ai
 UC
-gU
-gV
-gV
-gV
-gV
-gU
+UC
+UC
+UC
+UC
+UC
+UC
 Ii
 AR
 AR
@@ -34505,12 +35427,12 @@ AR
 AR
 AR
 Yg
-lg
-IC
-IC
-IC
-IC
-lg
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -34742,12 +35664,12 @@ ai
 cq
 ai
 UC
-gU
-gV
-gV
-gV
-wC
-gU
+UC
+UC
+UC
+UC
+UC
+UC
 OQ
 AR
 AR
@@ -34757,12 +35679,12 @@ AR
 AR
 AR
 OQ
-lg
-sF
-IC
-IC
-IC
-lg
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -34994,12 +35916,12 @@ ai
 cq
 ai
 UC
-gU
-gV
-gV
-gV
-gV
-gU
+UC
+UC
+UC
+UC
+UC
+UC
 OQ
 AR
 AR
@@ -35009,12 +35931,12 @@ AR
 AR
 AR
 OQ
-lg
-IC
-IC
-IC
-IC
-lg
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -35246,12 +36168,12 @@ fy
 cq
 ai
 UC
-gU
-gV
-gV
-gV
-gV
-gU
+UC
+UC
+UC
+UC
+UC
+UC
 OQ
 AR
 OQ
@@ -35261,12 +36183,12 @@ AR
 AR
 AR
 OQ
-lg
-IC
-IC
-IC
-IC
-lg
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -35471,6 +36393,7 @@ aa
 aa
 aa
 aa
+IC
 aa
 aa
 aa
@@ -35479,8 +36402,7 @@ aa
 aa
 aa
 aa
-aa
-aa
+Lp
 aa
 aa
 aa
@@ -35498,12 +36420,12 @@ eq
 fz
 eq
 eq
-gU
-gV
-gV
-gV
-gV
-gU
+UC
+UC
+UC
+UC
+UC
+UC
 OQ
 AR
 AR
@@ -35513,12 +36435,12 @@ AR
 AR
 AR
 OQ
-lg
-IC
-IC
-IC
-IC
-lg
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -35750,12 +36672,12 @@ aq
 fA
 fF
 aq
-gU
-gV
-gV
-gV
-gV
-gU
+UC
+UC
+UC
+UC
+UC
+UC
 OQ
 AR
 AR
@@ -35765,12 +36687,12 @@ AR
 AR
 AR
 OQ
-lg
-IC
-IC
-IC
-IC
-lg
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -36002,12 +36924,12 @@ aq
 fB
 aq
 aq
-gU
-gV
-gV
-gV
-gV
-gU
+UC
+UC
+UC
+UC
+UC
+UC
 OQ
 AR
 AR
@@ -36017,12 +36939,12 @@ AR
 AR
 AR
 OQ
-lg
-IC
-IC
-IC
-IC
-lg
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -36221,13 +37143,13 @@ aa
 aa
 aa
 aa
+hu
 aa
 aa
 aa
 aa
 aa
-aa
-aa
+hu
 aa
 aa
 aa
@@ -36254,12 +37176,12 @@ ft
 fC
 fH
 aq
-gU
-gV
-gV
-gV
-gV
-gU
+UC
+UC
+UC
+UC
+UC
+UC
 Ii
 AR
 AR
@@ -36269,12 +37191,12 @@ XJ
 XJ
 AR
 Yg
-lg
-IC
-IC
-IC
-IC
-lg
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -36485,13 +37407,13 @@ aa
 aa
 aa
 aa
+vi
 aa
 aa
 aa
 aa
 aa
-aa
-aa
+sF
 aa
 aa
 aa
@@ -36506,12 +37428,12 @@ fu
 bi
 fJ
 aq
-gU
-gV
-gV
-gV
-wC
-gU
+UC
+UC
+UC
+UC
+UC
+UC
 OQ
 AR
 AR
@@ -36521,12 +37443,12 @@ AR
 AR
 AR
 OQ
-lg
-sF
-IC
-IC
-IC
-lg
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -36739,7 +37661,7 @@ aa
 aa
 aa
 aa
-aa
+Lp
 aa
 aa
 aa
@@ -36758,12 +37680,12 @@ fw
 fE
 fK
 aq
-gU
-gV
-gV
-gV
-gV
-gU
+UC
+UC
+UC
+UC
+UC
+UC
 OQ
 AR
 AR
@@ -36773,12 +37695,12 @@ AR
 AR
 AR
 OQ
-lg
-IC
-IC
-IC
-IC
-lg
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -36988,7 +37910,7 @@ aa
 aa
 aa
 aa
-aa
+hu
 aa
 aa
 aa
@@ -37010,12 +37932,12 @@ Ds
 Ds
 QV
 aq
-gU
-gV
-gV
-gV
-gV
-gU
+UC
+UC
+UC
+UC
+UC
+UC
 OQ
 AR
 AR
@@ -37025,12 +37947,12 @@ AR
 AR
 AR
 OQ
-lg
-IC
-IC
-IC
-IC
-lg
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -37241,12 +38163,12 @@ aa
 aa
 aa
 aa
+lg
 aa
 aa
 aa
 aa
-aa
-aa
+Lp
 aa
 aa
 aa
@@ -37262,12 +38184,12 @@ Ds
 PW
 QV
 aq
-gU
-gV
-gV
-gV
-gV
-gU
+UC
+UC
+UC
+UC
+UC
+UC
 OQ
 AR
 AR
@@ -37277,12 +38199,12 @@ OQ
 OQ
 AR
 OQ
-lg
-IC
-IC
-IC
-IC
-lg
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -37496,8 +38418,8 @@ aa
 aa
 aa
 aa
-aa
-aa
+Lp
+Lp
 aa
 aa
 aa
@@ -37514,12 +38436,12 @@ mj
 Ds
 QV
 aq
-gU
-gV
-gV
-gV
-gV
-gU
+UC
+UC
+UC
+UC
+UC
+UC
 OQ
 AR
 AR
@@ -37529,12 +38451,12 @@ AR
 AR
 AR
 OQ
-lg
-IC
-IC
-IC
-IC
-lg
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -37733,6 +38655,7 @@ aa
 aa
 aa
 aa
+lg
 aa
 aa
 aa
@@ -37741,16 +38664,15 @@ aa
 aa
 aa
 aa
+hu
 aa
 aa
 aa
 aa
 aa
+hu
 aa
-aa
-aa
-aa
-aa
+Lp
 aa
 aa
 aa
@@ -37766,12 +38688,12 @@ aq
 aq
 aq
 aq
-gU
-gV
-gV
-gV
-gV
-gU
+UC
+UC
+UC
+UC
+UC
+UC
 OQ
 AR
 AR
@@ -37781,12 +38703,12 @@ AR
 AR
 AR
 OQ
-lg
-IC
-IC
-IC
-IC
-lg
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -37998,7 +38920,7 @@ aa
 aa
 aa
 aa
-aa
+hu
 aa
 aa
 aa
@@ -38018,12 +38940,12 @@ UC
 UC
 UC
 UC
-gU
-gV
-gV
-gV
-gV
-gU
+UC
+UC
+UC
+UC
+UC
+UC
 Ii
 AR
 AR
@@ -38033,12 +38955,12 @@ AR
 AR
 AR
 Yg
-lg
-IC
-IC
-IC
-IC
-lg
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -38260,22 +39182,22 @@ aa
 aa
 aa
 aa
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
 gU
-gV
-gV
-gV
-wC
-gU
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 OQ
 AR
 XJ
@@ -38285,12 +39207,12 @@ AR
 AR
 AR
 OQ
-lg
-sF
-IC
-IC
-IC
-lg
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -38502,6 +39424,9 @@ aa
 aa
 aa
 aa
+hu
+aa
+sF
 aa
 aa
 aa
@@ -38509,9 +39434,7 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
+KN
 UC
 UC
 UC
@@ -38522,12 +39445,11 @@ UC
 UC
 UC
 UC
-gU
-gV
-gV
-gV
-gV
-gU
+UC
+UC
+UC
+UC
+UC
 OQ
 AR
 AR
@@ -38537,12 +39459,12 @@ AR
 AR
 AR
 OQ
-lg
-IC
-IC
-IC
-IC
-lg
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -38760,26 +39682,26 @@ aa
 aa
 aa
 aa
+Lp
 aa
 aa
 aa
-aa
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
 gU
-gV
-gV
-gV
-gV
-gU
+KN
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 OQ
 AR
 AR
@@ -38789,12 +39711,12 @@ AR
 AR
 AR
 OQ
-lg
-IC
-IC
-IC
-IC
-lg
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -39006,16 +39928,18 @@ aa
 aa
 aa
 aa
+lg
 aa
 aa
 aa
 aa
 aa
+Lp
 aa
+Lp
 aa
-aa
-aa
-aa
+us
+wC
 UC
 UC
 UC
@@ -39026,12 +39950,10 @@ UC
 UC
 UC
 UC
-gU
-gV
-gV
-gV
-gV
-gU
+UC
+UC
+UC
+UC
 OQ
 AR
 AR
@@ -39041,12 +39963,12 @@ AR
 AR
 AR
 OQ
-lg
-IC
-IC
-IC
-IC
-lg
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -39260,14 +40182,22 @@ aa
 aa
 aa
 aa
+Lp
 aa
 aa
 aa
 aa
+Lp
 aa
 aa
-aa
-aa
+wC
+PB
+wC
+UC
+UC
+wC
+KN
+KN
 UC
 UC
 UC
@@ -39276,14 +40206,6 @@ UC
 UC
 UC
 UC
-UC
-UC
-gU
-gV
-gV
-gV
-gV
-gU
 OQ
 AR
 OQ
@@ -39293,12 +40215,12 @@ AR
 AR
 AR
 OQ
-lg
-IC
-IC
-IC
-IC
-lg
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -39520,22 +40442,22 @@ aa
 aa
 aa
 aa
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
+xo
+wC
 gU
-gV
-gV
-gV
-gV
-gU
+rn
+wC
+wC
+KN
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 OQ
 AR
 AR
@@ -39545,12 +40467,12 @@ AR
 AR
 AR
 OQ
-lg
-IC
-IC
-IC
-IC
-lg
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -39762,6 +40684,7 @@ aa
 aa
 aa
 aa
+lg
 aa
 aa
 aa
@@ -39771,23 +40694,22 @@ aa
 aa
 aa
 aa
-aa
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
+KN
 gU
-gV
-gV
-gV
-gV
+wC
+KN
+PB
 gU
+wC
+KN
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 Ii
 AR
 AR
@@ -39797,12 +40719,12 @@ AR
 AR
 AR
 Yg
-lg
-IC
-IC
-IC
-IC
-lg
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -40015,31 +40937,31 @@ aa
 aa
 aa
 aa
+Lp
 aa
 aa
 aa
 aa
 aa
 aa
+lg
 aa
-aa
-aa
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-gU
-gV
-gV
-gV
 wC
 gU
+wC
+rn
+wC
+UB
+gU
+gU
+UB
+wC
+gU
+UC
+UC
+UC
+UC
+UC
 OQ
 AR
 AR
@@ -40049,12 +40971,12 @@ AR
 AR
 AR
 OQ
-lg
-sF
-IC
-IC
-IC
-lg
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -40270,28 +41192,28 @@ aa
 aa
 aa
 aa
+Lp
 aa
 aa
 aa
 aa
 aa
-aa
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
+wC
+KN
+wC
+wC
+pM
+wC
+KN
 gU
-gV
-gV
-gV
-gV
 gU
+KN
+UC
+UC
+UC
+UC
+UC
+UC
 OQ
 AR
 AR
@@ -40301,12 +41223,12 @@ XJ
 XJ
 AR
 OQ
-lg
-IC
-IC
-IC
-IC
-lg
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -40524,26 +41446,26 @@ aa
 aa
 aa
 aa
+hu
 aa
 aa
 aa
-aa
+wC
+wC
+KN
+xo
+us
+UK
+wC
+KN
+wC
+wC
+to
+wC
+KN
 UC
 UC
 UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-gU
-gV
-gV
-gV
-gV
-gU
 OQ
 AR
 AR
@@ -40553,12 +41475,12 @@ AR
 AR
 AR
 OQ
-lg
-IC
-IC
-IC
-IC
-lg
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -40777,40 +41699,40 @@ aa
 aa
 aa
 aa
+Lp
 aa
 aa
-aa
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
+wC
+Pg
+wC
+YU
+KN
+wC
+UK
 gU
-gV
-gV
-gV
-gV
-gU
+xo
+pM
+KN
+wC
+UB
+UC
+UC
+UC
 OQ
 AR
 AR
-AR
+AQ
 AR
 AR
 AR
 AR
 OQ
-lg
-IC
-IC
-IC
-IC
-lg
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -41032,37 +41954,37 @@ aa
 aa
 aa
 aa
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
+KN
+KN
+wC
+UB
 gU
-gV
-gV
-gV
-gV
+wC
+KN
+wC
+wC
 gU
+wC
+wC
+gU
+KN
+UC
+UC
 OQ
 AR
 AR
 AR
 AR
 AR
-AR
+Rk
 AR
 OQ
-lg
-IC
-IC
-IC
-IC
-lg
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -41284,22 +42206,22 @@ aa
 aa
 aa
 aa
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
+KN
+wC
+KN
+wC
+wC
+wC
+wC
+UK
+UB
+wC
+wC
+SB
+PB
+KN
 gU
-gV
-gV
-gV
-gV
-gU
+wC
 OQ
 AR
 AR
@@ -41309,12 +42231,12 @@ OQ
 OQ
 AR
 OQ
-lg
-IC
-IC
-IC
-IC
-lg
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -41536,37 +42458,37 @@ aa
 aa
 aa
 aa
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-gU
-gV
-gV
-gV
-gV
-gU
+wC
+wC
+wC
+wC
+SE
+tA
+tA
+tA
+uO
+wC
+wC
+xo
+wC
+wC
+KN
+PB
 Ii
 AR
 AR
 AR
-AR
+Bz
 AR
 AR
 AR
 Yg
-lg
-IC
-IC
-IC
-IC
-lg
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -41788,37 +42710,37 @@ aa
 aa
 aa
 aa
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-gU
-gV
-gV
-gV
+rn
+rn
+wC
+SE
+tA
+MX
+HB
+sk
+tA
+uO
 wC
 gU
+gU
+UK
+wC
+wC
+tf
+AR
+st
+AR
+AR
+AR
+AR
+AR
 OQ
-AR
-AR
-AR
-AR
-AR
-AR
-AR
-OQ
-lg
-sF
-IC
-IC
-IC
-lg
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -42040,37 +42962,37 @@ aa
 aa
 aa
 aa
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
+UK
+wC
+tA
+tA
+tA
+wY
+FM
+Me
+tA
+tA
+tA
+tA
+tA
+JT
 gU
-gV
-gV
-gV
-gV
 gU
+Zp
+iq
+jo
+iq
+iq
+sw
+iq
+iq
 CU
-iq
-iq
-iq
-iq
-iq
-iq
-iq
-CU
-lg
-IC
-IC
-IC
-IC
-lg
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -42292,37 +43214,37 @@ aa
 aa
 aa
 aa
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-gU
-gV
-gV
-gV
-gV
-gU
+wC
+Ua
+XV
+tA
+yC
+Zd
+Jo
+SZ
+uL
+tA
+dg
+uN
+Pp
+JT
+JT
+PB
+MC
+qD
+WD
+lY
+lY
+iq
+iq
+UI
 CU
-iq
-WD
-WD
-WD
-iq
-iq
-iq
-CU
-lg
-IC
-IC
-IC
-IC
-lg
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -42544,37 +43466,37 @@ aa
 aa
 aa
 aa
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-gU
-gV
-gV
-gV
-gV
-gU
+wC
+Ua
+XV
+tA
+hr
+tJ
+Oc
+mR
+Xu
+tA
+sM
+GG
+BQ
+Ib
+JT
+wC
+jS
+PI
+iq
+iq
+HE
+iq
+iq
+iq
 CU
-iq
-iq
-iq
-iq
-iq
-iq
-iq
-CU
-lg
-IC
-IC
-IC
-IC
-lg
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -42796,37 +43718,37 @@ aa
 aa
 aa
 aa
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-gU
-gV
-gV
-gV
-gV
-gU
+wC
+Ua
+XV
+tA
+Qc
+vt
+Tv
+sH
+Gm
+xY
+Pn
+ic
+HK
+Tj
+JT
+PB
+MC
+Br
+Vs
+UI
+iq
+Ly
+iq
+iq
 CU
-iq
-iq
-iq
-iq
-iq
-iq
-iq
-CU
-lg
-IC
-IC
-IC
-IC
-lg
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -43048,37 +43970,37 @@ aa
 aa
 aa
 aa
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-gU
-gV
-gV
-gV
-gV
-gU
+wC
+Ua
+XV
+tA
+vR
+pb
+pb
+pb
+KD
+tA
+PL
+rY
+lq
+Kz
+JT
+wC
+qD
+MC
+MC
+qD
+iq
+Ly
+iq
+iq
 CU
-iq
-iq
-iq
-iq
-iq
-iq
-iq
-CU
-lg
-IC
-IC
-IC
-IC
-lg
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -43300,37 +44222,37 @@ aa
 aa
 aa
 aa
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-gU
-gV
-gV
-gV
-gV
-gU
-wJ
-iq
-CU
+wC
+Ua
+XV
+tA
+xs
+rP
+rP
+Go
+nO
+tA
+vm
+hz
+yB
+JT
+JT
+PB
+MC
+xI
+Br
 CU
 CU
 iq
 iq
 iq
 ne
-lg
-IC
-IC
-IC
-IC
-lg
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -43552,37 +44474,37 @@ aa
 aa
 aa
 aa
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-gU
-gV
-gV
-gV
 wC
+wC
+Ty
+tA
+tA
+tY
+tY
+tA
+tA
+tA
+tA
+tA
+tA
+JT
 gU
+Pg
+qD
+jo
+iq
+iq
+iq
+iq
+Ly
+iq
 CU
-iq
-iq
-iq
-iq
-iq
-iq
-iq
-CU
-lg
-sF
-IC
-IC
-IC
-lg
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -43803,38 +44725,38 @@ aa
 aa
 aa
 aa
-aa
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-gU
-gV
-gV
-gV
-gV
-gU
+sF
+wC
+KN
+wC
+wC
+FZ
+nS
+nS
+FZ
+xo
+wC
+wC
+KN
+wC
+Ul
+rn
+OA
+Zp
+iq
+sw
+iq
+UI
+iq
+iq
+iq
 CU
-iq
-iq
-iq
-iq
-iq
-iq
-iq
-CU
-lg
-IC
-IC
-IC
-IC
-lg
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -44056,22 +44978,22 @@ aa
 aa
 aa
 aa
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
+KN
+wC
+PB
+UK
+FZ
+Xj
+Xj
+FZ
 gU
-gV
-gV
-gV
-gV
+KN
+rn
+wC
+xo
 gU
+wC
+PB
 CU
 iq
 iq
@@ -44081,12 +45003,12 @@ iq
 iq
 iq
 CU
-lg
-IC
-IC
-IC
-IC
-lg
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -44308,22 +45230,22 @@ aa
 aa
 aa
 aa
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
+wC
+wC
+Ul
+UB
+KN
+wC
+wC
+UK
 gU
-gV
-gV
-gV
-gV
+us
+KN
 gU
+KN
+TF
+UC
+UC
 CU
 iq
 iq
@@ -44333,12 +45255,12 @@ WD
 WD
 iq
 CU
-lg
-IC
-IC
-IC
-IC
-lg
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -44558,39 +45480,39 @@ aa
 aa
 aa
 aa
+Lp
 aa
-aa
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
+wC
+KN
+wC
+KN
 gU
-gV
-gV
-gV
-gV
-gU
+KN
+wC
+KN
+PB
+wC
+PB
+UC
+UC
+UC
+UC
+UC
 CU
 iq
-iq
+Ly
 iq
 iq
 iq
 iq
 iq
 CU
-lg
-IC
-IC
-IC
-IC
-lg
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -44808,10 +45730,19 @@ aa
 aa
 aa
 aa
+lg
 aa
 aa
 aa
-aa
+pM
+us
+KN
+wC
+Pg
+rn
+UB
+rn
+KN
 UC
 UC
 UC
@@ -44819,15 +45750,6 @@ UC
 UC
 UC
 UC
-UC
-UC
-UC
-gU
-gV
-gV
-gV
-gV
-gU
 CU
 iq
 iq
@@ -44837,12 +45759,12 @@ iq
 iq
 iq
 CU
-lg
-IC
-IC
-IC
-IC
-lg
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -45062,24 +45984,24 @@ aa
 aa
 aa
 aa
-aa
-aa
+lg
+hu
+xo
+pR
+KN
+KN
+wC
+PB
+wC
+PB
+wC
+wC
+PB
 UC
 UC
 UC
 UC
 UC
-UC
-UC
-UC
-UC
-UC
-gU
-gV
-gV
-gV
-gV
-gU
 wJ
 iq
 iq
@@ -45089,12 +46011,12 @@ iq
 iq
 iq
 ne
-lg
-IC
-IC
-IC
-IC
-lg
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -45298,55 +46220,55 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-gU
-gV
-gV
-gV
-wC
-gU
-CU
-iq
-iq
-iq
-CU
-CU
-CU
-iq
-CU
-lg
 sF
-IC
-IC
-IC
-lg
+aa
+aa
+aa
+aa
+aa
+aa
+sF
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+hu
+aa
+wC
+wC
+wC
+wC
+PB
+gU
+PB
+wC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+CU
+iq
+iq
+iq
+CU
+CU
+CU
+iq
+CU
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -45567,23 +46489,23 @@ aa
 aa
 aa
 aa
-aa
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
+Lp
+xo
+PB
 gU
-gV
-gV
-gV
-gV
-gU
+KN
+wC
+KN
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 CU
 iq
 iq
@@ -45593,12 +46515,12 @@ iq
 iq
 iq
 CU
-lg
-IC
-IC
-IC
-IC
-lg
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -45813,13 +46735,18 @@ aa
 aa
 aa
 aa
+hu
 aa
 aa
 aa
 aa
+Lp
 aa
-aa
-aa
+wC
+wC
+wC
+UC
+wC
 UC
 UC
 UC
@@ -45830,12 +46757,7 @@ UC
 UC
 UC
 UC
-gU
-gV
-gV
-gV
-gV
-gU
+UC
 CU
 iq
 iq
@@ -45845,12 +46767,12 @@ iq
 iq
 iq
 CU
-lg
-IC
-IC
-IC
-IC
-lg
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -46066,28 +46988,28 @@ aa
 aa
 aa
 aa
+lg
+aa
+Lp
 aa
 aa
 aa
-aa
-aa
-aa
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
+wC
 gU
-gV
-gV
-gV
-gV
-gU
+PB
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 CU
 iq
 iq
@@ -46097,12 +47019,12 @@ iq
 iq
 iq
 CU
-lg
-IC
-IC
-IC
-IC
-lg
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -46313,33 +47235,33 @@ aa
 aa
 aa
 aa
+lg
 aa
 aa
 aa
+hu
 aa
 aa
+Lp
 aa
 aa
-aa
-aa
-aa
-aa
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
+sF
+Tz
+wC
 gU
-gV
-gV
-gV
-gV
-gU
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
 CU
 iq
 WD
@@ -46349,12 +47271,12 @@ iq
 iq
 iq
 CU
-lg
-IC
-IC
-IC
-IC
-lg
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -46570,12 +47492,13 @@ aa
 aa
 aa
 aa
+Lp
 aa
 aa
 aa
 aa
 aa
-aa
+wC
 UC
 UC
 UC
@@ -46586,12 +47509,11 @@ UC
 UC
 UC
 UC
-gU
-gV
-gV
-gV
-gV
-gU
+UC
+UC
+UC
+UC
+UC
 CU
 iq
 iq
@@ -46601,12 +47523,12 @@ iq
 iq
 iq
 CU
-lg
-IC
-IC
-IC
-IC
-lg
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -46825,9 +47747,10 @@ aa
 aa
 aa
 aa
+sF
 aa
-aa
-aa
+sF
+KN
 UC
 UC
 UC
@@ -46838,12 +47761,11 @@ UC
 UC
 UC
 UC
-gU
-gV
-gV
-gV
-gV
-gU
+UC
+UC
+UC
+UC
+UC
 wJ
 iq
 iq
@@ -46853,12 +47775,12 @@ iq
 iq
 iq
 ne
-lg
-IC
-IC
-IC
-IC
-lg
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -47061,25 +47983,26 @@ aa
 aa
 aa
 aa
+lg
+lg
 aa
 aa
 aa
 aa
+hu
+aa
+lg
 aa
 aa
 aa
+lg
+aa
+aa
+Lp
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+PB
 UC
 UC
 UC
@@ -47090,12 +48013,11 @@ UC
 UC
 UC
 UC
-gU
-gV
-gV
-gV
-wC
-gU
+UC
+UC
+UC
+UC
+UC
 CU
 iq
 iq
@@ -47105,12 +48027,12 @@ iq
 iq
 iq
 CU
-lg
-sF
-IC
-IC
-IC
-lg
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -47320,49 +48242,49 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-UC
-gU
-gV
-gV
-gV
-gV
-gU
-CU
-iq
-CU
-CU
-CU
-iq
-iq
-iq
-CU
 lg
-IC
-IC
-IC
-IC
-lg
+hu
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+wC
+KN
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+UC
+CU
+iq
+CU
+CU
+CU
+iq
+iq
+iq
+CU
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -47562,6 +48484,15 @@ aa
 aa
 aa
 aa
+hu
+aa
+aa
+aa
+aa
+aa
+hu
+aa
+hu
 aa
 aa
 aa
@@ -47569,21 +48500,14 @@ aa
 aa
 aa
 aa
+lg
 aa
 aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+KN
+PB
 UC
 UC
 UC
@@ -47594,12 +48518,10 @@ UC
 UC
 UC
 UC
-gU
-gV
-gV
-gV
-gV
-gU
+UC
+UC
+UC
+UC
 CU
 iq
 iq
@@ -47609,12 +48531,12 @@ iq
 iq
 iq
 CU
-lg
-IC
-IC
-IC
-IC
-lg
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -47824,18 +48746,19 @@ aa
 aa
 aa
 aa
+Lp
 aa
 aa
 aa
 aa
 aa
+lg
 aa
 aa
 aa
 aa
 aa
-aa
-aa
+wC
 UC
 UC
 UC
@@ -47846,12 +48769,11 @@ UC
 UC
 UC
 UC
-gU
-gV
-gV
-gV
-gV
-gU
+UC
+UC
+UC
+UC
+UC
 CU
 iq
 iq
@@ -47861,12 +48783,12 @@ iq
 iq
 iq
 CU
-lg
-IC
-IC
-IC
-IC
-lg
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -48071,21 +48993,21 @@ aa
 aa
 aa
 aa
+hu
 aa
 aa
 aa
 aa
 aa
+Lp
 aa
 aa
 aa
+Lp
 aa
 aa
 aa
-aa
-aa
-aa
-aa
+hu
 aa
 aa
 UC
@@ -48098,12 +49020,12 @@ UC
 UC
 UC
 UC
-gU
-gV
-gV
-gV
-gV
-gU
+UC
+UC
+UC
+UC
+UC
+UC
 CU
 iq
 iq
@@ -48113,12 +49035,12 @@ iq
 iq
 iq
 CU
-lg
-IC
-IC
-IC
-IC
-lg
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -48327,13 +49249,13 @@ aa
 aa
 aa
 aa
+hu
 aa
 aa
 aa
 aa
 aa
-aa
-aa
+OT
 aa
 aa
 aa
@@ -48350,12 +49272,12 @@ UC
 UC
 UC
 UC
-gU
-gV
-gV
-gV
-gV
-gU
+UC
+UC
+UC
+UC
+UC
+UC
 CU
 iq
 iq
@@ -48365,12 +49287,12 @@ WD
 WD
 iq
 CU
-lg
-IC
-IC
-IC
-IC
-lg
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -48583,15 +49505,15 @@ aa
 aa
 aa
 aa
+Lp
 aa
 aa
 aa
 aa
+Lp
 aa
 aa
 aa
-aa
-aa
 UC
 UC
 UC
@@ -48602,12 +49524,12 @@ UC
 UC
 UC
 UC
-gU
-gV
-gV
-gV
-gV
-gU
+UC
+UC
+UC
+UC
+UC
+UC
 wJ
 iq
 iq
@@ -48617,12 +49539,12 @@ iq
 iq
 iq
 ne
-lg
-IC
-IC
-IC
-IC
-lg
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -48826,6 +49748,7 @@ aa
 aa
 aa
 aa
+hu
 aa
 aa
 aa
@@ -48834,8 +49757,7 @@ aa
 aa
 aa
 aa
-aa
-aa
+Lp
 aa
 aa
 aa
@@ -48854,12 +49776,12 @@ UC
 UC
 UC
 UC
-gU
-gV
-gV
-gV
-wC
-gU
+UC
+UC
+UC
+UC
+UC
+UC
 CU
 iq
 iq
@@ -48869,12 +49791,12 @@ iq
 iq
 iq
 CU
-lg
-sF
-IC
-IC
-IC
-lg
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -49106,12 +50028,12 @@ UC
 UC
 UC
 UC
-gU
-gV
-gV
-gV
-gV
-gU
+UC
+UC
+UC
+UC
+UC
+UC
 CU
 iq
 Xp
@@ -49121,12 +50043,12 @@ FW
 ln
 iq
 CU
-lg
-IC
-IC
-IC
-IC
-lg
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -49335,7 +50257,7 @@ aa
 aa
 aa
 aa
-aa
+Lp
 aa
 aa
 aa
@@ -49358,12 +50280,12 @@ UC
 UC
 UC
 UC
-gU
-gU
-gU
-gU
-gU
-gU
+UC
+UC
+UC
+UC
+UC
+UC
 CU
 pZ
 pZ
@@ -49373,12 +50295,12 @@ pZ
 pZ
 CU
 CU
-lg
-lg
-lg
-lg
-lg
-lg
+UC
+UC
+UC
+UC
+UC
+UC
 UC
 UC
 UC
@@ -49594,7 +50516,7 @@ aa
 aa
 aa
 aa
-aa
+Lp
 aa
 aa
 aa
@@ -49838,6 +50760,7 @@ aa
 aa
 aa
 aa
+lg
 aa
 aa
 aa
@@ -49845,8 +50768,7 @@ aa
 aa
 aa
 aa
-aa
-aa
+lg
 aa
 aa
 aa
@@ -49860,9 +50782,9 @@ UC
 UC
 UC
 UC
-hu
-hu
-Lp
+UC
+UC
+UC
 UC
 Bv
 ga
@@ -50112,9 +51034,9 @@ UC
 UC
 UC
 UC
-hu
-hu
-hu
+UC
+UC
+UC
 UC
 Bv
 gd
@@ -50364,9 +51286,9 @@ UC
 UC
 UC
 UC
-hu
-hu
-Lp
+UC
+UC
+UC
 UC
 Bv
 yX
@@ -50616,9 +51538,9 @@ UC
 UC
 UC
 UC
-hu
-hu
-hu
+UC
+UC
+UC
 UC
 Bv
 fX
@@ -50868,9 +51790,9 @@ UC
 UC
 UC
 UC
-hu
-hu
-hu
+UC
+UC
+UC
 UC
 Bv
 Bv
@@ -51120,9 +52042,9 @@ UC
 UC
 UC
 UC
-hu
-hu
-Lp
+UC
+UC
+UC
 UC
 fW
 fY
@@ -51358,7 +52280,7 @@ aa
 aa
 aa
 aa
-aa
+Lp
 aa
 aa
 aa
@@ -51372,9 +52294,9 @@ UC
 UC
 UC
 UC
-hu
-hu
-hu
+UC
+UC
+UC
 UC
 UC
 kY
@@ -51624,9 +52546,9 @@ UC
 UC
 UC
 UC
-hu
-hu
-Lp
+UC
+UC
+UC
 UC
 UC
 kY
@@ -51876,9 +52798,9 @@ UC
 UC
 UC
 UC
-hu
-hu
-hu
+UC
+UC
+UC
 UC
 UC
 kY
