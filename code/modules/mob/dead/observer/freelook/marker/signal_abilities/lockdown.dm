@@ -6,9 +6,9 @@
 	<br>\
 	After it wears off, the same door cannot be affected again for four minutes"
 	target_string = "Any airlock with a bolting or locking mechanism"
-	energy_cost = 20
-	cooldown = 30 SECONDS
-	var/duration = 5 SECONDS
+	energy_cost = 25
+	cooldown = 40 SECONDS
+	var/duration = 15 SECONDS
 	autotarget_range = 1
 	target_types = list(/obj/machinery/door/airlock)
 

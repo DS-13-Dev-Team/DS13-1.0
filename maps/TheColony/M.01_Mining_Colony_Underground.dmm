@@ -5733,11 +5733,6 @@
 	req_access = list(16);
 	dir = 8
 	},
-/obj/machinery/door/blast/shutters{
-	dir = 4;
-	id = "chaplain";
-	name = "Shutters"
-	},
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/lower/unibase)
 "td" = (
@@ -6581,30 +6576,8 @@
 	},
 /turf/simulated/floor/dank/maint,
 /area/mining_colony/lower/unibase)
-"BU" = (
-/obj/machinery/light/small{
-	dir = 4
-	},
-/obj/machinery/button/remote/blast_door{
-	dir = 8;
-	id = "chaplain";
-	name = "Shutters";
-	req_one_access = list(57,58,100);
-	pixel_x = 22;
-	req_access = list(16)
-	},
-/turf/simulated/floor/dank/grater,
-/area/mining_colony/lower)
 "BW" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/button/remote/blast_door{
-	dir = 1;
-	id = "chaplain1";
-	name = "Shutters";
-	req_one_access = list(57,58,100);
-	req_access = list(16);
-	pixel_y = -26
-	},
 /turf/simulated/floor/dank/maint_right,
 /area/mining_colony/lower/unibase)
 "Ca" = (
@@ -7145,19 +7118,6 @@
 /obj/random/uncommon_loot,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/node/room69)
-"Gw" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/button/remote/blast_door{
-	dir = 4;
-	id = "chaplain";
-	name = "Shutters";
-	req_one_access = list(57,58,100);
-	pixel_x = -22;
-	req_access = list(16)
-	},
-/turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/unibase)
 "Gx" = (
 /obj/effect/landmark{
 	name = "ShuttleRepairPart"
@@ -7627,20 +7587,6 @@
 "Ma" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/lower/maints/node/room52)
-"Md" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/button/remote/blast_door{
-	dir = 4;
-	id = "chaplain1";
-	name = "Shutters";
-	req_one_access = list(57,58,100);
-	pixel_x = -22;
-	req_access = list(16)
-	},
-/turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/unibase)
 "Me" = (
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/dank/mono,
@@ -7702,19 +7648,6 @@
 "MF" = (
 /turf/simulated/floor/asteroid/outside_ds/dry_firm,
 /area/mining_colony/lower/mining_caves)
-"MM" = (
-/obj/machinery/door/airlock/civilian{
-	name = "Church Storage";
-	req_access = list(16);
-	dir = 8
-	},
-/obj/machinery/door/blast/shutters{
-	dir = 4;
-	id = "chaplain1";
-	name = "Shutters"
-	},
-/turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/unibase)
 "MP" = (
 /obj/machinery/power/apc{
 	dir = 1;
@@ -20084,7 +20017,7 @@ RI
 vR
 ar
 dY
-BU
+ej
 dY
 ei
 dY
@@ -20488,7 +20421,7 @@ BW
 vR
 vR
 YD
-Gw
+Hz
 vR
 ar
 ar
@@ -20686,7 +20619,7 @@ vR
 vR
 vR
 vR
-MM
+sZ
 vR
 vR
 Hz
@@ -20889,7 +20822,7 @@ vR
 vR
 Hz
 Hz
-Md
+UZ
 RY
 Hz
 UZ
