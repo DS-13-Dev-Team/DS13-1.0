@@ -46,6 +46,7 @@ Divet pistol typedef & logic
 	item_state = "divet_spec"
 	silenced = TRUE
 	damage_factor = 0.85	//Silencers reduce bullet speed, and hence damage output
+	tier_2_bonus = 1
 
 /obj/item/gun/projectile/divet/silenced/update_icon()
 	..()

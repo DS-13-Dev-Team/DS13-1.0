@@ -39,6 +39,14 @@ obj/item/organ/external/take_general_damage(var/amount, var/silent = FALSE)
 	var/edge  = (damage_flags & DAM_EDGE)
 	var/laser = (damage_flags & DAM_LASER)
 	var/blunt = brute && !sharp && !edge
+	var/tier_bonus_1 = (damage_flags & DAM_TIER_1)
+	var/tier_bonus_2 = (damage_flags & DAM_TIER_2)
+	var/tier_bonus_3 = (damage_flags & DAM_TIER_3)
+
+	//Does our weapon do extra damage against particular necromorphs?
+	if (tier_bonus_1 || tier_bonus_2 || tier_bonus_3)
+		brute = round(brute * get_tier_mod(tier_bonus_1, tier_bonus_2, tier_bonus_3), 0.35)
+		burn = round(burn * get_tier_mod(tier_bonus_1, tier_bonus_2, tier_bonus_3), 0.35)
 
 	if(used_weapon)
 		add_autopsy_data("[used_weapon]", brute + burn)
@@ -294,10 +302,34 @@ obj/item/organ/external/take_general_damage(var/amount, var/silent = FALSE)
 	return FALSE
 
 /obj/item/organ/external/proc/get_brute_mod()
-	return species.brute_mod + 0.2 * burn_dam/max_damage //burns make you take more brute damage
+	return species.brute_mod  + (0.2 * burn_dam/max_damage) //burns make you take more brute damage
 
 /obj/item/organ/external/proc/get_burn_mod()
 	return species.burn_mod
+
+//Returns the highest damage mod, as long as there is a positive damage mod. Otherwise, returns the lowest one.
+//This assures that if a necromorph has a negative damage mod, it won't just take make them take 100% from a default value.
+/obj/item/organ/external/proc/get_tier_mod(var/mod1 = FALSE, var/mod2 = FALSE, var/mod3 = FALSE)
+	if(mod1)
+		mod1 = species.tier_1_mod
+	else
+		mod1 = 1
+
+	if(mod2)
+		mod2 = species.tier_2_mod
+	else
+		mod2 = 1
+
+	if(mod3)
+		mod3 = species.tier_3_mod
+	else
+		mod1 = 3
+	
+	var/highest = max(mod1, mod2, mod3)
+	if(highest > 1)
+		return highest
+	
+	return min(mod1, mod2, mod3)
 
 //organs can come off in three cases
 //1. If the damage source is edge_eligible and the brute damage dealt exceeds the edge threshold, then the organ is cut off.

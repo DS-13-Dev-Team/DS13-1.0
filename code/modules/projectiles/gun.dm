@@ -501,6 +501,10 @@
 	if(!istype(P))
 		return //default behaviour only applies to true projectiles
 
+	if(tier_1_bonus || tier_2_bonus || tier_2_bonus)
+		P.tier_1_bonus = tier_1_bonus
+		P.tier_2_bonus = tier_2_bonus
+		P.tier_3_bonus = tier_3_bonus
 	P.damage *= damage_factor
 	var/acc_mod = accuracy
 	if (burst_accuracy)

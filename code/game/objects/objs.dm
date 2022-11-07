@@ -19,6 +19,9 @@
 	var/throwforce = 1
 	var/sharp = 0		// whether this object cuts
 	var/edge = 0		// whether this object is more likely to dismember
+	var/tier_1_bonus = 0 // whether this object does more damage against tier 1 necromorphs
+	var/tier_2_bonus = 0 // whether this object does more damage against tier 2 necromorphs
+	var/tier_3_bonus = 0 // whether this object does more damage against tier 3 necromorphs
 	var/in_use = 0 // If we have a user using us, this will be set on. We will check if the user has stopped using us, and thus stop updating and LAGGING EVERYTHING!
 	var/damtype = "brute"
 	var/armor_penetration = 0
@@ -145,6 +148,12 @@
 		. |= DAM_SHARP
 		if(damtype == BURN)
 			. |= DAM_LASER
+	if(is_tier_1(src))
+		. |= DAM_TIER_1
+	if(is_tier_2(src))
+		. |= DAM_TIER_2
+	if(is_tier_3(src))
+		. |= DAM_TIER_3
 
 /obj/attackby(obj/item/O as obj, mob/user as mob)
 	if(obj_flags & OBJ_FLAG_ANCHORABLE)

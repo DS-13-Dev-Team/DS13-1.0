@@ -74,7 +74,7 @@
 		/obj/item/gun/energy/contact = 4500,
 		/obj/item/cell/contact = 2000,
 		/obj/item/gun/energy/cutter = 1000,
-		/obj/item/gun/energy/cutter/plasma = 2000,
+		/obj/item/gun/energy/cutter/plasma = 3500,
 		/obj/item/cell/plasmacutter = 500,
 		/obj/item/gun/projectile/ripper = 4000,
 		/obj/item/ammo_magazine/sawblades = 1000,
