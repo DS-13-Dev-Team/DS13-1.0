@@ -28,9 +28,9 @@
 #define DAM_SHARP  (1<<0)
 #define DAM_EDGE   (1<<1)
 #define DAM_LASER  (1<<2)
-#define DAM_TIER_1 (1<<1)
-#define DAM_TIER_2 (1<<1)
-#define DAM_TIER_3 (1<<1)
+#define DAM_TIER_1 (1<<3)
+#define DAM_TIER_2 (1<<4)
+#define DAM_TIER_3 (1<<5)
 
 #define FIRE_DAMAGE_MODIFIER 0.0215 // Higher values result in more external fire damage to the skin. (default 0.0215)
 #define  AIR_DAMAGE_MODIFIER 2.025  // More means less damage from hot air scalding lungs, less = more damage. (default 2.025)

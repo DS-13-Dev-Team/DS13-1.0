@@ -16,6 +16,7 @@
 	name_plural =  "Infectors"
 	blurb = "A high value, fragile support, the Infector works as a builder and healer"
 	total_health = 90
+	tier_1_mod = DAM_MOD_T1
 
 	//Normal necromorph flags plus no slip
 	species_flags = SPECIES_FLAG_NO_PAIN | SPECIES_FLAG_NO_MINOR_CUT | SPECIES_FLAG_NO_POISON  | SPECIES_FLAG_NO_BLOCK | SPECIES_FLAG_NO_SLIP
@@ -136,6 +137,7 @@
 	name_plural =  "Enhanced Infectors"
 	blurb = "Unlike the more fragile counterpart, this infector is a capable fighter. However, nothing compares to its supportive capabilities."
 	total_health = 205
+	tier_1_mod = 1
 	limb_health_factor = 1.5
 	slowdown = 4
 	view_range = 8

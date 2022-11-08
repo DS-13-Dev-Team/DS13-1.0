@@ -150,6 +150,20 @@ Botany:
 	build_path = /obj/item/stack/power_node
 	price = 10000
 
+/datum/design/item/cutternode
+	name = "cutter node"
+	id = "cutternode"
+	materials = list(MATERIAL_GOLD = 4000, MATERIAL_SILVER = 4000)
+	build_path = /obj/item/stack/special_node/cutter
+	price = 2000
+
+/datum/design/item/divetnode
+	name = "divet node"
+	id = "divetnode"
+	materials = list(MATERIAL_GOLD = 4000, MATERIAL_SILVER = 4000)
+	build_path = /obj/item/stack/special_node/divet
+	price = 2500
+
 /datum/design/item/stock_part
 	category = "Parts"
 	build_type = PROTOLATHE | STORE_ROUNDSTART

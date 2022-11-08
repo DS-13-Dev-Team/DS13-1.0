@@ -38,7 +38,8 @@
 		things += /obj/item/gun/projectile/seeker/empty
 		things[/obj/item/ammo_magazine/seeker] = 4
 	else
-		things += /obj/item/gun/projectile/automatic/pulse_heavy
+		things += /obj/item/gun/projectile/divet/rending
+		things[/obj/item/stack/special_node/divet] = 4
 	return things
 
 /obj/structure/closet/secure_closet/guncabinet/military

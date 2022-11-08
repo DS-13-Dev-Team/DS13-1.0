@@ -9,6 +9,7 @@
 	Very vulnerable to flanking attacks"
 	total_health = 510
 	torso_damage_mult = 1 //Hitting centre mass is fine for brute
+	tier_2_mod = DAM_MOD_T2
 
 	//Normal necromorph flags plus no slip
 	species_flags = SPECIES_FLAG_NO_PAIN | SPECIES_FLAG_NO_MINOR_CUT | SPECIES_FLAG_NO_POISON  | SPECIES_FLAG_NO_BLOCK | SPECIES_FLAG_NO_SLIP

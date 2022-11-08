@@ -185,3 +185,21 @@
 	list(CRAFT_OBJECT, /obj/item/gun/energy/cutter, WORKTIME_NORMAL, FALSE, /obj/item/gun/energy/cutter/plasma),
 	list(CRAFT_STACK, /obj/item/stack/power_node, 1)
 	)
+
+/datum/craft_recipe/weapon/rendingcutter
+	name = "Rending Cutter"
+	result = /obj/item/gun/energy/cutter/rending
+	time = 200
+	steps = list(
+	list(CRAFT_OBJECT, /obj/item/gun/energy/cutter/plasma, WORKTIME_NORMAL, FALSE, /obj/item/gun/energy/cutter/rending),
+	list(CRAFT_STACK, /obj/item/stack/special_node/cutter, 1)
+	)
+
+/datum/craft_recipe/weapon/rendingdivet
+	name = "Rending Divet"
+	result = /obj/item/gun/projectile/divet/rending
+	time = 200
+	steps = list(
+	list(CRAFT_OBJECT, /obj/item/gun/projectile/divet, WORKTIME_NORMAL, FALSE, /obj/item/gun/projectile/divet/rending),
+	list(CRAFT_STACK, /obj/item/stack/special_node/divet, 1)
+	)

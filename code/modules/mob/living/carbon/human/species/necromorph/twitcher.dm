@@ -161,6 +161,7 @@ All of these properties combined make Step Strike tricky and disorienting to use
 	total_health = 210
 	limb_health_factor = 1 //This can't be too low thanks to evasion.
 	burn_mod = 1.1
+	tier_2_mod = DAM_MOD_T2
 
 	slowdown = 1.2
 	strength    = STR_VHIGH

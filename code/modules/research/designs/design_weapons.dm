@@ -82,7 +82,7 @@ S	fuel tank (hydrazine)
 	id = "miningcutter"
 	materials = list(MATERIAL_STEEL = 7500, MATERIAL_GLASS = 2500)
 	build_path = /obj/item/gun/energy/cutter
-	price = 2500
+	price = 1000
 
 /datum/design/item/weapon/plasmacutter
 	name = "211-V plasma cutter"

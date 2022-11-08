@@ -17,6 +17,7 @@
 	blurb = "A long range ambusher, the leaper can leap on unsuspecting victims from afar, knock them down, and tear them apart with its bladed tail. Not good for prolonged combat though."
 	unarmed_types = list(/datum/unarmed_attack/claws) //Bite attack is a backup if blades are severed
 	total_health = 121
+	tier_1_mod = DAM_MOD_T1
 	biomass = 70
 
 	//Normal necromorph flags plus no slip
@@ -166,6 +167,8 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 	unarmed_types = list(/datum/unarmed_attack/claws/strong)
 	slowdown = 2.25
 	total_health = 225
+	tier_1_mod = 1
+	tier_2_mod = DAM_MOD_T2
 	limb_health_factor = 1.6
 	evasion = 30
 	leap_damage = 3.3

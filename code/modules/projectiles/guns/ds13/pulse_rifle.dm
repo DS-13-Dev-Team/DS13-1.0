@@ -61,7 +61,8 @@ The Pulse Rifle is the standard-issue service rifle of the Earth Defense Force a
 
 /obj/item/projectile/bullet/pulse
 	icon_state = "pulse"
-	damage = 8.5
+	damage = 8
+	tier_1_bonus = 1
 	embed = 0
 	structure_damage_factor = 0.5
 	penetration_modifier = 0

@@ -114,6 +114,7 @@ GLOBAL_LIST_EMPTY(loot_locations)
 	/obj/random/clothing = 1,
 	/obj/random/accessory = 1,
 	/obj/random/voidsuit = 0.2,
+	/obj/item/stack/special_node/cutter = 0.1,
 	/obj/random/armor = 1,
 	/obj/random/pouch = 2,
 	/obj/random/tool/advanced = 1,
@@ -125,7 +126,9 @@ GLOBAL_LIST_EMPTY(loot_locations)
 
 
 /obj/random/rare_loot
-	possible_spawns = list( /obj/item/stack/power_node = 3,
+	possible_spawns = list( /obj/item/stack/power_node = 2,
+	/obj/item/stack/special_node/cutter = 0.5,
+	/obj/item/stack/special_node/divet = 0.5,
 	/obj/item/store_schematic = 0.8,
 	/obj/random/material/rare = 1,
 	/obj/random/tool/modded = 1,

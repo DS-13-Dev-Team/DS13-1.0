@@ -48,6 +48,13 @@ Divet pistol typedef & logic
 	damage_factor = 0.85	//Silencers reduce bullet speed, and hence damage output
 	tier_2_bonus = 1
 
+/obj/item/gun/projectile/divet/rending
+	name = "jury-rigged divet pistol"
+	desc = "An illegaly modified version of the Winchester Arms NK-series pistol. Shoots bullets at brutal speed, but at an odd angle. Fractures bones easily"
+	color = "#6e6ec1"
+	tier_2_bonus = 1
+	tier_1_bonus = 1
+
 /obj/item/gun/projectile/divet/silenced/update_icon()
 	..()
 	if(ammo_magazine && ammo_magazine.stored_ammo.len)
