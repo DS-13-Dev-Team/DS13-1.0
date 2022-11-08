@@ -323,7 +323,7 @@ obj/item/organ/external/take_general_damage(var/amount, var/silent = FALSE)
 	if(mod3)
 		mod3 = species.tier_3_mod
 	else
-		mod1 = 3
+		mod1 = 1
 	
 	var/highest = max(mod1, mod2, mod3)
 	if(highest > 1)
