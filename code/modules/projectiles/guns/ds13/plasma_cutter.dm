@@ -37,7 +37,7 @@
 	desc = "An illegally modified plasma cutter designed to cut through bone. For some reason, flesh seems to absorb part of the impact."
 	color = "#e97f83"
 	projectile_type = /obj/item/projectile/beam/cutter/rending
-	charge_cost = 225
+	charge_cost = 200
 
 /obj/item/projectile/beam/cutter
 	name = "plasma arc"
