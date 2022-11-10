@@ -21,6 +21,7 @@ The Pulse Rifle is the standard-issue service rifle of the Earth Defense Force a
 	mag_remove_sound = 'sound/weapons/guns/interaction/pulse_magout.ogg'
 	one_hand_penalty = 6	//Don't try to fire this with one hand
 	accuracy = 5	//Slight accuracy increase
+	tier_1_bonus = 1
 
 
 
@@ -36,6 +37,16 @@ The Pulse Rifle is the standard-issue service rifle of the Earth Defense Force a
 
 /obj/item/gun/projectile/automatic/pulse_rifle/empty
 	magazine_type = null
+
+/obj/item/gun/projectile/automatic/pulse_rifle/egov
+	name = "SWS Earthgov Motorized Pulse Rifle"
+	desc = "The SWS Motorized Pulse Rifle is a military-grade, triple-barreled assault rifle, manufactured by Winchester Arms, is capable of a rapid rate of fire. \
+This variant is the earthgov standard, featuring the highest grade parts. "
+	icon_state = "pulserifle_egov"
+	item_state = "pulserifle_egov"
+	wielded_item_state = "pulserifle-wielded_egov"
+	damage_factor = 1.10
+	tier_1_bonus = 0
 
 /*-----------------------
 	Firemode
@@ -62,7 +73,6 @@ The Pulse Rifle is the standard-issue service rifle of the Earth Defense Force a
 /obj/item/projectile/bullet/pulse
 	icon_state = "pulse"
 	damage = 8
-	tier_1_bonus = 1
 	embed = 0
 	structure_damage_factor = 0.5
 	penetration_modifier = 0
@@ -121,7 +131,7 @@ The Pulse Rifle is the standard-issue service rifle of the Earth Defense Force a
 
 /obj/item/projectile/bullet/pulse/hv
 	icon_state = "pulse_hv"
-	damage = 10
+	damage = 9.5
 	embed = 0
 	structure_damage_factor = 1.2
 	penetration_modifier = 1
