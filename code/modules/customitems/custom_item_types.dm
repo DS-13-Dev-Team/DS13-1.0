@@ -154,10 +154,6 @@
 	category = CATEGORY_RIG
 	subcategory = SUBCATEGORY_FRAMES
 
-	loadout_modkit_cost = 2
-	modkit_access = ACCESS_WHITELIST
-	modkit_typelist = list(/obj/item/rig/vintage)
-
 /datum/patron_item/carver
 	name = "carver's RIG"
 	description = "A heavily armoured rig suit, designed for military use. Especially effective against bullets. Use it on a vintage rig to convert, or buy it in the store directly!"
@@ -168,10 +164,6 @@
 
 	category = CATEGORY_RIG
 	subcategory = SUBCATEGORY_FRAMES
-
-	loadout_modkit_cost = 2
-	modkit_access = ACCESS_WHITELIST
-	modkit_typelist = list(/obj/item/rig/vintage)
 
 /datum/patron_item/dad_rig
 	name = "Elite diving RIG"
@@ -184,10 +176,6 @@
 	category = CATEGORY_RIG
 	subcategory = SUBCATEGORY_FRAMES
 
-	loadout_modkit_cost = 2
-	modkit_access = ACCESS_WHITELIST
-	modkit_typelist = list(/obj/item/rig/vintage)
-
 /datum/patron_item/muramasa
 	name =  "Experimental Ceremonial Sword"
 	description = "Use on a rock saw to obtain! A blade passed down through generations of a dedicated unitologist family, the Higgins. Sam had it modified into a experimental ceremonial blade, enhancing the already astonishing properties of the original metal and giving it an ominous crimson glow that matches the Marker. An explosive charge housed in the scabbard enables a lightning-quick draw."
@@ -196,11 +184,6 @@
 
 	store_cost = 4000
 	store_access = ACCESS_WHITELIST
-
-	loadout_modkit_cost = 2
-	modkit_access = ACCESS_WHITELIST
-	modkit_typelist = list(/obj/item/tool/pickaxe/laser)
-
 
 	category = CATEGORY_TOOLS
 	subcategory = SUBCATEGORY_DANGEROUS_TOOLS
@@ -229,9 +212,7 @@
 	category = CATEGORY_RIG
 	subcategory = SUBCATEGORY_FRAMES
 
-	loadout_modkit_cost = 2
-	modkit_access = ACCESS_WHITELIST
-	modkit_typelist = list(/obj/item/rig/advanced)
+
 
 /datum/patron_item/arctic_suit //public for all patrons
 	name = "Arctic Survival RIG"
@@ -244,9 +225,7 @@
 	category = CATEGORY_RIG
 	subcategory = SUBCATEGORY_FRAMES
 
-	loadout_modkit_cost = 2
-	modkit_access = ACCESS_PATRONS
-	modkit_typelist = list(/obj/item/rig/advanced)
+
 
 /datum/patron_item/witness
 	name = "Witness RIG"
@@ -259,9 +238,7 @@
 	category = CATEGORY_RIG
 	subcategory = SUBCATEGORY_FRAMES
 
-	loadout_modkit_cost = 2
-	modkit_access = ACCESS_WHITELIST
-	modkit_typelist = list(/obj/item/rig/advanced) //these rigs are the same stat and module-wise
+
 
 /datum/patron_item/survivor
 	name = "PCSI survivor RIG"
@@ -274,9 +251,7 @@
 	category = CATEGORY_RIG
 	subcategory = SUBCATEGORY_FRAMES
 
-	loadout_modkit_cost = 2
-	modkit_access = ACCESS_WHITELIST
-	modkit_typelist = list(/obj/item/rig/security/pcsi) //these rigs are the same stat and module-wise
+
 
 /datum/patron_item/forged
 	name = "forged engineering RIG"
@@ -289,6 +264,3 @@
 	category = CATEGORY_RIG
 	subcategory = SUBCATEGORY_FRAMES
 
-	loadout_modkit_cost = 2
-	modkit_access = ACCESS_WHITELIST
-	modkit_typelist = list(/obj/item/rig/engineering) //these rigs are the same stat and module-wise
