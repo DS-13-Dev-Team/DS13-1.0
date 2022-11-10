@@ -44,7 +44,7 @@ The Pulse Rifle is the standard-issue service rifle of the Earth Defense Force a
 This variant is the earthgov standard, featuring the highest grade parts. "
 	icon_state = "pulserifle_egov"
 	item_state = "pulserifle_egov"
-	wielded_item_state = "pulserifle-wielded_egov"
+	wielded_item_state = "pulserifle-egov_wielded"
 	damage_factor = 1.10
 	tier_1_bonus = 0
 
