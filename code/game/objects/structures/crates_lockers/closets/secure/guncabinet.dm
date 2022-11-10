@@ -53,9 +53,10 @@
 	icon_closed ="base"
 	icon_opened = "base"
 
+// USE THESE EXTREMELY SPARINGLY EVEN FOR ADMINSPAWN.
 /obj/structure/closet/secure_closet/guncabinet/military/WillContain()
 	var/list/things = list(
-		/obj/item/gun/projectile/automatic/pulse_rifle/empty,
+		/obj/item/gun/projectile/automatic/pulse_rifle/egov/empty,
 		/obj/item/ammo_magazine/pulse/hv = 6,
 		/obj/item/ammo_magazine/pulse/df = 8,
 		/obj/item/storage/belt/holster/security

@@ -48,6 +48,9 @@ This variant is the earthgov standard, featuring the highest grade parts. "
 	damage_factor = 1.10
 	tier_1_bonus = 0
 
+/obj/item/gun/projectile/automatic/pulse_rifle/egov/empty
+	magazine_type = null
+
 /*-----------------------
 	Firemode
 ------------------------*/
