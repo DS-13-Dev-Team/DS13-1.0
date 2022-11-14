@@ -27,6 +27,15 @@ obj/item/organ/external/take_general_damage(var/amount, var/silent = FALSE)
 	if (retracted && parent)
 		return parent.take_external_damage(brute, burn, damage_flags, used_weapon, allow_dismemberment)
 
+	var/tier_bonus_1 = (damage_flags & DAM_TIER_1)
+	var/tier_bonus_2 = (damage_flags & DAM_TIER_2)
+	var/tier_bonus_3 = (damage_flags & DAM_TIER_3)
+
+	//Does our weapon do extra damage against particular necromorphs?
+	if (tier_bonus_1 || tier_bonus_2 || tier_bonus_3)
+		brute = brute * get_tier_mod(tier_bonus_1, tier_bonus_2, tier_bonus_3)
+		burn = burn * get_tier_mod(tier_bonus_1, tier_bonus_2, tier_bonus_3)
+
 	//These may be null if the organ is taking damage while severed and lying on the ground
 	if (owner && owner.species)
 		SET_ARGS(owner.species.handle_organ_external_damage(arglist(list(src)+args)))
@@ -39,14 +48,6 @@ obj/item/organ/external/take_general_damage(var/amount, var/silent = FALSE)
 	var/edge  = (damage_flags & DAM_EDGE)
 	var/laser = (damage_flags & DAM_LASER)
 	var/blunt = brute && !sharp && !edge
-	var/tier_bonus_1 = (damage_flags & DAM_TIER_1)
-	var/tier_bonus_2 = (damage_flags & DAM_TIER_2)
-	var/tier_bonus_3 = (damage_flags & DAM_TIER_3)
-
-	//Does our weapon do extra damage against particular necromorphs?
-	if (tier_bonus_1 || tier_bonus_2 || tier_bonus_3)
-		brute = brute * get_tier_mod(tier_bonus_1, tier_bonus_2, tier_bonus_3)
-		burn = burn * get_tier_mod(tier_bonus_1, tier_bonus_2, tier_bonus_3)
 
 	if(used_weapon)
 		add_autopsy_data("[used_weapon]", brute + burn)
