@@ -45,8 +45,8 @@ obj/item/organ/external/take_general_damage(var/amount, var/silent = FALSE)
 
 	//Does our weapon do extra damage against particular necromorphs?
 	if (tier_bonus_1 || tier_bonus_2 || tier_bonus_3)
-		brute = round(brute * get_tier_mod(tier_bonus_1, tier_bonus_2, tier_bonus_3), 0.35)
-		burn = round(burn * get_tier_mod(tier_bonus_1, tier_bonus_2, tier_bonus_3), 0.35)
+		brute = brute * get_tier_mod(tier_bonus_1, tier_bonus_2, tier_bonus_3)
+		burn = burn * get_tier_mod(tier_bonus_1, tier_bonus_2, tier_bonus_3)
 
 	if(used_weapon)
 		add_autopsy_data("[used_weapon]", brute + burn)
@@ -323,7 +323,7 @@ obj/item/organ/external/take_general_damage(var/amount, var/silent = FALSE)
 	if(mod3)
 		mod3 = species.tier_3_mod
 	else
-		mod1 = 1
+		mod3 = 1
 	
 	var/highest = max(mod1, mod2, mod3)
 	if(highest > 1)
