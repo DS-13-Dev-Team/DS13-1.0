@@ -24,7 +24,7 @@
 /obj/item/rig/vintage/sea/dad
 	name = "Elite diving RIG"
 	desc = "An extremely durable, bulky elite diving suit. Designed for combat and deep sea diving in the North Atlantic Ocean, able to withstand extreme undersea pressure."
-	icon_state = "sea_diving_rig"
+	icon_state = "elite_diving_rig"
 
 	chest_type = /obj/item/clothing/suit/space/rig/sea/dad
 	helm_type =  /obj/item/clothing/head/helmet/space/rig/sea/dad
