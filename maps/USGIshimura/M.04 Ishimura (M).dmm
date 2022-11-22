@@ -29634,6 +29634,7 @@
 "bfR" = (
 /obj/structure/table/standard,
 /obj/item/reagent_containers/spray/cleaner,
+/obj/machinery/light,
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/upper/misc/hallway/escape)
 "bfS" = (
@@ -62752,7 +62753,7 @@ tFz
 tFz
 aSS
 aQN
-aSa
+aSS
 aUV
 arP
 aRJ
