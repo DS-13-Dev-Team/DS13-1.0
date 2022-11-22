@@ -36,3 +36,17 @@
 
 /obj/item/clothing/head/helmet/space/rig/engineering
 	name = "helmet"
+
+/obj/item/rig/engineering/forged
+	name = "forged engineering RIG"
+	icon_state = "forged_rig"
+
+	chest_type = /obj/item/clothing/suit/space/rig/engineering/forged
+	helm_type =  /obj/item/clothing/head/helmet/space/rig/engineering/forged
+	boot_type =  /obj/item/clothing/shoes/magboots/rig/engineering/forged
+	glove_type = /obj/item/clothing/gloves/rig/engineering/forged
+
+/obj/item/clothing/suit/space/rig/engineering/forged
+/obj/item/clothing/gloves/rig/engineering/forged
+/obj/item/clothing/shoes/magboots/rig/engineering/forged
+/obj/item/clothing/head/helmet/space/rig/engineering/forged

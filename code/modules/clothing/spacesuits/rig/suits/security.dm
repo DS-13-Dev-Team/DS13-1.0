@@ -33,6 +33,21 @@
 
 /obj/item/clothing/gloves/rig/security/pcsi
 
+/obj/item/rig/security/pcsi/ruined
+	name = "PCSI survivor RIG"
+	desc = "The RIG remains battered and beaten, dented and missing pieces. The blood remains permanently rusted to the frame. The will of the survivor remains unbroken."
+	icon_state = "pcsi_rig_ruined"
+
+	chest_type = /obj/item/clothing/suit/space/rig/security/pcsi/ruined
+	helm_type =  /obj/item/clothing/head/helmet/space/rig/security/pcsi/ruined
+	boot_type =  /obj/item/clothing/shoes/magboots/rig/security/pcsi/ruined
+	glove_type = /obj/item/clothing/gloves/rig/security/pcsi/ruined
+
+/obj/item/clothing/head/helmet/space/rig/security/pcsi/ruined
+/obj/item/clothing/suit/space/rig/security/pcsi/ruined
+/obj/item/clothing/shoes/magboots/rig/security/pcsi/ruined
+/obj/item/clothing/gloves/rig/security/pcsi/ruined
+
 //PCSI Riot RIG
 /obj/item/rig/security/pcsi/advanced
 	name = "PCSI riot RIG"

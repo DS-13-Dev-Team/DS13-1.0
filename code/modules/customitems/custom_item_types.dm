@@ -154,10 +154,6 @@
 	category = CATEGORY_RIG
 	subcategory = SUBCATEGORY_FRAMES
 
-	loadout_modkit_cost = 2
-	modkit_access = ACCESS_WHITELIST
-	modkit_typelist = list(/obj/item/rig/vintage)
-
 /datum/patron_item/carver
 	name = "carver's RIG"
 	description = "A heavily armoured rig suit, designed for military use. Especially effective against bullets. Use it on a vintage rig to convert, or buy it in the store directly!"
@@ -168,10 +164,6 @@
 
 	category = CATEGORY_RIG
 	subcategory = SUBCATEGORY_FRAMES
-
-	loadout_modkit_cost = 2
-	modkit_access = ACCESS_WHITELIST
-	modkit_typelist = list(/obj/item/rig/vintage)
 
 /datum/patron_item/dad_rig
 	name = "Elite diving RIG"
@@ -184,10 +176,6 @@
 	category = CATEGORY_RIG
 	subcategory = SUBCATEGORY_FRAMES
 
-	loadout_modkit_cost = 2
-	modkit_access = ACCESS_WHITELIST
-	modkit_typelist = list(/obj/item/rig/vintage)
-
 /datum/patron_item/muramasa
 	name =  "Experimental Ceremonial Sword"
 	description = "Use on a rock saw to obtain! A blade passed down through generations of a dedicated unitologist family, the Higgins. Sam had it modified into a experimental ceremonial blade, enhancing the already astonishing properties of the original metal and giving it an ominous crimson glow that matches the Marker. An explosive charge housed in the scabbard enables a lightning-quick draw."
@@ -196,11 +184,6 @@
 
 	store_cost = 4000
 	store_access = ACCESS_WHITELIST
-
-	loadout_modkit_cost = 2
-	modkit_access = ACCESS_WHITELIST
-	modkit_typelist = list(/obj/item/tool/pickaxe/laser)
-
 
 	category = CATEGORY_TOOLS
 	subcategory = SUBCATEGORY_DANGEROUS_TOOLS
@@ -229,36 +212,55 @@
 	category = CATEGORY_RIG
 	subcategory = SUBCATEGORY_FRAMES
 
-	loadout_modkit_cost = 2
-	modkit_access = ACCESS_WHITELIST
-	modkit_typelist = list(/obj/item/rig/advanced)
+
 
 /datum/patron_item/arctic_suit //public for all patrons
 	name = "Arctic Survival RIG"
 	description = "Use on an advanced rig to obtain, or buy the suit directly from the store. A standard-issue Sovereign Colonies RIG used for exploring and generally weathering harsh environments otherwise hostile to human life, from space to an icy alien tundra."
 	item_path = /obj/item/rig/arctic
-	id = "tarnished"
+	id = "arctic"
 	store_cost = 15000 //same as advanced rig
 	store_access = ACCESS_PATRONS
 
 	category = CATEGORY_RIG
 	subcategory = SUBCATEGORY_FRAMES
 
-	loadout_modkit_cost = 2
-	modkit_access = ACCESS_PATRONS
-	modkit_typelist = list(/obj/item/rig/advanced)
+
 
 /datum/patron_item/witness
 	name = "Witness RIG"
 	description = "Use on an advanced rig to obtain, or buy the suit directly from the store. A Sovereign Colonies all-purpose survival RIG painted in a mesmerizing fashion as a tribute to the Church of Unitology and the general faith they hold."
 	item_path = /obj/item/rig/arctic/witness
-	id = "tarnished"
+	id = "witness"
 	store_cost = 15000
 	store_access = ACCESS_WHITELIST
 
 	category = CATEGORY_RIG
 	subcategory = SUBCATEGORY_FRAMES
 
-	loadout_modkit_cost = 2
-	modkit_access = ACCESS_WHITELIST
-	modkit_typelist = list(/obj/item/rig/advanced) //these rigs are the same stat and module-wise
+
+
+/datum/patron_item/survivor
+	name = "PCSI survivor RIG"
+	description = "Use on an pcsi rig to obtain, or buy the suit directly from the store. The RIG remains battered and beaten, dented and missing pieces. The blood remains permanently rusted to the frame. The will of the survivor remains unbroken."
+	item_path = /obj/item/rig/security/pcsi/ruined
+	id = "psci_survivor"
+	store_cost = 12000
+	store_access = ACCESS_WHITELIST
+
+	category = CATEGORY_RIG
+	subcategory = SUBCATEGORY_FRAMES
+
+
+
+/datum/patron_item/forged
+	name = "forged engineering RIG"
+	description = "Use on an engineering rig to obtain, or buy the suit directly from the store. A lightweight and flexible armoured rig suit, designed for mining and shipboard engineering."
+	item_path = /obj/item/rig/engineering/forged
+	id = "forged"
+	store_cost = 8000
+	store_access = ACCESS_WHITELIST
+
+	category = CATEGORY_RIG
+	subcategory = SUBCATEGORY_FRAMES
+
