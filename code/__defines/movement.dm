@@ -43,10 +43,10 @@ GLOBAL_VAR_INIT(glide_size_multiplier, 1.0)
 #define RELEASE_THROW	"throw"	//Inherit velocity and continue flying
 #define RELEASE_LAUNCH	"launch"	//Explicitly launched with a powerful burst of force. Like throw but faster, and rougher start
 
-#define RUN_DELAY 1.6
+#define RUN_DELAY 2.2
 #define WALK_DELAY 2.95
 #define STALK_DELAY 6
 #define MINIMUM_SPRINT_COST 0.85	//The part of sprint cost that everyone gets
-#define SKILL_SPRINT_COST_RANGE 0.775	//The part of sprint cost that is affected by athletics
-#define MINIMUM_STAMINA_RECOVERY 1.75
+#define SKILL_SPRINT_COST_RANGE 0.7	//The part of sprint cost that is affected by athletics
+#define MINIMUM_STAMINA_RECOVERY 2.5
 #define MAXIMUM_STAMINA_RECOVERY 5

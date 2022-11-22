@@ -370,18 +370,18 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 
 	//Effects on necromorphs
 	var/healing_per_tick = 1	//Passive Healing
-	var/speedup = 1.25	//Bonus movespeed
+	var/speedup = 1.20	//Bonus movespeed, THIS ISN'T USED RIGHT NOW
 	var/incoming_damage_mod = 0.85	//Incoming damage reduction
 
 	//Effects on non necros
-	var/slowdown = 0.625	//Movespeed Penalty
+	var/slowdown = 0.9	//Movespeed Penalty
 
 	var/speed_factor = 0
 
 
 	var/necro = FALSE
 
-	statmods = list(STATMOD_MOVESPEED_MULTIPLICATIVE = 1.25,//This is dynamic
+	statmods = list(STATMOD_MOVESPEED_MULTIPLICATIVE = 1.20,//This is dynamic
 	STATMOD_INCOMING_DAMAGE_MULTIPLICATIVE = 0.85)
 
 
