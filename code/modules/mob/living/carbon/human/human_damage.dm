@@ -1,5 +1,5 @@
 
-/mob/living/carbon/human/apply_damage(var/damage = 0, var/damagetype = BRUTE, var/def_zone = null, var/blocked = 0, var/damage_flags = 0, var/obj/used_weapon = null, var/obj/item/organ/external/given_organ = null, var/allow_dismemberment = TRUE)
+/mob/living/carbon/human/apply_damage(var/damage = 0, var/damagetype = BRUTE, var/def_zone = null, var/blocked = 0, var/damage_flags = 0, var/obj/used_weapon = null, var/obj/item/organ/external/given_organ = null, var/allow_dismemberment = TRUE, var/tier_bonus = null)
 	if(status_flags & GODMODE)
 		return
 	SET_ARGS(species.handle_apply_damage(arglist(list(src)+args)))

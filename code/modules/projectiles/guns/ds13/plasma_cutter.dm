@@ -32,12 +32,12 @@
 	desc = "A high power plasma cutter designed to cut through tungsten reinforced bulkheads during engineering works. Also a rather hazardous improvised weapon, capable of severing limbs in a few shots."
 	projectile_type = /obj/item/projectile/beam/cutter/plasma
 
-
-
-
-
-
-
+/obj/item/gun/energy/cutter/rending
+	name = "211-S Plasma Cutter"
+	desc = "An illegally modified plasma cutter designed to cut through bone. For some reason, flesh seems to absorb part of the impact."
+	color = "#e97f83"
+	projectile_type = /obj/item/projectile/beam/cutter/rending
+	charge_cost = 200
 
 /obj/item/projectile/beam/cutter
 	name = "plasma arc"
@@ -66,14 +66,17 @@
 			M.dig(dig_amount)
 	. = ..()
 
-
-
 /obj/item/projectile/beam/cutter/plasma
 	damage = 18.5
 	kill_count = 7 //an upgrade over the mining cutter, used for engineering work, but still not a proper firearm
 	dig_power = 900
 
-
+/obj/item/projectile/beam/cutter/rending
+	damage = 18.5
+	tier_2_bonus = 1
+	tier_3_bonus = 1
+	kill_count = 6 //more sensitive to friction
+	dig_power = 300 //No longer cuts rock well
 
 
 //----------------------------

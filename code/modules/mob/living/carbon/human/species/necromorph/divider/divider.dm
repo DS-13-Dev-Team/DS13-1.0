@@ -5,6 +5,7 @@
 	blurb = "A bizarre walking horrorshow, slow but extremely durable. On death, it splits into five smaller creatures, in an attempt to find a new body to control. The divider is hard to kill, and has several abilities which excel at pinning down a lone target."
 	unarmed_types = list(/datum/unarmed_attack/claws/strong/divider)
 	total_health = 300
+	tier_2_mod = DAM_MOD_T2
 	biomass = 145
 	require_total_biomass	=	BIOMASS_REQ_T2
 	mass = 120

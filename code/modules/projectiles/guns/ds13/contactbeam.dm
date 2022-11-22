@@ -258,7 +258,7 @@
 	origin_tech = list(TECH_POWER = 6)
 	icon = 'icons/obj/ammo.dmi'
 	icon_state = "contact_energy"
-	w_class = ITEM_SIZE_LARGE
+	w_class = ITEM_SIZE_NORMAL
 	maxcharge = 1000
 	matter = list(MATERIAL_STEEL = 700, MATERIAL_SILVER = 80)
 

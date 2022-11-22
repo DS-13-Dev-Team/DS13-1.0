@@ -907,6 +907,20 @@ var/global/list/common_tools = list(
 	if (O.edge) return 1
 	return 0
 
+/proc/is_tier_1(obj/O as obj)
+	if (!O) return 0
+	if (O.tier_1_bonus) return 1
+	return 0
+
+/proc/is_tier_2(obj/O as obj)
+	if (!O) return 0
+	if (O.tier_2_bonus) return 1
+	return 0
+
+/proc/is_tier_3(obj/O as obj)
+	if (!O) return 0
+	if (O.tier_2_bonus) return 1
+	return 0
 
 //For items that can puncture e.g. thick plastic but aren't necessarily sharp
 //Returns 1 if the given item is capable of popping things like balloons, inflatable barriers, or cutting police tape.

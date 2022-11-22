@@ -13,6 +13,7 @@
 	blurb = "The frontline soldier of the necromorph horde. Slow when not charging, but its blade arms make for powerful melee attacks"
 	unarmed_types = list(/datum/unarmed_attack/blades, /datum/unarmed_attack/bite/weak) //Bite attack is a backup if blades are severed
 	total_health = 90
+	tier_1_mod = DAM_MOD_T1 //doesn't care much about heavy-duty firearms.
 	biomass = 50
 	mass = 70
 
@@ -142,6 +143,8 @@
 	unarmed_types = list(/datum/unarmed_attack/blades/strong, /datum/unarmed_attack/bite/strong)
 	total_health = 250
 	burn_mod = 1.1
+	tier_2_mod = DAM_MOD_T2
+	tier_1_mod = 1
 	slowdown = 2.8
 	biomass = 125
 	require_total_biomass	=	BIOMASS_REQ_T2

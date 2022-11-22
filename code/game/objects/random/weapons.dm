@@ -42,7 +42,8 @@
 	/obj/item/gun/projectile/ripper = 0.8,
 	/obj/item/gun/energy/forcegun = 1,
 	/obj/item/gun/energy/cutter = 2,
-	/obj/item/gun/energy/cutter/plasma = 1.2,
+	/obj/item/gun/energy/cutter/plasma = 0.8,
+	/obj/item/gun/energy/cutter/rending = 0.4,
 	/obj/item/gun/projectile/linecutter = 0.4,
 	/obj/item/gun/projectile/detonator/loaded = 0.6,
 	/obj/item/gun/spray/hydrazine_torch = 0.4))

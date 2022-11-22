@@ -5,7 +5,7 @@
 	reagent_state = LIQUID
 	color = "#db5008"
 	metabolism = REM * 2
-	touch_met = 50 // It's acid!
+	touch_met = 5 // It's acid!
 	var/power = 0.9
 	var/meltdose = 23 // How much is needed to melt
 

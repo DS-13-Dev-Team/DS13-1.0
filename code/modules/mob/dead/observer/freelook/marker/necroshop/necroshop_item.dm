@@ -60,7 +60,7 @@
 		var/list/params = list("name" = null, "origin" = null, "target" = null, "price" = null, "dir" = null, "path" = null, "user" = null, "queue" = null, "limited" = null, "reqtotal" = null, "item" = null, "free" = null)
 		params["name"] = name
 		params["origin"] = caller.selected_spawn.spawnpoint	//Where are we spawning from? This may be useful for visual effects
-		var/list/turfs = caller.selected_spawn.spawnpoint.clear_turfs_in_view(3)
+		var/list/turfs = caller.selected_spawn.spawnpoint.clear_turfs_in_view(1)
 		if (!turfs.len)
 			return //Failed?
 
