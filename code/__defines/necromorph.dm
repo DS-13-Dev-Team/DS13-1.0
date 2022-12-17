@@ -64,7 +64,7 @@
 #define BIOMASS_REQ_T3	1250
 #define BIOMASS_REQ_T4	3825
 
-#define DAM_MOD_T1 0.85
+#define DAM_MOD_T1 0.91
 #define DAM_MOD_T2 1.25
 #define DAM_MOD_T3 1.35
 
