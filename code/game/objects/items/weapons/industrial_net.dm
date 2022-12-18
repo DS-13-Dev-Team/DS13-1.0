@@ -8,6 +8,7 @@
 	//on the floor
 	layer = CATWALK_LAYER//probably? Should cover cables, pipes and the rest of objects that are secured on the floor
 	max_health = 50
+	resistance = 0
 
 
 /obj/structure/net/Crossed(atom/movable/O)

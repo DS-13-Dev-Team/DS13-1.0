@@ -14,7 +14,7 @@
 	unarmed_types = list(/datum/unarmed_attack/blades, /datum/unarmed_attack/bite/weak) //Bite attack is a backup if blades are severed
 	total_health = 90
 	tier_1_mod = DAM_MOD_T1 //doesn't care much about heavy-duty firearms.
-	biomass = 50
+	biomass = 40
 	mass = 70
 
 	biomass_reclamation_time	=	5.5 MINUTES
