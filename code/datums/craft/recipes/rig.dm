@@ -14,13 +14,13 @@
 	list(CRAFT_TOOL, QUALITY_WIRE_CUTTING, 10, WORKTIME_NORMAL, FAILCHANCE_NORMAL, SKILL_ELECTRICAL)
 	)
 
-/datum/craft_recipe/rig/kinesis_upgrade
-	name = "Fleshy RIG"
-	desc = "Upgrade a zealot rig into a flesh rig"
-	result = /obj/item/rig_module/kinesis/advanced
-	flags = CRAFT_ON_WORKBENCH
+/datum/craft_recipe/rig/flesh
+	name = "Odd RIG"
+	desc = "Upgrade a zealot rig into a odd rig"
+	time = 50
+	result = /obj/item/rig/zealot/flesh
 	steps = list(
-	list(CRAFT_OBJECT, /obj/item/rig_module/kinesis),
-	list(CRAFT_STACK, /obj/item/stack/power_node, 1),
+	list(CRAFT_OBJECT, /obj/item/rig/zealot),
+	list(CRAFT_STACK, /obj/item/stack/special_node/evil, 1),
 	list(CRAFT_TOOL, QUALITY_WIRE_CUTTING, 10, WORKTIME_NORMAL, FAILCHANCE_NORMAL, SKILL_ELECTRICAL)
 	)
