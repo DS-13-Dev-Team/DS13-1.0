@@ -1,7 +1,7 @@
 // Patreon rig
 
 /obj/item/rig/zealot/flesh
-	name = "Flesh RIG"
+	name = "Bloated RIG"
 	desc = "A horrifying amalgamation of flesh and a sparse amount of mechanical components, loosely resembling a rig."
 	icon_state = "flesh"
 
