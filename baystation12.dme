@@ -1659,6 +1659,7 @@
 #include "code\modules\clothing\spacesuits\rig\suits\ert.dm"
 #include "code\modules\clothing\spacesuits\rig\suits\excavation.dm"
 #include "code\modules\clothing\spacesuits\rig\suits\firesuit.dm"
+#include "code\modules\clothing\spacesuits\rig\suits\flesh.dm"
 #include "code\modules\clothing\spacesuits\rig\suits\hacker.dm"
 #include "code\modules\clothing\spacesuits\rig\suits\light.dm"
 #include "code\modules\clothing\spacesuits\rig\suits\marine.dm"
