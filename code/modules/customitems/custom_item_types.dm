@@ -264,3 +264,13 @@
 	category = CATEGORY_RIG
 	subcategory = SUBCATEGORY_FRAMES
 
+/datum/patron_item/flesh
+	name = "fleshy power node"
+	description = "Use on a zealot rig to obtain"
+	item_path = /obj/item/stack/special_node/evil
+	id = "flesh"
+	store_cost = 1000
+	store_access = ACCESS_WHITELIST
+
+	category = CATEGORY_RIG
+	subcategory = SUBCATEGORY_FRAMES
