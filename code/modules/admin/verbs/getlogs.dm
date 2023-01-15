@@ -85,7 +85,7 @@
 	set name = "Show Server Log"
 	set desc = "Shows today's server log."
 
-	var/path = "data/logs/[time2text(world.realtime,"YYYY/MM-Month/DD-Day")].log"
+	var/path = "data/logs/[time2text(world.realtime,"YYYY/MM/DD")]/round-[GLOB.round_id]/game.log"
 	if( fexists(path) )
 		src << run(file(path))
 	else
@@ -100,7 +100,7 @@
 	set name = "Show Server Attack Log"
 	set desc = "Shows today's server attack log."
 
-	var/path = "data/logs/[time2text(world.realtime,"YYYY/MM-Month/DD-Day")] Attack.log"
+	var/path = "data/logs/[time2text(world.realtime,"YYYY/MM/DD")]/round-[GLOB.round_id]/attack.log"
 	if( fexists(path) )
 		src << run(file(path))
 	else
