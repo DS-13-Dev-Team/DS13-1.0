@@ -62,6 +62,8 @@
 /// Returns the md5 of a file at a given path.
 /proc/md5filepath(path)
 	. = md5(file(path))
+	if(TICK_CHECK)
+		CRASH("Huh, it took a while so we got overtime")
 
 /// Save file as an external file then md5 it.
 /// Used because md5ing files stored in the rsc sometimes gives incorrect md5 results.
