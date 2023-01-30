@@ -133,7 +133,7 @@ proc/get_open_ticket_by_client(var/datum/client_lite/owner)
 					ticket_dat += " - <a href='byond://?src=\ref[src];action=take;ticket=\ref[ticket]'>[(open == 1) ? "TAKE" : "JOIN"]</a>"
 				if(ticket.status != TICKET_CLOSED && (C.holder || ticket.status == TICKET_OPEN))
 					ticket_dat += " - <a href='byond://?src=\ref[src];action=close;ticket=\ref[ticket]'>CLOSE</a>"
-			if(C.holder)
+			if(C.holder && owner_client)
 				ticket_dat += " - [ADMIN_FULLMONTY_NONAME(owner_client.mob)]"
 			if(open_ticket && open_ticket == ticket)
 				ticket_dat += "</i>"
