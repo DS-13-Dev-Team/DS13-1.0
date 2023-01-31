@@ -12,4 +12,21 @@ It does not actually determine which tiles can be seen at any given moment
 
 //Overrideable proc for any datum to return what turfs it can "see" for visualnets
 /atom/proc/get_visualnet_tiles()
-	return turfs_in_view()
+	var/list/things = list()
+	FOR_DVIEW(var/turf/T, world.view, get_turf(src), 0)
+		things += T
+	END_FOR_DVIEW
+	return things
+
+/mob/get_visualnet_tiles()
+	var/origin
+	if (!view_offset)
+		origin = get_turf(src)
+	else
+		origin = get_view_centre()
+
+	var/list/things = list()
+	FOR_DVIEW(var/turf/T, view_range, origin, 0)
+		things += T
+	END_FOR_DVIEW
+	return things
