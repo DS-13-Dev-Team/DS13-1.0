@@ -1,3 +1,5 @@
+/// Within given range, but not counting z-levels
+#define IN_GIVEN_RANGE(source, other, given_range) (get_dist(source, other) <= given_range && (get_step(source, 0)?:z) == (get_step(other, 0)?:z))
 
 #define isweakref(D) (istype(D, /datum/weakref))
 
@@ -56,7 +58,7 @@
 
 #define isrig(A)	istype(A, /obj/item/rig)
 
-#define issignal(A) istype(A, /mob/dead/observer/eye/signal)
+#define issignal(A) istype(A, /mob/dead/observer/signal)
 
 #define isstack(A) istype(A, /obj/item/stack)
 

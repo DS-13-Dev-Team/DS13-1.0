@@ -299,7 +299,7 @@ if (result == EXECUTION_CANCEL && can_interrupt){\
 		reward_heal = 0
 
 	if (reward_energy)
-		for (var/mob/dead/observer/eye/signal/S in SSnecromorph.signals)
+		for (var/mob/dead/observer/signal/S in SSnecromorph.signals)
 			var/datum/extension/psi_energy/PE = get_energy_extension()
 			if (PE)
 				to_chat(S, SPAN_EXECUTION("You are invigorated by the spectacle before you, and gain [reward_energy] energy!"))

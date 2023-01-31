@@ -378,7 +378,7 @@
 
 		H.failed_last_breath = 0 //So mobs that died of oxyloss don't revive and have perpetual out of breath.
 		if(H.mind)
-			var/mob/dead/observer/eye/signal/mob = H.mind.current
+			var/mob/dead/observer/signal/mob = H.mind.current
 			if(mob.client)
 				if(tgui_alert(mob, "Someone tries to resurrect you. Do you want to re-enter your corpse?","I love Defib!",list("Yes","No")) != "Yes")
 					to_chat(user, SPAN_NOTICE("The soule refuses to come back!"))

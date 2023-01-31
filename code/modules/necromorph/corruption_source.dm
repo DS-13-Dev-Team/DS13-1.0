@@ -15,11 +15,6 @@
 	var/turf/sourceturf
 	var/list/corruption_vines = list()	//A list of all the vines we're currently supporting
 
-	//What tiles are revealed to the visualnet by our corruption vines?
-	var/list/visualnet_tiles = list()
-	var/needs_update = TRUE	//A dirty bit. Set true when our list of vines changes
-	//If its true when visualnets update, we'll re-fetch all the tiles from the corruption
-
 	//Is this source currently active?
 	var/enabled = TRUE
 
@@ -51,12 +46,7 @@
 
 	//Corruption tiles add vision
 	source.visualnet_range = range
-	GLOB.necrovision.add_source(source)
-
-
-
-
-
+	GLOB.necrovision.addVisionSource(source, VISION_SOURCE_RANGE, FALSE)
 
 
 /datum/extension/corruption_source/Destroy()
@@ -79,19 +69,10 @@
 	corruption_vines |= applicant
 	applicant.source = src
 
-	//When we gain or lose a vine, our visualnet has changed
-	needs_update = TRUE
-	applicant.update_chunks()	//Lets also update the chunk(s) the vine is in/next to
-
 /datum/extension/corruption_source/proc/unregister(var/obj/effect/vine/corruption/applicant)
 	corruption_vines -= applicant
 	if (applicant.source == src)
 		applicant.source = null
-
-	//When we gain or lose a vine, our visualnet has changed
-	needs_update = TRUE
-	applicant.update_chunks()	//Lets also update the chunk(s) the vine is in/next to
-
 
 //Removes a specified patch from its old source and registers us as the new source
 /datum/extension/corruption_source/proc/take_posession(var/obj/effect/vine/corruption/applicant)
@@ -198,22 +179,3 @@
 	multiplier /= growth_speed
 
 	return multiplier
-
-/* Visualnet Handling */
-//-------------------
-
-//A corruption source caches the visual data from all the turfs under its banner
-/datum/extension/corruption_source/get_visualnet_tiles(var/datum/visualnet/network)
-
-	if (needs_update)
-		update_visualnet()
-
-
-	return visualnet_tiles
-
-//This proc reads and stores the visualnet tiles from all of our vines. It is only called when potentially necessary
-/datum/extension/corruption_source/proc/update_visualnet()
-	visualnet_tiles = list()
-	for (var/obj/effect/vine/corruption/C in corruption_vines)
-		visualnet_tiles += C.get_visualnet_tiles(GLOB.necrovision)
-	needs_update = FALSE

@@ -55,7 +55,7 @@
 		activate()
 
 	SSnecromorph.register_shard(src)
-	GLOB.necrovision.add_source(src)
+	GLOB.necrovision.addVisionSource(src, VISION_SOURCE_RANGE, TRUE)
 
 
 /obj/item/marker_shard/Destroy()
@@ -101,7 +101,7 @@
 		set_light_on(FALSE)
 
 //The shard reveals an area around it, seeing through walls
-/obj/item/marker_shard/get_visualnet_tiles(var/datum/visualnet/network)
+/obj/item/marker_shard/get_visualnet_tiles()
 	var/turf/centre = get_turf(src)
 	return RANGE_TURFS(centre, visualnet_range)
 

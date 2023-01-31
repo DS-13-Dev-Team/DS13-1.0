@@ -66,7 +66,7 @@
 			if(head)
 				head.take_external_damage(120, 0, DAM_SHARP, blade, TRUE)
 
-			for (var/mob/dead/observer/eye/signal/S in SSnecromorph.signals)
+			for (var/mob/dead/observer/signal/S in SSnecromorph.signals)
 				var/datum/extension/psi_energy/PE = get_energy_extension()
 				if (PE)
 					to_chat(S, SPAN_EXECUTION("You are invigorated by the spectacle before you, and gain 250 energy!"))

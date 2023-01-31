@@ -25,7 +25,7 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 	"markersignal-25"
 	))
 
-/mob/dead/observer/eye/signal
+/mob/dead/observer/signal
 	name = "Signal"
 	real_name = "Signal"
 	icon = 'icons/mob/eye.dmi'
@@ -35,6 +35,7 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 	invisibility = INVISIBILITY_MARKER
 	see_invisible = SEE_INVISIBLE_MARKER
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
+	hud_type = /datum/hud/marker
 	var/energy_extension_type = /datum/extension/psi_energy/signal
 	var/datum/extension/psi_energy/psi_energy
 
@@ -47,15 +48,19 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 		/datum/movement_handler/mob/incorporeal/eye,
 	)
 
-/mob/dead/observer/eye/signal/set_eyeobj(var/atom/new_eye)
+	var/list/visibleChunks = list()
+	var/datum/markernet/visualnet
+	var/static_visibility_range = 16
+
+/mob/dead/observer/signal/set_eyeobj(var/atom/new_eye)
 	eyeobj = new_eye
 	//No messing with movement handlers here
 
 
-/mob/dead/observer/eye/signal/is_necromorph()
+/mob/dead/observer/signal/is_necromorph()
 	return TRUE
 
-/mob/dead/observer/eye/signal/apply_customisation(var/datum/preferences/prefs)
+/mob/dead/observer/signal/apply_customisation(var/datum/preferences/prefs)
 	var/list/custom
 	if (prefs)
 		custom = prefs.get_necro_custom_list()
@@ -67,21 +72,23 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 		variations = things.Copy()
 	update_icon()
 
-/mob/dead/observer/eye/signal/update_icon()
+/mob/dead/observer/signal/update_icon()
 	if (LAZYLEN(variations))
 		icon_state = pick(variations)
 	else
 		icon_state = pick(GLOB.signal_sprites)
 
 //This will have a mob passed in that we were created from
-/mob/dead/observer/eye/signal/New(mob/body)
-	..()
+/mob/dead/observer/signal/Initialize(mapload)
+	. = ..()
 	visualnet = GLOB.necrovision	//Set the visualnet of course
+	visualnet.eyes += src
 
 	variations = GLOB.signal_sprites.Copy()	//All are enabled by default
 
-	var/turf/T = get_turf(body)
-	if(ismob(body))
+	var/turf/T = get_turf(loc)
+	if(ismob(loc))
+		var/mob/body = loc
 		mind = body.mind
 		key = body.key
 		possess(src) //Possess thyself
@@ -105,17 +112,17 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 	if (response != "Yes")
 		return
 
-	var/mob/dead/observer/eye/signal/S = join_marker()	//This cannot fail, do safety checks first
+	var/mob/dead/observer/signal/S = join_marker()	//This cannot fail, do safety checks first
 	S.jump_to_marker()
 
 /mob/proc/join_marker()
 	message_necromorphs(SPAN_NOTICE("[key] has joined the necromorph horde."))
-	var/mob/dead/observer/eye/signal/S = new(src)
+	var/mob/dead/observer/signal/S = new(src)
 	set_necromorph(TRUE)
 
 	return S
 
-/mob/dead/observer/eye/signal/verb/leave_marker_verb()
+/mob/dead/observer/signal/verb/leave_marker_verb()
 	set name = "Leave Necromorph Horde"
 	set category = "Necromorph"
 	set desc = "Leaves the necromorph team, making you a normal ghost"
@@ -132,7 +139,7 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 
 
 //Signals don't leave behind ghosts if they are clientless
-/mob/dead/observer/eye/signal/ghostize(var/can_reenter_corpse = CORPSE_CAN_REENTER)
+/mob/dead/observer/signal/ghostize(var/can_reenter_corpse = CORPSE_CAN_REENTER)
 	//Lets not look like an eye after we become a ghost
 	icon = 'icons/mob/mob.dmi'
 	icon_state = "ghost"
@@ -144,7 +151,7 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 
 //Possession and evacuating
 //-------------------------------
-/mob/dead/observer/eye/signal/verb/necro_possess(var/mob/living/L)
+/mob/dead/observer/signal/verb/necro_possess(var/mob/living/L)
 	set name = "Possess"
 	set category = "Necromorph"
 	set desc = "Take control of a necromorph vessel"
@@ -194,7 +201,7 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 			marker.become_master_signal(src)
 		return
 	else
-		var/mob/signal = new /mob/dead/observer/eye/signal(src)
+		var/mob/signal = new /mob/dead/observer/signal(src)
 		signal.client?.init_verbs()
 		if(isobserver(src) && !issignal(src))
 			qdel(src)
@@ -202,7 +209,7 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 
 
 //Signals cant become signals, silly
-/mob/dead/observer/eye/signal/necro_ghost()
+/mob/dead/observer/signal/necro_ghost()
 	return src
 
 
@@ -213,7 +220,7 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 //---------------------------
 
 
-/mob/dead/observer/eye/signal/Login()
+/mob/dead/observer/signal/Login()
 	..()
 	set_necromorph(TRUE)
 	SSnecromorph.signals |= src
@@ -225,37 +232,46 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 	if (client)
 		apply_customisation(client.prefs)
 
+		for(var/datum/markerchunk/chunk as anything in visibleChunks)
+			client.images += chunk.active_masks
+		visualnet.visibility(src)
+
 	spawn(1)	//Prevents issues when downgrading from master
-		if (!istype(src, /mob/dead/observer/eye/signal/master))	//The master doesn't queue
-
-
-			add_verb(src, /mob/dead/observer/eye/signal/proc/join_necroqueue)
+		if (!istype(src, /mob/dead/observer/signal/master))	//The master doesn't queue
+			add_verb(src, /mob/dead/observer/signal/proc/join_necroqueue)
 			if (client && client.prefs && client.prefs.auto_necroqueue)
 				SSnecromorph.join_necroqueue(src)
 
+/mob/dead/observer/signal/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
+	..()
+	if(client)
+		visualnet.visibility(src)
+		update_static(old_loc)
+	return TRUE
 
 
-/mob/dead/observer/eye/signal/Logout()
-	if (!istype(src, /mob/dead/observer/eye/signal/master))
+/mob/dead/observer/signal/Logout()
+	if (!istype(src, /mob/dead/observer/signal/master))
 		SSnecromorph.remove_from_necroqueue(src)
 	.=..()
 	spawn()
 		if(!QDELETED(src))
 			qdel(src)	//A signal shouldn't exist with nobody in it
 
-/mob/dead/observer/eye/signal/Destroy()
+/mob/dead/observer/signal/Destroy()
 	SSnecromorph.remove_from_necroqueue(src)
 	SSnecromorph.signals -= src
+	visualnet.eyes -= src
 	return ..()
 
-/mob/dead/observer/eye/signal/proc/join_necroqueue()
+/mob/dead/observer/signal/proc/join_necroqueue()
 	set name = "Join Necroqueue"
 	set category = SPECIES_NECROMORPH
 
 	SSnecromorph.join_necroqueue(src)
 
 
-/mob/dead/observer/eye/signal/proc/leave_necroqueue()
+/mob/dead/observer/signal/proc/leave_necroqueue()
 	set name = "Leave Necroqueue"
 	set category = SPECIES_NECROMORPH
 
@@ -263,7 +279,7 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 
 //Misc Verbs
 //--------------------------------
-/mob/dead/observer/eye/signal/verb/jump_to_marker()
+/mob/dead/observer/signal/verb/jump_to_marker()
 	set name = "Jump to Marker"
 	set category = SPECIES_NECROMORPH
 
@@ -273,7 +289,7 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 
 	to_chat(src, SPAN_DANGER("Error: No marker found!"))
 
-/mob/dead/observer/eye/signal/verb/jump_to_alive_necro()
+/mob/dead/observer/signal/verb/jump_to_alive_necro()
 	set name = "Jump to Necromorph"
 	set category = SPECIES_NECROMORPH
 
@@ -304,14 +320,14 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 /datum/click_handler/signal/OnShiftClick(var/atom/A, var/params)
 	return user.examinate(A)
 
-/atom/proc/attack_signal(var/mob/dead/observer/eye/signal/user)
+/atom/proc/attack_signal(var/mob/dead/observer/signal/user)
 	return TRUE
 
 
 /*
 	Energy Handling
 */
-/mob/dead/observer/eye/signal/proc/start_energy_tick()
+/mob/dead/observer/signal/proc/start_energy_tick()
 	if (!key)
 		return	//Logged in players only
 	var/datum/player/myself = get_or_create_player(key)
@@ -323,7 +339,7 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 
 
 
-/mob/dead/observer/eye/signal/verb/ability_menu()
+/mob/dead/observer/signal/verb/ability_menu()
 	set name = "Ability Menu"
 	set desc = "Opens the menu to cast abilities using your psi energy"
 	set category = "Necromorph"
@@ -336,7 +352,7 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 /*
 	Verb handling
 */
-/mob/dead/observer/eye/signal/update_verbs()
+/mob/dead/observer/signal/update_verbs()
 	.=..()
 	update_verb(/mob/proc/jump_to_shard, (SSnecromorph.shards.len > 0))	//Give us the verb to jump to shards, if there are any
 
