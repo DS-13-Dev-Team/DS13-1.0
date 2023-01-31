@@ -4,9 +4,11 @@
 	keep_local_name = TRUE
 
 	var/list/asset_dirs = list(
+		"nano/css/",
 		"nano/images/",
 		"nano/images/modular_computers/",
-		"nano/templates/"
+		"nano/templates/",
+		"nano/js/"
 	)
 
 /datum/asset/simple/nanoui/register()
