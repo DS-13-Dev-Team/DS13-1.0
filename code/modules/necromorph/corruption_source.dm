@@ -39,15 +39,9 @@
 
 	var/obj/effect/vine/corruption/basevine = (locate(/obj/effect/vine/corruption) in get_turf(source))
 	if (!basevine)
-		basevine = new /obj/effect/vine/corruption(get_turf(source),GLOB.corruption_seed, null, start_matured = 1, newsource = src)
-
+		basevine = new /obj/effect/vine/corruption(get_turf(source),GLOB.corruption_seed, null, TRUE, src)
 
 	evaluate_existing()
-
-	//Corruption tiles add vision
-	source.visualnet_range = range
-	GLOB.necrovision.addVisionSource(source, VISION_SOURCE_RANGE, FALSE)
-
 
 /datum/extension/corruption_source/Destroy()
 	GLOB.corruption_sources -= src
@@ -68,11 +62,13 @@
 
 	corruption_vines |= applicant
 	applicant.source = src
+	GLOB.necrovision.addVisionSource(applicant, VISION_SOURCE_RANGE, FALSE)
 
 /datum/extension/corruption_source/proc/unregister(var/obj/effect/vine/corruption/applicant)
 	corruption_vines -= applicant
 	if (applicant.source == src)
 		applicant.source = null
+	GLOB.necrovision.removeVisionSource(applicant)
 
 //Removes a specified patch from its old source and registers us as the new source
 /datum/extension/corruption_source/proc/take_posession(var/obj/effect/vine/corruption/applicant)

@@ -59,22 +59,19 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 /obj/effect/vine/is_organic()
 	return TRUE
 
-/obj/effect/vine/corruption/New(var/newloc, var/datum/seed/newseed, var/obj/effect/vine/corruption/newparent, var/start_matured = 0, var/datum/extension/corruption_source/newsource)
-
+/obj/effect/vine/corruption/Initialize(mapload, datum/seed/newseed, obj/effect/vine/corruption/newparent, start_matured = 0, datum/extension/corruption_source/newsource)
 	alpha = min_alpha
-
-
 	if (!GLOB.corruption_seed)
 		GLOB.corruption_seed = new /datum/seed/corruption()
 	seed = GLOB.corruption_seed
 
+	. = ..()
+
 	source = newsource
 	source.register(src)
-	.=..()
 
 /obj/effect/vine/corruption/Destroy()
-	if (source)
-		source.unregister(src)
+	source?.unregister(src)
 	.=..()
 
 

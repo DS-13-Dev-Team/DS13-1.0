@@ -16,7 +16,7 @@
 			seed.display_name = "strange plants" //more thematic for the vine infestation event
 
 			//make vine zero start off fully matured
-			new /obj/effect/vine(T,seed, start_matured = 1)
+			new /obj/effect/vine(T,seed, null, TRUE)
 
 			log_and_message_admins("Spacevines spawned in \the [get_area(T)]", location = T)
 			return
@@ -65,7 +65,7 @@
 /obj/effect/vine/single
 	spread_chance = 0
 
-/obj/effect/vine/New(var/newloc, var/datum/seed/newseed, var/obj/effect/vine/newparent, var/start_matured = 0)
+/obj/effect/vine/Initialize(mapload, datum/seed/newseed, obj/effect/vine/newparent, start_matured = 0)
 	if(!newparent)
 		parent = src
 	else
@@ -76,9 +76,7 @@
 	if(start_matured)
 		mature_time = 0
 		health = max_health
-	..()
 
-/obj/effect/vine/Initialize()
 	. = ..()
 
 	if(!SSplants)
