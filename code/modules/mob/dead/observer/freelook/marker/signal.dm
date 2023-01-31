@@ -36,6 +36,12 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 	see_invisible = SEE_INVISIBLE_MARKER
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 	hud_type = /datum/hud/marker
+	var/name_sufix = "Eye"
+	var/sprint = 10
+	var/cooldown = 0
+	var/acceleration = 1
+	var/owner_follows_eye = 0
+	var/mob/owner = null
 	var/energy_extension_type = /datum/extension/psi_energy/signal
 	var/datum/extension/psi_energy/psi_energy
 
@@ -51,6 +57,93 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 	var/list/visibleChunks = list()
 	var/datum/markernet/visualnet
 	var/static_visibility_range = 16
+
+/mob/dead/observer/signal/pointed()
+	set popup_menu = 0
+	set src = usr.contents
+	return 0
+
+/mob/dead/observer/signal/examine(mob/user)
+	return
+
+/mob/dead/observer/signal/Move(n, direct)
+	if(owner == src)
+		return EyeMove(direct)
+	return 0
+
+/mob/dead/observer/signal/proc/possess(var/mob/user)
+	if(owner && owner != user)
+		return
+	if(owner && owner.eyeobj != src)
+		return
+	owner = user
+	owner.set_eyeobj(src)
+	SetName("[owner.name] ([name_sufix])") // Update its name
+	if(owner.client)
+		owner.client.eye = src
+		owner.update_vision_range()
+	setLoc(owner)
+	if (visualnet)
+		visualnet.visibility(src)
+
+/mob/dead/observer/signal/proc/release(var/mob/user)
+	if(owner != user || !user)
+		return
+	if(owner.eyeobj != src)
+		return
+	if (visualnet)
+		visualnet.eyes -= src
+		visibleChunks.Cut()
+	owner.eyeobj = null
+	owner.update_vision_range()
+	owner = null
+	SetName(initial(name))
+
+// Use this when setting the eye's location.
+// It will also stream the chunk that the new loc is in.
+/mob/dead/observer/signal/proc/setLoc(var/T)
+	if(!owner)
+		return FALSE
+
+	T = get_turf(T)
+	if(!T || T == loc)
+		return FALSE
+
+	forceMove(T)
+
+	if(owner.client)
+		owner.client.eye = src
+	if(owner_follows_eye)
+		owner.forceMove(loc)
+
+	if (visualnet)
+		visualnet.visibility(src)
+	return TRUE
+
+/mob/dead/observer/signal/proc/getLoc()
+	if(owner)
+		if(!isturf(owner.loc) || !owner.client)
+			return
+		return loc
+
+/mob/dead/observer/signal/EyeMove(direct)
+	var/initial = initial(sprint)
+	var/max_sprint = 50
+
+	if(cooldown && cooldown < world.time)
+		sprint = initial
+
+	for(var/i = 0; i < max(sprint, initial); i += 20)
+		var/turf/step = get_turf(get_step(src, direct))
+		if(step)
+			setLoc(step)
+
+	cooldown = world.time + 5
+	if(acceleration)
+		sprint = min(sprint + 0.5, max_sprint)
+	else
+		sprint = initial
+	return 1
 
 /mob/dead/observer/signal/set_eyeobj(var/atom/new_eye)
 	eyeobj = new_eye
@@ -262,6 +355,10 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 	SSnecromorph.remove_from_necroqueue(src)
 	SSnecromorph.signals -= src
 	visualnet.eyes -= src
+	visibleChunks.Cut()
+	release(owner)
+	owner = null
+	visualnet = null
 	return ..()
 
 /mob/dead/observer/signal/proc/join_necroqueue()

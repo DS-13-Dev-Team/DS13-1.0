@@ -104,32 +104,44 @@
 	if(!queued_for_update)
 		return
 
+	PROFILE_TICK
 	for(var/mob/dead/observer/signal/client_eye as anything in seenby)
 		client_eye.client?.images -= active_masks
 
 	var/turf/point = locate(src.x + (CHUNK_SIZE / 2), src.y + (CHUNK_SIZE / 2), src.z)
+	PROFILE_TICK
 	for(var/atom/source as anything in queued_for_update)
+		PROFILE_TICK
 		if(!IN_GIVEN_RANGE(point, source, CHUNK_SIZE + (CHUNK_SIZE / 2)))
+			PROFILE_TICK
 			visionSources -= source
 			rangeVisionSources -= source
 			viewVisionSources -= source
 			continue
-
+		PROFILE_TICK
 		var/list/visible = list()
 		visionSources[source] = visible
+		PROFILE_TICK
 		for(var/turf/vis_turf as anything in (source.get_visualnet_tiles() & turfs))
 			visible += vis_turf
+		PROFILE_TICK
 
 	visibleTurfs.Cut()
 	active_masks.Cut()
 
+	PROFILE_TICK
 	for(var/atom/source as anything in visionSources)
 		visibleTurfs |= visionSources[source]
+	PROFILE_TICK
 
+	PROFILE_TICK
 	for(var/turf/vis_turf as anything in visibleTurfs)
 		active_masks += turfs[vis_turf]
+	PROFILE_TICK
 
+	PROFILE_TICK
 	for(var/mob/dead/observer/signal/client_eye as anything in seenby)
 		client_eye.client?.images += active_masks
+	PROFILE_TICK
 
 	queued_for_update = null
