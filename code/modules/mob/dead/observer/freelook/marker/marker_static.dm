@@ -23,6 +23,17 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/cameranet_static)
 		update_o(view)
 		RegisterSignal(owner.client, COMSIG_VIEW_SET, .proc/on_view_change)
 
+/atom/movable/screen/cameranet_static/Click(location, control, params)
+	var/datum/stack/click_handlers
+
+	if (usr)
+		click_handlers = usr.GetClickHandlers()
+
+		while (click_handlers.Num())
+			var/datum/click_handler/CH = click_handlers.Pop()
+			if (!CH.OnClick(src, params))
+				return
+
 /atom/movable/screen/cameranet_static/proc/on_view_change(datum/source, new_size)
 	SIGNAL_HANDLER
 	update_o(new_size)
