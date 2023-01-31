@@ -13,7 +13,6 @@
 	caliber = "seeker"
 	slot_flags = SLOT_BACK
 	accuracy = -30	//Don't try to hipfire
-	tier_1_bonus = 1 //Cut slashers some slack
 	ammo_type = /obj/item/ammo_casing/seeker
 	mag_insert_sound = 'sound/weapons/guns/interaction/rifle_load.ogg'
 	mag_remove_sound = 'sound/weapons/guns/interaction/pulse_magout.ogg'

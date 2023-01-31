@@ -18,7 +18,7 @@
 	unarmed_types = list(/datum/unarmed_attack/claws) //Bite attack is a backup if blades are severed
 	total_health = 121
 	tier_1_mod = DAM_MOD_T1
-	biomass = 70
+	biomass = 67.5
 
 	//Normal necromorph flags plus no slip
 	species_flags = SPECIES_FLAG_NO_PAIN | SPECIES_FLAG_NO_MINOR_CUT | SPECIES_FLAG_NO_POISON  | SPECIES_FLAG_NO_BLOCK | SPECIES_FLAG_NO_SLIP

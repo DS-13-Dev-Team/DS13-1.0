@@ -75,7 +75,7 @@ This variant is the earthgov standard, featuring the highest grade parts. "
 
 /obj/item/projectile/bullet/pulse
 	icon_state = "pulse"
-	damage = 8
+	damage = 8.1
 	embed = 0
 	structure_damage_factor = 0.5
 	penetration_modifier = 0
