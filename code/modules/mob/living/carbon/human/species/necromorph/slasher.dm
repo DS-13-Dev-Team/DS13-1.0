@@ -17,7 +17,7 @@
 	biomass = 40
 	mass = 70
 
-	biomass_reclamation_time	=	5.5 MINUTES
+	biomass_reclamation_time	=	4 MINUTES
 
 	icon_template = 'icons/mob/necromorph/slasher/fleshy.dmi'
 	damage_mask = 'icons/mob/necromorph/slasher/damage_mask.dmi' // This is badly implemented and should be fixed down the line.
