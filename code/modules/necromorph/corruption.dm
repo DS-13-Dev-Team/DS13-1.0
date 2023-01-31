@@ -65,10 +65,10 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 		GLOB.corruption_seed = new /datum/seed/corruption()
 	seed = GLOB.corruption_seed
 
-	. = ..()
-
 	source = newsource
 	source.register(src)
+
+	. = ..()
 
 /obj/effect/vine/corruption/Destroy()
 	source?.unregister(src)
