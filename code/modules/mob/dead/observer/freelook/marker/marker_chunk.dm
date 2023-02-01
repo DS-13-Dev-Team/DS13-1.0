@@ -91,13 +91,7 @@
 		if(src.z != eye.z)
 			continue
 		var/static_range = eye.static_visibility_range
-		if(x > (min(world.maxx, eye.x + static_range) & ~(CHUNK_SIZE - 1)))
-			continue
-		if(x < (max(0, eye.x - static_range) & ~(CHUNK_SIZE - 1)))
-			continue
-		if(y > (min(world.maxy, eye.y + static_range) & ~(CHUNK_SIZE - 1)))
-			continue
-		if(y < (max(0, eye.y - static_range) & ~(CHUNK_SIZE - 1)))
+		if(abs(eye.x - x) >= eye.static_visibility_range || abs(eye.y - y) >= eye.static_visibility_range)
 			continue
 
 		eye.visibleChunks += src

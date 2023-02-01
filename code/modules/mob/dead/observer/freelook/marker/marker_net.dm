@@ -179,17 +179,23 @@
 				else
 					// New chunks will handle our movement
 					chunk = generateChunk(x, y, new_loc.z)
-					for(var/mob/dead/observer/signal/eye as anything in eyes)
-						if(abs(eye.x - x) <= eye.static_visibility_range && abs(eye.y - y) <= eye.static_visibility_range)
-							chunk.add(eye)
+					chunk.safeAdd(eyes)
 
 	for(var/datum/markerchunk/chunk as anything in old_chunks-new_chunks)
 		chunk.visionSources -= source
 		chunk.rangeVisionSources -= source
 		chunk.viewVisionSources -= source
-		LAZYINITLIST(chunk.queued_for_update)
-		if(length(chunk.seenby))
-			chunk.update()
+		if(chunk.queued_for_update)
+			chunk.queued_for_update -= source
+		if(length(chunk.visionSources))
+			LAZYINITLIST(chunk.queued_for_update)
+			if(length(chunk.seenby))
+				chunk.update()
+		else
+			// We don't need empty chunks
+			old_chunks -= chunk
+			chunks -= "[chunk.x],[chunk.y],[chunk.z]"
+			qdel(chunk)
 
 	for(var/datum/markerchunk/chunk as anything in new_chunks-old_chunks)
 		chunk.visionSources[source] = list()
@@ -197,9 +203,6 @@
 			chunk.rangeVisionSources += source
 		else if(visionSources[source] == VISION_SOURCE_VIEW)
 			chunk.viewVisionSources += source
-		chunk.hasChanged(source)
-
-	for(var/datum/markerchunk/chunk as anything in old_chunks|new_chunks)
 		chunk.hasChanged(source)
 
 /datum/markernet/proc/checkTurfVis(turf/position)

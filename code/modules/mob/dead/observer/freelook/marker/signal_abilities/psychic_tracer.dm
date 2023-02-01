@@ -57,7 +57,7 @@
 /obj/effect/psychic_tracer/Initialize(mapload)
 	.=..()
 	RegisterSignal(loc, COMSIG_MOVABLE_MOVED, .proc/holder_moved)
-	loc = loc.loc
+	forceMove(loc.loc)
 
 /obj/effect/psychic_tracer/proc/holder_moved(atom/movable/source)
 	forceMove(source.loc)
