@@ -90,7 +90,6 @@
 	for(var/mob/dead/observer/signal/eye as anything in eyes)
 		if(src.z != eye.z)
 			continue
-		var/static_range = eye.static_visibility_range
 		if(abs(eye.x - x) >= eye.static_visibility_range || abs(eye.y - y) >= eye.static_visibility_range)
 			continue
 
