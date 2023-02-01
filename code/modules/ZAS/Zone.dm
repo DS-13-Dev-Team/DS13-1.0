@@ -86,6 +86,13 @@ Class Procs:
 	ASSERT(T.zone == src)
 	soft_assert(T in contents, "Lists are weird broseph")
 #endif
+
+	if(!T.can_safely_remove_from_zone())
+		INVOKE_ASYNC(src, .proc/rebuild)
+		return
+
+	T.c_copy_air()
+
 	contents.Remove(T)
 	fire_tiles.Remove(T)
 	if(T.fire)
@@ -93,7 +100,7 @@ Class Procs:
 		fuel_objs -= fuel
 	T.zone = null
 	T.update_graphic(graphic_remove = air.graphic)
-	if(contents.len)
+	if(length(contents))
 		air.group_multiplier = contents.len
 	else
 		c_invalidate()
@@ -136,6 +143,8 @@ Class Procs:
 		//T.dbg(invalid_zone)
 		T.needs_air_update = 0 //Reset the marker so that it will be added to the list.
 		SSair.mark_for_update(T)
+
+		CHECK_TICK
 
 /zone/proc/add_tile_air(datum/gas_mixture/tile_air)
 	//air.volume += CELL_VOLUME
