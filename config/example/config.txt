@@ -217,7 +217,7 @@ GITHUBURL https://github.com/DS-13-Dev-Team/DS13
 # BANAPPEALS http://example.com
 
 ## Discord URL - Used for the "Join the Discord" verb in OOC.
-DISCORD_URL https://discord.gg/WH2fT2Y
+DISCORD_URL https://discord.gg/7dDFs635Pn
 
 ## In-game features
 ## spawns a spellbook which gives object-type spells instead of verb-type spells for the wizard
