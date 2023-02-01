@@ -367,6 +367,10 @@ default behaviour is:
 		for(var/mob/living/carbon/slime/M in view(1,src))
 			M.UpdateFeed()
 
+	if(TICK_CHECK)
+		CRASH("HELLO.")
+
+
 /mob/living/verb/resist()
 	set name = "Resist"
 	set category = "IC"
