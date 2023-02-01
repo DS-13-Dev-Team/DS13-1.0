@@ -77,7 +77,7 @@
 	abbreviation = "MIN"
 	department = "Mining"
 	department_flag = MIN
-	total_positions = 100 // basically the assistants of this game anyways
+	total_positions = 25
 	spawn_positions = 25
 	supervisors = "the Mining Foreman"
 	selection_color = "#5e4215"
