@@ -77,7 +77,7 @@
 	abbreviation = "MIN"
 	department = "Mining"
 	department_flag = MIN
-	total_positions = 100 // they are basically the assisstants of deadspace anyways
+	total_positions = 25
 	spawn_positions = 25
 	supervisors = "the Mining Foreman"
 	selection_color = "#5e4215"
