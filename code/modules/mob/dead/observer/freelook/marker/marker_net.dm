@@ -203,6 +203,8 @@
 			chunk.rangeVisionSources += source
 		else if(visionSources[source] == VISION_SOURCE_VIEW)
 			chunk.viewVisionSources += source
+
+	for(var/datum/markerchunk/chunk as anything in new_chunks)
 		chunk.hasChanged(source)
 
 /datum/markernet/proc/checkTurfVis(turf/position)
