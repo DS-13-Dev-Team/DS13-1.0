@@ -49,8 +49,8 @@
 		//the zone will only really do heavy lifting once.
 		var/turf/simulated/S = src
 		if(S.zone)
-			if(!src.can_safely_remove_from_zone())
-				INVOKE_ASYNC(S.zone, zone/proc/rebuild)
+			if(!S.can_safely_remove_from_zone())
+				INVOKE_ASYNC(S.zone, /zone/proc/rebuild)
 			else
 				S.zone.remove(src)
 
