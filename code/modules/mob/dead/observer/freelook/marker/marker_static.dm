@@ -21,7 +21,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/cameranet_static)
 	if(owner.client)
 		var/view = owner.client.view || world.view
 		update_o(view)
-		RegisterSignal(owner.client, COMSIG_VIEW_SET, .proc/on_view_change)
+		RegisterSignal(owner.client, COMSIG_CLIENT_VIEW_SET, .proc/on_view_change)
 
 /atom/movable/screen/cameranet_static/Click(location, control, params)
 	var/datum/stack/click_handlers

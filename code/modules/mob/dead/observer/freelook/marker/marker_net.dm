@@ -63,16 +63,17 @@
 	if(!SSticker || (opacity_check && !A.opacity))
 		return
 	var/turf/T = get_turf(A)
-	if(T)
-		var/x1 = max(0, T.x - (CHUNK_SIZE / 2)) & ~(CHUNK_SIZE - 1)
-		var/y1 = max(0, T.y - (CHUNK_SIZE / 2)) & ~(CHUNK_SIZE - 1)
-		var/x2 = min(world.maxx, T.x + (CHUNK_SIZE / 2)) & ~(CHUNK_SIZE - 1)
-		var/y2 = min(world.maxy, T.y + (CHUNK_SIZE / 2)) & ~(CHUNK_SIZE - 1)
-		for(var/x = x1 to x2 step CHUNK_SIZE)
-			for(var/y = y1 to y2 step CHUNK_SIZE)
-				var/datum/markerchunk/chunk = chunkGenerated(x, y, T.z)
-				if(length(chunk?.viewVisionSources))
-					chunk.hasChanged(chunk.viewVisionSources)
+	if(!T)
+		return
+	var/x1 = max(0, T.x - (CHUNK_SIZE / 2)) & ~(CHUNK_SIZE - 1)
+	var/y1 = max(0, T.y - (CHUNK_SIZE / 2)) & ~(CHUNK_SIZE - 1)
+	var/x2 = min(world.maxx, T.x + (CHUNK_SIZE / 2)) & ~(CHUNK_SIZE - 1)
+	var/y2 = min(world.maxy, T.y + (CHUNK_SIZE / 2)) & ~(CHUNK_SIZE - 1)
+	for(var/x = x1 to x2 step CHUNK_SIZE)
+		for(var/y = y1 to y2 step CHUNK_SIZE)
+			var/datum/markerchunk/chunk = chunkGenerated(x, y, T.z)
+			if(length(chunk?.viewVisionSources))
+				chunk.hasChanged(chunk.viewVisionSources)
 
 /// Adds a vision source to the visual net
 /datum/markernet/proc/addVisionSource(atom/A, vision_type = VISION_SOURCE_RANGE, movable)
@@ -105,19 +106,7 @@
 						chunk.viewVisionSources += A
 				else
 					chunk = generateChunk(x, y, T.z)
-					for(var/mob/dead/observer/signal/eye as anything in eyes)
-						if(T.z != eye.z)
-							continue
-						var/static_range = eye.static_visibility_range
-						if(x > (min(world.maxx, eye.x + static_range) & ~(CHUNK_SIZE - 1)))
-							continue
-						if(x < (max(0, eye.x - static_range) & ~(CHUNK_SIZE - 1)))
-							continue
-						if(y > (min(world.maxy, eye.y + static_range) & ~(CHUNK_SIZE - 1)))
-							continue
-						if(y < (max(0, eye.y - static_range) & ~(CHUNK_SIZE - 1)))
-							continue
-						chunk.add(eye)
+					chunk.safeAdd(eyes)
 	if(movable)
 		RegisterSignal(A, COMSIG_MOVABLE_MOVED, .proc/onSourceMove)
 

@@ -48,7 +48,7 @@
 		view_radius = round(max(view_size[1], view_size[2])/2)
 		view = new_size
 
-	SEND_SIGNAL(src, COMSIG_VIEW_SET, new_size)
+	SEND_SIGNAL(src, COMSIG_CLIENT_VIEW_SET, new_size)
 
 	apply_clickcatcher()
 	mob.reload_fullscreens()

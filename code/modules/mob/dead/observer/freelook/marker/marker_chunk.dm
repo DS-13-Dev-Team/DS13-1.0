@@ -50,8 +50,6 @@
 
 	var/turf/centre_turf = locate(x + (CHUNK_SIZE / 2), y + (CHUNK_SIZE / 2), z)
 	for(var/atom/source as anything in netVisionSources)
-		if(source.z != z)
-			continue
 		if(!IN_GIVEN_RANGE(source, centre_turf, CHUNK_SIZE))
 			continue
 
@@ -69,27 +67,53 @@
 			viewVisionSources += source
 
 /datum/markerchunk/Destroy(force, ...)
-	for(var/mob/dead/observer/signal/eye as anything in seenby)
-		remove(eye)
+	remove(seenby)
 	active_masks = null
 	turfs = null
 	return ..()
 
 /// Add a Marker eye to the chunk
-/datum/markerchunk/proc/add(mob/dead/observer/signal/eye)
-	eye.visibleChunks += src
-	seenby += eye
-	if(queued_for_update)
-		update()
+/datum/markerchunk/proc/add(list/eyes)
+	if(!islist(eyes))
+		eyes = list(eyes)
+	for(var/mob/dead/observer/signal/eye as anything in eyes)
+		eye.visibleChunks += src
+		seenby += eye
+		if(queued_for_update)
+			update()
+		eye.client?.images += active_masks
 
-	eye.client?.images += active_masks
+//The same as add(list/eyes) expect it also does the safety checks
+/datum/markerchunk/proc/safeAdd(list/eyes)
+	if(!islist(eyes))
+		eyes = list(eyes)
+	for(var/mob/dead/observer/signal/eye as anything in eyes)
+		if(src.z != eye.z)
+			continue
+		var/static_range = eye.static_visibility_range
+		if(x > (min(world.maxx, eye.x + static_range) & ~(CHUNK_SIZE - 1)))
+			continue
+		if(x < (max(0, eye.x - static_range) & ~(CHUNK_SIZE - 1)))
+			continue
+		if(y > (min(world.maxy, eye.y + static_range) & ~(CHUNK_SIZE - 1)))
+			continue
+		if(y < (max(0, eye.y - static_range) & ~(CHUNK_SIZE - 1)))
+			continue
+
+		eye.visibleChunks += src
+		seenby += eye
+		if(queued_for_update)
+			update()
+		eye.client?.images += active_masks
 
 /// Remove a Marker eye from the chunk
-/datum/markerchunk/proc/remove(mob/dead/observer/signal/eye)
-	eye.visibleChunks -= src
-	seenby -= eye
-
-	eye.client?.images -= active_masks
+/datum/markerchunk/proc/remove(list/eyes)
+	if(!islist(eyes))
+		eyes = list(eyes)
+	for(var/mob/dead/observer/signal/eye as anything in eyes)
+		eye.visibleChunks -= src
+		seenby -= eye
+		eye.client?.images -= active_masks
 
 /*
  * Updates the chunk if it's watched, otherwise queued until Marker eye sees it

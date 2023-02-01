@@ -134,7 +134,7 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 		sprint = initial
 
 	for(var/i = 0; i < max(sprint, initial); i += 20)
-		var/turf/step = get_turf(get_step(src, direct))
+		var/turf/step = get_step(src, direct)
 		if(step)
 			setLoc(step)
 

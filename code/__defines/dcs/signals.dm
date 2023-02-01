@@ -69,4 +69,4 @@
 #define COMSIG_MOB_RESET_VIEW "mob_reset_view"
 #define COMSIG_MOB_ON_HUD_SHOWN "mob_on_hud_shown"
 // from /client/proc/change_view() : (new_size)
-#define COMSIG_VIEW_SET "view_set"
+#define COMSIG_CLIENT_VIEW_SET "client_view_set"
