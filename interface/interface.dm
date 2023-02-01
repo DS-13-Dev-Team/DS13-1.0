@@ -24,18 +24,6 @@
 		to_chat(src, "<span class='warning'>The Discord URL is not set in the server configuration. Please contact a developer.</span>")
 	return
 
-/client/verb/forum()
-	set name = "Forum"
-	set desc = "Visit the forum."
-	set hidden = 1
-	if(CONFIG_GET(string/forumurl))
-		if(tgui_alert(src, "This will open the forum in your browser. Are you sure?",,list("Yes","No"))=="No")
-			return
-		DIRECT_OUTPUT(src, link(CONFIG_GET(string/forumurl)))
-	else
-		to_chat(src, "<span class='warning'>The forum URL is not set in the server configuration.</span>")
-	return
-
 /client/verb/github()
 	set name = "github"
 	set desc = "Visit Github"
