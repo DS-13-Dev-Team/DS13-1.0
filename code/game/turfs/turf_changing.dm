@@ -50,9 +50,9 @@
 		var/turf/simulated/S = src
 		if(S.zone)
 			if(!src.can_safely_remove_from_zone())
-				INVOKE_ASYNC(zone, zone/proc/rebuild)
+				INVOKE_ASYNC(S.zone, zone/proc/rebuild)
 			else
-				zone.remove(src)
+				S.zone.remove(src)
 
 	// Run the Destroy() chain.
 	qdel(src)
