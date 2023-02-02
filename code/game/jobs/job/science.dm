@@ -44,8 +44,8 @@
 	department = "Science"
 	abbreviation = "RA"
 	department_flag = SCI
-	total_positions = 4
-	spawn_positions = 4
+	total_positions = 10
+	spawn_positions = 10
 	supervisors = "the Chief Science Officer"
 	selection_color = "#633d63"
 	minimal_player_age = 18

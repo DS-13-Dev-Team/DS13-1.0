@@ -352,6 +352,7 @@ default behaviour is:
 	if (buckled)
 		return
 
+	var/usage = TICK_USAGE
 
 	var/turf/old_loc = get_turf(src)
 
@@ -366,7 +367,6 @@ default behaviour is:
 	if(update_slimes)
 		for(var/mob/living/carbon/slime/M in view(1,src))
 			M.UpdateFeed()
-
 
 /mob/living/verb/resist()
 	set name = "Resist"

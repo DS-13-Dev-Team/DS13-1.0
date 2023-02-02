@@ -216,15 +216,17 @@
 /atom/movable/proc/Moved(atom/OldLoc, Dir, old_locs)
 	SEND_SIGNAL(src, COMSIG_MOVABLE_MOVED, OldLoc, Dir, old_locs)
 
-/atom/movable/proc/set_glide_size(glide_size_override = 0, var/min = 0.1, var/max = world.icon_size/1)
+/atom/movable/proc/set_glide_size(glide_size_override = 0, min = 0.1, max = world.icon_size)
+	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_MOVABLE_UPDATE_GLIDE_SIZE, glide_size_override)
 	if (!glide_size_override || glide_size_override > max)
 		glide_size = 0
 	else
 		glide_size = max(min, glide_size_override)
 
-	for (var/atom/movable/AM in contents)
-		AM.set_glide_size(glide_size, min, max)
+/obj/set_glide_size(glide_size_override, min, max)
+	..()
+	buckled_mob?.set_glide_size(glide_size, min, max)
 
 /proc/step_glide(atom/movable/AM, dir, glide_size)
 	return AM.Move(get_step(AM, dir), dir, glide_size_override = glide_size)
