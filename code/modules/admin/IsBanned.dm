@@ -47,7 +47,7 @@
 
 		query.Execute()
 
-		while(query.NextRow())
+		if(query.NextRow())
 			var/pckey = query.item[1]
 			//var/pip = query.item[2]
 			//var/pcid = query.item[3]
@@ -64,6 +64,7 @@
 
 			var/desc = "\nReason: You, or another user of this computer or connection ([pckey]) is banned from playing here. The ban reason is:\n[reason]\nThis ban was applied by [ackey] on [bantime], [expires]"
 
+			qdel(query)
 			return list("reason"="[bantype]", "desc"="[desc]")
 
 		qdel(query)
