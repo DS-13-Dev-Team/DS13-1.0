@@ -12781,7 +12781,8 @@
 	},
 /area/mining_colony/security/sec_armory)
 "aKN" = (
-/turf/simulated/floor/dank/maint,
+/obj/structure/wall_frame,
+/turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/surface)
 "aKO" = (
 /obj/structure/cable{
@@ -26019,8 +26020,7 @@
 /turf/simulated/floor/concrete,
 /area/mining_colony/surface)
 "bqF" = (
-/obj/machinery/portable_atmospherics/hydroponics,
-/turf/simulated/floor/dank/grater,
+/turf/simulated/floor/dank/maint,
 /area/mining_colony/surface)
 "bqG" = (
 /obj/machinery/conveyor{
@@ -26732,9 +26732,7 @@
 /turf/simulated/floor/plating,
 /area/mining_colony/surface)
 "bsW" = (
-/obj/structure/table/steel_reinforced,
-/obj/random/material,
-/obj/item/stack/rods/ten,
+/obj/machinery/portable_atmospherics/hydroponics,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/surface)
 "bsX" = (
@@ -26967,9 +26965,8 @@
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/surface)
 "btD" = (
-/obj/structure/reagent_dispensers/fueltank,
-/obj/effect/floor_decal/dank/outline,
-/turf/simulated/floor/plating,
+/obj/structure/girder,
+/turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/surface)
 "btE" = (
 /obj/effect/floor_decal/dank/outline,
@@ -26993,10 +26990,8 @@
 /turf/simulated/floor/plating,
 /area/mining_colony/surface)
 "btK" = (
-/obj/effect/floor_decal/dank/outline,
-/obj/random/closet,
-/obj/random/maintenance/clean,
-/turf/simulated/floor/plating,
+/obj/item/stack/rods,
+/turf/simulated/floor/dank/grater,
 /area/mining_colony/surface)
 "btL" = (
 /obj/effect/decal/cleanable/blood/oil,
@@ -27093,8 +27088,8 @@
 /turf/simulated/floor/plating,
 /area/mining_colony/surface)
 "bua" = (
-/obj/machinery/door/airlock/civilian/tram,
-/turf/simulated/floor/plating,
+/obj/item/material/shard,
+/turf/simulated/floor/dank/grater,
 /area/mining_colony/surface)
 "bub" = (
 /obj/structure/largecrate/ds/green_horizontal,
@@ -27197,6 +27192,10 @@
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/interior/mining/foremanoffice)
+"bzF" = (
+/obj/random/loot/sometimes/many,
+/turf/simulated/floor/plating,
+/area/mining_colony/surface)
 "bAN" = (
 /obj/item/radio/intercom{
 	pixel_y = 21
@@ -27267,6 +27266,12 @@
 /obj/structure/closet/firecloset,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/security)
+"bTF" = (
+/obj/structure/table/rack,
+/obj/item/stack/material/steel/ten,
+/obj/item/stack/rods/ten,
+/turf/simulated/floor/asteroid/outside_ds,
+/area/mining_colony/surface)
 "bVZ" = (
 /obj/effect/floor_decal/dank/outline,
 /obj/structure/table/rack,
@@ -27488,9 +27493,8 @@
 /turf/simulated/wall/r_wall,
 /area/mining_colony/interior/medbay/CMOoffice)
 "dnV" = (
-/obj/random/rare_loot/sometimes,
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plating,
+/obj/item/material/shard,
+/turf/simulated/floor/dank/mono,
 /area/mining_colony/surface)
 "dsz" = (
 /obj/structure/cable/green{
@@ -27618,8 +27622,12 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/excavation/interior)
-"dLA" = (
-/obj/machinery/vending/cigarette,
+"dKA" = (
+/obj/machinery/button/remote/blast_door{
+	id = "scrapper_hangar";
+	name = "Mining Preparation Shutters";
+	pixel_y = -24
+	},
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/surface)
 "dPY" = (
@@ -27850,6 +27858,12 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/mining_colony/interior/kitchen_area)
+"fVd" = (
+/obj/structure/table/rack,
+/obj/random/loot/rarely/few,
+/obj/item/stack/material/steel/ten,
+/turf/simulated/floor/asteroid/outside_ds,
+/area/mining_colony/surface)
 "fVp" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
@@ -27898,6 +27912,12 @@
 	},
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/uni_church)
+"gNc" = (
+/obj/machinery/door/airlock/mining{
+	name = "Hangar Airlock"
+	},
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/surface)
 "gNf" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
@@ -28231,10 +28251,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/mining_colony/interior)
 "iyW" = (
-/obj/machinery/door/airlock/civilian/tram{
-	dir = 4
-	},
-/turf/simulated/floor/plating,
+/obj/effect/decal/cleanable/blood/oil/streak,
+/obj/item/material/shard,
+/turf/simulated/floor/dank/grater,
 /area/mining_colony/surface)
 "iAs" = (
 /obj/random/trash,
@@ -28250,12 +28269,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/mining_colony/interior/maint/construction)
-"iDn" = (
-/obj/structure/table/rack,
-/obj/random/loot/rarely/few,
-/obj/item/stack/material/steel/ten,
-/turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony/surface)
 "iFM" = (
 /obj/item/radio/intercom{
 	pixel_y = 24
@@ -28290,6 +28303,14 @@
 "iSq" = (
 /obj/structure/barricade/spike,
 /turf/simulated/floor/asteroid/outside_ds/dry_firm,
+/area/mining_colony/surface)
+"iTI" = (
+/obj/machinery/door/blast/shutters{
+	dir = 4;
+	id = "scrapper_hangar_2";
+	name = "Hangar Exit Shutters"
+	},
+/turf/simulated/floor/dank/grater,
 /area/mining_colony/surface)
 "iUH" = (
 /obj/structure/table/rack,
@@ -28482,12 +28503,6 @@
 	dir = 1
 	},
 /area/mining_colony/interior/excavation/interior)
-"kdV" = (
-/obj/machinery/door/airlock/mining{
-	name = "Hangar Airlock"
-	},
-/turf/simulated/floor/dank/grater,
-/area/mining_colony/surface)
 "kfz" = (
 /obj/structure/inflatable/door,
 /turf/simulated/floor/plating,
@@ -28662,11 +28677,9 @@
 	},
 /area/mining_colony/security)
 "lco" = (
-/obj/machinery/door/blast/shutters{
-	dir = 4;
-	id = "scrapper_hangar_2";
-	name = "Hangar Exit Shutters"
-	},
+/obj/structure/table/steel_reinforced,
+/obj/random/material,
+/obj/item/stack/rods/ten,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/surface)
 "lfb" = (
@@ -28744,17 +28757,17 @@
 	},
 /turf/simulated/floor/holofloor/grass,
 /area/mining_colony/interior)
-"lEJ" = (
-/turf/simulated/wall/r_wall,
-/area/mining_colony/interior/science/lockeroom)
-"lHS" = (
+"lDL" = (
 /obj/machinery/button/remote/blast_door{
 	id = "scrapper_hangar";
 	name = "Mining Preparation Shutters";
-	pixel_y = -24
+	pixel_y = 30
 	},
-/turf/simulated/floor/dank/grater,
+/turf/simulated/floor/concrete,
 /area/mining_colony/surface)
+"lEJ" = (
+/turf/simulated/wall/r_wall,
+/area/mining_colony/interior/science/lockeroom)
 "lLs" = (
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/kitchen_area)
@@ -28859,14 +28872,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/mining_colony/interior/hydrophonics)
-"mgr" = (
-/obj/machinery/button/remote/blast_door{
-	id = "scrapper_hangar";
-	name = "Mining Preparation Shutters";
-	pixel_y = 30
-	},
-/turf/simulated/floor/concrete,
-/area/mining_colony/surface)
 "mgv" = (
 /obj/structure/closet/secure_closet/engineering_welding,
 /obj/effect/floor_decal/dank/outline,
@@ -28905,6 +28910,11 @@
 	},
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/enginieering/reactor)
+"mqR" = (
+/obj/effect/decal/cleanable/blood/oil/streak,
+/obj/structure/grille,
+/turf/simulated/floor/dank/mono,
+/area/mining_colony/surface)
 "mrT" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/abandoned/mining_prep/storage)
@@ -28940,6 +28950,11 @@
 	},
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/hydrophonics)
+"mAw" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/cooker/grill,
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/interior/excavation/interior)
 "mDt" = (
 /obj/random/junk,
 /turf/simulated/floor/plating,
@@ -29028,10 +29043,6 @@
 /obj/structure/ladder,
 /turf/simulated/floor/plating,
 /area/mining_colony/interior/maint)
-"neV" = (
-/obj/structure/girder/displaced,
-/turf/simulated/floor/plating,
-/area/mining_colony/surface)
 "neY" = (
 /obj/random/trash,
 /obj/machinery/light{
@@ -29059,7 +29070,8 @@
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/surface)
 "npe" = (
-/obj/item/toy/plushie/spider,
+/obj/structure/reagent_dispensers/fueltank,
+/obj/effect/floor_decal/dank/outline,
 /turf/simulated/floor/plating,
 /area/mining_colony/surface)
 "nqe" = (
@@ -29237,12 +29249,6 @@
 /obj/structure/ore_box,
 /turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/surface)
-"oCB" = (
-/obj/structure/table/rack,
-/obj/item/stack/material/steel/ten,
-/obj/item/stack/rods/ten,
-/turf/simulated/floor/asteroid/outside_ds,
-/area/mining_colony/surface)
 "oCS" = (
 /obj/item/reagent_containers/food/drinks/bottle/small/beer{
 	pixel_x = -6
@@ -29405,6 +29411,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/mining_colony/security/sec_firingrange)
+"pQd" = (
+/obj/structure/girder/displaced,
+/turf/simulated/floor/plating,
+/area/mining_colony/surface)
 "pTH" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -29449,6 +29459,10 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/mining_colony/interior)
+"qbw" = (
+/obj/machinery/vending/cigarette,
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/surface)
 "qbV" = (
 /obj/random/junk,
 /obj/machinery/light{
@@ -29510,9 +29524,10 @@
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/excavation/interior)
 "quZ" = (
-/obj/effect/decal/cleanable/blood/oil/streak,
-/obj/structure/grille,
-/turf/simulated/floor/dank/mono,
+/obj/effect/floor_decal/dank/outline,
+/obj/random/closet,
+/obj/random/maintenance/clean,
+/turf/simulated/floor/plating,
 /area/mining_colony/surface)
 "qvb" = (
 /obj/effect/decal/cleanable/cobweb2{
@@ -29548,6 +29563,12 @@
 /obj/item/reagent_containers/glass/paint/black,
 /turf/simulated/floor/dank/slides,
 /area/mining_colony/interior/enginieering/paint_storage)
+"qCn" = (
+/obj/machinery/door/airlock/civilian/tram{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/mining_colony/surface)
 "qEe" = (
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/monotile,
@@ -29684,6 +29705,13 @@
 "rxF" = (
 /obj/item/stamp/cargo,
 /turf/simulated/floor/concrete,
+/area/mining_colony/surface)
+"rEk" = (
+/obj/machinery/door/blast/shutters{
+	id = "scrapper_hangar";
+	name = "Hangar Bay Shutters"
+	},
+/turf/simulated/floor/dank/grater,
 /area/mining_colony/surface)
 "rEq" = (
 /obj/structure/barricade/steel,
@@ -30061,11 +30089,6 @@
 /obj/machinery/telecomms/broadcaster/preset_right,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/enginieering/telecomms)
-"uhj" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/cooker/grill,
-/turf/simulated/floor/dank/grater,
-/area/mining_colony/interior/excavation/interior)
 "ulX" = (
 /obj/item/paper/crumpled/bloody{
 	desc = "It seems like a blood offering.";
@@ -30074,7 +30097,7 @@
 /turf/simulated/floor/asteroid/outside_ds,
 /area/mining_colony/surface)
 "umg" = (
-/obj/random/loot/sometimes/many,
+/obj/machinery/door/airlock/civilian/tram,
 /turf/simulated/floor/plating,
 /area/mining_colony/surface)
 "umB" = (
@@ -30362,9 +30385,13 @@
 	},
 /area/mining_colony/interior/shuttle_bay/shuttle_3)
 "vJS" = (
+/obj/random/rare_loot/sometimes,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/grille,
-/turf/simulated/floor/dank/mono,
+/turf/simulated/floor/plating,
+/area/mining_colony/surface)
+"vLf" = (
+/obj/item/toy/plushie/spider,
+/turf/simulated/floor/plating,
 /area/mining_colony/surface)
 "vQk" = (
 /obj/item/radio/intercom{
@@ -30621,13 +30648,6 @@
 /obj/machinery/light/small,
 /turf/simulated/floor/dank/rectangles,
 /area/mining_colony/interior/kitchen_area)
-"xoM" = (
-/obj/machinery/door/blast/shutters{
-	id = "scrapper_hangar";
-	name = "Hangar Bay Shutters"
-	},
-/turf/simulated/floor/dank/grater,
-/area/mining_colony/surface)
 "xrh" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -30655,6 +30675,11 @@
 	},
 /turf/simulated/floor/dank/maint,
 /area/mining_colony/interior/enginieering/supply_storage)
+"xAF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/grille,
+/turf/simulated/floor/dank/mono,
+/area/mining_colony/surface)
 "xDf" = (
 /obj/machinery/light{
 	dir = 4
@@ -32865,13 +32890,13 @@ aCB
 aCB
 aCB
 aCB
-lco
-lco
-lco
-lco
-lco
-lco
-lco
+iTI
+iTI
+iTI
+iTI
+iTI
+iTI
+iTI
 aCB
 aCB
 aCB
@@ -36093,8 +36118,8 @@ aCB
 aWI
 aWJ
 bsZ
-bsW
-bsW
+lco
+lco
 aWJ
 ada
 bsi
@@ -37715,13 +37740,13 @@ ada
 ada
 aPv
 aPv
-quZ
-vJS
+mqR
+xAF
 aPv
 aPv
 aJi
 apz
-dLA
+qbw
 aCB
 aue
 aue
@@ -37924,7 +37949,7 @@ ada
 ada
 ada
 aWI
-kdV
+gNc
 aue
 aue
 lZB
@@ -38116,7 +38141,7 @@ bso
 bso
 bso
 bso
-iyW
+qCn
 akd
 bso
 bso
@@ -38315,12 +38340,12 @@ aCB
 aWI
 oyl
 btH
-btD
+npe
 bso
 akd
 akd
 btY
-npe
+vLf
 bsT
 bsT
 bsT
@@ -38328,7 +38353,7 @@ aNc
 oyl
 ada
 aWI
-xoM
+rEk
 aue
 aue
 lZB
@@ -38518,7 +38543,7 @@ aWI
 oyl
 btY
 btX
-bua
+umg
 akd
 btX
 akd
@@ -38530,7 +38555,7 @@ akd
 oyl
 ada
 aWI
-xoM
+rEk
 aue
 aue
 lZB
@@ -38719,20 +38744,20 @@ aCB
 aWI
 oyl
 btE
-btK
+quZ
 bso
-dnV
+vJS
 akd
 bsR
 btZ
-umg
+bzF
 btX
 bsR
 btY
 oyl
 ada
 aWI
-xoM
+rEk
 aue
 aue
 lZB
@@ -38924,18 +38949,18 @@ bso
 bso
 bso
 bso
-iyW
+qCn
 bso
 bso
 bso
 bso
 bso
-neV
+pQd
 bso
 ada
-lHS
+dKA
 aCB
-mgr
+lDL
 aue
 aJi
 aCq
@@ -40903,13 +40928,13 @@ lZB
 lZB
 lZB
 lZB
-aJi
+aCB
 asx
-aJi
-aJi
-aJi
-aJi
-aJi
+aCB
+aKN
+aKN
+aKN
+aCB
 aCq
 aCq
 aCq
@@ -41111,7 +41136,7 @@ aWJ
 aWJ
 aWJ
 aWJ
-aJi
+aKN
 aCq
 aue
 aCq
@@ -41310,10 +41335,10 @@ lZB
 lZB
 lZB
 aWJ
-aKN
-aKN
+bqF
+bqF
 aWJ
-aJi
+aKN
 aCq
 aue
 lZB
@@ -41509,13 +41534,13 @@ lZB
 lZB
 lZB
 aCq
-aCq
+aCB
 aCq
 aWJ
-aKN
-aKN
+bqF
+bqF
 aWJ
-aJi
+btD
 aCq
 aCq
 lZB
@@ -41707,17 +41732,17 @@ aou
 aoG
 lZB
 lZB
+aCB
 aCq
 aCq
 aCq
+aWI
+aWI
 aCq
-aCq
-aCq
+bqF
+bqF
 aWJ
 aKN
-aKN
-aWJ
-aJi
 aue
 aCq
 aCq
@@ -41914,12 +41939,12 @@ aWJ
 aWJ
 aWJ
 aWJ
+aWI
 aCq
+bqF
+bqF
 aWJ
 aKN
-aKN
-aWJ
-aJi
 aue
 aue
 aCq
@@ -42119,9 +42144,9 @@ aWJ
 aCq
 aWJ
 aWJ
+aCq
 aWJ
-aWJ
-aJi
+aCB
 aCq
 aue
 aCq
@@ -42318,12 +42343,12 @@ aWJ
 asv
 asv
 aWJ
+aWI
+aWI
 aCq
 aCq
 aCq
-aCq
-aCq
-aJi
+aCB
 aCq
 aCq
 aCq
@@ -42517,15 +42542,15 @@ lZB
 lZB
 aCq
 aWJ
-aWJ
-aWJ
+aCq
+aCq
 aWJ
 aCq
 aWJ
 aWJ
-aWJ
-aWJ
-aJi
+aCq
+aCq
+aKN
 aCq
 aue
 aCq
@@ -42537,11 +42562,11 @@ aue
 aCB
 aCB
 aCB
-aFd
-aFd
-aFd
-aFd
-aFd
+aoG
+aoG
+aoG
+dnV
+aWJ
 aCB
 aCB
 aCB
@@ -42717,17 +42742,17 @@ aoG
 aoG
 lZB
 lZB
-aCq
+aCB
 aCq
 aCq
 aCq
 aCq
 aCq
 aWJ
-bqF
-bqF
-aWJ
-aJi
+bsW
+bsW
+aCq
+aKN
 aCq
 aue
 aCq
@@ -42740,8 +42765,8 @@ aCB
 qvb
 dXl
 pwI
-aWI
-aWI
+btK
+bua
 aWI
 jVA
 jVA
@@ -42924,12 +42949,12 @@ lZB
 aCq
 asc
 aCB
+aWI
+aWJ
+bsW
+bsW
 aCq
-aWJ
-bqF
-bqF
-aWJ
-aJi
+aKN
 aue
 aCq
 aCq
@@ -42945,10 +42970,10 @@ aWJ
 aWI
 wug
 aWI
-pkR
+iyW
 aWJ
 aWI
-aFd
+aoG
 aoG
 aoG
 lZB
@@ -43126,12 +43151,12 @@ lZB
 lZB
 aCq
 aCq
-aCq
+aWI
 aWJ
-bqF
-bqF
+bsW
+bsW
 aWJ
-aJi
+btD
 aue
 aCq
 aue
@@ -43146,11 +43171,11 @@ aWI
 aWI
 aWI
 aWI
+bua
 aWI
 aWI
-aWI
-aWI
-aFd
+bua
+aoG
 aoG
 aoG
 lZB
@@ -43333,7 +43358,7 @@ aWJ
 aWJ
 aWJ
 aWJ
-aJi
+btD
 aCq
 aCq
 aue
@@ -43529,13 +43554,13 @@ lZB
 lZB
 lZB
 lZB
-aJi
+aCB
 asx
-aJi
-aJi
-aJi
-aJi
-aJi
+aCB
+aKN
+aKN
+aKN
+aCB
 aCq
 aue
 aue
@@ -62453,7 +62478,7 @@ lZB
 aCq
 aCq
 uTD
-iDn
+fVd
 lZB
 lZB
 lZB
@@ -62858,7 +62883,7 @@ aCq
 aCq
 aCq
 uTD
-oCB
+bTF
 lZB
 lZB
 lZB
@@ -67463,7 +67488,7 @@ ajn
 aiY
 phr
 dac
-uhj
+mAw
 ajS
 tIK
 ajO
