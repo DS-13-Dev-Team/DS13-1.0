@@ -255,6 +255,8 @@ Basics, the most important.
 
 /datum/config_entry/string/server
 
+/datum/config_entry/string/backup_server
+
 /datum/config_entry/string/banappeals
 
 /datum/config_entry/string/ruleurl
