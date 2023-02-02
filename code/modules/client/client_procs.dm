@@ -182,7 +182,7 @@
 			allowed = TRUE
 
 		if (!allowed)
-			tgui_alert(src,"This server is currently full and not accepting new connections. Please try again later!","Server Full")
+			alert(src,"This server is currently full and not accepting new connections. Please try again later!","Server Full")
 			log_admin("[ckey] tried to join and was turned away due to the server being full (player_limit=[CONFIG_GET(number/player_limit)])")
 			qdel(src)
 			return

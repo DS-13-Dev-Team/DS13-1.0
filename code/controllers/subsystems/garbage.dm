@@ -220,7 +220,7 @@ SUBSYSTEM_DEF(garbage)
 	queue[refid] = gctime
 
 //this is mainly to separate things profile wise.
-/datum/controller/subsystem/garbage/proc/HardDelete(datum/D)
+/datum/controller/subsystem/garbage/proc/HardDelete(datum/D, actually_delete_it)
 	var/time = world.timeofday
 	var/tick = TICK_USAGE
 	var/ticktime = world.time
@@ -229,7 +229,8 @@ SUBSYSTEM_DEF(garbage)
 	var/type = D.type
 	var/refID = "\ref[D]"
 
-	//del(D)
+	if(actually_delete_it)
+		del(D)
 
 	tick = (TICK_USAGE-tick+((world.time-ticktime)/world.tick_lag*100))
 
@@ -333,7 +334,7 @@ SUBSYSTEM_DEF(garbage)
 			if (QDEL_HINT_HARDDEL)		//qdel should assume this object won't gc, and queue a hard delete using a hard reference to save time from the locate()
 				SSgarbage.HardQueue(D)
 			if (QDEL_HINT_HARDDEL_NOW)	//qdel should assume this object won't gc, and hard del it post haste.
-				SSgarbage.HardDelete(D)
+				SSgarbage.HardDelete(D, TRUE)
 			if (QDEL_HINT_FINDREFERENCE)//qdel will, if TESTING is enabled, display all references to this object, then queue the object for deletion.
 				SSgarbage.PreQueue(D)
 				#ifdef TESTING
