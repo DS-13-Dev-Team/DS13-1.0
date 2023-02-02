@@ -11,7 +11,7 @@
 	//In that case we want to put them straight back into that body
 	var/datum/player/P = get_player()
 	if (P && P.is_necromorph)
-		var/mob/dead/observer/eye/signal/S = create_signal()
+		var/mob/dead/observer/signal/S = create_signal()
 
 		var/turf/last_location = P.get_last_location()
 		if (istype(S) && istype(last_location))

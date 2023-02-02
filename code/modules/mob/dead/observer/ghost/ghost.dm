@@ -146,7 +146,7 @@ Works together with spawning an observer, noted above.
 	return 1
 
 /mob/proc/ghostize(can_reenter_corpse = CORPSE_CAN_REENTER)
-	if (is_necromorph() && !istype(src, /mob/dead/observer/eye/signal))	//Signals can use ghostize to leave the necromorph team
+	if (is_necromorph() && !istype(src, /mob/dead/observer/signal))	//Signals can use ghostize to leave the necromorph team
 		return necro_ghost()
 
 	// Are we the body of an aghosted admin? If so, don't make a ghost.

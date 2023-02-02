@@ -515,7 +515,7 @@
 	GLOB.error_cache.show_to(usr.client)
 
 
-/*/client/proc/start_line_profiling()
+/client/proc/start_line_profiling()
 	set category = "Profile"
 	set name = "Start line profiling"
 	set desc = "Starts tracking line by line profiling for code lines that support it"
@@ -551,7 +551,7 @@
 	if (!sort)
 		return
 	sort = sortlist[sort]
-	profile_show(src, sort)*/
+	profile_show(src, sort)
 
 /client/proc/cmd_analyse_health_panel()
 	set category = "Debug"

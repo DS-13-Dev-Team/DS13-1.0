@@ -66,11 +66,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 	return things
 
 /mob/turfs_in_view(var/check_range = null)
-	var/range = (check_range ? check_range : view_range)
-	if (!isnum(range) || range < 0)
-		range = world.view
-	else
-		range = Ceiling(range)	//Just incase a noninteger value was passed
+	check_range = check_range || view_range
 	var/origin
 	if (!view_offset)
 		origin = get_turf(src)
@@ -78,7 +74,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 		origin = get_view_centre()
 
 	var/list/things = list()
-	FOR_DVIEW(var/turf/T, range, origin, 0)
+	FOR_DVIEW(var/turf/T, check_range, origin, 0)
 		things += T
 	END_FOR_DVIEW
 	return things
@@ -184,8 +180,8 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 	for(var/mob/M in GLOB.player_list)
 		if(checkghosts)
 			if(issignal(M) && M.get_preference_value(checkghosts) != GLOB.PREF_NEARBY)
-				var/mob/dead/observer/eye/signal/signal = M
-				if(signal.visualnet.is_visible(T))
+				var/mob/dead/observer/signal/signal = M
+				if(signal.visualnet.checkTurfVis(T))
 					mobs |= M
 			else if(M.stat == DEAD && M.get_preference_value(checkghosts) != GLOB.PREF_NEARBY)
 				mobs |= M
@@ -351,7 +347,7 @@ proc
 	Special Check: A callback for additional specific checks
 	Error User:	A user to show failure messages to, if we fail
 */
-/proc/get_valid_target(var/atom/origin, var/radius, var/list/valid_types = list(/turf), var/list/allied = null, var/datum/visualnet/visualnet = null, var/require_corruption = FALSE, var/view_limit = FALSE, var/LOS_block = FALSE, var/num_required = 1, var/datum/callback/special_check = null, var/mob/error_user)
+/proc/get_valid_target(var/atom/origin, var/radius, var/list/valid_types = list(/turf), var/list/allied = null, var/datum/markernet/visualnet = null, var/require_corruption = FALSE, var/view_limit = FALSE, var/LOS_block = FALSE, var/num_required = 1, var/datum/callback/special_check = null, var/mob/error_user)
 	var/list/results = list()
 	var/list/haystack
 	if (view_limit)
@@ -392,7 +388,7 @@ proc
 				continue
 
 		if (visualnet)
-			if (!T.is_in_visualnet(visualnet))
+			if (!visualnet.checkTurfVis(T))
 				continue
 
 		if (allied)

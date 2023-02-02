@@ -59,22 +59,19 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 /obj/effect/vine/is_organic()
 	return TRUE
 
-/obj/effect/vine/corruption/New(var/newloc, var/datum/seed/newseed, var/obj/effect/vine/corruption/newparent, var/start_matured = 0, var/datum/extension/corruption_source/newsource)
-
+/obj/effect/vine/corruption/Initialize(mapload, datum/seed/newseed, obj/effect/vine/corruption/newparent, start_matured = 0, datum/extension/corruption_source/newsource)
 	alpha = min_alpha
-
-
 	if (!GLOB.corruption_seed)
 		GLOB.corruption_seed = new /datum/seed/corruption()
 	seed = GLOB.corruption_seed
 
 	source = newsource
 	source.register(src)
-	.=..()
+
+	. = ..()
 
 /obj/effect/vine/corruption/Destroy()
-	if (source)
-		source.unregister(src)
+	source?.unregister(src)
 	.=..()
 
 
@@ -229,7 +226,6 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 
 	//Update our neighbors list
 	update_neighbors()
-	child.get_chunks()	//Populate the nearby chunks list, for later visual updates
 	return child
 
 
@@ -284,38 +280,8 @@ GLOBAL_DATUM_INIT(corruption_seed, /datum/seed/corruption, new())
 
 /* Visualnet Handling */
 //-------------------
-/obj/effect/vine/corruption/get_visualnet_tiles(var/datum/visualnet/network)
+/obj/effect/vine/corruption/get_visualnet_tiles()
 	return RANGE_TURFS(src, 1)
-
-/obj/effect/vine/corruption/watched_tile_updated(var/turf/T)
-	if (source)
-		source.needs_update = TRUE
-	.=..()
-
-//Finds all visualnet chunks that this vine could possibly infringe on.
-/obj/effect/vine/corruption/proc/get_chunks()
-	var/list/chunksfound = list(GLOB.necrovision.get_chunk(x, y, z))
-	for (var/direction in list(NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST))
-		var/turf/T = get_step(src, direction)
-		var/datum/chunk/newchunk = GLOB.necrovision.get_chunk(T.x, T.y, T.z)
-		if (istype(newchunk))
-			chunksfound |= newchunk
-
-
-	//We only care if there's more than one chunk
-	if (chunksfound.len > 1)
-		chunks = chunksfound
-
-/obj/effect/vine/corruption/proc/update_chunks()
-	//Clear the necrovision cache
-	GLOB.necrovision.visibility_cache = list()
-	if (chunks)
-		for (var/datum/chunk/C as anything in chunks)
-			C.visibility_changed()
-	else
-		var/turf/T = get_turf(src)
-		T.update_chunk(FALSE)
-
 
 
 
