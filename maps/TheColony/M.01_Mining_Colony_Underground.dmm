@@ -7282,10 +7282,6 @@
 /obj/structure/grille,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/node/room29)
-"Hy" = (
-/obj/effect/floor_decal/dank/outline,
-/turf/simulated/floor/dank/grater,
-/area/mining_colony/lower/excav)
 "Hz" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -48437,8 +48433,8 @@ HW
 HW
 aK
 bG
-Hy
-Hy
+bH
+bH
 bG
 bX
 bX
