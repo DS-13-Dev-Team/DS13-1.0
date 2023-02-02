@@ -49,7 +49,10 @@
 		//the zone will only really do heavy lifting once.
 		var/turf/simulated/S = src
 		if(S.zone)
-			S.zone.rebuild()
+			if(!S.can_safely_remove_from_zone())
+				INVOKE_ASYNC(S.zone, /zone/proc/rebuild)
+			else
+				S.zone.remove(src)
 
 	// Run the Destroy() chain.
 	qdel(src)

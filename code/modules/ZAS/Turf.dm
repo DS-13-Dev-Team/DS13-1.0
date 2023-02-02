@@ -111,7 +111,7 @@
 				c_copy_air() //we aren't rebuilding, but hold onto the old air so it can be readded
 				z.remove(src)
 			else
-				z.rebuild()
+				INVOKE_ASYNC(z, /zone/proc/rebuild)
 
 		return 1
 
