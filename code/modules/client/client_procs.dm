@@ -182,8 +182,12 @@
 			allowed = TRUE
 
 		if (!allowed)
-			alert(src, "This server is currently full and not accepting new connections. Redirecting you to the second server.", "Server Full")
-			src << link("byond://[CONFIG_GET(string/backup_server)]")
+			var/backup_server = CONFIG_GET(string/backup_server)
+			if(backup_server)
+				alert(src, "This server is currently full and not accepting new connections. Redirecting you to the second server.", "Server Full")
+				src << link("byond://[CONFIG_GET(string/backup_server)]")
+			else
+				alert(src, "This server is currently full and not accepting new connections. Try again later.", "Server Full")
 			qdel(src)
 			return
 	//DS13 - Give locally logged in users host status
