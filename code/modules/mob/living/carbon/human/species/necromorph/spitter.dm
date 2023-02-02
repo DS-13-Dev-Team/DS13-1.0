@@ -3,7 +3,7 @@
 	name = SPECIES_NECROMORPH_SPITTER
 	name_plural = "Spitters"
 	total_health = 72
-	biomass = 55
+	biomass = 52.5
 	mass = 45
 	view_range = 8
 	icon_template = 'icons/mob/necromorph/spitter.dmi'

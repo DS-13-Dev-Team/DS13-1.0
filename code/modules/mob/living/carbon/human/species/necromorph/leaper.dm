@@ -217,6 +217,19 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 	lowest_money_drop = 250
 	highest_money_drop = 700
 
+/datum/species/necromorph/leaper/hopper/fennec
+	name = SPECIES_NECROMORPH_LEAPER_FENNEC
+	mob_type	=	/mob/living/carbon/human/necromorph/leaper/hopper/fennec
+	total_health = 100
+	slowdown = 0.8
+	limb_health_factor = 0.9
+	evasion = 5
+	stun = 0.5
+	leap_damage = 1
+	unarmed_types = list(/datum/unarmed_attack/claws/fennec)
+	icon_template = 'icons/mob/necromorph/leaper_fennec.dmi'
+	biomass = 30
+
 //Light claw attack, not its main means of damage
 /datum/unarmed_attack/claws/leaper
 	damage = 7
@@ -227,6 +240,8 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 /datum/unarmed_attack/claws/monkey
 	damage = 6.5
 
+/datum/unarmed_attack/claws/fennec
+	damage = 14.5
 
 //The leaper has a tail instead of legs
 /obj/item/organ/external/tail/leaper

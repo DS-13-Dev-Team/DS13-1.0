@@ -14,10 +14,10 @@
 	unarmed_types = list(/datum/unarmed_attack/blades, /datum/unarmed_attack/bite/weak) //Bite attack is a backup if blades are severed
 	total_health = 90
 	tier_1_mod = DAM_MOD_T1 //doesn't care much about heavy-duty firearms.
-	biomass = 40
+	biomass = 45
 	mass = 70
 
-	biomass_reclamation_time	=	4 MINUTES
+	biomass_reclamation_time	=	4.5 MINUTES
 
 	icon_template = 'icons/mob/necromorph/slasher/fleshy.dmi'
 	damage_mask = 'icons/mob/necromorph/slasher/damage_mask.dmi' // This is badly implemented and should be fixed down the line.
