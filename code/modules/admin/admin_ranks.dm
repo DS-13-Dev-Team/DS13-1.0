@@ -105,27 +105,29 @@ var/list/admin_ranks = list()								//list of all ranks with associated rights
 	else
 		//The current admin system uses SQL
 
-		establish_db_connection()
-		if(!dbcon.IsConnected())
+		if(!SSdbcore.Connect())
 			log_debug("Failed to connect to database in load_admins(). Reverting to legacy system.")
 			log_misc("Failed to connect to database in load_admins(). Reverting to legacy system.")
 			CONFIG_SET(flag/admin_legacy_system, TRUE)
 			load_admins()
 			return
 
-		var/DBQuery/query = dbcon.NewQuery("SELECT ckey, rank, level, flags FROM erro_admin")
+		var/datum/db_query/query = SSdbcore.NewQuery("SELECT ckey, rank, level, flags FROM erro_admin")
 		query.Execute()
 		while(query.NextRow())
 			var/ckey = query.item[1]
 			var/rank = query.item[2]
-			if(rank == "Removed")	continue	//This person was de-adminned. They are only in the admin list for archive purposes.
+			if(rank == "Removed")
+				continue	//This person was de-adminned. They are only in the admin list for archive purposes.
 
 			var/rights = query.item[4]
-			if(istext(rights))	rights = text2num(rights)
+			if(istext(rights))
+				rights = text2num(rights)
 			var/datum/admins/D = new /datum/admins(rank, rights, ckey)
 
 			//find the client for a ckey if they are connected and associate them with the new admin datum
 			D.associate(GLOB.ckey_directory[ckey])
+		qdel(query)
 		if(!GLOB.admin_datums)
 			log_debug("The database query in load_admins() resulted in no admins being added to the list. Reverting to legacy system.")
 			log_misc("The database query in load_admins() resulted in no admins being added to the list. Reverting to legacy system.")

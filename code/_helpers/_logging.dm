@@ -345,3 +345,6 @@
 		return "([AREACOORD(T)])"
 	else if(A.loc)
 		return "(UNKNOWN (?, ?, ?))"
+
+/proc/log_query_debug(text)
+	WRITE_LOG(GLOB.query_debug_log, "SQL: [text]")

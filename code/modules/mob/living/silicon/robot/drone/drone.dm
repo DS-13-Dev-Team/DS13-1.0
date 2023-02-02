@@ -83,7 +83,7 @@ var/list/mob_hat_cache = list()
 		return
 
 	// None of the tests passed, good bye
-	self_destruct()
+	INVOKE_ASYNC(src, .proc/self_destruct)
 
 /mob/living/silicon/robot/drone/can_be_possessed_by(var/mob/dead/observer/ghost/possessor)
 	if(!istype(possessor) || !possessor.client || !possessor.ckey)

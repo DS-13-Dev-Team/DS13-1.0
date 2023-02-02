@@ -45,6 +45,20 @@
 		ref_person << sound('sound/effects/adminhelp-reply.ogg')
 		ticket.close(usr.client)
 */
+
+	else if(href_list["slowquery"])
+		if(!check_rights(R_ADMIN))
+			return
+		var/answer = href_list["slowquery"]
+		if(answer == "yes")
+			log_query_debug("[usr.key] | Reported a server hang")
+			if(tgui_alert(usr, "Had you just press any admin buttons?", "Query server hang report", list("Yes", "No")) == "Yes")
+				var/response = input(usr,"What were you just doing?","Query server hang report") as null|text
+				if(response)
+					log_query_debug("[usr.key] | [response]")
+		else if(answer == "no")
+			log_query_debug("[usr.key] | Reported no server hang")
+
 	if(href_list["dbsearchckey"] || href_list["dbsearchadmin"])
 
 		var/adminckey = href_list["dbsearchadmin"]
