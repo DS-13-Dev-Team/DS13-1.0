@@ -62,3 +62,6 @@ changes:
   - balance: "Spitter cost 55 => 52.5"
   - balance: "Exploder cost 70 => 75"
   - balance: "Human biomass bounty from being put in a maw and fully absorbed lowered from 80 => 65"
+  - balance: "Enhanced infector HP down from 205 => 180"
+  - balance: "Enhanced infector flap cooldown increased by about 7.5%~"
+  - balance: "Deflection round price increased from 2500 => 3250 per mag to account for grenade spamming."
