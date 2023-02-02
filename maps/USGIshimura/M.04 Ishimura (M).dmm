@@ -2223,6 +2223,7 @@
 	dir = 1;
 	pixel_y = -35
 	},
+/mob/living/simple_animal/cat/fennec,
 /turf/simulated/floor/dank/rivets,
 /area/ishimura/upper/engineering/atmospherics/storage)
 "afr" = (
@@ -5721,6 +5722,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
+/mob/living/simple_animal/cat/fennec,
 /turf/simulated/floor/dank/maint,
 /area/ishimura/upper/security/isolation)
 "anK" = (
@@ -31099,8 +31101,8 @@
 /area/ishimura/upper/misc/hallway/aft)
 "fnq" = (
 /obj/machinery/alarm{
-	pixel_x = 23;
-	dir = 8
+	dir = 8;
+	pixel_x = 23
 	},
 /turf/simulated/floor/plating,
 /area/ishimura/upper/maintenance/fore_central)
@@ -31549,6 +31551,11 @@
 	dir = 4
 	},
 /area/ishimura/upper/misc/hallway/central)
+"iRr" = (
+/obj/effect/floor_decal/industrial/outline/grey,
+/mob/living/simple_animal/cat/fennec,
+/turf/simulated/floor/tiled/dark/monotile,
+/area/ishimura/upper/medical/morgue)
 "iTN" = (
 /turf/simulated/floor/dank/tech,
 /area/ishimura/upper/misc/hallway/fore)
@@ -32013,6 +32020,13 @@
 	dir = 8
 	},
 /area/ishimura/upper/misc/hangar)
+"odM" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/mob/living/simple_animal/cat/fennec,
+/turf/simulated/floor/dank/bathr,
+/area/ishimura/upper/misc/bathroom)
 "ofv" = (
 /obj/random/toolbox/low_chance,
 /obj/structure/table/rack{
@@ -32678,6 +32692,10 @@
 "uWX" = (
 /turf/simulated/floor/dank/tech,
 /area/ishimura/upper/misc/hallway/aft)
+"vaU" = (
+/mob/living/simple_animal/cat/fennec,
+/turf/simulated/floor/tiled/dark/monotile,
+/area/ishimura/upper/command/bridge)
 "vbj" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -66780,7 +66798,7 @@ aEQ
 aMr
 aOs
 aEQ
-aMr
+odM
 aOs
 aEQ
 aOW
@@ -73319,7 +73337,7 @@ axK
 ayi
 ayI
 azH
-ayI
+iRr
 aGH
 axK
 ben
@@ -86938,7 +86956,7 @@ aav
 aLg
 aaS
 aaS
-aaF
+vaU
 baz
 aaa
 aaa

@@ -6323,6 +6323,7 @@
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/interior/mining)
 "arZ" = (
+/mob/living/simple_animal/cat/fennec,
 /turf/simulated/floor/carpet/blue2,
 /area/mining_colony/interior/cargo/officerarea)
 "asa" = (
@@ -10061,6 +10062,11 @@
 "aDk" = (
 /turf/simulated/floor/dank/rectangles,
 /area/mining_colony/interior/kitchen_area)
+"aDl" = (
+/obj/effect/floor_decal/rust,
+/mob/living/simple_animal/cat/fennec,
+/turf/simulated/floor,
+/area/mining_colony/surface)
 "aDm" = (
 /obj/machinery/door/airlock/civilian{
 	dir = 4;
@@ -14351,6 +14357,7 @@
 	icon_state = "fire0";
 	pixel_x = 20
 	},
+/mob/living/simple_animal/cat/fennec,
 /turf/simulated/floor/tiled/white,
 /area/mining_colony/interior/medbay/medstorage)
 "aPd" = (
@@ -17468,6 +17475,7 @@
 /obj/machinery/firealarm{
 	pixel_y = 24
 	},
+/mob/living/simple_animal/cat/fennec,
 /turf/simulated/floor/tiled/white,
 /area/mining_colony/interior/science/virology)
 "aWD" = (
@@ -27732,6 +27740,10 @@
 "eNd" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/c12_deadspace/lockeroom)
+"eOi" = (
+/mob/living/simple_animal/cat/fennec,
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/interior/enginieering/gas_storage1)
 "ePZ" = (
 /obj/structure/cable,
 /obj/machinery/power/apc{
@@ -29161,6 +29173,10 @@
 	},
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/enginieering/reactor)
+"okF" = (
+/mob/living/simple_animal/cat/fennec,
+/turf/simulated/floor/dank/bathr,
+/area/mining_colony/interior/apartament)
 "opZ" = (
 /obj/effect/shuttle_landmark/kellion/landing,
 /turf/simulated/floor,
@@ -30628,6 +30644,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/dark,
 /area/mining_colony/interior)
+"xLc" = (
+/mob/living/simple_animal/cat/fennec,
+/turf/simulated/floor/dank/rectangles,
+/area/mining_colony/interior/uni_church)
 "xQG" = (
 /obj/machinery/telecomms/broadcaster/preset_cent,
 /obj/machinery/camera/network/engineering{
@@ -34658,7 +34678,7 @@ alN
 anQ
 abi
 alg
-alq
+okF
 abi
 aAU
 bfP
@@ -41129,7 +41149,7 @@ aaB
 aaB
 aaB
 aaB
-adb
+xLc
 aaT
 aaT
 ads
@@ -44168,7 +44188,7 @@ bjW
 biG
 alk
 atl
-atl
+eOi
 abc
 aoH
 aoH
@@ -47292,7 +47312,7 @@ aoG
 aoG
 aoG
 abs
-abH
+aDl
 aYp
 abH
 adH

@@ -4415,8 +4415,8 @@
 /obj/structure/cable/cyan{
 	d1 = 1;
 	d2 = 8;
-	icon_state = "1-8";
-	dir = 8
+	dir = 8;
+	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/ishimura/tramdeck/tram/undertunnel/undermidmaintenance)
@@ -5602,6 +5602,10 @@
 /obj/random/loot/often,
 /turf/simulated/floor,
 /area/ishimura/tramdeck/tram/undertunnel/underaftmaintenance)
+"HL" = (
+/mob/living/simple_animal/cat/fennec,
+/turf/simulated/floor/dank/heavy,
+/area/ishimura/tramdeck/switchingstation/lower)
 "Ir" = (
 /obj/structure/table/standard,
 /obj/random/loot/sometimes/few,
@@ -41651,7 +41655,7 @@ ag
 an
 ap
 af
-al
+HL
 be
 al
 al

@@ -2027,6 +2027,7 @@
 /obj/item/remains/mouse{
 	name = "Jerry's remains"
 	},
+/mob/living/simple_animal/cat/fennec,
 /turf/simulated/floor/plating,
 /area/mining_colony/lower/maints/node/room29)
 "gL" = (

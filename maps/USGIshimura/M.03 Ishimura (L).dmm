@@ -6261,6 +6261,7 @@
 	d2 = 4;
 	icon_state = "0-4"
 	},
+/mob/living/simple_animal/cat/fennec,
 /turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/crew/messhall/bar/quarters)
 "amW" = (
@@ -8326,8 +8327,8 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/command{
-	name = "Hangar Control Room One";
-	dir = 8
+	dir = 8;
+	name = "Hangar Control Room One"
 	},
 /turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/escape/one)
@@ -20880,8 +20881,8 @@
 	pixel_x = -1
 	},
 /obj/item/clothing/under/grimhoodie{
-	pixel_y = -4;
-	pixel_x = -1
+	pixel_x = -1;
+	pixel_y = -4
 	},
 /obj/item/clothing/suit/storage/toggle/hoodie/black{
 	pixel_x = 4;
@@ -25112,15 +25113,15 @@
 	},
 /obj/structure/table/standard,
 /obj/item/reagent_containers/spray{
-	pixel_y = 2;
-	pixel_x = -4
+	pixel_x = -4;
+	pixel_y = 2
 	},
 /obj/item/reagent_containers/spray{
 	pixel_y = 2
 	},
 /obj/item/reagent_containers/spray{
-	pixel_y = 2;
-	pixel_x = 4
+	pixel_x = 4;
+	pixel_y = 2
 	},
 /turf/simulated/floor/dank/golf_gray,
 /area/ishimura/lower/engineering/storage_closet/paint)
@@ -28103,8 +28104,8 @@
 "ibl" = (
 /obj/structure/table/rack,
 /obj/item/clothing/under/casual_pants/track/blue{
-	pixel_y = 8;
-	pixel_x = 2
+	pixel_x = 2;
+	pixel_y = 8
 	},
 /obj/item/clothing/under/casual_pants/track/green{
 	pixel_y = 7
@@ -29313,6 +29314,10 @@
 "tLi" = (
 /turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/cargo/bay)
+"tRx" = (
+/mob/living/simple_animal/cat/fennec,
+/turf/simulated/floor/tiled/dark,
+/area/ishimura/lower/cargo/storage)
 "tSz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -29839,8 +29844,8 @@
 	pixel_y = 3
 	},
 /obj/item/clothing/under/shorts/green{
-	pixel_y = 2;
-	pixel_x = 5
+	pixel_x = 5;
+	pixel_y = 2
 	},
 /obj/item/clothing/under/shorts/grey{
 	pixel_x = -6
@@ -46108,7 +46113,7 @@ aBr
 abW
 acH
 abV
-abV
+tRx
 aay
 akU
 alb
