@@ -30,9 +30,6 @@
 /datum/config_entry/string/feedback_password
 	protection = CONFIG_ENTRY_LOCKED|CONFIG_ENTRY_HIDDEN
 
-/datum/config_entry/string/feedback_tableprefix
-	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN
-
 /datum/config_entry/number/async_query_timeout
 	default = 10
 	min_val = 0

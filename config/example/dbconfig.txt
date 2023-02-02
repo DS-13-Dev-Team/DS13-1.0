@@ -25,14 +25,6 @@ FEEDBACK_PASSWORD mypassword
 # Comment this out to disable
 #ENABLE_STAT_TRACKING
 
-## Prefix to be added to the name of every table, older databases will require this be set to erro_
-## Note, this does not change the table names in the database, you will have to do that yourself.
-##IE:
-##	FEEDBACK_TABLEPREFIX
-##	FEEDBACK_TABLEPREFIX SS13_
-## Remove "SS13_" if you are using the standard schema file.
-FEEDBACK_TABLEPREFIX SS13_
-
 ## Time in seconds for asynchronous queries to timeout
 ## Set to 0 for infinite
 ASYNC_QUERY_TIMEOUT 10

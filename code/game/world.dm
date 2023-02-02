@@ -91,6 +91,10 @@ GLOBAL_VAR(restart_counter)
 	makeDatumRefLists()
 	generate_gameid()
 
+	//SetupLogs depends on the RoundID, so lets check
+	//DB schema and set RoundID if we can
+	SSdbcore.CheckSchemaVersion()
+	SSdbcore.SetRoundID()
 	SetupLogs()
 
 	callHook("startup")

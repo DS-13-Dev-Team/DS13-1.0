@@ -37,16 +37,11 @@ proc/sql_report_death(var/mob/living/carbon/human/H)
 	var/area/placeofdeath = get_area(H)
 	var/podname = placeofdeath ? placeofdeath.name : "Unknown area"
 
-	var/sqlname = format_table_name(H.real_name)
-	var/sqlkey = format_table_name(H.key)
-	var/sqlpod = format_table_name(podname)
-	var/sqlspecial = format_table_name(H.mind.special_role)
-	var/sqljob = format_table_name(H.mind.assigned_role)
 	var/laname
 	var/lakey
 	if(H.last_attacker_)
-		laname = format_table_name(H.last_attacker_.name)
-		lakey = format_table_name(H.last_attacker_.client.key)
+		laname = H.last_attacker_.name
+		lakey = H.last_attacker_.client.key
 	var/sqltime = time2text(world.realtime, "YYYY-MM-DD hh:mm:ss")
 	var/coord = "[H.x], [H.y], [H.z]"
 //	log_debug("INSERT INTO death (name, byondkey, job, special, pod, tod, laname, lakey, gender, bruteloss, fireloss, brainloss, oxyloss) VALUES ('[sqlname]', '[sqlkey]', '[sqljob]', '[sqlspecial]', '[sqlpod]', '[sqltime]', '[laname]', '[lakey]', '[H.gender]', [H.bruteloss], [H.getFireLoss()], [H.getBrainLoss()], [H.getOxyLoss()])")
@@ -54,7 +49,16 @@ proc/sql_report_death(var/mob/living/carbon/human/H)
 	if(!SSdbcore.Connect())
 		log_game("SQL ERROR during death reporting. Failed to connect.")
 		return
-	var/datum/db_query/query = SSdbcore.NewQuery("INSERT INTO death (name, byondkey, job, special, pod, tod, laname, lakey, gender, bruteloss, fireloss, brainloss, oxyloss, coord) VALUES ('[sqlname]', '[sqlkey]', '[sqljob]', '[sqlspecial]', '[sqlpod]', '[sqltime]', '[laname]', '[lakey]', '[H.gender]', [H.getBruteLoss()], [H.getFireLoss()], [H.getBrainLoss()], [H.getOxyLoss()], '[coord]')")
+	var/datum/db_query/query = SSdbcore.NewQuery("INSERT INTO death (name, byondkey, job, special, pod, tod, laname, lakey, gender, bruteloss, fireloss, brainloss, oxyloss, coord) VALUES (':sqlname', ':sqlkey', ':sqljob', ':sqlspecial', ':sqlpod', '[sqltime]', ':laname', ':lakey', '[H.gender]', [H.getBruteLoss()], [H.getFireLoss()], [H.getBrainLoss()], [H.getOxyLoss()], '[coord]')",
+	list(
+		"sqlname" = H.real_name,
+		"sqlkey" = H.key,
+		"sqlpod" = podname,
+		"sqlspecial" = H.mind.special_role,
+		"sqljob" = H.mind.assigned_role,
+		"laname" = laname,
+		"lakey" = lakey
+	))
 	if(!query.Execute())
 		var/err = query.ErrorMsg()
 		log_game("SQL ERROR during death reporting. Error : \[[err]\]\n")
@@ -72,16 +76,11 @@ proc/sql_report_cyborg_death(var/mob/living/silicon/robot/H)
 	var/area/placeofdeath = get_area(H)
 	var/podname = placeofdeath ? placeofdeath.name : "Unknown area"
 
-	var/sqlname = format_table_name(H.real_name)
-	var/sqlkey = format_table_name(H.key)
-	var/sqlpod = format_table_name(podname)
-	var/sqlspecial = format_table_name(H.mind.special_role)
-	var/sqljob = format_table_name(H.mind.assigned_role)
 	var/laname
 	var/lakey
 	if(H.last_attacker_)
-		laname = format_table_name(H.last_attacker_.name)
-		lakey = format_table_name(H.last_attacker_.client.key)
+		laname = H.last_attacker_.name
+		lakey = H.last_attacker_.client.key
 	var/sqltime = time2text(world.realtime, "YYYY-MM-DD hh:mm:ss")
 	var/coord = "[H.x], [H.y], [H.z]"
 //	log_debug("INSERT INTO death (name, byondkey, job, special, pod, tod, laname, lakey, gender, bruteloss, fireloss, brainloss, oxyloss) VALUES ('[sqlname]', '[sqlkey]', '[sqljob]', '[sqlspecial]', '[sqlpod]', '[sqltime]', '[laname]', '[lakey]', '[H.gender]', [H.bruteloss], [H.getFireLoss()], [H.getBrainLoss()], [H.getOxyLoss()])")
@@ -89,7 +88,16 @@ proc/sql_report_cyborg_death(var/mob/living/silicon/robot/H)
 	if(!SSdbcore.Connect())
 		log_game("SQL ERROR during death reporting. Failed to connect.")
 		return
-	var/datum/db_query/query = SSdbcore.NewQuery("INSERT INTO death (name, byondkey, job, special, pod, tod, laname, lakey, gender, bruteloss, fireloss, brainloss, oxyloss, coord) VALUES ('[sqlname]', '[sqlkey]', '[sqljob]', '[sqlspecial]', '[sqlpod]', '[sqltime]', '[laname]', '[lakey]', '[H.gender]', [H.getBruteLoss()], [H.getFireLoss()], [H.getBrainLoss()], [H.getOxyLoss()], '[coord]')")
+	var/datum/db_query/query = SSdbcore.NewQuery("INSERT INTO death (name, byondkey, job, special, pod, tod, laname, lakey, gender, bruteloss, fireloss, brainloss, oxyloss, coord) VALUES (':sqlname', ':sqlkey', ':sqljob', ':sqlspecial', ':sqlpod', '[sqltime]', ':laname', ':lakey', '[H.gender]', [H.getBruteLoss()], [H.getFireLoss()], [H.getBrainLoss()], [H.getOxyLoss()], '[coord]')",
+	list(
+		"sqlname" = H.real_name,
+		"sqlkey" = H.key,
+		"sqlpod" = podname,
+		"sqlspecial" = H.mind.special_role,
+		"sqljob" = H.mind.assigned_role,
+		"laname" = laname,
+		"lakey" = lakey,
+	))
 	if(!query.Execute())
 		var/err = query.ErrorMsg()
 		log_game("SQL ERROR during death reporting. Error : \[[err]\]\n")

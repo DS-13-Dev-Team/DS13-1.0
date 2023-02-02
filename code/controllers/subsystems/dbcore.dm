@@ -194,7 +194,7 @@ SUBSYSTEM_DEF(dbcore)
 	if(CONFIG_GET(flag/sql_enabled))
 		if(Connect())
 			log_world("Database connection established.")
-			var/datum/db_query/query_db_version = NewQuery("SELECT major, minor FROM [format_table_name("schema_revision")] ORDER BY date DESC LIMIT 1")
+			var/datum/db_query/query_db_version = NewQuery("SELECT major, minor FROM SS13_schema_revision ORDER BY date DESC LIMIT 1")
 			query_db_version.Execute()
 			if(query_db_version.NextRow())
 				db_major = text2num(query_db_version.item[1])
@@ -215,22 +215,12 @@ SUBSYSTEM_DEF(dbcore)
 	if(!Connect())
 		return
 	var/datum/db_query/query_round_initialize = SSdbcore.NewQuery(
-		"INSERT INTO [format_table_name("round")] (initialize_datetime, server_ip, server_port) VALUES (Now(), INET_ATON(:internet_address), :port)",
+		"INSERT INTO SS13_round (initialize_datetime, server_ip, server_port) VALUES (Now(), INET_ATON(:internet_address), :port)",
 		list("internet_address" = world.internet_address || "0", "port" = "[world.port]")
 	)
 	query_round_initialize.Execute(async = FALSE)
 	GLOB.round_id = "[query_round_initialize.last_insert_id]"
 	qdel(query_round_initialize)
-
-/datum/controller/subsystem/dbcore/proc/SetRoundStart()
-	if(!Connect())
-		return
-	var/datum/db_query/query_round_start = SSdbcore.NewQuery(
-		"UPDATE [format_table_name("round")] SET start_datetime = Now() WHERE id = :round_id",
-		list("round_id" = GLOB.round_id)
-	)
-	query_round_start.Execute()
-	qdel(query_round_start)
 
 /datum/controller/subsystem/dbcore/proc/Disconnect()
 	failed_connections = 0
