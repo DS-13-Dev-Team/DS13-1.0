@@ -174,7 +174,12 @@
 	//Every step along the trajectory, we may populate this list with sub-steps.
 	//If populated we follow it
 	var/list/steps = list()
+	var/loops = 0
 	while(!QDELETED(src)) //Loop on through!
+		if(loops++ >= 100)
+			qdel(src)
+			CRASH("Raytracing projectile passed 100 loops, terminating")
+
 		if((!( targloc ) || loc == targloc))
 			targloc = locate(min(max(x + xo, 1), world.maxx), min(max(y + yo, 1), world.maxy), z) //Finding the target turf at map edge
 
