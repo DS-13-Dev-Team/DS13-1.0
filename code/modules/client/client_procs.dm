@@ -178,6 +178,10 @@
 		var/allowed = FALSE
 		if (ckey in GLOB.admin_datums)
 			allowed = TRUE
+		for(var/datum/mind/M in GLOB.living_crew)
+			if(M.key == key)
+				allowed = TRUE
+				break
 		if(CONFIG_GET(flag/always_admit_patrons) && (ckey in GLOB.patron_keys))
 			allowed = TRUE
 

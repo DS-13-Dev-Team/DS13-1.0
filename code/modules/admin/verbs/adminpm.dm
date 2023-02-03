@@ -145,7 +145,8 @@
 						adminhelp(reply)													//sender has left, adminhelp instead
 				return
 
-	var/sender_message = "<span class='pm'><span class='out'>" + create_text_tag("pm_out_alt", "PM", src) + " to <span class='name'>[get_options_bar(C, holder ? 1 : 0, holder ? 1 : 0, 1)]</span>"
+	var/datum/asset/spritesheet/sheet = get_asset_datum(/datum/asset/spritesheet/chat)
+	var/sender_message = "<span class='pm'><span class='out'>[sheet.icon_tag("tags-pm_out_alt")] to <span class='name'>[get_options_bar(C, holder ? 1 : 0, holder ? 1 : 0, 1)]</span>"
 	if(holder)
 		sender_message += " (<a href='?_src_=holder;take_ticket=\ref[ticket]'>[(ticket.status == TICKET_OPEN) ? "TAKE" : "JOIN"]</a>) (<a href='?src=\ref[usr];close_ticket=\ref[ticket]'>CLOSE</a>)"
 		sender_message += ": <span class='message'>[generate_ahelp_key_words(mob, msg)]</span>"
@@ -156,7 +157,7 @@
 			type = MESSAGE_TYPE_ADMINPM,
 			html = sender_message)
 
-	var/receiver_message = "<span class='pm'><span class='in'>" + create_text_tag("pm_in", "", C) + " <b>\[[recieve_pm_type] PM\]</b> <span class='name'>[get_options_bar(src, C.holder ? 1 : 0, C.holder ? 1 : 0, 1)]</span>"
+	var/receiver_message = "<span class='pm'><span class='in'>[sheet.icon_tag("tags-pm_in")] <b>\[[recieve_pm_type] PM\]</b> <span class='name'>[get_options_bar(src, C.holder ? 1 : 0, C.holder ? 1 : 0, 1)]</span>"
 	if(C.holder)
 		receiver_message += " (<a href='?_src_=holder;take_ticket=\ref[ticket]'>[(ticket.status == TICKET_OPEN) ? "TAKE" : "JOIN"]</a>) (<a href='?src=\ref[usr];close_ticket=\ref[ticket]'>CLOSE</a>)"
 		receiver_message += ": <span class='message'>[generate_ahelp_key_words(C.mob, msg)]</span>"
@@ -186,7 +187,7 @@
 		if(X.key != key && X.key != C.key && (X.holder.rights & R_ADMIN|R_MOD|R_MENTOR))
 			to_chat(X,
 					type = MESSAGE_TYPE_ADMINPM,
-					html = "<span class='pm'><span class='other'>" + create_text_tag("pm_other", "PM:", X) + " <span class='name'>[key_name(src, X, 0, ticket)]</span> to <span class='name'>[key_name(C, X, 0, ticket)]</span> (<a href='?_src_=holder;take_ticket=\ref[ticket]'>[(ticket.status == TICKET_OPEN) ? "TAKE" : "JOIN"]</a>) (<a href='?src=\ref[usr];close_ticket=\ref[ticket]'>CLOSE</a>): <span class='message'>[msg]</span></span></span>")
+					html = "<span class='pm'><span class='other'>[sheet.icon_tag("tags-pm_other")] <span class='name'>[key_name(src, X, 0, ticket)]</span> to <span class='name'>[key_name(C, X, 0, ticket)]</span> (<a href='?_src_=holder;take_ticket=\ref[ticket]'>[(ticket.status == TICKET_OPEN) ? "TAKE" : "JOIN"]</a>) (<a href='?src=\ref[usr];close_ticket=\ref[ticket]'>CLOSE</a>): <span class='message'>[msg]</span></span></span>")
 
 /client/proc/cmd_admin_irc_pm(sender)
 	if(prefs.muted & MUTE_ADMINHELP)
@@ -204,13 +205,15 @@
 	adminmsg2adminirc(src, sender, html_decode(msg))
 	admin_pm_repository.store_pm(src, "IRC-[sender]", msg)
 
+	var/datum/asset/spritesheet/sheet = get_asset_datum(/datum/asset/spritesheet/chat)
+
 	to_chat(src,
 			type = MESSAGE_TYPE_ADMINPM,
-			html = "<span class='pm'><span class='out'>" + create_text_tag("pm_out_alt", "PM", src) + " to <span class='name'>[sender]</span>: <span class='message'>[msg]</span></span></span>")
+			html = "<span class='pm'><span class='out'>[sheet.icon_tag("tags-pm_out_alt")] to <span class='name'>[sender]</span>: <span class='message'>[msg]</span></span></span>")
 	for(var/client/X in GLOB.admins)
 		if(X == src)
 			continue
 		if(X.holder.rights & R_ADMIN|R_MOD)
 			to_chat(X,
 					type = MESSAGE_TYPE_ADMINPM,
-					html = "<span class='pm'><span class='other'>" + create_text_tag("pm_other", "PM:", X) + " <span class='name'>[key_name(src, X, 0)]</span> to <span class='name'>[sender]</span>: <span class='message'>[msg]</span></span></span>")
+					html = "<span class='pm'><span class='other'>[sheet.icon_tag("tags-pm_other")] <span class='name'>[key_name(src, X, 0)]</span> to <span class='name'>[sender]</span>: <span class='message'>[msg]</span></span></span>")

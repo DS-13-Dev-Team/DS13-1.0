@@ -114,9 +114,9 @@ SUBSYSTEM_DEF(statpanels)
 				turf_content.RegisterSignal(turf_content, COMSIG_PARENT_QDELETING, /atom/.proc/remove_from_cache) // we reset cache if anything in it gets deleted
 
 				if(ismob(turf_content) || length(turf_content.overlays) > 2)
-					turfitems[++turfitems.len] = list("[turf_content.name]", turf_content_ref, costly_icon2html(turf_content, target, sourceonly=TRUE))
+					turfitems[++turfitems.len] = list("[turf_content.name]", turf_content_ref)
 				else
-					turfitems[++turfitems.len] = list("[turf_content.name]", turf_content_ref, icon2html(turf_content, target, sourceonly=TRUE))
+					turfitems[++turfitems.len] = list("[turf_content.name]", turf_content_ref)
 			else
 				turfitems[++turfitems.len] = list("[turf_content.name]", turf_content_ref)
 		else
