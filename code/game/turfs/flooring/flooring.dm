@@ -374,6 +374,10 @@ var/list/flooring_types
 	damage_temperature = T0C+200
 	flags = TURF_HAS_CORNERS | TURF_REMOVE_CROWBAR | TURF_CAN_BURN | TURF_HIDES_THINGS
 	step_priority = 2 //Soft surfaces have more distinctive sounds
+	footstep = FOOTSTEP_CARPET
+	barefootstep = FOOTSTEP_CARPET_BAREFOOT
+	clawfootstep = FOOTSTEP_HARD_CLAW
+	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 	space_smooth = SMOOTH_NONE
 	floor_smooth = SMOOTH_NONE
 	wall_smooth = SMOOTH_NONE

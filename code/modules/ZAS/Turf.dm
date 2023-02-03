@@ -56,6 +56,10 @@
 	var/check_dirs = get_zone_neighbours(src)
 	var/unconnected_dirs = check_dirs
 
+	//src is only connected to the zone by a single direction, this is a safe removal.
+	if (!(check_dirs & (check_dirs - 1))) //if(IsInteger(log(2, .)))
+		return TRUE
+
 	#ifdef MULTIZAS
 	var/to_check = GLOB.cornerdirsz
 	#else
@@ -107,7 +111,7 @@
 				c_copy_air() //we aren't rebuilding, but hold onto the old air so it can be readded
 				z.remove(src)
 			else
-				z.rebuild()
+				INVOKE_ASYNC(z, /zone/proc/rebuild)
 
 		return 1
 

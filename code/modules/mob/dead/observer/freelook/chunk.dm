@@ -200,7 +200,7 @@ SUBSYSTEM_DEF(chunk)
 	return
 
 //Attempt to fetch from cache before asking the object to recalculate things
-/datum/chunk/proc/get_datum_visible_turfs(var/datum/A)
+/datum/chunk/proc/get_datum_visible_turfs(var/atom/A)
 	if (!visualnet.visibility_cache[A])
 		visualnet.visibility_cache[A] = A.get_visualnet_tiles(visualnet)
 	return visualnet.visibility_cache[A]

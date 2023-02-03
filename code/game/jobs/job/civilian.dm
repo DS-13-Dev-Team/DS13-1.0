@@ -30,8 +30,8 @@
 	title = "Line Cook"
 	abbreviation = "LC"
 	department_flag = SRV
-	total_positions = 3
-	spawn_positions = 3
+	total_positions = 7
+	spawn_positions = 7
 	supervisors = "the First Lieutenant"
 	selection_color = "#006200"
 	minimal_player_age = 18
@@ -58,8 +58,8 @@
 	title = "Botanist"
 	abbreviation = "BOT"
 	department_flag = SRV
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 6
+	spawn_positions = 6
 	supervisors = "the First Lieutenant"
 	selection_color = "#006200"
 	minimal_player_age = 18
@@ -85,8 +85,8 @@
 	title = "Janitor"
 	abbreviation = "JTR"
 	department_flag = SRV
-	total_positions = 3
-	spawn_positions = 3
+	total_positions = 20
+	spawn_positions = 20
 	supervisors = "the First Lieutenant"
 	selection_color = "#6c0864"
 	minimal_player_age = 18

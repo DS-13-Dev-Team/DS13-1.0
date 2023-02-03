@@ -215,6 +215,11 @@ What is the naming convention for planes or layers?
 ///Popup Chat Messages
 #define RUNECHAT_PLANE					200
 
+#define OBSCURITY_PLANE_MARKER 210
+
+#define OBSCURITY_MASKING_PLANE 215
+#define OBSCURITY_MASKING_RENDER_TARGET "*OBSCURITY_MASKING_RENDER_TARGET"
+
 #define OBSCURITY_PLANE					300 // For visualnets, such as the AI's static.
 
 #define ABOVE_OBSCURITY_PLANE			400	//For objects that are seen even on obscured tiles. Mainly AI/signal eye sprites

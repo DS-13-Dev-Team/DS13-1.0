@@ -122,7 +122,7 @@
 	if (SSnecromorph.necroqueue.len)
 		data["waiting_num"] = SSnecromorph.necroqueue.len
 		var/names = "Currently in necroqueue:"
-		for (var/mob/dead/observer/eye/signal/S in SSnecromorph.necroqueue)
+		for (var/mob/dead/observer/signal/S in SSnecromorph.necroqueue)
 			names += "\n[S.key]"
 		data["waiting_names"] = names
 	else
@@ -216,7 +216,7 @@
 	//Is this mob allowed to spend biomass and spawn objects?
 	var/authority = FALSE
 	//Only the marker player is allowed
-	if (istype(M, /mob/dead/observer/eye/signal/master))
+	if (istype(M, /mob/dead/observer/signal/master))
 		authority = TRUE
 
 	//Admins are allowed

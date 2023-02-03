@@ -59,7 +59,7 @@
 		SSnecromorph.nests -= src
 	.=..()
 
-/mob/dead/observer/eye/signal/verb/jump_to_nest()
+/mob/dead/observer/signal/verb/jump_to_nest()
 	set name = "Jump to Nest"
 	set category = "Necromorph"
 
@@ -242,7 +242,7 @@
 	SSnecromorph.marker.pay_biomass("spawning incentive", spawn_incentive , TRUE) // small biomass gain when nests are used to incentivise using them more!
 	return L
 
-/obj/structure/corruption_node/nest/attack_signal(var/mob/dead/observer/eye/signal/user)
+/obj/structure/corruption_node/nest/attack_signal(var/mob/dead/observer/signal/user)
 	if (is_marker_master(user))
 		upgrade_spawner(user)
 	else
@@ -282,11 +282,11 @@
 
 /obj/structure/corruption_node/nest/event_spawn/Initialize()
 	.=..()
-	GLOB.necrovision.add_source(src, TRUE, TRUE)
+	GLOB.necrovision.addVisionSource(src, VISION_SOURCE_RANGE, FALSE)
 
 /obj/structure/corruption_node/nest/event_spawn/register_spawnpoint()
 	//name = event.name
 	SSnecromorph.marker.add_spawnpoint(src, event = src.event)
 
-/obj/structure/corruption_node/nest/event_spawn/get_visualnet_tiles(var/datum/visualnet/network)
+/obj/structure/corruption_node/nest/event_spawn/get_visualnet_tiles()
 	return RANGE_TURFS(src, visualnet_range)
