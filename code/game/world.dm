@@ -91,6 +91,7 @@ GLOBAL_VAR(restart_counter)
 	makeDatumRefLists()
 	generate_gameid()
 
+	//SetupLogs depends on the RoundID, so lets check
 	SetupLogs()
 
 	callHook("startup")
@@ -658,6 +659,7 @@ var/world_topic_spam_protect_time = world.timeofday
 	GLOB.world_qdel_log = "[GLOB.log_directory]/qdel.log"
 	GLOB.world_map_error_log = "[GLOB.log_directory]/map_errors.log"
 	GLOB.world_runtime_log = "[GLOB.log_directory]/runtime.log"
+	GLOB.query_debug_log = "[GLOB.log_directory]/query_debug.log"
 	GLOB.world_debug_log = "[GLOB.log_directory]/debug.log"
 	GLOB.tgui_log = "[GLOB.log_directory]/tgui.log"
 	GLOB.world_paper_log = "[GLOB.log_directory]/paper.log"

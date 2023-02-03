@@ -1,3 +1,22 @@
+//! ## DB defines
+/**
+ * DB major schema version
+ *
+ * Update this whenever the db schema changes
+ *
+ * make sure you add an update to the schema_version stable in the db changelog
+ */
+#define DB_MAJOR_VERSION 5
+
+/**
+ * DB minor schema version
+ *
+ * Update this whenever the db schema changes
+ *
+ * make sure you add an update to the schema_version stable in the db changelog
+ */
+#define DB_MINOR_VERSION 22
+
 //Timing subsystem
 //Don't run if there is an identical unique timer active
 //if the arguments to addtimer are the same as an existing timer, it doesn't create a new timer, and returns the id of the existing timer
@@ -61,6 +80,7 @@
 #define SS_INIT_FAIL2TOPIC			102
 #define SS_INIT_PROFILER			101
 #define SS_INIT_GARBAGE				99
+#define SS_INIT_DBCORE				95
 #define SS_INIT_SERVER_MAINT		93
 #define SS_INIT_SOUNDS				80
 #define SS_INIT_TIMETRACK			46

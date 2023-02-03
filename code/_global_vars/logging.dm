@@ -54,3 +54,6 @@ GLOBAL_PROTECT(attack_log)
 
 GLOBAL_VAR(test_log)
 GLOBAL_PROTECT(test_log)
+
+GLOBAL_VAR(query_debug_log)
+GLOBAL_PROTECT(query_debug_log)

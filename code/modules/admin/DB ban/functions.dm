@@ -1,40 +1,45 @@
-datum/admins/proc/DB_staffwarn_record(var/ckey, var/reason)
-	if(!check_rights((R_ADMIN|R_MOD), 0)) return
-	if(!istext(reason)) return
+/datum/admins/proc/DB_staffwarn_record(var/ckey, var/reason)
+	if(!check_rights((R_ADMIN|R_MOD), 0))
+		return
+	if(!istext(reason))
+		return
 	var/dbreason = sql_sanitize_text(reason)
 	var/dbckey = sql_sanitize_text(ckey)
 
-	establish_db_connection()
-	if(!dbcon.IsConnected())
+	if(!SSdbcore.Connect())
 		to_chat(usr,"<span class='error'>Failed adding StaffWarn: db error</span>")
 		return
 
-	var/DBQuery/query = dbcon.NewQuery("SELECT id FROM erro_player WHERE ckey = '[dbckey]'")
+	var/datum/db_query/query = SSdbcore.NewQuery("SELECT id FROM erro_player WHERE ckey = '[dbckey]'")
 	query.Execute()
 	var/playerid = -1
 	if(query.NextRow())
 		playerid = query.item[1]
+	qdel(query)
 	if(playerid == -1)
 		to_chat(usr,"<font color='red'>You've attempted to set staffwarn on [ckey], but they haven't been seen yet. Staffwarn can only be set on existing players.</font>")
 		return
-	query = dbcon.NewQuery("UPDATE erro_player SET staffwarn='[dbreason]' WHERE id=[playerid]")
+	query = SSdbcore.NewQuery("UPDATE erro_player SET staffwarn='[dbreason]' WHERE id=[playerid]")
 	query.Execute()
 	to_chat(usr,"<span class='notice'>StaffWarn saved to DB</span>")
+	qdel(query)
 
-datum/admins/proc/DB_staffwarn_remove(var/ckey)
-	if(!check_rights((R_ADMIN|R_MOD), 0)) return
+/datum/admins/proc/DB_staffwarn_remove(var/ckey)
+	if(!check_rights((R_ADMIN|R_MOD), 0))
+		return
 	var/dbckey = sql_sanitize_text(ckey)
 
-	establish_db_connection()
-	if(!dbcon.IsConnected())
+	if(!SSdbcore.Connect())
 		to_chat(usr,"<span class='error'>Failed removing StaffWarn: db error</span>")
 		return 0
 
-	var/DBQuery/query = dbcon.NewQuery("UPDATE erro_player SET staffwarn=NULL WHERE ckey='[dbckey]'")
+	var/datum/db_query/query = SSdbcore.NewQuery("UPDATE erro_player SET staffwarn=NULL WHERE ckey='[dbckey]'")
 	query.Execute()
-	if(query.RowsAffected() != 1)
+	if(query.affected != 1)
+		qdel(query)
 		to_chat(usr,"<span class='error'>StaffWarn unable to be removed from DB</span>")
 		return 0
+	qdel(query)
 	to_chat(usr,"<span class='notice'>StaffWarn removed from DB</span>")
 	return 1
 
@@ -49,8 +54,7 @@ datum/admins/proc/DB_ban_record(var/bantype, var/mob/banned_mob, var/duration = 
 	if(usr)
 		if(!check_rights(R_MOD,0) && !check_rights(R_BAN))	return
 
-	establish_db_connection()
-	if(!dbcon.IsConnected())
+	if(!SSdbcore.Connect())
 		return 0
 
 	var/serverip = "[world.internet_address]:[world.port]"
@@ -106,8 +110,9 @@ datum/admins/proc/DB_ban_record(var/bantype, var/mob/banned_mob, var/duration = 
 	reason = sql_sanitize_text(reason)
 
 	var/sql = "INSERT INTO erro_ban (`id`,`bantime`,`serverip`,`bantype`,`reason`,`job`,`duration`,`rounds`,`expiration_time`,`ckey`,`computerid`,`ip`,`a_ckey`,`a_computerid`,`a_ip`,`who`,`adminwho`,`edits`,`unbanned`,`unbanned_datetime`,`unbanned_ckey`,`unbanned_computerid`,`unbanned_ip`) VALUES (null, Now(), '[serverip]', '[bantype_str]', '[reason]', '[job]', [(duration)?"[duration]":"0"], [(rounds)?"[rounds]":"0"], Now() + INTERVAL [(duration>0) ? duration : 0] MINUTE, '[ckey]', '[computerid]', '[ip]', '[a_ckey]', '[a_computerid]', '[a_ip]', '[who]', '[adminwho]', '', null, null, null, null, null)"
-	var/DBQuery/query_insert = dbcon.NewQuery(sql)
+	var/datum/db_query/query_insert = SSdbcore.NewQuery(sql)
 	query_insert.Execute()
+	qdel(query_insert)
 	var/setter = a_ckey
 	if(usr)
 		to_chat(usr, "<span class='notice'>Ban saved to database.</span>")
@@ -152,18 +157,18 @@ datum/admins/proc/DB_ban_unban(var/ckey, var/bantype, var/job = "")
 	if(job)
 		sql += " AND job = '[job]'"
 
-	establish_db_connection()
-	if(!dbcon.IsConnected())
+	if(!SSdbcore.Connect())
 		return
 
 	var/ban_id
 	var/ban_number = 0 //failsafe
 
-	var/DBQuery/query = dbcon.NewQuery(sql)
+	var/datum/db_query/query = SSdbcore.NewQuery(sql)
 	query.Execute()
 	while(query.NextRow())
 		ban_id = query.item[1]
 		ban_number++;
+	qdel(query)
 
 	if(ban_number == 0)
 		to_chat(usr, "<span class='warning'>Database update failed due to no bans fitting the search criteria. If this is not a legacy ban you should contact the database admin.</span>")
@@ -181,15 +186,18 @@ datum/admins/proc/DB_ban_unban(var/ckey, var/bantype, var/job = "")
 
 	DB_ban_unban_by_id(ban_id)
 
-datum/admins/proc/DB_ban_edit(var/banid = null, var/param = null)
-
-	if(!check_rights(R_BAN))	return
+/datum/admins/proc/DB_ban_edit(var/banid = null, var/param = null)
+	if(!check_rights(R_BAN))
+		return
 
 	if(!isnum(banid) || !istext(param))
 		to_chat(usr, "Cancelled")
 		return
 
-	var/DBQuery/query = dbcon.NewQuery("SELECT ckey, duration, reason FROM erro_ban WHERE id = [banid]")
+	if(!SSdbcore.Connect())
+		return
+
+	var/datum/db_query/query = SSdbcore.NewQuery("SELECT ckey, duration, reason FROM erro_ban WHERE id = [banid]")
 	query.Execute()
 
 	var/eckey = usr.ckey	//Editing admin ckey
@@ -197,13 +205,14 @@ datum/admins/proc/DB_ban_edit(var/banid = null, var/param = null)
 	var/duration			//Old duration
 	var/reason				//Old reason
 
-	if(query.NextRow())
-		pckey = query.item[1]
-		duration = query.item[2]
-		reason = query.item[3]
-	else
+	if(!query.NextRow())
+		qdel(query)
 		to_chat(usr, "Invalid ban id. Contact the database admin")
 		return
+	pckey = query.item[1]
+	duration = query.item[2]
+	reason = query.item[3]
+	qdel(query)
 
 	reason = sql_sanitize_text(reason)
 	var/value
@@ -217,8 +226,9 @@ datum/admins/proc/DB_ban_edit(var/banid = null, var/param = null)
 					to_chat(usr, "Cancelled")
 					return
 
-			var/DBQuery/update_query = dbcon.NewQuery("UPDATE erro_ban SET reason = '[value]', edits = CONCAT(edits,'- [eckey] changed ban reason from <cite><b>\\\"[reason]\\\"</b></cite> to <cite><b>\\\"[value]\\\"</b></cite><BR>') WHERE id = [banid]")
+			var/datum/db_query/update_query = SSdbcore.NewQuery("UPDATE erro_ban SET reason = '[value]', edits = CONCAT(edits,'- [eckey] changed ban reason from <cite><b>\\\"[reason]\\\"</b></cite> to <cite><b>\\\"[value]\\\"</b></cite><BR>') WHERE id = [banid]")
 			update_query.Execute()
+			qdel(update_query)
 			message_admins("[key_name_admin(usr)] has edited a ban for [pckey]'s reason from [reason] to [value]",1)
 		if("duration")
 			if(!value)
@@ -227,9 +237,10 @@ datum/admins/proc/DB_ban_edit(var/banid = null, var/param = null)
 					to_chat(usr, "Cancelled")
 					return
 
-			var/DBQuery/update_query = dbcon.NewQuery("UPDATE erro_ban SET duration = [value], edits = CONCAT(edits,'- [eckey] changed ban duration from [duration] to [value]<br>'), expiration_time = DATE_ADD(bantime, INTERVAL [value] MINUTE) WHERE id = [banid]")
+			var/datum/db_query/update_query = SSdbcore.NewQuery("UPDATE erro_ban SET duration = [value], edits = CONCAT(edits,'- [eckey] changed ban duration from [duration] to [value]<br>'), expiration_time = DATE_ADD(bantime, INTERVAL [value] MINUTE) WHERE id = [banid]")
 			message_admins("[key_name_admin(usr)] has edited a ban for [pckey]'s duration from [duration] to [value]",1)
 			update_query.Execute()
+			qdel(update_query)
 		if("unban")
 			if(tgui_alert(usr, "Unban [pckey]?", "Unban?", list("Yes", "No")) == "Yes")
 				DB_ban_unban_by_id(banid)
@@ -241,24 +252,24 @@ datum/admins/proc/DB_ban_edit(var/banid = null, var/param = null)
 			to_chat(usr, "Cancelled")
 			return
 
-datum/admins/proc/DB_ban_unban_by_id(var/id)
+/datum/admins/proc/DB_ban_unban_by_id(var/id)
 
 	if(!check_rights(R_BAN))	return
 
 	var/sql = "SELECT ckey FROM erro_ban WHERE id = [id]"
 
-	establish_db_connection()
-	if(!dbcon.IsConnected())
+	if(!SSdbcore.Connect())
 		return
 
 	var/ban_number = 0 //failsafe
 
 	var/pckey
-	var/DBQuery/query = dbcon.NewQuery(sql)
+	var/datum/db_query/query = SSdbcore.NewQuery(sql)
 	query.Execute()
 	while(query.NextRow())
 		pckey = query.item[1]
 		ban_number++;
+	qdel(query)
 
 	if(ban_number == 0)
 		to_chat(usr, "<span class='warning'>Database update failed due to a ban id not being present in the database.</span>")
@@ -278,9 +289,9 @@ datum/admins/proc/DB_ban_unban_by_id(var/id)
 	var/sql_update = "UPDATE erro_ban SET unbanned = 1, unbanned_datetime = Now(), unbanned_ckey = '[unban_ckey]', unbanned_computerid = '[unban_computerid]', unbanned_ip = '[unban_ip]' WHERE id = [id]"
 	message_admins("[key_name_admin(usr)] has lifted [pckey]'s ban.",1)
 
-	var/DBQuery/query_update = dbcon.NewQuery(sql_update)
+	var/datum/db_query/query_update = SSdbcore.NewQuery(sql_update)
 	query_update.Execute()
-
+	qdel(query_update)
 
 /client/proc/DB_ban_panel()
 	set category = "Admin"
@@ -299,8 +310,7 @@ datum/admins/proc/DB_ban_unban_by_id(var/id)
 
 	if(!check_rights(R_BAN))	return
 
-	establish_db_connection()
-	if(!dbcon.IsConnected())
+	if(!SSdbcore.Connect())
 		to_chat(usr, "<span class='warning'>Failed to establish database connection</span>")
 		return
 
@@ -430,7 +440,7 @@ datum/admins/proc/DB_ban_unban_by_id(var/id)
 					else
 						bantypesearch += "'PERMABAN' "
 
-			var/DBQuery/select_query = dbcon.NewQuery("SELECT id, bantime, bantype, reason, job, duration, expiration_time, ckey, a_ckey, unbanned, unbanned_ckey, unbanned_datetime, edits, ip, computerid FROM erro_ban WHERE 1 [playersearch] [adminsearch] [ipsearch] [cidsearch] [bantypesearch] ORDER BY bantime DESC LIMIT 100")
+			var/datum/db_query/select_query = SSdbcore.NewQuery("SELECT id, bantime, bantype, reason, job, duration, expiration_time, ckey, a_ckey, unbanned, unbanned_ckey, unbanned_datetime, edits, ip, computerid FROM erro_ban WHERE 1 [playersearch] [adminsearch] [ipsearch] [cidsearch] [bantypesearch] ORDER BY bantime DESC LIMIT 100")
 			select_query.Execute()
 
 			var/now = time2text(world.realtime, "YYYY-MM-DD hh:mm:ss") // MUST BE the same format as SQL gives us the dates in, and MUST be least to most specific (i.e. year, month, day not day, month, year)
@@ -509,5 +519,6 @@ datum/admins/proc/DB_ban_unban_by_id(var/id)
 				output += "</tr>"
 
 			output += "</table></div>"
+			qdel(select_query)
 
 	usr << browse(output,"window=lookupbans;size=900x700")
