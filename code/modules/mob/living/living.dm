@@ -352,8 +352,6 @@ default behaviour is:
 	if (buckled)
 		return
 
-	var/usage = TICK_USAGE
-
 	var/turf/old_loc = get_turf(src)
 
 	. = ..()

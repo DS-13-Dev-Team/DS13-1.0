@@ -87,6 +87,10 @@
 		if (speech_sound && (get_dist(speaker, src) <= world.view && src.z == speaker.z))
 			var/turf/source = speaker? get_turf(speaker) : get_turf(src)
 			src.playsound_local(source, speech_sound, sound_vol, 1)
+
+		if(client?.get_preference_value(/datum/client_preference/floating_messages) == GLOB.PREF_SHOW)
+			create_chat_message(src, speaker, language, message)
+
 		return TRUE
 
 /mob/proc/on_hear_say(var/message)

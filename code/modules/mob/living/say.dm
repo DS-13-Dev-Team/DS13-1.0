@@ -293,10 +293,8 @@ proc/get_radio_key_from_channel(var/channel)
 					O.hear_talk(src, stars(message), verb, speaking)
 
 	if(whispering)
-		INVOKE_ASYNC(src, /atom/movable/proc/animate_chat, message, speaking, italics, eavesdroping_clients, 38)
 		log_whisper("[name]/[key] : [message]")
 	else
-		INVOKE_ASYNC(src, /atom/movable/proc/animate_chat, message, speaking, italics, listening_clients, 38)
 		log_say("[name]/[key] : [message]")
 	return 1
 
