@@ -52,24 +52,28 @@
 /obj/effect/psychic_tracer
 	var/datum/extension/psychic_tracer/EM
 	visualnet_range = TRACER_MAX_RANGE
+	invisibility = INVISIBILITY_ABSTRACT
 
+/obj/effect/psychic_tracer/Initialize(mapload)
+	.=..()
+	RegisterSignal(loc, COMSIG_MOVABLE_MOVED, .proc/holder_moved)
+	forceMove(loc.loc)
 
-/obj/effect/psychic_tracer/get_visualnet_tiles(var/datum/visualnet/network)
+/obj/effect/psychic_tracer/proc/holder_moved(atom/movable/source)
+	forceMove(source.loc)
 
+/obj/effect/psychic_tracer/get_visualnet_tiles()
 	//Unsure why this is happening, but it seems that we aren't getting properly removed from chunk lists. Return PROCESS_KILL to ensure that happens
 	if (!EM)
 		if (!QDELETED(src))
 			qdel(src)
 		return PROCESS_KILL
 
-	return EM.get_visualnet_tiles(network)
+	return EM.get_visualnet_tiles()
 
 /obj/effect/psychic_tracer/Destroy()
-	//If this is null, something has gone wrong with our deletion
-	if (!EM)
-		GLOB.necrovision.remove_source(src, TRUE, TRUE)
 	EM = null //Clears out the ref that's about to become nulled to save GC time.
-	. = ..()
+	return ..()
 
 /*
 	Extension: Added to the infected mob
@@ -103,7 +107,7 @@
 	object = new /obj/effect/psychic_tracer(holder)
 	object.EM = src
 
-	GLOB.necrovision.add_source(object, TRUE, TRUE)
+	GLOB.necrovision.addVisionSource(object, VISION_SOURCE_VIEW, TRUE)
 
 
 /datum/extension/psychic_tracer/proc/tick()
@@ -140,11 +144,11 @@
 	radius = newradius
 
 	//Remove and re-add ourselves to update the necrovision
-	GLOB.necrovision.remove_source(object, TRUE, TRUE)
+	GLOB.necrovision.removeVisionSource(object)
 	object.visualnet_range = radius
-	GLOB.necrovision.add_source(object, TRUE, TRUE)
+	GLOB.necrovision.addVisionSource(object, VISION_SOURCE_VIEW, TRUE)
 
-/datum/extension/psychic_tracer/get_visualnet_tiles(var/datum/visualnet/network)
+/datum/extension/psychic_tracer/proc/get_visualnet_tiles()
 	return A.turfs_in_view(radius)
 
 
@@ -152,7 +156,7 @@
 	remove_extension(holder, base_type)
 
 /datum/extension/psychic_tracer/Destroy()
-	GLOB.necrovision.remove_source(object, TRUE, TRUE)
+	GLOB.necrovision.removeVisionSource(object)
 	QDEL_NULL(object)
 	.=..()
 

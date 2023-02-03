@@ -377,7 +377,7 @@
 		if (!turf_corrupted(T))
 			return FALSE
 	else if (require_necrovision)
-		if (!T.is_in_visualnet(GLOB.necrovision))
+		if (GLOB.necrovision.checkTurfVis(T))
 			return FALSE
 
 

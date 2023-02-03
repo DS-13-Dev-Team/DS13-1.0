@@ -223,7 +223,7 @@
 //Add this necro as a vision node for the marker and signals
 /datum/species/necromorph/setup_interaction(var/mob/living/carbon/human/H)
 	.=..()
-	GLOB.necrovision.add_source(H)
+	GLOB.necrovision.addVisionSource(H, VISION_SOURCE_VIEW, TRUE)
 
 
 //We don't want to be suffering for the lack of most particular organs
@@ -263,7 +263,7 @@
 	if (H.biomass)
 		SSnecromorph.marker.add_biomass_source(H, H.biomass*biomass_reclamation, biomass_reclamation_time, /datum/biomass_source/reclaim)
 		remove_massive_atom(H)
-	GLOB.necrovision.remove_source(H)
+	GLOB.necrovision.removeVisionSource(H)
 	SSnecromorph.major_vessels -= H
 	spawn_money(rand(lowest_money_drop, highest_money_drop), get_turf(H))
 

@@ -1,7 +1,7 @@
 /*
 	//The master signal is the player who controls the marker. Essentially the leader of the necromorphs
 */
-/mob/dead/observer/eye/signal/master
+/mob/dead/observer/signal/master
 	name = "Marker"
 	icon = 'icons/mob/necromorph/mastersignal.dmi'
 	icon_state = "mastersignal"
@@ -10,16 +10,16 @@
 	pixel_y = -7
 	energy_extension_type = /datum/extension/psi_energy/marker	//Stores and accumulates energy for abilities
 
-/mob/dead/observer/eye/signal/master/Initialize()
+/mob/dead/observer/signal/master/Initialize()
 	.=..()
 	icon_state = "mastersignal"
 	//Lets remove some verbs that don't make sense here, you get these back if you downgrade to signal
-	remove_verb(src, list(/mob/dead/observer/eye/signal/verb/become_master_signal_verb, /mob/dead/observer/eye/signal/verb/leave_marker_verb))
+	remove_verb(src, list(/mob/dead/observer/signal/verb/become_master_signal_verb, /mob/dead/observer/signal/verb/leave_marker_verb))
 
-/mob/dead/observer/eye/signal/master/apply_customisation(datum/preferences/prefs)
+/mob/dead/observer/signal/master/apply_customisation(datum/preferences/prefs)
 	return
 
-/mob/dead/observer/eye/signal/verb/become_master_signal_verb()
+/mob/dead/observer/signal/verb/become_master_signal_verb()
 	set name = "Become Master Signal"
 	set category = SPECIES_NECROMORPH
 
@@ -39,7 +39,7 @@
 	//For now, just succeed
 	SSnecromorph.marker.become_master_signal(src)
 
-/mob/dead/observer/eye/signal/master/verb/leave_master_signal_verb()
+/mob/dead/observer/signal/master/verb/leave_master_signal_verb()
 	set name = "Downgrade to normal signal"
 	set category = SPECIES_NECROMORPH
 
@@ -48,17 +48,17 @@
 	//Something must have gone wrong, we aren't deleted yet!
 	//Turn ourselves into a signal as a fallback
 	if (!QDELETED(src))
-		new /mob/dead/observer/eye/signal(src)
+		new /mob/dead/observer/signal(src)
 		qdel(src)
 
-/mob/dead/observer/eye/signal/master/verb/shop_verb()
+/mob/dead/observer/signal/master/verb/shop_verb()
 	set name = "Spawning Menu"
 	set category = SPECIES_NECROMORPH
 
 	SSnecromorph.marker.open_shop(src)
 
 /*
-/mob/dead/observer/eye/signal/master/verb/message_servants()
+/mob/dead/observer/signal/master/verb/message_servants()
 	set name = "Contact servants"
 	set src = usr
 	set category = SPECIES_NECROMORPH
@@ -71,7 +71,7 @@
 	if (!istype(SSnecromorph.marker) || !SSnecromorph.marker.player)
 		return FALSE	//If theres no marker there cant be a master
 
-	if (istype(check, /mob/dead/observer/eye/signal/master))
+	if (istype(check, /mob/dead/observer/signal/master))
 		return TRUE	//If it is the master mob then it is the master mob. We only need to do farther checks in the case of master inhabiting a necromorph
 
 	//This all works on key checking anyways, so lets start by finding the key

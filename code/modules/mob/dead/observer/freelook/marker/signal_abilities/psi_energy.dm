@@ -114,7 +114,7 @@
 		return P.get_energy_extension()
 
 
-/mob/dead/observer/eye/signal/get_energy_extension()
+/mob/dead/observer/signal/get_energy_extension()
 	var/datum/player/P = get_player()
 	if (P)
 		return get_extension(P, energy_extension_type)

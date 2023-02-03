@@ -30,27 +30,30 @@
 	var/coins_only = TRUE
 	var/list/coin_denominations = list(10, 5, 1)
 	var/list/banknote_denominations = list(1000, 500, 200, 100, 50, 20)
+	var/list/mutable_appearance/new_overlays = list()
 	for(var/i in banknote_denominations)
-		while(remaining_worth >= i && iteration < 50)
+		while(remaining_worth >= i && iteration < 5)
 			remaining_worth -= i
-			iteration++
-			var/image/banknote = image('icons/obj/items.dmi', "[icon_state][i]")
+			++iteration
+			var/mutable_appearance/banknote = mutable_appearance('icons/obj/items.dmi', "[icon_state][i]")
 			var/matrix/M = matrix()
 			M.Translate(rand(-6, 6), rand(-4, 8))
 			banknote.transform = M
-			overlays += banknote
+			new_overlays += banknote
 			coins_only = FALSE
 
 	if(remaining_worth)
 		for(var/i in coin_denominations)
-			while(remaining_worth >= i && iteration < 50)
+			while(remaining_worth >= i && iteration < 5)
 				remaining_worth -= i
-				iteration++
-				var/image/coin = image('icons/obj/items.dmi', "[icon_state][i]")
+				++iteration
+				var/mutable_appearance/coin = mutable_appearance('icons/obj/items.dmi', "[icon_state][i]")
 				var/matrix/M = matrix()
 				M.Translate(rand(-6, 6), rand(-4, 8))
 				coin.transform = M
-				overlays += coin
+				new_overlays += coin
+
+	add_overlay(new_overlays)
 
 	if(coins_only && coin_icons)
 		if(worth == 1)

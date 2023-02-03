@@ -1,4 +1,4 @@
-/mob/dead/observer/eye/signal/verb/toggle_darkvision()
+/mob/dead/observer/signal/verb/toggle_darkvision()
 	set name = "Toggle Darkvision"
 	set category = "Necromorph"
 

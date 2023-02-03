@@ -63,7 +63,7 @@
 /proc/turf_near_necromorphs(var/atom/A, var/range = world.view)
 	var/turf/T = get_turf(A)
 	//If we're not in the visualnet then we can't be
-	if (!T.is_in_visualnet(GLOB.necrovision))
+	if (!GLOB.necrovision.checkTurfVis(T))
 		return FALSE
 
 	for (var/mob/living/L in dview(range, T))

@@ -225,17 +225,12 @@
 	return TRUE //Nothing found to block so return success!
 
 var/const/enterloopsanity = 100
-/turf/Entered(atom/atom as mob|obj)
+/turf/Entered(atom/movable/enterer as mob|obj)
 
 	..()
 
-	if(!istype(atom, /atom/movable))
-		return
-
-	var/atom/movable/A = atom
-
-	if(ismob(A))
-		var/mob/M = A
+	if(ismob(enterer))
+		var/mob/M = enterer
 		if(!M.check_solid_ground())
 			inertial_drift(M)
 			//we'll end up checking solid ground again but we still need to check the other things.
@@ -246,23 +241,24 @@ var/const/enterloopsanity = 100
 			M.make_floating(0) //we know we're not on solid ground so skip the checks to save a bit of processing
 
 	var/objects = 0
-	if(A && (A.movable_flags & MOVABLE_FLAG_PROXMOVE))
+	if(enterer?.movable_flags & MOVABLE_FLAG_PROXMOVE)
 		for(var/atom/movable/thing in range(1))
-			if(objects > enterloopsanity) break
+			if(objects > enterloopsanity)
+				break
 			objects++
 			spawn(0)
-				if(A)
-					A.HasProximity(thing, 1)
-					if ((thing && A) && (thing.movable_flags & MOVABLE_FLAG_PROXMOVE))
-						thing.HasProximity(A, 1)
+				if(enterer)
+					enterer.HasProximity(thing, 1)
+					if (thing?.movable_flags & MOVABLE_FLAG_PROXMOVE)
+						thing.HasProximity(enterer, 1)
 
-	if(A.density)
+	if(enterer.density)
 		if(clear)	//If clear was previously true, null it
 			clear = null
 
 		//If this turf was not already dense, maybe it is now. notify everyone of that possibility
-		if(!density && A.density)
-			content_density_set(A.density)
+		if(!density)
+			content_density_set(enterer.density)
 
 /turf/Exited(atom/atom as mob|obj)
 	.=..()

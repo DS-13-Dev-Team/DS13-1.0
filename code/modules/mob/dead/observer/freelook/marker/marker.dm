@@ -14,7 +14,7 @@
 	light_power = 1
 	light_color = COLOR_MARKER_RED
 	var/player	//Ckey of the player controlling the marker
-	var/mob/dead/observer/eye/signal/master/playermob	//Signal mob of the player controlling the marker
+	var/mob/dead/observer/signal/master/playermob	//Signal mob of the player controlling the marker
 	var/corruption_plant
 	var/last_throb = 0
 
@@ -78,7 +78,7 @@
 /obj/machinery/marker/Initialize()
 	.=..()
 	shop = new(src)//Create necroshop datum
-	GLOB.necrovision.add_source(src)	//Add it as the first source for necrovision
+	GLOB.necrovision.addVisionSource(src, VISION_SOURCE_RANGE, FALSE)
 	add_biomass_source(null, 0, 1, /datum/biomass_source/baseline)	//Add the baseline income
 
 	//Lets create a proximity tracker to detect corpses being dragged into our vicinity
@@ -206,7 +206,7 @@
 	var/datum/player/P = get_or_create_player(M.key)
 	remove_extension(P, /datum/extension/psi_energy/signal)
 
-	var/mob/dead/observer/eye/signal/master/S = new(M)
+	var/mob/dead/observer/signal/master/S = new(M)
 
 	playermob = S
 	if (!isliving(M))
@@ -228,7 +228,7 @@
 
 		message_necromorphs(SPAN_NOTICE("[player] has stepped down, nobody is controlling the marker now."))
 		if(playermob.client)
-			new /mob/dead/observer/eye/signal(playermob)
+			new /mob/dead/observer/signal(playermob)
 		//GLOB.unitologists.remove_antagonist(playermob.mind)
 		player = null
 		if(delete_mob)
@@ -274,7 +274,7 @@
 //Necrovision
 
 //The marker reveals an area around it, seeing through walls
-/obj/machinery/marker/get_visualnet_tiles(var/datum/visualnet/network)
+/obj/machinery/marker/get_visualnet_tiles()
 	return RANGE_TURFS(src, visualnet_range)
 
 //Spawnpoints

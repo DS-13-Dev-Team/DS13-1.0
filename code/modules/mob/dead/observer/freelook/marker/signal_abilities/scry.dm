@@ -40,6 +40,7 @@
 /obj/effect/scry_eye
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	atom_flags = ATOM_FLAG_INTANGIBLE
+	anchored = TRUE
 	visualnet_range = 6
 	light_range = 6
 	light_power = 1
@@ -48,12 +49,12 @@
 
 /obj/effect/scry_eye/Initialize()
 	.=..()
-	GLOB.necrovision.add_source(src, TRUE, TRUE)	//Add it as a vision source
+	GLOB.necrovision.addVisionSource(src, VISION_SOURCE_RANGE, FALSE)
 	QDEL_IN(src, lifespan)
 
 //Prevent it getting blown up
 /obj/effect/scry_eye/ex_act()
 	return null
 
-/obj/effect/scry_eye/get_visualnet_tiles(var/datum/visualnet/network)
+/obj/effect/scry_eye/get_visualnet_tiles()
 	return RANGE_TURFS(src, visualnet_range)

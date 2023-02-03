@@ -21,14 +21,14 @@
 /obj/structure/corruption_node/eye/Initialize()
 	.=..()
 	if (!dummy)	//Don't do this stuff if its a dummy for placement preview
-		GLOB.necrovision.add_source(src, TRUE, TRUE)	//Add it as a vision source
+		GLOB.necrovision.addVisionSource(src, VISION_SOURCE_VIEW, FALSE)
 
 		//Setup a trigger to track nearby mobs
 		var/datum/proximity_trigger/view/PT = new (holder = src, on_turf_entered = /obj/structure/corruption_node/eye/proc/nearby_movement, range = visualnet_range)
 		PT.register_turfs()
 		set_extension(src, /datum/extension/proximity_manager, PT)
 
-/obj/structure/corruption_node/eye/get_visualnet_tiles(var/datum/visualnet/network)
+/obj/structure/corruption_node/eye/get_visualnet_tiles()
 	return turfs_in_view(visualnet_range)
 
 /obj/structure/corruption_node/eye/proc/nearby_movement(var/atom/movable/AM, var/atom/old_loc)
