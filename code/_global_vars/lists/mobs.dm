@@ -52,3 +52,5 @@ GLOBAL_LIST_EMPTY(ghost_mob_list)   //List of all ghosts, including clientless. 
 
 
 GLOBAL_LIST_EMPTY(limb_masks)	//List of combined icon files for masking out sections of clothes where the wearer is missing that limb
+
+GLOBAL_LIST_EMPTY(pcap_graceperiod)
