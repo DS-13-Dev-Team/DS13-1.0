@@ -33,36 +33,7 @@ GLOBAL_LIST_EMPTY(floating_chat_colors)
 /client
 	/// Messages currently seen by this client
 	var/list/seen_messages
-/*
-/atom/movable/proc/animate_chat(message, datum/language/language, small, list/show_to, duration)
-	set waitfor = FALSE
 
-	var/style	//additional style params for the message
-	var/fontsize = 6
-	if(small)
-		fontsize = 5
-	var/limit = 50
-	if(copytext(message, length(message) - 1) == "!!")
-		fontsize = 8
-		limit = 30
-		style += "font-weight: bold;"
-
-
-	if(!GLOB.floating_chat_colors[name])
-		GLOB.floating_chat_colors[name] = get_random_colour(0,160,230)
-	style += "color: [GLOB.floating_chat_colors[name]];"
-
-	// create 2 messages, one that appears if you know the language, and one that appears when you don't know the language
-	var/image/understood = generate_floating_text(src, capitalize(message), style, fontsize, duration, show_to)
-	var/image/gibberish = language ? generate_floating_text(src, language.scramble(message), style, fontsize, duration, show_to) : understood
-
-	for(var/client/C in show_to)
-		if(C.get_preference_value(/datum/client_preference/floating_messages) == GLOB.PREF_SHOW)
-			if(C.mob.say_understands(null, language))
-				C.images += understood
-			else
-				C.images += gibberish
-*/
 /proc/create_chat_message(mob/owner, atom/speaker, datum/language/speaker_lang, message)
 	set waitfor = FALSE
 
