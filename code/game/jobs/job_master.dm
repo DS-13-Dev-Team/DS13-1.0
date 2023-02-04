@@ -15,8 +15,6 @@ var/global/datum/controller/occupations/job_master
 	var/list/unassigned = list()
 	//Debug info
 	var/list/job_debug = list()
-	//Cache of icons for job info window
-	var/list/job_icons = list()
 	//List of all jobs
 	var/list/occupations_map = list()
 

@@ -1,6 +1,6 @@
 #define ONLY_DEPLOY 1
 #define ONLY_RETRACT 2
-#define SEAL_DELAY 30
+#define SEAL_DELAY 10
 
 /*
  * Defines the behavior of RIGs

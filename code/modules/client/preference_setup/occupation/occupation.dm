@@ -168,7 +168,7 @@
 	. += "Jobs that <span class='Points'>look like this</span> have unspent skill points remaining."
 	. = jointext(.,null)
 
-/datum/category_item/player_setup_item/occupation/OnTopic(href, href_list, user)
+/datum/category_item/player_setup_item/occupation/OnTopic(href, list/href_list, mob/user)
 	if(href_list["reset_jobs"])
 		ResetJobs()
 		return TOPIC_REFRESH
@@ -225,15 +225,18 @@
 		show_browser(user, jointext(HTML, null), "window=\ref[user]skillinfo")
 
 	else if(href_list["job_info"])
+		var/datum/asset/spritesheet/sheet = get_asset_datum(/datum/asset/spritesheet/simple/jobs)
+		sheet.send(user.client)
 		var/rank = href_list["job_info"]
 		var/datum/job/job = job_master.GetJob(rank)
 		var/dat = list()
 
+		dat += "<link rel='stylesheet' type='text/css' href='[sheet.css_filename()]' /> "
+
 		dat += "<p style='background-color: [job.selection_color]'><br><br><p>"
 		if(job.alt_titles)
 			dat += "<i><b>Alternative titles:</b> [english_list(job.alt_titles)].</i>"
-		send_rsc(user, job.get_job_icon(), "job[ckey(rank)].png")
-		dat += "<img src=job[ckey(rank)].png width=96 height=96 style='float:left;'>"
+		dat += sheet.icon_tag(ckey(rank), "job_icon")
 		if(job.department)
 			dat += "<b>Department:</b> [job.department]."
 			if(job.head_position)

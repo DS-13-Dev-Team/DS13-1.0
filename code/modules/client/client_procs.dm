@@ -155,12 +155,8 @@
 	TopicData = null							//Prevent calls to client.Topic from connect
 
 	if(!(connection in list("seeker", "web")))					//Invalid connection type.
-		return null
-
-	if(findtext(ckey, "billymays"))
-		alert(src, "Webclients aren't supported! Please, connect using Dream Seeker!")
 		qdel(src)
-		return
+		return null
 
 	// Instantiate stat panel
 	stat_panel = new(src, "statbrowser")
@@ -169,29 +165,6 @@
 	// Instantiate tgui panel
 	tgui_panel = new(src, "browseroutput")
 
-	if(!CONFIG_GET(flag/guests_allowed) && IsGuestKey(key))
-		alert(src,"This server doesn't allow guest accounts to play. Please go to http://www.byond.com/ and register for a key.","Guest")
-		qdel(src)
-		return
-
-	if(CONFIG_GET(number/player_limit) != 0 && (GLOB.clients.len >= CONFIG_GET(number/player_limit)))
-		var/allowed = FALSE
-		if (ckey in GLOB.admin_datums)
-			allowed = TRUE
-		if(GLOB.pcap_graceperiod[ckey] >= world.time)
-			allowed = TRUE
-		if(CONFIG_GET(flag/always_admit_patrons) && (ckey in GLOB.patron_keys))
-			allowed = TRUE
-
-		if (!allowed)
-			var/backup_server = CONFIG_GET(string/backup_server)
-			if(backup_server)
-				alert(src, "This server is currently full and not accepting new connections. Redirecting you to the second server.", "Server Full")
-				src << link("byond://[CONFIG_GET(string/backup_server)]")
-			else
-				alert(src, "This server is currently full and not accepting new connections. Try again later.", "Server Full")
-			qdel(src)
-			return
 	//DS13 - Give locally logged in users host status
 	var/localhost_addresses = list("127.0.0.1", "::1")
 	if(isnull(address) || (address in localhost_addresses))
@@ -232,6 +205,30 @@
 		GLOB.player_details[ckey] = player_details
 
 	. = ..()	//calls mob.Login()
+
+	if(!CONFIG_GET(flag/guests_allowed) && IsGuestKey(key))
+		to_chat(src,"This server doesn't allow guest accounts to play. Please go to http://www.byond.com/ and register for a key.","Guest")
+		qdel(src)
+		return
+
+	if(CONFIG_GET(number/player_limit) != 0 && (GLOB.clients.len >= CONFIG_GET(number/player_limit)))
+		var/allowed = FALSE
+		if (ckey in GLOB.admin_datums)
+			allowed = TRUE
+		if(GLOB.pcap_graceperiod[ckey] >= world.time)
+			allowed = TRUE
+		if(CONFIG_GET(flag/always_admit_patrons) && (ckey in GLOB.patron_keys))
+			allowed = TRUE
+
+		if (!allowed)
+			var/backup_server = CONFIG_GET(string/backup_server)
+			if(backup_server)
+				to_chat(src, "This server is currently full and not accepting new connections. Redirecting you to the second server.", "Server Full")
+				src << link("byond://[backup_server]")
+			else
+				to_chat(src, "This server is currently full and not accepting new connections. Try again later.", "Server Full")
+			qdel(src)
+			return
 
 	// Initialize stat panel
 	stat_panel.initialize(

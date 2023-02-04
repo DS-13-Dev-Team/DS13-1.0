@@ -1,5 +1,5 @@
-GLOBAL_DATUM(using_map, /datum/map)
 GLOBAL_LIST_INIT(all_maps, initialise_bay_map_list())
+GLOBAL_DATUM_INIT(using_map, /datum/map, GLOB.all_maps[SSmapping.config.map_datum])
 
 /proc/initialise_bay_map_list()
 	.=list()

@@ -7,8 +7,6 @@
 		if (P)
 			P.cache_location(src)
 
-		GLOB.pcap_graceperiod[ckey] = world.time + 10 MINUTES
-
 	SSnano.user_logout(src) // this is used to clean up (remove) this user's Nano UIs
 	SStgui.on_logout(src)
 	GLOB.player_list -= src

@@ -342,8 +342,9 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 		update_static(old_loc)
 	return TRUE
 
-
 /mob/dead/observer/signal/Logout()
+	if(ckey)
+		GLOB.pcap_graceperiod[ckey] = world.time + 10 MINUTES
 	if (!istype(src, /mob/dead/observer/signal/master))
 		SSnecromorph.remove_from_necroqueue(src)
 	.=..()
