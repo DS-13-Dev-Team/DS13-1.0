@@ -208,3 +208,10 @@ proc/get_craft_item(path)
 		icon.Scale(icon.Width()*3, icon.Height()*3)
 		Insert(T.id, icon)
 	.=..()
+
+/datum/asset/spritesheet/chat
+	name = "chat"
+
+/datum/asset/spritesheet/chat/register()
+	InsertAll("tags", 'icons/chattags.dmi')
+	return ..()

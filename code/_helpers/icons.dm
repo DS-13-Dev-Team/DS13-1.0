@@ -116,103 +116,6 @@ ColorTone(rgb, tone)
 	using strict shades of gray. The tone value is an RGB color; any alpha value is ignored.
 */
 
-/*
-Get Flat Icon DEMO by DarkCampainger
-
-This is a test for the get flat icon proc, modified approprietly for icons and their states.
-Probably not a good idea to run this unless you want to see how the proc works in detail.
-mob
-	icon = 'old_or_unused.dmi'
-	icon_state = "green"
-
-	Login()
-		// Testing image underlays
-		underlays += image(icon='old_or_unused.dmi',icon_state="red")
-		underlays += image(icon='old_or_unused.dmi',icon_state="red", pixel_x = 32)
-		underlays += image(icon='old_or_unused.dmi',icon_state="red", pixel_x = -32)
-
-		// Testing image overlays
-		overlays += image(icon='old_or_unused.dmi',icon_state="green", pixel_x = 32, pixel_y = -32)
-		overlays += image(icon='old_or_unused.dmi',icon_state="green", pixel_x = 32, pixel_y = 32)
-		overlays += image(icon='old_or_unused.dmi',icon_state="green", pixel_x = -32, pixel_y = -32)
-
-		// Testing icon file overlays (defaults to mob's state)
-		overlays += '_flat_demoIcons2.dmi'
-
-		// Testing icon_state overlays (defaults to mob's icon)
-		overlays += "white"
-
-		// Testing dynamic icon overlays
-		var/icon/I = icon('old_or_unused.dmi', icon_state="aqua")
-		I.Shift(NORTH,16,1)
-		overlays+=I
-
-		// Testing dynamic image overlays
-		I=image(icon=I,pixel_x = -32, pixel_y = 32)
-		overlays+=I
-
-		// Testing object types (and layers)
-		overlays+=/obj/effect/overlayTest
-
-		loc = locate (10,10,1)
-	verb
-		Browse_Icon()
-			set name = "1. Browse Icon"
-			// Give it a name for the cache
-			var/iconName = "[ckey(src.name)]_flattened.dmi"
-			// Send the icon to src's local cache
-			src<<browse_rsc(getFlatIcon(src), iconName)
-			// Display the icon in their browser
-			src<<browse("<body bgcolor='#000000'><p><img src='[iconName]'></p></body>")
-
-		Output_Icon()
-			set name = "2. Output Icon"
-			to_chat(src, "Icon is: \icon[getFlatIcon(src)]")
-
-		Label_Icon()
-			set name = "3. Label Icon"
-			// Give it a name for the cache
-			var/iconName = "[ckey(src.name)]_flattened.dmi"
-			// Copy the file to the rsc manually
-			var/icon/I = fcopy_rsc(getFlatIcon(src))
-			// Send the icon to src's local cache
-			src<<browse_rsc(I, iconName)
-			// Update the label to show it
-			winset(src,"imageLabel","image='\ref[I]'");
-
-		Add_Overlay()
-			set name = "4. Add Overlay"
-			overlays += image(icon='old_or_unused.dmi',icon_state="yellow",pixel_x = rand(-64,32), pixel_y = rand(-64,32))
-
-		Stress_Test()
-			set name = "5. Stress Test"
-			for(var/i = 0 to 1000)
-				// The third parameter forces it to generate a new one, even if it's already cached
-				getFlatIcon(src,0,2)
-				if(prob(5))
-					Add_Overlay()
-			Browse_Icon()
-
-		Cache_Test()
-			set name = "6. Cache Test"
-			for(var/i = 0 to 1000)
-				getFlatIcon(src)
-			Browse_Icon()
-
-obj/effect/overlayTest
-	icon = 'old_or_unused.dmi'
-	icon_state = "blue"
-	pixel_x = -24
-	pixel_y = 24
-
-	layer = HOLOMAP_LAYER
-
-world
-	view = "7x7"
-	maxx = 20
-	maxy = 20
-	maxz = 1
-*/
 
 #define TO_HEX_DIGIT(n) ascii2text((n&15) + ((n&15)<10 ? 48 : 87))
 
@@ -630,17 +533,6 @@ proc/ColorTone(rgb, tone)
 	if(gray <= tone_gray) return BlendRGB("#000000", tone, gray/(tone_gray || 1))
 	else return BlendRGB(tone, "#ffffff", (gray-tone_gray)/((255-tone_gray) || 1))
 
-
-/*
-	Datum level wrapper, override as desired
-	Intended for species
-*/
-/datum/proc/get_flat_icon(defdir=2, deficon=null, defstate="", defblend=BLEND_DEFAULT, always_use_defdir = 0)
-	return
-
-/atom/get_flat_icon(defdir=2, deficon=null, defstate="", defblend=BLEND_DEFAULT, always_use_defdir = 0)
-	return getFlatIcon(src, defdir, deficon, defstate, defblend, always_use_defdir)
-
 /*
 Get flat icon by DarkCampainger. As it says on the tin, will return an icon with all the overlays
 as a single icon. Useful for when you want to manipulate an icon via the above as overlays are not normally included.
@@ -845,22 +737,6 @@ The _flatIcons list is a cache for generated icon files.
 		//Also, icons cannot directly set icon_state. Slower than changing variables but whatever.
 		alpha_mask.Blend(image_overlay,ICON_OR)//OR so they are lumped together in a nice overlay.
 	return alpha_mask//And now return the mask.
-
-/mob/proc/AddCamoOverlay(atom/A)//A is the atom which we are using as the overlay.
-	var/icon/opacity_icon = new(A.icon, A.icon_state)//Don't really care for overlays/underlays.
-	//Now we need to culculate overlays+underlays and add them together to form an image for a mask.
-	//var/icon/alpha_mask = getFlatIcon(src)//Accurate but SLOW. Not designed for running each tick. Could have other uses I guess.
-	var/icon/alpha_mask = getIconMask(src)//Which is why I created that proc. Also a little slow since it's blending a bunch of icons together but good enough.
-	opacity_icon.AddAlphaMask(alpha_mask)//Likely the main source of lag for this proc. Probably not designed to run each tick.
-	opacity_icon.ChangeOpacity(0.4)//Front end for MapColors so it's fast. 0.5 means half opacity and looks the best in my opinion.
-	for(var/i=0,i<5,i++)//And now we add it as overlays. It's faster than creating an icon and then merging it.
-		var/image/I = image("icon" = opacity_icon, "icon_state" = A.icon_state, "layer" = layer+0.8)//So it's above other stuff but below weapons and the like.
-		switch(i)//Now to determine offset so the result is somewhat blurred.
-			if(1)	I.pixel_x--
-			if(2)	I.pixel_x++
-			if(3)	I.pixel_y--
-			if(4)	I.pixel_y++
-		overlays += I//And finally add the overlay.
 
 #define HOLOPAD_SHORT_RANGE 1 //For determining the color of holopads based on whether they're short or long range.
 #define HOLOPAD_LONG_RANGE 2
@@ -1083,86 +959,12 @@ proc/generate_image(var/tx as num, var/ty as num, var/tz as num, var/range as nu
 	dummySave = null
 	fdel("tmp/dummySave.sav") //if you get the idea to try and make this more optimized, make sure to still call unlock on the savefile after every write to unlock it.
 
-///given a text string, returns whether it is a valid dmi icons folder path
-/proc/is_valid_dmi_file(icon_path)
-	if(!istext(icon_path) || !length(icon_path))
-		return FALSE
-
-	var/is_in_icon_folder = findtextEx(icon_path, "icons/")
-	var/is_dmi_file = findtextEx(icon_path, ".dmi")
-
-	if(is_in_icon_folder && is_dmi_file)
-		return TRUE
-	return FALSE
-
-/// given an icon object, dmi file path, or atom/image/mutable_appearance, attempts to find and return an associated dmi file path.
-/// a weird quirk about dm is that /icon objects represent both compile-time or dynamic icons in the rsc,
-/// but stringifying rsc references returns a dmi file path
-/// ONLY if that icon represents a completely unchanged dmi file from when the game was compiled.
-/// so if the given object is associated with an icon that was in the rsc when the game was compiled, this returns a path. otherwise it returns ""
-/proc/get_icon_dmi_path(icon/icon)
-	/// the dmi file path we attempt to return if the given object argument is associated with a stringifiable icon
-	/// if successful, this looks like "icons/path/to/dmi_file.dmi"
-	var/icon_path = ""
-
-	if(isatom(icon) || istype(icon, /image) || istype(icon, /mutable_appearance))
-		var/atom/atom_icon = icon
-		icon = atom_icon.icon
-		//atom icons compiled in from 'icons/path/to/dmi_file.dmi' are weird and not really icon objects that you generate with icon().
-		//if theyre unchanged dmi's then they're stringifiable to "icons/path/to/dmi_file.dmi"
-
-	if(isicon(icon) && isfile(icon))
-		//icons compiled in from 'icons/path/to/dmi_file.dmi' at compile time are weird and arent really /icon objects,
-		///but they pass both isicon() and isfile() checks. theyre the easiest case since stringifying them gives us the path we want
-		var/icon_ref = "\ref[icon]"
-		var/locate_icon_string = "[locate(icon_ref)]"
-
-		icon_path = locate_icon_string
-
-	else if(isicon(icon) && "[icon]" == "/icon")
-		// icon objects generated from icon() at runtime are icons, but they ARENT files themselves, they represent icon files.
-		// if the files they represent are compile time dmi files in the rsc, then
-		// the rsc reference returned by fcopy_rsc() will be stringifiable to "icons/path/to/dmi_file.dmi"
-		var/rsc_ref = fcopy_rsc(icon)
-
-		var/icon_ref = "\ref[rsc_ref]"
-
-		var/icon_path_string = "[locate(icon_ref)]"
-
-		icon_path = icon_path_string
-
-	else if(istext(icon))
-		var/rsc_ref = fcopy_rsc(icon)
-		//if its the text path of an existing dmi file, the rsc reference returned by fcopy_rsc() will be stringifiable to a dmi path
-
-		var/rsc_ref_ref = "\ref[rsc_ref]"
-		var/rsc_ref_string = "[locate(rsc_ref_ref)]"
-
-		icon_path = rsc_ref_string
-
-	if(is_valid_dmi_file(icon_path))
-		return icon_path
-
-	return FALSE
-
-/**
- * generate an asset for the given icon or the icon of the given appearance for [thing], and send it to any clients in target.
- * Arguments:
- * * thing - either a /icon object, or an object that has an appearance (atom, image, mutable_appearance).
- * * target - either a reference to or a list of references to /client's or mobs with clients
- * * icon_state - string to force a particular icon_state for the icon to be used
- * * dir - dir number to force a particular direction for the icon to be used
- * * frame - what frame of the icon_state's animation for the icon being used
- * * moving - whether or not to use a moving state for the given icon
- * * sourceonly - if TRUE, only generate the asset and send back the asset url, instead of tags that display the icon to players
- * * extra_clases - string of extra css classes to use when returning the icon string
- */
-/proc/icon2html(atom/thing, client/target, icon_state, dir = SOUTH, frame = 1, moving = FALSE, sourceonly = FALSE, extra_classes = null)
+/proc/icon2html(thing, target, icon_state, dir = SOUTH, frame = 1, moving = FALSE, sourceonly = FALSE, extra_classes = null)
 	if (!thing)
 		return
 
 	var/key
-	var/icon/icon2collapse = thing
+	var/icon/I = thing
 
 	if (!target)
 		return
@@ -1174,14 +976,10 @@ proc/generate_image(var/tx as num, var/ty as num, var/tz as num, var/range as nu
 		targets = list(target)
 	else
 		targets = target
-	if(!length(targets))
-		return
+		if (!length(targets))
+			return
 
-	//check if the given object is associated with a dmi file in the icons folder. if it is then we dont need to do a lot of work
-	//for asset generation to get around byond limitations
-	var/icon_path = get_icon_dmi_path(thing)
-
-	if (!isicon(icon2collapse))
+	if (!isicon(I))
 		if (isfile(thing)) //special snowflake
 			var/name = SANITIZE_FILENAME("[generate_asset_name(thing)].png")
 			if (!SSassets.cache[name])
@@ -1191,20 +989,25 @@ proc/generate_image(var/tx as num, var/ty as num, var/tz as num, var/range as nu
 			if(sourceonly)
 				return SSassets.transport.get_asset_url(name)
 			return "<img class='[extra_classes] icon icon-misc' src='[SSassets.transport.get_asset_url(name)]'>"
+		var/atom/A = thing
 
-		//its either an atom, image, or mutable_appearance, we want its icon var
-		icon2collapse = thing.icon
+		I = A.icon
 
 		if (isnull(icon_state))
-			icon_state = thing.icon_state
+			icon_state = A.icon_state
+			//Despite casting to atom, this code path supports mutable appearances, so let's be nice to them
+			if(isnull(icon_state))
+				icon_state = initial(A.icon_state)
+				if (isnull(dir))
+					dir = initial(A.dir)
 
 		if (isnull(dir))
-			dir = thing.dir
+			dir = A.dir
 
 		if (ishuman(thing)) // Shitty workaround for a BYOND issue.
-			var/icon/temp = icon2collapse
-			icon2collapse = icon()
-			icon2collapse.Insert(temp, dir = SOUTH)
+			var/icon/temp = I
+			I = icon()
+			I.Insert(temp, dir = SOUTH)
 			dir = SOUTH
 	else
 		if (isnull(dir))
@@ -1212,18 +1015,13 @@ proc/generate_image(var/tx as num, var/ty as num, var/tz as num, var/range as nu
 		if (isnull(icon_state))
 			icon_state = ""
 
-	icon2collapse = icon(icon2collapse, icon_state, dir, frame, moving)
+	I = icon(I, icon_state, dir, frame, moving)
 
-	var/list/name_and_ref = generate_and_hash_rsc_file(icon2collapse, icon_path)//pretend that tuples exist
-
-	var/rsc_ref = name_and_ref[1] //weird object thats not even readable to the debugger, represents a reference to the icons rsc entry
-	var/file_hash = name_and_ref[2]
-	key = "[name_and_ref[3]].png"
-
+	key = "[generate_asset_name(I)].png"
 	if(!SSassets.cache[key])
-		SSassets.transport.register_asset(key, rsc_ref, file_hash, icon_path)
-	for (var/client_target in targets)
-		SSassets.transport.send_assets(client_target, key)
+		SSassets.transport.register_asset(key, I)
+	for (var/thing2 in targets)
+		SSassets.transport.send_assets(thing2, key)
 	if(sourceonly)
 		return SSassets.transport.get_asset_url(key)
 	return "<img class='[extra_classes] icon icon-[icon_state]' src='[SSassets.transport.get_asset_url(key)]'>"

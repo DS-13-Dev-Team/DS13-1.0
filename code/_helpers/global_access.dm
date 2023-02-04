@@ -627,8 +627,6 @@
 			return global.telecomms_list;
 		if("tertiary_mode")
 			return global.tertiary_mode;
-		if("text_tag_icons")
-			return global.text_tag_icons;
 		if("ticket_panels")
 			return global.ticket_panels;
 		if("tickets")
@@ -1314,8 +1312,6 @@
 			global.telecomms_list=newval;
 		if("tertiary_mode")
 			global.tertiary_mode=newval;
-		if("text_tag_icons")
-			global.text_tag_icons=newval;
 		if("ticket_panels")
 			global.ticket_panels=newval;
 		if("tickets")
@@ -1695,7 +1691,6 @@
 	"tape_roll_applications",
 	"telecomms_list",
 	"tertiary_mode",
-	"text_tag_icons",
 	"ticket_panels",
 	"tickets",
 	"total_unit_tests",

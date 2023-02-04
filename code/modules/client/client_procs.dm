@@ -178,6 +178,8 @@
 		var/allowed = FALSE
 		if (ckey in GLOB.admin_datums)
 			allowed = TRUE
+		if(GLOB.pcap_graceperiod[ckey] >= world.time)
+			allowed = TRUE
 		if(CONFIG_GET(flag/always_admit_patrons) && (ckey in GLOB.patron_keys))
 			allowed = TRUE
 
