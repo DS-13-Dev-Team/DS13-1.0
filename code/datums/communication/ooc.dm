@@ -49,7 +49,8 @@
 	for(var/client/target in GLOB.clients)
 		if(C && target.is_key_ignored(C.key)) // If we're ignored by this person, then do nothing.
 			continue
-		var/sent_message = "[create_text_tag("ooc", "OOC:", target)] <EM>[sender_override ? sender_override : C.key]:</EM> <span class='message'>[message]</span>"
+		var/datum/asset/spritesheet/sheet = get_asset_datum(/datum/asset/spritesheet/chat)
+		var/sent_message = "[sheet.icon_tag("tags-ooc")] <EM>[sender_override ? sender_override : C.key]:</EM> <span class='message'>[message]</span>"
 		if(can_badmin)
 			receive_communication(A, target, "<span class='ooc'><font color='[ooc_color]'>[sent_message]</font></span>")
 		else

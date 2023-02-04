@@ -377,6 +377,7 @@
 #include "code\datums\communication\~defines.dm"
 #include "code\datums\components\_component.dm"
 #include "code\datums\components\clickbox.dm"
+#include "code\datums\components\connect_mob_behalf.dm"
 #include "code\datums\components\healthbar.dm"
 #include "code\datums\components\spawner.dm"
 #include "code\datums\craft\item.dm"

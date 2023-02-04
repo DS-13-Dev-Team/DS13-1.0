@@ -256,7 +256,6 @@
 	Optionally (enabled by default), tiles in sight of the marker, or a marker shard, are designated safe zone, crew visibility is ignored there
 */
 /turf/proc/crew_nearby(var/distance = 7)
-	.=FALSE
 	for (var/mob/living/carbon/human/H in range(distance, src))
 		if (H.is_necromorph())
 			//Necromorphs don't count

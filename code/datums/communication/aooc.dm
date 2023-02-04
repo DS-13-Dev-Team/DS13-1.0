@@ -36,8 +36,8 @@
 			player_display = holder ? "[display_name]([usr.client.holder.rank])" : display_name
 
 	for(var/client/target in GLOB.clients)
+		var/datum/asset/spritesheet/sheet = get_asset_datum(/datum/asset/spritesheet/chat)
 		if(target.holder)
-			receive_communication(A, target, "<span class='ooc'><span class='aooc'>[create_text_tag("aooc", "Antag-OOC:", target)] <EM>[sender_override ? player_display : get_options_bar(A, 0, 1, 1)]:</EM> <span class='message'>[message]</span></span></span>")
+			receive_communication(A, target, "<span class='ooc'><span class='aooc'>[sheet.icon_tag("tags-aooc")] <EM>[sender_override ? player_display : get_options_bar(A, 0, 1, 1)]:</EM> <span class='message'>[message]</span></span></span>")
 		else if(target.mob && target.mob.mind && target.mob.mind.special_role)
-
-			receive_communication(A, target, "<span class='ooc'><span class='aooc'>[create_text_tag("aooc", "Antag-OOC:", target)] <EM>[player_display]:</EM> <span class='message'>[message]</span></span></span>")
+			receive_communication(A, target, "<span class='ooc'><span class='aooc'>[sheet.icon_tag("tags-aooc")] <EM>[player_display]:</EM> <span class='message'>[message]</span></span></span>")
