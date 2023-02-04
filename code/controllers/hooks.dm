@@ -24,7 +24,7 @@
  * @returns		1 if all hooked code runs successfully, 0 otherwise.
  */
 /proc/callHook(hook, list/args=null)
-	set waitfor = TRUE
+	set waitfor = FALSE
 	var/hook_path = text2path("/hook/[hook]")
 	if(!hook_path)
 		log_debug("Invalid hook '/hook/[hook]' called.")

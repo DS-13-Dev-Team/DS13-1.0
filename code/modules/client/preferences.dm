@@ -83,7 +83,8 @@
 		save_character()
 
 /datum/preferences/proc/ShowChoices(mob/user)
-	if(!SScharacter_setup.initialized)
+	if(!SSatoms.initialized)
+		to_chat(user, SPAN_WARNING("Waiting for server to initialize..."))
 		return
 	if(!user || !user.client)
 		return
