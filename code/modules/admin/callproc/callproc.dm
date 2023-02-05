@@ -219,17 +219,6 @@
 		holder.callproc.waiting_for_click = 0
 		holder.callproc.do_args()
 
-/client/Click(atom/A)
-	if(holder && holder.callproc && holder.callproc.waiting_for_click)
-		if(tgui_alert(usr, "Do you want to select \the [A] as the [holder.callproc.arguments.len+1]\th argument?", "Confirmation", list("Yes", "No")) == "Yes")
-			holder.callproc.arguments += A
-
-		holder.callproc.waiting_for_click = 0
-		remove_verb(src, /client/proc/cancel_callproc_select)
-		holder.callproc.do_args()
-	else
-		return ..()
-
 /datum/callproc/proc/finalise()
 	var/returnval
 

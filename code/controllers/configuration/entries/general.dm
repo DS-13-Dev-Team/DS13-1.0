@@ -300,3 +300,11 @@ Basics, the most important.
 
 /datum/config_entry/flag/topic_enabled
 	protection = CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/number/minute_click_limit
+	default = 400
+	min_val = 0
+
+/datum/config_entry/number/second_click_limit
+	default = 15
+	min_val = 0
