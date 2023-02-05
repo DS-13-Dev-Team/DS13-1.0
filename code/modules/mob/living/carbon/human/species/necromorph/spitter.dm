@@ -2,8 +2,9 @@
 /datum/species/necromorph/slasher/spitter
 	name = SPECIES_NECROMORPH_SPITTER
 	name_plural = "Spitters"
-	total_health = 72
-	biomass = 55
+	total_health = 80
+	biomass = 45
+	biomass_reclamation_time	=	4.5 MINUTES
 	mass = 45
 	view_range = 8
 	icon_template = 'icons/mob/necromorph/spitter.dmi'

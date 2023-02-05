@@ -119,7 +119,7 @@
 		if (MOB_MINISCULE to MOB_TINY)
 			options = list(/mob/living/simple_animal/necromorph/divider_component/leg = 1, /mob/living/simple_animal/necromorph/divider_component/arm = 1)
 		if (MOB_SMALL)
-			options = list(/mob/living/carbon/human/necromorph/lurker = 1)
+			options = list(/mob/living/carbon/human/necromorph/leaper/hopper/fennec = 1)
 		if (MOB_MEDIUM)
 			options = list(/mob/living/carbon/human/necromorph/exploder = 1)
 		if (MOB_LARGE)

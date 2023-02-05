@@ -253,7 +253,7 @@ S	fuel tank (hydrazine)
 	id = "pulsedeflect"
 	materials = list(MATERIAL_PLASTEEL = 5000, MATERIAL_DIAMOND = 2000, MATERIAL_PHORON = 500)
 	build_path = /obj/item/ammo_magazine/pulse/df
-	price = 2500
+	price = 3250
 
 /datum/design/item/ammo/pulsehighvel
 	name = "high velocity pulse rounds"

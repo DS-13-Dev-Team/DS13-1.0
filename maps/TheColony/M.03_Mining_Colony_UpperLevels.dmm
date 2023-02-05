@@ -122,8 +122,8 @@
 /obj/structure/cable{
 	d1 = 2;
 	d2 = 8;
-	icon_state = "2-8";
-	dir = 4
+	dir = 4;
+	icon_state = "2-8"
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/upper/commandofficers)
@@ -169,8 +169,8 @@
 /obj/machinery/button/remote/blast_door{
 	id = "bridge_armory";
 	name = "Bridge Armory";
-	pixel_y = 23;
-	pixel_x = 1
+	pixel_x = 1;
+	pixel_y = 23
 	},
 /obj/machinery/turretid/lethal{
 	control_area = "Brigde Corridor";
@@ -276,8 +276,8 @@
 	icon_state = "4-8"
 	},
 /obj/structure/cable{
-	icon_state = "1-4";
-	dir = 8
+	dir = 8;
+	icon_state = "1-4"
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/upper/commandofficers)
@@ -1330,8 +1330,8 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/security{
-	name = "P-Sec Upper Hallway";
-	dir = 4
+	dir = 4;
+	name = "P-Sec Upper Hallway"
 	},
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/security/upper)
@@ -2319,6 +2319,10 @@
 /obj/item/clothing/head/soft/pcsi,
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/upper)
+"gM" = (
+/mob/living/simple_animal/cat/fennec,
+/turf/simulated/floor/dank/rectangles,
+/area/mining_colony/security/upper/commandofficers)
 "gS" = (
 /turf/simulated/floor/dank/slides_end{
 	dir = 4
@@ -2367,8 +2371,8 @@
 /obj/effect/wallframe_spawn/reinforced,
 /obj/structure/cable{
 	d2 = 2;
-	icon_state = "0-2";
-	dir = 8
+	dir = 8;
+	icon_state = "0-2"
 	},
 /obj/machinery/door/blast/shutters/open{
 	dir = 8;
@@ -2450,8 +2454,8 @@
 /obj/structure/cable{
 	d1 = 2;
 	d2 = 8;
-	icon_state = "2-8";
-	dir = 4
+	dir = 4;
+	icon_state = "2-8"
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/security/upper/commandofficers)
@@ -2513,8 +2517,8 @@
 /obj/effect/wallframe_spawn/reinforced,
 /obj/structure/cable{
 	d2 = 2;
-	icon_state = "0-2";
-	dir = 8
+	dir = 8;
+	icon_state = "0-2"
 	},
 /obj/machinery/door/blast/shutters/open{
 	dir = 8;
@@ -2695,8 +2699,8 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	icon_state = "1-4";
-	dir = 8
+	dir = 8;
+	icon_state = "1-4"
 	},
 /turf/simulated/floor/dank/slides{
 	dir = 8
@@ -2918,8 +2922,8 @@
 	icon_state = "2-8"
 	},
 /obj/structure/cable{
-	icon_state = "1-4";
-	dir = 4
+	dir = 4;
+	icon_state = "1-4"
 	},
 /turf/simulated/floor/dank/tech{
 	dir = 4
@@ -2943,8 +2947,8 @@
 /area/mining_colony/security/upper/commandofficers)
 "vV" = (
 /obj/machinery/door/airlock/command{
-	name = "Plaza Balcony";
 	dir = 4;
+	name = "Plaza Balcony";
 	req_access = list()
 	},
 /turf/simulated/floor/dank/maint,
@@ -2968,8 +2972,8 @@
 	},
 /obj/structure/cable{
 	d2 = 2;
-	icon_state = "0-2";
-	dir = 1
+	dir = 1;
+	icon_state = "0-2"
 	},
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/security/upper/commandofficers)
@@ -2993,8 +2997,8 @@
 /obj/machinery/turret/covered/pulse,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/sign/warning/lethal_turrets{
-	pixel_y = 1;
-	pixel_x = -29
+	pixel_x = -29;
+	pixel_y = 1
 	},
 /turf/simulated/floor/dank/tech{
 	dir = 8
@@ -3019,13 +3023,13 @@
 /obj/machinery/power/apc{
 	dir = 8;
 	name = "Bridge Armor";
-	pixel_y = 1;
-	pixel_x = -25
+	pixel_x = -25;
+	pixel_y = 1
 	},
 /obj/structure/cable{
 	d2 = 2;
-	icon_state = "0-2";
-	dir = 4
+	dir = 4;
+	icon_state = "0-2"
 	},
 /turf/simulated/floor/dank/rectangles,
 /area/mining_colony/security/upper/commandofficers)
@@ -3063,8 +3067,8 @@
 /area/mining_colony/security/upper/commandofficers)
 "yb" = (
 /obj/machinery/door/airlock/command{
-	name = "Plaza Balcony";
 	dir = 4;
+	name = "Plaza Balcony";
 	req_access = list()
 	},
 /turf/simulated/floor/dank/maint,
@@ -3266,8 +3270,8 @@
 /obj/structure/cable{
 	d1 = 2;
 	d2 = 8;
-	icon_state = "2-8";
-	dir = 1
+	dir = 1;
+	icon_state = "2-8"
 	},
 /turf/simulated/floor/dank/slides{
 	dir = 4
@@ -3525,8 +3529,8 @@
 /obj/machinery/door/firedoor,
 /obj/structure/cable{
 	d2 = 2;
-	icon_state = "0-2";
-	dir = 1
+	dir = 1;
+	icon_state = "0-2"
 	},
 /obj/machinery/door/blast/shutters/open{
 	dir = 2;
@@ -3608,8 +3612,8 @@
 /obj/structure/cable{
 	d1 = 2;
 	d2 = 8;
-	icon_state = "2-8";
-	dir = 4
+	dir = 4;
+	icon_state = "2-8"
 	},
 /obj/structure/cable{
 	d1 = 2;
@@ -3798,8 +3802,8 @@
 /obj/structure/cable{
 	d1 = 2;
 	d2 = 8;
-	icon_state = "2-8";
-	dir = 4
+	dir = 4;
+	icon_state = "2-8"
 	},
 /obj/structure/cable{
 	d1 = 4;
@@ -13669,7 +13673,7 @@ YT
 fK
 aj
 al
-al
+gM
 aK
 dA
 eI

@@ -4,7 +4,7 @@
 #define	FLAP_MINIMUM_RANGE	3
 
 #define FLAP_COOLDOWN	(3 SECONDS)
-#define FLAP_COOLDOWN_ENHANCED	(2.4 SECONDS)
+#define FLAP_COOLDOWN_ENHANCED	(2.6 SECONDS)
 #define FLAP_SINGLE_WING_IMPAIRMENT	(0.4)
 
 #define INFECTOR_STING_DAMAGE	9
@@ -136,7 +136,7 @@
 	mob_type	=	/mob/living/carbon/human/necromorph/infector/enhanced
 	name_plural =  "Enhanced Infectors"
 	blurb = "Unlike the more fragile counterpart, this infector is a capable fighter. However, nothing compares to its supportive capabilities."
-	total_health = 205
+	total_health = 185
 	tier_1_mod = 1
 	limb_health_factor = 1.5
 	slowdown = 4

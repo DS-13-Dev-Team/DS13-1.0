@@ -6,7 +6,7 @@
 	total_health = 176
 	tier_2_mod = DAM_MOD_T2
 	burn_mod = 1.1
-	biomass = 130
+	biomass = 125
 	require_total_biomass	=	BIOMASS_REQ_T2
 	mass = 120
 	view_range = 9

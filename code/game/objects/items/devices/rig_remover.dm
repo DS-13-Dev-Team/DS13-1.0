@@ -23,7 +23,7 @@
 
 	if (R.active)
 		to_chat("<span class='warning'>[user] begins to remove the [target]'s [R].</span>")
-		if (do_after(user, 30, target))
+		if (do_after(user, 10, target))
 			R.toggle_seals(user, FALSE)
 	else
 		user.visible_message("<span class='warning'>[target]'s RIG is not active.</span>")
