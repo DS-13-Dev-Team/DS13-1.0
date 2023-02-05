@@ -38,9 +38,6 @@ SUBSYSTEM_DEF(mapping)
 		if(!config || config.defaulted)
 			to_chat(world, SPAN_BOLDANNOUNCE("Unable to load next or default map config, defaulting to The Colony."))
 			config = old_config
-	//Do it the same tick but after GLOB initializes
-	spawn(0)
-		GLOB.using_map = GLOB.all_maps[config.map_datum]
 
 /datum/controller/subsystem/mapping/Initialize(timeofday)
 	if(initialized)

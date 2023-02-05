@@ -215,3 +215,21 @@ proc/get_craft_item(path)
 /datum/asset/spritesheet/chat/register()
 	InsertAll("tags", 'icons/chattags.dmi')
 	return ..()
+
+/datum/asset/spritesheet/simple/jobs
+	name = "jobs"
+
+/datum/asset/spritesheet/simple/jobs/register()
+	var/mob/living/carbon/human/dummy/mannequin/mannequin = get_mannequin("#job_icon")
+	mannequin.dir = SOUTH
+	for(var/datum/job/job as anything in job_master.occupations_map)
+		job.dress_mannequin(mannequin)
+		var/icon/preview_icon = getFlatIcon(mannequin)
+		preview_icon.Scale(preview_icon.Width() * 3, preview_icon.Height() * 3) // Scaling here to prevent blurring in the browser.
+		assets[ckey(job.title)] = preview_icon
+	return ..()
+
+/datum/asset/spritesheet/simple/jobs/generate_css()
+	.=..()
+	. += "\n.job_icon{float:left;}"
+

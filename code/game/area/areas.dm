@@ -47,6 +47,13 @@
 		GLOB.ship_areas += src
 	update_base_lighting()
 
+#define RESOURCE_HIGH_MAX 4
+#define RESOURCE_HIGH_MIN 2
+#define RESOURCE_MID_MAX 3
+#define RESOURCE_MID_MIN 1
+#define RESOURCE_LOW_MAX 1
+#define RESOURCE_LOW_MIN 0
+
 /area/proc/RunGeneration()
 	if(map_generator)
 		map_generator = new map_generator()
@@ -54,6 +61,50 @@
 		for(var/turf/unsimulated/genturf/T in contents)
 			turfs += T
 		map_generator.generate_terrain(turfs)
+		turfs.Cut()
+		for(var/turf/simulated/floor/asteroid/outside_ds/T in contents)
+			turfs += T
+		for(var/turf/simulated/mineral/T in contents)
+			turfs += T
+		for(var/turf/simulated/T as anything in turfs)
+			T.resources = list()
+			// Deep metals
+			if(prob(10))
+				T.resources[MATERIAL_URANIUM] =  rand(RESOURCE_LOW_MIN,  RESOURCE_LOW_MAX)
+				T.resources[MATERIAL_DIAMOND] =  rand(RESOURCE_LOW_MIN,  RESOURCE_LOW_MAX)
+				T.resources[MATERIAL_PHORON] =   rand(RESOURCE_HIGH_MIN, RESOURCE_HIGH_MAX)
+				T.resources[MATERIAL_OSMIUM] =   rand(RESOURCE_HIGH_MIN, RESOURCE_HIGH_MAX)
+				T.resources[MATERIAL_MHYDROGEN] = rand(RESOURCE_MID_MIN,  RESOURCE_MID_MAX)
+				T.resources[MATERIAL_IRON] =     0
+				T.resources[MATERIAL_GOLD] =     0
+				T.resources[MATERIAL_SILVER] =   0
+			// Rare metals
+			else if(prob(30))
+				T.resources[MATERIAL_GOLD] =		rand(RESOURCE_MID_MIN,  RESOURCE_MID_MAX)
+				T.resources[MATERIAL_SILVER] =   rand(RESOURCE_MID_MIN,  RESOURCE_MID_MAX)
+				T.resources[MATERIAL_URANIUM] =  rand(RESOURCE_MID_MIN,  RESOURCE_MID_MAX)
+				T.resources[MATERIAL_PHORON] =   rand(RESOURCE_MID_MIN,  RESOURCE_MID_MAX)
+				T.resources[MATERIAL_OSMIUM] =   rand(RESOURCE_MID_MIN,  RESOURCE_MID_MAX)
+				T.resources[MATERIAL_MHYDROGEN] = 0
+				T.resources[MATERIAL_DIAMOND] =  0
+				T.resources[MATERIAL_IRON] =     0
+			// Surface metals
+			else
+				T.resources[MATERIAL_IRON] =		rand(RESOURCE_HIGH_MIN, RESOURCE_HIGH_MAX)
+				T.resources[MATERIAL_GOLD] =     rand(RESOURCE_LOW_MIN,  RESOURCE_LOW_MAX)
+				T.resources[MATERIAL_SILVER] =	rand(RESOURCE_LOW_MIN,  RESOURCE_LOW_MAX)
+				T.resources[MATERIAL_URANIUM] =	rand(RESOURCE_LOW_MIN,  RESOURCE_LOW_MAX)
+				T.resources[MATERIAL_DIAMOND] =	0
+				T.resources[MATERIAL_PHORON] =	0
+				T.resources[MATERIAL_OSMIUM] =	0
+				T.resources[MATERIAL_MHYDROGEN] =	0
+
+#undef RESOURCE_HIGH_MAX
+#undef RESOURCE_HIGH_MIN
+#undef RESOURCE_MID_MAX
+#undef RESOURCE_MID_MIN
+#undef RESOURCE_LOW_MAX
+#undef RESOURCE_LOW_MIN
 
 /**
  * Causes a runtime error
