@@ -283,7 +283,7 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 	set category = "Necromorph"
 	set desc = "Depart your body and return to the marker. You can go back and forth with ease"
 
-	necro_ghost()
+	return necro_ghost()
 
 
 //Evacuates a mob from their body but makes them a marker signal instead of a normal ghost

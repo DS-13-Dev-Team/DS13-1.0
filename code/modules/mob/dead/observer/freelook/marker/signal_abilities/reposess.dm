@@ -19,4 +19,5 @@
 	return TRUE
 
 /datum/signal_ability/repossess/on_cast(var/mob/user, var/mob/living/target, var/list/data)
-	target.necro_evacuate()
+	var/mob/dead/observer/signal/signal = target.necro_evacuate()
+	SSnecromorph.remove_from_necroqueue(signal)

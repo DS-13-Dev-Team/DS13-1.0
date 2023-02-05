@@ -13,12 +13,12 @@ SUBSYSTEM_DEF(character_setup)
 	var/list/save_queue = list()
 
 /datum/controller/subsystem/character_setup/Initialize()
-	for(var/datum/preferences/prefs as anything in prefs_awaiting_setup)
-		prefs_awaiting_setup -= prefs
+	while(length(prefs_awaiting_setup))
+		var/datum/preferences/prefs = prefs_awaiting_setup[prefs_awaiting_setup.len--]
 		prefs.setup()
 		CHECK_TICK
-	for(var/mob/dead/new_player/new_player as anything in newplayers_requiring_init)
-		newplayers_requiring_init -= new_player
+	while(length(newplayers_requiring_init))
+		var/mob/dead/new_player/new_player = newplayers_requiring_init[newplayers_requiring_init.len--]
 		new_player.deferred_login()
 		CHECK_TICK
 	. = ..()
