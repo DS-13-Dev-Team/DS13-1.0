@@ -207,7 +207,7 @@
 	. = ..()	//calls mob.Login()
 
 	if(!CONFIG_GET(flag/guests_allowed) && IsGuestKey(key))
-		to_chat(src,"This server doesn't allow guest accounts to play. Please go to http://www.byond.com/ and register for a key.","Guest")
+		to_chat_immediate(src,"This server doesn't allow guest accounts to play. Please go to http://www.byond.com/ and register for a key.","Guest")
 		qdel(src)
 		return
 
@@ -223,10 +223,21 @@
 		if (!allowed)
 			var/backup_server = CONFIG_GET(string/backup_server)
 			if(backup_server)
-				to_chat(src, "This server is currently full and not accepting new connections. Redirecting you to the second server.", "Server Full")
+				//These need to be immediate because we're disposing of the client the second we're done with this.
+				src << browse(
+					"<center><b>Dead Space 13</b>\
+					<br /><br />This server is currently full and not accepting new connections.\
+					<br />Redirecting you to the second server.</center>",
+					"window=fullserver;title='Server Full';size=350x170;can_resize=0;can_minimize=0"
+				)
 				src << link("byond://[backup_server]")
 			else
-				to_chat(src, "This server is currently full and not accepting new connections. Try again later.", "Server Full")
+				src << browse(
+					"<center><b>Dead Space 13</b>\
+					<br /><br />This server is currently full and not accepting new connections.\
+					<br />Try again later. Thank you.</center>",
+					"window=fullserver;title='Server Full';size=350x170;can_resize=0;can_minimize=0"
+				)
 			qdel(src)
 			return
 

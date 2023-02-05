@@ -6,6 +6,7 @@
 		var/datum/player/P = get_player_from_key(ckey)
 		if (P)
 			P.cache_location(src)
+		GLOB.pcap_graceperiod[ckey] = world.time + 10 MINUTES
 
 	SSnano.user_logout(src) // this is used to clean up (remove) this user's Nano UIs
 	SStgui.on_logout(src)
