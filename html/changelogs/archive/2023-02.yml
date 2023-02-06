@@ -32,3 +32,12 @@
         their slasher components, and meant to be used together.
     - balance: Rig removal time whilst using a rig removal tool, has been lowered
         by 66%
+2023-02-06:
+  DTraitor:
+  - rscadd: Players that were disconnected/redirected due to the pop cap will now
+      get an on-screen message
+  - balance: Reduced RIG unsealing time from 3 seconds per part to 1 second per part
+  - bugfix: Drills don't require you to search for a specific tile anymore. Now they
+      can be used on any "asteroid" turf.
+  - bugfix: Removed the roof above solar panels on the colony. Solar panels are working
+      once again.
