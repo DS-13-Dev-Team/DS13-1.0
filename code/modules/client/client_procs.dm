@@ -448,6 +448,12 @@
 	if(length(external_rsc_urls))
 		next_external_rsc = WRAP(next_external_rsc+1, 1, external_rsc_urls.len+1)
 		preload_rsc = external_rsc_urls[next_external_rsc]
+		log_debug("Francinum/RSCTrace: NER:[next_external_rsc]///c.prsc:[preload_rsc]///eru.len[external_rsc_urls.len]")
+	else
+		var/static/xx_client_has_busted_exernal_url = false
+		if(!xx_client_has_busted_exernal_url)
+			xx_client_has_busted_exernal_url = TRUE
+			crash_with("Client was given no preload URL due to empty config entry list. This trace only occurs once.")
 #endif
 
 	spawn (10) //removing this spawn causes all clients to not get verbs.
