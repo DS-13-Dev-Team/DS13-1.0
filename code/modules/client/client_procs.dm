@@ -450,7 +450,7 @@
 		preload_rsc = external_rsc_urls[next_external_rsc]
 		log_debug("Francinum/RSCTrace: NER:[next_external_rsc]///c.prsc:[preload_rsc]///eru.len[external_rsc_urls.len]")
 	else
-		var/static/xx_client_has_busted_exernal_url = false
+		var/static/xx_client_has_busted_exernal_url = FALSE
 		if(!xx_client_has_busted_exernal_url)
 			xx_client_has_busted_exernal_url = TRUE
 			crash_with("Client was given no preload URL due to empty config entry list. This trace only occurs once.")
