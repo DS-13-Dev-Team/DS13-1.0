@@ -1,14 +1,16 @@
+import { useBackend } from '../backend';
 import { NtosWindow } from '../layouts';
-import { CrewMonitorContent } from './CrewMonitor';
+import { CrewConsoleContent } from './CrewConsole';
 
-export const NtosCrewMonitor = () => {
+export const NtosCrewMonitor = (props, context) => {
+  const { act, data } = useBackend(context);
   return (
     <NtosWindow
-      width={800}
-      height={600}
+      width={775}
+      height={415}
       resizable>
-      <NtosWindow.Content>
-        <CrewMonitorContent />
+      <NtosWindow.Content scrollable>
+        <CrewConsoleContent />
       </NtosWindow.Content>
     </NtosWindow>
   );

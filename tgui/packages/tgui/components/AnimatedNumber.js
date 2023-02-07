@@ -10,8 +10,7 @@ import { Component } from 'inferno';
 const FPS = 20;
 const Q = 0.5;
 
-const isSafeNumber = (value) => {
-  // prettier-ignore
+const isSafeNumber = value => {
   return typeof value === 'number'
     && Number.isFinite(value)
     && !Number.isNaN(value);

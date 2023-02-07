@@ -14,12 +14,13 @@ export const UI_CLOSE = -1;
 export const COLORS = {
   // Department colors
   department: {
-    captain: '#c06616',
+    captain: '#8fce00',
     security: '#e74c3c',
     medbay: '#3498db',
     science: '#9b59b6',
     engineering: '#f1c40f',
-    cargo: '#f39c12',
+    cargo: '#d4680d', // Yogs: Added new cargo color
+    civilian: '#b4b4b4', // Yogs: Added new civilian color
     centcom: '#00c100',
     other: '#c38312',
   },
@@ -29,11 +30,6 @@ export const COLORS = {
     toxin: '#2ecc71',
     burn: '#e67e22',
     brute: '#e74c3c',
-  },
-  // reagent / chemistry related colours
-  reagent: {
-    acidicbuffer: '#fbc314',
-    basicbuffer: '#3853a4',
   },
 };
 
@@ -59,12 +55,11 @@ export const CSS_COLORS = [
   'label',
 ];
 
-/* IF YOU CHANGE THIS KEEP IT IN SYNC WITH CHAT CSS */
 export const RADIO_CHANNELS = [
   {
     name: 'Syndicate',
     freq: 1213,
-    color: '#8f4a4b',
+    color: '#a52a2a',
   },
   {
     name: 'Red Team',
@@ -75,16 +70,6 @@ export const RADIO_CHANNELS = [
     name: 'Blue Team',
     freq: 1217,
     color: '#3434fd',
-  },
-  {
-    name: 'Green Team',
-    freq: 1219,
-    color: '#34fd34',
-  },
-  {
-    name: 'Yellow Team',
-    freq: 1221,
-    color: '#fdfd34',
   },
   {
     name: 'CentCom',
@@ -109,7 +94,7 @@ export const RADIO_CHANNELS = [
   {
     name: 'Command',
     freq: 1353,
-    color: '#fcdf03',
+    color: '#5177ff',
   },
   {
     name: 'Medical',
@@ -140,143 +125,103 @@ export const RADIO_CHANNELS = [
 
 const GASES = [
   {
-    id: 'o2',
-    name: 'Oxygen',
-    label: 'O₂',
-    color: 'blue',
+    'id': 'o2',
+    'name': 'Oxygen',
+    'label': 'O₂',
+    'color': 'blue',
   },
   {
-    id: 'n2',
-    name: 'Nitrogen',
-    label: 'N₂',
-    color: 'red',
+    'id': 'n2',
+    'name': 'Nitrogen',
+    'label': 'N₂',
+    'color': 'red',
   },
   {
-    id: 'co2',
-    name: 'Carbon Dioxide',
-    label: 'CO₂',
-    color: 'grey',
+    'id': 'co2',
+    'name': 'Carbon Dioxide',
+    'label': 'CO₂',
+    'color': 'grey',
   },
   {
-    id: 'plasma',
-    name: 'Plasma',
-    label: 'Plasma',
-    color: 'pink',
+    'id': 'plasma',
+    'name': 'Plasma',
+    'label': 'Plasma',
+    'color': 'pink',
   },
   {
-    id: 'water_vapor',
-    name: 'Water Vapor',
-    label: 'H₂O',
-    color: 'lightsteelblue',
+    'id': 'water_vapor',
+    'name': 'Water Vapor',
+    'label': 'H₂O',
+    'color': 'grey',
   },
   {
-    id: 'nob',
-    name: 'Hyper-noblium',
-    label: 'Hyper-nob',
-    color: 'teal',
+    'id': 'nob',
+    'name': 'Hyper-noblium',
+    'label': 'Hyper-nob',
+    'color': 'teal',
   },
   {
-    id: 'n2o',
-    name: 'Nitrous Oxide',
-    label: 'N₂O',
-    color: 'bisque',
+    'id': 'n2o',
+    'name': 'Nitrous Oxide',
+    'label': 'N₂O',
+    'color': 'red',
   },
   {
-    id: 'no2',
-    name: 'Nitrium',
-    label: 'Nitrium',
-    color: 'brown',
+    'id': 'no2',
+    'name': 'Nitryl',
+    'label': 'NO₂',
+    'color': 'brown',
   },
   {
-    id: 'tritium',
-    name: 'Tritium',
-    label: 'Tritium',
-    color: 'limegreen',
+    'id': 'tritium',
+    'name': 'Tritium',
+    'label': 'Tritium',
+    'color': 'green',
   },
   {
-    id: 'bz',
-    name: 'BZ',
-    label: 'BZ',
-    color: 'mediumpurple',
+    'id': 'bz',
+    'name': 'BZ',
+    'label': 'BZ',
+    'color': 'purple',
   },
   {
-    id: 'pluox',
-    name: 'Pluoxium',
-    label: 'Pluoxium',
-    color: 'mediumslateblue',
+    'id': 'stim',
+    'name': 'Stimulum',
+    'label': 'Stimulum',
+    'color': 'purple',
   },
   {
-    id: 'miasma',
-    name: 'Miasma',
-    label: 'Miasma',
-    color: 'olive',
+    'id': 'pluox',
+    'name': 'Pluoxium',
+    'label': 'Pluoxium',
+    'color': 'blue',
   },
   {
-    id: 'Freon',
-    name: 'Freon',
-    label: 'Freon',
-    color: 'paleturquoise',
+    'id': 'miasma',
+    'name': 'Miasma',
+    'label': 'Miasma',
+    'color': 'olive',
   },
   {
-    id: 'hydrogen',
-    name: 'Hydrogen',
-    label: 'H₂',
-    color: 'white',
-  },
-  {
-    id: 'healium',
-    name: 'Healium',
-    label: 'Healium',
-    color: 'salmon',
-  },
-  {
-    id: 'proto_nitrate',
-    name: 'Proto Nitrate',
-    label: 'Proto-Nitrate',
-    color: 'greenyellow',
-  },
-  {
-    id: 'zauker',
-    name: 'Zauker',
-    label: 'Zauker',
-    color: 'darkgreen',
-  },
-  {
-    id: 'halon',
-    name: 'Halon',
-    label: 'Halon',
-    color: 'purple',
-  },
-  {
-    id: 'helium',
-    name: 'Helium',
-    label: 'He',
-    color: 'aliceblue',
-  },
-  {
-    id: 'antinoblium',
-    name: 'Antinoblium',
-    label: 'Anti-Noblium',
-    color: 'maroon',
+    'id': 'hydrogen',
+    'name': 'Hydrogen',
+    'label': 'H₂',
+    'color': 'white',
   },
 ];
 
 export const getGasLabel = (gasId, fallbackValue) => {
   const gasSearchString = String(gasId).toLowerCase();
-  // prettier-ignore
-  const gas = GASES.find((gas) => (
-    gas.id === gasSearchString
-      || gas.name.toLowerCase() === gasSearchString
-  ));
-  return (gas && gas.label) || fallbackValue || gasId;
+  const gas = GASES.find(gas => gas.id === gasSearchString
+    || gas.name.toLowerCase() === gasSearchString);
+  return gas && gas.label
+    || fallbackValue
+    || gasId;
 };
 
-export const getGasColor = (gasId) => {
+export const getGasColor = gasId => {
   const gasSearchString = String(gasId).toLowerCase();
-  // prettier-ignore
-  const gas = GASES.find((gas) => (
-    gas.id === gasSearchString
-      || gas.name.toLowerCase() === gasSearchString
-  ));
+  const gas = GASES.find(gas => gas.id === gasSearchString
+    || gas.name.toLowerCase() === gasSearchString);
   return gas && gas.color;
 };

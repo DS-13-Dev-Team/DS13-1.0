@@ -5,47 +5,13 @@
 import DOMPurify from 'dompurify';
 
 // Default values
-const defTag = [
-  'b',
-  'blockquote',
-  'br',
-  'center',
-  'code',
-  'dd',
-  'del',
-  'div',
-  'dl',
-  'dt',
-  'em',
-  'font',
-  'h1',
-  'h2',
-  'h3',
-  'h4',
-  'h5',
-  'h6',
-  'hr',
-  'i',
-  'ins',
-  'li',
-  'menu',
-  'ol',
-  'p',
-  'pre',
-  'span',
-  'strong',
-  'table',
-  'tbody',
-  'td',
-  'th',
-  'thead',
-  'tfoot',
-  'tr',
-  'u',
-  'ul',
+let defTag = [
+  'br', 'code', 'li', 'p', 'pre',
+  'span', 'table', 'td', 'tr', 'i',
+  'th', 'ul', 'ol', 'menu', 'font', 'b',
+  'center', 'table', 'tr', 'th', 'hr',
 ];
-
-const defAttr = ['class', 'style'];
+let defAttr = ['class', 'style'];
 
 /**
  * Feed it a string and it should spit out a sanitized version.

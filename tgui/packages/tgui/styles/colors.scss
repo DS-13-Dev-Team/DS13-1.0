@@ -16,13 +16,14 @@ $yellow: #fbd608 !default;
 $olive: #b5cc18 !default;
 $green: #20b142 !default;
 $teal: #00b5ad !default;
+$cyan: #00ffff !default;
 $blue: #2185d0 !default;
 $violet: #6435c9 !default;
 $purple: #a333c8 !default;
 $pink: #e03997 !default;
+$magenta: #ff0fff !default;
 $brown: #a5673f !default;
 $grey: #767676 !default;
-$light-grey: #aaa !default;
 
 $primary: #4972a1 !default;
 $good: #5baa27 !default;
@@ -59,11 +60,12 @@ $_gen_map: (
   'pink': $pink,
   'brown': $brown,
   'grey': $grey,
-  'light-grey': $light-grey,
   'good': $good,
   'average': $average,
   'bad': $bad,
   'label': $label,
+  'cyan': $cyan,
+  'magenta': $magenta
 );
 
 // Foreground color names for which to generate a color map
@@ -73,7 +75,6 @@ $bg-map-keys: map.keys($_gen_map) !default;
 
 $fg-map: ();
 @each $color-name in $fg-map-keys {
-  // prettier-ignore
   $fg-map: map-merge($fg-map, (
     $color-name: fg(map.get($_gen_map, $color-name)),
   ));
@@ -81,7 +82,6 @@ $fg-map: ();
 
 $bg-map: ();
 @each $color-name in $bg-map-keys {
-  // prettier-ignore
   $bg-map: map-merge($bg-map, (
     $color-name: bg(map.get($_gen_map, $color-name)),
   ));

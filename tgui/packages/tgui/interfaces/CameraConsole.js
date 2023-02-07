@@ -4,49 +4,60 @@ import { classes } from 'common/react';
 import { createSearch } from 'common/string';
 import { Fragment } from 'inferno';
 import { useBackend, useLocalState } from '../backend';
-import { Button, ByondUi, Input, Section, Dropdown, Stack } from '../components';
+import { Button, ByondUi, Input, Section, Flex } from '../components';
 import { Window } from '../layouts';
+
+/**
+ * Returns previous and next camera names relative to the currently
+ * active camera.
+ */
+export const prevNextCamera = (cameras, activeCamera) => {
+  if (!activeCamera) {
+    return [];
+  }
+  const index = cameras.findIndex(camera => (
+    camera.name === activeCamera.name
+  ));
+  return [
+    cameras[index - 1]?.name,
+    cameras[index + 1]?.name,
+  ];
+};
 
 /**
  * Camera selector.
  *
  * Filters cameras, applies search terms and sorts the alphabetically.
  */
-const selectCameras = (cameras, searchText = '', networkFilter = '') => {
+export const selectCameras = (cameras, searchText = '') => {
   const testSearch = createSearch(searchText, camera => camera.name);
-  let fl = flow([
+  return flow([
     // Null camera filter
     filter(camera => camera?.name),
     // Optional search term
     searchText && filter(testSearch),
-    // Optional network filter
-    networkFilter && filter(camera => camera.networks.includes(networkFilter)),
     // Slightly expensive, but way better than sorting in BYOND
     sortBy(camera => camera.name),
   ])(cameras);
-  return fl;
 };
 
 export const CameraConsole = (props, context) => {
+  const { act, data, config } = useBackend(context);
+  const { mapRef, activeCamera } = data;
+  const cameras = selectCameras(data.cameras);
+  const [
+    prevCameraName,
+    nextCameraName,
+  ] = prevNextCamera(cameras, activeCamera);
   return (
     <Window
       width={870}
       height={708}
       resizable>
-      <CameraConsoleContent />
-    </Window>
-  );
-};
-
-export const CameraConsoleContent = (props, context) => {
-  const { act, data, config } = useBackend(context);
-
-  const { mapRef, activeCamera } = data;
-  const cameras = selectCameras(data.cameras);
-  return (
-    <Fragment>
       <div className="CameraConsole__left">
-        <CameraConsoleSearch />
+        <Window.Content scrollable>
+          <CameraConsoleContent />
+        </Window.Content>
       </div>
       <div className="CameraConsole__right">
         <div className="CameraConsole__toolbar">
@@ -58,16 +69,16 @@ export const CameraConsoleContent = (props, context) => {
         <div className="CameraConsole__toolbarRight">
           <Button
             icon="chevron-left"
-            onClick={() => act('pan', { dir: 8 })} />
-          <Button
-            icon="chevron-up"
-            onClick={() => act('pan', { dir: 1 })} />
+            disabled={!prevCameraName}
+            onClick={() => act('switch_camera', {
+              name: prevCameraName,
+            })} />
           <Button
             icon="chevron-right"
-            onClick={() => act('pan', { dir: 4 })} />
-          <Button
-            icon="chevron-down"
-            onClick={() => act('pan', { dir: 2 })} />
+            disabled={!nextCameraName}
+            onClick={() => act('switch_camera', {
+              name: nextCameraName,
+            })} />
         </div>
         <ByondUi
           className="CameraConsole__map"
@@ -76,43 +87,38 @@ export const CameraConsoleContent = (props, context) => {
             type: 'map',
           }} />
       </div>
-    </Fragment>
+    </Window>
   );
 };
 
-export const CameraConsoleSearch = (props, context) => {
+export const CameraConsoleContent = (props, context) => {
   const { act, data } = useBackend(context);
   const [
     searchText,
     setSearchText,
   ] = useLocalState(context, 'searchText', '');
-  const [
-    networkFilter,
-    setNetworkFilter,
-  ] = useLocalState(context, 'networkFilter', '');
-  const { activeCamera, allNetworks } = data;
-  allNetworks.sort();
-  const cameras = selectCameras(data.cameras, searchText, networkFilter);
+  const { activeCamera } = data;
+  const cameras = selectCameras(data.cameras, searchText);
   return (
-    <Stack fill vertical>
-      <Stack.Item>
+    <Flex
+      direction={"column"}
+      height="100%">
+      <Flex.Item>
         <Input
+          autoFocus
           fluid
-          mb={1}
+          mt={1}
           placeholder="Search for a camera"
           onInput={(e, value) => setSearchText(value)} />
-        <Dropdown
-          mb={1}
-          width="177px"
-          options={allNetworks}
-          placeholder="No Filter"
-          onSelected={value => setNetworkFilter(value)} />
-      </Stack.Item>
-      <Stack.Item grow>
-        <Section fill scrollable>
+      </Flex.Item>
+      <Flex.Item
+        height="100%">
+        <Section
+          fill
+          scrollable>
           {cameras.map(camera => (
-            // We're not using the component here because performance
-            // would be absolutely abysmal (50+ ms for each re-render).
+          // We're not using the component here because performance
+          // would be absolutely abysmal (50+ ms for each re-render).
             <div
               key={camera.name}
               title={camera.name}
@@ -122,19 +128,17 @@ export const CameraConsoleSearch = (props, context) => {
                 'Button--color--transparent',
                 'Button--ellipsis',
                 activeCamera
-                  && camera.name === activeCamera.name
-                  && 'Button--color--selected',
+                && camera.name === activeCamera.name
+                && 'Button--selected',
               ])}
-              onClick={() => {
-                act('switch_camera', {
-                  name: camera.name,
-                });
-              }}>
+              onClick={() => [act('switch_camera', {
+                name: camera.name,
+              }), document.getElementsByClassName('CameraConsole__left')[0].focus()]}>
               {camera.name}
             </div>
           ))}
         </Section>
-      </Stack.Item>
-    </Stack>
+      </Flex.Item>
+    </Flex>
   );
 };

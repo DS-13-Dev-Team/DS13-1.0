@@ -4,10 +4,10 @@
  * @license MIT
  */
 
-export const THEMES = ['light', 'dark', 'fulldark'];
+export const THEMES = ['light', 'dark'];
 
-const COLOR_DARK_BG = '#272727';
-const COLOR_DARK_BG_DARKER = '#242424';
+const COLOR_DARK_BG = '#202020';
+const COLOR_DARK_BG_DARKER = '#171717';
 const COLOR_DARK_TEXT = '#a4bad6';
 
 let setClientThemeTimer = null;
@@ -29,10 +29,13 @@ export const setClientTheme = name => {
   Byond.command(`.output statbrowser:set_theme ${name}`);
   setClientThemeTimer = setTimeout(() => {
     Byond.command(`.output statbrowser:set_theme ${name}`);
-  }, 1500);
+    setClientThemeTimer = setTimeout(() => {
+      Byond.command(`.output statbrowser:set_theme ${name}`);
+    }, 1000);
+  }, 2500);
 
   if (name === 'light') {
-    Byond.winset({
+    return Byond.winset({
       // Main windows
       'infowindow.background-color': 'none',
       'infowindow.text-color': '#000000',
@@ -42,14 +45,7 @@ export const setClientTheme = name => {
       'browseroutput.text-color': '#000000',
       'outputwindow.background-color': 'none',
       'outputwindow.text-color': '#000000',
-      'mainwindow.is-maximized': 'false',
-      'mainwindow.can-resize': 'true',
-      'mainwindow.titlebar': 'true',
-      'mainwindow.menu': 'menu',
       'mainwindow.background-color': 'none',
-      'mainwindow.split.pos': '3x0',
-      'status_bar.background-color': 'none',
-      'status_bar.text-color': '#000000',
       'split.background-color': 'none',
       // Buttons
       'changelog.background-color': 'none',
@@ -64,15 +60,24 @@ export const setClientTheme = name => {
       'github.text-color': '#000000',
       'report-issue.background-color': 'none',
       'report-issue.text-color': '#000000',
+      'demoview.background-color': 'none',
+      'demoview.text-color': '#000000',
+      'tickets.background-color': 'none',
+      'tickets.text-color': '#000000',
       // Status and verb tabs
       'output.background-color': 'none',
       'output.text-color': '#000000',
       'statwindow.background-color': 'none',
       'statwindow.text-color': '#000000',
+      'statbrowser.background-color': 'none',
+      'statbrowser.text-color': '#000000',
+      'stat.background-color': '#FFFFFF',
+      'stat.tab-background-color': 'none',
+      'stat.text-color': '#000000',
+      'stat.tab-text-color': '#000000',
+      'stat.prefix-color': '#000000',
+      'stat.suffix-color': '#000000',
       // Say, OOC, me Buttons etc.
-      'input.background-color': 'none',
-      'input.text-color': '#000000',
-      'input.border': 'sunken',
       'saybutton.background-color': 'none',
       'saybutton.text-color': '#000000',
       'oocbutton.background-color': 'none',
@@ -83,9 +88,6 @@ export const setClientTheme = name => {
       'asset_cache_browser.text-color': '#000000',
       'tooltip.background-color': 'none',
       'tooltip.text-color': '#000000',
-    });
-    return Byond.winset({
-      'mainwindow.is-maximized': 'true',
     });
   }
   if (name === 'dark') {
@@ -99,14 +101,7 @@ export const setClientTheme = name => {
       'browseroutput.text-color': COLOR_DARK_TEXT,
       'outputwindow.background-color': COLOR_DARK_BG,
       'outputwindow.text-color': COLOR_DARK_TEXT,
-      'mainwindow.is-maximized': 'false',
-      'mainwindow.can-resize': 'true',
-      'mainwindow.titlebar': 'true',
-      'mainwindow.menu': 'menu',
       'mainwindow.background-color': COLOR_DARK_BG,
-      'mainwindow.split.pos': '3x0',
-      'status_bar.background-color': '#222222',
-      'status_bar.text-color': '#ffffff',
       'split.background-color': COLOR_DARK_BG,
       // Buttons
       'changelog.background-color': '#494949',
@@ -117,8 +112,12 @@ export const setClientTheme = name => {
       'wiki.text-color': COLOR_DARK_TEXT,
       'forum.background-color': '#494949',
       'forum.text-color': COLOR_DARK_TEXT,
-      'github.background-color': '#3a3a3a',
+      'github.background-color': '#494949',
       'github.text-color': COLOR_DARK_TEXT,
+      'demoview.background-color': '#494949',
+      'demoview.text-color': COLOR_DARK_TEXT,
+      'tickets.background-color': '#494949',
+      'tickets.text-color': COLOR_DARK_TEXT,
       'report-issue.background-color': '#492020',
       'report-issue.text-color': COLOR_DARK_TEXT,
       // Status and verb tabs
@@ -126,10 +125,15 @@ export const setClientTheme = name => {
       'output.text-color': COLOR_DARK_TEXT,
       'statwindow.background-color': COLOR_DARK_BG_DARKER,
       'statwindow.text-color': COLOR_DARK_TEXT,
+      'statbrowser.background-color': COLOR_DARK_BG_DARKER,
+      'statbrowser.text-color': COLOR_DARK_TEXT,
+      'stat.background-color': COLOR_DARK_BG_DARKER,
+      'stat.tab-background-color': COLOR_DARK_BG,
+      'stat.text-color': COLOR_DARK_TEXT,
+      'stat.tab-text-color': COLOR_DARK_TEXT,
+      'stat.prefix-color': COLOR_DARK_TEXT,
+      'stat.suffix-color': COLOR_DARK_TEXT,
       // Say, OOC, me Buttons etc.
-      'input.background-color': COLOR_DARK_BG_DARKER,
-      'input.text-color': COLOR_DARK_TEXT,
-      'input.border': 'line',
       'saybutton.background-color': COLOR_DARK_BG,
       'saybutton.text-color': COLOR_DARK_TEXT,
       'oocbutton.background-color': COLOR_DARK_BG,
@@ -140,66 +144,6 @@ export const setClientTheme = name => {
       'asset_cache_browser.text-color': COLOR_DARK_TEXT,
       'tooltip.background-color': COLOR_DARK_BG,
       'tooltip.text-color': COLOR_DARK_TEXT,
-    });
-    return Byond.winset({
-      'mainwindow.is-maximized': 'true',
-    });
-  }
-  if (name === 'fulldark') {
-    Byond.winset({
-      // Main windows
-      'infowindow.background-color': COLOR_DARK_BG,
-      'infowindow.text-color': COLOR_DARK_TEXT,
-      'info.background-color': COLOR_DARK_BG,
-      'info.text-color': COLOR_DARK_TEXT,
-      'browseroutput.background-color': COLOR_DARK_BG,
-      'browseroutput.text-color': COLOR_DARK_TEXT,
-      'outputwindow.background-color': COLOR_DARK_BG,
-      'outputwindow.text-color': COLOR_DARK_TEXT,
-      'mainwindow.is-maximized': 'false',
-      'mainwindow.can-resize': 'false',
-      'mainwindow.titlebar': 'false',
-      'mainwindow.menu': 'null',
-      'mainwindow.background-color': COLOR_DARK_BG,
-      'mainwindow.split.pos': '0x0',
-      'status_bar.background-color': '#222222',
-      'status_bar.text-color': '#ffffff',
-      'split.background-color': COLOR_DARK_BG,
-      // Buttons
-      'changelog.background-color': '#494949',
-      'changelog.text-color': COLOR_DARK_TEXT,
-      'rules.background-color': '#494949',
-      'rules.text-color': COLOR_DARK_TEXT,
-      'wiki.background-color': '#494949',
-      'wiki.text-color': COLOR_DARK_TEXT,
-      'forum.background-color': '#494949',
-      'forum.text-color': COLOR_DARK_TEXT,
-      'github.background-color': '#3a3a3a',
-      'github.text-color': COLOR_DARK_TEXT,
-      'report-issue.background-color': '#492020',
-      'report-issue.text-color': COLOR_DARK_TEXT,
-      // Status and verb tabs
-      'output.background-color': COLOR_DARK_BG_DARKER,
-      'output.text-color': COLOR_DARK_TEXT,
-      'statwindow.background-color': COLOR_DARK_BG_DARKER,
-      'statwindow.text-color': COLOR_DARK_TEXT,
-      // Say, OOC, me Buttons etc.
-      'input.background-color': COLOR_DARK_BG_DARKER,
-      'input.text-color': COLOR_DARK_TEXT,
-      'input.border': 'line',
-      'saybutton.background-color': COLOR_DARK_BG,
-      'saybutton.text-color': COLOR_DARK_TEXT,
-      'oocbutton.background-color': COLOR_DARK_BG,
-      'oocbutton.text-color': COLOR_DARK_TEXT,
-      'mebutton.background-color': COLOR_DARK_BG,
-      'mebutton.text-color': COLOR_DARK_TEXT,
-      'asset_cache_browser.background-color': COLOR_DARK_BG,
-      'asset_cache_browser.text-color': COLOR_DARK_TEXT,
-      'tooltip.background-color': COLOR_DARK_BG,
-      'tooltip.text-color': COLOR_DARK_TEXT,
-    });
-    return Byond.winset({
-      'mainwindow.is-maximized': 'true',
     });
   }
 };

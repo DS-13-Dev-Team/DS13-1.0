@@ -86,13 +86,13 @@ a.popt {
   color: #333;
 }
 
-.popup input[type='text']:hover,
-.popup input[type='text']:active,
-.popup input[type='text']:focus {
+.popup input[type=text]:hover,
+.popup input[type=text]:active,
+.popup input[type=text]:focus {
   border-color: green;
 }
 
-.popup input[type='submit'] {
+.popup input[type=submit] {
   padding: 5px 10px;
   background: #999;
   color: #ddd;
@@ -101,9 +101,9 @@ a.popt {
   font-weight: bold;
 }
 
-.popup input[type='submit']:hover,
-.popup input[type='submit']:focus,
-.popup input[type='submit']:active {
+.popup input[type=submit]:hover,
+.popup input[type=submit]:focus,
+.popup input[type=submit]:active {
   background: #aaa;
   cursor: pointer;
 }
@@ -128,7 +128,7 @@ a.popt {
   text-align: center;
 }
 
-.highlightPopup input[type='text'] {
+.highlightPopup input[type=text] {
   display: block;
   width: 215px;
   text-align: left;
@@ -136,14 +136,17 @@ a.popt {
 }
 
 .highlightPopup input.highlightColor {
-  background-color: #ffff00;
+  background-color: #FFFF00;
 }
 
 .highlightPopup input.highlightTermSubmit {
   margin-top: 5px;
 }
 
+
+
 /* ADMIN CONTEXT MENU */
+
 
 .contextMenu {
   background-color: #ddd;
@@ -163,7 +166,10 @@ a.popt {
   background-color: #ccc;
 }
 
+
+
 /* ADMIN FILTER MESSAGES MENU */
+
 
 .filterMessages {
   padding: 5px;
@@ -187,13 +193,21 @@ a.popt {
   margin-top: -2px;
 }
 
+
+
+
 /*****************************************
 *
 * OUTPUT ACTUALLY RELATED TO MESSAGES
 *
 ******************************************/
 
+
+
+
+
 /* MOTD */
+
 
 .motd {
   color: #a4bad6;
@@ -219,7 +233,10 @@ a.popt {
   color: #a4bad6;
 }
 
+
+
 /* ADD HERE FOR BOLD */
+
 
 .bold,
 .name,
@@ -233,37 +250,30 @@ a.popt {
   font-weight: bold;
 }
 
-img.text_tag {
-  width: 32px;
-  height: 10px;
-  padding: 1px;
-}
+
 
 /* ADD HERE FOR ITALIC */
 
-.italic,
-.italics {
+
+.italic, .italics, .emote {
   font-style: italic;
 }
 
+
+
 /* OUTPUT COLORS */
+
 
 .highlight {
   background: yellow;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
   color: #a4bad6;
   font-family: Georgia, Verdana, sans-serif;
 }
 
-h1.alert,
-h2.alert {
+h1.alert, h2.alert {
   color: #a4bad6;
 }
 
@@ -277,6 +287,11 @@ em {
   font-weight: bold;
 }
 
+.looc {
+  color: #63b2f2;
+  font-weight: bold;
+}
+
 .adminobserverooc {
   color: #0099cc;
   font-weight: bold;
@@ -287,43 +302,23 @@ em {
   font-weight: bold;
 }
 
-.admin_channel {
-  color: #ff4500;
+.adminsay {
+  color: #996600;
   font-weight: bold;
 }
 
-.mod_channel {
-  color: #978571;
-  font-weight: bold;
-}
-
-/*Admins speaking over msay*/
-.mod_channel .admin {
-  color: #ec693d;
-  font-weight: bold;
-}
+.mentor	{}
 
 .admin {
   color: #5975da;
   font-weight: bold;
 }
 
-.log_message {
-  color: #386aff;
-  font-weight: bold;
-}
-
-/* Admin: Private Messages */
-.pm  .howto				{color: #ff0000;	font-weight: bold;		font-size: 200%;}
-.pm  .in				{color: #ff0000;}
-.pm  .out				{color: #ff0000;}
-.pm  .other				{color: #0000ff;}
-
 .name {
   font-weight: bold;
 }
 
-.say, .emote, .infoplain, .oocplain, .warningplain {
+.say {
 }
 
 .deadsay {
@@ -331,7 +326,9 @@ em {
 }
 
 .binarysay {
-  color: #1e90ff;
+  color: #20c20e;
+  background-color: #000000;
+  display: block;
 }
 
 .binarysay a {
@@ -342,11 +339,12 @@ em {
   color: #88ff88;
 }
 
-/* RADIO COLORS */
-/* IF YOU CHANGE THIS KEEP IT IN SYNC WITH TGUI CONSTANTS */
-
 .radio {
   color: #1ecc43;
+}
+
+.commonradio {
+  color: #008000;
 }
 
 .sciradio {
@@ -354,7 +352,7 @@ em {
 }
 
 .comradio {
-  color: #fcdf03;
+  color: #204090;
 }
 
 .secradio {
@@ -374,7 +372,7 @@ em {
 }
 
 .servradio {
-  color: #6ca729;
+  color: #109987;
 }
 
 .syndradio {
@@ -397,20 +395,16 @@ em {
   color: #3434fd;
 }
 
-.greenteamradio {
-  color: #34fd34;
-}
-
-.yellowteamradio {
-  color: #fdfd34;
-}
-
 .yell {
   font-weight: bold;
 }
 
 .alert {
   color: #d82020;
+}
+
+.emote {
+  font-style: italic;
 }
 
 .userdanger {
@@ -449,11 +443,6 @@ em {
   font-weight: bold;
 }
 
-.minorannounce {
-  font-weight: bold;
-  font-size: 185%;
-}
-
 .greenannounce {
   color: #059223;
   font-weight: bold;
@@ -461,6 +450,10 @@ em {
 
 .rose {
   color: #ff5050;
+}
+
+.velvet {
+  color: #dfafb4;
 }
 
 .info {
@@ -472,7 +465,7 @@ em {
 }
 
 .tinynotice {
-  color: #6685f5;
+  color: #000099;
   font-size: 85%;
 }
 
@@ -483,11 +476,6 @@ em {
 }
 
 .smallnotice {
-  color: #6685f5;
-  font-size: 90%;
-}
-
-.smallnoticeital {
   color: #6685f5;
   font-style: italic;
   font-size: 90%;
@@ -537,7 +525,9 @@ em {
 .nicegreen {
   color: #059223;
 }
-
+.shadowling{
+  color: #8e8a99;
+}
 .cult {
   color: #973e3b;
 }
@@ -575,6 +565,31 @@ em {
   color: #973e3b;
   font-weight: bold;
   font-size: 370%;
+}
+
+.brass {
+  color: #BE8700;
+}
+.heavy_brass {
+  color: #BE8700;
+  font-weight: bold;
+  font-style: italic;
+}
+.large_brass {
+  color: #BE8700;
+  font-size: 185%;
+}
+.big_brass {
+  color: #BE8700;
+  font-size: 185%;
+  font-weight: bold;
+  font-style: italic;
+}
+.ratvar	{
+  color: #BE8700;
+  font-size: 925%;
+  font-weight: bold;
+  font-style: italic;
 }
 
 .colossus {
@@ -643,21 +658,6 @@ em {
   font-weight: bold;
 }
 
-.necromorph {
-  color: #834b83;
-  font-weight: bold;
-}
-
-.necrosignal {
-  color: #834b83;
-}
-
-.necromarker {
-  color: #834b83;
-  font-weight: bold;
-  font-size: 1.2em;
-}
-
 .alien {
   color: #855d85;
 }
@@ -688,42 +688,6 @@ em {
   font-size: 185%;
 }
 
-.role_header{
-  color: #db0000;
-  display: block;
-  text-align: center;
-  font-weight: bold;
-  font-family: trebuchet-ms;
-  font-size: 1.5em;
-}
-.role_body{
-  color: #5a5abd;
-  display: block;
-  text-align: center;
-}
-
-.round_setup{
-  color: #db0000;
-  font-family: impact;
-  font-size: 1.25em;
-}
-.round_header{
-  color: #db0000;
-  display: block;
-  text-align: center;
-  font-family: courier;
-  font-weight: bold;
-  font-size: 2em;
-}
-.round_body	{
-  color: #6685f5;
-  display: block;
-  text-align: center;
-  font-family: trebuchet-ms;
-  font-weight: bold;
-  font-size: 1.5em;
-}
-
 .interface {
   color: #750e75;
 }
@@ -737,11 +701,6 @@ em {
 }
 
 .robot {
-  font-family: "Courier New", cursive, sans-serif;
-}
-
-.tape_recorder {
-  color: #FF0000;
   font-family: "Courier New", cursive, sans-serif;
 }
 
@@ -848,10 +807,6 @@ em {
   width: auto;
 }
 
-.bigicon {
-  font-size: 2.5em;
-}
-
 .memo {
   color: #638500;
   text-align: center;
@@ -945,8 +900,9 @@ em {
   margin-left: 3em;
 }
 
-.userdanger {
-  color: #c51e1e;
-  font-weight: bold;
-  font-size: 185%;
+.examine_block {
+  background: #1b1c1e;
+  border: 1px solid #a4bad6;
+  margin: 0.5em;
+  padding: 0.5em 0.75em;
 }

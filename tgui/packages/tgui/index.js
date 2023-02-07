@@ -7,19 +7,22 @@
 // Themes
 import './styles/main.scss';
 import './styles/themes/abductor.scss';
+import './styles/themes/clockwork.scss';
 import './styles/themes/cardtable.scss';
 import './styles/themes/hackerman.scss';
 import './styles/themes/malfunction.scss';
-import './styles/themes/neutral.scss';
 import './styles/themes/ntos.scss';
+import './styles/themes/ntos_cat.scss';
+import './styles/themes/ntos_darkmode.scss';
+import './styles/themes/ntos_lightmode.scss';
+import './styles/themes/ntOS95.scss';
+import './styles/themes/ntos_synth.scss';
+import './styles/themes/ntos_terminal.scss';
+import './styles/themes/ntos_spooky.scss';
 import './styles/themes/paper.scss';
 import './styles/themes/retro.scss';
 import './styles/themes/syndicate.scss';
-import './styles/themes/wizard.scss';
-import './styles/themes/admin.scss';
-import './styles/themes/rdconsole.scss';
-import './styles/themes/store.scss';
-
+import './styles/themes/admintickets.scss';
 
 import { perf } from 'common/perf';
 import { setupHotReloading } from 'tgui-dev-server/link/client.cjs';
@@ -55,16 +58,24 @@ const setupApp = () => {
   setupHotKeys();
   captureExternalLinks();
 
-  // Re-render UI on store updates
+  // Subscribe for state updates
   store.subscribe(renderApp);
 
-  // Dispatch incoming messages as store actions
-  Byond.subscribe((type, payload) => store.dispatch({ type, payload }));
+  // Dispatch incoming messages
+  window.update = msg => store.dispatch(Byond.parseJson(msg));
+
+  // Process the early update queue
+  while (true) {
+    const msg = window.__updateQueue__.shift();
+    if (!msg) {
+      break;
+    }
+    window.update(msg);
+  }
 
   // Enable hot module reloading
   if (module.hot) {
     setupHotReloading();
-    // prettier-ignore
     module.hot.accept([
       './components',
       './debug',

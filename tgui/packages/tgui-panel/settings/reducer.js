@@ -5,15 +5,14 @@
  */
 
 import { changeSettingsTab, loadSettings, openChatSettings, toggleSettings, updateSettings } from './actions';
-import { FONTS, SETTINGS_TABS } from './constants';
+import { SETTINGS_TABS } from './constants';
 
 const initialState = {
   version: 1,
   fontSize: 13,
-  fontFamily: FONTS[0],
   lineHeight: 1.2,
   theme: 'light',
-  adminMusicVolume: 0.5,
+  adminMusicVolume: 0.07,
   highlightText: '',
   highlightColor: '#ffdd44',
   matchWord: false,

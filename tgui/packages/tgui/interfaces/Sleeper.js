@@ -1,350 +1,146 @@
-import { round } from 'common/math';
-import { Fragment } from 'inferno';
-import { useBackend } from "../backend";
-import { Box, Button, Flex, Icon, LabeledList, ProgressBar, Section, NumberInput } from "../components";
-import { Window } from "../layouts";
-
-const stats = [
-  ['good', 'Alive'],
-  ['average', 'Unconscious'],
-  ['bad', 'DEAD'],
-];
-
-const damages = [
-  ['Resp', 'oxyLoss'],
-  ['Toxin', 'toxLoss'],
-  ['Brute', 'bruteLoss'],
-  ['Burn', 'fireLoss'],
-];
-
-const damageRange = {
-  average: [0.25, 0.5],
-  bad: [0.5, Infinity],
-};
-
-const tempColors = [
-  'bad',
-  'average',
-  'average',
-  'good',
-  'average',
-  'average',
-  'bad',
-];
+import { useBackend } from '../backend';
+import { Box, Button, LabeledList, ProgressBar, Section, AnimatedNumber } from '../components';
+import { Window } from '../layouts';
+import { toFixed } from 'common/math';
 
 export const Sleeper = (props, context) => {
   const { act, data } = useBackend(context);
+
   const {
-    hasOccupant,
+    open,
+    occupant = {},
+    occupied,
+    active_treatment,
+    can_sedate,
   } = data;
-  const body = hasOccupant ? <SleeperMain /> : <SleeperEmpty />;
+
+  const treatments = data.treatments || [];
+
+  const damageTypes = [
+    {
+      label: 'Brute',
+      type: 'bruteLoss',
+    },
+    {
+      label: 'Burn',
+      type: 'fireLoss',
+    },
+    {
+      label: 'Toxin',
+      type: 'toxLoss',
+    },
+    {
+      label: 'Oxygen',
+      type: 'oxyLoss',
+    },
+  ];
+
   return (
-    <Window
-      width={550}
-      height={760}
-      resizable>
-      <Window.Content className="Layout__content--flexColumn">
-        {body}
+    <Window width={400} height={520}>
+      <Window.Content >
+        <Section
+          title={occupant.name ? occupant.name : 'No Occupant'}
+          minHeight="210px"
+          buttons={!!occupant.stat && (
+            <Box
+              inline
+              bold
+              color={occupant.statstate}>
+              {occupant.stat}
+            </Box>
+          )}>
+          {!!occupied && (
+            <>
+              <ProgressBar
+                value={occupant.health}
+                minValue={occupant.minHealth}
+                maxValue={occupant.maxHealth}
+                ranges={{
+                  good: [50, Infinity],
+                  average: [0, 50],
+                  bad: [-Infinity, 0],
+                }} />
+              <Box mt={1} />
+              <LabeledList>
+                {damageTypes.map(type => (
+                  <LabeledList.Item
+                    key={type.type}
+                    label={type.label}>
+                    <ProgressBar
+                      value={occupant[type.type]}
+                      minValue={0}
+                      maxValue={occupant.maxHealth}
+                      color="bad" />
+                  </LabeledList.Item>
+                ))}
+                <LabeledList.Item
+                  label="Cells"
+                  color={occupant.cloneLoss ? 'bad' : 'good'}>
+                  {occupant.cloneLoss ? 'Damaged' : 'Healthy'}
+                </LabeledList.Item>
+                <LabeledList.Item
+                  label="Brain"
+                  color={occupant.brainLoss ? 'bad' : 'good'}>
+                  {occupant.brainLoss ? 'Abnormal' : 'Healthy'}
+                </LabeledList.Item>
+              </LabeledList>
+            </>
+          )}
+        </Section>
+        {!!occupied && (
+          <Section
+            title="Reagents"
+            minHeight="50px"
+            buttons={(
+              <Button
+                icon={'flask'}
+                content={'Sedate'}
+                disabled={!can_sedate}
+                onClick={() => act('sedate')} />
+            )} >
+            {occupant.reagents.map(reagent => (
+              <Box key={reagent.name}>
+                {reagent.name} -
+                <AnimatedNumber
+                  value={reagent.volume}
+                  format={value => {
+                    return " " + Math.round(value * 100) / 100 + " units";
+                  }} />
+              </Box>
+
+            ))}
+          </Section>
+        )}
+        <Section
+          title="Treatments"
+          minHeight="205px"
+          buttons={(
+            <Button
+              icon={open ? 'door-open' : 'door-closed'}
+              content={open ? 'Open' : 'Closed'}
+              onClick={() => act('door')} />
+          )}>
+          {treatments.map(treatment => (
+            <Button
+              key={treatment}
+              icon="first-aid"
+              content={treatment}
+              disabled={!occupied}
+              color={active_treatment===treatment ? 'green' : null}
+              /* key={chem.name}
+              icon="flask"
+              tooltip={data.knowledge ? chem.desc : "You don't know what this chemical does!"}
+              tooltipPosition="top"
+              content={chem.name}
+              disabled={!(occupied && chem.allowed)}*/
+              width="350px"
+              onClick={() => act('set', {
+                treatment: treatment,
+              })}
+            />
+          ))}
+        </Section>
       </Window.Content>
     </Window>
-  );
-};
-
-const SleeperMain = (props, context) => {
-  const { act, data } = useBackend(context);
-  const {
-    occupant,
-    dialysis,
-    stomachpumping,
-  } = data;
-  return (
-    <Fragment>
-      <SleeperOccupant />
-      <SleeperDamage />
-      <SleeperDialysisPump
-        title="Dialysis"
-        active={dialysis}
-        actToDo="togglefilter" />
-      <SleeperDialysisPump
-        title="Stomach Pump"
-        active={stomachpumping}
-        actToDo="togglepump" />
-      <SleeperChemicals />
-    </Fragment>
-  );
-};
-
-const SleeperOccupant = (props, context) => {
-  const { act, data } = useBackend(context);
-  const {
-    occupant,
-    auto_eject_dead,
-    stasis,
-  } = data;
-  return (
-    <Section
-      title="Occupant"
-      buttons={(
-        <Fragment>
-          <Button
-            icon={auto_eject_dead ? "toggle-on" : "toggle-off"}
-            selected={auto_eject_dead}
-            content={auto_eject_dead ? 'Auto-eject if dead: On' : 'Auto-eject if dead: Off'}
-            onClick={() =>
-              act('auto_eject_dead_' + (auto_eject_dead ? 'off' : 'on'))}
-          />
-          <Button
-            icon="user-slash"
-            content="Eject"
-            onClick={() => act('ejectify')}
-          />
-          <Box inline>Stasis Level:</Box>
-          <NumberInput
-            minValue={0}
-            maxValue={5}
-            value={stasis}
-            onChange={(e, value) => act('changestasis', { stasis_volume: value })} />
-        </Fragment>
-      )}>
-      <LabeledList>
-        <LabeledList.Item label="Name">
-          {occupant.name}
-        </LabeledList.Item>
-        <LabeledList.Item label="Health">
-          <ProgressBar
-            min={0}
-            max={occupant.maxHealth}
-            value={occupant.health / occupant.maxHealth}
-            ranges={{
-              good: [0.5, Infinity],
-              average: [0, 0.5],
-              bad: [-Infinity, 0],
-            }}>
-            {round(occupant.health, 0)}
-          </ProgressBar>
-        </LabeledList.Item>
-        <LabeledList.Item label="Status" color={stats[occupant.stat][0]}>
-          {stats[occupant.stat][1]}
-        </LabeledList.Item>
-        <LabeledList.Item label="Temperature">
-          <ProgressBar
-            min="0"
-            max={occupant.maxTemp}
-            value={occupant.bodyTemperature / occupant.maxTemp}
-            color={tempColors[occupant.temperatureSuitability + 3]}>
-            {round(occupant.btCelsius, 0)}&deg;C,
-            {round(occupant.btFaren, 0)}&deg;F
-          </ProgressBar>
-        </LabeledList.Item>
-        {!!occupant.hasBlood && (
-          <Fragment>
-            <LabeledList.Item label="Blood Level">
-              <ProgressBar
-                min="0"
-                max={occupant.bloodMax}
-                value={occupant.bloodLevel / occupant.bloodMax}
-                ranges={{
-                  bad: [-Infinity, 0.6],
-                  average: [0.6, 0.9],
-                  good: [0.6, Infinity],
-                }}>
-                {occupant.bloodPercent}%, {occupant.bloodLevel}cl
-              </ProgressBar>
-            </LabeledList.Item>
-            <LabeledList.Item label="Pulse" verticalAlign="middle">
-              {occupant.pulse} BPM
-            </LabeledList.Item>
-          </Fragment>
-        )}
-      </LabeledList>
-    </Section>
-  );
-};
-
-const SleeperDamage = (props, context) => {
-  const { data } = useBackend(context);
-  const {
-    occupant,
-  } = data;
-  return (
-    <Section
-      title="Damage">
-      <LabeledList>
-        {damages.map((d, i) => (
-          <LabeledList.Item key={i} label={d[0]}>
-            <ProgressBar
-              key={i}
-              min="0"
-              max="100"
-              value={occupant[d[1]] / 100}
-              ranges={damageRange}>
-              {round(occupant[d[1]], 0)}
-            </ProgressBar>
-          </LabeledList.Item>
-        ))}
-      </LabeledList>
-    </Section>
-  );
-};
-
-const SleeperDialysisPump = (props, context) => {
-  const { act, data } = useBackend(context);
-  const {
-    isBeakerLoaded,
-    beakerMaxSpace,
-    beakerFreeSpace,
-  } = data;
-  const {
-    active,
-    actToDo,
-    title,
-  } = props;
-  const canDialysis = active && beakerFreeSpace > 0;
-  return (
-    <Section
-      title={title}
-      buttons={
-        <Fragment>
-          <Button
-            disabled={!isBeakerLoaded || beakerFreeSpace <= 0}
-            selected={canDialysis}
-            icon={canDialysis ? "toggle-on" : "toggle-off"}
-            content={canDialysis ? "Active" : "Inactive"}
-            onClick={() => act(actToDo)}
-          />
-          <Button
-            disabled={!isBeakerLoaded}
-            icon="eject"
-            content="Eject"
-            onClick={() => act('removebeaker')}
-          />
-        </Fragment>
-      }>
-      {isBeakerLoaded ? (
-        <LabeledList>
-          <LabeledList.Item label="Remaining Space">
-            <ProgressBar
-              min="0"
-              max={beakerMaxSpace}
-              value={beakerFreeSpace / beakerMaxSpace}
-              ranges={{
-                good: [0.5, Infinity],
-                average: [0.25, 0.5],
-                bad: [-Infinity, 0.25],
-              }}>
-              {beakerFreeSpace}u
-            </ProgressBar>
-          </LabeledList.Item>
-        </LabeledList>
-      ) : (
-        <Box color="label">
-          No beaker loaded.
-        </Box>
-      )}
-    </Section>
-  );
-};
-
-const SleeperChemicals = (props, context) => {
-  const { act, data } = useBackend(context);
-  const {
-    occupant,
-    chemicals,
-    maxchem,
-    amounts,
-  } = data;
-  return (
-    <Section title="Chemicals">
-      {chemicals.map((chem, i) => {
-        let barColor = '';
-        let odWarning;
-        if (chem.overdosing) {
-          barColor = 'bad';
-          odWarning = (
-            <Box color="bad">
-              <Icon name="exclamation-circle" />&nbsp;
-              Overdosing!
-            </Box>
-          );
-        } else if (chem.od_warning) {
-          barColor = 'average';
-          odWarning = (
-            <Box color="average">
-              <Icon name="exclamation-triangle" />&nbsp;
-              Close to overdosing
-            </Box>
-          );
-        }
-        return (
-          <Box key={i} backgroundColor="rgba(0, 0, 0, 0.33)" mb="0.5rem">
-            <Section
-              title={chem.title}
-              level="3"
-              mx="0"
-              lineHeight="18px"
-              buttons={odWarning}>
-              <Flex align="flex-start">
-                <ProgressBar
-                  min="0"
-                  max={maxchem}
-                  value={chem.occ_amount / maxchem}
-                  color={barColor}
-                  mr="0.5rem">
-                  {chem.pretty_amount}/{maxchem}u
-                </ProgressBar>
-                {amounts.map((a, i) => (
-                  <Button
-                    key={i}
-                    disabled={!chem.injectable
-                      || ((chem.occ_amount + a) > maxchem)
-                      || occupant.stat === 2}
-                    icon="syringe"
-                    content={a}
-                    mb="0"
-                    height="19px"
-                    onClick={() => act('chemical', {
-                      chemid: chem.id,
-                      amount: a,
-                    })}
-                  />
-                ))}
-              </Flex>
-            </Section>
-          </Box>
-        );
-      })}
-    </Section>
-  );
-};
-
-const SleeperEmpty = (props, context) => {
-  const { act, data } = useBackend(context);
-  const {
-    isBeakerLoaded,
-  } = data;
-  return (
-    <Section textAlign="center" fill>
-      <Flex height="100%">
-        <Flex.Item grow align="center" color="label">
-          <Icon
-            name="user-slash"
-            mb="0.5rem"
-            size="18"
-          /><br />
-          <Box fontSize={2}>
-            No occupant detected.
-          </Box>
-          {isBeakerLoaded && (
-            <Box>
-              <Button
-                icon="eject"
-                content="Remove Beaker"
-                onClick={() => act('removebeaker')}
-              />
-            </Box>
-          ) || null}
-        </Flex.Item>
-      </Flex>
-    </Section>
   );
 };
