@@ -1,31 +1,35 @@
 import { useBackend } from '../backend';
-import { Button, ColorBox, Section, Table, Flex } from '../components';
+import { Button, ColorBox, Stack, Section, Table } from '../components';
 import { NtosWindow } from '../layouts';
 
 export const NtosMain = (props, context) => {
   const { act, data } = useBackend(context);
   const {
     device_theme,
+    show_imprint,
     programs = [],
     has_light,
     light_on,
     comp_light_color,
     removable_media = [],
     login = [],
-    cardholder,
+    proposed_login = [],
+    pai,
   } = data;
   return (
     <NtosWindow
+      title={
+        (device_theme === 'syndicate' && 'Syndix Main Menu') || 'NtOS Main Menu'
+      }
       theme={device_theme}
       width={400}
-      height={500}
-      resizable>
+      height={500}>
       <NtosWindow.Content scrollable>
-        {(!!has_light || programs.some(program => program.name==='themeify')) && (
+        {Boolean(has_light || removable_media.length) && (
           <Section>
-            <Flex>
+            <Stack>
               {!!has_light && (
-                <Flex.Item>
+                <Stack.Item grow>
                   <Button
                     width="144px"
                     icon="lightbulb"
@@ -33,118 +37,142 @@ export const NtosMain = (props, context) => {
                     onClick={() => act('PC_toggle_light')}>
                     Flashlight: {light_on ? 'ON' : 'OFF'}
                   </Button>
-                  <Button
-                    ml={1}
-                    onClick={() => act('PC_light_color')}>
+                  <Button ml={1} onClick={() => act('PC_light_color')}>
                     Color:
                     <ColorBox ml={1} color={comp_light_color} />
                   </Button>
-                </Flex.Item>
+                </Stack.Item>
               )}
-
-              <Flex.Item
-                ml={1}
-                grow={1}>
-                {programs.some(program => program.name==='themeify') && (
+              {removable_media.map((device) => (
+                <Stack.Item key={device}>
                   <Button
                     fluid
-                    align="center"
-                    onClick={() => act('PC_runprogram', {
-                      name: 'themeify',
-                    })}>
-                    Change Theme
-                  </Button>
-                )}
-              </Flex.Item>
-            </Flex>
+                    icon="eject"
+                    content={device}
+                    onClick={() => act('PC_Eject_Disk', { name: device })}
+                    disabled={!device}
+                  />
+                </Stack.Item>
+              ))}
+            </Stack>
           </Section>
         )}
-        {!!cardholder && (
-          <Section
-            title="User Login"
-            buttons={(
+        <Section
+          title="User Login"
+          buttons={
+            <>
               <Button
                 icon="eject"
                 content="Eject ID"
-                disabled={!login.IDName}
-                onClick={() => act('PC_Eject_Disk', { name: "ID" })}
+                disabled={!proposed_login.IDName}
+                onClick={() => act('PC_Eject_Disk', { name: 'ID' })}
               />
-            )}>
+              {!!show_imprint && (
+                <Button
+                  icon="dna"
+                  content="Imprint ID"
+                  disabled={
+                    !proposed_login.IDName ||
+                    (proposed_login.IDName === login.IDName &&
+                      proposed_login.IDJob === login.IDJob)
+                  }
+                  onClick={() => act('PC_Imprint_ID', { name: 'ID' })}
+                />
+              )}
+            </>
+          }>
+          <Table>
+            <Table.Row>
+              ID Name:{' '}
+              {show_imprint
+                ? login.IDName +
+                ' ' +
+                (proposed_login.IDName ? '(' + proposed_login.IDName + ')' : '')
+                : proposed_login.IDName ?? ''}
+            </Table.Row>
+            <Table.Row>
+              Assignment:{' '}
+              {show_imprint
+                ? login.IDJob +
+                ' ' +
+                (proposed_login.IDJob ? '(' + proposed_login.IDJob + ')' : '')
+                : proposed_login.IDJob ?? ''}
+            </Table.Row>
+          </Table>
+        </Section>
+        {!!pai && (
+          <Section title="pAI">
             <Table>
               <Table.Row>
-                ID Name: {login.IDName}
+                <Table.Cell>
+                  <Button
+                    fluid
+                    icon="eject"
+                    color="transparent"
+                    content="Eject pAI"
+                    onClick={() =>
+                      act('PC_Pai_Interact', {
+                        option: 'eject',
+                      })
+                    }
+                  />
+                </Table.Cell>
               </Table.Row>
               <Table.Row>
-                Assignment: {login.IDJob}
+                <Table.Cell>
+                  <Button
+                    fluid
+                    icon="cat"
+                    color="transparent"
+                    content="Configure pAI"
+                    onClick={() =>
+                      act('PC_Pai_Interact', {
+                        option: 'interact',
+                      })
+                    }
+                  />
+                </Table.Cell>
               </Table.Row>
             </Table>
           </Section>
         )}
-        {!!removable_media.length && (
-          <Section title="Media Eject">
-            <Table>
-              {removable_media.map(device => (
-                <Table.Row key={device}>
-                  <Table.Cell>
+        <Section title="Programs">
+          <Table>
+            {programs.map((program) => (
+              <Table.Row key={program.name}>
+                <Table.Cell>
+                  <Button
+                    fluid
+                    color={program.alert ? 'yellow' : 'transparent'}
+                    icon={program.icon}
+                    content={program.desc}
+                    onClick={() =>
+                      act('PC_runprogram', {
+                        name: program.name,
+                      })
+                    }
+                  />
+                </Table.Cell>
+                <Table.Cell collapsing width="18px">
+                  {!!program.running && (
                     <Button
-                      fluid
                       color="transparent"
-                      icon="eject"
-                      content={device}
-                      onClick={() => act('PC_Eject_Disk', { name: device })}
+                      icon="times"
+                      tooltip="Close program"
+                      tooltipPosition="left"
+                      onClick={() =>
+                        act('PC_killprogram', {
+                          name: program.name,
+                        })
+                      }
                     />
-                  </Table.Cell>
-                </Table.Row>
-              ))}
-            </Table>
-          </Section>
-        )}
-        <ProgramsTable />
+                  )}
+                </Table.Cell>
+              </Table.Row>
+            ))}
+          </Table>
+        </Section>
       </NtosWindow.Content>
     </NtosWindow>
-  );
-};
-
-const ProgramsTable = (props, context) => {
-  const { act, data } = useBackend(context);
-  const {
-    programs = [],
-  } = data;
-  // add the program filename to this list to have it excluded from the main menu program list table
-  const programs_to_be_filtered = ["themeify"];
-  const filtered_programs
-  = programs.filter(program => !programs_to_be_filtered.includes(program.name));
-
-  return (
-    <Section title="Programs">
-      <Table>
-        {filtered_programs.map(program => (
-          <Table.Row key={program.name}>
-            <Table.Cell>
-              <Button
-                fluid
-                color={program.alert ? 'yellow' : 'transparent'}
-                icon={program.icon}
-                content={program.desc}
-                onClick={() => act('PC_runprogram', {
-                  name: program.name,
-                })} />
-            </Table.Cell>
-            <Table.Cell collapsing width="18px">
-              {!!program.running && (
-                <Button
-                  color="transparent"
-                  icon="times"
-                  tooltip="Close program"
-                  tooltipPosition="left"
-                  onClick={() => act('PC_killprogram', {
-                    name: program.name,
-                  })} />
-              )}
-            </Table.Cell>
-          </Table.Row>
-        ))}
-      </Table>
-    </Section>
   );
 };

@@ -13,62 +13,49 @@ export const Teleporter = (props, context) => {
     target,
   } = data;
   return (
-    <Window
-      width={470}
-      height={140}>
+    <Window width={360} height={130}>
       <Window.Content>
         <Section>
-          {!power_station && (
+          {(!power_station && (
             <Box color="bad" textAlign="center">
               No power station linked.
             </Box>
-          ) || (!teleporter_hub && (
-            <Box color="bad" textAlign="center">
-              No hub linked.
-            </Box>
-          )) || (
-            <LabeledList>
-              <LabeledList.Item label="Current Regime"
-                buttons={(
+          )) ||
+            (!teleporter_hub && (
+              <Box color="bad" textAlign="center">
+                No hub linked.
+              </Box>
+            )) || (
+              <LabeledList>
+                <LabeledList.Item label="Regime">
                   <Button
-                    icon="tools"
-                    content="Change Regime"
-                    onClick={() => act('regimeset')} />
-                )}>
-                {regime_set}
-              </LabeledList.Item>
-              <LabeledList.Item label="Current Target"
-                buttons={(
+                    content={regime_set}
+                    onClick={() => act('regimeset')}
+                  />
+                </LabeledList.Item>
+                <LabeledList.Item label="Target">
                   <Button
-                    icon="tools"
-                    content="Set Target"
-                    onClick={() => act('settarget')} />
-                )}>
-                {target}
-              </LabeledList.Item>
-              <LabeledList.Item label="Calibration"
-                buttons={(
-                  <Button
-                    icon="tools"
-                    content="Calibrate Hub"
-                    onClick={() => act('calibrate')} />
-                )}>
-                {calibrating && (
-                  <Box color="average">
-                    In Progress
-                  </Box>
-                ) || (calibrated && (
-                  <Box color="good">
-                    Optimal
-                  </Box>
-                ) || (
-                  <Box color="bad">
-                    Sub-Optimal
-                  </Box>
-                ))}
-              </LabeledList.Item>
-            </LabeledList>
-          )}
+                    icon="edit"
+                    content={target}
+                    onClick={() => act('settarget')}
+                  />
+                </LabeledList.Item>
+                <LabeledList.Item
+                  label="Calibration"
+                  buttons={
+                    <Button
+                      icon="tools"
+                      content="Calibrate"
+                      onClick={() => act('calibrate')}
+                    />
+                  }>
+                  {(calibrating && <Box color="average">In Progress</Box>) ||
+                    (calibrated && <Box color="good">Optimal</Box>) || (
+                      <Box color="bad">Sub-Optimal</Box>
+                    )}
+                </LabeledList.Item>
+              </LabeledList>
+            )}
         </Section>
       </Window.Content>
     </Window>
