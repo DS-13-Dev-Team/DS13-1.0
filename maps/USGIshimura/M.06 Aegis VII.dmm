@@ -2780,6 +2780,7 @@
 "gr" = (
 /obj/machinery/light,
 /obj/structure/bed,
+/obj/item/bedsheet/prisoner,
 /turf/simulated/floor/dank/grille_spare_1,
 /area/aegis/colony/security)
 "gs" = (
@@ -3286,6 +3287,7 @@
 	dir = 1
 	},
 /obj/structure/bed,
+/obj/item/bedsheet/prisoner,
 /turf/simulated/floor/dank/grille_spare_1,
 /area/aegis/colony/security)
 "hp" = (
