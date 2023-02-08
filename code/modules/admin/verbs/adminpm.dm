@@ -67,11 +67,9 @@
 				html ="<span class='warning'>Error: Admin-PM: Non-admin to non-admin PM communication is forbidden.</span>")
 		return
 
-	msg = sanitize(msg)
-
 	//get message text, limit it's length.and clean/escape html
 	if(!msg)
-		msg = input(src,"Message:", "Private message to [key_name(C, 0, holder ? 1 : 0)]") as text|null
+		msg = tgui_input_text(src, "Message:", "Private message to [key_name(C, 0, holder ? 1 : 0)]")
 
 		if(!msg)
 			return
@@ -85,8 +83,6 @@
 						type = MESSAGE_TYPE_ADMINPM,
 						html = "<span class='warning'>Error: Private-Message: Client not found. They may have lost connection, so try using an adminhelp!</span>")
 			return
-
-		msg = sanitize(msg)
 
 	var/datum/client_lite/receiver_lite = client_repository.get_lite_client(C)
 	var/datum/client_lite/sender_lite = client_repository.get_lite_client(src)
@@ -137,12 +133,12 @@
 			spawn(0)	//so we don't hold the caller proc up
 				var/sender = src
 				var/sendername = key
-				var/reply = sanitize(input(C, msg,"[recieve_pm_type] PM from [sendername]", "") as text|null)		//show message and await a reply
+				var/reply = tgui_input_text(C, msg,"[recieve_pm_type] PM from [sendername]") 		//show message and await a reply
 				if(C && reply)
 					if(sender)
 						C.cmd_admin_pm(sender,reply)										//sender is still about, let's reply to them
 					else
-						adminhelp(reply)													//sender has left, adminhelp instead
+						adminhelp()													//sender has left, adminhelp instead
 				return
 
 	var/datum/asset/spritesheet/sheet = get_asset_datum(/datum/asset/spritesheet/chat)
