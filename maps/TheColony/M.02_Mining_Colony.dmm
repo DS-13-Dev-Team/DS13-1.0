@@ -28778,12 +28778,12 @@
 /turf/simulated/floor/dank/maint,
 /area/mining_colony/interior/civ_hall)
 "lBk" = (
-/obj/structure/crematorium{
-	dir = 8;
-	id = colchapel
-	},
 /obj/effect/floor_decal/dank/mono_tri{
 	dir = 4
+	},
+/obj/structure/crematorium{
+	dir = 8;
+	id = "colchapel"
 	},
 /turf/simulated/floor/lino,
 /area/mining_colony/interior/uni_church)
@@ -29533,7 +29533,7 @@
 /area/mining_colony/interior/hydrophonics)
 "qmG" = (
 /obj/machinery/button/crematorium{
-	id = colchapel
+	id = "colchapel"
 	},
 /turf/simulated/wall/r_wall,
 /area/mining_colony/interior/enginieering/chief_engi)
