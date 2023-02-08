@@ -73,6 +73,14 @@
 	energy_cost = 60
 	placement_atom = /obj/structure/corruption_node/growth/branch
 
+/datum/signal_ability/placement/corruption/branch/enhanced
+	name = "Enhanced Branch"
+	id = "branch_enhanced"
+	desc = "Can be used to quickly reinforce an area with a strong growth, on a long cooldown."
+	energy_cost = 60
+	cooldown = 10 MINUTES
+	placement_atom = /obj/structure/corruption_node/growth/branch/enhanced
+
 
 /*
 	Root: An alternate version for tight spaces

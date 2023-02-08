@@ -252,6 +252,9 @@
 	if(boozed)
 		M.add_chemical_effect(CE_ALCOHOL_TOXIC, 1)
 		M.add_chemical_effect(CE_BREATHLOSS, 0.1 * boozed) //drinking and opiating makes breathing kinda hard
+	var/drugged = isdrugged(M)
+	if(drugged)
+		M.add_chemical_effect(CE_SLOWDOWN, 1)
 
 /datum/reagent/tramadol/overdose(var/mob/living/carbon/M, var/alien)
 	..()
@@ -271,6 +274,12 @@
 		. = 1
 		if(booze.strength < 40) //liquor stuff hits harder
 			return 2
+
+// Following proc is meant to punish combining chems in combat.
+/datum/reagent/tramadol/proc/isdrugged(var/mob/living/carbon/M)
+	. = 0
+	var/list/pool = M.reagents.reagent_list | M.ingested.reagent_list
+	return (locate(/datum/reagent/bicaridine) in pool || locate(/datum/reagent/paracetamol) in pool)
 
 /datum/reagent/tramadol/oxycodone
 	name = "Oxycodone"

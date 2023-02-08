@@ -60,8 +60,8 @@
 #define PLACEMENT_WALL	"wall"
 
 
-#define BIOMASS_REQ_T2	750
-#define BIOMASS_REQ_T3	1250
+#define BIOMASS_REQ_T2	850
+#define BIOMASS_REQ_T3	1350
 #define BIOMASS_REQ_T4	3825
 
 #define DAM_MOD_T1 0.91
