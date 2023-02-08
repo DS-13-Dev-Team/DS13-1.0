@@ -260,7 +260,7 @@
 /area/mining_colony/interior/uni_church)
 "aaU" = (
 /obj/machinery/door/airlock/civilian{
-	name = "Preacher's Office";
+	name = "Coffin Storage";
 	req_access = list(16)
 	},
 /obj/machinery/door/firedoor,
@@ -13277,7 +13277,6 @@
 "aMe" = (
 /obj/effect/floor_decal/spline/fancy/wood,
 /obj/structure/showcase/marker,
-/obj/effect/landmark/marker/ishimura,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/uni_church)
 "aMf" = (
@@ -27741,6 +27740,13 @@
 	},
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/enginieering/paint_storage)
+"eQL" = (
+/obj/structure/morgue,
+/obj/effect/floor_decal/dank/mono_half{
+	dir = 1
+	},
+/turf/simulated/floor/lino,
+/area/mining_colony/interior/uni_church)
 "eTR" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/spacecash/ewallet/random/c200,
@@ -27827,6 +27833,13 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/surface)
+"fBC" = (
+/obj/machinery/door/airlock/civilian{
+	name = "Coffin Storage";
+	req_access = list(16)
+	},
+/turf/simulated/floor/tiled/dark,
+/area/mining_colony/interior/uni_church)
 "fIw" = (
 /obj/effect/floor_decal/dank/border_corner_i{
 	dir = 4
@@ -28269,6 +28282,14 @@
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/interior/excavation/control_room)
+"iGW" = (
+/obj/machinery/door/airlock/civilian{
+	dir = 8;
+	name = "Burial Area";
+	req_access = list(16)
+	},
+/turf/simulated/floor/dank/grater,
+/area/mining_colony/interior/uni_church)
 "iJr" = (
 /obj/structure/table/rack,
 /obj/structure/table/rack,
@@ -28748,6 +28769,16 @@
 	},
 /turf/simulated/floor/dank/maint,
 /area/mining_colony/interior/civ_hall)
+"lBk" = (
+/obj/structure/crematorium{
+	dir = 8;
+	id = colchapel
+	},
+/obj/effect/floor_decal/dank/mono_tri{
+	dir = 4
+	},
+/turf/simulated/floor/lino,
+/area/mining_colony/interior/uni_church)
 "lBQ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/railing/mapped,
@@ -29143,6 +29174,12 @@
 	},
 /turf/simulated/floor/dank/grater,
 /area/shuttle/executive_shuttle)
+"nKv" = (
+/obj/effect/floor_decal/industrial/loading{
+	dir = 4
+	},
+/turf/simulated/floor/lino,
+/area/mining_colony/interior/uni_church)
 "nLW" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -29486,6 +29523,12 @@
 /obj/effect/floor_decal/industrial/loading,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/hydrophonics)
+"qmG" = (
+/obj/machinery/button/crematorium{
+	id = colchapel
+	},
+/turf/simulated/wall/r_wall,
+/area/mining_colony/interior/enginieering/chief_engi)
 "qqz" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -29683,6 +29726,14 @@
 	},
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/surface)
+"rqY" = (
+/obj/structure/morgue,
+/obj/effect/floor_decal/dank/mono_tri,
+/obj/structure/railing/mapped{
+	dir = 1
+	},
+/turf/simulated/floor/lino,
+/area/mining_colony/interior/uni_church)
 "rtH" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -30155,6 +30206,12 @@
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/interior/seccie_checkpoint_2)
+"uAk" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/lino,
+/area/mining_colony/interior/uni_church)
 "uAo" = (
 /obj/machinery/button/windowtint{
 	id = "psycholigst_office";
@@ -30566,6 +30623,17 @@
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/interior/seccie_checkpoint_2)
+"wPM" = (
+/obj/structure/closet/coffin,
+/turf/simulated/floor/tiled/dark,
+/area/mining_colony/interior/uni_church)
+"wSG" = (
+/obj/effect/floor_decal/industrial/loading{
+	dir = 8;
+	icon_state = "loadingarea"
+	},
+/turf/simulated/floor/lino,
+/area/mining_colony/interior/uni_church)
 "wSU" = (
 /obj/random/loot/sometimes/many,
 /turf/simulated/floor/plating,
@@ -30704,6 +30772,13 @@
 "xLc" = (
 /mob/living/simple_animal/cat/fennec,
 /turf/simulated/floor/dank/rectangles,
+/area/mining_colony/interior/uni_church)
+"xLq" = (
+/obj/structure/closet/coffin,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
 /area/mining_colony/interior/uni_church)
 "xQG" = (
 /obj/machinery/telecomms/broadcaster/preset_cent,
@@ -41818,7 +41893,7 @@ aaB
 aaB
 aaB
 aaB
-aaB
+iGW
 aaB
 aaB
 aaB
@@ -42015,15 +42090,15 @@ paD
 aak
 pvN
 lZB
-lZB
-lZB
-pvN
 aaB
-aaB
-aaB
-aaB
-aaB
-aaB
+adc
+adc
+fBC
+aeg
+aeg
+rqY
+eQL
+eQL
 aaB
 adW
 aeg
@@ -42217,15 +42292,15 @@ oUV
 aak
 pvN
 lZB
-lZB
-pvN
-pvN
 aaB
+xLq
+wPM
 aaB
-aaB
-aaB
-aaB
-aaB
+wSG
+aeg
+nKv
+nKv
+nKv
 aaB
 aaB
 aeh
@@ -42419,15 +42494,15 @@ mxh
 aak
 pvN
 pvN
-pvN
-pvN
-pvN
 aaB
+wPM
+wPM
 aaB
-aaB
-aaB
-aaB
-aaB
+lBk
+aeg
+uAk
+aeg
+aeg
 aaB
 acD
 aaR
@@ -42623,10 +42698,10 @@ ase
 ase
 ase
 ase
-pvN
+aaB
 biZ
 biZ
-biZ
+qmG
 biZ
 biZ
 biZ
