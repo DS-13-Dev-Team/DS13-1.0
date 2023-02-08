@@ -1305,9 +1305,6 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/aegis/colony/maintenance/east)
-"dj" = (
-/turf/simulated/floor/tiled/monotile,
-/area/aegis/colony/security)
 "dk" = (
 /turf/simulated/wall/r_wall,
 /area/aegis/outside)
@@ -1962,7 +1959,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/aegis/colony/breakroom)
 "eN" = (
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/aegis/colony/security)
 "eO" = (
 /obj/effect/floor_decal/corner/grey{
@@ -2748,19 +2745,17 @@
 /turf/simulated/floor/tiled,
 /area/aegis/colony/hangar)
 "gj" = (
-/turf/simulated/floor/tiled/dark/monotile,
-/area/aegis/colony/security)
-"gk" = (
-/obj/structure/sign/warning/secure_area/armory{
-	dir = 8;
-	icon_state = "armory"
+/obj/structure/window/reinforced{
+	dir = 1
 	},
-/turf/simulated/wall/r_wall,
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/turf/simulated/floor/dank/grille_spare_1,
 /area/aegis/colony/security)
 "gl" = (
-/obj/effect/floor_decal/industrial/outline/grey,
-/obj/machinery/deployable/barrier,
-/turf/simulated/floor/tiled/dark/monotile,
+/obj/machinery/door/window/northleft,
+/turf/simulated/floor/dank/grille_spare_1,
 /area/aegis/colony/security)
 "gm" = (
 /obj/structure/filingcabinet,
@@ -2773,40 +2768,20 @@
 	},
 /turf/simulated/floor/tiled,
 /area/aegis/colony/hangar/entrance/two)
-"go" = (
-/obj/machinery/button/remote/blast_door{
-	dir = 8;
-	icon_state = "blastctrl";
-	id = "aegis_armory";
-	name = "Aegis Armory Shutter Control";
-	pixel_x = 24;
-	req_access = list(2)
+"gp" = (
+/obj/effect/floor_decal/industrial/danger{
+	dir = 8
+	},
+/obj/effect/floor_decal/techfloor{
+	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/aegis/colony/security)
-"gp" = (
-/obj/machinery/door/airlock/vault/security{
-	dir = 8;
-	icon_state = "closed";
-	name = "Aegis Colony Armory"
-	},
-/obj/machinery/door/firedoor/border_only{
-	dir = 4;
-	icon_state = "open"
-	},
-/obj/machinery/door/blast/shutters{
-	dir = 8;
-	icon_state = "shutter1";
-	id = "aegis_armory";
-	name = "Aegis Armory Shutters"
-	},
-/turf/simulated/floor/tiled/dark/monotile,
-/area/aegis/colony/security)
 "gr" = (
-/obj/effect/floor_decal/industrial/outline/grey,
-/obj/machinery/deployable/barrier,
 /obj/machinery/light,
-/turf/simulated/floor/tiled/dark/monotile,
+/obj/structure/bed,
+/obj/item/bedsheet/prisoner,
+/turf/simulated/floor/dank/grille_spare_1,
 /area/aegis/colony/security)
 "gs" = (
 /obj/machinery/portable_atmospherics/canister/air/airlock,
@@ -3295,9 +3270,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/aegis/colony)
 "hm" = (
-/obj/effect/floor_decal/industrial/outline/grey,
-/obj/structure/closet/secure_closet/guncabinet,
-/turf/simulated/floor/tiled/dark/monotile,
+/turf/simulated/floor/dank/grille_spare_1,
 /area/aegis/colony/security)
 "hn" = (
 /obj/effect/floor_decal/industrial/warning/full,
@@ -3310,12 +3283,12 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/aegis/colony/airlock)
 "ho" = (
-/obj/effect/floor_decal/industrial/outline/grey,
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/structure/closet/secure_closet/guncabinet,
-/turf/simulated/floor/tiled/dark/monotile,
+/obj/structure/bed,
+/obj/item/bedsheet/prisoner,
+/turf/simulated/floor/dank/grille_spare_1,
 /area/aegis/colony/security)
 "hp" = (
 /obj/structure/table/standard,
@@ -3377,19 +3350,15 @@
 /turf/simulated/floor/concrete,
 /area/aegis/outside)
 "hw" = (
-/obj/structure/table/rack,
 /obj/machinery/alarm{
 	dir = 8;
 	pixel_x = 25
 	},
-/obj/item/storage/firstaid/regular,
-/obj/item/storage/firstaid/adv{
-	pixel_x = 2;
-	pixel_y = 2
+/obj/structure/window/reinforced,
+/obj/structure/bed/chair{
+	dir = 8
 	},
-/obj/random/loot/often,
-/obj/random/loot/often,
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/floor/dank/grille_spare_1,
 /area/aegis/colony/security)
 "hx" = (
 /obj/structure/cable/green{
@@ -4245,17 +4214,8 @@
 /turf/simulated/floor/tiled/monotile,
 /area/aegis/colony)
 "je" = (
-/obj/structure/table/rack,
-/obj/effect/floor_decal/industrial/outline/grey,
-/obj/item/shield/riot{
-	pixel_x = -2;
-	pixel_y = -2
-	},
-/obj/item/shield/riot{
-	pixel_x = 2;
-	pixel_y = 2
-	},
-/turf/simulated/floor/tiled/dark/monotile,
+/obj/machinery/door/window/southleft,
+/turf/simulated/floor/dank/grille_spare_1,
 /area/aegis/colony/security)
 "jf" = (
 /obj/structure/closet/firecloset,
@@ -43536,9 +43496,9 @@ bj
 dA
 bQ
 bX
-go
-dj
-dj
+bV
+bV
+bV
 bV
 de
 bQ
@@ -43791,7 +43751,7 @@ bP
 bP
 gp
 gp
-gk
+bP
 bP
 bP
 ea
@@ -44040,11 +44000,11 @@ fG
 ar
 bP
 hm
+je
 eN
-gj
-gj
+eN
 gl
-gl
+hm
 bP
 ar
 fG
@@ -44293,9 +44253,9 @@ dm
 bP
 ho
 hw
-je
 eN
-gl
+eN
+gj
 gr
 bP
 du
