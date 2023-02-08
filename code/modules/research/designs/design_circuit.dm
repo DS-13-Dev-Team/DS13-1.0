@@ -214,6 +214,8 @@ Food:
 	id = "gascooler"
 	build_path = /obj/item/circuitboard/unary_atmos/cooler
 
+/* Buggy as hell, unintended gameplay consequences. Commented out until fixed
+
 /datum/design/circuit/egnineering/shield_generator
 	name = "Shield Generator"
 	desc = "Allows for the construction of a shield generator circuit board."
@@ -225,6 +227,7 @@ Food:
 	desc = "Allows for the construction of a shield generator circuit board."
 	id = "shield_diffuser"
 	build_path = /obj/item/circuitboard/shield_diffuser
+*/
 
 /datum/design/circuit/power
 	category = "Power"

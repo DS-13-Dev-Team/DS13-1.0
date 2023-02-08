@@ -33,7 +33,7 @@
 			var/overflow = ((length(input)+1) - max_length)
 			to_chat(usr, "<span class='warning'>Your message is too long by [overflow] character\s.</span>")
 			return
-		input = copytext(input,1,max_length)
+		input = copytext_char(input,1,max_length)
 
 	if (!allow_links)
 		input = replace_characters(input, list("://"=" ","href"=" "))
@@ -214,7 +214,7 @@
 
 /proc/replace_characters(var/t,var/list/repl_chars)
 	for(var/char in repl_chars)
-		t = replacetext(t, char, repl_chars[char])
+		t = replacetext_char(t, char, repl_chars[char])
 	return t
 
 //Adds 'u' number of zeros ahead of the text 't'

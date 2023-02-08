@@ -114,6 +114,7 @@
 
 	unlocks_designs = list("tcom-processor")
 
+/* too buggy
 /datum/technology/tcom/shield
 	name = "Ship Shield"
 	desc = "Experimental energy shield technology. Requires a lot of energy to function properly."
@@ -129,3 +130,4 @@
 	cost = 3000
 
 	unlocks_designs = list("shield_generator", "shield_diffuser")
+*/

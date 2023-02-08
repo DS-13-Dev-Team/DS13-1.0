@@ -39,3 +39,5 @@
   - balance: Reduced RIG unsealing time from 3 seconds per part to 1 second per part
   - bugfix: Drills don't require you to search for a specific tile anymore. Now they
       can be used on any "asteroid" turf.
+  - bugfix: Removed the roof above solar panels on the colony. Solar panels are working
+      once again.
