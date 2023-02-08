@@ -254,7 +254,7 @@
 		M.add_chemical_effect(CE_BREATHLOSS, 0.1 * boozed) //drinking and opiating makes breathing kinda hard
 	var/drugged = isdrugged(M)
 	if(drugged)
-		M.add_chemical_effect(CE_SLOWDOWN, 1)
+		M.add_chemical_effect(CE_SLOWDOWN, 0.5)
 
 /datum/reagent/tramadol/overdose(var/mob/living/carbon/M, var/alien)
 	..()
