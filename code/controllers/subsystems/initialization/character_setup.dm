@@ -14,11 +14,13 @@ SUBSYSTEM_DEF(character_setup)
 
 /datum/controller/subsystem/character_setup/Initialize()
 	while(length(prefs_awaiting_setup))
-		var/datum/preferences/prefs = prefs_awaiting_setup[prefs_awaiting_setup.len--]
+		var/datum/preferences/prefs = prefs_awaiting_setup[length(prefs_awaiting_setup)]
+		--prefs_awaiting_setup.len
 		prefs.setup()
 		CHECK_TICK
 	while(length(newplayers_requiring_init))
-		var/mob/dead/new_player/new_player = newplayers_requiring_init[newplayers_requiring_init.len--]
+		var/mob/dead/new_player/new_player = newplayers_requiring_init[length(newplayers_requiring_init)]
+		--newplayers_requiring_init.len
 		new_player.deferred_login()
 		CHECK_TICK
 	. = ..()
