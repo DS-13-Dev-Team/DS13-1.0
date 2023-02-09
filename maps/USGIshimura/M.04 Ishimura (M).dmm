@@ -23008,7 +23008,9 @@
 	id_tag = "escape_pod_3_hatch";
 	name = "Escape Pod Door"
 	},
-/turf/simulated/floor/shuttle/pod,
+/turf/simulated/floor/shuttle/pod{
+	incorruptible = 1
+	},
 /area/shuttle/escape_pod3/station)
 "aTK" = (
 /turf/simulated/floor/plating,
@@ -23024,7 +23026,9 @@
 	id_tag = "escape_pod_2_hatch";
 	name = "Escape Pod Door"
 	},
-/turf/simulated/floor/shuttle/pod,
+/turf/simulated/floor/shuttle/pod{
+	incorruptible = 1
+	},
 /area/shuttle/escape_pod2/station)
 "aTM" = (
 /obj/machinery/light,
@@ -23300,7 +23304,9 @@
 	id_tag = "escape_pod_1_hatch";
 	name = "Escape Pod Door"
 	},
-/turf/simulated/floor/shuttle/pod,
+/turf/simulated/floor/shuttle/pod{
+	incorruptible = 1
+	},
 /area/shuttle/escape_pod1/station)
 "aUp" = (
 /turf/simulated/shuttle/wall/pod{
