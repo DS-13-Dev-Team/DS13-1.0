@@ -1,7 +1,7 @@
 /obj/structure/corruption_node/growth
 	name = "propagator"
 	desc = "Corruption spreads out in all directions from this horrible mass."
-	max_health = 200	//Takes a while to kill
+	max_health = 250	// 8/2/2023
 	resistance = 8
 	icon_state = "growth"
 	density = FALSE
@@ -58,6 +58,7 @@
 	name = "Bulging Growth"
 
 	icon_state = "enhanced"
+	max_health = 250 // 8/2/2023
 	range = 5
 	speed = 3
 	limit = 36
@@ -88,7 +89,7 @@
 /obj/structure/corruption_node/growth/root
 	name = "root"
 	desc = "The root of all evil"
-	max_health = 45 // 60 -> 45, 17th of Jan, 2021.
+	max_health = 210 // 8/2/2023
 	resistance = 6
 	icon_state = "minigrowth"
 	density = FALSE

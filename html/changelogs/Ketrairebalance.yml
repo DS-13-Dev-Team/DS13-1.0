@@ -68,3 +68,4 @@ changes:
   - balance: "Jav gun is now bolt action, delay between shots increased from 0.35s => 2s"
   - balance: "Jav gun price reduced 11000 => 8500 credits, 5000 => 4250 merits"
   - balance: "Jav gun ammo price reduced 2800 => 2550 credits/mag, 1500 => 1350 merits/mag."
+  - balance: "Bulging growth, roots, and propagators are now significantly harder to destroy."
