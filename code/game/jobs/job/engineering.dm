@@ -36,6 +36,7 @@
 	skill_points = 20
 
 	salary = SALARY_COMMAND
+	exp_type = EXP_TYPE_COMMAND
 
 /datum/job/ce/get_description_blurb()
 	return "You are the Chief Engineer. Your job is to keep the colony well-maintained and in one piece, along with directing the Technical Engineers. You are subordinate to the Colony Director and First Lieutenant."

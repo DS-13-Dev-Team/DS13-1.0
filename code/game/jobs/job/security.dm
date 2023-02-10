@@ -33,6 +33,7 @@
 						SKILL_MEDICAL     = SKILL_EXPERT,
 						SKILL_ANATOMY	  = SKILL_ADEPT)
 	skill_points = 20
+	exp_type = EXP_TYPE_COMMAND
 
 /datum/job/cseco/get_description_blurb()
 	return "You are the Chief Security Officer. You are the head of Planet Cracker Starship Ishimura Security, or P.C.S.I. Sec, and are in charge of keeping the crew safe and secure. You are expected to know the Law better than the average officer. You are subordinate to the Captain and First Lieutenant."
@@ -64,6 +65,7 @@
 						SKILL_MEDICAL     = SKILL_EXPERT,
 						SKILL_ANATOMY     = SKILL_ADEPT)
 	skill_points = 18
+	exp_type = EXP_TYPE_SECURITY
 
 /datum/job/sso/get_description_blurb()
 	return "You are the Senior Security Officer. You are the second-in-command to the Chief Security Officer and should they be incapacitated or are unavailable, you are to assume command of the Planetside Security, or P-Sec. You are expected to know the Law better than the average officer. You are typically in charge of foresnics investigations and lead security officers when the Chief Security Officer isn't present. You are subordinate to the P-Sec Commander."
@@ -95,6 +97,7 @@
 						SKILL_MEDICAL     = SKILL_EXPERT,
 						SKILL_ANATOMY     = SKILL_ADEPT)
 	skill_points = 15
+	exp_type = EXP_TYPE_SECURITY
 
 /datum/job/security_officer/get_description_blurb()
 	return "You are a Security Officer. One of the many members of Planetside Security, or P-Sec, you are there to provide safety and order to the crew. You are expected to have a good understanding of the Law. You are subordinate to the P-Sec Commander and Senior Security Officer."

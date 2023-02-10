@@ -299,6 +299,7 @@
 #define EXP_TYPE_MEDICAL		"Medical"
 #define EXP_TYPE_SCIENCE		"Science"
 #define EXP_TYPE_SUPPLY			"Supply"
+#define EXP_TYPE_MINING			"Mining"
 #define EXP_TYPE_SECURITY		"Security"
 #define EXP_TYPE_SERVICE		"Service"
 #define EXP_TYPE_SIGNAL			"Signal"
@@ -313,6 +314,7 @@ GLOBAL_LIST_INIT(experience_types, list(
 	EXP_TYPE_MEDICAL,
 	EXP_TYPE_SCIENCE,
 	EXP_TYPE_SUPPLY,
+	EXP_TYPE_MINING,
 	EXP_TYPE_SECURITY,
 	EXP_TYPE_SERVICE,
 	EXP_TYPE_SIGNAL,

@@ -35,6 +35,7 @@
 						SKILL_COMBAT      = SKILL_EXPERT,
 						SKILL_FORENSICS   = SKILL_ADEPT)
 	skill_points = 20
+	exp_type = EXP_TYPE_COMMAND
 
 /datum/job/cscio/get_description_blurb()
 	return "You are the Chief Science Officer. You are in charge of the research department. Your job is to direct your assistants, do science, and further the scientific field. You are subordinate to the Colony Director and First Lieutenant."
@@ -73,6 +74,7 @@
 						SKILL_COMBAT      = SKILL_EXPERT,
 						SKILL_FORENSICS   = SKILL_ADEPT)
 	skill_points = 20
+	exp_type = EXP_TYPE_SCIENCE
 
 /datum/job/ra/get_description_blurb()
 	return "You are a Research Assistant. You are a member of the research department. Your job is to do science, assist the Chief Science Officer, and attempt to further your personal career. You are subodinate to the Chief Science Officer."
