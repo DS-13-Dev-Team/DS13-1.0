@@ -137,7 +137,7 @@
 /obj/item/projectile/bullet/javelin
 	name = "javelin spears"
 	icon_state = "javelin_flight"
-	damage = 35
+	damage = 50
 	embed = TRUE
 	sharp = TRUE
 	accuracy = 200

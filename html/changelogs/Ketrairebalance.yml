@@ -64,7 +64,7 @@ changes:
   - balance: "Mixing bicardine + tramadol or tramadol + paracetamol will now slow movement speed SLIGHTLY of the affected individual."
   - balance: "Signals can now spawn a enhanced growth on a 10 minute cooldown to reinforce areas with quick growth."
   - balance: "Leapers across the board now leap faster with less windup, giving humans less time to react."
-  - balance: "Jav gun damage increased from 30 => 35, penetration from 15 => 20."
+  - balance: "Jav gun damage increased from 30 => 50, penetration from 15 => 20."
   - balance: "Jav gun is now bolt action, delay between shots increased from 0.35s => 2s"
   - balance: "Jav gun price reduced 11000 => 8500 credits, 5000 => 4250 merits"
   - balance: "Jav gun ammo price reduced 2800 => 2550 credits/mag, 1500 => 1350 merits/mag."
