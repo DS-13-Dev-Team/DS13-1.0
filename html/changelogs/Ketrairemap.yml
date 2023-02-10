@@ -67,3 +67,6 @@ changes:
   - balance: "Deflection round price increased from 2500 => 3250 per mag to account for grenade spamming."
   - balance: "Puker cost 130 => 125 Spitters & pukers are now considered equal to their slasher components, and meant to be used together."
   - balance: "Rig removal time whilst using a rig removal tool, has been lowered by 66%"
+  - balance: "Jav gun firing rate increased from 0.35s between shots to 2s per shot, making it bolt-action."
+  - balance: "Jav gun price reduced from 11000 to 8500 credits, and 5000 => 4250 merits."
+  - balance: "jav gun magazines price reduced from 2800 => 2550 credits, and 1500 => 1350 merits."
