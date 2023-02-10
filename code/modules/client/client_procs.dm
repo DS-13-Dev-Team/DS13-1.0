@@ -275,6 +275,9 @@
 	generate_clickcatcher()
 	apply_clickcatcher()
 
+	if(CONFIG_GET(flag/use_exp_tracking))
+		set_exp_from_db()
+
 	if(prefs.lastchangelog != GLOB.changelog_hash) //bolds the changelog button on the interface so we know there are updates.
 		to_chat(src, "<span class='info'>You have unread updates in the changelog.</span>")
 		if(CONFIG_GET(flag/aggressive_changelog))
@@ -297,6 +300,30 @@
 		src.control_freak = 0 //Devs need 0 for profiler access
 
 	winset(src, null, "mainwindow.title='[CONFIG_GET(string/title)] - [GLOB.using_map?.full_name]'")
+
+//resets a client's exp to what was in the db.
+/client/proc/set_exp_from_db()
+	if(!CONFIG_GET(flag/use_exp_tracking))
+		return -1
+	if(!SSdbcore.Connect())
+		return -1
+	var/datum/db_query/exp_read = SSdbcore.NewQuery(
+		"SELECT job, minutes FROM role_time WHERE ckey = :ckey",
+		list("ckey" = ckey)
+	)
+	if(!exp_read.Execute(async = TRUE))
+		qdel(exp_read)
+		return -1
+	var/list/play_records = list()
+	while(exp_read.NextRow())
+		play_records[exp_read.item[1]] = text2num(exp_read.item[2])
+	qdel(exp_read)
+
+	for(var/exp_type in GLOB.experience_types)
+		if(!play_records[exp_type])
+			play_records[exp_type] = 0
+
+	exp = play_records
 
 /**
  * Handles incoming messages from the stat-panel TGUI.

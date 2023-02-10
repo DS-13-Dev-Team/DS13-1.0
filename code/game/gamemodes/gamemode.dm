@@ -169,12 +169,12 @@ GLOBAL_LIST(additional_antag_types)
 	return TRUE
 
 /datum/game_mode/proc/setup()
-	job_master.DivideOccupations()
+	SSjobs.DivideOccupations()
 	create_characters() //Create player characters and transfer them
 	collect_minds()
 	equip_characters()
 	for(var/mob/living/carbon/human/H in GLOB.player_list)
-		if(!H.mind || player_is_antag(H.mind, only_offstation_roles = 1) || !job_master.ShouldCreateRecords(H.mind.assigned_role))
+		if(!H.mind || player_is_antag(H.mind, only_offstation_roles = 1) || !SSjobs.ShouldCreateRecords(H.mind.assigned_role))
 			continue
 		CreateModularRecord(H)
 
@@ -361,7 +361,7 @@ GLOBAL_LIST(additional_antag_types)
 			if(player.mind.assigned_role == "Captain")
 				captainless=0
 			if(!player_is_antag(player.mind, only_offstation_roles = 1))
-				job_master.EquipRank(player, player.mind.assigned_role, 0)
+				SSjobs.EquipRank(player, player.mind.assigned_role, 0)
 				//equip_custom_items(player)
 				equip_loadout(player, player.mind.assigned_role, player.client.prefs)
 	if(captainless)

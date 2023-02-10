@@ -150,9 +150,9 @@
 	. += "<tr><td colspan=3><b><center>[LC.category]</center></b></td></tr>"
 	. += "<tr><td colspan=3><hr></td></tr>"
 	var/jobs = list()
-	if(job_master)
+	if(SSjobs.initialized)
 		for(var/job_title in (pref.job_medium|pref.job_low|pref.job_high))
-			var/datum/job/J = job_master.GetJob(job_title)
+			var/datum/job/J = SSjobs.GetJob(job_title)
 			if(J)
 				dd_insertObjectList(jobs, J)
 

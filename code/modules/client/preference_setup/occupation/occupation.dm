@@ -60,13 +60,13 @@
 
 	pref.skills_allocated = pref.sanitize_skills(pref.skills_allocated)		//this proc also automatically computes and updates points_by_job
 
-	for(var/datum/job/job as anything in job_master.occupations)
+	for(var/datum/job/job as anything in SSjobs.occupations)
 		var/alt_title = pref.player_alt_titles[job.title]
 		if(alt_title && !(alt_title in job.alt_titles))
 			pref.player_alt_titles -= job.title
 
 /datum/category_item/player_setup_item/occupation/content(mob/user, limit = 16, list/splitJobs, splitLimit = 1)
-	if(!job_master)
+	if(!SSjobs.initialized)
 		return
 
 	var/datum/species/S = preference_species()
@@ -81,11 +81,11 @@
 	. += "<table width='100%' cellpadding='1' cellspacing='0'>"
 	var/index = -1
 	if(splitLimit)
-		limit = round((length(job_master.occupations_map)+1)/2)
+		limit = round((length(SSjobs.occupations_map)+1)/2)
 
 	//The job before the current job. I only use this to get the previous jobs color when I'm filling in blank rows.
 	var/datum/job/lastJob
-	for(var/datum/job/job as anything in job_master.occupations_map)
+	for(var/datum/job/job as anything in SSjobs.occupations_map)
 		var/unspent = pref.points_by_job[job]
 		var/current_level = JOB_LEVEL_NEVER
 		if(pref.job_high == job.title)
@@ -194,7 +194,7 @@
 
 	else if(href_list["set_skills"])
 		var/rank = href_list["set_skills"]
-		var/datum/job/job = job_master.GetJob(rank)
+		var/datum/job/job = SSjobs.GetJob(rank)
 		open_skill_setup(user, job)
 
 	//From the skills popup
@@ -228,7 +228,7 @@
 		var/datum/asset/spritesheet/sheet = get_asset_datum(/datum/asset/spritesheet/simple/jobs)
 		sheet.send(user.client)
 		var/rank = href_list["job_info"]
-		var/datum/job/job = job_master.GetJob(rank)
+		var/datum/job/job = SSjobs.GetJob(rank)
 		var/dat = list()
 
 		dat += "<link rel='stylesheet' type='text/css' href='[sheet.css_filename()]' /> "
@@ -267,7 +267,7 @@
 		pref.player_alt_titles[job.title] = new_title
 
 /datum/category_item/player_setup_item/occupation/proc/SetJob(mob/user, role, level)
-	var/datum/job/job = job_master.GetJob(role)
+	var/datum/job/job = SSjobs.GetJob(role)
 	if(!job)
 		return 0
 
@@ -331,7 +331,7 @@
  */
 /datum/category_item/player_setup_item/proc/prune_job_prefs()
 	var/allowed_titles = list()
-	for(var/datum/job/job as anything in job_master.occupations_map)
+	for(var/datum/job/job as anything in SSjobs.occupations_map)
 		allowed_titles += job.title
 
 		if(job.title == pref.job_high)

@@ -112,7 +112,7 @@
 		return
 
 	if (!istype(newjob))
-		newjob = job_master.GetJob(newjob) //We might have been supplied a jobname instead of a datum
+		newjob = SSjobs.GetJob(newjob) //We might have been supplied a jobname instead of a datum
 
 	if (istype(newjob))
 		job = newjob

@@ -4,12 +4,12 @@
 	copy_to(mannequin, TRUE)
 
 	var/datum/job/previewJob
-	if(equip_preview_mob && job_master)
+	if(equip_preview_mob && SSjobs.initialized)
 		// Determine what job is marked as 'High' priority, and dress them up as such.
 		if("Assistant" in job_low)
-			previewJob = job_master.GetJob("Assistant")
+			previewJob = SSjobs.GetJob("Assistant")
 		else
-			for(var/datum/job/job in job_master.occupations_map)
+			for(var/datum/job/job as anything in SSjobs.occupations_map)
 				if(job.title == job_high)
 					previewJob = job
 					break

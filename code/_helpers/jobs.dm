@@ -1,17 +1,7 @@
 /proc/guest_jobbans(var/job)
 	return ((job in GLOB.command_positions) || (job in GLOB.nonhuman_positions) || (job in GLOB.security_positions))
 
-/proc/get_job_datums()
-	. = list()
-	for(var/type in subtypesof(/datum/job))
-		. += new type()
-
 /proc/get_alternate_titles(var/job)
-	var/list/jobs = get_job_datums()
-	var/list/titles = list()
-
-	for(var/datum/job/J in jobs)
+	for(var/datum/job/J as anything in SSjobs.occupations)
 		if(J.title == job)
-			titles = J.alt_titles
-
-	return titles
+			return J.alt_titles

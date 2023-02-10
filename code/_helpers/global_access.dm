@@ -343,14 +343,10 @@
 			return global.intercom_range_display_status;
 		if("invalid_zone")
 			return global.invalid_zone;
-		if("job_master")
-			return global.job_master;
 		if("jobban_keylist")
 			return global.jobban_keylist;
 		if("jobban_runonce")
 			return global.jobban_runonce;
-		if("joblist")
-			return global.joblist;
 		if("landmarks_list")
 			return global.landmarks_list;
 		if("language_keys")
@@ -1028,14 +1024,10 @@
 			global.intercom_range_display_status=newval;
 		if("invalid_zone")
 			global.invalid_zone=newval;
-		if("job_master")
-			global.job_master=newval;
 		if("jobban_keylist")
 			global.jobban_keylist=newval;
 		if("jobban_runonce")
 			global.jobban_runonce=newval;
-		if("joblist")
-			global.joblist=newval;
 		if("landmarks_list")
 			global.landmarks_list=newval;
 		if("language_keys")
@@ -1547,10 +1539,8 @@
 	"intents",
 	"intercom_range_display_status",
 	"invalid_zone",
-	"job_master",
 	"jobban_keylist",
 	"jobban_runonce",
-	"joblist",
 	"landmarks_list",
 	"language_keys",
 	"last_chew",

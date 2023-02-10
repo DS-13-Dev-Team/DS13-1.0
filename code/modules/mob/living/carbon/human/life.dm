@@ -891,7 +891,7 @@
 		if(wear_id)
 			var/obj/item/card/id/I = wear_id.GetIdCard()
 			if(I)
-				var/datum/job/J = job_master.GetJob(I.GetJobName())
+				var/datum/job/J = SSjobs.GetJob(I.GetJobName())
 				if(J)
 					holder.icon_state = J.hud_icon
 

@@ -222,7 +222,7 @@ proc/get_craft_item(path)
 /datum/asset/spritesheet/simple/jobs/register()
 	var/mob/living/carbon/human/dummy/mannequin/mannequin = get_mannequin("#job_icon")
 	mannequin.dir = SOUTH
-	for(var/datum/job/job as anything in job_master.occupations_map)
+	for(var/datum/job/job as anything in SSjobs.occupations_map)
 		job.dress_mannequin(mannequin)
 		var/icon/preview_icon = getFlatIcon(mannequin)
 		preview_icon.Scale(preview_icon.Width() * 3, preview_icon.Height() * 3) // Scaling here to prevent blurring in the browser.

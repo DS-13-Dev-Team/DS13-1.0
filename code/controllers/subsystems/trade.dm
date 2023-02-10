@@ -149,7 +149,7 @@ SUBSYSTEM_DEF(trade)
 		if(!rank)
 			continue
 
-		var/datum/job/job_datum = job_master.GetJob(rank)
+		var/datum/job/job_datum = SSjobs.GetJob(rank)
 		if(!job_datum)
 			continue
 

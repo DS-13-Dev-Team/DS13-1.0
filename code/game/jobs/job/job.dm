@@ -11,7 +11,6 @@
 	var/total_positions = 0               // How many players can be this job
 	var/spawn_positions = 0               // How many players can spawn in as this job
 	var/current_positions = 0             // How many players have this job
-	var/availablity_chance = 100          // Percentage chance job is available each round
 
 	var/supervisors = null                // Supervisors, who this person answers to directly
 	var/selection_color = "#ffffff"       // Selection screen color
@@ -47,11 +46,32 @@
 	var/necro_conversion_compatibility = 0	//When converted to a necromorph, crewmen of this job have this amount of bonus compatibility. This influences the rarity/power of necros they convert into
 	var/list/necro_conversion_options = list()	//When converted to a necromorph, crewmen of this job have these extra possibilities added to the pool
 
+	var/exp_type
+
 /datum/job/New()
 	..()
-	if(prob(100-availablity_chance))	//Close positions, blah blah.
-		total_positions = 0
-		spawn_positions = 0
+	if(department_flag & COM)
+		GLOB.command_positions |= title
+	if(department_flag & SPT)
+		GLOB.support_positions |= title
+	if(department_flag & SEC)
+		GLOB.security_positions |= title
+	if(department_flag & ENG)
+		GLOB.engineering_positions |= title
+	if(department_flag & MED)
+		GLOB.medical_positions |= title
+	if(department_flag & SCI)
+		GLOB.science_positions |= title
+	if(department_flag & MIN)
+		GLOB.mining_positions |= title
+	if(department_flag & SUP)
+		GLOB.supply_positions |= title
+	if(department_flag & SRV)
+		GLOB.service_positions |= title
+	if(department_flag & CIV)
+		GLOB.civilian_positions |= title
+	if(department_flag & MSC)
+		GLOB.nonhuman_positions |= title
 
 /datum/job/dd_SortValue()
 	return title

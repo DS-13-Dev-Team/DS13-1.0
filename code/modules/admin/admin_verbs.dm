@@ -985,9 +985,12 @@ var/list/admin_verbs_mentor = list(
 /client/proc/free_slot_crew()
 	set name = "Free Job Slot (Crew)"
 	set category = "Admin"
+	if(!SSjobs.initialized)
+		to_chat(src, SPAN_WARNING("SSjobs didn't initialize yet!"))
+		return
 	if(holder)
 		var/list/jobs = list()
-		for (var/datum/job/J in job_master.occupations_map)
+		for (var/datum/job/J in SSjobs.occupations_map)
 			if(!J.is_position_available())
 				jobs += J.title
 		if (!jobs.len)
@@ -995,7 +998,7 @@ var/list/admin_verbs_mentor = list(
 			return
 		var/job = input("Please select job slot to free", "Free job slot")  as null|anything in jobs
 		if (job)
-			job_master.FreeRole(job)
+			SSjobs.FreeRole(job)
 			message_admins("A job slot for [job] has been opened by [key_name_admin(usr)]")
 			return
 
