@@ -58,7 +58,7 @@
 	name = "Bulging Growth"
 
 	icon_state = "enhanced"
-	max_health = 250 // 8/2/2023
+	max_health = 550 // 8/2/2023
 	range = 5
 	speed = 3
 	limit = 36
