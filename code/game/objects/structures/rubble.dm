@@ -98,7 +98,6 @@
 	/obj/item/archaeological_find/remains/robot,
 	/obj/item/archaeological_find/remains,
 	/obj/item/archaeological_find/gun,
-	/obj/item/archaeological_find/laser,
 	/obj/item/archaeological_find/statuette,
 	/obj/item/archaeological_find/instrument,
 	/obj/item/archaeological_find/container,
