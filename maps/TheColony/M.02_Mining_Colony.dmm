@@ -2168,7 +2168,7 @@
 "aQK" = (/turf/simulated/floor/dank/mono,/area/mining_colony/interior/excavation/hangar)
 "aQL" = (/obj/effect/shuttle_landmark/escape1/start,/obj/structure/shuttle/engine/propulsion{icon_state = "smallengine_left"},/turf/simulated/floor,/area/mining_colony/interior/shuttle_bay/shuttle_1)
 "aQM" = (/obj/structure/shuttle/engine/propulsion{icon_state = "engine_right"},/turf/simulated/floor,/area/mining_colony/interior/shuttle_bay/shuttle_1)
-"aQO" = (/obj/effect/shuttle_landmark/escape1/start,/obj/structure/shuttle/engine/propulsion{icon_state = "smallengine_left"},/turf/simulated/floor,/area/mining_colony/interior/shuttle_bay/shuttle_2)
+"aQO" = (/obj/structure/shuttle/engine/propulsion{icon_state = "smallengine_left"},/obj/effect/shuttle_landmark/escape2/start,/turf/simulated/floor,/area/mining_colony/interior/shuttle_bay/shuttle_2)
 "aQP" = (/obj/structure/shuttle/engine/propulsion{icon_state = "engine_right"},/turf/simulated/floor,/area/mining_colony/interior/shuttle_bay/shuttle_2)
 "aQQ" = (/obj/structure/shuttle/engine/propulsion{icon_state = "smallengine_right"},/turf/simulated/floor,/area/mining_colony/interior/shuttle_bay/shuttle_2)
 "aQR" = (/obj/structure/railing/mapped{dir = 4},/obj/structure/railing/mapped,/turf/simulated/floor/plating,/area/mining_colony/interior/shuttle_bay/hangar)
