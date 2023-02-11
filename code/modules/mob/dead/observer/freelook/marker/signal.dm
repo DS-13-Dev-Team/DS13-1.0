@@ -261,9 +261,9 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 
 /mob/dead/observer/signal/verb/necro_possess(var/mob/living/L)
 	set name = "Possess"
-	set category = "Necromorph"
+	set category = null
 	set desc = "Take control of a necromorph vessel"
-	set hidden = 1
+	set hidden = TRUE
 
 	if (!istype(L))
 		to_chat(src, SPAN_DANGER("That can't be possessed!"))
