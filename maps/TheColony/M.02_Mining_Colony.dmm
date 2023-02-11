@@ -4979,12 +4979,11 @@
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/excavation/restandrelax)
 "aoo" = (
-/obj/structure/table/steel_reinforced,
-/obj/machinery/button/remote/blast_door{
-	id = "evac_1";
-	name = "Evac Shuttle 1 Blast Doors"
+/obj/structure/shuttle/window/pod{
+	icon_state = "s_window5_b";
+	dir = 1
 	},
-/turf/simulated/floor/dank/slides,
+/turf/simulated/floor/plating,
 /area/mining_colony/interior/shuttle_bay/shuttle_1)
 "aop" = (
 /obj/structure/inflatable/wall,
@@ -5107,19 +5106,33 @@
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/enginieering/reactor_storage)
 "aoJ" = (
-/obj/machinery/door/airlock/hatch,
-/obj/machinery/door/firedoor,
-/turf/simulated/floor/dank/mono,
+/obj/structure/shuttle/window/pod{
+	icon_state = "s_window1_r";
+	dir = 1
+	},
+/turf/simulated/floor/plating,
 /area/mining_colony/interior/shuttle_bay/shuttle_1)
 "aoK" = (
-/obj/effect/wallframe_spawn/reinforced,
-/obj/machinery/door/firedoor,
-/turf/simulated/floor/dank/mono,
+/obj/structure/shuttle/window/pod{
+	icon_state = "s_window1_l";
+	dir = 1
+	},
+/turf/simulated/floor/plating,
 /area/mining_colony/interior/shuttle_bay/shuttle_1)
 "aoL" = (
 /obj/machinery/door/airlock/hatch,
 /obj/machinery/door/firedoor,
-/turf/simulated/floor/dank/mono,
+/obj/structure/industrial_lift/tram{
+	icon = 'icons/turf/floors_ds13.dmi';
+	icon_state = "trammiddle";
+	dir = 5
+	},
+/obj/structure/industrial_lift/tram{
+	icon = 'icons/turf/floors_ds13.dmi';
+	icon_state = "trammiddle";
+	dir = 5
+	},
+/turf/simulated/floor/plating,
 /area/mining_colony/interior/shuttle_bay/shuttle_2)
 "aoM" = (
 /obj/effect/floor_decal/rust,
@@ -5259,6 +5272,11 @@
 "apd" = (
 /obj/effect/wallframe_spawn/reinforced,
 /obj/machinery/door/firedoor,
+/obj/structure/industrial_lift/tram{
+	icon = 'icons/turf/floors_ds13.dmi';
+	icon_state = "trammiddle";
+	dir = 5
+	},
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/shuttle_bay/shuttle_2)
 "ape" = (
@@ -5338,19 +5356,12 @@
 /turf/simulated/floor/dank/heavy,
 /area/mining_colony/interior/apartament)
 "apn" = (
-/obj/machinery/door/airlock/external{
-	dir = 4;
-	name = "Evac Shuttle 1"
+/obj/structure/industrial_lift/tram{
+	icon = 'icons/turf/floors_ds13.dmi';
+	icon_state = "tramwarning5";
+	dir = 5
 	},
-/obj/machinery/door/blast/regular/open{
-	dir = 4;
-	icon_state = "pdoor0";
-	id = "evac_1"
-	},
-/obj/machinery/door/firedoor{
-	dir = 4
-	},
-/turf/simulated/floor/dank/mono,
+/turf/simulated/floor/plating,
 /area/mining_colony/interior/shuttle_bay/shuttle_1)
 "apo" = (
 /obj/machinery/camera/network/medbay{
@@ -5571,19 +5582,7 @@
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/enginieering/air_storage)
 "apU" = (
-/obj/machinery/door/airlock/external{
-	dir = 4;
-	name = "Evac Shuttle 2"
-	},
-/obj/machinery/door/blast/regular/open{
-	dir = 4;
-	icon_state = "pdoor0";
-	id = "evac_2"
-	},
-/obj/machinery/door/firedoor{
-	dir = 4
-	},
-/turf/simulated/floor/dank/mono,
+/turf/simulated/floor/plating,
 /area/mining_colony/interior/shuttle_bay/shuttle_2)
 "apV" = (
 /obj/structure/table/standard,
@@ -8653,10 +8652,16 @@
 /turf/simulated/floor/dank/rectangles,
 /area/mining_colony/interior/mining/airlock)
 "azt" = (
-/obj/structure/table/steel_reinforced,
-/turf/simulated/floor/dank/slides{
-	dir = 1
+/obj/structure/industrial_lift/tram{
+	icon = 'icons/turf/floors_ds13.dmi';
+	icon_state = "tramwarning3";
+	dir = 5
 	},
+/obj/machinery/door/airlock/multi_tile/civilian/tram/shuttle{
+	pixel_x = -16;
+	dir = 4
+	},
+/turf/simulated/floor/plating,
 /area/mining_colony/interior/shuttle_bay/shuttle_1)
 "azu" = (
 /obj/item/tool/saw,
@@ -13943,19 +13948,12 @@
 /turf/simulated/floor/dank/maint,
 /area/mining_colony/security)
 "aOa" = (
-/obj/structure/bed/chair/shuttle/black{
-	dir = 4;
-	icon_state = "shuttle_chair_preview"
+/obj/structure/industrial_lift/tram{
+	icon = 'icons/turf/floors_ds13.dmi';
+	icon_state = "tramcorner4";
+	dir = 5
 	},
-/obj/machinery/power/apc{
-	dir = 8;
-	name = "west bump";
-	pixel_x = -24;
-	storm_protected = 1
-	},
-/turf/simulated/floor/dank/slides{
-	dir = 1
-	},
+/turf/simulated/floor/plating,
 /area/mining_colony/interior/shuttle_bay/shuttle_1)
 "aOb" = (
 /obj/structure/table/standard,
@@ -14429,14 +14427,14 @@
 /area/mining_colony/interior/shuttle_bay/hangar)
 "aPn" = (
 /turf/simulated/shuttle/wall{
-	dir = 8;
-	icon_state = "diagonalWall3"
+	icon_state = "swall7_l";
+	dir = 4
 	},
 /area/mining_colony/interior/shuttle_bay/shuttle_1)
 "aPo" = (
 /turf/simulated/shuttle/wall{
 	dir = 1;
-	icon_state = "wall3"
+	icon_state = "swall6_r"
 	},
 /area/mining_colony/interior/shuttle_bay/shuttle_1)
 "aPp" = (
@@ -14447,10 +14445,10 @@
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/surface)
 "aPr" = (
-/turf/simulated/shuttle/wall{
-	dir = 4;
-	icon_state = "diagonalWall3"
+/obj/structure/shuttle/engine/propulsion{
+	icon_state = "smallengine_right"
 	},
+/turf/simulated/floor,
 /area/mining_colony/interior/shuttle_bay/shuttle_1)
 "aPs" = (
 /turf/simulated/shuttle/wall{
@@ -14499,18 +14497,36 @@
 /area/mining_colony/interior/enginieering/airlock)
 "aPB" = (
 /obj/machinery/computer/shuttle_control/escape1,
-/turf/simulated/floor/dank/golf_brown,
+/obj/structure/industrial_lift/tram{
+	icon = 'icons/turf/floors_ds13.dmi';
+	icon_state = "tramcorner7";
+	dir = 5
+	},
+/turf/simulated/floor/plating,
 /area/mining_colony/interior/shuttle_bay/shuttle_1)
 "aPC" = (
-/turf/simulated/floor/dank/golf_brown,
+/obj/structure/industrial_lift/tram{
+	icon = 'icons/turf/floors_ds13.dmi';
+	icon_state = "trammiddle";
+	dir = 5
+	},
+/turf/simulated/floor/plating,
 /area/mining_colony/interior/shuttle_bay/shuttle_1)
 "aPD" = (
 /obj/machinery/vending/snix,
 /turf/simulated/floor/dank/maint_right,
 /area/mining_colony/interior/cargo/restandcrap)
 "aPE" = (
-/obj/structure/table/steel_reinforced,
-/turf/simulated/floor/dank/golf_brown,
+/obj/structure/industrial_lift/tram{
+	icon = 'icons/turf/floors_ds13.dmi';
+	icon_state = "tramwarning7";
+	dir = 5
+	},
+/obj/machinery/door/airlock/multi_tile/civilian/tram/shuttle{
+	pixel_x = -16;
+	dir = 8
+	},
+/turf/simulated/floor/plating,
 /area/mining_colony/interior/shuttle_bay/shuttle_1)
 "aPF" = (
 /obj/item/paper_bin,
@@ -14562,11 +14578,21 @@
 	},
 /area/mining_colony/security)
 "aPJ" = (
-/turf/simulated/floor/dank/golf_brown,
+/obj/structure/industrial_lift/tram{
+	icon = 'icons/turf/floors_ds13.dmi';
+	icon_state = "tramcorner1";
+	dir = 5
+	},
+/turf/simulated/floor/plating,
 /area/mining_colony/interior/shuttle_bay/shuttle_2)
 "aPK" = (
 /obj/structure/table/steel_reinforced,
-/turf/simulated/floor/dank/golf_brown,
+/obj/structure/industrial_lift/tram{
+	icon = 'icons/turf/floors_ds13.dmi';
+	icon_state = "trammiddle";
+	dir = 5
+	},
+/turf/simulated/floor/plating,
 /area/mining_colony/interior/shuttle_bay/shuttle_2)
 "aPL" = (
 /obj/structure/table/steel_reinforced,
@@ -14574,47 +14600,58 @@
 	id = "evac_2";
 	name = "Evac Shuttle 2 Blast Doors"
 	},
-/turf/simulated/floor/dank/slides,
+/turf/simulated/floor/plating,
 /area/mining_colony/interior/shuttle_bay/shuttle_2)
 "aPM" = (
-/obj/structure/table/steel_reinforced,
-/obj/machinery/light{
-	dir = 8
+/obj/structure/industrial_lift/tram{
+	icon = 'icons/turf/floors_ds13.dmi';
+	icon_state = "tramcorner8";
+	dir = 5
 	},
-/turf/simulated/floor/dank/slides{
-	dir = 1
-	},
+/turf/simulated/floor/plating,
 /area/mining_colony/interior/shuttle_bay/shuttle_1)
 "aPN" = (
-/obj/structure/bed/chair/shuttle/black{
-	dir = 1;
-	icon_state = "shuttle_chair_preview"
+/obj/machinery/light{
+	pixel_y = -4
 	},
-/turf/simulated/floor/dank/golf_brown,
+/obj/structure/industrial_lift/tram{
+	icon = 'icons/turf/floors_ds13.dmi';
+	icon_state = "tramcorner4";
+	dir = 5
+	},
+/turf/simulated/floor/plating,
 /area/mining_colony/interior/shuttle_bay/shuttle_1)
 "aPO" = (
-/obj/structure/table/steel_reinforced,
-/obj/item/storage/firstaid/stab,
-/obj/machinery/light{
-	dir = 4
+/obj/structure/industrial_lift/tram{
+	icon = 'icons/turf/floors_ds13.dmi';
+	icon_state = "tramcorner7";
+	dir = 5
 	},
-/turf/simulated/floor/dank/slides,
+/turf/simulated/floor/plating,
 /area/mining_colony/interior/shuttle_bay/shuttle_1)
 "aPQ" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/dank/slides{
-	dir = 1
+/obj/structure/industrial_lift/tram{
+	icon = 'icons/turf/floors_ds13.dmi';
+	icon_state = "trammiddle";
+	dir = 5
 	},
+/turf/simulated/floor/plating,
 /area/mining_colony/interior/shuttle_bay/shuttle_2)
 "aPR" = (
 /obj/structure/bed/chair/shuttle/black{
 	dir = 1;
 	icon_state = "shuttle_chair_preview"
 	},
-/turf/simulated/floor/dank/golf_brown,
+/obj/structure/industrial_lift/tram{
+	icon = 'icons/turf/floors_ds13.dmi';
+	icon_state = "trammiddle";
+	dir = 5
+	},
+/turf/simulated/floor/plating,
 /area/mining_colony/interior/shuttle_bay/shuttle_2)
 "aPS" = (
 /obj/structure/table/steel_reinforced,
@@ -14622,7 +14659,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/floor/dank/slides,
+/turf/simulated/floor/plating,
 /area/mining_colony/interior/shuttle_bay/shuttle_2)
 "aPT" = (
 /obj/machinery/light{
@@ -14641,13 +14678,15 @@
 	pixel_x = -24;
 	storm_protected = 1
 	},
-/turf/simulated/floor/dank/slides{
-	dir = 1
-	},
+/turf/simulated/floor/plating,
 /area/mining_colony/interior/shuttle_bay/shuttle_2)
 "aPV" = (
-/obj/structure/closet/walllocker/emerglocker/east,
-/turf/simulated/floor/dank/slides,
+/obj/structure/industrial_lift/tram{
+	icon = 'icons/turf/floors_ds13.dmi';
+	icon_state = "tramcorner3";
+	dir = 5
+	},
+/turf/simulated/floor/plating,
 /area/mining_colony/interior/shuttle_bay/shuttle_1)
 "aPW" = (
 /obj/machinery/light{
@@ -14688,7 +14727,7 @@
 "aQc" = (
 /obj/structure/closet/walllocker/emerglocker/east,
 /obj/structure/table/steel_reinforced,
-/turf/simulated/floor/dank/slides,
+/turf/simulated/floor/plating,
 /area/mining_colony/interior/shuttle_bay/shuttle_2)
 "aQd" = (
 /obj/machinery/light{
@@ -14723,10 +14762,29 @@
 /turf/simulated/floor/dank/maint,
 /area/mining_colony/interior/enginieering/telecomms)
 "aQj" = (
-/turf/simulated/floor/dank/maint_left,
+/obj/structure/bed/chair/shuttle/black{
+	dir = 8;
+	icon_state = "shuttle_chair_preview"
+	},
+/obj/structure/industrial_lift/tram{
+	icon = 'icons/turf/floors_ds13.dmi';
+	icon_state = "tramcorner3";
+	dir = 5
+	},
+/turf/simulated/floor/plating,
 /area/mining_colony/interior/shuttle_bay/shuttle_1)
 "aQk" = (
-/turf/simulated/floor/dank/maint_right,
+/obj/machinery/light,
+/obj/structure/industrial_lift/tram{
+	icon = 'icons/turf/floors_ds13.dmi';
+	icon_state = "tramcorner1";
+	dir = 5
+	},
+/obj/structure/bed/chair/shuttle/black{
+	dir = 4;
+	icon_state = "shuttle_chair_preview"
+	},
+/turf/simulated/floor/plating,
 /area/mining_colony/interior/shuttle_bay/shuttle_1)
 "aQl" = (
 /obj/machinery/firealarm{
@@ -14745,11 +14803,26 @@
 	},
 /area/mining_colony/interior/excavation/interior)
 "aQn" = (
-/turf/simulated/floor/dank/maint_left,
+/obj/structure/industrial_lift/tram{
+	icon = 'icons/turf/floors_ds13.dmi';
+	icon_state = "trammiddle";
+	dir = 5
+	},
+/turf/simulated/floor/plating,
 /area/mining_colony/interior/shuttle_bay/shuttle_2)
 "aQo" = (
-/turf/simulated/floor/dank/maint_right,
-/area/mining_colony/interior/shuttle_bay/shuttle_2)
+/obj/structure/bed/chair/shuttle/black{
+	dir = 8;
+	icon_state = "shuttle_chair_preview"
+	},
+/obj/structure/industrial_lift/tram{
+	icon = 'icons/turf/floors_ds13.dmi';
+	icon_state = "tramcorner7";
+	dir = 5
+	},
+/obj/structure/closet/walllocker/emerglocker/east,
+/turf/simulated/floor/plating,
+/area/mining_colony/interior/shuttle_bay/shuttle_1)
 "aQp" = (
 /obj/structure/closet/secure_closet/guncabinet,
 /obj/item/ammo_magazine/divet,
@@ -14763,7 +14836,12 @@
 	dir = 4;
 	icon_state = "shuttle_chair_preview"
 	},
-/turf/simulated/floor/dank/golf_brown,
+/obj/structure/industrial_lift/tram{
+	icon = 'icons/turf/floors_ds13.dmi';
+	icon_state = "tramcorner4";
+	dir = 5
+	},
+/turf/simulated/floor/plating,
 /area/mining_colony/interior/shuttle_bay/shuttle_1)
 "aQr" = (
 /obj/structure/bed/chair/shuttle/black{
@@ -14773,7 +14851,12 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/turf/simulated/floor/dank/golf_brown,
+/obj/structure/industrial_lift/tram{
+	icon = 'icons/turf/floors_ds13.dmi';
+	icon_state = "trammiddle";
+	dir = 5
+	},
+/turf/simulated/floor/plating,
 /area/mining_colony/interior/shuttle_bay/shuttle_1)
 "aQs" = (
 /obj/structure/bed/chair/shuttle/black{
@@ -14783,21 +14866,30 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/turf/simulated/floor/dank/golf_brown,
+/obj/structure/industrial_lift/tram{
+	icon = 'icons/turf/floors_ds13.dmi';
+	icon_state = "trammiddle";
+	dir = 5
+	},
+/turf/simulated/floor/plating,
 /area/mining_colony/interior/shuttle_bay/shuttle_1)
 "aQt" = (
-/obj/structure/bed/chair/shuttle/black{
-	dir = 8;
-	icon_state = "shuttle_chair_preview"
+/turf/simulated/shuttle/wall{
+	dir = 1;
+	icon_state = "swall4_r"
 	},
-/turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/interior/shuttle_bay/shuttle_1)
 "aQu" = (
 /obj/structure/bed/chair/shuttle/black{
 	dir = 4;
 	icon_state = "shuttle_chair_preview"
 	},
-/turf/simulated/floor/dank/golf_brown,
+/obj/structure/industrial_lift/tram{
+	icon = 'icons/turf/floors_ds13.dmi';
+	icon_state = "tramcorner4";
+	dir = 5
+	},
+/turf/simulated/floor/plating,
 /area/mining_colony/interior/shuttle_bay/shuttle_2)
 "aQv" = (
 /obj/structure/bed/chair/shuttle/black{
@@ -14807,7 +14899,12 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/turf/simulated/floor/dank/golf_brown,
+/obj/structure/industrial_lift/tram{
+	icon = 'icons/turf/floors_ds13.dmi';
+	icon_state = "trammiddle";
+	dir = 5
+	},
+/turf/simulated/floor/plating,
 /area/mining_colony/interior/shuttle_bay/shuttle_2)
 "aQw" = (
 /obj/structure/bed/chair/shuttle/black{
@@ -14817,14 +14914,24 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/turf/simulated/floor/dank/golf_brown,
+/obj/structure/industrial_lift/tram{
+	icon = 'icons/turf/floors_ds13.dmi';
+	icon_state = "trammiddle";
+	dir = 5
+	},
+/turf/simulated/floor/plating,
 /area/mining_colony/interior/shuttle_bay/shuttle_2)
 "aQx" = (
 /obj/structure/bed/chair/shuttle/black{
 	dir = 8;
 	icon_state = "shuttle_chair_preview"
 	},
-/turf/simulated/floor/dank/golf_brown,
+/obj/structure/industrial_lift/tram{
+	icon = 'icons/turf/floors_ds13.dmi';
+	icon_state = "tramcorner7";
+	dir = 5
+	},
+/turf/simulated/floor/plating,
 /area/mining_colony/interior/shuttle_bay/shuttle_2)
 "aQy" = (
 /obj/effect/floor_decal/industrial/loading{
@@ -14854,7 +14961,12 @@
 	dir = 8;
 	icon_state = "shuttle_chair_preview"
 	},
-/turf/simulated/floor/dank/golf_brown,
+/obj/structure/industrial_lift/tram{
+	icon = 'icons/turf/floors_ds13.dmi';
+	icon_state = "trammiddle";
+	dir = 5
+	},
+/turf/simulated/floor/plating,
 /area/mining_colony/interior/shuttle_bay/shuttle_1)
 "aQC" = (
 /obj/structure/window/reinforced{
@@ -14864,7 +14976,12 @@
 	dir = 4;
 	icon_state = "shuttle_chair_preview"
 	},
-/turf/simulated/floor/dank/golf_brown,
+/obj/structure/industrial_lift/tram{
+	icon = 'icons/turf/floors_ds13.dmi';
+	icon_state = "trammiddle";
+	dir = 5
+	},
+/turf/simulated/floor/plating,
 /area/mining_colony/interior/shuttle_bay/shuttle_1)
 "aQD" = (
 /obj/structure/table/steel_reinforced,
@@ -14879,7 +14996,12 @@
 	dir = 8;
 	icon_state = "shuttle_chair_preview"
 	},
-/turf/simulated/floor/dank/golf_brown,
+/obj/structure/industrial_lift/tram{
+	icon = 'icons/turf/floors_ds13.dmi';
+	icon_state = "trammiddle";
+	dir = 5
+	},
+/turf/simulated/floor/plating,
 /area/mining_colony/interior/shuttle_bay/shuttle_2)
 "aQF" = (
 /obj/structure/window/reinforced{
@@ -14889,22 +15011,45 @@
 	dir = 4;
 	icon_state = "shuttle_chair_preview"
 	},
-/turf/simulated/floor/dank/golf_brown,
+/obj/structure/industrial_lift/tram{
+	icon = 'icons/turf/floors_ds13.dmi';
+	icon_state = "trammiddle";
+	dir = 5
+	},
+/turf/simulated/floor/plating,
 /area/mining_colony/interior/shuttle_bay/shuttle_2)
 "aQG" = (
+/obj/structure/industrial_lift/tram{
+	icon = 'icons/turf/floors_ds13.dmi';
+	icon_state = "trammiddle";
+	dir = 5
+	},
+/obj/structure/industrial_lift/tram{
+	icon = 'icons/turf/floors_ds13.dmi';
+	icon_state = "tramcorner1";
+	dir = 5
+	},
+/obj/structure/bed/chair/shuttle/black{
+	dir = 8;
+	icon_state = "shuttle_chair_preview"
+	},
 /obj/machinery/light,
-/turf/simulated/floor/dank/golf_brown,
+/turf/simulated/floor/plating,
 /area/mining_colony/interior/shuttle_bay/shuttle_1)
 "aQH" = (
 /obj/machinery/light,
-/turf/simulated/floor/dank/golf_brown,
+/obj/structure/industrial_lift/tram{
+	icon = 'icons/turf/floors_ds13.dmi';
+	icon_state = "tramcorner1";
+	dir = 5
+	},
+/turf/simulated/floor/plating,
 /area/mining_colony/interior/shuttle_bay/shuttle_2)
 "aQI" = (
-/obj/structure/shuttle/engine/heater,
-/obj/structure/window/reinforced{
-	dir = 1
+/turf/simulated/shuttle/wall{
+	dir = 1;
+	icon_state = "backengine3"
 	},
-/turf/simulated/floor,
 /area/mining_colony/interior/shuttle_bay/shuttle_1)
 "aQJ" = (
 /obj/structure/shuttle/engine/heater,
@@ -14918,12 +15063,15 @@
 /area/mining_colony/interior/excavation/hangar)
 "aQL" = (
 /obj/effect/shuttle_landmark/escape1/start,
-/turf/simulated/shuttle/wall{
-	icon_state = "diagonalWall3"
+/obj/structure/shuttle/engine/propulsion{
+	icon_state = "smallengine_left"
 	},
+/turf/simulated/floor,
 /area/mining_colony/interior/shuttle_bay/shuttle_1)
 "aQM" = (
-/obj/structure/shuttle/engine/propulsion,
+/obj/structure/shuttle/engine/propulsion{
+	icon_state = "engine_right"
+	},
 /turf/simulated/floor,
 /area/mining_colony/interior/shuttle_bay/shuttle_1)
 "aQO" = (
@@ -22674,9 +22822,17 @@
 	pixel_y = 32
 	},
 /obj/structure/table/steel_reinforced,
-/turf/simulated/floor/dank/slides{
-	dir = 1
+/obj/structure/industrial_lift/tram{
+	icon = 'icons/turf/floors_ds13.dmi';
+	icon_state = "trammiddle";
+	dir = 5
 	},
+/obj/structure/industrial_lift/tram{
+	icon = 'icons/turf/floors_ds13.dmi';
+	icon_state = "tramcorner8";
+	dir = 5
+	},
+/turf/simulated/floor/plating,
 /area/mining_colony/interior/shuttle_bay/shuttle_2)
 "bhY" = (
 /obj/machinery/light_switch{
@@ -26735,14 +26891,12 @@
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/surface)
 "bsX" = (
-/obj/effect/wallframe_spawn/reinforced,
-/obj/machinery/door/blast/regular/open{
-	icon_state = "pdoor0";
-	id = "evac_1";
-	name = "Evac Shuttle 1 Blast Door"
+/obj/structure/industrial_lift/tram{
+	icon = 'icons/turf/floors_ds13.dmi';
+	icon_state = "tramwarning6";
+	dir = 5
 	},
-/obj/machinery/door/firedoor,
-/turf/simulated/floor/dank/mono,
+/turf/simulated/floor/plating,
 /area/mining_colony/interior/shuttle_bay/shuttle_1)
 "bsY" = (
 /obj/effect/wallframe_spawn/reinforced,
@@ -26922,20 +27076,43 @@
 	},
 /area/mining_colony/interior/shuttle_bay/shuttle_3)
 "btt" = (
-/obj/structure/closet/walllocker/emerglocker/south,
-/turf/simulated/floor/dank/maint_left,
+/turf/simulated/shuttle/wall{
+	dir = 1;
+	icon_state = "swall4_l"
+	},
 /area/mining_colony/interior/shuttle_bay/shuttle_1)
 "btu" = (
 /obj/structure/closet/walllocker/emerglocker/south,
-/turf/simulated/floor/dank/maint_right,
+/obj/structure/industrial_lift/tram{
+	icon = 'icons/turf/floors_ds13.dmi';
+	icon_state = "tramcorner1";
+	dir = 5
+	},
+/turf/simulated/floor/plating,
 /area/mining_colony/interior/shuttle_bay/shuttle_1)
 "btv" = (
-/obj/structure/closet/walllocker/emerglocker/south,
-/turf/simulated/floor/dank/maint_left,
+/obj/effect/wallframe_spawn/reinforced,
+/obj/machinery/door/firedoor,
+/obj/structure/industrial_lift/tram{
+	icon = 'icons/turf/floors_ds13.dmi';
+	icon_state = "trammiddle";
+	dir = 5
+	},
+/obj/structure/industrial_lift/tram{
+	icon = 'icons/turf/floors_ds13.dmi';
+	icon_state = "trammiddle";
+	dir = 5
+	},
+/turf/simulated/floor/dank/mono,
 /area/mining_colony/interior/shuttle_bay/shuttle_2)
 "btw" = (
 /obj/structure/closet/walllocker/emerglocker/south,
-/turf/simulated/floor/dank/maint_right,
+/obj/structure/industrial_lift/tram{
+	icon = 'icons/turf/floors_ds13.dmi';
+	icon_state = "tramcorner1";
+	dir = 5
+	},
+/turf/simulated/floor/plating,
 /area/mining_colony/interior/shuttle_bay/shuttle_2)
 "btx" = (
 /obj/structure/bed/chair/office{
@@ -27265,6 +27442,12 @@
 /obj/structure/closet/firecloset,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/security)
+"bSX" = (
+/obj/structure/shuttle/engine/propulsion{
+	icon_state = "engine_left"
+	},
+/turf/simulated/floor,
+/area/mining_colony/interior/shuttle_bay/shuttle_1)
 "bVZ" = (
 /obj/effect/floor_decal/dank/outline,
 /obj/structure/table/rack,
@@ -27359,6 +27542,18 @@
 	},
 /turf/simulated/floor/dank/maint,
 /area/mining_colony/interior/enginieering/main_room)
+"csu" = (
+/turf/simulated/shuttle/wall{
+	dir = 1;
+	icon_state = "swall1_l"
+	},
+/area/mining_colony/interior/shuttle_bay/shuttle_1)
+"cum" = (
+/turf/simulated/shuttle/wall{
+	dir = 1;
+	icon_state = "backengine1"
+	},
+/area/mining_colony/interior/shuttle_bay/shuttle_1)
 "cuq" = (
 /obj/effect/wallframe_spawn/reinforced,
 /obj/machinery/door/firedoor,
@@ -27374,6 +27569,12 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/plating,
 /area/mining_colony/security/sec_firingrange)
+"cvI" = (
+/turf/simulated/shuttle/wall{
+	dir = 1;
+	icon_state = "swall8_r"
+	},
+/area/mining_colony/interior/shuttle_bay/shuttle_1)
 "cxt" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -27406,6 +27607,13 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/mining_colony/interior)
+"cPM" = (
+/obj/structure/shuttle/window/pod{
+	icon_state = "s_window4_u_l";
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/mining_colony/interior/shuttle_bay/shuttle_1)
 "cQJ" = (
 /turf/simulated/floor/asteroid/outside_ds/cracked{
 	dir = 4
@@ -27489,6 +27697,19 @@
 	dir = 1
 	},
 /area/mining_colony/surface)
+"deL" = (
+/obj/structure/shuttle/window/pod{
+	icon_state = "s_window4_u_r";
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/mining_colony/interior/shuttle_bay/shuttle_1)
+"dgp" = (
+/turf/simulated/shuttle/wall{
+	dir = 1;
+	icon_state = "swall3_r"
+	},
+/area/mining_colony/interior/shuttle_bay/shuttle_1)
 "dlb" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/interior/medbay/CMOoffice)
@@ -27496,6 +27717,12 @@
 /obj/item/material/shard,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/surface)
+"dqC" = (
+/turf/simulated/shuttle/wall{
+	dir = 1;
+	icon_state = "swall1_r"
+	},
+/area/mining_colony/interior/shuttle_bay/shuttle_1)
 "dsz" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -27723,6 +27950,14 @@
 	},
 /turf/simulated/floor/dank/golf_gray,
 /area/mining_colony/interior/hydrophonics)
+"eye" = (
+/obj/structure/industrial_lift/tram{
+	icon = 'icons/turf/floors_ds13.dmi';
+	icon_state = "trammiddle";
+	dir = 5
+	},
+/turf/space,
+/area/mining_colony/interior/shuttle_bay/shuttle_1)
 "ezG" = (
 /obj/machinery/store,
 /turf/simulated/floor/dank/grater,
@@ -27918,9 +28153,33 @@
 /obj/structure/girder/displaced,
 /turf/simulated/floor/plating,
 /area/mining_colony/surface)
+"giz" = (
+/obj/structure/shuttle/window/pod{
+	icon_state = "s_window4_b_l";
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/mining_colony/interior/shuttle_bay/shuttle_1)
 "glw" = (
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/security)
+"gpx" = (
+/obj/structure/industrial_lift/tram{
+	icon = 'icons/turf/floors_ds13.dmi';
+	icon_state = "tramcorner3";
+	dir = 5
+	},
+/obj/machinery/light{
+	pixel_y = -4
+	},
+/turf/simulated/floor/plating,
+/area/mining_colony/interior/shuttle_bay/shuttle_1)
+"guq" = (
+/turf/simulated/shuttle/wall{
+	dir = 1;
+	icon_state = "swall5_r"
+	},
+/area/mining_colony/interior/shuttle_bay/shuttle_1)
 "gLQ" = (
 /obj/structure/table/woodentable,
 /obj/item/flame/candle,
@@ -27929,6 +28188,12 @@
 	},
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/uni_church)
+"gNe" = (
+/turf/simulated/shuttle/wall{
+	dir = 1;
+	icon_state = "backengine2"
+	},
+/area/mining_colony/interior/shuttle_bay/shuttle_1)
 "gNf" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
@@ -28319,6 +28584,12 @@
 	},
 /turf/simulated/floor/dank/golf_brown,
 /area/mining_colony/interior/seccie_checkpoint_2)
+"iMP" = (
+/turf/simulated/shuttle/wall{
+	dir = 1;
+	icon_state = "swall8_l"
+	},
+/area/mining_colony/interior/shuttle_bay/shuttle_1)
 "iSq" = (
 /obj/structure/barricade/spike,
 /turf/simulated/floor/asteroid/outside_ds/dry_firm,
@@ -28545,13 +28816,18 @@
 /area/mining_colony/surface)
 "kkL" = (
 /turf/simulated/shuttle/wall{
-	dir = 5;
-	icon_state = "wall3"
+	dir = 1;
+	icon_state = "swall7_r"
 	},
 /area/mining_colony/interior/shuttle_bay/shuttle_1)
 "kmM" = (
 /obj/machinery/computer/shuttle_control/escape2,
-/turf/simulated/floor/dank/golf_brown,
+/obj/structure/industrial_lift/tram{
+	icon = 'icons/turf/floors_ds13.dmi';
+	icon_state = "trammiddle";
+	dir = 5
+	},
+/turf/simulated/floor/plating,
 /area/mining_colony/interior/shuttle_bay/shuttle_2)
 "knj" = (
 /obj/structure/cable{
@@ -28559,6 +28835,18 @@
 	},
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/hydrophonics)
+"knJ" = (
+/obj/structure/bed/chair/shuttle/black{
+	dir = 4;
+	icon_state = "shuttle_chair_preview"
+	},
+/obj/structure/industrial_lift/tram{
+	icon = 'icons/turf/floors_ds13.dmi';
+	icon_state = "tramcorner8";
+	dir = 5
+	},
+/turf/simulated/floor/plating,
+/area/mining_colony/interior/shuttle_bay/shuttle_2)
 "knU" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -28574,6 +28862,12 @@
 "kpW" = (
 /turf/simulated/wall/r_wall,
 /area/mining_colony/interior/science/researchandev)
+"ktn" = (
+/turf/simulated/shuttle/wall{
+	dir = 1;
+	icon_state = "swall6_l"
+	},
+/area/mining_colony/interior/shuttle_bay/shuttle_1)
 "kuP" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -29266,6 +29560,13 @@
 	},
 /turf/simulated/floor/dank/slides,
 /area/mining_colony/interior/enginieering/paint_storage)
+"oyi" = (
+/obj/structure/shuttle/window/pod{
+	icon_state = "s_window3_r";
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/mining_colony/interior/shuttle_bay/shuttle_1)
 "oyl" = (
 /obj/structure/wall_frame,
 /turf/simulated/floor/plating,
@@ -29444,6 +29745,13 @@
 	},
 /turf/simulated/floor/dank/golf_gray,
 /area/mining_colony/surface)
+"pHF" = (
+/obj/structure/shuttle/window/pod{
+	icon_state = "s_window3_l";
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/mining_colony/interior/shuttle_bay/shuttle_1)
 "pLO" = (
 /obj/machinery/store,
 /turf/simulated/floor/tiled/white,
@@ -29456,6 +29764,12 @@
 	},
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/surface)
+"pOV" = (
+/turf/simulated/shuttle/wall{
+	dir = 1;
+	icon_state = "swall2_l"
+	},
+/area/mining_colony/interior/shuttle_bay/shuttle_1)
 "pPx" = (
 /obj/structure/bed/roller{
 	pixel_y = 8
@@ -29537,6 +29851,18 @@
 	},
 /turf/simulated/wall/r_wall,
 /area/mining_colony/interior/enginieering/chief_engi)
+"qnp" = (
+/obj/structure/bed/chair/shuttle/black{
+	dir = 8;
+	icon_state = "shuttle_chair_preview"
+	},
+/obj/structure/industrial_lift/tram{
+	icon = 'icons/turf/floors_ds13.dmi';
+	icon_state = "tramcorner3";
+	dir = 5
+	},
+/turf/simulated/floor/plating,
+/area/mining_colony/interior/shuttle_bay/shuttle_2)
 "qqz" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -29685,6 +30011,13 @@
 /obj/machinery/light,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/abandoned/hydro)
+"raB" = (
+/obj/structure/shuttle/window/pod{
+	icon_state = "s_window5_u";
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/mining_colony/interior/shuttle_bay/shuttle_1)
 "rcs" = (
 /obj/machinery/button/remote/blast_door{
 	dir = 1;
@@ -29762,6 +30095,13 @@
 /obj/item/stamp/cargo,
 /turf/simulated/floor/concrete,
 /area/mining_colony/surface)
+"rAY" = (
+/obj/structure/shuttle/window/pod{
+	icon_state = "s_window4_b_r";
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/mining_colony/interior/shuttle_bay/shuttle_1)
 "rEq" = (
 /obj/structure/barricade/steel,
 /turf/simulated/floor/asteroid/outside_ds/dry_firm,
@@ -29788,6 +30128,21 @@
 /obj/machinery/telecomms/hub/preset,
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/enginieering/telecomms)
+"rQF" = (
+/obj/effect/wallframe_spawn/reinforced,
+/obj/machinery/door/blast/regular/open{
+	icon_state = "pdoor0";
+	id = "evac_2";
+	name = "Evac Shuttle 2 Blast Door"
+	},
+/obj/machinery/door/firedoor,
+/obj/structure/industrial_lift/tram{
+	icon = 'icons/turf/floors_ds13.dmi';
+	icon_state = "trammiddle";
+	dir = 5
+	},
+/turf/simulated/floor/dank/mono,
+/area/mining_colony/interior/shuttle_bay/shuttle_2)
 "rRc" = (
 /obj/random/closet,
 /obj/random/loot/usually/few,
@@ -30046,6 +30401,12 @@
 	},
 /turf/simulated/floor/tiled/kafel_full,
 /area/mining_colony/interior/kitchen_area)
+"tuE" = (
+/turf/simulated/shuttle/wall{
+	dir = 1;
+	icon_state = "swall2_r"
+	},
+/area/mining_colony/interior/shuttle_bay/shuttle_1)
 "tzc" = (
 /obj/structure/table/steel,
 /obj/item/stack/material/plastic/ten,
@@ -30297,6 +30658,17 @@
 	icon_state = "wall3"
 	},
 /area/shuttle/executive_shuttle)
+"uTc" = (
+/obj/structure/shuttle/window/pod{
+	icon_state = "s_window5_u";
+	dir = 1
+	},
+/obj/structure/shuttle/window/pod{
+	icon_state = "s_window5_u";
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/mining_colony/interior/shuttle_bay/shuttle_1)
 "uTD" = (
 /turf/simulated/floor/asteroid/outside_ds/dry_firm,
 /area/mining_colony/surface)
@@ -30553,6 +30925,12 @@
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/simulated/floor/dank/mono,
 /area/mining_colony/c12_deadspace)
+"wnx" = (
+/turf/simulated/shuttle/wall{
+	dir = 1;
+	icon_state = "swall5_l"
+	},
+/area/mining_colony/interior/shuttle_bay/shuttle_1)
 "wqh" = (
 /obj/machinery/telecomms/bus/preset_one,
 /turf/simulated/floor/dank/grater,
@@ -30574,6 +30952,18 @@
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/simulated/floor/carpet/red,
 /area/shuttle/executive_shuttle)
+"wBT" = (
+/obj/structure/industrial_lift/tram{
+	icon = 'icons/turf/floors_ds13.dmi';
+	icon_state = "trammiddle";
+	dir = 5
+	},
+/obj/structure/bed/chair/shuttle/black{
+	dir = 1;
+	icon_state = "shuttle_chair_preview"
+	},
+/turf/simulated/floor/plating,
+/area/mining_colony/interior/shuttle_bay/shuttle_1)
 "wGt" = (
 /obj/structure/cable{
 	dir = 8;
@@ -30581,6 +30971,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/mining_colony/interior/maint/construction)
+"wGy" = (
+/turf/simulated/floor/shuttle{
+	icon_state = "floor8";
+	dir = 1
+	},
+/area/mining_colony/interior/shuttle_bay/shuttle_1)
 "wIG" = (
 /obj/structure/cable{
 	icon_state = "2-9"
@@ -30600,6 +30996,24 @@
 	},
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/surface)
+"wLO" = (
+/obj/structure/bed/chair/shuttle/black{
+	dir = 4;
+	icon_state = "shuttle_chair_preview"
+	},
+/obj/structure/industrial_lift/tram{
+	icon = 'icons/turf/floors_ds13.dmi';
+	icon_state = "tramcorner8";
+	dir = 5
+	},
+/obj/machinery/power/apc{
+	dir = 8;
+	name = "west bump";
+	pixel_x = -24;
+	storm_protected = 1
+	},
+/turf/simulated/floor/plating,
+/area/mining_colony/interior/shuttle_bay/shuttle_1)
 "wMi" = (
 /obj/structure/cable/green{
 	d1 = 2;
@@ -30739,6 +31153,12 @@
 	},
 /turf/simulated/floor/dank/grater,
 /area/mining_colony/interior/shuttle_bay/hangar)
+"xvQ" = (
+/turf/simulated/shuttle/wall{
+	dir = 1;
+	icon_state = "swall3_l"
+	},
+/area/mining_colony/interior/shuttle_bay/shuttle_1)
 "xvR" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -47598,17 +48018,17 @@ baE
 aPb
 aPh
 aPn
-aPo
-aPo
-aPo
-aPo
-aPo
-aPo
-aPo
-apn
-apn
-aPo
-aPo
+ktn
+pHF
+aoK
+wnx
+xvQ
+iMP
+pOV
+bsX
+aPE
+pOV
+csu
 aQL
 aQT
 aQW
@@ -47799,19 +48219,19 @@ aQW
 baE
 aPb
 aPh
-aPo
-azt
+cPM
+giz
 aPM
 aOa
-aPo
-aQq
-aQq
+aPN
+btt
+wLO
 aQq
 aPC
-aQG
-aPo
-aQI
-aQM
+eye
+aQk
+cum
+bSX
 aQT
 aQW
 aPb
@@ -48001,17 +48421,17 @@ aQW
 baE
 aPb
 aPh
-bsX
-aPE
+uTc
+aoo
+aPO
 aPC
 aPC
-aoJ
-aQj
-aQj
-aQj
-aQj
-btt
-aPo
+wGy
+aPC
+aPC
+aPC
+eye
+btu
 aQI
 aQM
 aQT
@@ -48203,19 +48623,19 @@ aQW
 baE
 aPb
 aPh
-bsX
+uTc
+aoo
 aPB
-aPN
+wBT
 aPC
-aoK
+wGy
 aPC
-aQr
 aQr
 aQB
-aPC
-aPo
-aQI
-aQM
+aQB
+aQB
+gNe
+bSX
 aQT
 aQW
 aPb
@@ -48405,17 +48825,17 @@ aQW
 baE
 aPb
 aPh
-bsX
+raB
+aoo
+aPO
+wBT
 aPC
-aPN
+wGy
 aPC
-aoK
-aPC
-aQs
 aQs
 aQC
-aPC
-aPo
+aQC
+aQC
 aQI
 aQM
 aQT
@@ -48607,19 +49027,19 @@ aQW
 baE
 aPb
 aPh
-bsX
-aPE
+raB
+aoo
+aPO
 aPC
 aPC
-aoJ
-aQk
-aQk
-aQk
-aQk
+wGy
+aPC
+aPC
+aPC
+eye
 btu
-aPo
-aQI
-aQM
+gNe
+bSX
 aQT
 aQW
 aPb
@@ -48809,18 +49229,18 @@ aQW
 baE
 aPb
 aPh
-aPo
-aoo
+deL
+rAY
 aPO
 aPV
-aPo
+gpx
 aQt
-aQt
-aQt
+aQo
+aQj
 aPC
+eye
 aQG
-aPo
-aQI
+cum
 aQM
 aQT
 aQW
@@ -49013,16 +49433,16 @@ aPb
 aPh
 kkL
 aPo
-aPo
-aPo
-aPo
-aPo
-aPo
-aPo
+oyi
+aoJ
+guq
+dgp
+cvI
+tuE
 apn
-apn
-aPo
-aPo
+azt
+tuE
+dqC
 aPr
 aQT
 aQW
@@ -50228,10 +50648,10 @@ bhX
 aPQ
 aPU
 aPu
+knJ
 aQu
 aQu
-aQu
-aPJ
+aQn
 aQH
 aPu
 aQJ
@@ -50425,16 +50845,16 @@ aQW
 baE
 vTq
 aPh
-bsY
+rQF
 aPK
-aPJ
-aPJ
+aQn
+aQn
 aoL
 aQn
 aQn
 aQn
 aQn
-btv
+btw
 aPu
 aQJ
 aQP
@@ -50630,9 +51050,9 @@ aPh
 bsY
 kmM
 aPR
-aPJ
+aQn
 apd
-aPJ
+aQn
 aQv
 aQv
 aQE
@@ -50830,11 +51250,11 @@ baE
 dEk
 aPh
 bsY
-aPJ
+aQn
 aPR
-aPJ
-apd
-aPJ
+aQn
+btv
+aQn
 aQw
 aQw
 aQF
@@ -51033,13 +51453,13 @@ njC
 aPh
 bsY
 aPK
-aPJ
-aPJ
+aQn
+aQn
 aoL
-aQo
-aQo
-aQo
-aQo
+aQn
+aQn
+aQn
+aQn
 btw
 aPu
 aQJ
@@ -51239,9 +51659,9 @@ aPS
 aQc
 aPu
 aQx
-aQx
-aQx
-aPJ
+qnp
+qnp
+aQn
 aQH
 aPu
 aQJ

@@ -37,3 +37,8 @@
 	open_sound_unpowered = "doorheavyopen"
 	close_sound_powered = "doorheavyclose"
 	close_sound_unpowered = "doorheavyclose"
+
+/obj/machinery/door/airlock/multi_tile/civilian/tram/shuttle
+	icon = 'icons/obj/doors/double/doorshuttle.dmi'
+	opacity = TRUE
+	glass = FALSE
