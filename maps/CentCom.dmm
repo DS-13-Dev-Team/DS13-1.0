@@ -5948,6 +5948,11 @@
 /obj/item/reagent_containers/food/snacks/fishburger,
 /turf/simulated/floor/carpet/red,
 /area/ERT/escapebase)
+"GP" = (
+/obj/structure/table/reinforced,
+/obj/machinery/photocopier/faxmachine,
+/turf/simulated/floor/dank/mono,
+/area/ERT/valor/helm)
 "GT" = (
 /obj/structure/bed,
 /obj/item/bedsheet/purple,
@@ -8810,7 +8815,7 @@ aP
 aU
 ac
 aW
-ay
+GP
 aP
 bn
 bL

@@ -4632,7 +4632,9 @@
 	id = "fuck_you_kendra";
 	name = "CEC Executive Shuttle Shutters"
 	},
-/turf/simulated/floor/dank/mono,
+/turf/simulated/floor/dank/mono{
+	incorruptible = 1
+	},
 /area/shuttle/executive_shuttle)
 "ano" = (
 /obj/structure/filingcabinet,
@@ -5350,7 +5352,9 @@
 /obj/machinery/door/firedoor{
 	dir = 4
 	},
-/turf/simulated/floor/dank/mono,
+/turf/simulated/floor/dank/mono{
+	incorruptible = 1
+	},
 /area/mining_colony/interior/shuttle_bay/shuttle_1)
 "apo" = (
 /obj/machinery/camera/network/medbay{
@@ -5583,7 +5587,9 @@
 /obj/machinery/door/firedoor{
 	dir = 4
 	},
-/turf/simulated/floor/dank/mono,
+/turf/simulated/floor/dank/mono{
+	incorruptible = 1
+	},
 /area/mining_colony/interior/shuttle_bay/shuttle_2)
 "apV" = (
 /obj/structure/table/standard,
@@ -8543,7 +8549,9 @@
 /obj/machinery/door/blast/shutters{
 	id = "nicolebestwaifu"
 	},
-/turf/simulated/floor/dank/mono,
+/turf/simulated/floor/dank/mono{
+	incorruptible = 1
+	},
 /area/shuttle/executive_shuttle)
 "azb" = (
 /obj/structure/cable{
@@ -26540,7 +26548,9 @@
 /obj/machinery/door/airlock/external{
 	name = "Scrapper Shuttle Entrace"
 	},
-/turf/simulated/floor/dank/mono,
+/turf/simulated/floor/dank/mono{
+	incorruptible = 1
+	},
 /area/mining_colony/interior/shuttle_bay/shuttle_3)
 "bsk" = (
 /turf/simulated/floor/dank/golf_brown,
@@ -26742,7 +26752,9 @@
 	name = "Evac Shuttle 1 Blast Door"
 	},
 /obj/machinery/door/firedoor,
-/turf/simulated/floor/dank/mono,
+/turf/simulated/floor/dank/mono{
+	incorruptible = 1
+	},
 /area/mining_colony/interior/shuttle_bay/shuttle_1)
 "bsY" = (
 /obj/effect/wallframe_spawn/reinforced,
@@ -26752,7 +26764,9 @@
 	name = "Evac Shuttle 2 Blast Door"
 	},
 /obj/machinery/door/firedoor,
-/turf/simulated/floor/dank/mono,
+/turf/simulated/floor/dank/mono{
+	incorruptible = 1
+	},
 /area/mining_colony/interior/shuttle_bay/shuttle_2)
 "bsZ" = (
 /obj/structure/table/steel_reinforced,
@@ -26885,7 +26899,9 @@
 	id = "scrapper";
 	name = "Scrapper Shutters"
 	},
-/turf/simulated/floor/dank/mono,
+/turf/simulated/floor/dank/mono{
+	incorruptible = 1
+	},
 /area/mining_colony/interior/shuttle_bay/shuttle_3)
 "bto" = (
 /obj/machinery/light{
