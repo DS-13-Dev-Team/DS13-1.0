@@ -244,10 +244,26 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 
 //Possession and evacuating
 //-------------------------------
+/mob/dead/observer/signal/verb/necro_posses_verb()
+	set name = "Posses Necromorph"
+	set category = "Necromorph"
+	set desc = "Take control of a necromorph vessel"
+
+	var/list/possible_hosts = list()
+	for(var/mob/living/carbon/human/necromorph/necro in SSnecromorph.major_vessels)
+		if(!necro.client && necro.stat != DEAD)
+			possible_hosts += necro
+	var/choice = tgui_input_list(usr, "Pick the necromorph from the current list", "Who you want to be?", possible_hosts)
+	if(choice)
+		necro_possess(choice)
+
+
+
 /mob/dead/observer/signal/verb/necro_possess(var/mob/living/L)
 	set name = "Possess"
 	set category = "Necromorph"
 	set desc = "Take control of a necromorph vessel"
+	set hidden = 1
 
 	if (!istype(L))
 		to_chat(src, SPAN_DANGER("That can't be possessed!"))
