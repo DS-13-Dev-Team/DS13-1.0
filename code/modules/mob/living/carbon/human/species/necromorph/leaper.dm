@@ -305,7 +305,7 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 	else
 		H.play_species_audio(H, SOUND_SHOUT, 100, 1, 3)
 
-	return leap_attack(A, _cooldown = 6 SECONDS, _delay = 1.2 SECONDS, _speed = 10, _maxrange = 11,_lifespan = 8 SECONDS)
+	return leap_attack(A, _cooldown = 6 SECONDS, _delay = 0.7 SECONDS, _speed = 12, _maxrange = 11,_lifespan = 8 SECONDS)
 
 
 /atom/movable/proc/leaper_leap_enhanced(var/mob/living/A)
@@ -330,7 +330,7 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 	else
 		H.play_species_audio(H, SOUND_SHOUT, 100, 1, 3)
 
-	return leap_attack(A, _cooldown = 4 SECONDS, _delay = 1 SECONDS, _speed = 8, _maxrange = 11, _lifespan = 8 SECONDS, _maxrange = 20)
+	return leap_attack(A, _cooldown = 4 SECONDS, _delay = 0.6 SECONDS, _speed = 14, _maxrange = 11, _lifespan = 8 SECONDS, _maxrange = 20)
 
 
 /atom/movable/proc/leaper_leap_monkey(var/mob/living/A)
@@ -366,7 +366,7 @@ It can be used to chase down a fleeing opponent, to move along long hallways qui
 	else
 		H.play_species_audio(H, SOUND_SHOUT, 100, 1, 3)
 
-	return leap_attack(A, _cooldown = 5.5 SECONDS, _delay = 1 SECONDS, _speed = 10, _maxrange = 11, _lifespan = 8 SECONDS, _maxrange = 20)
+	return leap_attack(A, _cooldown = 5.5 SECONDS, _delay = 0.6 SECONDS, _speed = 12, _maxrange = 11, _lifespan = 8 SECONDS, _maxrange = 20)
 
 
 //Special effects for leaper impact, its pretty powerful if it lands on the primary target mob, but it backfires if it was blocked by anything else

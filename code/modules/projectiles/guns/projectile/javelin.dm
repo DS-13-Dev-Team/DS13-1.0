@@ -23,7 +23,7 @@
 
 
 	firemodes = list(
-		list(mode_name = "launch", fire_delay = 3.5, fire_sound = 'sound/weapons/guns/fire/jav_fire.ogg'),
+		list(mode_name = "launch", fire_delay = 20, fire_sound = 'sound/weapons/guns/fire/jav_fire.ogg'),
 		list(mode_name = "shock mode", mode_type = /datum/firemode/automatic/shock, projectile_type = /obj/item/projectile/null_projectile, fire_delay = 3)
 		)
 
@@ -137,11 +137,11 @@
 /obj/item/projectile/bullet/javelin
 	name = "javelin spears"
 	icon_state = "javelin_flight"
-	damage = 30
+	damage = 50
 	embed = TRUE
 	sharp = TRUE
 	accuracy = 200
-	armor_penetration = 15
+	armor_penetration = 20
 	penetration_modifier = 50
 	embed_mult = 1000
 	muzzle_type = null

@@ -4,7 +4,7 @@
 	mob_type = /mob/living/carbon/human/necromorph/exploder/enhanced
 	blurb = "An expendable suicide bomber, the exploder's sole purpose is to go out in a blaze of glory, and hopefully take a few people with it."
 	unarmed_types = list(/datum/unarmed_attack/bite/weak/exploder) //Bite attack is a backup if blades are severed
-	total_health = 235	//It has high health for the sake of making it a bit harder to destroy without targeting the pustule. Exploding the pustule is always an instakill
+	total_health = 200	//It has high health for the sake of making it a bit harder to destroy without targeting the pustule. Exploding the pustule is always an instakill
 	limb_health_factor = 1.5
 	require_total_biomass	=	BIOMASS_REQ_T2
 	biomass = 165
@@ -14,7 +14,7 @@
 	variants = list(SPECIES_NECROMORPH_EXPLODER_ENHANCED = list(WEIGHT = 1),
 	SPECIES_NECROMORPH_EXPLODER_ENHANCED_RIGHT = list(WEIGHT = 1))
 
-	biomass_reclamation_time	=	5 MINUTES
+	biomass_reclamation_time	=	5.5 MINUTES
 	view_range = 6
 
 	icon_template = 'icons/mob/necromorph/exploder/exploder_enhanced.dmi'

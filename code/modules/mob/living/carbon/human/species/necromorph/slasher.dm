@@ -141,7 +141,7 @@
 	marker_spawnable = TRUE 	//Enable this once we have sprites for it
 	mob_type = /mob/living/carbon/human/necromorph/slasher_enhanced
 	unarmed_types = list(/datum/unarmed_attack/blades/strong, /datum/unarmed_attack/bite/strong)
-	total_health = 250
+	total_health = 215
 	burn_mod = 1.1
 	tier_2_mod = DAM_MOD_T2
 	tier_1_mod = 1
@@ -161,9 +161,9 @@
 	icon_lying = "_lying"
 	//lying_rotation = 90
 
-	biomass_reclamation_time	=	11 MINUTES
+	biomass_reclamation_time	=	10 MINUTES
 
-	limb_health_factor = 1.75
+	limb_health_factor = 1.5
 
 	inherent_verbs = list(/atom/movable/proc/slasher_charge_enhanced, /mob/living/proc/slasher_dodge_enhanced, /mob/proc/shout, /mob/proc/shout_long)
 	modifier_verbs = list(KEY_CTRLALT = list(/atom/movable/proc/slasher_charge_enhanced),

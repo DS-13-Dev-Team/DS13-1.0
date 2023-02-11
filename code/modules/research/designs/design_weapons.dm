@@ -144,7 +144,7 @@ S	fuel tank (hydrazine)
 	id = "javgun"
 	materials = list(MATERIAL_PLASTEEL = 4000, MATERIAL_STEEL = 35000, MATERIAL_PHORON = 4000)
 	build_path = /obj/item/gun/projectile/javelin_gun
-	price = 11000
+	price = 8500
 
 /datum/design/item/weapon/flamethrower
 	name = "PFM-100 Industrial Torch"
@@ -284,7 +284,7 @@ S	fuel tank (hydrazine)
 	id = "javelin_rack"
 	materials = list(MATERIAL_PLASTEEL = 4000, MATERIAL_PHORON = 2500)
 	build_path = /obj/item/ammo_magazine/javelin
-	price = 2800
+	price = 2550
 
 
 /datum/design/item/ammo/fuel_tank
