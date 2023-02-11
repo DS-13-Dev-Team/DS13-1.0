@@ -130,6 +130,9 @@
 		turf_footstep = FOOTSTEP_CATWALK
 	if(!turf_footstep)
 		return
+	var/sound_to_play = pick(footstep_sounds[turf_footstep]?[1])
+		if(isnull(sound_to_play))
+			return // @DTraitor FIXME later. This silences one of the louder runtimes.
 	playsound(source_loc, pick(footstep_sounds[turf_footstep][1]), footstep_sounds[turf_footstep][2] * volume, sound_vary, footstep_sounds[turf_footstep][3] + e_range)
 
 /datum/element/footstep/proc/play_humanstep(mob/living/carbon/human/source, atom/oldloc, direction, list/old_locs)
