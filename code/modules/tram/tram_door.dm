@@ -38,7 +38,33 @@
 	close_sound_powered = "doorheavyclose"
 	close_sound_unpowered = "doorheavyclose"
 
-/obj/machinery/door/airlock/multi_tile/civilian/tram/shuttle
+/obj/machinery/door/airlock/multi_tile/civilian/shuttle
 	icon = 'icons/obj/doors/double/doorshuttle.dmi'
-	opacity = TRUE
+	welded_file = 'icons/obj/doors/double/doortram_weld.dmi'
+	fill_file = null
+	color_file = null
+	color_fill_file = null
+	stripe_file = null
+	stripe_fill_file = null
+	glass_file = null
+	bolts_file = null
+	deny_file = null
+	lights_file = null
+	emag_file = null
+	open_sound_powered = "doorheavyopen"
+	open_sound_unpowered = "doorheavyopen"
+	close_sound_powered = "doorheavyclose"
+	close_sound_unpowered = "doorheavyclose"
 	glass = FALSE
+
+/obj/machinery/door/airlock/multi_tile/civilian/shuttle/update_icon()
+	var/base_dir = dir
+	..()
+	set_dir(base_dir)
+
+/obj/machinery/door/airlock/multi_tile/civilian/shuttle/update_connections(propagate = 0)
+	return
+
+/obj/machinery/door/airlock/multi_tile/civilian/shuttle/CanPass(atom/movable/mover, turf/target, height, air_group)
+	if(!height || air_group) return 0
+	else return ..()

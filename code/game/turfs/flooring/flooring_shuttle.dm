@@ -30,6 +30,14 @@
 	icon_state = "floor7"
 	initial_flooring = /decl/flooring/reinforced/shuttle/black
 
+/turf/simulated/floor/fixed/main
+	icon = 'icons/turf/shuttle.dmi'
+	icon_state = "floor8"
+
+/turf/simulated/floor/fixed/escapeshuttle
+	icon = 'icons/turf/floors_ds13.dmi'
+	icon_state = "tramcorner1"
+
 /turf/simulated/floor/shuttle/pod
 	icon_state = "p_floor"
 	initial_flooring = /decl/flooring/reinforced/shuttle/pod

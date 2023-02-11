@@ -3,9 +3,20 @@
 
 /obj/machinery/computer/shuttle_control/escape1
 	shuttle_tag = "Escape Shuttle 1"
+	icon_state = "shuttleterminallong3"
+	icon_screen = ""
+	icon_keyboard = ""
+
+/obj/machinery/computer/shuttleterminal
+	icon_state = "shuttleterminallong1"
+	icon_screen = ""
+	icon_keyboard = ""
 
 /obj/machinery/computer/shuttle_control/escape2
 	shuttle_tag = "Escape Shuttle 2"
+	icon_state = "shuttleterminallong3"
+	icon_screen = ""
+	icon_keyboard = ""
 
 /obj/machinery/computer/shuttle_control/escape3
 	shuttle_tag = "Escape Shuttle 3"

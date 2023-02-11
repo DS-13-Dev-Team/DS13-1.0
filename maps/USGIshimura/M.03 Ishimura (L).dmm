@@ -229,8 +229,8 @@
 /area/ishimura/lower/cargo/disposals)
 "aaI" = (
 /turf/simulated/shuttle/wall{
-	dir = 1;
-	icon_state = "wall3"
+	dir = 4;
+	icon_state = "swall4_r"
 	},
 /area/shuttle/executive_shuttle)
 "aaJ" = (
@@ -5840,14 +5840,9 @@
 /turf/simulated/wall/r_wall,
 /area/ishimura/lower/engineering/storage_closet/air)
 "ame" = (
-/obj/machinery/door/airlock/external{
-	name = "Executive Shuttle Airlock"
+/turf/simulated/floor/fixed/escapeshuttle{
+	icon_state = "tramwarning8"
 	},
-/obj/machinery/door/blast/shutters/open{
-	icon_state = "shutter0";
-	id = "exec_escape"
-	},
-/turf/simulated/floor/tiled/monotile,
 /area/shuttle/executive_shuttle)
 "amf" = (
 /obj/machinery/light{
@@ -11752,17 +11747,16 @@
 /turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/checkpoint/crew)
 "axV" = (
-/obj/machinery/door/blast/shutters/open{
-	icon_state = "shutter0";
-	id = "exec_escape"
+/obj/structure/shuttle/window/pod{
+	icon_state = "s_window1_r";
+	dir = 4
 	},
-/obj/effect/wallframe_spawn/reinforced,
 /turf/simulated/floor/plating,
 /area/shuttle/executive_shuttle)
 "axW" = (
 /turf/simulated/shuttle/wall{
 	dir = 4;
-	icon_state = "diagonalWall3"
+	icon_state = "swall7_r"
 	},
 /area/shuttle/executive_shuttle)
 "axX" = (
@@ -11782,21 +11776,16 @@
 /area/ishimura/lower/mining/office)
 "axY" = (
 /obj/structure/shuttle/engine/propulsion{
+	icon_state = "engine_right";
 	dir = 8
-	},
-/turf/simulated/shuttle/wall{
-	dir = 1;
-	icon_state = "wall3"
-	},
-/area/shuttle/executive_shuttle)
-"axZ" = (
-/obj/structure/shuttle/engine/heater{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 4
 	},
 /turf/simulated/floor,
+/area/shuttle/executive_shuttle)
+"axZ" = (
+/turf/simulated/shuttle/wall{
+	dir = 4;
+	icon_state = "backengine2"
+	},
 /area/shuttle/executive_shuttle)
 "aya" = (
 /obj/machinery/door/firedoor/border_only,
@@ -11814,21 +11803,42 @@
 /area/ishimura/lower/mining/mining_bay)
 "ayb" = (
 /obj/effect/floor_decal/industrial/outline,
-/turf/simulated/floor/tiled/dark/monotile,
+/turf/simulated/floor/fixed/escapeshuttle{
+	icon_state = "tramcorner4"
+	},
 /area/shuttle/executive_shuttle)
 "ayd" = (
-/turf/simulated/floor/tiled/monotile,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/fixed/escapeshuttle{
+	icon_state = "trammiddle"
+	},
 /area/shuttle/executive_shuttle)
 "aye" = (
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/fixed/escapeshuttle{
+	icon_state = "tramcorner5"
+	},
 /area/shuttle/executive_shuttle)
 "ayf" = (
 /obj/structure/bed/chair/shuttle/blue,
-/obj/structure/closet/walllocker/emerglocker/north,
-/turf/simulated/floor/tiled/monotile,
+/obj/machinery/power/apc{
+	dir = 1;
+	name = "north bump";
+	pixel_y = 16
+	},
+/obj/structure/cable{
+	d2 = 2;
+	icon_state = "0-2"
+	},
+/turf/simulated/floor/fixed/escapeshuttle{
+	icon_state = "tramcorner8"
+	},
 /area/shuttle/executive_shuttle)
 "ayg" = (
 /obj/random/trash,
@@ -11858,7 +11868,9 @@
 /area/ishimura/lower/engineering/substation/crew)
 "ayi" = (
 /obj/structure/bed/chair/shuttle/blue,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/fixed/escapeshuttle{
+	icon_state = "tramcorner2"
+	},
 /area/shuttle/executive_shuttle)
 "ayj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -12327,17 +12339,9 @@
 /turf/simulated/floor/dank/grater,
 /area/ishimura/lower/misc/hallway/aft)
 "ayU" = (
-/obj/structure/bed/chair/shuttle/blue,
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24
+/turf/simulated/floor/fixed/escapeshuttle{
+	icon_state = "tramcorner2"
 	},
-/obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2"
-	},
-/turf/simulated/floor/tiled/monotile,
 /area/shuttle/executive_shuttle)
 "ayV" = (
 /obj/structure/table/rack,
@@ -12892,11 +12896,10 @@
 /turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/escape/two)
 "aAg" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/computer/shuttle_control/executive_master{
-	dir = 8
+/turf/simulated/shuttle/wall{
+	dir = 4;
+	icon_state = "swall2_r"
 	},
-/turf/simulated/floor/tiled/monotile,
 /area/shuttle/executive_shuttle)
 "aAh" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -15456,11 +15459,15 @@
 /turf/simulated/floor/tiled,
 /area/ishimura/lower/crew/sleepblock/executive/quarters/bridge_officers)
 "aEB" = (
-/obj/structure/table/steel_reinforced,
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/obj/machinery/computer/shuttleterminal{
+	dir = 4
+	},
+/turf/simulated/floor/fixed/escapeshuttle{
+	icon_state = "tramcorner7"
+	},
 /area/shuttle/executive_shuttle)
 "aEC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -15535,10 +15542,9 @@
 /turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/security/checkpoint/executive)
 "aEH" = (
-/obj/machinery/door/airlock/hatch{
-	dir = 8
+/turf/simulated/floor/fixed/main{
+	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
 /area/shuttle/executive_shuttle)
 "aEI" = (
 /obj/structure/cable{
@@ -15546,7 +15552,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/fixed/escapeshuttle,
 /area/shuttle/executive_shuttle)
 "aEJ" = (
 /obj/structure/cable{
@@ -17453,10 +17459,12 @@
 /turf/simulated/floor/dank/slides,
 /area/ishimura/lower/security/escape)
 "aHX" = (
-/obj/structure/bed/chair/shuttle/blue{
+/obj/machinery/computer/shuttle_control/executive_master{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/fixed/escapeshuttle{
+	icon_state = "tramcorner3"
+	},
 /area/shuttle/executive_shuttle)
 "aHY" = (
 /obj/structure/cable{
@@ -18282,11 +18290,11 @@
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/lower/mining/shuttle/one)
 "aJO" = (
-/obj/machinery/computer/general_air_control{
-	dir = 8
+/obj/structure/shuttle/window/pod{
+	icon_state = "s_window5_b";
+	dir = 4
 	},
-/obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/plating,
 /area/shuttle/executive_shuttle)
 "aJP" = (
 /obj/machinery/door/airlock/external,
@@ -23804,12 +23812,10 @@
 /turf/simulated/floor/shuttle/pod,
 /area/shuttle/escape_pod9/station)
 "aVj" = (
-/obj/machinery/door/blast/shutters/open{
-	dir = 4;
-	icon_state = "shutter0";
-	id = "exec_escape"
+/obj/structure/shuttle/window/pod{
+	icon_state = "s_window5_u";
+	dir = 4
 	},
-/obj/effect/wallframe_spawn/reinforced,
 /turf/simulated/floor/plating,
 /area/shuttle/executive_shuttle)
 "aVk" = (
@@ -23818,7 +23824,9 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/fixed/escapeshuttle{
+	icon_state = "trammiddle"
+	},
 /area/shuttle/executive_shuttle)
 "aVl" = (
 /obj/structure/cable{
@@ -23826,22 +23834,23 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/fixed/escapeshuttle{
+	icon_state = "trammiddle"
+	},
 /area/shuttle/executive_shuttle)
 "aVm" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/misc/hallway/central)
 "aVn" = (
-/obj/machinery/door/airlock/hatch{
-	dir = 8
-	},
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/fixed/main{
+	dir = 4
+	},
 /area/shuttle/executive_shuttle)
 "aVo" = (
 /obj/machinery/light/small{
@@ -23857,18 +23866,19 @@
 /area/ishimura/lower/maintenance/starboard)
 "aVp" = (
 /obj/effect/shuttle_landmark/executive/start,
-/turf/simulated/shuttle/wall{
-	dir = 1;
-	icon_state = "wall3"
+/obj/structure/shuttle/engine/propulsion{
+	icon_state = "smallengine_right";
+	dir = 4
 	},
+/turf/simulated/floor,
 /area/shuttle/executive_shuttle)
 "aVq" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
+/obj/structure/bed/chair/shuttle/blue{
+	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/fixed/escapeshuttle{
+	icon_state = "trammiddle"
+	},
 /area/shuttle/executive_shuttle)
 "aVr" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -23880,23 +23890,18 @@
 	dir = 1
 	},
 /obj/structure/closet/walllocker/emerglocker/south,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/fixed/escapeshuttle{
+	icon_state = "tramcorner6"
+	},
 /area/shuttle/executive_shuttle)
 "aVt" = (
 /obj/structure/bed/chair/shuttle/blue{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/fixed/escapeshuttle,
 /area/shuttle/executive_shuttle)
 "aVu" = (
-/obj/structure/bed/chair/shuttle/blue{
-	dir = 1
-	},
-/obj/machinery/alarm{
-	dir = 1;
-	pixel_y = -22
-	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/fixed/escapeshuttle,
 /area/shuttle/executive_shuttle)
 "aVv" = (
 /obj/effect/floor_decal/industrial/loading{
@@ -23929,31 +23934,29 @@
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/security/escape)
 "aVx" = (
-/obj/structure/table/steel_reinforced,
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/machinery/button/remote/blast_door{
-	dir = 8;
-	id = "exec_escape";
-	name = "Executive Escape Shuttle Shutters"
+/obj/machinery/computer/shuttleterminal{
+	icon_state = "shuttleterminallong4";
+	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/fixed/escapeshuttle{
+	icon_state = "tramcorner5"
+	},
 /area/shuttle/executive_shuttle)
 "aVy" = (
-/obj/machinery/door/airlock/external{
-	name = "Executive Shuttle Airlock"
-	},
-/obj/machinery/door/blast/shutters/open{
-	icon_state = "shutter0";
-	id = "exec_escape"
-	},
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled/monotile,
+/obj/machinery/door/airlock/multi_tile/civilian/shuttle{
+	pixel_y = -12
+	},
+/turf/simulated/floor/fixed/escapeshuttle{
+	icon_state = "tramwarning1"
+	},
 /area/shuttle/executive_shuttle)
 "aVz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -26064,6 +26067,12 @@
 	},
 /turf/simulated/floor/dank/tech,
 /area/ishimura/lower/misc/hallway/central)
+"bbI" = (
+/turf/simulated/shuttle/wall{
+	dir = 4;
+	icon_state = "swall2_l"
+	},
+/area/shuttle/executive_shuttle)
 "bbM" = (
 /obj/item/radio/intercom{
 	pixel_y = 21
@@ -27347,6 +27356,13 @@
 	dir = 8
 	},
 /area/ishimura/lower/misc/hallway/central)
+"buv" = (
+/obj/structure/shuttle/window/pod{
+	icon_state = "s_window3_r";
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/executive_shuttle)
 "buL" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -27410,6 +27426,12 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/misc/hallway/central)
+"bGn" = (
+/turf/simulated/shuttle/wall{
+	dir = 4;
+	icon_state = "swall1_l"
+	},
+/area/shuttle/executive_shuttle)
 "bHK" = (
 /obj/machinery/door/firedoor/border_only,
 /turf/simulated/floor/dank/maint,
@@ -27616,6 +27638,20 @@
 /obj/random/loot/usually/some,
 /turf/simulated/floor/tiled/monotile,
 /area/ishimura/lower/misc/storagesmall)
+"duV" = (
+/obj/structure/shuttle/window/pod{
+	icon_state = "s_window1_l";
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/executive_shuttle)
+"dxo" = (
+/obj/structure/shuttle/engine/propulsion{
+	icon_state = "engine_left";
+	dir = 8
+	},
+/turf/simulated/floor,
+/area/shuttle/executive_shuttle)
 "dBt" = (
 /turf/simulated/floor/plating,
 /turf/simulated/shuttle/wall/corner/pod1{
@@ -27695,6 +27731,12 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/dank/cable,
 /area/ishimura/lower/crew/sleepblock/commons)
+"dYc" = (
+/obj/effect/floor_decal/industrial/outline,
+/turf/simulated/floor/fixed/escapeshuttle{
+	icon_state = "tramcorner8"
+	},
+/area/shuttle/executive_shuttle)
 "ecc" = (
 /obj/structure/sign/directions/supply{
 	pixel_x = 34
@@ -27734,6 +27776,12 @@
 	dir = 1
 	},
 /area/ishimura/lower/misc/hallway/central)
+"eyd" = (
+/turf/simulated/shuttle/wall{
+	dir = 4;
+	icon_state = "swall1_r"
+	},
+/area/shuttle/executive_shuttle)
 "eEy" = (
 /obj/structure/table/standard,
 /turf/simulated/floor/dank/hardwood,
@@ -27756,6 +27804,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/dank/grater,
 /area/ishimura/lower/misc/storagesmall)
+"eYP" = (
+/turf/simulated/shuttle/wall{
+	dir = 4;
+	icon_state = "swall4_l"
+	},
+/area/shuttle/executive_shuttle)
 "faw" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -28142,6 +28196,13 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/mining/mining_bay)
+"iuN" = (
+/obj/structure/shuttle/window/pod{
+	icon_state = "s_window4_u_l";
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/executive_shuttle)
 "ixO" = (
 /turf/simulated/shuttle/wall/pod/two{
 	dir = 8;
@@ -28209,6 +28270,15 @@
 	},
 /turf/simulated/open,
 /area/ishimura/lower/misc/hallway/aft)
+"jdJ" = (
+/obj/machinery/computer/shuttleterminal{
+	icon_state = "shuttleterminallong2";
+	dir = 4
+	},
+/turf/simulated/floor/fixed/escapeshuttle{
+	icon_state = "tramcorner3"
+	},
+/area/shuttle/executive_shuttle)
 "jfP" = (
 /turf/simulated/floor/dank/tech{
 	dir = 8
@@ -28303,6 +28373,14 @@
 	dir = 1
 	},
 /area/ishimura/lower/crew/sleepblock/commons)
+"jYO" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/fixed/escapeshuttle{
+	icon_state = "tramcorner7"
+	},
+/area/shuttle/executive_shuttle)
 "kcY" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
@@ -28323,9 +28401,25 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/dank/slides,
 /area/ishimura/lower/misc/hallway/aft)
+"kCA" = (
+/turf/simulated/shuttle/wall{
+	dir = 4;
+	icon_state = "backengine3"
+	},
+/area/shuttle/executive_shuttle)
 "kEE" = (
 /turf/simulated/floor/dank/slides_end,
 /area/ishimura/lower/misc/hallway/aft)
+"kFL" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/fixed/escapeshuttle{
+	icon_state = "trammiddle"
+	},
+/area/shuttle/executive_shuttle)
 "kKw" = (
 /obj/structure/table/rack,
 /obj/item/clothing/suit/storage/hooded/wintercoat,
@@ -28370,6 +28464,12 @@
 	dir = 8
 	},
 /area/ishimura/lower/misc/hallway/central)
+"lce" = (
+/turf/simulated/shuttle/wall{
+	dir = 4;
+	icon_state = "swall6_l"
+	},
+/area/shuttle/executive_shuttle)
 "lfs" = (
 /obj/machinery/power/apc{
 	dir = 1;
@@ -28423,6 +28523,13 @@
 /obj/machinery/door/firedoor/border_only,
 /turf/simulated/floor/dank/slides,
 /area/ishimura/lower/misc/hallway/central)
+"lBT" = (
+/obj/structure/shuttle/window/pod{
+	icon_state = "s_window4_b_r";
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/executive_shuttle)
 "lGK" = (
 /turf/simulated/floor/dank/tech{
 	dir = 1
@@ -28454,6 +28561,13 @@
 	dir = 1
 	},
 /area/ishimura/lower/misc/hallway/central)
+"lUO" = (
+/obj/structure/shuttle/window/pod{
+	icon_state = "s_window3_l";
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/executive_shuttle)
 "meI" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
@@ -28499,6 +28613,12 @@
 	icon_state = "p_wall2"
 	},
 /area/shuttle/escape_pod7/station)
+"mST" = (
+/turf/simulated/shuttle/wall{
+	dir = 4;
+	icon_state = "swall5_l"
+	},
+/area/shuttle/executive_shuttle)
 "mTI" = (
 /obj/machinery/light,
 /turf/simulated/floor/dank/grater,
@@ -28506,6 +28626,12 @@
 "nfn" = (
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/mining/shuttlebay/port)
+"ngJ" = (
+/turf/simulated/shuttle/wall{
+	dir = 4;
+	icon_state = "swall3_l"
+	},
+/area/shuttle/executive_shuttle)
 "nrJ" = (
 /turf/simulated/shuttle/wall/pod{
 	dir = 1;
@@ -28563,6 +28689,16 @@
 	dir = 4
 	},
 /area/ishimura/lower/misc/hallway/aft)
+"nJY" = (
+/turf/simulated/floor/fixed/escapeshuttle{
+	icon_state = "tramwarning2"
+	},
+/area/shuttle/executive_shuttle)
+"nKn" = (
+/turf/simulated/floor/fixed/escapeshuttle{
+	icon_state = "trammiddle"
+	},
+/area/shuttle/executive_shuttle)
 "nMl" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -28844,9 +28980,16 @@
 /area/shuttle/escape_pod9/station)
 "pHU" = (
 /turf/simulated/shuttle/wall{
-	dir = 5;
-	icon_state = "wall3"
+	dir = 1;
+	icon_state = "swall7_r"
 	},
+/area/shuttle/executive_shuttle)
+"pIN" = (
+/obj/structure/shuttle/engine/propulsion{
+	icon_state = "smallengine_left";
+	dir = 8
+	},
+/turf/simulated/floor,
 /area/shuttle/executive_shuttle)
 "pJE" = (
 /obj/structure/table/rack,
@@ -29030,11 +29173,23 @@
 "qVk" = (
 /turf/simulated/floor/dank/slides,
 /area/ishimura/lower/mining/shuttlebay/starboard)
+"qZY" = (
+/turf/simulated/shuttle/wall{
+	dir = 4;
+	icon_state = "swall6_r"
+	},
+/area/shuttle/executive_shuttle)
 "reM" = (
 /obj/structure/table/standard,
 /obj/random/loot/usually/few,
 /turf/simulated/floor/dank/slides,
 /area/ishimura/lower/security/checkpoint/executive)
+"rgX" = (
+/turf/simulated/shuttle/wall{
+	dir = 4;
+	icon_state = "swall3_r"
+	},
+/area/shuttle/executive_shuttle)
 "rne" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -29054,12 +29209,26 @@
 /obj/random/trash,
 /turf/simulated/floor/dank/maint_left,
 /area/ishimura/lower/maintenance/starboard)
+"rwb" = (
+/obj/structure/shuttle/window/pod{
+	icon_state = "s_window4_u_r";
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/executive_shuttle)
 "ryW" = (
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/misc/hallway/central)
 "rCf" = (
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/misc/hallway/central)
+"rFJ" = (
+/obj/structure/shuttle/window/pod{
+	icon_state = "s_window4_b_l";
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/executive_shuttle)
 "rNw" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1;
@@ -29311,6 +29480,15 @@
 	},
 /turf/simulated/floor/dank/rectangles,
 /area/ishimura/lower/misc/hallway/central)
+"tJn" = (
+/obj/machinery/door/airlock/multi_tile/civilian/shuttle{
+	pixel_y = -20;
+	dir = 1
+	},
+/turf/simulated/floor/fixed/escapeshuttle{
+	icon_state = "tramwarning4"
+	},
+/area/shuttle/executive_shuttle)
 "tLi" = (
 /turf/simulated/floor/dank/hardwood,
 /area/ishimura/lower/cargo/bay)
@@ -29395,6 +29573,12 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/dank/golf_brown,
 /area/ishimura/lower/mining/shuttlebay/port)
+"uzZ" = (
+/turf/simulated/shuttle/wall{
+	dir = 4;
+	icon_state = "backengine1"
+	},
+/area/shuttle/executive_shuttle)
 "uCk" = (
 /obj/structure/table/rack,
 /obj/item/storage/box/engineer,
@@ -29479,6 +29663,12 @@
 /obj/random/trash,
 /turf/simulated/floor/dank/maint_left,
 /area/ishimura/lower/maintenance/port)
+"vbM" = (
+/obj/effect/floor_decal/industrial/outline,
+/turf/simulated/floor/fixed/escapeshuttle{
+	icon_state = "tramcorner6"
+	},
+/area/shuttle/executive_shuttle)
 "vkT" = (
 /turf/simulated/floor/dank/cable/end{
 	dir = 4
@@ -29802,6 +29992,12 @@
 	},
 /turf/simulated/floor/dank/grater,
 /area/ishimura/lower/misc/storagesmall)
+"xwg" = (
+/turf/simulated/shuttle/wall{
+	dir = 4;
+	icon_state = "swall5_r"
+	},
+/area/shuttle/executive_shuttle)
 "xzP" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/dispenser/oxygen,
@@ -78620,10 +78816,10 @@ aaO
 aCa
 aFb
 aFo
-aaI
+pIN
+dxo
 axY
-axY
-axY
+dxo
 axY
 aVp
 aFE
@@ -78872,12 +79068,12 @@ aBI
 aET
 aFd
 aFo
-aaI
+bGn
+uzZ
 axZ
-axZ
-axZ
-axZ
-aaI
+kCA
+uzZ
+eyd
 aFE
 aFb
 aER
@@ -79124,12 +79320,12 @@ awG
 aEU
 aFe
 aFo
-aaI
+bbI
+dYc
 ayb
 ayb
-ayb
-ayb
-aaI
+vbM
+aAg
 aFE
 aGn
 aIB
@@ -79376,9 +79572,9 @@ axd
 aER
 aFg
 aFp
-ame
-ayd
-ayd
+tJn
+ayU
+nKn
 aVk
 aEI
 aVy
@@ -79629,11 +79825,11 @@ aER
 aFg
 aFp
 ame
-aye
-ayd
+jYO
+nKn
 aVl
 aye
-ame
+nJY
 aFF
 aFj
 aER
@@ -79880,12 +80076,12 @@ aqK
 aER
 aFg
 aFo
-aaI
-aaI
+ngJ
+eYP
 aEH
 aVn
 aaI
-aaI
+rgX
 aFE
 aFj
 aER
@@ -80132,12 +80328,12 @@ anW
 lfs
 aFf
 aFo
-aaI
+bbI
 ayf
 ayd
-aVl
+kFL
 aVs
-aaI
+aAg
 aFE
 aFj
 aER
@@ -80384,10 +80580,10 @@ anW
 aHV
 aFg
 aFo
-axV
+duV
 ayi
-ayd
-aVl
+nKn
+nKn
 aVt
 axV
 aFE
@@ -80636,12 +80832,12 @@ arj
 aER
 aFg
 aFo
-aaI
+lUO
 ayU
-aEI
+aVq
 aVq
 aVu
-aaI
+buv
 aFE
 aFj
 aER
@@ -80888,12 +81084,12 @@ arj
 aER
 aFg
 aFo
-aaI
+mST
 aEB
-aHX
+jdJ
 aHX
 aVx
-aaI
+xwg
 aFE
 aFj
 aER
@@ -81140,12 +81336,12 @@ arj
 aER
 aFg
 aFo
-aaI
-aaI
+lce
+rFJ
 aJO
-aAg
-aaI
-aaI
+aJO
+lBT
+qZY
 aFE
 aFj
 aER
@@ -81393,10 +81589,10 @@ aCa
 aFj
 aFo
 pHU
-aaI
+iuN
 aVj
 aVj
-aaI
+rwb
 axW
 aFE
 aFj

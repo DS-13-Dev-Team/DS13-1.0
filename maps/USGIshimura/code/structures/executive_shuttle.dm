@@ -6,6 +6,9 @@ GLOBAL_LIST_INIT(executive_shuttle_controllers, list())
 	name = "Executive Shuttle Master Console"
 	desc = "A master control console for the Executive shuttle, requires external authorisation to launch."
 	shuttle_tag = "Executive Shuttle"
+	icon_state = "shuttleterminallong3"
+	icon_screen = ""
+	icon_keyboard = ""
 	var/requires_authorisation = TRUE //Does this console need external auth by the consoles? Admins can override this if they need to.
 	var/list/slaved = list() //Slaved consoles.
 

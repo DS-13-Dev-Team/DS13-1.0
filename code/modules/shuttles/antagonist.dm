@@ -21,6 +21,10 @@
 /obj/machinery/computer/shuttle_control/multi/deliverance
 	name = "divine shuttle control console"
 	shuttle_tag = "Deliverance"
+	icon_state = "shuttleterminallong3"
+	icon_screen = ""
+	icon_keyboard = ""
+
 
 /obj/machinery/computer/shuttle_control/multi/kellion
 	name = "repair shuttle control console"
@@ -30,3 +34,6 @@
 /obj/machinery/computer/shuttle_control/multi/valor
 	name = "military shuttle control console"
 	shuttle_tag = "Valor"
+	icon_state = "shuttleterminallong3"
+	icon_screen = ""
+	icon_keyboard = ""
