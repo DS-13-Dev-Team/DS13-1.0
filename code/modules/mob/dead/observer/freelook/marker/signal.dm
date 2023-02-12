@@ -263,7 +263,6 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 	set name = "Possess"
 	set category = null
 	set desc = "Take control of a necromorph vessel"
-	set hidden = TRUE
 
 	if (!istype(L))
 		to_chat(src, SPAN_DANGER("That can't be possessed!"))
