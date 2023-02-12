@@ -74,19 +74,6 @@ CREATE TABLE IF NOT EXISTS `database`.`store_schematics` (
 ENGINE = InnoDB;
 
 
--- -----------------------------------------------------
--- Table structure for table `role_time`
--- -----------------------------------------------------
-
-DROP TABLE IF EXISTS `role_time`;
-
-CREATE TABLE `role_time` (
-  `ckey` VARCHAR(32) NOT NULL ,
-  `job` VARCHAR(32) NOT NULL ,
-  `minutes` INT UNSIGNED NOT NULL,
-  PRIMARY KEY (`ckey`, `job`))
-ENGINE = InnoDB;
-
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

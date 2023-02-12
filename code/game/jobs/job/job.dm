@@ -1,5 +1,4 @@
 /datum/job
-
 	//The name of the job
 	var/title = "NOPE"
 	//Job access. The use of minimal_access or access is determined by a config setting: jobs_have_minimal_access
@@ -72,6 +71,9 @@
 		GLOB.civilian_positions |= title
 	if(department_flag & MSC)
 		GLOB.nonhuman_positions |= title
+
+	if(department_flag & (ENG|SEC|MED|SCI|CIV|COM|MSC|SRV|SUP|SPT|MIN))
+		GLOB.job_icons |= title
 
 /datum/job/dd_SortValue()
 	return title
