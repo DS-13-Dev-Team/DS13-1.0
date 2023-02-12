@@ -4637,7 +4637,9 @@
 	id = "fuck_you_kendra";
 	name = "CEC Executive Shuttle Shutters"
 	},
-/turf/simulated/floor/dank/mono,
+/turf/simulated/floor/dank/mono{
+	incorruptible = 1
+	},
 /area/shuttle/executive_shuttle)
 "ano" = (
 /obj/structure/filingcabinet,
@@ -8533,7 +8535,9 @@
 /obj/machinery/door/blast/shutters{
 	id = "nicolebestwaifu"
 	},
-/turf/simulated/floor/dank/mono,
+/turf/simulated/floor/dank/mono{
+	incorruptible = 1
+	},
 /area/shuttle/executive_shuttle)
 "azb" = (
 /obj/structure/cable{
@@ -26569,7 +26573,9 @@
 /obj/machinery/door/airlock/external{
 	name = "Scrapper Shuttle Entrace"
 	},
-/turf/simulated/floor/dank/mono,
+/turf/simulated/floor/dank/mono{
+	incorruptible = 1
+	},
 /area/mining_colony/interior/shuttle_bay/shuttle_3)
 "bsk" = (
 /turf/simulated/floor/dank/golf_brown,
@@ -26906,7 +26912,9 @@
 	id = "scrapper";
 	name = "Scrapper Shutters"
 	},
-/turf/simulated/floor/dank/mono,
+/turf/simulated/floor/dank/mono{
+	incorruptible = 1
+	},
 /area/mining_colony/interior/shuttle_bay/shuttle_3)
 "bto" = (
 /obj/machinery/light{

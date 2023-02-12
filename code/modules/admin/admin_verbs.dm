@@ -417,7 +417,7 @@ var/list/admin_verbs_mentor = list(
 	/client/proc/admin_ghost,
 	/client/proc/cmd_mod_say,
 	/datum/admins/proc/show_player_info,
-//	/client/proc/dsay,
+	/client/proc/deadmin_self,			//destroys our own admin datum so we can play as a regular player
 	/client/proc/cmd_admin_subtle_message
 )
 

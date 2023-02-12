@@ -98,7 +98,7 @@
 
 		if("select_item")
 			var/datum/design/D = SSresearch.designs_by_id[params["select_item"]]
-			if (istype(D))
+			if (istype(D) && (D.build_type & (STORE_SCHEMATICS|STORE_ROUNDSTART)))
 				current_design_id = params["select_item"]
 			playsound(src, 'sound/machines/deadspace/menu_neutral.ogg', VOLUME_MID, TRUE)
 			return TRUE

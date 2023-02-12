@@ -352,37 +352,6 @@
 	var/new_type = pick(possible_spawns)
 	return new new_type(loc)
 
-/obj/item/archaeological_find/laser
-	item_type = "gun"
-	icon_state = "egun1"
-	find_type = ARCHAEO_LASER
-	apply_prefix = 0
-
-/obj/item/archaeological_find/laser/spawn_item()
-	var/spawn_type = pick(\
-	/obj/item/gun/energy/laser/practice,\
-	/obj/item/gun/energy/laser,\
-	/obj/item/gun/energy/xray,\
-	/obj/item/gun/energy/captain)
-	var/obj/item/gun/energy/new_gun =  new spawn_type(loc)
-
-	new_gun.icon = 'icons/obj/xenoarchaeology.dmi'
-	new_gun.icon_state = "egun[rand(1,6)]"
-	new_gun.charge_meter = 0
-
-	//10% chance to have an unchargeable cell
-	//15% chance to gain a random amount of starting energy, otherwise start with an empty cell
-	if(prob(10))
-		new_gun.power_supply.maxcharge = 0
-	if(prob(15))
-		new_gun.power_supply.charge = rand(0, new_gun.power_supply.maxcharge)
-	else
-		new_gun.power_supply.charge = 0
-
-	additional_desc = "This is an antique energy weapon, you're not sure if it will fire or not."
-
-	return new_gun
-
 /obj/item/archaeological_find/gun
 	item_type = "gun"
 	icon_state = "gun1"

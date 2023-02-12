@@ -511,4 +511,4 @@ SUBSYSTEM_DEF(ticker)
 
 	log_game(SPAN_BOLDANNOUNCE("Rebooting World. [reason]"))
 
-	world.Reboot()
+	world.Reboot(ping = TRUE)

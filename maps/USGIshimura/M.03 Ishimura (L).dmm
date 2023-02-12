@@ -357,7 +357,9 @@
 /obj/structure/bed/chair/shuttle/blue{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/mining/shuttle/one)
 "aba" = (
 /obj/structure/catwalk,
@@ -691,7 +693,9 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/crew/hydroponics)
 "abR" = (
 /obj/structure/catwalk,
@@ -804,7 +808,9 @@
 "acg" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/mining/drill,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/misc/marker)
 "ach" = (
 /obj/structure/cable/green{
@@ -827,7 +833,9 @@
 /obj/structure/largecrate,
 /obj/random/loot/often/many,
 /obj/random/rare_loot/usually,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/misc/marker)
 "acl" = (
 /obj/machinery/portable_atmospherics/powered/pump/filled,
@@ -2481,7 +2489,9 @@
 "afO" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/workbench,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/misc/storagesmall)
 "afP" = (
 /turf/simulated/wall/r_wall,
@@ -3059,7 +3069,9 @@
 /obj/machinery/disposal,
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/structure/disposalpipe/trunk,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/engineering/bay)
 "agR" = (
 /obj/structure/cable/green,
@@ -3775,7 +3787,9 @@
 "ail" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/closet/secure_closet/hydroponics,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/crew/hydroponics)
 "aim" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -4478,7 +4492,9 @@
 /obj/random/loot/sometimes/few,
 /obj/random/rare_loot/rarely,
 /obj/random/loot/usually/many,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/misc/storagesmall)
 "ajD" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -4491,7 +4507,9 @@
 	},
 /obj/random/loot/sometimes/few,
 /obj/random/loot/usually/many,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/misc/storagesmall)
 "ajE" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -4504,14 +4522,18 @@
 	pixel_x = -21
 	},
 /obj/random/loot/usually/many,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/misc/storagesmall)
 "ajF" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/largecrate,
 /obj/random/rare_loot/usually,
 /obj/random/loot/usually/some,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/misc/storagesmall)
 "ajG" = (
 /obj/machinery/button/remote/blast_door{
@@ -4620,7 +4642,9 @@
 	dir = 4;
 	pixel_x = 21
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/misc/hallway/central)
 "ajQ" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -4792,7 +4816,9 @@
 "akf" = (
 /obj/machinery/portable_atmospherics/hydroponics,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/crew/hydroponics)
 "akg" = (
 /obj/structure/disposalpipe/junction/yjunction{
@@ -5752,7 +5778,9 @@
 	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/segment,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/crew/hydroponics)
 "alU" = (
 /obj/structure/disposalpipe/segment{
@@ -5808,7 +5836,9 @@
 	name = "Hydroponics Bay";
 	req_access = list(6)
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/crew/hydroponics)
 "ama" = (
 /obj/structure/cable{
@@ -6527,7 +6557,9 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/misc/marker)
 "anA" = (
 /obj/structure/bed/chair/office/light{
@@ -7274,7 +7306,9 @@
 /obj/structure/largecrate,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/random/loot/often/many,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/misc/marker)
 "aph" = (
 /obj/effect/floor_decal/techfloor/corner,
@@ -7304,7 +7338,9 @@
 /obj/structure/largecrate,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/random/loot/often/many,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/misc/marker)
 "apl" = (
 /obj/effect/floor_decal/techfloor{
@@ -8070,7 +8106,9 @@
 "aqK" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/suit_storage_unit/standard_unit,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/security/escape)
 "aqL" = (
 /obj/machinery/vending/cola,
@@ -8750,7 +8788,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/crew/hydroponics)
 "asa" = (
 /obj/structure/table/standard,
@@ -9110,7 +9150,9 @@
 /obj/structure/bed/chair/shuttle/black{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/mining/shuttle/one)
 "asI" = (
 /obj/machinery/door/firedoor/border_only,
@@ -9783,7 +9825,9 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/crew/hydroponics)
 "auj" = (
 /obj/structure/cable{
@@ -10701,12 +10745,16 @@
 	name = "Supply Officer Shutters"
 	},
 /obj/machinery/door/firedoor/border_only,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/cargo/supply_office)
 "avU" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/vending/hydroseeds,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/crew/hydroponics)
 "avV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -11702,7 +11750,9 @@
 "axO" = (
 /obj/machinery/biogenerator,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/crew/hydroponics)
 "axP" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -12103,7 +12153,9 @@
 /obj/machinery/camera/network/common{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/crew/hydroponics)
 "ayA" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -12870,7 +12922,9 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/crew/hydroponics)
 "aAc" = (
 /turf/simulated/wall/r_wall,
@@ -12979,7 +13033,9 @@
 /area/ishimura/lower/cargo/bay)
 "aAo" = (
 /obj/effect/shuttle_landmark/ferry/mining_one/start,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/mining/shuttle/one)
 "aAp" = (
 /obj/structure/disposalpipe/segment,
@@ -13688,7 +13744,9 @@
 /obj/machinery/disposal,
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/structure/disposalpipe/trunk,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/security/escape)
 "aBJ" = (
 /obj/structure/sign/hydro{
@@ -14356,7 +14414,9 @@
 	name = "Supply Lobby Shutters"
 	},
 /obj/machinery/door/firedoor/border_only,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/cargo/lobby)
 "aCW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -14847,12 +14907,16 @@
 "aDL" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/closet/emcloset,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/misc/hallway/aft)
 "aDM" = (
 /obj/structure/closet/emcloset,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/misc/hallway/aft)
 "aDN" = (
 /obj/random/plushie,
@@ -15421,7 +15485,9 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/crew/sleepblock/executive/quarters/bridge_officers)
 "aEz" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
@@ -15435,7 +15501,9 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/crew/sleepblock/executive/quarters/bridge_officers)
 "aEA" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -16222,7 +16290,9 @@
 "aFQ" = (
 /obj/structure/closet/emcloset,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/engineering/bay)
 "aFR" = (
 /obj/machinery/door/firedoor/border_only,
@@ -16691,7 +16761,9 @@
 	name = "Cargo Lobby";
 	req_access = list()
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/cargo/lobby)
 "aGK" = (
 /obj/structure/cable{
@@ -16737,7 +16809,9 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/crew/sleepblock/executive/quarters/bridge_officers)
 "aGO" = (
 /obj/structure/cable{
@@ -16817,7 +16891,9 @@
 	name = "Cargo Lobby";
 	req_access = list()
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/cargo/lobby)
 "aGU" = (
 /obj/structure/window/reinforced{
@@ -18287,7 +18363,9 @@
 /obj/structure/bed/chair/shuttle/black{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/mining/shuttle/one)
 "aJO" = (
 /obj/structure/shuttle/window/pod{
@@ -18298,7 +18376,9 @@
 /area/shuttle/executive_shuttle)
 "aJP" = (
 /obj/machinery/door/airlock/external,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/mining/shuttle/two)
 "aJQ" = (
 /obj/machinery/power/apc{
@@ -18550,7 +18630,9 @@
 	dir = 8;
 	name = "Executive Quarters"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/crew/sleepblock/executive)
 "aKk" = (
 /obj/item/paper_bin,
@@ -18831,13 +18913,17 @@
 /turf/simulated/floor/dank/hardwood/alt,
 /area/ishimura/lower/crew/sleepblock/executive/quarters/first_lieutenant)
 "aKH" = (
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/mining/shuttle/two)
 "aKI" = (
 /obj/structure/bed/chair/shuttle/black{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/mining/shuttle/two)
 "aKJ" = (
 /obj/structure/closet/firecloset,
@@ -18868,7 +18954,9 @@
 /area/ishimura/lower/misc/hallway/aft)
 "aKM" = (
 /obj/machinery/vending/cola,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/misc/hallway/aft)
 "aKN" = (
 /obj/structure/disposalpipe/segment,
@@ -18923,7 +19011,9 @@
 /obj/structure/bed/chair/shuttle/black{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/mining/shuttle/two)
 "aKR" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
@@ -18978,7 +19068,9 @@
 /obj/machinery/camera/network/command{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/crew/sleepblock/executive/quarters/bridge_officers)
 "aKX" = (
 /obj/item/flashlight/lamp,
@@ -18998,20 +19090,26 @@
 /obj/machinery/door/airlock/command{
 	name = "Bridge Officer's Bunks"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/crew/sleepblock/executive/quarters/bridge_officers)
 "aKZ" = (
 /obj/machinery/light{
 	dir = 1
 	},
 /obj/machinery/vending/cigarette,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/misc/hallway/aft)
 "aLa" = (
 /obj/machinery/disposal,
 /obj/structure/disposalpipe/trunk,
 /obj/effect/floor_decal/industrial/hatch/yellow,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/misc/hallway/aft)
 "aLb" = (
 /obj/structure/disposalpipe/segment,
@@ -19282,7 +19380,9 @@
 "aLH" = (
 /obj/machinery/vending/hydronutrients,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/crew/hydroponics)
 "aLI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -19305,7 +19405,9 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/crew/gym)
 "aLK" = (
 /obj/machinery/door/airlock/freezer{
@@ -19392,7 +19494,9 @@
 /area/ishimura/lower/mining/shuttle/one)
 "aLW" = (
 /obj/machinery/door/airlock/external,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/mining/shuttle/one)
 "aLX" = (
 /obj/structure/shuttle/engine/propulsion,
@@ -19410,7 +19514,9 @@
 /area/ishimura/lower/mining/shuttlebay/starboard)
 "aMa" = (
 /obj/structure/bed/chair/shuttle/blue,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/mining/shuttle/two)
 "aMb" = (
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
@@ -19710,7 +19816,9 @@
 /obj/machinery/door/firedoor/border_only{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/engineering/storage_closet/battery)
 "aME" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -19984,7 +20092,9 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/misc/marker)
 "aNa" = (
 /obj/machinery/portable_atmospherics/powered/scrubber,
@@ -21204,7 +21314,9 @@
 /obj/machinery/alarm{
 	pixel_y = 23
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/crew/sleepblock/executive/quarters/bridge_officers)
 "aPA" = (
 /obj/structure/closet/emcloset,
@@ -21281,7 +21393,9 @@
 /obj/item/stack/cable_coil/random,
 /obj/item/stack/cable_coil/random,
 /obj/item/stack/cable_coil/random,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/engineering/bay)
 "aPM" = (
 /obj/structure/catwalk,
@@ -21749,7 +21863,9 @@
 "aQU" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/light,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/mining/shuttle/two)
 "aQV" = (
 /obj/machinery/light{
@@ -21762,7 +21878,9 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/mining/shuttle/one)
 "aQX" = (
 /obj/effect/floor_decal/industrial/outline,
@@ -21830,7 +21948,9 @@
 /area/ishimura/lower/cargo/bay)
 "aRf" = (
 /obj/machinery/smartfridge,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/crew/hydroponics)
 "aRg" = (
 /obj/structure/table/standard,
@@ -21856,7 +21976,9 @@
 /obj/item/stack/rods/ten,
 /obj/item/stack/rods/ten,
 /obj/item/stack/rods/ten,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/engineering/bay)
 "aRk" = (
 /obj/machinery/portable_atmospherics/powered/scrubber,
@@ -23636,7 +23758,9 @@
 "aUT" = (
 /obj/machinery/smartfridge/drying_rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/crew/hydroponics)
 "aUU" = (
 /obj/structure/disposalpipe/segment,
@@ -23809,7 +23933,9 @@
 	id_tag = "escape_pod_9_hatch";
 	name = "Escape Pod Door"
 	},
-/turf/simulated/floor/shuttle/pod,
+/turf/simulated/floor/shuttle/pod{
+	incorruptible = 1
+	},
 /area/shuttle/escape_pod9/station)
 "aVj" = (
 /obj/structure/shuttle/window/pod{
@@ -24029,7 +24155,9 @@
 /obj/machinery/door/airlock/engineering{
 	name = "Secondary Supply Storage"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/engineering/storage_closet/fore)
 "aVG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -24957,7 +25085,9 @@
 /obj/machinery/cell_charger,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/camera/network/engineering,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/engineering/bay)
 "aXY" = (
 /obj/structure/dispenser/oxygen,
@@ -25027,17 +25157,23 @@
 "aYk" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/computer/station_alert/all,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/mining/shuttle/one)
 "aYl" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/computer/station_alert/all{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/mining/shuttle/two)
 "aYm" = (
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/mining/shuttle/one)
 "aYn" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -25045,18 +25181,24 @@
 	dir = 1;
 	shuttle_tag = "Mining Shuttle Two"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/mining/shuttle/two)
 "aYo" = (
 /obj/effect/shuttle_landmark/ferry/mining_two/start,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/mining/shuttle/two)
 "aYp" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/computer/shuttle_control/mining{
 	shuttle_tag = "Mining Shuttle One"
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/mining/shuttle/one)
 "aYq" = (
 /obj/structure/closet/secure_closet/personal,
@@ -25078,13 +25220,17 @@
 "aYs" = (
 /obj/structure/fitness/weightlifter,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/misc/marker)
 "aYt" = (
 /obj/machinery/light,
 /obj/structure/fitness/punchingbag,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/misc/marker)
 "aYu" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -25153,7 +25299,9 @@
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/misc/marker)
 "aYB" = (
 /obj/item/radio/intercom{
@@ -25503,7 +25651,9 @@
 	id_tag = "escape_pod_4_hatch";
 	name = "Escape Pod Door"
 	},
-/turf/simulated/floor/shuttle/pod,
+/turf/simulated/floor/shuttle/pod{
+	incorruptible = 1
+	},
 /area/shuttle/escape_pod4/station)
 "aZz" = (
 /turf/simulated/floor/plating,
@@ -25519,7 +25669,9 @@
 	id_tag = "escape_pod_5_hatch";
 	name = "Escape Pod Door"
 	},
-/turf/simulated/floor/shuttle/pod,
+/turf/simulated/floor/shuttle/pod{
+	incorruptible = 1
+	},
 /area/shuttle/escape_pod5/station)
 "aZB" = (
 /obj/structure/cable{
@@ -25699,7 +25851,9 @@
 	id_tag = "escape_pod_7_hatch";
 	name = "Escape Pod Door"
 	},
-/turf/simulated/floor/shuttle/pod,
+/turf/simulated/floor/shuttle/pod{
+	incorruptible = 1
+	},
 /area/shuttle/escape_pod7/station)
 "bae" = (
 /turf/simulated/floor/plating,
@@ -25715,7 +25869,9 @@
 	id_tag = "escape_pod_8_hatch";
 	name = "Escape Pod Door"
 	},
-/turf/simulated/floor/shuttle/pod,
+/turf/simulated/floor/shuttle/pod{
+	incorruptible = 1
+	},
 /area/shuttle/escape_pod8/station)
 "bai" = (
 /turf/simulated/shuttle/wall/pod{
@@ -26905,7 +27061,9 @@
 /obj/machinery/door/firedoor/border_only{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/mining/processing_room)
 "bdA" = (
 /obj/machinery/conveyor{
@@ -27578,7 +27736,9 @@
 /obj/random/rare_loot/rarely,
 /obj/structure/table/standard,
 /obj/random/tool,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/misc/storagesmall)
 "cMD" = (
 /turf/simulated/shuttle/wall/pod/two{
@@ -27636,7 +27796,9 @@
 /obj/structure/largecrate,
 /obj/random/loot/often/many,
 /obj/random/loot/usually/some,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/misc/storagesmall)
 "duV" = (
 /obj/structure/shuttle/window/pod{
@@ -27853,7 +28015,9 @@
 /obj/random/loot/sometimes/few,
 /obj/structure/table/standard,
 /obj/random/tool,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/misc/storagesmall)
 "fvb" = (
 /obj/machinery/camera/network/common{
@@ -28059,7 +28223,9 @@
 	},
 /obj/random/loot/sometimes/few,
 /obj/random/loot/usually/many,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/misc/storagesmall)
 "hhT" = (
 /obj/machinery/light{
@@ -28552,7 +28718,9 @@
 	},
 /obj/random/toolbox,
 /obj/random/loot/usually/many,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/misc/storagesmall)
 "lRs" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
@@ -28654,7 +28822,9 @@
 	pixel_x = -24
 	},
 /obj/random/loot/usually/many,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/misc/storagesmall)
 "ntc" = (
 /turf/simulated/floor/plating,
@@ -28939,7 +29109,9 @@
 "pjt" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/suit_storage_unit/standard_unit,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/misc/storagesmall)
 "pjK" = (
 /obj/machinery/light{
@@ -29462,7 +29634,9 @@
 	dir = 8
 	},
 /obj/random/toolbox,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/misc/storagesmall)
 "tDn" = (
 /turf/simulated/floor/dank/tech,
@@ -29597,7 +29771,9 @@
 	},
 /obj/random/loot/sometimes/few,
 /obj/random/loot/usually/many,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/misc/storagesmall)
 "uEI" = (
 /obj/machinery/alarm{
@@ -30001,7 +30177,9 @@
 "xzP" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/dispenser/oxygen,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/misc/storagesmall)
 "xMj" = (
 /turf/simulated/floor/dank/hardwood,
@@ -30017,7 +30195,9 @@
 	},
 /obj/random/loot/sometimes/few,
 /obj/random/loot/usually/many,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/monotile{
+	incorruptible = 1
+	},
 /area/ishimura/lower/misc/storagesmall)
 "xRB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
