@@ -33,10 +33,12 @@
 /turf/simulated/floor/fixed/main
 	icon = 'icons/turf/shuttle.dmi'
 	icon_state = "floor8"
+	incorruptible = TRUE
 
 /turf/simulated/floor/fixed/escapeshuttle
 	icon = 'icons/turf/floors_ds13.dmi'
 	icon_state = "tramcorner1"
+	incorruptible = TRUE
 
 /turf/simulated/floor/shuttle/pod
 	icon_state = "p_floor"
