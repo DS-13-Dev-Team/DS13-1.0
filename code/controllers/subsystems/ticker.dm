@@ -133,21 +133,21 @@ SUBSYSTEM_DEF(ticker)
 	if(!mode.can_start(bypass_checks))
 		to_chat(world, "Reverting to pre-game lobby.")
 		QDEL_NULL(mode)
-		job_master.ResetOccupations()
+		SSjobs.ResetOccupations()
 		return FALSE
 
 	CHECK_TICK
 	if(!mode.pre_setup() && !bypass_checks)
 		QDEL_NULL(mode)
 		to_chat(world, "<b>Error in pre-setup for [GLOB.master_mode].</b> Reverting to pre-game lobby.")
-		job_master.ResetOccupations()
+		SSjobs.ResetOccupations()
 		return FALSE
 
 	CHECK_TICK
 	if(!mode.setup() && !bypass_checks)
 		QDEL_NULL(mode)
 		to_chat(world, "<b>Error in setup for [GLOB.master_mode].</b> Reverting to pre-game lobby.")
-		job_master.ResetOccupations()
+		SSjobs.ResetOccupations()
 		return FALSE
 
 	callHook("roundstart")

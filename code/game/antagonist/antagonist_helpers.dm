@@ -7,7 +7,7 @@
 			if(player.current.faction != "neutral")
 				return 0
 
-		var/datum/job/J = job_master.GetJob(player.assigned_role)
+		var/datum/job/J = SSjobs.GetJob(player.assigned_role)
 		if(is_type_in_list(J,blacklisted_jobs))
 			return 0
 

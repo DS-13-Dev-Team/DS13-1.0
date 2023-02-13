@@ -97,3 +97,6 @@
 	var/middragtime = 0
 	//Middle-mouse-button clicked object control for aimbot exploit detection. Weakref
 	var/datum/weakref/middle_drag_atom_ref
+
+	/// Params containing minutes played as different jobs
+	var/list/exp = list()

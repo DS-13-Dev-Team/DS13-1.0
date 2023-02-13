@@ -131,10 +131,10 @@ var/const/NO_EMAG_ACT = -50
 
 	var/job_access_type     // Job type to acquire access rights from, if any
 
-/obj/item/card/id/New()
-	..()
+/obj/item/card/id/Initialize()
+	. = ..()
 	if(job_access_type)
-		var/datum/job/j = job_master.GetJobByType(job_access_type)
+		var/datum/job/j = SSjobs.GetJobByType(job_access_type)
 		if(j)
 			rank = j.title
 			assignment = rank

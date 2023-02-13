@@ -62,7 +62,7 @@ SUBSYSTEM_DEF(machines)
 	makepowernets()
 	setup_atmos_machinery(machinery)
 	fire(FALSE, TRUE)
-
+	return ..()
 
 /datum/controller/subsystem/machines/fire(resumed, no_mc_tick)
 	var/timer

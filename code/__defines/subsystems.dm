@@ -84,6 +84,7 @@
 #define SS_INIT_SERVER_MAINT		93
 #define SS_INIT_SOUNDS				80
 #define SS_INIT_TIMETRACK			46
+#define SS_INIT_JOBS				30
 #define SS_INIT_ANTAGS				18
 #define SS_INIT_CHAR_SETUP			17
 #define SS_INIT_PLANTS				16

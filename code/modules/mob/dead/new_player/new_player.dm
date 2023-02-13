@@ -118,9 +118,9 @@
 		ViewManifest()
 
 	if(href_list["SelectedJob"])
-		var/datum/job/job = job_master.GetJob(href_list["SelectedJob"])
+		var/datum/job/job = SSjobs.GetJob(href_list["SelectedJob"])
 
-		if(!job_master.CheckGeneralJoinBlockers(src, job))
+		if(!SSjobs.CheckGeneralJoinBlockers(src, job))
 			return FALSE
 
 		var/datum/species/S = all_species[client.prefs.species]
@@ -162,10 +162,10 @@
 	var/datum/spawnpoint/spawnpoint
 	var/turf/spawn_turf
 	if(job.latejoin_at_spawnpoints)
-		var/obj/S = job_master.get_roundstart_spawnpoint(job.title)
+		var/obj/S = SSjobs.get_roundstart_spawnpoint(job.title)
 		spawn_turf = get_turf(S)
 	else
-		spawnpoint = job_master.get_spawnpoint_for(client, job.title, client.prefs, check_safety = TRUE)
+		spawnpoint = SSjobs.get_spawnpoint_for(client, job.title, client.prefs, check_safety = TRUE)
 		spawn_turf = spawnpoint.get_safe_turf(src, TRUE)
 
 	/*
@@ -178,14 +178,14 @@
 		return FALSE
 
 
-	job_master.AssignRole(src, job.title, 1)
+	SSjobs.AssignRole(src, job.title, 1)
 
 	var/mob/living/character = create_character(spawn_turf)	//creates the human and transfers vars and mind
 	if(!character)
 		return FALSE
 
 
-	character = job_master.EquipRank(character, job.title, 1)					//equips the human
+	character = SSjobs.EquipRank(character, job.title, 1)					//equips the human
 	//equip_custom_items(character)
 	equip_loadout(character, job.title, character.client.prefs)
 
@@ -214,7 +214,7 @@
 
 	SSticker.mode.handle_latejoin(character)
 	GLOB.universe.OnPlayerLatejoin(character)
-	if(job_master.ShouldCreateRecords(job.title))
+	if(SSjobs.ShouldCreateRecords(job.title))
 		if(character.mind.assigned_role != "Robot")
 			CreateModularRecord(character)
 
@@ -263,7 +263,7 @@
 	dat += "<tr><td colspan = 3><b>[GLOB.using_map.station_name]:</b></td></tr>"
 
 	var/list/job_summaries = list()
-	for(var/datum/job/job in job_master.occupations_map)
+	for(var/datum/job/job as anything in SSjobs.occupations_map)
 		var/summary = job.get_join_link(client, "byond://?src=\ref[src];SelectedJob=[job.title]", show_invalid_jobs)
 		if(summary && summary != "")
 			job_summaries += summary
@@ -289,7 +289,7 @@
 		chosen_species = all_species[client.prefs.species]
 
 	if(!spawn_turf)
-		var/datum/spawnpoint/spawnpoint = job_master.get_spawnpoint_for(client, mind.assigned_role)
+		var/datum/spawnpoint/spawnpoint = SSjobs.get_spawnpoint_for(client, mind.assigned_role)
 		spawn_turf = pick(spawnpoint.turfs)
 
 	if(chosen_species)

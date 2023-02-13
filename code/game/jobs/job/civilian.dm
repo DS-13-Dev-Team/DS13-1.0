@@ -22,6 +22,7 @@
 	skill_points = 20
 
 	salary	= 500	//Miners and civilians are underpaid plebs
+	exp_type = EXP_TYPE_SERVICE
 
 /datum/job/bar/get_description_blurb()
 	return "You are the Bartender. Your job is to serve drinks to any crewmember that show up at your bar. You are subordinate to the First Lieutenant."
@@ -50,6 +51,7 @@
 						SKILL_ANATOMY     = SKILL_ADEPT,
 						SKILL_FORENSICS   = SKILL_ADEPT)
 	skill_points = 20
+	exp_type = EXP_TYPE_SERVICE
 
 /datum/job/line_cook/get_description_blurb()
 	return "You are a Line Cook. Your job is to cook meals and feed any crewmember that show up to the Cafeteria. You are subordinate to the First Lieutenant."
@@ -77,6 +79,7 @@
 	skill_points = 20
 
 	salary = SALARY_SKILLED
+	exp_type = EXP_TYPE_SERVICE
 
 /datum/job/bar/get_description_blurb()
 	return "You are the Bartender. Your job is to serve drinks to any crewmember that show up at your bar. You don't have a department head and are subordinate to the Captain and First Lieutenant."
@@ -105,6 +108,7 @@
 	skill_points = 20
 
 	salary = 500	//Miners and civilians are underpaid plebs
+	exp_type = EXP_TYPE_SERVICE
 
 /datum/job/janitor/get_description_blurb()
 	return "You are the Janitor. Your job is to clean the ship from the mess created by the crew. You are subordinate to the First Lieutenant."
@@ -132,6 +136,7 @@
 	skill_points = 24
 
 	salary = 700 //Church pays you more than CEC to miners and civs...
+	exp_type = EXP_TYPE_SERVICE
 
 /datum/job/chaplain/get_description_blurb()
 	return "You are the Chaplain of the Unitologist Church. Your job is to carry faith in the Marker. You are subordinate to the First Lieutenant."

@@ -35,6 +35,7 @@
 						SKILL_COMBAT    = SKILL_EXPERT,
 						SKILL_FORENSICS	= SKILL_ADEPT)
 	skill_points = 30
+	exp_type = EXP_TYPE_COMMAND
 
 /datum/job/dom/get_description_blurb()
 	return "You are the Director of Mining. You oversee Mining Foreman and tell them what to mine. You are subordinate the Colony Director."
@@ -68,6 +69,7 @@
 						SKILL_COMBAT    = SKILL_EXPERT,
 						SKILL_FORENSICS	= SKILL_ADEPT)
 	skill_points = 20
+	exp_type = EXP_TYPE_MINING
 
 /datum/job/foreman/get_description_blurb()
 	return "You are the Mining Foreman. You are the blue-collar adminstrative worker among the mining crew in the colony. Your job is to take quotas and directives from the Director of Mining and inform the Planet Cracker crew of them, along with their enforcement. You are subordinate to the Director of Mining."
@@ -99,6 +101,7 @@
 						SKILL_ANATOMY	= SKILL_ADEPT,
 						SKILL_FORENSICS	= SKILL_ADEPT)
 	skill_points = 20
+	exp_type = EXP_TYPE_MINING
 
 /datum/job/planet_cracker/get_description_blurb()
 	return "You are a Miner. Your job is to mine ores around the colony. You are subordinate to the Director of Mining and the Mining Foreman."

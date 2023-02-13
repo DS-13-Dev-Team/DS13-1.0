@@ -32,6 +32,7 @@
 	skill_points = 25
 
 	salary = SALARY_COMMAND
+	exp_type = EXP_TYPE_COMMAND
 
 /datum/job/smo/get_description_blurb()
 	return "You are the Senior Medical Officer. You are chiefly responsible for the health and well-being of all workers in the colony. You are subordinate to the Captain and First Lieutenant."
@@ -63,6 +64,7 @@
 						SKILL_COOKING     = SKILL_EXPERT,
 						SKILL_FORENSICS   = SKILL_EXPERT)
 	skill_points = 20
+	exp_type = EXP_TYPE_MEDICAL
 
 /datum/job/md/get_description_blurb()
 	return "You are a Medical Doctor. Your job is to treat and diagnose injured crewmembers, applying the appropriate skills and supplies to heal them. You may assist a Surgeon with surgery, if you have the appropriate skills. You are subordinate to the Senior Medical Officer."
@@ -95,6 +97,7 @@
 						SKILL_COMBAT      = SKILL_EXPERT,
 						SKILL_FORENSICS   = SKILL_EXPERT)
 	skill_points = 24
+	exp_type = EXP_TYPE_MEDICAL
 
 /datum/job/surg/get_description_blurb()
 	return "You are a Surgeon. Your job is to perform surgery on any wounded crewmembers who require it and are one of the few people given access to the surgical suites. You are subordinate to the Senior Medical Officer."
@@ -126,7 +129,8 @@
 						SKILL_FORENSICS   = SKILL_EXPERT)
 	skill_points = 25
 
-	salary = SALARY_EDUCATED //Church pays you more than CEC to miners and civs...
+	salary = SALARY_EDUCATED
+	exp_type = EXP_TYPE_MEDICAL
 
 /datum/job/psychiatrist/get_description_blurb()
 	return "You are the Psychiatrist. Your job is to meet with clients to identify emotional, mental, and behavioral problems. You are subordinate to the Senior Medical Officer."

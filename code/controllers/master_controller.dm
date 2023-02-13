@@ -24,12 +24,6 @@ var/global/initialization_stage = 0
 			qdel(master_controller)
 		master_controller = src
 
-	if(!job_master)
-		job_master = new /datum/controller/occupations()
-		job_master.SetupOccupations(setup_titles=1)
-		job_master.LoadJobs("config/jobs.txt")
-		admin_notice("<span class='danger'>Job setup complete</span>", R_DEBUG)
-
 datum/controller/game_controller/proc/setup()
 	setup_objects()
 	setupgenetics()

@@ -53,7 +53,7 @@
 		decls_repository.get_decl(/decl/hierarchy/skill)
 
 	pref.skills_allocated = list()
-	for(var/datum/job/job as anything in job_master.occupations)
+	for(var/datum/job/job as anything in SSjobs.occupations)
 		if("[job.type]" in pref.skills_saved)
 			var/S = pref.skills_saved["[job.type]"]
 			var/L = list()
@@ -77,7 +77,7 @@
 /datum/preferences/proc/sanitize_skills(var/list/input)
 	. = list()
 	var/datum/species/S = all_species[species]
-	for(var/datum/job/job as anything in job_master.occupations)
+	for(var/datum/job/job as anything in SSjobs.occupations)
 		var/input_skills = list()
 		if((job in input) && istype(input[job], /list))
 			input_skills = input[job]

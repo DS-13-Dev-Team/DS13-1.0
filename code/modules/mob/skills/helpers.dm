@@ -7,7 +7,7 @@
 	qdel(skillset)
 	var/new_type = initial(skillset)
 	skillset = new new_type(src)
-	var/datum/job/job = mind && job_master.GetJob(mind.assigned_role)
+	var/datum/job/job = mind && SSjobs.GetJob(mind.assigned_role)
 	skillset.obtain_from_client(job, client)
 
 // Use to perform skill checks

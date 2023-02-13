@@ -153,7 +153,7 @@
 	//Abbreviation Prefix
 	if(ishuman(speaker))
 		var/mob/living/carbon/human/R = speaker
-		var/datum/job/J = job_master.GetJob(R.get_assignment())
+		var/datum/job/J = SSjobs.GetJob(R.get_assignment())
 		var/title = ""
 		if (J && J.abbreviation)
 			title = "[J.abbreviation] "

@@ -438,3 +438,6 @@ TOPIC_MAX_SIZE 500
 SECOND_CLICK_LIMIT 15
 
 MINUTE_CLICK_LIMIT 400
+
+## Enables experience tracking for the players
+#USE_EXP_TRACKING

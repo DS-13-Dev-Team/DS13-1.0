@@ -422,7 +422,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		antag_data.add_antagonist(new_character.mind)
 		antag_data.place_mob(new_character)
 	else
-		job_master.EquipRank(new_character, new_character.mind.assigned_role, 1)
+		SSjobs.EquipRank(new_character, new_character.mind.assigned_role, 1)
 		equip_loadout(new_character, new_character.mind.assigned_role, targetclient.prefs)
 
 	//Announces the character on all the systems, based on the record.
@@ -534,9 +534,11 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if (!holder)
 		to_chat(src, "Only administrators may use this command.")
 		return
-	if(job_master)
-		for(var/datum/job/job in job_master.occupations_map)
-			to_chat(src, "[job.title]: [job.total_positions]")
+	if(!SSjobs.initialized)
+		to_chat(src, SPAN_WARNING("SSjobs didn't initialize yet!"))
+		return
+	for(var/datum/job/job as anything in SSjobs.occupations_map)
+		to_chat(src, "[job.title]: [job.total_positions]")
 	feedback_add_details("admin_verb","LFS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/cmd_admin_emp(atom/O as obj|mob|turf in range(world.view))

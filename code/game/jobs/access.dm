@@ -217,17 +217,15 @@
 		return C.registered_name
 	return missing_id_name
 
-/proc/get_all_job_icons() //For all existing HUD icons
-	return joblist + list("Prisoner")
+GLOBAL_LIST_INIT(job_icons, list("Prisoner"))
 
 /obj/proc/GetJobName() //Used in secHUD icon generation
 	var/obj/item/card/id/I = GetIdCard()
 
 	if(I)
-		var/job_icons = get_all_job_icons()
-		if(I.assignment	in job_icons) //Check if the job has a hud icon
+		if(I.assignment	in GLOB.job_icons) //Check if the job has a hud icon
 			return I.assignment
-		if(I.rank in job_icons)
+		if(I.rank in GLOB.job_icons)
 			return I.rank
 
 		var/centcom = get_all_centcom_jobs()

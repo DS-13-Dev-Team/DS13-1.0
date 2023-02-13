@@ -45,8 +45,6 @@ GLOBAL_LIST_INIT(signal_sprites, list("markersignal-1",
 	var/energy_extension_type = /datum/extension/psi_energy/signal
 	var/datum/extension/psi_energy/psi_energy
 
-	var/datum/preferences/prefs
-
 	var/list/variations
 
 	movement_handlers = list(

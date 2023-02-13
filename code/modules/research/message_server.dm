@@ -154,7 +154,7 @@ var/global/list/obj/machinery/message_server/message_servers = list()
 		if(!pda?.card_slot?.stored_card)
 			continue
 
-		var/datum/job/J = job_master.GetJobByType(pda.card_slot.stored_card.job_access_type)
+		var/datum/job/J = SSjobs.GetJobByType(pda.card_slot.stored_card.job_access_type)
 		if(!J)
 			continue
 

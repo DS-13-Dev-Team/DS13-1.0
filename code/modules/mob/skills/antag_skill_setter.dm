@@ -3,7 +3,7 @@
 /datum/antag_skill_setter
 	var/nm_type                        //A nano_module with custom ui, if any.
 	var/list/base_skill_list = list()  //Format: list(path = value).
-	var/default_value = SKILL_DEFAULT  //If not in base_skill_list or added in another way, skill value will be this. 
+	var/default_value = SKILL_DEFAULT  //If not in base_skill_list or added in another way, skill value will be this.
 
 /datum/antag_skill_setter/proc/initialize_skills(datum/skillset/skillset)
 	skillset.skill_list = base_skill_list.Copy()
@@ -32,7 +32,7 @@
 	if(skillset.owner)
 		var/client/my_client = skillset.owner.client
 		if(my_client && skillset.owner.mind)
-			var/datum/job/job = job_master.GetJob(skillset.owner.mind.assigned_role)
+			var/datum/job/job = SSjobs.GetJob(skillset.owner.mind.assigned_role)
 			skillset.obtain_from_client(job, my_client, 1)
 	skillset.open_ui()
 

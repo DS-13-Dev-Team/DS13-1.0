@@ -25,6 +25,7 @@
 						SKILL_ANATOMY     = SKILL_ADEPT,
 						SKILL_FORENSICS   = SKILL_ADEPT)
 	skill_points = 20
+	exp_type = EXP_TYPE_COMMAND
 
 /datum/job/so/get_description_blurb()
 	return "You are the Supply Officer. Your job is to direct Cargo Serviceman and balance the requests of the rest of the crew to the ship's requisition points. You are subordinate to the First Lieutenant."
@@ -55,6 +56,7 @@
 						SKILL_COMBAT      = SKILL_EXPERT,
 						SKILL_FORENSICS   = SKILL_ADEPT)
 	skill_points = 20
+	exp_type = EXP_TYPE_SUPPLY
 
 /datum/job/serviceman/get_description_blurb()
 	return "You are a Cargo Serviceman. Your job is to haul around cargo according to the Supply Officer's whim and deliver cargo shipments to departments, if needed. You are subordinate to the Supply Officer."
@@ -86,6 +88,7 @@
 						SKILL_COMBAT      = SKILL_EXPERT,
 						SKILL_FORENSICS   = SKILL_ADEPT)
 	skill_points = 15
+	exp_type = EXP_TYPE_SUPPLY
 
 /datum/job/salvage/get_description_blurb()
 	return "You are a Salvage Technician, part of CEC's reclamation project. Your job is to comb dark and abandoned areas, recovering valueable equipment. You recieve no salary, but may keep some of the things you recover\n\

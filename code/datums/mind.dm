@@ -214,7 +214,7 @@
 		if(antag) antag.place_mob(src.current)
 
 	else if (href_list["role_edit"])
-		var/datum/job/job = tgui_input_list(usr, "Select a new role", "Assigned role", job_master.occupations)
+		var/datum/job/job = tgui_input_list(usr, "Select a new role", "Assigned role", SSjobs.occupations)
 		if(job)
 			assigned_role = job.title
 			assigned_job = job
