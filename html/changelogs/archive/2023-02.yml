@@ -71,3 +71,4 @@
       of playtime as signal.
   - rscadd: If Marker player is AFK for more than 5 minutes another can replace him
       (use 'Become Master Signal' verb).
+  - rscadd: Added 'Toggle Reciving Necrochat' verb for admins.
