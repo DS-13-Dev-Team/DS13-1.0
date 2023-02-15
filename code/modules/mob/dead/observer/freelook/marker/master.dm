@@ -27,14 +27,11 @@
 		to_chat(src, "ERROR: No marker found")
 		return
 
-	if(CONFIG_GET(flag/use_exp_tracking))
-		var/should_check = FALSE
+	if(CONFIG_GET(flag/use_exp_tracking) && client.exp[EXP_TYPE_SIGNAL] < 1.5 HOURS)
 		for(var/mob/dead/observer/signal/signal as anything in SSnecromorph.signals-SSnecromorph.marker.playermob)
-			if(signal.client?.exp[EXP_TYPE_SIGNAL] > 1.5 HOURS && !signal.client.is_afk(5 MINUTES))
-				should_check = TRUE
-				break
-		if(should_check && client.exp[EXP_TYPE_SIGNAL] < 1.5 HOURS)
-			to_chat(src, SPAN_WARNING("The role is timelocked! You need to play [round((1.5 HOURS - client.exp[EXP_TYPE_SIGNAL])/600)] minutes more!"))
+			if(signal.client?.exp[EXP_TYPE_SIGNAL] < 1.5 HOURS || signal.client.is_afk(5 MINUTES))
+				continue
+			to_chat(src, SPAN_WARNING("The role is timelocked! You need to play [round((1.5 HOURS - client.exp[EXP_TYPE_SIGNAL])/600)] minutes more as a signal!"))
 			return
 
 	if (SSnecromorph.marker.player)
