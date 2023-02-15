@@ -88,12 +88,20 @@ GLOBAL_DATUM_INIT(shipsystem, /datum/ship_subsystems, new)
 		message_admins("No signals, unable to pick a marker player! The marker is now active and awaiting anyone who wishes to control it")
 		return FALSE
 
-	var/list/marker_candidates = SSnecromorph.signals.Copy()
+	var/list/marker_candidates = list()
+	if(CONFIG_GET(flag/use_exp_tracking))
+		for(var/mob/dead/observer/signal/signal as anything in SSnecromorph.signals)
+			if(signal.client?.exp[EXP_TYPE_SIGNAL] > 1.5 HOURS && !signal.client.is_afk(5 MINUTES))
+				marker_candidates += signal
+				break
+	if(!length(marker_candidates))
+		marker_candidates = SSnecromorph.signals.Copy()
+
 	while (marker_candidates.len)
 		M = pick_n_take(marker_candidates)
 		if (!M.client)
+			marker_candidates -= M
 			continue
-
 
 		//Alright pick them!
 		to_chat(M, "<span class='warning'>You have been selected to become the marker!</span>")

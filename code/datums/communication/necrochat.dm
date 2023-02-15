@@ -69,8 +69,9 @@
 		messaged += target
 
 	var/list/valid_admins = GLOB.admins - messaged
-	for(var/client/target in valid_admins)
-		receive_communication(A, target, message)
+	for(var/client/target as anything in valid_admins)
+		if(target.holder?.recieve_necro_comm)
+			receive_communication(A, target, message)
 
 
 

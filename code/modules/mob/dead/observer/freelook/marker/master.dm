@@ -27,14 +27,22 @@
 		to_chat(src, "ERROR: No marker found")
 		return
 
+	if(CONFIG_GET(flag/use_exp_tracking))
+		var/should_check = FALSE
+		for(var/mob/dead/observer/signal/signal as anything in SSnecromorph.signals-SSnecromorph.marker.playermob)
+			if(signal.client?.exp[EXP_TYPE_SIGNAL] > 1.5 HOURS && !signal.client.is_afk(5 MINUTES))
+				should_check = TRUE
+				break
+		if(should_check && client.exp[EXP_TYPE_SIGNAL] < 1.5 HOURS)
+			to_chat(src, SPAN_WARNING("The role is timelocked! You need to play [round((1.5 HOURS - client.exp[EXP_TYPE_SIGNAL])/600)] minutes more!"))
+			return
+
 	if (SSnecromorph.marker.player)
-		to_chat(src, "[SSnecromorph.marker.player] is already controlling the marker.")
-
-		//TODO: Check here if the current marker player has been afk/disconnected for too long, and if so allow replacing them
-
-		return
-
-	//Possible todo: Start a poll among signal players?
+		if(!SSnecromorph.marker.playermob.client.is_afk(5 MINUTES))
+			to_chat(src, "[SSnecromorph.marker.player] is already controlling the marker.")
+			return
+		to_chat(SSnecromorph.marker.playermob, SPAN_WARNING("You were AFK for too long and were replaced by another player!"))
+		SSnecromorph.marker.playermob.leave_master_signal_verb()
 
 	//For now, just succeed
 	SSnecromorph.marker.become_master_signal(src)
