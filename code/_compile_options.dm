@@ -27,9 +27,9 @@
 
 //Update this whenever the byond version is stable so people stop updating to hilariously broken versions
 #define MAX_COMPILER_VERSION 514
-#define MAX_COMPILER_BUILD 1585
+#define MAX_COMPILER_BUILD 1588
 #if DM_VERSION > MAX_COMPILER_VERSION || DM_BUILD > MAX_COMPILER_BUILD
-#warn WARNING! your byond version is over the recommended 514.1584! There may be unexpected byond bugs!
+#warn WARNING! your byond version is over the recommended 514.1588! There may be unexpected byond bugs!
 #endif
 
 //Don't load extools on 514
