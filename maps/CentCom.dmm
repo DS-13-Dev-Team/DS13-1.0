@@ -3597,9 +3597,7 @@
 /turf/simulated/floor/dank/grater,
 /area/ERT/valor/engineering)
 "iA" = (
-/obj/machinery/door/airlock{
-	name = "Control Center"
-	},
+/obj/machinery/door/airlock,
 /turf/unsimulated/floor/dank/rectangles,
 /area/ERT/escapebase)
 "iM" = (
@@ -5003,6 +5001,12 @@
 	icon_state = "plating"
 	},
 /area/ERT/escapebase)
+"nn" = (
+/obj/structure/bed/chair{
+	dir = 2
+	},
+/turf/simulated/floor/dank/mono,
+/area/ERT/escapebase)
 "nE" = (
 /obj/machinery/door/airlock/civilian{
 	name = "Reception Center"
@@ -5404,6 +5408,14 @@
 /obj/effect/shuttle_landmark/escape_pod/transit/pod8,
 /turf/space/bluespace,
 /area/space)
+"tZ" = (
+/obj/structure/toilet{
+	dir = 8
+	},
+/obj/structure/window/reinforced/tinted,
+/obj/effect/floor_decal/dank/frame_tiled_small,
+/turf/simulated/floor/dank/roller,
+/area/ERT/escapebase)
 "ua" = (
 /obj/machinery/chemical_dispenser/ert,
 /obj/effect/floor_decal/industrial/outline/blue,
@@ -5556,9 +5568,7 @@
 	},
 /area/ERT/escapebase)
 "xD" = (
-/obj/machinery/door/airlock{
-	name = "Control Center"
-	},
+/obj/machinery/door/airlock,
 /turf/simulated/floor/dank/golf_brown,
 /area/ERT/escapebase)
 "xE" = (
@@ -5573,15 +5583,7 @@
 /turf/simulated/floor/dank/slides,
 /area/ERT/escapebase)
 "xN" = (
-/obj/structure/table/reinforced,
-/obj/item/clipboard{
-	pixel_y = 2
-	},
-/obj/item/pen/multi,
-/obj/item/paper_bin{
-	pixel_y = 2
-	},
-/turf/simulated/floor/dank/golf_brown,
+/turf/simulated/floor/dank/mono,
 /area/ERT/escapebase)
 "xX" = (
 /obj/effect/wallframe_spawn/reinforced/titanium,
@@ -5725,6 +5727,13 @@
 	icon_state = "plating"
 	},
 /area/ERT/escapebase)
+"AI" = (
+/obj/machinery/door/airlock{
+	name = "Brig";
+	req_one_access = list(2)
+	},
+/turf/simulated/floor/dank/golf_brown,
+/area/ERT/escapebase)
 "AP" = (
 /turf/simulated/floor/carpet/red,
 /area/ERT/escapebase)
@@ -5736,6 +5745,13 @@
 /area/ERT/escapebase)
 "Bh" = (
 /turf/unsimulated/floor/dank/slides_end,
+/area/ERT/escapebase)
+"Bo" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/box/handcuffs{
+	pixel_y = 7
+	},
+/turf/simulated/floor/dank/mono,
 /area/ERT/escapebase)
 "Bx" = (
 /obj/structure/table/standard,
@@ -5807,6 +5823,14 @@
 "CC" = (
 /obj/machinery/vending/snack,
 /turf/unsimulated/floor/wood,
+/area/ERT/escapebase)
+"CI" = (
+/obj/machinery/door/airlock{
+	name = "Brig";
+	req_one_access = list(2)
+	},
+/obj/effect/floor_decal/industrial/hatch/yellow,
+/turf/simulated/floor/dank/rivets,
 /area/ERT/escapebase)
 "Dg" = (
 /obj/effect/floor_decal/dank/grate,
@@ -5965,6 +5989,10 @@
 	icon_state = "plating"
 	},
 /area/ERT/escapebase)
+"Hb" = (
+/obj/structure/bed/chair,
+/turf/simulated/floor/dank/rivets,
+/area/ERT/escapebase)
 "Hn" = (
 /turf/unsimulated/floor/dank/slides_end{
 	dir = 1
@@ -5978,6 +6006,12 @@
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/snacks/onionrings,
 /turf/simulated/floor/carpet/red,
+/area/ERT/escapebase)
+"HC" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/turf/simulated/floor/dank/mono,
 /area/ERT/escapebase)
 "Ie" = (
 /obj/structure/railing/mapped{
@@ -6000,6 +6034,12 @@
 /obj/effect/shuttle_landmark/escape_pod/transit/pod9,
 /turf/space/bluespace,
 /area/space)
+"Iv" = (
+/obj/structure/table/reinforced,
+/obj/item/paper,
+/obj/item/pen/multi,
+/turf/simulated/floor/dank/rivets,
+/area/ERT/escapebase)
 "IC" = (
 /obj/effect/floor_decal/industrial/loading{
 	dir = 8
@@ -6271,6 +6311,14 @@
 /obj/structure/reagent_dispensers/water_cooler,
 /turf/simulated/floor/dank/golf_brown,
 /area/ERT/escapebase)
+"MW" = (
+/obj/structure/table/reinforced,
+/obj/item/clipboard{
+	pixel_y = 2
+	},
+/obj/item/pen/multi,
+/turf/simulated/floor/dank/golf_brown,
+/area/ERT/escapebase)
 "MZ" = (
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/medical{
@@ -6317,6 +6365,11 @@
 	name = "Bathrooms"
 	},
 /turf/unsimulated/floor/wood,
+/area/ERT/escapebase)
+"NV" = (
+/obj/structure/bed,
+/obj/item/bedsheet/prisoner,
+/turf/simulated/floor/dank/rivets,
 /area/ERT/escapebase)
 "On" = (
 /turf/unsimulated/floor/dank/cable/start,
@@ -6457,9 +6510,6 @@
 /obj/item/reagent_containers/spray/cleaner{
 	pixel_y = 3
 	},
-/obj/item/reagent_containers/spray/cleaner{
-	pixel_y = 3
-	},
 /turf/simulated/floor/dank/golf_brown,
 /area/ERT/escapebase)
 "Rx" = (
@@ -6480,6 +6530,22 @@
 "RO" = (
 /obj/item/trash/semki,
 /turf/unsimulated/floor/wood,
+/area/ERT/escapebase)
+"RQ" = (
+/turf/simulated/floor/dank/rivets,
+/area/ERT/escapebase)
+"RV" = (
+/obj/structure/closet/secure_closet/brig,
+/obj/effect/floor_decal/dank/outline_striped,
+/obj/structure/window/reinforced{
+	dir = 4;
+	icon_state = "rwindow"
+	},
+/turf/simulated/floor/dank/mono,
+/area/ERT/escapebase)
+"RX" = (
+/obj/effect/wallframe_spawn/reinforced/titanium,
+/turf/simulated/floor/dank/rivets,
 /area/ERT/escapebase)
 "Sh" = (
 /obj/structure/bed/chair/comfy{
@@ -6803,6 +6869,10 @@
 /area/ERT/escapebase)
 "Ym" = (
 /turf/simulated/floor/tiled/white,
+/area/ERT/escapebase)
+"Yt" = (
+/obj/structure/table/reinforced,
+/turf/simulated/floor/dank/mono,
 /area/ERT/escapebase)
 "Yy" = (
 /turf/unsimulated/floor/dank/maint,
@@ -8981,7 +9051,7 @@ aa
 aa
 aa
 aa
-aa
+dQ
 aa
 aa
 aa
@@ -17658,13 +17728,13 @@ sO
 sO
 hR
 mv
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+mv
+mv
+mv
+mv
+mv
+mv
+mv
 "}
 (106,1,1) = {"
 aa
@@ -17760,14 +17830,14 @@ pA
 BQ
 sO
 hR
+hR
+hR
+hR
+hR
+hR
+hR
+hR
 mv
-aa
-aa
-aa
-aa
-aa
-aa
-aa
 "}
 (107,1,1) = {"
 aa
@@ -17863,14 +17933,14 @@ pA
 XP
 sO
 hR
+Hb
+Iv
+RX
+xN
+sO
+sO
+hR
 mv
-aa
-aa
-aa
-aa
-aa
-aa
-aa
 "}
 (108,1,1) = {"
 aa
@@ -17965,15 +18035,15 @@ Yy
 pA
 Rp
 sO
+RX
+RQ
+RQ
+CI
+xN
+sO
+sO
 hR
 mv
-aa
-aa
-aa
-aa
-aa
-aa
-aa
 "}
 (109,1,1) = {"
 aa
@@ -18069,14 +18139,14 @@ pA
 Rp
 sO
 hR
+tZ
+NV
+RX
+nn
+sO
+sO
+hR
 mv
-aa
-aa
-aa
-aa
-aa
-aa
-aa
 "}
 (110,1,1) = {"
 aa
@@ -18172,14 +18242,14 @@ hR
 sO
 sO
 hR
+hR
+hR
+hR
+RV
+sO
+sO
+hR
 mv
-aa
-aa
-aa
-aa
-aa
-aa
-aa
 "}
 (111,1,1) = {"
 aa
@@ -18275,14 +18345,14 @@ sO
 sO
 sO
 hR
+Hb
+Iv
+RX
+xN
+sO
+sO
+hR
 mv
-aa
-aa
-aa
-aa
-aa
-aa
-aa
 "}
 (112,1,1) = {"
 aa
@@ -18377,15 +18447,15 @@ iA
 sO
 sO
 sO
+RX
+RQ
+RQ
+CI
+xN
+sO
+sO
 hR
 mv
-aa
-aa
-aa
-aa
-aa
-aa
-aa
 "}
 (113,1,1) = {"
 aa
@@ -18481,14 +18551,14 @@ sO
 sO
 sO
 hR
+tZ
+NV
+RX
+nn
+sO
+sO
+hR
 mv
-mv
-mv
-aa
-aa
-aa
-aa
-aa
 "}
 (114,1,1) = {"
 aa
@@ -18586,12 +18656,12 @@ hR
 hR
 hR
 hR
+hR
+RV
+sO
+sO
+hR
 mv
-aa
-aa
-aa
-aa
-aa
 "}
 (115,1,1) = {"
 aa
@@ -18682,19 +18752,19 @@ FP
 Te
 zc
 Kd
-xD
+AI
 sO
 sO
 sO
 sO
-xN
+sO
+AI
+sO
+sO
+sO
+sO
 hR
 mv
-aa
-aa
-aa
-aa
-aa
 "}
 (116,1,1) = {"
 aa
@@ -18790,14 +18860,14 @@ sO
 sO
 sO
 sO
-Ru
+sO
+AI
+sO
+sO
+sO
+sO
 hR
 mv
-aa
-aa
-aa
-aa
-aa
 "}
 (117,1,1) = {"
 aa
@@ -18889,18 +18959,18 @@ Kr
 BP
 hR
 hR
-sO
+Ru
 sO
 sO
 sO
 UA
 hR
+Yt
+Bo
+HC
+HC
+hR
 mv
-aa
-aa
-aa
-aa
-aa
 "}
 (118,1,1) = {"
 aa
@@ -18998,12 +19068,12 @@ sO
 sO
 UA
 hR
+hR
+hR
+hR
+hR
+hR
 mv
-aa
-aa
-aa
-aa
-aa
 "}
 (119,1,1) = {"
 aa
@@ -19404,7 +19474,7 @@ Kr
 BP
 hR
 hR
-Rp
+MW
 sO
 sO
 sO
