@@ -1450,6 +1450,7 @@
 #include "code\modules\admin\verbs\maprotation.dm"
 #include "code\modules\admin\verbs\massmodvar.dm"
 #include "code\modules\admin\verbs\modifyvariables.dm"
+#include "code\modules\admin\verbs\necrocomm.dm"
 #include "code\modules\admin\verbs\playsound.dm"
 #include "code\modules\admin\verbs\possess.dm"
 #include "code\modules\admin\verbs\randomverbs.dm"

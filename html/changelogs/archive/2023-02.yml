@@ -64,3 +64,11 @@
     - balance: Jav gun ammo price reduced 2800 => 2550 credits/mag, 1500 => 1350 merits/mag.
     - balance: Bulging growth, roots, and propagators are now significantly harder
         to destroy.
+2023-02-15:
+  DTraitor:
+  - rscadd: Timelocked the Marker role. You need to play 1.5 hour as a signal to control
+      the marker. Timelock doesn't work when there are no players with over 1.5 hour
+      of playtime as signal.
+  - rscadd: If Marker player is AFK for more than 5 minutes another can replace him
+      (use 'Become Master Signal' verb).
+  - rscadd: Added 'Toggle Reciving Necrochat' verb for admins.
