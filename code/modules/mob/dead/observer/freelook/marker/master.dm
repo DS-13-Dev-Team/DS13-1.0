@@ -35,7 +35,7 @@
 			return
 
 	if (SSnecromorph.marker.player)
-		if(!SSnecromorph.marker.playermob.client.is_afk(5 MINUTES))
+		if(SSnecromorph.marker.playermob.client && !SSnecromorph.marker.playermob.client.is_afk(5 MINUTES))
 			to_chat(src, "[SSnecromorph.marker.player] is already controlling the marker.")
 			return
 		to_chat(SSnecromorph.marker.playermob, SPAN_WARNING("You were AFK for too long and were replaced by another player!"))
