@@ -1,5 +1,5 @@
 /obj/item/rig/wasp
-	name = "wasp RIG"
+	name = "Wasp RIG"
 	desc = "A lightweight and flexible armoured rig suit, offers good protection against light impacts. Use kit on an Engineering RIG."
 	icon_state = "wasp_rig"
 	armor = list(melee = 47.5, bullet = 53, laser = 55, energy = 30, bomb = 65, bio = 100, rad = 80)

@@ -1,5 +1,5 @@
 /obj/item/rig/marine
-	name = "advanced soldier RIG"
+	name = "Advanced Soldier RIG"
 	desc = "A heavily armoured rig suit, designed for military use."
 	icon_state = "adv_soldier"
 	armor = list(melee = 72.5, bullet = 75, laser = 72.5, energy = 40, bomb = 75, bio = 100, rad = 75)
@@ -39,7 +39,7 @@
 
 
 /obj/item/rig/marine/specialist
-	name = "advanced specialist RIG"
+	name = "Advanced Specialist RIG"
 	desc = "A powerful yet flexible suit, designed for use by military and naval specialists or command staff."
 	icon_state = "adv_soldier_dark"
 	armor = list(melee = 67.5, bullet = 70, laser = 70, energy = 40, bomb = 70, bio = 100, rad = 75)
@@ -64,7 +64,7 @@
 		)
 
 /obj/item/rig/marine/earthgov //PLACEHOLDER RIG for earthgovs. Will be replaced by a special earthgov rig later.
-	name = "advanced specialist RIG"
+	name = "Advanced Specialist RIG"
 	desc = "A powerful yet flexible suit, designed for use by military and naval specialists or command staff."
 	icon_state = "adv_soldier_dark"
 	armor = list(melee = 50, bullet = 65, laser = 30, energy = 20, bomb = 30, bio = 100, rad = 75)

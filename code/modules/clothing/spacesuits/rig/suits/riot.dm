@@ -1,5 +1,5 @@
 /obj/item/rig/riot
-	name = "riot RIG"
+	name = "Riot RIG"
 	desc = "A heavy duty and armoured rig suit, designed for riot control and shipboard disciplinary enforcement. This suit is commonly found among security officers on the Sprawl, and in lesser capacity on private ships and stations."
 	icon_state = "ds_riot_rig"
 	armor = list(melee = 65, bullet = 60, laser = 55, energy = 30, bomb = 65, bio = 100, rad = 60)

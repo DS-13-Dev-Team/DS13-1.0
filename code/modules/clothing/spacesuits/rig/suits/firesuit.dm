@@ -1,5 +1,5 @@
 /obj/item/rig/firesuit
-	name = "firesuit RIG"
+	name = "Firesuit RIG"
 	desc = "A extremely lightweight suit, designed to resist high temperatures whilst reduced armor plating makes it lighter. Soft materials barely impede movement."
 	icon_state = "ds_firesuit_rig"
 	armor = list(melee = 37.5, bullet = 35, laser = 50, energy = 40, bomb = 60, bio = 100, rad = 60) //less protective, but a lot faster

@@ -1,5 +1,5 @@
 /obj/item/rig/excavation
-	name = "excavation RIG"
+	name = "Excavation RIG"
 	desc = "A modified, lightweight version of the engineering suit. Perfect for quick operations."
 	icon_state = "excavation_rig"
 	armor = list(melee = 44, bullet = 44, laser = 40, energy = 15, bomb = 60, bio = 100, rad = 50)
