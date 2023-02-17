@@ -1,6 +1,6 @@
 
 /obj/item/rig/patrol
-	name = "patrol RIG"
+	name = "Patrol RIG"
 	desc = "A very lightweight yet reasonably armoured suit, designed for long journeys on foot."
 	icon_state = "patrol"
 	armor = list(melee = 54.5, bullet = 54.5, laser = 60, energy = 25, bomb = 50, bio = 100, rad = 60)

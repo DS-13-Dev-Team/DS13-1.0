@@ -3,7 +3,7 @@
 
 //SCAF Elite RIG
 /obj/item/rig/scaf
-	name = "refurbished SCAF RIG"
+	name = "Refurbished SCAF RIG"
 	desc = "A lightweight and flexible armoured rig suit, designed for riot control and shipboard disciplinary enforcement."
 	icon_state = "scaf_elite_rig"
 
@@ -42,7 +42,7 @@
 
 //SCAF Legionnaire RIG
 /obj/item/rig/scaf/legionnaire
-	name = "refurbished SCAF expeditionary RIG"
+	name = "Refurbished SCAF Expeditionary RIG"
 	desc = "A lightweight and flexible armoured rig suit, designed for riot control and shipboard disciplinary enforcement."
 	icon_state = "scaf_legionnaire_rig"
 	online_slowdown = RIG_MEDIUM
@@ -51,7 +51,7 @@
 
 //SCAF Sharpshooter RIG
 /obj/item/rig/scaf/sharpshooter
-	name = "refurbished SCAF sharpshooter RIG"
+	name = "Refurbished SCAF Sharpshooter RIG"
 	desc = "A lightweight and flexible armoured rig suit, designed for riot control and shipboard disciplinary enforcement."
 	icon_state = "scaf_sharpshooter_rig"
 	online_slowdown = RIG_MEDIUM

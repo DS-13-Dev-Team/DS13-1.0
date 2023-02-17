@@ -38,8 +38,8 @@
 	RIG suits
 */
 /datum/patron_item/max_stone_rig
-	name = "modified advanced RIG"
-	description = "The latest in cutting-edge RIG technology. This one is a slightly older model, still using the standard engineering suit scheme. It has `Max S.` engraved next to the monitor lights."
+	name = "Advanced Engineering RIG"
+	description = "The latest in cutting-edge RIG technology. This one is a slightly older model, still using the standard engineering suit scheme. It has `Parker R.` engraved next to the monitor lights."
 	item_path = /obj/item/rig/advanced/maxstone
 	id = "max_stone_rig"
 	store_cost = 15000
@@ -54,7 +54,7 @@
 
 //This is not my typo, his ckey is actually spelled like that
 /datum/patron_item/plaugewalker
-	name = "SCAF elite RIG"
+	name = "SCAF Elite RIG"
 	description = "A lightweight and flexible armoured rig suit, designed for riot control and shipboard disciplinary enforcement."
 	item_path = /obj/item/rig/scaf/elite
 	id = "plaugewalker_rig"
@@ -86,7 +86,7 @@
 
 
 /datum/patron_item/hacker_rig
-	name = "digital infiltration RIG"
+	name = "Digital Infiltration RIG"
 	item_path = /obj/item/rig/hacker
 	id = "hacker_rig"
 
@@ -129,7 +129,7 @@
 
 //Made public by request of commissioner
 /datum/patron_item/blackwolf
-	name = "wasp RIG"
+	name = "Wasp RIG"
 	description = "A lightweight and flexible armoured rig suit, offers good protection against light impacts"
 	item_path = /obj/item/rig/wasp
 	id = "blackwolf_rig"
@@ -144,8 +144,8 @@
 	modkit_typelist = list(/obj/item/rig/engineering)
 
 /datum/patron_item/sea_rig
-	name = "heavy CEC diving rig"
-	description = "An extremely bulky, durable diving suit. Designed for deep diving in the icy seas of Europa, able to whitstand extreme undersea pressure. Use it on a vintage rig to convert, or buy it in the store directly!"
+	name = "Hazard Diving RIG"
+	description = "The heavy-duty vintage diving RIG is the standard among CEC deep sea mining operations. It's plating has been reinforced to withstand extreme undersea pressures and concussive forces."
 	item_path = /obj/item/rig/vintage/sea
 	id = "sea_rig"
 	store_cost = 15000
@@ -155,20 +155,20 @@
 	subcategory = SUBCATEGORY_FRAMES
 
 /datum/patron_item/carver
-	name = "carver's RIG"
-	description = "A heavily armoured rig suit, designed for military use. Especially effective against bullets. Use it on a vintage rig to convert, or buy it in the store directly!"
-	item_path = /obj/item/rig/carver
+	name = "Spec Ops RIG"
+	description = "A heavily armoured rig suit, designed for military use. Especially effective against bullets."
+	item_path = /obj/item/rig/security/pcsi/carver
 	id = "carver_rig"
-	store_cost = 15000
+	store_cost = 12000
 	store_access = ACCESS_WHITELIST
 
 	category = CATEGORY_RIG
 	subcategory = SUBCATEGORY_FRAMES
 
 /datum/patron_item/dad_rig
-	name = "Elite diving RIG"
-	description = "An extremely durable, bulky elite diving suit. Designed for combat and deep sea diving in the North Atlantic Ocean, able to withstand extreme undersea pressure. Use it on a vintage rig to convert, or buy it in the store directly!"
-	item_path = /obj/item/rig/vintage/sea/dad
+	name = "Elite Diving RIG"
+	description = "The elite diving RIG is the next generation of diving RIGs used among CEC deep sea mining operations. It's flexible reinforcements allow it to withstand extreme undersea pressures while retaining mobility."
+	item_path = /obj/item/rig/advanced/dad
 	id = "dad_rig"
 	store_cost = 15000
 	store_access = ACCESS_WHITELIST
@@ -241,7 +241,7 @@
 
 
 /datum/patron_item/survivor
-	name = "PCSI survivor RIG"
+	name = "PCSI Survivor RIG"
 	description = "Use on an pcsi rig to obtain, or buy the suit directly from the store. The RIG remains battered and beaten, dented and missing pieces. The blood remains permanently rusted to the frame. The will of the survivor remains unbroken."
 	item_path = /obj/item/rig/security/pcsi/ruined
 	id = "psci_survivor"
@@ -254,7 +254,7 @@
 
 
 /datum/patron_item/forged
-	name = "forged engineering RIG"
+	name = "Forged Engineering RIG"
 	description = "Use on an engineering rig to obtain, or buy the suit directly from the store. A lightweight and flexible armoured rig suit, designed for mining and shipboard engineering."
 	item_path = /obj/item/rig/engineering/forged
 	id = "forged"
@@ -265,7 +265,7 @@
 	subcategory = SUBCATEGORY_FRAMES
 
 /datum/patron_item/flesh
-	name = "fleshy power node"
+	name = "Fleshy Power Node"
 	description = "Use on a zealot rig to obtain"
 	item_path = /obj/item/stack/special_node/evil
 	id = "flesh"

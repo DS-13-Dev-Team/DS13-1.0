@@ -1,5 +1,5 @@
 /obj/item/rig/hacker
-	name = "hacker RIG"
+	name = "Hacker RIG"
 	desc = "A lightweight suit cobbled together from civilian parts, with some high end tech hidden within"
 	icon_state = "ds_hacker_rig"
 

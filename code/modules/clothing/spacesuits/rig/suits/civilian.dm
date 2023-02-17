@@ -1,5 +1,5 @@
 /obj/item/rig/civilian
-	name = "CEC civilian RIG"
+	name = "CEC Civilian RIG"
 	desc = "Resource Integrated Gear. Standard issue for all CEC employees"
 	icon_state = "ds_civilian_rig"
 	armor = list(melee = 10, bullet = 10, laser = 10, energy = 10, bomb = 10, bio = 10, rad = 10)
@@ -19,7 +19,7 @@
 		)
 
 /obj/item/rig/civilian/slim
-	name = "CEC slim civilian RIG"
+	name = "CEC Slim Civilian RIG"
 	desc = "Slim variant of the Resource Integrated Gear. Standard issue for all CEC employees."
 	icon_state = "ds_civilian_rig_slim"
 	armor = list(melee = 10, bullet = 10, laser = 10, energy = 10, bomb = 10, bio = 10, rad = 10)
@@ -34,7 +34,7 @@
 	glove_type = null
 
 /obj/item/rig/emergency
-	name = "emergency RIG"
+	name = "Emergency RIG"
 	desc = "A light, emergency rig for use by non-qualified personnel in the case of emergency decompression."
 	icon_state = "eva_suit"
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 100, rad = 50)
@@ -64,7 +64,7 @@
 	name = "helmet"
 
 /obj/item/rig/clown
-	name = "clown RIG"
+	name = "Clown RIG"
 	desc = "Honk honk."
 	icon_state = "clown_rig"
 	armor = list(melee = 25, bullet = 25, laser = 25, energy = 25, bomb = 25, bio = 25, rad = 25)
