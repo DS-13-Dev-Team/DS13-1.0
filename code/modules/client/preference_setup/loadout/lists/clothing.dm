@@ -8,3 +8,7 @@
 	display_name = "scarf"
 	path = /obj/item/clothing/accessory/scarf
 	flags = GEAR_HAS_COLOR_SELECTION
+
+/datum/gear/clothing/rigshirt
+	display_name = "RIG Undershirt"
+	path = /obj/item/clothing/under/rigshirt
