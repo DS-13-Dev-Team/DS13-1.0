@@ -39,7 +39,7 @@
 */
 /datum/patron_item/max_stone_rig
 	name = "Advanced Engineering RIG"
-	description = "The latest in cutting-edge RIG technology. This one is a slightly older model, still using the standard engineering suit scheme. It has `Parker R.` engraved next to the monitor lights."
+	description = "The latest in cutting-edge RIG technology, uses the standard engineering suit scheme. It has `Parker R.` engraved next to the monitor lights."
 	item_path = /obj/item/rig/advanced/maxstone
 	id = "max_stone_rig"
 	store_cost = 15000

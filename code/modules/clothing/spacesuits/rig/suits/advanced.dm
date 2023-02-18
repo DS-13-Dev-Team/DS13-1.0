@@ -53,7 +53,7 @@ A/*
 
 /obj/item/rig/advanced/maxstone
 	name = "Advanced Engineering RIG"
-	desc = "The latest in cutting-edge RIG technology. This one is a slightly older model, still using the standard engineering suit scheme. It has `Parker R.` engraved next to the monitor lights."
+	desc = "The latest in cutting-edge RIG technology, uses the standard engineering suit scheme. It has `Parker R.` engraved next to the monitor lights."
 	icon_state = "ds_advanced_rig_stone"
 
 /obj/item/rig/advanced/banditofdoom
