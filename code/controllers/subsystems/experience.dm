@@ -42,7 +42,7 @@ SUBSYSTEM_DEF(experience)
 				))
 				C.exp[EXP_TYPE_SPECIAL] += minutes
 
-		else if(is_necromorph(C.mob))
+		else if(C.mob.is_necromorph())
 			exp_to_update += list(list(
 				"job" = EXP_TYPE_SIGNAL,
 				"ckey" = C.ckey,
