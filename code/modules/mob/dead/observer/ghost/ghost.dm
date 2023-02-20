@@ -609,6 +609,16 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	log_and_message_admins("has respawned.", M)
 
 
+/mob/dead/observer/ghost/verb/change_view_range()
+	set name = "View Range"
+	set desc = "Change your view range."
+	set category = "Ghost"
+
+	if(client.view_radius == world.view)
+		client.change_view(input("Select view range:", "Modify View Range", 7) in list(1,2,3,4,5,6,7,8,9,10,11,12,13,14,128))
+	else
+		client.change_view(world.view)
+
 //special multitool used so admin ghosts can fiddle with doors
 /obj/item/tool/multitool/ghost
 	var/mob/dead/observer/ghost/ghost
