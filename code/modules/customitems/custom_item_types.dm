@@ -190,7 +190,7 @@
 
 /datum/patron_item/muramasa
 	name =  "Experimental Ceremonial Sword"
-	description = "Use on a rock saw to obtain! A blade passed down through generations of a dedicated unitologist family, the Higgins. Sam had it modified into a experimental ceremonial blade, enhancing the already astonishing properties of the original metal and giving it an ominous crimson glow that matches the Marker. An explosive charge housed in the scabbard enables a lightning-quick draw."
+	description = "A blade passed down through generations of a dedicated unitologist family, the Higgins. Sam had it modified into a experimental ceremonial blade, enhancing the already astonishing properties of the original metal and giving it an ominous crimson glow that matches the Marker. An explosive charge housed in the scabbard enables a lightning-quick draw."
 	id = "muramasa"
 	item_path = /obj/item/material/twohanded/muramasa
 
@@ -199,6 +199,10 @@
 
 	category = CATEGORY_TOOLS
 	subcategory = SUBCATEGORY_DANGEROUS_TOOLS
+
+	loadout_modkit_cost = 0
+	modkit_access = ACCESS_WHITELIST
+	modkit_typelist = list(/obj/item/tool/pickaxe/laser)
 
 /datum/patron_item/muramasa_sheath
 	name =  "Ceremonial Sheath"
@@ -215,7 +219,7 @@
 
 /datum/patron_item/tarnished
 	name = "Tarnished RIG"
-	description = "Use on an advanced rig to obtain! Or buy from the store directly. A rig made from the reforged armor of his family that was passed from generation to generations for decades."
+	description = "A rig made from the reforged armor of his family that was passed from generation to generations for decades."
 	item_path = /obj/item/rig/advanced/tarnished
 	id = "tarnished"
 	store_cost = 15000
@@ -231,7 +235,7 @@
 
 /datum/patron_item/arctic_suit //public for all patrons
 	name = "Arctic Survival RIG"
-	description = "Use on an advanced rig to obtain, or buy the suit directly from the store. A standard-issue Sovereign Colonies RIG used for exploring and generally weathering harsh environments otherwise hostile to human life, from space to an icy alien tundra."
+	description = "A standard-issue Sovereign Colonies RIG used for exploring and generally weathering harsh environments otherwise hostile to human life, from space to an icy alien tundra."
 	item_path = /obj/item/rig/arctic
 	id = "arctic"
 	store_cost = 15000 //same as advanced rig
@@ -243,7 +247,7 @@
 
 /datum/patron_item/witness
 	name = "Witness RIG"
-	description = "Use on an advanced rig to obtain, or buy the suit directly from the store. A Sovereign Colonies all-purpose survival RIG painted in a mesmerizing fashion as a tribute to the Church of Unitology and the general faith they hold."
+	description = "A Sovereign Colonies all-purpose survival RIG painted in a mesmerizing fashion as a tribute to the Church of Unitology and the general faith they hold."
 	item_path = /obj/item/rig/arctic/witness
 	id = "witness"
 	store_cost = 15000
@@ -259,7 +263,7 @@
 
 /datum/patron_item/survivor
 	name = "PCSI Survivor RIG"
-	description = "Use on an pcsi rig to obtain, or buy the suit directly from the store. The RIG remains battered and beaten, dented and missing pieces. The blood remains permanently rusted to the frame. The will of the survivor remains unbroken."
+	description = "The RIG remains battered and beaten, dented and missing pieces. The blood remains permanently rusted to the frame. The will of the survivor remains unbroken."
 	item_path = /obj/item/rig/security/pcsi/ruined
 	id = "psci_survivor"
 	store_cost = 12000
@@ -275,7 +279,7 @@
 
 /datum/patron_item/forged
 	name = "Forged Engineering RIG"
-	description = "Use on an engineering rig to obtain, or buy the suit directly from the store. A lightweight and flexible armoured rig suit, designed for mining and shipboard engineering."
+	description = "A lightweight and flexible armoured rig suit, designed for mining and shipboard engineering."
 	item_path = /obj/item/rig/engineering/forged
 	id = "forged"
 	store_cost = 8000
