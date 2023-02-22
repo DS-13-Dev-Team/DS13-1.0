@@ -113,19 +113,19 @@
 
 /datum/patron_item/marshal_wrench
 	name =  "Colossal Wrench"
+	description = "If everything else failed - bring a bigger wrench."
 	id = "marshal_wrench"
 	item_path = /obj/item/material/twohanded/fireaxe/bigwrench
-
 	store_cost = 6000
-	store_access = ACCESS_WHITELIST
-
-	loadout_modkit_cost = 2
-	modkit_access = ACCESS_WHITELIST
-	modkit_typelist = list(/obj/item/tool/wrench/big_wrench)
-
+	store_access = ACCESS_PUBLIC
 
 	category = CATEGORY_TOOLS
 	subcategory = SUBCATEGORY_DANGEROUS_TOOLS
+
+	loadout_modkit_cost = 2
+	modkit_access = ACCESS_PUBLIC
+	modkit_typelist = list(/obj/item/tool/wrench/big_wrench)
+
 
 //Made public by request of commissioner
 /datum/patron_item/blackwolf
@@ -200,7 +200,7 @@
 	category = CATEGORY_TOOLS
 	subcategory = SUBCATEGORY_DANGEROUS_TOOLS
 
-	loadout_modkit_cost = 0
+	loadout_modkit_cost = 1
 	modkit_access = ACCESS_WHITELIST
 	modkit_typelist = list(/obj/item/tool/pickaxe/laser)
 
