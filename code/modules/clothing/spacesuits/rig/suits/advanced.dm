@@ -1,4 +1,4 @@
-A/*
+/*
 	Advanced RIG
 
 	High quality all around. Lightweight, good protection, no real drawbacks. The next generation of awesome
