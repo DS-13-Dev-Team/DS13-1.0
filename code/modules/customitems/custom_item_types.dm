@@ -48,7 +48,7 @@
 	category = CATEGORY_RIG
 	subcategory = SUBCATEGORY_FRAMES
 
-	loadout_modkit_cost = 2
+	loadout_modkit_cost = 0
 	modkit_access = ACCESS_WHITELIST
 	modkit_typelist = list(/obj/item/rig/advanced)
 
@@ -64,7 +64,7 @@
 	category = CATEGORY_RIG
 	subcategory = SUBCATEGORY_FRAMES
 
-	loadout_modkit_cost = 3
+	loadout_modkit_cost = 0
 	modkit_access = ACCESS_WHITELIST
 	modkit_typelist = list(/obj/item/rig/security)
 
@@ -154,6 +154,10 @@
 	category = CATEGORY_RIG
 	subcategory = SUBCATEGORY_FRAMES
 
+	loadout_modkit_cost = 0
+	modkit_access = ACCESS_WHITELIST
+	modkit_typelist = list(/obj/item/rig/vintage)
+
 /datum/patron_item/carver
 	name = "Spec Ops RIG"
 	description = "A heavily armoured rig suit, designed for military use. Especially effective against bullets."
@@ -165,6 +169,10 @@
 	category = CATEGORY_RIG
 	subcategory = SUBCATEGORY_FRAMES
 
+	loadout_modkit_cost = 0
+	modkit_access = ACCESS_WHITELIST
+	modkit_typelist = list(/obj/item/rig/security/pcsi)
+
 /datum/patron_item/dad_rig
 	name = "Elite Diving RIG"
 	description = "The elite diving RIG is the next generation of diving RIGs used among CEC deep sea mining operations. It's flexible reinforcements allow it to withstand extreme undersea pressures while retaining mobility."
@@ -175,6 +183,10 @@
 
 	category = CATEGORY_RIG
 	subcategory = SUBCATEGORY_FRAMES
+
+	loadout_modkit_cost = 0
+	modkit_access = ACCESS_WHITELIST
+	modkit_typelist = list(/obj/item/rig/advanced)
 
 /datum/patron_item/muramasa
 	name =  "Experimental Ceremonial Sword"
@@ -212,6 +224,9 @@
 	category = CATEGORY_RIG
 	subcategory = SUBCATEGORY_FRAMES
 
+	loadout_modkit_cost = 0
+	modkit_access = ACCESS_WHITELIST
+	modkit_typelist = list(/obj/item/rig/advanced)
 
 
 /datum/patron_item/arctic_suit //public for all patrons
@@ -226,7 +241,6 @@
 	subcategory = SUBCATEGORY_FRAMES
 
 
-
 /datum/patron_item/witness
 	name = "Witness RIG"
 	description = "Use on an advanced rig to obtain, or buy the suit directly from the store. A Sovereign Colonies all-purpose survival RIG painted in a mesmerizing fashion as a tribute to the Church of Unitology and the general faith they hold."
@@ -238,6 +252,9 @@
 	category = CATEGORY_RIG
 	subcategory = SUBCATEGORY_FRAMES
 
+	loadout_modkit_cost = 0
+	modkit_access = ACCESS_WHITELIST
+	modkit_typelist = list(/obj/item/rig/advanced)
 
 
 /datum/patron_item/survivor
@@ -251,6 +268,9 @@
 	category = CATEGORY_RIG
 	subcategory = SUBCATEGORY_FRAMES
 
+	loadout_modkit_cost = 0
+	modkit_access = ACCESS_WHITELIST
+	modkit_typelist = list(/obj/item/rig/security/pcsi)
 
 
 /datum/patron_item/forged
@@ -263,6 +283,10 @@
 
 	category = CATEGORY_RIG
 	subcategory = SUBCATEGORY_FRAMES
+
+	loadout_modkit_cost = 0
+	modkit_access = ACCESS_WHITELIST
+	modkit_typelist = list(/obj/item/rig/engineering)
 
 /datum/patron_item/flesh
 	name = "Fleshy Power Node"
