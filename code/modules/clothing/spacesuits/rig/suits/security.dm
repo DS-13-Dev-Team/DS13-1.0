@@ -45,9 +45,15 @@
 	glove_type = /obj/item/clothing/gloves/rig/security/pcsi/ruined
 
 /obj/item/clothing/head/helmet/space/rig/security/pcsi/ruined
+
 /obj/item/clothing/suit/space/rig/security/pcsi/ruined
+	valid_accessory_slots = list(ACCESSORY_SLOT_INSIGNIA, ACCESSORY_SLOT_ARMOR_S, ACCESSORY_SLOT_ARMOR_M)
+	restricted_accessory_slots = list(ACCESSORY_SLOT_INSIGNIA, ACCESSORY_SLOT_ARMOR_S)
+
 /obj/item/clothing/shoes/magboots/rig/security/pcsi/ruined
+
 /obj/item/clothing/gloves/rig/security/pcsi/ruined
+
 
 /obj/item/rig/security/pcsi/carver
 	name = "Spec Ops RIG"
@@ -58,16 +64,6 @@
 	helm_type =  /obj/item/clothing/head/helmet/space/rig/carver
 	boot_type =  /obj/item/clothing/shoes/magboots/rig/carver
 	glove_type = /obj/item/clothing/gloves/rig/carver
-
-	initial_modules = list(
-		/obj/item/rig_module/healthbar,
-		/obj/item/rig_module/storage,
-		/obj/item/rig_module/grenade_launcher/light,	//These grenades are harmless illumination
-		/obj/item/rig_module/device/paperdispenser,	//For warrants and paperwork
-		/obj/item/rig_module/device/pen,
-		/obj/item/rig_module/maneuvering_jets,
-		/obj/item/rig_module/vision/nvgsec
-		)
 
 /obj/item/clothing/suit/space/rig/carver
 	name = "suit"
