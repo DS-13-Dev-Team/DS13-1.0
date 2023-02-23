@@ -188,6 +188,21 @@
 	modkit_access = ACCESS_WHITELIST
 	modkit_typelist = list(/obj/item/rig/advanced)
 
+/datum/patron_item/sister_rig
+	name = "Sister Diving RIG"
+	description = "a strange diving RIG with a cage on the shoulder and symbols drawn upon the tank. It's flexible reinforcements allow it to withstand extreme undersea pressures while retaining mobility."
+	item_path = /obj/item/rig/advanced/sister
+	id = "sister_rig"
+	store_cost = 15000
+	store_access = ACCESS_WHITELIST
+
+	category = CATEGORY_RIG
+	subcategory = SUBCATEGORY_FRAMES
+
+	loadout_modkit_cost = 0
+	modkit_access = ACCESS_WHITELIST
+	modkit_typelist = list(/obj/item/rig/advanced)
+
 /datum/patron_item/muramasa
 	name =  "Experimental Ceremonial Sword"
 	description = "A blade passed down through generations of a dedicated unitologist family, the Higgins. Sam had it modified into a experimental ceremonial blade, enhancing the already astonishing properties of the original metal and giving it an ominous crimson glow that matches the Marker. An explosive charge housed in the scabbard enables a lightning-quick draw."
