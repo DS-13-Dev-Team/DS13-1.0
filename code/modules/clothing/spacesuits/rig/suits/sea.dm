@@ -1,4 +1,4 @@
-// Former patreon rig
+// Patreon rig
 
 /obj/item/rig/vintage/sea
 	name = "Hazard Diving RIG"
@@ -52,4 +52,32 @@
 	siemens_coefficient = 0
 
 /obj/item/clothing/shoes/magboots/rig/sea/dad
+	name = "boots"
+
+// Patreon rig
+
+/obj/item/rig/advanced/sister
+	name = "Sister Diving RIG"
+	desc = "The sister diving RIG has flexible reinforcements allow it to withstand extreme undersea pressures while retaining mobility."
+	icon_state = "sister_rig"
+
+	chest_type = /obj/item/clothing/suit/space/rig/sea/sister
+	helm_type =  /obj/item/clothing/head/helmet/space/rig/sea/sister
+	boot_type =  /obj/item/clothing/shoes/magboots/rig/sea/sister
+	glove_type = /obj/item/clothing/gloves/rig/sea/sister
+
+/obj/item/clothing/head/helmet/space/rig/sea/sister
+	name = "helmet"
+
+/obj/item/clothing/suit/space/rig/sea/sister
+	name = "suit"
+	valid_accessory_slots = list(ACCESSORY_SLOT_INSIGNIA, ACCESSORY_SLOT_ARMOR_S, ACCESSORY_SLOT_ARMOR_M)
+	restricted_accessory_slots = list(ACCESSORY_SLOT_INSIGNIA, ACCESSORY_SLOT_ARMOR_S)
+
+/obj/item/clothing/gloves/rig/sea/sister
+	name = "insulated gloves"
+	desc = "These gloves will protect the wearer from electric shocks."
+	siemens_coefficient = 0
+
+/obj/item/clothing/shoes/magboots/rig/sea/sister
 	name = "boots"
