@@ -58,7 +58,7 @@
 
 /obj/item/rig/advanced/sister
 	name = "Sister Diving RIG"
-	desc = "The sister diving RIG has flexible reinforcements allow it to withstand extreme undersea pressures while retaining mobility."
+	desc = "a strange diving RIG with a cage on the shoulder and symbols drawn upon the tank. It's flexible reinforcements allow it to withstand extreme undersea pressures while retaining mobility."
 	icon_state = "sister_rig"
 
 	chest_type = /obj/item/clothing/suit/space/rig/sea/sister
