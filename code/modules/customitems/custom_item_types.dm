@@ -189,8 +189,8 @@
 	modkit_typelist = list(/obj/item/rig/advanced)
 
 /datum/patron_item/sister_rig
-	name = "Sister Diving RIG"
-	description = "a strange diving RIG with a cage on the shoulder and symbols drawn upon the tank. It's flexible reinforcements allow it to withstand extreme undersea pressures while retaining mobility."
+	name = "Strange Diving RIG"
+	description = "a strange diving RIG with a cage on the shoulder and symbols drawn upon the suit. It's flexible reinforcements allow it to withstand extreme undersea pressures while retaining mobility."
 	item_path = /obj/item/rig/advanced/sister
 	id = "sister_rig"
 	store_cost = 15000
