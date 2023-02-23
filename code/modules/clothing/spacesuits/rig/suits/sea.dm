@@ -57,7 +57,7 @@
 // Patreon rig
 
 /obj/item/rig/advanced/sister
-	name = "Sister Diving RIG"
+	name = "Strange Diving RIG"
 	desc = "a strange diving RIG with a cage on the shoulder and symbols drawn upon the tank. It's flexible reinforcements allow it to withstand extreme undersea pressures while retaining mobility."
 	icon_state = "sister_rig"
 
