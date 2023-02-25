@@ -107,6 +107,8 @@
 	icon_state = "ds_rigundershirt"
 	worn_state = "ds_rigundershirt"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
+	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 00, bio = 10, rad = 0)
+
 
 /obj/item/clothing/under/gentlesuit
 	name = "gentlemans suit"
