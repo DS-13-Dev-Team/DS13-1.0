@@ -1,11 +1,11 @@
-A/*
+/*
 	Advanced RIG
 
 	High quality all around. Lightweight, good protection, no real drawbacks. The next generation of awesome
 */
 
 /obj/item/rig/advanced
-	name = "advanced RIG"
+	name = "Advanced RIG"
 	desc = "The latest in cutting-edge RIG technology. Lightweight, tough, and packed with utilities"
 	icon_state = "ds_advanced_rig"
 
@@ -34,6 +34,9 @@ A/*
 		/obj/item/rig_module/power_sink
 		)
 
+/obj/item/clothing/head/helmet/space/rig/advanced
+	name = "helmet"
+
 /obj/item/clothing/suit/space/rig/advanced
 	name = "suit"
 	valid_accessory_slots = list(ACCESSORY_SLOT_INSIGNIA, ACCESSORY_SLOT_ARMOR_S, ACCESSORY_SLOT_ARMOR_M)
@@ -47,12 +50,10 @@ A/*
 /obj/item/clothing/shoes/magboots/rig/advanced
 	name = "boots"
 
-/obj/item/clothing/head/helmet/space/rig/advanced
-	name = "helmet"
 
 /obj/item/rig/advanced/maxstone
-	name = "modified advanced RIG"
-	desc = "The latest in cutting-edge RIG technology. This one is a slightly older model, still using the standard engineering suit scheme. It has `Max S.` engraved next to the monitor lights."
+	name = "Advanced Engineering RIG"
+	desc = "The latest in cutting-edge RIG technology, uses the standard engineering suit scheme. It has `Parker R.` engraved next to the monitor lights."
 	icon_state = "ds_advanced_rig_stone"
 
 /obj/item/rig/advanced/banditofdoom

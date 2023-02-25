@@ -1,5 +1,5 @@
 /obj/item/rig/engineering
-	name = "engineering RIG"
+	name = "Engineering RIG"
 	desc = "A lightweight and flexible armoured rig suit, designed for mining and shipboard engineering."
 	icon_state = "ds_engineering_rig"
 	armor = list(melee = 45, bullet = 50, laser = 50, energy = 25, bomb = 60, bio = 100, rad = 75)
@@ -38,7 +38,7 @@
 	name = "helmet"
 
 /obj/item/rig/engineering/forged
-	name = "forged engineering RIG"
+	name = "Forged Engineering RIG"
 	icon_state = "forged_rig"
 
 	chest_type = /obj/item/clothing/suit/space/rig/engineering/forged

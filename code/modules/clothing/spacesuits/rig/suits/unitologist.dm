@@ -1,5 +1,5 @@
 /obj/item/rig/zealot
-	name = "zealot RIG"
+	name = "Zealot RIG"
 	desc = "An old combat RIG used by SCAF over two hundred years ago. The armour has seen some wear but still functions as it should, it has been repainted in black and crimson colours. There are unitologist markings across the suit."
 	icon_state = "zealot_rig"
 	armor = list(melee = 56, bullet = 60, laser = 30, energy = 20, bomb = 30, bio = 100, rad = 40)

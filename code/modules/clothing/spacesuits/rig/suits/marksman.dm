@@ -1,5 +1,5 @@
 /obj/item/rig/marksman
-	name = "marksman RIG"
+	name = "Marksman RIG"
 	desc = "A RIG designed for usage by a vessel's forensics specialist."
 	icon_state = "marksman_rig"
 	armor = list(melee = 62, bullet = 66, laser = 60, energy = 25, bomb = 60, bio = 100, rad = 60)

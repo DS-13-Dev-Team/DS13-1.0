@@ -33,8 +33,9 @@
 
 /obj/item/clothing/gloves/rig/security/pcsi
 
+//PCSI Patreon RIGs
 /obj/item/rig/security/pcsi/ruined
-	name = "PCSI survivor RIG"
+	name = "PCSI Survivor RIG"
 	desc = "The RIG remains battered and beaten, dented and missing pieces. The blood remains permanently rusted to the frame. The will of the survivor remains unbroken."
 	icon_state = "pcsi_rig_ruined"
 
@@ -44,13 +45,45 @@
 	glove_type = /obj/item/clothing/gloves/rig/security/pcsi/ruined
 
 /obj/item/clothing/head/helmet/space/rig/security/pcsi/ruined
+
 /obj/item/clothing/suit/space/rig/security/pcsi/ruined
+	valid_accessory_slots = list(ACCESSORY_SLOT_INSIGNIA, ACCESSORY_SLOT_ARMOR_S, ACCESSORY_SLOT_ARMOR_M)
+	restricted_accessory_slots = list(ACCESSORY_SLOT_INSIGNIA, ACCESSORY_SLOT_ARMOR_S)
+
 /obj/item/clothing/shoes/magboots/rig/security/pcsi/ruined
+
 /obj/item/clothing/gloves/rig/security/pcsi/ruined
+
+
+/obj/item/rig/security/pcsi/carver
+	name = "Spec Ops RIG"
+	desc = "A heavily armoured rig suit, designed for military use. Especially effective against bullets."
+	icon_state = "carver_rig"
+
+	chest_type = /obj/item/clothing/suit/space/rig/carver
+	helm_type =  /obj/item/clothing/head/helmet/space/rig/carver
+	boot_type =  /obj/item/clothing/shoes/magboots/rig/carver
+	glove_type = /obj/item/clothing/gloves/rig/carver
+
+/obj/item/clothing/suit/space/rig/carver
+	name = "suit"
+	valid_accessory_slots = list(ACCESSORY_SLOT_INSIGNIA, ACCESSORY_SLOT_ARMOR_S, ACCESSORY_SLOT_ARMOR_M)
+	restricted_accessory_slots = list(ACCESSORY_SLOT_INSIGNIA, ACCESSORY_SLOT_ARMOR_S)
+
+/obj/item/clothing/gloves/rig/carver
+	name = "gloves"
+
+/obj/item/clothing/shoes/magboots/rig/carver
+	name = "boots"
+
+/obj/item/clothing/head/helmet/space/rig/carver
+	name = "helmet"
+	light_overlay = "carver_light"
+
 
 //PCSI Riot RIG
 /obj/item/rig/security/pcsi/advanced
-	name = "PCSI riot RIG"
+	name = "PCSI Riot RIG"
 	desc = "A lightweight and flexible armoured rig suit used by CEC shipboard security during crackdowns and for use in hazardous environments."
 	icon_state = "pcsi_riot_rig"
 	armor = list(melee = 62, bullet = 56, laser = 60, energy = 0, bomb = 60, bio = 100, rad = 60)
@@ -86,7 +119,7 @@
 //Sprawl Sec RIGs
 //Titan Security RIG
 /obj/item/rig/security
-	name = "security RIG"
+	name = "Security RIG"
 	desc = "A lightweight and flexible armoured rig suit, designed for riot control and shipboard disciplinary enforcement."
 	icon_state = "ds_security_rig"
 	armor = list(melee = 56.5, bullet = 60, laser = 60, energy = 25, bomb = 60, bio = 100, rad = 60)

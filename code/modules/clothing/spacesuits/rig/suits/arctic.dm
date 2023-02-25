@@ -1,5 +1,5 @@
 /obj/item/rig/arctic
-	name = "arctic survival RIG"
+	name = "Arctic Survival RIG"
 	desc = "A standard-issue Sovereign Colonies RIG used for exploring and generally weathering harsh environments otherwise hostile to human life, from space to an icy alien tundra."
 	icon_state = "arctic_survival_rig"
 	armor = list(melee = 60, bullet = 60, laser = 60, energy = 30, bomb = 65, bio = 100, rad = 95) //cut and paste from advanced suit, no change
