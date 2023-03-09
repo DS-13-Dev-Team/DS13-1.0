@@ -31,6 +31,6 @@ obj/item/stack/special_node/divet
 
 obj/item/stack/special_node/evil
 	desc = "A strange power note emanating with an evil aura."
-	name = "divet nodes"
-	singular_name = "divet node"
+	name = "evil node"
+	singular_name = "evil node"
 	color = "#740909"
