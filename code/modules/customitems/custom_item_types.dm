@@ -317,3 +317,18 @@
 
 	category = CATEGORY_RIG
 	subcategory = SUBCATEGORY_FRAMES
+
+/datum/patron_item/heavy
+	name = "Antique Heavy-Duty CEC RIG"
+	description = "The heavy-duty vintage CEC RIG is used in the most hazardous engineering operations aboard CEC vessels. Its heavier armor plating can withstand more blunt damage than most CEC suits, and can withstand radiation just as well. As working conditions on CEC ships have improved, this RIG has been discontinued, but some heavy variants can still be found on old planet crackers."
+	item_path = /obj/item/rig/vintage/heavy
+	id = "vintage_suit"
+	store_cost = 15000
+	store_access = ACCESS_PATRONS
+
+	category = CATEGORY_RIG
+	subcategory = SUBCATEGORY_FRAMES
+
+	loadout_modkit_cost = 0
+	modkit_access = ACCESS_PATRONS
+	modkit_typelist = list(/obj/item/rig/vintage)

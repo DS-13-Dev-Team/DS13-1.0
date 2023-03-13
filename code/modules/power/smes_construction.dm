@@ -115,7 +115,7 @@
 		s.start()
 		charge -= (output_level_max * CELLRATE)
 		if(prob(1)) // Small chance of overload occuring since grounding is disabled.
-			apcs_overload(5,10,20)
+			apcs_overload(1,10,20)
 
 	..()
 

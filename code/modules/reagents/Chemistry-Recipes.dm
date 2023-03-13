@@ -537,19 +537,6 @@
 
 	holder.clear_reagents()
 
-/datum/chemical_reaction/napalm
-	name = "Napalm"
-	result = null
-	required_reagents = list(/datum/reagent/aluminum = 1, /datum/reagent/toxin/phoron = 1, /datum/reagent/acid = 1 )
-	result_amount = 1
-
-/datum/chemical_reaction/napalm/on_reaction(var/datum/reagents/holder, var/created_volume)
-	var/turf/location = get_turf(holder.my_atom.loc)
-	for(var/turf/simulated/floor/target_tile in range(0,location))
-		target_tile.assume_gas(/datum/reagent/toxin/phoron, created_volume, 400+T0C)
-		spawn (0) target_tile.hotspot_expose(700, 400)
-	holder.del_reagent("napalm")
-
 /datum/chemical_reaction/chemsmoke
 	name = "Chemsmoke"
 	result = null
@@ -1981,21 +1968,6 @@
 	result_amount = 3
 
 // New recipes as of 15th October, 2020. - Lion
-
-/datum/chemical_reaction/phlogiston
-	name = "Phlogiston"
-	result = null
-	required_reagents = list(/datum/reagent/aluminum = 1, /datum/reagent/toxin/phoron = 1, /datum/reagent/acid = 1 )
-	result_amount = 1
-	mix_message = "The solution thickens and begins to bubble."
-
-/datum/chemical_reaction/phlogiston/on_reaction(var/datum/reagents/holder, var/created_volume, var/reaction_flags)
-	..()
-	var/turf/location = get_turf(holder.my_atom)
-	for(var/turf/simulated/floor/target in range(1,location))
-		if(!target.blocks_air)
-			target.assume_gas(MATERIAL_PHORON, max(created_volume, 30))
-			target.hotspot_expose(1000, CELL_VOLUME)
 
 /datum/chemical_reaction/vecuronium_bromide
 	name = "Vecuronium Bromide"
