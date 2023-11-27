@@ -189,6 +189,7 @@
 /datum/craft_recipe/weapon/rendingcutter
 	name = "Rending Cutter"
 	result = /obj/item/gun/energy/cutter/rending
+	flags = CRAFT_ON_WORKBENCH
 	time = 200
 	steps = list(
 	list(CRAFT_OBJECT, /obj/item/gun/energy/cutter/plasma, WORKTIME_NORMAL, FALSE, /obj/item/gun/energy/cutter/rending),
@@ -198,6 +199,7 @@
 /datum/craft_recipe/weapon/rendingdivet
 	name = "Rending Divet"
 	result = /obj/item/gun/projectile/divet/rending
+	flags = CRAFT_ON_WORKBENCH
 	time = 200
 	steps = list(
 	list(CRAFT_OBJECT, /obj/item/gun/projectile/divet, WORKTIME_NORMAL, FALSE, /obj/item/gun/projectile/divet/rending),

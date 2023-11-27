@@ -5,21 +5,21 @@
 	icon_state = "generic"
 
 /obj/random/hardsuit/item_to_spawn()
-	return pickweight(list(/obj/item/rig/security,
+	return pickweight(list(/obj/item/rig/pcsi/security,
 				/obj/item/rig/engineering,
+				/obj/item/rig/engineering/forged_new,
+				/obj/item/rig/hacker,
 				/obj/item/rig/mining,
-				/obj/item/rig/excavation,
-				/obj/item/rig/vintage = 0.2,
-				/obj/item/rig/advanced = 0.1, //At 0.5, they are still very common, shouldn't even be "misplaced" anyway.
-				/obj/item/rig/patrol = 0.1,
-				/obj/item/rig/industrial,
-				/obj/item/rig/eva,
-				/obj/item/rig/civilian,
+				/obj/item/rig/excavation = 0.5,
+				/obj/item/rig/eng_int = 0.5,
+				/obj/item/rig/eng_int/forged_new = 0.5,
+				/obj/item/rig/vintage = 0.1,
+				/obj/item/rig/advanced = 0.1,
+				/obj/item/rig/advanced/engineering = 0.1,
+				/obj/item/rig/advanced/mining = 0.1,
+				/obj/item/rig/riot/patrol = 0.2,
+				/obj/item/rig/civilian/slim,
 				/obj/item/rig/medical = 0.8,
-				/obj/item/rig/light/internalaffairs = 0.01,
-				/obj/item/rig/ce = 0.01,
-				/obj/item/rig/hazmat = 0.01,
-				/obj/item/rig/hazard = 0.01,
 				/obj/item/rig/clown = 0.01))
 
 

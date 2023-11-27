@@ -94,9 +94,9 @@ something, make sure it's not in one of the other lists.*/
 
 /obj/random/scaf/item_to_spawn() //total weight = 100
 	return pickweight(list(
-	/obj/item/rig/arctic = 4,
-	/obj/item/rig/scaf/elite = 4,
-	/obj/item/rig/scaf/legionnaire = 4,
+	/obj/item/rig/advanced/arctic = 4,
+	/obj/item/rig/pcsi/elite = 4,
+	/obj/item/rig/pcsi/legionnaire = 4,
 	/obj/item/gun/projectile/automatic/bullpup = 10,
 	/obj/item/ammo_magazine/bullpup = 18,
 	/obj/random/medical = 15,

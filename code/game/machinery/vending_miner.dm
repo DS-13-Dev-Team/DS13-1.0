@@ -90,6 +90,8 @@
 		/obj/item/gun/spray/hydrazine_torch = 8000,
 		/obj/item/reagent_containers/glass/fuel_tank/fuel = 2000,
 		/obj/item/reagent_containers/glass/fuel_tank/hydrazine = 4000,
+		/obj/item/rig/eng_int = 10000,
+		/obj/item/rig/advanced/mining = 20000,
 	)
 
 /obj/machinery/vending/mining/attackby(obj/item/W, mob/user)

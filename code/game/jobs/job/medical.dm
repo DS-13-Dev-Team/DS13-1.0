@@ -42,8 +42,8 @@
 	department = "Medical"
 	abbreviation = "MD"
 	department_flag = MED
-	total_positions = 15
-	spawn_positions = 15
+	total_positions = 5
+	spawn_positions = 5
 	supervisors = "the Senior Medical Officer"
 	selection_color = "#013d3b"
 	minimal_player_age = 18
@@ -74,8 +74,8 @@
 	department = "Medical"
 	abbreviation = "SRG"
 	department_flag = MED
-	total_positions = 5
-	spawn_positions = 5
+	total_positions = 2
+	spawn_positions = 2
 	supervisors = "the Senior Medical Officer"
 	selection_color = "#013d3b"
 	minimal_player_age = 18

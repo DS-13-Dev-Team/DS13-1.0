@@ -22,11 +22,12 @@
 */
 /datum/patron_item/rivet
 	name =  "711-MarkCL Rivet Gun"
-	id = "rivetgun"
-	item_path = /obj/item/gun/projectile/rivet
-	store_cost = 2400
-	store_access = ACCESS_PATRONS
 	description = "The 711-MarkCL Rivet Gun is the latest refinement from Timson Tools' long line of friendly tools. Useful for rapid repairs at a distance!"
+	item_path = /obj/item/gun/projectile/rivet
+	id = "rivetgun"
+	store_cost = 2400
+	store_access = ACCESS_PUBLIC
+
 	loadout_cost = 4
 	loadout_access = ACCESS_PATRONS
 
@@ -42,7 +43,7 @@
 	description = "The latest in cutting-edge RIG technology, uses the standard engineering suit scheme. It has `Parker R.` engraved next to the monitor lights."
 	item_path = /obj/item/rig/advanced/maxstone
 	id = "max_stone_rig"
-	store_cost = 15000
+	store_cost = 17000
 	store_access = ACCESS_WHITELIST
 
 	category = CATEGORY_RIG
@@ -56,9 +57,9 @@
 /datum/patron_item/plaugewalker
 	name = "SCAF Elite RIG"
 	description = "A lightweight and flexible armoured rig suit, designed for riot control and shipboard disciplinary enforcement."
-	item_path = /obj/item/rig/scaf/elite
+	item_path = /obj/item/rig/pcsi/elite
 	id = "plaugewalker_rig"
-	store_cost = 10000
+	store_cost = 11000
 	store_access = ACCESS_WHITELIST
 
 	category = CATEGORY_RIG
@@ -66,7 +67,7 @@
 
 	loadout_modkit_cost = 0
 	modkit_access = ACCESS_WHITELIST
-	modkit_typelist = list(/obj/item/rig/security)
+	modkit_typelist = list(/obj/item/rig/pcsi)
 
 
 /datum/patron_item/banditofdoom
@@ -74,7 +75,7 @@
 	description = "A project many months in the works, created by an obsessive historical anime fan. Even incorporates a custom voice changer for impersonating TV characters."
 	item_path = /obj/item/rig/advanced/banditofdoom
 	id = "banditofdoom_rig"
-	store_cost = 15000
+	store_cost = 17000
 	store_access = ACCESS_WHITELIST
 
 	category = CATEGORY_RIG
@@ -131,16 +132,16 @@
 /datum/patron_item/blackwolf
 	name = "Wasp RIG"
 	description = "A lightweight and flexible armoured rig suit, offers good protection against light impacts"
-	item_path = /obj/item/rig/wasp
 	id = "blackwolf_rig"
-	store_cost = 9000
-	store_access = ACCESS_PUBLIC
+	item_path = /obj/item/rig/engineering/wasp
+	store_cost = 6500
+	store_access = ACCESS_WHITELIST
 
 	category = CATEGORY_RIG
 	subcategory = SUBCATEGORY_FRAMES
 
 	loadout_modkit_cost = 2
-	modkit_access = ACCESS_PUBLIC
+	modkit_access = ACCESS_WHITELIST
 	modkit_typelist = list(/obj/item/rig/engineering)
 
 /datum/patron_item/sea_rig
@@ -148,7 +149,7 @@
 	description = "The heavy-duty vintage diving RIG is the standard among CEC deep sea mining operations. It's plating has been reinforced to withstand extreme undersea pressures and concussive forces."
 	item_path = /obj/item/rig/vintage/sea
 	id = "sea_rig"
-	store_cost = 15000
+	store_cost = 17000
 	store_access = ACCESS_WHITELIST
 
 	category = CATEGORY_RIG
@@ -161,9 +162,9 @@
 /datum/patron_item/carver
 	name = "Spec Ops RIG"
 	description = "A heavily armoured rig suit, designed for military use. Especially effective against bullets."
-	item_path = /obj/item/rig/security/pcsi/carver
+	item_path = /obj/item/rig/pcsi/carver
 	id = "carver_rig"
-	store_cost = 12000
+	store_cost = 11000
 	store_access = ACCESS_WHITELIST
 
 	category = CATEGORY_RIG
@@ -171,14 +172,14 @@
 
 	loadout_modkit_cost = 0
 	modkit_access = ACCESS_WHITELIST
-	modkit_typelist = list(/obj/item/rig/security/pcsi)
+	modkit_typelist = list(/obj/item/rig/pcsi)
 
 /datum/patron_item/dad_rig
 	name = "Elite Diving RIG"
 	description = "The elite diving RIG is the next generation of diving RIGs used among CEC deep sea mining operations. It's flexible reinforcements allow it to withstand extreme undersea pressures while retaining mobility."
 	item_path = /obj/item/rig/advanced/dad
 	id = "dad_rig"
-	store_cost = 15000
+	store_cost = 17000
 	store_access = ACCESS_WHITELIST
 
 	category = CATEGORY_RIG
@@ -193,7 +194,7 @@
 	description = "a strange diving RIG with a cage on the shoulder and symbols drawn upon the suit. It's flexible reinforcements allow it to withstand extreme undersea pressures while retaining mobility."
 	item_path = /obj/item/rig/advanced/sister
 	id = "sister_rig"
-	store_cost = 15000
+	store_cost = 17000
 	store_access = ACCESS_WHITELIST
 
 	category = CATEGORY_RIG
@@ -237,7 +238,7 @@
 	description = "A rig made from the reforged armor of his family that was passed from generation to generations for decades."
 	item_path = /obj/item/rig/advanced/tarnished
 	id = "tarnished"
-	store_cost = 15000
+	store_cost = 17000
 	store_access = ACCESS_WHITELIST
 
 	category = CATEGORY_RIG
@@ -251,9 +252,9 @@
 /datum/patron_item/arctic_suit //public for all patrons
 	name = "Arctic Survival RIG"
 	description = "A standard-issue Sovereign Colonies RIG used for exploring and generally weathering harsh environments otherwise hostile to human life, from space to an icy alien tundra."
-	item_path = /obj/item/rig/arctic
+	item_path = /obj/item/rig/advanced/arctic
 	id = "arctic"
-	store_cost = 15000 //same as advanced rig
+	store_cost = 17000 //same as advanced rig
 	store_access = ACCESS_PATRONS
 
 	category = CATEGORY_RIG
@@ -263,9 +264,9 @@
 /datum/patron_item/witness
 	name = "Witness RIG"
 	description = "A Sovereign Colonies all-purpose survival RIG painted in a mesmerizing fashion as a tribute to the Church of Unitology and the general faith they hold."
-	item_path = /obj/item/rig/arctic/witness
+	item_path = /obj/item/rig/advanced/arctic/witness
 	id = "witness"
-	store_cost = 15000
+	store_cost = 17000
 	store_access = ACCESS_WHITELIST
 
 	category = CATEGORY_RIG
@@ -279,9 +280,9 @@
 /datum/patron_item/survivor
 	name = "PCSI Survivor RIG"
 	description = "The RIG remains battered and beaten, dented and missing pieces. The blood remains permanently rusted to the frame. The will of the survivor remains unbroken."
-	item_path = /obj/item/rig/security/pcsi/ruined
+	item_path = /obj/item/rig/pcsi/ruined
 	id = "psci_survivor"
-	store_cost = 12000
+	store_cost = 11000
 	store_access = ACCESS_WHITELIST
 
 	category = CATEGORY_RIG
@@ -289,7 +290,7 @@
 
 	loadout_modkit_cost = 0
 	modkit_access = ACCESS_WHITELIST
-	modkit_typelist = list(/obj/item/rig/security/pcsi)
+	modkit_typelist = list(/obj/item/rig/pcsi)
 
 
 /datum/patron_item/forged
@@ -297,7 +298,7 @@
 	description = "A lightweight and flexible armoured rig suit, designed for mining and shipboard engineering."
 	item_path = /obj/item/rig/engineering/forged
 	id = "forged"
-	store_cost = 8000
+	store_cost = 6500
 	store_access = ACCESS_WHITELIST
 
 	category = CATEGORY_RIG
@@ -323,7 +324,7 @@
 	description = "The heavy-duty vintage CEC RIG is used in the most hazardous engineering operations aboard CEC vessels. Its heavier armor plating can withstand more blunt damage than most CEC suits, and can withstand radiation just as well. As working conditions on CEC ships have improved, this RIG has been discontinued, but some heavy variants can still be found on old planet crackers."
 	item_path = /obj/item/rig/vintage/heavy
 	id = "vintage_suit"
-	store_cost = 15000
+	store_cost = 17000
 	store_access = ACCESS_PATRONS
 
 	category = CATEGORY_RIG
@@ -332,3 +333,63 @@
 	loadout_modkit_cost = 0
 	modkit_access = ACCESS_PATRONS
 	modkit_typelist = list(/obj/item/rig/vintage)
+
+/datum/patron_item/forged_new
+	name = "Standard Forged Engineering RIG"
+	description = "A lightweight and flexible armoured rig suit, designed for mining and shipboard engineering."
+	item_path = /obj/item/rig/engineering/forged_new
+	id = "engineer_standard_forged_rig"
+	store_cost = 6500
+	store_access = ACCESS_PATRONS
+
+	category = CATEGORY_RIG
+	subcategory = SUBCATEGORY_FRAMES
+
+	loadout_modkit_cost = 0
+	modkit_access = ACCESS_PATRONS
+	modkit_typelist = list(/obj/item/rig/engineering)
+
+/datum/patron_item/int_forged_new
+	name = "Intermediate Forged Engineering RIG"
+	description = "A lightweight and flexible armoured rig suit, designed for mining and shipboard engineering."
+	item_path = /obj/item/rig/eng_int/forged_new
+	id = "engineer_intermediate_forged_rig"
+	store_cost = 10000
+	store_access = ACCESS_PATRONS
+
+	category = CATEGORY_RIG
+	subcategory = SUBCATEGORY_FRAMES
+
+	loadout_modkit_cost = 0
+	modkit_access = ACCESS_PATRONS
+	modkit_typelist = list(/obj/item/rig/eng_int)
+
+/datum/patron_item/advanced/forged
+	name = "Advanced Forged Engineering RIG"
+	description = "A lightweight and flexible armoured rig suit, designed for mining and shipboard engineering."
+	item_path = /obj/item/rig/advanced/forged
+	id = "engineer_advanced_forged_rig"
+	store_cost = 17000
+	store_access = ACCESS_PATRONS
+
+	category = CATEGORY_RIG
+	subcategory = SUBCATEGORY_FRAMES
+
+	loadout_modkit_cost = 0
+	modkit_access = ACCESS_PATRONS
+	modkit_typelist = list(/obj/item/rig/advanced)
+
+/datum/patron_item/int_survivor
+	name = "Intermediate Forged Engineering RIG"
+	description = "A lightweight and flexible armoured rig suit, designed for mining and shipboard engineering."
+	item_path = /obj/item/rig/eng_int/survivor
+	id = "intermediate_engineer_survivor_rig"
+	store_cost = 10000
+	store_access = ACCESS_WHITELIST
+
+	category = CATEGORY_RIG
+	subcategory = SUBCATEGORY_FRAMES
+
+	loadout_modkit_cost = 0
+	modkit_access = ACCESS_WHITELIST
+	modkit_typelist = list(/obj/item/rig/eng_int)
