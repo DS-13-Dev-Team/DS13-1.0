@@ -47,6 +47,8 @@
 		/obj/item/gun/spray/hydrazine_torch = 10,
 		/obj/item/reagent_containers/glass/fuel_tank/fuel = 25,
 		/obj/item/reagent_containers/glass/fuel_tank/hydrazine = 10,
+		/obj/item/rig/excavation = 10,
+		/obj/item/rig/advanced/mining = 5,
 	)
 	prices = list(
 		/obj/item/stack/power_node = 5000,
