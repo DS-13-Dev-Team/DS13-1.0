@@ -4,6 +4,15 @@
 
 	icon_state = "gun"
 
+/datum/craft_recipe/weapon/unitologist
+	name = "unitology ritual blade"
+	result = /obj/item/material/knife/unitologist
+	steps = list(
+		list(CRAFT_OBJECT, /obj/item/material/knife)
+	)
+
+
+
 /datum/craft_recipe/weapon/baseballbat
 	name = "baseball bat"
 	result = /obj/item/material/twohanded/baseballbat

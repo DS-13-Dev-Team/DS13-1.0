@@ -55,7 +55,7 @@
 
 
 
-/obj/item/rig/eng_int
+/obj/item/rig/intermediate
 	name = "Intermediate Engineering RIG"
 	desc = "A intermediate engineering suit, issued to class 2 engineers; designed for shipboard engineering."
 	icon_state = "engineer_intermediate_rig"
@@ -63,10 +63,10 @@
 	online_slowdown = RIG_FLEXIBLE
 	acid_resistance = 2.5
 
-	chest_type = /obj/item/clothing/suit/space/rig/eng_int
-	helm_type =  /obj/item/clothing/head/helmet/space/rig/eng_int
-	boot_type =  /obj/item/clothing/shoes/magboots/rig/eng_int
-	glove_type = /obj/item/clothing/gloves/rig/eng_int
+	chest_type = /obj/item/clothing/suit/space/rig/intermediate
+	helm_type =  /obj/item/clothing/head/helmet/space/rig/intermediate
+	boot_type =  /obj/item/clothing/shoes/magboots/rig/intermediate
+	glove_type = /obj/item/clothing/gloves/rig/intermediate
 
 	initial_modules = list(
 		/obj/item/rig_module/healthbar,
@@ -79,25 +79,25 @@
 		/obj/item/rig_module/power_sink
 		)
 
-/obj/item/clothing/suit/space/rig/eng_int
+/obj/item/clothing/suit/space/rig/intermediate
 	name = "suit"
 
-/obj/item/clothing/gloves/rig/eng_int
+/obj/item/clothing/gloves/rig/intermediate
 	name = "insulated gloves"
 	desc = "These gloves will protect the wearer from electric shocks."
 	siemens_coefficient = 0
 
-/obj/item/clothing/shoes/magboots/rig/eng_int
+/obj/item/clothing/shoes/magboots/rig/intermediate
 	name = "shoes"
 
-/obj/item/clothing/head/helmet/space/rig/eng_int
+/obj/item/clothing/head/helmet/space/rig/intermediate
 	name = "helmet"
 
-/obj/item/rig/eng_int/forged_new
+/obj/item/rig/intermediate/forged
 	name = "Intermediate Forged Engineering RIG"
 	icon_state = "engineer_intermediate_forged_rig"
 
-/obj/item/rig/eng_int/survivor
+/obj/item/rig/intermediate/survivor
 	name = "Intermediate Survivor Engineering RIG"
 	icon_state = "intermediate_engineer_survivor_rig"
 

@@ -334,7 +334,7 @@
 	modkit_access = ACCESS_PATRONS
 	modkit_typelist = list(/obj/item/rig/vintage)
 
-/datum/patron_item/forged_new
+/datum/patron_item/forged_sta
 	name = "Standard Forged Engineering RIG"
 	description = "A lightweight and flexible armoured rig suit, designed for mining and shipboard engineering."
 	item_path = /obj/item/rig/engineering/forged_new
@@ -349,10 +349,10 @@
 	modkit_access = ACCESS_PATRONS
 	modkit_typelist = list(/obj/item/rig/engineering)
 
-/datum/patron_item/int_forged_new
+/datum/patron_item/forged_int
 	name = "Intermediate Forged Engineering RIG"
 	description = "A lightweight and flexible armoured rig suit, designed for mining and shipboard engineering."
-	item_path = /obj/item/rig/eng_int/forged_new
+	item_path = /obj/item/rig/intermediate/forged
 	id = "engineer_intermediate_forged_rig"
 	store_cost = 10000
 	store_access = ACCESS_PATRONS
@@ -362,9 +362,9 @@
 
 	loadout_modkit_cost = 0
 	modkit_access = ACCESS_PATRONS
-	modkit_typelist = list(/obj/item/rig/eng_int)
+	modkit_typelist = list(/obj/item/rig/intermediate)
 
-/datum/patron_item/advanced/forged
+/datum/patron_item/forged_adv
 	name = "Advanced Forged Engineering RIG"
 	description = "A lightweight and flexible armoured rig suit, designed for mining and shipboard engineering."
 	item_path = /obj/item/rig/advanced/forged
@@ -379,10 +379,10 @@
 	modkit_access = ACCESS_PATRONS
 	modkit_typelist = list(/obj/item/rig/advanced)
 
-/datum/patron_item/int_survivor
-	name = "Intermediate Forged Engineering RIG"
+/datum/patron_item/intermediate/survivor
+	name = "Intermediate Survivor Engineering RIG"
 	description = "A lightweight and flexible armoured rig suit, designed for mining and shipboard engineering."
-	item_path = /obj/item/rig/eng_int/survivor
+	item_path = /obj/item/rig/intermediate/survivor
 	id = "intermediate_engineer_survivor_rig"
 	store_cost = 10000
 	store_access = ACCESS_WHITELIST
@@ -392,4 +392,4 @@
 
 	loadout_modkit_cost = 0
 	modkit_access = ACCESS_WHITELIST
-	modkit_typelist = list(/obj/item/rig/eng_int)
+	modkit_typelist = list(/obj/item/rig/intermediate)

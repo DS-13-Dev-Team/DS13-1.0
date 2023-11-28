@@ -49,8 +49,8 @@
 	build_path = /obj/item/rig/excavation
 	price = 9000
 
-/datum/design/item/rig/eng_int
-	build_path = /obj/item/rig/eng_int
+/datum/design/item/rig/intermediate
+	build_path = /obj/item/rig/intermediate
 	price = 10000
 
 
@@ -84,3 +84,11 @@
 /datum/design/item/rig/advanced
 	build_path = /obj/item/rig/advanced
 	price = 17000 //good all-rounder, comes with great modules
+
+/datum/design/item/rig/advanced/engineering
+	build_path = /obj/item/rig/advanced/engineering
+	price = 17000
+
+/datum/design/item/rig/advanced/mining
+	build_path = /obj/item/rig/advanced/mining
+	price = 17000
