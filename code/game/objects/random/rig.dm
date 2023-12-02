@@ -18,7 +18,7 @@
 				/obj/item/rig/riot = 0.2,
 				/obj/item/rig/riot/patrol = 0.2,
 				/obj/item/rig/civilian/slim,
-				/obj/item/rig/civilian/inap 0.1,
+				/obj/item/rig/civilian/inap = 0.1,
 				/obj/item/rig/medical = 0.8,
 				/obj/item/rig/clown = 0.01))
 
