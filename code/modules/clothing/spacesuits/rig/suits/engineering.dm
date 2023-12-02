@@ -41,11 +41,6 @@
 	name = "Standard Forged Engineering RIG"
 	icon_state = "forged_rig"
 
-/obj/item/rig/engineering/wasp
-	name = "Wasp RIG"
-	desc = "A lightweight and flexible armoured rig suit, offers good protection against light impacts. Use kit on an Engineering RIG."
-	icon_state = "wasp_rig"
-
 /obj/item/rig/engineering/forged_new
 	name = "Standard Forged Engineering RIG"
 	icon_state = "engineer_standard_forged_rig"

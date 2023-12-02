@@ -133,16 +133,16 @@
 	name = "Wasp RIG"
 	description = "A lightweight and flexible armoured rig suit, offers good protection against light impacts"
 	id = "blackwolf_rig"
-	item_path = /obj/item/rig/engineering/wasp
-	store_cost = 6500
+	item_path = /obj/item/rig/marksman/wasp
+	store_cost = 11500
 	store_access = ACCESS_WHITELIST
 
 	category = CATEGORY_RIG
 	subcategory = SUBCATEGORY_FRAMES
 
-	loadout_modkit_cost = 2
+	loadout_modkit_cost = 0
 	modkit_access = ACCESS_WHITELIST
-	modkit_typelist = list(/obj/item/rig/engineering)
+	modkit_typelist = list(/obj/item/rig/marksman)
 
 /datum/patron_item/sea_rig
 	name = "Hazard Diving RIG"

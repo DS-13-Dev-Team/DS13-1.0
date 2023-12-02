@@ -23,6 +23,11 @@
 	desc = "Slim variant of the Resource Integrated Gear. Standard issue for all CEC employees."
 	icon_state = "ds_civilian_rig_slim"
 
+/obj/item/rig/civilian/inap
+	name = "Inap Civilian RIG"
+	desc = "Resource Integrated Gear, made of pure inap."
+	icon_state = "inapprig"
+
 /obj/item/rig/emergency
 	name = "Emergency RIG"
 	desc = "A light, emergency rig for use by non-qualified personnel in the case of emergency decompression."

@@ -2,7 +2,7 @@
 	name = "Zealot RIG"
 	desc = "An security rig, it has been repainted in black and crimson colours. There are unitologist markings across the suit."
 	icon_state = "zealot_rig"
-	armor = list(melee = 56, bullet = 60, laser = 30, energy = 20, bomb = 30, bio = 100, rad = 40)
+	armor = list(melee = 60, bullet = 64, laser = 60, energy = 0, bomb = 60, bio = 100, rad = 60)
 	online_slowdown = RIG_MEDIUM
 	acid_resistance = 1.75	//Contains a fair bit of plastic
 
@@ -14,7 +14,8 @@
 	initial_modules = list(
 		/obj/item/rig_module/healthbar,
 		/obj/item/rig_module/storage,
-		/obj/item/rig_module/grenade_launcher/light,	//These grenades are harmless illumination
+		/obj/item/rig_module/grenade_launcher/military,
+		/obj/item/rig_module/maneuvering_jets,
 		/obj/item/rig_module/vision/nvgsec
 		)
 

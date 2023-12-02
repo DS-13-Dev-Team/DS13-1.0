@@ -36,14 +36,6 @@
 	list(CRAFT_TOOL, QUALITY_WIRE_CUTTING, 10, WORKTIME_NORMAL, FAILCHANCE_NORMAL, SKILL_ELECTRICAL)
 	)
 
-
-
-
-
-
-
-
-
 /datum/craft_recipe/rig/flesh
 	name = "Odd RIG"
 	desc = "Upgrade a zealot rig into a odd rig"
