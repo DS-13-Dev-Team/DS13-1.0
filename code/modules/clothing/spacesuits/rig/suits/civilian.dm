@@ -24,7 +24,7 @@
 	icon_state = "ds_civilian_rig_slim"
 
 /obj/item/rig/civilian/inap
-	name = "Inap Civilian RIG"
+	name = "Inap RIG"
 	desc = "Resource Integrated Gear, made of pure inap."
 	icon_state = "inapprig"
 

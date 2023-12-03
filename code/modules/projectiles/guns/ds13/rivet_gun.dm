@@ -140,13 +140,13 @@
 	Projectile
 */
 /obj/item/projectile/bullet/rivet
-	damage = 10	//Not really meant for direct fire
+	damage = 13.25	//Not really meant for direct fire
 	expiry_method = EXPIRY_FADEOUT
 	muzzle_type = /obj/effect/projectile/pulse/muzzle/light
 	//fire_sound='sound/weapons/guns/fire/divet_fire.ogg'
+	armor_penetration = 7.5
 	structure_damage_factor = 1
-	penetration_modifier = 0
-	penetrating = FALSE
+	penetration_modifier = 1.1
 	var/repair_power = 80
 	var/deployed = FALSE
 
