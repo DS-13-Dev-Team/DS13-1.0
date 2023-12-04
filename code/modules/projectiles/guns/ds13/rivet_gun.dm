@@ -37,7 +37,7 @@
 
 
 	firemodes = list(
-		list(mode_name = "rivet", mode_type = /datum/firemode),
+		FULL_AUTO_300,
 		list(mode_name = "fragmentate", mode_type = /datum/firemode/rivet_frag)
 		)
 
