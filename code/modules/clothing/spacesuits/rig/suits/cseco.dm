@@ -33,7 +33,9 @@
 	restricted_accessory_slots = list(ACCESSORY_SLOT_INSIGNIA, ACCESSORY_SLOT_ARMOR_S)
 
 /obj/item/clothing/gloves/rig/cseco
-	name = "gauntlets"
+	name = "insulated gauntlets"
+	desc = "These gloves will protect the wearer from electric shocks."
+	siemens_coefficient = 0
 
 /obj/item/clothing/shoes/magboots/rig/cseco
 	name = "boots"
