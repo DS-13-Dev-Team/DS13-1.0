@@ -41,6 +41,7 @@
 	return pickweight(list(
 	/obj/item/gun/projectile/ripper = 0.8,
 	/obj/item/gun/energy/forcegun = 1,
+	/obj/item/gun/projectile/rivet = 0.8,,
 	/obj/item/gun/energy/cutter = 2,
 	/obj/item/gun/energy/cutter/plasma = 0.8,
 	/obj/item/gun/energy/cutter/rending = 0.4,
@@ -69,6 +70,7 @@
 	/obj/item/ammo_magazine/pulse/df = 0.3,
 	/obj/item/cell/plasmacutter = 3,
 	/obj/item/ammo_magazine/sawblades = 1.2,
+	/obj/item/ammo_magazine/rivet = 1,
 	///obj/item/ammo_magazine/bullpup = 1,
 	/obj/item/cell/force = 1,
 	/obj/item/ammo_magazine/seeker = 0.6,
