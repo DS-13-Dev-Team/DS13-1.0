@@ -6218,8 +6218,8 @@
 "LZ" = (
 /obj/effect/floor_decal/industrial/outline/red,
 /obj/structure/table/rack,
-/obj/item/rig/security/pcsi,
-/obj/item/rig/security/pcsi,
+/obj/item/rig/pcsi,
+/obj/item/rig/pcsi,
 /turf/unsimulated/floor/dank/grater,
 /area/ERT/escapebase)
 "Ma" = (

@@ -15,8 +15,6 @@
 	online_slowdown = RIG_LIGHT
 	acid_resistance = 3	//Contains a fair bit of plastic
 
-	seal_delay = 45
-
 	chest_type = /obj/item/clothing/suit/space/rig/advanced
 	helm_type =  /obj/item/clothing/head/helmet/space/rig/advanced
 	boot_type =  /obj/item/clothing/shoes/magboots/rig/advanced
@@ -50,7 +48,6 @@
 /obj/item/clothing/shoes/magboots/rig/advanced
 	name = "boots"
 
-
 /obj/item/rig/advanced/maxstone
 	name = "Advanced Engineering RIG"
 	desc = "The latest in cutting-edge RIG technology, uses the standard engineering suit scheme. It has `Parker R.` engraved next to the monitor lights."
@@ -60,16 +57,18 @@
 	name = "Evangelion RIG"
 	desc = "A project many months in the works, created by an obsessive historical anime fan. Even incorporates a custom voice changer for impersonating TV characters."
 	icon_state = "banditofdoom_rig"
-	online_slowdown = RIG_FLEXIBLE
 
-	initial_modules = list(
-		/obj/item/rig_module/healthbar/advanced,
-		/obj/item/rig_module/storage/heavy,
-		/obj/item/rig_module/grenade_launcher/light,	//These grenades are harmless illumination
-		/obj/item/rig_module/maneuvering_jets,
-		/obj/item/rig_module/vision/meson,
-		/obj/item/rig_module/kinesis/advanced,
-		/obj/item/rig_module/hotswap,
-		/obj/item/rig_module/power_sink,
-		/obj/item/rig_module/voice
-		)
+/obj/item/rig/advanced/dad
+	name = "Elite Diving RIG"
+	desc = "The elite diving RIG is the next generation of diving RIGs used among CEC deep sea mining operations. It's flexible reinforcements allow it to withstand extreme undersea pressures while retaining mobility."
+	icon_state = "elite_diving_rig"
+
+/obj/item/rig/advanced/sister
+	name = "Strange Diving RIG"
+	desc = "a strange diving RIG with a cage on the shoulder and symbols drawn upon the suit. It's flexible reinforcements allow it to withstand extreme undersea pressures while retaining mobility."
+	icon_state = "sister_rig"
+
+/obj/item/rig/advanced/tarnished
+	name = "Tarnished RIG"
+	desc = "A rig made from the reforged armor of his family that was passed from generation to generations for decades."
+	icon_state = "tarnished"

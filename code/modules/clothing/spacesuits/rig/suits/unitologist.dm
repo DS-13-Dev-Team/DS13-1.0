@@ -1,8 +1,8 @@
 /obj/item/rig/zealot
 	name = "Zealot RIG"
-	desc = "An old combat RIG used by SCAF over two hundred years ago. The armour has seen some wear but still functions as it should, it has been repainted in black and crimson colours. There are unitologist markings across the suit."
+	desc = "An security rig, it has been repainted in black and crimson colours. There are unitologist markings across the suit."
 	icon_state = "zealot_rig"
-	armor = list(melee = 56, bullet = 60, laser = 30, energy = 20, bomb = 30, bio = 100, rad = 40)
+	armor = list(melee = 60, bullet = 64, laser = 60, energy = 0, bomb = 60, bio = 100, rad = 60)
 	online_slowdown = RIG_MEDIUM
 	acid_resistance = 1.75	//Contains a fair bit of plastic
 
@@ -14,7 +14,8 @@
 	initial_modules = list(
 		/obj/item/rig_module/healthbar,
 		/obj/item/rig_module/storage,
-		/obj/item/rig_module/grenade_launcher/light,	//These grenades are harmless illumination
+		/obj/item/rig_module/grenade_launcher/military,
+		/obj/item/rig_module/maneuvering_jets,
 		/obj/item/rig_module/vision/nvgsec
 		)
 
@@ -28,3 +29,8 @@
 /obj/item/clothing/gloves/rig/zealot
 
 /obj/item/clothing/shoes/magboots/rig/zealot
+/obj/item/rig/zealot/flesh
+	name = "Bloated RIG"
+	desc = "A horrifying amalgamation of flesh and a sparse amount of mechanical components, loosely resembling a rig."
+	icon_state = "flesh"
+

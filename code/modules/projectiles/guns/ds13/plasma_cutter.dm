@@ -6,8 +6,7 @@
 	icon_state = "plasmacutter"
 	item_state = "plasmacutter"
 	fire_sound = 'sound/weapons/plasma_cutter.ogg'
-	slot_flags = SLOT_BELT|SLOT_BACK
-	w_class = ITEM_SIZE_NORMAL
+	w_class = ITEM_SIZE_SMALL
 	force = 8
 	origin_tech = list(TECH_MATERIAL = 4, TECH_PHORON = 4, TECH_ENGINEERING = 6, TECH_COMBAT = 3)
 	matter = list(MATERIAL_STEEL = 4000)
