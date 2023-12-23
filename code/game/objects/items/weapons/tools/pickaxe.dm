@@ -87,7 +87,7 @@
 	force = WEAPON_FORCE_NORMAL
 	throwforce = WEAPON_FORCE_NORMAL
 	item_state = "ds_rocksaw0"
-	w_class = ITEM_SIZE_NORMAL
+	w_class = ITEM_SIZE_HUGE
 	matter = list(MATERIAL_STEEL = 1200, MATERIAL_PLASTIC = 800)
 	tool_qualities = list()
 	switched_on_qualities = list(QUALITY_DIGGING = 50, QUALITY_DRILLING = 20, QUALITY_EXCAVATION = 15, QUALITY_SAWING = 60, QUALITY_CUTTING = 50)

@@ -37,7 +37,7 @@
 
 
 	firemodes = list(
-		FULL_AUTO_300,
+		list(mode_name = "rivet", mode_type = /datum/firemode),
 		list(mode_name = "fragmentate", mode_type = /datum/firemode/rivet_frag)
 		)
 
@@ -140,13 +140,13 @@
 	Projectile
 */
 /obj/item/projectile/bullet/rivet
-	damage = 13.25	//Not really meant for direct fire
+	damage = 10	//Not really meant for direct fire
 	expiry_method = EXPIRY_FADEOUT
 	muzzle_type = /obj/effect/projectile/pulse/muzzle/light
 	//fire_sound='sound/weapons/guns/fire/divet_fire.ogg'
-	armor_penetration = 7.5
 	structure_damage_factor = 1
-	penetration_modifier = 1.1
+	penetration_modifier = 0
+	penetrating = FALSE
 	var/repair_power = 80
 	var/deployed = FALSE
 
