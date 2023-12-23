@@ -47,6 +47,8 @@
 		/obj/item/gun/spray/hydrazine_torch = 10,
 		/obj/item/reagent_containers/glass/fuel_tank/fuel = 25,
 		/obj/item/reagent_containers/glass/fuel_tank/hydrazine = 10,
+		/obj/item/rig/excavation = 10,
+		/obj/item/rig/advanced/mining = 5,
 	)
 	prices = list(
 		/obj/item/stack/power_node = 5000,
@@ -90,6 +92,8 @@
 		/obj/item/gun/spray/hydrazine_torch = 8000,
 		/obj/item/reagent_containers/glass/fuel_tank/fuel = 2000,
 		/obj/item/reagent_containers/glass/fuel_tank/hydrazine = 4000,
+		/obj/item/rig/excavation = 10000,
+		/obj/item/rig/advanced/mining = 20000,
 	)
 
 /obj/machinery/vending/mining/attackby(obj/item/W, mob/user)

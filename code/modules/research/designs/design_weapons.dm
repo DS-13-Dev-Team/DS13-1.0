@@ -318,20 +318,6 @@ S	fuel tank (hydrazine)
 	build_path = /obj/item/ammo_magazine/sawblades/diamond
 	price = 2900
 
-/datum/design/item/weapon/plasmasword
-	name = "experimental mining blade"
-	id = "plasmasword"
-	materials = list(MATERIAL_STEEL = 4000, MATERIAL_DIAMOND = 4000)
-	build_path = /obj/item/material/twohanded/muramasa/plasmasword
-	price = 4000
-
-/datum/design/item/weapon/sheath
-	name = "experimental blade sheath"
-	id = "sheath"
-	materials = list(MATERIAL_STEEL = 4000)
-	build_path = /obj/item/storage/belt/holster/sheath
-	price = 3000
-
 //Support Weapons
 /datum/design/item/ammo/line_rack
 	name = "line racks"

@@ -67,8 +67,8 @@
 	department = "Supply"
 	abbreviation = "ST"
 	department_flag = SUP
-	total_positions = 15
-	spawn_positions = 15
+	total_positions = 3
+	spawn_positions = 3
 	supervisors = "the Supply Officer"
 	selection_color = "#3b3b3b"
 	minimal_player_age = 18
