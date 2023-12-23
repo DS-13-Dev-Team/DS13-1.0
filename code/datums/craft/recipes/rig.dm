@@ -14,28 +14,6 @@
 	list(CRAFT_TOOL, QUALITY_WIRE_CUTTING, 10, WORKTIME_NORMAL, FAILCHANCE_NORMAL, SKILL_ELECTRICAL)
 	)
 
-/datum/craft_recipe/rig/intermediate
-	name = "Intermediate Engineering RIG"
-	desc = "Upgrade a Standard Engineering RIG into a Intermediate Engineering RIG"
-	time = 50
-	result = /obj/item/rig/intermediate
-	steps = list(
-	list(CRAFT_OBJECT, /obj/item/rig/engineering),
-	list(CRAFT_STACK, /obj/item/stack/power_node, 3),
-	list(CRAFT_TOOL, QUALITY_WIRE_CUTTING, 10, WORKTIME_NORMAL, FAILCHANCE_NORMAL, SKILL_ELECTRICAL)
-	)
-
-/datum/craft_recipe/rig/excavation
-	name = "Intermediate Mining RIG"
-	desc = "Upgrade a Standard Mining RIG into a Intermediate Mining RIG"
-	time = 50
-	result = /obj/item/rig/excavation
-	steps = list(
-	list(CRAFT_OBJECT, /obj/item/rig/mining),
-	list(CRAFT_STACK, /obj/item/stack/power_node, 3),
-	list(CRAFT_TOOL, QUALITY_WIRE_CUTTING, 10, WORKTIME_NORMAL, FAILCHANCE_NORMAL, SKILL_ELECTRICAL)
-	)
-
 /datum/craft_recipe/rig/flesh
 	name = "Odd RIG"
 	desc = "Upgrade a zealot rig into a odd rig"

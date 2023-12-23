@@ -37,8 +37,3 @@
 /obj/item/clothing/head/helmet/space/rig/marksman
 	name = "helmet"
 	light_overlay = "wasp_light"
-
-/obj/item/rig/marksman/wasp
-	name = "Wasp RIG"
-	desc = "A lightweight and flexible armoured rig suit."
-	icon_state = "wasp_rig"

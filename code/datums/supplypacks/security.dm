@@ -167,7 +167,7 @@
 
 /decl/hierarchy/supply_pack/security/rig_security
 	name = "T2 RIG - Security"
-	contains = list(/obj/item/rig/pcsi/security = 1)
+	contains = list(/obj/item/rig/security = 1)
 	cost = 150
 	containertype = /obj/structure/closet/crate/secure/large
 	containername = "\improper security RIG crate"
@@ -176,7 +176,7 @@
 
 /decl/hierarchy/supply_pack/security/rig_patrol
 	name = "T2 RIG - Patrol"
-	contains = list(/obj/item/rig/riot/patrol = 1)
+	contains = list(/obj/item/rig/patrol = 1)
 	cost = 150
 	containertype = /obj/structure/closet/crate/secure/large
 	containername = "\improper patrol RIG crate"

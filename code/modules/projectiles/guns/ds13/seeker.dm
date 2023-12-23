@@ -6,20 +6,19 @@
 	item_state = "seeker"
 	wielded_item_state = "seeker-wielded"
 	w_class = ITEM_SIZE_HUGE
-	force = 10
 	handle_casings = CLEAR_CASINGS
 	magazine_type = /obj/item/ammo_magazine/seeker
 	allowed_magazines = /obj/item/ammo_magazine/seeker
 	load_method = MAGAZINE
 	caliber = "seeker"
 	slot_flags = SLOT_BACK
-	one_hand_penalty = -30	//Don't try to hipfire
-	accuracy = -10
+	accuracy = -30	//Don't try to hipfire
 	ammo_type = /obj/item/ammo_casing/seeker
 	mag_insert_sound = 'sound/weapons/guns/interaction/rifle_load.ogg'
 	mag_remove_sound = 'sound/weapons/guns/interaction/pulse_magout.ogg'
+	one_hand_penalty = -30	//Don't try to fire this with one hand
 	fire_sound = 'sound/weapons/gunshot/sniper.ogg'
-	aiming_modes = list(/datum/extension/aim_mode/sniper/seeker)
+	aiming_modes = list(/datum/extension/aim_mode/sniper/seeker, /datum/extension/aim_mode/sniper/seeker/far, /datum/extension/aim_mode/sniper/seeker/near)
 
 
 	firemodes = list(
@@ -44,7 +43,7 @@
 
 /obj/item/projectile/bullet/seeker
 	icon_state = "seeker"
-	damage = 40
+	damage = 50
 	embed = 1
 	structure_damage_factor = 3
 	penetration_modifier = 1.25
