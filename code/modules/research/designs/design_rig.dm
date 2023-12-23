@@ -7,23 +7,11 @@
 //Tier 0: civilian grade rigs (no modules/little to no armor)
 /datum/design/item/rig/civ
 	build_path = /obj/item/rig/civilian
-	price = 100
+	price = 500
 
 /datum/design/item/rig/civ/slim
 	build_path = /obj/item/rig/civilian/slim
-	price = 100
-
-/datum/design/item/rig/emergency/astro
-	build_path = /obj/item/rig/emergency/astro
-	price = 1000
-
-/datum/design/item/rig/firesuit
-	build_path = /obj/item/rig/firesuit
-	price = 1000
-
-/datum/design/item/rig/medical
-	build_path = /obj/item/rig/medical
-	price = 3000 //good against burns/toxins
+	price = 500
 
 /datum/design/item/rig/clown
 	name = "ERROR_404_RIG_NOT_FOUND"
@@ -37,58 +25,54 @@
 
 
 //Tier I: standard protection and modules
+/datum/design/item/rig/fire
+	build_path = /obj/item/rig/firesuit
+	price = 4000 //weak, good against burns
+
 /datum/design/item/rig/mining
 	build_path = /obj/item/rig/mining
 	price = 6000
 
-/datum/design/item/rig/eng
-	build_path = /obj/item/rig/engineering
-	price = 6500 //moderate protection
+/datum/design/item/rig/medical
+	build_path = /obj/item/rig/medical
+	price = 6500 //good against burns/toxins
 
 /datum/design/item/rig/excavation
 	build_path = /obj/item/rig/excavation
-	price = 9000
+	price = 7000
 
-/datum/design/item/rig/intermediate
-	build_path = /obj/item/rig/intermediate
-	price = 10000
+/datum/design/item/rig/eng
+	build_path = /obj/item/rig/engineering
+	price = 8000 //moderate protection
+
+
 
 
 //Tier II: high protection and advanced modules
+/datum/design/item/rig/patrol
+	build_path = /obj/item/rig/patrol
+	price = 11000 //standard security rig for patrol
+
+/datum/design/item/rig/sec
+	build_path = /obj/item/rig/security
+	price = 11000 //standard security rig
+
+/datum/design/item/rig/pcsi
+	build_path = /obj/item/rig/security/pcsi
+	price = 12000 //armory rig
 
 /datum/design/item/rig/marksman
 	build_path = /obj/item/rig/marksman
-	price = 10500 //SSO
-
-/datum/design/item/rig/pcsi
-	build_path = /obj/item/rig/pcsi
-	price = 11000 //armory rig
-
-/datum/design/item/rig/sec
-	build_path = /obj/item/rig/pcsi/security
-	price = 11000 //standard security rig
-/datum/design/item/rig/patrol
-	build_path = /obj/item/rig/riot/patrol
-	price = 12000 //standard security rig for patrol
+	price = 13000 //SSO
 
 /datum/design/item/rig/riot
 	build_path = /obj/item/rig/riot
-	price = 12000 //for melee combat, kinda worse at everything else
-
-//Tier III: high protection and advanced modules
+	price = 14000 //for melee combat, kinda worse at everything else
 
 /datum/design/item/rig/vintage
 	build_path = /obj/item/rig/vintage
-	price = 17000	//tanky rig, slow
+	price = 15000	//tanky rig, slow
 
 /datum/design/item/rig/advanced
 	build_path = /obj/item/rig/advanced
-	price = 17000 //good all-rounder, comes with great modules
-
-/datum/design/item/rig/advanced/engineering
-	build_path = /obj/item/rig/advanced/engineering
-	price = 17000
-
-/datum/design/item/rig/advanced/mining
-	build_path = /obj/item/rig/advanced/mining
-	price = 17000
+	price = 15000 //good all-rounder, comes with great modules

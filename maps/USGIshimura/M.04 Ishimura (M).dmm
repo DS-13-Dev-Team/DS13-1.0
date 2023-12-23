@@ -21207,9 +21207,9 @@
 	icon_state = "4-8"
 	},
 /obj/effect/floor_decal/industrial/outline/grey,
-/obj/item/rig/pcsi,
-/obj/item/rig/pcsi,
-/obj/item/rig/pcsi,
+/obj/item/rig/security/pcsi,
+/obj/item/rig/security/pcsi,
+/obj/item/rig/security/pcsi,
 /turf/simulated/floor/tiled/dark/monotile,
 /area/ishimura/upper/security/armory)
 "aQt" = (

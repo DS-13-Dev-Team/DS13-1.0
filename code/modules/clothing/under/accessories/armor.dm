@@ -113,7 +113,7 @@
 /obj/item/clothing/accessory/armguards/pcsi
 	desc = "A pair of arm pads reinforced with armor plating. Attaches to a plate carrier."
 	icon_state = "armguards_pcsi"
-	armor = list(melee = 54, bullet = 54, laser = 50, energy = 0, bomb = 25, bio = 0, rad = 0)
+	armor = list(melee = 30, bullet = 20, laser = 0, energy = 0, bomb = 10, bio = 0, rad = 0)
 
 /obj/item/clothing/accessory/armguards/merc
 	name = "heavy arm guards"
@@ -132,7 +132,7 @@
 	name = "ballistic arm guards"
 	desc = "A pair of armored arm pads with heavy plates to protect against ballistic projectiles."
 	icon_state = "armguards_ballistic"
-	armor = list(melee = 33, bullet = 75, laser = 50, energy = 0, bomb = 25, bio = 0, rad = 0)
+	armor = list(melee = 42, bullet = 75, laser = 42, energy = 0, bomb = 25, bio = 0, rad = 0)
 	siemens_coefficient = 0.7
 
 /obj/item/clothing/accessory/armguards/ablative
@@ -182,7 +182,7 @@
 /obj/item/clothing/accessory/legguards/pcsi
 	desc = "A pair of armored leg pads. Attaches to a plate carrier."
 	icon_state = "legguards_pcsi"
-	armor = list(melee = 54, bullet = 54, laser = 50, energy = 0, bomb = 25, bio = 0, rad = 0)
+	armor = list(melee = 30, bullet = 20, laser = 0, energy = 0, bomb = 10, bio = 0, rad = 0)
 
 /obj/item/clothing/accessory/legguards/merc
 	name = "heavy leg guards"
@@ -202,7 +202,7 @@
 	name = "ballistic leg guards"
 	desc = "A pair of armored leg pads with heavy plates to protect against ballistic projectiles. Looks like they might impair movement."
 	icon_state = "legguards_ballistic"
-	armor = list(melee = 33, bullet = 75, laser = 50, energy = 0, bomb = 25, bio = 0, rad = 0)
+	armor = list(melee = 42, bullet = 75, laser = 42, energy = 0, bomb = 25, bio = 0, rad = 0)
 	siemens_coefficient = 0.7
 	slowdown = 1
 

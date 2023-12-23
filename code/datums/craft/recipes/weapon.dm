@@ -4,15 +4,6 @@
 
 	icon_state = "gun"
 
-/datum/craft_recipe/weapon/unitologist
-	name = "unitology ritual blade"
-	result = /obj/item/material/knife/unitologist
-	steps = list(
-		list(CRAFT_OBJECT, /obj/item/material/knife)
-	)
-
-
-
 /datum/craft_recipe/weapon/baseballbat
 	name = "baseball bat"
 	result = /obj/item/material/twohanded/baseballbat
@@ -198,7 +189,6 @@
 /datum/craft_recipe/weapon/rendingcutter
 	name = "Rending Cutter"
 	result = /obj/item/gun/energy/cutter/rending
-	flags = CRAFT_ON_WORKBENCH
 	time = 200
 	steps = list(
 	list(CRAFT_OBJECT, /obj/item/gun/energy/cutter/plasma, WORKTIME_NORMAL, FALSE, /obj/item/gun/energy/cutter/rending),
@@ -208,7 +198,6 @@
 /datum/craft_recipe/weapon/rendingdivet
 	name = "Rending Divet"
 	result = /obj/item/gun/projectile/divet/rending
-	flags = CRAFT_ON_WORKBENCH
 	time = 200
 	steps = list(
 	list(CRAFT_OBJECT, /obj/item/gun/projectile/divet, WORKTIME_NORMAL, FALSE, /obj/item/gun/projectile/divet/rending),
