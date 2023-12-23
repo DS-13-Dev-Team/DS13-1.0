@@ -15031,11 +15031,11 @@
 /area/mining_colony/SCAF)
 "aRb" = (
 /obj/structure/table/rack,
-/obj/item/rig/pcsi,
-/obj/item/rig/pcsi,
-/obj/item/rig/pcsi,
-/obj/item/rig/pcsi,
-/obj/item/rig/pcsi,
+/obj/item/rig/security/pcsi,
+/obj/item/rig/security/pcsi,
+/obj/item/rig/security/pcsi,
+/obj/item/rig/security/pcsi,
+/obj/item/rig/security/pcsi,
 /obj/effect/floor_decal/industrial/outline/red,
 /obj/machinery/light,
 /turf/simulated/floor/dank/slides{

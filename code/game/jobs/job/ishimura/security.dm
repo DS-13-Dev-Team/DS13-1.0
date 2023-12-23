@@ -41,8 +41,8 @@
 	department = "Security"
 	abbreviation = "SSO"
 	department_flag = SEC
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 1
+	spawn_positions = 1
 	supervisors = "the Chief Security Officer"
 	selection_color = "#601c1c"
 	minimal_player_age = 18
@@ -72,8 +72,8 @@
 	department = "Security"
 	abbreviation = "SEC"
 	department_flag = SEC
-	total_positions = 15
-	spawn_positions = 15
+	total_positions = 4
+	spawn_positions = 4
 	supervisors = "the Chief Security Officer and Senior Security Officer"
 	selection_color = "#601c1c"
 	minimal_player_age = 18
